@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.3.0\n"
-"POT-Creation-Date: 2003-01-20 20:03+0100\n"
+"POT-Creation-Date: 2003-03-27 14:07+0000\n"
 "PO-Revision-Date: 2003-01-21 01:20+0200\n"
 "Last-Translator: Mugurel Tudor <mugurelu@go.ro>\n"
 "Language-Team: română <ro@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:848
+#: battstat/battstat_applet.c:852
 msgid "Battery Charge Monitor"
 msgstr "Monitor încărcare baterie"
 
@@ -39,7 +39,6 @@ msgstr "Monitorizează puterea rămasă pentru un laptop"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Utilitate"
 
@@ -48,9 +47,11 @@ msgstr "Utilitate"
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Despre..."
@@ -60,8 +61,10 @@ msgstr "_Despre..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:3
 msgid "_Help"
 msgstr "_Ajutor"
 
@@ -70,9 +73,11 @@ msgstr "_Ajutor"
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:7
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "_Preferinţe..."
@@ -94,22 +99,24 @@ msgstr "Apletul nu va funcţiona corect (admiţând că va funcţiona).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "Înălţime"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "Jos"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
 msgid "Critical"
 msgstr "Critic"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
 msgid "Charging"
 msgstr "Schimbare"
 
@@ -125,7 +132,7 @@ msgstr "Bateria este complet încărcată !"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -137,7 +144,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -148,15 +155,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
-#: battstat/battstat_applet.c:1064
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
 msgid "System is running on battery power"
 msgstr "Sistemul rulează alimentat de baterie"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
-#: battstat/battstat_applet.c:1070
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
 msgid "System is running on AC power"
 msgstr "Sistemul rulează alimentat AC"
 
@@ -166,14 +173,14 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Sistemul rulează alimentat de baterie. Baterie: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Sistemul rulează alimentat AC. Baterie: %d%% (%s)"
@@ -208,7 +215,7 @@ msgid "Battery: Not present"
 msgstr "Baterie: Nu este prezentă"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:722
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -221,7 +228,7 @@ msgstr ""
 "setată corect pentru dispozitivul APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:728
+#: battstat/battstat_applet.c:731
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -231,7 +238,7 @@ msgstr ""
 "Încercaţi să executaţi \"apm -e 1\" (FreeBSD) şi vedeţi\n"
 "dacă problema este rezolvată.\n"
 
-#: battstat/battstat_applet.c:783
+#: battstat/battstat_applet.c:787
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -241,7 +248,7 @@ msgstr ""
 "Încercaţi să corectaţi această eroare"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:790
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -252,7 +259,7 @@ msgstr ""
 "\"\n"
 "Încercaţi să corectaţi această eroare"
 
-#: battstat/battstat_applet.c:794
+#: battstat/battstat_applet.c:798
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -262,28 +269,30 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:825
+#: battstat/battstat_applet.c:829
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:504
-#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
+#: charpick/charpick.c:429 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1799 mini-commander/src/about.c:48 mixer/mixer.c:925
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr ""
 "Marius Andreiana <mandreiana@yahoo.com>\n"
 "Dan Damian <dand@dnttm.ro>\n"
 "Mugurel Tudor <mugurelu@go.ro>"
 
-#: battstat/battstat_applet.c:850
+#: battstat/battstat_applet.c:854
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Fundaţia pentru Software Liber"
 
-#: battstat/battstat_applet.c:851
-msgid "This utility show the status of your laptop battery."
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
 msgstr "Acest utilitar vă arată starea bateriei de la laptop"
 
 #: battstat/battstat_applet.glade.h:2
@@ -291,7 +300,7 @@ msgstr "Acest utilitar vă arată starea bateriei de la laptop"
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1361
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Aspect"
@@ -313,7 +322,7 @@ msgstr "Culori nivele baterie (%)"
 msgid "Beep when either of the above is true"
 msgstr "Bip când oricare din cele de mai sus sunt adevărate"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:264
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "General"
@@ -387,7 +396,7 @@ msgid "Battery power low"
 msgstr "Baterie pe terminate"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
 msgid "CD Player"
 msgstr "CD Player"
 
@@ -412,61 +421,61 @@ msgstr "Aplet pentru redarea CD-urilor audio"
 msgid "_Run External CD Player"
 msgstr "_Rulează CD Player extern..."
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
 msgid "Play / Pause"
 msgstr "Play / Pauză"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
 msgid "Eject"
 msgstr "Ejectează"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
 msgid "Previous Track"
 msgstr "Precedenta melodie"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
 msgid "Next Track"
 msgstr "Următoarea melodie"
 
-#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "A intervenit o eroare la executarea '%s' : %s"
 
-#: cdplayer/cdplayer.c:411
+#: cdplayer/cdplayer.c:422
 msgid "CD Player Preferences"
 msgstr "Preferinţe CD Player"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:442
 msgid "Disc Image"
 msgstr "Imagine disc"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:442
 msgid "An image of a cd-rom disc"
 msgstr "O imagine a CD-ROM-ului"
 
-#: cdplayer/cdplayer.c:431
+#: cdplayer/cdplayer.c:444
 msgid "Device _Path:"
 msgstr "_Cale dispozitiv:"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:453
 msgid "Device Path"
 msgstr "Cale dispozitiv"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:453
 msgid "Set the device path here"
 msgstr "Setează calea către dispozitiv aici"
 
-#: cdplayer/cdplayer.c:443
+#: cdplayer/cdplayer.c:456
 msgid "Use _Default"
 msgstr "Foloseşte _implicit"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:537
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -474,40 +483,44 @@ msgstr ""
 "(C) 1997 Fundaţia pentru Software Liber\n"
 "(C) 2001 Chris Phelps (Portare GNOME 2)"
 
-#: cdplayer/cdplayer.c:525 cdplayer/cdplayer.c:914
+#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Apletul CD Player este un simplu CD audio player pentru panelul dvs"
 
-#: cdplayer/cdplayer.c:782 cdplayer/cdplayer.c:793
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
 msgid "Elapsed time"
 msgstr "Timp trecut"
 
-#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:795
+#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
 msgid "Track number"
 msgstr "Număr melodie"
 
-#: cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:861
+msgid "Audio Device is busy, or being used by another application"
+msgstr ""
+
+#: cdplayer/cdplayer.c:936
 msgid "Click this button to Stop playing the CD"
 msgstr "Apăsaţi acest buton pentru a opri audiţia CD-ului"
 
-#: cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:938
 msgid "Click this button to Play or Pause the CD"
 msgstr "Apăsaţi acest buton pentru a începe reda/pauza CD-ul"
 
-#: cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:940
 msgid "Click this button to eject the CD"
 msgstr "Apăsaţi acest buton pentru ejectarea CD-ului"
 
-#: cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:942
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Apăsaţi acest buton pentru a reda precedenta melodie de pe CD"
 
-#: cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:944
 msgid "Click this button to Play the next track in the CD"
 msgstr "Apăsaţi acest buton pentru a reda următoarea melodie de pe CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:490
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:447
+#: charpick/charpick.c:549
 msgid "Character Palette"
 msgstr "Selector caractere"
 
@@ -521,15 +534,15 @@ msgstr "Inserează caracterele"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:366
+#: charpick/charpick.c:421
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:394
+#: charpick/charpick.c:449
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:395
+#: charpick/charpick.c:450
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -537,23 +550,23 @@ msgstr ""
 "Aplet panel Gnome pentru a selecta caractere ciudate care nu sunt pe "
 "tastatura mea. Publicat sub licenţa publică generală GNU."
 
-#: charpick/charpick.c:489
+#: charpick/charpick.c:548
 msgid "Insert special characters"
 msgstr "Inserează caractere speciale"
 
-#: charpick/properties.c:80
+#: charpick/properties.c:84
 msgid "_Default character list:"
 msgstr "Lista de caractere _implicită:"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Default list of characters"
 msgstr "Lista implicită de caractere"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid "Set the default character list here"
 msgstr "Setează lista implicită de caractere aici"
 
-#: charpick/properties.c:92
+#: charpick/properties.c:93
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
@@ -561,7 +574,7 @@ msgstr ""
 "Aceste caractere vor apare când panelul este pornit. Pentru a vă reîntoarce "
 "la această listă, apăsaţi <d> când appletul este focalizat."
 
-#: charpick/properties.c:156
+#: charpick/properties.c:158
 msgid "Character Palette Preferences"
 msgstr "Preferinţe Selector Caractere"
 
@@ -634,7 +647,7 @@ msgstr "_Punct montare:"
 msgid "_Update interval (seconds):"
 msgstr "Interval _actualizare (secunde):"
 
-#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+#: drivemount/properties.c:307
 msgid "_Icon :"
 msgstr "_Iconiţă :"
 
@@ -702,8 +715,8 @@ msgstr "Un set de ochi pentru panelul dumneavoastră"
 msgid "Amusements"
 msgstr "Amuzante"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:429 geyes/geyes.c:431
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
 msgid "Geyes"
 msgstr "gOchi"
 
@@ -711,23 +724,23 @@ msgstr "gOchi"
 msgid "Geyes Applet Factory"
 msgstr "Factory aplet gOchi"
 
-#: geyes/geyes.c:238
+#: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "O mică clonă xeyes pentru panelul GNOME."
 
-#: geyes/geyes.c:432
+#: geyes/geyes.c:446
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Ochii se uită în direcţia mouse-ului."
 
-#: geyes/themes.c:223
+#: geyes/themes.c:224
 msgid "Geyes Preferences"
 msgstr "Preferinţe gOchi"
 
-#: geyes/themes.c:239
+#: geyes/themes.c:240
 msgid "_Theme Name:"
 msgstr "Numele _temei:"
 
@@ -739,7 +752,7 @@ msgstr "Schimbă layout-ul tastaturii"
 msgid "GKB Factory"
 msgstr "Factory GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Schimbător layout tastatură"
 
@@ -755,15 +768,15 @@ msgstr ""
 "Apăsaţi tasta predefinită pentru a schimba între layout-uri. Această tastă "
 "poate fi setată prin intermediul dialogului Proprietăţi"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Fundaţia pentru Software Liber"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -781,7 +794,7 @@ msgstr ""
 "Mulţumiri lui Balazs Nagy (Kevin) <julian7@kva.hu> pentru ajutor şi lui "
 "Emese Kovacs <emese@eik.bme.hu> pentru solidaritatea ei."
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Home Page (http://projects.gnome.hu/gkb)"
 
@@ -789,7 +802,7 @@ msgstr "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Dezactivat"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Apăsaţi o tastă sau Esc pentru anulare"
 
@@ -801,25 +814,23 @@ msgstr "Tastaturi (selectaţi şi apăsaţi adăugare)"
 msgid "Select Keyboard"
 msgstr "Selectează tastatura"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:233
 msgid "Edit Keyboard"
 msgstr "Editează tastaura"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#: gkb-new/prop-map.c:252
 msgid "_Name:"
 msgstr "_Nume:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:255
 msgid "_Label:"
 msgstr "_Etichetă:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:258
 msgid "Co_mmand:"
 msgstr "Co_mandă"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:266
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -831,7 +842,7 @@ msgstr ""
 " * gkb__xmmap ro\n"
 " * setxkbmap ro"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:299
 msgid "_Flag"
 msgstr "_Steag"
 
@@ -855,7 +866,8 @@ msgstr "Etichetă"
 msgid "Flag and Label"
 msgstr "Steag şi etichetă"
 
-#: gkb-new/prop.c:291 modemlights/properties.c:393
+#: gkb-new/prop.c:291 gtik/gtik.c:1366 gweather/gweather-pref.c:320
+#: modemlights/properties.c:393
 msgid "Display"
 msgstr "Afişare"
 
@@ -877,11 +889,11 @@ msgid "_Grab hotkey"
 msgstr "Înregistrează _combinaţia"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:425
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Preferinţe Schimbare layout tastatură"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:442
 msgid "Keymaps"
 msgstr "Keymap-uri"
 
@@ -891,7 +903,7 @@ msgstr "Keymap-uri"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:454 multiload/properties.c:313
 msgid "Options"
 msgstr "Opţiuni"
 
@@ -906,7 +918,8 @@ msgid ""
 msgstr ""
 "O eroare a intervenit.\n"
 "\n"
-"Keymap-ul `%s' nu este suportat pe acest sistem. Vă rugăm alegeţi alt keymap.\n"
+"Keymap-ul `%s' nu este suportat pe acest sistem. Vă rugăm alegeţi alt "
+"keymap.\n"
 "\n"
 "Comanda a fost: %s"
 
@@ -922,13 +935,14 @@ msgid ""
 msgstr ""
 "O eroare a intervenit.\n"
 "\n"
-"Nu am putut reîncărca keymap-ul `%s', probabil din cauza comenzii `xmodmap' care nu a "
-"putut fi găsită în PATH.\n"
+"Nu am putut reîncărca keymap-ul `%s', probabil din cauza comenzii `xmodmap' "
+"care nu a putut fi găsită în PATH.\n"
 "\n"
 "Comanda a fost: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Accesorii"
 
@@ -964,83 +978,123 @@ msgstr ""
 "distribuită cu ABSOLUT NICI O GARANŢIE. Nu folosiţi GNOME Stock Ticker "
 "pentru a face decizii de investiţii; este pentru scopuri pur informaţionale."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1158
+#, fuzzy
+msgid "Current _Stocks"
+msgstr "Condiţii _curente"
+
+#: gtik/gtik.c:1166
 msgid "_New Symbol:"
 msgstr "Simbol _nou:"
 
-#: gtik/gtik.c:1158
+#: gtik/gtik.c:1174
 msgid "_Add"
 msgstr "_Adăugare"
 
-#: gtik/gtik.c:1169
-msgid "_Remove Selected"
-msgstr "_Elimină pe cel selectat"
+#: gtik/gtik.c:1179
+#, fuzzy
+msgid "_Remove"
+msgstr "Elimină"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1277
 msgid "Stock Ticker Preferences"
 msgstr "Proprietăţi Stock Ticker"
 
-#: gtik/gtik.c:1275
-msgid "Stock update Fre_quency in minutes:"
-msgstr "_Frecvenţa de actualizare în minute:"
-
-#: gtik/gtik.c:1294
-msgid "Scroll Speed :"
-msgstr "Viteza de defilare :"
-
-#: gtik/gtik.c:1314
-msgid "_Width :"
-msgstr "_Lăţime:"
-
-#: gtik/gtik.c:1326
-msgid "Displa_y only symbols and price"
-msgstr "Afi_şează numai simboluri şi preţuri"
-
-#: gtik/gtik.c:1329
-msgid "Scroll _left to right"
-msgstr "Defilează de la _stânga la dreapta"
-
-#: gtik/gtik.c:1332
-msgid "_Enable scroll buttons"
-msgstr "_Activează butoanele de defilare"
-
-#: gtik/gtik.c:1356
-msgid "+ C_olor:"
-msgstr "+ C_uloare:"
-
-#: gtik/gtik.c:1376
-msgid "- Colo_r:"
-msgstr "- Cu_loare:"
-
-#: gtik/gtik.c:1393
-msgid "_Unchanged Color:"
-msgstr "_Culoare neschimbată:"
-
-#: gtik/gtik.c:1410
-msgid "Back_ground Color:"
-msgstr "Culoare f_undal:"
-
-#: gtik/gtik.c:1432
-msgid "_Font:"
-msgstr "_Font:"
-
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1292
 msgid "Symbols"
 msgstr "Simboluri"
 
-#: gtik/gtik.c:1454
+#: gtik/gtik.c:1297
 msgid "Behavior"
 msgstr "Comportament"
 
-#: gtik/gtik.c:1541
+#: gtik/gtik.c:1300 gweather/gweather-pref.c:273
+#, fuzzy
+msgid "Update"
+msgstr "_Actualizează"
+
+#: gtik/gtik.c:1304
+msgid "Stock update Fre_quency in minutes:"
+msgstr "_Frecvenţa de actualizare în minute:"
+
+#: gtik/gtik.c:1314
+msgid "Scrolling"
+msgstr "Derulare"
+
+#: gtik/gtik.c:1318
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "Viteza de defilare :"
+
+#: gtik/gtik.c:1322
+#, fuzzy
+msgid "_Slow"
+msgstr "Arată"
+
+#: gtik/gtik.c:1324
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1326
+#, fuzzy
+msgid "_Fast"
+msgstr "_Previziune"
+
+#: gtik/gtik.c:1343
+msgid "_Enable scroll buttons"
+msgstr "_Activează butoanele de defilare"
+
+#: gtik/gtik.c:1352
+msgid "Scroll _left to right"
+msgstr "Defilează de la _stânga la dreapta"
+
+#: gtik/gtik.c:1370 stickynotes/stickynotes.glade.h:29
+#, fuzzy
+msgid "_Width:"
+msgstr "_Lăţime:"
+
+#: gtik/gtik.c:1383
+msgid "Displa_y only symbols and price"
+msgstr "Afi_şează numai simboluri şi preţuri"
+
+#: gtik/gtik.c:1392
+#, fuzzy
+msgid "_Font"
+msgstr "_Font:"
+
+#: gtik/gtik.c:1406 mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468 multiload/properties.c:365
+msgid "Colors"
+msgstr "Culori"
+
+#: gtik/gtik.c:1411
+#, fuzzy
+msgid "Stock _raised"
+msgstr "Schimbare _cotaţie:"
+
+#: gtik/gtik.c:1426
+#, fuzzy
+msgid "Stock _lowered"
+msgstr "Afişaj bursă"
+
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "Stock _unchanged"
+msgstr "Schimbare _cotaţie:"
+
+#: gtik/gtik.c:1456 modemlights/properties.c:441
+msgid "_Background"
+msgstr "_Fundal"
+
+#: gtik/gtik.c:1553
 msgid "Skip forward"
 msgstr "Sări înainte"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1554
 msgid "Skip backward"
 msgstr "Sări înapoi"
 
-#: gtik/gtik.c:1543
+#: gtik/gtik.c:1555
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1048,15 +1102,15 @@ msgstr ""
 "Stock Ticker\n"
 "Afişează încontinuu date bursiere"
 
-#: gtik/gtik.c:1731
+#: gtik/gtik.c:1745
 msgid "(No"
 msgstr "(Nu"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1746
 msgid "Change "
 msgstr "Schimbare"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Previziune"
 
@@ -1073,15 +1127,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitorizează condiţiile meteorologice curente, şi previziunile"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:64
 msgid "Weather Report"
 msgstr "Raport meteorologic"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:65
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 de S. Papadimitriou"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:66
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1091,1406 +1145,773 @@ msgstr ""
 "\n"
 "Un aplet pentru monitorizarea condiţiilor meteorologice locale."
 
-#: gweather/gweather-applet.c:198
-msgid "GNOME Weather"
-msgstr "Vremea GNOME"
+#: gweather/gweather-applet.c:43
+#, c-format
+msgid ""
+"%s\n"
+"Today: %s\n"
+"Current temperature %d"
+msgstr ""
 
-#: gweather/gweather-applet.c:323
+#: gweather/gweather-applet.c:65
+#, c-format
+msgid ""
+"%s\n"
+"%s: %s\n"
+"Low %d, High %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:293
 msgid "Updating..."
 msgstr "Actualizez..."
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:82
+msgid "Day"
+msgstr ""
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Precipitation"
+msgstr "Partial precipitation"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Condition"
+msgstr "Condiţii:"
+
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
 msgid "Forecast"
 msgstr "Previziune"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Locaţie:"
+#, fuzzy
+msgid "Current Conditions"
+msgstr "Condiţii _curente"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
+#: gweather/gweather-dialog.c:121
+msgid "City:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:128
+#, fuzzy
+msgid "Last update:"
 msgstr "Actualizează:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:135
 msgid "Conditions:"
 msgstr "Condiţii:"
 
-#: gweather/gweather-dialog.c:134
-msgid "Sky:"
-msgstr "Cer:"
-
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:146
 msgid "Temperature:"
 msgstr "Temperatură:"
 
-#: gweather/gweather-dialog.c:150
-msgid "Dew point:"
-msgstr "Punct dew:"
+#: gweather/gweather-dialog.c:153
+#, fuzzy
+msgid "Feels like:"
+msgstr "Spaţiu disc disponibil"
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:160
 msgid "Humidity:"
 msgstr "Umiditate:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:167
 msgid "Wind:"
 msgstr "Vânt:"
 
 #: gweather/gweather-dialog.c:174
+#, fuzzy
+msgid "Visibilty:"
+msgstr "Vizibilitate:"
+
+#: gweather/gweather-dialog.c:181
 msgid "Pressure:"
 msgstr "Presiune:"
 
-#: gweather/gweather-dialog.c:182
-msgid "Visibility:"
-msgstr "Vizibilitate:"
-
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "Condiţii _curente"
-
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
-msgstr "Raport previziune"
-
-#: gweather/gweather-dialog.c:294
-msgid "See the ForeCast Details"
-msgstr "Vezi detalii despre previziune"
-
-#: gweather/gweather-dialog.c:329
-msgid "_Visit Weather.com"
-msgstr "_Vizitaţi Weather.com"
-
-#: gweather/gweather-dialog.c:330
-msgid "URL link Button"
-msgstr "Buton legătură URL"
-
-#: gweather/gweather-dialog.c:330
-msgid "Click to Enter Weather.com"
-msgstr "Vizitaţi Weather.com"
-
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "Hartă _radar"
-
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+#: gweather/gweather-dialog.c:307
+#, c-format
+msgid "%s / %.1f %s"
 msgstr ""
-"Previziunea detaliată nu este disponibilă pentru această locaţie.\n"
-"Vă rog să incercaţi previziunea statala; notaţi că previziunile IWIN sunt "
-"disponibile numai pentru oraşele US."
-
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"Previziunea statala nu este disponibilă pentru această locaţie.\n"
-"Vă rog să încercaţi previziunea detaliată; notaţi că previziunile IWIN sunt "
-"disponibile numai pentru oraşele US."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:108
-msgid "Location view"
-msgstr "Vizualizare locaţie"
-
-#: gweather/gweather-pref.c:108
-msgid "Select Location from the list"
-msgstr "Selectaţi locaţia din listă"
-
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Update spin button"
 msgstr "Actualizarea roteşte buton"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Spinbutton for updating"
 msgstr "Butonul pulsează la actualizare"
 
-#: gweather/gweather-pref.c:111
-msgid "Address Entry"
-msgstr "Intrare adresă"
-
-#: gweather/gweather-pref.c:111
-msgid "Enter the URL"
-msgstr "Introduceţi URL"
-
-#: gweather/gweather-pref.c:561
+#: gweather/gweather-pref.c:237
 msgid "Weather Preferences"
 msgstr "Preferinţe vreme"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:285
 msgid "_Automatically update every"
 msgstr "Actualizează _automat la fiecare"
 
-#: gweather/gweather-pref.c:610
-msgid "Use _metric system units"
-msgstr "Foloseşte sistemul _metric de măsurare"
-
-#: gweather/gweather-pref.c:616
-msgid "Enable _detailed forecast"
-msgstr "Activează previziune _detaliată"
-
-#: gweather/gweather-pref.c:623
-msgid "Enable _radar map"
-msgstr "Activează harta _radar"
-
-#: gweather/gweather-pref.c:629
-msgid "Use cus_tom address for radar map"
-msgstr "Foloseşte adresă _personalizabilă pentru harta radar"
-
-#: gweather/gweather-pref.c:640
-msgid "A_ddress :"
-msgstr "A_dresă:"
-
-#: gweather/gweather-pref.c:652
-msgid "Updates"
-msgstr "Actualizări"
-
-#: gweather/gweather-pref.c:658
-msgid "_Automatically update every "
-msgstr "Actualizează _automat la fiecare "
-
-#: gweather/gweather-pref.c:678
+#: gweather/gweather-pref.c:312
 msgid "minute(s)"
 msgstr "minut(e)"
 
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:689
-msgid "Miscellaneous"
-msgstr "Diverse"
+#: gweather/gweather-pref.c:331
+msgid "Use _metric system units"
+msgstr "Foloseşte sistemul _metric de măsurare"
 
-#: gweather/gweather-pref.c:743
+#: gweather/gweather-pref.c:341
+msgid "Display daily average temperatures"
+msgstr ""
+
+#: gweather/gweather-pref.c:352
+msgid "Number of _forecast days to display:"
+msgstr ""
+
+#: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
 msgid "Location"
 msgstr "Locaţie"
 
-#: gweather/weather.c:57
+#: gweather/gweather-pref.c:387
+#, fuzzy
+msgid "Current city:"
+msgstr "Condiţii _curente"
+
+#: gweather/gweather-pref.c:399
+msgid "Available c_ountries:"
+msgstr ""
+
+#: gweather/gweather-pref.c:411
+msgid "Available c_ities:"
+msgstr ""
+
+#: gweather/location.c:184
+#, fuzzy
+msgid "Could not download countries"
+msgstr "Montează şi demontează dispozitive"
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+#, fuzzy
+msgid "Downloading Cities..."
+msgstr "Încarc titluri ştiri..."
+
+#: gweather/location.c:305
+#, fuzzy
+msgid "Country"
+msgstr "_Ţară:"
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
+
+#: gweather/weather.c:49
 msgid "knots"
 msgstr "noduri"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:49
 msgid "kph"
 msgstr "km/h"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "miles"
 msgstr "mile"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "kilometers"
 msgstr "kilometri"
 
-#: gweather/weather.c:132
-msgid "Variable"
-msgstr "Variabilă"
-
-#: gweather/weather.c:133
-msgid "North"
-msgstr "Nord"
-
-#: gweather/weather.c:133
-msgid "North - NorthEast"
-msgstr "Nord - Nord est"
-
-#: gweather/weather.c:133
-msgid "Northeast"
-msgstr "Nord est"
-
-#: gweather/weather.c:133
-msgid "East - NorthEast"
-msgstr "Est - Nord est"
-
-#: gweather/weather.c:134
-msgid "East"
-msgstr "Est"
-
-#: gweather/weather.c:134
-msgid "East - Southeast"
-msgstr "Est - Sud est"
-
-#: gweather/weather.c:134
-msgid "Southeast"
-msgstr "Sud est"
-
-#: gweather/weather.c:134
-msgid "South - Southeast"
-msgstr "Sid - Sud est"
-
-#: gweather/weather.c:135
-msgid "South"
-msgstr "Sud"
-
-#: gweather/weather.c:135
-msgid "South - Southwest"
-msgstr "Sud - Sud vest"
-
-#: gweather/weather.c:135
-msgid "Southwest"
-msgstr "Sud vest"
-
-#: gweather/weather.c:135
-msgid "West - Southwest"
-msgstr "Vest - Sud vest"
-
-#: gweather/weather.c:136
-msgid "West"
-msgstr "Vest"
-
-#: gweather/weather.c:136
-msgid "West - Northwest"
-msgstr "Vest - Nord vest"
-
-#: gweather/weather.c:136
-msgid "Northwest"
-msgstr "Nord vest"
-
-#: gweather/weather.c:136
-msgid "North - Northwest"
-msgstr "Nord - Nord vest"
-
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
-msgid "Invalid"
-msgstr "Invalid"
-
-#: gweather/weather.c:149
+#: gweather/weather.c:63
 msgid "Clear Sky"
 msgstr "Cer senin"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:64
 msgid "Broken clouds"
 msgstr "Nori sparţi"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:65
 msgid "Scattered clouds"
 msgstr "Nori împrăştiaţi"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:66
 msgid "Few clouds"
 msgstr "Puţini nori"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:67
 msgid "Overcast"
 msgstr "Noros"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-#. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Averse"
+#: gweather/weather.c:71
+#, fuzzy
+msgid "Windy"
+msgstr "Vânt:"
 
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Averse locale"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Averse uşoare"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Averse moderate"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Averse intensificate"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Averse superficiale"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Averse izolate"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Averse parţiale"
-
-#: gweather/weather.c:186 gweather/weather.c:187
-msgid "Thunderstorm"
+#: gweather/weather.c:72
+#, fuzzy
+msgid "Thunder Storms"
 msgstr "Furtună"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Averse de zăpadă"
-
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Ploi torenţiale"
-
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Averse în rafală"
-
-#: gweather/weather.c:186
-msgid "Freezing drizzle"
-msgstr "Averse cu lapoviţă"
-
-#. RAIN
-#: gweather/weather.c:187
-msgid "Rain"
-msgstr "Ploaie"
-
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Ploaie locală"
-
-#: gweather/weather.c:187
-msgid "Light rain"
-msgstr "Averse de ploaie"
-
-#: gweather/weather.c:187
-msgid "Moderate rain"
-msgstr "Ploaie moderată"
-
-#: gweather/weather.c:187
-msgid "Heavy rain"
-msgstr "Ploaie intensificată"
-
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Ploaie superficială"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Ploaie izolată"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Ploaie parţială"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Ploaie cu vânt puternic"
-
-#: gweather/weather.c:187
-msgid "Rain showers"
-msgstr "Ploaie torenţială"
-
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Ploaie în rafale"
-
-#: gweather/weather.c:187
-msgid "Freezing rain"
-msgstr "Lapoviţă"
-
-#. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:73
 msgid "Snow"
 msgstr "Ninsoare"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Ninsoare locală"
+#: gweather/weather.c:74
+msgid "Rain"
+msgstr "Ploaie"
 
-#: gweather/weather.c:188
-msgid "Light snow"
-msgstr "Ninsoare uşoară"
+#: gweather/weather.c:75
+#, fuzzy
+msgid "Heavy Rain"
+msgstr "Ploaie intensificată"
 
-#: gweather/weather.c:188
-msgid "Moderate snow"
-msgstr "Ninsoare moderată"
+#: gweather/weather.c:76
+msgid "Sleet"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Heavy snow"
-msgstr "Ninsoare intensificată"
+#: gweather/weather.c:77
+#, fuzzy
+msgid "Light Flurries"
+msgstr "Averse uşoare"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Ninsoare superficială"
+#: gweather/weather.c:78
+msgid "Flurries"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Ninsoare izolată"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Ninsoare parţială"
-
-#: gweather/weather.c:188 gweather/weather.c:189
-msgid "Snowstorm"
-msgstr "Furtună de zăpadă"
-
-#: gweather/weather.c:188
-msgid "Blowing snowfall"
-msgstr "Viscol"
-
-#: gweather/weather.c:188
-msgid "Snow showers"
-msgstr "Torente de zăpadă"
-
-#: gweather/weather.c:188
-msgid "Drifting snow"
-msgstr "Ninsoare în rafale"
-
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Lapoviţă şi ninsoare"
-
-#. SNOW_GRAINS
-#: gweather/weather.c:189
-msgid "Snow grains"
+#: gweather/weather.c:79
+#, fuzzy
+msgid "Snow and Wind"
 msgstr "Grindină"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Grindină locală"
-
-#: gweather/weather.c:189
-msgid "Light snow grains"
-msgstr "Grindină uşoară"
-
-#: gweather/weather.c:189
-msgid "Moderate snow grains"
-msgstr "Grindină moderată"
-
-#: gweather/weather.c:189
-msgid "Heavy snow grains"
-msgstr "Grindină intensificată"
-
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Grindină superficială"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Grindină izolată"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Grindină parţială"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Grindină viscolită"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Grindină şi ninsoare"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Grindină în rafale"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Freezing snow grains"
-
-#. ICE_CRYSTALS
-#: gweather/weather.c:190
-msgid "Ice crystals"
-msgstr "Ice crystals"
-
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Ice crystals in the vicinity"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Few ice crystals"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Moderate ice crystals"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Heavy ice crystals"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Patches of ice crystals"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Partial ice crystals"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Ice crystal storm"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Blowing ice crystals"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Showers of ice crystals"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Drifting ice crystals"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Freezing ice crystals"
-
-#. ICE_PELLETS
-#: gweather/weather.c:191
-msgid "Ice pellets"
-msgstr "Ice pellets"
-
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Ice pellets in the vicinity"
-
-#: gweather/weather.c:191
-msgid "Few ice pellets"
-msgstr "Few ice pellets"
-
-#: gweather/weather.c:191
-msgid "Moderate ice pellets"
-msgstr "Moderate ice pellets"
-
-#: gweather/weather.c:191
-msgid "Heavy ice pellets"
-msgstr "Heavy ice pellets"
-
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Shallow ice pellets"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Patches of ice pellets"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Partial ice pellets"
-
-#: gweather/weather.c:191
-msgid "Ice pellet storm"
-msgstr "Ice pellet storm"
-
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Blowing ice pellets"
-
-#: gweather/weather.c:191
-msgid "Showers of ice pellets"
-msgstr "Showers of ice pellets"
-
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Drifting ice pellets"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Freezing ice pellets"
-
-#. HAIL
-#: gweather/weather.c:192
-msgid "Hail"
-msgstr "Hail"
-
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Hail in the vicinity"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Light hail"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Moderate hail"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Heavy hail"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Shallow hail"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Patches of hail"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Partial hail"
-
-#: gweather/weather.c:192
-msgid "Hailstorm"
-msgstr "Hailstorm"
-
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Blowing hail"
-
-#: gweather/weather.c:192
-msgid "Hail showers"
-msgstr "Hail showers"
-
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Drifting hail"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Freezing hail"
-
-#. SMALL_HAIL
-#: gweather/weather.c:193
-msgid "Small hail"
-msgstr "Small hail"
-
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Small hail in the vicinity"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Moderate small hail"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Heavy small hail"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Shallow small hail"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Patches of small hail"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Partial small hail"
-
-#: gweather/weather.c:193
-msgid "Small hailstorm"
-msgstr "Small hailstorm"
-
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Blowing small hail"
-
-#: gweather/weather.c:193
-msgid "Showers of small hail"
-msgstr "Showers of small hail"
-
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Drifting small hail"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Freezing small hail"
-
-#. PRECIPITATION
-#: gweather/weather.c:194
-msgid "Unknown precipitation"
-msgstr "Unknown precipitation"
-
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Precipitation in the vicinity"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Light precipitation"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Moderate precipitation"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Heavy precipitation"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Shallow precipitation"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Patches of precipitation"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Partial precipitation"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Unknown thunderstorm"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Blowing precipitation"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Showers, type unknown"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Drifting precipitation"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Freezing precipitation"
-
-#. MIST
-#: gweather/weather.c:195
-msgid "Mist"
-msgstr "Mist"
-
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Mist in the vicinity"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Light mist"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Ceaţă moderată"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Thick mist"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Shallow mist"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Patches of mist"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Partial mist"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Mist with wind"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Drifting mist"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Freezing mist"
-
-#. FOG
-#: gweather/weather.c:196
-msgid "Fog"
-msgstr "Ceaţă"
-
-#: gweather/weather.c:196
-msgid "Fog in the vicinity"
-msgstr "Fog in the vicinity"
-
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Light fog"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Moderate fog"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Thick fog"
-
-#: gweather/weather.c:196
-msgid "Shallow fog"
-msgstr "Shallow fog"
-
-#: gweather/weather.c:196
-msgid "Patches of fog"
-msgstr "Patches of fog"
-
-#: gweather/weather.c:196
-msgid "Partial fog"
-msgstr "Partial fog"
-
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Fog with wind"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Drifting fog"
-
-#: gweather/weather.c:196
-msgid "Freezing fog"
-msgstr "Freezing fog"
-
-#. SMOKE
-#: gweather/weather.c:197
-msgid "Smoke"
-msgstr "Smoke"
-
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Smoke in the vicinity"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Thin smoke"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Moderate smoke"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Thick smoke"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Shallow smoke"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Patches of smoke"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Partial smoke"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Smoke w/ thunders"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Smoke with wind"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Drifting smoke"
-
-#. VOLCANIC_ASH
-#: gweather/weather.c:198
-msgid "Volcanic ash"
-msgstr "Volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Volcanic ash in the vicinity"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Moderate volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Thick volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Shallow volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Patches of volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Partial volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Volcanic ash w/ thunders"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Blowing volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Showers of volcanic ash "
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Drifting volcanic ash"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Freezing volcanic ash"
-
-#. SAND
-#: gweather/weather.c:199
-msgid "Sand"
-msgstr "Sand"
-
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Sand in the vicinity"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Light sand"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Moderate sand"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Heavy sand"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Patches of sand"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Partial sand"
-
-#: gweather/weather.c:199
-msgid "Blowing sand"
-msgstr "Blowing sand"
-
-#: gweather/weather.c:199
-msgid "Drifting sand"
-msgstr "Drifting sand"
-
-#. HAZE
-#: gweather/weather.c:200
-msgid "Haze"
-msgstr "Haze"
-
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Haze in the vicinity"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Light haze"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Moderate haze"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Thick haze"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Shallow haze"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Patches of haze"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Partial haze"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Haze with wind"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Drifting haze"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Freezing haze"
-
-#. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Sprays"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Sprays in the vicinity"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Light sprays"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Moderate sprays"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Heavy sprays"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Shallow sprays"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Patches of sprays"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Partial sprays"
-
-#: gweather/weather.c:201
-msgid "Blowing sprays"
-msgstr "Blowing sprays"
-
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Drifting sprays"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Freezing sprays"
-
-#. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:80
 msgid "Dust"
 msgstr "Dust"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Dust in the vicinity"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Light dust"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Moderate dust"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Heavy dust"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Patches of dust"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Partial dust"
-
-#: gweather/weather.c:202
-msgid "Blowing dust"
-msgstr "Blowing dust"
-
-#: gweather/weather.c:202
-msgid "Drifting dust"
-msgstr "Drifting dust"
-
-#. SQUALL
-#: gweather/weather.c:203
-msgid "Squall"
-msgstr "Squall"
-
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Squall in the vicinity"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Light squall"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Moderate squall"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Heavy squall"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Partial squall"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Thunderous squall"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Blowing squall"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Drifting squall"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Freezing squall"
-
-#. SANDSTORM
-#: gweather/weather.c:204
-msgid "Sandstorm"
-msgstr "Sandstorm"
-
-#: gweather/weather.c:204
-msgid "Sandstorm in the vicinity"
-msgstr "Sandstorm in the vicinity"
-
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Light standstorm"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Moderate sandstorm"
-
-#: gweather/weather.c:204
-msgid "Heavy sandstorm"
-msgstr "Heavy sandstorm"
-
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Shallow sandstorm"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Partial sandstorm"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Thunderous sandstorm"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Blowing sandstorm"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Drifting sandstorm"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Freezing sandstorm"
-
-#. DUSTSTORM
-#: gweather/weather.c:205
-msgid "Duststorm"
-msgstr "Duststorm"
-
-#: gweather/weather.c:205
-msgid "Duststorm in the vicinity"
-msgstr "Duststorm in the vicinity"
-
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Light duststorm"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Moderate duststorm"
-
-#: gweather/weather.c:205
-msgid "Heavy duststorm"
-msgstr "Heavy duststorm"
-
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Shallow duststorm"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Partial duststorm"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Thunderous duststorm"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Blowing duststorm"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Drifting duststorm"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Freezing duststorm"
-
-#. FUNNEL_CLOUD
-#: gweather/weather.c:206
-msgid "Funnel cloud"
-msgstr "Funnel cloud"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Funnel cloud in the vicinity"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Light funnel cloud"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Moderate funnel cloud"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Thick funnel cloud"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Shallow funnel cloud"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Patches of funnel clouds"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Partial funnel clouds"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Funnel cloud w/ wind"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Drifting funnel cloud"
-
-#. TORNADO
-#: gweather/weather.c:207
-msgid "Tornado"
-msgstr "Tornado"
-
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornado in the vicinity"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Moderate tornado"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Raging tornado"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Partial tornado"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Thunderous tornado"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Drifting tornado"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Freezing tornado"
-
-#. DUST_WHIRLS
-#: gweather/weather.c:208
-msgid "Dust whirls"
-msgstr "Dust whirls"
-
-#: gweather/weather.c:208
-msgid "Dust whirls in the vicinity"
-msgstr "Dust whirls in the vicinity"
-
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Light dust whirls"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Moderate dust whirls"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Heavy dust whirls"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Shallow dust whirls"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Patches of dust whirls"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Partial dust whirls"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Blowing dust whirls"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Drifting dust whirls"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
-msgid "Failed to get METAR data.\n"
-msgstr "Nu am putut obşine datele METAR.\n"
-
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
-msgid "WeatherInfo missing location"
-msgstr "Lipseşte locaţia pentru WeatherInfo."
-
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Nu am putut obţine datele de prognoză IWIN.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Nu am putut obţine datele de prognoză IWIN.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Nu am putut obţine datele de prognoză Met Office.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Nu am putut obţine datele de prognoză Met Office.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Nu am putut obţine harta imaginii radar.\n"
-
-#: gweather/weather.c:1771
-msgid "%a, %b %d / %H:%M"
-msgstr "%a, %b %d / %H:%M"
-
-#: gweather/weather.c:1775
-msgid "Unknown observation time"
-msgstr "Timp de observare necunoscut"
-
-#: gweather/weather.c:1835
+#: gweather/weather.c:81
+msgid "Fog"
+msgstr "Ceaţă"
+
+#: gweather/weather.c:82
+msgid "Haze"
+msgstr "Haze"
+
+#: gweather/weather.c:83
+msgid "Smoke"
+msgstr "Smoke"
+
+#: gweather/weather.c:84
+msgid "Cold"
+msgstr ""
+
+#: gweather/weather.c:85
+msgid "Cloudy"
+msgstr ""
+
+#: gweather/weather.c:86
+msgid "Mostly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:87
+msgid "Partly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:88
+#, fuzzy
+msgid "Sunny"
+msgstr "Sun"
+
+#: gweather/weather.c:89
+msgid "Mostly Sunny"
+msgstr ""
+
+#: gweather/weather.c:90
+msgid "Hot"
+msgstr ""
+
+#: gweather/weather.c:91
+#, fuzzy
+msgid "Nothing"
+msgstr "Nord"
+
+#: gweather/weather.c:95
+msgid "Variable"
+msgstr "Variabilă"
+
+#: gweather/weather.c:96
+msgid "North"
+msgstr "Nord"
+
+#: gweather/weather.c:96
+msgid "North - NorthEast"
+msgstr "Nord - Nord est"
+
+#: gweather/weather.c:96
+msgid "Northeast"
+msgstr "Nord est"
+
+#: gweather/weather.c:96
+msgid "East - NorthEast"
+msgstr "Est - Nord est"
+
+#: gweather/weather.c:97
+msgid "East"
+msgstr "Est"
+
+#: gweather/weather.c:97
+msgid "East - Southeast"
+msgstr "Est - Sud est"
+
+#: gweather/weather.c:97
+msgid "Southeast"
+msgstr "Sud est"
+
+#: gweather/weather.c:97
+msgid "South - Southeast"
+msgstr "Sid - Sud est"
+
+#: gweather/weather.c:98
+msgid "South"
+msgstr "Sud"
+
+#: gweather/weather.c:98
+msgid "South - Southwest"
+msgstr "Sud - Sud vest"
+
+#: gweather/weather.c:98
+msgid "Southwest"
+msgstr "Sud vest"
+
+#: gweather/weather.c:98
+msgid "West - Southwest"
+msgstr "Vest - Sud vest"
+
+#: gweather/weather.c:99
+msgid "West"
+msgstr "Vest"
+
+#: gweather/weather.c:99
+msgid "West - Northwest"
+msgstr "Vest - Nord vest"
+
+#: gweather/weather.c:99
+msgid "Northwest"
+msgstr "Nord vest"
+
+#: gweather/weather.c:99
+msgid "North - Northwest"
+msgstr "Nord - Nord vest"
+
+#: gweather/weather.c:100
 msgid "Calm"
 msgstr "Calm"
 
-#: gweather/weather.c:1861
-msgid "Unknown"
-msgstr "Necunoscută"
+#: gweather/weather.c:528 gweather/weather.c:553
+msgid "Could not download forecast"
+msgstr ""
 
-#: gweather/weather.c:1895
-msgid "Retrieval failed"
-msgstr "Recepţionare eşuată"
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "Factory pentru crearea apletului meteorologic."
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:328 mailcheck/mailcheck.c:1812
+msgid "Inbox Monitor"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+msgid "_Check for mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:204
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "A intervenit o eroare la executarea '%s' : %s"
+
+#: mailcheck/mailcheck.c:334
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:342
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:347 mailcheck/mailcheck.c:1425
+#, fuzzy
+msgid "Password Entry box"
+msgstr "Parola:"
+
+#: mailcheck/mailcheck.c:401
+msgid "The Network May be down"
+msgstr ""
+
+#: mailcheck/mailcheck.c:404 mailcheck/mailcheck.c:407
+msgid "The User id or Password is not  correct"
+msgstr ""
+
+#: mailcheck/mailcheck.c:410
+msgid "The Server name may be wrong"
+msgstr ""
+
+#: mailcheck/mailcheck.c:414
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:423
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:604
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:606
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:610
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:612
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:616
+#, fuzzy
+msgid "No mail."
+msgstr "Normal"
+
+#: mailcheck/mailcheck.c:1136 mailcheck/mailcheck.c:1137
+#: mailcheck/mailcheck.c:2003 mailcheck/mailcheck.c:2004
+msgid "Status not updated"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1309
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1317
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1325
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1333
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1341
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1361
+#, fuzzy
+msgid "Mail _spool file:"
+msgstr "Fişier mail:"
+
+#: mailcheck/mailcheck.c:1365
+#, fuzzy
+msgid "Browse"
+msgstr "Navigator"
+
+#: mailcheck/mailcheck.c:1380
+#, fuzzy
+msgid "Mail s_erver:"
+msgstr "Fişier mail:"
+
+#: mailcheck/mailcheck.c:1386
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1400
+#, fuzzy
+msgid "_Username:"
+msgstr "Nume utilizator:"
+
+#: mailcheck/mailcheck.c:1408
+#, fuzzy
+msgid "Username Entry box"
+msgstr "Foloseşte proxy"
+
+#: mailcheck/mailcheck.c:1417
+#, fuzzy
+msgid "_Password:"
+msgstr "Parola:"
+
+#: mailcheck/mailcheck.c:1438
+msgid "_Folder:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1446
+#, fuzzy
+msgid "Folder Entry box"
+msgstr "Foloseşte proxy"
+
+#: mailcheck/mailcheck.c:1458
+msgid "C_ommand to run before checking for mail:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1466
+#, fuzzy
+msgid "Command Entry box"
+msgstr "Istoria comenzilor"
+
+#: mailcheck/mailcheck.c:1491
+#, fuzzy
+msgid "Execute"
+msgstr "Ejectează"
+
+#: mailcheck/mailcheck.c:1502
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1517
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1527
+#, fuzzy
+msgid "When new mail _arrives:"
+msgstr "Când este primit mail nou rulează:"
+
+#: mailcheck/mailcheck.c:1540 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1550
+#, fuzzy
+msgid "When clicke_d:"
+msgstr "Când este clickat, rulează:"
+
+#: mailcheck/mailcheck.c:1563
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1573
+msgid "Set the number of unread mails to _zero"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1584
+#, fuzzy
+msgid "Check for mail _every"
+msgstr "Verifica la fiecare:"
+
+#: mailcheck/mailcheck.c:1596 mailcheck/mailcheck.c:1600
+#, fuzzy
+msgid "minutes"
+msgstr "minut(e)"
+
+#: mailcheck/mailcheck.c:1596
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1610 mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "seconds"
+msgstr "milisecunde"
+
+#: mailcheck/mailcheck.c:1610
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1622
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1633
+#, fuzzy
+msgid "Select a_nimation"
+msgstr "Selectează font"
+
+#: mailcheck/mailcheck.c:1669 mailcheck/mailcheck.c:1877
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "A intervenit o eroare la executarea '%s' : %s"
+
+#: mailcheck/mailcheck.c:1710
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "Preferinţe monitorizare sistem"
+
+#: mailcheck/mailcheck.c:1730
+msgid "_Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1734
+#, fuzzy
+msgid "Mail_box"
+msgstr "Mail"
+
+#: mailcheck/mailcheck.c:1814
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1979
+#, fuzzy
+msgid "Text only"
+msgstr "Text de afişat:"
+
+#: mailcheck/mailcheck.c:2005
+#, fuzzy
+msgid "Mail check"
+msgstr "Ceas şi verificare mesaje"
+
+#: mailcheck/mailcheck.c:2006
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+#, fuzzy
+msgid "Path to the animation file"
+msgstr "Calea pentru coadă:"
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+#, fuzzy
+msgid "Mailcheck"
+msgstr "Ceas şi verificare mesaje"
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+#, fuzzy
+msgid "New Mail"
+msgstr "Mail"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Comandă"
 
@@ -2523,15 +1944,15 @@ msgstr ""
 "any later version."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Începe program"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Linie de comandă"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Scrieţi o comandă aici şi Gnome o va executa pentru dumneavoastră"
 
@@ -2584,11 +2005,6 @@ msgstr "_Lăţime aplet:"
 msgid "Autocompletion"
 msgstr "Autocompletare"
 
-#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
-#: multiload/properties.c:365
-msgid "Colors"
-msgstr "Culori"
-
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Command Line Preferences"
 msgstr "Preferinţe Mini-Commander"
@@ -2606,7 +2022,8 @@ msgid "Command:"
 msgstr "Comandă:"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history based autocompletion"
+#, fuzzy
+msgid "E_nable history-based autocompletion"
 msgstr "Activează autocompletarea bazată pe _istoric"
 
 #: mini-commander/src/mini-commander.glade.h:13
@@ -2618,6 +2035,7 @@ msgid "Pattern:"
 msgstr "Model:"
 
 #: mini-commander/src/mini-commander.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Pick a color"
 msgstr "Alegeţi o culoare"
 
@@ -2663,11 +2081,11 @@ msgstr "Istoric"
 msgid "Click this button for the list of previous commands"
 msgstr "Apăsaţi acest buton pentru o listă a comenzilor anterioare"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Aplet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Acest aplet adaugă o linie de comandă panelului"
 
@@ -2691,8 +2109,8 @@ msgstr "Nu puteţi specifica modele duplicat"
 msgid "Adjust the sound volume"
 msgstr "Ajustează volumul sunetului"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
+#: mixer/mixer.c:938
 msgid "Volume Control"
 msgstr "Control volum"
 
@@ -2700,15 +2118,124 @@ msgstr "Control volum"
 msgid "_Mute"
 msgstr "_Mut"
 
-#: mixer/GNOME_MixerApplet.xml.h:4
+#: mixer/GNOME_MixerApplet.xml.h:5
 msgid "_Run Volume Control..."
 msgstr "_Rulează Control volum..."
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:110
+#, fuzzy
+msgid "Main Volume"
+msgstr "Volum principal si mut"
+
+#: mixer/mixer.c:110
+#, fuzzy
+msgid "Bass"
+msgstr "Basic"
+
+#: mixer/mixer.c:110
+#, fuzzy
+msgid "Treble"
+msgstr "activat"
+
+#: mixer/mixer.c:110
+msgid "Synth"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Speaker"
+msgstr ""
+
+#: mixer/mixer.c:111
+#, fuzzy
+msgid "Line"
+msgstr "Linie (linii):"
+
+#: mixer/mixer.c:112
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "CD"
+msgstr "D"
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "Mix"
+msgstr "Mixer"
+
+#: mixer/mixer.c:112
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Video"
+msgstr "Ascunde"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Radio"
+msgstr "Ploaie"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Monitor"
+msgstr "Monitor sistem"
+
+#: mixer/mixer.c:166
 msgid "Volume Control (muted)"
 msgstr "Control volum (mut)"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:248
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2716,47 +2243,39 @@ msgstr ""
 "atenţie: această versiune gmix a fost compilată cu o versiune diferită a\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:207
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "Interogarea canalelor disponibile ale dispozitivului mixer %s a eşuat\n"
-
-#: mixer/mixer.c:214
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "avertisment: mixerul nu are un canal de volum - folosesc PCM în loc.\n"
-
-#: mixer/mixer.c:217
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "Dispozitivul mixer %s nu are canale nici de volum nici PCM.\n"
-
-#: mixer/mixer.c:575
+#: mixer/mixer.c:683
 msgid "Volume Controller"
 msgstr "Control volum"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:684
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Foloseşte săgeţile sus/jos pentru a schimba volumul"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:939
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:940
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Controlul volumului vă permite setarea nivelului volumului pentru desktop-ul "
 "dumneavoastră."
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1039
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "Control volum"
+
+#: mixer/mixer.c:1059
+#, fuzzy
+msgid "Channels"
+msgstr "Schimbare"
+
+#: mixer/mixer.c:1345
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Controlul volumului vă permite setarea nivelului volumului pentru desktop-ul "
 "dumneavoastră."
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:227
@@ -2831,10 +2350,6 @@ msgstr "Recepţionare date"
 #: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "_Prim plan"
-
-#: modemlights/properties.c:441
-msgid "_Background"
-msgstr "_Fundal"
 
 #: modemlights/properties.c:443
 msgid "Send data"
@@ -2935,11 +2450,12 @@ msgid "Load Average"
 msgstr "Încărcare medie"
 
 #: multiload/main.c:80
+#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"space use, plus network traffic."
 msgstr ""
 "Publicat sub licenţa publică generală GNU.\n"
 "Un monitor al sistemului capabil de a afişa grafice despre CPU, ram, swap "
@@ -2958,7 +2474,8 @@ msgid "Network"
 msgstr "Reţea"
 
 #: multiload/main.c:242 multiload/properties.c:391
-msgid "Swap File"
+#, fuzzy
+msgid "Swap Space"
 msgstr "Swap"
 
 #: multiload/main.c:244
@@ -2999,7 +2516,8 @@ msgid "_Network"
 msgstr "_Reţea"
 
 #: multiload/properties.c:296
-msgid "_Swap File"
+#, fuzzy
+msgid "_Swap Space"
 msgstr "_Swap"
 
 #: multiload/properties.c:326
@@ -3086,212 +2604,306 @@ msgstr "Preferinţe monitorizare sistem"
 msgid "Swap Load"
 msgstr "Încărcare swap"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "Factory pentru aplet meniu panel"
+#: stickynotes/stickynotes.c:31 stickynotes/stickynotes.glade.h:27
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:6
+#, fuzzy
+msgid "_New Note"
+msgstr "Ridică nota"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "Factory aplet meniu panel"
+#: stickynotes/stickynotes.c:32
+#, fuzzy
+msgid "_Delete Note"
+msgstr "Şterge nota"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "Aplet pentru afişarea meniurilor"
+#: stickynotes/stickynotes.c:34
+#, fuzzy
+msgid "_Edit Title"
+msgstr "Titlul meu"
 
-#: panel-menu/panel-menu-actions.c:99
-msgid "Actions"
-msgstr "Acţiuni"
+#. FIXME : Hack because libglade does not properly set these
+#: stickynotes/stickynotes_applet.c:69 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
+#: stickynotes/stickynotes_applet_callbacks.c:249
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
+#, fuzzy
+msgid "Sticky Notes"
+msgstr "Ascunde notele"
 
-#: panel-menu/panel-menu-actions.c:100
-msgid "Actions Menu"
-msgstr "Meniu Acţiuni"
-
-#: panel-menu/panel-menu-add.c:77
-msgid "Add items to the Menu Bar"
-msgstr "Adaugă elemente la bara de meniu"
-
-#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:405
-msgid "Shortcuts"
-msgstr "Scurtături"
-
-#: panel-menu/panel-menu-add.c:250
-msgid "My Documents"
-msgstr "Documentele mele"
-
-#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "Documente"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "Aplicaţii"
-
-#: panel-menu/panel-menu-common.c:738
+#: stickynotes/stickynotes_applet.c:146
+#, c-format
 msgid ""
-"Removing this entry is not allowed as this will cause the Menu Bar applet to "
-"be removed from GNOME Panel"
+"%s\n"
+"%d locked note"
+msgid_plural ""
+"%s\n"
+"%d locked notes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: stickynotes/stickynotes_applet.c:148
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"%d note"
+msgid_plural ""
+"%s\n"
+"%d notes"
+msgstr[0] ""
+"%s:\n"
+"%d%% folosit"
+msgstr[1] ""
+"%s:\n"
+"%d%% folosit"
+
+#: stickynotes/stickynotes.glade.h:1
+msgid "<b>Default click behavior</b>"
 msgstr ""
-"Nu este permisă ştergerea acestei intrări deoarce acest lucru va duce la "
-"ştergerea apletului bara de meniu din panelul GNOME"
 
-#: panel-menu/panel-menu-directory.c:516
-msgid "Create directory item..."
-msgstr "Creere element director..."
+#: stickynotes/stickynotes.glade.h:2
+msgid "<b>Default dimensions</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:524
-msgid "Home"
-msgstr "Acasă"
+#: stickynotes/stickynotes.glade.h:3
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:595
-msgid "Edit directory item..."
-msgstr "Editare element director..."
+#: stickynotes/stickynotes.glade.h:6
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
-msgid "_Path:"
-msgstr "_Cale:"
+#: stickynotes/stickynotes.glade.h:9
+#, fuzzy
+msgid "<b>Other settings</b>"
+msgstr "Setări odometru"
 
-#: panel-menu/panel-menu-directory.c:694
-msgid "..."
-msgstr "..."
+#: stickynotes/stickynotes.glade.h:10
+msgid "<b>Style</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:704
-msgid "_Depth level:"
-msgstr "_Nivel adâncime:"
+#: stickynotes/stickynotes.glade.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:801
-msgid "Path specified is currently not a valid directory."
-msgstr "Calea specificată nu este un director valid."
+#: stickynotes/stickynotes.glade.h:12
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "Creere elemente documente..."
+#: stickynotes/stickynotes.glade.h:13
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:434
-msgid "Rename documents item..."
-msgstr "Redenumeşte elementele documente..."
+#: stickynotes/stickynotes.glade.h:14
+msgid "Double-click or Right-click for more options"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
-msgid "KDE Menus"
-msgstr "Meniuri KDE"
-
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
-#: panel-menu/panel-menu-path.c:559
-msgid "Programs"
-msgstr "Programe"
-
-#: panel-menu/panel-menu-links.c:403
-msgid "Create links item..."
-msgstr "Creere elemente legătură..."
-
-#: panel-menu/panel-menu-links.c:439
-msgid "Rename links item..."
-msgstr "Redenumire elemente legătură"
-
-#: panel-menu/panel-menu-path.c:230
-msgid "KDE"
-msgstr "KDE"
-
-#: panel-menu/panel-menu-path.c:658
-msgid "Create menu path item..."
-msgstr "Creere element cale meniu..."
-
-#: panel-menu/panel-menu-path.c:701
-msgid "Edit path item..."
+#: stickynotes/stickynotes.glade.h:15
+#, fuzzy
+msgid "Edit title"
 msgstr "Editare element cale..."
 
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "Preferinţe"
+#: stickynotes/stickynotes.glade.h:17
+msgid "Specify the default height (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:72
-msgid "Menu Bar Preferences"
-msgstr "Preferinţe bară de meniu"
+#: stickynotes/stickynotes.glade.h:18
+msgid "Specify the default width (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:78
-msgid "Layout"
-msgstr "Layout"
+#: stickynotes/stickynotes.glade.h:19
+msgid "Sticky Note"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:93
-msgid "_Applications Menu"
-msgstr "Meniu _Aplicaţii"
+#: stickynotes/stickynotes.glade.h:20
+#, fuzzy
+msgid "Sticky Notes Preferences"
+msgstr "Preferinţe Montare Dispozitive"
 
-#: panel-menu/panel-menu-properties.c:117
-msgid "Select an icon for the Applications menu"
-msgstr "Selectaţi iconul pentru meniul Aplicaţii"
+#: stickynotes/stickynotes.glade.h:21
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:134
-msgid "_Preferences Menu"
-msgstr "Meniu _Preferinţe"
+#: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "_Color:"
+msgstr "Culori"
 
-#: panel-menu/panel-menu-properties.c:145
-msgid "Ac_tions Menu"
-msgstr "Meniu Ac_ţiuni"
+#: stickynotes/stickynotes.glade.h:23
+#, fuzzy
+msgid "_Delete ALL"
+msgstr "_Şterge"
 
-#: panel-menu/panel-menu-properties.c:156
-msgid "_Windows Menu"
-msgstr "Meniu _Ferestre"
+#: stickynotes/stickynotes.glade.h:24
+#, fuzzy
+msgid "_Height:"
+msgstr "Înălţime"
 
-#: panel-menu/panel-menu-properties.c:167
-msgid "W_orkspaces Menu"
-msgstr "Meniu _Spaţii de lucru"
+#: stickynotes/stickynotes.glade.h:25
+#, fuzzy
+msgid "_Hide/_Show All Notes"
+msgstr "Ascunde notele"
 
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "Ferestre"
+#: stickynotes/stickynotes.glade.h:26
+msgid "_Lock/_Unlock All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
+#: stickynotes/stickynotes.glade.h:28
+msgid "_Sticky across workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:2
+#, fuzzy
+msgid "Background color of body"
+msgstr "Culoare f_undal:"
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid ""
+"Background color of the body of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid ""
+"Background color of the body of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid ""
+"Background color of the title of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Background color of the title of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:7
+#, fuzzy
+msgid "Background color of title"
+msgstr "Culoare f_undal:"
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid "Background prelighted color of body"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Background prelighted color of title"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:10
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used. Anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Date format"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
+"\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:13
+#, fuzzy
+msgid "Default height for new notes"
+msgstr "Înălţime standard"
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid "Default height for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid "Default left-click behavior of the applet"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:16
+#, fuzzy
+msgid "Default width for new notes"
+msgstr "Lista implicită de caractere"
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid "Default width for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:18
+msgid ""
+"Every time the specified number of minutes pass. The Sticky Notes are "
+"automatically saved."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:19
+msgid "Specifies whether the sticky notes are locked (uneditable) or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:20
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:21
+msgid "Sticky notes locked state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:22
+#, fuzzy
+msgid "Workspace stickyness"
 msgstr "Spaţii de lucru"
 
-#: panel-menu/panel-menu.c:693
-msgid "Menu Bar"
-msgstr "Bara de meniu"
-
-#: panel-menu/panel-menu.c:694
-msgid "(c) 2001 Chris Phelps"
-msgstr "(c) 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:695
-msgid "The Menu Bar allows you to display customized menubars on your panels."
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
-"Bara de meniu vă permite afişarea bărilor de meniu personalizate în "
-"panelurile dumneavoastră."
 
-#: screen-exec/egg-screen-help.c:174
-msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr "Nu pot găsi domeniul GNOME_FILE_DOMAIN_APP_HELP"
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#, fuzzy
+msgid "Sticky Notes Applet Factory"
+msgstr "Factory aplet Gtik"
 
-#: screen-exec/egg-screen-help.c:187
-msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr "Nu pot găsi domeniul GNOME_FILE_DOMAIN_HELP."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:2
+#, fuzzy
+msgid "_Delete All Notes"
+msgstr "Şterge nota"
 
-#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
-#, c-format
-msgid ""
-"Unable to show help as %s is not a directory.  Please check your "
-"installation."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:4
+#, fuzzy
+msgid "_Hide All Notes"
+msgstr "Ascunde notele"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:5
+#, fuzzy
+msgid "_Lock All Notes"
+msgstr "Coboară notele"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:8
+#, fuzzy
+msgid "_Show All Notes"
+msgstr "Arată notele"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:9
+msgid "_Unlock All Notes"
 msgstr ""
-"Nu pot afişa ajutorul deoarece %s nu este un dosar. Vă rugăm verificaţi "
-"instalarea."
-
-#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
-#, c-format
-msgid ""
-"Unable to find the help files in either %s or %s.  Please check your "
-"installation"
-msgstr "Nu pot găsi fişierele de ajutor în %s sau în %s. Vă rugăm verificaţi instalarea"
-
-#: screen-exec/egg-screen-help.c:315
-#, c-format
-msgid "Unable to find doc_id %s in the help path"
-msgstr "Nu am putut găsi doc_id %s în calea de ajutor"
-
-#: screen-exec/egg-screen-help.c:336
-#, c-format
-msgid "Help document %s/%s not found"
-msgstr "Documentul de ajutor %s/%s nu a fost găsit"
 
 #: wireless/wireless-applet.c:343
 msgid ""
@@ -3301,11 +2913,11 @@ msgstr ""
 "Imaginile necesare pentru a rula monitorul wireless lipsesc.\n"
 "Vă rugăm verificaţi corectitudinea instalării."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Nici un dispozitiv wireless"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3313,16 +2925,16 @@ msgstr ""
 "Nu pare a fi nici un dispozitiv wireless configurat pe acest sistem.\n"
 "Vă rugăm verificaţi configurarea dacă acest lucru vi se pare incorect."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Monitor legătură wireless"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Fundaţia pentru Software Liber"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Acest utilitar vă arată starea unei legături wireless."
 
@@ -3346,6 +2958,1037 @@ msgstr "Preferinţe Monitor legătură wireless"
 msgid "Monitor the quality of a wireless network link"
 msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
+#~ msgid "_Remove Selected"
+#~ msgstr "_Elimină pe cel selectat"
+
+#~ msgid "+ C_olor:"
+#~ msgstr "+ C_uloare:"
+
+#~ msgid "- Colo_r:"
+#~ msgstr "- Cu_loare:"
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "_Culoare neschimbată:"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "Vremea GNOME"
+
+#~ msgid "Location:"
+#~ msgstr "Locaţie:"
+
+#~ msgid "Sky:"
+#~ msgstr "Cer:"
+
+#~ msgid "Dew point:"
+#~ msgstr "Punct dew:"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Raport previziune"
+
+#~ msgid "See the ForeCast Details"
+#~ msgstr "Vezi detalii despre previziune"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "_Vizitaţi Weather.com"
+
+#~ msgid "URL link Button"
+#~ msgstr "Buton legătură URL"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Vizitaţi Weather.com"
+
+#~ msgid "_Radar map"
+#~ msgstr "Hartă _radar"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Previziunea detaliată nu este disponibilă pentru această locaţie.\n"
+#~ "Vă rog să incercaţi previziunea statala; notaţi că previziunile IWIN sunt "
+#~ "disponibile numai pentru oraşele US."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Previziunea statala nu este disponibilă pentru această locaţie.\n"
+#~ "Vă rog să încercaţi previziunea detaliată; notaţi că previziunile IWIN "
+#~ "sunt disponibile numai pentru oraşele US."
+
+#~ msgid "Location view"
+#~ msgstr "Vizualizare locaţie"
+
+#~ msgid "Select Location from the list"
+#~ msgstr "Selectaţi locaţia din listă"
+
+#~ msgid "Address Entry"
+#~ msgstr "Intrare adresă"
+
+#~ msgid "Enter the URL"
+#~ msgstr "Introduceţi URL"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Activează previziune _detaliată"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Activează harta _radar"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "Foloseşte adresă _personalizabilă pentru harta radar"
+
+#~ msgid "A_ddress :"
+#~ msgstr "A_dresă:"
+
+#~ msgid "Updates"
+#~ msgstr "Actualizări"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "Actualizează _automat la fiecare "
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgid "Invalid"
+#~ msgstr "Invalid"
+
+#~ msgid "Drizzle"
+#~ msgstr "Averse"
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Averse locale"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "Averse moderate"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "Averse intensificate"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Averse superficiale"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Averse izolate"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Averse parţiale"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Averse de zăpadă"
+
+#~ msgid "Showers"
+#~ msgstr "Ploi torenţiale"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Averse în rafală"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "Averse cu lapoviţă"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Ploaie locală"
+
+#~ msgid "Light rain"
+#~ msgstr "Averse de ploaie"
+
+#~ msgid "Moderate rain"
+#~ msgstr "Ploaie moderată"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Ploaie superficială"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Ploaie izolată"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Ploaie parţială"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Ploaie cu vânt puternic"
+
+#~ msgid "Rain showers"
+#~ msgstr "Ploaie torenţială"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Ploaie în rafale"
+
+#~ msgid "Freezing rain"
+#~ msgstr "Lapoviţă"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Ninsoare locală"
+
+#~ msgid "Light snow"
+#~ msgstr "Ninsoare uşoară"
+
+#~ msgid "Moderate snow"
+#~ msgstr "Ninsoare moderată"
+
+#~ msgid "Heavy snow"
+#~ msgstr "Ninsoare intensificată"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Ninsoare superficială"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Ninsoare izolată"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Ninsoare parţială"
+
+#~ msgid "Snowstorm"
+#~ msgstr "Furtună de zăpadă"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "Viscol"
+
+#~ msgid "Snow showers"
+#~ msgstr "Torente de zăpadă"
+
+#~ msgid "Drifting snow"
+#~ msgstr "Ninsoare în rafale"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Lapoviţă şi ninsoare"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Grindină locală"
+
+#~ msgid "Light snow grains"
+#~ msgstr "Grindină uşoară"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "Grindină moderată"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "Grindină intensificată"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Grindină superficială"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Grindină izolată"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Grindină parţială"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Grindină viscolită"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Grindină şi ninsoare"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Grindină în rafale"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Freezing snow grains"
+
+#~ msgid "Ice crystals"
+#~ msgstr "Ice crystals"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Ice crystals in the vicinity"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Few ice crystals"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Moderate ice crystals"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Heavy ice crystals"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Patches of ice crystals"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Partial ice crystals"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Ice crystal storm"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Blowing ice crystals"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Showers of ice crystals"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Drifting ice crystals"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Freezing ice crystals"
+
+#~ msgid "Ice pellets"
+#~ msgstr "Ice pellets"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Ice pellets in the vicinity"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "Few ice pellets"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "Moderate ice pellets"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "Heavy ice pellets"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Shallow ice pellets"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Patches of ice pellets"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Partial ice pellets"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "Ice pellet storm"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Blowing ice pellets"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "Showers of ice pellets"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Drifting ice pellets"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Freezing ice pellets"
+
+#~ msgid "Hail"
+#~ msgstr "Hail"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Hail in the vicinity"
+
+#~ msgid "Light hail"
+#~ msgstr "Light hail"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Moderate hail"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Heavy hail"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Shallow hail"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Patches of hail"
+
+#~ msgid "Partial hail"
+#~ msgstr "Partial hail"
+
+#~ msgid "Hailstorm"
+#~ msgstr "Hailstorm"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Blowing hail"
+
+#~ msgid "Hail showers"
+#~ msgstr "Hail showers"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Drifting hail"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Freezing hail"
+
+#~ msgid "Small hail"
+#~ msgstr "Small hail"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Small hail in the vicinity"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Moderate small hail"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Heavy small hail"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Shallow small hail"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Patches of small hail"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Partial small hail"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "Small hailstorm"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Blowing small hail"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "Showers of small hail"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Drifting small hail"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Freezing small hail"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "Unknown precipitation"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Precipitation in the vicinity"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Light precipitation"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Moderate precipitation"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Heavy precipitation"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Shallow precipitation"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Patches of precipitation"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Unknown thunderstorm"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Blowing precipitation"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Showers, type unknown"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Drifting precipitation"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Freezing precipitation"
+
+#~ msgid "Mist"
+#~ msgstr "Mist"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Mist in the vicinity"
+
+#~ msgid "Light mist"
+#~ msgstr "Light mist"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Ceaţă moderată"
+
+#~ msgid "Thick mist"
+#~ msgstr "Thick mist"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Shallow mist"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Patches of mist"
+
+#~ msgid "Partial mist"
+#~ msgstr "Partial mist"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Mist with wind"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Drifting mist"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Freezing mist"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "Fog in the vicinity"
+
+#~ msgid "Light fog"
+#~ msgstr "Light fog"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Moderate fog"
+
+#~ msgid "Thick fog"
+#~ msgstr "Thick fog"
+
+#~ msgid "Shallow fog"
+#~ msgstr "Shallow fog"
+
+#~ msgid "Patches of fog"
+#~ msgstr "Patches of fog"
+
+#~ msgid "Partial fog"
+#~ msgstr "Partial fog"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Fog with wind"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Drifting fog"
+
+#~ msgid "Freezing fog"
+#~ msgstr "Freezing fog"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Smoke in the vicinity"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Thin smoke"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Moderate smoke"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Thick smoke"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Shallow smoke"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Patches of smoke"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Partial smoke"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Smoke w/ thunders"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Smoke with wind"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Drifting smoke"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "Volcanic ash"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Volcanic ash in the vicinity"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Moderate volcanic ash"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Thick volcanic ash"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Shallow volcanic ash"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Patches of volcanic ash"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Partial volcanic ash"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Volcanic ash w/ thunders"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Blowing volcanic ash"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Showers of volcanic ash "
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Drifting volcanic ash"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Freezing volcanic ash"
+
+#~ msgid "Sand"
+#~ msgstr "Sand"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Sand in the vicinity"
+
+#~ msgid "Light sand"
+#~ msgstr "Light sand"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Moderate sand"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Heavy sand"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Patches of sand"
+
+#~ msgid "Partial sand"
+#~ msgstr "Partial sand"
+
+#~ msgid "Blowing sand"
+#~ msgstr "Blowing sand"
+
+#~ msgid "Drifting sand"
+#~ msgstr "Drifting sand"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Haze in the vicinity"
+
+#~ msgid "Light haze"
+#~ msgstr "Light haze"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Moderate haze"
+
+#~ msgid "Thick haze"
+#~ msgstr "Thick haze"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Shallow haze"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Patches of haze"
+
+#~ msgid "Partial haze"
+#~ msgstr "Partial haze"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Haze with wind"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Drifting haze"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Freezing haze"
+
+#~ msgid "Sprays"
+#~ msgstr "Sprays"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Sprays in the vicinity"
+
+#~ msgid "Light sprays"
+#~ msgstr "Light sprays"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Moderate sprays"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Heavy sprays"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Shallow sprays"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Patches of sprays"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Partial sprays"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "Blowing sprays"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Drifting sprays"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Freezing sprays"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Dust in the vicinity"
+
+#~ msgid "Light dust"
+#~ msgstr "Light dust"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Moderate dust"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Heavy dust"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Patches of dust"
+
+#~ msgid "Partial dust"
+#~ msgstr "Partial dust"
+
+#~ msgid "Blowing dust"
+#~ msgstr "Blowing dust"
+
+#~ msgid "Drifting dust"
+#~ msgstr "Drifting dust"
+
+#~ msgid "Squall"
+#~ msgstr "Squall"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Squall in the vicinity"
+
+#~ msgid "Light squall"
+#~ msgstr "Light squall"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Moderate squall"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Heavy squall"
+
+#~ msgid "Partial squall"
+#~ msgstr "Partial squall"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Thunderous squall"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Blowing squall"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Drifting squall"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Freezing squall"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Sandstorm"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "Sandstorm in the vicinity"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Light standstorm"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Moderate sandstorm"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "Heavy sandstorm"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Shallow sandstorm"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Partial sandstorm"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Thunderous sandstorm"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Blowing sandstorm"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Drifting sandstorm"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Freezing sandstorm"
+
+#~ msgid "Duststorm"
+#~ msgstr "Duststorm"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "Duststorm in the vicinity"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Light duststorm"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Moderate duststorm"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "Heavy duststorm"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Shallow duststorm"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Partial duststorm"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Thunderous duststorm"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Blowing duststorm"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Drifting duststorm"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Freezing duststorm"
+
+#~ msgid "Funnel cloud"
+#~ msgstr "Funnel cloud"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Funnel cloud in the vicinity"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Light funnel cloud"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Moderate funnel cloud"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Thick funnel cloud"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Shallow funnel cloud"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Patches of funnel clouds"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Partial funnel clouds"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Funnel cloud w/ wind"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Drifting funnel cloud"
+
+#~ msgid "Tornado"
+#~ msgstr "Tornado"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado in the vicinity"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Moderate tornado"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Raging tornado"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Partial tornado"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Thunderous tornado"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Drifting tornado"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Freezing tornado"
+
+#~ msgid "Dust whirls"
+#~ msgstr "Dust whirls"
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "Dust whirls in the vicinity"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Light dust whirls"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Moderate dust whirls"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Heavy dust whirls"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Shallow dust whirls"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Patches of dust whirls"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Partial dust whirls"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Blowing dust whirls"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Drifting dust whirls"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "Nu am putut obşine datele METAR.\n"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "Lipseşte locaţia pentru WeatherInfo."
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Nu am putut obţine datele de prognoză IWIN.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Nu am putut obţine datele de prognoză IWIN.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Nu am putut obţine datele de prognoză Met Office.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Nu am putut obţine datele de prognoză Met Office.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Nu am putut obţine harta imaginii radar.\n"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%a, %b %d / %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "Timp de observare necunoscut"
+
+#~ msgid "Unknown"
+#~ msgstr "Necunoscută"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "Recepţionare eşuată"
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr ""
+#~ "Interogarea canalelor disponibile ale dispozitivului mixer %s a eşuat\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr ""
+#~ "avertisment: mixerul nu are un canal de volum - folosesc PCM în loc.\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "Dispozitivul mixer %s nu are canale nici de volum nici PCM.\n"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "Factory pentru aplet meniu panel"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "Factory aplet meniu panel"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "Aplet pentru afişarea meniurilor"
+
+#~ msgid "Actions"
+#~ msgstr "Acţiuni"
+
+#~ msgid "Actions Menu"
+#~ msgstr "Meniu Acţiuni"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "Adaugă elemente la bara de meniu"
+
+#~ msgid "Shortcuts"
+#~ msgstr "Scurtături"
+
+#~ msgid "My Documents"
+#~ msgstr "Documentele mele"
+
+#~ msgid "Documents"
+#~ msgstr "Documente"
+
+#~ msgid "Applications"
+#~ msgstr "Aplicaţii"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr ""
+#~ "Nu este permisă ştergerea acestei intrări deoarce acest lucru va duce la "
+#~ "ştergerea apletului bara de meniu din panelul GNOME"
+
+#~ msgid "Create directory item..."
+#~ msgstr "Creere element director..."
+
+#~ msgid "Home"
+#~ msgstr "Acasă"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "Editare element director..."
+
+#~ msgid "_Path:"
+#~ msgstr "_Cale:"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "_Nivel adâncime:"
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "Calea specificată nu este un director valid."
+
+#~ msgid "Create documents item..."
+#~ msgstr "Creere elemente documente..."
+
+#~ msgid "Rename documents item..."
+#~ msgstr "Redenumeşte elementele documente..."
+
+#~ msgid "KDE Menus"
+#~ msgstr "Meniuri KDE"
+
+#~ msgid "Programs"
+#~ msgstr "Programe"
+
+#~ msgid "Create links item..."
+#~ msgstr "Creere elemente legătură..."
+
+#~ msgid "Rename links item..."
+#~ msgstr "Redenumire elemente legătură"
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "Creere element cale meniu..."
+
+#~ msgid "Preferences"
+#~ msgstr "Preferinţe"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "Preferinţe bară de meniu"
+
+#~ msgid "Layout"
+#~ msgstr "Layout"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "Meniu _Aplicaţii"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "Selectaţi iconul pentru meniul Aplicaţii"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "Meniu _Preferinţe"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "Meniu Ac_ţiuni"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "Meniu _Ferestre"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "Meniu _Spaţii de lucru"
+
+#~ msgid "Windows"
+#~ msgstr "Ferestre"
+
+#~ msgid "Menu Bar"
+#~ msgstr "Bara de meniu"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "(c) 2001 Chris Phelps"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr ""
+#~ "Bara de meniu vă permite afişarea bărilor de meniu personalizate în "
+#~ "panelurile dumneavoastră."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "Nu pot găsi domeniul GNOME_FILE_DOMAIN_APP_HELP"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "Nu pot găsi domeniul GNOME_FILE_DOMAIN_HELP."
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "Nu pot afişa ajutorul deoarece %s nu este un dosar. Vă rugăm verificaţi "
+#~ "instalarea."
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr ""
+#~ "Nu pot găsi fişierele de ajutor în %s sau în %s. Vă rugăm verificaţi "
+#~ "instalarea"
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "Nu am putut găsi doc_id %s în calea de ajutor"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "Documentul de ajutor %s/%s nu a fost găsit"
+
 #~ msgid "_Edit"
 #~ msgstr "_Editare"
 
@@ -3354,9 +3997,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Dow_n"
 #~ msgstr "_Jos"
-
-#~ msgid "_Delete"
-#~ msgstr "_Şterge"
 
 #~ msgid "Armenia"
 #~ msgstr "Armenia"
@@ -3568,9 +4208,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "ix86"
 #~ msgstr "ix86"
 
-#~ msgid "Sun"
-#~ msgstr "Sun"
-
 #~ msgid "mac"
 #~ msgstr "mac"
 
@@ -3585,9 +4222,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Lan_guage:"
 #~ msgstr "_Limbă:"
-
-#~ msgid "Count_ry:"
-#~ msgstr "_Ţară:"
 
 #~ msgid ""
 #~ "Flag\n"
@@ -3640,9 +4274,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Stock Sy_mbol:"
 #~ msgstr "_Simbol bursă:"
-
-#~ msgid "Stock C_hange:"
-#~ msgstr "Schimbare _cotaţie:"
 
 #~ msgid "not unique"
 #~ msgstr "nu e unic"
@@ -3756,14 +4387,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgstr "Locaţie:"
 
 #, fuzzy
-#~ msgid "Us_ername:"
-#~ msgstr "Nume utilizator:"
-
-#, fuzzy
-#~ msgid "Pass_word:"
-#~ msgstr "Parola:"
-
-#, fuzzy
 #~ msgid "Display a_rrows instead of -/+"
 #~ msgstr "Afişează săgeţi în loc de -/+"
 
@@ -3780,14 +4403,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgstr "Locaţie"
 
 #, fuzzy
-#~ msgid "User Entry"
-#~ msgstr "Foloseşte proxy"
-
-#, fuzzy
-#~ msgid "Password Entry"
-#~ msgstr "Parola:"
-
-#, fuzzy
 #~ msgid "Locat_ion :"
 #~ msgstr "Locaţie:"
 
@@ -3796,9 +4411,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "history list empty"
 #~ msgstr "lista istorică goală"
-
-#~ msgid "Command history"
-#~ msgstr "Istoria comenzilor"
 
 #~ msgid "fork error"
 #~ msgstr "eroare fork"
@@ -3864,9 +4476,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "GNOME Stock Ticker Panel Applet"
 #~ msgstr "Applet-ul de afişaj bursă GNOME"
-
-#~ msgid "Select Font"
-#~ msgstr "Selectează font"
 
 #, fuzzy
 #~ msgid "The GNOME weather monitor"
@@ -3989,9 +4598,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgstr ""
 #~ "Devreme ce sunteţi root, aţi dori să setaţi zona de timp standard a "
 #~ "sistemului?"
-
-#~ msgid "My Title"
-#~ msgstr "Titlul meu"
 
 #~ msgid "Continent/City"
 #~ msgstr "Continent/Oraş"
@@ -4178,24 +4784,12 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Display time relative to GMT (Greenwich Mean Time):"
 #~ msgstr "Afişează timpul relativ la GMT (Greenwich Mean Time):"
 
-#~ msgid "Mail"
-#~ msgstr "Mail"
-
-#~ msgid "Mail file:"
-#~ msgstr "Fişier mail:"
-
-#~ msgid "When new mail is received run:"
-#~ msgstr "Când este primit mail nou rulează:"
-
 #~ msgid "Always blink when any mail is waiting."
 #~ msgstr "ântotdeauna clipeşte când orice mail aşteaptă."
 
 #~ msgid "Number of messages to consider mailbox full:"
 #~ msgstr ""
 #~ "Numărul de mesaje pentru care căsuţa poştală este considerată plină:"
-
-#~ msgid "When clicked, run:"
-#~ msgstr "Când este clickat, rulează:"
 
 #~ msgid "Theme file (directory):"
 #~ msgstr "Fişier (director) temă:"
@@ -4233,9 +4827,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Text:"
 #~ msgstr "Text:"
-
-#~ msgid "Free Diskspace:"
-#~ msgstr "Spaţiu disc disponibil"
 
 #~ msgid "Background:"
 #~ msgstr "Fundal:"
@@ -4333,14 +4924,8 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Press a key..."
 #~ msgstr "Apăsaţi o tastă..."
 
-#~ msgid "Raise Note"
-#~ msgstr "Ridică nota"
-
 #~ msgid "Lower Note"
 #~ msgstr "Coboară nota"
-
-#~ msgid "Delete Note"
-#~ msgstr "Şterge nota"
 
 #~ msgid "GNotes!"
 #~ msgstr "GNote!"
@@ -4358,20 +4943,8 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Raise Notes"
 #~ msgstr "Ridică notele"
 
-#~ msgid "Lower Notes"
-#~ msgstr "Coboară notele"
-
-#~ msgid "Hide Notes"
-#~ msgstr "Ascunde notele"
-
-#~ msgid "Show Notes"
-#~ msgstr "Arată notele"
-
 #~ msgid "GNotes Settings"
 #~ msgstr "Setări GNote"
-
-#~ msgid "Default Height"
-#~ msgstr "Înălţime standard"
 
 #~ msgid "Default Width"
 #~ msgstr "Lăţime standard"
@@ -4432,9 +5005,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "saving prefs..."
 #~ msgstr "salvez pref..."
-
-#~ msgid "Main Volume and Mute"
-#~ msgstr "Volum principal si mut"
 
 #~ msgid "(c) 1998 The Free Software Foundation"
 #~ msgstr "(c) 1998 Fundaţia Software gratuit"
@@ -4544,17 +5114,11 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ "un applet GNOME care urmăreşte şi măsoară mişcările pointerului mouseului "
 #~ "dvs. de-a lungul desktopului."
 
-#~ msgid "Odometer setting"
-#~ msgstr "Setări odometru"
-
 #~ msgid "Use Metric"
 #~ msgstr "Foloseşte metric"
 
 #~ msgid "auto_reset"
 #~ msgstr "auto_reset"
-
-#~ msgid "enabled"
-#~ msgstr "activat"
 
 #~ msgid "Digits number"
 #~ msgstr "Număr cifre"
@@ -4946,9 +5510,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "(These settings do not take effect until a refresh)"
 #~ msgstr "(Aceste setări nu devin active până la o reîmprospătare)"
 
-#~ msgid "Scrolling"
-#~ msgstr "Derulare"
-
 #~ msgid "Smooth scroll"
 #~ msgstr "Derulare lină"
 
@@ -4960,9 +5521,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Scroll speed between lines (Smooth scroll):"
 #~ msgstr "Viteză derulare între linii (derulare lină):"
-
-#~ msgid "Loading headlines..."
-#~ msgstr "Încarc titluri ştiri..."
 
 #~ msgid "Unable to create user directory: %s\n"
 #~ msgstr "Nu se poate creea director utilizator: %s\n"
@@ -5196,17 +5754,11 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Load Average Module"
 #~ msgstr "Modul Încărcătură medie"
 
-#~ msgid "Check every:"
-#~ msgstr "Verifica la fiecare:"
-
 #~ msgid "Show pop-up dialog for this event"
 #~ msgstr "Arată dialoguri pop-up pentru acest eveniment"
 
 #~ msgid "Load average threshhold:"
 #~ msgstr "Threshold Încărcătură medie"
-
-#~ msgid "Text to display:"
-#~ msgstr "Text de afişat:"
 
 #~ msgid "Alert options"
 #~ msgstr "Opţiuni alerte"
@@ -5236,9 +5788,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Update interval"
 #~ msgstr "Interval actualizare"
 
-#~ msgid "D"
-#~ msgstr "D"
-
 #~ msgid "T"
 #~ msgstr "T"
 
@@ -5250,9 +5799,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "News and Information Module"
 #~ msgstr "Modul Ştiri şi informaţii"
-
-#~ msgid "Line (s):"
-#~ msgstr "Linie (linii):"
 
 #~ msgid "Update (m):"
 #~ msgstr "Actualizare (m)"
@@ -5286,9 +5832,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "File Tail Module"
 #~ msgstr "Modul Coadă fişier"
-
-#~ msgid "Path to tail:"
-#~ msgstr "Calea pentru coadă:"
 
 #~ msgid "Choose a file to tail"
 #~ msgstr "Alegeţi un fişier pentru a-i afişa coada"
@@ -5385,9 +5928,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Just another clock"
 #~ msgstr "Doar alt ceas"
 
-#~ msgid "Mounts and unmount drives"
-#~ msgstr "Montează şi demontează dispozitive"
-
 #~ msgid "CPU/MEM usage"
 #~ msgstr "Utilizare CPU/MEM"
 
@@ -5399,9 +5939,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Another Clock"
 #~ msgstr "Alt ceas"
-
-#~ msgid "Clock and Mailcheck"
-#~ msgstr "Ceas şi verificare mesaje"
 
 #~ msgid "Displays new mail and time"
 #~ msgstr "Afişează mesajele noi şi timpul"
@@ -5426,9 +5963,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Audio Mixer"
 #~ msgstr "Mixer audio"
-
-#~ msgid "Mixer"
-#~ msgstr "Mixer"
 
 #~ msgid "QuickLaunch"
 #~ msgstr "Lansare rapidă"
@@ -5502,9 +6036,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 #~ msgid "Use custom browser:"
 #~ msgstr "Utilizează navigator special:"
 
-#~ msgid "Remove"
-#~ msgstr "Elimină"
-
 #~ msgid "Size of URL history: "
 #~ msgstr " Dimensiunea istoricului URL: "
 
@@ -5545,9 +6076,6 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "(sec)"
 #~ msgstr "(sec)"
-
-#~ msgid "Basic"
-#~ msgstr "Basic"
 
 #~ msgid "(C) 1998-2000 LSC - Linux Support Center"
 #~ msgstr "(C) 1998-2000 LSC - Linux Support Center"
@@ -5594,4 +6122,3 @@ msgstr "Monitorizează calitatea unei legături wireless de reţea"
 
 #~ msgid "Look"
 #~ msgstr "Uită-te"
-

@@ -47,10 +47,10 @@ always_built_SUBDIRS = \
 SUBDIRS = \
 	po			\
 	screen-exec		\
+	$(always_built_SUBDIRS)	\
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
 	$(cdplayer_SUBDIRS)	\
-	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
@@ -59,6 +59,7 @@ SUBDIRS = \
 DIST_SUBDIRS = \
 	po		\
 	screen-exec	\
+	mailcheck	\
 	mixer		\
 	modemlights	\
 	cdplayer	\
@@ -74,7 +75,7 @@ DIST_SUBDIRS = \
 	mini-commander	\
 	man		\
 	omf-install	\
-	wireless		\
+	wireless	\
 	stickynotes
 
 EXTRA_DIST = \

@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.x\n"
-"POT-Creation-Date: 2003-02-21 14:06+0800\n"
+"POT-Creation-Date: 2003-03-27 14:07+0000\n"
 "PO-Revision-Date: 2003-02-22 15:40+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:851
+#: battstat/battstat_applet.c:852
 msgid "Battery Charge Monitor"
 msgstr "電池電量監控"
 
@@ -41,7 +41,6 @@ msgstr "監控攜帶型電腦的剩餘電量"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "公用程式"
 
@@ -50,6 +49,7 @@ msgstr "公用程式"
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
@@ -63,6 +63,7 @@ msgstr "關於(_A)..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.in.h:3
@@ -74,8 +75,9 @@ msgstr "求助(_H)"
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.in.h:7
 #: wireless/GNOME_WirelessApplet.xml.h:2
@@ -99,24 +101,24 @@ msgstr "此面板程式即使可以啟動也不能正常運作。\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:882
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
 #: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:884
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
 #: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:886
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
 msgid "Critical"
 msgstr "極低"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:888
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
 msgid "Charging"
 msgstr "正在充電"
 
@@ -132,7 +134,7 @@ msgstr "電池已完成充電！"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1046
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -144,7 +146,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -155,15 +157,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:978
-#: battstat/battstat_applet.c:1067
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
 msgid "System is running on battery power"
 msgstr "系統正在使用電池"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:984
-#: battstat/battstat_applet.c:1073
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
 msgid "System is running on AC power"
 msgstr "系統正在使用交流電"
 
@@ -173,14 +175,14 @@ msgstr "不適用"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "系統正在使用電池。電池︰%d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:965
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "系統正在使用交流電。電池︰%d%% (%s)"
@@ -237,7 +239,7 @@ msgstr ""
 "請執行“apm -e 1”(FreeBSD)\n"
 "看看有沒有效。\n"
 
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:787
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -247,7 +249,7 @@ msgstr ""
 "請先修正此錯誤"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:789
+#: battstat/battstat_applet.c:790
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -257,7 +259,7 @@ msgstr ""
 "當執行暫停模式指令時出現錯誤，指令回傳值為“%d”\n"
 "請先修正此錯誤"
 
-#: battstat/battstat_applet.c:797
+#: battstat/battstat_applet.c:798
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -267,17 +269,17 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:828
+#: battstat/battstat_applet.c:829
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
-#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:44
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
+#: charpick/charpick.c:429 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1799 mini-commander/src/about.c:48 mixer/mixer.c:925
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 stickynotes/stickynotes_applet_callbacks.c:228
-#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:703
+#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr ""
 "i18n 程式中文化計劃\n"
@@ -287,12 +289,13 @@ msgstr ""
 "Jing-Jong Shyue <shyue@sonoma.com.tw>, 2000\n"
 "Yuan-Chung Cheng <platin@linux.org.tw>, 1999"
 
-#: battstat/battstat_applet.c:853
+#: battstat/battstat_applet.c:854
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:854
-msgid "This utility show the status of your laptop battery."
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
 msgstr "此公用程式能顯示攜帶型電腦的電池狀態。"
 
 #: battstat/battstat_applet.glade.h:2
@@ -300,7 +303,7 @@ msgstr "此公用程式能顯示攜帶型電腦的電池狀態。"
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1361
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "外觀"
@@ -396,7 +399,7 @@ msgid "Battery power low"
 msgstr "電池電量過低"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:926
+#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
 msgid "CD Player"
 msgstr "CD 播放程式"
 
@@ -421,27 +424,27 @@ msgstr "播放音樂 CD 的面板程式"
 msgid "_Run External CD Player"
 msgstr "執行外部的 CD 播放程式(_R)"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:916
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
 msgid "Stop"
 msgstr "停止"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:918
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
 msgid "Play / Pause"
 msgstr "播放 / 暫停"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:920
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
 msgid "Eject"
 msgstr "退出碟片"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:922
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
 msgid "Previous Track"
 msgstr "上一首"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:924
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
 msgid "Next Track"
 msgstr "下一首"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
@@ -475,7 +478,7 @@ msgstr "在這裡設定裝置的路徑"
 msgid "Use _Default"
 msgstr "使用預設值(_D)"
 
-#: cdplayer/cdplayer.c:536
+#: cdplayer/cdplayer.c:537
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -483,40 +486,44 @@ msgstr ""
 "版權所有 © 1997 The Free Software Foundation\n"
 "版權所有 © 2001 Chris Phelps (GNOME 2 移植版本)"
 
-#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:927
+#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "播放 CD 面板程式可在面板上提供簡單的播放音樂 CD 控制界面"
 
-#: cdplayer/cdplayer.c:795 cdplayer/cdplayer.c:806
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
 msgid "Elapsed time"
 msgstr "播放時間"
 
-#: cdplayer/cdplayer.c:798 cdplayer/cdplayer.c:808
+#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
 msgid "Track number"
 msgstr "音軌號碼"
 
-#: cdplayer/cdplayer.c:917
+#: cdplayer/cdplayer.c:861
+msgid "Audio Device is busy, or being used by another application"
+msgstr ""
+
+#: cdplayer/cdplayer.c:936
 msgid "Click this button to Stop playing the CD"
 msgstr "按下本按鈕可停止播放 CD"
 
-#: cdplayer/cdplayer.c:919
+#: cdplayer/cdplayer.c:938
 msgid "Click this button to Play or Pause the CD"
 msgstr "按下本按鈕可播放或暫停播放 CD"
 
-#: cdplayer/cdplayer.c:921
+#: cdplayer/cdplayer.c:940
 msgid "Click this button to eject the CD"
 msgstr "按下本按鈕可退出 CD 碟片"
 
-#: cdplayer/cdplayer.c:923
+#: cdplayer/cdplayer.c:942
 msgid "Click this button to Play the previous track in the CD"
 msgstr "按下本按鈕可播放 CD 的上一個音軌"
 
-#: cdplayer/cdplayer.c:925
+#: cdplayer/cdplayer.c:944
 msgid "Click this button to Play the next track in the CD"
 msgstr "按下本按鈕可播放 CD 的下一個音軌"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:493
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:447
+#: charpick/charpick.c:549
 msgid "Character Palette"
 msgstr "字元選擇盤"
 
@@ -530,15 +537,15 @@ msgstr "加入字元"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:366
+#: charpick/charpick.c:421
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:394
+#: charpick/charpick.c:449
 msgid "Copyright (C) 1998"
 msgstr "版權所有 © 1998"
 
-#: charpick/charpick.c:395
+#: charpick/charpick.c:450
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -546,23 +553,23 @@ msgstr ""
 "用來選擇在鍵盤上找不到的特殊字元的 GNOME 面板程式。遵照 GNU 通用公共許可證條"
 "款 (GPL) 發行。"
 
-#: charpick/charpick.c:492
+#: charpick/charpick.c:548
 msgid "Insert special characters"
 msgstr "加入特殊字元"
 
-#: charpick/properties.c:80
+#: charpick/properties.c:84
 msgid "_Default character list:"
 msgstr "預設的字元清單(_D)："
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Default list of characters"
 msgstr "預設的字元清單"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid "Set the default character list here"
 msgstr "在這裡設定預設的字元清單"
 
-#: charpick/properties.c:92
+#: charpick/properties.c:93
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
@@ -570,7 +577,7 @@ msgstr ""
 "這些字元將會在面板啟動時出現。要回到本清單，請當輸入焦點位於本面板程式時按 "
 "<d> 鍵。"
 
-#: charpick/properties.c:156
+#: charpick/properties.c:158
 msgid "Character Palette Preferences"
 msgstr "字元選擇盤偏好設定"
 
@@ -643,7 +650,7 @@ msgstr "掛載點(_M)："
 msgid "_Update interval (seconds):"
 msgstr "更新周期[秒](_U)："
 
-#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+#: drivemount/properties.c:307
 msgid "_Icon :"
 msgstr "圖示(_I)："
 
@@ -711,8 +718,8 @@ msgstr "在面板上顯示眼睛"
 msgid "Amusements"
 msgstr "娛樂"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:432 geyes/geyes.c:434
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -720,23 +727,23 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes 面板程式工廠"
 
-#: geyes/geyes.c:238
+#: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "版權所有 © 1999 Dave Camp"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME 面板上與 xeyes 同類的程式。"
 
-#: geyes/geyes.c:435
+#: geyes/geyes.c:446
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "眼睛會望向滑鼠鼠標"
 
-#: geyes/themes.c:223
+#: geyes/themes.c:224
 msgid "Geyes Preferences"
 msgstr "Geyes 偏好設定"
 
-#: geyes/themes.c:239
+#: geyes/themes.c:240
 msgid "_Theme Name:"
 msgstr "佈景主題名稱(_T)："
 
@@ -748,7 +755,7 @@ msgstr "更改鍵盤配置"
 msgid "GKB Factory"
 msgstr "GKB 工廠"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "鍵盤配置切換程式"
 
@@ -762,15 +769,15 @@ msgid ""
 "Properties dialog"
 msgstr "按下快速鍵可切換不同的鍵盤配置。快速鍵可在屬性對話窗中設定"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "版權所有 © 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -789,7 +796,7 @@ msgstr ""
 "\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB 網頁（http://projects.gnome.hu/gkb）"
 
@@ -797,7 +804,7 @@ msgstr "GKB 網頁（http://projects.gnome.hu/gkb）"
 msgid "Disabled"
 msgstr "停用"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "按任何一鍵，或按 Esc 鍵取消"
 
@@ -809,25 +816,23 @@ msgstr "鍵盤 (請在選取後按「新增」)"
 msgid "Select Keyboard"
 msgstr "選擇鍵盤"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:233
 msgid "Edit Keyboard"
 msgstr "修改鍵盤"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#: gkb-new/prop-map.c:252
 msgid "_Name:"
 msgstr "名稱(_N)："
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:255
 msgid "_Label:"
 msgstr "標籤(_L)："
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:258
 msgid "Co_mmand:"
 msgstr "指令(_M)："
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:266
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -839,7 +844,7 @@ msgstr ""
 "● gkb_xmmap hu\n"
 "● setxkbmap hu"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:299
 msgid "_Flag"
 msgstr "國旗(_F)"
 
@@ -863,7 +868,7 @@ msgstr "標籤"
 msgid "Flag and Label"
 msgstr "國旗及標籤"
 
-#: gkb-new/prop.c:291 gweather/gweather-pref.c:320
+#: gkb-new/prop.c:291 gtik/gtik.c:1366 gweather/gweather-pref.c:320
 #: modemlights/properties.c:393
 msgid "Display"
 msgstr "顯示"
@@ -886,11 +891,11 @@ msgid "_Grab hotkey"
 msgstr "擷取快速鍵(_G)"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:425
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "鍵盤配置切換程式偏好設定"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:442
 msgid "Keymaps"
 msgstr "鍵盤對應表"
 
@@ -900,7 +905,7 @@ msgstr "鍵盤對應表"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:454 multiload/properties.c:313
 msgid "Options"
 msgstr "選項"
 
@@ -971,83 +976,122 @@ msgstr ""
 "此程式會接駁某個著名網站並下載現時的股價。GNOME 股市行情指示器是一個可自由使"
 "用的軟件。它沒有使用擔保。不要使用它作投資的決定；僅作為參考資料而已。"
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1158
+#, fuzzy
+msgid "Current _Stocks"
+msgstr "目前的天氣情況"
+
+#: gtik/gtik.c:1166
 msgid "_New Symbol:"
 msgstr "新增股票代碼(_N)："
 
-#: gtik/gtik.c:1158
+#: gtik/gtik.c:1174
 msgid "_Add"
 msgstr "新增(_A)"
 
-#: gtik/gtik.c:1169
-msgid "_Remove Selected"
+#: gtik/gtik.c:1179
+#, fuzzy
+msgid "_Remove"
 msgstr "移除選擇項目(_R)"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1277
 msgid "Stock Ticker Preferences"
 msgstr "股市行情指示器偏好設定"
 
-#: gtik/gtik.c:1275
-msgid "Stock update Fre_quency in minutes:"
-msgstr "更新周期[分鐘](_Q)："
-
-#: gtik/gtik.c:1294
-msgid "Scroll Speed :"
-msgstr "捲動速度："
-
-#: gtik/gtik.c:1314
-msgid "_Width :"
-msgstr "寬度(_W)："
-
-#: gtik/gtik.c:1326
-msgid "Displa_y only symbols and price"
-msgstr "只顯示股票代碼及股價(_Y)"
-
-#: gtik/gtik.c:1329
-msgid "Scroll _left to right"
-msgstr "由左至右捲動(_L)"
-
-#: gtik/gtik.c:1332
-msgid "_Enable scroll buttons"
-msgstr "顯示捲動按紐(_E)"
-
-#: gtik/gtik.c:1356
-msgid "+ C_olor:"
-msgstr "+ 的顏色(_O)："
-
-#: gtik/gtik.c:1376
-msgid "- Colo_r:"
-msgstr "- 的顏色(_R)："
-
-#: gtik/gtik.c:1393
-msgid "_Unchanged Color:"
-msgstr "表示沒有變動的顏色(_U)："
-
-#: gtik/gtik.c:1410
-msgid "Back_ground Color:"
-msgstr "背景顏色(_G)："
-
-#: gtik/gtik.c:1432
-msgid "_Font:"
-msgstr "字型(_F)："
-
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1292
 msgid "Symbols"
 msgstr "股票代碼"
 
-#: gtik/gtik.c:1454
+#: gtik/gtik.c:1297
 msgid "Behavior"
 msgstr "運作方式"
 
-#: gtik/gtik.c:1541
+#: gtik/gtik.c:1300 gweather/gweather-pref.c:273
+msgid "Update"
+msgstr "更新"
+
+#: gtik/gtik.c:1304
+msgid "Stock update Fre_quency in minutes:"
+msgstr "更新周期[分鐘](_Q)："
+
+#: gtik/gtik.c:1314
+msgid "Scrolling"
+msgstr ""
+
+#: gtik/gtik.c:1318
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "捲動速度："
+
+#: gtik/gtik.c:1322
+#, fuzzy
+msgid "_Slow"
+msgstr "顯示"
+
+#: gtik/gtik.c:1324
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1326
+#, fuzzy
+msgid "_Fast"
+msgstr "預報(_F)"
+
+#: gtik/gtik.c:1343
+msgid "_Enable scroll buttons"
+msgstr "顯示捲動按紐(_E)"
+
+#: gtik/gtik.c:1352
+msgid "Scroll _left to right"
+msgstr "由左至右捲動(_L)"
+
+#: gtik/gtik.c:1370 stickynotes/stickynotes.glade.h:29
+#, fuzzy
+msgid "_Width:"
+msgstr "寬度(_W)："
+
+#: gtik/gtik.c:1383
+msgid "Displa_y only symbols and price"
+msgstr "只顯示股票代碼及股價(_Y)"
+
+#: gtik/gtik.c:1392
+#, fuzzy
+msgid "_Font"
+msgstr "字型(_F)："
+
+#: gtik/gtik.c:1406 mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468 multiload/properties.c:365
+msgid "Colors"
+msgstr "色彩"
+
+#: gtik/gtik.c:1411
+#, fuzzy
+msgid "Stock _raised"
+msgstr "股值改變(_H)︰"
+
+#: gtik/gtik.c:1426
+#, fuzzy
+msgid "Stock _lowered"
+msgstr "股市行情指示器"
+
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "Stock _unchanged"
+msgstr "股值改變(_H)︰"
+
+#: gtik/gtik.c:1456 modemlights/properties.c:441
+msgid "_Background"
+msgstr "背景顏色(_B)"
+
+#: gtik/gtik.c:1553
 msgid "Skip forward"
 msgstr "向前捲動"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1554
 msgid "Skip backward"
 msgstr "向後捲動"
 
-#: gtik/gtik.c:1543
+#: gtik/gtik.c:1555
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1055,11 +1099,11 @@ msgstr ""
 "股市行情指示器\n"
 "獲取不斷更新的股市行情"
 
-#: gtik/gtik.c:1733
+#: gtik/gtik.c:1745
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1734
+#: gtik/gtik.c:1746
 msgid "Change "
 msgstr "改變"
 
@@ -1120,7 +1164,7 @@ msgstr ""
 "%s：%s\n"
 "最低 %d，最高 %d"
 
-#: gweather/gweather-applet.c:292
+#: gweather/gweather-applet.c:293
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -1198,10 +1242,6 @@ msgstr "更新數值用的按鈕"
 msgid "Weather Preferences"
 msgstr "天氣程式偏好設定"
 
-#: gweather/gweather-pref.c:273
-msgid "Update"
-msgstr "更新"
-
 #: gweather/gweather-pref.c:285
 msgid "_Automatically update every"
 msgstr "自動更新相隔的時間(_A)："
@@ -1223,6 +1263,7 @@ msgid "Number of _forecast days to display:"
 msgstr ""
 
 #: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
 msgid "Location"
 msgstr "位置"
 
@@ -1237,6 +1278,27 @@ msgstr "可選擇的國家(_O)："
 #: gweather/gweather-pref.c:411
 msgid "Available c_ities:"
 msgstr "可選擇的城市(_I)："
+
+#: gweather/location.c:184
+msgid "Could not download countries"
+msgstr ""
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+msgid "Downloading Cities..."
+msgstr ""
+
+#: gweather/location.c:305
+#, fuzzy
+msgid "Country"
+msgstr "國家(_R)："
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
 
 #: gweather/weather.c:49
 msgid "knots"
@@ -1443,9 +1505,390 @@ msgstr "平靜"
 msgid "Could not download forecast"
 msgstr ""
 
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "用來產生天氣面板程式的工廠。"
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:328 mailcheck/mailcheck.c:1812
+msgid "Inbox Monitor"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "網際網路"
+
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+msgid "_Check for mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:204
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "執行‘%s’時出現錯誤：%s"
+
+#: mailcheck/mailcheck.c:334
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:342
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:347 mailcheck/mailcheck.c:1425
+msgid "Password Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:401
+msgid "The Network May be down"
+msgstr ""
+
+#: mailcheck/mailcheck.c:404 mailcheck/mailcheck.c:407
+msgid "The User id or Password is not  correct"
+msgstr ""
+
+#: mailcheck/mailcheck.c:410
+msgid "The Server name may be wrong"
+msgstr ""
+
+#: mailcheck/mailcheck.c:414
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:423
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:604
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:606
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:610
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:612
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:616
+#, fuzzy
+msgid "No mail."
+msgstr "一般"
+
+#: mailcheck/mailcheck.c:1136 mailcheck/mailcheck.c:1137
+#: mailcheck/mailcheck.c:2003 mailcheck/mailcheck.c:2004
+#, fuzzy
+msgid "Status not updated"
+msgstr "最後更新："
+
+#: mailcheck/mailcheck.c:1309
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1317
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1325
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1333
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1341
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1361
+msgid "Mail _spool file:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1365
+#, fuzzy
+msgid "Browse"
+msgstr "瀏覽器"
+
+#: mailcheck/mailcheck.c:1380
+msgid "Mail s_erver:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1386
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1400
+#, fuzzy
+msgid "_Username:"
+msgstr "使用者(_U)"
+
+#: mailcheck/mailcheck.c:1408
+msgid "Username Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1417
+msgid "_Password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1438
+#, fuzzy
+msgid "_Folder:"
+msgstr "色彩(_C)："
+
+#: mailcheck/mailcheck.c:1446
+msgid "Folder Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1458
+msgid "C_ommand to run before checking for mail:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1466
+#, fuzzy
+msgid "Command Entry box"
+msgstr "指令紀錄"
+
+#: mailcheck/mailcheck.c:1491
+#, fuzzy
+msgid "Execute"
+msgstr "退出碟片"
+
+#: mailcheck/mailcheck.c:1502
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1517
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1527
+msgid "When new mail _arrives:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1540 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1550
+msgid "When clicke_d:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1563
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1573
+msgid "Set the number of unread mails to _zero"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1584
+msgid "Check for mail _every"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1596 mailcheck/mailcheck.c:1600
+#, fuzzy
+msgid "minutes"
+msgstr "分鐘"
+
+#: mailcheck/mailcheck.c:1596
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1610 mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "seconds"
+msgstr "亳秒"
+
+#: mailcheck/mailcheck.c:1610
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1622
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1633
+#, fuzzy
+msgid "Select a_nimation"
+msgstr "選擇字型"
+
+#: mailcheck/mailcheck.c:1669 mailcheck/mailcheck.c:1877
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "執行‘%s’時出現錯誤：%s"
+
+#: mailcheck/mailcheck.c:1710
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "系統監控程式偏好設定"
+
+#: mailcheck/mailcheck.c:1730
+msgid "_Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1734
+msgid "Mail_box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1814
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1979
+#, fuzzy
+msgid "Text only"
+msgstr "文字"
+
+#: mailcheck/mailcheck.c:2005
+msgid "Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:2006
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+msgid "Path to the animation file"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+msgid "Mailcheck"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+#, fuzzy
+msgid "New Mail"
+msgstr "新西蘭"
+
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "指令列"
 
@@ -1479,15 +1922,15 @@ msgstr ""
 "任何更新的版本。"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "啟動程式"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "指令列"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "在這裡輸入指令後，GNOME 就會執行該指令"
 
@@ -1540,11 +1983,6 @@ msgstr "面板程式寬度(_W)："
 msgid "Autocompletion"
 msgstr "自動補齊"
 
-#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
-#: multiload/properties.c:365
-msgid "Colors"
-msgstr "色彩"
-
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Command Line Preferences"
 msgstr "小型指令列偏好設定"
@@ -1562,7 +2000,8 @@ msgid "Command:"
 msgstr "指令："
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history based autocompletion"
+#, fuzzy
+msgid "E_nable history-based autocompletion"
 msgstr "啟用根據指令紀錄自動補齊的功能(_N)"
 
 #: mini-commander/src/mini-commander.glade.h:13
@@ -1620,11 +2059,11 @@ msgstr "紀錄"
 msgid "Click this button for the list of previous commands"
 msgstr "按下此按鈕可顯示之前輸入的指令清單"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "小型指令列面板程式"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "此面板程式可在面板中加上指令列"
 
@@ -1648,8 +2087,8 @@ msgstr "不可輸入重複的樣式"
 msgid "Adjust the sound volume"
 msgstr "調校音量"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
+#: mixer/mixer.c:938
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -1657,15 +2096,118 @@ msgstr "音量控制"
 msgid "_Mute"
 msgstr "靜音(_M)"
 
-#: mixer/GNOME_MixerApplet.xml.h:4
+#: mixer/GNOME_MixerApplet.xml.h:5
 msgid "_Run Volume Control..."
 msgstr "執行音量控制程式(_R)..."
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:110
+msgid "Main Volume"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Bass"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Treble"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Synth"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Speaker"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Line"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "CD"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Mix"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Video"
+msgstr "隱藏"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Radio"
+msgstr "有雨"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Monitor"
+msgstr "系統監控"
+
+#: mixer/mixer.c:166
 msgid "Volume Control (muted)"
 msgstr "音量控制 (靜音)"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:248
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -1673,43 +2215,35 @@ msgstr ""
 "警告：這個版本的 gmix 是用不同\n"
 "版本的 soundcard.h 編譯出來的。\n"
 
-#: mixer/mixer.c:207
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "查詢混音裝置 %s 的可用頻道時出現錯誤\n"
-
-#: mixer/mixer.c:214
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "警告：混音器沒有音量頻道 ─ 會使用 PCM。\n"
-
-#: mixer/mixer.c:217
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "混合裝置 %s 沒有音量及 PCM 頻道。\n"
-
-#: mixer/mixer.c:575
+#: mixer/mixer.c:683
 msgid "Volume Controller"
 msgstr "音量控制程式"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:684
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "使用上/下方向鍵更改音量"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:939
 msgid "(C) 2001 Richard Hult"
 msgstr "版權所有 ©2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:940
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "音量控制可設定系統的音量。"
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1039
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "音量控制程式"
+
+#: mixer/mixer.c:1059
+#, fuzzy
+msgid "Channels"
+msgstr "改變"
+
+#: mixer/mixer.c:1345
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "音量控制可設定系統的音量"
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "網際網路"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:227
@@ -1785,10 +2319,6 @@ msgstr "接收資料"
 #: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "前景顏色(_F)"
-
-#: modemlights/properties.c:441
-msgid "_Background"
-msgstr "背景顏色(_B)"
 
 #: modemlights/properties.c:443
 msgid "Send data"
@@ -1889,11 +2419,12 @@ msgid "Load Average"
 msgstr "平均負載"
 
 #: multiload/main.c:80
+#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"space use, plus network traffic."
 msgstr ""
 "遵照 GNU 通用公共許可證條款 (GPL) 發行。\n"
 "一個可顯示 CPU、記憶體、交換檔及網路使用量的系統負載監控程式。"
@@ -1911,7 +2442,8 @@ msgid "Network"
 msgstr "網路"
 
 #: multiload/main.c:242 multiload/properties.c:391
-msgid "Swap File"
+#, fuzzy
+msgid "Swap Space"
 msgstr "交換檔"
 
 #: multiload/main.c:244
@@ -1952,7 +2484,8 @@ msgid "_Network"
 msgstr "網路(_N)"
 
 #: multiload/properties.c:296
-msgid "_Swap File"
+#, fuzzy
+msgid "_Swap Space"
 msgstr "交換檔(_S)"
 
 #: multiload/properties.c:326
@@ -2039,207 +2572,6 @@ msgstr "系統監控程式偏好設定"
 msgid "Swap Load"
 msgstr "交換檔負載"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "選單面板程式工廠"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "選單面板程式工廠"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "顯示選單的面板程式"
-
-#: panel-menu/panel-menu-actions.c:99
-msgid "Actions"
-msgstr "行動"
-
-#: panel-menu/panel-menu-actions.c:100
-msgid "Actions Menu"
-msgstr "行動選單"
-
-#: panel-menu/panel-menu-add.c:77
-msgid "Add items to the Menu Bar"
-msgstr "將項目加進「面板選單」中"
-
-#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:405
-msgid "Shortcuts"
-msgstr "捷徑"
-
-#: panel-menu/panel-menu-add.c:250
-msgid "My Documents"
-msgstr "我的文件"
-
-#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "文件"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "程式集"
-
-#: panel-menu/panel-menu-common.c:738
-msgid ""
-"Removing this entry is not allowed as this will cause the Menu Bar applet to "
-"be removed from GNOME Panel"
-msgstr "不允許移除本項目，因為這樣會令「面板選單」從 GNOME 面板中移除"
-
-#: panel-menu/panel-menu-directory.c:516
-msgid "Create directory item..."
-msgstr "建立目錄..."
-
-#: panel-menu/panel-menu-directory.c:524
-msgid "Home"
-msgstr "個人目錄"
-
-#: panel-menu/panel-menu-directory.c:595
-msgid "Edit directory item..."
-msgstr "修改目錄..."
-
-#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
-msgid "_Path:"
-msgstr "路徑(_P)："
-
-#: panel-menu/panel-menu-directory.c:694
-msgid "..."
-msgstr "..."
-
-#: panel-menu/panel-menu-directory.c:704
-msgid "_Depth level:"
-msgstr "深度(_D)："
-
-#: panel-menu/panel-menu-directory.c:801
-msgid "Path specified is currently not a valid directory."
-msgstr "指定的目錄不是有效的目錄。"
-
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "建立文件..."
-
-#: panel-menu/panel-menu-documents.c:434
-msgid "Rename documents item..."
-msgstr "更改文件名稱..."
-
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
-msgid "KDE Menus"
-msgstr "KDE 選單"
-
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
-#: panel-menu/panel-menu-path.c:559
-msgid "Programs"
-msgstr "程式"
-
-#: panel-menu/panel-menu-links.c:403
-msgid "Create links item..."
-msgstr "建立鏈結..."
-
-#: panel-menu/panel-menu-links.c:439
-msgid "Rename links item..."
-msgstr "更改鏈結名稱..."
-
-#: panel-menu/panel-menu-path.c:230
-msgid "KDE"
-msgstr "KDE"
-
-#: panel-menu/panel-menu-path.c:658
-msgid "Create menu path item..."
-msgstr "建立選單路徑..."
-
-#: panel-menu/panel-menu-path.c:701
-msgid "Edit path item..."
-msgstr "修改路徑..."
-
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "偏好設定"
-
-#: panel-menu/panel-menu-properties.c:72
-msgid "Menu Bar Preferences"
-msgstr "「面板選單」偏好設定"
-
-#: panel-menu/panel-menu-properties.c:78
-msgid "Layout"
-msgstr "配置"
-
-#: panel-menu/panel-menu-properties.c:93
-msgid "_Applications Menu"
-msgstr "程式集選單(_A)"
-
-#: panel-menu/panel-menu-properties.c:117
-msgid "Select an icon for the Applications menu"
-msgstr "選擇程式集選單的圖示"
-
-#: panel-menu/panel-menu-properties.c:134
-msgid "_Preferences Menu"
-msgstr "偏好設定選單(_P)"
-
-#: panel-menu/panel-menu-properties.c:145
-msgid "Ac_tions Menu"
-msgstr "行動選單(_T)"
-
-#: panel-menu/panel-menu-properties.c:156
-msgid "_Windows Menu"
-msgstr "視窗選單(_W)"
-
-#: panel-menu/panel-menu-properties.c:167
-msgid "W_orkspaces Menu"
-msgstr "工作區選單(_O)"
-
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "視窗"
-
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
-msgstr "工作區"
-
-#: panel-menu/panel-menu.c:693
-msgid "Menu Bar"
-msgstr "面板選單"
-
-#: panel-menu/panel-menu.c:694
-msgid "(c) 2001 Chris Phelps"
-msgstr "版權所有 © 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:695
-msgid "The Menu Bar allows you to display customized menubars on your panels."
-msgstr "「面板選單」允許使用者在面板上顯示自選的選單列。"
-
-#: screen-exec/egg-screen-help.c:174
-msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr "找不到 GNOME_FILE_DOMAIN_APP_HELP 區域"
-
-#: screen-exec/egg-screen-help.c:187
-msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr "找不到 GNOME_FILE_DOMAIN_HELP 區域。"
-
-#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
-#, c-format
-msgid ""
-"Unable to show help as %s is not a directory.  Please check your "
-"installation."
-msgstr "無法顯示說明文件，因為 %s 不是目錄。請檢查軟件是否已正確安裝。"
-
-#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
-#, c-format
-msgid ""
-"Unable to find the help files in either %s or %s.  Please check your "
-"installation"
-msgstr "在 %s 或 %s 都找不到說明文件。請檢查軟件是否已正確安裝。"
-
-#: screen-exec/egg-screen-help.c:315
-#, c-format
-msgid "Unable to find doc_id %s in the help path"
-msgstr "無法在說明文件路徑中找出 doc_id %s"
-
-#: screen-exec/egg-screen-help.c:336
-#, c-format
-msgid "Help document %s/%s not found"
-msgstr "找不到說明文件 %s/%s"
-
 #: stickynotes/stickynotes.c:31 stickynotes/stickynotes.glade.h:27
 #: stickynotes/GNOME_StickyNotesApplet.xml.in.h:6
 msgid "_New Note"
@@ -2254,14 +2586,14 @@ msgid "_Edit Title"
 msgstr "修改標題(_E)"
 
 #. FIXME : Hack because libglade does not properly set these
-#: stickynotes/stickynotes_applet.c:67 stickynotes/stickynotes_applet.c:144
-#: stickynotes/stickynotes_applet.c:146
-#: stickynotes/stickynotes_applet_callbacks.c:222
+#: stickynotes/stickynotes_applet.c:69 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
+#: stickynotes/stickynotes_applet_callbacks.c:249
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 msgid "Sticky Notes"
 msgstr ""
 
-#: stickynotes/stickynotes_applet.c:144
+#: stickynotes/stickynotes_applet.c:146
 #, c-format
 msgid ""
 "%s\n"
@@ -2272,7 +2604,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
 #, c-format
 msgid ""
 "%s\n"
@@ -2377,11 +2709,6 @@ msgstr ""
 #: stickynotes/stickynotes.glade.h:28
 msgid "_Sticky across workspaces"
 msgstr ""
-
-#: stickynotes/stickynotes.glade.h:29
-#, fuzzy
-msgid "_Width:"
-msgstr "寬度(_W)："
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes."
@@ -2537,11 +2864,11 @@ msgstr ""
 "找不到無線網路連線監控程式所需的圖像。\n"
 "請確定是否已經正確安裝該程式。"
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "沒有任何無線網路裝置"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -2549,16 +2876,16 @@ msgstr ""
 "似乎系統中並沒有設定任何無線網路裝置。\n"
 "如果以上的推斷和事實不符，請確認組態是否出錯。"
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "無線網路連線監控"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "版權所有 © 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "此公用程式能顯示無線網路的連線狀態。"
 
@@ -2581,6 +2908,178 @@ msgstr "無線網路連線監控偏好設定"
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
 msgstr "監控無線網路連線的訊號品質"
+
+#~ msgid "_Width :"
+#~ msgstr "寬度(_W)："
+
+#~ msgid "+ C_olor:"
+#~ msgstr "+ 的顏色(_O)："
+
+#~ msgid "- Colo_r:"
+#~ msgstr "- 的顏色(_R)："
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "表示沒有變動的顏色(_U)："
+
+#~ msgid "Back_ground Color:"
+#~ msgstr "背景顏色(_G)："
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr "查詢混音裝置 %s 的可用頻道時出現錯誤\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr "警告：混音器沒有音量頻道 ─ 會使用 PCM。\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "混合裝置 %s 沒有音量及 PCM 頻道。\n"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "選單面板程式工廠"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "選單面板程式工廠"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "顯示選單的面板程式"
+
+#~ msgid "Actions"
+#~ msgstr "行動"
+
+#~ msgid "Actions Menu"
+#~ msgstr "行動選單"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "將項目加進「面板選單」中"
+
+#~ msgid "Shortcuts"
+#~ msgstr "捷徑"
+
+#~ msgid "My Documents"
+#~ msgstr "我的文件"
+
+#~ msgid "Documents"
+#~ msgstr "文件"
+
+#~ msgid "Applications"
+#~ msgstr "程式集"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr "不允許移除本項目，因為這樣會令「面板選單」從 GNOME 面板中移除"
+
+#~ msgid "Create directory item..."
+#~ msgstr "建立目錄..."
+
+#~ msgid "Home"
+#~ msgstr "個人目錄"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "修改目錄..."
+
+#~ msgid "_Path:"
+#~ msgstr "路徑(_P)："
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "深度(_D)："
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "指定的目錄不是有效的目錄。"
+
+#~ msgid "Create documents item..."
+#~ msgstr "建立文件..."
+
+#~ msgid "Rename documents item..."
+#~ msgstr "更改文件名稱..."
+
+#~ msgid "KDE Menus"
+#~ msgstr "KDE 選單"
+
+#~ msgid "Programs"
+#~ msgstr "程式"
+
+#~ msgid "Create links item..."
+#~ msgstr "建立鏈結..."
+
+#~ msgid "Rename links item..."
+#~ msgstr "更改鏈結名稱..."
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "建立選單路徑..."
+
+#~ msgid "Edit path item..."
+#~ msgstr "修改路徑..."
+
+#~ msgid "Preferences"
+#~ msgstr "偏好設定"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "「面板選單」偏好設定"
+
+#~ msgid "Layout"
+#~ msgstr "配置"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "程式集選單(_A)"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "選擇程式集選單的圖示"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "偏好設定選單(_P)"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "行動選單(_T)"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "視窗選單(_W)"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "工作區選單(_O)"
+
+#~ msgid "Windows"
+#~ msgstr "視窗"
+
+#~ msgid "Workspaces"
+#~ msgstr "工作區"
+
+#~ msgid "Menu Bar"
+#~ msgstr "面板選單"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "版權所有 © 2001 Chris Phelps"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr "「面板選單」允許使用者在面板上顯示自選的選單列。"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "找不到 GNOME_FILE_DOMAIN_APP_HELP 區域"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "找不到 GNOME_FILE_DOMAIN_HELP 區域。"
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr "無法顯示說明文件，因為 %s 不是目錄。請檢查軟件是否已正確安裝。"
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr "在 %s 或 %s 都找不到說明文件。請檢查軟件是否已正確安裝。"
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "無法在說明文件路徑中找出 doc_id %s"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "找不到說明文件 %s/%s"
 
 #~ msgid "GNOME Weather"
 #~ msgstr "GNOME 天氣面板程式"
@@ -3483,9 +3982,6 @@ msgstr "監控無線網路連線的訊號品質"
 #~ msgid "Jamaica"
 #~ msgstr "牙買加"
 
-#~ msgid "New Zealand"
-#~ msgstr "新西蘭"
-
 #~ msgid "Norway"
 #~ msgstr "挪威"
 
@@ -3594,9 +4090,6 @@ msgstr "監控無線網路連線的訊號品質"
 #~ msgid "Lan_guage:"
 #~ msgstr "語言(_G)："
 
-#~ msgid "Count_ry:"
-#~ msgstr "國家(_R)："
-
 #~ msgid "Arc_hitecture:"
 #~ msgstr "系統架構(_H)："
 
@@ -3644,9 +4137,6 @@ msgstr "監控無線網路連線的訊號品質"
 
 #~ msgid "Stock Sy_mbol:"
 #~ msgstr "股票代碼(_M)："
-
-#~ msgid "Stock C_hange:"
-#~ msgstr "股值改變(_H)︰"
 
 #~ msgid "not unique"
 #~ msgstr "並非唯一"
@@ -3699,9 +4189,6 @@ msgstr "監控無線網路連線的訊號品質"
 #~ msgid "PanelMenu Applet"
 #~ msgstr "選單面板程式"
 
-#~ msgid "Command history"
-#~ msgstr "指令紀錄"
-
 #~ msgid "Properties"
 #~ msgstr "屬性"
 
@@ -3719,9 +4206,6 @@ msgstr "監控無線網路連線的訊號品質"
 
 #~ msgid "Keyboard Layout Switcher Applet"
 #~ msgstr "鍵盤配置切換面板程式"
-
-#~ msgid "Select Font"
-#~ msgstr "選擇字型"
 
 #~ msgid "time & date on"
 #~ msgstr "開啟時間與日期"

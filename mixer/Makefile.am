@@ -43,7 +43,8 @@ schema_DATA = mixer.schemas
 EXTRA_DIST = 						\
 	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
-	$(pixmaps_DATA)
+	$(pixmaps_DATA)					\
+	$(schema_DATA)
 	
 install-data-local:
         GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;

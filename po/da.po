@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2002-12-05 19:35+0100\n"
+"POT-Creation-Date: 2003-03-27 14:07+0000\n"
 "PO-Revision-Date: 2002-12-05 18:11+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -26,7 +26,7 @@ msgstr ""
 # overvåger bliver for langt og kan undværes
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:841
+#: battstat/battstat_applet.c:852
 msgid "Battery Charge Monitor"
 msgstr "Batteriladning"
 
@@ -44,7 +44,6 @@ msgstr "Overvåg en bærbars tilbageværende strøm"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Værktøj"
 
@@ -53,9 +52,11 @@ msgstr "Værktøj"
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Om..."
@@ -65,8 +66,10 @@ msgstr "_Om..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:3
 msgid "_Help"
 msgstr "_Hjælp"
 
@@ -75,9 +78,11 @@ msgstr "_Hjælp"
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:7
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "_Indstillinger..."
@@ -88,49 +93,51 @@ msgstr "_Gå i dvale..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:284
+#: battstat/battstat_applet.c:286
 msgid "Your platform is not supported!\n"
 msgstr "Din platform er ikke understøttet!\n"
 
-#: battstat/battstat_applet.c:285
+#: battstat/battstat_applet.c:287
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Panelprogrammet vil ikke fungere rigtigt (hvis overhovedet).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:872
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "Høj"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:874
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "Lav"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:876
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
 msgid "Critical"
 msgstr "Kritisk"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:878
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
 msgid "Charging"
 msgstr "Oplader"
 
-#: battstat/battstat_applet.c:403
+#: battstat/battstat_applet.c:405
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Lavt strømniveau for batteri (%d%%) og ingen lysnettilkobling"
 
-#: battstat/battstat_applet.c:427
+#: battstat/battstat_applet.c:429
 msgid "Battery is now fully re-charged!"
 msgstr "Batteriet er nu fuldt opladet!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1036
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -142,7 +149,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1044
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -153,32 +160,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:968
-#: battstat/battstat_applet.c:1057
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
 msgid "System is running on battery power"
 msgstr "Systemet kører på batteriet"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:974
-#: battstat/battstat_applet.c:1063
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
 msgid "System is running on AC power"
 msgstr "Systemet kører på lysnettet"
 
-#: battstat/battstat_applet.c:473
+#: battstat/battstat_applet.c:475
 msgid "N/A"
 msgstr "I/T"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:948
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systemet kører på batteriet. Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systemet kører på lysnettet. Batteri: %d%% (%s)"
@@ -187,33 +194,33 @@ msgstr "Systemet kører på lysnettet. Batteri: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:615
+#: battstat/battstat_applet.c:617
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systemet kører på batteriet. Batteri: Ikke til stede"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:621
+#: battstat/battstat_applet.c:623
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systemet kører på lysnettet. Batteri: Ikke tilstede"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:630
+#: battstat/battstat_applet.c:632
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batteri: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:637
+#: battstat/battstat_applet.c:639
 msgid "Battery: Not present"
 msgstr "Batteri: Ikke til stede"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:717
+#: battstat/battstat_applet.c:722
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -226,7 +233,7 @@ msgstr ""
 "APM-enheden."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:726
+#: battstat/battstat_applet.c:731
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -236,7 +243,7 @@ msgstr ""
 "fra. Prøv at køre 'apm -e 1' (FreeBSD) og se om \n"
 "dette hjælper.\n"
 
-#: battstat/battstat_applet.c:776
+#: battstat/battstat_applet.c:787
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -246,7 +253,7 @@ msgstr ""
 "Forsøg venligst at rette denne fejl"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:779
+#: battstat/battstat_applet.c:790
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -257,7 +264,7 @@ msgstr ""
 "\".\n"
 "Forsøg venligst at rette denne fejl"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:798
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -267,25 +274,27 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:818
+#: battstat/battstat_applet.c:829
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:501
-#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:814
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
+#: charpick/charpick.c:429 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1799 mini-commander/src/about.c:48 mixer/mixer.c:925
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr "Ole Laursen <olau@hardworking.dk>"
 
-#: battstat/battstat_applet.c:843
+#: battstat/battstat_applet.c:854
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:844
-msgid "This utility show the status of your laptop battery."
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
 msgstr "Dette værktøj viser status for batteriet på din bærbare."
 
 #: battstat/battstat_applet.glade.h:2
@@ -293,7 +302,7 @@ msgstr "Dette værktøj viser status for batteriet på din bærbare."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1361
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Udseende"
@@ -316,7 +325,7 @@ msgstr "Batterifarveniveauer (%)"
 msgid "Beep when either of the above is true"
 msgstr "Bip når en af de ovenstående er tilfældet"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:264
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "Generelt"
@@ -390,7 +399,7 @@ msgid "Battery power low"
 msgstr "Batteriladning er lav"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:519 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
 msgid "CD Player"
 msgstr "Cd-afspiller"
 
@@ -415,61 +424,61 @@ msgstr "Panelprogram til afspilning af lyd-cd'er"
 msgid "_Run External CD Player"
 msgstr "_Kør ekstern cd-afspiller..."
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:902
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
 msgid "Play / Pause"
 msgstr "Afspil/pause"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
 msgid "Eject"
 msgstr "Skub ud"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
 msgid "Previous Track"
 msgstr "Foregående spor"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
 msgid "Next Track"
 msgstr "Næste spor"
 
-#: cdplayer/cdplayer.c:303 drivemount/drivemount.c:399 mixer/mixer.c:780
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "Der opstod en fejl ved kørsel af '%s': %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:422
 msgid "CD Player Preferences"
 msgstr "Indstillinger for cd-afspiller"
 
-#: cdplayer/cdplayer.c:426
+#: cdplayer/cdplayer.c:442
 msgid "Disc Image"
 msgstr "Diskaftryk"
 
-#: cdplayer/cdplayer.c:426
+#: cdplayer/cdplayer.c:442
 msgid "An image of a cd-rom disc"
 msgstr "Et aftryk af en cd-skive"
 
-#: cdplayer/cdplayer.c:428
+#: cdplayer/cdplayer.c:444
 msgid "Device _Path:"
 msgstr "St_i til enhed:"
 
-#: cdplayer/cdplayer.c:437
+#: cdplayer/cdplayer.c:453
 msgid "Device Path"
 msgstr "Sti til enhed"
 
-#: cdplayer/cdplayer.c:437
+#: cdplayer/cdplayer.c:453
 msgid "Set the device path here"
 msgstr "Angiv stien til enheden her"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:456
 msgid "Use _Default"
 msgstr "Benyt _standard"
 
-#: cdplayer/cdplayer.c:520
+#: cdplayer/cdplayer.c:537
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -477,40 +486,44 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (Gnome 2-porten)"
 
-#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Cd-afspillerpanelprogrammet er en simpel cd-afspiller til panelet"
 
-#: cdplayer/cdplayer.c:781 cdplayer/cdplayer.c:792
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
 msgid "Elapsed time"
 msgstr "Forløbet tid"
 
-#: cdplayer/cdplayer.c:784 cdplayer/cdplayer.c:794
+#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
 msgid "Track number"
 msgstr "Spornummer"
 
-#: cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:861
+msgid "Audio Device is busy, or being used by another application"
+msgstr ""
+
+#: cdplayer/cdplayer.c:936
 msgid "Click this button to Stop playing the CD"
 msgstr "Stop afspilningen af cd'en"
 
-#: cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:938
 msgid "Click this button to Play or Pause the CD"
 msgstr "Sæt afspilningen i gang eller på pause"
 
-#: cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:940
 msgid "Click this button to eject the CD"
 msgstr "Skub cd-skuffen ud"
 
-#: cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:942
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Afspil det foregående spor på cd'en"
 
-#: cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:944
 msgid "Click this button to Play the next track in the CD"
 msgstr "Afspil det næste spor på cd'en"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:490
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:447
+#: charpick/charpick.c:549
 msgid "Character Palette"
 msgstr "Tegnpalet"
 
@@ -524,15 +537,15 @@ msgstr "Indsæt tegn"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:366
+#: charpick/charpick.c:421
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:394
+#: charpick/charpick.c:449
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:395
+#: charpick/charpick.c:450
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -540,23 +553,23 @@ msgstr ""
 "Panelprogram til at vælge specielle tegn der ikke findes på dit tastatur. "
 "Udgivet under GNU General Public Licence."
 
-#: charpick/charpick.c:489
+#: charpick/charpick.c:548
 msgid "Insert special characters"
 msgstr "Indsæt specialtegn"
 
-#: charpick/properties.c:80
+#: charpick/properties.c:84
 msgid "_Default character list:"
 msgstr "_Selvvalgt tegnliste:"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Default list of characters"
 msgstr "Selvvalgt tegnliste"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid "Set the default character list here"
 msgstr "Angiv standardlisten af tegn her"
 
-#: charpick/properties.c:92
+#: charpick/properties.c:93
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
@@ -564,7 +577,7 @@ msgstr ""
 "Disse tegn vil vises når panelet starter. Der kan senere skiftes til denne "
 "liste ved tryk på <d> mens panelprogrammet har fokus."
 
-#: charpick/properties.c:156
+#: charpick/properties.c:158
 msgid "Character Palette Preferences"
 msgstr "Indstillinger for tegnpalet"
 
@@ -637,7 +650,7 @@ msgstr "_Monteringspunkt:"
 msgid "_Update interval (seconds):"
 msgstr "_Opdateringsinterval (sek.):"
 
-#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+#: drivemount/properties.c:307
 msgid "_Icon :"
 msgstr "_Ikon:"
 
@@ -705,8 +718,8 @@ msgstr "Et par øjeæbler til panelet"
 msgid "Amusements"
 msgstr "Underholdning"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:429 geyes/geyes.c:431
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
 msgid "Geyes"
 msgstr "Øjne"
 
@@ -714,23 +727,23 @@ msgstr "Øjne"
 msgid "Geyes Applet Factory"
 msgstr "Fabrik for øjnepanelprogram"
 
-#: geyes/geyes.c:238
+#: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright © 1999 Dave Camp"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "En fjollet lille xeyes-klon til panelet."
 
-#: geyes/geyes.c:432
+#: geyes/geyes.c:446
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Øjnene kigger i retning efter musemarkøren"
 
-#: geyes/themes.c:223
+#: geyes/themes.c:224
 msgid "Geyes Preferences"
 msgstr "Indstillinger til Øjne"
 
-#: geyes/themes.c:239
+#: geyes/themes.c:240
 msgid "_Theme Name:"
 msgstr "_Temanavn:"
 
@@ -742,7 +755,7 @@ msgstr "Skift tastaturlayout"
 msgid "GKB Factory"
 msgstr "Fabrik for tastaturomskifter"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Tastaturomskifter"
 
@@ -758,15 +771,15 @@ msgstr ""
 "Tryk på genvejstasten for at skifte mellem udseender. Genvejstasten kan "
 "konfigureres under indstillingerne."
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "Tastaturomskifter"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -784,15 +797,15 @@ msgstr ""
 "Kovacs <emese@gnome.hu> for hendes solidaritet, desuden for hjælp fra gutter "
 "som KevinV. Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Programmets hjemmeside (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
+#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
 msgstr "Deaktiveret"
 
-#: gkb-new/keygrab.c:305
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Tryk på en tast eller tryk Esc for at annullere"
 
@@ -800,29 +813,27 @@ msgstr "Tryk på en tast eller tryk Esc for at annullere"
 msgid "Keyboards (select and press add)"
 msgstr "Tastaturer (vælg og tryk \"tilføj\")"
 
-#: gkb-new/prop-add.c:393
+#: gkb-new/prop-add.c:392
 msgid "Select Keyboard"
 msgstr "Vælg tastatur"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:233
 msgid "Edit Keyboard"
 msgstr "Redigér tastatur"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#: gkb-new/prop-map.c:252
 msgid "_Name:"
 msgstr "_Navn:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:255
 msgid "_Label:"
 msgstr "_Etiket:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:258
 msgid "Co_mmand:"
 msgstr "_Kommando:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:266
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -834,7 +845,7 @@ msgstr ""
 " * gkb_xmmap da\n"
 " * setxkbmap da"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:299
 msgid "_Flag"
 msgstr "_Flag"
 
@@ -858,7 +869,8 @@ msgstr "Etiket"
 msgid "Flag and Label"
 msgstr "Flag og etiket"
 
-#: gkb-new/prop.c:291 modemlights/properties.c:393
+#: gkb-new/prop.c:291 gtik/gtik.c:1366 gweather/gweather-pref.c:320
+#: modemlights/properties.c:393
 msgid "Display"
 msgstr "Vis"
 
@@ -881,11 +893,11 @@ msgid "_Grab hotkey"
 msgstr "_Opsnap tast"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:425
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Indstillinger for tastaturomskifter"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:442
 msgid "Keymaps"
 msgstr "Tastaturopsætninger"
 
@@ -895,7 +907,7 @@ msgstr "Tastaturopsætninger"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:454 multiload/properties.c:313
 msgid "Options"
 msgstr "Indstillinger"
 
@@ -934,6 +946,7 @@ msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Tilbehør"
 
@@ -969,97 +982,137 @@ msgstr ""
 "Lad være med at bruge aktieoplysningerne til investeringsbeslutninger; det "
 "er kun til informeringsformål."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1158
+#, fuzzy
+msgid "Current _Stocks"
+msgstr "Akt_uelle forhold"
+
+#: gtik/gtik.c:1166
 msgid "_New Symbol:"
 msgstr "_Nyt symbol:"
 
-#: gtik/gtik.c:1158
+#: gtik/gtik.c:1174
 msgid "_Add"
 msgstr "_Tilføj"
 
-#: gtik/gtik.c:1169
-msgid "_Remove Selected"
-msgstr "_Fjern valgte"
+#: gtik/gtik.c:1179
+#, fuzzy
+msgid "_Remove"
+msgstr "Fjern"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1277
 msgid "Stock Ticker Preferences"
 msgstr "Indstillinger for børsnoteringer"
 
-#: gtik/gtik.c:1275
-msgid "Stock update Fre_quency in minutes:"
-msgstr "Opdaterings_interval i minutter:"
-
-#: gtik/gtik.c:1294
-msgid "Scroll Speed :"
-msgstr "Rullehastighed:"
-
-#: gtik/gtik.c:1314
-msgid "_Width :"
-msgstr "_Bredde:"
-
-#: gtik/gtik.c:1326
-msgid "Displa_y only symbols and price"
-msgstr "Vis kun s_ymboler og pris"
-
-#: gtik/gtik.c:1329
-msgid "Scroll _left to right"
-msgstr "Rul fra _venstre mod højre"
-
-#: gtik/gtik.c:1332
-msgid "_Enable scroll buttons"
-msgstr "Vis _rulleknapper"
-
-#: gtik/gtik.c:1356
-msgid "+ C_olor:"
-msgstr "P_ositiv farve:"
-
-#: gtik/gtik.c:1376
-msgid "- Colo_r:"
-msgstr "N_egativ farve:"
-
-#: gtik/gtik.c:1393
-msgid "_Unchanged Color:"
-msgstr "_Uændret farve:"
-
-#: gtik/gtik.c:1410
-msgid "Back_ground Color:"
-msgstr "_Baggrundsfarve:"
-
-#: gtik/gtik.c:1432
-msgid "_Font:"
-msgstr "Skrift_type:"
-
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1292
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1454
+#: gtik/gtik.c:1297
 msgid "Behavior"
 msgstr "Opførsel"
 
-#: gtik/gtik.c:1541
+#: gtik/gtik.c:1300 gweather/gweather-pref.c:273
+#, fuzzy
+msgid "Update"
+msgstr "_Opdatér"
+
+#: gtik/gtik.c:1304
+msgid "Stock update Fre_quency in minutes:"
+msgstr "Opdaterings_interval i minutter:"
+
+#: gtik/gtik.c:1314
+msgid "Scrolling"
+msgstr ""
+
+#: gtik/gtik.c:1318
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "Rullehastighed:"
+
+#: gtik/gtik.c:1322
+#, fuzzy
+msgid "_Slow"
+msgstr "Vis"
+
+#: gtik/gtik.c:1324
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1326
+#, fuzzy
+msgid "_Fast"
+msgstr "_Prognose"
+
+#: gtik/gtik.c:1343
+msgid "_Enable scroll buttons"
+msgstr "Vis _rulleknapper"
+
+#: gtik/gtik.c:1352
+msgid "Scroll _left to right"
+msgstr "Rul fra _venstre mod højre"
+
+#: gtik/gtik.c:1370 stickynotes/stickynotes.glade.h:29
+#, fuzzy
+msgid "_Width:"
+msgstr "_Bredde:"
+
+#: gtik/gtik.c:1383
+msgid "Displa_y only symbols and price"
+msgstr "Vis kun s_ymboler og pris"
+
+#: gtik/gtik.c:1392
+#, fuzzy
+msgid "_Font"
+msgstr "Skrift_type:"
+
+#: gtik/gtik.c:1406 mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468 multiload/properties.c:365
+msgid "Colors"
+msgstr "Farver"
+
+#: gtik/gtik.c:1411
+#, fuzzy
+msgid "Stock _raised"
+msgstr "Aktieæn_dring:"
+
+#: gtik/gtik.c:1426
+#, fuzzy
+msgid "Stock _lowered"
+msgstr "Børsnoteringer"
+
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "Stock _unchanged"
+msgstr "Aktieæn_dring:"
+
+#: gtik/gtik.c:1456 modemlights/properties.c:441
+msgid "_Background"
+msgstr "_Baggrund"
+
+#: gtik/gtik.c:1553
 msgid "Skip forward"
 msgstr "Spring fremad"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1554
 msgid "Skip backward"
 msgstr "Spring bagud"
 
-#: gtik/gtik.c:1543
+#: gtik/gtik.c:1555
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr "Få løbende opdaterede børsnoteringer"
 
-#: gtik/gtik.c:1731
+#: gtik/gtik.c:1745
 msgid "(No"
 msgstr "(Ingen"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1746
 msgid "Change "
 msgstr "Ændring "
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Prognose"
 
@@ -1076,15 +1129,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Overvåg de aktuelle vejrforhold og -prognoser"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:64
 msgid "Weather Report"
 msgstr "Vejrrapport"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:65
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright © 1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:66
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1094,1411 +1147,775 @@ msgstr ""
 "\n"
 "Udgivet under GNU General Public License."
 
-#: gweather/gweather-applet.c:198
-msgid "GNOME Weather"
-msgstr "Vejret"
+#: gweather/gweather-applet.c:43
+#, c-format
+msgid ""
+"%s\n"
+"Today: %s\n"
+"Current temperature %d"
+msgstr ""
 
-#: gweather/gweather-applet.c:323
+#: gweather/gweather-applet.c:65
+#, c-format
+msgid ""
+"%s\n"
+"%s: %s\n"
+"Low %d, High %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:293
 msgid "Updating..."
 msgstr "Opdaterer..."
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:82
+msgid "Day"
+msgstr ""
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Precipitation"
+msgstr "Delvis nedbør"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Condition"
+msgstr "Forhold:"
+
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
 msgid "Forecast"
 msgstr "Prognose"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Placering:"
+#, fuzzy
+msgid "Current Conditions"
+msgstr "Akt_uelle forhold"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
+#: gweather/gweather-dialog.c:121
+msgid "City:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:128
+#, fuzzy
+msgid "Last update:"
 msgstr "Opdatering:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:135
 msgid "Conditions:"
 msgstr "Forhold:"
 
-#: gweather/gweather-dialog.c:134
-msgid "Sky:"
-msgstr "Himmel:"
-
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:146
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: gweather/gweather-dialog.c:150
-msgid "Dew point:"
-msgstr "Dugpunkt:"
+#: gweather/gweather-dialog.c:153
+#, fuzzy
+msgid "Feels like:"
+msgstr "Ledig diskplads:"
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:160
 msgid "Humidity:"
 msgstr "Fugtighed:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:167
 msgid "Wind:"
 msgstr "Vind:"
 
 #: gweather/gweather-dialog.c:174
+#, fuzzy
+msgid "Visibilty:"
+msgstr "Sigtbarhed:"
+
+#: gweather/gweather-dialog.c:181
 msgid "Pressure:"
 msgstr "Tryk:"
 
-#: gweather/gweather-dialog.c:182
-msgid "Visibility:"
-msgstr "Sigtbarhed:"
-
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "Akt_uelle forhold"
-
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
-msgstr "Vejrudsigtsrapport"
-
-#: gweather/gweather-dialog.c:294
-msgid "See the ForeCast Details"
-msgstr "Se vejrudsigtsdetaljer"
-
-#: gweather/gweather-dialog.c:329
-msgid "_Visit Weather.com"
-msgstr "_Besøg Weather.com"
-
-#: gweather/gweather-dialog.c:330
-msgid "URL link Button"
-msgstr "URL-henvisningsknap"
-
-#: gweather/gweather-dialog.c:330
-msgid "Click to Enter Weather.com"
-msgstr "Klik for at gå ind på Weather.com"
-
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "_Radarkort"
-
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+#: gweather/gweather-dialog.c:307
+#, c-format
+msgid "%s / %.1f %s"
 msgstr ""
-"Detaljerede vejrudsigter er ikke tilgængelige for dette sted.\n"
-"Prøv venligst den nationale vejrudsigt (bemærk at\n"
-"IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
-
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"Nationale vejrudsigter er ikke tilgængelige for dette sted.\n"
-"Prøv venligst den detaljerede vejrudsigt (bemærk at\n"
-"IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:108
-msgid "Location view"
-msgstr "Placeringsvisning"
-
-#: gweather/gweather-pref.c:108
-msgid "Select Location from the list"
-msgstr "Vælg en placering fra listen"
-
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Update spin button"
 msgstr "Opdateringsknap"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Spinbutton for updating"
 msgstr "Talindtastning for opdateringsinterval"
 
-#: gweather/gweather-pref.c:111
-msgid "Address Entry"
-msgstr "Adresseindtastning"
-
-#: gweather/gweather-pref.c:111
-msgid "Enter the URL"
-msgstr "Indtast URL'en"
-
-#: gweather/gweather-pref.c:561
+#: gweather/gweather-pref.c:237
 msgid "Weather Preferences"
 msgstr "Indstillinger for vejret"
 
 # hvert hænger sammen med minut
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:285
 msgid "_Automatically update every"
 msgstr "_Opdatér automatisk hvert"
 
-#: gweather/gweather-pref.c:610
-msgid "Use _metric system units"
-msgstr "Benyt _metriske mål"
-
-#: gweather/gweather-pref.c:616
-msgid "Enable _detailed forecast"
-msgstr "Aktivér _detaljeret prognose"
-
-#: gweather/gweather-pref.c:623
-msgid "Enable _radar map"
-msgstr "Aktivér _radarkort"
-
-#: gweather/gweather-pref.c:629
-msgid "Use cus_tom address for radar map"
-msgstr "Benyt selv_valgt adresse til radarkortet"
-
-#: gweather/gweather-pref.c:640
-msgid "A_ddress :"
-msgstr "A_dresse:"
-
-#: gweather/gweather-pref.c:652
-msgid "Updates"
-msgstr "Opdateringer"
-
-# hvert hænger sammen med minut
-#: gweather/gweather-pref.c:658
-msgid "_Automatically update every "
-msgstr "_Opdatér automatisk hvert "
-
-#: gweather/gweather-pref.c:678
+#: gweather/gweather-pref.c:312
 msgid "minute(s)"
 msgstr "minut"
 
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:689
-msgid "Miscellaneous"
-msgstr "Diverse"
+#: gweather/gweather-pref.c:331
+msgid "Use _metric system units"
+msgstr "Benyt _metriske mål"
 
-#: gweather/gweather-pref.c:744
+#: gweather/gweather-pref.c:341
+msgid "Display daily average temperatures"
+msgstr ""
+
+#: gweather/gweather-pref.c:352
+msgid "Number of _forecast days to display:"
+msgstr ""
+
+#: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
 msgid "Location"
 msgstr "Placering"
 
-#: gweather/weather.c:57
+#: gweather/gweather-pref.c:387
+#, fuzzy
+msgid "Current city:"
+msgstr "Akt_uelle forhold"
+
+#: gweather/gweather-pref.c:399
+msgid "Available c_ountries:"
+msgstr ""
+
+#: gweather/gweather-pref.c:411
+msgid "Available c_ities:"
+msgstr ""
+
+#: gweather/location.c:184
+#, fuzzy
+msgid "Could not download countries"
+msgstr "Monterer og afmonterer disk"
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+#, fuzzy
+msgid "Downloading Cities..."
+msgstr "Indlæser overskrifter..."
+
+#: gweather/location.c:305
+#, fuzzy
+msgid "Country"
+msgstr "_Land:"
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
+
+#: gweather/weather.c:49
 msgid "knots"
 msgstr "not"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:49
 msgid "kph"
 msgstr "km/t"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "inHg"
 msgstr "tmHG"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "miles"
 msgstr "mil"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "kilometers"
 msgstr "kilometer"
 
-#: gweather/weather.c:132
-msgid "Variable"
-msgstr "Varieret"
-
-#: gweather/weather.c:133
-msgid "North"
-msgstr "Nord"
-
-#: gweather/weather.c:133
-msgid "North - NorthEast"
-msgstr "Nord-nordøst"
-
-#: gweather/weather.c:133
-msgid "Northeast"
-msgstr "Nordøst"
-
-#: gweather/weather.c:133
-msgid "East - NorthEast"
-msgstr "Øst-nordøst"
-
-#: gweather/weather.c:134
-msgid "East"
-msgstr "Øst"
-
-#: gweather/weather.c:134
-msgid "East - Southeast"
-msgstr "Øst-sydøst"
-
-#: gweather/weather.c:134
-msgid "Southeast"
-msgstr "Sydøst"
-
-#: gweather/weather.c:134
-msgid "South - Southeast"
-msgstr "Syd-sydøst"
-
-#: gweather/weather.c:135
-msgid "South"
-msgstr "Syd"
-
-#: gweather/weather.c:135
-msgid "South - Southwest"
-msgstr "Syd-sydvest"
-
-#: gweather/weather.c:135
-msgid "Southwest"
-msgstr "Sydvest"
-
-#: gweather/weather.c:135
-msgid "West - Southwest"
-msgstr "Vest-sydvest"
-
-#: gweather/weather.c:136
-msgid "West"
-msgstr "Vest"
-
-#: gweather/weather.c:136
-msgid "West - Northwest"
-msgstr "Vest-nordvest"
-
-#: gweather/weather.c:136
-msgid "Northwest"
-msgstr "Nordvest"
-
-#: gweather/weather.c:136
-msgid "North - Northwest"
-msgstr "Nord-nordvest"
-
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
-msgid "Invalid"
-msgstr "Ugyldig"
-
-#: gweather/weather.c:149
+#: gweather/weather.c:63
 msgid "Clear Sky"
 msgstr "Klar himmel"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:64
 msgid "Broken clouds"
 msgstr "Delvis skyet"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:65
 msgid "Scattered clouds"
 msgstr "Spredte skyer"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:66
 msgid "Few clouds"
 msgstr "Få skyer"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:67
 msgid "Overcast"
 msgstr "Overskyet"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-#. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Støvregn"
+#: gweather/weather.c:71
+#, fuzzy
+msgid "Windy"
+msgstr "Vind:"
 
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Støvregn i nærheden"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Let støvregn"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Moderat støvregn"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Tung støvregn"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Svag støvregn"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Stedvis støvregn"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Delvis støvregn"
-
-#: gweather/weather.c:186 gweather/weather.c:187
-msgid "Thunderstorm"
+#: gweather/weather.c:72
+#, fuzzy
+msgid "Thunder Storms"
 msgstr "Tordenvejr"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Støvregn og blæst"
-
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Regnbyger"
-
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Drivende støvregn"
-
-#: gweather/weather.c:186
-msgid "Freezing drizzle"
-msgstr "Støvregn og frost"
-
-#. RAIN
-#: gweather/weather.c:187
-msgid "Rain"
-msgstr "Regn"
-
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Regn i nærheden"
-
-#: gweather/weather.c:187
-msgid "Light rain"
-msgstr "Let regn"
-
-#: gweather/weather.c:187
-msgid "Moderate rain"
-msgstr "Moderat regn"
-
-#: gweather/weather.c:187
-msgid "Heavy rain"
-msgstr "Kraftig regn"
-
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Svag regn"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Stedvis regn"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Delvis regnvejr"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Blæsende regnvejr"
-
-#: gweather/weather.c:187
-msgid "Rain showers"
-msgstr "Regnbyger"
-
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Drivende regn"
-
-#: gweather/weather.c:187
-msgid "Freezing rain"
-msgstr "Regn og frost"
-
-#. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:73
 msgid "Snow"
 msgstr "Sne"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Sne i nærheden"
+#: gweather/weather.c:74
+msgid "Rain"
+msgstr "Regn"
 
-#: gweather/weather.c:188
-msgid "Light snow"
-msgstr "Let sne"
+#: gweather/weather.c:75
+#, fuzzy
+msgid "Heavy Rain"
+msgstr "Kraftig regn"
 
-#: gweather/weather.c:188
-msgid "Moderate snow"
-msgstr "Moderat sne"
+#: gweather/weather.c:76
+msgid "Sleet"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Heavy snow"
-msgstr "Kraftig sne"
+#: gweather/weather.c:77
+#, fuzzy
+msgid "Light Flurries"
+msgstr "Let støvregn"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Svag sne"
+#: gweather/weather.c:78
+msgid "Flurries"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Stedvis sne"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Delvis snevejr"
-
-#: gweather/weather.c:188 gweather/weather.c:189
-msgid "Snowstorm"
-msgstr "Snestorm"
-
-#: gweather/weather.c:188
-msgid "Blowing snowfall"
-msgstr "Sne og blæst"
-
-#: gweather/weather.c:188
-msgid "Snow showers"
-msgstr "Snebyger"
-
-#: gweather/weather.c:188
-msgid "Drifting snow"
-msgstr "Drivende snevejr"
-
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Sne og frost"
-
-#. SNOW_GRAINS
-#: gweather/weather.c:189
-msgid "Snow grains"
+#: gweather/weather.c:79
+#, fuzzy
+msgid "Snow and Wind"
 msgstr "Snekorn"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Snekorn i nærheden"
-
-#: gweather/weather.c:189
-msgid "Light snow grains"
-msgstr "Lette snekorn"
-
-#: gweather/weather.c:189
-msgid "Moderate snow grains"
-msgstr "Moderate snekorn"
-
-#: gweather/weather.c:189
-msgid "Heavy snow grains"
-msgstr "Tunge snekorn"
-
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Svage snekorn"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Stedvise snekorn"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Delvis snekorn"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Blæsende snekorn"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Snekornsbyger"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Drivende snekorn"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "frysende snekorn"
-
-#. ICE_CRYSTALS
-#: gweather/weather.c:190
-msgid "Ice crystals"
-msgstr "Iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Iskrystaller i nærheden"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Få iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Moderate iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Tunge iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Stedvise iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Delvise iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Iskrystalstorm"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Blæst og iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Byger af iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Drivende iskrystaller"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Frysende iskrystaller"
-
-#. ICE_PELLETS
-#: gweather/weather.c:191
-msgid "Ice pellets"
-msgstr "Iskugler"
-
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Iskugler i nærheden"
-
-#: gweather/weather.c:191
-msgid "Few ice pellets"
-msgstr "Få iskugler"
-
-#: gweather/weather.c:191
-msgid "Moderate ice pellets"
-msgstr "Moderate iskugler"
-
-#: gweather/weather.c:191
-msgid "Heavy ice pellets"
-msgstr "Tunge iskugler"
-
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Svage iskugler"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Stedvise iskugler"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Delvise iskugler"
-
-#: gweather/weather.c:191
-msgid "Ice pellet storm"
-msgstr "Iskuglestorm"
-
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Blæst og iskugler"
-
-#: gweather/weather.c:191
-msgid "Showers of ice pellets"
-msgstr "Byger af iskugler"
-
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Drivende iskugler"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Frysende iskugler"
-
-#. HAIL
-#: gweather/weather.c:192
-msgid "Hail"
-msgstr "Hagl"
-
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Hagl i nærheden"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Let hagl"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Moderat hagl"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Tung hagl"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Svag hagl"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Stedvis hagl"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Delvis hagl"
-
-#: gweather/weather.c:192
-msgid "Hailstorm"
-msgstr "Haglvejr"
-
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Hagl og blæst"
-
-#: gweather/weather.c:192
-msgid "Hail showers"
-msgstr "Haglbyger"
-
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Drivende hagl"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Hagl og frost"
-
-#. SMALL_HAIL
-#: gweather/weather.c:193
-msgid "Small hail"
-msgstr "Småhagl"
-
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Småhagl i nærheden"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Moderate småhagl"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Tunge småhagl"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Svag småhagl"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Stedvis småhagl"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Delvis småhagl"
-
-#: gweather/weather.c:193
-msgid "Small hailstorm"
-msgstr "Småhaglstorm"
-
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Småhagl og blæst"
-
-#: gweather/weather.c:193
-msgid "Showers of small hail"
-msgstr "Byger af småhagl"
-
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Drivende småhagl"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Småhagl og frost"
-
-#. PRECIPITATION
-#: gweather/weather.c:194
-msgid "Unknown precipitation"
-msgstr "Ukendt nedbør"
-
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Nedbør i nærheden"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Let nedbør"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Moderat nedbør"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Tung nedbør"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Svag nedbør"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Stedvis nedbør"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Delvis nedbør"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Ukendt tordenstorm"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Blæsende nedbør"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Byger af ukendt type"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Drivende nedbør"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Nedbør og frost"
-
-# Tåge = fog; BL
-#. MIST
-#: gweather/weather.c:195
-msgid "Mist"
-msgstr "Dis"
-
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Dis i nærheden"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Let dis"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Moderat dis"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Tyk dis"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Svag dis"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Stedvis dis"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Delvis dis"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Dis og blæst"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Drivende dis"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Dis og frost"
-
-#. FOG
-#: gweather/weather.c:196
-msgid "Fog"
-msgstr "Tåge"
-
-#: gweather/weather.c:196
-msgid "Fog in the vicinity"
-msgstr "Tåge i nærheden"
-
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Let tåge"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Moderat tåge"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Tyk tåge"
-
-#: gweather/weather.c:196
-msgid "Shallow fog"
-msgstr "Svag tåge"
-
-#: gweather/weather.c:196
-msgid "Patches of fog"
-msgstr "Stedvis tåge"
-
-#: gweather/weather.c:196
-msgid "Partial fog"
-msgstr "Delvis tåge"
-
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Tåge og blæst"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Drivende tåge"
-
-#: gweather/weather.c:196
-msgid "Freezing fog"
-msgstr "Tåge og frost"
-
-#. SMOKE
-#: gweather/weather.c:197
-msgid "Smoke"
-msgstr "Røg"
-
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Røg i nærheden"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Tynd røg"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Moderat røg"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Tyk røg"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Svag røg"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Stedvis røg"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Delvis røg"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Røg med torden"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Røg og blæst"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Drivende røg"
-
-#. VOLCANIC_ASH
-#: gweather/weather.c:198
-msgid "Volcanic ash"
-msgstr "Vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Vulkansk aske i nærheden"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Moderate vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Tyk vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Svag vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Stedvis vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Delvis vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Vulkansk aske med torden"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Blæsende vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Byger af vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Drivende vulkansk aske"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Vulkansk aske og frost"
-
-#. SAND
-#: gweather/weather.c:199
-msgid "Sand"
-msgstr "Sand"
-
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Sand i nærheden"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Let sand"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Moderat sand"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Tung sand"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Stedvis sand"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "delvis sand"
-
-#: gweather/weather.c:199
-msgid "Blowing sand"
-msgstr "Blæsende sand"
-
-#: gweather/weather.c:199
-msgid "Drifting sand"
-msgstr "Drivende sand"
-
-#. HAZE
-#: gweather/weather.c:200
-msgid "Haze"
-msgstr "Dis"
-
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Dis i området"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Let dis"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Moderat dis"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Tæt dis"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Tynd dis"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Områder med dis"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Delvis dis"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Dis med vind"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Drivende dis"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Frysende dis"
-
-#. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Byger"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Byger i nærheden"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Lette byger"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Moderate byger"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Tunge byger"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Svage byger"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Stedvise byger"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Delvise byger"
-
-#: gweather/weather.c:201
-msgid "Blowing sprays"
-msgstr "Blæsende byger"
-
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Drivende byger"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Frysende byger"
-
-#. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:80
 msgid "Dust"
 msgstr "Støv"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Støv i nærheden"
+#: gweather/weather.c:81
+msgid "Fog"
+msgstr "Tåge"
 
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Let støv"
+#: gweather/weather.c:82
+msgid "Haze"
+msgstr "Dis"
 
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Moderat støv"
+#: gweather/weather.c:83
+msgid "Smoke"
+msgstr "Røg"
 
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Tungt støv"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Stedvis støv"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Delvis støv"
-
-#: gweather/weather.c:202
-msgid "Blowing dust"
-msgstr "Blæsende støv"
-
-#: gweather/weather.c:202
-msgid "Drifting dust"
-msgstr "Drivende støv"
-
-#. SQUALL
-#: gweather/weather.c:203
-msgid "Squall"
-msgstr "Vindstød"
-
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Vindstød i nærheden"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Lette vindstød"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Moderate vindstød"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Tunge vindstød"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Delvise vindstød"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Vindstød og torden"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Blæsende vindstød"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Drivende vindstød"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Frysende vindstød"
-
-#. SANDSTORM
-#: gweather/weather.c:204
-msgid "Sandstorm"
-msgstr "Sandstorm"
-
-#: gweather/weather.c:204
-msgid "Sandstorm in the vicinity"
-msgstr "Sandstorm i nærheden"
-
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Let sandstorm"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Moderat sandstorm"
-
-#: gweather/weather.c:204
-msgid "Heavy sandstorm"
-msgstr "Tung sandstorm"
-
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Svag sandstorm"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Delvis sandstorm"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Tordnende sandstorm"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Sandstorm og blæst"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Drivende sandstorm"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Sandstorm og frost"
-
-#. DUSTSTORM
-#: gweather/weather.c:205
-msgid "Duststorm"
-msgstr "Støvstorm"
-
-#: gweather/weather.c:205
-msgid "Duststorm in the vicinity"
-msgstr "Støvstorm i nærheden"
-
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Let støvstorm"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Moderat støvstorm"
-
-#: gweather/weather.c:205
-msgid "Heavy duststorm"
-msgstr "Tung støvstorm"
-
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Svag støvstorm"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Delvis støvstorm"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Støvstorm og torden"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Blæsende støvstorm"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Drivende støvstorm"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Støvstorm og frost"
-
-#. FUNNEL_CLOUD
-#: gweather/weather.c:206
-msgid "Funnel cloud"
-msgstr "Skorstenssky"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Skorstenssky i nærheden"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Let skorstenssky"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Moderat skorstenssky"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Tyk skorstenssky"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Let skorstenssky"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Stedvise skorstensskyer"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Delvise skorstensskyer"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Blæst og skorstenssky"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Drivende skorstenssky"
-
-#. TORNADO
-#: gweather/weather.c:207
-msgid "Tornado"
-msgstr "Tornado"
-
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornado i nærheden"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Moderat tornado"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Rasende tornado"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Delvis tornado"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
+#: gweather/weather.c:84
+msgid "Cold"
 msgstr ""
-"Tordentornado - Hvis du er i Danmark mens du læser dette, er det verdens "
-"undergang :-)"
 
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Drivende tornado"
+#: gweather/weather.c:85
+msgid "Cloudy"
+msgstr ""
 
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Tornado og frost"
+#: gweather/weather.c:86
+msgid "Mostly Cloudy"
+msgstr ""
 
-#. DUST_WHIRLS
-#: gweather/weather.c:208
-msgid "Dust whirls"
-msgstr "Støvhvirvler"
+#: gweather/weather.c:87
+msgid "Partly Cloudy"
+msgstr ""
 
-#: gweather/weather.c:208
-msgid "Dust whirls in the vicinity"
-msgstr "Støvhvirvler i nærheden"
+#: gweather/weather.c:88
+#, fuzzy
+msgid "Sunny"
+msgstr "Sun"
 
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Lette støvhvirvler"
+#: gweather/weather.c:89
+msgid "Mostly Sunny"
+msgstr ""
 
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Moderate støvhvirvler"
+#: gweather/weather.c:90
+msgid "Hot"
+msgstr ""
 
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Tunge støvhvirvler"
+#: gweather/weather.c:91
+#, fuzzy
+msgid "Nothing"
+msgstr "Nord"
 
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Svage støvhvirvler"
+#: gweather/weather.c:95
+msgid "Variable"
+msgstr "Varieret"
 
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Stedvise støvhvirvler"
+#: gweather/weather.c:96
+msgid "North"
+msgstr "Nord"
 
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Delvise støvhvirvler"
+#: gweather/weather.c:96
+msgid "North - NorthEast"
+msgstr "Nord-nordøst"
 
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Blæsende støvhvirvler"
+#: gweather/weather.c:96
+msgid "Northeast"
+msgstr "Nordøst"
 
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Drivende støvhvirvler"
+#: gweather/weather.c:96
+msgid "East - NorthEast"
+msgstr "Øst-nordøst"
 
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
-msgid "Failed to get METAR data.\n"
-msgstr "Kunne ikke få METAR data.\n"
+#: gweather/weather.c:97
+msgid "East"
+msgstr "Øst"
 
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
-msgid "WeatherInfo missing location"
-msgstr "VejrInformation mangler sted"
+#: gweather/weather.c:97
+msgid "East - Southeast"
+msgstr "Øst-sydøst"
 
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Kunne ikke få IWIN-data.\n"
+#: gweather/weather.c:97
+msgid "Southeast"
+msgstr "Sydøst"
 
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Kunne ikke få IWIN udsigtsdata.\n"
+#: gweather/weather.c:97
+msgid "South - Southeast"
+msgstr "Syd-sydøst"
 
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Kunne ikke få Met Office-data.\n"
+#: gweather/weather.c:98
+msgid "South"
+msgstr "Syd"
 
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Kunne ikke få Met Office udsigtsdata.\n"
+#: gweather/weather.c:98
+msgid "South - Southwest"
+msgstr "Syd-sydvest"
 
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Kunne ikke få radarkortbillede.\n"
+#: gweather/weather.c:98
+msgid "Southwest"
+msgstr "Sydvest"
 
-#: gweather/weather.c:1771
-msgid "%a, %b %d / %H:%M"
-msgstr "%A d. %d. %B kl. %H:%M"
+#: gweather/weather.c:98
+msgid "West - Southwest"
+msgstr "Vest-sydvest"
 
-#: gweather/weather.c:1775
-msgid "Unknown observation time"
-msgstr "Ukendt observationstid"
+#: gweather/weather.c:99
+msgid "West"
+msgstr "Vest"
 
-#: gweather/weather.c:1835
+#: gweather/weather.c:99
+msgid "West - Northwest"
+msgstr "Vest-nordvest"
+
+#: gweather/weather.c:99
+msgid "Northwest"
+msgstr "Nordvest"
+
+#: gweather/weather.c:99
+msgid "North - Northwest"
+msgstr "Nord-nordvest"
+
+#: gweather/weather.c:100
 msgid "Calm"
 msgstr "Stille"
 
-#: gweather/weather.c:1861
-msgid "Unknown"
-msgstr "Ukendt"
+#: gweather/weather.c:528 gweather/weather.c:553
+msgid "Could not download forecast"
+msgstr ""
 
-#: gweather/weather.c:1895
-msgid "Retrieval failed"
-msgstr "Hentning fejlede"
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "Fabrik til oprettelse af vejrpanelprogram"
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:328 mailcheck/mailcheck.c:1812
+#, fuzzy
+msgid "Inbox Monitor"
+msgstr "Lydovervåger"
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+msgid "_Check for mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:204
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "Der opstod en fejl ved kørsel af '%s': %s"
+
+#: mailcheck/mailcheck.c:334
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:342
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:347 mailcheck/mailcheck.c:1425
+#, fuzzy
+msgid "Password Entry box"
+msgstr "Adgangskodeindtastning"
+
+#: mailcheck/mailcheck.c:401
+msgid "The Network May be down"
+msgstr ""
+
+#: mailcheck/mailcheck.c:404 mailcheck/mailcheck.c:407
+msgid "The User id or Password is not  correct"
+msgstr ""
+
+#: mailcheck/mailcheck.c:410
+msgid "The Server name may be wrong"
+msgstr ""
+
+#: mailcheck/mailcheck.c:414
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:423
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:604
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:606
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:610
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:612
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:616
+#, fuzzy
+msgid "No mail."
+msgstr "Normal"
+
+#: mailcheck/mailcheck.c:1136 mailcheck/mailcheck.c:1137
+#: mailcheck/mailcheck.c:2003 mailcheck/mailcheck.c:2004
+msgid "Status not updated"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1309
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1317
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1325
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1333
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1341
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1361
+#, fuzzy
+msgid "Mail _spool file:"
+msgstr "Postfil:"
+
+#: mailcheck/mailcheck.c:1365
+#, fuzzy
+msgid "Browse"
+msgstr "Surfningsprogram"
+
+#: mailcheck/mailcheck.c:1380
+#, fuzzy
+msgid "Mail s_erver:"
+msgstr "Postfil:"
+
+#: mailcheck/mailcheck.c:1386
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1400
+#, fuzzy
+msgid "_Username:"
+msgstr "Br_ugernavn"
+
+#: mailcheck/mailcheck.c:1408
+#, fuzzy
+msgid "Username Entry box"
+msgstr "Brugerindtastning"
+
+#: mailcheck/mailcheck.c:1417
+#, fuzzy
+msgid "_Password:"
+msgstr "_Adgangskode:"
+
+#: mailcheck/mailcheck.c:1438
+msgid "_Folder:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1446
+#, fuzzy
+msgid "Folder Entry box"
+msgstr "Portindtastning"
+
+#: mailcheck/mailcheck.c:1458
+msgid "C_ommand to run before checking for mail:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1466
+#, fuzzy
+msgid "Command Entry box"
+msgstr "Kommandohistorie"
+
+#: mailcheck/mailcheck.c:1491
+#, fuzzy
+msgid "Execute"
+msgstr "Skub ud"
+
+#: mailcheck/mailcheck.c:1502
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1517
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1527
+#, fuzzy
+msgid "When new mail _arrives:"
+msgstr "Når ny post modtages, kør:"
+
+#: mailcheck/mailcheck.c:1540 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1550
+#, fuzzy
+msgid "When clicke_d:"
+msgstr "Når klikket på, kør:"
+
+#: mailcheck/mailcheck.c:1563
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1573
+msgid "Set the number of unread mails to _zero"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1584
+#, fuzzy
+msgid "Check for mail _every"
+msgstr "Tjek med"
+
+#: mailcheck/mailcheck.c:1596 mailcheck/mailcheck.c:1600
+#, fuzzy
+msgid "minutes"
+msgstr "minut"
+
+#: mailcheck/mailcheck.c:1596
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1610 mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "seconds"
+msgstr "millisekunder"
+
+#: mailcheck/mailcheck.c:1610
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1622
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1633
+#, fuzzy
+msgid "Select a_nimation"
+msgstr "Vælg skrifttype"
+
+#: mailcheck/mailcheck.c:1669 mailcheck/mailcheck.c:1877
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Der opstod en fejl ved kørsel af '%s': %s"
+
+#: mailcheck/mailcheck.c:1710
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "Indstillinger for systemovervågning"
+
+#: mailcheck/mailcheck.c:1730
+msgid "_Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1734
+#, fuzzy
+msgid "Mail_box"
+msgstr "Post"
+
+#: mailcheck/mailcheck.c:1814
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1979
+#, fuzzy
+msgid "Text only"
+msgstr "Tekst at vise:"
+
+#: mailcheck/mailcheck.c:2005
+#, fuzzy
+msgid "Mail check"
+msgstr "Ur og posttjek"
+
+#: mailcheck/mailcheck.c:2006
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+#, fuzzy
+msgid "Path to the animation file"
+msgstr "Sti til tail:"
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+#, fuzzy
+msgid "Mailcheck"
+msgstr "Ur og posttjek"
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+#, fuzzy
+msgid "New Mail"
+msgstr "Post"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Kommandolinje"
 
@@ -2530,15 +1947,15 @@ msgstr ""
 "version."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Start program"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Kommandolinje"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Indtast en kommando her og Gnome vil udføre den for dig"
 
@@ -2593,11 +2010,6 @@ msgstr "_Bredde:"
 msgid "Autocompletion"
 msgstr "Autofuldførelse"
 
-#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
-#: multiload/properties.c:365
-msgid "Colors"
-msgstr "Farver"
-
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Command Line Preferences"
 msgstr "Indstillinger for kommandolinje"
@@ -2615,7 +2027,8 @@ msgid "Command:"
 msgstr "Kommando:"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history based autocompletion"
+#, fuzzy
+msgid "E_nable history-based autocompletion"
 msgstr "Benyt _historikbaseret autofuldførelse"
 
 #: mini-commander/src/mini-commander.glade.h:13
@@ -2627,6 +2040,7 @@ msgid "Pattern:"
 msgstr "Mønster:"
 
 #: mini-commander/src/mini-commander.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Pick a color"
 msgstr "Vælg en farve"
 
@@ -2672,11 +2086,11 @@ msgstr "Historik"
 msgid "Click this button for the list of previous commands"
 msgstr "Vis en liste over tidligere kommandoer"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Kommandopanelprogram"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Kommandelinje til panelet"
 
@@ -2700,8 +2114,8 @@ msgstr "Du kan ikke angive flere ens mønstre"
 msgid "Adjust the sound volume"
 msgstr "Justér lydstyrken"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:827
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
+#: mixer/mixer.c:938
 msgid "Volume Control"
 msgstr "Lydstyrke"
 
@@ -2709,15 +2123,124 @@ msgstr "Lydstyrke"
 msgid "_Mute"
 msgstr "_Dæmp"
 
-#: mixer/GNOME_MixerApplet.xml.h:4
+#: mixer/GNOME_MixerApplet.xml.h:5
 msgid "_Run Volume Control..."
 msgstr "_Lydstyrke..."
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:110
+#, fuzzy
+msgid "Main Volume"
+msgstr "Hovedlydstyrke og dæmp"
+
+#: mixer/mixer.c:110
+msgid "Bass"
+msgstr ""
+
+#: mixer/mixer.c:110
+#, fuzzy
+msgid "Treble"
+msgstr "Slået til"
+
+#: mixer/mixer.c:110
+msgid "Synth"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:111
+#, fuzzy
+msgid "Speaker"
+msgstr "Server"
+
+#: mixer/mixer.c:111
+#, fuzzy
+msgid "Line"
+msgstr "Linje(r):"
+
+#: mixer/mixer.c:112
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "CD"
+msgstr "D"
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "Mix"
+msgstr "Mixerpult"
+
+#: mixer/mixer.c:112
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Video"
+msgstr "Skjul"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Radio"
+msgstr "Regn"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Monitor"
+msgstr "Lydovervåger"
+
+#: mixer/mixer.c:166
 msgid "Volume Control (muted)"
 msgstr "Lydstyrkekontrol (dæmpet)"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:248
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2725,43 +2248,35 @@ msgstr ""
 "advarsel: denne version af gmix blev oversat med en anden version af "
 "soundcard.h\n"
 
-#: mixer/mixer.c:207
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "Forespørgsel om tilgængelige kanaler på mixerenheden %s mislykkedes\n"
-
-#: mixer/mixer.c:214
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "advarsel: mixeren har ingen lydstyrkekanal - bruger PCM i stedet.\n"
-
-#: mixer/mixer.c:217
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "Mixerenheden %s har hverken lydstyrke- eller PCM-kanaler.\n"
-
-#: mixer/mixer.c:572
+#: mixer/mixer.c:683
 msgid "Volume Controller"
 msgstr "Lydstyrkekontrol"
 
-#: mixer/mixer.c:573
+#: mixer/mixer.c:684
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Brug op- og ned-piletasterne til at ændre lydstyrken"
 
-#: mixer/mixer.c:828
+#: mixer/mixer.c:939
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:829
+#: mixer/mixer.c:940
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Lydstyrkekontrollen lader dig sætte lydstyrken for skrivebordsmiljøet."
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1039
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "Lydstyrkekontrol"
+
+#: mixer/mixer.c:1059
+#, fuzzy
+msgid "Channels"
+msgstr "Ændring "
+
+#: mixer/mixer.c:1345
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Lydstyrkekontrollen lader dig sætte lydstyrken for skrivebordet"
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:227
@@ -2836,10 +2351,6 @@ msgstr "Modtag data"
 #: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "_Forgrund"
-
-#: modemlights/properties.c:441
-msgid "_Background"
-msgstr "_Baggrund"
 
 #: modemlights/properties.c:443
 msgid "Send data"
@@ -2940,11 +2451,12 @@ msgid "Load Average"
 msgstr "Middelbelastning"
 
 #: multiload/main.c:80
+#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"space use, plus network traffic."
 msgstr ""
 "En systembelastningsovervåger der kan vise grafer for processor, hukommelse "
 "og swapfilsforbrug, plus netværkstraffik. Udgivet under GNU general public "
@@ -2963,7 +2475,8 @@ msgid "Network"
 msgstr "Netværk"
 
 #: multiload/main.c:242 multiload/properties.c:391
-msgid "Swap File"
+#, fuzzy
+msgid "Swap Space"
 msgstr "Swapfil"
 
 #: multiload/main.c:244
@@ -3004,7 +2517,8 @@ msgid "_Network"
 msgstr "_Netværk"
 
 #: multiload/properties.c:296
-msgid "_Swap File"
+#, fuzzy
+msgid "_Swap Space"
 msgstr "_Swapfile"
 
 #: multiload/properties.c:326
@@ -3091,211 +2605,306 @@ msgstr "Indstillinger for systemovervågning"
 msgid "Swap Load"
 msgstr "Swapbelastning"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "Fabrik for panelmenuprogram"
+#: stickynotes/stickynotes.c:31 stickynotes/stickynotes.glade.h:27
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:6
+#, fuzzy
+msgid "_New Note"
+msgstr "Hæv note"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "Fabrik for panelmenuprogram"
+#: stickynotes/stickynotes.c:32
+#, fuzzy
+msgid "_Delete Note"
+msgstr "Slet note"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "Panelprogram til at fremvise menuer"
+#: stickynotes/stickynotes.c:34
+#, fuzzy
+msgid "_Edit Title"
+msgstr "Min titel"
 
-#: panel-menu/panel-menu-actions.c:99
-msgid "Actions"
-msgstr "Handlinger"
+#. FIXME : Hack because libglade does not properly set these
+#: stickynotes/stickynotes_applet.c:69 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
+#: stickynotes/stickynotes_applet_callbacks.c:249
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
+#, fuzzy
+msgid "Sticky Notes"
+msgstr "Skjul noter"
 
-#: panel-menu/panel-menu-actions.c:100
-msgid "Actions Menu"
-msgstr "Handlingsmenu"
-
-#: panel-menu/panel-menu-add.c:77
-msgid "Add items to the Menu Bar"
-msgstr "Tilfølg punkter til menulinjen"
-
-#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:405
-msgid "Shortcuts"
-msgstr "Genveje"
-
-#: panel-menu/panel-menu-add.c:250
-msgid "My Documents"
-msgstr "Mine dokumenter"
-
-#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "Dokumenter"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "Programmer"
-
-#: panel-menu/panel-menu-common.c:738
+#: stickynotes/stickynotes_applet.c:146
+#, c-format
 msgid ""
-"Removing this entry is not allowed as this will cause the Menu Bar applet to "
-"be removed from GNOME Panel"
+"%s\n"
+"%d locked note"
+msgid_plural ""
+"%s\n"
+"%d locked notes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: stickynotes/stickynotes_applet.c:148
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"%d note"
+msgid_plural ""
+"%s\n"
+"%d notes"
+msgstr[0] ""
+"%s:\n"
+"%d%% i brug"
+msgstr[1] ""
+"%s:\n"
+"%d%% i brug"
+
+#: stickynotes/stickynotes.glade.h:1
+msgid "<b>Default click behavior</b>"
 msgstr ""
-"Fjernelse af dette felt er ikke muligt da det vil forårsage menulinje-"
-"panelprogrammet til at forsvinde fra panelet"
 
-#: panel-menu/panel-menu-directory.c:516
-msgid "Create directory item..."
-msgstr "Opret mappepunkt..."
+#: stickynotes/stickynotes.glade.h:2
+msgid "<b>Default dimensions</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:524
-msgid "Home"
-msgstr "Hjem"
+#: stickynotes/stickynotes.glade.h:3
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:595
-msgid "Edit directory item..."
-msgstr "Redigér mappepunkt..."
+#: stickynotes/stickynotes.glade.h:6
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
-msgid "_Path:"
-msgstr "_Sti:"
+#: stickynotes/stickynotes.glade.h:9
+#, fuzzy
+msgid "<b>Other settings</b>"
+msgstr "Indstillinger for kilometertæller"
 
-#: panel-menu/panel-menu-directory.c:694
-msgid "..."
-msgstr "..."
+#: stickynotes/stickynotes.glade.h:10
+msgid "<b>Style</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:704
-msgid "_Depth level:"
-msgstr "_Dybde:"
+#: stickynotes/stickynotes.glade.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:801
-msgid "Path specified is currently not a valid directory."
-msgstr "Den angivne sti er i øjeblikket ikke en gyldig mappe."
+#: stickynotes/stickynotes.glade.h:12
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "Opret dokumenter-punkt..."
+#: stickynotes/stickynotes.glade.h:13
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:434
-msgid "Rename documents item..."
-msgstr "Omdøb dokumenter-punkt..."
+#: stickynotes/stickynotes.glade.h:14
+msgid "Double-click or Right-click for more options"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
-msgid "KDE Menus"
-msgstr "KDE-menuer"
-
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
-#: panel-menu/panel-menu-path.c:559
-msgid "Programs"
-msgstr "Programmer"
-
-#: panel-menu/panel-menu-links.c:403
-msgid "Create links item..."
-msgstr "Opret henvisninger-punkt..."
-
-#: panel-menu/panel-menu-links.c:439
-msgid "Rename links item..."
-msgstr "Omdøb henvisninger-punkt..."
-
-#: panel-menu/panel-menu-path.c:230
-msgid "KDE"
-msgstr "KDE"
-
-#: panel-menu/panel-menu-path.c:658
-msgid "Create menu path item..."
-msgstr "Opret menusti-punkt..."
-
-#: panel-menu/panel-menu-path.c:701
-msgid "Edit path item..."
+#: stickynotes/stickynotes.glade.h:15
+#, fuzzy
+msgid "Edit title"
 msgstr "Omdøb sti-punkt..."
 
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "Indstillinger"
+#: stickynotes/stickynotes.glade.h:17
+msgid "Specify the default height (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:72
-msgid "Menu Bar Preferences"
-msgstr "Indstillinger for menulinje"
+#: stickynotes/stickynotes.glade.h:18
+msgid "Specify the default width (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:78
-msgid "Layout"
-msgstr "Udseende"
+#: stickynotes/stickynotes.glade.h:19
+msgid "Sticky Note"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:93
-msgid "_Applications Menu"
-msgstr "_Programmenu"
+#: stickynotes/stickynotes.glade.h:20
+#, fuzzy
+msgid "Sticky Notes Preferences"
+msgstr "Indstillinger for diskmontering"
 
-#: panel-menu/panel-menu-properties.c:117
-msgid "Select an icon for the Applications menu"
-msgstr "Vælg et ikon for programmenuen"
+#: stickynotes/stickynotes.glade.h:21
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:134
-msgid "_Preferences Menu"
-msgstr "_Indstillingsmenu"
+#: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "_Color:"
+msgstr "Farver"
 
-#: panel-menu/panel-menu-properties.c:145
-msgid "Ac_tions Menu"
-msgstr "_Handlingsmenu"
+#: stickynotes/stickynotes.glade.h:23
+#, fuzzy
+msgid "_Delete ALL"
+msgstr "_Slet"
 
-#: panel-menu/panel-menu-properties.c:156
-msgid "_Windows Menu"
-msgstr "_Vinduesmenu"
+#: stickynotes/stickynotes.glade.h:24
+#, fuzzy
+msgid "_Height:"
+msgstr "Høj"
 
-#: panel-menu/panel-menu-properties.c:167
-msgid "W_orkspaces Menu"
-msgstr "_Arbejdsområdemenu"
+#: stickynotes/stickynotes.glade.h:25
+#, fuzzy
+msgid "_Hide/_Show All Notes"
+msgstr "Skjul noter"
 
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "Vinduer"
+#: stickynotes/stickynotes.glade.h:26
+msgid "_Lock/_Unlock All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
+#: stickynotes/stickynotes.glade.h:28
+msgid "_Sticky across workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:2
+#, fuzzy
+msgid "Background color of body"
+msgstr "_Baggrundsfarve:"
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid ""
+"Background color of the body of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid ""
+"Background color of the body of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid ""
+"Background color of the title of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Background color of the title of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:7
+#, fuzzy
+msgid "Background color of title"
+msgstr "_Baggrundsfarve:"
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid "Background prelighted color of body"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Background prelighted color of title"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:10
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used. Anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Date format"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
+"\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:13
+#, fuzzy
+msgid "Default height for new notes"
+msgstr "Standard-højde"
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid "Default height for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid "Default left-click behavior of the applet"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:16
+#, fuzzy
+msgid "Default width for new notes"
+msgstr "Selvvalgt tegnliste"
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid "Default width for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:18
+msgid ""
+"Every time the specified number of minutes pass. The Sticky Notes are "
+"automatically saved."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:19
+msgid "Specifies whether the sticky notes are locked (uneditable) or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:20
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:21
+msgid "Sticky notes locked state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:22
+#, fuzzy
+msgid "Workspace stickyness"
 msgstr "Arbejdsområder"
 
-#: panel-menu/panel-menu.c:693
-msgid "Menu Bar"
-msgstr "Menulinje"
-
-#: panel-menu/panel-menu.c:694
-msgid "(c) 2001 Chris Phelps"
-msgstr "© 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:695
-msgid "The Menu Bar allows you to display customized menubars on your panels."
-msgstr "Menulinjen giver mulighed for tilpassede menulinjer på panelet."
-
-#: screen-exec/egg-screen-help.c:174
-msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr "Kan ikke finde GNOME_FILE_DOMAIN_APP_HELP-domænet."
-
-#: screen-exec/egg-screen-help.c:187
-msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr "Kan ikke finde GNOME_FILE_DOMAIN_HELP-domænet."
-
-#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
-#, c-format
-msgid ""
-"Unable to show help as %s is not a directory.  Please check your "
-"installation."
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
-"Kan ikke vise hjælp da %s ikke er en mappe. Kontrollér din installation."
 
-#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
-#, c-format
-msgid ""
-"Unable to find the help files in either %s or %s.  Please check your "
-"installation"
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#, fuzzy
+msgid "Sticky Notes Applet Factory"
+msgstr "Fabrik for børsnoteringspanelprogram"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:2
+#, fuzzy
+msgid "_Delete All Notes"
+msgstr "Slet note"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:4
+#, fuzzy
+msgid "_Hide All Notes"
+msgstr "Skjul noter"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:5
+#, fuzzy
+msgid "_Lock All Notes"
+msgstr "Sænk noter"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:8
+#, fuzzy
+msgid "_Show All Notes"
+msgstr "Vis noter"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:9
+msgid "_Unlock All Notes"
 msgstr ""
-"Kan ikke finde hjælpefilerne i hverken %s eller %s. Kontrollér din "
-"installation."
-
-#: screen-exec/egg-screen-help.c:315
-#, c-format
-msgid "Unable to find doc_id %s in the help path"
-msgstr "Kan ikke finde doc_id %s i hjælpestien"
-
-#: screen-exec/egg-screen-help.c:336
-#, c-format
-msgid "Help document %s/%s not found"
-msgstr "Hjælpedokument %s/%s ikke fundet"
 
 #: wireless/wireless-applet.c:343
 msgid ""
@@ -3305,11 +2914,11 @@ msgstr ""
 "De billeder der skal bruges til at køre programmet, mangler.\n"
 "Kontrollér at det er korrekt installeret."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Ingen trådløse enheder"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3319,16 +2928,16 @@ msgstr ""
 "Kontrollér din konfiguration hvis du mener at dette er forkert."
 
 # 'monitor' bliver lidt langt
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Trådløs forbindelse"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Dette værktøj viser status for en trådløs forbindelse."
 
@@ -3352,6 +2961,1037 @@ msgstr "Indstillinger for trådløs forbindelse"
 msgid "Monitor the quality of a wireless network link"
 msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
+#~ msgid "_Remove Selected"
+#~ msgstr "_Fjern valgte"
+
+#~ msgid "+ C_olor:"
+#~ msgstr "P_ositiv farve:"
+
+#~ msgid "- Colo_r:"
+#~ msgstr "N_egativ farve:"
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "_Uændret farve:"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "Vejret"
+
+#~ msgid "Location:"
+#~ msgstr "Placering:"
+
+#~ msgid "Sky:"
+#~ msgstr "Himmel:"
+
+#~ msgid "Dew point:"
+#~ msgstr "Dugpunkt:"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Vejrudsigtsrapport"
+
+#~ msgid "See the ForeCast Details"
+#~ msgstr "Se vejrudsigtsdetaljer"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "_Besøg Weather.com"
+
+#~ msgid "URL link Button"
+#~ msgstr "URL-henvisningsknap"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Klik for at gå ind på Weather.com"
+
+#~ msgid "_Radar map"
+#~ msgstr "_Radarkort"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Detaljerede vejrudsigter er ikke tilgængelige for dette sted.\n"
+#~ "Prøv venligst den nationale vejrudsigt (bemærk at\n"
+#~ "IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Nationale vejrudsigter er ikke tilgængelige for dette sted.\n"
+#~ "Prøv venligst den detaljerede vejrudsigt (bemærk at\n"
+#~ "IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
+
+#~ msgid "Location view"
+#~ msgstr "Placeringsvisning"
+
+#~ msgid "Select Location from the list"
+#~ msgstr "Vælg en placering fra listen"
+
+#~ msgid "Address Entry"
+#~ msgstr "Adresseindtastning"
+
+#~ msgid "Enter the URL"
+#~ msgstr "Indtast URL'en"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Aktivér _detaljeret prognose"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Aktivér _radarkort"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "Benyt selv_valgt adresse til radarkortet"
+
+#~ msgid "A_ddress :"
+#~ msgstr "A_dresse:"
+
+#~ msgid "Updates"
+#~ msgstr "Opdateringer"
+
+# hvert hænger sammen med minut
+#~ msgid "_Automatically update every "
+#~ msgstr "_Opdatér automatisk hvert "
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgid "Invalid"
+#~ msgstr "Ugyldig"
+
+#~ msgid "Drizzle"
+#~ msgstr "Støvregn"
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Støvregn i nærheden"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "Moderat støvregn"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "Tung støvregn"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Svag støvregn"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Stedvis støvregn"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Delvis støvregn"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Støvregn og blæst"
+
+#~ msgid "Showers"
+#~ msgstr "Regnbyger"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Drivende støvregn"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "Støvregn og frost"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Regn i nærheden"
+
+#~ msgid "Light rain"
+#~ msgstr "Let regn"
+
+#~ msgid "Moderate rain"
+#~ msgstr "Moderat regn"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Svag regn"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Stedvis regn"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Delvis regnvejr"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Blæsende regnvejr"
+
+#~ msgid "Rain showers"
+#~ msgstr "Regnbyger"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Drivende regn"
+
+#~ msgid "Freezing rain"
+#~ msgstr "Regn og frost"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Sne i nærheden"
+
+#~ msgid "Light snow"
+#~ msgstr "Let sne"
+
+#~ msgid "Moderate snow"
+#~ msgstr "Moderat sne"
+
+#~ msgid "Heavy snow"
+#~ msgstr "Kraftig sne"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Svag sne"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Stedvis sne"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Delvis snevejr"
+
+#~ msgid "Snowstorm"
+#~ msgstr "Snestorm"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "Sne og blæst"
+
+#~ msgid "Snow showers"
+#~ msgstr "Snebyger"
+
+#~ msgid "Drifting snow"
+#~ msgstr "Drivende snevejr"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Sne og frost"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Snekorn i nærheden"
+
+#~ msgid "Light snow grains"
+#~ msgstr "Lette snekorn"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "Moderate snekorn"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "Tunge snekorn"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Svage snekorn"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Stedvise snekorn"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Delvis snekorn"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Blæsende snekorn"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Snekornsbyger"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Drivende snekorn"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "frysende snekorn"
+
+#~ msgid "Ice crystals"
+#~ msgstr "Iskrystaller"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Iskrystaller i nærheden"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Få iskrystaller"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Moderate iskrystaller"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Tunge iskrystaller"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Stedvise iskrystaller"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Delvise iskrystaller"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Iskrystalstorm"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Blæst og iskrystaller"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Byger af iskrystaller"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Drivende iskrystaller"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Frysende iskrystaller"
+
+#~ msgid "Ice pellets"
+#~ msgstr "Iskugler"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Iskugler i nærheden"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "Få iskugler"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "Moderate iskugler"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "Tunge iskugler"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Svage iskugler"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Stedvise iskugler"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Delvise iskugler"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "Iskuglestorm"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Blæst og iskugler"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "Byger af iskugler"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Drivende iskugler"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Frysende iskugler"
+
+#~ msgid "Hail"
+#~ msgstr "Hagl"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Hagl i nærheden"
+
+#~ msgid "Light hail"
+#~ msgstr "Let hagl"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Moderat hagl"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Tung hagl"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Svag hagl"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Stedvis hagl"
+
+#~ msgid "Partial hail"
+#~ msgstr "Delvis hagl"
+
+#~ msgid "Hailstorm"
+#~ msgstr "Haglvejr"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Hagl og blæst"
+
+#~ msgid "Hail showers"
+#~ msgstr "Haglbyger"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Drivende hagl"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Hagl og frost"
+
+#~ msgid "Small hail"
+#~ msgstr "Småhagl"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Småhagl i nærheden"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Moderate småhagl"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Tunge småhagl"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Svag småhagl"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Stedvis småhagl"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Delvis småhagl"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "Småhaglstorm"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Småhagl og blæst"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "Byger af småhagl"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Drivende småhagl"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Småhagl og frost"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "Ukendt nedbør"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Nedbør i nærheden"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Let nedbør"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Moderat nedbør"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Tung nedbør"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Svag nedbør"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Stedvis nedbør"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Ukendt tordenstorm"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Blæsende nedbør"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Byger af ukendt type"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Drivende nedbør"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Nedbør og frost"
+
+# Tåge = fog; BL
+#~ msgid "Mist"
+#~ msgstr "Dis"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Dis i nærheden"
+
+#~ msgid "Light mist"
+#~ msgstr "Let dis"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Moderat dis"
+
+#~ msgid "Thick mist"
+#~ msgstr "Tyk dis"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Svag dis"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Stedvis dis"
+
+#~ msgid "Partial mist"
+#~ msgstr "Delvis dis"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Dis og blæst"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Drivende dis"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Dis og frost"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "Tåge i nærheden"
+
+#~ msgid "Light fog"
+#~ msgstr "Let tåge"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Moderat tåge"
+
+#~ msgid "Thick fog"
+#~ msgstr "Tyk tåge"
+
+#~ msgid "Shallow fog"
+#~ msgstr "Svag tåge"
+
+#~ msgid "Patches of fog"
+#~ msgstr "Stedvis tåge"
+
+#~ msgid "Partial fog"
+#~ msgstr "Delvis tåge"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Tåge og blæst"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Drivende tåge"
+
+#~ msgid "Freezing fog"
+#~ msgstr "Tåge og frost"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Røg i nærheden"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Tynd røg"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Moderat røg"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Tyk røg"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Svag røg"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Stedvis røg"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Delvis røg"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Røg med torden"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Røg og blæst"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Drivende røg"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "Vulkansk aske"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Vulkansk aske i nærheden"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Moderate vulkansk aske"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Tyk vulkansk aske"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Svag vulkansk aske"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Stedvis vulkansk aske"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Delvis vulkansk aske"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Vulkansk aske med torden"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Blæsende vulkansk aske"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Byger af vulkansk aske"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Drivende vulkansk aske"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Vulkansk aske og frost"
+
+#~ msgid "Sand"
+#~ msgstr "Sand"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Sand i nærheden"
+
+#~ msgid "Light sand"
+#~ msgstr "Let sand"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Moderat sand"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Tung sand"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Stedvis sand"
+
+#~ msgid "Partial sand"
+#~ msgstr "delvis sand"
+
+#~ msgid "Blowing sand"
+#~ msgstr "Blæsende sand"
+
+#~ msgid "Drifting sand"
+#~ msgstr "Drivende sand"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Dis i området"
+
+#~ msgid "Light haze"
+#~ msgstr "Let dis"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Moderat dis"
+
+#~ msgid "Thick haze"
+#~ msgstr "Tæt dis"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Tynd dis"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Områder med dis"
+
+#~ msgid "Partial haze"
+#~ msgstr "Delvis dis"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Dis med vind"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Drivende dis"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Frysende dis"
+
+#~ msgid "Sprays"
+#~ msgstr "Byger"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Byger i nærheden"
+
+#~ msgid "Light sprays"
+#~ msgstr "Lette byger"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Moderate byger"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Tunge byger"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Svage byger"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Stedvise byger"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Delvise byger"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "Blæsende byger"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Drivende byger"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Frysende byger"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Støv i nærheden"
+
+#~ msgid "Light dust"
+#~ msgstr "Let støv"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Moderat støv"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Tungt støv"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Stedvis støv"
+
+#~ msgid "Partial dust"
+#~ msgstr "Delvis støv"
+
+#~ msgid "Blowing dust"
+#~ msgstr "Blæsende støv"
+
+#~ msgid "Drifting dust"
+#~ msgstr "Drivende støv"
+
+#~ msgid "Squall"
+#~ msgstr "Vindstød"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Vindstød i nærheden"
+
+#~ msgid "Light squall"
+#~ msgstr "Lette vindstød"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Moderate vindstød"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Tunge vindstød"
+
+#~ msgid "Partial squall"
+#~ msgstr "Delvise vindstød"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Vindstød og torden"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Blæsende vindstød"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Drivende vindstød"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Frysende vindstød"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Sandstorm"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "Sandstorm i nærheden"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Let sandstorm"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Moderat sandstorm"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "Tung sandstorm"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Svag sandstorm"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Delvis sandstorm"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Tordnende sandstorm"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Sandstorm og blæst"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Drivende sandstorm"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Sandstorm og frost"
+
+#~ msgid "Duststorm"
+#~ msgstr "Støvstorm"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "Støvstorm i nærheden"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Let støvstorm"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Moderat støvstorm"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "Tung støvstorm"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Svag støvstorm"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Delvis støvstorm"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Støvstorm og torden"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Blæsende støvstorm"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Drivende støvstorm"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Støvstorm og frost"
+
+#~ msgid "Funnel cloud"
+#~ msgstr "Skorstenssky"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Skorstenssky i nærheden"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Let skorstenssky"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Moderat skorstenssky"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Tyk skorstenssky"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Let skorstenssky"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Stedvise skorstensskyer"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Delvise skorstensskyer"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Blæst og skorstenssky"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Drivende skorstenssky"
+
+#~ msgid "Tornado"
+#~ msgstr "Tornado"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado i nærheden"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Moderat tornado"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Rasende tornado"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Delvis tornado"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr ""
+#~ "Tordentornado - Hvis du er i Danmark mens du læser dette, er det verdens "
+#~ "undergang :-)"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Drivende tornado"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Tornado og frost"
+
+#~ msgid "Dust whirls"
+#~ msgstr "Støvhvirvler"
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "Støvhvirvler i nærheden"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Lette støvhvirvler"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Moderate støvhvirvler"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Tunge støvhvirvler"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Svage støvhvirvler"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Stedvise støvhvirvler"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Delvise støvhvirvler"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Blæsende støvhvirvler"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Drivende støvhvirvler"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "Kunne ikke få METAR data.\n"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "VejrInformation mangler sted"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Kunne ikke få IWIN-data.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Kunne ikke få IWIN udsigtsdata.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Kunne ikke få Met Office-data.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Kunne ikke få Met Office udsigtsdata.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Kunne ikke få radarkortbillede.\n"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%A d. %d. %B kl. %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "Ukendt observationstid"
+
+#~ msgid "Unknown"
+#~ msgstr "Ukendt"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "Hentning fejlede"
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr ""
+#~ "Forespørgsel om tilgængelige kanaler på mixerenheden %s mislykkedes\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr "advarsel: mixeren har ingen lydstyrkekanal - bruger PCM i stedet.\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "Mixerenheden %s har hverken lydstyrke- eller PCM-kanaler.\n"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "Fabrik for panelmenuprogram"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "Fabrik for panelmenuprogram"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "Panelprogram til at fremvise menuer"
+
+#~ msgid "Actions"
+#~ msgstr "Handlinger"
+
+#~ msgid "Actions Menu"
+#~ msgstr "Handlingsmenu"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "Tilfølg punkter til menulinjen"
+
+#~ msgid "Shortcuts"
+#~ msgstr "Genveje"
+
+#~ msgid "My Documents"
+#~ msgstr "Mine dokumenter"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenter"
+
+#~ msgid "Applications"
+#~ msgstr "Programmer"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr ""
+#~ "Fjernelse af dette felt er ikke muligt da det vil forårsage menulinje-"
+#~ "panelprogrammet til at forsvinde fra panelet"
+
+#~ msgid "Create directory item..."
+#~ msgstr "Opret mappepunkt..."
+
+#~ msgid "Home"
+#~ msgstr "Hjem"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "Redigér mappepunkt..."
+
+#~ msgid "_Path:"
+#~ msgstr "_Sti:"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "_Dybde:"
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "Den angivne sti er i øjeblikket ikke en gyldig mappe."
+
+#~ msgid "Create documents item..."
+#~ msgstr "Opret dokumenter-punkt..."
+
+#~ msgid "Rename documents item..."
+#~ msgstr "Omdøb dokumenter-punkt..."
+
+#~ msgid "KDE Menus"
+#~ msgstr "KDE-menuer"
+
+#~ msgid "Programs"
+#~ msgstr "Programmer"
+
+#~ msgid "Create links item..."
+#~ msgstr "Opret henvisninger-punkt..."
+
+#~ msgid "Rename links item..."
+#~ msgstr "Omdøb henvisninger-punkt..."
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "Opret menusti-punkt..."
+
+#~ msgid "Preferences"
+#~ msgstr "Indstillinger"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "Indstillinger for menulinje"
+
+#~ msgid "Layout"
+#~ msgstr "Udseende"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "_Programmenu"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "Vælg et ikon for programmenuen"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "_Indstillingsmenu"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "_Handlingsmenu"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "_Vinduesmenu"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "_Arbejdsområdemenu"
+
+#~ msgid "Windows"
+#~ msgstr "Vinduer"
+
+#~ msgid "Menu Bar"
+#~ msgstr "Menulinje"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "© 2001 Chris Phelps"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr "Menulinjen giver mulighed for tilpassede menulinjer på panelet."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "Kan ikke finde GNOME_FILE_DOMAIN_APP_HELP-domænet."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "Kan ikke finde GNOME_FILE_DOMAIN_HELP-domænet."
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "Kan ikke vise hjælp da %s ikke er en mappe. Kontrollér din installation."
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr ""
+#~ "Kan ikke finde hjælpefilerne i hverken %s eller %s. Kontrollér din "
+#~ "installation."
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "Kan ikke finde doc_id %s i hjælpestien"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "Hjælpedokument %s/%s ikke fundet"
+
 #~ msgid "Settings"
 #~ msgstr "Indstillinger"
 
@@ -3363,9 +4003,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Dow_n"
 #~ msgstr "_Ned"
-
-#~ msgid "_Delete"
-#~ msgstr "_Slet"
 
 #~ msgid "Armenia"
 #~ msgstr "Armenien"
@@ -3577,9 +4214,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "ix86"
 #~ msgstr "ix86"
 
-#~ msgid "Sun"
-#~ msgstr "Sun"
-
 #~ msgid "mac"
 #~ msgstr "mac"
 
@@ -3594,9 +4228,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Lan_guage:"
 #~ msgstr "_Sprog:"
-
-#~ msgid "Count_ry:"
-#~ msgstr "_Land:"
 
 #~ msgid ""
 #~ "_Flag\n"
@@ -3625,9 +4256,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Stock Sy_mbol:"
 #~ msgstr "Aktiesy_mbol:"
-
-#~ msgid "Stock C_hange:"
-#~ msgstr "Aktieæn_dring:"
 
 #~ msgid "_Appearance"
 #~ msgstr "_Udseende"
@@ -3716,9 +4344,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "There was an error executing gnome-cd : %s"
 #~ msgstr "Der opstod en fejl ved kørsel af gnome-cd: %s"
 
-#~ msgid "There was an error executing %s : %s"
-#~ msgstr "Der opstod en fejl ved kørsel af '%s': %s"
-
 #~ msgid "There was an error executing 'gnome-system-monitor' : %s"
 #~ msgstr "Der opstod en fejl ved kørsel af 'gnome-system-monitor': %s"
 
@@ -3785,12 +4410,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Pro_xy requires a uername and password"
 #~ msgstr "Mellemv_ært kræver et brugernavn og en adgangskode"
 
-#~ msgid "Us_ername:"
-#~ msgstr "Br_ugernavn"
-
-#~ msgid "Pass_word:"
-#~ msgstr "_Adgangskode:"
-
 #~ msgid "Display a_rrows instead of -/+"
 #~ msgstr "Vis _pile i stedet for +/-"
 
@@ -3803,20 +4422,11 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Enter the Location"
 #~ msgstr "Indtast placeringen"
 
-#~ msgid "Port Entry"
-#~ msgstr "Portindtastning"
-
 #~ msgid "Enter the Port number"
 #~ msgstr "Indtast portnummeret"
 
-#~ msgid "User Entry"
-#~ msgstr "Brugerindtastning"
-
 #~ msgid "Enter the user name"
 #~ msgstr "Indtast brugernavnet"
-
-#~ msgid "Password Entry"
-#~ msgstr "Adgangskodeindtastning"
 
 #~ msgid "Enter the Password"
 #~ msgstr "Indtast adgangskoden"
@@ -3829,9 +4439,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "history list empty"
 #~ msgstr "tom historik"
-
-#~ msgid "Command history"
-#~ msgstr "Kommandohistorie"
 
 #~ msgid "Run Audio Mixer..."
 #~ msgstr "Kør lydmixer..."
@@ -3899,9 +4506,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "clock off"
 #~ msgstr "brug ikke ur"
-
-#~ msgid "Select Font"
-#~ msgstr "Vælg skrifttype"
 
 #~ msgid "mmHg"
 #~ msgstr "mmHg"
@@ -4323,9 +4927,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ "Since you are root, would you like to set the system's default timezone?"
 #~ msgstr "Du er administrator - vil du sætte systemets standard-tidszone?"
 
-#~ msgid "My Title"
-#~ msgstr "Min titel"
-
 #~ msgid "Continent/City"
 #~ msgstr "Kontinent/by"
 
@@ -4492,23 +5093,11 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Display time relative to GMT (Greenwich Mean Time):"
 #~ msgstr "Vis tid i forhold til GMT (Greenwich Mean Time):"
 
-#~ msgid "Mail"
-#~ msgstr "Post"
-
-#~ msgid "Mail file:"
-#~ msgstr "Postfil:"
-
-#~ msgid "When new mail is received run:"
-#~ msgstr "Når ny post modtages, kør:"
-
 #~ msgid "Always blink when any mail is waiting."
 #~ msgstr "Blink altid når post venter."
 
 #~ msgid "Number of messages to consider mailbox full:"
 #~ msgstr "Antal breve før postkassen betragtes som fuld:"
-
-#~ msgid "When clicked, run:"
-#~ msgstr "Når klikket på, kør:"
 
 #~ msgid "Theme file (directory):"
 #~ msgstr "Temafil (mappe):"
@@ -4527,9 +5116,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Text:"
 #~ msgstr "Tekst:"
-
-#~ msgid "Free Diskspace:"
-#~ msgstr "Ledig diskplads:"
 
 #~ msgid "Background:"
 #~ msgstr "Baggrund:"
@@ -4587,14 +5173,8 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Press a key..."
 #~ msgstr "Tryk på en tast..."
 
-#~ msgid "Raise Note"
-#~ msgstr "Hæv note"
-
 #~ msgid "Lower Note"
 #~ msgstr "Sænk note"
-
-#~ msgid "Delete Note"
-#~ msgstr "Slet note"
 
 #~ msgid "GNotes!"
 #~ msgstr "Noter"
@@ -4610,18 +5190,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Raise Notes"
 #~ msgstr "Hæv noter"
-
-#~ msgid "Lower Notes"
-#~ msgstr "Sænk noter"
-
-#~ msgid "Hide Notes"
-#~ msgstr "Skjul noter"
-
-#~ msgid "Show Notes"
-#~ msgstr "Vis noter"
-
-#~ msgid "Default Height"
-#~ msgstr "Standard-højde"
 
 #~ msgid "Default Width"
 #~ msgstr "Standard-bredde"
@@ -4668,9 +5236,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Randomize"
 #~ msgstr "Bland"
-
-#~ msgid "Main Volume and Mute"
-#~ msgstr "Hovedlydstyrke og dæmp"
 
 #~ msgid "(c) 1998 The Free Software Foundation"
 #~ msgstr "© 1998 Free Software Foundation"
@@ -4777,14 +5342,8 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ "pointer across the desktop."
 #~ msgstr "Måler hvor langt musemarkøren bevæger sig."
 
-#~ msgid "Odometer setting"
-#~ msgstr "Indstillinger for kilometertæller"
-
 #~ msgid "auto_reset"
 #~ msgstr "Nulstil ved hver opstart"
-
-#~ msgid "enabled"
-#~ msgstr "Slået til"
 
 #~ msgid "Digits number"
 #~ msgstr "Antal cifre"
@@ -4818,9 +5377,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "File '%s' does not exist"
 #~ msgstr "Filen '%s' eksisterer ikke"
-
-#~ msgid "Loading headlines..."
-#~ msgstr "Indlæser overskrifter..."
 
 #~ msgid "Unable to create user directory: %s\n"
 #~ msgstr "Kunne ikke oprette brugermappe: %s\n"
@@ -4926,9 +5482,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Server information:"
 #~ msgstr "Serverinformation:"
-
-#~ msgid "Server"
-#~ msgstr "Server"
 
 #~ msgid "Connected streams:"
 #~ msgstr "Forbundne strømme:"
@@ -5067,17 +5620,11 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Load Average Module"
 #~ msgstr "Modul for belastningsgrad"
 
-#~ msgid "Check every:"
-#~ msgstr "Tjek med"
-
 #~ msgid "Show pop-up dialog for this event"
 #~ msgstr "Vis dialogvindue for denne hændelse"
 
 #~ msgid "Load average threshhold:"
 #~ msgstr "Middelbelastningstærskel:"
-
-#~ msgid "Text to display:"
-#~ msgstr "Tekst at vise:"
 
 #~ msgid "Alert options"
 #~ msgstr "Advarselsindstillinger"
@@ -5107,9 +5654,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Update interval"
 #~ msgstr "Opdateringsinterval"
 
-#~ msgid "D"
-#~ msgstr "D"
-
 #~ msgid "T"
 #~ msgstr "T"
 
@@ -5121,9 +5665,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "News and Information Module"
 #~ msgstr "Nyheds- og informationsmodul"
-
-#~ msgid "Line (s):"
-#~ msgstr "Linje(r):"
 
 #~ msgid "Update (m):"
 #~ msgstr "Opdatér (m):"
@@ -5157,9 +5698,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "File Tail Module"
 #~ msgstr "Filslutnings-modul"
-
-#~ msgid "Path to tail:"
-#~ msgstr "Sti til tail:"
 
 #~ msgid "Choose a file to tail"
 #~ msgstr "Vælg en fil at køre tail på"
@@ -5261,9 +5799,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "Just another clock"
 #~ msgstr "Endnu et ur, bare i AfterStep-format"
 
-#~ msgid "Mounts and unmount drives"
-#~ msgstr "Monterer og afmonterer disk"
-
 #~ msgid "CPU/MEM usage"
 #~ msgstr "Cpu-/hukommelsesforbrug"
 
@@ -5275,9 +5810,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Another Clock"
 #~ msgstr "Et andet ur"
-
-#~ msgid "Clock and Mailcheck"
-#~ msgstr "Ur og posttjek"
 
 #~ msgid "Displays new mail and time"
 #~ msgstr "Viser klokken og om der er kommet ny e-post"
@@ -5297,17 +5829,11 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 #~ msgid "character picker"
 #~ msgstr "Indsæt specialtegn der ikke findes på dit tastatur"
 
-#~ msgid "Sound Monitor"
-#~ msgstr "Lydovervåger"
-
 #~ msgid "Sound Monitor for Esound"
 #~ msgstr "Lydovervåger til Esound"
 
 #~ msgid "Audio Mixer"
 #~ msgstr "Kontrollerer lydmixeren"
-
-#~ msgid "Mixer"
-#~ msgstr "Mixerpult"
 
 #~ msgid "QuickLaunch"
 #~ msgstr "Minigenveje"
@@ -5389,9 +5915,6 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 #~ msgid "Use custom browser:"
 #~ msgstr "Benyt selvvalgt browser:"
-
-#~ msgid "Remove"
-#~ msgstr "Fjern"
 
 #~ msgid "Size of URL history: "
 #~ msgstr "Størrelse af adressehistorik"

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
-"POT-Creation-Date: 2003-01-05 11:30+0100\n"
+"POT-Creation-Date: 2003-03-27 14:07+0000\n"
 "PO-Revision-Date: 2003-01-05 12:01+0100\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:848
+#: battstat/battstat_applet.c:852
 msgid "Battery Charge Monitor"
 msgstr "Monitor nabitia batérií"
 
@@ -37,7 +37,6 @@ msgstr "Sleduje zostávajúce nabitie batérií notebooku"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Nástroj"
 
@@ -46,9 +45,11 @@ msgstr "Nástroj"
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_O programe..."
@@ -58,8 +59,10 @@ msgstr "_O programe..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:3
 msgid "_Help"
 msgstr "_Pomocník"
 
@@ -68,9 +71,11 @@ msgstr "_Pomocník"
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:7
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "Nas_tavenia..."
@@ -92,22 +97,24 @@ msgstr "Tento applet nebude fungovať správne (ak vôbec).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "Nízke"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
 msgid "Charging"
 msgstr "Nabíjanie"
 
@@ -123,7 +130,7 @@ msgstr "Batérie sú plne dobité."
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -135,7 +142,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -146,15 +153,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
-#: battstat/battstat_applet.c:1064
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
 msgid "System is running on battery power"
 msgstr "Systém beží na batérie"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
-#: battstat/battstat_applet.c:1070
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
 msgid "System is running on AC power"
 msgstr "Systém beží zo siete"
 
@@ -164,14 +171,14 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systém beží na batérie. Batérie: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systém beží zo siete. Batérie: %d%% (%s)"
@@ -206,7 +213,7 @@ msgid "Battery: Not present"
 msgstr "Batérie: Nie sú dostupné"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:722
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -218,7 +225,7 @@ msgstr ""
 "Overte, že máte práva na čítanie zariadenia APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:728
+#: battstat/battstat_applet.c:731
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -228,7 +235,7 @@ msgstr ""
 "Skúste spustiť \"apm -e 1\" (FreeBSD), čo to\n"
 "pomôže.\n"
 
-#: battstat/battstat_applet.c:783
+#: battstat/battstat_applet.c:787
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -238,7 +245,7 @@ msgstr ""
 "Prosím, opravte tento problém"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:790
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -249,7 +256,7 @@ msgstr ""
 "\"%d\"\n"
 "Prosím, opravte tento problém"
 
-#: battstat/battstat_applet.c:794
+#: battstat/battstat_applet.c:798
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -259,25 +266,27 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:825
+#: battstat/battstat_applet.c:829
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:502
-#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:814
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
+#: charpick/charpick.c:429 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1799 mini-commander/src/about.c:48 mixer/mixer.c:925
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr "Stanislav Višňovský"
 
-#: battstat/battstat_applet.c:850
+#: battstat/battstat_applet.c:854
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:851
-msgid "This utility show the status of your laptop battery."
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav batérií vášho počítača."
 
 #: battstat/battstat_applet.glade.h:2
@@ -285,7 +294,7 @@ msgstr "Tento nástroj zobrazuje stav batérií vášho počítača."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1361
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Vzhľad"
@@ -307,7 +316,7 @@ msgstr "Farby úrovní batérií (%)"
 msgid "Beep when either of the above is true"
 msgstr "Pípnuť, ak je niektorá z možností platná"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:264
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "Všeobecné"
@@ -381,7 +390,7 @@ msgid "Battery power low"
 msgstr "Slabé batérie"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:520 cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
 msgid "CD Player"
 msgstr "CD prehrávač"
 
@@ -406,61 +415,61 @@ msgstr "Applet pre prehrávanie zvukových CD"
 msgid "_Run External CD Player"
 msgstr "Spustiť e_xterný prehrávač CD"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:901
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
 msgid "Play / Pause"
 msgstr "Hrať/Pauza"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
 msgid "Eject"
 msgstr "Vysunúť"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
 msgid "Previous Track"
 msgstr "Predchádzajúca stopa"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
 msgid "Next Track"
 msgstr "Nasledujúca stopa"
 
-#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:780
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "Pri pokuse o spustenie '%s' nastala chyba: %s"
 
-#: cdplayer/cdplayer.c:409
+#: cdplayer/cdplayer.c:422
 msgid "CD Player Preferences"
 msgstr "Nastavenie Prehrávača CD"
 
-#: cdplayer/cdplayer.c:427
+#: cdplayer/cdplayer.c:442
 msgid "Disc Image"
 msgstr "Obrázok disku"
 
-#: cdplayer/cdplayer.c:427
+#: cdplayer/cdplayer.c:442
 msgid "An image of a cd-rom disc"
 msgstr "Obrázok disku CD-ROM"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:444
 msgid "Device _Path:"
 msgstr "_Zariadenie:"
 
-#: cdplayer/cdplayer.c:438
+#: cdplayer/cdplayer.c:453
 msgid "Device Path"
 msgstr "Zariadenie"
 
-#: cdplayer/cdplayer.c:438
+#: cdplayer/cdplayer.c:453
 msgid "Set the device path here"
 msgstr "Tu nastavte cestu k zariadeniu"
 
-#: cdplayer/cdplayer.c:441
+#: cdplayer/cdplayer.c:456
 msgid "Use _Default"
 msgstr "Použiť š_tandardné"
 
-#: cdplayer/cdplayer.c:521
+#: cdplayer/cdplayer.c:537
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -468,40 +477,44 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:523 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Prehrávač CD je jednoduchý prehrávač hudobných CD pre Váš panel"
 
-#: cdplayer/cdplayer.c:780 cdplayer/cdplayer.c:791
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
 msgid "Elapsed time"
 msgstr "Uplynutý čas"
 
-#: cdplayer/cdplayer.c:783 cdplayer/cdplayer.c:793
+#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
 msgid "Track number"
 msgstr "Číslo stopy"
 
-#: cdplayer/cdplayer.c:902
+#: cdplayer/cdplayer.c:861
+msgid "Audio Device is busy, or being used by another application"
+msgstr ""
+
+#: cdplayer/cdplayer.c:936
 msgid "Click this button to Stop playing the CD"
 msgstr "Stlačením tohto tlačidla zastavíte prehrávanie CD"
 
-#: cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:938
 msgid "Click this button to Play or Pause the CD"
 msgstr "Týmto tlačidlo spustíte alebo pozastavíte prehrávanie CD"
 
-#: cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:940
 msgid "Click this button to eject the CD"
 msgstr "Týmto tlačidlom vysuniete CD"
 
-#: cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:942
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Týmto tlačidlom spustíte prehrávanie predchádzajúcej stopy CD"
 
-#: cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:944
 msgid "Click this button to Play the next track in the CD"
 msgstr "Týmto tlačidlom spustíte prehrávanie nasledujúcej stopy CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:490
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:447
+#: charpick/charpick.c:549
 msgid "Character Palette"
 msgstr "Paleta znakov"
 
@@ -515,15 +528,15 @@ msgstr "Vkladanie znakov"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:366
+#: charpick/charpick.c:421
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:394
+#: charpick/charpick.c:449
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:395
+#: charpick/charpick.c:450
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -531,23 +544,23 @@ msgstr ""
 "Applet panelu pre výber divných znakov, ktoré nie sú na vašej klávesnici. "
 "Vydané pod licenciou GNU General Public Licence."
 
-#: charpick/charpick.c:489
+#: charpick/charpick.c:548
 msgid "Insert special characters"
 msgstr "Vkladanie špeciálnych znakov"
 
-#: charpick/properties.c:80
+#: charpick/properties.c:84
 msgid "_Default character list:"
 msgstr "Š_tandardný zoznam znakov:"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Default list of characters"
 msgstr "Štandardný zoznam znakov"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid "Set the default character list here"
 msgstr "Tu nastavte štandardný zoznam znakov"
 
-#: charpick/properties.c:92
+#: charpick/properties.c:93
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
@@ -555,7 +568,7 @@ msgstr ""
 "Tieto znaky budú zobrazené po štarte panelu. K tomuto zoznamu sa vrátite, ak "
 "má panel fokus a stlačíte kláves <d>."
 
-#: charpick/properties.c:156
+#: charpick/properties.c:158
 msgid "Character Palette Preferences"
 msgstr "Nastavenie Palety znakov"
 
@@ -628,7 +641,7 @@ msgstr "_Bod pripojenia:"
 msgid "_Update interval (seconds):"
 msgstr "_Obnovovanie (v sekundách):"
 
-#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+#: drivemount/properties.c:307
 msgid "_Icon :"
 msgstr "_Ikona:"
 
@@ -696,8 +709,8 @@ msgstr "Oči pre váš panel"
 msgid "Amusements"
 msgstr "Zábava"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:429 geyes/geyes.c:431
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -705,23 +718,23 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Vytváracie rozhranie pre Geyes"
 
-#: geyes/geyes.c:238
+#: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Klon slávnych X očí pre GNOME panel."
 
-#: geyes/geyes.c:432
+#: geyes/geyes.c:446
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Oči sledujú kurzor myši"
 
-#: geyes/themes.c:223
+#: geyes/themes.c:224
 msgid "Geyes Preferences"
 msgstr "Nastavenie Geyes"
 
-#: geyes/themes.c:239
+#: geyes/themes.c:240
 msgid "_Theme Name:"
 msgstr "Meno _témy:"
 
@@ -733,7 +746,7 @@ msgstr "Zmena rozloženia kláves"
 msgid "GKB Factory"
 msgstr "Vytváracie rozhranie pre GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Prepínanie klávesníc"
 
@@ -749,15 +762,15 @@ msgstr ""
 "Stlačením klávesovej skratky prepnete rozloženie klávesnice. Skratku môžete "
 "nastaviť v dialógu Vlastnosti."
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -775,7 +788,7 @@ msgstr ""
 "Kovacs <emese@gnome.hu> za jej solidaritu, pomoc od ľudí ako je KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Domovská stránka GKB (http://projects.gnome.hu/gkb)"
 
@@ -783,7 +796,7 @@ msgstr "Domovská stránka GKB (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Zakázané"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Stlačte kláves alebo zrušte akciu stlačením Esc"
 
@@ -795,25 +808,23 @@ msgstr "Rozloženia (vyberte a stlačte Pridať)"
 msgid "Select Keyboard"
 msgstr "Vyberte rozloženie"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:233
 msgid "Edit Keyboard"
 msgstr "Upraviť rozloženie"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#: gkb-new/prop-map.c:252
 msgid "_Name:"
 msgstr "_Meno:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:255
 msgid "_Label:"
 msgstr "_Popis:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:258
 msgid "Co_mmand:"
 msgstr "_Príkaz:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:266
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -825,7 +836,7 @@ msgstr ""
 " * gkb__xmmap sk\n"
 " * setxkbmap sk"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:299
 msgid "_Flag"
 msgstr "_Vlajka"
 
@@ -849,7 +860,8 @@ msgstr "Popis"
 msgid "Flag and Label"
 msgstr "Vlajka a popis"
 
-#: gkb-new/prop.c:291 modemlights/properties.c:393
+#: gkb-new/prop.c:291 gtik/gtik.c:1366 gweather/gweather-pref.c:320
+#: modemlights/properties.c:393
 msgid "Display"
 msgstr "Zobrazenie"
 
@@ -871,11 +883,11 @@ msgid "_Grab hotkey"
 msgstr "_Zachytiť kláves"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:425
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Nastavenie Prepínania klávesníc"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:442
 msgid "Keymaps"
 msgstr "Rozloženia"
 
@@ -885,7 +897,7 @@ msgstr "Rozloženia"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:454 multiload/properties.c:313
 msgid "Options"
 msgstr "Možnosti"
 
@@ -917,13 +929,14 @@ msgid ""
 msgstr ""
 "Nastala chyba.\n"
 "\n"
-"Nepodarilo sa načítať rozloženie kláves '%s'. Možno sa "
-"nepodarilo nájsť príkaz 'xmodmap' vo vašej premennej PATH.\n"
+"Nepodarilo sa načítať rozloženie kláves '%s'. Možno sa nepodarilo nájsť "
+"príkaz 'xmodmap' vo vašej premennej PATH.\n"
 "\n"
 "Príkaz bol: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Príslušenstvo"
 
@@ -959,83 +972,122 @@ msgstr ""
 "Neobsahuje ABSOLÚTNE ŽIADNE ZÁRUKY. Nepoužívajte ju pre investičné "
 "rozhodnutia, slúži iba na informovanie."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1158
+#, fuzzy
+msgid "Current _Stocks"
+msgstr "_Aktuálne podmienky"
+
+#: gtik/gtik.c:1166
 msgid "_New Symbol:"
 msgstr "_Nový symbol:"
 
-#: gtik/gtik.c:1158
+#: gtik/gtik.c:1174
 msgid "_Add"
 msgstr "_Pridať"
 
-#: gtik/gtik.c:1169
-msgid "_Remove Selected"
+#: gtik/gtik.c:1179
+#, fuzzy
+msgid "_Remove"
 msgstr "_Odstrániť vybraný"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1277
 msgid "Stock Ticker Preferences"
 msgstr "Nastavenie Sledovania burzy"
 
-#: gtik/gtik.c:1275
-msgid "Stock update Fre_quency in minutes:"
-msgstr "_Aktualizácia (v minútach):"
-
-#: gtik/gtik.c:1294
-msgid "Scroll Speed :"
-msgstr "Rýchlosť posunu:"
-
-#: gtik/gtik.c:1314
-msgid "_Width :"
-msgstr "Ší_rka:"
-
-#: gtik/gtik.c:1326
-msgid "Displa_y only symbols and price"
-msgstr "Zobraziť iba s_ymboly a cenu"
-
-#: gtik/gtik.c:1329
-msgid "Scroll _left to right"
-msgstr "Posúvať do_prava"
-
-#: gtik/gtik.c:1332
-msgid "_Enable scroll buttons"
-msgstr "Po_voliť tlačidlá pre posun"
-
-#: gtik/gtik.c:1356
-msgid "+ C_olor:"
-msgstr "_Farba +:"
-
-#: gtik/gtik.c:1376
-msgid "- Colo_r:"
-msgstr "Fa_rba -:"
-
-#: gtik/gtik.c:1393
-msgid "_Unchanged Color:"
-msgstr "_Nezmenená farba:"
-
-#: gtik/gtik.c:1410
-msgid "Back_ground Color:"
-msgstr "Farba po_zadia:"
-
-#: gtik/gtik.c:1432
-msgid "_Font:"
-msgstr "_Písmo:"
-
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1292
 msgid "Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1454
+#: gtik/gtik.c:1297
 msgid "Behavior"
 msgstr "Chovanie"
 
-#: gtik/gtik.c:1541
+#: gtik/gtik.c:1300 gweather/gweather-pref.c:273
+#, fuzzy
+msgid "Update"
+msgstr "_Aktualizovať"
+
+#: gtik/gtik.c:1304
+msgid "Stock update Fre_quency in minutes:"
+msgstr "_Aktualizácia (v minútach):"
+
+#: gtik/gtik.c:1314
+msgid "Scrolling"
+msgstr ""
+
+#: gtik/gtik.c:1318
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "Rýchlosť posunu:"
+
+#: gtik/gtik.c:1322
+#, fuzzy
+msgid "_Slow"
+msgstr "Zobraziť"
+
+#: gtik/gtik.c:1324
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1326
+#, fuzzy
+msgid "_Fast"
+msgstr "_Predpoveď"
+
+#: gtik/gtik.c:1343
+msgid "_Enable scroll buttons"
+msgstr "Po_voliť tlačidlá pre posun"
+
+#: gtik/gtik.c:1352
+msgid "Scroll _left to right"
+msgstr "Posúvať do_prava"
+
+#: gtik/gtik.c:1370 stickynotes/stickynotes.glade.h:29
+#, fuzzy
+msgid "_Width:"
+msgstr "Ší_rka:"
+
+#: gtik/gtik.c:1383
+msgid "Displa_y only symbols and price"
+msgstr "Zobraziť iba s_ymboly a cenu"
+
+#: gtik/gtik.c:1392
+#, fuzzy
+msgid "_Font"
+msgstr "_Písmo:"
+
+#: gtik/gtik.c:1406 mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468 multiload/properties.c:365
+msgid "Colors"
+msgstr "Farby"
+
+#: gtik/gtik.c:1411
+#, fuzzy
+msgid "Stock _raised"
+msgstr "Sledovanie burzy"
+
+#: gtik/gtik.c:1426
+#, fuzzy
+msgid "Stock _lowered"
+msgstr "Sledovanie burzy"
+
+#: gtik/gtik.c:1441
+msgid "Stock _unchanged"
+msgstr ""
+
+#: gtik/gtik.c:1456 modemlights/properties.c:441
+msgid "_Background"
+msgstr "Po_zadie"
+
+#: gtik/gtik.c:1553
 msgid "Skip forward"
 msgstr "Preskočiť dopredu"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1554
 msgid "Skip backward"
 msgstr "Preskočiť dozadu"
 
-#: gtik/gtik.c:1543
+#: gtik/gtik.c:1555
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1043,15 +1095,15 @@ msgstr ""
 "Sledovanie kurzov\n"
 "Získava neustále aktualizované kurzy akcií"
 
-#: gtik/gtik.c:1731
+#: gtik/gtik.c:1745
 msgid "(No"
 msgstr "(Žiadna"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1746
 msgid "Change "
 msgstr "Zmena"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Predpoveď"
 
@@ -1068,15 +1120,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Sleduje aktuálne počasie a predpovede"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:64
 msgid "Weather Report"
 msgstr "Správa o počasí"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:65
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:66
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1086,1406 +1138,753 @@ msgstr ""
 "\n"
 "Applet pre sledovanie lokálneho počasia."
 
-#: gweather/gweather-applet.c:198
-msgid "GNOME Weather"
-msgstr "GNOME Počasie"
+#: gweather/gweather-applet.c:43
+#, c-format
+msgid ""
+"%s\n"
+"Today: %s\n"
+"Current temperature %d"
+msgstr ""
 
-#: gweather/gweather-applet.c:323
+#: gweather/gweather-applet.c:65
+#, c-format
+msgid ""
+"%s\n"
+"%s: %s\n"
+"Low %d, High %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:293
 msgid "Updating..."
 msgstr "Obnovujem..."
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:82
+msgid "Day"
+msgstr ""
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Precipitation"
+msgstr "Čiastočné zrážky"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Condition"
+msgstr "Podmienky:"
+
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
 msgid "Forecast"
 msgstr "Predpoveď"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Umiestnenie:"
+#, fuzzy
+msgid "Current Conditions"
+msgstr "_Aktuálne podmienky"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
+#: gweather/gweather-dialog.c:121
+msgid "City:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:128
+#, fuzzy
+msgid "Last update:"
 msgstr "Aktualizácia:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:135
 msgid "Conditions:"
 msgstr "Podmienky:"
 
-#: gweather/gweather-dialog.c:134
-msgid "Sky:"
-msgstr "Obloha:"
-
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:146
 msgid "Temperature:"
 msgstr "Teplota:"
 
-#: gweather/gweather-dialog.c:150
-msgid "Dew point:"
-msgstr "Rosný bod:"
+#: gweather/gweather-dialog.c:153
+msgid "Feels like:"
+msgstr ""
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:160
 msgid "Humidity:"
 msgstr "Vlhkosť:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:167
 msgid "Wind:"
 msgstr "Vietor:"
 
 #: gweather/gweather-dialog.c:174
+#, fuzzy
+msgid "Visibilty:"
+msgstr "Viditeľnosť:"
+
+#: gweather/gweather-dialog.c:181
 msgid "Pressure:"
 msgstr "Tlak:"
 
-#: gweather/gweather-dialog.c:182
-msgid "Visibility:"
-msgstr "Viditeľnosť:"
-
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "_Aktuálne podmienky"
-
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
-msgstr "Predpoveď počasia"
-
-#: gweather/gweather-dialog.c:294
-msgid "See the ForeCast Details"
-msgstr "Zobrazí detaily predpovede"
-
-#: gweather/gweather-dialog.c:329
-msgid "_Visit Weather.com"
-msgstr "Navštívte _Weather.com"
-
-#: gweather/gweather-dialog.c:330
-msgid "URL link Button"
-msgstr "URL pre tlačidlo"
-
-#: gweather/gweather-dialog.c:330
-msgid "Click to Enter Weather.com"
-msgstr "Kliknutím navštívite Weather.com"
-
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "_Radarová mapa"
-
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+#: gweather/gweather-dialog.c:307
+#, c-format
+msgid "%s / %.1f %s"
 msgstr ""
-"Detailná predpoveď nie je pre toto miesto k dispozícii.\n"
-"Prosím, skúste štátnu predpoveď, uvedomte si, že IWIN predpovede sú k "
-"dispozícii len pre mestá USA."
-
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"Štátna predpoveď nie je k dispozícii pre toto miesto.\n"
-"Prosím, skúste detailnú predpoveď, uvedomte si, že IWIN predpovede sú k "
-"dispozícii len pre mestá USA."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:108
-msgid "Location view"
-msgstr "Umiestnenie"
-
-#: gweather/gweather-pref.c:108
-msgid "Select Location from the list"
-msgstr "Vyberte miesto zo zoznamu"
-
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Update spin button"
 msgstr "Spinbutton pre frekvenciu obnovovania"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Spinbutton for updating"
 msgstr "Spinbutton pre aktualizáciu"
 
-#: gweather/gweather-pref.c:111
-msgid "Address Entry"
-msgstr "Položka adresy"
-
-#: gweather/gweather-pref.c:111
-msgid "Enter the URL"
-msgstr "Zadajte URL"
-
-#: gweather/gweather-pref.c:561
+#: gweather/gweather-pref.c:237
 msgid "Weather Preferences"
 msgstr "Nastavenie Počasia"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:285
 msgid "_Automatically update every"
 msgstr "_Automaticky aktualizovať každých"
 
-#: gweather/gweather-pref.c:610
-msgid "Use _metric system units"
-msgstr "Použiť _metrické jednotky"
-
-#: gweather/gweather-pref.c:616
-msgid "Enable _detailed forecast"
-msgstr "Povoliť _detailnú predpoveď"
-
-#: gweather/gweather-pref.c:623
-msgid "Enable _radar map"
-msgstr "Povoliť _radarové mapy"
-
-#: gweather/gweather-pref.c:629
-msgid "Use cus_tom address for radar map"
-msgstr "Použiť _vlastnú adresu pre radarovú mapu"
-
-#: gweather/gweather-pref.c:640
-msgid "A_ddress :"
-msgstr "_Adresa:"
-
-#: gweather/gweather-pref.c:652
-msgid "Updates"
-msgstr "Aktualizácia"
-
-#: gweather/gweather-pref.c:658
-msgid "_Automatically update every "
-msgstr "Au_tomaticky aktualizovať každých "
-
-#: gweather/gweather-pref.c:678
+#: gweather/gweather-pref.c:312
 msgid "minute(s)"
 msgstr "minút"
 
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:689
-msgid "Miscellaneous"
-msgstr "Rôzne"
+#: gweather/gweather-pref.c:331
+msgid "Use _metric system units"
+msgstr "Použiť _metrické jednotky"
 
-#: gweather/gweather-pref.c:743
+#: gweather/gweather-pref.c:341
+msgid "Display daily average temperatures"
+msgstr ""
+
+#: gweather/gweather-pref.c:352
+msgid "Number of _forecast days to display:"
+msgstr ""
+
+#: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
 msgid "Location"
 msgstr "Umiestnenie"
 
-#: gweather/weather.c:57
+#: gweather/gweather-pref.c:387
+#, fuzzy
+msgid "Current city:"
+msgstr "_Aktuálne podmienky"
+
+#: gweather/gweather-pref.c:399
+msgid "Available c_ountries:"
+msgstr ""
+
+#: gweather/gweather-pref.c:411
+msgid "Available c_ities:"
+msgstr ""
+
+#: gweather/location.c:184
+msgid "Could not download countries"
+msgstr ""
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+msgid "Downloading Cities..."
+msgstr ""
+
+#: gweather/location.c:305
+msgid "Country"
+msgstr ""
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
+
+#: gweather/weather.c:49
 msgid "knots"
 msgstr "uzly"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:49
 msgid "kph"
 msgstr "kph"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "miles"
 msgstr "míle"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "kilometers"
 msgstr "kilometre"
 
-#: gweather/weather.c:132
-msgid "Variable"
-msgstr "Premenlivo"
-
-#: gweather/weather.c:133
-msgid "North"
-msgstr "Sever"
-
-#: gweather/weather.c:133
-msgid "North - NorthEast"
-msgstr "Severo-severovýchod"
-
-#: gweather/weather.c:133
-msgid "Northeast"
-msgstr "Severovýchod"
-
-#: gweather/weather.c:133
-msgid "East - NorthEast"
-msgstr "Východo-severovýchod"
-
-#: gweather/weather.c:134
-msgid "East"
-msgstr "Východ"
-
-#: gweather/weather.c:134
-msgid "East - Southeast"
-msgstr "Východo-Juhovýchod"
-
-#: gweather/weather.c:134
-msgid "Southeast"
-msgstr "Juhovýchod"
-
-#: gweather/weather.c:134
-msgid "South - Southeast"
-msgstr "Juho-juhovýchod"
-
-#: gweather/weather.c:135
-msgid "South"
-msgstr "Juh"
-
-#: gweather/weather.c:135
-msgid "South - Southwest"
-msgstr "Juho-juhozápad"
-
-#: gweather/weather.c:135
-msgid "Southwest"
-msgstr "Juhozápad"
-
-#: gweather/weather.c:135
-msgid "West - Southwest"
-msgstr "Západo-juhozápad"
-
-#: gweather/weather.c:136
-msgid "West"
-msgstr "Západ"
-
-#: gweather/weather.c:136
-msgid "West - Northwest"
-msgstr "Západo-severozápad"
-
-#: gweather/weather.c:136
-msgid "Northwest"
-msgstr "Severozápad"
-
-#: gweather/weather.c:136
-msgid "North - Northwest"
-msgstr "Severo-severozápad"
-
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
-msgid "Invalid"
-msgstr "Neplatné"
-
-#: gweather/weather.c:149
+#: gweather/weather.c:63
 msgid "Clear Sky"
 msgstr "Čistá obloha"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:64
 msgid "Broken clouds"
 msgstr "Oblačno"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:65
 msgid "Scattered clouds"
 msgstr "Rozptýlená oblačnosť"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:66
 msgid "Few clouds"
 msgstr "Malá oblačnosť"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:67
 msgid "Overcast"
 msgstr "Zatiahnuté"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-#. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Mrholenie"
+#: gweather/weather.c:71
+#, fuzzy
+msgid "Windy"
+msgstr "Vietor:"
 
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Mrholenie v okolí"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Ľahké mrholenie"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Mierne mrholenie"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Ťažké mrholenie"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Slabé mrholenie"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Občasné mrholenie"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Čiastočné mrholenie"
-
-#: gweather/weather.c:186 gweather/weather.c:187
-msgid "Thunderstorm"
+#: gweather/weather.c:72
+#, fuzzy
+msgid "Thunder Storms"
 msgstr "Búrka"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Veterné mrholenie"
-
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Spŕšky"
-
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Kolísajúce mrholenie"
-
-#: gweather/weather.c:186
-msgid "Freezing drizzle"
-msgstr "Mrznúce mrholenie"
-
-#. RAIN
-#: gweather/weather.c:187
-msgid "Rain"
-msgstr "Dážď"
-
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Dážď v okolí"
-
-#: gweather/weather.c:187
-msgid "Light rain"
-msgstr "Ľahký dážď"
-
-#: gweather/weather.c:187
-msgid "Moderate rain"
-msgstr "Mierny dážď"
-
-#: gweather/weather.c:187
-msgid "Heavy rain"
-msgstr "Ťažký dážď"
-
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Slabý dážď"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Občasný dážď"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Čiastočné zrážky"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Veterné zrážky"
-
-#: gweather/weather.c:187
-msgid "Rain showers"
-msgstr "Dážďové spŕšky"
-
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Kolísajúci dážď"
-
-#: gweather/weather.c:187
-msgid "Freezing rain"
-msgstr "Mrznúci dážď"
-
-#. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:73
 msgid "Snow"
 msgstr "Sneženie"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Sneženie v okolí"
+#: gweather/weather.c:74
+msgid "Rain"
+msgstr "Dážď"
 
-#: gweather/weather.c:188
-msgid "Light snow"
-msgstr "Ľahké sneženie"
+#: gweather/weather.c:75
+#, fuzzy
+msgid "Heavy Rain"
+msgstr "Ťažký dážď"
 
-#: gweather/weather.c:188
-msgid "Moderate snow"
-msgstr "Mierne sneženie"
+#: gweather/weather.c:76
+msgid "Sleet"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Heavy snow"
-msgstr "Ťažké sneženie"
+#: gweather/weather.c:77
+#, fuzzy
+msgid "Light Flurries"
+msgstr "Ľahké mrholenie"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Slabé sneženie"
+#: gweather/weather.c:78
+msgid "Flurries"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Občasné sneženie"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Čiastočné sneženie"
-
-#: gweather/weather.c:188 gweather/weather.c:189
-msgid "Snowstorm"
-msgstr "Snehová búrka"
-
-#: gweather/weather.c:188
-msgid "Blowing snowfall"
-msgstr "Veterné sneženie"
-
-#: gweather/weather.c:188
-msgid "Snow showers"
-msgstr "Snehové spŕšky"
-
-#: gweather/weather.c:188
-msgid "Drifting snow"
-msgstr "Kolísajúce sneženie"
-
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Mrznúce sneženie"
-
-#. SNOW_GRAINS
-#: gweather/weather.c:189
-msgid "Snow grains"
+#: gweather/weather.c:79
+#, fuzzy
+msgid "Snow and Wind"
 msgstr "Zrnité sneženie"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Zrnité sneženie v okolí"
-
-#: gweather/weather.c:189
-msgid "Light snow grains"
-msgstr "Ľahké zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Moderate snow grains"
-msgstr "Mierne zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Heavy snow grains"
-msgstr "Ťažké zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Slabé zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Občasné zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Čiastočné zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Veterné zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Spŕšky zrnitého snehu"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Kolísajúce zrnité sneženie"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Mrznúce zrnité sneženie"
-
-#. ICE_CRYSTALS
-#: gweather/weather.c:190
-msgid "Ice crystals"
-msgstr "Ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Ľadové kryštály v okolí"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Málo ľadových kryštálov"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Mierne ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Ťažké ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Občasné ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Čiastočné ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Búrka ľadových kryštálov"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Veterné ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Spŕšky ľadových kryštálálov"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Kolísajúce ľadové kryštály"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Mrznúce ľadové kryštály"
-
-#. ICE_PELLETS
-#: gweather/weather.c:191
-msgid "Ice pellets"
-msgstr "Ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Ľadové guličky v okolí"
-
-#: gweather/weather.c:191
-msgid "Few ice pellets"
-msgstr "Málo ľadových guličiek"
-
-#: gweather/weather.c:191
-msgid "Moderate ice pellets"
-msgstr "Mierne ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Heavy ice pellets"
-msgstr "Ťažké ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Slabé ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Občasné ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Čiastočné ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Ice pellet storm"
-msgstr "Búrka ľadových guličiek"
-
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Veterné ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Showers of ice pellets"
-msgstr "Spŕšky ľadových guličiek"
-
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Kolísajúce ľadové guličky"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Mrznúce ľadové guličky"
-
-#. HAIL
-#: gweather/weather.c:192
-msgid "Hail"
-msgstr "Krúpy"
-
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Krúpy v okolí"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Ľahké krúpy"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Mierne krúpy"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Ťažké krúpy"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Slabé krúpy"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Občasné krúpy"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Čiastočné krúpy"
-
-#: gweather/weather.c:192
-msgid "Hailstorm"
-msgstr "Krupobitie"
-
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Veterné krúpy"
-
-#: gweather/weather.c:192
-msgid "Hail showers"
-msgstr "Spŕšky krúp"
-
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Kolísajúce krúpy"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Mrznúce krúpy"
-
-#. SMALL_HAIL
-#: gweather/weather.c:193
-msgid "Small hail"
-msgstr "Male krúpy"
-
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Malé krúpy v okolí"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Mierne malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Ťažké malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Slabé malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Občasné malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Čiastočné malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Small hailstorm"
-msgstr "Krupobitie s malými krúpami"
-
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Veterné malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Showers of small hail"
-msgstr "Spŕšky malých krúp"
-
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Kolísajúce malé krúpy"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Mrznúce malé krúpy"
-
-#. PRECIPITATION
-#: gweather/weather.c:194
-msgid "Unknown precipitation"
-msgstr "Neznáme zrážky"
-
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Zrážky v okolí"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Ľahké zrážky"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Mierne zrážky"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Ťažké zrážky"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Slabé zrážky"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Občasné zrážky"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Čiastočné zrážky"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Neznáma búrka"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Veterné zrážky"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Spŕšky, neznámy typ"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Kolísajúce zrážky"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Mrznúce zrážky"
-
-#. MIST
-#: gweather/weather.c:195
-msgid "Mist"
-msgstr "Opar"
-
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Opar v okolí"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Ľahký opar"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Mierny opar"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Hustý opar"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Slabý opar"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Občasný opar"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Čiastočný opar"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Opar s vetrom"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Kolísajúci opar"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Mrznúci opar"
-
-#. FOG
-#: gweather/weather.c:196
-msgid "Fog"
-msgstr "Hmla"
-
-#: gweather/weather.c:196
-msgid "Fog in the vicinity"
-msgstr "Hmla v okolí"
-
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Ľahká hmla"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Mierna hmla"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Hustá hmla"
-
-#: gweather/weather.c:196
-msgid "Shallow fog"
-msgstr "Slabá hmla"
-
-#: gweather/weather.c:196
-msgid "Patches of fog"
-msgstr "Občasná hmla"
-
-#: gweather/weather.c:196
-msgid "Partial fog"
-msgstr "Čiastočná hmla"
-
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Hmla s vetrom"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Kolísajúca hmla"
-
-#: gweather/weather.c:196
-msgid "Freezing fog"
-msgstr "Mrznúca hmla"
-
-#. SMOKE
-#: gweather/weather.c:197
-msgid "Smoke"
-msgstr "Dym"
-
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Dym v okolí"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Priehľadný dym"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Mierny dym"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Hustý dym"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Slabý dym"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Občasný dym"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Čiastočný dym"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Dym s hromami"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Dym s vetrom"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Kolísajúci dym"
-
-#. VOLCANIC_ASH
-#: gweather/weather.c:198
-msgid "Volcanic ash"
-msgstr "Sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Sopečný popol v okolí"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Mierny sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Hustý sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Slabý sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Občasný sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Čiastočný sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Sopečný popol s hromami"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Veterný sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Spŕšky sopečného popola"
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Kolísajúci sopečný popol"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Mrznúci sopečný popol"
-
-#. SAND
-#: gweather/weather.c:199
-msgid "Sand"
-msgstr "Piesok"
-
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Piesok v okolí"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Ľahký piesok"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Mierny piesok"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Ťažký piesok"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Občasný piesok"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Čiastočný piesok"
-
-#: gweather/weather.c:199
-msgid "Blowing sand"
-msgstr "Veterný piesok"
-
-#: gweather/weather.c:199
-msgid "Drifting sand"
-msgstr "Kolísajúci piesok"
-
-#. HAZE
-#: gweather/weather.c:200
-msgid "Haze"
-msgstr "Opar"
-
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Opar v okolí"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Ľahký opar"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Mierny opar"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Hustý opar"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Slabý opar"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Občasný opar"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Čiastočný opar"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Opar s vetrom"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Kolísajúci opar"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Mrznúci opar"
-
-#. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Jemné spŕšky v okolí"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Ľahké jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Mierne jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Tažké jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Slabé jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Občasné jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Čiastočné jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Blowing sprays"
-msgstr "Veterné jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Kolísavé jemné spŕšky"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Mrznúce jemné spŕšky"
-
-#. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:80
 msgid "Dust"
 msgstr "Prach"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Prach v okolí"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Ľahký prach"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Mierny prach"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Ťažký prach"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Občasný prach"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Čiastočný prach"
-
-#: gweather/weather.c:202
-msgid "Blowing dust"
-msgstr "Veterný prach"
-
-#: gweather/weather.c:202
-msgid "Drifting dust"
-msgstr "Kolísajúci prach"
-
-#. SQUALL
-#: gweather/weather.c:203
-msgid "Squall"
-msgstr "Poryvy"
-
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Poryvy v okolí"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Ľahké poryvy"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Mierne poryvy"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Ťažké poryvy"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Čiastočné poryvy"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Búrkové poryvy"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Veterné poryvy"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Kolísajúce poryvy"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Mrazivé poryvy"
-
-#. SANDSTORM
-#: gweather/weather.c:204
-msgid "Sandstorm"
-msgstr "Piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Sandstorm in the vicinity"
-msgstr "Piesočná búrka v okolí"
-
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Ľahká piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Mierna piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Heavy sandstorm"
-msgstr "Ťažká piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Slabá piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Čiastočná piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Piesočná búrka s hromami"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Veterná piesková búrka"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Kolísajúca piesočná búrka"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Mrazivá piesočná búrka"
-
-#. DUSTSTORM
-#: gweather/weather.c:205
-msgid "Duststorm"
-msgstr "Prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Duststorm in the vicinity"
-msgstr "Prachová búrka v okolí"
-
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Ľahká prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Mierna prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Heavy duststorm"
-msgstr "Ťažká prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Slabá prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Čiastočná prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Prachová búrka s hromami"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Veterná prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Kolísajúca prachová búrka"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Mrazivá prachová búrka"
-
-#. FUNNEL_CLOUD
-#: gweather/weather.c:206
-msgid "Funnel cloud"
-msgstr "Vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Vzdušné tornádo v okolí"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Ľahké vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Mierne vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Husté vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Slabé vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Občasné vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Čiastočné vzdušné tornádo"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Vzdušné tornádo s vetrom"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Kolísajúce vzdušné tornádo"
-
-#. TORNADO
-#: gweather/weather.c:207
-msgid "Tornado"
-msgstr "Tornádo"
-
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornádo v okolí"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Mierne tornádo"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Zúrivé tornádo"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Čiastočné tornádo"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Búrkové tornádo"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Kolísajúce tornádo"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Mrazivé tornádo"
-
-#. DUST_WHIRLS
-#: gweather/weather.c:208
-msgid "Dust whirls"
-msgstr "Prachové víry"
-
-#: gweather/weather.c:208
-msgid "Dust whirls in the vicinity"
-msgstr "Prachové víry v okolí"
-
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Ľahké prachové víry"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Mierne prachové víry"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Ťažké prachové víry"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Slabé prachové víry"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Občasné prachové víry"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Čiastočné prachové víry"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Veterné prachové víry"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Kolísajúce prachové víry"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
-msgid "Failed to get METAR data.\n"
-msgstr "Neporadilo sa získať METAR dáta.\n"
-
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
-msgid "WeatherInfo missing location"
-msgstr "Neznáme miesto pre WeatherInfo"
-
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Nepodarilo sa získať údaje IWIN.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Nepodarilo sa získať predpoveď IWIN.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Nepodarilo sa získať údaje Met Office.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Nepodarilo sa získať predpoveď Met Office.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Nepodarilo sa získať radarovú mapu.\n"
-
-#: gweather/weather.c:1771
-msgid "%a, %b %d / %H:%M"
-msgstr "%a, %b %d / %H:%M"
-
-#: gweather/weather.c:1775
-msgid "Unknown observation time"
-msgstr "Neznámy čas pozorovania"
-
-#: gweather/weather.c:1835
+#: gweather/weather.c:81
+msgid "Fog"
+msgstr "Hmla"
+
+#: gweather/weather.c:82
+msgid "Haze"
+msgstr "Opar"
+
+#: gweather/weather.c:83
+msgid "Smoke"
+msgstr "Dym"
+
+#: gweather/weather.c:84
+msgid "Cold"
+msgstr ""
+
+#: gweather/weather.c:85
+msgid "Cloudy"
+msgstr ""
+
+#: gweather/weather.c:86
+msgid "Mostly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:87
+msgid "Partly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:88
+msgid "Sunny"
+msgstr ""
+
+#: gweather/weather.c:89
+msgid "Mostly Sunny"
+msgstr ""
+
+#: gweather/weather.c:90
+msgid "Hot"
+msgstr ""
+
+#: gweather/weather.c:91
+#, fuzzy
+msgid "Nothing"
+msgstr "Sever"
+
+#: gweather/weather.c:95
+msgid "Variable"
+msgstr "Premenlivo"
+
+#: gweather/weather.c:96
+msgid "North"
+msgstr "Sever"
+
+#: gweather/weather.c:96
+msgid "North - NorthEast"
+msgstr "Severo-severovýchod"
+
+#: gweather/weather.c:96
+msgid "Northeast"
+msgstr "Severovýchod"
+
+#: gweather/weather.c:96
+msgid "East - NorthEast"
+msgstr "Východo-severovýchod"
+
+#: gweather/weather.c:97
+msgid "East"
+msgstr "Východ"
+
+#: gweather/weather.c:97
+msgid "East - Southeast"
+msgstr "Východo-Juhovýchod"
+
+#: gweather/weather.c:97
+msgid "Southeast"
+msgstr "Juhovýchod"
+
+#: gweather/weather.c:97
+msgid "South - Southeast"
+msgstr "Juho-juhovýchod"
+
+#: gweather/weather.c:98
+msgid "South"
+msgstr "Juh"
+
+#: gweather/weather.c:98
+msgid "South - Southwest"
+msgstr "Juho-juhozápad"
+
+#: gweather/weather.c:98
+msgid "Southwest"
+msgstr "Juhozápad"
+
+#: gweather/weather.c:98
+msgid "West - Southwest"
+msgstr "Západo-juhozápad"
+
+#: gweather/weather.c:99
+msgid "West"
+msgstr "Západ"
+
+#: gweather/weather.c:99
+msgid "West - Northwest"
+msgstr "Západo-severozápad"
+
+#: gweather/weather.c:99
+msgid "Northwest"
+msgstr "Severozápad"
+
+#: gweather/weather.c:99
+msgid "North - Northwest"
+msgstr "Severo-severozápad"
+
+#: gweather/weather.c:100
 msgid "Calm"
 msgstr "Bezvetrie"
 
-#: gweather/weather.c:1861
-msgid "Unknown"
-msgstr "Neznámy"
+#: gweather/weather.c:528 gweather/weather.c:553
+msgid "Could not download forecast"
+msgstr ""
 
-#: gweather/weather.c:1895
-msgid "Retrieval failed"
-msgstr "Získanie zlyhalo"
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "Vytváracie rozhranie pre applet počasia."
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:328 mailcheck/mailcheck.c:1812
+msgid "Inbox Monitor"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+msgid "_Check for mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:204
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "Pri pokuse o spustenie '%s' nastala chyba: %s"
+
+#: mailcheck/mailcheck.c:334
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:342
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:347 mailcheck/mailcheck.c:1425
+msgid "Password Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:401
+msgid "The Network May be down"
+msgstr ""
+
+#: mailcheck/mailcheck.c:404 mailcheck/mailcheck.c:407
+msgid "The User id or Password is not  correct"
+msgstr ""
+
+#: mailcheck/mailcheck.c:410
+msgid "The Server name may be wrong"
+msgstr ""
+
+#: mailcheck/mailcheck.c:414
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:423
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:604
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:606
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:610
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:612
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:616
+#, fuzzy
+msgid "No mail."
+msgstr "Normálna"
+
+#: mailcheck/mailcheck.c:1136 mailcheck/mailcheck.c:1137
+#: mailcheck/mailcheck.c:2003 mailcheck/mailcheck.c:2004
+msgid "Status not updated"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1309
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1317
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1325
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1333
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1341
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1361
+msgid "Mail _spool file:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1365
+#, fuzzy
+msgid "Browse"
+msgstr "Prehliadač"
+
+#: mailcheck/mailcheck.c:1380
+msgid "Mail s_erver:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1386
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1400
+#, fuzzy
+msgid "_Username:"
+msgstr "Po_užívateľ"
+
+#: mailcheck/mailcheck.c:1408
+msgid "Username Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1417
+msgid "_Password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1438
+msgid "_Folder:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1446
+msgid "Folder Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1458
+msgid "C_ommand to run before checking for mail:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1466
+#, fuzzy
+msgid "Command Entry box"
+msgstr "Príkazový riadok"
+
+#: mailcheck/mailcheck.c:1491
+#, fuzzy
+msgid "Execute"
+msgstr "Vysunúť"
+
+#: mailcheck/mailcheck.c:1502
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1517
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1527
+msgid "When new mail _arrives:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1540 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1550
+msgid "When clicke_d:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1563
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1573
+msgid "Set the number of unread mails to _zero"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1584
+msgid "Check for mail _every"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1596 mailcheck/mailcheck.c:1600
+#, fuzzy
+msgid "minutes"
+msgstr "minút"
+
+#: mailcheck/mailcheck.c:1596
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1610 mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "seconds"
+msgstr "millisekúnd"
+
+#: mailcheck/mailcheck.c:1610
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1622
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1633
+msgid "Select a_nimation"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1669 mailcheck/mailcheck.c:1877
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Pri pokuse o spustenie '%s' nastala chyba: %s"
+
+#: mailcheck/mailcheck.c:1710
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "Nastavenie Systémového monitoru"
+
+#: mailcheck/mailcheck.c:1730
+msgid "_Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1734
+msgid "Mail_box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1814
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1979
+#, fuzzy
+msgid "Text only"
+msgstr "Text"
+
+#: mailcheck/mailcheck.c:2005
+msgid "Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:2006
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+msgid "Path to the animation file"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+msgid "Mailcheck"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+msgid "New Mail"
+msgstr ""
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Príkazový riadok"
 
@@ -2517,15 +1916,15 @@ msgstr ""
 "Foundation; buď verzia 2 alebo (ako chcete) neskoršia verzia."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Spustiť program"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Príkazový riadok"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Sem zadajte príkaz a GNOME ho pre vás spustí"
 
@@ -2547,8 +1946,7 @@ msgstr "Nastaviť štandardnú hodnotu pre %s\n"
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
-"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL "
-"je nastavené, neinštalujem schémy\n"
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL je nastavené, neinštalujem schémy\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -2580,11 +1978,6 @@ msgstr "Ší_rka appletu:"
 msgid "Autocompletion"
 msgstr "Automatické dopĺňanie"
 
-#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
-#: multiload/properties.c:365
-msgid "Colors"
-msgstr "Farby"
-
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Command Line Preferences"
 msgstr "Nastavenie Príkazového riadku"
@@ -2602,7 +1995,8 @@ msgid "Command:"
 msgstr "Príkaz:"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history based autocompletion"
+#, fuzzy
+msgid "E_nable history-based autocompletion"
 msgstr "Povoliť automatické dopĺňanie založené na _histórii"
 
 #: mini-commander/src/mini-commander.glade.h:13
@@ -2614,6 +2008,7 @@ msgid "Pattern:"
 msgstr "Vzorka:"
 
 #: mini-commander/src/mini-commander.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Pick a color"
 msgstr "Vyberte farbu"
 
@@ -2659,11 +2054,11 @@ msgstr "História"
 msgid "Click this button for the list of previous commands"
 msgstr "Stlačením tohto tlačidla zobrazíte zoznam predchádzajúcich príkazov"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Applet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Tento applet pridá do panelu príkazový riadok"
 
@@ -2687,8 +2082,8 @@ msgstr "Nemôžete zadať duplikované vzorky"
 msgid "Adjust the sound volume"
 msgstr "Úprava hlasitosti zvuku"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:827
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
+#: mixer/mixer.c:938
 msgid "Volume Control"
 msgstr "Nastavenie hlasitosti"
 
@@ -2696,15 +2091,118 @@ msgstr "Nastavenie hlasitosti"
 msgid "_Mute"
 msgstr "_Potichu"
 
-#: mixer/GNOME_MixerApplet.xml.h:4
+#: mixer/GNOME_MixerApplet.xml.h:5
 msgid "_Run Volume Control..."
 msgstr "Nastavenie _hlasitosti..."
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:110
+msgid "Main Volume"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Bass"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Treble"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Synth"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Speaker"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Line"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "CD"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Mix"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Video"
+msgstr "Skryť"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Radio"
+msgstr "Dážď"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Monitor"
+msgstr "Systémový monitor"
+
+#: mixer/mixer.c:166
 msgid "Volume Control (muted)"
 msgstr "Nastavenie hlasitosti (potichu)"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:248
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2712,43 +2210,35 @@ msgstr ""
 "varovanie: táto verzia gmix bola preložená s inou verziou súboru\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:207
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "Zistenie dostupných kanálov zariadenia mixéru %s zlyhalo\n"
-
-#: mixer/mixer.c:214
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "varovanie: mixér nemá kanál hlasitosti - použijem PCM.\n"
-
-#: mixer/mixer.c:217
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "Zariadenie mixéru %s nemá ani kanál pre hlasitosť, ani PCM.\n"
-
-#: mixer/mixer.c:572
+#: mixer/mixer.c:683
 msgid "Volume Controller"
 msgstr "Ovládanie hlasitosti"
 
-#: mixer/mixer.c:573
+#: mixer/mixer.c:684
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Použite šipky hore a dolu pre zmenu hlasitosti"
 
-#: mixer/mixer.c:828
+#: mixer/mixer.c:939
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:829
+#: mixer/mixer.c:940
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Ovládanie hlasitosti umožňuje nastaviť hlasitosť pre vaše prostredie."
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1039
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "Ovládanie hlasitosti"
+
+#: mixer/mixer.c:1059
+#, fuzzy
+msgid "Channels"
+msgstr "Zmena"
+
+#: mixer/mixer.c:1345
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Ovládanie hlasitosti umožňuje nastaviť hlasitosť pre vaše prostredie."
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:227
@@ -2823,10 +2313,6 @@ msgstr "Príjem dát"
 #: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "_Popredie"
-
-#: modemlights/properties.c:441
-msgid "_Background"
-msgstr "Po_zadie"
 
 #: modemlights/properties.c:443
 msgid "Send data"
@@ -2927,11 +2413,12 @@ msgid "Load Average"
 msgstr "Priemerné zaťaženie"
 
 #: multiload/main.c:80
+#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"space use, plus network traffic."
 msgstr ""
 "Vydané pod licenciou GNU General Public License.\n"
 "\n"
@@ -2951,7 +2438,8 @@ msgid "Network"
 msgstr "Sieť"
 
 #: multiload/main.c:242 multiload/properties.c:391
-msgid "Swap File"
+#, fuzzy
+msgid "Swap Space"
 msgstr "Odkladací súbor"
 
 #: multiload/main.c:244
@@ -2992,7 +2480,8 @@ msgid "_Network"
 msgstr "_Sieť"
 
 #: multiload/properties.c:296
-msgid "_Swap File"
+#, fuzzy
+msgid "_Swap Space"
 msgstr "_Odkladací súbor"
 
 #: multiload/properties.c:326
@@ -3079,212 +2568,297 @@ msgstr "Nastavenie Systémového monitoru"
 msgid "Swap Load"
 msgstr "Zaťaženie odkladacieho súboru"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "Vytváracie rozhranie pre applet Menu panelu"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "Vytváracie rozhranie pre applet Menu panelu"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "Applet pre zobrazenie menu"
-
-#: panel-menu/panel-menu-actions.c:99
-msgid "Actions"
-msgstr "Akcie"
-
-#: panel-menu/panel-menu-actions.c:100
-msgid "Actions Menu"
-msgstr "Menu Akcie"
-
-#: panel-menu/panel-menu-add.c:77
-msgid "Add items to the Menu Bar"
-msgstr "Pridať položky do menu"
-
-#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:405
-msgid "Shortcuts"
-msgstr "Skratky"
-
-#: panel-menu/panel-menu-add.c:250
-msgid "My Documents"
-msgstr "Moje dokumenty"
-
-#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "Dokumenty"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "Aplikácie"
-
-#: panel-menu/panel-menu-common.c:738
-msgid ""
-"Removing this entry is not allowed as this will cause the Menu Bar applet to "
-"be removed from GNOME Panel"
+#: stickynotes/stickynotes.c:31 stickynotes/stickynotes.glade.h:27
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:6
+msgid "_New Note"
 msgstr ""
-"Odstránenie tejto položky nie je povolené, pretože by spôsobilo odstránenie "
-"appletu pre Menu z panelu GNOME"
 
-#: panel-menu/panel-menu-directory.c:516
-msgid "Create directory item..."
-msgstr "Vytvoriť položku pre priečinok..."
+#: stickynotes/stickynotes.c:32
+#, fuzzy
+msgid "_Delete Note"
+msgstr "_Odstrániť makro"
 
-#: panel-menu/panel-menu-directory.c:524
-msgid "Home"
-msgstr "Domovský priečinok"
+#: stickynotes/stickynotes.c:34
+msgid "_Edit Title"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:595
-msgid "Edit directory item..."
-msgstr "Upraviť položku priečinku..."
+#. FIXME : Hack because libglade does not properly set these
+#: stickynotes/stickynotes_applet.c:69 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
+#: stickynotes/stickynotes_applet_callbacks.c:249
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
+msgid "Sticky Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
-msgid "_Path:"
-msgstr "_Cesta:"
+#: stickynotes/stickynotes_applet.c:146
+#, c-format
+msgid ""
+"%s\n"
+"%d locked note"
+msgid_plural ""
+"%s\n"
+"%d locked notes"
+msgstr[0] ""
+msgstr[1] ""
 
-#: panel-menu/panel-menu-directory.c:694
-msgid "..."
-msgstr "..."
+#: stickynotes/stickynotes_applet.c:148
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"%d note"
+msgid_plural ""
+"%s\n"
+"%d notes"
+msgstr[0] ""
+"%s:\n"
+"%d%% sa používa"
+msgstr[1] ""
+"%s:\n"
+"%d%% sa používa"
 
-#: panel-menu/panel-menu-directory.c:704
-msgid "_Depth level:"
-msgstr "Úroveň v_norenia:"
+#: stickynotes/stickynotes.glade.h:1
+msgid "<b>Default click behavior</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:801
-msgid "Path specified is currently not a valid directory."
-msgstr "Zadaná cesta nie je platný priečinok."
+#: stickynotes/stickynotes.glade.h:2
+msgid "<b>Default dimensions</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "Vytvoriť položku dokumentov..."
+#: stickynotes/stickynotes.glade.h:3
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:434
-msgid "Rename documents item..."
-msgstr "Premenovať položku dokumentov..."
+#: stickynotes/stickynotes.glade.h:6
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
-msgid "KDE Menus"
-msgstr "Menu KDE"
+#: stickynotes/stickynotes.glade.h:9
+msgid "<b>Other settings</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
-#: panel-menu/panel-menu-path.c:559
-msgid "Programs"
-msgstr "Programy"
+#: stickynotes/stickynotes.glade.h:10
+msgid "<b>Style</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:403
-msgid "Create links item..."
-msgstr "Vytvoriť položku odkazov..."
+#: stickynotes/stickynotes.glade.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:439
-msgid "Rename links item..."
-msgstr "Premenovať položku odkazov..."
+#: stickynotes/stickynotes.glade.h:12
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
 
-#: panel-menu/panel-menu-path.c:230
-msgid "KDE"
-msgstr "KDE"
+#: stickynotes/stickynotes.glade.h:13
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
 
-#: panel-menu/panel-menu-path.c:658
-msgid "Create menu path item..."
-msgstr "Vytvoriť položku cesty menu..."
+#: stickynotes/stickynotes.glade.h:14
+msgid "Double-click or Right-click for more options"
+msgstr ""
 
-#: panel-menu/panel-menu-path.c:701
-msgid "Edit path item..."
+#: stickynotes/stickynotes.glade.h:15
+#, fuzzy
+msgid "Edit title"
 msgstr "Upraviť položku cesty..."
 
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "Nastavenia"
+#: stickynotes/stickynotes.glade.h:17
+msgid "Specify the default height (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:72
-msgid "Menu Bar Preferences"
-msgstr "Nastavenie Menu"
+#: stickynotes/stickynotes.glade.h:18
+msgid "Specify the default width (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:78
-msgid "Layout"
-msgstr "Rozloženie"
+#: stickynotes/stickynotes.glade.h:19
+msgid "Sticky Note"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:93
-msgid "_Applications Menu"
-msgstr "Menu _Aplikácie"
+#: stickynotes/stickynotes.glade.h:20
+#, fuzzy
+msgid "Sticky Notes Preferences"
+msgstr "Nastavenie Pripojenia diskov"
 
-#: panel-menu/panel-menu-properties.c:117
-msgid "Select an icon for the Applications menu"
-msgstr "Vyberte ikonu pre menu Aplikácie"
+#: stickynotes/stickynotes.glade.h:21
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:134
-msgid "_Preferences Menu"
-msgstr "Menu _Nastavenia"
+#: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "_Color:"
+msgstr "Farby"
 
-#: panel-menu/panel-menu-properties.c:145
-msgid "Ac_tions Menu"
-msgstr "Menu A_kcie"
+#: stickynotes/stickynotes.glade.h:23
+#, fuzzy
+msgid "_Delete ALL"
+msgstr "_Odstrániť makro"
 
-#: panel-menu/panel-menu-properties.c:156
-msgid "_Windows Menu"
-msgstr "Menu _Okná"
+#: stickynotes/stickynotes.glade.h:24
+#, fuzzy
+msgid "_Height:"
+msgstr "Vysoké"
 
-#: panel-menu/panel-menu-properties.c:167
-msgid "W_orkspaces Menu"
-msgstr "Menu _Pracovné plochy"
+#: stickynotes/stickynotes.glade.h:25
+msgid "_Hide/_Show All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "Okná"
+#: stickynotes/stickynotes.glade.h:26
+msgid "_Lock/_Unlock All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
+#: stickynotes/stickynotes.glade.h:28
+msgid "_Sticky across workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:2
+#, fuzzy
+msgid "Background color of body"
+msgstr "Farba po_zadia:"
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid ""
+"Background color of the body of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid ""
+"Background color of the body of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid ""
+"Background color of the title of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Background color of the title of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:7
+#, fuzzy
+msgid "Background color of title"
+msgstr "Farba po_zadia:"
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid "Background prelighted color of body"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Background prelighted color of title"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:10
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used. Anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Date format"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
+"\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:13
+msgid "Default height for new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid "Default height for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid "Default left-click behavior of the applet"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:16
+#, fuzzy
+msgid "Default width for new notes"
+msgstr "Štandardný zoznam znakov"
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid "Default width for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:18
+msgid ""
+"Every time the specified number of minutes pass. The Sticky Notes are "
+"automatically saved."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:19
+msgid "Specifies whether the sticky notes are locked (uneditable) or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:20
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:21
+msgid "Sticky notes locked state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:22
+#, fuzzy
+msgid "Workspace stickyness"
 msgstr "Pracovné plochy"
 
-#: panel-menu/panel-menu.c:693
-msgid "Menu Bar"
-msgstr "Menu"
-
-#: panel-menu/panel-menu.c:694
-msgid "(c) 2001 Chris Phelps"
-msgstr "(c) 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:695
-msgid "The Menu Bar allows you to display customized menubars on your panels."
-msgstr "Applet Menu panelu umožňuje zobraziť prispôsobené menu na vašom paneli."
-
-#: screen-exec/egg-screen-help.c:174
-msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr "Nepodarilo sa nájsť doménu GNOME_FILE_DOMAIN_APP_HELP"
-
-#: screen-exec/egg-screen-help.c:187
-msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr "Nepodarilo sa nájsť doménu GNOME_FILE_DOMAIN_HELP."
-
-#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
-#, c-format
-msgid ""
-"Unable to show help as %s is not a directory.  Please check your "
-"installation."
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
-"Nepodarilo sa zobraziť pomocníka, pretože %s nie je priečinok. "
-"Prosím, overte inštaláciu."
 
-#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
-#, c-format
-msgid ""
-"Unable to find the help files in either %s or %s.  Please check your "
-"installation"
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#, fuzzy
+msgid "Sticky Notes Applet Factory"
+msgstr "Vytváracie rozhranie pre applet Gtik"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:2
+msgid "_Delete All Notes"
 msgstr ""
-"Nepodarilo sa nájsť súbory pomocníka v %s ani v %s. Prosím, overte "
-"inštaláciu."
 
-#: screen-exec/egg-screen-help.c:315
-#, c-format
-msgid "Unable to find doc_id %s in the help path"
-msgstr "Nepodarilo sa nájdť doc_id %s v ceste pomocníka"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:4
+msgid "_Hide All Notes"
+msgstr ""
 
-#: screen-exec/egg-screen-help.c:336
-#, c-format
-msgid "Help document %s/%s not found"
-msgstr "Nenájdený dokument pomocníka %s/%s"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:5
+msgid "_Lock All Notes"
+msgstr ""
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:8
+#, fuzzy
+msgid "_Show All Notes"
+msgstr "Zobraziť _dialógy"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:9
+msgid "_Unlock All Notes"
+msgstr ""
 
 #: wireless/wireless-applet.c:343
 msgid ""
@@ -3294,11 +2868,11 @@ msgstr ""
 "Chýbajú obrázky nutné pre spustenie monitoru.\n"
 "Prosím, overte, že ich máte správne nainštalované."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Žiadne bezdrôtové zariadenia"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3306,16 +2880,16 @@ msgstr ""
 "Váš systém asi neobsahuje žiadne nakonfigurované bezdrôtové pripojenia.\n"
 "Prosím, overte konfiguráciu, ak máte pocit, že nie je správna."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Sledovanie bezdrôtového pripojenia"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj zobrazuje stav bezdrôtového pripojenia."
 
@@ -3339,3 +2913,1027 @@ msgstr "Nastavenie Bezdrôtového pripojenia"
 msgid "Monitor the quality of a wireless network link"
 msgstr "Monitorovanie kvality bezdrôtového pripojenia"
 
+#~ msgid "+ C_olor:"
+#~ msgstr "_Farba +:"
+
+#~ msgid "- Colo_r:"
+#~ msgstr "Fa_rba -:"
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "_Nezmenená farba:"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "GNOME Počasie"
+
+#~ msgid "Location:"
+#~ msgstr "Umiestnenie:"
+
+#~ msgid "Sky:"
+#~ msgstr "Obloha:"
+
+#~ msgid "Dew point:"
+#~ msgstr "Rosný bod:"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Predpoveď počasia"
+
+#~ msgid "See the ForeCast Details"
+#~ msgstr "Zobrazí detaily predpovede"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "Navštívte _Weather.com"
+
+#~ msgid "URL link Button"
+#~ msgstr "URL pre tlačidlo"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Kliknutím navštívite Weather.com"
+
+#~ msgid "_Radar map"
+#~ msgstr "_Radarová mapa"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Detailná predpoveď nie je pre toto miesto k dispozícii.\n"
+#~ "Prosím, skúste štátnu predpoveď, uvedomte si, že IWIN predpovede sú k "
+#~ "dispozícii len pre mestá USA."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Štátna predpoveď nie je k dispozícii pre toto miesto.\n"
+#~ "Prosím, skúste detailnú predpoveď, uvedomte si, že IWIN predpovede sú k "
+#~ "dispozícii len pre mestá USA."
+
+#~ msgid "Location view"
+#~ msgstr "Umiestnenie"
+
+#~ msgid "Select Location from the list"
+#~ msgstr "Vyberte miesto zo zoznamu"
+
+#~ msgid "Address Entry"
+#~ msgstr "Položka adresy"
+
+#~ msgid "Enter the URL"
+#~ msgstr "Zadajte URL"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Povoliť _detailnú predpoveď"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Povoliť _radarové mapy"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "Použiť _vlastnú adresu pre radarovú mapu"
+
+#~ msgid "A_ddress :"
+#~ msgstr "_Adresa:"
+
+#~ msgid "Updates"
+#~ msgstr "Aktualizácia"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "Au_tomaticky aktualizovať každých "
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Rôzne"
+
+#~ msgid "Invalid"
+#~ msgstr "Neplatné"
+
+#~ msgid "Drizzle"
+#~ msgstr "Mrholenie"
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Mrholenie v okolí"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "Mierne mrholenie"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "Ťažké mrholenie"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Slabé mrholenie"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Občasné mrholenie"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Čiastočné mrholenie"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Veterné mrholenie"
+
+#~ msgid "Showers"
+#~ msgstr "Spŕšky"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Kolísajúce mrholenie"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "Mrznúce mrholenie"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Dážď v okolí"
+
+#~ msgid "Light rain"
+#~ msgstr "Ľahký dážď"
+
+#~ msgid "Moderate rain"
+#~ msgstr "Mierny dážď"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Slabý dážď"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Občasný dážď"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Čiastočné zrážky"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Veterné zrážky"
+
+#~ msgid "Rain showers"
+#~ msgstr "Dážďové spŕšky"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Kolísajúci dážď"
+
+#~ msgid "Freezing rain"
+#~ msgstr "Mrznúci dážď"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Sneženie v okolí"
+
+#~ msgid "Light snow"
+#~ msgstr "Ľahké sneženie"
+
+#~ msgid "Moderate snow"
+#~ msgstr "Mierne sneženie"
+
+#~ msgid "Heavy snow"
+#~ msgstr "Ťažké sneženie"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Slabé sneženie"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Občasné sneženie"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Čiastočné sneženie"
+
+#~ msgid "Snowstorm"
+#~ msgstr "Snehová búrka"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "Veterné sneženie"
+
+#~ msgid "Snow showers"
+#~ msgstr "Snehové spŕšky"
+
+#~ msgid "Drifting snow"
+#~ msgstr "Kolísajúce sneženie"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Mrznúce sneženie"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Zrnité sneženie v okolí"
+
+#~ msgid "Light snow grains"
+#~ msgstr "Ľahké zrnité sneženie"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "Mierne zrnité sneženie"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "Ťažké zrnité sneženie"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Slabé zrnité sneženie"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Občasné zrnité sneženie"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Čiastočné zrnité sneženie"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Veterné zrnité sneženie"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Spŕšky zrnitého snehu"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Kolísajúce zrnité sneženie"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Mrznúce zrnité sneženie"
+
+#~ msgid "Ice crystals"
+#~ msgstr "Ľadové kryštály"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Ľadové kryštály v okolí"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Málo ľadových kryštálov"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Mierne ľadové kryštály"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Ťažké ľadové kryštály"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Občasné ľadové kryštály"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Čiastočné ľadové kryštály"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Búrka ľadových kryštálov"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Veterné ľadové kryštály"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Spŕšky ľadových kryštálálov"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Kolísajúce ľadové kryštály"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Mrznúce ľadové kryštály"
+
+#~ msgid "Ice pellets"
+#~ msgstr "Ľadové guličky"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Ľadové guličky v okolí"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "Málo ľadových guličiek"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "Mierne ľadové guličky"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "Ťažké ľadové guličky"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Slabé ľadové guličky"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Občasné ľadové guličky"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Čiastočné ľadové guličky"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "Búrka ľadových guličiek"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Veterné ľadové guličky"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "Spŕšky ľadových guličiek"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Kolísajúce ľadové guličky"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Mrznúce ľadové guličky"
+
+#~ msgid "Hail"
+#~ msgstr "Krúpy"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Krúpy v okolí"
+
+#~ msgid "Light hail"
+#~ msgstr "Ľahké krúpy"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Mierne krúpy"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Ťažké krúpy"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Slabé krúpy"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Občasné krúpy"
+
+#~ msgid "Partial hail"
+#~ msgstr "Čiastočné krúpy"
+
+#~ msgid "Hailstorm"
+#~ msgstr "Krupobitie"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Veterné krúpy"
+
+#~ msgid "Hail showers"
+#~ msgstr "Spŕšky krúp"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Kolísajúce krúpy"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Mrznúce krúpy"
+
+#~ msgid "Small hail"
+#~ msgstr "Male krúpy"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Malé krúpy v okolí"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Mierne malé krúpy"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Ťažké malé krúpy"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Slabé malé krúpy"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Občasné malé krúpy"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Čiastočné malé krúpy"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "Krupobitie s malými krúpami"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Veterné malé krúpy"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "Spŕšky malých krúp"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Kolísajúce malé krúpy"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Mrznúce malé krúpy"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "Neznáme zrážky"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Zrážky v okolí"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Ľahké zrážky"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Mierne zrážky"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Ťažké zrážky"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Slabé zrážky"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Občasné zrážky"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Neznáma búrka"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Veterné zrážky"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Spŕšky, neznámy typ"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Kolísajúce zrážky"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Mrznúce zrážky"
+
+#~ msgid "Mist"
+#~ msgstr "Opar"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Opar v okolí"
+
+#~ msgid "Light mist"
+#~ msgstr "Ľahký opar"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Mierny opar"
+
+#~ msgid "Thick mist"
+#~ msgstr "Hustý opar"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Slabý opar"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Občasný opar"
+
+#~ msgid "Partial mist"
+#~ msgstr "Čiastočný opar"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Opar s vetrom"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Kolísajúci opar"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Mrznúci opar"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "Hmla v okolí"
+
+#~ msgid "Light fog"
+#~ msgstr "Ľahká hmla"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Mierna hmla"
+
+#~ msgid "Thick fog"
+#~ msgstr "Hustá hmla"
+
+#~ msgid "Shallow fog"
+#~ msgstr "Slabá hmla"
+
+#~ msgid "Patches of fog"
+#~ msgstr "Občasná hmla"
+
+#~ msgid "Partial fog"
+#~ msgstr "Čiastočná hmla"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Hmla s vetrom"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Kolísajúca hmla"
+
+#~ msgid "Freezing fog"
+#~ msgstr "Mrznúca hmla"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Dym v okolí"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Priehľadný dym"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Mierny dym"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Hustý dym"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Slabý dym"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Občasný dym"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Čiastočný dym"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Dym s hromami"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Dym s vetrom"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Kolísajúci dym"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "Sopečný popol"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Sopečný popol v okolí"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Mierny sopečný popol"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Hustý sopečný popol"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Slabý sopečný popol"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Občasný sopečný popol"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Čiastočný sopečný popol"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Sopečný popol s hromami"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Veterný sopečný popol"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Spŕšky sopečného popola"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Kolísajúci sopečný popol"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Mrznúci sopečný popol"
+
+#~ msgid "Sand"
+#~ msgstr "Piesok"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Piesok v okolí"
+
+#~ msgid "Light sand"
+#~ msgstr "Ľahký piesok"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Mierny piesok"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Ťažký piesok"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Občasný piesok"
+
+#~ msgid "Partial sand"
+#~ msgstr "Čiastočný piesok"
+
+#~ msgid "Blowing sand"
+#~ msgstr "Veterný piesok"
+
+#~ msgid "Drifting sand"
+#~ msgstr "Kolísajúci piesok"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Opar v okolí"
+
+#~ msgid "Light haze"
+#~ msgstr "Ľahký opar"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Mierny opar"
+
+#~ msgid "Thick haze"
+#~ msgstr "Hustý opar"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Slabý opar"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Občasný opar"
+
+#~ msgid "Partial haze"
+#~ msgstr "Čiastočný opar"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Opar s vetrom"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Kolísajúci opar"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Mrznúci opar"
+
+#~ msgid "Sprays"
+#~ msgstr "Jemné spŕšky"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Jemné spŕšky v okolí"
+
+#~ msgid "Light sprays"
+#~ msgstr "Ľahké jemné spŕšky"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Mierne jemné spŕšky"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Tažké jemné spŕšky"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Slabé jemné spŕšky"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Občasné jemné spŕšky"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Čiastočné jemné spŕšky"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "Veterné jemné spŕšky"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Kolísavé jemné spŕšky"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Mrznúce jemné spŕšky"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Prach v okolí"
+
+#~ msgid "Light dust"
+#~ msgstr "Ľahký prach"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Mierny prach"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Ťažký prach"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Občasný prach"
+
+#~ msgid "Partial dust"
+#~ msgstr "Čiastočný prach"
+
+#~ msgid "Blowing dust"
+#~ msgstr "Veterný prach"
+
+#~ msgid "Drifting dust"
+#~ msgstr "Kolísajúci prach"
+
+#~ msgid "Squall"
+#~ msgstr "Poryvy"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Poryvy v okolí"
+
+#~ msgid "Light squall"
+#~ msgstr "Ľahké poryvy"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Mierne poryvy"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Ťažké poryvy"
+
+#~ msgid "Partial squall"
+#~ msgstr "Čiastočné poryvy"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Búrkové poryvy"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Veterné poryvy"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Kolísajúce poryvy"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Mrazivé poryvy"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Piesočná búrka"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "Piesočná búrka v okolí"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Ľahká piesočná búrka"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Mierna piesočná búrka"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "Ťažká piesočná búrka"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Slabá piesočná búrka"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Čiastočná piesočná búrka"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Piesočná búrka s hromami"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Veterná piesková búrka"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Kolísajúca piesočná búrka"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Mrazivá piesočná búrka"
+
+#~ msgid "Duststorm"
+#~ msgstr "Prachová búrka"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "Prachová búrka v okolí"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Ľahká prachová búrka"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Mierna prachová búrka"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "Ťažká prachová búrka"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Slabá prachová búrka"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Čiastočná prachová búrka"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Prachová búrka s hromami"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Veterná prachová búrka"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Kolísajúca prachová búrka"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Mrazivá prachová búrka"
+
+#~ msgid "Funnel cloud"
+#~ msgstr "Vzdušné tornádo"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Vzdušné tornádo v okolí"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Ľahké vzdušné tornádo"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Mierne vzdušné tornádo"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Husté vzdušné tornádo"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Slabé vzdušné tornádo"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Občasné vzdušné tornádo"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Čiastočné vzdušné tornádo"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Vzdušné tornádo s vetrom"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Kolísajúce vzdušné tornádo"
+
+#~ msgid "Tornado"
+#~ msgstr "Tornádo"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornádo v okolí"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Mierne tornádo"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Zúrivé tornádo"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Čiastočné tornádo"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Búrkové tornádo"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Kolísajúce tornádo"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Mrazivé tornádo"
+
+#~ msgid "Dust whirls"
+#~ msgstr "Prachové víry"
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "Prachové víry v okolí"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Ľahké prachové víry"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Mierne prachové víry"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Ťažké prachové víry"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Slabé prachové víry"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Občasné prachové víry"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Čiastočné prachové víry"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Veterné prachové víry"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Kolísajúce prachové víry"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "Neporadilo sa získať METAR dáta.\n"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "Neznáme miesto pre WeatherInfo"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Nepodarilo sa získať údaje IWIN.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Nepodarilo sa získať predpoveď IWIN.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Nepodarilo sa získať údaje Met Office.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Nepodarilo sa získať predpoveď Met Office.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Nepodarilo sa získať radarovú mapu.\n"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%a, %b %d / %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "Neznámy čas pozorovania"
+
+#~ msgid "Unknown"
+#~ msgstr "Neznámy"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "Získanie zlyhalo"
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr "Zistenie dostupných kanálov zariadenia mixéru %s zlyhalo\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr "varovanie: mixér nemá kanál hlasitosti - použijem PCM.\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "Zariadenie mixéru %s nemá ani kanál pre hlasitosť, ani PCM.\n"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "Vytváracie rozhranie pre applet Menu panelu"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "Vytváracie rozhranie pre applet Menu panelu"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "Applet pre zobrazenie menu"
+
+#~ msgid "Actions"
+#~ msgstr "Akcie"
+
+#~ msgid "Actions Menu"
+#~ msgstr "Menu Akcie"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "Pridať položky do menu"
+
+#~ msgid "Shortcuts"
+#~ msgstr "Skratky"
+
+#~ msgid "My Documents"
+#~ msgstr "Moje dokumenty"
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenty"
+
+#~ msgid "Applications"
+#~ msgstr "Aplikácie"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr ""
+#~ "Odstránenie tejto položky nie je povolené, pretože by spôsobilo "
+#~ "odstránenie appletu pre Menu z panelu GNOME"
+
+#~ msgid "Create directory item..."
+#~ msgstr "Vytvoriť položku pre priečinok..."
+
+#~ msgid "Home"
+#~ msgstr "Domovský priečinok"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "Upraviť položku priečinku..."
+
+#~ msgid "_Path:"
+#~ msgstr "_Cesta:"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "Úroveň v_norenia:"
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "Zadaná cesta nie je platný priečinok."
+
+#~ msgid "Create documents item..."
+#~ msgstr "Vytvoriť položku dokumentov..."
+
+#~ msgid "Rename documents item..."
+#~ msgstr "Premenovať položku dokumentov..."
+
+#~ msgid "KDE Menus"
+#~ msgstr "Menu KDE"
+
+#~ msgid "Programs"
+#~ msgstr "Programy"
+
+#~ msgid "Create links item..."
+#~ msgstr "Vytvoriť položku odkazov..."
+
+#~ msgid "Rename links item..."
+#~ msgstr "Premenovať položku odkazov..."
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "Vytvoriť položku cesty menu..."
+
+#~ msgid "Preferences"
+#~ msgstr "Nastavenia"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "Nastavenie Menu"
+
+#~ msgid "Layout"
+#~ msgstr "Rozloženie"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "Menu _Aplikácie"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "Vyberte ikonu pre menu Aplikácie"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "Menu _Nastavenia"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "Menu A_kcie"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "Menu _Okná"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "Menu _Pracovné plochy"
+
+#~ msgid "Windows"
+#~ msgstr "Okná"
+
+#~ msgid "Menu Bar"
+#~ msgstr "Menu"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "(c) 2001 Chris Phelps"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr ""
+#~ "Applet Menu panelu umožňuje zobraziť prispôsobené menu na vašom paneli."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "Nepodarilo sa nájsť doménu GNOME_FILE_DOMAIN_APP_HELP"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "Nepodarilo sa nájsť doménu GNOME_FILE_DOMAIN_HELP."
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "Nepodarilo sa zobraziť pomocníka, pretože %s nie je priečinok. Prosím, "
+#~ "overte inštaláciu."
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr ""
+#~ "Nepodarilo sa nájsť súbory pomocníka v %s ani v %s. Prosím, overte "
+#~ "inštaláciu."
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "Nepodarilo sa nájdť doc_id %s v ceste pomocníka"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "Nenájdený dokument pomocníka %s/%s"

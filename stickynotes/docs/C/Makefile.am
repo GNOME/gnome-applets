@@ -1,10 +1,10 @@
 ## Process this file with automake to produce Makefile.in
 
-figs = \
-    figures/stickynotes_applet.png \
-    figures/preferences_dialog.png
-
-figdir = figures
+#figs = \
+#    figures/stickynotes_applet.png \
+#    figures/preferences_dialog.png
+# figdir = figures
+figs=
 docname = stickynotes_applet
 lang = C
 omffile = stickynotes_applet-C.omf

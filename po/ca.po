@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.1.3\n"
-"POT-Creation-Date: 2003-01-17 14:11+0100\n"
+"POT-Creation-Date: 2003-03-27 14:07+0000\n"
 "PO-Revision-Date: 2003-01-17 14:31+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:848
+#: battstat/battstat_applet.c:852
 msgid "Battery Charge Monitor"
 msgstr "Monitor de càrrega de bateria"
 
@@ -35,7 +35,6 @@ msgstr "Monitoritza la càrrega que queda en un portàtil"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Utilitats"
 
@@ -44,9 +43,11 @@ msgstr "Utilitats"
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Quant a..."
@@ -56,8 +57,10 @@ msgstr "_Quant a..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:3
 msgid "_Help"
 msgstr "A_juda"
 
@@ -66,9 +69,11 @@ msgstr "A_juda"
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:7
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "_Preferències..."
@@ -90,22 +95,24 @@ msgstr "L'applet no funcionarà correctament (o gens).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "Alta"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "Baixa"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
 msgid "Critical"
 msgstr "Crítica"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
 msgid "Charging"
 msgstr "Carregant"
 
@@ -121,7 +128,7 @@ msgstr "La bateria ja està completament carregada!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -133,7 +140,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -144,15 +151,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
-#: battstat/battstat_applet.c:1064
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
 msgid "System is running on battery power"
 msgstr "El sistema s'està executant amb les bateries"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
-#: battstat/battstat_applet.c:1070
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
 msgid "System is running on AC power"
 msgstr "El sistema s'està executant amb corrent alterna"
 
@@ -162,14 +169,14 @@ msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "El sistema s'està executant amb les bateries. Bateria: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "El sistema s'està executant amb corrent alterna. Bateria: %d%% (%s)"
@@ -204,7 +211,7 @@ msgid "Battery: Not present"
 msgstr "Bateria: No present"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:722
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -217,7 +224,7 @@ msgstr ""
 "per al dispositiu d'APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:728
+#: battstat/battstat_applet.c:731
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -227,7 +234,7 @@ msgstr ""
 "Proveu a executar «apm -e 1» (FreeBSD) per a veure si\n"
 "això ajuda.\n"
 
-#: battstat/battstat_applet.c:783
+#: battstat/battstat_applet.c:787
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -237,7 +244,7 @@ msgstr ""
 "Intenteu corregir aquest error"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:790
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -247,7 +254,7 @@ msgstr ""
 "Ha hagut un error al llançar l'ordre de suspensió, l'odre ha tornat «%d»\n"
 "Intenteu corregir aquest error"
 
-#: battstat/battstat_applet.c:794
+#: battstat/battstat_applet.c:798
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -257,28 +264,30 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:825
+#: battstat/battstat_applet.c:829
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:504
-#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
+#: charpick/charpick.c:429 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1799 mini-commander/src/about.c:48 mixer/mixer.c:925
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr ""
 "Ivan Vilata i Balaguer <ivan@selidor.net>\n"
 "Softcatalà <info@softcatala.net>\n"
 "Jordi Mallach <jordi@sindominio.net>"
 
-#: battstat/battstat_applet.c:850
+#: battstat/battstat_applet.c:854
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:851
-msgid "This utility show the status of your laptop battery."
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
 msgstr "Aquesta utilitat mostra l'estat de la bateria del portàtil."
 
 #: battstat/battstat_applet.glade.h:2
@@ -286,7 +295,7 @@ msgstr "Aquesta utilitat mostra l'estat de la bateria del portàtil."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1361
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Aparença"
@@ -308,7 +317,7 @@ msgstr "Colors de nivells de la bateria (%)"
 msgid "Beep when either of the above is true"
 msgstr "Fes «beep» quan qualsevol d'aquestes és veritat"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:264
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "General"
@@ -382,7 +391,7 @@ msgid "Battery power low"
 msgstr "Bateria amb càrrega baixa"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
 msgid "CD Player"
 msgstr "Reproductor de CD"
 
@@ -407,61 +416,61 @@ msgstr "Applet del quadre per a reproduir CD d'audio"
 msgid "_Run External CD Player"
 msgstr "E_xecuta un reproductor de CD extern"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
 msgid "Stop"
 msgstr "Para"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
 msgid "Play / Pause"
 msgstr "Reprodueix / Pausa"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
 msgid "Eject"
 msgstr "Ejecta"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
 msgid "Next Track"
 msgstr "Pista següent"
 
-#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "S'ha produït un error en executar «%s»: %s"
 
-#: cdplayer/cdplayer.c:411
+#: cdplayer/cdplayer.c:422
 msgid "CD Player Preferences"
 msgstr "Preferències del reproductor de CD"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:442
 msgid "Disc Image"
 msgstr "Imatge del disc"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:442
 msgid "An image of a cd-rom disc"
 msgstr "Una imatge de un disc cd-rom"
 
-#: cdplayer/cdplayer.c:431
+#: cdplayer/cdplayer.c:444
 msgid "Device _Path:"
 msgstr "Camí del dis_positiu:"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:453
 msgid "Device Path"
 msgstr "Camí del dispositiu"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:453
 msgid "Set the device path here"
 msgstr "Establiu el camí del dispositiu ací"
 
-#: cdplayer/cdplayer.c:443
+#: cdplayer/cdplayer.c:456
 msgid "Use _Default"
 msgstr "Utilitza valors per _defecte"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:537
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -469,42 +478,46 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (Port a GNOME 2)"
 
-#: cdplayer/cdplayer.c:525 cdplayer/cdplayer.c:914
+#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "L'applet de reproductor de CD és un simple reproductor de CD d'audio per al "
 "quadre"
 
-#: cdplayer/cdplayer.c:782 cdplayer/cdplayer.c:793
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
 msgid "Elapsed time"
 msgstr "Temps transcurrit"
 
-#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:795
+#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
 msgid "Track number"
 msgstr "Número de pista"
 
-#: cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:861
+msgid "Audio Device is busy, or being used by another application"
+msgstr ""
+
+#: cdplayer/cdplayer.c:936
 msgid "Click this button to Stop playing the CD"
 msgstr "Premeu aquest botó per a parar la reproducció del CD"
 
-#: cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:938
 msgid "Click this button to Play or Pause the CD"
 msgstr "Premeu aquest botó per a reproduir o pausar el CD"
 
-#: cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:940
 msgid "Click this button to eject the CD"
 msgstr "Premeu aquest botó per a ejectar el CD"
 
-#: cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:942
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Premeu aquest botó per a reproduir la pista anterior del CD"
 
-#: cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:944
 msgid "Click this button to Play the next track in the CD"
 msgstr "Premeu aquest botó per a reproduir la següent pista en el CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:490
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:447
+#: charpick/charpick.c:549
 msgid "Character Palette"
 msgstr "Paleta de caràcters"
 
@@ -518,15 +531,15 @@ msgstr "Inseriu caràcters"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:366
+#: charpick/charpick.c:421
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:394
+#: charpick/charpick.c:449
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:395
+#: charpick/charpick.c:450
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -534,23 +547,23 @@ msgstr ""
 "Applet del quadre del GNOME per a seleccionar caràcters estranys que no són "
 "al teclat. Lliurat sota la Llicència Pública General GNU."
 
-#: charpick/charpick.c:489
+#: charpick/charpick.c:548
 msgid "Insert special characters"
 msgstr "Inserta caràcters especials"
 
-#: charpick/properties.c:80
+#: charpick/properties.c:84
 msgid "_Default character list:"
 msgstr "Llista de caràcters pre_determinats:"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Default list of characters"
 msgstr "Llista predeterminada de caràcters"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid "Set the default character list here"
 msgstr "Establiu ací la lista de caràcters predeterminats"
 
-#: charpick/properties.c:92
+#: charpick/properties.c:93
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
@@ -558,7 +571,7 @@ msgstr ""
 "Aquests caràcters apareixeràn quan s'inicie el quadre. Per a tornar a "
 "aquesta llista, polseu «d» quan l'applet té el focus."
 
-#: charpick/properties.c:156
+#: charpick/properties.c:158
 msgid "Character Palette Preferences"
 msgstr "Preferències de la paleta de caràcters"
 
@@ -632,7 +645,7 @@ msgstr "Punt de _muntatge:"
 msgid "_Update interval (seconds):"
 msgstr "Interval d'act_ualització (segons):"
 
-#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+#: drivemount/properties.c:307
 msgid "_Icon :"
 msgstr "_Icona:"
 
@@ -700,8 +713,8 @@ msgstr "Un parell d'ulls per al quadre"
 msgid "Amusements"
 msgstr "Divertiments"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:429 geyes/geyes.c:431
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -709,23 +722,23 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Factoria de l'applet Geyes"
 
-#: geyes/geyes.c:238
+#: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright © 1999 Dave Camp"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Un petit clònic de l'xeyes al quadre de GNOME."
 
-#: geyes/geyes.c:432
+#: geyes/geyes.c:446
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Els ulls miren en la direcció del punter del ratolí"
 
-#: geyes/themes.c:223
+#: geyes/themes.c:224
 msgid "Geyes Preferences"
 msgstr "Preferències de Geyes"
 
-#: geyes/themes.c:239
+#: geyes/themes.c:240
 msgid "_Theme Name:"
 msgstr "Nom del _tema:"
 
@@ -737,7 +750,7 @@ msgstr "Canvia la disposició del teclat"
 msgid "GKB Factory"
 msgstr "Factoria de GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Canviador de disposicions de teclat"
 
@@ -753,15 +766,15 @@ msgstr ""
 "Premeu la drecera per a canviar entre disposicions. La drecera es pot "
 "establir en el diàleg de Propietats"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -780,7 +793,7 @@ msgstr ""
 "seua ajuda.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Pàgina inicial de GKB (http://projects.gnome.hu/gkb)"
 
@@ -788,7 +801,7 @@ msgstr "Pàgina inicial de GKB (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Deshabilitat"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Premeu una tecla o premeu Esc per a cancel·lar"
 
@@ -800,25 +813,23 @@ msgstr "Teclats (seleccioneu i premeu «Afegeix»)"
 msgid "Select Keyboard"
 msgstr "Seleccioneu el teclat"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:233
 msgid "Edit Keyboard"
 msgstr "Edita el teclat"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#: gkb-new/prop-map.c:252
 msgid "_Name:"
 msgstr "_Nom:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:255
 msgid "_Label:"
 msgstr "Et_iqueta:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:258
 msgid "Co_mmand:"
 msgstr "O_rdre:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:266
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -830,7 +841,7 @@ msgstr ""
 "* gkb_xmmap hu\n"
 "* setxkbmap hu"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:299
 msgid "_Flag"
 msgstr "_Bandera"
 
@@ -854,7 +865,8 @@ msgstr "Etiqueta"
 msgid "Flag and Label"
 msgstr "Bandera i etiqueta"
 
-#: gkb-new/prop.c:291 modemlights/properties.c:393
+#: gkb-new/prop.c:291 gtik/gtik.c:1366 gweather/gweather-pref.c:320
+#: modemlights/properties.c:393
 msgid "Display"
 msgstr "Mostra"
 
@@ -876,11 +888,11 @@ msgid "_Grab hotkey"
 msgstr "_Captura la drecera"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:425
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Preferències del canviador de disposicions de teclat"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:442
 msgid "Keymaps"
 msgstr "Mapes de teclat"
 
@@ -890,7 +902,7 @@ msgstr "Mapes de teclat"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:454 multiload/properties.c:313
 msgid "Options"
 msgstr "Opcions"
 
@@ -905,7 +917,8 @@ msgid ""
 msgstr ""
 "S'ha produït un error.\n"
 "\n"
-"El mapa de tecles «%s» no està suportat en aquest sistema. Si us plau, seleccioneu un altre mapa de tecles.\n"
+"El mapa de tecles «%s» no està suportat en aquest sistema. Si us plau, "
+"seleccioneu un altre mapa de tecles.\n"
 "\n"
 "L'ordre ha sigut: %s"
 
@@ -921,12 +934,14 @@ msgid ""
 msgstr ""
 "S'ha produït un error.\n"
 "\n"
-"No s'ha pogut carregar el mapa de tecles «%s», probablement perque l'ordre «xmodmap» no s'ha trobat en el vostre camí.\n"
+"No s'ha pogut carregar el mapa de tecles «%s», probablement perque l'ordre "
+"«xmodmap» no s'ha trobat en el vostre camí.\n"
 "\n"
 "L'ordre ha sigut: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Accesoris"
 
@@ -962,83 +977,123 @@ msgstr ""
 "Internet. Ve SENSE CAP GARANTIA. No utilitzeu el Teletip d'acccions del "
 "GNOME per a prendre decisions sobre inversions; és només per a informar-se."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1158
+#, fuzzy
+msgid "Current _Stocks"
+msgstr "Condicions act_uals"
+
+#: gtik/gtik.c:1166
 msgid "_New Symbol:"
 msgstr "_Nou Símbol:"
 
-#: gtik/gtik.c:1158
+#: gtik/gtik.c:1174
 msgid "_Add"
 msgstr "_Afegeix"
 
-#: gtik/gtik.c:1169
-msgid "_Remove Selected"
+#: gtik/gtik.c:1179
+#, fuzzy
+msgid "_Remove"
 msgstr "_Elimina els seleccionats"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1277
 msgid "Stock Ticker Preferences"
 msgstr "Preferències del teletip bursàtil"
 
-#: gtik/gtik.c:1275
-msgid "Stock update Fre_quency in minutes:"
-msgstr "Fre_qüència d'actualitzacions de teletips en minuts:"
-
-#: gtik/gtik.c:1294
-msgid "Scroll Speed :"
-msgstr "Velocitat de desplaçament:"
-
-#: gtik/gtik.c:1314
-msgid "_Width :"
-msgstr "_Amplada:"
-
-#: gtik/gtik.c:1326
-msgid "Displa_y only symbols and price"
-msgstr "Mostra només els símbols i el _preu"
-
-#: gtik/gtik.c:1329
-msgid "Scroll _left to right"
-msgstr "Desplaçament d'e_squerra a dreta"
-
-#: gtik/gtik.c:1332
-msgid "_Enable scroll buttons"
-msgstr "_Habilita els botons de desplaçament"
-
-#: gtik/gtik.c:1356
-msgid "+ C_olor:"
-msgstr "+ C_olor:"
-
-#: gtik/gtik.c:1376
-msgid "- Colo_r:"
-msgstr "- Colo_r:"
-
-#: gtik/gtik.c:1393
-msgid "_Unchanged Color:"
-msgstr "Color _no modificat:"
-
-#: gtik/gtik.c:1410
-msgid "Back_ground Color:"
-msgstr "Color del _fons:"
-
-#: gtik/gtik.c:1432
-msgid "_Font:"
-msgstr "_Tipus de lletra:"
-
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1292
 msgid "Symbols"
 msgstr "Símbols"
 
-#: gtik/gtik.c:1454
+#: gtik/gtik.c:1297
 msgid "Behavior"
 msgstr "Comportament"
 
-#: gtik/gtik.c:1541
+#: gtik/gtik.c:1300 gweather/gweather-pref.c:273
+#, fuzzy
+msgid "Update"
+msgstr "Act_ualitza"
+
+#: gtik/gtik.c:1304
+msgid "Stock update Fre_quency in minutes:"
+msgstr "Fre_qüència d'actualitzacions de teletips en minuts:"
+
+#: gtik/gtik.c:1314
+msgid "Scrolling"
+msgstr "Desplaçament"
+
+#: gtik/gtik.c:1318
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "Velocitat de desplaçament:"
+
+#: gtik/gtik.c:1322
+#, fuzzy
+msgid "_Slow"
+msgstr "Mostra"
+
+#: gtik/gtik.c:1324
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1326
+#, fuzzy
+msgid "_Fast"
+msgstr "_Pronòstic"
+
+#: gtik/gtik.c:1343
+msgid "_Enable scroll buttons"
+msgstr "_Habilita els botons de desplaçament"
+
+#: gtik/gtik.c:1352
+msgid "Scroll _left to right"
+msgstr "Desplaçament d'e_squerra a dreta"
+
+#: gtik/gtik.c:1370 stickynotes/stickynotes.glade.h:29
+#, fuzzy
+msgid "_Width:"
+msgstr "_Amplada:"
+
+#: gtik/gtik.c:1383
+msgid "Displa_y only symbols and price"
+msgstr "Mostra només els símbols i el _preu"
+
+#: gtik/gtik.c:1392
+#, fuzzy
+msgid "_Font"
+msgstr "_Tipus de lletra:"
+
+#: gtik/gtik.c:1406 mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468 multiload/properties.c:365
+msgid "Colors"
+msgstr "Colors"
+
+#: gtik/gtik.c:1411
+#, fuzzy
+msgid "Stock _raised"
+msgstr "Canvi del _valor:"
+
+#: gtik/gtik.c:1426
+#, fuzzy
+msgid "Stock _lowered"
+msgstr "Teletip bursàtil"
+
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "Stock _unchanged"
+msgstr "Canvi del _valor:"
+
+#: gtik/gtik.c:1456 modemlights/properties.c:441
+msgid "_Background"
+msgstr "F_ons"
+
+#: gtik/gtik.c:1553
 msgid "Skip forward"
 msgstr "Anar endavant"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1554
 msgid "Skip backward"
 msgstr "Anar enrere"
 
-#: gtik/gtik.c:1543
+#: gtik/gtik.c:1555
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1046,15 +1101,15 @@ msgstr ""
 "Teletip bursàtil\n"
 "Obtindre valors de la borsa contínuament actualitzats"
 
-#: gtik/gtik.c:1731
+#: gtik/gtik.c:1745
 msgid "(No"
 msgstr "(Sense"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1746
 msgid "Change "
 msgstr "Canvi "
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Pronòstic"
 
@@ -1071,15 +1126,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitoritza les condicions actuals de l'oratge i les previsions"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:64
 msgid "Weather Report"
 msgstr "Informe de l'oratge"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:65
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright © 1999 de S. Papadimitriou"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:66
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1089,1410 +1144,767 @@ msgstr ""
 "\n"
 "Una applet per a monitoritzar les condicions de l'oratge local."
 
-#: gweather/gweather-applet.c:198
-msgid "GNOME Weather"
-msgstr "El temps a GNOME"
+#: gweather/gweather-applet.c:43
+#, c-format
+msgid ""
+"%s\n"
+"Today: %s\n"
+"Current temperature %d"
+msgstr ""
 
-#: gweather/gweather-applet.c:323
+#: gweather/gweather-applet.c:65
+#, c-format
+msgid ""
+"%s\n"
+"%s: %s\n"
+"Low %d, High %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:293
 msgid "Updating..."
 msgstr "Actualitzant..."
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:82
+msgid "Day"
+msgstr ""
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Precipitation"
+msgstr "Precipitacions disperses"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Condition"
+msgstr "Condicions:"
+
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
 msgid "Forecast"
 msgstr "Pronòstic"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Ubicació:"
+#, fuzzy
+msgid "Current Conditions"
+msgstr "Condicions act_uals"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
+#: gweather/gweather-dialog.c:121
+msgid "City:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:128
+#, fuzzy
+msgid "Last update:"
 msgstr "Actualitza:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:135
 msgid "Conditions:"
 msgstr "Condicions:"
 
-#: gweather/gweather-dialog.c:134
-msgid "Sky:"
-msgstr "Cel:"
-
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:146
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:150
-msgid "Dew point:"
-msgstr "Punt de l'albada:"
+#: gweather/gweather-dialog.c:153
+msgid "Feels like:"
+msgstr ""
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:160
 msgid "Humidity:"
 msgstr "Humitat:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:167
 msgid "Wind:"
 msgstr "Vent:"
 
 #: gweather/gweather-dialog.c:174
+#, fuzzy
+msgid "Visibilty:"
+msgstr "Visibilitat:"
+
+#: gweather/gweather-dialog.c:181
 msgid "Pressure:"
 msgstr "Pressió:"
 
-#: gweather/gweather-dialog.c:182
-msgid "Visibility:"
-msgstr "Visibilitat:"
-
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "Condicions act_uals"
-
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
-msgstr "Informe del pronòstic"
-
-#: gweather/gweather-dialog.c:294
-msgid "See the ForeCast Details"
-msgstr "Visualitza els detalls del pronòstic"
-
-#: gweather/gweather-dialog.c:329
-msgid "_Visit Weather.com"
-msgstr "_Visita Weather.com"
-
-#: gweather/gweather-dialog.c:330
-msgid "URL link Button"
-msgstr "Botó d'enllaç d'URL"
-
-#: gweather/gweather-dialog.c:330
-msgid "Click to Enter Weather.com"
-msgstr "Feu clic per a entrar en Weather.com"
-
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "Mapa del _radar"
-
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+#: gweather/gweather-dialog.c:307
+#, c-format
+msgid "%s / %.1f %s"
 msgstr ""
-"El pronòstic detallat per aquesta ubicació no està disponible.\n"
-"Si us plau, trieu el pronòstic de l'estat; fixeu-vos que les previsions\n"
-"d'IWIN només estan disponible per a les ciutats dels EUA."
-
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"El pronòstic de l'estat d'aquesta ubicació no està disponible.\n"
-"Si us plau, trieu el pronòstic detallat; fixeu-vos que les previsions\n"
-"d'IWIN només estan disponible a les ciutats dels EUA."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:108
-msgid "Location view"
-msgstr "muntador de discs<"
-
-#: gweather/gweather-pref.c:108
-msgid "Select Location from the list"
-msgstr "Selecciona el lloc de la llista"
-
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Update spin button"
 msgstr "Actualitza el botó giratori"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Spinbutton for updating"
 msgstr "Botó giratori per a actualitzar"
 
-#: gweather/gweather-pref.c:111
-msgid "Address Entry"
-msgstr "Entrada de l'adreça"
-
-#: gweather/gweather-pref.c:111
-msgid "Enter the URL"
-msgstr "Introduïu la URL"
-
-#: gweather/gweather-pref.c:561
+#: gweather/gweather-pref.c:237
 msgid "Weather Preferences"
 msgstr "Preferències del Temps"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:285
 msgid "_Automatically update every"
 msgstr "Actualitzar _automàticament cada"
 
-#: gweather/gweather-pref.c:610
-msgid "Use _metric system units"
-msgstr "Utilitza unitats del sistema _mètric"
-
-#: gweather/gweather-pref.c:616
-msgid "Enable _detailed forecast"
-msgstr "Habilita els pronòstics _detallat"
-
-#: gweather/gweather-pref.c:623
-msgid "Enable _radar map"
-msgstr "Habilita els mapes del _radar"
-
-#: gweather/gweather-pref.c:629
-msgid "Use cus_tom address for radar map"
-msgstr "Utilitza una adreça personali_tzada per al mapa del radar"
-
-#: gweather/gweather-pref.c:640
-msgid "A_ddress :"
-msgstr "A_dreça:"
-
-#: gweather/gweather-pref.c:652
-msgid "Updates"
-msgstr "Actualitzacions"
-
-#: gweather/gweather-pref.c:658
-msgid "_Automatically update every "
-msgstr "Actualitzar _automàticament cada "
-
-#: gweather/gweather-pref.c:678
+#: gweather/gweather-pref.c:312
 msgid "minute(s)"
 msgstr "minut(s)"
 
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:689
-msgid "Miscellaneous"
-msgstr "Miscel·lània"
+#: gweather/gweather-pref.c:331
+msgid "Use _metric system units"
+msgstr "Utilitza unitats del sistema _mètric"
 
-#: gweather/gweather-pref.c:743
+#: gweather/gweather-pref.c:341
+msgid "Display daily average temperatures"
+msgstr ""
+
+#: gweather/gweather-pref.c:352
+msgid "Number of _forecast days to display:"
+msgstr ""
+
+#: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
 msgid "Location"
 msgstr "Ubicació"
 
-#: gweather/weather.c:57
+#: gweather/gweather-pref.c:387
+#, fuzzy
+msgid "Current city:"
+msgstr "Condicions act_uals"
+
+#: gweather/gweather-pref.c:399
+msgid "Available c_ountries:"
+msgstr ""
+
+#: gweather/gweather-pref.c:411
+msgid "Available c_ities:"
+msgstr ""
+
+#: gweather/location.c:184
+#, fuzzy
+msgid "Could not download countries"
+msgstr "Munta i desmunta unitats de disc"
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+msgid "Downloading Cities..."
+msgstr ""
+
+#: gweather/location.c:305
+#, fuzzy
+msgid "Country"
+msgstr "_Pais:"
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
+
+#: gweather/weather.c:49
 msgid "knots"
 msgstr "nusos"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:49
 msgid "kph"
 msgstr "nph"
 
 # No estic segur... poHg, de "polzades"? jm
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "inHg"
 msgstr "poHg"
 
 # hectapascals. jm
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "miles"
 msgstr "milles"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "kilometers"
 msgstr "kilòmetres"
 
-#: gweather/weather.c:132
-msgid "Variable"
-msgstr "Variable"
-
-#: gweather/weather.c:133
-msgid "North"
-msgstr "Nord"
-
-#: gweather/weather.c:133
-msgid "North - NorthEast"
-msgstr "Nord - Nord-est"
-
-#: gweather/weather.c:133
-msgid "Northeast"
-msgstr "Nord-est"
-
-#: gweather/weather.c:133
-msgid "East - NorthEast"
-msgstr "Est - Nord-est"
-
-#: gweather/weather.c:134
-msgid "East"
-msgstr "Est"
-
-#: gweather/weather.c:134
-msgid "East - Southeast"
-msgstr "Est - Sud-est"
-
-#: gweather/weather.c:134
-msgid "Southeast"
-msgstr "Sud-est"
-
-#: gweather/weather.c:134
-msgid "South - Southeast"
-msgstr "Sud - Sud-est"
-
-#: gweather/weather.c:135
-msgid "South"
-msgstr "Sud"
-
-#: gweather/weather.c:135
-msgid "South - Southwest"
-msgstr "Sud - Sud-oest"
-
-#: gweather/weather.c:135
-msgid "Southwest"
-msgstr "Sud-oest"
-
-#: gweather/weather.c:135
-msgid "West - Southwest"
-msgstr "Oest - Sud-oest"
-
-#: gweather/weather.c:136
-msgid "West"
-msgstr "Oest"
-
-#: gweather/weather.c:136
-msgid "West - Northwest"
-msgstr "Oest - Nord-oest"
-
-#: gweather/weather.c:136
-msgid "Northwest"
-msgstr "Nord-oest"
-
-#: gweather/weather.c:136
-msgid "North - Northwest"
-msgstr "Nord - Nord-oest"
-
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
-msgid "Invalid"
-msgstr "Invàlid"
-
-#: gweather/weather.c:149
+#: gweather/weather.c:63
 msgid "Clear Sky"
 msgstr "Cel clar"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:64
 msgid "Broken clouds"
 msgstr "Núvols trencats"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:65
 msgid "Scattered clouds"
 msgstr "Núvols dispersos"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:66
 msgid "Few clouds"
 msgstr "Alguns núvols"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:67
 msgid "Overcast"
 msgstr "Ennuvolat"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-#. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Plugims"
+#: gweather/weather.c:71
+#, fuzzy
+msgid "Windy"
+msgstr "Vent:"
 
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Plugims a les rodalies"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Plugims febles"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Plugims moderats"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Plugims forts"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Plugims superficials"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Plugims dispersos"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Parcialment plujós"
-
-#: gweather/weather.c:186 gweather/weather.c:187
-msgid "Thunderstorm"
+#: gweather/weather.c:72
+#, fuzzy
+msgid "Thunder Storms"
 msgstr "Tempestes"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Plugims amb vent"
-
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Pluges"
-
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Plugims canviants"
-
-#: gweather/weather.c:186
-msgid "Freezing drizzle"
-msgstr "Plugims gelats"
-
-#. RAIN
-#: gweather/weather.c:187
-msgid "Rain"
-msgstr "Pluja"
-
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Pluja a les rodalies"
-
-#: gweather/weather.c:187
-msgid "Light rain"
-msgstr "Pluja feble"
-
-#: gweather/weather.c:187
-msgid "Moderate rain"
-msgstr "Pluja moderada"
-
-#: gweather/weather.c:187
-msgid "Heavy rain"
-msgstr "Pluja forta"
-
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Pluja superficial"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Pluges disperses"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Parcialment plujós"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Està marxant la pluja"
-
-#: gweather/weather.c:187
-msgid "Rain showers"
-msgstr "Pluges"
-
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Pluges canviants"
-
-#: gweather/weather.c:187
-msgid "Freezing rain"
-msgstr "Pluja glaçada"
-
-#. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:73
 msgid "Snow"
 msgstr "Neu"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Neu a les rodalies"
+#: gweather/weather.c:74
+msgid "Rain"
+msgstr "Pluja"
 
-#: gweather/weather.c:188
-msgid "Light snow"
-msgstr "Neu feble"
+#: gweather/weather.c:75
+#, fuzzy
+msgid "Heavy Rain"
+msgstr "Pluja forta"
 
-#: gweather/weather.c:188
-msgid "Moderate snow"
-msgstr "Neu moderada"
+#: gweather/weather.c:76
+msgid "Sleet"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Heavy snow"
-msgstr "Neu forta"
+#: gweather/weather.c:77
+#, fuzzy
+msgid "Light Flurries"
+msgstr "Plugims febles"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Neu superficial"
+#: gweather/weather.c:78
+msgid "Flurries"
+msgstr ""
 
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Neu dispersa"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Parcialment nevat"
-
-#: gweather/weather.c:188 gweather/weather.c:189
-msgid "Snowstorm"
-msgstr "Tempesta de neu"
-
-#: gweather/weather.c:188
-msgid "Blowing snowfall"
-msgstr "Està marxant la neu"
-
-#: gweather/weather.c:188
-msgid "Snow showers"
-msgstr "Pluges de neu"
-
-#: gweather/weather.c:188
-msgid "Drifting snow"
-msgstr "Nevada canviant"
-
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Neu glaçada"
-
-#. SNOW_GRAINS
-#: gweather/weather.c:189
-msgid "Snow grains"
+#: gweather/weather.c:79
+#, fuzzy
+msgid "Snow and Wind"
 msgstr "Volves de neu"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Volves de neu a les rodalies"
-
-#: gweather/weather.c:189
-msgid "Light snow grains"
-msgstr "Volves de neu febles"
-
-#: gweather/weather.c:189
-msgid "Moderate snow grains"
-msgstr "Volves de neu moderades"
-
-#: gweather/weather.c:189
-msgid "Heavy snow grains"
-msgstr "Volves de neu fortes"
-
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Volves de neu superficials"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Volves de neu disperses"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Volves de neu parcialment"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Estan caient volves de neu"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Pluja de volves de neu"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Àrea de les volves de neu"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Volves de neu glaçades"
-
-#. ICE_CRYSTALS
-#: gweather/weather.c:190
-msgid "Ice crystals"
-msgstr "Cristalls de gel"
-
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Cristals de gel a les rodalies"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Alguns cristalls de gel"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Cristalls de gel moderats"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Cristall de gel forts"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Cristalls de gel disperses"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Cristalls de gel parcials"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Tempesta de gel"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Estan caient cristals de gel"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Pluges de gel"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Cristals de gel canviants"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Cristals de gel freds"
-
-# Que collons és açò? jm
-#. ICE_PELLETS
-#: gweather/weather.c:191
-msgid "Ice pellets"
-msgstr "Esferes de gel"
-
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Esferes de gel en la rodalia"
-
-#: gweather/weather.c:191
-msgid "Few ice pellets"
-msgstr "Unes poques esferes de gel"
-
-#: gweather/weather.c:191
-msgid "Moderate ice pellets"
-msgstr "Esferes de gel moderades"
-
-#: gweather/weather.c:191
-msgid "Heavy ice pellets"
-msgstr "Esferes de gel fortes"
-
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Esferes de gel moderades"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Esferes de gel disperses"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Esferes de gel parcials"
-
-#: gweather/weather.c:191
-msgid "Ice pellet storm"
-msgstr "Tempesta d'esferes de gel"
-
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Esferes de gel amb vent"
-
-#: gweather/weather.c:191
-msgid "Showers of ice pellets"
-msgstr "Pluja d'esferes de gel"
-
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Esferes de gel canviants"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Esferes de gel fredes"
-
-#. HAIL
-#: gweather/weather.c:192
-msgid "Hail"
-msgstr "Pedra"
-
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Pedregada en les proximitats"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Pedregada feble"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Pedregada moderada"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Pedregada forta"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Pedregada superficial"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Pedregada disperses"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Pedregada parcial"
-
-#: gweather/weather.c:192
-msgid "Hailstorm"
-msgstr "Tormenta de pedra"
-
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Pedregada amb vent"
-
-#: gweather/weather.c:192
-msgid "Hail showers"
-msgstr "Pluges de pedra"
-
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Pedregades canviants"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Pedregada freda"
-
-#. SMALL_HAIL
-#: gweather/weather.c:193
-msgid "Small hail"
-msgstr "Petita pedregada"
-
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Petites pedregada a les rodalies"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Petita pedregada moderada"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Petita pedregada forta"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Petita pedregada moderada"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Pedregades petites dispersa"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Petita pedregada parcial"
-
-#: gweather/weather.c:193
-msgid "Small hailstorm"
-msgstr "Petita tempesta de pedra"
-
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Petita pedregada amb vent"
-
-#: gweather/weather.c:193
-msgid "Showers of small hail"
-msgstr "Pluja de petita pedregada"
-
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Petita pedregada canviant"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Petita pedregada gelada"
-
-#. PRECIPITATION
-#: gweather/weather.c:194
-msgid "Unknown precipitation"
-msgstr "Precipitació desconeguda"
-
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Precipitacions a les rodalies"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Precipitacions dèbils"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Precipitacions moderades"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Fortes precipitacions"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Precipitacions superficials"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Previsió de precipitacions"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Precipitacions disperses"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Tempesta desconeguda"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Precipitació amb vent"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Pluges, tipus desconegut"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Precipitació canviant"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Precipitació gelada"
-
-#. MIST
-#: gweather/weather.c:195
-msgid "Mist"
-msgstr "Boirina"
-
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Boirina a la rodalia"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Boirina lleugera"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Boirina moderada"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Boirina espesa"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Boirina superficial"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Boirina dispersa"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Boirina parcial"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Boirina amb vent"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Boirina canviant"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Boirina gelada"
-
-#. FOG
-#: gweather/weather.c:196
-msgid "Fog"
-msgstr "Boira"
-
-#: gweather/weather.c:196
-msgid "Fog in the vicinity"
-msgstr "Boira a les rodalies"
-
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Boira feble"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Boira moderada"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Boira espesa"
-
-#: gweather/weather.c:196
-msgid "Shallow fog"
-msgstr "Boira superficial"
-
-#: gweather/weather.c:196
-msgid "Patches of fog"
-msgstr "Boira dispersa"
-
-#: gweather/weather.c:196
-msgid "Partial fog"
-msgstr "Parcialment enboirat"
-
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Boira amb vent"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Boira canviant"
-
-#: gweather/weather.c:196
-msgid "Freezing fog"
-msgstr "Boira gelada"
-
-#. SMOKE
-#: gweather/weather.c:197
-msgid "Smoke"
-msgstr "Fum"
-
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Fum a les rodalies"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Capa prima de fum"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Fum moderat"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Fum espés"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Fum superficial"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Fum dispers"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Parcialment amb fum"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Fum amb tempesta"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Fum i vent"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Fum canviant"
-
-#. VOLCANIC_ASH
-#: gweather/weather.c:198
-msgid "Volcanic ash"
-msgstr "Lava volcànica"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Lava volcànica en les rodalies"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Lava volcànica moderada"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Lava volcànica espesa"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Lava volcànica superficial"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Lava volcànica dispersa"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Lava volcànica parcial"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Lava volcànica amb trons"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Lava volcànica amb vent"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Pluges de lava volcànica "
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Lava volcànica canviant"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Lava volcànica gelada"
-
-#. SAND
-#: gweather/weather.c:199
-msgid "Sand"
-msgstr "Arena"
-
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Arena a la rodalia"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Arena lleugera"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Arena moderada"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Arena forta"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Arena dispersa"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Arena parcial"
-
-#: gweather/weather.c:199
-msgid "Blowing sand"
-msgstr "Arena amb vent"
-
-#: gweather/weather.c:199
-msgid "Drifting sand"
-msgstr "Arena canviant"
-
-#. HAZE
-#: gweather/weather.c:200
-msgid "Haze"
-msgstr "Broma"
-
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Broma en les rodalies"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Broma lleugera"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Broma moderada"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Broma espesa"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Broma moderada"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Broma dispersa"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Broma parcial"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Broma amb vent"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Broma canviant"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Broma gelada"
-
-#. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Espurneijos"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Espurneijos en les rodalies"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Espurneijos febles"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Espurneijos moderats"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Espurneijos forts"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Espurneijos superficials"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Espurneijos dispersos"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Espurneijos parcials"
-
-#: gweather/weather.c:201
-msgid "Blowing sprays"
-msgstr "Espurneijos amb vent"
-
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Espurneijos canviants"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Espurneijos gelats"
-
-#. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:80
 msgid "Dust"
 msgstr "Pols"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Pols en les rodalies"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Pols lleugera"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Pols moderada"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Pols forta"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Pols dispersa"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Pols parcial"
-
-#: gweather/weather.c:202
-msgid "Blowing dust"
-msgstr "Pols amb vent"
-
-#: gweather/weather.c:202
-msgid "Drifting dust"
-msgstr "Pols canviant"
-
-#. SQUALL
-#: gweather/weather.c:203
-msgid "Squall"
-msgstr "Torb"
-
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Torb en les rodalies"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Torb lleuger"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Torb moderat"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Torb fort"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Torb parcial"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Torb tormentós"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Torb amb vent"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Torb canviant"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Torb gelat"
-
-#. SANDSTORM
-#: gweather/weather.c:204
-msgid "Sandstorm"
-msgstr "Tempesta d'arena"
-
-#: gweather/weather.c:204
-msgid "Sandstorm in the vicinity"
-msgstr "Tempesta d'arena en les rodalies"
-
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Tempesta d'arena lleugera"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Tempesta d'arena moderada"
-
-#: gweather/weather.c:204
-msgid "Heavy sandstorm"
-msgstr "Tempesta d'arena forta"
-
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Tempesta d'arena moderada"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Tempesta d'arena parcial"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Tempesta d'arena amb trons"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Tempesta d'arena amb vent"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Tempesta d'arena canviant"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Tempesta d'arena gelada"
-
-#. DUSTSTORM
-#: gweather/weather.c:205
-msgid "Duststorm"
-msgstr "Tempesta de pols"
-
-#: gweather/weather.c:205
-msgid "Duststorm in the vicinity"
-msgstr "Tempesta de pols en les rodalies"
-
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Tempesta de pols lleugera"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Tempesta de pols moderada"
-
-#: gweather/weather.c:205
-msgid "Heavy duststorm"
-msgstr "Tempesta de pols forta"
-
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Tempesta de pols moderada"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Tempesta de pols moderada"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Tempesta de pols amb trons"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Tempesta de pols amb vent"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Tempesta de pols canviant"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Tempesta de pols gelada"
-
-# Gens segur de que siga "remolí". jm
-#. FUNNEL_CLOUD
-#: gweather/weather.c:206
-msgid "Funnel cloud"
-msgstr "Remolí"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Remolins en les rodalies"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Remolí feble"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Remolí moderat"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Remolí espés"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Remolins moderats"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Remolins dispersos"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Remolins parcials"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Remolins amb vent"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Remolins canviants"
-
-#. TORNADO
-#: gweather/weather.c:207
-msgid "Tornado"
-msgstr "Tornado"
-
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornado a la rodalia"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Tornado moderat"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Tornado violent"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Tornado parcial"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Tornado amb trons"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Tornado canviant"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Tornado gelat"
-
-#. DUST_WHIRLS
-#: gweather/weather.c:208
-msgid "Dust whirls"
-msgstr "Remolins de pols"
-
-#: gweather/weather.c:208
-msgid "Dust whirls in the vicinity"
-msgstr "Remolins de pols en les rodalies"
-
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Remolins de pols lleugers"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Remolins de pols moderats"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Remolins de pols forts"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Remolins de pons moderats"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Remolins de pols dispersos"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Remolins de pols parcials"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Remolins de pols amb vent"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Remolins de pols canviants"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
-msgid "Failed to get METAR data.\n"
-msgstr "No s'han pogut rebre les dades de METAR.\n"
-
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
-msgid "WeatherInfo missing location"
-msgstr "Manca la localització de WeatherInfo"
-
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "No s'han pogut rebre les dades d'IWIN.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "No s'han pogut rebre les dades de la previsió d'IWIN.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "No s'han pogut rebre les dades de la Met Office.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "No s'ha pogut rebre les dades de la previsió de la Met OFfice.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Ha estat impossible rebre la imatge del mapa del radar.\n"
-
-#: gweather/weather.c:1771
-msgid "%a, %b %d / %H:%M"
-msgstr "%a, %d de %b / %H:%M"
-
-#: gweather/weather.c:1775
-msgid "Unknown observation time"
-msgstr "Temps d'observació desconegut"
-
-#: gweather/weather.c:1835
+#: gweather/weather.c:81
+msgid "Fog"
+msgstr "Boira"
+
+#: gweather/weather.c:82
+msgid "Haze"
+msgstr "Broma"
+
+#: gweather/weather.c:83
+msgid "Smoke"
+msgstr "Fum"
+
+#: gweather/weather.c:84
+msgid "Cold"
+msgstr ""
+
+#: gweather/weather.c:85
+msgid "Cloudy"
+msgstr ""
+
+#: gweather/weather.c:86
+msgid "Mostly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:87
+msgid "Partly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:88
+#, fuzzy
+msgid "Sunny"
+msgstr "Sun"
+
+#: gweather/weather.c:89
+msgid "Mostly Sunny"
+msgstr ""
+
+#: gweather/weather.c:90
+msgid "Hot"
+msgstr ""
+
+#: gweather/weather.c:91
+#, fuzzy
+msgid "Nothing"
+msgstr "Nord"
+
+#: gweather/weather.c:95
+msgid "Variable"
+msgstr "Variable"
+
+#: gweather/weather.c:96
+msgid "North"
+msgstr "Nord"
+
+#: gweather/weather.c:96
+msgid "North - NorthEast"
+msgstr "Nord - Nord-est"
+
+#: gweather/weather.c:96
+msgid "Northeast"
+msgstr "Nord-est"
+
+#: gweather/weather.c:96
+msgid "East - NorthEast"
+msgstr "Est - Nord-est"
+
+#: gweather/weather.c:97
+msgid "East"
+msgstr "Est"
+
+#: gweather/weather.c:97
+msgid "East - Southeast"
+msgstr "Est - Sud-est"
+
+#: gweather/weather.c:97
+msgid "Southeast"
+msgstr "Sud-est"
+
+#: gweather/weather.c:97
+msgid "South - Southeast"
+msgstr "Sud - Sud-est"
+
+#: gweather/weather.c:98
+msgid "South"
+msgstr "Sud"
+
+#: gweather/weather.c:98
+msgid "South - Southwest"
+msgstr "Sud - Sud-oest"
+
+#: gweather/weather.c:98
+msgid "Southwest"
+msgstr "Sud-oest"
+
+#: gweather/weather.c:98
+msgid "West - Southwest"
+msgstr "Oest - Sud-oest"
+
+#: gweather/weather.c:99
+msgid "West"
+msgstr "Oest"
+
+#: gweather/weather.c:99
+msgid "West - Northwest"
+msgstr "Oest - Nord-oest"
+
+#: gweather/weather.c:99
+msgid "Northwest"
+msgstr "Nord-oest"
+
+#: gweather/weather.c:99
+msgid "North - Northwest"
+msgstr "Nord - Nord-oest"
+
+#: gweather/weather.c:100
 msgid "Calm"
 msgstr "Calma"
 
-#: gweather/weather.c:1861
-msgid "Unknown"
-msgstr "Desconegut"
+#: gweather/weather.c:528 gweather/weather.c:553
+msgid "Could not download forecast"
+msgstr ""
 
-#: gweather/weather.c:1895
-msgid "Retrieval failed"
-msgstr "Ha fallat la recepció"
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "Factoria per a crear l'applet de l'oratge."
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:328 mailcheck/mailcheck.c:1812
+msgid "Inbox Monitor"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+msgid "_Check for mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:204
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "S'ha produït un error en executar %s: %s"
+
+#: mailcheck/mailcheck.c:334
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:342
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:347 mailcheck/mailcheck.c:1425
+msgid "Password Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:401
+msgid "The Network May be down"
+msgstr ""
+
+#: mailcheck/mailcheck.c:404 mailcheck/mailcheck.c:407
+msgid "The User id or Password is not  correct"
+msgstr ""
+
+#: mailcheck/mailcheck.c:410
+msgid "The Server name may be wrong"
+msgstr ""
+
+#: mailcheck/mailcheck.c:414
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:423
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:604
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:606
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:610
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:612
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:616
+#, fuzzy
+msgid "No mail."
+msgstr "Normal"
+
+#: mailcheck/mailcheck.c:1136 mailcheck/mailcheck.c:1137
+#: mailcheck/mailcheck.c:2003 mailcheck/mailcheck.c:2004
+msgid "Status not updated"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1309
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1317
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1325
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1333
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1341
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1361
+#, fuzzy
+msgid "Mail _spool file:"
+msgstr "Fitxer de correu:"
+
+#: mailcheck/mailcheck.c:1365
+#, fuzzy
+msgid "Browse"
+msgstr "Explorador"
+
+#: mailcheck/mailcheck.c:1380
+#, fuzzy
+msgid "Mail s_erver:"
+msgstr "Fitxer de correu:"
+
+#: mailcheck/mailcheck.c:1386
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1400
+#, fuzzy
+msgid "_Username:"
+msgstr "_Usuari"
+
+#: mailcheck/mailcheck.c:1408
+msgid "Username Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1417
+msgid "_Password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1438
+msgid "_Folder:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1446
+msgid "Folder Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1458
+msgid "C_ommand to run before checking for mail:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1466
+#, fuzzy
+msgid "Command Entry box"
+msgstr "Historial d'ordres"
+
+#: mailcheck/mailcheck.c:1491
+#, fuzzy
+msgid "Execute"
+msgstr "Ejecta"
+
+#: mailcheck/mailcheck.c:1502
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1517
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1527
+#, fuzzy
+msgid "When new mail _arrives:"
+msgstr "Quan arribi nou correu, executa:"
+
+#: mailcheck/mailcheck.c:1540 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1550
+msgid "When clicke_d:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1563
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1573
+msgid "Set the number of unread mails to _zero"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1584
+#, fuzzy
+msgid "Check for mail _every"
+msgstr "Comprova-ho cada:"
+
+#: mailcheck/mailcheck.c:1596 mailcheck/mailcheck.c:1600
+#, fuzzy
+msgid "minutes"
+msgstr "minut(s)"
+
+#: mailcheck/mailcheck.c:1596
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1610 mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "seconds"
+msgstr "milisegons"
+
+#: mailcheck/mailcheck.c:1610
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1622
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1633
+msgid "Select a_nimation"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1669 mailcheck/mailcheck.c:1877
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "S'ha produït un error en executar %s: %s"
+
+#: mailcheck/mailcheck.c:1710
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "Preferències del monitor del sistema"
+
+#: mailcheck/mailcheck.c:1730
+msgid "_Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1734
+#, fuzzy
+msgid "Mail_box"
+msgstr "Correu"
+
+#: mailcheck/mailcheck.c:1814
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1979
+#, fuzzy
+msgid "Text only"
+msgstr "Mostra aquest text:"
+
+#: mailcheck/mailcheck.c:2005
+#, fuzzy
+msgid "Mail check"
+msgstr "Rellotge i Correu"
+
+#: mailcheck/mailcheck.c:2006
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+#, fuzzy
+msgid "Path to the animation file"
+msgstr "Camí de la cua:"
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+#, fuzzy
+msgid "Mailcheck"
+msgstr "Rellotge i Correu"
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+#, fuzzy
+msgid "New Mail"
+msgstr "Correu"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Línia d'ordres"
 
@@ -2525,15 +1937,15 @@ msgstr ""
 "qualsevols versió posterior."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Inicia el programa"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Línia d'ordres"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Introduïu ací una ordre i Gnome la executarà per a vosaltres"
 
@@ -2554,7 +1966,9 @@ msgstr "Estableix la llista predeterminada per a %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL està establert, no s'instal·len els esquemes\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL està establert, no s'instal·len els "
+"esquemes\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -2586,11 +2000,6 @@ msgstr "Am_plada de l'applet:"
 msgid "Autocompletion"
 msgstr "Complert automàtic"
 
-#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
-#: multiload/properties.c:365
-msgid "Colors"
-msgstr "Colors"
-
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Command Line Preferences"
 msgstr "Preferències del Mini-Ordinador"
@@ -2608,7 +2017,8 @@ msgid "Command:"
 msgstr "Ordre:"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history based autocompletion"
+#, fuzzy
+msgid "E_nable history-based autocompletion"
 msgstr "_Habilita l'autocomplert basat en l'historial"
 
 #: mini-commander/src/mini-commander.glade.h:13
@@ -2620,6 +2030,7 @@ msgid "Pattern:"
 msgstr "Patró:"
 
 #: mini-commander/src/mini-commander.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Pick a color"
 msgstr "Trieu un color"
 
@@ -2665,11 +2076,11 @@ msgstr "Historial"
 msgid "Click this button for the list of previous commands"
 msgstr "Feu clic en aquest botó per a la llista d'ordres prèvies"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Applet mini-ordinador"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Aquesta applet afegeix una línia d'ordres al quadre"
 
@@ -2693,8 +2104,8 @@ msgstr "No podeu especificar patrons duplicats"
 msgid "Adjust the sound volume"
 msgstr "Ajusta el volum del so"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
+#: mixer/mixer.c:938
 msgid "Volume Control"
 msgstr "Control del volum"
 
@@ -2702,15 +2113,122 @@ msgstr "Control del volum"
 msgid "_Mute"
 msgstr "_Silencia"
 
-#: mixer/GNOME_MixerApplet.xml.h:4
+#: mixer/GNOME_MixerApplet.xml.h:5
 msgid "_Run Volume Control..."
 msgstr "E_xecuta el control del volum"
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:110
+msgid "Main Volume"
+msgstr ""
+
+#: mixer/mixer.c:110
+#, fuzzy
+msgid "Bass"
+msgstr "Bàsic"
+
+#: mixer/mixer.c:110
+msgid "Treble"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Synth"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Speaker"
+msgstr ""
+
+#: mixer/mixer.c:111
+#, fuzzy
+msgid "Line"
+msgstr "Línia (s)"
+
+#: mixer/mixer.c:112
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "CD"
+msgstr "D"
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "Mix"
+msgstr "Mesclador"
+
+#: mixer/mixer.c:112
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Video"
+msgstr "Amaga"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Radio"
+msgstr "Pluja"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Monitor"
+msgstr "Monitor del sistema"
+
+#: mixer/mixer.c:166
 msgid "Volume Control (muted)"
 msgstr "Control del volum (silenciat)"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:248
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2718,48 +2236,37 @@ msgstr ""
 "Advertència: aquesta versió del gmix ha estat compilada amb una\n"
 "versió diferent de soundcard.h.\n"
 
-#: mixer/mixer.c:207
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
-"Ha fallat la consulta dels canals disponibles del dispositiu de mescla %s\n"
-
-#: mixer/mixer.c:214
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
-"advertència: el mesclador no te canal de volum - utilitzant PCM en el seu "
-"lloc\n"
-
-#: mixer/mixer.c:217
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "El dispositiu de mesclador %s no te canals de volum o PCM.\n"
-
-#: mixer/mixer.c:575
+#: mixer/mixer.c:683
 msgid "Volume Controller"
 msgstr "Controlador de volum"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:684
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Utilitzeu les tecles de cursor Dalt i Baix per a canviar el volum"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:939
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:940
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "El control de volum vos permet fixar el nivell de volum per a l'escriptori."
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1039
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "Controlador de volum"
+
+#: mixer/mixer.c:1059
+#, fuzzy
+msgid "Channels"
+msgstr "Canvi "
+
+#: mixer/mixer.c:1345
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "El control de volum vos permet fixar el nivell de volum per a l'escriptori"
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:227
@@ -2834,10 +2341,6 @@ msgstr "Dades rebudes"
 #: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "_Front"
-
-#: modemlights/properties.c:441
-msgid "_Background"
-msgstr "F_ons"
 
 #: modemlights/properties.c:443
 msgid "Send data"
@@ -2940,11 +2443,12 @@ msgid "Load Average"
 msgstr "Càrrega mitja"
 
 #: multiload/main.c:80
+#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"space use, plus network traffic."
 msgstr ""
 "Lliurat sota la Llicència Pública General GNU.\n"
 "\n"
@@ -2964,7 +2468,8 @@ msgid "Network"
 msgstr "Xarxa"
 
 #: multiload/main.c:242 multiload/properties.c:391
-msgid "Swap File"
+#, fuzzy
+msgid "Swap Space"
 msgstr "Fitxer d'intercanvi"
 
 #: multiload/main.c:244
@@ -3005,7 +2510,8 @@ msgid "_Network"
 msgstr "_Xarxa"
 
 #: multiload/properties.c:296
-msgid "_Swap File"
+#, fuzzy
+msgid "_Swap Space"
 msgstr "Fitxer d'Intercan_vi"
 
 #: multiload/properties.c:326
@@ -3092,210 +2598,305 @@ msgstr "Preferències del monitor del sistema"
 msgid "Swap Load"
 msgstr "Intercanvi de càrrega"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "Factoria per a l'applet Menú del quadre"
+#: stickynotes/stickynotes.c:31 stickynotes/stickynotes.glade.h:27
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:6
+#, fuzzy
+msgid "_New Note"
+msgstr "Nota amb relleu"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "Factoria Panel Menu Applet"
+#: stickynotes/stickynotes.c:32
+#, fuzzy
+msgid "_Delete Note"
+msgstr "Suprimeix la nota"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "Applet del quadre per a mostrar menús"
+#: stickynotes/stickynotes.c:34
+#, fuzzy
+msgid "_Edit Title"
+msgstr "El meu títol"
 
-#: panel-menu/panel-menu-actions.c:99
-msgid "Actions"
-msgstr "Accions"
+#. FIXME : Hack because libglade does not properly set these
+#: stickynotes/stickynotes_applet.c:69 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
+#: stickynotes/stickynotes_applet_callbacks.c:249
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
+#, fuzzy
+msgid "Sticky Notes"
+msgstr "Enganxós"
 
-#: panel-menu/panel-menu-actions.c:100
-msgid "Actions Menu"
-msgstr "Menú d'accions"
-
-#: panel-menu/panel-menu-add.c:77
-msgid "Add items to the Menu Bar"
-msgstr "Afegeix elements a la barra de menú"
-
-#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:405
-msgid "Shortcuts"
-msgstr "Dreceres"
-
-#: panel-menu/panel-menu-add.c:250
-msgid "My Documents"
-msgstr "Els meus documents"
-
-#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "Documents"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "Aplicacions"
-
-#: panel-menu/panel-menu-common.c:738
+#: stickynotes/stickynotes_applet.c:146
+#, c-format
 msgid ""
-"Removing this entry is not allowed as this will cause the Menu Bar applet to "
-"be removed from GNOME Panel"
+"%s\n"
+"%d locked note"
+msgid_plural ""
+"%s\n"
+"%d locked notes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: stickynotes/stickynotes_applet.c:148
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"%d note"
+msgid_plural ""
+"%s\n"
+"%d notes"
+msgstr[0] ""
+"%s:\n"
+"%d%% en ús"
+msgstr[1] ""
+"%s:\n"
+"%d%% en ús"
+
+#: stickynotes/stickynotes.glade.h:1
+msgid "<b>Default click behavior</b>"
 msgstr ""
-"No es pot eliminar aquesta entrada ja que açò causaria que l'applet de la "
-"barra de menú s'elimara del Quadre del GNOME"
 
-#: panel-menu/panel-menu-directory.c:516
-msgid "Create directory item..."
-msgstr "Crea un element directori..."
+#: stickynotes/stickynotes.glade.h:2
+msgid "<b>Default dimensions</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:524
-msgid "Home"
-msgstr "Inici"
+#: stickynotes/stickynotes.glade.h:3
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:595
-msgid "Edit directory item..."
-msgstr "Edita element de directori..."
+#: stickynotes/stickynotes.glade.h:6
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
-msgid "_Path:"
-msgstr "_Camí:"
+#: stickynotes/stickynotes.glade.h:9
+msgid "<b>Other settings</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:694
-msgid "..."
-msgstr "..."
+#: stickynotes/stickynotes.glade.h:10
+msgid "<b>Style</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:704
-msgid "_Depth level:"
-msgstr "Nivell de profun_ditat:"
+#: stickynotes/stickynotes.glade.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:801
-msgid "Path specified is currently not a valid directory."
-msgstr "El camí especificat no és actualment un directori vàlid."
+#: stickynotes/stickynotes.glade.h:12
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "Crea un element de documents..."
+#: stickynotes/stickynotes.glade.h:13
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:434
-msgid "Rename documents item..."
-msgstr "Renombra l'element de documents..."
+#: stickynotes/stickynotes.glade.h:14
+msgid "Double-click or Right-click for more options"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
-msgid "KDE Menus"
-msgstr "Menús de KDE"
-
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
-#: panel-menu/panel-menu-path.c:559
-msgid "Programs"
-msgstr "Programes"
-
-#: panel-menu/panel-menu-links.c:403
-msgid "Create links item..."
-msgstr "Crea un element d'enllaç..."
-
-#: panel-menu/panel-menu-links.c:439
-msgid "Rename links item..."
-msgstr "Renombra l'element d'enllaç..."
-
-#: panel-menu/panel-menu-path.c:230
-msgid "KDE"
-msgstr "KDE"
-
-#: panel-menu/panel-menu-path.c:658
-msgid "Create menu path item..."
-msgstr "Crea un element de camí de menú..."
-
-#: panel-menu/panel-menu-path.c:701
-msgid "Edit path item..."
+#: stickynotes/stickynotes.glade.h:15
+#, fuzzy
+msgid "Edit title"
 msgstr "Edita l'element de camí..."
 
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "Preferències"
+#: stickynotes/stickynotes.glade.h:17
+msgid "Specify the default height (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:72
-msgid "Menu Bar Preferences"
-msgstr "Preferències de la Barra de menú"
+#: stickynotes/stickynotes.glade.h:18
+msgid "Specify the default width (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:78
-msgid "Layout"
-msgstr "Disposició"
+#: stickynotes/stickynotes.glade.h:19
+#, fuzzy
+msgid "Sticky Note"
+msgstr "Enganxós"
 
-#: panel-menu/panel-menu-properties.c:93
-msgid "_Applications Menu"
-msgstr "Menú d'_aplicacions"
+#: stickynotes/stickynotes.glade.h:20
+#, fuzzy
+msgid "Sticky Notes Preferences"
+msgstr "Preferències del muntador de discs"
 
-#: panel-menu/panel-menu-properties.c:117
-msgid "Select an icon for the Applications menu"
-msgstr "Selecciona una icona per al menú d'aplicacions"
+#: stickynotes/stickynotes.glade.h:21
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:134
-msgid "_Preferences Menu"
-msgstr "Menú de _preferències"
+#: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "_Color:"
+msgstr "Colors"
 
-#: panel-menu/panel-menu-properties.c:145
-msgid "Ac_tions Menu"
-msgstr "Menú d'a_ccions"
+#: stickynotes/stickynotes.glade.h:23
+#, fuzzy
+msgid "_Delete ALL"
+msgstr "E_limina"
 
-#: panel-menu/panel-menu-properties.c:156
-msgid "_Windows Menu"
-msgstr "Menú de _finestres"
+#: stickynotes/stickynotes.glade.h:24
+#, fuzzy
+msgid "_Height:"
+msgstr "Alta"
 
-#: panel-menu/panel-menu-properties.c:167
-msgid "W_orkspaces Menu"
-msgstr "Menú d'es_pais de treball"
+#: stickynotes/stickynotes.glade.h:25
+#, fuzzy
+msgid "_Hide/_Show All Notes"
+msgstr "Amaga les notes"
 
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "Finestres"
+#: stickynotes/stickynotes.glade.h:26
+msgid "_Lock/_Unlock All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
+#: stickynotes/stickynotes.glade.h:28
+msgid "_Sticky across workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:2
+#, fuzzy
+msgid "Background color of body"
+msgstr "Color del _fons:"
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid ""
+"Background color of the body of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid ""
+"Background color of the body of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid ""
+"Background color of the title of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Background color of the title of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:7
+#, fuzzy
+msgid "Background color of title"
+msgstr "Color del _fons:"
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid "Background prelighted color of body"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Background prelighted color of title"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:10
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used. Anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Date format"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
+"\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:13
+msgid "Default height for new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid "Default height for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid "Default left-click behavior of the applet"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:16
+#, fuzzy
+msgid "Default width for new notes"
+msgstr "Llista predeterminada de caràcters"
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid "Default width for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:18
+msgid ""
+"Every time the specified number of minutes pass. The Sticky Notes are "
+"automatically saved."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:19
+msgid "Specifies whether the sticky notes are locked (uneditable) or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:20
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:21
+msgid "Sticky notes locked state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:22
+#, fuzzy
+msgid "Workspace stickyness"
 msgstr "Espais de treball"
 
-#: panel-menu/panel-menu.c:693
-msgid "Menu Bar"
-msgstr "Barra de menú"
-
-#: panel-menu/panel-menu.c:694
-msgid "(c) 2001 Chris Phelps"
-msgstr "© 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:695
-msgid "The Menu Bar allows you to display customized menubars on your panels."
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
-"La Barra de menú vos permet mostrar barres de menús personalitzats en els "
-"quadres."
 
-#: screen-exec/egg-screen-help.c:174
-msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr "No s'ha trobat el domini GNOME_FILE_DOMAIN_APP_HELP"
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#, fuzzy
+msgid "Sticky Notes Applet Factory"
+msgstr "Factoria de l'applet Gtik"
 
-#: screen-exec/egg-screen-help.c:187
-msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr "No s'ha trobat el domini GNOME_FILE_DOMAIN_HELP."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:2
+#, fuzzy
+msgid "_Delete All Notes"
+msgstr "Suprimeix la nota"
 
-#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
-#, c-format
-msgid ""
-"Unable to show help as %s is not a directory.  Please check your "
-"installation."
-msgstr "No s'ha pogut mostrar l'ajuda ja que %s no és un directori. Si us plau, comproveu la vostra instal·lació."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:4
+#, fuzzy
+msgid "_Hide All Notes"
+msgstr "Amaga les notes"
 
-#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
-#, c-format
-msgid ""
-"Unable to find the help files in either %s or %s.  Please check your "
-"installation"
-msgstr "No s'ha pogut trobar els fitxers d'ajuda en %s o %s. Si us plau, comproveu la vostra instal·lació"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:5
+#, fuzzy
+msgid "_Lock All Notes"
+msgstr "Notes reduïdes"
 
-#: screen-exec/egg-screen-help.c:315
-#, c-format
-msgid "Unable to find doc_id %s in the help path"
-msgstr "No s'ha pogut trobar el doc_id %s en el camí d'ajuda"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:8
+#, fuzzy
+msgid "_Show All Notes"
+msgstr "Mostra totes les tasques"
 
-#: screen-exec/egg-screen-help.c:336
-#, c-format
-msgid "Help document %s/%s not found"
-msgstr "El document d'ajuda %s/%s no s'ha trobat"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:9
+msgid "_Unlock All Notes"
+msgstr ""
 
 #: wireless/wireless-applet.c:343
 msgid ""
@@ -3305,11 +2906,11 @@ msgstr ""
 "Manquen les imatges necessàries per a executar el monitor de wireless.\n"
 "Si us plau, assegureu-vos que està correctament instal·lat."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "No hi ha dispositius wireless"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3317,16 +2918,16 @@ msgstr ""
 "Pareix que no hi ha cap dispositiu wireless configurat en el sistema.\n"
 "Verifiqueu la vostra configuració si penseu que açò és incorrecte."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Monitor d'enllaç wireless"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Aquesta utilitat mostra l'estat d'un enllaç wireless."
 
@@ -3350,6 +2951,1038 @@ msgstr "Preferències del monitor de l'enllaç wireless"
 msgid "Monitor the quality of a wireless network link"
 msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
+#~ msgid "+ C_olor:"
+#~ msgstr "+ C_olor:"
+
+#~ msgid "- Colo_r:"
+#~ msgstr "- Colo_r:"
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "Color _no modificat:"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "El temps a GNOME"
+
+#~ msgid "Location:"
+#~ msgstr "Ubicació:"
+
+#~ msgid "Sky:"
+#~ msgstr "Cel:"
+
+#~ msgid "Dew point:"
+#~ msgstr "Punt de l'albada:"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Informe del pronòstic"
+
+#~ msgid "See the ForeCast Details"
+#~ msgstr "Visualitza els detalls del pronòstic"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "_Visita Weather.com"
+
+#~ msgid "URL link Button"
+#~ msgstr "Botó d'enllaç d'URL"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Feu clic per a entrar en Weather.com"
+
+#~ msgid "_Radar map"
+#~ msgstr "Mapa del _radar"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "El pronòstic detallat per aquesta ubicació no està disponible.\n"
+#~ "Si us plau, trieu el pronòstic de l'estat; fixeu-vos que les previsions\n"
+#~ "d'IWIN només estan disponible per a les ciutats dels EUA."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "El pronòstic de l'estat d'aquesta ubicació no està disponible.\n"
+#~ "Si us plau, trieu el pronòstic detallat; fixeu-vos que les previsions\n"
+#~ "d'IWIN només estan disponible a les ciutats dels EUA."
+
+#~ msgid "Location view"
+#~ msgstr "muntador de discs<"
+
+#~ msgid "Select Location from the list"
+#~ msgstr "Selecciona el lloc de la llista"
+
+#~ msgid "Address Entry"
+#~ msgstr "Entrada de l'adreça"
+
+#~ msgid "Enter the URL"
+#~ msgstr "Introduïu la URL"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Habilita els pronòstics _detallat"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Habilita els mapes del _radar"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "Utilitza una adreça personali_tzada per al mapa del radar"
+
+#~ msgid "A_ddress :"
+#~ msgstr "A_dreça:"
+
+#~ msgid "Updates"
+#~ msgstr "Actualitzacions"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "Actualitzar _automàticament cada "
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Miscel·lània"
+
+#~ msgid "Invalid"
+#~ msgstr "Invàlid"
+
+#~ msgid "Drizzle"
+#~ msgstr "Plugims"
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Plugims a les rodalies"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "Plugims moderats"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "Plugims forts"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Plugims superficials"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Plugims dispersos"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Parcialment plujós"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Plugims amb vent"
+
+#~ msgid "Showers"
+#~ msgstr "Pluges"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Plugims canviants"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "Plugims gelats"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Pluja a les rodalies"
+
+#~ msgid "Light rain"
+#~ msgstr "Pluja feble"
+
+#~ msgid "Moderate rain"
+#~ msgstr "Pluja moderada"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Pluja superficial"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Pluges disperses"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Parcialment plujós"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Està marxant la pluja"
+
+#~ msgid "Rain showers"
+#~ msgstr "Pluges"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Pluges canviants"
+
+#~ msgid "Freezing rain"
+#~ msgstr "Pluja glaçada"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Neu a les rodalies"
+
+#~ msgid "Light snow"
+#~ msgstr "Neu feble"
+
+#~ msgid "Moderate snow"
+#~ msgstr "Neu moderada"
+
+#~ msgid "Heavy snow"
+#~ msgstr "Neu forta"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Neu superficial"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Neu dispersa"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Parcialment nevat"
+
+#~ msgid "Snowstorm"
+#~ msgstr "Tempesta de neu"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "Està marxant la neu"
+
+#~ msgid "Snow showers"
+#~ msgstr "Pluges de neu"
+
+#~ msgid "Drifting snow"
+#~ msgstr "Nevada canviant"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Neu glaçada"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Volves de neu a les rodalies"
+
+#~ msgid "Light snow grains"
+#~ msgstr "Volves de neu febles"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "Volves de neu moderades"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "Volves de neu fortes"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Volves de neu superficials"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Volves de neu disperses"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Volves de neu parcialment"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Estan caient volves de neu"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Pluja de volves de neu"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Àrea de les volves de neu"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Volves de neu glaçades"
+
+#~ msgid "Ice crystals"
+#~ msgstr "Cristalls de gel"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Cristals de gel a les rodalies"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Alguns cristalls de gel"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Cristalls de gel moderats"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Cristall de gel forts"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Cristalls de gel disperses"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Cristalls de gel parcials"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Tempesta de gel"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Estan caient cristals de gel"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Pluges de gel"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Cristals de gel canviants"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Cristals de gel freds"
+
+# Que collons és açò? jm
+#~ msgid "Ice pellets"
+#~ msgstr "Esferes de gel"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Esferes de gel en la rodalia"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "Unes poques esferes de gel"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "Esferes de gel moderades"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "Esferes de gel fortes"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Esferes de gel moderades"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Esferes de gel disperses"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Esferes de gel parcials"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "Tempesta d'esferes de gel"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Esferes de gel amb vent"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "Pluja d'esferes de gel"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Esferes de gel canviants"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Esferes de gel fredes"
+
+#~ msgid "Hail"
+#~ msgstr "Pedra"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Pedregada en les proximitats"
+
+#~ msgid "Light hail"
+#~ msgstr "Pedregada feble"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Pedregada moderada"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Pedregada forta"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Pedregada superficial"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Pedregada disperses"
+
+#~ msgid "Partial hail"
+#~ msgstr "Pedregada parcial"
+
+#~ msgid "Hailstorm"
+#~ msgstr "Tormenta de pedra"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Pedregada amb vent"
+
+#~ msgid "Hail showers"
+#~ msgstr "Pluges de pedra"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Pedregades canviants"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Pedregada freda"
+
+#~ msgid "Small hail"
+#~ msgstr "Petita pedregada"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Petites pedregada a les rodalies"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Petita pedregada moderada"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Petita pedregada forta"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Petita pedregada moderada"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Pedregades petites dispersa"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Petita pedregada parcial"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "Petita tempesta de pedra"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Petita pedregada amb vent"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "Pluja de petita pedregada"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Petita pedregada canviant"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Petita pedregada gelada"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "Precipitació desconeguda"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Precipitacions a les rodalies"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Precipitacions dèbils"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Precipitacions moderades"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Fortes precipitacions"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Precipitacions superficials"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Previsió de precipitacions"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Tempesta desconeguda"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Precipitació amb vent"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Pluges, tipus desconegut"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Precipitació canviant"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Precipitació gelada"
+
+#~ msgid "Mist"
+#~ msgstr "Boirina"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Boirina a la rodalia"
+
+#~ msgid "Light mist"
+#~ msgstr "Boirina lleugera"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Boirina moderada"
+
+#~ msgid "Thick mist"
+#~ msgstr "Boirina espesa"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Boirina superficial"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Boirina dispersa"
+
+#~ msgid "Partial mist"
+#~ msgstr "Boirina parcial"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Boirina amb vent"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Boirina canviant"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Boirina gelada"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "Boira a les rodalies"
+
+#~ msgid "Light fog"
+#~ msgstr "Boira feble"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Boira moderada"
+
+#~ msgid "Thick fog"
+#~ msgstr "Boira espesa"
+
+#~ msgid "Shallow fog"
+#~ msgstr "Boira superficial"
+
+#~ msgid "Patches of fog"
+#~ msgstr "Boira dispersa"
+
+#~ msgid "Partial fog"
+#~ msgstr "Parcialment enboirat"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Boira amb vent"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Boira canviant"
+
+#~ msgid "Freezing fog"
+#~ msgstr "Boira gelada"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Fum a les rodalies"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Capa prima de fum"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Fum moderat"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Fum espés"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Fum superficial"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Fum dispers"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Parcialment amb fum"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Fum amb tempesta"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Fum i vent"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Fum canviant"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "Lava volcànica"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Lava volcànica en les rodalies"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Lava volcànica moderada"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Lava volcànica espesa"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Lava volcànica superficial"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Lava volcànica dispersa"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Lava volcànica parcial"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Lava volcànica amb trons"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Lava volcànica amb vent"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Pluges de lava volcànica "
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Lava volcànica canviant"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Lava volcànica gelada"
+
+#~ msgid "Sand"
+#~ msgstr "Arena"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Arena a la rodalia"
+
+#~ msgid "Light sand"
+#~ msgstr "Arena lleugera"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Arena moderada"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Arena forta"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Arena dispersa"
+
+#~ msgid "Partial sand"
+#~ msgstr "Arena parcial"
+
+#~ msgid "Blowing sand"
+#~ msgstr "Arena amb vent"
+
+#~ msgid "Drifting sand"
+#~ msgstr "Arena canviant"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Broma en les rodalies"
+
+#~ msgid "Light haze"
+#~ msgstr "Broma lleugera"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Broma moderada"
+
+#~ msgid "Thick haze"
+#~ msgstr "Broma espesa"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Broma moderada"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Broma dispersa"
+
+#~ msgid "Partial haze"
+#~ msgstr "Broma parcial"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Broma amb vent"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Broma canviant"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Broma gelada"
+
+#~ msgid "Sprays"
+#~ msgstr "Espurneijos"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Espurneijos en les rodalies"
+
+#~ msgid "Light sprays"
+#~ msgstr "Espurneijos febles"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Espurneijos moderats"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Espurneijos forts"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Espurneijos superficials"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Espurneijos dispersos"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Espurneijos parcials"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "Espurneijos amb vent"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Espurneijos canviants"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Espurneijos gelats"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Pols en les rodalies"
+
+#~ msgid "Light dust"
+#~ msgstr "Pols lleugera"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Pols moderada"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Pols forta"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Pols dispersa"
+
+#~ msgid "Partial dust"
+#~ msgstr "Pols parcial"
+
+#~ msgid "Blowing dust"
+#~ msgstr "Pols amb vent"
+
+#~ msgid "Drifting dust"
+#~ msgstr "Pols canviant"
+
+#~ msgid "Squall"
+#~ msgstr "Torb"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Torb en les rodalies"
+
+#~ msgid "Light squall"
+#~ msgstr "Torb lleuger"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Torb moderat"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Torb fort"
+
+#~ msgid "Partial squall"
+#~ msgstr "Torb parcial"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Torb tormentós"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Torb amb vent"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Torb canviant"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Torb gelat"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Tempesta d'arena"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "Tempesta d'arena en les rodalies"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Tempesta d'arena lleugera"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Tempesta d'arena moderada"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "Tempesta d'arena forta"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Tempesta d'arena moderada"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Tempesta d'arena parcial"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Tempesta d'arena amb trons"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Tempesta d'arena amb vent"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Tempesta d'arena canviant"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Tempesta d'arena gelada"
+
+#~ msgid "Duststorm"
+#~ msgstr "Tempesta de pols"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "Tempesta de pols en les rodalies"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Tempesta de pols lleugera"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Tempesta de pols moderada"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "Tempesta de pols forta"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Tempesta de pols moderada"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Tempesta de pols moderada"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Tempesta de pols amb trons"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Tempesta de pols amb vent"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Tempesta de pols canviant"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Tempesta de pols gelada"
+
+# Gens segur de que siga "remolí". jm
+#~ msgid "Funnel cloud"
+#~ msgstr "Remolí"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Remolins en les rodalies"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Remolí feble"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Remolí moderat"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Remolí espés"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Remolins moderats"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Remolins dispersos"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Remolins parcials"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Remolins amb vent"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Remolins canviants"
+
+#~ msgid "Tornado"
+#~ msgstr "Tornado"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado a la rodalia"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Tornado moderat"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Tornado violent"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Tornado parcial"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Tornado amb trons"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Tornado canviant"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Tornado gelat"
+
+#~ msgid "Dust whirls"
+#~ msgstr "Remolins de pols"
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "Remolins de pols en les rodalies"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Remolins de pols lleugers"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Remolins de pols moderats"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Remolins de pols forts"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Remolins de pons moderats"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Remolins de pols dispersos"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Remolins de pols parcials"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Remolins de pols amb vent"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Remolins de pols canviants"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "No s'han pogut rebre les dades de METAR.\n"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "Manca la localització de WeatherInfo"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "No s'han pogut rebre les dades d'IWIN.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "No s'han pogut rebre les dades de la previsió d'IWIN.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "No s'han pogut rebre les dades de la Met Office.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "No s'ha pogut rebre les dades de la previsió de la Met OFfice.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Ha estat impossible rebre la imatge del mapa del radar.\n"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%a, %d de %b / %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "Temps d'observació desconegut"
+
+#~ msgid "Unknown"
+#~ msgstr "Desconegut"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "Ha fallat la recepció"
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr ""
+#~ "Ha fallat la consulta dels canals disponibles del dispositiu de mescla %"
+#~ "s\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr ""
+#~ "advertència: el mesclador no te canal de volum - utilitzant PCM en el seu "
+#~ "lloc\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "El dispositiu de mesclador %s no te canals de volum o PCM.\n"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "Factoria per a l'applet Menú del quadre"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "Factoria Panel Menu Applet"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "Applet del quadre per a mostrar menús"
+
+#~ msgid "Actions"
+#~ msgstr "Accions"
+
+#~ msgid "Actions Menu"
+#~ msgstr "Menú d'accions"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "Afegeix elements a la barra de menú"
+
+#~ msgid "Shortcuts"
+#~ msgstr "Dreceres"
+
+#~ msgid "My Documents"
+#~ msgstr "Els meus documents"
+
+#~ msgid "Documents"
+#~ msgstr "Documents"
+
+#~ msgid "Applications"
+#~ msgstr "Aplicacions"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr ""
+#~ "No es pot eliminar aquesta entrada ja que açò causaria que l'applet de la "
+#~ "barra de menú s'elimara del Quadre del GNOME"
+
+#~ msgid "Create directory item..."
+#~ msgstr "Crea un element directori..."
+
+#~ msgid "Home"
+#~ msgstr "Inici"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "Edita element de directori..."
+
+#~ msgid "_Path:"
+#~ msgstr "_Camí:"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "Nivell de profun_ditat:"
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "El camí especificat no és actualment un directori vàlid."
+
+#~ msgid "Create documents item..."
+#~ msgstr "Crea un element de documents..."
+
+#~ msgid "Rename documents item..."
+#~ msgstr "Renombra l'element de documents..."
+
+#~ msgid "KDE Menus"
+#~ msgstr "Menús de KDE"
+
+#~ msgid "Programs"
+#~ msgstr "Programes"
+
+#~ msgid "Create links item..."
+#~ msgstr "Crea un element d'enllaç..."
+
+#~ msgid "Rename links item..."
+#~ msgstr "Renombra l'element d'enllaç..."
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "Crea un element de camí de menú..."
+
+#~ msgid "Preferences"
+#~ msgstr "Preferències"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "Preferències de la Barra de menú"
+
+#~ msgid "Layout"
+#~ msgstr "Disposició"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "Menú d'_aplicacions"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "Selecciona una icona per al menú d'aplicacions"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "Menú de _preferències"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "Menú d'a_ccions"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "Menú de _finestres"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "Menú d'es_pais de treball"
+
+#~ msgid "Windows"
+#~ msgstr "Finestres"
+
+#~ msgid "Menu Bar"
+#~ msgstr "Barra de menú"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "© 2001 Chris Phelps"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr ""
+#~ "La Barra de menú vos permet mostrar barres de menús personalitzats en els "
+#~ "quadres."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "No s'ha trobat el domini GNOME_FILE_DOMAIN_APP_HELP"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "No s'ha trobat el domini GNOME_FILE_DOMAIN_HELP."
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "No s'ha pogut mostrar l'ajuda ja que %s no és un directori. Si us plau, "
+#~ "comproveu la vostra instal·lació."
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr ""
+#~ "No s'ha pogut trobar els fitxers d'ajuda en %s o %s. Si us plau, "
+#~ "comproveu la vostra instal·lació"
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "No s'ha pogut trobar el doc_id %s en el camí d'ajuda"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "El document d'ajuda %s/%s no s'ha trobat"
+
 #~ msgid "Settings"
 #~ msgstr "Configuració"
 
@@ -3361,9 +3994,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Dow_n"
 #~ msgstr "_Baixa"
-
-#~ msgid "_Delete"
-#~ msgstr "E_limina"
 
 #~ msgid "Armenia"
 #~ msgstr "Armenia"
@@ -3575,9 +4205,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "ix86"
 #~ msgstr "ix86"
 
-#~ msgid "Sun"
-#~ msgstr "Sun"
-
 #~ msgid "mac"
 #~ msgstr "mac"
 
@@ -3592,9 +4219,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Lan_guage:"
 #~ msgstr "Llen_gua:"
-
-#~ msgid "Count_ry:"
-#~ msgstr "_Pais:"
 
 #~ msgid ""
 #~ "_Flag\n"
@@ -3623,9 +4247,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Stock Sy_mbol:"
 #~ msgstr "Sí_mbol del valor:"
-
-#~ msgid "Stock C_hange:"
-#~ msgstr "Canvi del _valor:"
 
 #~ msgid "_Appearance"
 #~ msgstr "_Aparença"
@@ -3718,9 +4339,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "There was an error executing gnome-cd : %s"
 #~ msgstr "S'ha produït un error en executar gnome-cd: %s"
 
-#~ msgid "There was an error executing %s : %s"
-#~ msgstr "S'ha produït un error en executar %s: %s"
-
 #~ msgid "There was an error executing 'gnome-system-monitor' : %s"
 #~ msgstr "S'ha produït un error en executar «gnome-system-monitor»: %s"
 
@@ -3750,9 +4368,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "history list empty"
 #~ msgstr "la llista de l'historial és buida"
-
-#~ msgid "Command history"
-#~ msgstr "Historial d'ordres"
 
 #~ msgid "GKB Keyboard Switcher"
 #~ msgstr "GKB permet el canvi entre mapes de teclat"
@@ -3840,9 +4455,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ "Since you are root, would you like to set the system's default timezone?"
 #~ msgstr ""
 #~ "Com que sou root, voleu especificar el fus horari per defecte del sistema?"
-
-#~ msgid "My Title"
-#~ msgstr "El meu títol"
 
 #~ msgid "Continent/City"
 #~ msgstr "Continent/Ciutat"
@@ -4008,15 +4620,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "Display time relative to GMT (Greenwich Mean Time):"
 #~ msgstr "Mostra l'hora del GMT (Hora del Meridià de Greenwich):"
 
-#~ msgid "Mail"
-#~ msgstr "Correu"
-
-#~ msgid "Mail file:"
-#~ msgstr "Fitxer de correu:"
-
-#~ msgid "When new mail is received run:"
-#~ msgstr "Quan arribi nou correu, executa:"
-
 #~ msgid "Diskusage Settings"
 #~ msgstr "Paràmetres d'ús del disc"
 
@@ -4039,14 +4642,8 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "Scramble pieces"
 #~ msgstr "Barreja les peces"
 
-#~ msgid "Raise Note"
-#~ msgstr "Nota amb relleu"
-
 #~ msgid "Lower Note"
 #~ msgstr "Nota reduïda"
-
-#~ msgid "Delete Note"
-#~ msgstr "Suprimeix la nota"
 
 #~ msgid "GNotes!"
 #~ msgstr "GNotes!"
@@ -4056,12 +4653,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Raise Notes"
 #~ msgstr "Notes amb relleu"
-
-#~ msgid "Lower Notes"
-#~ msgstr "Notes reduïdes"
-
-#~ msgid "Hide Notes"
-#~ msgstr "Amaga les notes"
 
 #~ msgid ""
 #~ "GNOME weather monitor applet.\n"
@@ -4377,9 +4968,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "(These settings do not take effect until a refresh)"
 #~ msgstr "(Aquests paràmetres no tindran cap efecte fins a un nou refresc)"
 
-#~ msgid "Scrolling"
-#~ msgstr "Desplaçament"
-
 #~ msgid "Smooth scroll"
 #~ msgstr "Desplaçament suau"
 
@@ -4520,14 +5108,8 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "Load Average Module"
 #~ msgstr "Mòdul de la càrrega mitja"
 
-#~ msgid "Check every:"
-#~ msgstr "Comprova-ho cada:"
-
 #~ msgid "Show pop-up dialog for this event"
 #~ msgstr "Mostra un quadre de dialeg desplegable per aquest esdeveniment"
-
-#~ msgid "Text to display:"
-#~ msgstr "Mostra aquest text:"
 
 #~ msgid "Alert options"
 #~ msgstr "Opcions de l'alerta"
@@ -4551,9 +5133,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "Line delay"
 #~ msgstr "Retard de la línia"
 
-#~ msgid "D"
-#~ msgstr "D"
-
 #~ msgid "T"
 #~ msgstr "T"
 
@@ -4565,9 +5144,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "News and Information Module"
 #~ msgstr "Mòdul de notícies i informació"
-
-#~ msgid "Line (s):"
-#~ msgstr "Línia (s)"
 
 #~ msgid "body"
 #~ msgstr "cos"
@@ -4589,9 +5165,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "File Tail Module"
 #~ msgstr "Mòdul pel fitxer de cua"
-
-#~ msgid "Path to tail:"
-#~ msgstr "Camí de la cua:"
 
 #~ msgid "Choose a file to tail"
 #~ msgstr "Tria un fitxer per la cua"
@@ -4645,9 +5218,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "Just another clock"
 #~ msgstr "Un altre rellotge, amb aparença NeXT Step"
 
-#~ msgid "Mounts and unmount drives"
-#~ msgstr "Munta i desmunta unitats de disc"
-
 #~ msgid "CPU/MEM usage"
 #~ msgstr "Ús d'UCP i Memòria"
 
@@ -4659,9 +5229,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Another Clock"
 #~ msgstr "Altre rellotge"
-
-#~ msgid "Clock and Mailcheck"
-#~ msgstr "Rellotge i Correu"
 
 #~ msgid "Show last news from slashdot.org"
 #~ msgstr "Mostra les últimes notícies d'slashdot.org"
@@ -4677,9 +5244,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Audio Mixer"
 #~ msgstr "Applet mesclador d'àudio"
-
-#~ msgid "Mixer"
-#~ msgstr "Mesclador"
 
 #~ msgid "Disk usage meter"
 #~ msgstr "Mostra quant de disc hi ha usat"
@@ -4704,9 +5268,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "(sec)"
 #~ msgstr "(seg)"
-
-#~ msgid "Basic"
-#~ msgstr "Bàsic"
 
 #~ msgid "Show topic images"
 #~ msgstr "Mostra les images del tema"
@@ -4822,9 +5383,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 #~ msgid "Which tasks to show"
 #~ msgstr "Quines tasques voleu mostrar?"
 
-#~ msgid "Show all tasks"
-#~ msgstr "Mostra totes les tasques"
-
 #~ msgid "Show normal tasks only"
 #~ msgstr "Mostra només les tasques normals"
 
@@ -4851,9 +5409,6 @@ msgstr "Monitoritza la qualitat d'un enllaç de xarxa wireless"
 
 #~ msgid "Number of vertical columns of tasks"
 #~ msgstr "Nombre de columnes de tasques verticals"
-
-#~ msgid "Sticky"
-#~ msgstr "Enganxós"
 
 #~ msgid "Show / Hide"
 #~ msgstr "Mostra / Amaga"

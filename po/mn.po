@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.mn\n"
-"POT-Creation-Date: 2003-01-08 05:56+0100\n"
+"POT-Creation-Date: 2003-03-27 14:07+0000\n"
 "PO-Revision-Date: 2003-01-21 08:10+0100\n"
 "Last-Translator: Sanlig Badral <badral@chinggis.com>\n"
 "Language-Team: Mongolian <mn@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:848
+#: battstat/battstat_applet.c:852
 msgid "Battery Charge Monitor"
 msgstr "Цэнэглэж буй зайн хэмжээ"
 
@@ -36,7 +36,6 @@ msgstr "Лаптопын зайн үлдсэн цэнэгийн хэмжээ"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Хэрэгсэл"
 
@@ -45,9 +44,11 @@ msgstr "Хэрэгсэл"
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Апплетийн тухай..."
@@ -57,8 +58,10 @@ msgstr "_Апплетийн тухай..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:3
 msgid "_Help"
 msgstr "_Тусламж"
 
@@ -67,9 +70,11 @@ msgstr "_Тусламж"
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:7
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "_Тохируулга..."
@@ -91,22 +96,24 @@ msgstr "Апплет бүрэн ажиллах чадахгүй(If at all).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "Бүрэн цэнэглэгдсэн"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "Бага цэнэглэгдсэн"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
 msgid "Critical"
 msgstr "Хэт бага түвшин"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
 msgid "Charging"
 msgstr "Цэнэглэж байна"
 
@@ -122,7 +129,7 @@ msgstr "Зай бүрэн цэнэглэгдсэн!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -134,7 +141,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -145,15 +152,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
-#: battstat/battstat_applet.c:1064
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
 msgid "System is running on battery power"
 msgstr "Систем зайгаар ажиллаж байна"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
-#: battstat/battstat_applet.c:1070
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
 msgid "System is running on AC power"
 msgstr "Систем тэжээлээр ажиллаж байна"
 
@@ -163,14 +170,14 @@ msgstr "Н/Д"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Систем зайгаар ажиллаж байна. Зай: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Систем тэжээлээр ажиллаж байна. Зай: %d%% (%s)"
@@ -205,7 +212,7 @@ msgid "Battery: Not present"
 msgstr "Зай: тодорхойгүй"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:722
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -218,7 +225,7 @@ msgstr ""
 "үзнэ үү."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:728
+#: battstat/battstat_applet.c:731
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -228,7 +235,7 @@ msgstr ""
 " \"apm -e 1\" (FreeBSD)-г ажиллуулахыг оролд, Энэ \n"
 "танд тусална.\n"
 
-#: battstat/battstat_applet.c:783
+#: battstat/battstat_applet.c:787
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -238,18 +245,17 @@ msgstr ""
 "Энэ алдааг засахыг оролдоно уу"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:790
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
 "\"%d\"\n"
 "Please try to correct this error"
 msgstr ""
-"Амраах горимийн командыг биелүүлэхэд алдаа гарлаа "
-"\"%d\"-буцсан\n"
+"Амраах горимийн командыг биелүүлэхэд алдаа гарлаа \"%d\"-буцсан\n"
 "Энэ алдааг засахыг ордоно уу"
 
-#: battstat/battstat_applet.c:794
+#: battstat/battstat_applet.c:798
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -259,16 +265,17 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:825
+#: battstat/battstat_applet.c:829
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Сүх-Очир <sukhochir@csms.edu.mn>"
 
-#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:502
-#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:814
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
+#: charpick/charpick.c:429 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1799 mini-commander/src/about.c:48 mixer/mixer.c:925
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes.glade.h:30 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr ""
 "Сүх-Очир <sukhochir@csms.edu.mn>\n"
@@ -278,12 +285,13 @@ msgstr ""
 "Самбуу <a_sambuu@yahoo.com>\n"
 "Батпүрэв <bapuka1229@yahoo.com>"
 
-#: battstat/battstat_applet.c:850
+#: battstat/battstat_applet.c:854
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:851
-msgid "This utility show the status of your laptop battery."
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
 msgstr "Энэ хэрэгсэл нь таны лаптопын зайн цэнэгийн хэмжээг үзүүлнэ."
 
 #: battstat/battstat_applet.glade.h:2
@@ -291,7 +299,7 @@ msgstr "Энэ хэрэгсэл нь таны лаптопын зайн цэнэ
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1361
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Гаднах байдал"
@@ -313,7 +321,7 @@ msgstr "Зайн цэнэгжилтийн түвшин (%)"
 msgid "Beep when either of the above is true"
 msgstr "Сануулах өгөх"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:264
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "Ерөнхий"
@@ -387,7 +395,7 @@ msgid "Battery power low"
 msgstr "Зай цэнэг хэт бага байна"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:520 cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
 msgid "CD Player"
 msgstr "CD Тоглуулагч"
 
@@ -412,61 +420,61 @@ msgstr "CD дуунд зориулагдсан апплет"
 msgid "_Run External CD Player"
 msgstr "_Гадаад CD тоглуулагчийг ажиллуулах"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:901
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
 msgid "Stop"
 msgstr "Зогс"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
 msgid "Play / Pause"
 msgstr "Тогло. / Хүлээ"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
 msgid "Eject"
 msgstr "Гаргах"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
 msgid "Previous Track"
 msgstr "Өмнөх дуу"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
 msgid "Next Track"
 msgstr "Дараах дуу"
 
-#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:780
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "\"%s\": %s ажиллуулахад алдаатай байна"
 
-#: cdplayer/cdplayer.c:409
+#: cdplayer/cdplayer.c:422
 msgid "CD Player Preferences"
 msgstr "CD тоглуулагчийн тохиргоо"
 
-#: cdplayer/cdplayer.c:427
+#: cdplayer/cdplayer.c:442
 msgid "Disc Image"
 msgstr "Дискийн дүрслэл"
 
-#: cdplayer/cdplayer.c:427
+#: cdplayer/cdplayer.c:442
 msgid "An image of a cd-rom disc"
 msgstr "CD Дискийн дүрслэл"
 
-#: cdplayer/cdplayer.c:429
+#: cdplayer/cdplayer.c:444
 msgid "Device _Path:"
 msgstr "Төөхөөрөмжийн _зам:"
 
-#: cdplayer/cdplayer.c:438
+#: cdplayer/cdplayer.c:453
 msgid "Device Path"
 msgstr "Төөхөөрөмжийн зам:"
 
-#: cdplayer/cdplayer.c:438
+#: cdplayer/cdplayer.c:453
 msgid "Set the device path here"
 msgstr "Төөхөөрөмжийн замыг энд оруул"
 
-#: cdplayer/cdplayer.c:441
+#: cdplayer/cdplayer.c:456
 msgid "Use _Default"
 msgstr "Анхдагч утгыг ашиглах"
 
-#: cdplayer/cdplayer.c:521
+#: cdplayer/cdplayer.c:537
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -474,40 +482,44 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:523 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Энгийн CD тоглуулагчийн апплетд зориулсан самбар"
 
-#: cdplayer/cdplayer.c:780 cdplayer/cdplayer.c:791
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
 msgid "Elapsed time"
 msgstr "Үлдсэн хугацаа"
 
-#: cdplayer/cdplayer.c:783 cdplayer/cdplayer.c:793
+#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
 msgid "Track number"
 msgstr "Дууны дугаар"
 
-#: cdplayer/cdplayer.c:902
+#: cdplayer/cdplayer.c:861
+msgid "Audio Device is busy, or being used by another application"
+msgstr ""
+
+#: cdplayer/cdplayer.c:936
 msgid "Click this button to Stop playing the CD"
 msgstr "Энд дарж тоглож байна CD тоглуулагчийг зогсоо"
 
-#: cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:938
 msgid "Click this button to Play or Pause the CD"
 msgstr "Энд дарж CD-г тоглуулах ба хүлээлгэ"
 
-#: cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:940
 msgid "Click this button to eject the CD"
 msgstr "Энд дарж CD-г гара"
 
-#: cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:942
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Энд дарж өмнөх дууг тоглуул"
 
-#: cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:944
 msgid "Click this button to Play the next track in the CD"
 msgstr "Энд дарж дараах дууг тоглуул"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
-#: charpick/charpick.c:490
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:447
+#: charpick/charpick.c:549
 msgid "Character Palette"
 msgstr "Тэмдэгтийн цуглуулагч"
 
@@ -521,47 +533,47 @@ msgstr "Тэмдэгтийг оруулах"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:366
+#: charpick/charpick.c:421
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:394
+#: charpick/charpick.c:449
 msgid "Copyright (C) 1998"
 msgstr "Зохиогчийн эрх (C) 1998"
 
-#: charpick/charpick.c:395
+#: charpick/charpick.c:450
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Өөрийн гараас оруулах болмжгүй тэмдэгтийг сонгоход зориулагдсан Gnome  applet самбар"
-". GNU General Public Licence Түшиглэж гарсан"
+"Өөрийн гараас оруулах болмжгүй тэмдэгтийг сонгоход зориулагдсан Gnome  "
+"applet самбар. GNU General Public Licence Түшиглэж гарсан"
 
-#: charpick/charpick.c:489
+#: charpick/charpick.c:548
 msgid "Insert special characters"
 msgstr "Тусгай тэмдэгтийг оруулах"
 
-#: charpick/properties.c:80
+#: charpick/properties.c:84
 msgid "_Default character list:"
 msgstr "_Тэмдэгтийн ахдагч жагсаалт:"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Default list of characters"
 msgstr "Тэмдэгтүүдийн ахндагч жагсаалт"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid "Set the default character list here"
 msgstr "Энд тэмдэгтийн жагсаалтын анхдагчийг оруул"
 
-#: charpick/properties.c:92
+#: charpick/properties.c:93
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
 msgstr ""
-"Энэ тэмдэгтүүд самбар дээр эхэлхэд гарна.Жагсаалт руу буцах бол "
-"<d> -г дар идвэхжүүл."
+"Энэ тэмдэгтүүд самбар дээр эхэлхэд гарна.Жагсаалт руу буцах бол <d> -г дар "
+"идвэхжүүл."
 
-#: charpick/properties.c:156
+#: charpick/properties.c:158
 msgid "Character Palette Preferences"
 msgstr "Тэмдэгт цулуулагчийн тохиргоо"
 
@@ -634,7 +646,7 @@ msgstr "Үүгэгчийн заагч:"
 msgid "_Update interval (seconds):"
 msgstr "Шинэчлэх завсар (секундэнд):"
 
-#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+#: drivemount/properties.c:307
 msgid "_Icon :"
 msgstr "_Дүслэл:"
 
@@ -702,8 +714,8 @@ msgstr "Самбар дээр \"Нүдүүд\" байрлуулах"
 msgid "Amusements"
 msgstr "Зугаа цэнгэлүүд"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
-#: geyes/geyes.c:429 geyes/geyes.c:431
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
 msgid "Geyes"
 msgstr "Нүднүүд"
 
@@ -711,23 +723,23 @@ msgstr "Нүднүүд"
 msgid "Geyes Applet Factory"
 msgstr " \"Нүдүүд\" -г үндэслэгч"
 
-#: geyes/geyes.c:238
+#: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Зохиогчийн эрх (С) 1999 Dave Camp"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME самбарт зориуплагдсан чөтгөрын жижиг клон xeyes"
 
-#: geyes/geyes.c:432
+#: geyes/geyes.c:446
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Нүднүүд хулганы заагчийг харж байна"
 
-#: geyes/themes.c:223
+#: geyes/themes.c:224
 msgid "Geyes Preferences"
 msgstr "Нүдүүдийн тохиргоо"
 
-#: geyes/themes.c:239
+#: geyes/themes.c:240
 msgid "_Theme Name:"
 msgstr "_Theme-н нэр:"
 
@@ -739,7 +751,7 @@ msgstr "Гарны байрлал солих"
 msgid "GKB Factory"
 msgstr "GKB Үндсэлэгч"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Гарны байрлал солигч"
 
@@ -752,18 +764,18 @@ msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
-"Гарны байрлал хооронд шилжүүллэхдээ Онцгой товч дээр дарна."
-"Онцгой товчийг солихдоо Шинж чанарын цонх руу ор"
+"Гарны байрлал хооронд шилжүүллэхдээ Онцгой товч дээр дарна.Онцгой товчийг "
+"солихдоо Шинж чанарын цонх руу ор"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -773,14 +785,15 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Энэ апплет нь гарны байрлалыг солихдоо setxkbmap эсвэл xmodmap -г ашигладаг.\n"
-"Та өөрийн гарны байрлалыг оруулахыг хүсэж байвал гарны байрлал болон  орны тугыг явуул "
-"(миний емайл хаяг - shooby@gnome.hu).\n"
+"Энэ апплет нь гарны байрлалыг солихдоо setxkbmap эсвэл xmodmap -г "
+"ашигладаг.\n"
+"Та өөрийн гарны байрлалыг оруулахыг хүсэж байвал гарны байрлал болон  орны "
+"тугыг явуул (миний емайл хаяг - shooby@gnome.hu).\n"
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB -н Вэб хуудас (http://projects.gnome.hu/gkb)"
 
@@ -788,7 +801,7 @@ msgstr "GKB -н Вэб хуудас (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Хориглосон"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr " \"Esc\" товч дар болиул"
 
@@ -800,25 +813,23 @@ msgstr "Гарны байрлал (сонгоод \"Нэмэх\"-г дар)"
 msgid "Select Keyboard"
 msgstr "Гарны байрлал сонгох"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:233
 msgid "Edit Keyboard"
 msgstr "Гарны байрлал засах"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+#: gkb-new/prop-map.c:252
 msgid "_Name:"
 msgstr "Нэр:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:255
 msgid "_Label:"
 msgstr "Тэмдэг:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:258
 msgid "Co_mmand:"
 msgstr "Команд"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:266
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -830,7 +841,7 @@ msgstr ""
 "* gkb__xmmap mn\n"
 "* setxkbmap mn"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:299
 msgid "_Flag"
 msgstr "Туг"
 
@@ -854,7 +865,8 @@ msgstr "Тэмдэг"
 msgid "Flag and Label"
 msgstr "Тэмдэг ба туг"
 
-#: gkb-new/prop.c:291 modemlights/properties.c:393
+#: gkb-new/prop.c:291 gtik/gtik.c:1366 gweather/gweather-pref.c:320
+#: modemlights/properties.c:393
 msgid "Display"
 msgstr "Дэлгэц"
 
@@ -876,11 +888,11 @@ msgid "_Grab hotkey"
 msgstr "Онцгой товчийг авах"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:425
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Гарны байрлалыг солигчийн тоохиргоо"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:442
 msgid "Keymaps"
 msgstr "Keymaps"
 
@@ -890,7 +902,7 @@ msgstr "Keymaps"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:454 multiload/properties.c:313
 msgid "Options"
 msgstr "Параметрууд"
 
@@ -928,6 +940,7 @@ msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Accessories"
 msgstr "Стандартны"
 
@@ -959,83 +972,123 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr "Энэ програм нийтэд дэлгэрсэн вэб сайт холбогдож эх мэдээг татаж авна."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1158
+#, fuzzy
+msgid "Current _Stocks"
+msgstr "Одоогийн төлөв"
+
+#: gtik/gtik.c:1166
 msgid "_New Symbol:"
 msgstr "_Шинэ тэмдэгт:"
 
-#: gtik/gtik.c:1158
+#: gtik/gtik.c:1174
 msgid "_Add"
 msgstr "Нэмэх"
 
-#: gtik/gtik.c:1169
-msgid "_Remove Selected"
+#: gtik/gtik.c:1179
+#, fuzzy
+msgid "_Remove"
 msgstr "Сонгогдсоныг хасах"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1277
 msgid "Stock Ticker Preferences"
 msgstr "Эх мэдээ түгээгчийн тохиргоо"
 
-#: gtik/gtik.c:1275
-msgid "Stock update Fre_quency in minutes:"
-msgstr "Минут бүрд эх мэдээллийг шинэчлэх"
-
-#: gtik/gtik.c:1294
-msgid "Scroll Speed :"
-msgstr "Дэлгэц гүйлгэгчийн хурд:"
-
-#: gtik/gtik.c:1314
-msgid "_Width :"
-msgstr "Өргөн:"
-
-#: gtik/gtik.c:1326
-msgid "Displa_y only symbols and price"
-msgstr "Зөвхөн үнэ ба тусгай тэмдэгтийг үзүүл"
-
-#: gtik/gtik.c:1329
-msgid "Scroll _left to right"
-msgstr "Зүүнээс баруун зүг дэлгэцийг гүйлгэ"
-
-#: gtik/gtik.c:1332
-msgid "_Enable scroll buttons"
-msgstr "Дэлгэц гүйлгэгч товчийг идвэхжүүлэх"
-
-#: gtik/gtik.c:1356
-msgid "+ C_olor:"
-msgstr "Өнгө + "
-
-#: gtik/gtik.c:1376
-msgid "- Colo_r:"
-msgstr "Өнгө -"
-
-#: gtik/gtik.c:1393
-msgid "_Unchanged Color:"
-msgstr "Өөрчлөх боломжгүй өнгө"
-
-#: gtik/gtik.c:1410
-msgid "Back_ground Color:"
-msgstr "Арын өнгө:"
-
-#: gtik/gtik.c:1432
-msgid "_Font:"
-msgstr "Фонт:"
-
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1292
 msgid "Symbols"
 msgstr "Тусгай тэмдэгтүүд"
 
-#: gtik/gtik.c:1454
+#: gtik/gtik.c:1297
 msgid "Behavior"
 msgstr "Үйл явц"
 
-#: gtik/gtik.c:1541
+#: gtik/gtik.c:1300 gweather/gweather-pref.c:273
+#, fuzzy
+msgid "Update"
+msgstr "Шинэчлэх"
+
+#: gtik/gtik.c:1304
+msgid "Stock update Fre_quency in minutes:"
+msgstr "Минут бүрд эх мэдээллийг шинэчлэх"
+
+#: gtik/gtik.c:1314
+msgid "Scrolling"
+msgstr ""
+
+#: gtik/gtik.c:1318
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "Дэлгэц гүйлгэгчийн хурд:"
+
+#: gtik/gtik.c:1322
+#, fuzzy
+msgid "_Slow"
+msgstr "Үзүүлэх"
+
+#: gtik/gtik.c:1324
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1326
+#, fuzzy
+msgid "_Fast"
+msgstr "Таамаглал"
+
+#: gtik/gtik.c:1343
+msgid "_Enable scroll buttons"
+msgstr "Дэлгэц гүйлгэгч товчийг идвэхжүүлэх"
+
+#: gtik/gtik.c:1352
+msgid "Scroll _left to right"
+msgstr "Зүүнээс баруун зүг дэлгэцийг гүйлгэ"
+
+#: gtik/gtik.c:1370 stickynotes/stickynotes.glade.h:29
+#, fuzzy
+msgid "_Width:"
+msgstr "Өргөн:"
+
+#: gtik/gtik.c:1383
+msgid "Displa_y only symbols and price"
+msgstr "Зөвхөн үнэ ба тусгай тэмдэгтийг үзүүл"
+
+#: gtik/gtik.c:1392
+#, fuzzy
+msgid "_Font"
+msgstr "Фонт:"
+
+#: gtik/gtik.c:1406 mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468 multiload/properties.c:365
+msgid "Colors"
+msgstr "Өнгөнүүд"
+
+#: gtik/gtik.c:1411
+#, fuzzy
+msgid "Stock _raised"
+msgstr "_Изменения акции:"
+
+#: gtik/gtik.c:1426
+#, fuzzy
+msgid "Stock _lowered"
+msgstr "Эх мэдээ түгээгч"
+
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "Stock _unchanged"
+msgstr "_Изменения акции:"
+
+#: gtik/gtik.c:1456 modemlights/properties.c:441
+msgid "_Background"
+msgstr "Ар"
+
+#: gtik/gtik.c:1553
 msgid "Skip forward"
 msgstr "Өмнөх алхамыг алгасах"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1554
 msgid "Skip backward"
 msgstr "Дараах алхамыг алгасах"
 
-#: gtik/gtik.c:1543
+#: gtik/gtik.c:1555
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1043,15 +1096,15 @@ msgstr ""
 "Эх мэдээ түгээгчr\n"
 "Тасралтгүй хэсэг хэсгээр нь шинэчлэлт хийх"
 
-#: gtik/gtik.c:1731
+#: gtik/gtik.c:1745
 msgid "(No"
 msgstr "(Үгүй"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1746
 msgid "Change "
 msgstr "Солих "
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "Таамаглал"
 
@@ -1068,15 +1121,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Одоогын Цаг агаар болон таамаглалыг харах"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:64
 msgid "Weather Report"
 msgstr "Цаг агаарийн мэдээлэл"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:65
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Зохиогчийн эрх (С) 1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:66
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1086,1404 +1139,760 @@ msgstr ""
 "\n"
 "An applet for monitoring local weather conditions."
 
-#: gweather/gweather-applet.c:198
-msgid "GNOME Weather"
-msgstr "GNOME Цаг агаар"
+#: gweather/gweather-applet.c:43
+#, c-format
+msgid ""
+"%s\n"
+"Today: %s\n"
+"Current temperature %d"
+msgstr ""
 
-#: gweather/gweather-applet.c:323
+#: gweather/gweather-applet.c:65
+#, c-format
+msgid ""
+"%s\n"
+"%s: %s\n"
+"Low %d, High %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:293
 msgid "Updating..."
 msgstr "Шинчлэл..."
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:82
+msgid "Day"
+msgstr ""
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Precipitation"
+msgstr "Тундастай"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Condition"
+msgstr "Нөхцөл:"
+
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
 msgid "Forecast"
 msgstr "Таамаглал"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Байрлал:"
+#, fuzzy
+msgid "Current Conditions"
+msgstr "Одоогийн төлөв"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
+#: gweather/gweather-dialog.c:121
+msgid "City:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:128
+#, fuzzy
+msgid "Last update:"
 msgstr "Шинэчлэх:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:135
 msgid "Conditions:"
 msgstr "Нөхцөл:"
 
-#: gweather/gweather-dialog.c:134
-msgid "Sky:"
-msgstr "Тэнгэр:"
-
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:146
 msgid "Temperature:"
 msgstr "Хэм:"
 
-#: gweather/gweather-dialog.c:150
-msgid "Dew point:"
-msgstr "Шийдвэрийн заагч:"
+#: gweather/gweather-dialog.c:153
+msgid "Feels like:"
+msgstr ""
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:160
 msgid "Humidity:"
 msgstr "Чийгшил:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:167
 msgid "Wind:"
 msgstr "Салхи:"
 
 #: gweather/gweather-dialog.c:174
+#, fuzzy
+msgid "Visibilty:"
+msgstr "Харагдалт:"
+
+#: gweather/gweather-dialog.c:181
 msgid "Pressure:"
 msgstr "Агаарын даралт:"
 
-#: gweather/gweather-dialog.c:182
-msgid "Visibility:"
-msgstr "Харагдалт:"
-
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "Одоогийн төлөв"
-
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
-msgstr "Цаг агаарын мэдээ"
-
-#: gweather/gweather-dialog.c:294
-msgid "See the ForeCast Details"
-msgstr "Дэлгэрэнгүй цаг агаарын мэдээ"
-
-#: gweather/gweather-dialog.c:329
-msgid "_Visit Weather.com"
-msgstr "Weather.com- д зочил"
-
-#: gweather/gweather-dialog.c:330
-msgid "URL link Button"
-msgstr "URL точв"
-
-#: gweather/gweather-dialog.c:330
-msgid "Click to Enter Weather.com"
-msgstr "Weather.com дээр дарж ор"
-
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "Радар зураг"
-
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+#: gweather/gweather-dialog.c:307
+#, c-format
+msgid "%s / %.1f %s"
 msgstr ""
-"Энэ байрлалд цаг агаарын дэлгэрэнгүй мэдээлэл тодорхойгүй байна.\n"
-"Цаг агаарын мэдээлэл зөвхөн АНУ-н мужуудыхыг үзэх боломжтой."
-
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"Энэ байрлалд цаг агаарын дэлгэрэнгүй мэдээлэл тодорхойгүй байна.\n"
-"Цаг агаарын мэдээлэл зөвхөн АНУ-н мужуудыхыг үзэх боломжтой."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:108
-msgid "Location view"
-msgstr "Байрлалыг үзэх"
-
-#: gweather/gweather-pref.c:108
-msgid "Select Location from the list"
-msgstr "Байрлалыг жагсаалтаас сонго"
-
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Update spin button"
 msgstr "Шинэчлэл нэгтгэх товч"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:95
 msgid "Spinbutton for updating"
 msgstr "Шинэчлэгч товч"
 
-#: gweather/gweather-pref.c:111
-msgid "Address Entry"
-msgstr "Хаяг оруулах"
-
-#: gweather/gweather-pref.c:111
-msgid "Enter the URL"
-msgstr "URL оруул"
-
-#: gweather/gweather-pref.c:561
+#: gweather/gweather-pref.c:237
 msgid "Weather Preferences"
 msgstr " \"Цаг агаар\" тохиргоо"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:285
 msgid "_Automatically update every"
 msgstr "Автоматаар шинэчлэх минут"
 
-#: gweather/gweather-pref.c:610
-msgid "Use _metric system units"
-msgstr "Хэмжигч системийг ашиглах"
-
-#: gweather/gweather-pref.c:616
-msgid "Enable _detailed forecast"
-msgstr "Цаг агаарын дэгэрэнгүй мэдээллийг идвэхжүүлэх"
-
-#: gweather/gweather-pref.c:623
-msgid "Enable _radar map"
-msgstr "Радар зүргийг идвэхзүүлэх"
-
-#: gweather/gweather-pref.c:629
-msgid "Use cus_tom address for radar map"
-msgstr "Радар зурагын хэрэглэгчийн хаяг"
-
-#: gweather/gweather-pref.c:640
-msgid "A_ddress :"
-msgstr "Хаяг :"
-
-#: gweather/gweather-pref.c:652
-msgid "Updates"
-msgstr "Шинэчлэлүүд"
-
-#: gweather/gweather-pref.c:658
-msgid "_Automatically update every "
-msgstr "Автоматаар шинэчлэх минут"
-
-#: gweather/gweather-pref.c:678
+#: gweather/gweather-pref.c:312
 msgid "minute(s)"
 msgstr "минут"
 
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:689
-msgid "Miscellaneous"
-msgstr "Төрөл бүрийн"
+#: gweather/gweather-pref.c:331
+msgid "Use _metric system units"
+msgstr "Хэмжигч системийг ашиглах"
 
-#: gweather/gweather-pref.c:743
+#: gweather/gweather-pref.c:341
+msgid "Display daily average temperatures"
+msgstr ""
+
+#: gweather/gweather-pref.c:352
+msgid "Number of _forecast days to display:"
+msgstr ""
+
+#: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
 msgid "Location"
 msgstr "Байрлал"
 
-#: gweather/weather.c:57
+#: gweather/gweather-pref.c:387
+#, fuzzy
+msgid "Current city:"
+msgstr "Одоогийн төлөв"
+
+#: gweather/gweather-pref.c:399
+msgid "Available c_ountries:"
+msgstr ""
+
+#: gweather/gweather-pref.c:411
+msgid "Available c_ities:"
+msgstr ""
+
+#: gweather/location.c:184
+msgid "Could not download countries"
+msgstr ""
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+msgid "Downloading Cities..."
+msgstr ""
+
+#: gweather/location.c:305
+#, fuzzy
+msgid "Country"
+msgstr "_Страна"
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
+
+#: gweather/weather.c:49
 msgid "knots"
 msgstr "холболт (1.87 км/ч)"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:49
 msgid "kph"
 msgstr "км/ц"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "inHg"
 msgstr "ямх"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:54
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "miles"
 msgstr "миль"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:58
 msgid "kilometers"
 msgstr "километр"
 
-#: gweather/weather.c:132
-msgid "Variable"
-msgstr "Хувсагч"
-
-#: gweather/weather.c:133
-msgid "North"
-msgstr "Зүүн"
-
-#: gweather/weather.c:133
-msgid "North - NorthEast"
-msgstr "Зүүн- Зүүн хойт"
-
-#: gweather/weather.c:133
-msgid "Northeast"
-msgstr "Зүүн хойт"
-
-#: gweather/weather.c:133
-msgid "East - NorthEast"
-msgstr "Зүүн - Зүүн хойт"
-
-#: gweather/weather.c:134
-msgid "East"
-msgstr "Зүүн"
-
-#: gweather/weather.c:134
-msgid "East - Southeast"
-msgstr "Дорно - Зүүн өмнө"
-
-#: gweather/weather.c:134
-msgid "Southeast"
-msgstr "Зүүн өмнө"
-
-#: gweather/weather.c:134
-msgid "South - Southeast"
-msgstr "Өмнө - Зүүн өмнө"
-
-#: gweather/weather.c:135
-msgid "South"
-msgstr "Өмнө"
-
-#: gweather/weather.c:135
-msgid "South - Southwest"
-msgstr "Өмнө - Баруун урд"
-
-#: gweather/weather.c:135
-msgid "Southwest"
-msgstr "Баруун урд"
-
-#: gweather/weather.c:135
-msgid "West - Southwest"
-msgstr "Баруун - Бруун урд"
-
-#: gweather/weather.c:136
-msgid "West"
-msgstr "Баруун"
-
-#: gweather/weather.c:136
-msgid "West - Northwest"
-msgstr "Баруун - Баруун хойт"
-
-#: gweather/weather.c:136
-msgid "Northwest"
-msgstr "Баруун хойт"
-
-#: gweather/weather.c:136
-msgid "North - Northwest"
-msgstr "Баруун - Баруун хойт"
-
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
-msgid "Invalid"
-msgstr "Буруу"
-
-#: gweather/weather.c:149
+#: gweather/weather.c:63
 msgid "Clear Sky"
 msgstr "Тэнгэр цэлмэг"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:64
 msgid "Broken clouds"
 msgstr "Үүлтэй бүрхэг"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:65
 msgid "Scattered clouds"
 msgstr "Заармаг үүлтэй"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:66
 msgid "Few clouds"
 msgstr "Хэсэг үүлтэй"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:67
 msgid "Overcast"
 msgstr "Цэлмэг"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-#. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Шиврээ бороотой"
+#: gweather/weather.c:71
+#, fuzzy
+msgid "Windy"
+msgstr "Салхи:"
 
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Ойр ойрхон шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Багхан шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Дунд зэрэг шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Их шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Өнгөцхөн шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Хэсэгхэн шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Заримдаа шиврээ бороотой"
-
-#: gweather/weather.c:186 gweather/weather.c:187
-msgid "Thunderstorm"
+#: gweather/weather.c:72
+#, fuzzy
+msgid "Thunder Storms"
 msgstr "Ширүүн шиврээ бороотой"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Салхитай шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Аадар бороотой"
-
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Ширүүн салхитай шиврээ бороотой"
-
-#: gweather/weather.c:186
-msgid "Freezing drizzle"
-msgstr "Хүтэн шиврээ бороотой"
-
-#. RAIN
-#: gweather/weather.c:187
-msgid "Rain"
-msgstr "Бороотой"
-
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Ойр ойрхон бороотой"
-
-#: gweather/weather.c:187
-msgid "Light rain"
-msgstr "Багахан бороотой"
-
-#: gweather/weather.c:187
-msgid "Moderate rain"
-msgstr "Дунд зэрэг бороотой"
-
-#: gweather/weather.c:187
-msgid "Heavy rain"
-msgstr "Ширүүн бороотой"
-
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Өнгөцхөн  бороотой"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Хэсэгхэн бороотой"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Заримдаа бороотой"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Бороотой"
-
-#: gweather/weather.c:187
-msgid "Rain showers"
-msgstr "Ширүүн бороотой"
-
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Ширүүн салхитай бороотой"
-
-#: gweather/weather.c:187
-msgid "Freezing rain"
-msgstr "Хүйтэн бороотой"
-
-#. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:73
 msgid "Snow"
 msgstr "Цастай"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Ойр ойрхон цастай"
-
-#: gweather/weather.c:188
-msgid "Light snow"
-msgstr "Багаахан цастай"
-
-#: gweather/weather.c:188
-msgid "Moderate snow"
-msgstr "Дунд зэрэг цастай"
-
-#: gweather/weather.c:188
-msgid "Heavy snow"
-msgstr "Их цастай"
-
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Өнгөцхөн цастай"
-
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Заримдаа цастай"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Заримдаа цастай"
-
-#: gweather/weather.c:188 gweather/weather.c:189
-msgid "Snowstorm"
-msgstr "Цасан шуургатай"
-
-#: gweather/weather.c:188
-msgid "Blowing snowfall"
-msgstr "Цасан шуургатай"
-
-#: gweather/weather.c:188
-msgid "Snow showers"
-msgstr "Ширүүн цастай"
-
-#: gweather/weather.c:188
-msgid "Drifting snow"
-msgstr "Цастай"
-
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Хүйтэн цастай"
-
-#. SNOW_GRAINS
-#: gweather/weather.c:189
-msgid "Snow grains"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Ойр ойрхон мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Light snow grains"
-msgstr "Багаахан мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Moderate snow grains"
-msgstr "Дун зэрэг мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Heavy snow grains"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Өнгөцхөн мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Мөндөрөн цохилттой"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Хүйтэн мөндөртэй"
-
-#. ICE_CRYSTALS
-#: gweather/weather.c:190
-msgid "Ice crystals"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Ойр ойрхон мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Хэдхэн мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Дун зэрэг мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Мөсөн шуурагтай"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Мөндөрөн цохилттой"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Хүйтэн мөндөртэй"
-
-#. ICE_PELLETS
-#: gweather/weather.c:191
-msgid "Ice pellets"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Ойр ойрхон мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Few ice pellets"
-msgstr "Хэдхэн мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Moderate ice pellets"
-msgstr "Дун зэрэг мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Heavy ice pellets"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Өнгөцхөн мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Ice pellet storm"
-msgstr "Мөсөн шуургатай"
-
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Мөндөрөн цохилттой"
-
-#: gweather/weather.c:191
-msgid "Showers of ice pellets"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Мөндөртэй"
-
-#. HAIL
-#: gweather/weather.c:192
-msgid "Hail"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Ойр ойрхон мөндөртэй"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Жижигхэн мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Дун зэрэг мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Өнгөцхөн мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Hailstorm"
-msgstr "Мөсөн шуургатай"
-
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Hail showers"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Мөндөртэй"
-
-#. SMALL_HAIL
-#: gweather/weather.c:193
-msgid "Small hail"
-msgstr "Жижигхэн мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Ойр ойрхон мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Дун зэрэг мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Өнгөцхөн мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Заримдаа мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Small hailstorm"
-msgstr "Мөсөн шуургатай"
-
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Showers of small hail"
-msgstr "Ширүүн мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Мөндөртэй"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Мөндөртэй"
-
-#. PRECIPITATION
-#: gweather/weather.c:194
-msgid "Unknown precipitation"
-msgstr "Тодорхойгүй тундастай"
-
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Ойр ойрхон тундастай"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Багаахан тундастай"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Дэнд зэрэг тундастай"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Их тундастай"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Өнгөцхөн тундастай"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Тундастай"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Тундастай"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Тодорхойгүй аадар бороотой"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Тундастай"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Ширүүн тундастай"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Тундастай"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Тундастай"
-
-#. MIST
-#: gweather/weather.c:195
-msgid "Mist"
-msgstr "Манантай"
-
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Ойр ойрхон манантай"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Багаахан манантай"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Дунд зэрэг манантай"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Өтгөн манантай"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Өнгөцхөн манантай"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Заримдаа манантай"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Заримдаа манантай"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Салхитай манантай"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Манантай"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Манантай"
-
-#. FOG
-#: gweather/weather.c:196
-msgid "Fog"
-msgstr "Манантай"
-
-#: gweather/weather.c:196
-msgid "Fog in the vicinity"
-msgstr "Ойр ойрхон манантай"
-
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Багаахан манантай"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Дунд зэрэг манантай"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Өтгөн манантай"
-
-#: gweather/weather.c:196
-msgid "Shallow fog"
-msgstr "Өнгөцхөн манантай"
-
-#: gweather/weather.c:196
-msgid "Patches of fog"
-msgstr "Заримдаа манантай"
-
-#: gweather/weather.c:196
-msgid "Partial fog"
-msgstr "Заримдаа манантай"
-
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Салхитай манантай"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Манантай"
-
-#: gweather/weather.c:196
-msgid "Freezing fog"
-msgstr "Манантай"
-
-#. SMOKE
-#: gweather/weather.c:197
-msgid "Smoke"
-msgstr "Утаатай"
-
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Ойр ойрхон утаатай"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Дунд зэрэг утаатай"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Их утаатай"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Өтгөн утаатай"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Өнгөцхөн утаатай"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Заримдаа утаатай"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Заримдаа утаатай"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Салхитай утаатай"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Салхитай утаатай"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Утаатай"
-
-#. VOLCANIC_ASH
-#: gweather/weather.c:198
-msgid "Volcanic ash"
-msgstr "Галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Ойр ойрхон гал уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Дунд зэрэг галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Өтгөн галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Өнгөцхөн галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Заримдаа галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Заримдаа галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Салхитай галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Ширүүн үгалт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Галт уулын үнстэй"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Галт уулын үнстэй"
-
-#. SAND
-#: gweather/weather.c:199
-msgid "Sand"
-msgstr "Элтэй"
-
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Ойр ойрхон элстэй"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Багаахан элстэй"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Дунд зэрэг элстэй"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Их элстэй"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Заримдаа элстэй"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Заримдаа элстэй"
-
-#: gweather/weather.c:199
-msgid "Blowing sand"
-msgstr "Элстэй"
-
-#: gweather/weather.c:199
-msgid "Drifting sand"
-msgstr "Элстэй"
-
-#. HAZE
-#: gweather/weather.c:200
-msgid "Haze"
-msgstr "Манантай"
-
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Ойр ойрхон манантай"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Багаахан манантай"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Дунд зэрэг манантай"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Өтгөн манантай"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Өнгөцхөн манантай"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Заримдаа манантай"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Заримдаа манантай"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Салхитай манантай"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Манантай"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Манантай"
-
-#. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
+#: gweather/weather.c:74
+msgid "Rain"
 msgstr "Бороотой"
 
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Ойр ойрхон бороотой"
+#: gweather/weather.c:75
+#, fuzzy
+msgid "Heavy Rain"
+msgstr "Ширүүн бороотой"
 
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Багаахан бороотой"
+#: gweather/weather.c:76
+msgid "Sleet"
+msgstr ""
 
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Дунд зэрэг бороотой"
+#: gweather/weather.c:77
+#, fuzzy
+msgid "Light Flurries"
+msgstr "Багхан шиврээ бороотой"
 
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Их бороотой"
+#: gweather/weather.c:78
+msgid "Flurries"
+msgstr ""
 
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Өнгөцхөн бороотой"
+#: gweather/weather.c:79
+#, fuzzy
+msgid "Snow and Wind"
+msgstr "Мөндөртэй"
 
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Заримдаа бороотой"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Заримдаа бороотой"
-
-#: gweather/weather.c:201
-msgid "Blowing sprays"
-msgstr "Бороотой"
-
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Бороотой"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Бороотой"
-
-#. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:80
 msgid "Dust"
 msgstr "Шороотой"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Ойр ойрхон шороотой"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Багаахан шороотой"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Дунд зэрэг шороотой"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Их шороотой"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Заримдаа шороотой"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Заримдаа шороотой"
-
-#: gweather/weather.c:202
-msgid "Blowing dust"
-msgstr "Шороотой"
-
-#: gweather/weather.c:202
-msgid "Drifting dust"
-msgstr "Шороотой"
-
-#. SQUALL
-#: gweather/weather.c:203
-msgid "Squall"
-msgstr "Хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Ойр ойрхон хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Багаахан хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Дунд зэрэг хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Их хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Заримдаа хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Заримдаа хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Хуй салхитай"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Хуй салхитай"
-
-#. SANDSTORM
-#: gweather/weather.c:204
-msgid "Sandstorm"
-msgstr "Элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Sandstorm in the vicinity"
-msgstr "Ойр ойрхон элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Багаахан элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Дунд зэрэг элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Heavy sandstorm"
-msgstr "Их элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Өнгөцхөн элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Заримдаа элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Заримдаа элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Элсэн шуургатай"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Элсэн шуургатай"
-
-#. DUSTSTORM
-#: gweather/weather.c:205
-msgid "Duststorm"
-msgstr "Шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Duststorm in the vicinity"
-msgstr "Ойр ойрхон шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Багаахан шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Дунд зэрэг шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Heavy duststorm"
-msgstr "Их шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Өнгөцхөн шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Заримдаа шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Аюултай шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Шороон шуургатай"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Шороон шуургатай"
-
-#. FUNNEL_CLOUD
-#: gweather/weather.c:206
-msgid "Funnel cloud"
-msgstr "Үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Ойр ойрхон үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Багаахан үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Дунд зэрэг үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Их үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Өнгөцхөн үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Заримдаа үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Заримдаа үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Салхитай үүлтэй"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Үүлтэй"
-
-#. TORNADO
-#: gweather/weather.c:207
-msgid "Tornado"
-msgstr "Хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Ойр ойрхон хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Дунд зэрэг хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Аюултай хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Хар салхитай"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Хар салхитай"
-
-#. DUST_WHIRLS
-#: gweather/weather.c:208
-msgid "Dust whirls"
-msgstr "Шороотой "
-
-#: gweather/weather.c:208
-msgid "Dust whirls in the vicinity"
-msgstr "Ойр ойрхон шороотой"
-
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Багаахан шороотой"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Дунд зэрэг шороотой"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Их шороотой"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Өнгөцхөн шороотой"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Заримдаа шороотой"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Заримдаа шороотой"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Шороотой"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Шороотой"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
-msgid "Failed to get METAR data.\n"
-msgstr "METAR.өгөгдөлийг авч чадсангүй \n"
-
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
-msgid "WeatherInfo missing location"
-msgstr "WeatherInfo -н байрлал алдагдсан"
-
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "IWIN өгөгдөлийг авч чадсангүй.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "IWIN цаг агаарын мэдээг авч чадсангүй.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Met Office.өгөдөлийг авч чадсангүй\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Met Office.цаг агаарын мэдээг авч чадсангүй\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Радар зургыг авч чадсангүй.\n"
-
-#: gweather/weather.c:1771
-msgid "%a, %b %d / %H:%M"
-msgstr "%a, %d %b / %H:%M"
-
-#: gweather/weather.c:1775
-msgid "Unknown observation time"
-msgstr "Хяналтын хугацаа тодорхойгүй байна"
-
-#: gweather/weather.c:1835
+#: gweather/weather.c:81
+msgid "Fog"
+msgstr "Манантай"
+
+#: gweather/weather.c:82
+msgid "Haze"
+msgstr "Манантай"
+
+#: gweather/weather.c:83
+msgid "Smoke"
+msgstr "Утаатай"
+
+#: gweather/weather.c:84
+msgid "Cold"
+msgstr ""
+
+#: gweather/weather.c:85
+msgid "Cloudy"
+msgstr ""
+
+#: gweather/weather.c:86
+msgid "Mostly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:87
+msgid "Partly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:88
+#, fuzzy
+msgid "Sunny"
+msgstr "Sun"
+
+#: gweather/weather.c:89
+msgid "Mostly Sunny"
+msgstr ""
+
+#: gweather/weather.c:90
+msgid "Hot"
+msgstr ""
+
+#: gweather/weather.c:91
+#, fuzzy
+msgid "Nothing"
+msgstr "Зүүн"
+
+#: gweather/weather.c:95
+msgid "Variable"
+msgstr "Хувсагч"
+
+#: gweather/weather.c:96
+msgid "North"
+msgstr "Зүүн"
+
+#: gweather/weather.c:96
+msgid "North - NorthEast"
+msgstr "Зүүн- Зүүн хойт"
+
+#: gweather/weather.c:96
+msgid "Northeast"
+msgstr "Зүүн хойт"
+
+#: gweather/weather.c:96
+msgid "East - NorthEast"
+msgstr "Зүүн - Зүүн хойт"
+
+#: gweather/weather.c:97
+msgid "East"
+msgstr "Зүүн"
+
+#: gweather/weather.c:97
+msgid "East - Southeast"
+msgstr "Дорно - Зүүн өмнө"
+
+#: gweather/weather.c:97
+msgid "Southeast"
+msgstr "Зүүн өмнө"
+
+#: gweather/weather.c:97
+msgid "South - Southeast"
+msgstr "Өмнө - Зүүн өмнө"
+
+#: gweather/weather.c:98
+msgid "South"
+msgstr "Өмнө"
+
+#: gweather/weather.c:98
+msgid "South - Southwest"
+msgstr "Өмнө - Баруун урд"
+
+#: gweather/weather.c:98
+msgid "Southwest"
+msgstr "Баруун урд"
+
+#: gweather/weather.c:98
+msgid "West - Southwest"
+msgstr "Баруун - Бруун урд"
+
+#: gweather/weather.c:99
+msgid "West"
+msgstr "Баруун"
+
+#: gweather/weather.c:99
+msgid "West - Northwest"
+msgstr "Баруун - Баруун хойт"
+
+#: gweather/weather.c:99
+msgid "Northwest"
+msgstr "Баруун хойт"
+
+#: gweather/weather.c:99
+msgid "North - Northwest"
+msgstr "Баруун - Баруун хойт"
+
+#: gweather/weather.c:100
 msgid "Calm"
 msgstr "Багана"
 
-#: gweather/weather.c:1861
-msgid "Unknown"
-msgstr "Тодорхойлогдоогүй"
+#: gweather/weather.c:528 gweather/weather.c:553
+msgid "Could not download forecast"
+msgstr ""
 
-#: gweather/weather.c:1895
-msgid "Retrieval failed"
-msgstr "Засахад алдаа гарлаа"
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "\"Цаг агаар\" апплетийг үдсэлэгч."
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:328 mailcheck/mailcheck.c:1812
+msgid "Inbox Monitor"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "Интернет"
+
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+msgid "_Check for mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:204
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "Возникла ошибка при выполнении %s: %s"
+
+#: mailcheck/mailcheck.c:334
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:342
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:347 mailcheck/mailcheck.c:1425
+#, fuzzy
+msgid "Password Entry box"
+msgstr "Строка пароля"
+
+#: mailcheck/mailcheck.c:401
+msgid "The Network May be down"
+msgstr ""
+
+#: mailcheck/mailcheck.c:404 mailcheck/mailcheck.c:407
+msgid "The User id or Password is not  correct"
+msgstr ""
+
+#: mailcheck/mailcheck.c:410
+msgid "The Server name may be wrong"
+msgstr ""
+
+#: mailcheck/mailcheck.c:414
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:423
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:604
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:606
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:610
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:612
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:616
+#, fuzzy
+msgid "No mail."
+msgstr "Энгийн"
+
+#: mailcheck/mailcheck.c:1136 mailcheck/mailcheck.c:1137
+#: mailcheck/mailcheck.c:2003 mailcheck/mailcheck.c:2004
+msgid "Status not updated"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1309
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1317
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1325
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1333
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1341
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1361
+msgid "Mail _spool file:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1365
+#, fuzzy
+msgid "Browse"
+msgstr "Хайгч"
+
+#: mailcheck/mailcheck.c:1380
+msgid "Mail s_erver:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1386
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1400
+#, fuzzy
+msgid "_Username:"
+msgstr "И_мя пользователя:"
+
+#: mailcheck/mailcheck.c:1408
+#, fuzzy
+msgid "Username Entry box"
+msgstr "Строка пользователя"
+
+#: mailcheck/mailcheck.c:1417
+#, fuzzy
+msgid "_Password:"
+msgstr "_Пароль:"
+
+#: mailcheck/mailcheck.c:1438
+msgid "_Folder:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1446
+#, fuzzy
+msgid "Folder Entry box"
+msgstr "Строка порта"
+
+#: mailcheck/mailcheck.c:1458
+msgid "C_ommand to run before checking for mail:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1466
+#, fuzzy
+msgid "Command Entry box"
+msgstr "Предыстория команд"
+
+#: mailcheck/mailcheck.c:1491
+#, fuzzy
+msgid "Execute"
+msgstr "Гаргах"
+
+#: mailcheck/mailcheck.c:1502
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1517
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1527
+msgid "When new mail _arrives:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1540 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1550
+msgid "When clicke_d:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1563
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1573
+msgid "Set the number of unread mails to _zero"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1584
+msgid "Check for mail _every"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1596 mailcheck/mailcheck.c:1600
+#, fuzzy
+msgid "minutes"
+msgstr "минут"
+
+#: mailcheck/mailcheck.c:1596
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1610 mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "seconds"
+msgstr "миллисекунд"
+
+#: mailcheck/mailcheck.c:1610
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1622
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1633
+msgid "Select a_nimation"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1669 mailcheck/mailcheck.c:1877
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Возникла ошибка при выполнении %s: %s"
+
+#: mailcheck/mailcheck.c:1710
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "Систем хэмжигчийн тохиргоо"
+
+#: mailcheck/mailcheck.c:1730
+msgid "_Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1734
+msgid "Mail_box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1814
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1979
+#, fuzzy
+msgid "Text only"
+msgstr "Текст"
+
+#: mailcheck/mailcheck.c:2005
+msgid "Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:2006
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+msgid "Path to the animation file"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+msgid "Mailcheck"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+#, fuzzy
+msgid "New Mail"
+msgstr "Новая Зеландия"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Командын мөр"
 
@@ -2507,8 +1916,7 @@ msgid ""
 "any later version."
 msgstr ""
 "Самбарт GNOME апплетийг нэмэхдээко мандийн мөрийг ашиглана. Командууд нь "
-"биелэгдсэн командын цуваа, макрог өөрчлөх болон дурын цаг зэрэг "
-"үүрэгтэй.\n"
+"биелэгдсэн командын цуваа, макрог өөрчлөх болон дурын цаг зэрэг үүрэгтэй.\n"
 "\n"
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -2516,15 +1924,15 @@ msgstr ""
 "any later version."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Програм эхлэх"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Командын мөр"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Энд командаа бичихэд Gnome таны коммандыг ажиллуулна."
 
@@ -2545,7 +1953,8 @@ msgstr "%s -н стандарт жигсаалт утгыг тогтоох.\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL бол олонлог, схемүүд суухгүй байна.\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL бол олонлог, схемүүд суухгүй байна.\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -2577,11 +1986,6 @@ msgstr "Апплетийн өргөн"
 msgid "Autocompletion"
 msgstr "Шууд нэмэх"
 
-#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
-#: multiload/properties.c:365
-msgid "Colors"
-msgstr "Өнгөнүүд"
-
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Command Line Preferences"
 msgstr "Командын мөрийн тохиргоо"
@@ -2599,7 +2003,8 @@ msgid "Command:"
 msgstr "Команд"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history based autocompletion"
+#, fuzzy
+msgid "E_nable history-based autocompletion"
 msgstr "Биелэгдсэн үйлдүүд дээр нэмлээ"
 
 #: mini-commander/src/mini-commander.glade.h:13
@@ -2611,6 +2016,7 @@ msgid "Pattern:"
 msgstr "Загвар:"
 
 #: mini-commander/src/mini-commander.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Pick a color"
 msgstr "Өнгө сонгох"
 
@@ -2656,11 +2062,11 @@ msgstr "Биелэгдсэн үйлдэл"
 msgid "Click this button for the list of previous commands"
 msgstr "Өмнөх командын цуваа руу шилжих энэ товчийг дар"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander апплет"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Энэ апплет нь коммандын мөрийг самбарт нэмэх"
 
@@ -2684,8 +2090,8 @@ msgstr "Та давхар хэв тодторхойлж болохгүй"
 msgid "Adjust the sound volume"
 msgstr "Дууны төхөөрөмжийг тохируулах"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:827
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
+#: mixer/mixer.c:938
 msgid "Volume Control"
 msgstr "Дууны хянагч"
 
@@ -2693,57 +2099,155 @@ msgstr "Дууны хянагч"
 msgid "_Mute"
 msgstr "Дууг хаах"
 
-#: mixer/GNOME_MixerApplet.xml.h:4
+#: mixer/GNOME_MixerApplet.xml.h:5
 msgid "_Run Volume Control..."
 msgstr "Дууны хянагчийг ажиллуулах"
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:110
+msgid "Main Volume"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Bass"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Treble"
+msgstr ""
+
+#: mixer/mixer.c:110
+msgid "Synth"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Speaker"
+msgstr ""
+
+#: mixer/mixer.c:111
+msgid "Line"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "CD"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Mix"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Video"
+msgstr "Далдлах"
+
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Radio"
+msgstr "Бороотой"
+
+#
+#: mixer/mixer.c:116
+#, fuzzy
+msgid "Monitor"
+msgstr "Систем хэмжигч"
+
+#: mixer/mixer.c:166
 msgid "Volume Control (muted)"
 msgstr "Дууны хянагч (дуу хаагдсан)"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:248
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
-msgstr "Анхаар: gmix-ийн энэ хувилбар нь дууны төхөөрөмжийн\n өөр хувилбартай хамт суусан байна\n"
+msgstr ""
+"Анхаар: gmix-ийн энэ хувилбар нь дууны төхөөрөмжийн\n"
+" өөр хувилбартай хамт суусан байна\n"
 
-#: mixer/mixer.c:207
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "%s микшерийн бэлэн сувагуудын хүсэлтэнд алдаа гарлаа\n"
-
-#: mixer/mixer.c:214
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "Анхаар : микшер дууны горим биш PCM горим хэрэглэж байна.\n"
-
-#: mixer/mixer.c:217
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "%sмикшер  PCM болон дууны аль сувгаар ажиллахгүй.\n"
-
-#: mixer/mixer.c:572
+#: mixer/mixer.c:683
 msgid "Volume Controller"
 msgstr "Дууны хянагч"
 
-#: mixer/mixer.c:573
+#: mixer/mixer.c:684
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Дээш/Доош товчоор дууны өнгийг өөрчил"
 
-#: mixer/mixer.c:828
+#: mixer/mixer.c:939
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:829
+#: mixer/mixer.c:940
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Өөрийн хэрэглээндээ тохируулж дууний өнгийг тогтоох апплет"
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1039
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "Дууны хянагч"
+
+#: mixer/mixer.c:1059
+#, fuzzy
+msgid "Channels"
+msgstr "Солих "
+
+#: mixer/mixer.c:1345
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Өөрийн хэрэглээндээ тохируулж дууний өнгийг тогтоох апплет"
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Интернет"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:227
@@ -2757,8 +2261,8 @@ msgid ""
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 "GNU Public License дээр үндэслсэн.\n"
-"Модемийн төлөвийн индикатор. "
-"Гэрлүүд нь зүүнээсээ бол өгөгдөл хүлээж авах. дээрээсээ бол өгөгдөл илгээх"
+"Модемийн төлөвийн индикатор. Гэрлүүд нь зүүнээсээ бол өгөгдөл хүлээж авах. "
+"дээрээсээ бол өгөгдөл илгээх"
 
 #: modemlights/modemlights.c:558
 msgid ""
@@ -2818,10 +2322,6 @@ msgstr "Өгөгдөл хүлээн авах"
 #: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "Техтийн өнгө"
-
-#: modemlights/properties.c:441
-msgid "_Background"
-msgstr "Ар"
 
 #: modemlights/properties.c:443
 msgid "Send data"
@@ -2923,16 +2423,17 @@ msgid "Load Average"
 msgstr "Дундаж ачаалах "
 
 #: multiload/main.c:80
+#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"space use, plus network traffic."
 msgstr ""
 "GNU GPL -д үндэслэж гаргасан.\n"
 "\n"
-"Процессор ,шуурхай санах ой, файл солих болон сүлжээний гэмтэл зэргийг дэлгэцэнд дурслэхээр "
-"систем ачаалж байна."
+"Процессор ,шуурхай санах ой, файл солих болон сүлжээний гэмтэл зэргийг "
+"дэлгэцэнд дурслэхээр систем ачаалж байна."
 
 #: multiload/main.c:236 multiload/properties.c:373
 msgid "Processor"
@@ -2947,7 +2448,8 @@ msgid "Network"
 msgstr "Сүлжээ"
 
 #: multiload/main.c:242 multiload/properties.c:391
-msgid "Swap File"
+#, fuzzy
+msgid "Swap Space"
 msgstr "Файл солих"
 
 #: multiload/main.c:244
@@ -2988,7 +2490,8 @@ msgid "_Network"
 msgstr "Сүлжээ"
 
 #: multiload/properties.c:296
-msgid "_Swap File"
+#, fuzzy
+msgid "_Swap Space"
 msgstr "Файл солих"
 
 #: multiload/properties.c:326
@@ -3075,235 +2578,327 @@ msgstr "Систем хэмжигчийн тохиргоо"
 msgid "Swap Load"
 msgstr "Сольж ачаалах"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "Самбарын цэсийн апплетийг үндэслэгч"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "Самбарын цэсийн апплетийг үндэслэгч"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "Дүрслэх цэсийг үзүүлэх самбар"
-
-#: panel-menu/panel-menu-actions.c:99
-msgid "Actions"
-msgstr "Бүлэг"
-
-#: panel-menu/panel-menu-actions.c:100
-msgid "Actions Menu"
-msgstr "Бүлгийн цэс"
-
-#: panel-menu/panel-menu-add.c:77
-msgid "Add items to the Menu Bar"
-msgstr "Цэсийн мөрөнд элемент нэмэх"
-
-#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:405
-msgid "Shortcuts"
-msgstr "Дүрслэл"
-
-#: panel-menu/panel-menu-add.c:250
-msgid "My Documents"
-msgstr "Миний бичиг баримтууд"
-
-#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "Бичиг баримтууд"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "Програмууд"
-
-#: panel-menu/panel-menu-common.c:738
-msgid ""
-"Removing this entry is not allowed as this will cause the Menu Bar applet to "
-"be removed from GNOME Panel"
+#: stickynotes/stickynotes.c:31 stickynotes/stickynotes.glade.h:27
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:6
+msgid "_New Note"
 msgstr ""
-"Удаление этого элемента не позволено, так как приведёт к удалению апплета с "
-"панели"
 
-#: panel-menu/panel-menu-directory.c:516
-msgid "Create directory item..."
-msgstr "Хавтас үүсгэх"
+#: stickynotes/stickynotes.c:32
+#, fuzzy
+msgid "_Delete Note"
+msgstr "У_далить"
 
-#: panel-menu/panel-menu-directory.c:524
-msgid "Home"
-msgstr "Гэр"
+#: stickynotes/stickynotes.c:34
+#, fuzzy
+msgid "_Edit Title"
+msgstr "_Изменить"
 
-#: panel-menu/panel-menu-directory.c:595
-msgid "Edit directory item..."
-msgstr "Хавтасыг засах..."
+#. FIXME : Hack because libglade does not properly set these
+#: stickynotes/stickynotes_applet.c:69 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet.c:148
+#: stickynotes/stickynotes_applet_callbacks.c:249
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
+msgid "Sticky Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
-msgid "_Path:"
-msgstr "_Зам:"
+#: stickynotes/stickynotes_applet.c:146
+#, c-format
+msgid ""
+"%s\n"
+"%d locked note"
+msgid_plural ""
+"%s\n"
+"%d locked notes"
+msgstr[0] ""
+msgstr[1] ""
 
-#: panel-menu/panel-menu-directory.c:694
-msgid "..."
-msgstr "..."
+#: stickynotes/stickynotes_applet.c:148
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"%d note"
+msgid_plural ""
+"%s\n"
+"%d notes"
+msgstr[0] ""
+"%s:\n"
+"Ашиглалтанд %d%%"
+msgstr[1] ""
+"%s:\n"
+"Ашиглалтанд %d%%"
 
-#: panel-menu/panel-menu-directory.c:704
-msgid "_Depth level:"
-msgstr "Оролтын түвшин:"
+#: stickynotes/stickynotes.glade.h:1
+msgid "<b>Default click behavior</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:801
-msgid "Path specified is currently not a valid directory."
-msgstr "Энэ замд тохирох хавтас одоогоор байхгүй байна."
+#: stickynotes/stickynotes.glade.h:2
+msgid "<b>Default dimensions</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "Бичиг баримт үүсгэх"
+#: stickynotes/stickynotes.glade.h:3
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-documents.c:434
-msgid "Rename documents item..."
-msgstr "Бичиг баримтын нэр өөрчлөх"
+#: stickynotes/stickynotes.glade.h:6
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
-msgid "KDE Menus"
-msgstr "KDE цэс"
+#: stickynotes/stickynotes.glade.h:9
+msgid "<b>Other settings</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
-#: panel-menu/panel-menu-path.c:559
-msgid "Programs"
-msgstr "Програмууд"
+#: stickynotes/stickynotes.glade.h:10
+msgid "<b>Style</b>"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:403
-msgid "Create links item..."
-msgstr "Холбоосын дүрслэл үүсгэх... "
+#: stickynotes/stickynotes.glade.h:11
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
 
-#: panel-menu/panel-menu-links.c:439
-msgid "Rename links item..."
-msgstr "Холбоосын дүрслэлийг дахин нэрлэх..."
+#: stickynotes/stickynotes.glade.h:12
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
 
-#: panel-menu/panel-menu-path.c:230
-msgid "KDE"
-msgstr "KDE"
+#: stickynotes/stickynotes.glade.h:13
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
 
-#: panel-menu/panel-menu-path.c:658
-msgid "Create menu path item..."
-msgstr "Цэсэн нэгж элемент нэмэх замыг..."
+#: stickynotes/stickynotes.glade.h:14
+msgid "Double-click or Right-click for more options"
+msgstr ""
 
-#: panel-menu/panel-menu-path.c:701
-msgid "Edit path item..."
+#: stickynotes/stickynotes.glade.h:15
+#, fuzzy
+msgid "Edit title"
 msgstr "Дүрслэлийн засах зам..."
 
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "Тохиргоо"
+#: stickynotes/stickynotes.glade.h:17
+msgid "Specify the default height (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:72
-msgid "Menu Bar Preferences"
-msgstr "Цэсийн мөрийн тохиргоо"
+#: stickynotes/stickynotes.glade.h:18
+msgid "Specify the default width (in pixels) of new notes"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:78
-msgid "Layout"
-msgstr "Байрлал"
+#: stickynotes/stickynotes.glade.h:19
+msgid "Sticky Note"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:93
-msgid "_Applications Menu"
-msgstr "Програмын цэс"
+#: stickynotes/stickynotes.glade.h:20
+#, fuzzy
+msgid "Sticky Notes Preferences"
+msgstr "Диск үүсгэгчийн тохиргоо"
 
-#: panel-menu/panel-menu-properties.c:117
-msgid "Select an icon for the Applications menu"
-msgstr "Програмын цэсийн дүрслэлийг сонго"
+#: stickynotes/stickynotes.glade.h:21
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
 
-#: panel-menu/panel-menu-properties.c:134
-msgid "_Preferences Menu"
-msgstr "Тохиргооны цэс"
+#: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "_Color:"
+msgstr "Өнгөнүүд"
 
-#: panel-menu/panel-menu-properties.c:145
-msgid "Ac_tions Menu"
-msgstr "Бүлгийн цэс"
+#: stickynotes/stickynotes.glade.h:23
+#, fuzzy
+msgid "_Delete ALL"
+msgstr "У_далить"
 
-#: panel-menu/panel-menu-properties.c:156
-msgid "_Windows Menu"
-msgstr "Цонхны цэс"
+#: stickynotes/stickynotes.glade.h:24
+#, fuzzy
+msgid "_Height:"
+msgstr "Бүрэн цэнэглэгдсэн"
 
-#: panel-menu/panel-menu-properties.c:167
-msgid "W_orkspaces Menu"
-msgstr "Ажлын талбарын цэс"
+#: stickynotes/stickynotes.glade.h:25
+msgid "_Hide/_Show All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "Цонхнууд"
+#: stickynotes/stickynotes.glade.h:26
+msgid "_Lock/_Unlock All Notes"
+msgstr ""
 
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
+#: stickynotes/stickynotes.glade.h:28
+msgid "_Sticky across workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:2
+#, fuzzy
+msgid "Background color of body"
+msgstr "Арын өнгө:"
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid ""
+"Background color of the body of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid ""
+"Background color of the body of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid ""
+"Background color of the title of the sticky notes when the note is in focus "
+"of the keyboard and mouse. Like \"body_color\", this can be any string found "
+"in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2\". "
+"Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Background color of the title of the sticky notes. This can be any string "
+"found in rgb.txt (that comes with XFree86), for example \"snow\" or \"yellow2"
+"\". Or it can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:7
+#, fuzzy
+msgid "Background color of title"
+msgstr "Арын өнгө:"
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid "Background prelighted color of body"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Background prelighted color of title"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:10
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used. Anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Date format"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
+"\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:13
+msgid "Default height for new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid "Default height for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid "Default left-click behavior of the applet"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:16
+#, fuzzy
+msgid "Default width for new notes"
+msgstr "Тэмдэгтүүдийн ахндагч жагсаалт"
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid "Default width for new notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:18
+msgid ""
+"Every time the specified number of minutes pass. The Sticky Notes are "
+"automatically saved."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:19
+msgid "Specifies whether the sticky notes are locked (uneditable) or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:20
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:21
+msgid "Sticky notes locked state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:22
+#, fuzzy
+msgid "Workspace stickyness"
 msgstr "Ажлын талбар"
 
-#: panel-menu/panel-menu.c:693
-msgid "Menu Bar"
-msgstr "Цэсийн мөр"
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+msgid "Create, view, and manage sticky notes on the desktop"
+msgstr ""
 
-#: panel-menu/panel-menu.c:694
-msgid "(c) 2001 Chris Phelps"
-msgstr "(С) 2001 Chris Phelps"
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#, fuzzy
+msgid "Sticky Notes Applet Factory"
+msgstr "Gtik апплетийг үндсэлэгч"
 
-#: panel-menu/panel-menu.c:695
-msgid "The Menu Bar allows you to display customized menubars on your panels."
-msgstr "Самбар дээрх цэсийн мөрийг өөрчлөхийг цэсийн мөрийн заагч харуулна."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:2
+msgid "_Delete All Notes"
+msgstr ""
 
-#: screen-exec/egg-screen-help.c:174
-msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr "GNOME_FILE_DOMAIN_APP_HELP домайн олдохгүй байна"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:4
+msgid "_Hide All Notes"
+msgstr ""
 
-#: screen-exec/egg-screen-help.c:187
-msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr "GNOME_FILE_DOMAIN_HELP домайн олдохгүй байна."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:5
+msgid "_Lock All Notes"
+msgstr ""
 
-#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
-#, c-format
-msgid ""
-"Unable to show help as %s is not a directory.  Please check your "
-"installation."
-msgstr "%s -р тусламж харуулах боломжгүй.  Та зөв суулгасан эсэхээ шалгана уу."
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:8
+#, fuzzy
+msgid "_Show All Notes"
+msgstr "Харилцах цонхуудыг үзүүлэх"
 
-#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
-#, c-format
-msgid ""
-"Unable to find the help files in either %s or %s.  Please check your "
-"installation"
-msgstr "Тусламжийн файл  %s эсвэл %s олдохгүй байна.  Та зөв суулгасан эсэхээ шалгана уу."
-
-#: screen-exec/egg-screen-help.c:315
-#, c-format
-msgid "Unable to find doc_id %s in the help path"
-msgstr "Unable to find doc_id %s in the help path"
-
-#: screen-exec/egg-screen-help.c:336
-#, c-format
-msgid "Help document %s/%s not found"
-msgstr "%s/%s тусламж  олдсонгүй"
+#: stickynotes/GNOME_StickyNotesApplet.xml.in.h:9
+msgid "_Unlock All Notes"
+msgstr ""
 
 #: wireless/wireless-applet.c:343
 msgid ""
 "The images necessary to run the wireless monitor are missing.\n"
 "Please make sure that it is correctly installed."
-msgstr "Дэлгэц ажиллахад шаардлагатай зурагнууд дутсан байна .\nЯг зөв суулгана уу."
+msgstr ""
+"Дэлгэц ажиллахад шаардлагатай зурагнууд дутсан байна .\n"
+"Яг зөв суулгана уу."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Утасгүй төхөөрөмжүүд алга"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr "Магадгүй, таны системд аль нэг утасгүй төхөөрөмж тохироогүй байна."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Утасгүй сүлжээ "
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Энэ утилит нь утасгүй сүлжээний үзүүлэлтийг харуулна."
 
@@ -3327,17 +2922,1032 @@ msgstr "Утасгүй сүлжээний тохиргоо"
 msgid "Monitor the quality of a wireless network link"
 msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 
-#~ msgid "_Edit"
-#~ msgstr "_Изменить"
+#~ msgid "+ C_olor:"
+#~ msgstr "Өнгө + "
+
+#~ msgid "- Colo_r:"
+#~ msgstr "Өнгө -"
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "Өөрчлөх боломжгүй өнгө"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "GNOME Цаг агаар"
+
+#~ msgid "Location:"
+#~ msgstr "Байрлал:"
+
+#~ msgid "Sky:"
+#~ msgstr "Тэнгэр:"
+
+#~ msgid "Dew point:"
+#~ msgstr "Шийдвэрийн заагч:"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Цаг агаарын мэдээ"
+
+#~ msgid "See the ForeCast Details"
+#~ msgstr "Дэлгэрэнгүй цаг агаарын мэдээ"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "Weather.com- д зочил"
+
+#~ msgid "URL link Button"
+#~ msgstr "URL точв"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Weather.com дээр дарж ор"
+
+#~ msgid "_Radar map"
+#~ msgstr "Радар зураг"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Энэ байрлалд цаг агаарын дэлгэрэнгүй мэдээлэл тодорхойгүй байна.\n"
+#~ "Цаг агаарын мэдээлэл зөвхөн АНУ-н мужуудыхыг үзэх боломжтой."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Энэ байрлалд цаг агаарын дэлгэрэнгүй мэдээлэл тодорхойгүй байна.\n"
+#~ "Цаг агаарын мэдээлэл зөвхөн АНУ-н мужуудыхыг үзэх боломжтой."
+
+#~ msgid "Location view"
+#~ msgstr "Байрлалыг үзэх"
+
+#~ msgid "Select Location from the list"
+#~ msgstr "Байрлалыг жагсаалтаас сонго"
+
+#~ msgid "Address Entry"
+#~ msgstr "Хаяг оруулах"
+
+#~ msgid "Enter the URL"
+#~ msgstr "URL оруул"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Цаг агаарын дэгэрэнгүй мэдээллийг идвэхжүүлэх"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Радар зүргийг идвэхзүүлэх"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "Радар зурагын хэрэглэгчийн хаяг"
+
+#~ msgid "A_ddress :"
+#~ msgstr "Хаяг :"
+
+#~ msgid "Updates"
+#~ msgstr "Шинэчлэлүүд"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "Автоматаар шинэчлэх минут"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Төрөл бүрийн"
+
+#~ msgid "Invalid"
+#~ msgstr "Буруу"
+
+#~ msgid "Drizzle"
+#~ msgstr "Шиврээ бороотой"
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Ойр ойрхон шиврээ бороотой"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "Дунд зэрэг шиврээ бороотой"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "Их шиврээ бороотой"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Өнгөцхөн шиврээ бороотой"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Хэсэгхэн шиврээ бороотой"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Заримдаа шиврээ бороотой"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Салхитай шиврээ бороотой"
+
+#~ msgid "Showers"
+#~ msgstr "Аадар бороотой"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Ширүүн салхитай шиврээ бороотой"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "Хүтэн шиврээ бороотой"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Ойр ойрхон бороотой"
+
+#~ msgid "Light rain"
+#~ msgstr "Багахан бороотой"
+
+#~ msgid "Moderate rain"
+#~ msgstr "Дунд зэрэг бороотой"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Өнгөцхөн  бороотой"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Хэсэгхэн бороотой"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Заримдаа бороотой"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Бороотой"
+
+#~ msgid "Rain showers"
+#~ msgstr "Ширүүн бороотой"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Ширүүн салхитай бороотой"
+
+#~ msgid "Freezing rain"
+#~ msgstr "Хүйтэн бороотой"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Ойр ойрхон цастай"
+
+#~ msgid "Light snow"
+#~ msgstr "Багаахан цастай"
+
+#~ msgid "Moderate snow"
+#~ msgstr "Дунд зэрэг цастай"
+
+#~ msgid "Heavy snow"
+#~ msgstr "Их цастай"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Өнгөцхөн цастай"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Заримдаа цастай"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Заримдаа цастай"
+
+#~ msgid "Snowstorm"
+#~ msgstr "Цасан шуургатай"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "Цасан шуургатай"
+
+#~ msgid "Snow showers"
+#~ msgstr "Ширүүн цастай"
+
+#~ msgid "Drifting snow"
+#~ msgstr "Цастай"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Хүйтэн цастай"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Ойр ойрхон мөндөртэй"
+
+#~ msgid "Light snow grains"
+#~ msgstr "Багаахан мөндөртэй"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "Дун зэрэг мөндөртэй"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Өнгөцхөн мөндөртэй"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Мөндөрөн цохилттой"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Хүйтэн мөндөртэй"
+
+#~ msgid "Ice crystals"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Ойр ойрхон мөндөртэй"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Хэдхэн мөндөртэй"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Дун зэрэг мөндөртэй"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Мөсөн шуурагтай"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Мөндөрөн цохилттой"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Хүйтэн мөндөртэй"
+
+#~ msgid "Ice pellets"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Ойр ойрхон мөндөртэй"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "Хэдхэн мөндөртэй"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "Дун зэрэг мөндөртэй"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Өнгөцхөн мөндөртэй"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "Мөсөн шуургатай"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Мөндөрөн цохилттой"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Ойр ойрхон мөндөртэй"
+
+#~ msgid "Light hail"
+#~ msgstr "Жижигхэн мөндөртэй"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Дун зэрэг мөндөртэй"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Өнгөцхөн мөндөртэй"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Partial hail"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Hailstorm"
+#~ msgstr "Мөсөн шуургатай"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Hail showers"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Small hail"
+#~ msgstr "Жижигхэн мөндөртэй"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Ойр ойрхон мөндөртэй"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Дун зэрэг мөндөртэй"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Өнгөцхөн мөндөртэй"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Заримдаа мөндөртэй"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "Мөсөн шуургатай"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "Ширүүн мөндөртэй"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Мөндөртэй"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "Тодорхойгүй тундастай"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Ойр ойрхон тундастай"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Багаахан тундастай"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Дэнд зэрэг тундастай"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Их тундастай"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Өнгөцхөн тундастай"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Тундастай"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Тодорхойгүй аадар бороотой"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Тундастай"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Ширүүн тундастай"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Тундастай"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Тундастай"
+
+#~ msgid "Mist"
+#~ msgstr "Манантай"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Ойр ойрхон манантай"
+
+#~ msgid "Light mist"
+#~ msgstr "Багаахан манантай"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Дунд зэрэг манантай"
+
+#~ msgid "Thick mist"
+#~ msgstr "Өтгөн манантай"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Өнгөцхөн манантай"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Заримдаа манантай"
+
+#~ msgid "Partial mist"
+#~ msgstr "Заримдаа манантай"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Салхитай манантай"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Манантай"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Манантай"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "Ойр ойрхон манантай"
+
+#~ msgid "Light fog"
+#~ msgstr "Багаахан манантай"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Дунд зэрэг манантай"
+
+#~ msgid "Thick fog"
+#~ msgstr "Өтгөн манантай"
+
+#~ msgid "Shallow fog"
+#~ msgstr "Өнгөцхөн манантай"
+
+#~ msgid "Patches of fog"
+#~ msgstr "Заримдаа манантай"
+
+#~ msgid "Partial fog"
+#~ msgstr "Заримдаа манантай"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Салхитай манантай"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Манантай"
+
+#~ msgid "Freezing fog"
+#~ msgstr "Манантай"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Ойр ойрхон утаатай"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Дунд зэрэг утаатай"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Их утаатай"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Өтгөн утаатай"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Өнгөцхөн утаатай"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Заримдаа утаатай"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Заримдаа утаатай"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Салхитай утаатай"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Салхитай утаатай"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Утаатай"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "Галт уулын үнстэй"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Ойр ойрхон гал уулын үнстэй"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Дунд зэрэг галт уулын үнстэй"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Өтгөн галт уулын үнстэй"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Өнгөцхөн галт уулын үнстэй"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Заримдаа галт уулын үнстэй"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Заримдаа галт уулын үнстэй"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Салхитай галт уулын үнстэй"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Галт уулын үнстэй"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Ширүүн үгалт уулын үнстэй"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Галт уулын үнстэй"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Галт уулын үнстэй"
+
+#~ msgid "Sand"
+#~ msgstr "Элтэй"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Ойр ойрхон элстэй"
+
+#~ msgid "Light sand"
+#~ msgstr "Багаахан элстэй"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Дунд зэрэг элстэй"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Их элстэй"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Заримдаа элстэй"
+
+#~ msgid "Partial sand"
+#~ msgstr "Заримдаа элстэй"
+
+#~ msgid "Blowing sand"
+#~ msgstr "Элстэй"
+
+#~ msgid "Drifting sand"
+#~ msgstr "Элстэй"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Ойр ойрхон манантай"
+
+#~ msgid "Light haze"
+#~ msgstr "Багаахан манантай"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Дунд зэрэг манантай"
+
+#~ msgid "Thick haze"
+#~ msgstr "Өтгөн манантай"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Өнгөцхөн манантай"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Заримдаа манантай"
+
+#~ msgid "Partial haze"
+#~ msgstr "Заримдаа манантай"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Салхитай манантай"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Манантай"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Манантай"
+
+#~ msgid "Sprays"
+#~ msgstr "Бороотой"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Ойр ойрхон бороотой"
+
+#~ msgid "Light sprays"
+#~ msgstr "Багаахан бороотой"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Дунд зэрэг бороотой"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Их бороотой"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Өнгөцхөн бороотой"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Заримдаа бороотой"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Заримдаа бороотой"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "Бороотой"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Бороотой"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Бороотой"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Ойр ойрхон шороотой"
+
+#~ msgid "Light dust"
+#~ msgstr "Багаахан шороотой"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Дунд зэрэг шороотой"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Их шороотой"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Заримдаа шороотой"
+
+#~ msgid "Partial dust"
+#~ msgstr "Заримдаа шороотой"
+
+#~ msgid "Blowing dust"
+#~ msgstr "Шороотой"
+
+#~ msgid "Drifting dust"
+#~ msgstr "Шороотой"
+
+#~ msgid "Squall"
+#~ msgstr "Хуй салхитай"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Ойр ойрхон хуй салхитай"
+
+#~ msgid "Light squall"
+#~ msgstr "Багаахан хуй салхитай"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Дунд зэрэг хуй салхитай"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Их хуй салхитай"
+
+#~ msgid "Partial squall"
+#~ msgstr "Заримдаа хуй салхитай"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Заримдаа хуй салхитай"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Хуй салхитай"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Хуй салхитай"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Хуй салхитай"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Элсэн шуургатай"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "Ойр ойрхон элсэн шуургатай"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Багаахан элсэн шуургатай"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Дунд зэрэг элсэн шуургатай"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "Их элсэн шуургатай"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Өнгөцхөн элсэн шуургатай"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Заримдаа элсэн шуургатай"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Заримдаа элсэн шуургатай"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Элсэн шуургатай"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Элсэн шуургатай"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Элсэн шуургатай"
+
+#~ msgid "Duststorm"
+#~ msgstr "Шороон шуургатай"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "Ойр ойрхон шороон шуургатай"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Багаахан шороон шуургатай"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Дунд зэрэг шороон шуургатай"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "Их шороон шуургатай"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Өнгөцхөн шороон шуургатай"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Заримдаа шороон шуургатай"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Аюултай шороон шуургатай"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Шороон шуургатай"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Шороон шуургатай"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Шороон шуургатай"
+
+#~ msgid "Funnel cloud"
+#~ msgstr "Үүлтэй"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Ойр ойрхон үүлтэй"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Багаахан үүлтэй"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Дунд зэрэг үүлтэй"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Их үүлтэй"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Өнгөцхөн үүлтэй"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Заримдаа үүлтэй"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Заримдаа үүлтэй"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Салхитай үүлтэй"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Үүлтэй"
+
+#~ msgid "Tornado"
+#~ msgstr "Хар салхитай"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Ойр ойрхон хар салхитай"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Дунд зэрэг хар салхитай"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Хар салхитай"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Хар салхитай"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Аюултай хар салхитай"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Хар салхитай"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Хар салхитай"
+
+#~ msgid "Dust whirls"
+#~ msgstr "Шороотой "
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "Ойр ойрхон шороотой"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Багаахан шороотой"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Дунд зэрэг шороотой"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Их шороотой"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Өнгөцхөн шороотой"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Заримдаа шороотой"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Заримдаа шороотой"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Шороотой"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Шороотой"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "METAR.өгөгдөлийг авч чадсангүй \n"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "WeatherInfo -н байрлал алдагдсан"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "IWIN өгөгдөлийг авч чадсангүй.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "IWIN цаг агаарын мэдээг авч чадсангүй.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Met Office.өгөдөлийг авч чадсангүй\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Met Office.цаг агаарын мэдээг авч чадсангүй\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Радар зургыг авч чадсангүй.\n"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%a, %d %b / %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "Хяналтын хугацаа тодорхойгүй байна"
+
+#~ msgid "Unknown"
+#~ msgstr "Тодорхойлогдоогүй"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "Засахад алдаа гарлаа"
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr "%s микшерийн бэлэн сувагуудын хүсэлтэнд алдаа гарлаа\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr "Анхаар : микшер дууны горим биш PCM горим хэрэглэж байна.\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "%sмикшер  PCM болон дууны аль сувгаар ажиллахгүй.\n"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "Самбарын цэсийн апплетийг үндэслэгч"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "Самбарын цэсийн апплетийг үндэслэгч"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "Дүрслэх цэсийг үзүүлэх самбар"
+
+#~ msgid "Actions"
+#~ msgstr "Бүлэг"
+
+#~ msgid "Actions Menu"
+#~ msgstr "Бүлгийн цэс"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "Цэсийн мөрөнд элемент нэмэх"
+
+#~ msgid "Shortcuts"
+#~ msgstr "Дүрслэл"
+
+#~ msgid "My Documents"
+#~ msgstr "Миний бичиг баримтууд"
+
+#~ msgid "Documents"
+#~ msgstr "Бичиг баримтууд"
+
+#~ msgid "Applications"
+#~ msgstr "Програмууд"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr ""
+#~ "Удаление этого элемента не позволено, так как приведёт к удалению апплета "
+#~ "с панели"
+
+#~ msgid "Create directory item..."
+#~ msgstr "Хавтас үүсгэх"
+
+#~ msgid "Home"
+#~ msgstr "Гэр"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "Хавтасыг засах..."
+
+#~ msgid "_Path:"
+#~ msgstr "_Зам:"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "Оролтын түвшин:"
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "Энэ замд тохирох хавтас одоогоор байхгүй байна."
+
+#~ msgid "Create documents item..."
+#~ msgstr "Бичиг баримт үүсгэх"
+
+#~ msgid "Rename documents item..."
+#~ msgstr "Бичиг баримтын нэр өөрчлөх"
+
+#~ msgid "KDE Menus"
+#~ msgstr "KDE цэс"
+
+#~ msgid "Programs"
+#~ msgstr "Програмууд"
+
+#~ msgid "Create links item..."
+#~ msgstr "Холбоосын дүрслэл үүсгэх... "
+
+#~ msgid "Rename links item..."
+#~ msgstr "Холбоосын дүрслэлийг дахин нэрлэх..."
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "Цэсэн нэгж элемент нэмэх замыг..."
+
+#~ msgid "Preferences"
+#~ msgstr "Тохиргоо"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "Цэсийн мөрийн тохиргоо"
+
+#~ msgid "Layout"
+#~ msgstr "Байрлал"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "Програмын цэс"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "Програмын цэсийн дүрслэлийг сонго"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "Тохиргооны цэс"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "Бүлгийн цэс"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "Цонхны цэс"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "Ажлын талбарын цэс"
+
+#~ msgid "Windows"
+#~ msgstr "Цонхнууд"
+
+#~ msgid "Menu Bar"
+#~ msgstr "Цэсийн мөр"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "(С) 2001 Chris Phelps"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr "Самбар дээрх цэсийн мөрийг өөрчлөхийг цэсийн мөрийн заагч харуулна."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "GNOME_FILE_DOMAIN_APP_HELP домайн олдохгүй байна"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "GNOME_FILE_DOMAIN_HELP домайн олдохгүй байна."
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "%s -р тусламж харуулах боломжгүй.  Та зөв суулгасан эсэхээ шалгана уу."
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr ""
+#~ "Тусламжийн файл  %s эсвэл %s олдохгүй байна.  Та зөв суулгасан эсэхээ "
+#~ "шалгана уу."
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "Unable to find doc_id %s in the help path"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "%s/%s тусламж  олдсонгүй"
 
 #~ msgid "_Up"
 #~ msgstr "_Вверх"
 
 #~ msgid "Dow_n"
 #~ msgstr "В_низ"
-
-#~ msgid "_Delete"
-#~ msgstr "У_далить"
 
 #~ msgid "Armenia"
 #~ msgstr "Армения"
@@ -3383,9 +3993,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 
 #~ msgid "Jamaica"
 #~ msgstr "Ямайка"
-
-#~ msgid "New Zealand"
-#~ msgstr "Новая Зеландия"
 
 #~ msgid "Norway"
 #~ msgstr "Норвегия"
@@ -3549,9 +4156,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 #~ msgid "ix86"
 #~ msgstr "ix86"
 
-#~ msgid "Sun"
-#~ msgstr "Sun"
-
 #~ msgid "mac"
 #~ msgstr "mac"
 
@@ -3566,9 +4170,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 
 #~ msgid "Lan_guage:"
 #~ msgstr "_Язык"
-
-#~ msgid "Count_ry:"
-#~ msgstr "_Страна"
 
 #~ msgid ""
 #~ "Flag\n"
@@ -3621,9 +4222,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 
 #~ msgid "Stock Sy_mbol:"
 #~ msgstr "Символ _акции:"
-
-#~ msgid "Stock C_hange:"
-#~ msgstr "_Изменения акции:"
 
 #~ msgid "not unique"
 #~ msgstr "не уникальна"
@@ -3688,9 +4286,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 #~ msgid "   Macro _%.2d:"
 #~ msgstr "   Макрос _%.2d:"
 
-#~ msgid "There was an error executing %s : %s"
-#~ msgstr "Возникла ошибка при выполнении %s: %s"
-
 #~ msgid "There was an error executing 'gnome-system-monitor' : %s"
 #~ msgstr ""
 #~ "Возникла ошибка при выполнении программы \"gnome-system-monitor\": %s"
@@ -3734,12 +4329,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 #~ msgid "Pro_xy requires a username and password"
 #~ msgstr "Про_кси требует имя пользователя и пароль"
 
-#~ msgid "Us_ername:"
-#~ msgstr "И_мя пользователя:"
-
-#~ msgid "Pass_word:"
-#~ msgstr "_Пароль:"
-
 #~ msgid "_Proxy"
 #~ msgstr "_Прокси"
 
@@ -3749,20 +4338,11 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 #~ msgid "Enter the Location"
 #~ msgstr "Введите местоположение"
 
-#~ msgid "Port Entry"
-#~ msgstr "Строка порта"
-
 #~ msgid "Enter the Port number"
 #~ msgstr "Введите номер порта"
 
-#~ msgid "User Entry"
-#~ msgstr "Строка пользователя"
-
 #~ msgid "Enter the user name"
 #~ msgstr "Введите имя пользователя"
-
-#~ msgid "Password Entry"
-#~ msgstr "Строка пароля"
 
 #~ msgid "Enter the Password"
 #~ msgstr "Введите пароль"
@@ -3809,9 +4389,6 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 #~ msgid "history list empty"
 #~ msgstr "пустая предыстория"
 
-#~ msgid "Command history"
-#~ msgstr "Предыстория команд"
-
 #~ msgid "Modem Lights Applet"
 #~ msgstr "Апплет лампочки модема"
 
@@ -3839,4 +4416,3 @@ msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 
 #~ msgid "Name:"
 #~ msgstr "Название:"
-
