@@ -39,16 +39,15 @@ typedef struct {
  * installed into the schemas.
  */
 static const MCDefaultMacro mc_default_macros [] = {
-	{ "^(http://.*)$",       "gnome-moz-remote \\1" },
-	{ "^(ftp://.*)",         "gnome-moz-remote \\1" },
-	{ "^(www\\..*)$",        "gnome-moz-remote http://\\1" },
-	{ "^(ftp\\..*)$",        "gnome-moz-remote ftp://\\1" },
+	{ "^(http://.*)$",       "mozilla \\1" },
+	{ "^(ftp://.*)",         "mozilla \\1" },
+	{ "^(www\\..*)$",        "mozilla http://\\1" },
+	{ "^(ftp\\..*)$",        "mozilla ftp://\\1" },
 	{ "^lynx: *(.*)$",       "gnome-terminal -e \"sh -c 'lynx \\1'\"" },
 	{ "^term: *(.*)$",       "gnome-terminal -e \"sh -c '\\1'\"" },
 	{ "^xterm: *(.*)$",      "xterm -e sh -c '\\1'" },
 	{ "^nxterm: *(.*)$",     "nxterm -e sh -c '\\1'" },
 	{ "^rxvt: *(.*)$",       "rxvt -e sh -c '\\1'" },
-	{ "^less: *(.*)$",       "\\1 | gless" },
 	{ "^t$",                 "gnome-terminal" },
 	{ "^nx$",                "nxterm" },
 	{ "^n$",                 "netscape" },

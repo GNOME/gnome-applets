@@ -55,7 +55,6 @@ struct _MCData {
 
     int            label_timeout;
     int            cmd_line_size_y;
-    gboolean       flat_layout;
 
     MCPreferences  preferences;
     MCPrefsDialog  prefs_dialog;

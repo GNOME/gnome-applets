@@ -37,6 +37,13 @@
 #include "browser-mini.xpm"
 #include "history-mini.xpm"
 
+#define COMMANDLINE_BROWSER_STOCK "commandline-browser"
+#define COMMANDLINE_HISTORY_STOCK "commandline-history"
+ 
+#define COMMANDLINE_DEFAULT_ICON_SIZE 6
+
+static GtkIconSize button_icon_size = 0;
+
 static const BonoboUIVerb mini_commander_menu_verbs [] = {
         BONOBO_UI_UNSAFE_VERB ("Props", mc_show_preferences),
         BONOBO_UI_UNSAFE_VERB ("Help",  show_help),
@@ -44,6 +51,54 @@ static const BonoboUIVerb mini_commander_menu_verbs [] = {
 
         BONOBO_UI_VERB_END
 };
+
+typedef struct {
+    char *stock_id;
+    const char **icon_data;
+} CommandLineStockIcon;
+
+static CommandLineStockIcon items[] = {
+    { COMMANDLINE_BROWSER_STOCK, browser_mini_xpm },
+    { COMMANDLINE_HISTORY_STOCK, history_mini_xpm }
+};
+
+static void
+register_command_line_stock_icons (GtkIconFactory *factory)
+{
+    gint i;
+
+    for (i = 0; i < G_N_ELEMENTS (items); ++i) {
+       GtkIconSet *icon_set;
+       GdkPixbuf *pixbuf;
+
+       pixbuf = gdk_pixbuf_new_from_xpm_data ((items[i].icon_data));
+
+       icon_set = gtk_icon_set_new_from_pixbuf (pixbuf);
+       gtk_icon_factory_add (factory, items[i].stock_id, icon_set);
+
+       gtk_icon_set_unref (icon_set);
+       g_object_unref (G_OBJECT (pixbuf));
+    }
+
+}
+
+static void
+command_line_init_stock_icons ()
+{
+
+    GtkIconFactory *factory;
+
+    factory = gtk_icon_factory_new ();
+    gtk_icon_factory_add_default (factory);
+
+    register_command_line_stock_icons (factory);
+
+    button_icon_size = gtk_icon_size_register ("mini-commander-icon",
+                                                 COMMANDLINE_DEFAULT_ICON_SIZE,
+                                                 COMMANDLINE_DEFAULT_ICON_SIZE);
+    g_object_unref (factory);
+
+}
 
 void
 set_atk_name_description (GtkWidget  *widget,
@@ -80,22 +135,18 @@ void
 mc_applet_draw (MCData *mc)
 {
     GtkWidget *icon;
-    GdkPixbuf *pixbuf;
     GtkWidget *button;
     GtkWidget *hbox;
     GtkWidget *hbox_buttons;
     GtkWidget *vbox;
     GtkWidget *frame;
+    MCPreferences prefs = mc->preferences;
     int        size_frames = 0;
-    int        size_status_line = 18;
 
     if (mc->preferences.show_frame)
 	size_frames += 6;
 
-    if (mc->flat_layout) 
-	size_status_line = 0;
-
-    mc->cmd_line_size_y = mc->preferences.normal_size_y - size_status_line - size_frames;   
+    mc->cmd_line_size_y = mc->preferences.normal_size_y - size_frames;   
 
     if (!mc->applet_vbox) {
 	mc->applet_vbox = gtk_vbox_new (FALSE, 0);
@@ -111,17 +162,14 @@ mc_applet_draw (MCData *mc)
 		      G_CALLBACK (gtk_widget_destroyed),
 		      &mc->applet_inner_vbox);
 
-    if (mc->flat_layout) 
-	vbox = gtk_hbox_new (FALSE, 0);
-    else
-	vbox = gtk_vbox_new (FALSE, 0);
+    vbox = gtk_hbox_new (FALSE, 0);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
    
     mc_create_command_entry (mc);
 
     /* hbox for message label and buttons */
     hbox = gtk_hbox_new (FALSE, 0);
-    if (mc->flat_layout) 
+    if (prefs.normal_size_y > GNOME_Vertigo_PANEL_X_SMALL) 
 	hbox_buttons = gtk_vbox_new (TRUE, 0);
     else
 	hbox_buttons = gtk_hbox_new (TRUE, 0);
@@ -135,9 +183,7 @@ mc_applet_draw (MCData *mc)
     g_signal_connect (button, "button_press_event",
 		      G_CALLBACK (button_press_hack), mc);
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (browser_mini_xpm);
-    icon = gtk_image_new_from_pixbuf (pixbuf);
-    g_object_unref (pixbuf);
+    icon = gtk_image_new_from_stock (COMMANDLINE_BROWSER_STOCK,   								      button_icon_size);
     gtk_container_add (GTK_CONTAINER (button), icon);
 
     gtk_tooltips_set_tip (mc->tooltips, button, _("Browser"), NULL);
@@ -156,9 +202,7 @@ mc_applet_draw (MCData *mc)
     g_signal_connect (button, "button_press_event",
 		      G_CALLBACK (button_press_hack), mc);
 
-    pixbuf = gdk_pixbuf_new_from_xpm_data (history_mini_xpm);
-    icon = gtk_image_new_from_pixbuf (pixbuf);
-    g_object_unref (pixbuf);
+    icon = gtk_image_new_from_stock (COMMANDLINE_HISTORY_STOCK, 								     button_icon_size);
     gtk_container_add (GTK_CONTAINER (button), icon);
 
     gtk_tooltips_set_tip (mc->tooltips, button, _("History"), NULL);
@@ -266,11 +310,6 @@ mc_pixel_size_changed (PanelApplet *applet,
 {
     mc->preferences.normal_size_y = size;
 
-    if (size <= GNOME_Vertigo_PANEL_SMALL)
-	mc->flat_layout = TRUE;
-    else
-	mc->flat_layout = FALSE;
-
     mc_applet_draw (mc);
 }
 
@@ -286,6 +325,7 @@ mini_commander_applet_fill (PanelApplet *applet)
 
     panel_applet_add_preferences (applet, "/schemas/apps/mini-commander/prefs", NULL);
     mc_load_preferences (mc);
+    command_line_init_stock_icons ();
 
     mc->tooltips = gtk_tooltips_new ();
     g_object_ref (mc->tooltips);
