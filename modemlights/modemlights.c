@@ -20,6 +20,9 @@ gchar *lock_file;
 gchar *command_connect;
 gchar *command_disconnect;
 
+/* do we ask for confirmation? */
+gint ask_for_confirmation = TRUE;
+
 static GtkWidget *applet;
 static GtkWidget *frame;
 static GtkWidget *display_area;
@@ -95,16 +98,29 @@ static void command_disconnect_cb( gint button, gpointer data)
 
 static void dial_cb()
 {
-	if (confirm_dialog) return;
-
-	confirm_dialog = TRUE;
-
-	if (Modem_on())
-		gnome_question_dialog (_("You are currently connected.\nDo you want to disconnect?"),
-			(GnomeReplyCallback)command_disconnect_cb, NULL);
-	else
-		gnome_question_dialog (_("Do you want to connect?"),
-			(GnomeReplyCallback)command_connect_cb, NULL);
+	if (Modem_on()) {
+	  if (ask_for_confirmation) {
+	    if (confirm_dialog) return;
+	    confirm_dialog = TRUE;
+	    gnome_question_dialog (_("You are currently connected.\nDo you want to disconnect?"),
+				   (GnomeReplyCallback)command_disconnect_cb,
+				   NULL);
+	  } else {
+	    system(command_disconnect);
+	    confirm_dialog = FALSE;
+	  }
+	} else {
+	  if (ask_for_confirmation) {
+	    if (confirm_dialog) return;
+	    confirm_dialog = TRUE;
+	    gnome_question_dialog (_("Do you want to connect?"),
+				   (GnomeReplyCallback)command_connect_cb,
+				   NULL);
+	  } else {
+	    system(command_connect);
+	    confirm_dialog = FALSE;
+	  }
+	}
 }
 
 static void update_tooltip(int connected, int rx, int tx)

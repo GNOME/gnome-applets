@@ -25,6 +25,7 @@ extern gint UPDATE_DELAY;
 extern gchar *lock_file;
 extern gchar *command_connect;
 extern gchar *command_disconnect;
+extern int ask_for_confirmation;
 
 void start_callback_update();
 

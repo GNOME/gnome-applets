@@ -8,8 +8,13 @@ GtkWidget *propwindow = NULL;
 GtkWidget *lockfile_entry = NULL;
 GtkWidget *connect_entry = NULL;
 GtkWidget *disconnect_entry = NULL;
+GtkWidget *confirm_checkbox = NULL;
 
+/* temporary variables modified by the properties dialog.  they get
+   compied to the permanent variables when the users selects Apply or
+   Ok */
 gint P_UPDATE_DELAY = 10;
+gint P_ask_for_confirmation = TRUE;
 
 
 void property_load(char *path)
@@ -22,6 +27,7 @@ void property_load(char *path)
 	lock_file          = gnome_config_get_string("lockfile=/var/lock/LCK..modem");
 	command_connect    = gnome_config_get_string("connect=pppon");
 	command_disconnect = gnome_config_get_string("disconnect=pppoff");
+	ask_for_confirmation = gnome_config_get_int("confirmation=1");
 	gnome_config_pop_prefix ();
 }
 
@@ -32,6 +38,7 @@ void property_save(char *path)
         gnome_config_set_string("lockfile", lock_file);
         gnome_config_set_string("connect", command_connect);
         gnome_config_set_string("disconnect", command_disconnect);
+        gnome_config_set_int("confirmation", ask_for_confirmation);
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();
@@ -41,6 +48,12 @@ void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
 {
         P_UPDATE_DELAY = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+}
+
+void confirm_checkbox_cb( GtkWidget *widget, GtkWidget *spin )
+{
+  P_ask_for_confirmation = !P_ask_for_confirmation;
+  gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
 void property_apply_cb( GtkWidget *widget, void *data )
@@ -60,6 +73,7 @@ void property_apply_cb( GtkWidget *widget, void *data )
 	command_disconnect = strdup(new_text);
 
         UPDATE_DELAY = P_UPDATE_DELAY;
+	ask_for_confirmation = P_ask_for_confirmation;
 	start_callback_update();
 }
 
@@ -84,6 +98,7 @@ void property_show(AppletWidget *applet, gpointer data)
 		}
 
         P_UPDATE_DELAY = UPDATE_DELAY;
+	P_ask_for_confirmation = ask_for_confirmation;
 
 	propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
@@ -156,6 +171,22 @@ void property_show(AppletWidget *applet, gpointer data)
                             GTK_OBJECT(propwindow));
         gtk_box_pack_start( GTK_BOX(hbox),disconnect_entry , TRUE, TRUE, 5);
 	gtk_widget_show(disconnect_entry);
+
+	/* confirmation checkbox */
+	confirm_checkbox = gtk_check_button_new_with_label(_("Confirm connection?"));
+	if (ask_for_confirmation) {
+	  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (confirm_checkbox),
+				       TRUE);
+	} else {
+	  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (confirm_checkbox),
+				       FALSE);
+	}
+	gtk_signal_connect( GTK_OBJECT(confirm_checkbox), "toggled",
+			    GTK_SIGNAL_FUNC(confirm_checkbox_cb),
+			    confirm_checkbox);
+        gtk_box_pack_start( GTK_BOX(frame), confirm_checkbox, FALSE, FALSE, 5);
+	gtk_widget_show(confirm_checkbox);
+
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
