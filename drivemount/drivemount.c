@@ -147,21 +147,6 @@ static const BonoboUIVerb applet_menu_verbs[] = {
 	BONOBO_UI_VERB_END
 };
 
-/* and the XML definition for the popup menu */
-static const char applet_menu_xml[] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Browse\" verb=\"Browse\" _label=\"Browse...\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-open\"/>\n"
-	"   <menuitem name=\"Eject\" verb=\"Eject\" _label=\"Eject\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-go-up\"/>\n"
-	"   <menuitem name=\"Properties\" verb=\"Properties\" _label=\"Properties...\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"About\" verb=\"About\" _label=\"About ...\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-
 enum {
 	TARGET_URI_LIST,
 	TARGET_TEXT_PLAIN
@@ -216,8 +201,12 @@ applet_fill (PanelApplet *applet)
 	g_signal_connect (GTK_OBJECT (applet), "destroy",
 			  G_CALLBACK (destroy_drive_widget), dd);
 
-	panel_applet_setup_menu (PANEL_APPLET (applet),
-				 applet_menu_xml, applet_menu_verbs, dd);
+	panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+                                           NULL,
+				           "GNOME_DriveMountApplet.xml",
+                                           NULL,
+                                           applet_menu_verbs,
+                                           dd);
 
 	component = panel_applet_get_popup_component (PANEL_APPLET (applet));
 

@@ -21,6 +21,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_DriveMountApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_DriveMountApplet.xml
+
 @INTLTOOL_SERVER_RULE@
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
@@ -53,6 +56,7 @@ jazdrive_v_in.xpm \
 jazdrive_v_out.xpm \
 $(server_in_files) \
 $(schema_DATA)	\
+$(ui_DATA)	\
 drivemount-applet.png
 
 install-data-local:
