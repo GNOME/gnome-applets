@@ -22,6 +22,114 @@
     <xsl:apply-templates select="keymap[substring(command,1,9)='gkb_xmmap']"/>
   </layoutList>
   <optionList>
+    <group allowMultipleSelection="false">
+      <configItem>
+        <name>grp</name>
+        <_description>Layout shift behaviour</_description>
+      </configItem>
+      <option>
+        <configItem>
+          <name>grp:ralt_toggle</name>
+          <_description>Right Alt key changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lalt_toggle</name>
+          <_description>Left Alt key changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:caps_toggle</name>
+          <_description>CapsLock key changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:shift_caps_toggle</name>
+          <_description>Shift+CapsLock changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:shifts_toggle</name>
+          <_description>Both Shift keys together change layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alts_toggle</name>
+          <_description>Both Alt keys together change layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrls_toggle</name>
+          <_description>Both Ctrl keys together change layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrl_shift_toggle</name>
+          <_description>Control+Shift changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:ctrl_alt_toggle</name>
+          <_description>Alt+Control changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:alt_shift_toggle</name>
+          <_description>Alt+Shift changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:menu_toggle</name>
+          <_description>Menu key changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lwin_toggle</name>
+          <_description>Left Win-key changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rwin_toggle</name>
+          <_description>Right Win-key changes layout.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lshift_toggle</name>
+          <_description>Left Shift key changes group.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rshift_toggle</name>
+          <_description>Right Shift key changes group.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:lctrl_toggle</name>
+          <_description>Left Ctrl key changes group.</_description>
+        </configItem>
+      </option>
+      <option>
+        <configItem>
+          <name>grp:rctrl_toggle</name>
+          <_description>Right Ctrl key changes group.</_description>
+        </configItem>
+      </option>
+    </group>
   </optionList>
 </xkbConfigRegistry>
   </xsl:template>
