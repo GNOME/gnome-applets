@@ -9,6 +9,29 @@
 #include "charpick.h"
 #include <egg-screen-help.h>
 
+#define CHARPICK_STOCK_EDIT "charpick-stock-edit"
+
+void
+register_stock_for_edit (void)
+{
+  static gboolean registered = FALSE;
+  if (!registered)
+  {
+    GtkIconFactory *factory;
+    GtkIconSet     *icons;
+                                                                                
+    static GtkStockItem edit_item [] = {
+           { CHARPICK_STOCK_EDIT, N_("_Edit"), 0, 0, GETTEXT_PACKAGE },
+    };
+    icons = gtk_icon_factory_lookup_default (GTK_STOCK_PREFERENCES);
+    factory = gtk_icon_factory_new ();
+    gtk_icon_factory_add (factory, CHARPICK_STOCK_EDIT, icons);
+    gtk_icon_factory_add_default (factory);
+    gtk_stock_add_static (edit_item, 1);
+    registered = TRUE;
+  }
+}
+
 static void
 set_atk_relation (GtkWidget *label, GtkWidget *widget)
 {
@@ -428,7 +451,7 @@ static void default_chars_frame_create(charpick_data *curr_data)
   vbox3 = gtk_vbox_new (FALSE, 6);
   gtk_box_pack_start (GTK_BOX (vbox1), vbox3, TRUE, TRUE, 0);
   
-  label = gtk_label_new_with_mnemonic(_("Pal_ettes:"));
+  label = gtk_label_new_with_mnemonic(_("_Palettes:"));
   gtk_box_pack_start(GTK_BOX(vbox3), label, FALSE, FALSE, 0);
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_widget_show(label);
@@ -447,7 +470,7 @@ static void default_chars_frame_create(charpick_data *curr_data)
   set_access_namedesc (button, _("Add button"),
 				         _("Click to add a new palette"));
  
-  button = gtk_button_new_from_stock (GTK_STOCK_PROPERTIES);
+  button = gtk_button_new_from_stock (CHARPICK_STOCK_EDIT);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (edit_palette), curr_data);

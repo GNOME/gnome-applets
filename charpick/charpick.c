@@ -826,7 +826,7 @@ charpicker_applet_fill (PanelApplet *applet)
 					NULL);
   }
 
-			             
+  register_stock_for_edit ();			             
   populate_menu (curr_data);
   
   return TRUE;
