@@ -10,10 +10,10 @@
  *               Jim Garrison (garrison@users.sourceforge.net)
  *               Rached Blili (striker@Dread.net)
  *
- *	The Gnome Stock Ticker is a free, Internet based application. 
+ *	The GNOME Stock Ticker is a free, Internet based application. 
  *      These quotes are not guaranteed to be timely or accurate.
  *
- *	Do not use the Gnome Stock Ticker for making investment decisions, 
+ *	Do not use the GNOME Stock Ticker for making investment decisions, 
  *      it is for informational purposes only.
  *
  */
@@ -676,17 +676,15 @@
 			"Rached Blili <striker@dread.net>"
 		};
 
-		about = gnome_about_new (_("The Gnome Stock Ticker"), VERSION,
+		about = gnome_about_new (_("The GNOME Stock Ticker"), VERSION,
 		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
 		authors,
-		_(" This program uses ghttp to connect to "
-		"a popular stock quote site, then downloads "
-		"and parses the html returned from the "
-		"site to scroll delayed quotes"
-		"\n\n The Gnome Stock Ticker is a free, Internet based application. These quotes are not "
-		"guaranteed to be timely or accurate. "
-		"Do not use the Gnome Stock Ticker for making investment decisions; it is for "
-		"informational purposes only." ),
+		_("This program connects to "
+		"a popular site and downloads current stock quotes.  "
+		"The GNOME Stock Ticker is a free Internet-based application.  "
+		"It comes with ABSOLUTELY NO WARRANTY.  "
+		"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
+		"informational purposes only."),
 		NULL);
 		gtk_widget_show (about);
 
@@ -794,9 +792,10 @@
 	static void apply_cb( GtkWidget *widget, void *data ) {
 		char *tmpText;
 
-
-	//	tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
-	//	props.tik_syms = g_strdup(tmpText);
+#if 0
+		tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
+		props.tik_syms = g_strdup(tmpText);
+#endif
 		props.tik_syms = getSymsFromClist(tik_syms_entry);
 		if  (props.timeout) {	
 			props.timeout = timeout > 0 ? timeout : props.timeout;
@@ -933,7 +932,7 @@
 
 	/*-----------------------------------------------------------------*/
 
-	// Thanks to Mike Oliphant for inspiration.
+	/* Thanks to Mike Oliphant for inspiration. */
 
 	static void addToClist(GtkWidget *widget, gpointer data) {
 		gchar *newsymbol[1];
@@ -1045,8 +1044,7 @@
 		GtkWidget *hbox;
 		GtkWidget *urlcheck, *launchcheck;
 
-		GtkWidget *panela, *panel1 ,*panel2, *panel3, *panel4, *panel5;
-		GtkWidget *panel6;
+		GtkWidget *panela, *panel1 ,*panel2;
 		GtkWidget *label1,*label2,*label3, *label4, *label5, *label6;
 
 
@@ -1066,24 +1064,22 @@
 		vbox = gtk_vbox_new(GNOME_PAD, FALSE);
 		vbox2 = gtk_vbox_new(GNOME_PAD, FALSE);
 
-		panela = gtk_hbox_new(FALSE, 5); // Color selection
-		panel1 = gtk_hbox_new(FALSE, 5); // Symbol list
-		panel2 = gtk_hbox_new(FALSE, 5); // Update timer
-		panel3 = gtk_hbox_new(FALSE, 5); // Symbol checkbox
-		panel4 = gtk_hbox_new(FALSE, 5); // Scroll checkbox
-		panel5 = gtk_hbox_new(FALSE, 5); // +/- checkbox
-		panel6 = gtk_hbox_new(FALSE, 5); // Scroll button checkbox
+		panela = gtk_hbox_new(FALSE, 5); /* Color selection */
+		panel1 = gtk_hbox_new(FALSE, 5); /* Symbol list */
+		panel2 = gtk_hbox_new(FALSE, 5); /* Update timer */
 
 		gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
 
-		timeout_label = gtk_label_new(_("Update Frequency in min"));
+		timeout_label = gtk_label_new(_("Update Frequency in minutes:"));
 		timeout_a = gtk_adjustment_new( timeout, 0.5, 128, 1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
 		gtk_widget_set_usize(timeout_c,60,-1);
 
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_label );
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
+		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
+				    FALSE, GNOME_PAD);
 	
 		gtk_signal_connect_object(GTK_OBJECT(timeout_c), "changed",GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
@@ -1098,74 +1094,55 @@
 
 		tik_syms_entry = gtk_entry_new_with_max_length(60);
 
-		/* tik_syms var is her if want a default value */
+		/* tik_syms var is here if you want a default value */
 		gtk_entry_set_text(GTK_ENTRY(tik_syms_entry), props.tik_syms ? props.tik_syms : tik_syms);
 		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), "changed",GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
-		/* OUTPUT FORMAT and SCROLL DIRECTION */
-
-		label2 = gtk_label_new(_("Check this box to display only symbols and price:"));
-		label3 = gtk_label_new(_("Check this box to scroll left to right:"));
-		check = gtk_check_button_new();
-		check2 = gtk_check_button_new();
-		gtk_box_pack_start_defaults(GTK_BOX(panel3),label2);
-		gtk_box_pack_start_defaults(GTK_BOX(panel3),check);
-		gtk_box_pack_start_defaults(GTK_BOX(panel4),label3);
-		gtk_box_pack_start_defaults(GTK_BOX(panel4),check2);
+		check = gtk_check_button_new_with_label(_("Display only symbols and price"));
+		check2 = gtk_check_button_new_with_label(_("Scroll left to right"));
+		check3 = gtk_check_button_new_with_label(_("Display arrows instead of -/+"));
+		check4 = gtk_check_button_new_with_label(_("Enable scroll buttons"));
 
 
-		// For scroll skip buttons
-		label6 = gtk_label_new(_("Check to enable scroll skip
-buttons:"));
-		check4 = gtk_check_button_new();
-		gtk_box_pack_start_defaults(GTK_BOX(panel6),label6);
-		gtk_box_pack_start_defaults(GTK_BOX(panel6),check4);
-		
-		/* Set the checkbox according to current prefs */
-		if (strcmp(props.buttons,"yes") ==0)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
-							TRUE);
-		gtk_signal_connect_object(GTK_OBJECT(check4),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
-
-		gtk_signal_connect(GTK_OBJECT(check4),"toggled",
-				GTK_SIGNAL_FUNC(toggle_buttons_cb),NULL);
-
-		// For Arrows or +/- 
-		label4 = gtk_label_new(_("Check to display arrows instead of -/+:"));
-		check3 = gtk_check_button_new();
-		gtk_box_pack_start_defaults(GTK_BOX(panel5),label4);
-		gtk_box_pack_start_defaults(GTK_BOX(panel5),check3);
-
-		/* Set the checkbox according to current prefs */
-		if (strcmp(props.arrows,"arrows") ==0)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check3),
-							TRUE);
-
-		gtk_signal_connect_object(GTK_OBJECT(check3),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
-
-		gtk_signal_connect(GTK_OBJECT(check3),"toggled",
-				GTK_SIGNAL_FUNC(toggle_arrows_cb),NULL);
+		gtk_box_pack_start(GTK_BOX(vbox2), check, FALSE, FALSE, GNOME_PAD);
+		gtk_box_pack_start(GTK_BOX(vbox2), check2, FALSE, FALSE, GNOME_PAD);
+		gtk_box_pack_start(GTK_BOX(vbox), check3, FALSE, FALSE, GNOME_PAD);
+		gtk_box_pack_start(GTK_BOX(vbox), check4, FALSE, FALSE, GNOME_PAD);
 
 
 		/* Set the checkbox according to current prefs */
 		if (strcmp(props.output,"default")!=0)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
 							TRUE);
-		gtk_signal_connect_object(GTK_OBJECT(check),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
-		gtk_signal_connect(GTK_OBJECT(check),"toggled",
-				GTK_SIGNAL_FUNC(toggle_output_cb),NULL);
-
-		/* Set the checkbox according to current prefs */
 		if (strcmp(props.scroll,"right2left")!=0)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check2),
 							TRUE);
+		if (strcmp(props.buttons,"yes") == 0)
+			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
+							TRUE);
+		if (strcmp(props.arrows,"arrows") ==0)
+			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check3),
+							TRUE);
+
+		gtk_signal_connect_object(GTK_OBJECT(check),"toggled",
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 		gtk_signal_connect_object(GTK_OBJECT(check2),"toggled",
 				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+		gtk_signal_connect_object(GTK_OBJECT(check3),"toggled",
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+		gtk_signal_connect_object(GTK_OBJECT(check4),"toggled",
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+
+#if 0
+		gtk_signal_connect(GTK_OBJECT(check4),"toggled",
+				GTK_SIGNAL_FUNC(toggle_buttons_cb),NULL);
+		gtk_signal_connect(GTK_OBJECT(check3),"toggled",
+				GTK_SIGNAL_FUNC(toggle_arrows_cb),NULL);
+		gtk_signal_connect(GTK_OBJECT(check),"toggled",
+				GTK_SIGNAL_FUNC(toggle_output_cb),NULL);
 		gtk_signal_connect(GTK_OBJECT(check2),"toggled",
 				GTK_SIGNAL_FUNC(toggle_scroll_cb),NULL);
+#endif
 
 		/* COLOR */
 		upLabel = gtk_label_new(_("+ Color"));
@@ -1202,7 +1179,7 @@ buttons:"));
 		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
-                // For FONTS
+                /* For FONTS */
 		vbox3 = gtk_vbox_new(FALSE, 5); 
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		label5 = gtk_label_new(_("Stock Symbol:"));
@@ -1233,23 +1210,6 @@ buttons:"));
 		gtk_box_pack_start(GTK_BOX(panel1), label1, FALSE, 
 				   FALSE, GNOME_PAD);
 
-		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
-				    FALSE, GNOME_PAD);
-//		gtk_box_pack_start(GTK_BOX(vbox), panel1, FALSE,
-//				    FALSE, GNOME_PAD);
-		gtk_box_pack_start(GTK_BOX(vbox), panel4, FALSE,
-				    FALSE, GNOME_PAD);
-		gtk_box_pack_start(GTK_BOX(vbox), panel6, FALSE,
-				    FALSE, GNOME_PAD);
-//		gtk_box_pack_start(GTK_BOX(vbox), tik_syms_entry,
-//				    FALSE, FALSE, GNOME_PAD);
-
-		gtk_box_pack_start(GTK_BOX(vbox2), panel3, FALSE,
-				    FALSE, GNOME_PAD);
-
-		gtk_box_pack_start(GTK_BOX(vbox2), panel5, FALSE,
-				    FALSE, GNOME_PAD);
-
 		gtk_box_pack_start(GTK_BOX(vbox2), panela, FALSE,
 				    FALSE, GNOME_PAD);
 
@@ -1262,9 +1222,11 @@ buttons:"));
 		gnome_property_box_append_page(GNOME_PROPERTY_BOX(pb), vbox2,
 		gtk_label_new(_("Appearance")));
 
-//		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), 
-//				   "changed",GTK_SIGNAL_FUNC(changed_cb),
-//				   GTK_OBJECT(pb));
+#if 0
+		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), 
+				   "changed",GTK_SIGNAL_FUNC(changed_cb),
+				   GTK_OBJECT(pb));
+#endif
 
 		gtk_signal_connect(GTK_OBJECT(pb), "apply",
 				    GTK_SIGNAL_FUNC(apply_cb), NULL);
