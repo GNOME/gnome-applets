@@ -73,8 +73,7 @@ static GtkWidget *create_gnotes_button(GNotes *gnotes)
     GTK_WIDGET_UNSET_FLAGS(gnotes->button, GTK_CAN_FOCUS);
     size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(gnotes->applet));
     gnotes->pixmap = gnome_pixmap_new_from_xpm_d_at_size(gnotes_xpm, 
-							 (size*40)/48,
-							 (size*40)/48);
+							 size-8, size-8);
     gtk_box_pack_start(GTK_BOX(vbox), gnotes->button, FALSE, TRUE, 0);
     gtk_widget_show(gnotes->pixmap);
     gtk_container_add(GTK_CONTAINER(gnotes->button), gnotes->pixmap);
@@ -117,8 +116,7 @@ static void applet_change_pixel_size(GtkWidget *widget, int size,
     g_debug("Changing pixel size to: %d\n", size);
     gtk_widget_destroy(gnotes->pixmap);
     gnotes->pixmap = gnome_pixmap_new_from_xpm_d_at_size(gnotes_xpm, 
-							 (size*40)/48,
-							 (size*40)/48);
+							 size-8, size-8);
     gtk_widget_show(gnotes->pixmap);
     gtk_container_add(GTK_CONTAINER(gnotes->button), gnotes->pixmap);
 }
