@@ -1783,10 +1783,12 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     	info->iwin_handle = NULL;
     	info->wx_handle = NULL;
     	info->met_handle = NULL;
-	info->bom_handle = NULL;
+        info->bom_handle = NULL;
     	info->requests_pending = FALSE;
     	info->metar_buffer = NULL;
-    	info->iwin_buffer = NULL; 
+        info->iwin_buffer = NULL;
+		info->met_buffer = NULL;
+		info->bom_buffer = NULL;
     	info->location = weather_location_clone(location);
     } else {
         location = info->location;
@@ -1963,6 +1965,12 @@ void weather_info_free (WeatherInfo *info)
 
 	if (info->metar_buffer)	
 	    g_free (info->metar_buffer);
+
+    if (info->met_buffer)
+        g_free (info->met_buffer);
+
+    if (info->bom_buffer)
+        g_free (info->bom_buffer);
 
     if (info->metar_handle)
         gnome_vfs_async_cancel (info->metar_handle);
