@@ -508,7 +508,7 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	    strcmp (translatorCredits,
 		    "translator_credits") != 0 ? translatorCredits : NULL;
 	sia->aboutDialog =
-	    gnome_about_new (_("Keyboard indicator"), VERSION,
+	    gnome_about_new (_("Keyboard Indicator"), VERSION,
 /* Translators: Please replace (C) with the proper copyright character. */
 			     _
 			     ("Copyright (c) Sergey V. Oudaltsov 1999-2004"),
