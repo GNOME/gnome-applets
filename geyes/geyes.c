@@ -26,24 +26,6 @@
 
 #define UPDATE_TIMEOUT 100
 
-/* FIXME crashes, need to fix */
-static void
-applet_set_back_pixmap (PanelApplet *applet, GtkWidget *widget, GdkPixmap *pixmap)
-{
-	GtkStyle *new_style;
-
-        new_style = gtk_style_copy (widget->style);
-        gtk_style_ref (new_style);
-/* FIXME should this be done ? */
-/*
-        if (new_style->bg_pixmap [GTK_STATE_NORMAL])
-		g_object_unref (new_style->bg_pixmap [GTK_STATE_NORMAL]);
-*/
-        new_style->bg_pixmap [GTK_STATE_NORMAL] = pixmap;
-        gtk_widget_set_style (widget, new_style);
-        gtk_style_unref (new_style);
-}
-
 static void
 applet_back_change (PanelApplet			*a,
 		    PanelAppletBackgroundType	type,
@@ -51,29 +33,39 @@ applet_back_change (PanelApplet			*a,
 		    GdkPixmap			*pixmap,
 		    EyesApplet			*eyes_applet) 
 {
-	GtkRcStyle *rc_style = gtk_rc_style_new ();
+        /* taken from the TrashApplet */
+        GtkRcStyle *rc_style;
+        GtkStyle *style;
 
-	switch (type) {
-	case PANEL_PIXMAP_BACKGROUND:
-		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-/* FIXME can't get to work */
-//		applet_set_back_pixmap (a, GTK_WIDGET (eyes_applet->applet), pixmap);
-		break;
+        /* reset style */
+        gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet), NULL);
+        rc_style = gtk_rc_style_new ();
+        gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
+        g_object_unref (rc_style);
 
-	case PANEL_COLOR_BACKGROUND:
-		gtk_widget_modify_bg (GTK_WIDGET (eyes_applet->applet), GTK_STATE_NORMAL, color);
-		break;
+        switch (type) {
+                case PANEL_COLOR_BACKGROUND:
+                        gtk_widget_modify_bg (GTK_WIDGET (eyes_applet->applet),
+                                        GTK_STATE_NORMAL, color);
+                        break;
 
-	case PANEL_NO_BACKGROUND:
-		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-		break;
+                case PANEL_PIXMAP_BACKGROUND:
+                        style = gtk_style_copy (GTK_WIDGET (
+						eyes_applet->applet)->style);
+                        if (style->bg_pixmap[GTK_STATE_NORMAL])
+                                g_object_unref
+                                        (style->bg_pixmap[GTK_STATE_NORMAL]);
+                        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
+                                (pixmap);
+                        gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet),
+                                        style);
+                        break;
 
-	default:
-		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-		break;
-	}
+                case PANEL_NO_BACKGROUND:
+                default:
+                        break;
+        }
 
-	gtk_rc_style_unref (rc_style);
 }
 
 /* TODO - Optimize this a bit */
