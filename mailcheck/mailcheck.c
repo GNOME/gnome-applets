@@ -643,6 +643,7 @@ set_tooltip (GtkWidget  *applet,
 	}
 
 	gtk_tooltips_set_tip (tooltips, applet, tip, NULL);
+	set_atk_name_description (applet, tip, "");
 }
 
 static void
@@ -2776,8 +2777,10 @@ set_atk_relation (GtkWidget *widget1, GtkWidget *widget2, AtkRelationType relati
 	atk_widget2 = gtk_widget_get_accessible (widget2);
 
 	/* Set the label-for relation only if label-by is being set */
-	if (relation_type == ATK_RELATION_LABELLED_BY) 
+	if (relation_type == ATK_RELATION_LABELLED_BY) {
 		gtk_label_set_mnemonic_widget (GTK_LABEL (widget2), widget1); 
+		return;
+	}
 
 	/* Check if gail is loaded */
 	if (GTK_IS_ACCESSIBLE (atk_widget1) == FALSE)
