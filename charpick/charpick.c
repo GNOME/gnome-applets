@@ -591,9 +591,7 @@ about (BonoboUIComponent *uic,
   gchar            *file;
    
   const char *authors[] = {
-	  /* If your charset supports it, please use U00F1 to replace the "n"
-	   * in "Muniz". */
-	  _("Alexandre Muniz <munizao@xprt.net>"),
+	  "Alexandre Muñiz <munizao@xprt.net>",
 	  "Kevin Vandersloot",
 	  NULL
   };
