@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.7\n"
-"POT-Creation-Date: 1999-08-25 16:00+0200\n"
-"PO-Revision-Date: 1999-08-25 17:22+02:00\n"
+"POT-Creation-Date: 1999-09-15 00:53+0200\n"
+"PO-Revision-Date: 1999-09-15 00:55+02:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -102,14 +102,14 @@ msgstr "Innstillinger for klokke"
 #: battery/properties.c:77 charpick/properties.c:184
 #: clockmail/properties.c:404 diskusage/properties.c:315
 #: drivemount/properties.c:229 fvwm-pager/properties.c:247
-#: gnotes/gnotes_applet.c:236 mini-commander/src/preferences.c:739
+#: gnotes/gnotes_applet.c:236 mini-commander/src/preferences.c:744
 #: modemlights/properties.c:275 netload/properties.c:280
 #: slashapp/properties.c:347
 msgid "General"
 msgstr "Generelt"
 
 #. frame for colors
-#: another_clock/another_clock.c:225 mini-commander/src/preferences.c:661
+#: another_clock/another_clock.c:225 mini-commander/src/preferences.c:666
 #: multiload/load-graph.c:193
 msgid "Colors"
 msgstr "Farger"
@@ -154,25 +154,25 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "En analog klokke lik den som finnes i CDE-panelet"
 
 #: another_clock/another_clock.c:615 asclock/asclock.c:595
-#: battery/battery.c:783 charpick/charpick.c:475 clockmail/clockmail.c:537
+#: battery/battery.c:783 charpick/charpick.c:475 clockmail/clockmail.c:539
 #: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:80
 #: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
 #: gkb/gkb.c:675 gnome-pager/gnomepager_applet.c:2552
 #: gnotes/gnotes_applet.c:300 gweather/gweather-applet.c:172 hal/hal.c:285
 #: jbc/jbc-applet.c:136 life/life.c:197
-#: mini-commander/src/mini-commander_applet.c:265
-#: modemlights/modemlights.c:1028 netload/netload.c:339 slashapp/slashapp.c:58
+#: mini-commander/src/mini-commander_applet.c:375
+#: modemlights/modemlights.c:1155 netload/netload.c:339 slashapp/slashapp.c:58
 #: webcontrol/webcontrol.c:308
 msgid "About..."
 msgstr "Om..."
 
 #: another_clock/another_clock.c:621 asclock/asclock.c:601
-#: charpick/charpick.c:482 clockmail/clockmail.c:530 diskusage/diskusage.c:799
+#: charpick/charpick.c:482 clockmail/clockmail.c:532 diskusage/diskusage.c:799
 #: drivemount/drivemount.c:546 esd-manager/esdmanager_applet.c:87
 #: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:683
 #: gnome-pager/gnomepager_applet.c:2558 gweather/gweather-applet.c:175
-#: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1022 multiload/cpuload.c:64
+#: mini-commander/src/mini-commander_applet.c:362
+#: modemlights/modemlights.c:1149 multiload/cpuload.c:64
 #: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
 #: slashapp/slashapp.c:55 webcontrol/webcontrol.c:316
 msgid "Properties..."
@@ -476,7 +476,7 @@ msgstr "Tema:"
 msgid "ClockMail Settings"
 msgstr "Innstillinger for Clockmail"
 
-#: clockmail/properties.c:284 mini-commander/src/preferences.c:464
+#: clockmail/properties.c:284 mini-commander/src/preferences.c:467
 msgid "Clock"
 msgstr "Klokke"
 
@@ -1271,9 +1271,9 @@ msgstr "Nordvest"
 msgid "North - Northwest"
 msgstr "Nord - nordvest"
 
-#: gweather/weather.c:150 webcontrol/webcontrol.c:121
-msgid "Clear"
-msgstr "Blank ut"
+#: gweather/weather.c:150
+msgid "Clear Sky"
+msgstr "Klar himmel"
 
 #: gweather/weather.c:151
 msgid "Broken clouds"
@@ -1426,7 +1426,7 @@ msgid "Patches of snow"
 msgstr "Snøbyger"
 
 #: gweather/weather.c:181
-msgid "Partial snowfali"
+msgid "Partial snowfall"
 msgstr "Delvis snøfall"
 
 #: gweather/weather.c:181 gweather/weather.c:182
@@ -2410,7 +2410,8 @@ msgid ""
 "I am a HAL 9000 computer, Production Number 3. I became operational at the "
 "Hal Plant in Urbana, Illinois, on January 12, 1997."
 msgstr ""
-"Jeg er en HAL 9000 datamaskin, produksjonsnummer 3. Jeg ble operativ ved Hal\n"
+"Jeg er en HAL 9000 datamaskin, produksjonsnummer 3. Jeg ble operativ ved "
+"Hal\n"
 "fabrikken i Urbana, Illinois, 12 januar 1997."
 
 #: jbc/jbc-applet.c:45
@@ -2465,26 +2466,31 @@ msgstr ""
 "Dette programmet er fri programvare; du kan distribuere det og/eller \n"
 "endre det i følge betingelsene gitt i GNU General Fystikk"
 
-#: mini-commander/src/cmd_completion.c:67
-#: mini-commander/src/cmd_completion.c:118
+#: mini-commander/src/cmd_completion.c:73
+#: mini-commander/src/cmd_completion.c:119
+#: mini-commander/src/cmd_completion.c:155
+#: mini-commander/src/cmd_completion.c:206
 msgid "not unique"
 msgstr "ikke unik"
 
-#: mini-commander/src/cmd_completion.c:71
+#: mini-commander/src/cmd_completion.c:77
+#: mini-commander/src/cmd_completion.c:159
 msgid "completing..."
 msgstr "ferdigstiller..."
 
-#: mini-commander/src/cmd_completion.c:83 mini-commander/src/exec.c:119
-msgid "no /bin/sh"
-msgstr "ingen /bin/sh"
-
-#: mini-commander/src/cmd_completion.c:116
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "completed"
 msgstr "ferdig"
 
-#: mini-commander/src/cmd_completion.c:121
+#: mini-commander/src/cmd_completion.c:122
+#: mini-commander/src/cmd_completion.c:209
 msgid "not found"
 msgstr "ikke funnet"
+
+#: mini-commander/src/cmd_completion.c:171 mini-commander/src/exec.c:119
+msgid "no /bin/sh"
+msgstr "ingen /bin/sh"
 
 #: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
 msgid "end of history list"
@@ -2534,139 +2540,132 @@ msgstr "%H:%M"
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:86
+#: mini-commander/src/mini-commander_applet.c:89
 msgid "orient. changed"
 msgstr "orientering endret"
 
-#: mini-commander/src/mini-commander_applet.c:182 slashapp/properties.c:249
+#: mini-commander/src/mini-commander_applet.c:103
+msgid "size changed"
+msgstr "størrelse endret"
+
+#: mini-commander/src/mini-commander_applet.c:199 slashapp/properties.c:249
 msgid "Browser"
 msgstr "Leser"
 
-#: mini-commander/src/mini-commander_applet.c:195
+#: mini-commander/src/mini-commander_applet.c:212
 msgid "History"
 msgstr "Historikk"
 
-#: mini-commander/src/mini-commander_applet.c:258
+#: mini-commander/src/mini-commander_applet.c:368
 msgid "Help"
 msgstr "Hjelp"
 
-#: mini-commander/src/mini-commander_applet.c:269
+#: mini-commander/src/mini-commander_applet.c:379
 msgid "ready..."
 msgstr "klar..."
 
-#: mini-commander/src/preferences.c:134
+#: mini-commander/src/preferences.c:135
 msgid "time & date on"
 msgstr "tid & dato på"
 
-#: mini-commander/src/preferences.c:136
+#: mini-commander/src/preferences.c:137
 msgid "time on"
 msgstr "tid på"
 
-#: mini-commander/src/preferences.c:138
+#: mini-commander/src/preferences.c:139
 msgid "date on"
 msgstr "dato på"
 
-#: mini-commander/src/preferences.c:140
+#: mini-commander/src/preferences.c:141
 msgid "clock off"
 msgstr "klokke av"
 
-#: mini-commander/src/preferences.c:423
+#: mini-commander/src/preferences.c:426
 msgid "saving prefs..."
 msgstr "lagrer innstillinger..."
 
-#: mini-commander/src/preferences.c:458
+#: mini-commander/src/preferences.c:461
 msgid "Mini-Commander Properties"
 msgstr "Egenskaper for Mini-commander"
 
 #. show time check box
-#: mini-commander/src/preferences.c:472
+#: mini-commander/src/preferences.c:475
 msgid "Show time"
 msgstr "Vis tid"
 
 #. show date check box
-#: mini-commander/src/preferences.c:484
+#: mini-commander/src/preferences.c:487
 msgid "Show date"
 msgstr "Vis dato"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:497
-msgid "Appearance (experimental, you have to restart the applet)"
-msgstr "Utseende (eksperimentelt, du må starte appleten på nytt)"
+#: mini-commander/src/preferences.c:500
+msgid "Appearance"
+msgstr "Utseende"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:505
+#: mini-commander/src/preferences.c:508
 msgid "Show handle"
 msgstr "Vis håndtak"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:517
+#: mini-commander/src/preferences.c:520
 msgid "Show frame"
 msgstr "Vis ramme"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:531
+#: mini-commander/src/preferences.c:534
 msgid "Auto Completion"
 msgstr "Autoutfylling"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:539
+#: mini-commander/src/preferences.c:542
 msgid "Enable history based auto completion"
 msgstr "Slå på historikkbasert autoutfylling"
 
 #. Size
-#: mini-commander/src/preferences.c:551
+#: mini-commander/src/preferences.c:554
 msgid "Size"
 msgstr "Størrelse"
 
 #. applet width
-#: mini-commander/src/preferences.c:563
+#: mini-commander/src/preferences.c:566
 msgid "Applet width:"
 msgstr "Applet-bredde:"
 
 #. applet height
-#: mini-commander/src/preferences.c:592
+#: mini-commander/src/preferences.c:595
 msgid "Applet height:"
 msgstr "Applet-høyde:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:621
+#: mini-commander/src/preferences.c:624
 msgid "Command line height:"
 msgstr "Kommandolinjehøyde:"
 
-#. hint
-#: mini-commander/src/preferences.c:650
-msgid ""
-"\n"
-"Sometimes the applet has to be moved on the panel\n"
-"to make a change of the size visible."
-msgstr ""
-"\n"
-"Noen ganger må appleten flyttes på panelet\n"
-"for å gjøre en endring av størrelsen synlig."
-
 #. fg
-#: mini-commander/src/preferences.c:671
+#: mini-commander/src/preferences.c:676
 msgid "Command line foreground:"
 msgstr "Kommandolinjeforgrunn:"
 
 #. bg
-#: mini-commander/src/preferences.c:706
+#: mini-commander/src/preferences.c:711
 msgid "Command line background:"
 msgstr "Kommandolinjebakgrunn:"
 
 #. prefix
-#: mini-commander/src/preferences.c:766
+#: mini-commander/src/preferences.c:771
 #, c-format
 msgid "Prefix %.2d:"
 msgstr "Prefiks %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:784
+#: mini-commander/src/preferences.c:789
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
-#: mini-commander/src/preferences.c:803
+#: mini-commander/src/preferences.c:808
 msgid "Macros"
 msgstr "Makroer"
 
@@ -2692,11 +2691,11 @@ msgstr "Hovedvolum, og demping"
 msgid "Run gmix..."
 msgstr "Kjør gmix..."
 
-#: modemlights/modemlights.c:135
+#: modemlights/modemlights.c:128
 msgid "Modem Lights Applet"
 msgstr "Modemlys applet"
 
-#: modemlights/modemlights.c:138
+#: modemlights/modemlights.c:131
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.Lights in order from the top or left are "
@@ -2706,7 +2705,7 @@ msgstr ""
 "En modem status indikator og nummersender. Lysene fra øverst eller venstre "
 "er RX og TX"
 
-#: modemlights/modemlights.c:413
+#: modemlights/modemlights.c:406
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -2714,11 +2713,11 @@ msgstr ""
 "Du er nå tilkoblet.\n"
 "Vil du koble fra?"
 
-#: modemlights/modemlights.c:424
+#: modemlights/modemlights.c:417
 msgid "Do you want to connect?"
 msgstr "Vil du koble til?"
 
-#: modemlights/modemlights.c:443
+#: modemlights/modemlights.c:436
 msgid "not connected"
 msgstr "ikke tilkoblet"
 
@@ -3016,23 +3015,23 @@ msgstr "En aksjefølger-lignende applet\n"
 msgid "SlashApp Article List"
 msgstr "SlashApp artikkelliste"
 
-#: slashapp/slashapp.c:236
+#: slashapp/slashapp.c:237
 msgid "No articles"
 msgstr "Ingen artikler"
 
-#: slashapp/slashapp.c:292 slashapp/slashapp.c:301
+#: slashapp/slashapp.c:291 slashapp/slashapp.c:300
 msgid "Unable to parse document\n"
 msgstr "Kunne ikke tolke dokumentet\n"
 
-#: slashapp/slashapp.c:323
+#: slashapp/slashapp.c:322
 msgid "Unable to initialize request. Shouldn't happen\n"
 msgstr "Kunne ikke initialisere forespørsel. Burde ikke skje\n"
 
-#: slashapp/slashapp.c:347
+#: slashapp/slashapp.c:346
 msgid "Unable to prepare request.\n"
 msgstr "Kunne ikke forberede forespørsel.\n"
 
-#: slashapp/slashapp.c:351
+#: slashapp/slashapp.c:350
 msgid "Unable to process request.\n"
 msgstr "Kunne ikke behandle forespørsel.\n"
 
@@ -3053,6 +3052,10 @@ msgstr ""
 msgid "Url:"
 msgstr "Url:"
 
+#: webcontrol/webcontrol.c:121
+msgid "Clear"
+msgstr "Blank ut"
+
 #: webcontrol/webcontrol.c:137
 msgid "Launch new window"
 msgstr "Åpne nytt vindu"
@@ -3072,6 +3075,3 @@ msgstr "Vis \"Åpne nytt vindu\"-valg"
 #: webcontrol/webcontrol.c:232
 msgid "Look"
 msgstr "Se"
-
-#~ msgid "Dave Camp <dave@davec.dhs.org>"
-#~ msgstr "Dave Camp <dave@davec.dhs.org>"
