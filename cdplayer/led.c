@@ -20,153 +20,105 @@
 #include "cdplayer.h"
 #include "led.h"
 
-#include "images/led.xpm"
+GtkRequisition track_size, time_size;
+gboolean check_for_theme = FALSE, large_font = FALSE;
 
 static void led_draw_track(GtkWidget *track, int trackno);
 
-static GdkPixbuf *led_pixbuf = NULL;
-
-void
-led_init()
-{
-	if(!led_pixbuf) led_pixbuf = gdk_pixbuf_new_from_xpm_data((const char **)led_xpm);
-	g_object_ref(G_OBJECT(led_pixbuf));
-}
-
-void
-led_done()
-{
-	g_object_unref(G_OBJECT(led_pixbuf));
-}
-
+/* FIXME: The functions names has to be changed to something other than led. As we don't use led.xpm file anymore */
 void
 led_create_widgets(GtkWidget **time, GtkWidget **track, gpointer data)
 {
-	GdkPixbuf *pixbuf;
+    GtkWidget *w;
 
-    pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, LED_WIDTH, LED_HEIGHT + 2);
-    gdk_pixbuf_fill(pixbuf, 0);
-	*time = gtk_image_new_from_pixbuf(pixbuf);
-    g_object_unref (pixbuf);
-	gtk_widget_set_size_request(*time, LED_WIDTH, LED_HEIGHT + 2);
-	g_object_ref(G_OBJECT(*time));
-	gtk_widget_show(*time);
-    pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, DIGIT_WIDTH * 2 + 2, LED_HEIGHT + 2);
-    gdk_pixbuf_fill(pixbuf, 0);
-	*track = gtk_image_new_from_pixbuf(pixbuf);
-    g_object_unref (pixbuf);
-	gtk_widget_set_size_request(*track, DIGIT_WIDTH * 2 + 2, LED_HEIGHT + 2);
-	g_object_ref(G_OBJECT(*track));
-	gtk_widget_show(*track);
+	track_size.width = track_size.height = time_size.width = time_size.height = -1;
+
+    *time = gtk_label_new("--:--");
+	GTK_WIDGET_UNSET_FLAGS(*time, GTK_CAN_DEFAULT);
+
+	gtk_widget_set_size_request(*time, LED_WIDTH, -1); 
+	gtk_label_set_justify(GTK_LABEL (*time), GTK_JUSTIFY_CENTER);
+
+    gtk_widget_show(*time);
+    gtk_widget_ref(*time);
+
+
+    *track = gtk_label_new("");
+    GTK_WIDGET_UNSET_FLAGS(*track, GTK_CAN_DEFAULT);
+
+    gtk_widget_set_size_request(*track, LED_WIDTH - 25, -1);  
+    gtk_label_set_justify(GTK_LABEL (*track), GTK_JUSTIFY_CENTER);
+
+    gtk_widget_show(*track);
+    gtk_widget_ref(*track); 
+
 }
 
+/* FIXME: this function is same as led_nodisc(), one of them can be removed */
 void
 led_stop(GtkWidget *time, GtkWidget *track)
 {
-	GdkPixbuf *pixbuf;
-
 	if(!GTK_WIDGET_REALIZED(time)) return;
 
-	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(time));
-    gdk_pixbuf_fill(pixbuf, 0);
+    gtk_label_set_text(GTK_LABEL(time), "--:--");
+    gtk_label_set_text(GTK_LABEL(track), "");
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   10 * DIGIT_WIDTH + 7, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   1, 1);
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   10 * DIGIT_WIDTH + 7, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   DIGIT_WIDTH + 1, 1);
+	if (large_font) {
+		gtk_widget_set_size_request(time, time_size.width, time_size.height);
+		gtk_widget_set_size_request(track, track_size.width, track_size.height);
+	}
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   10 * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   2 * DIGIT_WIDTH + 2, 1);
-
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   10 * DIGIT_WIDTH + 7, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   3 * DIGIT_WIDTH - 1, 1);
-
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   10 * DIGIT_WIDTH + 7, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   4 * DIGIT_WIDTH - 1, 1);
-    gtk_widget_queue_draw(time);
-	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(track));
-    gdk_pixbuf_fill(pixbuf, 0);
-    gtk_widget_queue_draw(track);
 }
 
 static void
 led_draw_track(GtkWidget *track, int trackno)
 {
-	GdkPixbuf *pixbuf;
+    gchar *track_number;
 	
 	if(!GTK_WIDGET_REALIZED(track)) return;
 
-	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(track));
-    gdk_pixbuf_fill(pixbuf, 0);
+    track_number = g_strdup_printf("%d%d",trackno / 10, trackno % 10);
+    gtk_label_set_text(GTK_LABEL(track), track_number);
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   (trackno / 10) * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   1, 1);
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   (trackno % 10) * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   DIGIT_WIDTH + 1, 1);
-    gtk_widget_queue_draw(track);
+	if ((!check_for_theme) && (large_font)) {
+	/* FIXME: this is a hack to get the size for bigger fonts */
+		gtk_widget_set_size_request(track, -1, -1);
+		gtk_widget_size_request(track, &track_size);
+		check_for_theme = TRUE;
+	}
+
+	if (large_font) 
+		gtk_widget_set_size_request(track, track_size.width, track_size.height);
+
+    g_free(track_number);
 }
 
 void
 led_time(GtkWidget * time, int min, int sec, GtkWidget * track, int trackno)
 {
-	GdkPixbuf *pixbuf;
-	
+    gchar *display_time;
+
 	if(!GTK_WIDGET_REALIZED(time)) return;
 
-	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(time));
-    gdk_pixbuf_fill(pixbuf, 0);
+    display_time = g_strdup_printf("%d%d : %d%d", min / 10, min % 10, sec / 10, sec % 10);
+    gtk_label_set_text(GTK_LABEL(time), display_time);
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   (min / 10) * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   1, 1);
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   (min % 10) * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   DIGIT_WIDTH + 1, 1);
+	/* check for large font only once */
+	if (!check_for_theme) {
+		gtk_widget_set_size_request(time, -1, -1);
+		gtk_widget_size_request(time, &time_size);
+		if (time_size.width > LED_WIDTH) 
+			large_font = TRUE;
+		else
+			gtk_widget_set_size_request(time, LED_WIDTH, -1);
+	}
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   10 * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   2 * DIGIT_WIDTH + 2, 1);
+	if (large_font) 
+		gtk_widget_set_size_request(time, time_size.width, time_size.height);
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   (sec / 10) * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   3 * DIGIT_WIDTH - 1, 1);
+    led_draw_track(track, trackno);
 
-    gdk_pixbuf_copy_area ((const GdkPixbuf *)led_pixbuf,
-						   (sec % 10) * DIGIT_WIDTH, 0,
-						   DIGIT_WIDTH, LED_HEIGHT,
-						   pixbuf,
-						   4 * DIGIT_WIDTH - 1, 1);
-    gtk_widget_queue_draw(time);
-	led_draw_track(track, trackno);
+    g_free(display_time);
 }
 
 void
@@ -180,12 +132,10 @@ led_paused(GtkWidget *time, int min, int sec, GtkWidget *track, int trackno)
 		led_time(time, min, sec, track, trackno);
 		visible = 0;
 	} else {
-		GdkPixbuf *pixbuf;
-		
 		if(!GTK_WIDGET_REALIZED(time)) return;
-		pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(time));
-        gdk_pixbuf_fill(pixbuf, 0);
-        gtk_widget_queue_draw(time);
+        gtk_label_set_text(GTK_LABEL(time),"");
+		if (large_font)
+			gtk_widget_set_size_request(time, time_size.width, time_size.height);
 		visible = 1;
 	}
 }
@@ -193,14 +143,14 @@ led_paused(GtkWidget *time, int min, int sec, GtkWidget *track, int trackno)
 void
 led_nodisc(GtkWidget * time, GtkWidget * track)
 {
-	GdkPixbuf *pixbuf;
-	
 	if(!GTK_WIDGET_REALIZED(time)) return;
 
-	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(time));
-    gdk_pixbuf_fill(pixbuf, 0);
-    gtk_image_set_from_pixbuf(GTK_IMAGE(time), pixbuf);
-	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(track));
-    gdk_pixbuf_fill(pixbuf, 0);
-    gtk_image_set_from_pixbuf(GTK_IMAGE(track), pixbuf);
+    gtk_label_set_text(GTK_LABEL(time), "--:--");
+    gtk_label_set_text(GTK_LABEL(track), "");
+	
+	if (large_font) {
+		gtk_widget_set_size_request(time, time_size.width, time_size.height);
+		gtk_widget_set_size_request(track, track_size.width, track_size.height);
+	}
+
 }

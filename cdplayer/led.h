@@ -22,12 +22,7 @@
 
 G_BEGIN_DECLS
 
-#define DIGIT_WIDTH 9
-#define LED_HEIGHT 11
-#define LED_WIDTH (DIGIT_WIDTH * 5)
-
-void led_init(void);
-void led_done(void);
+#define LED_WIDTH 48 
 
 void led_create_widgets(GtkWidget **time, GtkWidget **track, gpointer data);
 void led_time(GtkWidget *time, int min, int sec, GtkWidget *track, int trackno);

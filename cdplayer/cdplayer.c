@@ -152,7 +152,6 @@ applet_fill (PanelApplet *applet)
     gtk_tooltips_set_tip (tooltips, cd->panel.track_control.prev, _("Previous Track"), NULL);
     cd->panel.track_control.next = control_button_factory(next_xpm, G_CALLBACK(cdplayer_next), cd);
     gtk_tooltips_set_tip (tooltips, cd->panel.track_control.next, _("Next Track"), NULL);
-    led_init();
     led_create_widgets(&cd->panel.time, &cd->panel.track_control.display, (gpointer)cd);
 
     gtk_container_add (GTK_CONTAINER (applet), cdplayer);
@@ -227,7 +226,6 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
     g_free (cd->devpath);
     cd->devpath = NULL;
     g_free(cd);
-    led_done();
 }
 
 static void
