@@ -7,7 +7,9 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = charpick_applet
 
-charpick_applet_SOURCES = charpick.c
+charpick_applet_SOURCES = charpick.c \
+                          charpick.h \
+                          properties.c
 
 charpick_applet_LDADD = ../../panel/libpanel_applet.la	\
 		       $(GNOME_LIBDIR) \
