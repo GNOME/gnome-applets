@@ -58,7 +58,7 @@ static GtkWidget *applet;
 static gint size;
 static gint spacing;
 
-static void applet_change_size(GtkWidget *widget, PanelSizeType o);
+static void applet_change_pixel_size(GtkWidget *widget, int s);
 
 static gint
 update_cpu_values (void)
@@ -88,7 +88,7 @@ static GtkWidget *
 pack_procbars(gboolean vertical)
 {
 	GtkWidget *box;
-	PanelSizeType s;
+	int s;
 	
 	if (vertical) {
 		box = gtk_hbox_new (TRUE, 0);
@@ -108,23 +108,8 @@ pack_procbars(gboolean vertical)
 		gtk_box_pack_start_defaults (GTK_BOX (box), swap);
 	}
 
-	switch (applet_widget_get_panel_size (APPLET_WIDGET (applet))) {
-	case GNOME_Panel_SIZE_TINY:
-		s = SIZE_TINY;
-		break;
-	case GNOME_Panel_SIZE_STANDARD:
-		s = SIZE_STANDARD;
-		break;
-	case GNOME_Panel_SIZE_LARGE:
-		s = SIZE_LARGE;
-		break;
-	case GNOME_Panel_SIZE_HUGE:
-		s = SIZE_HUGE;
-		break;
-	default:
-		s = SIZE_STANDARD;
-	}
-	applet_change_size (NULL, s);
+	s = applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
+	applet_change_pixel_size (GTK_WIDGET(applet),s);
 
 	gtk_widget_show_all (box);
 
@@ -132,7 +117,7 @@ pack_procbars(gboolean vertical)
 }
 
 static GtkWidget *
-cpumemusage_widget ()
+cpumemusage_widget (void)
 {
 	GtkWidget *box;
 	GNOME_Panel_OrientType orient;
@@ -215,30 +200,28 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 }
 
 static void
-applet_change_size(GtkWidget *widget, PanelSizeType s)
+applet_change_pixel_size(GtkWidget *widget, int s)
 {
 	GNOME_Panel_OrientType orient;
 
-	switch (s) {
-	case SIZE_TINY:
-		size = 24;
+	if(s<PIXEL_SIZE_STANDARD) {
 		spacing = 0;
-		break;
-	case SIZE_STANDARD:
-		size = 44;
+		size = s;
+	} else if(s<PIXEL_SIZE_LARGE) {
 		spacing = 1;
-		break;
-	case SIZE_LARGE:
-		size = 58;
+		size = s - 4;
+	} else if(s<PIXEL_SIZE_HUGE) {
 		spacing = 2;
-		break;
-	case SIZE_HUGE:
-		size = 72;
+		size = s - 6;
+	} else {
 		spacing = 3;
-		break;
+		size = s - 8;
 	}
 
 	orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
+
+	if(!cpumemusage)
+		return;
 
 	gtk_box_set_spacing (GTK_BOX (cpumemusage), spacing);
 	if (orient == GNOME_Panel_ORIENT_LEFT || orient == GNOME_Panel_ORIENT_RIGHT)
@@ -259,8 +242,8 @@ int main(int argc, char **argv)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
-	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
-			   GTK_SIGNAL_FUNC(applet_change_size),
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
 
         cpumemusage = cpumemusage_widget();
