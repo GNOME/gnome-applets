@@ -174,9 +174,9 @@ void gweather_applet_create (int argc, char *argv[])
     applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), "preferences",
                                            GNOME_STOCK_MENU_PREF, _("Properties..."),
                                            pref_cb, NULL);
-    applet_widget_register_callback (APPLET_WIDGET(gweather_applet),
-                                     "update", _("Update"),
-                                     update_cb, NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), "update",
+					   GNOME_STOCK_MENU_REFRESH, _("Update"),
+					   update_cb, NULL);
 #ifdef HAVE_SAVE_SESSION_SIGNAL
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "save_session",
                        GTK_SIGNAL_FUNC(save_session_cb), NULL);
