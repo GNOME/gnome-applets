@@ -34,7 +34,7 @@ typedef struct {
 	gint                show_tasks; /*bool*/
 	gint                show_pager; /*bool*/
 	gint                show_icons; /*bool*/
-	gint		    show_arrow;
+	gint		    show_arrow; /*bool*/
 	gint                fixed_tasklist; /*bool*/
 } Config;
 
@@ -62,12 +62,12 @@ redo_interface(void)
     desk_widget[i] = NULL;
 
   /*hackish way to keep these widgets around*/
-  gtk_widget_ref(prop_button);
-  gtk_container_remove(GTK_CONTAINER(prop_button->parent),
-		       prop_button);
-  gtk_widget_ref(arrow_button);
-  gtk_container_remove(GTK_CONTAINER(arrow_button->parent),
-		       arrow_button);
+  if(prop_button->parent)
+	  gtk_container_remove(GTK_CONTAINER(prop_button->parent),
+			       prop_button);
+  if(arrow_button->parent)
+	  gtk_container_remove(GTK_CONTAINER(arrow_button->parent),
+			       arrow_button);
   /*kill the arrow*/
   if(GTK_BIN(arrow_button)->child)
     gtk_widget_destroy(GTK_BIN(arrow_button)->child);
@@ -97,9 +97,6 @@ redo_interface(void)
       init_applet_gui(FALSE);
       break;
     }
-
-  gtk_widget_unref(prop_button);
-  gtk_widget_unref(arrow_button);
 }
 
 
@@ -1394,9 +1391,11 @@ main(int argc, char *argv[])
 	we will recieve the right click and such events over them to
 	display menus and allow dragging over them */
       prop_button = gtk_button_new_with_label(_("?"));
+      gtk_widget_ref(prop_button);
       gtk_widget_show(prop_button);
       gtk_box_pack_start_defaults(GTK_BOX(main_box),prop_button);
       arrow_button = gtk_button_new();
+      gtk_widget_ref(arrow_button);
       gtk_widget_show(arrow_button);
       gtk_box_pack_start_defaults(GTK_BOX(main_box),arrow_button);
 
