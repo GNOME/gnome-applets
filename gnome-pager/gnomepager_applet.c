@@ -6,6 +6,7 @@ GtkWidget          *popbox = NULL;
 GtkWidget          *popbox_q = NULL;
 GtkWidget         **blists = NULL;
 GtkWidget         **flists = NULL;
+gint                blists_num = 0;
 GList              *tasks = NULL;
 PanelOrientType     applet_orient = ORIENT_DOWN;
 gint                current_desk = 0;
@@ -57,6 +58,14 @@ cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
 	gtk_widget_destroy(main_box);
       if (popbox)
 	gtk_widget_destroy(popbox);
+      popbox_q = popbox = NULL;
+      if (blists)
+	g_free(blists);
+      if (flists)
+	g_free(flists);
+      blists = NULL;
+      blists_num = 0;
+      flists = NULL;
       main_box = NULL;
       init_applet_gui_horiz();
       break;
@@ -68,6 +77,14 @@ cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
 	gtk_widget_destroy(main_box);
       if (popbox)
 	gtk_widget_destroy(popbox);
+      if (blists)
+	g_free(blists);
+      if (flists)
+	g_free(flists);
+      blists = NULL;
+      blists_num = 0;
+      flists = NULL;
+      popbox_q = popbox = NULL;
       main_box = NULL;
       init_applet_gui_vert();
       break;
@@ -230,6 +247,14 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
 	gtk_widget_destroy(main_box);
       if (popbox)
 	gtk_widget_destroy(popbox);
+      if (blists)
+	g_free(blists);
+      if (flists)
+	g_free(flists);
+      blists = NULL;
+      blists_num = 0;
+      flists = NULL;
+      popbox_q = popbox = NULL;
       main_box = NULL;
       init_applet_gui_horiz();
       break;
@@ -241,6 +266,14 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
 	gtk_widget_destroy(main_box);
       if (popbox)
 	gtk_widget_destroy(popbox);
+      if (blists)
+	g_free(blists);
+      if (flists)
+	g_free(flists);
+      blists = NULL;
+      blists_num = 0;
+      flists = NULL;
+      popbox_q = popbox = NULL;
       main_box = NULL;
       init_applet_gui_vert();
       break;
@@ -394,6 +427,7 @@ util_get_atom(Window win, gchar *atom, Atom type, gint *size)
   long                length;
   void               *data;
   
+  gdk_error_warnings = 0;
   to_get = XInternAtom(GDK_DISPLAY(), atom, False);
   retval = NULL;
   length = 0x7fffffff;
@@ -443,6 +477,7 @@ util_reduce_chars(gchar * s, int num)
 void
 client_win_kill(Task *t)
 {
+  gdk_error_warnings = 0;
   XKillClient(GDK_DISPLAY(), (XID)t->win);
 }
 
@@ -454,6 +489,7 @@ client_win_close(Task *t)
   unsigned long       lnum, ldummy;
   int                 num, i, del, dummy;
   
+  gdk_error_warnings = 0;
   a1 = XInternAtom(GDK_DISPLAY(), "WM_DELETE_WINDOW", False);
   a2 = XInternAtom(GDK_DISPLAY(), "WM_PROTOCOLS", False);
   num = 0;
@@ -491,6 +527,7 @@ client_win_close(Task *t)
 void 
 client_win_iconify(Task *t)
 {
+  gdk_error_warnings = 0;
   XIconifyWindow(GDK_DISPLAY(), t->win, DefaultScreen(GDK_DISPLAY()));
   XSync(GDK_DISPLAY(), False);
 }
@@ -503,6 +540,7 @@ client_win_show(Task *t)
   unsigned long       lnum, ldummy;
   int                 num, i, foc, dummy;
   
+  gdk_error_warnings = 0;
   a1 = XInternAtom(GDK_DISPLAY(), "WM_TAKE_FOCUS", False);
   a2 = XInternAtom(GDK_DISPLAY(), "WM_PROTOCOLS", False);
   num = 0;
@@ -545,6 +583,7 @@ client_win_stick(Task *t)
   XEvent              xev;
   Atom                a;
 
+  gdk_error_warnings = 0;
   a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
@@ -566,6 +605,7 @@ client_win_unstick(Task *t)
   XEvent              xev;
   Atom                a;
 
+  gdk_error_warnings = 0;
   a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
@@ -587,6 +627,7 @@ client_win_shade(Task *t)
   XEvent              xev;
   Atom                a;
 
+  gdk_error_warnings = 0;
   a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
@@ -608,6 +649,7 @@ client_win_unshade(Task *t)
   XEvent              xev;
   Atom                a;
 
+  gdk_error_warnings = 0;
   a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
@@ -738,6 +780,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
   GdkAtom             at;
   gint               *da, size;  
 
+  gdk_error_warnings = 0;
   at = gdk_atom_intern(XA_WIN_WORKSPACE, FALSE);
   if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
     {
@@ -765,6 +808,8 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
   if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
     {
       num_desk = gnome_win_hints_get_workspace_count();
+      if (num_desk < 1)
+	num_desk = 1;
       populate_tasks();
       switch (applet_orient) 
 	{
@@ -776,6 +821,14 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 	    gtk_widget_destroy(main_box);
 	  if (popbox)
 	    gtk_widget_destroy(popbox);
+	  if (blists)
+	    g_free(blists);
+	  if (flists)
+	    g_free(flists);
+	  blists = NULL;
+	  blists_num = 0;
+	  flists = NULL;
+	  popbox_q = popbox = NULL;
 	  main_box = NULL;
 	  init_applet_gui_horiz();
 	  break;
@@ -787,6 +840,14 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 	    gtk_widget_destroy(main_box);
 	  if (popbox)
 	    gtk_widget_destroy(popbox);
+	  if (blists)
+	    g_free(blists);
+	  if (flists)
+	    g_free(flists);
+	  blists = NULL;
+	  blists_num = 0;
+	  flists = NULL;
+	  popbox_q = popbox = NULL;
 	  main_box = NULL;
 	  init_applet_gui_vert();
 	  break;
@@ -804,7 +865,11 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 	    {
 	      area_w = da[0];
 	      area_h = da[1];
-	    }
+	      if (area_w < 1)
+		area_w = 1;
+	      if (area_h < 1)
+		area_h = 1;
+	    }	  
 	  g_free(da);
 	}
       desktop_draw(current_desk);
@@ -909,6 +974,7 @@ task_get_info(Task *t)
   int                  rev;
   gchar               psticky;
 
+  gdk_error_warnings = 0;
   /* is this window focused */
   t->focused = 0;
   XGetInputFocus(GDK_DISPLAY(), &ret, &rev);
@@ -1012,6 +1078,7 @@ task_add(Window win)
       GNOMEUIINFO_END
     };
 
+  gdk_error_warnings = 0;
   /* has this task asked to be skipped by the task list ? */
   win_hints = util_get_atom(win, "_WIN_HINTS", XA_CARDINAL, &size);
   if (win_hints)
@@ -1082,6 +1149,7 @@ task_delete(Window win)
   Task               *t;
   gchar               tstick;
 
+  gdk_error_warnings = 0;
   n = g_list_length(tasks);
   for (i = 0; i < n; i++)
     {
@@ -1178,6 +1246,7 @@ tasks_update(void)
   Window             *list;
   gint                 num, size;
 
+  gdk_error_warnings = 0;
   list = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_CLIENT_LIST", 
 		       XA_CARDINAL, &size);
   if ((size > 0) && (list))
@@ -1194,6 +1263,7 @@ get_desktop_names(void)
   GList *gl, *p;
   gint i;
   
+  gdk_error_warnings = 0;
   for (i = 0; i < 32; i++)
     {
       if (desk_name[i])
@@ -1218,6 +1288,7 @@ select_root_properties(void)
 {
   GtkWidget *dummy_win;
   
+  gdk_error_warnings = 0;
   dummy_win = gtk_window_new(GTK_WINDOW_POPUP);
   gtk_widget_realize(dummy_win);
   gdk_window_set_user_data(GDK_ROOT_PARENT(), dummy_win);
@@ -1245,6 +1316,7 @@ main(int argc, char *argv[])
   
   applet_widget_init("gnomepager_applet", VERSION, argc, argv, NULL, 
 		     0, NULL);
+  gdk_error_warnings = 0;
   gtk_widget_push_visual(gdk_imlib_get_visual());
   gtk_widget_push_colormap(gdk_imlib_get_colormap());
   gnome_win_hints_init();
@@ -1282,6 +1354,9 @@ main(int argc, char *argv[])
   get_desktop_names();
   current_desk = gnome_win_hints_get_current_workspace();
   num_desk = gnome_win_hints_get_workspace_count();
+  if (num_desk < 1)
+    num_desk = 1;
+  gdk_error_warnings = 0;
   da = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_AREA_COUNT", XA_CARDINAL, &size);
   if (da)
     {
@@ -1289,9 +1364,14 @@ main(int argc, char *argv[])
 	{
 	  area_w = da[0];
 	  area_h = da[1];
+	  if (area_w < 1)
+	    area_w = 1;
+	  if (area_h < 1)
+	    area_h = 1;
 	}
       g_free(da);
     }
+  gdk_error_warnings = 0;
   da = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_AREA", XA_CARDINAL, &size);
   if (da)
     {
@@ -1302,6 +1382,7 @@ main(int argc, char *argv[])
 	}
       g_free(da);
     }
+  gdk_error_warnings = 0;
   tasks_update();
   select_root_properties();
 
@@ -1398,6 +1479,7 @@ desktop_set_area(int ax, int ay)
 {
   XEvent xev;
   
+  gdk_error_warnings = 0;
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
   xev.xclient.window = GDK_ROOT_WINDOW();
@@ -1556,9 +1638,17 @@ create_popbox(void)
     g_free(blists);
   if (flists)
     g_free(flists);
+  blists = NULL;
+  blists_num = 0;
+  flists = NULL;
   blists = g_malloc(sizeof(GtkWidget *) * (num_desk + 1));
   flists = g_malloc(sizeof(GtkWidget *) * (num_desk + 1));
-  
+  blists_num = num_desk + 1;
+  for (i = 0; i < num_desk + 1; i++)
+    {
+      blists[i] = NULL;
+      flists[i] = NULL;
+    }
   for(i = 0; i < num_desk + 1; i++)
     {
       if (i == 0)
@@ -2050,24 +2140,29 @@ populate_tasks(void)
     {
       t = (Task *)p->data;
       
-      button = gtk_button_new_with_label(t->name);
-      gtk_widget_show(button);
-      gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
-			 GTK_SIGNAL_FUNC(task_cb_button_down), t);
-      gtk_signal_connect(GTK_OBJECT(button), "button_release_event",
-			 GTK_SIGNAL_FUNC(task_cb_button_up), t);
-      gtk_signal_connect(GTK_OBJECT(button), "enter",
-			 GTK_SIGNAL_FUNC(task_cb_button_enter), t);
-      gtk_signal_connect(GTK_OBJECT(button), "leave",
-			 GTK_SIGNAL_FUNC(task_cb_button_leave), t);
-      if (t->sticky)
-	gtk_box_pack_start(GTK_BOX(blists[0]), button, TRUE, TRUE, 0);
-      else
-	gtk_box_pack_start(GTK_BOX(blists[(t->desktop % num_desk) + 1]), 
-			   button, TRUE, TRUE, 0);
-      task_dest = g_list_append(task_dest, button);
-      gtk_object_set_data(GTK_OBJECT(button), "task", t);
-	  
+      if (popbox)
+	{
+	  button = gtk_button_new_with_label(t->name);
+	  gtk_widget_show(button);
+	  gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
+			     GTK_SIGNAL_FUNC(task_cb_button_down), t);
+	  gtk_signal_connect(GTK_OBJECT(button), "button_release_event",
+			     GTK_SIGNAL_FUNC(task_cb_button_up), t);
+	  gtk_signal_connect(GTK_OBJECT(button), "enter",
+			     GTK_SIGNAL_FUNC(task_cb_button_enter), t);
+	  gtk_signal_connect(GTK_OBJECT(button), "leave",
+			     GTK_SIGNAL_FUNC(task_cb_button_leave), t);
+	  if ((blists_num > 0) && (blists) && (t->sticky) && (blists[0]))
+	    gtk_box_pack_start(GTK_BOX(blists[0]), button, TRUE, TRUE, 0);
+	  else if ((blists_num > ((t->desktop % num_desk) + 1)) && (blists) && 
+		   (t->desktop >= 0) && (t->desktop < num_desk) && 
+		   (num_desk > 0) && (blists[(t->desktop % num_desk) + 1]))
+	    gtk_box_pack_start(GTK_BOX(blists[(t->desktop % num_desk) + 1]), 
+			       button, TRUE, TRUE, 0);
+	  task_dest = g_list_append(task_dest, button);
+	  gtk_object_set_data(GTK_OBJECT(button), "task", t);
+	}
+      
       if (((!(tasks_all)) && (t->desktop == current_desk)) || (tasks_all) ||
 	  (t->sticky))
 	{
