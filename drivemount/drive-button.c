@@ -77,8 +77,6 @@ static void
 drive_button_init (DriveButton *self)
 {
     GtkWidget *image;
-    GtkRcStyle *rc;
-    int i;
 
     image = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (self), image);
