@@ -6,15 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-07 03:35+0200\n"
-"PO-Revision-Date: 2004-08-07 12:46+0530\n"
+"POT-Creation-Date: 2004-08-09 03:32+0200\n"
+"PO-Revision-Date: 2004-08-09 13:13+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
-"<magnet@magnet-i.com>\n"
 "Language-Team: Gujarati\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"<magnet@magnet-i.com>\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 "X-Generator: KBabel 1.3.1\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -80,7 +81,7 @@ msgstr "કીબોર્ડની સુલભ લાક્ષણિકતા�
 msgid "Utility"
 msgstr "ઉપયોગીતા"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:996
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
@@ -150,7 +151,7 @@ msgstr "કીબોર્ડની સુલભ લાક્ષણિકતા�
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1017 battstat/battstat_applet.c:1770
+#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
 msgid "Battery Charge Monitor"
 msgstr "વીજકોષનો ભાર જુઅો"
 
@@ -159,7 +160,7 @@ msgid "Battstat Factory"
 msgstr "બૅટસ્ટેટનું કારખાનું"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1771
+#: battstat/battstat_applet.c:1841
 msgid "Monitor a laptop's remaining power"
 msgstr "લેપટોપની બાકીની કાર્યત્વરા જુઅો"
 
@@ -268,152 +269,180 @@ msgstr "તમારો મંચ સહાયભૂત નથી!\n"
 msgid "The applet will not work properly (if at all).\n"
 msgstr "અેપ્લેટ યોગ્ય રીતે કામ કરશે નહિ (જો બધા હોય તો).\n"
 
-#: battstat/battstat_applet.c:358
-msgid "charged"
-msgstr "ચાર્જ થઈ ગયેલ"
-
 #: battstat/battstat_applet.c:360
-msgid "..."
-msgstr "..."
-
-#: battstat/battstat_applet.c:362
 #, c-format
-msgid "%d hours %d minutes remaining"
-msgstr "%d કલાકો %d મિનિટો બાકી છે"
+msgid "%i minute"
+msgid_plural "%i minutes"
+msgstr[0] "%i મિનિટ"
+msgstr[1] "%i મિનિટો"
+
+#: battstat/battstat_applet.c:361
+#, c-format
+msgid "%i hour"
+msgid_plural "%i hours"
+msgstr[0] "%i કલાક"
+msgstr[1] "%i કલાકો"
+
+#. Translation Note: as in "No time remaining" or "No time till charged"
+#: battstat/battstat_applet.c:365
+msgid "No time"
+msgstr "સમય નથી"
+
+# gnome-session/gsm-client-row.c:43
+#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
+#. Translation Note: as in "Unknown time remaining"
+#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
+msgid "Unknown time"
+msgstr "અજ્ઞાત સમય"
+
+#. Translation note:
+#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
+#. * Swap the order with "%2$s %1$s" if needed.
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "%s %s"
+msgstr "%s %s"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
 msgid "High"
 msgstr "ઊંચું"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1056
+#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
 msgid "Low"
 msgstr "નીચું"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
 msgid "Critical"
 msgstr "કટોકટી"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1060
+#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
 msgid "Charging"
 msgstr "વીજભારિત થઈ રહ્યુ છે"
 
-#: battstat/battstat_applet.c:482
+#: battstat/battstat_applet.c:515
 #, c-format
 msgid ""
-"Your battery is running low (%d%%, %s). You should recharge your battery to "
-"avoid losing your work."
+"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
+"your laptop in."
 msgstr ""
-"તમારી બેટરી હમણાં નીચી ચાલી રહી છે (%d%%, %s). તમે તમારુ કામ ખોવાઈ જવાથી "
-"બચાવવા માટે બેટરી ફરી ચાર્જ કરી શકો છો."
+"%s (%d%%) બાકી છે. કામ ખોવાઈ જવાનું અવગણવા માટે મહેરબાની કરીને પાવર બંધ કરો,"
+"અટકાવો અથવા તમારુ લેપટોપ લગાવો."
 
-#: battstat/battstat_applet.c:485 battstat/battstat_applet.c:532
+#: battstat/battstat_applet.c:519
+msgid "Your battery is running low"
+msgstr "તમારો વીજકોષ નીચો ચાલી રહ્યો છે"
+
+#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
 msgid "Battery Notice"
 msgstr "વીજકોષ સૂચન"
 
-#: battstat/battstat_applet.c:551
-msgid "Your battery is now fully recharged."
-msgstr "તમારો વીજકોષ હવે પૂરેપૂરો વીજભારિત થયો છે."
+#: battstat/battstat_applet.c:597
+msgid "Your battery is now fully recharged"
+msgstr "તમારો વીજકોષ હવે પૂરેપૂરો વીજભારિત થયો છે"
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:595 battstat/battstat_applet.c:1211
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:651
 #, c-format
 msgid ""
 "System is running on battery power\n"
-"Battery: %d%% (%s)"
-msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા વીજકોષ %d%% (%s) પર ચાલે છેઃ "
+"%s (%d%%) remaining"
+msgstr ""
+"સિસ્ટમ વીજકોષની શક્તિ પર ચાલી રહી છે\n"
+"%s (%d%%) બાકી છે"
 
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1218
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:655
 #, c-format
 msgid ""
 "System is running on AC power\n"
-"Battery: %d%% (%s)"
-msgstr "સિસ્ટમ AC કાર્યત્વરા વીજકોષ %d%% (%s) પર ચાલે છે"
+"%s (%d%%) till charged"
+msgstr ""
+"સિસ્ટમ AC પાવર પર ચાલી રહી છે\n"
+"%s (%d%%) હજુ વિજભારિત થાય છે"
 
 #. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1231
+#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
+#: battstat/battstat_applet.c:1300
 msgid "System is running on battery power"
 msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા પર ચાલે છે"
 
 #. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:605 battstat/battstat_applet.c:1149
-#: battstat/battstat_applet.c:1236
+#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
+#: battstat/battstat_applet.c:1305
 msgid "System is running on AC power"
 msgstr "સિસ્ટમ AC કાર્યત્વરા પર ચાલે છે"
 
-#: battstat/battstat_applet.c:620 wireless/wireless-applet.c:148
+#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
 #: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:753 battstat/battstat_applet.c:1125
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
 #, c-format
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા વીજકોષ પર ચાલે છે. વીજકોષ: %d%%(%s)"
+msgid "System is running on battery power. %s (%d%%) remaining."
+msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા વીજકોષ પર ચાલે છે. %s (%d%%) બાકી છે."
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:758 battstat/battstat_applet.c:1131
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
 #, c-format
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "સિસ્ટમ AC કાર્યત્વરા વીજકોષ પર ચાલે છે. વીજકોષ: %d%%(%s)"
+msgid "System is running on AC power. %s (%d%%) till charged."
+msgstr "સિસ્ટમ AC કાર્યત્વરા વીજકોષ પર ચાલે છે. %s (%d%%) હજુ વિજભારિત થાય છે."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:767
-msgid "System is running on battery power. Battery: Not present"
-msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા પર ચાલે છે. વીજકોષ: હાજર નથી"
+#: battstat/battstat_applet.c:827
+msgid "System is running on battery power. Battery status unknown."
+msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા પર ચાલે છે. વીજકોષની સ્થિતિ અજ્ઞાત છે."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:772
-msgid "System is running on AC power. Battery: Not present"
-msgstr "સિસ્ટમ AC કાર્યત્વરા પર ચાલે છે. વીજકોષ: હાજર નથી"
+#: battstat/battstat_applet.c:832
+msgid "System is running on AC power. No battery present."
+msgstr "સિસ્ટમ AC કાર્યત્વરા પર ચાલે છે. કોઈ વીજકોષ હાજર નથી."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. contains a string of the time remaining
-#: battstat/battstat_applet.c:780
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:841
 #, c-format
-msgid "Battery: %d%% (%s)"
-msgstr "વીજકોષ: %d%%(%s)"
+msgid "%s (%d%%) remaining"
+msgstr "%s (%d%%) બાકી છે"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:785
-msgid "Battery: Not present"
-msgstr "વીજકોષ: હાજર નથી"
+#: battstat/battstat_applet.c:846
+msgid "No battery present"
+msgstr "કોઈ વીજકોષ હાજર નથી"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:948
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -426,7 +455,7 @@ msgstr ""
 "તમને APM ઉપકરણ વાંચવાની પરવાનગી છે કે નહિ."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:896
+#: battstat/battstat_applet.c:957
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -436,7 +465,7 @@ msgstr ""
 "\"apm-e1\" (FreeBSD) ચલાવવાનો પ્રયત્ન કરો અને જુઅો કે \n"
 "મદદ છે કે નહિ.\n"
 
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:1013
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -445,16 +474,16 @@ msgstr ""
 "અટકાવો અાદેશ ચલાવતા અાવતી ભૂલ :%s\n"
 "મહેરબાની કરીને અા ભૂલ સુધારવાનો પ્રયત્ન કરો"
 
-#: battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:1017
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "અટકાવવાનો આદેશ '%s' સફળ રહ્યો નહિ."
 
-#: battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:1019
 msgid "The Suspend command was unsuccessful."
 msgstr "અટકાવવાનો આદેશ સફળ રહ્યો નહિ."
 
-#: battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:1027
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -464,19 +493,47 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1045
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1019
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+#: battstat/battstat_applet.c:1081
+msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1020
+#: battstat/battstat_applet.c:1082
 msgid "This utility shows the status of your laptop battery."
 msgstr "અા ઉપયોગિતા તમારા લેપટોપના વીજકોષની સ્થિતિઅો બતાવે છે."
 
-#: battstat/battstat_applet.c:1696
+#. 0 = Battery power
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1279
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"%s (%d%%) remaining."
+msgstr ""
+"સિસ્ટમ વીજકોષની શક્તિ પર ચાલી રહી છે\n"
+"%s (%d%%) બાકી છે."
+
+#. 1 = AC power. I should really test it explicitly here.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1287
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"%s (%d%%) till charged."
+msgstr ""
+"સિસ્ટમ AC પાવર પર ચાલી રહી છે\n"
+"%s (%d%%) હજુ વીજભારિત થઈ રહ્યું છે."
+
+#: battstat/battstat_applet.c:1766
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -590,7 +647,7 @@ msgstr "પીળો: (_Y)"
 
 #: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
-#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:365
+#: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
@@ -925,7 +982,7 @@ msgid "Cannot browse device"
 msgstr "ઉપકરણ શોધી શકાતું નથી"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2620
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2623
 msgid "Error displaying help"
 msgstr "મદદ દેખાડવામાં થતી ભૂલ"
 
@@ -4336,7 +4393,7 @@ msgid "No mail."
 msgstr "મેઈલ નથી."
 
 #: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
-#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
+#: mailcheck/mailcheck.c:2903 mailcheck/mailcheck.c:2904
 msgid "Status not updated"
 msgstr "પરિસ્થિતિ બદલાઈ નથી"
 
@@ -4462,15 +4519,15 @@ msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "જ્યારે તમારા મેઈલબોક્ષમાં નવો મેઈલ આવે ત્યારે ઈનબોક્ષનું ધ્યાન રાખનાર તમને નોંધ કરાવશે"
 
 # libgnomeui/gnome-href.c:126
-#: mailcheck/mailcheck.c:2853
+#: mailcheck/mailcheck.c:2856
 msgid "Text only"
 msgstr "માત્ર વાક્ય"
 
-#: mailcheck/mailcheck.c:2902
+#: mailcheck/mailcheck.c:2905
 msgid "Mail check"
 msgstr "મેઈલ ચકાસો"
 
-#: mailcheck/mailcheck.c:2903
+#: mailcheck/mailcheck.c:2906
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "જ્યારે તમારા મેઈલબોક્ષમાં નવો મેઈલ આવે ત્યારે મેઈલ ચકાસનાર તમને નોંધ કરાવશે"
 
@@ -4631,13 +4688,12 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"આ GNOME એપ્લેટ આદેશવાક્યને પેનલમાં ઉમેરે છે. તે આદેશ પૂર્ણાહૂતિ, આદેશ ઈતિહાસ અને "
-"બદલી શકાય તેવા મેક્રોનો સમાવેશ કરે છે.\n"
+"આ GNOME એપ્લેટ આદેશવાક્યને પેનલમાં ઉમેરે છે. તે આદેશ પૂર્ણાહૂતિ, આદેશ ઈતિહાસ અને બદલી શકાય "
+"તેવા મેક્રોનો સમાવેશ કરે છે.\n"
 "\n"
-"આ કાર્યક્રમ એ મુક્ત સોફ્ટવૅર છે. તમે એને GNU General Public License "
-"હેઠળ ફરીથી વહેંચી "
-"શકો અથવા/અને બદલી શકો ફ઼ી સોફ્ટવૅર ફાઉન્ડેશન દ્વારા; અાવૃત્તિ ૨ ના લાયસન્સ અથવા "
-"બીજી કોઈ પણ નવી આવૃત્તિ દ્વારા."
+"આ કાર્યક્રમ એ મુક્ત સોફ્ટવૅર છે. તમે એને GNU General Public License હેઠળ ફરીથી વહેંચી "
+"શકો અથવા/અને બદલી શકો ફ઼ી સોફ્ટવૅર ફાઉન્ડેશન દ્વારા; અાવૃત્તિ ૨ ના લાયસન્સ અથવા બીજી "
+"કોઈ પણ નવી આવૃત્તિ દ્વારા."
 
 #: mini-commander/src/command_line.c:334
 msgid "No items in history"
