@@ -1343,8 +1343,12 @@ change_background (PanelApplet *a,
 
 	/* reset style */
 	gtk_widget_set_style (GTK_WIDGET (battstat->applet), NULL);
+	gtk_widget_set_style (GTK_WIDGET (battstat->eventstatus), NULL);
+	gtk_widget_set_style (GTK_WIDGET (battstat->eventbattery), NULL);
 	rc_style = gtk_rc_style_new ();
 	gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
+	gtk_widget_modify_style (GTK_WIDGET (battstat->eventstatus), rc_style);
+	gtk_widget_modify_style (GTK_WIDGET (battstat->eventbattery), rc_style);
 	g_object_unref (rc_style);
 
 	switch (type) {
