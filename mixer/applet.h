@@ -27,6 +27,7 @@
 
 #include <gtk/gtkicontheme.h>
 #include <gtk/gtkimage.h>
+#include <gtk/gtktooltips.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
 #include <gst/gst.h>
@@ -79,6 +80,9 @@ typedef struct _GnomeVolumeApplet {
 
   /* icon theme */
   GtkIconTheme *icon_theme;
+
+  /* use same object for setting tooltop */
+  GtkTooltips *tooltips;
 } GnomeVolumeApplet;
 
 typedef struct _GnomeVolumeAppletClass {

@@ -225,7 +225,6 @@ static void
 gnome_volume_applet_init (GnomeVolumeApplet *applet)
 {
   GtkWidget *image;
-  GtkTooltips *tooltips;
 
   applet->timeout = 0;
   applet->elements = NULL;
@@ -251,8 +250,8 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->pop = FALSE;
 
   /* tooltip over applet */
-  tooltips = gtk_tooltips_new ();
-  gtk_tooltips_set_tip (tooltips, GTK_WIDGET (applet),
+  applet->tooltips = gtk_tooltips_new ();
+  gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
 			_("Volume Control"), NULL);
 
   /* handle icon theme changes */
@@ -912,6 +911,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   GdkPixbuf *pixbuf;
   gint n, *volumes, volume = 0;
   gboolean mute;
+  gchar *tooltip_str;
 
   /* build-up phase */
   if (!applet->track)
@@ -936,15 +936,29 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
     n = 4;
 
   if ((STATE (n, mute) != applet->state) || force_refresh) {
-    if (mute)
+    if (mute) {
       pixbuf = pix[0].pixbuf;
-    else
+    } else {
       pixbuf = pix[n].pixbuf;
+    }
 
     gtk_image_set_from_pixbuf (applet->image, pixbuf);
 
     applet->state = STATE (n, mute);
   }
+
+  if (mute) {
+    tooltip_str = g_strdup_printf (_("%s: muted"),
+				   applet->track->label);
+  } else {
+    gint percent = 100 * volume /
+		(applet->track->max_volume - applet->track->min_volume);
+    tooltip_str = g_strdup_printf (_("%s: %d%%"),
+				   applet->track->label, percent);
+  }
+  gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
+			tooltip_str, NULL);
+  g_free (tooltip_str);
 
   applet->lock = TRUE;
   if (volume > 0)
