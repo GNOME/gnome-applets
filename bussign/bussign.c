@@ -93,11 +93,13 @@ int main(int argc, char **argv)
 				  NULL);
 
   /* attach the properties button */
+  /*
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "properties",
 				  _("Properties..."),
 				  properties_window,
 				  NULL);
+  */
 
   /* attach a refresh button */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
@@ -204,16 +206,21 @@ bussign_refresh(gpointer data)
       goto ec;
     }
   /* kill the image and flush it */
-  gdk_imlib_kill_image(sg_bus);
-  gdk_imlib_changed_image(sg_bus);
+  if (sg_bus)
+    {
+      gdk_imlib_kill_image(sg_bus);
+      gdk_imlib_changed_image(sg_bus);
+    }
   /* reload the image */
-  sg_bus = gdk_imlib_load_image(IMAGE_FILENAME);
-  /* render it */
-  gdk_imlib_render(sg_bus, sg_bus->rgb_width, sg_bus->rgb_height);
-  /* set the pixmap */
-  gtk_pixmap_set(GTK_PIXMAP(sg_pixmap), sg_bus->pixmap, sg_bus->shape_mask);
-  /* redraw that sucker. */
-  gtk_widget_queue_draw(sg_pixmap);
+  if ((sg_bus = gdk_imlib_load_image(IMAGE_FILENAME)) != NULL)
+    {
+      /* render it */
+      gdk_imlib_render(sg_bus, sg_bus->rgb_width, sg_bus->rgb_height);
+      /* set the pixmap */
+      gtk_pixmap_set(GTK_PIXMAP(sg_pixmap), sg_bus->pixmap, sg_bus->shape_mask);
+      /* redraw that sucker. */
+      gtk_widget_queue_draw(sg_pixmap);
+    }
  ec:
   return TRUE;
 }
