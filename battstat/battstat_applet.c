@@ -376,8 +376,8 @@ pixmap_timeout( gpointer data )
   guint charging;
   gint i, x;
   gboolean batterypresent;
-  gchar new_label[80];
-  gchar new_string[80];
+  gchar *new_label;
+  gchar *new_string;
   gchar *rem_time = NULL;
   GtkWidget *hbox, *image, *label, *dialog;
   GdkPixbuf *pixbuf;
@@ -474,8 +474,7 @@ pixmap_timeout( gpointer data )
    ) {
       /* Warn that battery dropped below red_val */
       if(battery->lowbattnotification) {
-         snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is offline"),
-                  batt_life);
+	 new_label = g_strdup_printf (_("Your battery is running low (%d%% remaining). You should recharge your battery soon to avoid losing your work."), batt_life);
 	 battery->lowbattnotificationdialog = gtk_dialog_new_with_buttons (
 			 _("Battery Notice"),
 			 NULL,
@@ -497,6 +496,7 @@ pixmap_timeout( gpointer data )
 	 g_object_unref (pixbuf);
 	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
 	 label = gtk_label_new (new_label);
+	 g_free (new_label);
 	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
 	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->lowbattnotificationdialog)->vbox), hbox);
 	 gtk_widget_show_all (battery->lowbattnotificationdialog);
@@ -541,7 +541,7 @@ pixmap_timeout( gpointer data )
 	 image = gtk_image_new_from_pixbuf (pixbuf);
 	 g_object_unref (pixbuf);
 	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
-	 label = gtk_label_new (_("Battery is now fully re-charged!"));
+	 label = gtk_label_new (_("Your battery is now fully recharged."));
 	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
 	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
 	 gtk_widget_show_all (dialog);
@@ -584,21 +584,17 @@ pixmap_timeout( gpointer data )
 
       if(!battery->showbattery && !battery->showpercent) {
 	 if(acline_status == 0) {
-	    snprintf(new_label, sizeof(new_label),
-		     _("System is running on battery power\nBattery: %d%% (%s)"),
+		new_label = g_strdup_printf (_("System is running on battery power\nBattery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 } else {
-	    snprintf(new_label, sizeof(new_label),
-		     _("System is running on AC power\nBattery: %d%% (%s)"),
+		new_label = g_strdup_printf (_("System is running on AC power\nBattery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 }
       } else {
 	 if(acline_status == 0) {
-	    snprintf(new_label, sizeof(new_label),
-		     _("System is running on battery power"));
+		new_label = g_strdup (_("System is running on battery power"));
 	 } else {
-	    snprintf(new_label, sizeof(new_label),
-		     _("System is running on AC power"));
+		new_label = g_strdup (_("System is running on AC power"));
 	 }
       }
 
@@ -606,17 +602,19 @@ pixmap_timeout( gpointer data )
 			    battery->eventstatus,
 			    new_label,
 			    NULL);
+      g_free (new_label);
    
       /* Update the battery meter, tooltip and label */
       
       if (batterypresent) {
-	 snprintf(new_label, sizeof(new_label),"%d%%", batt_life);
+	 new_label = g_strdup_printf ("%d%%", batt_life);
       } else {
-	 snprintf(new_label, sizeof(new_label),_("N/A"));
+	 new_label = g_strdup (_("N/A"));
       }
 
       gtk_label_set_text (GTK_LABEL (battery->percent), new_label);
       gtk_label_set_text (GTK_LABEL (battery->statuspercent), new_label);
+      g_free (new_label);
       
       if (batt_life <= battery->red_val) {
 	 color=red;
@@ -738,47 +736,41 @@ pixmap_timeout( gpointer data )
       if (battery->showstatus == 0) {
 	 if (batterypresent) {
 	    if(acline_status == 0) {
-	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the battery frame
 			 when the computer is using battery power.*/
-			_("System is running on battery power. Battery: %d%% (%s)"),
+		new_string = g_strdup_printf (_("System is running on battery power. Battery: %d%% (%s)"),
 			batt_life, rem_time);
 	    } else {
-	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the battery frame
 			 when the computer is using AC power.*/
-			_("System is running on AC power. Battery: %d%% (%s)"),
+		new_string = g_strdup_printf (_("System is running on AC power. Battery: %d%% (%s)"),
 			batt_life, rem_time);
 	    }
 	 } else {
 	    if(acline_status == 0) {
-	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the
 			 battery frame when the computer is using battery
 			 power and the battery isn't present. Not a
 			 possible combination, I guess... :)*/
-			_("System is running on battery power. Battery: Not present"));
+		new_string = g_strdup (_("System is running on battery power. Battery: Not present"));
 	    } else {
-	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the
 			 battery frame when the computer is using AC
 			 power and the battery isn't present.*/
-			_("System is running on AC power. Battery: Not present"));
+		new_string = g_strdup (_("System is running on AC power. Battery: Not present"));
 	    }
 	 }
       } else {
 	 if (batterypresent) {
-	   snprintf(new_string, sizeof(new_string), 
 		    /* Displayed as a tooltip over the battery meter when there is
 		     a battery present. %d will hold the current charge and %s will
-		     hold the status of the battery, (High, Low, Critical, Charging. */
-		    (_("Battery: %d%% (%s)")),
+		     contains a string of the time remaining */
+		new_string = g_strdup_printf ((_("Battery: %d%% (%s)")),
 		    batt_life, rem_time);
 	 } else {
-	    snprintf(new_string, sizeof(new_string), 
 		     /* Displayed as a tooltip over the battery meter when no
 		      battery is present. */
-		     (_("Battery: Not present")));
+		new_string = g_strdup (_("Battery: Not present"));
 	 }
       }
       
@@ -792,6 +784,7 @@ pixmap_timeout( gpointer data )
 			   battery->eventybattery,
 			   gettext(new_string),
 			   NULL);
+      g_free (new_string);
       
       if (DEBUG) printf("Percent: %d, Status: %s\n", batt_life, status[batt_state]);
    }
@@ -1037,7 +1030,7 @@ change_orient (PanelApplet       *applet,
 	       PanelAppletOrient  orient,
 	       ProgressData      *battstat)
 {
-   gchar new_label[80];
+   gchar *new_label;
    guint acline_status;
    guint batt_state;
    guint batt_life;
@@ -1117,42 +1110,40 @@ change_orient (PanelApplet       *applet,
       
       if (battstat->showbattery == 0 && battstat->showpercent == 0) {
 	 if(acline_status == 0) {
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power and the battery meter
 		      and percent meter is hidden by the user.*/
-		     _("System is running on battery power. Battery: %d%% (%s)"),
+		new_label = g_strdup_printf (_("System is running on battery power. Battery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 } else {
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using AC power and the battery meter
 		      and percent meter is hidden by the user.*/
-		     _("System is running on AC power. Battery: %d%% (%s)"),
+		new_label = g_strdup_printf (_("System is running on AC power. Battery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));      
 	 }
 	 gtk_tooltips_set_tip (battstat->ac_tip,
 			       battstat->eventstatus,
 			       new_label,
 			       NULL);
+	 g_free (new_label);
       } else {
 	 if(acline_status == 0) {
 	    /* 0 = Battery power */
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power.*/
-		     _("System is running on battery power"));
+		new_label = g_strdup (_("System is running on battery power"));
 	 } else {
 	    /* 1 = AC power. I should really test it explicitly here. */
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using AC power.*/
-		     _("System is running on AC power"));
+		new_label = g_strdup(_("System is running on AC power"));
 	 }
 	 gtk_tooltips_set_tip (battstat->ac_tip,
 			       battstat->eventstatus,
 			       new_label,
 			       NULL);
+	 g_free (new_label);
 #ifdef FIXME
 	 gtk_widget_set_usize(battstat->framestatus, 20, 24);
 	 if(battstat->showbattery == 1 && battstat->showpercent == 1) {
@@ -1205,43 +1196,41 @@ change_orient (PanelApplet       *applet,
       if(battstat->showbattery == 0 && battstat->showpercent == 0) {
 	 if(acline_status == 0) {
 	    /* 0 = Battery power */
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power and the battery meter
 		      and percent meter is hidden by the user.*/
-		     _("System is running on battery power\nBattery: %d%% (%s)"),
+		new_label = g_strdup_printf (_("System is running on battery power\nBattery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 } else {
 	    /* 1 = AC power. I should really test it explicitly here. */
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using AC power and the battery meter
 		      and percent meter is hidden by the user.*/
-		     _("System is running on AC power\nBattery: %d%% (%s)"),
+		new_label = g_strdup_printf (_("System is running on AC power\nBattery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 }
 	 gtk_tooltips_set_tip (battstat->ac_tip,
 			       battstat->eventstatus,
 			       new_label,
 			       NULL);
+	 g_free (new_label);
       } else {
 	 if(acline_status == 0) {
 	    /* 0 = Battery power */
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power.*/
-		     _("System is running on battery power"));
+		new_label = g_strdup (_("System is running on battery power"));
 	 } else {
 	    /* 1 = AC power. I should really test it explicitly here. */
-	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using AC power.*/
-		     _("System is running on AC power"));
+		new_label = g_strdup (_("System is running on AC power"));
 	 }
 	 gtk_tooltips_set_tip (battstat->ac_tip,
 			       battstat->eventstatus,
 			       new_label,
 			       NULL);
+	 g_free (new_label);
       }
    }
    
@@ -1252,7 +1241,7 @@ void
 simul_cb (GtkWidget *ignored, gpointer data)
 {
    ProgressData *battery = data;
-   gchar new_label[40];
+   gchar *new_label;
    GdkColor *color, *darkcolor;
    gint slidervalue;
    gint prefred, preforange, prefyellow, progress_value, i, x;
@@ -1262,11 +1251,11 @@ simul_cb (GtkWidget *ignored, gpointer data)
    preforange =(int) GTK_ADJUSTMENT (battery->eorange_adj)->value;
    prefred =(int) GTK_ADJUSTMENT (battery->ered_adj)->value;
    
-   snprintf(new_label,
-	    sizeof(new_label),
+   new_label = g_strdup_printf (
 	    "%d%%",
 	    slidervalue);
    gtk_label_set_text ( GTK_LABEL (battery->testpercent), new_label);
+   g_free (new_label);
    
    if (slidervalue <= prefred) {
       color=red;
