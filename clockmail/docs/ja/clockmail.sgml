@@ -1,0 +1,490 @@
+ <sect1 id="clockmail">
+<!--
+  <title>Clock and Mailcheck Applet</title>
+-->
+  <title>メールチェック時計アプレット</title>
+
+   <para>
+<!--
+   <application>Clock and Mailcheck</application> applet, shown in <xref
+   linkend="clockmailapplet-fig">, displays the current time and how
+   much mail is in your mailbox.  It also notifies you when new mail
+   arrives by flashing.   To add this
+   applet to a <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+-->
+   <xref linkend="clockmailapplet-fig">のような外観を持つ<application>メールチェック時計</application>アプレットは、現在の時刻とメールボックスにあるメールの数を表示します。新しいメールが到着するとフラッシュして教えてくれます。このアプレットを<interface>パネル</interface>に追加するには、<interface>パネル</interface>を右クリックして、
+   <menuchoice>
+<!--
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Clocks</guisubmenu>
+    <guimenuitem>Clock and Mailcheck</guimenuitem>
+-->
+    <guimenu>パネル</guimenu>
+    <guisubmenu>パネルに追加</guisubmenu>
+    <guisubmenu>アプレット</guisubmenu>
+    <guisubmenu>時計</guisubmenu>
+    <guimenuitem>メールチェック時計</guimenuitem>
+   </menuchoice>
+   と選択します。
+  </para>
+
+  <figure id="clockmailapplet-fig">
+<!--
+   <title>Clock and Mailcheck Applet</title>
+-->
+   <title>メールチェック時計アプレット</title>
+   <screenshot>
+<!--
+    <screeninfo>Clock and Mailcheck Applet</screeninfo>
+-->
+    <screeninfo>メールチェック時計アプレット</screeninfo>
+    <graphic format="png" fileref="figures/clockmail_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
+
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="clockmail-usage">
+<!--
+   <title>Usage</title>
+-->
+   <title>使い方</title>
+   <para>
+<!--
+    View the time and number of messages in your inbox in the applet's
+    display. The envelope will flash when new email arrives.
+-->
+    アプレットは時刻とメールボックスのメッセージ数を表示します。新しいメールが到着すると、封筒がフラッシュします。
+   </para>
+
+   <para>
+<!--
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+-->
+    右クリックで表示されるポップアップメニューには次の項目があります：
+    <itemizedlist>
+
+     <listitem>
+      <para>
+<!--
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="clockmail-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+-->
+       <guimenuitem>設定&hellip;</guimenuitem> &mdash;
+       <link linkend="clockmail-prefs">設定<guilabel>Properties</guilabel></link>ダイアログを表示します。
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+<!--
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+-->
+       <guimenuitem>ヘルプ</guimenuitem> &mdash;
+       このドキュメントを表示します。
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+<!--
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Clock and Mailcheck
+       Applet</application>, inluding the applet's version and the
+       author's name.
+-->
+       <guimenuitem>情報&hellip;</guimenuitem> &mdash;
+       アプレットのバージョンや作者名といった、<application>メールチェック時計</application>アプレットについての基本的な情報を表示します。
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="clockmail-prefs">
+<!--
+    <title>Customization</title>
+-->
+    <title>カスタマイズ</title>
+    <para>
+<!--
+      You can customize <application>Clock and Mailcheck</application>
+      applet by right-clicking on it and choosing
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="clockmail-settings-fig">), which allows you to
+      change various settings.
+-->
+      <application>メールチェック時計</application>アプレットをカスタマイズするには、アプレットを右クリックして<guimenuitem>設定&hellip;</guimenuitem>を選択します。<interface>設定</interface>ダイアログ(<xref linkend="clockmail-settings-fig">参照)が表示され、さまざまな設定を変更できるようになります。
+    </para>
+
+    <figure id="clockmail-settings-fig">
+<!--
+     <title>Properties dialog</title>
+-->
+     <title>設定ダイアログ</title>
+     <screenshot>
+<!--
+      <screeninfo>Properties dialog</screeninfo>
+-->
+      <screeninfo>設定ダイアログ</screeninfo>
+      <graphic format="png" fileref="figures/clockmail-prefs-general"
+<!--
+      srccredit="Eric Baudais">
+-->
+      srccredit="KAMAGASAKO Masatoshi">
+      </graphic>
+     </screenshot>
+    </figure>
+
+    <para>
+<!--
+     The <interface>Properties</interface> dialogue is divided in two
+     sections, one for general options and one for themes.
+-->
+     <interface>設定</interface>ダイアログは二つのセクションに別れています。一つは一般的な設定、もう一つはテーマ設定です。
+    </para>
+
+    <para>
+<!--
+     The properties in the <guilabel>General</guilabel> tab are:
+-->
+     <guilabel>一般</guilabel>タブには以下の設定項目があります。
+     <itemizedlist>
+
+      <listitem>
+       <para>
+<!--
+        Display time in 12 hours format (AM/PM) &mdash;  Check this
+        button to show the time in 12-hour format. 
+-->
+        12時間制(AM/PM)フォーマットで時刻を表示する &mdash;
+        12時間制(AM/PM)フォーマットで時刻を表示するようになります。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        Display time relative to GMT (Greenwich Mean Time) &mdash;
+        This allows you to change the timezone
+        <application>Clock and Mailcheck</application> 
+        uses.  The time can be anything from twelve hours
+        ahead of GMT to twelve hours behind it. Remember also to select
+        the <guibutton>checkbox</guibutton>, to use the new
+        timezone. Note that you can only alter the
+        time by an integral number of hours.
+-->
+        GMT(グリニッジ標準時)からの相対時刻を表示する &mdash;
+        
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        Mail file  &mdash; Enter you email inbox file which should be 
+        checked for new mail. Typically, this is
+        <filename>/var/spool/mail/yourusername</filename>
+        or something similar. You can only enter one file.
+-->
+        メールボックス &mdash;
+        新しいメールをチェックするメールボックスを指定します。普通は<filename>/var/spool/mail/yourusername</filename>、あるいはこれに似たものになります。複数のメールボックスは指定できません。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        When new mail is received, run... &mdash; It is possible to
+        execute commands when new mail arrives. 
+        For example, it is very common for people to have a sound
+        file played as mail arrives. You can put the command to 
+        run and the file to run it on in this space and ensure the
+        checkbox is checked for it to occur.
+        If you have more than one command, you can separate them
+        by a semi-colon. For example,
+-->
+        新しいメールが届いたときに実行 &mdash;
+        新しいメールが届いたときに実行するコマンドを指定できます。例えば、メールの到着時にサウンドファイルを再生する、というのが最も一般的です。実行したいコマンドとファイルを指定して、チェックボックスが有効になっているか確認してください。複数のコマンドを実行したいときは、セミコロンで区切ってください。例えば、
+        <itemizedlist>
+         <listitem>
+          <para>
+           <command>esdplay /full/path/to/file.wav</command>
+          </para>
+         </listitem>
+         <listitem>
+          <para>
+           <command>cd /path/to/directory ; esdplay file.wav</command>
+          </para>
+         </listitem>
+        </itemizedlist>
+<!--
+        These two have the same effect. You will need the full path
+        for this, without using shortcuts such as <command>cd ~</command>.
+-->
+        というこの二つは同じ効果があります。<command>cd ~</command>のようなショートカットは利用せずに、フルパスで指定してください。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        Always blink when new mail is waiting &mdash; If you select
+        this <guibutton>checkbox</guibutton>, then the 
+        red envelope will blink until you read your unread email. Normally,
+        this is off, and the blinking lasts only a few seconds.
+-->
+        メールが待ちになっていたら点滅する &mdash;
+        これが有効になっていると、未読のメールがメールボックスにある間は、ずっと赤い封筒が点滅し続けます。普通は無効になっていますので、数秒間しか点滅しません。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        Number of messages to consider mailbox full &mdash; Set the
+        number of messages you mailbox must have to be considered
+        <quote>full</quote>.  Certain themes will show a special
+        symbol indicating the mailbox is full.
+-->
+        メールボックスが満杯と見なすメールの数 &mdash;
+        メールボックスが満杯と見なすメールの数を設定します。特定のテーマではメールボックスが満杯であると示す特別なシンボルを表示します。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        When clicked, run... &mdash; When this is set, clicking
+        the left mouse button on the applet will run a program. The default is
+        to run the <application>Balsa</application> mail client. (If
+        <application>Balsa</application> is not installed, nothing
+        will happen.) Set this to be your favorite email program.
+-->
+        クリックされたときに実行 &mdash;
+        アプレットがクリックされたときに実行するプログラムを指定します。デフォルトでは<application>Balsa</application>メールクライアントが起動します(<application>Balsa</application>がインストールされていない場合は何も起きません)。あなたの好きなメールクライアントを指定してください。
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    <para>
+<!--
+     The properties in the <guilabel>Theme</guilabel> tab allows you
+     to set the appearance of <application>Clock and
+     Mailcheck</application> applet. <application>Clock and
+     Mailcheck</application> applet comes with many themes which are
+     stored in  <filename>$PREFIX/clockmail/</filename>. By 
+     default, it does not use a theme. Note that not all of the themes
+     show both the time and the state of your mailbox. 
+-->
+     <guilabel>テーマ</guilabel>タブでは<application>メールチェック時計</application>アプレットの外観を変更することができます。<application>メールチェック時計</application>アプレットは多くのテーマを<filename>$PREFIX/clockmail/</filename>に用意しています。デフォルトではテーマを利用しません。すべてのテーマが時刻とメールボックスの状態の両方を表示するわけではないことに注意してください。
+    </para>
+
+    <figure id="clockmail-settings-theme-fig">
+<!--
+     <title>Properties dialog showing theme tab</title>
+-->
+     <title>設定ダイアログ テーマタブ</title>
+     <screenshot>
+<!--
+      <screeninfo>Properties dialog showing theme tab</screeninfo>
+-->
+      <screeninfo>設定ダイアログ テーマタブ</screeninfo>
+      <graphic format="png" fileref="figures/clockmail-prefs-theme"
+<!--
+      srccredit="Eric Baudais">
+-->
+      srccredit="KAMAGASAKO Masatoshi">
+      </graphic>
+     </screenshot>
+    </figure>
+
+    <para> 
+<!--
+      After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click the
+      <guibutton>Cancel</guibutton> button.
+-->
+      変更を終えたら<guibutton>OK</guibutton>ボタンをクリックして変更を適用し、<interface>設定</interface>ダイアログを閉じます。変更を取り消して変更前の値に戻すには<guibutton>閉じる</guibutton>ボタンをクリックします。
+    </para>
+  </sect2>
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="clockmail-bugs">
+<!--
+   <title>Known Bugs and Limitations</title>
+-->
+   <title>既知のバグと制限</title>
+    <orderedlist>
+     <listitem>
+      <para>
+<!--
+        You can't change the time through the clock properties. This
+        is not really a bug; it's because you must be root to alter 
+        the time for the whole of the system, using the <command>
+        date</command> command.
+-->
+        時計の設定では時刻を変更できません。これは実際にはバグではありません。システム全体の時刻を変更するには、rootになって<command>date</command>コマンドを利用する必要があります。
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+<!--
+        If you adjust the system clock backwards using the <command>
+        date</command> command, the clock will stop working until the
+        system time reaches the time the clock displays. It will start
+        working normally then.
+-->
+        <command>date</command>コマンドでシステムクロックを後方に調節した場合、システムクロックが時計の表示している時刻になるまで時計は止まります。システムクロックが時計の表示している時刻になると通常通り動き始めます。
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+<!--
+        The mailcounter theme gets the number of messages in your inbox
+        wrong.
+-->
+        mailcounterテーマはあなたのinboxにあるメッセージ数を数え間違えます。
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+<!--
+        Several themes do not reshape to the size of a vertical panel and
+        force the panel to be wider.
+-->
+        いくつかのテーマは垂直なパネルのサイズに合わせて大きさを変えないので、パネルの幅が広がってしまいます。
+      </para>       
+     </listitem>
+     <listitem>
+      <para>
+<!--
+        Doesn't handle multiple mailboxes.
+-->
+        複数のメールボックスを扱えません。
+      </para>
+     </listitem>
+    </orderedlist>
+  </sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+<!--
+   <title>Authors</title>
+-->
+   <title>作者</title>
+   <para>
+<!--
+    <application>ClockMail</application> was written by John Ellis
+    (<email>johne@bellatlantic.net</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+-->
+    このアプレットはRadek Doulik (<email>rodo@ucw.cz</email>)によって書かれました。コメント、提案、バグレポートなどはすべて<ulink url="http://bugs.gnome.org" type="http">GNOMEバグ追跡データベース</ulink>へお願いします(バグレポートの利用法は<ulink url="http://bugs.gnome.org/Reporting.html" type="http">オンライン</ulink>で参照できます)。もしあなたがGNOME 1.1あるいはそれ以降の版を利用しているのなら、<application>バグレポートツール</application>(<command>bug-buddy</command>)を利用できます。これは<guimenu>メインメニュー</guimenu>の<guisubmenu>ユーティリティ</guisubmenu>サブメニューにあり、バグレポートの送信に利用します。
+   </para>
+
+   <para>
+<!--
+    This manual was written by Telsa Gywnne
+    (<email>telsa@linuxchix.org</email>) and Eric Baudais 
+    (<email>baudais@okstate.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+-->
+    このマニュアルはTelsa Gywnne (<email>telsa@linuxchix.org</email>)とEric Baudais (<email>baudais@okstate.edu</email>)によって書かれました。このマニュアルに関するコメントや提案は<ulink type="http" url="http://developer.gnome.org/projects/gdp/">GNOMEドキュメンテーションプロジェクト</ulink>へ<email>docs@gnome.org</email>宛にお寄せください。また、<ulink type="http" url="http://www.gnome.org/gdp/doctable/">GNOMEドキュメンテーションステータステーブル</ulink>を利用してあなたのコメントをオンラインで加えることもできます。
+   </para>
+
+   <!-- For translations: uncomment this:
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+   -->
+
+   <para>
+     この日本語翻訳は鎌ヶ迫正俊(<email>emerald@gnome.gr.jp</email>)によるものです。この翻訳に関するコメントや提案はすべて<email>emerald@gnome.gr.jp</email>へお寄せください。
+   </para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+<!--
+   <title>License</title>
+-->
+    <title>ライセンス</title>
+   <para>
+<!--
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+-->
+    このプログラムはフリーソフトウェアです。フリーソフトウェア財団発行の<citetitle>GNU 一般公有使用許諾契約書</citetitle>第二版あるいは(あなたの選択で)後の版の下おいて再配布や改変することができます。
+   </para>
+   <para>
+<!--
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+-->
+    このプログラムは有用であることを期待して配布していますが、無保証です。商業目的や特定の目的に適合した場合の暗黙の保証すら含まれておりません。詳細は<citetitle>GNU 一般公有使用許諾契約書</citetitle>をご覧ください。
+   </para>
+   <para>
+<!--
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+-->
+    <citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写は<citetitle>GNOMEユーザーズガイド</citetitle>の付録として収録されています。<citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写はフリーソフトウェア財団から、彼らの<ulink type="http" url="http://www.fsf.org">ウェブサイト</ulink>を訪れることにより、また、以下の住所に手紙を書くことによっても入手することも可能です。
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+</sect1>
+ 
