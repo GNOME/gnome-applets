@@ -345,7 +345,8 @@ fill_gkb_applet (PanelApplet *applet)
 }
 
 gboolean gail_loaded = FALSE;
-static gboolean
+
+gboolean
 gkb_factory (PanelApplet *applet,
 		const gchar *iid,
 		gpointer     data)
@@ -356,10 +357,3 @@ gkb_factory (PanelApplet *applet,
 	return !strcmp (iid, "OAFIID:GNOME_KeyboardApplet") &&
 		fill_gkb_applet (applet);
 }
-
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory",
-			     PANEL_TYPE_APPLET,
-                             "gkb",
-                             "0",
-                             gkb_factory,
-                             NULL)

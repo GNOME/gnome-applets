@@ -3,9 +3,9 @@ INCLUDES =                                           \
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"      \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
-libexec_PROGRAMS = gkb-applet-2
 bin_PROGRAMS = gnome-keyboard-layout
 bin_SCRIPTS = gkb_xmmap
+noinst_LIBRARIES = libgkb.a
 
 gkb_COMMON = \
 		gkb.c 		\
@@ -26,12 +26,7 @@ gnome_keyboard_layout_LDADD	= \
 	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)
 
-gkb_applet_2_SOURCES		= $(gkb_COMMON) gkb-applet.c
-gkb_applet_2_LDADD = \
-	$(top_builddir)/screen-exec/libscreen-exec.la \
-	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)
-
-@INTLTOOL_SERVER_RULE@
+libgkb_a_SOURCES		= $(gkb_COMMON) gkb-applet.c
 
 if GKB_SUN
 gkb_DDIRS= xmodmap.sun descs.sun
@@ -52,18 +47,10 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_KeyboardApplet_Factory.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
-
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
-
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_KeyboardApplet.xml
 
 EXTRA_DIST =						\
-	GNOME_KeyboardApplet_Factory.server.in.in	\
 	$(GKB_ICON)					\
 	$(schemas_in_files)					\
 	$(ui_DATA)
