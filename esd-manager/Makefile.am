@@ -11,8 +11,7 @@ esdmanager_applet_SOURCES = \
 
 esdmanager_applet_LDFLAGS = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
-		     $(shell esd-config --libs)
+		     $(GNOMEUI_LIBS) $(ESD_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = esdmanager_applet.desktop
 
