@@ -16,6 +16,8 @@
 
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include "drivemount.h"
 #include "properties.h"
@@ -44,14 +46,28 @@ static void sync_mount_base(DriveData *dd);
 void
 properties_load(DriveData *dd)
 {
-	dd->interval = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "interval", NULL);
-	dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
-	dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
-	dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto-eject", NULL);
-	dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount-point", NULL);
-	dd->autofs_friendly = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "autofs-friendly", NULL);
-	dd->custom_icon_in = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-mounted", NULL);
-	dd->custom_icon_out = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted", NULL);
+	GConfClient *client;
+	gchar *key;
+
+	client = gconf_client_get_default ();
+	key = panel_applet_get_preferences_key (PANEL_APPLET (dd->applet));
+
+	if (gconf_client_dir_exists (client, key, NULL)) {
+		dd->interval = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "interval", NULL);
+		dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
+		dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
+		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto-eject", NULL);
+		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount-point", NULL);
+		dd->autofs_friendly = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "autofs-friendly", NULL);
+		dd->custom_icon_in = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-mounted", NULL);
+		dd->custom_icon_out = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted", NULL);
+	} else {
+		dd->mount_point = g_strdup("/mnt/floppy");
+		dd->interval = 10;
+		properties_save (dd);
+	}
+	g_object_unref (G_OBJECT (client));
+	g_free (key);
 	sync_mount_base(dd);
 }
 
@@ -64,8 +80,12 @@ properties_save(DriveData *dd)
 	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "auto-eject", dd->auto_eject, NULL);
 	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "mount-point", dd->mount_point, NULL);
 	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "autofs-friendly", dd->autofs_friendly, NULL);
-	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-mounted", dd->custom_icon_in, NULL);
-	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted", dd->custom_icon_out, NULL);
+	if (dd->custom_icon_in)
+		panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-mounted",
+					      dd->custom_icon_in, NULL);
+	if (dd->custom_icon_out)
+		panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted",
+					      dd->custom_icon_out, NULL);
 }
 
 void
@@ -248,6 +268,7 @@ handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 		widgets->dd->scale_applet = GTK_TOGGLE_BUTTON(widgets->scale_toggle)->active;
 		widgets->dd->auto_eject = GTK_TOGGLE_BUTTON(widgets->eject_toggle)->active;
 		widgets->dd->autofs_friendly = GTK_TOGGLE_BUTTON(widgets->automount_toggle)->active;
+		sync_mount_base (widgets->dd);
 		redraw_pixmap(widgets->dd);
 		start_callback_update(widgets->dd);
 		properties_save(widgets->dd);
@@ -278,7 +299,6 @@ browse_icons_dialog_popup_handler(GnomeIconEntry *entry, GtkWidget *parent_dialo
     dialog = gnome_icon_entry_pick_dialog(entry);
     if(dialog)
     {
-        g_print("has dialog\n");
         gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(parent_dialog));
     }
 }
