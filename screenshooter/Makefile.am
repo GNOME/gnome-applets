@@ -28,3 +28,5 @@ gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = screenshooter_applet.gnorba
 
 EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(png_DATA) $(scrshot_SCRIPTS)
+
+SUBDIRS = docs

@@ -23,6 +23,8 @@
 #include "config.h"
 #include "screenshooter_applet.h"
 
+void showHelp (AppletWidget * applet, gpointer data);
+
 void
 cb_about (AppletWidget * widget, gpointer data)
 {
@@ -349,6 +351,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 {
 
   user_preferences *ad = &options;
+  static GnomeHelpMenuEntry helpEntry = { NULL, "preferences" };
   GtkWidget *frame;
   GtkWidget *pref_vbox;
   GtkWidget *pref_vbox_2;
@@ -357,11 +360,14 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   GtkWidget *button;
   GtkWidget *entry;
 
+
   if (ad->propwindow)
     {
       gdk_window_raise (ad->propwindow->window);
       return;
     }
+
+  helpEntry.name = gnome_app_id;
 
   /* Grab old property settings for comparison */
   memcpy (&old_options, &options, sizeof (user_preferences));
@@ -382,9 +388,14 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      ("Give audio feedback using the keyboard bell"),
 		      &(ad->beep), pref_vbox);
 
-  create_bool_option (_
-		      ("Display Spurious Options (I got carried away)"),
-		      &(ad->spurious), pref_vbox);
+  button =
+    gtk_check_button_new_with_label (_
+				     ("Display Spurious Options (I got carried away)"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->spurious);
+  gtk_signal_connect (GTK_OBJECT (button), "clicked",
+		      (GtkSignalFunc) spurious_cb, &(ad->spurious));
+  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
+  gtk_widget_show (button);
 
   create_slider_option (_
 			("Delay (seconds) before taking shot "
@@ -827,6 +838,8 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      GTK_SIGNAL_FUNC (property_apply_cb), ad);
   gtk_signal_connect (GTK_OBJECT (ad->propwindow), "destroy",
 		      GTK_SIGNAL_FUNC (property_destroy_cb), ad);
+  gtk_signal_connect (GTK_OBJECT (ad->propwindow), "help",
+		      GTK_SIGNAL_FUNC (gnome_help_pbox_display), &helpEntry);
 
   if (ad->spurious)
     {
@@ -977,6 +990,11 @@ main (int argc, char *argv[])
 					 GNOME_STOCK_MENU_ABOUT,
 					 _ ("About..."),
 					 (AppletCallbackFunc) cb_about, NULL);
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+					 "help",
+					 GNOME_STOCK_MENU_ABOUT,
+					 _ ("Help"),
+					 (AppletCallbackFunc) showHelp, NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					 "properties",
@@ -1651,4 +1669,17 @@ create_slider_option (gchar * label, GtkWidget * target, int *option,
 		      GNOME_PAD_SMALL);
   gtk_widget_show (hscale);
   return frame;
+}
+
+void
+showHelp (AppletWidget * applet, gpointer data)
+{
+  static GnomeHelpMenuEntry help_entry = { NULL, "screenshooter.html" };
+
+  help_entry.name = gnome_app_id;
+
+  gnome_help_display (NULL, &help_entry);
+  return;
+  applet = NULL;
+  data = NULL;
 }
