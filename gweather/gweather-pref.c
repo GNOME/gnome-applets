@@ -800,7 +800,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_port_entry), "focus_out_event",
     		      G_CALLBACK (proxy_port_changed), gw_applet);
     
-    gw_applet->pref_net_proxy_auth_btn = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a uername and password"));
+    gw_applet->pref_net_proxy_auth_btn = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a username and password"));
     gtk_widget_show (gw_applet->pref_net_proxy_auth_btn);
     gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_auth_btn, 
     			FALSE, FALSE, 0);
