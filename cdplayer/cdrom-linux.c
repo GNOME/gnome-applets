@@ -141,6 +141,24 @@ int
 cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat)
 {
 	struct cdrom_subchnl subchnl;
+	int status;
+
+	status = ioctl(cdp->device, CDROM_DRIVE_STATUS, CDSL_CURRENT);
+
+	/*if the status is -1, then it could mean that we just don't support
+	  the CDROM_DRIVE_STATUS ioctl*/
+	if (status != -1) {
+		switch(status) {
+		case CDS_DISC_OK:
+			break;
+		case CDS_TRAY_OPEN:
+			return DISC_TRAY_OPEN;
+		case CDS_DRIVE_NOT_READY:
+			return DISC_DRIVE_NOT_READY;
+		default:
+			break;
+		}
+	}
 
 	subchnl.cdsc_format = CDROM_MSF;
 	if (ioctl(cdp->device, CDROMSUBCHNL, &subchnl) == -1) {
@@ -178,7 +196,7 @@ cdrom_open(char *device, int *errcode)
 
 	cdp = g_malloc(sizeof(struct cdrom_device));
 
-	cdp->device = open(device, O_RDONLY);
+	cdp->device = open(device, O_RDONLY|O_NONBLOCK);
 	if (cdp->device == -1) {
 		*errcode = errno;
 		g_free(cdp);

@@ -90,11 +90,13 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
 	cdrom_device_status_t stat;
+	int status;
 
 	if(!cd_try_open(cd))
 		return 0;
 
-	if (cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
+	status = cdrom_get_status(cd->cdrom_device, &stat);
+	if (status == DISC_NO_ERROR) {
 		switch (stat.audio_status) {
 		case DISC_PLAY:
 			cdrom_pause(cd->cdrom_device);
@@ -110,6 +112,11 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 				   cd->cdrom_device->track1);
 			break;
 		}
+	} else if(status == DISC_TRAY_OPEN) {
+		cdrom_load(cd->cdrom_device);
+		cdrom_read_track_info(cd->cdrom_device);
+		cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
+			   cd->cdrom_device->track1);
 	}
 
 	return 0;
@@ -158,8 +165,16 @@ cdplayer_eject(GtkWidget * w, gpointer data)
 	CDPlayerData *cd = data;
 	if(!cd_try_open(cd))
 		return 0;
-	if(cdrom_get_status(cd->cdrom_device, &stat))
-		cdrom_load(cd->cdrom_device);
+	if(cdrom_get_status(cd->cdrom_device, &stat)==DISC_TRAY_OPEN)
+		/*FIXME: if there is no disc, we get TRAY_OPEN even
+		  if the tray is closed, is this a kernel bug?? or
+		  is this the inteded behaviour, we don't support this
+		  on solaris anyway, but unless we have a good way to
+		  find out if the tray is actually open, we can't do this*/
+		/*cdrom_load(cd->cdrom_device);*/
+		/*in the meantime let's just do eject so that at least that
+		  works*/
+		cdrom_eject(cd->cdrom_device);
 	else
 		cdrom_eject(cd->cdrom_device);
 	return 0;
