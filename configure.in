@@ -44,25 +44,35 @@ dnl ******************************************
 
 dnl PKG_CHECK_MODULES(GNOME_APPLETS, libapplet-2.0 >= $LIBAPPLET_REQUIRED)
 
+PKG_CHECK_MODULES(GNOME_LIBS2, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
+AC_SUBST(GNOME_LIBS2_CFLAGS)
+AC_SUBST(GNOME_LIBS2_LIBS)
+
 build_xml_applets=false
 PKG_CHECK_MODULES(GNOME_XML_APPLETS,
 		  [libxml-2.0 >= $LIBXML_REQUIRED],
 		  build_xml_applets=true,)
-
+AC_SUBST(GNOME_XML_APPLETS_CFLAGS)
+AC_SUBST(GNOME_XML_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_XML_APPLETS, $build_xml_applets)
 
 build_gnome_vfs_applets=false
 PKG_CHECK_MODULES(GNOME_VFS_APPLETS, 
 		  [gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED],
 		  build_gnome_vfs_applets=true,)
-
+AC_SUBST(GNOME_VFS_APPLETS_CFLAGS)
+AC_SUBST(GNOME_VFS_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GNOME_VFS_APPLETS, $build_gnome_vfs_applets)
 
 dnl Still need to decide on the checks for these
 
 PKG_CHECK_MODULES(GDK_PIXBUF_APPLETS, gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQUIRED)
+AC_SUBST(GDK_PIXBUF_APPLETS_CFLAGS)
+AC_SUBST(GDK_PIXBUF_APPLETS_LIBS)
 
 PKG_CHECK_MODULES(LIBGNOMECANVAS_APPLETS, libgnomecanvas-2.0 >= $LIBGNOMECANVAS_REQUIRED)
+AC_SUBST(LIBSGNOMECANVAS_APPLETS_CFLAGS)
+AC_SUBST(LIBSGNOMECANVAS_APPLETS_LIBS)
 
 dnl ******************************************
 dnl ******************************************
@@ -376,6 +386,16 @@ intl/Makefile
 po/Makefile.in
 omf-install/Makefile
 ])
+
+dnl Mostly Ported Applets
+dnl geyes/Makefile
+dnl geyes/docs/Makefile
+dnl geyes/docs/C/Makefile
+dnl geyes/docs/it/Makefile
+dnl geyes/docs/es/Makefile
+dnl geyes/themes/Makefile
+
+dnl Not Ported Applets
 dnl another_clock/Makefile
 dnl another_clock/docs/Makefile
 dnl another_clock/docs/C/Makefile
@@ -437,12 +457,6 @@ dnl fifteen/Makefile
 dnl fifteen/docs/Makefile
 dnl fifteen/docs/C/Makefile
 dnl fifteen/docs/it/Makefile
-dnl geyes/Makefile
-dnl geyes/docs/Makefile
-dnl geyes/docs/C/Makefile
-dnl geyes/docs/it/Makefile
-dnl geyes/docs/es/Makefile
-dnl geyes/themes/Makefile
 dnl gkb-new/Makefile
 dnl gkb-new/gkb/Makefile
 dnl gkb-new/xmodmap/Makefile
