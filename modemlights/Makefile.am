@@ -17,12 +17,6 @@ modemlights_applet_LDADD = \
 
 EXTRA_DIST = \
 	modemlights_applet.desktop	\
-	backgrnd.xpm			\
-	backgrnd_s.xpm			\
-	backgrnd_a.xpm			\
-	button_off.xpm			\
-	button_on.xpm			\
-	lights.xpm			\
 	digits.xpm			\
 	modemlights_applet.gnorba
 

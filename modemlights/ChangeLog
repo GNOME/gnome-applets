@@ -1,3 +1,12 @@
+Sat Aug 28 15:34:30 1999  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.c: Use gdk_draw_*() functions to create the applet's
+	display layout. This way the color scheme can be made to match the
+	gtk theme in use (match the applet's style).
+	* backgrnd.xpm, backgrnd_a.xpm, backgrnd_s.xpm, button_off.xpm,
+	button_on.xpm, lights.xpm: Removed, generated internally now.
+	* Makefile.am (EXTRA_DIST): Remove references to above xpm files.
+
 1999-08-23  Matthias Warkus  <mawa@iname.com>
 
 	* modemlights_applet.desktop: Use gnome-modem.png.

@@ -23,13 +23,7 @@
 
 #include "modemlights.h"
 
-#include "backgrnd.xpm"
-#include "backgrnd_s.xpm"
-#include "backgrnd_a.xpm"
-#include "lights.xpm"
 #include "digits.xpm"
-#include "button_off.xpm"
-#include "button_on.xpm"
 
 #include <stdlib.h>
 #include <signal.h>
@@ -61,20 +55,19 @@ gint show_extra_info = FALSE;	/* display larger version with time/byte count */
 
 GtkWidget *applet;
 static GtkWidget *frame;
-static GtkWidget *display_area;
+static GtkWidget *display_area = NULL;
 static GtkWidget *button;
 static GtkWidget *button_pixmap;
-static GdkPixmap *display;
-static GdkPixmap *display_back;
-static GdkPixmap *display_back_s;
-static GdkPixmap *display_back_a;
-static GdkPixmap *lights;
-static GdkPixmap *digits;
-static GdkPixmap *button_on;
-static GdkPixmap *button_off;
-static GdkGC *gc;
+static GdkPixmap *display = NULL;
+static GdkPixmap *digits = NULL;
+static GdkPixmap *lights = NULL;
+static GdkPixmap *button_on = NULL;
+static GdkPixmap *button_off = NULL;
+static GdkBitmap *button_mask = NULL;
+static GdkGC *gc = NULL;
 static GdkColor rxcolor;
 static GdkColor txcolor;
+static GdkColor bgcolor;
 
 static int update_timeout_id = FALSE;
 static int ip_socket;
@@ -106,14 +99,14 @@ static void dial_cb();
 static void update_tooltip(int connected, int rx, int tx);
 static void redraw_display();
 static void draw_digit(gint n, gint x, gint y);
-static void draw_timer(gint seconds);
+static void draw_timer(gint seconds, gint force);
 static void draw_bytes(gint bytes);
-static gint update_extra_info(int rx_bytes);
+static gint update_extra_info(int rx_bytes, gint force);
 static void draw_load(int rxbytes,int txbytes);
 static void draw_light(int lit,int x,int y);
-static void update_lights(int rx, int tx ,int cd ,int rx_bytes);
+static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force);
 static gint update_display();
-static void create_pixmaps();
+static void update_pixmaps();
 static void setup_colors();
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
 static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
@@ -447,6 +440,12 @@ static void update_tooltip(int connected, int rx, int tx)
 	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),button,text);
 }
 
+/*
+ *-------------------------------------
+ * display drawing
+ *-------------------------------------
+ */
+
 static void redraw_display()
 {
 	gdk_window_set_back_pixmap(display_area->window,display,FALSE);
@@ -459,7 +458,7 @@ static void draw_digit(gint n, gint x, gint y)
 			 digits, n * 5, 0, x, y, 5, 7);
 }
 
-static void draw_timer(gint seconds)
+static void draw_timer(gint seconds, gint force)
 {
 	if (seconds > -1)
 		{
@@ -480,13 +479,14 @@ static void draw_timer(gint seconds)
 		}
 	else
 		{
-/* comment this out so that the last connect time is still printed (useful)
-		draw_digit(10, 2, 36);
-		draw_digit(10, 7, 36);
+		if (force)
+			{
+			draw_digit(10, 2, 36);
+			draw_digit(10, 7, 36);
 
-		draw_digit(10, 17, 36);
-		draw_digit(10, 22, 36);
-*/
+			draw_digit(10, 17, 36);
+			draw_digit(10, 22, 36);
+			}
 
 		draw_digit(14, 12, 36);
 		}
@@ -529,7 +529,7 @@ static void draw_bytes(gint bytes)
 		}
 }
 
-static gint update_extra_info(int rx_bytes)
+static gint update_extra_info(int rx_bytes, gint force)
 {
 	static gint old_timer = -1;
 	static gint old_bytes = -1;
@@ -542,7 +542,7 @@ static gint update_extra_info(int rx_bytes)
 	if (!show_extra_info) return FALSE;
 
 	update_counter++;
-	if (update_counter < UPDATE_DELAY) return FALSE;
+	if (update_counter < UPDATE_DELAY && !force) return FALSE;
 	update_counter = 0;
 
 	if (rx_bytes != -1)
@@ -554,8 +554,12 @@ static gint update_extra_info(int rx_bytes)
 		{
 		old_timer = new_timer;
 		redraw = TRUE;
-
-		draw_timer(new_timer);
+		draw_timer(new_timer, FALSE);
+		}
+	else if (force)
+		{
+		redraw = TRUE;
+		draw_timer(old_timer, TRUE);
 		}
 
 	if (rx_bytes == -1 || old_rx_bytes == -1)
@@ -571,8 +575,12 @@ static gint update_extra_info(int rx_bytes)
 		{
 		old_bytes = new_bytes;
 		redraw = TRUE;
-	
 		draw_bytes(new_bytes);
+		}
+	else if (force)
+		{
+		redraw = TRUE;
+		draw_bytes(old_bytes);
 		}
 
 	old_rx_bytes = rx_bytes;
@@ -580,7 +588,7 @@ static gint update_extra_info(int rx_bytes)
 	return redraw;
 }
 
-static void draw_load(int rxbytes,int txbytes)
+static void draw_load(int rxbytes, int txbytes)
 {
 	int load_max = 0;
 	int i;
@@ -653,7 +661,7 @@ static void draw_load(int rxbytes,int txbytes)
 	redraw_display();
 }
 
-static void draw_light(int lit,int x,int y)
+static void draw_light(int lit, int x, int y)
 {
 	/* if the orientation is sideways (left or right panel), we swap x and y */
 	if (show_extra_info || panel_verticle)
@@ -664,28 +672,29 @@ static void draw_light(int lit,int x,int y)
 		x = 21 - t;
 		}
 
-	/* draw the light */
 	if (lit)
-		gdk_draw_pixmap (display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)], lights, 0, 9, x, y, 9, 9);
+		gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+				 lights, 0, 9, x, y, 9, 9);
 	else
-		gdk_draw_pixmap (display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)], lights, 0, 0, x, y, 9, 9);
+		gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+				 lights, 0, 0, x, y, 9, 9);
 }
 
 /* to minimize drawing (pixmap manipulations) we only draw a light if it has changed */
-static void update_lights(int rx,int tx,int cd, int rx_bytes)
+static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 {
 	static int o_rx = FALSE;
 	static int o_tx = FALSE;
 	static int o_cd = FALSE;
 	int redraw_required = FALSE;
 
-	if (rx != o_rx)
+	if (rx != o_rx || force)
 		{
 		o_rx = rx;
 		draw_light(rx,1,1);
 		redraw_required = TRUE;
 		}
-	if (tx != o_tx)
+	if (tx != o_tx || force)
 		{
 		o_tx = tx;
 		draw_light(tx,10,1);
@@ -695,19 +704,25 @@ static void update_lights(int rx,int tx,int cd, int rx_bytes)
 		{
 		o_cd = cd;
 		if (cd)
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, NULL);
+			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, button_mask);
 		else
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, NULL);
+			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, button_mask);
 		}
 
 	/* we do the extra info redraws here too */
-	if (show_extra_info && update_extra_info(rx_bytes))
+	if (show_extra_info && update_extra_info(rx_bytes, force))
 		{
 		redraw_required = TRUE;
 		}
 
 	if (redraw_required) redraw_display();
 }
+
+/*
+ *-------------------------------------
+ * the main callback loop (1 sec)
+ *-------------------------------------
+ */
 
 static gint update_display()
 {
@@ -739,7 +754,7 @@ static gint update_display()
 			if (tx > old_tx) light_tx = TRUE;
 			}
 		
-		update_lights(light_rx, light_tx, TRUE, rx);
+		update_lights(light_rx, light_tx, TRUE, rx, FALSE);
 		if (load_count > UPDATE_DELAY * 2)
 			{
 			static int load_rx, load_tx;
@@ -779,7 +794,7 @@ static gint update_display()
 			load_count = 0;
 			draw_load(0,0);
 			}
-		update_lights(FALSE, FALSE, FALSE, -1);
+		update_lights(FALSE, FALSE, FALSE, -1, FALSE);
 		if (modem_was_on)
 			{
 			update_tooltip(FALSE,0,0);
@@ -794,6 +809,12 @@ static gint update_display()
 	return TRUE;
 }
 
+/*
+ *-------------------------------------
+ * setup and init
+ *-------------------------------------
+ */
+
 /* start or change the update callback timeout interval */
 void start_callback_update(void)
 {
@@ -804,27 +825,140 @@ void start_callback_update(void)
 
 }
 
-static void create_pixmaps()
+static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
+			    gint etched_in, GdkGC *bgc)
 {
-	GdkBitmap *mask;
+	GdkGC *gc1;
+	GdkGC *gc2;
+
+	if (!etched_in)
+		{
+		gc1 = applet->style->light_gc[GTK_STATE_NORMAL];
+		gc2 = applet->style->dark_gc[GTK_STATE_NORMAL];
+		}
+	else
+		{
+		gc1 = applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc2 = applet->style->light_gc[GTK_STATE_NORMAL];
+		}
+
+	gdk_draw_line(window, gc1, x, y + h - 1, x, y);
+	gdk_draw_line(window, gc1, x, y, x + w - 2, y);
+	gdk_draw_line(window, gc2, x + w - 1, y, x + w - 1, y + h - 1);
+	gdk_draw_line(window, gc2, x + w - 2, y + h - 1, x + 1, y + h - 1);
+
+	if (bgc)
+		{
+		gdk_draw_rectangle(window, bgc, TRUE, x + 1, y + 1, w - 2, h - 2);
+		}
+}
+
+static void create_background_pixmap()
+{
+	if (display) gdk_pixmap_unref(display);
+
+	if (show_extra_info)
+		{
+		display = gdk_pixmap_new(display_area->window, 30, 46, -1);
+		draw_shadow_box(display, 0, 0, 30, 46, FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
+		draw_shadow_box(display, 1, 1, 18, 20, TRUE, applet->style->black_gc);
+		draw_shadow_box(display, 1, 22, 28, 11, TRUE, applet->style->black_gc);
+		draw_shadow_box(display, 1, 34, 28, 11, TRUE, applet->style->black_gc);
+		}
+	else if (panel_verticle)
+		{
+		display = gdk_pixmap_new(display_area->window, 30, 20, -1);
+		draw_shadow_box(display, 0, 0, 30, 20, FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
+		draw_shadow_box(display, 1, 1, 18, 18, TRUE, applet->style->black_gc);
+		}
+	else
+		{
+		display = gdk_pixmap_new(display_area->window, 20, 30, -1);
+		draw_shadow_box(display, 0, 0, 20, 30, FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
+		draw_shadow_box(display, 1, 11, 18, 18, TRUE, applet->style->black_gc);
+		}
+}
+
+static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint etched_in, gint lit)
+{
+	GdkGC *gc1;
+	GdkGC *gc2;
+
+	s -= 8;
+
+	if (lit)
+		gdk_gc_set_foreground( gc, &txcolor );
+	else
+		gdk_gc_set_foreground( gc, &bgcolor );
+
+	if (etched_in)
+		{
+		gc1 = applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc2 = applet->style->light_gc[GTK_STATE_NORMAL];
+		}
+	else
+		{
+		gc1 = applet->style->light_gc[GTK_STATE_NORMAL];
+		gc2 = applet->style->dark_gc[GTK_STATE_NORMAL];
+		}
+
+	/* gdk_draw_arc was always off by one in my attempts (?) */
+
+	gdk_draw_line(pixmap, gc1, x, y + 3, x, y + 4 + s);
+	gdk_draw_line(pixmap, gc1, x + 3, y, x + 4 + s, y);
+	gdk_draw_line(pixmap, gc1, x + 1, y + 2, x + 1, y + 5 + s);
+	gdk_draw_line(pixmap, gc1, x + 2, y + 1, x + 5 + s, y + 1);
+
+	gdk_draw_line(pixmap, gc2, x + 7 + s, y + 3, x + 7 + s, y + 4 + s);
+	gdk_draw_line(pixmap, gc2, x + 3, y + 7 + s, x + 4 + s, y + 7 + s);
+	gdk_draw_line(pixmap, gc2, x + 6 + s, y + 2, x + 6 + s, y + 5 + s);
+	gdk_draw_line(pixmap, gc2, x + 2, y + 6 + s, x + 5 + s, y + 6 + s);
+
+	gdk_draw_rectangle(pixmap, gc, TRUE, x + 3, y + 1, 2 + s, 6 + s);
+	gdk_draw_rectangle(pixmap, gc, TRUE, x + 1, y + 3, 6 + s, 2 + s);
+	gdk_draw_rectangle(pixmap, gc, TRUE, x + 2, y + 2, 4 + s, 4 + s);
+}
+
+static void update_pixmaps()
+{
 	GtkStyle *style;
 	style = gtk_widget_get_style(applet);
 
-	display_back = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_xpm);
-	display_back_s = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_s_xpm);
-	display_back_a = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_a_xpm);
-	lights = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)lights_xpm);
-	digits = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)digits_xpm);
-	button_off = gdk_pixmap_create_from_xpm_d(applet->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)button_off_xpm);
-	button_on = gdk_pixmap_create_from_xpm_d(applet->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)button_on_xpm);
+	if (!digits)
+		{
+		digits = gdk_pixmap_create_from_xpm_d(display_area->window, NULL,
+			&style->bg[GTK_STATE_NORMAL], (gchar **)digits_xpm);
+		}
+	if (!button_on) button_on = gdk_pixmap_new(display_area->window, 10, 10, -1);
+	if (!button_off) button_off = gdk_pixmap_new(display_area->window, 10, 10, -1);
+	if (!button_mask)
+		{
+		GdkGC *mask_gc = NULL;
 
+		button_mask = gdk_pixmap_new(NULL, 10, 10, 1);
+
+		mask_gc = gdk_gc_new(button_mask);
+
+		gdk_gc_set_foreground(mask_gc, &style->black);
+		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 0, 0, 10, 10);
+		gdk_gc_set_foreground(mask_gc, &style->white);
+		/* gdk_draw_arc was always off by one in my attempts (?) */
+		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 3, 0, 4, 10);
+		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 0, 3, 10, 4);
+		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 2, 1, 6, 8);
+		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 1, 2, 8, 6);
+
+		gdk_gc_unref(mask_gc);
+		}
+
+	draw_button_light(button_on, 0, 0, 10, TRUE, TRUE);
+	draw_button_light(button_off, 0, 0, 10, TRUE, FALSE);
+
+	if (!lights) lights = gdk_pixmap_new(display_area->window, 9, 18, -1);
+
+	gdk_draw_rectangle(lights, applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 18);
+	draw_button_light(lights, 0, 0, 9, FALSE, FALSE);
+	draw_button_light(lights, 0, 9, 9, FALSE, TRUE);
 }
 
 static void setup_colors()
@@ -838,6 +972,9 @@ static void setup_colors()
 
 	gdk_color_parse("#00FF00", &txcolor);
         gdk_color_alloc(colormap, &txcolor);
+
+	gdk_color_parse("#004D00", &bgcolor);
+        gdk_color_alloc(colormap, &bgcolor);
 
 	gc = gdk_gc_new( display_area->window );
         gdk_gc_copy( gc, display_area->style->white_gc );
@@ -855,15 +992,14 @@ void reset_orientation(void)
 		panel_verticle = FALSE;
 		}
 
+	create_background_pixmap();
+	update_pixmaps();
 
 	/* resize the applet and set the proper background pixmap */
 	if (show_extra_info)
 		{
 		gtk_widget_set_usize(frame, 46, 46);
-		display = gdk_pixmap_new(display_area->window, 30, 46, -1);
 		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area), 30, 46);
-		gdk_draw_pixmap(display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-			display_back_a, 0, 0, 0, 0, 30, 46);
 		gtk_widget_set_usize(button,16,46);
 		gtk_fixed_move(GTK_FIXED(frame),display_area,16,0);
 		gtk_fixed_move(GTK_FIXED(frame),button,0,0);
@@ -871,10 +1007,7 @@ void reset_orientation(void)
 	else if (panel_verticle)
 		{
 		gtk_widget_set_usize(frame, 46, 20);
-		display = gdk_pixmap_new(display_area->window,30,20,-1);
 		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),30,20);
-		gdk_draw_pixmap(display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-			display_back_s, 0, 0, 0, 0, 30, 20);
 		gtk_widget_set_usize(button,16,20);
 		gtk_fixed_move(GTK_FIXED(frame),display_area,16,0);
 		gtk_fixed_move(GTK_FIXED(frame),button,0,0);
@@ -882,17 +1015,20 @@ void reset_orientation(void)
 	else
 		{
 		gtk_widget_set_usize(frame, 20, 46);
-		display = gdk_pixmap_new(display_area->window,20,30,-1);
 		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),20,30);
-		gdk_draw_pixmap(display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-			display_back, 0, 0, 0, 0, 20, 30);
 		gtk_widget_set_usize(button,20,16);
 		gtk_fixed_move(GTK_FIXED(frame),display_area,0,0);
 		gtk_fixed_move(GTK_FIXED(frame),button,0,30);
 		}
 	/* we set the lights to off so they will be correct on the next update */
-	update_lights(FALSE, FALSE, FALSE, -1);
+	update_lights(FALSE, FALSE, FALSE, -1, TRUE);
 	redraw_display();
+}
+
+/* this is called when the applet's style changes (meaning probably a theme/color change) */
+static void applet_style_change_cb(GtkWidget *widget, GtkStyle *previous_style, gpointer data)
+{
+	reset_orientation();
 }
 
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
@@ -915,10 +1051,6 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 
 int main (int argc, char *argv[])
 {
-	GtkStyle *style;
-	GdkColor button_color = { 0, 0x7F7F, 0x7F7F, 0x7F7F };
-	GdkColor button_color1 = { 0, 0x7A7A, 0x7A7A, 0x7A7A };
-	GdkColor button_color2 = { 0, 0x8A8A, 0x8A8A, 0x8A8A };
 	int i;
 
         /* Initialize the i18n stuff */
@@ -976,14 +1108,6 @@ int main (int argc, char *argv[])
 	gtk_widget_show(display_area);
 
 	button = gtk_button_new();
-
-	/* set button's color */
-	style = gtk_style_new();
-        style->bg[GTK_STATE_NORMAL] = button_color;
-        style->bg[GTK_STATE_ACTIVE] = button_color1;
-        style->bg[GTK_STATE_PRELIGHT] = button_color2;
-        gtk_widget_set_style(button, style);
-
 	gtk_widget_set_usize(button,5,5);
 	gtk_fixed_put(GTK_FIXED(frame),button,5,0);
 	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
@@ -994,7 +1118,7 @@ int main (int argc, char *argv[])
 	gtk_widget_realize(display_area);
 
 	setup_colors();
-	create_pixmaps();
+	update_pixmaps();
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				NULL);
@@ -1002,7 +1126,7 @@ int main (int argc, char *argv[])
 				GTK_SIGNAL_FUNC(applet_change_size),
 				NULL);
 
-	button_pixmap = gtk_pixmap_new(button_off, NULL);
+	button_pixmap = gtk_pixmap_new(button_off, button_mask);
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
 	gtk_widget_show(button_pixmap);
 
@@ -1012,6 +1136,9 @@ int main (int argc, char *argv[])
 	/* by now we know the geometry */
 	setup_done = TRUE;
 	reset_orientation();
+
+	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
+		GTK_SIGNAL_FUNC(applet_style_change_cb), NULL);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), NULL);
@@ -1033,3 +1160,4 @@ int main (int argc, char *argv[])
 	applet_widget_gtk_main();
 	return 0;
 }
+
