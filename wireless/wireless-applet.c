@@ -242,6 +242,7 @@ wireless_applet_update_state (WirelessApplet *applet,
 			percent = 0;
 		} else {
 			percent = (int)rint ((log (link) / log (92)) * 100.0);
+			percent = CLAMP (percent, 0, 100);
 		}
 	}
 

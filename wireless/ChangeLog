@@ -1,5 +1,11 @@
 2002-07-09  Bastien Nocera  <hadess@hadess.net>
 
+	* wireless-applet.c: (wireless_applet_update_state):
+	make sure the percentage doesn't go over 100% (which would prevent the
+	icons from appearing)
+
+2002-07-09  Bastien Nocera  <hadess@hadess.net>
+
 	* .cvsignore: updated
 	* Makefile.am: added deprecation flags
 	* wireless-applet.c: (wireless_applet_load_theme),
