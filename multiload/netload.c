@@ -99,7 +99,14 @@ make_netload_applet (const gchar *goad_id)
 					   GNOME_STOCK_MENU_INDEX,
 					   _("Run gtop..."),
 					   start_gtop_cb, NULL);
-    
+
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "help",
+					   GNOME_STOCK_PIXMAP_HELP,
+					   _("Help"),
+					   multiload_help_cb,
+					   "netload-applet.html");
+
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",
 					   GNOME_STOCK_MENU_ABOUT,

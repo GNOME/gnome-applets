@@ -1,0 +1,111 @@
+<!DOCTYPE sect1 PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+]>
+
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+<!-- notice are  preserved on all copies. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute modified versions of -->
+<!-- this manual under the conditions for verbatim copying, provided -->
+<!-- that the entire resulting derived work is distributed under the -->
+<!-- terms of a permission notice identical to this one. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute translations of this -->
+<!-- manual into another language, under the above conditions for -->
+<!-- modified versions, except that this permission notice may be -->
+<!-- stated in a translation approved by the Foundation. -->
+
+  <sect1 id="cpumemusage-applet">
+   <title>The CPU and memory usage applet</title> 
+
+   <para> 
+     The <application>cpumemusage_applet</application> is a small monitor
+     applet which sits in your panel and tells you about your machine's
+     use of CPU, memory and swap. 
+   </para>  
+ 
+   <sect2 id="cpumemusage-usage">
+    <title>Usage</title>
+    <para>
+      You don't need to do anything to this applet. It will sit and
+      run in your panel.
+    </para>
+    <para>
+      The applet shows three bar charts, for CPU, memory and swap space. 
+      If your panel is horizontal, the top bar is CPU, the middle is
+      memory, and the bottom is swap. If your panel is vertical, the left
+      bar is CPU, the middle is memory, and the right is swap.
+    </para>
+    <variablelist>
+     <varlistentry>
+      <term>CPU</term>
+      <listitem>
+       <para>
+         Three colours are used here. Yellow is used for CPU activity
+         of which does not need the kernel. Grey is used for CPU activity 
+         by programs talking to the kernel (typically, lots of I/O such
+         as moving things between memory and disk). Black is the background
+         and represents unused CPU. 
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Memory</term>
+      <listitem>
+       <para>
+         Four colours are used here. Yellow is used for shared memory
+         (memory more than one program is using). Grey is used for
+         buffer use (memory containing data not yet written to disk).
+         The greenish-yellow is used for other memory use. Green
+         represents unused memory.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Swap</term>
+      <listitem>
+       <para>
+         Two colours are used here. Red is used for swap space in use.
+         Green is for unused swap. Swap is a section of the hard-drive
+         where the kernel puts parts of programs which are not currently
+         being used so that it can retrieve them easily when it needs to.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+
+   <sect2 id="cpumemusage-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    <para> 
+      There are no extra menu items in the applet. 
+    </para>
+   </sect2>
+  
+   <sect2 id="cpumemusage-bugs">
+    <title> Known Bugs and Limitations</title>
+    <para>
+      There are no bugs known for this applet.
+    </para>
+   </sect2>
+
+   <sect2 id="cpumemusage-authors">
+    <title>Authors</title>
+    <para>
+      This applet was writen by Radek Doulik (<email>rodo@ucw.cz</email>).
+      Please report problems with it to the
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+    </para>
+    <para>
+      This guide was written by Telsa Gwynne 
+      (<email>telsa@linuxchix.org</email>) and is almost entirely based on 
+      the earlier documentation from the GNOME 1.0.53 User's Guide by David 
+      Mason (<email>dcm@redhat.com</email>) and David Wheeler. Please
+      report problems with or suggestions for it to the GNOME Documentation
+      Project (<email>docs@gnome.org</email>).
+    </para>
+   </sect2>
+  </sect1>

@@ -150,6 +150,7 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 	break;
     default:
 	g_assert_not_reached ();
+	return;
     }
 
     if (g->prop_data_ptr->adj_data [2])

@@ -44,6 +44,10 @@ multiload_local_properties_cb (AppletWidget *widget, gpointer data);
 void 
 start_gtop_cb (AppletWidget *widget, gpointer data);
 
+/* show help */
+void
+multiload_help_cb (AppletWidget *widget, gpointer data);
+
 /* Load graph properties descriptor. */
 extern GnomePropertyDescriptor LoadGraphProperty_Descriptor;
 

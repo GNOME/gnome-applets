@@ -259,6 +259,13 @@ applet_change_pixel_size(GtkWidget *widget, int s)
 	widget = NULL;
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+    GnomeHelpMenuEntry help_entry = { "cpumemusage_applet", "index.html"};
+    gnome_help_display(NULL, &help_entry);
+}
+
 int
 main(int argc, char **argv)
 {
@@ -279,12 +286,19 @@ main(int argc, char **argv)
         cpumemusage = cpumemusage_widget();
         applet_widget_add( APPLET_WIDGET(applet), cpumemusage );
 
+	applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"),
+					       help_cb, NULL);
+
 	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					       "about",
 					       GNOME_STOCK_MENU_ABOUT,
 					       _("About..."),
 					       cpumemusage_about,
 					       NULL);
+
 	/* Be nice */
 	nice (NICE_VALUE);
 

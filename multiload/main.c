@@ -102,6 +102,15 @@ start_gtop_cb (AppletWidget *widget, gpointer data)
     data = NULL;
 }
               
+/* show help for the applet */
+void
+multiload_help_cb (AppletWidget *applet, gpointer data)
+{
+    GnomeHelpMenuEntry help_entry = { "multiload_applet", NULL };
+    help_entry.path = data;
+    gnome_help_display(NULL, &help_entry);
+}
+
 
 int
 main (int argc, char **argv)

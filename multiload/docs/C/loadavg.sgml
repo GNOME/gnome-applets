@@ -1,0 +1,208 @@
+<!DOCTYPE sect1 PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+]>
+
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+<!-- notice are  preserved on all copies. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute modified versions of -->
+<!-- this manual under the conditions for verbatim copying, provided -->
+<!-- that the entire resulting derived work is distributed under the -->
+<!-- terms of a permission notice identical to this one. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute translations of this -->
+<!-- manual into another language, under the above conditions for -->
+<!-- modified versions, except that this permission notice may be -->
+<!-- stated in a translation approved by the Foundation. -->
+
+  <sect1 id="loadavg-applet">
+   <title>The load average applet</title> 
+
+   <para> 
+     The <application>loadavg_applet</application> is a small monitor
+     applet which sits in your panel and tells you the current load
+     average.  
+   </para>
+  
+   <para>
+     The load average of a machine is a rather arbitrary number which
+     represents how "busy" your machine is. It is calculated as an 
+     average of (very roughly) how many processes there are which are
+     either running or are waiting for a wake-up call from the kernel.
+     It is very useful for comparing over time with different load 
+     averages on your machine, but it is not very useful to compare
+     it with other machines. Normally, it is represented as a fraction.
+   </para>
+ 
+   <sect2 id="loadavg-usage">
+    <title>Usage</title>
+    <para>
+      You don't need to do anything to this applet. It will sit and
+      run in your panel. Various options to alter its display are
+      available. 
+    </para>
+   </sect2>
+
+   <sect2 id="loadavg-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    <para> 
+      In addition to the standard menu items,
+      the right-click pop-up menu has the following items: 
+     </para>   
+
+    <variablelist>
+     <varlistentry>
+      <term>Default Properties...</term>
+      <listitem>
+       <para>
+         This opens the <guilabel>multiload_applet dialogue box</guilabel>
+         <link linkend="loadavg-properties">described below</link> which allows 
+         you to alter the default properties of this and related monitor 
+         applets.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Properties...</term>
+      <listitem>
+       <para>
+         This opens the <guilabel>multiload_applet dialogue box</guilabel>
+         <link linkend="loadavg-properties">described below</link> which
+         affects only the <application>loadavg_applet</application>
+         properties.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Run gtop...</term>
+      <listitem>
+       <para>
+         This option will run the <command>gtop</command> which
+         starts up the GNOME System Monitor. <application>gtop</application>
+         gives a much more detailed look at your system and what's happening
+         on it. 
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+  
+   <sect2 id="loadavg-properties">
+    <title>Properties</title>
+    <para>
+      Like several of the monitor applets,
+      <application>loadavg_applet</application> has two ways of setting
+      preferences. You can make changes that affect any of this group of
+      applets, 
+      (<application>cpuload_applet</application>, <application>memload_applet</application>,
+      <application>swapload_applet</application>, <application>netload_applet</application>
+      and <application>loadavg_applet</application>) in one large dialogue
+      box. This is useful if you run one or more of them. These are the
+      settings used by default. They are reached from the
+      <guimenuitem>Default Properties...</guimenuitem> menu item.
+    </para>
+    <para>
+      Or you can change just the properties for 
+      <application>loadavg_applet</application>. This is useful for when
+      you only use <application>loadavg_applet</application> or want to
+      try new combinations out. It is reached from the 
+      <guimenuitem>Properties</guimenuitem> menu item.
+    </para>
+    <note>
+     <para>
+      If you use the <guimenuitem>Properties...</guimenuitem> menu item
+      and edit the preferences for just this applet, you must uncheck
+      the <guibutton>Use default properties</guibutton> checkbox before
+      you can alter any settings.
+     </para>
+    </note>
+
+    <para>
+      The changes you can make to the properties are four:
+    </para>
+
+    <variablelist>
+     <varlistentry>
+      <term>Colours</term>
+      <listitem>
+       <para>
+         You can alter the colours used for the applet's display
+         clicking on the colour boxes. This invokes the GNOME colour wheel.
+         The titles are a little misleading. "Used" is the current load 
+         average, and "free" is the background colour.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Speed</term>
+       <listitem>
+        <para>
+          You can alter the speed that the graph proceeds with this.
+          It is measured in milliseconds. The default is 500.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Size</term>
+       <listitem>
+        <para>
+          You can alter the size of the applet with this. It is measured
+          in pixels. The default value is 40, and the range is from 1 pixel
+          to whatever you like. In a vertical panel, this refers to the
+          height. In a horizontal panel, it refers to the width. 
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Maximum</term>
+       <listitem>
+        <para>
+          This is the maximum number in the Y axis (the possible
+          maximum load average which the applet will show). The default
+          is 10.
+        </para>
+        <note>
+         <para>
+           This option is only available from the <guimenuitem>Default
+           Properties menu option</guimenuitem>. It does not appear on
+           the dialogue box which is started by the
+           <guimenuitem>Properties menu option</guimenuitem>.
+         </para>
+        </note>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+   </sect2>
+  
+   <sect2 id="loadavg-bugs">
+    <title> Known Bugs and Limitations</title>
+    <para>
+      Resizing and then altering the panel orientation can still cause
+      intermittent problems, although they now fix themselves after a
+      short period.
+    </para>
+   </sect2>
+
+   <sect2 id="loadavg-authors">
+    <title>Authors</title>
+    <para>
+      This applet was writen by Martin Baulig (<email>martin@home-of-linux.org</email>).
+      Please report problems with it to the
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+    </para>
+    <para> 
+      The documentation for this applet which you are reading now was 
+      written by Telsa Gwynne (<email>telsa@linuxchix.org</email>). 
+      Please report problems with or suggestions for it to the GNOME 
+      Documentation Project (<email>docs@gnome.org</email>).
+    </para>
+   </sect2>
+  </sect1>

@@ -177,6 +177,13 @@ make_loadavg_applet (const gchar *goad_id)
 					   start_gtop_cb, NULL);
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "help",
+					   GNOME_STOCK_PIXMAP_HELP,
+					   _("Help"),
+					   multiload_help_cb,
+					   "loadavg-applet.html");
+
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",
 					   GNOME_STOCK_MENU_ABOUT,
 					   _("About..."),

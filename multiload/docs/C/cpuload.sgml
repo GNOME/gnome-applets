@@ -1,0 +1,223 @@
+<!DOCTYPE sect1 PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+]>
+
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+<!-- notice are  preserved on all copies. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute modified versions of -->
+<!-- this manual under the conditions for verbatim copying, provided -->
+<!-- that the entire resulting derived work is distributed under the -->
+<!-- terms of a permission notice identical to this one. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute translations of this -->
+<!-- manual into another language, under the above conditions for -->
+<!-- modified versions, except that this permission notice may be -->
+<!-- stated in a translation approved by the Foundation. -->
+
+  <sect1 id="cpuload-applet">
+   <title>The CPU load applet</title> 
+
+   <para> 
+     The <application>cpuload_applet</application> is a small monitor
+     applet which sits in your panel and tells you how much CPU is
+     being used. 
+   </para>
+
+   <sect2 id="cpuload-usage">
+    <title>Usage</title>
+    <para>
+      You don't need to do anything to this applet. It will sit and
+      run in your panel. Various options to alter its display are
+      available. 
+    </para>
+    <para>
+      <application>cpuload_applet</application> divides CPU use into
+      four sorts:
+    </para>
+    <variablelist>
+     <varlistentry>
+      <term>User</term>
+      <listitem>
+       <para>
+         This measures CPU use in "userland": ie, things not talking to 
+         the kernel. The default colour for this is yellow.
+       </para>
+      </listitem>
+     </varlistentry>
+ 
+     <varlistentry>
+      <term>System</term>
+      <listitem>
+       <para>
+         This measures CPU use that involves the kernel: lots of talking
+         between memory and disc, for example. The default colour is pale
+         grey.
+       </para>
+      </listitem>
+     </varlistentry>
+ 
+     <varlistentry>
+      <term>Nice</term>
+      <listitem>
+       <para>
+         This measures CPU use which is "nice": running at a low priority.
+         The default colour is medium grey. 
+       </para>
+      </listitem>
+     </varlistentry>
+ 
+     <varlistentry>
+      <term>Idle</term>
+      <listitem>
+       <para>
+         Idle measures unused CPU capacity. The default colour is dark grey.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+ 
+   <sect2 id="cpuload-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    <para> 
+     In addition to the standard menu items, the right-click pop-up menu has 
+     the following items: 
+    </para>   
+
+    <variablelist>
+     <varlistentry>
+      <term>Default Properties...</term>
+      <listitem>
+       <para>
+         This opens the <guilabel>multiload_applet dialogue box</guilabel>
+         <link linkend="cpuload-properties">described below</link> which allows 
+         you to alter the default properties of this and related monitor 
+         applets.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Properties...</term>
+      <listitem>
+       <para>
+         This opens the <guilabel>multiload_applet dialogue box</guilabel>
+         <link linkend="cpuload-properties">described below</link> which
+         affects only the <application>cpuload_applet</application>
+         properties.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Run gtop...</term>
+      <listitem>
+       <para>
+         This option will run the <command>gtop</command> which
+         starts up the GNOME System Monitor. <application>gtop</application>
+         gives a much more detailed look at your system and what's happening
+         on it. 
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+  
+   <sect2 id="cpuload-properties">
+    <title>Properties</title>
+    <para>
+      Like several of the monitor applets,
+      <application>cpuload_applet</application> has two ways of setting
+      preferences. You can make changes that affect any of this group 
+      (<application>cpuload_applet</application>, <application>memload_applet</application>,
+      <application>swapload_applet</application>, <application>netload_applet</application>
+      and <application>loadavg_applet</application>) in one large dialogue
+      box. This is useful if you run one or more of them. These are the
+      settings used by default. They are reached from the
+      <guimenuitem>Default Properties...</guimenuitem> menu item.
+    </para>
+    <para>
+      Or you can change just the properties for 
+      <application>cpuload_applet</application>. This is useful for when
+      you only use <application>cpuload_applet</application> or want to
+      try new combinations out. It is reached from the 
+      <guimenuitem>Properties</guimenuitem> menu item.
+    </para>
+    <note>
+     <para>
+      If you use the <guimenuitem>Properties...</guimenuitem> menu item
+      and edit the preferences for just this applet, you must uncheck
+      the <guibutton>Use default properties</guibutton> checkbox before
+      you can alter any settings.
+     </para>
+    </note>
+
+    <para>
+      The changes you can make to the properties are three:
+    </para>
+
+    <variablelist>
+     <varlistentry>
+      <term>Colours</term>
+      <listitem>
+       <para>
+         You can alter the colours used for the different forms of 
+         CPU usage displayed by clicking on the colour boxes. This
+         invokes the GNOME colour wheel.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Speed</term>
+      <listitem>
+       <para>
+         You can alter the speed that the graph proceeds with this.
+         It is measured in milliseconds. The highest value is 1,000,000,000
+         and the lowest is 1. The default is a more sensible 500.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Size</term>
+      <listitem>
+       <para>
+         You can alter the size of the applet with this. It is measured
+         in pixels. The default value is 40, and the range is from 1 pixel
+         to whatever you like. In a vertical panel, this refers to the
+         height. In a horizontal panel, it refers to the width. 
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+  
+   <sect2 id="cpuload-bugs">
+    <title> Known Bugs and Limitations</title>
+    <para>
+      Resizing and then altering the panel orientation can result in
+      intermittent problems, although they now fix themselves after a
+      short period.
+    </para>
+   </sect2>
+
+   <sect2 id="cpuload-authors">
+    <title>Authors</title>
+    <para>
+      This applet was writen by Martin Baulig (<email>martin@home-of-linux.org</email>).
+      Please report problems with it to the
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+    </para>
+    <para>
+      This part of the guide was written by Telsa Gwynne
+      (<email>telsa@linuxchix.org</email>). Please report problems with
+      or suggestions for it to the GNOME Documentation Project
+      (<email>docs@gnome.org</email>).
+    </para>
+   </sect2>
+  </sect1>
