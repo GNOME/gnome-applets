@@ -37,6 +37,7 @@
 #include <dirent.h>
 #include <gdk/gdkx.h>
 
+#define STOCK_QUOTE(sq) ((StockQuote *)(sq))
 
 	GtkWidget *applet;
 	GtkWidget *label;
@@ -50,24 +51,23 @@
 	int location;
 	int MOVE;
 
-	char output[64];
+	typedef struct {
+		char *price;
+		char *change;
+		int color;
+	} StockQuote;
+	GArray *quotes;
 
-	/**
-	 * FOR COLOR
-	 * LEN and the length of output, and colorNum must match
-	 */
-	const int LEN = 20;
-	char outputArray[20][64];
-	char changeArray[20][64];
-	int colorArray[20];
-
-	const int RED = 1;
-	const int GREEN = 2;
+	enum {
+		WHITE,
+		RED,
+		GREEN
+	};
 
 	static const int max_rgb_str_len = 7;
 	static const int max_rgb_str_size = 8;
 
-	int setCounter, getCounter, setColorCounter,getColorCounter;
+	int setCounter;
 
 	GdkGC *gc;
 	GdkColor gdkUcolor,gdkDcolor;
@@ -81,7 +81,6 @@
 	/*  properties vars */
  	 
 	GtkWidget *tik_syms_entry;
-	gchar tik_syms[256];
 
 	GtkWidget *fontDialog = NULL;
 
@@ -132,7 +131,6 @@
 	static void updateOutput(void) ;
 	static void reSetOutputArray(void) ;
 	static void setOutputArray(char *param1) ;
-	static void setColorArray(int theColor) ;
 	void setup_colors(void);
 	int create_gc(void) ;
 	void ucolor_set_cb(GnomeColorPicker *cp) ;
@@ -385,7 +383,7 @@ static void updateOutput(void)
 		int  linenum=0;
 		int AllOneLine=0;
 		int flag=0;
-		char *section = NULL; /* FIXME: correct? this gets rid of warning */
+		char *section = NULL;
 		char *ptr;
 
 		if (strlen(line) > 64) AllOneLine=1;
@@ -442,17 +440,6 @@ static void updateOutput(void)
 					strcpy(change,extractText(line));
 				else
 					strcpy(change,extractText(section));
-
-				if (strstr(change,"-")) {
-					setColorArray(RED);
-				}
-				else if (strstr(change,"+")) {
-					setColorArray(GREEN);
-				}
-				else {
-					setColorArray(0);
-				}
-				
 			}
 			else if (linenum == 4) {
 				if (!AllOneLine) 
@@ -571,14 +558,14 @@ static void updateOutput(void)
 
 		for(i=0;i<setCounter;i++) {
 			totalLen += (gdk_string_width(my_font,
-					outputArray[i]) + 10);
+					STOCK_QUOTE(quotes->data)[i].price) + 10);
 			if (!strcmp(props.output,"default")) {
-				if (*(changeArray[i])) {
+				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
 					totalLen += (gdk_text_width(extra_font,
-							changeArray[i],1) + 10);
+								    STOCK_QUOTE(quotes->data)[i].change,1) + 10);
 				}
 				totalLen += (gdk_string_width(small_font,
-						&changeArray[i][1]) +10 );
+						&STOCK_QUOTE(quotes->data)[i].change[1]) +10 );
 			}
 		}
 
@@ -614,35 +601,35 @@ static void updateOutput(void)
 		for (i=0;i<setCounter;i++) {
 
 			/* COLOR */
-			if (colorArray[i] == GREEN) {
+			if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
 				gdk_gc_set_foreground( gc, &gdkUcolor );
 			}
-			else if (colorArray[i] == RED) {
+			else if (STOCK_QUOTE(quotes->data)->color == RED) {
 				gdk_gc_set_foreground( gc, &gdkDcolor );
 			}
 			else {
 				gdk_gc_copy( gc, drawing_area->style->white_gc );
 			}
 
-			tmpSym = outputArray[i];
+			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
 			gdk_draw_string (pixmap,my_font,
 			gc,
-			location + totalLoc ,14,outputArray[i]);
+			location + totalLoc ,14,STOCK_QUOTE(quotes->data)[i].price);
 			totalLoc += (gdk_string_width(my_font,tmpSym) + 10); 
 
 
 			if (!strcmp(props.output,"default")) {
-				tmpSym = changeArray[i];
-				if (*(changeArray[i])) {
+				tmpSym = STOCK_QUOTE(quotes->data)[i].change;
+				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
 					gdk_draw_text (pixmap,extra_font,
 					     gc, location + totalLoc,
-					     14,changeArray[i],1);
+					     14,STOCK_QUOTE(quotes->data)[i].change,1);
 					totalLoc += (gdk_text_width(extra_font,
-							changeArray[i],1) + 5);
+							STOCK_QUOTE(quotes->data)[i].change,1) + 5);
 				}
 				gdk_draw_string (pixmap,small_font,
 				     gc, location + totalLoc,
-				     14, &changeArray[i][1]);
+				     14, &STOCK_QUOTE(quotes->data)[i].change[1]);
 				totalLoc += (gdk_string_width(small_font,
 						tmpSym) + 10); 
 			}
@@ -991,23 +978,12 @@ static void updateOutput(void)
 	}
 
 	static void remFromClist(GtkWidget *widget, gpointer data) {
-		GList *selection, *seliter;
-		gint row;
-		GtkWidget *clist;
+		GtkCList *clist;
 
-		clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(widget),
-							"clist"));
-		selection = g_list_copy (GTK_CLIST(clist)->selection);
-
-		seliter = selection;
-
-		while(seliter != NULL) {
-			row=GPOINTER_TO_INT(seliter->data);
-			seliter = seliter->next;
-			gtk_clist_remove(GTK_CLIST(clist),row);
-		}
-
-		g_list_free (selection);
+		clist = GTK_CLIST(gtk_object_get_data(GTK_OBJECT(widget),
+						      "clist"));
+		while (GPOINTER_TO_INT(clist->selection))
+			gtk_clist_remove(GTK_CLIST(clist), GPOINTER_TO_INT(clist->selection->data));
 	}
 
 	static GtkWidget *symbolManager() { 
@@ -1148,8 +1124,7 @@ static void updateOutput(void)
 
 		tik_syms_entry = gtk_entry_new_with_max_length(60);
 
-		/* tik_syms var is here if you want a default value */
-		gtk_entry_set_text(GTK_ENTRY(tik_syms_entry), props.tik_syms ? props.tik_syms : tik_syms);
+		gtk_entry_set_text(GTK_ENTRY(tik_syms_entry), props.tik_syms ? props.tik_syms : "");
 		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), "changed",GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
 		check = gtk_check_button_new_with_label(_("Display only symbols and price"));
@@ -1315,7 +1290,7 @@ static void updateOutput(void)
 		if (!applet)
 			g_error("Can't create applet!\n");
 
-	
+		quotes = g_array_new(FALSE, FALSE, sizeof(StockQuote));	
 
 		vbox = gtk_hbox_new (FALSE,0);
 		leftButton = gtk_button_new_with_label("<<");
@@ -1439,25 +1414,15 @@ static void updateOutput(void)
 /*HERE*/
 	/*-----------------------------------------------------------------*/
 	static void reSetOutputArray() {
-		int i;
-		
-		for (i=0;i<LEN;i++) {
-			/* CLEAR EACH SYMBOL'S SPACE */
-			memset(outputArray[i],0,sizeof(outputArray[i]));
 
-			/* CLEAR ASSOC COLOR ARRAY */
-			colorArray[i] = 0;
-
-			/* CLEAR ADDITIONAL INFO */
-			memset(changeArray[i],0,sizeof(changeArray[i]));
-
+		while (quotes->len) {
+			int i = quotes->len - 1;
+			g_free(STOCK_QUOTE(quotes->data)[i].price);
+			g_free(STOCK_QUOTE(quotes->data)[i].change);
+			g_array_remove_index(quotes, i);
 		}
 
 		setCounter = 0;
-		getCounter = 0;
-		setColorCounter = 0;
-		getColorCounter = 0;
-		
 	}	
 
 
@@ -1515,29 +1480,35 @@ static void updateOutput(void)
 
 	/*-----------------------------------------------------------------*/
 	static void setOutputArray(char *param1) {
+		StockQuote quote;
 		char *price;
 		char *change;
 
 		price = splitPrice(param1);
 		change = splitChange(param1);
 
-		if (setCounter < LEN) {
-			
-			strcpy(outputArray[setCounter],price);
-			strcpy(changeArray[setCounter],change);
-		}
+		quote.price = g_strdup(price);
+		quote.change = g_strdup(change);
+
+		if (strstr(change,"-"))
+			quote.color = RED;
+		else if (strstr(change,"+"))
+			quote.color = GREEN;
+		else
+			quote.color = WHITE;
+
+#if 0
+		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
+#endif
+
+		g_array_append_val(quotes, quote);
+
 		setCounter++;
 	}
 
 
 
 	/*-----------------------------------------------------------------*/
-	static void setColorArray(int theColor) {
-		if (setColorCounter < LEN) {
-			colorArray[setColorCounter] = theColor;
-		}
-		setColorCounter++;
-	}
 
 	void setup_colors(void) {
 		GdkColormap *colormap;
