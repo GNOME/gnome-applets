@@ -27,7 +27,13 @@ modemlights_applet_LDADD = ../../panel/libpanel_applet.la \
 
 modemlights_applet_LINK = $(CXXLINK)
 
-EXTRA_DIST = modemlights_applet.desktop
+EXTRA_DIST = \
+	modemlights_applet.desktop	\
+	backgrnd.xpm			\
+	backgrnd_s.xpm			\
+	button_off.xpm			\
+	button_on.xpm			\
+	lights.xpm
 
 sysdir = $(datadir)/applets/Network
 sys_DATA = modemlights_applet.desktop

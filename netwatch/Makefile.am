@@ -26,7 +26,12 @@ netwatch_applet_LDADD = ../../panel/libpanel_applet.la \
 
 netwatch_applet_LINK = $(CXXLINK)
 
-EXTRA_DIST = netwatch_applet.desktop
+EXTRA_DIST = \
+	netwatch_applet.desktop		\
+	netwatch-modem-down.xpm		\
+	netwatch-modem-up.xpm		\
+	netwatch-net-down.xpm		\
+	netwatch-net-up.xpm
 
 sysdir = $(datadir)/applets/Network
 sys_DATA = netwatch_applet.desktop

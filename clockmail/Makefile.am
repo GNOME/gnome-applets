@@ -27,7 +27,11 @@ clockmail_applet_LDADD = ../../panel/libpanel_applet.la \
 
 clockmail_applet_LINK = $(CXXLINK)
 
-EXTRA_DIST = clockmail_applet.desktop
+EXTRA_DIST = \
+	clockmail_applet.desktop	\
+	backgrnd.xpm			\
+	digmed.xpm			\
+	mailpics.xpm
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = clockmail_applet.desktop

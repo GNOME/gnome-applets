@@ -27,7 +27,24 @@ drivemount_applet_LDADD = ../../panel/libpanel_applet.la \
 
 drivemount_applet_LINK = $(CXXLINK)
 
-EXTRA_DIST = drivemount_applet.desktop
+EXTRA_DIST = \
+	drivemount_applet.desktop	\
+	cdrom_h_in.xpm			\
+	cdrom_h_out.xpm			\
+	cdrom_v_in.xpm			\
+	cdrom_v_out.xpm			\
+	floppy_h_in.xpm			\
+	floppy_h_out.xpm		\
+	floppy_v_in.xpm			\
+	floppy_v_out.xpm		\
+	harddisk_h_in.xpm		\
+	harddisk_h_out.xpm		\
+	harddisk_v_in.xpm		\
+	harddisk_v_out.xpm		\
+	zipdrive_h_in.xpm		\
+	zipdrive_h_out.xpm		\
+	zipdrive_v_in.xpm		\
+	zipdrive_v_out.xpm
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = drivemount_applet.desktop
