@@ -84,9 +84,12 @@ close_infile (GqmpegData *gq)
 {
 	g_message ("closing \"%s\"", gq->ifname);
 	gq->connected = FALSE;
-	gdk_input_remove (gq->gdk_input);
-	fclose (gq->ifp);
-	unlink (gq->ifname);
+	if (gq->gdk_input)
+		gdk_input_remove (gq->gdk_input);
+	if (gq->ifp)
+		fclose (gq->ifp);
+	if (gq->ifname)
+		unlink (gq->ifname);
 }
 
 
@@ -114,6 +117,7 @@ is_connected (GqmpegData *gq)
 	if ( (ofd = open (gq->ofname, O_WRONLY | O_NONBLOCK)) == -1) {
 		/*perror ("cannot open gqmpeg command file");*/
 		fclose (gq->ifp);
+		gq->ifp = NULL;
 		unlink (gq->ifname);
 		return FALSE;
 	}

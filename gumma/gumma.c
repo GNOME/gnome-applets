@@ -220,7 +220,7 @@ destroy_player(GtkWidget * widget, void *data)
 static void
 panel_realized(GtkWidget *panel, GummaPlayerData *gpd)
 {
-	panel_update(panel, gpd);
+	panel_update (panel, gpd);
 }
 
 static void
