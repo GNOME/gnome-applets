@@ -30,6 +30,7 @@ ui_DATA = GNOME_MixerApplet.xml
 EXTRA_DIST = 						\
 	$(server_DATA) 					\
 	$(server_in_files)				\
+	$(ui_DATA) 					\
 	volume-max.xpm					\
 	volume-medium.xpm				\
 	volume-min.xpm					\
