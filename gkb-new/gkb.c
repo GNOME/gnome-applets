@@ -32,6 +32,12 @@
 #include <sys/stat.h>
 #include "gkb.h"
 
+#define COUNT1(x1,x2,x3,x4,x5) aw=ph*x1; ah=ph*x2; fw=ph*x3; fh=ph*x4; \
+                               lw=ph*x3; lh=ph*x4; am=x5;
+
+#define COUNT2(x1,x2,x3,x4,x5) aw=pw*x1; ah=pw*x2; fw=pw*x3; fh=pw*x4; \
+                               lw=pw*x3; lh=pw*x4; am=x5;
+
 GtkWidget *bah_window = NULL;
 
 static void gkb_button_press_event_cb (GtkWidget * widget,
@@ -101,7 +107,6 @@ makepix (GkbKeymap *keymap, char *fname, int w, int h)
     }
 }
 
-
 /**
  * gkb_draw:
  * @gkb: 
@@ -115,16 +120,18 @@ gkb_draw (GKB * gkb)
 
   g_return_if_fail (gkb->darea != NULL);
   g_return_if_fail (gkb->keymap != NULL);
-  g_return_if_fail (gkb->keymap->pix != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
 
-  gdk_draw_pixmap (gkb->darea->window,
+  if ((gkb->appearance == GKB_FLAG) || 
+   (gkb->appearance == GKB_FLAG_AND_LABEL))
+   {
+    g_return_if_fail (gkb->keymap->pix != NULL);
+    gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
 		   gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
-
+   }
   applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
 }
-
 
 /**
  * gkb_sized_render:
@@ -136,9 +143,14 @@ gkb_draw (GKB * gkb)
 void
 gkb_sized_render (GKB * gkb)
 {
+  gint pw, ph, aw, ah, fw, fh, lw, lh; /* panel, applet, flag, 
+                                          label width, height */
+  gint am; /* Appearance mode: 0:flag 1:label 2:hbox 3:vbox */
+
+  gint size;
+
   GkbKeymap *keymap;
   GList *list;
-  gint size;
 
   debug (FALSE, "");
 
@@ -147,21 +159,90 @@ gkb_sized_render (GKB * gkb)
   else
     size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
+  if (gkb->is_small)
+    size /= 2;
+
+  pw = ph = size;
+
   if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
-    {
-      gkb->h = size;
-      gkb->w = (int) gkb->h * 1.5;
-    }
+   {
+     if (gkb->appearance == GKB_FLAG_AND_LABEL)
+     {
+      if (size < 25)
+       { /* 1 */
+         COUNT1(3,1,1.5,1,2);
+       }
+      else
+       { /* 4 */
+	COUNT1(0.75,1,0.75,0.5,3);
+       }
+     }
+    else
+     if (gkb->appearance == GKB_FLAG)
+      { /* 2 */
+      COUNT1(1.5,1,1.5,1,0);
+      }
+     else
+      {
+      /* 3 */
+      COUNT1(1.5,1,1.5,1,1);
+      }
+   }
   else
-    {
-      gkb->w = size;
-      gkb->h = (int) gkb->w / 1.5;
-    }
+   {
+     if (gkb->appearance == GKB_FLAG_AND_LABEL)
+     {
+      if (size < 25)
+       { /* 5 */
+        COUNT2(1,3,1,1.5,3);
+       }
+      else
+       { /* 8 */
+        COUNT2(1,1.5,0.5,0.75,2);
+       }
+     }
+    else
+     if (gkb->appearance == GKB_FLAG)
+      { /* 6 */
+      COUNT2(1.5,1,1.5,1,0);
+      }
+     else
+      {
+      /* 7 */
+      COUNT2(1.5,1,1.5,1,1);
+      }
+   }
 
+  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), aw, ah);
+  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), fw, fh);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->darea), fw, fh);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->label), fw, fh);
 
+  gkb->w = fw;
+  gkb->h = fh;
+            
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
   gtk_widget_queue_resize (gkb->darea->parent->parent);
+
+  switch(am) {
+  case 0: 
+      gtk_widget_show_all (gkb->darea_frame);
+      gtk_widget_hide (gkb->label_frame);  
+  break;
+  case 1: 
+      gtk_widget_show_all (gkb->label_frame);
+      gtk_widget_hide (gkb->darea_frame);
+  break;
+  case 2: 
+     gtk_widget_show_all (gkb->label_frame);
+     gtk_widget_show_all (gkb->darea_frame);  
+  break;
+  case 3: 
+     gtk_widget_show_all (gkb->label_frame);
+     gtk_widget_show_all (gkb->darea_frame);
+  break;
+  }
 
   list = gkb->maps;
   for (; list != NULL; list = list->next) {
@@ -200,56 +281,12 @@ gkb_update (GKB * gkb, gboolean set_command)
    * keymap, so when the set_commadn is false, it means that we
    * have changed size. In other words, we can't change size &
    * keymap at the same time */
-  if (gkb->is_small)
-   {
-    if (gkb->appearance == GKB_FLAG)
-     {
-      gtk_widget_show_all (gkb->darea_frame);
-      gtk_widget_hide (gkb->label_frame);
-      if (!set_command)
-       gkb_sized_render (gkb);  
-      gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
-      gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
-      gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
-      gkb_draw (gkb);
-     }
-    else if (gkb->appearance == GKB_LABEL)
-     {
-      gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
-      gtk_widget_set_usize (GTK_WIDGET (gkb->label), gkb->w, gkb->h);
-      gtk_widget_show_all (gkb->label_frame);
-      gtk_widget_hide (gkb->darea_frame);
-      gtk_label_set_text(GTK_LABEL(gkb->label),g_strdup(gkb->keymap->label));
-     } 
-   else 
-    {
-     gtk_widget_show_all (gkb->label_frame);
-     gtk_widget_show_all (gkb->darea_frame);
-     gtk_widget_set_usize (GTK_WIDGET (gkb->label), gkb->w, gkb->h);
-     gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h * 2);
-     gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
-     gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
-     gtk_label_set_text (GTK_LABEL(gkb->label),g_strdup(gkb->keymap->label));
-     if (!set_command)
-      gkb_sized_render (gkb); 
-     gkb_draw (gkb);
-    }
-   }
-  else
-   {
-     gtk_widget_show_all (gkb->darea_frame);
-     gtk_widget_hide (gkb->label_frame);
-     if (!set_command)
-      gkb_sized_render (gkb);  
-     gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
-     gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
-     gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
-     gkb_draw (gkb);
-   }
  
   if (set_command)
      gkb_system_set_keymap (gkb);
-
+  else
+     gkb_sized_render (gkb);
+  gkb_draw (gkb);
 }
 
 static void
@@ -610,8 +647,9 @@ about_cb (AppletWidget * widget)
       return;
     }
 
-  authors[0] = "Szabolcs BAN <shooby@gnome.hu>";
-  authors[1] = NULL;
+  authors[0] = N_("Szabolcs BAN <shooby@gnome.hu>");
+  authors[1] = N_("Chema Celorio <chema@celorio.com>");
+  authors[2] = NULL;
 
   about = gnome_about_new (_("The GNOME KeyBoard Switcher Applet"),
 			   VERSION,
@@ -751,6 +789,7 @@ gkb_activator (CORBA_Object poa_in,
 	       const char **params,
 	       gpointer * impl_ptr, CORBA_Environment * ev)
 {
+  static guint key = 0;
   PortableServer_POA poa = (PortableServer_POA) poa_in;
 
   debug (FALSE, "");
@@ -789,6 +828,13 @@ gkb_activator (CORBA_Object poa_in,
   gtk_widget_show (gkb->applet);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
+
+  key = XKeysymToKeycode(GDK_DISPLAY(),
+                 gkb->keysym);
+
+  XGrabKey (GDK_DISPLAY(), key, gkb->state,
+                           GDK_ROOT_WINDOW(), True, 
+                           GrabModeAsync, GrabModeAsync);
 
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);

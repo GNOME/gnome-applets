@@ -194,11 +194,6 @@ gkb_prop_appearance_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
 
   pbi->appearance = gkb_util_get_appearance_from_text (text);
 
-  if (pbi->appearance == GKB_FLAG_AND_LABEL)
-   {
-    pbi->is_small = TRUE;
-   }
-
   gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
 }
 
