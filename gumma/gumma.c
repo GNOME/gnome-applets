@@ -82,6 +82,8 @@ panel_update(GtkWidget *panel, GummaPlayerData *gpd)
 			    gpd->panel.track);
 		break;
 	}
+	return;
+	panel = NULL;
 }
 
 static int 
@@ -100,6 +102,7 @@ play_pause_cb (GtkWidget *w, gpointer data)
 		gpd->plugin->do_verb (GUMMA_VERB_PLAY,
 				      gpd->data);
 	return FALSE;
+	w = NULL;
 }
 
 static int 
@@ -292,6 +295,8 @@ destroy_player(GtkWidget * widget, void *data)
 	gtk_timeout_remove(gpd->timeout);
 	gpd->plugin->denit (gpd->data);
 	g_free (gpd);
+	return;
+	widget = NULL;
 }
 
 static void
@@ -405,6 +410,8 @@ about_cb (AppletWidget *applet, gpointer data)
 
 	gtk_widget_show(about_box);
 	return;
+	applet = NULL;
+	data = NULL;
 }
 
 static void
@@ -416,6 +423,7 @@ about_plugin_cb (AppletWidget *w, gpointer data)
 	gpd->plugin->about (gpd->data);
 
 	return;
+	w = NULL;
 }
 
 static gboolean
@@ -450,6 +458,7 @@ clicked_cb (GtkWidget *dialog, gint button, gpointer data)
 
 	/*gtk_widget_destroy (dialog);*/
 	return FALSE;
+	dialog = NULL;
 }
 
 static gint
@@ -458,6 +467,7 @@ cleanup (GtkWidget *w, gpointer data)
 	char *s = data;
 	g_free (s);
 	return FALSE;
+	w = NULL;
 }
 
 static void
@@ -527,6 +537,8 @@ plugin_cb (AppletWidget *applet, gpointer data)
 			    &dialog);
 	
 	gtk_widget_show_all (dialog);
+	return;
+	applet = NULL;
 }
 
 static gint
@@ -539,6 +551,8 @@ save_session_cb (GtkWidget *widget, gchar *privcfgpath,
 	gnome_config_pop_prefix ();
 	gnome_config_sync ();
 	return FALSE;
+	widget = NULL;
+	globcfgpath = NULL;
 }
 
 int

@@ -79,6 +79,7 @@ static GtkWidget *
 gqmpeg_get_config_page (gpointer data)
 {
 	return NULL;
+	data = NULL;
 }
 
 static void
@@ -243,6 +244,8 @@ parse_input (gpointer data, gint source,
 		
 	}
 #endif
+	return;
+	source = 0;
 }
 
 static gpointer
@@ -292,6 +295,8 @@ static void
 gqmpeg_data_dropped (GtkSelectionData *selection, gpointer data)
 {
 	return;
+	selection = NULL;
+	data = NULL;
 }
 
 static void
@@ -330,4 +335,6 @@ gqmpeg_about (gpointer data)
 				     NULL);
 	
 	gtk_widget_show (about_box);
+	return;
+	data = NULL;
 }

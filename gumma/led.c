@@ -40,6 +40,8 @@ led_create_widget(GtkWidget * window, GtkWidget ** time, GtkWidget ** track)
 	*track = gtk_pixmap_new(pix,NULL);
 	
 	gdk_gc_destroy(gc);
+	return;
+	w = NULL;
 }
 
 void

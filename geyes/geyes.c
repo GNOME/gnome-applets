@@ -35,8 +35,10 @@ guint timeout_handle = -1;
 static void 
 applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
-		gtk_widget_set_rc_style(dest);
+	gtk_widget_set_rc_style(dest);
         gtk_widget_queue_draw (dest);
+	return;
+	src = NULL;
 }
 
 static void
@@ -115,6 +117,8 @@ applet_back_change (GtkWidget *w,
                 applet_set_default_back (applet->fixed, applet->hbox);
 		break;
 	}
+	return;
+	w = NULL;
 }
 
 /* TODO - Optimize this a bit */
@@ -280,7 +284,9 @@ save_session_cb (GtkWidget *widget,
                  gchar *globcfgpath)
 {
         properties_save (privcfgpath);
-        return FALSE;
+	return FALSE;
+	widget = NULL;
+	globcfgpath = NULL;
 }
 
 void 
@@ -337,9 +343,12 @@ create_eyes (void)
 static gint
 delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
-	    gtk_timeout_remove (timeout_handle);
-	    timeout_handle = -1;
-		return FALSE;
+	gtk_timeout_remove (timeout_handle);
+	timeout_handle = -1;
+	return FALSE;
+	widget = NULL;
+	data = NULL;
+	event = NULL;
 }
 
 static void

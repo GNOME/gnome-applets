@@ -84,6 +84,7 @@ static GtkWidget *
 xmms_get_config_page (gpointer data)
 {
 	return NULL;
+	data = NULL;
 }
 
 static gpointer
@@ -117,6 +118,8 @@ static void
 xmms_data_dropped (GtkSelectionData *selection, gpointer data)
 {
 	return;
+	selection = NULL;
+	data = NULL;
 }
 
 static void
@@ -155,4 +158,6 @@ xmms_about (gpointer data)
 				    NULL);
 
 	gtk_widget_show(about_box);
+	return;
+	data = NULL;
 }
