@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.3.1\n"
-"POT-Creation-Date: 2003-04-23 10:47+0800\n"
-"PO-Revision-Date: 2003-04-23 21:58+0800\n"
+"Project-Id-Version: gnome-applets 2.3.2\n"
+"POT-Creation-Date: 2003-05-09 11:21+0800\n"
+"PO-Revision-Date: 2003-05-09 11:41+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -268,13 +268,13 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:518
-#: charpick/charpick.c:500 drivemount/drivemount.c:453 geyes/geyes.c:228
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:544
+#: charpick/charpick.c:500 drivemount/drivemount.c:490 geyes/geyes.c:228
 #: gkb-new/gkb.c:622 gtik/gtik.c:706 gweather/gweather-about.c:44
-#: mailcheck/mailcheck.c:1873 mini-commander/src/about.c:48 mixer/mixer.c:925
+#: mailcheck/mailcheck.c:1875 mini-commander/src/about.c:48 mixer/mixer.c:992
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: stickynotes/stickynotes.glade.h:32 stickynotes/stickynotes_applet.c:252
-#: wireless/wireless-applet.c:726
+#: stickynotes/stickynotes.glade.h:37 stickynotes/stickynotes_applet.c:252
+#: wireless/wireless-applet.c:733
 msgid "translator_credits"
 msgstr ""
 "i18n 程式中文化計劃\n"
@@ -292,94 +292,117 @@ msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "此公用程式能顯示攜帶型電腦的電池狀態。"
 
+#: battstat/battstat_applet.glade.h:1
+#: mini-commander/src/mini-commander.glade.h:1
+#: stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr ""
+
 #: battstat/battstat_applet.glade.h:2
+#: mini-commander/src/mini-commander.glade.h:2
+#: stickynotes/stickynotes.glade.h:2
+msgid "*"
+msgstr "*"
+
+#: battstat/battstat_applet.glade.h:4
 #, no-c-format
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1393
-#: mini-commander/src/mini-commander.glade.h:3
+#: battstat/battstat_applet.glade.h:6
+#, no-c-format
+msgid "<b>Battery Color Levels (%)</b>"
+msgstr "<b>不同電量的電池顏色 (%)</b>"
+
+#: battstat/battstat_applet.glade.h:7
+msgid "<b>Layout</b>"
+msgstr "<b>配置</b>"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "<b>Progress Bar Direction</b>"
+msgstr "<b>進度棒的方向</b>"
+
+#: battstat/battstat_applet.glade.h:9
+msgid "<b>Suspend</b>"
+msgstr "<b>暫停模式</b>"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "<b>Warnings</b>"
+msgstr "<b>警告</b>"
+
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1403
 msgid "Appearance"
 msgstr "外觀"
 
-#: battstat/battstat_applet.glade.h:4
-msgid "Applet layout"
-msgstr "面板程式配置"
-
-#: battstat/battstat_applet.glade.h:5
+#: battstat/battstat_applet.glade.h:12
 msgid "Battery Charge Monitor Preferences"
 msgstr "電池電量監控偏好設定"
 
-#: battstat/battstat_applet.glade.h:7
-#, no-c-format
-msgid "Battery color levels (%)"
-msgstr "不同電量的電池顏色 (%)"
-
-#: battstat/battstat_applet.glade.h:8
-msgid "Beep when either of the above is true"
-msgstr "遇到以上情況時發出聲響"
-
-#: battstat/battstat_applet.glade.h:9 drivemount/properties.c:300
-#: gweather/gweather-pref.c:264 mailcheck/mailcheck.c:1518
-#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:304
+#: gweather/gweather-pref.c:293 mailcheck/mailcheck.c:1518
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:474
 msgid "General"
 msgstr "一般"
 
-#: battstat/battstat_applet.glade.h:10
-msgid "Hide"
-msgstr "隱藏"
-
-#: battstat/battstat_applet.glade.h:11
-msgid "Move towards bottom"
-msgstr "由上至下"
-
-#: battstat/battstat_applet.glade.h:12
-msgid "Move towards top"
-msgstr "由下至上"
-
-#: battstat/battstat_applet.glade.h:13
-msgid "Notify me when battery charge is low"
-msgstr "當電量太低時請通知我"
-
 #: battstat/battstat_applet.glade.h:14
-msgid "Notify me when battery is fully re-charged"
-msgstr "當電量全滿時請通知我"
+msgid "Moves towards _bottom"
+msgstr "由上至下(_B)"
 
 #: battstat/battstat_applet.glade.h:15
-msgid "Orange:"
-msgstr "橙︰"
+msgid "Moves towards _top"
+msgstr "由下至上(_T)"
 
 #: battstat/battstat_applet.glade.h:16
-msgid "Preview:"
-msgstr "預覽："
+msgid "Sho_w battery charge percentages"
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:17
-msgid "Progress bar direction"
-msgstr "進度棒的方向"
+msgid "Show _power connection status"
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:18
-msgid "Red:"
-msgstr "紅︰"
+msgid "War_n when battery is fully re-charged"
+msgstr "當完全充電後發出警告(_N)"
 
 #: battstat/battstat_applet.glade.h:19
-msgid "Show"
-msgstr "顯示"
+msgid "_Beep when displaying a warning"
+msgstr "顯示警告訊息時同時發出聲響(_B)"
 
 #: battstat/battstat_applet.glade.h:20
-msgid "Suspend"
-msgstr "暫停模式"
+msgid "_Orange:"
+msgstr "橙(_O)︰"
 
 #: battstat/battstat_applet.glade.h:21
-msgid "Suspend command:"
-msgstr "暫停模式指令︰"
+msgid "_Preview:"
+msgstr "預覽(_P)："
 
 #: battstat/battstat_applet.glade.h:22
-msgid "Warnings"
-msgstr "警告"
+msgid "_Red:"
+msgstr "紅(_R)︰"
 
 #: battstat/battstat_applet.glade.h:23
-msgid "Yellow:"
-msgstr "黃︰"
+msgid "_Show battery status"
+msgstr "顯示電池狀態(_S)"
+
+#: battstat/battstat_applet.glade.h:24
+msgid "_Suspend command:"
+msgstr "暫停模式指令(_S)︰"
+
+#: battstat/battstat_applet.glade.h:25
+msgid "_Warn when battery charge is low"
+msgstr "當電量太低時發出警告(_W)"
+
+#: battstat/battstat_applet.glade.h:26
+msgid "_Yellow:"
+msgstr "黃(_Y)︰"
+
+#: battstat/properties.c:256 drivemount/drivemount.c:455
+#: drivemount/properties.c:508 mailcheck/mailcheck.c:1741
+#: mailcheck/mailcheck.c:1953 mini-commander/src/preferences.c:352
+#: mixer/mixer.c:1099
+#, c-format
+msgid "There was an error displaying help: %s"
+msgstr "顯示說明文件時出現錯誤：%s"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -393,8 +416,8 @@ msgstr "電池電量全滿"
 msgid "Battery power low"
 msgstr "電池電量過低"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:536 cdplayer/cdplayer.c:945
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:190
+#: cdplayer/cdplayer.c:562 cdplayer/cdplayer.c:992
 msgid "CD Player"
 msgstr "CD 播放程式"
 
@@ -419,61 +442,62 @@ msgstr "播放音樂 CD 的面板程式"
 msgid "_Run External CD Player"
 msgstr "執行外部的 CD 播放程式(_R)"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:935
+#: cdplayer/cdplayer.c:170 cdplayer/cdplayer.c:982
 msgid "Stop"
 msgstr "停止"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:937
+#: cdplayer/cdplayer.c:174 cdplayer/cdplayer.c:984
 msgid "Play / Pause"
 msgstr "播放 / 暫停"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:986
 msgid "Eject"
 msgstr "退出碟片"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:941
+#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:988
 msgid "Previous Track"
 msgstr "上一首"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:943
+#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:990
 msgid "Next Track"
 msgstr "下一首"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:891
+#: cdplayer/cdplayer.c:231
+msgid "You do not have permission to use the CD player."
+msgstr ""
+
+#: cdplayer/cdplayer.c:334 drivemount/drivemount.c:399 mixer/mixer.c:958
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "執行‘%s’時出現錯誤：%s"
 
-#: cdplayer/cdplayer.c:422
+#: cdplayer/cdplayer.c:385
+#, c-format
+msgid "%s does not seem to be a CD player"
+msgstr ""
+
+#: cdplayer/cdplayer.c:451
 msgid "CD Player Preferences"
 msgstr "CD 播放程式偏好設定"
 
-#: cdplayer/cdplayer.c:442
-msgid "Disc Image"
-msgstr "碟片影像檔"
-
-#: cdplayer/cdplayer.c:442
-msgid "An image of a cd-rom disc"
-msgstr "Cd-rom 碟片的影像檔"
-
-#: cdplayer/cdplayer.c:444
+#: cdplayer/cdplayer.c:470
 msgid "Device _Path:"
 msgstr "裝置的路徑(_P)："
 
-#: cdplayer/cdplayer.c:453
+#: cdplayer/cdplayer.c:479
 msgid "Device Path"
 msgstr "裝置的路徑"
 
-#: cdplayer/cdplayer.c:453
+#: cdplayer/cdplayer.c:479
 msgid "Set the device path here"
 msgstr "在這裡設定裝置的路徑"
 
-#: cdplayer/cdplayer.c:456
+#: cdplayer/cdplayer.c:482
 msgid "Use _Default"
 msgstr "使用預設值(_D)"
 
-#: cdplayer/cdplayer.c:537
+#: cdplayer/cdplayer.c:563
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -481,44 +505,44 @@ msgstr ""
 "版權所有 © 1997 The Free Software Foundation\n"
 "版權所有 © 2001 Chris Phelps (GNOME 2 移植版本)"
 
-#: cdplayer/cdplayer.c:539 cdplayer/cdplayer.c:946
+#: cdplayer/cdplayer.c:565 cdplayer/cdplayer.c:993
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "播放 CD 面板程式可在面板上提供簡單的播放音樂 CD 控制界面"
 
-#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:807
+#: cdplayer/cdplayer.c:822 cdplayer/cdplayer.c:833
 msgid "Elapsed time"
 msgstr "播放時間"
 
-#: cdplayer/cdplayer.c:799 cdplayer/cdplayer.c:809
+#: cdplayer/cdplayer.c:825 cdplayer/cdplayer.c:835
 msgid "Track number"
 msgstr "音軌號碼"
 
-#: cdplayer/cdplayer.c:861
+#: cdplayer/cdplayer.c:891
 msgid "Audio device is busy, or being used by another application"
 msgstr "音效裝置現正處理資料，或是有其它程式正在使用"
 
-#: cdplayer/cdplayer.c:936
+#: cdplayer/cdplayer.c:983
 msgid "Click this button to Stop playing the CD"
 msgstr "按下本按鈕可停止播放 CD"
 
-#: cdplayer/cdplayer.c:938
+#: cdplayer/cdplayer.c:985
 msgid "Click this button to Play or Pause the CD"
 msgstr "按下本按鈕可播放或暫停播放 CD"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:987
 msgid "Click this button to eject the CD"
 msgstr "按下本按鈕可退出 CD 碟片"
 
-#: cdplayer/cdplayer.c:942
+#: cdplayer/cdplayer.c:989
 msgid "Click this button to Play the previous track in the CD"
 msgstr "按下本按鈕可播放 CD 的上一個音軌"
 
-#: cdplayer/cdplayer.c:944
+#: cdplayer/cdplayer.c:991
 msgid "Click this button to Play the next track in the CD"
 msgstr "按下本按鈕可播放 CD 的下一個音軌"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:518
-#: charpick/charpick.c:661
+#: charpick/charpick.c:661 charpick/properties.c:286
 msgid "Character Palette"
 msgstr "字元選擇盤"
 
@@ -560,40 +584,28 @@ msgstr ""
 "用來選擇在鍵盤上找不到的特殊字元的 GNOME 面板程式。遵照 GNU 通用公共許可證條"
 "款 (GPL) 發行。"
 
-#: charpick/properties.c:50
-msgid "Edit Palette"
-msgstr ""
-
-#: charpick/properties.c:55
-msgid "_Accept"
-msgstr "接受(_A)"
-
-#: charpick/properties.c:65
+#: charpick/properties.c:69
 msgid "_Palette:"
-msgstr ""
+msgstr "選字盤(_P)："
 
-#: charpick/properties.c:279
-msgid "Palettes"
-msgstr ""
+#: charpick/properties.c:104
+msgid "Add Palette"
+msgstr "新增選字盤"
 
-#: charpick/properties.c:288
-msgid "_Add Palette"
-msgstr ""
+#: charpick/properties.c:139
+msgid "Edit Palette"
+msgstr "修改選字盤"
 
-#: charpick/properties.c:292
-msgid "_Edit Palette"
-msgstr ""
+#: charpick/properties.c:291
+msgid "Pal_ettes:"
+msgstr "選字盤(_E)："
 
-#: charpick/properties.c:296
-msgid "_Delete Palette"
-msgstr ""
-
-#: charpick/properties.c:348
+#: charpick/properties.c:363
 msgid "Character Palette Preferences"
 msgstr "字元選擇盤偏好設定"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:471
+#: drivemount/drivemount.c:508
 msgid "Disk Mounter"
 msgstr "檔案系統掛載程式"
 
@@ -617,31 +629,31 @@ msgstr "瀏覽(_B)..."
 msgid "_Eject"
 msgstr "退出碟片(_E)"
 
-#: drivemount/drivemount.c:472
+#: drivemount/drivemount.c:509
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "版權所有 © 1999-2001 GNOME 開發者\n"
 
-#: drivemount/drivemount.c:474
+#: drivemount/drivemount.c:511
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "掛載及卸載檔案系統的面板程式。"
 
-#: drivemount/drivemount.c:674
+#: drivemount/drivemount.c:711
 msgid " mounted"
 msgstr " 已掛載"
 
-#: drivemount/drivemount.c:676
+#: drivemount/drivemount.c:713
 msgid " not mounted"
 msgstr " 未掛載"
 
-#: drivemount/drivemount.c:793
+#: drivemount/drivemount.c:830
 msgid "Drive Mount Applet Warning"
 msgstr "檔案系統掛載面板程式的警告"
 
-#: drivemount/drivemount.c:803
+#: drivemount/drivemount.c:840
 msgid "\" reported:\n"
 msgstr "”回傳錯誤訊息：\n"
 
-#: drivemount/drivemount.c:805
+#: drivemount/drivemount.c:842
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -653,75 +665,80 @@ msgstr ""
 msgid "Disk Mounter Preferences"
 msgstr "檔案系統掛載程式偏好設定"
 
-#: drivemount/properties.c:306
+#: drivemount/properties.c:310
 msgid "_Mount directory:"
 msgstr "掛載目錄(_M)："
 
-#: drivemount/properties.c:312
+#: drivemount/properties.c:316
 msgid "Select Mount Directory"
 msgstr "選取掛載目錄"
 
-#: drivemount/properties.c:328
-msgid "_Update interval (seconds):"
-msgstr "更新周期[秒](_U)："
+#: drivemount/properties.c:333
+msgid "_Update interval:"
+msgstr "更新周期(_U)："
 
-#: drivemount/properties.c:346
+#: drivemount/properties.c:347 mailcheck/mailcheck.c:1570
+#: mailcheck/mailcheck.c:1574 modemlights/properties.c:405
+msgid "seconds"
+msgstr "秒"
+
+#: drivemount/properties.c:356
 msgid "_Icon:"
 msgstr "圖示(_I)："
 
-#: drivemount/properties.c:366
+#: drivemount/properties.c:376
 msgid "Floppy"
 msgstr "軟碟"
 
-#: drivemount/properties.c:369
+#: drivemount/properties.c:379
 msgid "Cdrom"
 msgstr "光碟"
 
-#: drivemount/properties.c:372
+#: drivemount/properties.c:382
 msgid "Cd Recorder"
 msgstr "CD 燒錄機"
 
-#: drivemount/properties.c:375
+#: drivemount/properties.c:385
 msgid "Zip Drive"
 msgstr "Zip 磁碟機"
 
-#: drivemount/properties.c:378
+#: drivemount/properties.c:388
 msgid "Hard Disk"
 msgstr "硬碟"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:391
 msgid "Jaz Drive"
 msgstr "Jaz 磁碟機"
 
-#: drivemount/properties.c:384
+#: drivemount/properties.c:394
 msgid "Custom"
 msgstr "自選"
 
-#: drivemount/properties.c:403
+#: drivemount/properties.c:413
 msgid "Select icon for mounted"
 msgstr "請選取表示已掛載的圖示"
 
-#: drivemount/properties.c:410
+#: drivemount/properties.c:420
 msgid "Moun_ted icon:"
 msgstr "圖示[已掛載] (_T)："
 
-#: drivemount/properties.c:426
+#: drivemount/properties.c:436
 msgid "Select icon for unmounted"
 msgstr "請選取表示未掛載的圖示"
 
-#: drivemount/properties.c:433
+#: drivemount/properties.c:443
 msgid "Unmou_nted icon:"
-msgstr "圖示[未掛載] (_T)："
+msgstr "圖示[未掛載] (_N)："
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:454
 msgid "_Scale size to panel"
 msgstr "縮放至配合面板尺寸(_S)"
 
-#: drivemount/properties.c:451
+#: drivemount/properties.c:461
 msgid "_Eject disk when unmounting"
 msgstr "卸載後退出碟片(_E)"
 
-#: drivemount/properties.c:458
+#: drivemount/properties.c:468
 msgid "Use _automount friendly status test"
 msgstr "使用相容於 _automount 的狀態測試方式"
 
@@ -754,13 +771,17 @@ msgstr "GNOME 面板上與 xeyes 同類的程式。"
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "眼睛會望向滑鼠鼠標"
 
-#: geyes/themes.c:228
+#: geyes/themes.c:233
 msgid "Geyes Preferences"
 msgstr "Geyes 偏好設定"
 
-#: geyes/themes.c:244
-msgid "_Theme Name:"
-msgstr "佈景主題名稱(_T)："
+#: geyes/themes.c:263
+msgid "Themes"
+msgstr ""
+
+#: geyes/themes.c:284
+msgid "_Select a theme:"
+msgstr ""
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
@@ -823,98 +844,108 @@ msgstr "停用"
 msgid "Press a key or press Esc to cancel"
 msgstr "按任何一鍵，或按 Esc 鍵取消"
 
+#: gkb-new/preset.c:153 gkb-new/preset.c:156
+msgid "Undefined"
+msgstr "未定義"
+
 #: gkb-new/prop-add.c:88
 msgid "Keyboards (select and press add)"
 msgstr "鍵盤 (請在選取後按「新增」)"
 
-#: gkb-new/prop-add.c:392
+#: gkb-new/prop-add.c:315
+#, c-format
+msgid "Keymap `%s' for the country %s already exists"
+msgstr ""
+
+#: gkb-new/prop-add.c:426
 msgid "Select Keyboard"
 msgstr "選擇鍵盤"
 
-#: gkb-new/prop-map.c:233
+#: gkb-new/prop-add.c:449
+msgid "_Keyboards (select and press add):"
+msgstr "鍵盤[請在選取後按「新增」] (_K)："
+
+#: gkb-new/prop-map.c:267
 msgid "Edit Keyboard"
 msgstr "修改鍵盤"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:290
 msgid "_Name:"
 msgstr "名稱(_N)："
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:294
 msgid "_Label:"
 msgstr "標籤(_L)："
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:297 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "指令(_M)："
 
-#: gkb-new/prop-map.c:266
-msgid ""
-"Where command can be:\n"
-" * xmodmap /full/path/xmodmap.hu\n"
-" * gkb_xmmap hu\n"
-" * setxkbmap hu"
-msgstr ""
-"指令可以是類似：\n"
-"● xmodmap /full/path/xmodmap.hu\n"
-"● gkb_xmmap hu\n"
-"● setxkbmap hu"
+#: gkb-new/prop-map.c:300
+msgid "_Flag:"
+msgstr "國旗(_F)："
 
-#: gkb-new/prop-map.c:299
-msgid "_Flag"
-msgstr "國旗(_F)"
-
-#: gkb-new/prop.c:132 gkb-new/prop.c:202
+#: gkb-new/prop.c:129 gkb-new/prop.c:199
 msgid "Normal"
 msgstr "一般"
 
-#: gkb-new/prop.c:133 gkb-new/prop.c:206
+#: gkb-new/prop.c:130 gkb-new/prop.c:203
 msgid "Big"
 msgstr "較大"
 
-#: gkb-new/prop.c:151 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:148 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "國旗"
 
-#: gkb-new/prop.c:152 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:149 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "標籤"
 
-#: gkb-new/prop.c:153 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:150 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "國旗及標籤"
 
-#: gkb-new/prop.c:292 gtik/gtik.c:1398 gweather/gweather-pref.c:320
-#: modemlights/properties.c:393
+#: gkb-new/prop.c:323 gtik/gtik.c:1408 gweather/gweather-pref.c:329
+#: modemlights/properties.c:385
 msgid "Display"
 msgstr "顯示"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:312
+#: gkb-new/prop.c:336
 msgid "_Appearance: "
 msgstr "外觀(_A)："
 
-#: gkb-new/prop.c:323
-msgid "Applet _size: "
-msgstr "面板程式尺寸(_S)："
+#: gkb-new/prop.c:347
+msgid "_Size: "
+msgstr "大小(_S)："
 
-#: gkb-new/prop.c:351
-msgid "Hotkey for switching between layouts"
-msgstr "切換配置所使用的快速鍵"
+#: gkb-new/prop.c:381
+msgid "Keyboard Shortcuts"
+msgstr "捷徑鍵"
 
-#: gkb-new/prop.c:363
-msgid "_Grab hotkey"
-msgstr "擷取快速鍵(_G)"
+#: gkb-new/prop.c:387
+msgid "S_witch layout:"
+msgstr "切換鍵盤配置(_W)："
+
+#: gkb-new/prop.c:400
+msgid "_Grab keys"
+msgstr "擷取按鍵(_G)"
 
 #. Create property box
-#: gkb-new/prop.c:431
+#: gkb-new/prop.c:471
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "鍵盤配置切換程式偏好設定"
 
-#: gkb-new/prop.c:448
-msgid "Keymaps"
-msgstr "鍵盤對應表"
+#: gkb-new/prop.c:492
+msgid "Keyboards"
+msgstr "鍵盤"
 
-#: gkb-new/prop.c:460 multiload/properties.c:319
+#. Page 1 Frame
+#: gkb-new/prop.c:496
+msgid "_Keyboards:"
+msgstr "鍵盤(_K)："
+
+#: gkb-new/prop.c:511 multiload/properties.c:359
 msgid "Options"
 msgstr "選項"
 
@@ -986,113 +1017,122 @@ msgstr ""
 "此程式會接駁某個著名網站並下載現時的股價。GNOME 股市行情指示器是一個可自由使"
 "用的軟件。它沒有使用擔保。不要使用它作投資的決定；僅作為參考資料而已。"
 
-#: gtik/gtik.c:1184
-msgid "Current _Stocks"
-msgstr "目前的股市情況(_S)"
+#: gtik/gtik.c:1185
+msgid "Current _stocks:"
+msgstr "目前的股市情況(_S)："
 
-#: gtik/gtik.c:1192
-msgid "_New Symbol:"
+#: gtik/gtik.c:1193
+msgid "_New symbol:"
 msgstr "新增股票代碼(_N)："
 
-#: gtik/gtik.c:1200
+#: gtik/gtik.c:1202
 msgid "_Add"
 msgstr "新增(_A)"
 
-#: gtik/gtik.c:1208
+#: gtik/gtik.c:1211
 msgid "_Remove"
 msgstr "移除(_R)"
 
-#: gtik/gtik.c:1309
+#: gtik/gtik.c:1313
 msgid "Stock Ticker Preferences"
 msgstr "股市行情指示器偏好設定"
 
-#: gtik/gtik.c:1324
+#: gtik/gtik.c:1331
 msgid "Symbols"
 msgstr "股票代碼"
 
-#: gtik/gtik.c:1329 mailcheck/mailcheck.c:1805
+#: gtik/gtik.c:1337 mailcheck/mailcheck.c:1807
 msgid "Behavior"
 msgstr "運作方式"
 
-#: gtik/gtik.c:1332 gweather/gweather-pref.c:273
+#: gtik/gtik.c:1340 gweather/gweather-pref.c:298
 msgid "Update"
 msgstr "更新"
 
-#: gtik/gtik.c:1336
-msgid "Stock update Fre_quency in minutes:"
-msgstr "更新周期[分鐘](_Q)："
+#: gtik/gtik.c:1344
+msgid "Stock update fre_quency:"
+msgstr "股市行情更新周期(_Q)："
 
-#: gtik/gtik.c:1346
+#: gtik/gtik.c:1353 gweather/gweather-pref.c:325 mailcheck/mailcheck.c:1556
+#: mailcheck/mailcheck.c:1560
+msgid "minutes"
+msgstr "分"
+
+#: gtik/gtik.c:1356
 msgid "Scrolling"
 msgstr "捲動顯示"
 
-#: gtik/gtik.c:1350
+#: gtik/gtik.c:1360
 msgid "_Scroll speed:"
 msgstr "捲動速度(_S)："
 
-#: gtik/gtik.c:1354
+#: gtik/gtik.c:1364
 msgid "_Slow"
 msgstr "慢(_S)"
 
-#: gtik/gtik.c:1356
+#: gtik/gtik.c:1366
 msgid "_Medium"
 msgstr "中(_M)"
 
-#: gtik/gtik.c:1358
+#: gtik/gtik.c:1368
 msgid "_Fast"
 msgstr "快(_F)"
 
-#: gtik/gtik.c:1375
+#: gtik/gtik.c:1385
 msgid "_Enable scroll buttons"
 msgstr "顯示捲動按紐(_E)"
 
-#: gtik/gtik.c:1384
+#: gtik/gtik.c:1394
 msgid "Scroll _left to right"
 msgstr "由左至右捲動(_L)"
 
-#: gtik/gtik.c:1402 stickynotes/stickynotes.glade.h:31
-msgid "_Width:"
-msgstr "寬度(_W)："
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1412
 msgid "Displa_y only symbols and price"
 msgstr "只顯示股票代碼及股價(_Y)"
 
-#: gtik/gtik.c:1424
-msgid "_Font"
-msgstr "字型(_F)"
+#: gtik/gtik.c:1421 mini-commander/src/mini-commander.glade.h:23
+#: stickynotes/stickynotes.glade.h:35
+msgid "_Width:"
+msgstr "寬度(_W)："
 
-#: gtik/gtik.c:1438 mini-commander/src/mini-commander.glade.h:6
-#: modemlights/properties.c:468 multiload/properties.c:371
+#: gtik/gtik.c:1431 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:410 stickynotes/stickynotes.glade.h:36
+msgid "pixels"
+msgstr "像素"
+
+#: gtik/gtik.c:1436
+msgid "_Font:"
+msgstr "字型(_F)："
+
+#: gtik/gtik.c:1450 modemlights/properties.c:535 multiload/properties.c:438
 msgid "Colors"
 msgstr "色彩"
 
-#: gtik/gtik.c:1443
-msgid "Stock _raised"
-msgstr "股值上升(_R)"
+#: gtik/gtik.c:1455
+msgid "Stock _raised:"
+msgstr "股值上升(_R)："
 
-#: gtik/gtik.c:1458
-msgid "Stock _lowered"
-msgstr "股值下降(_L)"
+#: gtik/gtik.c:1470
+msgid "Stock _lowered:"
+msgstr "股值下降(_L)："
 
-#: gtik/gtik.c:1473
-msgid "Stock _unchanged"
-msgstr "股值沒有改變(_U)"
+#: gtik/gtik.c:1485
+msgid "Stock _unchanged:"
+msgstr "股值保持不變(_U)："
 
-#: gtik/gtik.c:1488 modemlights/properties.c:441 multiload/properties.c:397
-#: multiload/properties.c:405
-msgid "_Background"
-msgstr "背景顏色(_B)"
+#: gtik/gtik.c:1500 modemlights/properties.c:491
+msgid "_Background:"
+msgstr "背景顏色(_B)："
 
-#: gtik/gtik.c:1585
+#: gtik/gtik.c:1597
 msgid "Skip forward"
 msgstr "向前捲動"
 
-#: gtik/gtik.c:1586
+#: gtik/gtik.c:1598
 msgid "Skip backward"
 msgstr "向後捲動"
 
-#: gtik/gtik.c:1587
+#: gtik/gtik.c:1599
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1100,11 +1140,11 @@ msgstr ""
 "股市行情指示器\n"
 "獲取不斷更新的股市行情"
 
-#: gtik/gtik.c:1777
+#: gtik/gtik.c:1789
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1778
+#: gtik/gtik.c:1790
 msgid "Change "
 msgstr "改變"
 
@@ -1239,29 +1279,29 @@ msgstr "數值更新按鈕"
 msgid "Spinbutton for updating"
 msgstr "更新數值用的按鈕"
 
-#: gweather/gweather-pref.c:237
+#: gweather/gweather-pref.c:265
 msgid "Weather Preferences"
 msgstr "天氣程式偏好設定"
 
-#: gweather/gweather-pref.c:285
-msgid "_Automatically update every"
+#: gweather/gweather-pref.c:302
+msgid "_Automatically update every:"
 msgstr "自動更新相隔的時間(_A)："
-
-#: gweather/gweather-pref.c:312
-msgid "minute(s)"
-msgstr "分鐘"
 
 #: gweather/gweather-pref.c:331
 msgid "Use _metric system units"
 msgstr "使用公制單位(_M)"
 
-#: gweather/gweather-pref.c:341
-msgid "Display daily average temperatures"
-msgstr "顯示每日平均溫度"
+#: gweather/gweather-pref.c:339
+msgid "_Display daily average temperatures"
+msgstr "顯示每日平均溫度(_D)"
 
-#: gweather/gweather-pref.c:352
-msgid "Number of _forecast days to display:"
+#: gweather/gweather-pref.c:350
+msgid "Number of _forecasts to display:"
 msgstr "顯示天氣預報的日數(_F)："
+
+#: gweather/gweather-pref.c:360
+msgid "days"
+msgstr "日"
 
 #: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
 #: gweather/location.c:354
@@ -1370,11 +1410,11 @@ msgstr ""
 
 #: gweather/weather.c:77
 msgid "Light Flurries"
-msgstr ""
+msgstr "小陣雪"
 
 #: gweather/weather.c:78
 msgid "Flurries"
-msgstr ""
+msgstr "陣雪"
 
 #: gweather/weather.c:79
 msgid "Snow and Wind"
@@ -1513,7 +1553,7 @@ msgid "Factory for creating inbox monitors."
 msgstr ""
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:330 mailcheck/mailcheck.c:1886
+#: mailcheck/mailcheck.c:330 mailcheck/mailcheck.c:1888
 msgid "Inbox Monitor"
 msgstr "郵箱檢查"
 
@@ -1523,6 +1563,7 @@ msgstr ""
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Internet"
 msgstr "網際網路"
 
@@ -1594,11 +1635,11 @@ msgid "No mail."
 msgstr "沒有郵件。"
 
 #: mailcheck/mailcheck.c:1116 mailcheck/mailcheck.c:1117
-#: mailcheck/mailcheck.c:2078 mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2080 mailcheck/mailcheck.c:2081
 msgid "Status not updated"
 msgstr "狀態並未更新"
 
-#: mailcheck/mailcheck.c:1298 mailcheck/mailcheck.c:1809
+#: mailcheck/mailcheck.c:1298 mailcheck/mailcheck.c:1811
 msgid "Inbox Settings"
 msgstr "郵箱設定"
 
@@ -1659,20 +1700,12 @@ msgid "Folder Entry box"
 msgstr "資料夾輸入欄位"
 
 #: mailcheck/mailcheck.c:1544
-msgid "Check for mail _every"
+msgid "Check for mail _every:"
 msgstr "檢查郵件的周期(_E)："
-
-#: mailcheck/mailcheck.c:1556 mailcheck/mailcheck.c:1560
-msgid "minutes"
-msgstr "分"
 
 #: mailcheck/mailcheck.c:1556
 msgid "Choose time interval in minutes to check mail"
 msgstr "選擇檢查郵件相隔的分鐘數目"
-
-#: mailcheck/mailcheck.c:1570 mailcheck/mailcheck.c:1574
-msgid "seconds"
-msgstr "秒"
 
 #: mailcheck/mailcheck.c:1570
 msgid "Choose time interval in seconds to check mail"
@@ -1718,28 +1751,23 @@ msgstr "當按下的時候(_D)："
 msgid "Command to execute when clicked"
 msgstr "當按下的時候執行的指令"
 
-#: mailcheck/mailcheck.c:1741 mailcheck/mailcheck.c:1951
-#, c-format
-msgid "There was an error displaying help: %s"
-msgstr "顯示說明文件時出現錯誤：%s"
-
 #: mailcheck/mailcheck.c:1782
 msgid "Inbox Monitor Preferences"
 msgstr "「郵箱檢查」偏好設定"
 
-#: mailcheck/mailcheck.c:1888
+#: mailcheck/mailcheck.c:1890
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "「郵箱檢查」會在收到新電郵的時候發出通知"
 
-#: mailcheck/mailcheck.c:2054
+#: mailcheck/mailcheck.c:2056
 msgid "Text only"
 msgstr "只顯示文字"
 
-#: mailcheck/mailcheck.c:2080
+#: mailcheck/mailcheck.c:2082
 msgid "Mail check"
 msgstr "「郵箱檢查」"
 
-#: mailcheck/mailcheck.c:2081
+#: mailcheck/mailcheck.c:2083
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "「郵箱檢查」會在收到新電郵的時候通知您"
 
@@ -1859,7 +1887,7 @@ msgstr "新郵件"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:356
+#: mini-commander/src/mini-commander_applet.c:328
 msgid "Command Line"
 msgstr "指令列"
 
@@ -1874,8 +1902,7 @@ msgstr "小型指令列面板程式工廠"
 #: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, changeable macros and an optional built-in "
-"clock.\n"
+"completion, command history, and changeable macros.\n"
 "\n"
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -1883,8 +1910,8 @@ msgid ""
 "any later version."
 msgstr ""
 "這個 GNOME 面板程式會在面板中加入一個指令輸入\n"
-"欄位供閣下輸入指令，還有指令自動補齊、指令紀錄、\n"
-"可更換的巨集以及可選擇的內置時鐘等等功能。\n"
+"欄位供閣下輸入指令，其中包括自動補齊、指令紀錄\n"
+"功能，而且可以更改巨集。\n"
 "\n"
 "本程式是自由軟體，閣下可以遵照自由軟體基金會\n"
 "(Free Software Foundation) 所頒佈的 GNU\n"
@@ -1897,11 +1924,11 @@ msgstr ""
 msgid "Start program"
 msgstr "啟動程式"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:482
 msgid "Command line"
 msgstr "指令列"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:483
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "在這裡輸入指令後，GNOME 就會執行該指令"
 
@@ -1938,52 +1965,48 @@ msgstr "無法存取組態的來源：%s\n"
 msgid "Error syncing config data: %s"
 msgstr "將組態資料同步時發生錯誤：%s"
 
-#: mini-commander/src/mini-commander.glade.h:1
-msgid "*"
-msgstr "*"
+#: mini-commander/src/mini-commander.glade.h:3
+msgid "<b>Appearance</b>"
+msgstr "<b>外觀</b>"
 
-#: mini-commander/src/mini-commander.glade.h:2
+#: mini-commander/src/mini-commander.glade.h:4
+msgid "<b>Auto Completion</b>"
+msgstr "<b>自動補齊</b>"
+
+#: mini-commander/src/mini-commander.glade.h:5
+msgid "<b>Colors</b>"
+msgstr "<b>色彩</b>"
+
+#: mini-commander/src/mini-commander.glade.h:6
+msgid "<b>Size</b>"
+msgstr "<b>大小</b>"
+
+#: mini-commander/src/mini-commander.glade.h:7
 msgid "Add New Macro"
 msgstr "新增巨集"
 
-#: mini-commander/src/mini-commander.glade.h:4
-msgid "Applet _width:"
-msgstr "面板程式寬度(_W)："
-
-#: mini-commander/src/mini-commander.glade.h:5
-msgid "Autocompletion"
-msgstr "自動補齊"
-
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command Line Preferences"
 msgstr "小型指令列偏好設定"
 
-#: mini-commander/src/mini-commander.glade.h:8
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _background:"
 msgstr "指令列背景顏色(_B)："
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "Command line _foreground:"
 msgstr "指令列文字顏色(_F)："
 
-#: mini-commander/src/mini-commander.glade.h:10
-msgid "Command:"
-msgstr "指令："
-
-#: mini-commander/src/mini-commander.glade.h:11
-msgid "E_nable history-based autocompletion"
+#: mini-commander/src/mini-commander.glade.h:12
+msgid "E_nable history-based auto completion"
 msgstr "根據指令使用紀錄自動補齊(_N)"
 
-#: mini-commander/src/mini-commander.glade.h:13
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Macros"
 msgstr "巨集"
 
-#: mini-commander/src/mini-commander.glade.h:14
-msgid "Pattern:"
-msgstr "樣式："
-
 #: mini-commander/src/mini-commander.glade.h:15
-#: stickynotes/stickynotes.glade.h:17
+#: stickynotes/stickynotes.glade.h:23
 msgid "Pick a color"
 msgstr "請選取顏色"
 
@@ -1996,60 +2019,64 @@ msgid "Show han_dle"
 msgstr "顯示控制棒(_D)"
 
 #: mini-commander/src/mini-commander.glade.h:18
-msgid "Size"
-msgstr "大小"
-
-#: mini-commander/src/mini-commander.glade.h:19
-msgid "_Add new macro..."
+msgid "_Add Macro..."
 msgstr "新增巨集(_A)..."
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Delete Macro"
 msgstr "刪除巨集(_D)"
 
+#: mini-commander/src/mini-commander.glade.h:20
+msgid "_Macros:"
+msgstr "巨集(_M)："
+
 #: mini-commander/src/mini-commander.glade.h:21
+msgid "_Pattern:"
+msgstr "樣式(_P)："
+
+#: mini-commander/src/mini-commander.glade.h:22
 msgid "_Use default theme colors"
 msgstr "使用預設佈景主題色彩(_U)"
 
-#: mini-commander/src/mini-commander_applet.c:189
-#: mini-commander/src/mini-commander_applet.c:193
+#: mini-commander/src/mini-commander_applet.c:174
+#: mini-commander/src/mini-commander_applet.c:178
 msgid "Browser"
 msgstr "瀏覽器"
 
-#: mini-commander/src/mini-commander_applet.c:194
+#: mini-commander/src/mini-commander_applet.c:179
 msgid "Click this button to start the browser"
 msgstr "按下本按鈕可啟動瀏覽器"
 
-#: mini-commander/src/mini-commander_applet.c:208
-#: mini-commander/src/mini-commander_applet.c:212
+#: mini-commander/src/mini-commander_applet.c:192
+#: mini-commander/src/mini-commander_applet.c:196
 msgid "History"
 msgstr "紀錄"
 
-#: mini-commander/src/mini-commander_applet.c:213
+#: mini-commander/src/mini-commander_applet.c:197
 msgid "Click this button for the list of previous commands"
 msgstr "按下此按鈕可顯示之前輸入的指令清單"
 
-#: mini-commander/src/mini-commander_applet.c:354
+#: mini-commander/src/mini-commander_applet.c:326
 msgid "Mini-Commander applet"
 msgstr "小型指令列面板程式"
 
-#: mini-commander/src/mini-commander_applet.c:355
+#: mini-commander/src/mini-commander_applet.c:327
 msgid "This applet adds a command line to the panel"
 msgstr "此面板程式可在面板中加上指令列"
 
-#: mini-commander/src/preferences.c:343
+#: mini-commander/src/preferences.c:387
 msgid "You must specify a pattern"
 msgstr "必須輸入樣式"
 
-#: mini-commander/src/preferences.c:347
+#: mini-commander/src/preferences.c:391
 msgid "You must specify a pattern and a command"
 msgstr "必須輸入樣式及指令"
 
-#: mini-commander/src/preferences.c:348
+#: mini-commander/src/preferences.c:392
 msgid "You must specify a command"
 msgstr "必須輸入指令"
 
-#: mini-commander/src/preferences.c:351
+#: mini-commander/src/preferences.c:395
 msgid "You may not specify duplicate patterns"
 msgstr "不可輸入重複的樣式"
 
@@ -2057,8 +2084,8 @@ msgstr "不可輸入重複的樣式"
 msgid "Adjust the sound volume"
 msgstr "調校音量"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:165
-#: mixer/mixer.c:938
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:170
+#: mixer/mixer.c:1005
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -2070,111 +2097,115 @@ msgstr "靜音(_M)"
 msgid "_Run Volume Control..."
 msgstr "執行音量控制程式(_R)..."
 
-#: mixer/mixer.c:110
+#: mixer/mixer.c:112
 msgid "Main Volume"
 msgstr "主音量"
 
-#: mixer/mixer.c:110
+#: mixer/mixer.c:112
 msgid "Bass"
 msgstr "低音"
 
-#: mixer/mixer.c:110
+#: mixer/mixer.c:112
 msgid "Treble"
 msgstr "高音"
 
-#: mixer/mixer.c:110
+#: mixer/mixer.c:112
 msgid "Synth"
 msgstr "合成"
 
-#: mixer/mixer.c:111
+#: mixer/mixer.c:113
 msgid "Pcm"
 msgstr "Pcm"
 
-#: mixer/mixer.c:111
+#: mixer/mixer.c:113
 msgid "Speaker"
 msgstr "揚聲器"
 
-#: mixer/mixer.c:111
+#: mixer/mixer.c:113
 msgid "Line"
 msgstr ""
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:114
 msgid "Microphone"
 msgstr ""
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:114
 msgid "CD"
 msgstr "CD"
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:114
 msgid "Mix"
 msgstr ""
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:114
 msgid "Pcm2"
 msgstr "Pcm2"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:115
 msgid "Recording Level"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:115
 msgid "Input Gain"
 msgstr "輸入增益"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:115
 msgid "Output Gain"
 msgstr "輸出增益"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:116
 msgid "Line1"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:116
 msgid "Line2"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:116
 msgid "Line3"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:116
 msgid "Digital1"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:117
 msgid "Digital2"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:117
 msgid "Digital3"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:118
 msgid "Phone Input"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:118
 msgid "Phone Output"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:118
 msgid "Video"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:118
 msgid "Radio"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:118
 msgid "Monitor"
 msgstr ""
 
-#: mixer/mixer.c:166
+#: mixer/mixer.c:171
 msgid "Volume Control (muted)"
 msgstr "音量控制 (靜音)"
 
-#: mixer/mixer.c:248
+#: mixer/mixer.c:172
+msgid "No audio device"
+msgstr ""
+
+#: mixer/mixer.c:254
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2182,31 +2213,35 @@ msgstr ""
 "警告：這個版本的 gmix 是用不同\n"
 "版本的 soundcard.h 編譯出來的。\n"
 
-#: mixer/mixer.c:683
+#: mixer/mixer.c:745
 msgid "Volume Controller"
 msgstr "音量控制程式"
 
-#: mixer/mixer.c:684
+#: mixer/mixer.c:746
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "使用上/下方向鍵更改音量"
 
-#: mixer/mixer.c:939
+#: mixer/mixer.c:1006
 msgid "(C) 2001 Richard Hult"
 msgstr "版權所有 ©2001 Richard Hult"
 
-#: mixer/mixer.c:940
+#: mixer/mixer.c:1007
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "音量控制可設定系統的音量。"
 
-#: mixer/mixer.c:1039
+#: mixer/mixer.c:1149
 msgid "Volume Control Preferences"
 msgstr "音量控制偏好設定"
 
-#: mixer/mixer.c:1059
-msgid "Channels"
+#: mixer/mixer.c:1170
+msgid "Audio Channels"
 msgstr "聲道"
 
-#: mixer/mixer.c:1345
+#: mixer/mixer.c:1186
+msgid "_Select channel to control:"
+msgstr "請選取準備控制的聲道(_S)："
+
+#: mixer/mixer.c:1454
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "音量控制可設定系統的音量"
 
@@ -2231,7 +2266,7 @@ msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"目前還在連線狀態中。\n"
+"目前仍在連線狀態。\n"
 "確定要切斷連線嗎？"
 
 #: modemlights/modemlights.c:573
@@ -2247,118 +2282,118 @@ msgstr "收到 %#.1fMb / 送出 %#.1fMb / 時間: %.1d:%.2d"
 msgid "not connected"
 msgstr "沒有連線"
 
-#: modemlights/properties.c:328
+#: modemlights/properties.c:365
 msgid "Modem Lights Preferences"
 msgstr "數據機燈號偏好設定"
 
-#: modemlights/properties.c:342
-msgid "Connecting"
-msgstr "連線中"
-
-#: modemlights/properties.c:356
-msgid "Co_nnect command:"
-msgstr "連線指令(_N)："
-
-#: modemlights/properties.c:373
-msgid "_Disconnect command:"
-msgstr "斷線指令(_D)："
-
-#. confirmation checkbox
-#: modemlights/properties.c:386
-msgid "Con_firm connection"
-msgstr "確認連線狀態(_F)"
-
-#: modemlights/properties.c:407
-msgid "U_pdates per second"
-msgstr "每秒更新次數(_P)"
+#: modemlights/properties.c:392
+msgid "U_pdate every:"
+msgstr "更新頻率(_P)："
 
 #. extra info checkbox
-#: modemlights/properties.c:421
+#: modemlights/properties.c:410
 msgid "Sho_w connect time and throughput"
 msgstr "顯示連線時間及流量(_W)"
 
-#: modemlights/properties.c:438
-msgid "Receive data"
-msgstr "接收資料"
+#: modemlights/properties.c:417
+msgid "B_link connection status when connecting"
+msgstr ""
 
-#: modemlights/properties.c:440
-msgid "_Foreground"
-msgstr "前景顏色(_F)"
+#: modemlights/properties.c:424
+msgid "Connections"
+msgstr "連線"
 
-#: modemlights/properties.c:443
-msgid "Send data"
-msgstr "送出資料"
-
-#: modemlights/properties.c:445
-msgid "Foregroun_d"
-msgstr "前景顏色(_D)"
-
-#: modemlights/properties.c:446
-msgid "Backg_round"
-msgstr "背景顏色(_R)"
-
-#: modemlights/properties.c:448
-msgid "Connection status"
-msgstr "連線狀態"
-
-#: modemlights/properties.c:450
-msgid "Co_nnected"
-msgstr "已接上(_N)"
-
-#: modemlights/properties.c:451
-msgid "No_t connected"
-msgstr "沒有接上(_T)"
+#: modemlights/properties.c:433
+msgid "Co_nnection command:"
+msgstr "連線指令(_N)："
 
 #: modemlights/properties.c:452
-msgid "A_waiting connection"
-msgstr "正在等待連線(_W)"
+msgid "_Disconnection command:"
+msgstr "斷線指令(_D)："
 
-#: modemlights/properties.c:455
-msgid "B_link"
-msgstr "閃爍(_L)"
+#. confirmation checkbox
+#: modemlights/properties.c:467
+msgid "Con_firm connection"
+msgstr "確認連線狀態(_F)"
 
-#: modemlights/properties.c:462
+#: modemlights/properties.c:483
+msgid "Receive Data"
+msgstr "接收資料"
+
+#: modemlights/properties.c:489
+msgid "_Foreground:"
+msgstr "前景顏色(_F)："
+
+#: modemlights/properties.c:494
+msgid "Send Data"
+msgstr "送出資料"
+
+#: modemlights/properties.c:499
+msgid "Foregroun_d:"
+msgstr "前景顏色(_D)："
+
+#: modemlights/properties.c:501
+msgid "Backg_round:"
+msgstr "背景顏色(_R)："
+
+#: modemlights/properties.c:504
+msgid "Connection Status"
+msgstr "連線狀態"
+
+#: modemlights/properties.c:512
+msgid "Co_nnected:"
+msgstr "已連線(_N)："
+
+#: modemlights/properties.c:514
+msgid "Disconnec_ted:"
+msgstr "已斷線(_T)："
+
+#: modemlights/properties.c:517
+msgid "C_onnecting:"
+msgstr "連線中(_O)："
+
+#: modemlights/properties.c:520
 msgid "Text"
 msgstr "文字"
 
-#: modemlights/properties.c:464
-msgid "For_eground"
-msgstr "前景顏色(_E)"
+#: modemlights/properties.c:528
+msgid "For_eground:"
+msgstr "前景顏色(_E)："
 
-#: modemlights/properties.c:465
-msgid "Bac_kground"
-msgstr "背景顏色(_K)"
+#: modemlights/properties.c:530
+msgid "Bac_kground:"
+msgstr "背景顏色(_K)："
 
-#: modemlights/properties.c:466
+#: modemlights/properties.c:532
 msgid "O_utline"
 msgstr "輪廓(_U)"
 
-#: modemlights/properties.c:477
-msgid "Modem options"
+#: modemlights/properties.c:544
+msgid "Modem Options"
 msgstr "數據機選項"
 
-#: modemlights/properties.c:491
-msgid "_Modem lock file:"
-msgstr "數據機鎖定檔(_M)："
-
-#: modemlights/properties.c:503
-msgid "_Verify owner of lock file"
-msgstr "檢查鎖定檔的擁有者(_V)"
-
-#: modemlights/properties.c:515
+#: modemlights/properties.c:553
 msgid "_Device:"
 msgstr "裝置(_D)："
 
-#. ISDN checkbox
-#: modemlights/properties.c:528
-msgid "U_se ISDN"
-msgstr "使用 ISDN(_S)"
+#: modemlights/properties.c:572
+msgid "_Lock file:"
+msgstr "數據機鎖定檔(_L)："
 
-#: modemlights/properties.c:548
+#: modemlights/properties.c:586
+msgid "_Verify owner of lock file"
+msgstr "檢查鎖定檔的擁有者(_V)"
+
+#. ISDN checkbox
+#: modemlights/properties.c:594
+msgid "U_se ISDN"
+msgstr "使用 I_SDN"
+
+#: modemlights/properties.c:614
 msgid "Set options as default"
 msgstr "使用目前的選項作為預設值"
 
-#: modemlights/properties.c:554
+#: modemlights/properties.c:620
 msgid "Advanced"
 msgstr "進階"
 
@@ -2394,19 +2429,19 @@ msgstr ""
 "\n"
 "一個可顯示 CPU、記憶體、交換檔及網路使用量的系統負載監控程式。"
 
-#: multiload/main.c:236 multiload/properties.c:379
+#: multiload/main.c:236 multiload/properties.c:463
 msgid "Processor"
 msgstr "處理器"
 
-#: multiload/main.c:238 multiload/properties.c:385
+#: multiload/main.c:238 multiload/properties.c:470
 msgid "Memory"
 msgstr "記憶體"
 
-#: multiload/main.c:240 multiload/properties.c:392
+#: multiload/main.c:240 multiload/properties.c:478
 msgid "Network"
 msgstr "網路"
 
-#: multiload/main.c:242 multiload/properties.c:399
+#: multiload/main.c:242 multiload/properties.c:486
 msgid "Swap Space"
 msgstr "交換記憶"
 
@@ -2431,115 +2466,115 @@ msgstr "記憶體負載"
 msgid "Net Load"
 msgstr "網路負載"
 
-#: multiload/properties.c:258
+#: multiload/properties.c:280
 msgid "Monitored Resources"
 msgstr "受監控的資源"
 
-#: multiload/properties.c:266
+#: multiload/properties.c:305
 msgid "_Processor"
 msgstr "處理器(_P)"
 
-#: multiload/properties.c:276
+#: multiload/properties.c:315
 msgid "_Memory"
 msgstr "記憶體(_M)"
 
-#: multiload/properties.c:286
+#: multiload/properties.c:325
 msgid "_Network"
 msgstr "網路(_N)"
 
-#: multiload/properties.c:296
-msgid "_Swap Space"
-msgstr "交換記憶(_S)"
+#: multiload/properties.c:335
+msgid "S_wap Space"
+msgstr "交換記憶(_W)"
 
-#: multiload/properties.c:307
+#: multiload/properties.c:345
 msgid "_Load"
 msgstr "負載(_L)"
 
-#: multiload/properties.c:332
+#: multiload/properties.c:390
 msgid "System m_onitor width: "
 msgstr "系統監控程式寬度(_O)："
 
-#: multiload/properties.c:334
+#: multiload/properties.c:392
 msgid "System m_onitor height: "
 msgstr "系統監控程式高度(_O)："
 
-#: multiload/properties.c:348
-msgid "pixels"
-msgstr "像素"
-
-#: multiload/properties.c:354
+#: multiload/properties.c:414
 msgid "Sys_tem monitor update interval: "
 msgstr "系統監控更新間隔(_T)："
 
-#: multiload/properties.c:366
+#: multiload/properties.c:427
 msgid "milliseconds"
 msgstr "亳秒"
 
-#: multiload/properties.c:380 multiload/properties.c:386
+#: multiload/properties.c:465 multiload/properties.c:472
 msgid "_User"
 msgstr "使用者(_U)"
 
-#: multiload/properties.c:381
+#: multiload/properties.c:466
 msgid "S_ystem"
 msgstr "系統(_Y)"
 
-#: multiload/properties.c:382
+#: multiload/properties.c:467
 msgid "N_ice"
 msgstr "優先值(_I)"
 
-#: multiload/properties.c:383
+#: multiload/properties.c:468
 msgid "I_dle"
 msgstr "閑置(_D)"
 
-#: multiload/properties.c:387
+#: multiload/properties.c:473
 msgid "Sh_ared"
 msgstr "分享(_A)"
 
-#: multiload/properties.c:388
+#: multiload/properties.c:474
 msgid "_Buffers"
 msgstr "緩衝(_B)"
 
-#: multiload/properties.c:389
-msgid "Cac_hed"
+#: multiload/properties.c:475
+msgid "Cach_ed"
 msgstr ""
 
-#: multiload/properties.c:390
+#: multiload/properties.c:476
 msgid "F_ree"
 msgstr "可用(_R)"
 
-#: multiload/properties.c:393
-msgid "S_LIP"
-msgstr "S_LIP"
+#: multiload/properties.c:480
+msgid "_SLIP"
+msgstr "_SLIP"
 
-#: multiload/properties.c:394
+#: multiload/properties.c:481
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:395
-msgid "Et_hernet"
-msgstr "Et_hernet"
+#: multiload/properties.c:482
+msgid "_Ethernet"
+msgstr "_Ethernet"
 
-#: multiload/properties.c:396
-msgid "_Other"
-msgstr "其它(_O)"
+#: multiload/properties.c:483
+msgid "Othe_r"
+msgstr "其它(_R)"
 
-#: multiload/properties.c:400
+#: multiload/properties.c:484 multiload/properties.c:494
+msgid "_Background"
+msgstr "背景顏色(_B)"
+
+#: multiload/properties.c:488
 msgid "_Used"
 msgstr "使用中(_U)"
 
-#: multiload/properties.c:401
+#: multiload/properties.c:489
 msgid "_Free"
 msgstr "可用(_F)"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:491
 msgid "Load"
 msgstr "負載"
 
-#: multiload/properties.c:404
+#: multiload/properties.c:493
 msgid "_Average"
 msgstr "平均(_A)"
 
-#: multiload/properties.c:425
+#: multiload/properties.c:514
 msgid "System Monitor Preferences"
 msgstr "系統監控程式偏好設定"
 
@@ -2573,8 +2608,7 @@ msgstr "隱藏所有備忘(_H)"
 msgid "_Lock All Notes"
 msgstr "鎖定所有備忘(_L)"
 
-#: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: stickynotes/stickynotes.glade.h:29 stickynotes/stickynotes.c:29
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:6 stickynotes/stickynotes.c:29
 msgid "_New Note"
 msgstr "新增備忘(_N)"
 
@@ -2585,6 +2619,132 @@ msgstr "顯示所有備忘(_S)"
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:9
 msgid "_Unlock All Notes"
 msgstr "將所有備忘解除封鎖(_U)"
+
+#: stickynotes/stickynotes.c:30
+msgid "_Delete Note"
+msgstr "刪除備忘(_D)"
+
+#: stickynotes/stickynotes.c:32
+msgid "_Edit Title"
+msgstr "修改標題(_E)"
+
+#: stickynotes/stickynotes.glade.h:3
+msgid "<b>Default Behavior</b>"
+msgstr "<b>預設運作方式</b>"
+
+#: stickynotes/stickynotes.glade.h:4
+msgid "<b>Default Dimensions</b>"
+msgstr "<b>預設尺寸</b>"
+
+#: stickynotes/stickynotes.glade.h:5
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:8
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:11
+msgid "<b>Other Settings</b>"
+msgstr "<b>其它設定</b>"
+
+#: stickynotes/stickynotes.glade.h:12
+msgid "<b>Style</b>"
+msgstr "<b>樣式</b>"
+
+#: stickynotes/stickynotes.glade.h:13
+msgid "C_olor:"
+msgstr "色彩(_O)："
+
+#: stickynotes/stickynotes.glade.h:14
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:15
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:16
+msgid "Clic_k:"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:17
+msgid "Creates _New Note"
+msgstr "新增備忘(_N)"
+
+#: stickynotes/stickynotes.glade.h:18
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:19
+msgid "Delete all sticky notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:20
+msgid "Delete note"
+msgstr "刪除備忘"
+
+#: stickynotes/stickynotes.glade.h:21
+msgid "Edit title"
+msgstr "修改標題"
+
+#: stickynotes/stickynotes.glade.h:22
+msgid "H_eight:"
+msgstr "高度(_E)："
+
+#: stickynotes/stickynotes.glade.h:24
+msgid "Resize note"
+msgstr "更改備忘尺寸"
+
+#: stickynotes/stickynotes.glade.h:25
+msgid "Specify the default height (in pixels) of new notes"
+msgstr "指定新的備忘的預設高度(像素)"
+
+#: stickynotes/stickynotes.glade.h:26
+msgid "Specify the default width (in pixels) of new notes"
+msgstr "指定新的備忘的預設寬度(像素)"
+
+#: stickynotes/stickynotes.glade.h:27
+msgid "Sticky Note"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:28
+msgid "Sticky Notes Preferences"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:29
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:30
+msgid "_Delete ALL"
+msgstr "全部刪除(_D)"
+
+#: stickynotes/stickynotes.glade.h:31
+msgid "_Hides/_Shows All Notes"
+msgstr "隱藏(_H)/顯示(_S)所有備忘"
+
+#: stickynotes/stickynotes.glade.h:32
+msgid "_Locks/_Unlocks All Notes"
+msgstr "將所有備忘鎖定(_L)/解除封鎖(_U)"
+
+#: stickynotes/stickynotes.glade.h:33
+msgid "_Put notes on all workspaces"
+msgstr "在所有工作區中顯示備忘(_P)"
+
+#: stickynotes/stickynotes.glade.h:34
+msgid "_Title:"
+msgstr "標題(_T)："
+
+#: stickynotes/stickynotes.glade.h:38
+msgid " 2002-2003 Loban A Rahman"
+msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes."
@@ -2670,120 +2830,6 @@ msgstr ""
 msgid "Workspace stickyness"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:1
-msgid "<b>Default click behavior</b>"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:2
-msgid "<b>Default dimensions</b>"
-msgstr "<b>預設尺寸</b>"
-
-#: stickynotes/stickynotes.glade.h:3
-msgid ""
-"<b>Delete ALL sticky notes?</b>\n"
-"\n"
-"Changes will be saved instantly."
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:6
-msgid ""
-"<b>Delete this sticky note?</b>\n"
-"\n"
-"Changes will be saved instantly."
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:9
-msgid "<b>Other settings</b>"
-msgstr "<b>其它設定</b>"
-
-#: stickynotes/stickynotes.glade.h:10
-msgid "<b>Style</b>"
-msgstr "<b>樣式</b>"
-
-#: stickynotes/stickynotes.glade.h:11
-msgid "Choose a base color to use for all sticky notes"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:12
-msgid "Choose if notes are visible on ALL workspaces"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:13
-msgid "Define the default behavior when the applet is clicked."
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:14
-msgid "Delete all sticky notes"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:15
-msgid "Delete note"
-msgstr "刪除備忘"
-
-#: stickynotes/stickynotes.glade.h:16
-msgid "Edit title"
-msgstr "修改標題"
-
-#: stickynotes/stickynotes.glade.h:18
-msgid "Resize note"
-msgstr "更改備忘尺寸"
-
-#: stickynotes/stickynotes.glade.h:19
-msgid "Specify the default height (in pixels) of new notes"
-msgstr "指定新的備忘的預設高度(像素)"
-
-#: stickynotes/stickynotes.glade.h:20
-msgid "Specify the default width (in pixels) of new notes"
-msgstr "指定新的備忘的預設寬度(像素)"
-
-#: stickynotes/stickynotes.glade.h:21
-msgid "Sticky Note"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:22
-msgid "Sticky Notes Preferences"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:23
-msgid "Sticky Notes for the Gnome Desktop Environment"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:24
-msgid "_Color:"
-msgstr "色彩(_C)："
-
-#: stickynotes/stickynotes.glade.h:25
-msgid "_Delete ALL"
-msgstr "全部刪除(_D)"
-
-#: stickynotes/stickynotes.glade.h:26
-msgid "_Height:"
-msgstr "高度(_H)："
-
-#: stickynotes/stickynotes.glade.h:27
-msgid "_Hide/_Show All Notes"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:28
-msgid "_Lock/_Unlock All Notes"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:30
-msgid "_Put on all workspaces"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:33
-msgid " 2002-2003 Loban A Rahman"
-msgstr ""
-
-#: stickynotes/stickynotes.c:30
-msgid "_Delete Note"
-msgstr "刪除備忘(_D)"
-
-#: stickynotes/stickynotes.c:32
-msgid "_Edit Title"
-msgstr "修改標題(_E)"
-
 #: stickynotes/stickynotes_applet.c:148
 #, c-format
 msgid ""
@@ -2796,16 +2842,16 @@ msgstr[0] ""
 "%s\n"
 "%d 張備忘錄"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
 msgstr "監控無線網路連線的訊號品質"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:741
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
+#: wireless/wireless-applet.c:748
 msgid "Wireless Link Monitor"
 msgstr "無線網路連線監控"
 
-#: wireless/wireless-applet.c:343
+#: wireless/wireless-applet.c:350
 msgid ""
 "The images necessary to run the wireless monitor are missing.\n"
 "Please make sure that it is correctly installed."
@@ -2813,11 +2859,11 @@ msgstr ""
 "找不到無線網路連線監控程式所需的圖像。\n"
 "請確定是否已經正確安裝該程式。"
 
-#: wireless/wireless-applet.c:529 wireless/wireless-applet.c:686
+#: wireless/wireless-applet.c:536 wireless/wireless-applet.c:693
 msgid "No Wireless Devices"
 msgstr "沒有任何無線網路裝置"
 
-#: wireless/wireless-applet.c:531
+#: wireless/wireless-applet.c:538
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -2825,29 +2871,100 @@ msgstr ""
 "似乎系統中並沒有設定任何無線網路裝置。\n"
 "如果以上的推斷和事實不符，請確認組態是否出錯。"
 
-#: wireless/wireless-applet.c:743
+#: wireless/wireless-applet.c:750
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "版權所有 © 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:744
+#: wireless/wireless-applet.c:751
 msgid "This utility shows the status of a wireless link."
 msgstr "此公用程式能顯示無線網路的連線狀態。"
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Monitored Device:"
-msgstr "受監控的裝置："
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show _dialog boxes"
 msgstr "顯示對話窗(_D)"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "以百分比來顯示訊號強弱(_P)"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "Wireless Link Monitor Preferences"
 msgstr "無線網路連線監控偏好設定"
+
+#: wireless/wireless-applet.glade.h:4
+msgid "_Monitored device:"
+msgstr "受監控的裝置(_M)："
+
+#~ msgid "Applet layout"
+#~ msgstr "面板程式配置"
+
+#~ msgid "Beep when either of the above is true"
+#~ msgstr "遇到以上情況時發出聲響"
+
+#~ msgid "Hide"
+#~ msgstr "隱藏"
+
+#~ msgid "Show"
+#~ msgstr "顯示"
+
+#~ msgid "Suspend"
+#~ msgstr "暫停模式"
+
+#~ msgid "Disc Image"
+#~ msgstr "碟片影像檔"
+
+#~ msgid "An image of a cd-rom disc"
+#~ msgstr "Cd-rom 碟片的影像檔"
+
+#~ msgid "_Accept"
+#~ msgstr "接受(_A)"
+
+#~ msgid "_Theme Name:"
+#~ msgstr "佈景主題名稱(_T)："
+
+#~ msgid ""
+#~ "Where command can be:\n"
+#~ " * xmodmap /full/path/xmodmap.hu\n"
+#~ " * gkb_xmmap hu\n"
+#~ " * setxkbmap hu"
+#~ msgstr ""
+#~ "指令可以是類似：\n"
+#~ "● xmodmap /full/path/xmodmap.hu\n"
+#~ "● gkb_xmmap hu\n"
+#~ "● setxkbmap hu"
+
+#~ msgid "Applet _size: "
+#~ msgstr "面板程式尺寸(_S)："
+
+#~ msgid "Hotkey for switching between layouts"
+#~ msgstr "切換配置所使用的快速鍵"
+
+#~ msgid "Keymaps"
+#~ msgstr "鍵盤對應表"
+
+#~ msgid "minute(s)"
+#~ msgstr "分鐘"
+
+#~ msgid "Applet _width:"
+#~ msgstr "面板程式寬度(_W)："
+
+#~ msgid "Command:"
+#~ msgstr "指令："
+
+#~ msgid "No_t connected"
+#~ msgstr "沒有接上(_T)"
+
+#~ msgid "A_waiting connection"
+#~ msgstr "正在等待連線(_W)"
+
+#~ msgid "B_link"
+#~ msgstr "閃爍(_L)"
+
+#~ msgid "_Swap Space"
+#~ msgstr "交換記憶(_S)"
+
+#~ msgid "_Color:"
+#~ msgstr "色彩(_C)："
 
 #~ msgid "_Default character list:"
 #~ msgstr "預設的字元清單(_D)："
@@ -3012,9 +3129,6 @@ msgstr "無線網路連線監控偏好設定"
 #~ msgid "_General"
 #~ msgstr "一般(_G)"
 
-#~ msgid "C_olors"
-#~ msgstr "色彩(_O)"
-
 #~ msgid "P_rocessor"
 #~ msgstr "處理器(_R)"
 
@@ -3032,9 +3146,6 @@ msgstr "無線網路連線監控偏好設定"
 
 #~ msgid "_Refresh"
 #~ msgstr "重新整理(_R)"
-
-#~ msgid "Clock"
-#~ msgstr "時鐘"
 
 #~ msgid "Show time"
 #~ msgstr "顯示時間"
