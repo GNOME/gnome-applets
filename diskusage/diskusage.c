@@ -1,10 +1,30 @@
 /*
  * GNOME diskusage panel applet
  * (C) 1997 The Free Software Foundation
+ *
+ * Shows a pie with the used and free space
+ * for the selected filesystem.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *                                
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *           
+ * Authors: 	Bruno Widmann
+ *		Martin Baulig - libgtop support
+ *		Dave Finton - mountlist menu
  * 
- * Author: Bruno Widmann
- * 	   Modified from code taken from 
- * 	   cpumemusage & cpuload applets.
+ * With code from cpumemusage & cpuload applets.
+ *
  */
 
 #include <stdio.h>
@@ -23,7 +43,6 @@
 
 /*#define DU_DEBUG*/
 
-
 diskusage_properties props;
 
 static gint update_values ();
@@ -31,7 +50,6 @@ static gint update_values ();
 DiskusageInfo   summary_info;
 
 static GtkWidget *diskusage;
-static GtkWidget *my_frame;  /* the frame wherer hbox or vbox reside   */
 static GtkWidget *my_applet;
 GtkWidget *disp;
 GdkPixmap *pixmap;
@@ -39,6 +57,16 @@ GdkGC *gc;
 GdkColor ucolor, fcolor, tcolor, bcolor;
 
 void update_mount_list_menu_items (void);
+void diskusage_resize (void);
+int draw_h(void);
+int draw_v(void);
+void draw(void);
+void setup_colors(void);
+void create_gc(void);
+void start_timer(void);
+void change_filesystem_cb (AppletWidget *applet, gpointer data);
+void add_mount_list_menu_items (void);
+GtkWidget *diskusage_widget(void);
 
 GString **mpoints;
 GString **menuitem;
@@ -58,7 +86,6 @@ void diskusage_resize ()
  */
 int draw_h(void)
 {
-	int i, l;
 
 	GdkFont* my_font;
 	char *text;
@@ -162,7 +189,6 @@ int draw_h(void)
  */
 int draw_v(void)
 {
-	int i, l;
 
 	GdkFont* my_font;
 	char *text;
@@ -189,7 +215,7 @@ int draw_v(void)
 
 
 	/* Free Space text, part1*/		        
-	sprintf (avail_buf2,"av: \0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+	sprintf (avail_buf2,"av: \0");
 
 
 	
@@ -279,7 +305,7 @@ int draw_v(void)
 
 
 
-int draw(void)
+void draw(void)
 {
 
 	if (summary_info.orient == ORIENT_LEFT || summary_info.orient == ORIENT_RIGHT)
@@ -576,7 +602,6 @@ void update_mount_list_menu_items () {
 
 GtkWidget *diskusage_widget(void)
 {
-	int i;
 	
 	GtkWidget *frame, *box;
 	GtkWidget *event_box;
@@ -584,12 +609,6 @@ GtkWidget *diskusage_widget(void)
 #ifdef DU_DEBUG
 	printf ("entering diskusage_widget  \n");
 #endif
-	
-
-	/*
-	 * default to horizontal panel, as long as we don't know for sure
-	 */
-	/*summary_info.orient = ORIENT_UP;*/
 
 	summary_info.selected_filesystem = 0;
 
@@ -637,32 +656,8 @@ GtkWidget *diskusage_widget(void)
 
 	return frame;
 	
-
 }
 
-static void
-about_cb (AppletWidget *widget, gpointer data)
-{
-	GtkWidget *about;
-	gchar *authors[] = {
-		"Bruno Widmann (bwidmann@tks.fh-sbg.ac.at)",
-		"Martin Baulig (martin@home-of-linux.org)",
-	  NULL
-	  };
-
-	about = gnome_about_new ( "The GNOME Disk Usage Applet", "0.1.0",
-			"(C) 1998",
-			authors,
-			"This applet is released under "
-			"the terms and conditions of the "
-			"GNU Public Licence."
-			"\nShows a pie with the used and free space "
-			"for the selected filesystem.  ",
-			NULL);
-	gtk_widget_show (about);
-
-	return;
-}
 
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
 {
@@ -704,13 +699,6 @@ int main(int argc, char **argv)
 	setup_colors();
        	
 	add_mount_list_menu_items ();
-	
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb,
-					      NULL);
         
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
                            GTK_SIGNAL_FUNC(applet_save_session),
