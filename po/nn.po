@@ -1,14 +1,13 @@
 # Norwegian (nynorsk) translation of gnome-applets
-# Copyright (C) 2000 Gaute Hvoslef Kvalnes.
-# Gaute Hvoslef Kvalnes <ai98ghk@stud.hib.no>, 2000
+# Copyright (C) 2001 Roy-Magne Mo
 # Kjartan Maraas <kmaraas@gnome.org>, 2001.
 # Roy-Magne Mo <rmo@sunnmore.net>, 2001
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.4.0.3\n"
-"POT-Creation-Date: 2001-10-30 23:40+0100\n"
-"PO-Revision-Date: 2001-11-03 04:46+0100\n"
+"POT-Creation-Date: 2001-11-22 05:38+0100\n"
+"PO-Revision-Date: 2001-11-22 05:13+0100\n"
 "Last-Translator: Roy-Magne Mo <rmo@sunnmore.net>\n"
 "Language-Team: Norwegian/Nynorsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +27,7 @@ msgstr "Innstillingar for klokke"
 #: slashapp/properties.c:412 sound-monitor/properties.c:425
 #: tickastat/properties.c:424
 msgid "General"
-msgstr "Generelt"
+msgstr "Allment"
 
 #. frame for colors
 #: another_clock/another_clock.c:271 diskusage/properties.c:351
@@ -129,7 +128,7 @@ msgstr "ASKlokke"
 
 #: asclock/dialogs.c:29
 msgid "(C) 1998 the Free Software Foundation"
-msgstr "© 1998 Free Software Foundation"
+msgstr "© 1998 the Free Software Foundation"
 
 #: asclock/dialogs.c:31
 msgid "Who said NeXT is dead?"
@@ -146,7 +145,7 @@ msgstr "Min tittel"
 
 #: asclock/dialogs.c:266
 msgid "Continent/City"
-msgstr "Kontinent/by"
+msgstr "Kontinent/By"
 
 #: asclock/dialogs.c:267
 msgid "Clock Theme"
@@ -194,6 +193,9 @@ msgid ""
 "\n"
 "Make sure that your kernel was built with APM support."
 msgstr ""
+"Feil ved spørjing av batteristatus.\n"
+"\n"
+"Ver sikker på at kjerna har innebygd APM-støtte."
 
 #: battery/battery.c:1038
 msgid "The GNOME Battery Monitor Applet"
@@ -208,6 +210,8 @@ msgid ""
 "This applet monitors the charge of your laptop's battery.  Click on it to "
 "change display modes."
 msgstr ""
+"Denne appleten overvakar lading av batteriet på din bærbare. Klikk på den "
+"for å endre visningsmodus"
 
 #: battery/battery.c:1241
 msgid "Could not allocate space for graph values"
@@ -268,14 +272,12 @@ msgid "Low Battery Color:"
 msgstr "Farge for lav batterispenning:"
 
 #: battery/properties.c:276
-#, fuzzy
 msgid "Graph Battery Low Color:"
-msgstr "Graf-fargar"
+msgstr "Graf Batteri lavt farge:"
 
 #: battery/properties.c:282
-#, fuzzy
 msgid "Graph Tick Color:"
-msgstr "Graf-fargar"
+msgstr "Tikkfarge for graf:"
 
 #: battery/properties.c:289
 msgid "Graph Direction:"
@@ -310,7 +312,8 @@ msgid ""
 "Cannot open /proc/apm!  Make sure that you built APM support into your "
 "kernel.\n"
 msgstr ""
-"Kan ikkje opne /proc/apm! Ver sikkert på at APM-støtte er bygd inn i kjerna.\n"
+"Kan ikkje opne /proc/apm! Ver sikkert på at APM-støtte er bygd inn i "
+"kjerna.\n"
 
 #: battery/read-battery.c:103
 #, c-format
@@ -358,21 +361,20 @@ msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
+"Gnomepanel-appleten for å velje rare teikn som ikkje er på tastaturet ditt. "
+"Sluppen under GNU General Public License."
 
 #: charpick/properties.c:158
-#, fuzzy
 msgid "Minimum number of cells: (for autosize)"
-msgstr "Høgste tal på ord i spørjinga"
+msgstr "Minimum tal på celler: (for autostorleik)"
 
 #: charpick/properties.c:159
-#, fuzzy
 msgid "Size of button: (pixels)"
-msgstr "Sidestorleik"
+msgstr "Storleik på knapp: (pikslar)"
 
 #: charpick/properties.c:160
-#, fuzzy
 msgid "Number of rows of buttons:"
-msgstr "Nummerknappar"
+msgstr "Tal på radar med knappar:"
 
 #: charpick/properties.c:161
 msgid "Number of columns of buttons:"
@@ -396,6 +398,8 @@ msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
 msgstr ""
+"Desse teikna vil syne når panelet blir starta. For å returnere til denne "
+"lista, trykk <mellomrom> medan appleten har fokus."
 
 #. add tab to propwindow
 #: charpick/properties.c:288
@@ -408,7 +412,7 @@ msgstr "Oppsett for Teiknveljar"
 
 #: clipboard/clipboard.c:172
 msgid "Clipboard Applet"
-msgstr "Klippebrett programmodul"
+msgstr "Utklippstavle applet"
 
 #: clipboard/clipboard.c:174
 msgid "Copyright (C) 1999"
@@ -416,9 +420,11 @@ msgstr "Opphavsrett © 1999"
 
 #: clipboard/clipboard.c:176
 msgid ""
-"Gnome panel applet for copying and retrieving selections with a history list. "
-"Released under GNU General Public Licence."
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
 msgstr ""
+"Gnome-panel-applet for kopiering og framhenting av val med ein "
+"historikkliste. Sluppe under GNU General Public License."
 
 #: clockmail/clockmail.c:40 slashapp/slashapp.c:226 sound-monitor/main.c:26
 #: tickastat/main.c:191
@@ -427,22 +433,27 @@ msgstr "John Ellis <johne@bellatlantic.net>"
 
 #: clockmail/clockmail.c:43
 msgid "Clock and Mail Notify Applet"
-msgstr ""
+msgstr "Klokke- og postpåminningsapplet"
 
 #: clockmail/clockmail.c:44
 msgid "(C) 2000"
-msgstr "(C) 2000"
+msgstr "©2000"
 
 #: clockmail/clockmail.c:46
 msgid ""
 "Released under the GNU general public license.\n"
-"Basic digital clock with date in a tooltip. Optional 12/24 time display. Mail "
-"blinking can be for any unread mail, or only briefly when new mail arrives."
+"Basic digital clock with date in a tooltip. Optional 12/24 time display. "
+"Mail blinking can be for any unread mail, or only briefly when new mail "
+"arrives."
 msgstr ""
+"Sluppen under GNU general public license.\n"
+"Enkelt digital klokke med dato i verktytips. Valfri 12/24-timers visning. "
+"Blinking ved E-post på kvar ulest post, eller berre kort når ny post kjem "
+"kjem."
 
 #: clockmail/clockmail.c:127
 msgid "%a, %b %d"
-msgstr "%a, %b %d"
+msgstr "%a, %d. %b"
 
 #: clockmail/clockmail.c:134
 msgid " (GMT)"
@@ -501,7 +512,7 @@ msgstr "Når klikka på, køyr:"
 
 #: clockmail/properties.c:435 sound-monitor/properties.c:443
 msgid "Theme file (directory):"
-msgstr "Tema-fil (katalog):"
+msgstr "Temafil (katalog):"
 
 #: clockmail/properties.c:466 odometer/properties.c:335
 #: sound-monitor/properties.c:471
@@ -514,13 +525,15 @@ msgstr "CPU/Minnebruks programmodul"
 
 #: cpumemusage/cpumemusage.c:176
 msgid "(c) 1997 the Free Software Foundation"
-msgstr "© 1997 the Free Software Foundation"
+msgstr "©1997 the Free Software Foundation"
 
 #: cpumemusage/cpumemusage.c:178
 msgid ""
 "The CPU/Mem usage applet displays your system resources with 3 colorful "
 "stacked bar graphs (processor, memory, swap)"
 msgstr ""
+"CPU-/minnebruk-appleten visar ressursane på systemet ditt med tre "
+"fargefulle  søylediagram (prossessor, minne og veksleminne)"
 
 #: diskusage/diskusage.c:171 diskusage/diskusage.c:283
 #, c-format
@@ -544,6 +557,8 @@ msgid ""
 "Released under the GNU general public license.\n"
 "Monitors the amount of space in use and available on your disk drives."
 msgstr ""
+"Sluppen under GNU general public license.\n"
+"Overvakar plassbruk og ledig plass på dine stasjonar."
 
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:724
 msgid "Browse..."
@@ -590,15 +605,16 @@ msgid "Diskusage Settings"
 msgstr "Innstillingar for diskbruk"
 
 #: drivemount/drivemount.c:131
-#, fuzzy
 msgid "Drive Mount Applet"
-msgstr "Appletar du stolar på"
+msgstr "Diskmonteringsapplet"
 
 #: drivemount/drivemount.c:134
 msgid ""
 "Released under the GNU general public license.\n"
 "Mounts and Unmounts drives."
 msgstr ""
+"Sluppen under GNU general public license.\n"
+"Monterar og avmonterar diskar."
 
 #: drivemount/drivemount.c:375
 msgid " mounted"
@@ -615,20 +631,20 @@ msgid "\" reported:\n"
 msgstr "\" rapportert:\n"
 
 #: drivemount/drivemount.c:506
-#, fuzzy
 msgid ""
 "Drivemount command failed.\n"
 "\""
-msgstr "Hent monteringskommando"
+msgstr ""
+"Monteringskommando feila.\n"
+"\""
 
 #: drivemount/drivemount.c:734
 msgid "Eject"
 msgstr "Løys ut"
 
 #: drivemount/properties.c:256
-#, fuzzy
 msgid "Drive Mount Applet Properties"
-msgstr "Ymse eigenskapar"
+msgstr "Eigenskapar for diskmonteringsapplet"
 
 #: drivemount/properties.c:270
 msgid "Mount point:"
@@ -652,7 +668,7 @@ msgstr "Cdrom"
 
 #: drivemount/properties.c:313
 msgid "Zip Drive"
-msgstr "Zip drive"
+msgstr "Zip-disk"
 
 #: drivemount/properties.c:317
 msgid "Hard Disk"
@@ -660,10 +676,9 @@ msgstr "Harddisk"
 
 #: drivemount/properties.c:321
 msgid "Jaz Drive"
-msgstr "Jaz drive"
+msgstr "Jaz-disk"
 
 #: drivemount/properties.c:325
-#, fuzzy
 msgid "Custom"
 msgstr "Eigendefinert"
 
@@ -681,12 +696,11 @@ msgstr "Vel ikon for umontert"
 
 #: drivemount/properties.c:367
 msgid "Custom icon for not mounted:"
-msgstr ""
+msgstr "Eigendefinert ikon for ikkje montert:"
 
 #: drivemount/properties.c:373 odometer/properties.c:285
-#, fuzzy
 msgid "Scale size to panel"
-msgstr "Tilpass faks til sidestorleik"
+msgstr "Tilpass storleik til panel"
 
 #: drivemount/properties.c:379
 msgid "Eject on unmount"
@@ -694,7 +708,7 @@ msgstr "Løys ut ved avmontering"
 
 #: drivemount/properties.c:385
 msgid "Use automount friendly status test"
-msgstr ""
+msgstr "Bruk automount-vennleg statustest"
 
 #: fifteen/fifteen.c:46
 msgid ""
@@ -717,18 +731,16 @@ msgid ""
 "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
 "Guaranteed to be a productivity buster."
 msgstr ""
+"Sam Lloyd sit favorittspl, no til ditt velvære i Gnome-panelet. Garantert "
+"øydeleggjande for produktiviteten."
 
 #: fifteen/fifteen.c:358
-#, fuzzy
 msgid "Can't create fifteen applet!"
-msgstr ""
-"Kan ikkje laga fila\n"
-"'"
+msgstr "Kan ikkje opprette femten-appleten!"
 
 #: fifteen/fifteen.c:377
-#, fuzzy
 msgid "Scramble pieces"
-msgstr "Eksempelval"
+msgstr "Bland stykka"
 
 #: geyes/geyes.c:231
 msgid "Dave Camp <campd@oit.edu>"
@@ -740,15 +752,15 @@ msgstr "gEyes"
 
 #: geyes/geyes.c:241
 msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Opphavsrett © 1999 Dave Camp"
+msgstr "Opphavsrett ©1999 Dave Camp"
 
 #: geyes/geyes.c:243
 msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr ""
+msgstr "Ein rar liten xeyes-klone for GNOME-panelet."
 
 #: geyes/themes.c:173
 msgid "Theme Name"
-msgstr "Tema namn"
+msgstr "Temanamn"
 
 #: geyes/themes.c:196
 msgid "gEyes Settings"
@@ -766,22 +778,22 @@ msgstr "keymap_%d/name=US 105 tastars tastatur (med windows-tastar)"
 #: gkb-new/gkb.c:442
 #, c-format
 msgid "keymap_%d/label=us"
-msgstr ""
+msgstr "keymap_%d/label=us"
 
 #: gkb-new/gkb.c:445
 #, c-format
 msgid "keymap_%d/country=United States"
-msgstr ""
+msgstr "keymap_%d/country=USA"
 
 #: gkb-new/gkb.c:448
 #, c-format
 msgid "keymap_%d/lang=English"
-msgstr ""
+msgstr "keymap_%d/lang=Engelsk"
 
 #: gkb-new/gkb.c:454
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap us"
-msgstr ""
+msgstr "keymap_%d/command=gkb_xmmap us"
 
 #: gkb-new/gkb.c:460
 #, c-format
@@ -791,27 +803,27 @@ msgstr ""
 #: gkb-new/gkb.c:463
 #, c-format
 msgid "keymap_%d/label=hu"
-msgstr ""
+msgstr "keymap_%d/label=no"
 
 #: gkb-new/gkb.c:466
 #, c-format
 msgid "keymap_%d/country=Hungary"
-msgstr ""
+msgstr "kaymap_%d/country=Norge"
 
 #: gkb-new/gkb.c:469
-#, fuzzy, c-format
+#, c-format
 msgid "keymap_%d/lang=Hungarian"
-msgstr "Language=Ungarsk"
+msgstr "keymap_%d/lang=Norsk"
 
 #: gkb-new/gkb.c:472
 #, c-format
 msgid "keymap_%d/flag=hu.png"
-msgstr ""
+msgstr "keymap_%d/flag=no.png"
 
 #: gkb-new/gkb.c:475
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap hu"
-msgstr ""
+msgstr "keymap_%d/command=gkb_xmmap no"
 
 #: gkb-new/gkb.c:613 gkb-new/gkb.c:620
 msgid "GKB"
@@ -846,9 +858,16 @@ msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it to CVS.\n"
 "So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese Kovacs "
-"<emese@eik.bme.hu> for her solidarity."
+"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
+"Kovacs <emese@eik.bme.hu> for her solidarity."
 msgstr ""
+"Denne appleten skiftar mellom tastaturkart. Den brukar setxbmap, eller "
+"xmodmap.\n"
+"Send meg flagget ditt, bruk (60x40 storleik), så vil eg legge den til i "
+"CVS.\n"
+"Takk så lenge, og takk for all fisken.\n"
+"Takk til Balazs Nagy (Kevin) <julian7@kva.hu> for hans hjelp og Emese Kovacs "
+"<emese@eik.bme.hu> for hennar solidaritet."
 
 #: gkb-new/gkb.c:671
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
@@ -918,9 +937,8 @@ msgid "Options"
 msgstr "Val"
 
 #: gkb-new/prop-add.c:249
-#, fuzzy
 msgid "Select layout"
-msgstr "Vel speleliste"
+msgstr "Vel layout"
 
 #: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1032
 #: webcontrol/properties.c:574
@@ -1001,7 +1019,7 @@ msgstr "Jamaica"
 
 #: gkb-new/prop-map.c:200
 msgid "New Zealand"
-msgstr "New Zealand"
+msgstr "Ny Zealand"
 
 #: gkb-new/prop-map.c:201
 msgid "Norway"
@@ -1197,7 +1215,7 @@ msgstr "cp1251"
 
 #: gkb-new/prop-map.c:304
 msgid "georgian-academy"
-msgstr ""
+msgstr "georgisk-universitet"
 
 #: gkb-new/prop-map.c:305
 msgid "koi8-r"
@@ -1250,11 +1268,12 @@ msgid "Country"
 msgstr "Land"
 
 #: gkb-new/prop-map.c:584
-#, fuzzy
 msgid ""
 "Flag\n"
 "Pixmap"
-msgstr "Bilete"
+msgstr ""
+"Flagg\n"
+"Bilete"
 
 #: gkb-new/prop-map.c:586
 msgid "Architecture"
@@ -1282,7 +1301,7 @@ msgstr ""
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
-msgstr ""
+msgstr "Tastaturskiftekommandoen returnerte feil!"
 
 #: gnotes/gnote.c:224
 msgid "Raise Note"
@@ -1310,14 +1329,11 @@ msgstr "Opphavsrett © 1998-1999"
 
 #: gnotes/gnotes_applet.c:105
 msgid "Create sticky notes on your screen."
-msgstr ""
+msgstr "Lagar ein gul-lapp på skjermen din."
 
 #: gnotes/gnotes_applet.c:171
-#, fuzzy
 msgid "Can't create GNotes applet!"
-msgstr ""
-"Kan ikkje laga fila\n"
-"'"
+msgstr "Klarar ikkje å opprette Gnotes-applet!"
 
 #: gnotes/gnotes_applet.c:189
 msgid "Raise Notes"
@@ -1368,9 +1384,8 @@ msgid "New Symbol:"
 msgstr "Nytt symbol:"
 
 #: gtik/gtik.c:1043
-#, fuzzy
 msgid "Remove Selected"
-msgstr "Erstatt valt tekst?"
+msgstr "Fjern valde"
 
 #: gtik/gtik.c:1092
 msgid "Gnome Stock Ticker Properties"
@@ -1382,11 +1397,11 @@ msgstr "Oppdateringsfrekvens i minutt:"
 
 #: gtik/gtik.c:1123
 msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr ""
+msgstr "Tast inn symbol skild med \"+\" i boksa under."
 
 #: gtik/gtik.c:1130
 msgid "Display only symbols and price"
-msgstr ""
+msgstr "Vis kun symbol og pris"
 
 #: gtik/gtik.c:1131
 msgid "Scroll left to right"
@@ -1418,9 +1433,8 @@ msgid "Select Font"
 msgstr "Vel skrifttype"
 
 #: gtik/gtik.c:1225
-#, fuzzy
 msgid "Stock Change:"
-msgstr " Endra"
+msgstr "Aksjeendringar:"
 
 #: gtik/gtik.c:1248
 msgid "Symbols"
@@ -1437,7 +1451,6 @@ msgid "Appearance"
 msgstr "Utsjånad"
 
 #: gtik/gtik.c:1345 slashapp/slashapp.c:103
-#, fuzzy
 msgid "Refresh"
 msgstr "Oppfrisk"
 
@@ -1550,8 +1563,8 @@ msgstr ""
 #: gweather/gweather-dialog.c:439
 msgid ""
 "State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available only "
-"for US cities."
+"Please try the detailed forecast; note that IWIN forecasts are available "
+"only for US cities."
 msgstr ""
 
 #: gweather/gweather-pref.c:135
@@ -1614,9 +1627,8 @@ msgid "Use metric system units"
 msgstr "Bruk metrisk måleeiningar"
 
 #: gweather/gweather-pref.c:464
-#, fuzzy
 msgid "Enable detailed forecast"
-msgstr "Ta i bruk Internett-CDDB"
+msgstr "Slå på detaljerte vermeldingar"
 
 #: gweather/gweather-pref.c:469
 msgid "Enable radar map"
@@ -1657,7 +1669,7 @@ msgstr "mmHg"
 
 #: gweather/weather.c:64
 msgid "miles"
-msgstr "miles"
+msgstr "engelske mil"
 
 #: gweather/weather.c:64
 msgid "kilometers"
@@ -1665,7 +1677,7 @@ msgstr "kilometer"
 
 #: gweather/weather.c:113
 msgid "Location vector needs to be 4 elements long"
-msgstr ""
+msgstr "Stadsvektoren må ver 4 element lang"
 
 #: gweather/weather.c:147
 msgid "Variable"
@@ -1749,7 +1761,7 @@ msgstr "Oppbrotne skyer"
 
 #: gweather/weather.c:166
 msgid "Scattered clouds"
-msgstr ""
+msgstr "Spreidde skyer"
 
 #: gweather/weather.c:167
 msgid "Few clouds"
@@ -1764,64 +1776,56 @@ msgstr "Overskya"
 #. NONE
 #. DRIZZLE
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Drizzle"
-msgstr "Drev"
+msgstr "Småregn"
 
 #: gweather/weather.c:201
 msgid "Drizzle in the vicinity"
-msgstr ""
+msgstr "Småregn i området"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Light drizzle"
-msgstr "Lys brikke"
+msgstr "Lett småregn"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Moderate drizzle"
-msgstr "moderert"
+msgstr "Moderat småregn"
 
 #: gweather/weather.c:201
 msgid "Heavy drizzle"
-msgstr ""
+msgstr "Tungt småregn"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Shallow drizzle"
-msgstr "Skuggefil:"
+msgstr "Tynt småregn"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Patches of drizzle"
-msgstr "Lappar og anna"
+msgstr "Regnbyger"
 
 #: gweather/weather.c:201
 msgid "Partial drizzle"
-msgstr "Delvis yr"
+msgstr "Delvis småregn"
 
 #: gweather/weather.c:201 gweather/weather.c:202
 msgid "Thunderstorm"
 msgstr "Tordenstorm"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Windy drizzle"
-msgstr "Endra vindaugsstorleik"
+msgstr "Småregn med vind"
 
 #: gweather/weather.c:201
 msgid "Showers"
-msgstr "Regnbyer"
+msgstr "Regnbyger"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Drifting drizzle"
-msgstr "Skriv indeksfil"
+msgstr "Drivande småregn"
 
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Freezing drizzle"
-msgstr "Ledig storleik"
+msgstr "Frysande småregn"
 
 #. RAIN
 #: gweather/weather.c:202
@@ -1830,54 +1834,47 @@ msgstr "Regn"
 
 #: gweather/weather.c:202
 msgid "Rain in the vicinity"
-msgstr ""
+msgstr "Regn i området"
 
 #: gweather/weather.c:202
 msgid "Light rain"
 msgstr "Lett regn"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Moderate rain"
-msgstr "moderert"
+msgstr "Moderat regn"
 
 #: gweather/weather.c:202
 msgid "Heavy rain"
 msgstr "Tungt regn"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Shallow rain"
-msgstr "Vis igjen"
+msgstr "Tynt regn"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Patches of rain"
-msgstr "Stioppsett"
+msgstr "Regnbyger"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Partial rainfall"
-msgstr "Gradvis overgang vertikalt"
+msgstr "Delvis regn"
 
 #: gweather/weather.c:202
 msgid "Blowing rainfall"
-msgstr ""
+msgstr "Regn med vind"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Rain showers"
-msgstr "Les mapper"
+msgstr "Regnbyger"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Drifting rain"
-msgstr "Under ei økt"
+msgstr "Drivande regn"
 
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Freezing rain"
-msgstr "&Helsingstekst:"
+msgstr "Frysande regn"
 
 #. SNOW
 #: gweather/weather.c:203
@@ -1885,9 +1882,8 @@ msgid "Snow"
 msgstr "Snø"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Snow in the vicinity"
-msgstr "Vis &linjetal"
+msgstr "Snø i nærleiken"
 
 #: gweather/weather.c:203
 msgid "Light snow"
@@ -1902,18 +1898,16 @@ msgid "Heavy snow"
 msgstr "Tung snø"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Shallow snow"
-msgstr "Vis vindauge"
+msgstr "Grunn snø"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Patches of snow"
-msgstr "Lappar og anna"
+msgstr "Delvise snøbyger"
 
 #: gweather/weather.c:203
 msgid "Partial snowfall"
-msgstr ""
+msgstr "Delvis snøfall"
 
 #: gweather/weather.c:203 gweather/weather.c:204
 msgid "Snowstorm"
@@ -1921,32 +1915,28 @@ msgstr "Snøstorm"
 
 #: gweather/weather.c:203
 msgid "Blowing snowfall"
-msgstr ""
+msgstr "Snø og vind"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Snow showers"
-msgstr "Vis brukarar"
+msgstr "Snøbyger"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Drifting snow"
-msgstr "Skildring i rader"
+msgstr "Drivande snø"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Freezing snow"
-msgstr "Skrifttype for helsing"
+msgstr "Frysande snø"
 
 #. SNOW_GRAINS
 #: gweather/weather.c:204
-#, fuzzy
 msgid "Snow grains"
-msgstr "Vis igjen"
+msgstr "Snøkorn"
 
 #: gweather/weather.c:204
 msgid "Snow grains in the vicinity"
-msgstr ""
+msgstr "Snøkorn i nærleiken"
 
 #: gweather/weather.c:204
 #, fuzzy
@@ -2005,16 +1995,15 @@ msgstr ""
 
 #: gweather/weather.c:205
 msgid "Few ice crystals"
-msgstr "Få iskrystallar"
+msgstr "Noken iskrystallar"
 
 #: gweather/weather.c:205
 msgid "Moderate ice crystals"
 msgstr ""
 
 #: gweather/weather.c:205
-#, fuzzy
 msgid "Heavy ice crystals"
-msgstr "Einingstilstand"
+msgstr "Tungt med iskrystallar"
 
 #: gweather/weather.c:205
 msgid "Patches of ice crystals"
@@ -2109,20 +2098,19 @@ msgstr "Hagl"
 
 #: gweather/weather.c:207
 msgid "Hail in the vicinity"
-msgstr ""
+msgstr "Hagl i nærleiken"
 
 #: gweather/weather.c:207 gweather/weather.c:208
 msgid "Light hail"
 msgstr "Lett Hagl"
 
 #: gweather/weather.c:207
-#, fuzzy
 msgid "Moderate hail"
-msgstr "moderert"
+msgstr "Moderat hagl"
 
 #: gweather/weather.c:207
 msgid "Heavy hail"
-msgstr ""
+msgstr "Tungt hagl"
 
 #: gweather/weather.c:207
 #, fuzzy
@@ -2282,23 +2270,20 @@ msgstr "Feil spesifikasjon av port."
 
 #. MIST
 #: gweather/weather.c:210
-#, fuzzy
 msgid "Mist"
-msgstr "Ymse"
+msgstr "Tåke"
 
 #: gweather/weather.c:210
 msgid "Mist in the vicinity"
-msgstr ""
+msgstr "Tåke i nærleiken"
 
 #: gweather/weather.c:210
-#, fuzzy
 msgid "Light mist"
-msgstr "Lyssetjing"
+msgstr "Lett tåke"
 
 #: gweather/weather.c:210
-#, fuzzy
 msgid "Moderate mist"
-msgstr "Mappeliste"
+msgstr "Moderat tåke"
 
 #: gweather/weather.c:210
 #, fuzzy
@@ -2458,9 +2443,8 @@ msgid "Shallow volcanic ash"
 msgstr ""
 
 #: gweather/weather.c:213
-#, fuzzy
 msgid "Patches of volcanic ash"
-msgstr "Stiar til spooler-kommandoar:"
+msgstr "Lappar med vulkansk oske"
 
 #: gweather/weather.c:213
 msgid "Partial volcanic ash"
@@ -2496,9 +2480,8 @@ msgid "Sand in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:214
-#, fuzzy
 msgid "Light sand"
-msgstr "Høgrehendt"
+msgstr "Lett sand"
 
 #: gweather/weather.c:214
 #, fuzzy
@@ -2774,9 +2757,8 @@ msgstr ""
 
 #. DUSTSTORM
 #: gweather/weather.c:220
-#, fuzzy
 msgid "Duststorm"
-msgstr "tilpassa"
+msgstr "Støvstorm"
 
 #: gweather/weather.c:220
 msgid "Duststorm in the vicinity"
@@ -2877,9 +2859,8 @@ msgid "Moderate tornado"
 msgstr "Moderat tornado"
 
 #: gweather/weather.c:222
-#, fuzzy
 msgid "Raging tornado"
-msgstr "Kan ikkje angra"
+msgstr "Rasande tornado"
 
 #: gweather/weather.c:222
 #, fuzzy
@@ -2997,7 +2978,7 @@ msgstr "Jon si binære klokke"
 
 #: jbc/jbc-applet.c:59
 msgid "(C) 1999"
-msgstr "© 1999"
+msgstr "©1999"
 
 #: jbc/jbc-applet.c:61
 msgid ""
@@ -3015,11 +2996,8 @@ msgid "A complete waste of perfectly good CPU cycles."
 msgstr "Eit fullstendig meiningslaus vekkasting av gode CPU-syklar."
 
 #: life/life.c:254
-#, fuzzy
 msgid "Can't create life applet!"
-msgstr ""
-"Kan ikkje laga fila\n"
-"'"
+msgstr "Klarar ikkje å opprette life-programmodulen"
 
 #: life/life.c:273
 msgid "Randomize"
@@ -3036,14 +3014,14 @@ msgid ""
 "completion, command history, changeable macros and an optional built-in "
 "clock.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it under "
-"the terms of the GNU General Public License as published by the Free Software "
-"Foundation; either version 2 of the License, or (at your option) any later "
-"version."
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
 msgstr ""
-"Dette programmet er gratis. Du kan vidaredistribuera det og/eller endra det i "
-"følge vilkåra i versjon 2 eller (ditt val) ein vilkårleg nyare versjon av GNU "
-"General Public License, utgjeve av Free Software Foundation.\n"
+"Dette programmet er gratis. Du kan vidaredistribuera det og/eller endra det "
+"i følge vilkåra i versjon 2 eller (ditt val) ein vilkårleg nyare versjon av "
+"GNU General Public License, utgjeve av Free Software Foundation.\n"
 
 #: mini-commander/src/cmd_completion.c:68
 #: mini-commander/src/cmd_completion.c:114
@@ -3086,17 +3064,17 @@ msgstr "startar ..."
 msgid "autocompleted"
 msgstr "atuofullført"
 
-#: mini-commander/src/command_line.c:288
+#: mini-commander/src/command_line.c:284
 msgid "history list empty"
 msgstr "tom historikk"
 
 #. title
-#: mini-commander/src/command_line.c:306
+#: mini-commander/src/command_line.c:302
 msgid "Command history"
 msgstr "Kommandohistorikk"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:426
+#: mini-commander/src/command_line.c:422
 msgid "Start program"
 msgstr "Start program"
 
@@ -3161,9 +3139,8 @@ msgid "saving prefs..."
 msgstr "lagrar innstillingar ..."
 
 #: mini-commander/src/preferences.c:514
-#, fuzzy
 msgid "Mini-Commander Properties"
-msgstr "Eigenskapar for meldingshovud"
+msgstr "Eigenskapar for Mini-Commander"
 
 #. show time check box
 #: mini-commander/src/preferences.c:532
@@ -3177,9 +3154,8 @@ msgstr "Vis dato"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:565
-#, fuzzy
 msgid "Show handle"
-msgstr "Vis tabell"
+msgstr "Vis handtak"
 
 #. show frame check box
 #: mini-commander/src/preferences.c:577
@@ -3194,7 +3170,7 @@ msgstr "Autofullføring"
 #. show history autocomplete
 #: mini-commander/src/preferences.c:599
 msgid "Enable history based auto completion"
-msgstr ""
+msgstr "Slå på historikkbasert autokomplettering"
 
 #. applet width
 #: mini-commander/src/preferences.c:623
@@ -3213,15 +3189,13 @@ msgstr "Kommandolinjehøgde:"
 
 #. fg
 #: mini-commander/src/preferences.c:733
-#, fuzzy
 msgid "Command line foreground:"
-msgstr "Kommandolinje:"
+msgstr "Kommandolinjeframgrunn:"
 
 #. bg
 #: mini-commander/src/preferences.c:768
-#, fuzzy
 msgid "Command line background:"
-msgstr "Endra bakgrunn"
+msgstr "Kommandolinjebakgrunn:"
 
 #. prefix
 #: mini-commander/src/preferences.c:828
@@ -3247,8 +3221,8 @@ msgstr "Klarte ikkje å opne mikser-eining %s\n"
 
 #: mixer/mixer.c:175
 msgid ""
-"warning: this version of gmix was compiled with a different version "
-"of\nsoundcard.h.\n"
+"warning: this version of gmix was compiled with a different version of\n"
+"soundcard.h.\n"
 msgstr ""
 "åtvaring: denne versjonen av gmix vart kompilert med ein annan versjon av\n"
 "soundcard.h\n"
@@ -3268,9 +3242,8 @@ msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Miksereining %s har ikkje volum eller PCM-kanalar.\n"
 
 #: mixer/mixer.c:559
-#, fuzzy
 msgid "Main Volume and Mute"
-msgstr "Kommentar"
+msgstr "Hovudvolum og demp"
 
 #: mixer/mixer.c:690
 msgid "Mixer Applet"
@@ -3278,7 +3251,7 @@ msgstr "Miksar programtillegg"
 
 #: mixer/mixer.c:691
 msgid "(c) 1998 The Free Software Foundation"
-msgstr "© 1998 The Free Software Foundation"
+msgstr "©1998 The Free Software Foundation"
 
 #: mixer/mixer.c:693
 msgid ""
@@ -3327,23 +3300,20 @@ msgid "Help..."
 msgstr "Hjelp ..."
 
 #: modemlights/properties.c:396
-#, fuzzy
 msgid "Modem Lights Settings"
-msgstr "Innstillingar for skrifttypar"
+msgstr "Innstillingar modemlys"
 
 #: modemlights/properties.c:401
 msgid "Connecting"
 msgstr "Koplar til"
 
 #: modemlights/properties.c:415
-#, fuzzy
 msgid "Connect command:"
-msgstr "Fråkoplings-kommando :"
+msgstr "Tilkoplings-kommando:"
 
 #: modemlights/properties.c:432
-#, fuzzy
 msgid "Disconnect command:"
-msgstr "Fråkoplings-kommando :"
+msgstr "Fråkoplings-kommando:"
 
 #. confirmation checkbox
 #: modemlights/properties.c:445
@@ -3391,9 +3361,8 @@ msgid "Not connected"
 msgstr "Ikkje tilkopla"
 
 #: modemlights/properties.c:509
-#, fuzzy
 msgid "Awaiting connection"
-msgstr "%1 tilkoplingar"
+msgstr "Ventar på tilkopling"
 
 #: modemlights/properties.c:512
 msgid "Blink"
@@ -3408,14 +3377,12 @@ msgid "Outline"
 msgstr "Oversikt"
 
 #: modemlights/properties.c:534
-#, fuzzy
 msgid "Modem options"
-msgstr "Make-val"
+msgstr "Modemval"
 
 #: modemlights/properties.c:548
-#, fuzzy
 msgid "Modem lock file:"
-msgstr "Lydstyrke på modem:"
+msgstr "Modem låsfil:"
 
 #: modemlights/properties.c:560
 #, fuzzy
@@ -3432,7 +3399,6 @@ msgid "Use ISDN"
 msgstr "Bruk ISDN"
 
 #: modemlights/properties.c:605
-#, fuzzy
 msgid "Set options as default"
 msgstr "Bruk som standard"
 
@@ -3457,9 +3423,8 @@ msgstr "CPU-last"
 
 #: multiload/cpuload.c:88 multiload/loadavg.c:163 multiload/memload.c:91
 #: multiload/netload.c:87 multiload/swapload.c:91
-#, fuzzy
 msgid "Default Properties..."
-msgstr "Eigenskapar ..."
+msgstr "Standard eigenskapar ..."
 
 #: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
 #: multiload/netload.c:101 multiload/swapload.c:105
@@ -3479,9 +3444,8 @@ msgid "Load average over 15 minutes"
 msgstr "Snittlast (15 min)"
 
 #: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
-#, fuzzy
 msgid "Load Average Applet"
-msgstr "Lastar applet"
+msgstr "Snittlast applet"
 
 #: multiload/loadavg.c:106
 msgid ""
@@ -3516,9 +3480,8 @@ msgid "Speed:"
 msgstr "Fart:"
 
 #: multiload/load-graph.c:805
-#, fuzzy
 msgid "Use default properties"
-msgstr "Brukareigenskapar"
+msgstr "Bruk standard eigenskapar"
 
 #: multiload/main.c:28
 msgid "User"
@@ -3581,9 +3544,8 @@ msgid "Net Load"
 msgstr "Nett-last"
 
 #: multiload/memload.c:44
-#, fuzzy
 msgid "Memory Load Applet"
-msgstr "Lastar applet"
+msgstr "Minnelast applet"
 
 #: multiload/memload.c:47
 msgid ""
@@ -3593,9 +3555,8 @@ msgid ""
 msgstr ""
 
 #: multiload/netload.c:42
-#, fuzzy
 msgid "Network Load Applet"
-msgstr "Nettverk-adapter"
+msgstr "Nettverklast-applet"
 
 #: multiload/netload.c:45
 msgid ""
@@ -3609,9 +3570,8 @@ msgid "Network Load"
 msgstr "Nettverkslast"
 
 #: multiload/swapload.c:44
-#, fuzzy
 msgid "Swap Load Applet"
-msgstr "Lastar applet"
+msgstr "Veksleminnelast-applet"
 
 #: multiload/swapload.c:47
 msgid ""
@@ -3626,7 +3586,7 @@ msgstr "Odometer"
 
 #: odometer/odo.c:144
 msgid "(C) 1999 The Free Software Foundation"
-msgstr "© 1999 The Free Software Foundation"
+msgstr "©1999 The Free Software Foundation"
 
 #: odometer/odo.c:146
 msgid ""
@@ -3635,9 +3595,8 @@ msgid ""
 msgstr ""
 
 #: odometer/odo.c:664
-#, fuzzy
 msgid "Can't create odometer applet!"
-msgstr "Kan ikkje laga mappe "
+msgstr "Kan ikkje opprette odometer-applet!"
 
 #: odometer/odo.c:680
 msgid "Reset"
@@ -3660,18 +3619,16 @@ msgid "enabled"
 msgstr "på"
 
 #: odometer/properties.c:273
-#, fuzzy
 msgid "Digits number"
-msgstr "Signalnummer"
+msgstr "Talnummer"
 
 #: odometer/properties.c:308
 msgid "Theme file:"
-msgstr "Tema fil:"
+msgstr "Temafil:"
 
 #: quicklaunch/quicklaunch.c:65
-#, fuzzy
 msgid "The QuickLaunch Applet"
-msgstr "Comment=Ein snøggstartar-applet"
+msgstr "Hurtigstartar-applet"
 
 #: quicklaunch/quicklaunch.c:67
 msgid ""
@@ -3681,9 +3638,8 @@ msgid ""
 msgstr ""
 
 #: quicklaunch/quicklaunch.c:136
-#, fuzzy
 msgid "Launcher Properties"
-msgstr "Linjeeigenskapar"
+msgstr "Eigenskapar for oppstartar"
 
 #: quicklaunch/quicklaunch.c:251
 msgid ""
@@ -3692,19 +3648,17 @@ msgid ""
 msgstr ""
 
 #: quicklaunch/quicklaunch.c:292
-#, fuzzy
 msgid "Launcher properties..."
-msgstr "Eigenskapar for lag ..."
+msgstr "Eigenskapar for oppstartar ..."
 
 #: quicklaunch/quicklaunch.c:304
-#, fuzzy
 msgid "Delete launcher"
-msgstr "Slett overføring"
+msgstr "Slett oppstartar"
 
 #: quicklaunch/quicklaunch.c:413
-#, fuzzy, c-format
+#, c-format
 msgid "File '%s' does not exist"
-msgstr "Fila %1 finst ikkje."
+msgstr "Fila «%s» finst ikkje"
 
 #: quicklaunch/quicklaunch.c:422
 #, c-format
@@ -3727,7 +3681,7 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:50
 msgid "Copyright (C) 1999 Tom Gilbert"
-msgstr "Opphavsrett © 1999 Tom Gilbert"
+msgstr "Opphavsrett ©1999 Tom Gilbert"
 
 #: screenshooter/screenshooter_applet.c:51
 msgid ""
@@ -3740,14 +3694,12 @@ msgid ""
 msgstr ""
 
 #: screenshooter/screenshooter_applet.c:61
-#, fuzzy
 msgid "Visit the author's Website"
-msgstr "inkluder signaturen til forfattaren"
+msgstr "Gå til forfattaren si heimeside"
 
 #: screenshooter/screenshooter_applet.c:389
-#, fuzzy
 msgid "Screen-Shooter Settings"
-msgstr "Innstillingar for signalplottar"
+msgstr "Innstillingar for skjermskytar"
 
 #: screenshooter/screenshooter_applet.c:395
 msgid "Capture WM decorations when grabbing a window"
@@ -3804,7 +3756,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a .shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -3822,9 +3775,8 @@ msgid "App to use for displaying screenshots:"
 msgstr "Denne fargen vert brukt for å visa volum."
 
 #: screenshooter/screenshooter_applet.c:546
-#, fuzzy
 msgid "Files, Apps"
-msgstr "Arkiver som"
+msgstr "Filer, applikasjonar"
 
 #: screenshooter/screenshooter_applet.c:554
 #, fuzzy
@@ -3851,7 +3803,8 @@ msgstr ""
 #: screenshooter/screenshooter_applet.c:610
 msgid ""
 "(This'll chug loads of CPU, but will prevent compressing the image twice if "
-"a\nlossy file format is used)\n"
+"a\n"
+"lossy file format is used)\n"
 "Don't use this if you're using a lossless compression format, or if you "
 "cherish\n"
 "speed and don't mind imperfection in your thumbnails."
@@ -3865,8 +3818,8 @@ msgstr "Miniatyrbilete"
 msgid ""
 "All post-processing, frill and spurious options will chug more CPU than a\n"
 "simple screenshot, due to the creation and then conversion of an "
-"intermediate\nimage. Intensive operations may take some time on less spiffy "
-"CPUs."
+"intermediate\n"
+"image. Intensive operations may take some time on less spiffy CPUs."
 msgstr ""
 
 #: screenshooter/screenshooter_applet.c:651
@@ -3902,9 +3855,8 @@ msgid "Gamma value"
 msgstr "Gammaverdi"
 
 #: screenshooter/screenshooter_applet.c:690
-#, fuzzy
 msgid "Post Processing"
-msgstr "Handsamar ..."
+msgstr "Postprosessering"
 
 #: screenshooter/screenshooter_applet.c:698
 #, fuzzy
@@ -3942,21 +3894,20 @@ msgstr "programmet som skal køyrast"
 #: screenshooter/screenshooter_applet.c:756
 msgid ""
 "Script/program will be launched after image creation with the image "
-"filenames\nspecified on the commandline as follows:\n"
+"filenames\n"
+"specified on the commandline as follows:\n"
 "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
 "Hint: I use a script to update my website screenshot page.\n"
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
 
 #: screenshooter/screenshooter_applet.c:765
-#, fuzzy
 msgid "Frills"
-msgstr "Fyll"
+msgstr "Ekstra"
 
 #: screenshooter/screenshooter_applet.c:774
-#, fuzzy
 msgid "Blur image"
-msgstr "Skann bilete"
+msgstr "Gjer biletet uskarpt"
 
 #: screenshooter/screenshooter_applet.c:777
 msgid "Blur image by what factor?"
@@ -3979,9 +3930,8 @@ msgid "Find edges by what factor?"
 msgstr ""
 
 #: screenshooter/screenshooter_applet.c:797
-#, fuzzy
 msgid "Implode Image"
-msgstr "Importer bilete"
+msgstr "Imploder bilete"
 
 #: screenshooter/screenshooter_applet.c:801
 msgid "Implode by what factor?"
@@ -4096,15 +4046,15 @@ msgstr ""
 
 #: slashapp/properties.c:367
 msgid "Use Proxy"
-msgstr "Bruk Proxy"
+msgstr "Bruk proxy"
 
 #: slashapp/properties.c:378
 msgid "Proxy Host: "
-msgstr "Proxy vert: "
+msgstr "Proxy-vert: "
 
 #: slashapp/properties.c:395
 msgid "Proxy Port: "
-msgstr "Proxy Port: "
+msgstr "Proxy-port: "
 
 #: slashapp/properties.c:408
 msgid "(These settings do not take effect until a refresh)"
@@ -4175,9 +4125,8 @@ msgid "(C) 1998-2000"
 msgstr "© 1998-2000"
 
 #: slashapp/slashapp.c:234
-#, fuzzy
 msgid "A stock ticker-like applet\n"
-msgstr "Nyhendetelegraf-applet."
+msgstr "Nyhendetelegraf-lik-applet\n"
 
 #: slashapp/slashapp.c:253
 msgid "SlashApp Article List"
@@ -4227,7 +4176,7 @@ msgstr "Spel lyd:"
 
 #: sound-monitor/main.c:30
 msgid "(C) 2000 John Ellis"
-msgstr "(C) 2000 John Ellis"
+msgstr "©2000 John Ellis"
 
 #: sound-monitor/main.c:32
 msgid ""
@@ -4717,8 +4666,8 @@ msgstr "(C) 2000 the Free Software Foundation"
 
 #: webcontrol/webcontrol.c:51
 msgid ""
-"An applet to launch URLs in a web browser, search using various web sites and "
-"have a ton of fun!"
+"An applet to launch URLs in a web browser, search using various web sites "
+"and have a ton of fun!"
 msgstr ""
 
 #: webcontrol/webcontrol.c:242
@@ -4778,12 +4727,10 @@ msgid "Copy multiple selections into a persistant clipboard"
 msgstr "Kopier utval automatisk til utklippstavla"
 
 #: asclock/asclock_applet.desktop.in.h:1
-#, fuzzy
 msgid "AfterStep Clock"
 msgstr "AfterStep-klokke"
 
 #: asclock/asclock_applet.desktop.in.h:2
-#, fuzzy
 msgid "Just another clock"
 msgstr "Enda ei klokke"
 
@@ -5024,9 +4971,8 @@ msgstr "Breidde på URL-stolpe:"
 
 #. create Show Go button property
 #: webcontrol/properties.c:429
-#, fuzzy
 msgid "Display GO Button"
-msgstr "Visingsval:"
+msgstr "Vis GÅ knapp"
 
 #. create Launch New Window property
 #: webcontrol/properties.c:443
