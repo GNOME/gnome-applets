@@ -161,7 +161,11 @@ static void mixer_popup_hide    (MixerData *data, gboolean revert);
 static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 				 MixerData         *data,
 				 const gchar       *verbname);
-
+static void mixer_ui_component_event (BonoboUIComponent *comp,
+			  const gchar                  *path,
+			  Bonobo_UIComponent_EventType  type,
+			  const gchar                  *state_string,
+			  MixerData                    *data);
 void add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
 static gint mixerfd = -1;
@@ -561,7 +565,7 @@ scale_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data
 		/* Revert. */
 		mixer_popup_hide (data, TRUE);
 		return TRUE;
-
+	
 	case GDK_KP_Enter:
 	case GDK_ISO_Enter:
 	case GDK_3270_Enter:
@@ -649,7 +653,22 @@ applet_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *dat
 		/* Revert. */
 		mixer_popup_hide (data, TRUE);
 		return TRUE;
-
+	case GDK_m:
+		if (event->state == GDK_CONTROL_MASK) {
+			Bonobo_UIComponent_EventType  type;
+			if (data->mute)
+				mixer_ui_component_event (NULL, "Mute", type, "0", data);
+			else
+				mixer_ui_component_event (NULL, "Mute", type, "1", data);
+			return TRUE;
+		}
+		break;
+	case GDK_o:
+		if (event->state == GDK_CONTROL_MASK) {
+			mixer_start_gmix_cb (NULL, data, NULL);
+			return TRUE;
+		}
+		break;
 	case GDK_KP_Enter:
 	case GDK_ISO_Enter:
 	case GDK_3270_Enter:
