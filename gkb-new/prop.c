@@ -83,7 +83,7 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
   /* misc props from pbi */
   gkb->is_small    = pbi->is_small;
-  gkb->appearance = pbi->appearance;
+  gkb->mode = pbi->mode;
 
   gkb->key = g_strdup (gtk_entry_get_text (GTK_ENTRY(pbi->hotkey_entry)));
   convert_string_to_keysym_state (gkb->key,
@@ -152,7 +152,7 @@ gkb_prop_get_sizes (void)
 }
 
 /**
- * gkb_prop_get_appearance:
+ * gkb_prop_get_mode:
  * @void: 
  *
  *
@@ -160,7 +160,7 @@ gkb_prop_get_sizes (void)
  * Return Value: 
  **/
 static GList *
-gkb_prop_get_appearance (void)
+gkb_prop_get_mode (void)
 {
   static GList *list = NULL;
 
@@ -177,14 +177,14 @@ gkb_prop_get_appearance (void)
 
 
 /**
- * gkb_prop_appearance_changed:
+ * gkb_prop_mode_changed:
  * @menu_item: 
  * @pbi: 
  * 
  * 
  **/
 static void
-gkb_prop_appearance_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
+gkb_prop_mode_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
 {
   gchar *text;
 
@@ -192,7 +192,7 @@ gkb_prop_appearance_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
 
   g_return_if_fail (text != NULL);
 
-  pbi->appearance = gkb_util_get_appearance_from_text (text);
+  pbi->mode = gkb_util_get_mode_from_text (text);
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
 }
@@ -280,7 +280,7 @@ gkb_prop_option_menu_at (GtkWidget *table, gint row, gint col,
 static GtkWidget *
 gkb_prop_create_display_frame (GkbPropertyBoxInfo *pbi)
 {
-  GList *appearance;
+  GList *mode;
   GList *sizes;
 
   GtkWidget *frame;
@@ -313,10 +313,10 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo *pbi)
   gkb_prop_label_at (table, 0, 1, _("Applet size"));
 
   /* Option menus */
-  appearance = gkb_prop_get_appearance ();
-  gkb_prop_option_menu_at (table, 1, 0, appearance,
-			   gkb_prop_appearance_changed, pbi,
-			   gkb_util_get_int_from_appearance (pbi->appearance));
+  mode = gkb_prop_get_mode ();
+  gkb_prop_option_menu_at (table, 1, 0, mode,
+			   gkb_prop_mode_changed, pbi,
+			   gkb_util_get_int_from_mode (pbi->mode));
   
   sizes = gkb_prop_get_sizes ();
   gkb_prop_option_menu_at (table, 1, 1, sizes,
@@ -468,7 +468,7 @@ properties_dialog (AppletWidget * applet)
   
   pbi = g_new0 (GkbPropertyBoxInfo, 1);
   pbi->gkb = gkb;
-  pbi->appearance = gkb->appearance;
+  pbi->mode = gkb->mode;
   pbi->is_small = gkb->is_small;
   pbi->add_button    = NULL;
   pbi->edit_button   = NULL;

@@ -32,11 +32,21 @@
 #include <sys/stat.h>
 #include "gkb.h"
 
+#if 0
 #define COUNT1(x1,x2,x3,x4,x5) aw=ph*x1; ah=ph*x2; fw=ph*x3; fh=ph*x4; \
                                lw=ph*x3; lh=ph*x4; am=x5;
 
 #define COUNT2(x1,x2,x3,x4,x5) aw=pw*x1; ah=pw*x2; fw=pw*x3; fh=pw*x4; \
                                lw=pw*x3; lh=pw*x4; am=x5;
+#else
+#define COUNT1(x1,x2,x3,x4,x5) applet_width = pannel_height*x1; applet_height = pannel_height*x2; \
+						 flag_width   = pannel_height*x3; flag_height   = pannel_height*x4; \
+                               label_width  = pannel_height*x3; label_height  = pannel_height*x4; am=x5;
+
+#define COUNT2(x1,x2,x3,x4,x5) applet_width = pannel_width*x1; applet_height = pannel_width*x2; \
+						 flag_width   = pannel_width*x3; flag_height   = pannel_width*x4; \
+                               label_width  = pannel_width*x3; label_height  = pannel_width*x4; am=x5;
+#endif
 
 GtkWidget *bah_window = NULL;
 
@@ -122,9 +132,9 @@ gkb_draw (GKB * gkb)
   g_return_if_fail (gkb->keymap != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
 
-  if ((gkb->appearance == GKB_FLAG) || 
-   (gkb->appearance == GKB_FLAG_AND_LABEL))
-   {
+  if ((gkb->mode == GKB_FLAG) || 
+      (gkb->mode == GKB_FLAG_AND_LABEL))
+  {
     g_return_if_fail (gkb->keymap->pix != NULL);
     gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
@@ -135,87 +145,92 @@ gkb_draw (GKB * gkb)
   applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
 }
 
+
+#define GKB_SMALL_PANEL_DOWN 25 /* less than */
+#define GKB_SMALL_PANEL_UP 25 /* less than */
 /**
  * count_sizes:
  * @gkb:
  * 
- * Calculates applet, flag, label sizes, appearance mode
+ * Calculates applet, flag, label sizes, mode mode
  */
 static gint
 gkb_count_sizes (GKB * gkb)
 {
-  gint pw, ph, aw, ah, fw, fh, lw, lh; /* panel, applet, flag, 
+  gboolean small_panel = FALSE;
+  gboolean label_in_vbox = TRUE; /* If FALSE label is in hbox */
+  gint panel_width = 0;         /* Zero means we have not determined it */
+  gint panel_height = 0;
+  gint applet_width = 0;
+  gint applet_height = 0;
+  gint flag_width  = 0;
+  gint flag_height = 0;
+  gint label_height = 0;
+  gint label_width  = 0;
+#if 0	
+    ph, aw, ah, fw, fh, lw, lh; /* panel, applet, flag, 
                                           label width, height */
   gint am; /* Appearance mode: 0:flag 1:label 2:hbox 3:vbox */
+#endif	
 
   gint size;
 
   size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+  switch (gkb->orient)
+  {
+  case ORIENT_UP:
+    panel_height = size;
+    if (size < GKB_SMALL_PANEL_DOWN)
+      small_panel = TRUE;
+    break;
+  case ORIENT_DOWN:
+    panel_width = size;
+    if (size < GKB_SMALL_PANEL_UP)
+      small_panel = TRUE;
+    break;
+  default:
+    g_assert_not_reached ();
+  }
 
-  if (gkb->is_small)
-    size /= 2;
 
-  pw = ph = size;
+  g_print ("Flag size [flag %i:%i  Is small%i]\n", flag_width, flag_height, gkb->is_small);
+    
+  flag_height = (gint) panel_height / (gkb->is_small?2:1);
+  flag_width  = (gint) panel_width  / (gkb->is_small?2:1);
 
-  if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
-   {
-     if (gkb->appearance == GKB_FLAG_AND_LABEL)
-     {
-      if (size < 25)
-       { /* 1 */
-         COUNT1(3,1,1.5,1,3);
-       }
-      else
-       { /* 4 */
-	COUNT1(0.75,1,0.75,0.5,2);
-       }
-     }
-    else
-     if (gkb->appearance == GKB_FLAG)
-      { /* 2 */
-      COUNT1(1.5,1,1.5,1,0);
-      }
-     else
-      {
-      /* 3 */
-      COUNT1(1.5,1,1.5,1,1);
-      }
-   }
+  if (gkb->mode == GKB_FLAG_AND_LABEL) {
+    if (gkb->orient == ORIENT_UP && small_panel)
+      label_in_vbox = FALSE;
+    if (gkb->orient == ORIENT_UP && !gkb->is_small)
+      label_in_vbox = FALSE;
+  }
+
+  
+  /* Flag has either the with or the height set */
+  if (flag_width == 0)
+    flag_width = (gint) flag_height * 1.5;
   else
-   {
-     if (gkb->appearance == GKB_FLAG_AND_LABEL)
-     {
-      if (size < 25)
-       { /* 5 */
-        COUNT2(1,1.5,1,0.75,2);
-       }
-      else
-       { /* 8 */
-        COUNT2(1,0.375,0.5,0.375,3);
-       }
-     }
-    else
-     if (gkb->appearance == GKB_FLAG)
-      { /* 6 */
-      COUNT2(1,0.75,1,0.75,0);
-      }
-     else
-      {
-      /* 7 */
-      COUNT2(1,0.75,1,0.75,1);
-      }
-   }
+    flag_height = (gint) flag_width / 1.5;
 
-  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), aw, ah);
-  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), fw, fh);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->darea), fw, fh);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->label1), fw, fh);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->label2), fw, fh);
+  g_print ("Flag size [%i,%i]\n", flag_width, flag_height);
 
-  gkb->w = fw;
-  gkb->h = fh;
 
-  return am;
+  applet_width  = flag_width  + label_width;
+  applet_height = flag_height + label_height;
+
+  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width, flag_height);
+  
+#if  0
+  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), applet_width, applet_height);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->darea),  flag_width, flag_height);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->label1), flag_width, flag_height);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->label2), flag_width, flag_height);
+#endif
+
+  gkb->w = flag_width;
+  gkb->h = flag_height;
+
+  return label_in_vbox;
 }
 
 /**
@@ -230,36 +245,39 @@ gkb_sized_render (GKB * gkb)
 {
   GkbKeymap *keymap;
   GList *list;
-  gint am;
+  gboolean label_in_vbox;
 
+  g_print ("sized render ...\n");
+  
   debug (FALSE, "");
 
-  am = gkb_count_sizes (gkb);
+  label_in_vbox = gkb_count_sizes (gkb);
             
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
   gtk_widget_queue_resize (gkb->darea->parent->parent);
 
-  switch(am) {
-  case 0: 
-      gtk_widget_show_all (gkb->darea_frame);
-      gtk_widget_hide (gkb->label_frame1);  
-  break;
-  case 1:
-      gtk_widget_show_all (gkb->label_frame1);
-      gtk_widget_hide (gkb->darea_frame);
-      gtk_widget_hide (gkb->label_frame2);
-  break;
-  case 2: 
-     gtk_widget_hide (gkb->label_frame2);
-     gtk_widget_show_all (gkb->label_frame1);
-     gtk_widget_show_all (gkb->darea_frame);  
-  break;
-  case 3: 
-     gtk_widget_hide (gkb->label_frame1);
-     gtk_widget_show_all (gkb->label_frame2);
-     gtk_widget_show_all (gkb->darea_frame);
-  break;
+  /* Hide or show the flag */
+  if (gkb->mode == GKB_LABEL)
+    gtk_widget_hide (gkb->darea_frame);
+  else
+    gtk_widget_show_all (gkb->darea_frame);
+
+  /* Hide or show the labels */
+  switch (gkb->mode) {
+  case GKB_LABEL:
+  case GKB_FLAG_AND_LABEL:
+    if (label_in_vbox) {
+	gtk_widget_hide (gkb->label_frame2);
+	gtk_widget_show_all (gkb->label_frame1);
+      } else {
+	gtk_widget_hide (gkb->label_frame1);
+	gtk_widget_show_all (gkb->label_frame2);
+      }
+    break;
+  case GKB_FLAG:
+    gtk_widget_hide (gkb->label_frame1);
+    gtk_widget_hide (gkb->label_frame2);
   }
 
   list = gkb->maps;
@@ -386,8 +404,8 @@ applet_save_session (GtkWidget * w,
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_int ("gkb/small", gkb->is_small);
   gnome_config_set_string ("gkb/key", gkb->key);
-  text = gkb_util_get_text_from_appearance (gkb->appearance);
-  gnome_config_set_string ("gkb/appearance", text);
+  text = gkb_util_get_text_from_mode (gkb->mode);
+  gnome_config_set_string ("gkb/mode", text);
 
   while (list)
     {
@@ -518,8 +536,8 @@ load_properties ()
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   gkb->is_small = gnome_config_get_int ("gkb/small=0");
-  text = gnome_config_get_string ("gkb/appearance=Flag");
-  gkb->appearance = gkb_util_get_appearance_from_text (text);
+  text = gnome_config_get_string ("gkb/mode=Flag");
+  gkb->mode = gkb_util_get_mode_from_text (text);
   g_free (text);
 
   if (gkb->n == 0)

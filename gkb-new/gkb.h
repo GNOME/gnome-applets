@@ -58,7 +58,7 @@ typedef enum {
   GKB_LABEL,
   GKB_FLAG,
   GKB_FLAG_AND_LABEL,
-} GkbAppeareance;
+} GkbMode;
 
 struct _GkbPropertyBoxInfo
 {
@@ -83,8 +83,8 @@ struct _GkbPropertyBoxInfo
   GtkWidget *hotkey_entry;
   
   /* Other properties */
-  gint is_small;
-  GkbAppeareance appearance;
+  gint is_small; 
+  GkbMode mode;;
 };
 
 struct _GkbKeymap
@@ -112,7 +112,7 @@ struct _GKB
   
   /* Properties */
   PanelOrientType orient;
-  GkbAppeareance appearance;
+  GkbMode mode;
   gint is_small;
   gint w;
   gint h;
@@ -198,9 +198,9 @@ void gkb_prop_map_add (GkbPropertyBoxInfo *pbi);
 
 
 /* util.c */
-const gchar *  gkb_util_get_text_from_appearance (GkbAppeareance appearance);
-gint  gkb_util_get_int_from_appearance (GkbAppeareance appearance);
-GkbAppeareance gkb_util_get_appearance_from_text (const gchar *text);
+const gchar *  gkb_util_get_text_from_mode (GkbMode mode);
+gint  gkb_util_get_int_from_mode (GkbMode mode);
+GkbMode gkb_util_get_mode_from_text (const gchar *text);
 
 /* keygrab.c */
 gboolean convert_string_to_keysym_state(const char *string,

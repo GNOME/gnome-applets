@@ -28,41 +28,41 @@
 #include <gkb.h>
 
 const gchar *
-gkb_util_get_text_from_appearance (GkbAppeareance appearance)
+gkb_util_get_text_from_mode (GkbMode mode)
 {
-  if (appearance == GKB_LABEL)
+  if (mode == GKB_LABEL)
     return _("Label");
   
-  if (appearance == GKB_FLAG)
+  if (mode == GKB_FLAG)
     return _("Flag");
 
-  if (appearance == GKB_FLAG_AND_LABEL)
+  if (mode == GKB_FLAG_AND_LABEL)
     return _("Flag and Label");
 
-  g_warning ("Invalid appearance [%i]\n", appearance);
+  g_warning ("Invalid mode [%i]\n", mode);
   
   return _("Flag");
 }
 
 gint
-gkb_util_get_int_from_appearance (GkbAppeareance appearance)
+gkb_util_get_int_from_mode (GkbMode mode)
 {
-  if (appearance == GKB_LABEL)
+  if (mode == GKB_LABEL)
     return 1;
   
-  if (appearance == GKB_FLAG)
+  if (mode == GKB_FLAG)
     return 0;
 
-  if (appearance == GKB_FLAG_AND_LABEL)
+  if (mode == GKB_FLAG_AND_LABEL)
     return 2;
 
-  g_warning ("Invalid appearance [%i]\n", appearance);
+  g_warning ("Invalid mode [%i]\n", mode);
   
   return 0;
 }
   
-GkbAppeareance
-gkb_util_get_appearance_from_text (const gchar *text)
+GkbMode
+gkb_util_get_mode_from_text (const gchar *text)
 {
   g_return_val_if_fail (text != NULL, GKB_FLAG);
   
