@@ -597,6 +597,8 @@ void stickynotes_load(GdkScreen *screen)
 	xmlNodePtr root;
 	xmlNodePtr node;
 	WnckScreen *wnck_screen;
+	GList *new_notes, *tmp1;  // Lists of StickyNote*'s
+	GList *new_nodes, *tmp2;  // Lists of xmlNodePtr's
 
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
@@ -623,11 +625,15 @@ void stickynotes_load(GdkScreen *screen)
 	node = root->xmlChildrenNode;
 	
 	/* For all children of the root node (ie all sticky notes) */
+	new_notes = NULL;
+	new_nodes = NULL;
 	while (node) {
 		if (!xmlStrcmp(node->name, (const xmlChar *) "note")) {
 			/* Create a new note */
 			StickyNote *note = stickynote_new(screen);
 			stickynotes->notes = g_list_append(stickynotes->notes, note);
+			new_notes = g_list_append(new_notes, note);
+			new_nodes = g_list_append(new_nodes, node);
 
 			/* Retrieve and set title of the note */
 			{
@@ -678,6 +684,19 @@ void stickynotes_load(GdkScreen *screen)
 					g_free(y_str);
 				}
 			}
+		}
+		
+		node = node->next;
+	}
+
+	tmp1 = new_notes;
+	tmp2 = new_nodes;
+	wnck_screen = wnck_screen_get_default ();
+	wnck_screen_force_update (wnck_screen);
+	while (tmp1) {
+		StickyNote *note = tmp1->data;
+		node = tmp2->data;
+
 			/* Retrieve the workspace */
 			{
 				char *workspace_str;
@@ -693,13 +712,13 @@ void stickynotes_load(GdkScreen *screen)
 			workspace = atoi (workspace_str);
 			if (workspace > 0)
 			{
-				wnck_screen = wnck_screen_get_default ();
-				wnck_screen_force_update (wnck_screen);
 				wnck_ws = wnck_screen_get_workspace (
 						wnck_screen,
 						workspace - 1);
 				xid = GDK_WINDOW_XID (note->w_window->window);
-				g_print ("XID = %i\n", xid);
+				/*FIXME: Remember to remove this debugging info*/
+				g_print ("XID = 0x%lx\n", xid);
+				g_print ("workspace = %d\n", workspace);
 				wnck_win = wnck_window_get (xid);
 				if (wnck_ws && wnck_win)
 					wnck_window_move_to_workspace (
@@ -744,10 +763,14 @@ void stickynotes_load(GdkScreen *screen)
 				    
 				g_free(visible);
 			}
-		}
+
 		
-		node = node->next;
+		tmp1 = tmp1->next;
+		tmp2 = tmp2->next;
 	}
+
+	g_list_free (new_notes);
+	g_list_free (new_nodes);
 
 	xmlFreeDoc(doc);
 }

@@ -1,3 +1,13 @@
+2005-01-04  Elijah Newren  <newren@gmail.com>
+
+	* stickynotes.c (stickynote_load): create all new windows before
+	trying to move them to the appropriate workspace (do this because
+	wnck_screen_force_update is expensive, and it'll only work once
+	unless we were to manually process pending events).  Fixes a bug
+	where wnck_window_get would return NULL for windows beyond the
+	first and thus prevent us from moving those windows to the right
+	workspace.
+
 2005-01-04  Davyd Madeley  <davyd@madeley.id.au>
 
 	* stickynotes.schemas.in: Changing default note colour to #ECF833. As
