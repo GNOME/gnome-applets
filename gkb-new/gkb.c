@@ -801,6 +801,9 @@ static const BonoboUIVerb gkb_menu_verbs [] = {
 static void gkb_destroy (GtkWidget * widget, gpointer data)
 {
 	GKB *gkb = (GKB *)data;
+	
+	if (gkb->propwindow)
+		gtk_widget_destroy (gkb->propwindow);
 	g_free(gkb);
 }
 

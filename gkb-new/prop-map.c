@@ -211,9 +211,7 @@ gkb_prop_map_icon_entry_at (GtkWidget * table, gint row, gint col,
   
   hbox = gtk_hbox_new (FALSE, 0);
   entry = gnome_icon_entry_new (NULL, NULL);
-  if (entry_text)
-    gtk_entry_set_text (GTK_ENTRY (entry), entry_text);
-
+ 
   gtk_table_attach (GTK_TABLE (table), hbox,
 		    row, row + 1, col, col + 1,
 		    (GtkAttachOptions) (GTK_FILL),
@@ -304,7 +302,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
 
   gnome_icon_entry_set_pixmap_subdir (GNOME_ICON_ENTRY (mdi->flag_entry), "gkb");
   gnome_icon_entry_set_filename (GNOME_ICON_ENTRY (mdi->flag_entry), keymap->flag);
-  
+
   gtk_widget_show_all (table1);
 
   if (gail_loaded)

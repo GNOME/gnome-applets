@@ -132,6 +132,7 @@ struct _GKB
   GtkWidget *darea_frame;
   GtkWidget *image;
   GtkWidget *addwindow;
+  GtkWidget *propwindow;
   GtkTooltips *tooltips;
 
   gint n;
