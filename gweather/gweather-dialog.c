@@ -76,6 +76,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
+  gtk_dialog_set_default_response (gw_applet->gweather_dialog, GTK_RESPONSE_CLOSE);
 
   if (gw_applet->gweather_pref.radar_enabled)
       gtk_widget_set_usize (gw_applet->gweather_dialog, 570, 440);
