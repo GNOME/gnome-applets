@@ -3,7 +3,7 @@ Gnome-Applets
 
 This package contains applets for use with the GNOME panel.  Therefore, it
 requires gnome-core to be installed.  To build all applets additional
-libraries are needed (libxml, libhttp, libesd, libgtop).
+libraries are needed (gnome-vfs, libgtop).
 
 
 Requirements
@@ -11,13 +11,12 @@ Requirements
 
 You need at least:
 
-    gnome-core-1.1.x; cf. the packages named by gnome-core README.
+    gnome-panel-2.2.0
+    gail-0.13
 
 
-Optional
+Optional Requirements (and applets that require them)
 --------
 
-    libxml-1.8.6
-    libhttp
-    libesd
-    libgtop
+    gnome-vfs-1.9.16 (gweather, gtik)
+    libgtop2-2.0.0 (multiload)

@@ -4,8 +4,23 @@ close to a release, so if you're not sure, contact us.
 If you just want to hack, tell us about it.  Most of these applets are
 unmaintained, but you should try to contact the maintainer (or past maintainer)
 before doing much work on them to avoid stepping on anyones toes.  If unsure,
-ask us.
+ask me.
 
-(BTW, a note, you now need the xml-i18n-tools package, to build g-a)
+Please send patches to bugzilla.gnome.org and file new bugs or attach
+the patch to old bugs.
 
-George <jirka@5z.com>, Jacob <jacob@ximian.com>, Kjartan <kmaraas@gnome.org>.
+Applet hacking tips:
+1) There's some documentation in gnome-panel/doc/reference/panel-applet.
+It's a bit outdated, but it covers the basic ideas. See the fish applet
+in gnome-panel for a simple implementation
+
+2) Be weary of static, global variables if you plan to allow the user
+to be able to add multiple instances of the applet. Each instance will
+share the static varible.
+
+3) Here's the best way to debug applets! You can run the binary from
+the command line and then add the applet to the panel with the right
+click menu. This way, it's easy to get debug printf output and you don't
+have to do a make install every time you compile.
+
+Kevin Vandersloot <kfv101 at psu dot edu>
