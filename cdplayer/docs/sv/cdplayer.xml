@@ -1,10 +1,10 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [ 
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.100.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "CD Player">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "September 2003">
+  <!ENTITY applet "Cd-spelare">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -21,6 +21,7 @@
   <articleinfo>
 	 <title>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</title>
 	 <copyright> 
+		<year>2002</year> 
 		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
@@ -47,7 +48,7 @@
 		  <surname>GNOME-dokumentationsteam</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -74,25 +75,47 @@
 
 	 <revhistory>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</revnumber> 
+		  <revnumber>Manual f&ouml;r panelprogrammet &applet;, version  &manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Suns GNOME-dokumentationsteam
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet CD-spelare, version 2.0</revnumber> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Cd-spelare, V2.3</revnumber> 
+		  <date>Augusti 2003</date> 
+		  <revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Cd-spelare, V2.3</revnumber> 
+		  <date>Januari 2003</date> 
+		  <revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Cd-spelare, V2.1</revnumber> 
+		  <date>Augusti 2002</date> 
+		  <revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Cd-spelare, V2.0</revnumber> 
 		  <date>Maj 2002</date> 
 		  <revdescription> 
-			 <para role="author">Suns GNOME-dokumentationsteam
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Panelprogrammet CD-spelare</revnumber> 
+		  <revnumber>Panelprogrammet Cd-spelare</revnumber> 
 		  <date>2000</date> 
 		  <revdescription> 
 			 <para role="author">Chris Lyttle
@@ -103,31 +126,26 @@
 	 </revhistory>
 	 <releaseinfo> I den h&auml;r manualen beskrivs version &appletversion; av &applet;.
 		</releaseinfo>
-	 <legalnotice> 
-		<title>Feedback</title>
-		<para> Om du vill rapportera ett fel eller ge f&ouml;rslag om panelprogrammet &applet;
-		  eller den h&auml;r manualen f&ouml;ljer du instruktionerna p&aring; 
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink>. </para>
+	 <legalnotice><title>Feedback</title>
+		<para>F&ouml;lj instruktionerna p&aring; <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink> om du vill rapportera ett fel eller ge f&ouml;rslag betr&auml;ffande det h&auml;r programmet eller den h&auml;r manualen. </para>
 		
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>Panelprogrammet CD-spelare</primary> 
+	 <primary>Panelprogrammet Cd-spelare</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
-  <sect1 id="cdplayer_applet_introduction"> 
-	 <title>Introduktion</title>
+  <sect1 id="cdplayer_applet_introduction"><title>Introduktion</title>
 	 <!-- ==== Figure ============================================= -->
-	 <figure id="applet-fig"> 
-		<title>Panelprogrammet &applet;</title>
+	 <figure id="applet-fig"><title>Panelprogrammet &applet;</title>
 		<screenshot>
 		  <mediaobject>
 			 <imageobject><imagedata fileref="figures/cdplayer_applet.png" 				format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>Visar panelprogrammet &applet;. Inneh&aring;ller knapparna Stopp, Spela upp/Pausa, Mata ut, F&ouml;reg&aring;ende sp&aring;r och N&auml;sta sp&aring;r.
+				<phrase>Visar panelprogrammet &applet;. Inneh&aring;ller knapparna Stopp, Spela upp, Mata ut, F&ouml;reg&aring;ende sp&aring;r och N&auml;sta sp&aring;r.
 				</phrase>
 			 </textobject>
 		  </mediaobject>
@@ -135,11 +153,11 @@
 	 </figure>
     	<!-- ==== End of Figure ======================================= -->
 	<para>Med panelprogrammet <application>&applet;</application> kan du spela
-	CD-skivor p&aring; datorn. </para>
+	cd-skivor p&aring; datorn. </para>
 	<para>Du l&auml;gger till <application>&applet;</application> p&aring; en panel genom att h&ouml;gerklicka p&aring; panelen och v&auml;lja <menuchoice>
 	<guimenu>L&auml;gg till p&aring; panelen</guimenu>
 	<guisubmenu>Multimedia</guisubmenu>
-	<guimenuitem>CD-spelare</guimenuitem>
+	<guimenuitem>Cd-spelare</guimenuitem>
 	</menuchoice>.
 	Layouten p&aring; panelprogrammet <application>&applet;</application> varierar beroende p&aring; storlek och typ p&aring; den panel d&auml;r panelprogrammet finns.</para>
   </sect1>
@@ -148,20 +166,21 @@
 	<title>Anv&auml;ndning</title>
 
 	<sect2 id="cdplayer_applet_play">
-<title>S&aring; h&auml;r spelar du en CD-skiva</title>
-	<para>Om du vill spela en CD-skiva s&auml;tter du in CD-skivan i datorns CD-enhet och klickar sedan p&aring; 
+<title>S&aring; h&auml;r spelar du en cd-skiva</title>
+	<para>Om du vill spela en cd-skiva s&auml;tter du in cd-skivan i datorns cd-enhet och klickar sedan p&aring; 
 	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen Spela upp/Pausa. </phrase></textobject>
-	</inlinemediaobject>. </para>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_play.png" format="PNG"/></imageobject>
+	<textobject><phrase>Bild av knappen Spela upp</phrase></textobject>
+	
+</inlinemediaobject>. </para>
 	<figure id="fig-cd-playing"> 
-		<title>Panelprogrammet &applet; n&auml;r en CD-skiva spelas</title>
+		<title>Panelprogrammet &applet; n&auml;r en cd-skiva spelas</title>
 		<screenshot>
 		  <mediaobject>
 			 <imageobject><imagedata fileref="figures/cdplayer_applet_playing.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>Visar panelprogrammet &applet; n&auml;r en CD-skiva spelas.
+				<phrase>Visar panelprogrammet &applet; n&auml;r en cd-skiva spelas.
 				</phrase>
 			 </textobject>
 		  </mediaobject>
@@ -169,51 +188,53 @@
 	 </figure>
 	<para>Panelprogrammet visar f&ouml;ljande information, som &auml;ven visas i <xref linkend="fig-cd-playing"/>: </para>
 	<itemizedlist>
-		<listitem><para>Spelad tid f&ouml;r aktuellt sp&aring;r.</para></listitem>
 		<listitem><para>Numret p&aring; det sp&aring;r som spelas.</para></listitem>
+		<listitem><para>Spelad tid f&ouml;r aktuellt sp&aring;r.</para></listitem>
 	</itemizedlist>
 	</sect2>
 
-	<sect2 id="cdplayer_applet_pause">
-	<title>S&aring; h&auml;r pausar du en CD-skiva</title>
-	<para>Om du vill pausa en CD-skiva klickar du p&aring; 
+	<sect2 id="cdplayer_applet_movetracks">
+<title>S&aring; h&auml;r f&ouml;rflyttar du dig mellan olika sp&aring;r</title>
+	<para>Om du vill g&aring; till n&auml;sta sp&aring;r p&aring; cd-skivan klickar du p&aring; 
 	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen Spela upp/Pausa. </phrase></textobject>	
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Bild av knappen N&auml;sta sp&aring;r. </phrase></textobject>	
 	</inlinemediaobject>. 
-	N&auml;r du pausar en CD-skiva blinkar den spelade tiden f&ouml;r aktuellt sp&aring;r tills du spelar CD-skivan igen. Om du vill forts&auml;tta att spela CD-skivan klickar du &aring;terigen p&aring; 
+	Om du vill forts&auml;tta g&aring; fram&aring;t genom resten av sp&aring;ren p&aring; cd-skivan forts&auml;tter du att klicka p&aring; 
 	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen Spela upp/Pausa. </phrase></textobject>	
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Bild av knappen N&auml;sta sp&aring;r. </phrase></textobject>	
+	</inlinemediaobject>.</para>
+	<para>Om du vill g&aring; till f&ouml;reg&aring;ende sp&aring;r p&aring; cd-skivan klickar du p&aring; 
+	knappen <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Bild av knappen F&ouml;reg&aring;ende sp&aring;r. </phrase></textobject>	
+	</inlinemediaobject>. Om du vill forts&auml;tta bak&aring;t genom sp&aring;ren p&aring; cd-skivan forts&auml;tter du att klicka p&aring; 
+	knappen <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Bild av knappen F&ouml;reg&aring;ende sp&aring;r. </phrase></textobject>	
+	</inlinemediaobject>.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_pause">
+	<title>S&aring; h&auml;r pausar du en cd-skiva</title>
+	<para>Om du vill pausa en cd-skiva som spelas klickar du p&aring; knappen
+<inlinemediaobject>
+<imageobject>
+<imagedata fileref="figures/cdplayer_applet_pause.png" format="PNG"/>
+</imageobject>
+<textobject><phrase>Bild av knappen Paus.</phrase></textobject>
+</inlinemediaobject>. 
+	N&auml;r du pausar en cd-skiva blinkar den spelade tiden f&ouml;r aktuellt sp&aring;r tills du spelar cd-skivan igen. Om du vill forts&auml;tta att spela cd-skivan klickar du &aring;terigen p&aring; 
+	knappen <inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playafterpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Bild av knappen Spela upp (efter paus). </phrase></textobject>	
 	</inlinemediaobject>. </para>
 	</sect2>
 
-	<sect2 id="cdplayer_applet_movetracks">
-<title>S&aring; h&auml;r g&aring;r du mellan olika sp&aring;r</title>
-	<para>Om du vill g&aring; till n&auml;sta sp&aring;r p&aring; CD-skivan klickar du p&aring; 
-	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen N&auml;sta sp&aring;r. </phrase></textobject>	
-	</inlinemediaobject>. 
-	Om du vill forts&auml;tta g&aring; fram&aring;t genom resten av sp&aring;ren p&aring; CD-skivan forts&auml;tter du att klicka p&aring; 
-	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen N&auml;sta sp&aring;r. </phrase></textobject>	
-	</inlinemediaobject>.</para>
-	<para>Om du vill g&aring; till f&ouml;reg&aring;ende sp&aring;r p&aring; CD-skivan klickar du p&aring; 
-	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen F&ouml;reg&aring;ende sp&aring;r. </phrase></textobject>	
-	</inlinemediaobject>. Om du vill forts&auml;tta bak&aring;t genom sp&aring;ren p&aring; CD-skivan forts&auml;tter du att klicka p&aring; 
-	knappen <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
-	<textobject><phrase>Bild av knappen F&ouml;reg&aring;ende sp&aring;r. </phrase></textobject>	
-	</inlinemediaobject>.</para>
-	</sect2>
-
 	<sect2 id="cdplayer_applet_stop">
-<title>S&aring; h&auml;r stoppar du en CD-skiva</title>
-	<para>Om du vill stoppa en CD-skiva klickar du p&aring; 
+<title>S&aring; h&auml;r stoppar du en cd-skiva</title>
+	<para>Om du vill stoppa en cd-skiva klickar du p&aring; 
 	knappen <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_stop.png" format="PNG"/></imageobject>
 	<textobject><phrase>Bild av knappen Stopp. </phrase></textobject>	
@@ -221,36 +242,33 @@
 	</sect2>
 
 	<sect2 id="cdplayer_applet_eject">
-	<title>S&aring; h&auml;r matar du ut en CD-skiva</title>
-	<para>Om du vill mata ut en CD-skiva klickar du p&aring; 
+	<title>S&aring; h&auml;r matar du ut en cd-skiva</title>
+	<para>Om du vill mata ut en cd-skiva klickar du p&aring; 
 	knappen <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject>
 	<textobject><phrase>Bild av knappen Mata ut. </phrase></textobject>	
 	</inlinemediaobject>. 
-	Panelprogrammet matar ut CD-skivan ur CD-enheten. Ta ut CD-skivan och st&auml;ng enheten. </para>
+	Panelprogrammet matar ut cd-skivan ur cd-enheten. Ta ut cd-skivan och st&auml;ng enheten. </para>
 	</sect2>
 
 	<sect2 id="cdplayer_additional_features">
 	<title>S&aring; h&auml;r kommer du &aring;t ytterligare funktioner</title>
-	<para>Om du vill komma &aring;t ytterligare funktioner f&ouml;r att spela CD-skivor, 
+	<para>Om du vill komma &aring;t ytterligare funktioner f&ouml;r att spela cd-skivor, 
 	till exempel information om olika sp&aring;r eller volymjustering,
 	kan du starta programmet <application>
-                  CD-spelaren</application>. Om du vill starta programmet<application>
-	CD-spelaren</application> fr&aring;n CD-spelaren h&ouml;gerklickar du p&aring;
-	panelprogrammet och v&auml;ljer sedan <guimenuitem>K&ouml;r extern CD-spelare</guimenuitem>. </para>
+                  Cd-spelare</application>. Om du vill starta programmet <application>Cd-spelare</application> fr&aring;n cd-spelaren h&ouml;gerklickar du p&aring; panelprogrammet och v&auml;ljer sedan <guimenuitem>&Ouml;ppna Cd-spelare</guimenuitem>. </para>
 	</sect2>
 
   </sect1>
 
 <!-- ============= Preferences ============================= -->
-  <sect1 id="cdplayer_applet_prefs"> 
-	 <title>Inst&auml;llningar</title>
+  <sect1 id="cdplayer_applet_prefs"> <title>Inst&auml;llningar</title>
 
 	 <sect2 id="cdplayer-applet_specify_cd">
-	 <title>S&aring; h&auml;r anger du CD-enhet</title>
-	 <para>Om du vill ange vilken CD-enhet som panelprogrammet ska anv&auml;nda h&ouml;gerklickar du p&aring; panelprogrammet och v&auml;ljer sedan <guimenuitem>Inst&auml;llningar</guimenuitem>.
-	 Ange s&ouml;kv&auml;gen till CD-enheten i textf&auml;ltet <guilabel>Enhetss&ouml;kv&auml;g</guilabel>. Om du vill anv&auml;nda systemets standard-CD-enhet klickar du p&aring; <guibutton>Standard</guibutton>.
-	 Om du vill spara &auml;ndringen och st&auml;nga dialogrutan <guilabel>Egenskaper f&ouml;r CD-spelare</guilabel> klickar du p&aring; <guibutton>St&auml;ng</guibutton>.  </para>
+	 <title>S&aring; h&auml;r anger du cd-enhet</title>
+	 <para>Om du vill ange vilken cd-enhet som panelprogrammet ska anv&auml;nda h&ouml;gerklickar du p&aring; panelprogrammet och v&auml;ljer sedan <guimenuitem>Inst&auml;llningar</guimenuitem>.
+	 Ange s&ouml;kv&auml;gen till cd-enheten i textf&auml;ltet <guilabel>Enhetss&ouml;kv&auml;g</guilabel>. Om du vill anv&auml;nda systemets standard-cd-enhet klickar du p&aring; <guibutton>Standard</guibutton>.
+	 Om du vill spara &auml;ndringen och st&auml;nga dialogrutan <guilabel>Egenskaper f&ouml;r cd-spelare</guilabel> klickar du p&aring; <guibutton>St&auml;ng</guibutton>.  </para>
 	 </sect2>
 	 
   </sect1>

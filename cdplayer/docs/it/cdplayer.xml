@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [ 
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.100.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "Agosto 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "Settembre 2003">
   <!ENTITY applet "Lettore CD">
 ]>
 <!-- 
@@ -21,6 +21,7 @@
   <articleinfo>
 	 <title>Manuale dell'applet &applet; V&manrevision;</title>
 	 <copyright> 
+		<year>2002</year> 
 		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
@@ -47,7 +48,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -77,17 +78,39 @@
 		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Lettore CD  V2.0</revnumber> 
+		  <revnumber>Manuale dell'applet Lettore CD V2.3</revnumber> 
+		  <date>Agosto 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Lettore CD V2.2</revnumber> 
+		  <date>Gennaio 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Lettore CD V2.1</revnumber> 
+		  <date>Agosto 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Lettore CD V2.0</revnumber> 
 		  <date>Maggio 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
@@ -101,7 +124,7 @@
 		  </revdescription>
 		</revision>
 	 </revhistory>
-	 <releaseinfo> Questo manuale descrive la versione &appletversion; del &applet;.
+	 <releaseinfo> Questo manuale descrive la versione &appletversion; di &applet;.
 		</releaseinfo>
 	 <legalnotice> 
 		<title>Commenti</title>
@@ -110,7 +133,7 @@
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>Lettore CD, applet</primary> 
+	 <primary>Lettore CD</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
@@ -125,7 +148,7 @@
 			 <imageobject><imagedata fileref="figures/cdplayer_applet.png" 				format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>Mostra l'applet &applet;. Contiene i pulsanti Stop, Riproduci/Pausa, Espelli, Traccia precedente e Traccia successiva. 
+				<phrase>Mostra l'applet &applet;. Contiene i pulsanti Stop, Play, Espelli, Traccia precedente e Traccia successiva. 
 				</phrase>
 			 </textobject>
 		  </mediaobject>
@@ -139,7 +162,7 @@
 <guisubmenu>Multimedia</guisubmenu> 
 <guimenuitem>Lettore CD</guimenuitem>
 </menuchoice>.
-	La forma dell'applet <application>&applet;</application> varia in base alla dimensione e al tipo di pannello in cui si trova.</para>
+	La disposizione dell'applet <application>&applet;</application> varia in base alla dimensione e al tipo di pannello in cui si trova.</para>
   </sect1>
 
   <sect1 id="cdplayer_applet_usage">
@@ -148,11 +171,11 @@
 	<sect2 id="cdplayer_applet_play">
 	<title>Riprodurre un CD</title>
 	<para>Per riprodurre un CD, inserire il  disco nel lettore del computer e quindi fare clic sul pulsante <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
-	<textobject><phrase>Mostra il pulsante Riproduci/Pausa. </phrase></textobject>
-	</inlinemediaobject>. </para>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_play.png" format="PNG"/></imageobject>
+	<textobject><phrase>Mostra il pulsante Play. </phrase></textobject>
+	</inlinemediaobject>.</para>
 	<figure id="fig-cd-playing"> 
-		<title>L'applet &applet; durante la riproduzione di un CD</title>
+		<title>Applet &applet; durante la riproduzione di un CD</title>
 		<screenshot>
 		  <mediaobject>
 			 <imageobject><imagedata fileref="figures/cdplayer_applet_playing.png" format="PNG"/> 
@@ -164,41 +187,43 @@
 		  </mediaobject>
 		</screenshot>
 	 </figure>
-	<para>L'applet visualizza le seguenti informazioni, come mostrato nella <xref linkend="fig-cd-playing"/>: </para>
+	<para>L'applet visualizza le seguenti informazioni, come mostrato in <xref linkend="fig-cd-playing"/>: </para>
 	<itemizedlist>
-		<listitem><para>Il tempo trascorso nella traccia corrente.</para></listitem>
 		<listitem><para>Il numero della traccia che viene riprodotta.</para></listitem>
+		<listitem><para>Il tempo trascorso nella traccia corrente.</para></listitem>
 	</itemizedlist>
 	</sect2>
 
-	<sect2 id="cdplayer_applet_pause">
-	<title>Mettere in pausa un CD</title>
-	<para>Per mettere in pausa un CD durante la riproduzione, fare clic sul pulsante <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
-	<textobject><phrase>Mostra il pulsante Riproduci/Pausa. </phrase></textobject>	
-	</inlinemediaobject>. 
-	Quando il CD viene messo in pausa, il tempo trascorso nella traccia corrente lampeggia fino a quando non si riprende la riproduzione del CD. Per riprendere la riproduzione del CD, fare clic nuovamente sul pulsante <inlinemediaobject>
-	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
-	<textobject><phrase>Mostra il pulsante Riproduci/Pausa. </phrase></textobject>	
-	</inlinemediaobject> . </para>
-	</sect2>
-
 	<sect2 id="cdplayer_applet_movetracks">
-	<title>Passare da un traccia all'altra</title>
+	<title>Spostarsi tra le tracce</title>
 	<para>Per spostarsi alla traccia successiva del CD, fare clic sul pulsante  <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
 	<textobject><phrase>Mostra il pulsante Traccia successiva. </phrase></textobject>	
-	</inlinemediaobject>. 
-	Per continuare a spostarsi nelle tracce successive del CD, premere nuovamente il pulsante <inlinemediaobject>
+	</inlinemediaobject>.
+	Per continuare ad avanzare nelle tracce del CD, premere nuovamente il pulsante <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
 	<textobject><phrase>Mostra il pulsante Traccia successiva. </phrase></textobject>	
 	</inlinemediaobject>.</para>
 	<para>Per passare alla traccia precedente del CD, fare clic sul pulsante  <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
 	<textobject><phrase>Mostra il pulsante Traccia precedente. </phrase></textobject>	
-	</inlinemediaobject>. Per continuare a spostarsi nelle tracce precedenti del CD, premere nuovamente il pulsante <inlinemediaobject>
+	</inlinemediaobject>. Per continuare a retrocedere nelle tracce del CD, premere nuovamente il pulsante <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
 	<textobject><phrase>Mostra il pulsante Traccia precedente. </phrase></textobject>	
+	</inlinemediaobject>.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_pause">
+	<title>Mettere in pausa un CD</title>
+	<para>Per sospendere la riproduzione di un CD, fare clic sul pulsante  
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_pause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Mostra il pulsante Pausa. </phrase></textobject>	
+	</inlinemediaobject>.
+	Quando il CD viene messo in pausa, il tempo trascorso nella traccia corrente lampeggia fino a quando non si riprende la riproduzione del CD. Per riprendere la riproduzione del CD, fare clic  sul pulsante 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playafterpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Mostra il pulsante Play (dopo la pausa). </phrase></textobject>	
 	</inlinemediaobject>.</para>
 	</sect2>
 
@@ -215,14 +240,13 @@
 	<para>Per espellere un CD, fare clic sul pulsante <inlinemediaobject>
 	<imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject>
 	<textobject><phrase>Mostra il pulsante Espelli. </phrase></textobject>	
-	</inlinemediaobject>. 
+	</inlinemediaobject>.
 	L'applet espelle il CD dal lettore. Rimuovere il CD e quindi chiudere il cassettino. </para>
 	</sect2>
 
 	<sect2 id="cdplayer_additional_features">
 	<title>Accedere ad altre funzioni</title>
-	<para>Per accedere ad altre funzioni per la riproduzione dei CD audio, come la modifica delle informazioni sulle tracce o la regolazione del volume, avviare l'applicazione <application>Lettore CD</application>. Per avviare l'applicazione <application>
-	Lettore CD</application> dall'applet Lettore CD, fare clic sull'applet con il pulsante destro del mouse e quindi scegliere  <guimenuitem>Avvia lettore di CD esterno</guimenuitem>. </para>
+	<para>Per accedere ad altre funzioni per la riproduzione dei CD audio, come la modifica delle informazioni sulle tracce o la regolazione del volume, avviare l'applicazione <application>Lettore CD</application>. Per avviare l'applicazione <application>Lettore CD</application> dall'applet Lettore CD, fare clic sull'applet con il pulsante destro del mouse e quindi scegliere  <guimenuitem>Avvia lettore di CD esterno</guimenuitem>. </para>
 	</sect2>
 
   </sect1>
@@ -232,10 +256,10 @@
 	 <title>Preferenze</title>
 
 	 <sect2 id="cdplayer-applet_specify_cd">
-	 <title>Specificare il dispositivo del CD</title>
+	 <title>Specificare il dispositivo di lettura dei CD</title>
 	 <para>Per specificare il dispositivo CD a cui l'applet accede, fare clic con il pulsante destro del mouse sull'applet e quindi scegliere <guimenuitem>Preferenze</guimenuitem>.
-	 Digitare il percorso del dispositivo del CD nella casella di testo <guilabel>Percorso dispositivo</guilabel>. Per usare il dispositivo CD predefinito del sistema, fare clic su <guibutton>Usa predefinito</guibutton>.
-	 Per salvare le modifiche e chiudere la finestra di dialogo <guilabel>Preferenze del Lettore CD</guilabel>, fare clic su <guibutton>Chiudi</guibutton>.  </para>
+	 Digitare il percorso del dispositivo di lettura dei CD nella casella di testo <guilabel>Percorso periferica</guilabel>. Per usare il dispositivo CD predefinito del sistema, fare clic su <guibutton>Usa predefinito</guibutton>.
+	 Per salvare le modifiche e chiudere la finestra di dialogo <guilabel>Preferenze del lettore CD</guilabel>, fare clic su <guibutton>Chiudi</guibutton>.  </para>
 	 </sect2>
 	 
   </sect1>

@@ -1,9 +1,9 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [ 
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.100.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "CD Player">
 ]>
 <!-- 
@@ -22,6 +22,7 @@
 	 <title>&applet; 小程序手册 V&manrevision;</title>
 	 <copyright> 
 		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -47,7 +48,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -77,22 +78,44 @@
 		  <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>CD Player 小程序手册 V2.0</revnumber> 
+		  <revnumber>CD 播放机小程序手册 V2.3</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>CD 播放机小程序手册 V2.2</revnumber> 
+		  <date>2003 年 1 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>CD 播放机小程序手册 V2.1</revnumber> 
+		  <date>2002 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>CD 播放机小程序手册 V2.0</revnumber> 
 		  <date>2002 年 5 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>CD Player 小程序</revnumber> 
+		  <revnumber>CD 播放机小程序</revnumber> 
 		  <date>2000</date> 
 		  <revdescription> 
 			 <para role="author">Chris Lyttle
@@ -105,12 +128,12 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>反馈</title>
-		<para> 要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+		<para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
 		
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>CD Player 小程序</primary> 
+	 <primary>CD 播放机小程序</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
@@ -125,7 +148,7 @@
 			 <imageobject><imagedata fileref="figures/cdplayer_applet.png" 				format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>显示 &applet; 小程序。包含"停止"、"播放/暂停"、"弹出"、"上一音轨"和"下一音轨"按钮。
+				<phrase>显示 &applet; 小程序。包含&ldquo;停止&rdquo;、&ldquo;播放&rdquo;、&ldquo;弹出&rdquo;、&ldquo;上一音轨&rdquo;和&ldquo;下一音轨&rdquo;按钮。
 				</phrase>
 			 </textobject>
 		  </mediaobject>
@@ -133,16 +156,16 @@
 	 </figure>
     	<!-- ==== End of Figure ======================================= -->
 	<para><application>&applet;</application> 小程序使您可以在计算机上播放音频压缩光盘 (CD)。</para>
-	<para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"多媒体"</guisubmenu><guimenuitem>"CD 播放机"</guimenuitem></menuchoice>。
-	<application>&applet;</application> 小程序的布局会随着小程序所的面板的大小和类型而变化。</para>
+	<para>要在面板中添加 <application>&applet;</application>，请右击该面板，然后选择<menuchoice><guimenu>&ldquo;添加到面板&rdquo;</guimenu><guisubmenu>&ldquo;多媒体&rdquo;</guisubmenu><guimenuitem>&ldquo;CD 播放机&rdquo;</guimenuitem></menuchoice>。
+	<application>&applet;</application> 小程序的布局会随着小程序所在的面板的大小和类型而变化。</para>
   </sect1>
 
   <sect1 id="cdplayer_applet_usage">
 	<title>用法</title>
 
 	<sect2 id="cdplayer_applet_play">
-	<title>播放 CD</title>
-	<para>要播放 CD，请先将 CD 插入计算机的 CD 驱动器中，然后单击<inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject><textobject><phrase>显示"播放/暂停"按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
+<title>播放 CD</title>
+	<para>要播放 CD，请先将 CD 插入计算机的 CD 驱动器中，然后单击<inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_play.png" format="PNG"/></imageobject><textobject><phrase>显示&ldquo;播放&rdquo;按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
 	<figure id="fig-cd-playing"> 
 		<title>正在播放 CD 的 &applet; 小程序</title>
 		<screenshot>
@@ -156,40 +179,59 @@
 		  </mediaobject>
 		</screenshot>
 	 </figure>
-	<para>该小程序显示以下信息，如 <xref linkend="fig-cd-playing"/> 中所示：  </para>
+	<para>该小程序显示以下信息，如 <xref linkend="fig-cd-playing"/> 中所示： </para>
 	<itemizedlist>
-		<listitem><para>当前音轨的经过的时间。</para></listitem>
 		<listitem><para>当前正在播放的音轨的编号。</para></listitem>
+		<listitem><para>当前音轨的经过的时间。</para></listitem>
 	</itemizedlist>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_movetracks">
+<title>在音轨之间移动</title>
+	<para>要移动到 CD 上的下一音轨，请单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;下一音轨&rdquo;按钮。 </phrase></textobject>	
+	</inlinemediaobject>按钮。
+	要继续移动到 CD 上的下几个音轨，请继续单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;下一音轨&rdquo;按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
+	<para>要移动到 CD 上的上一音轨，请单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;上一音轨&rdquo;按钮。</phrase></textobject></inlinemediaobject>按钮。要继续移动到 CD 上的上几个音轨，请继续单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject><textobject><phrase>显示&ldquo;上一音轨&rdquo;按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
 	</sect2>
 
 	<sect2 id="cdplayer_applet_pause">
 	<title>暂停 CD</title>
-	<para>要暂停正在播放的 CD，请单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject><textobject><phrase>显示"播放/暂停"按钮。</phrase></textobject></inlinemediaobject>按钮。
-	当暂停 CD 时，在当前音轨上经过的时间会一直闪烁，直到您重新开始播放该 CD 为止。要重新播放该 CD，请再次单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject><textobject><phrase>显示"播放/暂停"按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
-	</sect2>
-
-	<sect2 id="cdplayer_applet_movetracks">
-	<title>在音轨之间移动</title>
-	<para>要移动到 CD 上的下一音轨，请单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject><textobject><phrase>显示"下一音轨"按钮。</phrase></textobject></inlinemediaobject>按钮。
-	要继续移动到 CD 上的下几个音轨，请继续单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject><textobject><phrase>显示"下一音轨"按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
-	<para>要移动到 CD 上的上一音轨，请单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject><textobject><phrase>显示"上一音轨"按钮。</phrase></textobject></inlinemediaobject>按钮。要继续移动到 CD 上的上几个音轨，请继续单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject><textobject><phrase>显示"上一音轨"按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
+	<para>要暂停正在播放的 CD，请单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_pause.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;暂停&rdquo;按钮。 </phrase></textobject>	
+	</inlinemediaobject>按钮。
+	当暂停 CD 时，在当前音轨上经过的时间会一直闪烁，直到您重新开始播放该 CD 为止。要重新播放该 CD，请单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playafterpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;播放&rdquo;（在&ldquo;暂停&rdquo;后）按钮。 </phrase></textobject>	
+	</inlinemediaobject>按钮。</para>
 	</sect2>
 
 	<sect2 id="cdplayer_applet_stop">
-	<title>停止 CD</title>
-	<para>要停止 CD，请单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_stop.png" format="PNG"/></imageobject><textobject><phrase>显示"停止"按钮。</phrase></textobject></inlinemediaobject>按钮。</para>
+<title>停止 CD</title>
+	<para>要停止 CD，请单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_stop.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;停止&rdquo;按钮。</phrase></textobject>	
+	</inlinemediaobject>按钮。</para>
 	</sect2>
 
 	<sect2 id="cdplayer_applet_eject">
 	<title>弹出 CD</title>
-	<para>要弹出 CD，请单击 <inlinemediaobject><imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject><textobject><phrase>显示"弹出"按钮。</phrase></textobject></inlinemediaobject>按钮。
+	<para>要弹出 CD，请单击<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject>
+	<textobject><phrase>显示&ldquo;弹出&rdquo;按钮。</phrase></textobject>	
+	</inlinemediaobject>按钮。
 	该小程序会将 CD 从 CD 驱动器中弹出。取出该 CD，然后关闭驱动器。</para>
 	</sect2>
 
 	<sect2 id="cdplayer_additional_features">
 	<title>访问附加的功能</title>
-	<para>要访问播放音频 CD 的附加功能，例如编辑音轨信息或调整音量，您可以启动 <application>CD Player</application> 应用程序。要从该 CD Player 启动 <application>CD Player</application> 应用程序，请右击该小程序，然后选择<guimenuitem>"运行外部 CD 播放机"</guimenuitem>。</para>
+	<para>要访问播放音频 CD 的附加功能，例如编辑音轨信息或调整音量，您可以启动 <application>CD 播放机</application>应用程序。要从该 CD 播放机启动 <application>CD 播放机</application>应用程序，请右击该小程序，然后选择<guimenuitem>&ldquo;打开 CD 播放机&rdquo;</guimenuitem>。 </para>
 	</sect2>
 
   </sect1>
@@ -200,9 +242,9 @@
 
 	 <sect2 id="cdplayer-applet_specify_cd">
 	 <title>指定 CD 设备</title>
-	 <para>要指定小程序访问的 CD 设备，请右击该小程序，然后选择<guimenuitem>"首选项"</guimenuitem>。
-	 在<guilabel>"设备路径"</guilabel>文本框中键入 CD 设备的路径。 要使用系统的默认 CD 设备，请单击<guibutton>"使用默认设置"</guibutton>。
-	 要保存所作的更改并关闭<guilabel>"CD 播放机首选项"</guilabel>对话框，请单击<guibutton>"关闭"</guibutton>。</para>
+	 <para>要指定小程序访问的 CD 设备，请右击该小程序，然后选择<guimenuitem>&ldquo;首选项&rdquo;</guimenuitem>。
+	在<guilabel>&ldquo;设备路径&rdquo;</guilabel>文本框中键入 CD 设备的路径。 要使用系统的默认 CD 设备，请单击<guibutton>&ldquo;使用默认值&rdquo;</guibutton>。
+	 要保存所作的更改并关闭<guilabel>&ldquo;CD 播放机首选项&rdquo;</guilabel>对话框，请单击<guibutton>&ldquo;关闭&rdquo;</guibutton>。</para>
 	 </sect2>
 	 
   </sect1>
