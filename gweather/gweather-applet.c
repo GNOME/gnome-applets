@@ -57,7 +57,7 @@ void update_display (GWeatherApplet *applet)
 		degree = "\302\260F";
 		
 	if (info->success) {
-		tmp = g_strdup_printf (_("%s\nToday: %s\nCurrent temperature %d%s%s"), 
+		tmp = g_strdup_printf (_("%s\nToday: %s\nCurrent temperature %d%s"), 
 						  applet->gweather_pref.city, get_conditions (info->wid), 
 						  info->curtemp, degree);
 		gtk_tooltips_set_tip (applet->tooltips, applet->events[0], tmp, NULL);
@@ -173,9 +173,9 @@ void place_widgets (GWeatherApplet *gw_applet)
      	if (horiz && numrows_or_columns == 2)
      		gw_applet->boxes[i] = gtk_vbox_new (FALSE, 0);
      	else if (horiz && numrows_or_columns == 1)
-     		gw_applet->boxes[i] = gtk_hbox_new (FALSE, 0);
+     		gw_applet->boxes[i] = gtk_hbox_new (FALSE, 2);
      	else if (!horiz && numrows_or_columns == 2)
-     		gw_applet->boxes[i] = gtk_hbox_new (FALSE, 0);
+     		gw_applet->boxes[i] = gtk_hbox_new (FALSE, 2);
      	else
      		gw_applet->boxes[i] = gtk_vbox_new (FALSE, 0);
      		

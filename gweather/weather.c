@@ -367,6 +367,40 @@ parse_xml (WeatherInfo *info)
 	gchar *xml = info->xml;
 	xmlDocPtr doc;
 	xmlNodePtr cur;
+	doc = xmlParseMemory (xml, strlen(xml));
+	if (!doc) {
+	
+		/* Patch to fix xml errors in returned file */        
+		int mdfi, mdf1, mdf2, mdf3, mdf4;
+	        char *mdfxml;
+		mdfxml=xml;    
+		mdf3 = 0;
+		mdf4 = 0;
+		mdfi=1;
+	
+		/* find second tag */
+		while ((mdfi < DATA_SIZE) && (mdf3 == 0)){
+			if (0 == strncmp(">", mdfxml+mdfi, 1)) {
+			mdf3 = mdfi+1;
+			}
+		mdfi++;
+		}
+	
+		/* find first weather tag */
+		while ((mdfi < DATA_SIZE) && (mdf4 == 0)){ 
+			if (0 == strncmp("<weather>", mdfxml+mdfi, 9)) {
+			mdf4 = mdfi;
+			}
+		mdfi++;
+	        }
+	
+		/* figure out how much to move and move it */
+		mdf1 = mdf4-mdf3;
+	  	memmove(mdfxml+mdf3+10, mdfxml+mdf3, mdf1);
+		memcpy(mdfxml+mdf3, "<weather>\n", 10);
+	
+	        /* end of patch */
+	}
 
 	doc = xmlParseMemory (xml, strlen(xml));
 	if (!doc) {
