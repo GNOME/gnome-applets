@@ -29,7 +29,6 @@ INCLUDES =					\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
 	$(APMINC)				\
-	-DDATA_DIR=\"$(datadir)\"		\
 	-DGLADE_DIR=\"$(gladedir)\"		\
 	-DG_LOG_DOMAIN=\"battstat_applet\"
 
