@@ -66,8 +66,12 @@ void panel_menu_common_demerge_ui (PanelApplet *applet);
 
 GtkWidget *panel_menu_common_construct_entry_popup (PanelMenuEntry *entry);
 
-GtkWidget *panel_menu_common_single_entry_dialog_new (gchar *title, gchar *label,
-						      gchar *value, GtkWidget **entry);
+GtkWidget *panel_menu_common_single_entry_dialog_new (PanelMenu  *panel_menu,
+						      char       *title,
+						      char       *label,
+						      char       *value,
+						      GtkWidget **entry);
 
 G_END_DECLS
+
 #endif

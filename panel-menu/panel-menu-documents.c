@@ -393,8 +393,8 @@ panel_menu_documents_new_with_dialog (PanelMenu *panel_menu)
 	gchar *name;
 	PanelMenuEntry *entry;
 
-	dialog = panel_menu_common_single_entry_dialog_new (_
-							    ("Create documents item..."),
+	dialog = panel_menu_common_single_entry_dialog_new (panel_menu,
+							    _("Create documents item..."),
 							    _("_Name:"),
 							    _("Documents"),
 							    &name_entry);
@@ -430,7 +430,8 @@ rename_documents_cb (GtkWidget *widget, PanelMenuEntry *entry,
 
 	documents = (PanelMenuDocuments *) entry->data;
 
-	dialog = panel_menu_common_single_entry_dialog_new (_("Rename documents item..."),
+	dialog = panel_menu_common_single_entry_dialog_new (entry->parent,
+							    _("Rename documents item..."),
 							    _("_Name:"),
 							    documents->name,
 							    &name_entry);

@@ -46,8 +46,9 @@ static void handle_response_cb (GtkDialog *dialog, gint response,
 				gpointer data);
 
 void
-applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-		      const gchar *verbname)
+applet_properties_cb (BonoboUIComponent *uic,
+		      PanelMenu         *panel_menu,
+		      const char        *verbname)
 {
 	GtkWidget *dialog;
 	GtkWidget *box;

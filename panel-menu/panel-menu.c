@@ -653,8 +653,9 @@ applet_help_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 }
 
 static void
-applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-		 const gchar *verbname)
+applet_about_cb (BonoboUIComponent *uic,
+		 PanelMenu         *panel_menu,
+		 const char        *verbname)
 {
 	static GtkWidget *about = NULL;
 	GdkPixbuf *pixbuf = NULL;
@@ -671,8 +672,7 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about != NULL) {
-		gtk_widget_show (about);
+	if (about) {
 		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}

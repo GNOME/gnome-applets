@@ -49,9 +49,9 @@ static void panel_menu_add_entry_cb (GtkWidget *widget,
 				     PanelMenu *panel_menu);
 static void panel_menu_add_entry_dnd_init (PanelMenu *panel_menu,
 					   GtkWidget *widget);
-static void add_entry_dnd_drag_begin_cb (GtkWidget *widget,
+static void add_entry_dnd_drag_begin_cb (GtkWidget      *widget,
 					 GdkDragContext *context,
-					 gpointer data);
+					 PanelMenu      *panel_menu);
 static void add_entry_dnd_set_data_cb (GtkWidget *widget,
 				       GdkDragContext *context,
 				       GtkSelectionData *selection_data,
@@ -59,8 +59,9 @@ static void add_entry_dnd_set_data_cb (GtkWidget *widget,
 				       PanelMenu *panel_menu);
 
 void
-applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-	       const gchar *verbname)
+applet_add_cb (BonoboUIComponent *uic,
+	       PanelMenu         *panel_menu,
+	       const char        *verbname)
 {
 	GtkWidget *dialog;
 	GtkWidget *box;
@@ -189,15 +190,19 @@ panel_menu_add_entry_dnd_init (PanelMenu *panel_menu, GtkWidget *widget)
 {
 	gtk_drag_source_set (widget, GDK_BUTTON2_MASK, drag_types, n_drag_types,
 			     GDK_ACTION_MOVE);
-	g_signal_connect (G_OBJECT (widget), "drag_begin",
-			  G_CALLBACK (add_entry_dnd_drag_begin_cb), NULL);
-	g_signal_connect (G_OBJECT (widget), "drag_data_get",
-			  G_CALLBACK (add_entry_dnd_set_data_cb), panel_menu);
+
+	g_signal_connect (widget, "drag_begin",
+			  G_CALLBACK (add_entry_dnd_drag_begin_cb),
+			  panel_menu);
+	g_signal_connect (widget, "drag_data_get",
+			  G_CALLBACK (add_entry_dnd_set_data_cb),
+			  panel_menu);
 }
 
 static void
-add_entry_dnd_drag_begin_cb (GtkWidget *widget, GdkDragContext *context,
-			     gpointer data)
+add_entry_dnd_drag_begin_cb (GtkWidget      *widget,
+			     GdkDragContext *context,
+			     PanelMenu      *panel_menu)
 {
 	GtkWidget *window;
 	GtkWidget *button;
