@@ -30,9 +30,9 @@
 #include <X11/keysymdef.h>
 #include "applet.h"
 
-int xkb_base_event_type = 0;
+static int xkb_base_event_type = 0;
 
-GtkIconSize icon_size_spec;
+static GtkIconSize icon_size_spec;
 
 #define ALT_GRAPH_LED_MASK (0x10)
 
@@ -258,7 +258,7 @@ static const BonoboUIVerb accessx_status_applet_menu_verbs [] = {
 	BONOBO_UI_VERB_END
 };
 
-XkbDescPtr 
+static XkbDescPtr 
 accessx_status_applet_get_xkb_desc (AccessxStatusApplet *sapplet)
 {
 	Display *display;
@@ -285,7 +285,7 @@ accessx_status_applet_get_xkb_desc (AccessxStatusApplet *sapplet)
 	return sapplet->xkb;
 }
 
-gboolean
+static gboolean
 accessx_status_applet_xkb_select (AccessxStatusApplet *sapplet)
 {
 	int opcode_rtn, error_rtn;
