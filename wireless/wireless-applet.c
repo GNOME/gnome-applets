@@ -125,10 +125,6 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 	char *tmp;
 	PixmapState state;
 
-	if (!GTK_WIDGET_REALIZED (applet->pixmap)) {
-		return;
-	}
-
 	/* Update the percentage */
 	if (percent > 0) {
 		tmp = g_strdup_printf ("%2.0d%%", percent);
