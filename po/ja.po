@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.4\n"
-"POT-Creation-Date: 1999-09-17 01:28+0900\n"
-"PO-Revision-Date: 1999-09-17 03:23+09:00\n"
+"POT-Creation-Date: 1999-09-26 17:25+0900\n"
+"PO-Revision-Date: 1999-09-28 07:26+09:00\n"
 "Last-Translator: Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -107,7 +107,8 @@ msgstr "時計の設定"
 #: drivemount/properties.c:229 fvwm-pager/properties.c:247
 #: gnotes/gnotes_applet.c:236 mini-commander/src/preferences.c:744
 #: modemlights/properties.c:275 netload/properties.c:280
-#: slashapp/properties.c:347
+#: odometer/properties.c:253 slashapp/properties.c:347
+#: sound-monitor/properties.c:419 tickastat/properties.c:408
 msgid "General"
 msgstr "一般"
 
@@ -138,6 +139,12 @@ msgstr "秒針の色"
 msgid "Show seconds needle"
 msgstr "秒針を表示する"
 
+#. languages which use font encodings that can't
+#. * display spanish '颶 should use 'n' instead
+#: another_clock/another_clock.c:311
+msgid "I驩go Serna <inigo@gaztelan.bi.ehu.es>"
+msgstr ""
+
 #: another_clock/another_clock.c:323
 msgid "Another Clock Applet"
 msgstr "別の時計アプレット"
@@ -148,18 +155,20 @@ msgstr "(C) 1999 フリーソフトウェアファウンデーション"
 
 #: another_clock/another_clock.c:327
 msgid "An analog clock similar to that in CDE panel."
-msgstr "CDEパネルにあるものと似たアナログ時計です。"
+msgstr "CDEパネルにあるものに似たアナログ時計です。"
 
 #: another_clock/another_clock.c:615 asclock/asclock.c:595
-#: battery/battery.c:783 charpick/charpick.c:475 clockmail/clockmail.c:539
-#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:80
-#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
-#: gkb/gkb.c:675 gnome-pager/gnomepager_applet.c:2552
-#: gnotes/gnotes_applet.c:300 gweather/gweather-applet.c:172 hal/hal.c:285
+#: battery/battery.c:783 charpick/charpick.c:475 clipboard/clipboard.c:227
+#: clockmail/clockmail.c:539 drivemount/drivemount.c:552
+#: esd-manager/esdmanager_applet.c:80 fifteen/fifteen.c:309
+#: fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350 gkb/gkb.c:675
+#: gnome-pager/gnomepager_applet.c:2552 gnotes/gnotes_applet.c:300
+#: gumma/gumma.c:574 gweather/gweather-applet.c:172 hal/hal.c:285
 #: jbc/jbc-applet.c:136 life/life.c:197
-#: mini-commander/src/mini-commander_applet.c:375
-#: modemlights/modemlights.c:1155 netload/netload.c:339 slashapp/slashapp.c:58
-#: webcontrol/webcontrol.c:308
+#: mini-commander/src/mini-commander_applet.c:388
+#: modemlights/modemlights.c:1155 netload/netload.c:339 odometer/odo.c:562
+#: slashapp/slashapp.c:58 sound-monitor/main.c:329 tickastat/main.c:317
+#: webcontrol/webcontrol.c:308 whereami/whereami.c:119
 msgid "About..."
 msgstr "情報..."
 
@@ -168,10 +177,11 @@ msgstr "情報..."
 #: drivemount/drivemount.c:546 esd-manager/esdmanager_applet.c:87
 #: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:683
 #: gnome-pager/gnomepager_applet.c:2558 gweather/gweather-applet.c:175
-#: mini-commander/src/mini-commander_applet.c:362
+#: mini-commander/src/mini-commander_applet.c:375
 #: modemlights/modemlights.c:1149 multiload/cpuload.c:64
 #: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
-#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:316
+#: odometer/odo.c:559 slashapp/slashapp.c:55 sound-monitor/main.c:322
+#: tickastat/main.c:311 webcontrol/webcontrol.c:316
 msgid "Properties..."
 msgstr "プロパティ..."
 
@@ -185,7 +195,7 @@ msgstr "(C) 1998 フリーソフトウェアファウンデーション"
 
 #: asclock/dialogs.c:23
 msgid "Who said NeXT is dead?"
-msgstr "NeXTは死んだだって?"
+msgstr "NeXTは死んだだと?"
 
 #: asclock/dialogs.c:143
 msgid ""
@@ -196,6 +206,14 @@ msgstr ""
 #: asclock/dialogs.c:145
 msgid "My Title"
 msgstr "個人用題名"
+
+#: asclock/dialogs.c:235
+msgid "Continent/City"
+msgstr "大陸/都市"
+
+#: asclock/dialogs.c:236
+msgid "Clock Theme"
+msgstr "時計のテーマ"
 
 #: asclock/dialogs.c:268
 msgid "ASClock Settings"
@@ -220,8 +238,8 @@ msgid ""
 "Error querying battery charge.  Make sure that your kernel was built with "
 "APM support."
 msgstr ""
-"バッテリ容量情報を取得できません。あなたの使っているカーネルにAPMサポートか組"
-"み込まれているか確認してください。"
+"バッテリ容量を取得できません。あなたの使っているカーネルにAPMサポートか組み込"
+"まれているか確認してください。"
 
 #: battery/battery.c:141
 msgid "The battery is low."
@@ -263,8 +281,8 @@ msgid ""
 "This applet monitors the charge of your laptop's battery.  Click on it to "
 "change display modes."
 msgstr ""
-"このアプレットはラップトップPCのバッテリの充電容量をモニタします。クリックする"
-"と表示モードを変更します"
+"このアプレットはラップトップPCのバッテリ充電容量をモニタします。クリックすると"
+"表示モードを変更します"
 
 #: battery/battery.c:988
 msgid "Could not allocate space for graph values"
@@ -292,7 +310,7 @@ msgstr "更新間隔(秒):"
 #. Low battery value
 #: battery/properties.c:117
 msgid "Low Charge Threshold:"
-msgstr "低蓄電となる閾値:"
+msgstr "低蓄電とする閾値:"
 
 #. Applet mode label
 #: battery/properties.c:131
@@ -384,6 +402,22 @@ msgstr "APMは使用できません!バッテリー充電情報を取得できません。"
 msgid "Run gtcd..."
 msgstr "gtcdを実行..."
 
+#: clipboard/clipboard.c:161
+msgid "Clipboard Applet"
+msgstr "クリップボードアプレット"
+
+#: clipboard/clipboard.c:163
+msgid "Copyright (C) 1999"
+msgstr "Copyright (C) 1998"
+
+#: clipboard/clipboard.c:165
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"履歴つきの「セレクション」へコピーしたり、からコピーしたりするパネルアプレット"
+"です。GNU一般公有使用許諾書の下にリリースされています"
+
 #: charpick/charpick.c:352
 msgid "Character Picker"
 msgstr "文字ピッカー"
@@ -397,7 +431,7 @@ msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"私のキーボードでは打てない変わった文字を入力するための Panel "
+"私のキーボードからは打てない変わった文字を入力するための Panel "
 "アプレットです。GNU一般公有使用許諾書に基づいてリリースされています。"
 
 #: charpick/properties.c:123
@@ -416,7 +450,8 @@ msgstr "ボタンの行数(横):"
 msgid "Number of columns of buttons:"
 msgstr "ボタンの列数(縦):"
 
-#: clockmail/clockmail.c:52 slashapp/slashapp.c:127
+#: clockmail/clockmail.c:52 slashapp/slashapp.c:127 sound-monitor/main.c:31
+#: tickastat/main.c:183
 msgid "John Ellis <johne@bellatlantic.net>"
 msgstr "John Ellis <johne@bellatlantic.net>"
 
@@ -453,9 +488,14 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:138
+#: clockmail/properties.c:138 odometer/properties.c:128
+#: sound-monitor/properties.c:163
 msgid "None (default)"
 msgstr "なし(デフォルト)"
+
+#: clockmail/properties.c:262
+msgid "Themes:"
+msgstr "テーマ:"
 
 #: clockmail/properties.c:279
 msgid "ClockMail Settings"
@@ -493,11 +533,12 @@ msgstr "メールボックスが満杯と見なすメールの数:"
 msgid "When clicked, run:"
 msgstr "クリックされた時に実行:"
 
-#: clockmail/properties.c:422
+#: clockmail/properties.c:422 sound-monitor/properties.c:437
 msgid "Theme file (directory):"
 msgstr "テーマファイル(ディレクトリ):"
 
-#: clockmail/properties.c:453
+#: clockmail/properties.c:453 odometer/properties.c:294
+#: sound-monitor/properties.c:465
 msgid "Theme"
 msgstr "テーマ"
 
@@ -653,7 +694,7 @@ msgid ""
 "Guaranteed to be a productivity buster."
 msgstr ""
 "Sam "
-"Lloydの得意なゲームです。Gnomeパネルに輝きをもたらします。生産性が落ちること間"
+"Lloydの得意なゲームです。Gnomeパネルに喜びをもたらします。生産性が落ちること間"
 "違いなしです。"
 
 #: fifteen/fifteen.c:292
@@ -697,6 +738,10 @@ msgstr "非アクティブデスクトップの色"
 msgid "Fvwm Pager Settings"
 msgstr "FVWMページャの設定"
 
+#: geyes/geyes.c:224
+msgid "Dave Camp <campd@oit.edu>"
+msgstr ""
+
 #: geyes/geyes.c:226
 msgid "gEyes"
 msgstr "目玉"
@@ -708,6 +753,10 @@ msgstr "Copyright (C) 1999 Dave Camp"
 #: geyes/geyes.c:228
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOMEパネル用のキュートなお目々"
+
+#: geyes/themes.c:163
+msgid "Theme Name"
+msgstr "テーマ名"
 
 #: geyes/themes.c:176
 msgid "gEyes Settings"
@@ -778,7 +827,9 @@ msgstr "デスクトップページャ・アプレット"
 
 #: gnome-pager/gnomepager_applet.c:198
 msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-msgstr "Copyright (C)1998,1999 Red Hat ソフトウェア, フリーソフトウェアファウンデーション"
+msgstr ""
+"Copyright (C)1998,1999 Red Hat ソフトウェア, "
+"フリーソフトウェアファウンデーション"
 
 #: gnome-pager/gnomepager_applet.c:200
 msgid "Pager for a GNOME compliant Window Manager"
@@ -996,6 +1047,27 @@ msgstr "デフォルトの幅"
 msgid "Can't create GNotes applet!"
 msgstr "GNoteアプレットを生成できません!"
 
+#: gumma/gumma.c:309
+#, c-format
+msgid "Loading plugin %s..."
+msgstr "プラグイン %s 読み込み中…"
+
+#: gumma/gumma.c:483
+msgid "Select a plugin"
+msgstr "プラグイン選択"
+
+#: gumma/gumma.c:497
+msgid "Plugins"
+msgstr "プラグイン"
+
+#: gumma/gumma.c:579
+msgid "About Plugin..."
+msgstr "プラグイン情報..."
+
+#: gumma/gumma.c:583
+msgid "Plugins..."
+msgstr "プラグイン..."
+
 #: gweather/gweather-applet.c:167
 msgid "Cannot create applet!\n"
 msgstr "アプレットが生成できません!\n"
@@ -1030,7 +1102,7 @@ msgstr "気温:"
 
 #: gweather/gweather-dialog.c:157
 msgid "Dew point:"
-msgstr ""
+msgstr "結露点:"
 
 #: gweather/gweather-dialog.c:165
 msgid "Humidity:"
@@ -1089,16 +1161,20 @@ msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr ""
+"おかしな場所が選択されました!\n"
+"プロパティは変えてません。"
 
 #: gweather/gweather-pref.c:130
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
+"プロクシのURLが、http://ほすと:ポート/ 形式になっていません。\n"
+"プロパティは変えていません。"
 
 #: gweather/gweather-pref.c:197
 msgid "Regions"
-msgstr ""
+msgstr "地域"
 
 #: gweather/gweather-pref.c:313
 msgid "Properties"
@@ -1110,23 +1186,23 @@ msgstr "更新する"
 
 #: gweather/gweather-pref.c:360
 msgid "Use metric"
-msgstr ""
+msgstr "メートル表記"
 
 #: gweather/gweather-pref.c:364
 msgid "Detailed forecast"
-msgstr ""
+msgstr "詳しい予報"
 
 #: gweather/gweather-pref.c:368
 msgid "Enable radar maps"
-msgstr ""
+msgstr "レーダー表示する"
 
 #: gweather/gweather-pref.c:394
 msgid "(sec)"
-msgstr ""
+msgstr "(秒)"
 
 #: gweather/gweather-pref.c:398
 msgid "Basic"
-msgstr ""
+msgstr "基礎"
 
 #: gweather/gweather-pref.c:415
 msgid "Use proxy"
@@ -1134,7 +1210,7 @@ msgstr "proxyを使う"
 
 #: gweather/gweather-pref.c:419
 msgid "Proxy host:"
-msgstr ""
+msgstr "プロクシホスト:"
 
 #: gweather/gweather-pref.c:433
 msgid "Username:"
@@ -1142,7 +1218,7 @@ msgstr "ユーザ名:"
 
 #: gweather/gweather-pref.c:447
 msgid "Password:"
-msgstr ""
+msgstr "パスワード:"
 
 #: gweather/gweather-pref.c:462
 msgid ""
@@ -1150,6 +1226,9 @@ msgid ""
 "be saved in the private configuration file, it will\n"
 "be unencrypted!"
 msgstr ""
+"ちょいと警告: パスワードは個人設定のファイルに\n"
+"書き込まれます。が、暗号化はしていません!\n"
+"注意せよ!"
 
 #: gweather/gweather-pref.c:470
 msgid "Network"
@@ -1157,48 +1236,1212 @@ msgstr "ネットワーク"
 
 #: gweather/gweather-pref.c:493
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 #: gweather/gweather-about.c:35
 msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr ""
+msgstr "Copyright (c)1999 by S. Papadimitriou"
 
 #: gweather/gweather-about.c:37
 msgid ""
 "GNOME weather monitor applet.\n"
 "Web: http://gweather.dhs.org/"
 msgstr ""
+"お天気GNOMEアプレット。\n"
+"ウェブ: http://gweather.dhs.org/"
+
+#: gweather/weather.c:137
+msgid "Variable"
+msgstr "不定"
+
+#: gweather/weather.c:138
+msgid "North"
+msgstr "北"
+
+#: gweather/weather.c:138
+msgid "North - NorthEast"
+msgstr "北北東"
+
+#: gweather/weather.c:138
+msgid "Northeast"
+msgstr "北東"
+
+#: gweather/weather.c:138
+msgid "East - NorthEast"
+msgstr "東北東"
+
+#: gweather/weather.c:139
+msgid "East"
+msgstr "東"
+
+#: gweather/weather.c:139
+msgid "East - Southeast"
+msgstr "東南東"
+
+#: gweather/weather.c:139
+msgid "Southeast"
+msgstr "南東"
+
+#: gweather/weather.c:139
+msgid "South - Southeast"
+msgstr "南南東"
+
+#: gweather/weather.c:140
+msgid "South"
+msgstr "南"
+
+#: gweather/weather.c:140
+msgid "South - Southwest"
+msgstr "南南西"
+
+#: gweather/weather.c:140
+msgid "Southwest"
+msgstr "南西"
+
+#: gweather/weather.c:140
+msgid "West - Southwest"
+msgstr "西南西"
+
+#: gweather/weather.c:141
+msgid "West"
+msgstr "西"
+
+#: gweather/weather.c:141
+msgid "West - Northwest"
+msgstr "西北西"
+
+#: gweather/weather.c:141
+msgid "Northwest"
+msgstr "北西"
+
+#: gweather/weather.c:141
+msgid "North - Northwest"
+msgstr "北北西"
+
+#: gweather/weather.c:150
+msgid "Clear Sky"
+msgstr "快晴"
+
+#: gweather/weather.c:151
+msgid "Broken clouds"
+msgstr ""
+
+#: gweather/weather.c:152
+msgid "Scattered clouds"
+msgstr ""
+
+#: gweather/weather.c:153
+msgid "Few clouds"
+msgstr ""
+
+#: gweather/weather.c:154
+msgid "Overcast"
+msgstr "曇り"
+
+#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
+#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. NONE
+#. DRIZZLE
+#: gweather/weather.c:179
+msgid "Drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Drizzle in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Light drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Moderate drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Heavy drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Shallow drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Patches of drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Partial drizzle"
+msgstr ""
+
+#: gweather/weather.c:179 gweather/weather.c:180
+msgid "Thunderstorm"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Windy drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Showers"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Drifting drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Freezing drizzle"
+msgstr ""
+
+#. RAIN
+#: gweather/weather.c:180
+msgid "Rain "
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Rain in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Light rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Moderate rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Heavy rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Shallow rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Patches of rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Partial rainfall"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Blowing rainfall"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Rain showers"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Drifting rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Freezing rain"
+msgstr ""
+
+#. SNOW
+#: gweather/weather.c:181
+msgid "Snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Snow in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Light snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Moderate snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Heavy snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Shallow snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Patches of snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Partial snowfall"
+msgstr ""
+
+#: gweather/weather.c:181 gweather/weather.c:182
+msgid "Snowstorm"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Blowing snowfall"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Snow showers"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Drifting snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Freezing snow"
+msgstr ""
+
+#. SNOW_GRAINS
+#: gweather/weather.c:182
+msgid "Snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Snow grains in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Light snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Moderate snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Heavy snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Shallow snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Patches of snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Partial snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Blowing snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Snow grain showers"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Drifting snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Freezing snow grains"
+msgstr ""
+
+#. ICE_CRYSTALS
+#: gweather/weather.c:183
+msgid "Ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Ice crystals in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Few ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Moderate ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Heavy ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Patches of ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Partial ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Ice crystal storm"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Blowing ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Showers of ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Drifting ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Freezing ice crystals"
+msgstr ""
+
+#. ICE_PELLETS
+#: gweather/weather.c:184
+msgid "Ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Ice pellets in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Few ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Moderate ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Heavy ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Shallow ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Patches of ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Partial ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Ice pellet storm"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Blowing ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Showers of ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Drifting ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Freezing ice pellets"
+msgstr ""
+
+#. HAIL
+#: gweather/weather.c:185
+msgid "Hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Hail in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:185 gweather/weather.c:186
+msgid "Light hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Moderate hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Heavy hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Shallow hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Patches of hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Partial hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Hailstorm"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Blowing hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Hail showers"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Drifting hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Freezing hail"
+msgstr ""
+
+#. SMALL_HAIL
+#: gweather/weather.c:186
+msgid "Small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Small hail in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Moderate small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Heavy small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Shallow small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Patches of small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Partial small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Small hailstorm"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Blowing small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Showers of small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Drifting small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Freezing small hail"
+msgstr ""
+
+#. PRECIPITATION
+#: gweather/weather.c:187
+msgid "Unknown precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Precipitation in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Light precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Moderate precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Heavy precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Shallow precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Patches of precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Partial precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Unknown thunderstorm"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Blowing precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Showers, type unknown"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Drifting precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Freezing precipitation"
+msgstr ""
+
+#. MIST
+#: gweather/weather.c:188
+msgid "Mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Mist in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Light mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Moderate mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Thick mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Shallow mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Patches of mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Partial mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Mist with wind"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Drifting mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Freezing mist"
+msgstr ""
+
+#. FOG
+#: gweather/weather.c:189
+msgid "Fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Fog in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Light fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Moderate fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Thick fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Shallow fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Patches of fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Partial fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Fog with wind"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Drifting fog"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Freezing fog"
+msgstr ""
+
+#. SMOKE
+#: gweather/weather.c:190
+msgid "Smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Smoke in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Thin smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Moderate smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Thick smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Shallow smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Patches of smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Partial smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Smoke w/ thunders"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Smoke with wind"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Drifting smoke"
+msgstr ""
+
+#. VOLCANIC_ASH
+#: gweather/weather.c:191
+msgid "Volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Volcanic ash in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Moderate volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Thick volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Shallow volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Patches of volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Partial volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Volcanic ash w/ thunders"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Blowing volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Showers of volcanic ash "
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Drifting volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Freezing volcanic ash"
+msgstr ""
+
+#. SAND
+#: gweather/weather.c:192
+msgid "Sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Sand in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Light sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Moderate sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Heavy sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Patches of sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Partial sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Blowing sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Drifting sand"
+msgstr ""
+
+#. HAZE
+#: gweather/weather.c:193
+msgid "Haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Haze in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Light haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Moderate haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Thick haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Shallow haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Patches of haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Partial haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Haze with wind"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Drifting haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Freezing haze"
+msgstr ""
+
+#. SPRAY
+#: gweather/weather.c:194
+msgid "Sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Sprays in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Light sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Moderate sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Heavy sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Shallow sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Patches of sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Partial sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Blowing sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Drifting sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Freezing sprays"
+msgstr ""
+
+#. DUST
+#: gweather/weather.c:195
+msgid "Dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Dust in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Light dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Moderate dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Heavy dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Patches of dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Partial dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Blowing dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Drifting dust"
+msgstr ""
+
+#. SQUALL
+#: gweather/weather.c:196
+msgid "Squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Squall in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Light squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Moderate squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Heavy squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Partial squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Thunderous squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Blowing squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Drifting squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Freezing squall"
+msgstr ""
+
+#. SANDSTORM
+#: gweather/weather.c:197
+msgid "Sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Sandstorm in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Light standstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Moderate sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Heavy sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Shallow sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Partial sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Thunderous sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Blowing sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Drifting sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Freezing sandstorm"
+msgstr ""
+
+#. DUSTSTORM
+#: gweather/weather.c:198
+msgid "Duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Duststorm in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Light duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Moderate duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Heavy duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Shallow duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Partial duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Thunderous duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Blowing duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Drifting duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Freezing duststorm"
+msgstr ""
+
+#. FUNNEL_CLOUD
+#: gweather/weather.c:199
+msgid "Funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Funnel cloud in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Light funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Moderate funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Thick funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Shallow funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Patches of funnel clouds"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Partial funnel clouds"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Funnel cloud w/ wind"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Drifting funnel cloud"
+msgstr ""
+
+#. TORNADO
+#: gweather/weather.c:200
+msgid "Tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Tornado in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Moderate tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Raging tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Partial tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Thunderous tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Drifting tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Freezing tornado"
+msgstr ""
+
+#. DUST_WHIRLS
+#: gweather/weather.c:201
+msgid "Dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Dust whirls in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Light dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Moderate dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Heavy dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Shallow dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Patches of dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Partial dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Blowing dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Drifting dust whirls"
+msgstr ""
 
 #: gweather/weather.c:772
 msgid "Failed to get METAR data.\n"
-msgstr ""
+msgstr "METARデータが取得できません。\n"
 
 #: gweather/weather.c:954
 msgid "Failed to get IWIN forecast data.\n"
-msgstr ""
+msgstr "IWIN予報データを取得できません。\n"
 
 #: gweather/weather.c:1039
 msgid "Failed to get radar map image.\n"
-msgstr ""
+msgstr "レーダーマップの画像を取得できません。\n"
 
 #: gweather/weather.c:1110
 msgid "Another update already in progress!\n"
-msgstr ""
+msgstr "その他の更新中です!\n"
 
 #: gweather/weather.c:1298
 msgid "%a, %b %d / %H:%M"
-msgstr ""
+msgstr "%m月%d日(%a) / %H:%M"
 
 #: gweather/weather.c:1300
 msgid "Unknown observation time"
-msgstr ""
+msgstr "謎の観測時刻"
 
 #: gweather/weather.c:1359
 msgid "Calm"
-msgstr ""
+msgstr "凪"
 
 #: gweather/weather.c:1383
 msgid "Unknown"
+msgstr "謎"
+
+#: hal/hal.c:19
+msgid "I'm sorry, Dave, I can't let you do that."
+msgstr ""
+
+#: hal/hal.c:20
+msgid "Dave, what are you doing?"
+msgstr ""
+
+#: hal/hal.c:21
+msgid "I can feel my mind going, Dave...I can feel it."
+msgstr ""
+
+#: hal/hal.c:22
+msgid "Daisy, daisy..."
 msgstr ""
 
 #: hal/hal.c:223
@@ -1213,7 +2456,9 @@ msgstr "GNOME HAL"
 msgid ""
 "I am a HAL 9000 computer, Production Number 3. I became operational at the "
 "Hal Plant in Urbana, Illinois, on January 12, 1997."
-msgstr "私はHAL9000型コンピュータ、製造番号3番です。私はイリノイ州アーバナのハル工場で、1997年1月12日より動作を開始しました。"
+msgstr ""
+"私はHAL9000型コンピュータ、製造番号3番です。私はイリノイ州アーバナのハル工場で"
+"、1997年1月12日より動作を開始しました。"
 
 #: jbc/jbc-applet.c:45
 msgid "Jon's Binary Clock"
@@ -1293,30 +2538,30 @@ msgstr "みつかりません"
 msgid "no /bin/sh"
 msgstr "/bin/shがありません"
 
-#: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/command_line.c:88 mini-commander/src/command_line.c:108
 msgid "end of history list"
 msgstr "履歴リストの最後"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:118 mini-commander/src/exec.c:63
 msgid "starting..."
 msgstr "起動中です。"
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:147
 msgid "autocompleted"
 msgstr "自動補完"
 
-#: mini-commander/src/command_line.c:256
+#: mini-commander/src/command_line.c:257
 msgid "history list empty"
 msgstr "履歴リストがありません"
 
 #. title
-#: mini-commander/src/command_line.c:274
+#: mini-commander/src/command_line.c:275
 msgid "Command history"
 msgstr "コマンド履歴"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:391
+#: mini-commander/src/command_line.c:392
 msgid "Start program"
 msgstr "起動プログラム"
 
@@ -1330,7 +2575,7 @@ msgstr "子プロセスが終了しました"
 
 #: mini-commander/src/message.c:102
 msgid "%H:%M - %d. %b"
-msgstr ""
+msgstr "%m/%d %H:%M"
 
 #. timeFormat = _("%H:%M %Z");
 #: mini-commander/src/message.c:105
@@ -1339,29 +2584,29 @@ msgstr ""
 
 #: mini-commander/src/message.c:107
 msgid "%d. %b"
-msgstr ""
+msgstr "%m/%d"
 
-#: mini-commander/src/mini-commander_applet.c:89
+#: mini-commander/src/mini-commander_applet.c:90
 msgid "orient. changed"
 msgstr "向きが変わりました"
 
-#: mini-commander/src/mini-commander_applet.c:103
+#: mini-commander/src/mini-commander_applet.c:104
 msgid "size changed"
 msgstr "サイズが変わりました"
 
-#: mini-commander/src/mini-commander_applet.c:199 slashapp/properties.c:249
+#: mini-commander/src/mini-commander_applet.c:204 slashapp/properties.c:249
 msgid "Browser"
 msgstr "ブラウザ"
 
-#: mini-commander/src/mini-commander_applet.c:212
+#: mini-commander/src/mini-commander_applet.c:217
 msgid "History"
 msgstr "履歴"
 
-#: mini-commander/src/mini-commander_applet.c:368
+#: mini-commander/src/mini-commander_applet.c:381
 msgid "Help"
 msgstr "ヘルプ"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:392
 msgid "ready..."
 msgstr "準備中..."
 
@@ -1425,7 +2670,7 @@ msgid "Enable history based auto completion"
 msgstr "履歴による自動補完を使用する"
 
 #. Size
-#: mini-commander/src/preferences.c:554
+#: mini-commander/src/preferences.c:554 tickastat/properties.c:484
 msgid "Size"
 msgstr "サイズ"
 
@@ -1543,6 +2788,7 @@ msgid "Confirm connection"
 msgstr "接続の確認"
 
 #: modemlights/properties.c:241 slashapp/properties.c:422
+#: tickastat/properties.c:549
 msgid "Display"
 msgstr "表示"
 
@@ -1576,23 +2822,83 @@ msgstr "デバイス:"
 msgid "Use ISDN"
 msgstr "ISDNを使用する"
 
-#: modemlights/properties.c:349
+#: modemlights/properties.c:349 sound-monitor/properties.c:504
 msgid "Advanced"
 msgstr "上級"
+
+#: multiload/cpuload.c:47 multiload/main.c:177
+msgid "CPU Load"
+msgstr "CPU負荷"
 
 #: multiload/cpuload.c:71 multiload/memload.c:67 multiload/swapload.c:67
 msgid "Run gtop..."
 msgstr "gtopを実行..."
 
-#: multiload/main.c:177
-msgid "CPU Load"
-msgstr "CPU負荷"
+#: multiload/load-graph.c:26
+msgid "Load Graph"
+msgstr "負荷グラフ"
 
-#: multiload/main.c:181
+#: multiload/load-graph.c:180
+msgid "Speed:"
+msgstr "速さ:"
+
+#: multiload/load-graph.c:180 tickastat/properties.c:497
+msgid "Width:"
+msgstr "幅:"
+
+#: multiload/load-graph.c:180 tickastat/properties.c:525
+msgid "Height:"
+msgstr "高さ:"
+
+#: multiload/main.c:27
+msgid "User"
+msgstr "ユーザー"
+
+#: multiload/main.c:27
+msgid "System"
+msgstr "システム"
+
+#: multiload/main.c:27
+msgid "Nice"
+msgstr "ナイス"
+
+#: multiload/main.c:27
+msgid "Idle"
+msgstr "待機"
+
+#: multiload/main.c:31 multiload/main.c:39
+msgid "Other"
+msgstr "その他"
+
+#: multiload/main.c:31
+msgid "Shared"
+msgstr "共有"
+
+#: multiload/main.c:31
+msgid "Buffers"
+msgstr "バッファ"
+
+#: multiload/main.c:31 multiload/main.c:35
+msgid "Free"
+msgstr "未使用"
+
+#: multiload/main.c:35
+msgid "Used"
+msgstr "使用中"
+
+#: multiload/main.c:39
+msgid "SLIP"
+msgstr ""
+
+#: multiload/main.c:39
+msgid "PPP"
+msgstr ""
+
+#: multiload/main.c:181 multiload/memload.c:47
 msgid "Memory Load"
 msgstr "メモリ負荷"
 
-#: multiload/main.c:185
+#: multiload/main.c:185 multiload/swapload.c:47
 msgid "Swap Load"
 msgstr "スワップ負荷"
 
@@ -1651,6 +2957,52 @@ msgstr "ネットワーク負荷の設定"
 msgid "Device"
 msgstr "デバイス"
 
+#: odometer/odo.c:131
+msgid "Odometer"
+msgstr "走行距離計"
+
+#: odometer/odo.c:133
+msgid "(C) 1999 The Free Software Foundation"
+msgstr "(C) 1999 フリーソフトウェアファウンデーション"
+
+#: odometer/odo.c:135
+msgid ""
+"a GNOME applet that tracks and measures the movements of your mouse pointer "
+"across the desktop."
+msgstr "マウスがデスクトップ上を旅した距離を計るアプレットです。"
+
+#: odometer/odo.c:546
+msgid "Can't create odometer applet!"
+msgstr "距離計アプレットを生成できません!"
+
+#: odometer/odo.c:556
+msgid "Reset"
+msgstr "リセット"
+
+#: odometer/properties.c:210
+msgid "Odometer setting"
+msgstr "距離計の設定"
+
+#: odometer/properties.c:221
+msgid "Use Metric"
+msgstr "メートル表記"
+
+#: odometer/properties.c:227
+msgid "auto_reset"
+msgstr "自動リセット"
+
+#: odometer/properties.c:233 tickastat/mod_news.c:1234
+msgid "enabled"
+msgstr "計る"
+
+#: odometer/properties.c:239
+msgid "Digits number"
+msgstr "桁数"
+
+#: odometer/properties.c:268
+msgid "Theme file :"
+msgstr "テーマファイル :"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "記事"
@@ -1679,27 +3031,27 @@ msgstr "(以上の設定は再読み込みするまで有効になりません)"
 msgid "Open new window"
 msgstr "ウインドウを新規に開く"
 
-#: slashapp/properties.c:356
+#: slashapp/properties.c:356 tickastat/properties.c:418
 msgid "Scrolling"
 msgstr "スクロール"
 
-#: slashapp/properties.c:365
+#: slashapp/properties.c:365 tickastat/properties.c:427
 msgid "Smooth scroll"
 msgstr "滑らかスクロール"
 
-#: slashapp/properties.c:371
+#: slashapp/properties.c:371 tickastat/properties.c:433
 msgid "Smooth type"
 msgstr "スムース形式"
 
-#: slashapp/properties.c:377
+#: slashapp/properties.c:377 tickastat/properties.c:439
 msgid "Speed"
 msgstr "速さ"
 
-#: slashapp/properties.c:390
+#: slashapp/properties.c:390 tickastat/properties.c:452
 msgid "Delay when wrapping text:"
 msgstr "折り返し行の表示速度:"
 
-#: slashapp/properties.c:408
+#: slashapp/properties.c:408 tickastat/properties.c:470
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "各行のスクロール速度(滑らかスクロール):"
 
@@ -1721,7 +3073,7 @@ msgstr "ユーザディレクトリの作成中: %s\n"
 msgid "Unable to create user directory: %s\n"
 msgstr "ユーザディレクトリを作成できませんでした: %s\n"
 
-#: slashapp/slashapp.c:124
+#: slashapp/slashapp.c:124 tickastat/main.c:180
 #, c-format
 msgid "%d.%d.%d"
 msgstr ""
@@ -1748,7 +3100,7 @@ msgstr ""
 
 #: slashapp/slashapp.c:135
 msgid "A stock ticker-like applet\n"
-msgstr ""
+msgstr "出来合いの受信器みたいなアプレット\n"
 
 #: slashapp/slashapp.c:149
 msgid "SlashApp Article List"
@@ -1773,6 +3125,388 @@ msgstr "リクエスト準備ができません。\n"
 #: slashapp/slashapp.c:350
 msgid "Unable to process request.\n"
 msgstr "リクエストの処理ができません。\n"
+
+#: sound-monitor/main.c:34
+msgid "Sound Monitor Applet"
+msgstr "サウンドモニタ・アプレット"
+
+#: sound-monitor/main.c:35 tickastat/main.c:187
+msgid "(C) 1999 John Ellis"
+msgstr ""
+
+#: sound-monitor/main.c:37
+msgid ""
+"Sound monitor interface to Esound\n"
+"\n"
+"Released under the GNU general public license."
+msgstr ""
+"Esoundとのサウンドモニタインターフェース\n"
+"\n"
+"GNU一般公有使用許諾書の下でリリースされています。"
+
+#: sound-monitor/main.c:73
+msgid "Place Esound in standby"
+msgstr "Esoundをスタンバイ状態にする"
+
+#: sound-monitor/main.c:78
+msgid "Resume Esound"
+msgstr "Esoundのレジューム"
+
+#: sound-monitor/main.c:83 sound-monitor/main.c:343
+msgid "Start Esound"
+msgstr "Esoundのスタート"
+
+#: sound-monitor/main.c:336
+msgid "Manager..."
+msgstr "マネージャ..."
+
+#: sound-monitor/manager.c:1261 sound-monitor/manager.c:1349
+msgid "Volume"
+msgstr "ボリューム"
+
+#: sound-monitor/manager.c:1277 sound-monitor/manager.c:1365
+msgid "Balance"
+msgstr "バランス"
+
+#: sound-monitor/properties.c:133
+msgid ""
+"You have enabled the \"Monitor sound input\" option.\n"
+"\n"
+"If your sound card is not fully 100% FULL DUPLEX (can do input and output "
+"simultaneously),\n"
+"then this may touch bugs in sound drivers/esound that may hang the system.\n"
+"\n"
+"You have been warned!"
+msgstr ""
+"\"サウンド入力モニタ\"を有効にしました。\n"
+"\n"
+"もしサウンドカードが完全に100%全二重なもの(入力と出力を同時に扱える)でないと、"
+"\n"
+"ドライバもしくは esound "
+"のバグでシステムをハングアップさせる場合があります。\n"
+"\n"
+"警告はしましたよ!"
+
+#: sound-monitor/properties.c:332
+msgid "Peak indicator"
+msgstr "ピーク表示"
+
+#: sound-monitor/properties.c:341
+msgid "off"
+msgstr "切"
+
+#: sound-monitor/properties.c:348
+msgid "active"
+msgstr "入"
+
+#: sound-monitor/properties.c:355
+msgid "smooth"
+msgstr "滑"
+
+#: sound-monitor/properties.c:362
+msgid "Peak indicator falloff speed"
+msgstr "ピーク表示の落ち込む速さ"
+
+#: sound-monitor/properties.c:379
+msgid "Scope (scale 1:X, where X = ? )"
+msgstr "スコープ (1:X スケールで、Xの値は?)"
+
+#: sound-monitor/properties.c:396
+msgid "Connect points in scope"
+msgstr "スコープの接続ポイント"
+
+#: sound-monitor/properties.c:402
+msgid "Screen refresh (frames per second)"
+msgstr "画面更新(1秒あたりのフレーム数)"
+
+#: sound-monitor/properties.c:483
+msgid "ESD host to monitor:"
+msgstr "モニタするESDホスト:"
+
+#: sound-monitor/properties.c:497
+msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
+msgstr "サウンド入力モニタ(サウンドカードが全二重の場合以外使わないこと)"
+
+#: tickastat/main.c:39
+msgid "Tick-a-Stat event log"
+msgstr "Tick-a-Stat イベントログ"
+
+#: tickastat/main.c:118
+msgid "%Y%m%d-%H-%M-%S"
+msgstr "%Y%m%d-%H-%M-%S"
+
+#: tickastat/main.c:120
+msgid "%m-%d-%Y %H:%M:%S"
+msgstr "%m-%d-%Y %H:%M:%S"
+
+#: tickastat/main.c:186
+msgid "Tick-a-Stat"
+msgstr ""
+
+#: tickastat/main.c:189
+msgid "A ticker to display various information and statistics.\n"
+msgstr "様々な情報や統計を表示するための受信器。\n"
+
+#: tickastat/main.c:260
+#, c-format
+msgid "unable to create user directory: %s\n"
+msgstr "ユーザディレクトリを作成できませんでした: %s\n"
+
+#: tickastat/main.c:300
+msgid "The unique information and status ticker."
+msgstr ""
+
+#: tickastat/main.c:322
+msgid "Event log..."
+msgstr "イベントログ..."
+
+#: tickastat/mod_coredump.c:91
+msgid "Core dump information (Tick-a-Stat)"
+msgstr "コアダンプ情報 (Tick-a-Stat)"
+
+#: tickastat/mod_coredump.c:234
+msgid "Core dump module (Tick-A-Stat)"
+msgstr "コアダンプモジュール (Tick-A-Stat)"
+
+#: tickastat/mod_coredump.c:235
+msgid ""
+"The core dump module is\n"
+"processing a core file..."
+msgstr ""
+"コアダンプモジュールは\n"
+"コアファイルを走査中..."
+
+#: tickastat/mod_coredump.c:457
+msgid "Core Dump Module"
+msgstr "コアダンプモジュール"
+
+#: tickastat/mod_coredump.c:464 tickastat/mod_loadavg.c:507
+#: tickastat/mod_news.c:1198 tickastat/mod_tail.c:409 tickastat/mod_test.c:120
+msgid "Enable this module"
+msgstr "このモジュールを使う"
+
+#: tickastat/mod_coredump.c:470
+msgid "Show backtrace dialog on new core files"
+msgstr "新しいコアファイルができたらバックトレースダイアログを表示"
+
+#: tickastat/mod_coredump.c:480
+msgid "Path to monitor:"
+msgstr "モニタするパス:"
+
+#: tickastat/mod_coredump.c:597
+msgid ""
+"This module monitors a path for core dumps, if one is\n"
+" found it is time stamped and a backtrace logged (using gdb)."
+msgstr ""
+"このモジュールは指定パスにコアファイルができていないかモニタします。\n"
+"見つかった場合、時刻とともにバックトレース(gdbを使って)を記録します。"
+
+#: tickastat/mod_loadavg.c:108
+msgid "Load Average information (Tick-a-Stat)"
+msgstr "負荷平均情報 (Tick-a-Stat)"
+
+#: tickastat/mod_loadavg.c:320
+msgid "The Load average is very high."
+msgstr "負荷が非常に高いです。"
+
+#: tickastat/mod_loadavg.c:321
+msgid "Load average is at a critical point, help me!"
+msgstr "負荷が危険なレベルに来ています。助けてー!"
+
+#: tickastat/mod_loadavg.c:500
+msgid "Load Average Module"
+msgstr "負荷平均モジュール"
+
+#: tickastat/mod_loadavg.c:517
+msgid "Check every:"
+msgstr "更新を:"
+
+#: tickastat/mod_loadavg.c:529
+msgid "Seconds"
+msgstr "秒毎に"
+
+#. Warning dialog
+#: tickastat/mod_loadavg.c:535
+msgid "Warning options"
+msgstr "警告オプション"
+
+#: tickastat/mod_loadavg.c:544 tickastat/mod_loadavg.c:589
+msgid "Show pop-up dialog for this event"
+msgstr "このイベントが起きたらポップアップダイアログを表示"
+
+#: tickastat/mod_loadavg.c:554 tickastat/mod_loadavg.c:599
+msgid "Load average threshhold:"
+msgstr "負荷平均の閾値:"
+
+#: tickastat/mod_loadavg.c:566 tickastat/mod_loadavg.c:611
+msgid "Text to display:"
+msgstr "表示するテキスト:"
+
+#. Danger dialog
+#: tickastat/mod_loadavg.c:580
+msgid "Alert options"
+msgstr "警告オプション"
+
+#: tickastat/mod_loadavg.c:757
+msgid ""
+"This module monitors the system load average,\n"
+" and displays warning when it rises above certain points."
+msgstr ""
+"このモジュールはシステムの負荷平均をモニタし、\n"
+"あるレベルを越えたら警告を表示します。"
+
+#: tickastat/mod_news.c:540
+msgid "script \""
+msgstr "スクリプト \""
+
+#: tickastat/mod_news.c:541
+msgid "Tick-a-Stat script encountered and error:\n"
+msgstr "Tick-a-Stat スクリプトのエラーが起きました:\n"
+
+#: tickastat/mod_news.c:1186
+msgid "Enabled"
+msgstr "有効"
+
+#: tickastat/mod_news.c:1186
+msgid "Name"
+msgstr "名前"
+
+#: tickastat/mod_news.c:1186
+msgid "Line delay"
+msgstr "行遅れ"
+
+#: tickastat/mod_news.c:1186
+msgid "Update interval"
+msgstr "更新間隔"
+
+#: tickastat/mod_news.c:1187
+msgid "D"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "T"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "I"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "B"
+msgstr ""
+
+#: tickastat/mod_news.c:1191
+msgid "News and Information Module"
+msgstr "ニュースと情報のモジュール"
+
+#: tickastat/mod_news.c:1245
+msgid "Line (s):"
+msgstr "行 (秒):"
+
+#: tickastat/mod_news.c:1259
+msgid "Update (m):"
+msgstr "更新 (分):"
+
+#: tickastat/mod_news.c:1277
+msgid "body"
+msgstr "本文"
+
+#: tickastat/mod_news.c:1282
+msgid "image"
+msgstr "画像"
+
+#: tickastat/mod_news.c:1287
+msgid "topic"
+msgstr "トピック"
+
+#: tickastat/mod_news.c:1292
+msgid "date"
+msgstr "日付"
+
+#: tickastat/mod_news.c:1297
+msgid "Show:"
+msgstr "表示:"
+
+#: tickastat/mod_news.c:1468
+msgid "This module can display news and other information."
+msgstr "このモジュールはニュースと情報を表示できます。"
+
+#: tickastat/mod_tail.c:77
+msgid "File tail view file (Tick-a-Stat)"
+msgstr "ファイルの尻尾を見るファイル (Tick-a-Stat)"
+
+#: tickastat/mod_tail.c:87
+msgid "no file dpecified"
+msgstr "ファイルが指定されていません"
+
+#: tickastat/mod_tail.c:130
+msgid "File tail information (Tick-a-Stat)"
+msgstr "ファイル尻尾情報 (Tick-a-Stat)"
+
+#: tickastat/mod_tail.c:139
+msgid "File tail for "
+msgstr "ファイルの尻尾を"
+
+#: tickastat/mod_tail.c:402
+msgid "File Tail Module"
+msgstr "ファイルの尻尾モジュール"
+
+#: tickastat/mod_tail.c:419
+msgid "Path to tail:"
+msgstr "ファイルのパス:"
+
+#: tickastat/mod_tail.c:424
+msgid "Choose a file to tail"
+msgstr "尻尾を追うファイルを選択"
+
+#: tickastat/mod_tail.c:433
+msgid "Show pop up dialog for new lines."
+msgstr "新しい行が見つかったらダイアログをポップアップする。"
+
+#: tickastat/mod_tail.c:539
+msgid ""
+"This module monitors a file for appended text,\n"
+" and prints it. Useful for log files."
+msgstr ""
+"このモジュールはあるファイルに対して追加されるテキストをモニタし、\n"
+"表示します。ログファイルなどに使えます。"
+
+#: tickastat/mod_test.c:113
+msgid "Test Module"
+msgstr "テストモジュール"
+
+#: tickastat/mod_test.c:192
+msgid "This is the test module's description line."
+msgstr "これはテストモジュールの説明です。"
+
+#. left pane will be filled in select cb
+#: tickastat/properties.c:365
+msgid "Modules"
+msgstr "モジュール"
+
+#: tickastat/properties.c:374
+msgid "Event Log"
+msgstr "イベントログ"
+
+#: tickastat/properties.c:383
+msgid "Enable logging of events"
+msgstr "イベントのログを行なう"
+
+#: tickastat/properties.c:393
+msgid "Log path:"
+msgstr "ログのパス:"
+
+#: tickastat/properties.c:398
+msgid "Choose a log file"
+msgstr "ログファイルを選択して下さい"
+
+#: tickastat/properties.c:512
+msgid "Use all room on panel"
+msgstr "パネルの全スペースを使う"
+
+#: tickastat/properties.c:540
+msgid "Use panel size hint"
+msgstr "パネルサイズ情報を使う"
 
 #: webcontrol/webcontrol.c:56
 msgid "The Web Browser Controller"
@@ -1815,65 +3549,29 @@ msgstr "\"新しいウィンドウで開く\"オプションの表示"
 msgid "Look"
 msgstr "外観"
 
-#~ msgid "Continent/City"
-#~ msgstr "大陸/都市"
+#: whereami/whereami.c:30
+msgid ""
+"Where\n"
+"Am I?"
+msgstr ""
+"私は\n"
+"どこ?"
 
-#~ msgid "Clock Theme"
-#~ msgstr "時計のテーマ"
+#: whereami/whereami.c:39
+msgid "Where Am I?"
+msgstr "私はどこ?"
 
-#~ msgid "Themes:"
-#~ msgstr "テーマ:"
+#: whereami/whereami.c:40
+msgid "Copyright 1999 John Kodis"
+msgstr "Copyright 1999 John Kodis"
 
-#~ msgid "Theme Name"
-#~ msgstr "テーマ名"
+#: whereami/whereami.c:41
+msgid "A cursor position reporting applet."
+msgstr "マウスポインタの位置を知らせるアプレット"
 
-#~ msgid "North"
-#~ msgstr "北"
-
-#~ msgid "North - NorthEast"
-#~ msgstr "北北東"
-
-#~ msgid "Northeast"
-#~ msgstr "北東"
-
-#~ msgid "East - NorthEast"
-#~ msgstr "東北東"
-
-#~ msgid "East"
-#~ msgstr "東"
-
-#~ msgid "East - Southeast"
-#~ msgstr "東南東"
-
-#~ msgid "Southeast"
-#~ msgstr "南東"
-
-#~ msgid "South - Southeast"
-#~ msgstr "南南東"
-
-#~ msgid "South"
-#~ msgstr "南"
-
-#~ msgid "South - Southwest"
-#~ msgstr "南南西"
-
-#~ msgid "Southwest"
-#~ msgstr "南西"
-
-#~ msgid "West - Southwest"
-#~ msgstr "西南西"
-
-#~ msgid "West"
-#~ msgstr "西"
-
-#~ msgid "West - Northwest"
-#~ msgstr "西北西"
-
-#~ msgid "Northwest"
-#~ msgstr "北西"
-
-#~ msgid "North - Northwest"
-#~ msgstr "北北西"
+#: whereami/whereami.c:100
+msgid "whereami_applet"
+msgstr "私はどこ?アプレット"
 
 #~ msgid "Appearance (experimental, you have to restart the applet)"
 #~ msgstr "見た目(実験的。アプレットを再起動しなければなりません)"
@@ -1886,42 +3584,3 @@ msgstr "外観"
 #~ "\n"
 #~ "時々、大きさの変更が見えるようにするために、\n"
 #~ "アプレットを動かさなければならないことがあります。"
-
-#~ msgid "Load Graph"
-#~ msgstr "負荷グラフ"
-
-#~ msgid "Speed:"
-#~ msgstr "速さ:"
-
-#~ msgid "Width:"
-#~ msgstr "幅:"
-
-#~ msgid "Height:"
-#~ msgstr "高さ:"
-
-#~ msgid "User"
-#~ msgstr "ユーザー"
-
-#~ msgid "System"
-#~ msgstr "システム"
-
-#~ msgid "Nice"
-#~ msgstr "ナイス"
-
-#~ msgid "Idle"
-#~ msgstr "待機"
-
-#~ msgid "Other"
-#~ msgstr "その他"
-
-#~ msgid "Shared"
-#~ msgstr "共有"
-
-#~ msgid "Buffers"
-#~ msgstr "バッファ"
-
-#~ msgid "Free"
-#~ msgstr "未使用"
-
-#~ msgid "Used"
-#~ msgstr "使用中"
