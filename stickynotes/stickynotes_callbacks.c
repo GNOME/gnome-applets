@@ -20,35 +20,18 @@
 #include <config.h>
 #include <stickynotes_callbacks.h>
 
-/* Sticky Window Callback : Skip taskbar and pager when exposing the widow */
-gboolean window_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note)
-{
-	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->window), TRUE);
-	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->window), TRUE);
-
-	return TRUE;
-}
-
-/* Sticky Window Callback : Get confirmation when deleting the window. */
-gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note)
-{
-	stickynotes_remove(note->stickynotes, note);
-
-	return TRUE;
-}
-
 /* Sticky Window Callback : Move the window or edit the title. */
 gboolean window_move_edit_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
+		gtk_window_begin_move_drag(GTK_WINDOW(note->window), event->button, event->x_root, event->y_root, event->time);
+
 		/* Pretend the note was edited, to trigger an auto-save. */
 		GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
 		gtk_text_buffer_set_modified(buffer, TRUE);
-
-		gtk_window_begin_move_drag(GTK_WINDOW(note->window), event->button, event->x_root, event->y_root, event->time);
 	}
 	else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
-		stickynote_set_title(note);
+		stickynote_edit_title(note);
 
 	return TRUE;
 }
@@ -57,12 +40,12 @@ gboolean window_move_edit_cb(GtkWidget *widget, GdkEventButton *event, StickyNot
 gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
+		gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST,
+					     event->button, event->x_root, event->y_root, event->time);
+
 		/* Pretend the note was edited, to trigger an auto-save. */
 		GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
 		gtk_text_buffer_set_modified(buffer, TRUE);
-
-		gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST,
-					     event->button, event->x_root, event->y_root, event->time);
 	}
 	
 	return TRUE;
@@ -74,6 +57,34 @@ gboolean window_close_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *n
 	if (event->type == GDK_BUTTON_RELEASE && event->button == 1)
 		stickynotes_remove(note->stickynotes, note);
 	
+	return TRUE;
+}
+
+/* Sticky Window Callback : Skip taskbar and pager when exposing the widow */
+gboolean window_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note)
+{
+	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->window), TRUE);
+	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->window), TRUE);
+
+	return FALSE;
+}
+
+/* Sticky Window Callback : Store settings when resizing/moving the window */
+gboolean window_configure_cb(GtkWidget *widget, GdkEventConfigure *event, StickyNote *note)
+{
+	note->x = event->x;
+	note->y = event->y;
+	note->w = event->width;
+	note->h = event->height;
+
+	return FALSE;
+}
+
+/* Sticky Window Callback : Get confirmation when deleting the window. */
+gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note)
+{
+	stickynotes_remove(note->stickynotes, note);
+
 	return TRUE;
 }
 
@@ -125,7 +136,7 @@ void popup_destroy_cb(GtkWidget *widget, StickyNote *note)
 /* Popup Menu Callback : Edit the title */
 void popup_edit_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynote_set_title(note);
+	stickynote_edit_title(note);
 }
 
 /* Callback for Dialog to change title */

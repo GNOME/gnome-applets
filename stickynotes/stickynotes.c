@@ -47,6 +47,8 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	note->body = glade_xml_get_widget(note->glade, "body_text");
 	note->x = 0;
 	note->y = 0;
+	note->w = 0;
+	note->h = 0;
 	note->stickynotes = stickynotes;
 
 	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_img")), STICKYNOTES_ICONDIR "/resize.png");
@@ -60,15 +62,7 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 						    gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/defaults/height", NULL));
 	
 	/* Customize the date in the title label */
-	{
-		gchar *date0 = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/settings/date_format", NULL);
-		gchar *date1 = get_current_date(date0);
-		gchar *date2 = g_strdup_printf("<b>%s</b>", date1);
-		gtk_label_set_markup(GTK_LABEL(note->title), date2);
-		g_free(date0);
-		g_free(date1);
-		g_free(date2);
-	}
+	stickynote_set_title(note, NULL);
 	
 	/* Customize the colors */
 	stickynote_set_highlighted(note, FALSE);
@@ -83,19 +77,18 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 		gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), title_box, note);
 
 		/* Connect signals for window management on the sticky note */
+		g_signal_connect(G_OBJECT(title_box), "button-press-event", G_CALLBACK(window_move_edit_cb), note);
+		g_signal_connect(G_OBJECT(resize_box), "button-press-event", G_CALLBACK(window_resize_cb), note);
+		g_signal_connect(G_OBJECT(close_box), "button-release-event", G_CALLBACK(window_close_cb), note);
+
 		g_signal_connect(G_OBJECT(note->window), "expose-event", G_CALLBACK(window_expose_cb), note);
+		g_signal_connect(G_OBJECT(note->window), "configure-event", G_CALLBACK(window_configure_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "delete-event", G_CALLBACK(window_delete_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "enter-notify-event", G_CALLBACK(window_cross_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "leave-notify-event", G_CALLBACK(window_cross_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
-		g_signal_connect(G_OBJECT(title_box), "button-press-event", G_CALLBACK(window_move_edit_cb), note);
-		g_signal_connect(G_OBJECT(resize_box), "button-press-event", G_CALLBACK(window_resize_cb), note);
-		g_signal_connect(G_OBJECT(close_box), "button-release-event", G_CALLBACK(window_close_cb), note);
 	}
-
-	/* Show it all */
-	gtk_widget_show_all(note->window);
 
 	return note;
 }
@@ -108,53 +101,8 @@ void stickynote_free(StickyNote *note)
 	g_free(note);
 }
 
-/* Check if a sticky note is empty */
-gboolean stickynote_get_empty(const StickyNote *note)
-{
-	GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
-	
-	return gtk_text_buffer_get_char_count(buffer) == 0;
-}
-
-/* (Un)highlight a sticky note */
-void stickynote_set_highlighted(StickyNote *note, gboolean highlighted)
-{
-	GConfClient *gconf_client = note->stickynotes->gconf_client;
-
-	gboolean locked = gconf_client_get_bool(gconf_client, GCONF_PATH "/settings/locked", NULL);
-
-	GtkWidget *title_box = glade_xml_get_widget(note->glade, "title_box");
-	GtkWidget *resize_box = glade_xml_get_widget(note->glade, "resize_box");
-	GtkWidget *close_box = glade_xml_get_widget(note->glade, "close_box");
-
-	GdkColor color;
-	gchar *color_str;
-
-	/* Do not highlight if notes are locked */
-	if (highlighted && !locked) 
-		color_str = gconf_client_get_string(gconf_client, GCONF_PATH "/settings/title_color_prelight", NULL);
-	else
-		color_str = gconf_client_get_string(gconf_client, GCONF_PATH "/settings/title_color", NULL);
-	gdk_color_parse(color_str, &color);
-	g_free(color_str);
-
-	gtk_widget_modify_bg(GTK_WIDGET(title_box), GTK_STATE_NORMAL, &color);
-	gtk_widget_modify_bg(GTK_WIDGET(resize_box), GTK_STATE_NORMAL, &color);
-	gtk_widget_modify_bg(GTK_WIDGET(close_box), GTK_STATE_NORMAL, &color);
-		
-	/* Do not highlight if notes are locked */
-	if (highlighted && !locked)
-		color_str = gconf_client_get_string(gconf_client, GCONF_PATH "/settings/body_color_prelight", NULL);
-	else
-		color_str = gconf_client_get_string(gconf_client, GCONF_PATH "/settings/body_color", NULL);
-	gdk_color_parse(color_str, &color);
-	g_free(color_str);
-		
-	gtk_widget_modify_base(GTK_WIDGET(note->body), GTK_STATE_NORMAL, &color);
-}
-
 /* Edit the sticky note title */
-void stickynote_set_title(StickyNote *note)
+void stickynote_edit_title(StickyNote *note)
 {
 	GladeXML *glade = glade_xml_new(GLADE_PATH, "edit_title_dialog", NULL);
 	GtkWidget *dialog = glade_xml_get_widget(glade, "edit_title_dialog");
@@ -166,15 +114,63 @@ void stickynote_set_title(StickyNote *note)
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(note->window));
 
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
-		gchar *title = g_strdup_printf("<b>%s</b>", gtk_entry_get_text(GTK_ENTRY(entry)));
-		gtk_label_set_markup(GTK_LABEL(note->title), title);
-		g_free(title);
-	
+		stickynote_set_title(note, gtk_entry_get_text(GTK_ENTRY(entry)));
 		stickynotes_save(note->stickynotes);
 	}
 
 	gtk_widget_destroy(dialog);
 	g_object_unref(glade);
+}
+
+/* Check if a sticky note is empty */
+gboolean stickynote_get_empty(const StickyNote *note)
+{
+	return gtk_text_buffer_get_char_count(gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body))) == 0;
+}
+
+/* (Un)highlight a sticky note */
+void stickynote_set_highlighted(StickyNote *note, gboolean highlighted)
+{
+	GdkColor color;
+	gchar *color_str;
+
+	if (highlighted) 
+		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/title_color_prelight", NULL);
+	else
+		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/title_color", NULL);
+	gdk_color_parse(color_str, &color);
+	g_free(color_str);
+
+	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "title_box"), GTK_STATE_NORMAL, &color);
+	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "resize_box"), GTK_STATE_NORMAL, &color);
+	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "close_box"), GTK_STATE_NORMAL, &color);
+		
+	if (highlighted)
+		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/body_color_prelight", NULL);
+	else
+		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/body_color", NULL);
+	gdk_color_parse(color_str, &color);
+	g_free(color_str);
+		
+	gtk_widget_modify_base(note->body, GTK_STATE_NORMAL, &color);
+}
+
+/* Set the sticky note title */
+void stickynote_set_title(StickyNote *note, const gchar *title)
+{
+	if (!title) {
+		gchar *date_format = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/date_format", NULL);
+		title = get_current_date(date_format);
+		g_free(date_format);
+	}
+		
+	gtk_window_set_title(GTK_WINDOW(note->window), title);
+
+	{
+		gchar *bold_title = g_strdup_printf("<b>%s</b>", title);
+		gtk_label_set_markup(GTK_LABEL(note->title), bold_title);
+		g_free(bold_title);
+	}
 }
 
 /* Add a sticky notes */
@@ -236,7 +232,6 @@ void stickynotes_set_visible(StickyNotesApplet *stickynotes, gboolean visible)
 	else
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
 			gtk_widget_hide(note->window);
 		}
 }
@@ -246,19 +241,11 @@ void stickynotes_set_locked(StickyNotesApplet *stickynotes, gboolean locked)
 {
 	gint i;
 	
-	if (locked)
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			gtk_text_view_set_editable(GTK_TEXT_VIEW(note->body), FALSE);
-			gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(note->body), FALSE);
-		}
-
-	else
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			gtk_text_view_set_editable(GTK_TEXT_VIEW(note->body), TRUE);
-			gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(note->body), TRUE);
-		}
+	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+		gtk_text_view_set_editable(GTK_TEXT_VIEW(note->body), !locked);
+		gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(note->body), !locked);
+	}
 }
 
 /* Save all sticky notes in an XML configuration file */
@@ -278,39 +265,30 @@ void stickynotes_save(StickyNotesApplet *stickynotes)
 		/* Access the current note in the list */
 		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 
-		gchar *body;
-		gchar *x_str, *y_str, *w_str, *h_str;
-
-		/* Retrieve body contents of the note */
-		{
-			GtkTextBuffer *buffer;
-			GtkTextIter start, end;
-			
-			buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
-			gtk_text_buffer_get_bounds(buffer, &start, &end);
-			body = gtk_text_iter_get_text(&start, &end);
-		}
-
 		/* Retrieve the window size of the note */
-		{
-			gint w, h;
-			gtk_window_get_size(GTK_WINDOW(note->window), &w, &h);
-			w_str = g_strdup_printf("%d", w);
-			h_str = g_strdup_printf("%d", h);
-		}
+		gchar *w_str = g_strdup_printf("%d", note->w);
+		gchar *h_str = g_strdup_printf("%d", note->h);
 		
 		/* Retrieve the window position of the note */
-		{
-			if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/visible", NULL))
-				gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
-			x_str = g_strdup_printf("%d", note->x);
-			y_str = g_strdup_printf("%d", note->y);
-		}
+		gchar *x_str = g_strdup_printf("%d", note->x);
+		gchar *y_str = g_strdup_printf("%d", note->y);
 		
+		/* Retreive the title of the note */
+		const gchar *title = gtk_label_get_text(GTK_LABEL(note->title));
+
+		/* Retrieve body contents of the note */
+		GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
+		
+		GtkTextIter start, end;
+		gchar *body;
+		
+		gtk_text_buffer_get_bounds(buffer, &start, &end);
+		body = gtk_text_iter_get_text(&start, &end);
+
 		/* Save the note as a node in the XML document */
 		{
 			xmlNodePtr node = xmlNewTextChild(root, NULL, "note", body);		
-			xmlNewProp(node, "title", gtk_label_get_text(GTK_LABEL(note->title)));
+			xmlNewProp(node, "title", title);
 			xmlNewProp(node, "x", x_str);
 			xmlNewProp(node, "y", y_str);
 			xmlNewProp(node, "w", w_str);
@@ -318,16 +296,13 @@ void stickynotes_save(StickyNotesApplet *stickynotes)
 		}
 	
 		/* Now that it has been saved, reset the modified flag */
-		{
-			GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
-			gtk_text_buffer_set_modified(buffer, FALSE);
-		}
+		gtk_text_buffer_set_modified(buffer, FALSE);
 
-		g_free(body);
 		g_free(x_str);
 		g_free(y_str);
 		g_free(w_str);
 		g_free(h_str);
+		g_free(body);
 	}
 	
 	/* The XML file is $HOME/.gnome2/stickystickynotes_applet, most probably */
@@ -377,24 +352,13 @@ void stickynotes_load(StickyNotesApplet *stickynotes)
 			StickyNote *note = stickynote_new(stickynotes);
 			stickynotes->notes = g_list_append(stickynotes->notes, note);
 
-			/* Retrieve and set title of the note */
-			{
-				gchar *title0 = xmlGetProp(node, "title");
-				gchar *title1 = NULL;
-				if (title0) {
-					title1 = g_strdup_printf("<b>%s</b>", title1);
-					gtk_label_set_markup(GTK_LABEL(note->title), title1);
-				}
-				g_free(title0);
-				g_free(title1);
-			}
-
 			/* Retrieve and set the window size of the note */
 			{
 				gchar *w_str = xmlGetProp(node, "w");
 				gchar *h_str = xmlGetProp(node, "h");
 				if (w_str && h_str)
 					gtk_window_resize(GTK_WINDOW(note->window), atoi(w_str), atoi(h_str));
+				gtk_window_get_size(GTK_WINDOW(note->window), &note->w, &note->h);
 				g_free(w_str);
 				g_free(h_str);
 			}
@@ -405,8 +369,16 @@ void stickynotes_load(StickyNotesApplet *stickynotes)
 				gchar *y_str = xmlGetProp(node, "y");
 				if (x_str && y_str)
 					gtk_window_move(GTK_WINDOW(note->window), atoi(x_str), atoi(y_str));
+				gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
 				g_free(x_str);
 				g_free(y_str);
+			}
+
+			/* Retrieve and set title of the note */
+			{
+				gchar *title = xmlGetProp(node, "title");
+				stickynote_set_title(note, title);
+				g_free(title);
 			}
 
 			/* Retrieve and set (if any) the body contents of the note */
@@ -422,9 +394,6 @@ void stickynotes_load(StickyNotesApplet *stickynotes)
 				}
 				g_free(body);
 			}
-
-			/* Store location the note ends up in */
-			gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
 		}
 		
 		node = node->next;

@@ -32,6 +32,8 @@ typedef struct
 
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
+	gint w;				/* Note width */
+	gint h;				/* Note height */
 
 	StickyNotesApplet *stickynotes;	/* The sticky notes applet */
 
@@ -40,10 +42,12 @@ typedef struct
 StickyNote * stickynote_new(StickyNotesApplet *stickynotes);
 void stickynote_free(StickyNote *note);
 
+void stickynote_edit_title(StickyNote *note);
+
 gboolean stickynote_get_empty(const StickyNote *note);
 
 void stickynote_set_highlighted(StickyNote *note, gboolean highlighted);
-void stickynote_set_title(StickyNote *note);
+void stickynote_set_title(StickyNote *note, const gchar* title);
 
 void stickynotes_add(StickyNotesApplet *stickynotes);
 void stickynotes_remove(StickyNotesApplet *stickynotes, StickyNote *note);

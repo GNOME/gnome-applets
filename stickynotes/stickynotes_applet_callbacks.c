@@ -107,7 +107,7 @@ gboolean applet_change_bg_cb(PanelApplet *applet, PanelAppletBackgroundType type
 	}
 
 	else /* if (type == PANEL_PIXMAP_BACKGROUND) */ {
-		gdk_window_set_back_pixmap(GTK_WIDGET(applet)->window, pixmap, FALSE);
+		gdk_window_set_back_pixmap(GTK_WIDGET(applet)->window, pixmap, FALSE); /* FIXME : Does not work */
 	}
 	
 	/* Let other handlers receive this event. */
