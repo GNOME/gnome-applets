@@ -47,6 +47,8 @@ struct _DriveButton
     int icon_size;
     GtkTooltips *tooltips;
     guint update_tag;
+
+    GtkWidget *popup_menu;
 };
 
 struct _DriveButtonClass
