@@ -343,6 +343,7 @@ multiload_factory (PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MultiLoadApplet_Factory",
+				   PANEL_TYPE_APPLET,
 				   "MultiLoad Applet factory",
 				   "0",
 				   multiload_factory,

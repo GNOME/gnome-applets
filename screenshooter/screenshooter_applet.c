@@ -1780,6 +1780,7 @@ screenshooter_applet_factory (PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ScreenshooterApplet_Factory",
+			     PANEL_TYPE_APPLET,
 			     "Screenshooter applet",
 			     "0",
 			     screenshooter_applet_factory,

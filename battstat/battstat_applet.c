@@ -1479,6 +1479,7 @@ battstat_applet_factory (PanelApplet *applet,
 
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_BattstatApplet_Factory",
+			     PANEL_TYPE_APPLET,
                              "Battstat",
                              "0",
                              battstat_applet_factory,

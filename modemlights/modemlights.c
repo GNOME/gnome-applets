@@ -1530,6 +1530,7 @@ modemlights_applet_factory (PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemLightsApplet_Factory",
+			     PANEL_TYPE_APPLET,
 			     "Modemlights applet",
 			     "0",
 			     modemlights_applet_factory,

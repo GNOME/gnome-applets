@@ -19,10 +19,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-/* these defines are needed (but missing in GNOME2) */
-#define PIXEL_SIZE_TINY 24
-#define PIXEL_SIZE_SMALL 32
-
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
@@ -145,13 +141,13 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
 	show_message((gchar *) _("size changed")); 
 
     prop->normal_size_y = size;
-    if(size <= PIXEL_SIZE_TINY)
+    if(size <= GNOME_Vertigo_PANEL_X_SMALL)
 	{
 	  if(counter > 1) /* ignore size-changed-signal at startup */
 	      prop->show_frame = FALSE;
 	    prop->flat_layout = TRUE;
 	} 
-    else if(size <= PIXEL_SIZE_SMALL)
+    else if(size <= GNOME_Vertigo_PANEL_SMALL)
 	{
 	    if(counter > 1) /* ignore size-changed-signal at startup */
 	      prop->show_frame = TRUE;
@@ -437,6 +433,7 @@ mini_commander_applet_factory(PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MiniCommanderApplet_Factory",
+			     PANEL_TYPE_APPLET,
                              "Mini-Commander",
                              "0",
                              mini_commander_applet_factory,

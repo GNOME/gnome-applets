@@ -133,10 +133,12 @@ static const char applet_menu_xml[] =
 
 #if MENU_APPLET_IS_SHLIB
 PANEL_APPLET_BONOBO_SHLIB_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",
+				   PANEL_TYPE_APPLET,
 				   "PanelMenu-Applet-Factory",
 				   applet_factory, NULL);
 #else
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",
+			     PANEL_TYPE_APPLET,
                              "PanelMenu-Applet-Factory",
                              "0",
                              applet_factory,
@@ -164,7 +166,6 @@ panel_menu_construct_applet (PanelApplet *applet)
 	panel_menu = g_new0 (PanelMenu, 1);
 
 	panel_menu->applet = applet;
-	panel_applet_set_expand_flags (panel_menu->applet, FALSE, FALSE);
 	panel_menu->size = panel_applet_get_size (panel_menu->applet);
 
 	key = panel_applet_get_preferences_key (applet);

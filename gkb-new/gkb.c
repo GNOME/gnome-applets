@@ -814,6 +814,7 @@ gkb_factory (PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory",
+			     PANEL_TYPE_APPLET,
                              "GKB_keyboard_layout_switcher",
                              "0",
                              gkb_factory,

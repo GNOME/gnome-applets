@@ -161,7 +161,7 @@ static GtkTargetEntry button_drag_types[] = {
 static gint n_button_drag_types = 2;
 
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_DriveMountApplet_Factory",
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_DriveMountApplet_Factory", PANEL_TYPE_APPLET,
 			     "Drive-Mount-Applet", "0", applet_factory, NULL)
 
 static gboolean

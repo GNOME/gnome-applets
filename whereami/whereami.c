@@ -279,6 +279,7 @@ whereami_applet_factory (PanelApplet  *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_WhereamiApplet_Factory",
+			     PANEL_TYPE_APPLET,
 			     "Whereami Applet",
 			     "0",
 			     whereami_applet_factory,

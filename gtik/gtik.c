@@ -1418,6 +1418,7 @@ g_print ("configured \n");
 	}
 
 	PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GtikApplet_Factory",
+				PANEL_TYPE_APPLET,
 			     	"Gtik applet",
 			     	"0",
 			     	gtik_applet_factory,

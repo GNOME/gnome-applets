@@ -115,6 +115,7 @@ static const char applet_menu_xml [] =
 
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CDPlayerApplet_Factory",
+			     PANEL_TYPE_APPLET,
                              "CD-Player-Applet",
                              "0",
                               applet_factory,

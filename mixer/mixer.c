@@ -922,6 +922,7 @@ mixer_applet_factory (PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",
+			     PANEL_TYPE_APPLET,
 			     "Volume control applet",
 			     "0",
 			     mixer_applet_factory,

@@ -495,6 +495,7 @@ charpicker_applet_factory (PanelApplet *applet,
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CharpickerApplet_Factory",
+			     PANEL_TYPE_APPLET,
 			     "Inserts characters",
 			     "0",
 			     charpicker_applet_factory,
