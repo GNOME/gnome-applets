@@ -1,18 +1,17 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "0.05">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "Character Palette">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "Augusti 2003">
+  <!ENTITY applet "Teckenpalett">
 ]>
 <!-- 
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
-  Template last modified Feb 12, 2002
-  
+  Template last modified Feb 12, 2002 
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="sv">
@@ -21,6 +20,7 @@
   <articleinfo>
 	 <title>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</title>
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>
 		<holder>Sun Microsystems</holder> </copyright>
 	 <copyright> 
@@ -35,18 +35,18 @@
 
    -->
 	 <publisher> 
-		<publishername>Dokumentationsprojekt f&ouml;r GNOME</publishername>
+		<publishername>Dokumentationsprojekt f&ouml;r GNOME </publishername>
 	 </publisher> &legal;
    <!-- This file  contains link to license for the documentation (GNU FDL), and 
         other legal stuff such as "NO WARRANTY" statement. Please do not change 
 	any of this. -->
 	 <authorgroup>
 		<author> 
-		  <firstname>Suns</firstname> 
+		  <firstname>Suns</firstname>
 		  <surname>GNOME-dokumentationsteam</surname> 
 		  <affiliation> 
-			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <orgname>Sun Microsystems</orgname>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -72,29 +72,42 @@
 	 </authorgroup>
 	 <revhistory>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</revnumber>
+		  <revnumber>Manual f&ouml;r panelprogrammet &applet;, V&manrevision;</revnumber>
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
-				</para>
+			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet Teckenpalett, version 2.1</revnumber>
+		  <revnumber>Manual f&ouml;r panelprogrammet Teckenpalett, V2.3</revnumber>
+		  <date>Oktober 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Teckenpalett, V2.2</revnumber>
+		  <date>Augusti 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Teckenpalett, V2.1</revnumber>
 		  <date>Juli 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
-				</para>
+			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet Teckenpalett, version&nbsp;2.0</revnumber>
+		  <revnumber>Manual f&ouml;r panelprogrammet Teckenpalett, V2.0</revnumber>
 		  <date>Mars 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
-				</para>
+			 <para role="author">Sun Microsystems	</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
@@ -112,9 +125,7 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>Feedback</title>
-		<para>Om du vill rapportera ett fel eller ge f&ouml;rslag om panelprogrammet &applet;
-		  eller den h&auml;r manualen f&ouml;ljer du instruktionerna p&aring;
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink>.
+		<para>F&ouml;lj instruktionerna p&aring; <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink> om du vill rapportera ett fel eller ge f&ouml;rslag betr&auml;ffande det h&auml;r programmet eller den h&auml;r manualen.
 		  </para>
 <!-- Translators may also add here feedback address for translations -->
 	 </legalnotice>
@@ -123,9 +134,9 @@
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
-  <sect1 id="charpick-introduction"> 
+  <sect1 id="charpick-introduction">
 
-	 <title>Introduktion</title>
+<title>Introduktion</title>
        <!-- ==== Figure ============================================= -->
 	 <figure id="applet-fig"> 
 		<title>Panelprogrammet &applet;</title>
@@ -137,145 +148,120 @@
 		</screenshot>
 	 </figure>
        <!-- ==== End of Figure ======================================= -->
-	 <para>Med panelprogrammet <application>&applet;</application> kan du 			enkelt komma &aring;t ovanliga tecken, till exempel accenttecken, matematiska symboler,
-		specialsymboler och skiljetecken. Du kan infoga
-		tecken fr&aring;n panelprogrammet i textstr&auml;ngar, till exempel i textdokument eller
-		p&aring; kommandoraden. Du kan anpassa inneh&aring;llet i panelprogrammet s&aring; att det passar
-		dina behov. <application>&applet;</application> st&ouml;der teckenupps&auml;ttningsstandarden
-		ISO-8859-1 (Latin 1), som t&auml;cker de flesta europeiska spr&aring;ken.
+	 <para>Med panelprogrammet <application>&applet;</application> kan du 			enkelt komma &aring;t ovanliga tecken, till exempel accenttecken,
+ matematiska symboler,
+		specialsymboler och skiljetecken. Du kan infoga 
+tecken fr&aring;n panelprogrammet i textstr&auml;ngar, till exempel i textdokument eller 
+p&aring; kommandoraden. Du kan anpassa inneh&aring;llet i panelprogrammet s&aring; att det passar dina behov. 
 		</para>
+	 <para><application>&applet;</application> st&ouml;der UTF-8 kodning s&aring; att du kan anv&auml;nda panelprogrammet  f&ouml;r att visa eller kopiera tecken i UTF-8.</para>
 	 <para>Du l&auml;gger till <application>&applet;</application> p&aring; en panel genom att h&ouml;gerklicka p&aring; panelen och v&auml;lja <menuchoice> 
-		<guimenu>L&auml;gg till p&aring; panelen</guimenu>
+		<guimenu>L&auml;gg till i panelen</guimenu>
 		<guisubmenu>Verktyg</guisubmenu> 
-		<guimenuitem>Teckenpalett</guimenuitem>
-		</menuchoice>.</para>
+		<guimenuitem>Teckenpalett</guimenuitem></menuchoice>.</para>
   </sect1>
 <!-- ================ Usage ================================ -->
   <sect1 id="charpick-usage"> 
-	 <title>Anv&auml;ndning</title>
-	 <para>N&auml;r du l&auml;gger till <application>&applet;</application> p&aring; en panel f&ouml;rsta
-		g&aring;ngen visas en standardlista med tecken. Du kan markera ett
-		tecken i standardlistan eller v&auml;lja tecken fr&aring;n f&ouml;rdefinierade teckengrupper. Varje f&ouml;rdefinierad teckengrupp &auml;r associerad med ett
+<title>Anv&auml;ndning</title>
+	 <para>N&auml;r du l&auml;gger till <application>&applet;</application> p&aring; en panel f&ouml;r f&ouml;rsta
+ g&aring;ngen visas en standardlista med tecken. Du kan markera ett 
+tecken i standardlistan eller v&auml;lja tecken fr&aring;n f&ouml;rdefinierade teckenpaletter. Varje f&ouml;rdefinierad teckenpalett &auml;r associerad med ett
 		standardtecken p&aring; tangentbordet. </para>
 	 <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-charselect"> 
 		<title>S&aring; h&auml;r v&auml;ljer du ett tecken</title>
 		<para>Om du vill v&auml;lja ett tecken fr&aring;n panelprogrammet och infoga tecknet i
-		  en textstr&auml;ng f&ouml;ljer du stegen nedan: </para>
+ en textstr&auml;ng f&ouml;ljer du stegen nedan: </para>
 		  <orderedlist>
 			 <listitem>
-				<para>Klicka p&aring; det tecken som du vill anv&auml;nda i panelprogrammet. Teckenknappen
-				  trycks in f&ouml;r att markera att tecknet har valts.
+				<para>Klicka p&aring; det tecken som du vill anv&auml;nda i panelprogrammet. Teckenknappen trycks in f&ouml;r att markera att tecknet har valts.
 				  </para>
 			 </listitem>
 			 <listitem>
 				<para>Peka p&aring; en plats i ett program d&auml;r du vill anv&auml;nda tecknet och
-				  klicka med mellersta musknappen f&ouml;r att infoga tecknet. Du kan ocks&aring; klistra in
-				  tecknet i programmet om en s&aring;dan funktion finns. Du kan upprepa
-				  infogningen s&aring; m&aring;nga g&aring;nger du vill eftersom tecknet f&ouml;rblir markerat
-				  tills du klickar p&aring; ett annat tecken i panelprogrammet. </para>
+ klicka med mellersta musknappen f&ouml;r att infoga tecknet. Du kan ocks&aring; klistra in 
+tecknet i programmet om en s&aring;dan funktion finns. Du kan upprepa
+ infogningen s&aring; m&aring;nga g&aring;nger du vill eftersom tecknet f&ouml;rblir markerat tills du klickar p&aring; ett annat tecken i panelprogrammet. </para>
 			 </listitem>
 		  </orderedlist>
-		<para>Vissa program st&ouml;der inte hela teckenupps&auml;ttningen ISO-8859-1. Du kan inte infoga tecken som inte st&ouml;ds i ett program.</para>
+		<note><para>Visa program till&aring;ter inte att du klistrar in tecken som inte &auml;r standard.</para></note>
+
 	 </sect2>
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-display-chargroup"> 
-		<title>S&aring; h&auml;r g&ouml;r du om du vill visa en f&ouml;rdefinierad teckengrupp</title>
-		<para>Du kan &auml;ndra vilka tecken som visas i panelprogrammet s&aring; att en 
-		   f&ouml;rdefinierad teckengrupp anv&auml;nds i st&auml;llet f&ouml;r standardlistan.</para>
-		<para>Om du vill visa en grupp f&ouml;rdefinierade tecken utf&ouml;r du f&ouml;ljande
-		  steg: </para>
+		<title>S&aring; h&auml;r g&ouml;r du om du vill visa en f&ouml;rdefinierad teckenpalett</title>
+		<para>Du kan &auml;ndra vilka tecken som visas i panelprogrammet s&aring; att en f&ouml;rdefinierad teckenpalett anv&auml;nds i st&auml;llet f&ouml;r standardlistan.</para>
+		<para>Om du vill visa en palett f&ouml;rdefinierade tecken utf&ouml;r du f&ouml;ljande steg: </para>
 		  <orderedlist>
 			 <listitem>
-				<para>Klicka p&aring; ett tecken i standardlistan f&ouml;r att aktivera panelprogrammet. </para>
+				<para>Klicka p&aring; knappen <guibutton>Tillg&auml;ngliga paletter</guibutton> i panelprogrammet. </para>
 			 </listitem>
 			 <listitem>
-				<para>Tryck p&aring; det tecken p&aring; tangentbordet som &auml;r associerat med
-				  den teckengrupp du vill visa. Tryck till exempel p&aring;
-				  <keycap>A</keycap> om du vill visa teckengruppen som visas i f&ouml;ljande bild. 
-              <!-- ==== Figure ============================================= -->
-				  <figure id="charpick-chargroup"> 
-					 <title>Teckengrupp som &auml;r associerad med tangenten A</title>
-					 <screenshot>
-						<mediaobject>
-						  <imageobject>
-							 <imagedata fileref="figures/charpalette_chargroup.png"  							  format="PNG"/> </imageobject>
-						  <textobject><phrase>Visar den teckengrupp som &auml;r associerad med tangenten "A". </phrase></textobject></mediaobject>
-					 </screenshot>
-				  </figure>
-              <!-- ==== End of Figure ======================================= -->
-				</para>
+				<para>Klicka p&aring; den palett du vill visa. </para>
 			 </listitem>
 		  </orderedlist>
-		<para>Du kan v&auml;lja det tecken som du vill anv&auml;nda fr&aring;n teckengruppen i
-		  panelprogrammet och sedan infoga tecknet i din textstr&auml;ng.
-		  </para>
-		<para>F&ouml;ljande schema visar tangentbordstecken och de teckengrupper som &auml;r
-		  associerade med dessa. Tangentbordstecknen visas i den f&ouml;rsta kolumnen i varje avsnitt
-		  i schemat. De teckengrupper som &auml;r associerade med tangentbordstecknen
-		  visas i de andra kolumnerna. </para>
-      <!-- ==== Figure ============================================= -->
+		<para>Du kan markera det tecken du beh&ouml;ver fr&aring;n teckenpaletten
+		som visas i panelprogrammet, och sedan infoga tecknet 
+		i textstr&auml;ngen.
+		</para>
+<!--
+		<para>The following chart lists keyboard characters and their associated
+		  groups of characters. The keyboard characters are listed in the first column of
+		  each section in the chart. The character groups that are associated with each
+		  keyboard character are shown in the other columns. </para>
 		<figure id="charpick-characters"> 
-		  <title>Teckengrupper som &auml;r associerade med tangenter p&aring; tangentbordet</title>
-		  <screenshot>
-			 <mediaobject>
-				<imageobject>
-				  <imagedata fileref="figures/charpick_characters.png"  					format="PNG"/> </imageobject>
-				<textobject><phrase>Visar de teckengrupper som &auml;r associerade
-				med olika tangenter. </phrase></textobject></mediaobject>
+		  <title>Character Groups Associated With Keyboard Keys</title>
+		  <screenshot> 
+			 <mediaobject> 
+				<imageobject> 
+				  <imagedata fileref="figures/charpick_characters.png" 					format="PNG"/> </imageobject>
+				<textobject> <phrase>Shows character groups associated
+				with various keyboard keys. </phrase> </textobject> </mediaobject>
 		  </screenshot>
-		</figure>
-      <!-- ==== End of Figure ======================================= -->
+		</figure> 
+-->
 	 </sect2>
-    <!-- ================ Usage Subsection ================================ -->
-	 <sect2 id="charpick-default-list"> 
-		<title>S&aring; h&auml;r g&aring;r du tillbaka till standardlistan</title>
-		<para>Om du vill g&aring; tillbaka till aktuell standardlista klickar du p&aring; ett tecken i
-		  panelprogrammet och trycker sedan p&aring; <keycap>blanksteg</keycap> p&aring; tangentbordet. </para>
-	 </sect2>
+    
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-default-new"> 
-		<title>S&aring; h&auml;r anger du en ny standardlista</title>
-		<para>Om du vill ange en ny standardlista kan du anv&auml;nda ett 
-		  program f&ouml;r att v&auml;lja tecken, till exempel <application>Teckenkarta f&ouml;r GNOME</application>.
-		  Om du till exempel vill skapa en ny standardlista med hj&auml;lp av <application>Teckenkarta f&ouml;r
-		  GNOME</application> f&ouml;ljer du stegen nedan: </para>
+		<title>S&aring; h&auml;r skapar du en ny teckenpalett</title>
+		<para>Om du vill ange en ny standardlista kan du anv&auml;nda ett program f&ouml;r att v&auml;lja tecken, till exempel <application>Teckenkarta</application>.
+		  Om du till exempel vill skapa en ny teckenpalett med hj&auml;lp av <application>Teckenkarta</application> utf&ouml;r du f&ouml;ljande steg: </para>
 		<orderedlist>
 		  <listitem>
-			 <para>H&ouml;gerklicka i panelprogrammet och v&auml;lj sedan
-				<guimenuitem>Inst&auml;llningar</guimenuitem>. </para>
+			 <para>Klicka p&aring; knappen <guibutton>Tillg&auml;ngliga paletter</guibutton> i panelprogrammet. </para>
 		  </listitem>
 		  <listitem>
-			 <para>I dialogrutan <guilabel>Egenskaper f&ouml;r teckenpalett</guilabel>
-				markerar du inneh&aring;llet i textrutan <guilabel>Standardteckenlista</guilabel>
-				och trycker sedan p&aring; <keycap>backsteg</keycap> f&ouml;r att ta bort aktuell
-				standardlista. </para>
+			 <para>V&auml;lj alternativet <guimenuitem>L&auml;gg till en palett</guimenuitem> fr&aring;n den nedrullningsbara listan. Dialogf&ouml;nstret <guilabel>L&auml;gg till en palett</guilabel> 
+			 visas.</para>
 		  </listitem>
 		  <listitem>
-			 <para>&Ouml;ppna <application>Teckenkarta f&ouml;r GNOME</application> och v&auml;lj
-				de tecken som du vill ha med i den nya standardteckenlistan. Du kan v&auml;lja upp till
-				25 tecken. </para>
+			 <para>&Ouml;ppna <application>Teckenkarta</application> och
+				markera de tecken som du vill visa i den nya paletten. 
+				Du kan v&auml;lja upp till 25 tecken. </para>
 		  </listitem>
 		  <listitem>
-			 <para>Kopiera inneh&aring;llet i textrutan <guilabel>Text att kopiera</guilabel>
-				fr&aring;n <application>Teckenkarta f&ouml;r GNOME</application> till textrutan
-				<guilabel>Standardteckenlista</guilabel>. </para>
+			 <para>Kopiera inneh&aring;llet i textrutan <guilabel>Text att kopiera</guilabel> fr&aring;n <application>Teckenkarta</application> till textrutan <guilabel>Standardteckenlista</guilabel>. </para>
 		  </listitem>
 		  <listitem>
-			 <para>Klicka p&aring; <guibutton>Verkst&auml;ll</guibutton> om du vill visa den nya
-				standardlistan i panelprogrammet och klicka sedan p&aring; <guibutton>OK</guibutton>. </para>
+			 <para>Klicka p&aring; <guibutton>OK</guibutton>. </para>
 		  </listitem>
 		</orderedlist>
+		<para><application>&applet;</application> l&auml;gger till den nya teckenpaletten i listan med tillg&auml;ngliga paletter.</para>
 	 </sect2>
   </sect1>
 <!-- ============= Preferences ============================= -->
 <!-- Use this section to describe how to customize the applet. -->
-  <sect1 id="charpick-prefs"> 
-	 <title>Inst&auml;llningar</title>
-	 <para>Du konfigurerar <application>&applet;</application> genom att h&ouml;gerklicka p&aring; panelprogrammet och v&auml;lja <guimenuitem>Inst&auml;llningar</guimenuitem>.
-		Dialogrutan <guilabel>Egenskaper f&ouml;r teckenpalett</guilabel> inneh&aring;ller
-		textrutan <guilabel>Standardteckenlista</guilabel>. Anv&auml;nd den h&auml;r textrutan f&ouml;r att
-		ange din egen teckenlista. <xref linkend="charpick-default-new"/> inneh&aring;ller
-		mer information. </para>
+  <sect1 id="charpick-prefs"> <title>Inst&auml;llningar</title>
+	 <para>H&ouml;gerklicka p&aring; panelprogrammet <application>&applet;</application> och v&auml;lj sedan  <guimenuitem>Inst&auml;llningar</guimenuitem> om du vill &auml;ndra inst&auml;llningarna.
+		Dialogf&ouml;nstret <guilabel>Egenskaper f&ouml;r teckenpalett</guilabel> inneh&aring;ller listrutan <guilabel>Paletter</guilabel>, som visar de paletter som &auml;r tillg&auml;ngliga fr&aring;n panelprogrammet. </para>
+	<para>Klicka p&aring; <guibutton>L&auml;gg till</guibutton> om du vill l&auml;gga till en ny palett i 
+	panelprogrammet. Mer information finns i <xref linkend="charpick-default-new"/>. </para>
+	<para>Om du vill ta bort en palett fr&aring;n panelprogrammet markerar du paletten och klickar p&aring;
+	knappen <guibutton>Ta bort</guibutton>.</para>
+	<para>Om du vill &auml;ndra en palett markerar du den och klickar p&aring;
+	knappen <guibutton>Egenskaper</guibutton>. </para>
+	<para>Du st&auml;nger dialogf&ouml;nstret <guilabel>Egenskaper f&ouml;r teckenpalett</guilabel> genom 
+	att klicka p&aring; <guibutton>St&auml;ng</guibutton>.</para>
   </sect1>
 </article>

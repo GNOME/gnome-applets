@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "0.05">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "Agosto 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "Agosto 2003">
   <!ENTITY applet "Insieme caratteri">
 ]>
 <!-- 
@@ -11,8 +11,7 @@
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
-  Template last modified Feb 12, 2002
-  
+  Template last modified Feb 12, 2002 
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="it">
@@ -21,6 +20,7 @@
   <articleinfo>
 	 <title>Manuale dell'applet &applet; V&manrevision;</title>
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>
 		<holder>Sun Microsystems</holder> </copyright>
 	 <copyright> 
@@ -46,7 +46,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname>
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -72,34 +72,47 @@
 	 </authorgroup>
 	 <revhistory>
 		<revision> 
-		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
+		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber>
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
-				</para>
+			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Character Palette V2.1</revnumber>
+		  <revnumber>Manuale dell'applet Insieme caratteri V2.3</revnumber>
+		  <date>Ottobre 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Insieme caratteri V2.2</revnumber>
+		  <date>Agosto 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Insieme caratteri V2.1</revnumber>
 		  <date>Luglio 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
-				</para>
+			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Character Palette V2.0</revnumber>
+		  <revnumber>Manuale dell'applet Insieme caratteri V2.0</revnumber>
 		  <date>Marzo 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
-				</para>
+			 <para role="author">Sun Microsystems	</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Applet Character Picker </revnumber>
+		  <revnumber>Applet Insieme caratteri</revnumber>
 		  <date>2000</date> 
 		  <revdescription> 
 			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email>
@@ -117,11 +130,11 @@
 <!-- Translators may also add here feedback address for translations -->
 	 </legalnotice>
   </articleinfo>
-  <indexterm> <primary>Character Palette</primary> </indexterm> 
+  <indexterm> <primary>Insieme caratteri</primary> </indexterm> 
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
-  <sect1 id="charpick-introduction">  
+  <sect1 id="charpick-introduction"> 
 	 <title>Introduzione</title>
        <!-- ==== Figure ============================================= -->
 	 <figure id="applet-fig"> 
@@ -129,13 +142,14 @@
 		<screenshot>
 		  <mediaobject>
 			 <imageobject><imagedata fileref="figures/charpalette_applet.png"  				format="PNG"/> </imageobject>
-			 <textobject><phrase>Mostra l'applet Character Palette.</phrase></textobject></mediaobject>
+			 <textobject><phrase>Mostra l'applet Insieme caratteri.</phrase></textobject></mediaobject>
 		</screenshot>
 	 </figure>
        <!-- ==== End of Figure ======================================= -->
-	 <para>L'applet <application>&applet;</application> consente un comodo accesso a tutti i caratteri non standard, ad esempio i caratteri accentati, i simboli matematici, i simboli speciali e i segni di punteggiatura. &Egrave; possibile inserire i caratteri presentati dall'applet in stringhe di testo, ad esempio in un documenti o sulla riga di comando. &Egrave; possibile personalizzare il contenuto dell'applet in base alle proprie preferenze. <application>&applet;</application> supporta il set di caratteri ISO-8859-1 (Latin 1) che contiene la maggior parte dei caratteri richiesti dalle lingue europee.
+	 <para>L'applet <application>&applet;</application> consente un comodo accesso a tutti i caratteri non standard, ad esempio i caratteri accentati, i simboli matematici, i simboli speciali e i segni di punteggiatura. &Egrave; possibile inserire i caratteri presentati dall'applet in stringhe di testo, ad esempio in un documento o sulla riga di comando. &Egrave; possibile personalizzare il contenuto dell'applet in base alle proprie preferenze. 
 		</para>
-	 <para>Per aggiungere <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere 
+	 <para><application>&applet;</application> supporta la codifica UTF-8, perci&ograve; pu&ograve; essere utilizzato per visualizzare o per copiare qualunque carattere UTF-8.</para>
+	 <para>Per aggiungere il <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere 
 		<menuchoice> 
 		<guimenu>Aggiungi al pannello</guimenu>
 		<guisubmenu>Utilit&agrave;</guisubmenu> 
@@ -145,7 +159,7 @@
 <!-- ================ Usage ================================ -->
   <sect1 id="charpick-usage"> 
 	 <title>Utilizzo</title>
-	 <para>Quando si aggiunge <application>&applet;</application> a un pannello per la prima volta, l'applet visualizza l'elenco predefinito di caratteri. &Egrave; possibile selezionare un carattere dall'elenco predefinito o scegliere un carattere da vari gruppi gi&agrave; predisposti di caratteri. Ognuno di questi gruppi &egrave; associato a un carattere standard presente sulla tastiera. </para>
+	 <para>Quando si aggiunge <application>&applet;</application> a un pannello per la prima volta, l'applet visualizza l'insieme predefinito di caratteri. &Egrave; possibile selezionare un carattere dall'insieme predefinito o scegliere un carattere da vari gruppi di caratteri gi&agrave; predisposti. Ognuno di questi gruppi &egrave; associato a un carattere standard presente sulla tastiera. </para>
 	 <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-charselect"> 
 		<title>Selezionare un carattere</title>
@@ -159,83 +173,77 @@
 				<para>Spostare il puntatore nel punto in cui inserire il carattere e fare clic con il pulsante centrale del mouse per inserirlo. &Egrave; anche possibile incollare il carattere nell'applicazione se &egrave; disponibile una funzione Incolla. L'inserimento pu&ograve; essere ripetuto per il numero di volte desiderato, in quanto il carattere rimane selezionato finch&eacute; non si preme un diverso carattere nell'applet. </para>
 			 </listitem>
 		  </orderedlist>
-		<para>Alcune applicazioni non supportano il set di caratteri ISO-8859-1 in modo completo. Eventuali caratteri non supportati non possono essere inseriti in un'applicazione.</para>
+		<note><para>Alcune applicazioni non consentono di incollare i caratteri non standard.</para></note>
+
 	 </sect2>
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-display-chargroup"> 
-		<title>Visualizzare un particolare gruppo di caratteri</title>
-		<para>&Egrave; possibile modificare il gruppo di caratteri predefinito che viene visualizzato all'avvio dell'applet.</para>
-		<para>Per visualizzare un diverso gruppo di caratteri, procedere come segue: </para>
+		<title>Visualizzare un insieme predefinito di caratteri</title>
+		<para>&Egrave; possibile modificare l'insieme di caratteri predefinito che viene visualizzato all'avvio dell'applet.</para>
+		<para>Per visualizzare un insieme di caratteri predefiniti, procedere come segue: </para>
 		  <orderedlist>
 			 <listitem>
-				<para>Fare clic su un carattere nell'elenco predefinito per attivare l'applet. </para>
+				<para>Fare clic sul pulsante <guibutton>Insiemi disponibili</guibutton> nell'applet. </para>
 			 </listitem>
 			 <listitem>
-				<para>Fare clic sul tasto a cui &egrave; associato il particolare gruppo di caratteri che si intende visualizzare. Ad esempio, premere il tasto <keycap>A</keycap> per visualizzare il gruppo di caratteri che appare nella figura seguente. 
-              <!-- ==== Figure ============================================= -->
-				  <figure id="charpick-chargroup"> 
-					 <title>Gruppo di caratteri associato al tasto A</title>
-					 <screenshot>
-						<mediaobject>
-						  <imageobject>
-							 <imagedata fileref="figures/charpalette_chargroup.png"  							  format="PNG"/> </imageobject>
-						  <textobject><phrase>Mostra il gruppo di caratteri associato al tasto "A". </phrase></textobject></mediaobject>
-					 </screenshot>
-				  </figure>
-              <!-- ==== End of Figure ======================================= -->
-				</para>
+				<para>Fare clic sull'insieme che si desidera visualizzare. </para>
 			 </listitem>
 		  </orderedlist>
-		<para>&Egrave; possibile selezionare il carattere richiesto dal gruppo di caratteri visualizzato e quindi inserirlo in una stringa di testo.
-		  </para>
-		<para>Il grafico seguente illustra i caratteri della tastiera e i gruppi di caratteri ad essi associati. I caratteri della tastiera sono elencati nella prima colonna di ciascuna sezione del grafico. I gruppi di caratteri associati a ciascun carattere della tastiera sono visualizzati nelle altre colonne. </para>
-      <!-- ==== Figure ============================================= -->
+		<para>&Egrave; possibile scegliere il carattere richiesto dall'insieme di caratteri visualizzato nell'applet e quindi inserirlo nella stringa di testo.
+		</para>
+<!--
+		<para>The following chart lists keyboard characters and their associated
+		  groups of characters. The keyboard characters are listed in the first column of
+		  each section in the chart. The character groups that are associated with each
+		  keyboard character are shown in the other columns. </para>
 		<figure id="charpick-characters"> 
-		  <title>Gruppi di caratteri associati ai tasti</title>
-		  <screenshot>
-			 <mediaobject>
-				<imageobject>
-				  <imagedata fileref="figures/charpick_characters.png"  					format="PNG"/> </imageobject>
-				<textobject><phrase>Mostra i gruppi di caratteri associati ai vari tasti. </phrase></textobject></mediaobject>
+		  <title>Character Groups Associated With Keyboard Keys</title>
+		  <screenshot> 
+			 <mediaobject> 
+				<imageobject> 
+				  <imagedata fileref="figures/charpick_characters.png" 					format="PNG"/> </imageobject>
+				<textobject> <phrase>Shows character groups associated
+				with various keyboard keys. </phrase> </textobject> </mediaobject>
 		  </screenshot>
-		</figure>
-      <!-- ==== End of Figure ======================================= -->
+		</figure> 
+-->
 	 </sect2>
-    <!-- ================ Usage Subsection ================================ -->
-	 <sect2 id="charpick-default-list"> 
-		<title>Tornare all'elenco predefinito</title>
-		<para>Per tornare all'elenco predefinito corrente, fare clic su un carattere dell'applet e quindi premere la <keycap>barra spaziatrice</keycap> sulla tastiera. </para>
-	 </sect2>
+    
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-default-new"> 
-		<title>Impostare un nuovo elenco predefinito</title>
-		<para>&Egrave; possibile usare un'applicazione per la selezione dei caratteri, come la <application>Mappa caratteri di GNOME</application> per impostare un nuovo elenco predefinito.
-		 Ad esempio, per creare un nuovo elenco predefinito con <application>&applet;</application>, procedere come segue: </para>
+		<title>Configurare un nuovo insieme di caratteri</title>
+		<para>Per configurare un nuovo insieme di caratteri &egrave; possibile usare un'applicazione di selezione dei caratteri, come la <application>Mappa caratteri</application>.
+		 Ad esempio, per creare un nuovo insieme con la <application>Mappa caratteri</application>, procedere come segue: </para>
 		<orderedlist>
 		  <listitem>
-			 <para>Fare clic con il pulsante destro in un  punto qualsiasi dell'applet, quindi selezionare <guimenuitem>Preferenze</guimenuitem>. </para>
+			 <para>Fare clic sul pulsante <guibutton>Insiemi disponibili</guibutton> nell'applet. </para>
 		  </listitem>
 		  <listitem>
-			 <para>Nella finestra di dialogo <guilabel>Preferenze Insieme caratteri</guilabel> selezionare il contenuto della casella di testo <guilabel>Lista predefinita di caratteri</guilabel>, quindi premere <keycap>BackSpace</keycap> per eliminare l'elenco predefinito corrente. </para>
+			 <para>Selezionare l'opzione <guimenuitem>Aggiungi un insieme</guimenuitem> nella casella di riepilogo. Viene aperta la finestra di dialogo <guilabel>Aggiungi insieme</guilabel>.</para>
 		  </listitem>
 		  <listitem>
-			 <para>Aprire la <application>Mappa caratteri di GNOME</application>, quindi selezionare i caratteri desiderati per il nuovo elenco predefinito. &Egrave; possibile selezionare fino a 25 caratteri. </para>
+			 <para>Aprire la <application>Mappa caratteri</application> e selezionare i caratteri da visualizzare nel nuovo insieme. 
+				&Egrave; possibile selezionare fino a 25 caratteri. </para>
 		  </listitem>
 		  <listitem>
-			 <para>Copiare il contenuto della casella di testo <guilabel>Testo da copiare</guilabel> da <application>Insieme caratteri</application> alla casella di testo <guilabel>Lista predefinita di caratteri</guilabel>. </para>
+			 <para>Copiare il contenuto della casella di testo <guilabel>Testo da copiare</guilabel> dalla <application>Mappa caratteri</application> alla casella di testo <guilabel>Insieme</guilabel>. </para>
 		  </listitem>
 		  <listitem>
-			 <para>Fare clic sul pulsante <guibutton>Applica</guibutton> per visualizzare il nuovo elenco predefinito nell'applet, quindi fare clic su <guibutton>OK</guibutton>. </para>
+			 <para>Fare clic su <guibutton>OK</guibutton>. </para>
 		  </listitem>
 		</orderedlist>
+		<para>Il <application>&applet;</application> aggiunge il nuovo insieme di caratteri all'elenco degli insiemi disponibili.</para>
 	 </sect2>
   </sect1>
 <!-- ============= Preferences ============================= -->
 <!-- Use this section to describe how to customize the applet. -->
   <sect1 id="charpick-prefs"> 
 	 <title>Preferenze</title>
-	 <para>Per configurare <application>&applet;</application>, fare clic con il pulsante destro sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>.
-		La finestra di dialogo <guilabel>Preferenze Insieme caratteri</guilabel> contiene la casella di testo <guilabel>Lista predefinita di caratteri</guilabel>. Usare questa casella di testo per specificare la lista di caratteri personalizzata. Vedere
-		<xref linkend="charpick-default-new"/> per altre informazioni. </para>
+	 <para>Per configurare il <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. 
+		La finestra di dialogo <guilabel>Impostazioni insieme caratteri</guilabel> contiene l'elenco <guilabel>Insiemi</guilabel>, in cui compaiono gli insiemi di caratteri disponibili nell'applet. </para>
+	<para>Per aggiungere all'applet un nuovo insieme, fare clic sul pulsante <guibutton>Aggiungi</guibutton>. Per maggiori informazioni, vedere <xref linkend="charpick-default-new"/>. </para>
+	<para>Per eliminare un insieme dall'applet, selezionarlo e fare clic sul pulsante <guibutton>Elimina</guibutton>.</para>
+	<para>Per modificare un insieme, selezionarlo e fare clic sul pulsante <guibutton>Propriet&agrave;</guibutton>. </para>
+	<para>Per chiudere la finestra di dialogo <guilabel>Impostazioni insieme caratteri</guilabel>, fare clic su <guibutton>Chiudi</guibutton>.</para>
   </sect1>
 </article>
