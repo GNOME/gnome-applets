@@ -114,6 +114,8 @@ static gint property_destroy_cb( GtkWidget *widget, void *data )
 
 void property_show(AppletWidget *applet, gpointer data)
 {
+        static GnomeHelpMenuEntry help_entry = { "modemlights_applet",
+						 "properties" };
 	GtkWidget *frame;
 	GtkWidget *hbox;
 	GtkWidget *label;
@@ -254,8 +256,13 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_widget_show(frame);
         gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow),frame ,label);
 
-	gtk_signal_connect( GTK_OBJECT(propwindow),"apply", GTK_SIGNAL_FUNC(property_apply_cb), NULL );
-	gtk_signal_connect( GTK_OBJECT(propwindow),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), NULL );
+	gtk_signal_connect( GTK_OBJECT(propwindow), "apply",
+			    GTK_SIGNAL_FUNC(property_apply_cb), NULL );
+	gtk_signal_connect( GTK_OBJECT(propwindow), "destroy",
+			    GTK_SIGNAL_FUNC(property_destroy_cb), NULL );
+	gtk_signal_connect( GTK_OBJECT(propwindow), "help",
+			    GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+			    &help_entry );
 
         gtk_widget_show_all(propwindow);
 } 
