@@ -19,12 +19,11 @@
 
 #include <config.h>
 #include <stickynotes_callbacks.h>
-#include <stickynotes_applet.h>
 
 /* Sticky Window Callback : Prevent deleting the window. */
 gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note)
 {
-	stickynote_remove(note);
+	stickynotes_remove(note->stickynotes, note);
 
 	return TRUE;
 }
@@ -40,7 +39,7 @@ gboolean window_move_edit_cb(GtkWidget *widget, GdkEventButton *event, StickyNot
 		gtk_window_begin_move_drag(GTK_WINDOW(note->window), event->button, event->x_root, event->y_root, event->time);
 	}
 	else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
-		stickynote_edit_title(note);
+		stickynote_set_title(note);
 
 	return TRUE;
 }
@@ -54,7 +53,7 @@ gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *
 		gtk_text_buffer_set_modified(buffer, TRUE);
 
 		gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST,
-			event->button, event->x_root, event->y_root, event->time);
+					     event->button, event->x_root, event->y_root, event->time);
 	}
 	
 	return TRUE;
@@ -64,7 +63,7 @@ gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *
 gboolean window_close_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
 {
 	if (event->type == GDK_BUTTON_RELEASE && event->button == 1)
-		stickynote_remove(note);
+		stickynotes_remove(note->stickynotes, note);
 	
 	return TRUE;
 }
@@ -76,7 +75,7 @@ gboolean window_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNote 
 		/* If the note was edited, save it. */
 		GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
 		if (gtk_text_buffer_get_modified(buffer))
-			stickynotes_save_all();
+			stickynotes_save(note->stickynotes);
 	}
 	
 	/* Let other handlers receive this event. */
@@ -93,7 +92,7 @@ gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *no
 		/* If the note was edited, save it. */
 		GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->body));
 		if (gtk_text_buffer_get_modified(buffer))
-			stickynotes_save_all();
+			stickynotes_save(note->stickynotes);
 
 		stickynote_set_highlighted(note, FALSE);
 	}
@@ -105,22 +104,19 @@ gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *no
 /* Popup Menu Callback : Create a new sticky note */
 void popup_create_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynote_new();
-	
-	/* Unlock all sticky notes */
-	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
+	stickynotes_add(note->stickynotes);
 }
 
 /* Popup Menu Callback : Destroy selected sticky note */
 void popup_destroy_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynote_remove(note);
+	stickynotes_remove(note->stickynotes, note);
 }
 
 /* Popup Menu Callback : Edit the title */
 void popup_edit_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynote_edit_title(note);
+	stickynote_set_title(note);
 }
 
 /* Callback for Dialog to change title */

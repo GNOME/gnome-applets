@@ -17,11 +17,10 @@
  * 02111-1307, USA.
  */
 
-#include <gnome.h>
-#include <stickynotes.h>
-
 #ifndef __STICKYNOTES_CALLBACKS_H__
 #define __STICKYNOTES_CALLBACKS_H__
+
+#include <stickynotes.h>
 
 /* Callbacks for the sticky notes windows */
 gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note);

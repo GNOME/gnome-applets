@@ -17,11 +17,10 @@
  * 02111-1307, USA.
  */
 
-#include <gnome.h>
-#include <glade/glade.h>
-
 #ifndef __STICKYNOTES_H__
 #define __STICKYNOTES_H__
+
+#include <stickynotes_applet.h>
 
 typedef struct
 {
@@ -33,22 +32,25 @@ typedef struct
 
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
+
+	StickyNotesApplet *stickynotes;	/* The sticky notes applet */
+
 } StickyNote;
 
-StickyNote * stickynote_new();
+StickyNote * stickynote_new(StickyNotesApplet *stickynotes);
 void stickynote_free(StickyNote *note);
 
 gboolean stickynote_get_empty(const StickyNote *note);
 
 void stickynote_set_highlighted(StickyNote *note, gboolean highlighted);
-void stickynote_edit_title(StickyNote *note);
-void stickynote_remove(StickyNote *note);
-    
-void stickynotes_hide_all();
-void stickynotes_show_all();
-void stickynotes_lock_all();
-void stickynotes_unlock_all();
-void stickynotes_save_all();
-void stickynotes_load_all();
+void stickynote_set_title(StickyNote *note);
+
+void stickynotes_add(StickyNotesApplet *stickynotes);
+void stickynotes_remove(StickyNotesApplet *stickynotes, StickyNote *note);
+
+void stickynotes_set_visible(StickyNotesApplet *stickynotes, gboolean visible);
+void stickynotes_set_locked(StickyNotesApplet *stickynotes, gboolean locked);
+void stickynotes_save(StickyNotesApplet *stickynotes);
+void stickynotes_load(StickyNotesApplet *stickynotes);
 
 #endif /* __STICKYNOTES_H__ */

@@ -17,12 +17,13 @@
  * 02111-1307, USA.
  */
 
+#ifndef __STICKYNOTES_APPLET_H__
+#define __STICKYNOTES_APPLET_H__
+
 #include <gnome.h>
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
-
-#ifndef __STICKYNOTES_APPLET_H__
-#define __STICKYNOTES_APPLET_H__
+#include <glade/glade.h>
 
 #define GCONF_PATH "/apps/stickynotes_applet"
 #define GLADE_PATH STICKYNOTES_GLADEDIR "/stickynotes.glade"
@@ -31,14 +32,13 @@
 typedef struct
 {
 	GtkWidget *applet;		/* The applet */
-	GtkWidget *about;		/* About dialog */
-	GtkWidget *preferences;		/* Preferences dialog */
+	GladeXML *about;		/* About dialog GladeXML*/
+	GladeXML *prefs;		/* Preferences dialog GladeXML */
 	
-	gint size;			/* Panel size */
+	gint size;			/* Applet (panel) size */
 	gboolean pressed;		/* Whether applet is pressed */
 
 	GList *notes;			/* Linked-List of all the sticky notes */
-	gboolean hidden;		/* Whether sticky notes are hidden */
 	
 	GdkPixbuf *pixbuf_normal;	/* Pixbuf for normal applet */
 	GdkPixbuf *pixbuf_prelight;	/* Pixbuf for prelighted applet */
@@ -50,10 +50,7 @@ typedef struct
 } StickyNotesApplet;
 
 /* Modify the applet */
-void stickynotes_applet_set_highlighted(gboolean highlight);
-void stickynotes_applet_update_tooltips();
-
-/* Sticky Notes Applet settings instance */
-extern StickyNotesApplet *stickynotes;
+void stickynotes_applet_set_highlighted(StickyNotesApplet *stickynotes, gboolean highlighted);
+void stickynotes_applet_update_tooltips(StickyNotesApplet *stickynotes);
 
 #endif /* __STICKYNOTES_APPLET_H__ */
