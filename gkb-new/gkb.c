@@ -33,8 +33,6 @@ static void gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * e,
 				       GKB * gkb);
 static void about_cb (AppletWidget * widget, gpointer gkbx);
 static void help_cb (AppletWidget * widget, gpointer data);
-int applet_save_session (GtkWidget * w, const char *privcfgpath,
-		     const char *globcfgpath, GKB * gkb);
 
 static void
 makepix (Prop * actdata, char *fname, int w, int h)
@@ -148,14 +146,14 @@ loadprop (GKB * gkb, int i)
 
   Prop *actdata = g_new (Prop, 1);
 
-  g_snprintf (buf, 256, "gkb/name%d=Hu", i);
+  g_snprintf (buf, 256, "map_%d/name=Hu", i);
   actdata->name = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "gkb/image%d=%s", i,
+  g_snprintf (buf, 256, "map_%d/image=%s", i,
 	      gnome_unconditional_pixmap_file ("gkb/hu.png"));
   actdata->iconpath = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "gkb/command%d=setxkbmap hu2", i);
+  g_snprintf (buf, 256, "map_%d/command=setxkbmap hu2", i);
   actdata->command = gnome_config_get_string (buf);
 
   actdata->pix = NULL;
@@ -176,7 +174,6 @@ loadprop (GKB * gkb, int i)
 
   makepix (actdata, actdata->iconpath, gkb->w, gkb->h);
 
-  gnome_config_pop_prefix ();
 
   return actdata;
 
@@ -190,6 +187,8 @@ load_properties (GKB * gkb)
 
   Prop *actdata;
 
+  gkb->maps = g_list_alloc();
+
   gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
 
   g_snprintf (buf, 256, "gkb/num=0");
@@ -198,7 +197,7 @@ load_properties (GKB * gkb)
   if (gkb->n == 0)
     {
       actdata = loadprop (gkb, 0);
-      gkb->maps = g_list_append (gkb->maps, actdata);
+      gkb->maps->data = actdata;
       gkb->n++;
 
       /* next one... TODO: remove this... or no? */
@@ -211,8 +210,14 @@ load_properties (GKB * gkb)
     for (i = 0; i < gkb->n; i++)
       {
 	actdata = loadprop (gkb, i);
-	gkb->maps = g_list_append (gkb->maps, actdata);
+        if (i == 0)
+          gkb->maps->data = actdata;
+         else
+	  gkb->maps = g_list_append (gkb->maps, actdata);
       }
+
+  gnome_config_pop_prefix ();
+
   applet_save_session (gkb->propbox,
 		       APPLET_WIDGET (gkb->applet)->privcfgpath,
 		       APPLET_WIDGET (gkb->applet)->globcfgpath, gkb);
@@ -346,7 +351,7 @@ help_cb (AppletWidget * applet, gpointer data)
   gnome_help_display (NULL, &help_entry);
 }
 
-static int
+int
 applet_save_session (GtkWidget * w,
 		     const char *privcfgpath,
 		     const char *globcfgpath, GKB * gkb)
@@ -354,19 +359,23 @@ applet_save_session (GtkWidget * w,
   Prop *actdata;
   int i = 0;
   char str[100];
+  GList * list = gkb->maps;
 
   gnome_config_push_prefix (privcfgpath);
   sprintf (str, "gkb/num");
   gnome_config_set_int (str, gkb->n);
 
-  while ((actdata = g_list_nth_data (gkb->maps, i)) != NULL)
+  while (list)
     {
-      sprintf (str, "gkb/name%d", i);
+      if(list->data) actdata = list->data;
+      sprintf (str, "map_%d/name", i);
       gnome_config_set_string (str, actdata->name);
-      sprintf (str, "gkb/image%d", i);
+      sprintf (str, "map_%d/image", i);
       gnome_config_set_string (str, actdata->iconpath);
-      sprintf (str, "gkb/command%d", i);
+      sprintf (str, "map_%d/command", i);
       gnome_config_set_string (str, actdata->command);
+
+      list=list->next;
 
       i++;
     }

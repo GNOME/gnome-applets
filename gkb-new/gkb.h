@@ -36,7 +36,7 @@
 #include <libart_lgpl/art_pixbuf.h>
 #include <libart_lgpl/art_rgb_pixbuf_affine.h>
 #include <libart_lgpl/art_affine.h>
-
+ 
 #include <sys/types.h>
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
@@ -75,3 +75,5 @@ void properties_dialog (AppletWidget * applet, gpointer gkbx);
 void sized_render (GKB * gkb);
 void gkb_draw (GKB * gkb);
 Prop * loadprop (GKB * gkb, int i);
+int applet_save_session (GtkWidget * w, const char *privcfgpath,
+                     const char *globcfgpath, GKB * gkb);

@@ -185,6 +185,8 @@ delmap_cb (GnomePropertyBox * pb, GKB * gkb)
   gkb->tempmaps = g_list_remove(gkb->tempmaps, 
   			g_list_nth_data(gkb->tempmaps, page));
   gtk_widget_draw(GTK_WIDGET(gkb->notebook), NULL);
+
+  gkb->tn--;
   
   gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
   
@@ -275,9 +277,9 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
   gkb_draw (gkb);
   system (gkb->dact->command);
 
-  /*  
-  gtk_signal_emit ( GTK_OBJECT(gkb->applet), "save_session");  
-  */
+  applet_save_session (gkb->propbox,
+                       APPLET_WIDGET (gkb->applet)->privcfgpath,
+                       APPLET_WIDGET (gkb->applet)->globcfgpath, gkb);
 
   tell_panel ();
 }
