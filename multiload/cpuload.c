@@ -65,11 +65,10 @@ make_cpuload_applet (const gchar *goad_id)
 					   multiload_properties_cb,
 					   g);
 
-    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					   "run_gtop",
-					   NULL,
-					   _("Run gtop..."),
-					   start_gtop_cb, NULL);
+    applet_widget_register_callback (APPLET_WIDGET(applet),
+				     "run_gtop",
+				     _("Run gtop..."),
+				     start_gtop_cb, NULL);
 
     return applet;
 }
