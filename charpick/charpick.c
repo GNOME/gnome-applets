@@ -485,6 +485,8 @@ charpicker_applet_fill (PanelApplet *applet)
   charpick_data *curr_data;
   gchar *default_charlist_utf8;
   
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/charpick.png");
+  
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
    
   curr_data = g_new0 (charpick_data, 1);
