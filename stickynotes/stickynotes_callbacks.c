@@ -217,8 +217,6 @@ void properties_font_cb (GtkWidget *button, StickyNote *note)
         font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
 
 	stickynote_set_font(note, font_str, TRUE);
-
-        g_free (font_str);
 }
 
 /* Properties Dialog Callback : Activate */
