@@ -177,7 +177,9 @@ icontopath_cb (GnomePropertyBox * pb, PropWg * actdata)
  gtk_entry_set_text (GTK_ENTRY(actdata->iconpathinput),
 	 gnome_icon_entry_get_filename (
 	     GNOME_ICON_ENTRY (actdata->iconentry)));
-
+ 
+ gtk_widget_show(actdata->iconpathinput);
+ 
  gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
 
 }
@@ -185,8 +187,16 @@ icontopath_cb (GnomePropertyBox * pb, PropWg * actdata)
 static void
 pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
 {
+ int i;
+ 
  g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconpathinput));
  g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconentry));
+
+ i = strcmp (gtk_entry_get_text(GTK_ENTRY(actdata->iconpathinput)),
+   gnome_icon_entry_get_filename(GNOME_ICON_ENTRY (actdata->iconentry)));
+
+ if (!i) return;
+ 
  gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry),
        gtk_entry_get_text (GTK_ENTRY (actdata->iconpathinput)));
 
@@ -374,8 +384,8 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 			    (GtkDestroyNotify) gtk_widget_unref);
   gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry),
                              actdata->iconpath);
-  gtk_signal_connect (GTK_OBJECT(gnome_icon_entry_gtk_entry(
-                   GNOME_ICON_ENTRY(actdata->iconentry))), "value_changed",
+  gtk_signal_connect (GTK_OBJECT (gnome_icon_entry_gtk_entry(
+                   GNOME_ICON_ENTRY(actdata->iconentry))), "changed",
 		      GTK_SIGNAL_FUNC (icontopath_cb), actdata);
 
   gtk_widget_show (actdata->iconentry);
