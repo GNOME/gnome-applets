@@ -1,3 +1,10 @@
+1999-09-11 Justin Maurer  <justin@slashdot.org>
+	
+	* display.c (draw_display_line): change 
+	ad->draw_area->style->fg_gc[GTK_WIDGET_STATE(ad->draw_area)] to 
+	ad->draw_area->style->black_gc, so that it works with GTK+ 
+	themes that have non-black for default text
+
 1999-09-07 Justin Maurer  <justin@slashdot.org>
 
 	* slashapp.c (show_article_window): connect close with 

@@ -362,7 +362,7 @@ static void draw_display_line(AppData *ad)
 	new_x_pos = ad->x_pos + gdk_char_width (font, c);
 
 	gdk_draw_text(ad->display, font,
-			ad->draw_area->style->fg_gc[GTK_WIDGET_STATE(ad->draw_area)],
+			ad->draw_area->style->black_gc,
 			ad->x_pos, ad->height - ad->text_y_line, id->text + ad->text_pos, 1);
 
 	ad->text_pos ++;
