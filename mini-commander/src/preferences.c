@@ -270,19 +270,19 @@ load_session(void)
 		{
 		case 1:
 		    strcpy(default_macro_pattern, "^(http://.*)$");
-		    strcpy(default_macro_command, "netscape -remote openURL\\(\\1\\) || netscape \\1");
+		    strcpy(default_macro_command, "gnome-moz-remote \\1");
 		    break;
 		case 2:
 		    strcpy(default_macro_pattern, "^(ftp://.*)");
-		    strcpy(default_macro_command, "netscape -remote openURL\\(\\1\\) || netscape \\1");
+		    strcpy(default_macro_command, "gnome-moz-remote \\1");
 		    break;
 		case 3:
 		    strcpy(default_macro_pattern, "^(www\\..*)$");
-		    strcpy(default_macro_command, "netscape -remote openURL\\(http://\\1\\) || netscape http://\\1");
+		    strcpy(default_macro_command, "gnome-moz-remote http://\\1");
 		    break;
 		case 4:
 		    strcpy(default_macro_pattern, "^(ftp\\..*)$");
-		    strcpy(default_macro_command, "netscape -remote openURL\\(ftp://\\1\\) || netscape ftp://\\1");
+		    strcpy(default_macro_command, "gnome-moz-remote ftp://\\1");
 		    break;
 		case 5:
 		    strcpy(default_macro_pattern, "^lynx: *(.*)$");
