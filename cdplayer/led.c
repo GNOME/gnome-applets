@@ -24,13 +24,22 @@ void
 led_create_widget(GtkWidget * window, GtkWidget ** time, GtkWidget ** track)
 {
 	GtkWidget *w;
-	*time = gtk_pixmap_new(gdk_pixmap_new(window->window,
-					      LED_WIDTH, LED_HEIGHT + 2,
-					      -1), NULL);
-	*track = gtk_pixmap_new(gdk_pixmap_new(window->window,
-					       DIGIT_WIDTH * 2 + 2,
-					       LED_HEIGHT + 2,
-					       -1), NULL);
+	GdkPixmap *pix;
+	GdkGC *gc;
+	
+	gc = gdk_gc_new(window->window);
+
+	pix = gdk_pixmap_new(window->window,
+			     LED_WIDTH, LED_HEIGHT + 2, -1);
+	gdk_draw_rectangle(pix,gc,TRUE,0,0,-1,-1);
+	*time = gtk_pixmap_new(pix,NULL);
+
+	pix = gdk_pixmap_new(window->window,
+			     DIGIT_WIDTH * 2 + 2, LED_HEIGHT + 2, -1);
+	gdk_draw_rectangle(pix,gc,TRUE,0,0,-1,-1);
+	*track = gtk_pixmap_new(pix,NULL);
+	
+	gdk_gc_destroy(gc);
 }
 
 void
