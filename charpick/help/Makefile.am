@@ -1,1 +1,1 @@
-SUBDIRS = C ja de es fr it sv ko zh_CN zh_TW
+SUBDIRS = C de es fr it ja ko zh_CN zh_HK zh_TW
