@@ -1,16 +1,8 @@
-/*
- * Includes for jbc.c
+/* $Id$
+ *
+ * Includes for jbc-applet.c
+ *
  */
-
-#include <time.h>
-#include <gtk/gtk.h>
-#include <unistd.h>
-
-#define APPLET_VERSION_MAJ 1
-#define APPLET_VERSION_MIN 3
-#define APPLET_VERSION_REV 0
-
-/* include pixmaps */
 
 #include "pixmaps/t0.xpm"
 #include "pixmaps/t1.xpm"
