@@ -82,7 +82,8 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
   /* misc props from pbi */
   gkb->is_small    = pbi->is_small;
-  gkb->size        = pbi->size;
+  if (pbi->size > 0)
+   gkb->size        = pbi->size;
   gkb->appeareance = pbi->appeareance;
 
   gkb->key = g_strdup (gtk_entry_get_text (GTK_ENTRY(pbi->hotkey_entry)));
@@ -231,13 +232,14 @@ gkb_prop_size_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
  * @row: 
  * @col: 
  * @list_in: 
+ * @initval:
  * 
  * Create an option menu from the items in list and attach it to table
  **/
 static void
 gkb_prop_option_menu_at (GtkWidget *table, gint row, gint col,
 			 GList *list_in, GtkSignalFunc function,
-			 GkbPropertyBoxInfo *pbi)
+			 GkbPropertyBoxInfo *pbi, gint initval)
 {
   GtkWidget *option_menu;
   GtkWidget *menu_item;
@@ -258,7 +260,7 @@ gkb_prop_option_menu_at (GtkWidget *table, gint row, gint col,
   }
   
   gtk_option_menu_set_menu (GTK_OPTION_MENU (option_menu), menu);
-  gtk_option_menu_set_history (GTK_OPTION_MENU (option_menu), 1);
+  gtk_option_menu_set_history (GTK_OPTION_MENU (option_menu), initval);
 
   gtk_table_attach (GTK_TABLE (table), option_menu,
 		    row, row + 1, col, col + 1,
@@ -314,11 +316,11 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo *pbi)
   /* Option menus */
   appeareance = gkb_prop_get_appeareance ();
   gkb_prop_option_menu_at (table, 1, 0, appeareance,
-			   gkb_prop_appeareance_changed, pbi);
+			   gkb_prop_appeareance_changed, pbi, pbi->mode);
   
   sizes = gkb_prop_get_sizes ();
   gkb_prop_option_menu_at (table, 1, 1, sizes,
-			   gkb_prop_size_changed, pbi);
+			   gkb_prop_size_changed, pbi, pbi->is_small);
 
   return frame;
 }
@@ -466,6 +468,9 @@ properties_dialog (AppletWidget * applet)
   
   pbi = g_new0 (GkbPropertyBoxInfo, 1);
   pbi->gkb = gkb;
+  pbi->size = gkb->size;
+  pbi->mode = gkb->mode;
+  pbi->is_small = gkb->is_small;
   pbi->add_button    = NULL;
   pbi->edit_button   = NULL;
   pbi->delete_button = NULL;

@@ -85,6 +85,7 @@ struct _GkbPropertyBoxInfo
   /* Other properties */
   gint is_small;
   gint size;
+  gint mode;
   GkbAppeareance appeareance;
 };
 
