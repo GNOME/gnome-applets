@@ -21,7 +21,14 @@ GdkBitmap *led_mask;
 GdkPixmap *date_pixmap;
 GdkBitmap *date_mask;
 
-int load_pixmaps(GtkWidget *window, GtkStyle *style)
+/* prototypes */
+static gint update_clock(gpointer data);
+static int mytime(void);
+
+
+
+static void
+load_pixmaps(GtkWidget *window, GtkStyle *style)
 {
     char *tmp, *fname;;
 
@@ -63,7 +70,7 @@ int load_pixmaps(GtkWidget *window, GtkStyle *style)
 
 }
 
-gint update_clock(gpointer data)
+static gint update_clock(gpointer data)
 {
   time_t unix_now;
   asclock *my;
@@ -86,9 +93,11 @@ gint update_clock(gpointer data)
   gdk_window_set_back_pixmap(my->display_area->window,my->pixmap,FALSE);
   gdk_window_clear(my->display_area->window);
   gtk_widget_draw(my->display_area, &r);
+
+  return TRUE;
 }
 
-int mytime()
+static int mytime(void)
 {
   struct timeval tv;
   struct timezone tz;
@@ -139,18 +148,19 @@ int main( int argc, char *argv[] )
 
     update_clock(&my);
 
-    applet_widget_register_callback(APPLET_WIDGET(applet),
-                                    "hello",
-                                    _("About"),
-                                    about_dialog,
-                                    NULL);
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "hello",
+					  GNOME_STOCK_MENU_ABOUT,
+					  _("About"),
+					  about_dialog,
+					  NULL);
 
-
-    applet_widget_register_callback(APPLET_WIDGET(applet),
-                                    "properties",
-                                    _("Properties..."),
-                                    properties_dialog,
-                                    NULL);
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "properties",
+					  GNOME_STOCK_MENU_PROP,
+					  _("Properties..."),
+					  properties_dialog,
+					  NULL);
 
 
     applet_widget_gtk_main ();

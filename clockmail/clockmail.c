@@ -26,8 +26,10 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	const gchar *authors[2];
 	gchar version[32];
 
-	sprintf(version,_("%d.%d.%d"),CLOCKMAIL_APPLET_VERSION_MAJ,
-		CLOCKMAIL_APPLET_VERSION_MIN, CLOCKMAIL_APPLET_VERSION_REV);
+	g_snprintf(version, sizeof(version), _("%d.%d.%d"),
+		   CLOCKMAIL_APPLET_VERSION_MAJ,
+		   CLOCKMAIL_APPLET_VERSION_MIN,
+		   CLOCKMAIL_APPLET_VERSION_REV);
 
 	authors[0] = _("John Ellis <johne@bellatlantic.net>");
 	authors[1] = NULL;
@@ -110,7 +112,8 @@ static void set_tooltip(struct tm *time_data, AppData *ad)
 			else
 				{
 				gchar gmt_text[32];
-				sprintf(gmt_text, _(" (GMT %+d)"), ad->gmt_offset);
+				g_snprintf(gmt_text, sizeof(gmt_text), 
+					   _(" (GMT %+d)"), ad->gmt_offset);
 				buf = g_strconcat (date, gmt_text, NULL);
 				}
 			gtk_tooltips_set_tip (ad->tooltips, ad->applet, buf, NULL);
@@ -478,7 +481,8 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id,
 {
 	GtkWidget *applet;
 
-	if(strcmp(goad_id, "clockmail_applet")) return 0;
+	g_return_val_if_fail(!strcmp(goad_id, "clockmail_applet"), NULL);
+
 	applet = applet_widget_new(goad_id);
 
 	if (!applet)
@@ -505,8 +509,12 @@ int main (int argc, char *argv[])
 			   applet_start_new_applet);
 
 	goad_id = goad_server_activation_id();
-	if(goad_id) {
-	  applet_start_new_applet(goad_id, NULL, 0);
+	if(goad_id && !strcmp(goad_id, "clockmail_applet")) {
+		applet = applet_widget_new("clockmail_applet");
+		if (!applet)
+			g_error("Can't create applet!\n");
+
+		create_new_app(applet);
 	}
 
 	applet_widget_gtk_main();

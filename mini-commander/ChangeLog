@@ -36,6 +36,38 @@
 	* message.c (hideMessage): fixed bug that the layout was wrong
  	when no status message was shown layout
  
+1998-12-29  Oliver Maruhn  <om@linuxhq.com>
+
+	* mini-commander_applet.c (main): removed wrong menu stock icon
+
+	* help.c (showHelp): added missing parameters
+
+	* about.c: help text deleted because it is now part of the
+ 	SGML/LinuxDoc documentation
+	(INTERNAL_VERSION): set to 0.0.13
+
+	* mini-commander_applet.c (main): "Help" menu item added
+
+	* docs/mini-commander.sgml: help file created
+
+	* Makefile.am (mini_commander_applet_SOURCES): help.c, help.h entries added
+
+	* help.h (showHelp_action): file created
+
+	* help.c (showHelp_action): file created
+
+	* Makefile.am (SUBDIRS): subdir docs/ added
+
+1998-12-27  Oliver Maruhn  <om@linuxhq.com>
+
+	* mini-commander_applet.c (main): layout fix: show command line at
+ 	the top
+
+1998-12-19  Oliver Maruhn  <om@linuxhq.com>
+
+	* message.c (hideMessage): fixed bug that the layout was wrong
+ 	when no status message was shown layout
+ 
 1998-12-15  Federico Mena Quintero  <federico@nuclecu.unam.mx>
 
 	* Makefile.am (mini_commander_applet_SOURCES): Added a billion

@@ -226,8 +226,10 @@ static void about_cb (AppletWidget *widget, gpointer data)
         GtkWidget *about;
         const gchar *authors[3];
         gchar version[32];
-        sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ, APPLET_VERSION_MIN, 
-			APPLET_VERSION_REV);
+
+        g_snprintf(version, sizeof(version), _("%d.%d.%d"),
+		   APPLET_VERSION_MAJ, APPLET_VERSION_MIN, 
+		   APPLET_VERSION_REV);
         authors[0] = _("Justin Maurer <justin@openprojects.net>");
         authors[1] = _("John Ellis <johne@bellatlantic.net>");
 	authors[2] = NULL;

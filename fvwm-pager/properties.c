@@ -31,7 +31,7 @@ gchar confpath[1024];
 void
 load_fvwmpager_properties(gchar* path, PagerProps* prop)
 {
-  sprintf(confpath, "/%s/gui/", path);
+  g_snprintf(confpath, sizeof(confpath), "/%s/gui/", path);
   gnome_config_push_prefix(confpath);
   prop->active_desk_color   = gnome_config_get_string("active_desk=red");
   prop->active_win_color    = gnome_config_get_string("active_win=MintCream");
@@ -48,7 +48,7 @@ load_fvwmpager_properties(gchar* path, PagerProps* prop)
 void
 save_fvwmpager_properties(gchar* path, PagerProps* props)
 {
-  sprintf(confpath, "/%s/gui/", path);
+  g_snprintf(confpath, sizeof(confpath), "/%s/gui/", path);
   gnome_config_push_prefix(confpath);
   gnome_config_set_string("active_desk", props->active_desk_color);
   gnome_config_set_string("active_win", props->active_win_color);

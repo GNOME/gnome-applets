@@ -14,11 +14,25 @@ void enum_timezones(GtkWidget *clist )
 {
   FILE *tz;
   GSList * my;
-  char line[1024];
+  char line[1024], *pos, *localtime = NULL;
   char *newelem[3] = { line, NULL, NULL };
-  int inspos;
+  gpointer localtime_data = NULL;
+  int inspos, len, row;
+
   tz = fopen("/usr/share/zoneinfo/zone.tab", "r");
 
+  len = readlink ("/etc/localtime", line, sizeof (line)-1);
+  if (len < 0) goto cannot_read_localtime;
+  line [len] = 0;
+
+  pos = strstr (line, "zoneinfo/");
+  if (!pos) goto cannot_read_localtime;
+
+  pos += strlen ("zoneinfo/");
+
+  localtime = g_strdup (pos);
+
+ cannot_read_localtime:
   my = NULL;
 
   while(!feof(tz))
@@ -26,23 +40,25 @@ void enum_timezones(GtkWidget *clist )
     int i=0;
     int cnt=0;
 
+    memset(line, 0, sizeof (line));
     fgets(line, 1024, tz);
-    if(line[0]=='#')
+    if((line[0]=='#') || (line[0]==0))
       continue;
 
     while((i<1024) && (cnt < 3))
       {
-	while((i< 1024) && (line[i]!='\t') && !(cnt==2 && line[i]==' '))
+	while((i< 1024) && (line[i]!=0) && (line[i]!='\t') &&
+	      (line[i]!='\n') && !(cnt==2 && line[i]==' '))
 	  i++;
 	if(i==1024) break;
 	line[i++]=0;
 	newelem[cnt] = &(line[i]);
 	cnt++;
       }
-    
+
     if(i<1024)
       {
-	gint lat, lon;
+	gint lat, lon, len;
 	location *loc = malloc(sizeof(location));
 
 	sscanf(newelem[0], "%d%d", &lat, &lon);
@@ -58,6 +74,10 @@ void enum_timezones(GtkWidget *clist )
 	  }
 	strcpy((loc->name), newelem[1]);
 
+	len = strlen (loc->name);
+	if (len && (loc->name [len-1] == '\n'))
+		loc->name [len-1] = 0;
+
 	my = g_slist_insert_sorted(my, loc, cmp);
       }
   }
@@ -67,12 +87,23 @@ void enum_timezones(GtkWidget *clist )
     {
       char *elems[2] = { ((location *)my->data)->name, NULL };
 
+      if (localtime && !strcmp (elems [0], localtime))
+	      localtime_data = (location *) my->data;
+
       gtk_clist_append(GTK_CLIST(clist), elems );
       gtk_clist_set_row_data( GTK_CLIST(clist), inspos++, ((location *)my->data));
 
       my = g_slist_next(my);
     }
   fclose(tz);
+
+  gtk_clist_sort(GTK_CLIST(clist));
+
+  row = gtk_clist_find_row_from_data(GTK_CLIST(clist), localtime_data);
+  if (row >= 0) {
+	  gtk_clist_select_row(GTK_CLIST(clist), row, 0);
+	  gtk_clist_moveto(GTK_CLIST(clist), row, 0, 0.5, 0.0);
+  }
 }
 
 

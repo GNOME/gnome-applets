@@ -42,8 +42,10 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	const gchar *authors[2];
 	gchar version[32];
 
-	sprintf(version,"%d.%d.%d",DRIVEMOUNT_APPLET_VERSION_MAJ,
-		DRIVEMOUNT_APPLET_VERSION_MIN, DRIVEMOUNT_APPLET_VERSION_REV);
+	g_snprintf(version, sizeof(version), "%d.%d.%d",
+		   DRIVEMOUNT_APPLET_VERSION_MAJ,
+		   DRIVEMOUNT_APPLET_VERSION_MIN,
+		   DRIVEMOUNT_APPLET_VERSION_REV);
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = NULL;
@@ -173,9 +175,11 @@ static int mount_cb(GtkWidget *widget, gpointer data)
 	gint check = device_is_mounted(dd);
 
 	if (!check)
-		sprintf(command_line, "mount %s 2>&1", dd->mount_point);
+		g_snprintf(command_line, sizeof(command_line),
+			   "mount %s 2>&1", dd->mount_point);
 	else
-		sprintf(command_line, "umount %s 2>&1", dd->mount_point);
+		g_snprintf(command_line, sizeof(command_line),
+			   "umount %s 2>&1", dd->mount_point);
 
 	fp = popen(command_line, "r");
 
@@ -253,9 +257,9 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	}
 
 	if (dd->mounted)
-		sprintf (command_line, "eject -u %s", dn);
+		g_snprintf (command_line, sizeof(command_line), "eject -u %s", dn);
 	else	
-		sprintf (command_line, "eject %s", dn);
+		g_snprintf (command_line, sizeof(command_line), "eject %s", dn);
 
 	system (command_line);
 
@@ -495,6 +499,8 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **pa
 int main (int argc, char *argv[])
 {
 	DriveData *dd;
+	GtkWidget *applet;
+	char *goad_id;
 
 	/* Initialize the i18n stuff */
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -504,8 +510,18 @@ int main (int argc, char *argv[])
 			   NULL, 0, NULL);
 	applet_factory_new("drivemount_applet_factory", NULL, applet_start_new_applet);
 
-	if(goad_server_activation_id())
-		applet_start_new_applet(goad_server_activation_id(), NULL, 0);
+	goad_id = goad_server_activation_id();
+
+	if(goad_id && strcmp(goad_id, "drivemount_applet")) {
+		applet = applet_widget_new("drivemount_applet");
+		if (!applet)
+			g_error("Can't create applet!\n");
+
+		dd = create_drive_widget(applet);
+
+		applet_widget_add(APPLET_WIDGET(applet), dd->button);
+		gtk_widget_show(applet);
+	}
 
 	applet_widget_gtk_main();
 	return 0;
