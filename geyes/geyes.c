@@ -211,7 +211,6 @@ about_cb (BonoboUIComponent *uic,
 	  EyesApplet        *eyes_applet,
 	  const gchar       *verbname)
 {
-	static GtkWidget *about = NULL;
 	GdkPixbuf	 *pixbuf;
 	GError		 *error = NULL;
 	gchar		 *file;
@@ -227,11 +226,8 @@ about_cb (BonoboUIComponent *uic,
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about) {
-		gtk_window_set_screen (
-			GTK_WINDOW (about),
-			gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
-		gtk_window_present (GTK_WINDOW (about));
+	if (eyes_applet->about_dialog) {
+		gtk_window_present (GTK_WINDOW (eyes_applet->about_dialog));
 		return;
 	}
         
@@ -244,7 +240,7 @@ about_cb (BonoboUIComponent *uic,
 		g_error_free (error);
 	}
 	
-        about = gnome_about_new (
+        eyes_applet->about_dialog = gnome_about_new (
 		_("Geyes"), VERSION,
 		_("Copyright (C) 1999 Dave Camp"),
 		_("A goofy little xeyes clone for the GNOME panel."),
@@ -256,13 +252,11 @@ about_cb (BonoboUIComponent *uic,
 	if (pixbuf)
 		gdk_pixbuf_unref (pixbuf);
 			
-	gtk_window_set_wmclass (GTK_WINDOW (about), "geyes", "Geyes");
-	gtk_window_set_screen (GTK_WINDOW (about),
-			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
-	g_signal_connect (about, "destroy",
+	gtk_window_set_wmclass (GTK_WINDOW (eyes_applet->about_dialog), "geyes", "Geyes");
+	g_signal_connect (eyes_applet->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
-			  &about);
-        gtk_widget_show (about);
+			  &eyes_applet->about_dialog);
+	gtk_widget_show (eyes_applet->about_dialog);
 }
 
 static void
@@ -377,8 +371,11 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 		g_free (eyes_applet->pupil_filename);
 	eyes_applet->pupil_filename = NULL;
 	
+	if (eyes_applet->about_dialog)
+	  	gtk_widget_destroy (eyes_applet->about_dialog);
+
 	if (eyes_applet->prop_box.pbox)
-	  gtk_widget_destroy (eyes_applet->prop_box.pbox);
+	  	gtk_widget_destroy (eyes_applet->prop_box.pbox);
 
 	g_free (eyes_applet);
 }
@@ -437,6 +434,8 @@ geyes_applet_fill (PanelApplet *applet)
         eyes_applet = create_eyes (applet);
 
 	panel_applet_add_preferences (applet, "/schemas/apps/geyes/prefs", NULL);
+
+	eyes_applet->about_dialog = NULL;
 
         eyes_applet->timeout_id = gtk_timeout_add (
 		UPDATE_TIMEOUT, (GtkFunction) timer_cb, eyes_applet);

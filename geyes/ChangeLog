@@ -1,3 +1,12 @@
+Fri Jan 12 2004 Archana Shah <archana.shah@wipro.com>
+
+	* geyes.h: Added a field in the structure EyesApplet.
+	* geyes.c: (about_cb): Replaced the static variable about by the
+	structure member about_dialog.
+	(geyes_applet_fill): Initialized the about_dialog member with NULL.
+	(destroy_cb): Destroy the about dialog when the applet is removed.
+	Fixes bug #131074
+
 Mon Sep 15 15:17:32 2003  George Lebl <jirka@5z.com>
 
 	* geyes.c: when started in lockdown mode, hide the preferences item
