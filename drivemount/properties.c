@@ -104,12 +104,14 @@ cb_mount_activate (GtkEntry *entry, gpointer data)
 	
 }
 
-static void
+static gboolean
 cb_mount_focus_out (GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
 	DriveData *dd = data;
 	
 	cb_mount_activate (GTK_ENTRY (widget), dd);
+	
+	return FALSE;
 	
 }
 
