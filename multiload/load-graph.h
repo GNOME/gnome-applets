@@ -7,6 +7,8 @@ typedef struct _LoadGraph LoadGraph;
 
 typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
 
+#define NCPUSTATES 4
+
 struct _LoadGraph {
     AppletWidget *applet;
 
@@ -34,6 +36,10 @@ struct _LoadGraph {
     GdkPixmap *pixmap;
     GdkGC *gc;
     int timer_index;
+
+    long cpu_time [NCPUSTATES];
+    long cpu_last [NCPUSTATES];
+    int cpu_initialized;
 };
 
 /* Create new load graph. */

@@ -16,11 +16,6 @@
 
 #include "linux-proc.h"
 
-#define NCPUSTATES 4
-
-static long cp_time[NCPUSTATES];
-static long last[NCPUSTATES];
-
 static unsigned needed_cpu_flags =
 (1 << GLIBTOP_CPU_USER) +
 (1 << GLIBTOP_CPU_IDLE);
@@ -37,7 +32,6 @@ static unsigned needed_loadavg_flags =
 void
 GetLoad (int Maximum, int data [4], LoadGraph *g)
 {
-    static int init = 0;
     int usr, nice, sys, free;
     int total;
 
@@ -47,27 +41,27 @@ GetLoad (int Maximum, int data [4], LoadGraph *g)
 	
     assert ((cpu.flags & needed_cpu_flags) == needed_cpu_flags);
     
-    cp_time [0] = cpu.user;
-    cp_time [1] = cpu.nice;
-    cp_time [2] = cpu.sys;
-    cp_time [3] = cpu.idle;
+    g->cpu_time [0] = cpu.user;
+    g->cpu_time [1] = cpu.nice;
+    g->cpu_time [2] = cpu.sys;
+    g->cpu_time [3] = cpu.idle;
 
-    if (!init) {
-	memcpy (last, cp_time, sizeof (last));
-	init = 1;
+    if (!g->cpu_initialized) {
+	memcpy (g->cpu_last, g->cpu_time, sizeof (g->cpu_last));
+	g->cpu_initialized = 1;
     }
 
-    usr  = cp_time [0] - last [0];
-    nice = cp_time [1] - last [1];
-    sys  = cp_time [2] - last [2];
-    free = cp_time [3] - last [3];
+    usr  = g->cpu_time [0] - g->cpu_last [0];
+    nice = g->cpu_time [1] - g->cpu_last [1];
+    sys  = g->cpu_time [2] - g->cpu_last [2];
+    free = g->cpu_time [3] - g->cpu_last [3];
 
     total = usr + nice + sys + free;
 
-    last [0] = cp_time [0];
-    last [1] = cp_time [1];
-    last [2] = cp_time [2];
-    last [3] = cp_time [3];
+    g->cpu_last [0] = g->cpu_time [0];
+    g->cpu_last [1] = g->cpu_time [1];
+    g->cpu_last [2] = g->cpu_time [2];
+    g->cpu_last [3] = g->cpu_time [3];
 
     if (!total) total = Maximum;
 
