@@ -3,8 +3,7 @@ pixmapdir = $(datadir)/pixmaps
 INCLUDES =	 			\
 	-I../../..	 		\
 	-I$(srcdir)/../../..	 	\
-	-I$(includedir)			\
-	$(X_CFLAGS)
+	-I$(includedir)
 
 lib_LTLIBRARIES = libpanel_batmon.la
 
