@@ -27,7 +27,8 @@ COMMON_CFLAGS = -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
            $(LIBGLADE_CFLAGS)
 
 COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
-              $(LIBGLADE_LIBS)
+              $(LIBGLADE_LIBS)	\
+	      $(X_LIBS)
 
 libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS) \
            $(GNOME_APPLETS_CFLAGS)
