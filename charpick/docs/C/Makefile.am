@@ -1,7 +1,4 @@
-figs = \
-	figures/charpick_applet.png		\
-	figures/charpick_characters.png		\
-	figures/charpick_applet_settings.png
+figdir = figures
 docname = charpick_applet
 lang = C
 omffile = charpick_applet-C.omf

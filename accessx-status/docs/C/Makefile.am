@@ -1,4 +1,4 @@
-figs = figures/accessx-status-applet.png
+figdir = figures
 docname = accessx-status
 lang = C
 omffile = accessx-status-C.omf

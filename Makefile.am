@@ -58,8 +58,7 @@ SUBDIRS = \
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
-	$(accessx_status_SUBDIR)\
-	omf-install	
+	$(accessx_status_SUBDIR)
 
 DIST_SUBDIRS = \
 	po		\
@@ -79,7 +78,6 @@ DIST_SUBDIRS = \
 	gweather 	\
 	mini-commander	\
 	man		\
-	omf-install	\
 	wireless	\
 	accessx-status  \
 	stickynotes
@@ -89,7 +87,6 @@ EXTRA_DIST = \
 	gnome-applets.spec.in	\
 	gnome-applets.spec	\
 	applet-docs.make	\
-	sgmldocs.make		\
 	intltool-update.in	\
 	intltool-extract.in	\
 	intltool-merge.in	\

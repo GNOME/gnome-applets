@@ -1,7 +1,4 @@
-figs = \
-        figures/battstat-apperance.png  \
-        figures/battstat-applet.png \
-        figures/battstat-general.png
+figdir = figures
 docname = battstat
 lang = ja
 omffile = battstat-ja.omf

@@ -1,7 +1,4 @@
-figs = \
-	figures/charpalette_applet.png   \
-	figures/charpick_characters.png  \
-	figures/charpalette_chargroup.png
+figdir = figures
 docname = char-palette
 lang = C
 omffile = char-palette-C.omf
