@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-core 1.1.3\n"
-"POT-Creation-Date: 2000-12-12 09:12+0100\n"
-"PO-Revision-Date: 2000-12-12 09:14CET\n"
+"Project-Id-Version: gnome-applets 1.2.99\n"
+"POT-Creation-Date: 2001-01-03 13:58+0100\n"
+"PO-Revision-Date: 2001-01-03 14:19CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@rak.isternet.sk>\n"
 "MIME-Version: 1.0\n"
@@ -77,14 +77,14 @@ msgstr "Analógové hodiny podobné tým z CDE panelu."
 #: another_clock/another_clock.c:726 asclock/asclock.c:615
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
-#: gkb-new/gkb.c:471 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
+#: gkb-new/gkb.c:884 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1465 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:94
-#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:359
+#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:382
 msgid "Properties..."
 msgstr "Vlastnosti..."
 
@@ -92,14 +92,14 @@ msgstr "Vlastnosti..."
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:595
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
-#: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:494
+#: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:890
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
-#: jbc/jbc-applet.c:197 life/life.c:286
+#: jbc/jbc-applet.c:202 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
-#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:366
+#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:389
 #: whereami/whereami.c:236
 msgid "Help"
 msgstr "Pomocník"
@@ -109,14 +109,14 @@ msgstr "Pomocník"
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:339
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
-#: gkb-new/gkb.c:499 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:202 life/life.c:290
+#: gkb-new/gkb.c:895 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
+#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1478 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:538
 #: screenshooter/screenshooter_applet.c:1028 slashapp/slashapp.c:97
-#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:373
+#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:396
 #: whereami/whereami.c:238
 msgid "About..."
 msgstr "O aplikácii..."
@@ -179,7 +179,7 @@ msgstr "Batérie sú úplne nabité."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Interná chyba: neplatný mód v battery_set_mode()"
 
-#: battery/battery.c:788 jbc/jbc-applet.c:178 multiload/cpuload.c:69
+#: battery/battery.c:788 jbc/jbc-applet.c:183 multiload/cpuload.c:69
 #: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
@@ -758,19 +758,95 @@ msgstr "Nastavenia X oèí"
 msgid "Themes"
 msgstr "Témy"
 
-#: gkb-new/gkb.c:257
-msgid "The keymap switching command returned with error!"
-msgstr "Príkaz pre prepínanie klávesníc vrátil chybu!"
+#: gkb-new/gkb.c:460
+#, c-format
+msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
+msgstr "keymap_%d/name=US 105 kláves (s windows klávesami)"
 
-#: gkb-new/gkb.c:349
+#: gkb-new/gkb.c:464
+#, c-format
+msgid "keymap_%d/label=us"
+msgstr "keymap_%d/label=us"
+
+#: gkb-new/gkb.c:467
+#, c-format
+msgid "keymap_%d/country=United States"
+msgstr "keymap_%d/country=USA"
+
+#: gkb-new/gkb.c:470
+#, c-format
+msgid "keymap_%d/lang=English"
+msgstr "keymap_%d/lang=Anglický"
+
+#: gkb-new/gkb.c:473
+#, c-format
+msgid "keymap_%d/flag=us.png"
+msgstr "keymap_%d/flag=us.png"
+
+#: gkb-new/gkb.c:476
+#, c-format
+msgid "keymap_%d/command=gkb_xmmap us"
+msgstr "keymap_%d/command=gkb_xmmap us"
+
+#: gkb-new/gkb.c:481
+#, c-format
+msgid "keymap_%d/name=Hungarian 105 keys latin2"
+msgstr "keymap_%d/name=Maïarská 105 kláves latin2"
+
+#: gkb-new/gkb.c:484
+#, c-format
+msgid "keymap_%d/label=hu"
+msgstr "keymap_%d/label=hu"
+
+#: gkb-new/gkb.c:487
+#, c-format
+msgid "keymap_%d/country=Hungary"
+msgstr "keymap_%d/country=Maïarsko"
+
+#: gkb-new/gkb.c:490
+#, c-format
+msgid "keymap_%d/lang=Hungarian"
+msgstr "keymap_%d/lang=Maïarský"
+
+#: gkb-new/gkb.c:493
+#, c-format
+msgid "keymap_%d/image=hu.png"
+msgstr "keymap_%d/image=hu.png"
+
+#: gkb-new/gkb.c:496
+#, c-format
+msgid "keymap_%d/command=gkb_xmmap hu"
+msgstr "keymap_%d/command=gkb_xmmap hu"
+
+#: gkb-new/gkb.c:669 gkb-new/gkb.c:676
+msgid "GKB"
+msgstr "GKB"
+
+#.
+#. if (about)
+#. {
+#. gtk_widget_show (about);
+#. gdk_window_raise (about->window);
+#. return;
+#. }
+#.
+#: gkb-new/gkb.c:712
+msgid "Szabolcs BAN <shooby@gnome.hu>"
+msgstr "Szabolcs BAN <shooby@gnome.hu>"
+
+#: gkb-new/gkb.c:713
+msgid "Chema Celorio <chema@celorio.com>"
+msgstr "Chema Celorio <chema@celorio.com>"
+
+#: gkb-new/gkb.c:716
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Applet Prepínaè klávesnice pre GNOME"
 
-#: gkb-new/gkb.c:351
-msgid "(C) 1998-2000 LSC - Linux Support Center"
-msgstr "(C) 1998-2000 LSC - Linux Support Center"
+#: gkb-new/gkb.c:719
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:353
+#: gkb-new/gkb.c:722
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it to CVS.\n"
@@ -781,67 +857,463 @@ msgstr ""
 "Tento aplet prepína medzi klávesnicovými mapami. Pou¾íva setxkbmap, alebo "
 "xmodmap.\n"
 "Po¹lite mi, prosím, Va¹u vlajku (veµkos» 60x40), vlo¾ím ju do CVS.\n"
-"Dr¾te sa a ïakuem.\n"
+"Dr¾te sa a ïakujem.\n"
 "Vïaka Balazsovi Nagy (Kevin) <julian7@kva.hu> za pomoc a  Emese Kovacs "
 "<emese@eik.bme.hu> za jej solidaritu."
 
-#: gkb-new/gkb.c:364
+#: gkb-new/gkb.c:733
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Domovská stránka (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/gkb.c:482
+#: gkb-new/keygrab.c:62 gkb-new/keygrab.c:119
+msgid "Disabled"
+msgstr "Zakázané"
+
+#: gkb-new/keygrab.c:240
+msgid "Press a key..."
+msgstr "Stlaète klávesu..."
+
+#: gkb-new/prop.c:161 gkb-new/prop.c:230
 msgid "Normal"
 msgstr "Normálna"
 
-#: gkb-new/gkb.c:488
-msgid "Small"
-msgstr "Malá"
+#: gkb-new/prop.c:162 gkb-new/prop.c:232
+msgid "Big"
+msgstr "Veµká"
 
-#: gkb-new/prop.c:294
-msgid "Keymap name"
-msgstr "Meno mapy"
+#: gkb-new/prop.c:184 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:72
+msgid "Flag"
+msgstr "Vlajka"
 
-#: gkb-new/prop.c:320
-msgid "Keymap control"
-msgstr "Ovládanie mapy klávesnice"
+#: gkb-new/prop-map.c:580 gkb-new/prop.c:185 gkb-new/util.c:34
+#: gkb-new/util.c:69
+msgid "Label"
+msgstr "Popis"
 
-#: gkb-new/prop.c:333
-msgid "New keymap"
-msgstr "Nová mapa"
+#: gkb-new/prop.c:186 gkb-new/util.c:40 gkb-new/util.c:75
+msgid "Flag and Label"
+msgstr "Vlajka a popis"
 
-#: gkb-new/prop.c:346
-msgid "Delete this keymap"
-msgstr "Zmaza» túto mapu"
+#: gkb-new/prop.c:306 modemlights/properties.c:452 slashapp/properties.c:487
+#: tickastat/properties.c:565
+msgid "Display"
+msgstr "Zobrazenie"
 
-#: gkb-new/prop.c:371
-msgid "Keymap icon"
-msgstr "Ikona mapy"
+#. Labels
+#: gkb-new/prop.c:326
+msgid "Appearance "
+msgstr "Vzhµad "
 
-#: gkb-new/prop.c:398
-msgid "Iconpath"
-msgstr "Cesta k ikone"
+#: gkb-new/prop.c:327
+msgid "Applet size "
+msgstr "Veµkos» apletu "
 
-#: gkb-new/prop.c:420
-msgid "Full command"
-msgstr "Celý príkaz"
+#: gkb-new/prop.c:360
+msgid "Hotkey for switching between layouts"
+msgstr "Klávesa pre prepínanie medzi mapami"
 
-#: gkb-new/prop.c:487
+#: gkb-new/prop.c:368
+msgid "Window based keymap switching"
+msgstr "Prepínanie klávesových máp na podµa okna"
+
+#: gkb-new/prop.c:387
+msgid "Grab hotkey"
+msgstr "Zachyti» kláves"
+
+#: gkb-new/prop.c:430
 msgid "GKB Properties"
 msgstr "Vlastnosti GKB"
 
-#: gnotes/gnote.c:225
+#: gkb-new/prop.c:441
+msgid "Keymaps"
+msgstr "Klávesové mapy"
+
+#: gkb-new/prop.c:455
+msgid "Options"
+msgstr "Mo¾nosti"
+
+#: gkb-new/prop-add.c:255
+msgid "Select layout"
+msgstr "Vybra» vzhµad"
+
+#: gkb-new/prop-add.c:283 gkb-new/prop-list.c:389 gtik/gtik.c:1082
+msgid "Add"
+msgstr "Prida»"
+
+#: gkb-new/prop-list.c:390
+msgid "Edit"
+msgstr "Upravi»"
+
+#: gkb-new/prop-list.c:391
+msgid "Up"
+msgstr "Vy¹¹ie"
+
+#: gkb-new/prop-list.c:392
+msgid "Down"
+msgstr "Ni¾¹ie"
+
+#: gkb-new/prop-list.c:393
+msgid "Delete"
+msgstr "Zmaza»"
+
+#: gkb-new/prop-map.c:183
+msgid "Armenia"
+msgstr "Arménsko"
+
+#: gkb-new/prop-map.c:184
+msgid "Australia"
+msgstr "Austrália"
+
+#: gkb-new/prop-map.c:185
+msgid "Austria"
+msgstr "Rakúsko"
+
+#: gkb-new/prop-map.c:186
+msgid "Belgium"
+msgstr "Belgicko"
+
+#: gkb-new/prop-map.c:187
+msgid "Brazil"
+msgstr "Brazílska"
+
+#: gkb-new/prop-map.c:188
+msgid "Bulgaria"
+msgstr "Bulharsko"
+
+#: gkb-new/prop-map.c:189
+msgid "Canada"
+msgstr "Kanada"
+
+#: gkb-new/prop-map.c:190
+msgid "Caribic"
+msgstr "Karibik"
+
+#: gkb-new/prop-map.c:191
+msgid "France"
+msgstr "Francúzsko"
+
+#: gkb-new/prop-map.c:192
+msgid "Georgia"
+msgstr "Rumunsko"
+
+#: gkb-new/prop-map.c:193
+msgid "Germany"
+msgstr "Nemecko"
+
+#: gkb-new/prop-map.c:194
+msgid "Great Britain"
+msgstr "Veµká Británia"
+
+#: gkb-new/prop-map.c:195
+msgid "Hungary"
+msgstr "Maïarsko"
+
+#: gkb-new/prop-map.c:196
+msgid "Jamaica"
+msgstr "Jamajka"
+
+#: gkb-new/prop-map.c:197
+msgid "New Zealand"
+msgstr "Nový Zéland"
+
+#: gkb-new/prop-map.c:198
+msgid "Norway"
+msgstr "Nórsko"
+
+#: gkb-new/prop-map.c:199
+msgid "Poland"
+msgstr "Poµsko"
+
+#: gkb-new/prop-map.c:200
+msgid "Portugal"
+msgstr "Portugalsko"
+
+#: gkb-new/prop-map.c:201
+msgid "Russia"
+msgstr "Rusko"
+
+#: gkb-new/prop-map.c:202
+msgid "Slovak Republic"
+msgstr "Slovensko"
+
+#: gkb-new/prop-map.c:203
+msgid "Slovenia"
+msgstr "Slovinsko"
+
+#: gkb-new/prop-map.c:204
+msgid "South Africa"
+msgstr "Ju¾ná Afrika"
+
+#: gkb-new/prop-map.c:205
+msgid "Spain"
+msgstr "©panielsko"
+
+#: gkb-new/prop-map.c:206
+msgid "Sweden"
+msgstr "©védsko"
+
+#: gkb-new/prop-map.c:207
+msgid "Switzerland"
+msgstr "©vajèiarsko"
+
+#: gkb-new/prop-map.c:208
+msgid "Thailand"
+msgstr "Thajsko"
+
+#: gkb-new/prop-map.c:209
+msgid "Turkey"
+msgstr "Turecko"
+
+#: gkb-new/prop-map.c:210
+msgid "United States"
+msgstr "U.S.A."
+
+#: gkb-new/prop-map.c:211
+msgid "Yugoslavia"
+msgstr "Juhoslávia"
+
+#: gkb-new/prop-map.c:231
+msgid "Armenian"
+msgstr "Arménska"
+
+#: gkb-new/prop-map.c:232
+msgid "Basque"
+msgstr "Baskitská"
+
+#: gkb-new/prop-map.c:233
+msgid "Bulgarian"
+msgstr "Bulharská"
+
+#: gkb-new/prop-map.c:234
+msgid "Dutch"
+msgstr "Holandská"
+
+#: gkb-new/prop-map.c:235
+msgid "English"
+msgstr "Anglická"
+
+#: gkb-new/prop-map.c:236
+msgid "French"
+msgstr "Francúzska"
+
+#: gkb-new/prop-map.c:237
+msgid "Georgian"
+msgstr "Rumunská"
+
+#: gkb-new/prop-map.c:238
+msgid "German"
+msgstr "Nemecká"
+
+#: gkb-new/prop-map.c:239
+msgid "Hungarian"
+msgstr "Maïarská"
+
+#: gkb-new/prop-map.c:240
+msgid "Norwegian"
+msgstr "Nórska"
+
+#: gkb-new/prop-map.c:241
+msgid "Polish"
+msgstr "Poµská"
+
+#: gkb-new/prop-map.c:242
+msgid "Portuglese"
+msgstr "Portugalská"
+
+#: gkb-new/prop-map.c:243
+msgid "Portuguese"
+msgstr "Portugalská"
+
+#: gkb-new/prop-map.c:244
+msgid "Russian"
+msgstr "Ruská"
+
+#: gkb-new/prop-map.c:245
+msgid "Slovak"
+msgstr "Slovenská"
+
+#: gkb-new/prop-map.c:246
+msgid "Slovenian"
+msgstr "Slovinská"
+
+#: gkb-new/prop-map.c:247
+msgid "Swedish"
+msgstr "©védska"
+
+#: gkb-new/prop-map.c:248
+msgid "Thai"
+msgstr "Thajská"
+
+#: gkb-new/prop-map.c:249
+msgid "Turkish"
+msgstr "Turecká"
+
+#: gkb-new/prop-map.c:250
+msgid "Wallon"
+msgstr "Wel¹ská"
+
+#: gkb-new/prop-map.c:251
+msgid "Yugoslavian"
+msgstr "Juhoslovanská"
+
+#: gkb-new/prop-map.c:269
+msgid "105"
+msgstr "105"
+
+#: gkb-new/prop-map.c:270
+msgid "101"
+msgstr "101"
+
+#: gkb-new/prop-map.c:271
+msgid "102"
+msgstr "102"
+
+#: gkb-new/prop-map.c:272
+msgid "450"
+msgstr "450"
+
+#: gkb-new/prop-map.c:273
+msgid "84"
+msgstr "84"
+
+#: gkb-new/prop-map.c:274
+msgid "mklinux"
+msgstr "mklinux"
+
+#: gkb-new/prop-map.c:275
+msgid "type5"
+msgstr "type5"
+
+#: gkb-new/prop-map.c:295
+msgid "iso-8859-1"
+msgstr "iso-8859-1"
+
+#: gkb-new/prop-map.c:296
+msgid "iso-8859-2"
+msgstr "iso-8859-2"
+
+#: gkb-new/prop-map.c:297
+msgid "iso-8859-9"
+msgstr "iso-8859-9"
+
+#: gkb-new/prop-map.c:298
+msgid "am-armscii8"
+msgstr "am-armscii8"
+
+#: gkb-new/prop-map.c:299
+msgid "be-latin1"
+msgstr "be-latin1"
+
+#: gkb-new/prop-map.c:300
+msgid "cp1251"
+msgstr "cp1251"
+
+#: gkb-new/prop-map.c:301
+msgid "georgian-academy"
+msgstr "georgian-academy"
+
+#: gkb-new/prop-map.c:302
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#: gkb-new/prop-map.c:303
+msgid "tis620"
+msgstr "tis620"
+
+#: gkb-new/prop-map.c:321
+msgid "ix86"
+msgstr "ix86"
+
+#: gkb-new/prop-map.c:322
+msgid "sun"
+msgstr "sun"
+
+#: gkb-new/prop-map.c:323
+msgid "mac"
+msgstr "mac"
+
+#: gkb-new/prop-map.c:324
+msgid "sgi"
+msgstr "sgi"
+
+#: gkb-new/prop-map.c:325
+msgid "dec"
+msgstr "dec"
+
+#: gkb-new/prop-map.c:326
+msgid "ibm"
+msgstr "ibm"
+
+#: gkb-new/prop-map.c:551
+msgid "Edit keymap"
+msgstr "Upravi» mapu"
+
+#. Add the labels
+#: gkb-new/prop-map.c:579 tickastat/mod_news.c:1203
+msgid "Name"
+msgstr "Meno"
+
+#: gkb-new/prop-map.c:581
+msgid "Language"
+msgstr "Jazyk"
+
+#: gkb-new/prop-map.c:582
+msgid "Country"
+msgstr "Krajina"
+
+#: gkb-new/prop-map.c:583
+msgid ""
+"Flag\n"
+"Pixmap"
+msgstr ""
+"Vlajka\n"
+"Obrázok"
+
+#: gkb-new/prop-map.c:585
+msgid "Architecture"
+msgstr "Architektúra"
+
+#: gkb-new/prop-map.c:586
+msgid "Type"
+msgstr "Typ"
+
+#: gkb-new/prop-map.c:587
+msgid "Codepage"
+msgstr "Kódová stránka"
+
+#: gkb-new/prop-map.c:588
+msgid "Command"
+msgstr "Príkaz"
+
+#: gkb-new/prop-map.c:622
+msgid ""
+"Where command can be:\n"
+"* xmodmap /full/path/xmodmap.hu\n"
+"* gkb__xmmap hu\n"
+"* setxkbmap hu"
+msgstr ""
+"Kde príkaz mô¾e by»:\n"
+"* xmodmap /full/path/xmodmap.hu\n"
+"* gkb__xmmap hu\n"
+"* setxkbmap hu"
+
+#: gkb-new/system.c:45
+msgid "The keymap switching command returned with error!"
+msgstr "Príkaz pre prepínanie klávesníc vrátil chybu!"
+
+#: gnotes/gnote.c:224
 msgid "Raise Note"
 msgstr "Zvý¹i» poznámku"
 
-#: gnotes/gnote.c:230
+#: gnotes/gnote.c:229
 msgid "Lower Note"
 msgstr "Zní¾i» poznámku"
 
-#: gnotes/gnote.c:235
+#: gnotes/gnote.c:234
 msgid "Hide Note"
 msgstr "Skry» poznámku"
 
-#: gnotes/gnote.c:240
+#: gnotes/gnote.c:239
 msgid "Delete Note"
 msgstr "Zmaza» poznámku"
 
@@ -912,10 +1384,6 @@ msgstr ""
 #: gtik/gtik.c:1071
 msgid "New Symbol:"
 msgstr "Nový symbol:"
-
-#: gtik/gtik.c:1082
-msgid "Add"
-msgstr "Prida»"
 
 #: gtik/gtik.c:1093
 msgid "Remove Selected"
@@ -2379,15 +2847,15 @@ msgstr "Neznámy"
 msgid "Retrieval failed"
 msgstr "Získanie zlyhalo"
 
-#: jbc/jbc-applet.c:55
+#: jbc/jbc-applet.c:57
 msgid "Jon's Binary Clock"
 msgstr "Jonove binárne hodiny"
 
-#: jbc/jbc-applet.c:57
+#: jbc/jbc-applet.c:59
 msgid "(C) 1999"
 msgstr "(C) 1999"
 
-#: jbc/jbc-applet.c:59
+#: jbc/jbc-applet.c:61
 msgid ""
 "Released under the GNU general public license.\n"
 "Displays time in Binary Coded Decimal\n"
@@ -2723,11 +3191,6 @@ msgstr "Príkaz na odpojenie:"
 #: modemlights/properties.c:445
 msgid "Confirm connection"
 msgstr "Potvrdi» pripojenie"
-
-#: modemlights/properties.c:452 slashapp/properties.c:487
-#: tickastat/properties.c:565
-msgid "Display"
-msgstr "Zobrazenie"
 
 #: modemlights/properties.c:466
 msgid "Updates per second"
@@ -3862,10 +4325,6 @@ msgid "Enabled"
 msgstr "Povolené"
 
 #: tickastat/mod_news.c:1203
-msgid "Name"
-msgstr "Meno"
-
-#: tickastat/mod_news.c:1203
 msgid "Line delay"
 msgstr "Pauza medzi riadkami"
 
@@ -4018,50 +4477,41 @@ msgstr "Vý¹ka:"
 msgid "Use panel size hint"
 msgstr "Pou¾i» radu panelu o veµkosti"
 
-#: webcontrol/webcontrol.c:63
+#: webcontrol/webcontrol.c:46
 msgid "The Web Browser Controller"
 msgstr "Ovládanie Web prehliadaèa"
 
-#: webcontrol/webcontrol.c:67
-msgid ""
-"This applet currently sends getURL commands to netscape throught the -remote "
-"interface.  Hopefully later more webrowsers will be supported."
-msgstr ""
-"Tento aplet posiela príkazy getURL do netscape cez -remote rozhranie. "
-"Dúfame, ¾e neskôr bude podporovaných viacero prehliadaèov."
+#: webcontrol/webcontrol.c:48
+msgid "(C) 2000 the Free Software Foundation"
+msgstr "(C) 2000 Free Software Foundation"
 
-#: webcontrol/webcontrol.c:108
+#: webcontrol/webcontrol.c:50
+msgid ""
+"An applet to launch URLs in a web browser, search using various web sites "
+"and have a ton of fun!"
+msgstr ""
+"Aplet pre zobrazenie URL vo WWW prehliadaèi, hµadanie pomocou rôznych "
+"WWW vyhµadávaèov a veµa ïal¹ieho!"
+
+#: webcontrol/webcontrol.c:90
 msgid "gnome-moz-remote not found or unable to launch it"
 msgstr "Nepodarilo sa nájs» alebo spusti» gnome-moz-remote"
 
-#. create the widget we are going to put on the applet
-#: webcontrol/webcontrol.c:128
-msgid "Url:"
-msgstr "Url:"
+#: webcontrol/webcontrol.c:222
+msgid "URL:"
+msgstr "URL:"
 
-#: webcontrol/webcontrol.c:131
-msgid "Clear"
+#: webcontrol/webcontrol.c:249
+msgid " GO "
+msgstr "ZOBRAZ"
+
+#: webcontrol/webcontrol.c:268
+msgid " Clear "
 msgstr "Vymaza»"
 
-#: webcontrol/webcontrol.c:147
+#: webcontrol/webcontrol.c:296
 msgid "Launch new window"
 msgstr "Otvori» nové okno"
-
-#: webcontrol/webcontrol.c:234
-msgid "WebControl Properties"
-msgstr "Vlastnosti apletu WebControl"
-
-#: webcontrol/webcontrol.c:239
-msgid "Display URL label"
-msgstr "Zobrazi» URL"
-
-#: webcontrol/webcontrol.c:248
-msgid "Display \"launch new window\" option"
-msgstr "Zobrazi» mo¾nos» \"Otvori» nové okno\""
-
-#: webcontrol/webcontrol.c:261
-msgid "Look"
-msgstr "Vzhµad"
 
 #: whereami/whereami.c:47
 msgid "Where Am I?"
