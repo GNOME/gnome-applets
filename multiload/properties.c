@@ -24,8 +24,10 @@
 #define PROP_NET		2
 #define PROP_SWAP		3
 #define PROP_AVG		4
-#define PROP_SPEED		5
-#define PROP_SIZE		6
+#define PROP_DISK		5
+
+#define PROP_SPEED		6
+#define PROP_SIZE		7
 #define HIG_IDENTATION		"    "
 #define NEVER_SENSITIVE		"never_sensitive"
 
@@ -254,6 +256,8 @@ color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 		prop_type = PROP_SWAP;
 	else if (strstr(gconf_path, "loadavg"))
 		prop_type = PROP_AVG;
+	else if (strstr(gconf_path, "diskload"))
+		prop_type = PROP_DISK;
 	else
 		g_assert_not_reached();
 		
@@ -439,6 +443,18 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	if ( ! key_writable (ma->applet, "view_loadavg"))
 		hard_set_sensitive (check_box, FALSE);
 
+	check_box = gtk_check_button_new_with_mnemonic(_("_Harddisk"));
+	ma->check_boxes[5] = check_box;
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_box),
+			panel_applet_gconf_get_bool (ma->applet,
+				"view_diskload", NULL));
+	g_object_set_data (G_OBJECT (check_box), "MultiloadApplet", ma);
+	g_object_set_data (G_OBJECT (check_box), "prop_type",
+			GINT_TO_POINTER (PROP_DISK));
+	g_signal_connect (G_OBJECT (check_box), "toggled",
+			G_CALLBACK (property_toggled_cb), "view_diskload");
+	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
 	category_vbox = gtk_vbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
@@ -609,6 +625,12 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_Average"), "loadavg_color0", ma);
 	add_color_selector(page, _("_Background"), "loadavg_color1", ma);
+
+	page = add_page (notebook, _("Harddisk"));
+	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
+	add_color_selector (page, _("_Read"), "diskload_color0", ma);
+	add_color_selector (page, _("_Write"), "diskload_color1", ma);
+	add_color_selector (page, _("_Background"), "diskload_color2", ma);
 	
 	return;
 }

@@ -42,7 +42,9 @@ about_cb (BonoboUIComponent *uic,
     static const gchar *authors[] =
     {
 		"Martin Baulig <martin@home-of-linux.org>",
-		"Todd Kulesza <fflewddur@dropline.net>\n",
+		"Todd Kulesza <fflewddur@dropline.net>",
+		"Benoît Dejean <benoit.dejean@placenet.org>",
+		"Davyd Madeley <davyd@madeley.id.au>",
 		NULL
     };
 
@@ -53,39 +55,19 @@ about_cb (BonoboUIComponent *uic,
 		NULL
     };
 
-    const gchar *translator_credits = _("translator_credits");
-
-    if (ma->about_dialog) {
-	gtk_window_set_screen (GTK_WINDOW (ma->about_dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
-
-	gtk_window_present (GTK_WINDOW (ma->about_dialog));
-	return;
-    }
-	
-    pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-		    "gnome-monitor", 48, 0, NULL);
-	
-    ma->about_dialog = gnome_about_new (_("System Monitor"), VERSION,
-					"(C) 1999 - 2002 The Free Software Foundation",
-					_("Released under the GNU General Public License.\n\n"
-					  "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."),
-					authors,
-					documenters,
-					strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-					pixbuf);
-
-    if (pixbuf) 
-	g_object_unref (pixbuf);
-  
-    gtk_window_set_screen (GTK_WINDOW (ma->about_dialog),
-			   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
-    gtk_window_set_wmclass (GTK_WINDOW (ma->about_dialog), "system monitor",
-			    "System Monitor");
-    g_signal_connect (G_OBJECT (ma->about_dialog), "destroy",
-		      G_CALLBACK (gtk_widget_destroyed), &ma->about_dialog);
-
-    gtk_widget_show (ma->about_dialog);
+    gtk_show_about_dialog (NULL,
+	"name",		_("System Monitor"),
+	"version",	VERSION,
+	"copyright",	"\xC2\xA9 1999-2005 Free Software Foundation "
+			"and others",
+	"comments",	_("A system load monitor capable of displaying graphs "
+			"for CPU, ram, and swap space use, plus network "
+			"traffic."),
+	"authors",	authors,
+	"documenters",	documenters,
+	"translator-credits",	_("translator-credits"),
+	"logo-icon-name",	"gnome-monitor",
+	NULL);
 }
 
 static void
@@ -345,6 +327,8 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		name = g_strdup(_("Swap Space"));
 	else if (!strncmp(g->name, "loadavg", strlen("loadavg")))
 		name = g_strdup(_("Load Average"));
+	else if (!strncmp (g->name, "diskload", strlen("diskload")))
+		name = g_strdup(_("Disk"));
 	else
 		name = g_strdup(_("Resource"));
 	
