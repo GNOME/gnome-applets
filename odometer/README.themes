@@ -1,8 +1,28 @@
-This version of odometer supports pixmaps digits. Adding new pixmaps is
-really easy. Please feel free to contribute. New pixmaps can easily be
-adapted from web counters digits for example.
+This version of odometer supports theme digits. Adding new themes is
+really easy. Please feel free to contribute. You can find many counter
+pictures from web counter for example.
 
-Pixmaps are stored in $(pixmapsdir)/odometer. Each pixmap must contain
-the suite of digits "0123456789.". You just have to respect this order,
-and not to forget the dot. Each item has the same size, so the resulting
-pixmap width is multiple of eleven.
+The themedata file contains the following information :
+
+[Default]
+with_decimal_dot=1
+
+  This is a boolean value that indicates if the decimal dot is
+  part of the pixmap, and if it must be displayed. Distance
+  counters in car have black rolling digits that display
+  the integer part of the distance, and red rolling digits
+  for the decimal part. In this case, the dot doesn't need
+  to be displayed. Of course, with digital digits (A, bbldotg
+  for example), the dot has to be plotted.
+
+integer_pixmap=file1.png
+decimal_pixmap=file2.png
+
+  These files contain the list of digits "0123456789" or "0123456789."
+  This order must be respected, and the dot must appear if required.
+
+digit_width=n
+
+  n indicates the size of the digits in the previous files. Humm, this
+  seems a redundant information. Need to be fixed.
+
