@@ -57,3 +57,6 @@ presetdir = $(datadir)/gnome/gkb
 preset_in_files = $(preset_data_predata)
 preset_DATA = $(preset_in_files:.keyprop.in=.keyprop)
 EXTRA_DIST = $(preset_DATA)
+
+clean-local:
+	rm -f *~ *.keyprop
