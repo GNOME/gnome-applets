@@ -675,6 +675,8 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 
 	sia->applet = GTK_WIDGET (applet);
 
+	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
+
 	notebook = GTK_NOTEBOOK (gtk_notebook_new ());
 	gtk_notebook_set_show_tabs (notebook, FALSE);
 	gtk_notebook_set_show_border (notebook, FALSE);
