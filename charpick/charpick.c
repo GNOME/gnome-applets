@@ -311,32 +311,6 @@ menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
 		panel_applet_gconf_set_string (applet, "current_list", curr_data->charlist, NULL);
 }
 
-static void
-add_palette (GtkMenuItem *menuitem, charpick_data *curr_data)
-{
-	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
-	GList *list = curr_data->chartable;
-	gchar *new;
-	
-	new = run_edit_dialog (NULL, _("Add Palette"));
-	if (!new)
-		return;
-		
-	list = g_list_append (list, new);
-	if (curr_data->chartable == NULL) {
-		curr_data->chartable = list;
-		curr_data->charlist = curr_data->chartable->data;
-		build_table (curr_data);
-		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
-			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet),
-						      "current_list", 
-					  	       curr_data->charlist, NULL);
-	}
-	
-	save_chartable (curr_data);
-  	populate_menu (curr_data);
-}
-
 void
 populate_menu (charpick_data *curr_data)
 {
@@ -364,19 +338,6 @@ populate_menu (charpick_data *curr_data)
 			gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
 		list = g_list_next (list);
 	}
-	
-	menuitem = gtk_separator_menu_item_new ();
-	gtk_widget_show (menuitem);
-	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-	
-	menuitem = gtk_menu_item_new_with_label (_("Add a palette..."));
-	gtk_widget_show (menuitem);
-	g_signal_connect (G_OBJECT (menuitem), "activate",
-				   G_CALLBACK (add_palette), curr_data);
-	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-	if ( ! key_writable (PANEL_APPLET (curr_data->applet), "chartable"))
-		gtk_widget_set_sensitive (menuitem, FALSE);
-	
 }
 
 static void
