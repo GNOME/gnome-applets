@@ -171,7 +171,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 	gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_wind), 0.0, 0.5);
 	gtk_table_attach (GTK_TABLE (table), gw_applet->cond_wind, 1, 2, 6, 7, GTK_FILL, 0, 0, 0);
 	
-	label = gtk_label_new (_("Visibilty:"));
+	label = gtk_label_new (_("Visibility:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 7, 8, GTK_FILL, 0, 0, 0);
 	gw_applet->cond_vis = gtk_label_new (NULL);
