@@ -23,6 +23,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <applet-lib.h>
+#include <applet-widget.h>
 
 #include "led.h"
 #include "cdrom-interface.h"
@@ -36,9 +37,7 @@
 
 #define TIMEOUT_VALUE 500
 
-GtkWidget *plug = NULL;
-
-int applet_id = -1;/*this is our id we use to comunicate with the panel */
+GtkWidget *applet = NULL;
 
 char *devpath;
 
@@ -285,22 +284,8 @@ create_cdplayer_widget(GtkWidget *window)
 	return cdpanel;
 }
 
-/*these are commands sent over corba:*/
-void
-change_orient(int id, int orient)
-{
-	PanelOrientType o = (PanelOrientType)orient;
-}
-
-int
-session_save(int id, const char *cfgpath, const char *globcfgpath)
-{
-	/*save the session here*/
-	return TRUE;
-}
-
 static gint
-destroy_plug(GtkWidget *widget, gpointer data)
+destroy_applet(GtkWidget *widget, gpointer data)
 {
 	gtk_exit(0);
 	return FALSE;
@@ -310,59 +295,30 @@ int
 main(int argc, char **argv)
 {
 	GtkWidget *cdplayer;
-	char *result;
-	char *cfgpath;
-	char *globcfgpath;
-
-	char *myinvoc;
-	guint32 winid;
-
-	myinvoc = get_full_path(argv[0]);
-	if(!myinvoc)
-		return 1;
 
 	panel_corba_register_arguments ();
 	gnome_init("cdplayer_applet", NULL, argc, argv, 0, NULL);
 
-	if (!gnome_panel_applet_init_corba ())
-		g_error ("Could not comunicate with the panel\n");
+	applet = applet_widget_new(argv[0]);
+	if (!applet)
+		g_error("Can't create applet!\n");
 
-	result = gnome_panel_applet_request_id(myinvoc,&applet_id,
-					       &cfgpath,&globcfgpath,
-					       &winid);
-
-	g_free(myinvoc);
-	if (result)
-		g_error ("Could not talk to the Panel: %s\n", result);
-
-	/*use cfg path for loading up data!*/
-
-	g_free(globcfgpath);
-	g_free(cfgpath);
-
-	plug = gtk_plug_new (winid);
-	gtk_widget_realize(plug);
-
-	cdplayer = create_cdplayer_widget (plug);
+	gtk_widget_realize(applet);
+	cdplayer = create_cdplayer_widget (applet);
 
 	if(cdplayer == NULL) {
-		gnome_panel_applet_abort_id(applet_id);
+		gnome_panel_applet_abort_id(APPLET_WIDGET(applet)->applet_id);
 		return 1;
 	}
 
 	gtk_widget_show(cdplayer);
-	gtk_container_add (GTK_CONTAINER (plug), cdplayer);
-	gtk_widget_show (plug);
-	gtk_signal_connect(GTK_OBJECT(plug),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_plug),
+	applet_widget_add (APPLET_WIDGET (applet), cdplayer);
+	gtk_widget_show (applet);
+	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+			   GTK_SIGNAL_FUNC(destroy_applet),
 			   NULL);
 
-
-	result = gnome_panel_applet_register(plug,applet_id);
-	if (result)
-		g_error ("Could not talk to the Panel: %s\n", result);
-
-	applet_corba_gtk_main ("IDL:GNOME/Applet:1.0");
+	applet_widget_gtk_main ();
 
 	return 0;
 }

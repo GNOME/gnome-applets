@@ -18,14 +18,13 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
+#include "applet-widget.h"
 
-GtkWidget *plug = NULL;
+GtkWidget *applet = NULL;
 
 /* We use this to create our window menu. The data is put here by the
    wm-dependant module */
 GHashTable *winlist = NULL;
-
-int applet_id = (-1); /*this is our id we use to comunicate with the panel */
 
 extern void
 init_winlist(int argc, char **argv, int firstarg);
@@ -126,21 +125,8 @@ create_winlist_widget(void)
   return winlist;
 }
 
-/*these are commands sent over corba: */
-void
-change_orient(int id, int orient)
-{
-}
-
-int
-session_save(int id, const char *cfgpath, const char *globcfgpath)
-{
-	/*save the session here */
-	return TRUE;
-}
-
 static gint
-destroy_plug(GtkWidget *widget, gpointer data)
+destroy_applet(GtkWidget *widget, gpointer data)
 {
 g_message("In quit_winlist");
 
@@ -189,23 +175,9 @@ main(int argc, char **argv)
 {
   guint32 lastarg;
   GtkWidget *w_winlist;
-  char *result;
-  char *cfgpath;
-  char *globcfgpath;
-
-  char *myinvoc;
-  guint32 winid;
-
   int i=0;
 
 /*  while (!i);  */
-
-  myinvoc = get_full_path(argv[0]);
-
-  if(!myinvoc)
-    return 1;
-
-g_message("myinvoc -> %s",myinvoc);
 
   panel_corba_register_arguments();
 
@@ -226,48 +198,25 @@ g_message("lastarg was %d\n",lastarg);
  
 g_message("Back from init_winlist");
 
-  if (!gnome_panel_applet_init_corba())
-    g_error("Could not comunicate with the panel\n");
+  applet = applet_widget_new(argv[0]);
+  if (!applet)
+    g_error("Can't create applet!\n");
 
-g_message("back from gnome_panel_applet_init_corba");
+g_message("back from applet_widget_new");
 
-  result = gnome_panel_applet_request_id(myinvoc, &applet_id,
-					 &cfgpath, &globcfgpath,
-					 &winid);
-g_message("gnome_panel_applet_request_id gave us:"
-	  "\tapplet_id:\t%d"
-	  "\tcfpath:\t%s"
-	  "\tglobcfgpath:\t%s"
-	  "\twinid:\t%d", applet_id, cfgpath, globcfgpath, winid);
-
-  g_free(myinvoc);
-  if (result)
-    g_error("Could not talk to the Panel: %s\n", result);
-  /*use cfg path for loading up data! */
-
-g_message("Applet id is %d",applet_id);
-
-  g_free(globcfgpath);
-  g_free(cfgpath);
-
-  plug = gtk_plug_new(winid);
 #if 1
   w_winlist = create_winlist_widget();
   gtk_widget_show(w_winlist);
-  gtk_container_add(GTK_CONTAINER(plug), w_winlist); 
+  applet_widget_add(APPLET_WIDGET(applet), w_winlist); 
 #endif
-  gtk_widget_show(plug);
-  gtk_signal_connect(GTK_OBJECT(plug),"destroy",
-		     GTK_SIGNAL_FUNC(destroy_plug),
+  gtk_widget_show(applet);
+  gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+		     GTK_SIGNAL_FUNC(destroy_applet),
 		     NULL);
 
 g_message("Got window created and signals connected");
 
-  result = gnome_panel_applet_register(plug, applet_id);
-  if (result)
-    g_error("Could not talk to the Panel: %s\n", result);
-g_message("gnome_panel_applet_register done");
-  applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
-g_message("back from applet_corba_gtk_main");
+  applet_widget_gtk_main();
+g_message("back from applet_widget_gtk_main");
   return 0;
 }

@@ -20,6 +20,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
+#include "applet-widget.h"
 
 typedef void (*ClockUpdateFunc) (GtkWidget *, time_t);
 
@@ -34,12 +35,10 @@ typedef struct {
 	GtkWidget *time;
 } ComputerClock;
 
-GtkWidget *plug = NULL;
+GtkWidget *applet = NULL;
 GtkWidget *clockw = NULL;
 
 ClockData *cd = NULL;
-
-int applet_id = (-1); /*this is our id we use to comunicate with the panel */
 
 static void
 free_data(GtkWidget * widget, gpointer data)
@@ -158,10 +157,9 @@ create_clock_widget(void)
 }
 
 /*these are commands sent over corba: */
-void
-change_orient(int id, int orient)
+static void
+applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
-	PanelOrientType o = (PanelOrientType) orient;
 	time_t current_time;
 
 	time(&current_time);
@@ -169,15 +167,8 @@ change_orient(int id, int orient)
 	(*cd->update_func) (clockw, current_time);
 }
 
-int
-session_save(int id, const char *cfgpath, const char *globcfgpath)
-{
-	/*save the session here */
-	return TRUE;
-}
-
 static gint
-destroy_plug(GtkWidget *widget, gpointer data)
+destroy_applet(GtkWidget *widget, gpointer data)
 {
 	gtk_exit(0);
 	return FALSE;
@@ -195,48 +186,23 @@ test_callback(int id, gpointer data)
 int
 main(int argc, char **argv)
 {
-	char *result;
-	char *cfgpath;
-	char *globcfgpath;
-
-	char *myinvoc;
-	guint32 winid;
-
-	myinvoc = get_full_path(argv[0]);
-	if(!myinvoc)
-		return 1;
-
 	panel_corba_register_arguments();
 	gnome_init("clock_applet", NULL, argc, argv, 0, NULL);
 
-	if (!gnome_panel_applet_init_corba())
-		g_error("Could not comunicate with the panel\n");
-
-	result = gnome_panel_applet_request_id(myinvoc, &applet_id,
-					       &cfgpath, &globcfgpath,
-					       &winid);
-
-	g_free(myinvoc);
-	if (result)
-		g_error("Could not talk to the Panel: %s\n", result);
-	/*use cfg path for loading up data! */
-
-	g_free(globcfgpath);
-	g_free(cfgpath);
-
-	plug = gtk_plug_new(winid);
+	applet = applet_widget_new(argv[0]);
+	if (!applet)
+		g_error("Can't create applet!\n");
 
 	clockw = create_clock_widget();
 	gtk_widget_show(clockw);
-	gtk_container_add(GTK_CONTAINER(plug), clockw);
-	gtk_widget_show(plug);
-	gtk_signal_connect(GTK_OBJECT(plug),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_plug),
+	applet_widget_add(APPLET_WIDGET(applet), clockw);
+	gtk_widget_show(applet);
+	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+			   GTK_SIGNAL_FUNC(destroy_applet),
 			   NULL);
-
-	result = gnome_panel_applet_register(plug, applet_id);
-	if (result)
-		g_error("Could not talk to the Panel: %s\n", result);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+			   GTK_SIGNAL_FUNC(applet_change_orient),
+			   NULL);
 
 /*
 	gnome_panel_applet_register_callback(applet_id,
@@ -246,7 +212,7 @@ main(int argc, char **argv)
 					     NULL);
 */
 
-	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
+	applet_widget_gtk_main();
 
 	return 0;
 }

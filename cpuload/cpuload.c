@@ -18,6 +18,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
+#include "applet-widget.h"
 
 #include "linux-proc.h"
 #include "properties.h"
@@ -30,7 +31,7 @@ GtkWidget *disp;
 GdkGC *gc;
 GdkColor ucolor, scolor;
 cpuload_properties props;
-int applet_id = -1, height, width, timer_index=-1;
+int height, width, timer_index=-1;
 
 guchar udata[128];
 guchar oudata[128];
@@ -180,7 +181,7 @@ void create_gc(void)
         gdk_gc_copy( gc, disp->style->white_gc );
 }
 
-static gint destroy_plug(GtkWidget *widget, gpointer data)
+static gint destroy_applet(GtkWidget *widget, gpointer data)
 {
         gtk_exit(0);
         return FALSE;
@@ -188,65 +189,36 @@ static gint destroy_plug(GtkWidget *widget, gpointer data)
 
 int main(int argc, char **argv)
 {
-	GtkWidget *plug;
-        char *result, *cfgpath, *globcfgpath, *myinvoc;
-	guint32 winid;
+	GtkWidget *applet;
 
-	myinvoc = get_full_path(argv[0]);
-        if(!myinvoc)
-                return 1;
         panel_corba_register_arguments();
 
         gnome_init("cpuload_applet", NULL, argc, argv, 0, NULL);
         load_properties(&props);
+
 	height = props.height;
 	width = props.width;
         
-	if (!gnome_panel_applet_init_corba())
-                g_error("Could not comunicate with the panel\n");
-        result = gnome_panel_applet_request_id(myinvoc, &applet_id,
-                                               &cfgpath, &globcfgpath,
-                                               &winid);
-        g_free(myinvoc);
-        if (result)
-                g_error("Could not talk to the Panel: %s\n", result);
+	applet = applet_widget_new(argv[0]);
+	if (!applet)
+		g_error("Can't create applet!\n");
 
-        g_free(globcfgpath);
-        g_free(cfgpath);
-
-	plug = gtk_plug_new(winid);
         cpuload = cpuload_new();
-        gtk_container_add( GTK_CONTAINER(plug), cpuload );
-        gtk_widget_show(plug);
+        applet_widget_add( APPLET_WIDGET(applet), cpuload );
+        gtk_widget_show(applet);
 	
 	create_gc();
 	setup_colors();
-        gtk_signal_connect(GTK_OBJECT(plug),"destroy",
-                           GTK_SIGNAL_FUNC(destroy_plug),
+        gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+                           GTK_SIGNAL_FUNC(destroy_applet),
                            NULL);
 
-	result = gnome_panel_applet_register(plug, applet_id);
-        if (result)
-                g_error("Could not talk to the Panel: %s\n", result);
-	
-       	gnome_panel_applet_register_callback(applet_id,
+       	gnome_panel_applet_register_callback(APPLET_WIDGET(applet)->applet_id,
 					     "properties",
                                              _("Properties..."),
                                              properties,
                                              NULL);
 
-	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
+	applet_widget_gtk_main();
         return 0;
-}
-
-/*these are commands sent over corba: */
-void
-change_orient(int id, int orient)
-{
-}
-                                        
-int session_save(int id, const char *cfgpath, const char *globcfgpath)
-{
-	/*save the session here */
-        return TRUE;
 }

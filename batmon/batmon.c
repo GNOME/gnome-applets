@@ -13,14 +13,13 @@
 #include <string.h>
 #include "gnome.h"
 #include "applet-lib.h"
+#include "applet-widget.h"
 
 #define TIMEOUT 5000  /* ms */
 
 #define PROC_APM "/proc/apm"
 
-GtkWidget *plug = NULL;
-
-int applet_id = (-1); /*this is our id we use to comunicate with the panel */
+GtkWidget *applet = NULL;
 
 static GtkTooltips *tooltips;
 
@@ -355,23 +354,8 @@ destroy_module(void)
 	gtk_widget_destroy(window);
 }
 
-
-/*these are commands sent over corba: */
-void
-change_orient(int id, int orient)
-{
-	PanelOrientType o = (PanelOrientType) orient;
-}
-
-int
-session_save(int id, const char *cfgpath, const char *globcfgpath)
-{
-	/*save the session here */
-	return TRUE;
-}
-
 static gint
-destroy_plug(GtkWidget *widget, gpointer data)
+destroy_applet(GtkWidget *widget, gpointer data)
 {
 	gtk_exit(0);
 	return FALSE;
@@ -381,56 +365,27 @@ int
 main(int argc, char **argv)
 {
 	GtkWidget *batmon;
-	char *result;
-	char *cfgpath;
-	char *globcfgpath;
-
-	char *myinvoc;
-	guint32 winid;
-
-	myinvoc = get_full_path(argv[0]);
-	if(!myinvoc)
-		return 1;
 
 	panel_corba_register_arguments();
 	gnome_init("batmon_applet", NULL, argc, argv, 0, NULL);
 
-	if (!gnome_panel_applet_init_corba())
-		g_error("Could not comunicate with the panel\n");
+	applet = applet_widget_new(argv[0]);
+	if (!applet)
+		g_error("Can't create applet!\n");
 
-	result = gnome_panel_applet_request_id(myinvoc, &applet_id,
-					       &cfgpath, &globcfgpath,
-					       &winid);
-
-	g_free(myinvoc);
-	if (result)
-		g_error("Could not talk to the Panel: %s\n", result);
-	/*use cfg path for loading up data! */
-
-	g_free(globcfgpath);
-	g_free(cfgpath);
-
-	plug = gtk_plug_new(winid);
-	gtk_widget_realize(plug);
-
-
-	batmon = create_batmon_widget (plug);
+	gtk_widget_realize(applet);
+	batmon = create_batmon_widget (applet);
 
 	batmon_timeout = gtk_timeout_add(TIMEOUT,
 					 (GtkFunction) batmon_timeout_callback,
 					 batmon);
 
 	gtk_widget_show(batmon);
-	gtk_container_add(GTK_CONTAINER(plug), batmon);
-	gtk_widget_show(plug);
-	gtk_signal_connect(GTK_OBJECT(plug),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_plug),
+	applet_widget_add(APPLET_WIDGET(applet), batmon);
+	gtk_widget_show(applet);
+	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+			   GTK_SIGNAL_FUNC(destroy_applet),
 			   NULL);
-
-
-	result = gnome_panel_applet_register(plug, applet_id);
-	if (result)
-		g_error("Could not talk to the Panel: %s\n", result);
 
 /*
 	gnome_panel_applet_register_callback(applet_id,
@@ -440,7 +395,7 @@ main(int argc, char **argv)
 					     NULL);
 */
 
-	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
+	applet_widget_gtk_main();
 
 	return 0;
 }
