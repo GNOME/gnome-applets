@@ -22,7 +22,6 @@
 #include <glib-object.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <popt.h>
 
 #include "cpufreq.h"
 #include "cpufreq-sysfs.h"
@@ -31,68 +30,64 @@
 gint
 main (gint argc, gchar **argv)
 {
-	   gint        cpu = 0;
-	   gchar      *governor = NULL;
-	   gulong      frequency = 0;
-	   poptContext ctx;
-	   gint        nextopt;
-	   CPUFreq    *cfq;
+        GOptionContext *context;
+        static gint     cpu = 0;
+        static gchar   *governor = NULL;
+        static gulong   frequency = 0;
+	GError         *error = NULL;
+        CPUFreq        *cfq;
 
-	   struct poptOption options[] = {
-			 { NULL,        '\0', POPT_ARG_INCLUDE_TABLE, poptHelpOptions, 0, "Help options",     NULL },
-			 { "cpu",       'c',  POPT_ARG_INT,           &cpu,            0, "CPU Number",       NULL },
-			 { "governor",  'g',  POPT_ARG_STRING,        &governor,       0, "Governor",         NULL },
-			 { "frequency", 'f',  POPT_ARG_LONG,          &frequency,      0, "Frequency in KHz", NULL },
-			 { NULL,        '\0', 0,                      NULL,            0, NULL,               NULL }
-	   };
-	   
-	   if (geteuid () != 0) {
-			 g_print ("You must be root\n");
-			 
-			 return 1;
-	   }
-	   
-	   g_type_init ();
+        static GOptionEntry options[] = {
+                { "cpu",       'c',  0, G_OPTION_ARG_INT,           &cpu,            "CPU Number",       NULL },
+                { "governor",  'g',  0, G_OPTION_ARG_STRING,        &governor,       "Governor",         NULL },
+                { "frequency", 'f',  0, G_OPTION_ARG_INT,           &frequency,      "Frequency in KHz", NULL },
+                { NULL }
+        };
+                   
+        if (geteuid () != 0) {
+                g_print ("You must be root\n");
+                         
+                return 1;
+        }
+           
+	if (argc < 2) {
+		g_print ("Missing operand after `cpufreq-selector'\n");
+		g_print ("Try `cpufreq-selector --help' for more information.\n");
 
-	   ctx = poptGetContext ("cpufreq-selector", argc, (const gchar **) argv, options, 0);
+		return 1;
+	}
 
-	   poptReadDefaultConfig (ctx, TRUE);
+	g_type_init ();
 
-	   if (argc <= 2) {
-			 poptPrintUsage (ctx, stdout, 0);
-			 return 1;
-	   } 
+	context = g_option_context_new ("- CPUFreq Selector");
+	g_option_context_add_main_entries (context, options, NULL);
+	
+	if (! g_option_context_parse (context, &argc, &argv, &error)) {
+		if (error) {
+			g_printf ("%s\n", error->message);
+		}
+	}
+	
+	g_option_context_free (context);
+	
+        if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
+                cfq = CPUFREQ (cpufreq_sysfs_new ());
+        } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
+                cfq = CPUFREQ (cpufreq_procfs_new ());
+        } else {
+                g_print ("No cpufreq support\n");
+                return 1;
+        }
 
-	   while ((nextopt = poptGetNextOpt (ctx)) >= 0) {
-	   }
+        if (governor) {
+                cpufreq_set_governor (cfq, governor);
+		g_free (governor);
+	}
 
-	   if (nextopt < -1) {
-			 g_printerr ("Error on option %s: %s.\nRun '%s --help' to see a "
-					   "full list of available command line options.\n",
-					   poptBadOption (ctx, 0),
-					   poptStrerror (nextopt),
-					   argv[0]);
-			 return 1;
-	   }
+        if (frequency != 0)
+                cpufreq_set_frequency (cfq, frequency);
 
-	   poptFreeContext(ctx);
+        g_object_unref (cfq);
 
-	   if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
-			 cfq = CPUFREQ (cpufreq_sysfs_new ());
-	   } else if (g_file_test ("/proc/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.4 kernel */
-			 cfq = CPUFREQ (cpufreq_procfs_new ());
-	   } else {
-			 g_print ("No cpufreq support\n");
-			 return 1;
-	   }
-
-	   if (governor)
-			 cpufreq_set_governor (cfq, governor);
-
-	   if (frequency != 0)
-			 cpufreq_set_frequency (cfq, frequency);
-
-	   g_object_unref (cfq);
-
-	   return 0;
+        return 0;
 }

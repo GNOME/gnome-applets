@@ -37,11 +37,11 @@ typedef struct _CPUFreqSysfs      CPUFreqSysfs;
 typedef struct _CPUFreqSysfsClass CPUFreqSysfsClass;
 
 struct _CPUFreqSysfs {
-	   CPUFreq parent;
+        CPUFreq parent;
 };
 
 struct _CPUFreqSysfsClass {
-	   CPUFreqClass parent_class;
+        CPUFreqClass parent_class;
 };
 
 

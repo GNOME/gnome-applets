@@ -35,14 +35,14 @@ typedef struct _CPUFreq      CPUFreq;
 typedef struct _CPUFreqClass CPUFreqClass;
 
 struct _CPUFreq {
-	   GObject parent;
+        GObject parent;
 };
 
 struct _CPUFreqClass {
-	   GObjectClass parent_class;
+        GObjectClass parent_class;
 
-	   void  (* set_governor)  (CPUFreq *cfq, const gchar *governor);
-	   void  (* set_frequency) (CPUFreq *cfq, gint frequency);
+        void  (* set_governor)  (CPUFreq *cfq, const gchar *governor);
+        void  (* set_frequency) (CPUFreq *cfq, gint frequency);
 };
 
 

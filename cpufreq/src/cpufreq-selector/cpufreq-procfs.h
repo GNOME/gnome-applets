@@ -38,11 +38,11 @@ typedef struct _CPUFreqProcfsClass CPUFreqProcfsClass;
 typedef struct _CPUFreqProcfsPriv  CPUFreqProcfsPriv;
 
 struct _CPUFreqProcfs {
-	   CPUFreq parent;
+        CPUFreq parent;
 };
 
 struct _CPUFreqProcfsClass {
-	   CPUFreqClass parent_class;
+        CPUFreqClass parent_class;
 };
 
 
