@@ -19,7 +19,8 @@ multiload_applet_2_SOURCES = \
 			memload.c	\
 			netload.c	\
 			properties.c	\
-			swapload.c
+			swapload.c	\
+			diskload.c
 
 multiload_applet_2_LDADD = \
 				$(GNOME_APPLETS_LIBS) 	\

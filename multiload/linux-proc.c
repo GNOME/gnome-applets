@@ -17,6 +17,8 @@
 #include <glibtop/loadavg.h>
 #include <glibtop/netload.h>
 #include <glibtop/netlist.h>
+#include <glibtop/mountlist.h>
+#include <glibtop/fsusage.h>
 
 #include "linux-proc.h"
 
@@ -89,6 +91,35 @@ GetLoad (int Maximum, int data [4], LoadGraph *g)
     data [1] = sys;
     data [2] = nice;
     data [3] = free;
+}
+
+void
+GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
+{
+	glibtop_fsusage fsusage;
+	glibtop_mountlist mountlist;
+	glibtop_mountentry *mountentries;
+	int i;
+	static guint64 lastread, lastwrite;
+	guint64 read, write;
+	guint64 total;
+
+	mountentries = glibtop_get_mountlist (&mountlist, FALSE);
+
+	
+	read = -lastread; write = -lastwrite;
+	for (i = 0; i < mountlist.number; i++)
+	{
+		glibtop_get_fsusage(&fsusage, mountentries[i].mountdir);
+		read += fsusage.read; write += fsusage.write;
+	}
+	lastread += read; lastwrite += write;
+
+	total = read + write;
+
+	data[0] = read;
+	data[1] = read + write;
+	data[2] = Maximum - read - write;
 }
 
 #if 0

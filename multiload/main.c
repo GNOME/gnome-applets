@@ -417,6 +417,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	ma->graphs[2] = netload_applet_new(ma->applet, NULL);
 	ma->graphs[3] = swapload_applet_new(ma->applet, NULL);
 	ma->graphs[4] = loadavg_applet_new(ma->applet, NULL);
+	ma->graphs[5] = diskload_applet_new(ma->applet, NULL);
 	
 	/* only start and display the graphs the user has turned on */
 
