@@ -9,7 +9,7 @@ GKB_MAPS = xmodmap.am xmodmap.be xmodmap.bg xmodmap.br xmodmap.ch \
 	xmodmap.se xmodmap.sf xmodmap.sg xmodmap.si xmodmap.sk \
 	xmodmap.th xmodmap.tr_f xmodmap.tr_q xmodmap.uk xmodmap.us \
 	xmodmap.us.old xmodmap.us_intl xmodmap.yu xmodmap.qc-2 \
-	xmodmap.us-sun1 xmodmap.hu-sun-lat2 xmodmap.us-ibm \
+	xmodmap.us-sun xmodmap.hu-sun-lat2 xmodmap.us-ibm \
 	xmodmap.hu-ibm
 
 EXTRA_DIST = $(GKB_MAPS)
