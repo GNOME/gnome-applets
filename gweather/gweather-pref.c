@@ -105,26 +105,6 @@ set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc)
        atk_object_set_name (obj, name);
 }
 
-/* sets accessible name, description, CONTROLLED_BY 
- * and CONTROLLER_FOR relations for the components
- * in gweather preference dialog.
- */
-
-static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet)
-{
-
-    /* Relation between components in General page */
-
-    add_atk_relation (gw_applet->pref_basic_update_btn, gw_applet->pref_basic_update_spin,                                             ATK_RELATION_CONTROLLER_FOR);
-
-    add_atk_relation (gw_applet->pref_basic_update_spin, gw_applet->pref_basic_update_btn,                                             ATK_RELATION_CONTROLLED_BY);
-
-    /* Accessible Name and Description for the components in Preference Dialog */
-   
-    set_access_namedesc (gw_applet->pref_basic_update_spin, _("Update spin button"),                                      _("Spinbutton for updating"));
-
-}
-
 static void change_cb (GtkButton *button, gpointer user_data)
 {
     GWeatherApplet *gw_applet = user_data;
@@ -326,10 +306,21 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     			     gw_applet->gweather_pref.update_enabled);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn), 
     				 gw_applet->gweather_pref.update_enabled);
+    add_atk_relation (gw_applet->pref_basic_update_spin, 
+			      gw_applet->pref_basic_update_btn,                                             			 	 	              ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_basic_update_btn, 
+			      gw_applet->pref_basic_update_spin, 
+			      ATK_RELATION_CONTROLLER_FOR);
+    set_access_namedesc (gw_applet->pref_basic_update_spin, 
+				      _("Update spin button"),
+				      _("Spinbutton for updating"));
 
     pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
     gtk_box_pack_start (GTK_BOX (hbox2), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
+    add_atk_relation (gw_applet->pref_basic_update_spin, pref_basic_update_sec_lbl,
+                                            ATK_RELATION_LABELLED_BY);
+    
 
     vbox2 = hig_category_new (vbox, _("Display"), FALSE, FALSE);
 
@@ -364,9 +355,14 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     		      G_CALLBACK (num_forecasts_changed), gw_applet);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
     gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
+    add_atk_relation (spin, label, ATK_RELATION_LABELLED_BY);
+    set_access_namedesc (spin, 
+				      _("Number of days spin button"),
+				      _("Spinbutton for determining the number of days to show on the panel"));
     
     label = gtk_label_new_with_mnemonic (_("days"));
     gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, TRUE, 0);
+    add_atk_relation (spin, label, ATK_RELATION_LABELLED_BY);
 
   /*
    * Location page.
@@ -405,6 +401,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_table_attach (GTK_TABLE (table), scrolled, 0, 1, 1, 2,
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+    add_atk_relation (scrolled, label, ATK_RELATION_LABELLED_BY);
 
     label = gtk_label_new_with_mnemonic (_("Available c_ities:"));    
     gtk_widget_show (label);
@@ -419,15 +416,10 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_table_attach (GTK_TABLE (table), scrolled, 1, 2, 1, 2,
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
+    add_atk_relation (scrolled, label, ATK_RELATION_LABELLED_BY);
 
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
     		      G_CALLBACK (response_cb), gw_applet);
-#if 0   
-    gweather_pref_set_accessibility (gw_applet); 
-    add_atk_relation (gw_applet->pref_basic_update_spin, pref_basic_update_sec_lbl,
-                                            ATK_RELATION_LABELLED_BY);
-    add_atk_relation (gw_applet->pref_basic_radar_url_entry, label, ATK_RELATION_LABELLED_BY);
- #endif
 
     gtk_widget_show_all (gw_applet->pref);
     fetch_countries (gw_applet);

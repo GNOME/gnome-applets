@@ -85,7 +85,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
   	gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
-						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+						  GTK_STOCK_OK, GTK_RESPONSE_OK,
 						  NULL);
   	gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->gweather_dialog), 
   				   GTK_RESPONSE_CLOSE);
@@ -199,6 +199,9 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 	g_object_unref (G_OBJECT (model));
 	gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (tree), TRUE);
 	gtk_container_add (GTK_CONTAINER (scrolled), tree);
+	set_access_namedesc (tree, 
+				         _("Forecast list"),
+				         _("Shows forecast details for each day"));
 
 	for (i=0; i<4; i++) {
 		cell = gtk_cell_renderer_text_new ();
