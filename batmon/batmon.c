@@ -221,7 +221,12 @@ create_batmon_widget (GtkWidget *window)
 {
 	GtkWidget *button;
 	GtkWidget *pixmap;
-	
+
+	/* drmike - the function init_module() below isnt getting called */
+	/*          lets at least be sure these get set                  */
+	ac_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-ac.xpm");
+	bat_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-bat.xpm");
+
 	button = gtk_button_new ();
 
 	pixmap = gnome_pixmap_new_from_file (ac_pixmap_filename);
