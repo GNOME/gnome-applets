@@ -1282,7 +1282,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
         	GtkTreeIter iter;
         	
 		gtk_list_store_append (GTK_LIST_STORE (model), &iter);
-		gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, cdata->name, 1, cdata, -1);
+		gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, _(cdata->name), 1, cdata, -1);
 		if (cdata->channel == data->mixerchannel) {
 			GtkTreePath *path;
 			path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), &iter);
