@@ -46,8 +46,6 @@
 
 extern gboolean gail_loaded;
 
-static GtkWidget *propwindow = NULL;
-
 typedef struct _KeymapData KeymapData;
 struct _KeymapData
 {
@@ -400,7 +398,7 @@ window_response (GtkWidget *w, int response, gpointer data)
                           (GTK_TREE_VIEW (pbi->list))));
     g_free (pbi);
     gtk_widget_destroy (w);
-    propwindow = NULL;
+    gkb->propwindow = NULL;
     gkb->addwindow = NULL;/*The add window gets destroyed with parent if open */
   }
        
@@ -408,7 +406,7 @@ window_response (GtkWidget *w, int response, gpointer data)
 
 
 static GtkWidget *
-gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
+gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi, GKB *gkb)
 {
   GtkWidget *propnotebook;
   GtkWidget *display_frame;
@@ -421,16 +419,16 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   GtkWidget *page_2_label;
 
   /* Create property box */
-  propwindow = gtk_dialog_new_with_buttons (_("Keyboard Layout Switcher Preferences"), NULL,
+  gkb->propwindow = gtk_dialog_new_with_buttons (_("Keyboard Layout Switcher Preferences"), NULL,
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                             NULL);
-  gtk_window_set_screen (GTK_WINDOW (propwindow),
+  gtk_window_set_screen (GTK_WINDOW (gkb->propwindow),
 			 gtk_widget_get_screen (pbi->gkb->applet));
 
   propnotebook =  gtk_notebook_new ();
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), propnotebook,
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gkb->propwindow)->vbox), propnotebook,
                       TRUE, TRUE, 0);
                               
   gtk_widget_show (propnotebook);
@@ -461,11 +459,11 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   gtk_box_pack_start (GTK_BOX (page_2_vbox), display_frame, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_frame, TRUE, FALSE, 2);
 
-  g_signal_connect (G_OBJECT (propwindow), "response",
+  g_signal_connect (G_OBJECT (gkb->propwindow), "response",
                     G_CALLBACK (window_response),
                     pbi);
 
-  return propwindow;
+  return gkb->propwindow;
 }
 
 void	
@@ -475,10 +473,10 @@ properties_dialog (BonoboUIComponent *uic,
 {
   GkbPropertyBoxInfo *pbi;
   
-  if (propwindow) {
-	gtk_window_set_screen (GTK_WINDOW (propwindow),
+  if (gkb->propwindow) {
+	gtk_window_set_screen (GTK_WINDOW (gkb->propwindow),
 			       gtk_widget_get_screen (gkb->applet));
-  	gtk_window_present (GTK_WINDOW (propwindow));
+  	gtk_window_present (GTK_WINDOW (gkb->propwindow));
   	return;
   }
   
@@ -494,7 +492,7 @@ properties_dialog (BonoboUIComponent *uic,
   pbi->hotkey_entry = NULL;
   pbi->selected_keymap = NULL;
 
-  pbi->box = gkb_prop_create_property_box (pbi);
+  pbi->box = gkb_prop_create_property_box (pbi, gkb);
 
   gtk_widget_show_all (pbi->box);
   

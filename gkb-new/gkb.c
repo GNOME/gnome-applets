@@ -807,6 +807,9 @@ static void gkb_destroy (GtkWidget * widget, gpointer data) {
 	cmd = g_strdup_printf ("xmodmap %s/.gkb_default.xmm", g_get_home_dir ());
 	system (cmd);
 	g_free (cmd);
+	
+	if (gkb->propwindow)
+		gtk_widget_destroy (gkb->propwindow);
 
 	g_free(gkb);
 }
