@@ -1,3 +1,49 @@
+1999-07-10  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+	* gnome-applets take 2.  Miguel did a copy on the cvs machine of
+	gnome-core/applets to gnome-applets, so now this has the CVS 
+	history.  I then synched it back to the changes that were needed
+	to make it its own module.
+
+Tue Jul  6 10:31:36 1999  John Ellis  <johne@bellatlantic.net>
+
+	* configure.in (AC_OUTPUT): Added clockmail/themes directories.
+
+1999-07-05  Raja R Harinath  <harinath@cs.umn.edu>
+
+	* configure.in (GNOME_INIT): Use instead of GNOME_INIT_HOOK.
+	* Makefile.am (macros/macros.dep): Add rule for updating
+	aclocal.m4. 
+
+1999-07-05  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+	* The gnome-core/gnome-applets split.  Moved applets here
+	from gnome-core/applets.
+
+	* MAINTAINERS: new file to make the gnome-applets-maint@gnome.org
+	mailing list work
+
+	* geyes/: gEyes applet
+
+	* sound-monitor/: esd sound monitor applet
+
+	* tickastat/: file tailing/load monitoring/core dump catching
+	applet
+	
+	* */Makefile.am: use $(GNOME_APPLETS_LIBS) instead of lots
+	of other vars; don't include ../panel; misc fixes to work
+	with the new module
+
+Tue Jun 22 04:48:51 1999  John Ellis  <johne@bellatlantic.net>
+
+	* properties.c (property_load): Fix for newest esound, make sure
+	esd_host is NULL for local machine.
+
+Tue Jun 22 04:48:51 1999  John Ellis  <johne@bellatlantic.net>
+
+	* properties.c (property_load): Fix for newest esound, make sure
+	esd_host is NULL for local machine.
+
 1999-07-06  Anders Carlsson  <anders.carlsson@tordata.se>
 
 	* tasklist/*: Added tasklist applet
