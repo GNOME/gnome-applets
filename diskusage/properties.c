@@ -31,6 +31,7 @@ void start_timer( void );
 void load_properties( char *path, diskusage_properties *prop )
 {
 	gnome_config_push_prefix (path);
+	prop->startfs   = gnome_config_get_int    ("disk/startfs=0");
 	prop->ucolor	= gnome_config_get_string ("disk/ucolor=#cf5f5f");
 	prop->fcolor	= gnome_config_get_string ("disk/fcolor=#008f00");
 	prop->tcolor	= gnome_config_get_string ("disk/tcolor=#bbbbbb");
@@ -47,6 +48,7 @@ void load_properties( char *path, diskusage_properties *prop )
 void save_properties( char *path, diskusage_properties *prop )
 {
 	gnome_config_push_prefix (path);
+	gnome_config_set_int   ( "disk/startfs", prop->startfs );
 	gnome_config_set_string( "disk/ucolor", prop->ucolor );
 	gnome_config_set_string( "disk/fcolor", prop->fcolor );
 	gnome_config_set_string( "disk/tcolor", prop->tcolor );

@@ -428,7 +428,7 @@ static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e,
 	if (summary_info.selected_filesystem >= summary_info.n_filesystems)
 		summary_info.selected_filesystem = 0;
 
-
+	props.startfs = summary_info.selected_filesystem;
 	
 	
 	/* call draw when user left-clicks applet, to avoid delay */
@@ -456,11 +456,17 @@ GtkWidget *diskusage_widget(void)
 
 	summary_info.selected_filesystem = 0;
 
-	/*
 	diskusage_read (&summary_info);
-	summary_info.previous_n_filesystems = summary_info.n_filesystems; 
-	*/
 
+	/* We save the information about the selected filesystem. */
+
+	summary_info.selected_filesystem = props.startfs;
+
+	if (summary_info.selected_filesystem >= summary_info.n_filesystems)
+		summary_info.selected_filesystem = 0;
+
+	props.startfs = summary_info.selected_filesystem;
+	
 	box = gtk_vbox_new(FALSE, FALSE);
 	gtk_widget_show(box);
 

@@ -5,6 +5,7 @@
 
 typedef struct 
 {
+	gint startfs;
 	gchar *ucolor;	/* color for used space */
 	gchar *fcolor;	/* color for free space */
 	gchar *tcolor;  /* color for text  */
