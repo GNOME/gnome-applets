@@ -1,3 +1,12 @@
+2002-02-15  Michael Meeks  <michael@ximian.com>
+
+	* battstat_applet.c (pixmap_timeout): kill
+	cut & paste code, and render the pixmap in the
+	right place - gack, prune warnings, queue a
+	redraw when we re-render.
+	kill redundant return's.
+	(simul_cb): queue a re-draw.
+
 2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* GNOME_MultiLoadApplet_Factory.server.in: Mark strings for l10n.

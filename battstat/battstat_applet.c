@@ -295,8 +295,6 @@ apm_readinfo(void)
 	     on unsupported platform */
 	  _("Your platform is not supported!\n"));
   g_print(_("The applet will not work properly (if at all).\n"));
-
-  return;
 }
 #endif 
 
@@ -404,15 +402,12 @@ pixmap_timeout( gpointer data )
    ;
 
    if ( pixmap_index != last_pixmap_index ) {
-     printf ("foo\n");
       gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
-     printf ("foo1\n");
 #ifdef FIXME
       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
 #endif
-     printf ("foo2\n");
    }
 
    if(
@@ -495,8 +490,8 @@ pixmap_timeout( gpointer data )
 	 snprintf(new_label, sizeof(new_label),_("N/A"));
       }
 
-      gtk_label_set_text ( GTK_LABEL (battery->percent), new_label);
-      gtk_label_set_text ( GTK_LABEL (battery->statuspercent), new_label);
+      gtk_label_set_text (GTK_LABEL (battery->percent), new_label);
+      gtk_label_set_text (GTK_LABEL (battery->statuspercent), new_label);
       
       if (batt_life <= battery->red_val) {
 	 color=red;
@@ -546,28 +541,6 @@ pixmap_timeout( gpointer data )
 				 i+2, pixel_offset_top[i]+progress_value);
 	       }
 	    }
-    
-	    if(battery->horizont) {
-	      GdkPixmap *pixmap;
-	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwid), &pixmap, NULL);
-	      gdk_draw_pixmap(pixmap,
-			      battery->pixgc,
-			      battery->pixmap,
-			      0,0,
-			      0,2,
-			      -1,-1);
-	    }
-	    else {
-	      GdkPixmap *pixmap;
-	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwidy), &pixmap, NULL);
-	      gdk_draw_pixmap(pixmap,
-			      battery->pixgc,
-			      battery->pixmapy,
-			      0,0,
-			      2,1,
-			      -1,-1);
-	    }
-
 	 } else {
 	    progress_value = PROGLEN*batt_life/100.0;
 	    
@@ -606,28 +579,27 @@ pixmap_timeout( gpointer data )
 				    i+2, x);
 	       }
 	    }
-    
-	    if(battery->horizont) {
-	      GdkPixmap *pixmap;
-	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwid), &pixmap, NULL);
-	      gdk_draw_pixmap(pixmap,
-			      battery->pixgc,
-			      battery->pixmap,
-			      0,0,
-			      0,2,
-			      -1,-1);
-	    }
-	    else {
-	      GdkPixmap *pixmap;
-	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwidy), &pixmap, NULL);
-	      gdk_draw_pixmap(pixmap,
-			      battery->pixgc,
-			      battery->pixmapy,
-			      0,0,
-			      2,1,
-			      -1,-1);
-	    }
+	 }
 
+	 if(battery->horizont) {
+	    GdkPixmap *pixmap;
+	    gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwid), &pixmap, NULL);
+	    gdk_draw_pixmap(pixmap,
+			    battery->pixgc,
+			    battery->pixmap,
+			    0,0,
+			    0,0,
+			    -1,-1);
+	 }
+	 else {
+	    GdkPixmap *pixmap;
+	    gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwidy), &pixmap, NULL);
+	    gdk_draw_pixmap(pixmap,
+			    battery->pixgc,
+			    battery->pixmapy,
+			    0,0,
+			    0,0,
+			    -1,-1);
 	 }
       }
       
@@ -699,11 +671,13 @@ pixmap_timeout( gpointer data )
    last_acline_status = acline_status;
    last_pixmap_index = pixmap_index;
 
-   return(TRUE);
+   gtk_widget_queue_draw (GTK_WIDGET (battery->statuspixmapwid));
+
+   return TRUE;
 }
 
 void
-destroy_applet( GtkWidget *widget, gpointer data )
+destroy_applet (GtkWidget *widget, gpointer data)
 {
    ProgressData *pdata = data;
    
@@ -839,7 +813,6 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
       gettext_noop ("Critical"),
       /* Charging = The APM BIOS thinks that the battery is recharging.*/
       gettext_noop ("Charging")};
-   int width;
    battstat->orienttype=o;
    
    if (DEBUG) g_print("change_orient()\n");
@@ -1049,14 +1022,14 @@ font_set_cb (GtkWidget *ignored, int page, gpointer data)
 }
 
 void
-simul_cb(GtkWidget *ignored, gpointer data)
+simul_cb (GtkWidget *ignored, gpointer data)
 {
    ProgressData *battery = data;
    gchar new_label[40];
    GdkColor *color, *darkcolor;
    gint slidervalue;
    gint prefred, preforange, prefyellow, progress_value, i, x;
-   
+
    slidervalue=(int)GTK_ADJUSTMENT (battery->testadj)->value;
    prefyellow = (int) GTK_ADJUSTMENT (battery->eyellow_adj)->value;
    preforange =(int) GTK_ADJUSTMENT (battery->eorange_adj)->value;
@@ -1125,11 +1098,11 @@ simul_cb(GtkWidget *ignored, gpointer data)
 	 }
       }
    }
-   return;
+   gtk_widget_queue_draw (GTK_WIDGET (battery->testpixmapwid));
 }
 
 void
-adj_value_changed_cb ( GtkAdjustment *ignored, gpointer data )
+adj_value_changed_cb (GtkAdjustment *ignored, gpointer data)
 {
    ProgressData *battstat = data;
    
@@ -1143,8 +1116,6 @@ adj_value_changed_cb ( GtkAdjustment *ignored, gpointer data )
    battstat->colors_changed = TRUE;
    simul_cb(NULL, battstat);
    battstat->colors_changed = FALSE;
-   
-   return;
 }
 
 #if 0
@@ -1174,8 +1145,6 @@ build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
 			 battstat->eventdock,
 			 "Add code here",
 			 NULL);
-   
-   return;
 }
 #endif
 

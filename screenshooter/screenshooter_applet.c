@@ -432,6 +432,7 @@ cb_properties_dialog (BonoboUIComponent *uic, gpointer data, const gchar *verbna
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->spurious);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) spurious_cb, &(ad->spurious));
+  g_signal_connect (button, 
   gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 

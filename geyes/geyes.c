@@ -297,7 +297,7 @@ create_eyes (PanelApplet *applet)
 static void
 destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 {
-	g_print ("destroy \n");
+	g_warning ("destroy eyes control!");
 	gtk_timeout_remove (eyes_applet->timeout_id);
 }
 
