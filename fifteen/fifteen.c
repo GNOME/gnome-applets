@@ -11,10 +11,10 @@
 #include <applet-widget.h>
 
 
+/* the piece size is for 48 and will be scaled to the proper size */
 #define PIECE_SIZE 11
 #define PIECE_FONT "5x8"
 #define SCRAMBLE_MOVES 256
-
 
 static void
 free_stuff (GtkObject *object, gpointer data)
@@ -131,31 +131,36 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 }
 
 static GtkWidget *
-create_fifteen (void)
+create_fifteen (int size, GtkWidget **canvas)
 {
 	GtkWidget *frame;
-	GtkWidget *canvas;
 	GnomeCanvasItem **board;
 	GnomeCanvasItem *text;
 	int i, x, y;
 	char buf[20];
+	double scale_factor = size/48.0;
 
 	frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
 
-	canvas = gnome_canvas_new ();
-	gtk_widget_set_usize (canvas, PIECE_SIZE * 4, PIECE_SIZE * 4);
-	gnome_canvas_set_scroll_region (GNOME_CANVAS (canvas), 0, 0, PIECE_SIZE * 4, PIECE_SIZE * 4);
-	gtk_container_add (GTK_CONTAINER (frame), canvas);
-	gtk_widget_show (canvas);
+	*canvas = gnome_canvas_new ();
+	gnome_canvas_set_pixels_per_unit (GNOME_CANVAS (*canvas),
+					  scale_factor);
+	gtk_widget_set_usize (*canvas, scale_factor * PIECE_SIZE * 4,
+			      PIECE_SIZE * 4);
+	gnome_canvas_set_scroll_region (GNOME_CANVAS (*canvas), 0, 0,
+					PIECE_SIZE * 4, PIECE_SIZE * 4);
+	gnome_canvas_scroll_to (GNOME_CANVAS (*canvas), 0, 0);
+	gtk_container_add (GTK_CONTAINER (frame), *canvas);
+	gtk_widget_show (*canvas);
 
-	gtk_object_set_user_data (GTK_OBJECT (frame), canvas);
+	gtk_object_set_user_data (GTK_OBJECT (frame), *canvas);
 
 	/* Create the board */
 
 	board = g_new (GnomeCanvasItem *, 16);
-	gtk_object_set_user_data (GTK_OBJECT (canvas), board);
-	gtk_signal_connect (GTK_OBJECT (canvas), "destroy",
+	gtk_object_set_user_data (GTK_OBJECT (*canvas), board);
+	gtk_signal_connect (GTK_OBJECT (*canvas), "destroy",
 			    (GtkSignalFunc) free_stuff,
 			    board);
 
@@ -163,7 +168,7 @@ create_fifteen (void)
 		y = i / 4;
 		x = i % 4;
 
-		board[i] = gnome_canvas_item_new (GNOME_CANVAS_GROUP (GNOME_CANVAS (canvas)->root),
+		board[i] = gnome_canvas_item_new (GNOME_CANVAS_GROUP (GNOME_CANVAS (*canvas)->root),
 						  gnome_canvas_group_get_type (),
 						  "x", (double) (x * PIECE_SIZE),
 						  "y", (double) (y * PIECE_SIZE),
@@ -275,27 +280,48 @@ about (AppletWidget *applet, gpointer data)
 	gtk_widget_show(about_box);
 }
 
+static void
+change_pixel_size(GtkWidget *w, int size, gpointer data)
+{
+	GnomeCanvas *canvas = data;
+	double scale_factor = size/48.0;
+
+	gnome_canvas_set_pixels_per_unit (canvas, scale_factor);
+
+	gtk_widget_set_usize (GTK_WIDGET (canvas),
+			      scale_factor * PIECE_SIZE * 4,
+			      scale_factor * PIECE_SIZE * 4);
+	gnome_canvas_scroll_to (canvas, 0, 0);
+}
+
 int
 main (int argc, char **argv)
 {
 	GtkWidget *applet;
 	GtkWidget *fifteen;
+	GtkWidget *canvas = NULL;
+	int size;
 
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
 	applet_widget_init ("fifteen_applet", VERSION, argc,
-				     argv, NULL, 0, NULL);
+			    argv, NULL, 0, NULL);
 
 	applet = applet_widget_new ("fifteen_applet");
 	if (!applet)
 		g_error (_("Can't create fifteen applet!"));
 
-	fifteen = create_fifteen ();
+	size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
+	fifteen = create_fifteen (size, &canvas);
 	applet_widget_add (APPLET_WIDGET (applet), fifteen);
 	gtk_widget_show (fifteen);
 
 	gtk_widget_show (applet);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(change_pixel_size),
+			   canvas);
 
 	applet_widget_register_callback (APPLET_WIDGET (applet),
 					 "scramble",
