@@ -1,3 +1,11 @@
+2001-09-13  Jim Garrison  <garrison@users.sourceforge.net>
+
+	* Makefile.am: using gnome-vfs instead of ghttp
+	* gtik.c: (xfer_callback), (updateOutput), (properties_load),
+	(apply_cb), (font_selector), (main): uses gnome-vfs for async
+	ops; applied patch from kjartan to only allow one fonts box
+	open at a time; fixed bug which made update interval useless
+
 2001-09-10  Maciej Stachowiak  <mjs@noisehavoc.org>
 
 	* Makefile.am: handle gnome-vfs LIBS and CFLAGS properly.
