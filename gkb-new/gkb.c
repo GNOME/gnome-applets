@@ -94,8 +94,8 @@ gkb_draw (GKB * gkb)
       g_return_if_fail (gkb->keymap != NULL);
       g_return_if_fail (gkb->keymap->pixbuf != NULL);
       
-      tmp = gdk_pixbuf_scale_simple (gkb->keymap->pixbuf, gkb->w, 
-      				     gkb->h, GDK_INTERP_HYPER); 
+      tmp = gdk_pixbuf_scale_simple (gkb->keymap->pixbuf, gkb->w * 0.9, 
+      				     gkb->h * 0.9, GDK_INTERP_HYPER); 
       if (tmp) {     
         gtk_image_set_from_pixbuf (GTK_IMAGE (gkb->image), tmp);
         g_object_unref (tmp);
@@ -206,9 +206,9 @@ gkb_count_sizes (GKB * gkb)
 	applet_width += label_width;
     }
 
-  gkb->w = flag_width;
-  /* FIXME the applet is just a little bigger than panel, so I add the -1 here*/
-  gkb->h = flag_height - 1; 
+  gkb->w = flag_width - 1;
+  /* FIXME the applet is just a little bigger than panel, so I add the -2 here*/
+  gkb->h = flag_height - 1;
   gtk_widget_set_size_request (gkb->label_frame1, gkb->w, gkb->h);
   gtk_widget_set_size_request (gkb->label_frame2, gkb->w, gkb->h);
   gtk_widget_set_size_request (gkb->darea_frame, gkb->w, gkb->h);
@@ -540,7 +540,7 @@ create_gkb_widget (GKB *gkb)
                     G_CALLBACK (gkb_button_press_event_cb), gkb);
 
   gkb->darea_frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_IN);
+  gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_OUT);
   gtk_container_add (GTK_CONTAINER (gkb->darea_frame), gkb->image);
   gtk_box_pack_start (GTK_BOX (gkb->vbox), gkb->darea_frame, TRUE, TRUE, 0);
 #if 0
