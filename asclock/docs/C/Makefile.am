@@ -1,4 +1,4 @@
-figs = asclock_applet asclock_settings
+figs = asclock_applet.png asclock_settings.png
 applet = asclock
 lang = C
 sgml_ents = $(applet).sgml
