@@ -88,7 +88,6 @@ static gchar* glade_file=NULL;
 
 static void show_error_dialog (gchar*,...);
 static void show_warning_dialog (gchar*,...);
-static void show_message_dialog (gchar*,...);
 static int wireless_applet_timeout_handler (WirelessApplet *applet);
 static void wireless_applet_properties_dialog (BonoboUIComponent *uic,
 		WirelessApplet *applet);
@@ -328,25 +327,6 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 			"wireless-applet/", FALSE, NULL);
 	dir = opendir (pixmapdir);
 
-	/* blank out */
-	if (applet->images) {
-		int j;
-		g_list_foreach (applet->no_link_images, (GFunc)g_object_unref, NULL);
-		g_list_free (applet->no_link_images);
-		applet->no_link_images = NULL;
-
-		g_list_foreach (applet->broken_images, (GFunc)g_object_unref, NULL);
-		g_list_free (applet->broken_images);
-		applet->broken_images = NULL;
-
-		g_list_foreach (applet->images, (GFunc)g_object_unref, NULL);
-		g_list_free (applet->images);
-		applet->images = NULL;
-		for (j=0; j < 101; j++) {
-			applet->pixmaps[j] = NULL;
-		}
-	}
-
 	if (!dir) {
 		show_error_dialog (_("The images necessary to run the wireless monitor are missing.\nPlease make sure that it is correctly installed."));
 	} else 
@@ -359,17 +339,7 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 				}
 			}
 		}
-#if 0
-	if (applet->no_link_images && g_list_length (applet->no_link_images) > 1) {
-		applet->no_link_images = g_list_sort (applet->no_link_images,
-							  (GCompareFunc)g_ascii_strncasecmp);
-	}
-	
-	if (applet->broken_images && g_list_length (applet->broken_images) > 1) {
-		applet->broken_images = g_list_sort (applet->broken_images,
-							 (GCompareFunc)g_ascii_strncasecmp);
-	}
-#endif
+
 	g_free (pixmapdir);
 }
 
@@ -496,25 +466,6 @@ show_warning_dialog (gchar *mesg,...)
 	tmp = g_strdup_vprintf (mesg,ap);
 	dialog = gtk_message_dialog_new (NULL,
 			0, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
-			mesg, NULL);
-	gtk_dialog_run (GTK_DIALOG (dialog));
-	gtk_widget_destroy (dialog);
-	g_free (tmp);
-	va_end (ap);
-}
-
-
-static void
-show_message_dialog (char *mesg,...)
-{
-	GtkWidget *dialog;
-	char *tmp;
-	va_list ap;
-
-	va_start (ap,mesg);
-	tmp = g_strdup_vprintf (mesg,ap);
-	dialog = gtk_message_dialog_new (NULL,
-			0, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
