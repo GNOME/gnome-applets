@@ -1653,16 +1653,13 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 
 static void
 get_channel (MixerData *data)
-{	
-#ifdef OSS_API
+{
 	PanelApplet *applet = PANEL_APPLET (data->applet);
-	gint num;
-	
-	num = panel_applet_gconf_get_int (applet, "channel", NULL);
-	num = CLAMP (num, 0,  SOUND_MIXER_NRDEVICES-1);	
-	data->mixerchannel = num;
-#endif
+	int num;
 
+	num = panel_applet_gconf_get_int (applet, "channel", NULL);
+	num = CLAMP (num, 0, g_list_length (data->channels) - 1);
+	data->mixerchannel = num;
 }
 
 static void
