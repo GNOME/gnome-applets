@@ -26,3 +26,5 @@ EXTRA_DIST = gnomepager_applet.desktop gnomepager_applet.gnorba
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gnomepager_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = gnomepager_applet.gnorba 

@@ -538,7 +538,7 @@ client_win_show(Task *t)
   Atom                a1, a2, a3, *prop;
   XClientMessageEvent ev;
   unsigned long       lnum, ldummy;
-  int                 num, i, foc, dummy;
+  int                 num, i, foc, dummy, x, y;
   
   gdk_error_warnings = 0;
   a1 = XInternAtom(GDK_DISPLAY(), "WM_TAKE_FOCUS", False);
@@ -574,6 +574,10 @@ client_win_show(Task *t)
   XMapWindow(GDK_DISPLAY(), t->win);
   if ((!t->sticky) && (t->desktop != current_desk - 1))
     gnome_win_hints_set_current_workspace(t->desktop);
+  x = ((gdk_screen_width() * area_x) + (t->x + (t->w / 2)));
+  y = ((gdk_screen_height() * area_y) + (t->y + (t->h / 2)));
+  desktop_set_area(x / gdk_screen_width(), y / gdk_screen_height());
+  /***/
   XSync(GDK_DISPLAY(), False);
 }
 
@@ -1675,7 +1679,7 @@ void
 init_applet_gui_horiz(void)
 {
   GtkWidget *hbox, *frame, *button, *arrow, *table;
-  GtkWidget *desk, *align;
+  GtkWidget *desk, *align, *vbox;
   gint i, j, k;
   
   if (main_box)
@@ -1728,7 +1732,10 @@ init_applet_gui_horiz(void)
   button = gtk_button_new();
   gtk_widget_show(button);
   gtk_container_add(GTK_CONTAINER(button), arrow);
-  gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+  vbox = gtk_vbox_new(FALSE, 0);
+  gtk_widget_show(vbox);
+  gtk_box_pack_start(GTK_BOX(hbox), vbox, FALSE, FALSE, 0);
+  gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
   gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		     GTK_SIGNAL_FUNC(showpop_cb), NULL);
 
@@ -1754,7 +1761,7 @@ void
 init_applet_gui_vert(void)
 {
   GtkWidget *vbox, *frame, *button, *arrow, *table;
-  GtkWidget *desk, *align;
+  GtkWidget *desk, *align, *hbox;
   gint i, j, k;
   
   if (main_box)
@@ -1807,7 +1814,10 @@ init_applet_gui_vert(void)
   button = gtk_button_new();
   gtk_widget_show(button);
   gtk_container_add(GTK_CONTAINER(button), arrow);
-  gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  hbox = gtk_hbox_new(FALSE, 0);
+  gtk_widget_show(hbox);
+  gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+  gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
   gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		     GTK_SIGNAL_FUNC(showpop_cb), NULL);
 
