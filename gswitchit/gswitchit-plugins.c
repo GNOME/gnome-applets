@@ -348,6 +348,8 @@ main (int argc, char **argv)
 	GSwitchItPluginManagerInit (&gswic.pluginManager);
 	GSwitchItXkbConfigLoad (&gswic.xkbConfig);
 	GSwitchItAppletConfigLoad (&gswic.appletConfig);
+	if (gswic.appletConfig.debugLevel != -1)
+		XklSetDebugLevel (gswic.appletConfig.debugLevel);
 	CappletSetup (&gswic);
 	bonobo_main ();
 	GSwitchItPluginManagerTerm (&gswic.pluginManager);
