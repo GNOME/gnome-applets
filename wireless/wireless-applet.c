@@ -210,7 +210,8 @@ wireless_applet_start_animation (WirelessApplet *applet)
 static void
 wireless_applet_stop_animation (WirelessApplet *applet) 
 {
-	gtk_timeout_remove (applet->animate_timer);
+	if (applet->animate_timer > 0)
+		gtk_timeout_remove (applet->animate_timer);
 	gtk_image_set_from_file (GTK_IMAGE (applet->pixmap),
 			applet->current_pixmap);	
 }
