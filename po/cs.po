@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-14 11:18+0200\n"
-"PO-Revision-Date: 2004-10-14 14:22+0200\n"
+"POT-Creation-Date: 2004-10-19 11:20+0200\n"
+"PO-Revision-Date: 2004-10-19 14:59+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generátor pro stavový aplet AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1332
+#: accessx-status/applet.c:1335
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
@@ -82,7 +82,7 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2468
 #: mini-commander/src/about.c:50 modemlights/modemlights.c:118
 #: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:572 trashapplet/src/trashapplet.c:522
+#: wireless/wireless-applet.c:572 trashapplet/src/trashapplet.c:434
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -92,8 +92,8 @@ msgstr ""
 "Michal Bukovjan <bukm@centrum.cz>\n"
 "Miloslav Trmač <mitr@volny.cz>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:992
-#: accessx-status/applet.c:1132 accessx-status/applet.c:1335
+#: accessx-status/applet.c:157 accessx-status/applet.c:995
+#: accessx-status/applet.c:1135 accessx-status/applet.c:1338
 msgid "AccessX Status"
 msgstr "Stav AccessX"
 
@@ -105,39 +105,39 @@ msgstr "Copyright © 2003 Sun Microsystems"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikátorů"
 
-#: accessx-status/applet.c:195
+#: accessx-status/applet.c:198
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Při spouštění zobrazení nápovědy došlo k chybě: %s"
 
-#: accessx-status/applet.c:234
+#: accessx-status/applet.c:237
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Při spouštění capletu klávesnice došlo k chybě: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:483 accessx-status/applet.c:521
+#: accessx-status/applet.c:486 accessx-status/applet.c:524
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:993 accessx-status/applet.c:1133
+#: accessx-status/applet.c:996 accessx-status/applet.c:1136
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Zobrazuje stav klávesnice, když se používají funkce zpřístupnění."
 
-#: accessx-status/applet.c:1027
+#: accessx-status/applet.c:1030
 msgid "XKB Extension is not enabled"
 msgstr "Rozšíření XKB není povoleno"
 
-#: accessx-status/applet.c:1032
+#: accessx-status/applet.c:1035
 msgid "Unknown error"
 msgstr "Neznámá chyba"
 
-#: accessx-status/applet.c:1040
+#: accessx-status/applet.c:1043
 #, c-format
 msgid "Error: %s"
 msgstr "Chyba: %s"
 
-#: accessx-status/applet.c:1337
+#: accessx-status/applet.c:1340
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
@@ -559,7 +559,7 @@ msgstr "_Žlutá:"
 #: stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
-#: trashapplet/src/trashapplet.c:510
+#: trashapplet/src/trashapplet.c:422
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -6308,42 +6308,37 @@ msgstr "Umístit koč na panel"
 msgid "Trash Applet"
 msgstr "Aplet koše"
 
-#: trashapplet/src/trashapplet.c:122
+#: trashapplet/src/trashapplet.c:123
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Nemohu najít adresář koše: %s"
 
-#: trashapplet/src/trashapplet.c:145
-#, c-format
-msgid "GNOME VFS Error: %s"
-msgstr "Chyba GNOME VFS: %s"
-
-#: trashapplet/src/trashapplet.c:276
+#: trashapplet/src/trashapplet.c:232
 msgid "No Items in Trash"
 msgstr "Žádná položka v koši"
 
-#: trashapplet/src/trashapplet.c:279
+#: trashapplet/src/trashapplet.c:235
 msgid "1 Item in Trash"
 msgstr "1 položka v koši"
 
-#: trashapplet/src/trashapplet.c:282
+#: trashapplet/src/trashapplet.c:238
 #, c-format
 msgid "%d Items in Trash"
 msgstr "%d položek v koši"
 
-#: trashapplet/src/trashapplet.c:362
+#: trashapplet/src/trashapplet.c:318
 msgid "Are you sure you want to empty all of the items from the trash?"
 msgstr "Opravdu chcete odstranit všechny položky z koše?"
 
-#: trashapplet/src/trashapplet.c:376
+#: trashapplet/src/trashapplet.c:332
 msgid "If you empty the trash, items will be permanently deleted."
 msgstr "Pokud vyprázdníte koš, položky budou natrvalo odstraněny."
 
-#: trashapplet/src/trashapplet.c:388
+#: trashapplet/src/trashapplet.c:344
 msgid "_Empty"
 msgstr "_Vyprázdnit"
 
-#: trashapplet/src/trashapplet.c:489
+#: trashapplet/src/trashapplet.c:401
 #, c-format
 msgid ""
 "Error while spawing nautilus:\n"
@@ -6352,15 +6347,28 @@ msgstr ""
 "Chyba při spouštění nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:537
+#: trashapplet/src/trashapplet.c:449
 msgid "Copyright (c) 2004 Michiel Sikkes"
 msgstr "Copyright © 2004 Michiel Sikkes"
 
-#: trashapplet/src/trashapplet.c:538
+#: trashapplet/src/trashapplet.c:450
 msgid "The GNOME Trash Applet"
 msgstr "GNOME aplet koše"
 
-#: trashapplet/src/trashapplet.c:623
+#: trashapplet/src/trashapplet.c:509
+msgid "Delete Immediately?"
+msgstr "Hned odstranit?"
+
+#: trashapplet/src/trashapplet.c:538
+msgid "Cannot move items to trash, do you want to delete them immediately?"
+msgstr "Nemohu přesunout položky do koše, chcete je odstranit okamžitě?"
+
+#: trashapplet/src/trashapplet.c:541
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
+msgstr "Nemohu přesunout některé položky do koše, chcete je odstranit okamžitě?"
+
+#: trashapplet/src/trashapplet.c:639 trashapplet/src/trashapplet.c:656
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -6369,9 +6377,11 @@ msgstr ""
 "Nemohu přesunout do koše:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:808
-msgid "Unable to acquire monitor of the Trash directory"
-msgstr "Nemohu získat sledování adresáře koše"
+#~ msgid "GNOME VFS Error: %s"
+#~ msgstr "Chyba GNOME VFS: %s"
+
+#~ msgid "Unable to acquire monitor of the Trash directory"
+#~ msgstr "Nemohu získat sledování adresáře koše"
 
 #~ msgid "Main Volume"
 #~ msgstr "Hlavní hlasitost"
