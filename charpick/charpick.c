@@ -428,7 +428,7 @@ static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
 static void
 about (AppletWidget *applet, gpointer data)
 {
-  static const char *authors[] = { "Alexandre Muñiz (munizao@cyberhighway.net)", NULL };
+  static const char *authors[] = { "Alexandre Muñiz <munizao@xprt.net", NULL };
   static GtkWidget *about_box = NULL;
 
   if (about_box != NULL)

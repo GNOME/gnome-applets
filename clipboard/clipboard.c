@@ -168,7 +168,7 @@ button_new_with_xpm(GtkWidget *parent, gchar **xpm)
 static void
 about (AppletWidget *applet, gpointer data)
 {
-  static const char *authors[] = {"Alexandre Muñiz (munizao@cyberhighway.net)",
+  static const char *authors[] = {"Alexandre Muñiz <munizao@xprt.net>",
 				  NULL };
   static GtkWidget *about_box = NULL;
 
