@@ -267,6 +267,7 @@ properties_cb (BonoboUIComponent *uic,
 	GtkWidget *categories_vbox;
 	GtkWidget *category_vbox, *control_vbox;
         GtkWidget *tree;
+	GtkWidget *scrolled;
         GtkWidget *label;
         GtkListStore *model;
         GtkTreeViewColumn *column;
@@ -296,9 +297,12 @@ properties_cb (BonoboUIComponent *uic,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 					     NULL);
+
 	gtk_window_set_screen (GTK_WINDOW (pbox),
 			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
-        gtk_window_set_resizable (GTK_WINDOW (pbox), FALSE);
+        
+	gtk_widget_set_size_request (GTK_WIDGET (pbox), 300, 200);
+	gtk_window_set_resizable (GTK_WINDOW (pbox), FALSE);
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
         gtk_dialog_set_has_separator (GTK_DIALOG (pbox), FALSE);
         gtk_container_set_border_width (GTK_CONTAINER (pbox), 5);
@@ -347,12 +351,20 @@ properties_cb (BonoboUIComponent *uic,
 	label = gtk_label_new_with_mnemonic (_("_Select a theme:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 	gtk_box_pack_start (GTK_BOX (control_vbox), label, FALSE, FALSE, 0);
-	
+
+	scrolled = gtk_scrolled_window_new (NULL, NULL);
+	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled), GTK_SHADOW_IN);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled),
+					GTK_POLICY_AUTOMATIC,
+					GTK_POLICY_AUTOMATIC);
+
 	model = gtk_list_store_new (1, G_TYPE_STRING);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
 	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
 	g_object_unref (model);
+
+	gtk_container_add (GTK_CONTAINER (scrolled), tree);
 	
 	cell = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes ("not used", cell,
@@ -407,7 +419,7 @@ properties_cb (BonoboUIComponent *uic,
 	g_free (filename);
 #endif
         
-        gtk_box_pack_start (GTK_BOX (control_vbox), tree, TRUE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (control_vbox), scrolled, TRUE, TRUE, 0);
         
         gtk_widget_show_all (pbox);
         
