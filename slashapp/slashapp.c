@@ -305,8 +305,8 @@ static int http_get_to_file(gchar *host, gint port, gchar *proxy,
 	request = ghttp_request_new();
 
 	if(!request){
-		g_warning(_("Unable to initialize request. Shouldn't 
-					happen\n"));
+		g_warning(_("Unable to initialize request. "
+			    "Shouldn't happen\n"));
 		if(request) ghttp_request_destroy(request);
 		if(uri) g_free(uri);
 		return length;
