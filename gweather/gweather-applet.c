@@ -107,6 +107,38 @@ static void change_size_cb(PanelApplet *w, gint s, gpointer data)
     return;
 }
 
+static void change_background_cb (
+				PanelApplet *a, 
+				PanelAppletBackgroundType type,
+				GdkColor *color, GdkPixmap *pixmap, 
+				gpointer data)
+{
+	GWeatherApplet *gw_applet = (GWeatherApplet *) data;
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+	switch (type) {
+		case PANEL_PIXMAP_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
+			break;
+
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (gw_applet->applet), GTK_STATE_NORMAL, color);
+			break;
+
+		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
+			break;
+
+		default:
+			gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
+			break;
+	}
+
+	gtk_rc_style_unref (rc_style);
+
+	return;
+}
+
 
 static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
@@ -253,6 +285,8 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",
                        G_CALLBACK(change_size_cb), gw_applet);
+    g_signal_connect (G_OBJECT(gw_applet->applet), "change_background",
+		       G_CALLBACK(change_background_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
                        G_CALLBACK (applet_destroy), gw_applet);
     gtk_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
