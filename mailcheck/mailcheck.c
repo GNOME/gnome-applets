@@ -395,10 +395,10 @@ error_handler (int error, gpointer data)
 		break;
 	case INVALID_USER:
 	case INVALID_PASS:
-		details = _("The Username or Password is not correct.");
+		details = _("The username or password is incorrect.");
 		break;	
 	case INVALID_SERVER:
-		details = _("The Server name is be wrong.");
+		details = _("The server name is incorrect.");
 		break;
 	case NO_SERVER_INFO:
 	default:
