@@ -103,7 +103,7 @@ static const BonoboUIVerb applet_menu_verbs [] = {
 /* and the XML definition for the popup menu */
 static const char applet_menu_xml [] =
 "<popup name=\"button3\">\n"
-"   <menuitem name=\"RunGTCD\" verb=\"RunGTCD\" _label=\"Run GTCD...\"\n"
+"   <menuitem name=\"RunGTCD\" verb=\"RunGTCD\" _label=\"Run External CD Player\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-cdrom\"/>\n"
 "   <menuitem name=\"Properties\" verb=\"Properties\" _label=\"Properties...\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
@@ -249,24 +249,66 @@ start_gtcd_cb(GtkWidget *w, gpointer data)
 }
 
 static void
+response_cb (GtkDialog *dialog, gint id, gpointer data)
+{
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    
+}
+
+static void
+activate_cb (GtkEntry *entry, gpointer data)
+{
+    CDPlayerData *cd = data;
+    gchar *newpath, *oldpath;
+    
+    newpath = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+    if(newpath && strlen(newpath) > 2 && strcmp(cd->devpath, newpath))
+            {
+                cd_close(cd);
+                oldpath = cd->devpath;
+                cd->devpath = g_strdup(newpath);
+                if (cd_try_open(cd)) {
+                    cdplayer_save_config(cd);
+                    g_free (oldpath);
+                }
+                else {
+                    g_free (cd->devpath);
+                    cd->devpath = oldpath;
+                    cd_try_open (cd);
+                    gtk_entry_set_text (entry, cd->devpath);
+                }
+            }
+    if (newpath)
+        g_free (newpath);
+}
+
+static void
+focus_out_cb (GtkWidget *widget, GdkEventFocus *event, gpointer data)
+{
+    CDPlayerData *cd = data;
+   
+    activate_cb (GTK_ENTRY (widget), cd);
+    
+}
+
+static void
 properties_cb (GtkWidget *w, gpointer data)
 {
     CDPlayerData *cd;
     GtkWidget *dialog;
     GtkWidget *box;
     GtkWidget *hbox;
-    GtkWidget *frame;
-    GtkWidget *image;
     GtkWidget *label;
+    GtkWidget *image;
     GtkWidget *entry;
     gint response;
 
     cd = (CDPlayerData *) data;
 
-    dialog = gtk_dialog_new_with_buttons(_("CD Player Applet Properties"),
+    dialog = gtk_dialog_new_with_buttons(_("CD Player Properties"),
                                          NULL, GTK_DIALOG_MODAL,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
-                                         GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+                                         NULL);
     box = GTK_DIALOG(dialog)->vbox;
 
     hbox = gtk_hbox_new(FALSE, 0);
@@ -277,24 +319,8 @@ properties_cb (GtkWidget *w, gpointer data)
     gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 10);
     gtk_widget_show(image);
 
-    label = gtk_label_new(_("NOTICE: These is a per-applet settings\n"
-                            "If you change them here, it will only change\n"
-                            "for this applet, allowing each instance to\n"
-                            "control a different cdrom device."));
-    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 10);
-    gtk_widget_show(label);
-
-    frame = gtk_frame_new(_("Settings"));
-    gtk_box_pack_start(GTK_BOX(box), frame, TRUE, TRUE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
-    gtk_widget_show(frame);
-
-    hbox = gtk_hbox_new(FALSE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(hbox), 5);
-    gtk_container_add(GTK_CONTAINER(frame), hbox);
-    gtk_widget_show(hbox);
-
     label = gtk_label_new(_("Device Path:"));
+    gtk_misc_set_padding (GTK_MISC (label), GNOME_PAD_SMALL, 0);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     gtk_widget_show(label);
 
@@ -302,27 +328,16 @@ properties_cb (GtkWidget *w, gpointer data)
     gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
     gtk_widget_show(entry);
     gtk_entry_set_text(GTK_ENTRY(entry), cd->devpath);
+    g_signal_connect (G_OBJECT (entry), "activate",
+    		      G_CALLBACK (activate_cb), cd);
+    g_signal_connect (G_OBJECT (entry), "focus_out_event",
+    		      G_CALLBACK (focus_out_cb), cd);
+    
+    g_signal_connect (G_OBJECT (dialog), "response",
+    		      G_CALLBACK (response_cb), NULL);
 
     gtk_widget_show_all(dialog);
-    do
-    {
-        response = gtk_dialog_run(GTK_DIALOG(dialog));
-        if(response == GTK_RESPONSE_OK)
-        {
-            gchar *newpath;
-
-            newpath = (gchar *)gtk_entry_get_text(GTK_ENTRY(entry));
-            if(newpath && strlen(newpath) > 2 && strcmp(cd->devpath, newpath))
-            {
-                cd_close(cd);
-                g_free(cd->devpath);
-                cd->devpath = g_strdup(newpath);
-                cd_try_open(cd);
-                cdplayer_save_config(cd);
-            }
-        }
-    } while(response == GTK_RESPONSE_APPLY);
-    gtk_widget_destroy(dialog);
+    
 }
 
 static void
