@@ -4,6 +4,9 @@
 #include <gdk_imlib.h>
 #include <applet-widget.h>
 
+#define FWIDTH 60
+#define FHEIGHT 40
+
 typedef struct _gkb_properties gkb_properties;
 struct _gkb_properties {
 	char *command;
@@ -66,8 +69,8 @@ static  gkb_properties defaults = {
 	
 	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
 	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
-        gdk_imlib_render (gkb->pix[0], 30, 26);
-        gdk_imlib_render (gkb->pix[1], 30, 26);
+        gdk_imlib_render (gkb->pix[0], FWIDTH, FHEIGHT);
+        gdk_imlib_render (gkb->pix[1], FWIDTH, FHEIGHT);
 }
 
 static void
@@ -96,8 +99,8 @@ apply_callback(GtkWidget * pb,
         gkb->properties.dmap[1]= malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry))) + 1));
         strcpy(gkb->properties.dmap[1], gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry)));
 	
-        gdk_imlib_render (gkb->pix[0], 30, 26);
-	    gdk_imlib_render (gkb->pix[1], 30, 26);
+        gdk_imlib_render (gkb->pix[0], FWIDTH, FHEIGHT);
+	    gdk_imlib_render (gkb->pix[1], FWIDTH, FHEIGHT);
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 	gkb->curpix=0;
 	do_that_command(gkb);
@@ -347,7 +350,7 @@ gkb_expose(GtkWidget *darea,
 			gkb->pix[gkb->properties.curpix]->pixmap,
 			event->area.x, event->area.y,
 			event->area.x, event->area.y,
-			30, 26);
+			FWIDTH, FHEIGHT);
         return FALSE;
 }
 
@@ -362,8 +365,8 @@ create_gkb_widget(GKB *gkb)
 	
 	gkb->darea = gtk_drawing_area_new();
 	gtk_drawing_area_size(GTK_DRAWING_AREA(gkb->darea),
-			      30,
-			      26);
+			      FWIDTH,
+			      FHEIGHT);
 	gtk_widget_set_events(gkb->darea, 
 			      gtk_widget_get_events(gkb->darea) |
 			      GDK_BUTTON_PRESS_MASK);
