@@ -312,7 +312,7 @@ about (AppletWidget *applet, gpointer data)
   GtkWidget *about_box;
 
   about_box = gnome_about_new (_("Character Picker"),
-			       _("0.03"),
+			       VERSION,
 			       _("Copyright (C) 1998"),
 			       authors,
 			       _("Gnome Panel applet for selecting strange "
