@@ -56,7 +56,7 @@ struct _CPUFreqSysfsPrivate
 	   GList *available_govs;
 };
 
-GType cpufreq_sysfs_get_type ()
+GType cpufreq_sysfs_get_type (void)
 {
 	   static GType type = 0;
 
@@ -167,7 +167,7 @@ cpufreq_sysfs_finalize (GObject *object)
 }
 
 CPUFreqSysfs *
-cpufreq_sysfs_new ()
+cpufreq_sysfs_new (void)
 {
 	   CPUFreqSysfs *cfq;
 

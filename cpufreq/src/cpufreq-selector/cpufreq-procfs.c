@@ -47,7 +47,7 @@ struct _CPUFreqProcfsPrivate
 	   gint pmax;
 };
 
-GType cpufreq_procfs_get_type ()
+GType cpufreq_procfs_get_type (void)
 {
 	   static GType type = 0;
 
@@ -105,7 +105,7 @@ cpufreq_procfs_finalize (GObject *object)
 }
 
 CPUFreqProcfs *
-cpufreq_procfs_new ()
+cpufreq_procfs_new (void)
 {
 	   CPUFreqProcfs *cfq;
 

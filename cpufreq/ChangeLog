@@ -1,3 +1,19 @@
+2005-02-24  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/cpufreq-applet.c: (cpufreq_applet_get_max_cpu): ANSIfication
+	* src/cpufreq-monitor-procfs.c: (cpufreq_monitor_procfs_get_type):
+	ANSIfication, return NULL, not FALSE from some functions.
+	* src/cpufreq-monitor-sysfs.c: (cpufreq_monitor_sysfs_get_type),
+	(cpufreq_monitor_sysfs_get_available_frequencies): Same as above
+	and add some missing headers.
+	* src/cpufreq-monitor.c: (cpufreq_monitor_get_type): Same
+	* src/cpufreq-popup.c: (cpufreq_popup_selector_is_available): Same
+	* src/cpufreq-selector/cpufreq-procfs.c: (cpufreq_procfs_get_type),
+	(cpufreq_procfs_new): Same
+	* src/cpufreq-selector/cpufreq-sysfs.c: (cpufreq_sysfs_get_type),
+	(cpufreq_sysfs_new): Same
+	* src/cpufreq-selector/cpufreq.c: (cpufreq_get_type): Same
+
 2005-02-11  Carlos Garcia Campos <carlosgc@gnome.org>
 
 	* src/*.[ch]:

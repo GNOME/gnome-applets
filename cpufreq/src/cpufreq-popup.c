@@ -35,7 +35,7 @@ static void       cpufreq_popup_menu_item_set_image   (CPUFreqApplet *applet, Gt
 static GtkWidget *cpufreq_popup_new                   (CPUFreqApplet *applet, GList *available_freqs);
 
 static gboolean
-cpufreq_popup_selector_is_available ()
+cpufreq_popup_selector_is_available (void)
 {
 	   struct stat *info;
 	   gchar       *path = NULL;

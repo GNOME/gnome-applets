@@ -53,7 +53,7 @@ static GObjectClass *parent_class = NULL;
 
 typedef struct _CPUFreqMonitorProtected CPUFreqMonitorProtected;
 
-GType cpufreq_monitor_get_type ()
+GType cpufreq_monitor_get_type (void)
 {
 	   static GType type = 0;
 

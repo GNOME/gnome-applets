@@ -24,6 +24,8 @@
 #include <libgnomevfs/gnome-vfs.h>
 
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "cpufreq-monitor-procfs.h"
 #include "cpufreq-monitor-protected.h"
@@ -48,7 +50,7 @@ static CPUFreqMonitorClass *parent_class = NULL;
 
 typedef struct _CPUFreqMonitorProtected CPUFreqMonitorProtected;
 
-GType cpufreq_monitor_procfs_get_type ()
+GType cpufreq_monitor_procfs_get_type (void)
 {
 	   static GType type = 0;
 

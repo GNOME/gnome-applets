@@ -24,6 +24,7 @@
 #include <libgnomevfs/gnome-vfs.h>
 
 #include <string.h>
+#include <stdlib.h>
 
 #include "cpufreq-monitor-sysfs.h"
 #include "cpufreq-monitor-protected.h"
@@ -45,7 +46,7 @@ static CPUFreqMonitorClass *parent_class = NULL;
 
 typedef struct _CPUFreqMonitorProtected CPUFreqMonitorProtected;
 
-GType cpufreq_monitor_sysfs_get_type ()
+GType cpufreq_monitor_sysfs_get_type (void)
 {
 	   static GType type = 0;
 
@@ -330,7 +331,7 @@ cpufreq_monitor_sysfs_get_available_frequencies (CPUFreqMonitor *monitor)
 	   if (result != GNOME_VFS_OK) {
 			 if (uri) g_free (uri);
 
-			 return FALSE;
+			 return NULL;
 	   }
 
 	   g_free (uri);
@@ -346,14 +347,14 @@ cpufreq_monitor_sysfs_get_available_frequencies (CPUFreqMonitor *monitor)
 			 g_strfreev (frequencies);
 			 gnome_vfs_close (handle);
 			 
-			 return FALSE;
+			 return NULL;
 	   }
 	   
 	   result = gnome_vfs_close (handle);
 	   if (result != GNOME_VFS_OK) {
 			 g_strfreev (frequencies);
 			 
-			 return FALSE;
+			 return NULL;
 	   }
 	   
 	   i = 0;

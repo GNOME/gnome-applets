@@ -55,7 +55,7 @@ struct _CPUFreqPrivate
 	   gchar *governor;
 };
 
-GType cpufreq_get_type ()
+GType cpufreq_get_type (void)
 {
 	   static GType type = 0;
 

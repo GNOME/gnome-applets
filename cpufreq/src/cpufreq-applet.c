@@ -229,7 +229,7 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gc
 }
 
 static gint
-cpufreq_applet_get_max_cpu ()
+cpufreq_applet_get_max_cpu (void)
 {
 	   gint   mcpu = -1;
 	   gchar *file = NULL;
