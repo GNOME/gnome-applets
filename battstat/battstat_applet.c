@@ -1,5 +1,5 @@
 /* battstat        A GNOME battery meter for laptops. 
- * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
+ * Copyright (C) 2000 by JÃ¶rgen Pehrson <jp@spektr.eu.org>
  * Copyright (C) 2002 Free Software Foundation
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -1233,8 +1233,11 @@ load_preferences(ProgressData *battstat)
   if (DEBUG) g_print("load_preferences()\n");
   
   battstat->red_val = panel_applet_gconf_get_int (applet, GCONF_PATH "red_value", NULL);
+  battstat->red_val = CLAMP (battstat->red_val, 0, 100);
   battstat->orange_val = panel_applet_gconf_get_int (applet, GCONF_PATH "orange_value", NULL);
+  battstat->orange_val = CLAMP (battstat->orange_val, 0, 100);
   battstat->yellow_val = panel_applet_gconf_get_int (applet, GCONF_PATH "yellow_value", NULL);
+  battstat->yellow_val = CLAMP (battstat->yellow_val, 0, 100);
   battstat->lowbattnotification = panel_applet_gconf_get_bool (applet, GCONF_PATH "low_battery_notification", NULL);
   battstat->fullbattnot = panel_applet_gconf_get_bool (applet, GCONF_PATH "full_battery_notification", NULL);
   battstat->beep = panel_applet_gconf_get_bool (applet, GCONF_PATH "beep", NULL);
