@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2000-11-13 15:08+0100\n"
-"PO-Revision-Date: 2000-11-13 18:38+0100\n"
+"POT-Creation-Date: 2000-11-16 00:57+0100\n"
+"PO-Revision-Date: 2000-11-16 01:39+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Inställningar för klocka"
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:380
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:324 odometer/properties.c:293
+#: modemlights/properties.c:486 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:337
 #: sound-monitor/properties.c:426 tickastat/properties.c:424
 msgid "General"
@@ -31,8 +31,8 @@ msgstr "Allmänt"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:723 multiload/load-graph.c:587
-#: multiload/load-graph.c:779
+#: mini-commander/src/preferences.c:723 modemlights/properties.c:525
+#: multiload/load-graph.c:587 multiload/load-graph.c:779
 msgid "Colors"
 msgstr "Färger"
 
@@ -81,7 +81,7 @@ msgstr "Analog klocka, liknande den i CDE-panelen."
 #: gkb-new/gkb.c:471 gnotes/gnotes_applet.c:192 gtik/gtik.c:1388
 #: gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1373 multiload/cpuload.c:95
+#: modemlights/modemlights.c:1464 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:77
@@ -113,7 +113,7 @@ msgstr "Hjälp"
 #: gkb-new/gkb.c:499 gnotes/gnotes_applet.c:199 gtik/gtik.c:1397
 #: gweather/gweather-applet.c:204 jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
-#: modemlights/modemlights.c:1386 multiload/cpuload.c:115
+#: modemlights/modemlights.c:1477 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:520
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:80
@@ -1081,8 +1081,8 @@ msgid ""
 "for US cities."
 msgstr ""
 "Det finns ingen detaljerad prognos för den valda platsen.\n"
-"Var vänlig och prova statsprognosen. Observera att IWIN-prognoser "
-"är bara tillgängliga för städer i USA."
+"Var vänlig och prova statsprognosen. Observera att IWIN-prognoser är bara "
+"tillgängliga för städer i USA."
 
 #: gweather/gweather-dialog.c:418
 msgid ""
@@ -1120,7 +1120,7 @@ msgstr "Egenskaper för Gväder"
 
 #: gweather/gweather-pref.c:376
 msgid "Update enabled"
-msgstr "Slå på uppdatering"
+msgstr "Uppdatering påslagen"
 
 #: gweather/gweather-pref.c:380
 msgid "Use metric"
@@ -1245,23 +1245,23 @@ msgstr "Nord - nordväst"
 
 #: gweather/weather.c:150
 msgid "Clear Sky"
-msgstr "Klar himmel"
+msgstr "Klart"
 
 #: gweather/weather.c:151
 msgid "Broken clouds"
-msgstr "Splittrade moln"
+msgstr "Växlande molnighet"
 
 #: gweather/weather.c:152
 msgid "Scattered clouds"
-msgstr "Spridda moln"
+msgstr "Lätt molnighet"
 
 #: gweather/weather.c:153
 msgid "Few clouds"
-msgstr "Få moln"
+msgstr "Halvklart"
 
 #: gweather/weather.c:154
 msgid "Overcast"
-msgstr "Övertäckt"
+msgstr "Mulet"
 
 #. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
@@ -1289,7 +1289,7 @@ msgstr "Kraftigt duggregn"
 
 #: gweather/weather.c:179
 msgid "Shallow drizzle"
-msgstr "Tunnt duggregn"
+msgstr "Tunt duggregn"
 
 #: gweather/weather.c:179
 msgid "Patches of drizzle"
@@ -1301,7 +1301,7 @@ msgstr "Delvis duggregn"
 
 #: gweather/weather.c:179 gweather/weather.c:180
 msgid "Thunderstorm"
-msgstr "Åskväder"
+msgstr "Åska"
 
 #: gweather/weather.c:179
 msgid "Windy drizzle"
@@ -1309,7 +1309,7 @@ msgstr "Blåsigt duggregn"
 
 #: gweather/weather.c:179
 msgid "Showers"
-msgstr "Skurar"
+msgstr "Regnskurar"
 
 #: gweather/weather.c:179
 msgid "Drifting drizzle"
@@ -1330,7 +1330,7 @@ msgstr "Regn i närheten"
 
 #: gweather/weather.c:180
 msgid "Light rain"
-msgstr "Lätt regn"
+msgstr "Något regn"
 
 #: gweather/weather.c:180
 msgid "Moderate rain"
@@ -1342,7 +1342,7 @@ msgstr "Kraftigt regn"
 
 #: gweather/weather.c:180
 msgid "Shallow rain"
-msgstr "Tunt regn"
+msgstr "Stänkregn"
 
 #: gweather/weather.c:180
 msgid "Patches of rain"
@@ -2566,7 +2566,7 @@ msgstr "Slå på historikbaserad autokomplettering"
 #. applet width
 #: mini-commander/src/preferences.c:623
 msgid "Applet width:"
-msgstr "Paneprogrambredd:"
+msgstr "Panelprogrambredd:"
 
 #. applet height
 #: mini-commander/src/preferences.c:652
@@ -2677,71 +2677,117 @@ msgstr "%#.1fMB mottaget / %#.1fMB skickat / tid: %.1d.%.2d"
 msgid "not connected"
 msgstr "inte ansluten"
 
-#: modemlights/modemlights.c:1380
+#: modemlights/modemlights.c:1471
 msgid "Help..."
 msgstr "Hjälp..."
 
-#: modemlights/properties.c:234
+#: modemlights/properties.c:396
 msgid "Modem Lights Settings"
 msgstr "Inställningar för modemlampor"
 
-#: modemlights/properties.c:239
+#: modemlights/properties.c:401
 msgid "Connecting"
 msgstr "Ansluter"
 
-#: modemlights/properties.c:253
+#: modemlights/properties.c:415
 msgid "Connect command:"
 msgstr "Anslutningskommando:"
 
-#: modemlights/properties.c:270
+#: modemlights/properties.c:432
 msgid "Disconnect command:"
 msgstr "Nedkopplingskommando:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:283
+#: modemlights/properties.c:445
 msgid "Confirm connection"
 msgstr "Bekräfta anslutningen?"
 
-#: modemlights/properties.c:290 slashapp/properties.c:412
+#: modemlights/properties.c:452 slashapp/properties.c:412
 #: tickastat/properties.c:565
 msgid "Display"
 msgstr "Visa"
 
-#: modemlights/properties.c:304
+#: modemlights/properties.c:466
 msgid "Updates per second"
 msgstr "Uppdateringar per sekund"
 
 #. extra info checkbox
-#: modemlights/properties.c:317
+#: modemlights/properties.c:479
 msgid "Show connect time and throughput"
 msgstr "Visa anslutningstid och bandbredd"
 
-#: modemlights/properties.c:333
+#: modemlights/properties.c:495
+msgid "Receive data"
+msgstr "Mottag data"
+
+#: modemlights/properties.c:497 modemlights/properties.c:502
+#: modemlights/properties.c:521
+msgid "Foreground"
+msgstr "Förgrund"
+
+#: modemlights/properties.c:498 modemlights/properties.c:503
+#: modemlights/properties.c:522
+msgid "Background"
+msgstr "Bakgrund"
+
+#: modemlights/properties.c:500
+msgid "Send data"
+msgstr "Skicka data"
+
+#: modemlights/properties.c:505
+msgid "Connection status"
+msgstr "Anslutningsstatus"
+
+#: modemlights/properties.c:507
+msgid "Connected"
+msgstr "Ansluten"
+
+#: modemlights/properties.c:508
+msgid "Not connected"
+msgstr "Inte ansluten"
+
+#: modemlights/properties.c:509
+msgid "Awaiting connection"
+msgstr "Väntar på anslutning"
+
+#: modemlights/properties.c:512
+msgid "Blink"
+msgstr "Blink"
+
+#: modemlights/properties.c:519
+msgid "Text"
+msgstr "Text"
+
+#: modemlights/properties.c:523
+msgid "Outline"
+msgstr "Ram"
+
+#: modemlights/properties.c:534
 msgid "Modem options"
 msgstr "Modemalternativ"
 
-#: modemlights/properties.c:347
+#: modemlights/properties.c:548
 msgid "Modem lock file:"
 msgstr "Låsfil för modemet:"
 
-#: modemlights/properties.c:359
+#: modemlights/properties.c:560
 msgid "Verify owner of lock file"
 msgstr "Verifiera ägaren av låsfilen"
 
-#: modemlights/properties.c:371
+#: modemlights/properties.c:572
 msgid "Device:"
 msgstr "Enhet:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:384
+#: modemlights/properties.c:585
 msgid "Use ISDN"
 msgstr "Använd ISDN"
 
-#: modemlights/properties.c:404
+#: modemlights/properties.c:605
 msgid "Set options as default"
 msgstr "Ställ in alternativ som standard"
 
-#: modemlights/properties.c:410 sound-monitor/properties.c:511
+#: modemlights/properties.c:611 sound-monitor/properties.c:511
 msgid "Advanced"
 msgstr "Avancerat"
 
@@ -4044,8 +4090,8 @@ msgstr "whereami_applet"
 #~ "I am a HAL 9000 computer, Production Number 3. I became operational at the "
 #~ "Hal Plant in Urbana, Illinois, on January 12, 1997."
 #~ msgstr ""
-#~ "Jag är datorn HAL 9000, Produktionsnummer 3. Jag blev operativ vid Hal "
-#~ "Plant i Urbana, Illinois, den 12 January, 1997."
+#~ "Jag är datorn HAL 9000, Produktionsnummer 3. Jag blev operativ vid Hal Plant "
+#~ "i Urbana, Illinois, den 12 January, 1997."
 
 #~ msgid "Browse"
 #~ msgstr "Bläddra"
