@@ -10,7 +10,9 @@ APMLIB = apmlib/libapm.a
 APMDIR = apmlib
 endif
 
-#SUBDIRS = sounds $(APMDIR)
+SUBDIRS = sounds $(APMDIR)
+
+DIST_SUBDIRS = sounds apmlib
 
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
@@ -20,7 +22,7 @@ INCLUDES = \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" 
-	
+
 
 bin_PROGRAMS = battstat-applet-2
 
@@ -32,7 +34,7 @@ battstat_applet_2_SOURCES = \
 	battstat_applet.c \
 	acpi-linux.c \
 	acpi-linux.h
-	
+
 
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
