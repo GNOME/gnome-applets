@@ -1,6 +1,444 @@
+2000-12-19  Shooby Ban <shooby@gnome.hu>
+
+	* merged unstable branch to HEAD
+	
+2000-12-15  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: Events for focus change
+
+2000-12-14  Shooby Ban <shooby@gnome.hu>
+
+	* xmodmap/Makefile.am: Actualise
+
+2000-12-14  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: commented unused features, corrected errors
+	* gkb.h: new property for adding keymap
+        * prop-add.c: fixed addwindow's bug.
+
+2000-12-13  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: per window layouts, 2nd step: get window ids at window
+	open/close. Thanks, George.
+
+2000-12-13  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: per window layouts, first step: get windows.
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* prop.c: XUngrabKey... heh Keyboard grabbing now changes
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* gkb.c: Default apearance mode will be "Flag and Label"
+	Default keyboard layout: "US"
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* prop.c: padding of Appearance and Size (nicer screenshots:))
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* gkb.c (about_cb): Emese found error of authors[] array's
+	initialisation. :] Cool!
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* gkb.c (gkb_count_sizes, sized_render): ORIENT_RIGHT and
+	ORIENT_LEFT rendering. Works well.
+
+2000-12-12  Chema Celorio  <chema@celorio.com>
+
+	* gkb.c (loadprop): dont' make pixmaps while loading properties.
+	we will call sized render.
+	(gkb_activator): reorder the activation functions
+
+2000-12-11  Chema Celorio  <chema@celorio.com>
+
+	* keymap.c (gkb_keymap_copy_list): remove g_prints
+
+	* gkb.c (applet_save_session): use set_bool for gkb->is_small
+	(load_properties): ditto
+	(gkb_switch_normal): remove, not used
+	(gkb_switch_small): ditto
+	(gkb_draw): The label was not beeing updated when clicked
+	and mode was GKB_LABEL. Fix.
+
+	* prop.c (gkb_prop_create_display_frame): set the initial
+	is_small size to the state in gkb->is_small
+
+	* gkb.c (gkb_count_sizes): for small panel sizes, don't force
+	a size to take all the room available.
+	
+2000-12-11  Chema Celorio  <chema@celorio.com>
+	
+	* gkb.c (makepix): unref the pixbuf.
+	return all the -4 flag rendering which was correct. I remove it yesterday
+	for testing purposes.
+	(gkb_expose): fix the drawing bug.
+	(gkb_count_sizes): applet height is only incremented the flag height when
+	we have a flag.
+
+	* prop.c (gkb_prop_apply_clicked): fix a crash that was beeing trigered
+	when a keymap was clicked in the list after the apply button was clicked
+
+2000-12-11  Chema Celorio  <chema@celorio.com>
+	
+	* gkb.c (gkb_count_sizes): count sizes
+	(gkb_count_sizes): set the usizes
+
+2000-12-10  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c (gkb_count_sizes): fixed a rendering error at no8
+
+2000-12-10  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: Small -> Normal, Normal->Big as in wishlist
+	* gkb.c: fixed matrix (calculations),
+	  (gkb_update-> gkb_count_sizes): Size and showing calculations
+          moved here
+
+2000-12-10  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: revert is_small change
+	* gkb.c: added XGrabKey to make keygrab work (thanx Owen)
+	  (gkb_update, sized_render): Size and showing calculations
+
+2000-12-10  Chema Celorio  <chema@celorio.com>
+
+	* prop.c (gkb_prop_create_property_box): Change the order of the pages
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* prop-map.c (gkb_prop_map_apply_clicked): property_box_changed
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* *.c: s/appeareance/appearance/g
+	* gkb.c (gkb_update,makepix): Label mode
+	* util.c, gkb.h: new function to set initial value
+          for
+        * prop.c (gkb_prop_create_display_frame): appearance
+          initial value
+
+2000-12-09  Chema Celorio  <chema@celorio.com>
+
+	* gkb.h (struct _GKB): remove size from the structure
+	and remove all references in the code.
+	(struct _GkbPropertyBoxInfo): ditto
+
+	* prop.c (gkb_prop_create_property_box): cast propbox
+	to GNOME_PROPERTY_BOX to avoid compile time warning
+	(gkb_prop_apply_clicked): fix a stupid crash.
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: (gkb_propbox_apply_clikced): fix size problem
+	(properties_dialog): is_map value settings
+	(gkb_prop_option_menu_at): new arg: Initial value
+	(gkb_prop_create_display_frame): set initial values from pbi
+	* gkb.h: pbi->mode for appearance mode (feature, TODO)
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: (...hotkey_create): (changed_cb) fix
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_selection_changed): when the selection
+	is changed, set the keymap to the seleced one.
+
+	* gkb.h: remove header for gkb_prop_list_free
+
+	* prop-list.c (gkb_prop_list_load_keymaps): use gkb_keymaps_
+	copy_list.
+
+	* system.c (gkb_system_set_keymap): check for NULL
+
+	* keymap.c (gkb_keymap_copy_list): when copying kemaps
+	add a reference to it's parent.
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
+	* Makefile.am (gkb_applet_SOURCES): add util.c
+
+	* prop.c (gkb_get_text_from_appeareance): implement
+	(gkb_get_appeareance_from_text): implement
+
+	* gkb.h (struct _GkbPropertyBoxInfo): add GkbAppeareance
+	(struct _GKB): ditto
+	add GkbAppeareance enums	
+
+	* prop.c (gkb_prop_label_at): implement.
+	(gkb_prop_create_display_frame): use here
+
+	* keymap.c (gkb_keymap_copy_list): implement.
+
+	* Makefile.am (gkb_applet_SOURCES): add keymap.c
+
+	* keymap.c: new file move the following functions here
+	(gkb_keymap_free_internals): 
+	(gkb_keymap_free): 
+	(gkb_keymap_free_list): 
+	(gkb_keymap_copy): 
+
+	* system.c: new file, this will take care off doing the system
+	call to set the keyboard.
+	(gkb_system_set_keymap_idle): implement
+	(gkb_system_set_keymap): set the keyboard in an idle loop,
+	this makes the applet "look" a lot faster, they keyboard layout
+	call is done in an gtk_idle_loop.
+
+	* Makefile.am (INCLUDES): ad system.c
+
+	* gkb.h: disable debug.
+	(struct _GKB): remove mapdialog and update accordingly
+	(struct _GKB): rename dact to keymap, update code accord.
+
+	* prop-map.c (struct _GkbMapDialogInfo): dialog
+
+	* prop.c (properties_dialog): kill a leak by :
+	(gkb_prop_box_destroy): using me
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
+	* prop-map.c: move all the add stuff to :
+	* prop-add.c: here
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-add.c
+
+	* prop-map.c (gkb_prop_map_edit): set the apply button unsensitive
+	(gkb_prop_map_data_changed): when data changes, set the apply button's
+	sensitivity
+	(gkb_prop_map_apply_clicked): when apply is clicked, set the button
+	unsentivite.
+	(struct _GkbMapDialogInfo): added the gboolean changed flag 
+	(gkb_prop_map_ok_clicked): only apply the settings if something has
+	been changed.
+	(gkb_prop_map_pixmap_at): call data_changed when the icon_entry
+	is clicked.
+
+	* prop-list.c (gkb_prop_create_buttons_vbox): update the buttons
+	sensitivity after createing them
+
+	* prop-map.c (gkb_prop_map_combo_at): implement
+	(gkb_prop_map_entry_at): implement
+	(gkb_prop_map_load_stock_button): implement
+	(gkb_prop_map_button_clicked): implement
+	(gkb_prop_map_label_at): implement
+	(gkb_prop_map_get_arquitectures): implement
+	(gkb_prop_map_get_codepages): implement
+	(gkb_prop_map_get_types): implement
+	(gkb_prop_map_get_languages): implement
+	(gkb_prop_map_get_countries): implement
+	(gkb_prop_map_pixmap_at): implement
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
+	* prop.c (apply_cb): make static to avoid compile warning
+
+	* prop-list.c (gkb_prop_list_reload): make public as
+	prop-map needs it.
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-map.c
+
+	* prop-map.c : new file, move all the map editing
+	and adding from prop-list into here.
+	(gkb_prop_map_add): reanme from addwin
+	(mapedit_cb): rename to :
+	(gkb_prop_map_edit): 
+
+	* prop-list.c (gkb_prop_list_reload): when reloading
+	the list of items, honor the previously selected item.
+	This keeps the selected item thru an up/down action.
+	
+2000-12-08  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: added gkb_sized_render()
+	* prop.c: apply_cb fix no2
+	* prop-list.c: "Apply" button sensitivity fix
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_up_down_clicked): clean
+	(del_select_cb): rename to :
+	(gkb_prop_list_button_clicked_cb): call the new function here
+	(gkb_prop_list_create_item): implement.
+	
+2000-12-08  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: restructuring
+	* prop.c: apply_cb fix no1
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_up_down_clicked): clean
+	(gkb_util_g_list_swap): implement
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_update_sensitivity): if the selected
+	item is the top one, disable UP. If it is the bottom one, disable
+	DOWN.
+	
+2000-12-08 MET  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: (GkbPropertyBoxInfo) hotkey_entry
+	* prop.c: (apply_cb) use hotkey_entry and cleanup
+
+2000-12-08 MET  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: move temp* to pbi
+	* gkb.c, prop.c, prop-list.c: use new names
+	* prop.c: apply_cb is back
+
+2000-12-08 MET  Shooby Ban <shooby@gnome.hu>
+
+	* keygrab.c 
+	  all keyboard grabbing functions moved here
+	* *.c, *.h: Copyright fixes
+	AUTHORS: Added Chema
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (move_select_cb): rename to :
+	(gkb_prop_list_move_clicked): and rewrite.
+	(gkb_utils_free_keymap): implement
+	(gkb_utils_copy_keymap): implement
+	(gkb_prop_list_load_keymaps): use here
+	(gkb_prop_list_free_keymaps): use here
+	(gkb_prop_list_selection_changed): implement
+
+	* prop.c (gkb_prop_create_hotkey_frame): conect the signals
+	after setting the entry's text (as they got trigered)
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+	
+	* prop-list.c
+	(gkb_prop_create_buttons_vbox): clean
+	(gkb_prop_list_create_button): implement
+	(gkb_prop_list_button_clicked_cb): implement
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c: new file, moved all the list functions from
+	prop.c to here. Remove from prop.c all the lists functions.
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-list.c
+
+	* prop.c (gkb_prop_create_property_box): clean.
+
+	* preset.c (find_presets): make static to avoid compile warning
+
+	* prop.c (gkb_prop_create_scrolled_window): implement.
+
+2000-12-07  Szabolcs Ban  <shooby@gnome.hu>
+
+	* prop.c: stat for flag file (like in gkb.c)
+		  using GkbKeymap instead of GKBpreset
+	* preset.c: Splitted preset fuctions.
+	* gkb.h: moved preset functions prototypes 
+		 and relating global here from prop.c.
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop.c (properties_dialog): split this function into :
+	(gkb_prop_create_property_box): 
+	(gkb_prop_create_buttons_vbox): 
+	(gkb_prop_create_hotkey_frame): 
+	(gkb_prop_create_display_frame):
+	clean prop.c a bit
+	(properties_dialog): kill crash
+
+	* Makefile.am (gkb_applet_SOURCES): remove
+		prop_cb.h prop_copy.h \
+		prop_show.h prop_preset.h
+	as they do not exits
+	
+2000-12-07  Szabolcs BAN <shooby@gnome.hu>
+
+	* gkb.c: stat for flag file, load gkb-foot.png if
+	does not exits (or on any error).
+
+2000-12-06  Chema Celorio  <chema@celorio.com>
+
+	* prop.c: remove all the gtk_widget_ref & gtk_object_set
+	data_full gladeness 
+
+	* gkb.c (makepix): kill mem leak
+	(gkb_update): replace Prop with GkbKeymap
+
+2000-12-06  Chema Celorio  <chema@celorio.com>
+	
+	* prop.c (apply_cb): remove entry_1 as it was not beeing
+	used.
+
+	* gkb.h: add convert_string_to_keysum_state prototype
+	this kills a couple of compile warnings.
+
+	* prop.c (apply_cb): use gkb_update here
+	(string_empty): make static to avoid compile warning
+
+	* gkb.h: add the gkb_update prototype
+
+	* gkb.c: use the debug macro
+	(gkb_activator_connect_signals): implement.
+	(gkb_activator): use g_a_connect_signals here
+	[This fixes a bug in which the applet will apear as a
+	small sqare without really working, this also makes another
+	bug evident that crashes the applet. We need to coonect the
+	signals before calling applet_widget_add ]
+	(sized_render): make static to kill compile warning.
+	(load_properties): remove unused variable to kill compile warning
+	(gkb_draw): make static to kill compile warning, remove from .h file
+	(gkb_draw): move upwards so that it is above it's first reference
+	(gkb_activator): change header and add a cast to remove compile
+	warning about type mismatch for parameter #1 of ACTIVATE_APPLET
+	(gkb_deactivator): same here
+	(gkb_activator): add applet_widget after registering the callbacks,
+	this avoids the crash at startup.
+	(event_filter): make static to avoid a compile warning
+	(gkb_update): implement.
+	(gkb_change_orient): move, clean & use gkb_update
+	(gkb_change_pixel_size): ditto
+	(gkb_switch_normal): ditto
+	(gkb_switch_small): ditto
+	(gkb_change_orient): ditto
+	(gkb_switch_normal): add the gkb_ prefix
+	(gkb_switch_small): ditto
+	(gkb_button_press_event_cb): use gkb update v.s. using gkb_draw and
+	system
+	(global_key_filter): use gkb_update here too. Don't use gkb_draw
+	and system in the code, we need to abstract this fucntionality into
+	gkb_update & gkb_set_system_keymap
+	(gbk_sized_render): move here and add the gkb_ prefix
+
+	* gkb.h (debug): add a debug macro.
+
+2000-12-02  Szabolcs BAN <shooby@gnome.hu>
+
+	* Administration wax: gkb.c, prop.c, gkb.h:
+	Changes in showing keymaps, keyboard grabbing, and
+	added error possibilities.
+
 2000-11-21  Gediminas Paulauskas <menesis@delfi.lt>
 
 	* gkb/lt.png, Makefile.am: Added Lithuanian flag.
+
+2000-10-20  Szabolcs BAN <shooby@gnome.hu>
+
+	* Able to demo. :] Keymap selector is semi-functional.
+	Now you can choose a Language, and a Country -> the keymaps
+	for the country will be choosable.
+
+2000-10-16  Szabolcs BAN <shooby@gnome.hu>
+
+	* Added new setting style... (Just for demo, not a working one)
+
+2000-10-11  Szabolcs BAN <shooby@gnome.hu>
+
+	* Added unstable branch
 
 2000-08-16  Szabolcs BAN  <shooby@gnome.hu>
 

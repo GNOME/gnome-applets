@@ -1,27 +1,6 @@
-../../configure.in
 
- add lines for Makefile, gkb_xmmp.in, gkb/Makefile, xmodmap/Makefile,
-               help/Makefile, help/C/Makefile, help/hu/Makefile
-	       
-Makefile.am
+- More keymaps/keyprops
+- ...the gkb applet should probably ask the user "Which languages do you 
+  want to switch from" before installing itself... (Miguel)
+- Bugfixes
 
-  gkb_xmmp.in -> gkb_xmmp
-
-gkb.c
-- delmap_cb (GnomePropertyBox * pb, GKB * gkb)
- 
-  Write everything (delete notebook, delete map, check if the
-   deleted map is the current, etc)
-
-- newmap_cb (GnomePropertyBox * pb, GKB * gkb)
-
-  Temporary struct (do not set gkb->maps before apply button)
-
-- apply_cb (GtkWidget * pb, gint page, GKB * gkb)
-
-  Fix stuffs, make change_applet() after changing and saving props
-
-- makenotebook(GKB * gkb, Prop * actdata, int i)
-
-  Data -> temporary struct
-  check everything
