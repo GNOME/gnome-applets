@@ -44,6 +44,8 @@ StickyNote * stickynote_new()
 	note->window = glade_xml_get_widget(note->glade, "stickynote_window");
 	note->title = glade_xml_get_widget(note->glade, "title_label");
 	note->body = glade_xml_get_widget(note->glade, "body_text");
+	note->x = 0;
+	note->y = 0;
 
 	/* FIXME : Hack because libglade does not properly set these */
 	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_img")), STICKYNOTES_ICONDIR "/resize.png");
@@ -101,6 +103,9 @@ StickyNote * stickynote_new()
 	/* Finally show it all. */
 	gtk_widget_show_all(note->window);
 
+	/* Store location the note ends up in */
+	gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
+	
 	return note;
 }
 
@@ -217,6 +222,7 @@ void stickynotes_hide_all()
 	
 	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+		gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
 		gtk_widget_hide(note->window);
 	}
 
@@ -231,6 +237,7 @@ void stickynotes_show_all()
 	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 		gtk_widget_show(note->window);
+		gtk_window_move(GTK_WINDOW(note->window), note->x, note->y);
 		gdk_window_raise(note->window->window);
 	}
 

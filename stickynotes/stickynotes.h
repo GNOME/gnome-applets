@@ -30,6 +30,9 @@ typedef struct
 	GtkWidget *window;		/* Sticky Note window */
 	GtkWidget *title;		/* Note title */
 	GtkWidget *body;		/* Note text body */
+
+	gint x;				/* Note x-coordinate */
+	gint y;				/* Note y-coordinate */
 } StickyNote;
 
 StickyNote * stickynote_new();
