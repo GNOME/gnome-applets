@@ -1,12 +1,12 @@
 a theme for clockmail contains the following:
 
-* the theme is contained within a directory.
-* the layout and filenames for images are specified in a file
-  name clockmaildata (see the example included in the source)
+* The theme is contained within a directory.
+* The layout and filenames for images are specified in a file
+  named clockmaildata (see the example included in the source).
 * Only the Background image is required, all other items are
   optional. eg: you can omit seconds, or even the mail part if
-  you only want a clock, or vice-versa.
-* a clockmaildata file contains 1 or 2 sections. [Horizontal] is
+  you only want a clock, etc.
+* A clockmaildata file contains 1 or 2 sections. [Horizontal] is
   required, [Vertical] is used if the theme supports orientation.
   Both sections support all the flags below.
 * The background image should always contain an alpha channel,
@@ -18,48 +18,49 @@ Internationalization:
   Example:
     To internationalize A day of week item for 'es' do this:
 
-    keep the default line:     Item_Week_Text=week.png 2 20
+    Keep the default line:     Item_Week_Text=week.png 2 20
     and add a translated line: Item_Week_text[es]=weekes.png
         (do not add coordinates to the translated lines)
 
-  Note: the translated image should be the same size as the default,
+  Note: The translated image should be the same size as the default,
         and in the case of Item_Mail must contain the same number
         of animation frames.
 
 Mail_Image=filename sections x y
-  filename: name of the image file for mail, this file contains
+  filename: Name of the image file for mail, this file contains
             images vertically the last image is the one displayed
             to show mail, all the others are animated (flipped
             through) to show new mail.
-  sections: total number of mail pics within the image file
-  x, y: coordinates to place the image within the window
+  sections: Total number of mail pics within the image file.
+  x, y: Coordinates to place the image within the window.
 
 Digit_Small/Large=filename
-  filename: image file, contains horizontally the digits 0 through
+  filename: Image file, contains horizontally the digits 0 through
             9 and a blank space.
 
 Number_Hour/Minutes/Seconds/Year/Month/Day=Large/Small x y
-  Large/Small: the digit to use for this number, Large or Small must
-               have been specified with the Digit_* line (above)
-  x, y: coordinates to place the numbers within the window
+  Large/Small: The digit to use for this number, Large or Small must
+               have been specified with the Digit_* line (above).
+  x, y: Coordinates to place the numbers within the window.
 
 Number_Mail=Large/Small x y
   Same as above, except this is a number for the amount of mail in
   the mailbox (in Kbytes). It requires space for 4 digits long.
 
 Item_Week_Text=filename x y
-  filename: image file, contains vertically the days of the week
-            from Sunday through Saturday (7)
+  filename: Image file, contains vertically the days of the week
+            from Sunday through Saturday (7).
 
 Item_Month_Text=filename x y
-  filename: image file, contains vertically the months of the year (12)
+  filename: Image file, contains vertically the months of the year (12).
+            (January - December)
 
 Item_Mail_Percent=filename sections x y
   filename: Name of the image file for percent of mail, this file contains
             images vertically that represent the percent that the mailbox is
-            full. The images should represent 0 to 100%, there can be as any
+            full. The images should represent 0 to 100%, there can be any
             number of images.
             (for instance 6 images for 20% increments: 0,20,40,60,80,100)
-  sections: total number of images within the image file
-  x, y: coordinates to place the image within the window
+  sections: Total number of images within the image file.
+  x, y: Coordinates to place the image within the window.
 

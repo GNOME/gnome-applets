@@ -1,6 +1,9 @@
-/*###################################################################*/
-/*##                         clock & mail applet 0.2.1             ##*/
-/*###################################################################*/
+/* GNOME clock & mailcheck applet
+ * (C) 1999 John Ellis
+ *
+ * Author: John Ellis
+ *
+ */
 
 #include <sys/types.h>
 #include <config.h>
@@ -17,8 +20,8 @@
 #include <applet-widget.h>
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 0
-#define CLOCKMAIL_APPLET_VERSION_MIN 2
-#define CLOCKMAIL_APPLET_VERSION_REV 1
+#define CLOCKMAIL_APPLET_VERSION_MIN 99
+#define CLOCKMAIL_APPLET_VERSION_REV 0
 
 typedef struct _ItemData ItemData;
 struct _ItemData
