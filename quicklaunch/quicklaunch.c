@@ -204,6 +204,7 @@ launcher_table_update (void)
 	GtkWidget *button;
 	GtkWidget *pixmap;
 	GtkWidget *menu;
+	GtkReliefStyle relief_style;
 	GnomeDesktopEntry *dentry;
 	GnomeUIInfo uinfo[5] = {
 		GNOMEUIINFO_END,
@@ -225,6 +226,11 @@ launcher_table_update (void)
 	rows = applet_widget_get_panel_pixel_size(APPLET_WIDGET(wnd))/24;
 	if(rows<1) rows = 1;
 
+	if (gnome_preferences_get_toolbar_relief_btn())
+		relief_style = GTK_RELIEF_NORMAL;
+	else
+		relief_style = GTK_RELIEF_NONE;
+	
 	destroy_launcher_widgets ();
 	c = g_list_length (launchers);
 	if (vertical) {
@@ -252,7 +258,7 @@ launcher_table_update (void)
 			dentry->icon = gnome_pixmap_file (UNKNOWN_ICON);
 
 		button = gtk_button_new();
-		gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+		gtk_button_set_relief (GTK_BUTTON (button), relief_style);
 		pixmap = gnome_stock_pixmap_widget_at_size (
 			NULL, dentry->icon, 18, 18);
 		gtk_container_set_border_width (GTK_CONTAINER (button), 0);
