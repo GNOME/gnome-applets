@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.4">
-  <!ENTITY date "August 2003">
+  <!ENTITY appletversion "2.5.4">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "February 2004">
   <!ENTITY applet "Character Palette">
 ]>
 <!-- 
@@ -12,7 +12,7 @@
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
-  Template last modified Feb 12, 2002 
+  Template last modified Feb 12, 2002 
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
@@ -23,6 +23,7 @@
 	 <copyright> 
 		<year>2002</year>
 		<year>2003</year>
+		<year>2004</year>
 		<holder>Sun Microsystems</holder> </copyright>
 	 <copyright> 
 		<year>2000</year>
@@ -75,6 +76,14 @@
 		<revision> 
 		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber>
 		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Character Palette Applet Manual V2.4</revnumber>
+		  <date>August 2003</date> 
 		  <revdescription> 
 			 <para role="author">Sun Microsystems</para>
 			 <para role="publisher">GNOME Documentation Project</para>
@@ -151,78 +160,57 @@
 		</screenshot>
 	 </figure> 
        <!-- ==== End of Figure ======================================= -->
-	 <para>The <application>&applet;</application> applet provides a convenient
-		way to access non-standard characters, such as accented characters,
-		mathematical symbols, special symbols, and punctuation marks. You can insert
-		characters from the applet into text strings, for example in text documents or
-		at the command line. You can customize the contents of the applet to suit your
-		requirements. 
+	 <para>The <application>&applet;</application> applet provides a convenient way to access non-standard characters, such as accented characters, mathematical symbols, special symbols, and punctuation marks. You can insert characters from the applet into text strings, for example in text documents or at the command line. You can customize the contents of the applet to suit your requirements.
 		</para>
-	 <para><application>&applet;</application> supports UTF-8 encoding so you
-    can use the applet to display or copy any UTF-8 character.</para>
+	 <para><application>&applet;</application> supports UTF-8 encoding so you can use the applet to display or copy any UTF-8 character.</para>
+
+       <sect2 id="charpick-introduction-add">       
+         <title>To Add &applet; to a Panel</title>
 	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
 		<menuchoice> 
 		<guimenu>Add to Panel</guimenu>
 		<guisubmenu>Utility</guisubmenu> 
 		<guimenuitem>Character Palette</guimenuitem>
 		</menuchoice>.</para>
+	 </sect2> 
   </sect1>
 <!-- ================ Usage ================================ -->
   <sect1 id="charpick-usage"> 
 	 <title>Usage</title>
-	 <para>When you add <application>&applet;</application> to a panel for the
-		first time, the applet displays a default palette of characters. You can select a
-		character from the default palette, or you can select a character from predefined
-		palettes of characters. Each predefined palette of characters is associated with a
-		standard character on your keyboard. </para>
+	 <para>When you add <application>&applet;</application> to a panel for the first time, the applet displays a default palette of characters. You can select a character from the default palette, or you can select a character from predefined palettes of characters. Each predefined palette of characters is associated with a standard character on your keyboard. </para>
 	 <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-charselect"> 
 		<title>To Select a Character</title>
-		<para>To select a character from the applet and insert the character into
-		  a text string, perform the following steps: </para>
+		<para>To select a character from the applet and insert the character into a text string, perform the following steps: </para>
 		  <orderedlist> 
 			 <listitem> 
-				<para>In the applet, click on the character that you require. The
-				  character button is pressed in to indicate that the character is selected.
+				<para>In the applet, click on the character that you require. The character button is pressed in to indicate that the character is selected.
 				  </para>
 			 </listitem>
 			 <listitem> 
-				<para>Point to the location in an application where you want to put
-				  the character and middle-click to insert the character. You can also paste the
-				  character into the application if a paste facility is available. You can repeat
-				  the insertion as many times as you want because the character remains selected
-				  until you click on another character in the applet. </para>
+				<para>Point to the location in an application where you want to put the character and middle-click to insert the character. You can also paste the character into the application if a paste facility is available. You can repeat the insertion as many times as you want because the character remains selected until you click on another character in the applet. </para>
 			 </listitem>
 		  </orderedlist>
-		<note><para>Some applications do not allow you to paste non-standard characters into the
-		application.</para></note>
+		<note><para>Some applications do not allow you to paste non-standard characters into the application.</para></note>
 
 	 </sect2> 
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-display-chargroup"> 
 		<title>To Display a Predefined Palette of Characters</title>
-		<para>You can change the characters that are displayed in the applet from
-		  the default palette to a predefined palette of characters.</para>
-		<para>To display a palette of predefined characters, perform the following
-		  steps: </para>
+		<para>You can change the characters that are displayed in the applet from the default palette to a predefined palette of characters.</para>
+		<para>To display a palette of predefined characters, perform the following steps: </para>
 		  <orderedlist> 
 			 <listitem> 
-				<para>Click on the <guibutton>Available palettes</guibutton>
-				button on the applet. </para>
+				<para>Click on the <guibutton>Available palettes</guibutton> button on the applet. </para>
 			 </listitem>
 			 <listitem> 
 				<para>Click on the palette that you want to display. </para>
 			 </listitem>
 		  </orderedlist>
-		<para>You can select the character that you require from the palette of
-		characters that is displayed in the applet, then insert the character 
-		into your text string.
+		<para>You can select the character that you require from the palette of characters that is displayed in the applet, then insert the character into your text string.
 		</para>
 <!--
-		<para>The following chart lists keyboard characters and their associated
-		  groups of characters. The keyboard characters are listed in the first column of
-		  each section in the chart. The character groups that are associated with each
-		  keyboard character are shown in the other columns. </para>
+		<para>The following chart lists keyboard characters and their associated groups of characters. The keyboard characters are listed in the first column of each section in the chart. The character groups that are associated with each keyboard character are shown in the other columns. </para>
 		<figure id="charpick-characters"> 
 		  <title>Character Groups Associated With Keyboard Keys</title>
 		  <screenshot> 
@@ -240,54 +228,35 @@
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-default-new"> 
 		<title>To Set Up a New Palette of Characters</title>
-		<para>You can use a character selection application such as
-		  <application>Character Map</application> to set up a new palette of characters.
-		  For example, to create a new palette with <application>Character
-		  Map</application>, perform the following steps: </para>
+		<para>You can use a character selection application such as <application>Character Map</application> to set up a new palette of characters. For example, to create a new palette with <application>Character Map</application>, perform the following steps: </para>
 		<orderedlist> 
 		  <listitem> 
-			 <para>Click on the <guibutton>Available palettes</guibutton>
-				button on the applet. </para>
+			 <para>Click on the <guibutton>Available palettes</guibutton> button on the applet. </para>
 		  </listitem>
 		  <listitem> 
-			 <para>Select the <guimenuitem>Add a palette</guimenuitem> option
-			 from the drop-down list. The <guilabel>Add Palette</guilabel> dialog is 
-			 displayed.</para>
+			 <para>Select the <guimenuitem>Add a palette</guimenuitem> option from the drop-down list. The <guilabel>Add Palette</guilabel> dialog is displayed.</para>
 		  </listitem>
 		  <listitem> 
-			 <para>Open <application>Character Map</application>, then
-				select the characters that you want to display in the new palette. 
-				You can select up to 25 characters. </para>
+			 <para>Open <application>Character Map</application>, then select the characters that you want to display in the new palette.  You can select up to 25 characters. </para>
 		  </listitem>
 		  <listitem> 
-			 <para>Copy the contents of the <guilabel>Text to copy</guilabel> text
-				box from <application>Character Map</application> to the
-				<guilabel>Palette</guilabel> text box. </para>
+			 <para>Copy the contents of the <guilabel>Text to copy</guilabel> text box from <application>Character Map</application> to the <guilabel>Palette</guilabel> text box. </para>
 		  </listitem>
 		  <listitem> 
 			 <para>Click <guibutton>OK</guibutton>. </para>
 		  </listitem>
 		</orderedlist>
-		<para><application>&applet;</application> adds the new palette of characters
-     to the list of available palettes.</para>
+		<para><application>&applet;</application> adds the new palette of characters to the list of available palettes.</para>
 	 </sect2>
   </sect1>
 <!-- ============= Preferences ============================= -->
 <!-- Use this section to describe how to customize the applet. -->
   <sect1 id="charpick-prefs"> 
 	 <title>Preferences</title>
-	 <para>To configure <application>&applet;</application>, right-click on the
-		applet, then choose <guimenuitem>Preferences</guimenuitem>.
-		The <guilabel>Character Palette Preferences</guilabel> dialog contains the
-		<guilabel>Palettes</guilabel> list box, which lists the palettes that are
-		available from the applet. </para>
-	<para>To add a new palette to the applet, click on the <guibutton>Add</guibutton>
-	button. See <xref linkend="charpick-default-new"/> for more information. </para>
-	<para>To delete a palette from the applet, select the palette, then click on the
-	<guibutton>Delete</guibutton> button.</para>
-	<para>To modify a palette, select the palette, then click on the
-	<guibutton>Properties</guibutton> button. </para>
-	<para>To close the <guilabel>Character Palette Preferences</guilabel> dialog, click
-	<guibutton>Close</guibutton>.</para>
+	 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Character Palette Preferences</guilabel> dialog contains the <guilabel>Palettes</guilabel> list box, which lists the palettes that are available from the applet. </para>
+	<para>To add a new palette to the applet, click on the <guibutton>Add</guibutton> button. See <xref linkend="charpick-default-new"/> for more information. </para>
+	<para>To delete a palette from the applet, select the palette, then click on the <guibutton>Delete</guibutton> button.</para>
+	<para>To modify a palette, select the palette, then click on the <guibutton>Properties</guibutton> button. Modify the palette in the <guilabel>Edit Palette</guilabel> dialog, then click <guibutton>OK</guibutton>.</para>
+	<para>To close the <guilabel>Character Palette Preferences</guilabel> dialog, click <guibutton>Close</guibutton>.</para>
   </sect1>
 </article>
