@@ -20,7 +20,16 @@
 #include <config.h>
 #include <stickynotes_callbacks.h>
 
-/* Sticky Window Callback : Prevent deleting the window. */
+/* Sticky Window Callback : Skip taskbar and pager when exposing the widow */
+gboolean window_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note)
+{
+	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->window), TRUE);
+	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->window), TRUE);
+
+	return TRUE;
+}
+
+/* Sticky Window Callback : Get confirmation when deleting the window. */
 gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note)
 {
 	stickynotes_remove(note->stickynotes, note);

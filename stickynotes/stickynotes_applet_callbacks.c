@@ -61,8 +61,6 @@ gboolean applet_click_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesAp
 /* Applet Callback : Resize the applet. */
 gboolean applet_resize_cb(GtkWidget *widget, gint size, StickyNotesApplet *stickynotes)
 {
-	stickynotes->size = size;
-
 	stickynotes_applet_set_highlighted(stickynotes, FALSE);
 
 	/* Let other handlers receive this event. */
@@ -96,9 +94,22 @@ gboolean applet_save_cb(StickyNotesApplet *stickynotes)
 }
 
 /* Applet Callback : Change the applet background. */
-gboolean applet_change_background_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, const gchar *pixmap,
-				     StickyNotesApplet *stickynotes)
+gboolean applet_change_bg_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, StickyNotesApplet *stickynotes)
 {
+	if (type == PANEL_NO_BACKGROUND) {
+		GtkRcStyle *rc_style = gtk_rc_style_new();
+		gtk_widget_modify_style(GTK_WIDGET(applet), rc_style);
+		gtk_rc_style_unref(rc_style);
+	}
+
+	else if (type == PANEL_COLOR_BACKGROUND) {
+		gtk_widget_modify_bg(GTK_WIDGET(applet), GTK_STATE_NORMAL, color);
+	}
+
+	else /* if (type == PANEL_PIXMAP_BACKGROUND) */ {
+		gdk_window_set_back_pixmap(GTK_WIDGET(applet)->window, pixmap, FALSE);
+	}
+	
 	/* Let other handlers receive this event. */
 	return FALSE;
 }

@@ -23,6 +23,7 @@
 #include <stickynotes.h>
 
 /* Callbacks for the sticky notes windows */
+gboolean window_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note);
 gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note);
 gboolean window_move_edit_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
 gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);

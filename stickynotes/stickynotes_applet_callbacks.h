@@ -28,8 +28,7 @@ gboolean applet_resize_cb(GtkWidget *widget, gint size, StickyNotesApplet *stick
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *stickynotes);
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *stickynotes);
 gboolean applet_save_cb(StickyNotesApplet *stickynotes);
-gboolean applet_change_background_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, const gchar *pixmap,
-				     StickyNotesApplet *stickynotes);
+gboolean applet_change_bg_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, StickyNotesApplet *stickynotes);
 
 /* Callbacks for sticky notes applet menu */
 void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);

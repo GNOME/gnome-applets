@@ -48,7 +48,6 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	stickynotes->applet = GTK_WIDGET(applet);
 	stickynotes->about = NULL;
 	stickynotes->prefs= NULL;
-	stickynotes->size = panel_applet_get_size(applet);
 	stickynotes->pressed = FALSE;
 	stickynotes->notes = NULL;
 	stickynotes->pixbuf_normal = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
@@ -59,7 +58,8 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 
 	/* Create the applet */
 	{
-		GdkPixbuf *pixbuf = gdk_pixbuf_scale_simple(stickynotes->pixbuf_normal, stickynotes->size, stickynotes->size, GDK_INTERP_BILINEAR);
+		gint size = panel_applet_get_size(applet);
+		GdkPixbuf *pixbuf = gdk_pixbuf_scale_simple(stickynotes->pixbuf_normal, size, size, GDK_INTERP_BILINEAR);
 		stickynotes->image = gtk_image_new_from_pixbuf(pixbuf);
 		g_object_unref(pixbuf);
 	}
@@ -71,7 +71,7 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	g_signal_connect(G_OBJECT(applet), "button-press-event", G_CALLBACK(applet_click_cb), stickynotes);
 	g_signal_connect(G_OBJECT(applet), "button-release-event", G_CALLBACK(applet_click_cb), stickynotes);
 	g_signal_connect(G_OBJECT(applet), "change-size", G_CALLBACK(applet_resize_cb), stickynotes);
-	g_signal_connect(G_OBJECT(applet), "change-background", G_CALLBACK(applet_change_background_cb), stickynotes);
+	g_signal_connect(G_OBJECT(applet), "change-background", G_CALLBACK(applet_change_bg_cb), stickynotes);
 	g_signal_connect(G_OBJECT(applet), "focus-in-event", G_CALLBACK(applet_focus_cb), stickynotes);
 	g_signal_connect(G_OBJECT(applet), "focus-out-event", G_CALLBACK(applet_focus_cb), stickynotes);
 	g_signal_connect(G_OBJECT(applet), "enter-notify-event", G_CALLBACK(applet_cross_cb), stickynotes);
@@ -96,12 +96,9 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	/* Lock sticky notes if necessary */
 	stickynotes_set_locked(stickynotes, gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL));
 
-	/* Update tooltips */
-	stickynotes_applet_update_tooltips(stickynotes);
-
 	/* Auto-save every so minutes (default 5) */
 	g_timeout_add(1000 * 60 * gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/settings/autosave_time", NULL),
-		      (GSourceFunc) applet_save_cb, applet);
+		      (GSourceFunc) applet_save_cb, stickynotes);
 	
 	return TRUE;
 }
@@ -122,17 +119,19 @@ PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE
 void stickynotes_applet_set_highlighted(StickyNotesApplet *stickynotes, gboolean highlighted)
 {
 	GdkPixbuf *pixbuf1, *pixbuf2;
-	
-	/* Choose appropriate icon */
+
+	gint size = panel_applet_get_size(PANEL_APPLET(stickynotes->applet));
+
+	/* Choose appropriate icon and size it */
 	if (highlighted)
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->pixbuf_prelight, stickynotes->size, stickynotes->size, GDK_INTERP_BILINEAR);
+	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->pixbuf_prelight, size, size, GDK_INTERP_BILINEAR);
 	else
-	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->pixbuf_normal, stickynotes->size, stickynotes->size, GDK_INTERP_BILINEAR);
+	    	pixbuf1 = gdk_pixbuf_scale_simple(stickynotes->pixbuf_normal, size, size, GDK_INTERP_BILINEAR);
 	
-	/* Resize the icon */
+	/* Shift the icon if pressed */
 	pixbuf2 = gdk_pixbuf_copy(pixbuf1);
 	if (stickynotes->pressed)
-		gdk_pixbuf_scale(pixbuf1, pixbuf2, 0, 0, stickynotes->size, stickynotes->size, 1, 1, 1, 1, GDK_INTERP_BILINEAR);
+		gdk_pixbuf_scale(pixbuf1, pixbuf2, 0, 0, size, size, 1, 1, 1, 1, GDK_INTERP_BILINEAR);
 
 	/* Apply the finished pixbuf to the applet image */
 	gtk_image_set_from_pixbuf(GTK_IMAGE(stickynotes->image), pixbuf2);

@@ -51,13 +51,11 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	
 	/* Customize the window */
 	gtk_window_set_decorated(GTK_WINDOW(note->window), FALSE);
-	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->window), TRUE);
-	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->window), TRUE);
 	if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/sticky", NULL))
 		gtk_window_stick(GTK_WINDOW(note->window));
 	gtk_window_resize(GTK_WINDOW(note->window), gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/defaults/width", NULL),
 						    gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/defaults/height", NULL));
-
+	
 	/* Customize the date in the title label */
 	{
 		gchar *date0 = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/settings/date_format", NULL);
@@ -81,7 +79,8 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 		/* Connect a popup menu to the title label */
 		gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), title_box, note);
 
-		/* Connect signals for window management (deleting, moving, resizing) on the sticky note */
+		/* Connect signals for window management on the sticky note */
+		g_signal_connect(G_OBJECT(note->window), "expose-event", G_CALLBACK(window_expose_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "delete-event", G_CALLBACK(window_delete_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "enter-notify-event", G_CALLBACK(window_cross_cb), note);
 		g_signal_connect(G_OBJECT(note->window), "leave-notify-event", G_CALLBACK(window_cross_cb), note);
@@ -92,9 +91,9 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 		g_signal_connect(G_OBJECT(close_box), "button-release-event", G_CALLBACK(window_close_cb), note);
 	}
 
-	/* Finally show it all. */
+	/* Show it all */
 	gtk_widget_show_all(note->window);
-	
+
 	return note;
 }
 
@@ -377,16 +376,14 @@ void stickynotes_load(StickyNotesApplet *stickynotes)
 
 			/* Retrieve and set title of the note */
 			{
-				gchar *title0 = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/settings/date_format", NULL);
-				gchar *title1 = xmlGetProp(node, "title");
-				gchar *title2;
-				if (!title1)
-					title1 = get_current_date(title0);
-				title2 = g_strdup_printf("<b>%s</b>", title1);
-				gtk_label_set_markup(GTK_LABEL(note->title), title2);
+				gchar *title0 = xmlGetProp(node, "title");
+				gchar *title1 = NULL;
+				if (title0) {
+					title1 = g_strdup_printf("<b>%s</b>", title1);
+					gtk_label_set_markup(GTK_LABEL(note->title), title1);
+				}
 				g_free(title0);
 				g_free(title1);
-				g_free(title2);
 			}
 
 			/* Retrieve and set the window size of the note */
@@ -431,4 +428,7 @@ void stickynotes_load(StickyNotesApplet *stickynotes)
 	}
 
 	xmlFreeDoc(doc);
+
+	/* Update tooltips */
+	stickynotes_applet_update_tooltips(stickynotes);
 }

@@ -35,7 +35,6 @@ typedef struct
 	GladeXML *about;		/* About dialog GladeXML*/
 	GladeXML *prefs;		/* Preferences dialog GladeXML */
 	
-	gint size;			/* Applet (panel) size */
 	gboolean pressed;		/* Whether applet is pressed */
 
 	GList *notes;			/* Linked-List of all the sticky notes */
