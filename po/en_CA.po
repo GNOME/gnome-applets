@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-27 23:45-0500\n"
-"PO-Revision-Date: 2004-11-27 16:42-0400\n"
+"POT-Creation-Date: 2004-11-29 10:38-0500\n"
+"PO-Revision-Date: 2004-11-29 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -28,8 +28,8 @@ msgstr ""
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
-#: wireless/GNOME_WirelessApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About"
 msgstr "_About"
 
@@ -44,8 +44,8 @@ msgstr "_About"
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
-#: wireless/GNOME_WirelessApplet.xml.h:2
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Help"
 
@@ -77,7 +77,7 @@ msgstr "See the status of keyboard accessibility features"
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
-#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:681
+#: trashapplet/src/trashapplet.c:681 wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -485,8 +485,8 @@ msgstr "_Warn when battery charge is low"
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:259
 #: stickynotes/stickynotes_applet_callbacks.c:423
-#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:648 wireless/wireless-applet.c:544
+#: wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
@@ -917,11 +917,11 @@ msgstr "Text"
 msgid "Graphic and Text"
 msgstr "Graphic and Text"
 
-#: cpufreq/src/cpufreq.c:231 gweather/weather.c:232 gweather/weather.c:2200
-#: gweather/weather.c:2214 gweather/weather.c:2226 gweather/weather.c:2241
-#: gweather/weather.c:2257 gweather/weather.c:2288 gweather/weather.c:2300
-#: gweather/weather.c:2319 gweather/weather.c:2347 gweather/weather.c:2360
-#: gweather/weather.c:2380
+#: cpufreq/src/cpufreq.c:231 gweather/weather.c:301 gweather/weather.c:2407
+#: gweather/weather.c:2421 gweather/weather.c:2433 gweather/weather.c:2448
+#: gweather/weather.c:2464 gweather/weather.c:2495 gweather/weather.c:2507
+#: gweather/weather.c:2526 gweather/weather.c:2554 gweather/weather.c:2567
+#: gweather/weather.c:2587
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -942,11 +942,7 @@ msgstr "Factory for drive mount applet"
 msgid "Mount local disks and devices"
 msgstr "Mount local disks and devices from the panel"
 
-#: drivemount/drivemount.c:129
-msgid "Applet for mounting and unmounting block volumes."
-msgstr "Applet for mounting and unmounting block volumes."
-
-#: drivemount/drive-button.c:305 drivemount/drive-button.c:313
+#: drivemount/drive-button.c:319 drivemount/drive-button.c:327
 #, c-format
 msgid ""
 "%s\n"
@@ -955,7 +951,7 @@ msgstr ""
 "%s\n"
 "(mounted)"
 
-#: drivemount/drive-button.c:307 drivemount/drive-button.c:315
+#: drivemount/drive-button.c:321 drivemount/drive-button.c:329
 #, c-format
 msgid ""
 "%s\n"
@@ -964,7 +960,7 @@ msgstr ""
 "%s\n"
 "(not mounted)"
 
-#: drivemount/drive-button.c:309
+#: drivemount/drive-button.c:323
 #, c-format
 msgid ""
 "%s\n"
@@ -973,7 +969,7 @@ msgstr ""
 "%s\n"
 "(not connected)"
 
-#: drivemount/drive-button.c:481
+#: drivemount/drive-button.c:495
 #, c-format
 msgid ""
 "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
@@ -982,41 +978,45 @@ msgstr ""
 "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
 "%s"
 
-#: drivemount/drive-button.c:504
+#: drivemount/drive-button.c:518
 msgid "Mount Error"
 msgstr "Mount Error"
 
-#: drivemount/drive-button.c:507
+#: drivemount/drive-button.c:521
 msgid "Unmount Error"
 msgstr "Unmount Error"
 
-#: drivemount/drive-button.c:510
+#: drivemount/drive-button.c:524
 msgid "Eject Error"
 msgstr "Eject Error"
 
-#: drivemount/drive-button.c:513
+#: drivemount/drive-button.c:527
 msgid "Error"
 msgstr "Error"
 
-#: drivemount/drive-button.c:658
+#: drivemount/drive-button.c:672
 #, c-format
 msgid "_Open %s"
 msgstr "_Open %s"
 
-#: drivemount/drive-button.c:667
+#: drivemount/drive-button.c:681
 #, c-format
 msgid "_Mount %s"
 msgstr "_Mount %s"
 
-#: drivemount/drive-button.c:674
+#: drivemount/drive-button.c:688
 #, c-format
 msgid "Un_mount %s"
 msgstr "Un_mount %s"
 
-#: drivemount/drive-button.c:681
+#: drivemount/drive-button.c:695
 #, c-format
 msgid "_Eject %s"
 msgstr "_Eject %s"
+
+#: drivemount/drivemount.c:129
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "Applet for mounting and unmounting block volumes."
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -1092,17 +1092,826 @@ msgstr "Keyboard Layout Switcher"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Produces keyboard layout switcher applets."
 
+#: gkb-new/descs.sun/presets.xml.in.h:1
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Armenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:5 gkb-new/descs.sun/presets.xml.in.h:1
+#: gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
 msgstr "Armenia"
 
+#: gkb-new/descs.sun/presets.xml.in.h:2
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:2
 #: gkb-new/descs/Armenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:6 gkb-new/descs.sun/presets.xml.in.h:2
+#: gkb-new/descs/presets.xml.in.h:6
 msgid "Armenian"
 msgstr "Armenian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:3
+msgid "Armenian Sun keymap"
+msgstr "Armenian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
+msgid "Azerbaijani Turkish"
+msgstr "Azerbaijani Turkish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:6
+msgid "Azerbaijani Turkish Sun keymap"
+msgstr "Azerbaijani Turkish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:7
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:14
+msgid "Belarus"
+msgstr "Belarus"
+
+#: gkb-new/descs.sun/presets.xml.in.h:8
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:15
+msgid "Belarusian"
+msgstr "Belarusian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:9
+msgid "Belarusian Sun keymap"
+msgstr "Belarusian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:10
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:18
+msgid "Belgium"
+msgstr "Belgium"
+
+#: gkb-new/descs.sun/presets.xml.in.h:11
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:19
+msgid "Brazil"
+msgstr "Brazil"
+
+#: gkb-new/descs.sun/presets.xml.in.h:12
+msgid "Brazil Portuguese Sun USB keymap"
+msgstr "Brazil Portuguese Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:13
+msgid "Brazil Portuguese Sun keymap"
+msgstr "Brazil Portuguese Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:14
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:22
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+#: gkb-new/descs.sun/presets.xml.in.h:15
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:23
+msgid "Bulgarian"
+msgstr "Bulgarian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:16
+msgid "Bulgarian Sun keymap"
+msgstr "Bulgarian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:17
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:27
+msgid "Canada"
+msgstr "Canada"
+
+#: gkb-new/descs.sun/presets.xml.in.h:18
+msgid "Canadian Sun keymap"
+msgstr "Canadian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:19
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:33
+msgid "Czech"
+msgstr "Czech"
+
+#: gkb-new/descs.sun/presets.xml.in.h:20
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:34
+msgid "Czech Republic"
+msgstr "Czech Republic"
+
+#: gkb-new/descs.sun/presets.xml.in.h:21
+msgid "Czech Sun keymap"
+msgstr "Czech Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:22
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:38
+msgid "Danish"
+msgstr "Danish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:23
+msgid "Danish Sun Type-4 keymap"
+msgstr "Danish Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:24
+msgid "Danish Sun USB keymap"
+msgstr "Danish Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:25
+msgid "Danish Sun keymap"
+msgstr "Danish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:26
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:41
+msgid "Denmark"
+msgstr "Denmark"
+
+#: gkb-new/descs.sun/presets.xml.in.h:27
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:43
+msgid "Dutch"
+msgstr "Dutch"
+
+#: gkb-new/descs.sun/presets.xml.in.h:28
+msgid "Dutch Sun keymap"
+msgstr "Dutch Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:29
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/US.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:365
+msgid "English"
+msgstr "English"
+
+#: gkb-new/descs.sun/presets.xml.in.h:30
+msgid "English Sun Type-4 keymap"
+msgstr "English Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:31
+msgid "English Sun USB keymap"
+msgstr "English Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:32
+msgid "English Sun keymap"
+msgstr "English Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:33
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:50
+msgid "Estonia"
+msgstr "Estonia"
+
+#: gkb-new/descs.sun/presets.xml.in.h:34
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:51
+msgid "Estonian"
+msgstr "Estonian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:35
+msgid "Estonian Sun keymap"
+msgstr "Estonian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:36
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:55
+msgid "Finland"
+msgstr "Finland"
+
+#: gkb-new/descs.sun/presets.xml.in.h:37
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:56
+msgid "Finnish"
+msgstr "Finnish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:38
+msgid "Finnish Sun keymap"
+msgstr "Finnish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:39
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:60
+msgid "France"
+msgstr "France"
+
+#: gkb-new/descs.sun/presets.xml.in.h:40
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:61
+msgid "French"
+msgstr "French"
+
+#: gkb-new/descs.sun/presets.xml.in.h:41
+msgid "French Sun USB keymap"
+msgstr "French Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:42
+msgid "French Sun keymap"
+msgstr "French Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:43
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/German.keyprop.desktop.in.h:2
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:75
+msgid "German"
+msgstr "German"
+
+#: gkb-new/descs.sun/presets.xml.in.h:44
+msgid "German Sun Type-4 keymap"
+msgstr "German Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:45
+msgid "German Sun USB keymap"
+msgstr "German Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:46
+msgid "German Sun keymap"
+msgstr "German Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:47
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:79
+msgid "Germany"
+msgstr "Germany"
+
+#: gkb-new/descs.sun/presets.xml.in.h:48
+#: gkb-new/descs/Default.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:80
+msgid "Gnome Keyboard default"
+msgstr "Gnome Keyboard default"
+
+#: gkb-new/descs.sun/presets.xml.in.h:49
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:85
+msgid "Hebrew"
+msgstr "Hebrew"
+
+#: gkb-new/descs.sun/presets.xml.in.h:50
+msgid "Hebrew Sun keymap"
+msgstr "Hebrew Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:51
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:88
+msgid "Hungarian"
+msgstr "Hungarian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:52
+msgid "Hungarian latin2 Sun keymap"
+msgstr "Hungarian latin2 Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:53
+msgid "Hungarian type5 latin 1 keymap"
+msgstr "Hungarian type5 latin 1 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:54
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:96
+msgid "Hungary"
+msgstr "Hungary"
+
+#: gkb-new/descs.sun/presets.xml.in.h:55
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:97
+msgid "Iceland"
+msgstr "Iceland"
+
+#: gkb-new/descs.sun/presets.xml.in.h:56
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:98
+msgid "Icelandic"
+msgstr "Icelandic"
+
+#: gkb-new/descs.sun/presets.xml.in.h:57
+msgid "Icelandic Sun keymap"
+msgstr "Icelandic Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:58
+#: gkb-new/descs/Default.keyprop.desktop.in.h:3
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:365
+msgid "International"
+msgstr "International"
+
+#: gkb-new/descs.sun/presets.xml.in.h:59
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:103
+msgid "Israel"
+msgstr "Israel"
+
+#: gkb-new/descs.sun/presets.xml.in.h:60
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:104
+msgid "Italian"
+msgstr "Italian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:61
+msgid "Italian Sun Type-4 keymap"
+msgstr "Italian Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:62
+msgid "Italian Sun USB keymap"
+msgstr "Italian Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:63
+msgid "Italian Sun keymap"
+msgstr "Italian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:64
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:107
+msgid "Italy"
+msgstr "Italy"
+
+#: gkb-new/descs.sun/presets.xml.in.h:65
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:108
+msgid "Japan"
+msgstr "Japan"
+
+#: gkb-new/descs.sun/presets.xml.in.h:66
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:109
+msgid "Japanese"
+msgstr "Japanese"
+
+#: gkb-new/descs.sun/presets.xml.in.h:67
+msgid "Japanese Sun Type-4 keymap"
+msgstr "Japanese Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:68
+msgid "Japanese Sun keymap"
+msgstr "Japanese Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:69
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:1
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:1
+msgid "Latvia"
+msgstr "Latvia"
+
+#: gkb-new/descs.sun/presets.xml.in.h:70
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:2
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:2
+msgid "Latvian"
+msgstr "Latvian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:71
+msgid "Latvian Sun keymap"
+msgstr "Latvian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:72
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:119
+msgid "Lithuania"
+msgstr "Lithuania"
+
+#: gkb-new/descs.sun/presets.xml.in.h:73
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:120
+msgid "Lithuanian"
+msgstr "Lithuanian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:74
+msgid "Lithuanian Sun keymap"
+msgstr "Lithuanian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:75
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:125
+msgid "Macedonia"
+msgstr "Macedonia"
+
+#: gkb-new/descs.sun/presets.xml.in.h:76
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:126
+msgid "Macedonian"
+msgstr "Macedonian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:77
+msgid "Macedonian Sun keymap"
+msgstr "Macedonian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:78
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:136
+msgid "Norway"
+msgstr "Norway"
+
+#: gkb-new/descs.sun/presets.xml.in.h:79
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:137
+msgid "Norwegian"
+msgstr "Norwegian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:80
+msgid "Norwegian Sun keymap"
+msgstr "Norwegian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:81
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:142
+msgid "Poland"
+msgstr "Poland"
+
+#: gkb-new/descs.sun/presets.xml.in.h:82
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:143
+msgid "Polish"
+msgstr "Polish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:83
+msgid "Polish Sun keymap"
+msgstr "Polish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:84
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:146
+msgid "Portugal"
+msgstr "Portugal"
+
+#: gkb-new/descs.sun/presets.xml.in.h:85
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:148
+msgid "Portuguese"
+msgstr "Portuguese"
+
+#: gkb-new/descs.sun/presets.xml.in.h:86
+msgid "Portuguese Sun Type-4 keymap"
+msgstr "Portuguese Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:87
+msgid "Portuguese Sun keymap"
+msgstr "Portuguese Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:88
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:152
+msgid "Romania"
+msgstr "Romania"
+
+#: gkb-new/descs.sun/presets.xml.in.h:89
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:153
+msgid "Romanian"
+msgstr "Romanian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:90
+msgid "Romanian Sun keymap"
+msgstr "Romanian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:91
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:155
+msgid "Russia"
+msgstr "Russia"
+
+#: gkb-new/descs.sun/presets.xml.in.h:92
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:156
+msgid "Russian"
+msgstr "Russian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:93
+msgid "Russian Sun keymap"
+msgstr "Russian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:94
+msgid "Serbian Sun standard keymap"
+msgstr "Serbian Sun standard keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:95
+msgid "Serbo-Croatian"
+msgstr "Serbo-Croatian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:96
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:166
+msgid "Slovak"
+msgstr "Slovak"
+
+#: gkb-new/descs.sun/presets.xml.in.h:97
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:167
+msgid "Slovak Republic"
+msgstr "Slovak Republic"
+
+#: gkb-new/descs.sun/presets.xml.in.h:98
+msgid "Slovak Sun keymap"
+msgstr "Slovak Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:99
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:169
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: gkb-new/descs.sun/presets.xml.in.h:100
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:170
+msgid "Slovenian"
+msgstr "Slovenian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:101
+msgid "Slovenian Sun keymap"
+msgstr "Slovenian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:102
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:174
+msgid "Spain"
+msgstr "Spain"
+
+#: gkb-new/descs.sun/presets.xml.in.h:103
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:175
+msgid "Spanish"
+msgstr "Spanish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:104
+msgid "Spanish Sun Type-4 keymap"
+msgstr "Spanish Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:105
+msgid "Spanish Sun USB keymap"
+msgstr "Spanish Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:106
+msgid "Spanish Sun keymap"
+msgstr "Spanish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:107
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:181
+msgid "Sweden"
+msgstr "Sweden"
+
+#: gkb-new/descs.sun/presets.xml.in.h:108
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:182
+msgid "Swedish"
+msgstr "Swedish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:109
+msgid "Swedish Sun Type-4 keymap"
+msgstr "Swedish Sun Type-4 keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:110
+msgid "Swedish Sun USB keymap"
+msgstr "Swedish Sun USB keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:111
+msgid "Swedish Sun keymap"
+msgstr "Swedish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:112
+msgid "Swiss German Sun keymap"
+msgstr "Swiss German Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:113
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:4
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:186
+msgid "Switzerland"
+msgstr "Switzerland"
+
+#: gkb-new/descs.sun/presets.xml.in.h:114
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:190
+msgid "Thai"
+msgstr "Thai"
+
+#: gkb-new/descs.sun/presets.xml.in.h:115
+msgid "Thai Sun keymap"
+msgstr "Thai Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:116
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:194
+msgid "Thailand"
+msgstr "Thailand"
+
+#: gkb-new/descs.sun/presets.xml.in.h:117
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:196
+msgid "Turkey"
+msgstr "Turkey"
+
+#: gkb-new/descs.sun/presets.xml.in.h:118
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:197
+msgid "Turkish"
+msgstr "Turkish"
+
+#: gkb-new/descs.sun/presets.xml.in.h:119
+msgid "Turkish Sun keymap"
+msgstr "Turkish Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:120
+msgid "US Sun Type-4 keyboard"
+msgstr "US Sun Type-4 keyboard"
+
+#: gkb-new/descs.sun/presets.xml.in.h:121
+msgid "US Sun USB keyboard"
+msgstr "US Sun USB keyboard"
+
+#: gkb-new/descs.sun/presets.xml.in.h:122
+msgid "US Sun type5 keyboard"
+msgstr "US Sun type5 keyboard"
+
+#: gkb-new/descs.sun/presets.xml.in.h:123
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:216
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: gkb-new/descs.sun/presets.xml.in.h:124
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:217
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#: gkb-new/descs.sun/presets.xml.in.h:125
+msgid "Ukrainian Sun keymap"
+msgstr "Ukrainian Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:126
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:220
+msgid "United Kingdom"
+msgstr "United Kingdom"
+
+#: gkb-new/descs.sun/presets.xml.in.h:127
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/US.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:361
+msgid "United States"
+msgstr "United States"
+
+#: gkb-new/descs.sun/presets.xml.in.h:128
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:223
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:224
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+#: gkb-new/descs.sun/presets.xml.in.h:130
+msgid "Vietnamese Sun keymap"
+msgstr "Vietnamese Sun keymap"
+
+#: gkb-new/descs.sun/presets.xml.in.h:131
+msgid "Yugoslavia"
+msgstr "Yugoslavia"
 
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:7
@@ -1263,37 +2072,10 @@ msgstr "Azerbaidjani Turkic"
 msgid "Azerbaidjani Turkic xkb keymap"
 msgstr "Azerbaidjani Turkic xkb keymap"
 
-#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
-#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:18 gkb-new/descs.sun/presets.xml.in.h:10
-msgid "Belgium"
-msgstr "Belgium"
-
-#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
-#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
-#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:43 gkb-new/descs.sun/presets.xml.in.h:27
-msgid "Dutch"
-msgstr "Dutch"
-
 #: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:45
 msgid "Dutch xkb keymap"
 msgstr "Dutch xkb keymap"
-
-#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
-#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:22 gkb-new/descs.sun/presets.xml.in.h:14
-msgid "Bulgaria"
-msgstr "Bulgaria"
-
-#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
-#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:23 gkb-new/descs.sun/presets.xml.in.h:15
-msgid "Bulgarian"
-msgstr "Bulgarian"
 
 #: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:26
@@ -1305,43 +2087,15 @@ msgstr "Bulgarian xkb keymap"
 msgid "Bulgarian keymap"
 msgstr "Bulgarian keymap"
 
-#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
-#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
-#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:19 gkb-new/descs.sun/presets.xml.in.h:11
-msgid "Brazil"
-msgstr "Brazil"
-
 #: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:21
 msgid "Brazil Portuguese xkb keymap"
 msgstr "Brazil Portuguese xkb keymap"
 
-#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
-#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
-#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
-#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
-#: gkb-new/descs/presets.xml.in.h:148 gkb-new/descs.sun/presets.xml.in.h:85
-msgid "Portuguese"
-msgstr "Portuguese"
-
 #: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:20
 msgid "Brazil Portuguese keymap"
 msgstr "Brazil Portuguese keymap"
-
-#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:14 gkb-new/descs.sun/presets.xml.in.h:7
-msgid "Belarus"
-msgstr "Belarus"
-
-#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:15 gkb-new/descs.sun/presets.xml.in.h:8
-msgid "Belarusian"
-msgstr "Belarusian"
 
 #: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:16
@@ -1363,17 +2117,6 @@ msgstr "Euskadi"
 msgid "Belgian"
 msgstr "Belgian"
 
-#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
-#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
-#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
-#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
-#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
-#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:61 gkb-new/descs.sun/presets.xml.in.h:40
-msgid "French"
-msgstr "French"
-
 #: gkb-new/descs/Belgian.keyprop.desktop.in.h:5
 msgid "Wallon"
 msgstr "Wallon"
@@ -1382,6 +2125,35 @@ msgstr "Wallon"
 #: gkb-new/descs/presets.xml.in.h:24
 msgid "Bulgarian Cyrillic"
 msgstr "Bulgarian Cyrillic"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:28
+msgid "Canadian xkb keymap"
+msgstr "Canadian xkb keymap"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:185
+msgid "Swiss keymap"
+msgstr "Swiss keymap"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:37
+msgid "Czech qwertz xkb keymap"
+msgstr "Czech qwertz xkb keymap"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
+msgid "Former Czechoslovakia Czech Republic"
+msgstr "Former Czechoslovakia Czech Republic"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:35
+msgid "Czech and Slovak xkb keymap"
+msgstr "Czech and Slovak xkb keymap"
+
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:36
+msgid "Czech keymap"
+msgstr "Czech keymap"
 
 #: gkb-new/descs/Catalan.keyprop.desktop.in.h:1
 msgid "Catalan"
@@ -1395,183 +2167,36 @@ msgstr "Catalan xkb keymap"
 msgid "Catalonia"
 msgstr "Catalonia"
 
-#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
-#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:27 gkb-new/descs.sun/presets.xml.in.h:17
-msgid "Canada"
-msgstr "Canada"
-
-#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:28
-msgid "Canadian xkb keymap"
-msgstr "Canadian xkb keymap"
-
-#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
-#: gkb-new/descs/US.keyprop.desktop.in.h:1
-#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
-#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:48 gkb-new/descs.sun/presets.xml.in.h:29
-#: gkb-new/gkb.c:365
-msgid "English"
-msgstr "English"
-
-#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
-#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/German.keyprop.desktop.in.h:2
-#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:75 gkb-new/descs.sun/presets.xml.in.h:43
-msgid "German"
-msgstr "German"
-
-#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:185
-msgid "Swiss keymap"
-msgstr "Swiss keymap"
-
-#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
-#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
-#: gkb-new/descs/German.keyprop.desktop.in.h:4
-#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:186 gkb-new/descs.sun/presets.xml.in.h:113
-msgid "Switzerland"
-msgstr "Switzerland"
-
-#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
-#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:33 gkb-new/descs.sun/presets.xml.in.h:19
-msgid "Czech"
-msgstr "Czech"
-
-#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:37
-msgid "Czech qwertz xkb keymap"
-msgstr "Czech qwertz xkb keymap"
-
-#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
-msgid "Former Czechoslovakia Czech Republic"
-msgstr "Former Czechoslovakia Czech Republic"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
-#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:34 gkb-new/descs.sun/presets.xml.in.h:20
-msgid "Czech Republic"
-msgstr "Czech Republic"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:35
-msgid "Czech and Slovak xkb keymap"
-msgstr "Czech and Slovak xkb keymap"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:166 gkb-new/descs.sun/presets.xml.in.h:96
-msgid "Slovak"
-msgstr "Slovak"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:3
-#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:167 gkb-new/descs.sun/presets.xml.in.h:97
-msgid "Slovak Republic"
-msgstr "Slovak Republic"
-
-#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:36
-msgid "Czech keymap"
-msgstr "Czech keymap"
-
 #: gkb-new/descs/DE_German.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:78
 msgid "German xkb keymap"
 msgstr "German xkb keymap"
-
-#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
-#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/German.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:79 gkb-new/descs.sun/presets.xml.in.h:47
-msgid "Germany"
-msgstr "Germany"
 
 #: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:77
 msgid "German keymap"
 msgstr "German keymap"
 
-#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
-#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:38 gkb-new/descs.sun/presets.xml.in.h:22
-msgid "Danish"
-msgstr "Danish"
-
 #: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:40
 msgid "Danish xkb keymap"
 msgstr "Danish xkb keymap"
-
-#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
-#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:41 gkb-new/descs.sun/presets.xml.in.h:26
-msgid "Denmark"
-msgstr "Denmark"
 
 #: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:39
 msgid "Danish keymap"
 msgstr "Danish keymap"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:851
-#: gweather/gweather-pref.c:871 gweather/gweather-pref.c:895
-#: gweather/gweather-pref.c:921
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:872 gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:922
 msgid "Default"
 msgstr "Default"
-
-#: gkb-new/descs/Default.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:80 gkb-new/descs.sun/presets.xml.in.h:48
-msgid "Gnome Keyboard default"
-msgstr "Gnome Keyboard default"
-
-#: gkb-new/descs/Default.keyprop.desktop.in.h:3
-#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:101 gkb-new/descs.sun/presets.xml.in.h:58
-#: gkb-new/gkb.c:365
-msgid "International"
-msgstr "International"
 
 #: gkb-new/descs/Dvorak.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:46
 msgid "Dvorak xkb keymap"
 msgstr "Dvorak xkb keymap"
-
-#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:50 gkb-new/descs.sun/presets.xml.in.h:33
-msgid "Estonia"
-msgstr "Estonia"
-
-#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:51 gkb-new/descs.sun/presets.xml.in.h:34
-msgid "Estonian"
-msgstr "Estonian"
 
 #: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:53
@@ -1582,20 +2207,6 @@ msgstr "Estonian xkb keymap"
 #: gkb-new/descs/presets.xml.in.h:52
 msgid "Estonian keymap"
 msgstr "Estonian keymap"
-
-#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
-#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:174 gkb-new/descs.sun/presets.xml.in.h:102
-msgid "Spain"
-msgstr "Spain"
-
-#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
-#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
-#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:175 gkb-new/descs.sun/presets.xml.in.h:103
-msgid "Spanish"
-msgstr "Spanish"
 
 #: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:176
@@ -1612,18 +2223,6 @@ msgstr "Spanish xkb keymap"
 msgid "Spanish keymap"
 msgstr "Spanish keymap"
 
-#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
-#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:55 gkb-new/descs.sun/presets.xml.in.h:36
-msgid "Finland"
-msgstr "Finland"
-
-#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
-#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:56 gkb-new/descs.sun/presets.xml.in.h:37
-msgid "Finnish"
-msgstr "Finnish"
-
 #: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:58
 msgid "Finnish xkb keymap"
@@ -1633,13 +2232,6 @@ msgstr "Finnish xkb keymap"
 #: gkb-new/descs/presets.xml.in.h:57
 msgid "Finnish keymap"
 msgstr "Finnish keymap"
-
-#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
-#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:60 gkb-new/descs.sun/presets.xml.in.h:39
-msgid "France"
-msgstr "France"
 
 #: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:62
@@ -1747,34 +2339,10 @@ msgstr "Croatian"
 msgid "Croatian keymap"
 msgstr "Croatian keymap"
 
-#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:88 gkb-new/descs.sun/presets.xml.in.h:51
-msgid "Hungarian"
-msgstr "Hungarian"
-
 #: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:95
 msgid "Hungarian latin2 xkb keymap"
 msgstr "Hungarian latin2 xkb keymap"
-
-#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
-#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:96 gkb-new/descs.sun/presets.xml.in.h:54
-msgid "Hungary"
-msgstr "Hungary"
 
 #: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:94
@@ -1811,39 +2379,15 @@ msgstr "Hungarian 101-key latin 1"
 msgid "Hungarian 101-key latin 2"
 msgstr "Hungarian 101-key latin 2"
 
-#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
-#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:85 gkb-new/descs.sun/presets.xml.in.h:49
-msgid "Hebrew"
-msgstr "Hebrew"
-
 #: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:87
 msgid "Hebrew xkb keymap"
 msgstr "Hebrew xkb keymap"
 
-#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
-#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:103 gkb-new/descs.sun/presets.xml.in.h:59
-msgid "Israel"
-msgstr "Israel"
-
 #: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:86
 msgid "Hebrew keymap"
 msgstr "Hebrew keymap"
-
-#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
-#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:97 gkb-new/descs.sun/presets.xml.in.h:55
-msgid "Iceland"
-msgstr "Iceland"
-
-#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
-#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:98 gkb-new/descs.sun/presets.xml.in.h:56
-msgid "Icelandic"
-msgstr "Icelandic"
 
 #: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:100
@@ -1855,39 +2399,15 @@ msgstr "Icelandic xkb keymap"
 msgid "Icelandic keymap"
 msgstr "Icelandic keymap"
 
-#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
-#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:104 gkb-new/descs.sun/presets.xml.in.h:60
-msgid "Italian"
-msgstr "Italian"
-
 #: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:106
 msgid "Italian xkb keymap"
 msgstr "Italian xkb keymap"
 
-#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
-#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:107 gkb-new/descs.sun/presets.xml.in.h:64
-msgid "Italy"
-msgstr "Italy"
-
 #: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:105
 msgid "Italian keymap"
 msgstr "Italian keymap"
-
-#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
-#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:108 gkb-new/descs.sun/presets.xml.in.h:65
-msgid "Japan"
-msgstr "Japan"
-
-#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
-#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:109 gkb-new/descs.sun/presets.xml.in.h:66
-msgid "Japanese"
-msgstr "Japanese"
 
 #: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:111
@@ -1926,22 +2446,6 @@ msgstr "Lao keymap"
 msgid "Laos"
 msgstr "Laos"
 
-#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
-#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
-#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:119 gkb-new/descs.sun/presets.xml.in.h:72
-msgid "Lithuania"
-msgstr "Lithuania"
-
-#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
-#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
-#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:120 gkb-new/descs.sun/presets.xml.in.h:73
-msgid "Lithuanian"
-msgstr "Lithuanian"
-
 #: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:123
 msgid "Lithuanian qwerty xkb keymap"
@@ -1962,20 +2466,6 @@ msgstr "Lithuanian programmers xkb keymap"
 msgid "Lithuanian standard xkb keymap"
 msgstr "Lithuanian standard xkb keymap"
 
-#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:1
-#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:1
-#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:1
-#: gkb-new/descs.sun/presets.xml.in.h:69
-msgid "Latvia"
-msgstr "Latvia"
-
-#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:2
-#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:2
-#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:2
-#: gkb-new/descs.sun/presets.xml.in.h:70
-msgid "Latvian"
-msgstr "Latvian"
-
 #: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:3
 msgid "Latvian (') xkb keymap"
 msgstr "Latvian (') xkb keymap"
@@ -1987,18 +2477,6 @@ msgstr "Latvian standard xkb keymap"
 #: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:3
 msgid "Latvian (~) xkb keymap"
 msgstr "Latvian (~) xkb keymap"
-
-#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:125 gkb-new/descs.sun/presets.xml.in.h:75
-msgid "Macedonia"
-msgstr "Macedonia"
-
-#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:126 gkb-new/descs.sun/presets.xml.in.h:76
-msgid "Macedonian"
-msgstr "Macedonian"
 
 #: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:127
@@ -2048,49 +2526,15 @@ msgstr "Dutch keymap"
 msgid "Netherlands"
 msgstr "Netherlands"
 
-#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:136 gkb-new/descs.sun/presets.xml.in.h:78
-msgid "Norway"
-msgstr "Norway"
-
-#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
-#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:137 gkb-new/descs.sun/presets.xml.in.h:79
-msgid "Norwegian"
-msgstr "Norwegian"
-
 #: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:138
 msgid "Norwegian xkb keymap"
 msgstr "Norwegian xkb keymap"
 
-#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
-#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
-#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:142 gkb-new/descs.sun/presets.xml.in.h:81
-msgid "Poland"
-msgstr "Poland"
-
-#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
-#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
-#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:143 gkb-new/descs.sun/presets.xml.in.h:82
-msgid "Polish"
-msgstr "Polish"
-
 #: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:145
 msgid "Polish xkb keymap"
 msgstr "Polish xkb keymap"
-
-#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
-#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
-#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:146 gkb-new/descs.sun/presets.xml.in.h:84
-msgid "Portugal"
-msgstr "Portugal"
 
 #: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:150
@@ -2112,36 +2556,10 @@ msgstr "Polish deadkeys"
 msgid "Portugal Deadkeys"
 msgstr "Portugal Deadkeys"
 
-#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:152 gkb-new/descs.sun/presets.xml.in.h:88
-msgid "Romania"
-msgstr "Romania"
-
-#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:153 gkb-new/descs.sun/presets.xml.in.h:89
-msgid "Romanian"
-msgstr "Romanian"
-
 #: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:154
 msgid "Romanian xkb keymap"
 msgstr "Romanian xkb keymap"
-
-#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
-#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
-#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:155 gkb-new/descs.sun/presets.xml.in.h:91
-msgid "Russia"
-msgstr "Russia"
-
-#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
-#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
-#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:156 gkb-new/descs.sun/presets.xml.in.h:92
-msgid "Russian"
-msgstr "Russian"
 
 #: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:159
@@ -2163,20 +2581,6 @@ msgstr "Plain Russian keymap"
 msgid "Russian Cyrillic"
 msgstr "Russian Cyrillic"
 
-#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
-#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:181 gkb-new/descs.sun/presets.xml.in.h:107
-msgid "Sweden"
-msgstr "Sweden"
-
-#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
-#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:182 gkb-new/descs.sun/presets.xml.in.h:108
-msgid "Swedish"
-msgstr "Swedish"
-
 #: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:184
 msgid "Swedish xkb keymap"
@@ -2187,22 +2591,6 @@ msgstr "Swedish xkb keymap"
 msgid "Swedish keymap"
 msgstr "Swedish keymap"
 
-#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
-#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:169 gkb-new/descs.sun/presets.xml.in.h:99
-msgid "Slovenia"
-msgstr "Slovenia"
-
-#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
-#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:170 gkb-new/descs.sun/presets.xml.in.h:100
-msgid "Slovenian"
-msgstr "Slovenian"
-
 #: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:172
 msgid "Slovenian xkb keymap"
@@ -2212,6 +2600,10 @@ msgstr "Slovenian xkb keymap"
 #: gkb-new/descs/presets.xml.in.h:171
 msgid "Slovenian keymap"
 msgstr "Slovenian keymap"
+
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:1
+msgid " keymap"
+msgstr " keymap"
 
 #: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:1
 #: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:1
@@ -2233,10 +2625,6 @@ msgstr "Serbia and Montenegro"
 msgid "Serbian standard xkb keymap"
 msgstr "Serbian standard xkb keymap"
 
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:1
-msgid " keymap"
-msgstr " keymap"
-
 #: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
 #: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:188
@@ -2251,47 +2639,15 @@ msgstr "Syriac xkb keymap"
 msgid "Syriac Phonetic xkb keymap"
 msgstr "Syriac Phonetic xkb keymap"
 
-#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
-#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
-#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:190 gkb-new/descs.sun/presets.xml.in.h:114
-msgid "Thai"
-msgstr "Thai"
-
 #: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
 msgstr "Thai xkb keymap"
 
-#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
-#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
-#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:194 gkb-new/descs.sun/presets.xml.in.h:116
-msgid "Thailand"
-msgstr "Thailand"
-
 #: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai keymap"
 msgstr "Thai keymap"
-
-#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
-#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
-#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
-#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:196 gkb-new/descs.sun/presets.xml.in.h:117
-msgid "Turkey"
-msgstr "Turkey"
-
-#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
-#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
-#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
-#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:197 gkb-new/descs.sun/presets.xml.in.h:118
-msgid "Turkish"
-msgstr "Turkish"
 
 #: gkb-new/descs/TR-f.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:198
@@ -2318,16 +2674,6 @@ msgstr "Turkish keymap"
 msgid "Thai Kedmanee"
 msgstr "Thai Kedmanee"
 
-#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:216 gkb-new/descs.sun/presets.xml.in.h:123
-msgid "Ukraine"
-msgstr "Ukraine"
-
-#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:217 gkb-new/descs.sun/presets.xml.in.h:124
-msgid "Ukrainian"
-msgstr "Ukrainian"
-
 #: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:218
 msgid "Ukrainian xkb keymap"
@@ -2337,16 +2683,6 @@ msgstr "Ukrainian xkb keymap"
 #: gkb-new/descs/presets.xml.in.h:68
 msgid "GB 102-key"
 msgstr "GB 102-key"
-
-#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
-#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:220 gkb-new/descs.sun/presets.xml.in.h:126
-msgid "United Kingdom"
-msgstr "United Kingdom"
 
 #: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:203
@@ -2376,23 +2712,6 @@ msgstr "GB 105-key"
 #: gkb-new/descs/presets.xml.in.h:204
 msgid "US 101-key keyboard"
 msgstr "US 101-key keyboard"
-
-#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
-#: gkb-new/descs/US.keyprop.desktop.in.h:3
-#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
-#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:222 gkb-new/descs.sun/presets.xml.in.h:127
-#: gkb-new/gkb.c:361
-msgid "United States"
-msgstr "United States"
 
 #: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:212
@@ -2448,16 +2767,6 @@ msgstr "US xkb keymap"
 msgid "US International xkb keymap"
 msgstr "US International xkb keymap"
 
-#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:223 gkb-new/descs.sun/presets.xml.in.h:128
-msgid "Vietnam"
-msgstr "Vietnam"
-
-#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:224 gkb-new/descs.sun/presets.xml.in.h:129
-msgid "Vietnamese"
-msgstr "Vietnamese"
-
 #: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:225
 msgid "Vietnamese xkb keymap"
@@ -2468,14 +2777,6 @@ msgstr "Vietnamese xkb keymap"
 #: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:2
 msgid "Serb keymap"
 msgstr "Serb keymap"
-
-#: gkb-new/descs/presets.xml.in.h:9 gkb-new/descs.sun/presets.xml.in.h:4
-msgid "Azerbaijan"
-msgstr "Azerbaijan"
-
-#: gkb-new/descs/presets.xml.in.h:10 gkb-new/descs.sun/presets.xml.in.h:5
-msgid "Azerbaijani Turkish"
-msgstr "Azerbaijani Turkish"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaijani Turkish xkb keymap"
@@ -2516,242 +2817,6 @@ msgstr "Slovak keymap"
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Syriac Phonetic"
-
-#: gkb-new/descs.sun/presets.xml.in.h:3
-msgid "Armenian Sun keymap"
-msgstr "Armenian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Azerbaijani Turkish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarusian Sun keymap"
-msgstr "Belarusian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:12
-msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Brazil Portuguese Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:13
-msgid "Brazil Portuguese Sun keymap"
-msgstr "Brazil Portuguese Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:16
-msgid "Bulgarian Sun keymap"
-msgstr "Bulgarian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:18
-msgid "Canadian Sun keymap"
-msgstr "Canadian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:21
-msgid "Czech Sun keymap"
-msgstr "Czech Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:23
-msgid "Danish Sun Type-4 keymap"
-msgstr "Danish Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:24
-msgid "Danish Sun USB keymap"
-msgstr "Danish Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:25
-msgid "Danish Sun keymap"
-msgstr "Danish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:28
-msgid "Dutch Sun keymap"
-msgstr "Dutch Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:30
-msgid "English Sun Type-4 keymap"
-msgstr "English Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:31
-msgid "English Sun USB keymap"
-msgstr "English Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:32
-msgid "English Sun keymap"
-msgstr "English Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:35
-msgid "Estonian Sun keymap"
-msgstr "Estonian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:38
-msgid "Finnish Sun keymap"
-msgstr "Finnish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:41
-msgid "French Sun USB keymap"
-msgstr "French Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:42
-msgid "French Sun keymap"
-msgstr "French Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:44
-msgid "German Sun Type-4 keymap"
-msgstr "German Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:45
-msgid "German Sun USB keymap"
-msgstr "German Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:46
-msgid "German Sun keymap"
-msgstr "German Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:50
-msgid "Hebrew Sun keymap"
-msgstr "Hebrew Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:52
-msgid "Hungarian latin2 Sun keymap"
-msgstr "Hungarian latin2 Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:53
-msgid "Hungarian type5 latin 1 keymap"
-msgstr "Hungarian type5 latin 1 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:57
-msgid "Icelandic Sun keymap"
-msgstr "Icelandic Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:61
-msgid "Italian Sun Type-4 keymap"
-msgstr "Italian Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:62
-msgid "Italian Sun USB keymap"
-msgstr "Italian Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:63
-msgid "Italian Sun keymap"
-msgstr "Italian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:67
-msgid "Japanese Sun Type-4 keymap"
-msgstr "Japanese Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:68
-msgid "Japanese Sun keymap"
-msgstr "Japanese Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:71
-msgid "Latvian Sun keymap"
-msgstr "Latvian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:74
-msgid "Lithuanian Sun keymap"
-msgstr "Lithuanian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:77
-msgid "Macedonian Sun keymap"
-msgstr "Macedonian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:80
-msgid "Norwegian Sun keymap"
-msgstr "Norwegian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:83
-msgid "Polish Sun keymap"
-msgstr "Polish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:86
-msgid "Portuguese Sun Type-4 keymap"
-msgstr "Portuguese Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:87
-msgid "Portuguese Sun keymap"
-msgstr "Portuguese Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:90
-msgid "Romanian Sun keymap"
-msgstr "Romanian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:93
-msgid "Russian Sun keymap"
-msgstr "Russian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:94
-msgid "Serbian Sun standard keymap"
-msgstr "Serbian Sun standard keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:95
-msgid "Serbo-Croatian"
-msgstr "Serbo-Croatian"
-
-#: gkb-new/descs.sun/presets.xml.in.h:98
-msgid "Slovak Sun keymap"
-msgstr "Slovak Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:101
-msgid "Slovenian Sun keymap"
-msgstr "Slovenian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:104
-msgid "Spanish Sun Type-4 keymap"
-msgstr "Spanish Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:105
-msgid "Spanish Sun USB keymap"
-msgstr "Spanish Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:106
-msgid "Spanish Sun keymap"
-msgstr "Spanish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:109
-msgid "Swedish Sun Type-4 keymap"
-msgstr "Swedish Sun Type-4 keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:110
-msgid "Swedish Sun USB keymap"
-msgstr "Swedish Sun USB keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:111
-msgid "Swedish Sun keymap"
-msgstr "Swedish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:112
-msgid "Swiss German Sun keymap"
-msgstr "Swiss German Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:115
-msgid "Thai Sun keymap"
-msgstr "Thai Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:119
-msgid "Turkish Sun keymap"
-msgstr "Turkish Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:120
-msgid "US Sun Type-4 keyboard"
-msgstr "US Sun Type-4 keyboard"
-
-#: gkb-new/descs.sun/presets.xml.in.h:121
-msgid "US Sun USB keyboard"
-msgstr "US Sun USB keyboard"
-
-#: gkb-new/descs.sun/presets.xml.in.h:122
-msgid "US Sun type5 keyboard"
-msgstr "US Sun type5 keyboard"
-
-#: gkb-new/descs.sun/presets.xml.in.h:125
-msgid "Ukrainian Sun keymap"
-msgstr "Ukrainian Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:130
-msgid "Vietnamese Sun keymap"
-msgstr "Vietnamese Sun keymap"
-
-#: gkb-new/descs.sun/presets.xml.in.h:131
-msgid "Yugoslavia"
-msgstr "Yugoslavia"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2956,7 +3021,7 @@ msgstr "Label"
 msgid "Flag and Label"
 msgstr "Flag and Label"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1037
+#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1038
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Display"
@@ -3247,7 +3312,7 @@ msgid "Stock Ticker"
 msgstr "Stock Ticker"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:158
 msgid "_Update"
 msgstr "_Update"
 
@@ -3303,7 +3368,7 @@ msgstr "Symbols"
 msgid "Behavior"
 msgstr "Behaviour"
 
-#: gtik/gtik.c:1424 gweather/gweather-pref.c:997
+#: gtik/gtik.c:1424 gweather/gweather-pref.c:998
 msgid "Update"
 msgstr "Update"
 
@@ -3311,7 +3376,7 @@ msgstr "Update"
 msgid "Stock update fre_quency:"
 msgstr "Stock update fre_quency:"
 
-#: gtik/gtik.c:1440 gweather/gweather-pref.c:1021
+#: gtik/gtik.c:1440 gweather/gweather-pref.c:1022
 msgid "minutes"
 msgstr "minutes"
 
@@ -3599,87 +3664,95 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Details"
 msgstr "Details"
 
-#: gweather/gweather-dialog.c:195
+#: gweather/gweather-dialog.c:197
 msgid "City:"
 msgstr "City:"
 
-#: gweather/gweather-dialog.c:203
+#: gweather/gweather-dialog.c:205
 msgid "Last update:"
 msgstr "Last update:"
 
-#: gweather/gweather-dialog.c:211
+#: gweather/gweather-dialog.c:213
 msgid "Conditions:"
 msgstr "Conditions:"
 
-#: gweather/gweather-dialog.c:219
+#: gweather/gweather-dialog.c:221
 msgid "Sky:"
 msgstr "Sky:"
 
-#: gweather/gweather-dialog.c:227
+#: gweather/gweather-dialog.c:229
 msgid "Temperature:"
 msgstr "Temperature:"
 
-#: gweather/gweather-dialog.c:235
+#: gweather/gweather-dialog.c:237
 msgid "Feels like:"
 msgstr "Feels like:"
 
-#: gweather/gweather-dialog.c:243
+#: gweather/gweather-dialog.c:245
 msgid "Dew point:"
 msgstr "Dew point:"
 
-#: gweather/gweather-dialog.c:251
+#: gweather/gweather-dialog.c:253
 msgid "Relative humidity:"
 msgstr "Relative humidity:"
 
-#: gweather/gweather-dialog.c:259
+#: gweather/gweather-dialog.c:261
 msgid "Wind:"
 msgstr "Wind:"
 
-#: gweather/gweather-dialog.c:267
+#: gweather/gweather-dialog.c:269
 msgid "Pressure:"
 msgstr "Pressure:"
 
-#: gweather/gweather-dialog.c:275
+#: gweather/gweather-dialog.c:277
 msgid "Visibility:"
 msgstr "Visibility:"
 
-#: gweather/gweather-dialog.c:392
+#: gweather/gweather-dialog.c:285
+msgid "Sunrise:"
+msgstr "Sunrise:"
+
+#: gweather/gweather-dialog.c:293
+msgid "Sunset:"
+msgstr "Sunset:"
+
+#: gweather/gweather-dialog.c:428
 msgid "Current Conditions"
 msgstr "Current Conditions"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:445
 msgid "Forecast Report"
 msgstr "Forecast Report"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:445
 msgid "See the ForeCast Details"
 msgstr "See the ForeCast Details"
 
-#: gweather/gweather-dialog.c:419
+#: gweather/gweather-dialog.c:455
 msgid "Forecast"
 msgstr "Forecast"
 
-#: gweather/gweather-dialog.c:427
+#: gweather/gweather-dialog.c:463
 msgid "Radar Map"
 msgstr "Radar Map"
 
-#: gweather/gweather-dialog.c:458
+#: gweather/gweather-dialog.c:494
 msgid "_Visit Weather.com"
 msgstr "_Visit Weather.com"
 
-#: gweather/gweather-dialog.c:459
+#: gweather/gweather-dialog.c:495
 msgid "Visit Weather.com"
 msgstr "Visit Weather.com"
 
-#: gweather/gweather-dialog.c:459
+#: gweather/gweather-dialog.c:495
 msgid "Click to Enter Weather.com"
 msgstr "Click to Enter Weather.com"
 
-#: gweather/gweather-dialog.c:550
+#: gweather/gweather-dialog.c:588
 msgid "Forecast not currently available for this location."
 msgstr "Forecast not currently available for this location."
 
@@ -3692,32 +3765,32 @@ msgstr "Location view"
 msgid "Select Location from the list"
 msgstr "Select Location from the list"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:192
 msgid "Update spin button"
 msgstr "Update spin button"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:192
 msgid "Spinbutton for updating"
 msgstr "Spinbutton for updating"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:193
 msgid "Address Entry"
 msgstr "Address Entry"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:193
 msgid "Enter the URL"
 msgstr "Enter the URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:403 gweather/gweather-pref.c:412
+#: gweather/gweather-pref.c:404 gweather/gweather-pref.c:413
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:438 gweather/gweather-pref.c:448
+#: gweather/gweather-pref.c:439 gweather/gweather-pref.c:449
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "km/h"
 
@@ -3725,139 +3798,139 @@ msgstr "km/h"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:476 gweather/gweather-pref.c:487
+#: gweather/gweather-pref.c:477 gweather/gweather-pref.c:488
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:513 gweather/gweather-pref.c:522
+#: gweather/gweather-pref.c:514 gweather/gweather-pref.c:523
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: gweather/gweather-pref.c:800
+#: gweather/gweather-pref.c:801
 msgid "Weather Preferences"
 msgstr "Weather Preferences"
 
-#: gweather/gweather-pref.c:833 gweather/gweather-pref.c:1001
+#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1002
 msgid "_Automatically update every:"
 msgstr "_Automatically update every:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:842
+#: gweather/gweather-pref.c:843
 msgid "_Temperature Unit:"
 msgstr "_Temperature Unit:"
 
-#: gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:853
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:854
+#: gweather/gweather-pref.c:855
 msgid "Celsius"
 msgstr "Celsius"
 
-#: gweather/gweather-pref.c:855
+#: gweather/gweather-pref.c:856
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:862
+#: gweather/gweather-pref.c:863
 msgid "_Wind Speed Unit:"
 msgstr "_Wind Speed Unit:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:873
+#: gweather/gweather-pref.c:874
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:875
+#: gweather/gweather-pref.c:876
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:877
+#: gweather/gweather-pref.c:878
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:879
+#: gweather/gweather-pref.c:880
 msgid "knots"
 msgstr "knots"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:886
+#: gweather/gweather-pref.c:887
 msgid "_Pressure Unit:"
 msgstr "_Pressure Unit:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:898
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:899
+#: gweather/gweather-pref.c:900
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:901
+#: gweather/gweather-pref.c:902
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:903
+#: gweather/gweather-pref.c:904
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:906
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:912
+#: gweather/gweather-pref.c:913
 msgid "_Visibility Unit:"
 msgstr "_Visibility Unit:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:923
+#: gweather/gweather-pref.c:924
 msgid "meters"
 msgstr "metres"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:925
+#: gweather/gweather-pref.c:926
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:927
+#: gweather/gweather-pref.c:928
 msgid "miles"
 msgstr "miles"
 
-#: gweather/gweather-pref.c:952
+#: gweather/gweather-pref.c:953
 msgid "Enable _radar map"
 msgstr "Enable _radar map"
 
-#: gweather/gweather-pref.c:966
+#: gweather/gweather-pref.c:967
 msgid "Use _custom address for radar map"
 msgstr "Use _custom address for radar map"
 
-#: gweather/gweather-pref.c:983
+#: gweather/gweather-pref.c:984
 msgid "A_ddress:"
 msgstr "A_ddress:"
 
-#: gweather/gweather-pref.c:1052 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1053 mini-commander/src/mini-commander.glade.h:12
 #: modemlights/properties.c:563
 msgid "General"
 msgstr "General"
 
-#: gweather/gweather-pref.c:1065
+#: gweather/gweather-pref.c:1066
 msgid "_Select a location:"
 msgstr "_Select a location:"
 
-#: gweather/gweather-pref.c:1095
+#: gweather/gweather-pref.c:1096
 msgid "Location"
 msgstr "Location"
 
@@ -3865,8 +3938,8 @@ msgstr "Location"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
-#: gweather/weather.c:141
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:191
+#: gweather/weather.c:196
 msgid "DEFAULT_CODE"
 msgstr "CYOW"
 
@@ -3874,8 +3947,8 @@ msgstr "CYOW"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
-#: gweather/weather.c:120 gweather/weather.c:121
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:170
+#: gweather/weather.c:175 gweather/weather.c:176
 msgid "DEFAULT_LOCATION"
 msgstr "Ottawa"
 
@@ -3883,8 +3956,8 @@ msgstr "Ottawa"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
-#: gweather/weather.c:172
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:223
+#: gweather/weather.c:228
 msgid "DEFAULT_RADAR"
 msgstr "tyx"
 
@@ -3892,8 +3965,8 @@ msgstr "tyx"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
-#: gweather/weather.c:157
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:207
+#: gweather/weather.c:212
 msgid "DEFAULT_ZONE"
 msgstr "-----"
 
@@ -3990,99 +4063,99 @@ msgstr "Use metric units instead of English units."
 msgid "weather location information."
 msgstr "weather location information."
 
-#: gweather/weather.c:128
+#: gweather/weather.c:183
 msgid "Pittsburgh"
 msgstr "Pittsburgh"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:291
 msgid "Variable"
 msgstr "Variable"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "North"
 msgstr "North"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "North - NorthEast"
 msgstr "North - NorthEast"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "Northeast"
 msgstr "NorthEast"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "East - NorthEast"
 msgstr "East - NorthEast"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "East"
 msgstr "East"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "East - Southeast"
 msgstr "East - SouthEast"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "Southeast"
 msgstr "SouthEast"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "South - Southeast"
 msgstr "South - SouthEast"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "South"
 msgstr "South"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "South - Southwest"
 msgstr "South - SouthWest"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "Southwest"
 msgstr "SouthWest"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "West - Southwest"
 msgstr "West - SouthWest"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "West"
 msgstr "West"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "West - Northwest"
 msgstr "West - NorthWest"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "Northwest"
 msgstr "NorthWest"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "North - Northwest"
 msgstr "North - NorthWest"
 
-#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
+#: gweather/weather.c:303 gweather/weather.c:320 gweather/weather.c:391
 msgid "Invalid"
 msgstr "Invalid"
 
-#: gweather/weather.c:240
+#: gweather/weather.c:309
 msgid "Clear Sky"
 msgstr "Clear Sky"
 
-#: gweather/weather.c:241
+#: gweather/weather.c:310
 msgid "Broken clouds"
 msgstr "Broken clouds"
 
-#: gweather/weather.c:242
+#: gweather/weather.c:311
 msgid "Scattered clouds"
 msgstr "Scattered clouds"
 
-#: gweather/weather.c:243
+#: gweather/weather.c:312
 msgid "Few clouds"
 msgstr "Few clouds"
 
-#: gweather/weather.c:244
+#: gweather/weather.c:313
 msgid "Overcast"
 msgstr "Overcast"
 
@@ -4090,438 +4163,442 @@ msgstr "Overcast"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:283 gweather/weather.c:285
+#: gweather/weather.c:352 gweather/weather.c:354
 msgid "Thunderstorm"
 msgstr "Thunderstorm"
 
 #. DRIZZLE
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Drizzle"
 msgstr "Drizzle"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Light drizzle"
 msgstr "Light drizzle"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Moderate drizzle"
 msgstr "Moderate drizzle"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Heavy drizzle"
 msgstr "Heavy drizzle"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Freezing drizzle"
 msgstr "Freezing drizzle"
 
 #. RAIN
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Rain"
 msgstr "Rain"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Light rain"
 msgstr "Light rain"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Moderate rain"
 msgstr "Moderate rain"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Heavy rain"
 msgstr "Heavy rain"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Rain showers"
 msgstr "Rain showers"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Freezing rain"
 msgstr "Freezing rain"
 
 #. SNOW
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snow"
 msgstr "Snow"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Light snow"
 msgstr "Light snow"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Moderate snow"
 msgstr "Moderate snow"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Heavy snow"
 msgstr "Heavy snow"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snowstorm"
 msgstr "Snowstorm"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Blowing snowfall"
 msgstr "Blowing snowfall"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snow showers"
 msgstr "Snow showers"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Drifting snow"
 msgstr "Drifting snow"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Snow grains"
 msgstr "Snow grains"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Light snow grains"
 msgstr "Light snow grains"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Moderate snow grains"
 msgstr "Moderate snow grains"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Heavy snow grains"
 msgstr "Heavy snow grains"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:288
+#: gweather/weather.c:357
 msgid "Ice crystals"
 msgstr "Ice crystals"
 
 #. ICE_PELLETS
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Ice pellets"
 msgstr "Ice pellets"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Few ice pellets"
 msgstr "Few ice pellets"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Moderate ice pellets"
 msgstr "Moderate ice pellets"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Heavy ice pellets"
 msgstr "Heavy ice pellets"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Ice pellet storm"
 msgstr "Ice pellet storm"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Showers of ice pellets"
 msgstr "Showers of ice pellets"
 
 #. HAIL
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hail"
 msgstr "Hail"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hailstorm"
 msgstr "Hailstorm"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hail showers"
 msgstr "Hail showers"
 
 #. SMALL_HAIL
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Small hail"
 msgstr "Small hail"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Small hailstorm"
 msgstr "Small hailstorm"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Showers of small hail"
 msgstr "Showers of small hail"
 
 #. PRECIPITATION
-#: gweather/weather.c:292
+#: gweather/weather.c:361
 msgid "Unknown precipitation"
 msgstr "Unknown precipitation"
 
 #. MIST
-#: gweather/weather.c:293
+#: gweather/weather.c:362
 msgid "Mist"
 msgstr "Mist"
 
 #. FOG
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Fog"
 msgstr "Fog"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Fog in the vicinity"
 msgstr "Fog in the vicinity"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Shallow fog"
 msgstr "Shallow fog"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Patches of fog"
 msgstr "Patches of fog"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Partial fog"
 msgstr "Partial fog"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Freezing fog"
 msgstr "Freezing fog"
 
 #. SMOKE
-#: gweather/weather.c:295
+#: gweather/weather.c:364
 msgid "Smoke"
 msgstr "Smoke"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:296
+#: gweather/weather.c:365
 msgid "Volcanic ash"
 msgstr "Volcanic ash"
 
 #. SAND
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Sand"
 msgstr "Sand"
 
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Blowing sand"
 msgstr "Blowing sand"
 
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Drifting sand"
 msgstr "Drifting sand"
 
 #. HAZE
-#: gweather/weather.c:298
+#: gweather/weather.c:367
 msgid "Haze"
 msgstr "Haze"
 
 #. SPRAY
-#: gweather/weather.c:299
+#: gweather/weather.c:368
 msgid "Blowing sprays"
 msgstr "Blowing sprays"
 
 #. DUST
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Dust"
 msgstr "Dust"
 
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Blowing dust"
 msgstr "Blowing dust"
 
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Drifting dust"
 msgstr "Drifting dust"
 
 #. SQUALL
-#: gweather/weather.c:301
+#: gweather/weather.c:370
 msgid "Squall"
 msgstr "Squall"
 
 #. SANDSTORM
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Sandstorm"
 msgstr "Sandstorm"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Sandstorm in the vicinity"
 msgstr "Sandstorm in the vicinity"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Heavy sandstorm"
 msgstr "Heavy sandstorm"
 
 #. DUSTSTORM
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Duststorm"
 msgstr "Duststorm"
 
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Duststorm in the vicinity"
 msgstr "Duststorm in the vicinity"
 
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Heavy duststorm"
 msgstr "Heavy duststorm"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:304
+#: gweather/weather.c:373
 msgid "Funnel cloud"
 msgstr "Funnel cloud"
 
 #. TORNADO
-#: gweather/weather.c:305
+#: gweather/weather.c:374
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:306
+#: gweather/weather.c:375
 msgid "Dust whirls"
 msgstr "Dust whirls"
 
-#: gweather/weather.c:306
+#: gweather/weather.c:375
 msgid "Dust whirls in the vicinity"
 msgstr "Dust whirls in the vicinity"
 
-#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1783
+#: gweather/weather.c:1222 gweather/weather.c:1264 gweather/weather.c:1983
 msgid "Failed to get METAR data.\n"
 msgstr "Failed to get METAR data.\n"
 
-#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
+#: gweather/weather.c:1256 gweather/weather.c:1284 gweather/weather.c:1531
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo missing location"
 
-#: gweather/weather.c:2114
+#: gweather/weather.c:2321
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b / %H:%M"
 
-#: gweather/weather.c:2118
+#: gweather/weather.c:2325
 msgid "Unknown observation time"
 msgstr "Unknown observation time"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2150 gweather/weather.c:2153
+#: gweather/weather.c:2357 gweather/weather.c:2360
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2158 gweather/weather.c:2161
+#: gweather/weather.c:2365 gweather/weather.c:2368
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2169 gweather/weather.c:2172
+#: gweather/weather.c:2376 gweather/weather.c:2379
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2177 gweather/weather.c:2180
+#: gweather/weather.c:2384 gweather/weather.c:2387
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2189
+#: gweather/weather.c:2396
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2192
+#: gweather/weather.c:2399
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2244
+#: gweather/weather.c:2451
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2269
+#: gweather/weather.c:2476
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f knots"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2273
+#: gweather/weather.c:2480
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2277
+#: gweather/weather.c:2484
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:2281
+#: gweather/weather.c:2488
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2302
+#: gweather/weather.c:2509
 msgid "Calm"
 msgstr "Calm"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2306
+#: gweather/weather.c:2513
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2324
+#: gweather/weather.c:2531
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2328
+#: gweather/weather.c:2535
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:2332
+#: gweather/weather.c:2539
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2336
+#: gweather/weather.c:2543
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2340
+#: gweather/weather.c:2547
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2365
+#: gweather/weather.c:2572
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2369
+#: gweather/weather.c:2576
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2373
+#: gweather/weather.c:2580
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2414
+#: gweather/weather.c:2608 gweather/weather.c:2628
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: gweather/weather.c:2661
 msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
@@ -4607,6 +4684,24 @@ msgstr "Failed to access configuration source(s): %s\n"
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Error syncing config data: %s"
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:1
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "List of GConfValue entries containing strings for the macro commands."
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:2
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "List of GConfValue entries containing strings for the macro patterns."
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:3
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "Macro command list"
+msgstr "Macro command list"
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:4
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "Macro pattern list"
+msgstr "Macro pattern list"
 
 #: mini-commander/src/mini-commander.glade.h:2
 #: stickynotes/stickynotes.glade.h:2
@@ -4710,16 +4805,6 @@ msgstr "History list"
 msgid "List of GConfValue entries containing strings for history entries."
 msgstr "List of GConfValue entries containing strings for history entries."
 
-#: mini-commander/src/mini-commander.schemas.in.h:10
-#: mini-commander/src/mini-commander-global.schemas.in.h:3
-msgid "Macro command list"
-msgstr "Macro command list"
-
-#: mini-commander/src/mini-commander.schemas.in.h:11
-#: mini-commander/src/mini-commander-global.schemas.in.h:4
-msgid "Macro pattern list"
-msgstr "Macro pattern list"
-
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Perform history autocompletion"
 msgstr "Perform history autocompletion"
@@ -4783,14 +4868,6 @@ msgstr "Use theme colours instead of custom ones."
 #: mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Width"
 msgstr "Width"
-
-#: mini-commander/src/mini-commander-global.schemas.in.h:1
-msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr "List of GConfValue entries containing strings for the macro commands."
-
-#: mini-commander/src/mini-commander-global.schemas.in.h:2
-msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr "List of GConfValue entries containing strings for the macro patterns."
 
 #: mini-commander/src/mini-commander_applet.c:236
 #: mini-commander/src/mini-commander_applet.c:240
@@ -4903,15 +4980,6 @@ msgstr "Unknown Volume Control %d"
 msgid "No volume control elements and/or devices found."
 msgstr "No volume control elements and/or devices found."
 
-#. make window look cute
-#: mixer/preferences.c:113
-msgid "Volume Control Preferences"
-msgstr "Volume Control Preferences"
-
-#: mixer/preferences.c:126
-msgid "Select the device and track to control."
-msgstr "Select the device and track to control."
-
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
 msgstr "Channel controlled by applet. Only for OSS setups"
@@ -4923,6 +4991,15 @@ msgstr "Saved mute state"
 #: mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
 msgstr "Saved volume to restore on startup"
+
+#. make window look cute
+#: mixer/preferences.c:113
+msgid "Volume Control Preferences"
+msgstr "Volume Control Preferences"
+
+#: mixer/preferences.c:126
+msgid "Select the device and track to control."
+msgstr "Select the device and track to control."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
@@ -5968,55 +6045,13 @@ msgstr "(c) 2002-2003 Loban A Rahman"
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Sticky Notes for the Gnome Desktop Environment"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
-msgid "Monitor the quality of a wireless network link"
-msgstr "Monitor the quality of a wireless network link"
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
+msgid "Go to Trash"
+msgstr "Go to Trash"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
-msgid "Wireless Link Monitor"
-msgstr "Wireless Link Monitor"
-
-#: wireless/wireless-applet.c:144
-#, c-format
-msgid "Link Strength: %2.0d%%"
-msgstr "Link Strength: %2.0d%%"
-
-#: wireless/wireless-applet.c:369
-msgid ""
-"There doesn't seem to be any wireless devices configured on your system.\n"
-"Please verify your configuration if you think this is incorrect."
-msgstr ""
-"There doesn't seem to be any wireless devices configured on your system.\n"
-"Please verify your configuration if you think this is incorrect."
-
-#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
-msgid "No Wireless Devices"
-msgstr "No Wireless Devices"
-
-#: wireless/wireless-applet.c:592
-msgid "(C) 2001, 2002 Free Software Foundation "
-msgstr "(C) 2001, 2002 Free Software Foundation "
-
-#: wireless/wireless-applet.c:593
-msgid "This utility shows the status of a wireless link."
-msgstr "This utility shows the status of a wireless link."
-
-#: wireless/wireless-applet.c:843
-msgid "This utility shows the status of a wireless link"
-msgstr "This utility shows the status of a wireless link"
-
-#: wireless/wireless-applet.glade.h:1
-msgid "Show signal strength in _percentage"
-msgstr "Show signal strength in _percentage"
-
-#: wireless/wireless-applet.glade.h:2
-msgid "Wireless Link Monitor Preferences"
-msgstr "Wireless Link Monitor Preferences"
-
-#: wireless/wireless-applet.glade.h:3
-msgid "_Monitored device:"
-msgstr "_Monitored device:"
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
+msgid "Trash"
+msgstr "Trash"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
 msgid "_Empty Trash"
@@ -6025,14 +6060,6 @@ msgstr "_Empty Trash"
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
 msgid "_Open"
 msgstr "_Open"
-
-#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
-msgid "Go to Trash"
-msgstr "Go to Trash"
-
-#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
-msgid "Trash"
-msgstr "Trash"
 
 #: trashapplet/src/trashapplet.c:160
 #, c-format
@@ -6107,3 +6134,53 @@ msgid ""
 msgstr ""
 "Unable to move to trash:\n"
 "%s"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Monitor the quality of a wireless network link"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
+msgid "Wireless Link Monitor"
+msgstr "Wireless Link Monitor"
+
+#: wireless/wireless-applet.c:144
+#, c-format
+msgid "Link Strength: %2.0d%%"
+msgstr "Link Strength: %2.0d%%"
+
+#: wireless/wireless-applet.c:369
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
+msgid "No Wireless Devices"
+msgstr "No Wireless Devices"
+
+#: wireless/wireless-applet.c:592
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 2001, 2002 Free Software Foundation "
+
+#: wireless/wireless-applet.c:593
+msgid "This utility shows the status of a wireless link."
+msgstr "This utility shows the status of a wireless link."
+
+#: wireless/wireless-applet.c:843
+msgid "This utility shows the status of a wireless link"
+msgstr "This utility shows the status of a wireless link"
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Show signal strength in _percentage"
+msgstr "Show signal strength in _percentage"
+
+#: wireless/wireless-applet.glade.h:2
+msgid "Wireless Link Monitor Preferences"
+msgstr "Wireless Link Monitor Preferences"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "_Monitored device:"
+msgstr "_Monitored device:"
