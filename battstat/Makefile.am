@@ -50,11 +50,12 @@ EXTRA_DIST = 				\
 schemadir   = $(sysconfdir)/gconf/schemas
 schema_DATA = battstat.schemas
 
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_BattstatApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
-install-data-local:
-        GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)

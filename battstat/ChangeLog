@@ -1,5 +1,27 @@
 2002-01-20  Seth Nickell  <snickell@stanford.edu>
 
+	* configure.in:
+
+	Add GCONF macro calls to get the correct
+	tool line for installing schemas.
+	
+	* src/Makefile.am:
+
+	Install schemas.
+	
+	* src/battstat.h:
+	* src/battstat_applet.c: (toggle_value_changed_cb),
+	(load_preferences), (save_preferences), (battstat_applet_fill):
+	* src/properties.c: (prop_apply), (prop_cb):
+
+	Load and save preferences more smoothly.
+	
+	* src/battstat.schemas:
+
+	Get schemas working.
+
+2002-01-20  Seth Nickell  <snickell@stanford.edu>
+
 	* src/GNOME_BattstatApplet.server.in:
 
 	Rename "Battery Charge Monitor"

@@ -1155,21 +1155,12 @@ toggle_value_changed_cb ( GtkToggleButton *ignored, gpointer data )
    battstat->showstatus = (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on))->active;
    battstat->showpercent = (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on))->active;
    battstat->showbattery = (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on))->active;
-   /*   battstat->own_font = (GTK_TOGGLE_BUTTON (battstat->font_toggle))->active;*/
    
    if(battstat->lowbattnotification || battstat->fullbattnot)
      gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), TRUE);
    else
      gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
-   /*   
-   if(battstat->own_font) {
-   *     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), TRUE); 
-      gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), TRUE);
-   } else {
-   *     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), FALSE); 
-      gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), FALSE);
-   }
-*/
+
    gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
    return;
 }
@@ -1222,47 +1213,12 @@ void
 }
 #endif
 
-/*
-gint
-applet_save_session(GtkWidget *w,
-		      char *privcfgpath,
-		      char *globcfgpath,
-		      gpointer data)
-{
-   ProgressData *battstat = data;
-   
-   if (DEBUG) g_print("applet_save_session()\n");
-   
-   gnome_config_push_prefix (privcfgpath);
-   gnome_config_set_int ("batt/red_val", battstat->red_val);
-   gnome_config_set_int ("batt/orange_val", battstat->orange_val);
-   gnome_config_set_int ("batt/yellow_val", battstat->yellow_val);
-      gnome_config_set_string ("batt/fontname", battstat->fontname);
-   gnome_config_set_bool ("batt/lowbattnotification", battstat->lowbattnotification);
-   gnome_config_set_bool ("batt/fullbattnot", battstat->fullbattnot);
-   gnome_config_set_bool ("batt/beep", battstat->beep);
-   gnome_config_set_bool ("batt/draintop", battstat->draintop);
-   gnome_config_set_bool ("batt/horizont", battstat->horizont);
-   gnome_config_set_bool ("batt/showstatus", battstat->showstatus);
-   gnome_config_set_bool ("batt/showbattery", battstat->showbattery);
-   gnome_config_set_bool ("batt/showpercent", battstat->showpercent);
-   gnome_config_set_string ("batt/suspendcommand", battstat->suspend_cmd);
-   gnome_config_set_bool ("batt/usedock", battstat->usedock);
-   gnome_config_set_bool ("batt/own_font", battstat->own_font);
-   gnome_config_pop_prefix ();
-   
-   gnome_config_sync();
-   gnome_config_drop_all ();
-   
-   return FALSE;
-}
-*/
+#define GCONF_PATH ""
 
-static void
-load_preferences(ProgressData *battstat, PanelApplet *applet)
+void
+load_preferences(ProgressData *battstat)
 {
-   
-#define GCONF_PATH "/apps/battstat/"
+  PanelApplet *applet = PANEL_APPLET (battstat->applet);
 
   if (DEBUG) g_print("load_preferences()\n");
   
@@ -1278,9 +1234,30 @@ load_preferences(ProgressData *battstat, PanelApplet *applet)
   battstat->showstatus = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_status", NULL);
   battstat->showbattery = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_battery", NULL);
   battstat->showpercent = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_percent", NULL);
-  battstat->suspend_cmd = panel_applet_gconf_get_string (applet, "suspend_command", NULL);
+  battstat->suspend_cmd = panel_applet_gconf_get_string (applet, GCONF_PATH "suspend_command", NULL);
   battstat->usedock = panel_applet_gconf_get_bool (applet, GCONF_PATH "use_dock", NULL);
 
+}
+
+void
+save_preferences(ProgressData *battstat)
+{
+  PanelApplet *applet = PANEL_APPLET (battstat->applet);
+
+  panel_applet_gconf_set_int    (applet, GCONF_PATH "red_value", battstat->red_val, NULL);
+  panel_applet_gconf_set_int    (applet, GCONF_PATH "orange_value",battstat->orange_val,  NULL);
+  panel_applet_gconf_set_int    (applet, GCONF_PATH "yellow_value", battstat->yellow_val, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "low_battery_notification", battstat->lowbattnotification, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "full_battery_notification", battstat->fullbattnot, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "beep", battstat->beep, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "drain_from_top", battstat->draintop, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "horizontal", battstat->horizont, NULL);
+
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "show_status", battstat->showstatus, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "show_battery", battstat->showbattery, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "show_percent", battstat->showpercent, NULL);
+  panel_applet_gconf_set_string (applet, GCONF_PATH "suspend_command", battstat->suspend_cmd, NULL);
+  panel_applet_gconf_set_bool   (applet, GCONF_PATH "use_dock", battstat->usedock, NULL);
 }
 
 gint
@@ -1476,6 +1453,8 @@ battstat_applet_fill (PanelApplet *applet)
 
   if (DEBUG) g_print("main()\n");
   
+  panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs", NULL);
+
   apm_readinfo();
   
 #ifdef __FreeBSD__
@@ -1497,7 +1476,7 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->panelsize = 48;
   glade_gnome_init ();
   
-  load_preferences(battstat, PANEL_APPLET (battstat->applet));
+  load_preferences(battstat);
   create_layout(battstat);
   pixmap_timeout(battstat);
 

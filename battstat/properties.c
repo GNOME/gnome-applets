@@ -84,20 +84,6 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   battstat->orange_val = GTK_ADJUSTMENT (battstat->eorange_adj)->value;
   battstat->red_val = GTK_ADJUSTMENT (battstat->ered_adj)->value;
 
-	/*
-  battstat->own_font = (GTK_TOGGLE_BUTTON (battstat->font_toggle))->active;
-
-  if(battstat->font_changed) {
-    battstat->fontname = gnome_font_picker_get_font_name (GNOME_FONT_PICKER (battstat->fontpicker));
-    load_font(battstat);
-    battstat->font_changed=FALSE;
-  }
-  if (battstat->fontname)
-    (battstat->percentstyle)->font=gdk_font_load(battstat->fontname);
-  else
-    (battstat->percentstyle)->font=gdk_font_load ("fixed");
-  gtk_widget_set_style (battstat->testpercent, battstat->percentstyle);
-	*/
   battstat->lowbattnotification = (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle))->active;
   battstat->draintop = (GTK_TOGGLE_BUTTON (battstat->progdir_radio))->active;
   battstat->colors_changed=TRUE;
@@ -117,26 +103,10 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   buffer = gtk_entry_get_text(GTK_ENTRY(battstat->suspend_entry));
   g_free (battstat->suspend_cmd);
   battstat->suspend_cmd = g_strdup(buffer);
-#if 0 // FIXME GNOME2
-  if(strlen(battstat->suspend_cmd)>0) {
-    applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
-					  "suspend",
-					  TRUE);
-    gnome_warning_dialog(
-			 /* Message in a Gnome warning dialog window
-			    when the user enables the suspend
-			    function.*/
-			 _("You have chosen to enable the Suspend function. This can potentially be a security risk."));
-  } else {
-    applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
-					  "suspend",
-					  FALSE);
-  }
 
   change_orient ( NULL, battstat->orienttype, battstat );
 
-  applet_widget_sync_config (APPLET_WIDGET (battstat->applet));
-#endif
+	save_preferences (battstat);
 
   return;
   w = NULL;
@@ -276,21 +246,6 @@ prop_cb (PanelApplet *applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (battstat->beep_toggle), "toggled",
                       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
 
-	/*
-  battstat->font_toggle = glade_xml_get_widget (glade_xml, "font_toggle");
-
-
-  battstat->fontpicker = glade_xml_get_widget (glade_xml, "font_picker");
- 
-  gnome_font_picker_set_font_name (GNOME_FONT_PICKER (battstat->fontpicker), battstat->fontname);
-  if(battstat->own_font == 0) {
-    gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), FALSE);
-  }
-
-  gtk_signal_connect (GTK_OBJECT (battstat->fontpicker), "font_set",
-		      GTK_SIGNAL_FUNC (font_set_cb), battstat);
-	*/
-   
   battstat->suspend_entry = glade_xml_get_widget (glade_xml, "suspend_entry");
 
   battstat->progdir_radio = glade_xml_get_widget (glade_xml, "dir_radio_top");
@@ -353,10 +308,7 @@ prop_cb (PanelApplet *applet, gpointer data)
 
    gtk_signal_connect (GTK_OBJECT (battstat->dock_toggle), "toggled",
 		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-	 /*   
-   gtk_signal_connect (GTK_OBJECT (battstat->font_toggle), "toggled",
-		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-	 */ 
+
    gtk_signal_connect (GTK_OBJECT(battstat->suspend_entry), "changed",
 		       GTK_SIGNAL_FUNC( toggle_value_changed_cb), battstat);
    
