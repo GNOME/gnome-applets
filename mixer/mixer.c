@@ -33,7 +33,6 @@
 
 #include <math.h>
 #include <stdio.h>
-#include <config.h>
 #include <sys/stat.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
