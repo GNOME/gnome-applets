@@ -326,7 +326,7 @@ main (int argc, char **argv)
 	memset (&gswic, 0, sizeof (gswic));
 	gnome_program_init ("gswitchit-properties", VERSION,
 			    LIBGNOMEUI_MODULE, argc, argv,
-			    GNOME_PARAM_NONE);
+			    GNOME_PROGRAM_STANDARD_PROPERTIES, NULL); 
 	if (!gconf_init (argc, argv, &gconf_error)) {
 		g_warning (_("Failed to init GConf: %s\n"),
 			   gconf_error->message);
