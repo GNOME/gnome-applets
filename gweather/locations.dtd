@@ -2,15 +2,17 @@
 <!ATTLIST gweather
   format CDATA #FIXED '1.0' >
 
-<!ELEMENT region (_name+, country+) >
-<!ELEMENT country (_name+, (location|state|city)+) >
-<!ELEMENT state (_name+, (location|city)+) >
-<!ELEMENT city (_name+, zone?, radar?, location+) >
+<!ENTITY % name '(_name|name+)' >
 
-<!ELEMENT location (_name+, code, zone?, radar?, coordinates?) >
+<!ELEMENT region (%name;, country+) >
+<!ELEMENT country (%name;, (location|state|city)+) >
+<!ELEMENT state (%name;, (location|city)+) >
+<!ELEMENT city (%name;, zone?, radar?, location+) >
+<!ELEMENT location (%name;, code, zone?, radar?, coordinates?) >
 
 <!ELEMENT _name (#PCDATA) >
-<!ATTLIST _name
+<!ELEMENT name (#PCDATA) >
+<!ATTLIST name
   xml:lang CDATA #IMPLIED >
 <!ELEMENT code (#PCDATA) >
 <!ELEMENT zone (#PCDATA) >
