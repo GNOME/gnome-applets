@@ -43,6 +43,13 @@
 static unsigned long *isdn_stats = NULL;
 #endif
 
+typedef enum {
+	COLOR_RX,
+	COLOR_RX_BG,
+	COLOR_TX,
+	COLOR_TX_BG
+} ColorType;
+
 gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
 gchar *lock_file;		/* the modem lock file */
 gint verify_lock_file = TRUE;	/* do we verify the pid inside the lockfile? */
@@ -65,9 +72,10 @@ static GdkPixmap *button_on = NULL;
 static GdkPixmap *button_off = NULL;
 static GdkBitmap *button_mask = NULL;
 static GdkGC *gc = NULL;
-static GdkColor rxcolor;
-static GdkColor txcolor;
-static GdkColor bgcolor;
+static GdkColor rx_color;
+static GdkColor rx_bgcolor;
+static GdkColor tx_color;
+static GdkColor tx_bgcolor;
 
 static int update_timeout_id = FALSE;
 static int ip_socket;
@@ -87,42 +95,6 @@ static PanelSizeType sizehint;
 static gint panel_verticle = FALSE;
 static gint setup_done = FALSE;
 
-static void about_cb (AppletWidget *widget, gpointer data);
-static int is_Modem_on();
-static int is_ISDN_on();
-static int is_connected();
-static int get_modem_stats(int *in, int *out);
-static int get_ISDN_stats(int *in, int *out);
-static int get_stats(int *in, int *out);
-static gint get_ISDN_connect_time(gint recalc_start);
-static gint get_modem_connect_time(gint recalc_start);
-static gint get_connect_time(gint recalc_start);
-static void command_connect_cb( gint button, gpointer data);
-static void command_disconnect_cb( gint button, gpointer data);
-static void dial_cb();
-static void update_tooltip(int connected, int rx, int tx);
-static void redraw_display();
-static void draw_digit(gint n, gint x, gint y);
-static void draw_timer(gint seconds, gint force);
-static void draw_bytes(gint bytes);
-static gint update_extra_info(int rx_bytes, gint force);
-static void draw_load(int rxbytes,int txbytes);
-static void draw_light(int lit,int x,int y);
-static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force);
-static gint update_display();
-static void update_pixmaps();
-static void setup_colors();
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
-#endif
-
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath);
-
-static int get_modem_stats(int *in, int *out);
-static int get_ISDN_stats(int *in, int *out);
-static int get_stats(int *in, int *out);
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -137,8 +109,8 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"(C) 1999",
 			authors,
 			_("Released under the GNU general public license.\n"
-			"A modem status indicator and dialer."
-			"Lights in order from the top or left are RX and TX"),
+			"A modem status indicator and dialer.\n"
+			"Lights in order from the top or left are Send data and Receive data."),
 			NULL);
 	gtk_widget_show (about);
 }
@@ -650,7 +622,7 @@ static void draw_load(int rxbytes, int txbytes)
 
 	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, dot_height);
 
-	gdk_gc_set_foreground( gc, &rxcolor );
+	gdk_gc_set_foreground( gc, &rx_color );
 	for (i=0;i<16;i++)
 		{
 		if( load_hist_rx[i] )
@@ -658,7 +630,7 @@ static void draw_load(int rxbytes, int txbytes)
 				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot ) + 1);
 		}
 
-	gdk_gc_set_foreground( gc, &txcolor );
+	gdk_gc_set_foreground( gc, &tx_color );
 	for (i=0;i<16;i++)
 		{
 		if( load_hist_tx[i] )
@@ -669,8 +641,10 @@ static void draw_load(int rxbytes, int txbytes)
 	redraw_display();
 }
 
-static void draw_light(int lit, int x, int y)
+static void draw_light(int lit, int x, int y, ColorType color)
 {
+	gint p;
+
 	/* if the orientation is sideways (left or right panel), we swap x and y */
 	if (show_extra_info || panel_verticle)
 		{
@@ -681,11 +655,15 @@ static void draw_light(int lit, int x, int y)
 		}
 
 	if (lit)
-		gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-				 lights, 0, 9, x, y, 9, 9);
+		p = 9;
 	else
-		gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-				 lights, 0, 0, x, y, 9, 9);
+		p = 0;
+
+	if (color == COLOR_RX) p += 18;
+	
+
+	gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+				 lights, 0, p, x, y, 9, 9);
 }
 
 /* to minimize drawing (pixmap manipulations) we only draw a light if it has changed */
@@ -699,13 +677,13 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 	if (rx != o_rx || force)
 		{
 		o_rx = rx;
-		draw_light(rx,1,1);
+		draw_light(rx , 10, 1, COLOR_RX);
 		redraw_required = TRUE;
 		}
 	if (tx != o_tx || force)
 		{
 		o_tx = tx;
-		draw_light(tx,10,1);
+		draw_light(tx, 1, 1, COLOR_TX);
 		redraw_required = TRUE;
 		}
 	if (cd != o_cd)
@@ -887,17 +865,29 @@ static void create_background_pixmap()
 		}
 }
 
-static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint etched_in, gint lit)
+static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint etched_in, ColorType color)
 {
 	GdkGC *gc1;
 	GdkGC *gc2;
 
 	s -= 8;
 
-	if (lit)
-		gdk_gc_set_foreground( gc, &txcolor );
-	else
-		gdk_gc_set_foreground( gc, &bgcolor );
+	switch (color)
+		{
+		case COLOR_RX:
+			gdk_gc_set_foreground( gc, &rx_color );
+			break;
+		case COLOR_RX_BG:
+			gdk_gc_set_foreground( gc, &rx_bgcolor );
+			break;
+		case COLOR_TX:
+			gdk_gc_set_foreground( gc, &tx_color );
+			break;
+		case COLOR_TX_BG:
+		default:
+			gdk_gc_set_foreground( gc, &tx_bgcolor );
+			break;
+		}
 
 	if (etched_in)
 		{
@@ -959,14 +949,16 @@ static void update_pixmaps()
 		gdk_gc_unref(mask_gc);
 		}
 
-	draw_button_light(button_on, 0, 0, 10, TRUE, TRUE);
-	draw_button_light(button_off, 0, 0, 10, TRUE, FALSE);
+	draw_button_light(button_on, 0, 0, 10, TRUE, COLOR_TX);
+	draw_button_light(button_off, 0, 0, 10, TRUE, COLOR_TX_BG);
 
-	if (!lights) lights = gdk_pixmap_new(display_area->window, 9, 18, -1);
+	if (!lights) lights = gdk_pixmap_new(display_area->window, 9, 36, -1);
 
-	gdk_draw_rectangle(lights, applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 18);
-	draw_button_light(lights, 0, 0, 9, FALSE, FALSE);
-	draw_button_light(lights, 0, 9, 9, FALSE, TRUE);
+	gdk_draw_rectangle(lights, applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 36);
+	draw_button_light(lights, 0, 0, 9, FALSE, COLOR_TX_BG);
+	draw_button_light(lights, 0, 9, 9, FALSE, COLOR_TX);
+	draw_button_light(lights, 0, 18, 9, FALSE, COLOR_RX_BG);
+	draw_button_light(lights, 0, 27, 9, FALSE, COLOR_RX);
 }
 
 static void setup_colors()
@@ -975,14 +967,17 @@ static void setup_colors()
 
         colormap = gtk_widget_get_colormap(display_area);
 
-	gdk_color_parse("#FF0000", &rxcolor);
-	gdk_color_alloc(colormap, &rxcolor);
+	gdk_color_parse("#FF0000", &rx_color);
+	gdk_color_alloc(colormap, &rx_color);
 
-	gdk_color_parse("#00FF00", &txcolor);
-        gdk_color_alloc(colormap, &txcolor);
+	gdk_color_parse("#4D0000", &rx_bgcolor);
+	gdk_color_alloc(colormap, &rx_bgcolor);
 
-	gdk_color_parse("#004D00", &bgcolor);
-        gdk_color_alloc(colormap, &bgcolor);
+	gdk_color_parse("#00FF00", &tx_color);
+        gdk_color_alloc(colormap, &tx_color);
+
+	gdk_color_parse("#004D00", &tx_bgcolor);
+        gdk_color_alloc(colormap, &tx_bgcolor);
 
 	gc = gdk_gc_new( display_area->window );
         gdk_gc_copy( gc, display_area->style->white_gc );

@@ -36,13 +36,15 @@ void property_load(char *path)
 {
 	gchar *buf;
 
-	if (command_connect) g_free(command_connect);
-	if (command_disconnect) g_free(command_disconnect);
-	if (device_name) g_free(device_name);
-        gnome_config_push_prefix (path);
-        UPDATE_DELAY       = gnome_config_get_int("modem/delay=5");
+	g_free(command_connect);
+	g_free(command_disconnect);
+	g_free(device_name);
 
-	buf                = gnome_config_get_string("modem/lockfile=");
+        gnome_config_push_prefix (path);
+
+        UPDATE_DELAY = gnome_config_get_int("modem/delay=5");
+
+	buf = gnome_config_get_string("modem/lockfile=");
 	if (buf && strlen(buf) > 0)
 		{
 		g_free(lock_file);
