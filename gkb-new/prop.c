@@ -53,11 +53,6 @@ changed_cb (GtkEntry * entry, GnomePropertyBox * pb)
 }
 
 
-
-
-
-
-
 /**
  * gkb_prop_apply_clicked:
  * @pb: 
@@ -85,6 +80,9 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
   /* misc props from pbi */
   gkb->is_small = pbi->is_small;
+
+  gkb->window_switch = GTK_TOGGLE_BUTTON(pbi->switch_checkbox)->active;
+
   gkb->mode = pbi->mode;
 
   key = XKeysymToKeycode(GDK_DISPLAY(),
@@ -356,12 +354,28 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GnomePropertyBox * pb)
 {
   GtkWidget *frame;
   GtkWidget *button;
+  GtkWidget *vbox;
   GtkWidget *hbox;
 
   frame = gtk_frame_new (_("Hotkey for switching between layouts"));
   hbox  = gtk_hbox_new (TRUE, 0);
+  vbox  = gtk_vbox_new (TRUE, 0);
   
-  gtk_container_add (GTK_CONTAINER (frame), hbox);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+
+  gtk_container_add (GTK_CONTAINER (vbox), hbox);
+
+  pbi->switch_checkbox = gtk_check_button_new_with_label (_("Window based keymap switching"));
+
+  gtk_signal_connect (GTK_OBJECT (pbi->switch_checkbox), "toggled", 
+	                    GTK_SIGNAL_FUNC (changed_cb), 
+	                    pb);
+
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pbi->switch_checkbox), 
+                                               pbi->gkb->window_switch);
+
+  gtk_container_add (GTK_CONTAINER (vbox), pbi->switch_checkbox);
+
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
   
   if (pbi->hotkey_entry)

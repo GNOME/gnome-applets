@@ -44,7 +44,7 @@ static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
 static void
-makepix (GkbKeymap *keymap, char *fname, int w, int h)
+makepix (GkbKeymap * keymap, char *fname, int w, int h)
 {
   GdkPixbuf *pix;
   int width, height;
@@ -61,7 +61,7 @@ makepix (GkbKeymap *keymap, char *fname, int w, int h)
       g_assert (bah_window);
       g_assert (bah_window->window);
 
-      width  = gdk_pixbuf_get_width (pix);
+      width = gdk_pixbuf_get_width (pix);
       height = gdk_pixbuf_get_height (pix);
 
       affine[1] = affine[2] = affine[4] = affine[5] = 0;
@@ -81,7 +81,7 @@ makepix (GkbKeymap *keymap, char *fname, int w, int h)
       gdk_pixbuf_unref (pix);
 
       keymap->pix = gdk_pixmap_new (bah_window->window, w, h,
-#if 0	
+#if 0
 				    gtk_widget_get_visual (gkb->darea)->depth
 #else
 				    -1
@@ -97,9 +97,10 @@ makepix (GkbKeymap *keymap, char *fname, int w, int h)
     }
   else
     {
-      if (keymap->pix) {
-	gdk_pixmap_unref (keymap->pix);
-      }
+      if (keymap->pix)
+	{
+	  gdk_pixmap_unref (keymap->pix);
+	}
       keymap->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
     }
 }
@@ -119,29 +120,32 @@ gkb_draw (GKB * gkb)
   g_return_if_fail (gkb->keymap != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
 
-  if (gkb->mode != GKB_LABEL) {
-    g_return_if_fail (gkb != NULL);
-    g_return_if_fail (gkb->keymap != NULL);
-    g_return_if_fail (gkb->keymap->pix != NULL);
-    g_return_if_fail (gkb->darea);
-    g_return_if_fail (gkb->darea->window);
-    
-    gdk_draw_pixmap (gkb->darea->window,
-		     gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
-		     gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
-    
-   }
+  if (gkb->mode != GKB_LABEL)
+    {
+      g_return_if_fail (gkb != NULL);
+      g_return_if_fail (gkb->keymap != NULL);
+      g_return_if_fail (gkb->keymap->pix != NULL);
+      g_return_if_fail (gkb->darea);
+      g_return_if_fail (gkb->darea->window);
 
-  if (gkb->mode != GKB_FLAG) {
-    gtk_label_set_text (GTK_LABEL(gkb->label1),gkb->keymap->label);
-    gtk_label_set_text (GTK_LABEL(gkb->label2),gkb->keymap->label);
-  }
+      gdk_draw_pixmap (gkb->darea->window,
+		       gkb->darea->style->
+		       fg_gc[GTK_WIDGET_STATE (gkb->darea)], gkb->keymap->pix,
+		       0, 0, 0, 0, gkb->w, gkb->h);
+
+    }
+
+  if (gkb->mode != GKB_FLAG)
+    {
+      gtk_label_set_text (GTK_LABEL (gkb->label1), gkb->keymap->label);
+      gtk_label_set_text (GTK_LABEL (gkb->label2), gkb->keymap->label);
+    }
 
   applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
 }
 
 
-#define GKB_SMALL_PANEL_SIZE 25 /* less than */
+#define GKB_SMALL_PANEL_SIZE 25	/* less than */
 /**
  * count_sizes:
  * @gkb:
@@ -152,15 +156,15 @@ static gint
 gkb_count_sizes (GKB * gkb)
 {
   gboolean small_panel = FALSE;
-  gboolean label_in_vbox = TRUE; /* If FALSE label is in hbox */
-  gint panel_width = 0;         /* Zero means we have not determined it */
+  gboolean label_in_vbox = TRUE;	/* If FALSE label is in hbox */
+  gint panel_width = 0;		/* Zero means we have not determined it */
   gint panel_height = 0;
   gint applet_width = 0;
   gint applet_height = 0;
-  gint flag_width  = 0;
+  gint flag_width = 0;
   gint flag_height = 0;
   gint label_height = 0;
-  gint label_width  = 0;
+  gint label_width = 0;
 
   gint size;
 
@@ -168,74 +172,81 @@ gkb_count_sizes (GKB * gkb)
 
   /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
-  {
-  case ORIENT_UP:
-  case ORIENT_DOWN:
-    panel_height = size;
-    if (size < GKB_SMALL_PANEL_SIZE)
-      small_panel = TRUE;
-    break;
-  case ORIENT_RIGHT:
-  case ORIENT_LEFT:
-    panel_width = size;
-    if (size < GKB_SMALL_PANEL_SIZE)
-      small_panel = TRUE;
-    break;
-  default:
-    g_assert_not_reached ();
-  }
+    {
+    case ORIENT_UP:
+    case ORIENT_DOWN:
+      panel_height = size;
+      if (size < GKB_SMALL_PANEL_SIZE)
+	small_panel = TRUE;
+      break;
+    case ORIENT_RIGHT:
+    case ORIENT_LEFT:
+      panel_width = size;
+      if (size < GKB_SMALL_PANEL_SIZE)
+	small_panel = TRUE;
+      break;
+    default:
+      g_assert_not_reached ();
+    }
 
-  flag_height = (gint) panel_height / ((gkb->is_small && !small_panel)?2:1);
-  flag_width  = (gint) panel_width  / ((gkb->is_small && !small_panel)?2:1);
+  flag_height =
+    (gint) panel_height / ((gkb->is_small && !small_panel) ? 2 : 1);
+  flag_width = (gint) panel_width / ((gkb->is_small && !small_panel) ? 2 : 1);
 
   /* This are the cases in which we change the label to be side by side
    * v.s. beeing top-bottom */
-  if (gkb->mode == GKB_FLAG_AND_LABEL) {
-    if (gkb->orient == ORIENT_UP && small_panel)
-      label_in_vbox = FALSE;
-    if (gkb->orient == ORIENT_UP && !gkb->is_small)
-      label_in_vbox = FALSE;
-    if (gkb->orient == ORIENT_DOWN && small_panel)
-      label_in_vbox = FALSE;
-    if (gkb->orient == ORIENT_DOWN && !gkb->is_small)
-      label_in_vbox = FALSE;
-    if (gkb->orient == ORIENT_RIGHT && !small_panel)
-      if (gkb->is_small)
-        label_in_vbox = FALSE;
-    if (gkb->orient == ORIENT_LEFT && !small_panel)
-      if (gkb->is_small)
-        label_in_vbox = FALSE;
-  }
+  if (gkb->mode == GKB_FLAG_AND_LABEL)
+    {
+      if (gkb->orient == ORIENT_UP && small_panel)
+	label_in_vbox = FALSE;
+      if (gkb->orient == ORIENT_UP && !gkb->is_small)
+	label_in_vbox = FALSE;
+      if (gkb->orient == ORIENT_DOWN && small_panel)
+	label_in_vbox = FALSE;
+      if (gkb->orient == ORIENT_DOWN && !gkb->is_small)
+	label_in_vbox = FALSE;
+      if (gkb->orient == ORIENT_RIGHT && !small_panel)
+	if (gkb->is_small)
+	  label_in_vbox = FALSE;
+      if (gkb->orient == ORIENT_LEFT && !small_panel)
+	if (gkb->is_small)
+	  label_in_vbox = FALSE;
+    }
 
   /* Flag has either the with or the height set */
   if (flag_width == 0)
-    flag_width = (gint) flag_height * 1.5;
+    flag_width = (gint) flag_height *1.5;
   else
     flag_height = (gint) flag_width / 1.5;
 
-  label_width   = flag_width;
-  label_height  = flag_height;
+  label_width = flag_width;
+  label_height = flag_height;
 
-  if (gkb->mode != GKB_LABEL) {
-    applet_width  += flag_width;
-    applet_height += flag_height;
-  }
-  
-  if (gkb->mode != GKB_FLAG) {
-    if (label_in_vbox)
-      applet_height += label_height;
-    else
-      applet_width  += label_width;
-  }
+  if (gkb->mode != GKB_LABEL)
+    {
+      applet_width += flag_width;
+      applet_height += flag_height;
+    }
 
-  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), applet_width, applet_height);
+  if (gkb->mode != GKB_FLAG)
+    {
+      if (label_in_vbox)
+	applet_height += label_height;
+      else
+	applet_width += label_width;
+    }
 
-  if (flag_width > 0) {
+  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), applet_width,
+			applet_height);
+
+  if (flag_width > 0)
+    {
 #if 1
-    gtk_widget_set_usize (GTK_WIDGET (gkb->darea),  flag_width, flag_height);
-#endif	
-    gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width, flag_height);
-  }
+      gtk_widget_set_usize (GTK_WIDGET (gkb->darea), flag_width, flag_height);
+#endif
+      gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width,
+			     flag_height);
+    }
 
   gtk_widget_set_usize (GTK_WIDGET (gkb->label1), label_width, label_height);
   gtk_widget_set_usize (GTK_WIDGET (gkb->label2), label_width, label_height);
@@ -263,7 +274,7 @@ gkb_sized_render (GKB * gkb)
   debug (FALSE, "");
 
   label_in_vbox = gkb_count_sizes (gkb);
-            
+
   /* Hide or show the flag */
   if (gkb->mode == GKB_LABEL)
     gtk_widget_hide (gkb->darea_frame);
@@ -271,47 +282,55 @@ gkb_sized_render (GKB * gkb)
     gtk_widget_show_all (gkb->darea_frame);
 
   /* Hide or show the labels */
-  switch (gkb->mode) {
-  case GKB_LABEL:
-  case GKB_FLAG_AND_LABEL:
-    if (label_in_vbox) {
-	gtk_widget_hide (gkb->label_frame2);
-	gtk_widget_show_all (gkb->label_frame1);
-      } else {
-	gtk_widget_hide (gkb->label_frame1);
-	gtk_widget_show_all (gkb->label_frame2);
-      }
-    break;
-  case GKB_FLAG:
-    gtk_widget_hide (gkb->label_frame1);
-    gtk_widget_hide (gkb->label_frame2);
-  }
+  switch (gkb->mode)
+    {
+    case GKB_LABEL:
+    case GKB_FLAG_AND_LABEL:
+      if (label_in_vbox)
+	{
+	  gtk_widget_hide (gkb->label_frame2);
+	  gtk_widget_show_all (gkb->label_frame1);
+	}
+      else
+	{
+	  gtk_widget_hide (gkb->label_frame1);
+	  gtk_widget_show_all (gkb->label_frame2);
+	}
+      break;
+    case GKB_FLAG:
+      gtk_widget_hide (gkb->label_frame1);
+      gtk_widget_hide (gkb->label_frame2);
+    }
 
   list = gkb->maps;
-  for (; list != NULL; list = list->next) {
-    gchar *name;
-    gchar *real_name;
-    keymap = (GkbKeymap *)list->data;
-    g_print ("Inside size render. About to make pix for keymap [%i]\n",
-	     GPOINTER_TO_INT (keymap));
-    name = g_strdup_printf ("gkb/%s", keymap->flag);
-    real_name = gnome_unconditional_pixmap_file (name);
-    if (g_file_exists (real_name)) {
-      makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
-    } else {
+  for (; list != NULL; list = list->next)
+    {
+      gchar *name;
+      gchar *real_name;
+      keymap = (GkbKeymap *) list->data;
+      g_print ("Inside size render. About to make pix for keymap [%i]\n",
+	       GPOINTER_TO_INT (keymap));
+      name = g_strdup_printf ("gkb/%s", keymap->flag);
+      real_name = gnome_unconditional_pixmap_file (name);
+      if (g_file_exists (real_name))
+	{
+	  makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
+	}
+      else
+	{
+	  g_free (real_name);
+	  real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+	  makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
+	}
+      g_free (name);
       g_free (real_name);
-      real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
-      makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
     }
-    g_free (name);
-    g_free (real_name);
-  }
 
-#if 0	
+#if 0
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
   gtk_widget_queue_resize (gkb->darea->parent->parent);
-#endif	
+#endif
 }
 
 /**
@@ -333,10 +352,10 @@ gkb_update (GKB * gkb, gboolean set_command)
    * have changed size. In other words, we can't change size &
    * keymap at the same time */
   if (set_command)
-     gkb_system_set_keymap (gkb);
+    gkb_system_set_keymap (gkb);
   else
-     gkb_sized_render (gkb);
-  
+    gkb_sized_render (gkb);
+
   gkb_draw (gkb);
 }
 
@@ -365,11 +384,11 @@ gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
   if (gkb->size != new_size)
     {
       gkb->size = new_size;
-#endif	
+#endif
       gkb_update (gkb, FALSE);
-#if 0	
+#if 0
     }
-#endif	
+#endif
 }
 
 static gboolean
@@ -388,6 +407,7 @@ applet_save_session (GtkWidget * w,
   g_print ("Pushing prefix .. [%s]\n", privcfgpath);
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_bool ("gkb/small", gkb->is_small);
+  gnome_config_set_bool ("gkb/window_switch", gkb->window_switch);
   gnome_config_set_string ("gkb/key", gkb->key);
   text = gkb_util_get_text_from_mode (gkb->mode);
   gnome_config_set_string ("gkb/mode", text);
@@ -484,7 +504,7 @@ loadprop (int i)
 }
 
 static void
-load_properties (GKB *gkb)
+load_properties (GKB * gkb)
 {
   GkbKeymap *actdata;
   gchar *text;
@@ -494,6 +514,9 @@ load_properties (GKB *gkb)
 
   gkb->maps = NULL;
 
+  gkb->windows = NULL;
+  gkb->focused = NULL;
+
   gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
 
   gkb->n = gnome_config_get_int ("gkb/num=0");
@@ -502,6 +525,8 @@ load_properties (GKB *gkb)
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   gkb->is_small = gnome_config_get_bool ("gkb/small=true");
+
+  gkb->window_switch = gnome_config_get_bool ("gkb/window_switch=false");
 
   text = gnome_config_get_string ("gkb/mode=Flag and Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
@@ -536,16 +561,39 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
 {
   debug (FALSE, "");
 
-  if (event->button != 1) /* Ignore mouse buttons 2 and 3 */
+  if (event->button != 1)	/* Ignore mouse buttons 2 and 3 */
     return;
 
-  if (gkb->cur + 1 < gkb->n)
+ if (gkb->window_switch)
+  {
+   if (gkb->cur + 1 < gkb->n)
     gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
-  else
+   else
     {
       gkb->cur = 0;
       gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
     }
+  }
+  else
+  {
+   g_print("AAAAAAAAAAAAAAAAAAAAA Switch...\n");
+   gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->focused->n);
+  }
+
+  gkb_update (gkb, TRUE);
+}
+
+
+static void
+gkb_switch_to (gint n, GKB * gkb)
+{
+  debug (FALSE, "");
+
+  if (n > gkb->n)		/* Ignore mouse buttons 2 and 3 */
+    return;
+
+  gkb->cur = n;
+  gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
 
   gkb_update (gkb, TRUE);
 }
@@ -554,7 +602,7 @@ static int
 gkb_expose (GtkWidget * darea, GdkEventExpose * event)
 {
   debug (FALSE, "");
-  
+
   gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
 		   gkb->keymap->pix,
@@ -581,9 +629,9 @@ create_gkb_widget ()
   gtk_widget_show (gkb->eventbox);
 
   gkb->vbox = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show(gkb->vbox);
+  gtk_widget_show (gkb->vbox);
   gkb->hbox = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show(gkb->hbox);
+  gtk_widget_show (gkb->hbox);
 
   gtk_container_add (GTK_CONTAINER (gkb->eventbox), gkb->hbox);
   gtk_container_add (GTK_CONTAINER (gkb->hbox), gkb->vbox);
@@ -598,13 +646,13 @@ create_gkb_widget ()
 
   gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "button_press_event",
 		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), NULL);
-#if 0	
+#if 0
   gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "expose_event",
 		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
 #else
   gtk_signal_connect (GTK_OBJECT (gkb->darea), "expose_event",
 		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
-#endif	
+#endif
 
   gtk_widget_show (gkb->darea);
 
@@ -612,11 +660,11 @@ create_gkb_widget ()
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (gkb->darea_frame), gkb->darea);
   gtk_box_pack_start (GTK_BOX (gkb->vbox), gkb->darea_frame, TRUE, TRUE, 0);
-#if 0	
-  g_print ("c\n");  
+#if 0
+  g_print ("c\n");
   gtk_box_pack_start (GTK_BOX (gkb->hbox), gkb->vbox, TRUE, TRUE, 0);
   g_print ("d\n");
-#endif	
+#endif
 
   gkb->label1 = gtk_label_new (_("GKB"));
 
@@ -636,6 +684,10 @@ create_gkb_widget ()
   gtk_widget_pop_visual ();
 
   gkb_sized_render (gkb);
+
+  if (gkb->window_switch)
+    gkb_switch_focused(gkb);
+
   gkb_update (gkb, TRUE);
 }
 
@@ -643,7 +695,7 @@ static void
 about_cb (AppletWidget * widget)
 {
   static GtkWidget *about;
-  const char *authors[3]; /* Emese is genius */
+  const char *authors[3];	/* Emese is genius */
   GtkWidget *link;
 
   debug (FALSE, "");
@@ -698,135 +750,57 @@ help_cb (AppletWidget * applet)
   gnome_help_display (NULL, &help_entry);
 }
 
-/* Stolen from deskguide */
-static gpointer
-get_typed_property_data (Display *xdisplay,
-			 Window   xwindow,
-			 Atom     property,
-			 Atom     requested_type,
-			 gint    *size_p,
-			 guint    expected_format)
+static void
+gkb_switch_focused (GKB * gkb)
 {
-  static const guint prop_buffer_lengh = 1024 * 1024;
-  unsigned char *prop_data = NULL;
-  Atom type_returned = 0;
-  unsigned long nitems_return = 0, bytes_after_return = 0;
-  int format_returned = 0;
-  gpointer data = NULL;
-  gboolean abort = FALSE;
+  GList *list = gkb->windows;
+  Window focus;
+  int revert_to;
 
-  g_return_val_if_fail (size_p != NULL, NULL);
-  *size_p = 0;
+  XGetInputFocus (GDK_DISPLAY (), &focus, &revert_to);
 
-  gdk_error_trap_push ();
-
-  abort = XGetWindowProperty (xdisplay,
-			      xwindow,
-			      property,
-			      0, prop_buffer_lengh,
-			      False,
-			      requested_type,
-			      &type_returned, &format_returned,
-			      &nitems_return,
-			      &bytes_after_return,
-			      &prop_data) != Success;
-  if (gdk_error_trap_pop () ||
-      type_returned == None)
-    abort++;
-  if (!abort &&
-      requested_type != AnyPropertyType &&
-      requested_type != type_returned)
+  while (list)
     {
-      g_warning (G_GNUC_PRETTY_FUNCTION "(): Property has wrong type, probably on crack");
-      abort++;
-    }
-  if (!abort && bytes_after_return)
-    {
-      g_warning (G_GNUC_PRETTY_FUNCTION "(): Eeek, property has more than %u bytes, stored on harddisk?",
-		 prop_buffer_lengh);
-      abort++;
-    }
-  if (!abort && expected_format && expected_format != format_returned)
-    {
-      g_warning (G_GNUC_PRETTY_FUNCTION "(): Expected format (%u) unmatched (%d), programmer was drunk?",
-		 expected_format, format_returned);
-      abort++;
-    }
-  if (!abort && prop_data && nitems_return && format_returned)
-    {
-      switch (format_returned)
-	{
-	case 32:
-	  *size_p = nitems_return * 4;
-	  if (sizeof (gulong) == 8)
-	    {
-	      guint32 i, *mem = g_malloc0 (*size_p + 1);
-	      gulong *prop_longs = (gulong*) prop_data;
+      GkbWindow *data = list->data;
 
-	      for (i = 0; i < *size_p / 4; i++)
-		mem[i] = prop_longs[i];
-	      data = mem;
-	    }
-	  break;
-	case 16:
-	  *size_p = nitems_return * 2;
-	  break;
-	case 8:
-	  *size_p = nitems_return;
-	  break;
-	default:
-	  g_warning ("Unknown property data format with %d bits (extraterrestrial?)",
-		     format_returned);
-	  break;
-	}
-      if (!data && *size_p)
-	{
-	  guint8 *mem = g_malloc (*size_p + 1);
+      printf (" + Lookup: %p\n", focus);
+      fflush (stdout);
 
-	  memcpy (mem, prop_data, *size_p);
-	  mem[*size_p] = 0;
-	  data = mem;
-	}
+      if (data->xwin == focus)
+	break;
+      list = list->next;
     }
+  if (list == NULL)
+    {
+      GkbWindow *new = g_new0 (GkbWindow, 1);
 
-  if (prop_data)
-    XFree (prop_data);
-  
-  return data;
+      printf (" ------------------ New focused: %p\n", focus);
+      fflush (stdout);
+      new->xwin = focus;
+      new->n = gkb->cur;
+      gkb->windows = g_list_append (gkb->windows, new);
+    }
+  else
+    {
+      GkbWindow *data = list->data;
+
+      printf (" ///////////////// Switching to: %d\n", data->n);
+      fflush (stdout);
+      gkb_switch_to (data->n, gkb);
+    }
 }
 
 static GdkFilterReturn
-root_event_monitor (GdkXEvent *gdk_xevent,
-                    GdkEvent  *event, gpointer data)
+root_event_monitor (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
-  GdkAtom _WIN_CLIENT_LIST = 0;
   XEvent *xevent = gdk_xevent;
-  static guint32 *client_list = NULL;
-  static int client_list_size = 0;
-  int i;
-  
-  if ((xevent->type == PropertyNotify) || 
-    (xevent->type == FocusIn) ||
-    (xevent->type == FocusOut))
+  GKB *gkb = data;
+
+  if ((xevent->type == PropertyNotify) ||
+      (xevent->type == FocusIn) || (xevent->type == FocusOut))
     {
-     /* GList * item = gkb->windows; */
-  
-     _WIN_CLIENT_LIST = gdk_atom_intern("_WIN_CLIENT_LIST",FALSE);
-   
-     if(xevent->xproperty.atom == _WIN_CLIENT_LIST) 
-       {
-        g_free(client_list);
-        client_list = get_typed_property_data (GDK_DISPLAY(),
-                                               GDK_ROOT_WINDOW(),
-                                               _WIN_CLIENT_LIST,
-                                               XA_CARDINAL,
-                                               &client_list_size, 32);
-        client_list_size /= 4;
-        for(i=0;i<client_list_size;i++) 
-        {
-         printf("Window %i: %p\n",i,client_list[i]);fflush(stdout);
-        }
-       }
+     if (gkb->window_switch)
+      gkb_switch_focused (gkb);
     }
   return GDK_FILTER_CONTINUE;
 }
@@ -923,116 +897,6 @@ gkb_activator_register_callbacks (GKB * gkb)
 
 }
 
-static gboolean
-check_client (Display *display,
-              Window   xwindow,
-              Atom     state_atom)
-{
-  gboolean valid_client = TRUE;
-
-  if (valid_client)
-    {
-      Atom dummy1;
-      int format = 0;
-      unsigned long dummy2, nitems = 0, *prop = NULL;
-      
-      XGetWindowProperty (display, xwindow, state_atom, 0, 1024, False, state_atom,
-                          &dummy1, &format, &nitems, &dummy2, (unsigned char **) &prop);
-      if (prop)
-        {
-          valid_client = format == 32 && nitems > 0 && (prop[0] == NormalState ||        
-                                                        prop[0] == IconicState);
-          XFree (prop);
-        }
-    }
-
-  if (valid_client)
-    {
-      XWindowAttributes attributes = { 0, };
-
-	XGetWindowAttributes (display, xwindow, &attributes);
-	valid_client = (attributes.class == InputOutput &&   
-	                attributes.map_state == IsViewable); 
-	}
-
-  if (valid_client)
-    {
-      XWMHints *hints = XGetWMHints (display, xwindow);
-      
-      valid_client &= hints && (hints->flags & InputHint) && hints->input;
-      if (hints)
-        XFree (hints);
-    }
-     
-  return valid_client;
-}
-
-
-static Window
-find_input_client (Display *display,   
-                   Window   xwindow,   
-                   Atom     state_atom)
-{
-  Window dummy1, dummy2, *children = NULL;
-  unsigned int n_children = 0;
-  guint i;
-  
-  if (check_client (display, xwindow, state_atom))
-    return xwindow;
-  
-  if (!XQueryTree (display, xwindow, &dummy1, &dummy2, &children, &n_children) || !children)
-    return None;
-  
-  for (i = 0; i < n_children; i++)
-    {
-      xwindow = find_input_client (display, children[i], state_atom);
-      if (xwindow)
-        break;
-    }
-  XFree (children);
-  
-  return xwindow;
-}
-
-
-static guint32*
-gkb_winlist_init (GKB * gkb)
-{
-  GdkWindow *window = GDK_ROOT_PARENT ();
-  Display *display = GDK_WINDOW_XDISPLAY (window);
-  Window xwindow = GDK_WINDOW_XWINDOW (window);
-  Window dummy, *children = NULL;
-  unsigned int n_children = 0;
-  guint32 *clients = NULL;
-  gint i;
-          
-  XGrabServer (display);
-  if (!XQueryTree (display, xwindow, &xwindow, 
-                   &dummy, &children, &n_children) || !children)
-    {
-      XUngrabServer (display);
-      return NULL;
-    }     
-  for (i = 0; i < n_children; i++)
-    {
-      xwindow = find_input_client (display, children[i],
-                                   XInternAtom (display, 
-                                   "WM_STATE", False));     
-      if (xwindow)
-        {
-          GkbWindow * gkb_win = g_new0 (GkbWindow, 1);
-
-	  gkb_win->xid = children[i];
-	  gkb_win->n = gkb->cur;
-          gkb->windows = g_list_append (gkb->windows, gkb_win);
-        }
-    }
-  XUngrabServer (display);
-  XFree (children);
-  gdk_error_trap_pop ();
-            
-  return clients;        
-}
 
 static CORBA_Object
 gkb_activator (CORBA_Object poa_in,
@@ -1069,7 +933,7 @@ gkb_activator (CORBA_Object poa_in,
   gkb_activator_connect_signals (gkb);
 
   gkb->keymap = g_list_nth_data (gkb->maps, 0);
-  
+
   create_gkb_widget ();
 
   gtk_widget_show (gkb->darea_frame);
@@ -1079,31 +943,22 @@ gkb_activator (CORBA_Object poa_in,
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
 
-  XGetWindowAttributes (GDK_DISPLAY (),
-                        GDK_ROOT_WINDOW (),
-                        &attribs);
-  XSelectInput (GDK_DISPLAY (),   
-                GDK_ROOT_WINDOW (),
-                attribs.your_event_mask |
-                StructureNotifyMask |
-		FocusChangeMask |
-                PropertyChangeMask); 
+  XGetWindowAttributes (GDK_DISPLAY (), GDK_ROOT_WINDOW (), &attribs);
+  XSelectInput (GDK_DISPLAY (),
+		GDK_ROOT_WINDOW (),
+		attribs.your_event_mask |
+		StructureNotifyMask | FocusChangeMask | PropertyChangeMask);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
-  gdk_window_add_filter (GDK_ROOT_PARENT (), root_event_monitor, NULL);
+  gdk_window_add_filter (GDK_ROOT_PARENT (), root_event_monitor, gkb);
 
-  key = XKeysymToKeycode(GDK_DISPLAY(),
-                 gkb->keysym);
+  key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  printf("------------------Ablakok: %p\n", gkb_winlist_init (gkb));
-  fflush (stdout);
-
-  XGrabKey (GDK_DISPLAY(), key, gkb->state,
-                           GDK_ROOT_WINDOW(), True, 
-                           GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY (), key, gkb->state,
+	    GDK_ROOT_WINDOW (), True, GrabModeAsync, GrabModeAsync);
 
   gkb_activator_register_callbacks (gkb);
-  
+
   return applet_widget_corba_activate (gkb->applet, poa, goad_id,
 				       params, impl_ptr, ev);
 }

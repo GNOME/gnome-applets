@@ -37,6 +37,8 @@
 #include <libart_lgpl/art_pixbuf.h>
 #include <libart_lgpl/art_rgb_rgba_affine.h>
 #include <libart_lgpl/art_affine.h>
+
+#include <X11/Xlib.h>
  
 #include <sys/types.h>
 #include <dirent.h>		/* for opendir() et al. */
@@ -83,12 +85,15 @@ struct _GkbPropertyBoxInfo
   /* Hotkey Entry */
   GtkWidget *hotkey_entry;
 
+  /* Window based switching */
+  GtkWidget *switch_checkbox;
+
   /* Selected keymap to add */
   GkbKeymap *keymap_for_add;
 
   /* Other properties */
-  gint is_small; 
-  GkbMode mode;;
+  gint is_small;
+  GkbMode mode;
 };
 
 struct _GkbKeymap
@@ -110,7 +115,7 @@ struct _GkbKeymap
 
 struct _GkbWindow
 {
-  guint32 xid;
+  Window xwin;
   gint n;
 };
 
@@ -119,8 +124,12 @@ struct _GKB
   /* Keymaps */
   GkbKeymap *keymap; /* This is the currently selected keymap */
 
+  /* Window-change based switching events */
+  gint window_switch; /* Do we need to switch with window changes? */
   GList *windows; /* windows on the desktop */
+  GkbWindow *focused; /* Focused window */
 
+  /* Keyboard maps */
   GList *maps;
   
   /* Properties */
