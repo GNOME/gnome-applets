@@ -1356,7 +1356,7 @@ mixer_about_cb (BonoboUIComponent *uic,
                 return;
         }
         
-        file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "mixer/gnome-mixer-applet.png", TRUE, NULL);
+        file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mixer-applet.png", TRUE, NULL);
         pixbuf = gdk_pixbuf_new_from_file (file, NULL);
         g_free (file);
 
@@ -1375,7 +1375,7 @@ mixer_about_cb (BonoboUIComponent *uic,
 
 	gtk_window_set_wmclass (GTK_WINDOW(data->about_dialog), "volume control", "Volume Control");
 
-	gnome_window_icon_set_from_file (GTK_WINDOW (data->about_dialog), GNOME_ICONDIR"/mixer/gnome-mixer-applet.png");
+	gnome_window_icon_set_from_file (GTK_WINDOW (data->about_dialog), GNOME_ICONDIR "gnome-mixer-applet.png");
         
 	g_signal_connect (G_OBJECT (data->about_dialog), "destroy",
                           G_CALLBACK (gtk_widget_destroyed),
@@ -1514,7 +1514,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
                                                    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                                    GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                                    NULL);
-	gnome_window_icon_set_from_file (GTK_WINDOW (dialog), GNOME_ICONDIR"/mixer/gnome-mixer-applet.png");	
+	gnome_window_icon_set_from_file (GTK_WINDOW (dialog), GNOME_ICONDIR "gnome-mixer-applet.png");	
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 	gtk_window_set_screen (GTK_WINDOW (dialog),

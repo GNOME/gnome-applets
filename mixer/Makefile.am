@@ -1,8 +1,10 @@
 SUBDIRS = docs
 
+iconsdir = $(datadir)/pixmaps
+icons_DATA = gnome-mixer-applet.png
+
 pixmapsdir = $(datadir)/pixmaps/mixer
-pixmaps_DATA =  gnome-mixer-applet.png		\
-		volume-max.png			\
+pixmaps_DATA = 	volume-max.png			\
 		volume-medium.png		\
 		volume-min.png			\
 		volume-mute.png			\
