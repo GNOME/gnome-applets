@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.0.0\n"
-"POT-Creation-Date: 2003-01-18 04:26-0200\n"
-"PO-Revision-Date: 2002-06-09T01:46-0300\n"
-"Last-Translator: Gustavo Noronha Silva <kov@debian.org>\n"
+"POT-Creation-Date: 2003-01-18 19:05-0300\n"
+"PO-Revision-Date: 2003-01-18 19:05-0300\n"
+"Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: Debian-BR <debian-l10n-portuguese@lists.debian.org>, "
 "Brazilian <ldp-br@bazar.conectiva.com.br>, Sun G11n <gnome_int_l10n@ireland."
 "sun.com>\n"
@@ -294,6 +294,7 @@ msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 msgid "translator_credits"
 msgstr ""
 "Traduzido por: \n"
+"Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Gustavo Noronha Silva <kov@debian.org>\n"
 "Gustavo Maciel Dias Vieira <gdvieira@zaz.com.br>\n"
 "Sun Microsystems"
@@ -393,7 +394,7 @@ msgstr "Avisos"
 
 #: battstat/battstat_applet.glade.h:23
 msgid "Yellow:"
-msgstr "Amarelo"
+msgstr "Amarelo:"
 
 # SUN NEW TRANSLATION
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
@@ -434,7 +435,7 @@ msgstr "Miniaplicativo de painel para reprodução de CDs de áudio"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
 msgid "_Run External CD Player"
-msgstr "_Executar Toca-CD..."
+msgstr "_Executar reprodutor de CD's externo"
 
 #: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:903
 msgid "Stop"
@@ -463,7 +464,7 @@ msgstr "Próxima Trilha"
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
-msgstr ""
+msgstr "Ocorreu um erro ao executar '%s': %s"
 
 #: cdplayer/cdplayer.c:411
 msgid "CD Player Preferences"
@@ -859,11 +860,11 @@ msgstr "Editar Teclado"
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
-msgstr "_Nome"
+msgstr "_Nome:"
 
 #: gkb-new/prop-map.c:235
 msgid "_Label:"
-msgstr "_Rótulo"
+msgstr "_Rótulo:"
 
 #: gkb-new/prop-map.c:238
 msgid "Co_mmand:"
@@ -916,7 +917,7 @@ msgstr "_Aparência "
 
 #: gkb-new/prop.c:318
 msgid "Applet _size: "
-msgstr "_Tamanho do mini aplicativo "
+msgstr "_Tamanho do mini aplicativo: "
 
 #: gkb-new/prop.c:345
 msgid "Hotkey for switching between layouts"
@@ -933,7 +934,7 @@ msgstr "Preferências do Alternador de Layout de Teclado"
 
 #: gkb-new/prop.c:440
 msgid "Keymaps"
-msgstr "Mapas de teclas"
+msgstr "Mapas de teclado"
 
 #.
 #. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
@@ -954,6 +955,12 @@ msgid ""
 "\n"
 "The command was: %s"
 msgstr ""
+"Ocorreu um erro.\n"
+"\n"
+"O mapa de teclado '%s' não é suportado neste sistema. Escolha outro mapa de "
+"teclado.\n"
+"\n"
+"O comando foi: %s"
 
 #: gkb-new/system.c:51
 #, c-format
@@ -965,6 +972,12 @@ msgid ""
 "\n"
 "The command was: %s"
 msgstr ""
+"Ocorreu um erro.\n"
+"\n"
+"Não foi possível localizar o mapa de teclado '%s', provavelmente porque o "
+"comando 'xmodmap' não foi encontrado no seu PATH.\n"
+"\n"
+"O comando foi: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -2593,43 +2606,44 @@ msgstr "Digite um comando aqui, e o Gnome o executará para você"
 #: mini-commander/src/mc-install-default-macros.c:71
 #, c-format
 msgid "Cannot get schema for %s : %s"
-msgstr ""
+msgstr "Não foi possível obter schema para %s : %s"
 
 #: mini-commander/src/mc-install-default-macros.c:99
 #, c-format
 msgid "Cannot set schema for %s : %s"
-msgstr ""
+msgstr "Não foi possível definir schema para %s : %s"
 
 #: mini-commander/src/mc-install-default-macros.c:105
 #, c-format
 msgid "Set default list value for %s\n"
-msgstr ""
+msgstr "Definir valor padrão de lista para %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL está definido, não instalando schemas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr ""
+msgstr "É necessário definir a variável de ambiente GCONF_CONFIG_SOURCE\n"
 
 #: mini-commander/src/mc-install-default-macros.c:142
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
-msgstr ""
+msgstr "Falha ao acessar fonte(s) de configuração: %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Error syncing config data: %s"
-msgstr ""
+msgstr "Erro ao sincronizar configuração: %s"
 
 #: mini-commander/src/mini-commander.glade.h:1
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: mini-commander/src/mini-commander.glade.h:2
 msgid "Add New Macro"
-msgstr ""
+msgstr "Adicionar Nova Macro"
 
 #: mini-commander/src/mini-commander.glade.h:4
 msgid "Applet _width:"
@@ -3353,11 +3367,11 @@ msgstr ""
 
 #: screen-exec/egg-screen-help.c:174
 msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr ""
+msgstr "Não foi possível encontrar o domínio GNOME_FILE_DOMAIN_APP_HELP"
 
 #: screen-exec/egg-screen-help.c:187
 msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr ""
+msgstr "Não foi possível encontrar o domínio GNOME_FILE_DOMAIN_HELP"
 
 #: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
 #, c-format
@@ -3365,6 +3379,8 @@ msgid ""
 "Unable to show help as %s is not a directory.  Please check your "
 "installation."
 msgstr ""
+"Não foi possível exibir ajuda porque %s não é um diretório. Verifique sua "
+"instalação."
 
 #: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
 #, c-format
@@ -3372,37 +3388,44 @@ msgid ""
 "Unable to find the help files in either %s or %s.  Please check your "
 "installation"
 msgstr ""
+"Não foi possível encontrar os arquivos de ajuda em %s ou %s. Verifique sua "
+"instalação"
 
 #: screen-exec/egg-screen-help.c:315
 #, c-format
 msgid "Unable to find doc_id %s in the help path"
-msgstr ""
+msgstr "Não foi possível encontrar o doc_id %a no path de ajuda"
 
 #: screen-exec/egg-screen-help.c:336
 #, c-format
 msgid "Help document %s/%s not found"
-msgstr ""
+msgstr "Documento de ajuda %s/%s não encontrado"
 
 #: wireless/wireless-applet.c:343
 msgid ""
 "The images necessary to run the wireless monitor are missing.\n"
 "Please make sure that it is correctly installed."
 msgstr ""
+"As imagens necessárias para executar o monitor de redes sem fio estão "
+"faltando.\n"
+" Verifique que estão instaladas corretamente."
 
 #: wireless/wireless-applet.c:524
 msgid "No Wireless Devices"
-msgstr ""
+msgstr "Nenhum Dispositivo Sem Fio"
 
 #: wireless/wireless-applet.c:526
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
+"Não foi encontrado nenhum dispositivo sem fio configurado no sistema.\n"
+"Verifique sua configuração se você acha que isto é incorreto."
 
 #: wireless/wireless-applet.c:718
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
-msgstr ""
+msgstr "Monitor de Redes sem fio"
 
 #: wireless/wireless-applet.c:720
 msgid "(C) 2001, 2002 Free Software Foundation "
@@ -3410,30 +3433,26 @@ msgstr "(C) 2001, 2002 Free Software Foundation"
 
 # SUN NEW TRANSLATION
 #: wireless/wireless-applet.c:721
-#, fuzzy
 msgid "This utility shows the status of a wireless link."
-msgstr "Esse utilitário mostra o status da bateria do laptop."
+msgstr "Esse utilitário mostra o status de um link sem fio."
 
 # SUN NEW TRANSLATION
 #: wireless/wireless-applet.glade.h:1
-#, fuzzy
 msgid "Monitored Device:"
-msgstr "Recursos Monitorados"
+msgstr "Dispositivos Monitorados:"
 
 #: wireless/wireless-applet.glade.h:2
-#, fuzzy
 msgid "Show _dialog boxes"
-msgstr "E_xibir alça"
+msgstr "Exibir caixas de _diálogo"
 
 #: wireless/wireless-applet.glade.h:3
 msgid "Show signal strength in _percentage"
-msgstr ""
+msgstr "Exibir força do sinal em _porcentagem"
 
 #: wireless/wireless-applet.glade.h:4
-#, fuzzy
 msgid "Wireless Link Monitor Preferences"
-msgstr "Preferências do Aplicativo de Montagem de Volumes"
+msgstr "Preferências do Monitor de Redes sem fio"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
-msgstr ""
+msgstr "Monitorar a qualidade de uma rede sem fio"
