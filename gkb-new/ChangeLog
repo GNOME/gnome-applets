@@ -1,3 +1,19 @@
+2002-07-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* gkb.c:
+	(do_at_first_run): fix dubious first run check.
+	(about_cb): about box is a gtk dialog, not gnome dialog.
+	(fill_gkb_applet): kill weirdo off screen bah_window and
+	use the root window.
+	* keygrab.c: (grab_key_filter), (grab_button_pressed): use
+	root window here too.
+	(gkb_xgrab), (gkb_xungrab): impl convenience macors for
+	grabbing and ungrabbing for clarity.
+
+	* prop-add.c: (gkb_prop_map_add): kill gtk_widget_show.
+
+	* prop.c: (properties_dialog): ditto.
+
 2002-06-26  Shivram U  <shivaram.upadhyayula@wipro.com>
 
        * descs/Hungarian-sun.keyprop.in,US-sun.keyprop.in: Changed the Arch 

@@ -461,8 +461,7 @@ properties_dialog (BonoboUIComponent *uic,
 {
   GkbPropertyBoxInfo *pbi;
   
-  if (propwindow != NULL) {
-  	gtk_widget_show (propwindow);
+  if (propwindow) {
   	gtk_window_present (GTK_WINDOW (propwindow));
   	return;
   }
