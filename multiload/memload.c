@@ -30,10 +30,6 @@
 
 #include "global.h"
 
-static const gchar *mem_texts [4] =  {
-    N_("Other"), N_("Shared"), N_("Buffers"), N_("Free")
-};
-
 /* start a new instance of the memload applet */
 LoadGraph *
 memload_applet_new(PanelApplet *applet, gpointer data)

@@ -30,16 +30,6 @@
 
 #include "global.h"
 
-static const char *loadavg_texts [3] = {
-    N_("Load average over 1 minute"),
-    N_("Load average over 5 minutes"),
-    N_("Load average over 15 minutes")
-};
-
-static const gchar *loadavg_texts_main [2] = {
-    N_("Used"), N_("Free")
-};
-
 /*
 static void
 loadavg_1_cb (AppletWidget *widget, gpointer data)

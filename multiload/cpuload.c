@@ -31,11 +31,6 @@
 
 #include "global.h"
 
-static const gchar *cpu_texts [4] = {
-    N_("User"),  N_("System"),   N_("Nice"),  N_("Idle")
-};
-
-
 LoadGraph *
 cpuload_applet_new(PanelApplet *applet, gpointer data)
 {

@@ -23,6 +23,27 @@
 #define PROP_SIZE		6
 
 void
+properties_set_insensitive(MultiloadApplet *ma)
+{
+	gint i, total_graphs, last_graph;
+	
+	total_graphs = 0;
+	last_graph = 0;
+		
+	for (i = 0; i < 5; i++)
+		if (ma->graphs[i]->visible)
+		{
+			last_graph = i;
+			total_graphs++;
+		}
+			
+	if (total_graphs < 2)
+		gtk_widget_set_sensitive(ma->check_boxes[last_graph], FALSE);
+		
+	return;
+}
+
+void
 properties_close_cb(GtkWidget *widget, gint arg, gpointer data)
 {
 	
@@ -36,7 +57,7 @@ void
 property_toggled_cb(GtkWidget *widget, gpointer name)
 {
 	MultiloadApplet *ma;
-	gint prop_type;
+	gint prop_type, i;
 	gboolean active = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	
 	ma = g_object_get_data(G_OBJECT(widget), "user_data");
@@ -51,6 +72,9 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	
 	if (active)
 	{
+		for (i = 0; i < 5; i++)
+			gtk_widget_set_sensitive(ma->check_boxes[i], TRUE);
+		
 		switch(prop_type)
 		{
 			case PROP_CPU:
@@ -91,7 +115,9 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 		load_graph_stop(ma->graphs[prop_type]);
 		gtk_widget_destroy(ma->graphs[prop_type]->main_widget);
 		load_graph_unalloc(ma->graphs[prop_type]);
-		g_free(ma->graphs[prop_type]);
+		ma->graphs[prop_type]->visible = FALSE;;
+		
+		properties_set_insensitive(ma);
 	}
 	
 	return;
@@ -136,8 +162,9 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 			{
 				if (!ma->graphs[i]->visible)
 					continue;
-					
-				ma->graphs[i]->size = value;
+				
+				/* the panel includes a 1 pixel border and the frame is 1 pixel wide */
+				ma->graphs[i]->size = value - 4;
 				
 				if (ma->graphs[i]->orient)
 					gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->pixel_size, ma->graphs[i]->size);
@@ -163,32 +190,25 @@ add_page(GtkWidget *notebook, gchar *label)
 	
 	page = gtk_hbox_new(TRUE, 0);
 	page_label = gtk_label_new(label);
-	
+	gtk_container_set_border_width(GTK_CONTAINER(page), 3);
+		
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page, page_label);
 	
 	return page;
 }
 
-/* close the color selection dialog */
+/* save the selected color to gconf and apply it on the applet */
 void
-color_selector_close_cb(GtkWidget *widget, gpointer dialog)
+color_picker_set_cb(GnomeColorPicker *color_picker, guint arg1, guint arg2, guint arg3, guint arg4, gpointer object)
 {
-	gtk_widget_destroy(GTK_WIDGET(dialog));
-	
-	return;
-}
-
-/* saves the currently selected color */
-void
-color_selector_ok_cb(GtkWidget *widget, gpointer dialog)
-{
-	gint prop_type, i;
-	GdkColor *color;
 	gchar color_string[8], *gconf_path;
+	guint8 red, green, blue, alpha, prop_type;
 	MultiloadApplet *ma;
 	
-	ma = g_object_get_data(G_OBJECT(dialog), "applet");	
-	gconf_path = g_object_get_data(G_OBJECT(dialog), "gconf_path");
+	gconf_path = g_object_get_data(G_OBJECT(object), "gconf_path");
+	ma = g_object_get_data(G_OBJECT(object), "applet");	
+	
+	prop_type = 0;
 	
 	if (strstr(gconf_path, "cpuload"))
 		prop_type = PROP_CPU;
@@ -199,58 +219,17 @@ color_selector_ok_cb(GtkWidget *widget, gpointer dialog)
 	else if (strstr(gconf_path, "swapload"))
 		prop_type = PROP_SWAP;
 	else
-		prop_type = PROP_AVG;
+		g_assert_not_reached();
 		
-	color = g_new0(GdkColor, 1);
+	gnome_color_picker_get_i8(color_picker, &red, &green, &blue, &alpha);
 	
-	gtk_color_selection_get_current_color(GTK_COLOR_SELECTION(GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel), color);
-	snprintf(color_string, 8, "#%02X%02X%02X", (guint)color->red / 256, (guint)color->green / 256, (guint)color->blue / 256);
+	snprintf(color_string, 8, "#%02X%02X%02X", red, green, blue);
 	panel_applet_gconf_set_string(PANEL_APPLET(ma->applet), gconf_path, color_string, NULL);
 	
-	for (i = 0; i < ma->graphs[prop_type]->n; i++)
-		gdk_color_parse(color_string, &(ma->graphs[prop_type]->colors[i]));
+	gdk_color_parse(color_string, 
+			&(ma->graphs[prop_type]->colors[g_ascii_digit_value(gconf_path[strlen(gconf_path) - 1]) ]) );
 	
 	ma->graphs[prop_type]->colors_allocated = FALSE;	
-	
-	color_selector_close_cb(NULL, dialog);
-		
-	return;
-}
-
-/* popup a color selector dialog */
-void
-show_color_selector_cb(GtkWidget *widget, gpointer object)
-{
-	GtkWidget *dialog;
-	GdkColor *color;
-	gchar *gconf_path, *color_string;
-	MultiloadApplet *ma;
-	
-	gconf_path = g_object_get_data(G_OBJECT(object), "gconf_path");
-	ma = g_object_get_data(G_OBJECT(object), "applet");
-
-	color = g_new0(GdkColor, 1);
-	dialog = gtk_color_selection_dialog_new("Color");
-
-	g_object_set_data(G_OBJECT(dialog), "applet", ma);
-	g_object_set_data(G_OBJECT(dialog), "gconf_path", gconf_path);
-	
-	color_string = panel_applet_gconf_get_string(PANEL_APPLET(ma->applet), gconf_path, NULL);
-			
-	gdk_color_parse(color_string, color);
-	gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel), color);
-	
-	g_signal_connect(G_OBJECT(dialog), "destroy", G_CALLBACK(gtk_widget_destroyed), &dialog);
-	g_signal_connect(G_OBJECT(GTK_COLOR_SELECTION_DIALOG(dialog)->cancel_button), "clicked",
-							G_CALLBACK(color_selector_close_cb), dialog);
-	g_signal_connect(G_OBJECT(GTK_COLOR_SELECTION_DIALOG(dialog)->ok_button), "clicked",
-							G_CALLBACK(color_selector_ok_cb), dialog);
-								
-	gtk_widget_show_all(dialog);
-	
-	gtk_widget_hide(GTK_COLOR_SELECTION_DIALOG(dialog)->help_button);
-	
-	g_free(color);
 	
 	return;
 }
@@ -261,27 +240,32 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 {
 	GtkWidget *vbox;
 	GtkWidget *label;
-	GtkWidget *button;
 	GtkWidget *object;
-/*	gchar *color_string; */
+	GtkWidget *color_picker;
+	gchar *color_string;
+	gint red, green, blue;
 	
+	color_string = panel_applet_gconf_get_string(ma->applet, gconf_path, NULL);
+	red = g_ascii_xdigit_value(color_string[1]) * 16 + g_ascii_xdigit_value(color_string[2]);
+	green = g_ascii_xdigit_value(color_string[3]) * 16 + g_ascii_xdigit_value(color_string[4]);
+	blue = g_ascii_xdigit_value(color_string[5]) * 16 + g_ascii_xdigit_value(color_string[6]);
+		
 	object = gtk_label_new("I will never be seen"); /* this is used instead of a structure */
-	button = gtk_button_new();
-	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
 	vbox = gtk_vbox_new(FALSE, 0);
 	label = gtk_label_new(name);
+	color_picker = gnome_color_picker_new();
 	
-	gtk_container_add(GTK_CONTAINER(button), vbox);
-	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), color_picker, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 2);
 	
-	gtk_box_pack_start(GTK_BOX(page), button, TRUE, TRUE, 3);
-	
-/*	color_string = panel_applet_gconf_get_string(PANEL_APPLET(ma->applet), gconf_path, NULL); */
+	gtk_box_pack_start(GTK_BOX(page), vbox, FALSE, FALSE, 0);	
 	
 	g_object_set_data(G_OBJECT(object), "gconf_path", gconf_path);
 	g_object_set_data(G_OBJECT(object), "applet", ma);
-	
-	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(show_color_selector_cb), object);
+
+	gnome_color_picker_set_i8(GNOME_COLOR_PICKER(color_picker), red, green, blue, 0);	
+
+	g_signal_connect(G_OBJECT(color_picker), "color_set", G_CALLBACK(color_picker_set_cb), object);
 	
 	return;
 }
@@ -308,7 +292,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_container_add(GTK_CONTAINER(frame), hbox);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Processor"));
-	
+	ma->check_boxes[0] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_cpuload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
@@ -318,6 +302,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Memory"));
+	ma->check_boxes[1] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_memload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
@@ -327,6 +312,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Network"));
+	ma->check_boxes[2] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_netload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
@@ -336,6 +322,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Swap File"));
+	ma->check_boxes[3] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_swapload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
@@ -454,7 +441,9 @@ multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name
 	dialog = gtk_dialog_new_with_buttons(_("System Monitor Properties"), NULL, 0, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
 				
 	fill_properties(dialog, ma);
-	
+
+	properties_set_insensitive(ma);
+				
 	g_signal_connect (G_OBJECT(dialog), "destroy",
 			G_CALLBACK(gtk_widget_destroyed), &dialog);
 	g_signal_connect(G_OBJECT(dialog), "response",

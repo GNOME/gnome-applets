@@ -70,6 +70,8 @@ struct _MultiloadApplet
 	gboolean view_netload;
 	gboolean view_swapload;
 	gboolean view_loadavg;
+	
+	GtkWidget *check_boxes[5];
 };
 
 #include "load-graph.h"

@@ -52,8 +52,8 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
     about = gnome_about_new
 	(_("System Monitor Applet"), VERSION,
 	 "(C) 1999 - 2002 The Free Software Foundation",
-	 _("Released under the GNU general public license.\n\n"
-	   "A system load monitor capable of displaying graphs for cpu, ram, and swap file use, plus network traffic."),
+	 _("Released under the GNU General Public License.\n\n"
+	   "A system load monitor capable of displaying graphs for CPU, ram, and swap file use, plus network traffic."),
 	 authors,
 	 NULL,
 	 NULL,
@@ -67,11 +67,11 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 
 const gchar multiload_menu_xml [] =
         "<popup name=\"button3\">\n"
-        "	<menuitem name=\"Properties Item\" verb=\"MultiLoadProperties\" _label=\"Properties ...\"\n"
+        "	<menuitem name=\"Properties Item\" verb=\"MultiLoadProperties\" _label=\"Properties...\"\n"
         "		pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-        "	<menuitem name=\"Procman Item\" verb=\"MultiLoadRunProcman\" _label=\"Run Procman ...\"\n"
+        "	<menuitem name=\"Procman Item\" verb=\"MultiLoadRunProcman\" _label=\"Run detailed system monitor\"\n"
         "		pixtype=\"stock\" pixname=\"gtk-execute\"/>\n"
-        "	<menuitem name=\"About Item\" verb=\"MultiLoadAbout\" _label=\"About ...\"\n"
+        "	<menuitem name=\"About Item\" verb=\"MultiLoadAbout\" _label=\"About...\"\n"
         "		pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
         "</popup>\n";
 
@@ -89,12 +89,10 @@ multiload_change_size_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
 	gint i;
 	MultiloadApplet *ma = (MultiloadApplet *)data;
-	
+
 	for (i = 0; i < 5; i++)
 		if (ma->graphs[i]->visible)
 		{
-			ma->graphs[i]->pixel_size = panel_applet_get_size (applet);
-    
   	  	if (ma->graphs[i]->orient)
 				gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->pixel_size, ma->graphs[i]->size);
 			else
@@ -141,7 +139,7 @@ multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	MultiloadApplet *ma;
 	gint i;
-	
+
 	ma = (MultiloadApplet *)data;
 	
 	for (i = 0; i < 5; i++)
@@ -150,7 +148,7 @@ multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 			ma->graphs[i]->tooltip_update = TRUE;
 			multiload_applet_tooltip_update(ma->graphs[i]);
 		}
-		
+	
 	return TRUE;
 }
 
@@ -159,13 +157,13 @@ multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	MultiloadApplet *ma;
 	gint i;
-	
+
 	ma = (MultiloadApplet *)data;
-	
+
 	for (i = 0; i < 5; i++)
 		if (ma->graphs[i]->visible)
 			ma->graphs[i]->tooltip_update = FALSE;
-			
+		
 	return TRUE;
 }
 
@@ -175,7 +173,10 @@ multiload_applet_tooltip_update(LoadGraph *g)
 {
 	gint i, total_used, percent;
 	gchar *tooltip_text, *name;
-	
+
+	g_return_if_fail(g);
+	g_return_if_fail(g->name);
+		
 	total_used = 0;
 
 	/* label the tooltip intuitively */

@@ -29,10 +29,6 @@
 
 #include "global.h"
 
-static const gchar *net_texts [4] = {
-    N_("SLIP"), N_("PPP"), N_("ETH"), N_("Other"),
-};
-
 /* start a new instance of the netload applet */
 LoadGraph *
 netload_applet_new(PanelApplet *applet, gpointer data)

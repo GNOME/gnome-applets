@@ -30,10 +30,6 @@
 
 #include "global.h"
 
-static const gchar *swap_texts [2] = {
-    N_("Used"), N_("Free")
-};
-
 /* start a new instance of the swapload applet */
 LoadGraph *
 swapload_applet_new(PanelApplet *applet, gpointer data)

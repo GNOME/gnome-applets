@@ -20,7 +20,7 @@ static void
 load_graph_draw (LoadGraph *g)
 {
     guint i, j;
-
+	
     /* we might get called before the configure event so that
      * g->disp->allocation may not have the correct size
      * (after the user resized the applet in the prop dialog). */
@@ -80,7 +80,7 @@ load_graph_draw (LoadGraph *g)
 		     0, 0,
 		     g->disp->allocation.width,
 		     g->disp->allocation.height);
-
+	
     for (i = 0; i < g->draw_width; i++)
 		memcpy (g->odata [i], g->data [i], g->data_size);
 	
@@ -176,14 +176,6 @@ load_graph_alloc (LoadGraph *g)
 /*    g->show_frame = pixel_size > 36;	*/
 	g->show_frame = 1;
 
-    if (g->orient) {
-		g->draw_width = g->pixel_size;
-		g->draw_height = g->size;
-    } else {
-		g->draw_width = g->size;
-		g->draw_height = g->pixel_size;
-    }
-	
     g->data = g_new0 (guint *, g->draw_width);
     g->odata = g_new0 (guint *, g->draw_width);
     g->pos = g_new0 (guint, g->draw_width);
@@ -203,8 +195,12 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		      gpointer data_ptr)
 {
     LoadGraph *c = (LoadGraph *) data_ptr;
-
+	
     load_graph_unalloc (c);
+    
+    c->draw_width = c->disp->allocation.width;
+	c->draw_height = c->disp->allocation.height;;
+	
     load_graph_alloc (c);
 
     if (!c->pixmap)
@@ -225,6 +221,7 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		     0, 0,
 		     c->disp->allocation.width,
 		     c->disp->allocation.height);
+	
     return TRUE;
     event = NULL;
 }
