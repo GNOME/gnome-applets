@@ -1,0 +1,75 @@
+%define nam	@PACKAGE@
+%define ver	@VERSION@
+%define rel	1
+
+%define	prefix		/usr
+%define sysconfdir	/etc
+
+Summary:	Small applications which embed themselves in the GNOME panel
+Name:     	%nam
+Version: 	%ver
+Release:	%rel
+Copyright:	GPL
+Group:		User Interface/Desktops
+Source: 	ftp://ftp.gnome.org/pub/GNOME/sources/unstable/%{nam}/%{nam}-%{ver}.tar.gz
+URL:		http://www.gnome.org/
+BuildRoot:	/var/tmp/%{nam}-%{ver}-root
+Docdir:		%{prefix}/doc
+
+Requires:	libxml
+Requires:	libgtop
+Requires:	libghttp
+Requires:	gnome-core >= 1.1.2
+
+%description
+GNOME (GNU Network Object Model Environment) is a user-friendly
+set of applications and desktop tools to be used in conjunction with a
+window manager for the X Window System.  GNOME is similar in purpose and
+scope to CDE and KDE, but GNOME is based completely on Open Source
+software.  The gnome-applets package provides Panel applets which
+enhance your GNOME experience.
+
+You should install the gnome-applets package if you would like embed small
+utilities in the GNOME panel.
+
+%prep
+%setup -q
+
+%build
+CFLAGS="$RPM_OPT_FLAGS" ./configure	\
+	--prefix=%{prefix} --sysconfdir=%{sysconfdir}
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install \
+	prefix=$RPM_BUILD_ROOT%{prefix} \
+	sysconfdir=$RPM_BUILD_ROOT%{sysconfdir}
+# no binary stripping
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%files
+%defattr(-, root, root)
+
+%doc AUTHORS COPYING ChangeLog NEWS README
+%{prefix}/bin/*
+%{prefix}/share/applets/*/*
+%{prefix}/share/clockmail/*
+%{prefix}/share/asclock/*
+%{prefix}/share/geyes/*
+%{prefix}/share/gnome/help/mini-commander_applet/*
+%{prefix}/share/gweather/*
+%{prefix}/share/locale/*
+%{prefix}/share/odometer/*/*
+%{prefix}/share/pixmaps/*
+%{prefix}/share/sound-monitor/*
+%{prefix}/share/tickastat/*
+%{prefix}/share/xmodmap/*
+
+%{sysconfdir}/CORBA/*
+
