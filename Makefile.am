@@ -54,7 +54,8 @@ always_built_SUBDIRS = \
 	charpick	\
 	geyes		\
 	mini-commander	\
-	gkb-new		
+	gkb-new		\
+	battstat
 ##	whereami	
 
 SUBDIRS = \

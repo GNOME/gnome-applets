@@ -39,6 +39,8 @@ LIBGTOP_REQUIRED=1.90.0
 LIBPANEL_REQUIRED=1.5.4
 LIBWNCK_REQUIRED=0.1
 LIBZVT_REQUIRED=0.1
+GTKHTML2_REQUIRED=1.99.2
+LIBGLADE_REQUIRED=1.99.5
 
 dnl configure argument fo disable schema install
 
@@ -80,6 +82,10 @@ PKG_CHECK_MODULES(GCONF_APPLETS, gconf-2.0 >= $GCONF_REQUIRED, , AC_MSG_ERROR([
 AC_SUBST(GCONF_APPLETS_CFLAGS)
 AC_SUBST(GCONF_APPLETS_LIBS)
 
+PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
+AC_SUBST(LIBGLADE_CFLAGS)
+AC_SUBST(LIBGLADE_LIBS)
+
 AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
 
 if test x"$GCONFTOOL" = xno; then
@@ -100,9 +106,17 @@ AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
+build_gtkhtml2_applets=false
+PKG_CHECK_MODULES(GTKHTML2_APPLETS,
+                 [libgtkhtml-2.0 >= $GTKHTML2_REQUIRED],
+                 build_gtkhtml2_applets=true,
+		 AC_MSG_WARN([gtkhtml2 not found. Not building gweather.]))
+AC_SUBST(GTKHTML2_APPLETS_CFLAGS)
+AC_SUBST(GTKHTML2_APPLETS_LIBS)
+AM_CONDITIONAL(BUILD_GTKHTML2_APPLETS, $build_gtkhtml2_applets)
+
 build_zvt_applets=false
-PKG_CHECK_MODULES(ZVT_APPLETS,
-				[libzvt-2.0 >= $LIBZVT_REQUIRED],
+PKG_CHECK_MODULES(ZVT_APPLETS, [libzvt-2.0 >= $LIBZVT_REQUIRED],
 				build_zvt_applets=true,
 				AC_MSG_WARN([libzvt not found.  Not building terminal applets.]))
 AC_SUBST(ZVT_APPLETS_CFLAGS)
@@ -230,8 +244,24 @@ netbsd*)
 esac
 
 dnl ******************************************
+dnl ** battstat check			    **
 dnl ******************************************
 
+case "${host}" in
+  powerpc-*-linux*)
+  	HAVE_LIBAPM=no
+  	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
+	AC_SUBST(HAVE_LIBAPM)
+	;;
+  *-*-linux*)
+  	HAVE_LIBAPM=yes
+  	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
+	AC_SUBST(HAVE_LIBAPM)
+	AC_CHECK_LIB(apm,apm_read,,[
+	AC_MSG_ERROR([*** libapm not found.])])
+	LDFLAGS="$LDFLAGS -lapm"
+	;;
+esac
 
 dnl *******************************************
 dnl ** mixer applet check                    **
@@ -351,6 +381,9 @@ gweather/Makefile
 gweather/pixmaps/Makefile
 geyes/Makefile
 geyes/themes/Makefile
+battstat/Makefile
+battstat/apmlib/Makefile
+battstat/sounds/Makefile
 ])
 
 dnl Mostly Ported Applets
@@ -379,12 +412,6 @@ dnl mini-commander/docs/es/Makefile
 
 
 dnl Not Ported Applets
-dnl battery/Makefile
-dnl battery/docs/Makefile
-dnl battery/docs/C/Makefile
-dnl battery/docs/es/Makefile
-dnl battery/docs/it/Makefile
-dnl battery/docs/ja/Makefile
 dnl charpick/docs/Makefile
 dnl charpick/docs/C/Makefile
 dnl charpick/docs/es/Makefile
