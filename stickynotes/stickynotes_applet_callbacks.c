@@ -110,6 +110,13 @@ gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundTyp
 	return FALSE;
 }
 
+/* Applet Callback : Deletes the applet. */
+void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
+{
+	if (stickynotes->applets != NULL)
+		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
+}		
+
 /* Menu Callback : Create a new sticky note */
 void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {

@@ -241,6 +241,7 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	g_signal_connect(G_OBJECT(applet->w_applet), "leave-notify-event", G_CALLBACK(applet_cross_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "change-size", G_CALLBACK(applet_change_size_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "change-background", G_CALLBACK(applet_change_bg_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "destroy", G_CALLBACK(applet_destroy_cb), applet);
 
 	/* Show the applet */
 	gtk_widget_show_all(GTK_WIDGET(applet->w_applet));

@@ -1,3 +1,16 @@
+2003-12-07  Shakti <shakti.sen@wipro.com>
+
+ 	  Remove the applet from the list when it is deleted from panel.
+ 
+ 	* stickynotes/stickynotes_applet.c: stickynotes_applet_new ()
+ 	  'destroy' signal is connected to the applet.
+ 	* stickynotes/stickynotes_applet_callbacks.c: applet_destroy_cb ()
+ 	  Added the above function to remove the applet from the list when
+           it is deleted from the panel.
+ 	* stickynotes/stickynotes_applet_callbacks.h
+ 	  Added declaration of applet_destroy_cb ().
+ 	  Fixes the bug #124094
+
 2003-11-25  Muktha  <muktha.narayan@wipro.com>
 
 	* stickynotes.c: Escape text to allow '&' in the title.
