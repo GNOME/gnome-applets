@@ -275,9 +275,8 @@ void update_finish (WeatherInfo *info)
     }
 */
     /* Store current conditions */
-    
-    gw_applet->gweather_info = info;
    
+    gw_applet->gweather_info = info;
     weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
     				 &(gw_applet->applet_pixbuf));
     gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
@@ -310,8 +309,6 @@ void update_finish (WeatherInfo *info)
 void gweather_update (GWeatherApplet *gw_applet)
 {
     gboolean update_success;
-
-    /* Let user know we are updating */
 
     weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
     				 &(gw_applet->applet_pixbuf));

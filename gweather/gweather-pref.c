@@ -214,14 +214,15 @@ static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
     
     if (!loc)
     	return;
-    	
-    weather_location_free(gw_applet->gweather_pref.location);
-    gw_applet->gweather_pref.location = weather_location_clone(loc);
+
     panel_applet_gconf_set_string(gw_applet->applet, "location0", loc->name, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location1", loc->code, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location2", loc->zone, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location3", loc->radar, NULL);
-     
+    if (gw_applet->gweather_pref.location) {
+       weather_location_free (gw_applet->gweather_pref.location);
+    }
+    gw_applet->gweather_pref.location = weather_location_config_read (gw_applet->applet);
 } 
 
 static void row_activated_cb (GtkTreeView *tree, 
@@ -238,10 +239,10 @@ static void row_activated_cb (GtkTreeView *tree,
     	return;
     	
     gtk_tree_model_get (model, &iter, COL_POINTER, &loc, -1);
-    
-    if (loc)
-        gweather_update (gw_applet);
-
+   
+    if (loc) {
+      gweather_update (gw_applet);
+    }
 }
 
 static void load_locations (GWeatherApplet *gw_applet)
