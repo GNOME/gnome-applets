@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"POT-Creation-Date: 2000-02-16 19:36+0100\n"
+"POT-Creation-Date: 2000-02-20 21:41-0500\n"
 "PO-Revision-Date: 1999-09-18 16:05+02:00\n"
 "Last-Translator: Matthias Warkus <mawa@iname.com>\n"
 "Language-Team: Matthias Warkus <mawa@iname.com>\n"
@@ -110,7 +110,7 @@ msgstr "Allgemein"
 
 #. frame for colors
 #: another_clock/another_clock.c:266 mini-commander/src/preferences.c:694
-#: multiload/load-graph.c:197
+#: multiload/load-graph.c:585 multiload/load-graph.c:777
 msgid "Colors"
 msgstr "Farben"
 
@@ -171,7 +171,7 @@ msgstr "Info"
 #: drivemount/drivemount.c:653 geyes/geyes.c:380 gkb/gkb.c:739
 #: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:191
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1208 multiload/cpuload.c:68
+#: modemlights/modemlights.c:1208 multiload/cpuload.c:64
 #: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
 #: screenshooter/screenshooter_applet.c:1002 slashapp/slashapp.c:55
 #: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
@@ -387,7 +387,7 @@ msgstr "ioctl auf /dev/apm fehlgeschlagen"
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM ist abgeschaltet! Kann keine Batterieladeinformation lesen."
 
-#: cdplayer/cdplayer.c:354
+#: cdplayer/cdplayer.c:356
 msgid "Run gtcd..."
 msgstr "gtcd aufrufen..."
 
@@ -886,7 +886,7 @@ msgstr "Das GNOME-Wetter"
 msgid "Location:"
 msgstr "Ortsangabe:"
 
-#: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:384
+#: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:400
 msgid "Update:"
 msgstr "Aktualisieren alle:"
 
@@ -958,7 +958,7 @@ msgstr ""
 "Bitte versuchen Sie es mit der detaillierten Vorhersage. Beachten Sie, dass "
 "IWIN-Vorhersagen nur für US-Städte verfügbar sind."
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:129
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -966,7 +966,7 @@ msgstr ""
 "Ungültige Ortsangabe ausgewählt!\n"
 "Eigentschaften bleiben unverändert."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:134
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -974,55 +974,55 @@ msgstr ""
 "Proxy-URL hat nicht das Format http://rechner:port/\n"
 "Eigenschaften bleiben unverändert."
 
-#: gweather/gweather-pref.c:209
+#: gweather/gweather-pref.c:215
 msgid "Regions"
 msgstr "Regionen"
 
-#: gweather/gweather-pref.c:325
+#: gweather/gweather-pref.c:333
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: gweather/gweather-pref.c:368
+#: gweather/gweather-pref.c:382
 msgid "Update enabled"
 msgstr "Zeit zwischen Auffrischungen in s:"
 
-#: gweather/gweather-pref.c:372
+#: gweather/gweather-pref.c:386
 msgid "Use metric"
 msgstr "Metrisch"
 
-#: gweather/gweather-pref.c:376
+#: gweather/gweather-pref.c:390
 msgid "Detailed forecast"
 msgstr "Detaillierte Vorhersage"
 
-#: gweather/gweather-pref.c:380
+#: gweather/gweather-pref.c:395
 msgid "Enable radar maps"
 msgstr "Radarkarte aktivieren"
 
-#: gweather/gweather-pref.c:406
+#: gweather/gweather-pref.c:422
 msgid "(sec)"
 msgstr "(Sekunden)"
 
-#: gweather/gweather-pref.c:410
+#: gweather/gweather-pref.c:426
 msgid "Basic"
 msgstr "Allgemein"
 
-#: gweather/gweather-pref.c:427
+#: gweather/gweather-pref.c:443
 msgid "Use proxy"
 msgstr "Proxy benutzen"
 
-#: gweather/gweather-pref.c:431
+#: gweather/gweather-pref.c:447
 msgid "Proxy host:"
 msgstr "Proxyrechner:"
 
-#: gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:461
 msgid "Username:"
 msgstr "Benutzer"
 
-#: gweather/gweather-pref.c:459
+#: gweather/gweather-pref.c:475
 msgid "Password:"
 msgstr "Passwort:"
 
-#: gweather/gweather-pref.c:474
+#: gweather/gweather-pref.c:490
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1031,11 +1031,11 @@ msgstr ""
 "Warnung: Obwohl Ihr Passwort in einer private Konfigurationsdatei\n"
 "gespeichert wird, wird es unverschlüsselt abgelegt!"
 
-#: gweather/gweather-pref.c:482
+#: gweather/gweather-pref.c:498
 msgid "Network"
 msgstr "Netzwerk"
 
-#: gweather/gweather-pref.c:505
+#: gweather/gweather-pref.c:521
 msgid "Location"
 msgstr "Ortsangabe"
 
@@ -2209,25 +2209,29 @@ msgstr "Fehler beim Holen der IWIN-Vorhersagedaten.\n"
 msgid "Failed to get radar map image.\n"
 msgstr "Fehler beim Holen der Radarkarte.\n"
 
-#: gweather/weather.c:1110
+#: gweather/weather.c:1086
 msgid "Another update already in progress!\n"
 msgstr "Eine andere Aktualisierung ist bereits im Gange!\n"
 
-#: gweather/weather.c:1298
+#: gweather/weather.c:1300
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d. %b / %H:%M"
 
-#: gweather/weather.c:1300
+#: gweather/weather.c:1302
 msgid "Unknown observation time"
 msgstr "Unbekannte Beobachtungszeit"
 
-#: gweather/weather.c:1359
+#: gweather/weather.c:1361
 msgid "Calm"
 msgstr "Ruhig"
 
-#: gweather/weather.c:1383
+#: gweather/weather.c:1385
 msgid "Unknown"
 msgstr "Unbekannt"
+
+#: gweather/weather.c:1417
+msgid "Retrieval failed"
+msgstr ""
 
 #: jbc/jbc-applet.c:48
 msgid "Jon's Binary Clock"
@@ -2477,12 +2481,12 @@ msgid "Macros"
 msgstr "Makros"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:125
+#: mixer/mixer.c:126
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Konnte Mixergerät %s nicht öffnen\n"
 
-#: mixer/mixer.c:139
+#: mixer/mixer.c:140
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2490,11 +2494,11 @@ msgstr ""
 "Warnung: diese Version von gmix wurde mit einer anderen Version von\n"
 "soundcard.h compiliert.\n"
 
-#: mixer/mixer.c:476
+#: mixer/mixer.c:481
 msgid "Main Volume and Mute"
 msgstr "Hauptlautstärke und Stummschaltung"
 
-#: mixer/mixer.c:707
+#: mixer/mixer.c:712
 msgid "Run gmix..."
 msgstr "gmix starten..."
 
@@ -2588,29 +2592,39 @@ msgstr "ISDN benutzen"
 msgid "Advanced"
 msgstr "Komplex"
 
-#: multiload/cpuload.c:51 multiload/main.c:182
+#: multiload/cpuload.c:44 multiload/main.c:203
 msgid "CPU Load"
 msgstr "CPU-Last"
 
-#: multiload/cpuload.c:75 multiload/memload.c:71 multiload/swapload.c:71
+#: multiload/cpuload.c:57 multiload/memload.c:57 multiload/swapload.c:57
+#, fuzzy
+msgid "Default Properties..."
+msgstr "Eigenschaften..."
+
+#: multiload/cpuload.c:71 multiload/memload.c:71 multiload/swapload.c:71
 msgid "Run gtop..."
 msgstr "gtop aufrufen..."
 
-#: multiload/load-graph.c:26
+#: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
 msgstr "Lastgraph"
 
-#: multiload/load-graph.c:184
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
 msgid "Speed:"
 msgstr "Geschwindigkeit:"
 
-#: multiload/load-graph.c:184 tickastat/properties.c:505
-msgid "Width:"
-msgstr "Breite:"
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
+#, fuzzy
+msgid "Size:"
+msgstr "Größe"
 
-#: multiload/load-graph.c:184 tickastat/properties.c:533
-msgid "Height:"
-msgstr "Höhe:"
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
+msgid "Maximum:"
+msgstr ""
+
+#: multiload/load-graph.c:803
+msgid "Use default properties"
+msgstr ""
 
 #: multiload/main.c:27
 msgid "User"
@@ -2640,11 +2654,11 @@ msgstr "Gemeinsam benutzt"
 msgid "Buffers"
 msgstr "Puffer"
 
-#: multiload/main.c:31 multiload/main.c:35
+#: multiload/main.c:31 multiload/main.c:35 multiload/main.c:43
 msgid "Free"
 msgstr "Frei"
 
-#: multiload/main.c:35
+#: multiload/main.c:35 multiload/main.c:43
 msgid "Used"
 msgstr "Genutzt"
 
@@ -2660,17 +2674,22 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:186 multiload/memload.c:51
+#: multiload/main.c:207 multiload/memload.c:44
 msgid "Memory Load"
 msgstr "Speicherlast"
 
-#: multiload/main.c:190 multiload/swapload.c:51
+#: multiload/main.c:211 multiload/swapload.c:44
 msgid "Swap Load"
 msgstr "Swaplast"
 
-#: multiload/main.c:194
+#: multiload/main.c:215
 msgid "Net Load"
 msgstr "Netzlast"
+
+#: multiload/main.c:219
+#, fuzzy
+msgid "Load Average"
+msgstr "Lastmittel-Modul"
 
 #: odometer/odo.c:132
 msgid "Odometer"
@@ -3648,9 +3667,17 @@ msgstr "Logbuchpfad:"
 msgid "Choose a log file"
 msgstr "Eine Logdatei wählen"
 
+#: tickastat/properties.c:505
+msgid "Width:"
+msgstr "Breite:"
+
 #: tickastat/properties.c:520
 msgid "Use all room on panel"
 msgstr "Allen Raum im Panel nutzen"
+
+#: tickastat/properties.c:533
+msgid "Height:"
+msgstr "Höhe:"
 
 #: tickastat/properties.c:548
 msgid "Use panel size hint"

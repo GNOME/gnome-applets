@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core\n"
-"POT-Creation-Date: 2000-02-12 09:28-0500\n"
+"POT-Creation-Date: 2000-02-20 21:41-0500\n"
 "PO-Revision-Date: 1999-08-13 01:13+0300\n"
 "Last-Translator: Mikko Rauhala <mjr@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -102,7 +102,7 @@ msgstr "Kellon asetukset"
 #: battery/properties.c:77 clockmail/properties.c:411
 #: diskusage/properties.c:325 drivemount/properties.c:339
 #: mini-commander/src/preferences.c:772 modemlights/properties.c:292
-#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:412
+#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:423
 #: slashapp/properties.c:351 sound-monitor/properties.c:426
 #: tickastat/properties.c:416
 msgid "General"
@@ -110,7 +110,7 @@ msgstr "Yleinen"
 
 #. frame for colors
 #: another_clock/another_clock.c:266 mini-commander/src/preferences.c:694
-#: multiload/load-graph.c:197
+#: multiload/load-graph.c:585 multiload/load-graph.c:777
 msgid "Colors"
 msgstr "Värit"
 
@@ -157,10 +157,10 @@ msgstr "CDE:n paneelissa olevan kellon kaltainen viisarikello."
 #: battery/battery.c:921 charpick/charpick.c:565 clipboard/clipboard.c:332
 #: clockmail/clockmail.c:553 drivemount/drivemount.c:659 fifteen/fifteen.c:346
 #: geyes/geyes.c:374 gkb/gkb.c:731 gnotes/gnotes_applet.c:164
-#: gumma/gumma.c:588 gweather/gweather-applet.c:185 jbc/jbc-applet.c:180
-#: life/life.c:270 mini-commander/src/mini-commander_applet.c:411
+#: gweather/gweather-applet.c:185 jbc/jbc-applet.c:180 life/life.c:270
+#: mini-commander/src/mini-commander_applet.c:411
 #: modemlights/modemlights.c:1214 odometer/odo.c:644
-#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:978
+#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:991
 #: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
 #: webcontrol/webcontrol.c:324 whereami/whereami.c:219
 msgid "About..."
@@ -171,9 +171,9 @@ msgstr "Tietoja..."
 #: drivemount/drivemount.c:653 geyes/geyes.c:380 gkb/gkb.c:739
 #: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:191
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1208 multiload/cpuload.c:68
+#: modemlights/modemlights.c:1208 multiload/cpuload.c:64
 #: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
-#: screenshooter/screenshooter_applet.c:984 slashapp/slashapp.c:55
+#: screenshooter/screenshooter_applet.c:1002 slashapp/slashapp.c:55
 #: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
 msgstr "Asetukset..."
@@ -240,7 +240,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Virhe: virheellinen tila 'battery_set_mode':ssa"
 
 #: battery/battery.c:762 jbc/jbc-applet.c:161
-#: screenshooter/screenshooter_applet.c:880
+#: screenshooter/screenshooter_applet.c:893
 msgid "Can't create applet!\n"
 msgstr "Sovelmaa ei voitu luoda!\n"
 
@@ -390,7 +390,7 @@ msgstr "ioctl-kutsu laitteelle /dev/apm epäonnistui"
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM on poissa päältä! Akun tietoja ei voida lukea."
 
-#: cdplayer/cdplayer.c:354
+#: cdplayer/cdplayer.c:356
 msgid "Run gtcd..."
 msgstr "Aja gtcd..."
 
@@ -873,28 +873,6 @@ msgstr ""
 msgid "Show Notes"
 msgstr "Näytä kellonaika"
 
-#: gumma/gumma.c:314
-#, fuzzy, c-format
-msgid "Loading plugin %s..."
-msgstr "Lataan otsikoita..."
-
-#: gumma/gumma.c:493
-msgid "Select a plugin"
-msgstr ""
-
-#: gumma/gumma.c:507
-msgid "Plugins"
-msgstr ""
-
-#: gumma/gumma.c:593
-#, fuzzy
-msgid "About Plugin..."
-msgstr "Tietoja..."
-
-#: gumma/gumma.c:597
-msgid "Plugins..."
-msgstr ""
-
 #: gweather/gweather-applet.c:180
 #, fuzzy
 msgid "Cannot create applet!\n"
@@ -902,6 +880,7 @@ msgstr "Sovelmaa ei voitu luoda!\n"
 
 #: gweather/gweather-applet.c:188
 #: mini-commander/src/mini-commander_applet.c:404
+#: screenshooter/screenshooter_applet.c:996
 msgid "Help"
 msgstr "Ohje"
 
@@ -918,7 +897,7 @@ msgstr ""
 msgid "Location:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:384
+#: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:400
 msgid "Update:"
 msgstr ""
 
@@ -987,84 +966,84 @@ msgid ""
 "only for US cities."
 msgstr ""
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:129
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:134
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:209
+#: gweather/gweather-pref.c:215
 msgid "Regions"
 msgstr ""
 
-#: gweather/gweather-pref.c:325
+#: gweather/gweather-pref.c:333
 #, fuzzy
 msgid "Properties"
 msgstr "Asetukset..."
 
-#: gweather/gweather-pref.c:368
+#: gweather/gweather-pref.c:382
 #, fuzzy
 msgid "Update enabled"
 msgstr "Päivitystiheys sekunneissa:"
 
-#: gweather/gweather-pref.c:372
+#: gweather/gweather-pref.c:386
 msgid "Use metric"
 msgstr ""
 
-#: gweather/gweather-pref.c:376
+#: gweather/gweather-pref.c:390
 msgid "Detailed forecast"
 msgstr ""
 
-#: gweather/gweather-pref.c:380
+#: gweather/gweather-pref.c:395
 #, fuzzy
 msgid "Enable radar maps"
 msgstr "Näytä työpöydänvaihtajan vinkit"
 
-#: gweather/gweather-pref.c:406
+#: gweather/gweather-pref.c:422
 msgid "(sec)"
 msgstr ""
 
-#: gweather/gweather-pref.c:410
+#: gweather/gweather-pref.c:426
 msgid "Basic"
 msgstr ""
 
-#: gweather/gweather-pref.c:427
+#: gweather/gweather-pref.c:443
 #, fuzzy
 msgid "Use proxy"
 msgstr "Käyttäjät"
 
-#: gweather/gweather-pref.c:431
+#: gweather/gweather-pref.c:447
 msgid "Proxy host:"
 msgstr ""
 
-#: gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:461
 #, fuzzy
 msgid "Username:"
 msgstr "Käyttäjät"
 
-#: gweather/gweather-pref.c:459
+#: gweather/gweather-pref.c:475
 msgid "Password:"
 msgstr ""
 
-#: gweather/gweather-pref.c:474
+#: gweather/gweather-pref.c:490
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
 "be unencrypted!"
 msgstr ""
 
-#: gweather/gweather-pref.c:482
+#: gweather/gweather-pref.c:498
 #, fuzzy
 msgid "Network"
 msgstr "Verkkoliikenne"
 
-#: gweather/gweather-pref.c:505
+#: gweather/gweather-pref.c:521
 msgid "Location"
 msgstr ""
 
@@ -2258,25 +2237,29 @@ msgstr ""
 msgid "Failed to get radar map image.\n"
 msgstr ""
 
-#: gweather/weather.c:1110
+#: gweather/weather.c:1086
 msgid "Another update already in progress!\n"
 msgstr ""
 
-#: gweather/weather.c:1298
+#: gweather/weather.c:1300
 #, fuzzy
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d"
 
-#: gweather/weather.c:1300
+#: gweather/weather.c:1302
 msgid "Unknown observation time"
 msgstr ""
 
-#: gweather/weather.c:1359
+#: gweather/weather.c:1361
 msgid "Calm"
 msgstr ""
 
-#: gweather/weather.c:1383
+#: gweather/weather.c:1385
 msgid "Unknown"
+msgstr ""
+
+#: gweather/weather.c:1417
+msgid "Retrieval failed"
 msgstr ""
 
 #: jbc/jbc-applet.c:48
@@ -2531,12 +2514,12 @@ msgid "Macros"
 msgstr "Makrot"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:94
+#: mixer/mixer.c:126
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Miksauslaitetta ei voitu avata: %s\n"
 
-#: mixer/mixer.c:108
+#: mixer/mixer.c:140
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2544,11 +2527,11 @@ msgstr ""
 "Varoitus: tämä gmixin versio on käännetty tiedoston soundcard.h toisen\n"
 "version kanssa.\n"
 
-#: mixer/mixer.c:433
+#: mixer/mixer.c:481
 msgid "Main Volume and Mute"
 msgstr "Pää-äänenvoimakkuus ja hiljennys"
 
-#: mixer/mixer.c:664
+#: mixer/mixer.c:712
 msgid "Run gmix..."
 msgstr "Aja gmix..."
 
@@ -2643,29 +2626,39 @@ msgstr "Käytä ISDN:ää"
 msgid "Advanced"
 msgstr "Edistynyt"
 
-#: multiload/cpuload.c:51 multiload/main.c:182
+#: multiload/cpuload.c:44 multiload/main.c:203
 msgid "CPU Load"
 msgstr "CPU-kuorma"
 
-#: multiload/cpuload.c:75 multiload/memload.c:71 multiload/swapload.c:71
+#: multiload/cpuload.c:57 multiload/memload.c:57 multiload/swapload.c:57
+#, fuzzy
+msgid "Default Properties..."
+msgstr "Asetukset..."
+
+#: multiload/cpuload.c:71 multiload/memload.c:71 multiload/swapload.c:71
 msgid "Run gtop..."
 msgstr "Aja gtop..."
 
-#: multiload/load-graph.c:26
+#: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
 msgstr "CPU-kuorma"
 
-#: multiload/load-graph.c:184
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
 msgid "Speed:"
 msgstr "Nopeus:"
 
-#: multiload/load-graph.c:184 tickastat/properties.c:505
-msgid "Width:"
-msgstr "Leveys:"
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
+#, fuzzy
+msgid "Size:"
+msgstr "Koko"
 
-#: multiload/load-graph.c:184 tickastat/properties.c:533
-msgid "Height:"
-msgstr "Korkeus:"
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
+msgid "Maximum:"
+msgstr ""
+
+#: multiload/load-graph.c:803
+msgid "Use default properties"
+msgstr ""
 
 #: multiload/main.c:27
 msgid "User"
@@ -2695,11 +2688,11 @@ msgstr "Jaettu"
 msgid "Buffers"
 msgstr "Puskurit"
 
-#: multiload/main.c:31 multiload/main.c:35
+#: multiload/main.c:31 multiload/main.c:35 multiload/main.c:43
 msgid "Free"
 msgstr "Vapaana"
 
-#: multiload/main.c:35
+#: multiload/main.c:35 multiload/main.c:43
 msgid "Used"
 msgstr "Käytetty"
 
@@ -2715,17 +2708,22 @@ msgstr "PPP"
 msgid "ETH"
 msgstr ""
 
-#: multiload/main.c:186 multiload/memload.c:51
+#: multiload/main.c:207 multiload/memload.c:44
 msgid "Memory Load"
 msgstr "Muistinkulutus"
 
-#: multiload/main.c:190 multiload/swapload.c:51
+#: multiload/main.c:211 multiload/swapload.c:44
 msgid "Swap Load"
 msgstr "Sivutus"
 
-#: multiload/main.c:194
+#: multiload/main.c:215
 msgid "Net Load"
 msgstr "Verkon kuormitus"
+
+#: multiload/main.c:219
+#, fuzzy
+msgid "Load Average"
+msgstr "CPU-kuorma"
 
 #: odometer/odo.c:132
 #, fuzzy
@@ -2816,17 +2814,17 @@ msgid ""
 "Aborting"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:38
+#: screenshooter/screenshooter_applet.c:40
 #, fuzzy
 msgid "Screen-Shooter Applet"
 msgstr "Elämä-sovelmaa ei voitu luoda!"
 
-#: screenshooter/screenshooter_applet.c:40
+#: screenshooter/screenshooter_applet.c:42
 #, fuzzy
 msgid "Copyright (C) 1999 Tom Gilbert"
 msgstr "Copyright (C) 1998"
 
-#: screenshooter/screenshooter_applet.c:41
+#: screenshooter/screenshooter_applet.c:43
 msgid ""
 "A useful little screengrabber.\n"
 "The left/top button allows you to grab either:\n"
@@ -2836,53 +2834,53 @@ msgid ""
 "Share and Enjoy ;)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:372
+#: screenshooter/screenshooter_applet.c:378
 #, fuzzy
 msgid "Screen-Shooter Settings"
 msgstr "Liitossovelman asetukset"
 
-#: screenshooter/screenshooter_applet.c:378
+#: screenshooter/screenshooter_applet.c:384
 msgid "Capture WM decorations when grabbing a window"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:382
+#: screenshooter/screenshooter_applet.c:388
 msgid "Give audio feedback using the keyboard bell"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:386
+#: screenshooter/screenshooter_applet.c:393
 msgid "Display Spurious Options (I got carried away)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:390
+#: screenshooter/screenshooter_applet.c:401
 msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:395
+#: screenshooter/screenshooter_applet.c:406
 msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:406
+#: screenshooter/screenshooter_applet.c:417
 msgid "Create monochrome image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:409
+#: screenshooter/screenshooter_applet.c:420
 msgid "Invert colours in image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:425
+#: screenshooter/screenshooter_applet.c:436
 msgid "Directory to save images in:"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:449
+#: screenshooter/screenshooter_applet.c:460
 msgid "Image filename:"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:464
+#: screenshooter/screenshooter_applet.c:475
 #, fuzzy
 msgid "Show expanded filename"
 msgstr "Näytä kahva"
 
-#: screenshooter/screenshooter_applet.c:484
+#: screenshooter/screenshooter_applet.c:495
 #, c-format
 msgid ""
 "Filetype is determined from filename suffix.\n"
@@ -2900,40 +2898,40 @@ msgid ""
 "- compressing pngs takes longer at higher ratios, but is still lossless"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:500
+#: screenshooter/screenshooter_applet.c:511
 msgid "View screenshot after saving it"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:507
+#: screenshooter/screenshooter_applet.c:518
 msgid "App to use for displaying screenshots:"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:522
+#: screenshooter/screenshooter_applet.c:533
 msgid "Files, Apps"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:530
+#: screenshooter/screenshooter_applet.c:541
 msgid "Create thumbnail of image too"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:534
+#: screenshooter/screenshooter_applet.c:545
 msgid "Thumbnail Size (percentage of original)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:539
+#: screenshooter/screenshooter_applet.c:550
 msgid ""
 "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:549
+#: screenshooter/screenshooter_applet.c:560
 msgid "Prefix to attach to thumbnail filename:"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:577
+#: screenshooter/screenshooter_applet.c:588
 msgid "Use high-quality intermediate for generating thumbnail"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:586
+#: screenshooter/screenshooter_applet.c:597
 msgid ""
 "(This'll chug loads of CPU, but will prevent compressing the image twice if "
 "a\n"
@@ -2943,11 +2941,11 @@ msgid ""
 "speed and don't mind imperfection in your thumbnails."
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:593
+#: screenshooter/screenshooter_applet.c:604
 msgid "Thumbnails"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:616
+#: screenshooter/screenshooter_applet.c:627
 msgid ""
 "All post-processing, frill and spurious options will chug more CPU than a\n"
 "simple screenshot, due to the creation and then conversion of an "
@@ -2955,72 +2953,72 @@ msgid ""
 "image. Intensive operations may take some time on less spiffy CPUs."
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:627
+#: screenshooter/screenshooter_applet.c:638
 msgid "Normalize image (Span full range of color values to enhance contrast)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:631
+#: screenshooter/screenshooter_applet.c:642
 msgid "Equalize image (Perform histogram equalization)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:639
+#: screenshooter/screenshooter_applet.c:650
 msgid "Enhance image (reduce noise)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:642
+#: screenshooter/screenshooter_applet.c:653
 msgid "Despeckle Image (reduce spots)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:646
+#: screenshooter/screenshooter_applet.c:657
 msgid "Sharpen Image by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:651
+#: screenshooter/screenshooter_applet.c:662
 msgid "Rotate image clockwise by how many degrees?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:656
+#: screenshooter/screenshooter_applet.c:667
 msgid "Adjust gamma"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:659
+#: screenshooter/screenshooter_applet.c:670
 msgid "Gamma value"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:666
+#: screenshooter/screenshooter_applet.c:677
 msgid "Post Processing"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:674
+#: screenshooter/screenshooter_applet.c:685
 msgid "Create frame around image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:678
+#: screenshooter/screenshooter_applet.c:689
 msgid "Frame Width (pixels)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:686
+#: screenshooter/screenshooter_applet.c:697
 msgid "Mirror image vertically"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:688
+#: screenshooter/screenshooter_applet.c:699
 msgid "Mirror image horizontally"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:691
+#: screenshooter/screenshooter_applet.c:702
 msgid "Emboss image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:703
+#: screenshooter/screenshooter_applet.c:714
 msgid ""
 "When finished, send image and thumbnail filenames to script/program below"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:711
+#: screenshooter/screenshooter_applet.c:722
 msgid "Script or program to launch:"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:732
+#: screenshooter/screenshooter_applet.c:743
 msgid ""
 "Script/program will be launched after image creation with the image "
 "filenames\n"
@@ -3030,114 +3028,114 @@ msgid ""
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:741
+#: screenshooter/screenshooter_applet.c:752
 msgid "Frills"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:750
+#: screenshooter/screenshooter_applet.c:761
 #, fuzzy
 msgid "Blur image"
 msgstr "Työpöydänvaihtaja"
 
-#: screenshooter/screenshooter_applet.c:753
+#: screenshooter/screenshooter_applet.c:764
 msgid "Blur image by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:757
+#: screenshooter/screenshooter_applet.c:768
 msgid "Create Charcoal Effect"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:761
+#: screenshooter/screenshooter_applet.c:772
 msgid "Charcoal by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:765
+#: screenshooter/screenshooter_applet.c:776
 msgid "Find Edges in Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:769
+#: screenshooter/screenshooter_applet.c:780
 msgid "Find edges by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:773
+#: screenshooter/screenshooter_applet.c:784
 msgid "Implode Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:777
+#: screenshooter/screenshooter_applet.c:788
 msgid "Implode by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:782
+#: screenshooter/screenshooter_applet.c:793
 msgid "Spurious"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:790
+#: screenshooter/screenshooter_applet.c:801
 msgid "Create Painted Effect"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:794
+#: screenshooter/screenshooter_applet.c:805
 msgid "Paint what radius around each pixel?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:798
+#: screenshooter/screenshooter_applet.c:809
 msgid "Solarise Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:802
+#: screenshooter/screenshooter_applet.c:813
 msgid "Solarize factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:806
+#: screenshooter/screenshooter_applet.c:817
 msgid "Spread image pixels"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:810
+#: screenshooter/screenshooter_applet.c:821
 msgid "Radius to around each pixel to spread?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:814
+#: screenshooter/screenshooter_applet.c:825
 msgid "Swirl pixels. My favorite :-)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:818
+#: screenshooter/screenshooter_applet.c:829
 msgid "Radius to swirl pixels around?)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:822
+#: screenshooter/screenshooter_applet.c:833
 msgid "Spurious 2"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:937
-#: screenshooter/screenshooter_applet.c:940
+#: screenshooter/screenshooter_applet.c:950
+#: screenshooter/screenshooter_applet.c:953
 msgid "Grab a shot of a specific window or area"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:938
-#: screenshooter/screenshooter_applet.c:941
+#: screenshooter/screenshooter_applet.c:951
+#: screenshooter/screenshooter_applet.c:954
 msgid "Grab a shot of your entire desktop"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1097
+#: screenshooter/screenshooter_applet.c:1115
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the directory box\n"
 "Screenshot aborted"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1113
+#: screenshooter/screenshooter_applet.c:1131
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box\n"
 "Screenshot aborted"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1463
+#: screenshooter/screenshooter_applet.c:1481
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:1475
+#: screenshooter/screenshooter_applet.c:1493
 #, c-format
 msgid ""
 "The specified filename:\n"
@@ -3634,9 +3632,17 @@ msgstr ""
 msgid "Choose a log file"
 msgstr "Modeemin lukkotiedosto:"
 
+#: tickastat/properties.c:505
+msgid "Width:"
+msgstr "Leveys:"
+
 #: tickastat/properties.c:520
 msgid "Use all room on panel"
 msgstr ""
+
+#: tickastat/properties.c:533
+msgid "Height:"
+msgstr "Korkeus:"
 
 #: tickastat/properties.c:548
 msgid "Use panel size hint"
@@ -3702,6 +3708,14 @@ msgstr ""
 #: whereami/whereami.c:195
 msgid "whereami_applet"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Loading plugin %s..."
+#~ msgstr "Lataan otsikoita..."
+
+#, fuzzy
+#~ msgid "About Plugin..."
+#~ msgstr "Tietoja..."
 
 #, fuzzy
 #~ msgid "Can't open /proc/apm; can't get data."
