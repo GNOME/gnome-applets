@@ -115,7 +115,7 @@
 	char *getSymsFromClist(GtkWidget *clist) ;
 
 	char *splitPrice(char *data);
-	char *splitChange(StockData *stockdata, char *data);
+	char *splitChange(StockData *stockdata, char *data, StockQuote *quote);
 
 	/* FOR COLOR */
 
@@ -144,19 +144,19 @@
 		
 		if (stockdata->new_font != NULL) {
 			if (stockdata->whichlabel == 1)
-				stockdata->my_font = gdk_fontset_load(stockdata->new_font);
+				stockdata->my_font = gdk_font_load(stockdata->new_font);
 			else
-				stockdata->small_font = gdk_fontset_load(stockdata->new_font);
+				stockdata->small_font = gdk_font_load(stockdata->new_font);
 		}
 
 		if (!stockdata->my_font)
-			stockdata->my_font = gdk_fontset_load (stockdata->props.font);
+			stockdata->my_font = gdk_font_load (stockdata->props.font);
 
 		if (!stockdata->extra_font)
-			stockdata->extra_font = gdk_fontset_load ("fixed");
-
+			stockdata->extra_font = gdk_font_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
+g_print ("extra \n");
 		if (!stockdata->small_font)
-			stockdata->small_font = gdk_fontset_load (stockdata->props.font2);
+			stockdata->small_font = gdk_font_load (stockdata->props.font2);
 
 
 		/* If fonts do not load */
@@ -167,20 +167,20 @@
 			
 			if (stockdata->extra_font)
 				gdk_font_unref(stockdata->extra_font);
-			stockdata->extra_font = gdk_fontset_load("fixed");
+			stockdata->extra_font = gdk_font_load("fixed");
 			stockdata->symbolfont = 0;
 		}
 		else {
 			if (stockdata->extra_font)
 				gdk_font_unref(stockdata->extra_font);
-			stockdata->extra_font = gdk_fontset_load ("fixed");
+			stockdata->extra_font = gdk_font_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
 			stockdata->symbolfont = 1;
 
 		}
 		if (!stockdata->small_font) {
 			if (stockdata->small_font)
 				gdk_font_unref(stockdata->small_font);
-			stockdata->small_font = gdk_fontset_load("fixed");
+			stockdata->small_font = gdk_font_load("fixed");
 		}
 
 	}
@@ -743,6 +743,8 @@ g_print ("configured \n");
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		
+		if (gtk_toggle_button_get_active (button) == stockdata->props.output)
+			return;
 		stockdata->props.output = gtk_toggle_button_get_active (button);
 		panel_applet_gconf_set_bool (applet,"output",
 					     stockdata->props.output, NULL);
@@ -767,9 +769,19 @@ g_print ("configured \n");
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		
+		if (stockdata->props.arrows == gtk_toggle_button_get_active (button))
+			return;
+			
 		stockdata->props.arrows = gtk_toggle_button_get_active (button);
 		panel_applet_gconf_set_bool (applet,"arrows",
 					     stockdata->props.arrows, NULL);
+		load_fonts (stockdata);
+		if (!configured(stockdata)) {
+			reSetOutputArray(stockdata);
+			fprintf(stderr, "No data!\n");
+			setOutputArray(stockdata,
+				       _("No data available or properties not set"));
+		}
 					     
 	}
 	
@@ -1468,7 +1480,7 @@ g_print ("configured \n");
 	}
 
 	/*-----------------------------------------------------------------*/
-	char *splitChange(StockData *stockdata,char *data) {
+	char *splitChange(StockData *stockdata,char *data, StockQuote *quote) {
 		char buff[128]="";
 		static char buff2[128]="";
 		char *var1, *var2, *var3, *var4;
@@ -1483,18 +1495,21 @@ g_print ("configured \n");
 			return data;
 
 		if (var3[0] == '+') { 
-			/*if (stockdata->symbolfont)
-				var3[0] = 221;*/
+			if (stockdata->symbolfont)
+				var3[0] = 221;
 			var4[0] = '(';
+			quote->color = GREEN;
 		}
 		else if (var3[0] == '-') {
-			/*if (stockdata->symbolfont)
-				var3[0] = 223;	*/
+			if (stockdata->symbolfont)
+				var3[0] = 223;	
 			var4[0] = '(';
+			quote->color = RED;
 		}
 		else {
 			var3 = g_strdup(_("(No"));
 			var4 = g_strdup(_("Change "));
+			quote->color = WHITE;
 		}
 
 		sprintf(buff2,"%s %s)",var3,var4);
@@ -1509,18 +1524,18 @@ g_print ("configured \n");
 		char *change;
 
 		price = splitPrice(param1);
-		change = splitChange(stockdata, param1);
+		change = splitChange(stockdata, param1, &quote);
 
 		quote.price = g_strdup(price);
 		quote.change = g_strdup(change);
-
+#if 0
 		if (strstr(change,"-"))
 			quote.color = RED;
 		else if (strstr(change,"+"))
 			quote.color = GREEN;
 		else
 			quote.color = WHITE;
-
+#endif
 #if 1
 		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
 #endif
