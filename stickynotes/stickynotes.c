@@ -51,7 +51,6 @@ StickyNote * stickynote_new()
 	note->font = NULL;
 	note->locked = FALSE;
 	note->visible = FALSE;
-	note->focused = FALSE;
 	note->x = 0;
 	note->y = 0;
 	note->w = 0;
