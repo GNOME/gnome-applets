@@ -21,6 +21,7 @@ struct _GWeatherPrefs {
     gboolean update_enabled;
     gboolean use_metric;
     gboolean detailed;
+    gboolean radar_enabled;
     gchar *proxy_url;
     gchar *proxy_user;
     gchar *proxy_passwd;

@@ -1,3 +1,8 @@
+1999-07-18 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
+- Sync gnome CVS version with my tree.
+
+
 1999-07-18  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* Makefile.am: added pixmaps directory, set up for building
@@ -6,8 +11,31 @@
 	* gweather-pref.c (load_locations): use gnome_datadir_file()
 	instead of confdefs.h
 
-7/7/99
-------
+
+1999-07-15 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
+- Display of radar maps is now a runtime option (now compile-time) and
+  windows are destoyed when not displayed, to free up X resources...
+- Properly respond to "change_size" and "save_session" applet signals.
+- Added proxy option.
+
+
+1999-07-13 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
+- Better support for users with a dialup connection.
+
+
+1999-07-11 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
+- Fixed a stupid, but serious bug, that would cause coredumps upon
+  updates...
+- Added option for detailed zone forecasts, instead of the more general
+  state forecasts (takes more time to update, though, since the zone
+  forecast file is about 10-20 times that of the state forecast file).
+
+
+1999-07-07 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
 - Fixed bug ocurring when METAR information is unavailable.
 - Replaced the gnome_less widget with a gtk_text + scrollbar, because
   it did strange things, so I worked around it.

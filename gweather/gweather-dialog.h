@@ -14,8 +14,9 @@
  */
 
 extern void gweather_dialog_create (void);
-extern void gweather_dialog_show (void);
-extern void gweather_dialog_show_toggle (void);
+extern void gweather_dialog_open (void);
+extern void gweather_dialog_close (void);
+extern void gweather_dialog_display_toggle (void);
 extern void gweather_dialog_update (void);
 
 #endif /* __GWEATHER_DIALOG_H_ */

@@ -43,46 +43,103 @@ static GdkBitmap *cond_mask = NULL;
 static GtkTooltips *tooltips = NULL;
 
 static PanelOrientType gweather_orient = ORIENT_DOWN;
+#ifdef HAVE_PANEL_SIZE
+static PanelSizeType gweather_size = SIZE_STANDARD;
+#endif /* HAVE_PANEL_SIZE */
 
+/* FIX - This code is WAY too kludgy!... */
 static void place_widgets (void)
 {
+    GtkRequisition pix_requisition;
+    GtkRequisition lbl_requisition;
+
+    gint size;
 
     g_return_if_fail(frame != NULL);
     g_return_if_fail(fixed != NULL);
     g_return_if_fail(pixmap != NULL);
     g_return_if_fail(label != NULL);
 
+    gtk_widget_get_child_requisition(label, &lbl_requisition);
+    gtk_widget_get_child_requisition(pixmap, &pix_requisition);
+
+#ifdef HAVE_PANEL_SIZE
+    switch(gweather_size) {
+    case SIZE_TINY:
+        size = 24;
+        break;
+    case SIZE_STANDARD:
+        size = 48;
+        break;
+    case SIZE_LARGE:
+        size = 64;
+        break;
+    case SIZE_HUGE:
+        size = 80;
+        break;
+    default:
+        g_return_if_fail(FALSE);  /* insanity */
+    }
+#else /* HAVE_PANEL_SIZE */
+    size = 48;
+#endif /* HAVE_PANEL_SIZE */
+
     if ((gweather_orient == ORIENT_LEFT) || (gweather_orient == ORIENT_RIGHT)) {
-        GtkRequisition requisition;
-        gint ofs;
-        gtk_widget_get_child_requisition(label, &requisition);
-        ofs = MAX(0, (31-requisition.width)/2);
-        gtk_widget_set_usize(frame, 48, 26);
-        gtk_fixed_move(GTK_FIXED(fixed), pixmap, 1, 5);
-        gtk_fixed_move(GTK_FIXED(fixed), label, 17 + ofs, 4);
+        gint sep = MAX(0, (size - pix_requisition.width - lbl_requisition.width) / 3);
+        gint lbl_x = sep + pix_requisition.width + sep;
+        if (lbl_x + lbl_requisition.width > size) {
+            lbl_x = size + 2;
+            sep = MAX(0, (size - pix_requisition.width) / 2);
+        }
+
+        gtk_widget_set_usize(frame, size, 26);
+        gtk_fixed_move(GTK_FIXED(fixed), pixmap, sep, 5);
+        gtk_fixed_move(GTK_FIXED(fixed), label, lbl_x, 4);
     } else {
-        GtkRequisition requisition;
-        gint width;
-        gtk_widget_get_child_requisition(label, &requisition);
-        width = MAX(requisition.width, 24) + 2;
-        gtk_widget_set_usize(frame, width, 48);
-        gtk_fixed_move(GTK_FIXED(fixed), pixmap, (width-18)/2, 4);
-        gtk_fixed_move(GTK_FIXED(fixed), label, (width-requisition.width)/2, 26);
+        gint panel_width = MAX(lbl_requisition.width, 24) + 2;
+        gint sep = MAX(0, (size - pix_requisition.height - lbl_requisition.height) / 3);
+        gint lbl_y = sep + pix_requisition.height + sep;
+        if (lbl_y + lbl_requisition.height > size) {
+            lbl_y = size + 2;
+            sep = MAX(0, (size - pix_requisition.height) / 2);
+        }
+
+        gtk_widget_set_usize(frame, panel_width, size);
+        gtk_fixed_move(GTK_FIXED(fixed), pixmap, (panel_width - pix_requisition.width) / 2 - 1, sep);
+        gtk_fixed_move(GTK_FIXED(fixed), label, (panel_width - lbl_requisition.width) / 2, lbl_y);
     }
 }
 
-static void change_orient_cb (GtkWidget *w, PanelOrientType o, gpointer data)
+static void change_orient_cb (AppletWidget *w, PanelOrientType o)
 {
     gweather_orient = o;
     place_widgets();
 }
+
+#ifdef HAVE_PANEL_SIZE
+static void change_size_cb (AppletWidget *w, PanelSizeType s)
+{
+    gweather_size = s;
+    place_widgets();
+}
+#endif /* HAVE_PANEL_SIZE */
+
+#ifdef HAVE_SAVE_SESSION_SIGNAL
+static int save_session_cb (AppletWidget *w, gchar *cfgpath, gchar *globcfgpath)
+{
+    /* FIX ? */
+    gweather_pref_save();
+    gnome_config_drop_all();
+    return FALSE;
+}
+#endif /* HAVE_SAVE_SESSION_SIGNAL */
 
 static void clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
     if ((ev == NULL) || (ev->button != 1) || (ev->type != GDK_2BUTTON_PRESS))
         return;
 
-    gweather_dialog_show_toggle();
+    gweather_dialog_display_toggle();
 }
 
 static void about_cb (AppletWidget *widget, gpointer data)
@@ -104,7 +161,7 @@ void gweather_applet_create (int argc, char *argv[])
 {
     g_return_if_fail(gweather_applet == NULL);
 
-    applet_widget_init("gweather", VERSION, argc, argv,
+    applet_widget_init(PACKAGE, VERSION, argc, argv,
                        NULL, 0, NULL);
 
     if ((gweather_applet = applet_widget_new(PACKAGE)) == NULL)
@@ -121,8 +178,16 @@ void gweather_applet_create (int argc, char *argv[])
     applet_widget_register_callback (APPLET_WIDGET(gweather_applet),
                                      "update", _("Update"),
                                      update_cb, NULL);
+#ifdef HAVE_SAVE_SESSION_SIGNAL
+    gtk_signal_connect (GTK_OBJECT(gweather_applet), "save_session",
+                       GTK_SIGNAL_FUNC(save_session_cb), NULL);
+#endif /* HAVE_SAVE_SESSION_SIGNAL */
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "change_orient",
                        GTK_SIGNAL_FUNC(change_orient_cb), NULL);
+#ifdef HAVE_PANEL_SIZE
+    gtk_signal_connect (GTK_OBJECT(gweather_applet), "change_size",
+                       GTK_SIGNAL_FUNC(change_size_cb), NULL);
+#endif /* HAVE_PANEL_SIZE */
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "button_press_event",
                        GTK_SIGNAL_FUNC(clicked_cb), NULL);
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "destroy",
@@ -198,6 +263,9 @@ void gweather_update (void)
     /* Set preferred forecast type */
     weather_forecast_set(gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE);
 
+    /* Set radar map retrieval option */
+    weather_radar_set(gweather_pref.radar_enabled);
+
     /* Set proxy */
     if (gweather_pref.use_proxy)
         weather_proxy_set(gweather_pref.proxy_url, gweather_pref.proxy_user, gweather_pref.proxy_passwd);
@@ -240,8 +308,5 @@ void gweather_update (void)
     if (gweather_pref.update_enabled)
         timeout_tag =  gtk_timeout_add (gweather_pref.update_interval * 1000,
                                         timeout_cb, NULL);
-
-    /* Update dialog */
-    gweather_dialog_update();
 }
 

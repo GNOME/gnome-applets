@@ -10,7 +10,9 @@
  *
  */
 
-#include <config.h>
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,13 +24,14 @@
 #include "gweather-applet.h"
 #include "gweather-pref.h"
 
-GWeatherPrefs gweather_pref = {NULL, 1800, TRUE, FALSE, FALSE,
+GWeatherPrefs gweather_pref = {NULL, 1800, TRUE, FALSE, FALSE, TRUE,
                                NULL, NULL, NULL, FALSE};
 
 static GtkWidget *pref = NULL;
 
 static GtkWidget *pref_basic_metric_btn;
 static GtkWidget *pref_basic_detailed_btn;
+static GtkWidget *pref_basic_radar_btn;
 static GtkWidget *pref_basic_update_spin;
 static GtkWidget *pref_basic_update_btn;
 static GtkWidget *pref_net_proxy_btn;
@@ -57,6 +60,7 @@ static gboolean update_dialog (void)
     gtk_widget_set_sensitive(pref_basic_update_spin, gweather_pref.update_enabled);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_metric_btn), gweather_pref.use_metric);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_detailed_btn), gweather_pref.detailed);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_radar_btn), gweather_pref.radar_enabled);
 
     gtk_entry_set_text(GTK_ENTRY(pref_net_proxy_url_entry), gweather_pref.proxy_url ? gweather_pref.proxy_url : "");
     gtk_entry_set_text(GTK_ENTRY(pref_net_proxy_passwd_entry), gweather_pref.proxy_passwd ? gweather_pref.proxy_passwd : "");
@@ -133,6 +137,7 @@ static gboolean update_pref (void)
     gweather_pref.update_enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_update_btn));
     gweather_pref.use_metric = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_metric_btn));
     gweather_pref.detailed = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_detailed_btn));
+    gweather_pref.radar_enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_radar_btn));
 
     gweather_pref.use_proxy = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn));
     update_string(proxy_url, &gweather_pref.proxy_url);
@@ -277,6 +282,7 @@ static void gweather_pref_create (void)
   GtkWidget *pref_basic_table;
   GtkWidget *pref_basic_metric_alignment;
   GtkWidget *pref_basic_detailed_alignment;
+  GtkWidget *pref_basic_radar_alignment;
   GtkWidget *pref_basic_update_alignment;
   GtkWidget *pref_basic_update_lbl;
   GtkWidget *pref_basic_update_hbox;
@@ -299,8 +305,7 @@ static void gweather_pref_create (void)
   GtkWidget *pref_loc_scroll;
   GtkObject *pref_loc_adj;
 
-  if (pref)
-      return;
+  g_return_if_fail(pref == NULL);
 
   pref = gnome_dialog_new (_("Properties"), NULL);
   gtk_widget_set_usize (pref, -2, 280);
@@ -314,7 +319,7 @@ static void gweather_pref_create (void)
   gtk_widget_show (pref_notebook);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
-  pref_basic_table = gtk_table_new (4, 2, FALSE);
+  pref_basic_table = gtk_table_new (5, 2, FALSE);
   gtk_widget_show (pref_basic_table);
   gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_table);
   gtk_container_set_border_width (GTK_CONTAINER (pref_basic_table), 8);
@@ -339,6 +344,12 @@ static void gweather_pref_create (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
+  pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+  gtk_widget_show (pref_basic_radar_alignment);
+  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_radar_alignment, 0, 2, 4, 5,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+
   pref_basic_update_btn = gtk_check_button_new_with_label (_("Update enabled"));
   gtk_widget_show (pref_basic_update_btn);
   gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), pref_basic_update_btn);
@@ -350,6 +361,10 @@ static void gweather_pref_create (void)
   pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Detailed forecast"));
   gtk_widget_show (pref_basic_detailed_btn);
   gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), pref_basic_detailed_btn);
+
+  pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar maps"));
+  gtk_widget_show (pref_basic_radar_btn);
+  gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), pref_basic_radar_btn);
 
   pref_basic_update_lbl = gtk_label_new (_("Update:"));
   gtk_widget_show (pref_basic_update_lbl);
@@ -508,6 +523,8 @@ static void gweather_pref_create (void)
                       GTK_SIGNAL_FUNC (change_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (pref_basic_detailed_btn), "toggled",
                       GTK_SIGNAL_FUNC (change_cb), NULL);
+  gtk_signal_connect (GTK_OBJECT (pref_basic_radar_btn), "toggled",
+                      GTK_SIGNAL_FUNC (change_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (pref_basic_update_btn), "toggled",
                       GTK_SIGNAL_FUNC (change_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (pref_net_proxy_btn), "toggled",
@@ -534,6 +551,7 @@ void gweather_pref_load (void)
     gweather_pref.update_enabled = gnome_config_get_bool("update_enabled=TRUE");
     gweather_pref.use_metric = gnome_config_get_bool("use_metric=FALSE");
     gweather_pref.detailed = gnome_config_get_bool("detailed=FALSE");
+    gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=TRUE");
     gweather_pref.location = weather_location_config_read("location");
     gweather_pref.proxy_url = gnome_config_get_string("proxy_url");
     gweather_pref.proxy_user = gnome_config_get_string("proxy_user");
@@ -557,6 +575,7 @@ void gweather_pref_save (void)
     gnome_config_set_bool("update_enabled", gweather_pref.update_enabled);
     gnome_config_set_bool("use_metric", gweather_pref.use_metric);
     gnome_config_set_bool("detailed", gweather_pref.detailed);
+    gnome_config_set_bool("radar_enabled", gweather_pref.radar_enabled);
     weather_location_config_write("location", gweather_pref.location);
     gnome_config_set_string("proxy_url", gweather_pref.proxy_url);
     gnome_config_set_string("proxy_user", gweather_pref.proxy_user);
@@ -573,7 +592,9 @@ void gweather_pref_run (void)
 {
     gint btn;
 
-    gweather_pref_create();
+    if (!pref)
+        gweather_pref_create();
+
     update_dialog();
 
     do {
@@ -592,4 +613,8 @@ void gweather_pref_run (void)
         gweather_pref_save();
         gweather_update();
     }
+
+    gtk_widget_destroy(pref);
+    pref = NULL;
 }
+

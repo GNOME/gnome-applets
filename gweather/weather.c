@@ -32,6 +32,7 @@
 
 static WeatherUnits weather_units = UNITS_IMPERIAL;
 static WeatherForecastType weather_forecast = FORECAST_STATE;
+static gboolean weather_radar = TRUE;
 
 static gchar *weather_proxy_url = NULL;
 static gchar *weather_proxy_user = NULL;
@@ -764,7 +765,7 @@ static gboolean metar_get (WeatherLocation *loc, WeatherInfo *info)
     return success;
 }
 
-#define IWIN_RE_STR "([A-Z][A-Z]Z(([0-9]{3}>[0-9]{3}-)|([0-9]{3}-))+)+[0-9]{6}-"
+#define IWIN_RE_STR "([A-Z][A-Z]Z(([0-9]{3}>[0-9]{3}-)|([0-9]{3}-))+)+([0-9]{6}-)?"
 
 static regex_t iwin_re;
 
@@ -787,9 +788,12 @@ static gboolean iwin_range_match (gchar *range, WeatherLocation *loc)
     gchar zone_state[4], zone_num_str[4];
     gint zone_num;
 
-    endp = range + strcspn(range, " \t\r\n") - 2;
-    while (*endp != '-')
+    endp = range + strcspn(range, " \t\r\n") - 1;
+    if (strspn(endp - 6, CONST_DIGITS) == 6) {
         --endp;
+        while (*endp != '-')
+            --endp;
+    }
     assert(range <= endp);
 
     strncpy(zone_state, loc->zone, 3);
@@ -922,7 +926,6 @@ static gchar *iwin_get (WeatherLocation *loc)
     return forecast;
 }
 
-#ifdef ENABLE_RADAR
 static GdkPixmap *wx_construct (gpointer data, gint data_len)
 {
     GdkPixmap *pixmap;
@@ -985,7 +988,6 @@ static GdkPixmap *wx_get (WeatherLocation *loc)
 
     return pixmap;
 }
-#endif /* ENABLE_RADAR */
 
 WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location)
 {
@@ -1013,7 +1015,7 @@ WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location)
     info->wind = WIND_VARIABLE;
     info->windspeed = 0;
     info->pressure = 0.0;
-    info->visibility = 0.0;
+    info->visibility = -1.0;
     info->forecast = NULL;
     info->radar = NULL;
 
@@ -1021,9 +1023,8 @@ WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location)
  
     info->forecast = iwin_get(location);
 
-#ifdef ENABLE_RADAR
-    info->radar = wx_get(location);
-#endif /* ENABLE_RADAR */
+    if (weather_radar)
+        info->radar = wx_get(location);
 
     if (weather_units == UNITS_METRIC)
         weather_info_to_metric(info);
@@ -1124,6 +1125,17 @@ WeatherForecastType weather_forecast_get (void)
     return weather_forecast;
 }
 
+void weather_radar_set (gboolean enable)
+{
+    weather_radar = enable;
+}
+
+gboolean weather_radar_get (void)
+{
+    return weather_radar;
+}
+
+
 void weather_proxy_set (const gchar *url, const gchar *user, const gchar *passwd)
 {
     g_free(weather_proxy_url);    weather_proxy_url = NULL;
@@ -1194,9 +1206,9 @@ gchar *weather_info_get_update (WeatherInfo *info)
     if (info->update != 0) {
         struct tm *tm;
         tm = localtime(&info->update);
-        strftime(buf, 90, "%a, %b %d / %H:%M", tm);
+        strftime(buf, 90, _("%a, %b %d / %H:%M"), tm);
     } else {
-        strcpy(buf, "Unknown observation time");
+        strcpy(buf, _("Unknown observation time"));
     }
 
     return buf;
@@ -1255,7 +1267,7 @@ gchar *weather_info_get_wind (WeatherInfo *info)
     if (!info->valid)
         return "-";
     if (info->windspeed == 0.00)
-        strcpy(buf, "Calm");
+        strcpy(buf, _("Calm"));
     else
         sprintf(buf, "%s / %d %s", weather_wind_direction_string(info->wind),
                                    info->windspeed, WINDSPEED_UNIT_STR(info->units));
@@ -1278,6 +1290,8 @@ gchar *weather_info_get_visibility (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->visibility < 0.0)
+        return _("Unknown");
     sprintf(buf, "%.1f %s", info->visibility, VISIBILITY_UNIT_STR(info->units));
     return buf;
 }
@@ -1322,23 +1336,23 @@ static GdkBitmap **weather_pixmaps_mini_mask;
 static GdkPixmap **weather_pixmaps;
 static GdkBitmap **weather_pixmaps_mask;
 
-#include "unknown-mini.xpm"
-#include "sun-mini.xpm"
-#include "suncloud-mini.xpm"
-#include "cloud-mini.xpm"
-#include "rain-mini.xpm"
-#include "tstorm-mini.xpm"
-#include "snow-mini.xpm"
-#include "fog-mini.xpm"
+#include "pixmaps/unknown-mini.xpm"
+#include "pixmaps/sun-mini.xpm"
+#include "pixmaps/suncloud-mini.xpm"
+#include "pixmaps/cloud-mini.xpm"
+#include "pixmaps/rain-mini.xpm"
+#include "pixmaps/tstorm-mini.xpm"
+#include "pixmaps/snow-mini.xpm"
+#include "pixmaps/fog-mini.xpm"
 
-#include "unknown.xpm"
-#include "sun.xpm"
-#include "suncloud.xpm"
-#include "cloud.xpm"
-#include "rain.xpm"
-#include "tstorm.xpm"
-#include "snow.xpm"
-#include "fog.xpm"
+#include "pixmaps/unknown.xpm"
+#include "pixmaps/sun.xpm"
+#include "pixmaps/suncloud.xpm"
+#include "pixmaps/cloud.xpm"
+#include "pixmaps/rain.xpm"
+#include "pixmaps/tstorm.xpm"
+#include "pixmaps/snow.xpm"
+#include "pixmaps/fog.xpm"
 
 #define PIX_UNKNOWN   0
 #define PIX_SUN       1

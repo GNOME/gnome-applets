@@ -158,6 +158,9 @@ extern WeatherUnits weather_units_get (void);
 extern void weather_forecast_set (WeatherForecastType forecast);
 extern WeatherForecastType weather_forecast_get (void);
 
+extern void weather_radar_set (gboolean enable);
+extern gboolean weather_radar_get (void);
+
 extern void weather_proxy_set (const gchar *url, const gchar *user, const gchar *passwd);
 
 typedef time_t WeatherUpdate;
