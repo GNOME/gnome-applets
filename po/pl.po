@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-02 08:19+0100\n"
+"POT-Creation-Date: 2004-02-09 13:05+0100\n"
 "PO-Revision-Date: 2003-07-15 11:47+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -49,6 +49,7 @@ msgstr "_Informacje o..."
 #: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
@@ -87,13 +88,13 @@ msgid "Utility"
 msgstr "Narzędzia"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:889
-#: cdplayer/cdplayer.c:601 charpick/charpick.c:553 drivemount/drivemount.c:546
-#: geyes/geyes.c:230 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:540
+#: cdplayer/cdplayer.c:601 charpick/charpick.c:556 drivemount/drivemount.c:546
+#: geyes/geyes.c:230 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:541
 #: gtik/gtik.c:777 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2450
 #: mini-commander/src/about.c:50 mixer/mixer.c:1329
-#: modemlights/modemlights.c:115 multiload/main.c:57
+#: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:202
-#: wireless/wireless-applet.c:566
+#: wireless/wireless-applet.c:572
 msgid "translator_credits"
 msgstr "GNOME PL Team <translators@gnome.pl>"
 
@@ -157,7 +158,7 @@ msgstr "Monitor poziomu naładowania akumulatora laptopa"
 #: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
@@ -332,7 +333,7 @@ msgstr "System jest zasilany z akumulatora"
 msgid "System is running on AC power"
 msgstr "System jest zasilany z sieci"
 
-#: battstat/battstat_applet.c:518
+#: battstat/battstat_applet.c:518 wireless/wireless-applet.c:146
 #, c-format
 msgid "N/A"
 msgstr "N/D"
@@ -459,7 +460,7 @@ msgstr ""
 "Nie można uzyskać dostępu do zdarzeń ACPI w /var/run/acpid.socket! Upewnij "
 "się, że podsystem ACPI działa i demon acpid jest uruchomiony."
 
-#: battstat/battstat_applet.glade.h:1
+#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -568,7 +569,7 @@ msgstr "Żół_ty:"
 #: mailcheck/mailcheck.c:2555 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1435 stickynotes/stickynotes_applet_callbacks.c:179
 #: stickynotes/stickynotes_applet_callbacks.c:340
-#: wireless/wireless-applet.c:536 wireless/wireless-applet.c:617
+#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:623
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Wystąpił błąd podczas wyświetlania pomocy: %s"
@@ -635,7 +636,7 @@ msgstr "Następna ścieżka"
 msgid "You do not have permission to use the CD player."
 msgstr "Brak uprawnień do korzystania z odtwarzacza CD."
 
-#: cdplayer/cdplayer.c:383 mixer/mixer.c:1296 multiload/main.c:115
+#: cdplayer/cdplayer.c:383 mixer/mixer.c:1296 multiload/main.c:140
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Przy wykonywaniu \"%s\" wystąpił błąd: %s"
@@ -721,8 +722,8 @@ msgid ""
 "applet"
 msgstr "Pełna ścieżka do urządzenia, które będzie użyte do odtwarzania płyt CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:570
-#: charpick/charpick.c:721 charpick/properties.c:425
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:573
+#: charpick/charpick.c:724 charpick/properties.c:425
 msgid "Character Palette"
 msgstr "Paleta znaków"
 
@@ -730,33 +731,33 @@ msgstr "Paleta znaków"
 msgid "Charpicker Applet Factory"
 msgstr "Generator apletu wybieraczki znaków"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:721
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:724
 msgid "Insert characters"
 msgstr "Narzędzie do wstawiania znaków"
 
-#: charpick/charpick.c:416
+#: charpick/charpick.c:419
 msgid "Available palettes"
 msgstr "Dostępne palety"
 
-#: charpick/charpick.c:453
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "Narzędzie do wstawiania znaków specjalnych"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:542
+#: charpick/charpick.c:545
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:543
+#: charpick/charpick.c:546
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:572
+#: charpick/charpick.c:575
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:573
+#: charpick/charpick.c:576
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -1587,11 +1588,11 @@ msgstr "Wielka Brytania"
 msgid "United States"
 msgstr "Stany Zjednoczone"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:225
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
 msgstr "Wietnam"
 
-#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
 msgstr "Wietnamski"
 
@@ -2219,12 +2220,8 @@ msgstr "Zjednoczone Emiraty Arabskie"
 msgid "United Kingdom xkb keymap"
 msgstr "Brytyjski układ klawiatury xkb"
 
-#: gkb-new/descs/presets.xml.in.h:223
-msgid "Viet_namese"
-msgstr "Wietnamski"
-
-#: gkb-new/descs/presets.xml.in.h:224
-msgid "Viet_namese xkb keymap"
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
 msgstr "Wietnamski układ klawiatury xkb"
 
 #: gkb-new/descs/presets.xml.in.h:226
@@ -2377,23 +2374,23 @@ msgstr "Nieznana klawiatura"
 msgid "?"
 msgstr "?"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:278
 msgid "Edit Keyboard"
 msgstr "Modyfikacja układu klawiatury"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:303
 msgid "_Name:"
 msgstr "_Nazwa:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Label:"
 msgstr "_Etykieta:"
 
-#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "_Polecenie:"
 
-#: gkb-new/prop-map.c:314
+#: gkb-new/prop-map.c:315
 msgid "_Flag:"
 msgstr "_Flaga:"
 
@@ -2487,16 +2484,16 @@ msgstr ""
 "Użyto polecenia: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "La_youts..."
-msgstr "_Układy..."
+msgid "Pl_ugins..."
+msgstr "W_tyczki..."
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
 msgstr "G_rupy"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Plugins..."
-msgstr "W_tyczki..."
+msgid "_Open Keyboard Preferences"
+msgstr "Ustawienia _otwartej klawiatury"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
 msgid "GNOME keyboard applet factory"
@@ -2507,7 +2504,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Wskaźnik układu klawiatury GNOME"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:545
+#: gswitchit/gswitchit-applet.c:546
 msgid "Keyboard Indicator"
 msgstr "Wskaźnik klawiatury"
 
@@ -2520,23 +2517,23 @@ msgstr "Generator apletu klawiatury"
 msgid "Keyboard Indicator (%s)"
 msgstr "Wskaźnik klawiatury (%s)"
 
-#: gswitchit/gswitchit-applet.c:548
+#: gswitchit/gswitchit-applet.c:549
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright (C) Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:550
+#: gswitchit/gswitchit-applet.c:551
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet wskaźnka układu klawiatury dla GNOME"
 
-#: gswitchit/gswitchit-applet.c:697
+#: gswitchit/gswitchit-applet.c:700
 msgid "XKB initialization error"
 msgstr "Błąd inicjalizacji XKB"
 
-#: gswitchit/gswitchit-applet.c:705
+#: gswitchit/gswitchit-applet.c:708
 msgid "Error loading XKB configuration registry"
 msgstr "Błąd wczytywania rejestru konfiguracji XKB"
 
-#: gswitchit/gswitchit-capplet.c:156
+#: gswitchit/gswitchit-capplet.c:185
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
@@ -2545,15 +2542,19 @@ msgstr ""
 "apletu.\n"
 "Nie będzie możliwości zmiany tego układu z klawiatury."
 
-#: gswitchit/gswitchit-capplet.c:239
-msgid "Exclude from keyboard switching"
-msgstr "Wyłączenie z przełączania klawiaturą"
+#: gswitchit/gswitchit-capplet.c:265
+msgid "_Exclude from keyboard switching"
+msgstr "Wyłączeni_e z przełączania klawiaturą"
 
-#: gswitchit/gswitchit-capplet.c:270
-msgid "not used"
-msgstr "nie używany"
+#: gswitchit/gswitchit-capplet.c:296
+msgid "Not used"
+msgstr "Nie używany"
 
-#: gswitchit/gswitchit-plugins.c:307
+#: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:116
+msgid "No description."
+msgstr "Bez opisu."
+
+#: gswitchit/gswitchit-plugins.c:312
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Inicjalizacja GConf nie powiodła się: %s\n"
@@ -2563,79 +2564,83 @@ msgid "Activate more plugins"
 msgstr "Aktywuje dodatkowe wtyczki"
 
 #: gswitchit/gswitchit-plugins.glade.h:2
-msgid "Add plugin"
-msgstr "Dodawanie wtyczki"
+msgid "Active _plugins:"
+msgstr "_Aktywne wtyczki:"
 
 #: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Dodawanie wtyczki"
+
+#: gswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
 msgstr "Zamyka okno"
 
-#: gswitchit/gswitchit-plugins.glade.h:4
+#: gswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
 msgstr "Konfiguruje wybraną wtyczkę"
 
-#: gswitchit/gswitchit-plugins.glade.h:5
+#: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
 msgstr "Deaktywuje wybraną wtyczkę"
 
-#: gswitchit/gswitchit-plugins.glade.h:6
+#: gswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
 msgstr "Zmniejsza priorytet wtyczki"
-
-#: gswitchit/gswitchit-plugins.glade.h:7
-msgid "GSwitchIt Plugins"
-msgstr "Wtyczki GSwitchIt"
 
 #: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "Zwiększa priorytet wtyczki"
 
 #: gswitchit/gswitchit-plugins.glade.h:9
-msgid "The list of active plugins"
-msgstr "Lista aktywnych wtyczek"
+msgid "Keyboard Indicator Plugins"
+msgstr "Wtyczki wskaźnika klawiatury"
 
 #: gswitchit/gswitchit-plugins.glade.h:10
-msgid "_Active plugins"
-msgstr "_Aktywne wtyczki"
+msgid "The list of active plugins"
+msgstr "Lista aktywnych wtyczek"
 
 #: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Dostępne wtyczki:"
 
-#: gswitchit/gswitchit-properties.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
+msgid "<b>Behavior</b>"
+msgstr "<b>Zachowanie</b>"
+
+#: gswitchit/gswitchit-properties.glade.h:3
 msgid "Choose the default group (for newly created windows)."
 msgstr "Określa domyślną grupę (dla nowo tworzonych okien)."
 
-#: gswitchit/gswitchit-properties.glade.h:2
+#: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
 msgstr "Zachowuje osobną grupę dla każdego okna aplikacji."
 
-#: gswitchit/gswitchit-properties.glade.h:3
+#: gswitchit/gswitchit-properties.glade.h:5
 msgid "Keep the state of indicators separately for each application window."
 msgstr "Zachowuje stan wskaźników osobno dla każdego okna aplikacji."
 
-#: gswitchit/gswitchit-properties.glade.h:4
+#: gswitchit/gswitchit-properties.glade.h:6
 msgid "Keyboard Indicator Preferences"
 msgstr "Ustawienia wskaźnika klawiatury"
 
-#: gswitchit/gswitchit-properties.glade.h:5
+#: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
 msgstr "Zapis/odtworzenie _wskaźników z grupami"
 
-#: gswitchit/gswitchit-properties.glade.h:6
+#: gswitchit/gswitchit-properties.glade.h:8
 msgid "Separate _group for each window"
 msgstr "Oddzielna g_rupa dla każdego okna"
 
-#: gswitchit/gswitchit-properties.glade.h:7
+#: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
 msgstr ""
 "Wyświetla flagi narodowe jako wskaźniki odpowiednich układów klawiatury"
 
-#: gswitchit/gswitchit-properties.glade.h:8
+#: gswitchit/gswitchit-properties.glade.h:10
 msgid "Use _flags as indicators"
 msgstr "Użycie _flag jako wskaźników"
 
-#: gswitchit/gswitchit-properties.glade.h:9
+#: gswitchit/gswitchit-properties.glade.h:11
 msgid "_Default group:"
 msgstr "_Domyślna grupa:"
 
@@ -4558,7 +4563,7 @@ msgstr "Kanały dźwiękowe"
 msgid "_Select channel to control:"
 msgstr "_Wybór kontrolowanego kanału:"
 
-#: mixer/mixer.c:1862
+#: mixer/mixer.c:1864
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Aplet regulacji głośności pozwala na ustawienie poziomu dźwięku w systemie."
@@ -4576,7 +4581,7 @@ msgid "Saved volume to restore on startup"
 msgstr "Zapisana głośność do odtworzenia przy starcie"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:132
+#: modemlights/modemlights.c:132 modemlights/modemlights.c:1526
 msgid "Modem Lights"
 msgstr "Kontrolki modemu"
 
@@ -4889,11 +4894,11 @@ msgid "A system load indicator"
 msgstr "Wskaźnik obciążenia systemu"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:74
+#: multiload/main.c:77
 msgid "System Monitor"
 msgstr "Monitor systemu"
 
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
 msgstr "_Otwórz monitor systemu"
 
@@ -4901,11 +4906,11 @@ msgstr "_Otwórz monitor systemu"
 msgid "CPU Load"
 msgstr "Obciążenie CPU"
 
-#: multiload/loadavg.c:107 multiload/main.c:282
+#: multiload/loadavg.c:107 multiload/main.c:307
 msgid "Load Average"
 msgstr "Średnie obciążenie"
 
-#: multiload/main.c:76
+#: multiload/main.c:79
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -4917,27 +4922,27 @@ msgstr ""
 "Monitor obciążenia systemu wyświetlający wykresy dla procesora, pamięci, "
 "przestrzeni wymiany oraz sieci."
 
-#: multiload/main.c:274 multiload/properties.c:558
+#: multiload/main.c:299 multiload/properties.c:558
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:276 multiload/properties.c:565
+#: multiload/main.c:301 multiload/properties.c:565
 msgid "Memory"
 msgstr "Pamięć"
 
-#: multiload/main.c:278 multiload/properties.c:573
+#: multiload/main.c:303 multiload/properties.c:573
 msgid "Network"
 msgstr "Sieć"
 
-#: multiload/main.c:280 multiload/properties.c:581
+#: multiload/main.c:305 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Obszar wymiany"
 
-#: multiload/main.c:284
+#: multiload/main.c:309
 msgid "Resource"
 msgstr "Zasób"
 
-#: multiload/main.c:295
+#: multiload/main.c:320
 #, c-format
 msgid ""
 "%s:\n"
@@ -5210,17 +5215,13 @@ msgstr "_Nowa notatka"
 msgid "_Show Notes"
 msgstr "_Wyświetlanie notatek"
 
-#: stickynotes/stickynotes.c:326
+#: stickynotes/stickynotes.c:332
 msgid "Locked note"
 msgstr "Notatka zablokowana"
 
-#: stickynotes/stickynotes.c:331
+#: stickynotes/stickynotes.c:337
 msgid "Unlocked note"
 msgstr "Notatka odblokowana"
-
-#: stickynotes/stickynotes.glade.h:3
-msgid "<b>Behavior</b>"
-msgstr "<b>Zachowanie</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
@@ -5581,15 +5582,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor jakości bezprzewodowego połączenia sieciowego"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:582 wireless/wireless-applet.c:799
+#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:805
 msgid "Wireless Link Monitor"
 msgstr "Monitor połączenia bezprzewodowego"
 
-#: wireless/wireless-applet.c:359 wireless/wireless-applet.c:496
+#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
 msgid "No Wireless Devices"
 msgstr "Brak urządzeń bezprzewodowych"
 
-#: wireless/wireless-applet.c:361
+#: wireless/wireless-applet.c:367
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5598,15 +5599,15 @@ msgstr ""
 "bezprzewodowych.\n"
 "Jeśli uważasz, że diagnoza jest nieprawidłowa, zweryfikuj konfigurację."
 
-#: wireless/wireless-applet.c:584
+#: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:585
+#: wireless/wireless-applet.c:591
 msgid "This utility shows the status of a wireless link."
 msgstr "Narzędzie wyświetlające stan połączenia bezprzewodowego."
 
-#: wireless/wireless-applet.c:800
+#: wireless/wireless-applet.c:806
 msgid "This utility shows the status of a wireless link"
 msgstr "Narzędzie wyświetlające stan połączenia bezprzewodowego"
 
@@ -5621,6 +5622,15 @@ msgstr "Ustawienia monitora połączenia bezprzewodowego"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "M_onitorowane urządzenie:"
+
+#~ msgid "Viet_namese"
+#~ msgstr "Wietnamski"
+
+#~ msgid "La_youts..."
+#~ msgstr "_Układy..."
+
+#~ msgid "GSwitchIt Plugins"
+#~ msgstr "Wtyczki GSwitchIt"
 
 #~ msgid "Add a palette..."
 #~ msgstr "Dodaj paletę..."
