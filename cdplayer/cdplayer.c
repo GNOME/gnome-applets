@@ -303,7 +303,7 @@ main(int argc, char **argv)
 					   APPLET_WIDGET(applet)->globcfgpath);
 
 	if(cdplayer == NULL) {
-		gnome_panel_applet_abort_id(APPLET_WIDGET(applet)->applet_id);
+		applet_widget_abort_load(APPLET_WIDGET(applet));
 		return 1;
 	}
 
