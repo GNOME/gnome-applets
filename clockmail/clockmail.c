@@ -478,6 +478,7 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id,
 {
 	GtkWidget *applet;
 
+	if(strcmp(goad_id, "clockmail_applet")) return 0;
 	applet = applet_widget_new(goad_id);
 
 	if (!applet)

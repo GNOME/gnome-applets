@@ -33,8 +33,8 @@ make_new_applet (const gchar *goad_id)
     return make_memload_applet (goad_id);
   else if (!strcmp (goad_id, "multiload_swapload_applet"))
     return make_swapload_applet (goad_id);
-  /* else *//* avoid gcc warning */
-  return make_cpuload_applet (goad_id);
+  else if(!strcmp(goad_id, "multiload_cpuload_applet"))
+    return make_cpuload_applet (goad_id);
 }
 
 int
@@ -46,7 +46,6 @@ main (int argc, char **argv)
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-
 	applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0,
 			    NULL);
 
@@ -55,8 +54,9 @@ main (int argc, char **argv)
 
 	goad_id = goad_server_activation_id();
 	if(!goad_id)
-		return 0;
-	make_new_applet(goad_id);
+		make_new_applet("multiload_cpuload_applet");
+	else
+		make_new_applet(goad_id);
 
 	applet_widget_gtk_main ();
 	
