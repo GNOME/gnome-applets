@@ -23,6 +23,7 @@ INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
 	$(APMINC) \
+	-I$(top_srcdir)/screen-exec \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
@@ -46,6 +47,7 @@ battstat_applet_2_SOURCES = \
 battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBGLADE_LIBS) \
+		     $(top_builddir)/screen-exec/libscreen-exec.la \
 		     $(APMLIB)
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
