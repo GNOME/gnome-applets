@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.1.9\n"
-"POT-Creation-Date: 2000-05-13 20:06+0200\n"
-"PO-Revision-Date: 2000-05-13 20:18+02:00\n"
+"Project-Id-Version: gnome-applets 1.1.9cvs\n"
+"POT-Creation-Date: 2000-05-20 03:26+0200\n"
+"PO-Revision-Date: 2000-05-20 04:19+02:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,8 @@ msgstr "Eine analoge Uhr ähnlich der im CDE-Panel."
 #: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:192 gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1229 multiload/cpuload.c:95
-#: multiload/memload.c:98 multiload/swapload.c:98 odometer/odo.c:661
+#: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
+#: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:55
 #: sound-monitor/main.c:369 tickastat/main.c:345 webcontrol/webcontrol.c:364
 msgid "Properties..."
@@ -170,31 +171,34 @@ msgstr "Eigenschaften..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:616
 #: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
-#: clockmail/clockmail.c:569 diskusage/diskusage.c:1096
-#: drivemount/drivemount.c:701 fifteen/fifteen.c:362 geyes/geyes.c:399
-#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
+#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:294
+#: diskusage/diskusage.c:1096 drivemount/drivemount.c:701
+#: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:445
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
 #: jbc/jbc-applet.c:197 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
-#: multiload/cpuload.c:108 multiload/memload.c:111 multiload/swapload.c:111
-#: odometer/odo.c:664 quicklaunch/quicklaunch.c:510
-#: screenshooter/screenshooter_applet.c:1012 sound-monitor/main.c:376
-#: tickastat/main.c:351 webcontrol/webcontrol.c:371 whereami/whereami.c:236
+#: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
+#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
+#: quicklaunch/quicklaunch.c:510 screenshooter/screenshooter_applet.c:1012
+#: sound-monitor/main.c:376 tickastat/main.c:351 webcontrol/webcontrol.c:371
+#: whereami/whereami.c:236
 msgid "Help"
 msgstr "Hilfe"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:621
 #: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
-#: diskusage/diskusage.c:1103 drivemount/drivemount.c:706
-#: fifteen/fifteen.c:367 geyes/geyes.c:404 gkb-new/gkb.c:450
-#: gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
+#: cpumemusage/cpumemusage.c:300 diskusage/diskusage.c:1103
+#: drivemount/drivemount.c:706 fifteen/fifteen.c:367 geyes/geyes.c:404
+#: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
 #: jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1242 multiload/cpuload.c:115
-#: multiload/memload.c:118 multiload/swapload.c:118 odometer/odo.c:667
-#: quicklaunch/quicklaunch.c:514 screenshooter/screenshooter_applet.c:1017
-#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:356
-#: webcontrol/webcontrol.c:378 whereami/whereami.c:238
+#: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
+#: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:514
+#: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:58
+#: sound-monitor/main.c:381 tickastat/main.c:356 webcontrol/webcontrol.c:378
+#: whereami/whereami.c:238
 msgid "About..."
 msgstr "Info..."
 
@@ -258,7 +262,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Interner Fehler: Falscher Modus in battery_set_mode"
 
 #: battery/battery.c:784 jbc/jbc-applet.c:178 multiload/cpuload.c:69
-#: multiload/memload.c:72 multiload/swapload.c:72
+#: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
 msgstr "Kann kein Applet anlegen!\n"
@@ -424,22 +428,6 @@ msgstr "Das CD-Player-Applet ist ein einfacher Audio-CD-Player für Ihr Panel"
 msgid "Run CD Player..."
 msgstr "CD-Player ausführen..."
 
-#: clipboard/clipboard.c:181
-msgid "Clipboard Applet"
-msgstr "Zwischenablagen-Applet"
-
-#: clipboard/clipboard.c:183
-msgid "Copyright (C) 1999"
-msgstr "Copyright (C) 1999"
-
-#: clipboard/clipboard.c:185
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"Gnome-Panelapplet, um Auswahlbereiche zu kopieren, wiedereinzufügen und in "
-"einer Chronik festzuhalten. Freigegeben unter der GNU General Public License."
-
 #: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Zeichenwähler"
@@ -501,6 +489,22 @@ msgstr "Standardliste"
 #: charpick/properties.c:329
 msgid "Character Picker Settings"
 msgstr "Zeichenwähler-Einstellungen"
+
+#: clipboard/clipboard.c:181
+msgid "Clipboard Applet"
+msgstr "Zwischenablagen-Applet"
+
+#: clipboard/clipboard.c:183
+msgid "Copyright (C) 1999"
+msgstr "Copyright (C) 1999"
+
+#: clipboard/clipboard.c:185
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"Gnome-Panelapplet, um Auswahlbereiche zu kopieren, wiedereinzufügen und in "
+"einer Chronik festzuhalten. Freigegeben unter der GNU General Public License."
 
 #: clockmail/clockmail.c:63 slashapp/slashapp.c:137 sound-monitor/main.c:41
 #: tickastat/main.c:191
@@ -595,6 +599,22 @@ msgstr "Themendatei (Verzeichnis):"
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Thema"
+
+#: cpumemusage/cpumemusage.c:175
+msgid "CPU/Mem Usage Applet"
+msgstr "Applet für Prozessor- und Speicherlast"
+
+#: cpumemusage/cpumemusage.c:176
+msgid "(c) 1997 the Free Software Foundation"
+msgstr "(c) 1997 the Free Software Foundation"
+
+#: cpumemusage/cpumemusage.c:178
+msgid ""
+"The CPU/Mem usage applet displays your system resources with 3 colorful "
+"stacked bar graphs (processor, memory, swap)"
+msgstr ""
+"Das Applet für Prozessor- und Speicherlast zeigt die System-Ressourcen mit\n"
+"3 bunten Balken an (Prozessor, Speicher, Swap)."
 
 #: diskusage/diskusage.c:767
 msgid "File Systems"
@@ -941,6 +961,18 @@ msgstr "Standardhöhe"
 msgid "Default Width"
 msgstr "Standardbreite"
 
+#: gweather/gweather-about.c:41
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "Copyright (c) 1999 S. Papadimitriou"
+
+#: gweather/gweather-about.c:43
+msgid ""
+"GNOME weather monitor applet.\n"
+"Web: http://gweather.dhs.org/"
+msgstr ""
+"GNOME-Wetterapplet.\n"
+"Web: http://gweather.dhs.org/"
+
 #: gweather/gweather-applet.c:181
 msgid "Cannot create applet!\n"
 msgstr "Kann Applet nicht erzeugen!\n"
@@ -1109,18 +1141,6 @@ msgstr "Netzwerk"
 #: gweather/gweather-pref.c:515
 msgid "Location"
 msgstr "Ortsangabe"
-
-#: gweather/gweather-about.c:41
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Copyright (c) 1999 S. Papadimitriou"
-
-#: gweather/gweather-about.c:43
-msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
-msgstr ""
-"GNOME-Wetterapplet.\n"
-"Web: http://gweather.dhs.org/"
 
 #: gweather/weather.c:137
 msgid "Variable"
@@ -2385,15 +2405,17 @@ msgid "no /bin/sh"
 msgstr "kein /bin/sh"
 
 #: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/terminal.c:83 mini-commander/src/terminal.c:103
 msgid "end of history list"
 msgstr "Ende der Chronikliste"
 
 #. enter pressed -> exec command
 #: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "starte..."
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:146 mini-commander/src/terminal.c:142
 msgid "autocompleted"
 msgstr "vervollständigt"
 
@@ -2701,13 +2723,45 @@ msgstr ""
 msgid "CPU Load"
 msgstr "CPU-Last"
 
-#: multiload/cpuload.c:88 multiload/memload.c:91 multiload/swapload.c:91
+#: multiload/cpuload.c:88 multiload/loadavg.c:163 multiload/memload.c:91
+#: multiload/netload.c:87 multiload/swapload.c:91
 msgid "Default Properties..."
 msgstr "Standardeigenschaften..."
 
-#: multiload/cpuload.c:102 multiload/memload.c:105 multiload/swapload.c:105
+#: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
+#: multiload/netload.c:101 multiload/swapload.c:105
 msgid "Run gtop..."
 msgstr "gtop aufrufen..."
+
+#: multiload/loadavg.c:27
+msgid "Load average over 1 minute"
+msgstr "Lastmittel während einer Minute"
+
+#: multiload/loadavg.c:28
+msgid "Load average over 5 minutes"
+msgstr "Lastmittel während 5 Minuten"
+
+#: multiload/loadavg.c:29
+msgid "Load average over 15 minutes"
+msgstr "Lastmittel während 15 Minuten"
+
+#: multiload/loadavg.c:103
+msgid "Load Average Applet"
+msgstr "Lastmittel-Applet"
+
+#: multiload/loadavg.c:106
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Load Average Meter Applet."
+msgstr ""
+"Freigegeben unter der GNU General Public License.\n"
+"\n"
+"Applet zum Messen der Last."
+
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:230
+msgid "Load Average"
+msgstr "Lastmittel"
 
 #: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
@@ -2785,13 +2839,9 @@ msgstr "Speicherlast"
 msgid "Swap Load"
 msgstr "Swaplast"
 
-#: multiload/main.c:226
+#: multiload/main.c:226 multiload/netload.c:73
 msgid "Net Load"
 msgstr "Netzlast"
-
-#: multiload/main.c:230
-msgid "Load Average"
-msgstr "Lastmittel"
 
 #: multiload/memload.c:44
 msgid "Memory Load Applet"
@@ -2806,6 +2856,24 @@ msgstr ""
 "Freigegeben unter der GNU General Public License.\n"
 "\n"
 "Applet zum Messen der Speicherlast."
+
+#: multiload/netload.c:42
+msgid "Network Load Applet"
+msgstr "Netzlast-Applet"
+
+#: multiload/netload.c:45
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Network Load Meter Applet."
+msgstr ""
+"Freigegeben unter der GNU General Public License.\n"
+"\n"
+"Applet zum Messen der Netzlast."
+
+#: multiload/netload.c:117
+msgid "Network Load"
+msgstr "Netzlast"
 
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
