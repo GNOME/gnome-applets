@@ -114,8 +114,8 @@ void stickynote_free(StickyNote *note)
 	/* Remove the note from the linked-list of all notes */
 	stickynotes->notes = g_list_remove(stickynotes->notes, note);
 	
-	g_object_unref(note->glade);
 	gtk_widget_destroy(note->window);
+	g_object_unref(note->glade);
 	g_free(note);
 
 	/* Update tooltips */
@@ -300,7 +300,6 @@ void stickynotes_save_all()
 		/* Retrieve the window size of the note */
 		{
 			gint w, h;
-
 			gtk_window_get_size(GTK_WINDOW(note->window), &w, &h);
 			w_str = g_strdup_printf("%d", w);
 			h_str = g_strdup_printf("%d", h);
@@ -308,11 +307,15 @@ void stickynotes_save_all()
 		
 		/* Retrieve the window position of the note */
 		{
-			gint x, y;
+			GValue visible = {0, };
+			g_value_init(&visible, G_TYPE_BOOLEAN);
+			g_object_get_property(G_OBJECT(note->window), "visible", &visible);
+
+			if (g_value_get_boolean(&visible))
+				gtk_window_get_position(GTK_WINDOW(note->window), &note->x, &note->y);
 			
-			gtk_window_get_position(GTK_WINDOW(note->window), &x, &y);
-			x_str = g_strdup_printf("%d", x);
-			y_str = g_strdup_printf("%d", y);
+			x_str = g_strdup_printf("%d", note->x);
+			y_str = g_strdup_printf("%d", note->y);
 		}
 		
 		/* Save the note as a node in the XML document */
@@ -340,7 +343,7 @@ void stickynotes_save_all()
 	
 	/* The XML file is $HOME/.gnome2/stickystickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s/.gnome2/%s", g_get_home_dir(), PACKAGE);
+		gchar *file = g_strdup_printf("%s/.gnome2/%s", g_get_home_dir(), XML_PATH);
 		xmlSaveFormatFile(file, doc, 1);
 		g_free(file);
 	}
@@ -357,7 +360,7 @@ void stickynotes_load_all()
 	
 	/* The XML file is $HOME/.gnome2/stickystickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s/.gnome2/%s", g_get_home_dir(), PACKAGE);
+		gchar *file = g_strdup_printf("%s/.gnome2/%s", g_get_home_dir(), XML_PATH);
 		doc = xmlParseFile(file);
 		g_free(file);
 	}

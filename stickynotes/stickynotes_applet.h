@@ -26,6 +26,7 @@
 
 #define GCONF_PATH "/apps/stickynotes_applet"
 #define GLADE_PATH STICKYNOTES_GLADEDIR "/stickynotes.glade"
+#define XML_PATH "stickynotes_applet"
 
 typedef struct
 {
