@@ -410,8 +410,7 @@ saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globc
 void
 propertiesBox(AppletWidget *applet, gpointer data)
 {
-    static GnomeHelpMenuEntry helpEntry = {"mini-commander_applet",
-					   "properties" };
+    static GnomeHelpMenuEntry helpEntry = { NULL,  "properties" };
     GtkWidget *propertiesBox;
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox, *hbox1;
@@ -423,6 +422,8 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *scrolledWindow;
     char textLabel[50], buffer[50];
     int i, j;
+
+    helpEntry.name = gnome_app_id;
 
     resetTemporaryPrefs();
 
