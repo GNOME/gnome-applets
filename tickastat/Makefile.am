@@ -31,7 +31,10 @@ sys_DATA = tickastat_applet.desktop
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = tickastat_applet.gnorba
 
-EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) noimage.xpm
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = gnome-ticker.png
+
+EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) noimage.xpm gnome-ticker.png
 
 SUBDIRS = news_scripts
 
