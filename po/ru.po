@@ -1,13 +1,15 @@
-# Copyright (C) 1998 Free Software Foundation, Inc.
+# Copyright (C) 1998-2002 Free Software Foundation, Inc.
 # Max Valianskiy <maxcom@vinchi.ru>, 1998,99
 # Sergey Panov <sipan@mit.edu>, 1999
+# Valek Filippov <frob@df.ru>, 2000-2002
+# Alexandre Prokhudine, 2002
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.2.*\n"
+"Project-Id-Version: gnome-applets 2\n"
 "POT-Creation-Date: 2002-03-06 01:21+0300\n"
-"PO-Revision-Date: 2001-03-14 16:34+03:00\n"
+"PO-Revision-Date: 2002-03-06 13:21+0300\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=koi8-r\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,46 +18,42 @@ msgstr ""
 #. on unsupported platform
 #: battstat/battstat_applet.c:284
 msgid "Your platform is not supported!\n"
-msgstr ""
+msgstr "Ваша платформа не поддерживается!\n"
 
 #: battstat/battstat_applet.c:285
 msgid "The applet will not work properly (if at all).\n"
-msgstr ""
+msgstr "Апплет не будет работать правильно (если вообще будет).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
 #: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
-#, fuzzy
 msgid "High"
-msgstr "Высота:"
+msgstr "Высокий"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
 #: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
 msgid "Low"
-msgstr ""
+msgstr "Низкий"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
 #: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
-#, fuzzy
 msgid "Critical"
-msgstr "Карибская"
+msgstr "Критический"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
 #: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
-#, fuzzy
 msgid "Charging"
-msgstr "Изменилось"
+msgstr "Заряжается"
 
 #: battstat/battstat_applet.c:403
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
-msgstr ""
+msgstr "Батарея разряжена (%d%%), а сеть переменного тока отключена"
 
 #: battstat/battstat_applet.c:426
-#, fuzzy
 msgid "Battery is now fully re-charged!"
-msgstr "Батарея полностью заряжена."
+msgstr "Батарея полностью перезаряжена!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
@@ -66,6 +64,8 @@ msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 msgstr ""
+"Система работает от батареи.\n"
+"Заряд: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
@@ -76,38 +76,40 @@ msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
 msgstr ""
+"Система работает от сети переменного тока.\n"
+"Заряд: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
 #: battstat/battstat_applet.c:1018
 msgid "System is running on battery power"
-msgstr ""
+msgstr "Система работает от батареи"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
 #: battstat/battstat_applet.c:1024
 msgid "System is running on AC power"
-msgstr ""
+msgstr "Система работает от сети переменного тока"
 
 #: battstat/battstat_applet.c:472
 msgid "N/A"
-msgstr ""
+msgstr "Н/Д"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "Система работает от батареи. Заряд: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "Система работает от сети переменного тока. Заряд: %d%% (%s)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
@@ -115,14 +117,14 @@ msgstr ""
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:614
 msgid "System is running on battery power. Battery: Not present"
-msgstr ""
+msgstr "Система работает от батареи. Батарея отсутствует =)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:620
 msgid "System is running on AC power. Battery: Not present"
-msgstr ""
+msgstr "Система работает от сети переменного тока. Батарея отсутствует."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
@@ -130,13 +132,13 @@ msgstr ""
 #: battstat/battstat_applet.c:629
 #, c-format
 msgid "Battery: %d%% (%s)"
-msgstr ""
+msgstr "Заряд: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:636
 msgid "Battery: Not present"
-msgstr ""
+msgstr "Батарея отсутствует."
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:711
@@ -183,9 +185,8 @@ msgid "Battery status utility"
 msgstr ""
 
 #: battstat/battstat_applet.c:809
-#, fuzzy
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000  Фонд Свободного Программного Обеспечения"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 Фонд Свободного Программного Обеспечения"
 
 #: battstat/battstat_applet.c:810
 msgid "This utility show the status of your laptop battery."
@@ -211,7 +212,7 @@ msgstr ""
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
-msgstr ""
+msgstr "Утилиты"
 
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
@@ -249,13 +250,12 @@ msgid "Suspend Computer..."
 msgstr ""
 
 #: cdplayer/cdplayer.c:149
-#, fuzzy
 msgid "Stop"
-msgstr "тема"
+msgstr "Стоп"
 
 #: cdplayer/cdplayer.c:151
 msgid "Play / Pause"
-msgstr ""
+msgstr "Воспр. / Пауза"
 
 #: cdplayer/cdplayer.c:153 drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
@@ -263,32 +263,31 @@ msgstr "Извлечь"
 
 #: cdplayer/cdplayer.c:155
 msgid "Previous Track"
-msgstr ""
+msgstr "Пред. дорожка"
 
 #: cdplayer/cdplayer.c:157
 msgid "Next Track"
-msgstr ""
+msgstr "След. дорожка"
 
 #: cdplayer/cdplayer.c:306
-#, fuzzy
 msgid "CD Player Properties"
-msgstr "Апплет CD-проигрывателя"
+msgstr "Свойства проигрывателя CD"
 
 #: cdplayer/cdplayer.c:320
-#, fuzzy
 msgid "Device Path:"
-msgstr "Устройство:"
+msgstr "Путь к устройству:"
 
 #: cdplayer/cdplayer.c:367
 msgid "CD Player Applet"
-msgstr "Апплет CD-проигрывателя"
+msgstr "Апплет проигрывателя CD"
 
 #: cdplayer/cdplayer.c:368
-#, fuzzy
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr "(с) 1997 Фонд Свободного Программного Обеспечения"
+msgstr ""
+"(C) 1997 Фонд Свободного Программного Обеспечения\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
 
 #: cdplayer/cdplayer.c:370
 msgid "The CD Player applet is a simple audio CD player for your panel"
@@ -300,28 +299,25 @@ msgid "CD Player"
 msgstr "Проигрыватель компакт-дисков"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
-#, fuzzy
 msgid "CD Player Applet Factory"
-msgstr "Апплет CD-проигрывателя"
+msgstr "Фабрика апплета проигрывателя CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for CD player applet"
-msgstr "Апплет CD-проигрывателя"
+msgstr "Фабрика для апплета проигрывателя CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
 #: mixer/GNOME_MixerApplet.server.in.h:2
 msgid "Multimedia"
-msgstr ""
+msgstr "Мультимедиа"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
 msgid "Panel applet for playing audio CDs"
-msgstr ""
+msgstr "Апплет для воспроизведения CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#, fuzzy
 msgid "Run External CD Player"
-msgstr "Запуск CD-проигрывателя..."
+msgstr "Запустить внешний проигрыватель CD"
 
 #: charpick/charpick.c:361
 msgid "Character Picker"
@@ -340,18 +336,16 @@ msgstr ""
 "General Public Licence."
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:1
-#, fuzzy
 msgid "Character Palette"
-msgstr "Наборщик"
+msgstr "Касса символов"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr ""
+msgstr "Фабрика апплета выбора символов"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
-#, fuzzy
 msgid "Insert characters"
-msgstr "Исходный список символов:"
+msgstr "Вставить символы"
 
 #: charpick/properties.c:52
 msgid "Default character list:"
@@ -362,13 +356,12 @@ msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
 msgstr ""
-"Эти символы будут появляться на панели при старте. Чтобы вернуть этот "
-"список, нажмите <пробел> когда апплет имеет фокус."
+"Эти символы будут появляться на панели при старте. Чтобы вернуть этот список, "
+"нажмите <пробел> когда апплет имеет фокус."
 
 #: charpick/properties.c:113
-#, fuzzy
 msgid "Character Palette Properties"
-msgstr "Настройки наборщика"
+msgstr "Свойства кассы наборщика"
 
 #: drivemount/drivemount.c:418
 msgid "Drive Mount Applet"
@@ -376,11 +369,11 @@ msgstr "Апплет подсоединения диска"
 
 #: drivemount/drivemount.c:419
 msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr ""
+msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
 #: drivemount/drivemount.c:421
 msgid "Applet for mounting and unmounting block volumes."
-msgstr ""
+msgstr "Апплет для подсоединения и отсоединения блочных томов."
 
 #: drivemount/drivemount.c:611
 msgid " mounted"
@@ -391,9 +384,8 @@ msgid " not mounted"
 msgstr " не подсоединен"
 
 #: drivemount/drivemount.c:724
-#, fuzzy
 msgid "Drive Mount Applet Warning"
-msgstr "Апплет подсоединения диска"
+msgstr "Предупреждение апплета подсоединения диска"
 
 #: drivemount/drivemount.c:732
 msgid "\" reported:\n"
@@ -408,30 +400,26 @@ msgstr ""
 "\""
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
-#, fuzzy
 msgid "Disk Mounter"
 msgstr "Подсоединение диска"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
 msgid "Drive Mount Applet Factory"
-msgstr "Апплет подсоединения диска"
+msgstr "Фабрика апплета подсоединения диска"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for drive mount applet"
-msgstr "Апплет подсоединения диска"
+msgstr "Фабрика для апплета подсоединения диска"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
 msgid "Mount local disks and devices"
-msgstr ""
+msgstr "Подсоединить локальные диски и устройства"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
 msgid "Browse..."
 msgstr "Обзор..."
 
 #: drivemount/properties.c:240
-#, fuzzy
 msgid "Disk Mounter Properties"
 msgstr "Свойства апплета подсоединения диска"
 
@@ -440,12 +428,10 @@ msgid "Mount point:"
 msgstr "Точка подсоединения:"
 
 #: drivemount/properties.c:276
-#, fuzzy
 msgid "Update interval (seconds):"
 msgstr "Период обновления (в секундах):"
 
 #: drivemount/properties.c:291
-#, fuzzy
 msgid "Icon :"
 msgstr "Пиктограмма:"
 
@@ -522,56 +508,53 @@ msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Дурацкий маленький клон xeyes для панели Gnome."
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
-#, fuzzy
 msgid "A set of eyeballs for your panel"
-msgstr "Использовать все место на панели"
+msgstr "Устанавливает \"Глазки\" на панель"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:2
 msgid "Amusements"
-msgstr ""
+msgstr "Развлечения"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:3
-#, fuzzy
 msgid "Geyes Applet"
-msgstr "Апплет Микшер"
+msgstr "Апплет \"Гглазки\""
 
 #: geyes/GNOME_GeyesApplet.server.in.h:4
 msgid "Geyes Applet Factory"
-msgstr ""
+msgstr "Фабрика апплета \"Гглазки\""
 
 #: geyes/themes.c:197
 msgid "Theme Name"
 msgstr "Название темы"
 
 #: geyes/themes.c:210
-#, fuzzy
 msgid "Properties"
-msgstr "Свойства..."
+msgstr "Свойства"
 
 #: gkb-new/gkb.c:402
 #, c-format
 msgid "name_%d"
-msgstr ""
+msgstr "название_%d"
 
 #: gkb-new/gkb.c:406
-#, fuzzy, c-format
+#, c-format
 msgid "label_%d"
-msgstr "Метка"
+msgstr "метка_%d"
 
 #: gkb-new/gkb.c:410
-#, fuzzy, c-format
+#, c-format
 msgid "country_%d"
-msgstr "Страна"
+msgstr "страна_%d"
 
 #: gkb-new/gkb.c:414
-#, fuzzy, c-format
+#, c-format
 msgid "lang_%d"
-msgstr "Польша"
+msgstr "язык_%d"
 
 #: gkb-new/gkb.c:422
-#, fuzzy, c-format
+#, c-format
 msgid "command_%d"
-msgstr "Команда"
+msgstr "команда_%d"
 
 #: gkb-new/gkb.c:525 gkb-new/gkb.c:532
 msgid "GKB"
@@ -586,22 +569,19 @@ msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Фонд Свободного Программного Обеспечения"
 
 #: gkb-new/gkb.c:577
-#, fuzzy
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
-"Mail me your flag and keyboard layout if you want support for your locale "
-"(my email address is shooby@gnome.hu).\n"
+"Mail me your flag and keyboard layout if you want support for your locale (my "
+"email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Этот апплет переключает между раскладками клавиатуры. Он использует "
-"setxkbmap или xmodmap. Пришлите мне изображение вашего флага размером 60х40, "
-"я помещу его в CVS.\n"
+"Этот апплет переключает между раскладками клавиатуры. Он использует setxkbmap или xmodmap. Пришлите мне изображение вашего флага размером 60х40, я помещу его в CVS.\n"
 "Всего хорошего, и спасибо за рыбу.\n"
-"Спасибо Balazs Nagy (Kevin) <julian7@kva.hu> за эту справку и Emese Kovacs "
-"<emese@eik.bme.hu> за поддержку."
+"Спасибо Balazs Nagy (Kevin) <julian7@kva.hu> за эту справку и Emese Kovacs <emese@eik.bme.hu> за поддержку, помощь от KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
 
 #: gkb-new/gkb.c:594
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
@@ -609,21 +589,19 @@ msgstr "Домашняя страница GKB (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
 msgid "Change the keyboard layout"
-msgstr ""
+msgstr "Изменить раскладку клавиатуры"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
 msgid "GKB Factory"
-msgstr ""
+msgstr "Фабрика GKB"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#, fuzzy
 msgid "Keyboard Layout Switcher"
-msgstr "GKB Переключатель клавиатуры"
+msgstr "Переключатель раскладок клавиатуры"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-#, fuzzy
 msgid "Produces keyboard layout switcher applets."
-msgstr "GKB, Переключатель раскладок клавиатур GNOME"
+msgstr "Апплет переключателя раскладок клавиатур GNOME"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -631,11 +609,11 @@ msgstr "Выключено"
 
 #: gkb-new/keygrab.c:292
 msgid "Press a key or press Esc to cancel"
-msgstr ""
+msgstr "Нажмите клавишу или \"Esc\" для отмены"
 
 #: gkb-new/prop-add.c:86
 msgid "Keymaps (select and press add)"
-msgstr ""
+msgstr "Раскладки (выберите и нажмите \"Добавить\")"
 
 #: gkb-new/prop-add.c:362
 msgid "Select layout"
@@ -689,12 +667,10 @@ msgid "GKB Properties"
 msgstr "Свойства GKB"
 
 #: gkb-new/prop.c:406
-#, fuzzy
 msgid "_Keymaps"
 msgstr "Раскладки"
 
 #: gkb-new/prop.c:418
-#, fuzzy
 msgid "_Options"
 msgstr "Параметры"
 
@@ -1077,9 +1053,8 @@ msgid "Gtik Applet Factory"
 msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.h:4
-#, fuzzy
 msgid "Stock Ticker"
-msgstr "Биржевая бегущая строка GNOME"
+msgstr "Биржевые сводки"
 
 #: gtik/GNOME_GtikApplet.xml.h:3
 msgid "Refresh"
@@ -1087,11 +1062,11 @@ msgstr "Обновить"
 
 #: gtik/gtik.c:202 gtik/gtik.c:779
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Данные недоступны или свойства не установлены"
 
 #: gtik/gtik.c:648
 msgid "The GNOME Stock Ticker"
-msgstr "Биржевая бегущая строка GNOME"
+msgstr "Биржевые сводки в GNOME"
 
 #: gtik/gtik.c:650
 msgid ""
@@ -1102,25 +1077,22 @@ msgid ""
 msgstr ""
 "Эта программа подключается к популярным сайтам и скачивает текущие биржевые "
 "сводки. Это свободное приложение основанное на Internet. Поставляется "
-"АБСОЛЮТНО БЕЗ ГАРАНТИЙ. Не используете это приложение для принятия решений "
-"об инвестициях; оно только для информационных целей."
+"АБСОЛЮТНО БЕЗ ГАРАНТИЙ. Не используете это приложение для принятия решений об "
+"инвестициях; оно только для информационных целей."
 
 #: gtik/gtik.c:1026
 msgid "New Symbol:"
 msgstr "Новый символ:"
 
 #: gtik/gtik.c:1036
-#, fuzzy
 msgid "_Add"
 msgstr "Добавить"
 
 #: gtik/gtik.c:1047
-#, fuzzy
 msgid "_Remove Selected"
 msgstr "Удалить выбранный"
 
 #: gtik/gtik.c:1100
-#, fuzzy
 msgid "Stock Ticker Properties"
 msgstr "Свойства Gnome Stock Ticker"
 
@@ -1166,19 +1138,16 @@ msgid "Stock Change:"
 msgstr "Изменения акции:"
 
 #: gtik/gtik.c:1249
-#, fuzzy
 msgid "_Symbols"
 msgstr "Символы"
 
 #: gtik/gtik.c:1251
-#, fuzzy
 msgid "_Behavior"
 msgstr "Поведение"
 
 #: gtik/gtik.c:1253
-#, fuzzy
 msgid "_Appearance"
-msgstr "Наружность"
+msgstr "Внешний вид"
 
 #: gtik/gtik.c:1471
 msgid "(No"
@@ -1189,21 +1158,20 @@ msgid "Change "
 msgstr "Изменилось"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "Factory for creating the weather applet."
-msgstr "Невозможно создать апплет \"Одометр\""
+msgstr "Фабрика для создания апплет \"Погода\"."
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
 msgid "Gweather Applet Factory"
-msgstr ""
+msgstr "Фабрика апплета Gweather"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
-msgstr ""
+msgstr "Отображение текущей сводки погоды и прогнозы"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 msgid "Weather Report"
-msgstr ""
+msgstr "Сводка погоды"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
 #: gweather/gweather-dialog.c:297
@@ -1223,7 +1191,6 @@ msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Авторское право (С) 1999 S. Papadimitriou"
 
 #: gweather/gweather-about.c:44
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1231,7 +1198,7 @@ msgid ""
 msgstr ""
 "Выпущено под лицензией GNU general public license.\n"
 "\n"
-"Апплет измерения загрузки сети."
+"Апплет отображения погодных условий."
 
 #: gweather/gweather-applet.c:324
 msgid "Updating..."
@@ -1302,8 +1269,8 @@ msgstr ""
 #: gweather/gweather-dialog.c:409
 msgid ""
 "State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
+"Please try the detailed forecast; note that IWIN forecasts are available only "
+"for US cities."
 msgstr ""
 "Прогноз для штата недоступен для этого места.\n"
 "Пожалуйста попробуйте детальный прогноз; учтите что прогноз IWIN доступен "
@@ -1318,9 +1285,8 @@ msgstr ""
 "Свойства остались неизмененными."
 
 #: gweather/gweather-pref.c:482
-#, fuzzy
 msgid "Weather Properties"
-msgstr "Свойства Gnome Погода"
+msgstr "Свойства Gnome \"Погода\""
 
 #: gweather/gweather-pref.c:527
 msgid "Location"
@@ -1331,7 +1297,6 @@ msgid "Use proxy"
 msgstr "Использовать proxy"
 
 #: gweather/gweather-pref.c:553
-#, fuzzy
 msgid "Proxy URL:"
 msgstr "Адрес proxy:"
 
@@ -1344,7 +1309,6 @@ msgid "Password:"
 msgstr "Пароль:"
 
 #: gweather/gweather-pref.c:602
-#, fuzzy
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
@@ -1361,75 +1325,65 @@ msgid "Network"
 msgstr "Сеть"
 
 #: gweather/gweather-pref.c:635
-#, fuzzy
 msgid "Automatically update every"
-msgstr "Автоматически выбирать лучший размер апплета"
+msgstr "Автоматически обновлять каждые"
 
 #: gweather/gweather-pref.c:641
-#, fuzzy
 msgid "Use metric system units"
 msgstr "Использовать метрическую систему"
 
 #: gweather/gweather-pref.c:647
-#, fuzzy
 msgid "Enable detailed forecast"
-msgstr "Детальный прогноз"
+msgstr "Включить детальный прогноз"
 
 #: gweather/gweather-pref.c:654
-#, fuzzy
 msgid "Enable radar map"
 msgstr "Включить карты радаров"
 
 #: gweather/gweather-pref.c:661
-#, fuzzy
 msgid "Updates"
-msgstr "Обновить"
+msgstr "Обновления"
 
 #: gweather/gweather-pref.c:667
-#, fuzzy
 msgid "Automatically update every "
-msgstr "Автоматически выбирать лучший размер апплета"
+msgstr "Автоматически обновлять каждые "
 
 #: gweather/gweather-pref.c:687
-#, fuzzy
 msgid "minute(s)"
-msgstr "Строка (s)"
+msgstr "минут"
 
 #. The Miscellaneous frame
 #: gweather/gweather-pref.c:698
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Разное"
 
 #: gweather/gweather-pref.c:713
 msgid "General"
 msgstr "Общие"
 
 #: gweather/weather.c:59
-#, fuzzy
 msgid "knots"
-msgstr "Gnotices"
+msgstr ""
 
 #: gweather/weather.c:59
 msgid "kph"
-msgstr ""
+msgstr "км/ч"
 
 #: gweather/weather.c:64
 msgid "inHg"
-msgstr ""
+msgstr "дм.рт.ст"
 
 #: gweather/weather.c:64
 msgid "hPa"
-msgstr ""
+msgstr "гПа"
 
 #: gweather/weather.c:68
-#, fuzzy
 msgid "miles"
-msgstr "Статьи"
+msgstr "миль"
 
 #: gweather/weather.c:68
-#, fuzzy
 msgid "kilometers"
-msgstr "Одометр"
+msgstr "километров"
 
 #: gweather/weather.c:119
 msgid "Variable"
@@ -1513,7 +1467,7 @@ msgstr "Переменная облачность"
 
 #: gweather/weather.c:138
 msgid "Scattered clouds"
-msgstr ""
+msgstr "Разорванные облака"
 
 #: gweather/weather.c:139
 msgid "Few clouds"
@@ -1521,7 +1475,7 @@ msgstr "Легкая облачность"
 
 #: gweather/weather.c:140
 msgid "Overcast"
-msgstr ""
+msgstr "Тучи"
 
 #. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
@@ -1533,7 +1487,7 @@ msgstr "Морось"
 
 #: gweather/weather.c:173
 msgid "Drizzle in the vicinity"
-msgstr ""
+msgstr "Местами моросящий дождь"
 
 #: gweather/weather.c:173
 msgid "Light drizzle"
@@ -1553,7 +1507,7 @@ msgstr ""
 
 #: gweather/weather.c:173
 msgid "Patches of drizzle"
-msgstr ""
+msgstr "Временами моросящий дождь"
 
 #: gweather/weather.c:173
 msgid "Partial drizzle"
@@ -1561,7 +1515,7 @@ msgstr "Частичная морось"
 
 #: gweather/weather.c:173 gweather/weather.c:174
 msgid "Thunderstorm"
-msgstr ""
+msgstr "Гроза"
 
 #: gweather/weather.c:173
 msgid "Windy drizzle"
@@ -1569,7 +1523,7 @@ msgstr ""
 
 #: gweather/weather.c:173
 msgid "Showers"
-msgstr ""
+msgstr "Ливни"
 
 #: gweather/weather.c:173
 msgid "Drifting drizzle"
@@ -1586,7 +1540,7 @@ msgstr "Дождь"
 
 #: gweather/weather.c:174
 msgid "Rain in the vicinity"
-msgstr ""
+msgstr "Местами дождь"
 
 #: gweather/weather.c:174
 msgid "Light rain"
@@ -1635,7 +1589,7 @@ msgstr "Снег"
 
 #: gweather/weather.c:175
 msgid "Snow in the vicinity"
-msgstr ""
+msgstr "Местами снегопад"
 
 #: gweather/weather.c:175
 msgid "Light snow"
@@ -1651,15 +1605,15 @@ msgstr "Сильный снег"
 
 #: gweather/weather.c:175
 msgid "Shallow snow"
-msgstr ""
+msgstr "Мелкий снегопад"
 
 #: gweather/weather.c:175
 msgid "Patches of snow"
-msgstr ""
+msgstr "Временами снегопад"
 
 #: gweather/weather.c:175
 msgid "Partial snowfall"
-msgstr ""
+msgstr "Возможен снегопад"
 
 #: gweather/weather.c:175 gweather/weather.c:176
 msgid "Snowstorm"
@@ -1667,7 +1621,7 @@ msgstr "Снегопад"
 
 #: gweather/weather.c:175
 msgid "Blowing snowfall"
-msgstr ""
+msgstr "Кратковременный снегопад"
 
 #: gweather/weather.c:175
 msgid "Snow showers"
@@ -1684,7 +1638,7 @@ msgstr ""
 #. SNOW_GRAINS
 #: gweather/weather.c:176
 msgid "Snow grains"
-msgstr ""
+msgstr "Снежная крошка"
 
 #: gweather/weather.c:176
 msgid "Snow grains in the vicinity"
@@ -1839,7 +1793,7 @@ msgstr "Град"
 
 #: gweather/weather.c:179
 msgid "Hail in the vicinity"
-msgstr ""
+msgstr "Град в окрестностях"
 
 #: gweather/weather.c:179 gweather/weather.c:180
 msgid "Light hail"
@@ -1994,7 +1948,7 @@ msgstr "Дымка"
 
 #: gweather/weather.c:182
 msgid "Mist in the vicinity"
-msgstr ""
+msgstr "Местами туман"
 
 #: gweather/weather.c:182
 msgid "Light mist"
@@ -2084,7 +2038,7 @@ msgstr "Дым"
 
 #: gweather/weather.c:184
 msgid "Smoke in the vicinity"
-msgstr ""
+msgstr "Местами смог"
 
 #: gweather/weather.c:184
 msgid "Thin smoke"
@@ -2590,12 +2544,10 @@ msgid "WeatherInfo missing location"
 msgstr "Ошибочное положение WeatherInfo"
 
 #: gweather/weather.c:1039
-#, fuzzy
 msgid "Failed to get IWIN data.\n"
 msgstr "Не удалось получить данные прогноза IWIN.\n"
 
 #: gweather/weather.c:1280
-#, fuzzy
 msgid "Failed to get Met Office data.\n"
 msgstr "Не удалось получить данные прогноза Met Office.\n"
 
@@ -2637,19 +2589,19 @@ msgid ""
 "completion, command history, changeable macros and an optional built-in "
 "clock.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"This program is free software; you can redistribute it and/or modify it under "
+"the terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version."
 msgstr ""
 "Этот апплет Gnome добавляет командную строку к панели. Она поддерживает "
 "дополнение команд, историю, изменяемые макросы и дополнительно встроенные "
 "часы.\n"
 "\n"
 "Эта программа - свободное программное обеспечение; вы можете распространять "
-"и/или модифицировать ее в соответствии с GNU GPL опубликованной Free "
-"Software Foundation; лицензии версии 2 или (по вашему выбору) любой более "
-"поздней версии."
+"и/или модифицировать ее в соответствии с GNU GPL опубликованной Free Software "
+"Foundation; лицензии версии 2 или (по вашему выбору) любой более поздней "
+"версии."
 
 #: mini-commander/src/cmd_completion.c:69
 #: mini-commander/src/cmd_completion.c:115
@@ -2713,23 +2665,20 @@ msgid "child exited"
 msgstr "дочерний процесс закончился"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#, fuzzy
 msgid "Command Line"
-msgstr "Команда"
+msgstr "Командная строка"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
 msgid "Mini-Commander"
 msgstr "Мини-оболочка"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
 msgid "MiniCommander Applet Factory"
-msgstr "Апплет Mini-Commander"
+msgstr "Фабрика апплета Mini-Commander"
 
 #: mini-commander/src/help.c:36
-#, fuzzy
 msgid "still not ported"
-msgstr " не подсоединен"
+msgstr "ещё не перенесён"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -2764,9 +2713,8 @@ msgid "ready..."
 msgstr "готова..."
 
 #: mini-commander/src/preferences.c:492
-#, fuzzy
 msgid "Command Line Properties"
-msgstr "Свойства Mini-Commander"
+msgstr "Свойства командной строки"
 
 #: mini-commander/src/preferences.c:507
 msgid "Clock"
@@ -2799,15 +2747,13 @@ msgstr "Показывать рамку"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:554
-#, fuzzy
 msgid "Autocompletion"
 msgstr "Автодополнение"
 
 #. show history autocomplete
 #: mini-commander/src/preferences.c:562
-#, fuzzy
 msgid "Enable history based autocompletion"
-msgstr "Включить историю основываясь на автодополнении"
+msgstr "Включить автодополнение основанное на истории"
 
 #. Size
 #: mini-commander/src/preferences.c:569
@@ -2846,7 +2792,6 @@ msgid "Command line background:"
 msgstr "Фон командной строки:"
 
 #: mini-commander/src/preferences.c:738 modemlights/properties.c:405
-#, fuzzy
 msgid "_General"
 msgstr "Общие"
 
@@ -2863,22 +2808,20 @@ msgid "   Macro %.2d:"
 msgstr "   Макрос %.2d:"
 
 #: mini-commander/src/preferences.c:795
-#, fuzzy
 msgid "_Macros"
 msgstr "Макросы"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
 msgid "Adjust the sound volume"
-msgstr ""
+msgstr "Подстроить громкость"
 
 #: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:703
-#, fuzzy
 msgid "Volume Control"
-msgstr "WebControl"
+msgstr "Управление громкостью"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
 msgid "Mute"
-msgstr ""
+msgstr "Заглушить"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "Run Audio Mixer..."
@@ -2892,8 +2835,8 @@ msgstr "Не удалось открыть устройство-микшер %s\n"
 
 #: mixer/mixer.c:181
 msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
-"soundcard.h.\n"
+"warning: this version of gmix was compiled with a different version "
+"of\nsoundcard.h.\n"
 msgstr ""
 "внимание: эта версия gmix была скомпилирована с другой версией\n"
 "файла soundcard.h.\n"
@@ -2935,8 +2878,8 @@ msgid ""
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 "Выпущен под GNU Public License.\n"
-"Индикатор состояния модема. Лампочки, сверху вниз или слева направо, это RX "
-"и TX"
+"Индикатор состояния модема. Лампочки, сверху вниз или слева направо, это RX и "
+"TX"
 
 #: modemlights/modemlights.c:531
 msgid ""
@@ -2960,7 +2903,6 @@ msgid "not connected"
 msgstr "нет соединения"
 
 #: modemlights/properties.c:310
-#, fuzzy
 msgid "Modem Lights Properties"
 msgstr "Свойства лампочек модема"
 
@@ -3070,20 +3012,17 @@ msgid "CPU Load"
 msgstr "Загрузка процессора"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
-#, fuzzy
 msgid "A system load indicator"
-msgstr "Индикатор пиков"
+msgstr "Индикатор загрузки системы"
 
 #
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "System Monitor"
-msgstr "Звуковой монитора"
+msgstr "Монитор системы"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-#, fuzzy
 msgid "Run detailed system monitor"
-msgstr "Использовать метрическую систему"
+msgstr "Запустить детальный мониторинг системы"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
@@ -3091,12 +3030,10 @@ msgstr "Средняя загрузка"
 
 #
 #: multiload/main.c:53
-#, fuzzy
 msgid "System Monitor Applet"
-msgstr "Апплет звукового монитора"
+msgstr "Апплет системного монитора"
 
 #: multiload/main.c:55
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3104,26 +3041,24 @@ msgid ""
 "file use, plus network traffic."
 msgstr ""
 "Выпущено под лицензией GNU GPL.\n"
-"Монитор количество пространства используемого и свободного на ваших дисках."
+"\n"
+"Монитор загрузки системы способен отображать графики загрузки процессора, памяти, файла подкачки и сетевой трафик."
 
 #: multiload/main.c:177 multiload/properties.c:369
-#, fuzzy
 msgid "Processor"
-msgstr "Давление:"
+msgstr "Процессор"
 
 #: multiload/main.c:179 multiload/properties.c:375
-#, fuzzy
 msgid "Memory"
-msgstr "Загрузка памяти"
+msgstr "Память"
 
 #: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
-msgstr ""
+msgstr "Файл подкачки"
 
 #: multiload/main.c:185
-#, fuzzy
 msgid "Resource"
-msgstr "Сбросить"
+msgstr "Ресурс"
 
 #: multiload/main.c:197
 #, c-format
@@ -3131,6 +3066,8 @@ msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
+"%s:\n"
+"используется %d%%"
 
 #: multiload/memload.c:39
 msgid "Memory Load"
@@ -3142,26 +3079,23 @@ msgstr "Загрузка сети"
 
 #: multiload/properties.c:256
 msgid "Monitored Resources"
-msgstr ""
+msgstr "Наблюдаемые ресурсы"
 
 #: multiload/properties.c:264
-#, fuzzy
 msgid "_Processor"
-msgstr "Давление:"
+msgstr "Процессор"
 
 #: multiload/properties.c:274
-#, fuzzy
 msgid "_Memory"
-msgstr "Загрузка памяти"
+msgstr "Память"
 
 #: multiload/properties.c:284
-#, fuzzy
 msgid "_Network"
 msgstr "Сеть"
 
 #: multiload/properties.c:294
 msgid "_Swap File"
-msgstr ""
+msgstr "Файл подкачки"
 
 #.
 #. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
@@ -3175,24 +3109,23 @@ msgstr "Параметры"
 
 #: multiload/properties.c:324
 msgid "System monitor width: "
-msgstr ""
+msgstr "Ширина системного монитора:"
 
 #: multiload/properties.c:326
 msgid "System monitor height: "
-msgstr ""
+msgstr "Высота системного монитора:"
 
 #: multiload/properties.c:339
 msgid "pixels"
-msgstr ""
+msgstr "точек растра"
 
 #: multiload/properties.c:345
 msgid "System monitor speed: "
-msgstr ""
+msgstr "Скорость системного монитора:"
 
 #: multiload/properties.c:356
-#, fuzzy
 msgid "milliseconds"
-msgstr "Секунд"
+msgstr "миллисекунд"
 
 #: multiload/properties.c:370
 msgid "User"
@@ -3231,23 +3164,20 @@ msgid "SLIP"
 msgstr "SLIP"
 
 #: multiload/properties.c:383
-#, fuzzy
 msgid "PLIP"
-msgstr "SLIP"
+msgstr "PLIP"
 
 #: multiload/properties.c:384
-#, fuzzy
 msgid "Ethernet"
-msgstr "Другая"
+msgstr "Ethernet"
 
 #: multiload/properties.c:388
 msgid "Used"
 msgstr "Используемая"
 
 #: multiload/properties.c:409
-#, fuzzy
 msgid "System Monitor Properties"
-msgstr "Свойства WebControl"
+msgstr "Свойства системного монитора"
 
 #: multiload/swapload.c:39
 msgid "Swap Load"
@@ -3255,1858 +3185,159 @@ msgstr "Загрузка подкачки"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
 msgid "Factory for Panel Menu Applet"
-msgstr ""
+msgstr "Фабрика для апплета меню панели"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
 msgid "Panel Menu Applet Factory"
-msgstr ""
+msgstr "Фабрика апплета меню панели"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-#, fuzzy
 msgid "Panel applet for displaying menus"
-msgstr "Приложение используемое для просмотра снимков экрана:"
+msgstr "Апплет для отображения меню на панели"
 
 #: panel-menu/panel-menu-actions.c:96
-#, fuzzy
 msgid "Actions"
-msgstr "Параметры"
+msgstr "Действия"
 
 #: panel-menu/panel-menu-add.c:76
 msgid "Add items to the Menu Bar"
-msgstr ""
+msgstr "Добавить элемент к строке меню"
 
 #: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:401
 msgid "Shortcuts"
-msgstr ""
+msgstr "Ярлыки"
 
 #: panel-menu/panel-menu-add.c:240
 msgid "My Documents"
-msgstr ""
+msgstr "Мои документы"
 
 #: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
-msgstr ""
+msgstr "Документы"
 
 #: panel-menu/panel-menu-applications.c:80
-#, fuzzy
 msgid "Applications"
-msgstr "Параметры"
+msgstr "Приложения"
 
 #: panel-menu/panel-menu.c:681
-#, fuzzy
 msgid "PanelMenu Applet"
-msgstr "Апплет Микшер"
+msgstr "Апплет меню панели"
 
 #: panel-menu/panel-menu.c:681
 msgid "(c) 2001 Chris Phelps"
-msgstr ""
+msgstr "(С) 2001 Chris Phelps"
 
 #: panel-menu/panel-menu.c:681
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
-msgstr ""
+msgstr "Апплет меню панели позволяет отображать собственные строки меню на панелях пользователя."
 
 #: panel-menu/panel-menu-directory.c:496
-#, fuzzy
 msgid "Create directory item..."
-msgstr "Создание каталога пользователя: %s\n"
+msgstr "Создание каталога..."
 
 #: panel-menu/panel-menu-directory.c:499
-#, fuzzy
 msgid "Home"
-msgstr "Громкость"
+msgstr "Домашний"
 
 #: panel-menu/panel-menu-directory.c:542
 msgid "Edit directory item..."
-msgstr ""
+msgstr "Правка каталога..."
 
 #: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
 #: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
 #: panel-menu/panel-menu-links.c:436
-#, fuzzy
 msgid "Name:"
-msgstr "Название"
+msgstr "Название:"
 
 #: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
 msgid "Path:"
-msgstr ""
+msgstr "Путь:"
 
 #: panel-menu/panel-menu-directory.c:621
 msgid "Depth level:"
-msgstr ""
+msgstr "Уровень вложенности:"
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
-msgstr ""
+msgstr "Создание строки в документах..."
 
 #: panel-menu/panel-menu-documents.c:433
 msgid "Rename documents item..."
-msgstr ""
+msgstr "Переименование строки в документах..."
 
 #: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
 msgid "KDE Menus"
-msgstr ""
+msgstr "Меню KDE"
 
 #: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
 #: panel-menu/panel-menu-path.c:576
 msgid "Programs"
-msgstr ""
+msgstr "Программы"
 
 #: panel-menu/panel-menu-links.c:399
 msgid "Create links item..."
-msgstr ""
+msgstr "Создание строки ссылок..."
 
 #: panel-menu/panel-menu-links.c:435
 msgid "Rename links item..."
-msgstr ""
+msgstr "Переименование строки ссылок..."
 
 #: panel-menu/panel-menu-path.c:224
 msgid "KDE"
-msgstr ""
+msgstr "KDE"
 
 #: panel-menu/panel-menu-path.c:650
 msgid "Create menu path item..."
-msgstr ""
+msgstr "Создание пути..."
 
 #: panel-menu/panel-menu-path.c:682
 msgid "Edit path item..."
-msgstr ""
+msgstr "Редактирование пути..."
 
 #: panel-menu/panel-menu-preferences.c:78
 msgid "Preferences"
-msgstr ""
+msgstr "Настройки"
 
 #: panel-menu/panel-menu-properties.c:71
-#, fuzzy
 msgid "Menu Bar Properties"
-msgstr "Свойства GKB"
+msgstr "Свойства строки меню"
 
 #: panel-menu/panel-menu-properties.c:75
-#, fuzzy
 msgid "Layout"
-msgstr "Считывание"
+msgstr "Размещение"
 
 #: panel-menu/panel-menu-properties.c:90
 msgid "Preferences Menu"
-msgstr ""
+msgstr "Меню настроек"
 
 #: panel-menu/panel-menu-properties.c:110
 msgid "Applications Menu"
-msgstr ""
+msgstr "Меню приложений"
 
 #: panel-menu/panel-menu-properties.c:130
-#, fuzzy
 msgid "Select an icon for the Applications menu"
-msgstr "Выбрать пиктограмму для подсоединенного"
+msgstr "Выбрать пиктограмму для меню приложений"
 
 #: panel-menu/panel-menu-properties.c:146
 msgid "Actions Menu"
-msgstr ""
+msgstr "Меню действий"
 
 #: panel-menu/panel-menu-properties.c:157
 msgid "Windows Menu"
-msgstr ""
+msgstr "Меню окон"
 
 #: panel-menu/panel-menu-properties.c:168
 msgid "Workspaces Menu"
-msgstr ""
+msgstr "Меню рабочих мест"
 
 #: panel-menu/panel-menu-windows.c:99
-#, fuzzy
 msgid "Windows"
-msgstr "Ветер:"
+msgstr "Окна"
 
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
-msgstr ""
-
-#~ msgid "Clock Settings"
-#~ msgstr "Настройка часов"
-
-#~ msgid "Clock color"
-#~ msgstr "Цвет часов"
-
-#~ msgid "Hour needle color"
-#~ msgstr "Цвет часовой стрелки"
-
-#~ msgid "Minute needle color"
-#~ msgstr "Цвет минутной стрелки"
-
-#~ msgid "Second needle color"
-#~ msgstr "Цвет второй стрелки"
-
-#~ msgid "Show seconds needle"
-#~ msgstr "Показывать секундную стрелку"
-
-#~ msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-#~ msgstr "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-
-#~ msgid "Another Clock Applet"
-#~ msgstr "Апплет \"Другие Часы\""
-
-#~ msgid "(C) 1999 the Free Software Foundation"
-#~ msgstr "(C) 1999 Фонд Свободного Программного Обеспечения"
-
-#~ msgid "An analog clock similar to that in CDE panel."
-#~ msgstr "Аналоговые часы наподобие используемых на панели CDE."
-
-#~ msgid "An analog clock similar to that in CDE panel"
-#~ msgstr "Аналоговые часы наподобие используемых на панели CDE"
-
-#~ msgid "Another Clock"
-#~ msgstr "Другие часы"
-
-#~ msgid "AfterStep Clock"
-#~ msgstr "Часы AfterStep"
-
-#~ msgid "Just another clock"
-#~ msgstr "Просто другие часы"
-
-#~ msgid "ASClock"
-#~ msgstr "Часы AfterStep"
-
-#~ msgid "(C) 1998 the Free Software Foundation"
-#~ msgstr "(C) 1998 Фонд Свободного Программного Обеспечения"
-
-#~ msgid "Who said NeXT is dead?"
-#~ msgstr "Кто сказал, что NeXT мертв?"
-
-#~ msgid ""
-#~ "Since you are root, would you like to set the system's default timezone?"
-#~ msgstr "Так как вы root, может быть вы хотите установить часовой пояс?"
-
-#~ msgid "My Title"
-#~ msgstr "Мой заголовок"
-
-#~ msgid "Continent/City"
-#~ msgstr "Континент/Город"
-
-#~ msgid "Clock Theme"
-#~ msgstr "Тема Часов"
-
-#~ msgid "ASClock Settings"
-#~ msgstr "Настройка часов AfterStep"
-
-#~ msgid "Display time in 12 hour format (AM/PM)"
-#~ msgstr "Показывать время в 12-ти часовом формате (ДП/ПП)"
-
-#~ msgid "Blinking elements in clock"
-#~ msgstr "Мигающие элементы в часах"
-
-#~ msgid "Timezone"
-#~ msgstr "Часовой пояс"
-
-#~ msgid "The battery is low."
-#~ msgstr "Батарея разряжена."
-
-#~ msgid "Internal error: invalid mode in battery_set_mode"
-#~ msgstr "Внутренняя ошибка: неправильный режим в battery_set_mode"
-
-#~ msgid "Can't create applet!\n"
-#~ msgstr "Невозможно создать апплет!\n"
-
-#~ msgid ""
-#~ "Error querying battery charge.\n"
-#~ "\n"
-#~ "Make sure that your kernel was built with APM support."
-#~ msgstr ""
-#~ "Ошибка при запросе заряда батареи.\n"
-#~ "\n"
-#~ "Убедитесь что в ваше ядро встроена поддержка APM."
-
-#~ msgid "The GNOME Battery Monitor Applet"
-#~ msgstr "GNOME Монитор Батарей"
-
-#~ msgid " (C) 1997-1998 The Free Software Foundation"
-#~ msgstr "(C) 1997-1998 Фонд Свободного Программного Обеспечения"
-
-#~ msgid ""
-#~ "This applet monitors the charge of your laptop's battery.  Click on it to "
-#~ "change display modes."
-#~ msgstr ""
-#~ "Этот апплет отображает заряд батареи вашего переносного компьютера. "
-#~ "Щелкните на нем чтобы изменить режим отображения."
-
-#~ msgid "Could not allocate space for graph values"
-#~ msgstr "Нет места для данных графика"
-
-#~ msgid "Battery Monitor Settings"
-#~ msgstr "Свойства монитора батареи"
-
-#~ msgid "Follow panel size"
-#~ msgstr "По размеру панели"
-
-#~ msgid "Applet Height:"
-#~ msgstr "Высота апплета:"
-
-#~ msgid "Applet Width:"
-#~ msgstr "Ширина апплета:"
-
-#~ msgid "Low Charge Threshold:"
-#~ msgstr "Порог низкого заряда:"
-
-#~ msgid "Applet Mode:"
-#~ msgstr "Режим апплета:"
-
-#~ msgid "Graph"
-#~ msgstr "График"
-
-#~ msgid "AC-On Battery Color:"
-#~ msgstr "Цвет батареи при питании от сети:"
-
-#~ msgid "AC-Off Battery Color:"
-#~ msgstr "Цвет батареи при питании от аккумулятора:"
-
-#~ msgid "Low Battery Color:"
-#~ msgstr "Цвет разряженной батареи:"
-
-#~ msgid "Graph Battery Low Color:"
-#~ msgstr "Цвет графика разряженной батареи:"
-
-#~ msgid "Graph Tick Color:"
-#~ msgstr "Цвет засечек графика:"
-
-#~ msgid "Graph Direction:"
-#~ msgstr "Направление графика:"
-
-#~ msgid "Left to Right"
-#~ msgstr "Слева направо"
-
-#~ msgid "Right to Left"
-#~ msgstr "Справа налево"
-
-#~ msgid "Battery Charge Messages"
-#~ msgstr "Сообщения о заряде батареи"
-
-#~ msgid "Enable Low Battery Warning"
-#~ msgstr "Разрешить сигналы разряда батареи"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "Сигнализировать если заряд батареи упадет ниже:"
-
-#~ msgid "Enable Full-Charge Notification"
-#~ msgstr "Разрешить сообщение о полном заряде"
-
-#~ msgid ""
-#~ "Cannot open /proc/apm!  Make sure that you built APM support into your "
-#~ "kernel.\n"
-#~ msgstr ""
-#~ "Невозможно открыть /proc/apm! Убедитесь что поддержка APM включена в ваше "
-#~ "ядро.\n"
-
-#~ msgid "Could not dup() APM file descriptor: %s\n"
-#~ msgstr "Невозможно dup() дескриптор файла APM: %s\n"
-
-#~ msgid "Cannot open /dev/apm; can't get data."
-#~ msgstr "Невозможно открыть /proc/apm; нельзя получить данные."
-
-#~ msgid "ioctl failed on /dev/apm."
-#~ msgstr "Команда ioctl не сработала на /dev/apm."
-
-#~ msgid "APM is disabled!  Cannot read battery charge information."
-#~ msgstr "APM выключен! невозможно считать информацию о батарее."
-
-#, fuzzy
-#~ msgid "Character picker"
-#~ msgstr "Наборщик"
-
-#~ msgid "Minimum number of cells: (for autosize)"
-#~ msgstr "Минимальное число ячеек: (для авторазмера)"
-
-#~ msgid "Size of button: (pixels)"
-#~ msgstr "Размер кнопки: (точек растра)"
-
-#~ msgid "Number of rows of buttons:"
-#~ msgstr "Число рядов кнопок:"
-
-#~ msgid "Number of columns of buttons:"
-#~ msgstr "Число колонок кнопок:"
-
-#~ msgid "Default List"
-#~ msgstr "Исходный список"
-
-#~ msgid "Clipboard Applet"
-#~ msgstr "Апплет буфера обмена"
-
-#~ msgid "Copyright (C) 1999"
-#~ msgstr "Авторское право (С) 1999"
-
-#~ msgid ""
-#~ "Gnome panel applet for copying and retrieving selections with a history "
-#~ "list. Released under GNU General Public Licence."
-#~ msgstr ""
-#~ "Апплет для копирования и вызова выделений со списком. Выпущен под GNU "
-#~ "General Public Licence."
-
-#~ msgid "John Ellis <johne@bellatlantic.net>"
-#~ msgstr "John Ellis <johne@bellatlantic.net>"
-
-#~ msgid "Clock and Mail Notify Applet"
-#~ msgstr "Апплет Часов и Состояния Почты"
-
-#~ msgid "(C) 2000"
-#~ msgstr "(C) 2000"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-#~ "Mail blinking can be for any unread mail, or only briefly when new mail "
-#~ "arrives."
-#~ msgstr ""
-#~ "Выпущен под GNU General Public Licence.\n"
-#~ "Простые электронные часы с датой в подсказке. Возможны 12 и 24 часовой "
-#~ "циклы. Мерцающий конверт сообщает о наличии/прибытии новой почты."
-
-#~ msgid "%a, %b %d"
-#~ msgstr "%a, %b %d"
-
-#~ msgid " (GMT)"
-#~ msgstr " (GMT)"
-
-#~ msgid " (GMT %+d)"
-#~ msgstr " (GMT %+d)"
-
-#~ msgid "Clock and Mailcheck"
-#~ msgstr "Часы и проверка почты"
-
-#~ msgid "Displays new mail and time"
-#~ msgstr "Показывает наличие новой почты и время"
-
-#~ msgid "None (default)"
-#~ msgstr "Нет (по умолчанию)"
-
-#~ msgid "Themes:"
-#~ msgstr "Темы:"
-
-#~ msgid "ClockMail Settings"
-#~ msgstr "Настройки почты и часов"
-
-#~ msgid "Display time relative to GMT (Greenwich Mean Time):"
-#~ msgstr "Показывать время относительно GMT (Гринвича)"
-
-#~ msgid "Mail"
-#~ msgstr "Почта"
-
-#~ msgid "Mail file:"
-#~ msgstr "Файл почты:"
-
-#~ msgid "When new mail is received run:"
-#~ msgstr "Когда приходит новая почта:"
-
-#~ msgid "Always blink when any mail is waiting."
-#~ msgstr "Мигать когда есть почта. (Не только когда она приходит)"
-
-#~ msgid "Number of messages to consider mailbox full:"
-#~ msgstr "Число сообщений, при котором почтовый ящик считается полным:"
-
-#~ msgid "When clicked, run:"
-#~ msgstr "Когда щелкнули запустить:"
-
-#~ msgid "Theme file (directory):"
-#~ msgstr "Файл темы (каталог):"
-
-#~ msgid "Theme"
-#~ msgstr "Тема"
-
-#~ msgid "CPU/Mem Usage Applet"
-#~ msgstr "Апплет использования ЦПУ/Памяти"
-
-#~ msgid "(c) 1997 the Free Software Foundation"
-#~ msgstr "(с) 1997 Фонд Свободного Программного Обеспечения"
-
-#~ msgid ""
-#~ "The CPU/Mem usage applet displays your system resources with 3 colorful "
-#~ "stacked bar graphs (processor, memory, swap)"
-#~ msgstr ""
-#~ "Апплет использования ЦПУ/Памяти показывает ресурсы вашей системы с "
-#~ "помощью трехцветной столбчатой диаграммы (процессор, память, подкачка)"
-
-#~ msgid "CPU/MEM usage"
-#~ msgstr "Использование ЦПУ/Памяти"
-
-#~ msgid "CPU/MEM usage meter"
-#~ msgstr "Измеритель использования ЦПУ/Памяти"
-
-#~ msgid "File Systems"
-#~ msgstr "Файловая система"
-
-#~ msgid "File System Changed!\n"
-#~ msgstr "Файловая система изменена!\n"
-
-#~ msgid "Disk Usage Applet"
-#~ msgstr "Апплет использования диска"
-
-#~ msgid "Update..."
-#~ msgstr "Обновление..."
-
-#~ msgid "Disk Usage"
-#~ msgstr "Использование диска"
-
-#~ msgid "Disk usage meter"
-#~ msgstr "Измеритель использования диска"
-
-#~ msgid "Used Diskspace:"
-#~ msgstr "Использованная часть диска:"
-
-#~ msgid "Text:"
-#~ msgstr "Текст:"
-
-#~ msgid "Free Diskspace:"
-#~ msgstr "Свободная часть диска:"
-
-#~ msgid "Background:"
-#~ msgstr "Цвет фона:"
-
-#~ msgid "Automatically pick best applet size"
-#~ msgstr "Автоматически выбирать лучший размер апплета"
-
-#~ msgid "Update Frequency (seconds):"
-#~ msgstr "Частота обновления (в секундах):"
-
-#~ msgid "Fonts"
-#~ msgstr "Шрифты"
-
-#~ msgid "Font:"
-#~ msgstr "Шрифт:"
-
-#~ msgid "Diskusage Settings"
-#~ msgstr "Свойства апплета заполненности дисков"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Mounts and Unmounts drives."
-#~ msgstr ""
-#~ "Released under the GNU general public license.\n"
-#~ "Подсоединяет и отсоединяет диски.."
-
-#, fuzzy
-#~ msgid "Mount and unmount drives"
-#~ msgstr "Подсоединяет и отсоединяет диски"
-
-#~ msgid "Update in seconds:"
-#~ msgstr "Период обновления в секундах:"
-
-#~ msgid ""
-#~ "You win!\n"
-#~ "Moves"
-#~ msgstr ""
-#~ "Вы выиграли!\n"
-#~ "Ходы"
-
-#~ msgid "Fifteen sliding pieces"
-#~ msgstr "Пятнашки"
-
-#~ msgid "Copyright (C) The Free Software Foundation"
-#~ msgstr "(C) 1998 Фонд Свободного Программного Обеспечения"
-
-#~ msgid ""
-#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome "
-#~ "Panel. Guaranteed to be a productivity buster."
-#~ msgstr ""
-#~ "Популярная игра Сэма Ллойда для вашего удовольствия на панели Gnome. "
-#~ "Гарантировано повышение производительности труда."
-
-#~ msgid "Can't create fifteen applet!"
-#~ msgstr "Невозможно создать апплет \"Пятнашки\""
-
-#~ msgid "Scramble pieces"
-#~ msgstr "Перемешать"
-
-#~ msgid "Fifteen"
-#~ msgstr "Пятнашки"
-
-#~ msgid "Fifteen cells game"
-#~ msgstr "Игра \"Пятнашки\""
-
-#~ msgid "An applet that watches your mouse."
-#~ msgstr "Апплет, который следит за вашей мышью."
-
-#~ msgid "gEyes Settings"
-#~ msgstr "Настройки gEyes"
-
-#~ msgid "Themes"
-#~ msgstr "Темы"
-
-#~ msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
-#~ msgstr "keymap_%d/name=US клавиатура со 105 клавишами (с клавишами windows)"
-
-#~ msgid "keymap_%d/label=us"
-#~ msgstr "keymap_%d/label=us"
-
-#~ msgid "keymap_%d/country=United States"
-#~ msgstr "keymap_%d/country=Соединенные Штаты"
-
-#~ msgid "keymap_%d/lang=English"
-#~ msgstr "keymap_%d/lang=Английский"
-
-#~ msgid "keymap_%d/command=gkb_xmmap us"
-#~ msgstr "keymap_%d/command=gkb_xmmap us"
-
-#~ msgid "keymap_%d/name=Hungarian 105 keys latin2"
-#~ msgstr "keymap_%d/name=Венгерская, 105 клавиш latin2"
-
-#~ msgid "keymap_%d/label=hu"
-#~ msgstr "keymap_%d/label=hu"
-
-#~ msgid "keymap_%d/country=Hungary"
-#~ msgstr "keymap_%d/country=Венгрия"
-
-#~ msgid "keymap_%d/lang=Hungarian"
-#~ msgstr "keymap_%d/lang=Венгерский"
-
-#~ msgid "keymap_%d/flag=hu.png"
-#~ msgstr "keymap_%d/flag=hu.png"
-
-#~ msgid "keymap_%d/command=gkb_xmmap hu"
-#~ msgstr "keymap_%d/command=gkb_xmmap hu"
-
-#~ msgid "Szabolcs BAN <shooby@gnome.hu>"
-#~ msgstr "Szabolcs BAN <shooby@gnome.hu>"
-
-#~ msgid "Chema Celorio <chema@celorio.com>"
-#~ msgstr "Chema Celorio <chema@celorio.com>"
-
-#~ msgid "Press a key..."
-#~ msgstr "Нажмите клавишу..."
-
-#~ msgid "Raise Note"
-#~ msgstr "Поднять записку"
-
-#~ msgid "Lower Note"
-#~ msgstr "Опустить записку"
-
-#~ msgid "Hide Note"
-#~ msgstr "Скрыть записку"
-
-#~ msgid "Delete Note"
-#~ msgstr "Удалить записку"
-
-#~ msgid "GNotes!"
-#~ msgstr "Записки!"
-
-#, fuzzy
-#~ msgid "Copyright (C) 1998-1999"
-#~ msgstr "Авторское право (С) 1999"
-
-#~ msgid "Create sticky notes on your screen."
-#~ msgstr "Создать записку прилипшую к вашему экрану."
-
-#~ msgid "Can't create GNotes applet!"
-#~ msgstr "Невозможно создать апплет \"Записки\"!"
-
-#~ msgid "Raise Notes"
-#~ msgstr "Поднять записки"
-
-#~ msgid "Lower Notes"
-#~ msgstr "Опустить записки"
-
-#~ msgid "Hide Notes"
-#~ msgstr "Скрыть записки"
-
-#~ msgid "Show Notes"
-#~ msgstr "Показать записки"
-
-#~ msgid "GNotes Settings"
-#~ msgstr "Настройки \"Записок\""
-
-#~ msgid "Default Height"
-#~ msgstr "Высота по умолчанию"
-
-#~ msgid "Default Width"
-#~ msgstr "Ширина по умолчанию"
-
-#~ msgid "Select Font"
-#~ msgstr "Выбрать шрифт"
-
-#~ msgid "GNOME Stock Ticker Panel Applet"
-#~ msgstr "Апплет биржевая бегущая строка Gnome"
-
-#~ msgid ""
-#~ "GNOME weather monitor applet.\n"
-#~ "Web: http://gweather.dhs.org/"
-#~ msgstr ""
-#~ "GNOME апплет отображения погоды.\n"
-#~ "Web: http://gweather.dhs.org/"
-
-#~ msgid "Cannot create applet!\n"
-#~ msgstr "Невозможно создать апплет!\n"
-
-#~ msgid "Detailed Forecast"
-#~ msgstr "Детальный прогноз"
-
-#, fuzzy
-#~ msgid "Update failed! Maybe another update was already in progress?"
-#~ msgstr "Другое обновление уже выполняется!\n"
-
-#~ msgid ""
-#~ "Invalid location chosen!\n"
-#~ "Properties remain unchanged."
-#~ msgstr ""
-#~ "Выбрано неправильное положение!\n"
-#~ "Свойства остались неизмененными."
-
-#~ msgid "Regions"
-#~ msgstr "Области"
-
-#~ msgid "GNOME weather monitor applet"
-#~ msgstr "Апплет монитора погоды GNOME"
-
-#~ msgid "Location vector needs to be 4 elements long"
-#~ msgstr "Вектор положения должен содержать 4 элемента"
-
-#~ msgid "Another update already in progress!\n"
-#~ msgstr "Другое обновление уже выполняется!\n"
-
-#~ msgid "Jon's Binary Clock"
-#~ msgstr "Двоичные часы Джона"
-
-#~ msgid "(C) 1999"
-#~ msgstr "(C) 1999"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Displays time in Binary Coded Decimal\n"
-#~ "http://snoopy.net/~jon/jbc/."
-#~ msgstr ""
-#~ "Выпущено под GNU general public license.\n"
-#~ "Показывает время в двоично-десятичных кодах\n"
-#~ "http://snoopy.net/~jon/jbc/."
-
-#, fuzzy
-#~ msgid "Displays the time in binary representation"
-#~ msgstr "Показывает время в двоичном представлении"
-
-#~ msgid "JBC Binary Clock"
-#~ msgstr "Двоичные часы Джона"
-
-#~ msgid "The Game of Life"
-#~ msgstr "Игра \"Жизнь\""
-
-#~ msgid "A complete waste of perfectly good CPU cycles."
-#~ msgstr "Превращение совершенно нормальных циклов ЦПУ в полный мусор."
-
-#~ msgid "Can't create life applet!"
-#~ msgstr "Невозможно создать апплет \"Жизнь\""
-
-#~ msgid "Randomize"
-#~ msgstr "Перемешать"
-
-#~ msgid "Game of Life"
-#~ msgstr "Игра \"Жизнь\""
-
-#~ msgid "The Game of Life (to waste your time)"
-#~ msgstr "Игра \"Жизнь\" (чтобы потратить ваше время)"
-
-#~ msgid "time & date on"
-#~ msgstr "вкл время и дату"
-
-#~ msgid "time on"
-#~ msgstr "вкл время"
-
-#~ msgid "date on"
-#~ msgstr "вкл дату"
-
-#~ msgid "clock off"
-#~ msgstr "выкл часы"
-
-#~ msgid "saving prefs..."
-#~ msgstr "сохранение свойств..."
-
-#~ msgid "Main Volume and Mute"
-#~ msgstr "Общая громкость и отключение"
-
-#~ msgid "(c) 1998 The Free Software Foundation"
-#~ msgstr "(с) 1998 Фонд Свободного Программного Обеспечения"
-
-#~ msgid ""
-#~ "The mixer applet gives you instant access to setting the master volume "
-#~ "level on your soundcard device"
-#~ msgstr ""
-#~ "Апплет микшер дает вам постоянный доступ к установке главного уровня "
-#~ "громкости для вашей звуковой карты"
-
-#~ msgid "Audio Mixer"
-#~ msgstr "Аудио-микшер"
-
-#~ msgid "Mixer"
-#~ msgstr "Микшер"
-
-#~ msgid "Help..."
-#~ msgstr "Справка..."
-
-#~ msgid "Show modem status"
-#~ msgstr "Показывает состояние модема"
-
-#~ msgid "CPU Load Applet"
-#~ msgstr "Апплет загрузки процессора"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "CPU Load Meter Applet."
-#~ msgstr ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Апплет измеритель загрузки процессора."
-
-#~ msgid "Default Properties..."
-#~ msgstr "Исходные свойства..."
-
-#~ msgid "Run gtop..."
-#~ msgstr "Запустить gtop..."
-
-#~ msgid "CPU Load Meter"
-#~ msgstr "Измеритель загрузки процессора"
-
-#~ msgid "CPULoad"
-#~ msgstr "Загрузка процессора"
-
-#~ msgid "Load Graph"
-#~ msgstr "График загрузки"
-
-#, fuzzy
-#~ msgid "Interval:"
-#~ msgstr "Общие"
-
-#~ msgid "Size:"
-#~ msgstr "Размер:"
-
-#~ msgid "Maximum:"
-#~ msgstr "Максимум:"
-
-#~ msgid "Speed:"
-#~ msgstr "Скорость:"
-
-#~ msgid "Use default properties"
-#~ msgstr "Использовать исходные свойства"
-
-#~ msgid "Load average over 1 minute"
-#~ msgstr "Средняя за минуту загрузка"
-
-#~ msgid "Load average over 5 minutes"
-#~ msgstr "Средняя за 5 минут загрузка"
-
-#~ msgid "Load average over 15 minutes"
-#~ msgstr "Средняя за 15 минут загрузка"
-
-#~ msgid "Load Average Applet"
-#~ msgstr "Апплет средней загрузки"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Load Average Meter Applet."
-#~ msgstr ""
-#~ "Выпущено под лицензией GNU general public license.\n"
-#~ "\n"
-#~ "Апплет измеритель средней загрузки."
-
-#~ msgid "PPP"
-#~ msgstr "PPP"
-
-#~ msgid "ETH"
-#~ msgstr "Eth"
-
-#~ msgid "Memory Load Applet"
-#~ msgstr "Апплет загрузки памяти"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Memory Load Applet."
-#~ msgstr ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Апплет загрузки памяти."
-
-#~ msgid "MemLoad"
-#~ msgstr "Загрузка памяти"
-
-#~ msgid "Memory Load Meter"
-#~ msgstr "Измеритель загрузки памяти"
-
-#~ msgid "Network Load Applet"
-#~ msgstr "Апплет загрузки сети"
-
-#~ msgid "Network Load"
-#~ msgstr "Загрузка сети"
-
-#~ msgid "NetLoad"
-#~ msgstr "Загрузка сети"
-
-#~ msgid "Network Activity Meter"
-#~ msgstr "Измеритель активности сети"
-
-#~ msgid "Swap Load Applet"
-#~ msgstr "Апплет загрузки подкачки"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Swap Load Meter Applet."
-#~ msgstr ""
-#~ "Выпущено под лицензией GNU general public license.\n"
-#~ "\n"
-#~ "Апплет измерения загрузки подкачки."
-
-#~ msgid "Swap Load Meter"
-#~ msgstr "Измеритель загрузки подкачки"
-
-#~ msgid "SwapLoad"
-#~ msgstr "Загрузка подкачки"
-
-#~ msgid "Odometer"
-#~ msgstr "Одометр"
-
-#~ msgid "(C) 1999 The Free Software Foundation"
-#~ msgstr "(С) 1999 Фонд Свободного Программного Обеспечения"
-
-#~ msgid ""
-#~ "a GNOME applet that tracks and measures the movements of your mouse "
-#~ "pointer across the desktop."
-#~ msgstr ""
-#~ "Апплет GNOME отслеживающий и измеряющий перемещение указателя мыши по "
-#~ "рабочему столу"
-
-#~ msgid "Mouse movements counter"
-#~ msgstr "Счетчик перемещений мыши"
-
-#~ msgid "Odometer setting"
-#~ msgstr "Настройки одометра"
-
-#~ msgid "Use Metric"
-#~ msgstr "Использовать метрическую систему"
-
-#~ msgid "auto_reset"
-#~ msgstr "авто_сброс"
-
-#~ msgid "enabled"
-#~ msgstr "разрешен"
-
-#~ msgid "Digits number"
-#~ msgstr "Число цифр"
-
-#, fuzzy
-#~ msgid "Theme file:"
-#~ msgstr "Файл темы :"
-
-#~ msgid "The QuickLaunch Applet"
-#~ msgstr "Апплет БыстрыйЗапуск"
-
-#~ msgid "Launcher Properties"
-#~ msgstr "Свойства Пускателя..."
-
-#~ msgid "Launcher properties..."
-#~ msgstr "Свойства Пускателя..."
-
-#~ msgid "Delete launcher"
-#~ msgstr "Удалить пускатель"
-
-#~ msgid "File '%s' does not exist"
-#~ msgstr "Файл '%s' не существует"
-
-#~ msgid ""
-#~ "Cannot create directory:\n"
-#~ "~/.gnome/quicklaunch.\n"
-#~ "Aborting"
-#~ msgstr ""
-#~ "Невозможно создать каталог:\n"
-#~ "~/.gnome/quicklaunch.\n"
-#~ "Прервано."
-
-#~ msgid "QuickLaunch"
-#~ msgstr "БыстрыйЗапуск"
-
-#~ msgid "Small Launchers "
-#~ msgstr "Маленькие пускатели "
-
-#~ msgid "Screen-Shooter Applet"
-#~ msgstr "Апплет \"Хранитель экрана\""
-
-#~ msgid "Copyright (C) 1999 Tom Gilbert"
-#~ msgstr "Авторское право (С) 1999 Tom Gilbert"
-
-#~ msgid ""
-#~ "A useful little screengrabber.\n"
-#~ "The left/top button allows you to grab either:\n"
-#~ "a window (click to select which one)\n"
-#~ "or an area (click and drag to select a rectangle.)\n"
-#~ "The right/bottom button will grab the entire desktop.\n"
-#~ "Share and Enjoy ;)"
-#~ msgstr ""
-#~ "Маленькая удобная программа для создания снимков экрана.\n"
-#~ "Левая/верхняя кнопка позволяет вам захватить либо:\n"
-#~ "окно (щелчком на нужном окне) или область\n"
-#~ "(щелчком и протягиванием для выделения прямоугольника).\n"
-#~ "Правая/нижняя кнопка позволяет захватить весь рабочий стол.\n"
-#~ "Разделяй и радуйся ;)"
-
-#~ msgid "Visit the author's Website"
-#~ msgstr "Посетите Web-сайт автора"
-
-#~ msgid "Screen-Shooter Settings"
-#~ msgstr "Свойства Хранителя экрана"
-
-#~ msgid "Capture WM decorations when grabbing a window"
-#~ msgstr "Захватывать обрамление окна"
-
-#~ msgid "Give audio feedback using the keyboard bell"
-#~ msgstr "Создать звуковую обратную связь с помощью звонка клавиатуры"
-
-#~ msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
-#~ msgstr ""
-#~ "Задержка (секунд) до захвата экрана (только для всего рабочего стола)"
-
-#~ msgid ""
-#~ "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-#~ msgstr ""
-#~ "Качество сжатия (JPEG/MIFF/PNG режим) Высокое: хорошее качество/большой "
-#~ "файл"
-
-#~ msgid "Create monochrome image"
-#~ msgstr "Создать монохромное изображение"
-
-#~ msgid "Invert colours in image"
-#~ msgstr "Инвертировать цвета в изображении"
-
-#~ msgid "Directory to save images in:"
-#~ msgstr "Каталог для сохранения изображений:"
-
-#~ msgid "Image filename:"
-#~ msgstr "Имя файла изображения:"
-
-#~ msgid "Show expanded filename"
-#~ msgstr "Показывать полное имя файла"
-
-#~ msgid ""
-#~ "Filetype is determined from filename suffix.\n"
-#~ "Default filetype (if no extension or unrecognised extension) is miff.\n"
-#~ "Recognised suffixes are:\n"
-#~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-#~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "and several obscure ones. Try your luck with something interesting!\n"
-#~ "Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
-#~ "shtml\n"
-#~ "\n"
-#~ "Recommendations:\n"
-#~ "Small file, pretty good quality:   jpg, 75% quality\n"
-#~ "Slightly larger file but lossless: png, as much compression as you like.\n"
-#~ "- compressing pngs takes longer at higher ratios, but is still lossless"
-#~ msgstr ""
-#~ "Тип файла определяется по расширению.\n"
-#~ "По умолчанию (если не задано расширение) тип файла - miff.\n"
-#~ "Распознаваемые расширения:\n"
-#~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-#~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "и несколько неизвестных. Испытайте вашу удачу с чем-нибудь интересным!\n"
-#~ "Например .html для карты изображения на клиентской стороне. Вы получите ."
-#~ "gif, .html, и .shtml\n"
-#~ "\n"
-#~ "Рекомендации:\n"
-#~ "маленький файл, достаточно хорошее качество: jpg, 75% качество\n"
-#~ "несколько больший файл, но без потерь: png, сжатый так сильно как "
-#~ "захочется.\n"
-#~ "- сжатие png требует больше времени, но не приводит к потерям в "
-#~ "изображении"
-
-#~ msgid "View screenshot after saving it"
-#~ msgstr "Просмотр снимка экрана после сохранения"
-
-#~ msgid "Files, Apps"
-#~ msgstr "Файлы, приложения"
-
-#~ msgid "Create thumbnail of image too"
-#~ msgstr "Создавать миниатюрное изображение тоже"
-
-#~ msgid "Thumbnail Size (percentage of original)"
-#~ msgstr "Размер миниатюры (процентов исходного)"
-
-#~ msgid ""
-#~ "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-#~ msgstr ""
-#~ "Сжатие миниатюры (JPEG/MIFF/PNG режим) Высокое: хорошее качество/большой "
-#~ "файл"
-
-#~ msgid "Prefix to attach to thumbnail filename:"
-#~ msgstr "Префикс присоединяемый к имени файла миниатюры:"
-
-#~ msgid "Use high-quality intermediate for generating thumbnail"
-#~ msgstr ""
-#~ "Использовать высококачественное промежуточное при создании миниатюры"
-
-#~ msgid ""
-#~ "(This'll chug loads of CPU, but will prevent compressing the image twice "
-#~ "if a\n"
-#~ "lossy file format is used)\n"
-#~ "Don't use this if you're using a lossless compression format, or if you "
-#~ "cherish\n"
-#~ "speed and don't mind imperfection in your thumbnails."
-#~ msgstr ""
-#~ "(Это загружает ЦПУ, но ликвидирует повторное сжатие изображения если \n"
-#~ "используется формат файла с потерями)\n"
-#~ "Не используйте это, если вы применяете сжатие без потерь или если для\n"
-#~ "вас важна скорость и не важно совершенство ваших миниатюр."
-
-#~ msgid "Thumbnails"
-#~ msgstr "Миниатюры"
-
-#~ msgid ""
-#~ "Normalize image (Span full range of color values to enhance contrast)"
-#~ msgstr ""
-#~ "Нормализовать изображение (Использовать полный диапазон значений цветов "
-#~ "для усиления контраста)"
-
-#~ msgid "Equalize image (Perform histogram equalization)"
-#~ msgstr "Выровнять изображение (Выполнить выравнивание гистограммы)"
-
-#~ msgid "Enhance image (reduce noise)"
-#~ msgstr "Улучшить изображение (уменьшить шум)"
-
-#~ msgid "Despeckle Image (reduce spots)"
-#~ msgstr "Устранить пятнистость (уменьшает пятна)"
-
-#~ msgid "Sharpen Image by what factor?"
-#~ msgstr "Повысить резкость изображения по какому показателю?"
-
-#~ msgid "Rotate image clockwise by how many degrees?"
-#~ msgstr "На сколько градус по часовой повернуть изображение?"
-
-#~ msgid "Adjust gamma"
-#~ msgstr "Подстроить гамму"
-
-#~ msgid "Gamma value"
-#~ msgstr "Гамма-значение"
-
-#~ msgid "Post Processing"
-#~ msgstr "Пост-обработка"
-
-#~ msgid "Create frame around image"
-#~ msgstr "Создать рамку вокруг изображения"
-
-#~ msgid "Frame Width (pixels)"
-#~ msgstr "Ширина рамки (точек растра)"
-
-#~ msgid "Mirror image vertically"
-#~ msgstr "Отразить изображение вертикально"
-
-#~ msgid "Mirror image horizontally"
-#~ msgstr "Отразить изображение горизонтально"
-
-#~ msgid "Emboss image"
-#~ msgstr "Рельефное преобразование"
-
-#~ msgid ""
-#~ "When finished, send image and thumbnail filenames to script/program below"
-#~ msgstr ""
-#~ "После окончания послать изображение и имена файлов миниатюр в указанную "
-#~ "ниже программу"
-
-#~ msgid "Script or program to launch:"
-#~ msgstr "Скрипт или программа для запуска:"
-
-#~ msgid ""
-#~ "Script/program will be launched after image creation with the image "
-#~ "filenames\n"
-#~ "specified on the commandline as follows:\n"
-#~ "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
-#~ "Hint: I use a script to update my website screenshot page.\n"
-#~ "An example script should've been included in the tarball, or at my "
-#~ "website."
-#~ msgstr ""
-#~ "Скрипт или программа, которые будут запускаться после создания "
-#~ "изображения с именем файла изображения\n"
-#~ "указанным в командной строке следующим образом:\n"
-#~ "{Название_скрипта} {Имя_файла_изображения} "
-#~ "{Имя_файла_миниатюры_если_есть}\n"
-#~ "Совет: я использую скрипт для обновления моей страницы со снимками "
-#~ "экрана.\n"
-#~ "Пример скрипт должен быть включен в поставку или возьмите его на моем "
-#~ "сайте."
-
-#~ msgid "Frills"
-#~ msgstr "Оборки"
-
-#~ msgid "Blur image"
-#~ msgstr "Размыть изображение"
-
-#~ msgid "Blur image by what factor?"
-#~ msgstr "Размыть изображение по какому фактору?"
-
-#~ msgid "Create Charcoal Effect"
-#~ msgstr "Создать эффект угля"
-
-#~ msgid "Charcoal by what factor?"
-#~ msgstr "Эффект угля по какому показателю?"
-
-#~ msgid "Find Edges in Image"
-#~ msgstr "Найти края в изображении"
-
-#~ msgid "Find edges by what factor?"
-#~ msgstr "Найти края по какому показателю?"
-
-#~ msgid "Implode Image"
-#~ msgstr "Взрыть изображение"
-
-#~ msgid "Implode by what factor?"
-#~ msgstr "Взрыть по какому показателю?"
-
-#~ msgid "Spurious"
-#~ msgstr "Подделка"
-
-#~ msgid "Create Painted Effect"
-#~ msgstr "Создать эффект кисти"
-
-#~ msgid "Paint what radius around each pixel?"
-#~ msgstr "Каким радиусом рисовать вокруг каждой точки растра?"
-
-#~ msgid "Solarise Image"
-#~ msgstr "Соляризовать изображение"
-
-#~ msgid "Solarize factor?"
-#~ msgstr "Показатель соляризации?"
-
-#~ msgid "Spread image pixels"
-#~ msgstr "Рассеять точки растра изображения"
-
-#~ msgid "Radius to around each pixel to spread?"
-#~ msgstr "Радиус рассеяния вокруг каждой точки растра?"
-
-#~ msgid "Swirl pixels. My favorite :-)"
-#~ msgstr "Вихрь точек растра. Мое любимое :-)"
-
-#~ msgid "Radius to swirl pixels around?)"
-#~ msgstr "Радиус вихря точек растра?"
-
-#~ msgid "Spurious 2"
-#~ msgstr "Подделка 2"
-
-#~ msgid "Grab a shot of a specific window or area"
-#~ msgstr "Захватить снимок указанного окна или области"
-
-#~ msgid "Grab a shot of your entire desktop"
-#~ msgstr "Захватить снимок всего рабочего стола"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the directory box\n"
-#~ "Screenshot aborted"
-#~ msgstr ""
-#~ "Возникла ошибка расширения слова\n"
-#~ "Я думаю, у вас что-то забавное в строке каталога\n"
-#~ "Снимок экрана отменен"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the filename box\n"
-#~ "Screenshot aborted"
-#~ msgstr ""
-#~ "Возникла ошибка расширения слова\n"
-#~ "Я думаю, у вас что-то забавное в строке имени файла\n"
-#~ "Снимок экрана отменен"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the filename box"
-#~ msgstr ""
-#~ "Возникла ошибка расширения слова\n"
-#~ "Я думаю, у вас что-то забавное в строке имени файла"
-
-#~ msgid ""
-#~ "The specified filename:\n"
-#~ "%s\n"
-#~ "expands to:\n"
-#~ "%s\n"
-#~ "when passed to a shell"
-#~ msgstr ""
-#~ "Указанное имя файла:\n"
-#~ "%s\n"
-#~ "расширяется до:\n"
-#~ "%s\n"
-#~ "когда передается в оболочку"
-
-#~ msgid "Screen Shooter is a screenshot grabber"
-#~ msgstr "Захватыватель снимков экрана"
-
-#~ msgid "ScreenShooter"
-#~ msgstr "Захватыватель экрана"
-
-#~ msgid "Site"
-#~ msgstr "Сайт"
-
-#~ msgid "Slashdot"
-#~ msgstr "Slashdot"
-
-#~ msgid "Gnotices"
-#~ msgstr "Gnotices"
-
-#~ msgid "Articles"
-#~ msgstr "Статьи"
-
-#~ msgid "Delay between articles (10 = 1 sec):"
-#~ msgstr "Интервал между статьями (10 = 1 сек):"
-
-#~ msgid "Use Proxy"
-#~ msgstr "Использовать proxy"
-
-#~ msgid "Proxy Host: "
-#~ msgstr "Адрес proxy:"
-
-#~ msgid "Proxy Port: "
-#~ msgstr "Порт proxy:"
-
-#~ msgid "(These settings do not take effect until a refresh)"
-#~ msgstr "(Изменения не возымеют эффекта до обновления статей)"
-
-#~ msgid "Scrolling"
-#~ msgstr "Прокрутка"
-
-#~ msgid "Smooth scroll"
-#~ msgstr "Плавная прокрутка"
-
-#~ msgid "Smooth type"
-#~ msgstr "Медленная печать"
-
-#~ msgid "Speed"
-#~ msgstr "Скорость"
-
-#~ msgid "Delay when wrapping text:"
-#~ msgstr "Задержка при переносе строки:"
-
-#~ msgid "Scroll speed between lines (Smooth scroll):"
-#~ msgstr "Скорость прокрутки (плавная прокрутка):"
-
-#~ msgid "Show last news from slashdot.org"
-#~ msgstr "Показать последние новости с slashdot.org"
-
-#~ msgid "SlashApp"
-#~ msgstr "SlashApp"
-
-#~ msgid "Loading headlines..."
-#~ msgstr "Загрузка заголовков..."
-
-#~ msgid "Unable to create user directory: %s\n"
-#~ msgstr "Невозможно создать каталог пользователя: %s\n"
-
-#~ msgid "%d.%d.%d"
-#~ msgstr "%d.%d.%d"
-
-#~ msgid "Justin Maurer <justin@helixcode.com>"
-#~ msgstr "Justin Maurer <justin@helixcode.com>"
-
-#~ msgid "Craig Small <csmall@eye-net.com.au>"
-#~ msgstr "Craig Small <csmall@eye-net.com.au>"
-
-#~ msgid "Frederic Devernay <devernay@istar.fr>"
-#~ msgstr "Frederic Devernay <devernay@istar.fr>"
-
-#~ msgid "(C) 1998-2000"
-#~ msgstr "(C) 1998-2000"
-
-#~ msgid "A stock ticker-like applet\n"
-#~ msgstr "Апплет котировок акций\n"
-
-#~ msgid "SlashApp Article List"
-#~ msgstr "Список статей Slashapp"
-
-#~ msgid "No articles"
-#~ msgstr "Нет статей"
-
-#~ msgid "Unable to parse document\n"
-#~ msgstr "Не удалось проанализировать документ\n"
-
-#~ msgid "Can't parse XML. Net connection down?"
-#~ msgstr "Невозможно проанализировать XML. Рухнуло сетевое соединение?"
-
-#~ msgid "Unable to initialize request. Shouldn't happen\n"
-#~ msgstr "Не удалось инициализировать запрос. Это не должно было случиться\n"
-
-#~ msgid "Unable to prepare request.\n"
-#~ msgstr "Не удалось подготовить запрос.\n"
-
-#~ msgid "Unable to process request.\n"
-#~ msgstr "Не удалось обработать запрос.\n"
-
-#~ msgid "No title"
-#~ msgstr "Без заголовка"
-
-#~ msgid "No url"
-#~ msgstr "Нет URL"
-
-#~ msgid "(C) 2000 John Ellis"
-#~ msgstr "(C) 2000 John Ellis"
-
-#~ msgid ""
-#~ "Sound monitor interface to Esound\n"
-#~ "\n"
-#~ "Released under the GNU general public license."
-#~ msgstr ""
-#~ "Интерфейс звукового монитора к Esound\n"
-#~ "\n"
-#~ "Распространяется по лицензии GNU GPL."
-
-#~ msgid "Place Esound in standby"
-#~ msgstr "Переключить Esound в режим ожидания"
-
-#~ msgid "Resume Esound"
-#~ msgstr "Восстановить Esound"
-
-#~ msgid "Start Esound"
-#~ msgstr "Запустить Esound"
-
-#~ msgid "Manager..."
-#~ msgstr "Диспетчер..."
-
-#, fuzzy
-#~ msgid "Time"
-#~ msgstr "изображение"
-
-#, fuzzy
-#~ msgid "Id"
-#~ msgstr "I"
-
-#, fuzzy
-#~ msgid "Rate"
-#~ msgstr "дата"
-
-#, fuzzy
-#~ msgid "Format"
-#~ msgstr "Прогноз"
-
-#
-#, fuzzy
-#~ msgid "Sound Monitor - Manager"
-#~ msgstr "Звуковой монитора"
-
-#, fuzzy
-#~ msgid "Connected streams:"
-#~ msgstr "Состояние соединения"
-
-#, fuzzy
-#~ msgid "Streams"
-#~ msgstr "Юго-Восточный"
-
-#~ msgid "Balance"
-#~ msgstr "Баланс"
-
-#~ msgid ""
-#~ "You have enabled the \"Monitor sound input\" option.\n"
-#~ "\n"
-#~ "If your sound card is not fully 100% FULL DUPLEX (can do input and output "
-#~ "simultaneously),\n"
-#~ "then this may touch bugs in sound drivers/esound that may hang the "
-#~ "system.\n"
-#~ "\n"
-#~ "You have been warned!"
-#~ msgstr ""
-#~ "Вы включили параметр \"Монитор входящего звука\".\n"
-#~ "\n"
-#~ "Если ваша звуковая карта не полнодуплексная (не может одновременно "
-#~ "вводить и выводить звук),\n"
-#~ "тогда это может вызвать ошибки в звуковом драйвере/esound и может "
-#~ "подвесить\n"
-#~ "вашу систему\n"
-#~ "Вас предупредили!"
-
-#
-#, fuzzy
-#~ msgid "Sound Monitor Applet Settings"
-#~ msgstr "Апплет звукового монитора"
-
-#~ msgid "off"
-#~ msgstr "выкл"
-
-#~ msgid "active"
-#~ msgstr "актив."
-
-#~ msgid "smooth"
-#~ msgstr "гладк."
-
-#~ msgid "Peak indicator falloff speed"
-#~ msgstr "Скорость спада индикатора пиков"
-
-#~ msgid "Scope (scale 1:X, where X = ? )"
-#~ msgstr "Размах (масштаб 1:X, где X = ? )"
-
-#~ msgid "Connect points in scope"
-#~ msgstr "Объединение точек в размехе"
-
-#~ msgid "Screen refresh (frames per second)"
-#~ msgstr "Обновление экрана (кадров в секунду)"
-
-#~ msgid "ESD host to monitor:"
-#~ msgstr "Хост ESD для наблюдения:"
-
-#~ msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-#~ msgstr ""
-#~ "Монитор входящего звука (используйте только с ПОЛНОДУПЛЕКСНЫМИ звуковыми "
-#~ "картами)"
-
-#~ msgid "ESounD Persistent Volume Daemon version %s\n"
-#~ msgstr "Демон постоянной громкости ESounD версия %s\n"
-
-#~ msgid "options:\n"
-#~ msgstr "параметры:\n"
-
-#, fuzzy
-#~ msgid "  -n, --noX     Allow to run without X server\n"
-#~ msgstr "  -n, --noX     Позволить запускаться с X-сервером\n"
-
-#
-#~ msgid "Sound Monitor for Esound"
-#~ msgstr "Звуковой монитор для Esound"
-
-#~ msgid "Tick-a-Stat event log"
-#~ msgstr "Бегущая строка журнала событий"
-
-#~ msgid "%Y%m%d-%H-%M-%S"
-#~ msgstr "%Y%m%d-%H-%M-%S"
-
-#~ msgid "%m-%d-%Y %H:%M:%S"
-#~ msgstr "%m-%d-%Y %H:%M:%S"
-
-#~ msgid "Tick-a-Stat"
-#~ msgstr "Бегущая строка"
-
-#~ msgid "(C) 1999 John Ellis"
-#~ msgstr "(C) 1999 John Ellis"
-
-#~ msgid "A ticker to display various information and statistics.\n"
-#~ msgstr "Бегущая строка показывающая различную информацию и статистику.\n"
-
-#~ msgid "unable to create user directory: %s\n"
-#~ msgstr "невозможно создать каталог пользователя: %s\n"
-
-#~ msgid "The unique information and status ticker."
-#~ msgstr "Бегущая строка с уникальной информацией и состоянием."
-
-#~ msgid "Event log..."
-#~ msgstr "Журнал событий..."
-
-#~ msgid "Core dump information (Tick-a-Stat)"
-#~ msgstr "Информация дампа ядра (Бегущая строка)"
-
-#~ msgid "Core dump module (Tick-A-Stat)"
-#~ msgstr "Модуль дампа ядра (Бегущая строка)"
-
-#~ msgid ""
-#~ "The core dump module is\n"
-#~ "processing a core file..."
-#~ msgstr ""
-#~ "Модуль дампа ядра\n"
-#~ "обрабатывает файлы core..."
-
-#~ msgid "Core Dump Module"
-#~ msgstr "Модуль дампа ядра"
-
-#~ msgid "Enable this module"
-#~ msgstr "Включить этот модуль"
-
-#~ msgid "Show backtrace dialog on new core files"
-#~ msgstr "Показать диалог обратной трассировки на новых файлах core"
-
-#~ msgid "Path to monitor:"
-#~ msgstr "Путь для отслеживания:"
-
-#~ msgid "Core dump catcher"
-#~ msgstr "Ловец дампов ядра"
-
-#~ msgid ""
-#~ "This module monitors a path for core dumps, if one is\n"
-#~ " found it is time stamped and a backtrace logged (using gdb)."
-#~ msgstr ""
-#~ "Этот модуль проверяет путь на наличие дампов ядра, если он находит их,\n"
-#~ "то проставляет отметку времени и регистрирует результат трассировки "
-#~ "(используя gdb)."
-
-#~ msgid "Load Average information (Tick-a-Stat)"
-#~ msgstr "Информация о средней загрузке (Tick-a-Stat)"
-
-#~ msgid "The Load average is very high."
-#~ msgstr "Средняя загрузка очень высокая."
-
-#~ msgid "Load average is at a critical point, help me!"
-#~ msgstr "Средняя загрузка на критической отметке, помогите!"
-
-#~ msgid "Load Average Module"
-#~ msgstr "Модуль средней загрузки"
-
-#~ msgid "Check every:"
-#~ msgstr "Проверять каждые:"
-
-#~ msgid "Warning options"
-#~ msgstr "Параметры предупреждения"
-
-#~ msgid "Show pop-up dialog for this event"
-#~ msgstr "Показывать всплывающий диалог для этого события"
-
-#~ msgid "Load average threshhold:"
-#~ msgstr "Порог средней загрузки:"
-
-#~ msgid "Text to display:"
-#~ msgstr "Отображаемый текст:"
-
-#~ msgid "Alert options"
-#~ msgstr "Параметры тревоги"
-
-#~ msgid "Load average monitor"
-#~ msgstr "Монитор средней загрузки"
-
-#~ msgid ""
-#~ "This module monitors the system load average,\n"
-#~ " and displays warning when it rises above certain points."
-#~ msgstr ""
-#~ "Этот модуль следит за средней загрузкой системы,\n"
-#~ "и отображает предупреждение когда она превышает указанную отметку."
-
-#~ msgid "script \""
-#~ msgstr "скрипт \""
-
-#~ msgid "Tick-a-Stat script encountered an error:\n"
-#~ msgstr "Скрипт бегущей строки обнаружил ошибку:\n"
-
-#~ msgid "Enabled"
-#~ msgstr "Включено"
-
-#~ msgid "Line delay"
-#~ msgstr "Задержка строки"
-
-#~ msgid "Update interval"
-#~ msgstr "Период обновления"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgid "T"
-#~ msgstr "T"
-
-#~ msgid "I"
-#~ msgstr "I"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "News and Information Module"
-#~ msgstr "Модуль новостей и информации"
-
-#~ msgid "Line (s):"
-#~ msgstr "Строка (s)"
-
-#~ msgid "Update (m):"
-#~ msgstr "Обновить (m):"
-
-#~ msgid "body"
-#~ msgstr "тело"
-
-#~ msgid "image"
-#~ msgstr "изображение"
-
-#~ msgid "date"
-#~ msgstr "дата"
-
-#~ msgid "Show:"
-#~ msgstr "Показать:"
-
-#~ msgid "News and information ticker"
-#~ msgstr "Отображение новостей и информации"
-
-#~ msgid "This module can display news and other information."
-#~ msgstr "Этот модуль может показывать новости и другую информацию."
-
-#~ msgid "File tail view file (Tick-a-Stat)"
-#~ msgstr "Просмотр хвоста файла (Бегущая строка)"
-
-#~ msgid "no file specified"
-#~ msgstr "файл не указан"
-
-#~ msgid "File tail information (Tick-a-Stat)"
-#~ msgstr "Информация хвоста файла (Бегущая строка)"
-
-#~ msgid "File tail for "
-#~ msgstr "Хвост файла для "
-
-#~ msgid "File Tail Module"
-#~ msgstr "Модуль хвоста файла"
-
-#~ msgid "Path to tail:"
-#~ msgstr "Путь к программе tail:"
-
-#~ msgid "Choose a file to tail"
-#~ msgstr "Выберите файл для показа хвоста"
-
-#~ msgid "Show pop up dialog for new lines."
-#~ msgstr "Показывать всплывающий диалог для новых строк."
-
-#~ msgid "File tailer"
-#~ msgstr "Хвост файла"
-
-#~ msgid ""
-#~ "This module monitors a file for appended text,\n"
-#~ " and prints it. Useful for log files."
-#~ msgstr ""
-#~ "Этот модуль отслеживает добавление текста к файлу,\n"
-#~ "и печатает его. Полезно для регистрационных файлов."
-
-#~ msgid "Test Module"
-#~ msgstr "Тестовый модуль"
-
-#~ msgid "This is the test module's description line."
-#~ msgstr "Это строка описания тестового модуля."
-
-#~ msgid "Modules"
-#~ msgstr "Модули"
-
-#~ msgid "Event Log"
-#~ msgstr "Журнал событий"
-
-#~ msgid "Enable logging of events"
-#~ msgstr "Включить регистрацию событий"
-
-#~ msgid "Log path:"
-#~ msgstr "Путь к журналу:"
-
-#~ msgid "Choose a log file"
-#~ msgstr "Выбрать регистрационный файл"
-
-#~ msgid "Width:"
-#~ msgstr "Ширина:"
-
-#~ msgid "Use panel size hint"
-#~ msgstr "Использовать размер панели"
-
-#~ msgid "Info and status ticker"
-#~ msgstr "Бегущая строка с уникальной информацией и состоянием."
-
-#~ msgid "Configure Browser"
-#~ msgstr "Настройка программы просмотра"
-
-#~ msgid "Browser Name:"
-#~ msgstr "Название программы просмотра:"
-
-#~ msgid "Browser Command:"
-#~ msgstr "Команда запуска:"
-
-#~ msgid "New Window Option:"
-#~ msgstr "Параметр нового окна:"
-
-#~ msgid "No New Window Option:"
-#~ msgstr "Нет параметра нового окна:"
-
-#~ msgid "URL bar width:"
-#~ msgstr "Ширина строки URL:"
-
-#~ msgid "Display GO Button"
-#~ msgstr "Показать кнопку \"Иди\""
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Показать параметр \"запустить новое окно\""
-
-#~ msgid "Display \"Clear\" button"
-#~ msgstr "Показать кнопку \"Очистить\""
-
-#~ msgid "\"Clear\" button on top?"
-#~ msgstr "Кнопка \"Очистить\" наверху?"
-
-#~ msgid " URL Activation "
-#~ msgstr " Активация URL "
-
-#~ msgid "Use default MIME handler"
-#~ msgstr "Использовать обработчик MIME по умолчанию"
-
-#~ msgid "Use custom browser:"
-#~ msgstr "Использовать пользовательскую программу просмотра:"
-
-#~ msgid "Remove"
-#~ msgstr "Удалить"
-
-#~ msgid " URL History "
-#~ msgstr " История URL "
-
-#~ msgid "Size of URL history: "
-#~ msgstr "Размер истории URL: "
-
-#~ msgid "Clear"
-#~ msgstr "Очистить"
-
-#~ msgid "all entries in URL history"
-#~ msgstr "все записи в истории URL"
-
-#~ msgid "The Web Browser Controller"
-#~ msgstr "Контроллер Web-навигатора"
-
-#~ msgid ""
-#~ "An applet to launch URLs in a web browser, search using various web sites "
-#~ "and have a ton of fun!"
-#~ msgstr ""
-#~ "Апплет для открытия URL в программе просмотра Web, поиска с "
-#~ "использованием различных сайтов и прочих развлечений!"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"
-
-#~ msgid " GO "
-#~ msgstr " ИДИ "
-
-#~ msgid " Clear "
-#~ msgstr " Очистить "
-
-#~ msgid "Launch new window"
-#~ msgstr "Открыть новое окно"
-
-#~ msgid "Where Am I?"
-#~ msgstr "Где я нахожуся?"
-
-#~ msgid "Copyright 1999 John Kodis"
-#~ msgstr "Авторское право 1999 John Kodis"
-
-#~ msgid "whereami_applet"
-#~ msgstr "апплет Где это я?"
-
-#~ msgid "Shows Cursor Position"
-#~ msgstr "Показывает положение курсора"
-
-#~ msgid "Clipboard"
-#~ msgstr "Буфер обмена"
-
-#~ msgid "Copy multiple selections into a persistant clipboard"
-#~ msgstr "Копирование множества выделений в устойчивый буфер обмена"
-
-#~ msgid "character picker"
-#~ msgstr "Наборщик"
-
-#~ msgid "keymap_%d/flag=us.png"
-#~ msgstr "keymap_%d/flag=us.png"
-
-#, fuzzy
-#~ msgid "In"
-#~ msgstr "I"
-
-#, fuzzy
-#~ msgid "Out"
-#~ msgstr "Подчеркнутый"
-
-#, fuzzy
-#~ msgid "Page Load"
-#~ msgstr "Загрузка процессора"
-
-#, fuzzy
-#~ msgid "PAGE Load"
-#~ msgstr "Загрузка процессора"
-
-#~ msgid ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-#~ msgstr ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-
-#~ msgid "Update enabled"
-#~ msgstr "Обновление разрешено"
-
-#~ msgid "(sec)"
-#~ msgstr "(сек)"
-
-#~ msgid "Basic"
-#~ msgstr "Основа"
+msgstr "Рабочие места"
