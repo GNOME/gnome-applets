@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://cdedesk2.ireland/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.5.4">
-  <!ENTITY manrevision "2.5">
-  <!ENTITY date "February 2004">
+  <!ENTITY appletversion "2.8">
+  <!ENTITY manrevision "2.8">
+  <!ENTITY date "September 2004">
   <!ENTITY applet "Stock Ticker">
 ]>
 
@@ -21,13 +21,17 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-	 <title>&applet; Applet Manual V&manrevision;</title> 
+	 <title>&applet; Applet Manual V2.6</title> 
 	 <copyright> 
 		<year>2002</year> 
 		<year>2003</year> 
 		<year>2004</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
+	 <copyright>
+	   <year>2004</year>
+	   <holder>Angela Boyle</holder>
+	 </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
@@ -51,6 +55,10 @@
 			 <address></address> 
 		  </affiliation> 
 		</author> 
+		<author>
+		  <firstname>Angela</firstname>
+		  <surname>Boyle</surname>
+		</author>
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
            <othercredit role="translator">
@@ -66,9 +74,25 @@
 	 </authorgroup>
 
 	 <revhistory>
+	   <revision>
+	     <revnumber>Version &manrevision;</revnumber>
+	     <date>&date;</date>
+	     <revdescription>
+	       <para role="author">Angela Boyle</para>
+	       <para role="publisher">GNOME Documentation Project</para>
+	     </revdescription>
+	   </revision>
 		<revision> 
-		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
-		  <date>&date;</date> 
+		  <revnumber>&applet; Applet Manual V2.6</revnumber> 
+		  <date>August 2004</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Stock Ticker Applet Manual V2.5</revnumber> 
+		  <date>February 2004</date> 
 		  <revdescription> 
 			 <para role="author">Sun GNOME Documentation Team</para> 
 			 <para role="publisher">GNOME Documentation Project</para> 
@@ -130,9 +154,9 @@
 	 <primary>ticker, stock</primary> 
   </indexterm> 
 <!-- ============= Document Body ============================= -->
-
+<!-- ============= Introduction ============================= -->
 <sect1 id="gtik-introduction">
-<title>Introduction</title>
+    <title>Introduction</title>
 	 <!-- ==== Figure ============================================= -->
 	 <figure id="stockticker-fig"> 
 		<title>&applet; Applet</title> 
@@ -147,174 +171,132 @@
 		</screenshot> 
 	 </figure> 
     	 <!-- ==== End of Figure ======================================= -->
-<para>The <application>&applet;</application> applet downloads current stock quotes from Yahoo! Finance and displays the quotes in a scrolling display. </para>
-<note id="proxies-note-1">
-<para>If your computer is located behind a firewall you must use a proxy server to run <application>&applet;</application> successfully. For more information about how to specify a proxy server, see <xref linkend="gtik-set-proxy"/>.</para>
-</note>
-<para><application>&applet;</application> displays the following information for each stock symbol that is defined in the applet preferences:</para>
-<itemizedlist>
-<listitem><para>The stock symbol that represents a company.</para></listitem>
-<listitem><para>The current quote.</para></listitem>
-<listitem><para>An arrow to indicate an increase or decrease in the quote.</para></listitem>
-<listitem><para>The amount of the increase or decrease in the quote.</para></listitem>
-<listitem><para>The percentage of the increase or decrease in the quote.</para></listitem>
-</itemizedlist>
+    <para>The <application>&applet;</application> applet downloads current stock quotes from Yahoo! Finance and displays the quotes in a scrolling display. </para>
+    <note id="proxies-note-1">
+        <para>If your computer is located behind a firewall you must use a proxy server to run <application>&applet;</application> successfully. To configure the GNOME Desktop to use a proxy server, use your preference tools to specify the network proxy server for Internet connections.</para>
+    </note>
+    <para><application>&applet;</application> displays the following information for each stock symbol that is defined in the applet preferences:</para>
+    <itemizedlist>
+        <listitem><para>The stock symbol that represents a company.</para></listitem>
+        <listitem><para>The current quote.</para></listitem>
+        <listitem><para>An arrow to indicate an increase or decrease in the quote.</para></listitem>
+        <listitem><para>The amount of the increase or decrease in the quote.</para></listitem>
+        <listitem><para>The percentage of the increase or decrease in the quote.</para></listitem>
+    </itemizedlist>
 
     <sect2 id="gtik-introduction-add">
       <title>To Add &applet; to a Panel</title>
-      <para>
-        To add &applet; to a panel, right-click on the panel, then choose <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Accessories</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>.
-      </para>
+      <para>To add <application>&applet;</application> to a panel,
+      right-click on the panel, then choose <guimenuitem>Add to
+      Panel</guimenuitem>.  Select <application>&applet;</application>
+      in the <application>Add to the panel</application> dialog, then
+      click <guibutton>OK</guibutton>.</para>
     </sect2>
 
 </sect1>
-
+<!-- ============= Usage ============================= -->
 <sect1 id="gtik-usage">
-<title>Usage</title>
+    <title>Using &applet;</title>
 
-<sect2 id="gtik-move-forward-back">
-<title>To Move Forwards or Backwards in the Stock Display</title>
-<para>To move forwards or backwards in the scrolling display, use the arrow buttons located at the right and left of the applet display. </para>
-</sect2>
+    <sect2 id="gtik-move-forward-back">
+        <title>To Move Forwards or Backwards in the Stock Display</title>
+        <para>To move forwards or backwards in the scrolling display, use the arrow buttons located at the right and left of the applet display. </para>
+    </sect2>
 
-<sect2 id="gtik-add-stocks">
-<title>To Add Company Stock Quotes to the Applet</title>
-<para>See <xref linkend="gtik-settings-symbols"/> for information about how to add stock quotes to the applet display. </para>
-</sect2>
+    <sect2 id="gtik-add-stocks">
+        <title>To Add Company Stock Quotes to the Applet</title>
+        <para>Under the right-click menu, choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Symbols</guilabel> tabbed section contains a list of stock quotes displayed by <application>&applet;</application>. You can add stock quotes to the <guilabel>Current stocks</guilabel> list, and remove stock quotes.</para>
+        <para>To add a stock quote to the <guilabel>Current stocks</guilabel> list, perform the following steps:</para>
+        <orderedlist>
+            <listitem><para>Identify the stock symbol for the company. </para></listitem>
+            <listitem><para>Type the stock symbol for the company in the <guilabel>New symbol</guilabel> text box.</para></listitem>
+            <listitem><para>Click <guibutton>Add</guibutton>.</para></listitem>
+            <listitem><para>Click <guibutton>Close</guibutton> to save the change and close the dialog.</para></listitem>
+        </orderedlist>
 
-<sect2 id="gtik-refresh">
-<title>To Update the Display</title>
-<para>See <xref linkend="gtik-settings-behavior"/> for information about how to set the update frequency of stock information. To immediately update the information that is displayed in the applet, right-click on the applet, then choose <guimenuitem>Update</guimenuitem>. </para>
-</sect2>
+        <para>To remove a stock quote from the <guilabel>Current stocks</guilabel> list, perform the following steps:</para>
+        <orderedlist>
+            <listitem><para>Select the stock symbol for the company.</para></listitem>
+            <listitem><para>Click <guibutton>Remove</guibutton>.</para></listitem>
+            <listitem><para>Click <guibutton>Close</guibutton> to save the change and close the dialog.</para></listitem>
+        </orderedlist>
+    </sect2>
 
+    <sect2 id="gtik-refresh">
+        <title>To Update the Display</title>
+        <para>To immediately update the information that is displayed in the applet, right-click on the applet, then choose <guimenuitem>Update</guimenuitem>. </para>
+        <para>You can also set the frequency that &applet; automatically updates. Choose <guimenuitem>Preferences</guimenuitem> under the right click menu and go to the <guilabel>Behavior</guilabel> tab. Use the <guilabel>Stock update frequency ... minutes</guilabel> spin box to increase or decrease the frequency at which the applet downloads the latest stock information from the Internet. </para>	
+    </sect2>
+    <sect2 id="gtik-scrolling">
+        <title>Customizing the Scroll</title>
+        <para>To adjust the aspects of the scrolling, choose <guimenuitem>Preferences</guimenuitem> under the right click menu and go to the <guilabel>Behavior</guilabel> tab. </para>
+        <variablelist>
+            <varlistentry>
+                <term>To change the scroll speed </term>
+                <listitem><para>Use the <guilabel>Scroll speed</guilabel> drop-down list to change the speed at which the applet displays the quotes in the scrolling display.</para></listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Enable scroll buttons</guilabel> </term>
+                <listitem><para>Select this option to display forward and back arrow buttons on the applet to enable you to move forwards or backwards in the applet display. </para></listitem>
+            </varlistentry>
+            <varlistentry>
+                <term><guilabel>Scroll left to right</guilabel> </term>
+                <listitem><para>Select this option to reverse the direction in which the applet display scrolls. If you select this option, the display scrolls from left to right instead of from right to left. </para></listitem>
+            </varlistentry>
+        </variablelist>
+    </sect2>
 </sect1>
-
+<!-- ============= Document Body ============================= -->
 <sect1 id="gtik-settings">
-<title>Preferences</title>
+    <title>Appearance</title>
+    <para>Choose <guimenuitem>Preferences</guimenuitem> under the right click menu and go to the <guilabel>Appearance</guilabel> tab. </para>
+    <sect2 id="gtik-display">
+        <title>Changing the Displayed Options</title>
+        <para>Select the <guilabel>Display only symbols and price</guilabel> option to only display the company symbol and the current stock quote in the applet display.</para>
+    </sect2>
 
-<sect2 id="gtik-set-proxy">
-<title>To Set a Proxy Server</title>
-<para>If your computer is located behind a firewall you must use a proxy server to run <application>&applet;</application> successfully. To configure the GNOME Desktop to use a proxy server, use your preference tools to specify the network proxy server for Internet connections.</para>
-</sect2>
+    <sect2 id="gtik-size">
+        <title>To Adjust the Width</title>
+        <para>Use the <guilabel>Width ... pixels</guilabel> spin box to increase or decrease the width of the applet in the panel.</para>
+    </sect2>
 
-<sect2 id="gtik-configure">
-<title>To Configure &applet;</title>
-<para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenu>Preferences</guimenu>. The <guilabel>Stock Ticker Preferences</guilabel> dialog contains the following tabbed sections:</para>
-<itemizedlist>
-<listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
-<listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
-<listitem><para><xref linkend="gtik-settings-appearance"/></para></listitem>
-</itemizedlist>
+    <sect2 id="gtik-fonts-colors">
+        <title>Changing Fonts and Colors</title>
+            <variablelist>
+                <varlistentry>
+                    <term>Changing Default Font and Color </term>
+                    <listitem><para>Select the <guilabel>Use default theme font and colors</guilabel> option to use the standard application font and colors for the applet. If you deselect this option, the remaining options in the <guilabel>Font and Colors</guilabel> group box are available. </para></listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Font</term>
+                <listitem><para>Click on the <guilabel>Font</guilabel> button to choose the font to use to display the stock symbol and current price. </para></listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Color</term>
+                <listitem>
+                    <variablelist>
+                        <varlistentry>
+                            <term>Raised Stock</term>
+                            <listitem><para>Click on the <guilabel>Stock raised</guilabel> button to select a color to display stock quotes that are higher than the previous stock quote. Click on the color button to display a color selector dialog. Use the <guilabel>Palette</guilabel>, color wheel, or spin boxes on the color selector dialog to choose a color. </para></listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Lower Stock</term>
+                            <listitem><para>Click on the <guilabel>Stock lowered</guilabel> button to select a color to display stock quotes that are lower than the previous stock quote. </para></listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Unchanged Stock</term>
+                            <listitem><para>Click on the <guilabel>Stock unchanged</guilabel> button to select a color to display stock quotes that are unchanged since the previous stock quote.  </para></listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>Background</term>
+                            <listitem><para>Click on the <guilabel>Background</guilabel> button to select a background color for the display area of the applet. </para></listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
+            </varlistentry>
+        </variablelist>
 
-<sect3 id="gtik-settings-symbols">
-<title>Symbols</title>
-<para>The <guilabel>Symbols</guilabel> tabbed section contains a list of stock quotes displayed by <application>&applet;</application>. You can add stock quotes to the <guilabel>Current stocks</guilabel> list, and remove stock quotes.</para>
-<para>To add a stock quote to the <guilabel>Current stocks</guilabel> list, perform the following steps:</para>
-<orderedlist>
-<listitem><para>Identify the stock symbol for the company. </para></listitem>
-<listitem><para>Type the stock symbol for the company in the <guilabel>New symbol</guilabel> text box.</para></listitem>
-<listitem><para>Click <guibutton>Add</guibutton>.</para></listitem>
-<listitem><para>Click <guibutton>Close</guibutton> to save the change and close the dialog.</para></listitem>
-</orderedlist>
-
-<para>To remove a stock quote from the <guilabel>Current stocks</guilabel> list, perform the following steps:</para>
-<orderedlist>
-<listitem><para>Select the stock symbol for the company.</para></listitem>
-<listitem><para>Click <guibutton>Remove</guibutton>.</para></listitem>
-<listitem><para>Click <guibutton>Close</guibutton> to save the change and close the dialog.</para></listitem>
-</orderedlist>
-
-</sect3>
-
-<sect3 id="gtik-settings-behavior">
-
-<title>Behavior</title>
-<variablelist>
-<varlistentry>
-<term><guilabel>Stock update frequency ... minutes</guilabel> </term>
-<listitem>
-<para>Use this spin box to increase or decrease the frequency at which the applet downloads the latest stock information from the Internet. </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Scroll speed</guilabel> </term>
-<listitem>
-<para>Use this drop-down list to change the speed at which the applet displays the quotes in the scrolling display.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Enable scroll buttons</guilabel> </term>
-<listitem>
-<para>Select this option to display forward and back arrow buttons on the applet to enable you to move forwards or backwards in the applet display. </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Scroll left to right</guilabel> </term>
-<listitem>
-<para>Select this option to reverse the direction in which the applet display scrolls. If you select this option, the display scrolls from left to right instead of from right to left. </para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-</sect3>
-
-<sect3 id="gtik-settings-appearance">
-<title>Appearance</title>
-<variablelist>
-<varlistentry>
-<term><guilabel>Display only symbols and price</guilabel> </term>
-<listitem>
-<para>Select this option to only display the company symbol and the current stock quote in the applet display.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Width ... pixels</guilabel> </term>
-<listitem>
-<para>Use this spin box to increase or decrease the width of the applet in the panel.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Use default theme font and colors</guilabel> </term>
-<listitem>
-<para>Select this option to use the standard application font and colors for the applet. If you deselect this option, the remaining options in the <guilabel>Font and Colors</guilabel> group box are available. </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Font</guilabel> </term>
-<listitem>
-<para>Click on this button to choose the font to use to display the stock symbol and current price. </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Stock raised</guilabel> </term>
-<listitem>
-<para>Click on this button to select a color to display stock quotes that are higher than the previous stock quote. Click on the color button to display a color selector dialog. Use the <guilabel>Palette</guilabel>, color wheel, or spin boxes on the color selector dialog to choose a color. </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Stock lowered</guilabel> </term>
-<listitem>
-<para>Click on this button to select a color to display stock quotes that are lower than the previous stock quote. </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Stock unchanged</guilabel> </term>
-<listitem>
-<para>Click on this button to select a color to display stock quotes that are unchanged since the previous stock quote.  </para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Background</guilabel> </term>
-<listitem>
-<para>Click on this button to select a background color for the display area of the applet. </para>
-</listitem>
-</varlistentry>
-
-</variablelist>
-
-</sect3>
-
-</sect2>
+    </sect2>
 
 </sect1>
 
