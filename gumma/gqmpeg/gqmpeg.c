@@ -69,7 +69,7 @@ typedef struct {
 static gchar *cmds[] = { "play",
 			 "pause",
 			 "stop",
-			 NULL,
+			 "show_playlist",
 			 "next",
 			 "prev" };
 

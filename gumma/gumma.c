@@ -434,6 +434,7 @@ plugin_cb (AppletWidget *applet, gpointer data)
 	closedir (d);
 	g_free (path);
 
+	gtk_clist_select_row (GTK_CLIST (clist), 0, 0);
 	gtk_object_set_user_data (GTK_OBJECT (clist), data);
 
 	gnome_dialog_set_close (GNOME_DIALOG (dialog), TRUE);
