@@ -474,7 +474,9 @@ pixmap_timeout( gpointer data )
    ) {
       /* Warn that battery dropped below red_val */
       if(battery->lowbattnotification) {
-	 new_label = g_strdup_printf (_("Your battery is running low (%d%% remaining). You should recharge your battery soon to avoid losing your work."), batt_life);
+	 new_string = get_remaining (apminfo.battery_time);
+	 new_label = g_strdup_printf (_("Your battery is running low (%d%%, %s). You should recharge your battery to avoid losing your work."), batt_life, new_string);
+	 g_free (new_string);
 	 battery->lowbattnotificationdialog = gtk_dialog_new_with_buttons (
 			 _("Battery Notice"),
 			 NULL,
@@ -496,6 +498,7 @@ pixmap_timeout( gpointer data )
 	 g_object_unref (pixbuf);
 	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
 	 label = gtk_label_new (new_label);
+	 gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
 	 g_free (new_label);
 	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
 	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->lowbattnotificationdialog)->vbox), hbox);
@@ -542,6 +545,7 @@ pixmap_timeout( gpointer data )
 	 g_object_unref (pixbuf);
 	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
 	 label = gtk_label_new (_("Your battery is now fully recharged."));
+	 gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
 	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
 	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
 	 gtk_widget_show_all (dialog);
