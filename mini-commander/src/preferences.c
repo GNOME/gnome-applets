@@ -29,9 +29,11 @@
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <libgnome/libgnome.h>
 #include <libgnomeui/gnome-color-picker.h>
 #include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
+#include <egg-screen-help.h>
 
 #include "mini-commander_applet.h"
 #include "command_line.h"
@@ -321,6 +323,48 @@ duplicate_pattern (MCData     *mc,
 }
 
 static void
+show_help_section (GtkWindow *dialog, gchar *section)
+{
+	GError *error = NULL;
+	static GnomeProgram *applet_program = NULL;
+	
+	if (!applet_program) {
+		int argc = 1;
+		char *argv[2] = { "command-line" };
+		applet_program = gnome_program_init ("command-line", VERSION,
+						      LIBGNOME_MODULE, argc, argv,
+     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
+	}
+
+	egg_help_display_desktop_on_screen (
+			applet_program, "command-line", "command-line", section,
+			gtk_widget_get_screen (GTK_WIDGET (dialog)),
+			&error);
+
+	if (error) {
+		GtkWidget *error_dialog;
+
+		error_dialog = gtk_message_dialog_new (
+				NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CLOSE,
+				_("There was an error displaying help: %s"),
+				error->message);
+
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen (GTK_WINDOW (error_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_widget_show (error_dialog);
+		g_error_free (error);
+	}
+}
+
+static void
 add_response (GtkWidget *window,
 	      int        id,
 	      MCData    *mc)
@@ -382,6 +426,7 @@ add_response (GtkWidget *window,
     }
 	break;
     case GTK_RESPONSE_HELP:
+    	show_help_section (GTK_WINDOW (window), "command-line-prefs-2");
 	break;
     case GTK_RESPONSE_CLOSE:
     default:
@@ -610,6 +655,7 @@ preferences_response (GtkWidget *dialog,
 {
     switch (id) {
     case GTK_RESPONSE_HELP:
+    	show_help_section (GTK_WINDOW (dialog), "command-line-prefs-0");
 	break;
     case GTK_RESPONSE_CLOSE:
     default: {
@@ -698,7 +744,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 				mc->preferences.cmd_line_color_fg_g,
 				mc->preferences.cmd_line_color_fg_b,
 				0);
-    gtk_widget_set_sensitive (dialog->fg_color_picker, mc->preferences.show_default_theme);
+    gtk_widget_set_sensitive (dialog->fg_color_picker, !mc->preferences.show_default_theme);
 
     /* Background color */
     g_signal_connect (dialog->bg_color_picker, "color_set",
@@ -708,7 +754,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 				mc->preferences.cmd_line_color_bg_g,
 				mc->preferences.cmd_line_color_bg_b,
 				0);
-    gtk_widget_set_sensitive (dialog->bg_color_picker, mc->preferences.show_default_theme);
+    gtk_widget_set_sensitive (dialog->bg_color_picker, !mc->preferences.show_default_theme);
 
 
     /* Macros Delete and Add buttons */
