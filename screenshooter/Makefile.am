@@ -1,7 +1,6 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) 
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	
 
 bin_PROGRAMS = screenshooter-applet2
 
@@ -12,7 +11,7 @@ screenshooter_applet2_SOURCES = \
 	window_icon.xpm 
 
 screenshooter_applet2_LDADD = \
-		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+		     $(GNOME_APPLETS_LIBS) 
 
 scrshotdir = $(bindir)
 scrshot_SCRIPTS = update_scrshot_page

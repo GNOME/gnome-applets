@@ -5,7 +5,7 @@ INCLUDES = 						\
 	-I.						\
 	-I$(srcdir)					\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	$(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = mini_commander_applet
 

@@ -2,8 +2,7 @@
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	$(GNOME_APPLETS_CFLAGS)				\
-	-I$(includedir)
+	$(GNOME_APPLETS_CFLAGS)				
 
 bin_PROGRAMS = mixer_applet2
 

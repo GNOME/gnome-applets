@@ -2,7 +2,6 @@ INCLUDES = -I. \
 $(GNOME_APPLETS_CFLAGS) \
 -I$(srcdir) \
 -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
--I$(includedir) \
 $(GCONF_APPLETS_CFLAGS) \
 $(CDROM_CFLAGS)
 

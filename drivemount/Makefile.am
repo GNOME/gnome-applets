@@ -2,8 +2,7 @@
 INCLUDES = \
 -I. -I$(srcdir) \
 $(GNOME_APPLETS_CFLAGS) \
--DGNOMELOCALEDIR=\""$(datadir)/locale"\"\
--I$(includedir) 
+-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
 bin_PROGRAMS = drivemount_applet2
 
