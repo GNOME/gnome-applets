@@ -24,6 +24,9 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
+uidir   = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_MixerApplet.xml
+
 EXTRA_DIST = 						\
 	$(server_DATA) 					\
 	$(server_in_files)				\

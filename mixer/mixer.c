@@ -121,7 +121,7 @@ static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 
 
 static gint mixerfd = -1;
-static GdkPixbuf *zero_pixbuf, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
+static GdkPixbuf *zero_pixbuf = NULL, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
 
 
 #ifdef OSS_API
@@ -771,17 +771,6 @@ const BonoboUIVerb mixer_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-const gchar mixer_applet_menu_xml [] =
-"<popup name=\"button3\">\n"
-"   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"/>"
-"   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"/>"
-"   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
-"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-"   <menuitem name=\"About\" verb=\"About\" _label=\"About...\"\n"
-"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-"</popup>\n";
-
-
 static void
 mixer_applet_create (PanelApplet *applet)
 {
@@ -864,12 +853,14 @@ mixer_applet_create (PanelApplet *applet)
 			  G_CALLBACK (applet_change_background_cb),
 			  data);
 
-	panel_applet_setup_menu (PANEL_APPLET (data->applet),
-				 mixer_applet_menu_xml,
-				 mixer_applet_menu_verbs,
-				 data);
+	panel_applet_setup_menu_from_file (applet, 
+					   NULL, /* opt_datadir */
+					   "GNOME_MixerApplet.xml",
+					   NULL,
+					   mixer_applet_menu_verbs,
+					   data);
 
-	component = panel_applet_get_popup_component (PANEL_APPLET (data->applet));
+	component = panel_applet_get_popup_component (applet);
 	g_signal_connect (component,
 			  "ui-event",
 			  (GCallback) mixer_ui_component_event,

@@ -1,7 +1,13 @@
 2002-02-16  Richard Hult  <rhult@codefactory.se>
 
+	* Makefile.am: Add ui file.
+
 	* mixer.c: Remove crack (i.e. don't quit when the last applet
 	goes).
+	(mixer_applet_create): Set up menu from file so that we can
+	translate the strings.
+
+	* GNOME_MixerApplet.xml: Add ui file.
 
 2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
 
