@@ -43,8 +43,11 @@ clocksdir = $(datadir)/applets/Clocks
 clocks_DATA = clockmail_applet.desktop
 
 sysdir = $(datadir)/applets/Network
-sys_predata = clockmail_applet.desktop
+
+sys_predata = clockmail_applet.desktop.in
+
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
+
 @XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers

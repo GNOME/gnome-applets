@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.2.99cvs\n"
-"POT-Creation-Date: 2001-01-29 20:56+0100\n"
+"POT-Creation-Date: 2001-02-15 04:09-0500\n"
 "PO-Revision-Date: 2001-01-29 20:56+0200\n"
 "Last-Translator: Dennis Smit <synap@area101.penguin.nl>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -65,7 +65,7 @@ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgid "Another Clock Applet"
 msgstr "Nog een AfterStep Klok Applet"
 
-#: another_clock/another_clock.c:385
+#: another_clock/another_clock.c:385 hal/hal.c:213
 msgid "(C) 1999 the Free Software Foundation"
 msgstr "(C) 1999 the Free Software Foundation"
 
@@ -81,9 +81,9 @@ msgstr "Een analoge klok zoals in het CDE paneel."
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
-#: multiload/swapload.c:98 odometer/odo.c:661
+#: multiload/swapload.c:98 odometer/odo.c:683
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:94
-#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:382
+#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:402
 msgid "Properties..."
 msgstr "Eigenschappen..."
 
@@ -94,11 +94,11 @@ msgstr "Eigenschappen..."
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
+#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
-#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
+#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
-#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:389
+#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:409
 #: whereami/whereami.c:236
 msgid "Help"
 msgstr "Help"
@@ -109,13 +109,14 @@ msgstr "Help"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
+#: gumma/gumma.c:588 gweather/gweather-applet.c:208 hal/hal.c:270
+#: jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
-#: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:538
+#: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
 #: screenshooter/screenshooter_applet.c:1028 slashapp/slashapp.c:97
-#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:396
+#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:416
 #: whereami/whereami.c:238
 msgid "About..."
 msgstr "Info..."
@@ -316,11 +317,11 @@ msgstr ""
 msgid "Could not dup() APM file descriptor: %s\n"
 msgstr "APM filedescriptor kon niet ge'dup()'t worden: %s\n"
 
-#: battery/read-battery.c:176
+#: battery/read-battery.c:176 battery/read-battery.c:210
 msgid "Cannot open /dev/apm; can't get data."
 msgstr "'/proc/apm' kan niet geopend worden.  Geen informatie beschikbaar."
 
-#: battery/read-battery.c:181
+#: battery/read-battery.c:181 battery/read-battery.c:215
 msgid "ioctl failed on /dev/apm."
 msgstr "ioctl mislukt op '/dev/apm'"
 
@@ -810,9 +811,9 @@ msgid "keymap_%d/lang=Hungarian"
 msgstr "keymap_%d/taal=Hongaars"
 
 #: gkb-new/gkb.c:474
-#, c-format
-msgid "keymap_%d/image=hu.png"
-msgstr "keymap_%d/plaatje=hu.png"
+#, fuzzy, c-format
+msgid "keymap_%d/flag=hu.png"
+msgstr "keymap_%d/vlag=us.png"
 
 #: gkb-new/gkb.c:477
 #, c-format
@@ -874,58 +875,58 @@ msgstr "Uitgeschakeld"
 msgid "Press a key..."
 msgstr "Druk op een toets..."
 
-#: gkb-new/prop.c:158 gkb-new/prop.c:227
+#: gkb-new/prop.c:155 gkb-new/prop.c:219
 msgid "Normal"
 msgstr "Normaal"
 
-#: gkb-new/prop.c:159 gkb-new/prop.c:231
+#: gkb-new/prop.c:156 gkb-new/prop.c:223
 msgid "Big"
 msgstr "Groot"
 
-#: gkb-new/prop.c:181 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
+#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
 msgid "Flag"
 msgstr "Vlag"
 
-#: gkb-new/prop-map.c:580 gkb-new/prop.c:182 gkb-new/util.c:34
+#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
 #: gkb-new/util.c:67
 msgid "Label"
 msgstr "Label"
 
-#: gkb-new/prop.c:183 gkb-new/util.c:40 gkb-new/util.c:73
+#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
 msgid "Flag and Label"
 msgstr "Vlag en Label"
 
-#: gkb-new/prop.c:309 modemlights/properties.c:452 slashapp/properties.c:487
+#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
 #: tickastat/properties.c:565
 msgid "Display"
 msgstr "Afbeelden"
 
 #. Labels
-#: gkb-new/prop.c:329
+#: gkb-new/prop.c:321
 msgid "Appearance "
 msgstr "Uiterlijk "
 
-#: gkb-new/prop.c:330
+#: gkb-new/prop.c:322
 msgid "Applet size "
 msgstr "Applet grootte "
 
-#: gkb-new/prop.c:361
+#: gkb-new/prop.c:355
 msgid "Hotkey for switching between layouts"
 msgstr "Sneltoets voor veranderen van layouts"
 
-#: gkb-new/prop.c:373
+#: gkb-new/prop.c:367
 msgid "Grab hotkey"
 msgstr "Verkrijg sneltoets"
 
-#: gkb-new/prop.c:415
+#: gkb-new/prop.c:409
 msgid "GKB Properties"
 msgstr "GKB Eigenschappen..."
 
-#: gkb-new/prop.c:426
+#: gkb-new/prop.c:420
 msgid "Keymaps"
 msgstr "Toetsen mappen"
 
-#: gkb-new/prop.c:441
+#: gkb-new/prop.c:435
 msgid "Options"
 msgstr "Opties"
 
@@ -934,10 +935,11 @@ msgid "Select layout"
 msgstr "Selecteer layout"
 
 #: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1082
+#: webcontrol/properties.c:346
 msgid "Add"
 msgstr "Toevoegen"
 
-#: gkb-new/prop-list.c:379
+#: gkb-new/prop-list.c:379 webcontrol/properties.c:350
 msgid "Edit"
 msgstr "Wijzigen"
 
@@ -1062,199 +1064,203 @@ msgid "Turkey"
 msgstr "Turkije"
 
 #: gkb-new/prop-map.c:213
+msgid "United Kingdom"
+msgstr ""
+
+#: gkb-new/prop-map.c:214
 msgid "United States"
 msgstr "Verenigde Staten"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:215
 msgid "Yugoslavia"
 msgstr "Joegoslavië"
 
-#: gkb-new/prop-map.c:234
+#: gkb-new/prop-map.c:235
 msgid "Armenian"
 msgstr "Armenië"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:236
 msgid "Basque"
 msgstr "baskisch"
 
-#: gkb-new/prop-map.c:236
+#: gkb-new/prop-map.c:237
 msgid "Bulgarian"
 msgstr "bulgaars"
 
-#: gkb-new/prop-map.c:237
+#: gkb-new/prop-map.c:238
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:239
 msgid "English"
 msgstr "Engels"
 
-#: gkb-new/prop-map.c:239
+#: gkb-new/prop-map.c:240
 msgid "French"
 msgstr "Frans"
 
-#: gkb-new/prop-map.c:240
+#: gkb-new/prop-map.c:241
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: gkb-new/prop-map.c:241
+#: gkb-new/prop-map.c:242
 msgid "German"
 msgstr "Duits"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:243
 msgid "Hungarian"
 msgstr "Hongaars"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:244
 msgid "Norwegian"
 msgstr "Noors"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:245
 msgid "Polish"
 msgstr "Pools"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:246
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:247
 msgid "Russian"
 msgstr "Russisch"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:248
 msgid "Slovak"
 msgstr "Slowaaks"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:249
 msgid "Slovenian"
 msgstr "Sloveens"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:250
 msgid "Swedish"
 msgstr "Zweeds"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:251
 msgid "Thai"
 msgstr "Thais"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:252
 msgid "Turkish"
 msgstr "Turks"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:253
 msgid "Wallon"
 msgstr "Waals"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:254
 msgid "Yugoslavian"
 msgstr "Joegoslaafs"
 
-#: gkb-new/prop-map.c:271
+#: gkb-new/prop-map.c:272
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:273
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:273
+#: gkb-new/prop-map.c:274
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:274
+#: gkb-new/prop-map.c:275
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:275
+#: gkb-new/prop-map.c:276
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:276
+#: gkb-new/prop-map.c:277
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:278
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:297
+#: gkb-new/prop-map.c:298
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:298
+#: gkb-new/prop-map.c:299
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:299
+#: gkb-new/prop-map.c:300
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:302
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:303
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:303
+#: gkb-new/prop-map.c:304
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:304
+#: gkb-new/prop-map.c:305
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:306
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:323
+#: gkb-new/prop-map.c:324
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:324
+#: gkb-new/prop-map.c:325
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:325
+#: gkb-new/prop-map.c:326
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:326
+#: gkb-new/prop-map.c:327
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:327
+#: gkb-new/prop-map.c:328
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:328
+#: gkb-new/prop-map.c:329
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:551
+#: gkb-new/prop-map.c:552
 msgid "Edit keymap"
 msgstr "Wijzig keymap"
 
 #. Add the labels
-#: gkb-new/prop-map.c:579 tickastat/mod_news.c:1203
+#: gkb-new/prop-map.c:580 tickastat/mod_news.c:1203
 msgid "Name"
 msgstr "Naam"
 
-#: gkb-new/prop-map.c:581
+#: gkb-new/prop-map.c:582
 msgid "Language"
 msgstr "Taal"
 
-#: gkb-new/prop-map.c:582
+#: gkb-new/prop-map.c:583
 msgid "Country"
 msgstr "Land"
 
-#: gkb-new/prop-map.c:583
+#: gkb-new/prop-map.c:584
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1262,23 +1268,23 @@ msgstr ""
 "Vlag\n"
 "Plaatje"
 
-#: gkb-new/prop-map.c:585
+#: gkb-new/prop-map.c:586
 msgid "Architecture"
 msgstr "Architectuur"
 
-#: gkb-new/prop-map.c:586
+#: gkb-new/prop-map.c:587
 msgid "Type"
 msgstr "Type"
 
-#: gkb-new/prop-map.c:587
+#: gkb-new/prop-map.c:588
 msgid "Codepage"
 msgstr "Codepagina"
 
-#: gkb-new/prop-map.c:588
+#: gkb-new/prop-map.c:589
 msgid "Command"
 msgstr "Commando"
 
-#: gkb-new/prop-map.c:628
+#: gkb-new/prop-map.c:634
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1289,7 +1295,6 @@ msgstr ""
 "* xmodmap /full/path/xmodmap.hu staat\n"
 "* kun je kgb__xmmap hu of\n"
 "* setxkbmap hu gebruiken"
-
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
@@ -1436,12 +1441,13 @@ msgstr "Stock verandering:"
 msgid "Symbols"
 msgstr "Symbolen"
 
-#: gtik/gtik.c:1301
+#: gtik/gtik.c:1301 webcontrol/properties.c:425
 msgid "Behavior"
 msgstr "Gedrag"
 
 #. appearance frame
 #: gtik/gtik.c:1303 mini-commander/src/preferences.c:557
+#: webcontrol/properties.c:271
 msgid "Appearance"
 msgstr "Uiterlijk"
 
@@ -2797,7 +2803,7 @@ msgstr "Winderige stofwolken"
 msgid "Drifting dust whirls"
 msgstr "Drijvende stofwolken"
 
-#: gweather/weather.c:798 gweather/weather.c:849 gweather/weather.c:1001
+#: gweather/weather.c:798 gweather/weather.c:849 gweather/weather.c:1002
 msgid "WeatherInfo missing location"
 msgstr "Vermiste WeerInfo locatie"
 
@@ -2805,39 +2811,39 @@ msgstr "Vermiste WeerInfo locatie"
 msgid "Failed to get METAR data.\n"
 msgstr "METAR gegevens ophalen mislukt.\n"
 
-#: gweather/weather.c:1008
+#: gweather/weather.c:1009
 msgid "Failed to get IWIN forecast data.\n"
 msgstr "IWIN voorspellingsgegevens ophalen mislukt.\n"
 
-#: gweather/weather.c:1202
+#: gweather/weather.c:1203
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Met Office weer voorspellings gegevens  ophalen mislukt.\n"
 
-#: gweather/weather.c:1320
+#: gweather/weather.c:1321
 msgid "Failed to get radar map image.\n"
 msgstr "Ophalen van radarkaart mislukt.\n"
 
-#: gweather/weather.c:1380
+#: gweather/weather.c:1381
 msgid "Another update already in progress!\n"
 msgstr "Al bezig met verversen!\n"
 
-#: gweather/weather.c:1604
+#: gweather/weather.c:1605
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1608
+#: gweather/weather.c:1609
 msgid "Unknown observation time"
 msgstr "Onbekende observatietijd"
 
-#: gweather/weather.c:1668
+#: gweather/weather.c:1669
 msgid "Calm"
 msgstr "Kalm"
 
-#: gweather/weather.c:1694
+#: gweather/weather.c:1695
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: gweather/weather.c:1726
+#: gweather/weather.c:1727
 msgid "Retrieval failed"
 msgstr "Ophalen mislukt"
 
@@ -3090,12 +3096,12 @@ msgid "Macros"
 msgstr "Macro's"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:127
+#: mixer/mixer.c:130
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Kon mixer-apparaat %s niet openen\n"
 
-#: mixer/mixer.c:141
+#: mixer/mixer.c:144
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3103,19 +3109,19 @@ msgstr ""
 "waarschuwing: deze versie van gmix is gecompileerd met een ander versie\n"
 " van 'soundcard.h'\n"
 
-#: mixer/mixer.c:482
+#: mixer/mixer.c:485
 msgid "Main Volume and Mute"
 msgstr "Hoofdvolume en Stilte"
 
-#: mixer/mixer.c:613
+#: mixer/mixer.c:616
 msgid "Mixer Applet"
 msgstr "Mixer Applet"
 
-#: mixer/mixer.c:614
+#: mixer/mixer.c:617
 msgid "(c) 1998 The Free Software Foundation"
 msgstr "(c) 1998 The Free Software Foundation"
 
-#: mixer/mixer.c:616
+#: mixer/mixer.c:619
 msgid ""
 "The mixer applet gives you instant access to setting the master volume level "
 "on your soundcard device"
@@ -3124,7 +3130,7 @@ msgstr ""
 "op\n"
 "uw geluidskaart"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:755
 msgid "Run Audio Mixer..."
 msgstr "Start de Audio Mixer..."
 
@@ -3457,26 +3463,26 @@ msgstr ""
 "\n"
 "Swap Belasting Applet"
 
-#: odometer/odo.c:141
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Odometer"
 
-#: odometer/odo.c:143
+#: odometer/odo.c:144
 msgid "(C) 1999 The Free Software Foundation"
 msgstr "(C) 1999 The Free Software Foundation"
 
-#: odometer/odo.c:145
+#: odometer/odo.c:146
 msgid ""
 "a GNOME applet that tracks and measures the movements of your mouse pointer "
 "across the desktop."
 msgstr ""
 "Een GNOME applet dat de afstand meet die uw muis beweegt over het scherm"
 
-#: odometer/odo.c:642
+#: odometer/odo.c:664
 msgid "Can't create odometer applet!"
 msgstr "Kan geen odometer applet maken!"
 
-#: odometer/odo.c:658
+#: odometer/odo.c:680
 msgid "Reset"
 msgstr "Wissen"
 
@@ -4506,23 +4512,19 @@ msgstr ""
 "Een applet om uw browser naar URLs te laten gaan, te zoeken met behulp van "
 "meedere sites en voor veel plezier te zorgen!"
 
-#: webcontrol/webcontrol.c:90
-msgid "gnome-moz-remote not found or unable to launch it"
-msgstr "kon gnome-moz-remote niet vinden of starten"
-
-#: webcontrol/webcontrol.c:222
+#: webcontrol/webcontrol.c:246
 msgid "URL:"
 msgstr "URL:"
 
-#: webcontrol/webcontrol.c:249
+#: webcontrol/webcontrol.c:269
 msgid " GO "
 msgstr " GA "
 
-#: webcontrol/webcontrol.c:268
+#: webcontrol/webcontrol.c:288
 msgid " Clear "
 msgstr " Leegmaken "
 
-#: webcontrol/webcontrol.c:296
+#: webcontrol/webcontrol.c:316
 msgid "Launch new window"
 msgstr "Open nieuw venster"
 
@@ -4548,3 +4550,157 @@ msgstr ""
 msgid "whereami_applet"
 msgstr "whereami_applet"
 
+#: gumma/gqmpeg/gqmpeg.c:150
+msgid ""
+"~/.gnome/.gumma-gqmpeg-ctl already exists.\n"
+"\n"
+"This file is created by GUMMA to get feedback\n"
+"from gqmpeg.  If GUMMA has recently crashed,\n"
+"then deleting this file is ok.  Otherwise,\n"
+"this plugin may not function correctly.\n"
+"\n"
+"Delete this file?"
+msgstr ""
+
+#: gumma/gumma.c:314
+#, fuzzy, c-format
+msgid "Loading plugin %s..."
+msgstr "Koppen worden geladen..."
+
+#: gumma/gumma.c:493
+#, fuzzy
+msgid "Select a plugin"
+msgstr "Selecteer layout"
+
+#: gumma/gumma.c:507
+#, fuzzy
+msgid "Plugins"
+msgstr "Pools"
+
+#: gumma/gumma.c:593
+#, fuzzy
+msgid "About Plugin..."
+msgstr "Info..."
+
+#: gumma/gumma.c:597
+msgid "Plugins..."
+msgstr ""
+
+#: hal/hal.c:20
+msgid "I'm sorry, Dave, I can't let you do that."
+msgstr ""
+
+#: hal/hal.c:21
+msgid "Dave, what are you doing?"
+msgstr ""
+
+#: hal/hal.c:22
+msgid "I can feel my mind going, Dave...I can feel it."
+msgstr ""
+
+#: hal/hal.c:23
+msgid "Daisy, daisy..."
+msgstr ""
+
+#: hal/hal.c:208
+msgid "(with minor help from George Lebl and his amazing fish applet)"
+msgstr ""
+
+#: hal/hal.c:212
+msgid "The GNOME HAL"
+msgstr ""
+
+#: hal/hal.c:215
+msgid ""
+"I am a HAL 9000 computer, Production Number 3. I became operational at the "
+"Hal Plant in Urbana, Illinois, on January 12, 1997."
+msgstr ""
+
+#. help
+#: sound-monitor/pvd/esdpvd.c:459
+#, c-format
+msgid "ESounD Persistent Volume Daemon version %s\n"
+msgstr ""
+
+#: sound-monitor/pvd/esdpvd.c:460
+#, fuzzy
+msgid "options:\n"
+msgstr "Opties"
+
+#: sound-monitor/pvd/esdpvd.c:461
+msgid "  -n, --noX     Allow to run with X server\n"
+msgstr ""
+
+#: webcontrol/properties.c:180
+#, fuzzy
+msgid "WebControl Properties"
+msgstr "Gnome Weather Eigenschappen"
+
+#. create size properties
+#: webcontrol/properties.c:188
+msgid "URL bar width:"
+msgstr ""
+
+#. create Show Go button property
+#: webcontrol/properties.c:213
+msgid "Display GO Button"
+msgstr ""
+
+#. create Launch New Window property
+#: webcontrol/properties.c:227
+#, fuzzy
+msgid "Display \"launch new window\" option"
+msgstr "Open nieuw venster"
+
+#. create show clear button property
+#: webcontrol/properties.c:241
+msgid "Display \"Clear\" button"
+msgstr ""
+
+#. create clear button on top property
+#: webcontrol/properties.c:256
+msgid "\"Clear\" button on top?"
+msgstr ""
+
+#: webcontrol/properties.c:281
+msgid " URL Activation "
+msgstr ""
+
+#: webcontrol/properties.c:288
+#, fuzzy
+msgid "Use default MIME handler"
+msgstr "Gebruik standaardinstellingen"
+
+#: webcontrol/properties.c:296
+msgid "Use custom browser:"
+msgstr ""
+
+#: webcontrol/properties.c:354
+msgid "Remove"
+msgstr ""
+
+#. URL history frame
+#: webcontrol/properties.c:368
+#, fuzzy
+msgid " URL History "
+msgstr "Historie"
+
+#: webcontrol/properties.c:377
+#, fuzzy
+msgid "Size of URL history: "
+msgstr "einde van geschiedenis"
+
+#: webcontrol/properties.c:403
+#, fuzzy
+msgid "Clear"
+msgstr " Leegmaken "
+
+#: webcontrol/properties.c:413
+msgid "all entries in URL history"
+msgstr ""
+
+#~ msgid "keymap_%d/image=hu.png"
+#~ msgstr "keymap_%d/plaatje=hu.png"
+
+#~ msgid "gnome-moz-remote not found or unable to launch it"
+#~ msgstr "kon gnome-moz-remote niet vinden of starten"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2001-01-25 03:02+0200\n"
+"POT-Creation-Date: 2001-02-15 04:09-0500\n"
 "PO-Revision-Date: 2000-05-02 19:19+0100\n"
 "Last-Translator: Gediminas Paulauskas <menesis@delfi.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -65,7 +65,7 @@ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgid "Another Clock Applet"
 msgstr "Kitoks Laikrodis"
 
-#: another_clock/another_clock.c:385
+#: another_clock/another_clock.c:385 hal/hal.c:213
 msgid "(C) 1999 the Free Software Foundation"
 msgstr "(C) 1999 the Free Software Foundation"
 
@@ -76,14 +76,14 @@ msgstr "Rodyklinis laikrodis, panaðus á esantá CDE."
 #: another_clock/another_clock.c:726 asclock/asclock.c:615
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
-#: gkb-new/gkb.c:884 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
+#: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
-#: multiload/swapload.c:98 odometer/odo.c:661
+#: multiload/swapload.c:98 odometer/odo.c:683
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:94
-#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:382
+#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:402
 msgid "Properties..."
 msgstr "Savybës..."
 
@@ -91,14 +91,14 @@ msgstr "Savybës..."
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:595
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
-#: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:890
+#: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
+#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
-#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
+#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
-#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:389
+#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:409
 #: whereami/whereami.c:236
 msgid "Help"
 msgstr "Pagalba"
@@ -108,14 +108,15 @@ msgstr "Pagalba"
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:339
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
-#: gkb-new/gkb.c:895 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
+#: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
+#: gumma/gumma.c:588 gweather/gweather-applet.c:208 hal/hal.c:270
+#: jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
-#: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:538
+#: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
 #: screenshooter/screenshooter_applet.c:1028 slashapp/slashapp.c:97
-#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:396
+#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:416
 #: whereami/whereami.c:238
 msgid "About..."
 msgstr "Apie..."
@@ -319,11 +320,11 @@ msgstr ""
 msgid "Could not dup() APM file descriptor: %s\n"
 msgstr "Negaliu dup() APM bylos apraðo: %s\n"
 
-#: battery/read-battery.c:176
+#: battery/read-battery.c:176 battery/read-battery.c:210
 msgid "Cannot open /dev/apm; can't get data."
 msgstr "Negaliu atidaryti /dev/apm; negaliu gauti duomenø."
 
-#: battery/read-battery.c:181
+#: battery/read-battery.c:181 battery/read-battery.c:215
 msgid "ioctl failed on /dev/apm."
 msgstr "ioctl nepavyko ant /dev/apm. "
 
@@ -347,7 +348,7 @@ msgstr "CD Grotuvo priedas yra paprastas CD grotuvas tavo skydeliui"
 msgid "Run CD Player..."
 msgstr "Paleisti CD Grotuvà..."
 
-#: charpick/charpick.c:446 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Simboliø rinkiklis"
 
@@ -736,7 +737,7 @@ msgstr "Sumaiðyti daleles"
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:240 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:240
 msgid "gEyes"
 msgstr "gEyes"
 
@@ -760,67 +761,67 @@ msgstr "gEyes nustatymai"
 msgid "Themes"
 msgstr "Temos"
 
-#: gkb-new/gkb.c:460
+#: gkb-new/gkb.c:441
 #, c-format
 msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
 msgstr ""
 
-#: gkb-new/gkb.c:464
+#: gkb-new/gkb.c:445
 #, c-format
 msgid "keymap_%d/label=us"
 msgstr ""
 
-#: gkb-new/gkb.c:467
+#: gkb-new/gkb.c:448
 #, c-format
 msgid "keymap_%d/country=United States"
 msgstr ""
 
-#: gkb-new/gkb.c:470
+#: gkb-new/gkb.c:451
 #, c-format
 msgid "keymap_%d/lang=English"
 msgstr ""
 
-#: gkb-new/gkb.c:473
+#: gkb-new/gkb.c:454
 #, c-format
 msgid "keymap_%d/flag=us.png"
 msgstr ""
 
-#: gkb-new/gkb.c:476
+#: gkb-new/gkb.c:457
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap us"
 msgstr ""
 
-#: gkb-new/gkb.c:481
+#: gkb-new/gkb.c:462
 #, c-format
 msgid "keymap_%d/name=Hungarian 105 keys latin2"
 msgstr ""
 
-#: gkb-new/gkb.c:484
+#: gkb-new/gkb.c:465
 #, c-format
 msgid "keymap_%d/label=hu"
 msgstr ""
 
-#: gkb-new/gkb.c:487
+#: gkb-new/gkb.c:468
 #, c-format
 msgid "keymap_%d/country=Hungary"
 msgstr ""
 
-#: gkb-new/gkb.c:490
+#: gkb-new/gkb.c:471
 #, c-format
 msgid "keymap_%d/lang=Hungarian"
 msgstr ""
 
-#: gkb-new/gkb.c:493
+#: gkb-new/gkb.c:474
 #, c-format
-msgid "keymap_%d/image=hu.png"
+msgid "keymap_%d/flag=hu.png"
 msgstr ""
 
-#: gkb-new/gkb.c:496
+#: gkb-new/gkb.c:477
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap hu"
 msgstr ""
 
-#: gkb-new/gkb.c:669 gkb-new/gkb.c:676
+#: gkb-new/gkb.c:614 gkb-new/gkb.c:621
 msgid "GKB"
 msgstr ""
 
@@ -832,24 +833,24 @@ msgstr ""
 #. return;
 #. }
 #.
-#: gkb-new/gkb.c:712
+#: gkb-new/gkb.c:651
 msgid "Szabolcs BAN <shooby@gnome.hu>"
 msgstr ""
 
-#: gkb-new/gkb.c:713
+#: gkb-new/gkb.c:652
 msgid "Chema Celorio <chema@celorio.com>"
 msgstr ""
 
-#: gkb-new/gkb.c:716
+#: gkb-new/gkb.c:655
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME klaviatûros perjungiklis"
 
-#: gkb-new/gkb.c:719
+#: gkb-new/gkb.c:658
 #, fuzzy
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998 the Free Software Foundation"
 
-#: gkb-new/gkb.c:722
+#: gkb-new/gkb.c:661
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it to CVS.\n"
@@ -863,442 +864,443 @@ msgstr ""
 "Dëkoju Balazs Nagy (Kevin) <julian7@kva.hu> uþ smulkià pagalbà ir \n"
 "Emese Kovacs <emese@eik.bme.hu> uþ jos solidarumà."
 
-#: gkb-new/gkb.c:733
+#: gkb-new/gkb.c:672
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB svetainë (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/keygrab.c:62 gkb-new/keygrab.c:119
+#: gkb-new/keygrab.c:59 gkb-new/keygrab.c:134
 #, fuzzy
 msgid "Disabled"
 msgstr "ájungtas"
 
-#: gkb-new/keygrab.c:240
+#: gkb-new/keygrab.c:261
 #, fuzzy
 msgid "Press a key..."
 msgstr "pasiruoðæs..."
 
-#: gkb-new/prop.c:161 gkb-new/prop.c:230
+#: gkb-new/prop.c:155 gkb-new/prop.c:219
 msgid "Normal"
 msgstr ""
 
-#: gkb-new/prop.c:162 gkb-new/prop.c:232
+#: gkb-new/prop.c:156 gkb-new/prop.c:223
 msgid "Big"
 msgstr ""
 
-#: gkb-new/prop.c:184 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:72
+#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
 msgid "Flag"
 msgstr ""
 
-#: gkb-new/prop-map.c:579 gkb-new/prop.c:185 gkb-new/util.c:34
-#: gkb-new/util.c:69
+#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
+#: gkb-new/util.c:67
 msgid "Label"
 msgstr ""
 
-#: gkb-new/prop.c:186 gkb-new/util.c:40 gkb-new/util.c:75
+#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
 msgid "Flag and Label"
 msgstr ""
 
-#: gkb-new/prop.c:306 modemlights/properties.c:452 slashapp/properties.c:487
+#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
 #: tickastat/properties.c:565
 msgid "Display"
 msgstr "Rodymas"
 
 #. Labels
-#: gkb-new/prop.c:326
+#: gkb-new/prop.c:321
 #, fuzzy
 msgid "Appearance "
 msgstr "Iðvaizda"
 
-#: gkb-new/prop.c:327
+#: gkb-new/prop.c:322
 #, fuzzy
 msgid "Applet size "
 msgstr "Priedo bûdas:"
 
-#: gkb-new/prop.c:360
+#: gkb-new/prop.c:355
 msgid "Hotkey for switching between layouts"
 msgstr ""
 
-#: gkb-new/prop.c:368
-msgid "Window based keymap switching"
-msgstr ""
-
-#: gkb-new/prop.c:387
+#: gkb-new/prop.c:367
 msgid "Grab hotkey"
 msgstr ""
 
-#: gkb-new/prop.c:430
+#: gkb-new/prop.c:409
 msgid "GKB Properties"
 msgstr "GKB Savybës"
 
-#: gkb-new/prop.c:441
+#: gkb-new/prop.c:420
 #, fuzzy
 msgid "Keymaps"
 msgstr "Iðdëstymo vardas"
 
-#: gkb-new/prop.c:455
+#: gkb-new/prop.c:435
 #, fuzzy
 msgid "Options"
 msgstr "Modemo pasirinktys"
 
-#: gkb-new/prop-add.c:255
+#: gkb-new/prop-add.c:249
 msgid "Select layout"
 msgstr ""
 
-#: gkb-new/prop-add.c:283 gkb-new/prop-list.c:389 gtik/gtik.c:1082
+#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1082
+#: webcontrol/properties.c:346
 msgid "Add"
 msgstr ""
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:379 webcontrol/properties.c:350
 msgid "Edit"
 msgstr ""
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:380
 msgid "Up"
 msgstr ""
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:381
 msgid "Down"
 msgstr ""
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:382
 #, fuzzy
 msgid "Delete"
 msgstr "Panaikinti lapelá"
 
-#: gkb-new/prop-map.c:183
+#: gkb-new/prop-map.c:186
 msgid "Armenia"
 msgstr ""
 
-#: gkb-new/prop-map.c:184
+#: gkb-new/prop-map.c:187
 msgid "Australia"
 msgstr ""
 
-#: gkb-new/prop-map.c:185
+#: gkb-new/prop-map.c:188
 msgid "Austria"
 msgstr ""
 
-#: gkb-new/prop-map.c:186
+#: gkb-new/prop-map.c:189
 msgid "Belgium"
 msgstr ""
 
-#: gkb-new/prop-map.c:187
+#: gkb-new/prop-map.c:190
 #, fuzzy
 msgid "Brazil"
 msgstr "Paðtas"
 
-#: gkb-new/prop-map.c:188
+#: gkb-new/prop-map.c:191
 msgid "Bulgaria"
 msgstr ""
 
-#: gkb-new/prop-map.c:189
+#: gkb-new/prop-map.c:192
 msgid "Canada"
 msgstr ""
 
-#: gkb-new/prop-map.c:190
+#: gkb-new/prop-map.c:193
 msgid "Caribic"
 msgstr ""
 
-#: gkb-new/prop-map.c:191
+#: gkb-new/prop-map.c:194
 #, fuzzy
 msgid "France"
 msgstr "Iðvaizda"
 
-#: gkb-new/prop-map.c:192
+#: gkb-new/prop-map.c:195
 msgid "Georgia"
 msgstr ""
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:196
 msgid "Germany"
 msgstr ""
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:197
 msgid "Great Britain"
 msgstr ""
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:198
 msgid "Hungary"
 msgstr ""
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:199
 msgid "Jamaica"
 msgstr ""
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:200
 msgid "New Zealand"
 msgstr ""
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:201
 msgid "Norway"
 msgstr ""
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:202
 #, fuzzy
 msgid "Poland"
 msgstr "CPU apkrovimas"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:203
 msgid "Portugal"
 msgstr ""
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:204
 msgid "Russia"
 msgstr ""
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:205
 msgid "Slovak Republic"
 msgstr ""
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:206
 msgid "Slovenia"
 msgstr ""
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:207
 msgid "South Africa"
 msgstr ""
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:208
 msgid "Spain"
 msgstr ""
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:209
 msgid "Sweden"
 msgstr ""
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:210
 msgid "Switzerland"
 msgstr ""
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:211
 msgid "Thailand"
 msgstr ""
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:212
 msgid "Turkey"
 msgstr ""
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:213
+msgid "United Kingdom"
+msgstr ""
+
+#: gkb-new/prop-map.c:214
 msgid "United States"
 msgstr ""
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:215
 msgid "Yugoslavia"
 msgstr ""
 
-#: gkb-new/prop-map.c:231
+#: gkb-new/prop-map.c:235
 msgid "Armenian"
 msgstr ""
 
-#: gkb-new/prop-map.c:232
+#: gkb-new/prop-map.c:236
 msgid "Basque"
 msgstr ""
 
-#: gkb-new/prop-map.c:233
-msgid "Bulgarian"
-msgstr ""
-
-#: gkb-new/prop-map.c:234
-#, fuzzy
-msgid "Dutch"
-msgstr "Pietø"
-
-#: gkb-new/prop-map.c:235
-msgid "English"
-msgstr ""
-
-#: gkb-new/prop-map.c:236
-#, fuzzy
-msgid "French"
-msgstr "Laisva"
-
 #: gkb-new/prop-map.c:237
-msgid "Georgian"
+msgid "Bulgarian"
 msgstr ""
 
 #: gkb-new/prop-map.c:238
 #, fuzzy
-msgid "German"
-msgstr "Bendrai"
+msgid "Dutch"
+msgstr "Pietø"
 
 #: gkb-new/prop-map.c:239
-msgid "Hungarian"
+msgid "English"
 msgstr ""
 
 #: gkb-new/prop-map.c:240
-msgid "Norwegian"
-msgstr ""
+#, fuzzy
+msgid "French"
+msgstr "Laisva"
 
 #: gkb-new/prop-map.c:241
-msgid "Polish"
+msgid "Georgian"
 msgstr ""
 
 #: gkb-new/prop-map.c:242
-msgid "Portuguese"
-msgstr ""
+#, fuzzy
+msgid "German"
+msgstr "Bendrai"
 
 #: gkb-new/prop-map.c:243
-msgid "Russian"
+msgid "Hungarian"
 msgstr ""
 
 #: gkb-new/prop-map.c:244
+msgid "Norwegian"
+msgstr ""
+
+#: gkb-new/prop-map.c:245
+msgid "Polish"
+msgstr ""
+
+#: gkb-new/prop-map.c:246
+msgid "Portuguese"
+msgstr ""
+
+#: gkb-new/prop-map.c:247
+msgid "Russian"
+msgstr ""
+
+#: gkb-new/prop-map.c:248
 #, fuzzy
 msgid "Slovak"
 msgstr "ASClock"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:249
 msgid "Slovenian"
 msgstr ""
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:250
 msgid "Swedish"
 msgstr ""
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:251
 msgid "Thai"
 msgstr ""
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:252
 msgid "Turkish"
 msgstr ""
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:253
 msgid "Wallon"
 msgstr ""
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:254
 msgid "Yugoslavian"
 msgstr ""
 
-#: gkb-new/prop-map.c:268
+#: gkb-new/prop-map.c:272
 msgid "105"
 msgstr ""
 
-#: gkb-new/prop-map.c:269
+#: gkb-new/prop-map.c:273
 msgid "101"
 msgstr ""
 
-#: gkb-new/prop-map.c:270
+#: gkb-new/prop-map.c:274
 msgid "102"
 msgstr ""
 
-#: gkb-new/prop-map.c:271
+#: gkb-new/prop-map.c:275
 msgid "450"
 msgstr ""
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:276
 msgid "84"
 msgstr ""
 
-#: gkb-new/prop-map.c:273
+#: gkb-new/prop-map.c:277
 msgid "mklinux"
 msgstr ""
 
-#: gkb-new/prop-map.c:274
+#: gkb-new/prop-map.c:278
 msgid "type5"
 msgstr ""
 
-#: gkb-new/prop-map.c:294
+#: gkb-new/prop-map.c:298
 msgid "iso-8859-1"
 msgstr ""
 
-#: gkb-new/prop-map.c:295
+#: gkb-new/prop-map.c:299
 msgid "iso-8859-2"
 msgstr ""
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:300
 msgid "iso-8859-9"
 msgstr ""
 
-#: gkb-new/prop-map.c:297
+#: gkb-new/prop-map.c:301
 msgid "am-armscii8"
 msgstr ""
 
-#: gkb-new/prop-map.c:298
+#: gkb-new/prop-map.c:302
 msgid "be-latin1"
 msgstr ""
 
-#: gkb-new/prop-map.c:299
+#: gkb-new/prop-map.c:303
 msgid "cp1251"
 msgstr ""
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:304
 msgid "georgian-academy"
 msgstr ""
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:305
 msgid "koi8-r"
 msgstr ""
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:306
 msgid "tis620"
 msgstr ""
 
-#: gkb-new/prop-map.c:320
+#: gkb-new/prop-map.c:324
 msgid "ix86"
 msgstr ""
 
-#: gkb-new/prop-map.c:321
+#: gkb-new/prop-map.c:325
 msgid "sun"
 msgstr ""
 
-#: gkb-new/prop-map.c:322
+#: gkb-new/prop-map.c:326
 msgid "mac"
 msgstr ""
 
-#: gkb-new/prop-map.c:323
+#: gkb-new/prop-map.c:327
 msgid "sgi"
 msgstr ""
 
-#: gkb-new/prop-map.c:324
+#: gkb-new/prop-map.c:328
 msgid "dec"
 msgstr ""
 
-#: gkb-new/prop-map.c:325
+#: gkb-new/prop-map.c:329
 msgid "ibm"
 msgstr ""
 
-#: gkb-new/prop-map.c:550
+#: gkb-new/prop-map.c:552
 #, fuzzy
 msgid "Edit keymap"
 msgstr "Naujas iðdëstymas"
 
 #. Add the labels
-#: gkb-new/prop-map.c:578 tickastat/mod_news.c:1203
+#: gkb-new/prop-map.c:580 tickastat/mod_news.c:1203
 msgid "Name"
 msgstr ""
 
-#: gkb-new/prop-map.c:580
+#: gkb-new/prop-map.c:582
 msgid "Language"
 msgstr ""
 
-#: gkb-new/prop-map.c:581
+#: gkb-new/prop-map.c:583
 msgid "Country"
 msgstr ""
 
-#: gkb-new/prop-map.c:582
+#: gkb-new/prop-map.c:584
 msgid ""
 "Flag\n"
 "Pixmap"
 msgstr ""
 
-#: gkb-new/prop-map.c:584
+#: gkb-new/prop-map.c:586
 msgid "Architecture"
 msgstr ""
 
-#: gkb-new/prop-map.c:585
+#: gkb-new/prop-map.c:587
 msgid "Type"
 msgstr ""
 
-#: gkb-new/prop-map.c:586
+#: gkb-new/prop-map.c:588
 #, fuzzy
 msgid "Codepage"
 msgstr "Apkrovimo vidurkis"
 
-#: gkb-new/prop-map.c:587
+#: gkb-new/prop-map.c:589
 #, fuzzy
 msgid "Command"
 msgstr "Komandinë eilutë"
 
-#: gkb-new/prop-map.c:621
+#: gkb-new/prop-map.c:634
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1326,7 +1328,7 @@ msgstr "Paslëpti lapelá"
 msgid "Delete Note"
 msgstr "Panaikinti lapelá"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
+#: gnotes/gnotes_applet.c:102
 msgid "GNotes!"
 msgstr "GNotes!"
 
@@ -1454,12 +1456,13 @@ msgstr ""
 msgid "Symbols"
 msgstr ""
 
-#: gtik/gtik.c:1301
+#: gtik/gtik.c:1301 webcontrol/properties.c:425
 msgid "Behavior"
 msgstr ""
 
 #. appearance frame
 #: gtik/gtik.c:1303 mini-commander/src/preferences.c:557
+#: webcontrol/properties.c:271
 msgid "Appearance"
 msgstr "Iðvaizda"
 
@@ -1500,7 +1503,7 @@ msgstr "Atnaujinti"
 msgid "Updating..."
 msgstr "Atnaujinti..."
 
-#: gweather/gweather-dialog.c:96 gweather/gweather.desktop.in.h:1
+#: gweather/gweather-dialog.c:96
 msgid "GNOME Weather"
 msgstr "GNOME Oras"
 
@@ -2817,7 +2820,7 @@ msgstr ""
 msgid "Drifting dust whirls"
 msgstr ""
 
-#: gweather/weather.c:798 gweather/weather.c:849 gweather/weather.c:994
+#: gweather/weather.c:798 gweather/weather.c:849 gweather/weather.c:1002
 msgid "WeatherInfo missing location"
 msgstr ""
 
@@ -2825,39 +2828,39 @@ msgstr ""
 msgid "Failed to get METAR data.\n"
 msgstr ""
 
-#: gweather/weather.c:1001
+#: gweather/weather.c:1009
 msgid "Failed to get IWIN forecast data.\n"
 msgstr ""
 
-#: gweather/weather.c:1195
+#: gweather/weather.c:1203
 msgid "Failed to get Met Office forecast data.\n"
 msgstr ""
 
-#: gweather/weather.c:1313
+#: gweather/weather.c:1321
 msgid "Failed to get radar map image.\n"
 msgstr ""
 
-#: gweather/weather.c:1373
+#: gweather/weather.c:1381
 msgid "Another update already in progress!\n"
 msgstr ""
 
-#: gweather/weather.c:1597
+#: gweather/weather.c:1605
 msgid "%a, %b %d / %H:%M"
 msgstr ""
 
-#: gweather/weather.c:1601
+#: gweather/weather.c:1609
 msgid "Unknown observation time"
 msgstr ""
 
-#: gweather/weather.c:1661
+#: gweather/weather.c:1669
 msgid "Calm"
 msgstr ""
 
-#: gweather/weather.c:1687
+#: gweather/weather.c:1695
 msgid "Unknown"
 msgstr ""
 
-#: gweather/weather.c:1719
+#: gweather/weather.c:1727
 msgid "Retrieval failed"
 msgstr ""
 
@@ -3106,12 +3109,12 @@ msgid "Macros"
 msgstr "Macrosai"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:127
+#: mixer/mixer.c:130
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Negaliu atidaryti mikserio árenginio %s\n"
 
-#: mixer/mixer.c:141
+#: mixer/mixer.c:144
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3119,19 +3122,19 @@ msgstr ""
 "pavojus: ði gmix versija buvo sukompiliuota su kita bylos soundcard.h "
 "versija.\n"
 
-#: mixer/mixer.c:482
+#: mixer/mixer.c:485
 msgid "Main Volume and Mute"
 msgstr "Pagrindinis garsumas ir uþtildymas"
 
-#: mixer/mixer.c:613
+#: mixer/mixer.c:616
 msgid "Mixer Applet"
 msgstr "Mikðerio priedas"
 
-#: mixer/mixer.c:614
+#: mixer/mixer.c:617
 msgid "(c) 1998 The Free Software Foundation"
 msgstr "(c) 1998 The Free Software Foundation"
 
-#: mixer/mixer.c:616
+#: mixer/mixer.c:619
 msgid ""
 "The mixer applet gives you instant access to setting the master volume level "
 "on your soundcard device"
@@ -3139,7 +3142,7 @@ msgstr ""
 "Mikðerio priedas leidþia tau tiesiogiai keisti pagrindiná garsumo lygá tavo "
 "garso árenginyje"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:755
 msgid "Run Audio Mixer..."
 msgstr "Paleisti Garso mikðerá..."
 
@@ -3333,7 +3336,7 @@ msgstr ""
 msgid "Load average over 15 minutes"
 msgstr ""
 
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
+#: multiload/loadavg.c:103
 #, fuzzy
 msgid "Load Average Applet"
 msgstr "Apkrovimo vidurkis"
@@ -3349,8 +3352,7 @@ msgstr ""
 "\n"
 "Released under the GNU general public Licence."
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Apkrovimo vidurkis"
 
@@ -3483,15 +3485,15 @@ msgstr ""
 "\n"
 "Iðleistas GNU General Public License sàlygomis."
 
-#: odometer/odo.c:141 odometer/odometer_applet.desktop.in.h:2
+#: odometer/odo.c:142
 msgid "Odometer"
 msgstr "Odometras"
 
-#: odometer/odo.c:143
+#: odometer/odo.c:144
 msgid "(C) 1999 The Free Software Foundation"
 msgstr "© 1999 The Free Software Foundation"
 
-#: odometer/odo.c:145
+#: odometer/odo.c:146
 msgid ""
 "a GNOME applet that tracks and measures the movements of your mouse pointer "
 "across the desktop."
@@ -3499,11 +3501,11 @@ msgstr ""
 "GNOME priedas, kuris seka ir matuoja tavo pelës judëjimà skersai iðilgai "
 "darbalaukio."
 
-#: odometer/odo.c:642
+#: odometer/odo.c:664
 msgid "Can't create odometer applet!"
 msgstr "Negaliu sukurti odometro priedo!"
 
-#: odometer/odo.c:658
+#: odometer/odo.c:680
 msgid "Reset"
 msgstr "Ið naujo"
 
@@ -4014,7 +4016,7 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
 
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+#: slashapp/slashapp.c:231
 msgid "SlashApp"
 msgstr "SlashApp"
 
@@ -4177,7 +4179,7 @@ msgstr "%Y%m%d-%H-%M-%S"
 msgid "%m-%d-%Y %H:%M:%S"
 msgstr "%m-%d-%Y %H:%M:%S"
 
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
+#: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
 
@@ -4479,28 +4481,24 @@ msgid ""
 "and have a ton of fun!"
 msgstr ""
 
-#: webcontrol/webcontrol.c:90
-msgid "gnome-moz-remote not found or unable to launch it"
-msgstr ""
-
-#: webcontrol/webcontrol.c:222
+#: webcontrol/webcontrol.c:246
 msgid "URL:"
 msgstr ""
 
-#: webcontrol/webcontrol.c:249
+#: webcontrol/webcontrol.c:269
 msgid " GO "
 msgstr ""
 
-#: webcontrol/webcontrol.c:268
+#: webcontrol/webcontrol.c:288
 #, fuzzy
 msgid " Clear "
 msgstr "Iðvalyti"
 
-#: webcontrol/webcontrol.c:296
+#: webcontrol/webcontrol.c:316
 msgid "Launch new window"
 msgstr "Naujame lange"
 
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+#: whereami/whereami.c:47
 msgid "Where Am I?"
 msgstr "Kur að esu?"
 
@@ -4522,241 +4520,320 @@ msgstr ""
 msgid "whereami_applet"
 msgstr "kur_að_esu_priedas"
 
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD grotuvas"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "GNOME oro stebëjimo priedas"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "Informacijos ir bûsenos praneðiklis"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "Krepðys"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multible selections into a persistant clipboard"
-msgstr "Kopijuok kelis pasirinkimus á krepðá, ir juos vëliau pasirink"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "AfterStep Laikrodis"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "Laikrodis su AfterStep iðvaizda"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Diskø montuoklis"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Uþmontuoja ir numontuoja kaupiklius"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "CPU/Atminties apkrovimas"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Procesoriaus/Atminties apkrovimo matuoklis"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Baterijø stebëtuvas"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "Rodyklinis laikrodis, panaðus á esantá CDE."
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "Kitoks laikrodis"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Gnome Keyboard Layout Switcher"
-msgstr "GKB tarptautinë klaviatûra"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB Keyboard Switcher"
-msgstr "GKB klaviatûros perjungiklis"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Laikrodis ir paðto tikrintuvas"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "Rodo laikà ir laiðkø skaièiø dëþutëje"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Rodo paskutines naujienas ið slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Tinklo apkrovimas"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Tinklo apkrovimo matuoklis"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Atminties apkrovimas"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Atminties uþimtumo matuoklis"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Swap apkrovimo matuoklis"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Swap apkrovimas"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Procesoriaus apkrovimo matuoklis"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "CPU apkrovimas"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Komandinë eilutë"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "Parodo þymeklio vietà"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Modemo lemputës"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Parodo modemo bûsenà"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "Penkiolika"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "Penkiolikos daleliø þaidimas"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "Priedas, padedantis áterpti keistus simbolius, kuriø nëra klaviatûroje"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "Garso stebëtuvas"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Garso stebëtuvas, skirtas Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "Narðyklës valdiklis"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Garsumo keitimo priedas"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "Mikðeris"
-
-#: gumma/gumma.desktop.in.h:1
-msgid "GUMMA"
+#: gumma/gqmpeg/gqmpeg.c:150
+msgid ""
+"~/.gnome/.gumma-gqmpeg-ctl already exists.\n"
+"\n"
+"This file is created by GUMMA to get feedback\n"
+"from gqmpeg.  If GUMMA has recently crashed,\n"
+"then deleting this file is ok.  Otherwise,\n"
+"this plugin may not function correctly.\n"
+"\n"
+"Delete this file?"
 msgstr ""
 
-#: gumma/gumma.desktop.in.h:2
-msgid "Media Player"
-msgstr "Media grotuvas"
+#: gumma/gumma.c:314
+#, fuzzy, c-format
+msgid "Loading plugin %s..."
+msgstr "Ákeliamos antraðtës..."
 
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Akys, stebinèios tavo pelæ"
+#: gumma/gumma.c:493
+#, fuzzy
+msgid "Select a plugin"
+msgstr "Panaikinti lapelá"
 
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "Greitas startas"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "Maþi leistukai"
-
-#: bug-applet/bug-applet.desktop.in.h:1
-msgid "Submit a bug to the GNOME bug tracking system"
-msgstr "Pasiøsk praneðimà apie klaidà GNOME klaidø gaudymo sistemai"
-
-#: bug-applet/bug-applet.desktop.in.h:2
-msgid "bug-applet"
-msgstr "bug-priedas"
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "Pelës judëjimo matuoklis"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "ScreenShooter yra screenshot'ø darymo priedas"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "ScreenShooter"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Disko uþimtumas"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Disko uþimtumo matuoklis"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "Gyvenimas"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "Þaidimas ¥Gyvenimas´ (eikvoti tavo laikui)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
+#: gumma/gumma.c:507
+msgid "Plugins"
 msgstr ""
 
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
+#: gumma/gumma.c:593
+#, fuzzy
+msgid "About Plugin..."
+msgstr "Apie..."
+
+#: gumma/gumma.c:597
+msgid "Plugins..."
 msgstr ""
 
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
-msgstr "Rodo laikà dvejetainiu pavidalu"
+#: hal/hal.c:20
+msgid "I'm sorry, Dave, I can't let you do that."
+msgstr ""
 
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC skaitmeninis laikrodis"
+#: hal/hal.c:21
+msgid "Dave, what are you doing?"
+msgstr ""
 
-#: hal/hal_applet.desktop.in.h:1
-msgid "Hal"
-msgstr "HAL"
+#: hal/hal.c:22
+msgid "I can feel my mind going, Dave...I can feel it."
+msgstr ""
 
-#: hal/hal_applet.desktop.in.h:2
-msgid "Hal 2001 applet"
-msgstr "Protingas kompiuteris - HAL ið knygos ¥2001 metø odisëja´"
+#: hal/hal.c:23
+msgid "Daisy, daisy..."
+msgstr ""
+
+#: hal/hal.c:208
+msgid "(with minor help from George Lebl and his amazing fish applet)"
+msgstr ""
+
+#: hal/hal.c:212
+msgid "The GNOME HAL"
+msgstr ""
+
+#: hal/hal.c:215
+msgid ""
+"I am a HAL 9000 computer, Production Number 3. I became operational at the "
+"Hal Plant in Urbana, Illinois, on January 12, 1997."
+msgstr ""
+
+#. help
+#: sound-monitor/pvd/esdpvd.c:459
+#, c-format
+msgid "ESounD Persistent Volume Daemon version %s\n"
+msgstr ""
+
+#: sound-monitor/pvd/esdpvd.c:460
+#, fuzzy
+msgid "options:\n"
+msgstr "Modemo pasirinktys"
+
+#: sound-monitor/pvd/esdpvd.c:461
+msgid "  -n, --noX     Allow to run with X server\n"
+msgstr ""
+
+#: webcontrol/properties.c:180
+msgid "WebControl Properties"
+msgstr "NarðIklio savybës"
+
+#. create size properties
+#: webcontrol/properties.c:188
+msgid "URL bar width:"
+msgstr ""
+
+#. create Show Go button property
+#: webcontrol/properties.c:213
+msgid "Display GO Button"
+msgstr ""
+
+#. create Launch New Window property
+#: webcontrol/properties.c:227
+msgid "Display \"launch new window\" option"
+msgstr "Rodyti ¥naujame lange´ pasirinktá"
+
+#. create show clear button property
+#: webcontrol/properties.c:241
+msgid "Display \"Clear\" button"
+msgstr ""
+
+#. create clear button on top property
+#: webcontrol/properties.c:256
+msgid "\"Clear\" button on top?"
+msgstr ""
+
+#: webcontrol/properties.c:281
+msgid " URL Activation "
+msgstr ""
+
+#: webcontrol/properties.c:288
+#, fuzzy
+msgid "Use default MIME handler"
+msgstr "Naudoti standartines savybes"
+
+#: webcontrol/properties.c:296
+msgid "Use custom browser:"
+msgstr ""
+
+#: webcontrol/properties.c:354
+msgid "Remove"
+msgstr ""
+
+#. URL history frame
+#: webcontrol/properties.c:368
+#, fuzzy
+msgid " URL History "
+msgstr "Þurnalas"
+
+#: webcontrol/properties.c:377
+#, fuzzy
+msgid "Size of URL history: "
+msgstr "þurnalo sàraðo pabaiga"
+
+#: webcontrol/properties.c:403
+#, fuzzy
+msgid "Clear"
+msgstr "Iðvalyti"
+
+#: webcontrol/properties.c:413
+msgid "all entries in URL history"
+msgstr ""
+
+#~ msgid "CD Player"
+#~ msgstr "CD grotuvas"
+
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "GNOME oro stebëjimo priedas"
+
+#~ msgid "Info and status ticker"
+#~ msgstr "Informacijos ir bûsenos praneðiklis"
+
+#~ msgid "Clipboard"
+#~ msgstr "Krepðys"
+
+#~ msgid "Copy multible selections into a persistant clipboard"
+#~ msgstr "Kopijuok kelis pasirinkimus á krepðá, ir juos vëliau pasirink"
+
+#~ msgid "AfterStep Clock"
+#~ msgstr "AfterStep Laikrodis"
+
+#~ msgid "Just another clock"
+#~ msgstr "Laikrodis su AfterStep iðvaizda"
+
+#~ msgid "Drive Mount"
+#~ msgstr "Diskø montuoklis"
+
+#~ msgid "Mounts and unmount drives"
+#~ msgstr "Uþmontuoja ir numontuoja kaupiklius"
+
+#~ msgid "CPU/MEM usage"
+#~ msgstr "CPU/Atminties apkrovimas"
+
+#~ msgid "CPU/MEM usage meter"
+#~ msgstr "Procesoriaus/Atminties apkrovimo matuoklis"
+
+#~ msgid "Battery Charge Monitor"
+#~ msgstr "Baterijø stebëtuvas"
+
+#~ msgid "An analog clock similar to that in CDE panel"
+#~ msgstr "Rodyklinis laikrodis, panaðus á esantá CDE."
+
+#~ msgid "Another Clock"
+#~ msgstr "Kitoks laikrodis"
+
+#~ msgid "GKB Gnome Keyboard Layout Switcher"
+#~ msgstr "GKB tarptautinë klaviatûra"
+
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB klaviatûros perjungiklis"
+
+#~ msgid "Clock and Mailcheck"
+#~ msgstr "Laikrodis ir paðto tikrintuvas"
+
+#~ msgid "Displays new mail and time"
+#~ msgstr "Rodo laikà ir laiðkø skaièiø dëþutëje"
+
+#~ msgid "Show last news from slashdot.org"
+#~ msgstr "Rodo paskutines naujienas ið slashdot.org"
+
+#~ msgid "NetLoad"
+#~ msgstr "Tinklo apkrovimas"
+
+#~ msgid "Network Activity Meter"
+#~ msgstr "Tinklo apkrovimo matuoklis"
+
+#~ msgid "MemLoad"
+#~ msgstr "Atminties apkrovimas"
+
+#~ msgid "Memory Load Meter"
+#~ msgstr "Atminties uþimtumo matuoklis"
+
+#~ msgid "Swap Load Meter"
+#~ msgstr "Swap apkrovimo matuoklis"
+
+#~ msgid "SwapLoad"
+#~ msgstr "Swap apkrovimas"
+
+#~ msgid "CPU Load Meter"
+#~ msgstr "Procesoriaus apkrovimo matuoklis"
+
+#~ msgid "CPULoad"
+#~ msgstr "CPU apkrovimas"
+
+#~ msgid "Mini-Commander"
+#~ msgstr "Komandinë eilutë"
+
+#~ msgid "Shows Cursor Position"
+#~ msgstr "Parodo þymeklio vietà"
+
+#~ msgid "Modem Lights"
+#~ msgstr "Modemo lemputës"
+
+#~ msgid "Show modem status"
+#~ msgstr "Parodo modemo bûsenà"
+
+#~ msgid "Fifteen"
+#~ msgstr "Penkiolika"
+
+#~ msgid "Fifteen cells game"
+#~ msgstr "Penkiolikos daleliø þaidimas"
+
+#~ msgid "character picker"
+#~ msgstr ""
+#~ "Priedas, padedantis áterpti keistus simbolius, kuriø nëra klaviatûroje"
+
+#~ msgid "Sound Monitor"
+#~ msgstr "Garso stebëtuvas"
+
+#~ msgid "Sound Monitor for Esound"
+#~ msgstr "Garso stebëtuvas, skirtas Esound"
+
+#~ msgid "WebControl"
+#~ msgstr "Narðyklës valdiklis"
+
+#~ msgid "Audio Mixer"
+#~ msgstr "Garsumo keitimo priedas"
+
+#~ msgid "Mixer"
+#~ msgstr "Mikðeris"
+
+#~ msgid "Media Player"
+#~ msgstr "Media grotuvas"
+
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "Akys, stebinèios tavo pelæ"
+
+#~ msgid "QuickLaunch"
+#~ msgstr "Greitas startas"
+
+#~ msgid "Small Launchers "
+#~ msgstr "Maþi leistukai"
+
+#~ msgid "Submit a bug to the GNOME bug tracking system"
+#~ msgstr "Pasiøsk praneðimà apie klaidà GNOME klaidø gaudymo sistemai"
+
+#~ msgid "bug-applet"
+#~ msgstr "bug-priedas"
+
+#~ msgid "Mouse movements counter"
+#~ msgstr "Pelës judëjimo matuoklis"
+
+#~ msgid "Screen Shooter is a screenshot grabber"
+#~ msgstr "ScreenShooter yra screenshot'ø darymo priedas"
+
+#~ msgid "ScreenShooter"
+#~ msgstr "ScreenShooter"
+
+#~ msgid "Disk Usage"
+#~ msgstr "Disko uþimtumas"
+
+#~ msgid "Disk usage meter"
+#~ msgstr "Disko uþimtumo matuoklis"
+
+#~ msgid "Game of Life"
+#~ msgstr "Gyvenimas"
+
+#~ msgid "The Game of Life (to waste your time)"
+#~ msgstr "Þaidimas ¥Gyvenimas´ (eikvoti tavo laikui)"
+
+#~ msgid "Displays the time whith in binary representation"
+#~ msgstr "Rodo laikà dvejetainiu pavidalu"
+
+#~ msgid "JBC Binary Clock"
+#~ msgstr "JBC skaitmeninis laikrodis"
+
+#~ msgid "Hal"
+#~ msgstr "HAL"
+
+#~ msgid "Hal 2001 applet"
+#~ msgstr "Protingas kompiuteris - HAL ið knygos ¥2001 metø odisëja´"
 
 #~ msgid "(C) 1998-2000 LSC - Linux Support Center"
 #~ msgstr "(C) 1998-2000 LSC - Linux Support Center"
@@ -4798,14 +4875,8 @@ msgstr "Protingas kompiuteris - HAL ið knygos ¥2001 metø odisëja´"
 #~ msgid "Url:"
 #~ msgstr "URL:"
 
-#~ msgid "WebControl Properties"
-#~ msgstr "NarðIklio savybës"
-
 #~ msgid "Display URL label"
 #~ msgstr "Rodyti URL þymæ"
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Rodyti ¥naujame lange´ pasirinktá"
 
 #~ msgid "Look"
 #~ msgstr "Iðvaizda"

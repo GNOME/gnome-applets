@@ -26,11 +26,6 @@ gumma_SOURCES = \
 	led.c		\
 	led.h
 
-sysdir = $(datadir)/applets/Multimedia
-sys_predata = gumma.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
-
 gnorbadatadir = $(sysconfdir)/CORBA/servers
 gnorbadata_DATA = gumma.gnorba
 

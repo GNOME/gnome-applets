@@ -995,6 +995,7 @@ static void iwin_get_finish (ghttp_request *req, ghttp_status status, gpointer d
     g_return_if_fail(req == iwin_request);
 
     g_return_if_fail(info != NULL);
+    g_free (info->forecast);
     info->forecast = NULL;
     loc = info->location;
     if (loc == NULL) {

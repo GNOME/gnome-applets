@@ -12,8 +12,11 @@ clipboard_applet_LDADD = \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Utility
+
 sys_predata = clipboard_applet.desktop.in
+
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
+
 @XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmapsdir = $(datadir)/pixmaps
@@ -24,6 +27,6 @@ gnorba_DATA = clipboard_applet.gnorba
 
 EXTRA_DIST = \
 	copy.xpm set_selection.xpm \
-	gnome-clipboard.png
+	gnome-clipboard.png	\
 	$(gnorba_DATA)	\
 	$(sys_DATA) $(sys_predata)
