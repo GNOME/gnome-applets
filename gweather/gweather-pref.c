@@ -93,11 +93,6 @@ add_atk_relation (GtkWidget *widget1, GtkWidget *widget2, AtkRelationType type)
     AtkRelationSet *relation_set;
     AtkRelation *relation;
    
-    /* If the relation is LABELLED_BY set LABEL_FOR also */
-
-    if (type == ATK_RELATION_LABELLED_BY)
-       gtk_label_set_mnemonic_widget (GTK_LABEL (widget2), widget1);
-
     atk_obj1 = gtk_widget_get_accessible (widget1);
     if (! GTK_IS_ACCESSIBLE (atk_obj1))
        return;
@@ -801,11 +796,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     		      G_CALLBACK (response_cb), gw_applet);
    
     gweather_pref_set_accessibility (gw_applet); 
-    add_atk_relation (gw_applet->pref_basic_update_spin, pref_basic_update_sec_lbl,
-                                            ATK_RELATION_LABELLED_BY);
-    add_atk_relation (gw_applet->pref_basic_radar_url_entry, label, ATK_RELATION_LABELLED_BY);
- 
-
+    gtk_label_set_mnemonic_widget (GTK_LABEL (pref_basic_update_sec_lbl), gw_applet->pref_basic_update_spin);
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->pref_basic_radar_url_entry);
 
     gtk_widget_show_all (gw_applet->pref);
 }
