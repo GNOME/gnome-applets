@@ -50,11 +50,14 @@ battstat_applet_2_LDADD = \
 		     $(top_builddir)/screen-exec/libscreen-exec.la \
 		     $(APMLIB)
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_DATA = battstat.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = battstat.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_BattstatApplet.server.in
@@ -70,7 +73,7 @@ EXTRA_DIST = 					\
 	$(glade_DATA)				\
 	GNOME_BattstatApplet.server.in.in	\
 	$(ui_DATA)				\
-	battstat.schemas			\
+	$(schemas_in_files)		\
 	battstat.png
 
 @INTLTOOL_SERVER_RULE@

@@ -34,15 +34,19 @@ pixmaps = gnome-cpu.png
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = $(pixmaps)
 
-schemadir 	= @GCONF_SCHEMA_FILE_DIR@
-schema_DATA	= multiload.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = multiload.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
+
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 		
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in.in \
-		multiload.schemas \
+		$(schemas_in_files) \
 		$(pixmaps) \
 		$(ui_DATA)
 

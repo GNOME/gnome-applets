@@ -29,17 +29,20 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 @INTLTOOL_SERVER_RULE@
 
-schemadir 	= @GCONF_SCHEMA_FILE_DIR@
-schema_DATA	= modemlights.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = modemlights.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
 
 EXTRA_DIST =					\
 	GNOME_ModemLightsApplet.server.in.in	\
 	digits.xpm 				\
-	$(schema_DATA)				\
+	$(schemas_in_files)				\
 	$(ui_DATA)
 
 install-data-local:
-	for p in $(schema_DATA); do \
+	for p in $(schemas_DATA); do \
 		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$$p ; \
 	done
 

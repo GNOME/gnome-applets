@@ -66,14 +66,17 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-schemadir 	= @GCONF_SCHEMA_FILE_DIR@
-schema_DATA	= mini-commander.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = mini-commander.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_MiniCommanderApplet.xml
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(top_builddir)/mini-commander/src/mc-install-default-macros
 
 @INTLTOOL_SERVER_RULE@
@@ -84,4 +87,4 @@ EXTRA_DIST =					\
 	$(bitmaps_DATA)				\
 	$(ui_DATA)				\
 	$(glade_DATA)				\
-	$(schema_DATA)
+	$(schemas_in_files)

@@ -33,8 +33,11 @@ ui_DATA = GNOME_DriveMountApplet.xml
 
 @INTLTOOL_SERVER_RULE@
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_DATA = drivemount.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = drivemount.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
 
 EXTRA_DIST = \
 cdrom_h_in.xpm \
@@ -62,9 +65,9 @@ jazdrive_h_out.xpm \
 jazdrive_v_in.xpm \
 jazdrive_v_out.xpm \
 GNOME_DriveMountApplet.server.in.in \
-$(schema_DATA)	\
+$(schemas_in_files)	\
 $(ui_DATA)	\
 drivemount-applet.png
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;

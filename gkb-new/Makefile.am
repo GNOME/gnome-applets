@@ -46,8 +46,11 @@ GKB_ICON = gkb.png gkb-icon.png
 gkbicondir = $(datadir)/pixmaps
 gkbicon_DATA = $(GKB_ICON)
 
-schemadir   = @GCONF_SCHEMA_FILE_DIR@
-schema_DATA = gkb.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = gkb.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_KeyboardApplet_Factory.server.in
@@ -62,7 +65,7 @@ ui_DATA = GNOME_KeyboardApplet.xml
 EXTRA_DIST =						\
 	GNOME_KeyboardApplet_Factory.server.in.in	\
 	$(GKB_ICON)					\
-	$(schema_DATA)					\
+	$(schemas_in_files)					\
 	$(ui_DATA)
 
 gkb_xmmap: gkb_xmmap.in
@@ -71,5 +74,5 @@ gkb_xmmap: gkb_xmmap.in
 	&& mv gkb_xmmap.tmp gkb_xmmap
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 

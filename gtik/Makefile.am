@@ -33,15 +33,18 @@ ui_DATA = GNOME_GtikApplet.xml
 
 @INTLTOOL_SERVER_RULE@
 
-schemadir 	= @GCONF_SCHEMA_FILE_DIR@
-schema_DATA	= gtik.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = gtik.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
+
+@INTLTOOL_SCHEMAS_RULE@
 
 EXTRA_DIST = \
 	README AUTHORS ChangeLog \
 	GNOME_GtikApplet.server.in.in \
 	$(ui_DATA)		\
-	$(schema_DATA)
+	$(schemas_in_files)
 	
 install-data-local:
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 

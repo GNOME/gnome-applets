@@ -28,9 +28,11 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 @INTLTOOL_SERVER_RULE@
 
-schemadir 	= @GCONF_SCHEMA_FILE_DIR@
-schema_DATA	= charpick.schemas
+schemasdir   = @GCONF_SCHEMA_FILE_DIR@
+schemas_in_files = charpick.schemas.in
+schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
+@INTLTOOL_SCHEMAS_RULE@
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CharpickerApplet.xml
 
@@ -38,8 +40,8 @@ EXTRA_DIST =					\
 	charpick.png				\
 	GNOME_CharpickerApplet.server.in.in	\
 	$(ui_DATA)				\
-	$(schema_DATA)
+	$(schemas_in_files)
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 
