@@ -34,6 +34,10 @@ if BUILD_BATTSTAT_APPLET
 battstat_SUBDIR = battstat
 endif
 
+if APPLET_ACCESSX
+accessx_status_SUBDIR = accessx-status
+endif
+
 always_built_SUBDIRS = \
 	drivemount	\
 	charpick	\
@@ -41,7 +45,7 @@ always_built_SUBDIRS = \
 	mailcheck	\
 	mini-commander	\
 	gkb-new		\
-	wireless		\
+	wireless	\
 	stickynotes
 
 SUBDIRS = \
@@ -54,6 +58,7 @@ SUBDIRS = \
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
+	$(accessx_status_SUBDIR)\
 	omf-install	
 
 DIST_SUBDIRS = \
@@ -76,6 +81,7 @@ DIST_SUBDIRS = \
 	man		\
 	omf-install	\
 	wireless	\
+	accessx-status  \
 	stickynotes
 
 EXTRA_DIST = \

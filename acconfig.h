@@ -20,7 +20,7 @@
 #undef PREFIX
 
 #undef HAVE_FVWM
-
+#undef HAVE_XKB
 #undef HAVE_LIBGTOP
 
 /* Define if LibGTop has support for multiple processors. */

@@ -1,6 +1,6 @@
 AC_INIT(drivemount/drivemount.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 2.3.2)
+AM_INIT_AUTOMAKE(gnome-applets, 2.3.3)
 
 AM_MAINTAINER_MODE
 
@@ -15,7 +15,7 @@ AC_PATH_XTRA
 X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
 AC_SUBST(X_LIBS)
 
-GNOME_COMPILE_WARNINGS(yes)
+GNOME_COMPILE_WARNINGS
 
 dnl Stuff we might need, not quite sure yet
 
@@ -212,8 +212,18 @@ if test "$P_MIXER" != "mixer"; then
 fi
 
 dnl ******************************************
+dnl ** keyboard accessibility status applet check
 dnl ******************************************
 
+savecppflags=$CPPFLAGS
+CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+AC_CHECK_HEADER(X11/extensions/XKB.h, HAVE_XKB=true, HAVE_XKB=false)
+
+AM_CONDITIONAL(APPLET_ACCESSX, $HAVE_XKB)
+if test "x$APPLET_ACCESSX" = "xtrue"; then
+  AC_MSG_WARN([*** \`keyboard accessibility status' applet will not be built ***])
+fi
+CPPFLAGS=$savecppflags
 
 
 dnl ******************************************
@@ -248,6 +258,10 @@ gnome-applets.spec
 Makefile
 po/Makefile.in
 screen-exec/Makefile
+accessx-status/Makefile
+accessx-status/docs/Makefile
+accessx-status/docs/C/Makefile
+accessx-status/pixmaps/Makefile
 mailcheck/Makefile
 mailcheck/help/Makefile
 mailcheck/help/C/Makefile

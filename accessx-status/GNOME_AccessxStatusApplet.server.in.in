@@ -1,0 +1,35 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:GNOME_AccessxStatusApplet_Factory"
+	    type="exe"
+	    location="@LIBEXECDIR@/accessx-status-applet">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:Bonobo/GenericFactory:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="AccessX Status Applet Factory"/>
+	<oaf_attribute name="description" type="string" _value="Keyboard Accessibility Status Applet Factory"/>
+
+</oaf_server>
+
+<oaf_server iid="OAFIID:GNOME_AccessxStatusApplet"
+	    type="factory" 
+	    location="OAFIID:GNOME_AccessxStatusApplet_Factory">
+
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+		<item value="IDL:Bonobo/Control:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="Keyboard Accessibility Status"/>
+	<oaf_attribute name="description" type="string" _value="Shows the status of keyboard accessibility features"/>
+	<oaf_attribute name="panel:category" type="string" _value="Accessories"/>
+	<oaf_attribute name="panel:icon" type="string" value="ax-applet.png"/>
+	<oaf_attribute name="bugzilla:bugzilla" type="string" value="GNOME"/>
+        <oaf_attribute name="bugzilla:product" type="string" value="gnome-applets"/>
+        <oaf_attribute name="bugzilla:component" type="string" value="other-applets"/>
+
+</oaf_server>
+
+</oaf_info>
