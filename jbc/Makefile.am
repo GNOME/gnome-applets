@@ -25,4 +25,4 @@ gnorba_DATA = jbc_applet.gnorba
 
 dist-hook:
 	mkdir $(distdir)/pixmaps
-	cp $(srcdir)/pixmaps/*.xpm $(srcdir)/pixmaps
+	cp $(srcdir)/pixmaps/*.xpm $(distdir)/pixmaps
