@@ -324,7 +324,7 @@ multiload_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MultiloadAp
 void
 multiload_applet_tooltip_update(LoadGraph *g)
 {
-	gint i, total_used, percent;
+	gint i, total_used, percent, mem_used, used_percent;
 	gchar *tooltip_text, *name;
 
 	g_return_if_fail(g);
@@ -355,7 +355,16 @@ multiload_applet_tooltip_update(LoadGraph *g)
 	percent = 100 * (gdouble)total_used / (gdouble)g->draw_height;
 	percent = CLAMP (percent, 0, 100);
 
-	tooltip_text = g_strdup_printf(_("%s:\n%d%% in use"), name, percent);
+	if (!strncmp(g->name, "memload", strlen("memload"))) {
+		mem_used = total_used - g->data[0][i - 1];
+		used_percent = 100 * (gdouble)mem_used / (gdouble)g->draw_height;
+		used_percent = CLAMP (used_percent, 0, 100);
+		
+		tooltip_text = g_strdup_printf(_("%s:\n%d%% in use of which\n%d%% is cache"), name, percent,
+				percent - used_percent);
+	} else
+		tooltip_text = g_strdup_printf(_("%s:\n%d%% in use"), name, percent);
+	
 	gtk_tooltips_set_tip(g->tooltips, g->disp, tooltip_text, tooltip_text);
 		
 	g_free(tooltip_text);
