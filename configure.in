@@ -212,9 +212,9 @@ case "$host" in
 *netbsd*) CDROM_HOST=netbsd;;
 *solaris*) CDROM_HOST=solaris;;
 esac
-case "$host_os" in
-sparc-solaris-*)	gkb_type_sun=true;;
-*)	gkb_type_sun=false;;
+case "$host" in
+sparc-*-solaris*)	gkb_type_sun=true;;
+*)			gkb_type_sun=false;;
 esac
 AM_CONDITIONAL(GKB_SUN, $gkb_type_sun)
 
