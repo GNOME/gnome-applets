@@ -39,3 +39,6 @@
 #undef LIBGTOP_SERVER_VERSION
 
 #undef GNOME_ICONDIR
+
+/* Define if this NetBSD platform supports APM. */
+#undef NETBSD_APM

@@ -17,6 +17,7 @@ mixer_applet_SOURCES = \
 	lamp-small-red.xpm 
 
 mixer_applet_LDADD = \
+		     $(MIXER_LIBS) \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 

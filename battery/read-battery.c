@@ -198,7 +198,41 @@ battery_read_charge (int * percentage,
   close(fd);
   return TRUE;
 
-#else /* ! ( __linux__ || __FreeBSD__) */
+#elif defined(__NetBSD__) && defined(NETBSD_APM)
+
+  struct apm_power_info aip;
+  int fd;
+  u_int mins;
+
+  fd = open(APMDEV, O_RDONLY);
+  if (fd == -1)
+    {
+      g_error (_("Cannot open /dev/apm; can't get data."));
+      return FALSE;
+    }
+
+  if (ioctl(fd, APM_IOC_GETPOWER, &aip) == -1) {
+    g_error(_("ioctl failed on /dev/apm."));
+    return FALSE;
+  }
+
+  /* We can read these under NetBSD. */
+  mins = aip.minutes_left;
+  *hours_remaining = mins / 60;
+  *minutes_remaining = mins % 60;
+
+  if (aip.ac_state == APM_AC_ON) {
+    *ac_online = 1;
+  } else {
+    *ac_online = 0;
+  }
+
+  *percentage = aip.battery_life;
+
+  close(fd);
+  return TRUE;
+
+#else /* ! ( __linux__ || __FreeBSD__ || (__NetBSD__ && NETBSD_APM) ) */
 
   /* Assume always connected to power.  */
   *ac_online = 1;
@@ -207,6 +241,6 @@ battery_read_charge (int * percentage,
   *hours_remaining = -1;
   *minutes_remaining = 1;
 
-#endif /* __linux__ || __FreeBSD__ */
+#endif /* __linux__ || __FreeBSD__ || __NetBSD__ */
 
 } /* battery_read_charge */

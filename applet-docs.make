@@ -10,6 +10,7 @@
 # include $(top_srcdir)/applet-docs.make
 
 docdir = $(datadir)/gnome/help/$(applet)_applet/$(lang)
+helpdir = $(docdir)
 doc_DATA =	\
 	index.html	\
 	topic.dat	\

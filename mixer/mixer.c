@@ -47,6 +47,9 @@
 #elif HAVE_SYS_SOUNDCARD_H
 #include <sys/soundcard.h>
 #define OSS_API
+#elif HAVE_SOUNDCARD_H
+#include <soundcard.h>
+#define OSS_API
 #elif HAVE_SYS_AUDIOIO_H
 #include <sys/audioio.h>
 #define SUN_API

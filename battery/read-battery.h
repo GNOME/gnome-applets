@@ -18,6 +18,11 @@ typedef struct apm_info {
 #include <fcntl.h>
 #include <machine/apm_bios.h>
 #define APMDEV "/dev/apm"
+#elif __NetBSD__ && defined(NETBSD_APM)
+#include <fcntl.h>
+#include <sys/ioctl.h>
+#include <machine/apmvar.h>
+#define APMDEV "/dev/apm"
 #endif
 
 /* Prototypes */ 
