@@ -1,3 +1,15 @@
+2000-11-06  Dan Mueth <d-mueth@uchicago.edu>
+
+        * Nautilus requires that the doc names match the directory names:
+          .../gnome/help/<appname>/<lang>/<appname>.sgml where one would
+          type "gnome-help:<appname>" in Nautilus.  It is currently broken
+          for all applets, since we use
+          .../gnome/help/<name>_applet/<lang>/<name>-applet.sgml.
+          Thus, we have to change all <name>-applet.sgml to
+          <name>_applet.sgml.
+        * First, jrb is renaming the files as described above:
+        * applet-docs.make: Change all "-applet" to "_applet"
+
 2000-11-05  Yukihiro Nakai <nakai@gnome.gr.jp>
 
 	* configure.in: Just sort ALL_LINGUAS
