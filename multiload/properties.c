@@ -160,7 +160,7 @@ add_page(GtkWidget *notebook, gchar *label)
 	
 	page = gtk_hbox_new(TRUE, 0);
 	page_label = gtk_label_new(label);
-	gtk_container_set_border_width(GTK_CONTAINER(page), 3);
+	gtk_container_set_border_width(GTK_CONTAINER(page), 6);
 		
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page, page_label);
 	
@@ -255,15 +255,16 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	GtkWidget *control_hbox;
 	GtkWidget *check_box;
 	GtkWidget *indent;
-	GtkWidget *table;
 	GtkWidget *spin_button;
 	GtkWidget *label;
 	PanelAppletOrient orient;
+	GtkSizeGroup *label_size;
+	GtkSizeGroup *spin_size;
 	gchar *label_text;
 	gchar *title;
 
 	vbox = gtk_vbox_new (FALSE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_widget_show (vbox);
 	
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox,
@@ -378,12 +379,11 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 	
-	table = gtk_table_new (2, 3, FALSE);
-	gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-	gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-	gtk_container_set_border_width (GTK_CONTAINER (table), 0);
-	gtk_widget_show (table);
-	gtk_container_add (GTK_CONTAINER (control_vbox), table);
+	control_hbox = gtk_hbox_new (FALSE, 12);
+	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_hbox);
+	
+	label_size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 	
 	orient = panel_applet_get_orient(ma->applet);
 	if ( (orient == PANEL_APPLET_ORIENT_UP) || (orient == PANEL_APPLET_ORIENT_DOWN) )
@@ -393,8 +393,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	label = gtk_label_new_with_mnemonic(label_text);
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
-	gtk_table_attach (GTK_TABLE (table), label, 
-			  0, 1, 0, 1, GTK_FILL, 0, 0, 0);
+	gtk_size_group_add_widget (label_size, label);
+        gtk_box_pack_start (GTK_BOX (control_hbox), label, FALSE, FALSE, 0);
+	
+	hbox = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (control_hbox), hbox, TRUE, TRUE, 0);
+	gtk_widget_show (hbox);
+
+	spin_size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 			  
 	spin_button = gtk_spin_button_new_with_range(10, 1000, 5);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
@@ -406,14 +412,26 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "size");
 	
-	gtk_table_attach (GTK_TABLE (table), spin_button, 1, 2, 0, 1, GTK_FILL, 0, 0, 0);
+	gtk_size_group_add_widget (spin_size, spin_button);
+	gtk_box_pack_start (GTK_BOX (hbox), spin_button, FALSE, FALSE, 0);
+	
 	label = gtk_label_new (_("pixels"));
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
-	gtk_table_attach (GTK_TABLE (table), label, 2, 3, 0, 1, GTK_FILL, 0, 0, 0);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	control_hbox = gtk_hbox_new (FALSE, 12);
+	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_hbox);
 	
 	label = gtk_label_new_with_mnemonic(_("Sys_tem monitor update interval: "));
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
-	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
+	gtk_size_group_add_widget (label_size, label);
+	gtk_box_pack_start (GTK_BOX (control_hbox), label, FALSE, FALSE, 0);
+	
+	hbox = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (control_hbox), hbox, TRUE, TRUE, 0);
+	gtk_widget_show (hbox);
+	
 	spin_button = gtk_spin_button_new_with_range(50, 10000, 50);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
@@ -423,10 +441,12 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 				(gdouble)panel_applet_gconf_get_int(ma->applet, "speed", NULL));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "speed");
-	gtk_table_attach (GTK_TABLE (table), spin_button, 1, 2, 1, 2, GTK_FILL, 0, 0, 0);
+	gtk_size_group_add_widget (spin_size, spin_button);
+	gtk_box_pack_start (GTK_BOX (hbox), spin_button, FALSE, FALSE, 0);
+	
 	label = gtk_label_new(_("milliseconds"));
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
-	gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, GTK_FILL, 0, 0, 0);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	
 	g_free(label_text);
 	
@@ -520,6 +540,7 @@ multiload_properties_cb (BonoboUIComponent *uic,
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 
 	fill_properties(dialog, ma);
 
