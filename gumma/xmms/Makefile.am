@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 plugindir = $(libdir)/gumma
 plugin_LTLIBRARIES = libgumma-xmms.la
 
