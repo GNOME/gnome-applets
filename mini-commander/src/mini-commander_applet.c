@@ -322,15 +322,14 @@ redraw_applet(void)
     /* allow pasting into the input box by packing it after
        applet_widdget_add has bound the middle mouse button (idea taken
        from the applet Web_control by Garrett Smith) */
-    if(1)
-	gtk_box_pack_start(GTK_BOX(vbox), entry_command, FALSE, FALSE, 0);
-    else
-	{
-	    frame = gtk_frame_new(NULL);
-	    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
-	    gtk_container_add(GTK_CONTAINER(frame), terminal_zvt);
-	    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-	}	
+#if 1
+    gtk_box_pack_start(GTK_BOX(vbox), entry_command, FALSE, FALSE, 0);
+#else
+    frame = gtk_frame_new(NULL);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+    gtk_container_add(GTK_CONTAINER(frame), terminal_zvt);
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+#endif
 
     gtk_widget_show_all(applet_vbox);
     gtk_widget_show_all(applet_inner_vbox);

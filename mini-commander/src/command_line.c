@@ -478,7 +478,7 @@ init_command_entry(void)
 
     gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
 		       GTK_SIGNAL_FUNC(command_line_activate_cb),
-		       entry_command);
+		       NULL);
     
     command_entry_update_color();
     command_entry_update_size();

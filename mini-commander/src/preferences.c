@@ -254,9 +254,9 @@ load_session(void)
     prop.cmd_line_size_y = gnome_config_get_int("mini_commander/cmd_line_y=24");
 
     /* colors */
-    prop.cmd_line_color_fg_r = gnome_config_get_int("mini_commander/cmd_line_color_fg_r=54613");
-    prop.cmd_line_color_fg_g = gnome_config_get_int("mini_commander/cmd_line_color_fg_g=54613");
-    prop.cmd_line_color_fg_b = gnome_config_get_int("mini_commander/cmd_line_color_fg_b=54613");
+    prop.cmd_line_color_fg_r = gnome_config_get_int("mini_commander/cmd_line_color_fg_r=64613");
+    prop.cmd_line_color_fg_g = gnome_config_get_int("mini_commander/cmd_line_color_fg_g=64613");
+    prop.cmd_line_color_fg_b = gnome_config_get_int("mini_commander/cmd_line_color_fg_b=64613");
 
     prop.cmd_line_color_bg_r = gnome_config_get_int("mini_commander/cmd_line_color_bg_r=0");
     prop.cmd_line_color_bg_g = gnome_config_get_int("mini_commander/cmd_line_color_bg_g=0");
