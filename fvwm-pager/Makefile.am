@@ -1,4 +1,4 @@
-Utilitiesdir = $(datadir)/apps/Utilities
+Utilitiesdir = $(datadir)/gnome/apps/Utilities
 
 INCLUDES =                                              \
 	-Dsafemalloc=g_malloc                           \
