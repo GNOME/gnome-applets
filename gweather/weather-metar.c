@@ -354,9 +354,16 @@ static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
                      "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4}(N|NE|E|SE|S|SW|W|NW))?)?)|" \
                      "CAVOK"
 #define COND_RE_STR  "(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)"
-#define CLOUD_RE_STR "((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?)"
+#define CLOUD_RE_STR "((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3}|///)?(CB|TCU|///)?)"
 #define TEMP_RE_STR  "(M?[0-9][0-9])/(M?(//|[0-9][0-9]))"
 #define PRES_RE_STR  "(A|Q)([0-9]{4})"
+
+/* POSIX regular expressions do not allow us to express "match whole words
+ * only" in a simple way, so we have to wrap them all into
+ *   (^| )(...regex...)( |$)
+ */
+#define RE_PREFIX "(^| )("
+#define RE_SUFFIX ")( |$)"
 
 static regex_t metar_re[RE_NUM];
 static void (*metar_f[RE_NUM])(gchar *tokp, WeatherInfo *info);
@@ -368,13 +375,13 @@ static void metar_init_re (void)
         return;
     initialized = TRUE;
 
-    regcomp(&metar_re[TIME_RE], TIME_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[WIND_RE], WIND_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[VIS_RE], VIS_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[CLOUD_RE], CLOUD_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[TEMP_RE], TEMP_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[PRES_RE], PRES_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[TIME_RE], RE_PREFIX TIME_RE_STR RE_SUFFIX, REG_EXTENDED);
+    regcomp(&metar_re[WIND_RE], RE_PREFIX WIND_RE_STR RE_SUFFIX, REG_EXTENDED);
+    regcomp(&metar_re[VIS_RE], RE_PREFIX VIS_RE_STR RE_SUFFIX, REG_EXTENDED);
+    regcomp(&metar_re[COND_RE], RE_PREFIX COND_RE_STR RE_SUFFIX, REG_EXTENDED);
+    regcomp(&metar_re[CLOUD_RE], RE_PREFIX CLOUD_RE_STR RE_SUFFIX, REG_EXTENDED);
+    regcomp(&metar_re[TEMP_RE], RE_PREFIX TEMP_RE_STR RE_SUFFIX, REG_EXTENDED);
+    regcomp(&metar_re[PRES_RE], RE_PREFIX PRES_RE_STR RE_SUFFIX, REG_EXTENDED);
 
     metar_f[TIME_RE] = metar_tok_time;
     metar_f[WIND_RE] = metar_tok_wind;
@@ -421,6 +428,11 @@ static gboolean metar_parse (gchar *metar, WeatherInfo *info)
 		&& rm.rm_so < rm2.rm_so)
 	    {
 	        i2 = i;
+		/* Skip leading and trailing space characters, if present.
+		   (the regular expressions include those characters to
+		   only get matches limited to whole words). */
+		if (p[rm.rm_so] == ' ') rm.rm_so++;
+		if (p[rm.rm_eo-1] == ' ') rm.rm_eo--;
 	        rm2.rm_so = rm.rm_so;
 		rm2.rm_eo = rm.rm_eo;
 	    }
