@@ -17,11 +17,15 @@
  *
  * May, 2000. Implemented on FreeBSD 4.0R (Compaq Armada M700)
  *
+$Id$
  */
 
 enum statusimagename {BATTERY,AC,FLASH,WARNING};
 
+#ifdef __FreeBSD__
 #define APMDEVICE	"/dev/apm"
+#endif
+
 #define PROGLEN 33.0
 
 typedef struct _ProgressData {

@@ -17,6 +17,7 @@
  *
  * May, 2000. Implemented on FreeBSD 4.0R (Compaq Armada M700)
  *
+$Id$
  */
 
 
@@ -324,9 +325,12 @@ pixmap_timeout( gpointer data )
       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
 		     statusimage[AC], statusmask[AC]);
 
-      if (battery->lowbattnotification == FALSE) {
-	battery->lowbattnotification = (GTK_TOGGLE_BUTTON (battery->lowbatt_toggle))->active;
-      }
+      /* Why did I do this? Weird. Since lowbatt_toggle is NULL, this
+	 will result in a crash.
+	 if (battery->lowbattnotification == FALSE) {
+	 battery->lowbattnotification = (GTK_TOGGLE_BUTTON (battery->lowbatt_toggle))->active;
+      } 
+      */
     }
   }
 
