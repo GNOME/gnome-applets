@@ -55,6 +55,7 @@ struct _SkinData
 {
 	gint width;
 	gint height;
+	GtkWidget *pixmap;
 	GdkPixmap *background;
 	GdkBitmap *mask;
 	ItemData *mail;

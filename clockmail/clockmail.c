@@ -405,7 +405,11 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	gtk_widget_realize(ad->display_area);
 
-	if (!change_to_skin(ad->theme_file, ad))
+	if (ad->theme_file && strlen(ad->theme_file) == 0)
+		{
+		change_to_skin(NULL, ad);
+		}
+	else if (!change_to_skin(ad->theme_file, ad))
 		{
 		printf("Failed to load skin %s, loading default\n", ad->theme_file);
 		change_to_skin(NULL, ad);

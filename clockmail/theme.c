@@ -10,7 +10,6 @@
 
 static GdkPixmap *get_pixmap_from_data(gchar **data);
 static GdkPixmap *get_pixmap_from_file(gchar *path);
-static void get_pixmap_from_file_with_mask(gchar *path, GdkPixmap **pixmap, GdkBitmap **mask);
 static DigitData *new_digit(GdkPixmap *pixmap);
 static DigitData *new_digit_from_data(gchar **data);
 static DigitData *new_digit_from_file(gchar *file);
@@ -27,7 +26,7 @@ static SkinData *load_default_skin();
 static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical);
 static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vertical);
 static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint count, gint zeros, gint vertical, SkinData *skin);
-static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical, GdkBitmap **mask);
+static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical);
 static SkinData *load_skin(gchar *skin_path, gint vertical);
 
 static GdkPixmap *get_pixmap_from_data(gchar **data)
@@ -50,18 +49,6 @@ static GdkPixmap *get_pixmap_from_file(gchar *path)
 	gdk_imlib_load_file_to_pixmap(path, &pixmap, &mask);
 	if (mask) gdk_imlib_free_bitmap(mask);
 	return pixmap;
-}
-
-static void get_pixmap_from_file_with_mask(gchar *path, GdkPixmap **pixmap, GdkBitmap **mask)
-{
-	GdkPixmap *n_pixmap = NULL;
-	GdkBitmap *n_mask = NULL;
-
-	if (!g_file_exists(path)) return;
-
-	gdk_imlib_load_file_to_pixmap(path, &n_pixmap, &n_mask);
-	*pixmap = n_pixmap;
-	*mask = n_mask;
 }
 
 void redraw_skin(AppData *ad)
@@ -214,8 +201,7 @@ void sync_window_to_skin(AppData *ad)
 void free_skin(SkinData *s)
 {
 	if (!s) return;
-	if (s->background) gdk_imlib_free_pixmap(s->background);
-	if (s->mask) gdk_imlib_free_bitmap(s->mask);
+	if(s->pixmap) gtk_widget_destroy(s->pixmap);
 	free_number(s->hour);
 	free_number(s->min);
 	free_number(s->sec);
@@ -288,16 +274,16 @@ void draw_item(ItemData *item, gint section, AppData *ad)
 static SkinData *load_default_skin()
 {
 	SkinData *s;
-	GdkPixmap *background;
 	gint width, height;
 
 	s = new_skin();
 
-	background = get_pixmap_from_data((gchar **)backgrnd_xpm);
+	s->pixmap = gnome_pixmap_new_from_xpm_d(backgrnd_xpm);
+	s->background = GNOME_PIXMAP(s->pixmap)->pixmap;
+	s->mask = GNOME_PIXMAP(s->pixmap)->mask;
 
-	gdk_window_get_size (background, &width, &height);
+	gdk_window_get_size (s->background, &width, &height);
 
-	s->background = background;
 	s->width = width;
 	s->height = height;
 
@@ -480,10 +466,9 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint co
 	return number;
 }
 
-static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical, GdkBitmap **mask)
+static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical)
 {
-	GdkPixmap *pixmap;
-	GdkPixmap *n_mask;
+	GtkWidget *pixmap = NULL;
 	gchar *buf = NULL;
 	gchar *filename;
 	gchar *prefix;
@@ -514,8 +499,7 @@ static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical, Gd
 		return NULL;
 		}
 
-	get_pixmap_from_file_with_mask(filename, &pixmap, &n_mask);
-	*mask = n_mask;
+	pixmap = gnome_pixmap_new_from_file(filename);
 
 	g_free(filename);
 	return pixmap;
@@ -525,7 +509,6 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/clockmaildata", NULL);
-	GdkBitmap *mask;
 
 	if (!g_file_exists(datafile))
 		{
@@ -538,11 +521,13 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 
 	/* background */
 
-	s->background = get_background(skin_path, datafile, vertical, &mask);
-	s->mask = mask;
-	if (s->background)
+	s->pixmap = NULL;
+	s->pixmap = get_background(skin_path, datafile, vertical);
+	if (s->pixmap)
 		{
 		gint width, height;
+		s->background = GNOME_PIXMAP(s->pixmap)->pixmap;
+		s->mask = GNOME_PIXMAP(s->pixmap)->mask;
 		gdk_window_get_size (s->background, &width, &height);
 		s->width = width;
 		s->height = height;
@@ -579,6 +564,8 @@ gint change_to_skin(gchar *path, AppData *ad)
 	SkinData *osh = ad->skin_h;
 	SkinData *osv = ad->skin_v;
 
+	printf("changed\n");
+
 	if (!path)
 		{
 		nsh = load_default_skin();
@@ -601,7 +588,9 @@ gint change_to_skin(gchar *path, AppData *ad)
 		}
 
 	sync_window_to_skin(ad);
+
 	free_skin(osh);
 	free_skin(osv);
+
 	return TRUE;
 }
