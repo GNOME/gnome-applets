@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2002-03-07 22:24+0100\n"
-"PO-Revision-Date: 2002-03-07 22:31+0100\n"
+"POT-Creation-Date: 2002-03-19 20:36+0100\n"
+"PO-Revision-Date: 2002-03-19 20:36+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -241,7 +241,7 @@ msgstr "Indstillinger for batteriladning"
 msgid "Beep when either of the above is true"
 msgstr "Bip når en af de ovenstående er tilfældet"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:733
+#: battstat/battstat_applet.glade.h:9
 msgid "General"
 msgstr "Generelt"
 
@@ -379,19 +379,19 @@ msgstr "Foregående spor"
 msgid "Next Track"
 msgstr "Næste spor"
 
-#: cdplayer/cdplayer.c:306
+#: cdplayer/cdplayer.c:311
 msgid "CD Player Properties"
 msgstr "Indstillinger for cd-afspiller"
 
-#: cdplayer/cdplayer.c:320
+#: cdplayer/cdplayer.c:325
 msgid "Device Path:"
 msgstr "Sti til enhed:"
 
-#: cdplayer/cdplayer.c:367
+#: cdplayer/cdplayer.c:372
 msgid "CD Player Applet"
 msgstr "Cd-afspillerpanelprogram"
 
-#: cdplayer/cdplayer.c:368
+#: cdplayer/cdplayer.c:373
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -399,7 +399,7 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (Gnome 2-porten)"
 
-#: cdplayer/cdplayer.c:370
+#: cdplayer/cdplayer.c:375
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Cd-afspillerpanelprogrammet er en simpel cd-afspiller til panelet"
 
@@ -444,7 +444,11 @@ msgstr ""
 "Panelprogram til at vælge specielle tegn der ikke findes på dit tastatur. "
 "Udgivet under GNU General Public Licence."
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/charpick.c:442
+msgid "Insert special characters"
+msgstr "Indsæt specialtegn"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:443
 msgid "Character Palette"
 msgstr "Tegnpalet"
 
@@ -456,11 +460,19 @@ msgstr "Fabrik for tegnvælgerpanelprogram"
 msgid "Insert characters"
 msgstr "Indsæt tegn"
 
-#: charpick/properties.c:52
+#: charpick/properties.c:79
 msgid "Default character list:"
 msgstr "Selvvalgt tegnliste:"
 
-#: charpick/properties.c:60
+#: charpick/properties.c:87
+msgid "Default list of characters"
+msgstr "Selvvalgt tegnliste"
+
+#: charpick/properties.c:88
+msgid "Set the default character list here"
+msgstr "Angiv standardlisten af tegn her"
+
+#: charpick/properties.c:90
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
@@ -468,39 +480,39 @@ msgstr ""
 "Disse tegn vil vises når panelet starter. Der kan senere skiftes til listen "
 "ved tryk på mellemrumstangenten mens panelprogrammet har fokus."
 
-#: charpick/properties.c:113
+#: charpick/properties.c:143
 msgid "Character Palette Properties"
 msgstr "Indstillinger for tegnpalet"
 
-#: drivemount/drivemount.c:418
+#: drivemount/drivemount.c:419
 msgid "Drive Mount Applet"
 msgstr "Diskmonteringspanelprogram"
 
-#: drivemount/drivemount.c:419
+#: drivemount/drivemount.c:420
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999-2001 Gnome-hackere\n"
 
-#: drivemount/drivemount.c:421
+#: drivemount/drivemount.c:422
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Panelprogram til at montere og afmontere blokarkiver."
 
-#: drivemount/drivemount.c:611
+#: drivemount/drivemount.c:612
 msgid " mounted"
 msgstr " monteret"
 
-#: drivemount/drivemount.c:613
+#: drivemount/drivemount.c:614
 msgid " not mounted"
 msgstr " ikke monteret"
 
-#: drivemount/drivemount.c:724
+#: drivemount/drivemount.c:725
 msgid "Drive Mount Applet Warning"
 msgstr "Advarsel fra diskmonteringspanelprogram"
 
-#: drivemount/drivemount.c:732
+#: drivemount/drivemount.c:733
 msgid "\" reported:\n"
 msgstr "\" rapporterede:\n"
 
-#: drivemount/drivemount.c:734
+#: drivemount/drivemount.c:735
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -528,75 +540,75 @@ msgstr "Montér lokale diske og enheder"
 msgid "Browse..."
 msgstr "Gennemse..."
 
-#: drivemount/properties.c:240
+#: drivemount/properties.c:241
 msgid "Disk Mounter Properties"
 msgstr "Indstillinger for diskmontering"
 
-#: drivemount/properties.c:259
+#: drivemount/properties.c:260
 msgid "Mount point:"
 msgstr "Monteringspunkt:"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:277
 msgid "Update interval (seconds):"
 msgstr "Opdateringsinterval (sek.):"
 
-#: drivemount/properties.c:291
+#: drivemount/properties.c:292
 msgid "Icon :"
 msgstr "Ikon:"
 
-#: drivemount/properties.c:308
+#: drivemount/properties.c:309
 msgid "Floppy"
 msgstr "Diskette"
 
-#: drivemount/properties.c:311
+#: drivemount/properties.c:312
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:314
+#: drivemount/properties.c:315
 msgid "Cd Recorder"
 msgstr "Cd-optager"
 
-#: drivemount/properties.c:317
+#: drivemount/properties.c:318
 msgid "Zip Drive"
 msgstr "Zip-diskette"
 
-#: drivemount/properties.c:320
+#: drivemount/properties.c:321
 msgid "Hard Disk"
 msgstr "Harddisk"
 
-#: drivemount/properties.c:323
+#: drivemount/properties.c:324
 msgid "Jaz Drive"
 msgstr "Jaz-disk"
 
-#: drivemount/properties.c:326
+#: drivemount/properties.c:327
 msgid "Custom"
 msgstr "Selvvalgt"
 
-#: drivemount/properties.c:339
+#: drivemount/properties.c:340
 msgid "Select icon for mounted"
 msgstr "Vælg ikon for monteret"
 
-#: drivemount/properties.c:346
+#: drivemount/properties.c:347
 msgid "Custom icon for mounted:"
 msgstr "Selvvalgt ikon for monteret:"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "Select icon for unmounted"
 msgstr "Vælg ikon for afmonteret"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:362
 msgid "Custom icon for not mounted:"
 msgstr "Selvvalgt ikon for afmonteret:"
 
-#: drivemount/properties.c:370
+#: drivemount/properties.c:371
 msgid "Scale size to panel"
 msgstr "Følg panelstørrelse"
 
-#: drivemount/properties.c:377
+#: drivemount/properties.c:378
 msgid "Eject on unmount"
 msgstr "Skub ud ved afmontering"
 
-#: drivemount/properties.c:384
+#: drivemount/properties.c:385
 msgid "Use automount friendly status test"
 msgstr "Brug automount-venlig statustest"
 
@@ -640,44 +652,52 @@ msgstr "Temanavn"
 msgid "Properties"
 msgstr "Egenskaber"
 
-#: gkb-new/gkb.c:402
+#: gkb-new/gkb.c:114
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"Tryk på genvejstasten for at skifte mellem udseender. Genvejstasten kan "
+"konfigureres under indstillingerne."
+
+#: gkb-new/gkb.c:404
 #, c-format
 msgid "name_%d"
 msgstr "navn_%d"
 
-#: gkb-new/gkb.c:406
+#: gkb-new/gkb.c:408
 #, c-format
 msgid "label_%d"
 msgstr "etiket_%d"
 
-#: gkb-new/gkb.c:410
+#: gkb-new/gkb.c:412
 #, c-format
 msgid "country_%d"
 msgstr "land_%d"
 
-#: gkb-new/gkb.c:414
+#: gkb-new/gkb.c:416
 #, c-format
 msgid "lang_%d"
 msgstr "sprog_%d"
 
-#: gkb-new/gkb.c:422
+#: gkb-new/gkb.c:424
 #, c-format
 msgid "command_%d"
 msgstr "kommando_%d"
 
-#: gkb-new/gkb.c:525 gkb-new/gkb.c:532
+#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
 msgid "GKB"
 msgstr "Tastaturomskifter"
 
-#: gkb-new/gkb.c:574
+#: gkb-new/gkb.c:576
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Tastaturomskifterpanelprogram"
 
-#: gkb-new/gkb.c:576
+#: gkb-new/gkb.c:578
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:577
+#: gkb-new/gkb.c:579
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -687,11 +707,15 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Dette panelprogram skifter mellem tastaturopsætninger vha. setxkbmap eller xmodmap. Hvis der mangler et flag så send mig det venligst (min adresse er shooby@gnome.hu).\n"
+"Dette panelprogram skifter mellem tastaturopsætninger vha. setxkbmap eller "
+"xmodmap. Hvis der mangler et flag så send mig det venligst (min adresse er "
+"shooby@gnome.hu).\n"
 "Hav det godt, og tak for alle fiskene.\n"
-"Tak til Balazs Nagy (Kevin) <julian7@iksz.hu> for hans hjælp, og Emese Kovacs <emese@gnome.hu> for hendes solidaritet, desuden for hjælp fra gutter som KevinV. Shooby Ban <shooby@gnome.hu>"
+"Tak til Balazs Nagy (Kevin) <julian7@iksz.hu> for hans hjælp, og Emese "
+"Kovacs <emese@gnome.hu> for hendes solidaritet, desuden for hjælp fra gutter "
+"som KevinV. Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:594
+#: gkb-new/gkb.c:596
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Programmets hjemmeside (http://projects.gnome.hu/gkb)"
 
@@ -727,387 +751,390 @@ msgstr "Tastaturopsætninger (vælg og tryk \"tilføj\")"
 msgid "Select layout"
 msgstr "Vælg udseende"
 
-#: gkb-new/prop.c:120 gkb-new/prop.c:188
+#: gkb-new/prop.c:121 gkb-new/prop.c:189
 msgid "Normal"
 msgstr "Normal"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:192
+#: gkb-new/prop.c:122 gkb-new/prop.c:193
 msgid "Big"
 msgstr "Stor"
 
-#: gkb-new/prop.c:139 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Flag"
 
-#: gkb-new/prop-map.c:585 gkb-new/prop.c:140 gkb-new/util.c:38
-#: gkb-new/util.c:71
+#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Etiket"
 
-#: gkb-new/prop.c:141 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Flag og etiket"
 
-#: gkb-new/prop.c:273 modemlights/properties.c:371
+#: gkb-new/prop.c:278 modemlights/properties.c:371
 msgid "Display"
 msgstr "Vis"
 
-#. Labels
-#: gkb-new/prop.c:293
-msgid "Appearance "
-msgstr "Udseende "
+#. Labels and option Menus
+#: gkb-new/prop.c:298
+msgid "_Appearance "
+msgstr "_Udseende "
 
-#: gkb-new/prop.c:294
-msgid "Applet size "
-msgstr "Størrelse "
+#: gkb-new/prop.c:305
+msgid "Applet _size "
+msgstr "_Størrelse "
 
-#: gkb-new/prop.c:328
+#: gkb-new/prop.c:331
 msgid "Hotkey for switching between layouts"
 msgstr "Tast for at skifte mellem udseender"
 
-#: gkb-new/prop.c:340
+#: gkb-new/prop.c:343
 msgid "Grab hotkey"
 msgstr "Opsnap tast"
 
 #. Create property box
-#: gkb-new/prop.c:392
+#: gkb-new/prop.c:405
 msgid "GKB Properties"
 msgstr "Indstillinger for tastaturomskifter"
 
-#: gkb-new/prop.c:406
+#: gkb-new/prop.c:419
 msgid "_Keymaps"
 msgstr "_Tastaturopsætninger"
 
-#: gkb-new/prop.c:418
+#: gkb-new/prop.c:431
 msgid "_Options"
 msgstr "_Indstillinger"
 
-#: gkb-new/prop-list.c:383
-msgid "Add"
-msgstr "Tilføj"
+#: gkb-new/prop-list.c:389 gtik/gtik.c:1147
+msgid "_Add"
+msgstr "_Tilføj"
 
-#: gkb-new/prop-list.c:384
-msgid "Edit"
-msgstr "Redigér"
+#: gkb-new/prop-list.c:390
+msgid "_Edit"
+msgstr "_Redigér"
 
-#: gkb-new/prop-list.c:385
-msgid "Up"
-msgstr "Op"
+#: gkb-new/prop-list.c:391
+msgid "_Up"
+msgstr "_Op"
 
-#: gkb-new/prop-list.c:386
-msgid "Down"
-msgstr "Ned"
+#: gkb-new/prop-list.c:392
+msgid "Dow_n"
+msgstr "_Ned"
 
-#: gkb-new/prop-list.c:387
-msgid "Delete"
-msgstr "Slet"
+#: gkb-new/prop-list.c:393
+msgid "_Delete"
+msgstr "_Slet"
 
-#: gkb-new/prop-map.c:190
+#: gkb-new/prop-map.c:193
 msgid "Armenia"
 msgstr "Armenien"
 
-#: gkb-new/prop-map.c:191
+#: gkb-new/prop-map.c:194
 msgid "Australia"
 msgstr "Australien"
 
-#: gkb-new/prop-map.c:192
+#: gkb-new/prop-map.c:195
 msgid "Austria"
 msgstr "Østrig"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:196
 msgid "Belgium"
 msgstr "Belgien"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:197
 msgid "Brazil"
 msgstr "Brasilien"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:198
 msgid "Bulgaria"
 msgstr "Bulgarien"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:199
 msgid "Canada"
 msgstr "Canada"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:200
 msgid "Caribic"
 msgstr "Karibien"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:201
 msgid "France"
 msgstr "Frankrig"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:202
 msgid "Georgia"
 msgstr "Georgien"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:203
 msgid "Germany"
 msgstr "Tyskland"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:204
 msgid "Great Britain"
 msgstr "Storbritannien"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:205
 msgid "Hungary"
 msgstr "Ungarn"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:206
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:207
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:208
 msgid "Norway"
 msgstr "Norge"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:209
 msgid "Poland"
 msgstr "Polen"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:210
 msgid "Portugal"
 msgstr "Portugal"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:211
 msgid "Russia"
 msgstr "Rusland"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:212
 msgid "Slovak Republic"
 msgstr "Slovakiske republik"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:213
 msgid "Slovenia"
 msgstr "Slovenien"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:214
 msgid "South Africa"
 msgstr "Sydafrika"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:215
 msgid "Spain"
 msgstr "Spanien"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:216
 msgid "Sweden"
 msgstr "Sverige"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:217
 msgid "Switzerland"
 msgstr "Scweiz"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:218
 msgid "Thailand"
 msgstr "Thailand"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:219
 msgid "Turkey"
 msgstr "Tyrkiet"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:220
 msgid "United Kingdom"
 msgstr "UK"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:221
 msgid "United States"
 msgstr "USA"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:222
 msgid "Yugoslavia"
 msgstr "Jugoslavien"
 
-#: gkb-new/prop-map.c:239
+#: gkb-new/prop-map.c:242
 msgid "Armenian"
 msgstr "Armensk"
 
-#: gkb-new/prop-map.c:240
+#: gkb-new/prop-map.c:243
 msgid "Basque"
 msgstr "Baskisk"
 
-#: gkb-new/prop-map.c:241
+#: gkb-new/prop-map.c:244
 msgid "Bulgarian"
 msgstr "Bulgarsk"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:245
 msgid "Dutch"
 msgstr "Hollandsk"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:246
 msgid "English"
 msgstr "Engelsk"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:247
 msgid "French"
 msgstr "Fransk"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:248
 msgid "Georgian"
 msgstr "Georgisk"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:249
 msgid "German"
 msgstr "Tysk"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:250
 msgid "Hungarian"
 msgstr "Ungarnsk"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:251
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:252
 msgid "Polish"
 msgstr "Polsk"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:253
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:254
 msgid "Russian"
 msgstr "Russisk"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:255
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:256
 msgid "Slovenian"
 msgstr "Slovensk"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:257
 msgid "Swedish"
 msgstr "Svensk"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:258
 msgid "Thai"
 msgstr "Thai"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:259
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:260
 msgid "Wallon"
 msgstr "Vallonsk"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:261
 msgid "Yugoslavian"
 msgstr "Jugoslavisk"
 
-#: gkb-new/prop-map.c:276
+#: gkb-new/prop-map.c:279
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:280
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:278
+#: gkb-new/prop-map.c:281
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:282
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:283
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:284
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:285
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:305
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:303
+#: gkb-new/prop-map.c:306
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:304
+#: gkb-new/prop-map.c:307
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:308
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:309
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:310
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:311
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:312
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:313
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:328
+#: gkb-new/prop-map.c:331
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:329
+#: gkb-new/prop-map.c:332
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:330
+#: gkb-new/prop-map.c:333
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:334
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:332
+#: gkb-new/prop-map.c:335
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:336
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:556
+#: gkb-new/prop-map.c:573
 msgid "Edit keymap"
 msgstr "Redigér tastaturopsætning"
 
-#. Add the labels
-#: gkb-new/prop-map.c:584
-msgid "Name"
-msgstr "Navn"
+#. Add the labels  and entries/combos/icon_entry
+#: gkb-new/prop-map.c:601
+msgid "_Name"
+msgstr "_Navn"
 
-#: gkb-new/prop-map.c:586
-msgid "Language"
-msgstr "Sprog"
+#: gkb-new/prop-map.c:605
+msgid "_Label"
+msgstr "_Etiket"
 
-#: gkb-new/prop-map.c:587
-msgid "Country"
-msgstr "Land"
+#: gkb-new/prop-map.c:609
+msgid "Lan_guage"
+msgstr "_Sprog"
 
-#: gkb-new/prop-map.c:588
+#: gkb-new/prop-map.c:615
+msgid "Count_ry"
+msgstr "_Land"
+
+#: gkb-new/prop-map.c:622
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1115,23 +1142,23 @@ msgstr ""
 "Flag\n"
 "Billede"
 
-#: gkb-new/prop-map.c:590
-msgid "Architecture"
-msgstr "Opbygning"
+#: gkb-new/prop-map.c:626
+msgid "Arc_hitecture"
+msgstr "_Opbygning"
 
-#: gkb-new/prop-map.c:591
-msgid "Type"
-msgstr "Type"
-
-#: gkb-new/prop-map.c:592
-msgid "Codepage"
-msgstr "Tegnsæt"
-
-#: gkb-new/prop-map.c:593
-msgid "Command"
-msgstr "Kommando"
+#: gkb-new/prop-map.c:632
+msgid "_Type"
+msgstr "_Type"
 
 #: gkb-new/prop-map.c:638
+msgid "Code_page"
+msgstr "Tegns_æt"
+
+#: gkb-new/prop-map.c:645
+msgid "Co_mmand"
+msgstr "_Kommando"
+
+#: gkb-new/prop-map.c:652
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1168,15 +1195,15 @@ msgstr "Børsnoteringer"
 msgid "Refresh"
 msgstr "Genopfrisk"
 
-#: gtik/gtik.c:202 gtik/gtik.c:779
+#: gtik/gtik.c:208 gtik/gtik.c:785
 msgid "No data available or properties not set"
 msgstr "Ingen data tilgængelig eller indstillingerne er ikke sat"
 
-#: gtik/gtik.c:648
+#: gtik/gtik.c:654
 msgid "The GNOME Stock Ticker"
 msgstr "Børsnoteringer"
 
-#: gtik/gtik.c:650
+#: gtik/gtik.c:656
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1188,80 +1215,104 @@ msgstr ""
 "Lad være med at bruge aktieoplysningerne til investeringsbeslutninger; det "
 "er kun til informeringsformål."
 
-#: gtik/gtik.c:1026
+#: gtik/gtik.c:1137
 msgid "New Symbol:"
 msgstr "Nyt symbol:"
 
-#: gtik/gtik.c:1036
-msgid "_Add"
-msgstr "_Tilføj"
-
-#: gtik/gtik.c:1047
+#: gtik/gtik.c:1158
 msgid "_Remove Selected"
 msgstr "_Fjern valgte"
 
-#: gtik/gtik.c:1100
+#: gtik/gtik.c:1206 gweather/gweather-pref.c:665
+msgid "Use HTTP proxy"
+msgstr "Benyt HTTP-mellemvært"
+
+#: gtik/gtik.c:1216 gweather/gweather-pref.c:676
+msgid "Location :"
+msgstr "Placering:"
+
+#: gtik/gtik.c:1230 gweather/gweather-pref.c:692
+msgid "Port :"
+msgstr "Port:"
+
+#: gtik/gtik.c:1241 gweather/gweather-pref.c:704
+msgid "Proxy requires a uername and password"
+msgstr "Mellemvært kræver et brugernavn og en adgangskode"
+
+#: gtik/gtik.c:1252 gweather/gweather-pref.c:715
+msgid "Username:"
+msgstr "Brugernavn"
+
+#: gtik/gtik.c:1265 gweather/gweather-pref.c:731
+msgid "Password:"
+msgstr "Adgangskode:"
+
+#: gtik/gtik.c:1334
 msgid "Stock Ticker Properties"
 msgstr "Indstillinger for børsnoteringer"
 
-#: gtik/gtik.c:1121
+#: gtik/gtik.c:1355
 msgid "Update Frequency in minutes:"
 msgstr "Opdateringsinterval i minutter:"
 
-#: gtik/gtik.c:1137
+#: gtik/gtik.c:1371
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Indtast symboler adskilt med '+' i boksen nedenunder."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1381
 msgid "Display only symbols and price"
 msgstr "Vis kun symboler og pris"
 
-#: gtik/gtik.c:1150
+#: gtik/gtik.c:1384
 msgid "Scroll left to right"
 msgstr "Rul fra venstre mod højre"
 
-#: gtik/gtik.c:1153
+#: gtik/gtik.c:1387
 msgid "Display arrows instead of -/+"
 msgstr "Vis pile i stedet for +/-"
 
-#: gtik/gtik.c:1156
+#: gtik/gtik.c:1390
 msgid "Enable scroll buttons"
 msgstr "Vis rulleknapper"
 
 #. COLOR
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1416
 msgid "+ Color"
 msgstr "Positiv farve"
 
-#: gtik/gtik.c:1199
+#: gtik/gtik.c:1433
 msgid "- Color"
 msgstr "Negativ farve"
 
-#: gtik/gtik.c:1219
+#: gtik/gtik.c:1453
 msgid "Stock Symbol:"
 msgstr "Aktiesymbol:"
 
-#: gtik/gtik.c:1229
+#: gtik/gtik.c:1465
 msgid "Stock Change:"
 msgstr "Aktieændring:"
 
-#: gtik/gtik.c:1249
+#: gtik/gtik.c:1487
 msgid "_Symbols"
 msgstr "_Symboler"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1489
 msgid "_Behavior"
 msgstr "_Opførsel"
 
-#: gtik/gtik.c:1253
+#: gtik/gtik.c:1491
 msgid "_Appearance"
 msgstr "_Udseende"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1493 gweather/gweather-pref.c:744
+msgid "_Proxy"
+msgstr "_Mellemvært"
+
+#: gtik/gtik.c:1712
 msgid "(No"
 msgstr "(Ingen"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1713
 msgid "Change "
 msgstr "Ændring "
 
@@ -1282,7 +1333,7 @@ msgid "Weather Report"
 msgstr "Vejrrapport"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-#: gweather/gweather-dialog.c:297
+#: gweather/gweather-dialog.c:299
 msgid "Forecast"
 msgstr "Prognose"
 
@@ -1290,7 +1341,7 @@ msgstr "Prognose"
 msgid "Update"
 msgstr "Opdatér"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:201
+#: gweather/gweather-about.c:42 gweather/gweather-applet.c:198
 msgid "GNOME Weather"
 msgstr "Vejret"
 
@@ -1308,7 +1359,7 @@ msgstr ""
 "\n"
 "Udgivet under GNU General Public License."
 
-#: gweather/gweather-applet.c:333
+#: gweather/gweather-applet.c:330
 msgid "Updating..."
 msgstr "Opdaterer..."
 
@@ -1356,15 +1407,15 @@ msgstr "Sigtbarhed:"
 msgid "Current conditions"
 msgstr "Nuværende forhold"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:331
 msgid "Visit Weather.com"
 msgstr "Besøg Weather.com"
 
-#: gweather/gweather-dialog.c:337
+#: gweather/gweather-dialog.c:339
 msgid "Radar map"
 msgstr "Radarkort"
 
-#: gweather/gweather-dialog.c:407
+#: gweather/gweather-dialog.c:409
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1374,7 +1425,7 @@ msgstr ""
 "Prøv venligst den nationale vejrudsigt (bemærk at\n"
 "IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:411
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1384,201 +1435,175 @@ msgstr ""
 "Prøv venligst den detaljerede vejrudsigt (bemærk at\n"
 "IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
 
-#: gweather/gweather-pref.c:136
-msgid ""
-"Proxy URL is not of the form http://host:port/\n"
-"Properties remain unchanged."
-msgstr ""
-"Adressen på mellemværten er ikke på formen http://vært:port/\n"
-"Indstillingerne forbliver uforandrede."
-
-#: gweather/gweather-pref.c:502
+#: gweather/gweather-pref.c:608
 msgid "Weather Properties"
 msgstr "Indstillinger for vejret"
 
-#: gweather/gweather-pref.c:547
-msgid "Location"
-msgstr "Placering"
-
-#: gweather/gweather-pref.c:567
-msgid "Use proxy"
-msgstr "Benyt mellemvært"
-
-#: gweather/gweather-pref.c:573
-msgid "Proxy URL:"
-msgstr "Mellemværtsadresse:"
-
-#: gweather/gweather-pref.c:589
-msgid "Username:"
-msgstr "Brugernavn"
-
-#: gweather/gweather-pref.c:605
-msgid "Password:"
-msgstr "Adgangskode:"
-
-#: gweather/gweather-pref.c:622
-msgid ""
-"Warning: Your password will be saved as\n"
-"unencrypted text in a private configuration\n"
-"file."
-msgstr ""
-"Advarsel: Adgangskoden bliver gemt som ukrypteret\n"
-"tekst i den private konfigurationsfil."
-
-#: gweather/gweather-pref.c:630
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:181
-#: multiload/properties.c:381
-msgid "Network"
-msgstr "Netværk"
+#: gweather/gweather-pref.c:653
+msgid "_Location"
+msgstr "_Placering"
 
 # hvert hænger sammen med minut
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:773
 msgid "Automatically update every"
 msgstr "Opdatér automatisk hvert"
 
-#: gweather/gweather-pref.c:661
+#: gweather/gweather-pref.c:779
 msgid "Use metric system units"
 msgstr "Benyt metriske mål"
 
-#: gweather/gweather-pref.c:667
+#: gweather/gweather-pref.c:785
 msgid "Enable detailed forecast"
 msgstr "Aktivér detaljeret prognose"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:792
 msgid "Enable radar map"
 msgstr "Aktivér radarkort"
 
-#: gweather/gweather-pref.c:681
+#: gweather/gweather-pref.c:798
+msgid "Use custom address for radar map"
+msgstr "Benyt selvvalgt adresse til radarkortet"
+
+#: gweather/gweather-pref.c:809
+msgid "Address :"
+msgstr "Adresse:"
+
+#: gweather/gweather-pref.c:821
 msgid "Updates"
 msgstr "Opdateringer"
 
 # hvert hænger sammen med minut
-#: gweather/gweather-pref.c:687
+#: gweather/gweather-pref.c:827
 msgid "Automatically update every "
 msgstr "Opdatér automatisk hvert "
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:847
 msgid "minute(s)"
 msgstr "minut"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:718
+#: gweather/gweather-pref.c:858
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: gweather/weather.c:61
+#: gweather/gweather-pref.c:876 mini-commander/src/preferences.c:738
+#: modemlights/properties.c:405
+msgid "_General"
+msgstr "_Generelt"
+
+#: gweather/weather.c:57
 msgid "knots"
 msgstr "not"
 
-#: gweather/weather.c:61
+#: gweather/weather.c:57
 msgid "kph"
 msgstr "km/t"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:62
 msgid "inHg"
 msgstr "tmHG"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:62
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:70
+#: gweather/weather.c:66
 msgid "miles"
 msgstr "mil"
 
-#: gweather/weather.c:70
+#: gweather/weather.c:66
 msgid "kilometers"
 msgstr "kilometer"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:117
 msgid "Variable"
 msgstr "Varieret"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:118
 msgid "North"
 msgstr "Nord"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:118
 msgid "North - NorthEast"
 msgstr "Nord-nordøst"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:118
 msgid "Northeast"
 msgstr "Nordøst"
 
-#: gweather/weather.c:122
+#: gweather/weather.c:118
 msgid "East - NorthEast"
 msgstr "Øst-nordøst"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:119
 msgid "East"
 msgstr "Øst"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:119
 msgid "East - Southeast"
 msgstr "Øst-sydøst"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:119
 msgid "Southeast"
 msgstr "Sydøst"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:119
 msgid "South - Southeast"
 msgstr "Syd-sydøst"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:120
 msgid "South"
 msgstr "Syd"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:120
 msgid "South - Southwest"
 msgstr "Syd-sydvest"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:120
 msgid "Southwest"
 msgstr "Sydvest"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:120
 msgid "West - Southwest"
 msgstr "Vest-sydvest"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:121
 msgid "West"
 msgstr "Vest"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:121
 msgid "West - Northwest"
 msgstr "Vest-nordvest"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:121
 msgid "Northwest"
 msgstr "Nordvest"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:121
 msgid "North - Northwest"
 msgstr "Nord-nordvest"
 
-#: gweather/weather.c:132 gweather/weather.c:149 gweather/weather.c:213
+#: gweather/weather.c:128 gweather/weather.c:145 gweather/weather.c:209
 msgid "Invalid"
 msgstr "Ugyldig"
 
-#: gweather/weather.c:138
+#: gweather/weather.c:134
 msgid "Clear Sky"
 msgstr "Klar himmel"
 
-#: gweather/weather.c:139
+#: gweather/weather.c:135
 msgid "Broken clouds"
 msgstr "Delvis skyet"
 
-#: gweather/weather.c:140
+#: gweather/weather.c:136
 msgid "Scattered clouds"
 msgstr "Spredte skyer"
 
-#: gweather/weather.c:141
+#: gweather/weather.c:137
 msgid "Few clouds"
 msgstr "Få skyer"
 
-#: gweather/weather.c:142
+#: gweather/weather.c:138
 msgid "Overcast"
 msgstr "Overskyet"
 
@@ -1586,1104 +1611,1109 @@ msgstr "Overskyet"
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
 #. DRIZZLE
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Drizzle"
 msgstr "Støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Drizzle in the vicinity"
 msgstr "Støvregn i nærheden"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Light drizzle"
 msgstr "Let støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Moderate drizzle"
 msgstr "Moderat støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Heavy drizzle"
 msgstr "Tung støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Shallow drizzle"
 msgstr "Svag støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Patches of drizzle"
 msgstr "Stedvis støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Partial drizzle"
 msgstr "Delvis støvregn"
 
-#: gweather/weather.c:175 gweather/weather.c:176
+#: gweather/weather.c:171 gweather/weather.c:172
 msgid "Thunderstorm"
 msgstr "Tordenvejr"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Windy drizzle"
 msgstr "Støvregn og blæst"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Showers"
 msgstr "Regnbyger"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Drifting drizzle"
 msgstr "Drivende støvregn"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:171
 msgid "Freezing drizzle"
 msgstr "Støvregn og frost"
 
 #. RAIN
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Rain"
 msgstr "Regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Rain in the vicinity"
 msgstr "Regn i nærheden"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Light rain"
 msgstr "Let regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Moderate rain"
 msgstr "Moderat regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Heavy rain"
 msgstr "Kraftig regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Shallow rain"
 msgstr "Svag regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Patches of rain"
 msgstr "Stedvis regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Partial rainfall"
 msgstr "Delvis regnvejr"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Blowing rainfall"
 msgstr "Blæsende regnvejr"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Rain showers"
 msgstr "Regnbyger"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Drifting rain"
 msgstr "Drivende regn"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:172
 msgid "Freezing rain"
 msgstr "Regn og frost"
 
 #. SNOW
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Snow"
 msgstr "Sne"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Snow in the vicinity"
 msgstr "Sne i nærheden"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Light snow"
 msgstr "Let sne"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Moderate snow"
 msgstr "Moderat sne"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Heavy snow"
 msgstr "Kraftig sne"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Shallow snow"
 msgstr "Svag sne"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Patches of snow"
 msgstr "Stedvis sne"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Partial snowfall"
 msgstr "Delvis snevejr"
 
-#: gweather/weather.c:177 gweather/weather.c:178
+#: gweather/weather.c:173 gweather/weather.c:174
 msgid "Snowstorm"
 msgstr "Snestorm"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Blowing snowfall"
 msgstr "Sne og blæst"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Snow showers"
 msgstr "Snebyger"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Drifting snow"
 msgstr "Drivende snevejr"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:173
 msgid "Freezing snow"
 msgstr "Sne og frost"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Snow grains"
 msgstr "Snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Snow grains in the vicinity"
 msgstr "Snekorn i nærheden"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Light snow grains"
 msgstr "Lette snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Moderate snow grains"
 msgstr "Moderate snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Heavy snow grains"
 msgstr "Tunge snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Shallow snow grains"
 msgstr "Svage snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Patches of snow grains"
 msgstr "Stedvise snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Partial snow grains"
 msgstr "Delvis snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Blowing snow grains"
 msgstr "Blæsende snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Snow grain showers"
 msgstr "Snekornsbyger"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Drifting snow grains"
 msgstr "Drivende snekorn"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:174
 msgid "Freezing snow grains"
 msgstr "frysende snekorn"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Ice crystals"
 msgstr "Iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Ice crystals in the vicinity"
 msgstr "Iskrystaller i nærheden"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Few ice crystals"
 msgstr "Få iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Moderate ice crystals"
 msgstr "Moderate iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Heavy ice crystals"
 msgstr "Tunge iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Patches of ice crystals"
 msgstr "Stedvise iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Partial ice crystals"
 msgstr "Delvise iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Ice crystal storm"
 msgstr "Iskrystalstorm"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Blowing ice crystals"
 msgstr "Blæst og iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Showers of ice crystals"
 msgstr "Byger af iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Drifting ice crystals"
 msgstr "Drivende iskrystaller"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:175
 msgid "Freezing ice crystals"
 msgstr "Frysende iskrystaller"
 
 #. ICE_PELLETS
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Ice pellets"
 msgstr "Iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Ice pellets in the vicinity"
 msgstr "Iskugler i nærheden"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Few ice pellets"
 msgstr "Få iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Moderate ice pellets"
 msgstr "Moderate iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Heavy ice pellets"
 msgstr "Tunge iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Shallow ice pellets"
 msgstr "Svage iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Patches of ice pellets"
 msgstr "Stedvise iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Partial ice pellets"
 msgstr "Delvise iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Ice pellet storm"
 msgstr "Iskuglestorm"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Blowing ice pellets"
 msgstr "Blæst og iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Showers of ice pellets"
 msgstr "Byger af iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Drifting ice pellets"
 msgstr "Drivende iskugler"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:176
 msgid "Freezing ice pellets"
 msgstr "Frysende iskugler"
 
 #. HAIL
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Hail"
 msgstr "Hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Hail in the vicinity"
 msgstr "Hagl i nærheden"
 
-#: gweather/weather.c:181 gweather/weather.c:182
+#: gweather/weather.c:177 gweather/weather.c:178
 msgid "Light hail"
 msgstr "Let hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Moderate hail"
 msgstr "Moderat hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Heavy hail"
 msgstr "Tung hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Shallow hail"
 msgstr "Svag hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Patches of hail"
 msgstr "Stedvis hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Partial hail"
 msgstr "Delvis hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Hailstorm"
 msgstr "Haglvejr"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Blowing hail"
 msgstr "Hagl og blæst"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Hail showers"
 msgstr "Haglbyger"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Drifting hail"
 msgstr "Drivende hagl"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:177
 msgid "Freezing hail"
 msgstr "Hagl og frost"
 
 #. SMALL_HAIL
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Small hail"
 msgstr "Småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Small hail in the vicinity"
 msgstr "Småhagl i nærheden"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Moderate small hail"
 msgstr "Moderate småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Heavy small hail"
 msgstr "Tunge småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Shallow small hail"
 msgstr "Svag småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Patches of small hail"
 msgstr "Stedvis småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Partial small hail"
 msgstr "Delvis småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Small hailstorm"
 msgstr "Småhaglstorm"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Blowing small hail"
 msgstr "Småhagl og blæst"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Showers of small hail"
 msgstr "Byger af småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Drifting small hail"
 msgstr "Drivende småhagl"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:178
 msgid "Freezing small hail"
 msgstr "Småhagl og frost"
 
 #. PRECIPITATION
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Unknown precipitation"
 msgstr "Ukendt nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Precipitation in the vicinity"
 msgstr "Nedbør i nærheden"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Light precipitation"
 msgstr "Let nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Moderate precipitation"
 msgstr "Moderat nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Heavy precipitation"
 msgstr "Tung nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Shallow precipitation"
 msgstr "Svag nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Patches of precipitation"
 msgstr "Stedvis nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Partial precipitation"
 msgstr "Delvis nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Unknown thunderstorm"
 msgstr "Ukendt tordenstorm"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Blowing precipitation"
 msgstr "Blæsende nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Showers, type unknown"
 msgstr "Byger af ukendt type"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Drifting precipitation"
 msgstr "Drivende nedbør"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:179
 msgid "Freezing precipitation"
 msgstr "Nedbør og frost"
 
 # Tåge = fog; BL
 #. MIST
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Mist"
 msgstr "Dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Mist in the vicinity"
 msgstr "Dis i nærheden"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Light mist"
 msgstr "Let dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Moderate mist"
 msgstr "Moderat dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Thick mist"
 msgstr "Tyk dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Shallow mist"
 msgstr "Svag dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Patches of mist"
 msgstr "Stedvis dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Partial mist"
 msgstr "Delvis dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Mist with wind"
 msgstr "Dis og blæst"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Drifting mist"
 msgstr "Drivende dis"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:180
 msgid "Freezing mist"
 msgstr "Dis og frost"
 
 #. FOG
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Fog"
 msgstr "Tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Fog in the vicinity"
 msgstr "Tåge i nærheden"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Light fog"
 msgstr "Let tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Moderate fog"
 msgstr "Moderat tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Thick fog"
 msgstr "Tyk tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Shallow fog"
 msgstr "Svag tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Patches of fog"
 msgstr "Stedvis tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Partial fog"
 msgstr "Delvis tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Fog with wind"
 msgstr "Tåge og blæst"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Drifting fog"
 msgstr "Drivende tåge"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:181
 msgid "Freezing fog"
 msgstr "Tåge og frost"
 
 #. SMOKE
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Smoke"
 msgstr "Røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Smoke in the vicinity"
 msgstr "Røg i nærheden"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Thin smoke"
 msgstr "Tynd røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Moderate smoke"
 msgstr "Moderat røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Thick smoke"
 msgstr "Tyk røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Shallow smoke"
 msgstr "Svag røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Patches of smoke"
 msgstr "Stedvis røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Partial smoke"
 msgstr "Delvis røg"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Smoke w/ thunders"
 msgstr "Røg med torden"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Smoke with wind"
 msgstr "Røg og blæst"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:182
 msgid "Drifting smoke"
 msgstr "Drivende røg"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Volcanic ash"
 msgstr "Vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Volcanic ash in the vicinity"
 msgstr "Vulkansk aske i nærheden"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Moderate volcanic ash"
 msgstr "Moderate vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Thick volcanic ash"
 msgstr "Tyk vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Shallow volcanic ash"
 msgstr "Svag vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Patches of volcanic ash"
 msgstr "Stedvis vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Partial volcanic ash"
 msgstr "Delvis vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Volcanic ash w/ thunders"
 msgstr "Vulkansk aske med torden"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Blowing volcanic ash"
 msgstr "Blæsende vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Showers of volcanic ash "
 msgstr "Byger af vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Drifting volcanic ash"
 msgstr "Drivende vulkansk aske"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:183
 msgid "Freezing volcanic ash"
 msgstr "Vulkansk aske og frost"
 
 #. SAND
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Sand"
 msgstr "Sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Sand in the vicinity"
 msgstr "Sand i nærheden"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Light sand"
 msgstr "Let sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Moderate sand"
 msgstr "Moderat sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Heavy sand"
 msgstr "Tung sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Patches of sand"
 msgstr "Stedvis sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Partial sand"
 msgstr "delvis sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Blowing sand"
 msgstr "Blæsende sand"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:184
 msgid "Drifting sand"
 msgstr "Drivende sand"
 
 #. HAZE
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Haze"
 msgstr "Dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Haze in the vicinity"
 msgstr "Dis i området"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Light haze"
 msgstr "Let dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Moderate haze"
 msgstr "Moderat dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Thick haze"
 msgstr "Tæt dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Shallow haze"
 msgstr "Tynd dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Patches of haze"
 msgstr "Områder med dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Partial haze"
 msgstr "Delvis dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Haze with wind"
 msgstr "Dis med vind"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Drifting haze"
 msgstr "Drivende dis"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:185
 msgid "Freezing haze"
 msgstr "Frysende dis"
 
 #. SPRAY
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Sprays"
 msgstr "Byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Sprays in the vicinity"
 msgstr "Byger i nærheden"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Light sprays"
 msgstr "Lette byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Moderate sprays"
 msgstr "Moderate byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Heavy sprays"
 msgstr "Tunge byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Shallow sprays"
 msgstr "Svage byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Patches of sprays"
 msgstr "Stedvise byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Partial sprays"
 msgstr "Delvise byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Blowing sprays"
 msgstr "Blæsende byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Drifting sprays"
 msgstr "Drivende byger"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:186
 msgid "Freezing sprays"
 msgstr "Frysende byger"
 
 #. DUST
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Dust"
 msgstr "Støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Dust in the vicinity"
 msgstr "Støv i nærheden"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Light dust"
 msgstr "Let støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Moderate dust"
 msgstr "Moderat støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Heavy dust"
 msgstr "Tungt støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Patches of dust"
 msgstr "Stedvis støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Partial dust"
 msgstr "Delvis støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Blowing dust"
 msgstr "Blæsende støv"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:187
 msgid "Drifting dust"
 msgstr "Drivende støv"
 
 #. SQUALL
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Squall"
 msgstr "Vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Squall in the vicinity"
 msgstr "Vindstød i nærheden"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Light squall"
 msgstr "Lette vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Moderate squall"
 msgstr "Moderate vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Heavy squall"
 msgstr "Tunge vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Partial squall"
 msgstr "Delvise vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Thunderous squall"
 msgstr "Vindstød og torden"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Blowing squall"
 msgstr "Blæsende vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Drifting squall"
 msgstr "Drivende vindstød"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:188
 msgid "Freezing squall"
 msgstr "Frysende vindstød"
 
 #. SANDSTORM
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Sandstorm"
 msgstr "Sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Sandstorm in the vicinity"
 msgstr "Sandstorm i nærheden"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Light standstorm"
 msgstr "Let sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Moderate sandstorm"
 msgstr "Moderat sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Heavy sandstorm"
 msgstr "Tung sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Shallow sandstorm"
 msgstr "Svag sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Partial sandstorm"
 msgstr "Delvis sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Thunderous sandstorm"
 msgstr "Tordnende sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Blowing sandstorm"
 msgstr "Sandstorm og blæst"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Drifting sandstorm"
 msgstr "Drivende sandstorm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:189
 msgid "Freezing sandstorm"
 msgstr "Sandstorm og frost"
 
 #. DUSTSTORM
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Duststorm"
 msgstr "Støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Duststorm in the vicinity"
 msgstr "Støvstorm i nærheden"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Light duststorm"
 msgstr "Let støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Moderate duststorm"
 msgstr "Moderat støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Heavy duststorm"
 msgstr "Tung støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Shallow duststorm"
 msgstr "Svag støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Partial duststorm"
 msgstr "Delvis støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Thunderous duststorm"
 msgstr "Støvstorm og torden"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Blowing duststorm"
 msgstr "Blæsende støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Drifting duststorm"
 msgstr "Drivende støvstorm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:190
 msgid "Freezing duststorm"
 msgstr "Støvstorm og frost"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Funnel cloud"
 msgstr "Skorstenssky"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Funnel cloud in the vicinity"
 msgstr "Skorstenssky i nærheden"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Light funnel cloud"
 msgstr "Let skorstenssky"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Moderate funnel cloud"
 msgstr "Moderat skorstenssky"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Thick funnel cloud"
 msgstr "Tyk skorstenssky"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Shallow funnel cloud"
 msgstr "Let skorstenssky"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Patches of funnel clouds"
 msgstr "Stedvise skorstensskyer"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Partial funnel clouds"
 msgstr "Delvise skorstensskyer"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Funnel cloud w/ wind"
 msgstr "Blæst og skorstenssky"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:191
 msgid "Drifting funnel cloud"
 msgstr "Drivende skorstenssky"
 
 #. TORNADO
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Tornado"
 msgstr "Tornado"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Tornado in the vicinity"
 msgstr "Tornado i nærheden"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Moderate tornado"
 msgstr "Moderat tornado"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Raging tornado"
 msgstr "Rasende tornado"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Partial tornado"
 msgstr "Delvis tornado"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Thunderous tornado"
 msgstr ""
 "Tordentornado - Hvis du er i Danmark mens du læser dette, er det verdens "
 "undergang :-)"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Drifting tornado"
 msgstr "Drivende tornado"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:192
 msgid "Freezing tornado"
 msgstr "Tornado og frost"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Dust whirls"
 msgstr "Støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Dust whirls in the vicinity"
 msgstr "Støvhvirvler i nærheden"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Light dust whirls"
 msgstr "Lette støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Moderate dust whirls"
 msgstr "Moderate støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Heavy dust whirls"
 msgstr "Tunge støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Shallow dust whirls"
 msgstr "Svage støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Patches of dust whirls"
 msgstr "Stedvise støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Partial dust whirls"
 msgstr "Delvise støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Blowing dust whirls"
 msgstr "Blæsende støvhvirvler"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:193
 msgid "Drifting dust whirls"
 msgstr "Drivende støvhvirvler"
 
-#: gweather/weather.c:814 gweather/weather.c:853 gweather/weather.c:1406
+#: gweather/weather.c:809 gweather/weather.c:847 gweather/weather.c:1416
 msgid "Failed to get METAR data.\n"
 msgstr "Kunne ikke få METAR data.\n"
 
-#: gweather/weather.c:845 gweather/weather.c:873 gweather/weather.c:1070
+#: gweather/weather.c:839 gweather/weather.c:867 gweather/weather.c:1062
 msgid "WeatherInfo missing location"
 msgstr "VejrInformation mangler sted"
 
-#: gweather/weather.c:1038
+#: gweather/weather.c:1030
 msgid "Failed to get IWIN data.\n"
 msgstr "Kunne ikke få IWIN-data.\n"
 
-#: gweather/weather.c:1279
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1072
+msgid "Failed to get IWIN forecast data.\n"
+msgstr "Kunne ikke få IWIN udsigtsdata.\n"
+
+#: gweather/weather.c:1271
 msgid "Failed to get Met Office data.\n"
 msgstr "Kunne ikke få Met Office-data.\n"
 
-#: gweather/weather.c:1311
+#: gweather/weather.c:1303
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Kunne ikke få Met Office udsigtsdata.\n"
 
-#: gweather/weather.c:1436
+#: gweather/weather.c:1446
 msgid "Failed to get radar map image.\n"
 msgstr "Kunne ikke få radarkortbillede.\n"
 
-#: gweather/weather.c:1737
+#: gweather/weather.c:1739
 msgid "%a, %b %d / %H:%M"
 msgstr "%A d. %d. %B kl. %H:%M"
 
-#: gweather/weather.c:1741
+#: gweather/weather.c:1743
 msgid "Unknown observation time"
 msgstr "Ukendt observationstid"
 
-#: gweather/weather.c:1801
+#: gweather/weather.c:1803
 msgid "Calm"
 msgstr "Stille"
 
-#: gweather/weather.c:1827
+#: gweather/weather.c:1829
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: gweather/weather.c:1861
+#: gweather/weather.c:1863
 msgid "Retrieval failed"
 msgstr "Hentning fejlede"
 
@@ -2899,10 +2929,6 @@ msgstr "Kommandolinjeforgrund:"
 msgid "Command line background:"
 msgstr "Kommandolinjebaggrund:"
 
-#: mini-commander/src/preferences.c:738 modemlights/properties.c:405
-msgid "_General"
-msgstr "_Generelt"
-
 #. prefix
 #: mini-commander/src/preferences.c:763
 #, c-format
@@ -2923,7 +2949,7 @@ msgstr "_Makroer"
 msgid "Adjust the sound volume"
 msgstr "Justér lydstyrken"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:703
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
 msgid "Volume Control"
 msgstr "Lydstyrke"
 
@@ -2936,12 +2962,12 @@ msgid "Run Audio Mixer..."
 msgstr "Kør lydmixer..."
 
 #. probably should die more gracefully
-#: mixer/mixer.c:167
+#: mixer/mixer.c:168
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Kunne ikke åbne mixerenhed %s\n"
 
-#: mixer/mixer.c:181
+#: mixer/mixer.c:182
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2949,29 +2975,33 @@ msgstr ""
 "advarsel: denne version af gmix blev oversat med en anden version af "
 "soundcard.h\n"
 
-#: mixer/mixer.c:192
+#: mixer/mixer.c:193
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Forespørgsel om tilgængelige kanaler på mixerenheden %s mislykkedes\n"
 
-#: mixer/mixer.c:199
+#: mixer/mixer.c:200
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "advarsel: mixeren har ingen lydstyrkekanal - bruger PCM i stedet.\n"
 
-#: mixer/mixer.c:202
+#: mixer/mixer.c:203
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Mixerenheden %s har hverken lydstyrke- eller PCM-kanaler.\n"
 
-#: mixer/mixer.c:704
+#: mixer/mixer.c:724
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:705
+#: mixer/mixer.c:725
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Lydstyrkekontrollen lader dig sætte lydstyrken for skrivebordsmiljøet."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
 msgid "Modem Lights"
 msgstr "Modemlys"
 
@@ -3157,6 +3187,10 @@ msgstr "Processor"
 #: multiload/main.c:179 multiload/properties.c:375
 msgid "Memory"
 msgstr "Hukommelse"
+
+#: multiload/main.c:181 multiload/properties.c:381
+msgid "Network"
+msgstr "Netværk"
 
 #: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
@@ -3449,6 +3483,24 @@ msgstr "Vinduer"
 msgid "Workspaces"
 msgstr "Arbejdsområder"
 
+#~ msgid "Add"
+#~ msgstr "Tilføj"
+
+#~ msgid ""
+#~ "Proxy URL is not of the form http://host:port/\n"
+#~ "Properties remain unchanged."
+#~ msgstr ""
+#~ "Adressen på mellemværten er ikke på formen http://vært:port/\n"
+#~ "Indstillingerne forbliver uforandrede."
+
+#~ msgid ""
+#~ "Warning: Your password will be saved as\n"
+#~ "unencrypted text in a private configuration\n"
+#~ "file."
+#~ msgstr ""
+#~ "Advarsel: Adgangskoden bliver gemt som ukrypteret\n"
+#~ "tekst i den private konfigurationsfil."
+
 #~ msgid "The GNOME weather monitor"
 #~ msgstr "Vejrovervåger"
 
@@ -3476,9 +3528,6 @@ msgstr "Arbejdsområder"
 
 #~ msgid "mmHg"
 #~ msgstr "mmHg"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "Kunne ikke få IWIN udsigtsdata.\n"
 
 #~ msgid "You can't hide all elements of the applet!"
 #~ msgstr "Du kan ikke skjule alle elementer i programmet!"
