@@ -391,8 +391,10 @@ get_interface_path(void)
   gchar *path = NULL;
 
   g_slist_foreach(interface_list, add_devpath_component, &new_devpath);
-  path = g_strdup(new_devpath->str); /* caller frees */
-  g_string_free(new_devpath, 1);
+  if (new_devpath){
+	  path = g_strdup(new_devpath->str); /* caller frees */
+	  g_string_free(new_devpath, 1);
+  }
   return path;
 }
 
