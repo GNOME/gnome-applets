@@ -154,7 +154,7 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
     if(propTmp.normalSizeX != -1 || propTmp.normalSizeY != -1 || 
        propTmp.reducedSizeX != -1 || propTmp.reducedSizeY != -1)
 	{
-	    /* size was changed */
+	    /* size was changed * /
 	    gtk_container_set_resize_mode(GTK_CONTAINER(applet), GTK_RESIZE_IMMEDIATE);
 	    gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
 	    gtk_widget_show (applet);
@@ -163,10 +163,9 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	    gtk_widget_set_uposition(applet, 1, 2);
 	    gtk_container_check_resize(GTK_CONTAINER(applet));
 	    gtk_container_resize_children(GTK_CONTAINER(applet));
+	    */
+            redraw_applet();
 	}
-
-    if(propTmp.cmdLineY != -1)
-	command_entry_update_size();
 
     /* colors */
     if(propTmp.cmdLineColorFgR != -1)
@@ -181,9 +180,6 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	    prop.cmdLineColorBgG = propTmp.cmdLineColorBgG;
 	    prop.cmdLineColorBgB = propTmp.cmdLineColorBgB;
 	}
-
-    if(propTmp.cmdLineColorFgR != -1 || propTmp.cmdLineColorBgR != -1)
-	command_entry_update_color();
 
     /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
@@ -202,6 +198,13 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 		    propTmp.command[i] = (char *) NULL;
 		}
 	}    
+
+    if(propTmp.showHandle != -1
+       || propTmp.showFrame != -1
+       || propTmp.cmdLineY != -1
+       || propTmp.cmdLineColorFgR != -1 
+       || propTmp.cmdLineColorBgR != -1)
+	redraw_applet();
 
     resetTemporaryPrefs();
 
@@ -494,7 +497,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
 
 
     /* appearance frame */
-    frame = gtk_frame_new(_("Appearance (experimental, you have to restart the applet)"));
+    frame = gtk_frame_new(_("Appearance"));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 
     vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);

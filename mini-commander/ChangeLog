@@ -1,3 +1,14 @@
+1999-09-08  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (propertiesBox_apply_signal): use
+ 	redraw_applet() for modifying properties of the applet's widgets
+
+	(propertiesBox): Changing appearance is no longer 'experimental'.
+  	Changes are applied without needing to restart the whole applet.
+
+	* src/mini-commander_applet.c (redraw_applet): moved coded from
+ 	main() to this function
+
 1999-09-07  Oliver Maruhn  <oliver@maruhn.com>
 
 	* src/cmd_completion.c (cmdc): Added this new command completion
