@@ -479,6 +479,8 @@ util_get_atom(Window win, gchar *atom, Atom type, gint *size)
       *size = num_ret * (format_ret >> 3);
       return data;
     }
+  if (retval)
+    XFree (retval);
   return NULL;
 }
 
