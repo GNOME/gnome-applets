@@ -117,8 +117,6 @@ static void theme_selected_cb(GtkWidget *clist, gint row, gint column,
 	gchar *text = gtk_clist_get_row_data(GTK_CLIST(clist), row);
 	if (text) gtk_entry_set_text(GTK_ENTRY(ad->theme_entry),text);
 	return;
-	column = 0;
-	bevent = NULL;
 }
 
 static gint sort_theme_list_cb(void *a, void *b)
@@ -243,7 +241,6 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
 	return;
-	widget = NULL;
 }
 
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)
@@ -251,7 +248,6 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 	AppData *ad = data;
 	ad->propwindow = NULL;
 	return FALSE;
-	widget = NULL;
 }
 
 static void
@@ -477,5 +473,4 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_widget_show_all(ad->propwindow);
 	return;
-	applet = NULL;
 } 

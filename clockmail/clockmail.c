@@ -179,7 +179,6 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	g_free(ad->theme_file);
 	g_free(ad);
 	return;
-	widget = NULL;
 }
 
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
@@ -189,7 +188,6 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	reload_skin(ad);
 	return;
-	w = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -210,7 +208,6 @@ static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 
 	reload_skin(ad);
 	return;
-	w = NULL;
 }
 #endif
 
@@ -281,7 +278,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 
 	/* get mail filename from environment if not specified in the session file */
-	if (!strcmp(ad->mail_file,"default"))
+	if (ad->mail_file && !strcmp(ad->mail_file,"default"))
 		{
 		if (ad->mail_file) g_free(ad->mail_file);
 		ad->mail_file = NULL;
@@ -362,8 +359,6 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id,
 	create_new_app(applet);
 
 	return applet;
-	params = NULL;
-	nparams = 0;
 }
 
 int main (int argc, char *argv[])

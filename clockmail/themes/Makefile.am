@@ -173,6 +173,20 @@ clock_digital_red_stuff = \
 	clock-digital-red/digits_sm.png	\
 	clock-digital-red/clockmaildata
 
+green_analog_digital_dir = $(datadir)/clockmail/green-analog-digital
+#green_analog_digital_DATA =
+green_analog_digital_stuff = \
+	green-analog-digital/back.png		\
+	green-analog-digital/btn.png		\
+	green-analog-digital/day_en.png		\
+	green-analog-digital/dig.png		\
+	green-analog-digital/hand_m.png		\
+	green-analog-digital/hand_s.png		\
+	green-analog-digital/hand_h.png		\
+	green-analog-digital/light.png		\
+	green-analog-digital/months_en.png	\
+	green-analog-digital/clockmaildata
+	
 zclockmaildir = $(datadir)/clockmail
 zclockmail_DATA = \
 	$(analog_stuff)		\
@@ -191,6 +205,7 @@ zclockmail_DATA = \
 	$(nice_clock_stuff)	\
 	$(nice_mailcount_stuff)	\
 	$(clock_digital_black_stuff)	\
-	$(clock_digital_red_stuff)
-
+	$(clock_digital_red_stuff)	\
+	$(green_analog_digital_stuff)
+	
 EXTRA_DIST = $(zclockmail_DATA)

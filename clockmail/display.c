@@ -38,7 +38,6 @@ static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
 		button_draw(button, FALSE, FALSE, FALSE, ad->skin->pixbuf, TRUE);
 		}
 	return;
-	w = NULL;
 }
 
 static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data)
@@ -58,7 +57,6 @@ static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data)
 		button_draw(button, FALSE, TRUE, FALSE, ad->skin->pixbuf, TRUE);
 		}
 	return;
-	w = NULL;
 }
 
 static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data)
@@ -81,7 +79,6 @@ static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data)
 			button->click_func(button->click_data);
 		}
 	return;
-	w = NULL;
 }
 
 static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data)
@@ -94,8 +91,6 @@ static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data)
 
 	button_draw(button, FALSE, FALSE, FALSE, ad->skin->pixbuf, TRUE);
 	return;
-	w = NULL;
-	event = NULL;
 }
 
 void display_events_init(AppData *ad)
@@ -107,5 +102,3 @@ void display_events_init(AppData *ad)
 	gtk_signal_connect(GTK_OBJECT(ad->display),"button_release_event",(GtkSignalFunc) display_released, ad);
 	gtk_signal_connect(GTK_OBJECT(ad->display),"leave_notify_event",(GtkSignalFunc) display_leave, ad);
 }
-
-

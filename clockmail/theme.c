@@ -248,7 +248,6 @@ static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, 
 	number = number_new(digit, count, zeros, centered, x, y);
 	g_free(filename);
 	return number;
-	path = NULL;
 }
 
 static GdkPixbuf *get_background(gchar *path)
