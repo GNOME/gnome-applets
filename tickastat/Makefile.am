@@ -33,3 +33,5 @@ gnorba_DATA = tickastat_applet.gnorba
 
 EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) noimage.xpm
 
+SUBDIRS = news_scripts
+
