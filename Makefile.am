@@ -84,8 +84,10 @@ DIST_SUBDIRS = \
 	mini-commander	\
 	man		\
 	wireless	\
-	accessx-status  \
-	stickynotes
+	accessx-status	\
+	stickynotes	\
+	libgswitchit	\
+	gswitchit
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
