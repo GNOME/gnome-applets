@@ -82,7 +82,7 @@ update_fortune_dialog(Hal *fish)
 
 	if ( fish->fortune_dialog == NULL ) {
 		fish->fortune_dialog = 
-			gnome_dialog_new("", GNOME_STOCK_BUTTON_CLOSE, NULL);
+			gnome_dialog_new("HAL 9000", GNOME_STOCK_BUTTON_CLOSE, NULL);
 		gnome_dialog_set_close(GNOME_DIALOG(fish->fortune_dialog),
 				       TRUE);
 		gnome_dialog_close_hides(GNOME_DIALOG(fish->fortune_dialog),
