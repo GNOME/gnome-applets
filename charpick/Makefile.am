@@ -18,7 +18,7 @@ EXTRA_DIST = \
 	charpick_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = charpick_applet.desktop charpick_applet.gnorba
+sys_DATA = charpick_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = charpick_applet.gnorba

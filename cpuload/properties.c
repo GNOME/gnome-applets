@@ -18,11 +18,20 @@ static cpuload_properties temp_props;
 extern GtkWidget *disp;
 extern cpuload_properties props;
 
-void load_properties( char *path, cpuload_properties *prop )
+static const int max_rgb_str_len = 7;
+static const int max_rgb_str_size = 8;
+
+void load_properties( const char *path, cpuload_properties *prop )
 {
 	gnome_config_push_prefix (path);
 	prop->ucolor	= gnome_config_get_string ("cpu/ucolor=#20b2aa");
+	if (prop->ucolor && (strlen(prop->ucolor) < max_rgb_str_len))
+	  prop->ucolor = g_realloc(prop->ucolor, max_rgb_str_size);
+
 	prop->scolor	= gnome_config_get_string ("cpu/scolor=#188982");
+	if (prop->scolor && (strlen(prop->scolor) < max_rgb_str_len))
+	  prop->scolor = g_realloc(prop->scolor, max_rgb_str_size);
+
 	prop->speed	= gnome_config_get_int    ("cpu/speed=2000");
 	prop->height 	= gnome_config_get_int	  ("cpu/height=40");
 	prop->width 	= gnome_config_get_int	  ("cpu/width=40");
@@ -30,7 +39,7 @@ void load_properties( char *path, cpuload_properties *prop )
 	gnome_config_pop_prefix ();
 }
 
-void save_properties( char *path, cpuload_properties *prop )
+void save_properties( const char *path, cpuload_properties *prop )
 {
 	gnome_config_push_prefix (path);
 	gnome_config_set_string( "cpu/ucolor", prop->ucolor );
@@ -54,7 +63,8 @@ ucolor_changed_cb( GnomeColorPicker *widget)
 
         gnome_color_picker_get_i8 (widget, &r, &g, &b, NULL);
 	
-	sprintf( temp_props.ucolor, "#%02x%02x%02x", r, g, b );
+	g_snprintf( temp_props.ucolor, max_rgb_str_size, 
+		    "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }          
 
@@ -68,7 +78,8 @@ scolor_changed_cb( GnomeColorPicker *widget)
 
         gnome_color_picker_get_i8 (widget, &r, &g, &b, NULL);
 	
-	sprintf( temp_props.scolor, "#%02x%02x%02x", r, g, b );
+	g_snprintf( temp_props.scolor, max_rgb_str_size,
+		    "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 

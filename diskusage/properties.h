@@ -15,7 +15,7 @@ typedef struct
 } diskusage_properties;
 
 void properties(AppletWidget *applet, gpointer data);
-void load_properties( char *path, diskusage_properties *prop );
-void save_properties( char *path, diskusage_properties *prop );
+void load_properties( const char *path, diskusage_properties *prop );
+void save_properties( const char *path, diskusage_properties *prop );
 
 #endif

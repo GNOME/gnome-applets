@@ -114,7 +114,8 @@ int draw_h(void)
 
 
 	/* Free Space text */		        
-	sprintf (avail_buf2,"av: %u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+	g_snprintf (avail_buf2, sizeof(avail_buf2), 
+		    "av: %u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
 
 
 
@@ -215,7 +216,7 @@ int draw_v(void)
 
 
 	/* Free Space text, part1*/		        
-	sprintf (avail_buf2,"av: \0");
+	g_snprintf (avail_buf2,sizeof(avail_buf2),"av: \0");
 
 
 	
@@ -249,7 +250,7 @@ int draw_v(void)
 
 
 	/* Free Space text, part2*/		        
-	sprintf (avail_buf2,"%u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+	g_snprintf (avail_buf2,sizeof(avail_buf2),"%u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
 
 	/* draw text strings 2nd part*/
 	gdk_draw_string(pixmap, my_font, gc,
