@@ -58,44 +58,33 @@ static GList * copy_propwgs (GKB * gkb);
 static GList *
 copy_props (GKB * gkb)
 {
-  Prop * prop;
-  PropWg * p2;
   GList * tempmaps = NULL;
-  GList * list = gkb->maps;
+  GList * list;
 
-  gkb->tn  = gkb->n;
-
-  while (list)
-    {
-      if((prop = list->data) != NULL) 
-       {
-        p2 = cp_prop (prop);
-	tempmaps = g_list_prepend (tempmaps, p2);
-       }
-      list = list->next;
-    }
+  for(list = gkb->maps; list != NULL; list = list->next) {
+	  Prop * prop = list->data;
+	  if(prop) {
+		  PropWg * p2 = cp_prop (prop);
+		  tempmaps = g_list_prepend (tempmaps, p2);
+	  }
+  }
   return g_list_reverse(tempmaps);
 }
 
 static GList *
 copy_propwgs (GKB * gkb)
 {
-  PropWg * prop;
-  Prop * p2;
   GList * tempmaps = NULL;
   GList * list = gkb->tempmaps;
 
-  gkb->n= gkb->tn;
-
-  while (list)
-    {
-      if((prop = list->data) != NULL) 
-       {
-        p2 = cp_propwg (prop);
-	tempmaps = g_list_prepend (tempmaps, p2);
-       }
-      list = list->next;
-    }
+  for(list = gkb->tempmaps; list != NULL; list = list->next) {
+	  PropWg * prop = list->data;
+	  if(prop != NULL) {
+		  Prop * p2;
+		  p2 = cp_propwg (prop);
+		  tempmaps = g_list_prepend (tempmaps, p2);
+	  }
+  }
   return g_list_reverse(tempmaps);
 }
 
@@ -103,7 +92,7 @@ static PropWg *
 cp_prop (Prop * data)
 {
 
-  PropWg * tempdata = g_new (PropWg, 1);
+  PropWg * tempdata = g_new0 (PropWg, 1);
 
   tempdata->name = g_strdup (data->name);
   tempdata->command = g_strdup (data->command);
@@ -116,7 +105,7 @@ static Prop *
 cp_propwg (PropWg * data)
 {
 
-  Prop *tempdata = g_new (Prop, 1);
+  Prop *tempdata = g_new0 (Prop, 1);
 
   tempdata->name = g_strdup (data->name);
   tempdata->command = g_strdup (data->command);
@@ -129,13 +118,18 @@ static void
 delmap_cb (GnomePropertyBox * pb,GKB * gkb)
 {
   gint page;
+  PropWg *actdata;
 
   if (gkb->tempmaps->next == NULL) return;
 
   page = gtk_notebook_get_current_page(GTK_NOTEBOOK(gkb->notebook));
   gtk_notebook_remove_page (GTK_NOTEBOOK(gkb->notebook), page);
-  gkb->tempmaps = g_list_remove(gkb->tempmaps, 
-  			g_list_nth_data(gkb->tempmaps, page));
+  actdata = g_list_nth_data(gkb->tempmaps, page);
+  gkb->tempmaps = g_list_remove(gkb->tempmaps, actdata);
+  g_free(actdata->name);
+  g_free(actdata->iconpath);
+  g_free(actdata->command);
+  g_free(actdata);
   gtk_widget_draw(GTK_WIDGET(gkb->notebook), NULL);
 
   gkb->tn--;
@@ -147,33 +141,39 @@ delmap_cb (GnomePropertyBox * pb,GKB * gkb)
 static void
 icontopath_cb (GnomePropertyBox * pb, PropWg * actdata)
 {
- g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconpathinput));
- g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconentry));
- gtk_entry_set_text (GTK_ENTRY(actdata->iconpathinput),
-	 gnome_icon_entry_get_filename (
-	     GNOME_ICON_ENTRY (actdata->iconentry)));
- 
- gtk_widget_show(actdata->iconpathinput);
- 
- gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
+	char *itext;
+
+	g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconpathinput));
+	g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconentry));
+
+	itext = gnome_icon_entry_get_filename (GNOME_ICON_ENTRY (actdata->iconentry));
+
+	if(itext != NULL) {
+		gtk_entry_set_text (GTK_ENTRY(actdata->iconpathinput), itext);
+		g_free(itext);
+	}
+
+	gtk_widget_show(actdata->iconpathinput);
+
+	gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
 
 }
 
 static void
 pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
 {
- int i;
- 
- i = strcmp (gtk_entry_get_text(GTK_ENTRY(actdata->iconpathinput)),
-   gnome_icon_entry_get_filename(GNOME_ICON_ENTRY (actdata->iconentry)));
+	char *etext = gtk_entry_get_text(GTK_ENTRY(actdata->iconpathinput));
+	char *itext = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY (actdata->iconentry));
 
- if (!i) return;
- 
- gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry),
-       gtk_entry_get_text (GTK_ENTRY (actdata->iconpathinput)));
+	if(etext && itext && strcmp(etext, itext) == 0) {
+		g_free(itext);
+		return;
+	}
+	g_free(itext);
 
- gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
+	gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry), etext);
 
+	gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
 }
 
 static void
@@ -187,7 +187,8 @@ newmap_cb (GnomePropertyBox * pb, GKB * gkb)
 
   makenotebook (gkb, actdata, gkb->tn);
 
-  gkb->tempmaps = g_list_insert (gkb->tempmaps, actdata, gkb->tn++);
+  gkb->tempmaps = g_list_append (gkb->tempmaps, actdata);
+  gkb->tn ++;
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 
@@ -220,8 +221,10 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
 
         actdata->name = g_strdup (gtk_entry_get_text (GTK_ENTRY (actdata->keymapname)));
 
-        actdata->iconpath = g_strdup (
-	  gnome_icon_entry_get_filename (GNOME_ICON_ENTRY (actdata->iconentry)));
+	/* gnome_icon_entry_get_filename returns a newly allocated string,
+	 * so no need to strdup */
+        actdata->iconpath = 
+	  gnome_icon_entry_get_filename (GNOME_ICON_ENTRY (actdata->iconentry));
 
         actdata->command = g_strdup (
 	  gtk_entry_get_text (GTK_ENTRY (actdata->commandinput)));
@@ -235,7 +238,19 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
       list = list->next;
     }
 
+  for(list = gkb->maps; list != NULL; list = list->next) {
+	  PropWg *p = list->data;
+	  if(p) {
+		  g_free(p->name);
+		  g_free(p->command);
+		  g_free(p->iconpath);
+		  g_free(p);
+	  }
+  }
+  g_list_free(gkb->maps);
+
   gkb->maps = copy_propwgs (gkb);
+  gkb->n = gkb->tn;
 
   sized_render (gkb);
   gkb_draw (gkb);
@@ -445,14 +460,24 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
 
   if (gkb->propbox)
     {
-      gtk_widget_show (gkb->propbox);
+      gtk_widget_show_now (gkb->propbox);
       gdk_window_raise (gkb->propbox->window);
       return;
      }
 
+  for(list = gkb->tempmaps; list != NULL; list = list->next) {
+	  PropWg * actdata = list->data;
+	  if(actdata) {
+		  g_free(actdata->name);
+		  g_free(actdata->iconpath);
+		  g_free(actdata->command);
+		  g_free(actdata);
+	  }
+  }
+  g_list_free(gkb->tempmaps);
 
   gkb->tempmaps = copy_props (gkb);
-  list = gkb->tempmaps;
+  gkb->tn  = gkb->n;
 
   gkb->propbox = gnome_property_box_new ();
   gtk_object_set_data (GTK_OBJECT (gkb->propbox), "propbox", gkb->propbox);
@@ -467,6 +492,7 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
   gtk_notebook_popup_enable (GTK_NOTEBOOK (gkb->notebook));
   gtk_widget_show_all (gkb->propbox);
 
+  list = gkb->tempmaps;
   while (list)
     {
       if (list->data) makenotebook (gkb, list->data,i++);
