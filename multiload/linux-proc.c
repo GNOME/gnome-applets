@@ -231,14 +231,19 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 #define ETH_COUNT       2
 #define OTHER_COUNT	3
 #define COUNT_TYPES	4
-    int fields[4], present[COUNT_TYPES], delta[COUNT_TYPES], i;
-    static int ticks, past[COUNT_TYPES];
-    static char *netdevfmt;
+    gulong inbytes, outbytes;
+    gulong present[COUNT_TYPES];
+    int delta[COUNT_TYPES], i;
+    static int ticks = 0;
+    static gulong past[COUNT_TYPES] = {0};
+    static char *netdevfmt = NULL;
     char *cp, buffer[256];
-    int found = 0;
     FILE *fp;
     
     /* FIXME: this is hosed for multiple applets with the static variables */
+
+    /* FIXME: This function is generally incredibly evil -George
+       (too lazy to rewrite it though) */
 
     /*
      * We use the maximum number of bits we've seen come through to scale
@@ -255,8 +260,8 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
     {
 	FILE *fp = popen("uname -r", "r");	/* still wins if /proc isn't */
 
-	/* pre-linux-2.2 format -- transmit packet count in 8th field */
-	netdevfmt = "%d %d %*d %*d %*d %d %*d %d %*d %*d %*d %*d %d";
+	/* pre-linux-2.2 format -- transmit packet count in 8th field (bytes in 1st and 7th) */
+	netdevfmt = "%lu %*d %*d %*d %*d %*d %lu";
 
 	if (!fp)
 	    return;
@@ -271,8 +276,8 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 	    }
 
 	    if (major >= 2 && minor >= 2)
-		/* Linux 2.2 -- transmit packet count in 10th field */
-		netdevfmt = "%d %d %*d %*d %*d %d %*d %*d %*d %*d %d %*d %d";
+		/* Linux 2.2 -- transmit packet count in 10th field (bytes in 1st and 9th) */
+		netdevfmt = "%lu %*d %*d %*d %*d %*d %*d %*d %lu";
 	    pclose(fp);
 	}
     }
@@ -281,55 +286,51 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
     if (!fp)
 	return;
 
-    memset(present, '0', sizeof(present));
+    for (i = 0; i < COUNT_TYPES; i++)
+	    present[i] = 0;
 
     while (fgets(buffer, sizeof(buffer) - 1, fp))
     {
-	int	*resp;
+	int index;
 
 	for (cp = buffer; *cp == ' '; cp++)
 	    continue;
 
-	switch (cp[0]) {
-	case 'l':		
-		if (cp[1] == 'o')
-			continue;
-		break;
-	case 's':
-		if (!strncmp (cp+1, "lip", 3))
-			resp = present + SLIP_COUNT;
-		break;
-	case 'p':
-		if (!strncmp (cp+1, "pp", 2))
-			resp = present + PPP_COUNT;
-		break;
-	case 'e':
-		if (!strncmp (cp+1, "th", 2))
-			resp = present + ETH_COUNT;
-		break;
-   	default:
-      		resp = present + OTHER_COUNT;
-      		break;
+	if (strncmp (cp, "lo", 2) == 0) {
+		continue;
+	} else if (strncmp (cp, "slip", 4) == 0) {
+		index = SLIP_COUNT;
+	} else if (strncmp (cp, "ppp", 3) == 0) {
+		index = PPP_COUNT;
+	} else if (strncmp (cp, "eth", 3) == 0) {
+		index = ETH_COUNT;
+	} else {
+      		index = OTHER_COUNT;
 	}
 
 	if ((cp = strchr(buffer, ':')))
 	{
 	    cp++;
-	    if ( sscanf(cp, netdevfmt, fields, fields+1, fields+2, fields+3, &found ) > 4 )
-		*resp += fields[0] + fields[2];
+	    if ( sscanf(cp, netdevfmt, &inbytes, &outbytes) == 2 )
+		present[index] += inbytes + outbytes;
 	}
     }
 
     fclose(fp);
 
-    memset(data, '\0', sizeof(data));
+    for (i = 0; i < 5; i++)
+	    data[i] = 0;
     if (ticks++ > 0)		/* avoid initial spike */
     {
 	int total = 0;
 
 	for (i = 0; i < COUNT_TYPES; i++)
 	{
-	    delta[i] = (present[i] - past[i]);
+	    /* protect against weirdness */
+	    if (present[i] >= past[i])
+		    delta[i] = (present[i] - past[i]);
+	    else
+		    delta[i] = 0;
 	    total += delta[i];
 	}
 	if (total > max)
@@ -346,7 +347,9 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 #endif
     }
     data[4] = Maximum - data[3] - data[2] - data[1] - data[0];
-    memcpy(past, present, sizeof(present));
+
+    for (i = 0; i < COUNT_TYPES; i++)
+	    past[i] = present[i];
 }
 
 
