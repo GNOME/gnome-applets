@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.1\n"
-"POT-Creation-Date: 2002-12-08 22:42+0100\n"
-"PO-Revision-Date: 2002-12-08 22:43+0100\n"
+"POT-Creation-Date: 2003-01-20 19:50+0100\n"
+"PO-Revision-Date: 2003-02-02 14:18+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:841
+#: battstat/battstat_applet.c:848
 msgid "Battery Charge Monitor"
 msgstr "Overvåking av batterilading"
 
@@ -25,7 +25,7 @@ msgstr "Battstat-factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
 msgid "Monitor a laptop's remaining power"
-msgstr "Overvåk gjenværende strøm på en bærbar"
+msgstr "Overvåk gjenværende strøm på en bærbar datamaskin"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:4
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
@@ -77,49 +77,49 @@ msgstr "_Sett datamaskinen i hvilemodus..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:284
+#: battstat/battstat_applet.c:286
 msgid "Your platform is not supported!\n"
 msgstr "Din plattform er ikke støttet!\n"
 
-#: battstat/battstat_applet.c:285
+#: battstat/battstat_applet.c:287
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Appleten vil ikke fungere riktig (hvis i det hele tatt).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:872
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
 msgid "High"
 msgstr "Høy"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:874
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
 msgid "Low"
 msgstr "Lav"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:876
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
 msgid "Critical"
 msgstr "Kritisk"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:878
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
 msgid "Charging"
 msgstr "Lader"
 
-#: battstat/battstat_applet.c:403
+#: battstat/battstat_applet.c:405
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Lav batterikapasitet (%d%%) og ikke koblet til strøm"
 
-#: battstat/battstat_applet.c:427
+#: battstat/battstat_applet.c:429
 msgid "Battery is now fully re-charged!"
 msgstr "Batteriet er fullt oppladet!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1036
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -131,7 +131,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1044
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -142,32 +142,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:968
-#: battstat/battstat_applet.c:1057
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:1064
 msgid "System is running on battery power"
 msgstr "Systemet kjører på batteristrøm"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:974
-#: battstat/battstat_applet.c:1063
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:1070
 msgid "System is running on AC power"
 msgstr "Systemet kjører på nettstrøm"
 
-#: battstat/battstat_applet.c:473
+#: battstat/battstat_applet.c:475
 msgid "N/A"
 msgstr "I/T"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:948
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systemet kjører på batteristrøm. Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systemet kjører på nettstrøm. Batteri: %d%% (%s)"
@@ -176,33 +176,33 @@ msgstr "Systemet kjører på nettstrøm. Batteri: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:615
+#: battstat/battstat_applet.c:617
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systemet kjører på batteristrøm. Batteri: Ikke tilstede"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:621
+#: battstat/battstat_applet.c:623
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systemet kjører på nettstrøm. Batteri: Ikke tilstede"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:630
+#: battstat/battstat_applet.c:632
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batteri: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:637
+#: battstat/battstat_applet.c:639
 msgid "Battery: Not present"
 msgstr "Batteri: Ikke tilstede"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:717
+#: battstat/battstat_applet.c:719
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -215,7 +215,7 @@ msgstr ""
 "APM-enheten."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:726
+#: battstat/battstat_applet.c:728
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -225,7 +225,7 @@ msgstr ""
 "deaktivert. Prøv å kjøre «apm -e 1» (FreeBSD) \n"
 "og se om det hjelper.\n"
 
-#: battstat/battstat_applet.c:776
+#: battstat/battstat_applet.c:783
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -235,7 +235,7 @@ msgstr ""
 "Vennligst prøv å rette opp denne feilen"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:779
+#: battstat/battstat_applet.c:786
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -246,7 +246,7 @@ msgstr ""
 "returnerte «%d»\n"
 "Vennligst prøv å rette opp denne feilen"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:794
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -256,26 +256,26 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:818
+#: battstat/battstat_applet.c:825
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:501
+#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:504
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
 #: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:814
+#: mini-commander/src/about.c:48 mixer/mixer.c:817
 #: modemlights/modemlights.c:209 multiload/main.c:57
 #: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
 msgid "translator_credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: battstat/battstat_applet.c:843
+#: battstat/battstat_applet.c:850
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:844
+#: battstat/battstat_applet.c:851
 msgid "This utility show the status of your laptop battery."
-msgstr "Dette verktøyet viser status for batteriet på din bærbare."
+msgstr "Dette verktøyet viser status for batteriet på din bærbare datamaskin."
 
 #: battstat/battstat_applet.glade.h:2
 #, no-c-format
@@ -378,7 +378,7 @@ msgid "Battery power low"
 msgstr "Lav strømstyrke"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:519 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
 msgid "CD Player"
 msgstr "CD-spiller"
 
@@ -403,97 +403,97 @@ msgstr "Panelapplet for avspilling av lyd-CDer"
 msgid "_Run External CD Player"
 msgstr "Kjø_r ekstern CD-spiller"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:902
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:903
 msgid "Stop"
 msgstr "Stopp"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:905
 msgid "Play / Pause"
 msgstr "Spill / pause"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:907
 msgid "Eject"
 msgstr "Løs ut"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:909
 msgid "Previous Track"
 msgstr "Forrige spor"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:911
 msgid "Next Track"
 msgstr "Neste spor"
 
-#: cdplayer/cdplayer.c:303 drivemount/drivemount.c:399 mixer/mixer.c:780
+#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:783
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "Det oppsto en feil under kjøring av «%s» : %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:411
 msgid "CD Player Preferences"
 msgstr "Brukervalg for CD-spiller"
 
-#: cdplayer/cdplayer.c:426
+#: cdplayer/cdplayer.c:429
 msgid "Disc Image"
 msgstr "Diskbilde"
 
-#: cdplayer/cdplayer.c:426
+#: cdplayer/cdplayer.c:429
 msgid "An image of a cd-rom disc"
 msgstr "Et bilde av en CD-ROM-plate"
 
-#: cdplayer/cdplayer.c:428
+#: cdplayer/cdplayer.c:431
 msgid "Device _Path:"
 msgstr "St_i til enhet:"
 
-#: cdplayer/cdplayer.c:437
+#: cdplayer/cdplayer.c:440
 msgid "Device Path"
 msgstr "Sti til enhet"
 
-#: cdplayer/cdplayer.c:437
+#: cdplayer/cdplayer.c:440
 msgid "Set the device path here"
 msgstr "Sett sti til enhet her"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:443
 msgid "Use _Default"
 msgstr "Bruk _forvalg"
 
-#: cdplayer/cdplayer.c:520
+#: cdplayer/cdplayer.c:523
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr "© 2001 Chris Phelps (GNOME 2 port)"
 
-#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:525 cdplayer/cdplayer.c:914
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "CD-spiller appleten er et enkelt program for avspilling av lyd-CDer for "
 "panelet "
 
-#: cdplayer/cdplayer.c:781 cdplayer/cdplayer.c:792
+#: cdplayer/cdplayer.c:782 cdplayer/cdplayer.c:793
 msgid "Elapsed time"
 msgstr "Medgått tid"
 
-#: cdplayer/cdplayer.c:784 cdplayer/cdplayer.c:794
+#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:795
 msgid "Track number"
 msgstr "Spornummer"
 
-#: cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:904
 msgid "Click this button to Stop playing the CD"
 msgstr "Klikk på denne knappen for å stoppe avspilling av CD"
 
-#: cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:906
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klikk på denne knappen for å spille av eller pause CDen"
 
-#: cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:908
 msgid "Click this button to eject the CD"
 msgstr "Klikk på denne knappen for å utløse CDen"
 
-#: cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:910
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klikk på denne knappen for å spille av forrige spor på CDen"
 
-#: cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:912
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klikk på denne knappen for å spille av neste spor på CDen"
 
@@ -777,11 +777,11 @@ msgstr ""
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB hjemmeside (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
+#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
 msgstr "Inaktiv"
 
-#: gkb-new/keygrab.c:305
+#: gkb-new/keygrab.c:313
 msgid "Press a key or press Esc to cancel"
 msgstr "Trykk en tast eller Esc for å avbryte"
 
@@ -789,7 +789,7 @@ msgstr "Trykk en tast eller Esc for å avbryte"
 msgid "Keyboards (select and press add)"
 msgstr "Tastatur (velg og trykk legg til)"
 
-#: gkb-new/prop-add.c:393
+#: gkb-new/prop-add.c:392
 msgid "Select Keyboard"
 msgstr "Velg tastatur"
 
@@ -2687,7 +2687,7 @@ msgid "Adjust the sound volume"
 msgstr "Justering av lydvolum"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:827
+#: mixer/mixer.c:830
 msgid "Volume Control"
 msgstr "Volumkontroll"
 
@@ -2725,23 +2725,23 @@ msgstr "advarsel: mikseren har ingen volum-kanal - bruker PCM i stedet.\n"
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Mikserenhet %s har verken volum- eller PCM-kanaler.\n"
 
-#: mixer/mixer.c:572
+#: mixer/mixer.c:575
 msgid "Volume Controller"
 msgstr "Volumkontroll"
 
-#: mixer/mixer.c:573
+#: mixer/mixer.c:576
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Bruk opp/ned pilene for å endre volumet"
 
-#: mixer/mixer.c:828
+#: mixer/mixer.c:831
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:829
+#: mixer/mixer.c:832
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord."
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord"
 
@@ -3303,8 +3303,8 @@ msgstr ""
 "systemet.\n"
 "Vennligst sjekk konfigurasjonen hvis du mener dette ikke er korrekt."
 
-#: wireless/wireless-applet.c:718
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:718
 msgid "Wireless Link Monitor"
 msgstr "Overvåking av trådløs tilkobling"
 
