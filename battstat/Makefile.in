@@ -133,13 +133,13 @@ battstat_applet_SOURCES = battstat.h battstat_applet.c
 
 battstat_applet_LDADD = $(GNOME_APPLETS_LIBS) ${GNOME_DOCKLETS_LIBS} $(GNOME_LIBDIR) 
 
-EXTRA_DIST =  	README 	INSTALL 	TODO 	battstat_applet.desktop 	battstat_applet.gnorba 	battstat.png 	applet-docs.make
+EXTRA_DIST =  	README 	INSTALL 	TODO 	battstat_applet.desktop 	battstat_applet.gnorba 	battstat.png 	battstat-tesla.xpm 	applet-docs.make
 
 
 sysdir = @gnomedatadir@/applets/Monitors
 sys_DATA = battstat_applet.desktop
 pixmapdir = @gnomedatadir@/pixmaps
-pixmap_DATA = battstat.png
+pixmap_DATA = battstat.png battstat-tesla.xpm
 gnorbadir = @gnomeconfdir@/CORBA/servers
 gnorba_DATA = battstat_applet.gnorba
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
