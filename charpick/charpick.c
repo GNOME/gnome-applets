@@ -7,7 +7,7 @@
 #include "charpick.h"
 
 
-static charpick_button_cb_data button_cb_data[MAX_BUTTONS];
+static charpick_button_cb_data button_cb_data[MAX_BUTTONS_WITH_BUFFER];
 charpick_data curr_data;
 
 /* This stuff assumes that this program is being run in an environment
@@ -117,18 +117,61 @@ selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
   have_selection = NULL;
 }
 
+/* this sets up the rows and columns according to the panel size and
+   settings as appropriate */
+static void
+setup_rows_cols(charpick_data *p_curr_data, gint *rows, gint *cols)
+{
+  if (p_curr_data->properties->follow_panel_size)
+  {
+    int r,c;
+    /* for vertical we only take 2/3 of the size as that is what is
+       then used for the table */
+    if (p_curr_data->panel_vertical)
+      r = (p_curr_data->panel_size * 3) / (p_curr_data->properties->size * 2);
+    else
+      r = p_curr_data->panel_size / p_curr_data->properties->size;
+
+    if (r<=0) r = 1;
+    if (p_curr_data->properties->min_cells % r == 0)
+      c = p_curr_data->properties->min_cells / r;
+    else
+      c = (p_curr_data->properties->min_cells / r) + 1;
+      
+    if (p_curr_data->panel_vertical)
+    {
+      *rows = c;
+      *cols = r;
+    }
+    else
+    {
+      *rows = r;
+      *cols = c;
+    }
+  }
+  else
+  {
+    *rows = p_curr_data->properties->rows;
+    *cols = p_curr_data->properties->cols;
+  }
+}
+
+
 /* displays a list of characters in labels on buttons*/
 static void
 display_charlist (charpick_data *data)
 {
-  guint rows = data->properties->rows;
-  guint cols = data->properties->cols;
+  guint rows;
+  guint cols;
   const gchar *charlist = data->charlist;
-
   /* let's show no more characters than we have, or than we have space for. */
-  guint numtoshow = MIN(rows * cols, strlen(charlist));
+  guint numtoshow;
   guint i = 0; /* loop variable */
   gchar currstr[2];
+
+  setup_rows_cols (data, &rows, &cols);
+
+  numtoshow = MIN(rows * cols, strlen(charlist));
 
   /* reset the characters on the labels and reshow the buttons */
   for (i=0;i<numtoshow;i++)
@@ -279,7 +322,6 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
   widget = NULL;
 }
 
-
 /* creates table of buttons, sets up their callbacks, and packs the table in
    the event box */
 
@@ -292,12 +334,13 @@ build_table(charpick_data *p_curr_data)
   GtkWidget * *label;
   gint rows, cols, size;
   gint i;
-  rows = p_curr_data->properties->rows;
-  cols = p_curr_data->properties->cols;
   size = p_curr_data->properties->size;
+
+  setup_rows_cols (p_curr_data, &rows, &cols);
+
   toggle_button = p_curr_data->toggle_buttons;
   label = p_curr_data->labels;
-  /*for (i=0;i<MAX_BUTTONS;i++)*/
+  /*for (i=0;i<MAX_BUTTONS_WITH_BUFFER;i++)*/
   if (table)
     gtk_widget_destroy(table);
   table = gtk_table_new (rows, cols, TRUE);
@@ -355,6 +398,22 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
   data = NULL;
 }
 
+static void applet_change_pixel_size(GtkWidget *widget, int size)
+{
+  curr_data.panel_size = size;
+  build_table (&curr_data);
+}
+
+static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
+{
+  if (o == ORIENT_UP ||
+      o == ORIENT_DOWN)
+    curr_data.panel_vertical = FALSE;
+  else
+    curr_data.panel_vertical = TRUE;
+  build_table (&curr_data);
+}
+
 static void
 about (AppletWidget *applet, gpointer data)
 {
@@ -384,9 +443,8 @@ main (int argc, char *argv[])
   GtkWidget *frame = NULL;
   GtkWidget *event_box = NULL;
   GtkWidget *table = NULL;
-  GtkWidget *toggle_button[MAX_BUTTONS];
-  GtkWidget *label[MAX_BUTTONS];
-  gint rows, cols;
+  GtkWidget *toggle_button[MAX_BUTTONS_WITH_BUFFER];
+  GtkWidget *label[MAX_BUTTONS_WITH_BUFFER];
   /* initialize properties. when sm is added, these will be loaded
    * rather than simply copied from the defaults.
    */
@@ -424,8 +482,6 @@ main (int argc, char *argv[])
   curr_data.frame = frame;
   curr_data.applet = applet;
   curr_data.properties = &default_properties;
-  rows = default_properties.rows;
-  cols = default_properties.cols;
 
 
   /* Initialize the i18n stuff */
@@ -483,6 +539,10 @@ main (int argc, char *argv[])
   gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		     GTK_SIGNAL_FUNC(applet_save_session), 
                      &default_properties);
+  gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+		     GTK_SIGNAL_FUNC(applet_change_pixel_size), NULL);
+  gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+		     GTK_SIGNAL_FUNC(applet_change_orient), NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 				         "about",

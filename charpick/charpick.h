@@ -8,7 +8,9 @@
 #define DEFAULT_ROWS 2
 #define DEFAULT_COLS 4
 #define DEFAULT_SIZE 22
+#define DEFAULT_MIN_CELLS (2*4)
 #define MAX_BUTTONS 25
+#define MAX_BUTTONS_WITH_BUFFER 29 /* MAX_BUTTONS + ceil(sqrt(MAX_BUTTONS))-1 */
 
 typedef struct _charpick_persistant_properties charpick_persistant_properties;
 /* This is the data type for user definable properties of the charpick applet.
@@ -17,6 +19,8 @@ typedef struct _charpick_persistant_properties charpick_persistant_properties;
  */
 struct _charpick_persistant_properties {
   const gchar * default_charlist;
+  gboolean      follow_panel_size;
+  gint          min_cells;
   gint          rows;
   gint          cols;
   gint          size; /* this is the height and width of a cell */
@@ -34,6 +38,8 @@ struct _charpick_data {
   GtkWidget *event_box;
   GtkWidget *frame;
   GtkWidget *applet;
+  gint panel_size;
+  gboolean panel_vertical;
   charpick_persistant_properties * properties;
 };
 
