@@ -75,7 +75,9 @@ void create_gc(void);
 void start_timer(void);
 void change_filesystem_cb (AppletWidget *applet, gpointer data);
 void add_mount_list_menu_items (void);
+#if 0
 static void browse_cb (AppletWidget *widget, gpointer data);
+#endif
 int diskusage_get_best_size_v (void);
 int diskusage_get_best_size_h (void);
 
@@ -173,9 +175,6 @@ int diskusage_get_best_size_h ()
 
 	total_width = pie_width + du_pie_gap + DU_FREESPACE_HOR_X * 2 +
 		string_width + du_pie_gap;
-
-	fprintf (stderr, "TEST: %d - %d - %d\n",
-		 pie_width, string_width, total_width);
 
 	return total_width;
 }
@@ -622,8 +621,6 @@ applet_change_pixel_size(AppletWidget *w, int size, gpointer data)
 {
 	summary_info.pixel_size = applet_widget_get_panel_pixel_size (w);
 
-	fprintf (stderr, "PIXEL: %d\n", summary_info.pixel_size);
-
 	diskusage_resize();
 }
 
@@ -863,6 +860,8 @@ void update_mount_list_menu_items () {
 
 }
 
+#if 0
+
 static void browse_cb (AppletWidget *widget, gpointer data)
 {
         const char *buf[2];
@@ -887,7 +886,7 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 	data = NULL;
 }
 
-
+#endif
 
 GtkWidget *diskusage_widget(void)
 {
@@ -1010,12 +1009,14 @@ int main(int argc, char **argv)
 					      properties,
 					      NULL);
 
+#if 0
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
                                               "browse",
                                               GNOME_STOCK_MENU_OPEN,
                                               _("Browse..."),
                                               browse_cb,
                                               NULL);
+#endif
 
 	applet_widget_gtk_main();
 
