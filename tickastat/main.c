@@ -213,6 +213,13 @@ static void about_line_cb(ModuleData *md, gpointer data, InfoData *id, AppData *
     ad = NULL;
 }
 
+static void help_cb (GtkWidget *w, gpointer data)
+{
+        GnomeHelpMenuEntry help_entry = { "tickastat_applet",
+                                          "index.html" };
+        gnome_help_display(NULL, &help_entry);
+}
+
 static void destroy_applet(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
@@ -327,21 +334,26 @@ static AppData *create_new_app(GtkWidget *applet)
                                 GTK_SIGNAL_FUNC(applet_save_session),
                                 ad);
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "event_log",
+                                              GNOME_STOCK_MENU_INDEX,
+                                              _("Event log..."),
+                                              event_log_cb, ad);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
                                               "properties",
                                               GNOME_STOCK_MENU_PROP,
                                               _("Properties..."),
                                               property_show,
                                               ad);
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "help",
+                                              GNOME_STOCK_PIXMAP_HELP,
+                                              _("Help"),
+                                              help_cb, NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
                                               "about",
                                               GNOME_STOCK_MENU_ABOUT,
                                               _("About..."),
                                               about_cb, NULL);
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-                                              "event_log",
-                                              GNOME_STOCK_MENU_INDEX,
-                                              _("Event log..."),
-                                              event_log_cb, ad);
 
 
 	/* init/start the module functions */
