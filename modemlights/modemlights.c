@@ -712,7 +712,7 @@ static void draw_load(int rxbytes, int txbytes)
 	if (!layout_current) return;
 
 	x = layout_current->load_x + 1;
-	y = layout_current->load_y + layout_current->load_h - 1;
+	y = layout_current->load_y + layout_current->load_h - 2;
 	dot_height = layout_current->load_h - 2;
 
 	/* sanity check: */
@@ -741,14 +741,14 @@ static void draw_load(int rxbytes, int txbytes)
 	else
 		bytes_per_dot = (float)load_max / (dot_height - 1);
 
-	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height, 16, dot_height);
+	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, dot_height);
 
 	gdk_gc_set_foreground( gc, &rx_color );
 	for (i=0;i<16;i++)
 		{
 		if( load_hist_rx[i] )
-			gdk_draw_line(display, gc, x+i, y,
-				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot ));
+			gdk_draw_line(display, gc, x+i, y ,
+				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot) + 1);
 		}
 
 	gdk_gc_set_foreground( gc, &tx_color );
@@ -756,7 +756,7 @@ static void draw_load(int rxbytes, int txbytes)
 		{
 		if( load_hist_tx[i] )
 			gdk_draw_line(display, gc, x+i, y,
-				x+i, y - ((float)load_hist_tx[i] / bytes_per_dot ));
+				x+i, y - ((float)load_hist_tx[i] / bytes_per_dot) + 1);
 		}
 
 	redraw_display();
