@@ -39,6 +39,21 @@ AC_ARG_PROGRAM
 
 AM_INIT_AUTOMAKE(battstat_applet, $BS_MAJOR.$BS_MINOR.$BS_SUB)
 
+dnl
+dnl Libtool
+dnl
+AC_LIBTOOL_DLOPEN
+AM_DISABLE_STATIC
+AM_PROG_LIBTOOL
+AC_SUBST(LIBTOOL_DEPS)
+if ${CONFIG_SHELL} ./libtool --features | grep "enable static" >/dev/null; then
+  STATIC="-static"
+else
+  STATIC=
+fi
+AC_SUBST(STATIC)
+
+
 AC_HEADER_STDC
 AM_PATH_GTK(1.2.0)
 CFLAGS="$CFLAGS"

@@ -25,9 +25,6 @@
 /* Define to `long' if <sys/types.h> doesn't define.  */
 #undef off_t
 
-/* Define if you need to in order for stat and other things to work.  */
-#undef _POSIX_SOURCE
-
 /* Define to `unsigned' if <sys/types.h> doesn't define.  */
 #undef size_t
 
@@ -43,19 +40,6 @@
 /* Define if you have the ANSI C header files.  */
 #undef STDC_HEADERS
 
-#define DEBUG 0
-#undef ENABLE_NLS
-#undef HAVE_CATGETS
-#undef HAVE_DEVGTK
-#undef HAVE_GETTEXT
-#undef HAVE_LC_MESSAGES
-#undef HAVE_STPCPY
-#undef HAVE_LIBSM
-#undef HAVE_PROGRAM_INVOCATION_SHORT_NAME
-#undef HAVE_PROGRAM_INVOCATION_NAME
-#undef PACKAGE
-#undef VERSION
-
 #undef GNOME_ICONDIR
 
 /* Define if you have the __argz_count function.  */
@@ -70,6 +54,12 @@
 /* Define if you have the dcgettext function.  */
 #undef HAVE_DCGETTEXT
 
+/* Define if you have the feof_unlocked function.  */
+#undef HAVE_FEOF_UNLOCKED
+
+/* Define if you have the fgets_unlocked function.  */
+#undef HAVE_FGETS_UNLOCKED
+
 /* Define if you have the getcwd function.  */
 #undef HAVE_GETCWD
 
@@ -78,6 +68,9 @@
 
 /* Define if you have the getpagesize function.  */
 #undef HAVE_GETPAGESIZE
+
+/* Define if you have the mempcpy function.  */
+#undef HAVE_MEMPCPY
 
 /* Define if you have the munmap function.  */
 #undef HAVE_MUNMAP
@@ -103,6 +96,9 @@
 /* Define if you have the strdup function.  */
 #undef HAVE_STRDUP
 
+/* Define if you have the tsearch function.  */
+#undef HAVE_TSEARCH
+
 /* Define if you have the <argz.h> header file.  */
 #undef HAVE_ARGZ_H
 
@@ -118,6 +114,12 @@
 /* Define if you have the <nl_types.h> header file.  */
 #undef HAVE_NL_TYPES_H
 
+/* Define if you have the <stddef.h> header file.  */
+#undef HAVE_STDDEF_H
+
+/* Define if you have the <stdlib.h> header file.  */
+#undef HAVE_STDLIB_H
+
 /* Define if you have the <string.h> header file.  */
 #undef HAVE_STRING_H
 
@@ -130,12 +132,28 @@
 /* Define if you have the apm library (-lapm).  */
 #undef HAVE_LIBAPM
 
-/* Define if you have the i library (-li).  */
-#undef HAVE_LIBI
-
 /* Name of package */
 #undef PACKAGE
 
 /* Version number of package */
 #undef VERSION
+
+/* Define if you have the iconv() function. */
+#undef HAVE_ICONV
+
+/* Define as const if the declaration of iconv() needs const. */
+#undef ICONV_CONST
+
+/* Define if you have <langinfo.h> and nl_langinfo(CODESET). */
+#undef HAVE_LANGINFO_CODESET
+
+/* Define if your <locale.h> file defines LC_MESSAGES. */
+#undef HAVE_LC_MESSAGES
+
+/* Define to 1 if translation of program messages to the user's native language
+   is requested. */
+#undef ENABLE_NLS
+
+/* Define if the GNU gettext() function is already present or preinstalled. */
+#undef HAVE_GETTEXT
 
