@@ -31,7 +31,7 @@ GtkWidget *disp;
 GdkGC *gc;
 GdkColor ucolor, scolor;
 cpuload_properties props;
-int height, width, timer_index=-1;
+int timer_index=-1;
 
 guchar udata[128];
 guchar oudata[128];
@@ -42,9 +42,9 @@ int draw(void)
 {
 	int usr=0, sys=0, nice=0, free=0, i;
 
-	GetLoad(height, &usr, &nice, &sys, &free );
+	GetLoad(props.height, &usr, &nice, &sys, &free );
 
-	for( i=0; i < width-1; i++ )
+	for( i=0; i < props.width-1; i++ )
 	{
 		udata[i+1] = oudata[i];
 		sdata[i+1] = osdata[i];
@@ -60,23 +60,23 @@ int draw(void)
 		disp->allocation.height );
 	
 	gdk_gc_set_foreground( gc, &ucolor );
-	for( i=0; i < width; i++ )
+	for( i=0; i < props.width; i++ )
 	{
 		if( udata[i] )
 			gdk_draw_line( pixmap,
 			       gc,
-			       i,height,
-			       i,(height-udata[i]) );
+			       i,props.height,
+			       i,(props.height-udata[i]) );
 	}
 	
 	gdk_gc_set_foreground( gc, &scolor );
-	for( i=0; i < width; i++ )
+	for( i=0; i < props.width; i++ )
 	{
 		if( sdata[i] )
 			gdk_draw_line( pixmap,
 			       gc,
-			       i,(height-udata[i]),
-			       i,(height-udata[i])-sdata[i] );
+			       i,(props.height-udata[i]),
+			       i,(props.height-udata[i])-sdata[i] );
 	}
 	gdk_draw_pixmap(disp->window,
 		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
@@ -86,7 +86,7 @@ int draw(void)
 	        disp->allocation.width,
 	        disp->allocation.height);
 
-	for( i=0; i < width; i++ )
+	for( i=0; i < props.width; i++ )
 	{
 		oudata[i] = udata[i];
 		osdata[i] = sdata[i];
@@ -146,7 +146,7 @@ GtkWidget *cpuload_new( void )
 	gtk_box_pack_start_defaults( GTK_BOX(box), disp );
 	gtk_container_add( GTK_CONTAINER(frame), box );
 
-	gtk_widget_set_usize(disp, width, height);
+	gtk_widget_set_usize(disp, props.width, props.height);
 
 	start_timer();
         
@@ -181,6 +181,12 @@ void create_gc(void)
         gdk_gc_copy( gc, disp->style->white_gc );
 }
 
+static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath, gpointer data)
+{
+	save_properties(cfgpath,&props);
+	return FALSE;
+}
+
 static gint destroy_applet(GtkWidget *widget, gpointer data)
 {
         gtk_exit(0);
@@ -194,14 +200,12 @@ int main(int argc, char **argv)
         panel_corba_register_arguments();
 
         gnome_init("cpuload_applet", NULL, argc, argv, 0, NULL);
-        load_properties(&props);
 
-	height = props.height;
-	width = props.width;
-        
 	applet = applet_widget_new(argv[0]);
 	if (!applet)
 		g_error("Can't create applet!\n");
+
+        load_properties(APPLET_WIDGET(applet)->cfgpath, &props);
 
         cpuload = cpuload_new();
         applet_widget_add( APPLET_WIDGET(applet), cpuload );
@@ -211,6 +215,10 @@ int main(int argc, char **argv)
 	setup_colors();
         gtk_signal_connect(GTK_OBJECT(applet),"destroy",
                            GTK_SIGNAL_FUNC(destroy_applet),
+                           NULL);
+
+        gtk_signal_connect(GTK_OBJECT(applet),"session_save",
+                           GTK_SIGNAL_FUNC(applet_session_save),
                            NULL);
 
        	applet_widget_register_callback(APPLET_WIDGET(applet),

@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #ifdef HAVE_LIBINTL
 #    include <libintl.h>
 #endif
@@ -13,31 +14,39 @@
 
 #include "properties.h"
 
-GtkWidget *propbox;
-cpuload_properties props;
+GtkWidget *propbox=NULL;
+static cpuload_properties temp_props;
+
+extern GtkWidget *disp;
+extern cpuload_properties props;
 
 void setup_colors(void);
 void start_timer( void );
 
-void load_properties( cpuload_properties *prop )
+void load_properties( char *path, cpuload_properties *prop )
 {
-	prop->ucolor	= gnome_config_get_string ("/cpuload_applet/all/ucolor=#20b2aa");
-	prop->scolor	= gnome_config_get_string ("/cpuload_applet/all/scolor=#188982");
-	prop->speed	= gnome_config_get_int    ("/cpuload_applet/all/speed=2000");
-	prop->height 	= gnome_config_get_int	  ("/cpuload_applet/all/height=40");
-	prop->width 	= gnome_config_get_int	  ("/cpuload_applet/all/width=40");
-	prop->look	= gnome_config_get_bool   ("/cpuload_applet/all/look=1");
+	gnome_config_push_prefix (path);
+	prop->ucolor	= gnome_config_get_string ("ucolor=#20b2aa");
+	prop->scolor	= gnome_config_get_string ("scolor=#188982");
+	prop->speed	= gnome_config_get_int    ("speed=2000");
+	prop->height 	= gnome_config_get_int	  ("height=40");
+	prop->width 	= gnome_config_get_int	  ("width=40");
+	prop->look	= gnome_config_get_bool   ("look=1");
+	gnome_config_pop_prefix ();
 }
 
-void save_properties( cpuload_properties *prop )
+void save_properties( char *path, cpuload_properties *prop )
 {
-	gnome_config_set_string( "/cpuload_applet/all/ucolor", prop->ucolor );
-	gnome_config_set_string( "/cpuload_applet/all/scolor", prop->scolor );
-	gnome_config_set_int   ( "/cpuload_applet/all/speed", prop->speed );
-	gnome_config_set_int   ( "/cpuload_applet/all/height", prop->height );
-	gnome_config_set_int   ( "/cpuload_applet/all/width", prop->width );
-	gnome_config_set_bool  ( "/cpuload_applet/all/look", prop->look );
+	gnome_config_push_prefix (path);
+	gnome_config_set_string( "ucolor", prop->ucolor );
+	gnome_config_set_string( "scolor", prop->scolor );
+	gnome_config_set_int   ( "speed", prop->speed );
+	gnome_config_set_int   ( "height", prop->height );
+	gnome_config_set_int   ( "width", prop->width );
+	gnome_config_set_bool  ( "look", prop->look );
+	gnome_config_pop_prefix ();
         gnome_config_sync();
+	gnome_config_drop_all();
 }
 
 void color_changed_cb( GnomeColorSelector *widget, gchar **color )
@@ -62,17 +71,17 @@ void color_changed_cb( GnomeColorSelector *widget, gchar **color )
 
 void height_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+	temp_props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 void width_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+	temp_props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 void freq_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
+	temp_props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }	
 
@@ -86,8 +95,8 @@ GtkWidget *create_frame(void)
 	GnomeColorSelector *ucolor_gcs, *scolor_gcs;
         int ur,ug,ub, sr,sg,sb;
 
-	sscanf( props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
-        sscanf( props.scolor, "#%02x%02x%02x", &sr,&sg,&sb );
+	sscanf( temp_props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
+        sscanf( temp_props.scolor, "#%02x%02x%02x", &sr,&sg,&sb );
         
 	box = gtk_vbox_new( 5, TRUE );
 	color=gtk_hbox_new( 5, TRUE );
@@ -97,9 +106,9 @@ GtkWidget *create_frame(void)
 	        
 	
 	ucolor_gcs  = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&props.ucolor );
+		&temp_props.ucolor );
 	scolor_gcs = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&props.scolor );
+		&temp_props.scolor );
 
         gnome_color_selector_set_color_int( ucolor_gcs, ur, ug, ub, 255 );
 	gnome_color_selector_set_color_int( scolor_gcs, sr, sg, sb, 255 );
@@ -116,13 +125,13 @@ GtkWidget *create_frame(void)
 		gnome_color_selector_get_button(scolor_gcs) );
 
 	label = gtk_label_new("Applet Height");
-	height_a = gtk_adjustment_new( props.height, 0.5, 128, 1, 8, 8 );
+	height_a = gtk_adjustment_new( temp_props.height, 0.5, 128, 1, 8, 8 );
 	height  = gtk_spin_button_new( GTK_ADJUSTMENT(height_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
 	gtk_box_pack_start_defaults( GTK_BOX(size), height );
 	
 	label = gtk_label_new("Width");
-	width_a = gtk_adjustment_new( props.width, 0.5, 128, 1, 8, 8 );
+	width_a = gtk_adjustment_new( temp_props.width, 0.5, 128, 1, 8, 8 );
 	width  = gtk_spin_button_new( GTK_ADJUSTMENT(width_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
 	gtk_box_pack_start_defaults( GTK_BOX(size), width );
@@ -137,8 +146,8 @@ GtkWidget *create_frame(void)
         	GTK_UPDATE_ALWAYS );
 
 	label = gtk_label_new("Update Frequency");
-	g_print( "%d %d\n", props.speed, props.speed/1000 );
-	freq_a = gtk_adjustment_new( (float)props.speed/1000, 0.1, 60, 0.1, 5, 5 );
+	g_print( "%d %d\n", temp_props.speed, temp_props.speed/1000 );
+	freq_a = gtk_adjustment_new( (float)temp_props.speed/1000, 0.1, 60, 0.1, 5, 5 );
 	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 0.1, 1 );
 	gtk_box_pack_start( GTK_BOX(speed), label,TRUE, FALSE, 0 );
 	gtk_box_pack_start( GTK_BOX(speed), freq, TRUE, TRUE, 0 );
@@ -158,20 +167,32 @@ GtkWidget *create_frame(void)
 
 void apply_cb( GtkWidget *widget, void *data )
 {
-	save_properties(&props);
+	memcpy( &props, &temp_props, sizeof(cpuload_properties) );
+
         setup_colors();
 	start_timer();
+
+	/*FIXME: this won't make the window smaller*/
+	gtk_widget_set_usize( disp, props.width, props.height );
+}
+
+gint destroy_cb( GtkWidget *widget, void *data )
+{
+	propbox = NULL;
+	return FALSE;
 }
 
 void properties(AppletWidget *applet, gpointer data)
 {
 	GtkWidget *frame, *label;
 
-	if( propbox )
+	if( propbox ) {
+		gdk_window_raise(propbox->window);
 		return;
+	}
 
-	load_properties(&props);
-	
+	memcpy(&temp_props,&props,sizeof(cpuload_properties));
+
         propbox = gnome_property_box_new();
 	gtk_window_set_title( 
 		GTK_WINDOW(&GNOME_PROPERTY_BOX(propbox)->dialog.window), 
@@ -185,6 +206,9 @@ void properties(AppletWidget *applet, gpointer data)
 
         gtk_signal_connect( GTK_OBJECT(propbox),
 		"apply", GTK_SIGNAL_FUNC(apply_cb), NULL );
+
+        gtk_signal_connect( GTK_OBJECT(propbox),
+		"destroy", GTK_SIGNAL_FUNC(destroy_cb), NULL );
 
 	gtk_widget_show_all(propbox);
 }
