@@ -113,14 +113,16 @@ void stickynotes_applet_init_about()
 	stickynotes->w_about = glade_xml_get_widget(stickynotes->about, "about_dialog");
 
 	/* FIXME : Hack because libglade does not properly set these */
-	g_object_set(G_OBJECT(stickynotes->w_about), "name", _("Sticky Notes"), "version", VERSION);
+	g_object_set(G_OBJECT(stickynotes->w_about), "name", _("Sticky Notes"));
+	g_object_set(G_OBJECT(stickynotes->w_about), "version", VERSION);
+	
 	{
 		GdkPixbuf *logo = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
 		g_object_set(G_OBJECT(stickynotes->w_about), "logo", logo);
 		g_object_unref(logo);
 	}
-	if (strcmp(_("translator_credits"), "translator_credits") == 0)
-		g_object_set(G_OBJECT(stickynotes->w_about), "translator_credits", NULL);
+	if (strcmp(_("translator-credits"), "translator-credits") == 0)
+		g_object_set(G_OBJECT(stickynotes->w_about), "translator-credits", NULL);
 	
 	g_signal_connect(G_OBJECT(stickynotes->w_about), "response", G_CALLBACK(about_response_cb), NULL);
 }
@@ -256,17 +258,16 @@ void stickynotes_applet_update_prefs()
 
 void stickynotes_applet_update_menus()
 {
-	gint i;
+	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
+	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
 
+	gint i;
 	for (i = 0; i < g_list_length(stickynotes->applets); i++) {
 		StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
 		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
-
-		gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
-		gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
 		
 		bonobo_ui_component_set_prop(popup, "/commands/show", "state", visible ? "1" : "0", NULL);
-		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", visible ? "1" : "0", NULL);
+		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);
 	}
 }
 
@@ -293,7 +294,7 @@ void stickynotes_applet_do_default_action()
 
 	switch (click_behavior) {
 		case STICKYNOTES_NEW:
-			stickynotes_add(stickynotes);
+			stickynotes_add();
 			break;
 
 		case STICKYNOTES_SET_VISIBLE:
