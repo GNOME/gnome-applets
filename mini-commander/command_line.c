@@ -23,6 +23,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
+#include <gdk/gdkkeysyms.h>
 
 #include "command_line.h"
 #include "preferences.h"
@@ -36,7 +37,7 @@ static char *historyCommand[HISTORY_DEPTH];
 
 static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
-    char key =  event->keyval;
+    guint key = event->keyval;
     char *command;
     static char currentCommand[MAX_COMMAND_LENGTH];
     char buffer[MAX_COMMAND_LENGTH];
@@ -45,7 +46,7 @@ static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer dat
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
-    if(key == '\t')
+    if(key == GDK_Tab)
 	{
 	    /* tab key pressed */
 	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
@@ -54,7 +55,7 @@ static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer dat
 
 	    propagateEvent = FALSE;
 	}
-    else if(key == (gchar) -174)
+    else if(key == GDK_Up)
 	{
 	    /* up key pressed */
 	    if(historyPosition == HISTORY_DEPTH)
@@ -69,7 +70,7 @@ static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer dat
 	    event->keyval = (gchar) -175;
 	    propagateEvent = FALSE;
 	}
-    else if(key == (gchar) -172)
+    else if(key == GDK_Down)
 	{
 	    /* down key pressed */
 	    if(historyPosition <  HISTORY_DEPTH - 1)
@@ -83,7 +84,7 @@ static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer dat
 		}
 	    propagateEvent = FALSE;
 	}
-    else if(key == '\r')
+    else if(key == GDK_Return)
 	{
 	    /* enter pressed -> exec command */
 	    showMessage((gchar *) _("starting...")); 

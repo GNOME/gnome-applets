@@ -212,7 +212,7 @@ void loadSession(void)
     prop.showDate = gnome_config_get_bool("mini_commander/show_date=false");
 
     /* size */
-    prop.normalSizeX = gnome_config_get_int("mini_commander/normal_size_x=110");
+    prop.normalSizeX = gnome_config_get_int("mini_commander/normal_size_x=128");
     prop.normalSizeY = gnome_config_get_int("mini_commander/normal_size_y=48");
     prop.reducedSizeX = gnome_config_get_int("mini_commander/reduced_size_x=50");
     prop.reducedSizeY = gnome_config_get_int("mini_commander/reduced_size_y=48");
