@@ -284,9 +284,13 @@ properties_show (BonoboUIComponent *uic,
 	dialog = gtk_dialog_new_with_buttons(_("Disk Mounter Preferences"), NULL, 
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					     GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 					     NULL);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (dd->applet));
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	box = GTK_DIALOG(dialog)->vbox;
 	
@@ -299,7 +303,7 @@ properties_show (BonoboUIComponent *uic,
 	
 	vbox1 = create_hig_catagory (vbox, _("General"));
 	
-	hbox = gtk_hbox_new(FALSE, 6);
+	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
@@ -316,16 +320,17 @@ properties_show (BonoboUIComponent *uic,
 	gnome_file_entry_set_default_path (GNOME_FILE_ENTRY (widgets->mount_entry), "/mnt/");
 	gnome_file_entry_set_directory_entry(GNOME_FILE_ENTRY (widgets->mount_entry), TRUE);
 	entry = gnome_file_entry_gtk_entry (GNOME_FILE_ENTRY (widgets->mount_entry));
+	gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
 	gtk_box_pack_start(GTK_BOX(hbox), widgets->mount_entry , TRUE, TRUE, 0);
 	gtk_widget_show(widgets->mount_entry);
 	g_signal_connect (G_OBJECT (entry), "changed",
 			  G_CALLBACK (cb_mount_activate), dd);
 
-	hbox = gtk_hbox_new(FALSE, 6);
+	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new_with_mnemonic(_("_Update interval (seconds):"));
+	label = gtk_label_new_with_mnemonic (_("_Update interval:"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_widget_show(label);
@@ -333,13 +338,18 @@ properties_show (BonoboUIComponent *uic,
 
 	widgets->update_spin = gtk_spin_button_new(GTK_ADJUSTMENT(gtk_adjustment_new(dd->interval, 1.0, 300.0, 5, 1, 1)), 1, 0);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->update_spin);
-	gtk_box_pack_start(GTK_BOX(hbox), widgets->update_spin, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), widgets->update_spin, FALSE, FALSE, 0);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(widgets->update_spin),GTK_UPDATE_ALWAYS);
 	gtk_widget_show(widgets->update_spin);
 	g_signal_connect (G_OBJECT (widgets->update_spin), "focus_out_event",
 				  G_CALLBACK (spin_changed), dd);
 	
-	hbox = gtk_hbox_new(FALSE, 6);
+	label = gtk_label_new_with_mnemonic (_("seconds"));
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_widget_show (label);
+
+	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
@@ -390,7 +400,7 @@ properties_show (BonoboUIComponent *uic,
 	else
 		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), dd->device_pixmap);
 
-	hbox = gtk_hbox_new(FALSE, 6);
+	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 	
@@ -413,7 +423,7 @@ properties_show (BonoboUIComponent *uic,
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	hbox = gtk_hbox_new(FALSE, 6);
+	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 	
@@ -469,8 +479,55 @@ properties_show (BonoboUIComponent *uic,
 }
 
 static void
+help_cb (GtkDialog *dialog)
+{
+	GError *error = NULL;
+	static GnomeProgram *applet_program = NULL;
+	
+	if (!applet_program) {
+		int argc = 1;
+		char *argv[2] = { "drivemount" };
+		applet_program = gnome_program_init ("drivemount", VERSION,
+						      LIBGNOME_MODULE, argc, argv,
+     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
+	}
+
+	egg_help_display_desktop_on_screen (
+			applet_program, "drivemount", "drivemount", "drivemountapplet-prefs",
+			gtk_widget_get_screen (GTK_WIDGET (dialog)),
+			&error);
+
+	if (error) {
+		GtkWidget *error_dialog;
+
+		error_dialog = gtk_message_dialog_new (
+				NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CLOSE,
+				_("There was an error displaying help: %s"),
+				error->message);
+
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen (GTK_WINDOW (error_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_widget_show (error_dialog);
+		g_error_free (error);
+	}
+}
+
+static void
 handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 {
+	if (response == GTK_RESPONSE_HELP) {
+		help_cb (dialog);
+		return;
+	}
+
 	gtk_widget_destroy(GTK_WIDGET(dialog));
 	g_free(widgets);
 }

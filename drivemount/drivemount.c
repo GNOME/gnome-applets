@@ -428,6 +428,43 @@ help_cb (BonoboUIComponent *uic,
 	 const char        *verb)
 
 {
+	GError *error = NULL;
+	static GnomeProgram *applet_program = NULL;
+	
+	if (!applet_program) {
+		int argc = 1;
+		char *argv[2] = { "drivemount" };
+		applet_program = gnome_program_init ("drivemount", VERSION,
+						      LIBGNOME_MODULE, argc, argv,
+     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
+	}
+
+	egg_help_display_desktop_on_screen (
+			applet_program, "drivemount", "drivemount", "drivemount",
+			gtk_widget_get_screen (GTK_WIDGET (uic)),
+			&error);
+
+	if (error) {
+		GtkWidget *error_dialog;
+
+		error_dialog = gtk_message_dialog_new (
+				NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CLOSE,
+				_("There was an error displaying help: %s"),
+				error->message);
+
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen (GTK_WINDOW (error_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (uic)));
+		gtk_widget_show (error_dialog);
+		g_error_free (error);
+	}
 }
 
 static void
