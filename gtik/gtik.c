@@ -260,10 +260,16 @@ static gint updateOutput(gpointer data)
 	/*-----------------------------------------------------------------*/
 	static void properties_load(StockData *stockdata) {
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		GError *error = NULL;
 		
 		stockdata->props.tik_syms = panel_applet_gconf_get_string (applet,
 									   "tik_syms",
-									   NULL);
+									   &error);
+		if (error) {
+			g_print ("%s \n", error->message);
+			g_error_free (error);
+			error = NULL;
+		}
 		if (!stockdata->props.tik_syms)
 			stockdata->props.tik_syms = g_strdup ("^DJI+^IXIC+^GSPC");
 		stockdata->props.output = panel_applet_gconf_get_bool (applet,
@@ -1420,6 +1426,25 @@ static gint updateOutput(gpointer data)
 
 	}
 
+	/* This is a hack around the fact that gtk+ doesn't
+ 	* propogate button presses on button2/3.
+ 	*/
+	static gboolean
+	button_press_hack (GtkWidget      *widget,
+                           GdkEventButton *event,
+                           gpointer data)
+	{
+		StockData *stockdata = data;
+		GtkWidget *applet = GTK_WIDGET (stockdata->applet);
+    		if (event->button == 3 || event->button == 2) {
+			event->window = applet->window;
+			gtk_main_do_event ((GdkEvent *) event);
+
+			return TRUE;
+		}
+		return FALSE;
+    	}
+    
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
         	BONOBO_UI_VERB ("Props", properties_cb),
         	BONOBO_UI_VERB ("Refresh", refresh_cb),
@@ -1459,7 +1484,12 @@ static gint updateOutput(gpointer data)
 		gtk_signal_connect (GTK_OBJECT (stockdata->rightButton),
 					"clicked",
 					GTK_SIGNAL_FUNC(zipRight),stockdata);
-
+		g_signal_connect (G_OBJECT (stockdata->leftButton), 
+				  "button_press_event",
+				  G_CALLBACK (button_press_hack), stockdata);
+		g_signal_connect (G_OBJECT (stockdata->rightButton), 
+				  "button_press_event",
+				  G_CALLBACK (button_press_hack), stockdata);
 		stockdata->tooltips = gtk_tooltips_new ();
 		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->leftButton, _("Skip forward"), NULL);
 		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backword"), NULL);
