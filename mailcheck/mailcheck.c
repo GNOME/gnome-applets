@@ -1226,7 +1226,7 @@ exec_clicked_cmd (GtkWidget *widget, GdkEventButton *event, gpointer data)
 	MailCheck *mc = data;
 	gboolean retval = FALSE;
 
-	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) {
+	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
 
 		if (mc->clicked_enabled && mc->clicked_cmd && (strlen(mc->clicked_cmd) > 0))
 			mailcheck_execute_shell (mc, mc->clicked_cmd);
@@ -2143,7 +2143,7 @@ mailcheck_properties_page (MailCheck *mc)
 		hard_set_sensitive (mc->play_sound_check, FALSE);
 
 	/*l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));*/
-	l = gtk_check_button_new_with_mnemonic (_("Sto_p animation when double clicked"));
+	l = gtk_check_button_new_with_mnemonic (_("Sto_p animation when clicked"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->reset_on_clicked);
 	g_signal_connect(G_OBJECT(l), "toggled",
 			   G_CALLBACK(reset_on_clicked_toggled), mc);
@@ -2259,7 +2259,7 @@ mailcheck_properties_page (MailCheck *mc)
 		if ( ! key_writable (mc->applet, "newmail_command"))
 			hard_set_sensitive (mc->newmail_cmd_entry, FALSE);
 
-		l = gtk_check_button_new_with_mnemonic (_("When double clicke_d:"));
+		l = gtk_check_button_new_with_mnemonic (_("When clicke_d:"));
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->clicked_enabled);
 		g_signal_connect(G_OBJECT(l), "toggled",
 				 G_CALLBACK(clicked_toggled), mc);

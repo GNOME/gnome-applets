@@ -1,3 +1,15 @@
+2004-06-10  Dennis Smit  <ds@nerds-incorporated.org>
+	
+	* mailcheck.c (exec_clicked_cmd): Open on
+	single click instead of double based on:
+
+	http://developer.gnome.org/projects/gup/hig/1.0/userinput.html#mouse-interaction-applets
+
+	(mailcheck_properties_page): Removed references to
+	double clicks. Instead just use 'clicked'.
+
+	Fixes bug: #129688.
+
 2004-06-07  Dennis Smit  <ds@nerds-incorporated.org>
 	* mailcheck.c (set_tooltip and set_atk_relation): Set
 	the accessible name to read out no of messages and remove
