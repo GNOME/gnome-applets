@@ -52,11 +52,12 @@ void update_display (GWeatherApplet *applet)
 
 	/* Translators: This is either C for Celius or F for Farenheit */
 	if (applet->gweather_pref.use_metric)
-		degree = N_("C");
+		degree = "\302\260C";
 	else
-		degree = N_("F");
+		degree = "\302\260F";
+		
 	if (info->success) {
-		tmp = g_strdup_printf (_("%s\nToday: %s\nCurrent temperature %d\302\260%s"), 
+		tmp = g_strdup_printf (_("%s\nToday: %s\nCurrent temperature %d%s%s"), 
 						  applet->gweather_pref.city, get_conditions (info->wid), 
 						  info->curtemp, degree);
 		gtk_tooltips_set_tip (applet->tooltips, applet->events[0], tmp, NULL);
@@ -66,7 +67,7 @@ void update_display (GWeatherApplet *applet)
 		gtk_tooltips_set_tip (applet->tooltips, applet-> events[0], NULL, NULL);
 	pixbuf = get_conditions_pixbuf (info->wid);
 	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[0]), pixbuf);
-	tmp = g_strdup_printf ("%d\302\260%s", info->curtemp, degree);
+	tmp = g_strdup_printf ("%d%s", info->curtemp, degree);
 	gtk_label_set_text (GTK_LABEL (applet->labels[0]), tmp);
 	g_free (tmp);
 
@@ -78,7 +79,7 @@ void update_display (GWeatherApplet *applet)
 			continue;
 		forecast = list->data;	
 		if (info->success)	 {	
-			tmp = g_strdup_printf (_("%s\n%s: %s\nLow %d\302\260%s, High %d\302\260%s"),
+			tmp = g_strdup_printf (_("%s\n%s: %s\nLow %d%s, High %d%s"),
 						  applet->gweather_pref.city,
 						  forecast->day, 
 						  get_conditions (forecast->wid), forecast->low, degree,
@@ -90,7 +91,7 @@ void update_display (GWeatherApplet *applet)
 			gtk_tooltips_set_tip (applet->tooltips,applet->events[i], NULL, NULL);
 		pixbuf = get_conditions_pixbuf (forecast->wid);
 		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[i]), pixbuf);
-		tmp = g_strdup_printf ("%d/%d\302\260%s", forecast->high, forecast->low, degree);
+		tmp = g_strdup_printf ("%d/%d%s", forecast->high, forecast->low, degree);
 		gtk_label_set_text (GTK_LABEL (applet->labels[i]), tmp);
 		g_free (tmp);
 		list = g_list_next (list);
@@ -127,9 +128,9 @@ void place_widgets (GWeatherApplet *gw_applet)
     }
     
     if (gw_applet->gweather_pref.use_metric)
-		degree = N_("C");
+		degree = "\302\260C";
 	else
-		degree = N_("F");
+		degree = "\302\260F";
     
     gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->box);
 
@@ -151,7 +152,7 @@ void place_widgets (GWeatherApplet *gw_applet)
 		if (i ==0)
 			tmp = g_strdup_printf ("%d\302\260%s", 0, degree);
 		else
-			tmp = g_strdup_printf ("%d/%d\302\260%s", 0, 0, degree);
+			tmp = g_strdup_printf ("%d/%d%s", 0, 0, degree);
 		gtk_label_set_text (GTK_LABEL (gw_applet->labels[i]), tmp);
 		gtk_widget_size_request (gw_applet->labels[i], &labelreq);
 		
