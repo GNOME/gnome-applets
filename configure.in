@@ -52,19 +52,19 @@ AM_PATH_ESD(,have_libesd=yes,
 AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
 
 dnl gumma
-have_xmms=no
+have_xmms=false
 CPPFLAGS_save=$CPPFLAGS
 LDFLAGS_save=$LDFLAGS
 CPPFLAGS=`gnome-config --cflags gnomeui`
 LDFLAGS=`gnome-config --libs gnomeui`
 
 AC_CHECK_HEADER(xmms/xmmsctrl.h,
-[AC_CHECK_LIB(xmms, xmms_remote_is_running,xmms=yes)])
-
+[AC_CHECK_LIB(xmms, xmms_remote_is_running,have_xmms=true)])
+AM_CONDITIONAL(HAVE_XMMS,$have_xmms)
 CPPFLAGS=$CPPFLAGS_save
 LDFLAGS=$LDFLAGS_save
 
-AM_CONDITIONAL(HAVE_XMMS,test x$have_xmms = x$yes)	
+dnl AM_CONDITIONAL(HAVE_XMMS,test $have_xmms)
 if test x$HAVE_XMMS != x$yes; then
   AC_MSG_WARN([*** \`xmms' plugin for gumma will not be build ***])
 fi
@@ -204,6 +204,14 @@ mini-commander/src/Makefile
 mixer/Makefile
 modemlights/Makefile
 multiload/Makefile
+odometer/Makefile
+odometer/def_theme/Makefile
+odometer/themes/Makefile
+odometer/themes/57chevy/Makefile
+odometer/themes/A/Makefile
+odometer/themes/bbldotg/Makefile
+odometer/themes/o/Makefile
+odometer/themes/smplst/Makefile
 slashapp/Makefile
 sound-monitor/Makefile
 sound-monitor/pvd/Makefile
@@ -220,6 +228,7 @@ sound-monitor/themes/scope-round/Makefile
 tickastat/Makefile
 tickastat/news_scripts/Makefile
 webcontrol/Makefile
+whereami/Makefile
 batmon/Makefile
 bussign/Makefile
 esd-manager/Makefile
@@ -230,13 +239,4 @@ netload/Makefile
 netwatch/Makefile
 oldslashapp/Makefile
 winlist/Makefile
-whereami/Makefile
-odometer/Makefile
-odometer/def_theme/Makefile
-odometer/themes/Makefile
-odometer/themes/57chevy/Makefile
-odometer/themes/A/Makefile
-odometer/themes/bbldotg/Makefile
-odometer/themes/o/Makefile
-odometer/themes/smplst/Makefile
 ])
