@@ -97,13 +97,14 @@ battery_update (gpointer data)
   BatteryData * bat = data;
 
   /* Data we read about the battery charge */
-  signed char ac_online, percentage, hours_remaining,  minutes_remaining;
+  int ac_online, percentage, hours_remaining,  minutes_remaining;
+  int fake_percentage;
 
   /*
    * Static copies of the last values of the battery data, so that we
    * only update the display if the data have changed.
    */
-  static signed char last_percentage = -1, last_hours_remaining = -1,
+  static int last_percentage = -1, last_hours_remaining = -1,
     last_minutes_remaining = -1, last_ac_online = -1;
 
   int graph_height, graph_width, i;
@@ -130,19 +131,26 @@ battery_update (gpointer data)
   if (! battery_read_charge (&percentage, &ac_online, &hours_remaining,
 			     &minutes_remaining))
     {
+      percentage = -1;
+      hours_remaining = -1;
       /*FIXME: somehow indicate that APM is not available on the display */
     }
+
+  if (percentage >= 0)
+	  fake_percentage = percentage;
+  else
+	  fake_percentage = 100;
 
   /*
    * Warn if the battery is low.
    */
-  if (bat->low_warn_enable && (percentage <= bat->low_warn_val)
+  if (bat->low_warn_enable && (fake_percentage <= bat->low_warn_val)
       && (! bat->warned))
     {
       gnome_warning_dialog (_("The battery is low."));
       bat->warned = TRUE;
     }
-  else if ((percentage > bat->low_warn_val) && bat->warned)
+  else if ((fake_percentage > bat->low_warn_val) && bat->warned)
     bat->warned = FALSE;
 
   /*
@@ -150,14 +158,14 @@ battery_update (gpointer data)
    * Personally, I find this feature annoying.  But a user requested
    * it, and the user is always right. :-)
    */
-  if (bat->full_notify_enable && (percentage == 100)
+  if (bat->full_notify_enable && (fake_percentage == 100)
       && (last_percentage < 100) && (last_percentage > 0)
       && ac_online && (! bat->notified))
     {
       gnome_ok_dialog (_("The battery is fully charged."));
       bat->notified = TRUE;
     }
-  else if ((percentage < 100) && bat->notified)
+  else if ((fake_percentage < 100) && bat->notified)
     bat->notified = FALSE;
 
   /*
@@ -176,7 +184,7 @@ battery_update (gpointer data)
 	bat->graph_values[i] = bat->graph_values[i + 1];
 
 	  /* Add in the new value */
-      bat->graph_values[bat->width - 1] = percentage;
+      bat->graph_values[bat->width - 1] = fake_percentage;
     }
   else
     {
@@ -185,7 +193,7 @@ battery_update (gpointer data)
 	bat->graph_values[i] = bat->graph_values[i - 1];
 
 	  /* Add in the new value */
-      bat->graph_values[0] = percentage;
+      bat->graph_values[0] = fake_percentage;
     }
 
   /*
@@ -227,8 +235,11 @@ battery_update (gpointer data)
   else
     gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_off));
 
-  if (percentage <= bat->low_charge_val)
+  if (fake_percentage <= bat->low_charge_val)
     gdk_gc_set_foreground (bat->gc, & (bat->graph_color_low));
+
+  if (percentage < 0)
+    gdk_gc_set_foreground (bat->gc, & (bat->graph_color_no));
 
   for (i = 0 ; i < graph_width ; i++)
     {
@@ -328,8 +339,8 @@ battery_update (gpointer data)
        * is at 100%, fill in the little nipple (positive terminal) at
        * the top.  99% is everything but the nipple.
        */
-      if (percentage < 100)
-	body_perc = percentage;
+      if (fake_percentage < 100)
+	body_perc = fake_percentage;
       else
 	body_perc = 99;
 
@@ -348,9 +359,12 @@ battery_update (gpointer data)
 	gdk_gc_set_foreground (bat->readout_gc,
 			       & (bat->readout_color_ac_off));
 
-      if (percentage <= bat->low_charge_val)
+      if (fake_percentage <= bat->low_charge_val)
 	gdk_gc_set_foreground (bat->readout_gc,
 			       & (bat->readout_color_low));
+      if (percentage < 0)
+        gdk_gc_set_foreground (bat->readout_gc,
+			       & (bat->readout_color_no));
     
       if (rotate)
         gdk_draw_rectangle (bat->readout_pixmap,
@@ -388,8 +402,9 @@ battery_update (gpointer data)
 	}
 
       gdk_draw_rectangle (bat->readout_pixmap,
-			  (percentage == 100) ? bat->readout_gc :
-			  bat->readout_area->style->white_gc,
+			  (fake_percentage == 100) ?
+			    bat->readout_gc :
+			    bat->readout_area->style->white_gc,
 			  TRUE,
 			  bat->readout_batt_points[2].x + 1,
 			  bat->readout_batt_points[2].y + 1,
@@ -470,23 +485,12 @@ battery_update (gpointer data)
        * In order to fit the text into a small applet (e.g. 24x24), we
        * have to remove the '%' from the end of the percentage label.
        */
-      if (bat->width < 28 && (percentage == 100))
-	g_snprintf (labelstr, sizeof (labelstr), "%d", percentage);
+      if (percentage < 0)
+	      strcpy (labelstr, "");
+      else if (bat->width < 28 && (percentage == 100))
+	      g_snprintf (labelstr, sizeof (labelstr), "%d", percentage);
       else
-	g_snprintf (labelstr, sizeof (labelstr), "%d%%", percentage);
-
-      /* Make sure it's 4 spaces long. */
-      /*if (labelstr [2] == '\0')
-        {
-	  labelstr[2] = ' ';
-	  labelstr[3] = ' ';
-	  labelstr[4] = '\0';
-	}
-      else if (labelstr [3] == '\0')
-        {
-	  labelstr[3] = ' ';
-	  labelstr[4] = '\0';
-	}*/
+	      g_snprintf (labelstr, sizeof (labelstr), "%d%%", percentage);
 
       gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage), labelstr);
       gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage_small),
@@ -721,12 +725,12 @@ battery_change_mode (BatteryData * bat)
   if (!strcmp (bat->mode_string, BATTERY_MODE_GRAPH))
     {
       g_free (bat->mode_string);
-      bat->mode_string = strdup (BATTERY_MODE_READOUT);
+      bat->mode_string = g_strdup (BATTERY_MODE_READOUT);
     }
   else
     {
       g_free (bat->mode_string);
-      bat->mode_string = strdup (BATTERY_MODE_GRAPH);
+      bat->mode_string = g_strdup (BATTERY_MODE_GRAPH);
     }
 
   battery_set_mode (bat);
@@ -774,7 +778,7 @@ make_new_battery_applet (const gchar *goad_id)
   GtkStyle *label_style;
   /* gchar * param = "battery_applet"; */
 
-  char p, a, h, m;
+  int p, a, h, m;
 
   bat = g_new0 (BatteryData, 1);
 
@@ -1298,6 +1302,9 @@ battery_setup_colors (BatteryData * bat)
 		   & (bat->readout_color_low));
   gdk_color_alloc (colormap, & (bat->readout_color_low));
 
+  gdk_color_parse (bat->readout_color_no_s,
+		   & (bat->readout_color_no));
+  gdk_color_alloc (colormap, & (bat->readout_color_no));
 
   /* Graph */
   gdk_color_parse (bat->graph_color_ac_on_s,
@@ -1311,6 +1318,10 @@ battery_setup_colors (BatteryData * bat)
   gdk_color_parse (bat->graph_color_low_s,
 		   & (bat->graph_color_low));
   gdk_color_alloc (colormap, & (bat->graph_color_low));
+
+  gdk_color_parse (bat->graph_color_no_s,
+		   & (bat->graph_color_no));
+  gdk_color_alloc (colormap, & (bat->graph_color_no));
 
   gdk_color_parse (bat->graph_color_line_s,
 		   & (bat->graph_color_line));

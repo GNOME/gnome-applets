@@ -35,17 +35,23 @@
 #include <gnome.h>
 #include "read-battery.h"
 
-int
-battery_read_charge(signed char * percentage,
-		    signed char * ac_online,
-		    signed char * hours_remaining,
-		    signed char * minutes_remaining)
+gboolean
+battery_read_charge (int * percentage,
+		     int * ac_online,
+		     int * hours_remaining,
+		     int * minutes_remaining)
 {
 #ifdef __linux__
   static FILE * apm_file = NULL;
 
   char buffer[256], units[10];
   apm_info i;
+
+  /* defaults */
+  *percentage = -1;
+  *ac_online = 1;
+  *hours_remaining = -1;
+  *minutes_remaining = 1;
 
   /*
    * (1) Open /proc/apm
@@ -64,7 +70,7 @@ battery_read_charge(signed char * percentage,
 	      gave_warning = TRUE;
 	    }
 	  *ac_online = 1;
-	  *percentage = 100;
+	  *percentage = -1;
 	  *hours_remaining = -1;
 
 	  return FALSE;
@@ -141,16 +147,12 @@ battery_read_charge(signed char * percentage,
       *minutes_remaining = i.battery_time / 60;
     }
   
+  /* Should this ever happen? and if so what is the meaning?
+   * It used to set it to 0, but that's obnoxious because of the low
+   * battery warning
+   * -George */
   if (i.battery_percentage > 100)
-    i.battery_percentage = 0;
-
-  /*
-   * If we cannot read the battery percentage (indicated by a reading
-   * of -1), then just set it to zero.  It will sometimes appear as -1
-   * if, for example, the battery is unplugged, so this might be a
-   * FIXME if we want to provide that kind of information later.
-   */
-  if (i.battery_percentage < 0) i.battery_percentage = 0;
+    i.battery_percentage = -1;
 
   *percentage = i.battery_percentage;
   *ac_online = i.ac_line_status;
@@ -161,6 +163,12 @@ battery_read_charge(signed char * percentage,
 
   struct apm_info aip;
   int fd;
+
+  /* defaults */
+  *percentage = -1;
+  *ac_online = 1;
+  *hours_remaining = -1;
+  *minutes_remaining = 1;
 
   fd = open(APMDEV, O_RDWR);
   if (fd == -1)
@@ -194,7 +202,8 @@ battery_read_charge(signed char * percentage,
 
   /* Assume always connected to power.  */
   *ac_online = 1;
-  *percentage = 100;
+  /* unknown battery state */
+  *percentage = -1;
   *hours_remaining = -1;
   *minutes_remaining = 1;
 

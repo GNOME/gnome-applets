@@ -79,6 +79,9 @@ typedef struct BatteryData {
   gchar graph_color_low_s[24];
   GdkColor graph_color_low;
 
+  gchar graph_color_no_s[24];
+  GdkColor graph_color_no;
+
   /* Widgets n stuff... */
   GtkWidget *graph_frame;
   GdkPixmap *graph_pixmap;
@@ -106,6 +109,9 @@ typedef struct BatteryData {
 
   gchar readout_color_low_s[24];
   GdkColor readout_color_low;
+
+  gchar readout_color_no_s[24];
+  GdkColor readout_color_no;
 
   /*
    * The low-battery warning.
@@ -197,11 +203,13 @@ typedef struct BatteryData {
 #define BATTERY_DEFAULT_GRAPH_ACOFF_COLOR "#5252ff"
 #define BATTERY_DEFAULT_GRAPH_LOW_COLOR "#ff4c4c"
 #define BATTERY_DEFAULT_GRAPH_LINE_COLOR "#4d4d4d"
+#define BATTERY_DEFAULT_GRAPH_NO_COLOR "gray"
 
 /* The readout */
 #define BATTERY_DEFAULT_READOUT_ACON_COLOR "#52ff52"
 #define BATTERY_DEFAULT_READOUT_ACOFF_COLOR "#52ff52"
 #define BATTERY_DEFAULT_READOUT_LOW_COLOR "#ff4c4c"
+#define BATTERY_DEFAULT_READOUT_NO_COLOR "gray"
 /*
  *
  * Prototypes

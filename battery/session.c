@@ -102,6 +102,11 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
 	  ("graph/low_color="  BATTERY_DEFAULT_GRAPH_LOW_COLOR),
 	  sizeof(bat->graph_color_low_s));
 
+  strncpy(bat->graph_color_no_s,
+	  gnome_config_get_string
+	  ("graph/no_color="  BATTERY_DEFAULT_GRAPH_NO_COLOR),
+	  sizeof(bat->graph_color_no_s));
+
   /* The readout */
   strncpy(bat->readout_color_ac_on_s,
 	  gnome_config_get_string
@@ -117,6 +122,11 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
 	   gnome_config_get_string
 	   ("readout/low_color=" BATTERY_DEFAULT_READOUT_LOW_COLOR),
 	   sizeof(bat->readout_color_low_s));
+
+  strncpy (bat->readout_color_no_s,
+	   gnome_config_get_string
+	   ("readout/no_color=" BATTERY_DEFAULT_READOUT_NO_COLOR),
+	   sizeof(bat->readout_color_no_s));
 
   gnome_config_pop_prefix ();
 } /* battery_session_load */
@@ -152,6 +162,8 @@ battery_session_save(GtkWidget * w,
 			  bat->graph_color_ac_on_s);
   gnome_config_set_string("graph/low_color",
 			  bat->graph_color_low_s);
+  gnome_config_set_string("graph/no_color",
+			  bat->graph_color_no_s);
   
 
   /* The readout */
@@ -161,6 +173,8 @@ battery_session_save(GtkWidget * w,
 			  bat->readout_color_ac_off_s);
   gnome_config_set_string("readout/low_color",
 			  bat->readout_color_low_s);
+  gnome_config_set_string("readout/no_color",
+			  bat->readout_color_no_s);
 
   gnome_config_pop_prefix ();
 
@@ -206,6 +220,9 @@ battery_session_defaults(BatteryData * bat)
   strncpy(bat->graph_color_low_s, BATTERY_DEFAULT_GRAPH_LOW_COLOR,
 	  sizeof(bat->graph_color_low_s));
 
+  strncpy(bat->graph_color_no_s, BATTERY_DEFAULT_GRAPH_LOW_COLOR,
+	  sizeof(bat->graph_color_no_s));
+
   strncpy(bat->graph_color_line_s, BATTERY_DEFAULT_GRAPH_LINE_COLOR,
 	  sizeof(bat->graph_color_line_s));
 
@@ -218,5 +235,8 @@ battery_session_defaults(BatteryData * bat)
 
   strncpy(bat->readout_color_low_s, BATTERY_DEFAULT_READOUT_LOW_COLOR,
 	  sizeof(bat->readout_color_low_s));
+
+  strncpy(bat->readout_color_no_s, BATTERY_DEFAULT_READOUT_LOW_COLOR,
+	  sizeof(bat->readout_color_no_s));
 
 } /* battery_session_defaults */
