@@ -77,6 +77,8 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   if (page != -1)
     return;
 
+  /* Remove old maps */
+
   for(list = gkb->maps; list != NULL; list = list->next) {
 	  GkbKeymapWg *p = list->data;
 	  if(p) {
@@ -89,6 +91,8 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   
   g_list_free(gkb->maps);
   gkb->maps = NULL;
+
+  /* add new maps */
 
   for(list = pbi->keymaps; list != NULL; list = list->next) 
    {
@@ -107,6 +111,8 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
     gkb->maps = g_list_append(gkb->maps, data);
 
+    /* destroy the tempolary data from pbi */
+
     g_free(tdata->name);
     g_free(tdata->command);
     g_free(tdata->flag);
@@ -123,23 +129,22 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   if (pbi->keymaps)
    g_list_free (pbi->keymaps);
 
+  /* recalculate new props */
+
   gkb->n = g_list_length(gkb->maps);
-
   gkb->cur = 0;
-
   gkb->dact = g_list_nth_data (gkb->maps, 0);
 
-  gkb->small = ->tempsmall;
-  gkb->size = gkb->tempsize;
+  /* misc props from pbi */
 
-/*  entry1 = gtk_object_get_data (GTK_OBJECT(gkb->propbox), "entry1");
-  gkb->key = g_strdup (gtk_entry_get_text(GTK_ENTRY(entry1)));
+  gkb->is_small = pbi->is_small;
+  gkb->size = pbi->size;
+
+  gkb->key = g_strdup (gtk_entry_get_text(GTK_ENTRY(pbi->hotkey_entry)));
   convert_string_to_keysym_state(gkb->key,
                                 &gkb->keysym,
                                 &gkb->state);		
                                                                                                                
-*/
-
   gkb_update (gkb, FALSE);
   gkb_update (gkb, TRUE);
 
@@ -389,6 +394,7 @@ properties_dialog (AppletWidget * applet)
   pbi->delete_button = NULL;
   pbi->up_button     = NULL;
   pbi->down_button   = NULL;
+  pbi->hotkey_entry  = NULL;
   pbi->selected_keymap = NULL;
   
   gkb->tn = gkb->n;

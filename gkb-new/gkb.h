@@ -67,6 +67,9 @@ struct _GkbPropertyBoxInfo
   GList *keymaps;              /* A list of GkbKemap pointers */
   GtkList *list;               /* The widget displaying the keymaps */
   GkbKeymap *selected_keymap;  /* A pointer to the selected keymap */
+
+  /* Hotkey Entry */
+  GtkWidget *hotkey_entry;
   
   /* Other properties */
   gint is_small;
