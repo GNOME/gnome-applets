@@ -1,3 +1,14 @@
+1998-12-11  James Henstridge  <james@daa.com.au>
+
+	* properties.c (property_show): #ifdef'd out section on configuration
+	of what browser to use.  This is now handled by the url-properties
+	capplet.
+
+	* slashapp.c: Altered to use the gnome_url_show, and #ifdef'd out the
+	old launch_url implementation.  Also changed an occurence of
+	gtk_container_add to gtk_scrolled_window_add_with_viewport, where it
+	was needed.
+
 1998-11-29  Jeff Garzik  <jgarzik@pobox.com>
 
         * slashapp.c:

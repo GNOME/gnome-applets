@@ -228,6 +228,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(vbox1), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
+#if 0
 	frame = gtk_frame_new(_("Browser"));
 	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
@@ -242,6 +243,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_new_browser_window);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) browser_window_cb, ad);
 	gtk_widget_show(button);
+#endif
 
 /* -- not implemented yet -- */
 

@@ -8,7 +8,9 @@
 #include <errno.h>
 #include <ctype.h>
 
+#if 0
 static void launch_url(AppData *ad, gchar *url);
+#endif
 static void click_headline_cb(AppData *ad, gpointer data);
 static int filesize(char *s);
 static gchar *check_for_dir(char *d);
@@ -69,7 +71,7 @@ static void article_button_cb(GtkWidget *button, gpointer data)
 	AppData *ad = data;
 	gchar *url;
 	url = gtk_object_get_user_data(GTK_OBJECT(button));
-	launch_url(ad, url);
+	gnome_url_show(url);
 }
 
 static void destroy_article_window(GtkWidget *w, gpointer data)
@@ -94,7 +96,8 @@ static void populate_article_window(AppData *ad)
 	if (vbox) gtk_widget_destroy(vbox);
 
 	vbox = gtk_vbox_new(FALSE, 5);
-	gtk_container_add(GTK_CONTAINER(ad->article_list), vbox);
+	gtk_scrolled_window_add_with_viewport(
+			GTK_SCROLLED_WINDOW(ad->article_list), vbox);
 	gtk_widget_show(vbox);
 	gtk_object_set_user_data(GTK_OBJECT(ad->article_list), vbox);
 
@@ -184,6 +187,7 @@ static void show_article_window(AppletWidget *widget, gpointer data)
 	gtk_widget_show(ad->article_window);
 }
 
+#if 0
 static void launch_url(AppData *ad, gchar *url)
 {
 	gchar *command;
@@ -224,13 +228,14 @@ static void launch_url(AppData *ad, gchar *url)
 
 	g_free(command);
 }
+#endif
 
 static void click_headline_cb(AppData *ad, gpointer data)
 {
 	gchar *url = data;
 	if (url)
 		{
-		launch_url(ad, url);
+		gnome_url_show(url);
 		}
 }
 
