@@ -222,6 +222,7 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 
 	/* Apply the style to the widgets */
 	gtk_widget_modify_style(note->w_window, rc_style);
+	gtk_widget_modify_style(note->w_title, rc_style);
 	gtk_widget_modify_style(note->w_body, rc_style);
 	gtk_widget_modify_style(note->w_lock, rc_style);
 	gtk_widget_modify_style(note->w_close, rc_style);
