@@ -5,10 +5,10 @@
 #include "slashapp.h"
 
 static void article_delay_cb(GtkObject *adj, gpointer data);
-static void browser_window_cb(GtkWidget *w, gpointer data);
-static void show_images_cb(GtkWidget *w, gpointer data);
-static void show_info_cb(GtkWidget *w, gpointer data);
-static void show_department_cb(GtkWidget *w, gpointer data);
+/* static void browser_window_cb(GtkWidget *w, gpointer data); */
+/* static void show_images_cb(GtkWidget *w, gpointer data); */
+/* static void show_info_cb(GtkWidget *w, gpointer data); */
+/* static void show_department_cb(GtkWidget *w, gpointer data); */
 static void smooth_scroll_cb(GtkWidget *w, gpointer data);
 static void smooth_type_cb(GtkWidget *w, gpointer data);
 static void scroll_delay_cb(GtkObject *adj, gpointer data);
@@ -100,32 +100,41 @@ static void proxy_enable_cb(GtkWidget *w, gpointer data)
         gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
+/* *** unused ***
 static void browser_window_cb(GtkWidget *w, gpointer data)
 {
 	AppData *ad = data;
 	ad->p_new_browser_window = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
+*/
 
+/* *** unused ***
 static void show_images_cb(GtkWidget *w, gpointer data)
 {
 	AppData *ad = data;
 	ad->p_show_images = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
+*/
 
+/* *** unused ***
 static void show_info_cb(GtkWidget *w, gpointer data)
 {
 	AppData *ad = data;
 	ad->p_show_info = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
+*/
+
+/* *** unused ***
 static void show_department_cb(GtkWidget *w, gpointer data)
 {
 	AppData *ad = data;
 	ad->p_show_department = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
+*/
 
 static void smooth_scroll_cb(GtkWidget *w, gpointer data)
 {
@@ -212,7 +221,6 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
-	GtkWidget *text;
 
 	if(ad->propwindow)
 		{

@@ -194,8 +194,6 @@ void property_show(AppletWidget *applet, gpointer data);
 
 /* slashapp.c */
 void resized_app_display(AppData *ad, gint force);
-void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
 AppData *create_new_app(GtkWidget *applet);
 gchar *check_for_dir(char *d);
 void destroy_applet(GtkWidget *widget, gpointer data);
@@ -213,4 +211,4 @@ void tree_walk(xmlNodePtr root, gpointer data);
 void destroy_article_window(GtkWidget *widget, gpointer data);
 void article_button_cb(GtkWidget *widget, gpointer data);
 char *layer_find(xmlNodePtr node, char *match, char *fail);
-void click_headline_cb(AppData *ad, gpointer data);
+void click_headline_cb (gpointer data, InfoData *id, AppData *ad);

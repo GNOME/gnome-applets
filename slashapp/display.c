@@ -205,12 +205,13 @@ void set_info_click_signal(InfoData *id, void (*click_func)(gpointer data, InfoD
         id->free_func = free_func;
 }
 
-void set_info_signals(InfoData *id, 
-				    void (*click_func)(gpointer data, InfoData *id, AppData *ad),
-				    void (*free_func)(gpointer data),
-				    void (*pre_func)(gpointer data, InfoData *id, AppData *ad),
-				    void (*end_func)(gpointer data, InfoData *id, AppData *ad),
-				    gpointer data)
+/* *** unused ***
+static void set_info_signals (InfoData *id, 
+			      void (*click_func)(gpointer data, InfoData *id, AppData *ad),
+			      void (*free_func)(gpointer data),
+			      void (*pre_func)(gpointer data, InfoData *id, AppData *ad),
+			      void (*end_func)(gpointer data, InfoData *id, AppData *ad),
+			      gpointer data)
 {
 	if (!id) return;
 	id->click_func = click_func;
@@ -219,6 +220,7 @@ void set_info_signals(InfoData *id,
 	id->end_func = end_func;
 	id->data = data;
 }
+*/
 
 void remove_info_line(AppData *ad, InfoData *id)
 {
@@ -815,6 +817,8 @@ static void calc_display_sizes(AppData *ad)
 
 static void create_display_pixmaps(AppData *ad)
 {
+	GdkGC *gc;
+
 /* the old way ?
 	ad->display_w = gnome_pixmap_new_from_xpm_d_at_size(back_xpm, ad->width, ad->height);
 	ad->display = GNOME_PIXMAP(ad->display_w)->pixmap;
@@ -832,19 +836,26 @@ static void create_display_pixmaps(AppData *ad)
 	ad->disp_buf = NULL;
 	ad->background = NULL;
 
-	ad->display = gdk_pixmap_new (ad->applet->window, ad->width, ad->height, -1);
-	ad->disp_buf = gdk_pixmap_new (ad->applet->window, ad->width, ad->height, -1);
-	ad->background = gdk_pixmap_new (ad->applet->window, ad->width, ad->height, -1);
+	ad->display = gdk_pixmap_new (NULL,
+				      ad->width, ad->height,
+				      gdk_rgb_get_visual ()->depth);
 
-	gdk_draw_rectangle (ad->display,
-			    ad->applet->style->base_gc[GTK_STATE_NORMAL],
+	ad->disp_buf = gdk_pixmap_new (NULL,
+				       ad->width, ad->height,
+				       gdk_rgb_get_visual ()->depth);
+	ad->background = gdk_pixmap_new (NULL,
+					 ad->width, ad->height,
+					 gdk_rgb_get_visual ()->depth);
+
+	gc = gdk_gc_new (ad->display);
+
+	gdk_draw_rectangle (ad->display, gc,
 			    TRUE, 0, 0, ad->width, ad->height);
-	gdk_draw_rectangle (ad->disp_buf,
-			    ad->applet->style->base_gc[GTK_STATE_NORMAL],
+	gdk_draw_rectangle (ad->disp_buf, gc, 
 			    TRUE, 0, 0, ad->width, ad->height);
-	gdk_draw_rectangle (ad->background,
-			    ad->applet->style->base_gc[GTK_STATE_NORMAL],
+	gdk_draw_rectangle (ad->background, gc,
 			    TRUE, 0, 0, ad->width, ad->height);
+	gdk_gc_destroy (gc);
 }
 
 void resized_app_display(AppData *ad, gint force)
@@ -924,6 +935,7 @@ void init_app_display(AppData *ad)
         gtk_widget_show(ad->draw_area);
 
         applet_widget_add(APPLET_WIDGET(ad->applet), ad->frame);
+
 
         gtk_widget_realize(ad->draw_area);
 

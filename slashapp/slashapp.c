@@ -12,6 +12,11 @@
 
 int refresh_time = 1800000;	/* frequency of updates (in seconds) */
 
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
+#endif
+
 int main(int argc, char *argv[])
 {
 	GtkWidget *applet;
@@ -20,6 +25,11 @@ int main(int argc, char *argv[])
 	textdomain(PACKAGE);
 
 	applet_widget_init("slash_applet", VERSION, argc, argv, NULL, 0, NULL);
+
+	/* We just push rgb visual and colormap for the entire applet */
+	gtk_widget_push_visual (gdk_rgb_get_visual ());
+	gtk_widget_push_colormap (gdk_rgb_get_cmap ());
+
 	applet = applet_widget_new("slash_applet");
 
 	if(!applet)	/* a little error checking...*/
@@ -29,6 +39,12 @@ int main(int argc, char *argv[])
 
 	applet_widget_gtk_main();
 	return 0;
+}
+
+static void
+applet_shown (GtkWidget *widget, AppData *ad)
+{
+	resized_app_display (ad, TRUE);
 }
 
 AppData *create_new_app(GtkWidget *applet)
@@ -56,6 +72,10 @@ AppData *create_new_app(GtkWidget *applet)
 	ad->draw_area = NULL;
 
 	init_app_display(ad);
+
+	gtk_signal_connect_after (GTK_OBJECT (applet), "show",
+				  GTK_SIGNAL_FUNC (applet_shown),
+				  ad);
 
 	/* from tick-a-stat */
         gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
@@ -111,7 +131,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
-void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 {
         AppData *ad = data;
 
@@ -513,9 +533,8 @@ char *layer_find(xmlNodePtr node, char *match, char *fail)
 	return fail;
 }
 
-void click_headline_cb(AppData *ad, gpointer data)
+void click_headline_cb (gpointer data, InfoData *id, AppData *ad)
 {
-	InfoData *id = data;
 	gchar *url = id->data;
 	if(url)
 	      gnome_url_show(url);
