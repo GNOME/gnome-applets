@@ -1,7 +1,4 @@
-INCLUDES = \
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)		\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+INCLUDES = $(GNOME_INCLUDEDIR) -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
 bin_PROGRAMS = whereami_applet
 
