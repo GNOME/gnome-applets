@@ -817,34 +817,34 @@ static gboolean metar_parse (gchar *metar, WeatherInfo *info)
 static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer buffer,
 										GnomeVFSFileSize requested, GnomeVFSFileSize body_len, gpointer data)
 {
-	WeatherInfo *info = (WeatherInfo *)data;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *metar, *eoln, *body, *temp;
     gboolean success = FALSE;
     gchar searchkey[WEATHER_LOCATION_CODE_LEN + 2];
 
-	info->forecast = NULL;
+    info->forecast = NULL;
     loc = info->location;
-	body = (gchar *)buffer;
+    body = (gchar *)buffer;
 
-	body[body_len] = '\0';
+    body[body_len] = '\0';
 
-	if (info->read_buffer == NULL)
-		info->read_buffer = g_strdup(body);
-	else
-	{
-		temp = g_strdup(info->read_buffer);
-		g_free(info->read_buffer);
-		info->read_buffer = g_strdup_printf("%s%s", temp, body);
-		g_free(temp);
-	}
+    if (info->metar_buffer == NULL)
+      info->metar_buffer = g_strdup(body);
+    else
+    {
+	temp = g_strdup(info->metar_buffer);
+	g_free(info->metar_buffer);
+	info->metar_buffer = g_strdup_printf("%s%s", temp, body);
+	g_free(temp);
+    }
 		
-	if (result == GNOME_VFS_ERROR_EOF)
-	{
+    if (result == GNOME_VFS_ERROR_EOF)
+    {
 
-		g_snprintf (searchkey, sizeof (searchkey), "\n%s", loc->code);
+  	g_snprintf (searchkey, sizeof (searchkey), "\n%s", loc->code);
 
-        metar = strstr(info->read_buffer, searchkey);
+        metar = strstr(info->metar_buffer, searchkey);
         if (metar == NULL) {
             success = FALSE;
         } else {
@@ -860,17 +860,17 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
         info->valid = success;
 	}
 	else if (result != GNOME_VFS_OK) {
-		g_print("%s", gnome_vfs_result_to_string(result));
+	    g_print("%s", gnome_vfs_result_to_string(result));
         g_warning(_("Failed to get METAR data.\n"));
     } else {
-		gnome_vfs_async_read(handle, body, DATA_SIZE - 1, metar_finish_read, info);
+	gnome_vfs_async_read(handle, body, DATA_SIZE - 1, metar_finish_read, info);
 
-		return;      
+	return;      
     }
     
     request_done(metar_handle);
     
-	return;
+    return;
 }
 
 static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
@@ -889,7 +889,7 @@ static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult resul
     
     body = g_malloc0(DATA_SIZE);
     
-    info->read_buffer = NULL;
+    info->metar_buffer = NULL;
     info->forecast = NULL;
     loc = info->location;
     if (loc == NULL) {
@@ -1070,19 +1070,19 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	body = (gchar *)buffer;
 	body[body_len] = '\0';
 
-	if (info->read_buffer == NULL)
-		info->read_buffer = g_strdup(body);
+	if (info->iwin_buffer == NULL)
+		info->iwin_buffer = g_strdup(body);
 	else
 	{
-		temp = g_strdup(info->read_buffer);
-		g_free(info->read_buffer);
-		info->read_buffer = g_strdup_printf("%s%s", temp, body);
+		temp = g_strdup(info->iwin_buffer);
+		g_free(info->iwin_buffer);
+		info->iwin_buffer = g_strdup_printf("%s%s", temp, body);
 		g_free(temp);
 	}
 	
 	if (result == GNOME_VFS_ERROR_EOF)
 	{
-		forecast = iwin_parse(info->read_buffer, loc);
+		forecast = iwin_parse(info->iwin_buffer, loc);
 		info->forecast = forecast;
 	}
 	else if (result != GNOME_VFS_OK) {
@@ -1113,7 +1113,7 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 
 	body = g_malloc0(DATA_SIZE);
 
-	info->read_buffer = NULL;	
+	info->iwin_buffer = NULL;	
     g_free (info->forecast);
     info->forecast = NULL;
     loc = info->location;
@@ -1290,31 +1290,33 @@ static gchar *met_parse (gchar *meto, WeatherLocation *loc)
     return r;
 }
 
-static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer buffer,
-										GnomeVFSFileSize requested, GnomeVFSFileSize body_len, gpointer data)
+static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
+			    gpointer buffer, GnomeVFSFileSize requested, 
+			    GnomeVFSFileSize body_len, gpointer data)
 {
 	WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body, *forecast, *temp;
-
+g_print ("read met \n");
 	info->forecast = NULL;
     loc = info->location;
 	body = (gchar *)buffer;
 	body[body_len] = '\0';
 	
-	if (info->read_buffer == NULL)
-		info->read_buffer = g_strdup(body);
+	if (info->met_buffer == NULL)
+		info->met_buffer = g_strdup(body);
 	else
 	{
-		temp = g_strdup(info->read_buffer);
-		g_free(info->read_buffer);
-		info->read_buffer = g_strdup_printf("%s%s", temp, body);
+		temp = g_strdup(info->met_buffer);
+		g_free(info->met_buffer);
+		info->met_buffer = g_strdup_printf("%s%s", temp, body);
 		g_free(temp);
 	}
 	
 	if (result == GNOME_VFS_ERROR_EOF)
 	{
-		forecast = met_parse(body, loc);
+		g_print ("%s \n", info->met_buffer);
+		forecast = met_parse(info->met_buffer, loc);
         info->forecast = forecast;
     }
 	else if (result != GNOME_VFS_OK) {
@@ -1342,10 +1344,10 @@ static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     g_return_if_fail(handle == met_handle);
 
     g_return_if_fail(info != NULL);
-
+g_print ("finish open \n");
 	body = g_malloc0(DATA_SIZE);
 
-	info->read_buffer = NULL;	
+	info->met_buffer = NULL;	
     info->forecast = NULL;
     loc = info->location;
     g_return_if_fail(loc != NULL);
@@ -1366,16 +1368,11 @@ static void metoffice_start_open (WeatherInfo *info)
     loc = info->location;
   
     url = g_strdup_printf("http://www.metoffice.gov.uk/datafiles/%s.html", loc->zone+1);
+g_print ("%s \n", url);
     gnome_vfs_async_open(&met_handle, url, GNOME_VFS_OPEN_READ, 0, met_finish_open, info);
     g_free(url);
-/*
-    ghttp_set_proxy(met_request, weather_proxy_url);
-    ghttp_set_proxy_authinfo(met_request, weather_proxy_user, weather_proxy_passwd);
-    ghttp_set_header(met_request, http_hdr_Connection, "close");
 
-    http_process_bg(met_request, met_get_finish, info);
-*/
-	return;
+    return;
 }	
 
 /* Get forecast into newly alloc'ed string */
@@ -1407,13 +1404,7 @@ static void iwin_start_open (WeatherInfo *info)
         url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html", state);
     gnome_vfs_async_open(&iwin_handle, url, GNOME_VFS_OPEN_READ, 0, iwin_finish_open, info);
     g_free(url);
-/*
-    ghttp_set_proxy(iwin_request, weather_proxy_url);
-    ghttp_set_proxy_authinfo(iwin_request, weather_proxy_user, weather_proxy_passwd);
-    ghttp_set_header(iwin_request, http_hdr_Connection, "close");
 
-    http_process_bg(iwin_request, iwin_get_finish, info);
-*/
 }
 
 static GdkPixmap *wx_construct (gpointer data, gint data_len)
@@ -1433,6 +1424,7 @@ static GdkPixmap *wx_construct (gpointer data, gint data_len)
 
     if (pixbuf != NULL) {
 	    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &pixmap, NULL, 127);
+	    g_print ("pixbud != NULL\n");
     }
 
     g_object_unref (G_OBJECT (pixbuf_loader));
@@ -1440,10 +1432,11 @@ static GdkPixmap *wx_construct (gpointer data, gint data_len)
     return pixmap;
 }
 
-static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer buffer,
-										GnomeVFSFileSize requested, GnomeVFSFileSize body_len, gpointer data)
+static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
+			   gpointer buffer, GnomeVFSFileSize requested, 
+			   GnomeVFSFileSize body_len, gpointer data)
 {
-	WeatherInfo *info = (WeatherInfo *)data;
+    WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body, *temp;
     GdkPixmap *pixmap = NULL;
@@ -1453,20 +1446,21 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, g
     loc = info->location;
 	body = (gchar *)buffer;
 	body[body_len] = '\0';
-	
-	if (info->read_buffer == NULL)
-		info->read_buffer = g_strdup(body);
+
+	if (info->radar_buffer == NULL)
+		info->radar_buffer = g_strdup(body);
 	else
 	{
-		temp = g_strdup(info->read_buffer);
-		g_free(info->read_buffer);
-		info->read_buffer = g_strdup_printf("%s%s", temp, body);
+		temp = g_strdup(info->radar_buffer);
+		g_free(info->radar_buffer);
+		info->radar_buffer = g_strdup_printf("%s%s", temp, body);
 		g_free(temp);
 	}
 	
 	if (result == GNOME_VFS_ERROR_EOF)
 	{
-		pixmap = wx_construct(body, body_len);
+		pixmap = wx_construct (info->radar_buffer, strlen (info->radar_buffer));
+g_print ("got radar \n");
         info->radar = pixmap;
 	}
 	else if (result != GNOME_VFS_OK) {
@@ -1495,17 +1489,17 @@ static void wx_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
 
     g_return_if_fail(info != NULL);
 
-	body = g_malloc0(DATA_SIZE);
+    body = g_malloc0(DATA_SIZE);
 
-	info->read_buffer = NULL;	
-	info->radar = NULL;
+    info->radar_buffer = NULL;	
+    info->radar = NULL;
     loc = info->location;
     g_return_if_fail(loc != NULL);
 
     if (result != GNOME_VFS_OK) {
         g_warning(_("Failed to get radar map image.\n"));
     } else {
-    	gnome_vfs_async_read(handle, body, DATA_SIZE - 1, wx_finish_read, info);
+    	gnome_vfs_async_read(handle, body, DATA_SIZE -1, wx_finish_read, info);
     }
      return;
 }
@@ -1525,16 +1519,11 @@ static void wx_start_open (WeatherInfo *info)
         return;
 
     url = g_strdup_printf("http://image.weather.com/images/radar/single_site/%sloc_450x284.jpg", loc->radar);
+g_print ("url %s \n", url);
     gnome_vfs_async_open(&wx_handle, url, GNOME_VFS_OPEN_READ, 0, wx_finish_open, info);
     g_free(url);
-/*
-    ghttp_set_proxy(wx_request, weather_proxy_url);
-    ghttp_set_proxy_authinfo(wx_request, weather_proxy_user, weather_proxy_passwd);
-    ghttp_set_header(wx_request, http_hdr_Connection, "close");
 
-    http_process_bg(wx_request, wx_get_finish, info);
-*/
-	return;
+    return;
 }
 
 gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)

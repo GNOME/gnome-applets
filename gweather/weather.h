@@ -182,7 +182,10 @@ struct _WeatherInfo {
     WeatherPressure pressure;
     WeatherVisibility visibility;
     gchar *forecast;
-    gchar *read_buffer;
+    gchar *metar_buffer;
+    gchar *iwin_buffer;
+    gchar *met_buffer;
+    gchar *radar_buffer;
     GdkPixmap *radar;
 };
 

@@ -27,14 +27,12 @@
 #include "gweather-dialog.h"
 
 
-static void close_cb (GtkButton *button, gpointer data)
+static void response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
-	GWeatherApplet *gw_applet = (GWeatherApplet *)data;
+    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
     gweather_dialog_close(gw_applet);
     return;
-    button = NULL;
-    data = NULL;
 }
 
 static void link_cb (GtkButton *button, gpointer data)
@@ -70,12 +68,14 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   GtkWidget *radar_link_btn;
   GtkWidget *radar_link_alignment;
   GtkWidget *forecast_hbox;
-  GtkWidget *weather_action_area;
   GtkWidget *close_button;
   GtkWidget *ebox;
   GtkWidget *scrolled_window;
 
-  gw_applet->gweather_dialog = gnome_dialog_new (_("GNOME Weather"), NULL);
+  gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
+						  GTK_DIALOG_DESTROY_WITH_PARENT,
+						  GTK_STOCK_OK, GTK_RESPONSE_OK,
+						  NULL);
 
   if (gw_applet->gweather_pref.radar_enabled)
       gtk_widget_set_usize (gw_applet->gweather_dialog, 570, 440);
@@ -83,9 +83,8 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_widget_set_usize (gw_applet->gweather_dialog, 590, 340);
 
   gtk_window_set_policy (GTK_WINDOW (gw_applet->gweather_dialog), FALSE, FALSE, FALSE);
-  gnome_dialog_close_hides(GNOME_DIALOG(gw_applet->gweather_dialog), TRUE);
-
-  weather_vbox = GNOME_DIALOG (gw_applet->gweather_dialog)->vbox;
+  
+  weather_vbox = GTK_DIALOG (gw_applet->gweather_dialog)->vbox;
   gtk_widget_show (weather_vbox);
 
   weather_notebook = gtk_notebook_new ();
@@ -300,6 +299,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
 
   if (gw_applet->gweather_pref.radar_enabled) {
+g_print ("draw radar \n");
       radar_vbox = gtk_vbox_new (FALSE, 6);
       gtk_widget_show (radar_vbox);
       gtk_container_add (GTK_CONTAINER (weather_notebook), radar_vbox);
@@ -341,18 +341,9 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 2), radar_note_lbl);
   }
 
-  weather_action_area = GNOME_DIALOG (gw_applet->gweather_dialog)->action_area;
-  gtk_widget_show (weather_action_area);
-  gtk_button_box_set_layout (GTK_BUTTON_BOX (weather_action_area), GTK_BUTTONBOX_END);
-  gtk_button_box_set_spacing (GTK_BUTTON_BOX (weather_action_area), 8);
-
-  gnome_dialog_append_button (GNOME_DIALOG (gw_applet->gweather_dialog), GNOME_STOCK_BUTTON_CLOSE);
-  close_button = g_list_last (GNOME_DIALOG (gw_applet->gweather_dialog)->buttons)->data;
-  gtk_widget_show (close_button);
-  GTK_WIDGET_SET_FLAGS (close_button, GTK_CAN_DEFAULT);
-
-  gtk_signal_connect (GTK_OBJECT (close_button), "clicked",
-                      GTK_SIGNAL_FUNC (close_cb), NULL);
+  g_signal_connect (G_OBJECT (gw_applet->gweather_dialog), "response",
+  		    G_CALLBACK (response_cb), gw_applet);
+  
 }
 
 void gweather_dialog_open (GWeatherApplet *gw_applet)
@@ -366,7 +357,6 @@ void gweather_dialog_open (GWeatherApplet *gw_applet)
 void gweather_dialog_close (GWeatherApplet *gw_applet)
 {
     g_return_if_fail(gw_applet->gweather_dialog != NULL);
-    gtk_widget_hide(gw_applet->gweather_dialog);
     gtk_widget_destroy(gw_applet->gweather_dialog);
     gw_applet->gweather_dialog = NULL;
     gw_applet->dialog_mask = NULL;

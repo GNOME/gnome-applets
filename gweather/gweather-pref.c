@@ -566,7 +566,7 @@ void gweather_pref_load (const gchar *path, GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.update_interval = 1800;
     gw_applet->gweather_pref.update_enabled =TRUE;
     gw_applet->gweather_pref.use_metric = FALSE;
-    gw_applet->gweather_pref.detailed = FALSE;
+    gw_applet->gweather_pref.detailed = TRUE;
     gw_applet->gweather_pref.radar_enabled = TRUE;
     gw_applet->gweather_pref.location = weather_location_config_read("location");
     gw_applet->gweather_pref.proxy_url = NULL;
