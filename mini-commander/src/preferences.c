@@ -467,6 +467,15 @@ save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *glob
     globcfgpath = NULL;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+        GnomeHelpMenuEntry help_entry = { "mini-commander_applet",
+                                          "index.html#MINI-COMMANDER-PREFS" };
+        gnome_help_display(NULL, &help_entry);
+}
+
+
 void
 properties_box(AppletWidget *applet, gpointer data)
 {
@@ -856,7 +865,7 @@ properties_box(AppletWidget *applet, gpointer data)
 
     gtk_signal_connect(GTK_OBJECT(properties_box),
 		       "help",
-		       GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+		       GTK_SIGNAL_FUNC(phelp_cb),
 		       &help_entry);
     
     gtk_widget_show_all(properties_box);

@@ -1,605 +1,400 @@
-<!doctype book PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
-<!entity gpl2 SYSTEM "gpl2.sgml">
-<!entity todo-txt SYSTEM "todo.txt">
-<!entity news-txt SYSTEM "news.txt">
-<!entity change-log-txt SYSTEM "change-log.txt">
-<!ENTITY mini-c "<application>Mini-Commander</application>">
-]>
+ <sect1 id="mini-commander">
+  <title>Mini-Commander Applet</title>
 
-<book id="index" revision="$Revision$">
+  <para>
+   <application>Mini-Commander</application> applet, shown in <xref
+   linkend="mini-commander-applet-fig">, adds a command line to your
+   <interface>Panel</interface>. It features command completion,
+   command history, changeable macros and an optional built-in clock.
+   Because of the changeable macros you can use it for many different
+   tasks. You can simply start a program (or a short macro) or view a
+   web page or search for a man/info page
+   etc. <application>Mini-Commander</application> can be detached from
+   your <interface>Panel</interface> using an optional handler on the
+   side, which is especially usefull for people who use vertical
+   panels.
+  </para> 
+  <para>
+   To add this applet to a <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Utility</guisubmenu>
+    <guimenuitem>Mini-Commander</guimenuitem>
+   </menuchoice>.
+  </para>
 
-  <!-- Title information -->
-  <bookinfo>
-    <title>&mini-c;</title>
-    <subtitle>A Command Line Interface Applet for GNOME</subtitle>
-    
-    <authorgroup>
-      <author>
-	<firstname>Oliver</firstname>
-	<surname>Maruhn</surname>
-	<affiliation>
-	  <address>
-             <email>oliver@maruhn.com</email>
-           </address> 
-	</affiliation>
-      </author>
-    </authorgroup>
+  <figure id="mini-commander-applet-fig">
+   <title>Mini-Commander Applet</title>
+   <screenshot>
+    <screeninfo>Mini-Commander Applet</screeninfo>
+    <graphic format="png" fileref="mini-commander_applet" 
+    srccredit="Martin Baulig">
+    </graphic>
+   </screenshot>
+  </figure>
 
-    <copyright id="copyright">
-      <year>1998</year>
-      <holder>Oliver Maruhn</holder>
-    </copyright>
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="APPLET-usage">
+   <title>Usage</title>
 
-    <date>$Date$</date>
-    
-    <abstract id="abstract">
-      <para>This is the description of the <ulink url="http://www.gnome.org/">GNOME</ulink>
-      applet &mini-c;.  The latest
-      version of this document and
-      &mini-c; itself are at <ulink url="http://om.filewatcher.org/mini-commander/">http://om.filewatcher.org/mini-commander/</ulink>.</para>
+   <para>
+    To start a program or run a command, simply enter the program or
+    command and press return. Or, to browse for an application or command
+    in your filesystem, click on the small <guiicon>circle</guiicon>
+    in the lower corner.
+   </para>
+   <para>
+    <application>Mini-Commander</application> has command
+    completion (similar to many other user shells).  Thus, you often
+    have not to enter the full name but only the first few characters
+    followed by the <keycap>tab</keycap>
+    key. <application>Mini-Commander</application> will try to
+    complete the program name in the same way most UNIX shells do. 
+   </para>
+   <para>
+    <application>Mini-Commander</application> also has command
+    history, which allows you to recall previous commands by pressing
+    the <keycap>arrow-up</keycap> or <keycap>arrow-down</keycap>
+    key. This works like the command history in most UNIX shells. Note
+    that commands are not stored in the history if it is already
+    present in the history in order to avoid duplication.  You may
+    also access the history list by pressing the small <guibutton>down
+    arrow icon</guibutton> in the applet and selecting a command from
+    the history list.
+   </para>
+   <para>
+    <application>Mini-Commander</application> has the ability to use
+    macros. It has some predefined macros. For example if
+    you enter
+    <command>term:<replaceable>command</replaceable></command> then
+    <command><replaceable>command</replaceable></command> is executed
+    in a terminal window. Or if you enter an URL then your web browser is
+    used to view it.  Additionally you can define your own macros or
+    change the predefined ones.
+   </para>
 
-      <para>This is $Revision$ from $Date$.</para>
+   <para>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
 
-    </abstract>
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="mini-commander-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
 
-  </bookinfo>
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
 
-  <!-- Table of contents -->
-  <toc></toc>
-  
-  <!-- Begin the document -->
-  <chapter id="introduction">
-    <title>Introduction</title>
-    
-    <sect1 id="intro">
-      <title>What is
-      &mini-c;?</title>
-      
-      <para>This GNOME applet adds a command line to the panel. It
-      features command completion, command history, changeable macros
-      and an optional built-in clock.</para>
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Mini-commander
+       Applet</application>, including the applet's version and the
+       author's name.
+      </para>
+     </listitem>
 
-      <para>Because of the changeable macros you can use &mini-c; for
-      many different tasks. You can simply start a program (or a short
-      macro) or view a web page or search for a man/info page
-      etc.</para>
-
-      <para>&mini-c; has a handler on the left side which allows you
-      to detach the applet from the panel.  This feature is especially
-      usefull for people who use vertical panels.</para>
-    </sect1>
-
-    <sect1 id="screenshots">
-      <title>Screenshots</title>
-      
-      <figure id="mini-commander-applet-fig1">
-	<title>Mini Commander Applet</title>
-
-	<screenshot>
-	  <screeninfo>Mini Commander Applet</screeninfo>
-	  <graphic format="png" fileref="fig/mini-commander.png"
-		   srccredit="Martin Baulig">
-	  </graphic>
-	</screenshot>
-      </figure>
-
-      <figure id="mini-commander-applet-fig2">
-	<title>Preferences Dialog</title>
-
-	<screenshot>
-	  <screeninfo>Preferences Dialog</screeninfo>
-	  <graphic format="png" fileref="fig/mini-commander-prefs-1.png"
-		   srccredit="Martin Baulig">
-	  </graphic>
-	</screenshot>
-      </figure>
-
-      <figure id="mini-commander-applet-fig3">
-	<title>Preferences Dialog</title>
-
-	<screenshot>
-	  <screeninfo>Preferences Dialog</screeninfo>
-	  <graphic format="png" fileref="fig/mini-commander-prefs-2.png"
-		   srccredit="Martin Baulig">
-	  </graphic>
-	</screenshot>
-      </figure>
-    </sect1>
-
-    <sect1 id="download">
-      <title>Where can I download it?</title>
-
-      <para>Since release 0.0.12 &mini-c; is part of gnome-core.  So
-      if you are happy with it as it is there is no need for you to
-      download and compile separate sources.  Only if you are looking
-      for the latest features or bugfixes this could be interesting
-      for you.  In this case you should first take a look at <ulink
-      url="http://om.filewatcher.org/mini-commander/">http://om.filewatcher.org/mini-commander/</ulink>
-      to see if there is a new version at all.</para>
-
-      <para>Perhaps you also want to take a look at the history (<xref
-      linkend="history">) before or while downloading the sources.</para>
-
-      <para>The currently known latest separate sources package is
-      <ulink
-      url="http://om.filewatcher.org/mini-commander/mini-commander_applet-0.0.14.tar.gz">http://om.filewatcher.org/mini-commander/mini-commander_applet-0.0.14.tar.gz</ulink>.</para>
-
-      <para>But think twice before you download this package. The
-      developement of GNOME is currently very fast. Probably this
-      package will not even compile on your machine. Additionally Ryan
-      Hayle reported that the Makefile is not being build correctly on
-      his Debian 2.1 system.  This might be the case for all Debian
-      2.1 systems.  I have heard that you have to compile
-      autoconf/automake from scratch to fix this problem.  Perhaps it
-      will be easier for you to get a package of the latest version of
-      gnome-core which does already include mini-commander.</para>
-
-    </sect1>
+    </itemizedlist>
+   </para>
+  </sect2>
 
 
-    <sect1 id="legal-notice">
-      <title>Legal Notice</title>
-      <para>This documentation is free software; you can redistribute
-      it and/or modify it under the terms of the GNU General Public
-      License as published by the Free Software Foundation; either
-      version 2 of the License, or (at your option) any later
-      version.</para>
+  <!-- ============= Customization ============================= -->
+  <sect2 id="mini-commander-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>Mini-Commander</application>
+      applet by right-clicking on it and choosing
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="mini-commander-settings-fig-1">), which allows you to
+      change various settings.
+    </para>
 
-      <para>This program is free software; you can redistribute it
-      and/or modify it under the terms of the GNU General Public
-      License as published by the Free Software Foundation; either
-      version 2 of the License, or (at your option) any later
-      version.</para>
+    <figure id="mini-commander-settings-fig-1">
+     <title>Properties dialog: General Tab</title>
+     <screenshot>
+      <screeninfo>Properties dialog: General Tab</screeninfo>
+      <graphic format="png" fileref="mini-commander_settings_general"
+      srccredit="Martin Baulig">
+      </graphic>
+     </screenshot>
+    </figure>
 
-      <para>This program is distributed in the hope that it will be
-      useful, but WITHOUT ANY WARRANTY; without even the implied
-      warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-      See the GNU General Public License (<xref linkend="gpl2">) for
-      more details.</para>
-    </sect1>
+    <para>
+     The properties in the <guilabel>General</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        Show time &mdash; If this button is checked, the time will be
+        shown in the lower corner of the applet.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Show date &mdash; If this button is checked, the date will be
+        shown in the lower corner of the applet.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Show handle &mdash; If this button is checked, a handle will
+        be attached to the edge of the applet, allowing you to detach
+        the applet from the <interface>Panel</interface>.  You may
+        re-attach the applet on the <interface>Panel</interface> by
+        dragging it back into place.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Show frame &mdash; If this button is checked, a thin black
+        frame will be drawn around the applet.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Enable history based auto completion &mdash; If this button is
+        selected, <application>Mini-Commander</application> will
+        automatically complete commands using the history list.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Applet width &mdash; Enter the desired applet width here.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Applet height &mdash; Enter the desired applet height here.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Command line height &mdash; (This feature is disabled.)
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Command line foreground &mdash; Select the foreground color,
+        used for the text you enter.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Command line background &mdash; Selecting the background
+        color, used for the background behind the text in the entry.
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+<!--
+    <figure id="mini-commander-settings-fig-2">
+     <title>Properties dialog: Macros Tab</title>
+     <screenshot>
+      <screeninfo>Properties dialog: Macros Tab</screeninfo>
+      <graphic format="png" fileref="mini-commander_settings_macros"
+      srccredit="Martin Baulig">
+      </graphic>
+     </screenshot>
+    </figure>
+-->
+
+    <para>
+     The <guilabel>Macros</guilabel> tab consists of a list of up to
+     99 macros, each of which is a regular expression
+     (<guilabel>Regex</guilabel>) and a macro
+     (<guilabel>Macro</guilabel>).  Enter the regular expression for
+     <application>Mini-Commander</application> to match in the left
+     column, and the corresponding macro which should be executed in
+     the right column.  The default setting has many useful macros
+     already defined, which may be helpful in learning to write your
+     own macros.
+    </para>
+
+    <para> 
+      After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click the
+      <guibutton>Close</guibutton> button.
+    </para>
+  </sect2>
 
 
+  <!-- ============= Freq. Asked Questions ==================== -->
+  <sect2 id="faq">
+   <title>Frequently Asked Questions</title>
 
-  </chapter>
+   <para>
+    Here are listed some frequently asked questions and the answers to
+    them.
+   </para>
 
-  <chapter id="features">
-      <title>Features</title>
+   <qandaset>
+    <qandaentry>
+     <question>
+      <para>
+       Why am I not able to give
+       <application>Mini-Commander</application> keyboard focus?
+      </para>
+     </question>
+     <answer>
+      <para>
+       This is a confusing problem which seems to have several reasons
+       and which occurs only under certain conditions.
+      </para>
 
-    <sect1 id="starting-program">
-      <title>Starting a Program</title> 
+      <para>
+       If you cannot give <application>Mini-Commander</application>
+       applet keyboard focus at all then this could be a problem with
+       you window manager.  If this is true for you it would helpful
+       if you write me a short mail and tell me what window manager
+       you are using (name and version).
+      </para>
 
-      <para>You can simply start any program by typing its name.</para>
-    </sect1>
-
-    <sect1 id="command-completion">
-      <title>Command Completion</title> 
-
-      <para>You often have not to enter the full name but only the
-      first characters followed by the <keycap>tab</keycap>
-      key. &mini-c; will try to complete the program name in the same
-      way most UNIX shells do.</para>
-    </sect1>
-
-    <sect1 id="command-history">
-      <title>Command History</title> 
-
-      <para>The last commands can be recalled by pressing the
-      <keycap>arrow-up</keycap> or <keycap>arrow-down</keycap>
-      keys. This works like the command history in most UNIX
-      shells.</para>
-
-      <para>A command is not stored in the history when it is the same
-      as the command before.  This way dupes are prevented.</para>
-    </sect1>
-
-    <sect1 id="macros">
-      <title>Macros</title> 
-
-      <para>&mini-c; has some predefined macros. For example if
-      you enter "term:command" then "command" is executed in a
-      terminal window. Or if you enter an URL then your web browser is
-      used to view it.  Additionally you can define your own macros or
-      change the predefined ones.</para>
-    </sect1>
-
-    <sect1 id="clock">
-      <title>Clock</title> 
-
-      <para>There is a built-in clock which can optionally show the
-      date or can be completely disabled.</para>
-    </sect1>
-
-  </chapter>
-
-
-
-  <chapter id="properties-0">
-    <title>Customization</title> 
-
-    <para>This section is currently empty.  Later here will be
-    described how you can change the settings of &mini-c;.</para>
-
-  </chapter>
-
-
-
-  <chapter id="faq">
-    <title>Frequently Asked Questions</title> 
-
-    <para>Here are listed some frequently asked questions and the
-    answers to them.</para>
-
-    <sect1>
-      <title>Why am I not able to give  &mini-c; keyboard focus?</title> 
-
-      <para>This is a confusing problem which seems to have several
-      reasons and which occurs only under certain conditions.</para>
-
-      <para>When you cannot give &mini-c; keyboard focus at all then
-      this could be a problem with you window manager.  If this is
-      true for you it would helpful if you write me a short mail and
-      tell me what window manager you are using (name and
-      version).</para>
-
-      <para>Sometimes it happens that you can give keyboard focus to
-      &mini-c; only for the first time.  After this it is impossible
+      <para>
+       Sometimes it happens that you can give keyboard focus to
+      <application>Mini-Commander</application> applet only for the
+      first time.  After this it is impossible
       to focus it again.  Currently the reason for this bug is
-      unknown.  Some people believe this could be a panel bug.</para>
+      unknown.
+      </para>
+
+     </answer>
+    </qandaentry>
+   
+   </qandaset>
+  </sect2>
+
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="bugs">
+   <title>Known Bugs and Limitations</title>
+   <para>
+    In some instances, it is impossible to give
+    <application>Mini-Commander</application> focus after the first
+    time.
+   </para>
+  </sect2>
+
+
+  <!-- ============= Further Information ==================== -->
+  <sect2 id="furtherinfo">
+   <title>Further Information</title>
+   <para>
+    For more information on <application>Mini-Commander</application>
+    applet, check out its web page at <ulink
+    url="http://om.filewatcher.org/mini-commander/">
+    http://om.filewatcher.org/mini-commander/</ulink>.
+   </para>
+  </sect2>
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Authors</title>
+   <para>
+    <application>Mini-Commander</application> was written by Oliver Maruhn
+    (<email>oliver@maruhn.com</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Oliver Maruhn
+    (<email>oliver@maruhn.com</email>). Minor modifications and
+    updates were made by Dan Mueth
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
 
-      <para>Here is the description of the latter problem mentioned on
-      the gnome buglist:</para>
+ </sect1>
 
-<screen>From: sopwith @ redhat.com (Elliot Lee)
-Subject: 1998-12-29 buglist
-Date: Tue, 29 Dec 1998 18:11:17 -0500 (EST)
-Message-ID: < Pine.LNX.4.04.9812291803540.20167-100000@lacrosse.redhat.com >
 
-[...]
-	The Buglist
-[...]
 
-** mini-commander applet
-After losing focus, cannot get focus back into the GtkEntry. I think this
-is a GtkPlug/GtkSocket bug, not sure. [1998-12-29]
 
-[...]</screen>
-
-
-    </sect1>
-  </chapter>
-
-  <chapter id="todo">
-    <title>TODO</title> 
-
-    <para>This is the recent list of thing that will be done in
-    future. If you have a suggestion which is not on the list you are
-    welcome to contact the author.</para>
-
-    <!-- Does someone know a better tag than "screen" for this purpose? -->
-    <screen>&todo-txt;</screen>
-
-  </chapter>
-
-
-  <chapter id="history">
-    <title>History</title> 
-
-    <para>This history list shows the new features of every &mini-c;
-    release.  If you want more details about the latest changes you
-    can also take a look at the ChangeLog (<xref
-    linkend="change-log">) which shows modifications on source
-    level.</para>
-
-    <!-- Does someone know a better tag than "screen" for this purpose? -->
-    <screen>&news-txt;</screen>
-
-
-    <!-- variablelist>
-
-      <varlistentry>
-	<term>Release 0.0.13:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>Documentation in SGML/DocBook format created.</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.12:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>works with newest gnome libraries (from cvs)
-	      again</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>mini-commander becomes part of gnome-core (thanks
-	      to Kevin M Fox who suggested this on gnome's mailing
-	      list)</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.11:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>first support of command completion (use the [tab]
-	      key)</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.10:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>configurable height of command line</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>default macros enhanced (for example Kevin M Fox
-	      suggested to use gnome-terminal instead of nxterm as
-	      default) (you have to do `rm ~/.gnome/mini-commander` to
-	      get the new default values)</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>cleaner UI</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>code cleanup</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.9:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>preferences-save-bug fixed</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.8:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>freely configurable command line colors</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>freely configurable applet size</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>more configurable prefixes</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>bug in new history feature fixed</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.7:</term>
-
-	<listitem>
-
-	  <itemizedlist>
-	    <listitem>
-	      <para>freely configurable prefixes</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>support for internationalization (I added a german
-	      translation)</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>history remembers current command even if you type
-	      KeyUp, KeyDown (suggested by Itamar S.-T.)</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.6b:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>dependency-bug fixed (program didn't compile if
-	      gnome wasn't installed in /opt/gnome) (reported by Kevin
-	      M Fox and Itamar S.-T.)</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.6:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>wrong-binary-filename-bug fixed<</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>properties dialog box added (session management);
-	      clock is now optional</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.5:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>autoconf/automake are used for building</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.4:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>new outfit</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>no more zombie processes (thanks to Jacob
-	      C. Berkman)</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.3:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>Applet renamed to "Mini-Commander".</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>If you enter a URL then netscape will be started
-	      (suggested by Kevin M Fox).</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>If you enter "term:<command>command</command>"
-	      then <command>command</command> is executed in nxterm or
-	      xterm (for non-X programs).</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>Clock added.</para>
-	    </listitem>
-
-	    <listitem>
-	      <para>Fixed a redraw bug of the frame.</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-      <varlistentry>
-	<term>Release 0.0.2:</term>
-
-	<listitem>
-	  <itemizedlist>
-
-	    <listitem>
-	      <para>Mini-Commander has a history of the last 50 commands.</para>
-	    </listitem>
-
-	  </itemizedlist>
-	</listitem>
-
-      </varlistentry>
-
-    </variablelist -->
-
-  </chapter>
-
-
-  <chapter id="change-log">
-    <title>ChangeLog</title> 
-
-    <para>The ChangeLog shows important modifications on source code
-    level.  If you just want to see the new features of the latest
-    release of &mini-c; you should go to the history list (<xref
-    linkend="history">).</para>
-
-    <!-- Does someone know a better tag than "screen" for this purpose? -->
-    <screen>&change-log-txt;</screen>
-
-    <!-- para>The ChangeLog can be viewed <ulink
-    url="change-log.txt">here</ulink>.</para -->
-
-    <para></para>
-
-  </chapter>
-
-
-
-  <chapter id="feedback">
-    <title>Feedback</title> 
-
-    <para>Any feedback from you is welcome.</para>
-  </chapter>
-
-  <appendix id="gpl2">
-    &gpl2;
-  </appendix>
-
-</book>
