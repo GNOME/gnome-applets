@@ -90,17 +90,20 @@ destroy_launcher_widgets (void)
 	p = launcher_widgets;
 
 	while (p) {
-		gtk_widget_destroy (GTK_WIDGET (p->data));
+		GtkWidget *w = p->data;
+		p->data = NULL;
+
+		gtk_widget_destroy (GTK_WIDGET (w));
 		p = p->next;
 	}
 	if (launcher_widgets) {
 		g_list_free (launcher_widgets);
+		launcher_widgets = NULL;
 	}
 	if (label) {
 		gtk_widget_destroy (GTK_WIDGET (label));
 		label = NULL;
 	}
-	launcher_widgets = NULL;
 }
 
 static void 
@@ -378,10 +381,12 @@ make_new_dentry (const char *filename)
 	GnomeDesktopEntry *dentry;
 	char *execv[] = { NULL, NULL };
 
-	dentry = g_new0(GnomeDesktopEntry, 1);
-	dentry->name = g_strdup(filename);
+	dentry = g_new0 (GnomeDesktopEntry, 1);
+	dentry->name = g_strdup (filename);
+	dentry->comment = g_strdup (filename);
+	dentry->type = g_strdup ("Application");
 
-	execv[0] = filename;
+	execv[0] = (char *)filename;
 	dentry->exec = g_copy_vector(execv);
 	dentry->exec_length = 1;
 
@@ -398,9 +403,9 @@ drop_launcher (gchar *filename)
 
 	if(mimetype &&
 	   (strcmp(mimetype, "application/x-gnome-app-info") == 0 ||
-	    strcmp(mimetype, "application/x-kde-app-info") == 0))
+	    strcmp(mimetype, "application/x-kde-app-info") == 0)) {
 		dentry = gnome_desktop_entry_load (filename);
-	else {
+	} else {
 		struct stat s;
 		if(stat(filename, &s) != 0) {
 			g_warning (_("File '%s' does not exist"), filename);
@@ -417,9 +422,22 @@ drop_launcher (gchar *filename)
 		return;
 	}
 
-	g_free(dentry->location);
-	dentry->location = g_concat_dir_and_file (directory, 
-						  g_basename (filename));
+	if (dentry->is_kde) {
+		/* FIXME: bad, but oh well, should really convert
+		 * the exec string */
+		dentry->is_kde = FALSE;
+	}
+
+	srandom (time (NULL));
+
+	do {
+		long foo = random ();
+
+		g_free(dentry->location);
+		dentry->location = g_strdup_printf ("%s/dropped-entry-%lx.desktop",
+						    directory, foo);
+	} while (g_file_exists (dentry->location));
+
 	gnome_desktop_entry_save (dentry);
 	gnome_desktop_entry_free (dentry);
 }
