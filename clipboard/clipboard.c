@@ -19,6 +19,7 @@ struct _clipboard_item {
   GString *clipboard_data; /* when we support more kinds of selections, this
                             * will become a union or something */
   GString *description;
+  guint id; 
 };
 
 
@@ -67,9 +68,10 @@ update_history (clipboard_item *p_clipboard_data)
   new_clipboard->description = g_string_new(NULL);
   new_clipboard->clipboard_data = g_string_new(NULL);
   clipboard_item_assign(new_clipboard, p_clipboard_data);
-  g_list_append(history, &new_clipboard);
+  history=g_list_append(history, &new_clipboard);
+  new_clipboard->id = g_list_length(history);
   applet_widget_register_callback (APPLET_WIDGET(applet),
-				   new_clipboard->description->str,
+				   g_strdup_printf("%d", new_clipboard->id),
 				   new_clipboard->description->str,
 				   history_menu_cb,
 				   new_clipboard);
