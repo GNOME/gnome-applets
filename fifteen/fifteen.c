@@ -159,15 +159,13 @@ create_fifteen (void)
 		y = i / 4;
 		x = i % 4;
 
-		board[i] = gnome_canvas_item_new (GNOME_CANVAS (canvas),
-						  GNOME_CANVAS_GROUP (GNOME_CANVAS (canvas)->root),
+		board[i] = gnome_canvas_item_new (GNOME_CANVAS_GROUP (GNOME_CANVAS (canvas)->root),
 						  gnome_canvas_group_get_type (),
 						  "GnomeCanvasGroup::x", (double) (x * PIECE_SIZE),
 						  "GnomeCanvasGroup::y", (double) (y * PIECE_SIZE),
 						  NULL);
 
-		gnome_canvas_item_new (GNOME_CANVAS (canvas),
-				       GNOME_CANVAS_GROUP (board[i]),
+		gnome_canvas_item_new (GNOME_CANVAS_GROUP (board[i]),
 				       gnome_canvas_rect_get_type (),
 				       "GnomeCanvasRE::x1", 0.0,
 				       "GnomeCanvasRE::y1", 0.0,
@@ -180,8 +178,7 @@ create_fifteen (void)
 
 		sprintf (buf, "%d", i + 1);
 
-		text = gnome_canvas_item_new (GNOME_CANVAS (canvas),
-					      GNOME_CANVAS_GROUP (board[i]),
+		text = gnome_canvas_item_new (GNOME_CANVAS_GROUP (board[i]),
 					      gnome_canvas_text_get_type (),
 					      "GnomeCanvasText::text", buf,
 					      "GnomeCanvasText::x", (double) PIECE_SIZE / 2.0,
