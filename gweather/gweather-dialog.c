@@ -141,7 +141,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   cond_temp_lbl = gtk_label_new (_("Temperature:"));
   gtk_widget_show (cond_temp_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_temp_lbl, 0, 1, 4, 5,
-                    (GtkAttachOptions) (0),
+                    (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_temp_lbl), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (cond_temp_lbl), 0, 0.5);
