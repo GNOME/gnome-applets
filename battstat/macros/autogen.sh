@@ -126,6 +126,8 @@ do
 	  test -r $dr/aclocal.m4 || touch $dr/aclocal.m4
 	  echo "Running gettextize...  Ignore non-fatal messages."
 	  echo "no" | gettextize --force --copy
+	  echo "Running xml-i18n-toolize"
+          xml-i18n-toolize --copy --force --automake
 	  echo "Making $dr/aclocal.m4 writable ..."
 	  test -r $dr/aclocal.m4 && chmod u+w $dr/aclocal.m4
         fi
