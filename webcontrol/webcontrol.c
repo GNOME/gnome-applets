@@ -205,10 +205,17 @@ apply_cb(GnomePropertyBox * pb, gint page, gpointer data)
 static void
 properties_cb (AppletWidget *widget, gpointer data)
 {
-	GtkWidget * pb;
+	static GtkWidget * pb = NULL;
 	GtkWidget * vbox;
 	GtkWidget *urlcheck, *launchcheck;
 
+	/* Stop the property box from being opened multiple times */
+	if (pb != NULL)
+	{
+		gdk_window_show( GTK_WIDGET(pb)->window );
+		gdk_window_raise( GTK_WIDGET(pb)->window );
+		return;
+	}
 	pb = gnome_property_box_new();
 
 	gtk_window_set_title(GTK_WINDOW(pb), _("WebControl Properties"));
@@ -242,6 +249,9 @@ properties_cb (AppletWidget *widget, gpointer data)
 
 	gtk_signal_connect(GTK_OBJECT(pb), "apply", GTK_SIGNAL_FUNC(apply_cb),
 			   NULL);
+	gtk_signal_connect(GTK_OBJECT(pb), "destroy",
+			  gtk_widget_destroyed,
+			  (gpointer) &pb);
 
 	gtk_widget_show_all(pb);
 	return;
