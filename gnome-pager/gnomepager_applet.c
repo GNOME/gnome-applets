@@ -2015,6 +2015,7 @@ set_task_info_to_button(Task *t)
 	  if (icon3)
 	    gtk_widget_show(icon3);
 	}
+      gtk_widget_set_state(button, GTK_STATE_NORMAL);
     }
   else
     {
