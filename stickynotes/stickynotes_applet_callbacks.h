@@ -42,6 +42,9 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 
+/* Callbacks for sticky notes about dialog */
+void about_response_cb(GtkDialog *dialog, gint response, GladeXML *glade);
+
 /* Callbacks for sticky notes preferences dialog */
 void preferences_save_cb(GladeXML *glade);
 void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, GladeXML *glade);

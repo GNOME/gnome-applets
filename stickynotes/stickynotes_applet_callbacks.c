@@ -226,6 +226,8 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 	GladeXML *glade = glade_xml_new(GLADE_PATH, "about_dialog", NULL);
 	GtkWidget *dialog = glade_xml_get_widget(glade, "about_dialog");
 
+	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(about_response_cb), glade);
+
 	/* FIXME : Hack because libglade does not properly set these */
 	g_object_set(G_OBJECT(dialog), "name", _("Sticky Notes"), "version", VERSION);
 	{
@@ -240,6 +242,12 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 	gtk_widget_show(dialog);
 	
 	g_object_unref(glade);
+}
+
+/* About Callback : Response. */
+void about_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
+{
+	gtk_widget_destroy(GTK_WIDGET(dialog));
 }
 
 /* Preferences Callback : Save. */
