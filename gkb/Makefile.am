@@ -27,24 +27,24 @@ libgkb_applet_la_SOURCES = gkb.c
 # gkb_applet_LINK = $(CXXLINK)
 
 GKB_BITMAPS = 
-	pixmaps/be.xpm pixmaps/bg.xpm pixmaps/ca.xpm pixmaps/ch.xpm \
-	pixmaps/cz.xpm pixmaps/de.xpm pixmaps/dk.xpm pixmaps/es.xpm \
-	pixmaps/fi.xpm pixmaps/fr.xpm pixmaps/gb.xpm pixmaps/gr.xpm \
-	pixmaps/hu.xpm pixmaps/il.xpm pixmaps/is.xpm pixmaps/it.xpm \
-	pixmaps/jp.xpm pixmaps/nl.xpm pixmaps/no.xpm pixmaps/pl.xpm \
-	pixmaps/pt.xpm pixmaps/qc.xpm pixmaps/ru.xpm pixmaps/se.xpm \
-	pixmaps/si.xpm pixmaps/th.xpm pixmaps/tr.xpm pixmaps/us.xpm \
-	pixmaps/yu.xpm
+	gkb/be.xpm gkb/bg.xpm gkb/ca.xpm gkb/ch.xpm \
+	gkb/cz.xpm gkb/de.xpm gkb/dk.xpm gkb/es.xpm \
+	gkb/fi.xpm gkb/fr.xpm gkb/gb.xpm gkb/gr.xpm \
+	gkb/hu.xpm gkb/il.xpm gkb/is.xpm gkb/it.xpm \
+	gkb/jp.xpm gkb/nl.xpm gkb/no.xpm gkb/pl.xpm \
+	gkb/pt.xpm gkb/qc.xpm gkb/ru.xpm gkb/se.xpm \
+	gkb/si.xpm gkb/th.xpm gkb/tr.xpm gkb/us.xpm \
+	gkb/yu.xpm
 
-GKB_MAPS = xmodmaps/xmodmap.be xmodmaps/xmodmap.bg xmodmaps/xmodmap.ch xmodmaps/xmodmap.cz \
-	xmodmaps/xmodmap.de xmodmaps/xmodmap.dk xmodmaps/xmodmap.dvorak xmodmaps/xmodmap.es \
-	xmodmaps/xmodmap.fi xmodmaps/xmodmap.fr xmodmaps/xmodmap.gr xmodmaps/xmodmap.hu \
-	xmodmaps/xmodmap.hu.old xmodmaps/xmodmap.il xmodmaps/xmodmap.is xmodmaps/xmodmap.it \
-	xmodmaps/xmodmap.la xmodmaps/xmodmap.nl xmodmaps/xmodmap.no xmodmaps/xmodmap.pl \
-	xmodmaps/xmodmap.pt xmodmaps/xmodmap.qc xmodmaps/xmodmap.ru xmodmaps/xmodmap.ru_koi8 \
-	xmodmaps/xmodmap.se xmodmaps/xmodmap.sf xmodmaps/xmodmap.sg xmodmaps/xmodmap.si \
-	xmodmaps/xmodmap.sk xmodmaps/xmodmap.th xmodmaps/xmodmap.tr_f xmodmaps/xmodmap.tr_q \
-	xmodmaps/xmodmap.uk xmodmaps/xmodmap.us xmodmaps/xmodmap.us.old xmodmaps/xmodmap.yu
+GKB_MAPS = xmodmap/xmodmap.be xmodmap/xmodmap.bg xmodmap/xmodmap.ch xmodmap/xmodmap.cz \
+	xmodmap/xmodmap.de xmodmap/xmodmap.dk xmodmap/xmodmap.dvorak xmodmap/xmodmap.es \
+	xmodmap/xmodmap.fi xmodmap/xmodmap.fr xmodmap/xmodmap.gr xmodmap/xmodmap.hu \
+	xmodmap/xmodmap.hu.old xmodmap/xmodmap.il xmodmap/xmodmap.is xmodmap/xmodmap.it \
+	xmodmap/xmodmap.la xmodmap/xmodmap.nl xmodmap/xmodmap.no xmodmap/xmodmap.pl \
+	xmodmap/xmodmap.pt xmodmap/xmodmap.qc xmodmap/xmodmap.ru xmodmap/xmodmap.ru_koi8 \
+	xmodmap/xmodmap.se xmodmap/xmodmap.sf xmodmap/xmodmap.sg xmodmap/xmodmap.si \
+	xmodmap/xmodmap.sk xmodmap/xmodmap.th xmodmap/xmodmap.tr_f xmodmap/xmodmap.tr_q \
+	xmodmap/xmodmap.uk xmodmap/xmodmap.us xmodmap/xmodmap.us.old xmodmap/xmodmap.yu
 
 
 GKB_ICON = gkb.xpm
@@ -55,10 +55,10 @@ EXTRA_DIST = gkb_applet.desktop $(GKB_BITMAPS) $(GKB_ICON) $(GKB_MAPS) \
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gkb_applet.desktop
 
-gkbbitmapsdir = $(datadir)/pixmaps/gkb
+gkbbitmapsdir = $(datadir)/pixmaps
 gkbbitmaps_DATA = $(GKB_BITMAPS)
 
-gkbmapsdir = $(datadir)/xmodmap
+gkbmapsdir = $(datadir)
 gkbmaps_DATA = $(GKB_MAPS)
 
 gkbicondir = $(datadir)/pixmaps
