@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.gnome-2-4.hu\n"
-"POT-Creation-Date: 2003-10-07 13:32+0200\n"
-"PO-Revision-Date: 2003-10-07 13:51+0200\n"
+"POT-Creation-Date: 2003-12-01 16:57+0100\n"
+"PO-Revision-Date: 2003-12-01 16:58+0100\n"
 "Last-Translator: Andras Timar <timar@gnome.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX Status Applet Factory"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1178
+#: accessx-status/applet.c:1166
 msgid "Keyboard Accessibility Status"
 msgstr "Billentyűzet kisegítő lehetőségeinek állapota"
 
@@ -79,11 +79,11 @@ msgstr ""
 msgid "Utility"
 msgstr "Segédeszköz"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:895
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:591 drivemount/drivemount.c:510
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:48 mixer/mixer.c:1060
+#: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:191
 #: wireless/wireless-applet.c:560
@@ -94,7 +94,7 @@ msgstr ""
 "Sári Gábor <saga@chello.hu>\n"
 "Tímár András <timar@gnome.hu>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1181
+#: accessx-status/applet.c:157 accessx-status/applet.c:1169
 msgid "AccessX Status"
 msgstr "AccessX állapota"
 
@@ -116,17 +116,17 @@ msgstr "Hiba történt a súgóböngésző indításakor: %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Hiba történt a billentyűzet capplet indításakor: %s"
 
-#: accessx-status/applet.c:462 accessx-status/applet.c:496
+#: accessx-status/applet.c:463 accessx-status/applet.c:496
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1183
+#: accessx-status/applet.c:1171
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:908
 msgid "Battery Charge Monitor"
 msgstr "Teleptöltöttség-figyelő"
 
@@ -234,49 +234,49 @@ msgstr "Sárga szín szintje"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "Az általad használt platform nem támogatott!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Az applet nem fog rendesen működni (ha egyáltalán elindul).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:939
 msgid "High"
 msgstr "Magas"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:941
 msgid "Low"
 msgstr "Alacsony"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:943
 msgid "Critical"
 msgstr "Kritikus"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:945
 msgid "Charging"
 msgstr "Töltés alatt"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Az akkumulátorok töltése alacsony (%d%%) és nincs töltés alatt"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "Az akkumulátor teljesen feltöltődött!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1103
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -288,7 +288,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1111
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -299,32 +299,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1035
+#: battstat/battstat_applet.c:1124
 msgid "System is running on battery power"
 msgstr "A rendszer akkumulátorról üzemel."
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1041
+#: battstat/battstat_applet.c:1130
 msgid "System is running on AC power"
 msgstr "A rendszer hálózati feszültségről üzemel."
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1015
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "A rendszer akkumulátorról üzemel. Töltöttség: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1022
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "A rendszer hálózati feszültségről üzemel. Töltöttség: %d%% (%s)"
@@ -333,33 +333,33 @@ msgstr "A rendszer hálózati feszültségről üzemel. Töltöttség: %d%% (%s)
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "A rendszer akkumulátorról üzemel. Nincs akkumulátor..."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr "A rendszer hálózati feszültségről üzemel. Nincs akkumulátor."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Töltöttség: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr "Nincs akkumulátor."
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:778
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -372,7 +372,7 @@ msgstr ""
 "APM eszköz olvasására."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:787
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -382,7 +382,7 @@ msgstr ""
 "Próbáld az \"apm -e 1\" (FreeBSD) parancsot, \n"
 "hátha segít.\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:843
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -392,7 +392,7 @@ msgstr ""
 "Próbáld kijavítani a hibát!"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:846
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -403,7 +403,7 @@ msgstr ""
 "értéke: \"%d\".\n"
 "Próbáld kijavítani a hibát!"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:854
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -413,15 +413,15 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:885
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:910
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:911
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ez az applet a laptop akkumulátorának töltöttségi állapotát jelzi."
 
@@ -473,7 +473,7 @@ msgstr "Teleptöltöttség-figyelő beállításai"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "Általános"
 
@@ -532,7 +532,7 @@ msgstr "_Sárga:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:169
 #: stickynotes/stickynotes_applet_callbacks.c:317
 #: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
@@ -551,8 +551,8 @@ msgstr "Az akkumulátor teljesen feltöltődött"
 msgid "Battery power low"
 msgstr "Az akkumulátor töltöttsége alacsony"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:598
+#: cdplayer/cdplayer.c:1046
 msgid "CD Player"
 msgstr "CD-lejátszó"
 
@@ -577,23 +577,23 @@ msgstr "Applet audio CD-k lejátszásához"
 msgid "_Open CD Player"
 msgstr "CD-lejátszó _megnyitása"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1036
 msgid "Stop"
 msgstr "Leállítás"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1038
 msgid "Play / Pause"
 msgstr "Lejátszás / Szünet"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1040
 msgid "Eject"
 msgstr "Kiadás"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1042
 msgid "Previous Track"
 msgstr "Előző sáv"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1044
 msgid "Next Track"
 msgstr "Következő sáv"
 
@@ -601,37 +601,37 @@ msgstr "Következő sáv"
 msgid "You do not have permission to use the CD player."
 msgstr "Nincs jogod a CD-lejátszó használatához."
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:362 mixer/mixer.c:1028 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Hiba történt '%s' végrehajtásakor: %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:413
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s nem CD-lejátszó"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:479
 msgid "CD Player Preferences"
 msgstr "CD-lejátszó beállításai"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:500
 msgid "Device _path:"
 msgstr "Eszköz _elérési útja:"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Device Path"
 msgstr "Eszköz elérési útja"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Set the device path here"
 msgstr "Itt állítsd be az elérési utat"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:512
 msgid "Use _Default"
 msgstr "_Alapértelmezett használata"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:599
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -639,39 +639,39 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:601 cdplayer/cdplayer.c:1047
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "A CD-lejátszó applet egy egyszerű CD-lejátszó a panelon"
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:876 cdplayer/cdplayer.c:887
 msgid "Elapsed time"
 msgstr "Eltelt idő"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:879 cdplayer/cdplayer.c:889
 msgid "Track number"
 msgstr "Sáv száma"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:945
 msgid "Audio device is busy, or being used by another application"
 msgstr "A hangeszköz foglalt, vagy más alkalmazás használja"
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1037
 msgid "Click this button to Stop playing the CD"
 msgstr "A lejátszás leállításához nyomd meg ezt a gombot"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1039
 msgid "Click this button to Play or Pause the CD"
 msgstr "A CD elindításához vagy megállításához nyomd meg ezt a gombot"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1041
 msgid "Click this button to eject the CD"
 msgstr "Nyomd meg a gombot, hogy a CD-t kiadja a lejátszó"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1043
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Az előző szám lejátszásához nyomd meg ezt a gombot"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1045
 msgid "Click this button to Play the next track in the CD"
 msgstr "A következő szám lejátszásához nyomd meg ezt a gombot"
 
@@ -685,8 +685,8 @@ msgid ""
 "applet"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
-#: charpick/charpick.c:746 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
+#: charpick/charpick.c:753 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "Karakterpaletta"
 
@@ -698,37 +698,37 @@ msgstr "Charpicker Applet Factory"
 msgid "Insert characters"
 msgstr "Karakterek beszúrása"
 
-#: charpick/charpick.c:324 charpick/properties.c:125
+#: charpick/charpick.c:321 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Paletta hozzáadása"
 
-#: charpick/charpick.c:365
+#: charpick/charpick.c:372
 msgid "Add a palette..."
 msgstr "Paletta hozzáadása..."
 
-#: charpick/charpick.c:448
+#: charpick/charpick.c:455
 msgid "Available palettes"
 msgstr "Elérhető paletták"
 
-#: charpick/charpick.c:485
+#: charpick/charpick.c:492
 msgid "Insert special characters"
 msgstr "Speciális karakterek beszúrása"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:575
+#: charpick/charpick.c:582
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:576
+#: charpick/charpick.c:583
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:604
+#: charpick/charpick.c:611
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:605
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -744,7 +744,7 @@ msgstr ""
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr ""
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
 msgid "List of available palettes"
 msgstr ""
 
@@ -770,43 +770,43 @@ msgstr "Palettabejegyzés"
 msgid "Modify a palette by adding or removing chacters"
 msgstr "Paletta módosítása karakterek hozzáadásával vagy eltávolításával"
 
-#: charpick/properties.c:160
+#: charpick/properties.c:171
 msgid "Edit Palette"
 msgstr "Paletta szerkesztése"
 
-#: charpick/properties.c:259
+#: charpick/properties.c:271
 msgid "Palettes list"
 msgstr "Palettalista"
 
-#: charpick/properties.c:338
+#: charpick/properties.c:350
 msgid "Pal_ettes:"
 msgstr "Pal_etták:"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:366
 msgid "Add button"
 msgstr "Gomb hozzáadása"
 
-#: charpick/properties.c:355
+#: charpick/properties.c:367
 msgid "Click to add a new palette"
 msgstr "Kattints egy új paletta hozzáadásához"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:374
 msgid "Edit button"
 msgstr "Gomb szerkesztése"
 
-#: charpick/properties.c:363
+#: charpick/properties.c:375
 msgid "Click to edit the selected palette"
 msgstr "Kattints a kijelölt paletta szerkesztéséhez"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:382
 msgid "Delete button"
 msgstr "Gomb törlése"
 
-#: charpick/properties.c:371
+#: charpick/properties.c:383
 msgid "Click to delete the selected palette"
 msgstr "Kattints a kijelölt paletta törléséhez"
 
-#: charpick/properties.c:423
+#: charpick/properties.c:435
 msgid "Character Palette Preferences"
 msgstr "Karakterpaletta beállításai"
 
@@ -906,7 +906,7 @@ msgid "_Update interval:"
 msgstr "_Frissítés gyakorisága:"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
 msgid "seconds"
 msgstr "másodpercenként"
 
@@ -2299,7 +2299,7 @@ msgstr ""
 "Nyomj meg egy billentyűzet-kombinációt, vagy Esc-et, ha mégsem változtatod "
 "meg!"
 
-#: gkb-new/preset.c:155 gkb-new/preset.c:158
+#: gkb-new/preset.c:154 gkb-new/preset.c:157
 msgid "Undefined"
 msgstr "Nem megadott"
 
@@ -2361,7 +2361,7 @@ msgid "Flag and Label"
 msgstr "Zászló és címke"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "Megjelenítés"
 
@@ -2586,7 +2586,7 @@ msgstr "Árfolyam _leesik:"
 msgid "Stock _unchanged:"
 msgstr "Árfolyam _változatlan:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "_Háttér:"
 
@@ -2969,7 +2969,6 @@ msgid "Url for the radar map"
 msgstr "Műholdas térképek URL-je"
 
 #: gweather/gweather.schemas.in.h:11
-#, fuzzy
 msgid "Use custom url for the radar map"
 msgstr "Egyéni URL használata a műholdas térképhez"
 
@@ -3402,7 +3401,7 @@ msgstr ""
 
 #: gweather/weather.c:1778
 msgid "%a, %b %d / %H:%M"
-msgstr "%a, %b %-d / %H.%M"
+msgstr "%a, %b %e / %H.%M"
 
 #: gweather/weather.c:1782
 msgid "Unknown observation time"
@@ -4082,7 +4081,7 @@ msgid "Adjust the sound volume"
 msgstr "Hangerő állítása"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1075
 msgid "Volume Control"
 msgstr "Hangerőszabályozó"
 
@@ -4233,27 +4232,27 @@ msgstr "+"
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1076
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:1075
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "A hangerőszabályozó a felület hangerejének szabályozására szolgál."
 
-#: mixer/mixer.c:1217
+#: mixer/mixer.c:1220
 msgid "Volume Control Preferences"
 msgstr "Hangerőszabályozó beállításai "
 
-#: mixer/mixer.c:1241
+#: mixer/mixer.c:1244
 msgid "Audio Channels"
 msgstr "Hangcsatornák"
 
-#: mixer/mixer.c:1257
+#: mixer/mixer.c:1260
 msgid "_Select channel to control:"
 msgstr "_A szabályozandó csatorna kiválasztása:"
 
-#: mixer/mixer.c:1587
+#: mixer/mixer.c:1592
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "A hangerőszabályozó a felület hangerejének szabályozására szolgál"
 
@@ -4331,7 +4330,9 @@ msgstr "Kapcsolat bontásakor végrehajtandó parancs"
 
 #: modemlights/modemlights.schemas.in.h:5
 msgid "Display a confirmation dialog when connecting or disconnecting."
-msgstr "Megerősítést kérő párbeszédablak megjelenítése kapcsolodáskor, illetve a kapcsolat bontásakor."
+msgstr ""
+"Megerősítést kérő párbeszédablak megjelenítése kapcsolodáskor, illetve a "
+"kapcsolat bontásakor."
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
@@ -4369,7 +4370,9 @@ msgstr "A kapcsolat idejének és átvitelének kijelzése"
 msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
-msgstr "Extra adatok megjelenítése a kapcsolat idejéről és az átvitt adatmennyiségről."
+msgstr ""
+"Extra adatok megjelenítése a kapcsolat idejéről és az átvitt "
+"adatmennyiségről."
 
 #: modemlights/modemlights.schemas.in.h:15
 msgid "Status connected color"
@@ -4462,114 +4465,114 @@ msgstr "A zárolófájl tulajdonosának ellenőrzése"
 msgid "Modem Lights Preferences"
 msgstr "Modem LED-ek beállításai"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:444
 msgid "U_pdate every:"
 msgstr "_Frissítés"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:469
 msgid "Sho_w connect time and throughput"
 msgstr "A kapcsolat _idejének és átvitelének kijelzése"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:479
 msgid "B_link connection status when connecting"
 msgstr ""
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:489
 msgid "Connections"
 msgstr "Kapcsolatok"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:498
 msgid "Co_nnection command:"
 msgstr "_Kapcsolódás parancsa:"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:522
 msgid "_Disconnection command:"
 msgstr "_Bontás parancsa:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:542
 msgid "Con_firm connection"
 msgstr "Kapcsolat _megerősítése"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:561
 msgid "Receive Data"
 msgstr "Adat fogadása"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:567
 msgid "_Foreground:"
 msgstr "_Előtér:"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:572
 msgid "Send Data"
 msgstr "Adat küldése"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:577
 msgid "Foregroun_d:"
 msgstr "Elő_tér"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:579
 msgid "Backg_round:"
 msgstr "Hátté_r:"
 
-#: modemlights/properties.c:583
+#: modemlights/properties.c:582
 msgid "Connection Status"
 msgstr "Kapcsolat állapota"
 
-#: modemlights/properties.c:591
+#: modemlights/properties.c:590
 msgid "Co_nnected:"
 msgstr "_Kapcsolódva:"
 
-#: modemlights/properties.c:593
+#: modemlights/properties.c:592
 msgid "Disconnec_ted:"
 msgstr "_Nincs kapcsolat:"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:595
 msgid "C_onnecting:"
 msgstr "_Kapcsolódás:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:598
 msgid "Text"
 msgstr "Szöveg"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:606
 msgid "For_eground:"
 msgstr "Elő_tér:"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:608
 msgid "Bac_kground:"
 msgstr "Hátté_r:"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:610
 msgid "O_utline"
 msgstr "_Kihúzás"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:613 multiload/properties.c:528
 msgid "Colors"
 msgstr "Színek"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:622
 msgid "Modem Options"
 msgstr "Modem beállításai"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:631
 msgid "_Device:"
 msgstr "_Eszköz:"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:655
 msgid "_Lock file:"
 msgstr "_Zárolófájl:"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:674
 msgid "_Verify owner of lock file"
 msgstr "Zárolófájl tulajdonosának _ellenőrzése"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:685
 msgid "U_se ISDN"
 msgstr "ISDN hasz_nálata"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:702
 msgid "Advanced"
 msgstr "Haladó"
 
