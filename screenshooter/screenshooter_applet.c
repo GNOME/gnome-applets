@@ -57,7 +57,7 @@ cb_about (AppletWidget * widget, gpointer data)
 		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 
   my_url = gnome_href_new ("http://www.tomgilbert.freeserve.co.uk",
-			   "Visit the author's Website");
+			   _("Visit the author's Website"));
   gtk_widget_show (my_url);
   gtk_box_pack_start (GTK_BOX ((GNOME_DIALOG (about))->vbox), my_url, FALSE,
 		      FALSE, 0);
