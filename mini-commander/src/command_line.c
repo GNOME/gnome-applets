@@ -494,11 +494,15 @@ command_entry_update_color(void)
     style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_fg_r;
     style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_fg_g;
     style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_fg_b;
-    
+
     style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_bg_r;
     style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_bg_g;
     style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_bg_b;
     
+    style->base[GTK_STATE_INSENSITIVE].red = (gushort) prop.cmd_line_color_bg_r;
+    style->base[GTK_STATE_INSENSITIVE].green = (gushort) prop.cmd_line_color_bg_g;
+    style->base[GTK_STATE_INSENSITIVE].blue = (gushort) prop.cmd_line_color_bg_b;
+
     gtk_widget_set_style(entry_command, style);
 }
 
