@@ -184,6 +184,9 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
   }
 
   procdir=opendir("/proc/acpi/battery/");
+  if (!procdir)
+    return FALSE;
+
   while ((procdirentry=readdir(procdir)))
    {
     if (procdirentry->d_name[0]!='.')
@@ -222,6 +225,9 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
     return FALSE;
 
   procdir=opendir("/proc/acpi/ac_adapter/");
+  if (!procdir)
+    return FALSE;
+
   while ((procdirentry=readdir(procdir)))
    {
     if (procdirentry->d_name[0]!='.')
