@@ -1,9 +1,14 @@
 figs = \
-	figures/cdplayer_applet.png
-docname = cdplayer_applet
+	figures/cdplayer_applet.png \
+	figures/cdplayer_applet_eject.png \
+	figures/cdplayer_applet_nexttrack.png \
+	figures/cdplayer_applet_playing.png \
+	figures/cdplayer_applet_playpause.png \
+	figures/cdplayer_applet_prevtrack.png \
+	figures/cdplayer_applet_stop.png
+docname = cdplayer
 lang = ja
-omffile = cdplayer_applet-ja.omf
-sgml_ents = cdplayer.sgml
-include $(top_srcdir)/sgmldocs.make
+omffile = cdplayer-ja.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-

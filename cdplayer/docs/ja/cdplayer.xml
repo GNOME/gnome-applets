@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [ 
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.1.3">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "2003年1月">
+  <!ENTITY applet "CDプレーヤー">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+  <!-- please do not change the id; for translations, change lang to -->
+  <!-- appropriate code -->
+  <articleinfo> 
+    <title>&applet;アプレットマニュアル V&manrevision;</title> 
+    <copyright> 
+      <year>2003</year> 
+      <holder>Sun Microsystems</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2000</year> 
+      <holder>Chris Lyttle</holder> 
+    </copyright>
+    <copyright>
+      <year>2003</year>
+      <holder>鎌ヶ迫正俊 (日本語訳)</holder>
+    </copyright>
+
+    <publisher> 
+      <publishername>GNOMEドキュメンテーションプロジェクト</publishername> 
+    </publisher> 
+
+    &legal;
+    <authorgroup> 
+      <author> 
+        <firstname>Sun</firstname> 
+        <surname>GNOME Documentation Team</surname> 
+        <affiliation> 
+          <orgname>サン マイクロシステムズ</orgname> 
+          <address> <email>gdocteam@sun.com</email> </address> 
+        </affiliation> 
+      </author> 
+      <author> 
+        <firstname>Chris</firstname> 
+        <surname>Lyttle</surname> 
+        <affiliation> 
+          <orgname>GNOMEドキュメンテーションプロジェクト</orgname> 
+          <address> <email>chris@wilddev.net</email> </address> 
+        </affiliation> 
+      </author> 
+      <othercredit role="translator">
+        <firstname>Masatoshi</firstname> 
+        <surname>KAMAGASAKO</surname> 
+        <affiliation> 
+          <orgname>日本GNOMEユーザ会 翻訳チーム</orgname> 
+          <address> <email>emerald@gnome.gr.jp</email> </address> 
+        </affiliation>
+        <contrib>日本語訳</contrib>
+      </othercredit>
+    </authorgroup>
+
+    <revhistory>
+      <revision> 
+        <revnumber>&applet;アプレットマニュアル V&manrevision;</revnumber> 
+        <date>&date;</date> 
+        <revdescription> 
+          <para role="author">Sun GNOMEドキュメンテーションチーム
+            <email>gdocteam@sun.com</email></para> 
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para> 
+        </revdescription> 
+      </revision>
+      <revision> 
+        <revnumber>CDプレーヤーアプレットマニュアル V2.1</revnumber> 
+        <date>2002年8月</date> 
+        <revdescription> 
+          <para role="author">Sun GNOMEドキュメンテーションチーム
+            <email>gdocteam@sun.com</email></para> 
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para> 
+        </revdescription> 
+      </revision> 
+      <revision> 
+        <revnumber>CDプレーヤーアプレットマニュアル V2.0</revnumber> 
+        <date>2002年5月</date> 
+        <revdescription> 
+          <para role="author">Sun GNOMEドキュメンテーションチーム
+            <email>gdocteam@sun.com</email></para> 
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para> 
+        </revdescription> 
+      </revision> 
+      <revision> 
+        <revnumber>CDプレーヤーアプレット</revnumber> 
+        <date>2000年</date> 
+        <revdescription> 
+          <para role="author">Chris Lyttle
+            <email>chris@wilddev.net</email></para> 
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para> 
+        </revdescription> 
+      </revision> 
+    </revhistory> 
+    <releaseinfo>
+      このマニュアルは&applet;アプレット第 &appletversion;版について説明しています。
+    </releaseinfo> 
+    <legalnotice>
+      <title>フィードバック</title>
+      <para>
+        この&applet;やマニュアルについてのバグレポートや提案は、<ulink url="ghelp:gnome-feedback" type="help">GNOMEフィードバックページ</ulink>を参照してください。
+      </para>
+      <!-- Translators may also add here feedback address for translations -->
+      <para>
+        このマニュアルの日本語訳についての指摘や提案は<email>emerald@gnome.gr.jp</email>までお願いします。
+      </para>
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm> 
+    <primary>CDプレーヤーアプレット</primary> 
+  </indexterm> 
+
+  <!-- ============= Document Body ============================= -->
+  <!-- ============= Introduction ============================== -->
+  <sect1 id="cdplayer_applet_introduction"> 
+    <title>はじめに</title> 
+    <!-- ==== Figure ============================================= -->
+    <figure id="applet-fig"> 
+      <title>&applet;アプレット</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>
+              &applet;アプレットを表示。停止、再生、取り出し、前トラック、次トラックのボタンから構成されている。
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure> 
+    <!-- ==== End of Figure ======================================= -->
+
+    <para>
+      <application>&applet;</application>アプレットを利用すると、あなたのコンピュータ上でオーディオコンパクトディスク(オーディオCD)を再生することができます。      
+    </para>
+    <para>
+      <application>&applet;</application>をパネルに追加するには、パネルを右クリックし、
+      <menuchoice>
+        <guimenu>パネルに追加</guimenu>
+        <guisubmenu>マルチメディア</guisubmenu>
+        <guimenuitem>CDプレーヤー</guimenuitem>
+      </menuchoice>
+      と選択します。<application>&applet;</application>アプレットのレイアウトは、アプレットが表示されるパネルのサイズはタイプに依存します。
+    </para>
+  </sect1>
+
+  <sect1 id="cdplayer_applet_usage">
+    <title>使い方</title>
+    <sect2 id="cdplayer_applet_play">
+      <title>CDを再生する</title>
+      <para>
+        CDを再生するには、CDドライブにCDを入れ、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_play.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>再生ボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。
+      </para>
+      <figure id="fig-cd-playing"> 
+        <title>再生中の&applet;アプレット</title>
+        <screenshot> 
+          <mediaobject> 
+            <imageobject>
+              <imagedata fileref="figures/cdplayer_applet_playing.png"
+                         format="PNG"/>
+            </imageobject>
+            <textobject> 
+              <phrase>再生中の&applet;アプレットを表示</phrase>
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+      <para>
+        アプレットは<xref linkend="fig-cd-playing"/>に表示されているように、以下の情報を表示します:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>現在のトラックの再生時間</para>
+        </listitem>
+        <listitem>
+          <para>再生中のトラック番号</para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+    <sect2 id="cdplayer_applet_pause">
+      <title>CDを一時停止する</title>
+      <para>
+        再生しているCDを一時停止するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_pause.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>一時停止ボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。CDを一時停止すると、再生を再開するまで再生時間の表示が点滅します。再生を再開するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_playafterpause.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>一時停止後の再生ボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。
+      </para>
+    </sect2>
+
+    <sect2 id="cdplayer_applet_movetracks">
+      <title>トラックを変更する</title>
+      <para>
+        次のトラックに変更するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_nexttrack.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>次のトラックに変更するボタンを表示</phrase>
+          </textobject>        
+        </inlinemediaobject>
+        ボタンをクリックします。さらに次の曲に変更するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_nexttrack.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>次のトラックに変更するボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。
+      </para>
+      <para>
+        前のトラックに変更するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_prevtrack.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>前のトラックに変更するボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。さらに前の曲に変更するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_prevtrack.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>前のトラックに変更するボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。
+      </para>
+    </sect2>
+
+    <sect2 id="cdplayer_applet_stop">
+      <title>CDを停止する</title>
+      <para>
+        CDを停止するには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_stop.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>停止ボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。
+      </para>
+    </sect2>
+
+    <sect2 id="cdplayer_applet_eject">
+      <title>CDを取り出す</title>
+      <para>
+        CDを取り出すには、
+        <inlinemediaobject>
+          <imageobject>
+            <imagedata fileref="figures/cdplayer_applet_eject.png"
+                       format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>取り出しボタンを表示</phrase>
+          </textobject>
+        </inlinemediaobject>
+        ボタンをクリックします。アプレットはCDドライブからCDをイジェクトします。CDをドライブから取り出し、ドライブを閉じてください。
+      </para>
+    </sect2>
+
+    <sect2 id="cdplayer_additional_features">
+      <title>更なる機能を利用する</title>
+      <para>
+        トラック情報を編集したりボリュームを調節するなど、CD再生のための更なる機能を利用するに、<application>CD Player</application>を起動することができます。アプレットから<application>CDPlayer</application>を起動するには、アプレットを右クリックし、<guimenuitem>別の CD プレーヤーを実行</guimenuitem>を選択します。
+      </para>
+    </sect2>
+  </sect1>
+
+  <!-- ============= Preferences ============================= -->
+  <sect1 id="cdplayer_applet_prefs"> 
+    <title>設定</title> 
+
+    <sect2 id="cdplayer-applet_specify_cd">
+      <title>CDドライブの設定</title>
+      <para>
+        アプレットが利用するCDドライブを設定するには、アプレットを右クリックし、<guimenuitem>設定</guimenuitem>を選択します。<guilabel>デバイスのパス</guilabel>テキストボックスに、CDドライブへのパスを入力します。システムのデフォルトのCDドライブを利用するには、<guibutton>デフォルトを使用</guibutton>ボタンをクリックします。設定を保存し、<guilabel>CD プレーヤー設定</guilabel>ダイアログを閉じるには、<guibutton>閉じる</guibutton>ボタンをクリックします。
+      </para>
+    </sect2> 
+  </sect1> 
+</article> 
