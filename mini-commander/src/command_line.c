@@ -499,7 +499,13 @@ mc_create_command_entry (MCData *mc)
 		      G_CALLBACK (button_press_cb), mc);
 
     if (!mc->preferences.show_default_theme)
-        mc_command_update_entry_color (mc); 
+    {
+	    gtk_widget_set_name (mc->entry, "minicommander-applet-entry");
+	    mc_command_update_entry_color (mc); 
+    }
+    else
+	    gtk_widget_set_name (mc->entry,
+			    "minicommander-applet-entry-default");
 
     mc_command_update_entry_size (mc);
 
@@ -513,10 +519,25 @@ mc_command_update_entry_color (MCData *mc)
 {
     GdkColor fg;
     GdkColor bg;
+    char *rc_string;
 
     fg.red   = mc->preferences.cmd_line_color_fg_r;
     fg.green = mc->preferences.cmd_line_color_fg_g;
     fg.blue  = mc->preferences.cmd_line_color_fg_b;
+
+    /* FIXME: wish we had an API for this, see bug #79585 */
+    rc_string = g_strdup_printf (
+		    "\n"
+		    " style \"minicommander-applet-entry-style\"\n"
+		    " {\n"
+		    "  GtkWidget::cursor-color=\"#%04x%04x%04x\"\n"
+		    " }\n"
+		    " widget \"*.minicommander-applet-entry\" "
+		    "style \"minicommander-applet-entry-style\"\n"
+		    "\n",
+		    fg.red, fg.green, fg.blue);
+    gtk_rc_parse_string (rc_string);
+    g_free (rc_string);
 
     gtk_widget_modify_text (mc->entry, GTK_STATE_NORMAL, &fg);
     gtk_widget_modify_text (mc->entry, GTK_STATE_PRELIGHT, &fg);
