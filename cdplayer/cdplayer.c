@@ -139,7 +139,6 @@ applet_fill (PanelApplet *applet)
     cdplayer = cd->panel.frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(cdplayer), GTK_SHADOW_IN);
     g_object_set_data (G_OBJECT(cdplayer), "cd-info", cd);
-    g_signal_connect (G_OBJECT(cdplayer), "destroy", G_CALLBACK (cdplayer_destroy), NULL);
     g_signal_connect_after (G_OBJECT (cdplayer), "realize", G_CALLBACK (cdplayer_realize), cd);
     gtk_widget_show(cdplayer);
     
@@ -168,7 +167,7 @@ applet_fill (PanelApplet *applet)
     cd->orient = panel_applet_get_orient (PANEL_APPLET (applet));
     cd->size = panel_applet_get_size (PANEL_APPLET (applet));
 
-    g_signal_connect (applet, "destroy", G_CALLBACK (cdplayer_destroy), cd);
+    g_signal_connect (G_OBJECT (applet), "destroy", G_CALLBACK (cdplayer_destroy), cd);
     g_signal_connect (applet, "change_orient", G_CALLBACK (applet_change_orient), cd);
     g_signal_connect (applet, "change_size", G_CALLBACK (applet_change_size), cd);
 
@@ -207,9 +206,8 @@ cdplayer_save_config(CDPlayerData *cd)
 static void
 cdplayer_destroy(GtkWidget * widget, gpointer data)
 {
-    CDPlayerData *cd;
+    CDPlayerData *cd = data;
 
-    cd = g_object_get_data(G_OBJECT(widget), "cd-info");
     if (cd->timeout != 0)
         gtk_timeout_remove(cd->timeout);
     cd->timeout = 0;
