@@ -600,7 +600,7 @@ int main( int argc, char *argv[] )
                                            GNOME_STOCK_MENU_PROP,
                                            _("Properties..."),
                                            (AppletCallbackFunc)properties_dialog,
-                                           NULL);
+                                           my);
 
     gtk_signal_connect(GTK_OBJECT(my->window),"save_session",
                        GTK_SIGNAL_FUNC(save_session_cb),
