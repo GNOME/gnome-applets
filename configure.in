@@ -238,8 +238,22 @@ MIXER_CFLAGS=
 MIXER_LIBS=
 
 if test "x$ENABLE_GSTREAMER" = "xyes"; then
-  PKG_CHECK_MODULES(MIXER, gstreamer-interfaces-0.7 >= 0.7.3.1, [P_MIXER=mixer; HAVE_GSTREAMER=true], [HAVE_GSTREAMER=false])
-  if test "x$HAVE_GSTREAMER" = "xtrue"; then
+  dnl check for both 0.8 and 0.7 versions
+  GST_REQ=0.7.2
+  dnl start with 0.8
+  GST_MAJORMINOR=0.8
+  PKG_CHECK_MODULES(MIXER, gstreamer-interfaces-$GST_MAJORMINOR,
+    HAVE_GST="yes", HAVE_GST="no")
+  dnl fall back to 0.7
+  if test "x$HAVE_GST" = "xno"; then
+    GST_MAJORMINOR=0.7
+    PKG_CHECK_MODULES(MIXER, gstreamer-interfaces-$GST_MAJORMINOR,
+      HAVE_GST="yes", HAVE_GST="no")
+  fi
+
+  dnl decide what to do
+  if test "x$HAVE_GST" = "xyes"; then
+    P_MIXER=mixer
     MIXER_CFLAGS="-DHAVE_GSTREAMER $MIXER_CFLAGS"
   fi
 else
