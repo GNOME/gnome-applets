@@ -220,11 +220,12 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 			w1 = gtk_widget_get_ancestor (sia->applet,
 						      GTK_TYPE_WINDOW);
 			if (w1 == NULL)
-				break;
+				return GDK_FILTER_CONTINUE;
 			w = w1->window;
 			if (w == NULL || GDK_WINDOW_XID (w) != rne->window)
-				break;
+				return GDK_FILTER_CONTINUE;
 			XklSetTransparent (GDK_WINDOW_XID (w), TRUE);
+			return GDK_FILTER_CONTINUE;
 		}
 		break;
 	}
