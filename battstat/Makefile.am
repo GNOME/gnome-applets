@@ -2,6 +2,9 @@
 gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
 
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = battstat.png
+
 if HAVE_LIBAPM
 APMLIB = -lapm
 APMDIR =
@@ -45,7 +48,8 @@ battstat_applet_2_LDADD = \
 EXTRA_DIST = 				\
 	$(glade_DATA)			\
 	GNOME_BattstatApplet.server.in  \
-	battstat.schemas
+	battstat.schemas		\
+	battstat.png
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_DATA = battstat.schemas

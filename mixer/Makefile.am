@@ -1,5 +1,8 @@
 #SUBDIRS = docs
 
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-mixer-applet.png
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
@@ -28,4 +31,5 @@ EXTRA_DIST = 						\
 	volume-medium.xpm				\
 	volume-min.xpm					\
 	volume-mute.xpm					\
-	volume-zero.xpm
+	volume-zero.xpm					\
+	gnome-mixer-applet.png
