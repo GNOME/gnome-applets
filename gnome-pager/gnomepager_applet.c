@@ -2280,6 +2280,15 @@ cb_nuke(GtkWidget * widget, Task *t)
 }
 
 void
+cb_stick(GtkWidget * widget, Task *t)
+{
+  if (t->sticky)
+    client_win_unstick(t);
+  else
+    client_win_stick(t);
+}
+
+void
 emtpy_task_widgets(void)
 {
   if (task_widgets)
@@ -2501,6 +2510,12 @@ popup_button_pressed (GtkWidget *widget, GdkEventButton *event, Task *t)
 		gtk_menu_append(GTK_MENU(popup),item);
 		gtk_signal_connect(GTK_OBJECT(item),"activate",
 				   GTK_SIGNAL_FUNC(cb_shade),t);
+
+		item = gtk_menu_item_new_with_label(_("Stick / Unstick"));
+		gtk_widget_show(item);
+		gtk_menu_append(GTK_MENU(popup),item);
+		gtk_signal_connect(GTK_OBJECT(item),"activate",
+				   GTK_SIGNAL_FUNC(cb_stick),t);
 
 		item = gtk_menu_item_new_with_label(_("Close"));
 		gtk_widget_show(item);
