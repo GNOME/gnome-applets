@@ -61,9 +61,9 @@ StickyNote * stickynote_new()
 						      gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL));
 
 	/* Set the button images */
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_ICONDIR "/close.png");
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_ICONDIR "/resize_se.png");
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_ICONDIR "/resize_sw.png");
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_STOCK_RESIZE_SE, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_STOCK_RESIZE_SW, GTK_ICON_SIZE_MENU);
 	
 	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
@@ -193,7 +193,7 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 		color_str_actual = g_strdup(color_str);
 
 	/* Do not use custom colors if "use_system_color" is enabled */
-	if (color_str_actual != NULL) {
+	if (color_str_actual) {
 		/* Custom colors */
 		GdkColor color[4];
 
@@ -244,11 +244,11 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 
 	/* Show appropriate icon and tooltip */
 	if (locked) {
-		gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_ICONDIR "/lock.png");
+		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_LOCK, GTK_ICON_SIZE_MENU);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Locked note"), NULL);
 	}
 	else {
-		gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_ICONDIR "/unlock.png");
+		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_UNLOCK, GTK_ICON_SIZE_MENU);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlocked note"), NULL);
 	}
 
@@ -382,7 +382,7 @@ void stickynotes_save()
 	
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s/.gnome2/%s", g_get_home_dir(), XML_PATH);
+		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(), XML_PATH);
 		xmlSaveFormatFile(file, doc, 1);
 		g_free(file);
 	}
@@ -399,7 +399,7 @@ void stickynotes_load()
 	
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s/.gnome2/%s", g_get_home_dir(), XML_PATH);
+		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(), XML_PATH);
 		doc = xmlParseFile(file);
 		g_free(file);
 	}

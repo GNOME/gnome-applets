@@ -25,10 +25,18 @@
 #include <gconf/gconf-client.h>
 #include <glade/glade.h>
 
-#define GCONF_PATH "/apps/stickynotes_applet"
-#define GLADE_PATH STICKYNOTES_GLADEDIR "/stickynotes.glade"
-#define XML_PATH "stickynotes_applet"
+#define GCONF_PATH	"/apps/stickynotes_applet"
+#define GLADE_PATH	STICKYNOTES_GLADEDIR "/stickynotes.glade"
+#define XML_PATH	"/.gnome2/stickynotes_applet"
+#define ICON_PATH	STICKYNOTES_ICONDIR
 
+#define STICKYNOTES_STOCK_LOCK		"stickynotes-stock-lock"
+#define STICKYNOTES_STOCK_UNLOCK	"stickynotes-stock-unlock"
+#define STICKYNOTES_STOCK_CLOSE 	"stickynotes-stock-close"
+#define STICKYNOTES_STOCK_RESIZE_SE 	"stickynotes-stock-resize-se"
+#define STICKYNOTES_STOCK_RESIZE_SW	"stickynotes-stock-resize-sw"
+
+/* Global Sticky Notes instance */
 typedef struct
 {
 	GladeXML *about;		/* About dialog GladeXML*/
@@ -50,12 +58,21 @@ typedef struct
 	
 	GdkPixbuf *icon_normal;		/* Normal applet icon */
 	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
-	
+
 	GConfClient *gconf;		/* GConf Client */
 	GtkTooltips *tooltips;		/* Tooltips */
 
 } StickyNotes;
 
+/* Sticky Notes Icons */
+typedef struct
+{
+	gchar *stock_id;
+	gchar *filename;
+
+} StickyNotesStockIcon;
+
+/* Sticky Notes Applet */
 typedef struct
 {
 	GtkWidget *w_applet;		/* The applet */
@@ -77,6 +94,7 @@ typedef enum
 extern StickyNotes *stickynotes;
 
 void stickynotes_applet_init();
+void stickynotes_applet_init_icons();
 void stickynotes_applet_init_about();
 void stickynotes_applet_init_prefs();
 

@@ -35,6 +35,16 @@ static const BonoboUIVerb stickynotes_applet_menu_verbs[] =
         BONOBO_UI_VERB_END
 };
 
+/* Sticky Notes Icons */
+static const StickyNotesStockIcon stickynotes_icons[] =
+{
+	{ STICKYNOTES_STOCK_LOCK, STICKYNOTES_ICONDIR "/lock.png" },
+	{ STICKYNOTES_STOCK_UNLOCK, STICKYNOTES_ICONDIR "/unlock.png" },
+	{ STICKYNOTES_STOCK_CLOSE, STICKYNOTES_ICONDIR "/close.png" },
+	{ STICKYNOTES_STOCK_RESIZE_SE, STICKYNOTES_ICONDIR "/resize_se.png" },
+	{ STICKYNOTES_STOCK_RESIZE_SW, STICKYNOTES_ICONDIR "/resize_sw.png" }
+};
+
 /* Sticky Notes applet factory */
 static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data) 
 {
@@ -69,6 +79,7 @@ void stickynotes_applet_init()
 	stickynotes->gconf = gconf_client_get_default();
 	stickynotes->tooltips = gtk_tooltips_new();
 
+	stickynotes_applet_init_icons();
 	stickynotes_applet_init_about();
 	stickynotes_applet_init_prefs();
 
@@ -86,6 +97,30 @@ void stickynotes_applet_init()
 	/* Auto-save every so minutes (default 5) */
 	g_timeout_add(1000 * 60 * gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/autosave_time", NULL),
 		      (GSourceFunc) applet_save_cb, NULL);
+}
+
+/* Initialize Sticky Notes Icons */
+void stickynotes_applet_init_icons()
+{
+	GtkIconFactory *icon_factory = gtk_icon_factory_new();
+	GtkIconSource *icon_source = gtk_icon_source_new();
+
+	gint i;
+	for (i = 0; i < G_N_ELEMENTS(stickynotes_icons); i++) {
+		StickyNotesStockIcon icon = stickynotes_icons[i];
+		GtkIconSet *icon_set = gtk_icon_set_new();
+
+		gtk_icon_source_set_filename(icon_source, icon.filename);
+		gtk_icon_set_add_source(icon_set, icon_source);
+		gtk_icon_factory_add(icon_factory, icon.stock_id, icon_set);
+
+		gtk_icon_set_unref(icon_set);
+	}
+
+	gtk_icon_factory_add_default(icon_factory);
+
+	gtk_icon_source_free(icon_source);
+	g_object_unref(G_OBJECT(icon_factory));
 }
 
 void stickynotes_applet_init_about()
