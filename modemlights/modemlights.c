@@ -1402,16 +1402,6 @@ static const BonoboUIVerb modem_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char modem_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-
 static gboolean
 modemlights_applet_fill (PanelApplet *applet)
 {
@@ -1502,10 +1492,12 @@ modemlights_applet_fill (PanelApplet *applet)
 				
 	sizehint = panel_applet_get_size (PANEL_APPLET (applet));
 	
-	panel_applet_setup_menu (PANEL_APPLET (applet),
-				 modem_applet_menu_xml,
-				 modem_applet_menu_verbs,
-				 applet);
+	panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+					   NULL,
+					   "GNOME_ModemlightsApplet.xml",
+					   NULL,
+					   modem_applet_menu_verbs,
+					   applet);
 				 
 	/* by now we know the geometry */
 	setup_done = TRUE;

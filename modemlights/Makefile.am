@@ -15,6 +15,8 @@ modemlights_applet2_SOURCES = \
 modemlights_applet2_LDADD = \
 		     $(GNOME_APPLETS_LIBS)
 
+uidir		= $(datadir)/gnome-2.0/ui
+ui_DATA		= GNOME_ModemlightsApplet.xml
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_ModemLightsApplet.server.in
@@ -27,7 +29,7 @@ schema_DATA	= modemlights.schemas
 
 EXTRA_DIST = \
 	digits.xpm $(server_in_files)	\
-	$(schema_DATA)
+	$(schema_DATA) $(ui_DATA)
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
