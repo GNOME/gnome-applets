@@ -2,8 +2,58 @@
 <schemalist>
 
 <schema>
-	<key>/schemas/desktop/gnome/applets/multiload/cpuload/speed</key>
-	<applyto>/desktop/gnome/applets/multiload/cpuload/speed</applyto>
+	<key>/schemas/apps/multiload/prefs/view_cpuload</key>
+	<owner>multiload-applet-2</owner>
+	<type>bool</type>
+	<default>true</default>
+	<locale name="C">
+		<short>enable the cpuload graph in multiload.</short>
+		<long>enable the cpuload graph in multiload.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/view_memload</key>
+	<owner>multiload-applet-2</owner>
+	<type>bool</type>
+	<default>true</default>
+	<locale name="C">
+		<short>enable the memload graph in multiload.</short>
+		<long>enable the memload graph in multiload.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/view_netload</key>
+	<owner>multiload-applet-2</owner>
+	<type>bool</type>
+	<default>false</default>
+	<locale name="C">
+		<short>enable the netload graph in multiload.</short>
+		<long>enable the netload graph in multiload.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/view_swapload</key>
+	<owner>multiload-applet-2</owner>
+	<type>bool</type>
+	<default>false</default>
+	<locale name="C">
+		<short>enable the swapload graph in multiload.</short>
+		<long>enable the swapload graph in multiload.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/view_loadavg</key>
+	<owner>multiload-applet-2</owner>
+	<type>bool</type>
+	<default>false</default>
+	<locale name="C">
+		<short>enable the loadavg graph in multiload.</short>
+		<long>enable the loadavg graph in multiload.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/multiload/prefs/cpuload_speed</key>
 	<owner>multiload-applet-2</owner>
 	<type>int</type>
 	<default>500</default>
@@ -13,8 +63,7 @@
 	</locale>
 </schema>
 <schema>
-	<key>/schemas/desktop/gnome/applets/multiload/cpuload/size</key>
-	<applyto>/desktop/gnome/applets/multiload/cpuload/size</applyto>
+	<key>/schemas/apps/multiload/prefs/cpuload_size</key>
 	<owner>multiload-applet-2</owner>
 	<type>int</type>
 	<default>40</default>
@@ -24,47 +73,247 @@
 	</locale>
 </schema>
 <schema>
-	<key>/schemas/desktop/gnome/applets/multiload/cpuload/color0</key>
-	<applyto>/desktop/gnome/applets/multiload/cpuload/color0</applyto>
+	<key>/schemas/apps/multiload/prefs/cpuload_color0</key>
 	<owner>multiload-applet-2</owner>
 	<type>string</type>
-	<default>"#000000"</default>
+	<default>#0072b3</default>
 	<locale name="C">
 		<short>the graph color for user-related cpu activity.</short>
 		<long>the graph color for user-related cpu activity.</long>
 	</locale>
 </schema>
 <schema>
-	<key>/schemas/desktop/gnome/applets/multiload/cpuload/color1</key>
-	<applyto>/desktop/gnome/applets/multiload/cpuload/color1</applyto>
+	<key>/schemas/apps/multiload/prefs/cpuload_color1</key>
 	<owner>multiload-applet-2</owner>
 	<type>string</type>
-	<default>"#000000"</default>
+	<default>#0092e6</default>
 	<locale name="C">
 		<short>the graph color for system-related cpu activity.</short>
 		<long>the graph color for system-related cpu activity.</long>
 	</locale>
 </schema>
 <schema>
-	<key>/schemas/desktop/gnome/applets/multiload/cpuload/color2</key>
-	<applyto>/desktop/gnome/applets/multiload/cpuload/color2</applyto>
+	<key>/schemas/apps/multiload/prefs/cpuload_color2</key>
 	<owner>multiload-applet-2</owner>
 	<type>string</type>
-	<default>"#000000"</default>
+	<default>#00a3ff</default>
 	<locale name="C">
 		<short>the graph color for nice-related cpu activity.</short>
 		<long>the graph color for nice-related cpu activity.</long>
 	</locale>
 </schema>
 <schema>
-	<key>/schemas/desktop/gnome/applets/multiload/cpuload/color3</key>
-	<applyto>/desktop/gnome/applets/multiload/cpuload/color3</applyto>
+	<key>/schemas/apps/multiload/prefs/cpuload_color3</key>
 	<owner>multiload-applet-2</owner>
 	<type>string</type>
-	<default>"#000000"</default>
+	<default>#000000</default>
 	<locale name="C">
 		<short>the applet's background color.</short>
 		<long>the applet's background color.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/multiload/prefs/memload_speed</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>500</default>
+	<locale name="C">
+		<short>the refresh rate of the applet in milliseconds.</short>
+		<long>the refresh rate of the applet in milliseconds</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/memload_size</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>40</default>
+	<locale name="C">
+		<short>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</short>
+		<long>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/memload_color0</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#00b35b</default>
+	<locale name="C">
+		<short>the graph color for user-related cpu activity.</short>
+		<long>the graph color for user-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/memload_color1</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#00e675</default>
+	<locale name="C">
+		<short>the graph color for system-related cpu activity.</short>
+		<long>the graph color for system-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/memload_color2</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#00ff82</default>
+	<locale name="C">
+		<short>the graph color for nice-related cpu activity.</short>
+		<long>the graph color for nice-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/memload_color3</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#000000</default>
+	<locale name="C">
+		<short>the applet's background color.</short>
+		<long>the applet's background color.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/multiload/prefs/netload_speed</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>500</default>
+	<locale name="C">
+		<short>the refresh rate of the applet in milliseconds.</short>
+		<long>the refresh rate of the applet in milliseconds</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/netload_size</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>40</default>
+	<locale name="C">
+		<short>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</short>
+		<long>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/netload_color0</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#00b0b3</default>
+	<locale name="C">
+		<short>the graph color for user-related cpu activity.</short>
+		<long>the graph color for user-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/netload_color1</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#00e2e6</default>
+	<locale name="C">
+		<short>the graph color for system-related cpu activity.</short>
+		<long>the graph color for system-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/netload_color2</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#00fbff</default>
+	<locale name="C">
+		<short>the graph color for nice-related cpu activity.</short>
+		<long>the graph color for nice-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/netload_color3</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#000000</default>
+	<locale name="C">
+		<short>the applet's background color.</short>
+		<long>the applet's background color.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/multiload/prefs/swapload_speed</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>500</default>
+	<locale name="C">
+		<short>the refresh rate of the applet in milliseconds.</short>
+		<long>the refresh rate of the applet in milliseconds</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/swapload_size</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>40</default>
+	<locale name="C">
+		<short>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</short>
+		<long>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/swapload_color0</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#8b00c3</default>
+	<locale name="C">
+		<short>the graph color for user-related cpu activity.</short>
+		<long>the graph color for user-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/swapload_color1</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#000000</default>
+	<locale name="C">
+		<short>the graph color for system-related cpu activity.</short>
+		<long>the graph color for system-related cpu activity.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/multiload/prefs/loadavg_speed</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>500</default>
+	<locale name="C">
+		<short>the refresh rate of the applet in milliseconds.</short>
+		<long>the refresh rate of the applet in milliseconds</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/loadavg_size</key>
+	<owner>multiload-applet-2</owner>
+	<type>int</type>
+	<default>40</default>
+	<locale name="C">
+		<short>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</short>
+		<long>for horizontal panels, the width of the applet in pixels.  for verticle panels, this is the height of the applet.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/loadavg_color0</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#d50000</default>
+	<locale name="C">
+		<short>the graph color for user-related cpu activity.</short>
+		<long>the graph color for user-related cpu activity.</long>
+	</locale>
+</schema>
+<schema>
+	<key>/schemas/apps/multiload/prefs/loadavg_color1</key>
+	<owner>multiload-applet-2</owner>
+	<type>string</type>
+	<default>#000000</default>
+	<locale name="C">
+		<short>the graph color for system-related cpu activity.</short>
+		<long>the graph color for system-related cpu activity.</long>
 	</locale>
 </schema>
 

@@ -188,6 +188,10 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 	
     assert ((loadavg.flags & needed_loadavg_flags) == needed_loadavg_flags);
 
+	index = 0;
+	
+/* i need to figure out what this means... */
+/*
     switch (g->prop_data->loadavg_type) {
     case LOADAVG_1:
 	index = 0;
@@ -202,10 +206,11 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 	g_assert_not_reached ();
 	return;
     }
-
+*/
+/*
     if (g->prop_data_ptr->adj_data [2])
 	max_loadavg = (float) g->prop_data_ptr->adj_data [2];
-
+*/
     if (loadavg.loadavg [index] > max_loadavg)
 	loadavg.loadavg [index] = max_loadavg;
 

@@ -5,6 +5,7 @@
 
 #include <gnome.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include <gtk/gtk.h>
 #include <libgnomeui/libgnomeui.h>
@@ -13,40 +14,92 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libart_lgpl/libart.h>
 
-#include "local-properties.h"
+G_BEGIN_DECLS
+
+#define NCPUSTATES 4
+
+typedef struct _MultiloadApplet MultiloadApplet;
+typedef struct _LoadGraph LoadGraph;
+typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
+
+struct _LoadGraph {
+    PanelApplet *applet;
+
+    guint n;
+    guint speed, size;
+    guint orient, pixel_size;
+    guint draw_width, draw_height;
+    LoadGraphDataFunc get_data;
+
+    guint allocated;
+
+    GdkColor *colors;
+    guint **data, **odata;
+    guint data_size;
+    guint *pos;
+
+    gint colors_allocated;
+    GtkWidget *main_widget;
+    GtkWidget *frame, *box, *disp;
+    GdkPixmap *pixmap;
+    GdkGC *gc;
+    int timer_index;
+
+    gint show_frame;
+
+    long cpu_time [NCPUSTATES];
+    long cpu_last [NCPUSTATES];
+    int cpu_initialized;
+    
+    gboolean visible;
+    gchar *name;
+};
+
+struct _MultiloadApplet
+{
+	PanelApplet *applet;
+	
+	LoadGraph *graphs[5];
+	
+	gboolean view_cpuload;
+	gboolean view_memload;
+	gboolean view_netload;
+	gboolean view_swapload;
+	gboolean view_loadavg;
+};
+
 #include "load-graph.h"
 #include "linux-proc.h"
 
-G_BEGIN_DECLS
+extern MultiloadApplet *multiload_applet;
 
 /* start a new instance of the cpuload applet */
-gboolean
-cpuload_applet_new(PanelApplet *applet);
+LoadGraph *
+cpuload_applet_new(PanelApplet *applet, gpointer data);
 
 /* start a new instance of the memload applet */
-gboolean
-memload_applet_new(PanelApplet *applet);
+LoadGraph *
+memload_applet_new(PanelApplet *applet, gpointer data);
 
 /* start a new instance of the swapload applet */
-gboolean
-swapload_applet_new(PanelApplet *applet);
+LoadGraph *
+swapload_applet_new(PanelApplet *applet, gpointer data);
 
 /* start a new instance of the netload applet */
-gboolean
-netload_applet_new(PanelApplet *applet);
+LoadGraph *
+netload_applet_new(PanelApplet *applet, gpointer data);
 
 /* start a new instance of the loadavg applet */
-gboolean
-loadavg_applet_new(PanelApplet *applet);
-
-/* run gtop */
-/* if gtop is being phased out in favor of procman, is it safe to remove this function? */
-void 
-start_gtop_cb (BonoboUIComponent *uic, gpointer data, const gchar *name);
+LoadGraph *
+loadavg_applet_new(PanelApplet *applet, gpointer data);
 
 /* run procman, gtop's replacement */
 void
 start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name);
+
+/* show properties dialog */
+void
+multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name);
 
 /* show help */
 void

@@ -1,133 +1,115 @@
+/* GNOME cpuload/memload panel applet
+ * (C) 2002 The Free Software Foundation
+ *
+ * Authors: 
+ *		  Todd Kulesza
+ *
+ *
+ */
+
+#include <gnome.h>
+#include <panel-applet.h>
+#include <panel-applet-gconf.h>
+
 #include "global.h"
-#include <libgnomeui/gnome-window-icon.h>
 
-GList *multiload_property_object_list = NULL;
-
-MultiLoadProperties multiload_properties;
-/*
-static GtkWidget *win = NULL;
+MultiloadApplet *multiload_applet;
 
 void
-multiload_properties_cb (PanelApplet *widget, gpointer data)
+properties_close_cb(GtkWidget *widget, gint arg, gpointer data)
 {
-    LoadGraph *g;
-
-    g = data;
-
-    if (g->global_prop_data == &multiload_properties.cpuload)
-	multiload_show_properties (PROP_CPULOAD);
-    else if (g->global_prop_data == &multiload_properties.memload)
-	multiload_show_properties (PROP_MEMLOAD);
-    else if (g->global_prop_data == &multiload_properties.swapload)
-	multiload_show_properties (PROP_SWAPLOAD);
-    else if (g->global_prop_data == &multiload_properties.netload)
-	multiload_show_properties (PROP_NETLOAD);
-    else if (g->global_prop_data == &multiload_properties.loadavg)
-	multiload_show_properties (PROP_LOADAVG);
-    else
-	g_assert_not_reached();
-    return;
-    widget = NULL;
-}
-
-void
-multiload_properties_close (void)
-{
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_DISCARD_TEMP);
-    
-    win = NULL;
-}
-
-void
-multiload_properties_apply (void)
-{
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_APPLY);
-
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_SAVE_TEMP);
-
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_SAVE);
-
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_UPDATE);
-
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_LOAD_TEMP);
-}
-
-void
-multiload_properties_changed (void)
-{
-    gnome_property_box_changed (GNOME_PROPERTY_BOX (win));
-}
-
-static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
-{
-	GnomeHelpMenuEntry help_entry = { NULL, NULL };
-	char *das_names[] = {
-		"cpuload_applet",
-		"memload_applet",
-		"swapload_applet",
-		"netload_applet",
-		"loadavg_applet"
-	};
-	char *das_pages[] = {
-		"index.html#CPULOAD-PROPERTIES",
-		"index.html#MEMLOAD-PROPERTIES",
-		"index.html#SWAPLOAD-PROPERTIES",
-		"index.html#NETLOAD-PROPERTIES",
-		"index.html#LOADAVG-PROPERTIES"
-	};
-	help_entry.name = das_names[tab];
-	help_entry.path = das_pages[tab];
-	gnome_help_display(NULL, &help_entry);
-}
-
-void
-multiload_show_properties (PropertyClass prop_class)
-{
-    GList *c;
-
-    if (win) {
-	gdk_window_raise (win->window);
-
-	return;
-    }
 	
-    win = gnome_property_box_new ();
-    if (prop_class == PROP_MEMLOAD || prop_class == PROP_SWAPLOAD)
-	    gnome_window_icon_set_from_file (GTK_WINDOW (win),
-					     GNOME_ICONDIR"/gnome-mem.png");
-
-    for (c = multiload_property_object_list; c; c = c->next) {
-	GnomePropertyObject *object = c->data;
-
-	gnome_property_object_register
-	    (GNOME_PROPERTY_BOX (win), object);
-    }
-
-    gnome_property_object_list_walk (multiload_property_object_list,
-				     GNOME_PROPERTY_ACTION_LOAD_TEMP);
-
-    gtk_signal_connect (GTK_OBJECT (win), "apply",
-			GTK_SIGNAL_FUNC (multiload_properties_apply), NULL);
-
-    gtk_signal_connect (GTK_OBJECT (win), "destroy",
-			GTK_SIGNAL_FUNC (multiload_properties_close), NULL);
-
-    gtk_signal_connect (GTK_OBJECT (win), "help",
-			GTK_SIGNAL_FUNC (phelp_cb), NULL);
-
-    gtk_widget_show_all (win);
-    gtk_notebook_set_page (GTK_NOTEBOOK (GNOME_PROPERTY_BOX (win)->notebook), prop_class);
+	if (arg == GTK_RESPONSE_CLOSE)
+		gtk_widget_destroy(widget);
+	
+	return;
 }
 
 void
-multiload_init_properties (void)
+property_toggled_cb(GtkWidget *widget, gpointer name)
 {
+	panel_applet_gconf_set_bool(multiload_applet->applet, (gchar *)name, 
+			gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)), NULL);
+	
+	return;
 }
+
+void
+fill_properties(GtkWidget *dialog)
+{
+	GtkWidget *notebook;
+	GtkWidget *hbox;
+	GtkWidget *check_box;
+	GtkWidget *frame;
+	
+	frame = gtk_frame_new(_("Monitored Resources"));
+	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
+	
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(hbox), 3);
+	gtk_container_add(GTK_CONTAINER(frame), hbox);
+	
+	check_box = gtk_check_button_new_with_mnemonic(_("_Processor"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+				panel_applet_gconf_get_bool(multiload_applet->applet, "view_cpuload", NULL));
+	g_signal_connect(G_OBJECT(check_box), "toggled",
+				G_CALLBACK(property_toggled_cb), "view_cpuload");
+	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+	
+	check_box = gtk_check_button_new_with_mnemonic(_("_Memory"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+				panel_applet_gconf_get_bool(multiload_applet->applet, "view_memload", NULL));
+	g_signal_connect(G_OBJECT(check_box), "toggled",
+				G_CALLBACK(property_toggled_cb), "view_memload");
+	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+	
+	check_box = gtk_check_button_new_with_mnemonic(_("_Network"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+				panel_applet_gconf_get_bool(multiload_applet->applet, "view_netload", NULL));
+	g_signal_connect(G_OBJECT(check_box), "toggled",
+				G_CALLBACK(property_toggled_cb), "view_netload");
+	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+	
+	check_box = gtk_check_button_new_with_mnemonic(_("_Swap File"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+				panel_applet_gconf_get_bool(multiload_applet->applet, "view_swapload", NULL));
+	g_signal_connect(G_OBJECT(check_box), "toggled",
+				G_CALLBACK(property_toggled_cb), "view_swapload");
+	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+
+/*	
+	check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+				panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 */
+	return;
+}
+
+/* show properties dialog */
+void
+multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name)
+{
+	static GtkWidget *dialog = NULL;
+	
+	if (dialog != NULL)
+	{
+	    gdk_window_show(dialog->window);
+	    gdk_window_raise(dialog->window);
+	    return;
+	}
+	
+	dialog = gtk_dialog_new_with_buttons(_("SystemLoad Properties"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
+	
+	fill_properties(dialog);
+	
+	g_signal_connect (G_OBJECT(dialog), "destroy",
+			G_CALLBACK(gtk_widget_destroyed), &dialog);
+	g_signal_connect(G_OBJECT(dialog), "response",
+			G_CALLBACK(properties_close_cb), NULL);
+			
+	gtk_widget_show_all(dialog);
+	
+	return;
+}

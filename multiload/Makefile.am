@@ -1,16 +1,19 @@
 INCLUDES =						\
 	-I$(srcdir)					\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-DGNOME_DISABLE_DEPRECATED=1	\
+	-DGTK_DISABLE_DEPRECATED=1	\
 	$(GNOME_APPLETS_CFLAGS)                         \
 	$(GTOP_APPLETS_CFLAGS)				\
-	-I$(includedir)	
+	-I$(includedir)	\
+	-Wall
 
-libmultiload_applet_2_la_SOURCES = \
+bin_PROGRAMS = multiload-applet-2
+
+multiload_applet_2_SOURCES = \
 			global.h	\
 			linux-proc.h	\
 			load-graph.h	\
-			local-properties.h	\
-			properties.h	\
 			cpuload.c	\
 			linux-proc.c	\
 			load-graph.c	\
@@ -21,28 +24,23 @@ libmultiload_applet_2_la_SOURCES = \
 			properties.c	\
 			swapload.c
 
-libmultiload_applet_2_la_LIBADD = \
+multiload_applet_2_LDADD = \
 				$(GNOME_APPLETS_LIBS) 	\
 				$(GTOP_APPLETS_LIBS)
 
-appletdir = $(libdir)
-applet_LTLIBRARIES = libmultiload_applet_2.la
+pixmaps = gnome-cpu.png
 
-GNOME_MultiLoadApplet_Factory.server.in: GNOME_MultiLoadApplet_Factory.server.in.in
-	sed -e "s|\@APPLET_LIBDIR\@|$(appletdir)|" $< > $@
-
-pixmaps = gnome-cpu.png gnome-mem.png
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = $(pixmaps)
 
-schemadir   = $(sysconfdir)/gconf/schemas
-schema_DATA = multiload.schemas
+schemadir 	= @GCONF_SCHEMA_FILE_DIR@
+schema_DATA	= multiload.schemas
 
-#install-data-local:
-#	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
-
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+		
 EXTRA_DIST =	\
-		GNOME_MultiLoadApplet_Factory.server.in.in \
+		GNOME_MultiLoadApplet_Factory.server.in \
 		multiload.schemas \
 		$(pixmaps)
 
