@@ -197,6 +197,24 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 	XEvent *xevent = (XEvent *) xev;
 	Display *display = xevent->xany.display;
 	XklFilterEvents (xevent);
+	switch ( xevent->type )
+	{
+		case ReparentNotify:
+		{
+			XReparentEvent *rne = ( XReparentEvent * ) xev;
+			GtkWidget *w1;
+			GdkWindow *w;
+			w1 = gtk_widget_get_ancestor( sia->applet, GTK_TYPE_WINDOW );
+			if( w1 == NULL )
+				break;
+			w = w1->window;
+			if( w == NULL || GDK_WINDOW_XID( w ) != rne->window )
+				break;
+			XklSetTransparent( GDK_WINDOW_XID( w ), TRUE );
+		}
+		break;
+	}
+
 	return GDK_FILTER_CONTINUE;
 }
 
@@ -848,7 +866,6 @@ GSwitchItAppletNew (PanelApplet * applet)
 	fatal_mask = G_LOG_LEVEL_WARNING | G_LOG_LEVEL_CRITICAL;
 	g_log_set_always_fatal (fatal_mask);
 #endif
-	/* BASTARDS! THEY CALL THIS METHOD TWICE!!! */
 	if (theAppletInstance == NULL) {
 		terminatedOnce = FALSE;
 		theAppletInstance = g_new0 (GSwitchItApplet, 1);
