@@ -17,10 +17,6 @@
 #include <applet-widget.h>
 #include <esd.h>
 
-#define VUMETER_APPLET_VERSION_MAJ 0
-#define VUMETER_APPLET_VERSION_MIN 7
-#define VUMETER_APPLET_VERSION_REV 0
-
 #define PEAK_MODE_OFF 0
 #define PEAK_MODE_ACTIVE 1
 #define PEAK_MODE_SMOOTH 2
@@ -38,6 +34,13 @@
 #define RATE   44100
 /* A fairly good size buffer to keep resource (cpu) down */
 #define NSAMP  2048
+
+enum {
+	SIZEHINT_TINY,
+	SIZEHINT_STANDARD,
+	SIZEHINT_LARGE,
+	SIZEHINT_HUGE
+};
 
 typedef struct _ItemData ItemData;
 struct _ItemData
@@ -116,6 +119,7 @@ struct _AppData
 	GtkWidget *display_area;
 	GtkTooltips *tooltips;
 	PanelOrientType orient;
+	gint sizehint;
 	gint update_timeout_id;
 
 	gchar *theme_file;
@@ -159,8 +163,6 @@ struct _AppData
 	GtkWidget *host_entry;
 
 	SkinData *skin;
-	SkinData *skin_v;
-	SkinData *skin_h;
 
 	gpointer manager;
 };

@@ -25,12 +25,16 @@ static VuData *new_vu_item_from_file(gchar *file, gint sections, gint x, gint y,
 static void free_item(ItemData *item);
 static void free_vu_item(VuData *item);
 static SkinData *new_skin();
+
 static SkinData *load_default_skin_h();
 static SkinData *load_default_skin_v();
-static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical);
-static VuData *get_vu_item(gchar *path, gchar *datafile, gchar *name, gint vertical);
-static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical);
-static SkinData *load_skin(gchar *skin_path, gint vertical);
+static SkinData *load_default_skin(AppData *ad);
+
+static ItemData *get_item(gchar *path, gchar *name, gint sections);
+static VuData *get_vu_item(gchar *path, gchar *name);
+static GtkWidget *get_background(gchar *path);
+static SkinData *load_skin(gchar *skin_path, gint vertical, gint size);
+static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size);
 
 static GdkPixmap *get_pixmap_from_data(gchar **data)
 {
@@ -609,13 +613,31 @@ static SkinData *load_default_skin_v()
 	return s;
 }
 
+static SkinData *load_default_skin(AppData *ad)
+{
+	if (ad->orient == ORIENT_UP || ad->orient == ORIENT_DOWN)
+		{
+		if (ad->sizehint == SIZEHINT_TINY)
+			return load_default_skin_v();
+		else
+			return load_default_skin_h();
+		}
+	else
+		{
+		if (ad->sizehint == SIZEHINT_TINY)
+			return load_default_skin_h();
+		else
+			return load_default_skin_v();
+		}
+}
+
 /*
  *----------------------------------------------------------------------------
  * Load external skin
  *----------------------------------------------------------------------------
  */
 
-static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical)
+static ItemData *get_item(gchar *path, gchar *name, gint sections)
 {
 	ItemData *item;
 	gchar **vector = NULL;
@@ -624,19 +646,9 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 	gchar *lang_filename = NULL;
 	gint x;
 	gint y;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	gnome_config_get_vector(name, &length, &vector);
 	lang_filename = gnome_config_get_translated_string (name);
-	gnome_config_pop_prefix();
 
 	if (sections > 0)
 		{
@@ -696,7 +708,7 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 	return item;
 }
 
-static VuData *get_vu_item(gchar *path, gchar *datafile, gchar *name, gint vertical)
+static VuData *get_vu_item(gchar *path, gchar *name)
 {
 	VuData *item;
 	gchar **vector = NULL;
@@ -706,18 +718,8 @@ static VuData *get_vu_item(gchar *path, gchar *datafile, gchar *name, gint verti
 	gint y;
 	gint horizontal = FALSE;
 	gint sections;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	gnome_config_get_vector(name, &length, &vector);
-	gnome_config_pop_prefix();
 
 	if (!vector || length < 5)
 		{
@@ -752,7 +754,7 @@ static VuData *get_vu_item(gchar *path, gchar *datafile, gchar *name, gint verti
 	return item;
 }
 
-static ScopeData *get_scope_item(gchar *path, gchar *datafile, gchar *name, gint vertical)
+static ScopeData *get_scope_item(gchar *path, gchar *name)
 {
 	ScopeData *item;
 	gchar **vector = NULL;
@@ -761,18 +763,8 @@ static ScopeData *get_scope_item(gchar *path, gchar *datafile, gchar *name, gint
 	gint x;
 	gint y;
 	gint horizontal = FALSE;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	gnome_config_get_vector(name, &length, &vector);
-	gnome_config_pop_prefix();
 
 	if (!vector || length < 4)
 		{
@@ -806,23 +798,13 @@ static ScopeData *get_scope_item(gchar *path, gchar *datafile, gchar *name, gint
 	return item;
 }
 
-static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical)
+static GtkWidget *get_background(gchar *path)
 {
 	GtkWidget *pixmap = NULL;
 	gchar *buf = NULL;
 	gchar *filename;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	buf = gnome_config_get_string("Background=");
-	gnome_config_pop_prefix();
 
 	if (!buf)
 		{
@@ -845,10 +827,12 @@ static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical)
 	return pixmap;
 }
 
-static SkinData *load_skin(gchar *skin_path, gint vertical)
+static SkinData *load_skin(gchar *skin_path, gint vertical, gint size)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/themedata", NULL);
+	gchar *prefix;
+	gchar *stext;
 
 	if (!g_file_exists(datafile))
 		{
@@ -859,10 +843,39 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 		}
 	s = new_skin();
 
+	switch (size)
+		{
+		case SIZEHINT_TINY:
+			stext = "_Tiny";
+			break;
+		case SIZEHINT_LARGE:
+			stext = "_Large";
+			break;
+		case SIZEHINT_HUGE:
+			stext = "_Huge";
+			break;
+		case SIZEHINT_STANDARD:
+		default:
+			stext = "";
+			break;
+		}
+
+	if (vertical)
+		{
+		prefix = g_strconcat ("=", datafile, "=/Vertical", stext, "/", NULL);
+		}
+	else
+		{
+		prefix = g_strconcat ("=", datafile, "=/Horizontal", stext, "/", NULL);
+		}
+
+	gnome_config_push_prefix (prefix);
+	g_free(prefix);
+
 	/* background */
 
 	s->pixmap = NULL;
-	s->pixmap = get_background(skin_path, datafile, vertical);
+	s->pixmap = get_background(skin_path);
 	if (s->pixmap)
 		{
 		gint width, height;
@@ -876,16 +889,19 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 		{
 		free_skin(s);
 		g_free(datafile);
+		gnome_config_pop_prefix();
 		return NULL;
 		}
 
-	s->status = get_item(skin_path, datafile, "Item_Status=", 4, vertical);
-	s->vu_left = get_vu_item(skin_path, datafile, "Item_Meter_Left=", vertical);
-	s->vu_right = get_vu_item(skin_path, datafile, "Item_Meter_Right=", vertical);
-	s->meter_left = get_item(skin_path, datafile, "Item_Misc_Left=", 0, vertical);
-	s->meter_right = get_item(skin_path, datafile, "Item_Misc_Right=", 0, vertical);
-	s->scope = get_scope_item(skin_path, datafile, "Scope=", vertical);
+	s->status = get_item(skin_path, "Item_Status=", 4);
+	s->vu_left = get_vu_item(skin_path, "Item_Meter_Left=");
+	s->vu_right = get_vu_item(skin_path, "Item_Meter_Right=");
+	s->meter_left = get_item(skin_path, "Item_Misc_Left=", 0);
+	s->meter_right = get_item(skin_path, "Item_Misc_Right=", 0);
+	s->scope = get_scope_item(skin_path, "Scope=");
+
 	g_free(datafile);
+	gnome_config_pop_prefix();
 	return s;
 }
 
@@ -895,39 +911,57 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
  *----------------------------------------------------------------------------
  */
 
+static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size)
+{
+	SkinData *s = NULL;
+
+	s = load_skin(path, vertical, size);
+	if (s) return s;
+
+	/* huge falls back to large, then standard */
+	if (size == SIZEHINT_HUGE)
+		{
+		s = load_skin(path, vertical, SIZEHINT_LARGE);
+		if (s) return s;
+		return load_skin(path, vertical, SIZEHINT_STANDARD);
+		}
+
+	if (size == SIZEHINT_STANDARD) return NULL;
+
+	/* if not standard and failed so far, try to fall back to it */
+	return load_skin(path, vertical, SIZEHINT_STANDARD);
+}
+
 gint change_to_skin(gchar *path, AppData *ad)
 {
-	SkinData *nsh = NULL;
-	SkinData *nsv = NULL;
-	SkinData *osh = ad->skin_h;
-	SkinData *osv = ad->skin_v;
+	SkinData *new_s = NULL;
+	SkinData *old_s = ad->skin;
 
 	if (!path)
 		{
-		nsh = load_default_skin_h();
-		nsv = load_default_skin_v();
+		new_s = load_default_skin(ad);
 		}
 	else
 		{
-		nsh = load_skin(path, FALSE);
-		nsv = load_skin(path, TRUE);
+		new_s = load_best_skin_match(path,
+					     (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
+					     ad->sizehint);
+		if (!new_s)
+			{
+			new_s = load_skin(path,
+					  !(ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
+					  SIZE_STANDARD);
+			}
 		}
 
-	if (!nsh) return FALSE;
+	if (!new_s) return FALSE;
 
-	ad->skin_h = nsh;
-	ad->skin_v = nsv;
-
-	ad->skin = nsh;
-	if (nsv && (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT))
-		{
-		ad->skin = nsv;
-		}
+	ad->skin = new_s;
 
 	sync_window_to_skin(ad);
 
-	free_skin(osh);
-	free_skin(osv);
+	free_skin(old_s);
 
 	return TRUE;
 }
+

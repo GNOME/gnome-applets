@@ -16,7 +16,9 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 				GdkColor *color, gpointer data);
 static void destroy_applet(GtkWidget *widget, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
+static void reload_theme(AppData *ad);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
 					char *globcfgpath, gpointer data);
 static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams);
@@ -25,16 +27,11 @@ static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 	const gchar *authors[4];
-	gchar version[32];
 
-	g_snprintf(version, sizeof(version), _("%d.%d.%d"),
-		   VUMETER_APPLET_VERSION_MAJ,
-		   VUMETER_APPLET_VERSION_MIN,
-		   VUMETER_APPLET_VERSION_REV);
 	authors[0] = _("John Ellis <johne@bellatlantic.net>");
 	authors[1] = NULL;
 
-        about = gnome_about_new ( _("Sound Monitor Applet"), version,
+        about = gnome_about_new ( _("Sound Monitor Applet"), VERSION,
 			_("(C) 1999 John Ellis"),
 			authors,
 			_("Sound monitor interface to Esound\n\n"
@@ -260,8 +257,7 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 
 	stop_sound(ad);
 
-	free_skin(ad->skin_h);
-	free_skin(ad->skin_v);
+	free_skin(ad->skin);
 
 	g_free(ad->esd_host);
 	g_free(ad->theme_file);
@@ -277,6 +273,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->applet = applet;
 	ad->propwindow = NULL;
 	ad->orient = ORIENT_UP;
+	ad->sizehint = SIZEHINT_STANDARD;
 
 	ad->esd_status = ESD_STATUS_ERROR;
 	ad->esd_status_menu = ESD_STATUS_ERROR;
@@ -292,15 +289,10 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->draw_scope_as_segments = TRUE;
 
 	ad->skin = NULL;
-	ad->skin_h = NULL;
-	ad->skin_v = NULL;
 
 	ad->theme_file = NULL;
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
-
-	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
-		GTK_SIGNAL_FUNC(applet_change_orient), ad);
 
 	/* create a tooltip widget */
 	ad->tooltips = gtk_tooltips_new();
@@ -312,19 +304,15 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display_area);
 
-	gtk_widget_realize(ad->display_area);
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
+		GTK_SIGNAL_FUNC(applet_change_orient), ad);
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_size",
+		GTK_SIGNAL_FUNC(applet_change_size), ad);
 
-	if (ad->theme_file && strlen(ad->theme_file) == 0)
-		{
-		change_to_skin(NULL, ad);
-		}
-	else if (!change_to_skin(ad->theme_file, ad))
-		{
-		printf("Failed to load skin %s, loading default\n", ad->theme_file);
-		change_to_skin(NULL, ad);
-		}
-
+	gtk_widget_set_usize(ad->applet, 5, 5); /* so that a large default is not shown */
 	gtk_widget_show(ad->applet);
+
+	reload_theme(ad);
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), ad);
@@ -371,26 +359,52 @@ static AppData *create_new_app(GtkWidget *applet)
 	return ad;
 }
 
+static void reload_theme(AppData *ad)
+{
+	if (ad->theme_file && strlen(ad->theme_file) == 0)
+		{
+		change_to_skin(NULL, ad);
+		}
+	else if (!change_to_skin(ad->theme_file, ad))
+		{
+		printf("Failed to load theme %s, loading default\n", ad->theme_file);
+		change_to_skin(NULL, ad);
+		}
+}
+
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	AppData *ad = data;
 	ad->orient = o;
-	if (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT)
+
+	if (!ad->skin) return; /* we are done if in startup */
+
+	reload_theme(ad);
+}
+
+static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
+{
+	AppData *ad = data;
+
+	switch (s)
 		{
-		if (ad->skin_v && ad->skin != ad->skin_v)
-			{
-			ad->skin = ad->skin_v;
-			sync_window_to_skin(ad);
-			}
+		case SIZE_TINY:
+			ad->sizehint = SIZEHINT_TINY;
+			break;
+		case SIZE_STANDARD:
+			ad->sizehint = SIZEHINT_STANDARD;
+			break;
+		case SIZE_LARGE:
+			ad->sizehint = SIZEHINT_LARGE;
+			break;
+		case SIZE_HUGE:
+			ad->sizehint = SIZEHINT_HUGE;
+			break;
 		}
-	else
-		{
-		if (ad->skin != ad->skin_h)
-			{
-			ad->skin = ad->skin_h;
-			sync_window_to_skin(ad);
-			}
-		}
+
+	if (!ad->skin) return; /* we are done if in startup */
+
+	reload_theme(ad);
 }
 
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
@@ -422,16 +436,12 @@ int main (int argc, char *argv[])
 {
 	GtkWidget *applet;
 	char *goad_id;
-	gchar *ver_string;
 
 	/* Initialize the i18n stuff */
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	ver_string = g_strdup_printf("%d.%d.%d", VUMETER_APPLET_VERSION_MAJ, VUMETER_APPLET_VERSION_MIN, VUMETER_APPLET_VERSION_REV);
-
-	applet_widget_init("sound-monitor_applet", ver_string, argc, argv, NULL, 0,
-			   NULL);
+	applet_widget_init("sound-monitor_applet", VERSION, argc, argv, NULL, 0, NULL);
 
 	applet_factory_new("sound-monitor_applet_factory", NULL,
 			   applet_start_new_applet);
