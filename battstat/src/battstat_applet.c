@@ -256,8 +256,11 @@ apm_readinfo(void)
 void
 apm_readinfo(void)
 {
-  if (DEBUG) g_print("apm_readinfo() (Generic)\n Your platform is not supported!\n");
-  if (DEBUG) g_print("The applet will not work properly (if at all).\n");
+  if (DEBUG) g_print(
+		     /* Message displayed if user tries to run applet
+			on unsupported platform */
+		     _("apm_readinfo() (Generic)\n Your platform is not supported!\n"));
+  if (DEBUG) g_print(_("The applet will not work properly (if at all).\n"));
 
   return;
 }
@@ -307,9 +310,15 @@ pixmap_timeout( gpointer data )
   gchar new_label[80];
   gchar new_string[80];
   gchar *status[]={
+    /* The following four messages will be displayed as tooltips over
+     the battery meter.  
+     High = The APM BIOS thinks that the battery charge is High.*/
     gettext_noop ("High"),
+    /* Low = The APM BIOS thinks that the battery charge is Low.*/
     gettext_noop ("Low"),
+    /* Critical = The APM BIOS thinks that the battery charge is Critical.*/
     gettext_noop ("Critical"),
+    /* Charging = The APM BIOS thinks that the battery is recharging.*/
     gettext_noop ("Charging")
   };
 
@@ -407,28 +416,60 @@ pixmap_timeout( gpointer data )
 
   }
 
-  if(ac_status != lastac) {
+
+  if(pix_type_new != lastac) {
     if(battery->showbattery == 0 && battery->showpercent == 0) {
-      snprintf(new_label, sizeof(new_label),
-	       _("System is running on %s power\nBattery: %d%% (%s)"),
-	       pix_type_new?_("AC"):_("battery"), batt_life, _(status[ac_status]));
+      if(pix_type_new == 0) {
+	/* 0 = Battery power */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using battery power and the battery meter
+		    and percent meter is hidden by the user.*/
+		 _("System is running on battery power\nBattery: %d%% (%s)"),
+		 batt_life, _(status[ac_status]));
+      } else {
+	/* 1 = AC power. I should really test it explicitly here. */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using AC power and the battery meter
+		    and percent meter is hidden by the user.*/
+		 _("System is running on AC power\nBattery: %d%% (%s)"),
+		 batt_life, _(status[ac_status]));
+      }
     } else {
-      snprintf(new_label, sizeof(new_label),_("System is running on %s power"),
-	       pix_type_new?_("AC"):_("battery"));
+      if(pix_type_new == 0) {
+	/* 0 = Battery power */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using battery power.*/
+		 _("System is running on battery power"));
+      } else {
+	/* 1 = AC power. I should really test it explicitly here. */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using AC power.*/
+		 _("System is running on AC power"));
+      }
     }
     gtk_tooltips_set_tip (battery->ac_tip,
 			  battery->eventstatus,
 			  new_label,
 			  NULL);
   }
-  lastac = ac_status;
+  lastac = pix_type_new;
 
   if(batt_life != lastapm || battery->colors_changed) {
-    if (batterypresent) 
-      snprintf(new_label, sizeof(new_label),"%d%%", batt_life);
-    else
-      snprintf(new_label, sizeof(new_label),"N/A");
+    /* Update the battery meter, tooltip and label */
 
+    if (batterypresent) {
+      snprintf(new_label, sizeof(new_label),"%d%%", batt_life);
+    } else {
+      /* Displayed in the percentage label at the side of the battery meter
+       * if the applet discovers that you have removed the battery
+       * from the system and it only runs on AC power.
+       */
+      snprintf(new_label, sizeof(new_label),_("N/A"));
+    }
     gtk_label_set_text ( GTK_LABEL (battery->percent), new_label);
     gtk_label_set_text ( GTK_LABEL (battery->statuspercent), new_label);
 
@@ -561,8 +602,21 @@ pixmap_timeout( gpointer data )
 
     if(pix_type_new == 0 && batt_life <= battery->red_val) {
       if(battery->lowbattnotification) {
-	snprintf(new_label, sizeof(new_label),(_("Battery low (%d%%) and AC is %s")),
-		 batt_life, pix_type_new?(_("online")):(_("offline")));
+	if(pix_type_new == 0) {
+	  /* This message will be displayed in a Gnome Warning dialog
+	     window when the laptop isn't connected to a power source
+	     and the battery charge is dropping below the value
+	     specified by the user. */
+	  snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is offline"),
+		   batt_life);
+	} else {
+	  /* This message will be displayed in a Gnome Warning dialog
+	     window when the battery charge is dropping below the
+	     value specified by the user. Technically this shouldn't
+	     happen if the battery is working properly.*/
+	  snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is online"),
+		   batt_life);
+	}
 	gnome_warning_dialog(new_label);
 	
 	if(battery->beep)
@@ -574,23 +628,53 @@ pixmap_timeout( gpointer data )
     }
 
     if (battery->showstatus == 0) {
-      if (batterypresent)
-	snprintf(new_string, sizeof(new_string), (_("System is running on %s power. Battery: %d%% (%s)")),
-		 pix_type_new?_("AC"):_("battery"),
-		 batt_life,
-		 _(status[ac_status]));
-      else {
-	snprintf(new_string, sizeof(new_string), (_("System is running on %s power. Battery: Not present")),
-		 
-		 pix_type_new?_("AC"):_("battery"));
+      /* Showstatus=0 */
+      if (batterypresent) {
+	if(pix_type_new == 0) {
+	  snprintf(new_string, sizeof(new_string), 
+		   /* This string will display as a tooltip over the battery frame
+		      when the computer is using battery power.*/
+		   _("System is running on battery power. Battery: %d%% (%s)"),
+		   batt_life,
+		   _(status[ac_status]));
+	} else {
+	  snprintf(new_string, sizeof(new_string), 
+		   /* This string will display as a tooltip over the battery frame
+		      when the computer is using AC power.*/
+		   _("System is running on AC power. Battery: %d%% (%s)"),
+		   batt_life,
+		   _(status[ac_status]));
+	}
+      } else {
+	if(pix_type_new == 0) {
+	  snprintf(new_string, sizeof(new_string), 
+		   /* This string will display as a tooltip over the
+		      battery frame when the computer is using battery
+		      power and the battery isn't present. Not a
+		      possible combination, I guess... :)*/
+		   _("System is running on battery power. Battery: Not present"));
+	} else {
+	  snprintf(new_string, sizeof(new_string), 
+		   /* This string will display as a tooltip over the
+		      battery frame when the computer is using AC
+		      power and the battery isn't present.*/
+		   _("System is running on AC power. Battery: Not present"));
+	}
       }
     } else {
       if (batterypresent) 
-	snprintf(new_string, sizeof(new_string), (_("Battery: %d%% (%s)")),
+	snprintf(new_string, sizeof(new_string), 
+		 /* Displayed as a tooltip over the battery meter when there is
+		    a battery present. %d will hold the current charge and %s will
+		    hold the status of the battery, (High, Low, Critical, Charging. */
+		 (_("Battery: %d%% (%s)")),
 		 batt_life,
 		 _(status[ac_status]));
       else {
-	snprintf(new_string, sizeof(new_string), (_("Battery: Not present")));
+	snprintf(new_string, sizeof(new_string), 
+		 /* Displayed as a tooltip over the battery meter when no
+		    battery is present. */
+		 (_("Battery: Not present")));
       }
     }
    
@@ -603,14 +687,18 @@ pixmap_timeout( gpointer data )
 			 gettext(new_string),
 			 NULL);
 
+    if (DEBUG) printf("Percent: %d, Status: %s\n", batt_life, status[ac_status]);
     lastapm=batt_life;
   }
-  /* pix_type_new: AC line status, 0=AC not used, 1=AC online 
+  /* pix_type_new: AC line status, 0=Battery, 1=AC online 
    */
   if(ac_status != lastacstatus && ac_status != 3 && pix_type_new != 0) {
     gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
     if(battery->fullbattnot) {
-      gnome_ok_dialog(_("Battery is now fully re-charged!"));
+      gnome_ok_dialog(
+		      /* Displayed in a Gnome OK dialog window when the battery is
+			 fully recharged. */
+		      _("Battery is now fully re-charged!"));
       if (battery->beep)
 	gdk_beep();
     }
@@ -649,13 +737,17 @@ cleanup(int status)
 
   switch (status) {
   case 1:
-    g_error (_("Can't open the APM device!\n\n"
+    g_error (
+	     /* Displayed if the APM device couldn't be opened. (Used under *BSD)*/
+	     _("Can't open the APM device!\n\n"
 	       "Make sure you have read permission to the\n"
 	       "APM device."));
     exit(1);
     break;
   case 2:
-    g_error (_("The APM Management subsystem seems to be disabled.\n"
+    g_error (
+	     /* Displayed if the APM system is disabled (Used under *BSD)*/	     
+	     _("The APM Management subsystem seems to be disabled.\n"
 	       "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 	       "that helps.\n"));
     gtk_main_quit();
@@ -728,9 +820,12 @@ about_cb (AppletWidget *widget, gpointer data)
   authors[6] = NULL;
 
   battstat->about_box =
-    gnome_about_new (_("Battery status utility"), VERSION,
-                     _(" (C) 2000 The Gnulix Society"),
+    gnome_about_new (
+		     /* The long name of the applet in the About dialog.*/
+		     _("Battery status utility"), VERSION,
+                     " (C) 2000 The Gnulix Society",
                      (const char **) authors,
+		     /* Longer description of the applet in the About dialog.*/
 		     _("This utility show the status of your laptop battery."),
                      "battstat-tesla.xpm");
 
@@ -788,9 +883,15 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
   guint batterypresent = FALSE;
   guint ac_status;
   gchar *status[]={
+    /* The following four messages will be displayed as tooltips over
+     the battery meter.  
+     High = The APM BIOS thinks that the battery charge is High.*/
     gettext_noop ("High"),
+    /* Low = The APM BIOS thinks that the battery charge is Low.*/
     gettext_noop ("Low"),
+    /* Critical = The APM BIOS thinks that the battery charge is Critical.*/
     gettext_noop ("Critical"),
+    /* Charging = The APM BIOS thinks that the battery is recharging.*/
     gettext_noop ("Charging")};
   int width;
   battstat->orienttype=o;
@@ -863,7 +964,11 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
   }
 
   if (!(battstat->showbattery || battstat->showpercent || battstat->showstatus)) {
-    gnome_error_dialog(_("You can't hide all elements of the applet!"));
+    gnome_error_dialog(
+		       /* Displayed when the user tries to hide all
+			  parts of the applet in the preferences
+			  window. */
+		       _("You can't hide all elements of the applet!"));
     width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;
     gtk_widget_set_usize(battstat->framestatus, 20, 24);
     gtk_widget_set_usize(battstat->framebattery, width, 24);
@@ -893,17 +998,39 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
       gtk_widget_show (battstat->framebattery):gtk_widget_hide (battstat->framebattery);
 
     if (battstat->showbattery == 0 && battstat->showpercent == 0) {
-      snprintf(new_label, sizeof(new_label),
-	       _("System is running on %s power. Battery: %d%% (%s)"),
-	       pix_type_new?_("AC"):_("battery"), batt_life, _(status[ac_status]));
+      if(pix_type_new == 0) {
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using battery power and the battery meter
+		    and percent meter is hidden by the user.*/
+		 _("System is running on battery power. Battery: %d%% (%s)"),
+		 batt_life, _(status[ac_status]));
+      } else {
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using AC power and the battery meter
+		    and percent meter is hidden by the user.*/
+		 _("System is running on AC power. Battery: %d%% (%s)"),
+		 batt_life, _(status[ac_status]));      
+      }
       gtk_tooltips_set_tip (battstat->ac_tip,
 			    battstat->eventstatus,
 			    new_label,
 			    NULL);
     } else {
-      snprintf(new_label, sizeof(new_label),
-	       _("System is running on %s power."),
-	       pix_type_new?_("AC"):_("battery"));
+      if(pix_type_new == 0) {
+	/* 0 = Battery power */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using battery power.*/
+		 _("System is running on battery power"));
+      } else {
+	/* 1 = AC power. I should really test it explicitly here. */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using AC power.*/
+		 _("System is running on AC power"));
+      }
       gtk_tooltips_set_tip (battstat->ac_tip,
 			    battstat->eventstatus,
 			    new_label,
@@ -950,17 +1077,41 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
       gtk_widget_show (battstat->statuspixmapwid);      
     }
     if(battstat->showbattery == 0 && battstat->showpercent == 0) {
-      snprintf(new_label, sizeof(new_label),
-	       _("System is running on %s power. Battery: %d%% (%s)"),
-	       pix_type_new?_("AC"):_("battery"), batt_life, _(status[ac_status]));
+      if(pix_type_new == 0) {
+	/* 0 = Battery power */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using battery power and the battery meter
+		    and percent meter is hidden by the user.*/
+		 _("System is running on battery power\nBattery: %d%% (%s)"),
+		 batt_life, _(status[ac_status]));
+      } else {
+	/* 1 = AC power. I should really test it explicitly here. */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using AC power and the battery meter
+		    and percent meter is hidden by the user.*/
+		 _("System is running on AC power\nBattery: %d%% (%s)"),
+		 batt_life, _(status[ac_status]));
+      }
       gtk_tooltips_set_tip (battstat->ac_tip,
 			    battstat->eventstatus,
 			    new_label,
 			    NULL);
     } else {
-      snprintf(new_label, sizeof(new_label),
-	       _("System is running on %s power."),
-	       pix_type_new?_("AC"):_("battery"));
+      if(pix_type_new == 0) {
+	/* 0 = Battery power */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using battery power.*/
+		 _("System is running on battery power"));
+      } else {
+	/* 1 = AC power. I should really test it explicitly here. */
+	snprintf(new_label, sizeof(new_label),
+		 /* This string will display as a tooltip over the status frame
+		    when the computer is using AC power.*/
+		 _("System is running on AC power"));
+      }
       gtk_tooltips_set_tip (battstat->ac_tip,
 			    battstat->eventstatus,
 			    new_label,
@@ -1157,7 +1308,7 @@ build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
   battstat->st_tip = gtk_tooltips_new ();
   gtk_tooltips_set_tip (battstat->st_tip,
 			battstat->eventdock,
-			"Test",
+			"Add code here",
 			NULL);
   
   return;
@@ -1217,7 +1368,10 @@ init_applet(int argc, char *argv[], gpointer data)
   applet_widget_init(PACKAGE, VERSION, argc, argv, NULL, 0, NULL);
   battstat->applet = applet_widget_new(PACKAGE);
   if (!battstat->applet) {
-    g_error (_("Can't create applet!\n"));
+    g_error (
+	     /* Message will be displayed if the applet couldn't be
+		created at all. */
+	     _("Can't create applet!\n"));
     destroy_applet(battstat->applet, battstat);
   }
   battstat->font_changed=TRUE;
@@ -1369,23 +1523,27 @@ create_layout(int argc, char *argv[], gpointer data)
   applet_widget_register_stock_callback (APPLET_WIDGET (battstat->applet),
                                          "properties",
                                          GNOME_STOCK_MENU_PROP,
+					 /* Applet menu, Properties */
                                          _("Properties..."),
                                          prop_cb,
                                          battstat);
   applet_widget_register_stock_callback (APPLET_WIDGET (battstat->applet),
                                          "about",
                                          GNOME_STOCK_MENU_ABOUT,
+					 /* Applet menu, About */
                                          _("About..."),
                                          about_cb,
                                          battstat);
   applet_widget_register_stock_callback (APPLET_WIDGET (battstat->applet),
                                          "help",
                                          GNOME_STOCK_PIXMAP_HELP,
+					 /* Applet menu, Help */
                                          _("Help"),
                                          help_cb,
                                          battstat);
   applet_widget_register_callback ( APPLET_WIDGET (battstat->applet),
 				    "suspend",
+				    /* Applet menu, Suspend laptop */
 				    _("Suspend laptop"),
 				    suspend_cb,
 				    battstat);

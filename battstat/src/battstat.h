@@ -163,5 +163,6 @@ gint applet_save_session(GtkWidget *, char *, char *, gpointer);
 void applet_change_pixel_size(GtkWidget *, int, gpointer);
 gint init_applet(int, char *[], gpointer);
 gint create_layout(int, char *[], gpointer);
+guint pixmap_type;
 
 

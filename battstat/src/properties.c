@@ -58,17 +58,6 @@ $Id$
 #define gettext_noop(String) (String)
 #endif
 
-extern void apm_readinfo(void);
-extern void adj_value_changed_cb(GtkAdjustment *, gpointer);
-extern void toggle_value_changed_cb(GtkToggleButton *, gpointer);
-extern void font_set_cb(GtkWidget *, int, gpointer);
-extern void simul_cb(GtkWidget *, gpointer);
-extern void helppref_cb(AppletWidget *, gpointer);
-extern void load_font(gpointer);
-extern gint pixmap_timeout(gpointer);
-extern void change_orient(GtkWidget *, PanelOrientType, gpointer);
-extern guint pixmap_type;
-
 #ifdef __OpenBSD__
 extern struct apm_power_info apminfo;
 #else
@@ -125,7 +114,11 @@ prop_apply (GtkWidget *w, int page, gpointer data)
     applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
 					  "suspend",
 					  TRUE);
-    gnome_warning_dialog(_("You have chosen to enable the Suspend function. This can potentionally be a security risc."));
+    gnome_warning_dialog(
+			 /* Message in a Gnome warning dialog window
+			    when the user enables the suspend
+			    function.*/
+			 _("You have chosen to enable the Suspend function. This can potentionally be a security risc."));
   } else {
     applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
 					  "suspend",
@@ -189,6 +182,7 @@ prop_cb (AppletWidget *applet, gpointer data)
 
   gtk_window_set_title (
 			GTK_WINDOW (&GNOME_PROPERTY_BOX (battstat->prop_win)->dialog.window),
+			/* This is the title of the properties window */
 			_("Battstat Settings"));
  
   frame = gtk_frame_new (NULL);
