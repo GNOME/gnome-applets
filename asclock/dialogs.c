@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <fcntl.h>
+#include <locale.h>
 #include "asclock.h"
 
 void about_dialog(AppletWidget *applet, gpointer data)
