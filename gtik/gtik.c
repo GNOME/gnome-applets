@@ -83,6 +83,8 @@
 	GtkWidget *tik_syms_entry;
 	gchar tik_syms[256];
 
+	GtkWidget *fontDialog = NULL;
+
 	GtkWidget * pb;
 	char buttons[16]="blank";
 	char arrows[16]="blank";
@@ -833,28 +835,22 @@ static void updateOutput(void)
 
 	/*-----------------------------------------------------------------*/
         static gint font_selector( GtkWidget *widget, void *data ) {
-                static GtkWidget *tmpWidget = NULL;
-                
-		if (!tmpWidget) {
-		
-			GtkFontSelectionDialog *fontDialog;
-
-	                tmpWidget = gtk_font_selection_dialog_new("Font Selector");
-    		        fontDialog = GTK_FONT_SELECTION_DIALOG(tmpWidget);
-			gtk_signal_connect (GTK_OBJECT (fontDialog ->ok_button),
-			    		"clicked",
-					GTK_SIGNAL_FUNC(OkClicked),fontDialog);
-            		gtk_signal_connect_object(GTK_OBJECT(fontDialog->cancel_button),
-					"clicked",
-                                        GTK_SIGNAL_FUNC(gtk_widget_destroy),
-                                        GTK_OBJECT(fontDialog));
+		if (!fontDialog) {
+			fontDialog = gtk_font_selection_dialog_new("Font Selector");
+			gtk_signal_connect (GTK_OBJECT (GTK_FONT_SELECTION_DIALOG(fontDialog)->ok_button),
+					    "clicked",
+					    GTK_SIGNAL_FUNC(OkClicked),fontDialog);
+            		gtk_signal_connect_object(GTK_OBJECT(GTK_FONT_SELECTION_DIALOG(fontDialog)->cancel_button),
+						  "clicked",
+						  GTK_SIGNAL_FUNC(gtk_widget_destroy),
+						  GTK_OBJECT(fontDialog));
             		gtk_signal_connect (GTK_OBJECT (fontDialog), "destroy",
-                                        GTK_SIGNAL_FUNC(QuitFontDialog),
-					fontDialog);
-
-            		gtk_widget_show(tmpWidget);
+					    GTK_SIGNAL_FUNC(QuitFontDialog),
+					    fontDialog);
+			
+            		gtk_widget_show(fontDialog);
 		} else
-			gdk_window_raise(tmpWidget->window);
+			gdk_window_raise(fontDialog->window);
 			
 		return FALSE;
 	}
@@ -890,6 +886,7 @@ static void updateOutput(void)
 
         /*-----------------------------------------------------------------*/
         gint QuitFontDialog( GtkWidget *widget, void *data ) {
+		fontDialog = NULL;
 		return FALSE;
         }
 
