@@ -134,15 +134,15 @@ struct _MailCheck {
 	/* for the selection routine */
 	char *selected_pixmap_name;
 
+	/* the about box */
+	GtkWidget *about;
+
 	/* The property window */
 	GtkWidget *property_window;
 	GtkWidget *min_spin, *sec_spin;
 	GtkWidget *pre_check_cmd_entry, *pre_check_cmd_check;
 	GtkWidget *newmail_cmd_entry, *newmail_cmd_check;
 	GtkWidget *clicked_cmd_entry, *clicked_cmd_check;
-
-	/* the about box */
-	GtkWidget *about;
 
 	GtkWidget *password_dialog;
 
