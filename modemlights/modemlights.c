@@ -1480,16 +1480,6 @@ modemlights_applet_new (void)
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
 	gtk_widget_show(button_pixmap);
 	
-	
-#ifdef FIXME
-	update_tooltip(FALSE,0,0);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
-		GTK_SIGNAL_FUNC(applet_save_session), NULL);
-
-	
-#endif					      
-	
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
