@@ -1,11 +1,9 @@
 
 INCLUDES = \
 -I. -I$(srcdir) \
--I$(top_srcdir)/intl \
--I$(top_builddir)/intl	\
+$(GNOME_APPLETS_CFLAGS) \
 -DGNOMELOCALEDIR=\""$(datadir)/locale"\"\
--I$(includedir) \
-$(GNOME_APPLETS_CFLAGS)
+-I$(includedir) 
 
 bin_PROGRAMS = drivemount_applet2
 
@@ -15,7 +13,7 @@ drivemount.h \
 properties.c \
 properties.h
 
-drivemount_applet2_LDADD = $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+drivemount_applet2_LDADD = $(GNOME_APPLETS_LIBS)  
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_DriveMountApplet.server.in
