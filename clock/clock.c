@@ -218,7 +218,7 @@ main(int argc, char **argv)
 	char *myinvoc;
 	guint32 winid;
 
-	myinvoc = get_which_output(argv[0]);
+	myinvoc = get_full_path(argv[0]);
 	if(!myinvoc)
 		return 1;
 
