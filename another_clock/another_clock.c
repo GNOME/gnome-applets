@@ -211,7 +211,7 @@ static void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
 }
 
 static void
-help_cb (GtkWidget *applet, gpointer data)
+help_cb (AppletWidget *applet, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
 		"anotherclock_applet", NULL
