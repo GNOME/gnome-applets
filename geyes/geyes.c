@@ -308,11 +308,12 @@ create_eyes (void)
         
         eyes_applet.fixed = gtk_fixed_new ();
         
-        gtk_signal_connect (GTK_OBJECT (eyes_applet.applet), "back_change", 
-                            GTK_SIGNAL_FUNC (applet_back_change), 
-                            &eyes_applet);
-        
-        eyes_applet.hbox = gtk_hbox_new (FALSE, FALSE);
+	g_signal_connect (G_OBJECT (eyes_applet.applet), 
+				    "back_change",
+				    G_CALLBACK (applet_back_change),
+				    &eyes_applet);
+				    
+        eyes_applet.hbox = gtk_hbox_new (FALSE, 0);
         
         for (i = 0; i < eyes_applet.num_eyes; i++) {
                 eyes_applet.eyes[i] = gtk_drawing_area_new ();
@@ -321,15 +322,15 @@ create_eyes (void)
                         g_error ("Error creating geyes\n");
                         exit (1);
                 }
-                
-                gtk_drawing_area_size (GTK_DRAWING_AREA (eyes_applet.eyes[i]),
-                                       eyes_applet.eye_width, 
-                                       eyes_applet.eye_height);
-                
+               
+		gtk_widget_set_size_request (GTK_WIDGET (eyes_applet.eyes[i]),
+					     eyes_applet.eye_width,
+					     eyes_applet.eye_height);
+ 
                 gtk_widget_show (eyes_applet.eyes[i]);
-                
-                color_depth = 
-                        gdk_window_get_visual (eyes_applet.applet->window)->depth;
+
+                color_depth = (gdk_window_get_visual (eyes_applet.applet->window))->depth;
+/* Fine until here */
                 eyes_applet.pixmap[i] = gdk_pixmap_new (eyes_applet.eyes[i]->window,
                                                         eyes_applet.eye_width,
                                                         eyes_applet.eye_height,
