@@ -340,9 +340,8 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+        applet_widget_register_callback(APPLET_WIDGET(applet),
 		"run_gtcd",         
-	        NULL,
 	        _("Run gtcd..."),
 	        start_gtcd_cb, NULL);
                                                                                                                                                                                                         
