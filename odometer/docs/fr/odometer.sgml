@@ -1,0 +1,329 @@
+<sect1 id="odometer">
+  <title>L'applet Odometer</title>
+  
+  <para>
+      L'applet <application>Odometer</application> du tableau de commande
+      de GNOME, présentée dans la figure <xref linkend="odometer-applet-fig">
+      est une applet qui mesure la distance
+      parcourue par votre pointeur de souris à la manière
+      d'un compteur kilométrique de voiture. Elle fait partie du paquetage
+      gnome-applets. Pour ajouter cette applet à un
+      <interface>Tableau de bord</interface>,
+      cliquez avec le bouton droit dans le
+      <interface>tableau de bord</interface> et choisissez ensuite
+      <menuchoice>
+	<guimenu>Tableau de bord</guimenu>
+	<guisubmenu>Ajouter au tableau de bord</guisubmenu>
+	<guisubmenu>Applet</guisubmenu>
+	<guisubmenu>Amusements</guisubmenu>
+	<guimenuitem>Odometer</guimenuitem>
+      </menuchoice>.
+  </para>
+  
+  <figure id="odometer-applet-fig">
+    <title>L'applet Odometer</title>
+    <screenshot>
+      <screeninfo>L'applet Odometer</screeninfo>
+      <graphic format="png" fileref="odometer_applet" 
+	srccredit="acscherp">
+      </graphic>
+    </screenshot>
+  </figure>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="odometer-usage">
+    <title>Utilisation</title>
+    <para>
+      Une fois affichée à l'ecran, vous n'avez plus rien à faire si ce
+      n'est faire vos statistiques de déplacement de souris journalières.
+      Cette applet affiche deux valeurs de distance parcourue. Une distance
+      totale parcourue depuis le début de son utilisation dans la partie
+      supérieure, et une distance partielle dans sa partie inférieure, que
+      vous avez la possibilité de remettre à zéro périodiquement, de la
+      même manière qu'un compteur kilométrique réel.
+      Cette applet présente les distances au choix dans les unités de mesures
+      courantes : métrique (centimètres, mètres, kilomètres) et anglo-saxonnes
+      (inches, feet et miles). Il fait les conversions d'unité à la volée.
+      Il affiche la distance parcourue dans l'unité la plus adaptée.
+      Si vous deplacez le pointeur de souris sur cette applet, une <guilabel>bulle
+      d'aide</guilabel> vous rappellera quelles sont les deux unités actuellement
+      utilisées pour l'affichage des deux distances.
+    </para>
+
+    <para>
+      Un clic du bouton de droite sur cette applet fait apparaître le
+      menu suivant:
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    <guimenuitem>R.A.Z du compteur</guimenuitem> &mdash;
+	    Remet à zéro le compteur du bas (compteur journalier).
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Propriétés&hellip;</guimenuitem> &mdash;
+	    Ouvre la boîte de dialogue <link linkend="odometer-prefs">
+	      <guilabel>propriétés</guilabel></link>.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Aide</guimenuitem> &mdash;
+	    Affiche ce document.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>A propos&hellip;</guimenuitem> &mdash;
+	    Affiche les informations de base sur l'<application>applet
+	    Odometer</application>, en particulier son numero de version
+	    et le nom de son auteur.
+	  </para>
+	</listitem>
+
+      </itemizedlist>
+    </para>
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="odometer-prefs">
+    <title>Personalisations</title>
+    <para>
+      Vous pouvez personnaliser votre <application>odometer</application>
+      en cliquant du bouton droit sur celle-ci et en sélectionnant
+      <guimenuitem>Propriétés&hellip;</guimenuitem>. Cela ouvre
+      la boîte de dialogue <interface>Propriétés</interface>
+      (voir <xref linkend="odometer-settings-fig">), qui vous 
+      permet de changer certains paramètres.
+    </para>
+
+    <para>
+      La boîte de dialogue <interface>Propriétés</interface> (appelée
+      actuellement &quot;Paramétres de l'odometer&quot;) est divisée en deux
+      sections, une se rapportant aux options générales et une
+      permettant de modifier les thèmes.
+      
+      <variablelist>
+	<varlistentry>
+	  <term>Général</term>
+	  <listitem>
+
+	    <figure id="odometer-settings-fig">
+	      <title>Paramétres de l'odometer (onglet Général)</title>
+	      <screenshot>
+		<screeninfo>Onglet Général</screeninfo>
+		<graphic format="png" fileref="odometer_settings"
+		  srccredit="accscherp">
+		</graphic>
+	      </screenshot>
+	    </figure>
+
+	    <para>
+	      L'onglet <guilabel>Général</guilabel>, présenté
+	      en <xref linkend="odometer-settings-fig">, a quatre options:
+	    </para>
+	    <variablelist>
+	      <varlistentry>
+		<term>Utiliser le système métrique</term>
+		<listitem>
+		  <para>
+		    Si le bouton <guibutton>Utiliser le système métrique</guibutton>
+		    est coché, la distance parcourue par le pointeur de souris est affichée
+		    en mètres (centimètres, mètres et kilomètres pour les plus
+		    endurants). S'il n'est pas coché, le système de mesure
+		    anglo-saxon est utilisé à la place (inches, feet et miles).
+		    Le type d'unité utilisé est affiché en passant la souris
+		    au dessus de l'applet et en faisant ainsi apparaître
+		    la <guilabel>bulle d'aide</guilabel>.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>R.A.Z. à chaque lancement</term>
+		<listitem>
+		  <para>
+		    Si le bouton <guibutton>R.A.Z. à chaque lancement</guibutton> est coché,
+		    l'odometer est remis à zéro a chaque fois que l'applet est 
+		    relancée, c'est à dire à chaque fois que vous redémarrer
+		    une nouvelle session. Ceci permet de visualiser séparemment 
+		    la distance parcourue totale depuis le début de l'utilisation de l'applet
+		    (nombre en haut) et la distance journalière (nombre en bas).
+		    A vos statistiques!
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>activé</term>
+		<listitem>
+		  <para>
+		    Si le bouton <guibutton>activé</guibutton> n'est pas
+		    coché, alors l'applet compte la distance silencieusement.
+		    et n'affiche qu'une valeur nulle. Cliquer sur <guibutton>activé</guibutton>
+		    à nouveau permet de réactiver l'affichage.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	      <varlistentry>
+		<term>Nombre de chiffres</term>
+		<listitem>
+		  <para>
+		    Le champ de saisie <guibutton>Nombre de chiffres</guibutton>
+		    détermine le nombre de chiffres significatif utilisés pour l'affichage.
+		    La valeur par défaut est de quatre, et peut varier entre 1 et 10.
+		    Selon le thème choisi, le point décimal peut être représente explicitement
+		    par une case dédiée, ou bien peut être symbolisé par deux couleurs 
+		    différenciant la partie entière et la partie décimale.
+		    La valeur donnée dans <guibutton>Nombre de chiffres</guibutton>
+		    devra donc tenir compte de cette particularité pour le thème utilisé.
+		  </para>
+		</listitem>
+	      </varlistentry>
+	    </variablelist>
+	  </listitem>
+	</varlistentry>
+
+	<varlistentry>
+	  <term>Theme</term>
+	  <listitem>
+
+	    <figure id="odometer-themes-fig">
+	      <title>Paramètres de l'odometer (onglet Thème)</title>
+	      <screenshot>
+		<screeninfo>Onglet Thème</screeninfo>
+		<graphic format="png" fileref="odometer_themes"
+		  srccredit="accscherp">
+		</graphic>
+	      </screenshot>
+	    </figure>
+
+	    <para>
+	      L'onglet <guilabel>Thème</guilabel>, présenté en <xref
+	      linkend="odometer-themes-fig">, vous permet de personnaliser votre
+	      applet en lui appliquant un ensemble de thèmes. Ils sont situés par
+	      defaut dans <filename>$PREFIX/share/odometer/</filename>.
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </para>
+    
+    <para> 
+      Après avoir fait des changements, vous pouvez cliquer sur
+      <guibutton>OK</guibutton> pour appliquer les changements
+      et fermer la fenêtre de <interface>propriétés</interface>,
+      ou sur <guibutton>Appliquer</guibutton> pour les appliquer sans
+      fermer la fenêtre.
+      Pour annuler les modifications et revenir aux parametres
+      precédents, cliquez simplement sur le bouton <guibutton>Fermer
+      </guibutton>.
+    </para>
+  </sect2>
+
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+  the program if there are any - please be frank and list all
+  problems you know of -->
+  <sect2 id="bugs">
+    <title>Bug connus et limitations</title>
+    <para>
+      Pas de bugs connus actuellement...
+    </para>
+  </sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+    <title>Auteurs</title>
+    <para>
+      L'applet <application>odometer</application> a été écrite par
+      Fabrice Bellet (<email>Fabrice.Bellet@creatis.insa-lyon.fr</email>),
+      et est fondée sur l'application <application>Mouspedometa</application>
+      pour KDE écrite par Armen Nakashian, qui est à son tour inspirée
+      du programme écrit en Motif <application>Xodometer</application>
+      par Mark H. Granoff.
+      Envoyez vos commentaires, suggestions et rapports de bug à la
+      <ulink url="http://bugs.gnome.org" type="http">base de données
+      de suivi de bogues de GNOME</ulink>. (Les indicatons
+      pour soumettre un bogue sont disponibles 
+      <ulink url="http://bugs.gnome.org/Reporting.html"
+      type="http">en ligne</ulink>). Si vous utilisez GNOME 1.1
+      ou une version plus récente, vous pouvez aussi utiliser le
+      programme de rapport de bogue <application>Bug Report Tool</application>
+      (<command>bug-buddy</command>), disponible dans le sous-menu
+      <guisubmenu>Utilitaires</guisubmenu> du <guimenu>Menu principal</guimenu>.
+    </para>
+
+    <para>
+      Ce manuel a été écrit par Fabrice Bellet 
+      (<email>Fabrice.Bellet@creatis.insa-lyon.fr</email>).
+      Merci d'envoyer les commentaires et les suggestions concernant ce
+      manuel au <ulink type="http" url="http://www.gnome/org/gdp">Projet
+      de Documentation de GNOME</ulink> en envoyant un email à
+      <email>docs@gnome.org</email>. Vous pouvez aussi envoyer des commentaires
+      en ligne en utilisant la <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">Table de statut de la 
+      documentation de GNOME</ulink>.
+    </para>
+
+    <!-- For translations: uncomment this:
+
+  <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+  </para>
+
+    -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+    <title>License</title>
+    <para>
+     La license <citetitle>GNU General Public License</citetitle>
+     qui suit n'a pas été traduite.
+    </para>
+    <para>
+      This program is free software; you can redistribute it and/or
+      modify it under the terms of the <citetitle>GNU General Public
+	License</citetitle> as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version.
+    </para>
+    <para>
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      <citetitle>GNU General Public License</citetitle> for more details.
+    </para>
+    <para>
+      A copy of the <citetitle>GNU General Public License</citetitle> is
+      included as an appendix to the <citetitle>GNOME Users
+	Guide</citetitle>.  You may also obtain a copy of the
+      <citetitle>GNU General Public License</citetitle> from the Free
+      Software Foundation by visiting <ulink type="http"
+	url="http://www.fsf.org">their Web site</ulink> or by writing to
+      <address>
+	Free Software Foundation, Inc.
+	<street>59 Temple Place</street> - Suite 330
+	<city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+	<country>USA</country>
+      </address>
+    </para>
+  </sect2>
+
+</sect1>
+
+
+
+
