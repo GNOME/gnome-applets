@@ -12,6 +12,19 @@
 #include <gnome.h>
 #include "weather.h"
 
+
+
+#define TIME_RE   0
+#define WIND_RE   1
+#define VIS_RE    2
+#define COND_RE   3
+#define CLOUD_RE  4
+#define TEMP_RE   5
+#define PRES_RE   6
+
+#define RE_NUM   7
+
+
 /* Return time of weather report as secs since epoch UTC */
 static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
 {
@@ -35,15 +48,16 @@ static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
    return tm.tm_gmtoff + mktime(&tm);
 }
 
-static void metar_tok_time (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_time (gchar *tokp, WeatherInfo *info)
 {
     gint day, hr, min;
 
     sscanf(tokp, "%2u%2u%2u", &day, &hr, &min);
     info->update = make_time(day, hr, min);
+    return WIND_RE;
 }
 
-static void metar_tok_wind (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_wind (gchar *tokp, WeatherInfo *info)
 {
     gchar sdir[4], sspd[4], sgust[4];
     gint dir, spd, gust = -1;
@@ -102,18 +116,25 @@ static void metar_tok_wind (gchar *tokp, WeatherInfo *info)
         info->wind = WIND_NNW;
     
     info->windspeed = (WeatherWindSpeed)spd;
+    return VIS_RE;
 }
 
-static void metar_tok_vis (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_vis (gchar *tokp, WeatherInfo *info)
 {
     gchar *pfrac, *pend, *psp;
     gchar sval[6];
     gint num, den, val;
-
-    pend = strstr(tokp, "SM");
+    gint rtnval = COND_RE;
+    
     memset(sval, 0, sizeof(sval));
 
-    if (pend) {
+    if (!strcmp(tokp,"CAVOK")) {
+        // "Ceiling And Visibility OK": visibility >= 10 KM
+        info->visibility=10000. / VISIBILITY_SM_TO_M(1.);
+	info->sky = SKY_CLEAR;
+	rtnval = CLOUD_RE;
+    }
+    else if (0 != (pend = strstr(tokp, "SM"))) {
         // US observation: field ends with "SM"
         pfrac = strchr(tokp, '/');
         if (pfrac) {
@@ -145,17 +166,13 @@ static void metar_tok_vis (gchar *tokp, WeatherInfo *info)
 	val = atoi(sval);
 	info->visibility = (WeatherVisibility)val / VISIBILITY_SM_TO_M(1.);
     }
+    return rtnval;
 }
 
-static void metar_tok_cloud (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_cloud (gchar *tokp, WeatherInfo *info)
 {
     gchar stype[4], salt[4];
     gint alt = -1;
-
-    if (!strcmp(tokp,"CAVOK")) {
-        info->sky=SKY_CLEAR;
-	return;
-    }
 
     strncpy(stype, tokp, 3);
     stype[3] = 0;
@@ -180,9 +197,10 @@ static void metar_tok_cloud (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(stype, "OVC")) {
         info->sky = SKY_OVERCAST;
     }
+    return CLOUD_RE;
 }
 
-static void metar_tok_pres (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_pres (gchar *tokp, WeatherInfo *info)
 {
     if (*tokp == 'A') {
         gchar sintg[3], sfract[3];
@@ -207,9 +225,10 @@ static void metar_tok_pres (gchar *tokp, WeatherInfo *info)
 
         info->pressure = PRESSURE_MBAR_TO_INCH((WeatherPressure)pres);
     }
+    return RE_NUM;
 }
 
-static void metar_tok_temp (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_temp (gchar *tokp, WeatherInfo *info)
 {
     gchar *ptemp, *pdew, *psep;
 
@@ -222,9 +241,10 @@ static void metar_tok_temp (gchar *tokp, WeatherInfo *info)
                                  : TEMP_C_TO_F(atoi(ptemp));
     info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1))
                                : TEMP_C_TO_F(atoi(pdew));
+    return PRES_RE;
 }
 
-static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
+static gint metar_tok_cond (gchar *tokp, WeatherInfo *info)
 {
     gchar squal[3], sphen[4];
     gchar *pphen;
@@ -327,34 +347,26 @@ static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(sphen, "FC")) {
         info->cond.phenomenon = PHENOMENON_FUNNEL_CLOUD;
     } else {
-        g_return_if_fail(FALSE);
+        return CLOUD_RE;
     }
 
     if ((info->cond.qualifier != QUALIFIER_NONE) || (info->cond.phenomenon != PHENOMENON_NONE))
         info->cond.significant = TRUE;
+    return CLOUD_RE;
 }
 
 #define TIME_RE_STR  "([0-9]{6})Z"
 #define WIND_RE_STR  "(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT"
 #define VIS_RE_STR   "((([0-9]?[0-9])|(M?([12] )?([1357]/1?[0-9])))SM)|" \
-                     "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4}(N|NE|E|SE|S|SW|W|NW))?)?)"
+                     "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4}(N|NE|E|SE|S|SW|W|NW))?)?)|" \
+                     "CAVOK"
 #define COND_RE_STR  "(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)"
-#define CLOUD_RE_STR "(((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?)|CAVOK)"
+#define CLOUD_RE_STR "((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?)"
 #define TEMP_RE_STR  "(M?[0-9][0-9])/(M?(//|[0-9][0-9]))"
 #define PRES_RE_STR  "(A|Q)([0-9]{4})"
 
-#define TIME_RE   0
-#define WIND_RE   1
-#define VIS_RE    2
-#define COND_RE   3
-#define CLOUD_RE  4
-#define TEMP_RE   5
-#define PRES_RE   6
-
-#define RE_NUM   7
-
 static regex_t metar_re[RE_NUM];
-static void (*metar_f[RE_NUM])(gchar *tokp, WeatherInfo *info);
+static gint (*metar_f[RE_NUM])(gchar *tokp, WeatherInfo *info);
 
 static void metar_init_re (void)
 {
@@ -383,6 +395,7 @@ static void metar_init_re (void)
 /*static*/ gboolean metar_parse (gchar *metar, WeatherInfo *info)
 {
     gchar *p;
+    //gchar *rmk;
     gint ntoks;
     gint i;
     gboolean isSet;
@@ -393,25 +406,36 @@ static void metar_init_re (void)
     g_return_val_if_fail(metar != NULL, FALSE);
 
     metar_init_re();
+
+    /*
+     * Force parsing to end at "RMK" field.  This prevents a subtle
+     * problem when info within the remark happens to match an earlier state
+     * and, as a result, throws off all the remaining expression
+     */
+    if (0 != (p = strstr(metar, "RMK"))) {
+        *p = '\0';
+	//rmk = p+4;   // uncomment this if RMK data becomes useful
+    }
+    
     p = metar;
     
-    for (i = 0; i < RE_NUM; i++) {
-	for (isSet = FALSE;
-	     *p && strncmp(p, "RMK", 3)
-	       && (0 == regexec(&metar_re[i], p, 1, &rm, 0))
-	       && (rm.rm_so == 0 || p[rm.rm_so - 1] == ' ') ;
-	     isSet = TRUE) {
-
+    i = TIME_RE;
+    isSet = FALSE;
+    while (i < RE_NUM && *p) {
+        if (0 == regexec(&metar_re[i], p, 1, &rm, 0)
+	    && (rm.rm_so == 0 || p[rm.rm_so - 1] == ' ')) {
 	    if (!isSet) {
 	        tokp = g_strndup(p+rm.rm_so, rm.rm_eo-rm.rm_so);
-		metar_f[i](tokp, info);
+		gint next = metar_f[i](tokp, info);
+		isSet = (next == i);
 		g_free (tokp);
+		i = next;
 	    }
 	    p += rm.rm_eo;
 	    p += strspn(p, " ");
-	    
-	    if (i <= 2)  // There should be one and only one of these..
-	        break;
+	} else {
+	  i++;
+	  isSet = FALSE;
 	}
     }
     return TRUE;
