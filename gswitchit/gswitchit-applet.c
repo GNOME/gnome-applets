@@ -459,11 +459,11 @@ GSwitchItAppletCmdAbout( BonoboUIComponent *
                          uic, GSwitchItApplet * sia, const gchar * verb )
 {
   const gchar *authors[] = {
-    "Sergey V. Udaltsov<svu@users.sourceforge.net>",
+    "Sergey V. Udaltsov<svu@gnome.org>",
     NULL
   };
   const gchar *documenters[] = {
-    "Sergey V. Udaltsov<svu@users.sourceforge.net>",
+    "Sergey V. Udaltsov<svu@gnome.org>",
     NULL
   };
   gchar *translatorCredits;
@@ -485,10 +485,10 @@ GSwitchItAppletCmdAbout( BonoboUIComponent *
     strcmp( translatorCredits,
             "translator_credits" ) != 0 ? translatorCredits : NULL;
   sia->aboutDialog =
-    gnome_about_new( _( PACKAGE ), VERSION,
+    gnome_about_new( _( "GSwitchIt" ), VERSION,
                      _
-                     ( "Copyright Sergey V. Udaltsov (C) 1999-2002" ),
-                     _( "XKB toolkit for GNOME" ),
+                     ( "Copyright \xc2\xa9 Sergey V. Oudaltsov 1999-2004" ),
+                     _( "Keyboard layout indicator applet for GNOME" ),
                      authors, documenters, translatorCredits, pixbuf );
   g_object_add_weak_pointer( G_OBJECT
                              ( sia->aboutDialog ),
