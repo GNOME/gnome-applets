@@ -543,7 +543,7 @@ hig_dialog_new (GtkWindow      *parent,
 	gtk_window_set_title (GTK_WINDOW (dialog), "");
   
 	dialog_vbox = GTK_DIALOG (dialog)->vbox;
-	gtk_box_set_spacing (GTK_BOX (dialog_vbox), 12);
+	gtk_box_set_spacing (GTK_BOX (dialog_vbox), 14);
 
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (dialog_vbox), hbox, FALSE, FALSE, 0);
@@ -2350,6 +2350,7 @@ mailcheck_properties (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbna
 	gtk_dialog_set_default_response (GTK_DIALOG (mc->property_window), GTK_RESPONSE_CLOSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (mc->property_window), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (mc->property_window), 5);
+	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (mc->property_window)->vbox), 2);
 	gnome_window_icon_set_from_file (GTK_WINDOW (mc->property_window),
 					 GNOME_ICONDIR"/gnome-mailcheck.png");
 	gtk_window_set_screen (GTK_WINDOW (mc->property_window),
