@@ -23,21 +23,28 @@
 #include "properties.h"
 #include "read-battery.h"
 
-
 int
-main(int argc, char ** argv)
+main (int argc, char ** argv)
 {
+  const gchar *goad_id;
+
   /* Initialize i18n */
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
 
-  applet_widget_init("battery_applet", VERSION, argc, argv, NULL, 0, NULL);
+  applet_widget_init ("battery_applet", VERSION, argc, argv, NULL, 0, NULL);
+  applet_factory_new ("battery_applet", NULL,
+		      (AppletFactoryActivator) applet_start_new_applet);
+
+  goad_id = goad_server_activation_id ();
+  if (! goad_id)
+    return 1;
 
   /* Create the battery applet widget */
-  make_new_battery_applet();
+  make_new_battery_applet (goad_id);
 
   /* Run .. */
-  applet_widget_gtk_main();
+  applet_widget_gtk_main ();
 
   return 0;
 } /* main */
@@ -132,9 +139,26 @@ battery_update(gpointer data)
 	gdk_gc_set_foreground ( bat->gc, &(bat->graph_color_ac_off) );
 
       for (i = 0 ; i < bat->width ; i++)
-	gdk_draw_line(bat->graph_pixmap, bat->gc, i,
-		      (100 - bat->graph_values[i]) * bat->height / 100,
-		      i, bat->height);
+	{
+	  gdk_draw_line (bat->graph_pixmap, bat->gc, i,
+			 (100 - bat->graph_values[i]) * bat->height / 100,
+			 i, bat->height);
+	}
+
+      gdk_gc_set_foreground (bat->gc, &(bat->graph_color_line));
+
+      gdk_draw_line (bat->graph_pixmap, bat->gc,
+		     0, 74 * bat->height / 100,
+		     bat->width, 74 * bat->height / 100);
+
+      gdk_draw_line (bat->graph_pixmap, bat->gc,
+		     0, 49 * bat->height / 100,
+		     bat->width, 49 * bat->height / 100);
+
+      gdk_draw_line (bat->graph_pixmap, bat->gc,
+		     0, 24 * bat->height / 100,
+		     bat->width, 24 * bat->height / 100);
+      
     }
 
   /*
@@ -388,9 +412,15 @@ battery_button_press_handler(GtkWidget * w, GdkEventButton * ev,
   return TRUE;
 } /* battery_button_press_handler */
 
+GtkWidget *
+applet_start_new_applet (const gchar *goad_id, const char **params, int nparams)
+{
+  return make_new_battery_applet (goad_id);
+}
+
 /* This is the function that actually creates the display widgets */
-void
-make_new_battery_applet(void)
+GtkWidget *
+make_new_battery_applet (const gchar *goad_id)
 {
   BatteryData * bat;
   GtkWidget * root, * graph_box, * readout_box, * readout_text_vbox;
@@ -399,10 +429,10 @@ make_new_battery_applet(void)
 
   bat = g_new0(BatteryData, 1);
 
-  bat->applet = applet_widget_new("battery_applet");
+  bat->applet = applet_widget_new (goad_id);
 
   if (bat->applet == NULL)
-    g_error(_("Can't create applet!\n"));
+    g_error (_("Can't create applet!\n"));
 
   bat->last_graph_update = 0;
   bat->graph_values = NULL;
@@ -411,9 +441,9 @@ make_new_battery_applet(void)
 
   /* Load all the saved session parameters (or the defaults if none
      exist). */
-  if ((APPLET_WIDGET(bat->applet)->privcfgpath) &&
-      *(APPLET_WIDGET(bat->applet)->privcfgpath))
-    battery_session_load(APPLET_WIDGET(bat->applet)->privcfgpath, bat);
+  if ((APPLET_WIDGET (bat->applet)->privcfgpath) &&
+      *(APPLET_WIDGET (bat->applet)->privcfgpath))
+    battery_session_load (APPLET_WIDGET (bat->applet)->privcfgpath, bat);
   else
     battery_session_defaults(bat);
 
@@ -533,6 +563,8 @@ make_new_battery_applet(void)
 
   bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
 					  (GtkFunction) battery_update, bat);
+
+  return bat->applet;
 } /* make_new_battery_applet */
 
 void
@@ -686,7 +718,7 @@ battery_set_size(BatteryData * bat)
 } /* battery_set_size */
 
 void
-battery_create_gc(BatteryData * bat)
+battery_create_gc (BatteryData * bat)
 {
   bat->gc = gdk_gc_new( bat->graph_area->window );
   gdk_gc_copy( bat->gc, bat->graph_area->style->white_gc );
@@ -696,11 +728,14 @@ battery_create_gc(BatteryData * bat)
 } /* battery_create_gc */
 
 void 
-battery_setup_colors(BatteryData * bat)
+battery_setup_colors (BatteryData * bat)
 {
   GdkColormap *colormap;
 
-  colormap = gtk_widget_get_colormap(bat->graph_area);
+  /* FIXME: We should use gdk_color_change if we've already set up the
+     colors. */
+
+  colormap = gtk_widget_get_colormap (bat->graph_area);
                 
   gdk_color_parse(bat->readout_color_ac_on_s,
 		  &(bat->readout_color_ac_on));
@@ -718,11 +753,7 @@ battery_setup_colors(BatteryData * bat)
 		  &(bat->graph_color_ac_off));
   gdk_color_alloc(colormap, &(bat->graph_color_ac_off));
 
+  gdk_color_parse(bat->graph_color_line_s,
+		  &(bat->graph_color_line));
+  gdk_color_alloc(colormap, &(bat->graph_color_line));
 } /* battery_setup_colors */
-
-/* When we get a command to start a new widget. */
-void
-applet_start_new_applet(const gchar *goad_id, gpointer data)
-{
-  make_new_battery_applet();
-} /* applet_start_new_applet */

@@ -43,8 +43,12 @@ typedef struct BatteryData {
 #define BATTERY_GRAPH_RIGHT_TO_LEFT 2
   gchar graph_color_ac_on_s[24];
   GdkColor graph_color_ac_on;
+  GdkColor graph_color_ac_on_top;
   gchar graph_color_ac_off_s[24];
   GdkColor graph_color_ac_off;
+  GdkColor graph_color_ac_off_top;
+  gchar graph_color_line_s[24];
+  GdkColor graph_color_line;
 
   /* Widgets n stuff... */
   GtkWidget * graph_frame;
@@ -97,6 +101,7 @@ typedef struct BatteryData {
   GtkWidget * dir_radio;
   GnomeColorPicker * graph_ac_on_color_sel;
   GnomeColorPicker * graph_ac_off_color_sel;
+  GnomeColorPicker * graph_line_color_sel;
 
   /* Readout mode */
   GnomeColorPicker * readout_ac_on_color_sel;
@@ -122,6 +127,7 @@ typedef struct BatteryData {
 #define BATTERY_DEFAULT_GRAPH_DIRECTION "2" /* Right to left */
 #define BATTERY_DEFAULT_GRAPH_ACON_COLOR "#ffff00"
 #define BATTERY_DEFAULT_GRAPH_ACOFF_COLOR "#008b8b"
+#define BATTERY_DEFAULT_GRAPH_LINE_COLOR "#4d4d4d"
 
 /* The readout */
 #define BATTERY_DEFAULT_READOUT_ACON_COLOR "#ffff00"
@@ -143,13 +149,13 @@ gint battery_expose_handler(GtkWidget * widget, GdkEventExpose * expose,
 				   gpointer data);
 gint battery_configure_handler(GtkWidget *widget, GdkEventConfigure *event,
 			       gpointer data);
-void make_new_battery_applet(void);
+GtkWidget * make_new_battery_applet (const gchar *goad_id);
 void battery_create_gc(BatteryData * bat);
 void battery_setup_colors(BatteryData * bat);
 void battery_setup_picture(BatteryData * bat);
 void battery_set_mode(BatteryData * bat);
-
-void applet_start_new_applet(const gchar *param, gpointer data);
+GtkWidget * applet_start_new_applet (const gchar *goad_id,
+				     const char **params, int nparams);
 
 #endif /* _BATTERY_H */
 

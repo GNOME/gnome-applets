@@ -17,7 +17,7 @@ static void prop_apply (GtkWidget *w, int page, gpointer data);
 
 /* Create the properties window */
 void
-battery_properties_window(AppletWidget * applet, gpointer data)
+battery_properties_window (AppletWidget * applet, gpointer data)
 {
   static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   BatteryData * bat = data; 
@@ -30,6 +30,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   if (bat->prop_win)
     {
       gtk_widget_show (GTK_WIDGET (bat->prop_win));
+      gdk_window_raise (GTK_WIDGET (bat->prop_win)->window);
 
       return;
     }
@@ -40,8 +41,8 @@ battery_properties_window(AppletWidget * applet, gpointer data)
     (GNOME_DIALOG (& (bat->prop_win->dialog)), TRUE);
 
   gtk_window_set_title (
-	GTK_WINDOW(&GNOME_PROPERTY_BOX(bat->prop_win)->dialog.window),
-	_("Battery Monitor Settings"));
+	GTK_WINDOW (&GNOME_PROPERTY_BOX (bat->prop_win)->dialog.window),
+	_ ("Battery Monitor Settings"));
   
   /*
    *
@@ -50,35 +51,35 @@ battery_properties_window(AppletWidget * applet, gpointer data)
    */
   t = gtk_table_new (0, 0, 0);
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
-				  gtk_label_new (_("General Properties")));
+				  gtk_label_new (_ ("General Properties")));
 
-  l = gtk_label_new(_("Applet Height")); 
+  l = gtk_label_new (_ ("Applet Height")); 
   bat->height_adj = gtk_adjustment_new ( bat->height, 0.5, 256, 1, 8, 8 );
-  height_spin = gtk_spin_button_new( GTK_ADJUSTMENT(bat->height_adj), 1, 0 );
-  gtk_table_attach_defaults ( GTK_TABLE(t), l, 0, 1, 0, 1 );
-  gtk_table_attach_defaults ( GTK_TABLE(t), height_spin, 1, 2, 0, 1 );
-  gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(height_spin),
+  height_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->height_adj), 1, 0 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 0, 1 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), height_spin, 1, 2, 0, 1 );
+  gtk_spin_button_set_update_policy ( GTK_SPIN_BUTTON (height_spin),
 				     GTK_UPDATE_ALWAYS );
-  gtk_signal_connect(GTK_OBJECT(bat->height_adj), "value_changed",
-		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
+  gtk_signal_connect (GTK_OBJECT (bat->height_adj), "value_changed",
+		     GTK_SIGNAL_FUNC (adj_value_changed_cb), bat);
   
-  l = gtk_label_new(_("Applet Width")); 
-  gtk_table_attach_defaults( GTK_TABLE(t), l, 0, 1, 2, 3 ); 
+  l = gtk_label_new (_ ("Applet Width")); 
+  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 2, 3 ); 
 
   bat->width_adj = gtk_adjustment_new ( bat->width, 0.5, 666, 1, 8, 8 );
-  width_spin = gtk_spin_button_new( GTK_ADJUSTMENT(bat->width_adj), 1, 0 );
-  gtk_table_attach_defaults( GTK_TABLE(t), width_spin, 1, 2, 2, 3 );
-  gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width_spin),
+  width_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->width_adj), 1, 0 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), width_spin, 1, 2, 2, 3 );
+  gtk_spin_button_set_update_policy ( GTK_SPIN_BUTTON (width_spin),
 				     GTK_UPDATE_ALWAYS );
-  gtk_signal_connect(GTK_OBJECT(bat->width_adj), "value_changed",
-		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
+  gtk_signal_connect (GTK_OBJECT (bat->width_adj), "value_changed",
+		     GTK_SIGNAL_FUNC (adj_value_changed_cb), bat);
 
-  l = gtk_label_new(_("Applet Mode"));
-  bat->mode_radio_graph = gtk_radio_button_new_with_label (NULL, _("Graph"));
+  l = gtk_label_new (_ ("Applet Mode"));
+  bat->mode_radio_graph = gtk_radio_button_new_with_label (NULL, _ ("Graph"));
   bat->mode_radio_readout = gtk_radio_button_new_with_label_from_widget
-    (GTK_RADIO_BUTTON (bat->mode_radio_graph), _("Readout"));
+    (GTK_RADIO_BUTTON (bat->mode_radio_graph), _ ("Readout"));
 
-  if (!strcmp(bat->mode_string, BATTERY_MODE_GRAPH))
+  if (!strcmp (bat->mode_string, BATTERY_MODE_GRAPH))
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->mode_radio_graph),
 				  1);
   else
@@ -88,11 +89,11 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (bat->mode_radio_graph), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
 	
-  gtk_table_attach ( GTK_TABLE(t), l,  3, 4, 0, 1, GTK_FILL | GTK_EXPAND,
+  gtk_table_attach ( GTK_TABLE (t), l,  3, 4, 0, 1, GTK_FILL | GTK_EXPAND,
 		     GTK_EXPAND, 0, 0); 
-  gtk_table_attach ( GTK_TABLE(t), bat->mode_radio_readout, 3, 4, 1, 2,
+  gtk_table_attach ( GTK_TABLE (t), bat->mode_radio_readout, 3, 4, 1, 2,
 		     GTK_FILL | GTK_EXPAND, GTK_EXPAND, 0, 0); 
-  gtk_table_attach ( GTK_TABLE(t), bat->mode_radio_graph, 3, 4, 2, 3,
+  gtk_table_attach ( GTK_TABLE (t), bat->mode_radio_graph, 3, 4, 2, 3,
 		     GTK_FILL | GTK_EXPAND, GTK_EXPAND, 0, 0); 
 
   /*
@@ -104,55 +105,69 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new ("Graph Properties"));
 
-  bat->graph_ac_on_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
-  gtk_signal_connect(GTK_OBJECT(bat->graph_ac_on_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
+  bat->graph_ac_on_color_sel = GNOME_COLOR_PICKER (gnome_color_picker_new ());
+  gtk_signal_connect (GTK_OBJECT (bat->graph_ac_on_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC (col_value_changed_cb), bat );
 
-  bat->graph_ac_off_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
-  gtk_signal_connect(GTK_OBJECT(bat->graph_ac_off_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
+  bat->graph_ac_off_color_sel = GNOME_COLOR_PICKER (gnome_color_picker_new ());
+  gtk_signal_connect (GTK_OBJECT (bat->graph_ac_off_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC (col_value_changed_cb), bat );
+
+  bat->graph_line_color_sel = GNOME_COLOR_PICKER (gnome_color_picker_new ());
+  gtk_signal_connect (GTK_OBJECT (bat->graph_line_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC (col_value_changed_cb), bat );
 
   /* Initialize the selector colors */
-  sscanf(bat->graph_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_picker_set_i8(bat->graph_ac_on_color_sel,
+  sscanf (bat->graph_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
+  gnome_color_picker_set_i8 (bat->graph_ac_on_color_sel,
 				      r, g, b, 255);
 
-  sscanf(bat->graph_color_ac_off_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_picker_set_i8(bat->graph_ac_off_color_sel,
+  sscanf (bat->graph_color_ac_off_s, "#%02x%02x%02x", &r, &g, &b);
+  gnome_color_picker_set_i8 (bat->graph_ac_off_color_sel,
 				      r, g, b, 255);
 
-  l = gtk_label_new (_("AC-On Battery Color:"));
+  sscanf (bat->graph_color_line_s, "#%02x%02x%02x", &r, &g, &b);
+  gnome_color_picker_set_i8 (bat->graph_line_color_sel,
+				      r, g, b, 255);
+
+  l = gtk_label_new (_ ("AC-On Battery Color:"));
   gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 0, 1);
-  gtk_table_attach (GTK_TABLE(t),
-	    GTK_WIDGET(bat->graph_ac_on_color_sel),
+  gtk_table_attach (GTK_TABLE (t),
+	    GTK_WIDGET (bat->graph_ac_on_color_sel),
 	    1, 2, 0, 1, GTK_EXPAND, 0, 0, 0);
 
-  l = gtk_label_new(_("AC-Off Battery Color:"));
-  gtk_table_attach (GTK_TABLE(t), l, 0, 1, 1, 2, 0, 0, 0, 0);
+  l = gtk_label_new (_ ("AC-Off Battery Color:"));
+  gtk_table_attach (GTK_TABLE (t), l, 0, 1, 1, 2, 0, 0, 0, 0);
   gtk_table_attach (GTK_TABLE (t),
-	    GTK_WIDGET(bat->graph_ac_off_color_sel),
+	    GTK_WIDGET (bat->graph_ac_off_color_sel),
 	    1, 2, 1, 2, GTK_EXPAND, 0, 0, 0);
 
-  l = gtk_label_new(_("Graph Interval:"));
+  l = gtk_label_new (_ ("Graph Tick Color:"));
+  gtk_table_attach (GTK_TABLE (t), l, 0, 1, 2, 3, 0, 0, 0, 0);
+  gtk_table_attach (GTK_TABLE (t),
+	    GTK_WIDGET (bat->graph_line_color_sel),
+	    1, 2, 2, 3, GTK_EXPAND, 0, 0, 0);
+
+  l = gtk_label_new (_ ("Graph Interval:"));
   bat->graph_speed_adj = gtk_adjustment_new ( bat->graph_interval, 1, 666, 1,
 					      8, 8 );
-  graph_speed_spin = gtk_spin_button_new( GTK_ADJUSTMENT(bat->graph_speed_adj),
+  graph_speed_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->graph_speed_adj),
 					  1, 0 );
-  gtk_signal_connect(GTK_OBJECT(bat->graph_speed_adj), "value_changed",
-		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
-  gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(graph_speed_spin),
+  gtk_signal_connect (GTK_OBJECT (bat->graph_speed_adj), "value_changed",
+		     GTK_SIGNAL_FUNC (adj_value_changed_cb), bat);
+  gtk_spin_button_set_update_policy ( GTK_SPIN_BUTTON (graph_speed_spin),
 				     GTK_UPDATE_ALWAYS );
   
 		     
-  gtk_table_attach_defaults ( GTK_TABLE(t), l, 0, 1, 2, 3 );
-  gtk_table_attach_defaults ( GTK_TABLE(t), graph_speed_spin, 1, 2, 2, 3 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 3, 4 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), graph_speed_spin, 1, 2, 3, 4 );
   
-  l = gtk_label_new(_("Graph Direction:"));
-  gtk_table_attach_defaults ( GTK_TABLE(t), l, 0, 1, 3, 4 );
+  l = gtk_label_new (_ ("Graph Direction:"));
+  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 4, 5 );
 
-  bat->dir_radio = gtk_radio_button_new_with_label(NULL, _("Left to Right"));
+  bat->dir_radio = gtk_radio_button_new_with_label (NULL, _ ("Left to Right"));
   r2 = gtk_radio_button_new_with_label_from_widget 
-		    (GTK_RADIO_BUTTON(bat->dir_radio), _("Right to Left"));
+		    (GTK_RADIO_BUTTON (bat->dir_radio), _ ("Right to Left"));
 
   if (bat->graph_direction == BATTERY_GRAPH_LEFT_TO_RIGHT)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->dir_radio), 1);
@@ -162,8 +177,8 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (bat->dir_radio), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
 
-  gtk_table_attach_defaults ( GTK_TABLE(t), bat->dir_radio, 1, 2, 3, 4);
-  gtk_table_attach_defaults ( GTK_TABLE(t), r2, 2, 3, 3, 4);
+  gtk_table_attach_defaults ( GTK_TABLE (t), bat->dir_radio, 1, 2, 4, 5);
+  gtk_table_attach_defaults ( GTK_TABLE (t), r2, 2, 3, 4, 5);
 
   /*
    *
@@ -174,33 +189,33 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new ("Readout Properties"));
 
-  bat->readout_ac_on_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
-  gtk_signal_connect(GTK_OBJECT(bat->readout_ac_on_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
+  bat->readout_ac_on_color_sel = GNOME_COLOR_PICKER (gnome_color_picker_new ());
+  gtk_signal_connect (GTK_OBJECT (bat->readout_ac_on_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC (col_value_changed_cb), bat );
 
-  bat->readout_ac_off_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
-  gtk_signal_connect(GTK_OBJECT(bat->readout_ac_off_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
+  bat->readout_ac_off_color_sel = GNOME_COLOR_PICKER (gnome_color_picker_new ());
+  gtk_signal_connect (GTK_OBJECT (bat->readout_ac_off_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC (col_value_changed_cb), bat );
 
   /* Initialize the selector colors */
-  sscanf(bat->readout_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_picker_set_i8( bat->readout_ac_on_color_sel,
+  sscanf (bat->readout_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
+  gnome_color_picker_set_i8 ( bat->readout_ac_on_color_sel,
 				      r, g, b, 255);
 
-  sscanf(bat->readout_color_ac_off_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_picker_set_i8( bat->readout_ac_off_color_sel,
+  sscanf (bat->readout_color_ac_off_s, "#%02x%02x%02x", &r, &g, &b);
+  gnome_color_picker_set_i8 ( bat->readout_ac_off_color_sel,
 				      r, g, b, 255);
 
-  l = gtk_label_new (_("AC-On Battery Color:"));
+  l = gtk_label_new (_ ("AC-On Battery Color:"));
   gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 0, 1);
-  gtk_table_attach (GTK_TABLE(t),
-	    GTK_WIDGET(bat->readout_ac_on_color_sel),
+  gtk_table_attach (GTK_TABLE (t),
+	    GTK_WIDGET (bat->readout_ac_on_color_sel),
 	    1, 2, 0, 1, GTK_EXPAND, 0, 0, 0);
 
-  l = gtk_label_new(_("AC-Off Battery Color:"));
-  gtk_table_attach (GTK_TABLE(t), l, 0, 1, 1, 2, 0, 0, 0, 0);
+  l = gtk_label_new (_ ("AC-Off Battery Color:"));
+  gtk_table_attach (GTK_TABLE (t), l, 0, 1, 1, 2, 0, 0, 0, 0);
   gtk_table_attach (GTK_TABLE (t),
-	    GTK_WIDGET(bat->readout_ac_off_color_sel),
+	    GTK_WIDGET (bat->readout_ac_off_color_sel),
 	    1, 2, 1, 2, GTK_EXPAND, 0, 0, 0);
 
   gtk_signal_connect (GTK_OBJECT (bat->prop_win), "destroy",
@@ -274,7 +289,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 	g_malloc (sizeof (unsigned char) * bat->width);
 
       for (i = 0; i < bat->width; i ++)
-	new_graph [i] = bat->graph_values [(bat->width - 1) - i];
+	new_graph [i] = bat->graph_values [ (bat->width - 1) - i];
 
       memcpy (bat->graph_values, new_graph,
 	      sizeof (unsigned char) * bat->width);
@@ -290,7 +305,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   height = GTK_ADJUSTMENT (bat->height_adj)->value;
   width = GTK_ADJUSTMENT (bat->width_adj)->value;
 
-  if ((height != bat->height) || (width != bat->width))
+  if ( (height != bat->height) || (width != bat->width))
     {
       size_changed = TRUE;
       bat->height = height;
@@ -299,22 +314,27 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 
   gnome_color_picker_get_i8 (bat->graph_ac_on_color_sel,
 			     &r, &g, &b, NULL);
-  snprintf(bat->graph_color_ac_on_s, sizeof(bat->graph_color_ac_on_s),
+  snprintf (bat->graph_color_ac_on_s, sizeof (bat->graph_color_ac_on_s),
 	   "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->graph_ac_off_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf(bat->graph_color_ac_off_s, sizeof(bat->graph_color_ac_off_s),
+  snprintf (bat->graph_color_ac_off_s, sizeof (bat->graph_color_ac_off_s),
 	  "#%02x%02x%02x", r, g, b);
+
+  gnome_color_picker_get_i8 (bat->graph_line_color_sel,
+			     &r, &g, &b, NULL);
+  snprintf (bat->graph_color_line_s, sizeof (bat->graph_color_line_s),
+	   "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->readout_ac_off_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf(bat->readout_color_ac_off_s, sizeof(bat->readout_color_ac_off_s),
+  snprintf (bat->readout_color_ac_off_s, sizeof (bat->readout_color_ac_off_s),
 	  "#%02x%02x%02x", r, g, b);
 
   gnome_color_picker_get_i8 ( bat->readout_ac_on_color_sel,
 				       &r, &g, &b, NULL);
-  snprintf(bat->readout_color_ac_on_s, sizeof(bat->readout_color_ac_on_s),
+  snprintf (bat->readout_color_ac_on_s, sizeof (bat->readout_color_ac_on_s),
 	  "#%02x%02x%02x", r, g, b);
 
   bat->mode_string = GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
@@ -322,7 +342,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 
   bat->setup = TRUE;
 
-  battery_setup_colors(bat);
+  battery_setup_colors (bat);
 
   if (size_changed)
     battery_set_size (bat);
@@ -330,7 +350,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   battery_set_mode (bat);
 
   bat->force_update = TRUE;
-  battery_update ((gpointer) bat);
+  battery_update ( (gpointer) bat);
   
   /* Make the panel save our config */
   applet_widget_sync_config (APPLET_WIDGET (bat->applet));
@@ -344,7 +364,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
  */
 
 void
-adj_value_changed_cb( GtkAdjustment * ignored, gpointer data )
+adj_value_changed_cb ( GtkAdjustment * ignored, gpointer data )
 {
   BatteryData * bat = data;
 
@@ -352,7 +372,7 @@ adj_value_changed_cb( GtkAdjustment * ignored, gpointer data )
 } /* value_changed_cb */
 
 void
-toggle_value_changed_cb( GtkToggleButton * ignored, gpointer data )
+toggle_value_changed_cb ( GtkToggleButton * ignored, gpointer data )
 {
   BatteryData * bat = data;
 
@@ -360,7 +380,7 @@ toggle_value_changed_cb( GtkToggleButton * ignored, gpointer data )
 } /* value_changed_cb */
 
 void
-col_value_changed_cb( GtkObject * ignored, guint arg1, guint arg2,
+col_value_changed_cb ( GtkObject * ignored, guint arg1, guint arg2,
 		      guint arg3, guint arg4, gpointer data )
 {
   BatteryData * bat = data;

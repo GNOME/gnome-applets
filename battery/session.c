@@ -45,6 +45,11 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
 	  ("graph/ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR, NULL),
 	  sizeof(bat->graph_color_ac_off_s));
 
+  strncpy(bat->graph_color_line_s,
+	  gnome_config_get_string_with_default
+	  ("graph/line_color="  BATTERY_DEFAULT_GRAPH_LINE_COLOR, NULL),
+	  sizeof(bat->graph_color_line_s));
+
   /* The readout */
   strncpy(bat->readout_color_ac_on_s,
 	  gnome_config_get_string_with_default
