@@ -375,12 +375,7 @@ destroy_drive_widget (GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (dd->error_dialog);
 		dd->error_dialog = NULL;
 	}
-
-	if (dd->tooltips != NULL) {
-		g_object_unref (G_OBJECT (dd->tooltips));
-		dd->tooltips = NULL;
-	}
-
+	
 	g_free (dd->custom_icon_in);
 	g_free (dd->custom_icon_out);
 
@@ -671,7 +666,7 @@ update_pixmap (DriveData *dd, gint t)
 
 		if (pixbuf) {
 			width = gdk_pixbuf_get_width (pixbuf);
-			height = gdk_pixbuf_get_width (pixbuf);
+			height = gdk_pixbuf_get_height (pixbuf);
 
 			if (dd->orient == PANEL_APPLET_ORIENT_LEFT
 			    || dd->orient == PANEL_APPLET_ORIENT_RIGHT) {
