@@ -3,8 +3,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.5">
-  <!ENTITY date "August 2003">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Command Line">
 ]>
 <!-- 
@@ -30,6 +30,10 @@
      <copyright> 
         <year>1998</year> 
         <holder>Oliver Maruhn</holder> 
+     </copyright>
+     <copyright> 
+        <year>1998</year> 
+        <holder>Dan Mueth</holder> 
      </copyright>
 <!-- translators: uncomment this:
 
@@ -65,6 +69,14 @@
              <address> <email>oliver@maruhn.com</email> </address> 
           </affiliation> 
         </author> 
+        <author> 
+          <firstname>Dan </firstname> 
+          <surname> Mueth</surname> 
+          <affiliation> 
+             <orgname>GNOME Documentation Project</orgname> 
+             <address> <email>d-mueth@uchicago.edu</email> </address> 
+          </affiliation> 
+        </author> 
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
            <othercredit role="translator">
@@ -92,6 +104,18 @@
           </revdescription> 
         </revision>
 
+			<revision> 
+          <revnumber>Command Line Applet Manual V2.5</revnumber> 
+          <date>August 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription> 
+        </revision>
 			<revision> 
           <revnumber>Command Line Applet Manual V2.4</revnumber> 
           <date>April 2003</date> 
@@ -398,7 +422,7 @@
                   </entry> 
                   <entry>
                      <para>
-                        Starts a GNOME terminal. 
+                        Starts a terminal. 
                      </para>
                   </entry> 
                 </row> 
@@ -440,7 +464,7 @@
         </para>
         <para>
           You can use <application>&applet;</application> to run scripts,
-          executable files, or other programs from your file system. 
+          execute commands, or run other programs from your file system. 
         </para>
      </sect2> 
      <sect2 id="command-line-histlist"> 
@@ -582,8 +606,7 @@
                 </para>
                 <para>
                   A command executes if the corresponding pattern
-                  successfully matches the text that you type into the
-                  <application>&applet;</application> 
+                  successfully matches the text that you type into the 
                   <guilabel>entry field</guilabel>. The macros are commands that
                   can take parameters parsed by the regular expression.
                 </para>
