@@ -48,3 +48,6 @@ gkb_xmmap: gkb_xmmap.in
 	sed "s,\$${prefix},$(prefix),g" \
 	< gkb_xmmap.in >gkb_xmmap.tmp \
 	&& mv gkb_xmmap.tmp gkb_xmmap
+
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
