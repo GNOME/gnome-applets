@@ -10,8 +10,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2004-02-15 19:13+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-11 23:13+0200\n"
+"PO-Revision-Date: 2004-08-11 23:33+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +33,8 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
-msgid "_About..."
+#, fuzzy
+msgid "_About"
 msgstr "_Om..."
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
@@ -60,7 +62,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrik för AccessX-statuspanelprogrammet"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1332
 msgid "Keyboard Accessibility Status"
 msgstr "Status för tangentbordstillgänglighet"
 
@@ -73,25 +75,14 @@ msgstr ""
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Visar statusen för funktionerna för tangentbordstillgänglighet"
 
-#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:5
-#: battstat/GNOME_BattstatApplet.server.in.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
-#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-msgid "Utility"
-msgstr "Verktyg"
-
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
-#: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
-#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
-#: mini-commander/src/about.c:50 mixer/mixer.c:1332
-#: modemlights/modemlights.c:115 multiload/main.c:60
-#: stickynotes/stickynotes_applet_callbacks.c:230
-#: wireless/wireless-applet.c:572
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1057
+#: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
+#: mini-commander/src/about.c:50 mixer/mixer.c:1350
+#: modemlights/modemlights.c:118 multiload/main.c:60
+#: stickynotes/stickynotes_applet_callbacks.c:261
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "Christian Rose\n"
@@ -100,49 +91,63 @@ msgstr ""
 "Martin Wahlén\n"
 "Skicka synpunkter på översättningen till sv@li.org"
 
-#: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:157 accessx-status/applet.c:992
+#: accessx-status/applet.c:1132 accessx-status/applet.c:1335
 msgid "AccessX Status"
 msgstr "AccessX-status"
 
-#: accessx-status/applet.c:156
+#: accessx-status/applet.c:158
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Copyright © 2003 Sun Microsystems"
 
 # Osäker
-#: accessx-status/applet.c:157
+#: accessx-status/applet.c:159
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
 "Visar tillståndet för AccessX-funktioner som till exempel hakade modifierare"
 
-#: accessx-status/applet.c:193
+#: accessx-status/applet.c:195
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Ett fel inträffade vid start av hjälpvisaren: %s"
 
-#: accessx-status/applet.c:228
+#: accessx-status/applet.c:234
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr ""
 "Ett fel inträffade vid start av tangentbordskontrollpanelsprogrammet: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:474 accessx-status/applet.c:512
+#: accessx-status/applet.c:483 accessx-status/applet.c:521
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:993 accessx-status/applet.c:1133
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Visar statusen för tangentbordet när tillgänglighetsfunktionerna används."
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1027
+msgid "XKB Extenstion is not enabled"
+msgstr ""
+
+#: accessx-status/applet.c:1032
+#, fuzzy
+msgid "Unknown error"
+msgstr "Okänt tangentbord"
+
+#: accessx-status/applet.c:1040
+#, fuzzy, c-format
+msgid "Error: %s"
+msgstr "Fel"
+
+#: accessx-status/applet.c:1337
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Visar den aktuella statusen för tangentbordstillgänglighetsfunktioner"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
+#: battstat/battstat_applet.c:1078 battstat/battstat_applet.c:1824
 msgid "Battery Charge Monitor"
 msgstr "Batteriövervakare"
 
@@ -151,7 +156,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-fabrik"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1672
+#: battstat/battstat_applet.c:1825
 msgid "Monitor a laptop's remaining power"
 msgstr "Övervaka batteriladdningen i en bärbar dator"
 
@@ -167,8 +172,9 @@ msgstr "Övervaka batteriladdningen i en bärbar dator"
 #: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Inställningar..."
+#, fuzzy
+msgid "_Preferences"
+msgstr "Inställningar"
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
@@ -250,134 +256,133 @@ msgstr "Den batterinivå under vilken batteriet är gult."
 msgid "Yellow value level"
 msgstr "Gul värdenivå"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:338
-msgid "Your platform is not supported!\n"
-msgstr "Din plattform stöds inte!\n"
-
-#: battstat/battstat_applet.c:339
-msgid "The applet will not work properly (if at all).\n"
-msgstr "Panelprogrammet kommer inte att fungera ordentligt (om alls).\n"
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
-msgid "High"
-msgstr "Hög"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
-msgid "Low"
-msgstr "Låg"
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
-msgid "Critical"
-msgstr "Kritisk"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
-msgid "Charging"
-msgstr "Laddar"
-
-#: battstat/battstat_applet.c:457
-#, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Batterinivån är låg (%d%%) och nätspänningen är frånkopplad"
-
-#: battstat/battstat_applet.c:481
-msgid "Battery is now fully re-charged!"
-msgstr "Batteriet är nu helt uppladdat!"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-"Systemet körs på batteri\n"
-"Batteri: %d%% (%s)"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-"Systemet körs på nätspänning\n"
-"Batteri: %d%% (%s)"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
-#: battstat/battstat_applet.c:1141
-msgid "System is running on battery power"
-msgstr "Systemet körs på batteri"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
-#: battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "Systemet körs på nätspänning"
 
-#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:87
+msgid "System is running on battery power"
+msgstr "Systemet körs på batteri"
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:342
+msgid "Your platform is not supported!\n"
+msgstr "Din plattform stöds inte!\n"
+
+#: battstat/battstat_applet.c:343
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Panelprogrammet kommer inte att fungera ordentligt (om alls).\n"
+
+#: battstat/battstat_applet.c:382
+#, fuzzy, c-format
+msgid "Battery charged (%d%%)"
+msgstr "Batteriet helt uppladdat"
+
+#: battstat/battstat_applet.c:384
+#, c-format
+msgid "Unknown time (%d%%) remaining"
+msgstr ""
+
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "Unknown time (%d%%) till charged"
+msgstr ""
+
+#: battstat/battstat_applet.c:391
+#, c-format
+msgid "%d minute (%d%%) remaining"
+msgid_plural "%d minutes (%d%%) remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: battstat/battstat_applet.c:396
+#, c-format
+msgid "%d minute till charged (%d%%)"
+msgid_plural "%d minutes till charged (%d%%)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: battstat/battstat_applet.c:402
+#, c-format
+msgid "%d hour (%d%%) remaining"
+msgid_plural "%d hours (%d%%) remaining"
+msgstr[0] ""
+msgstr[1] ""
+
+#: battstat/battstat_applet.c:407
+#, c-format
+msgid "%d hour (%d%%) till charged (%d%%)"
+msgid_plural "%d hours (%d%%) till charged (%d%%)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:414
+#, c-format
+msgid "%d %s %d %s (%d%%) remaining"
+msgstr ""
+
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
+#, fuzzy
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "Ingen url"
+msgstr[1] "Ingen url"
+
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
+#, fuzzy
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "minuter"
+msgstr[1] "minuter"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:421
+#, c-format
+msgid "%d %s %d %s till charged (%d%%)"
+msgstr ""
+
+#: battstat/battstat_applet.c:529
+#, fuzzy
+msgid "Your battery is running low"
+msgstr "Batteriladdningen är låg."
+
+#: battstat/battstat_applet.c:531
+msgid "To avoid losing work please power off, suspend or plug your laptop in."
+msgstr ""
+
+#: battstat/battstat_applet.c:534 battstat/battstat_applet.c:587
+#, fuzzy
+msgid "Battery Notice"
+msgstr "Batteri: Inte tillgängligt"
+
+#: battstat/battstat_applet.c:607
+#, fuzzy
+msgid "Your battery is now fully recharged"
+msgstr "Batteriet är nu helt uppladdat!"
+
+#: battstat/battstat_applet.c:686 wireless/wireless-applet.c:148
+#: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "--"
 
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
-#, c-format
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "Systemet körs på batteri. Batteri: %d%% (%s)"
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
-#, c-format
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "Systemet körs på nätspänning. Batteri: %d%% (%s)"
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:669
-msgid "System is running on battery power. Battery: Not present"
-msgstr "Systemet körs på batteri. Batteri: Inte tillgängligt"
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:675
-msgid "System is running on AC power. Battery: Not present"
-msgstr "Systemet körs på nätspänning. Batteri: Inte tillgängligt"
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:684
-#, c-format
-msgid "Battery: %d%% (%s)"
-msgstr "Batteri: %d%% (%s)"
+#: battstat/battstat_applet.c:828
+#, fuzzy
+msgid "Battery status unknown"
+msgstr "Batteriövervakare"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:691
-msgid "Battery: Not present"
+#: battstat/battstat_applet.c:835 battstat/battstat_applet.c:847
+#, fuzzy
+msgid "No battery present"
 msgstr "Batteri: Inte tillgängligt"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:789
+#: battstat/battstat_applet.c:947
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -390,7 +395,7 @@ msgstr ""
 "APM-enheten."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:956
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -400,7 +405,7 @@ msgstr ""
 "avstängt. Prova att köra \"apm -e 1\" (under\n"
 "FreeBSD) och se om det hjälper.\n"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:1012
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -409,16 +414,16 @@ msgstr ""
 "Ett fel inträffade vid körning av pauskommandot: %s\n"
 "Försök att rätta till detta fel"
 
-#: battstat/battstat_applet.c:858
+#: battstat/battstat_applet.c:1016
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Pauskommandot \"%s\" misslyckades."
 
-#: battstat/battstat_applet.c:860
+#: battstat/battstat_applet.c:1018
 msgid "The Suspend command was unsuccessful."
 msgstr "Pauskommandot misslyckades."
 
-#: battstat/battstat_applet.c:868
+#: battstat/battstat_applet.c:1026
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -428,19 +433,20 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:886
+#: battstat/battstat_applet.c:1044
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:921
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+#: battstat/battstat_applet.c:1080
+#, fuzzy
+msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "© 2000 Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:922
+#: battstat/battstat_applet.c:1081
 msgid "This utility shows the status of your laptop battery."
 msgstr "Detta verktyg visar statusen för batteriet i din bärbara dator."
 
-#: battstat/battstat_applet.c:1597
+#: battstat/battstat_applet.c:1750
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -486,7 +492,7 @@ msgstr "<b>Paus</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Varningar</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1514
 msgid "Appearance"
 msgstr "Utseende"
 
@@ -495,8 +501,8 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för batteriladdningsövervakare"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
+#: gweather/gweather-pref.c:1050 mailcheck/mailcheck.c:2056
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Allmänt"
 
@@ -552,15 +558,25 @@ msgstr "_Varna när batteriladdningen är låg"
 msgid "_Yellow:"
 msgstr "_Gul:"
 
-#: battstat/properties.c:297 drivemount/drivemount.c:510
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
-#: stickynotes/stickynotes_applet_callbacks.c:371
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: battstat/properties.c:291 drivemount/drivemount.c:510
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
+#: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
+#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:238
+#: stickynotes/stickynotes_applet_callbacks.c:402
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ett fel inträffade vid visning av hjälp: %s"
+
+#: battstat/properties.c:494
+#, fuzzy
+msgid "Progress Bar Direction Moves towards top"
+msgstr "Riktning på mätare"
+
+#: battstat/properties.c:504
+#, fuzzy
+msgid "Progress Bar Direction Moves towards bottom"
+msgstr "Riktning på mätare"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -574,8 +590,8 @@ msgstr "Batteriet helt uppladdat"
 msgid "Battery power low"
 msgstr "Låg batteriladdning"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:620
-#: cdplayer/cdplayer.c:1084
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:615
+#: cdplayer/cdplayer.c:1117
 msgid "CD Player"
 msgstr "Cd-spelare"
 
@@ -588,11 +604,6 @@ msgid "Factory for CD player applet"
 msgstr "Fabrik för cd-spelarpanelprogram"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.in.h:2
-msgid "Multimedia"
-msgstr "Multimedia"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr "Panelprogram för spelning av ljud-cd"
 
@@ -600,61 +611,61 @@ msgstr "Panelprogram för spelning av ljud-cd"
 msgid "_Open CD Player"
 msgstr "_Öppna cd-spelare"
 
-#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1074
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1107
 msgid "Stop"
 msgstr "Stopp"
 
-#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1076
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1109
 msgid "Play / Pause"
 msgstr "Spela / Paus"
 
-#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1078
+#: cdplayer/cdplayer.c:191 cdplayer/cdplayer.c:1111
 msgid "Eject"
 msgstr "Mata ut"
 
-#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1080
+#: cdplayer/cdplayer.c:195 cdplayer/cdplayer.c:1113
 msgid "Previous Track"
 msgstr "Föregående spår"
 
-#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1082
+#: cdplayer/cdplayer.c:199 cdplayer/cdplayer.c:1115
 msgid "Next Track"
 msgstr "Nästa spår"
 
-#: cdplayer/cdplayer.c:253
+#: cdplayer/cdplayer.c:258
 msgid "You do not have permission to use the CD player."
 msgstr "Du har inte rättigheter att använda cd-spelaren."
 
-#: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1317 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Ett fel inträffade vid körning av \"%s\": %s"
 
-#: cdplayer/cdplayer.c:436
+#: cdplayer/cdplayer.c:431
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s verkar inte vara en cd-spelare"
 
-#: cdplayer/cdplayer.c:502
+#: cdplayer/cdplayer.c:497
 msgid "CD Player Preferences"
 msgstr "Inställningar för cd-spelare"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:518
 msgid "Device _path:"
 msgstr "Enhets_sökväg:"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:527
 msgid "Device Path"
 msgstr "Enhetssökväg"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:527
 msgid "Set the device path here"
 msgstr "Ställ in enhetssökvägen här"
 
-#: cdplayer/cdplayer.c:535
+#: cdplayer/cdplayer.c:530
 msgid "Use _Default"
 msgstr "Använd _standard"
 
-#: cdplayer/cdplayer.c:621
+#: cdplayer/cdplayer.c:616
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -662,56 +673,48 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (port till GNOME 2)"
 
-#: cdplayer/cdplayer.c:623 cdplayer/cdplayer.c:1085
+#: cdplayer/cdplayer.c:618 cdplayer/cdplayer.c:1118
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Cd-spelarpanelprogrammet är en enkel ljud-cd-spelare för din panel"
 
-#: cdplayer/cdplayer.c:899 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:895 cdplayer/cdplayer.c:906
 msgid "Elapsed time"
 msgstr "Förlupen tid"
 
-#: cdplayer/cdplayer.c:902 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:898 cdplayer/cdplayer.c:908
 msgid "Track number"
 msgstr "Spårnummer"
 
-#: cdplayer/cdplayer.c:973
+#: cdplayer/cdplayer.c:977
 msgid "Audio device is busy, or being used by another application"
 msgstr "Ljudenheten är upptagen, eller används av ett annat program"
 
-#: cdplayer/cdplayer.c:1075
+#: cdplayer/cdplayer.c:1004
+msgid "No Device Found or Illegal Format"
+msgstr ""
+
+#: cdplayer/cdplayer.c:1108
 msgid "Click this button to Stop playing the CD"
 msgstr "Klicka på denna knapp för att stoppa spelandet av cd-skivan"
 
-#: cdplayer/cdplayer.c:1077
+#: cdplayer/cdplayer.c:1110
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klicka på denna knapp för att spela eller pausa cd-skivan"
 
-#: cdplayer/cdplayer.c:1079
+#: cdplayer/cdplayer.c:1112
 msgid "Click this button to eject the CD"
 msgstr "Klicka på denna knapp för att mata ut cd-skivan"
 
-#: cdplayer/cdplayer.c:1081
+#: cdplayer/cdplayer.c:1114
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klicka på denna knapp för att spela föregående spår på cd-skivan"
 
-#: cdplayer/cdplayer.c:1083
+#: cdplayer/cdplayer.c:1116
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klicka på denna knapp för att spela nästa spår på cd-skivan"
 
-#: cdplayer/cdplayer.schemas.in.h:1
-msgid "Path to the device"
-msgstr "Sökväg till enheten"
-
-#: cdplayer/cdplayer.schemas.in.h:2
-msgid ""
-"This is the full path of the device that will be used to play cd's from this "
-"applet"
-msgstr ""
-"Detta är den fullständiga sökvägen till enheten som kommer att användas för "
-"att spela cd-skivor från detta panelprogram"
-
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:576
-#: charpick/charpick.c:727 charpick/properties.c:425
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:583
+#: charpick/charpick.c:737 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Teckenpalett"
 
@@ -719,7 +722,7 @@ msgstr "Teckenpalett"
 msgid "Charpicker Applet Factory"
 msgstr "Fabrik för teckenväljarpanelprogram"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:727
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:737
 msgid "Insert characters"
 msgstr "Infoga tecken"
 
@@ -727,25 +730,30 @@ msgstr "Infoga tecken"
 msgid "Available palettes"
 msgstr "Tillgängliga paletter"
 
-#: charpick/charpick.c:456
+#: charpick/charpick.c:454
+#, fuzzy, c-format
+msgid "insert special character %s"
+msgstr "Infoga specialtecken"
+
+#: charpick/charpick.c:459
 msgid "Insert special characters"
 msgstr "Infoga specialtecken"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:545
+#: charpick/charpick.c:552
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:546
+#: charpick/charpick.c:553
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:578
+#: charpick/charpick.c:585
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:579
+#: charpick/charpick.c:586
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -761,7 +769,7 @@ msgstr "Tecken som visas vid uppstart av panelprogrammet"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "FÖRÅLDRAT - Tecken som visas vid uppstart av panelprogrammet"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:352
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:376
 msgid "List of available palettes"
 msgstr "Lista med tillgängliga paletter"
 
@@ -777,59 +785,64 @@ msgstr ""
 "Strängen som användaren hade markerat då panelprogrammet senast användes. "
 "Denna sträng kommer att visas då användaren startar panelprogrammet."
 
-#: charpick/properties.c:90
+#: charpick/properties.c:24
+msgid "_Edit"
+msgstr "_Redigera"
+
+#: charpick/properties.c:113
 msgid "_Palette:"
 msgstr "_Palett:"
 
-#: charpick/properties.c:98
+#: charpick/properties.c:121
 msgid "Palette entry"
 msgstr "Palettpost"
 
-#: charpick/properties.c:99
+#: charpick/properties.c:122
 msgid "Modify a palette by adding or removing characters"
 msgstr "Ändra en palett genom att lägga till eller ta bort tecken"
 
-#: charpick/properties.c:213
+#: charpick/properties.c:236
 msgid "Add Palette"
 msgstr "Lägg till palett"
 
-#: charpick/properties.c:250
+#: charpick/properties.c:273
 msgid "Edit Palette"
 msgstr "Redigera palett"
 
-#: charpick/properties.c:351
+#: charpick/properties.c:375
 msgid "Palettes list"
 msgstr "Palettlista"
 
-#: charpick/properties.c:430
-msgid "Pal_ettes:"
-msgstr "Pal_etter:"
+#: charpick/properties.c:454
+#, fuzzy
+msgid "_Palettes:"
+msgstr "_Palett:"
 
-#: charpick/properties.c:446
+#: charpick/properties.c:470
 msgid "Add button"
 msgstr "Lägg till-knapp"
 
-#: charpick/properties.c:447
+#: charpick/properties.c:471
 msgid "Click to add a new palette"
 msgstr "Klicka för att lägga till en ny palett"
 
-#: charpick/properties.c:454
+#: charpick/properties.c:478
 msgid "Edit button"
 msgstr "Redigera-knapp"
 
-#: charpick/properties.c:455
+#: charpick/properties.c:479
 msgid "Click to edit the selected palette"
 msgstr "Klicka för att redigera den valda paletten"
 
-#: charpick/properties.c:462
+#: charpick/properties.c:486
 msgid "Delete button"
 msgstr "Ta bort-knapp"
 
-#: charpick/properties.c:463
+#: charpick/properties.c:487
 msgid "Click to delete the selected palette"
 msgstr "Klicka för att ta bort den valda paletten"
 
-#: charpick/properties.c:515
+#: charpick/properties.c:539
 msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
@@ -851,14 +864,15 @@ msgid "Mount local disks and devices"
 msgstr "Montera lokala hårddiskar och enheter"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "_Browse..."
-msgstr "_Bläddra..."
+#, fuzzy
+msgid "_Browse"
+msgstr "Bläddra"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
 msgstr "_Mata ut"
 
-#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:661
+#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:662
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Ett fel inträffade vid körning av %s: %s"
@@ -868,7 +882,7 @@ msgid "Cannot browse device"
 msgstr "Kan inte bläddra i enheten"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2623
 msgid "Error displaying help"
 msgstr "Fel vid visning av hjälp"
 
@@ -880,19 +894,19 @@ msgstr "© 1999-2001 GNOME-hackarna\n"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Panelprogram för montering och avmontering av blockvolymer."
 
-#: drivemount/drivemount.c:777
+#: drivemount/drivemount.c:781
 msgid " mounted"
 msgstr " monterad"
 
-#: drivemount/drivemount.c:779
+#: drivemount/drivemount.c:783
 msgid " not mounted"
 msgstr " inte monterad"
 
-#: drivemount/drivemount.c:891
+#: drivemount/drivemount.c:895
 msgid "\" reported:\n"
 msgstr "\" rapporterad:\n"
 
-#: drivemount/drivemount.c:893
+#: drivemount/drivemount.c:897
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -900,7 +914,7 @@ msgstr ""
 "Enhetsmonteringskommandot misslyckades.\n"
 "\""
 
-#: drivemount/drivemount.c:899
+#: drivemount/drivemount.c:903
 msgid "Cannot mount device"
 msgstr "Kan inte montera enheten"
 
@@ -929,8 +943,8 @@ msgstr "Välj monteringskatalog"
 msgid "_Update interval:"
 msgstr "_Uppdateringsintervall:"
 
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2118
-#: mailcheck/mailcheck.c:2124 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2127
+#: mailcheck/mailcheck.c:2133 modemlights/properties.c:468
 msgid "seconds"
 msgstr "sekunder"
 
@@ -943,11 +957,12 @@ msgid "Floppy"
 msgstr "Diskett"
 
 #: drivemount/properties.c:457
-msgid "Cdrom"
-msgstr "Cd-rom"
+msgid "CD-ROM"
+msgstr ""
 
 #: drivemount/properties.c:460
-msgid "Cd Recorder"
+#, fuzzy
+msgid "CD Recorder"
 msgstr "Cd-brännare"
 
 #: drivemount/properties.c:463
@@ -991,27 +1006,25 @@ msgid "_Scale size to panel"
 msgstr "An_passa storlek till panelen"
 
 #: drivemount/properties.c:552
-msgid "_Eject disk when unmounting"
+#, fuzzy
+msgid "_Eject disk when unmounted"
 msgstr "_Mata ut skiva vid avmontering"
 
 #: drivemount/properties.c:562
-msgid "Use _automount friendly status test"
+#, fuzzy
+msgid "Use _automount-friendly status test"
 msgstr "Använd _automount-vänlig statustest"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr "Ett par ögon till din panel"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:2
-msgid "Amusements"
-msgstr "Underhållning"
-
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:222
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:222
 #: geyes/geyes.c:452 geyes/geyes.c:454
 msgid "Geyes"
 msgstr "Geyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "Fabrik för panelprogrammet Geyes"
 
@@ -1039,15 +1052,15 @@ msgstr "Kan inte starta ögonpanelprogrammet."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Ett ödesdigert fel inträffade vid försök att läsa in temat."
 
-#: geyes/themes.c:294
+#: geyes/themes.c:295
 msgid "Geyes Preferences"
 msgstr "Inställningar för Geyes"
 
-#: geyes/themes.c:326
+#: geyes/themes.c:330
 msgid "Themes"
 msgstr "Teman"
 
-#: geyes/themes.c:347
+#: geyes/themes.c:351
 msgid "_Select a theme:"
 msgstr "_Välj ett tema:"
 
@@ -1068,49 +1081,1437 @@ msgstr "Tangentbordsbytare"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Producerar panelprogram för byte av tangentbordslayout."
 
-#: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Armenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:5 gkb-new/descs.sun/presets.xml.in.h:1
 msgid "Armenia"
 msgstr "Armenien"
 
-#: gkb-new/descs.sun/presets.xml.in.h:2 gkb-new/descs/presets.xml.in.h:6
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Armenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:6 gkb-new/descs.sun/presets.xml.in.h:2
 msgid "Armenian"
 msgstr "Armenisk"
+
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:7
+msgid "Armenian xkb keymap"
+msgstr "Armenisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:1
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:1
+msgid "Algeria"
+msgstr "Algeriet"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:2
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:2
+msgid "Arabic"
+msgstr "Arabisk"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:4
+msgid "Arabic xkb keymap"
+msgstr "Arabisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:4
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:12
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:5
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:5
+#: gkb-new/descs/presets.xml.in.h:29
+msgid "Comoros"
+msgstr "Komorerna"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:6
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:6
+#: gkb-new/descs/presets.xml.in.h:42
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:7
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:7
+#: gkb-new/descs/presets.xml.in.h:47
+msgid "Egypt"
+msgstr "Egypten"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:8
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:8
+#: gkb-new/descs/presets.xml.in.h:102
+msgid "Iraq"
+msgstr "Irak"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:9
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:9
+#: gkb-new/descs/presets.xml.in.h:112
+msgid "Jordan"
+msgstr "Jordanien"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:10
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:10
+#: gkb-new/descs/presets.xml.in.h:113
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:11
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:11
+#: gkb-new/descs/presets.xml.in.h:117
+msgid "Lebanon"
+msgstr "Libanon"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:12
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:12
+#: gkb-new/descs/presets.xml.in.h:118
+msgid "Libyan Arab Jamahiriya"
+msgstr "Libyen"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:13
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:13
+#: gkb-new/descs/presets.xml.in.h:128
+msgid "Marocco"
+msgstr "Marocko"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:14
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:14
+#: gkb-new/descs/presets.xml.in.h:139
+msgid "Oman"
+msgstr "Oman"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:15
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:15
+#: gkb-new/descs/presets.xml.in.h:140
+msgid "Palestinian Territory"
+msgstr "Palestina"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:16
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:16
+#: gkb-new/descs/presets.xml.in.h:151
+msgid "Qatar"
+msgstr "Qatar"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:17
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:17
+#: gkb-new/descs/presets.xml.in.h:160
+msgid "Saudi Arabia"
+msgstr "Saudiarabien"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:18
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:18
+#: gkb-new/descs/presets.xml.in.h:173
+msgid "Somalia"
+msgstr "Somalia"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:19
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:19
+#: gkb-new/descs/presets.xml.in.h:179
+msgid "Sudan"
+msgstr "Sudan"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:20
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:20
+#: gkb-new/descs/presets.xml.in.h:187
+msgid "Syria"
+msgstr "Syrien"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:21
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:21
+#: gkb-new/descs/presets.xml.in.h:195
+msgid "Tunisia"
+msgstr "Tunisien"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:22
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:22
+#: gkb-new/descs/presets.xml.in.h:219
+msgid "United Arab Emirates"
+msgstr "Förenade arabemiraten"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:23
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:23
+#: gkb-new/descs/presets.xml.in.h:226
+msgid "Yemen"
+msgstr "Yemen"
+
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:3
+msgid "Arabic keymap"
+msgstr "Arabisk tangentbordstabell"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:1
+msgid "Azerbaidjan"
+msgstr "Azerbajdzjan"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:2
+msgid "Azerbaidjani Turkic"
+msgstr "Azerbajdzjansk turkiska"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:3
+msgid "Azerbaidjani Turkic xkb keymap"
+msgstr "Azerbajdzjansk turkisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:18 gkb-new/descs.sun/presets.xml.in.h:10
+msgid "Belgium"
+msgstr "Belgien"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:43 gkb-new/descs.sun/presets.xml.in.h:27
+msgid "Dutch"
+msgstr "Holländsk"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:45
+msgid "Dutch xkb keymap"
+msgstr "Holländsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:22 gkb-new/descs.sun/presets.xml.in.h:14
+msgid "Bulgaria"
+msgstr "Bulgarien"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:23 gkb-new/descs.sun/presets.xml.in.h:15
+msgid "Bulgarian"
+msgstr "Bulgarisk"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:26
+msgid "Bulgarian xkb keymap"
+msgstr "Bulgarisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:25
+msgid "Bulgarian keymap"
+msgstr "Bulgarisk tangentbordstabell"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:19 gkb-new/descs.sun/presets.xml.in.h:11
+msgid "Brazil"
+msgstr "Brasilien"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:21
+msgid "Brazil Portuguese xkb keymap"
+msgstr "xkb-tangentbordstabell för brasiliansk portugisiska"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:148 gkb-new/descs.sun/presets.xml.in.h:85
+msgid "Portuguese"
+msgstr "Portugisisk"
+
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:20
+msgid "Brazil Portuguese keymap"
+msgstr "Tangentbordstabell för brasiliansk portugisiska"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:14 gkb-new/descs.sun/presets.xml.in.h:7
+msgid "Belarus"
+msgstr "Vitryssland"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:15 gkb-new/descs.sun/presets.xml.in.h:8
+#, fuzzy
+msgid "Belarusian"
+msgstr "Vitrysk"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:16
+#, fuzzy
+msgid "Belarusian xkb keymap"
+msgstr "Vitrysk xkb-tangentbordstabell"
+
+#: gkb-new/descs/Basque.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:13
+msgid "Basque"
+msgstr "Baskisk"
+
+#: gkb-new/descs/Basque.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:54
+msgid "Euskadi"
+msgstr "Baskien"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:17
+msgid "Belgian"
+msgstr "Belgisk"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:61 gkb-new/descs.sun/presets.xml.in.h:40
+msgid "French"
+msgstr "Fransk"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:5
+msgid "Wallon"
+msgstr "Wallonska"
+
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:24
+msgid "Bulgarian Cyrillic"
+msgstr "Bulgarisk kyrillisk"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:27 gkb-new/descs.sun/presets.xml.in.h:17
+msgid "Canada"
+msgstr "Kanada"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:28
+msgid "Canadian xkb keymap"
+msgstr "Kanadensisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/US.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/descs.sun/presets.xml.in.h:29
+#: gkb-new/gkb.c:365
+msgid "English"
+msgstr "Engelsk"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/German.keyprop.desktop.in.h:2
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:75 gkb-new/descs.sun/presets.xml.in.h:43
+msgid "German"
+msgstr "Tysk"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:185
+msgid "Swiss keymap"
+msgstr "Schweizisk tangentbordstabell"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:4
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:186 gkb-new/descs.sun/presets.xml.in.h:113
+msgid "Switzerland"
+msgstr "Schweiz"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:33 gkb-new/descs.sun/presets.xml.in.h:19
+msgid "Czech"
+msgstr "Tjeckisk"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:37
+msgid "Czech qwertz xkb keymap"
+msgstr "Tjeckisk qwertz-tangentbordstabell"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "Former Czechoslovakia Czech Republic"
+msgstr "Före detta Tjeckoslovakien"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:34 gkb-new/descs.sun/presets.xml.in.h:20
+msgid "Czech Republic"
+msgstr "Republiken Tjeckien"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:35
+msgid "Czech and Slovak xkb keymap"
+msgstr "Tjeckisk och slovakisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:166 gkb-new/descs.sun/presets.xml.in.h:96
+msgid "Slovak"
+msgstr "Slovakisk"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:167 gkb-new/descs.sun/presets.xml.in.h:97
+msgid "Slovak Republic"
+msgstr "Slovakien"
+
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:36
+msgid "Czech keymap"
+msgstr "Tjeckisk tangentbordstabell"
+
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:78
+msgid "German xkb keymap"
+msgstr "Tysk xkb-tangentbordstabell"
+
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:79 gkb-new/descs.sun/presets.xml.in.h:47
+msgid "Germany"
+msgstr "Tyskland"
+
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:77
+msgid "German keymap"
+msgstr "Tysk tangentbordstabell"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:38 gkb-new/descs.sun/presets.xml.in.h:22
+msgid "Danish"
+msgstr "Dansk"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:40
+msgid "Danish xkb keymap"
+msgstr "Dansk zkb-tangentbordstabell"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:41 gkb-new/descs.sun/presets.xml.in.h:26
+msgid "Denmark"
+msgstr "Danmark"
+
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:39
+msgid "Danish keymap"
+msgstr "Dansk tangentbordstabell"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:869 gweather/gweather-pref.c:893
+#: gweather/gweather-pref.c:919
+#, fuzzy
+msgid "Default"
+msgstr "Standardlista"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:80 gkb-new/descs.sun/presets.xml.in.h:48
+msgid "Gnome Keyboard default"
+msgstr "Gnome-standardtangentbord"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:3
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/descs.sun/presets.xml.in.h:58
+#: gkb-new/gkb.c:365
+msgid "International"
+msgstr "Internationell"
+
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:46
+msgid "Dvorak xkb keymap"
+msgstr "Dvorak-xkb-tangentbordstabell"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:50 gkb-new/descs.sun/presets.xml.in.h:33
+msgid "Estonia"
+msgstr "Estland"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:51 gkb-new/descs.sun/presets.xml.in.h:34
+msgid "Estonian"
+msgstr "Estnisk"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:53
+msgid "Estonian xkb keymap"
+msgstr "Estnisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:52
+msgid "Estonian keymap"
+msgstr "Estnisk tangentbordstabell"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:174 gkb-new/descs.sun/presets.xml.in.h:102
+msgid "Spain"
+msgstr "Spanien"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:175 gkb-new/descs.sun/presets.xml.in.h:103
+msgid "Spanish"
+msgstr "Spansk"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "Spanish PC/AT 101 keyboard "
+msgstr "Spanskt PC/AT-101-tangentbord"
+
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:178
+msgid "Spanish xkb keymap"
+msgstr "Spansk xkb-tangentbordstabell"
+
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:177
+msgid "Spanish keymap"
+msgstr "Spansk tangentbordstabell"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:55 gkb-new/descs.sun/presets.xml.in.h:36
+msgid "Finland"
+msgstr "Finland"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:56 gkb-new/descs.sun/presets.xml.in.h:37
+msgid "Finnish"
+msgstr "Finsk"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:58
+msgid "Finnish xkb keymap"
+msgstr "Finsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:57
+msgid "Finnish keymap"
+msgstr "Finsk tangentbordstabell"
+
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:60 gkb-new/descs.sun/presets.xml.in.h:39
+msgid "France"
+msgstr "Frankrike"
+
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:62
+msgid "French PC/AT 101 keyboard"
+msgstr "Franskt PC/AT-101-tangentbord"
+
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:66
+msgid "French xkb keymap"
+msgstr "Fransk xkb-tangentbordstabell"
+
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:65
+msgid "French keymap"
+msgstr "Fransk tangentbordstabell"
+
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:67
+msgid "French-Canadian 105-key"
+msgstr "Fransk-kanadensisk 105-tangenters"
+
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:63
+msgid "French Swiss"
+msgstr "Fransk-schweizisk"
+
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:64
+msgid "French Swiss keymap"
+msgstr "Fransk-schweizisk tangentbordstabell"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:1
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:70
+msgid "Georgia"
+msgstr "Georgien"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:2
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:71
+msgid "Georgian"
+msgstr "Georgisk"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:74
+msgid "Georgian keymap"
+msgstr "Georgisk tangentbordstabell"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:1
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:81
+msgid "Greece"
+msgstr "Grekland"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:2
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:82
+msgid "Greek"
+msgstr "Grekisk"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:84
+msgid "Greek xkb keymap"
+msgstr "Grekisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:83
+msgid "Greek keymap"
+msgstr "Grekisk tangentbordstabell"
+
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:72
+msgid "Georgian Latin"
+msgstr "Georgisk latin"
+
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:73
+msgid "Georgian Russian layout"
+msgstr "Georgisk rysk layout"
+
+#: gkb-new/descs/German.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:8
+msgid "Austria"
+msgstr "Österrike"
+
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:76
+msgid "German Swiss with Euro"
+msgstr "Tysk-scweizisk med euro"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:30
+msgid "Croatia"
+msgstr "Kroatien"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:31
+msgid "Croatian"
+msgstr "Kroatisk"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:32
+msgid "Croatian keymap"
+msgstr "Kroatisk tangentbordstabell"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:88 gkb-new/descs.sun/presets.xml.in.h:51
+msgid "Hungarian"
+msgstr "Ungersk"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:95
+msgid "Hungarian latin2 xkb keymap"
+msgstr "Ungersk latin2-xkb-tangentbordstabell"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:96 gkb-new/descs.sun/presets.xml.in.h:54
+msgid "Hungary"
+msgstr "Ungern"
+
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:94
+msgid "Hungarian latin1"
+msgstr "Ungersk latin1"
+
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:91
+msgid "Hungarian 105-key latin 1"
+msgstr "Ungersk 105-tangenters latin 1"
+
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:180
+msgid "Sun (!not PC!) type5 Hungarian latin 2"
+msgstr "Sun (!inte PC!) type5 ungersk latin 2"
+
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:2
+#, fuzzy
+msgid "Hungarian PC/AT 101 keyboard "
+msgstr "Ungersk PC/AT-101-tangentbord"
+
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:92
+msgid "Hungarian 105-key latin 2"
+msgstr "Ungersk 105-tangenters latin 2"
+
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:89
+msgid "Hungarian 101-key latin 1"
+msgstr "Ungersk 101-tangenters latin 1"
+
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:90
+msgid "Hungarian 101-key latin 2"
+msgstr "Ungersk 101-tangenters latin 2"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:85 gkb-new/descs.sun/presets.xml.in.h:49
+msgid "Hebrew"
+msgstr "Hebreisk"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:87
+msgid "Hebrew xkb keymap"
+msgstr "Hebreisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:103 gkb-new/descs.sun/presets.xml.in.h:59
+msgid "Israel"
+msgstr "Israel"
+
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:86
+msgid "Hebrew keymap"
+msgstr "Hebreisk tangentbordstabell"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:97 gkb-new/descs.sun/presets.xml.in.h:55
+msgid "Iceland"
+msgstr "Island"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:98 gkb-new/descs.sun/presets.xml.in.h:56
+msgid "Icelandic"
+msgstr "Isländsk"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:100
+msgid "Icelandic xkb keymap"
+msgstr "Isländsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:99
+msgid "Icelandic keymap"
+msgstr "Isländsk tangentbordstabell"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:104 gkb-new/descs.sun/presets.xml.in.h:60
+msgid "Italian"
+msgstr "Italiensk"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:106
+msgid "Italian xkb keymap"
+msgstr "Italiensk xkb-tangentbordstabell"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:107 gkb-new/descs.sun/presets.xml.in.h:64
+msgid "Italy"
+msgstr "Italien"
+
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:105
+msgid "Italian keymap"
+msgstr "Italiensk tangentbordstabell"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:108 gkb-new/descs.sun/presets.xml.in.h:65
+msgid "Japan"
+msgstr "Japan"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:109 gkb-new/descs.sun/presets.xml.in.h:66
+msgid "Japanese"
+msgstr "Japansk"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:111
+msgid "Japanese xkb keymap"
+msgstr "Japansk xkb-tangentbordstabell"
+
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:110
+msgid "Japanese keymap"
+msgstr "Japansk tangentbordstabell"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:1
+#, fuzzy
+msgid "Korean"
+msgstr "Jordanien"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:2
+#, fuzzy
+msgid "Korean 106 keyboard"
+msgstr "Franskt PC/AT-101-tangentbord"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "South Korea"
+msgstr "Sydost"
+
+# Tror detta är Laos
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:114
+msgid "Lao"
+msgstr "Laos"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:115
+msgid "Lao keymap"
+msgstr "Laos-tangentbordstabell"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:116
+msgid "Laos"
+msgstr "Laos"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:119 gkb-new/descs.sun/presets.xml.in.h:72
+msgid "Lithuania"
+msgstr "Litauen"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:120 gkb-new/descs.sun/presets.xml.in.h:73
+msgid "Lithuanian"
+msgstr "Litauisk"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:123
+msgid "Lithuanian qwerty xkb keymap"
+msgstr "Litauisk qwerty-xkb-tangentbordstabell"
+
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:121
+msgid "Lithuanian keymap"
+msgstr "Litauisk tangentbordstabell"
+
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:122
+msgid "Lithuanian programmers xkb keymap"
+msgstr "Litauisk xkb-programmerartangentbordstabell"
+
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:124
+msgid "Lithuanian standard xkb keymap"
+msgstr "Litauisk xkb-standardtangentbordstabell"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:125 gkb-new/descs.sun/presets.xml.in.h:75
+msgid "Macedonia"
+msgstr "Makedonien"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:126 gkb-new/descs.sun/presets.xml.in.h:76
+msgid "Macedonian"
+msgstr "Makedonsk"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:127
+msgid "Macedonian xkb keymap"
+msgstr "Makedonisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:129
+msgid "Mongolia"
+msgstr "Mongoliet"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:130
+msgid "Mongolian"
+msgstr "Mongolisk"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "Mongolian keyboard"
+msgstr "Mongolisk tangentbordstabell"
+
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:132
+msgid "Mongolian keymap"
+msgstr "Mongolisk tangentbordstabell"
+
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "Plain Mongolian keymap"
+msgstr "Mongolisk tangentbordstabell"
+
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "Unicode Mongolian Keymap"
+msgstr "Mongolisk tangentbordstabell"
+
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:44
+msgid "Dutch keymap"
+msgstr "Holländsk tangentbordstabell"
+
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:135
+msgid "Netherlands"
+msgstr "Nederländerna"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:136 gkb-new/descs.sun/presets.xml.in.h:78
+msgid "Norway"
+msgstr "Norge"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:137 gkb-new/descs.sun/presets.xml.in.h:79
+msgid "Norwegian"
+msgstr "Norsk"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:138
+msgid "Norwegian xkb keymap"
+msgstr "Norsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:142 gkb-new/descs.sun/presets.xml.in.h:81
+msgid "Poland"
+msgstr "Polen"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:143 gkb-new/descs.sun/presets.xml.in.h:82
+msgid "Polish"
+msgstr "Polsk"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:145
+msgid "Polish xkb keymap"
+msgstr "Polsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:146 gkb-new/descs.sun/presets.xml.in.h:84
+msgid "Portugal"
+msgstr "Portugal"
+
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:150
+msgid "Portuguese xkb keymap"
+msgstr "Portugisisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:149
+msgid "Portuguese keymap"
+msgstr "Portugisisk tangentbordstabell"
+
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:144
+msgid "Polish deadkeys"
+msgstr "Polska stumma tangenter"
+
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:147
+msgid "Portugal Deadkeys"
+msgstr "Portugal stumma tangenter"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:152 gkb-new/descs.sun/presets.xml.in.h:88
+msgid "Romania"
+msgstr "Rumänien"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:153 gkb-new/descs.sun/presets.xml.in.h:89
+msgid "Romanian"
+msgstr "Rumänsk"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:154
+msgid "Romanian xkb keymap"
+msgstr "Rumänsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:155 gkb-new/descs.sun/presets.xml.in.h:91
+msgid "Russia"
+msgstr "Ryssland"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:156 gkb-new/descs.sun/presets.xml.in.h:92
+msgid "Russian"
+msgstr "Rysk"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:159
+msgid "Russian xkb keymap"
+msgstr "Rysk xkb-tangentbordstabell"
+
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:158
+msgid "Russian keymap"
+msgstr "Rysk tangentbordstabell"
+
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:141
+msgid "Plain Russian keymap"
+msgstr "Vanlig rysk tangentbordstabell"
+
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:157
+msgid "Russian Cyrillic"
+msgstr "Rysk kyrillisk"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:181 gkb-new/descs.sun/presets.xml.in.h:107
+msgid "Sweden"
+msgstr "Sverige"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:182 gkb-new/descs.sun/presets.xml.in.h:108
+msgid "Swedish"
+msgstr "Svensk"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:184
+msgid "Swedish xkb keymap"
+msgstr "Svensk xkb-tangentbordstabell"
+
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:183
+msgid "Swedish keymap"
+msgstr "Svensk tangentbordstabell"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:169 gkb-new/descs.sun/presets.xml.in.h:99
+msgid "Slovenia"
+msgstr "Slovenien"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:170 gkb-new/descs.sun/presets.xml.in.h:100
+msgid "Slovenian"
+msgstr "Slovensk"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:172
+msgid "Slovenian xkb keymap"
+msgstr "Slovensk xkb-tangentbordstabell"
+
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:171
+msgid "Slovenian keymap"
+msgstr "Slovensk tangentbordstabell"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:161
+msgid "Serb"
+msgstr "Serbisk"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:163
+msgid "Serbia and Montenegro"
+msgstr "Serbien och Montenegro"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:3
+#, fuzzy
+msgid "Serbian standard xkb keymap"
+msgstr "Serbisk xkb-standardtangentbordstabell"
+
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:1
+#, fuzzy
+msgid " keymap"
+msgstr "Laos-tangentbordstabell"
+
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
+msgid "***FIXME***"
+msgstr ""
+
+#: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
+#: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:188
+msgid "Syriac"
+msgstr "Syrisk"
+
+#: gkb-new/descs/Syriac.keyprop.desktop.in.h:2
+#, fuzzy
+msgid "Syriac xkb keymap"
+msgstr "Arabisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:2
+#, fuzzy
+msgid "Syriac Phonetic xkb keymap"
+msgstr "Syrisk fonetisk"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:190 gkb-new/descs.sun/presets.xml.in.h:114
+msgid "Thai"
+msgstr "Thailändsk"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:193
+msgid "Thai xkb keymap"
+msgstr "Thailändsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:194 gkb-new/descs.sun/presets.xml.in.h:116
+msgid "Thailand"
+msgstr "Thailand"
+
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:192
+msgid "Thai keymap"
+msgstr "Thailändsk tangentbordstabell"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:196 gkb-new/descs.sun/presets.xml.in.h:117
+msgid "Turkey"
+msgstr "Turkiet"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:197 gkb-new/descs.sun/presets.xml.in.h:118
+msgid "Turkish"
+msgstr "Turkisk"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:198
+msgid "Turkish \"F\" keyboard"
+msgstr "Turkiskt \"F\"-tangentbord"
+
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:199
+msgid "Turkish \"Q\" keyboard"
+msgstr "Turkiskt \"Q\"-tangentbord"
+
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:201
+msgid "Turkish xkb keymap"
+msgstr "Turkisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:200
+msgid "Turkish keymap"
+msgstr "Turkisk tangentbordstabell"
+
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:191
+msgid "Thai Kedmanee"
+msgstr "Thailändsk Kedmanee"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:216 gkb-new/descs.sun/presets.xml.in.h:123
+msgid "Ukraine"
+msgstr "Ukraina"
+
+# Felrapporterat
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:217 gkb-new/descs.sun/presets.xml.in.h:124
+msgid "Ukrainian"
+msgstr "Ukrainsk"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:218
+msgid "Ukrainian xkb keymap"
+msgstr "Ukrainsk xkb-tangentbordstabell"
+
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:68
+msgid "GB 102-key"
+msgstr "Brittisk 102-tangenters"
+
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:220 gkb-new/descs.sun/presets.xml.in.h:126
+msgid "United Kingdom"
+msgstr "Storbritannien"
+
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
+#, fuzzy
+msgid "UK PC/AT keyboard "
+msgstr "UK PC/AT-tangentbord"
+
+#: gkb-new/descs/UK.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:202
+msgid "UK 105-key"
+msgstr "UK 105-tangenters"
+
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:221
+msgid "United Kingdom xkb keymap"
+msgstr "UK xkb-tangentbordstabell"
+
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:49
+msgid "English keymap"
+msgstr "Engelsk tangentbordstabell"
+
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:69
+msgid "GB 105-key"
+msgstr "Brittisk 105-tangenters"
+
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:204
+msgid "US 101-key keyboard"
+msgstr "Amerikanskt 101-tangenters tangentbord"
+
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/US.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/descs.sun/presets.xml.in.h:127
+#: gkb-new/gkb.c:361
+msgid "United States"
+msgstr "USA"
+
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:212
+msgid "US PC/AT 101 keyboard"
+msgstr "Amerikanskt PC/AT-101-tangentbord"
+
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:206
+msgid "US 84-key"
+msgstr "Amerikanskt 84-tangenters"
+
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:207
+msgid "US DEC 450"
+msgstr "Amerikanskt DEC 450"
+
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:208
+msgid "US IBM RS/6000"
+msgstr "Amerikanskt IBM RS/6000"
+
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:209
+msgid "US International"
+msgstr "Amerikanskt internationellt"
+
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:211
+msgid "US Macintosh"
+msgstr "Amerikanskt Macintosh"
+
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:213
+msgid "US Silicon Graphics 101-key"
+msgstr "Amerikanskt Silicon Graphics 101-tangenters"
+
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:214
+msgid "US Sun type5"
+msgstr "Amerikanskt Sun type5"
+
+#: gkb-new/descs/US.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:205
+msgid "US 105-key keyboard (with windows keys)"
+msgstr "Amerikanskt 105-tangenters tangentbord (med Windows-knappar)"
+
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:215
+msgid "US xkb keymap"
+msgstr "Amerikansk xkb-tangentbordstabell"
+
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:210
+msgid "US International xkb keymap"
+msgstr "Amerikansk internationell xkb-tangentbordstabell"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:223 gkb-new/descs.sun/presets.xml.in.h:128
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:224 gkb-new/descs.sun/presets.xml.in.h:129
+msgid "Vietnamese"
+msgstr "Vietnamesisk"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
+msgstr "Vietnamesisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:2
+#, fuzzy
+msgid "Serb keymap"
+msgstr "Serbisk tangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:9 gkb-new/descs.sun/presets.xml.in.h:4
+msgid "Azerbaijan"
+msgstr "Azerbajdzjan"
+
+#: gkb-new/descs/presets.xml.in.h:10 gkb-new/descs.sun/presets.xml.in.h:5
+msgid "Azerbaijani Turkish"
+msgstr "Azerbajdzjansk turkiska"
+
+#: gkb-new/descs/presets.xml.in.h:11
+msgid "Azerbaijani Turkish xkb keymap"
+msgstr "Azerbajdzjansk turkisk xkb-tangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:59
+msgid "Former Czechoslovakia"
+msgstr "Före detta Tjeckoslovakien"
+
+#: gkb-new/descs/presets.xml.in.h:93
+msgid "Hungarian PC/AT 101 keyboard"
+msgstr "Ungersk PC/AT-101-tangentbord"
+
+#: gkb-new/descs/presets.xml.in.h:131
+msgid "Mongolian alt keymap"
+msgstr "Mongolisk alt-tangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:133
+msgid "Mongolian phonetic keymap"
+msgstr "Mongolisk fonetisk tangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:134
+msgid "Morocco"
+msgstr "Marocko"
+
+#: gkb-new/descs/presets.xml.in.h:162
+msgid "Serb standard xkb keymap"
+msgstr "Serbisk xkb-standardtangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:164
+msgid "Serbian"
+msgstr "Serbiska"
+
+#: gkb-new/descs/presets.xml.in.h:165
+msgid "Serbian keymap"
+msgstr "Serbisk tangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:168
+msgid "Slovak keymap"
+msgstr "Slovakisk tangentbordstabell"
+
+#: gkb-new/descs/presets.xml.in.h:176
+msgid "Spanish PC/AT 101 keyboard"
+msgstr "Spanskt PC/AT-101-tangentbord"
+
+#: gkb-new/descs/presets.xml.in.h:189
+msgid "Syriac Phonetic"
+msgstr "Syrisk fonetisk"
+
+#: gkb-new/descs/presets.xml.in.h:203
+msgid "UK PC/AT keyboard"
+msgstr "UK PC/AT-tangentbord"
 
 #: gkb-new/descs.sun/presets.xml.in.h:3
 msgid "Armenian Sun keymap"
 msgstr "Armenisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaijan"
-msgstr "Azerbajdzjan"
-
-#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaijani Turkish"
-msgstr "Azerbajdzjansk turkiska"
-
 #: gkb-new/descs.sun/presets.xml.in.h:6
 msgid "Azerbaijani Turkish Sun keymap"
 msgstr "Azerbajdzjansk turkisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
-msgid "Belarus"
-msgstr "Vitryssland"
-
-#: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
-msgid "Belarussian"
-msgstr "Vitrysk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarussian Sun keymap"
+#, fuzzy
+msgid "Belarusian Sun keymap"
 msgstr "Vitrysk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
-msgid "Belgium"
-msgstr "Belgien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
-msgid "Brazil"
-msgstr "Brasilien"
 
 #: gkb-new/descs.sun/presets.xml.in.h:12
 msgid "Brazil Portuguese Sun USB keymap"
@@ -1120,41 +2521,17 @@ msgstr "Sun USB-tangentbordstabell för brasiliansk portugisiska"
 msgid "Brazil Portuguese Sun keymap"
 msgstr "Sun-tangentbordstabell för brasiliansk portugisiska"
 
-#: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
-msgid "Bulgaria"
-msgstr "Bulgarien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:15 gkb-new/descs/presets.xml.in.h:23
-msgid "Bulgarian"
-msgstr "Bulgarisk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:16
 msgid "Bulgarian Sun keymap"
 msgstr "Bulgarisk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
-msgid "Canada"
-msgstr "Kanada"
 
 #: gkb-new/descs.sun/presets.xml.in.h:18
 msgid "Canadian Sun keymap"
 msgstr "Kanadensisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
-msgid "Czech"
-msgstr "Tjeckisk"
-
-#: gkb-new/descs.sun/presets.xml.in.h:20 gkb-new/descs/presets.xml.in.h:34
-msgid "Czech Republic"
-msgstr "Republiken Tjeckien"
-
 #: gkb-new/descs.sun/presets.xml.in.h:21
 msgid "Czech Sun keymap"
 msgstr "Tjeckisk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
-msgid "Danish"
-msgstr "Dansk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:23
 msgid "Danish Sun Type-4 keymap"
@@ -1168,21 +2545,9 @@ msgstr "Dansk Sun-USB-tangentbordstabell"
 msgid "Danish Sun keymap"
 msgstr "Dansk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
-msgid "Denmark"
-msgstr "Danmark"
-
-#: gkb-new/descs.sun/presets.xml.in.h:27 gkb-new/descs/presets.xml.in.h:43
-msgid "Dutch"
-msgstr "Holländsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:28
 msgid "Dutch Sun keymap"
 msgstr "Holländsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
-msgid "English"
-msgstr "Engelsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:30
 msgid "English Sun Type-4 keymap"
@@ -1196,37 +2561,13 @@ msgstr "Engelsk Sun-USB-tangentbordstabell"
 msgid "English Sun keymap"
 msgstr "Engelsk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
-msgid "Estonia"
-msgstr "Estland"
-
-#: gkb-new/descs.sun/presets.xml.in.h:34 gkb-new/descs/presets.xml.in.h:51
-msgid "Estonian"
-msgstr "Estnisk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:35
 msgid "Estonian Sun keymap"
 msgstr "Estnisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
-msgid "Finland"
-msgstr "Finland"
-
-#: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
-msgid "Finnish"
-msgstr "Finsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:38
 msgid "Finnish Sun keymap"
 msgstr "Finsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
-msgid "France"
-msgstr "Frankrike"
-
-#: gkb-new/descs.sun/presets.xml.in.h:40 gkb-new/descs/presets.xml.in.h:61
-msgid "French"
-msgstr "Fransk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:41
 msgid "French Sun USB keymap"
@@ -1235,10 +2576,6 @@ msgstr "Fransk Sun-USB-tangentbordstabell"
 #: gkb-new/descs.sun/presets.xml.in.h:42
 msgid "French Sun keymap"
 msgstr "Fransk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
-msgid "German"
-msgstr "Tysk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:44
 msgid "German Sun Type-4 keymap"
@@ -1252,25 +2589,9 @@ msgstr "Tysk Sun-USB-tangentbordstabell"
 msgid "German Sun keymap"
 msgstr "Tysk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
-msgid "Germany"
-msgstr "Tyskland"
-
-#: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
-msgid "Gnome Keyboard default"
-msgstr "Gnome-standardtangentbord"
-
-#: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
-msgid "Hebrew"
-msgstr "Hebreisk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:50
 msgid "Hebrew Sun keymap"
 msgstr "Hebreisk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
-msgid "Hungarian"
-msgstr "Ungersk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:52
 msgid "Hungarian latin2 Sun keymap"
@@ -1280,33 +2601,9 @@ msgstr "Ungersk latin2-Sun-tangentbordstabell"
 msgid "Hungarian type5 latin 1 keymap"
 msgstr "Ungersk type5 latin1-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
-msgid "Hungary"
-msgstr "Ungern"
-
-#: gkb-new/descs.sun/presets.xml.in.h:55 gkb-new/descs/presets.xml.in.h:97
-msgid "Iceland"
-msgstr "Island"
-
-#: gkb-new/descs.sun/presets.xml.in.h:56 gkb-new/descs/presets.xml.in.h:98
-msgid "Icelandic"
-msgstr "Isländsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:57
 msgid "Icelandic Sun keymap"
 msgstr "Isländsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
-msgid "International"
-msgstr "Internationell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:59 gkb-new/descs/presets.xml.in.h:103
-msgid "Israel"
-msgstr "Israel"
-
-#: gkb-new/descs.sun/presets.xml.in.h:60 gkb-new/descs/presets.xml.in.h:104
-msgid "Italian"
-msgstr "Italiensk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:61
 msgid "Italian Sun Type-4 keymap"
@@ -1319,18 +2616,6 @@ msgstr "Italiensk Sun-USB-tangentbordstabell"
 #: gkb-new/descs.sun/presets.xml.in.h:63
 msgid "Italian Sun keymap"
 msgstr "Italiensk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
-msgid "Italy"
-msgstr "Italien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:65 gkb-new/descs/presets.xml.in.h:108
-msgid "Japan"
-msgstr "Japan"
-
-#: gkb-new/descs.sun/presets.xml.in.h:66 gkb-new/descs/presets.xml.in.h:109
-msgid "Japanese"
-msgstr "Japansk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:67
 msgid "Japanese Sun Type-4 keymap"
@@ -1352,61 +2637,21 @@ msgstr "Lettisk"
 msgid "Latvian Sun keymap"
 msgstr "Lettisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
-msgid "Lithuania"
-msgstr "Litauen"
-
-#: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
-msgid "Lithuanian"
-msgstr "Litauisk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
 msgstr "Litauisk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
-msgid "Macedonia"
-msgstr "Makedonien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:76 gkb-new/descs/presets.xml.in.h:126
-msgid "Macedonian"
-msgstr "Makedonsk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:77
 msgid "Macedonian Sun keymap"
 msgstr "Makedonsk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
-msgid "Norway"
-msgstr "Norge"
-
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:137
-msgid "Norwegian"
-msgstr "Norsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:80
 msgid "Norwegian Sun keymap"
 msgstr "Norsk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
-msgid "Poland"
-msgstr "Polen"
-
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:143
-msgid "Polish"
-msgstr "Polsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:83
 msgid "Polish Sun keymap"
 msgstr "Polsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
-msgid "Portugal"
-msgstr "Portugal"
-
-#: gkb-new/descs.sun/presets.xml.in.h:85 gkb-new/descs/presets.xml.in.h:148
-msgid "Portuguese"
-msgstr "Portugisisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:86
 msgid "Portuguese Sun Type-4 keymap"
@@ -1416,25 +2661,9 @@ msgstr "Portugisisk Sun Type-4-tangentbordstabell"
 msgid "Portuguese Sun keymap"
 msgstr "Portugisisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
-msgid "Romania"
-msgstr "Rumänien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:89 gkb-new/descs/presets.xml.in.h:153
-msgid "Romanian"
-msgstr "Rumänsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:90
 msgid "Romanian Sun keymap"
 msgstr "Rumänsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
-msgid "Russia"
-msgstr "Ryssland"
-
-#: gkb-new/descs.sun/presets.xml.in.h:92 gkb-new/descs/presets.xml.in.h:156
-msgid "Russian"
-msgstr "Rysk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:93
 msgid "Russian Sun keymap"
@@ -1448,37 +2677,13 @@ msgstr "Serbisk Sun-standardtangentbordstabell"
 msgid "Serbo-Croatian"
 msgstr "Serbokroatisk"
 
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:166
-msgid "Slovak"
-msgstr "Slovakisk"
-
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
-msgid "Slovak Republic"
-msgstr "Slovakien"
-
 #: gkb-new/descs.sun/presets.xml.in.h:98
 msgid "Slovak Sun keymap"
 msgstr "Slovakisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
-msgid "Slovenia"
-msgstr "Slovenien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:170
-msgid "Slovenian"
-msgstr "Slovensk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:101
 msgid "Slovenian Sun keymap"
 msgstr "Slovensk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
-msgid "Spain"
-msgstr "Spanien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:175
-msgid "Spanish"
-msgstr "Spansk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:104
 msgid "Spanish Sun Type-4 keymap"
@@ -1491,14 +2696,6 @@ msgstr "Spansk Sun-USB-tangentbordstabell"
 #: gkb-new/descs.sun/presets.xml.in.h:106
 msgid "Spanish Sun keymap"
 msgstr "Spansk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
-msgid "Sweden"
-msgstr "Sverige"
-
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:182
-msgid "Swedish"
-msgstr "Svensk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:109
 msgid "Swedish Sun Type-4 keymap"
@@ -1516,29 +2713,9 @@ msgstr "Svensk Sun-tangentbordstabell"
 msgid "Swiss German Sun keymap"
 msgstr "Tysk-schweizisk Sun-tangentbordstabell"
 
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
-msgid "Switzerland"
-msgstr "Schweiz"
-
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:190
-msgid "Thai"
-msgstr "Thailändsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:115
 msgid "Thai Sun keymap"
 msgstr "Thailändsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
-msgid "Thailand"
-msgstr "Thailand"
-
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:196
-msgid "Turkey"
-msgstr "Turkiet"
-
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:197
-msgid "Turkish"
-msgstr "Turkisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:119
 msgid "Turkish Sun keymap"
@@ -1556,34 +2733,9 @@ msgstr "Amerikanskt Sun USB-tangentbord"
 msgid "US Sun type5 keyboard"
 msgstr "Amerikanskt Sun type5-tangentbord"
 
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
-msgid "Ukraine"
-msgstr "Ukraina"
-
-# Felrapporterat
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:217
-msgid "Ukrainian"
-msgstr "Ukrainsk"
-
 #: gkb-new/descs.sun/presets.xml.in.h:125
 msgid "Ukrainian Sun keymap"
 msgstr "Ukrainsk Sun-tangentbordstabell"
-
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
-msgid "United Kingdom"
-msgstr "Storbritannien"
-
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:222
-msgid "United States"
-msgstr "USA"
-
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
-msgid "Vietnam"
-msgstr "Vietnam"
-
-#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
-msgid "Vietnamese"
-msgstr "Vietnamesisk"
 
 #: gkb-new/descs.sun/presets.xml.in.h:130
 msgid "Vietnamese Sun keymap"
@@ -1592,631 +2744,6 @@ msgstr "Vietnamesisk Sun-tangentbordstabell"
 #: gkb-new/descs.sun/presets.xml.in.h:131
 msgid "Yugoslavia"
 msgstr "Jugoslavien"
-
-#: gkb-new/descs/presets.xml.in.h:1
-msgid "Algeria"
-msgstr "Algeriet"
-
-#: gkb-new/descs/presets.xml.in.h:2
-msgid "Arabic"
-msgstr "Arabisk"
-
-#: gkb-new/descs/presets.xml.in.h:3
-msgid "Arabic keymap"
-msgstr "Arabisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:4
-msgid "Arabic xkb keymap"
-msgstr "Arabisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:7
-msgid "Armenian xkb keymap"
-msgstr "Armenisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:8
-msgid "Austria"
-msgstr "Österrike"
-
-#: gkb-new/descs/presets.xml.in.h:11
-msgid "Azerbaijani Turkish xkb keymap"
-msgstr "Azerbajdzjansk turkisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:12
-msgid "Bahrain"
-msgstr "Bahrain"
-
-#: gkb-new/descs/presets.xml.in.h:13
-msgid "Basque"
-msgstr "Baskisk"
-
-#: gkb-new/descs/presets.xml.in.h:16
-msgid "Belarussian xkb keymap"
-msgstr "Vitrysk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:17
-msgid "Belgian"
-msgstr "Belgisk"
-
-#: gkb-new/descs/presets.xml.in.h:20
-msgid "Brazil Portuguese keymap"
-msgstr "Tangentbordstabell för brasiliansk portugisiska"
-
-#: gkb-new/descs/presets.xml.in.h:21
-msgid "Brazil Portuguese xkb keymap"
-msgstr "xkb-tangentbordstabell för brasiliansk portugisiska"
-
-#: gkb-new/descs/presets.xml.in.h:24
-msgid "Bulgarian Cyrillic"
-msgstr "Bulgarisk kyrillisk"
-
-#: gkb-new/descs/presets.xml.in.h:25
-msgid "Bulgarian keymap"
-msgstr "Bulgarisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:26
-msgid "Bulgarian xkb keymap"
-msgstr "Bulgarisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:28
-msgid "Canadian xkb keymap"
-msgstr "Kanadensisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:29
-msgid "Comoros"
-msgstr "Komorerna"
-
-#: gkb-new/descs/presets.xml.in.h:30
-msgid "Croatia"
-msgstr "Kroatien"
-
-#: gkb-new/descs/presets.xml.in.h:31
-msgid "Croatian"
-msgstr "Kroatisk"
-
-#: gkb-new/descs/presets.xml.in.h:32
-msgid "Croatian keymap"
-msgstr "Kroatisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:35
-msgid "Czech and Slovak xkb keymap"
-msgstr "Tjeckisk och slovakisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:36
-msgid "Czech keymap"
-msgstr "Tjeckisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:37
-msgid "Czech qwertz xkb keymap"
-msgstr "Tjeckisk qwertz-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:39
-msgid "Danish keymap"
-msgstr "Dansk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:40
-msgid "Danish xkb keymap"
-msgstr "Dansk zkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:42
-msgid "Djibouti"
-msgstr "Djibouti"
-
-#: gkb-new/descs/presets.xml.in.h:44
-msgid "Dutch keymap"
-msgstr "Holländsk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:45
-msgid "Dutch xkb keymap"
-msgstr "Holländsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:46
-msgid "Dvorak xkb keymap"
-msgstr "Dvorak-xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:47
-msgid "Egypt"
-msgstr "Egypten"
-
-#: gkb-new/descs/presets.xml.in.h:49
-msgid "English keymap"
-msgstr "Engelsk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:52
-msgid "Estonian keymap"
-msgstr "Estnisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:53
-msgid "Estonian xkb keymap"
-msgstr "Estnisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:54
-msgid "Euskadi"
-msgstr "Baskien"
-
-#: gkb-new/descs/presets.xml.in.h:57
-msgid "Finnish keymap"
-msgstr "Finsk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:58
-msgid "Finnish xkb keymap"
-msgstr "Finsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:59
-msgid "Former Czechoslovakia"
-msgstr "Före detta Tjeckoslovakien"
-
-#: gkb-new/descs/presets.xml.in.h:62
-msgid "French PC/AT 101 keyboard"
-msgstr "Franskt PC/AT-101-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:63
-msgid "French Swiss"
-msgstr "Fransk-schweizisk"
-
-#: gkb-new/descs/presets.xml.in.h:64
-msgid "French Swiss keymap"
-msgstr "Fransk-schweizisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:65
-msgid "French keymap"
-msgstr "Fransk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:66
-msgid "French xkb keymap"
-msgstr "Fransk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:67
-msgid "French-Canadian 105-key"
-msgstr "Fransk-kanadensisk 105-tangenters"
-
-#: gkb-new/descs/presets.xml.in.h:68
-msgid "GB 102-key"
-msgstr "Brittisk 102-tangenters"
-
-#: gkb-new/descs/presets.xml.in.h:69
-msgid "GB 105-key"
-msgstr "Brittisk 105-tangenters"
-
-#: gkb-new/descs/presets.xml.in.h:70
-msgid "Georgia"
-msgstr "Georgien"
-
-#: gkb-new/descs/presets.xml.in.h:71
-msgid "Georgian"
-msgstr "Georgisk"
-
-#: gkb-new/descs/presets.xml.in.h:72
-msgid "Georgian Latin"
-msgstr "Georgisk latin"
-
-#: gkb-new/descs/presets.xml.in.h:73
-msgid "Georgian Russian layout"
-msgstr "Georgisk rysk layout"
-
-#: gkb-new/descs/presets.xml.in.h:74
-msgid "Georgian keymap"
-msgstr "Georgisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:76
-msgid "German Swiss with Euro"
-msgstr "Tysk-scweizisk med euro"
-
-#: gkb-new/descs/presets.xml.in.h:77
-msgid "German keymap"
-msgstr "Tysk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:78
-msgid "German xkb keymap"
-msgstr "Tysk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:81
-msgid "Greece"
-msgstr "Grekland"
-
-#: gkb-new/descs/presets.xml.in.h:82
-msgid "Greek"
-msgstr "Grekisk"
-
-#: gkb-new/descs/presets.xml.in.h:83
-msgid "Greek keymap"
-msgstr "Grekisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:84
-msgid "Greek xkb keymap"
-msgstr "Grekisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:86
-msgid "Hebrew keymap"
-msgstr "Hebreisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:87
-msgid "Hebrew xkb keymap"
-msgstr "Hebreisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:89
-msgid "Hungarian 101-key latin 1"
-msgstr "Ungersk 101-tangenters latin 1"
-
-#: gkb-new/descs/presets.xml.in.h:90
-msgid "Hungarian 101-key latin 2"
-msgstr "Ungersk 101-tangenters latin 2"
-
-#: gkb-new/descs/presets.xml.in.h:91
-msgid "Hungarian 105-key latin 1"
-msgstr "Ungersk 105-tangenters latin 1"
-
-#: gkb-new/descs/presets.xml.in.h:92
-msgid "Hungarian 105-key latin 2"
-msgstr "Ungersk 105-tangenters latin 2"
-
-#: gkb-new/descs/presets.xml.in.h:93
-msgid "Hungarian PC/AT 101 keyboard"
-msgstr "Ungersk PC/AT-101-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:94
-msgid "Hungarian latin1"
-msgstr "Ungersk latin1"
-
-#: gkb-new/descs/presets.xml.in.h:95
-msgid "Hungarian latin2 xkb keymap"
-msgstr "Ungersk latin2-xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:99
-msgid "Icelandic keymap"
-msgstr "Isländsk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:100
-msgid "Icelandic xkb keymap"
-msgstr "Isländsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:102
-msgid "Iraq"
-msgstr "Irak"
-
-#: gkb-new/descs/presets.xml.in.h:105
-msgid "Italian keymap"
-msgstr "Italiensk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:106
-msgid "Italian xkb keymap"
-msgstr "Italiensk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:110
-msgid "Japanese keymap"
-msgstr "Japansk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:111
-msgid "Japanese xkb keymap"
-msgstr "Japansk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:112
-msgid "Jordan"
-msgstr "Jordanien"
-
-#: gkb-new/descs/presets.xml.in.h:113
-msgid "Kuwait"
-msgstr "Kuwait"
-
-# Tror detta är Laos
-#: gkb-new/descs/presets.xml.in.h:114
-msgid "Lao"
-msgstr "Laos"
-
-#: gkb-new/descs/presets.xml.in.h:115
-msgid "Lao keymap"
-msgstr "Laos-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:116
-msgid "Laos"
-msgstr "Laos"
-
-#: gkb-new/descs/presets.xml.in.h:117
-msgid "Lebanon"
-msgstr "Libanon"
-
-#: gkb-new/descs/presets.xml.in.h:118
-msgid "Libyan Arab Jamahiriya"
-msgstr "Libyen"
-
-#: gkb-new/descs/presets.xml.in.h:121
-msgid "Lithuanian keymap"
-msgstr "Litauisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:122
-msgid "Lithuanian programmers xkb keymap"
-msgstr "Litauisk xkb-programmerartangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:123
-msgid "Lithuanian qwerty xkb keymap"
-msgstr "Litauisk qwerty-xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:124
-msgid "Lithuanian standard xkb keymap"
-msgstr "Litauisk xkb-standardtangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:127
-msgid "Macedonian xkb keymap"
-msgstr "Makedonisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:128
-msgid "Marocco"
-msgstr "Marocko"
-
-#: gkb-new/descs/presets.xml.in.h:129
-msgid "Mongolia"
-msgstr "Mongoliet"
-
-#: gkb-new/descs/presets.xml.in.h:130
-msgid "Mongolian"
-msgstr "Mongolisk"
-
-#: gkb-new/descs/presets.xml.in.h:131
-msgid "Mongolian alt keymap"
-msgstr "Mongolisk alt-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:132
-msgid "Mongolian keymap"
-msgstr "Mongolisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:133
-msgid "Mongolian phonetic keymap"
-msgstr "Mongolisk fonetisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:134
-msgid "Morocco"
-msgstr "Marocko"
-
-#: gkb-new/descs/presets.xml.in.h:135
-msgid "Netherlands"
-msgstr "Nederländerna"
-
-#: gkb-new/descs/presets.xml.in.h:138
-msgid "Norwegian xkb keymap"
-msgstr "Norsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:139
-msgid "Oman"
-msgstr "Oman"
-
-#: gkb-new/descs/presets.xml.in.h:140
-msgid "Palestinian Territory"
-msgstr "Palestina"
-
-#: gkb-new/descs/presets.xml.in.h:141
-msgid "Plain Russian keymap"
-msgstr "Vanlig rysk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:144
-msgid "Polish deadkeys"
-msgstr "Polska stumma tangenter"
-
-#: gkb-new/descs/presets.xml.in.h:145
-msgid "Polish xkb keymap"
-msgstr "Polsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:147
-msgid "Portugal Deadkeys"
-msgstr "Portugal stumma tangenter"
-
-#: gkb-new/descs/presets.xml.in.h:149
-msgid "Portuguese keymap"
-msgstr "Portugisisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:150
-msgid "Portuguese xkb keymap"
-msgstr "Portugisisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:151
-msgid "Qatar"
-msgstr "Qatar"
-
-#: gkb-new/descs/presets.xml.in.h:154
-msgid "Romanian xkb keymap"
-msgstr "Rumänsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:157
-msgid "Russian Cyrillic"
-msgstr "Rysk kyrillisk"
-
-#: gkb-new/descs/presets.xml.in.h:158
-msgid "Russian keymap"
-msgstr "Rysk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:159
-msgid "Russian xkb keymap"
-msgstr "Rysk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:160
-msgid "Saudi Arabia"
-msgstr "Saudiarabien"
-
-#: gkb-new/descs/presets.xml.in.h:161
-msgid "Serb"
-msgstr "Serbisk"
-
-#: gkb-new/descs/presets.xml.in.h:162
-msgid "Serb standard xkb keymap"
-msgstr "Serbisk xkb-standardtangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:163
-msgid "Serbia and Montenegro"
-msgstr "Serbien och Montenegro"
-
-#: gkb-new/descs/presets.xml.in.h:164
-msgid "Serbian"
-msgstr "Serbiska"
-
-#: gkb-new/descs/presets.xml.in.h:165
-msgid "Serbian keymap"
-msgstr "Serbisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:168
-msgid "Slovak keymap"
-msgstr "Slovakisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:171
-msgid "Slovenian keymap"
-msgstr "Slovensk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:172
-msgid "Slovenian xkb keymap"
-msgstr "Slovensk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:173
-msgid "Somalia"
-msgstr "Somalia"
-
-#: gkb-new/descs/presets.xml.in.h:176
-msgid "Spanish PC/AT 101 keyboard"
-msgstr "Spanskt PC/AT-101-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:177
-msgid "Spanish keymap"
-msgstr "Spansk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:178
-msgid "Spanish xkb keymap"
-msgstr "Spansk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:179
-msgid "Sudan"
-msgstr "Sudan"
-
-#: gkb-new/descs/presets.xml.in.h:180
-msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr "Sun (!inte PC!) type5 ungersk latin 2"
-
-#: gkb-new/descs/presets.xml.in.h:183
-msgid "Swedish keymap"
-msgstr "Svensk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:184
-msgid "Swedish xkb keymap"
-msgstr "Svensk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:185
-msgid "Swiss keymap"
-msgstr "Schweizisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:187
-msgid "Syria"
-msgstr "Syrien"
-
-#: gkb-new/descs/presets.xml.in.h:188
-msgid "Syriac"
-msgstr "Syrisk"
-
-#: gkb-new/descs/presets.xml.in.h:189
-msgid "Syriac Phonetic"
-msgstr "Syrisk fonetisk"
-
-#: gkb-new/descs/presets.xml.in.h:191
-msgid "Thai Kedmanee"
-msgstr "Thailändsk Kedmanee"
-
-#: gkb-new/descs/presets.xml.in.h:192
-msgid "Thai keymap"
-msgstr "Thailändsk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:193
-msgid "Thai xkb keymap"
-msgstr "Thailändsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:195
-msgid "Tunisia"
-msgstr "Tunisien"
-
-#: gkb-new/descs/presets.xml.in.h:198
-msgid "Turkish \"F\" keyboard"
-msgstr "Turkiskt \"F\"-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:199
-msgid "Turkish \"Q\" keyboard"
-msgstr "Turkiskt \"Q\"-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:200
-msgid "Turkish keymap"
-msgstr "Turkisk tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:201
-msgid "Turkish xkb keymap"
-msgstr "Turkisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:202
-msgid "UK 105-key"
-msgstr "UK 105-tangenters"
-
-#: gkb-new/descs/presets.xml.in.h:203
-msgid "UK PC/AT keyboard"
-msgstr "UK PC/AT-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:204
-msgid "US 101-key keyboard"
-msgstr "Amerikanskt 101-tangenters tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:205
-msgid "US 105-key keyboard (with windows keys)"
-msgstr "Amerikanskt 105-tangenters tangentbord (med Windows-knappar)"
-
-#: gkb-new/descs/presets.xml.in.h:206
-msgid "US 84-key"
-msgstr "Amerikanskt 84-tangenters"
-
-#: gkb-new/descs/presets.xml.in.h:207
-msgid "US DEC 450"
-msgstr "Amerikanskt DEC 450"
-
-#: gkb-new/descs/presets.xml.in.h:208
-msgid "US IBM RS/6000"
-msgstr "Amerikanskt IBM RS/6000"
-
-#: gkb-new/descs/presets.xml.in.h:209
-msgid "US International"
-msgstr "Amerikanskt internationellt"
-
-#: gkb-new/descs/presets.xml.in.h:210
-msgid "US International xkb keymap"
-msgstr "Amerikansk internationell xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:211
-msgid "US Macintosh"
-msgstr "Amerikanskt Macintosh"
-
-#: gkb-new/descs/presets.xml.in.h:212
-msgid "US PC/AT 101 keyboard"
-msgstr "Amerikanskt PC/AT-101-tangentbord"
-
-#: gkb-new/descs/presets.xml.in.h:213
-msgid "US Silicon Graphics 101-key"
-msgstr "Amerikanskt Silicon Graphics 101-tangenters"
-
-#: gkb-new/descs/presets.xml.in.h:214
-msgid "US Sun type5"
-msgstr "Amerikanskt Sun type5"
-
-#: gkb-new/descs/presets.xml.in.h:215
-msgid "US xkb keymap"
-msgstr "Amerikansk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:218
-msgid "Ukrainian xkb keymap"
-msgstr "Ukrainsk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:219
-msgid "United Arab Emirates"
-msgstr "Förenade arabemiraten"
-
-#: gkb-new/descs/presets.xml.in.h:221
-msgid "United Kingdom xkb keymap"
-msgstr "UK xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:225
-msgid "Vietnamese xkb keymap"
-msgstr "Vietnamesisk xkb-tangentbordstabell"
-
-#: gkb-new/descs/presets.xml.in.h:226
-msgid "Yemen"
-msgstr "Yemen"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2250,13 +2777,33 @@ msgstr "GKB-hemsidan (http://projects.gnome.hu/gkb)"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:275
+#: gkb-new/gkb.c:276
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
 "Klicka på snabbtangenten för att byta mellan layouter. Snabbtangenten kan "
 "konfigureras i egenskapsdialogen"
+
+#: gkb-new/gkb.c:353
+#, fuzzy
+msgid "US 105 key keyboard"
+msgstr "Amerikanskt 101-tangenters tangentbord"
+
+#: gkb-new/gkb.c:353
+#, fuzzy
+msgid "Gnome Keyboard Default"
+msgstr "Gnome-standardtangentbord"
+
+#: gkb-new/gkb.c:357
+#, fuzzy
+msgid "default"
+msgstr "Till _standard"
+
+#: gkb-new/gkb.c:361
+#, fuzzy
+msgid "Gnome Keyboard"
+msgstr "Gnome-standardtangentbord"
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
@@ -2291,30 +2838,40 @@ msgid "The country of the keyboard layout"
 msgstr "Landet för tangentbordslayouten"
 
 #: gkb-new/gkb.schemas.in.h:9
+#, fuzzy
+msgid "The default keymap"
+msgstr "Thailändsk tangentbordstabell"
+
+#: gkb-new/gkb.schemas.in.h:10
+#, fuzzy
+msgid "The default keymap for the applet"
+msgstr "Standardklickbeteende för panelprogrammet"
+
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The label of the keyboard layout"
 msgstr "Etiketten för tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:12
 msgid "The language of the keyboard layout"
 msgstr "Språket för tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:13
 msgid "The name of the keyboard layout"
 msgstr "Namnet på tangentbordslayouten"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This flag will appear in flag field of the applet"
 msgstr "Denna flagga kommer att visas i panelprogrammets flaggfält"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:15
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Denna information hjälper dig identifiera din tangentbordslayout"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This is the binding for keypress-based layout change"
 msgstr "Detta är bindningen för tangenttrycksbaserat byte av layout"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:17
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -2322,11 +2879,11 @@ msgstr ""
 "Detta bör vara i stil med \"gkb_xmmap us\", \"setxkbmap us\" eller \"xmodmap "
 "någonting.xmm\""
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:18
 msgid "This will appear in the label box of the applet"
 msgstr "Detta kommer att visas i panelprogrammets etikettfält"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:19
 msgid "This will identify the layout in the list"
 msgstr "Detta kommer att identifiera layouten i listan"
 
@@ -2338,7 +2895,7 @@ msgstr "Inaktiverad"
 msgid "Press a key or press Esc to cancel"
 msgstr "Tryck en tangent eller tryck Esc för att avbryta"
 
-#: gkb-new/preset.c:155 gkb-new/preset.c:158
+#: gkb-new/preset.c:152 gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr "Odefinierad"
 
@@ -2379,7 +2936,7 @@ msgstr "_Namn:"
 msgid "_Label:"
 msgstr "_Etikett:"
 
-#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:7
 msgid "Co_mmand:"
 msgstr "Ko_mmando:"
 
@@ -2399,7 +2956,7 @@ msgstr "Etikett"
 msgid "Flag and Label"
 msgstr "Flagga och etikett"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1035
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Visa"
@@ -2438,11 +2995,11 @@ msgstr "Tangentbord"
 msgid "_Keyboards:"
 msgstr "_Tangentbord:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:426
+#: gkb-new/prop.c:457 multiload/properties.c:427
 msgid "Options"
 msgstr "Alternativ"
 
-#: gkb-new/system.c:44
+#: gkb-new/system.c:45
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -2458,7 +3015,7 @@ msgstr ""
 "\n"
 "Kommandot var: %s"
 
-#: gkb-new/system.c:49
+#: gkb-new/system.c:50
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -2476,8 +3033,9 @@ msgstr ""
 "Kommandot var: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins..."
-msgstr "_Insticksmoduler..."
+#, fuzzy
+msgid "Pl_ugins"
+msgstr "Insticksmoduler"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
@@ -2496,7 +3054,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME-tangentbordslayoutindikator"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:575
+#: gswitchit/gswitchit-applet.c:613
 msgid "Keyboard Indicator"
 msgstr "Tangentbordsindikator"
 
@@ -2509,19 +3067,20 @@ msgstr "Fabrik för tangentbordspanelprogram"
 msgid "Keyboard Indicator (%s)"
 msgstr "Tangentbordsindikator (%s)"
 
-#: gswitchit/gswitchit-applet.c:578
-msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+#: gswitchit/gswitchit-applet.c:616
+#, fuzzy
+msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:580
+#: gswitchit/gswitchit-applet.c:618
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Panelprogram för indikation av tangentbordslayout för GNOME"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:772
 msgid "XKB initialization error"
 msgstr "XKB-initieringsfel"
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:780
 msgid "Error loading XKB configuration registry"
 msgstr "Fel vid inläsning av XKB-konfigurationsregistret"
 
@@ -2679,37 +3238,36 @@ msgstr ""
 "stöder flera layouter)"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
-msgid "Accessories"
-msgstr "Tillbehör"
-
-#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr "Få kontinuerligt uppdaterade aktiekurser"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Gtik Applet Factory"
 msgstr "Fabrik för panelprogrammet gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
+#: gtik/GNOME_GtikApplet.server.in.in.h:3 gtik/gtik.c:746
 msgid "Stock Ticker"
 msgstr "Aktieövervakare"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:85 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Uppdatera"
 
-#: gtik/gtik.c:258
+#: gtik/gtik.c:260
 msgid "Could not retrieve the stock data."
 msgstr "Kunde inte hämta aktiedata."
 
-#: gtik/gtik.c:307 gweather/gweather-applet.c:426
+#: gtik/gtik.c:280
+#, fuzzy
+msgid "No stock list"
+msgstr "Historiklista"
+
+#: gtik/gtik.c:313 gweather/gweather-applet.c:477
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
-#: gtik/gtik.c:742
+#: gtik/gtik.c:748
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2722,127 +3280,127 @@ msgstr ""
 "aktieövervakare för att göra beslut om investeringar; det är endast till för "
 "att informera."
 
-#: gtik/gtik.c:1232
+#: gtik/gtik.c:1270
 msgid "Current _stocks:"
 msgstr "Nuvarande _aktier:"
 
-#: gtik/gtik.c:1240
+#: gtik/gtik.c:1278
 msgid "_New symbol:"
 msgstr "_Ny symbol:"
 
-#: gtik/gtik.c:1249
+#: gtik/gtik.c:1287
 msgid "_Add"
 msgstr "_Lägg till"
 
-#: gtik/gtik.c:1258
+#: gtik/gtik.c:1296
 msgid "_Remove"
 msgstr "_Ta bort"
 
-#: gtik/gtik.c:1364
+#: gtik/gtik.c:1402
 msgid "Stock Ticker Preferences"
 msgstr "Inställningar för aktieövervakare"
 
-#: gtik/gtik.c:1386
+#: gtik/gtik.c:1424
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2398
 msgid "Behavior"
 msgstr "Beteende"
 
-#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:995
 msgid "Update"
 msgstr "Uppdatera"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1438
 msgid "Stock update fre_quency:"
 msgstr "Aktieuppdateringsfre_kvens:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1019 mailcheck/mailcheck.c:2104
+#: mailcheck/mailcheck.c:2110
 msgid "minutes"
 msgstr "minuter"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1456
 msgid "Scrolling"
 msgstr "Rullning"
 
-#: gtik/gtik.c:1422
+#: gtik/gtik.c:1460
 msgid "_Scroll speed:"
 msgstr "_Rullningshastighet:"
 
-#: gtik/gtik.c:1426
+#: gtik/gtik.c:1464
 msgid "Slow"
 msgstr "Långsam"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1466
 msgid "Medium"
 msgstr "Mellan"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1468
 msgid "Fast"
 msgstr "Snabb"
 
-#: gtik/gtik.c:1450
+#: gtik/gtik.c:1488
 msgid "_Enable scroll buttons"
 msgstr "_Aktivera rullningsknappar"
 
-#: gtik/gtik.c:1462
+#: gtik/gtik.c:1500
 msgid "Scroll _left to right"
 msgstr "Rulla från _vänster till höger"
 
-#: gtik/gtik.c:1488
+#: gtik/gtik.c:1526
 msgid "Displa_y only symbols and price"
 msgstr "Visa endast s_ymboler och pris"
 
-#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
-#: stickynotes/stickynotes.glade.h:48
+#: gtik/gtik.c:1539 mini-commander/src/mini-commander.glade.h:20
+#: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "_Bredd:"
 
-#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:489
+#: gtik/gtik.c:1553 mini-commander/src/mini-commander.glade.h:21
+#: multiload/properties.c:490
 msgid "pixels"
 msgstr "bildpunkter"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1562
 msgid "Font and Colors"
 msgstr "Typsnitt och färger"
 
-#: gtik/gtik.c:1530
+#: gtik/gtik.c:1568
 msgid "Use _default theme font and colors"
 msgstr "Använd _standardtematypsnitt och standardtemafärger"
 
-#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1583 stickynotes/stickynotes.glade.h:45
 msgid "_Font:"
 msgstr "_Typsnitt:"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1607
 msgid "Stock _raised:"
 msgstr "Aktier som gått _upp:"
 
-#: gtik/gtik.c:1588
+#: gtik/gtik.c:1626
 msgid "Stock _lowered:"
 msgstr "Aktier som gått _ned:"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1645
 msgid "Stock _unchanged:"
 msgstr "_Oförändrade aktier:"
 
-#: gtik/gtik.c:1626 modemlights/properties.c:580
+#: gtik/gtik.c:1664 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Bakgrund:"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1769
+#: gtik/gtik.c:1807
 msgid "Skip forward"
 msgstr "Hoppa framåt"
 
-#: gtik/gtik.c:1770
+#: gtik/gtik.c:1808
 msgid "Skip backward"
 msgstr "Hoppa bakåt"
 
-#: gtik/gtik.c:1778
+#: gtik/gtik.c:1816
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2850,12 +3408,9 @@ msgstr ""
 "Aktieövervakare\n"
 "Få kontinuerligt uppdaterade aktiekurser"
 
-#: gtik/gtik.c:1990
-msgid "(No"
-msgstr "(Inga"
-
-#: gtik/gtik.c:1991
-msgid "Change "
+#: gtik/gtik.c:2028
+#, fuzzy
+msgid "(No Change"
 msgstr "Ändra "
 
 #: gtik/gtik.schemas.in.h:1
@@ -2982,7 +3537,7 @@ msgstr "Tid i millisekunder för uppdatering av visningen"
 msgid "Unchanged color"
 msgstr "Oförändrad färg"
 
-#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:20
 #: modemlights/modemlights.schemas.in.h:31
 msgid "Update interval"
 msgstr "Uppdateringsintervall"
@@ -3009,19 +3564,19 @@ msgstr "typsnitt 2 - Används inte längre"
 msgid "_Forecast"
 msgstr "_Prognos"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
 msgstr "Fabrik för skapande av väderpanelprogrammet."
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Gweather Applet Factory"
 msgstr "Fabrik för panelprogrammet Gweather"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Övervaka aktuella väderförhållanden och väderprognoser"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 #: gweather/gweather-about.c:68
 msgid "Weather Report"
 msgstr "Väderrapport"
@@ -3040,160 +3595,310 @@ msgstr ""
 "\n"
 "Panelprogram för övervakning av lokala väderförhållanden."
 
-#: gweather/gweather-applet.c:306
+#: gweather/gweather-applet.c:357 gweather/gweather-applet.c:361
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
+#: gweather/gweather-dialog.c:83 gweather/gweather-dialog.c:336
 msgid "Forecast"
 msgstr "Prognos"
 
-#: gweather/gweather-dialog.c:109
+#: gweather/gweather-dialog.c:123
 msgid "City:"
 msgstr "Ort:"
 
-#: gweather/gweather-dialog.c:117
+#: gweather/gweather-dialog.c:131
 msgid "Last update:"
 msgstr "Senaste uppdatering:"
 
-#: gweather/gweather-dialog.c:125
+#: gweather/gweather-dialog.c:139
 msgid "Conditions:"
 msgstr "Förhållanden:"
 
-#: gweather/gweather-dialog.c:133
+#: gweather/gweather-dialog.c:147
 msgid "Sky:"
 msgstr "Himmel:"
 
-#: gweather/gweather-dialog.c:141
+#: gweather/gweather-dialog.c:155
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: gweather/gweather-dialog.c:149
+#: gweather/gweather-dialog.c:163
+msgid "Feels like:"
+msgstr "Känns som:"
+
+#: gweather/gweather-dialog.c:171
 msgid "Dew point:"
 msgstr "Daggpunkt:"
 
-#: gweather/gweather-dialog.c:157
+#: gweather/gweather-dialog.c:179
 msgid "Humidity:"
 msgstr "Luftfuktighet:"
 
-#: gweather/gweather-dialog.c:165
+#: gweather/gweather-dialog.c:187
 msgid "Wind:"
 msgstr "Vind:"
 
-#: gweather/gweather-dialog.c:173
+#: gweather/gweather-dialog.c:195
 msgid "Pressure:"
 msgstr "Tryck:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:203
 msgid "Visibility:"
 msgstr "Sikt:"
 
-#: gweather/gweather-dialog.c:276
+#: gweather/gweather-dialog.c:309
 msgid "Current Conditions"
 msgstr "Nuvarande förhållanden"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:326
 msgid "Forecast Report"
 msgstr "Väderrapport"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:326
 msgid "See the ForeCast Details"
 msgstr "Se detaljerad väderrapport"
 
-#: gweather/gweather-dialog.c:325
-msgid "_Visit Weather.com"
-msgstr "_Besök Weather.com"
-
-#: gweather/gweather-dialog.c:326
-msgid "URL link Button"
-msgstr "URL-länkknapp"
-
-#: gweather/gweather-dialog.c:326
-msgid "Click to Enter Weather.com"
-msgstr "Klicka för att besöka Weather.com"
-
-#: gweather/gweather-dialog.c:334
+#: gweather/gweather-dialog.c:344
 msgid "Radar Map"
 msgstr "Radarkarta"
 
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
-msgstr ""
-"Det finns ingen detaljerad prognos för den valda platsen.\n"
-"Var vänlig och prova statsprognosen. Observera att IWIN-prognoser är bara "
-"tillgängliga för städer i USA."
+#: gweather/gweather-dialog.c:375
+msgid "_Visit Weather.com"
+msgstr "_Besök Weather.com"
 
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
+#: gweather/gweather-dialog.c:376
+#, fuzzy
+msgid "Visit Weather.com"
+msgstr "_Besök Weather.com"
+
+#: gweather/gweather-dialog.c:376
+msgid "Click to Enter Weather.com"
+msgstr "Klicka för att besöka Weather.com"
+
+#: gweather/gweather-dialog.c:465
+msgid "Forecast not currently available for this location."
 msgstr ""
-"Det finns ingen delstatsprognos för den valda platsen.\n"
-"Var vänlig och prova den detaljerade prognosen. Observera att IWIN-prognoser "
-"är bara tillgängliga för städer i USA."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:149
+#: gweather/gweather-pref.c:192
 msgid "Location view"
 msgstr "Platsvy"
 
-#: gweather/gweather-pref.c:149
+#: gweather/gweather-pref.c:192
 msgid "Select Location from the list"
 msgstr "Välj plats från listan"
 
-#: gweather/gweather-pref.c:151
+#: gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "Uppdatera spinnknapp"
 
-#: gweather/gweather-pref.c:151
+#: gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "Spinnknapp för uppdatering"
 
-#: gweather/gweather-pref.c:152
+#: gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "Adressfält"
 
-#: gweather/gweather-pref.c:152
+#: gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "Ange URL:en"
 
-#: gweather/gweather-pref.c:605
+#. TRANSLATOR: This is the default unit to use for temperature measurements.
+#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
+#: gweather/gweather-pref.c:401 gweather/gweather-pref.c:410
+msgid "DEFAULT_TEMP_UNIT"
+msgstr ""
+
+#. TRANSLATOR: This is the default unit to use for wind speed.
+#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
+#. "mph" (miles per hour) and "knots"
+#: gweather/gweather-pref.c:436 gweather/gweather-pref.c:446
+msgid "DEFAULT_SPEED_UNIT"
+msgstr ""
+
+#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: gweather/gweather-pref.c:474 gweather/gweather-pref.c:485
+msgid "DEFAULT_PRESSURE_UNIT"
+msgstr ""
+
+#. TRANSLATOR: This is the default unit to use for visibility distance.
+#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
+#: gweather/gweather-pref.c:511 gweather/gweather-pref.c:520
+msgid "DEFAULT_DISTANCE_UNIT"
+msgstr ""
+
+#: gweather/gweather-pref.c:798
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: gweather/gweather-pref.c:638 gweather/gweather-pref.c:703
+#: gweather/gweather-pref.c:831 gweather/gweather-pref.c:999
 msgid "_Automatically update every:"
 msgstr "_Uppdatera automatiskt var:"
 
-#: gweather/gweather-pref.c:646
-msgid "Use _metric system units"
-msgstr "Använd _metriska enheter"
+#. Temperature Unit
+#: gweather/gweather-pref.c:840
+#, fuzzy
+msgid "_Temperature Unit:"
+msgstr "Temperatur:"
 
-#: gweather/gweather-pref.c:654
+#: gweather/gweather-pref.c:850
+#, fuzzy
+msgid "Kelvin"
+msgstr "Belgisk"
+
+#. TRANSLATORS: Celsius is sometimes referred Centigrade
+#: gweather/gweather-pref.c:852
+msgid "Celsius"
+msgstr ""
+
+#: gweather/gweather-pref.c:853
+#, fuzzy
+msgid "Fahrenheit"
+msgstr "Fransk"
+
+#. Speed Unit
+#: gweather/gweather-pref.c:860
+msgid "_Wind Speed Unit:"
+msgstr ""
+
+#. TRANSLATOR: The wind speed unit "meters per second"
+#: gweather/gweather-pref.c:871
+msgid "m/s"
+msgstr ""
+
+#. TRANSLATOR: The wind speed unit "kilometers per hour"
+#: gweather/gweather-pref.c:873
+msgid "km/h"
+msgstr ""
+
+#. TRANSLATOR: The wind speed unit "miles per hour"
+#: gweather/gweather-pref.c:875
+#, fuzzy
+msgid "mph"
+msgstr "km/h"
+
+#. TRANSLATOR: The wind speed unit "knots"
+#: gweather/gweather-pref.c:877
+msgid "knots"
+msgstr "knop"
+
+#. Pressure Unit
+#: gweather/gweather-pref.c:884
+#, fuzzy
+msgid "_Pressure Unit:"
+msgstr "Tryck:"
+
+#. TRANSLATOR: The pressure unit "kiloPascals"
+#: gweather/gweather-pref.c:895
+#, fuzzy
+msgid "kPa"
+msgstr "hPa"
+
+#. TRANSLATOR: The pressure unit "hectoPascals"
+#: gweather/gweather-pref.c:897
+msgid "hPa"
+msgstr "hPa"
+
+#. TRANSLATOR: The pressure unit "millibars"
+#: gweather/gweather-pref.c:899
+msgid "mb"
+msgstr ""
+
+#. TRANSLATOR: The pressure unit "millibars of mercury"
+#: gweather/gweather-pref.c:901
+msgid "mmHg"
+msgstr "mmHg"
+
+#. TRANSLATOR: The pressure unit "inches of mercury"
+#: gweather/gweather-pref.c:903
+msgid "inHg"
+msgstr "inHg"
+
+#. Distance Unit
+#: gweather/gweather-pref.c:910
+#, fuzzy
+msgid "_Visibility Unit:"
+msgstr "Sikt:"
+
+#. TRANSLATOR: The distance unit "meters"
+#: gweather/gweather-pref.c:921
+#, fuzzy
+msgid "meters"
+msgstr "kilometer"
+
+#. TRANSLATOR: The distance unit "kilometers"
+#: gweather/gweather-pref.c:923
+msgid "km"
+msgstr ""
+
+#. TRANSLATOR: The distance unit "miles"
+#: gweather/gweather-pref.c:925
+msgid "miles"
+msgstr "engelska mil"
+
+#: gweather/gweather-pref.c:950
 msgid "Enable _radar map"
 msgstr "Aktivera _radarkarta"
 
-#: gweather/gweather-pref.c:668
-msgid "Use cus_tom address for radar map"
-msgstr "Använd _anpassad adress för radarkartan"
+#: gweather/gweather-pref.c:964
+#, fuzzy
+msgid "Use _custom address for radar map"
+msgstr "Använd anpassad adress för radarkartan"
 
-#: gweather/gweather-pref.c:685
+#: gweather/gweather-pref.c:981
 msgid "A_ddress:"
 msgstr "A_dress:"
 
-#: gweather/gweather-pref.c:766
+#: gweather/gweather-pref.c:1063
 msgid "_Select a location:"
 msgstr "_Välj en plats:"
 
-#: gweather/gweather-pref.c:795
+#: gweather/gweather-pref.c:1093
 msgid "Location"
 msgstr "Plats"
 
-#: gweather/gweather.schemas.in.h:1
+#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "KJFK"
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
+#: gweather/weather.c:141
+msgid "DEFAULT_CODE"
+msgstr ""
+
+#. TRANSLATOR: Change this to the default location name (1st parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "New York-JFK Arpt"
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
+#: gweather/weather.c:120 gweather/weather.c:121
+msgid "DEFAULT_LOCATION"
+msgstr ""
+
+#. Translators: Change this to the default location radar (4th parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "nyc"
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
+#: gweather/weather.c:172
+msgid "DEFAULT_RADAR"
+msgstr ""
+
+#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "NYZ076"
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
+#: gweather/weather.c:157
+msgid "DEFAULT_ZONE"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:5
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
@@ -3201,15 +3906,20 @@ msgstr ""
 "Avgör huruvida panelprogrammet automatiskt uppdaterar sin väderstatistik "
 "eller inte."
 
-#: gweather/gweather.schemas.in.h:2
+#: gweather/gweather.schemas.in.h:6
 msgid "Display radar map"
 msgstr "Visa radarkarta"
 
-#: gweather/gweather.schemas.in.h:3
+#: gweather/gweather.schemas.in.h:7
+#, fuzzy
+msgid "Distance units"
+msgstr "Använd metriska enheter"
+
+#: gweather/gweather.schemas.in.h:8
 msgid "Fetch a radar map on each update."
 msgstr "Hämta en radarkarta vid varje uppdatering."
 
-#: gweather/gweather.schemas.in.h:4
+#: gweather/gweather.schemas.in.h:9
 msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
@@ -3217,162 +3927,174 @@ msgstr ""
 "Om denna nyckel är sann hämtas en radarkarta från platsen som anges av "
 "nyckeln \"radar\"."
 
-#: gweather/gweather.schemas.in.h:5
+#: gweather/gweather.schemas.in.h:10
 #: mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Not used anymore"
 msgstr "Används inte längre"
 
-#: gweather/gweather.schemas.in.h:6
+#: gweather/gweather.schemas.in.h:11
+#, fuzzy
+msgid "Pressure units"
+msgstr "Tryck:"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Speed units"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:13
+#, fuzzy
+msgid "Temperature units"
+msgstr "Temperatur:"
+
+#: gweather/gweather.schemas.in.h:14
 msgid "The custom url from where to retrieve a radar map."
 msgstr "Den anpassade url där en radarkarta ska hämtas ifrån."
 
-#: gweather/gweather.schemas.in.h:7
+#: gweather/gweather.schemas.in.h:15
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Intervallet, i sekunder, mellan automatiska uppdateringar."
 
-#: gweather/gweather.schemas.in.h:9
+#: gweather/gweather.schemas.in.h:16
+#, fuzzy
+msgid "The temperature units to use."
+msgstr "Visa temperaturetiketter på panelen"
+
+#: gweather/gweather.schemas.in.h:17
+msgid "The unit to use for pressure."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:18
+msgid "The unit to use for visibility."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:19
+msgid "The unit to use for wind speed."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:21
 msgid "Update the data automatically"
 msgstr "Uppdatera data automatiskt"
 
-#: gweather/gweather.schemas.in.h:10
+#: gweather/gweather.schemas.in.h:22
 msgid "Url for the radar map"
 msgstr "Url för radarkartan"
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:23
 msgid "Use custom url for the radar map"
 msgstr "Använd anpassad url för radarkartan"
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:24
 msgid "Use metric units"
 msgstr "Använd metriska enheter"
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:25
 msgid "Use metric units instead of english units."
 msgstr "Använd metriska enheter istället för engelska enheter."
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:26
 msgid "weather location information."
 msgstr "väderplatsinformation."
 
-#: gweather/weather.c:58
-msgid "knots"
-msgstr "knop"
+#: gweather/weather.c:128
+msgid "Pittsburgh"
+msgstr ""
 
-#: gweather/weather.c:58
-msgid "kph"
-msgstr "km/h"
-
-#: gweather/weather.c:63
-msgid "inHg"
-msgstr "inHg"
-
-#: gweather/weather.c:63
-msgid "hPa"
-msgstr "hPa"
-
-#: gweather/weather.c:67
-msgid "miles"
-msgstr "engelska mil"
-
-#: gweather/weather.c:67
-msgid "kilometers"
-msgstr "kilometer"
-
-#: gweather/weather.c:133
+#: gweather/weather.c:222
 msgid "Variable"
 msgstr "Variabel"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:223
 msgid "North"
 msgstr "Nord"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:223
 msgid "North - NorthEast"
 msgstr "Nord-nordost"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:223
 msgid "Northeast"
 msgstr "Nordost"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:223
 msgid "East - NorthEast"
 msgstr "Ost-nordost"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:224
 msgid "East"
 msgstr "Ost"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:224
 msgid "East - Southeast"
 msgstr "Ost-sydost"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:224
 msgid "Southeast"
 msgstr "Sydost"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:224
 msgid "South - Southeast"
 msgstr "Syd-sydost"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:225
 msgid "South"
 msgstr "Syd"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:225
 msgid "South - Southwest"
 msgstr "Syd-sydväst"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:225
 msgid "Southwest"
 msgstr "Sydväst"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:225
 msgid "West - Southwest"
 msgstr "Väst-sydväst"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:226
 msgid "West"
 msgstr "Väst"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:226
 msgid "West - Northwest"
 msgstr "Väst-nordväst"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:226
 msgid "Northwest"
 msgstr "Nordväst"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:226
 msgid "North - Northwest"
 msgstr "Nord-nordväst"
 
-#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
-#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
-#: gweather/weather.c:2033
+#: gweather/weather.c:232 gweather/weather.c:2234 gweather/weather.c:2248
+#: gweather/weather.c:2260 gweather/weather.c:2275 gweather/weather.c:2291
+#: gweather/weather.c:2322 gweather/weather.c:2334 gweather/weather.c:2353
+#: gweather/weather.c:2381 gweather/weather.c:2394 gweather/weather.c:2414
 msgid "Unknown"
 msgstr "Okänd"
 
-#: gweather/weather.c:145 gweather/weather.c:162 gweather/weather.c:233
+#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:240
 msgid "Clear Sky"
 msgstr "Klar himmel"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:241
 msgid "Broken clouds"
 msgstr "Brutet molntäcke"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:242
 msgid "Scattered clouds"
 msgstr "Spridda moln"
 
-#: gweather/weather.c:154
+#: gweather/weather.c:243
 msgid "Few clouds"
 msgstr "Få moln"
 
-#: gweather/weather.c:155
+#: gweather/weather.c:244
 msgid "Overcast"
 msgstr "Heltäckande moln"
 
@@ -3380,314 +4102,438 @@ msgstr "Heltäckande moln"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:194 gweather/weather.c:196
+#: gweather/weather.c:283 gweather/weather.c:285
 msgid "Thunderstorm"
 msgstr "Åskväder"
 
 #. DRIZZLE
-#: gweather/weather.c:195
+#: gweather/weather.c:284
 msgid "Drizzle"
 msgstr "Duggregn"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:284
 msgid "Light drizzle"
 msgstr "Lätt duggregn"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:284
 msgid "Moderate drizzle"
 msgstr "Måttligt duggregn"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:284
 msgid "Heavy drizzle"
 msgstr "Kraftigt duggregn"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:284
 msgid "Freezing drizzle"
 msgstr "Underkylt duggregn"
 
 #. RAIN
-#: gweather/weather.c:196
+#: gweather/weather.c:285
 msgid "Rain"
 msgstr "Regn"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:285
 msgid "Light rain"
 msgstr "Lätt regn"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:285
 msgid "Moderate rain"
 msgstr "Måttligt regn"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:285
 msgid "Heavy rain"
 msgstr "Kraftigt regn"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:285
 msgid "Rain showers"
 msgstr "Regnskurar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:285
 msgid "Freezing rain"
 msgstr "Underkylt regn"
 
 #. SNOW
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Snow"
 msgstr "Snöfall"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Light snow"
 msgstr "Lätt snöfall"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Moderate snow"
 msgstr "Måttligt snöfall"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Heavy snow"
 msgstr "Kraftigt snöfall"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Snowstorm"
 msgstr "Snöstorm"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Blowing snowfall"
 msgstr "Högt snödrev"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Snow showers"
 msgstr "Snöskurar"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:286
 msgid "Drifting snow"
 msgstr "Lågt snödrev"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:198
+#: gweather/weather.c:287
 msgid "Snow grains"
 msgstr "Kornsnö"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:287
 msgid "Light snow grains"
 msgstr "Lätt kornsnö"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:287
 msgid "Moderate snow grains"
 msgstr "Måttlig kornsnö"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:287
 msgid "Heavy snow grains"
 msgstr "Kraftig kornsnö"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:199
+#: gweather/weather.c:288
 msgid "Ice crystals"
 msgstr "Isnålar"
 
 #. ICE_PELLETS
-#: gweather/weather.c:200
+#: gweather/weather.c:289
 msgid "Ice pellets"
 msgstr "Iskorn"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:289
 msgid "Few ice pellets"
 msgstr "Få iskorn"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:289
 msgid "Moderate ice pellets"
 msgstr "Måttliga iskorn"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:289
 msgid "Heavy ice pellets"
 msgstr "Kraftiga iskorn"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:289
 msgid "Ice pellet storm"
 msgstr "Iskornby"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:289
 msgid "Showers of ice pellets"
 msgstr "Skurar med iskorn"
 
 #. HAIL
-#: gweather/weather.c:201
+#: gweather/weather.c:290
 msgid "Hail"
 msgstr "Hagel"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:290
 msgid "Hailstorm"
 msgstr "Hagelby"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:290
 msgid "Hail showers"
 msgstr "Hagelskurar"
 
 #. SMALL_HAIL
-#: gweather/weather.c:202
+#: gweather/weather.c:291
 msgid "Small hail"
 msgstr "Småhagel"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:291
 msgid "Small hailstorm"
 msgstr "Lätt småhagelby"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:291
 msgid "Showers of small hail"
 msgstr "Skurar med småhagel"
 
 #. PRECIPITATION
-#: gweather/weather.c:203
+#: gweather/weather.c:292
 msgid "Unknown precipitation"
 msgstr "Okänd nederbörd"
 
 #. MIST
-#: gweather/weather.c:204
+#: gweather/weather.c:293
 msgid "Mist"
 msgstr "Fuktdis"
 
 #. FOG
-#: gweather/weather.c:205
+#: gweather/weather.c:294
 msgid "Fog"
 msgstr "Dimma"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:294
 msgid "Fog in the vicinity"
 msgstr "Dimma i närheten"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:294
 msgid "Shallow fog"
 msgstr "Låga bankar med dimma"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:294
 msgid "Patches of fog"
 msgstr "Höga bankar med dimma"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:294
 msgid "Partial fog"
 msgstr "Partiella bankar med dimma"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:294
 msgid "Freezing fog"
 msgstr "Underkyld dimma"
 
 #. SMOKE
-#: gweather/weather.c:206
+#: gweather/weather.c:295
 msgid "Smoke"
 msgstr "Rök"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:207
+#: gweather/weather.c:296
 msgid "Volcanic ash"
 msgstr "Vulkanisk aska"
 
 #. SAND
-#: gweather/weather.c:208
+#: gweather/weather.c:297
 msgid "Sand"
 msgstr "Sand"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:297
 msgid "Blowing sand"
 msgstr "Högt sanddrev"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:297
 msgid "Drifting sand"
 msgstr "Lågt sanddrev"
 
 #. HAZE
-#: gweather/weather.c:209
+#: gweather/weather.c:298
 msgid "Haze"
 msgstr "Torrdis"
 
 #. SPRAY
-#: gweather/weather.c:210
+#: gweather/weather.c:299
 msgid "Blowing sprays"
 msgstr "Högt drev med vattendroppar i luften"
 
 #. DUST
-#: gweather/weather.c:211
+#: gweather/weather.c:300
 msgid "Dust"
 msgstr "Stoft"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:300
 msgid "Blowing dust"
 msgstr "Högt stoftdrev"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:300
 msgid "Drifting dust"
 msgstr "Lågt stoftdrev"
 
 #. SQUALL
-#: gweather/weather.c:212
+#: gweather/weather.c:301
 msgid "Squall"
 msgstr "Linjeby"
 
 #. SANDSTORM
-#: gweather/weather.c:213
+#: gweather/weather.c:302
 msgid "Sandstorm"
 msgstr "Sandstorm"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:302
 msgid "Sandstorm in the vicinity"
 msgstr "Sandstorm i närheten"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:302
 msgid "Heavy sandstorm"
 msgstr "Kraftig sandstorm"
 
 #. DUSTSTORM
-#: gweather/weather.c:214
+#: gweather/weather.c:303
 msgid "Duststorm"
 msgstr "Dammstorm"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:303
 msgid "Duststorm in the vicinity"
 msgstr "Dammstorm i närheten"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:303
 msgid "Heavy duststorm"
 msgstr "Kraftig dammstorm"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:215
+#: gweather/weather.c:304
 msgid "Funnel cloud"
 msgstr "Skydrag"
 
 #. TORNADO
-#: gweather/weather.c:216
+#: gweather/weather.c:305
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:217
+#: gweather/weather.c:306
 msgid "Dust whirls"
 msgstr "Dammvirvlar"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:306
 msgid "Dust whirls in the vicinity"
 msgstr "Dammvirvlar i närheten"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
+#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1816
 msgid "Failed to get METAR data.\n"
 msgstr "Misslyckades med att hämta METAR-data.\n"
 
-#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
+#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
 msgid "WeatherInfo missing location"
 msgstr "Väderinformationen saknar plats"
 
-#: gweather/weather.c:1931
+#: gweather/weather.c:2148
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d %b / %H.%M"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:2152
 msgid "Unknown observation time"
 msgstr "Okänd observationstid"
 
-#: gweather/weather.c:2005
+#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2184 gweather/weather.c:2187
+#, c-format
+msgid "%.1f F"
+msgstr ""
+
+#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2192 gweather/weather.c:2195
+#, c-format
+msgid "%dF"
+msgstr ""
+
+#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2203 gweather/weather.c:2206
+#, c-format
+msgid "%.1f C"
+msgstr ""
+
+#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2211 gweather/weather.c:2214
+#, c-format
+msgid "%dC"
+msgstr ""
+
+#. TRANSLATOR: This is the temperature in Kelvin
+#: gweather/weather.c:2223
+#, c-format
+msgid "%.1f K"
+msgstr ""
+
+#. TRANSLATOR: This is the temperature in Kelvin
+#: gweather/weather.c:2226
+#, c-format
+msgid "%dK"
+msgstr ""
+
+#. TRANSLATOR: This is the humidity in percent
+#: gweather/weather.c:2278
+#, fuzzy, c-format
+msgid "%.f%%"
+msgstr "%d.%d.%d"
+
+#. TRANSLATOR: This is the wind speed in knots
+#: gweather/weather.c:2303
+#, fuzzy, c-format
+msgid "%0.1f knots"
+msgstr "knop"
+
+#. TRANSLATOR: This is the wind speed in miles per hour
+#: gweather/weather.c:2307
+#, c-format
+msgid "%.1f mph"
+msgstr ""
+
+#. TRANSLATOR: This is the wind speed in kilometers per hour
+#: gweather/weather.c:2311
+#, c-format
+msgid "%.1f km/h"
+msgstr ""
+
+#. TRANSLATOR: This is the wind speed in miles per hour
+#: gweather/weather.c:2315
+#, fuzzy, c-format
+msgid "%.1f m/s"
+msgstr "%s / %.1f %s"
+
+#: gweather/weather.c:2336
 msgid "Calm"
 msgstr "Lugnt"
 
-#: gweather/weather.c:2078
+#. TRANSLATOR: This is 'wind direction' / 'wind speed'
+#: gweather/weather.c:2340
+#, fuzzy, c-format
+msgid "%s / %s"
+msgstr "%s/%s"
+
+#. TRANSLATOR: This is pressure in inches of mercury
+#: gweather/weather.c:2358
+#, fuzzy, c-format
+msgid "%.2f inHg"
+msgstr "inHg"
+
+#. TRANSLATOR: This is pressure in millimeters of mercury
+#: gweather/weather.c:2362
+#, fuzzy, c-format
+msgid "%.1f mmHg"
+msgstr "mmHg"
+
+#. TRANSLATOR: This is pressure in kiloPascals
+#: gweather/weather.c:2366
+#, c-format
+msgid "%.2f kPa"
+msgstr ""
+
+#. TRANSLATOR: This is pressure in hectoPascals
+#: gweather/weather.c:2370
+#, c-format
+msgid "%.2f hPa"
+msgstr ""
+
+#. TRANSLATOR: This is pressure in millibars
+#: gweather/weather.c:2374
+#, fuzzy, c-format
+msgid "%.2f mb"
+msgstr "%d %b"
+
+#. TRANSLATOR: This is the visibility in miles
+#: gweather/weather.c:2399
+#, fuzzy, c-format
+msgid "%.1f miles"
+msgstr "engelska mil"
+
+#. TRANSLATOR: This is the visibility in kilometers
+#: gweather/weather.c:2403
+#, c-format
+msgid "%.1f km"
+msgstr ""
+
+#. TRANSLATOR: This is the visibility in meters
+#: gweather/weather.c:2407
+#, c-format
+msgid "%.0fm"
+msgstr ""
+
+#: gweather/weather.c:2448
 msgid "Retrieval failed"
 msgstr "Mottagning misslyckades"
 
@@ -3700,7 +4546,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabrik för skapande av inkorgsövervakare."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
+#: mailcheck/mailcheck.c:806 mailcheck/mailcheck.c:2484
 msgid "Inbox Monitor"
 msgstr "Inkorgsövervakare"
 
@@ -3708,17 +4554,11 @@ msgstr "Inkorgsövervakare"
 msgid "Inbox Monitor Factory"
 msgstr "Fabrik för inkorgsövervakare"
 
-#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
-
-#: mailcheck/mailcheck.c:668
+#: mailcheck/mailcheck.c:669
 msgid "Error checking mail"
 msgstr "Fel vid kontroll av e-post"
 
-#: mailcheck/mailcheck.c:811
+#: mailcheck/mailcheck.c:812
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -3726,54 +4566,54 @@ msgstr ""
 "Du angav inte ett lösenord i inställningarna för inkorgsövervakaren,\n"
 "så du måste ange det var gång den startar."
 
-#: mailcheck/mailcheck.c:819
+#: mailcheck/mailcheck.c:820
 msgid "Please enter your mailserver's _password:"
 msgstr "Ange din e-postservers _lösenord:"
 
-#: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
+#: mailcheck/mailcheck.c:825 mailcheck/mailcheck.c:1957
 msgid "Password Entry box"
 msgstr "Lösenordsfält"
 
-#: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
+#: mailcheck/mailcheck.c:840 mailcheck/mailcheck.c:1984
 msgid "_Save password to disk"
 msgstr "_Spara lösenord till disk"
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:896
 msgid "Could not connect to the Internet."
 msgstr "Kunde inte ansluta till Internet."
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:900
 msgid "The username or password is incorrect."
 msgstr "Användarnamnet eller lösenordet är felaktigt."
 
-#: mailcheck/mailcheck.c:902
+#: mailcheck/mailcheck.c:903
 msgid "The server name is incorrect."
 msgstr "Servernamnet är felaktigt."
 
-#: mailcheck/mailcheck.c:906
+#: mailcheck/mailcheck.c:907
 msgid "Error connecting to mail server."
 msgstr "Fel vid anslutning till e-postservern:"
 
-#: mailcheck/mailcheck.c:911
+#: mailcheck/mailcheck.c:912
 msgid "Error"
 msgstr "Fel"
 
-#: mailcheck/mailcheck.c:1087
+#: mailcheck/mailcheck.c:1088
 msgid "You have new mail."
 msgstr "Du har ny e-post."
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1090
 msgid "You have mail."
 msgstr "Du har e-post."
 
-#: mailcheck/mailcheck.c:1093
+#: mailcheck/mailcheck.c:1094
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
 msgstr[0] "%d oläst"
 msgstr[1] "%d olästa"
 
-#: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
+#: mailcheck/mailcheck.c:1095 mailcheck/mailcheck.c:1104
 #, c-format
 msgid "%d message"
 msgid_plural "%d messages"
@@ -3781,150 +4621,150 @@ msgstr[0] "%d meddelande"
 msgstr[1] "%d meddelanden"
 
 #. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1097
+#: mailcheck/mailcheck.c:1098
 #, c-format
 msgid "%s/%s"
 msgstr "%s/%s"
 
-#: mailcheck/mailcheck.c:1110
+#: mailcheck/mailcheck.c:1111
 msgid "No mail."
 msgstr "Ingen e-post."
 
-#: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
-#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
+#: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
+#: mailcheck/mailcheck.c:2903 mailcheck/mailcheck.c:2904
 msgid "Status not updated"
 msgstr "Statusen inte uppdaterad"
 
-#: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
+#: mailcheck/mailcheck.c:1776 mailcheck/mailcheck.c:2402
 msgid "Inbox Settings"
 msgstr "Inkorgsinställningar"
 
-#: mailcheck/mailcheck.c:1793
+#: mailcheck/mailcheck.c:1802
 msgid "Mailbox _resides on:"
 msgstr "Brevlådan _finns på:"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1813
 msgid "Local mailspool"
 msgstr "Lokal e-postspool"
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1821
 msgid "Local maildir"
 msgstr "Lokal e-postkatalog"
 
-#: mailcheck/mailcheck.c:1820
+#: mailcheck/mailcheck.c:1829
 msgid "Remote POP3-server"
 msgstr "POP3-fjärrserver"
 
-#: mailcheck/mailcheck.c:1828
+#: mailcheck/mailcheck.c:1837
 msgid "Remote IMAP-server"
 msgstr "IMAP-fjärrserver"
 
-#: mailcheck/mailcheck.c:1853
+#: mailcheck/mailcheck.c:1862
 msgid "Mail _spool file:"
 msgstr "Fil för e-post_spool:"
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1869
 msgid "Browse"
 msgstr "Bläddra"
 
-#: mailcheck/mailcheck.c:1880
+#: mailcheck/mailcheck.c:1889
 msgid "Mail s_erver:"
 msgstr "E-posts_erver:"
 
-#: mailcheck/mailcheck.c:1889
+#: mailcheck/mailcheck.c:1898
 msgid "Mail Server Entry box"
 msgstr "E-postserverfält"
 
-#: mailcheck/mailcheck.c:1908
+#: mailcheck/mailcheck.c:1917
 msgid "_Username:"
 msgstr "_Användarnamn:"
 
-#: mailcheck/mailcheck.c:1919
+#: mailcheck/mailcheck.c:1928
 msgid "Username Entry box"
 msgstr "Användarnamnsfält"
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:1946
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: mailcheck/mailcheck.c:1990
+#: mailcheck/mailcheck.c:1999
 msgid "_Folder:"
 msgstr "_Mapp:"
 
-#: mailcheck/mailcheck.c:2001
+#: mailcheck/mailcheck.c:2010
 msgid "Folder Entry box"
 msgstr "Mappfält"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2082
 msgid "Check for mail _every:"
 msgstr "Kontrollera e-post _var:"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2104
 msgid "Choose time interval in minutes to check mail"
 msgstr "Välj tidsintervall i minuter för kontroll av post"
 
-#: mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2127
 msgid "Choose time interval in seconds to check mail"
 msgstr "Välj tidsintervall i sekunder för kontroll av post"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2144
 msgid "Play a _sound when new mail arrives"
 msgstr "Spela ett _ljud då ny e-post anländer"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2145
-msgid "Sto_p animation when double clicked"
-msgstr "Sto_ppa animation vid dubbelklick"
+#: mailcheck/mailcheck.c:2154
+msgid "Sto_p animation when clicked"
+msgstr "Sto_ppa animation vid klick"
 
-#: mailcheck/mailcheck.c:2158
+#: mailcheck/mailcheck.c:2167
 msgid "Select a_nimation:"
 msgstr "Välj ani_mation:"
 
-#: mailcheck/mailcheck.c:2176
+#: mailcheck/mailcheck.c:2185
 msgid "Commands"
 msgstr "Kommandon"
 
-#: mailcheck/mailcheck.c:2205
+#: mailcheck/mailcheck.c:2214
 msgid "Before each _update:"
 msgstr "Innan varje _uppdatering:"
 
-#: mailcheck/mailcheck.c:2222
+#: mailcheck/mailcheck.c:2231
 msgid "Command to execute before each update"
 msgstr "Kommando att köra före varje uppdatering"
 
-#: mailcheck/mailcheck.c:2234
+#: mailcheck/mailcheck.c:2243
 msgid "When new mail _arrives:"
 msgstr "När ny e-post _anländer:"
 
-#: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2258 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Kommando att köra då ny e-post anländer"
 
-#: mailcheck/mailcheck.c:2261
-msgid "When double clicke_d:"
-msgstr "Vid _dubbelklick:"
+#: mailcheck/mailcheck.c:2270
+msgid "When clicke_d:"
+msgstr "Vid _klick:"
 
-#: mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:2285
 msgid "Command to execute when clicked"
 msgstr "Kommando att köra vid klick"
 
-#: mailcheck/mailcheck.c:2362
+#: mailcheck/mailcheck.c:2371
 msgid "Inbox Monitor Preferences"
 msgstr "Inställningar för inkorgsövervakare"
 
-#: mailcheck/mailcheck.c:2477
+#: mailcheck/mailcheck.c:2486
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Inkorgsövervakaren signalerar när ny e-post anländer i din brevlåda"
 
-#: mailcheck/mailcheck.c:2839
+#: mailcheck/mailcheck.c:2856
 msgid "Text only"
 msgstr "Endast text"
 
-#: mailcheck/mailcheck.c:2888
+#: mailcheck/mailcheck.c:2905
 msgid "Mail check"
 msgstr "E-postkontroll"
 
-#: mailcheck/mailcheck.c:2889
+#: mailcheck/mailcheck.c:2906
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "E-postkontrollen signalerar när ny e-post anländer i din brevlåda"
 
@@ -4087,11 +4927,12 @@ msgid "MiniCommander Applet Factory"
 msgstr "Fabrik för panelprogrammet MiniCommander"
 
 #: mini-commander/src/about.c:72
+#, fuzzy
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
 "\n"
-"\\ This program is free software; you can redistribute it and/or modify it "
+" This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
@@ -4105,20 +4946,20 @@ msgstr ""
 "Software Foundation; antingen version 2 eller någon senare version (ditt "
 "val)."
 
-#: mini-commander/src/command_line.c:315
+#: mini-commander/src/command_line.c:334
 msgid "No items in history"
 msgstr "Inga objekt i historiken"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:439
+#: mini-commander/src/command_line.c:458
 msgid "Start program"
 msgstr "Starta program"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:504
 msgid "Command line"
 msgstr "Kommandorad"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:505
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ange ett kommando här och Gnome kommer att utföra det åt dig"
 
@@ -4138,12 +4979,14 @@ msgid "Set default list value for %s\n"
 msgstr "Ställ in standardlistvärde för %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL är inte inställd, installerar inte\n"
 "scheman\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Måste ställa in miljövariabeln GCONF_CONFIG_SOURCE\n"
 
@@ -4158,74 +5001,62 @@ msgid "Error syncing config data: %s"
 msgstr "Fel vid synkronisering av konfigurationsdata: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Appearance</b>"
-msgstr "<b>Utseende</b>"
-
-#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
 msgstr "<b>Automatisk ifyllnad</b>"
 
-#: mini-commander/src/mini-commander.glade.h:5
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Colors</b>"
 msgstr "<b>Färger</b>"
 
-#: mini-commander/src/mini-commander.glade.h:6
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Size</b>"
 msgstr "<b>Storlek</b>"
 
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:6
 msgid "Add New Macro"
 msgstr "Lägg till nytt makro"
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command Line Preferences"
 msgstr "Kommandoradsinställningar"
 
-#: mini-commander/src/mini-commander.glade.h:10
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
 msgstr "_Bakgrundsfärg för kommandorad:"
 
-#: mini-commander/src/mini-commander.glade.h:11
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
 msgstr "_Förgrundsfärg för kommandorad:"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
 msgstr "A_ktivera historikbaserad automatisk ifyllnad"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
 msgstr "Makron"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pick a color"
 msgstr "Välj en färg"
 
-#: mini-commander/src/mini-commander.glade.h:16
-msgid "Show fram_e"
-msgstr "Visa _ram"
-
-#: mini-commander/src/mini-commander.glade.h:17
-msgid "Show han_dle"
-msgstr "Visa han_dtag"
-
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
 msgstr "_Lägg till makro..."
 
-#: mini-commander/src/mini-commander.glade.h:19
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
 msgstr "_Ta bort makro"
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
 msgstr "_Makron:"
 
-#: mini-commander/src/mini-commander.glade.h:21
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "_Pattern:"
 msgstr "_Mönster:"
 
-#: mini-commander/src/mini-commander.glade.h:22
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
 msgstr "_Använd standardtemafärger"
 
@@ -4341,57 +5172,57 @@ msgstr "Använd standardtemafärger istället för anpassade färger."
 msgid "Width"
 msgstr "Bredd"
 
-#: mini-commander/src/mini-commander_applet.c:228
-#: mini-commander/src/mini-commander_applet.c:232
+#: mini-commander/src/mini-commander_applet.c:236
+#: mini-commander/src/mini-commander_applet.c:240
 msgid "Browser"
 msgstr "Bläddrare"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:241
 msgid "Click this button to start the browser"
 msgstr "Klicka på denna knapp för att starta webbläsaren"
 
-#: mini-commander/src/mini-commander_applet.c:246
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:254
+#: mini-commander/src/mini-commander_applet.c:258
 msgid "History"
 msgstr "Historik"
 
-#: mini-commander/src/mini-commander_applet.c:251
+#: mini-commander/src/mini-commander_applet.c:259
 msgid "Click this button for the list of previous commands"
 msgstr "Klicka på denna knapp för listan med tidigare kommandon"
 
-#: mini-commander/src/mini-commander_applet.c:363
+#: mini-commander/src/mini-commander_applet.c:343
 msgid "Command line has been disabled by your system administrator"
 msgstr "Kommandoraden har inaktiverats av din systemadministratör"
 
-#: mini-commander/src/mini-commander_applet.c:426
+#: mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
 msgstr "Panelprogrammet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:427
+#: mini-commander/src/mini-commander_applet.c:411
 msgid "This applet adds a command line to the panel"
 msgstr "Detta panelprogran lägger till en kommandorad på panelen"
 
-#: mini-commander/src/preferences.c:428
+#: mini-commander/src/preferences.c:400
 msgid "You must specify a pattern"
 msgstr "Du måste ange ett mönster"
 
-#: mini-commander/src/preferences.c:432
+#: mini-commander/src/preferences.c:404
 msgid "You must specify a pattern and a command"
 msgstr "Du måste ange ett mönster och ett kommando"
 
-#: mini-commander/src/preferences.c:433
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a command"
 msgstr "Du måste ange ett kommando"
 
-#: mini-commander/src/preferences.c:436
+#: mini-commander/src/preferences.c:408
 msgid "You may not specify duplicate patterns"
 msgstr "Du får inte ange dublettmönster"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:778
 msgid "Pattern"
 msgstr "Mönster"
 
-#: mini-commander/src/preferences.c:860
+#: mini-commander/src/preferences.c:788
 msgid "Command"
 msgstr "Kommando"
 
@@ -4399,8 +5230,8 @@ msgstr "Kommando"
 msgid "Adjust the sound volume"
 msgstr "Justera ljudvolymen"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
-#: mixer/mixer.c:1346
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:200
+#: mixer/mixer.c:1364
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
@@ -4512,15 +5343,15 @@ msgstr "Radio"
 msgid "Monitor"
 msgstr "Monitor"
 
-#: mixer/mixer.c:200
+#: mixer/mixer.c:201
 msgid "Volume Control (muted)"
 msgstr "Volymkontroll (tystad)"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "No audio device"
 msgstr "Ingen ljudenhet"
 
-#: mixer/mixer.c:518
+#: mixer/mixer.c:519
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4528,50 +5359,50 @@ msgstr ""
 "varning: denna version av gmix kompilerades med en annan version av\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:878
+#: mixer/mixer.c:894
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Kunde inte öppna mixerenhet %s\n"
 
-#: mixer/mixer.c:1047
+#: mixer/mixer.c:1063
 msgid "Volume Controller"
 msgstr "Volymkontroll"
 
-#: mixer/mixer.c:1048
+#: mixer/mixer.c:1064
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Använd upp-/nertangenterna för att ändra volymen"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1072
+#: mixer/mixer.c:1088
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1089
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1347
+#: mixer/mixer.c:1365
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:1348
+#: mixer/mixer.c:1366
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord."
 
-#: mixer/mixer.c:1495
+#: mixer/mixer.c:1513
 msgid "Volume Control Preferences"
 msgstr "Inställningar för volymkontroll"
 
-#: mixer/mixer.c:1519
+#: mixer/mixer.c:1537
 msgid "Audio Channels"
 msgstr "Ljudkanaler"
 
-#: mixer/mixer.c:1535
+#: mixer/mixer.c:1553
 msgid "_Select channel to control:"
 msgstr "_Välj kanal att styra:"
 
-#: mixer/mixer.c:1874
+#: mixer/mixer.c:1889
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord"
 
@@ -4587,12 +5418,12 @@ msgstr "Sparat tyst tillstånd"
 msgid "Saved volume to restore on startup"
 msgstr "Sparad volym att återställa vid uppstart"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "Modemlampor"
 
-#: modemlights/modemlights.c:137
+#: modemlights/modemlights.c:140
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4602,7 +5433,7 @@ msgstr ""
 "En indikator för modemstatus och uppringare.\n"
 "Lamporna uppifrån eller från vänster är Sänd data och Mottag Data."
 
-#: modemlights/modemlights.c:518
+#: modemlights/modemlights.c:521
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -4610,24 +5441,24 @@ msgstr ""
 "Du är just nu ansluten.\n"
 "Vill du avbryta och koppla ner förbindelsen?"
 
-#: modemlights/modemlights.c:526
+#: modemlights/modemlights.c:529
 msgid "_Disconnect"
 msgstr "_Koppla från"
 
-#: modemlights/modemlights.c:553
+#: modemlights/modemlights.c:556
 msgid "Do you want to connect?"
 msgstr "Vill du ansluta?"
 
-#: modemlights/modemlights.c:560
+#: modemlights/modemlights.c:563
 msgid "C_onnect"
 msgstr "A_nslut"
 
-#: modemlights/modemlights.c:584
+#: modemlights/modemlights.c:591
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMB mottaget / %#.1fMB skickat / tid: %.1d.%.2d"
 
-#: modemlights/modemlights.c:589
+#: modemlights/modemlights.c:596
 msgid "not connected"
 msgstr "inte ansluten"
 
@@ -4865,10 +5696,11 @@ msgid "Bac_kground:"
 msgstr "Ba_kgrund:"
 
 #: modemlights/properties.c:621
-msgid "O_utline"
+#, fuzzy
+msgid "O_utline:"
 msgstr "_Ram"
 
-#: modemlights/properties.c:624 multiload/properties.c:534
+#: modemlights/properties.c:624 multiload/properties.c:535
 msgid "Colors"
 msgstr "Färger"
 
@@ -4930,19 +5762,19 @@ msgstr ""
 "En systembelastningsövervakare som kan visa grafer för processor-, minnes- "
 "och växlingsutrymmesanvändning, plus nätverkstrafik."
 
-#: multiload/main.c:337 multiload/properties.c:559
+#: multiload/main.c:337 multiload/properties.c:560
 msgid "Processor"
 msgstr "Processor"
 
-#: multiload/main.c:339 multiload/properties.c:566
+#: multiload/main.c:339 multiload/properties.c:567
 msgid "Memory"
 msgstr "Minne"
 
-#: multiload/main.c:341 multiload/properties.c:574
+#: multiload/main.c:341 multiload/properties.c:575
 msgid "Network"
 msgstr "Nätverk"
 
-#: multiload/main.c:343 multiload/properties.c:582
+#: multiload/main.c:343 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Växlingsutrymme"
 
@@ -4950,7 +5782,15 @@ msgstr "Växlingsutrymme"
 msgid "Resource"
 msgstr "Resurs"
 
-#: multiload/main.c:358
+#: multiload/main.c:363
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use of which\n"
+"%d%% is cache"
+msgstr ""
+
+#: multiload/main.c:366
 #, c-format
 msgid ""
 "%s:\n"
@@ -5075,115 +5915,115 @@ msgstr "Bakgrundsfärg för växlingsutrymmesgraf"
 msgid "Net Load"
 msgstr "Nätverksbelastning"
 
-#: multiload/properties.c:332
+#: multiload/properties.c:333
 msgid "Monitored Resources"
 msgstr "Övervakade resurser"
 
-#: multiload/properties.c:357
+#: multiload/properties.c:358
 msgid "_Processor"
 msgstr "_Processor"
 
-#: multiload/properties.c:370
+#: multiload/properties.c:371
 msgid "_Memory"
 msgstr "_Minne"
 
-#: multiload/properties.c:383
+#: multiload/properties.c:384
 msgid "_Network"
 msgstr "_Nätverk"
 
-#: multiload/properties.c:396
+#: multiload/properties.c:397
 msgid "S_wap Space"
 msgstr "Vä_xlingsutrymme"
 
-#: multiload/properties.c:409
+#: multiload/properties.c:410
 msgid "_Load"
 msgstr "_Belastning"
 
-#: multiload/properties.c:456
+#: multiload/properties.c:457
 msgid "System m_onitor width: "
 msgstr "System_övervakarbredd: "
 
-#: multiload/properties.c:458
+#: multiload/properties.c:459
 msgid "System m_onitor height: "
 msgstr "System_övervakarhöjd: "
 
-#: multiload/properties.c:497
+#: multiload/properties.c:498
 msgid "Sys_tem monitor update interval: "
 msgstr "Uppdateringsintervall för sys_temövervakare: "
 
-#: multiload/properties.c:523
+#: multiload/properties.c:524
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: multiload/properties.c:561 multiload/properties.c:568
+#: multiload/properties.c:562 multiload/properties.c:569
 msgid "_User"
 msgstr "_Användare"
 
-#: multiload/properties.c:562
+#: multiload/properties.c:563
 msgid "S_ystem"
 msgstr "S_ystem"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:564
 msgid "N_ice"
 msgstr "\"N_ice\""
 
-#: multiload/properties.c:564
+#: multiload/properties.c:565
 msgid "I_dle"
 msgstr "_Tomgång (idle)"
 
-#: multiload/properties.c:569
+#: multiload/properties.c:570
 msgid "Sh_ared"
 msgstr "_Delat"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:571
 msgid "_Buffers"
 msgstr "_Buffertar"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:572
 msgid "Cach_ed"
 msgstr "_Cachat"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:573
 msgid "F_ree"
 msgstr "Ledi_gt"
 
-#: multiload/properties.c:576
+#: multiload/properties.c:577
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:577
+#: multiload/properties.c:578
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:579
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:580
 msgid "Othe_r"
 msgstr "Anna_t"
 
-#: multiload/properties.c:580 multiload/properties.c:590
+#: multiload/properties.c:581 multiload/properties.c:591
 msgid "_Background"
 msgstr "_Bakgrund"
 
-#: multiload/properties.c:584
+#: multiload/properties.c:585
 msgid "_Used"
 msgstr "Anv_änt"
 
-#: multiload/properties.c:585
+#: multiload/properties.c:586
 msgid "_Free"
 msgstr "_Ledigt"
 
-#: multiload/properties.c:587
+#: multiload/properties.c:588
 msgid "Load"
 msgstr "Belastning"
 
-#: multiload/properties.c:589
+#: multiload/properties.c:590
 msgid "_Average"
 msgstr "_Medel"
 
-#: multiload/properties.c:613
+#: multiload/properties.c:614
 msgid "System Monitor Preferences"
 msgstr "Inställningar för systemövervakare"
 
@@ -5191,30 +6031,31 @@ msgstr "Inställningar för systemövervakare"
 msgid "Swap Load"
 msgstr "Växlingsutrymmesbelastning"
 
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:315 stickynotes/stickynotes_applet.c:433
-#: stickynotes/stickynotes_applet_callbacks.c:240
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+#: stickynotes/stickynotes_applet.c:321 stickynotes/stickynotes_applet.c:439
+#: stickynotes/stickynotes_applet_callbacks.c:271
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 msgid "Sticky Notes Applet Factory"
 msgstr "Panelprogramsfabrik för klisterlappar"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
-msgid "_Delete Notes..."
-msgstr "_Ta bort lappar..."
+#, fuzzy
+msgid "_Delete Notes"
+msgstr "_Ta bort lapp"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
 msgstr "_Lås lappar"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:44
+#: stickynotes/stickynotes.glade.h:47
 msgid "_New Note"
 msgstr "_Ny lapp"
 
@@ -5222,11 +6063,11 @@ msgstr "_Ny lapp"
 msgid "_Show Notes"
 msgstr "_Visa lappar"
 
-#: stickynotes/stickynotes.c:334
+#: stickynotes/stickynotes.c:336
 msgid "Locked note"
 msgstr "Låst lapp"
 
-#: stickynotes/stickynotes.c:339
+#: stickynotes/stickynotes.c:341
 msgid "Unlocked note"
 msgstr "Olåst lapp"
 
@@ -5235,8 +6076,9 @@ msgid "<b>Default Note Properties</b>"
 msgstr "<b>Standardlappegenskaper</b>"
 
 #: stickynotes/stickynotes.glade.h:5
+#, fuzzy
 msgid ""
-"<b>Delete ALL sticky notes?</b>\n"
+"<b>Delete all sticky notes?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
@@ -5279,8 +6121,8 @@ msgid "Choose a font to use for all sticky notes"
 msgstr "Välj ett typsnitt för användning på alla klisterlappar"
 
 #: stickynotes/stickynotes.glade.h:17
-msgid "Choose if notes are visible on ALL workspaces"
-msgstr "Välj om lappar är synliga på ALLA arbetsytor"
+msgid "Choose if notes are visible on all workspaces"
+msgstr "Välj om lappar är synliga på alla arbetsytor"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
@@ -5288,123 +6130,125 @@ msgstr "Välj om standardstilen tvingas på alla lappar"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
-msgstr "Klic:k:"
+msgstr "Klic_k:"
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
 msgstr "Stäng lapp"
 
 #: stickynotes/stickynotes.glade.h:21
+msgid "Create a new note"
+msgstr "Skapa en ny lapp"
+
+#: stickynotes/stickynotes.glade.h:22
 msgid "Force _default color and font on notes"
 msgstr "Tvinga _standardfärg och standardtypsnitt på lappar"
 
-#: stickynotes/stickynotes.glade.h:22
+#: stickynotes/stickynotes.glade.h:23
 msgid "H_eight:"
 msgstr "H_öjd:"
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:24
+msgid "Lock/Unlock all notes"
+msgstr "Lås/Lås upp alla lappar"
+
+#: stickynotes/stickynotes.glade.h:25
 msgid "Lock/Unlock note"
 msgstr "Lås/Lås upp lapp"
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:26
 msgid "Pick a color for the sticky note"
 msgstr "Välj en färg för klisterlappen"
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note color"
 msgstr "Välj en standardfärg för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note font"
 msgstr "Välj ett standardtypsnitt för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
 msgstr "Välj ett typsnitt för klisterlappen"
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
 msgstr "Ändra storlek på lapp"
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:31
+msgid "Show/Hide all notes"
+msgstr "Visa/Dölj alla lappar"
+
+#: stickynotes/stickynotes.glade.h:32
 msgid "Specify a title for the note"
 msgstr "Ange en titel för lappen"
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:33
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Ange standardhöjden (i bildpunkter) för nya lappar"
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:34
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Ange standardbredden (i bildpunkter) för nya lappar"
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note"
 msgstr "Klisterlapp"
 
-#: stickynotes/stickynotes.glade.h:33
+#: stickynotes/stickynotes.glade.h:36
 msgid "Sticky Note Properties"
 msgstr "Egenskaper för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:34
+#: stickynotes/stickynotes.glade.h:37
 msgid "Sticky Notes Preferences"
 msgstr "Inställningar för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:35
+#: stickynotes/stickynotes.glade.h:38
 msgid "Use co_lor from the system theme"
 msgstr "Använd fä_rg från systemtemat"
 
-#: stickynotes/stickynotes.glade.h:36
+#: stickynotes/stickynotes.glade.h:39
 msgid "Use default co_lor"
 msgstr "Använd standardfä_rg"
 
-#: stickynotes/stickynotes.glade.h:37
+#: stickynotes/stickynotes.glade.h:40
 msgid "Use default fo_nt"
 msgstr "Använd standardtyps_nitt"
 
-#: stickynotes/stickynotes.glade.h:38
+#: stickynotes/stickynotes.glade.h:41
 msgid "Use fo_nt from the system theme"
 msgstr "Använd typs_nitt från systemtemat"
 
-#: stickynotes/stickynotes.glade.h:39
+#: stickynotes/stickynotes.glade.h:42
 msgid "_Color:"
 msgstr "_Färg:"
 
-#: stickynotes/stickynotes.glade.h:40
-msgid "_Delete ALL"
+#: stickynotes/stickynotes.glade.h:43
+#, fuzzy
+msgid "_Delete All"
 msgstr "_Ta bort ALLA"
 
-#: stickynotes/stickynotes.glade.h:41
+#: stickynotes/stickynotes.glade.h:44
 msgid "_Delete Note..."
 msgstr "_Ta bort lapp..."
 
-#: stickynotes/stickynotes.glade.h:43
+#: stickynotes/stickynotes.glade.h:46
 msgid "_Lock Note"
 msgstr "_Lås lapp"
 
-#: stickynotes/stickynotes.glade.h:45
-msgid "_Properties..."
-msgstr "_Egenskaper..."
+#: stickynotes/stickynotes.glade.h:48
+#, fuzzy
+msgid "_Properties"
+msgstr "Egenskaper"
 
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:49
 msgid "_Put notes on all workspaces"
 msgstr "_Placera lappar på alla arbetsytor"
 
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:50
 msgid "_Title:"
 msgstr "_Titel:"
-
-#: stickynotes/stickynotes.glade.h:49
-msgid "_lock/unlock all notes"
-msgstr "_lås/_lås upp alla lappar"
-
-#: stickynotes/stickynotes.glade.h:50
-msgid "_show/hide all notes"
-msgstr "_visa/dölj alla lappar"
-
-#: stickynotes/stickynotes.glade.h:51
-msgid "create a _new note"
-msgstr "skapa en _ny lapp"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
@@ -5558,7 +6402,7 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: stickynotes/stickynotes_applet.c:433
+#: stickynotes/stickynotes_applet.c:439
 #, c-format
 msgid ""
 "%s\n"
@@ -5573,28 +6417,29 @@ msgstr[1] ""
 "%s\n"
 "%d lappar"
 
-#: stickynotes/stickynotes_applet_callbacks.c:242
+#: stickynotes/stickynotes_applet_callbacks.c:273
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:243
+#: stickynotes/stickynotes_applet_callbacks.c:274
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Klisterlappar för skrivbordsmiljön Gnome"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
 msgstr "Övervaka kvaliteten på en trådlös nätverkslänk"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
 msgid "Wireless Link Monitor"
 msgstr "Övervakare av trådlös länk"
 
-#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
-msgid "No Wireless Devices"
-msgstr "Inga trådlösa enheter"
+#: wireless/wireless-applet.c:146
+#, c-format
+msgid "Link Strength: %2.0d%%"
+msgstr ""
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5602,15 +6447,19 @@ msgstr ""
 "Det verkar inte finnas några trådlösa enheter konfigurerade på ditt system.\n"
 "Verifiera din konfiguration om du tror den är felaktig."
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
+msgid "No Wireless Devices"
+msgstr "Inga trådlösa enheter"
+
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Detta verktyg visar statusen på en trådlös länk."
 
-#: wireless/wireless-applet.c:836
+#: wireless/wireless-applet.c:843
 msgid "This utility shows the status of a wireless link"
 msgstr "Detta verktyg visar statusen på en trådlös länk"
 
@@ -5625,6 +6474,150 @@ msgstr "Inställningar för övervakare av trådlös länk"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
+
+#~ msgid "Utility"
+#~ msgstr "Verktyg"
+
+#~ msgid "_Preferences..."
+#~ msgstr "_Inställningar..."
+
+#~ msgid "High"
+#~ msgstr "Hög"
+
+#~ msgid "Low"
+#~ msgstr "Låg"
+
+#~ msgid "Critical"
+#~ msgstr "Kritisk"
+
+#~ msgid "Charging"
+#~ msgstr "Laddar"
+
+#~ msgid "Battery low (%d%%) and AC is offline"
+#~ msgstr "Batterinivån är låg (%d%%) och nätspänningen är frånkopplad"
+
+#~ msgid ""
+#~ "System is running on battery power\n"
+#~ "Battery: %d%% (%s)"
+#~ msgstr ""
+#~ "Systemet körs på batteri\n"
+#~ "Batteri: %d%% (%s)"
+
+#~ msgid ""
+#~ "System is running on AC power\n"
+#~ "Battery: %d%% (%s)"
+#~ msgstr ""
+#~ "Systemet körs på nätspänning\n"
+#~ "Batteri: %d%% (%s)"
+
+#~ msgid "System is running on battery power. Battery: %d%% (%s)"
+#~ msgstr "Systemet körs på batteri. Batteri: %d%% (%s)"
+
+#~ msgid "System is running on AC power. Battery: %d%% (%s)"
+#~ msgstr "Systemet körs på nätspänning. Batteri: %d%% (%s)"
+
+#~ msgid "System is running on battery power. Battery: Not present"
+#~ msgstr "Systemet körs på batteri. Batteri: Inte tillgängligt"
+
+#~ msgid "System is running on AC power. Battery: Not present"
+#~ msgstr "Systemet körs på nätspänning. Batteri: Inte tillgängligt"
+
+#~ msgid "Battery: %d%% (%s)"
+#~ msgstr "Batteri: %d%% (%s)"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
+
+#~ msgid "Path to the device"
+#~ msgstr "Sökväg till enheten"
+
+#~ msgid ""
+#~ "This is the full path of the device that will be used to play cd's from "
+#~ "this applet"
+#~ msgstr ""
+#~ "Detta är den fullständiga sökvägen till enheten som kommer att användas "
+#~ "för att spela cd-skivor från detta panelprogram"
+
+#~ msgid "Pal_ettes:"
+#~ msgstr "Pal_etter:"
+
+#~ msgid "_Browse..."
+#~ msgstr "_Bläddra..."
+
+#~ msgid "Cdrom"
+#~ msgstr "Cd-rom"
+
+#~ msgid "Amusements"
+#~ msgstr "Underhållning"
+
+#~ msgid "Pl_ugins..."
+#~ msgstr "_Insticksmoduler..."
+
+#~ msgid "Accessories"
+#~ msgstr "Tillbehör"
+
+#~ msgid "(No"
+#~ msgstr "(Inga"
+
+#~ msgid "URL link Button"
+#~ msgstr "URL-länkknapp"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Det finns ingen detaljerad prognos för den valda platsen.\n"
+#~ "Var vänlig och prova statsprognosen. Observera att IWIN-prognoser är bara "
+#~ "tillgängliga för städer i USA."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Det finns ingen delstatsprognos för den valda platsen.\n"
+#~ "Var vänlig och prova den detaljerade prognosen. Observera att IWIN-"
+#~ "prognoser är bara tillgängliga för städer i USA."
+
+#~ msgid "Use _metric system units"
+#~ msgstr "Använd _metriska enheter"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "Använd _anpassad adress för radarkartan"
+
+#~ msgid "Internet"
+#~ msgstr "Internet"
+
+#~ msgid "Sto_p animation when double clicked"
+#~ msgstr "Sto_ppa animation vid dubbelklick"
+
+#~ msgid "When double clicke_d:"
+#~ msgstr "Vid _dubbelklick:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Utseende</b>"
+
+#~ msgid "Show fram_e"
+#~ msgstr "Visa _ram"
+
+#~ msgid "Show han_dle"
+#~ msgstr "Visa han_dtag"
+
+#~ msgid "_Delete Notes..."
+#~ msgstr "_Ta bort lappar..."
+
+#~ msgid "_Properties..."
+#~ msgstr "_Egenskaper..."
+
+#~ msgid "_lock/unlock all notes"
+#~ msgstr "_lås/_lås upp alla lappar"
+
+#~ msgid "_show/hide all notes"
+#~ msgstr "_visa/dölj alla lappar"
+
+#~ msgid "create a _new note"
+#~ msgstr "skapa en _ny lapp"
 
 #~ msgid "Keyboard layout indicator"
 #~ msgstr "Tangentbordslayoutindikator"
@@ -5683,17 +6676,8 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Add a palette..."
 #~ msgstr "Lägg till en palett..."
 
-#~ msgid "Azerbaidjan"
-#~ msgstr "Azerbajdzjan"
-
-#~ msgid "Azerbaidjani Turkic"
-#~ msgstr "Azerbajdzjansk turkiska"
-
 #~ msgid "Azerbaidjani Turkic Sun keymap"
 #~ msgstr "Azerbajdzjansk turkisk Sun-tangentbordstabell"
-
-#~ msgid "Azerbaidjani Turkic xkb keymap"
-#~ msgstr "Azerbajdzjansk turkisk xkb-tangentbordstabell"
 
 #~ msgid "Portuglese"
 #~ msgstr "Portugisisk"
@@ -6506,9 +7490,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "See the Forecast Details"
 #~ msgstr "Se detaljerad väderrapport"
 
-#~ msgid "Use custom address for radar map"
-#~ msgstr "Använd anpassad adress för radarkartan"
-
 #~ msgid "Thunder"
 #~ msgstr "Åskväder"
 
@@ -6539,17 +7520,11 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Condition"
 #~ msgstr "Förhållande"
 
-#~ msgid "Feels like:"
-#~ msgstr "Känns som:"
-
 #~ msgid "Forecast list"
 #~ msgstr "Prognoslista"
 
 #~ msgid "Shows forecast details for each day"
 #~ msgstr "Visar prognosdetaljer för varje dag"
-
-#~ msgid "%s / %.1f %s"
-#~ msgstr "%s / %.1f %s"
 
 #~ msgid "Display _temperatures"
 #~ msgstr "Visa _temperaturer"
@@ -6595,9 +7570,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Show temperature label next to forecast icon"
 #~ msgstr "Visa temperaturetikett bredvid prognosikon"
-
-#~ msgid "Show temperature labels on panel"
-#~ msgstr "Visa temperaturetiketter på panelen"
 
 #~ msgid "True if running applet for the first time"
 #~ msgstr "Sant om panelprogrammet körs för första gången"
@@ -6739,32 +7711,11 @@ msgstr "_Övervakad enhet:"
 #~ msgid "The encrypted user's password for the remote server"
 #~ msgstr "Den krypterade användarens lösenord för fjärrservern"
 
-#~ msgid "Sto_p animation when clicked"
-#~ msgstr "Sto_ppa animation vid klick"
-
-#~ msgid "When clicke_d:"
-#~ msgstr "Vid _klick:"
-
 #~ msgid "Default Note Properties"
 #~ msgstr "Standardlappegenskaper"
 
-#~ msgid "Properties"
-#~ msgstr "Egenskaper"
-
-#~ msgid "_Delete Note"
-#~ msgstr "_Ta bort lapp"
-
 #~ msgid "Properties..."
 #~ msgstr "Egenskaper..."
-
-#~ msgid "_Lock/Unlock all notes"
-#~ msgstr "_Lås/_Lås upp alla lappar"
-
-#~ msgid "_Show/Hide all notes"
-#~ msgstr "_Visa/Dölj alla lappar"
-
-#~ msgid "Create a _new note"
-#~ msgstr "Skapa en _ny lapp"
 
 #~ msgid "_Slow"
 #~ msgstr "_Långsam"
@@ -6919,9 +7870,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Battery Color Levels (%)"
 #~ msgstr "Nivåfärger för batteri (%)"
-
-#~ msgid "Progress Bar Direction"
-#~ msgstr "Riktning på mätare"
 
 #~ msgid "Suspend"
 #~ msgstr "Paus"
@@ -7201,9 +8149,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Create menu path item..."
 #~ msgstr "Skapa menysökvägsobjekt..."
 
-#~ msgid "Preferences"
-#~ msgstr "Inställningar"
-
 #~ msgid "_Applications Menu"
 #~ msgstr "_Programmeny"
 
@@ -7300,9 +8245,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Swap _File"
 #~ msgstr "Växlings_fil"
 
-#~ msgid "_Edit"
-#~ msgstr "_Redigera"
-
 #~ msgid "_Up"
 #~ msgstr "_Upp"
 
@@ -7320,9 +8262,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "South Africa"
 #~ msgstr "Sydafrika"
-
-#~ msgid "Wallon"
-#~ msgstr "Wallonska"
 
 #~ msgid "105"
 #~ msgstr "105"
@@ -7454,9 +8393,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "%H:%M"
 #~ msgstr "%H.%M"
 
-#~ msgid "%d. %b"
-#~ msgstr "%d %b"
-
 #~ msgid "orient. changed"
 #~ msgstr "riktning ändrad"
 
@@ -7520,9 +8456,6 @@ msgstr "_Övervakad enhet:"
 # SUN NEW TRANSLATION
 #~ msgid "Skip backword"
 #~ msgstr "Hoppa bakåt"
-
-#~ msgid "Battery status utility"
-#~ msgstr "Batteriövervakare"
 
 #~ msgid "CD Player Applet"
 #~ msgstr "Cd-spelarpanelprogram"
@@ -7650,9 +8583,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Update failed! Maybe another update was already in progress?"
 #~ msgstr ""
 #~ "Uppdateringen misslyckades! Kanske en annan uppdatering var igång redan?"
-
-#~ msgid "mmHg"
-#~ msgstr "mmHg"
 
 #~ msgid "Another update already in progress!\n"
 #~ msgstr "En annan uppdatering är redan igång!\n"
@@ -8041,9 +8971,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Follow panel size"
 #~ msgstr "Anpassa till panelens storlek"
 
-#~ msgid "Default List"
-#~ msgstr "Standardlista"
-
 #~ msgid "Press a key..."
 #~ msgstr "Tryck en tangent..."
 
@@ -8237,9 +9164,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Timezone"
 #~ msgstr "Tidszon"
-
-#~ msgid "The battery is low."
-#~ msgstr "Batteriladdningen är låg."
 
 #~ msgid "The battery is fully charged."
 #~ msgstr "Batteriet är fullt uppladdat."
@@ -8649,9 +9573,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Unable to create user directory: %s\n"
 #~ msgstr "Kunde inte skapa användarkatalog: %s\n"
 
-#~ msgid "%d.%d.%d"
-#~ msgstr "%d.%d.%d"
-
 #~ msgid "Justin Maurer <justin@helixcode.com>"
 #~ msgstr "Justin Maurer <justin@helixcode.com>"
 
@@ -8693,9 +9614,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "No title"
 #~ msgstr "Ingen titel"
-
-#~ msgid "No url"
-#~ msgstr "Ingen url"
 
 #~ msgid "(C) 2000 John Ellis"
 #~ msgstr "© 2000 John Ellis"
@@ -9552,9 +10470,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "_Available plugins"
 #~ msgstr "_Tillgängliga insticksmoduler"
 
-#~ msgid "Plugins"
-#~ msgstr "Insticksmoduler"
-
 #~ msgid "Plugin"
 #~ msgstr "Insticksmodul"
 
@@ -9605,9 +10520,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Preview"
 #~ msgstr "Förhandsgranska"
-
-#~ msgid "To _default"
-#~ msgstr "Till _standard"
 
 #~ msgid "To _fit"
 #~ msgstr "Så att det _passar"
