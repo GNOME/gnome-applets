@@ -4,7 +4,11 @@ figs = \
 docname = anotherclock_applet
 lang = es
 omffile = anotherclock_applet-es.omf
-sgml_ents = anotherclock.sgml
+sgml_ents = anotherclock.sgml \
+	authors.sgml \
+	licencia-es.sgml \
+	licencia-nota-es.sgml \
+	license.sgml
 include $(top_srcdir)/sgmldocs.make
 dist-hook: app-dist-hook
 
