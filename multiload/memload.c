@@ -23,17 +23,6 @@
 
 #include "global.h"
 
-static gint
-applet_save_session (GtkWidget *widget, char *privcfgpath,
-		     char *globcfgpath, gpointer data)
-{
-	return FALSE;
-	widget = NULL;
-	privcfgpath = NULL;
-	globcfgpath = NULL;
-	data = NULL;
-}
-
 /* start a new instance of the memload applet */
 GtkWidget *
 make_memload_applet (const gchar *goad_id)
@@ -48,10 +37,10 @@ make_memload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    g = load_graph_new (4, N_("Memory Load"), &multiload_properties.memload,
+    g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Memory Load"),
+			&multiload_properties.memload,
 			multiload_properties.memload.adj_data[0],
-			multiload_properties.memload.adj_data[1],
-			multiload_properties.memload.adj_data[2], GetMemory);
+			multiload_properties.memload.adj_data[1], GetMemory);
 
     applet_widget_add (APPLET_WIDGET(applet), g->frame);
     gtk_widget_show (applet);

@@ -22,17 +22,6 @@
 
 #include "global.h"
 
-static gint
-applet_save_session (GtkWidget *widget, char *privcfgpath,
-		     char *globcfgpath, gpointer data)
-{
-	return FALSE;
-        widget = NULL;
-        privcfgpath = NULL;
-        globcfgpath = NULL;
-        data = NULL;
-}
-
 /* start a new instance of the netload applet */
 GtkWidget *
 make_netload_applet (const gchar *goad_id)
@@ -47,10 +36,10 @@ make_netload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    g = load_graph_new (4, N_("Net Load"), &multiload_properties.netload,
+    g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Net Load"),
+			&multiload_properties.netload,
 			multiload_properties.netload.adj_data[0],
-			multiload_properties.netload.adj_data[1],
-			multiload_properties.netload.adj_data[2], GetNet);
+			multiload_properties.netload.adj_data[1], GetNet);
 
     applet_widget_add (APPLET_WIDGET(applet), g->frame);
     gtk_widget_show (applet);

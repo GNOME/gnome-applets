@@ -23,17 +23,6 @@
 
 #include "global.h"
 
-static gint
-applet_save_session (GtkWidget *widget, char *privcfgpath,
-		     char *globcfgpath, gpointer data)
-{
-	return FALSE;
-	widget = NULL;
-	privcfgpath = NULL;
-	globcfgpath = NULL;
-	data = NULL;
-}
-
 /* start a new instance of the cpuload applet */
 GtkWidget *
 make_cpuload_applet (const gchar *goad_id)
@@ -48,19 +37,15 @@ make_cpuload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    g = load_graph_new (4, N_("CPU Load"), &multiload_properties.cpuload,
+    g = load_graph_new (APPLET_WIDGET (applet), 4, N_("CPU Load"),
+			&multiload_properties.cpuload,
 			multiload_properties.cpuload.adj_data[0],
-			multiload_properties.cpuload.adj_data[1],
-			multiload_properties.cpuload.adj_data[2], GetLoad);
+			multiload_properties.cpuload.adj_data[1], GetLoad);
 
     applet_widget_add (APPLET_WIDGET(applet), g->frame);
     gtk_widget_show (applet);
 
     load_graph_start (g);
-
-    gtk_signal_connect (GTK_OBJECT(applet),"save_session",
-			GTK_SIGNAL_FUNC(applet_save_session),
-			NULL);
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "properties",

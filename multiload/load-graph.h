@@ -6,11 +6,17 @@ typedef struct _LoadGraph LoadGraph;
 typedef void (*LoadGraphDataFunc) (int, int []);
 
 struct _LoadGraph {
+    AppletWidget *applet;
+
     guint n;
-    guint speed, width, height;
+    guint speed, size;
+    guint orient, pixel_size;
+    guint draw_width, draw_height;
     LoadGraphDataFunc get_data;
 
     LoadGraphProperties *prop_data;
+
+    guint allocated;
 
     GdkColor *colors;
     guint **data, **odata;
@@ -26,9 +32,9 @@ struct _LoadGraph {
 
 /* Create new load graph. */
 LoadGraph *
-load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
-		guint speed, guint width, guint height,
-		LoadGraphDataFunc get_data);
+load_graph_new (AppletWidget *applet, guint n, gchar *label,
+		LoadGraphProperties *prop_data, guint speed,
+		guint size, LoadGraphDataFunc get_data);
 
 /* Start load graph. */
 void

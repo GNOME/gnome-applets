@@ -124,7 +124,6 @@ main (int argc, char **argv)
     multiload_properties.cpuload.color_defs = cpu_color_defs;
     multiload_properties.cpuload.adj_data [0] = 500;
     multiload_properties.cpuload.adj_data [1] = 40;
-    multiload_properties.cpuload.adj_data [2] = 40;
 
     multiload_properties.memload.n = 4;
     multiload_properties.memload.name = "memload";
@@ -138,7 +137,6 @@ main (int argc, char **argv)
     multiload_properties.memload.color_defs = mem_color_defs;
     multiload_properties.memload.adj_data [0] = 500;
     multiload_properties.memload.adj_data [1] = 40;
-    multiload_properties.memload.adj_data [2] = 40;
 
     multiload_properties.swapload.n = 2;
     multiload_properties.swapload.name = "swapload";
@@ -152,7 +150,6 @@ main (int argc, char **argv)
     multiload_properties.swapload.color_defs = swap_color_defs;
     multiload_properties.swapload.adj_data [0] = 500;
     multiload_properties.swapload.adj_data [1] = 40;
-    multiload_properties.swapload.adj_data [2] = 40;
 
     multiload_properties.netload.n = 4;
     multiload_properties.netload.name = "netload";
@@ -166,7 +163,6 @@ main (int argc, char **argv)
     multiload_properties.netload.color_defs = net_color_defs;
     multiload_properties.netload.adj_data [0] = 500;
     multiload_properties.netload.adj_data [1] = 40;
-    multiload_properties.netload.adj_data [2] = 40;
 
     /* Add property objects. */
 

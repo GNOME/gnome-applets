@@ -46,7 +46,7 @@ load_graph_draw (LoadGraph *g)
 
     if (!g->pixmap)
 	g->pixmap = gdk_pixmap_new (g->disp->window,
-				    g->width, g->height,
+				    g->draw_width, g->draw_height,
 				    gtk_widget_get_visual (g->disp)->depth);
 
     /* Create GC if necessary. */
@@ -75,16 +75,16 @@ load_graph_draw (LoadGraph *g)
 			g->disp->allocation.width,
 			g->disp->allocation.height);
 
-    for (i = 0; i < g->width; i++)
-	g->pos [i] = g->height;
+    for (i = 0; i < g->draw_width; i++)
+	g->pos [i] = g->draw_height;
 
     for (j = 0; j < g->n; j++) {
 	gdk_gc_set_foreground (g->gc, &(g->colors [j]));
 
-	for (i = 0; i < g->width; i++) {
+	for (i = 0; i < g->draw_width; i++) {
 	    gdk_draw_line (g->pixmap, g->gc,
-			   g->width - i, g->pos[i],
-			   g->width - i, g->pos[i] - g->data[i][j]);
+			   g->draw_width - i, g->pos[i],
+			   g->draw_width - i, g->pos[i] - g->data[i][j]);
 
 	    g->pos [i] -= g->data [i][j];
 	}
@@ -98,7 +98,7 @@ load_graph_draw (LoadGraph *g)
 		     g->disp->allocation.width,
 		     g->disp->allocation.height);
 
-    for (i = 0; i < g->width; i++)
+    for (i = 0; i < g->draw_width; i++)
 	memcpy (g->odata [i], g->data [i], g->data_size);
 }
 
@@ -108,14 +108,93 @@ load_graph_update (LoadGraph *g)
 {
     guint i, j;
 
-    g->get_data (g->height, g->data [0]);
+    g->get_data (g->draw_height, g->data [0]);
 
-    for (i=0; i < g->width-1; i++)
+    for (i=0; i < g->draw_width-1; i++)
 	for (j=0; j < g->n; j++)
 	    g->data [i+1][j] = g->odata [i][j];
 
     load_graph_draw (g);
     return TRUE;
+}
+
+static void
+load_graph_unalloc (LoadGraph *g)
+{
+    int i;
+
+    if (!g->allocated)
+	return;
+
+    for (i = 0; i < g->draw_width; i++) {
+	g_free (g->data [i]);
+	g_free (g->odata [i]);
+    }
+
+    g_free (g->data);
+    g_free (g->odata);
+    g_free (g->pos);
+
+    g->pos = NULL;
+    g->data = g->odata = NULL;
+    g->size = g->prop_data->adj_data [1];
+
+    if (g->pixmap) {
+	gdk_pixmap_unref (g->pixmap);
+	g->pixmap = NULL;
+    }
+
+    g->allocated = FALSE;
+}
+
+static void
+load_graph_alloc (LoadGraph *g)
+{
+    PanelOrientType orient;
+    int pixel_size, i;
+
+    if (g->allocated)
+	return;
+
+    orient = applet_widget_get_panel_orient (g->applet);
+    switch (orient) {
+    case ORIENT_UP:
+    case ORIENT_DOWN:
+	g->orient = FALSE;
+	break;
+    case ORIENT_LEFT:
+    case ORIENT_RIGHT:
+	g->orient = TRUE;
+	break;
+    default:
+	g_assert_not_reached ();
+    }
+
+    pixel_size = applet_widget_get_panel_pixel_size (g->applet);
+    g_assert (pixel_size > 0);
+
+    g->pixel_size = pixel_size;
+
+    if (g->orient) {
+	g->draw_width = g->pixel_size;
+	g->draw_height = g->size;
+    } else {
+	g->draw_width = g->size;
+	g->draw_height = g->pixel_size;
+    }
+
+    g->data = g_new0 (guint *, g->draw_width);
+    g->odata = g_new0 (guint *, g->draw_width);
+    g->pos = g_new0 (guint, g->draw_width);
+
+    g->data_size = sizeof (guint) * g->n;
+
+    for (i = 0; i < g->draw_width; i++) {
+	g->data [i] = g_malloc0 (g->data_size);
+	g->odata [i] = g_malloc0 (g->data_size);
+    }
+
+    g->allocated = TRUE;
 }
 
 static gint
@@ -124,11 +203,15 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 {
     LoadGraph *c = (LoadGraph *) data_ptr;
 
+    load_graph_unalloc (c);
+    load_graph_alloc (c);
+
     if (!c->pixmap)
 	c->pixmap = gdk_pixmap_new (widget->window,
 				    widget->allocation.width,
 				    widget->allocation.height,
 				    gtk_widget_get_visual (c->disp)->depth);
+
     gdk_draw_rectangle (c->pixmap,
 			widget->style->black_gc,
 			TRUE, 0,0,
@@ -172,6 +255,35 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     widget = NULL;
 }
 
+static void
+applet_pixel_size_changed_cb (GtkWidget *applet, int size, LoadGraph *g)
+{
+    load_graph_unalloc (g);
+
+    g->pixel_size = size;
+
+    load_graph_alloc (g);
+
+    if (g->orient)
+	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+    else
+	gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+}
+
+static gint
+applet_orient_changed_cb (GtkWidget *applet, gpointer data, LoadGraph *g)
+{
+    load_graph_unalloc (g);
+    load_graph_alloc (g);
+
+    if (g->orient)
+	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+    else
+	gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+
+    return FALSE;
+}
+
 static GtkWidget *
 load_graph_properties_init (GnomePropertyObject *object)
 {
@@ -180,14 +292,13 @@ load_graph_properties_init (GnomePropertyObject *object)
     LoadGraphProperties *prop_data = object->prop_data;
     /* guint i; */
 
-    static const gchar *adj_data_texts [3] = {
-	N_("Speed:"), N_("Width:"), N_("Height:")
+    static const gchar *adj_data_texts [2] = {
+	N_("Speed:"), N_("Size:")
     };
 
-    static glong adj_data_descr [3*8] = {
+    static glong adj_data_descr [2*8] = {
 	1, 0, 0, 1, INT_MAX, 1, 256, 256,
-	1, 0, 0, 1, INT_MAX, 1, 256, 256,
-	1, 0, 0, 0, INT_MAX, 1, 256, 256
+	1, 0, 0, 1, INT_MAX, 1, 256, 256
     };
 
     vb = gtk_vbox_new (FALSE, 0);
@@ -201,7 +312,7 @@ load_graph_properties_init (GnomePropertyObject *object)
     gtk_container_add (GTK_CONTAINER (vb), frame);
 
     frame = gnome_property_entry_adjustments
-	(object, NULL, 3, 3, 2, NULL, adj_data_texts,
+	(object, NULL, 2, 2, 2, NULL, adj_data_texts,
 	 adj_data_descr, prop_data->adj_data);
 
     gtk_container_add (GTK_CONTAINER (vb), frame);
@@ -234,14 +345,9 @@ load_graph_properties_load (GnomePropertyObject *object)
 	     prop_data->name, prop_data->adj_data [0]);
     prop_data->adj_data [0] = gnome_config_get_int (name);
 
-    sprintf (name, "multiload/%s/width=%ld",
+    sprintf (name, "multiload/%s/size=%ld",
 	     prop_data->name, prop_data->adj_data [1]);
     prop_data->adj_data [1] = gnome_config_get_int (name);
-
-    sprintf (name, "multiload/%s/height=%ld",
-	     prop_data->name, prop_data->adj_data [2]);
-    prop_data->adj_data [2] = gnome_config_get_int (name);
-
 }
 
 static void
@@ -264,11 +370,8 @@ load_graph_properties_save (GnomePropertyObject *object)
     sprintf (name, "multiload/%s/speed", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [0]);
 
-    sprintf (name, "multiload/%s/width", prop_data->name);
+    sprintf (name, "multiload/%s/size", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [1]);
-
-    sprintf (name, "multiload/%s/height", prop_data->name);
-    gnome_config_set_int (name, prop_data->adj_data [2]);
 }
 
 static void
@@ -283,7 +386,6 @@ static void
 load_graph_properties_update (GnomePropertyObject *object)
 {
     GList *c;
-    guint i;
 
     for (c = object_list; c; c = c->next) {
 	LoadGraph *g = (LoadGraph *) c->data;
@@ -322,48 +424,16 @@ load_graph_properties_update (GnomePropertyObject *object)
 	    load_graph_start (g);
 	}
 
-	if (g->width != g->prop_data->adj_data [1]) {
-	    /* User changed width. */
+	if (g->size != g->prop_data->adj_data [1]) {
+	    /* User changed size. */
 
-	    for (i = 0; i < g->width; i++) {
-		g_free (g->data [i]);
-		g_free (g->odata [i]);
-	    }
+	    load_graph_unalloc (g);
+	    load_graph_alloc (g);
 
-	    g_free (g->data);
-	    g_free (g->odata);
-	    g_free (g->pos);
-
-	    g->width = g->prop_data->adj_data [1];
-
-	    g->data = g_new0 (guint *, g->width);
-	    g->odata = g_new0 (guint *, g->width);
-	    g->pos = g_new0 (guint, g->width);
-
-	    g->data_size = sizeof (guint) * g->n;
-
-	    for (i = 0; i < g->width; i++) {
-		g->data [i] = g_malloc0 (g->data_size);
-		g->odata [i] = g_malloc0 (g->data_size);
-	    }
-
-	    if (g->pixmap) {
-		gdk_pixmap_unref (g->pixmap);
-		g->pixmap = NULL;
-	    }
-
-	    gtk_widget_set_usize (g->disp, g->width, g->height);
-	}
-
-	if (g->height != g->prop_data->adj_data [2]) {
-	    if (g->pixmap) {
-		gdk_pixmap_unref (g->pixmap);
-		g->pixmap = NULL;
-	    }
-
-	    g->height = g->prop_data->adj_data [2];
-
-	    gtk_widget_set_usize (g->disp, g->width, g->height);
+	    if (g->orient)
+		gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	    else
+		gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
 	}
 
 	load_graph_draw (g);
@@ -373,35 +443,24 @@ load_graph_properties_update (GnomePropertyObject *object)
 }
 
 LoadGraph *
-load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
-		guint speed, guint width, guint height,
-		LoadGraphDataFunc get_data)
+load_graph_new (AppletWidget *applet, guint n, gchar *label,
+		LoadGraphProperties *prop_data, guint speed,
+		guint size, LoadGraphDataFunc get_data)
 {
     GtkWidget *box;
     LoadGraph *g;
-    guint i;
 
     g = g_new0 (LoadGraph, 1);
+
+    g->applet = applet;
 
     g->n = n;
     g->prop_data = prop_data;
 
     g->speed  = speed;
-    g->width  = width;
-    g->height = height;
+    g->size   = size;
 
     g->get_data = get_data;
-
-    g->data = g_new0 (guint *, g->width);
-    g->odata = g_new0 (guint *, g->width);
-    g->pos = g_new0 (guint, g->width);
-
-    g->data_size = sizeof (guint) * g->n;
-
-    for (i = 0; i < g->width; i++) {
-	g->data [i] = g_malloc0 (g->data_size);
-	g->odata [i] = g_malloc0 (g->data_size);
-    }
 
     g->colors = g_new0 (GdkColor, g->n);
 
@@ -424,7 +483,21 @@ load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
     gtk_box_pack_start_defaults (GTK_BOX (box), g->disp);
     gtk_container_add (GTK_CONTAINER (g->frame), box);
 
-    gtk_widget_set_usize (g->disp, g->width, g->height);
+    gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
+			GTK_SIGNAL_FUNC (applet_orient_changed_cb),
+			(gpointer) g);
+
+    gtk_signal_connect (GTK_OBJECT(applet),
+			"change_pixel_size",
+			GTK_SIGNAL_FUNC (applet_pixel_size_changed_cb),
+			(gpointer) g);
+
+    load_graph_alloc (g);
+
+    if (g->orient)
+	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+    else
+	gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
 
     object_list = g_list_append (object_list, g);
 
