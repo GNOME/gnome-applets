@@ -9,7 +9,9 @@
 
 #include "backgrnd.xpm"
 #include "digmed.xpm"
+#include "digsml.xpm"
 #include "mailpics.xpm"
+#include "button.xpm"
 
 static GdkPixmap *get_pixmap_from_data(gchar **data);
 static GdkPixmap *get_pixmap_from_file(gchar *path);
@@ -490,13 +492,16 @@ static SkinData *load_default_skin()
 	s->height = height;
 
 	s->dig_large = new_digit_from_data((gchar **)digmed_xpm);
+	s->dig_small = new_digit_from_data((gchar **)digsml_xpm);
 
-	s->hour = new_number(s->dig_large, 2, FALSE, 3, 4);
-	s->min = new_number(s->dig_large, 2, TRUE, 26, 4);
+	s->hour = new_number(s->dig_large, 2, FALSE, 3, 5);
+	s->min = new_number(s->dig_large, 2, TRUE, 26, 5);
 
-	s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 3, 23);
+	s->messages = new_number(s->dig_small, 3, FALSE, 26, 32);
 
-	s->button_pix = NULL;
+	s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 3, 29);
+
+	s->button_pix = new_item_from_data((gchar **)button_xpm, 3, 0, 0);
 	s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
 
 	return s;
