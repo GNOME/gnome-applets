@@ -442,7 +442,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     static GnomeHelpMenuEntry helpEntry = { NULL,  "properties" };
     GtkWidget *propertiesBox;
     GtkWidget *vbox, *vbox1, *frame;
-    GtkWidget *hbox, *hbox1;
+    GtkWidget *hbox;
     GtkWidget *table;
     GtkWidget *checkTime, *checkDate, *checkHandle, *checkFrame, *checkAutoCompleteHistory;
     GtkWidget *label;
@@ -450,7 +450,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *colorPicker;
     GtkWidget *scrolledWindow;
     char textLabel[50], buffer[50];
-    int i, j;
+    int i;
 
     helpEntry.name = gnome_app_id;
 

@@ -43,7 +43,7 @@
 
 static GList*    cmdc( char* );
 static void      processDir( const gchar* );
-static GVoidFunc cleanup( void );
+static void      cleanup( void );
 static gint      g_list_str_cmp( gconstpointer, gconstpointer );
 
 /* global declaration so g_atexit() can reference it to free it.
@@ -56,10 +56,7 @@ static GList *pathElements = NULL;
 void
 cmdCompletion(char *cmd)
 {
-    FILE *pipe_fp;
     char buffer[MAX_COMMAND_LENGTH] = "";
-    char dummyBuffer[MAX_COMMAND_LENGTH] = "";
-    char shellCommand[2048];
     char largestPossibleCompletion[MAX_COMMAND_LENGTH] = "";
     int completionNotUnique = FALSE;   
     int numWhitespaces, i, pos;
@@ -124,12 +121,12 @@ cmdCompletion(char *cmd)
 
 
 
+#if 0
 static void
 cmdCompletion_old(char *cmd)
 {
     FILE *pipe_fp;
     char buffer[MAX_COMMAND_LENGTH] = "";
-    char dummyBuffer[MAX_COMMAND_LENGTH] = "";
     char shellCommand[2048];
     char largestPossibleCompletion[MAX_COMMAND_LENGTH] = "";
     int completionNotUnique = FALSE;   
@@ -208,6 +205,7 @@ done\n\
     else
 	showMessage((gchar *) _("not found"));
 }
+#endif
 
 
 
@@ -273,7 +271,7 @@ cmdc( char *s )
       }
 
       /* atexit() we want to free the completion. */
-      g_atexit( (GVoidFunc)cleanup );
+      g_atexit( cleanup );
 
       inited = TRUE;
    }
@@ -309,7 +307,6 @@ processDir( const char *d )
    DIR            *dir;
    struct dirent  *de;
    struct stat     buf;
-   GList          *list     = NULL;
    gpointer        data;
    gchar          *pathStr;
 
@@ -345,7 +342,7 @@ processDir( const char *d )
 /*
  * cleanup() -- free the memory used by the GCompletion.
  */
-static GVoidFunc
+static void
 cleanup( void )
 {
    g_list_free( pathElements );

@@ -33,9 +33,14 @@
 #include "history.h"
 #include "message.h"
 
+#include "terminal.h"
+
 GtkWidget *terminal_zvt = NULL;
+#if 0
 static int historyPosition = HISTORY_DEPTH;
 static char browsedFilename[300] = "";
+
+static gchar * historyAutoComplete(GtkWidget *widget, GdkEventKey *event);
 
 static gint
 commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
@@ -45,7 +50,6 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     static char currentCommand[MAX_COMMAND_LENGTH];
     char buffer[MAX_COMMAND_LENGTH];
     int propagateEvent = TRUE;
-    int pos;
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
@@ -155,7 +159,7 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
 /* Thanks to Halfline <halfline@hawaii.rr.com> for his initial version
    of historyAutoComplete */
-gchar *
+static gchar *
 historyAutoComplete(GtkWidget *widget, GdkEventKey *event)
 {
     gchar currentCommand[MAX_COMMAND_LENGTH];
@@ -174,17 +178,15 @@ historyAutoComplete(GtkWidget *widget, GdkEventKey *event)
     
     return NULL;
 }
+#endif
 
 
 static gint
 term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     guint key = event->keyval;
-    char *command;
-    static char currentCommand[MAX_COMMAND_LENGTH];
     char buffer[MAX_COMMAND_LENGTH];
     int propagateEvent = TRUE;
-    int pos;
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 

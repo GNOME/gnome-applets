@@ -132,7 +132,7 @@ void sighandle_sigalrm(int sig)
 void
 initExecSignalHandler(void)
 {
-    struct sigaction act = {0}; /*this sets all fields to 0, no
+    struct sigaction act = {{0}}; /*this sets all fields to 0, no
 				  matter how many fields there are*/
 
     act.sa_handler= &sighandle_sigchld;

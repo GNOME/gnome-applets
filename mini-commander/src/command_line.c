@@ -34,7 +34,7 @@
 #include "message.h"
 
 static gint fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect);
-static gint historyItemClicked_cb(GtkWidget *widget, gpointer data);
+/*static gint historyItemClicked_cb(GtkWidget *widget, gpointer data);*/
 static gint historyPopupClicked_cb(GtkWidget *widget, gpointer data);
 static gint historyPopupClickedInside_cb(GtkWidget *widget, gpointer data);
 static void historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
@@ -54,7 +54,6 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     static char currentCommand[MAX_COMMAND_LENGTH];
     char buffer[MAX_COMMAND_LENGTH];
     int propagateEvent = TRUE;
-    int pos;
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
@@ -171,6 +170,7 @@ commandFocusOut_event(GtkWidget *widget, GdkEvent *event, gpointer data)
     return (FALSE);
 }
 
+#if 0
 static gint
 activateCommandLine_signal(GtkWidget *widget, gpointer data)
 {
@@ -180,6 +180,7 @@ activateCommandLine_signal(GtkWidget *widget, gpointer data)
     /* go on */
     return (FALSE);
 }
+#endif
 
 /* no longer needed */
 static void
@@ -195,6 +196,7 @@ historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
     gtk_widget_destroy(GTK_WIDGET(clist->parent->parent->parent));
 }
 
+#if 0
 static gint
 historyItemClicked_cb(GtkWidget *widget, gpointer data)
 {
@@ -215,6 +217,7 @@ historyItemClicked_cb(GtkWidget *widget, gpointer data)
     /* go on */
     return (FALSE);
 }
+#endif
 
 static gint
 historyPopupClicked_cb(GtkWidget *widget, gpointer data)
@@ -242,8 +245,7 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      GtkWidget *frame;
      GtkWidget *scrolled_window;
      GtkWidget *clist;
-     GtkStyle *style;
-     GdkColor color;
+     /*GtkStyle *style;*/
      gchar *commandList[1];
      int i, j;
 
@@ -446,7 +448,6 @@ void
 command_entry_update_color(void)
 {
     GtkStyle *style;
-    GdkColor color;
     
     /* change widget style */
     /* style = malloc(sizeof(GtkStyle)); */
@@ -469,7 +470,7 @@ command_entry_update_size(void)
 {
     int size_y = -1;
   
-    if(prop.flatLayout) 
+    if(prop.flatLayout)  {
 	if(prop.showHandle && !prop.showFrame)
 	    size_y = prop.normalSizeX - 17 - 10;
 	else if(!prop.showHandle && !prop.showFrame)
@@ -478,6 +479,7 @@ command_entry_update_size(void)
 	    size_y = prop.normalSizeX - 17 - 10 - 10;
 	else if(!prop.showHandle && prop.showFrame)
 	    size_y = prop.normalSizeX - 17 - 10;
+    }
 
     gtk_widget_set_usize(GTK_WIDGET(entryCommand), size_y, prop.cmdLineY);
 }
