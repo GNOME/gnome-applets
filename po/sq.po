@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2004-02-20 17:01+0100\n"
-"Last-Translator: Elian Myftiu <elian@lycos.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-05 11:14+0200\n"
+"PO-Revision-Date: 2004-06-05 11:17+0200\n"
+"Last-Translator:  Elian Myftiu <elian@lycos.com>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -58,7 +58,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrika për Statusin e Applet AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1260
 msgid "Keyboard Accessibility Status"
 msgstr "Statusi i Tastierës së Lehtësuar"
 
@@ -81,19 +81,19 @@ msgstr "Tregon gjendjen e tastierës së thjeshtuar"
 msgid "Utility"
 msgstr "Ndihmues"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
-#: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
-#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:987
+#: cdplayer/cdplayer.c:611 charpick/charpick.c:556 drivemount/drivemount.c:553
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:607
+#: gtik/gtik.c:721 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
-#: stickynotes/stickynotes_applet_callbacks.c:230
-#: wireless/wireless-applet.c:572
+#: stickynotes/stickynotes_applet_callbacks.c:243
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr "Elian Myftiu <elian@lycos.com>"
 
 #: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:1068 accessx-status/applet.c:1263
 msgid "AccessX Status"
 msgstr "Statusi i AccessX"
 
@@ -120,18 +120,17 @@ msgstr "Ndodhi një gabim në lëshimin e konfiguruesit të tastierës : %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:984 accessx-status/applet.c:1069
 msgid "Shows keyboard status when accessibility features are used."
-msgstr ""
-"Tregon gjendjen e tastierës kur përdoren karakteristikat e açesibilitetit."
+msgstr "Tregon gjendjen e tastierës kur përdoren karakteristikat e açesibilitetit."
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1265
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Shfaq statusin e tanishëm për preferencat e tastierës së thjeshtuar"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
+#: battstat/battstat_applet.c:1008 battstat/battstat_applet.c:1753
 msgid "Battery Charge Monitor"
 msgstr "Vëzhgues i Ngarkesës së Baterisë"
 
@@ -140,7 +139,7 @@ msgid "Battstat Factory"
 msgstr "Factory Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1672
+#: battstat/battstat_applet.c:1754
 msgid "Monitor a laptop's remaining power"
 msgstr "Kontrollon baterinë e mbetur tek një laptop"
 
@@ -241,49 +240,71 @@ msgstr "Niveli i vlerës së verdhë"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:338
+#: battstat/battstat_applet.c:340
 msgid "Your platform is not supported!\n"
 msgstr "Platforma juaj nuk suportohet!\n"
 
-#: battstat/battstat_applet.c:339
+#: battstat/battstat_applet.c:341
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Applet nuk do punojë siç duhet(në mos fare).\n"
+
+#: battstat/battstat_applet.c:358
+msgid "charged"
+msgstr "e ngarkuar"
+
+#: battstat/battstat_applet.c:360
+msgid "..."
+msgstr "..."
+
+#: battstat/battstat_applet.c:362
+#, c-format
+msgid "%d hours %d minutes remaining"
+msgstr "ngelin %d orë %d minuta"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1045
 msgid "High"
 msgstr "I lartë"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1047
 msgid "Low"
 msgstr "I ulët"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1049
 msgid "Critical"
 msgstr "Kritik"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1051
 msgid "Charging"
 msgstr "Në karikim e sipër"
 
-#: battstat/battstat_applet.c:457
+#: battstat/battstat_applet.c:478
 #, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Bateria e rënë (%d%%) dhe AC nuk është në prizë"
+msgid ""
+"Your battery is running low (%d%%, %s). You should recharge your battery to "
+"avoid losing your work."
+msgstr ""
+"Bateria është duke u shkarkuar (%d%%, %s). Duhet të ngarkosh baterinë që të "
+"mos humbësh punën tënde."
 
-#: battstat/battstat_applet.c:481
-msgid "Battery is now fully re-charged!"
-msgstr "Bateria është komplet e karikuar!"
+#: battstat/battstat_applet.c:481 battstat/battstat_applet.c:528
+msgid "Battery Notice"
+msgstr "Gjendja e Baterisë"
 
+#: battstat/battstat_applet.c:547
+msgid "Your battery is now fully recharged."
+msgstr "Bateria tani është komplet e karikuar."
+
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
+#: battstat/battstat_applet.c:591 battstat/battstat_applet.c:1206
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -292,10 +313,11 @@ msgstr ""
 "Sistemi po punon me bateri\n"
 "Bateria: %d%% (%s)"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
+#: battstat/battstat_applet.c:594 battstat/battstat_applet.c:1213
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -304,34 +326,42 @@ msgstr ""
 "Sistemi po punon me rrymë AC\n"
 "Bateria: %d%% (%s)"
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
-#: battstat/battstat_applet.c:1141
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:1226
 msgid "System is running on battery power"
 msgstr "Sistemi po punon me bateri"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
-#: battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1231
 msgid "System is running on AC power"
 msgstr "Sistemi po punon me korent"
 
-#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:616 wireless/wireless-applet.c:146
 msgid "N/A"
 msgstr "Mungon"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:745 battstat/battstat_applet.c:1120
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Sistemi po punon me bateri. Bateria %d%%·(%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1126
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Sistemi po punon me korent. Bateria: %d%%·(%s)"
@@ -340,33 +370,33 @@ msgstr "Sistemi po punon me korent. Bateria: %d%%·(%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:669
+#: battstat/battstat_applet.c:759
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Sistemi po punon me bateri. Bateria: Mungon"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:675
+#: battstat/battstat_applet.c:764
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Sistemi po punon me korent. Bateria: Mungon"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:684
+#. contains a string of the time remaining
+#: battstat/battstat_applet.c:772
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Bateria: %d%%·(%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:691
+#: battstat/battstat_applet.c:777
 msgid "Battery: Not present"
 msgstr "Bateria: Mungon"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:789
+#: battstat/battstat_applet.c:878
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -379,7 +409,7 @@ msgstr ""
 "dispozitivit APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:887
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -389,7 +419,7 @@ msgstr ""
 "Provo të ekzekutosh \"apm -e 1\" (FreeBSD) dhe shiko nëse \n"
 "kjo të ndihmon.\n"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:943
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -398,16 +428,16 @@ msgstr ""
 "Ndodhi një gabim duke lëshuar komandën e Pezullimit: %s\n"
 "Të lutem përpiqu të korrigjosh këtë gabim"
 
-#: battstat/battstat_applet.c:858
+#: battstat/battstat_applet.c:947
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Komanda e pezullimit '%s' nuk pati sukses."
 
-#: battstat/battstat_applet.c:860
+#: battstat/battstat_applet.c:949
 msgid "The Suspend command was unsuccessful."
 msgstr "Komanda e pezullimit dështoi."
 
-#: battstat/battstat_applet.c:868
+#: battstat/battstat_applet.c:957
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -417,19 +447,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:886
+#: battstat/battstat_applet.c:975
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen·Pehrson·<jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:921
+#: battstat/battstat_applet.c:1010
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C)·2000·The·Gnulix·Society,·(C)·2002·Free·Software·Foundation"
 
-#: battstat/battstat_applet.c:922
+#: battstat/battstat_applet.c:1011
 msgid "This utility shows the status of your laptop battery."
 msgstr "Kjo vegël tregon statusin e baterisë së laptopit tuaj."
 
-#: battstat/battstat_applet.c:1597
+#: battstat/battstat_applet.c:1679
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -475,7 +505,7 @@ msgstr "<b>Pezullo</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Paralajmërime</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1480
 msgid "Appearance"
 msgstr "Paraqitja"
 
@@ -485,7 +515,7 @@ msgstr "Preferencat e Monitoruesit të Baterisë"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
 #: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Të përgjithshme"
 
@@ -543,10 +573,10 @@ msgstr "_E Verdhë:"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
-#: stickynotes/stickynotes_applet_callbacks.c:371
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:365
+#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:220
+#: stickynotes/stickynotes_applet_callbacks.c:384
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "U verifikua një gabim gjatë shfaqjes së ndihmës: %s"
@@ -563,8 +593,8 @@ msgstr "Bateria e ringarkuar plot"
 msgid "Battery power low"
 msgstr "Ngarkesë e ulët e baterisë"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:620
-#: cdplayer/cdplayer.c:1084
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:628
+#: cdplayer/cdplayer.c:1130
 msgid "CD Player"
 msgstr "Lexuesi CD"
 
@@ -589,61 +619,61 @@ msgstr "Applet e panelit për leximin e CD-ve"
 msgid "_Open CD Player"
 msgstr "_Hap Lexuesin CD"
 
-#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1074
+#: cdplayer/cdplayer.c:180 cdplayer/cdplayer.c:1120
 msgid "Stop"
 msgstr "Ndalo"
 
-#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1076
+#: cdplayer/cdplayer.c:184 cdplayer/cdplayer.c:1122
 msgid "Play / Pause"
 msgstr "Luaj / Pauzë"
 
-#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1078
+#: cdplayer/cdplayer.c:188 cdplayer/cdplayer.c:1124
 msgid "Eject"
 msgstr "Nxirre jashtë"
 
-#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1080
+#: cdplayer/cdplayer.c:192 cdplayer/cdplayer.c:1126
 msgid "Previous Track"
 msgstr "Titulli i Përparshëm"
 
-#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1082
+#: cdplayer/cdplayer.c:196 cdplayer/cdplayer.c:1128
 msgid "Next Track"
 msgstr "Titulli Pasues"
 
-#: cdplayer/cdplayer.c:253
+#: cdplayer/cdplayer.c:255
 msgid "You do not have permission to use the CD player."
 msgstr "Nuk ke të drejtë të përdorësh lexuesin CD"
 
-#: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
+#: cdplayer/cdplayer.c:393 mixer/mixer.c:1299 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Pati një gabim në ekzekutimin e '%s':·%s"
 
-#: cdplayer/cdplayer.c:436
+#: cdplayer/cdplayer.c:444
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s nuk ngjan të jetë një lexues CD"
 
-#: cdplayer/cdplayer.c:502
+#: cdplayer/cdplayer.c:510
 msgid "CD Player Preferences"
 msgstr "Preferimet për lexuesin e CD"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:531
 msgid "Device _path:"
 msgstr "P_ozicioni i dispozitivit:"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:540
 msgid "Device Path"
 msgstr "Pozicioni i Dispozitivit"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:540
 msgid "Set the device path here"
 msgstr "Cakto pozicionin e dispozitivit këtu"
 
-#: cdplayer/cdplayer.c:535
+#: cdplayer/cdplayer.c:543
 msgid "Use _Default"
 msgstr "Përdor të _Prezgjedhurin"
 
-#: cdplayer/cdplayer.c:621
+#: cdplayer/cdplayer.c:629
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -651,40 +681,43 @@ msgstr ""
 "(C)·1997·The·Free·Software·Foundation\n"
 "(C)·2001·Chris·Phelps·(GNOME·2·Port)"
 
-#: cdplayer/cdplayer.c:623 cdplayer/cdplayer.c:1085
+#: cdplayer/cdplayer.c:631 cdplayer/cdplayer.c:1131
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Applet i Lexuesit CD është një lexues CD i thjeshtë për panelin tuaj"
 
-#: cdplayer/cdplayer.c:899 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:908 cdplayer/cdplayer.c:919
 msgid "Elapsed time"
 msgstr "Koha e kaluar"
 
-#: cdplayer/cdplayer.c:902 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:911 cdplayer/cdplayer.c:921
 msgid "Track number"
 msgstr "Numri i Titullit"
 
-#: cdplayer/cdplayer.c:973
+#: cdplayer/cdplayer.c:990
 msgid "Audio device is busy, or being used by another application"
-msgstr ""
-"Dispozitivi i zërit është i zëne, ose i përdorur nga ndonjë program tjetër"
+msgstr "Dispozitivi i zërit është i zëne, ose i përdorur nga ndonjë program tjetër"
 
-#: cdplayer/cdplayer.c:1075
+#: cdplayer/cdplayer.c:1017
+msgid "No Device Found or Illegal Format"
+msgstr "Nuk U Gjet Asnjë Dispozitiv ose Format Ilegal"
+
+#: cdplayer/cdplayer.c:1121
 msgid "Click this button to Stop playing the CD"
 msgstr "Kliko këtë buton për të ndaluar leximin e CD-së"
 
-#: cdplayer/cdplayer.c:1077
+#: cdplayer/cdplayer.c:1123
 msgid "Click this button to Play or Pause the CD"
 msgstr "Kliko këtë buton për të Luajtur ose Pezulluar CD-në"
 
-#: cdplayer/cdplayer.c:1079
+#: cdplayer/cdplayer.c:1125
 msgid "Click this button to eject the CD"
 msgstr "Kliko këtë buton për të nxjerrë CD-në"
 
-#: cdplayer/cdplayer.c:1081
+#: cdplayer/cdplayer.c:1127
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Kliko këtë buton për të luajtur titullin e mëparshëm në CD"
 
-#: cdplayer/cdplayer.c:1083
+#: cdplayer/cdplayer.c:1129
 msgid "Click this button to Play the next track in the CD"
 msgstr "Kliko këtë buton për të Luajtur titullin pasues në CD"
 
@@ -1086,11 +1119,11 @@ msgid "Belarus"
 msgstr "Bjellorusi"
 
 #: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
-msgid "Belarussian"
+msgid "Belarusian"
 msgstr "Bjellorusisht"
 
 #: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarussian Sun keymap"
+msgid "Belarusian Sun keymap"
 msgstr "Tastiera Bjellorusisht e Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
@@ -1618,7 +1651,7 @@ msgid "Basque"
 msgstr "Baske"
 
 #: gkb-new/descs/presets.xml.in.h:16
-msgid "Belarussian xkb keymap"
+msgid "Belarusian xkb keymap"
 msgstr "Tastiera xkb Bjelloruse"
 
 #: gkb-new/descs/presets.xml.in.h:17
@@ -2363,7 +2396,7 @@ msgstr "_Emri:"
 msgid "_Label:"
 msgstr "_Etiketa:"
 
-#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:7
 msgid "Co_mmand:"
 msgstr "Ko_manda:"
 
@@ -2383,7 +2416,7 @@ msgstr "Etiketa"
 msgid "Flag and Label"
 msgstr "Flamur dhe Etiketë"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1487 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Monitori"
@@ -2479,7 +2512,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Treguesi i llojit të tastierës GNOME"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:575
+#: gswitchit/gswitchit-applet.c:612
 msgid "Keyboard Indicator"
 msgstr "Treguesi i Tastierës"
 
@@ -2492,19 +2525,19 @@ msgstr "Fabrika e applet-it të tastierës"
 msgid "Keyboard Indicator (%s)"
 msgstr "Tregues Tastiere (%s)"
 
-#: gswitchit/gswitchit-applet.c:578
+#: gswitchit/gswitchit-applet.c:615
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:580
+#: gswitchit/gswitchit-applet.c:617
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet-i treguesit të layout të tastierës për GNOME"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:771
 msgid "XKB initialization error"
 msgstr "Gabim gjatë nisjes së XKB"
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:779
 msgid "Error loading XKB configuration registry"
 msgstr "Gabim gjatë leximit të regjistrit të konfigurimit të XKB"
 
@@ -2608,8 +2641,7 @@ msgstr "_Grupe të ndarë për çdo dritare"
 
 #: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
-"Shfaq flamujt kombëtarë si tregues të layout të tastierave korrisponduese"
+msgstr "Shfaq flamujt kombëtarë si tregues të layout të tastierave korrisponduese"
 
 #: gswitchit/gswitchit-properties.glade.h:10
 msgid "Use _flags as indicators"
@@ -2677,12 +2709,12 @@ msgstr "Tërhiq vazhdimisht kuotat e freskuara të aksioneve"
 msgid "Gtik Applet Factory"
 msgstr "Fabrika e Applet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:744
 msgid "Stock Ticker"
 msgstr "Applet i Aksioneve"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:83 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Rifresko"
 
@@ -2690,11 +2722,15 @@ msgstr "_Rifresko"
 msgid "Could not retrieve the stock data."
 msgstr "Nuk mundi të tërhiqte të dhënat e aksioneve."
 
-#: gtik/gtik.c:307 gweather/gweather-applet.c:426
+#: gtik/gtik.c:278
+msgid "No stock list"
+msgstr "Asnjë listë aksionesh"
+
+#: gtik/gtik.c:311 gweather/gweather-applet.c:466
 msgid "Updating..."
 msgstr "Duke rifreskuar të dhënat..."
 
-#: gtik/gtik.c:742
+#: gtik/gtik.c:746
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2707,126 +2743,126 @@ msgstr ""
 "Aksioneve GNOME për të ndërmarrë vendime investuese; vlen vetëm për qëllime "
 "informuese."
 
-#: gtik/gtik.c:1232
+#: gtik/gtik.c:1236
 msgid "Current _stocks:"
 msgstr "Aksionet e _tanishme:"
 
-#: gtik/gtik.c:1240
+#: gtik/gtik.c:1244
 msgid "_New symbol:"
 msgstr "Simbol i _Ri:"
 
-#: gtik/gtik.c:1249
+#: gtik/gtik.c:1253
 msgid "_Add"
 msgstr "_Shto"
 
-#: gtik/gtik.c:1258
+#: gtik/gtik.c:1262
 msgid "_Remove"
 msgstr "_Hiqe"
 
-#: gtik/gtik.c:1364
+#: gtik/gtik.c:1368
 msgid "Stock Ticker Preferences"
 msgstr "Preferencat e Applet të Aksioneve"
 
-#: gtik/gtik.c:1386
+#: gtik/gtik.c:1390
 msgid "Symbols"
 msgstr "Simbolet"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1397 mailcheck/mailcheck.c:2389
 msgid "Behavior"
 msgstr "Sjellja"
 
-#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1400 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "Rifresko"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1404
 msgid "Stock update fre_quency:"
 msgstr "Fre_kuenca e freskimit të aksioneve:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
+#: gtik/gtik.c:1416 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
 #: mailcheck/mailcheck.c:2101
 msgid "minutes"
 msgstr "minuta"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1422
 msgid "Scrolling"
 msgstr "Rrëshqitje"
 
-#: gtik/gtik.c:1422
+#: gtik/gtik.c:1426
 msgid "_Scroll speed:"
 msgstr "_Shpejtësia e shfletimit:"
 
-#: gtik/gtik.c:1426
+#: gtik/gtik.c:1430
 msgid "Slow"
 msgstr "Ngadalë"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1432
 msgid "Medium"
 msgstr "Mesatare"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1434
 msgid "Fast"
 msgstr "Shpejt"
 
-#: gtik/gtik.c:1450
+#: gtik/gtik.c:1454
 msgid "_Enable scroll buttons"
 msgstr "_Aktivizo butonat e shfletimit"
 
-#: gtik/gtik.c:1462
+#: gtik/gtik.c:1466
 msgid "Scroll _left to right"
 msgstr "Shfleto nga e _majta në të djathtë"
 
-#: gtik/gtik.c:1488
+#: gtik/gtik.c:1492
 msgid "Displa_y only symbols and price"
 msgstr "Shfa_q vetëm simbolet dhe çmimin"
 
-#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
-#: stickynotes/stickynotes.glade.h:48
+#: gtik/gtik.c:1505 mini-commander/src/mini-commander.glade.h:20
+#: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "_Gjerësia:"
 
-#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1519 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1528
 msgid "Font and Colors"
 msgstr "Shkronjat dhe Ngjyrat"
 
-#: gtik/gtik.c:1530
+#: gtik/gtik.c:1534
 msgid "Use _default theme font and colors"
 msgstr "Përdor _temën dhe ngjyrat e parazgjedhura"
 
-#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1549 stickynotes/stickynotes.glade.h:45
 msgid "_Font:"
 msgstr "_Gërmat:"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1573
 msgid "Stock _raised:"
 msgstr "Aksionet e _ngritura:"
 
-#: gtik/gtik.c:1588
+#: gtik/gtik.c:1592
 msgid "Stock _lowered:"
 msgstr "Aksionet e _rëna:"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1611
 msgid "Stock _unchanged:"
 msgstr "Aksionet e _pandryshuar:"
 
-#: gtik/gtik.c:1626 modemlights/properties.c:580
+#: gtik/gtik.c:1630 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Sfondi:"
 
-#: gtik/gtik.c:1769
+#: gtik/gtik.c:1773
 msgid "Skip forward"
 msgstr "Kalo përpara"
 
-#: gtik/gtik.c:1770
+#: gtik/gtik.c:1774
 msgid "Skip backward"
 msgstr "Kalo prapa"
 
-#: gtik/gtik.c:1778
+#: gtik/gtik.c:1782
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2834,18 +2870,17 @@ msgstr ""
 "Applet i Aksioneve\n"
 "Tërhiq vazhdimisht kuotat e freskuara të aksioneve"
 
-#: gtik/gtik.c:1990
+#: gtik/gtik.c:1994
 msgid "(No"
 msgstr "(Jo"
 
-#: gtik/gtik.c:1991
+#: gtik/gtik.c:1995
 msgid "Change "
 msgstr "Ndrysho "
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr ""
-"Applet shfleton nga e djathta në të majtë nëse ky buton është i vërtetë."
+msgstr "Applet shfleton nga e djathta në të majtë nëse ky buton është i vërtetë."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2963,7 +2998,7 @@ msgstr "Koha në milisekonda për freskimin e të dhënave"
 msgid "Unchanged color"
 msgstr "Ngjyrat e pandryshuara"
 
-#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:12
 #: modemlights/modemlights.schemas.in.h:31
 msgid "Update interval"
 msgstr "Intervali kohor i freskimit"
@@ -3021,83 +3056,83 @@ msgstr ""
 "\n"
 "Një applet për vëzhgimin e të dhënave të motit lokal."
 
-#: gweather/gweather-applet.c:306
+#: gweather/gweather-applet.c:343 gweather/gweather-applet.c:347
 msgid "GNOME Weather"
 msgstr "Moti i GNOME"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
+#: gweather/gweather-dialog.c:81 gweather/gweather-dialog.c:314
 msgid "Forecast"
 msgstr "Parashikimi"
 
-#: gweather/gweather-dialog.c:109
+#: gweather/gweather-dialog.c:121
 msgid "City:"
 msgstr "Qyteti:"
 
-#: gweather/gweather-dialog.c:117
+#: gweather/gweather-dialog.c:129
 msgid "Last update:"
 msgstr "Freskimi i fundit:"
 
-#: gweather/gweather-dialog.c:125
+#: gweather/gweather-dialog.c:137
 msgid "Conditions:"
 msgstr "Moti:"
 
-#: gweather/gweather-dialog.c:133
+#: gweather/gweather-dialog.c:145
 msgid "Sky:"
 msgstr "Qielli:"
 
-#: gweather/gweather-dialog.c:141
+#: gweather/gweather-dialog.c:153
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:149
+#: gweather/gweather-dialog.c:161
 msgid "Dew point:"
 msgstr "Pika e vesës:"
 
-#: gweather/gweather-dialog.c:157
+#: gweather/gweather-dialog.c:169
 msgid "Humidity:"
 msgstr "Lagështia:"
 
-#: gweather/gweather-dialog.c:165
+#: gweather/gweather-dialog.c:177
 msgid "Wind:"
 msgstr "Era:"
 
-#: gweather/gweather-dialog.c:173
+#: gweather/gweather-dialog.c:185
 msgid "Pressure:"
 msgstr "Trysnia atmosferike:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:193
 msgid "Visibility:"
 msgstr "Dukshmëria:"
 
-#: gweather/gweather-dialog.c:276
+#: gweather/gweather-dialog.c:288
 msgid "Current Conditions"
 msgstr "Moti i Tanishëm"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:304
 msgid "Forecast Report"
 msgstr "Njoftimi i Parashikimit"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:304
 msgid "See the ForeCast Details"
 msgstr "Shiko Parashikimin në Hollësi"
 
-#: gweather/gweather-dialog.c:325
+#: gweather/gweather-dialog.c:339
 msgid "_Visit Weather.com"
 msgstr "_Vizito Weather.com"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:340
 msgid "URL link Button"
 msgstr "Butoni i lidhjes URL"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:340
 msgid "Click to Enter Weather.com"
 msgstr "Kliko të hysh në Weather.com"
 
-#: gweather/gweather-dialog.c:334
+#: gweather/gweather-dialog.c:348
 msgid "Radar Map"
 msgstr "Harta e Radarit"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:424
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -3107,7 +3142,7 @@ msgstr ""
 "Të lutem provo me parashikimin për shtetin, parashikimet IWIN vlejnë vetëm "
 "për qytetet e SHBA-së."
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:426
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -3174,7 +3209,43 @@ msgstr "_Zgjidh një vendndodhje:"
 msgid "Location"
 msgstr "Pozicioni"
 
-#: gweather/gweather.schemas.in.h:1
+#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "KJFK"
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:106
+#: gweather/weather.c:111
+msgid "DEFAULT_CODE"
+msgstr "DEFAULT_CODE"
+
+#. TRANSLATOR: Change this to the default location name (1st parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "New York-JFK Arpt"
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:90
+#: gweather/weather.c:95
+msgid "DEFAULT_LOCATION"
+msgstr "DEFAULT_LOCATION"
+
+#. Translators: Change this to the default location radar (4th parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "nyc"
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:137
+#: gweather/weather.c:142
+msgid "DEFAULT_RADAR"
+msgstr "DEFAULT_RADAR"
+
+#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "NYZ076"
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:122
+#: gweather/weather.c:127
+msgid "DEFAULT_ZONE"
+msgstr "DEFAULT_ZONE"
+
+#: gweather/gweather.schemas.in.h:5
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
@@ -3182,15 +3253,15 @@ msgstr ""
 "Përcakton nëse applet freskon automatikisht statistikat e tij të motit apo "
 "jo."
 
-#: gweather/gweather.schemas.in.h:2
+#: gweather/gweather.schemas.in.h:6
 msgid "Display radar map"
 msgstr "Shfaq hartën e radarit"
 
-#: gweather/gweather.schemas.in.h:3
+#: gweather/gweather.schemas.in.h:7
 msgid "Fetch a radar map on each update."
 msgstr "Tërhiq një hartë radari në çdo freskim."
 
-#: gweather/gweather.schemas.in.h:4
+#: gweather/gweather.schemas.in.h:8
 msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
@@ -3198,40 +3269,40 @@ msgstr ""
 "Nëse e vërtetë, atëhere tërheq një hartë radari të vendndodhjes së "
 "përcaktuar nga \"çelësi i radarit\"."
 
-#: gweather/gweather.schemas.in.h:5
+#: gweather/gweather.schemas.in.h:9
 #: mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Not used anymore"
 msgstr "E papërdorshme"
 
-#: gweather/gweather.schemas.in.h:6
+#: gweather/gweather.schemas.in.h:10
 msgid "The custom url from where to retrieve a radar map."
 msgstr "Url e caktuar prej nga tërhiqet harta e radarit."
 
-#: gweather/gweather.schemas.in.h:7
+#: gweather/gweather.schemas.in.h:11
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Intervali, në sekonda, midis freskimeve automatike."
 
-#: gweather/gweather.schemas.in.h:9
+#: gweather/gweather.schemas.in.h:13
 msgid "Update the data automatically"
 msgstr "Fresko të dhënat automatikisht"
 
-#: gweather/gweather.schemas.in.h:10
+#: gweather/gweather.schemas.in.h:14
 msgid "Url for the radar map"
 msgstr "Url për hartën e radarit"
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:15
 msgid "Use custom url for the radar map"
 msgstr "Përdor url e caktuar për hartën e radarit"
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:16
 msgid "Use metric units"
 msgstr "Përdor sistemin metrik"
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:17
 msgid "Use metric units instead of english units."
 msgstr "Përdor sistemin metrik kundrejt atij anglez."
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:18
 msgid "weather location information."
 msgstr "informacioni i motit për vendndodhjen."
 
@@ -3240,7 +3311,7 @@ msgid "knots"
 msgstr "nyje"
 
 #: gweather/weather.c:58
-msgid "kph"
+msgid "km/h"
 msgstr "km/h"
 
 #: gweather/weather.c:63
@@ -3259,101 +3330,101 @@ msgstr "milje"
 msgid "kilometers"
 msgstr "kilometra"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:183
 msgid "Variable"
 msgstr "E ndryshueshme"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:184
 msgid "North"
 msgstr "Veri"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:184
 msgid "North - NorthEast"
 msgstr "Veri - Veri-Lindje"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:184
 msgid "Northeast"
 msgstr "Veri-Lindje"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:184
 msgid "East - NorthEast"
 msgstr "Lindje - Veri-Lindje"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:185
 msgid "East"
 msgstr "Lindje"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:185
 msgid "East - Southeast"
 msgstr "Lindje - Jug-Lindje"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:185
 msgid "Southeast"
 msgstr "Jug-Lindje"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:185
 msgid "South - Southeast"
 msgstr "Jug - Jug-Lindje"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:186
 msgid "South"
 msgstr "Jug"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:186
 msgid "South - Southwest"
 msgstr "Jug - Jug-Perëndim"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:186
 msgid "Southwest"
 msgstr "Jug-Perëndim"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:186
 msgid "West - Southwest"
 msgstr "Perëndim - Jug-Perëndim"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:187
 msgid "West"
 msgstr "Perëndim"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:187
 msgid "West - Northwest"
 msgstr "Perëndim - Veri-Perëndim"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:187
 msgid "Northwest"
 msgstr "Veri-Perëndim"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:187
 msgid "North - Northwest"
 msgstr "Veri - Veri-Perëndim"
 
-#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
-#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
-#: gweather/weather.c:2033
+#: gweather/weather.c:193 gweather/weather.c:2105 gweather/weather.c:2117
+#: gweather/weather.c:2129 gweather/weather.c:2141 gweather/weather.c:2159
+#: gweather/weather.c:2171
 msgid "Unknown"
 msgstr "Nuk njihet"
 
-#: gweather/weather.c:145 gweather/weather.c:162 gweather/weather.c:233
+#: gweather/weather.c:195 gweather/weather.c:212 gweather/weather.c:283
 msgid "Invalid"
 msgstr "E pavlefshme"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:201
 msgid "Clear Sky"
 msgstr "Qiell i Hapur"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:202
 msgid "Broken clouds"
 msgstr "Re të thyera"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:203
 msgid "Scattered clouds"
 msgstr "Re të shpërndara"
 
-#: gweather/weather.c:154
+#: gweather/weather.c:204
 msgid "Few clouds"
 msgstr "Pak re"
 
-#: gweather/weather.c:155
+#: gweather/weather.c:205
 msgid "Overcast"
 msgstr "Vrenjtur"
 
@@ -3361,314 +3432,314 @@ msgstr "Vrenjtur"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:194 gweather/weather.c:196
+#: gweather/weather.c:244 gweather/weather.c:246
 msgid "Thunderstorm"
 msgstr "Stuhi"
 
 #. DRIZZLE
-#: gweather/weather.c:195
+#: gweather/weather.c:245
 msgid "Drizzle"
 msgstr "Shi i imët"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:245
 msgid "Light drizzle"
 msgstr "Vesë"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:245
 msgid "Moderate drizzle"
 msgstr "Shi"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:245
 msgid "Heavy drizzle"
 msgstr "Shi i rënde"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:245
 msgid "Freezing drizzle"
 msgstr "Shi i akullt"
 
 #. RAIN
-#: gweather/weather.c:196
+#: gweather/weather.c:246
 msgid "Rain"
 msgstr "Shi"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:246
 msgid "Light rain"
 msgstr "Shi i lehtë"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:246
 msgid "Moderate rain"
 msgstr "Shi i moderuar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:246
 msgid "Heavy rain"
 msgstr "Shi i madh"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:246
 msgid "Rain showers"
 msgstr "Shi i bollshëm"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:246
 msgid "Freezing rain"
 msgstr "Shi i akullt"
 
 #. SNOW
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Snow"
 msgstr "Borë"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Light snow"
 msgstr "Borë e imët"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Moderate snow"
 msgstr "Borë e moderuar"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Heavy snow"
 msgstr "Borë e madhe"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Snowstorm"
 msgstr "Stuhi bore"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Blowing snowfall"
 msgstr "Borë e fuqishme"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Snow showers"
 msgstr "Borë e bollshme"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:247
 msgid "Drifting snow"
 msgstr "Borë e levizshme"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:198
+#: gweather/weather.c:248
 msgid "Snow grains"
 msgstr "Borë"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:248
 msgid "Light snow grains"
 msgstr "Borë e lehtë"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:248
 msgid "Moderate snow grains"
 msgstr "Borë e moderuar"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:248
 msgid "Heavy snow grains"
 msgstr "Borë e madhe"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:199
+#: gweather/weather.c:249
 msgid "Ice crystals"
 msgstr "Kristale akulli"
 
 #. ICE_PELLETS
-#: gweather/weather.c:200
+#: gweather/weather.c:250
 msgid "Ice pellets"
 msgstr "Copa akulli"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:250
 msgid "Few ice pellets"
 msgstr "Copa të pakta akulli"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:250
 msgid "Moderate ice pellets"
 msgstr "Copa të pakta akulli"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:250
 msgid "Heavy ice pellets"
 msgstr "Copa të shumta akulli"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:250
 msgid "Ice pellet storm"
 msgstr "Stuhi copash akulli"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:250
 msgid "Showers of ice pellets"
 msgstr "Shi copash akulli"
 
 #. HAIL
-#: gweather/weather.c:201
+#: gweather/weather.c:251
 msgid "Hail"
 msgstr "Breshër"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:251
 msgid "Hailstorm"
 msgstr "Stuhi Breshëri"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:251
 msgid "Hail showers"
 msgstr "Breshër"
 
 #. SMALL_HAIL
-#: gweather/weather.c:202
+#: gweather/weather.c:252
 msgid "Small hail"
 msgstr "Breshër i imët"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:252
 msgid "Small hailstorm"
 msgstr "Stuhi e vogël breshëri"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:252
 msgid "Showers of small hail"
 msgstr "Breshër i vogël"
 
 #. PRECIPITATION
-#: gweather/weather.c:203
+#: gweather/weather.c:253
 msgid "Unknown precipitation"
 msgstr "Rënie të panjohura"
 
 #. MIST
-#: gweather/weather.c:204
+#: gweather/weather.c:254
 msgid "Mist"
 msgstr "Grimca"
 
 #. FOG
-#: gweather/weather.c:205
+#: gweather/weather.c:255
 msgid "Fog"
 msgstr "Mjegull"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:255
 msgid "Fog in the vicinity"
 msgstr "Mjegull e dendur"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:255
 msgid "Shallow fog"
 msgstr "Mjegull e cekët"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:255
 msgid "Patches of fog"
 msgstr "Mjegull e shpërndarë"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:255
 msgid "Partial fog"
 msgstr "Mjegull e pjesshme"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:255
 msgid "Freezing fog"
 msgstr "Mjegull e akullt"
 
 #. SMOKE
-#: gweather/weather.c:206
+#: gweather/weather.c:256
 msgid "Smoke"
 msgstr "Tym"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:207
+#: gweather/weather.c:257
 msgid "Volcanic ash"
 msgstr "Hi vullkanik"
 
 #. SAND
-#: gweather/weather.c:208
+#: gweather/weather.c:258
 msgid "Sand"
 msgstr "Rërë"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:258
 msgid "Blowing sand"
 msgstr "Stuhi Rëre"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:258
 msgid "Drifting sand"
 msgstr "Rërë e lëvizshme"
 
 #. HAZE
-#: gweather/weather.c:209
+#: gweather/weather.c:259
 msgid "Haze"
 msgstr "Mjegull"
 
 #. SPRAY
-#: gweather/weather.c:210
+#: gweather/weather.c:260
 msgid "Blowing sprays"
 msgstr "Spërkatje shpërthyese"
 
 #. DUST
-#: gweather/weather.c:211
+#: gweather/weather.c:261
 msgid "Dust"
 msgstr "Pluhur"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:261
 msgid "Blowing dust"
 msgstr "Pluhur shpërthyes"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:261
 msgid "Drifting dust"
 msgstr "Pluhur i lëvizshëm"
 
 #. SQUALL
-#: gweather/weather.c:212
+#: gweather/weather.c:262
 msgid "Squall"
 msgstr "Erë që ulërin"
 
 #. SANDSTORM
-#: gweather/weather.c:213
+#: gweather/weather.c:263
 msgid "Sandstorm"
 msgstr "Stuhi rëre"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:263
 msgid "Sandstorm in the vicinity"
 msgstr "Stuhi rëre në afërsi"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:263
 msgid "Heavy sandstorm"
 msgstr "Stuhi rëre e fuqishme"
 
 #. DUSTSTORM
-#: gweather/weather.c:214
+#: gweather/weather.c:264
 msgid "Duststorm"
 msgstr "Stuhi pluhuri"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:264
 msgid "Duststorm in the vicinity"
 msgstr "Stuhi pluhuri në afërsi"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:264
 msgid "Heavy duststorm"
 msgstr "Stuhi pluhuri e fuqishme"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:215
+#: gweather/weather.c:265
 msgid "Funnel cloud"
 msgstr "Re hinkë"
 
 #. TORNADO
-#: gweather/weather.c:216
+#: gweather/weather.c:266
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:217
+#: gweather/weather.c:267
 msgid "Dust whirls"
 msgstr "Vorbulla pluhuri"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:267
 msgid "Dust whirls in the vicinity"
 msgstr "Stuhi pluhuri në afërsi"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
+#: gweather/weather.c:907 gweather/weather.c:949 gweather/weather.c:1701
 msgid "Failed to get METAR data.\n"
 msgstr "Dështoi në tërheqjen e të dhënave METAR.\n"
 
-#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
+#: gweather/weather.c:941 gweather/weather.c:969 gweather/weather.c:1216
 msgid "WeatherInfo missing location"
 msgstr "Mungon vendndodhja WeatherInfo"
 
-#: gweather/weather.c:1931
+#: gweather/weather.c:2069
 msgid "%a, %b %d / %H:%M"
 msgstr "%a,·%b·%d·/·%H:%M"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:2073
 msgid "Unknown observation time"
 msgstr "Kohë e panjohur e vëzhgimit"
 
-#: gweather/weather.c:2005
+#: gweather/weather.c:2143
 msgid "Calm"
 msgstr "Qetë"
 
-#: gweather/weather.c:2078
+#: gweather/weather.c:2216
 msgid "Retrieval failed"
 msgstr "Tërheqja dështoi"
 
@@ -3951,8 +4022,7 @@ msgstr "Nëse kjo është e aktivizuar, fjalëkalimi do ruhet tek gconf"
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr ""
-"Nëse kjo është aktivizuar posta do kontrollohet çdo frekuence milisekondash"
+msgstr "Nëse kjo është aktivizuar posta do kontrollohet çdo frekuence milisekondash"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
@@ -4004,8 +4074,7 @@ msgstr "Fjalëkalimi i përdoruesit për serverin e jashtëm"
 
 #: mailcheck/mailcheck.schemas.in.h:25
 msgid "This is how we check the mail, check the mail, check the mail..."
-msgstr ""
-"Ja se si e kontrollojmë postën, kontrollojmë postën, kontrollojmë postën..."
+msgstr "Ja se si e kontrollojmë postën, kontrollojmë postën, kontrollojmë postën..."
 
 #: mailcheck/mailcheck.schemas.in.h:26
 msgid "This is how we process the mail, process the mail, process the mail..."
@@ -4029,8 +4098,7 @@ msgstr "Ekzekutojmë këtë komandë kur përdoruesi klikon tek Vëzhguesi i Pos
 
 #: mailcheck/mailcheck.schemas.in.h:30
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr ""
-"Nëse statusi i postës duhet rivendosur kur klikon tek Vëzhguesi i Postës"
+msgstr "Nëse statusi i postës duhet rivendosur kur klikon tek Vëzhguesi i Postës"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
@@ -4108,15 +4176,16 @@ msgid "Set default list value for %s\n"
 msgstr "Cakto vlerën e paracktuar të listës për %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL rezulton e përcaktuar, skemat nuk do "
 "të instalohen\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr ""
-"E ndryshueshmja e ambientit GCONF_CONFIG_SOURCE duhet të jetë e përcaktuar\n"
+msgstr "E ndryshueshmja e ambientit GCONF_CONFIG_SOURCE duhet të jetë e përcaktuar\n"
 
 #: mini-commander/src/mc-install-default-macros.c:142
 #, c-format
@@ -4129,74 +4198,62 @@ msgid "Error syncing config data: %s"
 msgstr "Gabim gjatë sinkronizimit të të dhënave të konfigurimit: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Appearance</b>"
-msgstr "<b>Paraqitja</b>"
-
-#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
 msgstr "<b>Plotësimi Automatik</b>"
 
-#: mini-commander/src/mini-commander.glade.h:5
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Colors</b>"
 msgstr "<b>Ngjyrat</b>"
 
-#: mini-commander/src/mini-commander.glade.h:6
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Size</b>"
 msgstr "<b>Madhësia</b>"
 
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:6
 msgid "Add New Macro"
 msgstr "Shto Makro të Re"
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command Line Preferences"
 msgstr "Preferencat eLinjës së Komandës"
 
-#: mini-commander/src/mini-commander.glade.h:10
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
 msgstr "S_fondi i linjës së komandës"
 
-#: mini-commander/src/mini-commander.glade.h:11
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
 msgstr "N_gjyra ballore e linjës së komandës:"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
 msgstr "A_ktivizo historikun e plotësimit automatik"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
 msgstr "Automatizime"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pick a color"
 msgstr "Zgjidh një ngjyrë"
 
-#: mini-commander/src/mini-commander.glade.h:16
-msgid "Show fram_e"
-msgstr "Shfaq korni_zën"
-
-#: mini-commander/src/mini-commander.glade.h:17
-msgid "Show han_dle"
-msgstr "Shfaq do_rezën"
-
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
 msgstr "_Shto Makro..."
 
-#: mini-commander/src/mini-commander.glade.h:19
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
 msgstr "_Fshi Makro"
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
 msgstr "_Makrot:"
 
-#: mini-commander/src/mini-commander.glade.h:21
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "_Pattern:"
 msgstr "_Motivi:"
 
-#: mini-commander/src/mini-commander.glade.h:22
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
 msgstr "_Përdor ngjyrat e temës së paracaktuar"
 
@@ -4310,58 +4367,57 @@ msgstr "Përdor ngjyrat e temës në vend të atyre të zakonshme."
 msgid "Width"
 msgstr "Gjerësia"
 
-#: mini-commander/src/mini-commander_applet.c:228
-#: mini-commander/src/mini-commander_applet.c:232
+#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:230
 msgid "Browser"
 msgstr "Shfletuesi"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Click this button to start the browser"
 msgstr "Kliko këtë buton për të nisur shfletuesin"
 
-#: mini-commander/src/mini-commander_applet.c:246
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:248
 msgid "History"
 msgstr "Kronollogjia"
 
-#: mini-commander/src/mini-commander_applet.c:251
+#: mini-commander/src/mini-commander_applet.c:249
 msgid "Click this button for the list of previous commands"
 msgstr "Kliko këtë buton për listën e komandave të mëparshme"
 
-#: mini-commander/src/mini-commander_applet.c:363
+#: mini-commander/src/mini-commander_applet.c:319
 msgid "Command line has been disabled by your system administrator"
-msgstr ""
-"Rreshti i komandës është ç'aktivizuar nga administratori juaj i sistemit"
+msgstr "Rreshti i komandës është ç'aktivizuar nga administratori juaj i sistemit"
 
-#: mini-commander/src/mini-commander_applet.c:426
+#: mini-commander/src/mini-commander_applet.c:382
 msgid "Mini-Commander applet"
 msgstr "Applet Mini Komandues"
 
-#: mini-commander/src/mini-commander_applet.c:427
+#: mini-commander/src/mini-commander_applet.c:383
 msgid "This applet adds a command line to the panel"
 msgstr "Ky applet i shton një linjë komande panelit"
 
-#: mini-commander/src/preferences.c:428
+#: mini-commander/src/preferences.c:400
 msgid "You must specify a pattern"
 msgstr "Duhet të saktësosh një stil"
 
-#: mini-commander/src/preferences.c:432
+#: mini-commander/src/preferences.c:404
 msgid "You must specify a pattern and a command"
 msgstr "Duhet të saktësosh një stil dhe një komandë"
 
-#: mini-commander/src/preferences.c:433
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a command"
 msgstr "Duhet të saktësosh një komandë"
 
-#: mini-commander/src/preferences.c:436
+#: mini-commander/src/preferences.c:408
 msgid "You may not specify duplicate patterns"
 msgstr "Nuk mund të saktësosh stile të dyfishtë"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:778
 msgid "Pattern"
 msgstr "Motivi"
 
-#: mini-commander/src/preferences.c:860
+#: mini-commander/src/preferences.c:788
 msgid "Command"
 msgstr "Komanda"
 
@@ -4527,8 +4583,7 @@ msgstr "(C)·2001·Richard·Hult"
 
 #: mixer/mixer.c:1348
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"Kontrolli i volumit të lejon caktimin e nivelit të volumit të kompjuterit."
+msgstr "Kontrolli i volumit të lejon caktimin e nivelit të volumit të kompjuterit."
 
 #: mixer/mixer.c:1495
 msgid "Volume Control Preferences"
@@ -4544,8 +4599,7 @@ msgstr "_Zgjidh kanalin për ta kontrolluar:"
 
 #: mixer/mixer.c:1874
 msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"Kontrolli i volumit të lejon caktimin e nivelit të volumit të kompjuterit."
+msgstr "Kontrolli i volumit të lejon caktimin e nivelit të volumit të kompjuterit."
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -4697,19 +4751,15 @@ msgid "The background color of the button used to indicate data sent."
 msgstr "Ngjyra në sfond e butonit përdorur për tregimin e të dhënave në dalje."
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid ""
-"The color used to display the status button when the modem is connected."
+msgid "The color used to display the status button when the modem is connected."
 msgstr "Ngjyra e përdorur e butonit të gjendjes kur modemi është i lidhur."
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid ""
-"The color used to display the status button when the modem is connecting."
-msgstr ""
-"Ngjyra e përdorur e butonit të gjendjes kur modemi është duke u lidhur."
+msgid "The color used to display the status button when the modem is connecting."
+msgstr "Ngjyra e përdorur e butonit të gjendjes kur modemi është duke u lidhur."
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid ""
-"The color used to display the status button when the modem is not connected."
+msgid "The color used to display the status button when the modem is not connected."
 msgstr "Ngjyra e përdorur e butonit të gjendjes kur modemi është i shkëputur."
 
 #: modemlights/modemlights.schemas.in.h:26
@@ -5166,8 +5216,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Krijo, shiko dhe drejto shënime ngjitëse mbi hapësirën e punës"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:315 stickynotes/stickynotes_applet.c:433
-#: stickynotes/stickynotes_applet_callbacks.c:240
+#: stickynotes/stickynotes_applet.c:318 stickynotes/stickynotes_applet.c:436
+#: stickynotes/stickynotes_applet_callbacks.c:253
 msgid "Sticky Notes"
 msgstr "Shënime Ngjitëse"
 
@@ -5184,7 +5234,7 @@ msgid "_Lock Notes"
 msgstr "_Blloko Shënimet"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:44
+#: stickynotes/stickynotes.glade.h:47
 msgid "_New Note"
 msgstr "Shënim i _Ri"
 
@@ -5192,11 +5242,11 @@ msgstr "Shënim i _Ri"
 msgid "_Show Notes"
 msgstr "_Shfaq Shënimet"
 
-#: stickynotes/stickynotes.c:334
+#: stickynotes/stickynotes.c:336
 msgid "Locked note"
 msgstr "Shënim i bllokuar"
 
-#: stickynotes/stickynotes.c:339
+#: stickynotes/stickynotes.c:341
 msgid "Unlocked note"
 msgstr "Shënim i zhbllokuar"
 
@@ -5254,8 +5304,7 @@ msgstr "Zgjidh nëse shënimet duhet të shfaqen në të GJITHA hapësirat e pun
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr ""
-"Zgjidh nëse stili i paracaktuar duhet ti përshtatet të gjitha shënimeve"
+msgstr "Zgjidh nëse stili i paracaktuar duhet ti përshtatet të gjitha shënimeve"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
@@ -5266,116 +5315,116 @@ msgid "Close note"
 msgstr "Mbyll shënimin"
 
 #: stickynotes/stickynotes.glade.h:21
+msgid "Create a new note"
+msgstr "Krijo një shënim të ri"
+
+#: stickynotes/stickynotes.glade.h:22
 msgid "Force _default color and font on notes"
 msgstr "Detyro ngjyrën dhe stilin e shkronjave të _paracaktuara për shënimin"
 
-#: stickynotes/stickynotes.glade.h:22
+#: stickynotes/stickynotes.glade.h:23
 msgid "H_eight:"
 msgstr "L_artësia:"
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:24
+msgid "Lock/Unlock all notes"
+msgstr "Blloko/Zhblloko të gjitha shënimet"
+
+#: stickynotes/stickynotes.glade.h:25
 msgid "Lock/Unlock note"
 msgstr "Blloko/Zhblloko shënimin"
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:26
 msgid "Pick a color for the sticky note"
 msgstr "Zgjidh një ngjyrë për shënimin"
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note color"
 msgstr "Zgjidh një ngjyrë të paracaktuar për shënimin"
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note font"
 msgstr "Zgjidh një stil shkronjash të paracaktuar për shënimin"
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
 msgstr "Zgjidh një stil shkronjash për shënimin"
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
 msgstr "Ndrysho madhësinë e shënimit"
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:31
+msgid "Show/Hide all notes"
+msgstr "Shfaq/Fshih të gjitha shënimet"
+
+#: stickynotes/stickynotes.glade.h:32
 msgid "Specify a title for the note"
 msgstr "Zgjidh një titull për shënimin"
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:33
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Specifiko gjatësinë e paracaktuar (në piksel) të shënimeve të reja"
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:34
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Specifiko gjerësinë e paracaktuar (në piksel) të shënimeve të reja"
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note"
 msgstr "Shënim i Ngjitur"
 
-#: stickynotes/stickynotes.glade.h:33
+#: stickynotes/stickynotes.glade.h:36
 msgid "Sticky Note Properties"
 msgstr "Vetitë e Shënimit të Ngjitur"
 
-#: stickynotes/stickynotes.glade.h:34
+#: stickynotes/stickynotes.glade.h:37
 msgid "Sticky Notes Preferences"
 msgstr "Preferencat e Shënimeve të Ngjitura"
 
-#: stickynotes/stickynotes.glade.h:35
+#: stickynotes/stickynotes.glade.h:38
 msgid "Use co_lor from the system theme"
 msgstr "Përdor ngj_yrat nga tema e sistemit"
 
-#: stickynotes/stickynotes.glade.h:36
+#: stickynotes/stickynotes.glade.h:39
 msgid "Use default co_lor"
 msgstr "Përdor ngj_yrat e paracaktuara"
 
-#: stickynotes/stickynotes.glade.h:37
+#: stickynotes/stickynotes.glade.h:40
 msgid "Use default fo_nt"
 msgstr "Përdor stilin e shkron_jave të paracaktuar"
 
-#: stickynotes/stickynotes.glade.h:38
+#: stickynotes/stickynotes.glade.h:41
 msgid "Use fo_nt from the system theme"
 msgstr "Përdor stilin e shkron_jave nga tema e sistemit"
 
-#: stickynotes/stickynotes.glade.h:39
+#: stickynotes/stickynotes.glade.h:42
 msgid "_Color:"
 msgstr "_Ngjyra:"
 
-#: stickynotes/stickynotes.glade.h:40
+#: stickynotes/stickynotes.glade.h:43
 msgid "_Delete ALL"
 msgstr "_Fshi GJITHÇKA"
 
-#: stickynotes/stickynotes.glade.h:41
+#: stickynotes/stickynotes.glade.h:44
 msgid "_Delete Note..."
 msgstr "_Fshi Shënimin..."
 
-#: stickynotes/stickynotes.glade.h:43
+#: stickynotes/stickynotes.glade.h:46
 msgid "_Lock Note"
 msgstr "_Blloko Shënimin"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:48
 msgid "_Properties..."
 msgstr "_Pronësitë...."
 
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:49
 msgid "_Put notes on all workspaces"
 msgstr "_Vendos shënimin në të gjitha hapësirat e punës"
 
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:50
 msgid "_Title:"
 msgstr "_Titulli:"
-
-#: stickynotes/stickynotes.glade.h:49
-msgid "_lock/unlock all notes"
-msgstr "_blloko/zhblloko të gjitha shënimet"
-
-#: stickynotes/stickynotes.glade.h:50
-msgid "_show/hide all notes"
-msgstr "_shfaq/fshih të gjitha shënimet"
-
-#: stickynotes/stickynotes.glade.h:51
-msgid "create a _new note"
-msgstr "krijo një shënim të _ri"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
@@ -5447,8 +5496,7 @@ msgstr "Shënimet bosh do fshihen gjithmonë pa konfirmim."
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr ""
-"Sa herë që kalon numri i caktuar i minutave, shënimet ruhen automatikisht."
+msgstr "Sa herë që kalon numri i caktuar i minutave, shënimet ruhen automatikisht."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
@@ -5532,7 +5580,7 @@ msgstr "Nëse duhet të përdorë ngjyrën e paracaktuar të sistemit"
 msgid "Whether to use the default system font"
 msgstr "Nëse duhet të përdorë stilin e shkronjave të sistemit"
 
-#: stickynotes/stickynotes_applet.c:433
+#: stickynotes/stickynotes_applet.c:436
 #, c-format
 msgid ""
 "%s\n"
@@ -5545,13 +5593,13 @@ msgstr[0] ""
 "%d·shënim"
 msgstr[1] ""
 "%s\n"
-"%d·shënim"
+"%d·shënime"
 
-#: stickynotes/stickynotes_applet_callbacks.c:242
+#: stickynotes/stickynotes_applet_callbacks.c:255
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c)·2002-2003·Loban·A·Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:243
+#: stickynotes/stickynotes_applet_callbacks.c:256
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Shënimet e Ngjitura për Mjedisin e Punës Gnome"
 
@@ -5560,15 +5608,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Kontrollon cilësinë e një lidhjeje rrjeti wireless"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:837
 msgid "Wireless Link Monitor"
 msgstr "Vëzhgues i Lidhjes Wireless"
 
-#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
+#: wireless/wireless-applet.c:367 wireless/wireless-applet.c:504
 msgid "No Wireless Devices"
 msgstr "Asnjë Dispozitiv Wireless"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5577,15 +5625,15 @@ msgstr ""
 "tuaj.\n"
 "Të lutem verifiko konfigurimin nëse mendon që kjo është e pasaktë."
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C)·2001,·2002·Free·Software Foundation "
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Ky mjet shfaq gjendjen e një lidhjeje wireless."
 
-#: wireless/wireless-applet.c:836
+#: wireless/wireless-applet.c:838
 msgid "This utility shows the status of a wireless link"
 msgstr "Ky mjet shfaq gjendjen e një lidhjeje wireless"
 
@@ -5600,3 +5648,4 @@ msgstr "Preferencat e Vëzhguesit të Lidhjes Wireless"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "Dispozitivi i _vëzhguar:"
+
