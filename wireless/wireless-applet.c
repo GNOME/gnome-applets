@@ -202,7 +202,7 @@ wireless_applet_animate_timeout (WirelessApplet *applet)
 static void
 wireless_applet_start_animation (WirelessApplet *applet) 
 {
-	applet->timeout_handler_id = gtk_timeout_add (500, 
+	applet->animate_timer = gtk_timeout_add (500, 
 			(GtkFunction)wireless_applet_animate_timeout,
 			applet);
 }
