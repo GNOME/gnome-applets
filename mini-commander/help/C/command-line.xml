@@ -3,8 +3,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "July 2002">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Command Line">
 ]>
 <!-- 
@@ -13,6 +13,7 @@
   http://developer.gnome.org/projects/gdp 
   Template version: 2.0 beta
   Template last modified Feb 12, 2002
+  
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
@@ -89,6 +90,18 @@
           </revdescription> 
         </revision> 
         <revision> 
+          <revnumber>Command Line Applet Manual V2.1</revnumber> 
+          <date>July 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription> 
+        </revision> 
+        <revision> 
           <revnumber>Command Line Applet Manual V2.0</revnumber> 
           <date>March 2002</date> 
           <revdescription> 
@@ -137,12 +150,12 @@
   <indexterm zone="index"> 
      <primary>command line applet</primary> 
   </indexterm>
-<!-- ============= Document Body ==-->
+
 <!-- ============= Introduction =====-->
   <sect1 id="command-line-introduction"> 
      <title>Introduction</title> 
      
-<!-- ==== Figure ==================-->
+     <!-- ==== Figure ==================-->
      <figure id="applet-fig"> 
         <title>&applet; Applet</title> 
         <screenshot> 
@@ -151,16 +164,15 @@
                 format="PNG"/> 
              </imageobject> 
              <textobject> 
-                <phrase>Screenshot of the &applet; applet.</phrase> 
+                <phrase>Shows &applet; applet.</phrase> 
              </textobject> 
           </mediaobject> 
         </screenshot> 
      </figure> 
      <para>
         The <application>&applet;</application> applet provides a command line
-        that you can use within any panel on the desktop. To add
-        <application>&applet;</application> to a panel, right-click on the panel 
-        to open the panel popup menu, then choose 
+        that you can use within any panel on the desktop. </para>
+        <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
         <menuchoice> 
           <guimenu>Add to Panel</guimenu> 
           <guisubmenu>Utility</guisubmenu> 
@@ -241,7 +253,7 @@
              </listitem>
           </varlistentry>
           <varlistentry>
-             <term> User-requestable command completion function</term>
+             <term>User-requestable command completion function</term>
              <listitem>
                 <para>
                   This command completion function compares character strings in
@@ -260,7 +272,7 @@
              <term>Macro facility</term>
              <listitem>
                 <para>
-                  The macro facility provides up to 99 short-cut commands. In
+                  The macro facility provides up to 99 shortcut commands. In
                   addition to predefined commands you can create your own commands for use with
                   <application>&applet;</application>.
                 </para>
@@ -307,15 +319,12 @@
         </orderedlist> 
         <para>
           If the 
-          <link linkend="autocompletion">Enable history based autocompletion
-             </link> option is selected then during steps 1 to 3,
+          <xref linkend="autocompletion"/> option is selected then during steps 1 to 3,
           <application>&applet;</application> searches for a match in the history list.
-          If there is a match in the history list, then
-          <application>&applet;</application> completes the command. If you want to
-          accept the command, then press 
+          If there is a match in the history list, <application>&applet;</application> 
+          completes the command. To accept the command, press 
           <keycap>Return</keycap>. Alternatively, if you do not want to accept
-          the command then type more characters in the 
-          <guilabel> entry field</guilabel>.
+          the command, type more characters in the <guilabel>entry field</guilabel>.
         </para>
      </sect2>
      <sect2 id="command-line-runmacro"> 
@@ -323,15 +332,14 @@
         <para>
           To run a macro that is defined in the
           <application>&applet;</application> 
-          <link linkend="command-line-prefs-2">Macros</link> list, type the macro
+          <xref linkend="command-line-prefs-2"/> list, type the macro
           in the 
           <guilabel> entry field</guilabel>, then press 
           <keycap>Return</keycap>. 
         </para>
         <para>
           The 
-          <link linkend="autocompletion">history based autocompletion</link>
-          function also works for macros. 
+          <xref linkend="autocompletion"/> function also works for macros. 
         </para>
         <para>
           The following list shows some examples of
@@ -423,13 +431,13 @@
         </para>
      </sect2> 
   </sect1>
-<!-- ============= Customization ============================= -->
+<!-- ============= Preferences ============================= -->
   <sect1 id="command-line-prefs-0"> 
-     <title>Settings</title> 
+     <title>Preferences</title> 
      <para>
         To configure <application>&applet;</application>, right-click on an area
         of the applet outside the interactive elements, then choose 
-        <guimenuitem>Preferences</guimenuitem> from the applet popup menu.
+        <guimenuitem>Preferences</guimenuitem>.
      </para>
      <para>
         The 
@@ -439,12 +447,12 @@
      <itemizedlist> 
         <listitem>
           <para>
-             <link linkend="command-line-prefs-1">General</link>
+             <xref linkend="command-line-prefs-1"/>
           </para>
         </listitem> 
         <listitem>
           <para>
-             <link linkend="command-line-prefs-2">Macros</link>
+             <xref linkend="command-line-prefs-2"/>
           </para>
         </listitem> 
      </itemizedlist> 
@@ -520,7 +528,7 @@
         <title>Macros</title> 
         <para>
           This tabbed section contains a list of macros that you can use with
-          <application>&applet;</application>. The list contains the following columns: 
+          <application>&applet;</application>. The list contains the following information: 
           <itemizedlist> 
              <listitem>
                 <para>
