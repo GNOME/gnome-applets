@@ -211,7 +211,7 @@ accessible_drawing_area_get_text (AtkText         *text,
 	g_free (utf8);
 
  	return gail_text_util_get_substring (access_draw_area->textutil,
-				&start_pos, &end_pos);
+				start_pos, end_pos);
 }
 
 static gchar*
