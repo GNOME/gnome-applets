@@ -191,7 +191,7 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 {
 	gint i;
 	MultiloadApplet *ma = data;
-	
+
 	for (i = 0; i < NGRAPHS; i++)
 	{
 		if (ma->graphs[i]->visible)
@@ -209,6 +209,9 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 	if (ma->about_dialog)
 		gtk_widget_destroy (ma->about_dialog);
 	
+	if (ma->prop_dialog)
+		gtk_widget_destroy (ma->prop_dialog);
+
 	gtk_widget_destroy(GTK_WIDGET(ma->applet));
 			
 	return;
@@ -413,7 +416,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->applet = applet;
 	
 	ma->about_dialog = NULL;
-	
+	ma->prop_dialog = NULL;
+
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-monitor.png");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);

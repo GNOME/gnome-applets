@@ -1,5 +1,27 @@
 2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
 
+	* global.h:
+	Add a prop_dialog entry to the MultiloadApplet
+	struct.
+
+	* main.c (multiload_applet_new): Set prop_dialog
+	to NULL.
+
+	(multiload_destroy_cb): Destroy prop_dialog
+	if it's present.
+
+	* properties.c (multiload_properties_cb):
+	Use the dialog from the instance struct
+	so it doesn't get shared between instances.
+
+	Check if the dialog is there, if so present
+	and set the right screen.
+
+	* properties.h: Removed some unused extern
+	vars that weren't actually there anymore.
+
+2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
+
 	* main.c (about_cb): Set the screen right if the user
 	requests the about dialog and it's already there but
 	not on the right screen.

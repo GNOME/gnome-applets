@@ -72,6 +72,7 @@ struct _MultiloadApplet
 	
 	GtkWidget *about_dialog;
 	GtkWidget *check_boxes[NGRAPHS];
+	GtkWidget *prop_dialog;
 };
 
 #include "load-graph.h"

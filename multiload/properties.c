@@ -597,11 +597,12 @@ multiload_properties_cb (BonoboUIComponent *uic,
 			 MultiloadApplet   *ma,
 			 const char        *name)
 {
-	static GtkWidget *dialog = NULL;
+	GtkWidget *dialog = ma->prop_dialog;
 	
 	if (dialog) {
             gtk_window_set_screen (GTK_WINDOW (dialog),
                                    gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+
 	    gtk_window_present (GTK_WINDOW (dialog));
 	    return;
 	}

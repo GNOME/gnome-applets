@@ -36,9 +36,6 @@ struct _MultiLoadProperties {
     LoadGraphProperties cpuload, memload, swapload, netload, loadavg;
 };
 
-extern GList *multiload_property_object_list;
-
-extern MultiLoadProperties multiload_properties;
 /*
 void multiload_properties_apply (void);
 void multiload_properties_close (void);
