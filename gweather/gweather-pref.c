@@ -406,7 +406,7 @@ static void parse_temp_string (const gchar *gconf_str, GWeatherPrefs *prefs)
     }	
     else {
         /* TRANSLATOR: This is the default unit to use for temperature measurements. */
-        /* Valid values are: "K" (Kelvin), "C" (Centigrade) and "F" (Fahrenheit) */
+        /* Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit) */
         if (gconf_string_to_enum (temp_unit_enum_map, _("DEFAULT_TEMP_UNIT"), &value) ) {
             prefs->temperature_unit = value;
         }
@@ -848,7 +848,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_label_set_mnemonic_widget (GTK_LABEL (temp_label), temp_combo);
     gtk_combo_box_append_text (GTK_COMBO_BOX (temp_combo), _("Default"));
     gtk_combo_box_append_text (GTK_COMBO_BOX (temp_combo), _("Kelvin"));
-    gtk_combo_box_append_text (GTK_COMBO_BOX (temp_combo), _("Centigrade"));
+    /* TRANSLATORS: Celsius is sometimes referred Centigrade */
+    gtk_combo_box_append_text (GTK_COMBO_BOX (temp_combo), _("Celsius"));
     gtk_combo_box_append_text (GTK_COMBO_BOX (temp_combo), _("Fahrenheit"));
 	gtk_widget_show (temp_combo);
 		
