@@ -326,6 +326,17 @@ fill_gkb_applet (PanelApplet *applet)
 					   NULL,
 					   gkb_menu_verbs, 
 					   gkb);
+	if (panel_applet_get_locked_down (PANEL_APPLET (gkb->applet))) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (PANEL_APPLET (gkb->applet));
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/GKBProperties",
+					      "hidden", "1",
+					      NULL);
+	}
+
 
 	gtk_widget_show (GTK_WIDGET(gkb->applet));
 	gkb_update (gkb,TRUE);
