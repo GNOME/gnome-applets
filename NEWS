@@ -1,3 +1,52 @@
+Changes in GNOME-Applets 2.9.2
+==================================
+Codenamed: "The System of the World"
+
+Really Big Changes:
+ * CPUFreq Applet (Carlos Garcia Campos)
+
+Less Big Changes:
+ * Support for transparent panels: battstat, drivemount, mixer, multiload,
+   stickynotes, trashapplet
+   (Davyd Madeley, Ronald Bultje, James Henstridge)
+ * HIG Fixes (Dennis Cranston)
+ * Change charpicker to have soft dependency on Gucharmap (Davyd Madeley)
+ * Remove use of deprecated acconfig.h (Davyd Madeley)
+ * Fix padding issues in drivemount (James Henstridge)
+ * gswitchit no longer requires gkb (Sergey Udaltsov)
+   "Small step for CVS, big leap for humankind."
+ * Plug a leak in stickynotes (Paolo Borelli)
+ * day/night differentiation in gweather (Frank Solensky)
+ * Sync locations with METAR database (Davyd Madeley, Frank Solensky)
+ * locations.dtd file (James Henstridge)
+
+Translations:
+ * en_CA (Adam Weinberger)
+ * cs (Miloslav Trmac)
+ * sq (Laurent Dhima)
+ * ja (Takeshi AIHANA)
+ * lt (Žygimantas Beručka)
+ * bg (Vladimir Petkov, Alexander Shopov)
+ * en_GB (David Lodge)
+ * es (Francisco Javier F. Serrador)
+ * zh_CN (Funda Wang)
+ * ca (Jordi Mallach)
+ * da (Martin Willemoes Hansen)
+ * nb (Kjartan Maraas)
+ * no (Kjartan Maraas)
+ * nl (Tino Meinen)
+ * it (Marco Ciampa)
+
+This release has lots of new features for gweather, such the separate day/night icons. This requires the latest gnome-icon-theme as well as a <coordinates>
+entry for your location in Locations.xml.in.
+
+Locations.xml.in has been synced with the METAR list of locations, and as a
+result may have picked up some regressions. Everyone should check out locations
+close to them geographically and fix up names and such. Some cities contain
+multiple locations, Location [123]..., it would be great if all of these
+contained actual names. Since I don't happen to live in those cities, it's
+rather hard.
+
 Changes in GNOME-Applets 2.9.1
 ==================================
 Codenamed: "Revitalisation"
