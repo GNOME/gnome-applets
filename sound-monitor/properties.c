@@ -132,6 +132,7 @@ static void monitor_input_cb(GtkWidget *w, gpointer data)
 	/* alert user this may be dangerous */
 	if (ad->p_monitor_input)
 		{
+		/*xgettext:no-c-format*/
 		gnome_warning_dialog(_("You have enabled the \"Monitor sound input\" option.\n\nIf your sound card is not fully 100% FULL DUPLEX (can do input and output simultaneously),\nthen this may touch bugs in sound drivers/esound that may hang the system.\n\nYou have been warned!"));
 		}
 }
