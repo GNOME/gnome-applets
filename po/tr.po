@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.0\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-28 21:40+0000\n"
 "PO-Revision-Date: 2003-01-15 22:41+0200\n"
 "Last-Translator: Sinan İmamoğlu <sinan@myrealbox.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -25,6 +26,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "_Hakkında..."
 
@@ -38,6 +40,8 @@ msgstr "_Hakkında..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "_Yardım"
 
@@ -52,7 +56,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Geyes Uygulak Mîmârîsi"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1178
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr ""
 
@@ -71,21 +75,22 @@ msgstr ""
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Yardımcı"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:48 mixer/mixer.c:1060
-#: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:894
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
+#: mini-commander/src/about.c:48 mixer/mixer.c:1062
+#: modemlights/modemlights.c:115 multiload/main.c:58
+#: stickynotes/stickynotes_applet_callbacks.c:198
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:484
 msgid "translator_credits"
 msgstr "Sinan İmamoğlu <sinan@myrealbox.com>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1181
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr ""
 
@@ -107,17 +112,18 @@ msgstr "'%s'  çalıştırılırken hata oluştu: %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "'%s'  çalıştırılırken hata oluştu: %s"
 
-#: accessx-status/applet.c:462 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr ""
 
-#: accessx-status/applet.c:1183
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:907
 msgid "Battery Charge Monitor"
 msgstr "Pil Dolumu İzleyici"
 
@@ -139,7 +145,7 @@ msgstr "Dizüstü bilgisayarın kalan pilini gözlemle"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "_Seçenekler..."
 
@@ -229,49 +235,49 @@ msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "Platformunuz desteklenmiyor!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Uygulak çalışsa bile düzgün çalışmayacak.\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:938
 msgid "High"
 msgstr "Dolu"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:940
 msgid "Low"
 msgstr "Zayıf"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:942
 msgid "Critical"
 msgstr "Bitmek üzere"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:944
 msgid "Charging"
 msgstr "Dolduruluyor"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Pil zayıf (%%%d) ve AC çevrimdışı"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "Pil artık tam dolu!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1102
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -283,7 +289,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1110
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -294,32 +300,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
+#: battstat/battstat_applet.c:1123
 msgid "System is running on battery power"
 msgstr "Sistem pille çalışıyor"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
+#: battstat/battstat_applet.c:1129
 msgid "System is running on AC power"
 msgstr "Sistem AC elektrikle çalışıyor"
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "Söz konusu değil"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Sistem pille çalışıyor. Pil: %%%d (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Sistem AC elektrikle çalışıyor. Pil: %%%d (%s)"
@@ -328,33 +334,33 @@ msgstr "Sistem AC elektrikle çalışıyor. Pil: %%%d (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Sistem pille çalışıyor. Pil yok"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Sistem AC elektrikle çalışıyor. Pil yok"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Pil: %%%d (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr "Pil yok"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:777
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -367,7 +373,7 @@ msgstr ""
 "emin olun."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:786
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -377,7 +383,7 @@ msgstr ""
 "(FreeBSD'de) \"apm -e l\" komutunu çalıştırmayı\n"
 "deneyin, işe yarayabilir.\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:842
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -387,7 +393,7 @@ msgstr ""
 "Lütfen bu hatayı düzeltmeye çalışın"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:845
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -398,7 +404,7 @@ msgstr ""
 "\"\n"
 "Lütfen bu hatayı düzeltmeye çalışın"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:853
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -408,18 +414,24 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:884
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:909
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:910
 #, fuzzy
 msgid "This utility shows the status of your laptop battery."
 msgstr "Bu yardımcı, dizüstü bilgisayarınızın pil durumunu gösterir."
+
+#: battstat/battstat_applet.c:1531
+msgid ""
+"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
+"subsystem is working and the acpid daemon is running."
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -463,7 +475,7 @@ msgstr "Askıya Al"
 msgid "<b>Warnings</b>"
 msgstr "Uyarılar"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "Görünüm"
 
@@ -471,9 +483,9 @@ msgstr "Görünüm"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Pil Doluluğu İzleyici Seçenekleri"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
-#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
+#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Genel"
 
@@ -539,10 +551,12 @@ msgstr "Pil zayıfladığında bildir"
 msgid "_Yellow:"
 msgstr "Sarı:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:468
-#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: battstat/properties.c:296 drivemount/drivemount.c:498
+#: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
+#: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
+#: stickynotes/stickynotes_applet_callbacks.c:324
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, fuzzy, c-format
 msgid "There was an error displaying help: %s"
 msgstr "'%s'  çalıştırılırken hata oluştu: %s"
@@ -559,8 +573,8 @@ msgstr "Pil tümüyle doldu"
 msgid "Battery power low"
 msgstr "Pil zayıf"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:609
+#: cdplayer/cdplayer.c:1072
 msgid "CD Player"
 msgstr "CD Çalar"
 
@@ -586,62 +600,62 @@ msgstr "Ses CD'lerini çalan panel uygulağı"
 msgid "_Open CD Player"
 msgstr "CD Çalar"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1062
 msgid "Stop"
 msgstr "Dur"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1064
 msgid "Play / Pause"
 msgstr "Çal / Durakla"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1066
 msgid "Eject"
 msgstr "Çıkar"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1068
 msgid "Previous Track"
 msgstr "Önceki İz"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1070
 msgid "Next Track"
 msgstr "Sonraki İz"
 
-#: cdplayer/cdplayer.c:235
+#: cdplayer/cdplayer.c:246
 msgid "You do not have permission to use the CD player."
 msgstr ""
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:373 mixer/mixer.c:1028 multiload/main.c:119
 #, fuzzy, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s'  çalıştırılırken hata oluştu: %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:424
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr ""
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:490
 msgid "CD Player Preferences"
 msgstr "CD Çalar Seçenekleri"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:511
 #, fuzzy
 msgid "Device _path:"
 msgstr "Aygıt _Yolu:"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:520
 msgid "Device Path"
 msgstr "Aygıt Yolu"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:520
 msgid "Set the device path here"
 msgstr "Aygıt yolunu burada tanımlayın"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:523
 msgid "Use _Default"
 msgstr "Ö_ntanımlıyı Kullan"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:610
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -649,39 +663,39 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2'ye taşıdı)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:612 cdplayer/cdplayer.c:1073
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD Çalar uygulağı paneliniz için ufak bir CD çalardır"
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:887 cdplayer/cdplayer.c:898
 msgid "Elapsed time"
 msgstr "Geçen süre"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:890 cdplayer/cdplayer.c:900
 msgid "Track number"
 msgstr "İz numarası"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:961
 msgid "Audio device is busy, or being used by another application"
 msgstr ""
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1063
 msgid "Click this button to Stop playing the CD"
 msgstr "CD'yi durdurmak için bu düğmeye basın"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1065
 msgid "Click this button to Play or Pause the CD"
 msgstr "CD'yi Başlatmak ya da Duraklatmak için bu düğmeye basın"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1067
 msgid "Click this button to eject the CD"
 msgstr "CD'yi çıkarmak için bu düğmeye basın"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1069
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Bir önceki izi çalmak için bu düğmeye basın"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1071
 msgid "Click this button to Play the next track in the CD"
 msgstr "Bir sonraki izi çalmak için bu düğmeye basın"
 
@@ -695,8 +709,8 @@ msgid ""
 "applet"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
+#: charpick/charpick.c:755 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "Karakter Paleti"
 
@@ -704,41 +718,41 @@ msgstr "Karakter Paleti"
 msgid "Charpicker Applet Factory"
 msgstr "Harf Seçici Uygulak Mîmârîsi"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:755
 msgid "Insert characters"
 msgstr "Karakter ekle"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:321 charpick/properties.c:125
 msgid "Add Palette"
 msgstr ""
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:372
 msgid "Add a palette..."
 msgstr ""
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:455
 msgid "Available palettes"
 msgstr ""
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:492
 msgid "Insert special characters"
 msgstr "Özel karakter ekle"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:582
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:583
 msgid "Kevin Vandersloot"
 msgstr ""
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:611
 msgid "Copyright (C) 1998"
 msgstr "Telif Hakkı (C) 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -754,7 +768,7 @@ msgstr ""
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr ""
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
 msgid "List of available palettes"
 msgstr ""
 
@@ -778,56 +792,56 @@ msgid "Palette entry"
 msgstr ""
 
 #: charpick/properties.c:96
-msgid "Modify a palette by adding or removing chacters"
+msgid "Modify a palette by adding or removing characters"
 msgstr ""
 
-#: charpick/properties.c:160
+#: charpick/properties.c:171
 #, fuzzy
 msgid "Edit Palette"
 msgstr "Yol öğesini düzenle..."
 
-#: charpick/properties.c:259
+#: charpick/properties.c:271
 #, fuzzy
 msgid "Palettes list"
 msgstr "Sislik izleri var"
 
-#: charpick/properties.c:338
+#: charpick/properties.c:350
 #, fuzzy
 msgid "Pal_ettes:"
 msgstr "Örüntü:"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:366
 msgid "Add button"
 msgstr ""
 
-#: charpick/properties.c:355
+#: charpick/properties.c:367
 msgid "Click to add a new palette"
 msgstr ""
 
-#: charpick/properties.c:362
+#: charpick/properties.c:374
 #, fuzzy
 msgid "Edit button"
 msgstr "Yol öğesini düzenle..."
 
-#: charpick/properties.c:363
+#: charpick/properties.c:375
 msgid "Click to edit the selected palette"
 msgstr ""
 
-#: charpick/properties.c:370
+#: charpick/properties.c:382
 #, fuzzy
 msgid "Delete button"
 msgstr "_Makroyu Sil"
 
-#: charpick/properties.c:371
+#: charpick/properties.c:383
 msgid "Click to delete the selected palette"
 msgstr ""
 
-#: charpick/properties.c:423
+#: charpick/properties.c:435
 msgid "Character Palette Preferences"
 msgstr "Karakter Paleti Seçenekleri"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:528
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
 msgid "Disk Mounter"
 msgstr "Sürücü Bağlayıcı"
 
@@ -851,42 +865,42 @@ msgstr "_Gözat..."
 msgid "_Eject"
 msgstr "Çı_kar"
 
-#: drivemount/drivemount.c:409 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
 #, fuzzy, c-format
 msgid "There was an error executing %s: %s"
 msgstr "'%s'  çalıştırılırken hata oluştu: %s"
 
-#: drivemount/drivemount.c:416
+#: drivemount/drivemount.c:446
 msgid "Cannot browse device"
 msgstr ""
 
-#: drivemount/drivemount.c:474 drivemount/properties.c:595
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
+#: drivemount/drivemount.c:504 drivemount/properties.c:601
+#: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
 #, fuzzy
 msgid "Error displaying help"
 msgstr "'%s'  çalıştırılırken hata oluştu: %s"
 
-#: drivemount/drivemount.c:529
+#: drivemount/drivemount.c:559
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:531
+#: drivemount/drivemount.c:561
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Birimleri bağlamak ve çözmeye yarayan uygulak."
 
-#: drivemount/drivemount.c:731
+#: drivemount/drivemount.c:761
 msgid " mounted"
 msgstr " bağlı"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:763
 msgid " not mounted"
 msgstr " çözülü"
 
-#: drivemount/drivemount.c:845
+#: drivemount/drivemount.c:875
 msgid "\" reported:\n"
 msgstr "\" rapor etti ki:\n"
 
-#: drivemount/drivemount.c:847
+#: drivemount/drivemount.c:877
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -894,7 +908,7 @@ msgstr ""
 "Sürücü bağlama komutu başarısız.\n"
 "\""
 
-#: drivemount/drivemount.c:853
+#: drivemount/drivemount.c:883
 #, fuzzy
 msgid "Cannot mount device"
 msgstr " çözülü"
@@ -907,90 +921,94 @@ msgstr ""
 msgid "Time in seconds between status updates"
 msgstr ""
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:330
 msgid "Disk Mounter Preferences"
 msgstr "Sürücü Bağlayıcı Seçenekleri"
 
-#: drivemount/properties.c:355
+#: drivemount/properties.c:358
 #, fuzzy
 msgid "_Mount directory:"
 msgstr "_Bağlama noktası:"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:364
 msgid "Select Mount Directory"
 msgstr ""
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:386
 #, fuzzy
 msgid "_Update interval:"
 msgstr "_Güncelleme sıklığı (sn.):"
 
-#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 #, fuzzy
 msgid "seconds"
 msgstr "milisaniye"
 
-#: drivemount/properties.c:419
+#: drivemount/properties.c:422
 #, fuzzy
 msgid "_Icon:"
 msgstr "_Simge:"
 
-#: drivemount/properties.c:445
+#: drivemount/properties.c:448
 msgid "Floppy"
 msgstr "Disket"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:451
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:451
+#: drivemount/properties.c:454
 msgid "Cd Recorder"
 msgstr "Cd Kaydedici"
 
-#: drivemount/properties.c:454
+#: drivemount/properties.c:457
 msgid "Zip Drive"
 msgstr "Zip Sürücüsü"
 
-#: drivemount/properties.c:457
+#: drivemount/properties.c:460
 msgid "Hard Disk"
 msgstr "Sabit Disk"
 
-#: drivemount/properties.c:460
+#: drivemount/properties.c:463
 msgid "Jaz Drive"
 msgstr "Jaz Sürücüsü"
 
-#: drivemount/properties.c:463
+#: drivemount/properties.c:466
+msgid "USB Stick"
+msgstr ""
+
+#: drivemount/properties.c:469
 msgid "Custom"
 msgstr "Özel"
 
-#: drivemount/properties.c:482
+#: drivemount/properties.c:488
 msgid "Select icon for mounted"
 msgstr "Bağlanmış durum için simge seçin"
 
-#: drivemount/properties.c:489
+#: drivemount/properties.c:495
 #, fuzzy
 msgid "Moun_ted icon:"
 msgstr "_Bağlama noktası:"
 
-#: drivemount/properties.c:510
+#: drivemount/properties.c:516
 msgid "Select icon for unmounted"
 msgstr "Çözülmüş durum için simge seçin"
 
-#: drivemount/properties.c:517
+#: drivemount/properties.c:523
 msgid "Unmou_nted icon:"
 msgstr ""
 
-#: drivemount/properties.c:533
+#: drivemount/properties.c:539
 msgid "_Scale size to panel"
 msgstr "Boyutu panele _oranla"
 
-#: drivemount/properties.c:540
+#: drivemount/properties.c:546
 #, fuzzy
 msgid "_Eject disk when unmounting"
 msgstr "Çözünce çı_kar"
 
-#: drivemount/properties.c:550
+#: drivemount/properties.c:556
 msgid "Use _automount friendly status test"
 msgstr "Durum sınamasını _automount ile uyumlu  yap"
 
@@ -1003,7 +1021,7 @@ msgid "Amusements"
 msgstr "Eğlencelikler"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
-#: geyes/geyes.c:454 geyes/geyes.c:456
+#: geyes/geyes.c:465 geyes/geyes.c:467
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -1019,7 +1037,7 @@ msgstr "Telif Hakkı (C) 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME paneli için yazılmış bir xeyes kopyası."
 
-#: geyes/geyes.c:457
+#: geyes/geyes.c:468
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Gözler fare imlecinin yönüne bakar"
 
@@ -2411,23 +2429,23 @@ msgstr "Klavyeyi Düzenle"
 msgid "?"
 msgstr ""
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:277
 msgid "Edit Keyboard"
 msgstr "Klavyeyi Düzenle"
 
-#: gkb-new/prop-map.c:297
+#: gkb-new/prop-map.c:302
 msgid "_Name:"
 msgstr "_Ad:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:306
 msgid "_Label:"
 msgstr "_Etiket:"
 
-#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "_Komut:"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:314
 #, fuzzy
 msgid "_Flag:"
 msgstr "_Bayrak"
@@ -2444,8 +2462,8 @@ msgstr "Etiket"
 msgid "Flag and Label"
 msgstr "Bayrak ve Etiket"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Gösterim"
 
@@ -2488,7 +2506,7 @@ msgstr "Klavyeyi Düzenle"
 msgid "_Keyboards:"
 msgstr "Klavyeyi Düzenle"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "Seçenekler"
 
@@ -2539,7 +2557,7 @@ msgstr "Sürekli güncellenen borsa bilgilerini al"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Uygulak Mîmârîsi"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "Borsa Saati"
 
@@ -2552,11 +2570,11 @@ msgstr "_Güncelle"
 msgid "Could not retrieve the stock data."
 msgstr ""
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:346
+#: gtik/gtik.c:289 gweather/gweather-applet.c:357
 msgid "Updating..."
 msgstr "Güncelliyorum..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2568,144 +2586,144 @@ msgstr ""
 "GARANTİSİ YOKTUR.  GNOME Borsa Saati'ni alım/satım kararları vermek için "
 "kullanmayın; amacı yalnızca bilgi vermektir."
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 #, fuzzy
 msgid "Current _stocks:"
 msgstr "Şimdiki _durum"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 #, fuzzy
 msgid "_New symbol:"
 msgstr "_Yeni Birim:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "_Ekle"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 #, fuzzy
 msgid "_Remove"
 msgstr "Seçilenleri _kaldır"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "Borsa Saati Seçenekleri"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "Birimler"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2373
 msgid "Behavior"
 msgstr "Davranış"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 #, fuzzy
 msgid "Update"
 msgstr "_Güncelle"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 #, fuzzy
 msgid "Stock update fre_quency:"
 msgstr "Yenileme sıklığı (dakika):"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
-#: mailcheck/mailcheck.c:2080
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2085
 #, fuzzy
 msgid "minutes"
 msgstr "dakikada bir"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr ""
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 #, fuzzy
 msgid "_Scroll speed:"
 msgstr "Kaydırma Hızı :"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 #, fuzzy
 msgid "Slow"
 msgstr "Göster"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 #, fuzzy
 msgid "Medium"
 msgstr "Belçika"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 #, fuzzy
 msgid "Fast"
 msgstr "Hava _Tahmini"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "Kaydırma _düğmelerini etkinleştir"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "_Soldan sağa kaydır"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "Yalnız birimleri ve _fiyatı göster"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 #, fuzzy
 msgid "_Width:"
 msgstr "_Genişlik :"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr "piksel"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 #, fuzzy
 msgid "Font and Colors"
 msgstr "Değiş_meyenlerin Rengi"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 #, fuzzy
 msgid "Use _default theme font and colors"
 msgstr "Öntanımlı _tema renklerini kullan"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 #, fuzzy
 msgid "_Font:"
 msgstr "Ya_zıtipi:"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 #, fuzzy
 msgid "Stock _raised:"
 msgstr "Borsa Saati"
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 #, fuzzy
 msgid "Stock _lowered:"
 msgstr "Borsa Saati"
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 #, fuzzy
 msgid "Stock _unchanged:"
 msgstr "Borsa Saati"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 #, fuzzy
 msgid "_Background:"
 msgstr "A_rtalan"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "İleri atla"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "Geri atla"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2713,11 +2731,11 @@ msgstr ""
 "Borsa Saati\n"
 "Sürekli güncellenen borsa bilgilerini al"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2021
 msgid "(No"
 msgstr "(Hayır"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2022
 msgid "Change "
 msgstr "Değişim"
 
@@ -3040,11 +3058,11 @@ msgstr "Radar haritası için ö_zel adres kullan"
 msgid "A_ddress:"
 msgstr "A_dres:"
 
-#: gweather/gweather-pref.c:774
+#: gweather/gweather-pref.c:772
 msgid "_Select a location:"
 msgstr ""
 
-#: gweather/gweather-pref.c:803
+#: gweather/gweather-pref.c:801
 msgid "Location"
 msgstr "Konum"
 
@@ -3202,27 +3220,33 @@ msgstr "Kuzeybatı"
 msgid "North - Northwest"
 msgstr "Kuzey - Kuzeybatı"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
+#: gweather/weather.c:142 gweather/weather.c:1817 gweather/weather.c:1829
+#: gweather/weather.c:1841 gweather/weather.c:1853 gweather/weather.c:1871
+#: gweather/weather.c:1883
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+#: gweather/weather.c:144 gweather/weather.c:161 gweather/weather.c:232
 msgid "Invalid"
 msgstr "Geçersiz"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:150
 msgid "Clear Sky"
 msgstr "Açık Gökyüzü"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:151
 msgid "Broken clouds"
 msgstr "Parçalı bulutlu"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:152
 msgid "Scattered clouds"
 msgstr "Dağınık bulutlu"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:153
 msgid "Few clouds"
 msgstr "Hafif bulutlu"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:154
 msgid "Overcast"
 msgstr "Aşırı bulutlu"
 
@@ -3230,322 +3254,318 @@ msgstr "Aşırı bulutlu"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:192 gweather/weather.c:194
+#: gweather/weather.c:193 gweather/weather.c:195
 #, fuzzy
 msgid "Thunderstorm"
 msgstr "Yıldırımlı fırtına"
 
 #. DRIZZLE
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Drizzle"
 msgstr "Çise"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 #, fuzzy
 msgid "Light drizzle"
 msgstr "Hafif yağmur"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Moderate drizzle"
 msgstr "Vasat çise"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Heavy drizzle"
 msgstr "Ağır çise"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Freezing drizzle"
 msgstr "Dondurucu çise"
 
 #. RAIN
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Rain"
 msgstr "Yağmur"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Light rain"
 msgstr "Hafif yağmur"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Moderate rain"
 msgstr "Vasat yağmur"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 #, fuzzy
 msgid "Heavy rain"
 msgstr "Ağır yağmur"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Rain showers"
 msgstr "Kısa yoğun yağmur"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Freezing rain"
 msgstr "Dondurucu yağmur"
 
 #. SNOW
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snow"
 msgstr "Kar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Light snow"
 msgstr "Hafif kar yağışı"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Moderate snow"
 msgstr "Vasat kar yadışı"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Heavy snow"
 msgstr "Ağır kar yağışı"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snowstorm"
 msgstr "Kar fırtınası"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Blowing snowfall"
 msgstr "Rüzgarlı kar fırtınası"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snow showers"
 msgstr "Kısa yoğun kar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Drifting snow"
 msgstr "Kaygan kar"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 #, fuzzy
 msgid "Snow grains"
 msgstr "Kar taneleri yağmuru var"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Light snow grains"
 msgstr "Hafif kar taneleri var"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Moderate snow grains"
 msgstr "Vasat kar taneleri var"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Heavy snow grains"
 msgstr "Ağır kar taneleri var"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Ice crystals"
 msgstr "Buz kristalleri"
 
 #. ICE_PELLETS
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice pellets"
 msgstr "Buz tanecikleri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Few ice pellets"
 msgstr "Az buz tanecikleri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Moderate ice pellets"
 msgstr "Vasat buz tanecikleri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Heavy ice pellets"
 msgstr "Ağır buz tanecikleri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice pellet storm"
 msgstr "Buz tanecikleri fırtınası"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Showers of ice pellets"
 msgstr "Buz tanecikleri yağmuru"
 
 #. HAIL
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hail"
 msgstr "Dolu"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hailstorm"
 msgstr "Dolu fırtınası"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hail showers"
 msgstr "Dolu yağmuru"
 
 #. SMALL_HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Small hail"
 msgstr "Ufak dolu taneleri"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Small hailstorm"
 msgstr "Ufak dolu taneleri fırtınası"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Showers of small hail"
 msgstr "Ufak dolu taneleri yağmuru"
 
 #. PRECIPITATION
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Unknown precipitation"
 msgstr "Bilinmeyen çökelme"
 
 #. MIST
-#: gweather/weather.c:202
+#: gweather/weather.c:203
 msgid "Mist"
 msgstr "Sislik"
 
 #. FOG
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Fog"
 msgstr "Sis"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Fog in the vicinity"
 msgstr "Çevrede sis var"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Shallow fog"
 msgstr "Alçak sis"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Patches of fog"
 msgstr "Sis'in izleri var"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Partial fog"
 msgstr "Yer yer sis var"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Freezing fog"
 msgstr "Dondurucu sis"
 
 #. SMOKE
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Smoke"
 msgstr "Duman"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:205
+#: gweather/weather.c:206
 msgid "Volcanic ash"
 msgstr "Volkan külü"
 
 #. SAND
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Sand"
 msgstr "Kum"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Blowing sand"
 msgstr "Rüzgarlı kum"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Drifting sand"
 msgstr "Kaygan kum"
 
 #. HAZE
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Haze"
 msgstr "Hafif pus"
 
 #. SPRAY
-#: gweather/weather.c:208
+#: gweather/weather.c:209
 msgid "Blowing sprays"
 msgstr "Rüzgarlı püskürtmeli yağış"
 
 #. DUST
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Dust"
 msgstr "Toz"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Blowing dust"
 msgstr "Rüzgarlı toz"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Drifting dust"
 msgstr "Kaygan toz"
 
 #. SQUALL
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Squall"
 msgstr "Bö"
 
 #. SANDSTORM
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Sandstorm"
 msgstr "Kum fırtınası"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Sandstorm in the vicinity"
 msgstr "Çevrede kum fırtınası var"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Heavy sandstorm"
 msgstr "Ağır kum fırtınası"
 
 #. DUSTSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Duststorm"
 msgstr "Toz fırtınası"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Duststorm in the vicinity"
 msgstr "Çevrede toz fırtınası var"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Heavy duststorm"
 msgstr "Ağır toz fırtınası"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Funnel cloud"
 msgstr "Döneç bulutu"
 
 #. TORNADO
-#: gweather/weather.c:214
+#: gweather/weather.c:215
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Dust whirls"
 msgstr "Toz kasırgaları"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Dust whirls in the vicinity"
 msgstr "Çevrede toz kasırgaları var"
 
-#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
+#: gweather/weather.c:832 gweather/weather.c:872 gweather/weather.c:1445
 msgid "Failed to get METAR data.\n"
 msgstr "METAR verilerini alamadım.\n"
 
-#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
+#: gweather/weather.c:864 gweather/weather.c:892 gweather/weather.c:1089
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo eksik konum"
 
-#: gweather/weather.c:1778
+#: gweather/weather.c:1781
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1782
+#: gweather/weather.c:1785
 msgid "Unknown observation time"
 msgstr "Bilinmeyen gözetleme saati"
 
-#: gweather/weather.c:1842
+#: gweather/weather.c:1855
 msgid "Calm"
 msgstr "Sakin"
 
-#: gweather/weather.c:1868
-msgid "Unknown"
-msgstr "Bilinmiyor"
-
-#: gweather/weather.c:1912
+#: gweather/weather.c:1928
 msgid "Retrieval failed"
 msgstr "Alım başarısız oldu"
 
@@ -3559,7 +3579,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Hava durumu uygulağını oluşturacak mîmârî"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2455
 msgid "Inbox Monitor"
 msgstr ""
 
@@ -3639,11 +3659,11 @@ msgid "No mail."
 msgstr "Olağan"
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
+#: mailcheck/mailcheck.c:2823 mailcheck/mailcheck.c:2824
 msgid "Status not updated"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2377
 #, fuzzy
 msgid "Inbox Settings"
 msgstr "Ayarlar"
@@ -3706,79 +3726,79 @@ msgstr ""
 msgid "Folder Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2052
+#: mailcheck/mailcheck.c:2057
 msgid "Check for mail _every:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2079
 msgid "Choose time interval in minutes to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2102
 msgid "Choose time interval in seconds to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2114
+#: mailcheck/mailcheck.c:2119
 msgid "Play a _sound when new mail arrives"
 msgstr ""
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2124
+#: mailcheck/mailcheck.c:2129
 msgid "Sto_p animation when double clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2137
+#: mailcheck/mailcheck.c:2142
 msgid "Select a_nimation:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2154
+#: mailcheck/mailcheck.c:2160
 #, fuzzy
 msgid "Commands"
 msgstr "Komut:"
 
-#: mailcheck/mailcheck.c:2183
+#: mailcheck/mailcheck.c:2189
 msgid "Before each _update:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2200
+#: mailcheck/mailcheck.c:2206
 msgid "Command to execute before each update"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2212
+#: mailcheck/mailcheck.c:2218
 msgid "When new mail _arrives:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2233 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2239
+#: mailcheck/mailcheck.c:2245
 msgid "When double clicke_d:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2254
+#: mailcheck/mailcheck.c:2260
 msgid "Command to execute when clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2339
+#: mailcheck/mailcheck.c:2346
 #, fuzzy
 msgid "Inbox Monitor Preferences"
 msgstr "Sistem İzleyici Seçenekleri"
 
-#: mailcheck/mailcheck.c:2450
+#: mailcheck/mailcheck.c:2457
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2776
+#: mailcheck/mailcheck.c:2783
 #, fuzzy
 msgid "Text only"
 msgstr "Metin"
 
-#: mailcheck/mailcheck.c:2807
+#: mailcheck/mailcheck.c:2825
 msgid "Mail check"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2808
+#: mailcheck/mailcheck.c:2826
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr ""
 
@@ -3946,15 +3966,15 @@ msgstr ""
 "isterseniz daha yeni herhangi bir sürümüne uygun olarak değiştirebilirsiniz."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:436
 msgid "Start program"
 msgstr "Uygulamayı başlat"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "Komut satırı"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Gnome'un çalıştırmasını istediğiniz komutu yazın"
 
@@ -4077,27 +4097,30 @@ msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Color background blue component"
-msgstr ""
+#, fuzzy
+msgid "Background color, blue component"
+msgstr "Ar_talan Rengi"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Color background green component"
-msgstr ""
+#, fuzzy
+msgid "Background color, green component"
+msgstr "Ar_talan Rengi"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Color background red component"
-msgstr ""
+#, fuzzy
+msgid "Background color, red component"
+msgstr "Ar_talan Rengi"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Color foreground blue component"
+msgid "Foreground color, blue component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Color foreground green component"
+msgid "Foreground color, green component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-msgid "Color foreground red component"
+msgid "Foreground color, red component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
@@ -4186,29 +4209,33 @@ msgstr ""
 msgid "Width"
 msgstr "_Genişlik :"
 
-#: mini-commander/src/mini-commander_applet.c:222
-#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:232
 msgid "Browser"
 msgstr "Web Tarayıcı"
 
-#: mini-commander/src/mini-commander_applet.c:227
+#: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
 msgstr "Web tarayıcıyı başlatmak için bu düğmeye tıklayın"
 
-#: mini-commander/src/mini-commander_applet.c:240
-#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:246
+#: mini-commander/src/mini-commander_applet.c:250
 msgid "History"
 msgstr "Geçmiş"
 
-#: mini-commander/src/mini-commander_applet.c:245
+#: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
 msgstr "Önceki komutları görmek için bu düğmeye basın"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:360
+msgid "Command line has been disabled by your system administrator"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:421
 msgid "Mini-Commander applet"
 msgstr "Küçük Komutan Uygulağı"
 
-#: mini-commander/src/mini-commander_applet.c:380
+#: mini-commander/src/mini-commander_applet.c:422
 msgid "This applet adds a command line to the panel"
 msgstr "Bu uygulak panelinize bir komut satırı koyar"
 
@@ -4233,7 +4260,7 @@ msgid "Adjust the sound volume"
 msgstr "Ses yüksekliğini ayarla"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1075
 msgid "Volume Control"
 msgstr "Ses Denetimi"
 
@@ -4365,6 +4392,11 @@ msgstr ""
 "uyarı: gmix'in bu sürümü soundcard.h'nin değişik bir sürümüyle derlenmiş.\n"
 "\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr ""
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "Ses Denetleyici"
@@ -4383,29 +4415,29 @@ msgstr ""
 msgid "-"
 msgstr ""
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1076
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1075
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Ses denetimi, masaüstünüzdeki ses yüksekliğini ayarlamanızı sağlar."
 
-#: mixer/mixer.c:1217
+#: mixer/mixer.c:1220
 #, fuzzy
 msgid "Volume Control Preferences"
 msgstr "Ses Denetleyici"
 
-#: mixer/mixer.c:1241
+#: mixer/mixer.c:1244
 #, fuzzy
 msgid "Audio Channels"
 msgstr "Değişim"
 
-#: mixer/mixer.c:1257
+#: mixer/mixer.c:1260
 msgid "_Select channel to control:"
 msgstr ""
 
-#: mixer/mixer.c:1587
+#: mixer/mixer.c:1592
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Ses denetimi, masaüstünüzdeki ses yüksekliğini ayarlamanızı sağlar"
 
@@ -4622,135 +4654,135 @@ msgstr ""
 msgid "Verify owner of lock file"
 msgstr "Kilit dosyasının sâhibini doğrula"
 
-#: modemlights/properties.c:416
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Modem Işıkları Seçenekleri"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:451
 #, fuzzy
 msgid "U_pdate every:"
 msgstr "Saniyede _yenileme"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Bağlantı _süresini ve veri akışını göster"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr ""
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:496
 #, fuzzy
 msgid "Connections"
 msgstr "Bağlanılıyor"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:505
 #, fuzzy
 msgid "Co_nnection command:"
 msgstr "_Bağlanma komutu:"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:531
 #, fuzzy
 msgid "_Disconnection command:"
 msgstr "Bağlantıyı _kesme komutu:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Bağlantı için _onay iste"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:572
 #, fuzzy
 msgid "Receive Data"
 msgstr "Veri alımı"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:578
 #, fuzzy
 msgid "_Foreground:"
 msgstr "Ö_nalan"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:583
 #, fuzzy
 msgid "Send Data"
 msgstr "Veri gönder"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:588
 #, fuzzy
 msgid "Foregroun_d:"
 msgstr "Ön_alan"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:590
 #, fuzzy
 msgid "Backg_round:"
 msgstr "Arta_lan"
 
-#: modemlights/properties.c:583
+#: modemlights/properties.c:593
 #, fuzzy
 msgid "Connection Status"
 msgstr "Bağlantı durumu"
 
-#: modemlights/properties.c:591
+#: modemlights/properties.c:601
 #, fuzzy
 msgid "Co_nnected:"
 msgstr "_Bağlı"
 
-#: modemlights/properties.c:593
+#: modemlights/properties.c:603
 #, fuzzy
 msgid "Disconnec_ted:"
 msgstr "Bağlantıyı _kesme komutu:"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:606
 #, fuzzy
 msgid "C_onnecting:"
 msgstr "Bağlanılıyor"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Metin"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:617
 #, fuzzy
 msgid "For_eground:"
 msgstr "Ö_nalan"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:619
 #, fuzzy
 msgid "Bac_kground:"
 msgstr "A_rtalan"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "Ana _Hatlar"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "Renkler"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:633
 #, fuzzy
 msgid "Modem Options"
 msgstr "Modem seçenekleri"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Aygıt:"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:668
 #, fuzzy
 msgid "_Lock file:"
 msgstr "_Modem kilit dosyası:"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "Kilit dosyasının sâhibini doğrula"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "ISDN'yi _kullan"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Gelişmiş"
 
@@ -4759,7 +4791,7 @@ msgid "A system load indicator"
 msgstr "Sistem yükü göstergesi"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:78
+#: multiload/main.c:79
 msgid "System Monitor"
 msgstr "Sistem İzleyici"
 
@@ -4772,11 +4804,11 @@ msgstr "Sistem İzleyici"
 msgid "CPU Load"
 msgstr "Işlemci Yükü"
 
-#: multiload/loadavg.c:107 multiload/main.c:280
+#: multiload/loadavg.c:107 multiload/main.c:281
 msgid "Load Average"
 msgstr "Ortalama Yük"
 
-#: multiload/main.c:80
+#: multiload/main.c:81
 #, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
@@ -4789,28 +4821,28 @@ msgstr ""
 "İşlemci, bellek, takas alanı kullanımı ve ağ yoğunluğunun "
 "çizgelerinigösterebilen bir sistem yükü izleyicisi."
 
-#: multiload/main.c:272 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:558
 msgid "Processor"
 msgstr "İşlemci"
 
-#: multiload/main.c:274 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "Bellek"
 
-#: multiload/main.c:276 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "Ağ"
 
-#: multiload/main.c:278 multiload/properties.c:576
+#: multiload/main.c:279 multiload/properties.c:581
 #, fuzzy
 msgid "Swap Space"
 msgstr "Takas Dosyası"
 
-#: multiload/main.c:282
+#: multiload/main.c:283
 msgid "Resource"
 msgstr "Özkaynak"
 
-#: multiload/main.c:293
+#: multiload/main.c:294
 #, c-format
 msgid ""
 "%s:\n"
@@ -4938,122 +4970,122 @@ msgstr ""
 msgid "Net Load"
 msgstr "Ağ Yükü"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr "İzlenen Özkaynaklar"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr "İş_lemci"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr "_Bellek"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr "_Ağ"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:395
 #, fuzzy
 msgid "S_wap Space"
 msgstr "Takas Dosyası"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:408
 #, fuzzy
 msgid "_Load"
 msgstr "Işlemci Yükü"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr "Sistem izleyici _eni: "
 
-#: multiload/properties.c:452
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr "Sistem izleyici _boyu: "
 
-#: multiload/properties.c:491
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr "Sistem izleyici yenileme _sıklığı: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "milisaniye"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "_Kullanıcı"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "_Sistem"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr ""
 
-#: multiload/properties.c:558
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "Boş _duran"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "_Paylaşımda"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr "_Arabellekler"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr ""
 
-#: multiload/properties.c:566
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "B_oş"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:575
 #, fuzzy
 msgid "_SLIP"
 msgstr "S_LIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr "_PLIP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:577
 #, fuzzy
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:578
 #, fuzzy
 msgid "Othe_r"
 msgstr "_Diğer"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "A_rtalan"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "_Kullanılıyor"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "_Boş"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:586
 #, fuzzy
 msgid "Load"
 msgstr "Işlemci Yükü"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:588
 #, fuzzy
 msgid "_Average"
 msgstr "Ortalama Yük"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Sistem İzleyici Seçenekleri"
 
@@ -5066,8 +5098,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet_callbacks.c:200
 msgid "Sticky Notes"
 msgstr ""
 
@@ -5096,11 +5128,11 @@ msgstr ""
 msgid "_Show Notes"
 msgstr "İletişim _kutularını göster"
 
-#: stickynotes/stickynotes.c:314
+#: stickynotes/stickynotes.c:316
 msgid "Locked note"
 msgstr ""
 
-#: stickynotes/stickynotes.c:319
+#: stickynotes/stickynotes.c:321
 msgid "Unlocked note"
 msgstr ""
 
@@ -5267,7 +5299,7 @@ msgstr "_Makroyu Sil"
 msgid "_Lock Note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 #, fuzzy
 msgid "_Properties..."
 msgstr "_Seçenekler..."
@@ -5434,7 +5466,7 @@ msgstr "Öntanımlı _tema renklerini kullan"
 msgid "Whether to use the default system font"
 msgstr ""
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:355
 #, fuzzy, c-format
 msgid ""
 "%s\n"
@@ -5449,11 +5481,11 @@ msgstr[1] ""
 "%s:\n"
 "%d%% kullanımda"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:202
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr ""
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:203
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr ""
 
@@ -5462,15 +5494,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Kablosuz ağ bağlantısının niteliğini gözlemle"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "Kablosuz Bağlantı İzleyici"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "Kablosuz Aygıt Yok"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5478,11 +5510,11 @@ msgstr ""
 "Göründüğü kadarıyla bilgisayarda yapılandırılmış hiç kablosuz aygıt yok.\n"
 "Bu sizce yanlışsa, yapılandırmanızı denetleyin."
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "Bu yardımcı, kablosuz bir bağlantının durumunu gösterir."
 
@@ -5498,6 +5530,155 @@ msgstr "Kablosuz Bağlantı İzleyici Seçenekleri"
 #, fuzzy
 msgid "_Monitored device:"
 msgstr "İzlenen Aygıt:"
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
+#, fuzzy
+msgid "GNOME XKB applet factory"
+msgstr "Gtik Uygulak Mîmârîsi"
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
+msgid "GSwitchIt applet"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
+#, fuzzy
+msgid "GSwitchIt applet factory"
+msgstr "Gweather Uygulak Mîmârîsi"
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:97
+#, fuzzy, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "Klavye Yerleşimi Değiştirici"
+
+#: gswitchit/gswitchit-applet.c:491
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:492
+msgid "XKB toolkit for GNOME"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:623
+msgid "XKB initialization error"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:632
+msgid "Error loading XKB configuration registry"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:147
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:226
+msgid "Exclude from keyboard switching"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:252
+#, fuzzy
+msgid "not used"
+msgstr "bulunmadı"
+
+#: gswitchit/gswitchit-plugins.c:288
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:2
+#, fuzzy
+msgid "GSwitchIt Properties"
+msgstr "Sürücü Bağlayıcı Seçenekleri"
+
+#: gswitchit/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:8
+#, fuzzy
+msgid "Use _flags as indicators"
+msgstr "Sistem yükü göstergesi"
+
+#: gswitchit/gswitchit-properties.glade.h:9
+msgid "_Default group:"
+msgstr ""
 
 #~ msgid "Applet layout"
 #~ msgstr "Uygulak yerleşimi"
@@ -5645,10 +5826,6 @@ msgstr "İzlenen Aygıt:"
 
 #~ msgid "_Other"
 #~ msgstr "_Diğer"
-
-#, fuzzy
-#~ msgid "Background color of title"
-#~ msgstr "Ar_talan Rengi"
 
 #~ msgid ""
 #~ "The images necessary to run the wireless monitor are missing.\n"
@@ -6539,9 +6716,6 @@ msgstr "İzlenen Aygıt:"
 
 #~ msgid "completed"
 #~ msgstr "tamamlandı"
-
-#~ msgid "not found"
-#~ msgstr "bulunmadı"
 
 #~ msgid "no /bin/sh"
 #~ msgstr "/bin/sh yok"
