@@ -80,6 +80,8 @@ static AppData *create_new_app(GtkWidget *applet)
   appdata->headline_timeout_id = gtk_timeout_add(1800000, 
 		  get_current_headlines, appdata);
   gtk_widget_show(appdata->applet);
+  appdata->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, 
+		  appdata);
   return appdata;
 }
 
@@ -120,6 +122,19 @@ static int get_current_headlines(gpointer data)
   gint delay = appdata->article_delay / 10 * (1000 / UPDATE_DELAY);
   
   ghttp_set_uri(req, g_strconcat("http://", http_server, http_filename, NULL));
+  printf("%s\n", ghttp_get_error(req));
+  ghttp_prepare(req);	/* should add error checking...*/
+  printf("%s\n", ghttp_get_error(req));
+  ghttp_set_header(req, http_hdr_Connection, "close");
+  printf("%s\n", ghttp_get_error(req));
+  ghttp_process(req);
+  printf("%s\n", ghttp_get_error(req));
+  ghttp_get_body(req);
+  printf("%s\n", ghttp_get_error(req));
+  ghttp_close(req);
+  printf("%s\n", ghttp_get_error(req));
+  ghttp_request_destroy(req);
+      
   
   set_mouse_cursor(appdata, GDK_WATCH);
   while(gtk_events_pending())
