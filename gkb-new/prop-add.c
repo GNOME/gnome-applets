@@ -421,5 +421,5 @@ static void
 addhelp_cb (PanelApplet * applet, gpointer data)
 {
         GError *error = NULL;
-        gnome_help_display("gkb","gkb-prefs-add",&error);
+        gnome_help_display("gkb","gkb-modify-list",&error);
 }

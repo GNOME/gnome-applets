@@ -159,7 +159,7 @@ static void
 gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
 	GError *error = NULL;
-        gnome_help_display("gkb","gkb-prefs-edit",&error);
+        gnome_help_display("gkb","gkb-edit-layout",&error);
 }
 
 
