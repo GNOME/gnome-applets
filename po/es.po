@@ -1,3 +1,4 @@
+# translation of es.po to Spanish
 # translation of gnome-applets to Spanish
 # Copyright © 1998,2002,2003 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-applets package.
@@ -12,10 +13,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets\n"
+"Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-17 00:11+0200\n"
-"PO-Revision-Date: 2004-05-17 00:21+0200\n"
+"POT-Creation-Date: 2004-06-05 21:43+0200\n"
+"PO-Revision-Date: 2004-06-05 21:49+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -65,7 +66,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fábrica de la miniaplicación de estado de AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1260
 msgid "Keyboard Accessibility Status"
 msgstr "Estado de accesibilidad del teclado"
 
@@ -88,10 +89,10 @@ msgstr "Muestra el estado de las características de accesibilidad del teclado"
 msgid "Utility"
 msgstr "Utilidades"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:917
-#: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:601
-#: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:987
+#: cdplayer/cdplayer.c:611 charpick/charpick.c:556 drivemount/drivemount.c:553
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:607
+#: gtik/gtik.c:721 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
@@ -106,7 +107,7 @@ msgstr ""
 "Miguel de Icaza <miguel@metropolis.nuclecu.unam.mx>"
 
 #: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:1068 accessx-status/applet.c:1263
 msgid "AccessX Status"
 msgstr "Estado de AccessX"
 
@@ -135,20 +136,19 @@ msgstr "Ha ocurrido un error al ejecutar el capplet del teclado: %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:984 accessx-status/applet.c:1069
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Muestra el estado del teclado cuando las características de accesibilidad se "
 "usan."
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1265
 msgid "Displays current state of keyboard accessibility features"
-msgstr ""
-"Muestra el estado actual de las características de accesibilidad del teclado"
+msgstr "Muestra el estado actual de las características de accesibilidad del teclado"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:938 battstat/battstat_applet.c:1690
+#: battstat/battstat_applet.c:1008 battstat/battstat_applet.c:1753
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga batería"
 
@@ -157,7 +157,7 @@ msgid "Battstat Factory"
 msgstr "Fábrica para monitor de carga"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1691
+#: battstat/battstat_applet.c:1754
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un equipo portátil"
 
@@ -260,23 +260,23 @@ msgstr "Nivel de valor amarillo"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:338
+#: battstat/battstat_applet.c:340
 msgid "Your platform is not supported!\n"
 msgstr "¡Su plataforma no está soportada!\n"
 
-#: battstat/battstat_applet.c:339
+#: battstat/battstat_applet.c:341
 msgid "The applet will not work properly (if at all).\n"
 msgstr "La miniaplicación no funcionará adecuadamente (por completo).\n"
 
-#: battstat/battstat_applet.c:356
+#: battstat/battstat_applet.c:358
 msgid "charged"
 msgstr "cargado"
 
-#: battstat/battstat_applet.c:358
+#: battstat/battstat_applet.c:360
 msgid "..."
 msgstr "..."
 
-#: battstat/battstat_applet.c:360
+#: battstat/battstat_applet.c:362
 #, c-format
 msgid "%d hours %d minutes remaining"
 msgstr "quedan %d horas y %d minutos"
@@ -284,38 +284,45 @@ msgstr "quedan %d horas y %d minutos"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:385 battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1045
 msgid "High"
 msgstr "Alta"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:387 battstat/battstat_applet.c:977
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1047
 msgid "Low"
 msgstr "Baja"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1049
 msgid "Critical"
 msgstr "Crítica"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1051
 msgid "Charging"
 msgstr "Cargando"
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:478
 #, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Batería baja (%d%%) y la CA está desconectada"
+msgid ""
+"Your battery is running low (%d%%, %s). You should recharge your battery to "
+"avoid losing your work."
+msgstr "Su batería se está agotando (%d%%, %s). Debería recargar su batería para evitar perder su trabajo."
 
-#: battstat/battstat_applet.c:496
-msgid "Battery is now fully re-charged!"
-msgstr "La batería está recargada al máximo"
+#: battstat/battstat_applet.c:481 battstat/battstat_applet.c:528
+msgid "Battery Notice"
+msgstr "Notificación de batería"
 
+#: battstat/battstat_applet.c:547
+msgid "Your battery is now fully recharged."
+msgstr "La batería está recargada al máximo."
+
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:515 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:591 battstat/battstat_applet.c:1206
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -324,10 +331,11 @@ msgstr ""
 "El sistema está funcionando con baterías\n"
 "Batería: %d%% (%s)"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:519 battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:594 battstat/battstat_applet.c:1213
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -336,24 +344,23 @@ msgstr ""
 "El sistema está funcionando con CA\n"
 "Batería: %d%% (%s)"
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:525 battstat/battstat_applet.c:1071
-#: battstat/battstat_applet.c:1160
-#, c-format
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:1226
 msgid "System is running on battery power"
 msgstr "El sistema está funcionando con baterías"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:528 battstat/battstat_applet.c:1077
-#: battstat/battstat_applet.c:1166
-#, c-format
+#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1231
 msgid "System is running on AC power"
 msgstr "El sistema está funcionando con CA"
 
-#: battstat/battstat_applet.c:542 wireless/wireless-applet.c:146
-#, c-format
+#: battstat/battstat_applet.c:616 wireless/wireless-applet.c:146
 msgid "N/A"
 msgstr "N/D"
 
@@ -362,7 +369,7 @@ msgstr "N/D"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:671 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:745 battstat/battstat_applet.c:1120
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "El sistema está funcionando con baterías. Batería: %d%% (%s)"
@@ -372,7 +379,7 @@ msgstr "El sistema está funcionando con baterías. Batería: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:677 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1126
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "El sistema está funcionando con CA. Batería: %d%% (%s)"
@@ -381,36 +388,33 @@ msgstr "El sistema está funcionando con CA. Batería: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:687
-#, c-format
+#: battstat/battstat_applet.c:759
 msgid "System is running on battery power. Battery: Not present"
 msgstr "El sistema está funcionando con baterías. Batería: ausente"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:693
-#, c-format
+#: battstat/battstat_applet.c:764
 msgid "System is running on AC power. Battery: Not present"
 msgstr "El sistema está funcionando con CA. Batería: ausente"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:702
+#. contains a string of the time remaining
+#: battstat/battstat_applet.c:772
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batería: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:708
-#, c-format
+#: battstat/battstat_applet.c:777
 msgid "Battery: Not present"
 msgstr "Batería: ausente"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:808
+#: battstat/battstat_applet.c:878
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -423,7 +427,7 @@ msgstr ""
 "dispositivo APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:817
+#: battstat/battstat_applet.c:887
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -432,7 +436,7 @@ msgstr ""
 "El subsistema de administración APM parece estar desactivado.\n"
 "Intente ejecutar «apm -e 1» (FreeBSD) y vea si esto ayuda.\n"
 
-#: battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:943
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -441,16 +445,16 @@ msgstr ""
 "Ha ocurrido un error al lanzar el comando Suspender: %s\n"
 "Intente corregir este error"
 
-#: battstat/battstat_applet.c:877
+#: battstat/battstat_applet.c:947
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "El comando de suspensión «%s» no tuvo éxito."
 
-#: battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:949
 msgid "The Suspend command was unsuccessful."
 msgstr "El comando de suspensión no tuvo éxito."
 
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:957
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -461,19 +465,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:905
+#: battstat/battstat_applet.c:975
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:940
+#: battstat/battstat_applet.c:1010
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:941
+#: battstat/battstat_applet.c:1011
 msgid "This utility shows the status of your laptop battery."
 msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 
-#: battstat/battstat_applet.c:1616
+#: battstat/battstat_applet.c:1679
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -520,7 +524,7 @@ msgstr "<b>Suspender</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Advertencias</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1478
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1480
 msgid "Appearance"
 msgstr "Apariencia"
 
@@ -530,7 +534,7 @@ msgstr "Preferencias del monitor de carga batería"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
 #: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "General"
 
@@ -588,7 +592,7 @@ msgstr "A_marillo:"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
@@ -608,8 +612,8 @@ msgstr "Batería recargada completamente"
 msgid "Battery power low"
 msgstr "Batería con carga baja"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:620
-#: cdplayer/cdplayer.c:1084
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:628
+#: cdplayer/cdplayer.c:1130
 msgid "CD Player"
 msgstr "Reproductor de CD"
 
@@ -634,61 +638,61 @@ msgstr "Miniaplicación de panel para reproducir CDs de audio"
 msgid "_Open CD Player"
 msgstr "_Abrir el reproductor de CDs"
 
-#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1074
+#: cdplayer/cdplayer.c:180 cdplayer/cdplayer.c:1120
 msgid "Stop"
 msgstr "Detener"
 
-#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1076
+#: cdplayer/cdplayer.c:184 cdplayer/cdplayer.c:1122
 msgid "Play / Pause"
 msgstr "Reproducir / Pausa"
 
-#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1078
+#: cdplayer/cdplayer.c:188 cdplayer/cdplayer.c:1124
 msgid "Eject"
 msgstr "Expulsar"
 
-#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1080
+#: cdplayer/cdplayer.c:192 cdplayer/cdplayer.c:1126
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1082
+#: cdplayer/cdplayer.c:196 cdplayer/cdplayer.c:1128
 msgid "Next Track"
 msgstr "Pista siguiente"
 
-#: cdplayer/cdplayer.c:253
+#: cdplayer/cdplayer.c:255
 msgid "You do not have permission to use the CD player."
 msgstr "Usted no tiene permisos para utilizar el reproductor de CD"
 
-#: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
+#: cdplayer/cdplayer.c:393 mixer/mixer.c:1299 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Ha ocurrido un error al ejecutar «%s» : %s"
 
-#: cdplayer/cdplayer.c:436
+#: cdplayer/cdplayer.c:444
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s no parece ser un reproductor de CD"
 
-#: cdplayer/cdplayer.c:502
+#: cdplayer/cdplayer.c:510
 msgid "CD Player Preferences"
 msgstr "Preferencias del reproductor de CD"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:531
 msgid "Device _path:"
 msgstr "Ruta del _dispositivo:"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:540
 msgid "Device Path"
 msgstr "Ruta del dispositivo"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:540
 msgid "Set the device path here"
 msgstr "Establezca la ruta del dispositivo aquí"
 
-#: cdplayer/cdplayer.c:535
+#: cdplayer/cdplayer.c:543
 msgid "Use _Default"
 msgstr "Usar _predeterminado"
 
-#: cdplayer/cdplayer.c:621
+#: cdplayer/cdplayer.c:629
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -696,43 +700,47 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:623 cdplayer/cdplayer.c:1085
+#: cdplayer/cdplayer.c:631 cdplayer/cdplayer.c:1131
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "La miniaplicación reproductor de CD, es un reproductor sencillo de CD para "
 "su panel"
 
-#: cdplayer/cdplayer.c:899 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:908 cdplayer/cdplayer.c:919
 msgid "Elapsed time"
 msgstr "Tiempo transcurrido"
 
-#: cdplayer/cdplayer.c:902 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:911 cdplayer/cdplayer.c:921
 msgid "Track number"
 msgstr "Número de pista"
 
-#: cdplayer/cdplayer.c:973
+#: cdplayer/cdplayer.c:990
 msgid "Audio device is busy, or being used by another application"
 msgstr ""
 "El dispositivo de sonido se encuentra ocupado o está siendo usado por otra "
 "aplicación"
 
-#: cdplayer/cdplayer.c:1075
+#: cdplayer/cdplayer.c:1017
+msgid "No Device Found or Illegal Format"
+msgstr "No se ha encontrado ningún dispositivo o formato ilegal"
+
+#: cdplayer/cdplayer.c:1121
 msgid "Click this button to Stop playing the CD"
 msgstr "Pulse sobre este botón para detener la reproducción del CD"
 
-#: cdplayer/cdplayer.c:1077
+#: cdplayer/cdplayer.c:1123
 msgid "Click this button to Play or Pause the CD"
 msgstr "Pulse sobre este botón para reproducir o pausar el CD"
 
-#: cdplayer/cdplayer.c:1079
+#: cdplayer/cdplayer.c:1125
 msgid "Click this button to eject the CD"
 msgstr "Pulse sobre este botón para expulsar el CD"
 
-#: cdplayer/cdplayer.c:1081
+#: cdplayer/cdplayer.c:1127
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Pulse sobre este botón para reproducir la pista anterior en el CD"
 
-#: cdplayer/cdplayer.c:1083
+#: cdplayer/cdplayer.c:1129
 msgid "Click this button to Play the next track in the CD"
 msgstr "Pulse sobre este botón para reproducir la siguiente pista en el CD"
 
@@ -1138,11 +1146,11 @@ msgid "Belarus"
 msgstr "Bielorruso"
 
 #: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
-msgid "Belarussian"
+msgid "Belarusian"
 msgstr "Bielorruso"
 
 #: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarussian Sun keymap"
+msgid "Belarusian Sun keymap"
 msgstr "Mapa de teclado Bielorruso de Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
@@ -1670,7 +1678,7 @@ msgid "Basque"
 msgstr "Vasco"
 
 #: gkb-new/descs/presets.xml.in.h:16
-msgid "Belarussian xkb keymap"
+msgid "Belarusian xkb keymap"
 msgstr "Mapa de teclado bielorruso xkb"
 
 #: gkb-new/descs/presets.xml.in.h:17
@@ -2421,7 +2429,7 @@ msgstr "_Nombre:"
 msgid "_Label:"
 msgstr "_Etiqueta:"
 
-#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:7
 msgid "Co_mmand:"
 msgstr "Co_mando:"
 
@@ -2441,7 +2449,7 @@ msgstr "Etiqueta"
 msgid "Flag and Label"
 msgstr "Bandera y etiqueta"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1485 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1487 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Mostrar"
@@ -2538,7 +2546,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Indicador de distribución del teclado de Gnome"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:606
+#: gswitchit/gswitchit-applet.c:612
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclado"
 
@@ -2551,19 +2559,19 @@ msgstr "Fábrica de la miniaplicación del teclado"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador del teclado (%s)"
 
-#: gswitchit/gswitchit-applet.c:609
+#: gswitchit/gswitchit-applet.c:615
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Oudaltsov © 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:611
+#: gswitchit/gswitchit-applet.c:617
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para Gnome"
 
-#: gswitchit/gswitchit-applet.c:765
+#: gswitchit/gswitchit-applet.c:771
 msgid "XKB initialization error"
 msgstr "Error de inicialización de KXB"
 
-#: gswitchit/gswitchit-applet.c:773
+#: gswitchit/gswitchit-applet.c:779
 msgid "Error loading XKB configuration registry"
 msgstr "Error al cargar el registro de configuración XKB"
 
@@ -2711,8 +2719,7 @@ msgstr "Mostrar banderas en el miniaplicación"
 
 #: gswitchit/gswitchit.schemas.in.h:8
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
-"Mostrar banderas en el miniaplicación para indicar la distribución actual"
+msgstr "Mostrar banderas en el miniaplicación para indicar la distribución actual"
 
 #: gswitchit/gswitchit.schemas.in.h:9
 msgid "Show layout names instead of group names"
@@ -2740,12 +2747,12 @@ msgstr "Obtener continuamente valores bursátiles actualizados"
 msgid "Gtik Applet Factory"
 msgstr "Fábrica de la miniaplicación Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:742
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:744
 msgid "Stock Ticker"
 msgstr "Marcador de valores bursátiles"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:83 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Actualizar"
 
@@ -2753,11 +2760,15 @@ msgstr "_Actualizar"
 msgid "Could not retrieve the stock data."
 msgstr "No se ha podido obtener los datos del mercado."
 
-#: gtik/gtik.c:309 gweather/gweather-applet.c:456
+#: gtik/gtik.c:278
+msgid "No stock list"
+msgstr "No hay una lista predeterminada"
+
+#: gtik/gtik.c:311 gweather/gweather-applet.c:466
 msgid "Updating..."
 msgstr "Actualizando..."
 
-#: gtik/gtik.c:744
+#: gtik/gtik.c:746
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2770,126 +2781,126 @@ msgstr ""
 "Marcador de Valores Bursátiles de GNOME para tomar decisiones de inversión; "
 "es sólo para propósitos de información."
 
-#: gtik/gtik.c:1234
+#: gtik/gtik.c:1236
 msgid "Current _stocks:"
 msgstr "_Stocks actuales:"
 
-#: gtik/gtik.c:1242
+#: gtik/gtik.c:1244
 msgid "_New symbol:"
 msgstr "Símbolo _nuevo:"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1253
 msgid "_Add"
 msgstr "_Añadir"
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1262
 msgid "_Remove"
 msgstr "_Quitar"
 
-#: gtik/gtik.c:1366
+#: gtik/gtik.c:1368
 msgid "Stock Ticker Preferences"
 msgstr "Preferencias del marcador de valores bursátiles de GNOME"
 
-#: gtik/gtik.c:1388
+#: gtik/gtik.c:1390
 msgid "Symbols"
 msgstr "Símbolos"
 
-#: gtik/gtik.c:1395 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1397 mailcheck/mailcheck.c:2389
 msgid "Behavior"
 msgstr "Comportamiento"
 
-#: gtik/gtik.c:1398 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1400 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "Actualizar"
 
-#: gtik/gtik.c:1402
+#: gtik/gtik.c:1404
 msgid "Stock update fre_quency:"
 msgstr "Fre_cuencia de actualización stocks:"
 
-#: gtik/gtik.c:1414 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
+#: gtik/gtik.c:1416 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
 #: mailcheck/mailcheck.c:2101
 msgid "minutes"
 msgstr "minutos"
 
-#: gtik/gtik.c:1420
+#: gtik/gtik.c:1422
 msgid "Scrolling"
 msgstr "Desplazamiento"
 
-#: gtik/gtik.c:1424
+#: gtik/gtik.c:1426
 msgid "_Scroll speed:"
 msgstr "Velocidad de de_splazamiento:"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1430
 msgid "Slow"
 msgstr "Lenta"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1432
 msgid "Medium"
 msgstr "Intermedia"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1434
 msgid "Fast"
 msgstr "Rápida"
 
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1454
 msgid "_Enable scroll buttons"
 msgstr "_Activar botones para desplazamiento"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1466
 msgid "Scroll _left to right"
 msgstr "Desplazamiento de _izquierda a derecha"
 
-#: gtik/gtik.c:1490
+#: gtik/gtik.c:1492
 msgid "Displa_y only symbols and price"
 msgstr "_Muestra sólo los símbolos y precios"
 
-#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1505 mini-commander/src/mini-commander.glade.h:20
 #: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "A_ncho:"
 
-#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1519 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "píxeles"
 
-#: gtik/gtik.c:1526
+#: gtik/gtik.c:1528
 msgid "Font and Colors"
 msgstr "Tipografías y colores"
 
-#: gtik/gtik.c:1532
+#: gtik/gtik.c:1534
 msgid "Use _default theme font and colors"
 msgstr "Usar la tipografía, el tema y los colores pre_determinados"
 
-#: gtik/gtik.c:1547 stickynotes/stickynotes.glade.h:45
+#: gtik/gtik.c:1549 stickynotes/stickynotes.glade.h:45
 msgid "_Font:"
 msgstr "T_ipografía:"
 
-#: gtik/gtik.c:1571
+#: gtik/gtik.c:1573
 msgid "Stock _raised:"
 msgstr "Valor en _subida:"
 
-#: gtik/gtik.c:1590
+#: gtik/gtik.c:1592
 msgid "Stock _lowered:"
 msgstr "Valor en ba_ja:"
 
-#: gtik/gtik.c:1609
+#: gtik/gtik.c:1611
 msgid "Stock _unchanged:"
 msgstr "Valor sin ca_mbios:"
 
-#: gtik/gtik.c:1628 modemlights/properties.c:580
+#: gtik/gtik.c:1630 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Fondo:"
 
-#: gtik/gtik.c:1771
+#: gtik/gtik.c:1773
 msgid "Skip forward"
 msgstr "Adelantar"
 
-#: gtik/gtik.c:1772
+#: gtik/gtik.c:1774
 msgid "Skip backward"
 msgstr "Retroceder"
 
-#: gtik/gtik.c:1780
+#: gtik/gtik.c:1782
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2897,11 +2908,11 @@ msgstr ""
 "Marcador de acciones\n"
 "Obtiene valores de mercado actualizados continuamente"
 
-#: gtik/gtik.c:1992
+#: gtik/gtik.c:1994
 msgid "(No"
 msgstr "(No"
 
-#: gtik/gtik.c:1993
+#: gtik/gtik.c:1995
 msgid "Change "
 msgstr "Cambio"
 
@@ -2953,8 +2964,7 @@ msgstr "Desplazamiento de derecha a izquierda"
 
 #: gtik/gtik.schemas.in.h:10
 msgid "Shorter time means the stocks scroll by faster."
-msgstr ""
-"Un tiempo mas corto significa que las acciones se desplazarán mas rápido."
+msgstr "Un tiempo mas corto significa que las acciones se desplazarán mas rápido."
 
 #: gtik/gtik.schemas.in.h:11
 msgid "Show arrow buttons"
@@ -3091,83 +3101,83 @@ msgstr ""
 "\n"
 "Una miniaplicación para monitorizar la meteorología local."
 
-#: gweather/gweather-applet.c:336
+#: gweather/gweather-applet.c:343 gweather/gweather-applet.c:347
 msgid "GNOME Weather"
 msgstr "GNOME Meteorología"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:302
+#: gweather/gweather-dialog.c:81 gweather/gweather-dialog.c:314
 msgid "Forecast"
 msgstr "Pronóstico"
 
-#: gweather/gweather-dialog.c:109
+#: gweather/gweather-dialog.c:121
 msgid "City:"
 msgstr "Ciudad:"
 
-#: gweather/gweather-dialog.c:117
+#: gweather/gweather-dialog.c:129
 msgid "Last update:"
 msgstr "Última actualización:"
 
-#: gweather/gweather-dialog.c:125
+#: gweather/gweather-dialog.c:137
 msgid "Conditions:"
 msgstr "Condiciones:"
 
-#: gweather/gweather-dialog.c:133
+#: gweather/gweather-dialog.c:145
 msgid "Sky:"
 msgstr "Cielo:"
 
-#: gweather/gweather-dialog.c:141
+#: gweather/gweather-dialog.c:153
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:149
+#: gweather/gweather-dialog.c:161
 msgid "Dew point:"
 msgstr "Temperatura de condensación"
 
-#: gweather/gweather-dialog.c:157
+#: gweather/gweather-dialog.c:169
 msgid "Humidity:"
 msgstr "Humedad:"
 
-#: gweather/gweather-dialog.c:165
+#: gweather/gweather-dialog.c:177
 msgid "Wind:"
 msgstr "Viento:"
 
-#: gweather/gweather-dialog.c:173
+#: gweather/gweather-dialog.c:185
 msgid "Pressure:"
 msgstr "Presión atmosférica:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:193
 msgid "Visibility:"
 msgstr "Visibilidad:"
 
-#: gweather/gweather-dialog.c:276
+#: gweather/gweather-dialog.c:288
 msgid "Current Conditions"
 msgstr "Condiciones actuales"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:304
 msgid "Forecast Report"
 msgstr "Informe del pronóstico"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:304
 msgid "See the ForeCast Details"
 msgstr "Ver los detalles del pronóstico"
 
-#: gweather/gweather-dialog.c:327
+#: gweather/gweather-dialog.c:339
 msgid "_Visit Weather.com"
 msgstr "_Visitar weather.com"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:340
 msgid "URL link Button"
 msgstr "Botón el enlace URL"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:340
 msgid "Click to Enter Weather.com"
 msgstr "Pulse para entrar en Weather.com"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:348
 msgid "Radar Map"
 msgstr "Mapa de radar"
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:424
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -3177,7 +3187,7 @@ msgstr ""
 "Por favor intente con el pronóstico estatal; note que pronósticos IWIN están "
 "disponibles sólo para ciudades de EUA."
 
-#: gweather/gweather-dialog.c:414
+#: gweather/gweather-dialog.c:426
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -3269,7 +3279,7 @@ msgstr "Madrid (Barajas)"
 #: gweather/gweather.schemas.in.h:3 gweather/weather.c:137
 #: gweather/weather.c:142
 msgid "DEFAULT_RADAR"
-msgstr ""
+msgstr "----"
 
 #. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
 #. gweather/Locations file
@@ -3278,7 +3288,7 @@ msgstr ""
 #: gweather/gweather.schemas.in.h:4 gweather/weather.c:122
 #: gweather/weather.c:127
 msgid "DEFAULT_ZONE"
-msgstr ""
+msgstr "----"
 
 #: gweather/gweather.schemas.in.h:5
 msgid ""
@@ -3346,8 +3356,8 @@ msgid "knots"
 msgstr "nudos"
 
 #: gweather/weather.c:58
-msgid "kph"
-msgstr "kph"
+msgid "km/h"
+msgstr "km/h"
 
 #: gweather/weather.c:63
 msgid "inHg"
@@ -3433,9 +3443,9 @@ msgstr "Noroeste"
 msgid "North - Northwest"
 msgstr "Norte - Noroeste"
 
-#: gweather/weather.c:193 gweather/weather.c:2025 gweather/weather.c:2037
-#: gweather/weather.c:2049 gweather/weather.c:2061 gweather/weather.c:2079
-#: gweather/weather.c:2091
+#: gweather/weather.c:193 gweather/weather.c:2105 gweather/weather.c:2117
+#: gweather/weather.c:2129 gweather/weather.c:2141 gweather/weather.c:2159
+#: gweather/weather.c:2171
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -3754,27 +3764,27 @@ msgstr "Remolino de polvo"
 msgid "Dust whirls in the vicinity"
 msgstr "Remolino de polvo en los alrededores"
 
-#: gweather/weather.c:894 gweather/weather.c:934 gweather/weather.c:1651
+#: gweather/weather.c:907 gweather/weather.c:949 gweather/weather.c:1701
 msgid "Failed to get METAR data.\n"
 msgstr "Ha fallado la obtención de los datos METAR.\n"
 
-#: gweather/weather.c:926 gweather/weather.c:954 gweather/weather.c:1192
+#: gweather/weather.c:941 gweather/weather.c:969 gweather/weather.c:1216
 msgid "WeatherInfo missing location"
 msgstr "dirección perdida para WeatherInfo"
 
-#: gweather/weather.c:1989
+#: gweather/weather.c:2069
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d de %b / %H:%M"
 
-#: gweather/weather.c:1993
+#: gweather/weather.c:2073
 msgid "Unknown observation time"
 msgstr "Hora de observación desconocida"
 
-#: gweather/weather.c:2063
+#: gweather/weather.c:2143
 msgid "Calm"
 msgstr "Calma"
 
-#: gweather/weather.c:2136
+#: gweather/weather.c:2216
 msgid "Retrieval failed"
 msgstr "Ha fallado la obtención"
 
@@ -4016,8 +4026,7 @@ msgstr "Comprobación de correo"
 
 #: mailcheck/mailcheck.c:2889
 msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr ""
-"La comprobación de correo le avisa cuando llega correo nuevo a su casilla"
+msgstr "La comprobación de correo le avisa cuando llega correo nuevo a su casilla"
 
 #: mailcheck/mailcheck.schemas.in.h:1
 msgid "Command to execute when checking mail"
@@ -4244,82 +4253,69 @@ msgid "Error syncing config data: %s"
 msgstr "Error al sincronizar los datos de configuración: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Appearance</b>"
-msgstr "<b>Apariencia</b>"
-
-#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
 msgstr "<b>Autocompletar</b>"
 
 # gnome-terminal/gnome-terminal.c:801
-#: mini-commander/src/mini-commander.glade.h:5
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Colors</b>"
 msgstr "<b>Colores</b>"
 
-#: mini-commander/src/mini-commander.glade.h:6
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Size</b>"
 msgstr "<b>Tamaño</b>"
 
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:6
 msgid "Add New Macro"
 msgstr "Añadir una macro nueva"
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command Line Preferences"
 msgstr "Preferencias de línea de comandos"
 
-#: mini-commander/src/mini-commander.glade.h:10
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
 msgstr "_Fondo de la línea de comando:"
 
-#: mini-commander/src/mini-commander.glade.h:11
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
 msgstr "Color línea de _comando:"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
 msgstr "Activar el histórico basado e_n autocompletar"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
 msgstr "Macros"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pick a color"
 msgstr "Escoja un color"
 
-#: mini-commander/src/mini-commander.glade.h:16
-msgid "Show fram_e"
-msgstr "Ver cua_dro"
-
-#: mini-commander/src/mini-commander.glade.h:17
-msgid "Show han_dle"
-msgstr "Mostrar man_ejador"
-
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
 msgstr "_Añadir una macro..."
 
-#: mini-commander/src/mini-commander.glade.h:19
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
 msgstr "B_orrar macro"
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
 msgstr "_Macros:"
 
-#: mini-commander/src/mini-commander.glade.h:21
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "_Pattern:"
 msgstr "_Patrón:"
 
-#: mini-commander/src/mini-commander.glade.h:22
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
 msgstr "_Usar los colores predeterminados del tema"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
-"Intenta autocompletar un comando desde el historial de comandos ingresados."
+msgstr "Intenta autocompletar un comando desde el historial de comandos ingresados."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Background color, blue component"
@@ -4433,58 +4429,57 @@ msgstr "Usar los colores del tema en lugar de los personalizados."
 msgid "Width"
 msgstr "Ancho"
 
-#: mini-commander/src/mini-commander_applet.c:228
-#: mini-commander/src/mini-commander_applet.c:232
+#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:230
 msgid "Browser"
 msgstr "Navegador"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Click this button to start the browser"
 msgstr "Pulse sobre este botón para iniciar el navegador"
 
-#: mini-commander/src/mini-commander_applet.c:246
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:248
 msgid "History"
 msgstr "Histórico"
 
-#: mini-commander/src/mini-commander_applet.c:251
+#: mini-commander/src/mini-commander_applet.c:249
 msgid "Click this button for the list of previous commands"
 msgstr "Pulse sobre este botón para la lista de comandos anteriores"
 
-#: mini-commander/src/mini-commander_applet.c:363
+#: mini-commander/src/mini-commander_applet.c:319
 msgid "Command line has been disabled by your system administrator"
-msgstr ""
-"La línea de comandos ha sido desactivada por su administrador del sistema"
+msgstr "La línea de comandos ha sido desactivada por su administrador del sistema"
 
-#: mini-commander/src/mini-commander_applet.c:426
+#: mini-commander/src/mini-commander_applet.c:382
 msgid "Mini-Commander applet"
 msgstr "Miniaplicación Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:427
+#: mini-commander/src/mini-commander_applet.c:383
 msgid "This applet adds a command line to the panel"
 msgstr "Esta miniaplicación agrega una línea de comandos al panel"
 
-#: mini-commander/src/preferences.c:428
+#: mini-commander/src/preferences.c:400
 msgid "You must specify a pattern"
 msgstr "Debe especificar un patrón"
 
-#: mini-commander/src/preferences.c:432
+#: mini-commander/src/preferences.c:404
 msgid "You must specify a pattern and a command"
 msgstr "Debe especificar un patrón y un comando"
 
-#: mini-commander/src/preferences.c:433
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a command"
 msgstr "Debe especificar un comando"
 
-#: mini-commander/src/preferences.c:436
+#: mini-commander/src/preferences.c:408
 msgid "You may not specify duplicate patterns"
 msgstr "No puede especificar patrones duplicados"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:778
 msgid "Pattern"
 msgstr "Patrón"
 
-#: mini-commander/src/preferences.c:860
+#: mini-commander/src/preferences.c:788
 msgid "Command"
 msgstr "Comando"
 
@@ -4674,8 +4669,7 @@ msgstr ""
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
-msgstr ""
-"Canal controlado por la miniaplicación. Sólo para configuraciones de OSS"
+msgstr "Canal controlado por la miniaplicación. Sólo para configuraciones de OSS"
 
 #: mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
@@ -4752,8 +4746,7 @@ msgstr "Mostrar un diálogo de confirmación al conectarse o desconectarse."
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr ""
-"Hacer que la miniaplicación parpadee cuando el módem se esté conectando."
+msgstr "Hacer que la miniaplicación parpadee cuando el módem se esté conectando."
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
@@ -4817,30 +4810,26 @@ msgstr "Color del borde del texto"
 
 #: modemlights/modemlights.schemas.in.h:21
 msgid "The background color of the button used to indicate data received."
-msgstr ""
-"El color de fondo del botón utilizado para indicar la recepción de datos."
+msgstr "El color de fondo del botón utilizado para indicar la recepción de datos."
 
 #: modemlights/modemlights.schemas.in.h:22
 msgid "The background color of the button used to indicate data sent."
 msgstr "El color de fondo del botón utilizado para indicar el envío de datos."
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid ""
-"The color used to display the status button when the modem is connected."
+msgid "The color used to display the status button when the modem is connected."
 msgstr ""
 "El color utilizado para mostrar el botón de estado cuando el módem está "
 "conectado."
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid ""
-"The color used to display the status button when the modem is connecting."
+msgid "The color used to display the status button when the modem is connecting."
 msgstr ""
 "El color usado para mostrar el botón de estado cuando el módem está "
 "conectándose."
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid ""
-"The color used to display the status button when the modem is not connected."
+msgid "The color used to display the status button when the modem is not connected."
 msgstr ""
 "El color utilizado para mostrar el botón de estado cuando el módem no está "
 "conectado."
@@ -5129,8 +5118,7 @@ msgstr "El color del gráfico para el promedio de carga"
 
 #: multiload/multiload.schemas.in.h:15
 msgid "Graph color for nice-related CPU activity"
-msgstr ""
-"El color del gráfico para la actividad de la CPU relacionada con la prioridad"
+msgstr "El color del gráfico para la actividad de la CPU relacionada con la prioridad"
 
 #: multiload/multiload.schemas.in.h:16
 msgid "Graph color for other network usage"
@@ -5142,13 +5130,11 @@ msgstr "El color del gráfico para la memoria compartida"
 
 #: multiload/multiload.schemas.in.h:18
 msgid "Graph color for system-related CPU activity"
-msgstr ""
-"El color del gráfico para la actividad de la CPU relacionada con el sistema"
+msgstr "El color del gráfico para la actividad de la CPU relacionada con el sistema"
 
 #: multiload/multiload.schemas.in.h:19
 msgid "Graph color for user-related CPU activity"
-msgstr ""
-"El color del gráfico para la actividad de la CPU relacionada con el usuario"
+msgstr "El color del gráfico para la actividad de la CPU relacionada con el usuario"
 
 #: multiload/multiload.schemas.in.h:20
 msgid "Graph color for user-related memory usage"
@@ -5392,8 +5378,7 @@ msgstr "Seleccione si las notas serán visibles en todas las áreas de trabajo"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr ""
-"Seleccione si se debe forzar el estilo predeterminado en todas las notas"
+msgstr "Seleccione si se debe forzar el estilo predeterminado en todas las notas"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
@@ -5536,8 +5521,7 @@ msgstr "Formato de fecha del título de la nota"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
-msgstr ""
-"Comportamiento predeterminado de la miniaplicación al pulsar ser pulsada"
+msgstr "Comportamiento predeterminado de la miniaplicación al pulsar ser pulsada"
 
 #: stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new notes"
@@ -5629,8 +5613,7 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
-"Especifica si las notas adhesivas están bloqueadas (no editables) o no."
+msgstr "Especifica si las notas adhesivas están bloqueadas (no editables) o no."
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
@@ -5743,6 +5726,21 @@ msgstr "Preferencias del monitor de enlace inalámbrico"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorizado:"
+
+#~ msgid "Battery low (%d%%) and AC is offline"
+#~ msgstr "Batería baja (%d%%) y la CA está desconectada"
+
+#~ msgid "kph"
+#~ msgstr "kph"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Apariencia</b>"
+
+#~ msgid "Show fram_e"
+#~ msgstr "Ver cua_dro"
+
+#~ msgid "Show han_dle"
+#~ msgstr "Mostrar man_ejador"
 
 #~ msgid "La_youts..."
 #~ msgstr "Dispo_siciones..."
@@ -6040,3 +6038,4 @@ msgstr "Dispositivo _monitorizado:"
 
 #~ msgid "_Update preview"
 #~ msgstr "Act_ualizar vista preliminar"
+
