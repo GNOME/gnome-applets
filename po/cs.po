@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-02 03:39+0200\n"
-"PO-Revision-Date: 2004-06-02 11:28+0200\n"
+"POT-Creation-Date: 2004-06-07 03:40+0200\n"
+"PO-Revision-Date: 2004-06-07 11:05+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "Nástroj"
 #: accessx-status/applet.c:134 battstat/battstat_applet.c:987
 #: cdplayer/cdplayer.c:611 charpick/charpick.c:556 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:607
-#: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: gtik/gtik.c:721 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
@@ -516,7 +516,7 @@ msgstr "<b>Uspat</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Varování</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1478
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1480
 msgid "Appearance"
 msgstr "Vzhled"
 
@@ -1132,11 +1132,11 @@ msgid "Belarus"
 msgstr "Bělorusko"
 
 #: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
-msgid "Belarussian"
+msgid "Belarusian"
 msgstr "Běloruská"
 
 #: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarussian Sun keymap"
+msgid "Belarusian Sun keymap"
 msgstr "Běloruská mapa kláves Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
@@ -1664,7 +1664,7 @@ msgid "Basque"
 msgstr "Baskická"
 
 #: gkb-new/descs/presets.xml.in.h:16
-msgid "Belarussian xkb keymap"
+msgid "Belarusian xkb keymap"
 msgstr "Běloruská mapa kláves xkb"
 
 #: gkb-new/descs/presets.xml.in.h:17
@@ -2432,7 +2432,7 @@ msgstr "Popis"
 msgid "Flag and Label"
 msgstr "Vlajka a popis"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1485 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1487 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Zobrazení"
@@ -2725,12 +2725,12 @@ msgstr "Získává neustále aktualizované kurzy akcií"
 msgid "Gtik Applet Factory"
 msgstr "Generátor pro aplet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:742
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:744
 msgid "Stock Ticker"
 msgstr "Sledování burzy"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:83 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Aktualizovat"
 
@@ -2738,11 +2738,15 @@ msgstr "_Aktualizovat"
 msgid "Could not retrieve the stock data."
 msgstr "Nemohu získat předdefinovaná data."
 
-#: gtik/gtik.c:309 gweather/gweather-applet.c:460
+#: gtik/gtik.c:278
+msgid "No stock list"
+msgstr "Žádný seznam akcií"
+
+#: gtik/gtik.c:311 gweather/gweather-applet.c:466
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
-#: gtik/gtik.c:744
+#: gtik/gtik.c:746
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2755,126 +2759,126 @@ msgstr ""
 "aplikaci při rozhodování o investicích; tato aplikace slouží pouze k "
 "informativním účelům."
 
-#: gtik/gtik.c:1234
+#: gtik/gtik.c:1236
 msgid "Current _stocks:"
 msgstr "Aktuální _akcie:"
 
-#: gtik/gtik.c:1242
+#: gtik/gtik.c:1244
 msgid "_New symbol:"
 msgstr "Nový _symbol:"
 
-#: gtik/gtik.c:1251
+#: gtik/gtik.c:1253
 msgid "_Add"
 msgstr "Přid_at"
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1262
 msgid "_Remove"
 msgstr "_Odstranit"
 
-#: gtik/gtik.c:1366
+#: gtik/gtik.c:1368
 msgid "Stock Ticker Preferences"
 msgstr "Nastavení Sledování burzy"
 
-#: gtik/gtik.c:1388
+#: gtik/gtik.c:1390
 msgid "Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1395 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1397 mailcheck/mailcheck.c:2389
 msgid "Behavior"
 msgstr "Chování"
 
-#: gtik/gtik.c:1398 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1400 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "Aktualizace"
 
-#: gtik/gtik.c:1402
+#: gtik/gtik.c:1404
 msgid "Stock update fre_quency:"
 msgstr "_Frekvence aktualizace:"
 
-#: gtik/gtik.c:1414 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
+#: gtik/gtik.c:1416 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
 #: mailcheck/mailcheck.c:2101
 msgid "minutes"
 msgstr "minut"
 
-#: gtik/gtik.c:1420
+#: gtik/gtik.c:1422
 msgid "Scrolling"
 msgstr "Posouvání"
 
-#: gtik/gtik.c:1424
+#: gtik/gtik.c:1426
 msgid "_Scroll speed:"
 msgstr "_Rychlost posouvání:"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1430
 msgid "Slow"
 msgstr "Pomalá"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1432
 msgid "Medium"
 msgstr "Střední"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1434
 msgid "Fast"
 msgstr "Rychlá"
 
-#: gtik/gtik.c:1452
+#: gtik/gtik.c:1454
 msgid "_Enable scroll buttons"
 msgstr "_Povolit tlačítka pro posun"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1466
 msgid "Scroll _left to right"
 msgstr "Posunovat z_leva doprava"
 
-#: gtik/gtik.c:1490
+#: gtik/gtik.c:1492
 msgid "Displa_y only symbols and price"
 msgstr "Zobrazovat pouze s_ymboly a ceny"
 
-#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:20
+#: gtik/gtik.c:1505 mini-commander/src/mini-commander.glade.h:20
 #: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "_Šířka:"
 
-#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:21
+#: gtik/gtik.c:1519 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "bodů"
 
-#: gtik/gtik.c:1526
+#: gtik/gtik.c:1528
 msgid "Font and Colors"
 msgstr "Písmo a barvy"
 
-#: gtik/gtik.c:1532
+#: gtik/gtik.c:1534
 msgid "Use _default theme font and colors"
 msgstr "Po_užívat implicitní písmo a barvy tématu"
 
-#: gtik/gtik.c:1547 stickynotes/stickynotes.glade.h:45
+#: gtik/gtik.c:1549 stickynotes/stickynotes.glade.h:45
 msgid "_Font:"
 msgstr "_Písmo:"
 
-#: gtik/gtik.c:1571
+#: gtik/gtik.c:1573
 msgid "Stock _raised:"
 msgstr "Kurz _stoupl:"
 
-#: gtik/gtik.c:1590
+#: gtik/gtik.c:1592
 msgid "Stock _lowered:"
 msgstr "Kurz _klesl:"
 
-#: gtik/gtik.c:1609
+#: gtik/gtik.c:1611
 msgid "Stock _unchanged:"
 msgstr "Kurz _nezměněn:"
 
-#: gtik/gtik.c:1628 modemlights/properties.c:580
+#: gtik/gtik.c:1630 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "Po_zadí:"
 
-#: gtik/gtik.c:1771
+#: gtik/gtik.c:1773
 msgid "Skip forward"
 msgstr "Přeskočit dopředu"
 
-#: gtik/gtik.c:1772
+#: gtik/gtik.c:1774
 msgid "Skip backward"
 msgstr "Přeskočit dozadu"
 
-#: gtik/gtik.c:1780
+#: gtik/gtik.c:1782
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2882,11 +2886,11 @@ msgstr ""
 "Sledování burzy\n"
 "Získává neustále aktualizované kurzy akcií"
 
-#: gtik/gtik.c:1992
+#: gtik/gtik.c:1994
 msgid "(No"
 msgstr "(Žádná"
 
-#: gtik/gtik.c:1993
+#: gtik/gtik.c:1995
 msgid "Change "
 msgstr "Změna "
 
@@ -3065,83 +3069,83 @@ msgstr ""
 "\n"
 "Aplet pro sledování místního počasí."
 
-#: gweather/gweather-applet.c:337 gweather/gweather-applet.c:341
+#: gweather/gweather-applet.c:343 gweather/gweather-applet.c:347
 msgid "GNOME Weather"
 msgstr "GNOME Počasí"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:302
+#: gweather/gweather-dialog.c:81 gweather/gweather-dialog.c:314
 msgid "Forecast"
 msgstr "Předpověď"
 
-#: gweather/gweather-dialog.c:109
+#: gweather/gweather-dialog.c:121
 msgid "City:"
 msgstr "Město:"
 
-#: gweather/gweather-dialog.c:117
+#: gweather/gweather-dialog.c:129
 msgid "Last update:"
 msgstr "Poslední aktualizace:"
 
-#: gweather/gweather-dialog.c:125
+#: gweather/gweather-dialog.c:137
 msgid "Conditions:"
 msgstr "Podmínky:"
 
-#: gweather/gweather-dialog.c:133
+#: gweather/gweather-dialog.c:145
 msgid "Sky:"
 msgstr "Obloha:"
 
-#: gweather/gweather-dialog.c:141
+#: gweather/gweather-dialog.c:153
 msgid "Temperature:"
 msgstr "Teplota:"
 
-#: gweather/gweather-dialog.c:149
+#: gweather/gweather-dialog.c:161
 msgid "Dew point:"
 msgstr "Rosný bod:"
 
-#: gweather/gweather-dialog.c:157
+#: gweather/gweather-dialog.c:169
 msgid "Humidity:"
 msgstr "Vlhkost:"
 
-#: gweather/gweather-dialog.c:165
+#: gweather/gweather-dialog.c:177
 msgid "Wind:"
 msgstr "Vítr:"
 
-#: gweather/gweather-dialog.c:173
+#: gweather/gweather-dialog.c:185
 msgid "Pressure:"
 msgstr "Tlak:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:193
 msgid "Visibility:"
 msgstr "Viditelnost:"
 
-#: gweather/gweather-dialog.c:276
+#: gweather/gweather-dialog.c:288
 msgid "Current Conditions"
 msgstr "Aktuální podmínky"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:304
 msgid "Forecast Report"
 msgstr "Předpověď počasí"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:304
 msgid "See the ForeCast Details"
 msgstr "Zobrazit detaily předpovědi"
 
-#: gweather/gweather-dialog.c:327
+#: gweather/gweather-dialog.c:339
 msgid "_Visit Weather.com"
 msgstr "_Navštívit weather.com"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:340
 msgid "URL link Button"
 msgstr "Tlačítko odkazu na URL"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:340
 msgid "Click to Enter Weather.com"
 msgstr "Vstupte do weather.com kliknutím"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:348
 msgid "Radar Map"
 msgstr "Mapa radaru"
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:424
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -3151,7 +3155,7 @@ msgstr ""
 "Zkuste prosím předpověď pro stát; předpovědi IWIN jsou k dispozici jen pro "
 "města v USA."
 
-#: gweather/gweather-dialog.c:414
+#: gweather/gweather-dialog.c:426
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -3317,7 +3321,7 @@ msgid "knots"
 msgstr "uzly"
 
 #: gweather/weather.c:58
-msgid "kph"
+msgid "km/h"
 msgstr "km/h"
 
 #: gweather/weather.c:63
