@@ -65,10 +65,11 @@ make_cpuload_applet (const gchar *goad_id)
 					   multiload_properties_cb,
 					   g);
 
-    applet_widget_register_callback (APPLET_WIDGET(applet),
-				     "run_gtop",
-				     _("Run gtop..."),
-				     start_gtop_cb, NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet), 
+					   "run_gtop",
+					   GNOME_STOCK_MENU_INDEX,
+					   _("Run gtop..."),
+					   start_gtop_cb, NULL);
 
     applet_widget_set_tooltip(APPLET_WIDGET(applet), "CPU Load");
 

@@ -339,11 +339,10 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-        applet_widget_register_callback(APPLET_WIDGET(applet),
-		"run_gtcd",         
-	        _("Run gtcd..."),
-	        start_gtcd_cb, NULL);
-                                                                                                                                                                                                        
+        applet_widget_register_stock_callback(APPLET_WIDGET(applet), "run_gtcd",         
+					      GNOME_STOCK_MENU_CDROM, _("Run gtcd..."),
+					      start_gtcd_cb, NULL);
+
 	gtk_widget_show(cdplayer);
 	applet_widget_add (APPLET_WIDGET (applet), cdplayer);
 	gtk_widget_show (applet);
