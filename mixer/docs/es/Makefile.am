@@ -1,6 +1,13 @@
-figs = mixer_applet.png
-applet = mixer
+figs = \
+	figures/mixer_applet.png
+docname = mixer_applet
 lang = es
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = mixer_applet-es.omf
+sgml_ents = mixer.sgml \
+	authors.sgml \
+	licencia-es.sgml \
+	licencia-nota-es.sgml \
+	license.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
