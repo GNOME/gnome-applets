@@ -80,12 +80,13 @@ battery_update(gpointer data)
   battery_read_charge(&percentage, &ac_online, &hours_remaining,
 		      &minutes_remaining);
 
+/* seems to always get displayed, no idea who is defining DEBUG
 #ifdef DEBUG
   fprintf(stderr, "\tRead: %d%%, ac %s, %d hours %d minutes remaining\n",
 	  percentage, ac_online ? "online" : "offline", hours_remaining,
 	  minutes_remaining);
 #endif
-
+*/
   /*
    *
    * Graph Mode 
