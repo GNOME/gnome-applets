@@ -1169,7 +1169,7 @@ gint change_to_skin(gchar *path, AppData *ad)
 			{
 			new_s = load_skin(path,
 					  !(ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
-					  SIZE_STANDARD, ad);
+					  SIZEHINT_STANDARD, ad);
 			}
 		}
 
