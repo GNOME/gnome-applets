@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets cvs\n"
-"POT-Creation-Date: 2003-02-18 04:52+0100\n"
-"PO-Revision-Date: 2002-12-21 13:21+0100\n"
-"Last-Translator: V. van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
+"POT-Creation-Date: 2003-04-18 19:52+0200\n"
+"PO-Revision-Date: 2003-04-19 19:15-0100\n"
+"Last-Translator: Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -260,10 +260,10 @@ msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
 #: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:887
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr ""
 "Dirk-Jan Binnema\n"
@@ -382,7 +382,7 @@ msgid "Battery power low"
 msgstr "Batterij bijna leeg"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:926
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:944
 msgid "CD Player"
 msgstr "CD-Speler"
 
@@ -407,27 +407,27 @@ msgstr "Applet om Audio-CD's af te spelen"
 msgid "_Run External CD Player"
 msgstr "Sta_rt Externe CD-Speler"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:916
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:934
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:918
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:936
 msgid "Play / Pause"
 msgstr "Afspelen/Pauze"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:920
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:938
 msgid "Eject"
 msgstr "Uitwerpen"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:922
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:940
 msgid "Previous Track"
 msgstr "Vorige nummer"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:924
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:942
 msgid "Next Track"
 msgstr "Volgende nummer"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:853
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
@@ -469,7 +469,7 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:927
+#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:945
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Het CD-Speler Applet is een eenvoudige CD speler voor het paneel"
 
@@ -481,23 +481,27 @@ msgstr "Verstreken tijd"
 msgid "Track number"
 msgstr "Tracknummer"
 
-#: cdplayer/cdplayer.c:917
+#: cdplayer/cdplayer.c:860
+msgid "Audio device is busy, or being used by another application"
+msgstr "Het audio-apparaat is bezig of bezet door een ander programma"
+
+#: cdplayer/cdplayer.c:935
 msgid "Click this button to Stop playing the CD"
 msgstr "Klik op deze knop om het afspelen van de CD te stoppen"
 
-#: cdplayer/cdplayer.c:919
+#: cdplayer/cdplayer.c:937
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klik op deze knop om de CD af te spelen of te pauzeren"
 
-#: cdplayer/cdplayer.c:921
+#: cdplayer/cdplayer.c:939
 msgid "Click this button to eject the CD"
 msgstr "Klik op deze knop om de CD uit te werpen"
 
-#: cdplayer/cdplayer.c:923
+#: cdplayer/cdplayer.c:941
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klik op deze knop om het vorige nummer op de CD af te spelen"
 
-#: cdplayer/cdplayer.c:925
+#: cdplayer/cdplayer.c:943
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klik op deze knop om het volgende nummer op de CD af te spelen"
 
@@ -601,15 +605,15 @@ msgstr " gekoppeld"
 msgid " not mounted"
 msgstr " niet gekoppeld"
 
-#: drivemount/drivemount.c:786
+#: drivemount/drivemount.c:791
 msgid "Drive Mount Applet Warning"
 msgstr "Schijfkoppelaar waarschuwing"
 
-#: drivemount/drivemount.c:796
+#: drivemount/drivemount.c:801
 msgid "\" reported:\n"
 msgstr "\" doorgegeven:\n"
 
-#: drivemount/drivemount.c:798
+#: drivemount/drivemount.c:803
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -734,7 +738,7 @@ msgstr "Verander de toetsenbordopmaak"
 msgid "GKB Factory"
 msgstr "GKB Fabriek"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Toetsenbordwisselaar"
 
@@ -750,15 +754,15 @@ msgstr ""
 "Druk de sneltoets in om te wisselen van opmaak. De sneltoets kan ingesteld "
 "worden in de Eigenschappen"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -778,7 +782,7 @@ msgstr ""
 "KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Web Pagina (http://projects.gnome.hu/gkb)"
 
@@ -786,7 +790,7 @@ msgstr "GKB Web Pagina (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Druk op een toets of druk op Esc om te annuleren"
 
@@ -798,25 +802,25 @@ msgstr "Toetsenborden (selecteer en klik op Toevoegen)"
 msgid "Select Keyboard"
 msgstr "Selecteer Toetsenbord"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:232
 msgid "Edit Keyboard"
 msgstr "Toetsenbord bewerken"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
+#: gkb-new/prop-map.c:251 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Naam:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:254
 msgid "_Label:"
 msgstr "La_bel:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:257
 msgid "Co_mmand:"
 msgstr "O_pdracht:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:265
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -828,7 +832,7 @@ msgstr ""
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:298
 msgid "_Flag"
 msgstr "_Vlag"
 
@@ -874,11 +878,11 @@ msgid "_Grab hotkey"
 msgstr "_Sneltoets grijpen"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:424
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Voorkeuren Toetsenbordwisselaar"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:441
 msgid "Keymaps"
 msgstr "toetstoewijzingen"
 
@@ -888,7 +892,7 @@ msgstr "toetstoewijzingen"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:453 multiload/properties.c:313
 msgid "Options"
 msgstr "Opties"
 
@@ -1170,7 +1174,7 @@ msgstr "Klik om Weather.com te bezoeken"
 msgid "_Radar map"
 msgstr "_Radarkaart"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:411
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1180,7 +1184,7 @@ msgstr ""
 "Probeer de voorspelling voor de staat; de IWIN voorspellingen zijn\n"
 "alleen beschikbaar voor Amerikaanse steden."
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:413
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -2489,7 +2493,7 @@ msgstr "Ophalen mislukt"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Opdrachtregel"
 
@@ -2522,15 +2526,15 @@ msgstr ""
 "iedere latere versie."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Programma uitvoeren"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Opdrachtregel"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Type hier een commando en Gnome zal dit voor u uitvoeren"
 
@@ -2664,11 +2668,11 @@ msgstr "Geschiedenis"
 msgid "Click this button for the list of previous commands"
 msgstr "Klik op deze knop voor de lijst van vorige opdrachten"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander Applet"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Dit applet voegt een opdrachtregel toe aan het paneel"
 
@@ -2693,7 +2697,7 @@ msgid "Adjust the sound volume"
 msgstr "Geluisdniveau aanpassen"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/mixer.c:900
 msgid "Volume Control"
 msgstr "Volumeregeling"
 
@@ -2731,23 +2735,23 @@ msgstr "Waarschuwing: mixer heeft geen volumekanaal - PCM wordt gebruikt\n"
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Mixerapparaat %s heeft volume noch PCM kanaal.\n"
 
-#: mixer/mixer.c:575
+#: mixer/mixer.c:645
 msgid "Volume Controller"
 msgstr "Volumeregeling"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:646
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Gebruik de pijltjestoetsen om het volume te veranderen"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:901
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:902
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Met de volumeregeling kunt u het volume voor uw omgeving instellen."
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1155
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Met de volumeregeling kunt u het volume voor uw omgeving instellen"
 
@@ -3298,11 +3302,11 @@ msgstr ""
 "starten zijn er niet.\n"
 "Controleer uw installatie."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Geen draadloze apparaten."
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3310,16 +3314,16 @@ msgstr ""
 "Er lijken geen draadloze apparaten op uw systeem aanwezig te zijn.\n"
 "Controleer alstublieft uw installatie als u denkt dat dit niet klopt."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Monitor voor draadloze verbindingen"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Dit programma laat de status van een draadloze verbinding zien."
 
@@ -3342,385 +3346,3 @@ msgstr "Monitor voor draadloze verbindingen - Voorkeuren"
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
 msgstr "De kwaliteit van een draadloze verbinding in de gaten houden"
-
-#~ msgid "Settings"
-#~ msgstr "Instellingen"
-
-#~ msgid "_Edit"
-#~ msgstr "_Bewerken"
-
-#~ msgid "_Up"
-#~ msgstr "Om_hoog"
-
-#~ msgid "Dow_n"
-#~ msgstr "Om_laag"
-
-#~ msgid "Armenia"
-#~ msgstr "Armenië"
-
-#~ msgid "Australia"
-#~ msgstr "Australië"
-
-#~ msgid "Austria"
-#~ msgstr "Oostenrijk"
-
-#~ msgid "Belgium"
-#~ msgstr "België"
-
-#~ msgid "Brazil"
-#~ msgstr "Brazilië"
-
-#~ msgid "Bulgaria"
-#~ msgstr "Bulgerije"
-
-#~ msgid "Canada"
-#~ msgstr "Canada"
-
-#~ msgid "Caribic"
-#~ msgstr "Caribische eilanden"
-
-#~ msgid "France"
-#~ msgstr "Frankrijk"
-
-#~ msgid "Georgia"
-#~ msgstr "Georgië"
-
-#~ msgid "Germany"
-#~ msgstr "Duitsland"
-
-#~ msgid "Great Britain"
-#~ msgstr "England"
-
-#~ msgid "Greece"
-#~ msgstr "Griekenland"
-
-#~ msgid "Hungary"
-#~ msgstr "Hongarije"
-
-#~ msgid "Jamaica"
-#~ msgstr "Jamaica"
-
-#~ msgid "New Zealand"
-#~ msgstr "Nieuw Zeeland"
-
-#~ msgid "Norway"
-#~ msgstr "Noorwegen"
-
-#~ msgid "Poland"
-#~ msgstr "Polen"
-
-#~ msgid "Portugal"
-#~ msgstr "Portugal"
-
-#~ msgid "Russia"
-#~ msgstr "Rusland"
-
-#~ msgid "Slovak Republic"
-#~ msgstr "Slowakije"
-
-#~ msgid "Slovenia"
-#~ msgstr "SloveniÃ«"
-
-#~ msgid "South Africa"
-#~ msgstr "Zuid Afrika"
-
-#~ msgid "Spain"
-#~ msgstr "Spanje"
-
-#~ msgid "Sweden"
-#~ msgstr "Zweden"
-
-#~ msgid "Switzerland"
-#~ msgstr "Zwitserland"
-
-#~ msgid "Thailand"
-#~ msgstr "Thailand"
-
-#~ msgid "Turkey"
-#~ msgstr "Turkije"
-
-#~ msgid "United Kingdom"
-#~ msgstr "Verenigd Koninkrijk"
-
-#~ msgid "United States"
-#~ msgstr "Verenigde Staten"
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Joegoslavië"
-
-#~ msgid "Armenian"
-#~ msgstr "Armenië"
-
-#~ msgid "Basque"
-#~ msgstr "Baskisch"
-
-#~ msgid "Bulgarian"
-#~ msgstr "Bulgaars"
-
-#~ msgid "Dutch"
-#~ msgstr "Nederlands"
-
-#~ msgid "English"
-#~ msgstr "Engels"
-
-#~ msgid "French"
-#~ msgstr "Frans"
-
-#~ msgid "Georgian"
-#~ msgstr "Georgisch"
-
-#~ msgid "German"
-#~ msgstr "Duits"
-
-#~ msgid "Greek"
-#~ msgstr "Grieks"
-
-#~ msgid "Hungarian"
-#~ msgstr "Hongaars"
-
-#~ msgid "Norwegian"
-#~ msgstr "Noors"
-
-#~ msgid "Polish"
-#~ msgstr "Pools"
-
-#~ msgid "Portuguese"
-#~ msgstr "Portugees"
-
-#~ msgid "Russian"
-#~ msgstr "Russisch"
-
-#~ msgid "Slovak"
-#~ msgstr "Slowaaks"
-
-#~ msgid "Slovenian"
-#~ msgstr "Sloveens"
-
-#~ msgid "Swedish"
-#~ msgstr "Zweeds"
-
-#~ msgid "Thai"
-#~ msgstr "Thais"
-
-#~ msgid "Turkish"
-#~ msgstr "Turks"
-
-#~ msgid "Wallon"
-#~ msgstr "Waals"
-
-#~ msgid "Yugoslavian"
-#~ msgstr "Joegoslaafs"
-
-#~ msgid "105"
-#~ msgstr "105"
-
-#~ msgid "101"
-#~ msgstr "101"
-
-#~ msgid "102"
-#~ msgstr "102"
-
-#~ msgid "450"
-#~ msgstr "450"
-
-#~ msgid "84"
-#~ msgstr "84"
-
-#~ msgid "mklinux"
-#~ msgstr "mklinux"
-
-#~ msgid "type5"
-#~ msgstr "type5"
-
-#~ msgid "iso-8859-1"
-#~ msgstr "iso-8859-1"
-
-#~ msgid "iso-8859-2"
-#~ msgstr "iso-8859-2"
-
-#~ msgid "iso-8859-7"
-#~ msgstr "iso-8859-7"
-
-#~ msgid "iso-8859-9"
-#~ msgstr "iso-8859-9"
-
-#~ msgid "am-armscii8"
-#~ msgstr "am-armscii8"
-
-#~ msgid "be-latin1"
-#~ msgstr "be-latin1"
-
-#~ msgid "cp1251"
-#~ msgstr "cp1251"
-
-#~ msgid "georgian-academy"
-#~ msgstr "georgian-academy"
-
-#~ msgid "koi8-r"
-#~ msgstr "koi8-r"
-
-#~ msgid "tis620"
-#~ msgstr "tis620"
-
-#~ msgid "ix86"
-#~ msgstr "ix86"
-
-#~ msgid "Sun"
-#~ msgstr "Sun"
-
-#~ msgid "mac"
-#~ msgstr "mac"
-
-#~ msgid "sgi"
-#~ msgstr "sgi"
-
-#~ msgid "dec"
-#~ msgstr "dec"
-
-#~ msgid "ibm"
-#~ msgstr "ibm"
-
-#~ msgid "Lan_guage:"
-#~ msgstr "T_aal:"
-
-#~ msgid "Count_ry:"
-#~ msgstr "_Land:"
-
-#~ msgid ""
-#~ "_Flag\n"
-#~ "Pixmap:"
-#~ msgstr ""
-#~ "_Vlag\n"
-#~ "Afbeelding:"
-
-#~ msgid "Arc_hitecture:"
-#~ msgstr "Arc_hitectuur:"
-
-#~ msgid "_Type:"
-#~ msgstr "_Type:"
-
-#~ msgid "Code_page:"
-#~ msgstr "Code_pagina:"
-
-#~ msgid "_Options"
-#~ msgstr "_Opties"
-
-#~ msgid "The keymap switching command returned with error!"
-#~ msgstr "De opdracht om de opmaak te veranderen gaf een foutmelding!"
-
-#~ msgid "Enter symbols delimited with \"+\" in the box below."
-#~ msgstr ""
-#~ "Vul symbolen met \"+\" ertussen in het onderstaande invulvenster in."
-
-#~ msgid "Stock Sy_mbol:"
-#~ msgstr "Aandeelsy_mbool:"
-
-#~ msgid "Stock C_hange:"
-#~ msgstr "Aandeelve_randering:"
-
-#~ msgid "_Appearance"
-#~ msgstr "_Uiterlijk"
-
-#~ msgid "_General"
-#~ msgstr "_Algemeen"
-
-#~ msgid "not unique"
-#~ msgstr "niet uniek"
-
-#~ msgid "completing..."
-#~ msgstr "bezig met afronden..."
-
-#~ msgid "completed"
-#~ msgstr "voltooid"
-
-#~ msgid "not found"
-#~ msgstr "niet gevonden"
-
-#~ msgid "no /bin/sh"
-#~ msgstr "geen /bin/sh"
-
-#~ msgid "end of history list"
-#~ msgstr "einde van geschiedenis"
-
-#~ msgid "starting..."
-#~ msgstr "bezig met starten..."
-
-#~ msgid "autocompleted"
-#~ msgstr "automatisch aangevuld"
-
-#~ msgid "%H:%M - %d. %b"
-#~ msgstr "%H:%M - %d. %b"
-
-#~ msgid "%H:%M"
-#~ msgstr "%H:%M"
-
-#~ msgid "%d. %b"
-#~ msgstr "%d. %b"
-
-#~ msgid "orient. changed"
-#~ msgstr "orient. veranderd"
-
-#~ msgid "size changed"
-#~ msgstr "grootte veranderd"
-
-#~ msgid "ready..."
-#~ msgstr "klaar..."
-
-#~ msgid "Clock"
-#~ msgstr "Klok"
-
-#~ msgid "Show time"
-#~ msgstr "Tijd weergeven"
-
-#~ msgid "Show date"
-#~ msgstr "Datum weergeven"
-
-#~ msgid "Applet height:"
-#~ msgstr "Applethoogte:"
-
-#~ msgid "Command line height:"
-#~ msgstr "Hoogte opdrachtregel:"
-
-#~ msgid "Regex _%.2d:"
-#~ msgstr "RegEx _%.2d:"
-
-#~ msgid "   Macro _%.2d:"
-#~ msgstr "  Macro _%.2d:"
-
-#~ msgid "C_olors"
-#~ msgstr "Kle_uren"
-
-#~ msgid "P_rocessor"
-#~ msgstr "P_rocessor"
-
-#~ msgid "M_emory"
-#~ msgstr "Geh_eugen"
-
-#~ msgid "Net_work"
-#~ msgstr "Net_werk"
-
-#~ msgid "Swap _File"
-#~ msgstr "Wi_sselbestand"
-
-#~ msgid "There was an error executing gnome-cd : %s"
-#~ msgstr "Er is een fout opgetreden bij het uitvoeren van gnome-cd : %s"
-
-#~ msgid "There was an error executing %s : %s"
-#~ msgstr "Er is een fout opgetreden bij het uitvoeren van %s : %s"
-
-#~ msgid "There was an error executing 'gnome-system-monitor' : %s"
-#~ msgstr ""
-#~ "Er is een fout opgetreden bij het uitvoeren van 'gnome-system-monitor' : %"
-#~ "s"
-
-#~ msgid "Apperance"
-#~ msgstr "Uiterlijk"
-
-#~ msgid "_Refresh"
-#~ msgstr "_Verversen"
-
-#~ msgid "fork error"
-#~ msgstr "'fork()' fout"
-
-#~ msgid "child exited"
-#~ msgstr "kindproces beÃ«indigd"
