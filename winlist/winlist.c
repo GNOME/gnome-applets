@@ -7,18 +7,15 @@
  */
 
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 GtkWidget *applet = NULL;
 
@@ -125,15 +122,6 @@ create_winlist_widget(void)
   return winlist;
 }
 
-static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-g_message("In quit_winlist");
-
-	gtk_exit(0);
-	return FALSE;
-}
-
 #if 0
 void
 shutdown_applet(int id)
@@ -179,13 +167,12 @@ main(int argc, char **argv)
 
 /*  while (!i);  */
 
-  panel_corba_register_arguments();
-
 g_message("argc is %d\n",argc);
 for (lastarg = 0; lastarg < argc; lastarg++)
   g_message("argv[%d] -> %s",lastarg, argv[lastarg]);
 
-  gnome_init("winlist_applet", &parser, argc, argv, 0, &lastarg);
+  applet_widget_init_defaults("winlist_applet", &parser, argc, argv, 0,
+			      &lastarg,argv[0]);
 
   winlist = g_hash_table_new(g_direct_hash, NULL);
 
@@ -210,9 +197,6 @@ g_message("back from applet_widget_new");
   applet_widget_add(APPLET_WIDGET(applet), w_winlist); 
 #endif
   gtk_widget_show(applet);
-  gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-		     GTK_SIGNAL_FUNC(destroy_applet),
-		     NULL);
 
 g_message("Got window created and signals connected");
 

@@ -62,9 +62,9 @@ int main(int argc, char **argv)
   GtkWidget *l_applet = NULL;
   
   /* set up the usual stuff */
-  panel_corba_register_arguments();
-  gnome_init("bussign_applet", NULL, argc, argv, 0, NULL);
-  l_applet = applet_widget_new(argv[0]);
+  applet_widget_init_defaults("bussign_applet", NULL, argc, argv, 0, NULL,
+			      argv[0]);
+  l_applet = applet_widget_new();
   if (!l_applet)
     g_error("Can't create applet!\n");
 
@@ -79,11 +79,6 @@ int main(int argc, char **argv)
   /* add it */
   applet_widget_add(APPLET_WIDGET(l_applet), l_bussign);
   gtk_widget_show(l_applet);
-
-  /* make sure it will shut down */
-  gtk_signal_connect(GTK_OBJECT(l_applet), "destroy",
-		     GTK_SIGNAL_FUNC(destroy_applet),
-		     NULL);
 
   /* attach the about window */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
@@ -162,13 +157,6 @@ create_bussign_widget(GtkWidget *a_parent)
   gtk_widget_pop_colormap();
   gtk_widget_pop_visual();
   return l_frame;
-}
-  
-static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-	gtk_exit(0);
-	return FALSE;
 }
 
 static int

@@ -6,10 +6,10 @@
  */
 
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
+#include <string.h>
+#include <config.h>
 #include <gnome.h>
+#include <applet-widget.h>
 
 #include "properties.h"
 
@@ -230,7 +230,7 @@ void close_cb( GtkWidget *widget, void *data )
 	propbox = NULL;
 }
 
-void properties(int id, gpointer data)
+void properties(AppletWidget *applet, gpointer data)
 {
 	GtkWidget *frame, *label;
 

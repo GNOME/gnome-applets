@@ -31,12 +31,6 @@
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#include <libintl.h>
-#define _(String) gettext(String)
-#else
-#define _(String) (String)
-#endif
 #include <sys/stat.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
@@ -44,8 +38,9 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <dirent.h>
-#include "gnome.h"
-#include "applet-lib.h"
+#include <config.h>
+#include <gnome.h>
+#include <applet-widget.h>
 #include "panel.h"
 
 

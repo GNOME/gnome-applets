@@ -7,14 +7,12 @@
  */
 
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
@@ -95,31 +93,20 @@ cpumemusage_widget ()
 	return vbox;
 }
 
-static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-	gtk_exit(0);
-	return FALSE;
-}
-
 int main(int argc, char **argv)
 {
 	GtkWidget *applet;
 
-        panel_corba_register_arguments();
+        applet_widget_init_defaults("cpumemusage_applet", NULL, argc, argv, 0,
+				    NULL, argv[0]);
 
-        gnome_init("cpumemusage_applet", NULL, argc, argv, 0, NULL);
-
-	applet = applet_widget_new(argv[0]);
+	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
         cpumemusage = cpumemusage_widget();
         applet_widget_add( APPLET_WIDGET(applet), cpumemusage );
         gtk_widget_show(applet);
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_applet),
-			   NULL);
 	
 	applet_widget_gtk_main();
 

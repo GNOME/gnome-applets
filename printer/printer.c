@@ -7,9 +7,6 @@
  */
 
 #include <config.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <stdio.h>
 #include <signal.h>
 #include <sys/stat.h>
@@ -120,13 +117,6 @@ printer_widget (void)
 }
 
 static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-	gtk_exit(0);
-	return FALSE;
-}
-
-static gint
 applet_session_save(GtkWidget *w, const char *cfgpath, const char *globcfgpath)
 {
 	gnome_config_push_prefix (cfgpath);
@@ -199,7 +189,7 @@ build_label_and_entry (GtkTable *table, int row, char *label, char *gentry_id, G
 }
 
 static void
-printer_properties (void)
+printer_properties (AppletWidget *applet, gpointer data)
 {
 	GtkWidget *table;
 
@@ -243,10 +233,10 @@ main(int argc, char **argv)
 	sigemptyset (&sa.sa_mask);
 	sigaction (SIGCHLD, &sa, NULL);
 	
-	panel_corba_register_arguments ();
-	gnome_init("mailcheck_applet", NULL, argc, argv, 0, NULL);
+	applet_widget_init_defaults("printer_applet", NULL, argc, argv, 0,
+				    NULL,argv[0]);
 
-	applet = applet_widget_new (argv[0]);
+	applet = applet_widget_new ();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
@@ -264,9 +254,6 @@ main(int argc, char **argv)
 	gtk_widget_show (printer);
 	applet_widget_add (APPLET_WIDGET (applet), printer);
 	gtk_widget_show (applet);
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_applet),
-			   NULL);
 	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
 			   GTK_SIGNAL_FUNC(applet_session_save),
 			   NULL);

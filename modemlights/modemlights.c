@@ -210,16 +210,10 @@ static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgp
         return FALSE;
 }
 
-static gint destroy_applet(GtkWidget *widget, gpointer data)
-{
-	gtk_exit(0);
-	return FALSE;
-}
-
 int main (int argc, char *argv[])
 {
-	panel_corba_register_arguments();
-	gnome_init("modemlights_applet", NULL, argc, argv, 0, NULL);
+	applet_widget_init_defaults("modemlights_applet", NULL, argc, argv, 0,
+				    NULL,argv[0]);
 
 	strcpy(lock_file,"/var/lock/LCK..modem");
 	orient = ORIENT_UP;
@@ -232,15 +226,11 @@ int main (int argc, char *argv[])
 		}
 
 
-	applet = applet_widget_new(argv[0]);
+	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
 	property_load(APPLET_WIDGET(applet)->cfgpath);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-				GTK_SIGNAL_FUNC(destroy_applet),
-				NULL);
 
 	/* frame for all widgets */
 	frame = gtk_frame_new(NULL);

@@ -15,14 +15,12 @@
 
 #include <stdio.h>
 #include <config.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <sys/stat.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
@@ -301,13 +299,6 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 	(*md->update_func) (mixerw, mvol);
 }
 
-static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-	gtk_exit(0);
-	return FALSE;
-}
-
 /*
 void
 test_callback(int id, gpointer data)
@@ -322,10 +313,10 @@ main(int argc, char **argv)
 {
 	openMixer("/dev/mixer");
 
-	panel_corba_register_arguments();
-	gnome_init("mixer_applet", NULL, argc, argv, 0, NULL);
+	applet_widget_init_defaults("mixer_applet", NULL, argc, argv, 0, NULL,
+				    argv[0]);
 
-	applet = applet_widget_new(argv[0]);
+	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
@@ -338,9 +329,6 @@ main(int argc, char **argv)
 
 	applet_widget_add(APPLET_WIDGET(applet), mixerw);
 	gtk_widget_show(applet);
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_applet),
-			   NULL);
 
 /*
 	gnome_panel_applet_register_callback(applet_id,

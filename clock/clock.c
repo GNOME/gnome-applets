@@ -9,18 +9,15 @@
  */
 
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 typedef struct _ClockData ClockData;
 typedef void (*ClockUpdateFunc) (ClockData *, time_t);
@@ -161,15 +158,6 @@ create_clock_widget(GtkWidget *applet)
 	return cd;
 }
 
-static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-	/*only die if this was the last applet of this kind*/
-	if(applet_widget_get_applet_count()==0)
-		gtk_exit(0);
-	return FALSE;
-}
-
 /*these are commands sent over corba: */
 
 /*this is when the panel orientation changes*/
@@ -186,28 +174,19 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 /*when we get a command to start a new widget*/
 static void
-applet_start_new_applet(GtkWidget *w, gchar *param, gpointer data)
+applet_start_new_applet(const gchar *param, gpointer data)
 {
 	ClockData *cd;
 	GtkWidget *applet;
-	gchar *argv0 = data;
 
-	applet = applet_widget_new_multi(argv0);
+	applet = applet_widget_new_with_param(param);
 	if (!applet)
 		g_error("Can't create applet!\n");
 
 	cd = create_clock_widget(applet);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"start_new_applet",
-			   GTK_SIGNAL_FUNC(applet_start_new_applet),
-			   argv0);
-
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
-			   cd);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_applet),
 			   cd);
 
 	gtk_widget_show(cd->clockw);
@@ -217,7 +196,7 @@ applet_start_new_applet(GtkWidget *w, gchar *param, gpointer data)
 
 /*
 void
-test_callback(int id, gpointer data)
+test_callback(GtkWidget *applet, gpointer data)
 {
 	puts("TEST");
 }
@@ -229,30 +208,21 @@ main(int argc, char **argv)
 {
 	ClockData *cd;
 	GtkWidget *applet;
+	
+	applet_widget_init("clock_applet", NULL, argc, argv, 0, NULL,
+			   argv[0],TRUE,TRUE,applet_start_new_applet,NULL);
 
-	panel_corba_register_arguments();
-	gnome_init("clock_applet", NULL, argc, argv, 0, NULL);
-
-	applet = applet_widget_new_multi(argv[0]);
+	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
 	cd = create_clock_widget(applet);
-
-	/*this will also need to be bound on every new applet we make*/
-	gtk_signal_connect(GTK_OBJECT(applet),"start_new_applet",
-			   GTK_SIGNAL_FUNC(applet_start_new_applet),
-			   argv[0]);
 
 	/*we have to bind change_orient before we do applet_widget_add 
 	  since we need to get an initial change_orient signal to set our
 	  initial oriantation, and we get that during the _add call*/
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
-			   cd);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_applet),
 			   cd);
 
 	gtk_widget_show(cd->clockw);

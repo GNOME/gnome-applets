@@ -1,4 +1,5 @@
 #include "http_get.h"
+#include <string.h>
 #include <netdb.h>
 #include <errno.h>
 #include <sys/types.h>

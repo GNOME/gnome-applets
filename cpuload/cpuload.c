@@ -7,14 +7,12 @@
  */
 
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
@@ -187,21 +185,14 @@ static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgp
 	return FALSE;
 }
 
-static gint destroy_applet(GtkWidget *widget, gpointer data)
-{
-        gtk_exit(0);
-        return FALSE;
-}
-
 int main(int argc, char **argv)
 {
 	GtkWidget *applet;
 
-        panel_corba_register_arguments();
+        applet_widget_init_defaults("cpuload_applet", NULL, argc, argv, 0, NULL,
+			   	    argv[0]);
 
-        gnome_init("cpuload_applet", NULL, argc, argv, 0, NULL);
-
-	applet = applet_widget_new(argv[0]);
+	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
@@ -213,9 +204,6 @@ int main(int argc, char **argv)
 	
 	create_gc();
 	setup_colors();
-        gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-                           GTK_SIGNAL_FUNC(destroy_applet),
-                           NULL);
 
         gtk_signal_connect(GTK_OBJECT(applet),"session_save",
                            GTK_SIGNAL_FUNC(applet_session_save),

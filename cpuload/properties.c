@@ -7,9 +7,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
+#include <config.h>
 #include <gnome.h>
 
 #include "properties.h"

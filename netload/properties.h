@@ -1,3 +1,5 @@
+#include <applet-widget.h>
+
 #ifndef PROPERTIES_H__
 #define PROPERTIES_H__
 
@@ -11,7 +13,7 @@ typedef struct
 	guint	line_spacing;
 } netload_properties;
 
-void properties(int id, gpointer data);
+void properties(AppletWidget *applet, gpointer data);
 void load_properties(char *path, netload_properties *prop );
 void save_properties(char *path, netload_properties *prop );
 
