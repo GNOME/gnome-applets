@@ -10,6 +10,7 @@
 #include <applet-widget.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 #include <gdk/gdk.h>
 
 #define LIFE_CYCLE 600
@@ -42,12 +43,12 @@ life_draw(void)
 	   size<=0)
 		return;
 	
-	r = 255*sin(rsin);
-	g = 255*sin(gsin);
-	b = 255*sin(bsin);
-	rsin+=0.01;
-	gsin+=0.02;
-	bsin+=0.03;
+	r = 255*((sin(rsin)+1)/2);
+	g = 255*((sin(gsin)+1)/2);
+	b = 255*((sin(bsin)+1)/2);
+	rsin+=(rand()%5 + 1)*0.01;
+	gsin+=(rand()%5 + 1)*0.01;
+	bsin+=(rand()%5 + 1)*0.01;
 	
 	bouncex+=bouncexsp;
 	if(bouncex>size) {
@@ -218,6 +219,12 @@ main (int argc, char **argv)
 
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
+	
+	/*do some randomizing*/
+	srand(time(NULL));
+	rsin += (rand()%255)/100.0;
+	gsin += (rand()%255)/100.0;
+	bsin += (rand()%255)/100.0;
 
 	applet_widget_init ("life_applet", VERSION, argc,
 			    argv, NULL, 0, NULL);
