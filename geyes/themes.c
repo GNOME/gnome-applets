@@ -33,6 +33,7 @@ gchar *theme_directories[] = {
         "~/.gnome/geyes-themes/"
 };
 #define NUM_THEME_DIRECTORIES 2
+#define HIG_IDENTATION  "    "
 
 static void
 parse_theme_file (EyesApplet *eyes_applet, FILE *theme_file)
@@ -205,6 +206,9 @@ properties_cb (BonoboUIComponent *uic,
 	       const gchar       *verbname)
 {
 	GtkWidget *pbox, *hbox;
+	GtkWidget *vbox, *indent;
+	GtkWidget *categories_vbox;
+	GtkWidget *category_vbox, *control_vbox;
         GtkWidget *tree;
         GtkWidget *label;
         GtkListStore *model;
@@ -216,6 +220,7 @@ properties_cb (BonoboUIComponent *uic,
         struct dirent *dp;
         int i;
         gchar filename [PATH_MAX];
+        gchar *title;
      
 	if (eyes_applet->prop_box.pbox) {
 		gtk_window_set_screen (
@@ -232,19 +237,50 @@ properties_cb (BonoboUIComponent *uic,
 					     NULL);
 	gtk_window_set_screen (GTK_WINDOW (pbox),
 			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
+        gtk_window_set_resizable (GTK_WINDOW (pbox), FALSE);
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
+        gtk_dialog_set_has_separator (GTK_DIALOG (pbox), FALSE);
 
         g_signal_connect (pbox, "response",
 			  G_CALLBACK (presponse_cb),
 			  eyes_applet);
 	
-	hbox = gtk_hbox_new (FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), hbox, FALSE, FALSE, 2);
+	vbox = gtk_vbox_new (FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	gtk_widget_show (vbox);
 	
-	label = gtk_label_new_with_mnemonic (_("_Theme Name:"));
-	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), vbox,
+			    TRUE, TRUE, 0);
 
+	categories_vbox = gtk_vbox_new (FALSE, 18);
+	gtk_box_pack_start (GTK_BOX (vbox), categories_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (categories_vbox);
+
+	category_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (category_vbox);
+	
+	title = g_strconcat ("<span weight=\"bold\">", _("_Theme Name"), "</span>", NULL);
+	label = gtk_label_new_with_mnemonic (_(title));
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
+	g_free (title);
+	
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
+	gtk_widget_show (hbox); ;
+	
+	indent = gtk_label_new (HIG_IDENTATION);
+	gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
+	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
+	gtk_widget_show (indent);
+	
+	control_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_vbox);
+	
 	model = gtk_list_store_new (1, G_TYPE_STRING);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
 	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
@@ -291,7 +327,7 @@ properties_cb (BonoboUIComponent *uic,
                 }
         }
         
-        gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), tree, TRUE, TRUE, 2);
+        gtk_box_pack_start (GTK_BOX (control_vbox), tree, TRUE, TRUE, 0);
         
         gtk_widget_show_all (pbox);
         
