@@ -31,10 +31,13 @@
 
 #ifdef HAVE_LINUX_SOUNDCARD_H
 #include <linux/soundcard.h>
-#else
+#elif HAVE_MACHINE_SOUNDCARD_H
 #include <machine/soundcard.h>
-#endif
- 
+#elif HAVE_SYS_SOUNDCARD_H
+#include <sys/soundcard.h>
+#else
+#error No soundcard defenition!
+#endif /* SOUNDCARD_H */
  
 #include "lamp-small.xpm"
 #include "lamp-small-red.xpm"
