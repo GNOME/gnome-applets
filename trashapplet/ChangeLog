@@ -1,0 +1,120 @@
+2004-09-20  Davyd Madeley  <davyd@madeley.id.au>
+
+	Added to gnome-applets CVS repository.
+
+2004-09-19  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* configure.in: Removed eel pkg-config check.
+	* src/Makefile.am: Added eel-extension files to sources.
+	* src/eel-extension.c: Added, copied eel_gtk_button_* from libeel.
+	* src/eel-extension.h: Added, copied EEL_TRASH_URI and
+	eel_gtk_button_* from libeel.
+	* src/trashapplet.c: Removed libeel include. Added gconf-client
+	include. Changed 'nautilus' to 'gnome-open' for opening the trash.
+
+2004-09-19  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* po/POTFILES.in: files is .in.in not only .in. Fixes bug in the
+	buildsystem.
+
+2004-09-19  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.server.in.in: Set to other icon.
+	* configure.in: Added French and German.
+	* po/de.po: Added
+	* po/fr.po: Added
+	* src/trashapplet.c: (get_dir_count),
+	(trash_applet_update_item_count), (trash_applet_items_count),
+	(trash_applet_is_empty), (trash_applet_update_icon),
+	(confirm_empty_trash), (trash_applet_do_empty),
+	(trash_applet_open_folder), (trash_applet_show_help),
+	(update_icon_cb), (drag_motion_cb), (drag_leave_cb),
+	(changed_orient_cb), (changed_background_cb), (changed_size_cb),
+	(trash_monitor_cb), (trash_applet_fill): Applied the patches by James
+	and Sebastian.
+	* src/trashapplet.h: Applied the patches by James and Sebastian.
+
+2004-07-30  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* Makefile.am: Added EXTRA_DIST files.
+	* src/trashapplet.c: (trash_applet_update_tip),
+	(trash_applet_show_help), (trash_applet_fill): Small fixes. Nicer
+	messages for trash tooltip.
+
+2004-07-30  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.server.in.in: Made applet category
+	translatable.
+	* configure.in: Added scrollkeeper and help stuff
+	* help/C/Makefile.am: Added scrollkeeper and help stuff
+	* help/C/legal.xml: Added scrollkeeper and help stuff
+	* help/C/trashapplet-C.omf: Added scrollkeeper and help stuff
+	* help/C/trashapplet.xml: Added scrollkeeper and help stuff
+	* src/trashapplet.c: (trash_applet_show_help),
+	(trash_applet_show_about): Added documenters and made help to show
+	trashapplet help.
+
+2004-07-29  Michiel Sikkes <michiel@eyesopened.nl>
+
+	* Makefile.am: Added first piece of help system.
+	* autogen.sh: Changed to gnome-autogen.sh support.
+	* configure.ac: Renamed this...
+	* configure.in: ... to this.
+	* help/C/Makefile.am: Help system
+	* help/C/trashapplet-C.omf: Helpsystem
+	* help/Makefile.am: Helpsystem
+	* src/trashapplet.c: (update_icon_cb), (trash_applet_fill): Icon is
+	now updated on icon theme change.
+
+2004-07-29  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.xml: Added help item.
+	* po/nl.po: Updated translation.
+	* src/trashapplet.c: (error_dialog),
+	(trash_applet_get_main_trash_directory_uri), (get_dir_count),
+	(trash_applet_items_count), (trash_applet_update_icon),
+	(update_transfer_callback), (trash_applet_do_empty),
+	(trash_applet_open_folder), (trash_applet_show_help),
+	(trash_applet_show_about), (destroy_cb), (drag_data_received_cb),
+	(changed_orient_cb), (changed_background_cb), (changed_size_cb),
+	(trash_monitor_cb), (trash_applet_fill): Applied all the cool patches
+	by Emmanuele Bassi <ebassi@gmail.com>.
+	* src/trashapplet.h: Applied all the cool patches by Emmanuele Bassi
+	<ebassi@gmail.com>.
+
+2004-07-29  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.server.in.in: Changed icon.. broken now.
+	* po/nl.po: Updated translation.
+
+2004-07-29  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.xml: Added mnemonics for menu.
+
+2004-07-29  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* src/trashapplet.c: (trash_applet_about): Added the about window.
+
+2004-07-29  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.server.in: Added .in for the file name
+	(i18n reasons)
+	* GNOME_Panel_TrashApplet.server.in.in: See above :-)
+	* Makefile.am: i18n changes
+	* po/nl.po: String updates
+	* src/Makefile.am: Removed @INTLTOOL_SERVER_RULES@, wasn't neccesary
+	in this makefile
+
+2004-07-29  Michiel Sikkes  <michiel@eyesopened.nl>
+
+	* GNOME_Panel_TrashApplet.server.in: Set some strings translatable
+	* GNOME_Panel_TrashApplet.xml: Added this file
+	* Makefile.am: Added XML menu file to the buildsystem
+	* configure.ac: i18n changes
+	* po/POTFILES.in: Added the server and xml files.
+	* po/nl.po: String updates
+	* src/Makefile.am: i18n additions
+	* src/trashapplet.c: added config.h to include (trash_applet_fill):
+	changed applet menu to external xml file
+	* src/trashapplet.h: i18n changes, added config.h include
+

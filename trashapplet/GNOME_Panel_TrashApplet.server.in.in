@@ -1,0 +1,27 @@
+<oaf_info>
+<oaf_server iid="OAFIID:GNOME_Panel_TrashApplet_Factory" type="exe"
+            location="@LIBEXECDIR@/trashapplet">
+
+        <oaf_attribute name="repo_ids" type="stringv">
+                <item value="IDL:Bonobo/GenericFactory:1.0"/>
+                <item value="IDL:Bonobo/Unknown:1.0"/>
+        </oaf_attribute>
+        <oaf_attribute name="name" type="string" value="Trash Applet Factory"/>
+        <oaf_attribute name="description" type="string" value="Trash Applet Factory"/>
+</oaf_server>
+
+<oaf_server iid="OAFIID:GNOME_Panel_TrashApplet" type="factory"
+            location="OAFIID:GNOME_Panel_TrashApplet_Factory">
+
+        <oaf_attribute name="repo_ids" type="stringv">
+                <item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+                <item value="IDL:Bonobo/Control:1.0"/>
+                <item value="IDL:Bonobo/Unknown:1.0"/>
+        </oaf_attribute>
+        <oaf_attribute name="name" type="string" _value="Trash Applet"/>
+        <oaf_attribute name="description" type="string" _value="Put Trash on the panel"/>
+        <oaf_attribute name="panel:category" type="string" _value="Accessories"/>
+	<oaf_attribute name="panel:icon" type="string" value="gnome-fs-trash-full"/>
+</oaf_server>
+</oaf_info>
+      

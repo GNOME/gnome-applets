@@ -7,7 +7,8 @@ endif
 
 vfs_applets = \
 	gtik	\
-	gweather 
+	gweather \
+	trashapplet
 if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
@@ -85,7 +86,8 @@ DIST_SUBDIRS = \
 	accessx-status	\
 	stickynotes	\
 	libgswitchit	\
-	gswitchit
+	gswitchit	\
+	trashapplet
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
