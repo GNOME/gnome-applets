@@ -74,7 +74,7 @@ void
 prop_apply (GtkWidget *w, int page, gpointer data)
 {
   ProgressData *battstat = data;
-  gchar *buffer;
+  const gchar *buffer;
 
   if (DEBUG) g_print("prop_apply()\n");
 
@@ -117,6 +117,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   buffer = gtk_entry_get_text(GTK_ENTRY(battstat->suspend_entry));
   g_free (battstat->suspend_cmd);
   battstat->suspend_cmd = g_strdup(buffer);
+#if 0 // FIXME GNOME2
   if(strlen(battstat->suspend_cmd)>0) {
     applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
 					  "suspend",
@@ -135,6 +136,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   change_orient ( NULL, battstat->orienttype, battstat );
 
   applet_widget_sync_config (APPLET_WIDGET (battstat->applet));
+#endif
 
   return;
   w = NULL;

@@ -1,5 +1,6 @@
 /* battstat        A GNOME battery meter for laptops. 
  * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
+ * Copyright (C) 2002 Free Software Foundation
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -49,7 +50,10 @@
 
 #include <glade/glade.h>
 #include <gnome.h>
+
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
+
 /*#include <status-docklet.h>*/
 
 #include "battstat.h"
@@ -61,6 +65,26 @@
 #endif
 
 GtkObject *statusdock;
+
+static const BonoboUIVerb battstat_menu_verbs [] = {
+	BONOBO_UI_UNSAFE_VERB ("BattstatProperties", prop_cb),
+	BONOBO_UI_UNSAFE_VERB ("BattstatHelp",       help_cb),
+	BONOBO_UI_UNSAFE_VERB ("BattstatAbout",      about_cb),
+	BONOBO_UI_UNSAFE_VERB ("BattstatSuspend",    suspend_cb),
+        BONOBO_UI_VERB_END
+};
+
+static const char battstat_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Battstat Properties Item\" verb=\"BattstatProperties\" _label=\"Properties ...\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"Battstat Help Item\" verb=\"BattstatHelp\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Battstat About Item\" verb=\"BattstatAbout\" _label=\"About ...\"\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"   <menuitem name=\"Battstat Suspend Item\" verb=\"BattstatSuspend\" _label=\"Suspend Computer ...\"\n"
+	"             />\n"
+	"</popup>\n";
 
 int pixel_offset_top[]={ 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5 };
 int pixel_top_length[]={ 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2 };
@@ -276,30 +300,7 @@ apm_readinfo(void)
 }
 #endif 
 
-/*
-void
-load_font (gpointer data)
-{
-  ProgressData *battstat = data;
 
-  if (DEBUG) g_print("load_font()\n");
-
-  if (battstat->font_changed) {
-    battstat->percentstyle=gtk_style_copy (GTK_WIDGET (battstat->percent)->style);
-    if (battstat->fontname)
-      (battstat->percentstyle)->font=gdk_font_load(battstat->fontname);
-    
-    if (!(battstat->percentstyle)->font) 
-      (battstat->percentstyle)->font=gdk_font_load ("fixed");
-
-    if ((battstat->percentstyle)->font) {
-      gtk_widget_set_style (battstat->percent, battstat->percentstyle);
-      gtk_widget_set_style (battstat->statuspercent, battstat->percentstyle);
-    }
-    
-  }
-}
-*/
 /* void */
 /* draw_meter ( gpointer battdata, gpointer meterdata )  */
 /* { */
@@ -403,10 +404,13 @@ pixmap_timeout( gpointer data )
    ;
 
    if ( pixmap_index != last_pixmap_index ) {
+     printf ("foo\n");
       gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
+     printf ("foo1\n");
       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
+     printf ("foo2\n");
    }
 
    if(
@@ -778,14 +782,16 @@ void
 about_cb (PanelApplet *widget, gpointer data)
 {
    GtkWidget   *about_box;
-   char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>", "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
-	NULL };
+   char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>", 
+			      "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
+			      "Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
+			      NULL };
    
    about_box = gnome_about_new (
 				/* The long name of the applet in the About dialog.*/
 				_("Battery status utility"), 
 				VERSION,
-				_("(C) 2000 The Gnulix Society"),
+				_("(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"),
 				_("This utility show the status of your laptop battery."),
 				(const char **) authors,
 				/* Longer description of the applet in the About dialog.*/
@@ -1252,66 +1258,37 @@ applet_save_session(GtkWidget *w,
 }
 */
 
-/*
-static gint
-load_preferences(gpointer data)
+static void
+load_preferences(ProgressData *battstat, PanelApplet *applet)
 {
-   ProgressData *battstat = data;
    
-   if (DEBUG) g_print("load_preferences()\n");
-   
-   gnome_config_push_prefix(APPLET_WIDGET(battstat->applet)->privcfgpath);
-   battstat->red_val = gnome_config_get_int("batt/red_val=15");
-   battstat->orange_val=gnome_config_get_int("batt/orange_val=25");
-   battstat->yellow_val=gnome_config_get_int("batt/yellow_val=40");
-   battstat->fontname=gnome_config_get_string("batt/fontname=-adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-*-*");
-   battstat->lowbattnotification=gnome_config_get_bool("batt/lowbattnotification=true");
-   battstat->fullbattnot=gnome_config_get_bool("batt/fullbattnot=true");
-   battstat->beep=gnome_config_get_bool("batt/beep=false");
-   battstat->draintop=gnome_config_get_bool("batt/draintop=false");
-   battstat->horizont=gnome_config_get_bool("batt/horizont=true");
-   battstat->showstatus=gnome_config_get_bool("batt/showstatus=true");
-   battstat->showbattery=gnome_config_get_bool("batt/showbattery=true");
-   battstat->showpercent=gnome_config_get_bool("batt/showpercent=false");
-   battstat->suspend_cmd=gnome_config_get_string("batt/suspendcommand=");
-   battstat->usedock=gnome_config_get_bool("batt/usedock=false");
-   battstat->own_font=gnome_config_get_bool("batt/own_font=false");
-   gnome_config_pop_prefix();
-   
-   return FALSE;
-}
-*/
-gint
-init_applet(int argc, char *argv[], gpointer data)
-{
-   ProgressData *battstat = data;
-   
-   if (DEBUG) g_print("init_applet()\n");
-   applet_widget_init(PACKAGE, VERSION, argc, argv, NULL, 0, NULL);
-   battstat->applet = applet_widget_new(PACKAGE);
-   if (!battstat->applet) {
-      g_error (
-	       /* Message will be displayed if the applet couldn't be
-		created at all. */
-	       _("Can't create applet!\n"));
-      destroy_applet(battstat->applet, battstat);
-   }
-   /*   battstat->font_changed=TRUE;*/
-   return FALSE;
+#define GCONF_PATH "/apps/battstat/"
+
+  if (DEBUG) g_print("load_preferences()\n");
+  
+  battstat->red_val = panel_applet_gconf_get_int (applet, GCONF_PATH "red_value", NULL);
+  battstat->orange_val = panel_applet_gconf_get_int (applet, GCONF_PATH "orange_value", NULL);
+  battstat->yellow_val = panel_applet_gconf_get_int (applet, GCONF_PATH "yellow_value", NULL);
+  battstat->lowbattnotification = panel_applet_gconf_get_bool (applet, GCONF_PATH "low_battery_notification", NULL);
+  battstat->fullbattnot = panel_applet_gconf_get_bool (applet, GCONF_PATH "full_battery_notification", NULL);
+  battstat->beep = panel_applet_gconf_get_bool (applet, GCONF_PATH "beep", NULL);
+  battstat->draintop = panel_applet_gconf_get_bool (applet, GCONF_PATH "drain_from_top", NULL);
+  battstat->horizont = panel_applet_gconf_get_bool (applet, GCONF_PATH "horizontal", NULL);
+
+  battstat->showstatus = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_status", NULL);
+  battstat->showbattery = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_battery", NULL);
+  battstat->showpercent = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_percent", NULL);
+  battstat->suspend_cmd = panel_applet_gconf_get_string (applet, "suspend_command", NULL);
+  battstat->usedock = panel_applet_gconf_get_bool (applet, GCONF_PATH "use_dock", NULL);
+
 }
 
 gint
-create_layout(int argc, char *argv[], gpointer data)
+create_layout(ProgressData *battstat)
 {
    int i;
-   ProgressData *battstat = data;
    
    if (DEBUG) g_print("create_layout()\n");
-   
-   battstat->hbox1 = gtk_hbox_new (FALSE, 0);
-   gtk_widget_show(battstat->hbox1);
-   
-   applet_widget_add (APPLET_WIDGET (battstat->applet), battstat->hbox1);
    
    battstat->framestatus = gtk_frame_new(NULL);
    gtk_widget_set_usize( battstat->framestatus, 20, 24);
@@ -1466,43 +1443,7 @@ create_layout(int argc, char *argv[], gpointer data)
 			 battstat->eventybattery,
 			 "",
 			 NULL);
-   
-   applet_widget_register_stock_callback (APPLET_WIDGET (battstat->applet),
-					  "properties",
-					  GNOME_STOCK_MENU_PROP,
-					  /* Applet menu, Properties */
-					  _("Properties..."),
-					  prop_cb,
-					  battstat);
-   applet_widget_register_stock_callback (APPLET_WIDGET (battstat->applet),
-					  "about",
-					  GNOME_STOCK_MENU_ABOUT,
-					  /* Applet menu, About */
-					  _("About..."),
-					  about_cb,
-					  battstat);
-   applet_widget_register_stock_callback (APPLET_WIDGET (battstat->applet),
-					  "help",
-					  GNOME_STOCK_PIXMAP_HELP,
-					  /* Applet menu, Help */
-					  _("Help"),
-					  help_cb,
-					  battstat);
-   applet_widget_register_callback ( APPLET_WIDGET (battstat->applet),
-				     "suspend",
-				     /* Applet menu, Suspend laptop */
-				     _("Suspend laptop"),
-				     suspend_cb,
-				     battstat);
-   if(strlen(battstat->suspend_cmd)> 0) {
-      applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
-					    "suspend",
-					    TRUE);
-   } else {
-      applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
-					    "suspend",
-					    FALSE);
-   }
+
    /*
    gtk_signal_connect (GTK_OBJECT(battstat->applet),"save_session",
 		       GTK_SIGNAL_FUNC(applet_save_session),
@@ -1528,39 +1469,73 @@ create_layout(int argc, char *argv[], gpointer data)
    return FALSE;
 }
 
-int
-main(int argc, char *argv[])
+static gboolean
+battstat_applet_fill (PanelApplet *applet)
 {
-   ProgressData *battstat;
-   
-   if (DEBUG) g_print("main()\n");
-   
-   apm_readinfo();
-   
+  ProgressData *battstat;
+
+  if (DEBUG) g_print("main()\n");
+  
+  apm_readinfo();
+  
 #ifdef __FreeBSD__
-   if(apminfo.ai_status == 0) cleanup(2);
+  if(apminfo.ai_status == 0) cleanup(2);
 #endif
-   
-   battstat = g_malloc( sizeof(ProgressData) );
-   
-   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-   textdomain(PACKAGE);
-   
-   battstat->colors_changed = TRUE;
-   battstat->suspend_cmd = FALSE;
-   battstat->panelsize = 48;
-   glade_gnome_init ();
-   init_applet(argc, argv, battstat);
-   /*   load_preferences(battstat);*/
-   create_layout(argc, argv, battstat);
-   /*   load_font(battstat);*/
-   pixmap_timeout(battstat);
-   gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_orient", battstat, NULL);
+  
+  battstat = g_new0 (ProgressData, 1);
+  
+  battstat->applet = GTK_WIDGET (applet);
+  
+  battstat->hbox1 = gtk_hbox_new (FALSE, 1);
+  gtk_widget_show(battstat->hbox1);
+  
+  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+  textdomain(PACKAGE);
+  
+  battstat->colors_changed = TRUE;
+  battstat->suspend_cmd = FALSE;
+  battstat->panelsize = 48;
+  glade_gnome_init ();
+  
+  load_preferences(battstat, PANEL_APPLET (battstat->applet));
+  create_layout(battstat);
+  pixmap_timeout(battstat);
+
+#if 0
+  gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_orient", battstat, NULL);
 #ifdef HAVE_PANEL_PIXEL_SIZE
-   gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_pixel_size", battstat, NULL);
+  gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_pixel_size", battstat, NULL);
 #endif
-   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
-   
-   applet_widget_gtk_main();
-   return(0);
+#endif
+
+  battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
+  
+  gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->hbox1);
+
+  panel_applet_setup_menu (PANEL_APPLET (battstat->applet), battstat_menu_xml, battstat_menu_verbs, battstat);
+
+  return TRUE;
 }
+
+
+static gboolean
+battstat_applet_factory (PanelApplet *applet,
+			 const gchar          *iid,
+			 gpointer              data)
+{
+  gboolean retval = FALSE;
+  
+  if (!strcmp (iid, "OAFIID:GNOME_BattstatApplet"))
+    retval = battstat_applet_fill (applet);
+  
+  return retval;
+}
+
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_BattstatApplet_Factory",
+                             "Battstat",
+                             "0",
+                             battstat_applet_factory,
+                             NULL)
+      
+

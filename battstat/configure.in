@@ -21,6 +21,12 @@ AC_ISC_POSIX
 AC_HEADER_STDC
 AM_PROG_LIBTOOL
 
+AC_PROG_INTLTOOL
+AC_PATH_PROG(GCONFTOOL, gconftool-2)
+
+GCONF_CONFIG_SOURCE="xml::\${sysconfdir}/gconf/gconf.xml.defaults"
+AC_SUBST(GCONF_CONFIG_SOURCE)
+
 GNOME_COMPILE_WARNINGS
 GNOME_PLATFORM_GNOME_2(yes, force)
 GNOME2_X_CHECKS
@@ -30,7 +36,7 @@ LIBGNOMEUI_REQUIRED=1.96.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBGLADE_REQUIRED=1.99.5
 
-PKG_CHECK_MODULES(BATTSTAT, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED libpanelapplet-2.0 libglade-2.0 >= $LIBGLADE_REQUIRED)
+PKG_CHECK_MODULES(BATTSTAT, gconf-2.0 libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED libpanelapplet-2.0 libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(BATTSTAT_CFLAGS)
 AC_SUBST(BATTSTAT_LIBS)
 
@@ -80,6 +86,8 @@ apmlib/Makefile
 po/Makefile.in
 sounds/Makefile
 docs/Makefile
+docs/C/Makefile
+docs/pl/Makefile
 bs.spec
 ])
 
