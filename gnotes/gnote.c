@@ -38,6 +38,7 @@
 #include <gnome-xml/parser.h>
 
 #include "gnotes_applet.h"
+#include "gnote.h"
 
 const char *gnotes_file_format = "1.0";
 
@@ -86,6 +87,10 @@ void gnotes_load(AppletWidget*, gpointer);
 static gboolean gnote_load_xml(const gchar *);
 static gboolean gnote_load_xml_v10(xmlDocPtr, const gchar*);
 static gboolean gnote_load_old(const gchar *);
+const gchar *get_gnotes_dir(void);
+gchar *make_gnote_filename_string(const gchar *);
+gchar *make_gnote_filename(const GNote *);
+GNote *get_gnote_based_on_boxptr(gpointer);
 
 
 /*----------------------------------------------------------------------*/
@@ -178,48 +183,12 @@ static gboolean contains_only_nums(gchar *test_string)
 
 static guchar* get_text_text(GtkText* text)
 {
-    guchar *ret;
-    int len;
-    int copy_loc;
-    int i;
-    guchar* loc;
-    
-    len = text->text_end - text->gap_size;
-    if(len == 0)
-    {
-        ret = g_malloc(1 * sizeof(guchar*));
-        ret[0] = '\0';
-        return ret;
-    }
-    
-    ret = g_malloc(len * sizeof(guchar*) + 1);
-
-    copy_loc = 0;
-
-    loc = text->text.ch;
-    for(i = 0; i < text->gap_position; i++, copy_loc++)
-    {
-        ret[copy_loc] = *loc;
-        loc++;
-    }
-    loc = text->text.ch + text->gap_position + text->gap_size;
-    for(i = text->gap_position + text->gap_size;
-        i < text->text_end;
-        i++, copy_loc++)
-    {
-        ret[copy_loc] = *loc;
-        loc++;
-    }
-    ret[len] = '\0';
-    
-    g_debug("get_text_text(): got data `%s'", ret);
-
-    return ret;
+    return gtk_editable_get_chars(GTK_EDITABLE(text), 0, -1);
 }
 
 
 /*----------------------------------------------------------------------*/
-void gnote_menu(GtkWidget *handle_box, GdkEventButton *event)
+GtkWidget* gnote_create_menu(GNote* the_note)
 {
     GtkWidget *menu;
     GtkWidget *menuitem;
@@ -230,15 +199,6 @@ void gnote_menu(GtkWidget *handle_box, GdkEventButton *event)
 
     {
         char *timestr;
-        GNote* the_note;
-        
-        the_note = get_gnote_based_on_boxptr(handle_box);
-        
-        if (the_note->title == 0)
-        {
-            the_note->title = g_strdup("GNotes!");
-        };
-
         /* put the title menu item */
         menuitem = gtk_menu_item_new_with_label(the_note->title);
         gtk_menu_append(GTK_MENU(menu), menuitem);
@@ -264,27 +224,34 @@ void gnote_menu(GtkWidget *handle_box, GdkEventButton *event)
  
     menuitem = gtk_menu_item_new_with_label(_("Raise Note"));
     gtk_signal_connect(GTK_OBJECT(menuitem), "activate",
-                       GTK_SIGNAL_FUNC(gnote_raise_cb), handle_box);
+                       GTK_SIGNAL_FUNC(gnote_raise_cb), the_note->handle_box);
     gtk_menu_append(GTK_MENU(menu), menuitem);
   
     menuitem = gtk_menu_item_new_with_label(_("Lower Note"));
     gtk_signal_connect(GTK_OBJECT(menuitem), "activate",
-                       GTK_SIGNAL_FUNC(gnote_lower_cb), handle_box);
+                       GTK_SIGNAL_FUNC(gnote_lower_cb), the_note->handle_box);
     gtk_menu_append(GTK_MENU(menu), menuitem);
   
     menuitem = gtk_menu_item_new_with_label(_("Hide Note"));
     gtk_signal_connect(GTK_OBJECT(menuitem), "activate",
-                       GTK_SIGNAL_FUNC(gnote_hide_cb), handle_box);
+                       GTK_SIGNAL_FUNC(gnote_hide_cb), the_note->handle_box);
     gtk_menu_append(GTK_MENU(menu), menuitem);
 
     menuitem = gtk_menu_item_new_with_label(_("Delete Note"));
     gtk_signal_connect(GTK_OBJECT(menuitem), "activate",
-                       GTK_SIGNAL_FUNC(gnote_delete_cb), handle_box);
+                       GTK_SIGNAL_FUNC(gnote_delete_cb), the_note->handle_box);
     gtk_menu_append(GTK_MENU(menu), menuitem);
 
     gtk_widget_show_all(menu);
-    gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, event->button,
-                   event->time);
+
+    return menu;
+}
+
+void gnote_menu(GtkWidget *handle_box, GdkEventButton *event)
+{
+    GNote* the_note = get_gnote_based_on_boxptr(handle_box);
+    gtk_menu_popup(GTK_MENU(the_note->menu), NULL, NULL, NULL, NULL,
+                   event->button, event->time);
 };
 
 static gint ptr_x=0, ptr_y=0;
@@ -329,7 +296,7 @@ gint gnote_handle_button_cb(GtkWidget *widget, GdkEventButton *event,
             gdk_pointer_ungrab(event->time);
             break;
         case 2:
-            gnote_new_cb(NULL, (gpointer)"1x1");
+            gnote_new_cb(NULL, 0);
             break;
         case 3:
             return(FALSE);
@@ -366,7 +333,7 @@ gint gnote_motion_cb(GtkWidget *widget, GdkEventButton *event,
         /* set new size */
         win_w = new_ptr_x;
         win_h = new_ptr_y;
-        g_debug("Size is now W:%d H:%d with widget %d", win_w, win_h,
+        g_debug("Size is now W:%d H:%d with widget %p", win_w, win_h,
                 motion_note->window);
         gtk_widget_set_usize(motion_note->window, win_w, win_h);
     }
@@ -391,6 +358,10 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
 {
     GNote* the_note = (GNote*)g_malloc(sizeof(GNote));
 
+    g_debug("gnote_new(%d, %d, %d, %d, %d, %s, %ld, %s, %d, %s) called.",
+            width, height, x, y, hidden, text, timestamp, title,
+            loaded_from_file, type);
+    
     g_ptr_array_add(note_list, the_note);
     
     the_note->hidden = hidden;
@@ -466,6 +437,10 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     gtk_signal_connect(GTK_OBJECT(the_note->handle_box),
                        "button_release_event",
                        GTK_SIGNAL_FUNC(gnote_handle_button_cb), NULL);
+    gtk_signal_connect(GTK_OBJECT(the_note->handle_box),
+                       "destroy",
+                       GTK_SIGNAL_FUNC(gnote_delete_cb),
+                       the_note->handle_box);
     gtk_widget_set_usize(the_note->handle_box, 10, 0);
 
     /* create hbox */
@@ -490,7 +465,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     gnome_win_hints_init ();
 
     if (gnome_win_hints_wm_exists ()) {
-        if(gnotes.onbottom)
+        if(gnotes.defaults.onbottom)
         {
             gnome_win_hints_set_layer (the_note->window, WIN_LAYER_DESKTOP);
         }
@@ -526,36 +501,53 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
         gdk_window_show(the_note->window->window);
     }
 
+    the_note->menu = gnote_create_menu(the_note);
+    
     gnote_save(the_note);
 }
 
 void gnote_new_cb(AppletWidget *applet, gpointer data)
 {
     char *sdata;
-    gint width;
-    gint height;
+    gint width, height;
 
-    sdata = g_strdup((gchar *)data);
+    if(data != 0)
+    {
+        sdata = g_strdup((gchar *)data);
+        width = atoi(strtok(sdata, "x")) * 100;
+        height = atoi(strtok(NULL, "x")) * 100;
+        g_free(sdata);
+    }
+    else
+    {
+        GNotes *gnotes = gnotes_get_main_info();
+        width = gnotes->defaults.width;
+        height = gnotes->defaults.height;
+    }
 
-    width = atoi(strtok(sdata, "x")) * 100;
-    height = atoi(strtok(NULL, "x")) * 100;
+    gnote_new(width, height, 0, 0, FALSE, "",
+              time(NULL), "GNotes!", FALSE, "");
 
-    gnote_new(width, height, 0, 0, FALSE, "", time(NULL), "GNotes!", FALSE, "");
-
-    g_free(sdata);
 };
 
 /*----------------------------------------------------------------------*/
 void gnote_destroy(gpointer prenote)
 {
-    GNote *the_note = (GNote*)prenote;
-    char *fname = make_gnote_filename(the_note);
+    GNote *the_note; 
+    char *fname; 
 
+    the_note = (GNote*)prenote;
+    fname = make_gnote_filename(the_note);
+    
     g_debug("  deleted [%s]", fname);
     unlink(fname);
     free(fname);
+
+    gtk_widget_hide(the_note->window);
     
-    gtk_widget_destroy(the_note->window);
+    gdk_window_destroy(the_note->window);
+    gtk_widget_unref(GTK_WIDGET(the_note->menu));
+    
     g_free(the_note->title);
     g_ptr_array_remove(note_list, the_note);
     g_free(the_note);
@@ -564,7 +556,7 @@ void gnote_destroy(gpointer prenote)
 gint gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
 {
     gnote_destroy(get_gnote_based_on_boxptr(handle_boxptr));
-    return(FALSE);
+    return(TRUE);
 }
 
 /*----------------------------------------------------------------------*/
