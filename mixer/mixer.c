@@ -90,7 +90,7 @@ openMixer( gchar *device_name )
 	mixerfd = open(device_name, O_RDWR, 0);
 	if (mixerfd < 0) {
 		/* probably should die more gracefully */
-		g_message("Couldn't open mixer device %s\n",device_name);
+		g_message(_("Couldn't open mixer device %s\n"),device_name);
 		exit(1);
 	}
 
@@ -100,8 +100,8 @@ openMixer( gchar *device_name )
 #ifdef OSS_GETVERSION
         res=ioctl(mixerfd, OSS_GETVERSION, &ver);
         if ((res==0) && (ver!=SOUND_VERSION)) {
-                g_message("warning: this version of gmix was compiled "
-			"with a different version of\nsoundcard.h.\n");
+                g_message(_("warning: this version of gmix was compiled "
+			"with a different version of\nsoundcard.h.\n"));
         }
 #endif
 }
@@ -410,7 +410,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
         gtk_signal_connect(GTK_OBJECT(hbutton), "toggled",
 		   (GtkSignalFunc)mute_cb, (gpointer)md);
 
-	applet_widget_set_tooltip(APPLET_WIDGET(applet),  "Main Volume and Mute");
+	applet_widget_set_tooltip(APPLET_WIDGET(applet), _("Main Volume and Mute"));
 
 	
 
@@ -557,13 +557,16 @@ test_callback(int id, gpointer data)
 int
 main(int argc, char **argv)
 {
+	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
+	textdomain(PACKAGE);
+
 	openMixer("/dev/mixer");
 	applet_widget_init("mixer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 	applet = applet_widget_new("mixer_applet");
 	if (!applet)
-		g_error("Can't create applet!\n");
+		g_error(("Can't create applet!\n"));
 
 	mixerw = create_mixer_widget();
 	gtk_widget_show(mixerw);

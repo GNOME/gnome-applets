@@ -12,6 +12,7 @@
  *
  */
 
+#include <config.h>
 #include <gnome.h>
 #include <time.h>
 #include <unistd.h>
@@ -51,11 +52,11 @@ about_jbc ()
   authors[1] = NULL;
 
   about = gnome_about_new (_ ("Jon's Binary Clock"), version,
-			   "(C) 1999",
+			   _("(C) 1999"),
 			   authors,
 		       _ ("Released under the GNU general public license.\n"
-			  "Displays time in Binary Coded Decimal\nhttp://snoopy.net/~jon/jbc/"
-			  "."),
+			  "Displays time in Binary Coded Decimal\n"
+			  "http://snoopy.net/~jon/jbc/."),
 			   NULL);
   gtk_widget_show (about);
 
@@ -122,7 +123,7 @@ main (int argc, char **argv)
 
   applet = applet_widget_new ("jbc_applet");
   if (!applet)
-    g_error ("Can't create applet!\n");
+    g_error (_("Can't create applet!\n"));
 
   canvas = gnome_canvas_new ();
   gtk_widget_set_usize (canvas, CANVAS_WIDTH, CANVAS_HEIGHT);

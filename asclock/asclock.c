@@ -1,6 +1,11 @@
 #include "asclock.h"
 #include <X11/X.h>
 #include <X11/Intrinsic.h>
+#ifdef ASCLOCK_GNOME
+/* needed for i18n stuff */
+#include <config.h>
+#include <gnome.h>
+#endif
 #include <gdk/gdkx.h>
 
 /* the xpm's */
