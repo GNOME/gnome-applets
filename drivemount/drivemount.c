@@ -371,6 +371,19 @@ destroy_drive_widget (GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 
+	if (dd->error_dialog != NULL) {
+		gtk_widget_destroy (dd->error_dialog);
+		dd->error_dialog = NULL;
+	}
+
+	if (dd->tooltips != NULL) {
+		g_object_unref (G_OBJECT (dd->tooltips));
+		dd->tooltips = NULL;
+	}
+
+	g_free (dd->custom_icon_in);
+	g_free (dd->custom_icon_out);
+
 	g_free (dd->mount_point);
 	g_free (dd->mount_base);
 	g_free (dd);
