@@ -112,6 +112,16 @@ fork_exec(char *path, char *arg)
 
 #ifdef __linux__
 
+static int
+has_redhat_ppp_maps()
+{
+  /* for now, just test if it is a Red Hat system.  Other systems
+   * that adopt the same thing can add tests for their systems here
+   */
+  if (access("/etc/redhat-release", R_OK)) return 1;
+  return 0;
+}
+
 
 static gchar *
 ppp_logical_to_physical(const gchar *logical_name)
@@ -129,9 +139,6 @@ ppp_logical_to_physical(const gchar *logical_name)
       physical_device = g_strdup(buffer);
     }
     close(f);
-  } else {
-    /* probably not Red Hat's ifup-ppp, use the system name */
-    physical_device = g_strdup(logical_name);
   }
 
   return physical_device;
@@ -151,7 +158,7 @@ get_interface_status_by_name(const gchar *interface_name)
   int pfs[] = {AF_INET, AF_IPX, AF_AX25, AF_APPLETALK, 0};
   int p = 0;
   struct ifreq ifr;
-  gchar *physical_name;
+  gchar *physical_name = NULL;
   /* If we don't find it, interface must be down */
   int retcode = INT_DOWN;
 
@@ -163,18 +170,20 @@ get_interface_status_by_name(const gchar *interface_name)
     return INT_DOWN;
   }
 
-  if (!strncmp("ppp", interface_name, 3)) {
-    /* It is a PPP device, so we need to map it from logical to physical
-     * before we look it up.
-     */
-    physical_name = ppp_logical_to_physical(interface_name);
-    if (!physical_name) {
-      /* If we can't find a mapping, it's because it's down. */
-      return INT_DOWN;
+  if (has_redhat_ppp_maps()) {
+    if (!strncmp("ppp", interface_name, 3)) {
+      /* It is a PPP device, so we need to map it from logical to physical
+       * before we look it up.
+       */
+      physical_name = ppp_logical_to_physical(interface_name);
+      if (!physical_name) {
+        /* If we can't find a mapping, it's because it's down. */
+        return INT_DOWN;
+      }
     }
-  } else {
-    physical_name = g_strdup(interface_name);
   }
+
+  if (!physical_name) physical_name = g_strdup(interface_name);
 
   memset(&ifr, 0, sizeof(ifr));
   strcpy(ifr.ifr_name, physical_name);
@@ -225,6 +234,7 @@ create_interface_by_name(gchar *devname)
    * like pop up a window with stats on the device?
    */
   dev->button = gtk_button_new();
+  gtk_widget_set_usize(dev->button, 24, 48);
   set_interface_status(dev);
 
   return dev;
@@ -264,7 +274,6 @@ netwatch_destroy (void)
 {
   fork_exec("/sbin/netreport", "-r");
   sigaction(SIGIO, &old_sigio_sigaction, NULL);
-  gtk_exit (0);
 }
 
 #endif /* __linux__ */
@@ -300,7 +309,7 @@ create_netwatch (GtkWidget *window, char *parameters)
 	do {
 		this_int = create_interface_by_name(dev);
 		interface_list = g_slist_append(interface_list, this_int);
-		gtk_hbox_pack_end(GTK_BOX(parent_widget), this_int->button,
+		gtk_box_pack_end(GTK_BOX(parent_widget), this_int->button,
 				FALSE, FALSE, 0);
 	} while (dev = strtok(NULL, ":"));
 	free(devpath);
@@ -313,7 +322,13 @@ create_netwatch (GtkWidget *window, char *parameters)
 	 * to make sure it gets called anyway on a normal exit.
 	 * It doesn't hurt to call it twice.
 	 */
-	atexit(netwatch_destroy);
+	/* FIXME: unfortunately, we can't use atexit, because we
+	 * can't remove something from atexit's list of functions
+	 * to call.  A dispatcher in panel based on a GSlist would
+	 * be nice...
+	 * Or maybe we just trust APPLET_CMD_DESTROY_MODULE...
+	 */
+	/* atexit(netwatch_destroy); */
 #endif
 
 	update_tag = gtk_timeout_add (10, update_status, NULL);
@@ -357,6 +372,9 @@ applet_cmd_func(AppletCommand *cmd)
 			break;
 
 		case APPLET_CMD_DESTROY_MODULE:
+			/* FIXME: create list to set */
+			/* gnome_config_set_string("/panel/netwatch/devpath", FIXME); */
+			gnome_config_sync();
 #ifdef __linux__
 			netwatch_destroy();
 #endif
