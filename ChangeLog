@@ -1,3 +1,19 @@
+2001-12-02  Malcolm Tredinnick <malcolm@commsecure.com.au>
+	* acconfig.h: introduce GETTEXT_PACKAGE
+
+	* configure.in, Makefile.am: comment out tests that are just
+	  broken for GNOME 2. Also make the relevant changes to the
+	  build structure.
+
+	* battery/battery.[ch], battery/properties.h:
+	* battery/Makefile.am: Start to port to GNOME 2. This
+	  _does_not_work^Wbuild_ yet, so don't even try.
+
+	* battery/GNOME_BatteryApplet_Factory.server.in: bonobo support
+	  for new panel applet.
+	
+	* battery/battery_applet.gnorba: removed.
+
 2001-10-07  Fatih Demir <kabalak@gtranslator.org>
 
 	* configure.in: Added "ta" to the languages list.
