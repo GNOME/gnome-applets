@@ -25,15 +25,28 @@ typedef struct {
 	gint track;
 } GummaTimeInfo;
 
+typedef struct _GummaPlugin GummaPlugin;
+
+struct _GummaPlugin {
+	gpointer (*init) ();
+	void (*denit) (gpointer data);
+
+	void (*do_verb) (GummaVerb verb, gpointer data);
+	void (*data_dropped) (GtkSelectionData *selection, 
+			      gpointer data);
+
+	GummaState (*get_state) (gpointer data);
+	void (*get_time) (GummaTimeInfo *tinfo,
+			  gpointer data);
+
+	void (*about) (gpointer data);
+	GtkWidget *(*get_config_page) (gpointer data);
+};
+
 #ifdef GUMMA_PLUGIN
-G_MODULE_EXPORT void gp_about ();
-G_MODULE_EXPORT GtkWidget *gp_get_config_page ();
-G_MODULE_EXPORT void gp_init ();
-G_MODULE_EXPORT void gp_denit ();
-G_MODULE_EXPORT GummaState gp_get_state ();
-G_MODULE_EXPORT void gp_do_verb ();
-G_MODULE_EXPORT void gp_data_dropped (GtkSelectionData *data);
-G_MODULE_EXPORT void gp_get_time (GummaTimeInfo *tinfo);
-#endif /*GUMMA_PLUGIN*/
+G_MODULE_EXPORT GummaPlugin *get_plugin (void);
+#else
+G_MODULE_IMPORT GummaPlugin *get_plugin (void);
+#endif /*!GUMMA_PLUGIN*/
 
 #endif /*__GUMMA_H__*/

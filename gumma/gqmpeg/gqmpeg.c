@@ -19,20 +19,52 @@
 #define GUMMA_PLUGIN
 #include <gumma/gumma.h>
 
+static gpointer   gqmpeg_init (void);
+static void       gqmpeg_denit (gpointer data);
+
+static void       gqmpeg_do_verb (GummaVerb verb, gpointer data);
+static void       gqmpeg_data_dropped (GtkSelectionData *selection, 
+				   gpointer data);
+
+static GummaState gqmpeg_get_state (gpointer data);
+static void       gqmpeg_get_time (GummaTimeInfo *tinfo, gpointer data);
+
+static void       gqmpeg_about (gpointer data);
+static GtkWidget *gqmpeg_get_config_page (gpointer data);
+
+GummaPlugin gqmpeg_plugin = {
+	gqmpeg_init,
+	gqmpeg_denit,
+	gqmpeg_do_verb,
+	gqmpeg_data_dropped,
+	gqmpeg_get_state,
+	gqmpeg_get_time,
+	gqmpeg_about,
+	gqmpeg_get_config_page
+};
+
+GummaPlugin *
+get_plugin ()
+{
+	return &gqmpeg_plugin;
+}
+
 static void parse_input (gpointer data, gint source,
 			 GdkInputCondition condition);
 
-struct {
-	char *fname;
-	FILE *fp;
-	gint fd;
-	gint gdk;
-} outfile, infile;
+typedef struct {
+	char *ifname;
+	char *ofname;
 
-static GummaState state;
-static gint seconds;
-static gint track;
-static gboolean connected = FALSE;
+	gint ifd;
+	FILE *ifp;
+	gint gdk_input;
+
+	GummaState state;
+	gint seconds;
+	gint track;
+	gboolean connected;
+} GqmpegData;
 
 static gchar *cmds[] = { "play",
 			 "pause",
@@ -41,70 +73,71 @@ static gchar *cmds[] = { "play",
 			 "next",
 			 "prev" };
 
-GtkWidget *
-gp_get_config_page ()
+static GtkWidget *
+gqmpeg_get_config_page (gpointer data)
 {
 	return NULL;
 }
 
 static void
-close_infile ()
+close_infile (GqmpegData *gq)
 {
-	g_message ("closing \"%s\"", infile.fname);
-	connected = FALSE;
-	gdk_input_remove (infile.gdk);
-	fclose (infile.fp);
-	close (infile.fd);
-	unlink (infile.fname);
+	g_message ("closing \"%s\"", gq->ifname);
+	gq->connected = FALSE;
+	gdk_input_remove (gq->gdk_input);
+	fclose (gq->ifp);
+	unlink (gq->ifname);
 }
 
 
 static gboolean
-is_connected ()
+is_connected (GqmpegData *gq)
 {
 	char *s;
+	int ofd;
+	FILE *ofp;
 
-	if (connected) return TRUE;
+	if (gq->connected) return TRUE;
 	
-	if (mkfifo (infile.fname, S_IRUSR | S_IWUSR) != 0) {
+	if (mkfifo (gq->ifname, S_IRUSR | S_IWUSR) != 0) {
 		perror ("couldn't make fifo");
 		return FALSE;
 	}
 
-	if ( (infile.fd = open (infile.fname, O_RDONLY | O_NONBLOCK)) == -1) {
+	if ( (gq->ifd = open (gq->ifname, O_RDONLY | O_NONBLOCK)) == -1) {
 		perror ("open failed");
 		return FALSE;
 	}
 
-	infile.fp = fdopen (infile.fd, "r");
+	gq->ifp = fdopen (gq->ifd, "r");
 
-	if ( (outfile.fd = open (outfile.fname, O_WRONLY | O_NONBLOCK)) == -1) {
+	if ( (ofd = open (gq->ofname, O_WRONLY | O_NONBLOCK)) == -1) {
 		/*perror ("cannot open gqmpeg command file");*/
-		fclose (infile.fp);
-		unlink (infile.fname);
+		fclose (gq->ifp);
+		unlink (gq->ifname);
 		return FALSE;
 	}
 
-	outfile.fp = fdopen (outfile.fd, "w");
+	ofp = fdopen (ofd, "w");
 
-	s = g_strdup_printf ("status_add \"gumma\" \"%s\"", infile.fname);
-	fputs (s, outfile.fp);
-	fclose (outfile.fp);
+	s = g_strdup_printf ("status_add \"gumma\" \"%s\"", gq->ifname);
+	fputs (s, ofp);
+	fclose (ofp);
 	
-	infile.gdk = gdk_input_add (infile.fd, GDK_INPUT_READ | GDK_INPUT_EXCEPTION, 
-				    (GdkInputFunction) parse_input,
-				    infile.fp);	
-	return (connected = TRUE);
+	gq->gdk_input = gdk_input_add (gq->ifd, GDK_INPUT_READ | GDK_INPUT_EXCEPTION, 
+				       (GdkInputFunction) parse_input,
+				       gq);	
+	return (gq->connected = TRUE);
 }
 
 static void
-open_infile ()
+open_infile (GqmpegData *gq)
 {
-	outfile.fp = infile.fp = NULL;
-	outfile.fd = infile.fd = 0;
-	outfile.gdk = infile.gdk = 0;
+	gq->ifp = NULL;
+	gq->ifd = 0;
+	gq->gdk_input = 0;
 
-	if (g_file_exists (infile.fname)) {
+	if (g_file_exists (gq->ifname)) {
 		GtkWidget *dialog;
 		gint reply;
 		dialog = gnome_message_box_new (_("~/.gnome/.gumma-gqmpeg-ctl already exists.\n\n"
@@ -119,28 +152,34 @@ open_infile ()
 						NULL);
 		reply = gnome_dialog_run_and_close (GNOME_DIALOG (dialog));
 		if (reply == GNOME_YES)
-			unlink (infile.fname);
+			unlink (gq->ifname);
 		else
 			return;
 	}
 	
-	is_connected ();
+	is_connected (gq);
 }
 
-void
-gp_do_verb (GummaVerb verb)
+static void
+gqmpeg_do_verb (GummaVerb verb, gpointer data)
 {
-	g_return_if_fail (outfile.fname);
+	FILE *ofp;
+	int ofd;
+	GqmpegData *gq = data;
+	g_return_if_fail (gq->ofname);
 
-	if (!is_connected ()) return;
+	if (!is_connected (gq)) return;
 	if (!cmds[verb]) return;
-
-	if ( !(outfile.fp = fopen (outfile.fname, "w")) ) {
+	
+	if ( (ofd = open (gq->ofname, O_WRONLY | O_NONBLOCK)) == -1) {
 		perror ("cannot open gqmpeg command file");
 		return;
 	}
-	fputs (cmds[verb], outfile.fp);
-	fclose (outfile.fp);
+
+	ofp = fdopen (ofd, "w");
+
+	fputs (cmds[verb], ofp);
+	fclose (ofp);
 }
 
 #define BUFLEN 2048
@@ -150,17 +189,18 @@ static void
 parse_input (gpointer data, gint source,
 	     GdkInputCondition condition)
 {
+	GqmpegData *gq = data;
 	char *p;
-	FILE *fp = data;
 
 	if (condition == GDK_INPUT_EXCEPTION) {
 		g_message ("exception!!");
 		return;
 	}
 	
-	p  = fgets (buf, BUFLEN-1, fp);
+	p  = fgets (buf, BUFLEN-1, gq->ifp);
 	if (!p) {
 		g_message ("no input!!");
+		return;
 	}
 
 	g_message ("got string: %s", buf);
@@ -168,25 +208,25 @@ parse_input (gpointer data, gint source,
 	if (!strncmp (buf, "time: ", 6)) {
 		p = buf+6;
 		if (!strncmp (p, "play ", 5)) {
-			state = GUMMA_STATE_PLAYING;
+			gq->state = GUMMA_STATE_PLAYING;
 			p += 5;
 		} else if (!strncmp (buf+6, "stop ", 5)) {
-			state = GUMMA_STATE_STOPPED;
+			gq->state = GUMMA_STATE_STOPPED;
 			p += 5;
 		} else if (!strncmp (buf+6, "pause ", 6)) {
-			state = GUMMA_STATE_PAUSED;
+			gq->state = GUMMA_STATE_PAUSED;
 			p += 6;
 		}
 		
-		seconds = atoi (p);
+		gq->seconds = atoi (p);
 	} else if (!strncmp (buf, "track: ", 7)) {
 		p = buf + 7;
-		track = atoi (p);
+		gq->track = atoi (p);
 	} else if (!strncmp (buf, "close", 5) ||
 		   !strncmp (buf, "exit", 4)) {
-		state = GUMMA_STATE_ERROR;
-		close_infile ();
-		open_infile ();
+		gq->state = GUMMA_STATE_ERROR;
+		close_infile (gq);
+		open_infile (gq);
 	}
 #if 0
 	else if (!strcmp (buf, "name:", 6)) {
@@ -195,72 +235,89 @@ parse_input (gpointer data, gint source,
 #endif
 }
 
-void 
-gp_init ()
+static gpointer
+gqmpeg_init ()
 {
-	outfile.fname = gnome_util_prepend_user_home (".gqmpeg/command");
+	GqmpegData *gq = g_new0 (GqmpegData, 1);
+	
+	gq->ofname = gnome_util_prepend_user_home (".gqmpeg/command");
+	gq->ifname = gnome_util_prepend_user_home (".gnome/.gumma-gqmpeg-ctl");
 
-	infile.fname = gnome_util_prepend_user_home (".gnome/.gumma-gqmpeg-ctl");
+	open_infile (gq);
 
-	open_infile ();
-	return;
+	return gq;
 }
 
-void
-gp_denit ()
+static void
+gqmpeg_denit (gpointer data)
 {
-	if ( !(outfile.fp = fopen (outfile.fname, "w")) ) {
+	GqmpegData *gq = data;
+	int ofd;
+	FILE *ofp;
+
+	if ( (ofd = open (gq->ofname, O_WRONLY | O_NONBLOCK)) == -1) {
 		perror ("cannot open gqmpeg command file");
-		return;
+		goto cleanup;
 	}
-	fputs ("status_rm \"gumma\"", outfile.fp);
-	fclose (outfile.fp);	
 
-	close_infile ();
+	ofp = fdopen (ofd, "w");
+	fputs ("status_rm \"gumma\"", ofp);
+	fclose (ofp);	
 
-	g_free (outfile.fname);
-	g_free (infile.fname);
+ cleanup:
+	close_infile (gq);
+
+	g_free (gq->ofname);
+	g_free (gq->ifname);
 }
 
-GummaState
-gp_get_state ()
+static GummaState
+gqmpeg_get_state (gpointer data)
 {
-	return is_connected () ? state : GUMMA_STATE_ERROR;
+	GqmpegData *gq = data;
+	return is_connected (gq) ? gq->state : GUMMA_STATE_ERROR;
 }
 
-void
-gp_data_dropped (GtkSelectionData *data)
+static void
+gqmpeg_data_dropped (GtkSelectionData *selection, gpointer data)
 {
 	return;
 }
 
-void
-gp_get_time (GummaTimeInfo *tinfo)
+static void
+gqmpeg_get_time (GummaTimeInfo *tinfo, gpointer data)
 {
+	GqmpegData *gq = data;
 	g_return_if_fail (tinfo);
-	if (is_connected ()) {
-		tinfo->minutes = seconds / 60;
-		tinfo->seconds = seconds % 60;
-		tinfo->track = track;
+	if (is_connected (gq)) {
+		tinfo->minutes = gq->seconds / 60;
+		tinfo->seconds = gq->seconds % 60;
+		tinfo->track = gq->track;
 	} else {
 		tinfo->minutes = tinfo->seconds = tinfo->track = 0;
 	}
 }
 
-void
-gp_about ()
+static void
+gqmpeg_about (gpointer data)
 {
-	static const char *authors[] = {
+	const char *authors[] = {
 		"Jacob Berkman  <jberkman@andrew.cmu.edu>",
 		NULL
 	};
-	GtkWidget *about_box;
-
-	about_box = gnome_about_new("gqmpeg GUMMA Plugin", "0.1",
-				    "Copyright (C) 1999 The Free Software Foundation",
-				    authors,
-				    "Plugin for controlling gqmpeg via GUMMA",
-				    NULL);
-
-	gtk_widget_show(about_box);
+	static GtkWidget *about_box = NULL;
+	
+	if (about_box) {
+		gdk_window_show (about_box->window);
+		gdk_window_raise (about_box->window);
+		return;
+	}
+	
+	about_box = gnome_about_new ("gqmpeg GUMMA Plugin", VERSION,
+				     "Copyright (C) 1999 The Free Software Foundation",
+				     authors,
+				     "Plugin for controlling gqmpeg via GUMMA",
+				     NULL);
+	
+	gtk_widget_show (about_box);
 }

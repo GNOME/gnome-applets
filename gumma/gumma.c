@@ -27,17 +27,6 @@
 
 typedef struct {
 	struct {
-		void (*about) ();
-		GtkWidget *(*get_config_page) ();
-		void (*init) ();
-		void (*denit) ();
-		GummaState (*get_state) ();
-		void (*do_verb) (GummaVerb verb);
-		void (*data_dropped) (GtkSelectionData *data);
-		void (*get_time) (GummaTimeInfo *tinfo);
-	} plugin;
-
-	struct {
 		GtkWidget *time;
 		GtkWidget *track;
 
@@ -49,23 +38,26 @@ typedef struct {
 		GtkWidget *eject;
 	} panel;
 
+	GummaPlugin *plugin;
+	gpointer data;
+
 	GModule *module;
 	gchar *module_path;
+
 	int timeout;
 } GummaPlayerData;
 
 #define TIMEOUT_VALUE 500
-
-static GtkWidget *applet = NULL;
 
 static void
 panel_update(GtkWidget *panel, GummaPlayerData *gpd)
 {
 	GummaTimeInfo tinfo;
 
-	switch (gpd->plugin.get_state ()) {
+	switch (gpd->plugin->get_state (gpd->data)) {
 	case GUMMA_STATE_PLAYING:
-		gpd->plugin.get_time (&tinfo);
+		g_return_if_fail (gpd->plugin->get_time);
+		gpd->plugin->get_time (&tinfo, gpd->data);
 		led_time (gpd->panel.time,
 			  tinfo.minutes,
 			  tinfo.seconds,
@@ -73,7 +65,8 @@ panel_update(GtkWidget *panel, GummaPlayerData *gpd)
 			  tinfo.track);
 		break;
 	case GUMMA_STATE_PAUSED:
-		gpd->plugin.get_time (&tinfo);
+		g_return_if_fail (gpd->plugin->get_time);
+		gpd->plugin->get_time (&tinfo, gpd->data);
 		led_paused (gpd->panel.time,
 			   tinfo.minutes,
 			   tinfo.seconds,
@@ -95,27 +88,29 @@ static int
 play_pause_cb (GtkWidget *w, gpointer data)
 {
 	GummaPlayerData *gpd = data;
-	
-	if (gpd->plugin.get_state () == GUMMA_STATE_PLAYING)
-		gpd->plugin.do_verb (GUMMA_VERB_PAUSE);
-	else
-		gpd->plugin.do_verb (GUMMA_VERB_PLAY);
-	return 0;
-}
 
-static void start_gtcd_cb()
-{
-	gnome_execute_shell(NULL, "gtcd");
+	g_return_val_if_fail (gpd->plugin->get_state, FALSE);
+	g_return_val_if_fail (gpd->plugin->do_verb, FALSE);
+
+	if (gpd->plugin->get_state (gpd->data) 
+	    == GUMMA_STATE_PLAYING)
+		gpd->plugin->do_verb (GUMMA_VERB_PAUSE,
+				      gpd->data);
+	else
+		gpd->plugin->do_verb (GUMMA_VERB_PLAY,
+				      gpd->data);
+	return FALSE;
 }
-                
 
 static int 
 generic_cb (GtkWidget *w, gpointer data)
 {	
 	GummaPlayerData *gpd;
 	gpd = gtk_object_get_user_data (GTK_OBJECT (w));
-	gpd->plugin.do_verb (GPOINTER_TO_INT (data));
-	return 0;
+	g_assert (gpd->plugin->do_verb);
+	gpd->plugin->do_verb (GPOINTER_TO_INT (data),
+			     gpd->data);
+	return FALSE;
 }
 
 static int
@@ -127,7 +122,7 @@ timeout_cb (gpointer data)
 	gpd = gtk_object_get_user_data (GTK_OBJECT (player));
 
 	panel_update (player, gpd);
-	return 1;
+	return TRUE;
 }
 
 static GtkWidget *
@@ -216,8 +211,9 @@ static void
 destroy_player(GtkWidget * widget, void *data)
 {
 	GummaPlayerData *gpd = data;
+	g_assert (gpd->plugin->denit);
 	gtk_timeout_remove(gpd->timeout);
-	gpd->plugin.denit ();
+	gpd->plugin->denit (gpd->data);
 	g_free (gpd);
 }
 
@@ -230,8 +226,9 @@ panel_realized(GtkWidget *panel, GummaPlayerData *gpd)
 static void
 load_plugin (GummaPlayerData *gpd)
 {
+	GummaPlugin *(*init_func)();
+
 	g_assert (g_module_supported ());
-	
 	g_message (_("Loading plugin %s..."), gpd->module_path);
 	gpd->module = g_module_open (gpd->module_path, 0);
 
@@ -239,38 +236,26 @@ load_plugin (GummaPlayerData *gpd)
 		return;
 
 	g_module_symbol (gpd->module,
-			 "gp_about",
-			 (gpointer)&gpd->plugin.about);
-	g_module_symbol (gpd->module,
-			 "gp_get_config_page",
-			 (gpointer)&gpd->plugin.get_config_page);
-	g_module_symbol (gpd->module,
-			 "gp_init",
-			 (gpointer)&gpd->plugin.init);
-	g_module_symbol (gpd->module,
-			 "gp_denit",
-			 (gpointer)&gpd->plugin.denit);
-	g_module_symbol (gpd->module,
-			 "gp_get_state",
-			 (gpointer)&gpd->plugin.get_state);
-	g_module_symbol (gpd->module,
-			 "gp_do_verb",
-			 (gpointer)&gpd->plugin.do_verb);
-	g_module_symbol (gpd->module,
-			 "gp_data_dropped",
-			 (gpointer)&gpd->plugin.data_dropped);
-	g_module_symbol (gpd->module,
-			 "gp_get_time",
-			 (gpointer)&gpd->plugin.get_time);
+			 "get_plugin",
+			 (gpointer)&init_func);
 	
-	g_assert (gpd->plugin.about);
-	g_assert (gpd->plugin.get_config_page);
-	g_assert (gpd->plugin.init);
-	g_assert (gpd->plugin.denit);
-	g_assert (gpd->plugin.get_state);
-	g_assert (gpd->plugin.do_verb);
-	g_assert (gpd->plugin.data_dropped);
-	g_assert (gpd->plugin.get_time);
+	g_assert (init_func);
+
+	gpd->plugin = init_func ();
+	
+	g_assert (gpd->plugin->init);
+	g_assert (gpd->plugin->denit);
+
+	g_assert (gpd->plugin->do_verb);
+	/*g_assert (gpd->data_dropped);*/
+
+	g_assert (gpd->plugin->get_state);
+	g_assert (gpd->plugin->get_time);
+
+	g_assert (gpd->plugin->about);
+	/*g_assert (gpd->plugin->get_config_page);*/
+
+	gpd->data = gpd->plugin->init ();
 }
 
 static GtkWidget *
@@ -289,9 +274,10 @@ create_player_widget(GtkWidget *window, const char *privcfgpath)
 		gpd->module_path = 
 			gnome_libdir_file ("gumma/libgumma-gqmpeg.so");
 	load_plugin (gpd);
+
 	if (!gpd->module)
 		g_warning ("No plugin loaded");
-	gpd->plugin.init ();
+
 	panel = create_panel_widget (window, gpd);
 
 	/* Install timeout handler */
@@ -338,6 +324,18 @@ about_cb (AppletWidget *applet, gpointer data)
 			    &about_box);
 
 	gtk_widget_show(about_box);
+	return;
+}
+
+static void
+about_plugin_cb (AppletWidget *w, gpointer data)
+{
+	GummaPlayerData *gpd = data;
+	g_return_if_fail (gpd->plugin->about);
+	
+	gpd->plugin->about (gpd->data);
+
+	return;
 }
 
 static gboolean
@@ -348,7 +346,7 @@ clicked_cb (GtkWidget *dialog, gint button, gpointer data)
 	gchar *file;
 	GummaPlayerData *gpd;
 
-	if (button == GNOME_CANCEL) {
+	if (button != GNOME_OK) {
 		/*gtk_widget_destroy (dialog);*/
 		return FALSE;
 	}
@@ -358,16 +356,17 @@ clicked_cb (GtkWidget *dialog, gint button, gpointer data)
 	file = gtk_clist_get_row_data (GTK_CLIST (data), row);
 	gpd = gtk_object_get_user_data (GTK_OBJECT (clist));
 
-	if (gpd->module) {
-		gpd->plugin.denit ();
+	if (gpd->plugin) {
+		g_assert (gpd->plugin->denit);
+		gpd->plugin->denit (gpd->data);
+		gpd->plugin = gpd->data = NULL;
 		g_module_close (gpd->module);
 		gpd->module = NULL;
-		g_free (gpd->module_path);
+		/*g_free (gpd->module_path);*/
 	}
 
-	gpd->module_path = g_strdup (file);
+	gpd->module_path = file;
 	load_plugin (gpd);
-	gpd->plugin.init ();
 
 	/*gtk_widget_destroy (dialog);*/
 	return FALSE;
@@ -464,7 +463,7 @@ save_session_cb (GtkWidget *widget, gchar *privcfgpath,
 int
 main (int argc, char **argv)
 {
-	GtkWidget *player;
+	GtkWidget *player, *applet;
 	GummaPlayerData *gpd;
 
 	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
@@ -474,8 +473,10 @@ main (int argc, char **argv)
 			   NULL, 0, NULL);
 
 	applet = applet_widget_new("gumma");
-	if (!applet)
+	if (!applet) {
+		applet_widget_abort_load (APPLET_WIDGET (applet));
 		g_error("Can't create applet!\n");
+	}
 
 	gtk_widget_realize(applet);
 	player = create_player_widget (applet,
@@ -483,16 +484,20 @@ main (int argc, char **argv)
 
 	if(player == NULL) {
 		applet_widget_abort_load (APPLET_WIDGET (applet));
-		return 1;
+		g_error ("couldn't create panel");
 	}
 
 	gpd = gtk_object_get_user_data (GTK_OBJECT (player));
 
-        applet_widget_register_stock_callback(APPLET_WIDGET(applet), "about",
-					      GNOME_STOCK_MENU_ABOUT, _("About..."),
-					      about_cb, NULL);
+        applet_widget_register_stock_callback (APPLET_WIDGET(applet), "about",
+					       GNOME_STOCK_MENU_ABOUT, _("About..."),
+					       about_cb, NULL);
 
 	
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet), "about_plugin",
+					       GNOME_STOCK_MENU_ABOUT, _("About Plugin..."),
+					       about_plugin_cb, gpd);
+
 	applet_widget_register_callback (APPLET_WIDGET (applet), "plugins",
 					 _("Plugins..."),
 					 plugin_cb, gpd);
@@ -507,8 +512,8 @@ main (int argc, char **argv)
 
 	applet_widget_gtk_main ();
 
-	if (gpd->plugin.denit)
-		gpd->plugin.denit ();
+	g_assert (gpd->plugin->denit);
+	gpd->plugin->denit (gpd->data);
 
 	return 0;
 }

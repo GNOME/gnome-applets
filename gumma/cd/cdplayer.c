@@ -27,27 +27,60 @@
 
 #include <gumma/cd/cdrom-interface.h>
 
-static char *devpath;
-static cdrom_device_t device;
+static gpointer   cd_init (void);
+static void       cd_denit (gpointer data);
 
-static int
-cd_try_open ()
+static void       cd_do_verb (GummaVerb verb, gpointer data);
+static void       cd_data_dropped (GtkSelectionData *selection, 
+				   gpointer data);
+
+static GummaState cd_get_state (gpointer data);
+static void       cd_get_time (GummaTimeInfo *tinfo, gpointer data);
+
+static void       cd_about (gpointer data);
+static GtkWidget *cd_get_config_page (gpointer data);
+
+GummaPlugin cd_plugin = {
+	cd_init,
+	cd_denit,
+	cd_do_verb,
+	cd_data_dropped,
+	cd_get_state,
+	cd_get_time,
+	cd_about,
+	cd_get_config_page
+};
+
+GummaPlugin *
+get_plugin ()
+{
+	return &cd_plugin;
+}
+
+typedef struct {
+	char *devpath;
+	cdrom_device_t device;
+} CDData;
+
+static gboolean
+cd_try_open (CDData *cd)
 {
 	int err;
-	if(!device) {
-		device = cdrom_open(devpath, &err);
-		return device != NULL;
+	if(!cd->device) {
+		cd->device = cdrom_open(cd->devpath, &err);
+		return cd->device != NULL;
 	}
 	return TRUE;
 }
 
-GummaState
-gp_get_state ()
+static GummaState
+cd_get_state (gpointer data)
 {
+	CDData *cd = data;
 	cdrom_device_status_t stat;
 
-	if (cd_try_open () &&
-	    cdrom_get_status (device, &stat) == DISC_NO_ERROR) {
+	if (cd_try_open (cd) &&
+	    cdrom_get_status (cd->device, &stat) == DISC_NO_ERROR) {
 		switch (stat.audio_status) {
 		case DISC_PLAY:
 			return GUMMA_STATE_PLAYING;
@@ -63,16 +96,17 @@ gp_get_state ()
 }
 
 
-void
-gp_do_verb (GummaVerb verb)
+static void
+cd_do_verb (GummaVerb verb, gpointer data)
 {
+	CDData *cd = data;
 	cdrom_device_status_t stat;
 	GummaState state;
 
-	if(!cd_try_open ())
+	if(!cd_try_open (cd))
 		return;
 
-	state = gp_get_state ();
+	state = cd_get_state (cd);
 
 	switch (verb) {
 	case GUMMA_VERB_PLAY:
@@ -80,32 +114,32 @@ gp_do_verb (GummaVerb verb)
 		case GUMMA_STATE_PLAYING:
 			break;
 		case GUMMA_STATE_PAUSED:
-			cdrom_resume (device);
+			cdrom_resume (cd->device);
 			break;
 		default:
-			if (cdrom_get_status (device, &stat) == DISC_TRAY_OPEN)
-				cdrom_load (device);
-			cdrom_read_track_info (device);
-			cdrom_play (device, device->track0,
-				    device->track1);
+			if (cdrom_get_status (cd->device, &stat) == DISC_TRAY_OPEN)
+				cdrom_load (cd->device);
+			cdrom_read_track_info (cd->device);
+			cdrom_play (cd->device, cd->device->track0,
+				    cd->device->track1);
 			break;
 		}
 	case GUMMA_VERB_PAUSE:
 		if (state == GUMMA_STATE_PLAYING)
-			cdrom_pause (device);
+			cdrom_pause (cd->device);
 		break;
 	case GUMMA_VERB_STOP:
-		cdrom_stop (device);
+		cdrom_stop (cd->device);
 		break;
 	case GUMMA_VERB_PREV:
-		cdrom_prev (device);
+		cdrom_prev (cd->device);
 		break;
 	case GUMMA_VERB_NEXT:
-		cdrom_next (device);
+		cdrom_next (cd->device);
 		break;
 	case GUMMA_VERB_EJECT:
 #if 0
-		if (cdrom_get_status (device, &stat)==DISC_TRAY_OPEN)
+		if (cdrom_get_status (cd->device, &stat)==DISC_TRAY_OPEN)
 			/*FIXME: if there is no disc, we get TRAY_OPEN even
 			  if the tray is closed, is this a kernel bug?? or
 			  is this the inteded behaviour, we don't support this
@@ -113,49 +147,54 @@ gp_do_verb (GummaVerb verb)
 			  find out if the tray is actually open, we can't do this*/
 			cdrom_load(device);
 #endif
-		cdrom_eject (device);
+		cdrom_eject (cd->device);
 		break;
 	}
 	return;
 }
 
-GtkWidget *
-gp_get_config_page ()
+static GtkWidget *
+cd_get_config_page (gpointer data)
 {
 	return NULL;
 }
 
-void
-gp_init ()
+static gpointer 
+cd_init ()
 {
 	int err;
-	devpath = gnome_config_get_string("GUMMA/cd/devpath=/dev/cdrom");
-	device = cdrom_open (devpath, &err);
-	/*g_free (cd);*/
+	CDData *cd = g_new0 (CDData, 1);
+	cd->devpath = gnome_config_get_string("GUMMA/cd/devpath=/dev/cdrom");
+	cd->device = cdrom_open (cd->devpath, &err);
+	return cd;
 }
 
-void
-gp_denit ()
+static void
+cd_denit (gpointer data)
 {
-	if (device)
-		cdrom_close (device);
+	CDData *cd = data;
+	if (cd->device)
+		cdrom_close (cd->device);
+	g_free (cd->devpath);
+	g_free (cd);
 }
 
-void
-gp_data_dropped (GtkSelectionData *data)
+static void
+cd_data_dropped (GtkSelectionData *selection, gpointer data)
 {
 	return;
 }
 
-void
-gp_get_time (GummaTimeInfo *tinfo)
+static void
+cd_get_time (GummaTimeInfo *tinfo, gpointer data)
 {
+	CDData *cd = data;
 	cdrom_device_status_t stat;
 	
 	g_return_if_fail (tinfo);
 
-	if (cd_try_open () &&
-            cdrom_get_status (device, &stat) == DISC_NO_ERROR) {
+	if (cd_try_open (cd) &&
+            cdrom_get_status (cd->device, &stat) == DISC_NO_ERROR) {
                 switch (stat.audio_status) {
                 case DISC_PLAY:
                 case DISC_PAUSED:
@@ -170,21 +209,27 @@ gp_get_time (GummaTimeInfo *tinfo)
 		tinfo->track = 0;
 }
 
-void
-gp_about ()
+static void
+cd_about (gpointer data)
 {
-	static const char *authors[] = {
+	const char *authors[] = {
 		"Jacob Berkman  <jberkman@andrew.cmu.edu>",
 		NULL
 	};
-	GtkWidget *about_box;
+	static GtkWidget *about_box = NULL;
 
-	about_box = gnome_about_new("Compact Disc GUMMA Plugin", "0.1",
-				    "Copyright (C) 1999 The Free Software Foundation",
-				    authors,
-				    "Plugin for playing CD's via GUMMA\n\n"
-				    "Based on the GNOME cdplayer applet.",
-				    NULL);
+	if (about_box) {
+		gdk_window_show (about_box->window);
+		gdk_window_raise (about_box->window);
+		return;
+	}
 
-	gtk_widget_show(about_box);
+	about_box = gnome_about_new ("Compact Disc GUMMA Plugin", VERSION,
+				     "Copyright (C) 1999 The Free Software Foundation",
+				     authors,
+				     "Plugin for playing CD's via GUMMA\n\n"
+				     "Based on the GNOME cdplayer applet by Ching Hui.",
+				     NULL);
+
+	gtk_widget_show (about_box);
 }

@@ -11,15 +11,45 @@
 
 #include <gnome.h>
 
+#include <xmms/xmmsctrl.h>
+
 #define GUMMA_PLUGIN
 #include <gumma/gumma.h>
 
-#include <xmms/xmmsctrl.h>
+static gpointer   xmms_init (void);
+static void       xmms_denit (gpointer data);
 
-static int xmms_session=0;
+static void       xmms_do_verb (GummaVerb verb, gpointer data);
+static void       xmms_data_dropped (GtkSelectionData *selection, 
+				   gpointer data);
+
+static GummaState xmms_get_state (gpointer data);
+static void       xmms_get_time (GummaTimeInfo *tinfo, gpointer data);
+
+static void       xmms_about (gpointer data);
+static GtkWidget *xmms_get_config_page (gpointer data);
+
+GummaPlugin xmms_plugin = {
+	xmms_init,
+	xmms_denit,
+	xmms_do_verb,
+	xmms_data_dropped,
+	xmms_get_state,
+	xmms_get_time,
+	xmms_about,
+	xmms_get_config_page
+};
+
+GummaPlugin *
+get_plugin () {
+	return &xmms_plugin;
+}
+
+typedef struct {
+	int session;
+} XmmsData;
 
 typedef void (*xmms_func) (gint);
-
 static xmms_func cmds[] = { xmms_remote_play,
 			    xmms_remote_pause,
 			    xmms_remote_stop,
@@ -27,66 +57,79 @@ static xmms_func cmds[] = { xmms_remote_play,
 			    xmms_remote_playlist_next,
 			    xmms_remote_playlist_prev };
 
-void
-gp_do_verb (GummaVerb verb)
+static void
+xmms_do_verb (GummaVerb verb, gpointer data)
 {
+	XmmsData *xmms = data;
 	if (!cmds[verb]) return;
-	cmds[verb] (xmms_session);
+	cmds[verb] (xmms->session);
 }
 
-GtkWidget *
-gp_get_config_page ()
+static GtkWidget *
+xmms_get_config_page (gpointer data)
 {
 	return NULL;
 }
 
-void 
-gp_init ()
+static gpointer
+xmms_init ()
 {
-	xmms_session = 0;
+	XmmsData *xmms = g_new0 (XmmsData, 1);
+	return xmms;
 }
 
-void
-gp_denit () { }
+static void
+xmms_denit (gpointer data) { 
+	XmmsData *xmms = data;
+	g_free (xmms);
+}
 
-GummaState
-gp_get_state ()
+static GummaState
+xmms_get_state (gpointer data)
 {
-	if (!xmms_remote_is_running (xmms_session))
+	XmmsData *xmms = data;
+	if (!xmms_remote_is_running (xmms->session))
 		return GUMMA_STATE_ERROR;
-	else if (xmms_remote_is_playing (xmms_session))
+	else if (xmms_remote_is_playing (xmms->session))
 		return GUMMA_STATE_PLAYING;
-	else if (xmms_remote_is_paused (xmms_session))
+	else if (xmms_remote_is_paused (xmms->session))
 		return GUMMA_STATE_PAUSED;
 	else
 		return GUMMA_STATE_STOPPED;
 }
 
-void
-gp_data_dropped (GtkSelectionData *data)
+static void
+xmms_data_dropped (GtkSelectionData *selection, gpointer data)
 {
 	return;
 }
 
-void
-gp_get_time (GummaTimeInfo *tinfo)
+static void
+xmms_get_time (GummaTimeInfo *tinfo, gpointer data)
 {
+	XmmsData *xmms = data;
 	gint t;
 	g_return_if_fail (tinfo);
-	t = xmms_remote_get_output_time (xmms_session) / 1000;
+	t = xmms_remote_get_output_time (xmms->session) / 1000;
 	tinfo->minutes = t / 60;
 	tinfo->seconds = t % 60;
 	tinfo->track = 0; /*xmms_remote_get_playlist_time (xmms_session);*/
 }
 
-void
-gp_about ()
+static void
+xmms_about (gpointer data)
 {
-	static const char *authors[] = {
+	const char *authors[] = {
 		"Jacob Berkman  <jberkman@andrew.cmu.edu>",
 		NULL
 	};
-	GtkWidget *about_box;
+	static GtkWidget *about_box = NULL;
+
+	if (about_box) {
+		gdk_window_show (about_box->window);
+		gdk_window_raise (about_box->window);
+		return;
+	}
 
 	about_box = gnome_about_new("XMMS plugin for GUMMA", "0.1",
 				    "Copyright (C) 1999 The Free Software Foundation",
