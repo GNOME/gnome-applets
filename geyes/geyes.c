@@ -240,8 +240,6 @@ about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 		gdk_pixbuf_unref (pixbuf);
 			
 	gtk_window_set_wmclass (GTK_WINDOW (about), "geyes", "Geyes");
-	gnome_window_icon_set_from_file (GTK_WINDOW (about),
-					 GNOME_ICONDIR"/gnome-eyes.png");	
 	g_signal_connect (about, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &about);
@@ -395,7 +393,9 @@ static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
 	EyesApplet *eyes_applet;
-
+	
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-eyes.png");
+	
         eyes_applet = create_eyes (applet);
 
 	panel_applet_add_preferences (applet, "/schemas/apps/geyes/prefs", NULL);
