@@ -200,8 +200,7 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (applet->about_dialog)
-	{
+	if (applet->about_dialog) {
 		gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
 				       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
 

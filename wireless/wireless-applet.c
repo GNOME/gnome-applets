@@ -75,6 +75,7 @@ typedef struct {
 	GtkWidget *pct_label;
 	GtkWidget *pixmap;
 	GtkWidget *box;
+	GtkWidget *about_dialog;
 	guint timeout_handler_id;
 	FILE *file;
 	GtkTooltips *tips;
@@ -548,21 +549,24 @@ wireless_applet_help_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 static void
 wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 {
-	static GtkWidget *about = NULL;
 	GdkPixbuf *pixbuf;
 	char *file;
+
 	const gchar *authors[] = {
 		"Eskil Heyn Olsen <eskil@eskil.org>",
 		"Bastien Nocera <hadess@hadess.net> (Gnome2 port)",
 		NULL
 	};
+
 	const gchar *documenters[] = { NULL };
+
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about != NULL)
-	{
-		gtk_widget_show (about);
-		gtk_window_present (GTK_WINDOW (about));
+	if (applet->about_dialog != NULL) {
+		gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (&applet->base)));
+		
+		gtk_window_present (GTK_WINDOW (applet->about_dialog));
 		return;
 	}
 
@@ -571,7 +575,7 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 	pixbuf = gdk_pixbuf_new_from_file (file, NULL);
 	g_free (file);
 
-	about = gnome_about_new (
+	applet->about_dialog = gnome_about_new (
 			_("Wireless Link Monitor"),
 			VERSION,
 			_("(C) 2001, 2002 Free Software Foundation "),
@@ -582,11 +586,12 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 			pixbuf);
 
 	g_object_unref (pixbuf);
-	
-	gtk_widget_show (about);
 
-	g_object_add_weak_pointer (G_OBJECT (about),
-			(void**)&about);
+	g_signal_connect (applet->about_dialog, "destroy",
+			  G_CALLBACK (gtk_widget_destroyed),
+			  &applet->about_dialog);
+ 
+	gtk_widget_show (applet->about_dialog);
 
 	return;
 }
@@ -640,6 +645,11 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 
 	for (i = 0; i < PIX_NUMBER; i++)
 		g_object_unref (applet->pixmaps[i]);
+
+	if (applet->about_dialog) {
+		gtk_widget_destroy (applet->about_dialog);
+		applet->about_dialog = NULL;
+	}
 
 	if (applet->prefs) {
 		gtk_widget_destroy (applet->prefs);
@@ -717,6 +727,7 @@ setup_widgets (WirelessApplet *applet)
 	gtk_container_add (GTK_CONTAINER (applet), applet->box);
 
 	applet->current_pixbuf = NULL;
+	applet->about_dialog = NULL;
 }
 
 static void change_size_cb(PanelApplet *pa, gint s, WirelessApplet *applet)

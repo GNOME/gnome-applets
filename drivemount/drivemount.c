@@ -543,8 +543,7 @@ about_cb (BonoboUIComponent *uic,
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (drivemount->about_dialog)
-	{
+	if (drivemount->about_dialog) {
 		gtk_window_set_screen (GTK_WINDOW (drivemount->about_dialog),
 				       gtk_widget_get_screen (GTK_WIDGET (drivemount->applet)));
 	

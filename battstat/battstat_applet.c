@@ -886,8 +886,7 @@ about_cb (BonoboUIComponent *uic,
 
    const gchar *translator_credits = _("translator_credits");
 
-   if (battstat->about_dialog) 
-   {
+   if (battstat->about_dialog) {
 	gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (battstat->applet)));
 	   
