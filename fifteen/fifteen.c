@@ -62,7 +62,7 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	GnomeCanvasItem *text;
 	int num, pos, newpos;
 	int x, y;
-	double dx, dy;
+	double dx = 0.0, dy = 0.0;
 	int move;
 
 	canvas = item->canvas;
@@ -269,7 +269,7 @@ about (AppletWidget *applet, gpointer data)
 				       "Guaranteed to be a productivity buster."),
 				     NULL);
 
-	gnome_dialog_run_modal (GNOME_DIALOG (about_box));
+	gtk_widget_show(about_box);
 }
 
 int
