@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.2\n"
-"POT-Creation-Date: 2002-02-17 23:07-0500\n"
+"POT-Creation-Date: 2002-02-18 10:36+0000\n"
 "PO-Revision-Date: 2000-07-15\n"
 "Last-Translator: Robert Brady <robert@susu.org.uk>\n"
 "Language-Team: \n"
@@ -26,26 +26,27 @@ msgstr ""
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:821
 msgid "High"
 msgstr ""
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:800
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:823
 msgid "Low"
 msgstr ""
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:326 battstat/battstat_applet.c:802
+#: battstat/battstat_applet.c:326 battstat/battstat_applet.c:825
 msgid "Critical"
 msgstr ""
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:328 battstat/battstat_applet.c:804
+#: battstat/battstat_applet.c:328 battstat/battstat_applet.c:827
 msgid "Charging"
 msgstr ""
 
 #: battstat/battstat_applet.c:409
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr ""
 
@@ -56,7 +57,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:451 battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:451 battstat/battstat_applet.c:984
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -65,7 +67,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:969
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:992
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -73,15 +76,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:893
-#: battstat/battstat_applet.c:982
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:1005
 msgid "System is running on battery power"
 msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:464 battstat/battstat_applet.c:899
-#: battstat/battstat_applet.c:988
+#: battstat/battstat_applet.c:464 battstat/battstat_applet.c:922
+#: battstat/battstat_applet.c:1011
 msgid "System is running on AC power"
 msgstr ""
 
@@ -91,13 +94,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:602 battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:602 battstat/battstat_applet.c:896
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:609 battstat/battstat_applet.c:880
+#: battstat/battstat_applet.c:609 battstat/battstat_applet.c:903
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr ""
 
@@ -120,6 +125,7 @@ msgstr ""
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
 #: battstat/battstat_applet.c:635
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr ""
 
@@ -146,23 +152,44 @@ msgid ""
 "that helps.\n"
 msgstr ""
 
+#: battstat/battstat_applet.c:754
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:757
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+
+#: battstat/battstat_applet.c:765
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:771
+#: battstat/battstat_applet.c:794
 msgid "Battery status utility"
 msgstr ""
 
-#: battstat/battstat_applet.c:773
+#: battstat/battstat_applet.c:796
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr ""
 
-#: battstat/battstat_applet.c:774
+#: battstat/battstat_applet.c:797
 msgid "This utility show the status of your laptop battery."
 msgstr ""
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
-#, fuzzy
 msgid "Battery Charge Monitor"
-msgstr "Low Battery Colour:"
+msgstr "Battery Charge Monitor"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
@@ -180,6 +207,7 @@ msgstr ""
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:1
 msgid "About..."
 msgstr ""
 
@@ -189,6 +217,7 @@ msgstr ""
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:2
 msgid "Help"
 msgstr ""
 
@@ -200,6 +229,7 @@ msgstr ""
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:3
 msgid "Properties..."
 msgstr ""
 
@@ -1012,7 +1042,7 @@ msgid "_Add"
 msgstr ""
 
 #: gtik/gtik.c:1081
-msgid "_Remove Selected"
+msgid "Remove Selected"
 msgstr ""
 
 #: gtik/gtik.c:1126
@@ -1043,16 +1073,13 @@ msgstr ""
 msgid "Enable scroll buttons"
 msgstr ""
 
-#. COLOR
 #: gtik/gtik.c:1208
-#, fuzzy
 msgid "+ Color"
-msgstr "Colours"
+msgstr "+ Colour"
 
 #: gtik/gtik.c:1225
-#, fuzzy
 msgid "- Color"
-msgstr "Colours"
+msgstr "- Colour"
 
 #: gtik/gtik.c:1245
 msgid "Stock Symbol:"
@@ -1284,8 +1311,32 @@ msgstr ""
 msgid "Miscellaneous"
 msgstr ""
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:707 screenshooter/screenshooter_applet.c:461
 msgid "General"
+msgstr ""
+
+#: gweather/weather.c:59
+msgid "knots"
+msgstr ""
+
+#: gweather/weather.c:59
+msgid "kph"
+msgstr ""
+
+#: gweather/weather.c:64
+msgid "inHg"
+msgstr ""
+
+#: gweather/weather.c:64
+msgid "mmHg"
+msgstr ""
+
+#: gweather/weather.c:68
+msgid "miles"
+msgstr ""
+
+#: gweather/weather.c:68
+msgid "kilometers"
 msgstr ""
 
 #: gweather/weather.c:123
@@ -3002,6 +3053,7 @@ msgid "Resource"
 msgstr ""
 
 #: multiload/main.c:194
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3199,7 +3251,8 @@ msgstr ""
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
-msgstr ""
+msgstr "The Panel Menu Applet allows you to display customised menubars on "
+"your panels."
 
 #: panel-menu/panel-menu-directory.c:496
 msgid "Create directory item..."
@@ -3308,115 +3361,350 @@ msgstr ""
 msgid "Workspaces"
 msgstr ""
 
-#~ msgid "Clock color"
-#~ msgstr "Clock colour"
+#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:1
+msgid "Screenshot Taker"
+msgstr ""
 
-#~ msgid "Hour needle color"
-#~ msgstr "Hour needle colour"
+#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:2
+msgid "Take screenshots"
+msgstr ""
 
-#~ msgid "Minute needle color"
-#~ msgstr "Minute needle colour"
+#: screenshooter/screenshooter_applet.c:416
+msgid "Screen-Shooter Settings"
+msgstr ""
 
-#~ msgid "Second needle color"
-#~ msgstr "Second needle colour"
+#: screenshooter/screenshooter_applet.c:422
+msgid "Capture WM decorations when grabbing a window"
+msgstr ""
 
-#~ msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-#~ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
+#: screenshooter/screenshooter_applet.c:426
+msgid "Give audio feedback using the keyboard bell"
+msgstr ""
 
-#~ msgid "AC-On Battery Color:"
-#~ msgstr "AC-On Battery Colour:"
+#: screenshooter/screenshooter_applet.c:431
+msgid "Display Spurious Options (I got carried away)"
+msgstr ""
 
-#~ msgid "AC-Off Battery Color:"
-#~ msgstr "AC-Off Battery Colour:"
+#: screenshooter/screenshooter_applet.c:439
+msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
+msgstr ""
 
-#~ msgid "Low Battery Color:"
-#~ msgstr "Low Battery Colour:"
+#: screenshooter/screenshooter_applet.c:444
+msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
 
-#~ msgid "Graph Battery Low Color:"
-#~ msgstr "Graph Battery Low Colour:"
+#: screenshooter/screenshooter_applet.c:455
+msgid "Create monochrome image"
+msgstr ""
 
-#~ msgid "Graph Tick Color:"
-#~ msgstr "Graph Tick Colour:"
+#: screenshooter/screenshooter_applet.c:458
+msgid "Invert colours in image"
+msgstr "Invert colours in image"
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-#~ "Mail blinking can be for any unread mail, or only briefly when new mail "
-#~ "arrives."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-#~ "Mail blinking can be for any unread mail, or only briefly when new mail "
-#~ "arrives."
+#: screenshooter/screenshooter_applet.c:474
+msgid "Directory to save images in:"
+msgstr ""
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Mounts and Unmounts drives."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "Mounts and Unmounts drives."
+#: screenshooter/screenshooter_applet.c:499
+msgid "Image filename:"
+msgstr ""
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Displays time in Binary Coded Decimal\n"
-#~ "http://snoopy.net/~jon/jbc/."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "Displays time in Binary Coded Decimal\n"
-#~ "http://snoopy.net/~jon/jbc/."
+#: screenshooter/screenshooter_applet.c:514
+msgid "Show expanded filename"
+msgstr ""
 
-#~ msgid "Randomize"
-#~ msgstr "Randomise"
+#. The % sign screws over xgettext ;)
+#: screenshooter/screenshooter_applet.c:536
+#, no-c-format
+msgid ""
+"Filetype is determined from filename suffix.\n"
+"Default filetype (if no extension or unrecognised extension) is miff.\n"
+"Recognised suffixes are:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"and several obscure ones. Try your luck with something interesting!\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
+"\n"
+"Recommendations:\n"
+"Small file, pretty good quality:   jpg, 75% quality\n"
+"Slightly larger file but lossless: png, as much compression as you like.\n"
+"- compressing pngs takes longer at higher ratios, but is still lossless"
+msgstr ""
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "CPU Load Meter Applet."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "\n"
-#~ "CPU Load Meter Applet."
+#: screenshooter/screenshooter_applet.c:552
+msgid "View screenshot after saving it"
+msgstr ""
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Load Average Meter Applet."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "\n"
-#~ "Load Average Meter Applet."
+#: screenshooter/screenshooter_applet.c:559
+msgid "App to use for displaying screenshots:"
+msgstr ""
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Memory Load Applet."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "\n"
-#~ "Memory Load Applet."
+#: screenshooter/screenshooter_applet.c:574
+msgid "Files, Apps"
+msgstr ""
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Swap Load Meter Applet."
-#~ msgstr ""
-#~ "Released under the GNU general public licence.\n"
-#~ "\n"
-#~ "Swap Load Meter Applet."
+#: screenshooter/screenshooter_applet.c:582
+msgid "Create thumbnail of image too"
+msgstr ""
 
-#~ msgid "Invert colours in image"
-#~ msgstr "Invert colours in image"
+#: screenshooter/screenshooter_applet.c:586
+msgid "Thumbnail Size (percentage of original)"
+msgstr ""
 
-#~ msgid ""
-#~ "Normalize image (Span full range of color values to enhance contrast)"
-#~ msgstr ""
-#~ "Normalise image (Span full range of colour values to enhance contrast)"
+#: screenshooter/screenshooter_applet.c:591
+msgid ""
+"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
 
-#~ msgid "Equalize image (Perform histogram equalization)"
-#~ msgstr "Equalise image (Perform histogram equalisation)"
+#: screenshooter/screenshooter_applet.c:601
+msgid "Prefix to attach to thumbnail filename:"
+msgstr ""
 
-#~ msgid "Solarize factor?"
-#~ msgstr "Solarise factor?"
+#: screenshooter/screenshooter_applet.c:629
+msgid "Use high-quality intermediate for generating thumbnail"
+msgstr ""
 
-#~ msgid "Unable to initialize request. Shouldn't happen\n"
-#~ msgstr "Unable to initialise request. Shouldn't happen\n"
+#: screenshooter/screenshooter_applet.c:638
+msgid ""
+"(This'll chug loads of CPU, but will prevent compressing the image twice if "
+"a\n"
+"lossy file format is used)\n"
+"Don't use this if you're using a lossless compression format, or if you "
+"cherish\n"
+"speed and don't mind imperfection in your thumbnails."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:645
+msgid "Thumbnails"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:668
+msgid ""
+"All post-processing, frill and spurious options will chug more CPU than a\n"
+"simple screenshot, due to the creation and then conversion of an "
+"intermediate\n"
+"image. Intensive operations may take some time on less spiffy CPUs."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:679
+msgid "Normalize image (Span full range of color values to enhance contrast)"
+msgstr "Normalise image (Span full range of colour values to enhance contrast)"
+
+#: screenshooter/screenshooter_applet.c:683
+msgid "Equalize image (Perform histogram equalization)"
+msgstr "Equalise image (Perform histogram equalisation)"
+
+#: screenshooter/screenshooter_applet.c:691
+msgid "Enhance image (reduce noise)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:694
+msgid "Despeckle Image (reduce spots)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:698
+msgid "Sharpen Image by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:703
+msgid "Rotate image clockwise by how many degrees?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:708
+msgid "Adjust gamma"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:711
+msgid "Gamma value"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:718
+msgid "Post Processing"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:726
+msgid "Create frame around image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:730
+msgid "Frame Width (pixels)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:738
+msgid "Mirror image vertically"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:740
+msgid "Mirror image horizontally"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:743
+msgid "Emboss image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:755
+msgid ""
+"When finished, send image and thumbnail filenames to script/program below"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:763
+msgid "Script or program to launch:"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:784
+msgid ""
+"Script/program will be launched after image creation with the image "
+"filenames\n"
+"specified on the commandline as follows:\n"
+"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
+"Hint: I use a script to update my website screenshot page.\n"
+"An example script should've been included in the tarball, or at my website."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:793
+msgid "Frills"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:802
+msgid "Blur image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:805
+msgid "Blur image by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:809
+msgid "Create Charcoal Effect"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:813
+msgid "Charcoal by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:817
+msgid "Find Edges in Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:821
+msgid "Find edges by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:825
+msgid "Implode Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:829
+msgid "Implode by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:834
+msgid "Spurious"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:842
+msgid "Create Painted Effect"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:846
+msgid "Paint what radius around each pixel?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:850
+msgid "Solarise Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:854
+msgid "Solarize factor?"
+msgstr "Solarise factor?"
+
+#: screenshooter/screenshooter_applet.c:858
+msgid "Spread image pixels"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:862
+msgid "Radius to around each pixel to spread?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:866
+msgid "Swirl pixels. My favorite :-)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:870
+msgid "Radius to swirl pixels around?)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:874
+msgid "Spurious 2"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1004
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the directory box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1020
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1368
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1382
+#, c-format
+msgid ""
+"The specified filename:\n"
+"%s\n"
+"expands to:\n"
+"%s\n"
+"when passed to a shell"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1609
+msgid "Screen-Shooter Applet"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1611
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1612
+msgid ""
+"A useful little screengrabber.\n"
+"The left/top button allows you to grab either:\n"
+"a window (click to select which one)\n"
+"or an area (click and drag to select a rectangle.)\n"
+"The right/bottom button will grab the entire desktop.\n"
+"Share and Enjoy ;)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1625
+msgid "Visit the author's Website"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1714
+#: screenshooter/screenshooter_applet.c:1717
+msgid "Grab a shot of a specific window or area"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1715
+#: screenshooter/screenshooter_applet.c:1718
+msgid "Grab a shot of your entire desktop"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.desktop.in.h:1
+msgid "Screen Shooter is a screenshot grabber"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.desktop.in.h:2
+msgid "ScreenShooter"
+msgstr ""
+
