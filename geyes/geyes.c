@@ -22,7 +22,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 #include <libgnomeui/gnome-window-icon.h>
-
+#include <gconf/gconf-client.h>
 #include "geyes.h"
 
 #define UPDATE_TIMEOUT 75
@@ -167,23 +167,33 @@ draw_eye (gint eye_num,
           gint pupil_y)
 {
 	/* Currently porting */
+	GdkPixmap *eyes, *pupils;
+	
+	gdk_pixbuf_render_pixmap_and_mask (eyes_applet.eye_image,
+					   &eyes,
+					   NULL,
+					   0);
+	gdk_pixbuf_render_pixmap_and_mask (eyes_applet.pupil_image,
+					   &pupils,
+					   NULL,
+					   0);
+
         gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
                          eyes_applet.applet->style->black_gc,
-                         gdk_pixbuf_get_pixels (eyes_applet.eye_image), /* Could work okay - not sure */
+                         eyes,
                          0, 0, 
                          0, 0,
                          eyes_applet.eye_width, 
                          eyes_applet.eye_height);
-
         gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
                          eyes_applet.applet->style->black_gc,
-                         gdk_pixbuf_get_pixels (eyes_applet.pupil_image), /* Could work okay - not sure */
+                         pupils,
                          0, 0, 
                          pupil_x - eyes_applet.pupil_width / 2, 
                          pupil_y - eyes_applet.pupil_height / 2,
                          -1, -1);
        
-	/* Needs to be converted */ 
+	/* Needs to be converted - although this code doesn't make much sense
 	
         if (eyes_applet.pupil_image->shape_mask) {
                 gdk_gc_set_clip_mask (eyes_applet.applet->style->black_gc, 
@@ -199,6 +209,7 @@ draw_eye (gint eye_num,
                 gdk_gc_set_clip_origin (eyes_applet.applet->style->black_gc, 
                                         0, 0);
         }
+	*/
         
 }
 
@@ -249,8 +260,8 @@ about_cb (void)
                                  authors,
                                  _("A goofy little xeyes clone for the GNOME panel."),
                                  NULL);
-	gtk_signal_connect (GTK_OBJECT(about), "destroy",
-			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+	g_signal_connect (G_OBJECT(about), "destroy",
+			    G_CALLBACK(gtk_widget_destroyed), &about);
         gtk_widget_show (about);
 }
 
@@ -258,8 +269,8 @@ void
 destroy_eyes (void)
 {
         int i;
-        gtk_signal_disconnect_by_func (GTK_OBJECT (eyes_applet.applet),
-                                       GTK_SIGNAL_FUNC (applet_back_change),
+        g_signal_handlers_disconnect_by_func (G_OBJECT (eyes_applet.applet),
+                                       G_CALLBACK (applet_back_change),
                                        &eyes_applet);
 		
 		
@@ -272,27 +283,19 @@ destroy_eyes (void)
 }
 
 static void
-properties_save (gchar *path)
+properties_save ()
 {
-        gnome_config_push_prefix (path);
-        gnome_config_set_string ("gEyes/theme-path", 
-                                 eyes_applet.theme_name);
-        gnome_config_sync ();
-        gnome_config_drop_all ();
-        gnome_config_pop_prefix ();
+	gconf_client_set_string (client, "/applets/gEyes/theme-path", eyes_applet.theme_name, NULL);
 }
 
 static void
-properties_load (gchar *path)
+properties_load ()
 {
         gchar *theme_path;
-        gchar *config_str;
-        gnome_config_push_prefix (path);
-        config_str = g_strdup_printf ("gEyes/theme-path=%sDefault", 
-                                      GEYES_THEMES_DIR);
-        theme_path = gnome_config_get_string_with_default (config_str, NULL);
+
+	theme_path = gconf_client_get_string(client, "/applets/gEyes/theme-path", NULL);
         load_theme (theme_path);
-        g_free (config_str);
+        g_free (theme_path);
 }
 
 
@@ -301,7 +304,7 @@ save_session_cb (GtkWidget *widget,
                  gchar *privcfgpath,
                  gchar *globcfgpath)
 {
-        properties_save (privcfgpath);
+        properties_save ();
 	return FALSE;
 	widget = NULL;
 	globcfgpath = NULL;
@@ -420,14 +423,22 @@ create_eyes_applet (void)
 int 
 main (int argc, char *argv[])
 {
-        
+        GConfClient* client;
+ 
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
         textdomain (PACKAGE);
         
         applet_widget_init ("geyes_applet", VERSION, argc, argv, NULL, 0, NULL);
+	gconf_init(argc, argv, NULL);
+
+	client = gconf_client_new ();
+	gconf_client_add_dir(client,
+                        "/extra/test/directory",
+                        GCONF_CLIENT_PRELOAD_NONE,
+                        NULL);
         gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-eyes.png");
         create_eyes_applet ();
-        properties_load (APPLET_WIDGET (eyes_applet.applet)->privcfgpath);
+        properties_load ();
         create_eyes ();
         
         timeout_handle = gtk_timeout_add (UPDATE_TIMEOUT,
