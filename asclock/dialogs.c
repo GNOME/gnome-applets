@@ -155,7 +155,7 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
 #ifdef HAVE_PUTENV
      {
        char line[MAX_PATH_LEN];
-       snprintf(line, MAX_PATH_LEN, "TZ=%s", statix_my_asclock->timezone);
+       snprintf(line, MAX_PATH_LEN, "TZ=%s", static_my_asclock->timezone);
        putenv(line);
      }
 #else
