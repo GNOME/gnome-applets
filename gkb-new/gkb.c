@@ -657,7 +657,10 @@ help_cb (BonoboUIComponent *uic,
 static GdkFilterReturn
 global_key_filter (GKB *gkb, GdkXEvent * gdk_xevent, GdkEvent * event)
 {
-  if (event->key.keyval == gkb->keysym && event->key.state == gkb->state)
+  XKeyEvent * xkevent = (XKeyEvent *) gdk_xevent;
+  gint keysym = XKeycodeToKeysym(GDK_DISPLAY(), xkevent->keycode,0);
+
+  if (keysym == gkb->keysym && xkevent->state == gkb->state)
     {
       if (gkb->cur + 1 < gkb->n)
 	gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
@@ -682,7 +685,7 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 
   xevent = (XEvent *) gdk_xevent;
 
-  if (xevent->type == KeyRelease)
+  if (xevent->type == KeyPress)
     {
       return global_key_filter (gkb, gdk_xevent, event);
     }
@@ -804,6 +807,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_show (gkb->darea_frame);
   gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
+
 
   keycode = XKeysymToKeycode(GDK_DISPLAY(), gkb->keysym);
 

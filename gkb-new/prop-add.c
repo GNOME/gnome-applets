@@ -341,7 +341,6 @@ addbutton_sensitive_cb (GtkTreeView * treeview, gpointer data)
   GKB * gkb = pbi->gkb;
   GtkWidget * addbutton = gtk_object_get_data (GTK_OBJECT (gkb->addwindow), "addbutton");
 
-  g_message("asdfasdf");
   if (pbi->keymap_for_add->command != NULL) {
     gtk_widget_set_sensitive (addbutton, TRUE);
   } else {
