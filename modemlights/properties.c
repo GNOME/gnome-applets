@@ -12,7 +12,7 @@
 #include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
 
-
+#define NEVER_SENSITIVE "never_sensitive"
 
 static void show_extra_info_cb(GtkWidget *widget, gpointer data);
 static void verify_lock_file_cb(GtkWidget *widget, gpointer data);
@@ -48,6 +48,45 @@ static gchar *color_defaults[] = {
 	"#004D00",
 	NULL
 };
+
+/* set sensitive and setup NEVER_SENSITIVE appropriately */
+static void
+hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	gtk_widget_set_sensitive (w, sensitivity);
+	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
+			   GINT_TO_POINTER ( ! sensitivity));
+}
+
+
+/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
+static void
+soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
+		gtk_widget_set_sensitive (w, FALSE);
+	else
+		gtk_widget_set_sensitive (w, sensitivity);
+}
+
+
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
 
 void property_load(MLData *mldata)
 {
@@ -205,9 +244,9 @@ static void isdn_checkbox_cb(GtkWidget *widget, gpointer data)
 	
 	mldata->use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
 
-	gtk_widget_set_sensitive(mldata->lockfile_entry, !mldata->use_ISDN);
-	gtk_widget_set_sensitive(mldata->device_entry, !mldata->use_ISDN);
-	gtk_widget_set_sensitive(mldata->verify_checkbox, !mldata->use_ISDN);
+	soft_set_sensitive(mldata->lockfile_entry, !mldata->use_ISDN);
+	soft_set_sensitive(mldata->device_entry, !mldata->use_ISDN);
+	soft_set_sensitive(mldata->verify_checkbox, !mldata->use_ISDN);
 	panel_applet_gconf_set_int (applet, "isdn", mldata->use_ISDN, NULL);
 }
 
@@ -272,6 +311,9 @@ static GtkWidget *box_add_color(MLData *mldata, GtkWidget *box,
 	g_object_set_data (G_OBJECT (color_sel), "mldata", mldata);
 	gtk_box_pack_start(GTK_BOX(hbox), color_sel, FALSE, FALSE, 0);
 	gtk_widget_show(color_sel);
+
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), color_rc_names[color]))
+		hard_set_sensitive (hbox, FALSE);
 
 	return label;
 }
@@ -420,6 +462,9 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "delay"))
+		hard_set_sensitive (hbox, FALSE);
+
 	/* extra info checkbox */
 	checkbox = gtk_check_button_new_with_mnemonic (_("Sho_w connect time and throughput"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), mldata->show_extra_info);
@@ -428,12 +473,18 @@ void property_show (BonoboUIComponent *uic,
 	gtk_box_pack_start (GTK_BOX (frame), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show (checkbox);
 
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "extra_info"))
+		hard_set_sensitive (checkbox, FALSE);
+
 	checkbox = gtk_check_button_new_with_mnemonic (_("B_link connection status when connecting"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), mldata->status_wait_blink);
 	g_signal_connect (G_OBJECT (checkbox), "toggled",
 			 G_CALLBACK (wait_blink_cb), mldata);
 	gtk_box_pack_start (GTK_BOX (frame), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show (checkbox);
+
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "wait_blink"))
+		hard_set_sensitive (checkbox, FALSE);
 
 	frame = create_hig_category (vbox, _("Connections"));
 
@@ -458,6 +509,11 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), mldata->connect_entry , TRUE, TRUE, 0);
 	gtk_widget_show(mldata->connect_entry);
 
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "connect")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (mldata->connect_entry, FALSE);
+	}
+
 	/* disconnect entry */
 	hbox = gtk_hbox_new(FALSE, 12);
         gtk_box_pack_start(GTK_BOX(frame), hbox, FALSE, FALSE, 0);
@@ -477,6 +533,11 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), mldata->disconnect_entry, TRUE, TRUE, 0);
 	gtk_widget_show(mldata->disconnect_entry);
 
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "disconnect")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (mldata->disconnect_entry, FALSE);
+	}
+
 	/* confirmation checkbox */
 	checkbox = gtk_check_button_new_with_mnemonic(_("Con_firm connection"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), mldata->ask_for_confirmation);
@@ -484,6 +545,9 @@ void property_show (BonoboUIComponent *uic,
 			  G_CALLBACK (confirm_checkbox_cb), mldata);
 	gtk_box_pack_start (GTK_BOX (frame), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
+
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "confirmation"))
+		hard_set_sensitive (checkbox, FALSE);
 
 	label = gtk_label_new (_("General"));
 	gtk_widget_show (vbox);
@@ -577,6 +641,11 @@ void property_show (BonoboUIComponent *uic,
 			  G_CALLBACK (device_changed_cb), mldata);
         gtk_box_pack_start (GTK_BOX (hbox), mldata->device_entry, TRUE, TRUE, 0);
 	gtk_widget_show (mldata->device_entry);
+
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "device")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (mldata->device_entry, FALSE);
+	}
 	
 	/* lock file entry */
 	hbox = gtk_hbox_new(FALSE, 12);
@@ -597,12 +666,20 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), mldata->lockfile_entry, TRUE, TRUE, 0);
 	gtk_widget_show(mldata->lockfile_entry);
 
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "lockfile")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (mldata->lockfile_entry, FALSE);
+	}
+
 	mldata->verify_checkbox = gtk_check_button_new_with_mnemonic(_("_Verify owner of lock file"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (mldata->verify_checkbox), mldata->verify_lock_file);
 	g_signal_connect(G_OBJECT(mldata->verify_checkbox), "toggled",
 			 G_CALLBACK(verify_lock_file_cb), mldata);
 	gtk_box_pack_start (GTK_BOX (frame), mldata->verify_checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(mldata->verify_checkbox);
+
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "verify_lock"))
+		hard_set_sensitive (mldata->verify_checkbox, FALSE);
 
 	/* ISDN checkbox */
 	checkbox = gtk_check_button_new_with_mnemonic(_("U_se ISDN"));
@@ -612,11 +689,14 @@ void property_show (BonoboUIComponent *uic,
 	gtk_box_pack_start (GTK_BOX (frame), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "isdn"))
+		hard_set_sensitive (checkbox, FALSE);
+
 	if (mldata->use_ISDN)
 		{
-		gtk_widget_set_sensitive(mldata->lockfile_entry, FALSE);
-		gtk_widget_set_sensitive(mldata->device_entry, FALSE);
-		gtk_widget_set_sensitive(mldata->verify_checkbox, FALSE);
+		soft_set_sensitive(mldata->lockfile_entry, FALSE);
+		soft_set_sensitive(mldata->device_entry, FALSE);
+		soft_set_sensitive(mldata->verify_checkbox, FALSE);
 		}
 
         label = gtk_label_new(_("Advanced"));
