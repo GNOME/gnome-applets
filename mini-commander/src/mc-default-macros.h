@@ -39,30 +39,25 @@ typedef struct {
  * installed into the schemas.
  */
 static const MCDefaultMacro mc_default_macros [] = {
-	{ "^(http://.*)$",       "mozilla \\1" },
-	{ "^(ftp://.*)",         "mozilla \\1" },
-	{ "^(www\\..*)$",        "mozilla http://\\1" },
-	{ "^(ftp\\..*)$",        "mozilla ftp://\\1" },
-	{ "^lynx: *(.*)$",       "gnome-terminal -e \"sh -c 'lynx \\1'\"" },
-	{ "^term: *(.*)$",       "gnome-terminal -e \"sh -c '\\1'\"" },
-	{ "^xterm: *(.*)$",      "xterm -e sh -c '\\1'" },
-	{ "^nxterm: *(.*)$",     "nxterm -e sh -c '\\1'" },
-	{ "^rxvt: *(.*)$",       "rxvt -e sh -c '\\1'" },
-	{ "^t$",                 "gnome-terminal" },
-	{ "^nx$",                "nxterm" },
-	{ "^n$",                 "netscape" },
+	{ "^(http://.*)$",       "gnome-open \\1" },
+	{ "^(ftp://.*)",         "gnome-open \\1" },
+	{ "^(www\\..*)$",        "gnome-open http://\\1" },
+	{ "^(ftp\\..*)$",        "gnome-open ftp://\\1" },
 
 	/* altavista search */
-	{ "^av: *(.*)$",         "mozilla --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
+	{ "^av: *(.*)$",         "gnome-open http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
 
 	/* yahoo search */
-	{ "^yahoo: *(.*)$",      "mozilla --newwin http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
+	{ "^yahoo: *(.*)$",      "gnome-open http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
 
 	/* freshmeat search */
-	{ "^fm: *(.*)$",         "mozilla --newwin http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)" },
+	{ "^fm: *(.*)$",         "gnome-open http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)" },
 
 	/* dictionary search */
-	{ "^dictionary: *(.*)$", "mozilla --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=\\1" },
+	{ "^dictionary: *(.*)$", "gnome-open http://www.dictionary.com/cgi-bin/dict.pl?term=\\1" },
+
+	/* google search */
+	{ "^google: *(.*)$",     "gnome-open http://www.google.com/search?q=\\1" },
 };
 
 G_END_DECLS
