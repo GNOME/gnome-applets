@@ -61,6 +61,7 @@ always_built_SUBDIRS = \
 	asclock		\
 	battery		\
 	charpick	\
+	clipboard	\
 	clockmail	\
 	drivemount	\
 	fifteen		\
