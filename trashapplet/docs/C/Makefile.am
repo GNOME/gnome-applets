@@ -1,4 +1,3 @@
-figs = 	figures/trash-applet.png
 figdir = figures
 docname = trashapplet
 lang = C
