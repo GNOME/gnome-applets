@@ -294,7 +294,7 @@ static inline void requests_done_check (void)
 #define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT$"
 #define VIS_RE_STR   "^(([0-9]?[0-9])|(M?1/[0-9]?[0-9]))SM$"
 #define CLOUD_RE_STR "^(CLR|BKN|SCT|FEW|OVC)([0-9]{3})?$"
-#define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?[0-9][0-9])$"
+#define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?(//|[0-9][0-9]))$"
 #define PRES_RE_STR  "^(A|Q)([0-9]{4})$"
 #define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)$"
 
