@@ -55,7 +55,7 @@ static gboolean weather_radar = FALSE;
 
 #define WINDSPEED_KNOTS_TO_KPH(knots)  ((knots) * 1.851965)
 #define WINDSPEED_KPH_TO_KNOTS(kph)    ((kph) * 0.539967)
-#define WINDSPEED_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("knots") : _("kph"))
+#define WINDSPEED_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("knots") : _("km/h"))
 
 #define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)
 #define PRESSURE_HPA_TO_INCH(mm)     ((mm) / 33.86)
