@@ -39,10 +39,23 @@
 #define CFG_UPDATE_INTERVAL 2
 
 typedef enum {
-	BUSTED_LINK,
-	NO_LINK,
-	NONE,
-} AnimationState;
+	PIX_BROKEN,
+	PIX_NO_LINK,
+	PIX_SIGNAL_1,
+	PIX_SIGNAL_2,
+	PIX_SIGNAL_3,
+	PIX_SIGNAL_4,
+	PIX_NUMBER,
+} PixmapState;
+
+static char * pixmap_names[] = {
+	"broken-0.png",
+	"no-link-0.png",
+	"signal-1-40.png",
+	"signal-41-60.png",
+	"signal-61-80.png",
+	"signal-81-100.png",
+};
 
 typedef struct {
 	PanelApplet base;
@@ -51,37 +64,20 @@ typedef struct {
 
 	GList *devices;
 
-	/* a glist of char*, pointing to available images */
-	GList *images;
-	/* a glist of char*, pointing to the no-link-XX images if any) */
-	GList *no_link_images;
-	/* a glist of char*, pointing to the broken-XX images (if any) */
-	GList *broken_images;
 	/* contains pointers into the images GList.
 	 * 0-100 are for link */
-	GdkPixbuf*pixmaps[101];
+	GdkPixbuf*pixmaps[PIX_NUMBER];
 	/* pointer to the current used file name */
 	GdkPixbuf *current_pixbuf;
-	/* set to true when the applet is display animated connection loss */
-	gboolean flashing;
 
 	GtkWidget *pct_label;
 	GtkWidget *pixmap;
 	GtkWidget *box;
-	AnimationState state;
-	guint animate_timer;
 	guint timeout_handler_id;
 	FILE *file;
 	GtkTooltips *tips;
 	GtkWidget *prefs;
 } WirelessApplet;
-
-char *pixmap_extensions[] = 
-{
-	"png",
-	"xpm",
-	NULL
-};
 
 static GladeXML *xml = NULL;
 static gchar* glade_file=NULL;
@@ -127,6 +123,7 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 {
 	const char *label_text;
 	char *tmp;
+	PixmapState state;
 
 	if (!GTK_WIDGET_REALIZED (applet->pixmap)) {
 		return;
@@ -150,77 +147,26 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 	g_free (tmp);
 
 	/* Update the image */
-	percent = CLAMP (percent, 0, 100);
+	percent = CLAMP (percent, -1, 100);
 
-	if (applet->pixmaps[percent] != applet->current_pixbuf)
+	if (percent < 0)
+		state = PIX_BROKEN;
+	else if (percent == 0)
+		state = PIX_NO_LINK;
+	else if (percent <= 40)
+		state = PIX_SIGNAL_1;
+	else if (percent <= 60)
+		state = PIX_SIGNAL_2;
+	else if (percent <= 80)
+		state = PIX_SIGNAL_3;
+	else
+		state = PIX_SIGNAL_4;
+
+	if (applet->pixmaps[state] != applet->current_pixbuf)
 	{
-		applet->current_pixbuf = (GdkPixbuf *)applet->pixmaps[percent];
-		if ( !applet->flashing)
-		{
-			gtk_image_set_from_pixbuf
-				(GTK_IMAGE (applet->pixmap),
-				 applet->current_pixbuf);
-		}
-	}
-}
-
-
-static gboolean
-wireless_applet_animate_timeout (WirelessApplet *applet) 
-{	
-	static int num = 0;
-	GList *image;
-	GList *animation_list = NULL;
-
-	switch (applet->state) {
-	case NO_LINK:
-		animation_list = applet->no_link_images;
-		break;
-	case BUSTED_LINK:
-		animation_list = applet->broken_images;
-		break;
-	case NONE:
-		return;
-	default:
-		g_assert_not_reached ();
-		break;
-	};
-
-	if (num >= g_list_length (animation_list)) {
-		num = 0;
-	}
-
-	image = g_list_nth (animation_list, num);
-	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap),
-			(GdkPixbuf*)image->data);
-	num++;
-
-	return TRUE;
-}
-
-static void
-wireless_applet_start_animation (WirelessApplet *applet) 
-{
-	applet->animate_timer = gtk_timeout_add (500, 
-			(GtkFunction)wireless_applet_animate_timeout,
-			applet);
-}
-
-static void
-wireless_applet_stop_animation (WirelessApplet *applet) 
-{
-	if (applet->animate_timer > 0)
-		gtk_timeout_remove (applet->animate_timer);
-	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap),
-			applet->current_pixbuf);	
-}
-
-static void
-wireless_applet_animation_state (WirelessApplet *applet) 
-{
-	if (applet->flashing == FALSE) {
-		wireless_applet_start_animation (applet);
-		applet->flashing = TRUE;
+		applet->current_pixbuf = (GdkPixbuf *)applet->pixmaps[state];
+		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap),
+				applet->current_pixbuf);
 	}
 }
 
@@ -237,7 +183,7 @@ wireless_applet_update_state (WirelessApplet *applet,
 	if (level < 0) {
 		percent = -1;
 	} else {
-		if (link<1) {
+		if (link < 1) {
 			percent = 0;
 		} else {
 			percent = (int)rint ((log (link) / log (92)) * 100.0);
@@ -245,100 +191,26 @@ wireless_applet_update_state (WirelessApplet *applet,
 		}
 	}
 
-	if (percent < 0) {
-		applet->state = BUSTED_LINK;
-		wireless_applet_animation_state (applet);
-	} else if (percent == 0) {
-		applet->state = NO_LINK;
-		wireless_applet_animation_state (applet);
-	} else if (applet->flashing) {
-		applet->state = NONE;
-		wireless_applet_stop_animation (applet);
-	}
-
 	wireless_applet_draw (applet, percent);
 }
 
 static void
-wireless_applet_load_theme_image (WirelessApplet *applet,
-				 const char *themedir,
-				 const char *filename) 
-{
-	int j;
-	char *dot_pos = strrchr (filename, '.') + 1; /* only called if a previous strrchr worked */
-	char *file = g_strdup_printf ("%s/%s", themedir, filename);
-
-	/* Check the allowed extensions */
-	for (j = 0; pixmap_extensions[j]; j++) {
-		if (strcasecmp (dot_pos, pixmap_extensions[j])==0) { 
-			int i;
-			int pixmap_offset_begin = 0;
-			int pixmap_offset_end = 0;
-			char *dupe;
-			gboolean check_range = FALSE;
-
-			if (strncmp (filename, "signal-", 7) == 0) {
-				sscanf (filename, "signal-%d-%d.",
-					&pixmap_offset_begin, &pixmap_offset_end);
-				check_range = TRUE;
-			} else if (strncmp (filename, "no-link-", 8) == 0) {
-				GdkPixbuf *pixbuf = NULL;
-				pixbuf = gdk_pixbuf_new_from_file (file, NULL);
-				if (pixbuf)
-					applet->no_link_images = g_list_prepend (applet->no_link_images,
-												      pixbuf);
-			} else if (strncmp (filename, "broken-", 7) == 0) {
-				GdkPixbuf *pixbuf = NULL;
-				pixbuf = gdk_pixbuf_new_from_file (file, NULL);
-				if (pixbuf)
-					applet->broken_images = g_list_prepend (applet->broken_images,
-												      pixbuf);
-			}
-
-			if (check_range) {
-				GdkPixbuf *pixbuf = NULL;
-				pixbuf = gdk_pixbuf_new_from_file (file, NULL);
-				if (pixbuf)
-					applet->images = g_list_prepend (applet->images,
-												      pixbuf);
-				for (i = pixmap_offset_begin; i <= pixmap_offset_end; i++) {
-					if (applet->pixmaps[i] != NULL) {
-						show_warning_dialog ("Probable image overlap in\n"
-								"%s.", filename);
-
-					} else {
-						applet->pixmaps[i] = pixbuf;
-					}
-				}
-			}
-		}
-	}
-	
-	g_free (file);
-}
-
-static void
 wireless_applet_load_theme (WirelessApplet *applet) {
-	DIR *dir;
-	struct dirent *dirent;
 	char *pixmapdir;
+	char *pixmapname;
+	int i;
 
 	pixmapdir = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
 			"wireless-applet/", FALSE, NULL);
-	dir = opendir (pixmapdir);
 
-	if (!dir) {
-		show_error_dialog (_("The images necessary to run the wireless monitor are missing.\nPlease make sure that it is correctly installed."));
-	} else 
-		while ((dirent = readdir (dir)) != NULL) {
-			if (*dirent->d_name != '.') {
-				if (strrchr (dirent->d_name, '.')!=NULL) {
-					wireless_applet_load_theme_image (applet, 
-									 pixmapdir,
-									 dirent->d_name);
-				}
-			}
-		}
+
+	for (i = 0; i < PIX_NUMBER; i++)
+	{
+		pixmapname = g_build_filename (G_DIR_SEPARATOR_S,
+				pixmapdir, pixmap_names[i], NULL);
+		applet->pixmaps[i] = gdk_pixbuf_new_from_file (pixmapname, NULL);
+		g_free (pixmapname);
+	}
 
 	g_free (pixmapdir);
 }
@@ -696,22 +568,8 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 {
 	g_free (applet->device);
 
-	g_list_foreach (applet->no_link_images, (GFunc)g_object_unref, NULL);
-	g_list_free (applet->no_link_images);
-
-	g_list_foreach (applet->broken_images, (GFunc)g_object_unref, NULL);
-	g_list_free (applet->broken_images);
-
-	g_list_foreach (applet->images, (GFunc)g_object_unref, NULL);
-	g_list_free (applet->images);
-
 	g_list_foreach (applet->devices, (GFunc)g_free, NULL);
 	g_list_free (applet->devices);
-
-	if (applet->animate_timer > 0) {
-		gtk_timeout_remove (applet->animate_timer);
-		applet->animate_timer = 0;
-	}
 
 	if (applet->timeout_handler_id > 0) {
 		gtk_timeout_remove (applet->timeout_handler_id);
@@ -750,7 +608,7 @@ setup_widgets (WirelessApplet *applet)
 
 	/* construct pixmap widget */
 	applet->pixmap = gtk_image_new ();
-	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap), (GdkPixbuf *)applet->broken_images->data);
+	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap), applet->pixmaps[PIX_BROKEN]);
 	gtk_widget_size_request (applet->pixmap, &req);
 	gtk_widget_show (applet->pixmap);
 	
@@ -790,8 +648,6 @@ setup_widgets (WirelessApplet *applet)
 	 * only realised if it's enabled */
 	gtk_widget_show (applet->box);
 	gtk_container_add (GTK_CONTAINER (applet), applet->box);
-
-
 }
 
 static void change_size_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
@@ -806,7 +662,6 @@ static void change_orient_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
 
 	setup_widgets (applet);
 	wireless_applet_timeout_handler (applet);
-
 }
 
 static GtkWidget *
