@@ -511,6 +511,9 @@ odo_change_orient (GtkWidget *widget, PanelOrientType orient, gpointer data)
    oa->orient = applet_widget_get_panel_orient
    	(APPLET_WIDGET (oa->applet));
    sized_render (oa);
+   return;
+   widget = NULL;
+   orient = ORIENT_UP;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -524,6 +527,8 @@ odo_change_pixel_size (GtkWidget *widget, int size, gpointer data)
 #endif
    oa->size = size;
    sized_render (oa);
+   return;
+   widget = NULL;
 }
 #endif
 
