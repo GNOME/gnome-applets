@@ -331,7 +331,6 @@ static void
 init_module(void)
 {
 	tooltips = gtk_tooltips_new();
-
 	ac_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-ac.xpm");
 	bat_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-bat.xpm");
 
