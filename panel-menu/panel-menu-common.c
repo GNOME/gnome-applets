@@ -67,8 +67,9 @@ static gint n_widget_drag_types =
 
 static GtkTooltips *menu_tooltips = NULL;
 
-static void widget_dnd_drag_begin_cb (GtkWidget *widget,
-				      GdkDragContext *context);
+static void widget_dnd_drag_begin_cb (GtkWidget      *widget,
+				      GdkDragContext *context,
+				      PanelMenuEntry *entry);
 static void widget_dnd_set_data_cb (GtkWidget *widget,
 				    GdkDragContext *context,
 				    GtkSelectionData *selection_data,
@@ -95,14 +96,19 @@ panel_menu_common_widget_dnd_init (PanelMenuEntry *entry)
 	gtk_drag_source_set (menuitem, GDK_BUTTON2_MASK, widget_drag_types,
 			     n_widget_drag_types,
 			     GDK_ACTION_MOVE);
-	g_signal_connect (G_OBJECT (menuitem), "drag_begin",
-			  G_CALLBACK (widget_dnd_drag_begin_cb), NULL);
-	g_signal_connect (G_OBJECT (menuitem), "drag_data_get",
-			  G_CALLBACK (widget_dnd_set_data_cb), entry);
+
+	g_signal_connect (menuitem, "drag_begin",
+			  G_CALLBACK (widget_dnd_drag_begin_cb),
+			  entry);
+	g_signal_connect (menuitem, "drag_data_get",
+			  G_CALLBACK (widget_dnd_set_data_cb),
+			  entry);
 }
 
 static void
-widget_dnd_drag_begin_cb (GtkWidget *widget, GdkDragContext *context)
+widget_dnd_drag_begin_cb (GtkWidget      *widget,
+			  GdkDragContext *context,
+			  PanelMenuEntry *entry)
 {
 	GtkWidget *window;
 	GtkWidget *button;
@@ -708,7 +714,9 @@ handle_response (GtkWidget *widget, gint response, gpointer data)
 
 /* Called from right-click context menu */
 void
-panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
+panel_menu_common_remove_entry (GtkWidget      *widget,
+				PanelMenuEntry *entry,
+				const char     *verb)
 {
 	PanelMenu *panel_menu;
 
@@ -727,8 +735,8 @@ panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const 
 				_("Removing this entry is not allowed as this will cause the Menu Bar applet to be removed from GNOME Panel"));
 		gtk_dialog_set_default_response (GTK_DIALOG (message_dlg), GTK_RESPONSE_OK);
 		gtk_window_set_resizable (GTK_WINDOW (message_dlg), FALSE);
-		g_signal_connect (G_OBJECT (message_dlg), "response",
-			G_CALLBACK (handle_response), NULL);
+		g_signal_connect (message_dlg, "response",
+				  G_CALLBACK (handle_response), NULL);
 		gtk_widget_show_all (message_dlg);
 		return;
 	}
@@ -775,8 +783,11 @@ panel_menu_common_demerge_ui (PanelApplet *applet)
 }
 
 GtkWidget *
-panel_menu_common_single_entry_dialog_new (gchar *title, gchar *label,
-					   gchar *value, GtkWidget ** entry)
+panel_menu_common_single_entry_dialog_new (PanelMenu  *panel_menu,
+					   char       *title,
+					   char       *label,
+					   char       *value,
+					   GtkWidget **entry)
 {
 	GtkWidget *dialog;
 	GtkWidget *box;

@@ -83,7 +83,8 @@ static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 			       guint entries_read, GtkMenuShell *parent);
 static void change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry,
 				 const gchar *verb);
-static GtkWidget *panel_menu_directory_edit_dialog_new (gchar *title,
+static GtkWidget *panel_menu_directory_edit_dialog_new (PanelMenu  *panel_menu,
+							char       *title,
 							GtkWidget **nentry,
 							GtkWidget **pentry,
 							GtkWidget **spin);
@@ -511,8 +512,8 @@ panel_menu_directory_new_with_dialog (PanelMenu *panel_menu)
 	GtkWidget *path_entry;
 	GtkWidget *level_spin;
 
-	dialog = panel_menu_directory_edit_dialog_new (_
-						       ("Create directory item..."),
+	dialog = panel_menu_directory_edit_dialog_new (panel_menu,
+						       _("Create directory item..."),
 						       &name_entry, &path_entry,
 						       &level_spin);
 
@@ -590,8 +591,8 @@ change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
 
 	directory = (PanelMenuDirectory *) entry->data;
-	dialog = panel_menu_directory_edit_dialog_new (_
-						       ("Edit directory item..."),
+	dialog = panel_menu_directory_edit_dialog_new (entry->parent,
+						       _("Edit directory item..."),
 						       &name_entry, &path_entry,
 						       &level_spin);
         g_signal_connect (G_OBJECT (dialog), "response",
@@ -644,8 +645,11 @@ browse_callback (GtkButton *button, GtkEntry *entry)
 }
 
 static GtkWidget *
-panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
-				      GtkWidget **pentry, GtkWidget **spin)
+panel_menu_directory_edit_dialog_new (PanelMenu  *panel_menu,
+				      char       *title,
+				      GtkWidget **nentry,
+				      GtkWidget **pentry,
+				      GtkWidget **spin)
 {
 	GtkWidget *dialog;
 	GtkWidget *box;

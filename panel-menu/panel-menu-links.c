@@ -399,8 +399,8 @@ panel_menu_links_new_with_dialog (PanelMenu *panel_menu)
 	gchar *name;
 	PanelMenuEntry *entry;
 
-	dialog = panel_menu_common_single_entry_dialog_new (_
-							    ("Create links item..."),
+	dialog = panel_menu_common_single_entry_dialog_new (panel_menu,
+							    _("Create links item..."),
 							    _("_Name:"),
 							    _("Shortcuts"),
 							    &name_entry);
@@ -435,8 +435,8 @@ rename_links_cb (GtkWidget *widget, PanelMenuEntry *entry)
 
 	links = (PanelMenuLinks *) entry->data;
 
-	dialog = panel_menu_common_single_entry_dialog_new (_
-							    ("Rename links item..."),
+	dialog = panel_menu_common_single_entry_dialog_new (entry->parent,
+							    _("Rename links item..."),
 							    _("_Name:"),
 							    links->name,
 							    &name_entry);

@@ -89,8 +89,10 @@ static void panel_menu_path_process (GnomeVFSFileInfo *finfo,
 static gint panel_menu_path_remove_cb (GtkWidget *widget, GdkEventKey *event,
 				       PanelMenuPath *path);
 static void change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb);
-static GtkWidget *panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
-						   GtkWidget ** entry);
+static GtkWidget *panel_menu_path_edit_dialog_new (PanelMenu  *panel_menu,
+						   char       *title,
+						   char       *value,
+						   GtkWidget **entry);
 
 static gint object_counter = 0;
 
@@ -652,7 +654,8 @@ panel_menu_path_new_with_dialog (PanelMenu *panel_menu)
 	gchar *path;
 	PanelMenuEntry *entry;
 
-	dialog = panel_menu_path_edit_dialog_new (_("Create menu path item..."),
+	dialog = panel_menu_path_edit_dialog_new (panel_menu,
+						  _("Create menu path item..."),
 						  "applications:", &path_entry);
 	g_object_set_data (G_OBJECT (dialog), "source", path_entry);
 	g_signal_connect (G_OBJECT (dialog), "response",
@@ -694,7 +697,8 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
-	dialog = panel_menu_path_edit_dialog_new (_("Edit path item..."),
+	dialog = panel_menu_path_edit_dialog_new (entry->parent,
+						  _("Edit path item..."),
 						  path->base_path, &path_entry);
 	g_object_set_data (G_OBJECT (dialog), "source", path_entry);
 	g_signal_connect (G_OBJECT (dialog), "response",
@@ -705,7 +709,9 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 }
 
 static GtkWidget *
-panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
+panel_menu_path_edit_dialog_new (PanelMenu  *panel_menu,
+				 char       *title,
+				 char       *value,
 				 GtkWidget **entry)
 {
 	GtkWidget *dialog;
