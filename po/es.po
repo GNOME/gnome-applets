@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-15 03:00+0100\n"
-"PO-Revision-Date: 2005-01-15 03:02+0100\n"
+"POT-Creation-Date: 2005-01-16 14:00+0100\n"
+"PO-Revision-Date: 2005-01-16 14:06+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,8 @@ msgstr ""
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 multiload/GNOME_MultiloadApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemLights.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
@@ -48,7 +49,8 @@ msgstr "A_cerca de"
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 multiload/GNOME_MultiloadApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemLights.xml.h:4
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
@@ -75,9 +77,11 @@ msgstr "Fábrica de la miniaplicación de estado de accesibilidad del teclado"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Muestra el estado de las características de accesibilidad del teclado"
 
+#. "documenters",        documenters,
 #: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:200
-#: gswitchit/gswitchit-applet.c:591 trashapplet/src/trashapplet.c:681
+#: gswitchit/gswitchit-applet.c:591 modemlights/modem-applet.c:995
+#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "Francisco Javier F. Serrador <serrador@tecknolabs.com>\n"
@@ -1561,11 +1565,11 @@ msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para Gnome"
 
-#: gswitchit/gswitchit-applet.c:764
+#: gswitchit/gswitchit-applet.c:761
 msgid "XKB initialization error"
 msgstr "Error de inicialización de KXB"
 
-#: gswitchit/gswitchit-applet.c:773
+#: gswitchit/gswitchit-applet.c:770
 msgid "Error loading XKB configuration registry"
 msgstr "Error al cargar el registro de configuración XKB"
 
@@ -2326,12 +2330,12 @@ msgstr "_Seleccione una ubicación:"
 msgid "Location"
 msgstr "Ubicación"
 
-#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
-#: gweather/weather-metar.c:556
+#: gweather/weather-iwin.c:243 gweather/weather-metar.c:529
+#: gweather/weather-metar.c:557
 msgid "WeatherInfo missing location"
 msgstr "Ubicación no existente para WeatherInfo"
 
-#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
+#: gweather/weather-metar.c:495 gweather/weather-metar.c:537
 #: gweather/weather-wx.c:53
 msgid "Failed to get METAR data.\n"
 msgstr "Ha fallado la obtención de los datos METAR.\n"
@@ -3415,6 +3419,113 @@ msgstr "Preferencias del control de volumen"
 msgid "Select the device and track to control."
 msgstr "Seleccione el dispositivo y pista a controlar."
 
+#: modemlights/GNOME_ModemLights.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Activar y monitorizar una conexión de marcado telefónico"
+
+#: modemlights/GNOME_ModemLights.server.in.in.h:2
+msgid "Modem Monitor"
+msgstr "Monitor del modem"
+
+#: modemlights/GNOME_ModemLights.xml.h:2
+msgid "_Activate"
+msgstr "_Activar"
+
+#: modemlights/GNOME_ModemLights.xml.h:3
+msgid "_Deactivate"
+msgstr "_Desactivar"
+
+#: modemlights/GNOME_ModemLights.xml.h:5 stickynotes/stickynotes.glade.h:45
+msgid "_Properties"
+msgstr "_Propiedades"
+
+#: modemlights/modem-applet.c:699
+msgid "Connection active, but could not get connection time"
+msgstr "Conexión activa, pero no se pudo obtener el tiempo de conexión"
+
+#: modemlights/modem-applet.c:715
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Tiempo conectado: %.1d:%.2d"
+
+#: modemlights/modem-applet.c:719
+msgid "Not connected"
+msgstr "Desconectado"
+
+#: modemlights/modem-applet.c:765
+msgid "The entered password is invalid"
+msgstr "La contraseña introducida no es válida"
+
+#: modemlights/modem-applet.c:767
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr "Comprueba que la ha tecleado correctamente y  que no ha activado la tecla «Bloq. Mayús.»"
+
+#: modemlights/modem-applet.c:865
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr "Para conectarse a su proveedor de servicios de Internet, necesita privilegios de administrador"
+
+#: modemlights/modem-applet.c:866
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr "Para desconectarse de su proveedor de servicios de Internet, necesita privilegios de administrador"
+
+#: modemlights/modem-applet.c:900
+msgid "Do you want to connect?"
+msgstr "¿Desea conectarse?"
+
+#: modemlights/modem-applet.c:901
+msgid "Do you want to disconnect?"
+msgstr "¿Quiere desconectarse?"
+
+#: modemlights/modem-applet.c:910
+msgid "C_onnect"
+msgstr "C_onectarse"
+
+#: modemlights/modem-applet.c:910
+msgid "_Disconnect"
+msgstr "_Desconectar"
+
+#: modemlights/modem-applet.c:965
+msgid "Could not launch network configuration tool"
+msgstr "No se pudo lanzar la herramienta de configuración de red"
+
+#: modemlights/modem-applet.c:967
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr "Comprueba que está instalado en la ruta correcta y que tienen los permisos correctos"
+
+#: modemlights/modem-applet.c:989
+msgid "Modem monitor"
+msgstr "Monitor del módem"
+
+#: modemlights/modem-applet.c:992
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr "Miniaplicación para activar y monitorizar una conexión de red de marcado telefónico."
+
+#: modemlights/modemlights.glade.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Conectando con el proveedor de servicios de Internet</span>"
+
+#: modemlights/modemlights.glade.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Se necesita la contraseña de root</span>"
+
+#: modemlights/modemlights.glade.h:3
+msgid "Enter password"
+msgstr "Introduzca la contraseña"
+
+#: modemlights/modemlights.glade.h:4
+msgid "Password:"
+msgstr "Contraseña:"
+
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Un indicador de carga del sistema"
@@ -3431,6 +3542,10 @@ msgstr "Abrir el m_onitor del sistema"
 #: multiload/cpuload.c:50
 msgid "CPU Load"
 msgstr "Carga CPU"
+
+#: multiload/diskload.c:48
+msgid "Disk Load"
+msgstr "Carga del disco"
 
 #: multiload/loadavg.c:107 multiload/main.c:327
 msgid "Load Average"
@@ -3777,6 +3892,22 @@ msgstr "Preferencias del monitor del sistema"
 msgid "Swap Load"
 msgstr "Carga del intercambio"
 
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player (Deprecated)"
+msgstr "Reproductor de CD (obsoleto)"
+
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:2
+msgid "Panel applet for playing audio CDs"
+msgstr "Miniaplicación de panel para reproducir CDs de audio"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Avisarme cuando llegue correo nuevo"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Monitor de bandeja de entrada (Obsoleto)"
+
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
 msgstr "Fábrica para convertir miniaplicaciones en obsoletas"
@@ -3784,6 +3915,14 @@ msgstr "Fábrica para convertir miniaplicaciones en obsoletas"
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
 msgid "Null Applet Factory"
 msgstr "Fábrica de miniaplicaciones nulas"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Monitoriza la calidad del enlace de red inalámbrico"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "Monitor de enlace inalámbrico"
 
 #: null_applet/null_applet.c:155
 msgid "Some panel items are no longer available"
@@ -4002,10 +4141,6 @@ msgstr "B_loquear la nota"
 #: stickynotes/stickynotes_applet_callbacks.c:136
 msgid "_New Note"
 msgstr "Nota _nueva"
-
-#: stickynotes/stickynotes.glade.h:45
-msgid "_Properties"
-msgstr "_Propiedades"
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
@@ -4322,9 +4457,6 @@ msgstr ""
 #~ msgid "Factory for CD player applet"
 #~ msgstr "Fábrica para la miniaplicación Reproductor de CD"
 
-#~ msgid "Panel applet for playing audio CDs"
-#~ msgstr "Miniaplicación de panel para reproducir CDs de audio"
-
 #~ msgid "_Open CD Player"
 #~ msgstr "_Abrir el reproductor de CDs"
 
@@ -4348,9 +4480,6 @@ msgstr ""
 
 #~ msgid "%s does not seem to be a CD player"
 #~ msgstr "%s no parece ser un reproductor de CD"
-
-#~ msgid "CD Player Preferences"
-#~ msgstr "Preferencias del reproductor de CD"
 
 #~ msgid "Device _path:"
 #~ msgstr "Ruta del _dispositivo:"
@@ -4447,9 +4576,6 @@ msgstr ""
 #~ "por la Free Software Foundation; ya sea la versión 2 de dicha licencia o "
 #~ "(a su conveniencia) o cualquier versión posterior."
 
-#~ msgid "Activate and monitor a dial-up network connection"
-#~ msgstr "Activar y monitorizar una conexión de marcado telefónico"
-
 #~ msgid "Modem Lights"
 #~ msgstr "Luces del módem"
 
@@ -4470,20 +4596,8 @@ msgstr ""
 #~ "Actualmente está conectado.\n"
 #~ "¿Desea desconectarse?"
 
-#~ msgid "_Disconnect"
-#~ msgstr "_Desconectar"
-
-#~ msgid "Do you want to connect?"
-#~ msgstr "¿Desea conectarse?"
-
-#~ msgid "C_onnect"
-#~ msgstr "C_onectarse"
-
 #~ msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 #~ msgstr "%#.1fMb recibido / %#.1fMb enviado / tiempo: %.1d:%.2d"
-
-#~ msgid "not connected"
-#~ msgstr "desconectado"
 
 #~ msgid "Ask for confirmation when connecting/disconnecting"
 #~ msgstr "Solicitar una confirmación al conectarse y desconectarse"
@@ -4689,12 +4803,6 @@ msgstr ""
 #~ msgid "Advanced"
 #~ msgstr "Avanzado"
 
-#~ msgid "Alert you when new mail arrives"
-#~ msgstr "Avisarme cuando llegue correo nuevo"
-
-#~ msgid "Inbox Monitor (Deprecated)"
-#~ msgstr "Monitor de bandeja de entrada (Obsoleto)"
-
 #~ msgid "Clic_k:"
 #~ msgstr "_Pulsación:"
 
@@ -4723,12 +4831,6 @@ msgstr ""
 
 #~ msgid "(c) 2002-2003 Loban A Rahman"
 #~ msgstr "© 2002-2003 Loban A Rahman"
-
-#~ msgid "Monitor the quality of a wireless network link"
-#~ msgstr "Monitoriza la calidad del enlace de red inalámbrico"
-
-#~ msgid "Wireless Link Monitor"
-#~ msgstr "Monitor de enlace inalámbrico"
 
 #~ msgid "Link Strength: %2.0d%%"
 #~ msgstr "Fuerza del enlace: %2.0d%%"
