@@ -1,0 +1,8 @@
+Mon Oct 25 02:23:23 1999  George Lebl  <jirka@5z.com>
+
+	* life.c: use gdkrgb (it's faster then setting each point by normal
+	  x calls), and use an rgb buffer and do some interesting things
+	  to make it looks cool, however this slows it down, so I also
+	  made the interval larger to consume less cpu (though it still
+	  does eat up some), and also adapted to the new size stuff
+

@@ -8,45 +8,99 @@
 
 #include <config.h>
 #include <applet-widget.h>
+#include <math.h>
+#include <stdlib.h>
+#include <gdk/gdk.h>
 
-#define LIFE_CYCLE 300
+#define LIFE_CYCLE 600
+#define MAX_SIZE 80
 
-int board[77][77];
+int board[MAX_SIZE][MAX_SIZE];
+guchar rgb_buffer[MAX_SIZE*MAX_SIZE*3];
 GtkWidget *darea = NULL;
 int size = 45;
 
-static int
-get_pixel_size(PanelSizeType s)
-{
-	switch(s) {
-	case SIZE_TINY: return 22;
-	case SIZE_STANDARD: return 45;
-	case SIZE_LARGE: return 61;
-	case SIZE_HUGE: return 77;
-	default: return 45;
-	}
-}
+double rsin = 0.1;
+double gsin = 0.4;
+double bsin = 1.0;
+
+static int bouncex = 10;
+static int bouncey = 10;
+static int bouncexsp = 2;
+static int bounceysp = 1;
 
 static void
 life_draw(void)
 {
 	int i,j;
 	GdkGC *gc;
+	int r,g,b;
+	
 	if(!darea ||
 	   !GTK_WIDGET_REALIZED(darea) ||
-	   !GTK_WIDGET_DRAWABLE(darea))
+	   !GTK_WIDGET_DRAWABLE(darea) ||
+	   size<=0)
 		return;
+	
+	r = 255*sin(rsin);
+	g = 255*sin(gsin);
+	b = 255*sin(bsin);
+	rsin+=0.01;
+	gsin+=0.02;
+	bsin+=0.03;
+	
+	bouncex+=bouncexsp;
+	if(bouncex>size) {
+		bouncex=size;
+		bouncexsp=-(rand()%3+1);
+	} else if(bouncex<0) {
+		bouncex=0;
+		bouncexsp=(rand()%3+1);
+	}
+	bouncey+=bounceysp;
+	if(bouncey>size) {
+		bouncey=size;
+		bounceysp=-(rand()%3+1);
+	} else if(bouncey<0) {
+		bouncey=0;
+		bounceysp=(rand()%3+1);
+	}
 	
 	gc = gdk_gc_new(darea->window);
 
-	for(i=0;i<size;i++)
-		for(j=0;j<size;j++) {
-			if(board[i][j])
-				gdk_gc_set_foreground(gc,&darea->style->black);
-			else
-				gdk_gc_set_foreground(gc,&darea->style->white);
-			gdk_draw_point(darea->window,gc,i,j);
+	for(j=0;j<size;j++) {
+		guchar *p = rgb_buffer + j*MAX_SIZE*3;
+		for(i=0;i<size;i++) {
+			double distance =
+				abs(sqrt((i-bouncex)*(i-bouncex)+
+					 (j-bouncey)*(j-bouncey)))/5.0;
+			double mult = 1.0;
+			int val;
+			if(distance < 0.1)
+				distance = 0.1;
+			mult += -log(distance)+2.4;
+			if(mult<1.0) mult = 1.0;
+			else if(mult>200.0) mult = 200.0;
+
+			if(board[i][j]) {
+				*(p++) = 255-r;
+				val = (255-g)*mult;
+				if(val>255) val = 255;
+				*(p++) = val;
+				*(p++) = (255-b)/mult;
+			} else {
+				val = r*mult;
+				if(val>255) val = 255;
+				*(p++) = val;
+				*(p++) = g/mult;
+				*(p++) = b;
+			}
 		}
+	}
+	gdk_draw_rgb_image(darea->window,gc,
+			   0,0, size, size,
+			   GDK_RGB_DITHER_NORMAL,
+			   rgb_buffer, MAX_SIZE*3);
 	
 	gdk_gc_destroy(gc);
 }
@@ -110,8 +164,8 @@ create_life (void)
 	frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
 
-	gtk_widget_push_visual (gdk_imlib_get_visual ());
-	gtk_widget_push_colormap (gdk_imlib_get_colormap ());
+	gtk_widget_push_visual (gdk_rgb_get_visual ());
+	gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 	darea = gtk_drawing_area_new();
 	gtk_widget_pop_colormap ();
 	gtk_widget_pop_visual ();
@@ -147,9 +201,10 @@ about (AppletWidget *applet, gpointer data)
 }
 
 static void
-applet_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
+applet_change_pixel_size(GtkWidget *w, int sz, gpointer data)
 {
-	size = get_pixel_size(o);
+	size = sz - 2;
+	if(size>MAX_SIZE) size=MAX_SIZE;
 	gtk_drawing_area_size(GTK_DRAWING_AREA(darea), size,size);
 	gtk_widget_set_usize(GTK_WIDGET(darea), size,size);
 	life_draw();
@@ -173,7 +228,8 @@ main (int argc, char **argv)
 	
 	randomize(NULL,NULL);
 	
-	size = get_pixel_size(applet_widget_get_panel_size(APPLET_WIDGET(applet)));
+	size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet)) - 2;
+	if(size>MAX_SIZE) size=MAX_SIZE;
 
 	life = create_life ();
 	applet_widget_add (APPLET_WIDGET (applet), life);
@@ -181,8 +237,8 @@ main (int argc, char **argv)
 
 	gtk_widget_show (applet);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
-			   GTK_SIGNAL_FUNC(applet_change_size),
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
 
 	applet_widget_register_callback (APPLET_WIDGET (applet),
