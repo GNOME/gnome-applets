@@ -26,18 +26,17 @@
 
 typedef struct
 {
-	GladeXML *window;		/* Glade object for note window */
-	GladeXML *menu;			/* Glade object for note popup menu */
-	GladeXML *properties;		/* Glade object for note properties dialog */
-
 	GtkWidget *w_window;		/* Sticky Note window */
 	GtkWidget *w_menu;		/* Sticky Note menu */
 	GtkWidget *w_properties;	/* Sticky Note properties dialog */
 
 	GtkWidget *w_entry;		/* Sticky Note title entry */
 	GtkWidget *w_color;		/* Sticky Note color picker */
+	GtkWidget *w_color_label;	/* Sticky Note color label */
 	GtkWidget *w_font_color;	/* Sticky Note font color picker */
+	GtkWidget *w_font_color_label;	/* Sticky Note font color label */
 	GtkWidget *w_font;		/* Sticky Note font picker */
+	GtkWidget *w_font_label;	/* Sticky Note font label */
 	GtkWidget *w_def_color;		/* Sticky Note default color setting */
 	GtkWidget *w_def_font;		/* Sticky Note default font setting */
 
@@ -47,6 +46,13 @@ typedef struct
 	GtkWidget *w_close;		/* Sticky Note close button */
 	GtkWidget *w_resize_se;		/* Sticky Note resize button (south east) */
 	GtkWidget *w_resize_sw;		/* Sticky Note resize button (south west) */
+
+	GtkWidget *w_lock_toggle_item;	/* Lock item in the popup menu */
+
+	GtkImage *img_lock;		/* Lock image */
+	GtkImage *img_close;		/* Close image */
+	GtkImage *img_resize_se;	/* SE resize image */
+	GtkImage *img_resize_sw;	/* SW resize image */
 
 	gchar *color;			/* Note color */
 	gchar *font_color;		/* Font color */
