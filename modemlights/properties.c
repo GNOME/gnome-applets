@@ -307,9 +307,9 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
                 return;
 		}
 
-        propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Settings"), NULL,
+        propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Properties"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
-						  GTK_STOCK_OK, GTK_RESPONSE_OK,
+						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
 						  
 	notebook = gtk_notebook_new ();

@@ -45,6 +45,25 @@ typedef enum {
 } ColorType;
 #define COLOR_COUNT 10
 
+typedef struct _MLData MLData;
+
+struct _MLData
+{
+	GtkWidget *applet;
+	
+	gint UPDATE_DISPLAY;
+	gchar *lock_file;
+	gint verify_lock_file;
+	gchar *device_name;
+	gchar *command_connect;
+	gchar *command_disconnect;
+	gint ask_for_confirmation;
+	gint use_ISDN;
+	gint show_extra_info;
+	gint status_wait_blink;
+	
+};
+
 extern GdkColor display_color[];
 extern gchar *display_color_text[];
 
