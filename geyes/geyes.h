@@ -70,7 +70,7 @@ void destroy_eyes (EyesApplet *eyes_applet);
 
 
 /* theme.c */
-void theme_dirs_create ();
+void theme_dirs_create (void);
 
 int load_theme    (EyesApplet        *eyes_applet,
 		   const gchar       *theme_dir);

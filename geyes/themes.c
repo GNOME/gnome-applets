@@ -35,9 +35,9 @@
 gchar *theme_directories[NUM_THEME_DIRECTORIES];
 
 void
-theme_dirs_create ()
+theme_dirs_create (void)
 {
-	static themes_created = FALSE;
+	static gboolean themes_created = FALSE;
 	
 	if (themes_created == TRUE)
 		return;
