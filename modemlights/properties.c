@@ -246,7 +246,8 @@ static GtkWidget *box_add_color(PanelApplet *applet, GtkWidget *box,
 	gtk_box_pack_start(GTK_BOX(vbox), color_sel, FALSE, FALSE, 0);
 	gtk_widget_show(color_sel);
 
-	label = gtk_label_new(text);
+	label = gtk_label_new_with_mnemonic(text);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), color_sel);
 	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
 	gtk_widget_show(label);
 
@@ -307,7 +308,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
                 return;
 		}
 
-        propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Properties"), NULL,
+        propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Preferences"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
@@ -333,11 +334,12 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
         gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Connect command:"));
+        label = gtk_label_new_with_mnemonic(_("Co_nnect command:"));
         gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	connect_entry = gtk_entry_new_with_max_length(255);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), connect_entry);
 	gtk_entry_set_text(GTK_ENTRY(connect_entry), command_connect);
 	g_signal_connect (G_OBJECT (connect_entry), "focus_out_event",
 			  G_CALLBACK (connect_changed_cb), applet);			  
@@ -349,11 +351,12 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
         gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Disconnect command:"));
+        label = gtk_label_new_with_mnemonic(_("_Disconnect command:"));
         gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	disconnect_entry = gtk_entry_new_with_max_length(255);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), disconnect_entry);
 	gtk_entry_set_text(GTK_ENTRY(disconnect_entry), command_disconnect);
 	g_signal_connect (G_OBJECT (disconnect_entry), "focus_out_event",
 			  G_CALLBACK (disconnect_changed_cb), applet);
@@ -361,7 +364,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_widget_show(disconnect_entry);
 
 	/* confirmation checkbox */
-	checkbox = gtk_check_button_new_with_label(_("Confirm connection"));
+	checkbox = gtk_check_button_new_with_mnemonic(_("Con_firm connection"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
 	g_signal_connect (G_OBJECT (checkbox), "toggled",
 			  G_CALLBACK (confirm_checkbox_cb), applet);
@@ -382,12 +385,13 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
         gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Updates per second"));
+        label = gtk_label_new_with_mnemonic(_("U_pdates per second"));
         gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	delay_adj = gtk_adjustment_new( UPDATE_DELAY, 1.0, 20.0, 1, 1, 1 );
         delay_w  = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
+        gtk_label_set_mnemonic_widget (GTK_LABEL (label), delay_w);
         gtk_box_pack_start(GTK_BOX(hbox), delay_w, FALSE, FALSE, 0);
 	g_signal_connect (G_OBJECT (delay_w), "focus-out-event",
 			  G_CALLBACK (update_delay_cb), applet);
@@ -395,7 +399,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_widget_show(delay_w);
 
 	/* extra info checkbox */
-	checkbox = gtk_check_button_new_with_label(_("Show connect time and throughput"));
+	checkbox = gtk_check_button_new_with_mnemonic(_("Sho_w connect time and throughput"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), show_extra_info);
 	g_signal_connect(G_OBJECT(checkbox), "toggled",
 			 G_CALLBACK(show_extra_info_cb), applet);
@@ -414,22 +418,22 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	hbox = color_frame_new(vbox, _("Receive data"));
 
-	box_add_color(applet, hbox, _("Foreground"), COLOR_RX);
-	box_add_color(applet, hbox, _("Background"), COLOR_RX_BG);
+	box_add_color(applet, hbox, _("_Foreground"), COLOR_RX);
+	box_add_color(applet, hbox, _("_Background"), COLOR_RX_BG);
 
 	hbox = color_frame_new(vbox, _("Send data"));
 
-	box_add_color(applet, hbox, _("Foreground"), COLOR_TX);
-	box_add_color(applet, hbox, _("Background"), COLOR_TX_BG);
+	box_add_color(applet, hbox, _("Foregroun_d"), COLOR_TX);
+	box_add_color(applet, hbox, _("Backg_round"), COLOR_TX_BG);
 
 	hbox = color_frame_new(vbox, _("Connection status"));
 
-	box_add_color(applet, hbox, _("Connected"), COLOR_STATUS_OK);
-	box_add_color(applet, hbox, _("Not connected"), COLOR_STATUS_BG);
-	vbox1 = box_add_color(applet, hbox, _("Awaiting connection"), COLOR_STATUS_WAIT);
+	box_add_color(applet, hbox, _("Co_nnected"), COLOR_STATUS_OK);
+	box_add_color(applet, hbox, _("No_t connected"), COLOR_STATUS_BG);
+	vbox1 = box_add_color(applet, hbox, _("A_waiting connection"), COLOR_STATUS_WAIT);
 
 
-	checkbox = gtk_check_button_new_with_label(_("Blink"));
+	checkbox = gtk_check_button_new_with_mnemonic(_("B_link"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), status_wait_blink);
 	g_signal_connect(G_OBJECT(checkbox), "toggled",
 			 G_CALLBACK(wait_blink_cb), applet);
@@ -438,11 +442,11 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	hbox = color_frame_new(vbox, _("Text"));
 
-	box_add_color(applet, hbox, _("Foreground"), COLOR_TEXT_FG);
-	box_add_color(applet, hbox, _("Background"), COLOR_TEXT_BG);
-	box_add_color(applet, hbox, _("Outline"), COLOR_TEXT_MID);
+	box_add_color(applet, hbox, _("For_eground"), COLOR_TEXT_FG);
+	box_add_color(applet, hbox, _("Bac_kground"), COLOR_TEXT_BG);
+	box_add_color(applet, hbox, _("O_utline"), COLOR_TEXT_MID);
 
-	label = gtk_label_new(_("Colors"));
+	label = gtk_label_new_with_mnemonic(_("C_olors"));
 	gtk_widget_show(vbox);
 	gtk_notebook_append_page( GTK_NOTEBOOK(notebook), vbox, label);
 
@@ -465,18 +469,19 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
         gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Modem lock file:"));
+        label = gtk_label_new_with_mnemonic(_("_Modem lock file:"));
         gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	lockfile_entry = gtk_entry_new_with_max_length(255);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), lockfile_entry);
 	gtk_entry_set_text(GTK_ENTRY(lockfile_entry), lock_file);
 	g_signal_connect (G_OBJECT (lockfile_entry), "focus_out_event",
 			  G_CALLBACK (lockfile_changed_cb), applet);
         gtk_box_pack_start(GTK_BOX(hbox), lockfile_entry, TRUE, TRUE, 0);
 	gtk_widget_show(lockfile_entry);
 
-	verify_checkbox = gtk_check_button_new_with_label(_("Verify owner of lock file"));
+	verify_checkbox = gtk_check_button_new_with_mnemonic(_("_Verify owner of lock file"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (verify_checkbox), verify_lock_file);
 	g_signal_connect(G_OBJECT(verify_checkbox), "toggled",
 			 G_CALLBACK(verify_lock_file_cb), applet);
@@ -488,11 +493,12 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
         gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Device:"));
+        label = gtk_label_new_with_mnemonic(_("_Device:"));
         gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	device_entry = gtk_entry_new_with_max_length(16);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), device_entry);
 	gtk_entry_set_text(GTK_ENTRY(device_entry), device_name);
 	g_signal_connect (G_OBJECT (device_entry), "focus_out_event",
 			  G_CALLBACK (device_changed_cb), applet);
@@ -500,7 +506,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_widget_show(device_entry);
 
 	/* ISDN checkbox */
-	checkbox = gtk_check_button_new_with_label(_("Use ISDN"));
+	checkbox = gtk_check_button_new_with_mnemonic(_("U_se ISDN"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
 	g_signal_connect(G_OBJECT(checkbox), "toggled",
 			   G_CALLBACK(isdn_checkbox_cb), applet);
@@ -526,7 +532,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, FALSE, 0);
 	gtk_widget_show(button);
 #endif
-        label = gtk_label_new(_("Advanced"));
+        label = gtk_label_new_with_mnemonic(_("_Advanced"));
         gtk_widget_show(vbox);
         gtk_notebook_append_page( GTK_NOTEBOOK(notebook), vbox, label);
 
