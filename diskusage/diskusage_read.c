@@ -7,7 +7,7 @@
 
 #include <assert.h>
 
-/* #define DU_DEBUG */
+/* #define DU_DEBUG  */
 
 /* Many systems reserve some space on each filesystem that only the superuser
  * can use. Set this to true if you want count this space towards the among of
@@ -90,6 +90,13 @@ diskusage_read (DiskusageInfo *ps)
 	}
 
 	ps->n_filesystems = i;
+
+	me = mount_list;
+	while (me) {
+		mount_list = me;
+		me = me->me_next;
+		free(mount_list);
+	}
 	
 #ifdef DU_DEBUG
 	printf("n_filesystems = %u \n", i);
