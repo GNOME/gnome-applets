@@ -1,3 +1,5 @@
+pixmapdir = $(datadir)/panel/
+
 INCLUDES = 			\
 	-I../../.. 		\
 	-I$(srcdir)/../../.. 	\

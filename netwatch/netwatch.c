@@ -324,14 +324,14 @@ create_netwatch (GtkWidget *window, char *parameters)
 	g_slist_free(interface_list);
 	interface_list = NULL;
 	devpath = gnome_config_get_string("/panel/netwatch/devpath=eth0");
-	dev = strtok(devpath, ":");
+	dev = strtok(devpath, " ");
 	if (!dev) return NULL;
 	do {
 		this_int = create_interface_by_name(dev);
 		interface_list = g_slist_append(interface_list, this_int);
 		gtk_box_pack_end(GTK_BOX(parent_widget), this_int->button,
 				FALSE, FALSE, 0);
-	} while (dev = strtok(NULL, ":"));
+	} while (dev = strtok(NULL, " "));
 	free(devpath);
 
 
@@ -367,7 +367,7 @@ add_devpath_component(gpointer data, gpointer user_data)
   if (!*tmp_devpath) {
     *tmp_devpath = g_string_new(iface->name);
   } else {
-    *tmp_devpath = g_string_append_c(*tmp_devpath, ':');
+    *tmp_devpath = g_string_append_c(*tmp_devpath, ' ');
     *tmp_devpath = g_string_append(*tmp_devpath, iface->name);
   }
 }
