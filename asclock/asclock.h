@@ -76,17 +76,6 @@ extern gint visual_depth;
 GdkVisual *visual;
 GdkColormap *cmap;
 
-/* the xpm data */
-extern char *clock_xpm[];
-extern char *month_xpm[];
-extern char *weekday_xpm[];
-extern char *led_xpm[];
-extern char *beats_xpm[];
-extern char *date_xpm[];
-extern char *hour_xpm[];
-extern char *minute_xpm[];
-extern char *second_xpm[];
-
 /* the filenames */
 extern char clock_xpm_fn[MAX_PATH_LEN];
 extern char month_xpm_fn[MAX_PATH_LEN];
