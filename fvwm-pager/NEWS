@@ -1,4 +1,31 @@
+Version 0.2
+===========
+Implemented an enlightment simulation mode
+
+If your fvwm2rc contains the following line
+
+fvwm-pager HeadLess 0 4
+
+(0 and 4 are the indices of the first and last desktop respectivly)
+the module is started without appearing in the panel. But, and that's
+the important thing, all properties are handled in the way the
+gnome-pager applets needs them. This means that you can use the
+gnome-pager applet and fvwm2 together. Don't forget to mark the panel
+window sticky in the fvwm2rc file.
+
+What's more important is that the dreaded IOR and panel cookie
+problems is not more relevant. Well, you loose some functionality with
+the gnome-pager (you can't switch desktops using the pager window, and 
+you can't drag windows around). But it looks much nicer then my user
+interface. 
+
+
+Version 0.1
+===========
 Reimplemented the pager to use a canvas instead of a drawing area.
 Now it's possible to move windows around. Theoretically it should also
 be possible to move the icons around, but this doesn't work now.
+
+
+
 

@@ -26,6 +26,8 @@ fvwm_pager_LDADD = \
 	$(GNOMEUI_LIBS)                \
 	$(INTLLIBS)
 
+CFLAGS += -DVERSION=\"0.2\"
+
 EXTRA_DIST = TODO README NEWS
 
 

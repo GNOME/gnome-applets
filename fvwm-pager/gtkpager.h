@@ -104,7 +104,8 @@ GtkWidget*    gtk_fvwmpager_new               (gint* fd, gint width, gint height
 void          gtk_fvwmpager_add_desk          (GtkFvwmPager*, gchar*);
 #endif
 void          gtk_fvwmpager_set_current_desk  (GtkFvwmPager* pager, gint desktop);
-void          gtk_fvwmpager_display_desks     (GtkFvwmPager* pager, GList* desktops);
+void          gtk_fvwmpager_set_desktops      (GtkFvwmPager* pager, GList* desktops);
+void          gtk_fvwmpager_display_desks     (GtkFvwmPager* pager);
 void          gtk_fvwmpager_label_desk        (GtkFvwmPager* pager, gint idx, gchar* label);
 void          gtk_fvwmpager_set_current_desk  (GtkFvwmPager*, gint idx);
 

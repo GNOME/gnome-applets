@@ -23,6 +23,7 @@
 #include <libs/fvwmlib.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
+#include <X11/Xatom.h>
 
 #include "properties.h"
 #include "gtkpager.h"
@@ -33,7 +34,7 @@
 
 
 void        DeadPipe             (int);
-static void ParseOptions         (GtkFvwmPager* pager);
+static void ParseOptions         (void);
 static void switch_to_desktop    (GtkFvwmPager* pager, int desktop_offset);
 #if 0
 static void move_window          (GtkFvwmPager* pager, unsigned long xid, int desktop, int x, int y);
@@ -44,11 +45,15 @@ PagerProps pager_props;
 gint   pager_width  = 170;
 gint   pager_height = 70;
 
+static int noapplet = 0;
+static GList* desktop_names = 0;
 
 static Atom _XA_WIN_WORKSPACE;
 static Atom _XA_WIN_WORKSPACE_NAMES;
 static Atom _XA_WIN_WORKSPACE_COUNT;
 static Atom _XA_WIN_LAYER;
+static Atom _XA_WIN_SUPPORTING_WM_CHECK;
+static Atom _XA_WIN_CLIENT_LIST;
 
 static int        desk1;
 static int        desk2;
@@ -74,6 +79,41 @@ void destroy(GtkWidget* w, gpointer data)
   gtk_main_quit();
 }
 
+/* UTILITY functions */
+
+static void *
+util_get_atom(Window win, gchar *atom, Atom type, gint *size)
+{
+  unsigned char      *retval;
+  Atom                to_get, type_ret;
+  unsigned long       bytes_after, num_ret;
+  int                 format_ret;
+  long                length;
+  void               *data;
+  
+  to_get = XInternAtom(GDK_DISPLAY(), atom, False);
+  retval = NULL;
+  length = 0x7fffffff;
+  XGetWindowProperty(GDK_DISPLAY(), win, to_get, 0,
+		     length,
+		     False, type,
+		     &type_ret,
+		     &format_ret,
+		     &num_ret,
+		     &bytes_after,
+		     &retval);
+  if ((retval) && (num_ret > 0) && (format_ret > 0))
+    {
+      data = g_malloc(num_ret * (format_ret >> 3));
+      if (data)
+	memcpy(data, retval, num_ret * (format_ret >> 3));
+      XFree(retval);
+      *size = num_ret * (format_ret >> 3);
+      return data;
+    }
+  return NULL;
+}
+
 
 static void
 fvwm_command_received(gpointer data,
@@ -83,7 +123,7 @@ fvwm_command_received(gpointer data,
   int count;
   unsigned long header[HEADER_SIZE];
   unsigned long* body;
-  GtkFvwmPager*  pager = GTK_FVWMPAGER(data);
+  GtkFvwmPager*  pager = data ? GTK_FVWMPAGER(data) : 0;
 
   if ((count = ReadFvwmPacket(source, header, &body)) > 0)
     {
@@ -126,22 +166,8 @@ main(int argc, char* argv[])
   char* tmp;
   static GtkWidget* pager = 0;
   GList* desktops;
-  
-
-
-  applet_widget_init_defaults("#fvwmpager", VERSION, argc, argv,
-			      NULL, 0, NULL);
-
-  window = applet_widget_new();
-
-  load_fvwmpager_properties("fvwmpager", &pager_props);
-  
-  gtk_widget_realize(window);
-  
-  _XA_WIN_WORKSPACE       = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE", False);
-  _XA_WIN_WORKSPACE_NAMES = XInternAtom(GDK_DISPLAY(), "_WIN_WORKSPACE_NAMES", False);
-  _XA_WIN_WORKSPACE_COUNT = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE_COUNT", False);
-  _XA_WIN_LAYER           = XInternAtom(GDK_DISPLAY(), "WIN_LAYER", False);
+  Window root_window;
+  gint   desktop_idx = 6;
 
   
   tmp = strrchr(argv[0], '/');
@@ -155,9 +181,34 @@ main(int argc, char* argv[])
 
   fd[0] = atoi(argv[1]);
   fd[1] = atoi(argv[2]);
+  
+  if (strcmp(argv[6],"HeadLess") == 0)
+    {
+      desktop_idx = 7;
+      noapplet = 1;
+    }
+  desk1 = atoi(argv[desktop_idx]);
+  desk2 = atoi(argv[desktop_idx+1]);
 
-  desk1 = atoi(argv[6]);
-  desk2 = atoi(argv[7]);
+  if (noapplet)
+    gnome_init("fvwmpager", VERSION, argc, argv);
+  else
+    applet_widget_init_defaults("#fvwmp	ager", VERSION, argc, argv,
+				NULL, 0, NULL);
+
+  _XA_WIN_WORKSPACE           = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE", False);
+  _XA_WIN_WORKSPACE_NAMES     = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE_NAMES", False);
+  _XA_WIN_WORKSPACE_COUNT     = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE_COUNT", False);
+  _XA_WIN_LAYER               = XInternAtom(GDK_DISPLAY(), "WIN_LAYER", False);
+  _XA_WIN_SUPPORTING_WM_CHECK = XInternAtom(GDK_DISPLAY(), "WIN_SUPPORTING_WM_CHECK", False);
+  _XA_WIN_CLIENT_LIST         = XInternAtom(GDK_DISPLAY(), "WIN_CLIENT_LIST", False);
+
+  fprintf(stderr,"Created Atom\n");
+  root_window = GDK_ROOT_WINDOW();
+
+  XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
+		  _XA_WIN_SUPPORTING_WM_CHECK, XA_CARDINAL,
+		  32, PropModeReplace, (unsigned char*)&root_window, 1);
 
   if (desk1 > desk2)
     {
@@ -170,37 +221,10 @@ main(int argc, char* argv[])
 
   xprop_long_data[0] = ndesks;
   
-  XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), _XA_WIN_WORKSPACE_COUNT, _XA_WIN_WORKSPACE_COUNT,
+  XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), _XA_WIN_WORKSPACE_COUNT, XA_CARDINAL,
 		  32, PropModeReplace, (unsigned char*) xprop_long_data, 1);
-
-  gtk_widget_set_usize(GTK_WIDGET(window), pager_props.width, pager_props.height);
+  fprintf(stderr,"Got %d desktops\n", ndesks);
   
-  pager = gtk_fvwmpager_new(fd, pager_props.width, pager_props.height);
-  
-  gtk_signal_connect(GTK_OBJECT(pager), "switch_desktop",
-		     GTK_SIGNAL_FUNC(switch_to_desktop), NULL);
-
-  gtk_signal_connect(GTK_OBJECT(window), "delete_event",
-		     GTK_SIGNAL_FUNC(destroy), NULL);
-  
-  gtk_signal_connect(GTK_OBJECT(window), "save_session",
-		     GTK_SIGNAL_FUNC(save_session),
-		     NULL);
-
-  applet_widget_add(APPLET_WIDGET(window), pager);
-
-  applet_widget_register_stock_callback(APPLET_WIDGET(window),
-					"about",
-					GNOME_STOCK_MENU_ABOUT,
-					_("About"),
-					about_cb,
-					NULL);
-  applet_widget_register_stock_callback(APPLET_WIDGET(window),
-					"properties",
-					GNOME_STOCK_MENU_PROP,
-					_("Properties"),
-					pager_properties_dialog,
-					pager);
   desktops = 0;
   for (idx = 0; idx < ndesks; idx++)
     {
@@ -229,8 +253,9 @@ main(int argc, char* argv[])
 	     M_END_CONFIG_INFO  |
 	     M_MINI_ICON        |
 	     M_END_WINDOWLIST);
-
-  ParseOptions(GTK_FVWMPAGER(pager));
+  fprintf(stderr,"Parsing options\n");
+  ParseOptions();
+  fprintf(stderr,"Options parsed\n");
   {
     GList* elem;
     XTextProperty tp;
@@ -256,19 +281,74 @@ main(int argc, char* argv[])
 	XSetTextProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), &tp, _XA_WIN_WORKSPACE_NAMES);
       }
   }
+
+  fprintf(stderr,"Loading options\n");
+  load_fvwmpager_properties("fvwmpager", &pager_props); 
+  fprintf(stderr,"Options loaded\n");
+      
+      
+  pager = gtk_fvwmpager_new(fd, pager_props.width, pager_props.height);
+  
+  if (!noapplet)
+    {
+      gchar* name;
+      GList* desktop_ptr;
+      gint   desk = 0;
+      
+      
+      window = applet_widget_new(); 
+      gtk_widget_realize(window); 
+      gtk_widget_set_usize(GTK_WIDGET(window), pager_props.width, pager_props.height); 
+      gtk_signal_connect(GTK_OBJECT(pager), "switch_desktop",
+			 GTK_SIGNAL_FUNC(switch_to_desktop), NULL);
+      
+      gtk_signal_connect(GTK_OBJECT(window), "delete_event",
+			 GTK_SIGNAL_FUNC(destroy), NULL);
+      
+      gtk_signal_connect(GTK_OBJECT(window), "save_session",
+			 GTK_SIGNAL_FUNC(save_session),
+			 NULL);
+      desktop_ptr = desktop_names;
+      while (desktop_ptr) {
+	name = desktop_ptr->data;
+	gtk_fvwmpager_label_desk(GTK_FVWMPAGER(pager), desk, name);
+	desk++;
+	desktop_ptr = g_list_next(desktop_ptr);
+      }
+      applet_widget_add(APPLET_WIDGET(window), pager);
+      
+      applet_widget_register_stock_callback(APPLET_WIDGET(window),
+					    "about",
+					    GNOME_STOCK_MENU_ABOUT,
+					    _("About	"),
+					    about_cb,
+					    NULL);
+      applet_widget_register_stock_callback(APPLET_WIDGET(window),
+					    "properties",
+					    GNOME_STOCK_MENU_PROP,
+					    _("Properties"),
+					    pager_properties_dialog,
+					    pager);
+    }
+  gtk_fvwmpager_set_desktops(GTK_FVWMPAGER(pager), desktops);
+  if (!noapplet) {
+    gtk_fvwmpager_display_desks(GTK_FVWMPAGER(pager));
+    gdk_input_add(fd[1],
+		  GDK_INPUT_READ,
+		  fvwm_command_received,
+		  pager);
     
-  gtk_fvwmpager_display_desks(GTK_FVWMPAGER(pager), desktops);
-  gdk_input_add(fd[1],
-		GDK_INPUT_READ,
-		fvwm_command_received,
-		pager);
-
-  gtk_widget_show(window);
-  gtk_widget_show(pager);
-
+    gtk_widget_show(window);
+    gtk_widget_show(pager);
+  }
   SendInfo(fd, "Send_WindowList", 0);
-  applet_widget_gtk_main();
-  save_fvwmpager_properties ("fvwmpager", &pager_props);
+  if (!noapplet)
+    applet_widget_gtk_main();
+  else
+    while (1)
+      fvwm_command_received(pager, fd[1], 0);
+  if (!noapplet)
+    save_fvwmpager_properties ("fvwmpager", &pager_props);
   return 0;
 }
 
@@ -292,6 +372,13 @@ switch_to_desktop(GtkFvwmPager* pager, int offset)
   
 }
 
+void
+set_window_desktop(Window xid, gint desktop)
+{
+  XChangeProperty(GDK_DISPLAY(), xid,
+		  _XA_WIN_WORKSPACE, XA_CARDINAL,
+		  32, PropModeReplace, (unsigned char*)&desktop, 1);
+}		  
 
 void
 configure_window(GtkFvwmPager* pager, unsigned long* body)
@@ -300,6 +387,10 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
   gint         xid = body[0];
   PagerWindow  old;
   gint         new_window = 0;
+
+  fprintf(stderr,"configure_window: pager = %p\n", pager);
+  fprintf(stderr,"configure_window: pager->windows = %p\n", pager->windows);
+  fprintf(stderr,"configure_window: pager->desktops = %p\n", pager->desktops);
   
   win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
   if (!win)
@@ -318,6 +409,9 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
 	}
       g_hash_table_insert(pager->windows, (gpointer)xid, win);
       new_window = 1;
+      XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
+		      _XA_WIN_CLIENT_LIST, XA_CARDINAL,
+		      32,PropModeAppend, (unsigned char*)&xid, 1);
     }
   old           = *win;
   win->x        = body[3];
@@ -329,11 +423,15 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
   win->desk     = g_list_nth(pager->desktops, body[7])->data;
   win->flags    = 0;
   win->ixid     = body[20];
+  XChangeProperty(GDK_DISPLAY(), xid,
+		  _XA_WIN_WORKSPACE, XA_CARDINAL,
+		  32, PropModeReplace, (unsigned char*)&body[7], 1);
   if (body[8] & ICONIFIED)
     {
       win->flags |= GTKPAGER_WINDOW_ICONIFIED;
     }
-  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), new_window ? 0 : &old, xid);
+  if (!noapplet)
+    gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), new_window ? 0 : &old, xid);
 }
 
 void configure_icon(GtkFvwmPager* pager, unsigned long* body)
@@ -355,7 +453,8 @@ void configure_icon(GtkFvwmPager* pager, unsigned long* body)
   win->iw      = body[5];
   win->ih      = body[6];
   
-  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), &old, xid);
+  if (!noapplet)
+    gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), &old, xid);
 }
 
     
@@ -363,8 +462,31 @@ void
 destroy_window(GtkFvwmPager* pager, unsigned long* body)
 {
   unsigned long xid;
+  Window*       winarray;
+  Window*       ptr;
+  gint          size;
+  gint          nelems;
+  gint          current = 0;
+  
   xid = body[0];
-  gtk_fvwmpager_destroy_window(GTK_FVWMPAGER(pager), xid);
+  if (!noapplet)
+    gtk_fvwmpager_destroy_window(GTK_FVWMPAGER(pager), xid);
+  winarray = util_get_atom(GDK_ROOT_WINDOW(), "WIN_CLIENT_LIST", XA_CARDINAL, &size);
+  nelems = size / sizeof(Window);
+  ptr = winarray;
+  while (current < nelems) {
+    if (*ptr == xid)
+      break;
+    current++;
+    ptr++;
+  }
+  if (*ptr != xid)
+    return;
+  memcpy(ptr, ptr+1, (nelems - current) * sizeof (Window));
+  XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
+		  _XA_WIN_CLIENT_LIST, XA_CARDINAL,
+		  32, PropModeReplace, (unsigned char*) winarray,
+		  nelems - 1);
 }
 
 void
@@ -373,7 +495,8 @@ set_focus(GtkFvwmPager* pager, unsigned long* body)
   unsigned long xid;
 
   xid = body[0];
-  gtk_fvwmpager_set_current_window(GTK_FVWMPAGER(pager), xid);
+  if (!noapplet)
+    gtk_fvwmpager_set_current_window(GTK_FVWMPAGER(pager), xid);
 }
 
 void
@@ -389,7 +512,8 @@ deiconify_window(GtkFvwmPager* pager, unsigned long* body)
     return;
   old = *win;
   win->flags &= ~GTKPAGER_WINDOW_ICONIFIED;
-  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), &old, xid);
+  if (!noapplet)
+    gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), &old, xid);
 }
 
 void
@@ -404,7 +528,8 @@ add_window(GtkFvwmPager* pager, unsigned long* body)
     {
       return;
     }
-  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), 0, xid);
+  if (!noapplet)
+    gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), 0, xid);
 }
 
 
@@ -436,19 +561,22 @@ void process_message(GtkFvwmPager* pager, unsigned long type,unsigned long *body
 	long desktop = (long)body[0];
 
 	g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_NEW_DESK received\n");
-	gtk_fvwmpager_set_current_desk(GTK_FVWMPAGER(pager), desktop);
+	if (!noapplet)
+	  gtk_fvwmpager_set_current_desk(GTK_FVWMPAGER(pager), desktop);
 	XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
-			_XA_WIN_WORKSPACE, _XA_WIN_WORKSPACE,
+			_XA_WIN_WORKSPACE, XA_CARDINAL,
 			32, PropModeReplace, (unsigned char*)body, 1);
       }
       break;
     case M_RAISE_WINDOW:
       g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_RAISE_WINDOW received\n");
-      gtk_fvwmpager_raise_window(GTK_FVWMPAGER(pager), body[0]);
+      if (!noapplet)
+	gtk_fvwmpager_raise_window(GTK_FVWMPAGER(pager), body[0]);
       break;
     case M_LOWER_WINDOW:
       g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_LOWER_WINDOW received\n");
-      gtk_fvwmpager_lower_window(GTK_FVWMPAGER(pager), body[0]);
+      if (!noapplet)
+	gtk_fvwmpager_lower_window(GTK_FVWMPAGER(pager), body[0]);
       break;
     case M_ICONIFY:
     case M_ICON_LOCATION:
@@ -482,7 +610,7 @@ DeadPipe(int signo)
   exit(0);
 }
 
-void ParseOptions(GtkFvwmPager* pager)
+void ParseOptions()
 {
   char* tline;
   int   len = strlen(pgm_name);
@@ -493,7 +621,7 @@ void ParseOptions(GtkFvwmPager* pager)
     {
       char* ptr;
       int   desk;
-      
+
       if ((strlen(&tline[0]) > 1) && mystrncasecmp(tline, CatString3("*", pgm_name, "Label"), len + 6) == 0)
 	{
 	  desk = desk1;
@@ -511,7 +639,8 @@ void ParseOptions(GtkFvwmPager* pager)
 		  while (!isspace(*ptr)) ptr++;
 		  if (ptr[strlen(ptr)-1] == '\n')
 		    ptr[strlen(ptr)-1] = '\0';
-		  gtk_fvwmpager_label_desk(pager, desk, ptr);
+		  if (!noapplet)
+		    desktop_names = g_list_append(desktop_names, strdup(ptr));
 		}
 	    }
 	}

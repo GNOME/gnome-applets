@@ -297,6 +297,7 @@ canvas_item_event(GnomeCanvasItem* i, GdkEvent* e, gpointer data)
 			  (int)new_x , (int)new_y + window->th);
 	      SendInfo(pager->fd, cmd, window->xid);
 	    }
+	  set_window_desktop(window->xid, desktop);
 	}
     }
   if (button_down && e->type == GDK_MOTION_NOTIFY)
@@ -313,15 +314,10 @@ canvas_item_event(GnomeCanvasItem* i, GdkEvent* e, gpointer data)
   return FALSE;
 }
 
-
-
 void
-gtk_fvwmpager_display_desks(GtkFvwmPager* pager, GList* desktops)
+gtk_fvwmpager_set_desktops(GtkFvwmPager* pager, GList* desktops)
 {
-  GList*          desks;
-  double          desk_width;
-  double          startx = 0.0;
-  gint            deskidx = 0;
+  GList* desks;
   
   desks = pager->desktops;
   while (desks)
@@ -335,11 +331,22 @@ gtk_fvwmpager_display_desks(GtkFvwmPager* pager, GList* desktops)
       g_free(d);
     }
   pager->num_of_desks = g_list_length(desktops);
-
   
-  desk_width = pager->width / pager->num_of_desks;
 
   desks = pager->desktops = desktops;
+}
+
+
+void
+gtk_fvwmpager_display_desks(GtkFvwmPager* pager)
+{
+  GList*          desks;
+  double          startx = 0.0;
+  gint            deskidx = 0;
+  double          desk_width;
+  
+  desk_width = pager->width / pager->num_of_desks;
+  desks = pager->desktops;
   while(desks)
     {
       Desktop* d;

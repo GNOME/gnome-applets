@@ -20,6 +20,7 @@
 #ifndef __properties_h__
 #define __properties_h__ 1
 
+#include <gnome.h>
 #include <applet-widget.h>
 
 typedef struct _Pager_props

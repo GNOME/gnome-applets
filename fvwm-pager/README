@@ -4,19 +4,23 @@ of the raw Xlib functions of the original FvwmPager Module.
 
 To install it you have to have:
 1) the fvwm2 sources on your system.
+
 2) compile fvwm2. I know this is clumsy, but as long as i don't have
    ported the fvwm2 module lib and headers files, this is the only way 
    to access them.
+
 3) go to the root directory of the gnome-core package and call
    autogen.sh with the
    `--with-fvwm2=<directory where the fvwm2 sources are>. In my setup
    this is:
    ./autgen.sh --prefix=/usr/local/gnome-cvs --with-fvwm2=/disk/compiles/fvwm-2.0.46 --with-included-gettext --with-window-manager=fvwm2
+
 4) after installation of the gnome-core package you can either
    a) make a symlink from the <prefix>/bin/fvwm-pager to your fvwm2
       module directory
    b) add the <prefix>/bin directory to the module path of fvwm2 in
       your fvwm2 setup file (usually ~/.fvwm2rc).
+
 5) I made an entry in one of the fvwm2 menus i'm using to start the
    pager. I added the line
    `+          "FvwmGnome"         Module fvwm-pager 0 4',
@@ -32,11 +36,25 @@ Button1:   grab item (window or icon) and drag it around.
 Button1 double click:  change desktop
 Shift + Button1:       change desktop
 
-There's no property dialog now, but the hooks are there.
-
 The look is not pretty now, and you can't change the colors
 or anything else, but i'm working on it. 
 
+With version 0.2 it's possible to start the module without connecting
+to the panel. This mode is indicated with the `HeadLess' parameter to
+the module.
 
+For example it's now possible to do:
 
+1) Make a suymlink from fvwm-pager to fvwm-eemu in the module directory
+   of fvwm2
+
+2) Add a line:
+   AddToFunc InitFunction "I" Module fvwm-eemu HeadLess 0 4
+
+   This will start the fvwm-pager in the enlightment emulation mode.
+   In this mode the pager doesn't have a display, but manages the X
+   Properites of the various windows in such a way that the
+   gnome-pager applet think it's running with enlightment (at least to
+   a certain extent). This means you can use the gnome-pager applet in 
+   the panel.
 
