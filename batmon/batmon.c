@@ -190,10 +190,7 @@ batmon_timeout_callback (gpointer *data)
 	else
 		fname = bat_pixmap_filename;
 
-	gnome_set_pixmap_widget (GTK_PIXMAP (GTK_BUTTON (data)->child),
-				 GTK_WIDGET (data),
-				 GTK_WIDGET (data),
-				 fname);
+	gnome_pixmap_load_file (GNOME_PIXMAP (GTK_BUTTON (data)->child), fname); 
 
 	return TRUE;
 }
@@ -228,7 +225,7 @@ create_batmon_widget (GtkWidget *window)
 	
 	button = gtk_button_new ();
 
-	pixmap = gnome_create_pixmap_widget(window, button, ac_pixmap_filename);
+	pixmap = gnome_pixmap_new_from_file (ac_pixmap_filename);
 	gtk_container_add (GTK_CONTAINER (button), pixmap);
 	gtk_widget_show(pixmap);
 	
