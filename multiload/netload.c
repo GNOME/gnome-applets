@@ -37,7 +37,7 @@ make_netload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    prop_data = g_memdup (&multiload_properties.swapload,
+    prop_data = g_memdup (&multiload_properties.netload,
 			  sizeof (LoadGraphProperties));
 
     g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Net Load"),
