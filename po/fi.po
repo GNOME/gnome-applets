@@ -1,21 +1,22 @@
 # fi.po -- Finnish messages for gnome-applets
 # Suomennos: http://gnome-fi.sourceforge.net/
 # Copyright (C) 1998-2003 Free Software Foundation, Inc.
+# Tuomas Lukka, 1998.
 # Ville Hautamäki <villeh@photon.joensuu.fi>, 1998.
-# Mikko Rauhala <mjr@iki.fi>.
+# Mikko Rauhala <mjr@iki.fi>, 1999..
 # Jarkko Ranta <jjranta@cc.joensuu.fi>, 2000-2003.
 #  
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-09-03 15:27+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-04 11:59+0300\n"
 "PO-Revision-Date: 2003-09-03 22:19+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -88,8 +89,9 @@ msgstr "Ohjelma"
 msgid "translator_credits"
 msgstr ""
 "Jarkko Ranta, 2000-2003\n"
+"Mikka Rauhala, 1999\n"
 "Ville Hautamäki, 1998\n"
-"Mikko Rauhala\n"
+"Tuomas Lukka, 1998\n"
 "\n"
 "http://gnome-fi.org/"
 
@@ -121,7 +123,7 @@ msgstr "a"
 
 #: accessx-status/applet.c:1183
 msgid "Displays current state of keyboard accessibility features"
-msgstr "Näyttää nykyiset näppäimistön käytettävyystoiminnot"
+msgstr "Näyttää nykyiset näppäimistön esteettömyystoiminnot"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
@@ -154,6 +156,82 @@ msgstr "_Asetukset..."
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
 msgstr "_Virransäästötila..."
+
+#: battstat/battstat.schemas.in.h:1
+msgid "Beep for warnings"
+msgstr "Anna äänimerkki huomautettaessa"
+
+#: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "Anna äänimerkki kun akun tilasta huomautettaessa"
+
+#: battstat/battstat.schemas.in.h:3
+msgid "Command to send to suspend the computer"
+msgstr "Komento jolla kone asetetaan virransäästötilaan"
+
+#: battstat/battstat.schemas.in.h:4
+msgid "Drain from top"
+msgstr "Tyhjennä yläpäästä"
+
+#: battstat/battstat.schemas.in.h:5
+msgid "Full Battery Notification"
+msgstr "Huomautus täydestä akusta"
+
+#: battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr "Huomautus latauksen ollessa matala"
+
+#: battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full"
+msgstr "Huomauta akun ollessa täysi"
+
+#: battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is low"
+msgstr "Huomauta akun latauksen ollessa matala"
+
+#: battstat/battstat.schemas.in.h:9
+msgid "Orange value level"
+msgstr "Oranssin arvon raja"
+
+#: battstat/battstat.schemas.in.h:10
+msgid "Red value level"
+msgstr "Punaisen arvon raja"
+
+#: battstat/battstat.schemas.in.h:11
+msgid "Show battery status"
+msgstr "Näytä akun tila"
+
+#: battstat/battstat.schemas.in.h:12
+msgid "Show percent full label"
+msgstr "Näytä prosenttitiedot otsikonlevyisesti"
+
+#: battstat/battstat.schemas.in.h:13
+msgid "Show the battery"
+msgstr "Näytä akku"
+
+#: battstat/battstat.schemas.in.h:14
+msgid "Show the battery meter draining from the top of the battery"
+msgstr "Näytä yläpäästä tyhjentyvä akun latausmittari"
+
+#: battstat/battstat.schemas.in.h:15
+msgid "Suspend Command"
+msgstr "Virransäästökomento"
+
+#: battstat/battstat.schemas.in.h:16
+msgid "The battery level below which the battery is displayed as orange."
+msgstr "Lataustaso jonka jälkeen akku näytetään oranssina"
+
+#: battstat/battstat.schemas.in.h:17
+msgid "The battery level below which the battery is displayed as red."
+msgstr "Lataustaso jonka jälkeen akku näytetään punaisena"
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr "Lataustaso jonka jälkeen akku näytetään keltaisena."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "Keltaisen arvon raja"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -312,7 +390,7 @@ msgid ""
 "Please try to correct this error"
 msgstr ""
 "Virhe suoritettaessa virransäästökomentoa: %s\n"
-"Voit yrittää korjata tämän virheen"
+"Ole hyvä ja yritä korjata tämä virhe"
 
 #. Probably because the shell_ret is != 0
 #: battstat/battstat_applet.c:790
@@ -324,7 +402,7 @@ msgid ""
 msgstr ""
 "Virhe suoritettaessa virransäästökomentoa. Komento palautti vastauksen \"%d"
 "\"\n"
-"Voit yrittää korjata tämän virheen"
+"Ole hyvä ja yritä korjata tämä virhe"
 
 #: battstat/battstat_applet.c:798
 msgid ""
@@ -354,37 +432,37 @@ msgstr "Tämä ohjelma näyttää kannettavan koneesi akun latauksen."
 msgid "    "
 msgstr "    "
 
-#: battstat/battstat_applet.glade.h:3
-#, no-c-format
-msgid "&lt;b&gt;Battery Color Levels (%)&lt;/b&gt;"
-msgstr "&lt;b&gt;Akun väritystasot (%)&lt;/b&gt;"
-
-#: battstat/battstat_applet.glade.h:4
-msgid "&lt;b&gt;Layout&lt;/b&gt;"
-msgstr "&lt;b&gt;Asettelu&lt;/b&gt;"
-
-#: battstat/battstat_applet.glade.h:5
-msgid "&lt;b&gt;Progress Bar Direction&lt;/b&gt;"
-msgstr "&lt;b&gt;Edistymispalkin suunta&lt;/b&gt;"
-
-#: battstat/battstat_applet.glade.h:6
-msgid "&lt;b&gt;Suspend&lt;/b&gt;"
-msgstr "&lt;b&gt;Virransäästötila&lt;/b&gt;"
-
-#: battstat/battstat_applet.glade.h:7
-msgid "&lt;b&gt;Warnings&lt;/b&gt;"
-msgstr "&lt;b&gt;Varoitukset&lt;/b&gt;"
-
-#: battstat/battstat_applet.glade.h:8
-#: mini-commander/src/mini-commander.glade.h:6
-#: stickynotes/stickynotes.glade.h:11
+#: battstat/battstat_applet.glade.h:2
+#: mini-commander/src/mini-commander.glade.h:2
+#: stickynotes/stickynotes.glade.h:2
 msgid "*"
 msgstr "*"
 
-#: battstat/battstat_applet.glade.h:10
+#: battstat/battstat_applet.glade.h:4
 #, no-c-format
 msgid "100%"
 msgstr "100 %"
+
+#: battstat/battstat_applet.glade.h:6
+#, no-c-format
+msgid "<b>Battery Color Levels (%)</b>"
+msgstr "<b>Akun väritystasot (%)</b>"
+
+#: battstat/battstat_applet.glade.h:7
+msgid "<b>Layout</b>"
+msgstr "<b>Asettelu</b>"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "<b>Progress Bar Direction</b>"
+msgstr "<b>Edistymispalkin suunta</b>"
+
+#: battstat/battstat_applet.glade.h:9
+msgid "<b>Suspend</b>"
+msgstr "<b>Virransäästötila</b>"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "<b>Warnings</b>"
+msgstr "<b>Varoitukset</b>"
 
 #: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
@@ -596,6 +674,18 @@ msgstr "Napsauta tätä siirtyäksesi edelliseen raitaan CD:llä"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Napsauta tätä siirtyäksesi seuraavaan raitaan CD:llä"
 
+#: cdplayer/cdplayer.schemas.in.h:1
+msgid "Path to the device"
+msgstr "Polku laitteeseen"
+
+#: cdplayer/cdplayer.schemas.in.h:2
+msgid ""
+"This is the full path of the device that will be used to play cd's from this "
+"applet"
+msgstr ""
+"Ilmaisee täydellisen polun laitteeseen jota sovelma käyttää cd:iden "
+"soittamiseen"
+
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
 #: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
@@ -647,6 +737,30 @@ msgstr ""
 "Gnome-paneelisovelma epätavallisten, näppäimistöltä puuttuvien merkkien "
 "valitsemiseen. Julkaistu GNU:n GPL-lisenssillä"
 
+#: charpick/charpick.schemas.in.h:1
+msgid "Characters shown on applet startup"
+msgstr "Sovelman käynnistyessä näytettävät merkit"
+
+#: charpick/charpick.schemas.in.h:2
+msgid "DEPRECATED - Characters shown on applet startup"
+msgstr "VANHENTUNUT - Sovelman käynnistyessä näytettävät merkit"
+
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+msgid "List of available palettes"
+msgstr "Luettelo saatavilla olevista paleteista"
+
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "Luettelo merkkijonoista jotka sisältävät saatavilla olevat paletit"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"Merkkijono jonka käyttäjä valitsi kun sovelmaa viimeksi käytettiin. Tämä "
+"merkkijono näytetään kun sovelma käynnistetään."
+
 #: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "_Paletti:"
@@ -666,10 +780,6 @@ msgstr "Muokkaa palettia"
 #: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "Palettiluettelo"
-
-#: charpick/properties.c:260
-msgid "List of available palettes"
-msgstr "Luettelo saatavilla olevista paleteista"
 
 #: charpick/properties.c:338
 msgid "Pal_ettes:"
@@ -773,6 +883,14 @@ msgstr ""
 #: drivemount/drivemount.c:853
 msgid "Cannot mount device"
 msgstr "Laitteen liittäminen epäonnistui"
+
+#: drivemount/drivemount.schemas.in.h:1
+msgid "Interval timeout to check mount point status"
+msgstr "Aikaväli liitoksen tilan tarkistamiseen"
+
+#: drivemount/drivemount.schemas.in.h:2
+msgid "Time in seconds between status updates"
+msgstr "Aikaväli sekunteina jonka välein sovelma tarkistaa liitoksen tilan"
 
 #: drivemount/properties.c:327
 msgid "Disk Mounter Preferences"
@@ -883,6 +1001,10 @@ msgstr "Hauska, pieni xeyes-klooni Gnomen paneeliin."
 #: geyes/geyes.c:457
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Silmät katsovat aina hiiren osoittimen suuntaan"
+
+#: geyes/geyes.schemas.in.h:1
+msgid "Directory in which the theme is located"
+msgstr "Hakemisto josta teema löytyy"
 
 #: geyes/themes.c:257
 msgid "Geyes Preferences"
@@ -1819,7 +1941,7 @@ msgstr "Oman"
 
 #: gkb-new/descs/presets.xml.in.h:139
 msgid "Palestinian Territory"
-msgstr "Palestiina"
+msgstr "Palestiinalaisalue"
 
 #: gkb-new/descs/presets.xml.in.h:140
 msgid "Plain Russian keymap"
@@ -2099,6 +2221,78 @@ msgstr ""
 "Käytä pikanäppäintä näppäinkarttojen välillä liikkumiseen. Pikanäppäinen voi "
 "vaihtaa Asetukset-ikkunasta"
 
+#: gkb-new/gkb.schemas.in.h:1
+msgid "Appearance mode of the applet"
+msgstr "Sovelman käyttämä tyyli"
+
+#: gkb-new/gkb.schemas.in.h:2
+msgid "Flag image for the keyboard layout"
+msgstr "Lipun kuva asettelulle"
+
+#: gkb-new/gkb.schemas.in.h:3
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr "Voi olla \"Lippu ja Nimike\", \"Nimike\" tai \"Lippu\""
+
+#: gkb-new/gkb.schemas.in.h:4
+msgid "Keybinding for switching layout"
+msgstr "Asettelun pikanäppäin"
+
+#: gkb-new/gkb.schemas.in.h:5
+msgid "No longer used"
+msgstr "Ei enää käytössä"
+
+#: gkb-new/gkb.schemas.in.h:6
+msgid "Number of configured keymaps"
+msgstr "Asetettujen näppäinkarttojen lukumäärä"
+
+#: gkb-new/gkb.schemas.in.h:7
+msgid "The command that switches your keymap to this layout"
+msgstr "Komento jolla otat tämän näppäinasettelun käyttöön"
+
+#: gkb-new/gkb.schemas.in.h:8
+msgid "The country of the keyboard layout"
+msgstr "Näppäinasettelun maa"
+
+#: gkb-new/gkb.schemas.in.h:9
+msgid "The label of the keyboard layout"
+msgstr "Näppäinasettelun nimike"
+
+#: gkb-new/gkb.schemas.in.h:10
+msgid "The language of the keyboard layout"
+msgstr "Näppäinasettelun kieli"
+
+#: gkb-new/gkb.schemas.in.h:11
+msgid "The name of the keyboard layout"
+msgstr "Näppäinasettelun nimi"
+
+#: gkb-new/gkb.schemas.in.h:12
+msgid "This flag will appear in flag field of the applet"
+msgstr "Tämä lippu näytetään sovelman lippuosassa"
+
+#: gkb-new/gkb.schemas.in.h:13
+msgid "This information helps you to identify your keyboard layout"
+msgstr "Tämä tieto auttaa tunnistamaan näppäinasettelun"
+
+#: gkb-new/gkb.schemas.in.h:14
+msgid "This is the binding for keypress-based layout change"
+msgstr "Tämä on näppäimillä tehtävän asettelunvaihdoksen näppäinyhdistelmä"
+
+#: gkb-new/gkb.schemas.in.h:15
+msgid ""
+"This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
+"something.xmm\""
+msgstr ""
+"Tämän tulisi olla \"gkb_xmmap fi\", \"setxkbmap fi\" tai \"xmodmap jotain.xmm"
+"\""
+
+#: gkb-new/gkb.schemas.in.h:16
+msgid "This will appear in the label box of the applet"
+msgstr "Tämä näytetään sovelman nimikeosassa"
+
+#: gkb-new/gkb.schemas.in.h:17
+msgid "This will identify the layout in the list"
+msgstr "Tällä tunnistat asettelun luettelosta"
+
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
 msgstr "Ei käytössä"
@@ -2222,7 +2416,7 @@ msgid ""
 msgstr ""
 "Virhe suoritettaessa komentoa.\n"
 "\n"
-"Näppäinkarttaa '%s' ei ole tuettu järjestelmässäsi. Valitse jokin toinen "
+"Näppäinkarttaa \"%s\" ei ole tuettu järjestelmässäsi. Valitse jokin toinen "
 "näppäinkartta.\n"
 "\n"
 "Suoritettu komento oli: %s"
@@ -2239,8 +2433,8 @@ msgid ""
 msgstr ""
 "Virhe suoritettaessa komentoa.\n"
 "\n"
-"Näppäinkarttaa '%s' ei voitu ladata, luultavasti koska xmodmapia ei löytynyt "
-"polulta.\n"
+"Näppäinkarttaa \"%s\" ei voitu ladata, luultavasti koska xmodmapia ei "
+"löytynyt polulta.\n"
 "Suoritettu komento oli: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
@@ -2420,6 +2614,147 @@ msgstr "(Ei"
 #: gtik/gtik.c:2006
 msgid "Change "
 msgstr "Muuta "
+
+#: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr ""
+"Sovelma vierittää tekstiä oikealta vasemmalle jos tämä asetetaan päälle."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "Taustaväri"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+"Näytä vain osakesymbolit arvojensa kanssa. Älä näytä muutoksia arvoissa."
+
+#: gtik/gtik.schemas.in.h:4
+msgid "Display only symbols and price"
+msgstr "Näytä vain symbolit ja hinta"
+
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "Kirjasin"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"Luettelo osakkeista jotka näytetään. Koostuu osakkeen tunnisteista jotka on "
+"eroteltu toisistaan \"+\"-merkein"
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "Laskeneiden väri"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "Nousseiden väri"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "Vieritys oikealta vasemmalle"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "Lyhyempi aika tarkoittaa nopeampaa vieritystä."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "Näytä nuolipainikkeet"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"Näytä nuolipainikkeet näytön sivuilla jotta tekstiä voin vierittää eteen- "
+"tai taaksepäin."
+
+#: gtik/gtik.schemas.in.h:13
+msgid "Stocks to monitor - must be seperated by a +"
+msgstr "Tarkkailtavat osakkeet - erotetaan toisistaan \"+\"-merkillä"
+
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"Näytön taustaväri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
+"kirjaimia ja värejä."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Laskeneiden kurssien väri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
+"kirjaimia ja värejä."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"Muuttumattomien kurssien väri. Tämä tulee voimaan mikäli ei käytetä "
+"oletusteeman kirjaimia ja värejä."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Nousseiden kurssien väri. Tämä tulee voimaan mikäli ei käytetä oletusteeman "
+"kirjaimia ja värejä."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"Näytössä käytettävä kirjasin. Tämä tulee voimaan mikäli ei käytetä "
+"oletusteeman kirjaimia ja värejä."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "Aikaväli jonka jälkeen sovelma päivittää kurssitietoja"
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "Sovelman leveys pikseleinä."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "Näytön päivityksen aikaväli millisekunneissa"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "Muuttumattomien väri"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "Päivitystiheys"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "Käytä oletuskirjasimia ja -värejä"
+
+#: gtik/gtik.schemas.in.h:25
+msgid "Use default theme fonts and colors instead of custom ones"
+msgstr "Käytä oletuskirjasimia ja -värejä mukautettujen sijaan"
+
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
+msgid "Width of the applet"
+msgstr "Sovelman leveys"
+
+#: gtik/gtik.schemas.in.h:27
+msgid "font 2 - No Longer used"
+msgstr "kirjasin 2 - Ei enää käytössä"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -2608,6 +2943,64 @@ msgstr "_Valitse sijainti:"
 #: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "Sijainti"
+
+#: gweather/gweather.schemas.in.h:1
+msgid ""
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr "Määrittää päivittääkö sovelma automaattisesti säätiedot vai ei."
+
+#: gweather/gweather.schemas.in.h:2
+msgid "Display radar map"
+msgstr "Näytä tutkakartta"
+
+#: gweather/gweather.schemas.in.h:3
+msgid "Fetch a radar map on each update."
+msgstr "Hae tutkakartta jokaisen päivityksen yhteydessä."
+
+#: gweather/gweather.schemas.in.h:4
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Mikäli tämä on päällä, haetaan tutkakartta määrittelemästäsi sijainnista."
+
+#: gweather/gweather.schemas.in.h:5
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "Ei enää käytössä"
+
+#: gweather/gweather.schemas.in.h:6
+msgid "The custom url from where to retrieve a radar map."
+msgstr "Mukautettu URL josta tutkakartat haetaan."
+
+#: gweather/gweather.schemas.in.h:7
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Automaattisten päivitysten päivitystiheys sekunneissa."
+
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "Päivitä tiedot automaattisesti"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "Tutkakartan URL"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "Käytä mukautettua osoitetta sääkartalle"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "Käytä SI-järjestelmää"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "Käytä SI-järjestelmää englantilaisten yksiköiden sijaan."
+
+#: gweather/gweather.schemas.in.h:14
+msgid "weather location information."
+msgstr "sään sijaintitiedot."
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -3059,7 +3452,7 @@ msgstr "Postilaatikon tarkkailija"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
 msgid "Inbox Monitor Factory"
-msgstr "Poistilaatikon tarkkailijan tehdas"
+msgstr "Postilaatikon tarkkailijan tehdas"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
@@ -3131,7 +3524,7 @@ msgstr "%d viestiä"
 
 #: mailcheck/mailcheck.c:1095
 msgid "No mail."
-msgstr "Ei sähköpostia."
+msgstr "Ei postia."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
 #: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
@@ -3239,7 +3632,7 @@ msgstr "Komento joka suoritetaan ennen jokaista päivitystä"
 msgid "When new mail _arrives:"
 msgstr "Kun uutta postia s_aapuu:"
 
-#: mailcheck/mailcheck.c:2227
+#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Komento joka suoritetaan kun uutta postia saapuu"
 
@@ -3273,6 +3666,134 @@ msgstr "Postintarkistaja"
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Postintarkistaja ilmoittaa kun uutta sähköpostia saapuu postilaatikkoosi"
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr "Komento joka suoritetaan postia tarkistettaessa"
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr "Komento joka suoritetaan Postintarkistusta napsautettaessa"
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr "Komento joka suoritetaan ennen jokaista tarkistusta"
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr "Suoritetaanko exec-komento"
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr "Suoritetaanko newmail-komento"
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "Do we want to save the password to disk"
+msgstr "Tallennetaanko salasana levylle"
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "Encrypted password"
+msgstr "Salattu salasana"
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "How often (in milliseconds) we check the mail"
+msgstr "Valitse kuinka monen millisekunnin välein posti tarkistetaan"
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If mail should be checked automatically"
+msgstr "Tarkistetaanko posti automaattisesti"
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is enabled, we save the password in gconf"
+msgstr "Tallennetaanko salasana gconf:iin"
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+"Tarkistetaanko posti aina päivitystiheydeksi asetetun millisekuntiarvon "
+"välein"
+
+#: mailcheck/mailcheck.schemas.in.h:13
+msgid "If this is set, we should run the exec-command"
+msgstr "Jos tämä asetetaan päälle, exec-komento ajetaan"
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "If this is set, we should run the newmail-command"
+msgstr "Jos tämä asetetaan päälle, newmail-komento ajetaan"
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Interval for checking mail"
+msgstr "Postintarkastuksen aikaväli"
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Path to the animation file"
+msgstr "Polku animaatiotiedostoon"
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Play a sound when mail is recieved"
+msgstr "Soita ääni uuden postin saapuessa"
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "Remote folder for mail retrieval"
+msgstr "Etäkansio josta posti haetaan"
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "Remote server to connect to for our mail"
+msgstr "Etäpalvelin jolta posti haetaan"
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "Run this command before we check the mail"
+msgstr "Aja tämä komento ennen postin tarkistusta"
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "The mail server"
+msgstr "Sähköpostipalvelin"
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "The user's encrypted password for the remote server"
+msgstr "Käyttäjän salattu salasana etäpalvelimelle"
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid "The user's password"
+msgstr "Käyttäjän salasana"
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "The user's password for the remote server"
+msgstr "Käyttäjän salasana etäpalvelimelle"
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr "Näin tarkistamme postin, tarkistamme postin, tarkistamme postin..."
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr "Näin käsittelemme postin, käsittelemme postin, käsittelemme postin..."
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+"Tämä animaatio näytetään postinlaatikon tarkkailijan normaalin käytön aikana"
+
+#: mailcheck/mailcheck.schemas.in.h:28
+msgid "Username on the remote server"
+msgstr "Käyttäjätunnus etäpalvelimella"
+
+#: mailcheck/mailcheck.schemas.in.h:29
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+"Tämä komento ajetaan kun käyttäjä napsauttaa postilaatikon tarkkailijaa"
+
+#: mailcheck/mailcheck.schemas.in.h:30
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+"Määrittää alustetaanko sähköpostin tila kun napsautat postilaatikon "
+"tarkkailijaa"
+
+#: mailcheck/mailcheck.schemas.in.h:31
+msgid "You've got mail!"
+msgstr "Olet saanut postia!"
 
 #: mailcheck/mailcheck.soundlist.in.h:1
 msgid "Mailcheck"
@@ -3358,23 +3879,23 @@ msgstr "Asetusten lähteen saanti ei onnistunut: %s\n"
 #: mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Error syncing config data: %s"
-msgstr "Asetusdatan synkronisointi epäonnistui: %s"
-
-#: mini-commander/src/mini-commander.glade.h:2
-msgid "&lt;b&gt;Appearance&lt;/b&gt;"
-msgstr "&lt;b&gt;Ulkonäkö&lt;/b&gt;"
+msgstr "Asetustietojen synkronisointi epäonnistui: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "&lt;b&gt;Auto Completion&lt;/b&gt;"
-msgstr "&lt;b&gt;Automaattitäydennys&lt;/b&gt;"
+msgid "<b>Appearance</b>"
+msgstr "<b>Ulkonäkö</b>"
 
 #: mini-commander/src/mini-commander.glade.h:4
-msgid "&lt;b&gt;Colors&lt;/b&gt;"
-msgstr "&lt;b&gt;Värit&lt;/b&gt;"
+msgid "<b>Auto Completion</b>"
+msgstr "<b>Automaattitäydennys</b>"
 
 #: mini-commander/src/mini-commander.glade.h:5
-msgid "&lt;b&gt;Size&lt;/b&gt;"
-msgstr "&lt;b&gt;Koko&lt;/b&gt;"
+msgid "<b>Colors</b>"
+msgstr "<b>Värit</b>"
+
+#: mini-commander/src/mini-commander.glade.h:6
+msgid "<b>Size</b>"
+msgstr "<b>Koko</b>"
 
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Add New Macro"
@@ -3431,6 +3952,114 @@ msgstr "_Hakuehto:"
 #: mini-commander/src/mini-commander.glade.h:22
 msgid "_Use default theme colors"
 msgstr "_Käytä teeman oletusvärejä"
+
+#: mini-commander/src/mini-commander.schemas.in.h:1
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr "Komento pyritään täydentämään komentohistorian perusteella."
+
+#: mini-commander/src/mini-commander.schemas.in.h:2
+msgid "Color background blue component"
+msgstr "Sinisen taustavärikomponentin väri"
+
+#: mini-commander/src/mini-commander.schemas.in.h:3
+msgid "Color background green component"
+msgstr "Vihreän taustavärikomponentin väri"
+
+#: mini-commander/src/mini-commander.schemas.in.h:4
+msgid "Color background red component"
+msgstr "Punaisen taustavärikomponentin väri"
+
+#: mini-commander/src/mini-commander.schemas.in.h:5
+msgid "Color foreground blue component"
+msgstr "Sinisen edustavärikomponentin väri"
+
+#: mini-commander/src/mini-commander.schemas.in.h:6
+msgid "Color foreground green component"
+msgstr "Vihreän edustavärikomponentin väri"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "Punaisen edustavärikomponentin väri"
+
+#: mini-commander/src/mini-commander.schemas.in.h:8
+msgid "History list"
+msgstr "Historia"
+
+#: mini-commander/src/mini-commander.schemas.in.h:9
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr "Historiamerkkijonot sisältävien GConfValue-arvojen luettelo."
+
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "Makrokomennot sisältävien GConfValue-arvojen luettelo."
+
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "Makrokuviot sisältävien GConfValue-arvojen luettelo."
+
+#: mini-commander/src/mini-commander.schemas.in.h:12
+msgid "Macro command list"
+msgstr "Makrokomentojen luettelo"
+
+#: mini-commander/src/mini-commander.schemas.in.h:13
+msgid "Macro pattern list"
+msgstr "Makrokuvioiden luettelo"
+
+#: mini-commander/src/mini-commander.schemas.in.h:15
+msgid "Perform history autocompletion"
+msgstr "Käytä historiaan perustuvaa täydennystä"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "Näytä kehys sovelman ympärillä."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Näytä kahva jolla sovelma voidaan irrottaa paneelista."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "Näytä kehys"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "Näytä kahva"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "Taustavärin sininen komponentti."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "Edustavärin sininen komponentti."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "Taustavärin vihreä komponentti."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "Edustavärin vihreä komponentti."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "Taustavärin punainen komponentti."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "Edustavärin punainen komponentti."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "Käytä teeman värejä"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr "Käyttää teeman värejä mukautettujen sijaan."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "Leveys"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -3491,7 +4120,6 @@ msgstr "_Vaimenna"
 msgid "_Open Volume Control"
 msgstr "_Avaa äänenvoimakkuuden hallinta"
 
-# Turhan pitkä?
 #: mixer/mixer.c:113
 msgid "Main Volume"
 msgstr "Pää-äänenvoimakkuus"
@@ -3652,6 +4280,18 @@ msgstr "_Valitse hallittava kanava:"
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
 
+#: mixer/mixer.schemas.in.h:1
+msgid "Channel controlled by applet. Only for OSS setups"
+msgstr "Sovelman hallinnoima kanava. Vain OSS:ää käyttäville järjestelmille"
+
+#: mixer/mixer.schemas.in.h:2
+msgid "Saved mute state"
+msgstr "Vaimennus tallennettu"
+
+#: mixer/mixer.schemas.in.h:3
+msgid "Saved volume to restore on startup"
+msgstr "Käynnistettäessä palautettava äänenvoimakkuus tallennettu"
+
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:133
 msgid "Modem Lights"
@@ -3694,7 +4334,155 @@ msgstr "%#.1f Mt vastaanotettu / %#.1f Mt lähetetty / aika: %.1d:%.2d"
 
 #: modemlights/modemlights.c:541
 msgid "not connected"
-msgstr "Ei yhteyttä"
+msgstr "ei yhteyttä"
+
+#: modemlights/modemlights.schemas.in.h:1
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "Kysy varmistus yhdistettäessä/katkaistaessa"
+
+#: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "Vilkuta yhdistettäessä"
+
+#: modemlights/modemlights.schemas.in.h:3
+msgid "Command executed when connecting"
+msgstr "Komento joka suoritetaan yhdistettäessä"
+
+#: modemlights/modemlights.schemas.in.h:4
+msgid "Command executed when disconnecting"
+msgstr "Komento joka suoritetaan katkaistaessa"
+
+#: modemlights/modemlights.schemas.in.h:5
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "Näytä varmistusikkuna yhdistettäessä ja katkaistaessa."
+
+#: modemlights/modemlights.schemas.in.h:6
+msgid "Make the applet blink when the modem is connecting."
+msgstr "Vilkuta sovelmaa kun modeemi ottaa yhteyttä."
+
+#: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "Modeemilaitteen nimi"
+
+#: modemlights/modemlights.schemas.in.h:8
+msgid "Modem lock file"
+msgstr "Modeemin lukkotiedosto"
+
+#: modemlights/modemlights.schemas.in.h:9
+msgid "Receive background color"
+msgstr "Vastaanottamisen taustaväri"
+
+#: modemlights/modemlights.schemas.in.h:10
+msgid "Receive foreground color"
+msgstr "Vastaanottamisen edustaväri"
+
+#: modemlights/modemlights.schemas.in.h:11
+msgid "Send background color"
+msgstr "Lähettämisen taustaväri"
+
+#: modemlights/modemlights.schemas.in.h:12
+msgid "Send foreground color"
+msgstr "Lähettämisen edustaväri"
+
+#: modemlights/modemlights.schemas.in.h:13
+msgid "Show connect time and throughput"
+msgstr "Näytä yhteysaika ja kulkevan tiedon määrä"
+
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"Näytetään ylimääräisiä tietoja yhteysajasta ja siirretyn datan määrästä."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
+msgstr "Yhdistetyn tilan väri"
+
+#: modemlights/modemlights.schemas.in.h:16
+msgid "Status not connected color"
+msgstr "Katkaistun tilan väri"
+
+#: modemlights/modemlights.schemas.in.h:17
+msgid "Status waiting connection color"
+msgstr "Yhteyttä odottavan tilan väri"
+
+#: modemlights/modemlights.schemas.in.h:18
+msgid "Text background color"
+msgstr "Tekstin taustaväri"
+
+#: modemlights/modemlights.schemas.in.h:19
+msgid "Text foreground color"
+msgstr "Tekstin edustaväri"
+
+#: modemlights/modemlights.schemas.in.h:20
+msgid "Text outline color"
+msgstr "Tekstin ääriviivaväri"
+
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to indicate data received."
+msgstr "Taustaväri saapuvasta datasta ilmoittavalle painikkeelle."
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to indicate data sent."
+msgstr "Taustaväri lähtevästä datasta ilmoittavalle painikkeelle."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr "Väri jolla ilmaistaan tilapainikkeessa yhteyden olevan päällä."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr ""
+"Väri jolla ilmaistaan tilapainikkeessa että modeemi ottaa parhaillaan "
+"yhteyttä."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr "Väri jolla ilmaistaan tilapainikkeessa että yhteys ei ole päällä."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "Väri jolla ilmaistaan vastaanotettua dataa."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "Väri jolla ilmaistaan lähetettävää dataa."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "Sekunnin murto-osa jonka välein sovelmaa päivitetään."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "Modeemilaitteen nimi."
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "Modeemin lukkotiedoston nimi."
+
+#: modemlights/modemlights.schemas.in.h:32
+msgid "Use isdn"
+msgstr "Käytä isdn:ää"
+
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "Käytä modeemia yhdistettäessä isdn:ää ppp:n sijaan."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "Käytä tätä komentoa modeemia yhdistettäessä."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "Käytä tätä komentoa katkaistaksesi yhteyden."
+
+#: modemlights/modemlights.schemas.in.h:36
+msgid "Verify owner of lock file"
+msgstr "Varmista lukkotiedoston omistaja"
 
 #: modemlights/properties.c:416
 msgid "Modem Lights Preferences"
@@ -3842,7 +4630,7 @@ msgstr ""
 "Julkaistu GNU:n GPL-lisenssillä.\n"
 "\n"
 "Järjestelmänvalvonta, joka näyttää käyrät järjestelmäsi CPU:n, keskusmuistin "
-"ja sivutustiedoston käytöstä sekä verkkoliikenteen."
+"ja sivutustilan käytöstä sekä verkkoliikenteen."
 
 #: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
@@ -3858,7 +4646,7 @@ msgstr "Verkko"
 
 #: multiload/main.c:278 multiload/properties.c:576
 msgid "Swap Space"
-msgstr "Sivutustiedosto"
+msgstr "Sivutustila"
 
 #: multiload/main.c:282
 msgid "Resource"
@@ -3876,6 +4664,114 @@ msgstr ""
 #: multiload/memload.c:50
 msgid "Memory Load"
 msgstr "Muistinkulutus"
+
+#: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr "Sovelman päivitystiheys millisekunneissa"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr "CPU-käyrän taustaväri"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr "Näytä CPU:n kuormituskäyrä"
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr "Näytä keskimääräisen kuorman käyrä"
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr "Näytä muistinkulutuskäyrä"
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr "Näytä verkkoliikennekäyrä"
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr "Näytä sivutuskäyrä"
+
+#: multiload/multiload.schemas.in.h:8
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Vaakasuorille paneeleille käyrien leveys pikseleinä. Pystysuorille "
+"paneeleille käyrien korkeus."
+
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr "Ethernet-verkkoliikenteen käyrän väri"
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr "PLIP-verkkoliikenteen käyrän väri"
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr "SLIP-verkkoliikenteen käyrän väri"
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr "Puskurimuistin käyrän väri"
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr "Välimuistin käyrän väri"
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr "Keskikuorman käyrän väri"
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr "Nice-toimintoihin liittyvän prosessoritoiminnan käyrän väri"
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr "Muun verkkoliikenteen käyrän väri"
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr "Jaetun muistin käyrän väri"
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr "Järjestelmätoimintoihin liittyvän prosessoritoiminnan käyrän väri"
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr "Käyttäjätoimintoihin liittyvän prosessoritoiminnan käyrän väri"
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr "Käyttäjätoimintoihin liittyvän muistinkäytön käyrän väri"
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "Käyttäjätoimintoihin liittyvän sivutuskäytön käyrän väri"
+
+#: multiload/multiload.schemas.in.h:22
+msgid "Graph size"
+msgstr "Käyrän koko"
+
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "Kuormakäyrän taustaväri"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "Muistikäyrän taustaväri"
+
+#: multiload/multiload.schemas.in.h:25
+msgid "Network graph background color"
+msgstr "Verkkokäyrän taustaväri"
+
+#: multiload/multiload.schemas.in.h:26
+msgid "Swap graph background color"
+msgstr "Sivutuskäyrän taustaväri"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4036,37 +4932,37 @@ msgstr "Lukittu muistilappu"
 msgid "Unlocked note"
 msgstr "Lukitsematon muistilappu"
 
-#: stickynotes/stickynotes.glade.h:2
-msgid "&lt;b&gt;Behavior&lt;/b&gt;"
-msgstr "&lt;b&gt;Toiminta&lt;/b&gt;"
-
 #: stickynotes/stickynotes.glade.h:3
-msgid "&lt;b&gt;Default Note Properties&lt;/b&gt;"
-msgstr "&lt;b&gt;Lappujen oletusominaisuudet&lt;/b&gt;"
+msgid "<b>Behavior</b>"
+msgstr "<b>Toiminta</b>"
 
 #: stickynotes/stickynotes.glade.h:4
+msgid "<b>Default Note Properties</b>"
+msgstr "<b>Lappujen oletusominaisuudet</b>"
+
+#: stickynotes/stickynotes.glade.h:5
 msgid ""
-"&lt;b&gt;Delete ALL sticky notes?&lt;/b&gt;\n"
+"<b>Delete ALL sticky notes?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
-"&lt;b&gt;Haluatko poistaa kaikki muistilaput?&lt;/b&gt;\n"
+"<b>Haluatko poistaa kaikki muistilaput?</b>\n"
 "\n"
 "Muutokset tallennetaan heti."
 
-#: stickynotes/stickynotes.glade.h:7
+#: stickynotes/stickynotes.glade.h:8
 msgid ""
-"&lt;b&gt;Delete this sticky note?&lt;/b&gt;\n"
+"<b>Delete this sticky note?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
-"&lt;b&gt;Haluatko poista tämän muistilapun?&lt;/b&gt;\n"
+"<b>Haluatko poista tämän muistilapun?</b>\n"
 "\n"
 "Muutokset tallennetaan heti."
 
-#: stickynotes/stickynotes.glade.h:10
-msgid "&lt;b&gt;Properties&lt;/b&gt;"
-msgstr "&lt;b&gt;Ominaisuudet&lt;/b&gt;"
+#: stickynotes/stickynotes.glade.h:11
+msgid "<b>Properties</b>"
+msgstr "<b>Ominaisuudet</b>"
 
 #: stickynotes/stickynotes.glade.h:12
 msgid "C_olor:"
@@ -4216,6 +5112,159 @@ msgstr "_näytä/piilota kaikki muistilaput"
 msgid "create a _new note"
 msgstr "kirjoita _uusi muistilappu"
 
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes"
+msgstr "Automaattitallennuksen aikaväli minuuteissa"
+
+#: stickynotes/stickynotes.schemas.in.h:2
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used; anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+"Oletuksena uudet muistilaput saavat otsikokseen nykyisen päiväyksen. Tähän "
+"käytetään tässä määriteltyä kaavaa. Mikä tahansa arvo jonka strftime() osaa "
+"jäsentää on kelvollinen."
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid "Date format of note's title"
+msgstr "Lapun otsikon päiväysmuoto"
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid "Default click behavior of the applet"
+msgstr "Muistilappujen oletustoiminto napsautettaessa"
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid "Default color for new notes"
+msgstr "Uusien muistilappujen oletusväri"
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Default color for new sticky notes. This should be in html hex "
+"specification, for example \"#30FF50\"."
+msgstr ""
+"Uusien muistilappujen oletusväri. Tämä tulisi esittää HTML:n heksamuodossa. "
+"Esimerkiksi \"#30FF50\"."
+
+#: stickynotes/stickynotes.schemas.in.h:7
+msgid "Default font for new notes"
+msgstr "Uusien muistilappujen oletuskirjasin"
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid ""
+"Default font for new sticky notes. This should be a Pango Font Name, for "
+"example \"Sans Italic 10\""
+msgstr ""
+"Uusien muistilappujen oletuskirjasin. Tämän tulisi olla Pangon kirjasinnimi. "
+"Esimerkiksi \"Sans Italic 10\""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Default height for new notes"
+msgstr "Uusien muistilappujen oletuskorkeus"
+
+#: stickynotes/stickynotes.schemas.in.h:10
+msgid "Default height for new sticky notes in pixels."
+msgstr "Uusien muistilappujen oletuskorkeus pikseleinä."
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Default width for new notes"
+msgstr "Uusien muistilappujen oletusleveys"
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid "Default width for new sticky notes in pixels."
+msgstr "Uusien muistilappujen oletusleveys pikseleinä."
+
+#: stickynotes/stickynotes.schemas.in.h:13
+msgid "Empty notes are always deleted without confirmation"
+msgstr "Tyhjät laput poistetaan aina ilman varmistusta"
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid ""
+"Every time the specified number of minutes pass, the sticky notes are "
+"automatically saved."
+msgstr ""
+"Aina kun annettu määrä minuutteja kuluu, muistilaput tallennetaan "
+"automaattisesti."
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid ""
+"If this option is disabled, a custom color can be used as the default color "
+"for all sticky notes."
+msgstr ""
+"Jos tämä asetus on pois päältä, muistilappujen oletusvärinä voidaan käyttää "
+"mukautettua väriä."
+
+#: stickynotes/stickynotes.schemas.in.h:16
+msgid ""
+"If this option is disabled, a custom font can be used as the default font "
+"for all sticky notes."
+msgstr ""
+"Jos tämä asetus on pois päältä, muistilappujen oletuskirjaimena voidaan "
+"käyttää mukautettua kirjasinta."
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid ""
+"If this option is enabled, the custom colors and fonts that have been "
+"assigned to individual notes will be ignored."
+msgstr ""
+"Jos tämä asetus on päällä, eri muistilapuille asetetut mukautetut värit ja "
+"kirjasimet jätetään huomiotta ja käytetään oletusarvoja."
+
+#: stickynotes/stickynotes.schemas.in.h:18
+msgid ""
+"Occurs when the applet is either left-clicked or \"enter\" is pressed. The "
+"options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
+"\"2\" for \"Lock/Unlock All Notes\"."
+msgstr ""
+"Käytetään kun sovelmaa napsautetaan hiiren vasemmalla painikkeella tai "
+"painetaan rivinvaihtoa. Toimivia arvoja ovat \"0\" (uusi muistilappu), \"1"
+"\" (näytä/piilota muistilaput) ja \" (lukitse/vapauta muistilaput)."
+
+#: stickynotes/stickynotes.schemas.in.h:19
+msgid "Specifies whether the sticky notes are locked (non-editable) or not."
+msgstr ""
+"Määrittää ovatko muistilaput lukittuja (eivät muokattavissa) vai eivät."
+
+#: stickynotes/stickynotes.schemas.in.h:20
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+"Määrittää näytetäänkö muistilaput kaikissa työpöydän työtiloissa vai ei"
+
+#: stickynotes/stickynotes.schemas.in.h:21
+msgid "Specifies whether the sticky notes are visible or not."
+msgstr "Määrittää ovatko muistilaput näkyviä vai näkymättömiä."
+
+#: stickynotes/stickynotes.schemas.in.h:22
+msgid "Sticky notes' locked state"
+msgstr "Muistilappujen lukitustila"
+
+#: stickynotes/stickynotes.schemas.in.h:23
+msgid "Sticky notes' visibility"
+msgstr "Muistilappujen näkyvyys"
+
+#: stickynotes/stickynotes.schemas.in.h:24
+msgid "Sticky notes' workspace stickyness"
+msgstr "Muistilappujen naulaus työtilojen välillä"
+
+#: stickynotes/stickynotes.schemas.in.h:25
+msgid "Whether to ask for confirmation when deleting a note"
+msgstr "Määrittää kysytäänkö muistilappua poistettaessa varmistusta"
+
+#: stickynotes/stickynotes.schemas.in.h:26
+msgid "Whether to force the default color and font on all notes"
+msgstr ""
+"Määrittää pakotetaanko oletusväri ja -kirjasin kaikkiin muistilappuihin"
+
+#: stickynotes/stickynotes.schemas.in.h:27
+msgid "Whether to use the default system color"
+msgstr "Määrittää käytetäänkö järjestelmän oletusväriä"
+
+#: stickynotes/stickynotes.schemas.in.h:28
+msgid "Whether to use the default system font"
+msgstr "Määrittää käytetäänkö järjestelmän oletuskirjasinta"
+
 #: stickynotes/stickynotes_applet.c:339
 #, c-format
 msgid ""
@@ -4266,7 +5315,7 @@ msgstr "© 2001, 2002 Free Software Foundation"
 
 #: wireless/wireless-applet.c:546
 msgid "This utility shows the status of a wireless link."
-msgstr "Tämä ohjelma näyttää kannettavan koneesi akun latauksen."
+msgstr "Tämä ohjelma näyttää langattoman laitteen tilan."
 
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
