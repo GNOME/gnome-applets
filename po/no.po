@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.1.3cvs\n"
-"POT-Creation-Date: 2000-04-14 22:00+0200\n"
-"PO-Revision-Date: 2000-04-14 22:01+02:00\n"
+"POT-Creation-Date: 2000-04-17 23:11+0200\n"
+"PO-Revision-Date: 2000-04-17 23:12+02:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -101,17 +101,17 @@ msgstr "Innstillinger for klokke"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
-#: mini-commander/src/preferences.c:786 modemlights/properties.c:297
-#: odometer/properties.c:292 screenshooter/screenshooter_applet.c:433
-#: slashapp/properties.c:351 sound-monitor/properties.c:436
-#: tickastat/properties.c:416
+#: gnotes/properties.c:190 mini-commander/src/preferences.c:786
+#: modemlights/properties.c:297 odometer/properties.c:292
+#: screenshooter/screenshooter_applet.c:433 slashapp/properties.c:351
+#: sound-monitor/properties.c:436 tickastat/properties.c:424
 msgid "General"
 msgstr "Generelt"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:708 multiload/load-graph.c:586
-#: multiload/load-graph.c:778
+#: mini-commander/src/preferences.c:708 multiload/load-graph.c:588
+#: multiload/load-graph.c:780
 msgid "Colors"
 msgstr "Farger"
 
@@ -162,26 +162,26 @@ msgstr "En analog klokke lik den som finnes i CDE-panelet"
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
 #: screenshooter/screenshooter_applet.c:1003 slashapp/slashapp.c:55
-#: sound-monitor/main.c:369 tickastat/main.c:332 webcontrol/webcontrol.c:362
+#: sound-monitor/main.c:369 tickastat/main.c:344 webcontrol/webcontrol.c:362
 msgid "Properties..."
 msgstr "Egenskaper ..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:614
-#: battery/battery.c:950 charpick/charpick.c:594 clockmail/clockmail.c:568
-#: diskusage/diskusage.c:1094 drivemount/drivemount.c:700
-#: fifteen/fifteen.c:361 geyes/geyes.c:398 gkb/gkb.c:673
-#: gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:198
+#: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
+#: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
+#: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
+#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:198
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
 #: odometer/odo.c:661 quicklaunch/quicklaunch.c:509
 #: screenshooter/screenshooter_applet.c:1009 sound-monitor/main.c:376
-#: webcontrol/webcontrol.c:369 whereami/whereami.c:236
+#: tickastat/main.c:350 webcontrol/webcontrol.c:369 whereami/whereami.c:236
 msgid "Help"
 msgstr "Hjelp"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:619
-#: battery/battery.c:955 cdplayer/cdplayer.c:386 charpick/charpick.c:600
+#: battery/battery.c:955 cdplayer/cdplayer.c:408 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
 #: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
@@ -191,7 +191,7 @@ msgstr "Hjelp"
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
 #: multiload/memload.c:115 multiload/swapload.c:115 odometer/odo.c:664
 #: quicklaunch/quicklaunch.c:513 screenshooter/screenshooter_applet.c:1014
-#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:338
+#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:355
 #: webcontrol/webcontrol.c:376 whereami/whereami.c:238
 msgid "About..."
 msgstr "Om..."
@@ -405,21 +405,21 @@ msgstr "ioctl feilet på /dev/apm."
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM er slått av! Kan ikke lese informasjon om batterilading."
 
-#: cdplayer/cdplayer.c:155
+#: cdplayer/cdplayer.c:163
 msgid "CD Player Applet"
 msgstr "CD-spiller applet"
 
-#: cdplayer/cdplayer.c:156
+#: cdplayer/cdplayer.c:164
 msgid "(c) 1997 The Free Software Foundation"
 msgstr "(c) 1997 the Free Software Foundation"
 
-#: cdplayer/cdplayer.c:158
+#: cdplayer/cdplayer.c:166
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "CD-spiller appleten er et enkelt program for avspilling av lyd-CDer for "
 "panelet "
 
-#: cdplayer/cdplayer.c:393
+#: cdplayer/cdplayer.c:394
 msgid "Run CD Player..."
 msgstr "Kjør CD-spilleren..."
 
@@ -473,7 +473,7 @@ msgstr "Antall kolonner med knapper:"
 
 #. Size
 #: charpick/properties.c:254 diskusage/properties.c:365
-#: mini-commander/src/preferences.c:596 tickastat/properties.c:492
+#: mini-commander/src/preferences.c:596 tickastat/properties.c:500
 msgid "Size"
 msgstr "Størrelse"
 
@@ -485,7 +485,9 @@ msgstr "Standard tegnliste:"
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
-msgstr "Disse tegnene til komme til syne når panelet startes. For å returnere til denne listen, trykk <mellomrom> mens appleten har fokus."
+msgstr ""
+"Disse tegnene til komme til syne når panelet startes. For å returnere til "
+"denne listen, trykk <mellomrom> mens appleten har fokus."
 
 #. add tab to propwindow
 #: charpick/properties.c:293
@@ -914,6 +916,18 @@ msgstr "Skjul notiser"
 #: gnotes/gnotes_applet.c:196
 msgid "Show Notes"
 msgstr "Vis notiser"
+
+#: gnotes/properties.c:145
+msgid "GNotes Settings"
+msgstr "Innstillinger for GNotes"
+
+#: gnotes/properties.c:154
+msgid "Default Height"
+msgstr "Standard høyde"
+
+#: gnotes/properties.c:174
+msgid "Default Width"
+msgstr "Standard bredde"
 
 #: gweather/gweather-applet.c:180
 msgid "Cannot create applet!\n"
@@ -2620,7 +2634,7 @@ msgid "Confirm connection"
 msgstr "Bekreft tilkobling"
 
 #: modemlights/properties.c:263 slashapp/properties.c:426
-#: tickastat/properties.c:557
+#: tickastat/properties.c:565
 msgid "Display"
 msgstr "Vis"
 
@@ -2688,19 +2702,19 @@ msgstr "Kjør gtop..."
 msgid "Load Graph"
 msgstr "Graf for belastning"
 
-#: multiload/load-graph.c:573 multiload/load-graph.c:765
+#: multiload/load-graph.c:575 multiload/load-graph.c:767
 msgid "Speed:"
 msgstr "Fart:"
 
-#: multiload/load-graph.c:573 multiload/load-graph.c:765
+#: multiload/load-graph.c:575 multiload/load-graph.c:767
 msgid "Size:"
 msgstr "Størrelse:"
 
-#: multiload/load-graph.c:573 multiload/load-graph.c:765
+#: multiload/load-graph.c:575 multiload/load-graph.c:767
 msgid "Maximum:"
 msgstr "Maksimum:"
 
-#: multiload/load-graph.c:804
+#: multiload/load-graph.c:806
 msgid "Use default properties"
 msgstr "Bruk standard egenskaper"
 
@@ -3309,27 +3323,27 @@ msgstr "(Disse innstillingene trer ikke i kraft uten en gjenoppfrisking)"
 msgid "Open new window"
 msgstr "Åpne nytt vindu"
 
-#: slashapp/properties.c:360 tickastat/properties.c:426
+#: slashapp/properties.c:360 tickastat/properties.c:434
 msgid "Scrolling"
 msgstr "Rulling"
 
-#: slashapp/properties.c:369 tickastat/properties.c:435
+#: slashapp/properties.c:369 tickastat/properties.c:443
 msgid "Smooth scroll"
 msgstr "Jevn rulling"
 
-#: slashapp/properties.c:375 tickastat/properties.c:441
+#: slashapp/properties.c:375 tickastat/properties.c:449
 msgid "Smooth type"
 msgstr "Jevn skriving"
 
-#: slashapp/properties.c:381 tickastat/properties.c:447
+#: slashapp/properties.c:381 tickastat/properties.c:455
 msgid "Speed"
 msgstr "Fart"
 
-#: slashapp/properties.c:394 tickastat/properties.c:460
+#: slashapp/properties.c:394 tickastat/properties.c:468
 msgid "Delay when wrapping text:"
 msgstr "Pause under tekstbryting:"
 
-#: slashapp/properties.c:412 tickastat/properties.c:478
+#: slashapp/properties.c:412 tickastat/properties.c:486
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "Rullefart mellom linjer (jevn rulling):"
 
@@ -3525,16 +3539,16 @@ msgstr "Tick-a-Stat"
 msgid "A ticker to display various information and statistics.\n"
 msgstr "En \"teleks\" som kan vise forskjellig informasjon og statistikk.\n"
 
-#: tickastat/main.c:281
+#: tickastat/main.c:288
 #, c-format
 msgid "unable to create user directory: %s\n"
 msgstr "kunne ikke opprette brukerkatalog: %s\n"
 
-#: tickastat/main.c:321
+#: tickastat/main.c:328
 msgid "The unique information and status ticker."
 msgstr "Den unike informasjons- og status-teleksen."
 
-#: tickastat/main.c:343
+#: tickastat/main.c:339
 msgid "Event log..."
 msgstr "Hendelseslogg..."
 
@@ -3759,39 +3773,39 @@ msgid "This is the test module's description line."
 msgstr "Dette er testmodulens beskrivelseslinje."
 
 #. left pane will be filled in select cb
-#: tickastat/properties.c:373
+#: tickastat/properties.c:381
 msgid "Modules"
 msgstr "Moduler"
 
-#: tickastat/properties.c:382
+#: tickastat/properties.c:390
 msgid "Event Log"
 msgstr "Hendelseslogg"
 
-#: tickastat/properties.c:391
+#: tickastat/properties.c:399
 msgid "Enable logging of events"
 msgstr "Slå på logging av hendelser"
 
-#: tickastat/properties.c:401
+#: tickastat/properties.c:409
 msgid "Log path:"
 msgstr "Sti til logg:"
 
-#: tickastat/properties.c:406
+#: tickastat/properties.c:414
 msgid "Choose a log file"
 msgstr "Velg en loggfil"
 
-#: tickastat/properties.c:505
+#: tickastat/properties.c:513
 msgid "Width:"
 msgstr "Bredde:"
 
-#: tickastat/properties.c:520
+#: tickastat/properties.c:528
 msgid "Use all room on panel"
 msgstr "Bruk all plassen på panelet"
 
-#: tickastat/properties.c:533
+#: tickastat/properties.c:541
 msgid "Height:"
 msgstr "Høyde:"
 
-#: tickastat/properties.c:548
+#: tickastat/properties.c:556
 msgid "Use panel size hint"
 msgstr "Bruk panelhint for størrelse"
 
