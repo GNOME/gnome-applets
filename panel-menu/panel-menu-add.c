@@ -68,10 +68,9 @@ applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	GtkWidget *button;
 	gint response;
 
-	dialog = gtk_dialog_new_with_buttons (_("Add items to the PanelMenu"),
-					      NULL, GTK_DIALOG_MODAL,
-					      GTK_STOCK_CLOSE,
-					      GTK_RESPONSE_CLOSE, NULL);
+	dialog = gtk_dialog_new ();
+	gtk_window_set_title (GTK_WINDOW (dialog), _("Add items to the Menu Bar"));
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	box = GTK_DIALOG (dialog)->vbox;
 	frame = gtk_frame_new (NULL);

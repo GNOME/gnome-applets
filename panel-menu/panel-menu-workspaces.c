@@ -78,10 +78,10 @@ panel_menu_workspaces_new (PanelMenu *parent)
 	gtk_widget_show (workspaces->workspaces);
 	workspaces->menu = gtk_menu_new ();
 
-	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  gtk_menu_shell_append (GTK_MENU_SHELL (workspaces->menu), tearoff);
-	  gtk_widget_show (tearoff);
+	tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (workspaces->menu), tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
 	}
 
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (workspaces->workspaces),

@@ -35,6 +35,8 @@
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"
+#include "panel-menu-config.h"
+#include "panel-menu-pixbuf.h"
 #include "panel-menu-directory.h"
 
 static const gchar *directory_menu_xml =
@@ -124,10 +126,10 @@ panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 	gtk_widget_show (directory->directory);
 	directory->menu = gtk_menu_new ();
 
-	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu), tearoff);
-	  gtk_widget_show (tearoff);
+	tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu), tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
 	}
 
 	directory->regenitem =
@@ -438,9 +440,8 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 						  G_CALLBACK
 						  (panel_menu_common_destroy_apps_menuitem),
 						  NULL);
-				panel_menu_common_set_icon_scaled_from_file
-					(GTK_MENU_ITEM (menuitem),
-					 "/usr/share/pixmaps/gnome-folder.png");
+				panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (menuitem),
+							   "directory");
 				gtk_menu_shell_append (parent, menuitem);
 				gtk_widget_show (menuitem);
 				submenu = gtk_menu_new ();
@@ -463,8 +464,7 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 								    name),
 								   "icon-filename");
 			if (icon) {
-				panel_menu_common_set_icon_scaled_from_file
-					(GTK_MENU_ITEM (menuitem), icon);
+				panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (menuitem), icon);
 			} else {
 				image = gtk_image_new_from_stock (GTK_STOCK_NEW,
 								  GTK_ICON_SIZE_MENU);

@@ -103,10 +103,10 @@ panel_menu_documents_new_with_id (PanelMenu *parent, gint id)
 	gtk_widget_show (documents->documents);
 	documents->menu = gtk_menu_new ();
 
-	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  gtk_menu_shell_append (GTK_MENU_SHELL (documents->menu), tearoff);
-	  gtk_widget_show (tearoff);
+	tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (documents->menu), tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
 	}
 
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (documents->documents),
@@ -278,9 +278,8 @@ panel_menu_documents_append_item (PanelMenuEntry *entry, gchar *uri)
 								  (finfo.name),
 								  "icon-filename");
 				if (icon) {
-					panel_menu_common_set_icon_scaled_from_file
-						(GTK_MENU_ITEM (menuitem),
-						 icon);
+					panel_menu_pixbuf_set_icon(GTK_MENU_ITEM (menuitem),
+								   icon);
 				} else {
 					image = gtk_image_new_from_stock
 						(GTK_STOCK_NEW,
@@ -314,9 +313,8 @@ panel_menu_documents_append_item (PanelMenuEntry *entry, gchar *uri)
 					(finfo.name);
 				panel_menu_common_apps_menuitem_dnd_init
 					(menuitem);
-				panel_menu_common_set_icon_scaled_from_file
-					(GTK_MENU_ITEM (menuitem),
-					 DATADIR "/pixmaps/gnome-folder.png");
+				panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (menuitem),
+							   "directory");
 				gtk_menu_shell_append (GTK_MENU_SHELL
 						       (documents->menu), menuitem);
 				g_object_set_data (G_OBJECT (menuitem),

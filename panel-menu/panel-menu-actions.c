@@ -94,10 +94,10 @@ panel_menu_actions_new (PanelMenu *parent)
 	gtk_widget_show (actions->actions);
 	actions->menu = gtk_menu_new ();
 
-	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  gtk_menu_shell_append (GTK_MENU_SHELL (actions->menu), tearoff);
-	  gtk_widget_show (tearoff);
+	tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (actions->menu), tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
 	}
 
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (actions->actions),
@@ -166,9 +166,8 @@ construct_from_uri (gchar *uri)
 		if (!strcmp (uri, action_items[counter].path)) {
 			widget = gtk_image_menu_item_new_with_label
 				(action_items[counter].name);
-			panel_menu_common_set_icon_scaled_from_file
-				(GTK_MENU_ITEM (widget),
-				 action_items[counter].image);
+			panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (widget),
+						    action_items[counter].image);
 			g_object_set_data (G_OBJECT (widget), "uri-path",
 					   action_items[counter].path);
 			gtk_widget_show (widget);

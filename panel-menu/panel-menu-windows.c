@@ -20,9 +20,12 @@
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 #include <libwnck/libwnck.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"
+#include "panel-menu-pixbuf.h"
 #include "panel-menu-windows.h"
 
 static const gchar *windows_menu_xml =
@@ -42,7 +45,13 @@ typedef struct _PanelMenuWindows {
 	gulong window_opened;
 	gulong window_closed;
 	gulong active_workspace;
+	/* GConf stuff */
+	GConfClient *client;
+	guint gconf_connection;
 } PanelMenuWindows;
+
+static void icon_size_changed (GConfClient *client, guint cnxn_id,
+			       GConfEntry *entry, PanelMenuWindows *windows);
 
 /* get/remove the window items from the menu */
 static void fill_windows_menu (GtkMenuShell *menu);
@@ -69,7 +78,7 @@ static GtkWidget *construct_window_menuitem (WnckWindow *window,
 static void remove_menuitem_signals (GtkWidget *menuitem, WnckWindow *window);
 
 static void set_icon_from_window (GtkImageMenuItem *menuitem,
-				  WnckWindow *window);
+				  WnckWindow *window, gint icon_size);
 
 PanelMenuEntry *
 panel_menu_windows_new (PanelMenu *parent)
@@ -88,10 +97,10 @@ panel_menu_windows_new (PanelMenu *parent)
 	gtk_widget_show (windows->windows);
 	windows->menu = gtk_menu_new ();
 
-	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  gtk_menu_shell_append (GTK_MENU_SHELL (windows->menu), tearoff);
-	  gtk_widget_show (tearoff);
+	tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (windows->menu), tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
 	}
 
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (windows->windows),
@@ -101,8 +110,51 @@ panel_menu_windows_new (PanelMenu *parent)
 	/* hide/show the proper windows */
 	wnck_active_workspace_changed (wnck_screen_get (0), windows);
 	setup_windows_signals (windows);
+
+	windows->client = gconf_client_get_default ();
+	gconf_client_add_dir (windows->client,
+			      ICON_SIZE_KEY_PARENT,
+			      GCONF_CLIENT_PRELOAD_NONE, NULL);
+	windows->gconf_connection = gconf_client_notify_add (windows->client,
+		ICON_SIZE_KEY, (GConfClientNotifyFunc)
+		icon_size_changed, windows, (GFreeFunc) NULL, NULL);
 	return entry;
 }
+
+static void
+icon_size_changed (GConfClient *client,
+		   guint cnxn_id,
+		   GConfEntry *entry,
+		   PanelMenuWindows *windows)
+{
+	const gchar *key;
+	GConfValue  *value;
+	gint size;
+
+	g_return_if_fail (client != NULL);
+	g_return_if_fail (entry != NULL);
+
+	key = gconf_entry_get_key (entry);
+	value = gconf_entry_get_value (entry);
+	size = gconf_value_get_int (value);
+	g_print ("(windows-icon-size-changed) size is %d\n", size);
+	if (size) {
+		GList *items;
+
+		for (items = GTK_MENU_SHELL (windows->menu)->children;
+		     items; items = items->next) {
+			WnckWindow *window;
+			window = g_object_get_data (G_OBJECT (items->data),
+						   "wnck-window");
+			if (window) {
+				set_icon_from_window(
+					GTK_IMAGE_MENU_ITEM (items->data),
+					window, size);
+			}
+		}
+	}
+}
+
 
 void
 panel_menu_windows_merge_ui (PanelMenuEntry *entry)
@@ -136,6 +188,13 @@ panel_menu_windows_destroy (PanelMenuEntry *entry)
 	g_signal_handler_disconnect (windows->screen, windows->window_closed);
 	g_signal_handler_disconnect (windows->screen,
 				     windows->active_workspace);
+
+	if (windows->gconf_connection) {
+		gconf_client_notify_remove (windows->client,
+					    windows->gconf_connection);
+	}
+
+	g_object_unref (G_OBJECT (windows->client));
 	gtk_widget_destroy (windows->windows);
 	g_free (windows);
 }
@@ -193,7 +252,8 @@ handle_window_name_change (WnckWindow *window, GtkMenuItem *menuitem)
 static void
 handle_window_icon_change (WnckWindow *window, GtkMenuItem *menuitem)
 {
-	set_icon_from_window (GTK_IMAGE_MENU_ITEM (menuitem), window);
+	set_icon_from_window (GTK_IMAGE_MENU_ITEM (menuitem), window,
+			      panel_menu_pixbuf_get_icon_size ());
 }
 
 static void
@@ -312,7 +372,8 @@ construct_window_menuitem (WnckWindow *window, GtkMenuShell *menu)
 	menuitem =
 		gtk_image_menu_item_new_with_label (wnck_window_get_name
 						    (window));
-	set_icon_from_window (GTK_IMAGE_MENU_ITEM (menuitem), window);
+	set_icon_from_window (GTK_IMAGE_MENU_ITEM (menuitem), window,
+			      panel_menu_pixbuf_get_icon_size ());
 	gtk_menu_shell_append (menu, menuitem);
 	g_object_set_data (G_OBJECT (menuitem), "wnck-window", window);
 	g_signal_connect (G_OBJECT (menuitem), "activate",
@@ -351,10 +412,8 @@ remove_menuitem_signals (GtkWidget *menuitem, WnckWindow *window)
 		g_signal_handler_disconnect (window, signal_id);
 }
 
-#define ICON_SIZE 20
-
 static void
-set_icon_from_window (GtkImageMenuItem *menuitem, WnckWindow *window)
+set_icon_from_window (GtkImageMenuItem *menuitem, WnckWindow *window, gint icon_size)
 {
 	GdkPixbuf *pixbuf;
 	GtkWidget *image;
@@ -365,18 +424,22 @@ set_icon_from_window (GtkImageMenuItem *menuitem, WnckWindow *window)
 	if (pixbuf != NULL) {
 		pix_x = gdk_pixbuf_get_width (pixbuf);
 		pix_y = gdk_pixbuf_get_height (pixbuf);
-		if (pix_x > ICON_SIZE || pix_y > ICON_SIZE) {
+		if (pix_x != icon_size || pix_y != icon_size) {
+			GdkPixbuf *scaled;
 			greatest = pix_x > pix_y ? pix_x : pix_y;
-			pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-							  (ICON_SIZE /
-							   greatest) * pix_x,
-							  (ICON_SIZE /
-							   greatest) * pix_y,
+			scaled = gdk_pixbuf_scale_simple (pixbuf,
+							 (icon_size /
+							  greatest) * pix_x,
+							 (icon_size /
+							  greatest) * pix_y,
 							  GDK_INTERP_BILINEAR);
+			pixbuf = scaled;
 		}
-		image = gtk_image_new_from_pixbuf (pixbuf);
-		gtk_widget_show (image);
-		gtk_image_menu_item_set_image (menuitem, image);
+		if (pixbuf) {
+			image = gtk_image_new_from_pixbuf (pixbuf);
+			gtk_widget_show (image);
+			gtk_image_menu_item_set_image (menuitem, image);
+		}
 	}
 }
 

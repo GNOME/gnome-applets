@@ -1,3 +1,21 @@
+2002-01-21  Chris Phelps <chicane@reninet.com>
+	* panel-menu-common.c:
+	  set tooltips for .desktop based menu items.
+	* panel-menu-properties.c, panel-menu-add.c:
+	  remove buttons from instant-apply dialogs.
+
+2002-01-20 Chris Phelps <chicane@reninet.com>
+	* panel-menu-pixbuf.[c/h]:
+	  Implemented a pixbuf caching scheme for speed/memory purposes.
+	  Implemented gconf-based icon sizing (for people who cant see :-)
+	* panel-menu-common.c:
+	  load "unknown" icon when none is found for an item.
+	* panel-menu-path.c:
+	  load "directory" icon when we are done filling up a menu shell,
+	  and the parent still doesnt have an icon set.
+	* Note: I am connecting some gconf listeners to modify the icon size
+	  on the fly, but right now you have to use gconf-editor to change the setting.
+
 2002-01-20  Seth Nickell  <snickell@stanford.edu>
 
 	* panel-menu-actions.c: (panel_menu_actions_new):

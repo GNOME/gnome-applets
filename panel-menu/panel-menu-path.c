@@ -38,6 +38,7 @@
 #include "panel-menu.h"
 #include "panel-menu-common.h"
 #include "panel-menu-config.h"
+#include "panel-menu-pixbuf.h"
 #include "panel-menu-path.h"
 
 static const gchar *path_menu_xml =
@@ -68,8 +69,6 @@ static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 static void panel_menu_path_process (GnomeVFSFileInfo *finfo,
 				     GtkMenuShell *parent,
 				     const gchar *subpath);
-static void panel_menu_path_modify_parent (GtkMenuShell *parent,
-					   PanelMenuDesktopItem *item);
 
 static gint panel_menu_path_remove_cb (GtkWidget *widget, GdkEventKey *event,
 				       PanelMenuPath *path);
@@ -118,11 +117,12 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (path->path);
 	path->menu = gtk_menu_new ();
-	//	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  //}
+
+	tearoff = gtk_tearoff_menu_item_new ();
 	gtk_menu_shell_append (GTK_MENU_SHELL (path->menu), tearoff);
-	gtk_widget_show (tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
+	}
 	path->regenitem =
 		gtk_image_menu_item_new_with_label (_("Regenerate Menus"));
 	image = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
@@ -390,15 +390,19 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	}
 	if (result != GNOME_VFS_OK) {
 		if (parent) {
+			GtkWidget *w;
+			w = GTK_MENU (parent)->parent_menu_item;
 			subpath =
 				(gchar *) g_object_get_data (G_OBJECT (parent),
 							     "uri-path");
 			g_object_set_data (G_OBJECT (parent), "uri-path", NULL);
-			if (GTK_MENU (parent)->parent_menu_item &&
-			    g_list_length (parent->children) < 2 &&
+			if (w && g_list_length (parent->children) < 2 &&
 			   !g_object_get_data (G_OBJECT (parent), "immortal")) {
-				gtk_widget_destroy (GTK_MENU (parent)->
-						    parent_menu_item);
+				gtk_widget_destroy (w);
+			} else if (w && GTK_IS_IMAGE_MENU_ITEM (w) &&
+			  gtk_image_menu_item_get_image (GTK_IMAGE_MENU_ITEM (w)) == NULL) {
+				panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (w),
+							   "directory");
 			}
 			g_free (subpath);
 		}
@@ -427,7 +431,8 @@ panel_menu_path_process (GnomeVFSFileInfo *finfo, GtkMenuShell *parent,
 								"Directory",
 								 TRUE);
 			if (item) {
-				panel_menu_path_modify_parent (parent, item);
+				panel_menu_common_modify_menu_item (
+					GTK_MENU (parent)->parent_menu_item, item);
 				panel_menu_desktop_item_destroy (item);
 			}
 		} else if (strcmp (".order", finfo->name)) {
@@ -436,32 +441,6 @@ panel_menu_path_process (GnomeVFSFileInfo *finfo, GtkMenuShell *parent,
 									 subpath,
 									 parent,
 									 FALSE);
-		}
-	}
-}
-
-static void
-panel_menu_path_modify_parent (GtkMenuShell *parent, PanelMenuDesktopItem *item)
-{
-	gchar *icon = NULL;
-	/* Set the localized label of the parent menu item, and an icon if there is one */
-	/* Dont bother trying to set an icon if the parent wont take one anyway */
-	gtk_label_set_text (GTK_LABEL (GTK_BIN
-		(GTK_MENU (parent)->parent_menu_item)->child), item->name);
-	if (GTK_IS_IMAGE_MENU_ITEM (GTK_MENU (parent)->parent_menu_item)) {
-		icon = panel_menu_desktop_item_find_icon (item->icon);
-		if (icon) {
-			panel_menu_common_set_icon_scaled_from_file (
-				GTK_MENU_ITEM (GTK_MENU(parent)->parent_menu_item), icon);
-			g_free (icon);
-		} else {
-			/* Try and fall back to a default here if someone has jacked their GNOME Core install */
-			icon = panel_menu_desktop_item_find_icon ("gnome-directory.png");
-			if (icon) {
-				panel_menu_common_set_icon_scaled_from_file(GTK_MENU_ITEM
-					 (GTK_MENU (parent)->parent_menu_item), icon);
-				g_free (icon);
-			}
 		}
 	}
 }

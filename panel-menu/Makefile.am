@@ -16,6 +16,8 @@ lib_LTLIBRARIES = libpanel-menu.la
 libpanel_menu_la_SOURCES = \
 panel-menu-desktop-item.c \
 panel-menu-desktop-item.h \
+panel-menu-pixbuf.c \
+panel-menu-pixbuf.h \
 panel-menu-common.c \
 panel-menu-common.h \
 panel-menu-applications.c \
@@ -56,4 +58,4 @@ server_DATA     = $(server_in_files:.server.in=.server)
 @INTLTOOL_SERVER_RULE@
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) gconftool-2 --makefile-install-rule $(srcdir)/$(schema_DATA)
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)

@@ -22,10 +22,9 @@
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 #include "panel-menu.h"
+#include "panel-menu-desktop-item.h"
 
 G_BEGIN_DECLS
-
-#define ICON_SIZE 20
 
 void panel_menu_common_widget_dnd_init (PanelMenuEntry *entry);
 
@@ -33,7 +32,6 @@ void panel_menu_common_apps_menuitem_dnd_init (GtkWidget *menuitem);
 void panel_menu_common_activate_apps_menuitem (GtkWidget *menuitem, gpointer data);
 void panel_menu_common_destroy_apps_menuitem (GtkWidget *menuitem, gpointer data);
 
-void panel_menu_common_set_icon_scaled_from_file (GtkMenuItem *menuitem, gchar *file);
 gchar *panel_menu_common_build_full_path (const gchar *path, const gchar *selection);
 
 PanelMenuEntry *panel_menu_common_build_entry (PanelMenu *panel_menu,
@@ -48,6 +46,8 @@ GtkWidget *panel_menu_common_menuitem_from_path(gchar *uri, GtkMenuShell *parent
 						gboolean append);
 GtkWidget *panel_menu_common_menu_from_path(gchar *name, gchar *subpath,
 					    GtkMenuShell *parent, gboolean append);
+void panel_menu_common_modify_menu_item (GtkWidget *menuitem,
+					 PanelMenuDesktopItem *item);
 
 GtkWidget *panel_menu_common_get_entry_menuitem (PanelMenuEntry *entry);
 

@@ -260,3 +260,15 @@ _gconf_client_clean_dir (GConfClient *client, const gchar *dir)
 	g_slist_free (entries);
 	gconf_client_unset (client, dir, NULL);
 }
+/*
+static void
+propogate_tearoff_visibility (PanelMenu *panel_menu)
+{
+	GList *cur;
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		PanelMenuEntry *entry;
+		entry = (PanelMenuEntry *)cur->data;
+		
+	}
+}
+*/

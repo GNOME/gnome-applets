@@ -71,10 +71,10 @@ panel_menu_applications_new (PanelMenu *parent)
 	gtk_widget_show (applications->applications);
 	applications->menu = gtk_menu_new ();
 
-	if (parent->menu_tearoffs == TRUE) {
-	  tearoff = gtk_tearoff_menu_item_new ();
-	  gtk_menu_shell_append (GTK_MENU_SHELL (applications->menu), tearoff);
-	  gtk_widget_show (tearoff);
+	tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (applications->menu), tearoff);
+	if (parent->menu_tearoffs) {
+		gtk_widget_show (tearoff);
 	}
 
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (applications->applications),

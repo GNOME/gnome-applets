@@ -41,6 +41,7 @@
 #include "panel-menu-actions.h"
 #include "panel-menu-windows.h"
 #include "panel-menu-workspaces.h"
+#include "panel-menu-pixbuf.h"
 #include "panel-menu-common.h"
 
 enum {
@@ -59,6 +60,8 @@ static GtkTargetEntry widget_drag_types[] = {
 };
 static gint n_widget_drag_types =
 	sizeof (widget_drag_types) / sizeof (GtkTargetEntry);
+
+static GtkTooltips *menu_tooltips = NULL;
 
 static void widget_dnd_drag_begin_cb (GtkWidget *widget,
 				      GdkDragContext *context);
@@ -220,38 +223,6 @@ panel_menu_common_destroy_apps_menuitem (GtkWidget *menuitem, gpointer data)
 		g_free (data);
 }
 
-void
-panel_menu_common_set_icon_scaled_from_file (GtkMenuItem *menuitem,
-					     gchar *file)
-{
-	GdkPixbuf *pixbuf;
-	GtkWidget *image;
-	double pix_x, pix_y;
-	double greatest;
-
-	if (!GTK_IS_IMAGE_MENU_ITEM (menuitem))
-		return;
-
-	pixbuf = gdk_pixbuf_new_from_file (file, NULL);
-	if (pixbuf) {
-		pix_x = gdk_pixbuf_get_width (pixbuf);
-		pix_y = gdk_pixbuf_get_height (pixbuf);
-		if (pix_x > ICON_SIZE || pix_y > ICON_SIZE) {
-			greatest = pix_x > pix_y ? pix_x : pix_y;
-			pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-							  (ICON_SIZE /
-							   greatest) *pix_x,
-							  (ICON_SIZE /
-							   greatest) *pix_y,
-							  GDK_INTERP_BILINEAR);
-		}
-		image = gtk_image_new_from_pixbuf (pixbuf);
-		gtk_widget_show (image);
-		gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem),
-					       image);
-	}
-}
-
 gchar *
 panel_menu_common_build_full_path (const gchar *path, const gchar *selection)
 {
@@ -276,6 +247,13 @@ panel_menu_common_build_full_path (const gchar *path, const gchar *selection)
 	return (text);
 }
 
+static void
+init_menu_tooltips (void)
+{
+	if (menu_tooltips == NULL)
+		menu_tooltips = gtk_tooltips_new ();
+}
+
 GtkWidget *
 panel_menu_common_menuitem_from_path (gchar *uri, GtkMenuShell *parent,
 				      gboolean append)
@@ -289,6 +267,7 @@ panel_menu_common_menuitem_from_path (gchar *uri, GtkMenuShell *parent,
 	g_return_val_if_fail (uri != NULL, NULL);
 	g_return_val_if_fail (parent != NULL, NULL);
 
+	init_menu_tooltips ();
 	if (!append) {
 		for (cur = parent->children; cur; cur = cur->next, position++) {
 			if (g_object_get_data
@@ -307,11 +286,13 @@ panel_menu_common_menuitem_from_path (gchar *uri, GtkMenuShell *parent,
 		menuitem = gtk_image_menu_item_new_with_label (item->name);
 		panel_menu_common_apps_menuitem_dnd_init (menuitem);
 		icon = panel_menu_desktop_item_find_icon (item->icon);
-		if (icon) {
-			panel_menu_common_set_icon_scaled_from_file
-				(GTK_MENU_ITEM (menuitem), icon);
-			g_free (icon);
-		}
+		panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (menuitem),
+					    icon ? icon : "unknown");
+		g_free (icon);
+
+		if (item->comment)
+			gtk_tooltips_set_tip (menu_tooltips, menuitem,
+					      item->comment, item->comment);
 		if (append)
 			gtk_menu_shell_append (parent, menuitem);
 		else
@@ -368,10 +349,10 @@ panel_menu_common_menu_from_path (gchar *name, gchar *subpath,
 	submenu = gtk_menu_new ();
 	
 	client = gconf_client_get_default();
+        tearoff = gtk_tearoff_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (submenu), tearoff);
 	if (gconf_client_get_bool (client, 
 				   "/desktop/gnome/interface/menus_have_tearoff", NULL)) {
-	        tearoff = gtk_tearoff_menu_item_new ();
-		gtk_menu_shell_append (GTK_MENU_SHELL (submenu), tearoff);
 		gtk_widget_show (tearoff);
 	}
 	g_object_unref (G_OBJECT (client));
@@ -385,6 +366,37 @@ panel_menu_common_menu_from_path (gchar *name, gchar *subpath,
 		gtk_menu_shell_insert (parent, menuitem, position);
 	gtk_widget_show (menuitem);
 	return (submenu);
+}
+
+void
+panel_menu_common_modify_menu_item (GtkWidget *menuitem, PanelMenuDesktopItem *item)
+{
+	gchar *icon = NULL;
+
+	g_return_if_fail (menuitem != NULL);
+	g_return_if_fail (GTK_IS_MENU_ITEM (menuitem));
+	g_return_if_fail (item != NULL);
+
+	/* Set the localized label of the parent menu item, and an icon if there is one */
+	if (item->name)
+		gtk_label_set_text (GTK_LABEL (GTK_BIN (menuitem)->child), item->name);
+	if (item->comment)
+		gtk_tooltips_set_tip (menu_tooltips, menuitem,
+				      item->comment, item->comment);
+	if (GTK_IS_IMAGE_MENU_ITEM (menuitem)) {
+		icon = panel_menu_desktop_item_find_icon (item->icon);
+		if (icon) {
+			panel_menu_pixbuf_set_icon(GTK_MENU_ITEM (menuitem),
+						   icon);
+			g_free (icon);
+		} else if (item->type && !strcmp (item->type, "Directory")) {
+			panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (menuitem),
+				 		   "directory");
+		} else {
+			panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (menuitem),
+				 		   "unknown");
+		}
+	}
 }
 
 PanelMenuEntry *

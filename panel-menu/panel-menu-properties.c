@@ -65,11 +65,9 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	GtkWidget *auto_save_config;
 	gchar *icon;
 
-	dialog = gtk_dialog_new_with_buttons (_("PanelMenu Properties"),
-					      NULL, GTK_DIALOG_MODAL,
-					      GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
-					      NULL);
-	gtk_dialog_set_has_separator (GTK_DIALOG(dialog), FALSE);
+	dialog = gtk_dialog_new ();
+	gtk_window_set_title (GTK_WINDOW (dialog), _("Menu Bar Properties"));
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	box = GTK_DIALOG (dialog)->vbox;
 
@@ -108,7 +106,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 
 	applications_icon =
 		gnome_icon_entry_new ("panel-menu-applet-id",
-				      _("Select an icon for the Applications menu"));
+				    _("Select an icon for the Applications menu"));
 	gtk_box_pack_end (GTK_BOX (fbox), applications_icon, FALSE,
 			  FALSE, 0);
 	icon = panel_applet_gconf_get_string (panel_menu->applet,
