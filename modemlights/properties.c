@@ -303,9 +303,10 @@ property_response_cb (GtkDialog *dialog, gint id, gpointer data)
 	propwindow = NULL;
 }
 
-void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+void property_show (BonoboUIComponent *uic,
+		    PanelApplet       *applet,
+		    const gchar       *verbname)
 {
-	PanelApplet *applet = data;
 	GtkWidget *frame;
 	GtkWidget *hbox;
 	GtkWidget *notebook;
@@ -317,11 +318,10 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	GtkWidget *checkbox;
 	GtkWidget *button;
 
-	if(propwindow)
-		{
-                gdk_window_raise(propwindow->window);
-                return;
-		}
+	if (propwindow) {
+		gtk_window_present (GTK_WINDOW (propwindow));
+		return;
+	}
 
         propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Preferences"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -555,12 +555,4 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			  G_CALLBACK (property_response_cb), NULL);
 
         gtk_widget_show_all(propwindow);
-        return;
-        applet = NULL;
-        data = NULL;
-        
-    
 } 
-
-
-
