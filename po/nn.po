@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.4.0.3\n"
-"POT-Creation-Date: 2001-09-03 19:31+0200\n"
+"POT-Creation-Date: 2001-09-23 11:25+0200\n"
 "PO-Revision-Date: 2001-09-02 21:51+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian (Nynorsk)\n"
@@ -17,7 +17,7 @@ msgstr ""
 msgid "Clock Settings"
 msgstr "Innstillingar for klokke"
 
-#: another_clock/another_clock.c:261 asclock/dialogs.c:379
+#: another_clock/another_clock.c:261 asclock/dialogs.c:378
 #: battery/properties.c:83 clockmail/properties.c:417
 #: diskusage/properties.c:463 drivemount/properties.c:391
 #: gnotes/properties.c:190 gweather/gweather-pref.c:524
@@ -74,10 +74,10 @@ msgstr "© 1999 Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "Ei analog klokke lik den du finn i CDE-panelet."
 
-#: another_clock/another_clock.c:710 asclock/asclock.c:609
+#: another_clock/another_clock.c:710 asclock/asclock.c:598
 #: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
 #: diskusage/diskusage.c:1050 drivemount/drivemount.c:742 geyes/geyes.c:393
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1416
+#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
@@ -88,7 +88,7 @@ msgstr "Ei analog klokke lik den du finn i CDE-panelet."
 msgid "Properties..."
 msgstr "Eigenskapar ..."
 
-#: another_clock/another_clock.c:716 asclock/asclock.c:615
+#: another_clock/another_clock.c:716 asclock/asclock.c:604
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:580
 #: clockmail/clockmail.c:331 cpumemusage/cpumemusage.c:297
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:748
@@ -104,12 +104,12 @@ msgstr "Eigenskapar ..."
 msgid "Help"
 msgstr "Hjelp"
 
-#: another_clock/another_clock.c:720 asclock/asclock.c:620
+#: another_clock/another_clock.c:720 asclock/asclock.c:609
 #: battery/battery.c:962 cdplayer/cdplayer.c:610 charpick/charpick.c:586
 #: clipboard/clipboard.c:324 clockmail/clockmail.c:336
 #: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
 #: drivemount/drivemount.c:753 fifteen/fifteen.c:389 geyes/geyes.c:404
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1425
+#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
@@ -121,46 +121,53 @@ msgstr "Hjelp"
 msgid "About..."
 msgstr "Om ..."
 
-#: asclock/dialogs.c:26
+#: asclock/dialogs.c:27
 msgid "ASClock"
 msgstr "ASKlokke"
 
-#: asclock/dialogs.c:28
+#: asclock/dialogs.c:29
 msgid "(C) 1998 the Free Software Foundation"
 msgstr "© 1998 Free Software Foundation"
 
-#: asclock/dialogs.c:30
+#: asclock/dialogs.c:31
 msgid "Who said NeXT is dead?"
 msgstr "Kven sa at NeXT er død?"
 
-#: asclock/dialogs.c:164
+#: asclock/dialogs.c:163
 #, fuzzy
 msgid ""
 "Since you are root, would you like to set the system's default timezone?"
 msgstr "I kva for kategori vil du lagra denne CDDB-oppføringa?"
 
-#: asclock/dialogs.c:166
+#: asclock/dialogs.c:165
 msgid "My Title"
 msgstr "Min tittel"
 
-#. gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
-#: asclock/dialogs.c:268
+#: asclock/dialogs.c:266
+msgid "Continent/City"
+msgstr "Kontinent/by"
+
+#: asclock/dialogs.c:267
 msgid "Clock Theme"
 msgstr "Klokketema"
 
-#: asclock/dialogs.c:300
+#: asclock/dialogs.c:299
 msgid "ASClock Settings"
 msgstr "Innstillingar for ASKlokke"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:332 clockmail/properties.c:306
+#: asclock/dialogs.c:331 clockmail/properties.c:306
 msgid "Display time in 12 hour format (AM/PM)"
 msgstr ""
 
 #. show ampm toggle button
-#: asclock/dialogs.c:340
+#: asclock/dialogs.c:339
 msgid "Blinking elements in clock"
 msgstr ""
+
+#: asclock/dialogs.c:383
+msgid "Timezone"
+msgstr "Tidssone"
 
 #: battery/battery.c:150
 msgid "The battery is low."
@@ -308,29 +315,29 @@ msgstr ""
 msgid "Enable Full-Charge Notification"
 msgstr "Ny e-post-påminning"
 
-#: battery/read-battery.c:68
+#: battery/read-battery.c:69
 msgid ""
 "Cannot open /proc/apm!  Make sure that you built APM support into your "
 "kernel.\n"
 msgstr ""
 
-#: battery/read-battery.c:103
+#: battery/read-battery.c:104
 #, fuzzy, c-format
 msgid "Could not dup() APM file descriptor: %s\n"
 msgstr ""
 "Kunne ikkje opna fil for skriving:\n"
 "%s"
 
-#: battery/read-battery.c:176 battery/read-battery.c:210
+#: battery/read-battery.c:177 battery/read-battery.c:211
 #, fuzzy
 msgid "Cannot open /dev/apm; can't get data."
 msgstr "Legg oppføring automatisk til database"
 
-#: battery/read-battery.c:181 battery/read-battery.c:215
+#: battery/read-battery.c:182 battery/read-battery.c:216
 msgid "ioctl failed on /dev/apm."
 msgstr ""
 
-#: battery/read-battery.c:192
+#: battery/read-battery.c:193
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr ""
 
@@ -982,7 +989,7 @@ msgstr "Val"
 msgid "Select layout"
 msgstr "Vel speleliste"
 
-#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1081
+#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1032
 #: webcontrol/properties.c:574
 msgid "Add"
 msgstr "Legg til"
@@ -1444,17 +1451,17 @@ msgstr "Notathøgd"
 msgid "Default Width"
 msgstr "Notatbreidd"
 
-#: gtik/gtik.c:209
+#: gtik/gtik.c:212
 #, fuzzy
 msgid "No data available or properties not set"
 msgstr "Inga skildring tilgjengeleg."
 
-#: gtik/gtik.c:704
+#: gtik/gtik.c:659
 #, fuzzy
 msgid "The GNOME Stock Ticker"
 msgstr "Name=Aksjetelegraf"
 
-#: gtik/gtik.c:707
+#: gtik/gtik.c:662
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1462,98 +1469,98 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 
-#: gtik/gtik.c:1070
+#: gtik/gtik.c:1021
 #, fuzzy
 msgid "New Symbol:"
 msgstr "Symbol"
 
-#: gtik/gtik.c:1092
+#: gtik/gtik.c:1043
 #, fuzzy
 msgid "Remove Selected"
 msgstr "Erstatt valt tekst?"
 
-#: gtik/gtik.c:1141
+#: gtik/gtik.c:1092
 #, fuzzy
 msgid "Gnome Stock Ticker Properties"
 msgstr "Eigenskapar for meldingshovud"
 
-#: gtik/gtik.c:1153
+#: gtik/gtik.c:1104
 #, fuzzy
 msgid "Update Frequency in minutes:"
 msgstr "Oppdateringsfrekvens i sekund:"
 
-#: gtik/gtik.c:1172
+#: gtik/gtik.c:1123
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr ""
 
-#: gtik/gtik.c:1180
+#: gtik/gtik.c:1130
 msgid "Display only symbols and price"
 msgstr ""
 
-#: gtik/gtik.c:1181
+#: gtik/gtik.c:1131
 #, fuzzy
 msgid "Scroll left to right"
 msgstr "Rull til høgre"
 
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1132
 msgid "Display arrows instead of -/+"
 msgstr ""
 
-#: gtik/gtik.c:1183
+#: gtik/gtik.c:1133
 #, fuzzy
 msgid "Enable scroll buttons"
 msgstr "Aktiver &handlingar"
 
 #. COLOR
-#: gtik/gtik.c:1227
+#: gtik/gtik.c:1177
 #, fuzzy
 msgid "+ Color"
 msgstr "Farge"
 
-#: gtik/gtik.c:1244
+#: gtik/gtik.c:1194
 #, fuzzy
 msgid "- Color"
 msgstr "Farge"
 
-#: gtik/gtik.c:1264
+#: gtik/gtik.c:1214
 #, fuzzy
 msgid "Stock Symbol:"
 msgstr "Symbol"
 
-#: gtik/gtik.c:1265 gtik/gtik.c:1276
+#: gtik/gtik.c:1215 gtik/gtik.c:1226
 msgid "Select Font"
 msgstr "Vel skrifttype"
 
-#: gtik/gtik.c:1275
+#: gtik/gtik.c:1225
 #, fuzzy
 msgid "Stock Change:"
 msgstr " Endra"
 
-#: gtik/gtik.c:1298
+#: gtik/gtik.c:1248
 #, fuzzy
 msgid "Symbols"
 msgstr "S&ymbol"
 
-#: gtik/gtik.c:1300 webcontrol/properties.c:668
+#: gtik/gtik.c:1250 webcontrol/properties.c:668
 msgid "Behavior"
 msgstr "Åtferd"
 
 #. appearance frame
-#: gtik/gtik.c:1302 mini-commander/src/preferences.c:557
+#: gtik/gtik.c:1252 mini-commander/src/preferences.c:557
 #: webcontrol/properties.c:487
 msgid "Appearance"
 msgstr "Utsjånad"
 
-#: gtik/gtik.c:1406 slashapp/slashapp.c:103
+#: gtik/gtik.c:1345 slashapp/slashapp.c:103
 msgid "Refresh"
 msgstr "Frisk opp"
 
-#: gtik/gtik.c:1544
+#: gtik/gtik.c:1473
 #, fuzzy
 msgid "(No"
 msgstr "Nei"
 
-#: gtik/gtik.c:1545
+#: gtik/gtik.c:1474
 #, fuzzy
 msgid "Change "
 msgstr "Endra"
@@ -5097,7 +5104,7 @@ msgstr "Arkivteljar:"
 
 #: drivemount/drivemount_applet.desktop.in.h:2
 #, fuzzy
-msgid "Mounts and unmount drives"
+msgid "Mount and unmount drives"
 msgstr "Monter/avmonter band"
 
 #: cpumemusage/cpumemusage_applet.desktop.in.h:1
@@ -5216,7 +5223,7 @@ msgstr "Femten brikker"
 
 #: charpick/charpick_applet.desktop.in.h:2
 #, fuzzy
-msgid "character picker"
+msgid "Character picker"
 msgstr "Name=Teiknveljar"
 
 #: sound-monitor/sound-monitor_applet.desktop.in.h:1
@@ -5300,7 +5307,7 @@ msgid "GNOME Stock Ticker Panel Applet"
 msgstr ""
 
 #: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
+msgid "Displays the time in binary representation"
 msgstr ""
 
 #: jbc/jbc_applet.desktop.in.h:2
@@ -5427,11 +5434,9 @@ msgstr "Tøm"
 msgid "all entries in URL history"
 msgstr ""
 
-#~ msgid "Continent/City"
-#~ msgstr "Kontinent/by"
-
-#~ msgid "Timezone"
-#~ msgstr "Tidssone"
+#, fuzzy
+#~ msgid "character picker"
+#~ msgstr "Name=Teiknveljar"
 
 #, fuzzy
 #~ msgid "In"
