@@ -229,6 +229,39 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
     return FALSE;
 }
 
+static gboolean 
+key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
+{
+	switch (event->keyval) {	
+	case GDK_u:
+		if (event->state == GDK_CONTROL_MASK) {
+			gweather_update (gw_applet);
+			return TRUE;
+		}
+		break;
+	case GDK_f:
+		if (event->state == GDK_CONTROL_MASK) {
+			gweather_dialog_open (gw_applet);
+			return TRUE;
+		}
+		break;		
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		gweather_dialog_open(gw_applet);
+		return TRUE;
+		break;
+	default:
+		break;
+	}
+
+	return FALSE;
+
+}
+
 static void about_cb (BonoboUIComponent *uic,
 		      GWeatherApplet    *gw_applet,
 		      const gchar       *verbname)
@@ -311,6 +344,8 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK (applet_destroy), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "button_press_event",
                        G_CALLBACK(clicked_cb), gw_applet);
+    g_signal_connect (G_OBJECT(gw_applet->applet), "key_press_event",
+                       G_CALLBACK(key_press_cb), gw_applet);
                     
     gw_applet->tooltips = gtk_tooltips_new();
 
