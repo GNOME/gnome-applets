@@ -641,7 +641,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   mdi->icon_entry =
     gkb_prop_map_pixmap_at (right_table, 1, 4, mdi, keymap->flag);
 
-  gkb_prop_map_label_at (left_table, 0, 0, _("Arc_hitecture:"));
+  gkb_prop_map_label_at (left_table, 0, 0, _("Arch_itecture:"));
   list = gkb_prop_map_get_arquitectures (pbi),
     entry = gkb_prop_map_combo_at (left_table, 1, 0, list, mdi, keymap->arch);
   mdi->arch_entry = entry;
