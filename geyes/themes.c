@@ -90,6 +90,7 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
         if (theme_file == NULL) {
         	g_free (eyes_applet->theme_dir);
         	eyes_applet->theme_dir = g_strdup_printf (GEYES_THEMES_DIR "Default-tiny/");
+        	g_free (file_name);
                 file_name = g_strdup (GEYES_THEMES_DIR "Default-tiny/config");
                 theme_file = fopen (file_name, "r");
         }
