@@ -282,18 +282,20 @@ main(int argc, char **argv)
 			   NULL);
 	
 	/* add an item to the applet menu */
-	applet_widget_register_callback(APPLET_WIDGET(WC.applet),
-					"about",
-					_("About..."),
-					about_cb,
-					NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb,
+					      NULL);
 	
 	/* add an item to the applet menu */
-	applet_widget_register_callback(APPLET_WIDGET(WC.applet),
-					"properties",
-					_("Properties..."),
-					properties_cb,
-					NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
+					      "properties",
+					      GNOME_STOCK_MENU_PROP,
+					      _("Properties..."),
+					      properties_cb,
+					      NULL);
 	
 	/* add the widget to the applet-widget, and thereby actually
 	   putting it "onto" the panel */

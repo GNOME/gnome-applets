@@ -332,17 +332,19 @@ int main(int argc, char **argv)
                            GTK_SIGNAL_FUNC(applet_save_session),
                            NULL);
 	
-       	applet_widget_register_callback(APPLET_WIDGET(applet),
-					     "about",
-                                             _("About..."),
-                                             about_cb,
-                                             NULL);
+       	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb,
+					      NULL);
 
-       	applet_widget_register_callback(APPLET_WIDGET(applet),
-					     "properties",
-                                             _("Properties..."),
-                                             properties,
-                                             NULL);
+       	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "properties",
+					      GNOME_STOCK_MENU_PROP,
+					      _("Properties..."),
+					      properties,
+					      NULL);
 
 	applet_widget_gtk_main();
         return 0;

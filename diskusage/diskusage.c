@@ -560,21 +560,23 @@ int main(int argc, char **argv)
 	create_gc();
 	setup_colors();
        	
-	applet_widget_register_callback(APPLET_WIDGET(applet),
-					     "about",
-                                             _("About..."),
-                                             about_cb,
-                                             NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb,
+					      NULL);
         
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
                            GTK_SIGNAL_FUNC(applet_save_session),
                            NULL);
        	
-	applet_widget_register_callback(APPLET_WIDGET(applet),
-					"properties",
-                                        _("Properties..."),
-                                        properties,
-                                        NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "properties",
+					      GNOME_STOCK_MENU_PROP,
+					      _("Properties..."),
+					      properties,
+					      NULL);
 
 
 	
