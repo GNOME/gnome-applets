@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-05 12:26+0200\n"
-"PO-Revision-Date: 2003-07-05 19:15+0300\n"
+"POT-Creation-Date: 2003-07-15 12:41+0200\n"
+"PO-Revision-Date: 2003-07-16 00:53+0300\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -77,9 +77,9 @@ msgid "Utility"
 msgstr "תוכנית שירות"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:495
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:733
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2190
+#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2432
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
@@ -236,13 +236,11 @@ msgstr "היישומון לא יפעל כראוי (אם בכלל).\n"
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
 #: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
-#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "גבוה"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
 #: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
-#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "נמוך"
 
@@ -453,7 +451,7 @@ msgstr "<b>השהה</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>אזהרות</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1464
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
 msgid "Appearance"
 msgstr "מראה"
 
@@ -461,9 +459,9 @@ msgstr "מראה"
 msgid "Battery Charge Monitor Preferences"
 msgstr "העדפות צג טעינת הסוללה"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1822
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
+#: gweather/gweather-pref.c:766 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "כללי"
 
@@ -519,9 +517,9 @@ msgstr "ה_תרע כאשר טעינת הסוללה נמוכה"
 msgid "_Yellow:"
 msgstr "_צהוב:"
 
-#: battstat/properties.c:256 drivemount/drivemount.c:460
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2054
-#: mailcheck/mailcheck.c:2297 mini-commander/src/preferences.c:352
+#: battstat/properties.c:296 drivemount/drivemount.c:473
+#: drivemount/properties.c:588 mailcheck/mailcheck.c:2289
+#: mailcheck/mailcheck.c:2537 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -589,8 +587,7 @@ msgstr "מסילה הבאה"
 msgid "You do not have permission to use the CD player."
 msgstr "אין לך הרשאות לשימוש בנגן התקליטורים."
 
-#: cdplayer/cdplayer.c:357 drivemount/drivemount.c:404 mixer/mixer.c:1026
-#: multiload/main.c:118
+#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "ארעה שגיאה בהפעלת '%s': %s"
@@ -790,7 +787,7 @@ msgid "Character Palette Preferences"
 msgstr "העדפות פלטת התווים"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:513
+#: drivemount/drivemount.c:533
 msgid "Disk Mounter"
 msgstr "מחבר דיסקים"
 
@@ -814,37 +811,51 @@ msgstr "_עיין..."
 msgid "_Eject"
 msgstr "_הוצא"
 
-#: drivemount/drivemount.c:514
+#: drivemount/drivemount.c:414 mailcheck/mailcheck.c:659
+#, c-format
+msgid "There was an error executing %s: %s"
+msgstr "ארעה שגיאה בהפעלת %s: %s"
+
+#: drivemount/drivemount.c:421
+msgid "Cannot browse device"
+msgstr "לא ניתן לעיין בהתקן"
+
+#: drivemount/drivemount.c:479 drivemount/properties.c:594
+#: mailcheck/mailcheck.c:2295 mailcheck/mailcheck.c:2543
+msgid "Error displaying help"
+msgstr "שגיאה בהצגת העזרה"
+
+#: drivemount/drivemount.c:534
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 האקרי GNOME\n"
 
-#: drivemount/drivemount.c:516
+#: drivemount/drivemount.c:536
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "יישומון לחיבור וניתוק כרכים."
 
-#: drivemount/drivemount.c:716
+#: drivemount/drivemount.c:736
 msgid " mounted"
 msgstr " מחובר"
 
-#: drivemount/drivemount.c:718
+#: drivemount/drivemount.c:738
 msgid " not mounted"
 msgstr " לא מחובר"
 
-#: drivemount/drivemount.c:835
-msgid "Drive Mount Applet Warning"
-msgstr "אזהרת יישומון חיבור כוננים"
-
-#: drivemount/drivemount.c:845
+#: drivemount/drivemount.c:850
 msgid "\" reported:\n"
 msgstr "\" דווח:\n"
 
-#: drivemount/drivemount.c:847
+#: drivemount/drivemount.c:852
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
 "פקודת חיבור דיסק נכשלה.\n"
 "\""
+
+#: drivemount/drivemount.c:858
+msgid "Cannot mount device"
+msgstr "לא ניתן לחבר התקן"
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -854,84 +865,84 @@ msgstr "משך פרק זמן לבדיקת מצב נקודות החיבור"
 msgid "Time in seconds between status updates"
 msgstr "זמן בשניות בין עדכוני מצב"
 
-#: drivemount/properties.c:284
+#: drivemount/properties.c:327
 msgid "Disk Mounter Preferences"
 msgstr "העדפות מחבר דיסקים"
 
-#: drivemount/properties.c:311
+#: drivemount/properties.c:354
 msgid "_Mount directory:"
 msgstr "ספריית _חיבור:"
 
-#: drivemount/properties.c:317
+#: drivemount/properties.c:360
 msgid "Select Mount Directory"
 msgstr "בחר ספריית חיבור"
 
-#: drivemount/properties.c:334
+#: drivemount/properties.c:382
 msgid "_Update interval:"
 msgstr "השהיית _עדכון:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1882
-#: mailcheck/mailcheck.c:1886 modemlights/properties.c:419
+#: drivemount/properties.c:405 mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2101 modemlights/properties.c:461
 msgid "seconds"
 msgstr "שניות"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:418
 msgid "_Icon:"
 msgstr "_סמל:"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:444
 msgid "Floppy"
 msgstr "תקליטון"
 
-#: drivemount/properties.c:384
+#: drivemount/properties.c:447
 msgid "Cdrom"
 msgstr "תקליטור"
 
-#: drivemount/properties.c:387
+#: drivemount/properties.c:450
 msgid "Cd Recorder"
 msgstr "צורב תקליטורים"
 
-#: drivemount/properties.c:390
+#: drivemount/properties.c:453
 msgid "Zip Drive"
 msgstr "כונן Zip"
 
-#: drivemount/properties.c:393
+#: drivemount/properties.c:456
 msgid "Hard Disk"
 msgstr "דיסק קשיח"
 
-#: drivemount/properties.c:396
+#: drivemount/properties.c:459
 msgid "Jaz Drive"
 msgstr "כונן Jaz"
 
-#: drivemount/properties.c:399
+#: drivemount/properties.c:462
 msgid "Custom"
 msgstr "מותאם אישית"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:481
 msgid "Select icon for mounted"
 msgstr "בחר סמל למחובר"
 
-#: drivemount/properties.c:425
+#: drivemount/properties.c:488
 msgid "Moun_ted icon:"
 msgstr "סמל מ_חובר:"
 
-#: drivemount/properties.c:441
+#: drivemount/properties.c:509
 msgid "Select icon for unmounted"
 msgstr "בחר סמל למנותק"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:516
 msgid "Unmou_nted icon:"
 msgstr "סמל למ_נותק:"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:532
 msgid "_Scale size to panel"
 msgstr "ה_רחב גודל ללוח"
 
-#: drivemount/properties.c:466
+#: drivemount/properties.c:539
 msgid "_Eject disk when unmounting"
 msgstr "_הוצא דיסק בניתוק"
 
-#: drivemount/properties.c:473
+#: drivemount/properties.c:549
 msgid "Use _automount friendly status test"
 msgstr "השתמש בבדיקת המצב הידידותית לחיבור ה_אוטומטי"
 
@@ -1058,54 +1069,58 @@ msgid "Number of configured keymaps"
 msgstr "מספר מפות מקשים מוגדרות"
 
 #: gkb-new/gkb.schemas.in.h:7
+msgid "The command that switches your keymap to this layout"
+msgstr "הפקודה המחליפה את מפת התווים שלך לפריסה זו"
+
+#: gkb-new/gkb.schemas.in.h:8
 msgid "The command what switch your keymap tho this layout"
 msgstr "הפקודה המחליפה את מפת התווים מפריסה זו"
 
-#: gkb-new/gkb.schemas.in.h:8
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "המדינה של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:9
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The label of the keyboard layout"
 msgstr "התווית של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The language of the keyboard layout"
 msgstr "השפה של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:12
 msgid "The name of the keyboard layout"
 msgstr "השם של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This flag will appear in flag field of the applet"
 msgstr "דגל זה יופיע בשדה הדגל של היישומון"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This information helps you to identify your keyboard layout"
 msgstr "מידע זה עוזר לך לזהות את פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:15
 msgid "This is the binding for keypress-based layout change"
 msgstr "זה השיוך ללחיצת המקש לשינוי הפריסה"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:16
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
 msgstr ""
-"זה צריך להיות כמו \"gkb_xmmap us\", \"setxkbmap us\" או \"xmodmap "
-"something.xmm\""
+"זה צריך להיות כמו \"gkb_xmmap us\", \"setxkbmap us\" או \"xmodmap something."
+"xmm\""
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will appear in the label box of the applet"
 msgstr "זה יופיע בתיבת התווית של היישומון"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:18
 msgid "This will identify the layout in the list"
 msgstr "זה יזהה את הפריסה ברשימה"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:19
 msgid "When this is true, the applet will be half size"
 msgstr "כאשר זה אמת, היישומון יהיה חצי מגודלו"
 
@@ -1125,16 +1140,16 @@ msgstr "לא מוגדר"
 msgid "Keyboards (select and press add)"
 msgstr "מקלדות (בחר ולחץ הוסף)"
 
-#: gkb-new/prop-add.c:222
+#: gkb-new/prop-add.c:229
 #, c-format
 msgid "Keymap `%s' for the country %s already exists"
 msgstr "מפת המקלדת `%s' למדינה %s כבר קיימת"
 
-#: gkb-new/prop-add.c:323
+#: gkb-new/prop-add.c:328
 msgid "Select Keyboard"
 msgstr "בחר מקלדת"
 
-#: gkb-new/prop-add.c:347
+#: gkb-new/prop-add.c:352
 msgid "_Keyboards (select and press add):"
 msgstr "_מקלדות (בחר ולחץ הוסף):"
 
@@ -1178,8 +1193,7 @@ msgstr "תווית"
 msgid "Flag and Label"
 msgstr "דגל ותווית"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1471 gweather/gweather-pref.c:325
-#: modemlights/properties.c:395
+#: gkb-new/prop.c:257 gtik/gtik.c:1528 modemlights/properties.c:437
 msgid "Display"
 msgstr "תצוגה"
 
@@ -1188,36 +1202,36 @@ msgstr "תצוגה"
 msgid "_Appearance: "
 msgstr "_מראה: "
 
-#: gkb-new/prop.c:304
+#: gkb-new/prop.c:307
 msgid "Keyboard Shortcuts"
 msgstr "קיצורי מקלדת"
 
-#: gkb-new/prop.c:310
+#: gkb-new/prop.c:313
 msgid "S_witch layout:"
 msgstr "ה_חלף פריסה:"
 
-#: gkb-new/prop.c:323
+#: gkb-new/prop.c:326
 msgid "_Grab keys"
 msgstr "_קבל מקשים"
 
-#: gkb-new/prop.c:399
+#: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "העדפות מחליף פריסות לוח-מקשים"
 
-#: gkb-new/prop.c:400
+#: gkb-new/prop.c:407
 msgid "Keyboard Layout Selector"
 msgstr "בוחר פריסות מקלדת"
 
-#: gkb-new/prop.c:426
+#: gkb-new/prop.c:433
 msgid "Keyboards"
 msgstr "מקלדות"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:430
+#: gkb-new/prop.c:437
 msgid "_Keyboards:"
 msgstr "_מקלדות:"
 
-#: gkb-new/prop.c:446 multiload/properties.c:362
+#: gkb-new/prop.c:456 multiload/properties.c:420
 msgid "Options"
 msgstr "אפשרויות"
 
@@ -1267,7 +1281,7 @@ msgstr "קבל עדכונים מתמשכים על מחירי מניות"
 msgid "Gtik Applet Factory"
 msgstr "יצרן יישומון Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:749
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
 msgid "Stock Ticker"
 msgstr "טיקר מניות"
 
@@ -1276,15 +1290,15 @@ msgstr "טיקר מניות"
 msgid "_Update"
 msgstr "_עדכן"
 
-#: gtik/gtik.c:214
+#: gtik/gtik.c:255
 msgid "Could not retrieve the stock data."
 msgstr "לא ניתן לקבל מידע מניות."
 
-#: gtik/gtik.c:248 gweather/gweather-applet.c:386
+#: gtik/gtik.c:289 gweather/gweather-applet.c:357
 msgid "Updating..."
 msgstr "מעדכן..."
 
-#: gtik/gtik.c:751
+#: gtik/gtik.c:792
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1295,126 +1309,125 @@ msgstr ""
 "הינו יישום חופשי מבוסס אינטרנט.  הוא מגיע לחלוטין ללא אחריות. אל תשתמש בטיקר "
 "המניות של GNOME לביצוע החלטות השקעה; הוא לצורכי מידע בלבד."
 
-#: gtik/gtik.c:1237
+#: gtik/gtik.c:1278
 msgid "Current _stocks:"
 msgstr "_מניות נוכחיות:"
 
-#: gtik/gtik.c:1245
+#: gtik/gtik.c:1286
 msgid "_New symbol:"
 msgstr "סמל _חדש:"
 
-#: gtik/gtik.c:1254
+#: gtik/gtik.c:1295
 msgid "_Add"
 msgstr "_הוסף"
 
-#: gtik/gtik.c:1263
+#: gtik/gtik.c:1304
 msgid "_Remove"
 msgstr "_הסר"
 
-#: gtik/gtik.c:1365
+#: gtik/gtik.c:1410
 msgid "Stock Ticker Preferences"
 msgstr "העדפות טיקר מניות"
 
-#: gtik/gtik.c:1386
+#: gtik/gtik.c:1431
 msgid "Symbols"
 msgstr "סמלים"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2121
+#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2363
 msgid "Behavior"
 msgstr "התנהגות"
 
-#: gtik/gtik.c:1396 gweather/gweather-pref.c:280
+#: gtik/gtik.c:1441
 msgid "Update"
 msgstr "עדכן"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1445
 msgid "Stock update fre_quency:"
 msgstr "_תדירות עדכון המניות:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1864
-#: mailcheck/mailcheck.c:1868
+#: gtik/gtik.c:1457 mailcheck/mailcheck.c:2073 mailcheck/mailcheck.c:2079
 msgid "minutes"
 msgstr "דקות"
 
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1463
 msgid "Scrolling"
 msgstr "גולל"
 
-#: gtik/gtik.c:1419
+#: gtik/gtik.c:1467
 msgid "_Scroll speed:"
 msgstr "מהירות _גלילה:"
 
-#: gtik/gtik.c:1423
+#: gtik/gtik.c:1471
 msgid "Slow"
 msgstr "איטית"
 
-#: gtik/gtik.c:1425
+#: gtik/gtik.c:1473
 msgid "Medium"
 msgstr "בינונית"
 
-#: gtik/gtik.c:1427
+#: gtik/gtik.c:1475
 msgid "Fast"
 msgstr "מהירה"
 
-#: gtik/gtik.c:1444
+#: gtik/gtik.c:1495
 msgid "_Enable scroll buttons"
 msgstr "_אפשר כפתורי גלילה"
 
-#: gtik/gtik.c:1453
+#: gtik/gtik.c:1507
 msgid "Scroll _left to right"
 msgstr "גלול מ_שמל לימין"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1533
 msgid "Displa_y only symbols and price"
 msgstr "ה_צג רק סמלים ומחירים"
 
-#: gtik/gtik.c:1486 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_רוחב:"
 
-#: gtik/gtik.c:1500 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:420
+#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:483
 msgid "pixels"
 msgstr "פיקסלים"
 
-#: gtik/gtik.c:1506
+#: gtik/gtik.c:1569
 msgid "Font and Colors"
 msgstr "גופן וצבעים"
 
-#: gtik/gtik.c:1512
+#: gtik/gtik.c:1575
 msgid "Use _default theme font and colors"
 msgstr "השתמש בערכת נושא לגופנים וצבעים _ברירת מחדל"
 
-#: gtik/gtik.c:1524 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_גופן:"
 
-#: gtik/gtik.c:1545
+#: gtik/gtik.c:1614
 msgid "Stock _raised:"
 msgstr "_עליית מניה:"
 
-#: gtik/gtik.c:1561
+#: gtik/gtik.c:1633
 msgid "Stock _lowered:"
 msgstr "_ירידת מנייה:"
 
-#: gtik/gtik.c:1577
+#: gtik/gtik.c:1652
 msgid "Stock _unchanged:"
 msgstr "מניה _ללא שינוי:"
 
-#: gtik/gtik.c:1593 modemlights/properties.c:505
+#: gtik/gtik.c:1671 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "_רקע:"
 
-#: gtik/gtik.c:1723
+#: gtik/gtik.c:1804
 msgid "Skip forward"
 msgstr "דלג קדימה"
 
-#: gtik/gtik.c:1724
+#: gtik/gtik.c:1805
 msgid "Skip backward"
 msgstr "דלג אחורה"
 
-#: gtik/gtik.c:1732
+#: gtik/gtik.c:1813
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1422,11 +1435,11 @@ msgstr ""
 "טיקר מניות\n"
 "קבל עדכונים מתמשכים על מחירי מניות"
 
-#: gtik/gtik.c:1923
+#: gtik/gtik.c:2004
 msgid "(No"
 msgstr "(לא"
 
-#: gtik/gtik.c:1924
+#: gtik/gtik.c:2005
 msgid "Change "
 msgstr "שנה "
 
@@ -1482,7 +1495,7 @@ msgstr "זמן במילי-שניות להצגת העדכון"
 msgid "timeout"
 msgstr "פרק זמן"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
 msgid "_Forecast"
 msgstr "_תחזית"
 
@@ -1517,225 +1530,205 @@ msgstr ""
 "\n"
 "יישומון לתצוגת תנאי מזג-אויר מקומיים."
 
-#: gweather/gweather-applet.c:60
-#, c-format
-msgid ""
-"%s\n"
-"Today: %s\n"
-"Current temperature %d%s"
-msgstr ""
-"%s\n"
-"היום: %s\n"
-"טמפרטורה נוכחית %d%s"
+#: gweather/gweather-applet.c:246
+msgid "GNOME Weather"
+msgstr "מזג-האויר GNOME"
 
-#: gweather/gweather-applet.c:82
-#, c-format
-msgid ""
-"%s\n"
-"%s: %s\n"
-"Low %d%s, High %d%s"
-msgstr ""
-"%s\n"
-"%s: %s\n"
-"נמוך %d%s, גבוה %d%s"
-
-#: gweather/gweather-applet.c:102
-msgid "There was an error retrieving the forecast"
-msgstr "ארעה שגיאה בקבלת התחזית"
-
-#: gweather/gweather-dialog.c:82
-msgid "Day"
-msgstr "יום"
-
-#: gweather/gweather-dialog.c:83
-msgid "Precipitation"
-msgstr "משקע"
-
-#: gweather/gweather-dialog.c:83
-msgid "Condition"
-msgstr "תנאי"
-
-#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:182
+#: gweather/gweather-dialog.c:75
 msgid "Forecast"
 msgstr "תחזית"
 
-#: gweather/gweather-dialog.c:108
-msgid "Current Conditions"
-msgstr "תנאים נוכחיים"
+#: gweather/gweather-dialog.c:110
+msgid "Location:"
+msgstr "מיקום:"
 
-#: gweather/gweather-dialog.c:115
-msgid "City:"
-msgstr "עיר:"
+#: gweather/gweather-dialog.c:118
+msgid "Update:"
+msgstr "עדכון:"
 
-#: gweather/gweather-dialog.c:122
-msgid "Last update:"
-msgstr "עדכון אחרון:"
-
-#: gweather/gweather-dialog.c:129
+#: gweather/gweather-dialog.c:126
 msgid "Conditions:"
 msgstr "תנאים:"
 
-#: gweather/gweather-dialog.c:140
+#: gweather/gweather-dialog.c:134
+msgid "Sky:"
+msgstr "שמיים:"
+
+#: gweather/gweather-dialog.c:142
 msgid "Temperature:"
 msgstr "טמפרטורה:"
 
-#: gweather/gweather-dialog.c:147
-msgid "Feels like:"
-msgstr "מרגיש כמו:"
+#: gweather/gweather-dialog.c:150
+msgid "Dew point:"
+msgstr "נקודת העיבוי:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:158
 msgid "Humidity:"
 msgstr "לחות:"
 
-#: gweather/gweather-dialog.c:161
+#: gweather/gweather-dialog.c:166
 msgid "Wind:"
 msgstr "רוח:"
 
-#: gweather/gweather-dialog.c:168
-msgid "Visibility:"
-msgstr "ראות:"
-
-#: gweather/gweather-dialog.c:175
+#: gweather/gweather-dialog.c:174
 msgid "Pressure:"
 msgstr "לחץ אויר:"
 
-#: gweather/gweather-dialog.c:203
-msgid "Forecast list"
-msgstr "רשימת תחזית"
+#: gweather/gweather-dialog.c:182
+msgid "Visibility:"
+msgstr "ראות:"
 
-#: gweather/gweather-dialog.c:204
-msgid "Shows forecast details for each day"
-msgstr "הצג פרטי תחזית לכל יום"
+#: gweather/gweather-dialog.c:281
+msgid "C_urrent conditions"
+msgstr "תנאים _נוכחיים"
 
-#: gweather/gweather-dialog.c:296
-#, c-format
-msgid "%s / %.1f %s"
-msgstr "%s / %.1f %s"
+#: gweather/gweather-dialog.c:294
+msgid "ForeCast Report"
+msgstr "דיווח תחזית"
 
-#: gweather/gweather-pref.c:246
-msgid "Weather Preferences"
-msgstr "העדפות מזג-האויר"
+#: gweather/gweather-dialog.c:294
+msgid "See the ForeCast Details"
+msgstr "ראה את פרטי התחזית"
 
-#: gweather/gweather-pref.c:284
-msgid "_Automatically update every:"
-msgstr "עדכן _אוטומטית כל:"
+#: gweather/gweather-dialog.c:329
+msgid "_Visit Weather.com"
+msgstr "_בקר ב Weather.com"
 
-#: gweather/gweather-pref.c:315
+#: gweather/gweather-dialog.c:330
+msgid "URL link Button"
+msgstr "כפתור קישור לכתובת"
+
+#: gweather/gweather-dialog.c:330
+msgid "Click to Enter Weather.com"
+msgstr "לחץ כדי להכנס ל Weather.com"
+
+#: gweather/gweather-dialog.c:338
+msgid "_Radar map"
+msgstr "מפת _ראדר"
+
+#: gweather/gweather-dialog.c:411
+msgid ""
+"Detailed forecast not available for this location.\n"
+"Please try the state forecast; note that IWIN forecasts are available only "
+"for US cities."
+msgstr ""
+"תחזית מפורטת לאזור זה אינה זמינה.\n"
+"אנא נסה את התחזית המדינית; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
+
+#: gweather/gweather-dialog.c:413
+msgid ""
+"State forecast not available for this location.\n"
+"Please try the detailed forecast; note that IWIN forecasts are available "
+"only for US cities."
+msgstr ""
+"תחזית מדינית לאזור זה אינה זמינה.\n"
+"אנא נסה את התחזית המופרטת; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
+
+#. Accessible Name and Description for the components in Preference Dialog
+#: gweather/gweather-pref.c:149
+msgid "Location view"
+msgstr "תצוגת מיקום"
+
+#: gweather/gweather-pref.c:149
+msgid "Select Location from the list"
+msgstr "בחר מיקום מהרשימה"
+
+#: gweather/gweather-pref.c:151
 msgid "Update spin button"
 msgstr "עדכן כפתור טווח"
 
-#: gweather/gweather-pref.c:316
+#: gweather/gweather-pref.c:151
 msgid "Spinbutton for updating"
 msgstr "כפתור טווח לעדכון"
 
-#: gweather/gweather-pref.c:327
+#: gweather/gweather-pref.c:152
+msgid "Address Entry"
+msgstr "ערך כתובת"
+
+#: gweather/gweather-pref.c:152
+msgid "Enter the URL"
+msgstr "הזן כתובת"
+
+#: gweather/gweather-pref.c:604
+msgid "Weather Preferences"
+msgstr "העדפות מזג-האויר"
+
+#: gweather/gweather-pref.c:647
+msgid "_Automatically update every"
+msgstr "עדכן _אוטומטית כל"
+
+#: gweather/gweather-pref.c:655
 msgid "Use _metric system units"
 msgstr "השתמש ביחידות מידה _מטריות"
 
-#: gweather/gweather-pref.c:335
-msgid "Display _temperatures"
-msgstr "הצג _טמפרטורות"
+#: gweather/gweather-pref.c:663
+msgid "Enable _detailed forecast"
+msgstr "אפשר תחזיות מ_פורטות"
 
-#: gweather/gweather-pref.c:346
-msgid "Number of _days to display:"
-msgstr "מספר _ימים להצגה:"
+#: gweather/gweather-pref.c:672
+msgid "Enable _radar map"
+msgstr "אפשר מפת _ראדר"
 
-#: gweather/gweather-pref.c:360
-msgid "Number of days spin button"
-msgstr "כפתור טווח למספר הימים"
+#: gweather/gweather-pref.c:680
+msgid "Use cus_tom address for radar map"
+msgstr "השתמש בכתובת מו_תאמת אישית למפות הראדר"
 
-#: gweather/gweather-pref.c:361
-msgid "Spinbutton for determining the number of days to show on the panel"
-msgstr "כפתור טווח לזיהוי מספר הימים להצגה על הלוח"
+#: gweather/gweather-pref.c:693
+msgid "A_ddress :"
+msgstr "_כתובת :"
 
-#: gweather/gweather-pref.c:363
-msgid "days"
-msgstr "ימים"
+#: gweather/gweather-pref.c:707
+msgid "Updates"
+msgstr "עידכונים"
 
-#: gweather/gweather-pref.c:371 gweather/gweather-pref.c:376
-#: gweather/location.c:360
+#: gweather/gweather-pref.c:713
+msgid "_Automatically update every "
+msgstr "_עדכן אוטומטית כל "
+
+#: gweather/gweather-pref.c:733
+msgid "minute(s)"
+msgstr "דקות"
+
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:748
+msgid "Miscellaneous"
+msgstr "שונות"
+
+#: gweather/gweather-pref.c:806 gweather/location.c:360
 msgid "Location"
 msgstr "מיקום"
 
-#: gweather/gweather-pref.c:380
-msgid "Current city:"
-msgstr "עיר נוכחית:"
-
-#: gweather/gweather-pref.c:391
-msgid "Available c_ountries:"
-msgstr "_מדינות זמינות:"
-
-#: gweather/gweather-pref.c:406
-msgid "Available c_ities:"
-msgstr "_ערים זמינים:"
-
 #: gweather/gweather.schemas.in.h:1
-msgid "If running the applet for the first time, prompt the user for the location"
-msgstr "אם מפעילים את היישומון בפעם הראשונה, התרע את המשתמש על המיקום"
-
-#: gweather/gweather.schemas.in.h:2
-msgid "Integer from 0 to 5. Determines how many days in advance are displayed"
-msgstr "מספר שלם בין 0 ל 5. מציין כמה ימים קדימה מוצגים"
-
-#: gweather/gweather.schemas.in.h:3
-msgid "Name of city"
-msgstr "שם העיר"
-
-#: gweather/gweather.schemas.in.h:4
-msgid "Name of city to forecast weather"
-msgstr "שם העיר להצגת תחזית מזג-האויר"
-
-#: gweather/gweather.schemas.in.h:5
-msgid "Number of days to forecast"
-msgstr "מספר ימים לתחזית"
-
-#: gweather/gweather.schemas.in.h:6
-msgid "Show temperature label next to forecast icon"
-msgstr "הצג תווית טמפרטורה לצד סמל התחזית"
-
-#: gweather/gweather.schemas.in.h:7
-msgid "Show temperature labels on panel"
-msgstr "הצג תוויות טמפרטורה על הלוח"
-
-#: gweather/gweather.schemas.in.h:8
-msgid "True if running applet for the first time"
-msgstr "אמת אם מפעילים את היישומון בפעם הראשונה"
-
-#: gweather/gweather.schemas.in.h:9
-msgid "Url to download weather xml"
-msgstr "כתובת להורדת XML של מזג-האויר"
-
-#: gweather/gweather.schemas.in.h:10
 msgid ""
 "determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "מזהה אם היישומון מעדכן אוטומטית את סטטיסטיקות מזג-האויר שלו או לא."
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:2
 msgid "fetch a detailed forecast on each update."
 msgstr "קבל תחזית מפורטת בכל עדכון."
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:3
 msgid "fetch a radar map on each update."
 msgstr "קבל מפת ראדר בכל עדכון."
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:4
 msgid "the interval, in seconds, between automatic updates."
 msgstr "ההשהיה, בשניות, בין עדכונים אוטומטיים."
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:5
 msgid "url for the radar map"
 msgstr "כתובת למפות הראדר"
 
-#: gweather/gweather.schemas.in.h:15
+#: gweather/gweather.schemas.in.h:6
 msgid "use custom url for the radar map"
 msgstr "השתמש בכתובת מותאמת אישית למפות הראדר"
 
-#: gweather/gweather.schemas.in.h:16
+#: gweather/gweather.schemas.in.h:7
 msgid "use metric units instead of english units."
 msgstr "השתמש ביחידות מידה מטריות במקום יחידות אנגליות."
 
-#: gweather/gweather.schemas.in.h:17
+#: gweather/gweather.schemas.in.h:8
 msgid "weather location information."
 msgstr "מידע מיקום מזג-האויר."
 
@@ -1775,209 +1768,1228 @@ msgstr "בחר את העיר מהרשימה"
 msgid "Downloading Countries..."
 msgstr "מוריד מדינות..."
 
-#: gweather/weather.c:49
+#: gweather/weather.c:57
 msgid "knots"
 msgstr "knots"
 
-#: gweather/weather.c:49
+#: gweather/weather.c:57
 msgid "kph"
 msgstr "קילומטר לשעה"
 
-#: gweather/weather.c:54
+#: gweather/weather.c:62
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:54
+#: gweather/weather.c:62
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:58
+#: gweather/weather.c:66
 msgid "miles"
 msgstr "מיילים"
 
-#: gweather/weather.c:58
+#: gweather/weather.c:66
 msgid "kilometers"
 msgstr "קילומטרים"
 
-#: gweather/weather.c:63
-msgid "Clear Sky"
-msgstr "שמיים בהירים"
-
-#: gweather/weather.c:64
-msgid "Broken clouds"
-msgstr "עננים שבורים"
-
-#: gweather/weather.c:65
-msgid "Scattered clouds"
-msgstr "עננים פזורים"
-
-#: gweather/weather.c:66
-msgid "Few clouds"
-msgstr "מעט עננים"
-
-#: gweather/weather.c:67
-msgid "Overcast"
-msgstr "מעונן"
-
-#: gweather/weather.c:71
-msgid "Windy"
-msgstr "סוער"
-
-#: gweather/weather.c:72
-msgid "Thunder Storms"
-msgstr "סופות רעמים"
-
-#: gweather/weather.c:73
-msgid "Snow"
-msgstr "שלג"
-
-#: gweather/weather.c:74
-msgid "Rain"
-msgstr "גשם"
-
-#: gweather/weather.c:75
-msgid "Heavy Rain"
-msgstr "גשם כבד"
-
-#: gweather/weather.c:76
-msgid "Sleet"
-msgstr "גשם מעורב בשלג"
-
-#: gweather/weather.c:77
-msgid "Light Flurries"
-msgstr "סופה קצרה קלה"
-
-#: gweather/weather.c:78
-msgid "Flurries"
-msgstr "סופות קצרות"
-
-#: gweather/weather.c:79
-msgid "Snow and Wind"
-msgstr "שלג ורוח"
-
-#: gweather/weather.c:80
-msgid "Dust"
-msgstr "אבק"
-
-#: gweather/weather.c:81
-msgid "Fog"
-msgstr "ערפל"
-
-#: gweather/weather.c:82
-msgid "Haze"
-msgstr "אובך"
-
-#: gweather/weather.c:83
-msgid "Smoke"
-msgstr "עשן"
-
-#: gweather/weather.c:84
-msgid "Cold"
-msgstr "קור"
-
-#: gweather/weather.c:85
-msgid "Cloudy"
-msgstr "מעונן"
-
-#: gweather/weather.c:86
-msgid "Mostly Cloudy"
-msgstr "מעונן בעיקר"
-
-#: gweather/weather.c:87
-msgid "Partly Cloudy"
-msgstr "מעונן חלקית"
-
-#: gweather/weather.c:88
-msgid "Sunny"
-msgstr "שטוף שמש"
-
-#: gweather/weather.c:89
-msgid "Mostly Sunny"
-msgstr "שטוף שמש לרב"
-
-#: gweather/weather.c:90
-msgid "Hot"
-msgstr "חם"
-
-#: gweather/weather.c:91
-msgid "Nothing"
-msgstr "כלום"
-
-#: gweather/weather.c:95
+#: gweather/weather.c:132
 msgid "Variable"
 msgstr "משתנה"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "North"
 msgstr "צפון"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "North - NorthEast"
 msgstr "צפון - צפון מזרח"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "Northeast"
 msgstr "צפון מערב"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "East - NorthEast"
 msgstr "מזרח - צפון מזרח"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "East"
 msgstr "מזרח"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "East - Southeast"
 msgstr "מזרח - דרום מזרח"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "Southeast"
 msgstr "דרום מזרח"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "South - Southeast"
 msgstr "דרום - דרום מזרח"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "South"
 msgstr "דרום"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "South - Southwest"
 msgstr "דרום - דרום מערב"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "Southwest"
 msgstr "דרום מערב"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "West - Southwest"
 msgstr "מערב - דרום מערב"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "West"
 msgstr "מערב"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "West - Northwest"
 msgstr "מערב - צפון מערב"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "Northwest"
 msgstr "צפון מערב"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "North - Northwest"
 msgstr "צפון - צפון מערב"
 
-#: gweather/weather.c:100
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+msgid "Invalid"
+msgstr "לא תקני"
+
+#: gweather/weather.c:149
+msgid "Clear Sky"
+msgstr "שמיים בהירים"
+
+#: gweather/weather.c:150
+msgid "Broken clouds"
+msgstr "עננים שבורים"
+
+#: gweather/weather.c:151
+msgid "Scattered clouds"
+msgstr "עננים פזורים"
+
+#: gweather/weather.c:152
+msgid "Few clouds"
+msgstr "מעט עננים"
+
+#: gweather/weather.c:153
+msgid "Overcast"
+msgstr "מעונן"
+
+#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
+#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. NONE
+#. DRIZZLE
+#: gweather/weather.c:186
+msgid "Drizzle"
+msgstr "טפטוף"
+
+#: gweather/weather.c:186
+msgid "Drizzle in the vicinity"
+msgstr "טפטוף בסביבה"
+
+#: gweather/weather.c:186
+msgid "Light drizzle"
+msgstr "טפטוף קל"
+
+#: gweather/weather.c:186
+msgid "Moderate drizzle"
+msgstr "טפטוף מתון"
+
+#: gweather/weather.c:186
+msgid "Heavy drizzle"
+msgstr "טפטוף כבד"
+
+#: gweather/weather.c:186
+msgid "Shallow drizzle"
+msgstr "טפטוף שטחי"
+
+#: gweather/weather.c:186
+msgid "Patches of drizzle"
+msgstr "טלאי טפטוף"
+
+#: gweather/weather.c:186
+msgid "Partial drizzle"
+msgstr "טפטוף חלקי"
+
+#: gweather/weather.c:186 gweather/weather.c:187
+msgid "Thunderstorm"
+msgstr "סופות רעמים"
+
+#: gweather/weather.c:186
+msgid "Windy drizzle"
+msgstr "טפטוף סוער"
+
+#: gweather/weather.c:186
+msgid "Showers"
+msgstr "ממטרים"
+
+#: gweather/weather.c:186
+msgid "Drifting drizzle"
+msgstr "טפטוף סוחף"
+
+#: gweather/weather.c:186
+msgid "Freezing drizzle"
+msgstr "טפטוף מקפיא"
+
+#. RAIN
+#: gweather/weather.c:187
+msgid "Rain"
+msgstr "גשם"
+
+#: gweather/weather.c:187
+msgid "Rain in the vicinity"
+msgstr "גשם בסביבה"
+
+#: gweather/weather.c:187
+msgid "Light rain"
+msgstr "גשם קל"
+
+#: gweather/weather.c:187
+msgid "Moderate rain"
+msgstr "גשם מתון"
+
+#: gweather/weather.c:187
+msgid "Heavy rain"
+msgstr "גשם חזק"
+
+#: gweather/weather.c:187
+msgid "Shallow rain"
+msgstr "גשם שטחי"
+
+#: gweather/weather.c:187
+msgid "Patches of rain"
+msgstr "טלאי גשם"
+
+#: gweather/weather.c:187
+msgid "Partial rainfall"
+msgstr "גשם חלקי"
+
+#: gweather/weather.c:187
+msgid "Blowing rainfall"
+msgstr "משב גשמים"
+
+#: gweather/weather.c:187
+msgid "Rain showers"
+msgstr "ממטרי גשם"
+
+#: gweather/weather.c:187
+msgid "Drifting rain"
+msgstr "גשם סוחף"
+
+#: gweather/weather.c:187
+msgid "Freezing rain"
+msgstr "גשם מקפיא"
+
+#. SNOW
+#: gweather/weather.c:188
+msgid "Snow"
+msgstr "שלג"
+
+#: gweather/weather.c:188
+msgid "Snow in the vicinity"
+msgstr "שלג בסביבה"
+
+#: gweather/weather.c:188
+msgid "Light snow"
+msgstr "שלג קל"
+
+#: gweather/weather.c:188
+msgid "Moderate snow"
+msgstr "שלג מתון"
+
+#: gweather/weather.c:188
+msgid "Heavy snow"
+msgstr "שלג כבד"
+
+#: gweather/weather.c:188
+msgid "Shallow snow"
+msgstr "שלג שטחי"
+
+#: gweather/weather.c:188
+msgid "Patches of snow"
+msgstr "טלאי שלג"
+
+#: gweather/weather.c:188
+msgid "Partial snowfall"
+msgstr "שלג חלקי"
+
+#: gweather/weather.c:188 gweather/weather.c:189
+msgid "Snowstorm"
+msgstr "סופת שלגים"
+
+#: gweather/weather.c:188
+msgid "Blowing snowfall"
+msgstr "משב שלגים"
+
+#: gweather/weather.c:188
+msgid "Snow showers"
+msgstr "ממטרי שלג"
+
+#: gweather/weather.c:188
+msgid "Drifting snow"
+msgstr "שלג נסחף"
+
+#: gweather/weather.c:188
+msgid "Freezing snow"
+msgstr "שלג מקפיא"
+
+#. SNOW_GRAINS
+#: gweather/weather.c:189
+msgid "Snow grains"
+msgstr "פתיתי שלג"
+
+#: gweather/weather.c:189
+msgid "Snow grains in the vicinity"
+msgstr "פתיתי שלג בסביבה"
+
+#: gweather/weather.c:189
+msgid "Light snow grains"
+msgstr "פתיתי שלג קל"
+
+#: gweather/weather.c:189
+msgid "Moderate snow grains"
+msgstr "פתיתי שלג מתון"
+
+#: gweather/weather.c:189
+msgid "Heavy snow grains"
+msgstr "פתיתי שלג כבד"
+
+#: gweather/weather.c:189
+msgid "Shallow snow grains"
+msgstr "פתיתי שלג שטחי"
+
+#: gweather/weather.c:189
+msgid "Patches of snow grains"
+msgstr "טלאי פתיתי שלג"
+
+#: gweather/weather.c:189
+msgid "Partial snow grains"
+msgstr "פתיתי שלג חלקי"
+
+#: gweather/weather.c:189
+msgid "Blowing snow grains"
+msgstr "משב פתיתי שלג"
+
+#: gweather/weather.c:189
+msgid "Snow grain showers"
+msgstr "ממטרי פתיתי שלג"
+
+#: gweather/weather.c:189
+msgid "Drifting snow grains"
+msgstr "פתיתי שלג נסחפים"
+
+#: gweather/weather.c:189
+msgid "Freezing snow grains"
+msgstr "פתיתי שלג מקפיאים"
+
+#. ICE_CRYSTALS
+#: gweather/weather.c:190
+msgid "Ice crystals"
+msgstr "גבישי קרח"
+
+#: gweather/weather.c:190
+msgid "Ice crystals in the vicinity"
+msgstr "גבישי קרח בסביבה"
+
+#: gweather/weather.c:190
+msgid "Few ice crystals"
+msgstr "מעט גבישי קרח"
+
+#: gweather/weather.c:190
+msgid "Moderate ice crystals"
+msgstr "גבישי קרח מתונים"
+
+#: gweather/weather.c:190
+msgid "Heavy ice crystals"
+msgstr "גבישי קרח חזקים"
+
+#: gweather/weather.c:190
+msgid "Patches of ice crystals"
+msgstr "טלאי גבישי קרח"
+
+#: gweather/weather.c:190
+msgid "Partial ice crystals"
+msgstr "גבישי קרח חלקי"
+
+#: gweather/weather.c:190
+msgid "Ice crystal storm"
+msgstr "סופת גבישי קרח"
+
+#: gweather/weather.c:190
+msgid "Blowing ice crystals"
+msgstr "גבישי קרח נושבים"
+
+#: gweather/weather.c:190
+msgid "Showers of ice crystals"
+msgstr "ממטרי גבישי קרח"
+
+#: gweather/weather.c:190
+msgid "Drifting ice crystals"
+msgstr "גבישי קרח נסחפים"
+
+#: gweather/weather.c:190
+msgid "Freezing ice crystals"
+msgstr "גבישי קרח מקפיאים"
+
+#. ICE_PELLETS
+#: gweather/weather.c:191
+msgid "Ice pellets"
+msgstr "כדורי קרח"
+
+#: gweather/weather.c:191
+msgid "Ice pellets in the vicinity"
+msgstr "כדורי קרח בסביבה"
+
+#: gweather/weather.c:191
+msgid "Few ice pellets"
+msgstr "מעט כדורי קרח"
+
+#: gweather/weather.c:191
+msgid "Moderate ice pellets"
+msgstr "כדורי קרח מתון"
+
+#: gweather/weather.c:191
+msgid "Heavy ice pellets"
+msgstr "כדורי קרח כבד"
+
+#: gweather/weather.c:191
+msgid "Shallow ice pellets"
+msgstr "כדורי קרח שטחי"
+
+#: gweather/weather.c:191
+msgid "Patches of ice pellets"
+msgstr "טלאי כדורי קרח"
+
+#: gweather/weather.c:191
+msgid "Partial ice pellets"
+msgstr "כדורי קרח חלקי"
+
+#: gweather/weather.c:191
+msgid "Ice pellet storm"
+msgstr "סופת כדורי קרח"
+
+#: gweather/weather.c:191
+msgid "Blowing ice pellets"
+msgstr "כדורי קרח נושבים"
+
+#: gweather/weather.c:191
+msgid "Showers of ice pellets"
+msgstr "ממטרים של כדורי קרח"
+
+#: gweather/weather.c:191
+msgid "Drifting ice pellets"
+msgstr "כדורי קרח נסחפים"
+
+#: gweather/weather.c:191
+msgid "Freezing ice pellets"
+msgstr "כדורי קרח מקפיאים"
+
+#. HAIL
+#: gweather/weather.c:192
+msgid "Hail"
+msgstr "ברד"
+
+#: gweather/weather.c:192
+msgid "Hail in the vicinity"
+msgstr "ברד בסביבה"
+
+#: gweather/weather.c:192 gweather/weather.c:193
+msgid "Light hail"
+msgstr "ברד קל"
+
+#: gweather/weather.c:192
+msgid "Moderate hail"
+msgstr "ברד מתון"
+
+#: gweather/weather.c:192
+msgid "Heavy hail"
+msgstr "ברד כבד"
+
+#: gweather/weather.c:192
+msgid "Shallow hail"
+msgstr "ברד שטחי"
+
+#: gweather/weather.c:192
+msgid "Patches of hail"
+msgstr "טלאי ברד"
+
+#: gweather/weather.c:192
+msgid "Partial hail"
+msgstr "ברד חלקי"
+
+#: gweather/weather.c:192
+msgid "Hailstorm"
+msgstr "סופת ברד"
+
+#: gweather/weather.c:192
+msgid "Blowing hail"
+msgstr "משב ברד"
+
+#: gweather/weather.c:192
+msgid "Hail showers"
+msgstr "ממטרי ברד"
+
+#: gweather/weather.c:192
+msgid "Drifting hail"
+msgstr "ברד נסחף"
+
+#: gweather/weather.c:192
+msgid "Freezing hail"
+msgstr "ברד מקפיא"
+
+#. SMALL_HAIL
+#: gweather/weather.c:193
+msgid "Small hail"
+msgstr "ברד קטן"
+
+#: gweather/weather.c:193
+msgid "Small hail in the vicinity"
+msgstr "ברד קטן בסביבה"
+
+#: gweather/weather.c:193
+msgid "Moderate small hail"
+msgstr "ברד קטן מתון"
+
+#: gweather/weather.c:193
+msgid "Heavy small hail"
+msgstr "ברד קטן כבד"
+
+#: gweather/weather.c:193
+msgid "Shallow small hail"
+msgstr "ברד קטן שטחי"
+
+#: gweather/weather.c:193
+msgid "Patches of small hail"
+msgstr "טלאי ברד קטן"
+
+#: gweather/weather.c:193
+msgid "Partial small hail"
+msgstr "ברד קטן חלקי"
+
+#: gweather/weather.c:193
+msgid "Small hailstorm"
+msgstr "סופת ברד קטנה"
+
+#: gweather/weather.c:193
+msgid "Blowing small hail"
+msgstr "משב ברד קטן"
+
+#: gweather/weather.c:193
+msgid "Showers of small hail"
+msgstr "ממטרים של ברד קטן"
+
+#: gweather/weather.c:193
+msgid "Drifting small hail"
+msgstr "ברד קטן נסחף"
+
+#: gweather/weather.c:193
+msgid "Freezing small hail"
+msgstr "ברד קטן מקפיא"
+
+#. PRECIPITATION
+#: gweather/weather.c:194
+msgid "Unknown precipitation"
+msgstr "משקע לא ידוע"
+
+#: gweather/weather.c:194
+msgid "Precipitation in the vicinity"
+msgstr "משקעים בסביבה"
+
+#: gweather/weather.c:194
+msgid "Light precipitation"
+msgstr "משקעים קלים"
+
+#: gweather/weather.c:194
+msgid "Moderate precipitation"
+msgstr "משקעים מתונים"
+
+#: gweather/weather.c:194
+msgid "Heavy precipitation"
+msgstr "משקעים כבדים"
+
+#: gweather/weather.c:194
+msgid "Shallow precipitation"
+msgstr "משקעים שטחיים"
+
+#: gweather/weather.c:194
+msgid "Patches of precipitation"
+msgstr "טלאי משקע"
+
+#: gweather/weather.c:194
+msgid "Partial precipitation"
+msgstr "משקע חלקי"
+
+#: gweather/weather.c:194
+msgid "Unknown thunderstorm"
+msgstr "סופת רעמים לא ידועה"
+
+#: gweather/weather.c:194
+msgid "Blowing precipitation"
+msgstr "משקע נושב"
+
+#: gweather/weather.c:194
+msgid "Showers, type unknown"
+msgstr "ממטרים, סוג לא ידוע"
+
+#: gweather/weather.c:194
+msgid "Drifting precipitation"
+msgstr "משקע נסחף"
+
+#: gweather/weather.c:194
+msgid "Freezing precipitation"
+msgstr "משקע מקפיא"
+
+#. MIST
+#: gweather/weather.c:195
+msgid "Mist"
+msgstr "אד"
+
+#: gweather/weather.c:195
+msgid "Mist in the vicinity"
+msgstr "אד בסביבה"
+
+#: gweather/weather.c:195
+msgid "Light mist"
+msgstr "אד קל"
+
+#: gweather/weather.c:195
+msgid "Moderate mist"
+msgstr "אד מתון"
+
+#: gweather/weather.c:195
+msgid "Thick mist"
+msgstr "אד סמיך"
+
+#: gweather/weather.c:195
+msgid "Shallow mist"
+msgstr "אד שטחי"
+
+#: gweather/weather.c:195
+msgid "Patches of mist"
+msgstr "טלאי אד"
+
+#: gweather/weather.c:195
+msgid "Partial mist"
+msgstr "אד חלקי"
+
+#: gweather/weather.c:195
+msgid "Mist with wind"
+msgstr "אד עם רוח"
+
+#: gweather/weather.c:195
+msgid "Drifting mist"
+msgstr "אד נסחף"
+
+#: gweather/weather.c:195
+msgid "Freezing mist"
+msgstr "אד מקפיא"
+
+#. FOG
+#: gweather/weather.c:196
+msgid "Fog"
+msgstr "ערפל"
+
+#: gweather/weather.c:196
+msgid "Fog in the vicinity"
+msgstr "ערפל בסביבה"
+
+#: gweather/weather.c:196
+msgid "Light fog"
+msgstr "ערפל קל"
+
+#: gweather/weather.c:196
+msgid "Moderate fog"
+msgstr "ערפל מתון"
+
+#: gweather/weather.c:196
+msgid "Thick fog"
+msgstr "ערפל סמיך"
+
+#: gweather/weather.c:196
+msgid "Shallow fog"
+msgstr "ערפל שטחי"
+
+#: gweather/weather.c:196
+msgid "Patches of fog"
+msgstr "טלאי ערפל"
+
+#: gweather/weather.c:196
+msgid "Partial fog"
+msgstr "ערפל חלקי"
+
+#: gweather/weather.c:196
+msgid "Fog with wind"
+msgstr "ערפל עם רוח"
+
+#: gweather/weather.c:196
+msgid "Drifting fog"
+msgstr "ערפל נסחף"
+
+#: gweather/weather.c:196
+msgid "Freezing fog"
+msgstr "ערפל מקפיא"
+
+#. SMOKE
+#: gweather/weather.c:197
+msgid "Smoke"
+msgstr "עשן"
+
+#: gweather/weather.c:197
+msgid "Smoke in the vicinity"
+msgstr "עשן בסביבה"
+
+#: gweather/weather.c:197
+msgid "Thin smoke"
+msgstr "עשן דק"
+
+#: gweather/weather.c:197
+msgid "Moderate smoke"
+msgstr "עשן מתון"
+
+#: gweather/weather.c:197
+msgid "Thick smoke"
+msgstr "עשן סמיך"
+
+#: gweather/weather.c:197
+msgid "Shallow smoke"
+msgstr "עשן שטחי"
+
+#: gweather/weather.c:197
+msgid "Patches of smoke"
+msgstr "טלאי עשן"
+
+#: gweather/weather.c:197
+msgid "Partial smoke"
+msgstr "עשן חלקי"
+
+#: gweather/weather.c:197
+msgid "Smoke w/ thunders"
+msgstr "עשן עם ברקים"
+
+#: gweather/weather.c:197
+msgid "Smoke with wind"
+msgstr "עשן עם רוח"
+
+#: gweather/weather.c:197
+msgid "Drifting smoke"
+msgstr "עשן נסחף"
+
+#. VOLCANIC_ASH
+#: gweather/weather.c:198
+msgid "Volcanic ash"
+msgstr "אפר געשי"
+
+#: gweather/weather.c:198
+msgid "Volcanic ash in the vicinity"
+msgstr "אפר געשי בסביבה"
+
+#: gweather/weather.c:198
+msgid "Moderate volcanic ash"
+msgstr "אפר געשי מתון"
+
+#: gweather/weather.c:198
+msgid "Thick volcanic ash"
+msgstr "אפר געשי סמיך"
+
+#: gweather/weather.c:198
+msgid "Shallow volcanic ash"
+msgstr "אפר געשי שטחי"
+
+#: gweather/weather.c:198
+msgid "Patches of volcanic ash"
+msgstr "טלאי אפר געשי"
+
+#: gweather/weather.c:198
+msgid "Partial volcanic ash"
+msgstr "אפר געשי חלקי"
+
+#: gweather/weather.c:198
+msgid "Volcanic ash w/ thunders"
+msgstr "אפר געשי עם רעמים"
+
+#: gweather/weather.c:198
+msgid "Blowing volcanic ash"
+msgstr "אפר געשי נושב"
+
+#: gweather/weather.c:198
+msgid "Showers of volcanic ash "
+msgstr "ממטרים של אפר געשי "
+
+#: gweather/weather.c:198
+msgid "Drifting volcanic ash"
+msgstr "אפר געשי נסחף"
+
+#: gweather/weather.c:198
+msgid "Freezing volcanic ash"
+msgstr "אפר געשי מקפיא"
+
+#. SAND
+#: gweather/weather.c:199
+msgid "Sand"
+msgstr "חול"
+
+#: gweather/weather.c:199
+msgid "Sand in the vicinity"
+msgstr "חול בסביבה"
+
+#: gweather/weather.c:199
+msgid "Light sand"
+msgstr "חול קל"
+
+#: gweather/weather.c:199
+msgid "Moderate sand"
+msgstr "חול מתון"
+
+#: gweather/weather.c:199
+msgid "Heavy sand"
+msgstr "חול כבד"
+
+#: gweather/weather.c:199
+msgid "Patches of sand"
+msgstr "טלאי חול"
+
+#: gweather/weather.c:199
+msgid "Partial sand"
+msgstr "חול חלקי"
+
+#: gweather/weather.c:199
+msgid "Blowing sand"
+msgstr "חול נושב"
+
+#: gweather/weather.c:199
+msgid "Drifting sand"
+msgstr "חול נסחף"
+
+#. HAZE
+#: gweather/weather.c:200
+msgid "Haze"
+msgstr "אובך"
+
+#: gweather/weather.c:200
+msgid "Haze in the vicinity"
+msgstr "אובך בסביבה"
+
+#: gweather/weather.c:200
+msgid "Light haze"
+msgstr "אובך קל"
+
+#: gweather/weather.c:200
+msgid "Moderate haze"
+msgstr "אובך מתון"
+
+#: gweather/weather.c:200
+msgid "Thick haze"
+msgstr "אובך סמיך"
+
+#: gweather/weather.c:200
+msgid "Shallow haze"
+msgstr "אובך שטחי"
+
+#: gweather/weather.c:200
+msgid "Patches of haze"
+msgstr "טלאי אובך"
+
+#: gweather/weather.c:200
+msgid "Partial haze"
+msgstr "אובך חלקי"
+
+#: gweather/weather.c:200
+msgid "Haze with wind"
+msgstr "אובך עם הרוח"
+
+#: gweather/weather.c:200
+msgid "Drifting haze"
+msgstr "אובך נסחף"
+
+#: gweather/weather.c:200
+msgid "Freezing haze"
+msgstr "אובך מקפיא"
+
+#. SPRAY
+#: gweather/weather.c:201
+msgid "Sprays"
+msgstr "טיפות"
+
+#: gweather/weather.c:201
+msgid "Sprays in the vicinity"
+msgstr "טיפות בסביבה"
+
+#: gweather/weather.c:201
+msgid "Light sprays"
+msgstr "טיפות קלות"
+
+#: gweather/weather.c:201
+msgid "Moderate sprays"
+msgstr "טיפות מתונות"
+
+#: gweather/weather.c:201
+msgid "Heavy sprays"
+msgstr "טיפות חזקות"
+
+#: gweather/weather.c:201
+msgid "Shallow sprays"
+msgstr "טיפות שטחיות"
+
+#: gweather/weather.c:201
+msgid "Patches of sprays"
+msgstr "טלאי טיפות"
+
+#: gweather/weather.c:201
+msgid "Partial sprays"
+msgstr "טיפות חלקיות"
+
+#: gweather/weather.c:201
+msgid "Blowing sprays"
+msgstr "טיפות נושבות"
+
+#: gweather/weather.c:201
+msgid "Drifting sprays"
+msgstr "טיפות נסחפות"
+
+#: gweather/weather.c:201
+msgid "Freezing sprays"
+msgstr "טיפות מקפיאות"
+
+#. DUST
+#: gweather/weather.c:202
+msgid "Dust"
+msgstr "אבק"
+
+#: gweather/weather.c:202
+msgid "Dust in the vicinity"
+msgstr "אבק בסביבה"
+
+#: gweather/weather.c:202
+msgid "Light dust"
+msgstr "אבק קל"
+
+#: gweather/weather.c:202
+msgid "Moderate dust"
+msgstr "אבק מתון"
+
+#: gweather/weather.c:202
+msgid "Heavy dust"
+msgstr "אבק כבד"
+
+#: gweather/weather.c:202
+msgid "Patches of dust"
+msgstr "טלאי אבק"
+
+#: gweather/weather.c:202
+msgid "Partial dust"
+msgstr "אבק חלקי"
+
+#: gweather/weather.c:202
+msgid "Blowing dust"
+msgstr "אבק נושב"
+
+#: gweather/weather.c:202
+msgid "Drifting dust"
+msgstr "אבק נסחף"
+
+#. SQUALL
+#: gweather/weather.c:203
+msgid "Squall"
+msgstr "סופה"
+
+#: gweather/weather.c:203
+msgid "Squall in the vicinity"
+msgstr "סופה בסביבה"
+
+#: gweather/weather.c:203
+msgid "Light squall"
+msgstr "סופה קלה"
+
+#: gweather/weather.c:203
+msgid "Moderate squall"
+msgstr "סופה מתונה"
+
+#: gweather/weather.c:203
+msgid "Heavy squall"
+msgstr "סופה כבדה"
+
+#: gweather/weather.c:203
+msgid "Partial squall"
+msgstr "סופה חלקית"
+
+#: gweather/weather.c:203
+msgid "Thunderous squall"
+msgstr "סופת רעמים"
+
+#: gweather/weather.c:203
+msgid "Blowing squall"
+msgstr "סופה נושבת"
+
+#: gweather/weather.c:203
+msgid "Drifting squall"
+msgstr "סופה נסחפת"
+
+#: gweather/weather.c:203
+msgid "Freezing squall"
+msgstr "סופה מקפיאה"
+
+#. SANDSTORM
+#: gweather/weather.c:204
+msgid "Sandstorm"
+msgstr "סופת חול"
+
+#: gweather/weather.c:204
+msgid "Sandstorm in the vicinity"
+msgstr "סופת חול בסביבה"
+
+#: gweather/weather.c:204
+msgid "Light standstorm"
+msgstr "סופת חול קלה"
+
+#: gweather/weather.c:204
+msgid "Moderate sandstorm"
+msgstr "סופת חול מתונה"
+
+#: gweather/weather.c:204
+msgid "Heavy sandstorm"
+msgstr "סופת חול כבדה"
+
+#: gweather/weather.c:204
+msgid "Shallow sandstorm"
+msgstr "סופת חול חלקית"
+
+#: gweather/weather.c:204
+msgid "Partial sandstorm"
+msgstr "סופת חול חלקית"
+
+#: gweather/weather.c:204
+msgid "Thunderous sandstorm"
+msgstr "סופת חול רועמת"
+
+#: gweather/weather.c:204
+msgid "Blowing sandstorm"
+msgstr "סופת חול נושבת"
+
+#: gweather/weather.c:204
+msgid "Drifting sandstorm"
+msgstr "סופת חול נסחפת"
+
+#: gweather/weather.c:204
+msgid "Freezing sandstorm"
+msgstr "סופת חול מקפיאה"
+
+#. DUSTSTORM
+#: gweather/weather.c:205
+msgid "Duststorm"
+msgstr "סופת אבק"
+
+#: gweather/weather.c:205
+msgid "Duststorm in the vicinity"
+msgstr "סופת אבק בסביבה"
+
+#: gweather/weather.c:205
+msgid "Light duststorm"
+msgstr "סופת אבק קלה"
+
+#: gweather/weather.c:205
+msgid "Moderate duststorm"
+msgstr "סופת אבק מתונה"
+
+#: gweather/weather.c:205
+msgid "Heavy duststorm"
+msgstr "סופת אבק כבדה"
+
+#: gweather/weather.c:205
+msgid "Shallow duststorm"
+msgstr "סופת אבק חלקית"
+
+#: gweather/weather.c:205
+msgid "Partial duststorm"
+msgstr "סופת אבק חלקית"
+
+#: gweather/weather.c:205
+msgid "Thunderous duststorm"
+msgstr "סופת אבק רועמת"
+
+#: gweather/weather.c:205
+msgid "Blowing duststorm"
+msgstr "סוםת אבק נושבת"
+
+#: gweather/weather.c:205
+msgid "Drifting duststorm"
+msgstr "סופת חול נסחפת"
+
+#: gweather/weather.c:205
+msgid "Freezing duststorm"
+msgstr "סופת חול מקפיאה"
+
+#. FUNNEL_CLOUD
+#: gweather/weather.c:206
+msgid "Funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Funnel cloud in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Light funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Moderate funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Thick funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Shallow funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Patches of funnel clouds"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Partial funnel clouds"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Funnel cloud w/ wind"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Drifting funnel cloud"
+msgstr ""
+
+#. TORNADO
+#: gweather/weather.c:207
+msgid "Tornado"
+msgstr "טורנדו"
+
+#: gweather/weather.c:207
+msgid "Tornado in the vicinity"
+msgstr "טורנדו בסביבה"
+
+#: gweather/weather.c:207
+msgid "Moderate tornado"
+msgstr "טורנדו מתונה"
+
+#: gweather/weather.c:207
+msgid "Raging tornado"
+msgstr "טורנדו משתוללת"
+
+#: gweather/weather.c:207
+msgid "Partial tornado"
+msgstr "טורנדו חלקית"
+
+#: gweather/weather.c:207
+msgid "Thunderous tornado"
+msgstr "טורנדו רועמת"
+
+#: gweather/weather.c:207
+msgid "Drifting tornado"
+msgstr "טורנדו סוחפת"
+
+#: gweather/weather.c:207
+msgid "Freezing tornado"
+msgstr "טורנדו מקפיאה"
+
+#. DUST_WHIRLS
+#: gweather/weather.c:208
+msgid "Dust whirls"
+msgstr "מערבולת אבק"
+
+#: gweather/weather.c:208
+msgid "Dust whirls in the vicinity"
+msgstr "מערבולת אבק בסביבה"
+
+#: gweather/weather.c:208
+msgid "Light dust whirls"
+msgstr "מערבולת אבק קלה"
+
+#: gweather/weather.c:208
+msgid "Moderate dust whirls"
+msgstr "מערבולת אבק מתונה"
+
+#: gweather/weather.c:208
+msgid "Heavy dust whirls"
+msgstr "מערבולת אבק חזקה"
+
+#: gweather/weather.c:208
+msgid "Shallow dust whirls"
+msgstr "מערבולת אבק חלקית"
+
+#: gweather/weather.c:208
+msgid "Patches of dust whirls"
+msgstr "טלאי מערבולת אבק"
+
+#: gweather/weather.c:208
+msgid "Partial dust whirls"
+msgstr "מערבולת אבק חלקית"
+
+#: gweather/weather.c:208
+msgid "Blowing dust whirls"
+msgstr "מערבולת אבק נושבת"
+
+#: gweather/weather.c:208
+msgid "Drifting dust whirls"
+msgstr "מערבולת אבק נסחף"
+
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
+msgid "Failed to get METAR data.\n"
+msgstr "נכשל בקבלת נתונים מטריים.\n"
+
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
+msgid "WeatherInfo missing location"
+msgstr "ל WeatherInfo חסר מיקום"
+
+#: gweather/weather.c:1047
+msgid "Failed to get IWIN data.\n"
+msgstr "נכשל בקבלת נתונים מ IWIN.\n"
+
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1091
+msgid "Failed to get IWIN forecast data.\n"
+msgstr "נכשל בקבלת נתוני תחזית מ IWIN.\n"
+
+#: gweather/weather.c:1290
+msgid "Failed to get Met Office data.\n"
+msgstr "נכשל בקבלת נתונים מ Met Office.\n"
+
+#: gweather/weather.c:1324
+msgid "Failed to get Met Office forecast data.\n"
+msgstr "נכשל בקבלת נתוני תחזית מ Met Office.\n"
+
+#: gweather/weather.c:1468
+msgid "Failed to get radar map image.\n"
+msgstr "נכשל בקבלת תמונת ראדר.\n"
+
+#: gweather/weather.c:1771
+msgid "%a, %b %d / %H:%M"
+msgstr "%a, %b %d / %H:%M"
+
+#: gweather/weather.c:1775
+msgid "Unknown observation time"
+msgstr "זמן תצפית לא ידועה"
+
+#: gweather/weather.c:1835
 msgid "Calm"
 msgstr "רגוע"
 
-#: gweather/weather.c:561
-msgid "Could not download forecast"
-msgstr "לא ניתן להוריד תחזית"
+#: gweather/weather.c:1861
+msgid "Unknown"
+msgstr "לא ידוע"
+
+#: gweather/weather.c:1905
+msgid "Retrieval failed"
+msgstr "קבלה נכשלה"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
 msgid "Alert you when new mail arrives"
@@ -1988,7 +3000,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "יצרן ליצירת צגי תיבות דואר נכנס."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2203
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2445
 msgid "Inbox Monitor"
 msgstr "צג תיבת דואר נכנס"
 
@@ -2002,12 +3014,11 @@ msgstr "יצרן צג תיבת דואר נכנס"
 msgid "Internet"
 msgstr "אינטרנט"
 
-#: mailcheck/mailcheck.c:512
-#, c-format
-msgid "There was an error executing %s: %s"
-msgstr "ארעה שגיאה בהפעלת %s: %s"
+#: mailcheck/mailcheck.c:666
+msgid "Error checking mail"
+msgstr "שגיאה בבדיקת דואר"
 
-#: mailcheck/mailcheck.c:643
+#: mailcheck/mailcheck.c:797
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -2015,195 +3026,195 @@ msgstr ""
 "לא קבעת סיסמה בהעדפות לצג תיבת הדואר הנכנס,\n"
 "לכן עליך לכתוב אותה בכל פעם שזה עולה."
 
-#: mailcheck/mailcheck.c:651
+#: mailcheck/mailcheck.c:805
 msgid "Please enter your mailserver's _password:"
 msgstr "אנא הכנס את _סיסמת שרת הדואר שלך:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1742
+#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
 msgid "Password Entry box"
 msgstr "תיבת ערך סיסמה"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1764
+#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
 msgid "_Save password to disk"
 msgstr "_שמור סיסמה לדיסק"
 
-#: mailcheck/mailcheck.c:724
+#: mailcheck/mailcheck.c:888
 msgid "Could not connect to the Internet."
 msgstr "לא ניתן להתחבר לאינטרנט."
 
-#: mailcheck/mailcheck.c:728
+#: mailcheck/mailcheck.c:892
 msgid "The username or password is incorrect."
 msgstr "שם המשתמש או הסיסמה אינם נכונים."
 
-#: mailcheck/mailcheck.c:731
+#: mailcheck/mailcheck.c:895
 msgid "The server name is incorrect."
 msgstr "שם השרת אינו נכון."
 
-#: mailcheck/mailcheck.c:735
+#: mailcheck/mailcheck.c:899
 msgid "Error connecting to mail server."
 msgstr "שגיאה בהתחברות לשרת הדואר."
 
-#: mailcheck/mailcheck.c:740
+#: mailcheck/mailcheck.c:904
 msgid "Error"
 msgstr "שגיאה"
 
-#: mailcheck/mailcheck.c:919
+#: mailcheck/mailcheck.c:1083
 msgid "You have new mail."
 msgstr "יש לך דואר חדש."
 
-#: mailcheck/mailcheck.c:921
+#: mailcheck/mailcheck.c:1085
 msgid "You have mail."
 msgstr "יש לך דואר."
 
-#: mailcheck/mailcheck.c:925
+#: mailcheck/mailcheck.c:1089
 #, c-format
 msgid "%d unread/ %d messages"
 msgstr "%d לא נקראו/ %d הודעות"
 
-#: mailcheck/mailcheck.c:927
+#: mailcheck/mailcheck.c:1091
 #, c-format
 msgid "%d messages"
 msgstr "%d הודעות"
 
-#: mailcheck/mailcheck.c:931
+#: mailcheck/mailcheck.c:1095
 msgid "No mail."
 msgstr "אין דואר."
 
-#: mailcheck/mailcheck.c:1382 mailcheck/mailcheck.c:1383
-#: mailcheck/mailcheck.c:2553 mailcheck/mailcheck.c:2554
+#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
+#: mailcheck/mailcheck.c:2802 mailcheck/mailcheck.c:2803
 msgid "Status not updated"
 msgstr "המצב לא התעדכן."
 
-#: mailcheck/mailcheck.c:1581 mailcheck/mailcheck.c:2125
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2367
 msgid "Inbox Settings"
 msgstr "הגדרות תיבת דואר נכנס"
 
-#: mailcheck/mailcheck.c:1607
+#: mailcheck/mailcheck.c:1777
 msgid "Mailbox _resides on:"
 msgstr "תיבת הדואר _נמצאת ב:"
 
-#: mailcheck/mailcheck.c:1618
+#: mailcheck/mailcheck.c:1788
 msgid "Local mailspool"
 msgstr "mailspool מקומי"
 
-#: mailcheck/mailcheck.c:1626
+#: mailcheck/mailcheck.c:1796
 msgid "Local maildir"
 msgstr "ספריית דואר מקומית"
 
-#: mailcheck/mailcheck.c:1634
+#: mailcheck/mailcheck.c:1804
 msgid "Remote POP3-server"
 msgstr "שרת POP3 מרוחק"
 
-#: mailcheck/mailcheck.c:1642
+#: mailcheck/mailcheck.c:1812
 msgid "Remote IMAP-server"
 msgstr "שרת IMAP מרוחק"
 
-#: mailcheck/mailcheck.c:1662
+#: mailcheck/mailcheck.c:1837
 msgid "Mail _spool file:"
 msgstr "קובץ Mail _spool:"
 
-#: mailcheck/mailcheck.c:1669
+#: mailcheck/mailcheck.c:1844
 msgid "Browse"
 msgstr "עיין"
 
-#: mailcheck/mailcheck.c:1684
+#: mailcheck/mailcheck.c:1864
 msgid "Mail s_erver:"
 msgstr "_שרת דואר:"
 
-#: mailcheck/mailcheck.c:1693
+#: mailcheck/mailcheck.c:1873
 msgid "Mail Server Entry box"
 msgstr "תיבת ערך שרת דואר"
 
-#: mailcheck/mailcheck.c:1707
+#: mailcheck/mailcheck.c:1892
 msgid "_Username:"
 msgstr "_שם משתמש:"
 
-#: mailcheck/mailcheck.c:1718
+#: mailcheck/mailcheck.c:1903
 msgid "Username Entry box"
 msgstr "תיבת ערך שם משתמש"
 
-#: mailcheck/mailcheck.c:1731
+#: mailcheck/mailcheck.c:1921
 msgid "_Password:"
 msgstr "_סיסמה:"
 
-#: mailcheck/mailcheck.c:1776
+#: mailcheck/mailcheck.c:1974
 msgid "_Folder:"
 msgstr "_תיקייה:"
 
-#: mailcheck/mailcheck.c:1787
+#: mailcheck/mailcheck.c:1985
 msgid "Folder Entry box"
 msgstr "תיבת ערך תיקייה"
 
-#: mailcheck/mailcheck.c:1848
+#: mailcheck/mailcheck.c:2052
 msgid "Check for mail _every:"
 msgstr "בדוק דואר _כל:"
 
-#: mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:2073
 msgid "Choose time interval in minutes to check mail"
 msgstr "בחר פרק זמן בדקות לבדיקת דואר"
 
-#: mailcheck/mailcheck.c:1882
+#: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in seconds to check mail"
 msgstr "בחר פרק זמן בשניות לבדיקת דואר"
 
-#: mailcheck/mailcheck.c:1895
+#: mailcheck/mailcheck.c:2112
 msgid "Play a _sound when new mail arrives"
 msgstr "נגן _צליל כאשר דואר חדש מגיע"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:1903
+#: mailcheck/mailcheck.c:2122
 msgid "Sto_p animation when double clicked"
 msgstr "_עצור הנפשה בלחיצה כפולה"
 
-#: mailcheck/mailcheck.c:1914
+#: mailcheck/mailcheck.c:2135
 msgid "Select a_nimation:"
 msgstr "בחר ה_נפשה:"
 
-#: mailcheck/mailcheck.c:1927
+#: mailcheck/mailcheck.c:2152
 msgid "Commands"
 msgstr "פקודות"
 
-#: mailcheck/mailcheck.c:1956
+#: mailcheck/mailcheck.c:2181
 msgid "Before each _update:"
 msgstr "לפני כל _עדכון:"
 
-#: mailcheck/mailcheck.c:1971
+#: mailcheck/mailcheck.c:2198
 msgid "Command to execute before each update"
 msgstr "פקודה לביצוע לפני כל עדכון"
 
-#: mailcheck/mailcheck.c:1981
+#: mailcheck/mailcheck.c:2210
 msgid "When new mail _arrives:"
 msgstr "כאשר דואר חדש _מגיע:"
 
-#: mailcheck/mailcheck.c:1994 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2225 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "פקודה לביצוע כאשר דואר חדש מגיע"
 
-#: mailcheck/mailcheck.c:2004
+#: mailcheck/mailcheck.c:2237
 msgid "When double clicke_d:"
 msgstr "בעת לחיצה _כפולה:"
 
-#: mailcheck/mailcheck.c:2017
+#: mailcheck/mailcheck.c:2252
 msgid "Command to execute when clicked"
 msgstr "פקודה לביצוע כאשר נלחץ"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2337
 msgid "Inbox Monitor Preferences"
 msgstr "העדפות צג תיבת דואר נכנס"
 
-#: mailcheck/mailcheck.c:2205
+#: mailcheck/mailcheck.c:2447
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "צג תיבת הדואר הנכנס מודיע לך כאשר דואר חדש מגיע לתיבת הדואר שלך"
 
-#: mailcheck/mailcheck.c:2524
+#: mailcheck/mailcheck.c:2773
 msgid "Text only"
 msgstr "טקסט בלבד"
 
-#: mailcheck/mailcheck.c:2555
+#: mailcheck/mailcheck.c:2804
 msgid "Mail check"
 msgstr "בדיקת דואר"
 
-#: mailcheck/mailcheck.c:2556
+#: mailcheck/mailcheck.c:2805
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "בדיקת דואר מודיע לך כשאר דואר חדש מגיע לתיבת הדואר שלך"
 
@@ -2311,9 +3322,7 @@ msgstr "ככה אנו מעבדים את הדואר, מעבדים את הדואר
 msgid ""
 "This is the animation that will be displayed during normal Inbox Monitor "
 "usage"
-msgstr ""
-"זוהי ההנפשה שתוצג בזמן שימוש רגיל בצג תיבת הדואר "
-"הנכנס"
+msgstr "זוהי ההנפשה שתוצג בזמן שימוש רגיל בצג תיבת הדואר הנכנס"
 
 #: mailcheck/mailcheck.schemas.in.h:28
 msgid "Username on the remote server"
@@ -2488,8 +3497,8 @@ msgid "_Use default theme colors"
 msgstr "_השתמש בצבעי ערכת נושא ברירת מחדל"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autcomplete history"
-msgstr "היסטוריית השלמה אוטומטית"
+msgid "Autocomplete history"
+msgstr "השלם אוטומטית היסטורייה"
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Height of the applet"
@@ -2569,19 +3578,19 @@ msgstr "יישומון שורת הפקודה"
 msgid "This applet adds a command line to the panel"
 msgstr "יישומון זה מוסיף שורת פקודה ללוח שלך"
 
-#: mini-commander/src/preferences.c:387
+#: mini-commander/src/preferences.c:428
 msgid "You must specify a pattern"
 msgstr "אתה חייב לציין דפוס"
 
-#: mini-commander/src/preferences.c:391
+#: mini-commander/src/preferences.c:432
 msgid "You must specify a pattern and a command"
 msgstr "אתה חייב לציין דפוס ופקודה"
 
-#: mini-commander/src/preferences.c:392
+#: mini-commander/src/preferences.c:433
 msgid "You must specify a command"
 msgstr "אתה חייב לציין פקודה"
 
-#: mini-commander/src/preferences.c:395
+#: mini-commander/src/preferences.c:436
 msgid "You may not specify duplicate patterns"
 msgstr "אתה לא יכול לציין דפוסים כפולים"
 
@@ -2873,7 +3882,7 @@ msgid "Status not connected color"
 msgstr "צבע מצב לא מחובר"
 
 #: modemlights/modemlights.schemas.in.h:15
-msgid "Status wating connection color"
+msgid "Status waiting connection color"
 msgstr "צבע מצב ממתין לחיבור"
 
 #: modemlights/modemlights.schemas.in.h:16
@@ -2896,118 +3905,118 @@ msgstr "השתמש ב ISDN"
 msgid "Verify owner of lock file"
 msgstr "ודא בעלים של קובץ הנעילה"
 
-#: modemlights/properties.c:374
+#: modemlights/properties.c:416
 msgid "Modem Lights Preferences"
 msgstr "העדפות נוריות מודם"
 
-#: modemlights/properties.c:402
+#: modemlights/properties.c:444
 msgid "U_pdate every:"
 msgstr "_עדכן כל:"
 
 #. extra info checkbox
-#: modemlights/properties.c:424
+#: modemlights/properties.c:469
 msgid "Sho_w connect time and throughput"
 msgstr "הצ_ג זמן חיבור וקצב העברה"
 
-#: modemlights/properties.c:431
+#: modemlights/properties.c:479
 msgid "B_link connection status when connecting"
 msgstr "ה_בהב מצב חיבור כאשר מתחברים"
 
-#: modemlights/properties.c:438
+#: modemlights/properties.c:489
 msgid "Connections"
 msgstr "חיבורים"
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:498
 msgid "Co_nnection command:"
 msgstr "פקודת הת_חברות:"
 
-#: modemlights/properties.c:466
+#: modemlights/properties.c:522
 msgid "_Disconnection command:"
 msgstr "פקודת הת_נתקות:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:481
+#: modemlights/properties.c:542
 msgid "Con_firm connection"
 msgstr "א_שר התחברות"
 
-#: modemlights/properties.c:497
+#: modemlights/properties.c:561
 msgid "Receive Data"
 msgstr "קבלת מידע"
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:567
 msgid "_Foreground:"
 msgstr "_חזית:"
 
-#: modemlights/properties.c:508
+#: modemlights/properties.c:572
 msgid "Send Data"
 msgstr "שליחת מידע"
 
-#: modemlights/properties.c:513
+#: modemlights/properties.c:577
 msgid "Foregroun_d:"
 msgstr "ח_זית:"
 
-#: modemlights/properties.c:515
+#: modemlights/properties.c:579
 msgid "Backg_round:"
 msgstr "ר_קע:"
 
-#: modemlights/properties.c:518
+#: modemlights/properties.c:582
 msgid "Connection Status"
 msgstr "מצב התחברות"
 
-#: modemlights/properties.c:526
+#: modemlights/properties.c:590
 msgid "Co_nnected:"
 msgstr "מ_חובר:"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:592
 msgid "Disconnec_ted:"
 msgstr "מ_נותק:"
 
-#: modemlights/properties.c:531
+#: modemlights/properties.c:595
 msgid "C_onnecting:"
 msgstr "מ_תחבר:"
 
-#: modemlights/properties.c:534
+#: modemlights/properties.c:598
 msgid "Text"
 msgstr "טקסט"
 
-#: modemlights/properties.c:542
+#: modemlights/properties.c:606
 msgid "For_eground:"
 msgstr "חז_ית:"
 
-#: modemlights/properties.c:544
+#: modemlights/properties.c:608
 msgid "Bac_kground:"
 msgstr "רק_ע:"
 
-#: modemlights/properties.c:546
+#: modemlights/properties.c:610
 msgid "O_utline"
 msgstr "מ_תאר"
 
-#: modemlights/properties.c:549 multiload/properties.c:460
+#: modemlights/properties.c:613 multiload/properties.c:528
 msgid "Colors"
 msgstr "צבעים"
 
-#: modemlights/properties.c:558
+#: modemlights/properties.c:622
 msgid "Modem Options"
 msgstr "אפשרויות מודם"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:631
 msgid "_Device:"
 msgstr "_התקן:"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:655
 msgid "_Lock file:"
 msgstr "קובץ _נעילה:"
 
-#: modemlights/properties.c:600
+#: modemlights/properties.c:674
 msgid "_Verify owner of lock file"
 msgstr "_ודא בעלים של קובץ הנעילה"
 
 #. ISDN checkbox
-#: modemlights/properties.c:608
+#: modemlights/properties.c:685
 msgid "U_se ISDN"
 msgstr "ה_שתמש ב ISDN"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:702
 msgid "Advanced"
 msgstr "מתקדם"
 
@@ -3041,21 +4050,22 @@ msgid ""
 msgstr ""
 "משחורר תחת הרישיון הציבורי הכללי של GNU.\n"
 "\n"
-"צג הספק מערכת המאפשר להציג גרפים למעבד, מקום שימוש ב RAM ובקובץ תחלופה, וגם עומס רשת."
+"צג הספק מערכת המאפשר להציג גרפים למעבד, מקום שימוש ב RAM ובקובץ תחלופה, וגם "
+"עומס רשת."
 
-#: multiload/main.c:272 multiload/properties.c:485
+#: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
 msgstr "מעבד"
 
-#: multiload/main.c:274 multiload/properties.c:492
+#: multiload/main.c:274 multiload/properties.c:560
 msgid "Memory"
 msgstr "זיכרון"
 
-#: multiload/main.c:276 multiload/properties.c:500
+#: multiload/main.c:276 multiload/properties.c:568
 msgid "Network"
 msgstr "רשת"
 
-#: multiload/main.c:278 multiload/properties.c:508
+#: multiload/main.c:278 multiload/properties.c:576
 msgid "Swap Space"
 msgstr "מקום תחלופה"
 
@@ -3109,8 +4119,8 @@ msgid ""
 "for horizontal panels, the width of the applets in pixels. for verticle "
 "panels, this is the height of the applets."
 msgstr ""
-"ללוחות אופקיים, הרוחב של היישומונים בפיקסלים. ללוחות "
-"אנכיים, זהו הגובה של היישומונים."
+"ללוחות אופקיים, הרוחב של היישומונים בפיקסלים. ללוחות אנכיים, זהו הגובה של "
+"היישומונים."
 
 #: multiload/multiload.schemas.in.h:9
 msgid "the applet's background color."
@@ -3164,115 +4174,115 @@ msgstr "קצב הרענון של היישומונים במילי-שניות"
 msgid "Net Load"
 msgstr "הספק רשת"
 
-#: multiload/properties.c:283
+#: multiload/properties.c:326
 msgid "Monitored Resources"
 msgstr "משאבים מוצגים"
 
-#: multiload/properties.c:308
+#: multiload/properties.c:351
 msgid "_Processor"
 msgstr "_מעבד"
 
-#: multiload/properties.c:318
+#: multiload/properties.c:364
 msgid "_Memory"
 msgstr "_זיכרון"
 
-#: multiload/properties.c:328
+#: multiload/properties.c:377
 msgid "_Network"
 msgstr "_רשת"
 
-#: multiload/properties.c:338
+#: multiload/properties.c:390
 msgid "S_wap Space"
 msgstr "מקום _תחלופה"
 
-#: multiload/properties.c:348
+#: multiload/properties.c:403
 msgid "_Load"
 msgstr "ה_ספק"
 
-#: multiload/properties.c:392
+#: multiload/properties.c:450
 msgid "System m_onitor width: "
 msgstr "רוחב צ_ג המערכת: "
 
-#: multiload/properties.c:394
+#: multiload/properties.c:452
 msgid "System m_onitor height: "
 msgstr "גובה צ_ג המערכת: "
 
-#: multiload/properties.c:428
+#: multiload/properties.c:491
 msgid "Sys_tem monitor update interval: "
 msgstr "השהיית עדכוני צג המע_רכת: "
 
-#: multiload/properties.c:449
+#: multiload/properties.c:517
 msgid "milliseconds"
 msgstr "מילי-שניות"
 
-#: multiload/properties.c:487 multiload/properties.c:494
+#: multiload/properties.c:555 multiload/properties.c:562
 msgid "_User"
 msgstr "_משתמש"
 
-#: multiload/properties.c:488
+#: multiload/properties.c:556
 msgid "S_ystem"
 msgstr "מ_ערכת"
 
-#: multiload/properties.c:489
+#: multiload/properties.c:557
 msgid "N_ice"
 msgstr "N_ice"
 
-#: multiload/properties.c:490
+#: multiload/properties.c:558
 msgid "I_dle"
 msgstr "_סרק"
 
-#: multiload/properties.c:495
+#: multiload/properties.c:563
 msgid "Sh_ared"
 msgstr "מ_שותף"
 
-#: multiload/properties.c:496
+#: multiload/properties.c:564
 msgid "_Buffers"
 msgstr "_מאגרים"
 
-#: multiload/properties.c:497
+#: multiload/properties.c:565
 msgid "Cach_ed"
 msgstr "מ_טמון"
 
-#: multiload/properties.c:498
+#: multiload/properties.c:566
 msgid "F_ree"
 msgstr "פ_נוי"
 
-#: multiload/properties.c:502
+#: multiload/properties.c:570
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:503
+#: multiload/properties.c:571
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:504
+#: multiload/properties.c:572
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:505
+#: multiload/properties.c:573
 msgid "Othe_r"
 msgstr "א_חר"
 
-#: multiload/properties.c:506 multiload/properties.c:516
+#: multiload/properties.c:574 multiload/properties.c:584
 msgid "_Background"
 msgstr "_רקע"
 
-#: multiload/properties.c:510
+#: multiload/properties.c:578
 msgid "_Used"
 msgstr "_בשימוש"
 
-#: multiload/properties.c:511
+#: multiload/properties.c:579
 msgid "_Free"
 msgstr "_פנוי"
 
-#: multiload/properties.c:513
+#: multiload/properties.c:581
 msgid "Load"
 msgstr "הספק"
 
-#: multiload/properties.c:515
+#: multiload/properties.c:583
 msgid "_Average"
 msgstr "_ממוצע"
 
-#: multiload/properties.c:536
+#: multiload/properties.c:604
 msgid "System Monitor Preferences"
 msgstr "העדפות צג מערכת"
 
@@ -3509,9 +4519,8 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
-"כברירת מחדל, פתקיות דביקות מקבלות את התאריך הנוכחי ככותרת כאשר "
-"הן נוצרות. מבנה זה בשימוש; כל דבר שיכול להתפרק על-ידי strftime() "
-"הוא תקני."
+"כברירת מחדל, פתקיות דביקות מקבלות את התאריך הנוכחי ככותרת כאשר הן נוצרות. "
+"מבנה זה בשימוש; כל דבר שיכול להתפרק על-ידי strftime() הוא תקני."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -3569,33 +4578,31 @@ msgstr "פתקיות ריקות תמיד נמחקות ללא אישור"
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr ""
-"בכל זמן שמספר הדקות המצוין חולף, הפתקיות הדביקות "
-"נשמרות אוטומטית."
+msgstr "בכל זמן שמספר הדקות המצוין חולף, הפתקיות הדביקות נשמרות אוטומטית."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr ""
-"אם אפשרות זו כבויה, ניתן להשתמש בצבע מותאם אישית כצבע ברירת המחדל "
-"לכל הפתקיות הדביקות."
+"אם אפשרות זו כבויה, ניתן להשתמש בצבע מותאם אישית כצבע ברירת המחדל לכל "
+"הפתקיות הדביקות."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr ""
-"אם אפשרות זו כבויה, ניתן להשתמש בגופן מותאם אישית כגופן ברירת המחדל "
-"לכל הפתקיות הדביקות."
+"אם אפשרות זו כבויה, ניתן להשתמש בגופן מותאם אישית כגופן ברירת המחדל לכל "
+"הפתקיות הדביקות."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
-"אם אפשרות זו מאופשרת, יתעלמו מהצבעים המותאמים אישית והגופנים ששויכו "
-"לפתקיות עצמאיות."
+"אם אפשרות זו מאופשרת, יתעלמו מהצבעים המותאמים אישית והגופנים ששויכו לפתקיות "
+"עצמאיות."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -3604,8 +4611,8 @@ msgid ""
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
 "מתרחש כאשר לוחצים לחיצה שמאלית על היישומון או כאשר \"enter\" נלחץ. האפשרויות "
-"הן \"0\" ל \"פתקית חדשה\", \"1\" ל \"הצגה/הסתרה של כל הפתקיות\", "
-"ו \"2\" ל \"פתיחה/נעילה של כל הפתקיות\"."
+"הן \"0\" ל \"פתקית חדשה\", \"1\" ל \"הצגה/הסתרה של כל הפתקיות\", ו \"2\" ל "
+"\"פתיחה/נעילה של כל הפתקיות\"."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
@@ -3725,6 +4732,152 @@ msgstr "העדפות צג קישור אל-חוטי"
 msgid "_Monitored device:"
 msgstr "התקנים _מוצגים:"
 
+#~ msgid "Drive Mount Applet Warning"
+#~ msgstr "אזהרת יישומון חיבור כוננים"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "Today: %s\n"
+#~ "Current temperature %d%s"
+#~ msgstr ""
+#~ "%s\n"
+#~ "היום: %s\n"
+#~ "טמפרטורה נוכחית %d%s"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "%s: %s\n"
+#~ "Low %d%s, High %d%s"
+#~ msgstr ""
+#~ "%s\n"
+#~ "%s: %s\n"
+#~ "נמוך %d%s, גבוה %d%s"
+
+#~ msgid "There was an error retrieving the forecast"
+#~ msgstr "ארעה שגיאה בקבלת התחזית"
+
+#~ msgid "Day"
+#~ msgstr "יום"
+
+#~ msgid "Precipitation"
+#~ msgstr "משקע"
+
+#~ msgid "Condition"
+#~ msgstr "תנאי"
+
+#~ msgid "City:"
+#~ msgstr "עיר:"
+
+#~ msgid "Last update:"
+#~ msgstr "עדכון אחרון:"
+
+#~ msgid "Feels like:"
+#~ msgstr "מרגיש כמו:"
+
+#~ msgid "Forecast list"
+#~ msgstr "רשימת תחזית"
+
+#~ msgid "Shows forecast details for each day"
+#~ msgstr "הצג פרטי תחזית לכל יום"
+
+#~ msgid "%s / %.1f %s"
+#~ msgstr "%s / %.1f %s"
+
+#~ msgid "_Automatically update every:"
+#~ msgstr "עדכן _אוטומטית כל:"
+
+#~ msgid "Display _temperatures"
+#~ msgstr "הצג _טמפרטורות"
+
+#~ msgid "Number of _days to display:"
+#~ msgstr "מספר _ימים להצגה:"
+
+#~ msgid "Number of days spin button"
+#~ msgstr "כפתור טווח למספר הימים"
+
+#~ msgid "Spinbutton for determining the number of days to show on the panel"
+#~ msgstr "כפתור טווח לזיהוי מספר הימים להצגה על הלוח"
+
+#~ msgid "Current city:"
+#~ msgstr "עיר נוכחית:"
+
+#~ msgid "Available c_ountries:"
+#~ msgstr "_מדינות זמינות:"
+
+#~ msgid "Available c_ities:"
+#~ msgstr "_ערים זמינים:"
+
+#~ msgid ""
+#~ "If running the applet for the first time, prompt the user for the location"
+#~ msgstr "אם מפעילים את היישומון בפעם הראשונה, התרע את המשתמש על המיקום"
+
+#~ msgid ""
+#~ "Integer from 0 to 5. Determines how many days in advance are displayed"
+#~ msgstr "מספר שלם בין 0 ל 5. מציין כמה ימים קדימה מוצגים"
+
+#~ msgid "Name of city"
+#~ msgstr "שם העיר"
+
+#~ msgid "Name of city to forecast weather"
+#~ msgstr "שם העיר להצגת תחזית מזג-האויר"
+
+#~ msgid "Number of days to forecast"
+#~ msgstr "מספר ימים לתחזית"
+
+#~ msgid "Show temperature label next to forecast icon"
+#~ msgstr "הצג תווית טמפרטורה לצד סמל התחזית"
+
+#~ msgid "Show temperature labels on panel"
+#~ msgstr "הצג תוויות טמפרטורה על הלוח"
+
+#~ msgid "True if running applet for the first time"
+#~ msgstr "אמת אם מפעילים את היישומון בפעם הראשונה"
+
+#~ msgid "Url to download weather xml"
+#~ msgstr "כתובת להורדת XML של מזג-האויר"
+
+#~ msgid "Windy"
+#~ msgstr "סוער"
+
+#~ msgid "Sleet"
+#~ msgstr "גשם מעורב בשלג"
+
+#~ msgid "Light Flurries"
+#~ msgstr "סופה קצרה קלה"
+
+#~ msgid "Flurries"
+#~ msgstr "סופות קצרות"
+
+#~ msgid "Snow and Wind"
+#~ msgstr "שלג ורוח"
+
+#~ msgid "Cold"
+#~ msgstr "קור"
+
+#~ msgid "Cloudy"
+#~ msgstr "מעונן"
+
+#~ msgid "Mostly Cloudy"
+#~ msgstr "מעונן בעיקר"
+
+#~ msgid "Partly Cloudy"
+#~ msgstr "מעונן חלקית"
+
+#~ msgid "Sunny"
+#~ msgstr "שטוף שמש"
+
+#~ msgid "Mostly Sunny"
+#~ msgstr "שטוף שמש לרב"
+
+#~ msgid "Hot"
+#~ msgstr "חם"
+
+#~ msgid "Nothing"
+#~ msgstr "כלום"
+
+#~ msgid "Could not download forecast"
+#~ msgstr "לא ניתן להוריד תחזית"
+
 #~ msgid "Applet layout"
 #~ msgstr "סידור יישומון"
 
@@ -3800,9 +4953,6 @@ msgstr "התקנים _מוצגים:"
 #~ msgid "No data available or properties not set"
 #~ msgstr "אין מידע זמין או שהעדפות לא נקבעו"
 
-#~ msgid "minute(s)"
-#~ msgstr "דקות"
-
 #, fuzzy
 #~ msgid "Command Entry box"
 #~ msgstr "שורת פקודה"
@@ -3845,676 +4995,6 @@ msgstr "התקנים _מוצגים:"
 
 #~ msgid "- Colo_r:"
 #~ msgstr "- _צבע:"
-
-#~ msgid "GNOME Weather"
-#~ msgstr "מזג-האויר GNOME"
-
-#~ msgid "Location:"
-#~ msgstr "מיקום:"
-
-#~ msgid "Sky:"
-#~ msgstr "שמיים:"
-
-#~ msgid "Dew point:"
-#~ msgstr "נקודת העיבוי:"
-
-#~ msgid "ForeCast Report"
-#~ msgstr "דיווח תחזית"
-
-#~ msgid "See the ForeCast Details"
-#~ msgstr "ראה את פרטי התחזית"
-
-#~ msgid "_Visit Weather.com"
-#~ msgstr "_בקר ב Weather.com"
-
-#~ msgid "URL link Button"
-#~ msgstr "כפתור קישור לכתובת"
-
-#~ msgid "Click to Enter Weather.com"
-#~ msgstr "לחץ כדי להכנס ל Weather.com"
-
-#~ msgid "_Radar map"
-#~ msgstr "מפת _ראדר"
-
-#~ msgid ""
-#~ "Detailed forecast not available for this location.\n"
-#~ "Please try the state forecast; note that IWIN forecasts are available "
-#~ "only for US cities."
-#~ msgstr ""
-#~ "תחזית מפורטת לאזור זה אינה זמינה.\n"
-#~ "אנא נסה את התחזית המדינית; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
-
-#~ msgid ""
-#~ "State forecast not available for this location.\n"
-#~ "Please try the detailed forecast; note that IWIN forecasts are available "
-#~ "only for US cities."
-#~ msgstr ""
-#~ "תחזית מדינית לאזור זה אינה זמינה.\n"
-#~ "אנא נסה את התחזית המופרטת; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
-
-#~ msgid "Location view"
-#~ msgstr "תצוגת מיקום"
-
-#~ msgid "Address Entry"
-#~ msgstr "ערך כתובת"
-
-#~ msgid "Enter the URL"
-#~ msgstr "הזן כתובת"
-
-#~ msgid "Enable _detailed forecast"
-#~ msgstr "אפשר תחזיות מ_פורטות"
-
-#~ msgid "A_ddress :"
-#~ msgstr "_כתובת :"
-
-#~ msgid "Updates"
-#~ msgstr "עידכונים"
-
-#~ msgid "_Automatically update every "
-#~ msgstr "_עדכן אוטומטית כל "
-
-#~ msgid "Miscellaneous"
-#~ msgstr "שונות"
-
-#~ msgid "Invalid"
-#~ msgstr "לא תקני"
-
-#~ msgid "Drizzle"
-#~ msgstr "טפטוף"
-
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "טפטוף בסביבה"
-
-#~ msgid "Moderate drizzle"
-#~ msgstr "טפטוף מתון"
-
-#~ msgid "Heavy drizzle"
-#~ msgstr "טפטוף כבד"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "טפטוף שטחי"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "טפטוף חלקי"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "טפטוף סוער"
-
-#~ msgid "Showers"
-#~ msgstr "ממטרים"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "טפטוף סוחף"
-
-#~ msgid "Freezing drizzle"
-#~ msgstr "טפטוף מקפיא"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "גשם בסביבה"
-
-#~ msgid "Light rain"
-#~ msgstr "גשם קל"
-
-#~ msgid "Moderate rain"
-#~ msgstr "גשם מתון"
-
-#~ msgid "Shallow rain"
-#~ msgstr "גשם שטחי"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "גשם חלקי"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "משב גשמים"
-
-#~ msgid "Rain showers"
-#~ msgstr "ממטרי גשם"
-
-#~ msgid "Drifting rain"
-#~ msgstr "גשם סוחף"
-
-#~ msgid "Freezing rain"
-#~ msgstr "גשם מקפיא"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "שלג בסביבה"
-
-#~ msgid "Light snow"
-#~ msgstr "שלג קל"
-
-#~ msgid "Moderate snow"
-#~ msgstr "שלג מתון"
-
-#~ msgid "Heavy snow"
-#~ msgstr "שלג כבד"
-
-#~ msgid "Shallow snow"
-#~ msgstr "שלג שטחי"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "שלג חלקי"
-
-#~ msgid "Snowstorm"
-#~ msgstr "סופת שלגים"
-
-#~ msgid "Blowing snowfall"
-#~ msgstr "משב שלגים"
-
-#~ msgid "Snow showers"
-#~ msgstr "ממטרי שלג"
-
-#~ msgid "Drifting snow"
-#~ msgstr "שלג נסחף"
-
-#~ msgid "Freezing snow"
-#~ msgstr "שלג מקפיא"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "פתיתי שלג בסביבה"
-
-#~ msgid "Light snow grains"
-#~ msgstr "פתיתי שלג קל"
-
-#~ msgid "Moderate snow grains"
-#~ msgstr "פתיתי שלג מתון"
-
-#~ msgid "Heavy snow grains"
-#~ msgstr "פתיתי שלג כבד"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "פתיתי שלג שטחי"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "פתיתי שלג חלקי"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "משב פתיתי שלג"
-
-#~ msgid "Snow grain showers"
-#~ msgstr "ממטרי פתיתי שלג"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "פתיתי שלג נסחפים"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "פתיתי שלג מקפיאים"
-
-#~ msgid "Ice pellets"
-#~ msgstr "כדורי קרח"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "כדורי קרח בסביבה"
-
-#~ msgid "Few ice pellets"
-#~ msgstr "מעט כדורי קרח"
-
-#~ msgid "Moderate ice pellets"
-#~ msgstr "כדורי קרח מתון"
-
-#~ msgid "Heavy ice pellets"
-#~ msgstr "כדורי קרח כבד"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "כדורי קרח שטחי"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "כדורי קרח חלקי"
-
-#~ msgid "Ice pellet storm"
-#~ msgstr "סופת כדורי קרח"
-
-#~ msgid "Showers of ice pellets"
-#~ msgstr "ממטרים של כדורי קרח"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "כדורי קרח נסחפים"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "כדורי קרח מקפיאים"
-
-#~ msgid "Hail"
-#~ msgstr "ברד"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "ברד בסביבה"
-
-#~ msgid "Light hail"
-#~ msgstr "ברד קל"
-
-#~ msgid "Moderate hail"
-#~ msgstr "ברד מתון"
-
-#~ msgid "Heavy hail"
-#~ msgstr "ברד כבד"
-
-#~ msgid "Shallow hail"
-#~ msgstr "ברד שטחי"
-
-#~ msgid "Partial hail"
-#~ msgstr "ברד חלקי"
-
-#~ msgid "Hailstorm"
-#~ msgstr "סופת ברד"
-
-#~ msgid "Blowing hail"
-#~ msgstr "משב ברד"
-
-#~ msgid "Hail showers"
-#~ msgstr "ממטרי ברד"
-
-#~ msgid "Drifting hail"
-#~ msgstr "ברד נסחף"
-
-#~ msgid "Freezing hail"
-#~ msgstr "ברד מקפיא"
-
-#~ msgid "Small hail"
-#~ msgstr "ברד קטן"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "ברד קטן בסביבה"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "ברד קטן מתון"
-
-#~ msgid "Heavy small hail"
-#~ msgstr "ברד קטן כבד"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "ברד קטן שטחי"
-
-#~ msgid "Partial small hail"
-#~ msgstr "ברד קטן חלקי"
-
-#~ msgid "Small hailstorm"
-#~ msgstr "סופת ברד קטנה"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "משב ברד קטן"
-
-#~ msgid "Showers of small hail"
-#~ msgstr "ממטרים של ברד קטן"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "ברד קטן נסחף"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "ברד קטן מקפיא"
-
-#~ msgid "Unknown precipitation"
-#~ msgstr "משקע לא ידוע"
-
-#~ msgid "Precipitation in the vicinity"
-#~ msgstr "משקעים בסביבה"
-
-#~ msgid "Light precipitation"
-#~ msgstr "משקעים קלים"
-
-#~ msgid "Moderate precipitation"
-#~ msgstr "משקעים מתונים"
-
-#~ msgid "Heavy precipitation"
-#~ msgstr "משקעים כבדים"
-
-#~ msgid "Shallow precipitation"
-#~ msgstr "משקעים שטחיים"
-
-#~ msgid "Unknown thunderstorm"
-#~ msgstr "סופת רעמים לא ידועה"
-
-#~ msgid "Blowing precipitation"
-#~ msgstr "משקע נושב"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "ממטרים, סוג לא ידוע"
-
-#~ msgid "Drifting precipitation"
-#~ msgstr "משקע נסחף"
-
-#~ msgid "Freezing precipitation"
-#~ msgstr "משקע מקפיא"
-
-#~ msgid "Mist"
-#~ msgstr "אד"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "אד בסביבה"
-
-#~ msgid "Light mist"
-#~ msgstr "אד קל"
-
-#~ msgid "Moderate mist"
-#~ msgstr "אד מתון"
-
-#~ msgid "Thick mist"
-#~ msgstr "אד סמיך"
-
-#~ msgid "Shallow mist"
-#~ msgstr "אד שטחי"
-
-#~ msgid "Partial mist"
-#~ msgstr "אד חלקי"
-
-#~ msgid "Mist with wind"
-#~ msgstr "אד עם רוח"
-
-#~ msgid "Drifting mist"
-#~ msgstr "אד נסחף"
-
-#~ msgid "Freezing mist"
-#~ msgstr "אד מקפיא"
-
-#~ msgid "Fog in the vicinity"
-#~ msgstr "ערפל בסביבה"
-
-#~ msgid "Light fog"
-#~ msgstr "ערפל קל"
-
-#~ msgid "Moderate fog"
-#~ msgstr "ערפל מתון"
-
-#~ msgid "Thick fog"
-#~ msgstr "ערפל סמיך"
-
-#~ msgid "Shallow fog"
-#~ msgstr "ערפל שטחי"
-
-#~ msgid "Partial fog"
-#~ msgstr "ערפל חלקי"
-
-#~ msgid "Fog with wind"
-#~ msgstr "ערפל עם רוח"
-
-#~ msgid "Drifting fog"
-#~ msgstr "ערפל נסחף"
-
-#~ msgid "Freezing fog"
-#~ msgstr "ערפל מקפיא"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "עשן בסביבה"
-
-#~ msgid "Thin smoke"
-#~ msgstr "עשן דק"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "עשן מתון"
-
-#~ msgid "Thick smoke"
-#~ msgstr "עשן סמיך"
-
-#~ msgid "Shallow smoke"
-#~ msgstr "עשן שטחי"
-
-#~ msgid "Partial smoke"
-#~ msgstr "עשן חלקי"
-
-#~ msgid "Smoke w/ thunders"
-#~ msgstr "עשן עם ברקים"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "עשן עם רוח"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "עשן נסחף"
-
-#~ msgid "Volcanic ash"
-#~ msgstr "אפר געשי"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "אפר געשי בסביבה"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "אפר געשי מתון"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "אפר געשי סמיך"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "אפר געשי שטחי"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "אפר געשי חלקי"
-
-#~ msgid "Volcanic ash w/ thunders"
-#~ msgstr "אפר געשי עם רעמים"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "אבר געשי נושב"
-
-#~ msgid "Showers of volcanic ash "
-#~ msgstr "ממטרים של אפר געשי "
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "אפר געשי נסחף"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "אפר געשי מקפיא"
-
-#~ msgid "Sand"
-#~ msgstr "חול"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "חול בסביבה"
-
-#~ msgid "Light sand"
-#~ msgstr "חול קל"
-
-#~ msgid "Moderate sand"
-#~ msgstr "חול מתון"
-
-#~ msgid "Heavy sand"
-#~ msgstr "חול כבד"
-
-#~ msgid "Partial sand"
-#~ msgstr "חול חלקי"
-
-#~ msgid "Blowing sand"
-#~ msgstr "חול נושב"
-
-#~ msgid "Drifting sand"
-#~ msgstr "חול נסחף"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "אובך בסביבה"
-
-#~ msgid "Light haze"
-#~ msgstr "אובך קל"
-
-#~ msgid "Moderate haze"
-#~ msgstr "אובך מתון"
-
-#~ msgid "Thick haze"
-#~ msgstr "אובך סמיך"
-
-#~ msgid "Shallow haze"
-#~ msgstr "אובך שטחי"
-
-#~ msgid "Partial haze"
-#~ msgstr "אובך חלקי"
-
-#~ msgid "Haze with wind"
-#~ msgstr "אובך עם הרוח"
-
-#~ msgid "Drifting haze"
-#~ msgstr "אובך נסחף"
-
-#~ msgid "Freezing haze"
-#~ msgstr "אובך מקפיא"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "אבק בסביבה"
-
-#~ msgid "Light dust"
-#~ msgstr "אבק קל"
-
-#~ msgid "Moderate dust"
-#~ msgstr "אבק מתון"
-
-#~ msgid "Heavy dust"
-#~ msgstr "אבק כבד"
-
-#~ msgid "Partial dust"
-#~ msgstr "אבק חלקי"
-
-#~ msgid "Blowing dust"
-#~ msgstr "אבק נושב"
-
-#~ msgid "Drifting dust"
-#~ msgstr "אבק נסחף"
-
-#~ msgid "Squall"
-#~ msgstr "סופה"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "סופה בסביבה"
-
-#~ msgid "Light squall"
-#~ msgstr "סופה קלה"
-
-#~ msgid "Moderate squall"
-#~ msgstr "סופה מתונה"
-
-#~ msgid "Heavy squall"
-#~ msgstr "סופה כבדה"
-
-#~ msgid "Partial squall"
-#~ msgstr "סופה חלקית"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "סופת רעמים"
-
-#~ msgid "Blowing squall"
-#~ msgstr "סופה נושבת"
-
-#~ msgid "Drifting squall"
-#~ msgstr "סופה נסחפת"
-
-#~ msgid "Freezing squall"
-#~ msgstr "סופה מקפיאה"
-
-#~ msgid "Sandstorm"
-#~ msgstr "סופת חול"
-
-#~ msgid "Sandstorm in the vicinity"
-#~ msgstr "סופת חול בסביבה"
-
-#~ msgid "Light standstorm"
-#~ msgstr "סופת חול קלה"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "סופת חול מתונה"
-
-#~ msgid "Heavy sandstorm"
-#~ msgstr "סופת חול כבדה"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "סופת חול חלקית"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "סופת חול חלקית"
-
-#~ msgid "Thunderous sandstorm"
-#~ msgstr "סופת חול רועמת"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "סופת חול נושבת"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "סופת חול נסחפת"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "סופת חול מקפיאה"
-
-#~ msgid "Duststorm"
-#~ msgstr "סופת אבק"
-
-#~ msgid "Duststorm in the vicinity"
-#~ msgstr "סופת אבק בסביבה"
-
-#~ msgid "Light duststorm"
-#~ msgstr "סופת אבק קלה"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "סופת אבק מתונה"
-
-#~ msgid "Heavy duststorm"
-#~ msgstr "סופת אבק כבדה"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "סופת אבק חלקית"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "סופת אבק חלקית"
-
-#~ msgid "Thunderous duststorm"
-#~ msgstr "סופת אבק רועמת"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "סוםת אבק נושבת"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "סופת חול נסחפת"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "סופת חול מקפיאה"
-
-#~ msgid "Tornado"
-#~ msgstr "טורנדו"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "טורנדו בסביבה"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "טורנדו מתונה"
-
-#~ msgid "Raging tornado"
-#~ msgstr "טורנדו משתוללת"
-
-#~ msgid "Partial tornado"
-#~ msgstr "טורנדו חלקית"
-
-#~ msgid "Thunderous tornado"
-#~ msgstr "טורנדו רועמת"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "טורנדו סוחפת"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "טורנדו מקפיאה"
-
-#~ msgid "Failed to get METAR data.\n"
-#~ msgstr "נכשל בקבלת נתונים מטריים.\n"
-
-#~ msgid "WeatherInfo missing location"
-#~ msgstr "ל WeatherInfo חסר מיקום"
-
-#~ msgid "Failed to get IWIN data.\n"
-#~ msgstr "נכשל בקבלת נתונים מ IWIN.\n"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "נכשל בקבלת נתוני תחזית מ IWIN.\n"
-
-#~ msgid "Failed to get Met Office data.\n"
-#~ msgstr "נכשל בקבלת נתונים מ Met Office.\n"
-
-#~ msgid "Failed to get Met Office forecast data.\n"
-#~ msgstr "נכשל בקבלת נתוני תחזית מ Met Office.\n"
-
-#~ msgid "Failed to get radar map image.\n"
-#~ msgstr "נכשל בקבלת תמונת ראדר.\n"
-
-#~ msgid "%a, %b %d / %H:%M"
-#~ msgstr "%a, %b %d / %H:%M"
-
-#~ msgid "Unknown observation time"
-#~ msgstr "זמן תצפית לא ידועה"
-
-#~ msgid "Unknown"
-#~ msgstr "לא ידוע"
-
-#~ msgid "Retrieval failed"
-#~ msgstr "קבלה נכשלה"
 
 #~ msgid "Querying available channels of mixer device %s failed\n"
 #~ msgstr "שאילתה לערוצים הזמינים של התקן המערבל %s נכשל\n"
