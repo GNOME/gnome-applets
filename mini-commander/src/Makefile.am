@@ -67,7 +67,7 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 CLEANFILES = $(server_in_files) $(server_DATA)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = mini-commander.schemas.in
+schemas_in_files = mini-commander.schemas.in mini-commander-global.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@

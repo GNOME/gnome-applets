@@ -51,8 +51,8 @@ void         gconf_shutdown_daemon  (GError **err);
 
 #include "mc-default-macros.h"
 
-#define MC_PATTERNS_SHEMA_KEY "/schemas/apps/mini-commander/prefs/macro_patterns"
-#define MC_COMMANDS_SHEMA_KEY "/schemas/apps/mini-commander/prefs/macro_commands"
+#define MC_PATTERNS_SHEMA_KEY "/schemas/apps/mini-commander-global/macro_patterns"
+#define MC_COMMANDS_SHEMA_KEY "/schemas/apps/mini-commander-global/macro_commands"
 
 static void
 install_default_macros_list (GConfClient *client,

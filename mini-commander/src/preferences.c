@@ -265,6 +265,7 @@ save_macros_to_gconf (MCData *mc)
     GConfValue    *commands;
     GSList        *pattern_list = NULL;
     GSList        *command_list = NULL;
+    GConfClient   *client;
 
     dialog = &mc->prefs_dialog;
 
@@ -298,9 +299,12 @@ save_macros_to_gconf (MCData *mc)
 
     gconf_value_set_list_nocopy (patterns, pattern_list); pattern_list = NULL;
     gconf_value_set_list_nocopy (commands, command_list); command_list = NULL;
-
-    panel_applet_gconf_set_value (mc->applet, "macro_patterns", patterns, NULL);
-    panel_applet_gconf_set_value (mc->applet, "macro_commands", commands, NULL);
+    
+    client = gconf_client_get_default ();
+    gconf_client_set (client, "/apps/mini-commander/macro_patterns",
+		    patterns, NULL);
+    gconf_client_set (client, "/apps/mini-commander/macro_commands",
+		    commands, NULL);
 
     gconf_value_free (patterns);
     gconf_value_free (commands);
@@ -673,6 +677,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 {
     MCPrefsDialog   *dialog;
     GtkCellRenderer *renderer;
+    GConfClient     *client;
 
     dialog = &mc->prefs_dialog;
 
@@ -756,8 +761,11 @@ mc_preferences_setup_dialog (GladeXML *xml,
     g_signal_connect (dialog->delete_button, "clicked", G_CALLBACK (macro_delete), mc);
     g_signal_connect (dialog->add_button, "clicked", G_CALLBACK (macro_add), mc);
 
-    if ( ! mc_key_writable (mc, "macro_patterns") ||
-	 ! mc_key_writable (mc, "macro_commands")) {
+    client = gconf_client_get_default ();
+    if ( ! gconf_client_key_is_writable (client,
+		 "/apps/mini-commander/macro_patterns", NULL) ||
+	 ! gconf_client_key_is_writable (client,
+		 "/apps/mini-commander/macro_commands", NULL)) {
 	    hard_set_sensitive (dialog->add_button, FALSE);
 	    hard_set_sensitive (dialog->delete_button, FALSE);
 	    hard_set_sensitive (dialog->macros_tree, FALSE);
@@ -857,9 +865,13 @@ mc_load_macros (MCData *mc)
     GConfValue *macro_patterns;
     GConfValue *macro_commands;
     GSList     *macros_list = NULL;
-
-    macro_patterns = panel_applet_gconf_get_value (mc->applet, "macro_patterns", NULL);
-    macro_commands = panel_applet_gconf_get_value (mc->applet, "macro_commands", NULL);
+    GConfClient *client;
+    
+    client = gconf_client_get_default ();
+    macro_patterns = gconf_client_get (client,
+		    "/apps/mini-commander/macro_patterns", NULL);
+    macro_commands = gconf_client_get (client,
+		    "/apps/mini-commander/macro_commands", NULL);
     
     if (macro_patterns && macro_commands) {
     	GSList *patterns;
@@ -993,21 +1005,17 @@ mc_setup_listeners (MCData *mc)
                                 NULL, NULL);
     g_free (key);
 
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "macro_patterns");
     mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
+				client, "/apps/mini-commander/macro_patterns",
 				(GConfClientNotifyFunc) macros_changed,
                                 mc,
                                 NULL, NULL);
-    g_free (key);
 
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "macro_commands");
     mc->listeners [i++] = gconf_client_notify_add (
-				client, key,
+				client, "/apps/mini-commander/macro_commands",
 				(GConfClientNotifyFunc) macros_changed,
                                 mc,
                                 NULL, NULL);
-    g_free (key);
 
     g_assert (i == MC_NUM_LISTENERS);
 
