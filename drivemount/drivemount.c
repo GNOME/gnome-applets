@@ -154,17 +154,11 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 	buf[0] = dd->mount_point;
 	buf[1] = NULL;
 
-/*	I assume the first (commented out) call is mor correct, but:
- *	use  "IDL:GNOME/FileManagerWindow:1.0"  ?
- *	how do we correctly construct this string? In the event version != 1.0 ?
- */
+	/* FIXME browse menu item is broken here. */
+	goad_server_activate_with_repo_id(NULL,
+					  "IDL:GNOME/FileManager/Window:1.0",
+					  0, buf);
 
-/*	goad_server_activate_with_repo_id(NULL, "IDL:GNOME/FileManagerWindow:1.0",
-			GOAD_ACTIVATE_REMOTE | GOAD_ACTIVATE_ASYNC, buf);
-*/
-
-	goad_server_activate_with_id(NULL, "gmc_filemanager_window",
-			0, buf);
 	return;
 	widget = NULL;
 }
@@ -255,8 +249,9 @@ static void update_pixmap(DriveData *dd, gint t)
 	if (hint > SIZEHINT_MAX) hint = SIZEHINT_MAX; /* maximum size we can scale to */
 	hint -= 6; /* buttons have border of 3 >>> FIXME!, broken for themes ? */
 
+/*
 	printf("dm applet check: orient=%d size=%d scale=%d\n", dd->orient, dd->sizehint, dd->scale_applet);
-
+*/
 	if (dd->device_pixmap > icon_list_count - 1) dd->device_pixmap = 0;
 
 	if (dd->device_pixmap < 0 && (!dd->custom_icon_in || !dd->custom_icon_out) ) dd->device_pixmap = 0;
@@ -633,9 +628,6 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 #else
 	dd->sizehint = SIZEHINT_DEFAULT;
 #endif
-
-#warning FIXME: someone please please look into why orient and size are zero at this point
-	printf("dm applet test: orient=%d size=%d\n", dd->orient, dd->sizehint);
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, dd);
 

@@ -273,12 +273,12 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_zipdrive_cb, dd);
 	gtk_menu_append (GTK_MENU (menu), item);
 
-	item = gtk_menu_item_new_with_label(_("Jaz Drive"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_jazdrive_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
 	item = gtk_menu_item_new_with_label(_("Hard Disk"));
 	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_harddisk_cb, dd);
+	gtk_menu_append (GTK_MENU (menu), item);
+
+	item = gtk_menu_item_new_with_label(_("Jaz Drive"));
+	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_jazdrive_cb, dd);
 	gtk_menu_append (GTK_MENU (menu), item);
 
 	item = gtk_menu_item_new_with_label(_("Custom"));
@@ -286,7 +286,12 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_menu_append (GTK_MENU (menu), item);
 
 	gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
-	gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->prop_device_pixmap);
+
+	if (dd->prop_device_pixmap == -1 /* custom */)
+		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), 5);
+	else
+		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->prop_device_pixmap);
+
         gtk_box_pack_start(GTK_BOX(hbox), omenu, TRUE, TRUE, 0);
 	gtk_widget_show (omenu);
 
