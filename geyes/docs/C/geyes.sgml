@@ -1,118 +1,167 @@
-  <sect1 id="geyes">
-   <title>The gEyes applet</title>
+ <sect1 id="geyes">
+  <title>gEyes Applet</title>
+
    <para>
-     The GNOME panel <application>gEyes</application> is an applet
-     which adorns your panel with a pair of eyes which follow your
-     mouse pointer around the screen. It is part of the gnome-applets 
-     package. This section of the guide refers to gEyes-1.1.2, which 
-     is distributed in gnome-applets-1.1.2.
+   <application>gEyes</application> applet, shown in <xref
+   linkend="geyesapplet-fig">,  is a pair of eyes which follow your
+   mouse pointer around the screen.  To add this applet to a
+   <interface>Panel</interface>,  right-click on the
+   <interface>Panel</interface> and choose
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Amusements</guisubmenu>
+    <guimenuitem>gEyes</guimenuitem>
+   </menuchoice>.
+  </para>
+
+  <figure id="geyesapplet-fig">
+   <title>gEyes Applet</title>
+   <screenshot>
+    <screeninfo>gEyes Applet</screeninfo>
+    <graphic format="png" fileref="geyes_applet" 
+    srccredit="arjan">
+    </graphic>
+   </screenshot>
+  </figure>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="geyes-usage">
+   <title>Usage</title>
+   <para>
+    Watch the eyes watch your mouse.
    </para>
+
    <para>
-     To add the gEyes to your <interface>panel</interface>, you can
-     press <mousebutton>mouse button 2</mousebutton> on an empty
-     part of the <interface>panel</interface> and follow the sequence
-    <menuchoice>
-     <guimenu>Applets</guimenu>
-     <guisubmenu>Amusements</guisubmenu>
-     <guimenuitem>gEyes</guimenuitem>
-    </menuchoice>
-     or you can issue this command at a command prompt: 
-     <command>geyes_applet --activate-goad-server=geyes_applet &amp </command>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
+
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="geyes-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>gEyes
+       Applet</application>, including the applet's version and the
+       author's name.
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="geyes-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>gEyes</application>
+      applet by right-clicking on it and choosing
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="geyes-settings-fig">), which allows you to
+      change the theme.
     </para>
 
-    <sect2 id="geyes-usage">
-     <title>Usage</title>
-     <para>
-       Once it is present, you don't need to do anything to gEyes.
-       If you want to, though, the following options are available:
-     </para>
-     <orderedlist>
-      <listitem>
-       <para>
-         Pressing <mousebutton>mouse button 1</mousebutton> has
-         no effect.
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-         Holding down <mousebutton>mouse button 2</mousebutton> allows you
-         to move the eyes about in the same way you move anything on the
-         panel.
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-         Pressing <mousebutton>mouse button 3</mousebutton> brings
-         up the standard choices available for applets, including a
-         <guilabel>properties menu</guilabel> explained <link
-         linkend="geyes-prefs">below</link>, and an 
-         About box.
-       </para>
-      </listitem>
-     </orderedlist>
-    </sect2>
+    <figure id="geyes-settings-fig">
+     <title>Properties dialog</title>
+     <screenshot>
+      <screeninfo>Properties dialog</screeninfo>
+      <graphic format="png" fileref="geyes_settings"
+      srccredit="arjan">
+      </graphic>
+     </screenshot>
+    </figure>
 
-    <sect2 id="geyes-prefs">
-     <title>Preferences</title>
-     <para>
-       The <interface>properties dialogue box</interface> (which calls
-       itself &quot;gEyes Settings&quot; rather than properties) lets you select
-       a theme for the eyes. The themes vary from the (relatively)
-       sensible to the bizarre.
-     </para>
-    </sect2>
-
-    <sect2 id="geyes-bugs">
-     <title>Known Bugs and Limitations</title>
-     <itemizedlist>
-      <listitem>
-       <para>
-         With the honourable exception of Default-tiny, most of the themes 
-         will be too large for some sizes of panels and force the panel
-         to resized.
-       </para>
-      </listitem>
-     </itemizedlist>
-    </sect2>
-
-  <sect2 id="authors">
-    <title>Authors</title>
     <para>
-      The <application>gEyes applet</application> was written by
-      Dave Camp (<email>campd@oit.edu</email>), and based on the
-      well-known xeyes program.  Please send all comments,
-      suggestions, and bug 
-      reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME 
-      bug tracking database</ulink>. (Instructions for submitting bug
-      reports can be found <ulink
-      url="http://bugs.gnome.org/Reporting.html" type="http">
-      on-line</ulink>. If you are using
-      GNOME 1.1 or later, you can also use <application>Bug Report
-      Tool</application> (<command>bug-buddy</command>), available in the
-      <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
-      Menu</guimenu>, for submitting bug reports.
+     This window shows a list of the currently installed
+     themes(appearances) for <application>gEyes</application>.  Select
+     the theme you would like to use. 
     </para>
-<!-- Don't know if this is what you want Telsa.
-    <para>
-      Please report bugs in the gEyes applet to the
-      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
-      tracking system</ulink>. You can do this by following the
-      guidelines on that site or by using
-      <application>bug-buddy</application>
-      from the command-line. For the package, put gnome-applets.
-    </para>
--->
-    <para>
-      This manual was written by Telsa Gwynne
-      (<email>telsa@linuxchix.org</email>). Please send all comments and
-      suggestions regarding this manual to the <ulink type="http"
-      url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
-      by sending an email to <email>docs@gnome.org</email>. You can also
-      submit comments online by using the <ulink type="http"
-      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
-      Table</ulink>.
+
+    <para> 
+      After you have selected your new theme, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
+      <interface>Properties</interface> dialog.
     </para>
   </sect2>
+
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="geyes-bugs">
+   <title>Known Bugs and Limitations</title>
+   <para>
+    With the exception of Default-tiny, most of the themes 
+    are too large for some <interface>Panel</interface> sizes and
+    force the <interface>Panel</interface> to resize.
+   </para>
+  </sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="geyes-authors">
+   <title>Authors</title>
+   <para>
+    <application>gEyes</application> was written by Dave Camp
+    (<email>campd@oit.edu</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Telsa Gwynne 
+    (<email>hobbit@aloss.ukuu.org.uk</email>) and Arjan Scherpenisse
+    (<email>acscherp@wins.uva.nl</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
 
   <sect2 id="license">
    <title>License</title>
@@ -144,13 +193,8 @@
     </address>
    </para>
   </sect2>
-</sect1>
 
-
-
-
-
-
+ </sect1>
 
 
 
