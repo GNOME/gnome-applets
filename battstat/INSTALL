@@ -1,3 +1,29 @@
+$id$
+Compiling Battstat from CVS sources
+===================================
+
+Building Battstat using the source from CVS differs slightly from
+normal compilation. Since the source comes from CVS the configure
+script is missing and has to be created. You need to have autoconf
+and friends installed on your system.
+
+  1. Log in to the CVS server:
+  cvs -d:pserver:anonymous@cvs.battstat.sourceforge.net:/cvsroot/battstat login
+     When asked for the password just hit enter.
+
+  2. Check out the Battstat source (It will create a subdirectory):
+  cvs -z8 -d:pserver:anonymous@cvs.battstat.sourceforge.net:/cvsroot/battstat co battstat_applet
+
+  3. Cd to the new directory and run './autogen.sh' to recreate the 
+     './configure' script. If you want to add any options to 'configure'
+     just add them after './autogen.sh'. For example:
+     './autogen.sh --prefix=/usr'.
+
+  4. Run 'make' to build Battstat.
+
+  5. To test the applet, you could just type 'src/battstat_applet'.
+     And if you want to install this version, just do a 'make install'.
+
 Basic Installation
 ==================
 
