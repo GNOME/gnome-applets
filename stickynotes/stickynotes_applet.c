@@ -49,6 +49,7 @@ static const StickyNotesStockIcon stickynotes_icons[] =
 static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data) 
 {
 	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
+		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
 		if (!stickynotes)
 			stickynotes_applet_init();
 
