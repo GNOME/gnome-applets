@@ -89,12 +89,13 @@ icon_selection_ok (GtkWidget *w, GtkWidget **f)
 	gtk_widget_destroy (cf);      
 }
 
-static void
+static gint
 icon_selection_cancel (GtkWidget *w, GtkWidget **f)
 {
 	GtkWidget *cf = *f;
 	delete_browse (w, NULL, f);
 	gtk_widget_destroy (cf);
+        return FALSE;
 }
 
 static void
@@ -102,7 +103,9 @@ browse_icons (GtkWidget *w, gpointer p)
 {
 	if (!fileSel) {
 		
-		fileSel = gtk_file_selection_new (_("Icon Selection"));
+		fileSel = gtk_file_selection_new (
+		_("Icon Selection")
+		);
 		if (temp_props.dfile[cur])
 			gtk_file_selection_set_filename (GTK_FILE_SELECTION (fileSel),
 							 temp_props.dfile[cur]);
@@ -216,7 +219,9 @@ properties(AppletWidget *applet, gpointer data)
 	memcpy(&temp_props,&pr,sizeof(gkb_properties));
 
         propbox = gnome_property_box_new();
-	gtk_window_set_title(GTK_WINDOW(propbox), _("GKB settings"));
+	gtk_window_set_title(GTK_WINDOW(propbox), 
+	_("GKB settings")
+	);
 	gtk_window_set_policy(GTK_WINDOW(propbox), FALSE, FALSE, TRUE);
 
 	gtk_container_set_border_width( GTK_CONTAINER(nbox), 1 );
@@ -245,7 +250,9 @@ properties(AppletWidget *applet, gpointer data)
           pix1 = gnome_pixmap_new_from_file(pr.dfile[0]);
          }
          if (pix1 == NULL) {
-          pix1 = gtk_label_new(_("Couldn't\nload\nicon"));
+          pix1 = gtk_label_new(
+	  _("Couldn't\nload\nicon")
+	  );
          }
 
         if ( pix1 ) {
@@ -262,7 +269,9 @@ properties(AppletWidget *applet, gpointer data)
           pix2 = gnome_pixmap_new_from_file(pr.dfile[1]);
          }
          if (pix2 == NULL) {
-          pix2 = gtk_label_new(_("Couldn't\nload\nicon"));
+          pix2 = gtk_label_new(
+	   _("Couldn't\nload\nicon")
+	   );
          }
         if ( pix2 ) {
          gtk_container_add(GTK_CONTAINER(but2), pix2 );
@@ -274,11 +283,15 @@ properties(AppletWidget *applet, gpointer data)
         omenu = gtk_option_menu_new ();
         menu = gtk_menu_new ();
 
-        item = gtk_menu_item_new_with_label(_("Xkb"));
+        item = gtk_menu_item_new_with_label(
+	 _("Xkb")
+	 );
         gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) ch_xkb_cb, NULL);
         gtk_menu_append (GTK_MENU (menu), item);
 
-        item = gtk_menu_item_new_with_label(_("Xmodmap"));
+        item = gtk_menu_item_new_with_label(
+	 _("Xmodmap")
+	);
         gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) ch_xmodmap_cb, NULL);
         gtk_menu_append (GTK_MENU (menu), item);
 
@@ -291,7 +304,9 @@ properties(AppletWidget *applet, gpointer data)
         gtk_widget_show (omenu);
 
 	gtk_notebook_append_page (GTK_NOTEBOOK(GNOME_PROPERTY_BOX (propbox)->notebook),
-				  nbox, gtk_label_new (_("Menu")));
+				  nbox, gtk_label_new (
+				  _("Menu")
+				  ));
 
         gtk_signal_connect( GTK_OBJECT(propbox),
 		"apply", GTK_SIGNAL_FUNC(apply_callback), NULL );
