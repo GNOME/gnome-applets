@@ -11,8 +11,8 @@ EXTRA_DIST = webcontrol-applet.sgml webcontrol.sgml topic.dat
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
 
-index.html: webcontrol-applet/webcontrol-applet.html
-	-cp webcontrol-applet/webcontrol-applet.html index.html
+index.html: webcontrol-applet/index.html
+	-cp webcontrol-applet/index.html .
 
 webcontrol-applet/index.html: $(srcdir)/webcontrol-applet.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
