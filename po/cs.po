@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-14 11:47+0100\n"
-"PO-Revision-Date: 2004-11-14 19:39+0100\n"
+"POT-Creation-Date: 2004-11-21 11:43+0100\n"
+"PO-Revision-Date: 2004-11-21 16:46+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1 cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
@@ -157,8 +157,8 @@ msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#: charpick/GNOME_CharpickerApplet.xml.h:3 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3 cpufreq/GNOME_CPUFreqApplet.xml.h:3
+#: geyes/GNOME_GeyesApplet.xml.h:3 gkb-new/GNOME_KeyboardApplet.xml.h:3
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:6 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
@@ -447,7 +447,8 @@ msgstr ""
 "Nemohu přistupovat k událostem ACPI v /var/run/acpid.socket! Přesvědčte se, "
 "že subsystém ACPI funguje a démon acpid běží."
 
-#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
+#: battstat/battstat_applet.glade.h:1 cpufreq/cpufreq-preferences.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -798,14 +799,6 @@ msgstr "Sledovat změny frekvence CPU"
 msgid "Utility"
 msgstr "Nástroj"
 
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:1
-msgid "_About..."
-msgstr "O _aplikaci..."
-
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Nastavení..."
-
 #: cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
 "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
@@ -843,21 +836,17 @@ msgid ""
 msgstr ""
 "Nastavit CPU, kterou sledovat. V jednoprocesorovém systému to nemusíte měnit."
 
-#: cpufreq/cpufreq-preferences.glade.h:1
+#: cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>Nastavení zobrazení</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:2
+#: cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Nastavení sledování</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:3
-msgid "CPUFreq Monitor Preferences"
-msgstr "Nastavení Sledování CPUFreq"
-
 #: cpufreq/cpufreq-preferences.glade.h:4
-msgid "Monitored CPU"
-msgstr "Sledovaná CPU"
+msgid "CPU Frequency Monitor Preferences"
+msgstr "Nastavení Sledování frekvence CPU"
 
 #: cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
@@ -872,8 +861,12 @@ msgid "Show frequency _units"
 msgstr "Zobrazovat _jednotky frekvence"
 
 #: cpufreq/cpufreq-preferences.glade.h:8
-msgid "Show in Mode "
-msgstr "Zobrazovat v režimu "
+msgid "_Monitored CPU:"
+msgstr "_Sledovaná CPU:"
+
+#: cpufreq/cpufreq-preferences.glade.h:9
+msgid "_Show in mode:"
+msgstr "Zobrazovat v _režimu:"
 
 #: cpufreq/src/cpufreq-applet.c:119 cpufreq/src/cpufreq-prefs.c:220
 msgid ""
@@ -4825,11 +4818,11 @@ msgstr "Aplet hlasitosti"
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Aplet pro ovládání hlasitosti založený na GNOME/GStreamer"
 
-#: mixer/dock.c:116
+#: mixer/dock.c:117
 msgid "+"
 msgstr "+"
 
-#: mixer/dock.c:144
+#: mixer/dock.c:145
 msgid "-"
 msgstr "-"
 
@@ -4849,11 +4842,11 @@ msgid "No volume control elements and/or devices found."
 msgstr "Nenalezeny elementy nebo zařízení pro ovládání hlasitosti."
 
 #. make window look cute
-#: mixer/preferences.c:112
+#: mixer/preferences.c:113
 msgid "Volume Control Preferences"
 msgstr "Nastavení ovládání hlasitosti"
 
-#: mixer/preferences.c:125
+#: mixer/preferences.c:126
 msgid "Select the device and track to control."
 msgstr "Vyberte zařízení a stopu, kterou ovládat."
 
@@ -6019,3 +6012,6 @@ msgid ""
 msgstr ""
 "Nemohu přesunout do koše:\n"
 "%s"
+
+#~ msgid "_Preferences..."
+#~ msgstr "_Nastavení..."
