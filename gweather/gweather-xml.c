@@ -426,13 +426,11 @@ void gweather_xml_load_locations (GtkTreeView *tree, WeatherLocation *loc)
     locale = gnome_i18n_get_language_list("LC_MESSAGES");
     
     /* Open the xml file containing the different locations */
-    file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_DATADIR,
-					"gweather/Locations.xml", FALSE, NULL);
+    file = gnome_datadir_file (GWEATHER_XML_LOCATION);
     g_return_if_fail (file);
     reader = xmlNewTextReaderFilename (file);
     g_return_if_fail (reader);
-    g_free (file);
-
+    
     /* The first node that is read is <gweather> */
     ret = xmlTextReaderRead (reader);
     if ( ret == 1 ) {
