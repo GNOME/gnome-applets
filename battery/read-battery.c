@@ -211,6 +211,10 @@ battery_read_charge (int * percentage,
       return FALSE;
     }
 
+#ifdef OAPM_IOC_GETPOWER
+  aip.batteryid = 0;	/* APM BIOS, not a specific battery */
+#endif
+
   if (ioctl(fd, APM_IOC_GETPOWER, &aip) == -1) {
     g_error(_("ioctl failed on /dev/apm."));
     return FALSE;
@@ -240,7 +244,7 @@ battery_read_charge (int * percentage,
   *percentage = -1;
   *hours_remaining = -1;
   *minutes_remaining = 1;
-
+  return TRUE;
 #endif /* __linux__ || __FreeBSD__ || __NetBSD__ */
 
 } /* battery_read_charge */
