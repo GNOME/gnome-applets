@@ -431,8 +431,7 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
         GdkPixmap *radar = weather_info_get_radar(gw_applet->gweather_info);
         if (radar) {
             gtk_image_set_from_pixmap (GTK_IMAGE (gw_applet->radar_image), 
-                                       radar, NULL);
+                                       radar, gw_applet->gweather_info->radar_mask);
         }
     }
 }
-

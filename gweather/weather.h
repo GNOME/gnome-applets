@@ -191,6 +191,7 @@ struct _WeatherInfo {
     gchar *radar_url;
     GdkPixbufLoader *radar_loader;
     GdkPixmap *radar;
+    GdkBitmap *radar_mask;
     GnomeVFSAsyncHandle *metar_handle;
     GnomeVFSAsyncHandle *iwin_handle;
     GnomeVFSAsyncHandle *wx_handle;
@@ -243,4 +244,3 @@ extern void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbu
 G_END_DECLS
 
 #endif /* __WEATHER_H_ */
-

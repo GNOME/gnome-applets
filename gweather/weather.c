@@ -1692,7 +1692,7 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	if (pixbuf != NULL) {
             if (info->radar)
                 g_object_unref (info->radar);
-	    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &info->radar, NULL, 127);
+	    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &info->radar, &info->radar_mask, 127);
         }
 	g_object_unref (G_OBJECT (info->radar_loader));
         
