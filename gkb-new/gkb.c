@@ -111,8 +111,7 @@ gkb_draw (GKB * gkb)
     }
 
   gtk_tooltips_set_tip (gkb->tooltips, gkb->applet, gkb->keymap->name, NULL);
-  add_atk_namedesc(gkb->applet, gkb->keymap->name, _("Press the hotkey to switch
-between layouts. The hotkey can be set through Properties dialog"));
+  add_atk_namedesc(gkb->applet, gkb->keymap->name, _("Press the hotkey to switch between layouts. The hotkey can be set through Properties dialog"));
 
 }
 
