@@ -1,27 +1,23 @@
-SUBDIRS = docs
+#SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) 
+	$(GNOME_APPLETS_CFLAGS)				\
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
-bin_PROGRAMS = life_applet
+bin_PROGRAMS = life_applet2
 
-life_applet_SOURCES = life.c
+life_applet2_SOURCES = life.c
 
-life_applet_LDADD = \
-		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
-
-sysdir = $(datadir)/applets/Amusements
-sys_predata = life_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
-
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = life_applet.gnorba
+life_applet2_LDADD = \
+		       $(GNOME_APPLETS_LIBS)
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-life.png
 
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_LifeApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+@XML_I18N_MERGE_SERVER_RULE@
 EXTRA_DIST = $(pixmap_DATA)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(server_in_files)

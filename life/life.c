@@ -10,8 +10,8 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
+#include <panel-applet.h>
+#include <gnome.h>
 #include <gdk/gdk.h>
 
 #define LIFE_CYCLE 600
@@ -147,7 +147,7 @@ cycle(gpointer data)
 }
 
 static void
-randomize (AppletWidget *applet, gpointer data)
+randomize (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	int i,j;
 	/*randomize the entire board*/
@@ -188,7 +188,7 @@ create_life (void)
 }
 
 static void
-about (AppletWidget *applet, gpointer data)
+about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	static const char *authors[] = { "The man in the box", NULL };
 	static GtkWidget *about_box = NULL;
@@ -202,8 +202,10 @@ about (AppletWidget *applet, gpointer data)
 	about_box = gnome_about_new (_("The Game of Life"),
 				     VERSION,
 				     _("Copyright (C) The Free Software Foundation"),
-				     authors,
 				     _("A complete waste of perfectly good CPU cycles."),
+				     authors,
+				     NULL,
+				     NULL,
 				     NULL);
 
 	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
@@ -213,7 +215,7 @@ about (AppletWidget *applet, gpointer data)
 }
 
 static void
-applet_change_pixel_size(GtkWidget *w, int sz, gpointer data)
+applet_change_size_cb(PanelApplet *w, gint sz, gpointer data)
 {
 	size = sz - 4;
 	if(size>MAX_SIZE) size=MAX_SIZE;
@@ -224,20 +226,35 @@ applet_change_pixel_size(GtkWidget *w, int sz, gpointer data)
 }
 
 static void
-help_cb (AppletWidget *applet, gpointer data)
+help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
     GnomeHelpMenuEntry help_entry = { "life_applet", "index.html"};
     gnome_help_display(NULL, &help_entry);
+#endif
 }
 
-int
-main (int argc, char **argv)
-{
-	GtkWidget *applet;
-	GtkWidget *life;
+static const BonoboUIVerb life_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Randomize", randomize),
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about),
 
-	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-	textdomain (PACKAGE);
+        BONOBO_UI_VERB_END
+};
+
+static const char life_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Randomize\" _label=\"Randomize\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"</popup>\n";
+
+static gboolean
+life_applet_fill (PanelApplet *applet)
+{
+	GtkWidget *life;
 	
 	/*do some randomizing*/
 	srand(time(NULL));
@@ -245,48 +262,44 @@ main (int argc, char **argv)
 	gsin += ((rand()>>6)%255)/100.0;
 	bsin += ((rand()>>6)%255)/100.0;
 
-	applet_widget_init ("life_applet", VERSION, argc,
-			    argv, NULL, 0, NULL);
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-life.png");
-
-	applet = applet_widget_new ("life_applet");
-	if (!applet)
-		g_error (_("Can't create life applet!"));
+	randomize(NULL,NULL,NULL);
 	
-	randomize(NULL,NULL);
-	
-	size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet)) - 2;
+	size = panel_applet_get_size(applet) - 2;
 	if(size>MAX_SIZE) size=MAX_SIZE;
-
-	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
-			   NULL);
-
+	
+	g_signal_connect (G_OBJECT (applet), "change_size",
+			  G_CALLBACK (applet_change_size_cb), NULL);
+	
 	life = create_life ();
-	applet_widget_add (APPLET_WIDGET (applet), life);
-	gtk_widget_show (life);
-
-	gtk_widget_show (applet);
-
-	applet_widget_register_callback (APPLET_WIDGET (applet),
-					 "randomize",
-					 _("Randomize"),
-					 randomize,
-					 life);
-	applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					       "help",
-					       GNOME_STOCK_PIXMAP_HELP,
-					       _("Help"), help_cb, NULL);
-	applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					       "about",
-					       GNOME_STOCK_MENU_ABOUT,
-					       _("About..."),
-					       about,
-					       NULL);
-
+	gtk_container_add (GTK_CONTAINER (applet), life);
+	gtk_widget_show (GTK_WIDGET (applet));
+	
 	gtk_timeout_add(LIFE_CYCLE,cycle,NULL);
-
-	applet_widget_gtk_main ();
-
-	return 0;
+	
+	panel_applet_setup_menu (applet,
+				 life_applet_menu_xml,
+				 life_applet_menu_verbs,
+				 life);
+	
+	return TRUE;
 }
+
+static gboolean
+life_applet_factory (PanelApplet *applet,
+			const gchar *iid,
+			gpointer     data)
+{
+	gboolean retval = FALSE;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_LifeApplet"))
+		retval = life_applet_fill (applet); 
+    
+	return retval;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_LifeApplet_Factory",
+			     "Life Applet",
+			     "0",
+			     life_applet_factory,
+			     NULL)
+
