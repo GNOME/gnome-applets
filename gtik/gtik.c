@@ -763,17 +763,15 @@ static gint updateOutput(gpointer data)
 	static void zipLeft(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
 		gboolean current;
-		gint i;
+		gint i, temp;
 
 		current = stockdata->props.scroll;
 		stockdata->props.scroll = TRUE;
-		stockdata->delta = 150;
+		temp = stockdata->delta;
+		stockdata->delta = 50;
 		stockdata->MOVE = 0;
-		/*for (i=0;i<151;i++) {
-			Repaint(stockdata);
-		}*/
 		Repaint(stockdata);
-		stockdata->delta = 2;
+		stockdata->delta = temp;
 		stockdata->props.scroll = current;
 	}
 
@@ -781,18 +779,15 @@ static gint updateOutput(gpointer data)
 	static void zipRight(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
 		gboolean current;
-		gint i;
+		gint i, temp;
 
 		current = stockdata->props.scroll;
 		stockdata->props.scroll = FALSE;
-		stockdata->delta = 150;
+		temp = stockdata->delta;
+		stockdata->delta = 50;
 		stockdata->MOVE = 0;
-		/*
-		for (i=0;i<151;i++) {
-			Repaint(stockdata);
-		}*/
 		Repaint(stockdata);
-		stockdata->delta = 2;
+		stockdata->delta = temp;
 		stockdata->props.scroll = current;
 	}
 
@@ -1519,7 +1514,7 @@ static gint updateOutput(gpointer data)
 		access_stock = stockdata = g_new0 (StockData, 1);
 		stockdata->applet = GTK_WIDGET (applet);
 		stockdata->timeout = 0;
-		stockdata->delta = 2;
+		stockdata->delta = 1;
 		stockdata->vfshandle = NULL;
 		stockdata->configFileName = g_strconcat (g_getenv ("HOME"), 
 						         "/.gtik.conf", NULL);
