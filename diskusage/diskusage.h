@@ -3,6 +3,7 @@
 
 #include <applet-widget.h>
 
+#include <config.h>
 #include <glibtop.h>
 #include <glibtop/fsusage.h>
 #include <glibtop/mountlist.h>
