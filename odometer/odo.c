@@ -653,11 +653,11 @@ static const BonoboUIVerb odo_applet_menu_verbs [] = {
 static const char odo_applet_menu_xml [] =
 	"<popup name=\"button3\">\n"
 	"   <menuitem name=\"Item 1\" verb=\"Reset\" _label=\"Reset\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Properties\" _label=\"Properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Properties\" _label=\"Properties\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"Help\" _label=\"Help\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 4\" verb=\"About\" _label=\"About\"/>\n"
+	"   <menuitem name=\"Item 4\" verb=\"About\" _label=\"About\"\n"
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 	
