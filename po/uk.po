@@ -3,8 +3,8 @@
 # Yuri Syrota <rasta@renome.rovno.ua>, 2000
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.1.0\n"
-"POT-Creation-Date: 2000-04-20 03:20-0400\n"
+"Project-Id-Version: gnome-applets 1.1.3cvs\n"
+"POT-Creation-Date: 2000-05-04 12:48+0300\n"
 "PO-Revision-Date: 2000-01-04 14:15+0200\n"
 "Last-Translator: Yuri Syrota <rasta@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -101,7 +101,7 @@ msgstr "Установки годинника"
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:786
-#: modemlights/properties.c:297 odometer/properties.c:292
+#: modemlights/properties.c:297 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:433 slashapp/properties.c:351
 #: sound-monitor/properties.c:436 tickastat/properties.c:424
 msgid "General"
@@ -156,7 +156,7 @@ msgstr "Аналоговий годинник, схожий до того, що в панел╕ CDE."
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
-#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:192
+#: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:189 gweather/gweather-applet.c:192
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
@@ -169,7 +169,7 @@ msgstr "Влистивост╕..."
 #: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
 #: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
-#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:197
+#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:193 gweather/gweather-applet.c:197
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
@@ -183,8 +183,8 @@ msgstr "Дов╕дка"
 #: battery/battery.c:955 cdplayer/cdplayer.c:408 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
-#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
-#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:202
+#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb-new/gkb.c:450
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:202
 #: jbc/jbc-applet.c:201 life/life.c:288
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
@@ -483,8 +483,8 @@ msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
 msgstr ""
-"Ц╕ символи з'являтимуться коли панель запуститься. Щоб повернутися до "
-"цього списку, натисн╕ть <пропуск> коли аплет матиме фокус."
+"Ц╕ символи з'являтимуться коли панель запуститься. Щоб повернутися до цього "
+"списку, натисн╕ть <пропуск> коли аплет матиме фокус."
 
 #. add tab to propwindow
 #: charpick/properties.c:293
@@ -533,12 +533,12 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:141 odometer/properties.c:150
+#: clockmail/properties.c:141 odometer/properties.c:151
 #: sound-monitor/properties.c:166
 msgid "None (default)"
 msgstr "Нема╓ (типово)"
 
-#: clockmail/properties.c:278
+#: clockmail/properties.c:278 odometer/properties.c:228
 msgid "Themes:"
 msgstr "Теми:"
 
@@ -582,7 +582,7 @@ msgstr "Коли клацнуть, виконати:"
 msgid "Theme file (directory):"
 msgstr "Файл теми (каталог):"
 
-#: clockmail/properties.c:469 odometer/properties.c:333
+#: clockmail/properties.c:469 odometer/properties.c:335
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Тема"
@@ -743,7 +743,7 @@ msgstr "Вибер╕ть п╕ктограму для демонтованих"
 msgid "Custom icon for not mounted:"
 msgstr "Нетипова п╕ктограма для демонтованих:"
 
-#: drivemount/properties.c:340 odometer/properties.c:284
+#: drivemount/properties.c:340 odometer/properties.c:285
 msgid "Scale size to panel"
 msgstr "Масшабувати ром╕р до панел╕"
 
@@ -807,59 +807,62 @@ msgstr "Установки gEyes"
 msgid "Themes"
 msgstr "Теми"
 
-#: gkb/gkb.c:91
-msgid "Browse"
-msgstr "Переглянути"
+#: gkb-new/gkb.c:319
+msgid "The GNOME KeyBoard Switcher Applet"
+msgstr "Аплет-перемикач клав╕атури GNOME"
 
-#: gkb/gkb.c:348
+#: gkb-new/gkb.c:321
+msgid "(C) 1998-2000 LSC - Linux Support Center"
+msgstr "© 1998-2000 LSC - Linux Support Center"
+
+#: gkb-new/gkb.c:323
+msgid ""
+"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
+"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
+"Kovacs <emese@eik.bme.hu> for her solidarity."
+msgstr ""
+"Цей аплет перемика╓ розкладки клав╕атур використовуючи setxkbmap чи xmodmap.\n"
+"В╕дсилайте мен╕ сво╖ прапори (розм╕ром 60x40 п╕ксел╕в), я долучу ╖х до CVS.\n"
+"Дякую Balazs Nagy (Kevin) <julian7@kva.hu> за допомогу та Emese "
+"Kovacs <emese@eik.bme.hu> за сол╕дарн╕сть."
+
+#: gkb-new/gkb.c:334
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr "Домашня стор╕нка GKB (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/prop.c:303
+msgid "Keymap name"
+msgstr "Назва розкладки"
+
+#: gkb-new/prop.c:329
+msgid "Keymap control"
+msgstr "Керування розкладкою"
+
+#: gkb-new/prop.c:342
+msgid "New keymap"
+msgstr "Нова розкладка"
+
+#: gkb-new/prop.c:355
+msgid "Delete this keymap"
+msgstr "Видалити цю розкладку"
+
+#: gkb-new/prop.c:380
+msgid "Keymap icon"
+msgstr "П╕ктограма розкладки"
+
+#: gkb-new/prop.c:407
+msgid "Iconpath"
+msgstr "Шлях до п╕ктограми"
+
+#: gkb-new/prop.c:429
+msgid "Full command"
+msgstr "Повна команда"
+
+#: gkb-new/prop.c:486
 msgid "GKB Properties"
 msgstr "Властивост╕ GKB"
-
-#: gkb/gkb.c:360
-msgid "Flag One"
-msgstr "Перший прапор"
-
-#: gkb/gkb.c:392
-msgid "Flag Two"
-msgstr "Другий прапор"
-
-#: gkb/gkb.c:420
-msgid "Program"
-msgstr "Програма"
-
-#: gkb/gkb.c:430
-msgid "Xkb"
-msgstr "Xkb"
-
-#: gkb/gkb.c:434
-msgid "Xmodmap"
-msgstr "Xmodmap"
-
-#: gkb/gkb.c:445
-msgid "Menu"
-msgstr "Меню"
-
-#: gkb/gkb.c:566
-msgid "The GNOME KeyBoard Applet"
-msgstr "Клав╕атурний аплет GNOME"
-
-#: gkb/gkb.c:568
-msgid "(C) 1998-99 LSC - Linux Supporting Center"
-msgstr "© 1998-99 LSC - Linux Supporting Center"
-
-#: gkb/gkb.c:570
-msgid ""
-"This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
-"xmodmap. The main site of this app moved temporarily to URL "
-"http://lsc.kva.hu/gkb.Mail me your flag, please (60x40 size),I will put it "
-"to CVS.So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
-msgstr ""
-"Цей аплет перемика╓ розкладки клав╕атур. Не б╕льше. В╕н використову╓ "
-"setxkbmap чи xmodmap. Тимчасова головний сайт цього аплету знаходиться на "
-"http://lsc.kva.hu/gkb. Будь ласка, в╕дсилайте мен╕ сво╖ прапори (розм╕ром  "
-"60x40 п╕ксел╕в), я долучу ╖х до CVS.\n"
-"Дякую Balazs Nagy (Kevin)<julian7@kva.hu> за допомогу."
 
 #: gnotes/gnote.c:225
 msgid "Raise Note"
@@ -897,19 +900,19 @@ msgstr "Створити клейку нотатку на вашому екран╕."
 msgid "Can't create GNotes applet!"
 msgstr "Неможливо створити аплет GNotes!"
 
-#: gnotes/gnotes_applet.c:190
+#: gnotes/gnotes_applet.c:180
 msgid "Raise Notes"
 msgstr "П╕дняти нотатку"
 
-#: gnotes/gnotes_applet.c:192
+#: gnotes/gnotes_applet.c:182
 msgid "Lower Notes"
 msgstr "Опустити нотатку"
 
-#: gnotes/gnotes_applet.c:194
+#: gnotes/gnotes_applet.c:184
 msgid "Hide Notes"
 msgstr "Сховати нотатку"
 
-#: gnotes/gnotes_applet.c:196
+#: gnotes/gnotes_applet.c:186
 msgid "Show Notes"
 msgstr "Показати нотатку"
 
@@ -2817,27 +2820,27 @@ msgstr "Неможливо створити аплет одометра!"
 msgid "Reset"
 msgstr "Скасувати"
 
-#: odometer/properties.c:243
+#: odometer/properties.c:244
 msgid "Odometer setting"
 msgstr "Властивост╕ одометра"
 
-#: odometer/properties.c:254
+#: odometer/properties.c:255
 msgid "Use Metric"
 msgstr "Метрична система"
 
-#: odometer/properties.c:260
+#: odometer/properties.c:261
 msgid "auto_reset"
 msgstr "автоскасування"
 
-#: odometer/properties.c:266 tickastat/mod_news.c:1251
+#: odometer/properties.c:267 tickastat/mod_news.c:1251
 msgid "enabled"
 msgstr "ув╕мкнено"
 
-#: odometer/properties.c:272
+#: odometer/properties.c:273
 msgid "Digits number"
 msgstr "К╕льк╕сть цифр"
 
-#: odometer/properties.c:307
+#: odometer/properties.c:308
 msgid "Theme file :"
 msgstr "Файл теми:"
 
@@ -3780,6 +3783,9 @@ msgid ""
 "= Clicking mouse button 1 grabs the cursor.\n"
 "= Dragging with mouse button 1 held down shows the size of the region."
 msgstr ""
+"Аплет показуючий позиц╕ю вказ╕вника миш╕.\n"
+"= Клацн╕ть правою клав╕шою миш╕ для отримання позиц╕╖ вказ╕вника.\n"
+"= Перем╕щення з натисненою правою клав╕шою показу╓ розм╕р д╕лянки."
 
 #: whereami/whereami.c:210
 msgid "whereami_applet"
