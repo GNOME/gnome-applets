@@ -216,17 +216,18 @@ panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 	}
 	directory->path = panel_menu_common_build_full_path (path, "");;
 	regenerate_menus_cb (NULL, entry, NULL);
-	gnome_vfs_monitor_add (&directory->monitor,
+	if (gnome_vfs_monitor_add (&directory->monitor,
 			       directory->path,
 			       GNOME_VFS_MONITOR_DIRECTORY,
 			       directory_changed_cb,
-			       entry);
-	if (directory->monitor)
+			       entry) == GNOME_VFS_OK)
 		g_print ("monitor successfully installed for %s\n",
 			  directory->path);
-	else
+	else {
+		directory->monitor = NULL;
 		g_print ("monitor installation failed for directory %s\n",
 			  directory->path);
+	}
 	if (old_path) {
 		g_free (directory->path);
 		directory->path = NULL;
