@@ -39,6 +39,7 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 static void destroy_applet(GtkWidget *widget, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
 					char *globcfgpath, gpointer data);
 static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams);
@@ -374,6 +375,19 @@ static gint update_display(gpointer data)
 	return TRUE;
 }
 
+void reload_skin(AppData *ad)
+{
+	if (ad->theme_file && strlen(ad->theme_file) == 0)
+		{
+		change_to_skin(NULL, ad);
+		}
+	else if (!change_to_skin(ad->theme_file, ad))
+		{
+		printf("Failed to load skin %s, loading default\n", ad->theme_file);
+		change_to_skin(NULL, ad);
+		}
+}
+
 static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixmap,
 				GdkColor *color, gpointer data)
 {
@@ -441,6 +455,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->applet = applet;
 	ad->propwindow = NULL;
 	ad->orient = ORIENT_UP;
+	ad->sizehint = SIZEHINT_STANDARD;
 
 	ad->mailsize = 0;
 	ad->oldtime = 0;
@@ -473,8 +488,6 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->exec_cmd_on_newmail = FALSE;
 
 	ad->skin = NULL;
-	ad->skin_h = NULL;
-	ad->skin_v = NULL;
 
 	ad->theme_file = NULL;
 
@@ -489,9 +502,6 @@ static AppData *create_new_app(GtkWidget *applet)
 			ad->mail_file = g_strdup(getenv ("MAIL"));
 		}
 
-	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
-		GTK_SIGNAL_FUNC(applet_change_orient), ad);
-
 	/* create a tooltip widget to display song title */
 	ad->tooltips = gtk_tooltips_new();
 
@@ -503,19 +513,16 @@ static AppData *create_new_app(GtkWidget *applet)
 	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display_area);
 
 	skin_event_init(ad);
-	gtk_widget_realize(ad->display_area);
 
-	if (ad->theme_file && strlen(ad->theme_file) == 0)
-		{
-		change_to_skin(NULL, ad);
-		}
-	else if (!change_to_skin(ad->theme_file, ad))
-		{
-		printf("Failed to load skin %s, loading default\n", ad->theme_file);
-		change_to_skin(NULL, ad);
-		}
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
+		GTK_SIGNAL_FUNC(applet_change_orient), ad);
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_size",
+		GTK_SIGNAL_FUNC(applet_change_size), ad);
 
+	gtk_widget_set_usize(ad->applet, 5, 5); /* so that a large default is not shown */
 	gtk_widget_show(ad->applet);
+
+	reload_skin(ad);
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), ad);
@@ -547,22 +554,31 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	AppData *ad = data;
 	ad->orient = o;
-	if (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT)
+
+	reload_skin(ad);
+}
+
+static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
+{
+	AppData *ad = data;
+
+	switch (s)
 		{
-		if (ad->skin_v && ad->skin != ad->skin_v)
-			{
-			ad->skin = ad->skin_v;
-			sync_window_to_skin(ad);
-			}
+		case SIZE_TINY:
+			ad->sizehint = SIZEHINT_TINY;
+			break;
+		case SIZE_STANDARD:
+			ad->sizehint = SIZEHINT_STANDARD;
+			break;
+		case SIZE_LARGE:
+			ad->sizehint = SIZEHINT_LARGE;
+			break;
+		case SIZE_HUGE:
+			ad->sizehint = SIZEHINT_HUGE;
+			break;
 		}
-	else
-		{
-		if (ad->skin != ad->skin_h)
-			{
-			ad->skin = ad->skin_h;
-			sync_window_to_skin(ad);
-			}
-		}
+
+	reload_skin(ad);
 }
 
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,

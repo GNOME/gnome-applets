@@ -20,8 +20,15 @@
 #include <applet-widget.h>
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 1
-#define CLOCKMAIL_APPLET_VERSION_MIN 0
+#define CLOCKMAIL_APPLET_VERSION_MIN 1
 #define CLOCKMAIL_APPLET_VERSION_REV 0
+
+enum {
+	SIZEHINT_TINY,
+	SIZEHINT_STANDARD,
+	SIZEHINT_LARGE,
+	SIZEHINT_HUGE
+};
 
 typedef struct _ItemData ItemData;
 struct _ItemData
@@ -109,6 +116,7 @@ struct _AppData
 	GtkWidget *display_area;
 	GtkTooltips *tooltips;
 	PanelOrientType orient;
+	gint sizehint;
 	gint update_timeout_id;
 	gint blink_timeout_id;
 	gint anymail;
@@ -158,6 +166,7 @@ struct _AppData
 void launch_mail_reader(gpointer data);
 void check_mail_file_status (int reset, AppData *ad);
 void redraw_all(gpointer data);
+void reload_skin(AppData *ad);
 
 void property_load(gchar *path, AppData *ad);
 void property_save(gchar *path, AppData *ad);

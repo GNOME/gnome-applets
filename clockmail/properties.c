@@ -214,25 +214,14 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->newmail_exec_cmd = g_strdup(buf);
 
 	buf = gtk_entry_get_text(GTK_ENTRY(ad->theme_entry));
-	if (buf && ad->theme_file && strcmp(buf, ad->theme_file) != 0)
+	if ((!ad->theme_file && buf && strlen(buf) > 0) ||
+	    (ad->theme_file && (!buf || strlen(buf) == 0)) ||
+	    (buf && ad->theme_file && strcmp(buf, ad->theme_file) != 0))
 		{
 		g_free (ad->theme_file);
-		ad->theme_file = g_strdup(buf);
-		if (!change_to_skin(ad->theme_file, ad))
-			change_to_skin(NULL, ad);
-		}
-	else if (buf && strlen(buf) != 0)
-		{
-		if (ad->theme_file) g_free (ad->theme_file);
-		ad->theme_file = g_strdup(buf);
-		if (!change_to_skin(ad->theme_file, ad))
-			change_to_skin(NULL, ad);
-		}
-	else
-		{
-		if (ad->theme_file) g_free (ad->theme_file);
 		ad->theme_file = NULL;
-		change_to_skin(NULL, ad);
+		if (buf && strlen(buf) > 0) ad->theme_file = g_strdup(buf);
+		reload_skin(ad);
 		}
 
         ad->am_pm_enable = ad->p_am_pm_enable;

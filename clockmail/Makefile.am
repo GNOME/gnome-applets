@@ -21,10 +21,12 @@ clockmail_applet_LDADD = ../../panel/libpanel_applet.la \
 EXTRA_DIST = \
 	clockmail_applet.desktop	\
 	backgrnd.xpm			\
+	backgrnd_tiny.xpm		\
 	digmed.xpm			\
 	digsml.xpm			\
 	mailpics.xpm			\
 	button.xpm			\
+	button_tiny.xpm			\
 	clockmaildata			\
 	THEME-SPEC			\
 	clockmail_applet.gnorba

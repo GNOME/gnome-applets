@@ -13,6 +13,9 @@
 #include "mailpics.xpm"
 #include "button.xpm"
 
+#include "backgrnd_tiny.xpm"
+#include "button_tiny.xpm"
+
 static GdkPixmap *get_pixmap_from_data(gchar **data);
 static GdkPixmap *get_pixmap_from_file(gchar *path);
 static DigitData *new_digit(GdkPixmap *pixmap);
@@ -36,12 +39,13 @@ static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data);
 static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data);
 static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data);
 
-static SkinData *load_default_skin();
-static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical);
-static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vertical);
-static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint count, gint zeros, gint vertical, SkinData *skin);
-static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical);
-static SkinData *load_skin(gchar *skin_path, gint vertical);
+static SkinData *load_default_skin(AppData *ad);
+static ItemData *get_item(gchar *path, gchar *name, gint sections);
+static DigitData *get_digit(gchar *path, gchar *name);
+static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, SkinData *skin);
+static GtkWidget *get_background(gchar *path);
+static SkinData *load_skin(gchar *skin_path, gint vertical, gint size);
+static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size);
 
 static GdkPixmap *get_pixmap_from_data(gchar **data)
 {
@@ -191,8 +195,6 @@ void sync_window_to_skin(AppData *ad)
 {
 	if (!ad->skin) return;
 
-	/* Fix ME! Fix ME! Fix ME! Fix ME! Fix ME! Fix ME! Fix ME! */
-	/* all this, and I can't make the applet smaller */
 	gtk_drawing_area_size(GTK_DRAWING_AREA(ad->display_area), ad->skin->width, ad->skin->height);
 	gtk_widget_set_usize(ad->display_area, ad->skin->width, ad->skin->height);
 	gtk_widget_set_usize(ad->applet, ad->skin->width, ad->skin->height);
@@ -208,11 +210,10 @@ void sync_window_to_skin(AppData *ad)
 	/* attempt to set the applets shape */
 	gdk_window_shape_combine_mask (ad->display_area->window, ad->skin->mask, 0, 0);
 
-/* with the addition of a button, no longer needed? (the button forces redraws for us)
+	/* force status redraws */
 	ad->old_week = -1;
 	ad->old_n = -1;
 	ad->old_amount = -1;
-*/
 }
 
 void free_skin(SkinData *s)
@@ -475,13 +476,44 @@ void skin_event_init(AppData *ad)
  *--------------------------------------------------------------------
  */
 
-static SkinData *load_default_skin()
+static SkinData *load_default_skin(AppData *ad)
 {
 	SkinData *s;
 	gint width, height;
 
 	s = new_skin();
 
+	if (ad->sizehint == SIZEHINT_TINY &&
+	    (ad->orient == ORIENT_UP || ad->orient == ORIENT_DOWN))
+		{
+		/* this is the tiny size theme for a horizonatal panel*/
+
+		s->pixmap = gnome_pixmap_new_from_xpm_d(backgrnd_tiny_xpm);
+		s->background = GNOME_PIXMAP(s->pixmap)->pixmap;
+		s->mask = GNOME_PIXMAP(s->pixmap)->mask;
+
+		gdk_window_get_size (s->background, &width, &height);
+
+		s->width = width;
+		s->height = height;
+
+		s->dig_large = new_digit_from_data((gchar **)digmed_xpm);
+		s->dig_small = new_digit_from_data((gchar **)digsml_xpm);
+
+		s->hour = new_number(s->dig_large, 2, FALSE, 3, 4);
+		s->min = new_number(s->dig_large, 2, TRUE, 26, 4);
+
+		s->messages = new_number(s->dig_small, 3, FALSE, 72, 8);
+
+		s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 49, 5);
+
+		s->button_pix = new_item_from_data((gchar **)button_tiny_xpm, 3, 0, 0);
+		s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
+
+		return s;
+		}
+
+	/* this is the standard size theme */
 	s->pixmap = gnome_pixmap_new_from_xpm_d(backgrnd_xpm);
 	s->background = GNOME_PIXMAP(s->pixmap)->pixmap;
 	s->mask = GNOME_PIXMAP(s->pixmap)->mask;
@@ -509,7 +541,7 @@ static SkinData *load_default_skin()
 
 /* the following are functions for loading external skins */
 
-static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical)
+static ItemData *get_item(gchar *path, gchar *name, gint sections)
 {
 	ItemData *item;
 	gchar **vector = NULL;
@@ -518,19 +550,9 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 	gchar *lang_filename = NULL;
 	gint x;
 	gint y;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	gnome_config_get_vector(name, &length, &vector);
 	lang_filename = gnome_config_get_translated_string (name);
-	gnome_config_pop_prefix();
 
 	if (sections > 0)
 		{
@@ -590,23 +612,13 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 	return item;
 }
 
-static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vertical)
+static DigitData *get_digit(gchar *path, gchar *name)
 {
 	DigitData *digit;
 	gchar *filename;
 	gchar *buf = NULL;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	buf = gnome_config_get_string(name);
-	gnome_config_pop_prefix();
 
 	if (!buf)
 		{
@@ -628,7 +640,7 @@ static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vert
 	return digit;
 }
 
-static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint count, gint zeros, gint vertical, SkinData *skin)
+static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, SkinData *skin)
 {
 	NumberData *number;
 	DigitData *digit;
@@ -637,18 +649,8 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint co
 	gchar *filename;
 	gint x;
 	gint y;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	gnome_config_get_vector(name, &length, &vector);
-	gnome_config_pop_prefix();
 
 	if (!vector || length < 3)
 		{
@@ -677,23 +679,13 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint co
 	return number;
 }
 
-static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical)
+static GtkWidget *get_background(gchar *path)
 {
 	GtkWidget *pixmap = NULL;
 	gchar *buf = NULL;
 	gchar *filename;
-	gchar *prefix;
-
-	if (vertical)
-		prefix = g_strconcat ("=", datafile, "=/Vertical/", NULL);
-	else
-		prefix = g_strconcat ("=", datafile, "=/Horizontal/", NULL);
-
-	gnome_config_push_prefix (prefix);
-	g_free (prefix);
 
 	buf = gnome_config_get_string("Background=");
-	gnome_config_pop_prefix();
 
 	if (!buf)
 		{
@@ -716,10 +708,12 @@ static GtkWidget *get_background(gchar *path, gchar *datafile, gint vertical)
 	return pixmap;
 }
 
-static SkinData *load_skin(gchar *skin_path, gint vertical)
+static SkinData *load_skin(gchar *skin_path, gint vertical, gint size)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/clockmaildata", NULL);
+	gchar *prefix;
+	gchar *stext;
 
 	if (!g_file_exists(datafile))
 		{
@@ -730,10 +724,39 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 		}
 	s = new_skin();
 
+	switch (size)
+		{
+		case SIZEHINT_TINY:
+			stext = "_Tiny";
+			break;
+		case SIZEHINT_LARGE:
+			stext = "_Large";
+			break;
+		case SIZEHINT_HUGE:
+			stext = "_Huge";
+			break;
+		case SIZEHINT_STANDARD:
+		default:
+			stext = "";
+			break;
+		}
+
+	if (vertical)
+		{
+		prefix = g_strconcat ("=", datafile, "=/Vertical", stext, "/", NULL);
+		}
+	else
+		{
+		prefix = g_strconcat ("=", datafile, "=/Horizontal", stext, "/", NULL);
+		}
+
+	gnome_config_push_prefix (prefix);
+	g_free(prefix);
+
 	/* background */
 
 	s->pixmap = NULL;
-	s->pixmap = get_background(skin_path, datafile, vertical);
+	s->pixmap = get_background(skin_path);
 	if (s->pixmap)
 		{
 		gint width, height;
@@ -747,64 +770,84 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 		{
 		free_skin(s);
 		g_free(datafile);
+		gnome_config_pop_prefix();
 		return NULL;
 		}
 
-	s->dig_small = get_digit(skin_path, datafile, "Digit_Small=", vertical);
-	s->dig_large = get_digit(skin_path, datafile, "Digit_Large=", vertical);
-	s->hour = get_number(skin_path, datafile, "Number_Hour=", 2, FALSE, vertical, s);
-	s->min = get_number(skin_path, datafile, "Number_Minutes=", 2, TRUE, vertical, s);
-	s->sec = get_number(skin_path, datafile, "Number_Seconds=", 2, TRUE, vertical, s);
-	s->month = get_number(skin_path, datafile, "Number_Month=", 2, FALSE, vertical, s);
-	s->day = get_number(skin_path, datafile, "Number_Day=", 2, FALSE, vertical, s);
-	s->year = get_number(skin_path, datafile, "Number_Year=", 2, TRUE, vertical, s);
-	s->mail = get_item(skin_path, datafile, "Mail_Image=", 0, vertical);
-	s->mail_amount = get_item(skin_path, datafile, "Item_Mail_Percent=", 0, vertical);
-	s->month_txt = get_item(skin_path, datafile, "Item_Month_Text=", 12, vertical);
-	s->week_txt = get_item(skin_path, datafile, "Item_Week_text=", 7, vertical);
-	s->mail_count = get_number(skin_path, datafile, "Number_Mail=", 4, FALSE, vertical, s);
-	s->messages = get_number(skin_path, datafile, "Number_Messages=", 3, FALSE, vertical, s);
-	s->button_pix = get_item(skin_path, datafile, "Item_Button=", 0, vertical);
+	s->dig_small = get_digit(skin_path, "Digit_Small=");
+	s->dig_large = get_digit(skin_path, "Digit_Large=");
+	s->hour = get_number(skin_path, "Number_Hour=", 2, FALSE, s);
+	s->min = get_number(skin_path, "Number_Minutes=", 2, TRUE, s);
+	s->sec = get_number(skin_path, "Number_Seconds=", 2, TRUE, s);
+	s->month = get_number(skin_path, "Number_Month=", 2, FALSE, s);
+	s->day = get_number(skin_path, "Number_Day=", 2, FALSE, s);
+	s->year = get_number(skin_path, "Number_Year=", 2, TRUE, s);
+	s->mail = get_item(skin_path, "Mail_Image=", 0);
+	s->mail_amount = get_item(skin_path, "Item_Mail_Percent=", 0);
+	s->month_txt = get_item(skin_path, "Item_Month_Text=", 12);
+	s->week_txt = get_item(skin_path, "Item_Week_text=", 7);
+	s->mail_count = get_number(skin_path, "Number_Mail=", 4, FALSE, s);
+	s->messages = get_number(skin_path, "Number_Messages=", 3, FALSE, s);
+	s->button_pix = get_item(skin_path, "Item_Button=", 0);
 
 	s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
 
 	g_free(datafile);
+	gnome_config_pop_prefix();
 	return s;
+}
+
+static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size)
+{
+	SkinData *s = NULL;
+
+	s = load_skin(path, vertical, size);
+	if (s) return s;
+
+	/* huge falls back to large, then standard */
+	if (size == SIZEHINT_HUGE)
+		{
+		s = load_skin(path, vertical, SIZEHINT_LARGE);
+		if (s) return s;
+		return load_skin(path, vertical, SIZEHINT_STANDARD);
+		}
+
+	if (size == SIZEHINT_STANDARD) return NULL;
+
+	/* if not standard and failed so far, try to fall back to it */
+	return load_skin(path, vertical, SIZEHINT_STANDARD);
 }
 
 gint change_to_skin(gchar *path, AppData *ad)
 {
-	SkinData *nsh = NULL;
-	SkinData *nsv = NULL;
-	SkinData *osh = ad->skin_h;
-	SkinData *osv = ad->skin_v;
+	SkinData *new_s = NULL;
+	SkinData *old_s = ad->skin;
 
 	if (!path)
 		{
-		nsh = load_default_skin();
+		new_s = load_default_skin(ad);
 		}
 	else
 		{
-		nsh = load_skin(path, FALSE);
-		nsv = load_skin(path, TRUE);
+		new_s = load_best_skin_match(path,
+					     (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
+					     ad->sizehint);
+		if (!new_s)
+			{
+			new_s = load_skin(path,
+					  !(ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
+					  SIZE_STANDARD);
+			}
 		}
 
-	if (!nsh) return FALSE;
+	if (!new_s) return FALSE;
 
-	ad->skin_h = nsh;
-	ad->skin_v = nsv;
-
-	ad->skin = nsh;
-	if (nsv && (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT))
-		{
-		ad->skin = nsv;
-		}
+	ad->skin = new_s;
 
 	sync_window_to_skin(ad);
 	ad->active = NULL;
 
-	free_skin(osh);
-	free_skin(osv);
+	free_skin(old_s);
 
 	return TRUE;
 }
