@@ -122,6 +122,34 @@ static void link_cb (GtkButton *button, gpointer data)
     data = NULL;
 }
 
+static gchar* replace_multiple_new_lines (gchar *s) 
+{
+	gchar *prev_s = s;
+	gint count = 0;
+	gint i;
+	
+	if (s == NULL) {
+		return s;
+	}
+
+	for (;*s != '\0';s++) {
+	
+		count = 0;
+		
+		if (*s == '\n') {
+			s++;
+			while (*s == '\n' || *s == ' ') {
+				count++;
+				s++;
+			}
+		}
+		for (i = count; i > 1; i--) {
+			*(s - i) = ' ';
+		}
+	}
+	return prev_s;
+}
+
 void gweather_dialog_create (GWeatherApplet *gw_applet)
 {
   GtkWidget *weather_vbox;
@@ -547,7 +575,7 @@ void gweather_dialog_display_toggle (GWeatherApplet *gw_applet)
 
 void gweather_dialog_update (GWeatherApplet *gw_applet)
 {
-    const gchar *forecast;
+    gchar *forecast;
     GtkTextBuffer *buffer;
     /*GdkFont* detailed_forecast_font = gdk_fontset_load ( "fixed" );*/
 
@@ -582,9 +610,11 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     /* Update forecast */
     if (gw_applet->gweather_pref.location->zone_valid) {
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (gw_applet->forecast_text));
-        forecast = weather_info_get_forecast(gw_applet->gweather_info);
+        forecast = g_strdup(weather_info_get_forecast(gw_applet->gweather_info));
         if (forecast) {
+            forecast = g_strstrip(replace_multiple_new_lines(forecast));
             gtk_text_buffer_set_text(buffer, forecast, -1);
+            g_free(forecast);
         } else {
             gtk_text_buffer_set_text(buffer, _("Forecast not currently available for this location."), -1);
         }
