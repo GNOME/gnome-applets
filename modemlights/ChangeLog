@@ -1,3 +1,10 @@
+2002-06-03  Arvind Samptur <arvind.samptur@wipro.com>
+
+	* modemlights.c: changed gtk_main_do_event
+	to gtk_propagate_event in button_press_hack
+	for avoiding crash due to gtk event queue corruption. Fixes
+	#83186.
+
 2002-06-01  Trevor Curtis <tcurtis@somaradio.ca>
 	* docs/C/modemlights.xml: added updated screenshots to doc.
 	* docs/C/figures/modemlights-advanced.png, modemlights-color.png,

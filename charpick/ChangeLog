@@ -1,3 +1,10 @@
+2002-06-03  Arvind Samptur <arvind.samptur@wipro.com>
+
+	* charpick.c: changed gtk_main_do_event
+	to gtk_propagate_event in button_press_hack
+	for avoiding crash due to gtk event queue corruption. Fixes
+	#83186.
+
 2002-05-31 Kevin Vandersloot <kfv101@psu.edu>
 
 	* Makefile.am: Fix GNOMELOCALEDIR to point to correct

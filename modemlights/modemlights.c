@@ -1406,8 +1406,7 @@ button_press_hack (GtkWidget      *widget,
                    GtkWidget      *applet)
 {
     if (event->button == 3 || event->button == 2) {
-	event->window = applet->window;
-	gtk_main_do_event ((GdkEvent *) event);
+	gtk_propagate_event (applet, (GdkEvent *) event);
 
 	return TRUE;
     }
