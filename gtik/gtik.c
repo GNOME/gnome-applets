@@ -70,7 +70,7 @@
 	{
 		GtkWidget *applet;
 		GtkWidget *label;
-		GnomeVFSAsyncHandle *handle;
+		GnomeVFSAsyncHandle *vfshandle;
 
 		GdkPixmap *pixmap;
 		GtkWidget * drawing_area;
@@ -209,7 +209,7 @@ static void xfer_callback (GnomeVFSAsyncHandle *handle, GnomeVFSXferProgressInfo
 	StockData *stockdata = data;
 
 	if (info->phase == GNOME_VFS_XFER_PHASE_COMPLETED) {
-
+		stockdata->vfshandle = NULL;
 		if (!configured(stockdata)) {
 			reSetOutputArray(stockdata);
 			fprintf(stderr, "No data!\n");
@@ -228,6 +228,9 @@ static gint updateOutput(gpointer data)
 	char *source_text_uri, *dest_text_uri;
 	GnomeVFSAsyncHandle *vfshandle;
 
+	if (stockdata->vfshandle != NULL)
+		return FALSE;
+		
 	source_text_uri = g_strconcat("http://finance.yahoo.com/q?s=",
 				      stockdata->props.tik_syms,
 				      "&d=v2",
@@ -243,7 +246,7 @@ static gint updateOutput(gpointer data)
 	g_free (dest_text_uri);
 
 	if (GNOME_VFS_OK !=
-	    gnome_vfs_async_xfer(&vfshandle, sources, dests,
+	    gnome_vfs_async_xfer(&stockdata->vfshandle, sources, dests,
 				 GNOME_VFS_XFER_DEFAULT,
 				 GNOME_VFS_XFER_ERROR_MODE_ABORT,
 				 GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
@@ -254,6 +257,7 @@ static gint updateOutput(gpointer data)
 
 		info.phase = GNOME_VFS_XFER_PHASE_COMPLETED;
 		xfer_callback(NULL, &info, stockdata);
+		stockdata->vfshandle = NULL;
 	}
 
 	g_list_free(sources);
@@ -1551,6 +1555,7 @@ static gint updateOutput(gpointer data)
 		access_stock = stockdata = g_new0 (StockData, 1);
 		stockdata->applet = GTK_WIDGET (applet);
 		stockdata->timeout = 0;
+		stockdata->vfshandle = NULL;
 		stockdata->configFileName = g_strconcat (g_getenv ("HOME"), 
 						         "/.gtik.conf", NULL);
 
