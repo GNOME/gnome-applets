@@ -27,7 +27,7 @@ schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= charpick.schemas
 
 uidir = $(datadir)/gnome-2.0/ui
-ui_DATA = GNOME_CDPlayerApplet.xml
+ui_DATA = GNOME_CharPickerApplet.xml
 
 EXTRA_DIST = \
 	charpick.png $(server_in_files)	\
