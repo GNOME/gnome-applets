@@ -1,5 +1,30 @@
 2004-06-26  Dennis Smit  <ds@nerds-incorporated.org>
 
+	* docs/C/gweather.xml: Add brief description of "feels like"
+
+	* gweather-dialog.c: (gweather_dialog_create),
+	(gweather_dialog_update): Add fields for apparent temperature
+
+	* gweather.h: Add widget for apparent temperature
+
+	* weather.c: (calc_humidity), (weather_info_get_humidity):
+	Calculate humidity as a gdouble instead of int
+
+	* (calc_apparent), (weahter_info_get_apparent): Added
+
+	* (metar_tok_temp), (_weather_info_fill), (weather_info_config_write),
+	(weather_info_config_read): Don't save humidity in info structure;
+	calculate only as needed for display.
+
+	* weather.h: WeatherHumidity returns gdouble, don't save in "info".
+	Add "get_apparent" for wind chill / heat index calcualtions.
+
+	Patch by: Frank Solensky  <frank@solensky.org>
+
+	Fixes bug #131005.
+
+2004-06-26  Dennis Smit  <ds@nerds-incorporated.org>
+
 	* Locations.xml.in: Added VIJP, Jaipur/Sanganer.
 	
 	Fixes bug #144735.

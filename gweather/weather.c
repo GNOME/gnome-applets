@@ -691,7 +691,7 @@ static gboolean metar_tok_pres (gchar *tokp, WeatherInfo *info)
 /* Relative humidity computation - thanks to <Olof.Oberg@modopaper.modogroup.com> */
 
 
-static inline gint calc_humidity(gdouble temp, gdouble dewp)
+static inline gdouble calc_humidity(gdouble temp, gdouble dewp)
 {
     gdouble esat, esurf;
 
@@ -701,8 +701,83 @@ static inline gint calc_humidity(gdouble temp, gdouble dewp)
     esat = 6.11 * pow(10.0, (7.5 * temp) / (237.7 + temp));
     esurf = 6.11 * pow(10.0, (7.5 * dewp) / (237.7 + dewp));
 
-    return (gint)((esurf/esat) * 100.0);
+    return ((esurf/esat) * 100.0);
 }
+
+static inline gdouble calc_apparent (WeatherInfo *info)
+{
+    gdouble temp = info->temp;
+    gdouble wind = WINDSPEED_KNOTS_TO_MPH(info->wind);
+    gdouble apparent;
+
+
+    /*
+     * Wind chill calculations as of 01-Nov-2001
+     * http://www.nws.noaa.gov/om/windchill/index.shtml
+     * Some pages suggest that the formula will soon be adjusted
+     * to account for solar radiation (bright sun vs cloudy sky)
+     */
+    if (temp <= 50.0 && wind > 3.0) {
+        gdouble v = pow(wind, 0.16);
+	apparent = 35.74 + 0.6215 * temp - 35.75 * v + 0.4275 * temp * v;
+    }
+    /*
+     * Heat index calculations:
+     * http://www.srh.noaa.gov/fwd/heatindex/heat5.html
+     */
+    else if (temp >= 80.0) {
+        gdouble humidity = calc_humidity(info->temp, info->dew);
+        gdouble t2 = temp * temp;
+	gdouble h2 = humidity * humidity;
+
+#if 1
+	/*
+	 * A really precise formula.  Note that overall precision is
+	 * constrained by the accuracy of the instruments and that the
+	 * we receive the temperature and dewpoints as integers.
+	 */
+	gdouble t3 = t2 * temp;
+	gdouble h3 = h2 * temp;
+	
+	apparent = 16.923
+	          + 0.185212 * temp
+	          + 5.37941 * humidity
+	          - 0.100254 * temp * humidity
+	          + 9.41695e-3 * t2
+	          + 7.28898e-3 * h2
+	          + 3.45372e-4 * t2 * humidity
+	          - 8.14971e-4 * temp * h2
+	          + 1.02102e-5 * t2 * h2
+	          - 3.8646e-5 * t3
+	          + 2.91583e-5 * h3
+	          + 1.42721e-6 * t3 * humidity
+	          + 1.97483e-7 * temp * h3
+	          - 2.18429e-8 * t3 * h2
+	          + 8.43296e-10 * t2 * h3
+	          - 4.81975e-11 * t3 * h3;
+#else
+	/*
+	 * An often cited alternative: values are within 5 degrees for
+	 * most ranges between 10% and 70% humidity and to 110 degrees.
+	 */
+	apparent = - 42.379
+	           +  2.04901523 * temp
+	           + 10.14333127 * humidity
+	           -  0.22475541 * temp * humidity
+	           -  6.83783e-3 * t2
+	           -  5.481717e-2 * h2
+	           +  1.22874e-3 * t2 * humidity
+	           +  8.5282e-4 * temp * h2
+	           -  1.99e-6 * t2 * h2;
+#endif
+    }
+    else {
+        apparent = temp;
+    }
+
+    return apparent;
+}
+
 
 static gboolean metar_tok_temp (gchar *tokp, WeatherInfo *info)
 {
@@ -716,11 +791,10 @@ static gboolean metar_tok_temp (gchar *tokp, WeatherInfo *info)
     ptemp = tokp;
     pdew = psep + 1;
 
-    info->temp = (*ptemp == 'M') ? TEMP_C_TO_F(-atoi(ptemp+1)) :
-                                   TEMP_C_TO_F(atoi(ptemp));
-    info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1)) :
-                                 TEMP_C_TO_F(atoi(pdew));
-    info->humidity = calc_humidity(info->temp, info->dew);
+    info->temp = (*ptemp == 'M') ? TEMP_C_TO_F(-atoi(ptemp+1))
+                                 : TEMP_C_TO_F(atoi(ptemp));
+    info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1))
+                               : TEMP_C_TO_F(atoi(pdew));
     return TRUE;
 }
 
@@ -1857,7 +1931,6 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     info->cond.qualifier = QUALIFIER_NONE;
     info->temp = -1000.0;
     info->dew = -1000.0;
-    info->humidity = -1;
     info->wind = -1;
     info->windspeed = -1;
     info->pressure = -1.0;
@@ -1898,7 +1971,6 @@ void weather_info_config_write (WeatherInfo *info)
     gnome_config_set_int("cond_qualifier", (gint)info->cond.qualifier);
     gnome_config_set_float("temp", info->temp);
     gnome_config_set_float("dew", info->dew);
-    gnome_config_set_int("humidity", info->humidity);
     gnome_config_set_int("wind", (gint)info->wind);
     gnome_config_set_int("windspeed", info->windspeed);
     gnome_config_set_float("pressure", info->pressure);
@@ -1923,7 +1995,6 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->cond.qualifier = (WeatherConditionQualifier)gnome_config_get_int("cond_qualifier=0");
     info->temp = gnome_config_get_float("temp=0");
     info->dew = gnome_config_get_float("dew=0");
-    info->humidity = gnome_config_get_int("humidity=0");
     info->wind = (WeatherWindDirection)gnome_config_get_int("wind=0");
     info->windspeed = gnome_config_get_int("windspeed=0");
     info->pressure = gnome_config_get_float("pressure=0");
@@ -1940,7 +2011,6 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->cond.qualifier = (WeatherConditionQualifier)0;
     info->temp = -1000.0;
     info->dew = -1000.0;
-    info->humidity = -1;
     info->wind = -1;
     info->windspeed = -1;
     info->pressure = -1.0;
@@ -2197,12 +2267,27 @@ const gchar *weather_info_get_humidity (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
-    if (info->humidity < 0.0)
+
+    gdouble humidity = calc_humidity(info->temp, info->dew);
+    if (humidity < 0.0)
         return _("Unknown");
 
     /* TRANSLATOR: This is the humidity in percent */
-    g_snprintf(buf, sizeof (buf), _("%d%%"), info->humidity);
+    g_snprintf(buf, sizeof (buf), _("%.f%%"), humidity);
     return buf;
+}
+
+const gchar *weather_info_get_apparent (WeatherInfo *info)
+{
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+
+    gdouble apparent = calc_apparent(info);
+    if (apparent < -500.0)
+        return _("Unknown");
+    
+    return temperature_string (apparent, info->applet->gweather_pref.temperature_unit, FALSE);
 }
 
 static const gchar *windspeed_string (gfloat knots, SpeedUnit to_unit)

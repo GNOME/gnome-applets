@@ -145,7 +145,7 @@ enum _WeatherForecastType {
 typedef enum _WeatherForecastType WeatherForecastType;
 
 typedef gdouble WeatherTemperature;
-typedef gint WeatherHumidity;
+typedef gdouble WeatherHumidity;
 typedef gint WeatherWindSpeed;
 typedef gdouble WeatherPressure;
 typedef gdouble WeatherVisibility;
@@ -169,7 +169,6 @@ struct _WeatherInfo {
     WeatherConditions cond;
     WeatherTemperature temp;
     WeatherTemperature dew;
-    WeatherHumidity humidity;
     WeatherWindDirection wind;
     WeatherWindSpeed windspeed;
     WeatherPressure pressure;
@@ -219,6 +218,7 @@ extern const gchar *weather_info_get_humidity (WeatherInfo *info);
 extern const gchar *weather_info_get_wind (WeatherInfo *info);
 extern const gchar *weather_info_get_pressure (WeatherInfo *info);
 extern const gchar *weather_info_get_visibility (WeatherInfo *info);
+extern const gchar *weather_info_get_apparent (WeatherInfo *info);
 extern const gchar *weather_info_get_forecast (WeatherInfo *info);
 extern GdkPixmap *weather_info_get_radar (WeatherInfo *info);
 
