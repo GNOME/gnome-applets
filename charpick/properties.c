@@ -47,13 +47,13 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
   atk_widget = gtk_widget_get_accessible (widget);
   atk_label = gtk_widget_get_accessible (label);
   
+  /* set label-for relation */
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);	
+
   /* return if gail is not loaded */
   if (GTK_IS_ACCESSIBLE (atk_widget) == FALSE)
     return;
 
-  /* set label-for relation */
-  gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);	
-  
   /* set label-by relation */
   relation_set = atk_object_ref_relation_set (atk_widget);
   targets[0] = atk_label;
@@ -76,7 +76,7 @@ static void default_chars_frame_create(charpick_data *curr_data)
   /* init widgets */
   frame = gtk_vbox_new(FALSE, 5);
   default_list_hbox = gtk_hbox_new(FALSE, 5);
-  default_list_label = gtk_label_new(_("Default character list:"));
+  default_list_label = gtk_label_new_with_mnemonic(_("_Default character list:"));
   default_list_entry = gtk_entry_new ();
   gtk_entry_set_max_length (GTK_ENTRY(default_list_entry), MAX_BUTTONS);
   text_utf8 = g_convert (curr_data->default_charlist, -1, "UTF-8", 
@@ -145,6 +145,7 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 					    GTK_DIALOG_DESTROY_WITH_PARENT,
 					    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					    NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (curr_data->propwindow), GTK_RESPONSE_CLOSE);
   /*size_frame_create();*/
   default_chars_frame_create(curr_data);
   g_signal_connect (G_OBJECT (curr_data->propwindow), "response",
