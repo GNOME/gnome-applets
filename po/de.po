@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"POT-Creation-Date: 1999-09-13 21:54+0200\n"
-"PO-Revision-Date: 1999-09-13 21:56+02:00\n"
+"POT-Creation-Date: 1999-09-18 15:48+0200\n"
+"PO-Revision-Date: 1999-09-18 16:05+02:00\n"
 "Last-Translator: Matthias Warkus <mawa@iname.com>\n"
 "Language-Team: Matthias Warkus <mawa@iname.com>\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,8 @@ msgstr "Uhr-Einstellungen"
 #: drivemount/properties.c:229 fvwm-pager/properties.c:247
 #: gnotes/gnotes_applet.c:236 mini-commander/src/preferences.c:744
 #: modemlights/properties.c:275 netload/properties.c:280
-#: slashapp/properties.c:347
+#: odometer/properties.c:253 slashapp/properties.c:347
+#: sound-monitor/properties.c:419 tickastat/properties.c:408
 msgid "General"
 msgstr "Allgemein"
 
@@ -154,15 +155,17 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Eine analoge Uhr ähnlich der im CDE-Panel."
 
 #: another_clock/another_clock.c:615 asclock/asclock.c:595
-#: battery/battery.c:783 charpick/charpick.c:475 clockmail/clockmail.c:539
-#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:80
-#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
-#: gkb/gkb.c:675 gnome-pager/gnomepager_applet.c:2552
-#: gnotes/gnotes_applet.c:300 gweather/gweather-applet.c:172 hal/hal.c:285
+#: battery/battery.c:783 charpick/charpick.c:475 clipboard/clipboard.c:227
+#: clockmail/clockmail.c:539 drivemount/drivemount.c:552
+#: esd-manager/esdmanager_applet.c:80 fifteen/fifteen.c:309
+#: fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350 gkb/gkb.c:675
+#: gnome-pager/gnomepager_applet.c:2552 gnotes/gnotes_applet.c:300
+#: gumma/gumma.c:574 gweather/gweather-applet.c:172 hal/hal.c:285
 #: jbc/jbc-applet.c:136 life/life.c:197
 #: mini-commander/src/mini-commander_applet.c:375
-#: modemlights/modemlights.c:1155 netload/netload.c:339 slashapp/slashapp.c:58
-#: webcontrol/webcontrol.c:308
+#: modemlights/modemlights.c:1155 netload/netload.c:339 odometer/odo.c:562
+#: slashapp/slashapp.c:58 sound-monitor/main.c:329 tickastat/main.c:317
+#: webcontrol/webcontrol.c:308 whereami/whereami.c:119
 msgid "About..."
 msgstr "Info..."
 
@@ -174,7 +177,8 @@ msgstr "Info..."
 #: mini-commander/src/mini-commander_applet.c:362
 #: modemlights/modemlights.c:1149 multiload/cpuload.c:64
 #: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
-#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:316
+#: odometer/odo.c:559 slashapp/slashapp.c:55 sound-monitor/main.c:322
+#: tickastat/main.c:311 webcontrol/webcontrol.c:316
 msgid "Properties..."
 msgstr "Eigenschaften..."
 
@@ -394,6 +398,20 @@ msgstr "APM ist abgeschaltet! Kann keine Batterieladeinformation lesen."
 msgid "Run gtcd..."
 msgstr "gtcd aufrufen..."
 
+#: clipboard/clipboard.c:161
+msgid "Clipboard Applet"
+msgstr "Zwischenablagen-Applet"
+
+#: clipboard/clipboard.c:163
+msgid "Copyright (C) 1999"
+msgstr "Copyright (C) 1999"
+
+#: clipboard/clipboard.c:165
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr "Gnome-Panelapplet, um Auswahlbereiche zu kopieren, wiedereinzufügen und in einer Chronik festzuhalten. Freigegeben unter der GNU General Public License."
+
 #: charpick/charpick.c:352
 msgid "Character Picker"
 msgstr "Zeichenwähler"
@@ -427,7 +445,8 @@ msgstr "Anzahl Zeilen für Knöpfe:"
 msgid "Number of columns of buttons:"
 msgstr "Anzahl Spalten für Knöpfe:"
 
-#: clockmail/clockmail.c:52 slashapp/slashapp.c:127
+#: clockmail/clockmail.c:52 slashapp/slashapp.c:127 sound-monitor/main.c:31
+#: tickastat/main.c:183
 msgid "John Ellis <johne@bellatlantic.net>"
 msgstr "John Ellis <johne@bellatlantic.net>"
 
@@ -466,7 +485,8 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:138
+#: clockmail/properties.c:138 odometer/properties.c:128
+#: sound-monitor/properties.c:163
 msgid "None (default)"
 msgstr "Keines (Default)"
 
@@ -510,11 +530,12 @@ msgstr "Anzahl Nachrichten, bei der das Postfach als voll gilt:"
 msgid "When clicked, run:"
 msgstr "Wenn angeklickt, rufe auf:"
 
-#: clockmail/properties.c:422
+#: clockmail/properties.c:422 sound-monitor/properties.c:437
 msgid "Theme file (directory):"
 msgstr "Themendatei (Verzeichnis):"
 
-#: clockmail/properties.c:453
+#: clockmail/properties.c:453 odometer/properties.c:294
+#: sound-monitor/properties.c:465
 msgid "Theme"
 msgstr "Thema"
 
@@ -1021,6 +1042,27 @@ msgstr "Standardbreite"
 #: gnotes/gnotes_applet.c:288
 msgid "Can't create GNotes applet!"
 msgstr "Kann kein GNotes-Applet anlegen!"
+
+#: gumma/gumma.c:309
+#, c-format
+msgid "Loading plugin %s..."
+msgstr "Lade Plugin %s..."
+
+#: gumma/gumma.c:483
+msgid "Select a plugin"
+msgstr "Ein Plugin wählen"
+
+#: gumma/gumma.c:497
+msgid "Plugins"
+msgstr "Plugins"
+
+#: gumma/gumma.c:579
+msgid "About Plugin..."
+msgstr "Info zum Plugin..."
+
+#: gumma/gumma.c:583
+msgid "Plugins..."
+msgstr "Plugins..."
 
 #: gweather/gweather-applet.c:167
 msgid "Cannot create applet!\n"
@@ -2623,7 +2665,7 @@ msgid "Enable history based auto completion"
 msgstr "Chronikbasierte automatische Vervollständigung aktivieren"
 
 #. Size
-#: mini-commander/src/preferences.c:554
+#: mini-commander/src/preferences.c:554 tickastat/properties.c:484
 msgid "Size"
 msgstr "Größe"
 
@@ -2742,6 +2784,7 @@ msgid "Confirm connection"
 msgstr "Verbindung bestätigen"
 
 #: modemlights/properties.c:241 slashapp/properties.c:422
+#: tickastat/properties.c:549
 msgid "Display"
 msgstr "Anzeige"
 
@@ -2775,7 +2818,7 @@ msgstr "Gerät:"
 msgid "Use ISDN"
 msgstr "ISDN benutzen"
 
-#: modemlights/properties.c:349
+#: modemlights/properties.c:349 sound-monitor/properties.c:504
 msgid "Advanced"
 msgstr "Komplex"
 
@@ -2795,11 +2838,11 @@ msgstr "Lastgraph"
 msgid "Speed:"
 msgstr "Geschwindigkeit:"
 
-#: multiload/load-graph.c:180
+#: multiload/load-graph.c:180 tickastat/properties.c:497
 msgid "Width:"
 msgstr "Breite:"
 
-#: multiload/load-graph.c:180
+#: multiload/load-graph.c:180 tickastat/properties.c:525
 msgid "Height:"
 msgstr "Höhe:"
 
@@ -2911,6 +2954,54 @@ msgstr "Netzlast Eigenschaften"
 msgid "Device"
 msgstr "Gerät"
 
+#: odometer/odo.c:131
+msgid "Odometer"
+msgstr "Kilometerzähler"
+
+#: odometer/odo.c:133
+msgid "(C) 1999 The Free Software Foundation"
+msgstr "(C) 1999 The Free Software Foundation"
+
+#: odometer/odo.c:135
+msgid ""
+"a GNOME applet that tracks and measures the movements of your mouse pointer "
+"across the desktop."
+msgstr ""
+"Ein GNOME-Applet, das die Bewegungen Ihres Mauszeigers über den Desktop "
+"mitverfolgt und mißt."
+
+#: odometer/odo.c:546
+msgid "Can't create odometer applet!"
+msgstr "Kann kein Kilometerzähler-Applet anlegen!"
+
+#: odometer/odo.c:556
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: odometer/properties.c:210
+msgid "Odometer setting"
+msgstr "Kilometerzähler-Einstellungen"
+
+#: odometer/properties.c:221
+msgid "Use Metric"
+msgstr "Metrische Einheiten benutzen"
+
+#: odometer/properties.c:227
+msgid "auto_reset"
+msgstr "automatisch zurücksetzen"
+
+#: odometer/properties.c:233 tickastat/mod_news.c:1234
+msgid "enabled"
+msgstr "aktiv"
+
+#: odometer/properties.c:239
+msgid "Digits number"
+msgstr "Anzahl Ziffern"
+
+#: odometer/properties.c:268
+msgid "Theme file :"
+msgstr "Themendatei:"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "Artikel"
@@ -2939,27 +3030,27 @@ msgstr "(Diese Einstellungen werden erst bei einer Auffrischung wirksam )"
 msgid "Open new window"
 msgstr "Neues Fenster"
 
-#: slashapp/properties.c:356
+#: slashapp/properties.c:356 tickastat/properties.c:418
 msgid "Scrolling"
 msgstr "Rollen"
 
-#: slashapp/properties.c:365
+#: slashapp/properties.c:365 tickastat/properties.c:427
 msgid "Smooth scroll"
 msgstr "Weiches Rollen"
 
-#: slashapp/properties.c:371
+#: slashapp/properties.c:371 tickastat/properties.c:433
 msgid "Smooth type"
 msgstr "Geglättete Textdarstellung"
 
-#: slashapp/properties.c:377
+#: slashapp/properties.c:377 tickastat/properties.c:439
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: slashapp/properties.c:390
+#: slashapp/properties.c:390 tickastat/properties.c:452
 msgid "Delay when wrapping text:"
 msgstr "Verzögerung beim Umbrechen von Text:"
 
-#: slashapp/properties.c:408
+#: slashapp/properties.c:408 tickastat/properties.c:470
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "Rollgeschwindigkeit zwischen Zeilen (Weiches Rollen):"
 
@@ -2981,7 +3072,7 @@ msgstr "Erzeuge Benutzerverzeichnis: %s\n"
 msgid "Unable to create user directory: %s\n"
 msgstr "Konnte Benutzerverzeichnis nicht erzeugen: %s\n"
 
-#: slashapp/slashapp.c:124
+#: slashapp/slashapp.c:124 tickastat/main.c:180
 #, c-format
 msgid "%d.%d.%d"
 msgstr "%d.%d.%d"
@@ -3034,6 +3125,387 @@ msgstr "Kann Anfrage nicht vorbereiten.\n"
 msgid "Unable to process request.\n"
 msgstr "Kann Anfrage nicht verarbeiten.\n"
 
+#: sound-monitor/main.c:34
+msgid "Sound Monitor Applet"
+msgstr "Sound-Monitor-Applet"
+
+#: sound-monitor/main.c:35 tickastat/main.c:187
+msgid "(C) 1999 John Ellis"
+msgstr "(C) 1999 John Ellis"
+
+#: sound-monitor/main.c:37
+msgid ""
+"Sound monitor interface to Esound\n"
+"\n"
+"Released under the GNU general public license."
+msgstr ""
+"Eine Klangmonitor-Schnittstelle zu Esound\n"
+"\n"
+"Freigegeben unter der GNU General Public License."
+
+#: sound-monitor/main.c:73
+msgid "Place Esound in standby"
+msgstr "Esound in Bereitschaftsmodus schalten"
+
+#: sound-monitor/main.c:78
+msgid "Resume Esound"
+msgstr "Esound wieder aktivieren"
+
+#: sound-monitor/main.c:83 sound-monitor/main.c:343
+msgid "Start Esound"
+msgstr "Esound starten"
+
+#: sound-monitor/main.c:336
+msgid "Manager..."
+msgstr "Manager..."
+
+#: sound-monitor/manager.c:1261 sound-monitor/manager.c:1349
+msgid "Volume"
+msgstr "Lautstärke"
+
+#: sound-monitor/manager.c:1277 sound-monitor/manager.c:1365
+msgid "Balance"
+msgstr "Balance"
+
+#: sound-monitor/properties.c:133
+msgid ""
+"You have enabled the \"Monitor sound input\" option.\n"
+"\n"
+"If your sound card is not fully 100% FULL DUPLEX (can do input and output "
+"simultaneously),\n"
+"then this may touch bugs in sound drivers/esound that may hang the system.\n"
+"\n"
+"You have been warned!"
+msgstr ""
+"Sie haben die Option \"Monitor auf Soundeingabe\" aktiviert.\n"
+"\n"
+"Wenn Ihre Soundkarte nicht in hundertprozentigem Vollduplexbetrieb arbeiten kann (d.h. Eingabe und Ausgabe gleichzeitig bewältig, kann dies Fehler in Soundtreibern oder in Esound zu Tage fördern, die das System aufhängen können.\n"
+"\n"
+"Wir haben Sie gewarnt!"
+
+#: sound-monitor/properties.c:332
+msgid "Peak indicator"
+msgstr "Aussteuerungsanzeige"
+
+#: sound-monitor/properties.c:341
+msgid "off"
+msgstr "aus"
+
+#: sound-monitor/properties.c:348
+msgid "active"
+msgstr "aktiv"
+
+#: sound-monitor/properties.c:355
+msgid "smooth"
+msgstr "weich"
+
+#: sound-monitor/properties.c:362
+msgid "Peak indicator falloff speed"
+msgstr "Rückfallgeschwindigkeit der Aussteuerungsanzeige"
+
+#: sound-monitor/properties.c:379
+msgid "Scope (scale 1:X, where X = ? )"
+msgstr "Oszilloskop (Skala 1:x, wobei x = ?)"
+
+#: sound-monitor/properties.c:396
+msgid "Connect points in scope"
+msgstr "Punkte in Oszilloskop verbinden"
+
+#: sound-monitor/properties.c:402
+msgid "Screen refresh (frames per second)"
+msgstr "Bildschirmauffrischung (Einzelbilder pro Sekunde)"
+
+#: sound-monitor/properties.c:483
+msgid "ESD host to monitor:"
+msgstr "Zu überwachender ESD-Rechner:"
+
+#: sound-monitor/properties.c:497
+msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
+msgstr "Monitor auf Soundeingabe (nur benutzen, wenn Soundkarte Vollduplex unterstützt)"
+
+#: tickastat/main.c:39
+msgid "Tick-a-Stat event log"
+msgstr "Tick-a-Stat Ereignislogbuch"
+
+#: tickastat/main.c:118
+msgid "%Y%m%d-%H-%M-%S"
+msgstr "%Y%m%d-%H-%M-%S"
+
+#: tickastat/main.c:120
+msgid "%m-%d-%Y %H:%M:%S"
+msgstr "%d.%m.%Y %H.%M.%S"
+
+#: tickastat/main.c:186
+msgid "Tick-a-Stat"
+msgstr "Tick-a-Stat"
+
+#: tickastat/main.c:189
+msgid "A ticker to display various information and statistics.\n"
+msgstr "Ein Ticker, um verschiedene Informationen und Statistiken anzuzeigen.\n"
+
+#: tickastat/main.c:260
+#, c-format
+msgid "unable to create user directory: %s\n"
+msgstr "Konnte Benutzerverzeichnis nicht erzeugen: %s\n"
+
+#: tickastat/main.c:300
+msgid "The unique information and status ticker."
+msgstr "Der einzigartige Informations- und Statusticker"
+
+#: tickastat/main.c:322
+msgid "Event log..."
+msgstr "Ereignislogbuch..."
+
+#: tickastat/mod_coredump.c:91
+msgid "Core dump information (Tick-a-Stat)"
+msgstr "Coredump-Information (Tick-a-Stat)"
+
+#: tickastat/mod_coredump.c:234
+msgid "Core dump module (Tick-A-Stat)"
+msgstr "Coredump-Modul (Tick-a-Stat)"
+
+#: tickastat/mod_coredump.c:235
+msgid ""
+"The core dump module is\n"
+"processing a core file..."
+msgstr ""
+"Das Coredump-Modul bear-\n"
+"beitet eine core-Datei..."
+
+#: tickastat/mod_coredump.c:457
+msgid "Core Dump Module"
+msgstr "Coredump-Modul"
+
+#: tickastat/mod_coredump.c:464 tickastat/mod_loadavg.c:507
+#: tickastat/mod_news.c:1198 tickastat/mod_tail.c:409 tickastat/mod_test.c:120
+msgid "Enable this module"
+msgstr "Dieses Modul aktivieren"
+
+#: tickastat/mod_coredump.c:470
+msgid "Show backtrace dialog on new core files"
+msgstr "Backtrace-Dialog für neue Core-Dateien anzeigen"
+
+#: tickastat/mod_coredump.c:480
+msgid "Path to monitor:"
+msgstr "Zu überwachender Pfad:"
+
+#: tickastat/mod_coredump.c:597
+msgid ""
+"This module monitors a path for core dumps, if one is\n"
+" found it is time stamped and a backtrace logged (using gdb)."
+msgstr ""
+"Dieses Modul überwacht einen Pfad auf Coredumps hin; wird\n"
+"einer gefunden, wird er mit einem Zeitstempel versehen und\n"
+"die Absturzstelle wird mittels gdb ermittelt undins Logbuch\n"
+"eingetragen."
+
+#: tickastat/mod_loadavg.c:108
+msgid "Load Average information (Tick-a-Stat)"
+msgstr "Lastmittel-Information (Tick-a-Stat)"
+
+#: tickastat/mod_loadavg.c:320
+msgid "The Load average is very high."
+msgstr "Die mittlere Last ist sehr hoch."
+
+#: tickastat/mod_loadavg.c:321
+msgid "Load average is at a critical point, help me!"
+msgstr "Die mittlere Last ist kritisch, helfen Sie mir!"
+
+#: tickastat/mod_loadavg.c:500
+msgid "Load Average Module"
+msgstr "Lastmittel-Modul"
+
+#: tickastat/mod_loadavg.c:517
+msgid "Check every:"
+msgstr "Prüfen alle:"
+
+#: tickastat/mod_loadavg.c:529
+msgid "Seconds"
+msgstr "Sekunden"
+
+#. Warning dialog
+#: tickastat/mod_loadavg.c:535
+msgid "Warning options"
+msgstr "Warnoptionen"
+
+#: tickastat/mod_loadavg.c:544 tickastat/mod_loadavg.c:589
+msgid "Show pop-up dialog for this event"
+msgstr "Pop-up-Dialog für dieses Ereignis zeigen"
+
+#: tickastat/mod_loadavg.c:554 tickastat/mod_loadavg.c:599
+msgid "Load average threshhold:"
+msgstr "Schwelle für mittlere Last:"
+
+#: tickastat/mod_loadavg.c:566 tickastat/mod_loadavg.c:611
+msgid "Text to display:"
+msgstr "Anzuzeigender Text:"
+
+#. Danger dialog
+#: tickastat/mod_loadavg.c:580
+msgid "Alert options"
+msgstr "Alarmoptionen"
+
+#: tickastat/mod_loadavg.c:757
+msgid ""
+"This module monitors the system load average,\n"
+" and displays warning when it rises above certain points."
+msgstr ""
+"Dieses Modul überwacht die mittlere Systemlast und\n"
+"warnt, wenn sie gewisse Grenzen überschreitet."
+
+#: tickastat/mod_news.c:540
+msgid "script \""
+msgstr "Skript \""
+
+#: tickastat/mod_news.c:541
+msgid "Tick-a-Stat script encountered and error:\n"
+msgstr "Tick-a-Stat-Skript ist einem Fehler begegnet:\n"
+
+#: tickastat/mod_news.c:1186
+msgid "Enabled"
+msgstr "Aktiv"
+
+#: tickastat/mod_news.c:1186
+msgid "Name"
+msgstr "Name"
+
+#: tickastat/mod_news.c:1186
+msgid "Line delay"
+msgstr "Zeilenverzögerung"
+
+#: tickastat/mod_news.c:1186
+msgid "Update interval"
+msgstr "Auffrischungs-Intervall"
+
+#: tickastat/mod_news.c:1187
+msgid "D"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "T"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "I"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "B"
+msgstr ""
+
+#: tickastat/mod_news.c:1191
+msgid "News and Information Module"
+msgstr "Nachrichten- und Informationsmodul"
+
+#: tickastat/mod_news.c:1245
+msgid "Line (s):"
+msgstr "Zeile (s):"
+
+#: tickastat/mod_news.c:1259
+msgid "Update (m):"
+msgstr "Aktualisieren (m):"
+
+#: tickastat/mod_news.c:1277
+msgid "body"
+msgstr "Rumpf"
+
+#: tickastat/mod_news.c:1282
+msgid "image"
+msgstr "Bild"
+
+#: tickastat/mod_news.c:1287
+msgid "topic"
+msgstr "Thema"
+
+#: tickastat/mod_news.c:1292
+msgid "date"
+msgstr "Datum"
+
+#: tickastat/mod_news.c:1297
+msgid "Show:"
+msgstr "Zeigen:"
+
+#: tickastat/mod_news.c:1468
+msgid "This module can display news and other information."
+msgstr "Dieses Modul kann Nachrichten und andere Informationen anzeigen."
+
+#: tickastat/mod_tail.c:77
+msgid "File tail view file (Tick-a-Stat)"
+msgstr "Dateimitverfolgung (Tick-a-Stat)"
+
+#: tickastat/mod_tail.c:87
+msgid "no file dpecified"
+msgstr "Keine Datei angegeben"
+
+#: tickastat/mod_tail.c:130
+msgid "File tail information (Tick-a-Stat)"
+msgstr "Dateimitverfolgung (Tick-a-Stat)"
+
+#: tickastat/mod_tail.c:139
+msgid "File tail for "
+msgstr "Verfolge Datei "
+
+#: tickastat/mod_tail.c:402
+msgid "File Tail Module"
+msgstr "Dateimitverfolgungs-Modul"
+
+#: tickastat/mod_tail.c:419
+msgid "Path to tail:"
+msgstr "Zu beobachtender Pfad:"
+
+#: tickastat/mod_tail.c:424
+msgid "Choose a file to tail"
+msgstr "Eine Datei zum Verfolgen wählen"
+
+#: tickastat/mod_tail.c:433
+msgid "Show pop up dialog for new lines."
+msgstr "Popup-Dialog für neue Zeilen anzeigen"
+
+#: tickastat/mod_tail.c:539
+msgid ""
+"This module monitors a file for appended text,\n"
+" and prints it. Useful for log files."
+msgstr ""
+"Dieses Modul verfolgt mit, wann an eine Datei neuer Text\n"
+"angehängt wird, und gibt ihn aus. Nützlich für Logbücher."
+
+#: tickastat/mod_test.c:113
+msgid "Test Module"
+msgstr "Testmodul"
+
+#: tickastat/mod_test.c:192
+msgid "This is the test module's description line."
+msgstr "Dies ist die Beschreibungszeile für das Testmodul"
+
+#. left pane will be filled in select cb
+#: tickastat/properties.c:365
+msgid "Modules"
+msgstr "Module"
+
+#: tickastat/properties.c:374
+msgid "Event Log"
+msgstr "Ereignislogbuch"
+
+#: tickastat/properties.c:383
+msgid "Enable logging of events"
+msgstr "Logbucheintragung für Ereignisse aktivieren"
+
+#: tickastat/properties.c:393
+msgid "Log path:"
+msgstr "Logbuchpfad:"
+
+#: tickastat/properties.c:398
+msgid "Choose a log file"
+msgstr "Eine Logdatei wählen"
+
+#: tickastat/properties.c:512
+msgid "Use all room on panel"
+msgstr "Allen Raum im Panel nutzen"
+
+#: tickastat/properties.c:540
+msgid "Use panel size hint"
+msgstr "Panel-Größenhinweis nutzen"
+
 #: webcontrol/webcontrol.c:56
 msgid "The Web Browser Controller"
 msgstr "Die Web-Browser-Kontrolle"
@@ -3075,3 +3547,27 @@ msgstr "Zeige \"Neues Fenster erzeugen\" Option"
 #: webcontrol/webcontrol.c:232
 msgid "Look"
 msgstr "Aussehen"
+
+#: whereami/whereami.c:30
+msgid ""
+"Where\n"
+"Am I?"
+msgstr ""
+"Wo bin\n"
+"ich?"
+
+#: whereami/whereami.c:39
+msgid "Where Am I?"
+msgstr "Wo bin ich?"
+
+#: whereami/whereami.c:40
+msgid "Copyright 1999 John Kodis"
+msgstr "Copyright 1998 John Kodis"
+
+#: whereami/whereami.c:41
+msgid "A cursor position reporting applet."
+msgstr "Ein Applet, das die Cursorposition anzeigt."
+
+#: whereami/whereami.c:100
+msgid "whereami_applet"
+msgstr "whereami_applet"
