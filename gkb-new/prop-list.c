@@ -88,18 +88,12 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
       char buf[30];
       struct stat tempbuf;
 
-      g_print ("Foo 1 ! [%i][%i]%i\n",
-	       GPOINTER_TO_INT (list),
-	       GPOINTER_TO_INT (list->next),
-	       g_list_length (pbi->keymaps));
       tdata = list->data;
 
       hbox1 = gtk_hbox_new (FALSE, 0);
       gtk_widget_ref (hbox1);
       gtk_widget_show (hbox1);
 
-      g_print ("Foo 2 !\n");
-      
       pixmap1 = gtk_type_new (gnome_pixmap_get_type ());
       sprintf(buf,"gkb/%s",tdata->flag);
       pixmapname = gnome_unconditional_pixmap_file (buf);
@@ -111,8 +105,6 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
       gtk_widget_show (pixmap1);
       gtk_box_pack_start (GTK_BOX (hbox1), pixmap1, FALSE, TRUE, 0);
 
-      g_print ("Foo 3 !\n");
-      
       label3 = gtk_label_new (tdata->name);
       gtk_widget_ref (label3);
       gtk_widget_show (label3);
@@ -120,10 +112,7 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
       gtk_misc_set_alignment (GTK_MISC (label3), 0, 0.5);
       gtk_misc_set_padding (GTK_MISC (label3), 3, 0);
 
-      g_print ("Foo 4 !\n");
-      
       list_item = gtk_list_item_new ();
-      g_print ("Foo 5 !\n");
       
       gtk_container_add (GTK_CONTAINER(list_item), hbox1);
 #if 0	
@@ -133,11 +122,9 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
 #else	
       gtk_object_set_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG, tdata);
 #endif
-      g_print ("Foo 6 !\n");
       
       gtk_container_add (GTK_CONTAINER (pbi->list), list_item);
       gtk_widget_show (list_item);
-      g_print ("Foo 7 !\n");
       
     }
 
@@ -929,7 +916,7 @@ del_select_cb (GtkWidget * button, GkbPropertyBoxInfo *pbi)
 /* -------------------------------------------------------- EVERY THING BELOW THIS POINT HAS BEEN CLEANED ---------------------------- */
 
 /**
- * gkb_g_list_swap:
+ * gkb_util_g_list_swap:
  * @item1: 
  * @item2: 
  * 
@@ -946,7 +933,7 @@ gkb_util_g_list_swap (GList *item1, GList *item2)
 }
 
 /**
- * gkb_prop_list_move_clicked:
+ * gkb_prop_list_up_down_clicked:
  * @pbi: 
  * @up: 
  * 
@@ -1013,9 +1000,7 @@ gkb_prop_list_update_sensitivity (GkbPropertyBoxInfo *pbi)
 
     row_selected = TRUE;
 
-    g_print ("Foo..\n");
     list_item = g_list_find (pbi->keymaps, pbi->selected_keymap);
-    g_print ("Foo.. END\n");    
     g_return_if_fail (list_item);
     
     if (list_item->next == NULL)
