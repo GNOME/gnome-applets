@@ -5,17 +5,20 @@
 # Alexandre Prokhudine, 2002
 # Dmitry G. Mastrukov <dmitry@taurussoft.org>, 2002-2003
 # Leon Kanter <leon@blackcatlinux.com>, 2002
+# Alexander Ovcharenko <sarulezzz@inbox.ru>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2003-01-11 17:11+0300\n"
+"POT-Creation-Date: 2003-09-22 09:02+0400\n"
+"PO-Revision-Date: 2003-09-22 09:03+0400\n"
 "Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -79,12 +82,12 @@ msgid "Utility"
 msgstr "Утилиты"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
+#: stickynotes/stickynotes_applet_callbacks.c:191
 #: wireless/wireless-applet.c:528
 msgid "translator_credits"
 msgstr ""
@@ -436,7 +439,7 @@ msgstr "Эта утилита показывает состояние батар
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: battstat/battstat_applet.glade.h:2
 #: mini-commander/src/mini-commander.glade.h:2
@@ -474,7 +477,7 @@ msgstr "\"Спящий режим\""
 msgid "<b>Warnings</b>"
 msgstr "Предупреждения"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "Внешний вид"
 
@@ -553,7 +556,8 @@ msgstr "Жёлтый:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
 #, fuzzy, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Произошла ошибка при выполнении команды \"%s\": %s"
@@ -676,7 +680,7 @@ msgstr "Номер трека"
 
 #: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
-msgstr ""
+msgstr "Аудиоустройство занято или используется другим приложением"
 
 #: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
@@ -708,8 +712,8 @@ msgid ""
 "applet"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Касса символов"
 
@@ -721,37 +725,38 @@ msgstr "Фабрика апплета выбора символов"
 msgid "Insert characters"
 msgstr "Апплет даёт возможность вставить специальные символы"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr ""
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
+#, fuzzy
 msgid "Add a palette..."
-msgstr ""
+msgstr "Изменить элемент для пути..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr ""
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "Вставка специальных символов"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Mu&#xF1;iz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr ""
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Авторское право (С) 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -797,7 +802,7 @@ msgstr ""
 #: charpick/properties.c:160
 #, fuzzy
 msgid "Edit Palette"
-msgstr "Изменить элемент для пути..."
+msgstr "Касса символов"
 
 #: charpick/properties.c:259
 #, fuzzy
@@ -820,7 +825,7 @@ msgstr ""
 #: charpick/properties.c:362
 #, fuzzy
 msgid "Edit button"
-msgstr "Изменить элемент для пути..."
+msgstr "Кнопка обновления"
 
 #: charpick/properties.c:363
 msgid "Click to edit the selected palette"
@@ -875,9 +880,8 @@ msgstr ""
 
 #: drivemount/drivemount.c:474 drivemount/properties.c:595
 #: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
-#, fuzzy
 msgid "Error displaying help"
-msgstr "Произошла ошибка при выполнении команды \"%s\": %s"
+msgstr ""
 
 #: drivemount/drivemount.c:529
 msgid "(C) 1999-2001 The GNOME Hackers\n"
@@ -1110,8 +1114,9 @@ msgid "Belgium"
 msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
+#, fuzzy
 msgid "Brazil"
-msgstr ""
+msgstr "Град"
 
 #: gkb-new/descs.sun/presets.xml.in.h:12
 msgid "Brazil Portuguese Sun USB keymap"
@@ -1134,8 +1139,9 @@ msgid "Bulgarian Sun keymap"
 msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
+#, fuzzy
 msgid "Canada"
-msgstr ""
+msgstr "Песчаная буря"
 
 #: gkb-new/descs.sun/presets.xml.in.h:18
 msgid "Canadian Sun keymap"
@@ -1364,8 +1370,9 @@ msgid "Lithuania"
 msgstr "Небольшой град"
 
 #: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
+#, fuzzy
 msgid "Lithuanian"
-msgstr ""
+msgstr "Небольшой град"
 
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
@@ -1397,8 +1404,9 @@ msgid "Norwegian Sun keymap"
 msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
+#, fuzzy
 msgid "Poland"
-msgstr ""
+msgstr "Песчаная буря"
 
 #: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
 msgid "Polish"
@@ -1484,7 +1492,7 @@ msgstr ""
 #: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
 #, fuzzy
 msgid "Spain"
-msgstr "Дождь"
+msgstr "Песчаная буря"
 
 #: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
 #, fuzzy
@@ -1540,8 +1548,9 @@ msgid "Thai Sun keymap"
 msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
+#, fuzzy
 msgid "Thailand"
-msgstr ""
+msgstr "Временами песчаная буря"
 
 #: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
 msgid "Turkey"
@@ -1584,8 +1593,9 @@ msgid "United Kingdom"
 msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
+#, fuzzy
 msgid "United States"
-msgstr ""
+msgstr "Обновления"
 
 #: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnam"
@@ -1828,8 +1838,9 @@ msgid "Greece"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:82
+#, fuzzy
 msgid "Greek"
-msgstr ""
+msgstr "Сво_бодно"
 
 #: gkb-new/descs/presets.xml.in.h:83
 msgid "Greek keymap"
@@ -1914,15 +1925,16 @@ msgstr ""
 #: gkb-new/descs/presets.xml.in.h:114
 #, fuzzy
 msgid "Lao"
-msgstr "Разряжена"
+msgstr "Размещение"
 
 #: gkb-new/descs/presets.xml.in.h:115
 msgid "Lao keymap"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:116
+#, fuzzy
 msgid "Laos"
-msgstr ""
+msgstr "Размещение"
 
 #: gkb-new/descs/presets.xml.in.h:117
 msgid "Lebanon"
@@ -1978,8 +1990,9 @@ msgid "Mongolian phonetic keymap"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:134
+#, fuzzy
 msgid "Netherlands"
-msgstr ""
+msgstr "Северо-Восточный"
 
 #: gkb-new/descs/presets.xml.in.h:137
 msgid "Norwegian xkb keymap"
@@ -2422,7 +2435,7 @@ msgstr "метка"
 msgid "Flag and Label"
 msgstr "флаг и метка"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
 #: modemlights/properties.c:438
 msgid "Display"
 msgstr "Экран"
@@ -2516,7 +2529,7 @@ msgstr "Апплет получает постоянно обновляющие�
 msgid "Gtik Applet Factory"
 msgstr "Фабрика апплета Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "Биржевые сводки"
 
@@ -2533,7 +2546,7 @@ msgstr ""
 msgid "Updating..."
 msgstr "Обновляется..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2545,143 +2558,139 @@ msgstr ""
 "АБСОЛЮТНО БЕЗ ГАРАНТИЙ. Не используете это приложение для принятия решений "
 "об инвестициях; оно только для информационных целей."
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 #, fuzzy
 msgid "Current _stocks:"
 msgstr "Текущие _условия"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 #, fuzzy
 msgid "_New symbol:"
 msgstr "_Новый символ:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "Доб_авить"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 #, fuzzy
 msgid "_Remove"
 msgstr "У_брать выбранный"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "Настройки \"Биржевых сводок\""
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "Симво_лы"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Пове_дение"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 #, fuzzy
 msgid "Update"
 msgstr "Об_новить"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 #, fuzzy
 msgid "Stock update fre_quency:"
 msgstr "Частота _обновления, в минутах:"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 #, fuzzy
 msgid "minutes"
 msgstr "минут"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr ""
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 #, fuzzy
 msgid "_Scroll speed:"
 msgstr "Скорость _прокрутки:"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 #, fuzzy
 msgid "Slow"
 msgstr "Показывать"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr ""
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 #, fuzzy
 msgid "Fast"
-msgstr "_Прогноз"
+msgstr "Восточный"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "По_казывать кнопки прокрутки"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "Прокру_чивать слева направо"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "Показывать только си_мволы и цену"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
-#, fuzzy
 msgid "_Width:"
-msgstr "Ш_ирина:"
+msgstr "_Ширина:"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "пикселей"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 #, fuzzy
 msgid "Font and Colors"
 msgstr "Цвет неизм_енения:"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 #, fuzzy
 msgid "Use _default theme font and colors"
 msgstr "Использовать ис_ходные цвета темы"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
-#, fuzzy
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Шрифт:"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 #, fuzzy
 msgid "Stock _raised:"
 msgstr "Биржевые сводки"
 
-#: gtik/gtik.c:1634
-#, fuzzy
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
-msgstr "Биржевые сводки"
+msgstr ""
 
-#: gtik/gtik.c:1653
-#, fuzzy
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
-msgstr "Биржевые сводки"
+msgstr ""
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:570
 #, fuzzy
 msgid "_Background:"
 msgstr "Цвет _фона"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "Пропустить вперёд"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "Пропустить назад"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2689,11 +2698,11 @@ msgstr ""
 "Биржевые сводки\n"
 "Апплет получает постоянно обновляющиеся биржевые сводки"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(Не"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "Изменилось "
 
@@ -2910,7 +2919,6 @@ msgid "Pressure:"
 msgstr "Давление:"
 
 #: gweather/gweather-dialog.c:181
-#, fuzzy
 msgid "Visibility:"
 msgstr "Видимость:"
 
@@ -3207,7 +3215,6 @@ msgstr "Сплошная облачность"
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
 #: gweather/weather.c:192 gweather/weather.c:194
-#, fuzzy
 msgid "Thunderstorm"
 msgstr "Гроза"
 
@@ -3217,9 +3224,8 @@ msgid "Drizzle"
 msgstr "Моросящий дождь"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Light drizzle"
-msgstr "Слабый дождь"
+msgstr "Небольшой моросящий дождь"
 
 #: gweather/weather.c:193
 msgid "Moderate drizzle"
@@ -3247,7 +3253,6 @@ msgid "Moderate rain"
 msgstr "Умеренный дождь"
 
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Heavy rain"
 msgstr "Сильный дождь"
 
@@ -3294,9 +3299,8 @@ msgstr "Снежные заносы"
 
 #. SNOW_GRAINS
 #: gweather/weather.c:196
-#, fuzzy
 msgid "Snow grains"
-msgstr "Снежная крупа с ливнем"
+msgstr "Снежная крупа"
 
 #: gweather/weather.c:196
 msgid "Light snow grains"
@@ -3616,8 +3620,9 @@ msgstr "нормальный"
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
 #: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
+#, fuzzy
 msgid "Status not updated"
-msgstr ""
+msgstr " не подсоединён"
 
 #: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
@@ -3670,8 +3675,9 @@ msgid "Username Entry box"
 msgstr ""
 
 #: mailcheck/mailcheck.c:1921
+#, fuzzy
 msgid "_Password:"
-msgstr ""
+msgstr "Про_цессор"
 
 #: mailcheck/mailcheck.c:1974
 msgid "_Folder:"
@@ -4093,8 +4099,9 @@ msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
+#, fuzzy
 msgid "Macro command list"
-msgstr ""
+msgstr "Командная строка"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Macro pattern list"
@@ -4234,8 +4241,9 @@ msgid "Treble"
 msgstr ""
 
 #: mixer/mixer.c:113
+#, fuzzy
 msgid "Synth"
-msgstr ""
+msgstr "Южный"
 
 #: mixer/mixer.c:114
 msgid "Pcm"
@@ -4341,6 +4349,11 @@ msgstr ""
 "внимание: эта версия апплета была скомпилирована с другой версией\n"
 "файла soundcard.h.\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr ""
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "Управление громкостью"
@@ -4373,13 +4386,13 @@ msgid "Volume Control Preferences"
 msgstr "Управление громкостью"
 
 #: mixer/mixer.c:1241
-#, fuzzy
 msgid "Audio Channels"
-msgstr "Изменилось "
+msgstr ""
 
 #: mixer/mixer.c:1257
+#, fuzzy
 msgid "_Select channel to control:"
-msgstr ""
+msgstr "Выберите значок для подсоединённого диска"
 
 #: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
@@ -4605,7 +4618,7 @@ msgstr "Настройки апплета \"Лампочки модема\""
 #: modemlights/properties.c:445
 #, fuzzy
 msgid "U_pdate every:"
-msgstr "_Обновлений в секунду"
+msgstr "Обновление:"
 
 #. extra info checkbox
 #: modemlights/properties.c:470
@@ -4782,7 +4795,7 @@ msgstr "Сеть"
 #: multiload/main.c:278 multiload/properties.c:576
 #, fuzzy
 msgid "Swap Space"
-msgstr "Файл подкачки"
+msgstr "Загрузка подкачки"
 
 #: multiload/main.c:282
 msgid "Resource"
@@ -4806,8 +4819,9 @@ msgid "Applet refresh rate in milliseconds"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:2
+#, fuzzy
 msgid "CPU graph background color"
-msgstr ""
+msgstr "Цвет _фона"
 
 #: multiload/multiload.schemas.in.h:3
 #, fuzzy
@@ -4897,8 +4911,9 @@ msgid "Graph size"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:23
+#, fuzzy
 msgid "Load graph background color"
-msgstr ""
+msgstr "Цвет _фона"
 
 #: multiload/multiload.schemas.in.h:24
 msgid "Memory graph background color"
@@ -4909,8 +4924,9 @@ msgid "Network graph background color"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:26
+#, fuzzy
 msgid "Swap graph background color"
-msgstr ""
+msgstr "Цвет _фона"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4935,7 +4951,7 @@ msgstr "_Сеть"
 #: multiload/properties.c:390
 #, fuzzy
 msgid "S_wap Space"
-msgstr "Файл подкачки"
+msgstr "Загрузка подкачки"
 
 #: multiload/properties.c:403
 #, fuzzy
@@ -5024,7 +5040,7 @@ msgstr "Сво_бодно"
 #: multiload/properties.c:581
 #, fuzzy
 msgid "Load"
-msgstr "Загрузка процессора"
+msgstr "Загрузка сети"
 
 #: multiload/properties.c:583
 #, fuzzy
@@ -5041,55 +5057,50 @@ msgstr "Загрузка подкачки"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr ""
+msgstr "Создание, просмотр и управление липкими записками на рабочем столе"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
-msgstr ""
+msgstr "Липкие записки"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
-#, fuzzy
 msgid "Sticky Notes Applet Factory"
-msgstr "Фабрика апплета Gtik"
+msgstr "Фабрика апплета липких записок"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
-#, fuzzy
 msgid "_Delete Notes..."
-msgstr "У_далить макрос"
+msgstr "У_далить записки..."
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
-#, fuzzy
 msgid "_Lock Notes"
-msgstr "Показывать _диалоги"
+msgstr "_Заблокировать все записки"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
 #: stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
-msgstr ""
+msgstr "_Создать записку"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:7
-#, fuzzy
 msgid "_Show Notes"
-msgstr "Показывать _диалоги"
+msgstr "_Показать все записки"
 
 #: stickynotes/stickynotes.c:314
 msgid "Locked note"
-msgstr ""
+msgstr "Заблокированная записка"
 
 #: stickynotes/stickynotes.c:319
 msgid "Unlocked note"
-msgstr ""
+msgstr "Незаблокированная записка"
 
 #: stickynotes/stickynotes.glade.h:3
-#, fuzzy
 msgid "<b>Behavior</b>"
-msgstr "Пове_дение"
+msgstr "<b>Поведение</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
-msgstr ""
+msgstr "<b>Свойства записки</b>"
 
 #: stickynotes/stickynotes.glade.h:5
 msgid ""
@@ -5097,6 +5108,9 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>Удалить ВСЕ записки?</b>\n"
+"\n"
+"Изменения будут немедленно сохранены."
 
 #: stickynotes/stickynotes.glade.h:8
 msgid ""
@@ -5104,10 +5118,13 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>Удалить эту записку?</b>\n"
+"\n"
+"Изменения будут немедленно сохранены."
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
-msgstr ""
+msgstr "<b>Свойства</b>"
 
 #: stickynotes/stickynotes.glade.h:12
 #, fuzzy
@@ -5116,35 +5133,35 @@ msgstr "Цвет по_вышения:"
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
-msgstr ""
+msgstr "Выберите основной цвет для всех записок"
 
 #: stickynotes/stickynotes.glade.h:14
 msgid "Choose a color for the note"
-msgstr ""
+msgstr "Выберите цвет для записки"
 
 #: stickynotes/stickynotes.glade.h:15
 msgid "Choose a font for the note"
-msgstr ""
+msgstr "Выберите шрифт для записки"
 
 #: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font to use for all sticky notes"
-msgstr ""
+msgstr "Выберите шрифт для всех записок"
 
 #: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
-msgstr ""
+msgstr "Выберите, чтоб записки были видны на ВСЕХ рабочих местах"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr ""
+msgstr "Применять базовый стиль на все записки или нет"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
-msgstr ""
+msgstr "Ще_лчок:"
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
-msgstr ""
+msgstr "Закрыть записку"
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Force _default color and font on notes"
@@ -5157,121 +5174,111 @@ msgstr "Заряжена"
 
 #: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
-msgstr ""
+msgstr "Заблокировать/Разблокировать записку"
 
 #: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
-msgstr ""
+msgstr "Выберите цвет для записки"
 
 #: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
-msgstr ""
+msgstr "Выберите базовый цвет для всех записок"
 
 #: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
-msgstr ""
+msgstr "Выберите базовый шрифт для всех записок"
 
 #: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
-msgstr ""
+msgstr "Выберите шрифт для записки"
 
 #: stickynotes/stickynotes.glade.h:28
 msgid "Resize note"
-msgstr ""
+msgstr "Изменить размер записки"
 
 #: stickynotes/stickynotes.glade.h:29
-#, fuzzy
 msgid "Specify a title for the note"
-msgstr "Исходный список символов"
+msgstr "Указать заголовок для записки"
 
 #: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
-msgstr ""
+msgstr "Укажите начальную высоту (в пикселах) новых записок"
 
 #: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
-msgstr ""
+msgstr "Укажите начальную ширину (в пикселах) новых записок"
 
 #: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
-msgstr ""
+msgstr "Липкая записка"
 
 #: stickynotes/stickynotes.glade.h:33
-#, fuzzy
 msgid "Sticky Note Properties"
-msgstr "Настройки \"Апплета подсоединения диска\""
+msgstr "Свойства липкой записки"
 
 #: stickynotes/stickynotes.glade.h:34
-#, fuzzy
 msgid "Sticky Notes Preferences"
-msgstr "Настройки \"Апплета подсоединения диска\""
+msgstr "Настройки липких записок"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Use co_lor from the system theme"
-msgstr ""
+msgstr "Использовать исходный ц_вет темы"
 
 #: stickynotes/stickynotes.glade.h:36
-#, fuzzy
 msgid "Use default co_lor"
-msgstr "Использовать ис_ходные цвета темы"
+msgstr "Использовать базовый ц_вет"
 
 #: stickynotes/stickynotes.glade.h:37
-#, fuzzy
 msgid "Use default fo_nt"
-msgstr "Использовать ис_ходные значения"
+msgstr "Использовать базовый шриф_т"
 
 #: stickynotes/stickynotes.glade.h:38
 msgid "Use fo_nt from the system theme"
-msgstr ""
+msgstr "Использовать исходный шриф_т темы"
 
 #: stickynotes/stickynotes.glade.h:39
-#, fuzzy
 msgid "_Color:"
-msgstr "Цвета"
+msgstr "_Цвет:"
 
 #: stickynotes/stickynotes.glade.h:40
-#, fuzzy
 msgid "_Delete ALL"
-msgstr "У_далить макрос"
+msgstr "У_далить все"
 
 #: stickynotes/stickynotes.glade.h:41
-#, fuzzy
 msgid "_Delete Note..."
-msgstr "У_далить макрос"
+msgstr "У_далить Записку..."
 
 #: stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
-msgstr ""
+msgstr "_Заблокировать записку"
 
 #: stickynotes/stickynotes.glade.h:45
-#, fuzzy
 msgid "_Properties..."
-msgstr "_Изменить настройки..."
+msgstr "_Изменить свойства..."
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr ""
+msgstr "Прил_еплять записки на все рабочие места"
 
 #: stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
-msgstr ""
+msgstr "З_аголовок:"
 
 #: stickynotes/stickynotes.glade.h:49
 msgid "_lock/unlock all notes"
-msgstr ""
+msgstr "_блокирует/разблокирует все записки"
 
 #: stickynotes/stickynotes.glade.h:50
-#, fuzzy
 msgid "_show/hide all notes"
-msgstr "Показывать _диалоги"
+msgstr "_показывает/скрывает все записки"
 
 #: stickynotes/stickynotes.glade.h:51
 msgid "create a _new note"
-msgstr ""
+msgstr "создаёт _новую записку"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
-msgstr ""
+msgstr "Интервал автосохранения в минутах"
 
 #: stickynotes/stickynotes.schemas.in.h:2
 msgid ""
@@ -5279,83 +5286,93 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
+"По умолчанию, липким запискам при создании даётся заголовок с текущей датой. "
+"Используется этот формат; всё, что может быть корректно проанализировано "
+"функцией strftime() является правильным."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
-msgstr ""
+msgstr "Формат даты в заголовках записок"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
-msgstr ""
+msgstr "Реакция апплета на щелчок"
 
 #: stickynotes/stickynotes.schemas.in.h:5
-#, fuzzy
 msgid "Default color for new notes"
-msgstr "Исходный список символов"
+msgstr "Базовый цвет для новых записок"
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
+"Базовый цвет для новых липких записок. Цвет должен соответствовать "
+"шестнадцатиричной html спецификации, например \"#30FF50\"."
 
 #: stickynotes/stickynotes.schemas.in.h:7
-#, fuzzy
 msgid "Default font for new notes"
-msgstr "Исходный список символов"
+msgstr "Базовый шрифт для новых записок"
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"Базовый шрифт для новых липких записок. Название шрифта должно "
+"соответствовать Pango Font Name, например \"Sans Italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
-msgstr ""
+msgstr "Начальная высота для новых записок"
 
 #: stickynotes/stickynotes.schemas.in.h:10
-#, fuzzy
 msgid "Default height for new sticky notes in pixels."
-msgstr "Исходный список символов"
+msgstr "Начальная высота для новых липких записок в пикселах."
 
 #: stickynotes/stickynotes.schemas.in.h:11
-#, fuzzy
 msgid "Default width for new notes"
-msgstr "Исходный список символов"
+msgstr "Начальная ширина для новых записок"
 
 #: stickynotes/stickynotes.schemas.in.h:12
-#, fuzzy
 msgid "Default width for new sticky notes in pixels."
-msgstr "Исходный список символов"
+msgstr "Начальная ширина для новых липких записок в пикселах."
 
 #: stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
-msgstr ""
+msgstr "Пустые записки всегда удаляются без подтверждения"
 
 #: stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
 msgstr ""
+"Каждый раз в указанное количество минут, липкие записки автоматически "
+"сохраняются."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr ""
+"Если эта опция отключена, любой цвет может быть использован как базовый для "
+"всех липких записок."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr ""
+"Если эта опция отключена, любой шрифт может быть использован как базовый для "
+"всех липких записок."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
+"Если эта опция включена, цвет и шрифт, которые были назначены отдельным "
+"запискам будут игнорироваться."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5363,54 +5380,54 @@ msgid ""
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
+"Наступает, когда по апплету щёлкнули левой кнопкой или нажали \"enter\". "
+"Опция \"0\" для \"Новая Записка\", \"1\" для \"Показать Все Записки\" и \"2"
+"\" для \"Заблокировать Все Записки\"."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
+msgstr "Указывает, заблокированы (не редактируются) липкие записки или нет."
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr ""
+msgstr "Указывает, видимы липкие записки на ВСЕХ рабочих местах или нет."
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
-msgstr ""
+msgstr "Указывает, видимы липкие записки или нет."
 
 #: stickynotes/stickynotes.schemas.in.h:22
-#, fuzzy
 msgid "Sticky notes' locked state"
-msgstr "Фабрика апплета Gtik"
+msgstr "Состояние заблокированности липких записок"
 
 #: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:24
-#, fuzzy
 msgid "Sticky notes' workspace stickyness"
-msgstr "Рабочие места"
+msgstr "Липкость записок к рабочим местам"
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
+msgstr "Запрашивать подтверждение на удаление записки или нет"
 
 #: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
-msgstr ""
+msgstr "Применять базовый цвет и шрифт на все записки или нет"
 
 #: stickynotes/stickynotes.schemas.in.h:27
-#, fuzzy
 msgid "Whether to use the default system color"
-msgstr "Использовать ис_ходные цвета темы"
+msgstr "Использовать системный цвет или нет"
 
 #: stickynotes/stickynotes.schemas.in.h:28
 msgid "Whether to use the default system font"
-msgstr ""
+msgstr "Использовать системный шрифт или нет"
 
-#: stickynotes/stickynotes_applet.c:339
-#, fuzzy, c-format
+#: stickynotes/stickynotes_applet.c:338
+#, c-format
 msgid ""
 "%s\n"
 "%d note"
@@ -5418,19 +5435,22 @@ msgid_plural ""
 "%s\n"
 "%d notes"
 msgstr[0] ""
-"%s:\n"
-"используется %d%%"
+"%s\n"
+"%d записка"
 msgstr[1] ""
-"%s:\n"
-"используется %d%%"
+"%s\n"
+"%d записки"
+msgstr[2] ""
+"%s\n"
+"%d записок"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
-msgstr ""
+msgstr "©  2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
-msgstr ""
+msgstr "Липкие записки для среды Гном"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
@@ -5481,12 +5501,6 @@ msgstr "Отслеживаемое устройство:"
 #~ msgid "Beep when either of the above is true"
 #~ msgstr "Подавать сигнал, когда что-либо из вышеуказанного истинно"
 
-#~ msgid "Hide"
-#~ msgstr "Скрывать"
-
-#~ msgid "Show"
-#~ msgstr "Показывать"
-
 #~ msgid "_Run External CD Player"
 #~ msgstr "Запустить вне_шний проигрыватель компакт-дисков"
 
@@ -5498,9 +5512,6 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "_Default character list:"
 #~ msgstr "_Исходный список символов:"
-
-#~ msgid "Default list of characters"
-#~ msgstr "Исходный список символов"
 
 #~ msgid "Set the default character list here"
 #~ msgstr "Установите здесь исходный список символов"
@@ -5547,82 +5558,6 @@ msgstr "Отслеживаемое устройство:"
 #~ msgid "No data available or properties not set"
 #~ msgstr "Данные недоступны или свойства не установлены"
 
-#, fuzzy
-#~ msgid "Precipitation"
-#~ msgstr "Временами осадки"
-
-#, fuzzy
-#~ msgid "Condition"
-#~ msgstr "Условия:"
-
-#~ msgid "minute(s)"
-#~ msgstr "минут"
-
-#, fuzzy
-#~ msgid "Current city:"
-#~ msgstr "Текущие _условия"
-
-#, fuzzy
-#~ msgid "Windy"
-#~ msgstr "Ветер:"
-
-#, fuzzy
-#~ msgid "Light Flurries"
-#~ msgstr "Небольшой моросящий дождь"
-
-#, fuzzy
-#~ msgid "Snow and Wind"
-#~ msgstr "Снежная крупа"
-
-#, fuzzy
-#~ msgid "Nothing"
-#~ msgstr "Северный"
-
-#, fuzzy
-#~ msgid "Command Entry box"
-#~ msgstr "Командная строка"
-
-#, fuzzy
-#~ msgid "Execute"
-#~ msgstr "Извлечь"
-
-#~ msgid "Applet _width:"
-#~ msgstr "_Ширина апплета:"
-
-#~ msgid "Size"
-#~ msgstr "Размер"
-
-#~ msgid "_Run Volume Control..."
-#~ msgstr "Зап_устить Управление громкостью"
-
-#~ msgid "No_t connected"
-#~ msgstr "_Не подсоединённый"
-
-#~ msgid "Set options as default"
-#~ msgstr "Установить параметры по умолчанию"
-
-#~ msgid "_Run detailed system monitor"
-#~ msgstr "Зап_устить детальный мониторинг системы"
-
-#, fuzzy
-#~ msgid "_Swap Space"
-#~ msgstr "Файл подка_чки"
-
-#~ msgid "_Other"
-#~ msgstr "Пр_очее"
-
-#, fuzzy
-#~ msgid "Background color of title"
-#~ msgstr "Цвет _фона"
-
-#~ msgid ""
-#~ "The images necessary to run the wireless monitor are missing.\n"
-#~ "Please make sure that it is correctly installed."
-#~ msgstr ""
-#~ "Отсутствуют изображения, необходимые для запуска монитора беспроводной "
-#~ "связи.\n"
-#~ "Убедитесь, что монитор установлен корректно."
-
 #~ msgid "- Colo_r:"
 #~ msgstr "Цвет по_нижения:"
 
@@ -5631,9 +5566,6 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Enable _detailed forecast"
 #~ msgstr "Включить _детальный прогноз"
-
-#~ msgid "Updates"
-#~ msgstr "Обновления"
 
 #~ msgid "_Automatically update every "
 #~ msgstr "_Автоматически обновлять каждые "
@@ -5655,9 +5587,6 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Windy drizzle"
 #~ msgstr "Моросящий дождь с ветром"
-
-#~ msgid "Showers"
-#~ msgstr "Ливни"
 
 #~ msgid "Drifting drizzle"
 #~ msgstr "Моросящий дождь"
@@ -5709,6 +5638,9 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Blowing snow grains"
 #~ msgstr "Град"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Снежная крупа с ливнем"
 
 #~ msgid "Drifting snow grains"
 #~ msgstr "Град"
@@ -5841,6 +5773,9 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Patches of precipitation"
 #~ msgstr "Местами осадки"
+
+#~ msgid "Partial precipitation"
+#~ msgstr "Временами осадки"
 
 #~ msgid "Unknown thunderstorm"
 #~ msgstr "Неизвестная гроза"
@@ -5976,9 +5911,6 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Patches of sand"
 #~ msgstr "Местами песчаная буря"
-
-#~ msgid "Partial sand"
-#~ msgstr "Временами песчаная буря"
 
 #~ msgid "Haze in the vicinity"
 #~ msgstr "В окрестностях пыльная мгла"
@@ -6217,6 +6149,15 @@ msgstr "Отслеживаемое устройство:"
 #~ msgid "Failed to get radar map image.\n"
 #~ msgstr "Произошёл сбой при получении изображения радарной карты.\n"
 
+#~ msgid "Applet _width:"
+#~ msgstr "_Ширина апплета:"
+
+#~ msgid "Size"
+#~ msgstr "Размер"
+
+#~ msgid "_Run Volume Control..."
+#~ msgstr "Зап_устить Управление громкостью"
+
 #~ msgid "Querying available channels of mixer device %s failed\n"
 #~ msgstr "Произошёл сбой при запросе доступных каналов микшера %s\n"
 
@@ -6227,6 +6168,27 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
 #~ msgstr "Микшер %s не имеет ни канала громкости, ни канала PCM.\n"
+
+#~ msgid "U_pdates per second"
+#~ msgstr "_Обновлений в секунду"
+
+#~ msgid "No_t connected"
+#~ msgstr "_Не подсоединённый"
+
+#~ msgid "Set options as default"
+#~ msgstr "Установить параметры по умолчанию"
+
+#~ msgid "_Run detailed system monitor"
+#~ msgstr "Зап_устить детальный мониторинг системы"
+
+#~ msgid "Swap File"
+#~ msgstr "Файл подкачки"
+
+#~ msgid "_Swap File"
+#~ msgstr "Файл подка_чки"
+
+#~ msgid "_Other"
+#~ msgstr "Пр_очее"
 
 #~ msgid "Factory for Panel Menu Applet"
 #~ msgstr "Фабрика для апплета \"Меню панели\""
@@ -6334,6 +6296,9 @@ msgstr "Отслеживаемое устройство:"
 #~ msgid "Windows"
 #~ msgstr "Окна"
 
+#~ msgid "Workspaces"
+#~ msgstr "Рабочие места"
+
 #~ msgid "Menu Bar"
 #~ msgstr "Панель меню"
 
@@ -6372,3 +6337,11 @@ msgstr "Отслеживаемое устройство:"
 
 #~ msgid "Help document %s/%s not found"
 #~ msgstr "Справочный документ \"%s/%s\" не найден"
+
+#~ msgid ""
+#~ "The images necessary to run the wireless monitor are missing.\n"
+#~ "Please make sure that it is correctly installed."
+#~ msgstr ""
+#~ "Отсутствуют изображения, необходимые для запуска монитора беспроводной "
+#~ "связи.\n"
+#~ "Убедитесь, что монитор установлен корректно."
