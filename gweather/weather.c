@@ -37,6 +37,7 @@
 
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
+static gchar* formatWeatherMsg (gchar* msg);
 
 /* FIXME: these global variables will cause conflicts when multiple
 ** instances of the applets update at the same time
@@ -1048,7 +1049,7 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	
     if (result == GNOME_VFS_ERROR_EOF)
     {
-        info->forecast = g_strdup (info->iwin_buffer);
+        info->forecast = formatWeatherMsg(g_strdup (info->iwin_buffer));
     }
     else if (result != GNOME_VFS_OK) {
 	g_print("%s", gnome_vfs_result_to_string(result));
@@ -1064,6 +1065,47 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     return;
 }
 
+
+/**
+ *  Human's don't deal well with .MONDAY...SUNNY AND BLAH BLAH.TUESDAY...THEN THIS AND THAT.WEDNESDAY...RAINY BLAH BLAH.
+ *  This function makes it easier to read.
+ */
+static gchar* formatWeatherMsg (gchar* forecast) {
+
+    gchar* ptr = forecast;
+    gchar* startLine = NULL;
+
+    while (0 != *ptr) {
+        if (ptr[0] == '\n' && ptr[1] == '.') {
+            if (NULL == startLine) {
+                memmove(forecast, ptr, strlen(ptr) + 1);
+                ptr[0] = ' ';
+                ptr = forecast;
+            }
+            ptr[1] = '\n';
+            ptr += 2;
+            startLine = ptr;
+
+        } else if (ptr[0] == '.' && ptr[1] == '.' && ptr[2] == '.' && NULL != startLine) {
+            memmove(startLine + 2, startLine, (ptr - startLine) * sizeof(gchar));
+            startLine[0] = ' ';
+            startLine[1] = '\n';
+            ptr[2] = '\n';
+
+            ptr += 3;
+
+        } else if (ptr[0] == '$' && ptr[1] == '$') {
+            ptr[0] = ptr[1] = ' ';
+
+        } else {
+            ptr++;
+        }
+    }
+
+    return forecast;
+}
+
+
 static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 {
     WeatherInfo *info = (WeatherInfo *)data;
@@ -1073,7 +1115,7 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     gchar *forecast;
 
     g_return_if_fail(handle == info->iwin_handle);
-	
+
     g_return_if_fail(info != NULL);
 
     body = g_malloc0(DATA_SIZE);
