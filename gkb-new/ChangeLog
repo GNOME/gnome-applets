@@ -1,3 +1,10 @@
+2003-03-10  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gconf.c: check for NULL strings before setting gconf value
+	
+	* prop-map.c: don't free the whole keymap since we are only changing
+	a few items. SHould fix bug #107938
+
 2003-01-20  Shivram U  <shivaram.upadhyayula@wipro.com>
 
 	* prop.c, prop-add.c: Close the "Select Keyboard" dialog if the 
