@@ -1,3 +1,15 @@
+1999-09-07  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/cmd_completion.c (cmdc): Added this new command completion
+ 	routine by Travis Hume <travishume@acm.org>.  I guess it will be
+ 	faster than my old completion function which was based on a bash
+ 	skript
+
+	(cmdCompletion_old): backup copy of the fomer function
+ 	cmdCompletion
+
+	(cmdCompletion): modified to work with Travis' new cmdc function.
+
 1999-08-23  Oliver Maruhn  <oliver@maruhn.com>
 
 	* src/command_line.c (historyAutoComplete): applied Halfline's
