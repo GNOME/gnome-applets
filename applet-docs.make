@@ -9,21 +9,28 @@
 # figs = modemlights-advpref.png  modemlights-prefs.png  modemlights.png
 # include $(top_srcdir)/applet-docs.make
 
-docdir = $(datadir)/gnome/help/$(applet)_applet/$(lang)
-helpdir = $(docdir)
-doc_DATA =	\
+helpdir = $(datadir)/gnome/help/$(applet)_applet/$(lang)
+help_DATA =	\
 	index.html	\
 	topic.dat	\
 	$(figs)
+
+# Scrollkeeper related stuff
+omf_dir=$(top_srcdir)/omf-install
 
 sgml_files = \
 	$(sgml_ents)		\
 	$(applet)_applet.sgml
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = $(sgml_files) $(doc_DATA)
+EXTRA_DIST = $(sgml_files) $(help_DATA) $(omffile)
 
-all: index.html
+all: index.html omf
+
+omf: $(omffile)
+	-for file in $(omffile); do \
+	  scrollkeeper-preinstall $(helpdir)/$(app).sgml $$file $(omf_dir)/$$file; \
+	done
 
 index.html: $(applet)_applet/index.html
 	-cp $(applet)_applet/index.html .
@@ -47,26 +54,26 @@ applet-dist-hook: index.html
 	-cp $(srcdir)/$(applet)_applet/stylesheet-images/*.gif \
 		$(distdir)/$(applet)_applet/stylesheet-images
 
-install-data-am: index.html
-	-$(mkinstalldirs) $(DESTDIR)$(docdir)/stylesheet-images
-	-cp $(srcdir)/topic.dat $(DESTDIR)$(docdir)
-	-cp $(srcdir)/$(sgml_files) $(DESTDIR)$(docdir)
+install-data-am: index.html omf
+	-$(mkinstalldirs) $(DESTDIR)$(helpdir)/stylesheet-images
+	-cp $(srcdir)/topic.dat $(DESTDIR)$(helpdir)
+	-cp $(srcdir)/$(sgml_files) $(DESTDIR)$(helpdir)
 	-for file in \
 		$(applet)_applet/*.html	\
 		$(applet)_applet/*.css	\
 		$(srcdir)/*.png; do\
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
-	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(helpdir)/$$basefile; \
 	done
 	-for file in \
 		$(applet)_applet/stylesheet-images/*.png; do \
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
-	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/stylesheet-images/$$basefile; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(helpdir)/stylesheet-images/$$basefile; \
 	done
 	-for file in \
 		$(applet)_applet/stylesheet-images/*.gif; do \
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
-	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/stylesheet-images/$$basefile; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(helpdir)/stylesheet-images/$$basefile; \
 	done
 
 $(applet)_applet.ps: $(srcdir)/$(applet)_applet.sgml $(srcdir)/$(applet).sgml

@@ -1,3 +1,49 @@
+2001-02-26  Dan Mueth <dan@eazel.com>
+
+	Doing some initial setup of OMF installation.  Added a handful
+	of OMF files.  Note: Make sure not to set $prefix to have
+	RPM_BUILD_ROOT in it or you will break this stuff.  Set
+	DESTDIR=RPM_BUILD_ROOT if you like, but $prefix should refer
+	to the path on the user's machine.  I'm just griping about this
+	because the Ximian spec file (which I borrowed for my testing;)
+	did this wrong.
+
+	Adding directory where omf files are collected before installation:
+	* Makefile.am: added omf-install in SUBDIRS
+	* configure.in: Added omf-install
+	* omf-install/Makefile.am:
+
+	The real build stuff went in here for OMF files:
+	* applet-docs.make: Updated
+
+	Actual OMF files and their Makefiles:
+	* another_clock/docs/C/Makefile.am:
+	* another_clock/docs/C/anotherclock_applet-C.omf:
+	* another_clock/docs/it/Makefile.am:
+	* another_clock/docs/it/anotherclock_applet-it.omf:
+	* another_clock/docs/ru/Makefile.am:
+	* another_clock/docs/ru/anotherclock_applet-ru.omf:
+	* another_clock/docs/uk/Makefile.am:
+	* another_clock/docs/uk/anotherclock_applet-uk.omf:
+	* asclock/docs/C/Makefile.am:
+	* asclock/docs/C/asclock_applet-C.omf:
+	* asclock/docs/it/Makefile.am:
+	* asclock/docs/it/asclock_applet-it.omf:
+	* asclock/docs/ru/Makefile.am:
+	* asclock/docs/ru/asclock_applet-ru.omf:
+	* asclock/docs/uk/Makefile.am:
+	* asclock/docs/uk/asclock_applet-uk.omf:
+	* battery/docs/C/Makefile.am:
+	* battery/docs/C/battery_applet-C.omf:
+	* battery/docs/it/Makefile.am:
+	* battery/docs/it/battery_applet-it.omf:
+	* cdplayer/docs/C/Makefile.am:
+	* cdplayer/docs/C/cdplayer_applet-C.omf:
+	* cdplayer/docs/it/Makefile.am:
+	* cdplayer/docs/it/cdplayer_applet-it.omf:
+	* mixer/docs/C/Makefile.am:
+	* mixer/docs/C/mixer_applet-C.omf:
+
 2001-02-23  Szabolcs Ban <shooby@gnome.hu> 
 
 	* gkb-new/descs/*.keyprop.in: added tons of keyprop files

@@ -88,7 +88,8 @@ SUBDIRS = \
 	$(modemlights_SUBDIRS)	\
 	$(esd_SUBDIRS)		\
 	$(wordexp_SUBDIRS)      \
-	$(xml_SUBDIRS)
+	$(xml_SUBDIRS)		\
+	omf-install
 
 DIST_SUBDIRS = \
 	intl po macros 		\
@@ -102,7 +103,8 @@ DIST_SUBDIRS = \
 	$(modemlights_applets)	\
 	$(esd_applets)		\
 	$(wordexp_applets)      \
-	$(xml_applets)
+	$(xml_applets)		\
+	omf-install
 
 ## to automatically rebuild aclocal.m4 if any of the macros in `macros/' change
 @MAINT@include macros/macros.dep

@@ -7,6 +7,7 @@ figs = \
 	battery-applet-properties-general.png	\
 	battery-applet-properties-graph.png
 applet = battery
+omffile = battery_applet-it.omf
 lang = it
 sgml_ents = $(applet).sgml
 include $(top_srcdir)/applet-docs.make
