@@ -11,9 +11,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.0\n"
-"POT-Creation-Date: 2001-09-03 19:31+0200\n"
-"PO-Revision-Date: 2001-03-22 00:24+0900\n"
-"Last-Translator: Akira TAGOH <tagoh@gnome.gr.jp>\n"
+"POT-Creation-Date: 2001-10-22 11:31+0900\n"
+"PO-Revision-Date: 2001-10-22 11:41+0900\n"
+"Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=euc-jp\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Clock Settings"
 msgstr "時計の設定"
 
-#: another_clock/another_clock.c:261 asclock/dialogs.c:379
+#: another_clock/another_clock.c:261 asclock/dialogs.c:378
 #: battery/properties.c:83 clockmail/properties.c:417
 #: diskusage/properties.c:463 drivemount/properties.c:391
 #: gnotes/properties.c:190 gweather/gweather-pref.c:524
@@ -80,10 +80,10 @@ msgstr "(C) 1999 the Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "CDEパネルにあるものに似たアナログ時計です。"
 
-#: another_clock/another_clock.c:710 asclock/asclock.c:609
+#: another_clock/another_clock.c:710 asclock/asclock.c:598
 #: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
-#: diskusage/diskusage.c:1050 drivemount/drivemount.c:742 geyes/geyes.c:393
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1416
+#: diskusage/diskusage.c:1050 drivemount/drivemount.c:743 geyes/geyes.c:393
+#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
@@ -94,10 +94,10 @@ msgstr "CDEパネルにあるものに似たアナログ時計です。"
 msgid "Properties..."
 msgstr "設定..."
 
-#: another_clock/another_clock.c:716 asclock/asclock.c:615
+#: another_clock/another_clock.c:716 asclock/asclock.c:604
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:580
 #: clockmail/clockmail.c:331 cpumemusage/cpumemusage.c:297
-#: diskusage/diskusage.c:1073 drivemount/drivemount.c:748
+#: diskusage/diskusage.c:1073 drivemount/drivemount.c:749
 #: fifteen/fifteen.c:384 geyes/geyes.c:399 gkb-new/gkb.c:763
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:204 life/life.c:279
@@ -110,12 +110,12 @@ msgstr "設定..."
 msgid "Help"
 msgstr "ヘルプ"
 
-#: another_clock/another_clock.c:720 asclock/asclock.c:620
+#: another_clock/another_clock.c:720 asclock/asclock.c:609
 #: battery/battery.c:962 cdplayer/cdplayer.c:610 charpick/charpick.c:586
 #: clipboard/clipboard.c:324 clockmail/clockmail.c:336
 #: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
-#: drivemount/drivemount.c:753 fifteen/fifteen.c:389 geyes/geyes.c:404
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1425
+#: drivemount/drivemount.c:754 fifteen/fifteen.c:389 geyes/geyes.c:404
+#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
@@ -127,46 +127,53 @@ msgstr "ヘルプ"
 msgid "About..."
 msgstr "情報..."
 
-#: asclock/dialogs.c:26
+#: asclock/dialogs.c:27
 msgid "ASClock"
 msgstr "AfterStep 時計"
 
-#: asclock/dialogs.c:28
+#: asclock/dialogs.c:29
 msgid "(C) 1998 the Free Software Foundation"
 msgstr "(C) 1998 the Free Software Foundation"
 
-#: asclock/dialogs.c:30
+#: asclock/dialogs.c:31
 msgid "Who said NeXT is dead?"
 msgstr "NeXT は死んだだと?"
 
-#: asclock/dialogs.c:164
+#: asclock/dialogs.c:163
 msgid ""
 "Since you are root, would you like to set the system's default timezone?"
 msgstr ""
 "あなたは管理者(root)ですが, システムのデフォルトのタイムゾーンを設定しますか?"
 
-#: asclock/dialogs.c:166
+#: asclock/dialogs.c:165
 msgid "My Title"
 msgstr "個人用題名"
 
-#. gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
-#: asclock/dialogs.c:268
+#: asclock/dialogs.c:266
+msgid "Continent/City"
+msgstr "大陸/都市"
+
+#: asclock/dialogs.c:267
 msgid "Clock Theme"
 msgstr "時計のテーマ"
 
-#: asclock/dialogs.c:300
+#: asclock/dialogs.c:299
 msgid "ASClock Settings"
 msgstr "Afterstep 時計の設定"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:332 clockmail/properties.c:306
+#: asclock/dialogs.c:331 clockmail/properties.c:306
 msgid "Display time in 12 hour format (AM/PM)"
 msgstr "12 時制フォーマット(AM/PM)で時刻を表示する"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:340
+#: asclock/dialogs.c:339
 msgid "Blinking elements in clock"
 msgstr "時計の表示を点滅させる"
+
+#: asclock/dialogs.c:383
+msgid "Timezone"
+msgstr "タイムゾーン"
 
 #: battery/battery.c:150
 msgid "The battery is low."
@@ -536,7 +543,7 @@ msgstr ""
 #: diskusage/diskusage.c:171 diskusage/diskusage.c:283
 #, c-format
 msgid "MP: %s"
-msgstr ""
+msgstr "場所: %s"
 
 #: diskusage/diskusage.c:746
 msgid "File Systems"
@@ -558,7 +565,7 @@ msgstr ""
 "GNU 一般公有使用許諾書の下にリリースされています。\n"
 "ドライブの使用量と空き容量を表示します。"
 
-#: diskusage/diskusage.c:1058 drivemount/drivemount.c:723
+#: diskusage/diskusage.c:1058 drivemount/drivemount.c:724
 msgid "Browse..."
 msgstr "参照..."
 
@@ -602,11 +609,11 @@ msgstr "フォント:"
 msgid "Diskusage Settings"
 msgstr "ディスク容量の設定"
 
-#: drivemount/drivemount.c:130
+#: drivemount/drivemount.c:131
 msgid "Drive Mount Applet"
 msgstr "ドライブマウントアプレット"
 
-#: drivemount/drivemount.c:133
+#: drivemount/drivemount.c:134
 msgid ""
 "Released under the GNU general public license.\n"
 "Mounts and Unmounts drives."
@@ -614,21 +621,21 @@ msgstr ""
 "GNU 一般公有使用許諾書の下にリリースされています。\n"
 "ドライブのマウントとアンマウントをします"
 
-#: drivemount/drivemount.c:374
+#: drivemount/drivemount.c:375
 msgid " mounted"
 msgstr "マウントされています"
 
-#: drivemount/drivemount.c:378
+#: drivemount/drivemount.c:379
 msgid " not mounted"
 msgstr "マウントされていません"
 
 #. the mount status is the same, print
 #. the returned output from (u)mount, we are assuming an error
-#: drivemount/drivemount.c:503
+#: drivemount/drivemount.c:504
 msgid "\" reported:\n"
 msgstr "\" のお知らせ:\n"
 
-#: drivemount/drivemount.c:505
+#: drivemount/drivemount.c:506
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -636,7 +643,7 @@ msgstr ""
 "ドライブマウントコマンドが失敗しました。\n"
 "\""
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:734
 msgid "Eject"
 msgstr "取り出し"
 
@@ -938,7 +945,7 @@ msgstr "オプション"
 msgid "Select layout"
 msgstr "レイアウトの選択"
 
-#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1081
+#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1032
 #: webcontrol/properties.c:574
 msgid "Add"
 msgstr "追加"
@@ -1326,9 +1333,8 @@ msgid "GNotes!"
 msgstr "GNotes!"
 
 #: gnotes/gnotes_applet.c:103
-#, fuzzy
 msgid "Copyright (C) 1998-1999"
-msgstr "Copyright (C) 1998"
+msgstr "Copyright (C) 1998-1999"
 
 #: gnotes/gnotes_applet.c:105
 msgid "Create sticky notes on your screen."
@@ -1366,15 +1372,15 @@ msgstr "標準の高さ"
 msgid "Default Width"
 msgstr "標準の幅"
 
-#: gtik/gtik.c:209
+#: gtik/gtik.c:212
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "データが利用可能でないか、プロパティが設定されていません"
 
-#: gtik/gtik.c:704
+#: gtik/gtik.c:659
 msgid "The GNOME Stock Ticker"
 msgstr "GNOME ストックティッカー"
 
-#: gtik/gtik.c:707
+#: gtik/gtik.c:662
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1386,86 +1392,86 @@ msgstr ""
 "全に無保証です* GNOME ストックティッ カーを投資判断に使わないようにしてくださ"
 "い。単に情報を表示する 目的のためのものです。"
 
-#: gtik/gtik.c:1070
+#: gtik/gtik.c:1021
 msgid "New Symbol:"
 msgstr "新規シンボル:"
 
-#: gtik/gtik.c:1092
+#: gtik/gtik.c:1043
 msgid "Remove Selected"
 msgstr "選択したものを削除"
 
-#: gtik/gtik.c:1141
+#: gtik/gtik.c:1092
 msgid "Gnome Stock Ticker Properties"
 msgstr "GNOME ストックティッカーの設定"
 
-#: gtik/gtik.c:1153
+#: gtik/gtik.c:1104
 msgid "Update Frequency in minutes:"
 msgstr "更新頻度(分単位):"
 
-#: gtik/gtik.c:1172
+#: gtik/gtik.c:1123
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr " 下のボックスにシンボルを\"+\"で区切って入力してください。"
 
-#: gtik/gtik.c:1180
+#: gtik/gtik.c:1130
 msgid "Display only symbols and price"
 msgstr "シンボルと値段のみを表示"
 
-#: gtik/gtik.c:1181
+#: gtik/gtik.c:1131
 msgid "Scroll left to right"
 msgstr "左から右へスクロール"
 
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1132
 msgid "Display arrows instead of -/+"
 msgstr "- や + の代わりに矢印を表示"
 
-#: gtik/gtik.c:1183
+#: gtik/gtik.c:1133
 msgid "Enable scroll buttons"
 msgstr "スクロールボタンを使う"
 
 #. COLOR
-#: gtik/gtik.c:1227
+#: gtik/gtik.c:1177
 msgid "+ Color"
 msgstr "+ の色"
 
-#: gtik/gtik.c:1244
+#: gtik/gtik.c:1194
 msgid "- Color"
 msgstr "- の色"
 
-#: gtik/gtik.c:1264
+#: gtik/gtik.c:1214
 msgid "Stock Symbol:"
 msgstr "ストックシンボル:"
 
-#: gtik/gtik.c:1265 gtik/gtik.c:1276
+#: gtik/gtik.c:1215 gtik/gtik.c:1226
 msgid "Select Font"
 msgstr "フォントの選択"
 
-#: gtik/gtik.c:1275
+#: gtik/gtik.c:1225
 msgid "Stock Change:"
 msgstr "ストック変更:"
 
-#: gtik/gtik.c:1298
+#: gtik/gtik.c:1248
 msgid "Symbols"
 msgstr "シンボル"
 
-#: gtik/gtik.c:1300 webcontrol/properties.c:668
+#: gtik/gtik.c:1250 webcontrol/properties.c:668
 msgid "Behavior"
 msgstr "振舞い"
 
 #. appearance frame
-#: gtik/gtik.c:1302 mini-commander/src/preferences.c:557
+#: gtik/gtik.c:1252 mini-commander/src/preferences.c:557
 #: webcontrol/properties.c:487
 msgid "Appearance"
 msgstr "外観"
 
-#: gtik/gtik.c:1406 slashapp/slashapp.c:103
+#: gtik/gtik.c:1345 slashapp/slashapp.c:103
 msgid "Refresh"
 msgstr "再読み込み"
 
-#: gtik/gtik.c:1544
+#: gtik/gtik.c:1473
 msgid "(No"
 msgstr "(いいえ"
 
-#: gtik/gtik.c:1545
+#: gtik/gtik.c:1474
 msgid "Change "
 msgstr "変更 "
 
@@ -1503,9 +1509,8 @@ msgid "Updating..."
 msgstr "更新中..."
 
 #: gweather/gweather-applet.c:388
-#, fuzzy
 msgid "Update failed! Maybe another update was already in progress?"
-msgstr "その他の更新中です!\n"
+msgstr "更新に失敗しました! 更新が他に進行中ではないですか?"
 
 #: gweather/gweather-dialog.c:125
 msgid "Location:"
@@ -1628,86 +1633,75 @@ msgid "Password:"
 msgstr "パスワード:"
 
 #: gweather/gweather-pref.c:423
-#, fuzzy
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
 "file."
 msgstr ""
-"ちょいと警告: パスワードは個人設定のファイルに\n"
-"書き込まれます。が、暗号化はしていません!\n"
-"注意せよ!"
+"警告: パスワードは個人用の\n"
+"設定のファイルに暗号化せず\n"
+"に保存されます。"
 
 #: gweather/gweather-pref.c:431
 msgid "Network"
 msgstr "ネットワーク"
 
 #: gweather/gweather-pref.c:456
-#, fuzzy
 msgid "Automatically update every"
-msgstr "自動的に最適の大きさにする"
+msgstr "自動的に更新"
 
 #: gweather/gweather-pref.c:460
-#, fuzzy
 msgid "Use metric system units"
-msgstr "メートル表記"
+msgstr "メートル表記を使用"
 
 #: gweather/gweather-pref.c:464
-#, fuzzy
 msgid "Enable detailed forecast"
-msgstr "詳しい予報"
+msgstr "詳しい予報を有効にする"
 
 #: gweather/gweather-pref.c:469
-#, fuzzy
 msgid "Enable radar map"
-msgstr "レーダー表示する"
+msgstr "レーダーマップを有効にする"
 
 #: gweather/gweather-pref.c:474
-#, fuzzy
 msgid "Updates"
 msgstr "更新"
 
 #: gweather/gweather-pref.c:480
-#, fuzzy
 msgid "Automatically update every "
-msgstr "自動的に最適の大きさにする"
+msgstr "自動的に更新"
 
 #: gweather/gweather-pref.c:498
-#, fuzzy
 msgid "minute(s)"
-msgstr "行 (秒):"
+msgstr "秒"
 
 #. The Miscellaneous frame
 #: gweather/gweather-pref.c:509
 msgid "Miscellaneous"
-msgstr ""
+msgstr "その他"
 
 #: gweather/weather.c:55
-#, fuzzy
 msgid "knots"
-msgstr "Gnotices"
+msgstr "ノット"
 
 #: gweather/weather.c:55
 msgid "kph"
-msgstr ""
+msgstr "kph"
 
 #: gweather/weather.c:60
 msgid "inHg"
-msgstr ""
+msgstr "inHg"
 
 #: gweather/weather.c:60
 msgid "mmHg"
-msgstr ""
+msgstr "mmHg"
 
 #: gweather/weather.c:64
-#, fuzzy
 msgid "miles"
-msgstr "記事"
+msgstr "マイル"
 
 #: gweather/weather.c:64
-#, fuzzy
 msgid "kilometers"
-msgstr "走行距離計"
+msgstr "キロメートル"
 
 #: gweather/weather.c:113
 msgid "Location vector needs to be 4 elements long"
@@ -3170,16 +3164,16 @@ msgstr ""
 #: mixer/mixer.c:186
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
+msgstr "ミキサーデバイス %s の利用可能なチャンネルの検索が失敗しました\n"
 
 #: mixer/mixer.c:193
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
+msgstr "警告： ミキサーにボリュームのチャンネルがありません - PCM を代わりに使います。\n"
 
 #: mixer/mixer.c:196
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr ""
+msgstr "ミキサーデバイス %s にはボリュームも PCM チャンネルもありません。\n"
 
 #: mixer/mixer.c:559
 msgid "Main Volume and Mute"
@@ -3411,9 +3405,8 @@ msgid "Load Graph"
 msgstr "負荷グラフ"
 
 #: multiload/load-graph.c:574
-#, fuzzy
 msgid "Interval:"
-msgstr "一般"
+msgstr "間隔:"
 
 #: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Size:"
@@ -3578,9 +3571,8 @@ msgid "Digits number"
 msgstr "桁数"
 
 #: odometer/properties.c:308
-#, fuzzy
 msgid "Theme file:"
-msgstr "テーマファイル :"
+msgstr "テーマファイル:"
 
 #: quicklaunch/quicklaunch.c:65
 msgid "The QuickLaunch Applet"
@@ -4188,31 +4180,27 @@ msgstr "マネージャ..."
 
 #: sound-monitor/manager.c:934 sound-monitor/manager.c:1151
 msgid "Length"
-msgstr ""
+msgstr "長さ"
 
 #: sound-monitor/manager.c:939
-#, fuzzy
 msgid "Time"
-msgstr "画像"
+msgstr "時間"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#, fuzzy
 msgid "Id"
-msgstr "絵"
+msgstr "ID"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#, fuzzy
 msgid "Rate"
-msgstr "日付"
+msgstr "レート"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
 msgid "Bits"
-msgstr ""
+msgstr "ビット"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#, fuzzy
 msgid "Format"
-msgstr "予報"
+msgstr "形式"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
 #: sound-monitor/manager.c:1283 sound-monitor/manager.c:1371
@@ -4221,36 +4209,33 @@ msgstr "ボリューム"
 
 #: sound-monitor/manager.c:1151
 msgid "P"
-msgstr ""
+msgstr "P"
 
 #: sound-monitor/manager.c:1151
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: sound-monitor/manager.c:1175
-#, fuzzy
 msgid "Sound Monitor - Manager"
-msgstr "サウンドモニタ"
+msgstr "サウンドモニタ - マネージャ"
 
 #. server info
 #: sound-monitor/manager.c:1200
 msgid "Server information:"
-msgstr ""
+msgstr "サーバ情報:"
 
 #: sound-monitor/manager.c:1203
 msgid "Server"
-msgstr ""
+msgstr "サーバ"
 
 #. stream info
 #: sound-monitor/manager.c:1223
-#, fuzzy
 msgid "Connected streams:"
-msgstr "接続状況"
+msgstr "接続中のストリーム:"
 
 #: sound-monitor/manager.c:1226
-#, fuzzy
 msgid "Streams"
-msgstr "南東"
+msgstr "ストリーム"
 
 #: sound-monitor/manager.c:1299 sound-monitor/manager.c:1387
 msgid "Balance"
@@ -4259,11 +4244,11 @@ msgstr "バランス"
 #. sample info
 #: sound-monitor/manager.c:1305
 msgid "Cached samples: (select to play)"
-msgstr ""
+msgstr "キャッシュされたサンプル: (選択すれば演奏します)"
 
 #: sound-monitor/manager.c:1308
 msgid "Samples"
-msgstr ""
+msgstr "サンプル"
 
 #: sound-monitor/properties.c:135
 msgid ""
@@ -4285,9 +4270,8 @@ msgstr ""
 "警告はしましたよ!"
 
 #: sound-monitor/properties.c:333
-#, fuzzy
 msgid "Sound Monitor Applet Settings"
-msgstr "サウンドモニタ・アプレット"
+msgstr "サウンドモニタ・アプレットの設定"
 
 #: sound-monitor/properties.c:338
 msgid "Peak indicator"
@@ -4593,11 +4577,11 @@ msgstr ""
 
 #: tickastat/mod_test.c:57
 msgid "Testing line from test module :)"
-msgstr ""
+msgstr "テストモジュールからのテスト用の行 :)"
 
 #: tickastat/mod_test.c:58
 msgid "You clicked on me"
-msgstr ""
+msgstr "私をクリックしました"
 
 #: tickastat/mod_test.c:126 tickastat/mod_test.c:218
 msgid "Test Module"
@@ -4731,7 +4715,7 @@ msgid "Drive Mount"
 msgstr "ドライブマウント"
 
 #: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
+msgid "Mount and unmount drives"
 msgstr "ドライブのマウントとアンマウント"
 
 #: cpumemusage/cpumemusage_applet.desktop.in.h:1
@@ -4831,8 +4815,8 @@ msgid "Fifteen cells game"
 msgstr "15パ ズルゲーム"
 
 #: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "キーボードから直接打鍵できない文字を入力するツールです"
+msgid "Character picker"
+msgstr "キャラクタピッカー"
 
 #: sound-monitor/sound-monitor_applet.desktop.in.h:1
 msgid "Sound Monitor"
@@ -4903,7 +4887,7 @@ msgid "GNOME Stock Ticker Panel Applet"
 msgstr "GNOME ストックティッカーパネルアプレット"
 
 #: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
+msgid "Displays the time in binary representation"
 msgstr "時間を 2 進数表示します"
 
 #: jbc/jbc_applet.desktop.in.h:2
@@ -4921,13 +4905,12 @@ msgid "options:\n"
 msgstr "オプション:\n"
 
 #: sound-monitor/pvd/esdpvd.c:461
-#, fuzzy
 msgid "  -n, --noX     Allow to run without X server\n"
-msgstr "  -n, --noX      X サーバとの共存を許可\n"
+msgstr "  -n, --noX     X サーバなしでの実行を許可\n"
 
 #: webcontrol/properties.c:205
 msgid "Are you sure you want to remove this browser?"
-msgstr ""
+msgstr "本当にこのブラウザを削除してもいいですか?"
 
 #: webcontrol/properties.c:245
 msgid "Configure Browser"
@@ -5011,11 +4994,8 @@ msgstr "消去"
 msgid "all entries in URL history"
 msgstr "URL 履歴のすべてのエントリ"
 
-#~ msgid "Continent/City"
-#~ msgstr "大陸/都市"
-
-#~ msgid "Timezone"
-#~ msgstr "タイムゾーン"
+#~ msgid "character picker"
+#~ msgstr "キーボードから直接打鍵できない文字を入力するツールです"
 
 #~ msgid "keymap_%d/flag=us.png"
 #~ msgstr "keymap_%d/flag=jp.png"
