@@ -69,7 +69,7 @@ make_swapload_applet (const gchar *goad_id)
     /* in the rare case that the communication with the panel
        failed, error out */
     if (!applet)
-	g_error ("Can't create applet!\n");
+	g_error (_("Can't create applet!\n"));
 
     prop_data = g_memdup (&multiload_properties.swapload,
 			  sizeof (LoadGraphProperties));
@@ -118,7 +118,7 @@ make_swapload_applet (const gchar *goad_id)
 					   _("About..."),
 					   about_cb, NULL);
 
-    applet_widget_set_tooltip(APPLET_WIDGET(applet), "Swap Load"); 
+    applet_widget_set_tooltip(APPLET_WIDGET(applet), _("Swap Load")); 
     
     return applet;
 }
