@@ -24,12 +24,12 @@ void property_load(gchar *path, AppData *ad)
 	ad->scroll_delay = gnome_config_get_int("slashapp/scroll_delay=10");
 	ad->scroll_speed = gnome_config_get_int("slashapp/scroll_speed=3");
 
-	ad->show_images = gnome_config_get_int("display/show_images=1");
-	ad->show_info = gnome_config_get_int("display/show_info=1");
-	ad->show_department = gnome_config_get_int("display/show_department=0");
-	ad->article_delay = gnome_config_get_int("display/article_delay=50");
+	ad->show_images = gnome_config_get_int("slashapp/show_images=1");
+	ad->show_info = gnome_config_get_int("slashapp/show_info=1");
+	ad->show_department = gnome_config_get_int("slashapp/show_department=0");
+	ad->article_delay = gnome_config_get_int("slashapp/article_delay=50");
 
-	ad->new_browser_window = gnome_config_get_int("display/new_browser_window=1");
+	ad->new_browser_window = gnome_config_get_int("slashapp/new_browser_window=1");
 
         gnome_config_pop_prefix ();
 }
