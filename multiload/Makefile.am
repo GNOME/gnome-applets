@@ -41,7 +41,11 @@ install-data-local:
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in \
 		multiload.schemas \
-		$(pixmaps)
+		$(pixmaps) \
+		$(ui_DATA)
+
+uidir		= $(datadir)/gnome-2.0/ui
+ui_DATA		= GNOME_MultiloadApplet.xml
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MultiLoadApplet_Factory.server.in

@@ -65,16 +65,6 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
     gtk_widget_show (about);
 }
 
-const gchar multiload_menu_xml [] =
-        "<popup name=\"button3\">\n"
-        "	<menuitem name=\"Properties Item\" verb=\"MultiLoadProperties\" _label=\"Properties...\"\n"
-        "		pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-        "	<menuitem name=\"Procman Item\" verb=\"MultiLoadRunProcman\" _label=\"Run detailed system monitor\"\n"
-        "		pixtype=\"stock\" pixname=\"gtk-execute\"/>\n"
-        "	<menuitem name=\"About Item\" verb=\"MultiLoadAbout\" _label=\"About...\"\n"
-        "		pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-        "</popup>\n";
-
 /* run the full-scale system process monitor */
 
 void
@@ -311,7 +301,12 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 
   	      BONOBO_UI_VERB_END
 		};		
-		panel_applet_setup_menu (applet, multiload_menu_xml, multiload_menu_verbs, NULL);	
+		panel_applet_setup_menu_from_file (applet,
+						   NULL,
+						   "GNOME_MultiloadApplet.xml",
+						   NULL,
+						   multiload_menu_verbs,
+						   NULL);	
 	}
 
 	ma->box = box;
