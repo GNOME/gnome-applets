@@ -1,16 +1,12 @@
+<?xml version="1.0"?>
 <gconfschemafile>
   <schemalist>
     <schema>
       <key>/schemas/apps/gswitchit/Applet/secondary</key>
-
       <applyto>/apps/gswitchit/Applet/secondary</applyto>
-
-      <owner>gswitchit</owner>    
-
+      <owner>gnome</owner>    
       <type>int</type>
-
       <default>0</default>
-
       <locale name="C">
          <short>Secondary groups</short>
          <long>Secondary groups</long>
@@ -18,101 +14,11 @@
     </schema>
      
     <schema>
-      <key>/schemas/apps/gswitchit/Applet/debugLevel</key>
-
-      <applyto>/apps/gswitchit/Applet/debugLevel</applyto>
-
-      <owner>gswitchit</owner>
-
-      <type>int</type>
-
-      <default>0</default>
-
-      <locale name="C">
-         <short>Debug level</short>
-         <long>Debug level</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gswitchit/Applet/beep</key>
-
-      <applyto>/apps/gswitchit/Applet/beep</applyto>
-
-      <owner>gswitchit</owner>    
-
-      <type>bool</type>
-
-      <default>false</default>
-
-      <locale name="C">
-        <short>Beep on group switch</short>
-        <long>Beep on group switch</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gswitchit/Applet/groupPerWindow</key>
-
-      <applyto>/apps/gswitchit/Applet/groupPerWindow</applyto>
-
-      <owner>gswitchit</owner>    
-
-      <type>bool</type>
-
-      <default>true</default>
-
-      <locale name="C">
-        <short>Keep and manage separate group per window</short>
-        <long>Keep and manage separate group per window</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gswitchit/Applet/handleIndicators</key>
-
-      <applyto>/apps/gswitchit/Applet/handleIndicators</applyto>
-
-      <owner>gswitchit</owner>    
-
-      <type>bool</type>
-
-      <default>false</default>
-
-      <locale name="C">
-        <short>Save/restore indicators together with layout groups</short>
-        <long>Save/restore indicators together with layout groups</long>
-      </locale>
-    </schema>
-
-    <schema>
-      <key>/schemas/apps/gswitchit/Applet/layoutNamesAsGroupNames</key>
-
-      <applyto>/apps/gswitchit/Applet/layoutNamesAsGroupNames</applyto>
-
-      <owner>gswitchit</owner>    
-
-      <type>bool</type>
-
-      <default>true</default>
-
-      <locale name="C">
-        <short>Show layout names instead of group names</short>
-        <long>Show layout names instead of group names (only for versions of XFree supporting multiple layouts)</long>
-      </locale>
-    </schema>
-    
-    <schema>
       <key>/schemas/apps/gswitchit/Applet/showFlags</key>
-
       <applyto>/apps/gswitchit/Applet/showFlags</applyto>
-
-      <owner>gswitchit</owner>    
-
+      <owner>gnome</owner>    
       <type>bool</type>
-
       <default>false</default>
-
       <locale name="C">
         <short>Show flags in the applet</short>
         <long>Show flags in the applet to indicate the current layout</long>
@@ -120,21 +26,16 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/gswitchit/Applet/defaultGroup</key>
-
-      <applyto>/apps/gswitchit/Applet/defaultGroup</applyto>
-
-      <owner>gswitchit</owner>    
-
-      <type>int</type>
-
-      <default>-1</default>
-
+      <key>/schemas/apps/gswitchit/Applet/enabledPlugins</key>
+      <applyto>/apps/gswitchit/Applet/enabledPlugins</applyto>
+      <owner>gnome</owner>    
+      <type>list</type>
+      <list_type>string</list_type>
+      <default>[]</default>
       <locale name="C">
-        <short>Default group, assigned on window creation</short>
-        <long>Default group, assigned on window creation</long>
+        <short>The list of enabled Keyboard Indicator plugins</short>
+        <long>The list of enabled Keyboard Indicator plugins</long>
       </locale>
     </schema>
-
   </schemalist>
 </gconfschemafile>
