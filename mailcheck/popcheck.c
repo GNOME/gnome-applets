@@ -53,7 +53,7 @@ static gboolean have_ipv6(void)
 
 static int get_server_port(const char *h)
  {
-  char *x;
+  const char *x;
   int cnt;
 
   for (cnt = 0, x = h; *x; x++) {
@@ -77,7 +77,7 @@ static int get_server_port(const char *h)
  
 static char* get_server_hostname(const char *h)
  {
-  char *e, *n;
+  const char *e, *n;
   int cnt;
   if (!h) return 0;
   

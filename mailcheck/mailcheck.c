@@ -532,7 +532,7 @@ hig_dialog_new (GtkWindow      *parent,
 	GtkWidget *vbox;
 	GtkWidget *label;
 	GtkWidget *button;
-	GtkWidget *image;
+	GtkWidget *image = NULL;
 	gchar     *title;
 
 	dialog = gtk_dialog_new ();
