@@ -92,12 +92,12 @@ do_that_command(void)
 /*  comm = g_malloc(len=(
    strlen(properties.command)+           
    (strcmp(properties.command,"xmodmap")?11:
-             strlen(gnome_datadir_file(g_copy_strings ("xmodmap/",
+             strlen(gnome_datadir_file(g_strconcat ("xmodmap/",
              "xmodmap.", properties.dmap[properties.curpix], NULL)) )+7) ) );
  */
   g_snprintf(comm, len, "%s %s%c", properties.command,
       (strcmp(properties.command,"xmodmap")?properties.dmap[properties.curpix]:
-      gnome_datadir_file(g_copy_strings ("xmodmap/",
+      gnome_datadir_file(g_strconcat ("xmodmap/",
                             "xmodmap.", properties.dmap[properties.curpix], NULL)) ),0);
   system(comm);
 }

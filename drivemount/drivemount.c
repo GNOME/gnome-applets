@@ -132,7 +132,7 @@ static void update_pixmap(DriveData *dd, gint t)
 		text = _(" not mounted");
 		}
 	gtk_pixmap_set(GTK_PIXMAP(dd->button_pixmap), pixmap, NULL);
-	tiptext = g_copy_strings(dd->mount_point,text,NULL);
+	tiptext = g_strconcat(dd->mount_point,text,NULL);
 	gtk_tooltips_set_tip (dd->tooltip, dd->applet, tiptext, NULL);
 	g_free(tiptext);
 }

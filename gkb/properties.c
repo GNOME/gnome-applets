@@ -40,12 +40,12 @@ load_properties( char *path, gkb_properties *prop )
         Sorry, I made a bad change last time...
 */
         apixmap         = gnome_pixmap_file("gkb/us.xpm");    
-	apath           = g_copy_strings("gkb/dfile0=", apixmap, NULL);
+	apath           = g_strconcat("gkb/dfile0=", apixmap, NULL);
         prop->dfile[0]  = gnome_config_get_string (apath);
         g_free(apixmap); g_free(apath);
 
 	apixmap         = gnome_pixmap_file("gkb/hu.xpm");
-	apath           = g_copy_strings("gkb/dfile1=", apixmap, NULL);
+	apath           = g_strconcat("gkb/dfile1=", apixmap, NULL);
 	prop->dfile[1]  = gnome_config_get_string (apath);
 	g_free(apixmap); g_free(apath);
 	
