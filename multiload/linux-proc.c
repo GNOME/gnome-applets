@@ -22,8 +22,7 @@ static const unsigned needed_cpu_flags =
 (1 << GLIBTOP_CPU_USER) +
 (1 << GLIBTOP_CPU_IDLE) +
 (1 << GLIBTOP_CPU_SYS) +
-(1 << GLIBTOP_CPU_NICE) +
-(1 << GLIBTOP_CPU_IOWAIT);
+(1 << GLIBTOP_CPU_NICE);
 
 static const unsigned needed_page_flags =
 (1 << GLIBTOP_SWAP_PAGEIN) +
@@ -56,6 +55,9 @@ GetLoad (int Maximum, int data [5], LoadGraph *g)
     glibtop_get_cpu (&cpu);
 	
     g_return_if_fail ((cpu.flags & needed_cpu_flags) == needed_cpu_flags);
+
+    if (!(cpu.flags & GLIBTOP_CPU_IOWAIT))
+	cpu.iowait = 0;
     
     g->cpu_time [0] = cpu.user;
     g->cpu_time [1] = cpu.nice;
