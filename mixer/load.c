@@ -102,6 +102,12 @@ create_mixer_collection (void)
         continue;
       }
 
+      /* any tracks? */
+      if (!gst_mixer_list_tracks (GST_MIXER (element))) {
+        gst_element_set_state (element, GST_STATE_NULL);
+        continue;
+      }
+
       /* fetch name */
       if (g_object_class_find_property (G_OBJECT_GET_CLASS (G_OBJECT (element)),
 					"device-name")) {
