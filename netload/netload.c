@@ -56,11 +56,11 @@ int draw(void)
 		data = (unsigned long int *)calloc(width, sizeof(unsigned long int));
 	}
 	
-	bytes = GetTraffic(1, props.device);
+	bytes = GetTraffic(props.device);
 
 	if (! init){
 		init = 1;
-		old_bytes = GetTraffic(1, props.device);
+		old_bytes = GetTraffic(props.device);
 	}
 
 	/* The MAX is in case the stats get reset or wrap. It'll get one wrong sample. */
