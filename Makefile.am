@@ -57,7 +57,6 @@ modemlights_SUBDIRS = $(modemlights_applets)
 endif
 
 always_built_SUBDIRS = \
-	gkb-new		\
 	another_clock	\
 	asclock		\
 	battery		\
@@ -66,6 +65,7 @@ always_built_SUBDIRS = \
 	drivemount	\
 	fifteen		\
 	geyes		\
+	gkb-new		\
 	jbc		\
 	life		\
 	mini-commander	\
