@@ -316,7 +316,8 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 	struct dirent *dirent;
 	char *pixmapdir;
 
-	pixmapdir = gnome_unconditional_pixmap_file ("wireless-applet/");
+	pixmapdir = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
+			"wireless-applet/", FALSE, NULL);
 	dir = opendir (pixmapdir);
 
 	/* blank out */
@@ -339,7 +340,7 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 	}
 
 	if (!dir) {
-		show_error_dialog (_("No themes installed"));
+		show_error_dialog (_("The images necessary to run the wireless monitor are missing.\nPlease make sure that it is correctly installed."));
 	} else 
 		while ((dirent = readdir (dir)) != NULL) {
 			if (*dirent->d_name != '.') {
@@ -353,22 +354,15 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 
 	if (applet->no_link_images && g_list_length (applet->no_link_images) > 1) {
 		applet->no_link_images = g_list_sort (applet->no_link_images,
-							  (GCompareFunc)g_strcasecmp);
+							  (GCompareFunc)g_ascii_strncasecmp);
 	}
 	
 	if (applet->broken_images && g_list_length (applet->broken_images) > 1) {
 		applet->broken_images = g_list_sort (applet->broken_images,
-							 (GCompareFunc)g_strcasecmp);
+							 (GCompareFunc)g_ascii_strncasecmp);
 	}
 
 	g_free (pixmapdir);
-}
-
-static void
-wireless_applet_set_theme (WirelessApplet *applet, gchar *theme) {
-	/* load the new images and update the gtk widgets */
-	wireless_applet_load_theme (applet);
-	wireless_applet_draw (applet, 0);  
 }
 
 static void
@@ -471,15 +465,16 @@ wireless_applet_timeout_handler (WirelessApplet *applet)
 static void 
 show_error_dialog (gchar *mesg,...) 
 {
-	GtkWidget *dialogWindow;
+	GtkWidget *dialog;
 	char *tmp;
 	va_list ap;
 
 	va_start (ap,mesg);
 	tmp = g_strdup_vprintf (mesg,ap);
-	dialogWindow = gnome_message_box_new (tmp,GNOME_MESSAGE_BOX_ERROR,
-					     GNOME_STOCK_BUTTON_OK,NULL);
-	gnome_dialog_run_and_close (GNOME_DIALOG (dialogWindow));
+	dialog = gtk_message_dialog_new (NULL,
+			0, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+			mesg, NULL);
+	gtk_dialog_run (GTK_DIALOG (dialog));
 	g_free (tmp);
 	va_end (ap);
 }
@@ -487,15 +482,16 @@ show_error_dialog (gchar *mesg,...)
 static void 
 show_warning_dialog (gchar *mesg,...) 
 {
-	GtkWidget *dialogWindow;
+	GtkWidget *dialog;
 	char *tmp;
 	va_list ap;
 
 	va_start (ap,mesg);
 	tmp = g_strdup_vprintf (mesg,ap);
-	dialogWindow = gnome_message_box_new (tmp,GNOME_MESSAGE_BOX_WARNING,
-					     GNOME_STOCK_BUTTON_OK,NULL);
-	gnome_dialog_run_and_close (GNOME_DIALOG (dialogWindow));
+	dialog = gtk_message_dialog_new (NULL,
+			0, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
+			mesg, NULL);
+	gtk_dialog_run (GTK_DIALOG (dialog));
 	g_free (tmp);
 	va_end (ap);
 }
@@ -504,15 +500,16 @@ show_warning_dialog (gchar *mesg,...)
 static void
 show_message_dialog (char *mesg,...)
 {
-	GtkWidget *dialogWindow;
+	GtkWidget *dialog;
 	char *tmp;
 	va_list ap;
 
 	va_start (ap,mesg);
 	tmp = g_strdup_vprintf (mesg,ap);
-	dialogWindow = gnome_message_box_new (tmp,GNOME_MESSAGE_BOX_GENERIC,
-					     GNOME_STOCK_BUTTON_OK,NULL);
-	gnome_dialog_run_and_close (GNOME_DIALOG (dialogWindow));
+	dialog = gtk_message_dialog_new (NULL,
+			0, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE,
+			mesg, NULL);
+	gtk_dialog_run (GTK_DIALOG (dialog));
 	g_free (tmp);
 	va_end (ap);
 }
@@ -524,9 +521,9 @@ start_file_read (WirelessApplet *applet)
 	if (applet->file == NULL) {
 		gtk_tooltips_set_tip (applet->tips,
 				GTK_WIDGET (applet),
-				_("No /proc/net/wireless"),
+				_("No Wireless Devices"),
 				NULL);
-		show_error_dialog (_("Cannot read /proc/net/wireless"));
+		show_error_dialog (_("There doesn't seem to be any wireless devices configured on your system.\nPlease verify your configuration if you think this is incorrect."));
 	}
 }
 
@@ -571,22 +568,22 @@ wireless_applet_option_change (GtkWidget *widget, gpointer user_data)
 	WirelessApplet *applet = (WirelessApplet *)user_data;
 
 	/* Get all the properties and update the applet */
-	entry = gtk_object_get_data (GTK_OBJECT (applet->prefs),
+	entry = g_object_get_data (G_OBJECT (applet->prefs),
 			"show-percent-button");
 	wireless_applet_set_show_percent (applet,
 			gtk_toggle_button_get_active
 			(GTK_TOGGLE_BUTTON (entry)));
 
-	entry = gtk_object_get_data (GTK_OBJECT (applet->prefs),
+	entry = g_object_get_data (G_OBJECT (applet->prefs),
 			"show-dialog-button");
 	wireless_applet_set_show_dialogs (applet, 
 			gtk_toggle_button_get_active
 			(GTK_TOGGLE_BUTTON (entry)));
 
-	entry = gtk_object_get_data (GTK_OBJECT (applet->prefs), "device-menu");
+	entry = g_object_get_data (G_OBJECT (applet->prefs), "device-menu");
 	menu = gtk_menu_get_active
 		(GTK_MENU (gtk_option_menu_get_menu (GTK_OPTION_MENU (entry))));
-	str = gtk_object_get_data (GTK_OBJECT (menu), "device-selected");
+	str = g_object_get_data (G_OBJECT (menu), "device-selected");
 	wireless_applet_set_device (applet, str);
 
 	/* Save the properties */
@@ -624,7 +621,7 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 	/* Set the show-percent thingy */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (pct),
 			applet->show_percent);
-	gtk_signal_connect (GTK_OBJECT (pct),
+	g_signal_connect (GTK_OBJECT (pct),
 			"toggled",
 			GTK_SIGNAL_FUNC (wireless_applet_option_change),
 			applet);
@@ -634,7 +631,7 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 	/* Set the show-dialog thingy */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog),
 			applet->show_dialogs);
-	gtk_signal_connect (GTK_OBJECT (dialog),
+	g_signal_connect (GTK_OBJECT (dialog),
 			"toggled",
 			GTK_SIGNAL_FUNC (wireless_applet_option_change),
 			applet);
@@ -653,12 +650,12 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 
 		for (d = applet->devices; d != NULL; d = g_list_next (d)) {
 			item = gtk_menu_item_new_with_label ((char*)d->data);
-			gtk_menu_append (GTK_MENU (menu), item);
+			gtk_menu_shell_append  (GTK_MENU_SHELL (menu),item);
 			gtk_object_set_data_full (GTK_OBJECT (item), 
 					"device-selected",
 					g_strdup (d->data),
 					g_free);
-			gtk_signal_connect (GTK_OBJECT (item),
+			g_signal_connect (GTK_OBJECT (item),
 					"activate",
 					GTK_SIGNAL_FUNC (wireless_applet_option_change),
 					applet);
@@ -676,11 +673,11 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 	}
 	gtk_object_set_data (GTK_OBJECT (applet->prefs), "device-menu", device);
 
-	gtk_signal_connect (GTK_OBJECT (applet->prefs),
+	g_signal_connect (GTK_OBJECT (applet->prefs),
 			"response", 
 			GTK_SIGNAL_FUNC (gtk_widget_destroy),
 			NULL);
-	gtk_signal_connect (GTK_OBJECT (applet->prefs),
+	g_signal_connect (GTK_OBJECT (applet->prefs),
 			"destroy",
 			GTK_SIGNAL_FUNC (gtk_widget_destroy),
 			NULL);
@@ -787,7 +784,7 @@ wireless_applet_new (WirelessApplet *applet)
 	applet->tips = gtk_tooltips_new ();
 	applet->prefs = NULL;
 
-	gtk_signal_connect (GTK_OBJECT (applet),"destroy",
+	g_signal_connect (GTK_OBJECT (applet),"destroy",
 			   GTK_SIGNAL_FUNC (wireless_applet_destroy),NULL);
 
 	/* Setup the menus */
@@ -816,8 +813,9 @@ wireless_applet_fill (WirelessApplet *applet)
 		(ICONDIR"/wireless-applet/wireless-applet.png");
 
 	glade_gnome_init ();
-	glade_file = gnome_unconditional_datadir_file
-		("wireless-applet/wireless-applet.glade");
+	glade_file = gnome_program_locate_file
+		(NULL, GNOME_FILE_DOMAIN_DATADIR,
+		 "wireless-applet/wireless-applet.glade", FALSE, NULL);
 
 	wireless_applet_new (applet);
 	gtk_widget_show (GTK_WIDGET (applet));

@@ -1,5 +1,17 @@
 2002-07-09  Bastien Nocera  <hadess@hadess.net>
 
+	* .cvsignore: updated
+	* Makefile.am: added deprecation flags
+	* wireless-applet.c: (wireless_applet_load_theme),
+	(show_error_dialog), (show_warning_dialog), (show_message_dialog),
+	(start_file_read), (wireless_applet_option_change),
+	(wireless_applet_properties_dialog), (wireless_applet_new),
+	(wireless_applet_fill): use non-deprecated apis,
+	fix the messages to be a bit more user-friendly
+	* wireless-applet.glade: add mnemonics
+
+2002-07-09  Bastien Nocera  <hadess@hadess.net>
+
 	* wireless-applet.c: (wireless_applet_load_properties),
 	(wireless_applet_properties_dialog), (wireless_applet_about_cb):
 	fix the dialogs showing up multiple times, remove debugging,
