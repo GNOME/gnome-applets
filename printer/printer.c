@@ -2,8 +2,8 @@
  * GNOME panel printer applet module.
  * (C) 1998 The Free Software Foundation
  *
- * Authors: Miguel de Icaza <miguel@kernel.org>
- *          Federico Mena   <quartic@gimp.org> 
+ * Author: Miguel de Icaza <miguel@kernel.org>
+ * Config dialog bits: Federico Mena   <quartic@gimp.org> 
  */
 
 #include <config.h>
@@ -26,7 +26,7 @@ GtkWidget *printer;
 GtkWidget *applet = 0;
 GtkWidget *prop_name, *prop_command;
 GtkWidget *label;
-GnomePropertyConfigurator *pconf = NULL;
+GtkWidget *printer_prop;
 
 char *print_command = NULL;
 char *print_title   = NULL;
@@ -144,7 +144,7 @@ applet_session_save(GtkWidget *w, const char *cfgpath, const char *globcfgpath)
 static void
 changed (void)
 {
-	gnome_property_box_changed (GNOME_PROPERTY_BOX (pconf->property_box));
+	gnome_property_box_changed (GNOME_PROPERTY_BOX (printer_prop));
 }
 
 static void
@@ -154,11 +154,7 @@ apply_one (GtkWidget *widget, char **dest)
 		g_free (*dest);
 
 	*dest = gtk_entry_get_text (GTK_ENTRY (widget));
-
-	if (strlen (*dest) == 0)
-		*dest = NULL;
-	else
-		*dest = g_strdup (*dest);
+	*dest = g_strdup (*dest);
 }
 
 static void
@@ -168,6 +164,13 @@ apply_properties (void)
 	apply_one (prop_command, &print_command);
 	gtk_label_set (GTK_LABEL (label), print_title);
 	position_label (label, label);
+}
+
+static int
+close_properties (void)
+{
+	printer_prop = 0;
+	return FALSE;
 }
 
 static void
@@ -198,10 +201,15 @@ build_label_and_entry (GtkTable *table, int row, char *label, char *gentry_id, G
 }
 
 static void
-setup_properties (void)
+printer_properties (void)
 {
 	GtkWidget *table;
 
+	if (printer_prop)
+		return;
+
+	printer_prop = gnome_property_box_new ();
+	
 	table = gtk_table_new (2, 2, FALSE);
 	gtk_widget_show (table);
 	gtk_container_border_width (GTK_CONTAINER (table), GNOME_PAD);
@@ -214,48 +222,16 @@ setup_properties (void)
 	build_label_and_entry (GTK_TABLE (table), 1, _("Print command:"), "printer_command", &prop_command,
 			       print_command, "lpr");
 
-	gnome_property_box_append_page (((GnomePropertyConfigurator *) (pconf))->property_box,
-					table,
+	gnome_property_box_append_page (GNOME_PROPERTY_BOX (printer_prop), table,
 					gtk_label_new (_("Printer")));
-}
-
-static int
-request (GnomePropertyRequest req)
-{
-	switch (req) {
-	case GNOME_PROPERTY_READ:
-		break;
-
-	case GNOME_PROPERTY_WRITE:
-/*		write_properties (); */
-		break;
-
-	case GNOME_PROPERTY_APPLY:
-		apply_properties ();
-		break;
-
-	case GNOME_PROPERTY_SETUP:
-		setup_properties ();
-		break;
-
-	default:
-		g_assert_not_reached ();
-	}
-
-	return 0;
-}
-
-void
-printer_properties (AppletWidget *applet, gpointer data)
-{
-	if (!pconf) {
-		pconf = gnome_property_configurator_new ();
-		gnome_property_configurator_setup (pconf);
-		gnome_property_configurator_register (pconf, request);
-		gnome_property_configurator_request_foreach (pconf, GNOME_PROPERTY_SETUP);
-	}
-
-	gtk_widget_show (pconf->property_box);
+	gtk_signal_connect (GTK_OBJECT (printer_prop), "apply",
+			    GTK_SIGNAL_FUNC(apply_properties), NULL);
+	gtk_signal_connect (GTK_OBJECT (printer_prop), "delete_event",
+			    GTK_SIGNAL_FUNC(close_properties), NULL);
+	gtk_signal_connect (GTK_OBJECT (printer_prop), "destroy",
+			    GTK_SIGNAL_FUNC(close_properties), NULL);
+			    
+	gtk_widget_show (printer_prop);
 }
 
 int
@@ -296,13 +272,11 @@ main(int argc, char **argv)
 			   GTK_SIGNAL_FUNC(applet_session_save),
 			   NULL);
 
-#if 0
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					"properties",
 					_("Properties"),
 					printer_properties,
 					NULL);
-#endif
 	applet_widget_gtk_main ();
 
 	return 0;
