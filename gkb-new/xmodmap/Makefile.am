@@ -3,7 +3,7 @@ EXTRA_DIST = $(GKB_MAPS)
 gkbmapsdir = $(datadir)/xmodmap
 gkbmaps_DATA = $(GKB_MAPS)
 
-GKB_MAPS = \ 
+GKB_MAPS = \
 	xmodmap.am xmodmap.be xmodmap.bg xmodmap.br xmodmap.ch xmodmap.ch_de \
 	xmodmap.ch_fr xmodmap.cz xmodmap.de xmodmap.dk xmodmap.dvorak \
 	xmodmap.ee xmodmap.es xmodmap.fi xmodmap.fr xmodmap.fr-2 xmodmap.gb \
