@@ -144,7 +144,7 @@ create_fifteen (void)
 	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
 
 	canvas = gnome_canvas_new ();
-	gnome_canvas_set_size (GNOME_CANVAS (canvas), PIECE_SIZE * 4, PIECE_SIZE * 4);
+	gtk_widget_set_usize (canvas, PIECE_SIZE * 4, PIECE_SIZE * 4);
 	gnome_canvas_set_scroll_region (GNOME_CANVAS (canvas), 0, 0, PIECE_SIZE * 4, PIECE_SIZE * 4);
 	gtk_container_add (GTK_CONTAINER (frame), canvas);
 	gtk_widget_show (canvas);
