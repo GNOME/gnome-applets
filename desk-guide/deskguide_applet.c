@@ -113,7 +113,7 @@ main (gint   argc,
    */
   gp_tooltips = gtk_tooltips_new ();
   gp_desktips = gtk_tooltips_new ();
-  gp_applet = applet_widget_new ("gnomepager_applet");
+  gp_applet = applet_widget_new ("deskguide_applet");
   if (!gp_applet)
     g_error ("Unable to create applet widget");
   gtk_widget_ref (gp_applet);
