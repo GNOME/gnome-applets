@@ -69,6 +69,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 					      NULL, GTK_DIALOG_MODAL,
 					      GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					      NULL);
+	gtk_dialog_set_has_separator (GTK_DIALOG(dialog), FALSE);
 
 	box = GTK_DIALOG (dialog)->vbox;
 
