@@ -1,9 +1,11 @@
 ## Process this file with automake to produce Makefile.in
 
 NULL=
+SUBDIRS = docs
 
 INCLUDES = 							\
 	-I$(top_srcdir)/intl 					\
+	-I$(top_srcdir)/screen-exec                             \
 	$(GNOME_APPLETS_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)					\
 	-DICONDIR=\""$(datadir)/pixmaps"\"			\
@@ -19,6 +21,7 @@ wireless_applet_SOURCES = 	\
 	$(NULL)
 
 wireless_applet_LDADD = 	\
+	$(top_builddir)/screen-exec/libscreen-exec.la   \
 	$(GNOME_APPLETS_LIBS) 	\
 	$(LIBGLADE_LIBS)	\
 	$(NULL)
