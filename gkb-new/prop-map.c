@@ -104,10 +104,17 @@ gkb_prop_map_apply_clicked (GkbMapDialogInfo * mdi)
 	      (gnome_icon_entry_get_filename
 	       (GNOME_ICON_ENTRY (mdi->icon_entry))));
 
+  mdi->pbi->selected_keymap = keymap;
+
   gkb_prop_list_reload (mdi->pbi);
+
+  gkb_apply(mdi->pbi);   
+
+  applet_save_session();
 
   gtk_widget_set_sensitive (mdi->apply_button, FALSE);
   mdi->changed = FALSE;
+
 }
 
 /**
@@ -120,6 +127,9 @@ static void
 gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
 {
   gtk_widget_destroy (mdi->dialog);
+
+  applet_save_session();
+   
   mdi->dialog = NULL;
 }
 

@@ -169,6 +169,8 @@ gkb_prop_list_delete_clicked (GkbPropertyBoxInfo * pbi)
 
   gkb_apply(pbi);
 
+  applet_save_session();  
+
   return;
 }
 
@@ -223,6 +225,8 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
   pbi->selected_keymap = NULL;
 
   gkb_apply(pbi);
+
+  applet_save_session();
 
   return;
 }

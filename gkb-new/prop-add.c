@@ -129,7 +129,7 @@ tree_create (GtkTreeStore *model)
 
 	      gtk_tree_store_set (GTK_TREE_STORE(model), &citer,
 				NAME_COL, item->country,
-				COMMAND_COL, item->country,
+				COMMAND_COL, NULL,
 				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
 				LANG_COL, item->lang,
@@ -178,7 +178,7 @@ tree_create (GtkTreeStore *model)
 
           gtk_tree_store_set (GTK_TREE_STORE(model), &liter,
 				NAME_COL, item->lang,
-				COMMAND_COL, item->command,
+				COMMAND_COL, NULL,
 				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
 				LANG_COL, item->lang,
@@ -195,7 +195,7 @@ tree_create (GtkTreeStore *model)
      
           gtk_tree_store_set (GTK_TREE_STORE(model), &citer,
 				NAME_COL, item->country,
-				COMMAND_COL, item->command,
+				COMMAND_COL, NULL,
 				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
 				LANG_COL, item->lang,
@@ -291,8 +291,11 @@ static gint
 addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 {
   GkbKeymap *tdata;
+  /* Do not add Language and Country rows */
 
-  if (pbi->keymap_for_add)
+  if (pbi->keymap_for_add) 
+   {
+   if (pbi->keymap_for_add->command != NULL)
     {
       tdata = g_new0 (GkbKeymap, 1);
 
@@ -305,6 +308,7 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 
       pbi->keymaps = g_list_append (pbi->keymaps, tdata);
     }
+   }
 
   gkb_prop_list_reload (pbi);
 
