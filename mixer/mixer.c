@@ -101,8 +101,9 @@ typedef struct {
 
 	GtkAdjustment     *adj;
 
-	GtkWidget         *event_box;
 	GtkWidget         *applet;
+	GtkWidget         *event_box;
+	GtkWidget         *frame;
 	GtkWidget         *image;
 	
 	/* The popup window and scale. */
@@ -568,7 +569,10 @@ mixer_popup_show (MixerData *data)
 		}
 		
 		g_warning ("volume-control-applet: Could not grab X server.");
+		return;
 	}
+
+	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_IN);
 }
 
 static void
@@ -599,6 +603,8 @@ mixer_popup_hide (MixerData *data, gboolean revert)
 			 * on MacOS X :) */
 			/*gnome_sound_play ("blipp.wav");*/
 		}
+
+		gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
 	}
 }
 
@@ -657,9 +663,13 @@ applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
 	 * but we could scale up for the bigger ones...
 	 */
 	if (IS_PANEL_HORIZONTAL (data->orientation)) {
-		gtk_widget_set_size_request (GTK_WIDGET (data->event_box), -1, size);
+		gtk_widget_set_size_request (GTK_WIDGET (data->event_box),
+					     23,
+					     MIN (23, size));
 	} else {
-		gtk_widget_set_size_request (GTK_WIDGET (data->event_box), size, -1);
+		gtk_widget_set_size_request (GTK_WIDGET (data->event_box),
+					     MIN (23, size),
+					     23);
 	}
 }
 
@@ -772,9 +782,8 @@ static const char mixer_applet_menu_xml [] =
 "<popup name=\"button3\">\n"
 "   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"\n"
 "             />" /*pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"*/
-"             pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"
 "   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"\n"
-"             pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"
+"             />" /*pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"*/
 "   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
 "   <menuitem name=\"About\" verb=\"About\" _label=\"About ...\"\n"
@@ -785,7 +794,6 @@ static BonoboObject *
 mixer_applet_new (void)
 {
 	MixerData         *data;
-	GtkWidget         *event_box;
 	GtkWidget         *applet;
 	gint               vol;
 	BonoboUIComponent *component;
@@ -807,6 +815,11 @@ mixer_applet_new (void)
 	
 	data->event_box = gtk_event_box_new ();
 	
+	data->frame = gtk_frame_new (NULL);
+	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
+
+	gtk_container_add (GTK_CONTAINER (data->event_box), data->frame);
+	
 	data->image = gtk_image_new ();
 
 	g_signal_connect (data->event_box,
@@ -814,7 +827,7 @@ mixer_applet_new (void)
 			  (GCallback) event_box_button_press_event_cb,
 			  data);
 	
-	gtk_container_add (GTK_CONTAINER (data->event_box), data->image);
+	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
 
 	gtk_widget_show_all (data->event_box);
 	

@@ -1,3 +1,15 @@
+2001-12-12  Richard Hult  <rhult@codefactory.se>
+
+	* GNOME_MixerApplet.server.in: Change the icon file from
+        gnome-unknown to one that doesn't exist. We need an icon :)
+
+	* mixer.c (mixer_applet_new): Remove unused variable.
+	(applet_change_size_cb): Dont make the applet bigger than
+	necessary, or the depressed frame will look ugly.
+	(mixer_popup_show): Depress frame.
+	(mixer_popup_hide): Restore frame.
+	Remove the non-existent stock icons from the menu xml string.
+
 2001-12-10  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* mixer.c: Remove double include of <config.h>
