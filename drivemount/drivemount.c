@@ -80,9 +80,6 @@ display_about_dialog (BonoboUIComponent *uic,
 		      DriveList *drive_list,
 		      const gchar *verbname)
 {
-    GdkScreen *screen;
-    GtkIconTheme *icon_theme;
-    GdkPixbuf *pixbuf;
     const gchar *authors[] = {
 	"James Henstridge <jamesh@canonical.com>",
 	NULL
@@ -93,13 +90,6 @@ display_about_dialog (BonoboUIComponent *uic,
 	NULL
     };
 
-    /* XXXX eventually, GtkAboutDialog should be able to handle named
-     * icons */
-    screen = gtk_widget_get_screen (GTK_WIDGET (drive_list));
-    icon_theme = gtk_icon_theme_get_for_screen (screen);
-    pixbuf = gtk_icon_theme_load_icon (icon_theme, "drivemount-applet",
-				       48, 0, NULL);
-
     gtk_show_about_dialog (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (drive_list))),
 	"name",        _("Disk Mounter"),
 	"version",     VERSION,
@@ -108,10 +98,8 @@ display_about_dialog (BonoboUIComponent *uic,
 	"authors",     authors,
 	"documenters", documenters,
 	"translator-credits", _("translator_credits"),
-	"logo",        pixbuf,
+	"logo_icon_name",     "drivemount-applet",
 	NULL);
-
-    if (pixbuf) g_object_unref (pixbuf);
 }
 
 static void
