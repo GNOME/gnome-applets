@@ -57,6 +57,7 @@ static gchar *color_defaults[] = {
 
 void property_load(PanelApplet *applet)
 {
+	GError *error = NULL;
 	gchar *buf;
 	gint i;
 
@@ -64,7 +65,13 @@ void property_load(PanelApplet *applet)
 	g_free(command_disconnect);
 	g_free(device_name);
 
-	UPDATE_DELAY = panel_applet_gconf_get_int (applet, "delay", NULL);
+	UPDATE_DELAY = panel_applet_gconf_get_int (applet, "delay", &error);
+	if (error) {
+		g_print ("%s \n", error->message);
+		g_error_free (error);
+		error = NULL;
+	}
+	UPDATE_DELAY = MAX (UPDATE_DELAY, 1);
 	
 	buf = panel_applet_gconf_get_string(applet, "lockfile", NULL);
 	if (buf && strlen(buf) > 0)

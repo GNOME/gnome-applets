@@ -1397,26 +1397,29 @@ static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer da
         data = NULL;
 }
 
+/* This is a hack around the fact that gtk+ doesn't
+ * propogate button presses on button2/3.
+ */
+static gboolean
+button_press_hack (GtkWidget      *widget,
+                   GdkEventButton *event,
+                   GtkWidget      *applet)
+{
+    if (event->button == 3 || event->button == 2) {
+	event->window = applet->window;
+	gtk_main_do_event ((GdkEvent *) event);
+
+	return TRUE;
+    }
+
+    return FALSE;
+}
+
+
 static void show_help_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-#ifdef FIXME
-	static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
-
-	help_entry.name = gnome_app_id;
-    
-	gnome_help_display (NULL, &help_entry);
-#endif
+	gnome_help_display ("modemlights_applet", NULL, NULL);
 }
-
-#ifdef FIXME
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
-{
-	property_save(privcfgpath, FALSE);
-        return FALSE;
-        widget = NULL;
-        globcfgpath = NULL;
-}
-#endif
 
 static const BonoboUIVerb modem_applet_menu_verbs [] = {
         BONOBO_UI_VERB ("Props", property_show),
@@ -1499,6 +1502,8 @@ modemlights_applet_fill (PanelApplet *applet)
 	gtk_widget_set_usize(button,5,5);
 	gtk_fixed_put(GTK_FIXED(frame),button,5,0);
 	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
+	g_signal_connect (G_OBJECT (button), "button_press_event",
+			  G_CALLBACK (button_press_hack), GTK_WIDGET (applet));
 	gtk_widget_show(button);
 
 	gtk_widget_realize(GTK_WIDGET (applet));
@@ -1563,7 +1568,7 @@ modemlights_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemLightsApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "Modemlights applet",
+			     "modemlights_applet",
 			     "0",
 			     modemlights_applet_factory,
 			     NULL)
