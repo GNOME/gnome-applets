@@ -57,8 +57,6 @@ applet_back_change (PanelApplet			*a,
 	switch (type) {
 	case PANEL_PIXMAP_BACKGROUND:
 		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-/* FIXME can't get to work */
-//		applet_set_back_pixmap (a, GTK_WIDGET (eyes_applet->applet), pixmap);
 		break;
 
 	case PANEL_COLOR_BACKGROUND:

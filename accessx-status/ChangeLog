@@ -1,3 +1,15 @@
+2004-02-26  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* applet.c (accessx_status_applet_background):
+	Added function to listen to panel background
+	changes and adopt the applet drawing to the
+	panel background.
+
+	(accessx_status_applet_fill): Connect signal
+	to change_background.
+
+	This is not working for pixmap backgrounds yet.
+
 2004-02-24  Bill Haneman <billh@gnome.org>
 
 	* applet.c:  Fixes for bug #135292.
