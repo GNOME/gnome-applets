@@ -88,6 +88,7 @@ WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *t
 				       const gchar *zone, const gchar *radar, const gchar *coordinates)
 {
     WeatherLocation *location;
+    char lat[12], lon[12];
 
     location = g_new(WeatherLocation, 1);
   
@@ -120,7 +121,6 @@ WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *t
         location->zone_valid = TRUE;
     }
 
-    char lat[12], lon[12];
     if (coordinates && sscanf(coordinates, "%s %s", lat, lon) == 2) {
         location->coordinates = g_strdup(coordinates);
         location->latitude = dmsh2rad (lat);
@@ -617,8 +617,12 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
 {
     time_t gm_midn;
     time_t lcl_midn;
-    gdouble gm_hoff;
-    
+    gdouble gm_hoff, ndays, meanAnom, eccenAnom, delta, lambda;
+    gdouble ra1, ra2, decl1, decl2;
+    gdouble rise1, rise2, set1, set2;
+    gdouble tt, t00;
+    gdouble x, u, dt;
+
     /* Approximate preceding local midnight at observer's longitude */
     gm_midn = t - (t % 86400);
     gm_hoff = floor((RADIANS_TO_DEGREES(obsLon) + 7.5) / 15.);
@@ -632,17 +636,15 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
      * Ecliptic longitude of the sun at midnight local time
      * Start with an estimate based on a fixed daily rate
      */
-    gdouble ndays = EPOCH_TO_J2000(lcl_midn) / 86400.;
-    gdouble meanAnom = DEGREES_TO_RADIANS(ndays * SOL_PROGRESSION
+    ndays = EPOCH_TO_J2000(lcl_midn) / 86400.;
+    meanAnom = DEGREES_TO_RADIANS(ndays * SOL_PROGRESSION
 					  + MEAN_ECLIPTIC_LONGITUDE - PERIGEE_LONGITUDE);
     
     /*
      * Approximate solution of Kepler's equation:
      * Find E which satisfies  E - e sin(E) = M (mean anomaly)
      */
-    gdouble eccenAnom = meanAnom;
-    gdouble delta;
-    gdouble lambda;
+    eccenAnom = meanAnom;
     
     while (1e-12 < fabs( delta = eccenAnom - ECCENTRICITY * sin(eccenAnom) - meanAnom))
     {
@@ -657,8 +659,6 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
     
     /* Calculate equitorial coordinates of sun at previous and next local midnights */
 
-    gdouble ra1, ra2, decl1, decl2;
-    
     ecl2equ (lcl_midn, lambda, &ra1, &decl1);
     ecl2equ (lcl_midn + 86400., lambda + DEGREES_TO_RADIANS(SOL_PROGRESSION), &ra2, &decl2);
     
@@ -667,7 +667,6 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
      * between the two
      */
 
-    gdouble rise1, rise2, set1, set2;
     gstObsv (ra1, decl1, obsLat, obsLon - (gm_hoff * M_PI / 12.), &rise1, &set1);
     gstObsv (ra2, decl2, obsLat, obsLon - (gm_hoff * M_PI / 12.), &rise2, &set2);
     
@@ -682,8 +681,8 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
         set2 += 24.;
     }    
 
-    gdouble tt = t0(lcl_midn);
-    gdouble t00 = tt - (gm_hoff + RADIANS_TO_HOURS(obsLon)) * 1.002737909;
+    tt = t0(lcl_midn);
+    t00 = tt - (gm_hoff + RADIANS_TO_HOURS(obsLon)) * 1.002737909;
 
     if (t00 < 0.)
 	t00 += 24.;
@@ -704,9 +703,9 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
     set1 = (24.07 * set1 - t00 * (set2 - set1)) / (24.07 + set1 - set2);
 
     decl2 = (decl1 + decl2) / 2.;
-    gdouble x = DEGREES_TO_RADIANS(0.830725);
-    gdouble u = acos ( sin(obsLat) / cos(decl2) );
-    gdouble dt =  RADIANS_TO_HOURS ( asin ( sin(x) / sin(u) )
+    x = DEGREES_TO_RADIANS(0.830725);
+    u = acos ( sin(obsLat) / cos(decl2) );
+    dt =  RADIANS_TO_HOURS ( asin ( sin(x) / sin(u) )
 				     / cos(decl2) );
     
     rise1 = (rise1 - dt - tt) * 0.9972695661;
@@ -1517,9 +1516,10 @@ void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pix
 	            idx = PIX_UNKNOWN;
                 }
         } else {
+	    gboolean useSun;
 	    time_t current_time;
 	    current_time = time (NULL);
-	    gboolean useSun = (! info->sunValid )
+	    useSun = (! info->sunValid )
 	                      || (current_time >= info->sunrise &&
 				  current_time < info->sunset);
             switch (sky) {

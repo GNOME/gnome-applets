@@ -577,7 +577,7 @@ void gweather_dialog_display_toggle (GWeatherApplet *gw_applet)
         gweather_dialog_close(gw_applet);
 }
 
-PangoFontDescription *get_system_monospace_font (void)
+static PangoFontDescription *get_system_monospace_font (void)
 {
     PangoFontDescription *desc = NULL;
     GConfClient *conf;
