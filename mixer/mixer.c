@@ -908,10 +908,10 @@ mixer_applet_create (PanelApplet *applet)
 			  "ui-event",
 			  (GCallback) mixer_ui_component_event,
 			  data);
-#ifdef FIXE /* How do you remove a menu item with bonobo? */
+
 	if (run_mixer_cmd == NULL)
-		/*bonobo_ui_component_remove_verb (component, "RunMixer");*/
-#endif
+		bonobo_ui_component_rm (component, "/popups/popup/RunMixer", NULL);
+
 	applet_change_orient_cb (GTK_WIDGET (applet),
 				 panel_applet_get_orient (applet),
 				 data);
