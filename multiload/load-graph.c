@@ -92,7 +92,10 @@ static int
 load_graph_update (LoadGraph *g)
 {
     guint i, j;
-	
+
+	if (g->tooltip_update)
+		multiload_applet_tooltip_update(g);
+		
     g->get_data (g->draw_height, g->data [0], g);
 
     for (i=0; i < g->draw_width-1; i++)
@@ -292,6 +295,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 	g->n = n;
 	g->speed  = speed;
     g->size   = size;
+    g->tooltip_update = FALSE;
     
 	if (!visible)
 		return g;
@@ -343,24 +347,23 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 	gtk_widget_show_all(GTK_WIDGET(g->applet));
 
 	if (g->orient)
-	{
 		gtk_widget_set_size_request (g->main_widget, g->pixel_size, g->size);
-	}
     else
-    {
 		gtk_widget_set_size_request (g->main_widget, g->size, g->pixel_size);
-	}
+	
+	g->tooltips = gtk_tooltips_new();
+	gtk_tooltips_enable(g->tooltips);
 	
 	g->disp = gtk_drawing_area_new ();
-	gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK);
-		
+	gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK);
+	
     g_signal_connect (G_OBJECT (g->disp), "expose_event",
 			G_CALLBACK (load_graph_expose), g);
     g_signal_connect (G_OBJECT(g->disp), "configure_event",
 			G_CALLBACK (load_graph_configure), g);
     g_signal_connect (G_OBJECT(g->disp), "destroy",
 			G_CALLBACK (load_graph_destroy), g);
-
+	
 	gtk_box_pack_start_defaults (GTK_BOX (g->box), g->disp);    
 
     object_list = g_list_append (object_list, g);
@@ -371,7 +374,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 
 void
 load_graph_start (LoadGraph *g)
-{
+{    
     if (g->timer_index != -1)
 		gtk_timeout_remove (g->timer_index);
 

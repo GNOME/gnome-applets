@@ -71,8 +71,6 @@ const gchar multiload_menu_xml [] =
         "		pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
         "	<menuitem name=\"Procman Item\" verb=\"MultiLoadRunProcman\" _label=\"Run Procman ...\"\n"
         "		pixtype=\"stock\" pixname=\"gtk-execute\"/>\n"
-        "	<menuitem name=\"Help Item\" verb=\"MultiLoadHelp\" _label=\"Help\"\n"
-        "		pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
         "	<menuitem name=\"About Item\" verb=\"MultiLoadAbout\" _label=\"About ...\"\n"
         "		pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
         "</popup>\n";
@@ -86,14 +84,6 @@ start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 	return;
 }
               
-/* show help for the applet */
-void
-multiload_help_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
-{
-    gnome_help_display(data, NULL, NULL);
-    return;
-}
-
 void
 multiload_change_size_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
@@ -131,6 +121,79 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 	
 	gtk_widget_destroy(GTK_WIDGET(ma->applet));
 			
+	return;
+}
+
+gboolean
+multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
+{
+	MultiloadApplet *ma;
+	gint i;
+	
+	ma = (MultiloadApplet *)data;
+	
+	for (i = 0; i < 5; i++)
+		if (ma->graphs[i]->visible)
+		{
+			ma->graphs[i]->tooltip_update = TRUE;
+			multiload_applet_tooltip_update(ma->graphs[i]);
+		}
+		
+	return TRUE;
+}
+
+gboolean
+multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
+{
+	MultiloadApplet *ma;
+	gint i;
+	
+	ma = (MultiloadApplet *)data;
+	
+	for (i = 0; i < 5; i++)
+		if (ma->graphs[i]->visible)
+			ma->graphs[i]->tooltip_update = FALSE;
+			
+	return TRUE;
+}
+
+/* update the tooltip to the graph's current "used" percentage */
+void
+multiload_applet_tooltip_update(LoadGraph *g)
+{
+	gint i, total_used, percent;
+	gchar *tooltip_text, *name;
+	
+	total_used = 0;
+
+	/* label the tooltip intuitively */
+	if (!strncmp(g->name, "cpuload", strlen("cpuload")))
+		name = g_strdup(_("Processor"));
+	else if (!strncmp(g->name, "memload", strlen("memload")))
+		name = g_strdup(_("Memory"));
+	else if (!strncmp(g->name, "netload", strlen("netload")))
+		name = g_strdup(_("Network"));
+	else if (!strncmp(g->name, "swapload", strlen("swapload")))
+		name = g_strdup(_("Swap File"));
+	else
+		name = g_strdup(_("Resource"));
+	
+	/* fill data[0] with the current load */
+	g->get_data (g->draw_height, g->data[0], g);
+	
+	for (i = 0; i < (g->n - 1); i++)
+		total_used += g->data[0][i];
+	/* netload has a fifth data structute */
+	if (!strncmp(g->name, "netload", strlen("netload")))
+		total_used += g->data[0][g->n - 1];	
+	percent = 100 * (gdouble)total_used / (gdouble)g->draw_height;
+
+	tooltip_text = g_strdup_printf(_("%s:\n%d%% in use"), name, percent);
+	gtk_tooltips_set_tip(g->tooltips, g->disp, tooltip_text, tooltip_text);
+		
+	g_free(tooltip_text);
+	g_free(name);
+	
 	return;
 }
 
@@ -231,7 +294,6 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 		const BonoboUIVerb multiload_menu_verbs [] = {
 			BONOBO_UI_VERB_DATA ("MultiLoadProperties", multiload_properties_cb, ma),
 			BONOBO_UI_VERB ("MultiLoadRunProcman", start_procman_cb),
- 	       BONOBO_UI_VERB_DATA ("MultiLoadHelp", multiload_help_cb, "index.html"),
 	        BONOBO_UI_VERB ("MultiLoadAbout", about_cb),
 
   	      BONOBO_UI_VERB_END
@@ -247,6 +309,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_change_orient_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "destroy",
 				G_CALLBACK(multiload_destroy_cb), ma);
+	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
+				G_CALLBACK(multiload_enter_cb), ma);
 					
 	gtk_widget_show_all(GTK_WIDGET(applet));
 			

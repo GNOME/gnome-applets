@@ -44,14 +44,16 @@ struct _LoadGraph {
     GdkPixmap *pixmap;
     GdkGC *gc;
     int timer_index;
+    GtkTooltips *tooltips;
 
     gint show_frame;
 
     long cpu_time [NCPUSTATES];
     long cpu_last [NCPUSTATES];
     int cpu_initialized;
-    
+
     gboolean visible;
+    gboolean tooltip_update;
     gchar *name;
 };
 
@@ -105,9 +107,9 @@ multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name
 void
 multiload_applet_refresh(MultiloadApplet *ma);
 
-/* show help */
+/* update the tooltip to the graph's current "used" percentage */
 void
-multiload_help_cb (BonoboUIComponent *uic, gpointer data, const gchar *name);
+multiload_applet_tooltip_update(LoadGraph *g);
 
 G_END_DECLS
 

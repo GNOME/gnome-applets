@@ -79,14 +79,88 @@ add_page(GtkWidget *notebook, gchar *label)
 	return page;
 }
 
+/* close the color selection dialog */
+void
+color_selector_close_cb(GtkWidget *widget, gpointer dialog)
+{
+	gtk_widget_destroy(GTK_WIDGET(dialog));
+	
+	return;
+}
+
+/* saves the currently selected color */
+void
+color_selector_ok_cb(GtkWidget *widget, gpointer dialog)
+{
+	GdkColor *color;
+	gchar color_string[8], *gconf_path;
+	MultiloadApplet *ma;
+	
+	ma = g_object_get_data(G_OBJECT(dialog), "applet");	
+	gconf_path = g_object_get_data(G_OBJECT(dialog), "gconf_path");
+	
+	color = g_new0(GdkColor, 1);
+	
+	gtk_color_selection_get_current_color(GTK_COLOR_SELECTION(GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel), color);
+	snprintf(color_string, 8, "#%02X%02X%02X", (guint)color->red / 256, (guint)color->green / 256, (guint)color->blue / 256);
+	panel_applet_gconf_set_string(PANEL_APPLET(ma->applet), gconf_path, color_string, NULL);
+	
+	multiload_applet_refresh(ma);
+	
+	color_selector_close_cb(NULL, dialog);
+		
+	return;
+}
+
+/* popup a color selector dialog */
+void
+show_color_selector_cb(GtkWidget *widget, gpointer object)
+{
+	GtkWidget *dialog;
+	GdkColor *color;
+	gchar *gconf_path, *color_string;
+	MultiloadApplet *ma;
+	
+	gconf_path = g_object_get_data(G_OBJECT(object), "gconf_path");
+	ma = g_object_get_data(G_OBJECT(object), "applet");
+
+	color = g_new0(GdkColor, 1);
+	dialog = gtk_color_selection_dialog_new("Color");
+
+	g_object_set_data(G_OBJECT(dialog), "applet", ma);
+	g_object_set_data(G_OBJECT(dialog), "gconf_path", gconf_path);
+	
+	color_string = panel_applet_gconf_get_string(PANEL_APPLET(ma->applet), gconf_path, NULL);
+			
+	gdk_color_parse(color_string, color);
+	gtk_color_selection_set_current_color(GTK_COLOR_SELECTION(GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel), color);
+	
+	g_signal_connect(G_OBJECT(dialog), "destroy", G_CALLBACK(gtk_widget_destroyed), &dialog);
+	g_signal_connect(G_OBJECT(GTK_COLOR_SELECTION_DIALOG(dialog)->cancel_button), "clicked",
+							G_CALLBACK(color_selector_close_cb), dialog);
+	g_signal_connect(G_OBJECT(GTK_COLOR_SELECTION_DIALOG(dialog)->ok_button), "clicked",
+							G_CALLBACK(color_selector_ok_cb), dialog);
+								
+	gtk_widget_show_all(dialog);
+	
+	gtk_widget_hide(GTK_COLOR_SELECTION_DIALOG(dialog)->help_button);
+	
+	g_free(color);
+	
+	return;
+}
+
 /* create a color selector */
 void
-add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path)
+add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApplet *ma)
 {
 	GtkWidget *vbox;
 	GtkWidget *label;
 	GtkWidget *button;
+	GtkWidget *object;
+/*	gchar *color_string; */
 	
+	object = gtk_label_new("I will never be seen"); /* this is used instead of a structure */
 	button = gtk_button_new();
 	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
 	vbox = gtk_vbox_new(FALSE, 0);
@@ -96,6 +170,13 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path)
 	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
 	
 	gtk_box_pack_start(GTK_BOX(page), button, TRUE, TRUE, 3);
+	
+/*	color_string = panel_applet_gconf_get_string(PANEL_APPLET(ma->applet), gconf_path, NULL); */
+	
+	g_object_set_data(G_OBJECT(object), "gconf_path", gconf_path);
+	g_object_set_data(G_OBJECT(object), "applet", ma);
+	
+	g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(show_color_selector_cb), object);
 	
 	return;
 }
@@ -217,26 +298,26 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_container_add(GTK_CONTAINER(frame), notebook);
 	
 	page = add_page(notebook,  _("Processor"));
-	add_color_selector(page, _("User"), "cpuload_color0");
-	add_color_selector(page, _("System"), "cpuload_color1");
-	add_color_selector(page, _("Nice"), "cpuload_color2");
-	add_color_selector(page, _("Idle"), "cpuload_color3");
+	add_color_selector(page, _("User"), "cpuload_color0", ma);
+	add_color_selector(page, _("System"), "cpuload_color1", ma);
+	add_color_selector(page, _("Nice"), "cpuload_color2", ma);
+	add_color_selector(page, _("Idle"), "cpuload_color3", ma);
 	
 	page = add_page(notebook,  _("Memory"));
-	add_color_selector(page, _("Other"), "memload_color0");
-	add_color_selector(page, _("Shared"), "memload_color1");
-	add_color_selector(page, _("Buffers"), "memload_color2");
-	add_color_selector(page, _("Free"), "memload_color3");
+	add_color_selector(page, _("Other"), "memload_color0", ma);
+	add_color_selector(page, _("Shared"), "memload_color1", ma);
+	add_color_selector(page, _("Buffers"), "memload_color2", ma);
+	add_color_selector(page, _("Free"), "memload_color3", ma);
 	
 	page = add_page(notebook,  _("Network"));
-	add_color_selector(page, _("SLIP"), "netload_color0");
-	add_color_selector(page, _("PLIP"), "netload_color1");
-	add_color_selector(page, _("Ethernet"), "netload_color2");
-	add_color_selector(page, _("Other"), "netload_color3");
+	add_color_selector(page, _("SLIP"), "netload_color0", ma);
+	add_color_selector(page, _("PLIP"), "netload_color1", ma);
+	add_color_selector(page, _("Ethernet"), "netload_color2", ma);
+	add_color_selector(page, _("Other"), "netload_color3", ma);
 	
 	page = add_page(notebook,  _("Swap File"));
-	add_color_selector(page, _("Used"), "swapload_color0");
-	add_color_selector(page, _("Free"), "swapload_color1");
+	add_color_selector(page, _("Used"), "swapload_color0", ma);
+	add_color_selector(page, _("Free"), "swapload_color1", ma);
 	
 	return;
 }
@@ -257,7 +338,7 @@ multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name
 	
 	ma = (MultiloadApplet *)data;
 	
-	dialog = gtk_dialog_new_with_buttons(_("System Monitor Properties"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
+	dialog = gtk_dialog_new_with_buttons(_("System Monitor Properties"), NULL, 0, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
 				
 	fill_properties(dialog, ma);
 	
