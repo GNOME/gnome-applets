@@ -1,7 +1,10 @@
 Current:
 
 - Bug hunting...
-- Async network I/O.
+- Code reorganization... at least break up weather.[ch] and gweather-dialog.[ch]
+  according to "views" (or aspects) of the weather (ie. conditions, textual
+  forecast, graphical forecast, radar map, etc).  Do some things more
+  properly (eg. use libgnomeui stuff for properties dialog, etc).
 - Detect modem connection/disconnection (still need to find a decent way to
   do this -- ideas? ;-)
 
@@ -10,8 +13,9 @@ Future / Suggestions:
 - Add capability to display the weather at more than one locations at
   the same time, by allowing multiple applets to run, without messing each
   other's configs.
+- Parse IWIN forecasts and display them graphically as well.
 - Add plots and history information.
-- More/better icons (also, theme-friendly icons, ie. transparent background).
+- More/better icons.
 
 ----
 $Id$
