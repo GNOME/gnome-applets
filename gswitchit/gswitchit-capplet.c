@@ -155,7 +155,7 @@ CappletResponse (GtkDialog * capplet, gint id, GSwitchItApplet * sia)
 {
 	if (id == GTK_RESPONSE_HELP) {
 		GSwitchItHelp (GTK_WIDGET (sia->propsDialog),
-			       "gswitchitPropsCapplet");
+			       "gswitchit-applet-prefs");
 		return;
 	}
 	gtk_widget_destroy (GTK_WIDGET (capplet));

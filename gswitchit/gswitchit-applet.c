@@ -572,7 +572,7 @@ void
 GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	GSwitchItHelp (GTK_WIDGET (sia->applet), "gswitchitApplet");
+	GSwitchItHelp (GTK_WIDGET (sia->applet), "gswitchit-applet-intro");
 }
 
 void
