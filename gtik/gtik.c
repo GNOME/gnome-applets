@@ -530,6 +530,8 @@ static gint updateOutput(gpointer data)
 			return TRUE;
 		else if (end >= 0 && end <= width)
 			return TRUE;
+		else if (start <= 0 && end >= width)
+			return TRUE;
 		else	
 			return FALSE;
 	}
