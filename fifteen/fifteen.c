@@ -10,6 +10,7 @@
 #include <config.h>
 #include <applet-widget.h>
 #include <libgnomeui/gnome-window-icon.h>
+#include <assert.h>
 
 /* the piece size is for 48 and will be scaled to the proper size */
 #define PIECE_SIZE 11
@@ -26,18 +27,22 @@ free_stuff (GtkObject *object, gpointer data)
 }
 
 static void
-test_win (GnomeCanvasItem **board)
+test_win (GnomeCanvasItem **board, unsigned *moves)
 {
         GtkWidget *dlg;
 	int i;
+	gchar *buf;
 
 	for (i = 0; i < 15; i++)
 		if (!board[i] || (GPOINTER_TO_INT (gtk_object_get_data (GTK_OBJECT (board[i]), "piece_num")) != i))
 			return;
 
-        dlg = gnome_ok_dialog (_("You win!"));
+	buf = g_strdup_printf("%s : %u", _("You win!\nMoves"), *moves);
+	dlg = gnome_ok_dialog(buf);
 	gtk_window_set_modal(GTK_WINDOW(dlg),TRUE);
 	gnome_dialog_run (GNOME_DIALOG (dlg));
+	g_free(buf);
+	*moves = 0;
 }
 
 static char *
@@ -62,13 +67,15 @@ get_piece_color (int piece)
 static gint
 piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 {
+	static unsigned moves = 0;
 	GnomeCanvas *canvas;
 	GnomeCanvasItem **board;
 	GnomeCanvasItem *text;
-	int num, pos, newpos;
+	int num, pos;
 	int x, y;
-	double dx = 0.0, dy = 0.0;
-	int move;
+	int dx, dy;
+	int bx, by;
+	int blank, dist;
 
 	canvas = item->canvas;
 	board = gtk_object_get_user_data (GTK_OBJECT (canvas));
@@ -78,50 +85,57 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 
 	switch (event->type) {
 	case GDK_ENTER_NOTIFY:
-		gnome_canvas_item_set (text,
-				       "fill_color", "white",
-				       NULL);
+		gnome_canvas_item_set (text, "fill_color", "white", NULL);
 		break;
 
 	case GDK_LEAVE_NOTIFY:
-		gnome_canvas_item_set (text,
-				       "fill_color", "black",
-				       NULL);
+		gnome_canvas_item_set (text, "fill_color", "black", NULL);
 		break;
 
 	case GDK_BUTTON_PRESS:
+		for (blank = 0; blank < 16; blank++)
+			if (board[blank] == NULL)
+				break;
+		assert(blank != 16); /* no blank on board? */
+		bx = blank % 4;
+		by = blank / 4;
+
 		y = pos / 4;
 		x = pos % 4;
 
-		move = TRUE;
-
-		if ((y > 0) && (board[(y - 1) * 4 + x] == NULL)) {
-			dx = 0.0;
-			dy = -1.0;
-			y--;
-		} else if ((y < 3) && (board[(y + 1) * 4 + x] == NULL)) {
-			dx = 0.0;
-			dy = 1.0;
-			y++;
-		} else if ((x > 0) && (board[y * 4 + x - 1] == NULL)) {
-			dx = -1.0;
-			dy = 0.0;
-			x--;
-		} else if ((x < 3) && (board[y * 4 + x + 1] == NULL)) {
-			dx = 1.0;
-			dy = 0.0;
-			x++;
-		} else
-			move = FALSE;
-
-		if (move) {
-			newpos = y * 4 + x;
-			board[pos] = NULL;
-			board[newpos] = item;
-			gtk_object_set_data (GTK_OBJECT (item), "piece_pos", GINT_TO_POINTER (newpos));
-			gnome_canvas_item_move (item, dx * PIECE_SIZE, dy * PIECE_SIZE);
-			test_win (board);
+		if (x == bx && y > by) { /* piece up */
+			dx = 0;
+			dy = -1;
+			dist = y - by;
+		} else if (x == bx && y < by) { /* down */
+			dx = 0;
+			dy = +1;
+			dist = by - y;
+		} else if (x > bx && y == by) { /* left */
+			dx = -1;
+			dy = 0;
+			dist = x - bx;
+		} else if (x < bx && y == by) { /* right */
+			dx = +1;
+			dy = 0;
+			dist = bx - x;
+		} else { /* no move */
+			break;
 		}
+
+		moves +=  dist;
+		while (dist--) {
+			pos = blank - 4 * dy - dx;
+			gtk_object_set_data (GTK_OBJECT (board[pos]),
+					     "piece_pos",
+					     GINT_TO_POINTER (blank));
+			gnome_canvas_item_move (board[pos], dx * PIECE_SIZE,
+						dy * PIECE_SIZE);
+			board[blank] = board[pos];
+			board[pos] = NULL;
+			blank = pos;
+		}
+		test_win (board, &moves);
 
 		break;
 
