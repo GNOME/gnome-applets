@@ -1,7 +1,7 @@
  <sect1 id="charpickapplet">
-  <title>Character Picker</title> 
+  <title>Character Picker Applet</title>
 
-  <para> 
+  <para>
    <application>Character Picker</application> applet, shown in <xref
    linkend="charpickapplet-fig">, allows you to easily write many
    characters which are not available on standard keyboards, such as
@@ -17,8 +17,7 @@
     <guimenuitem>Character Picker</guimenuitem>
    </menuchoice>.
   </para>
-  
- 
+
   <figure id="charpickapplet-fig">
    <title>Character Picker Applet</title>
    <screenshot>
@@ -29,6 +28,7 @@
    </screenshot>
   </figure>
 
+  <!-- ============= Usage  ================================ -->
   <sect2 id="charpickapplet-usage">
    <title>Usage</title>
    <para>
@@ -76,51 +76,53 @@
     </para>
    </note>
 
-   <para> 
-    If you right-click on the applet, it brings up a
-    menu, containing the following commands: 
-      <itemizedlist> 
+   <para>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
 
-	<listitem>
-	  <para>
-	    <guimenuitem>About&hellip;</guimenuitem> &mdash; shows info about
-            the <application>Drive Mount Applet</application>, inluding
-            version and author's name. 
-	    </para>
-	</listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="charpickapplet-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
 
-	<listitem>
-	  <para>
-	    <guimenuitem>Help&hellip;</guimenuitem> &mdash; brings up this
-            document. 
-	    </para>
-	</listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
 
-        <listitem>
-          <para>
-            <guimenuitem>Properties&hellip;</guimenuitem>&mdash; brings up
-            the <link linkend="charpickapplet-prefs">
-                <guilabel>Properties</guilabel>
-            </link> dialog
-            </para>
-        </listitem>
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Character Picker
+       Applet</application>, inluding the applet's version and the
+       author's name.
+      </para>
+     </listitem>
 
-      </itemizedlist>
-    </para>
+    </itemizedlist>
+   </para>
   </sect2>
 
+
+  <!-- ============= Customization ============================= -->
   <sect2 id="charpickapplet-prefs">
     <title>Customization</title>
     <para>
       You can customize <application>Character Picker</application>
-      applet by
-      right-clicking on it and choosing
+      applet by right-clicking on it and choosing
       <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
       <interface>Properties</interface> dialog(shown in <xref
-      linkend="charpickappletsettings-fig">), which allows you to
+      linkend="charpickapplet-settings-fig">), which allows you to
       change various settings.
     </para>
-    <figure id="charpickappletsettings-fig">
+
+    <figure id="charpickapplet-settings-fig">
      <title>Properties dialog</title>
      <screenshot>
       <screeninfo>Properties dialog</screeninfo>
@@ -191,8 +193,10 @@
       <listitem>
        <para>
         Default character list &mdash; This is the list of characters
-        which will be shown in the applet for the given keyboard
-        character. 
+        which will be shown in the applet when you press the space
+        bar. This is a convenient way to keep a list of your most
+        frequently used characters. Just enter your most frequently
+        used characters in this entry.
        </para>
       </listitem>
 
@@ -208,6 +212,7 @@
     </para>
   </sect2>
 
+  <!-- ============= Characters ================================== -->
   <sect2 id="charpickapplet-characters">
    <title>Characters</title>
    <para>
@@ -233,25 +238,95 @@
    </figure>
   </sect2>
 
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
   <sect2 id="charpickapplet-bugs">
-   <title>Known bugs and limitations</title>
+   <title>Known Bugs and Limitations</title>
    <para>
-    There are no known bugs.
+    This applet has no known bugs.
    </para>
   </sect2>
+
+
+  <!-- ============= Authors ================================ -->
 
   <sect2 id="charpickapplet-authors">
    <title>Authors</title>
    <para>
-    This applet was writen by Alexandre Muñiz
-    <email>munizao@cyberhighway.net</email>. 
-    To submit suggestions and
-    bug reports, use <ulink type="http"
-    url="http://bugs.gnome.org">The GNOME Bug Tracking System</ulink>
-    or the <application>bug-buddy</application> utility in the
-    <interface>Main Menu</interface>.
+    <application>Character Picker</application> was written by Alexandre Muñiz
+    (<email>munizao@cyberhighway.net</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Dan Mueth
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
    </para>
   </sect2>
 
  </sect1>
+
 
