@@ -309,6 +309,8 @@ redraw_applet(MCData *mcdata)
         _("Click this button for the list of previous commands"));
     set_atk_name_description(GTK_WIDGET(applet), _("Mini-Commander applet"),
         _("This applet adds a command line to the panel"));
+    
+    gtk_tooltips_set_tip (tooltips, GTK_WIDGET (applet),  _("Command Line"), NULL);
 	
     /* add buttons into frame */
     frame = gtk_frame_new(NULL);
@@ -351,8 +353,6 @@ redraw_applet(MCData *mcdata)
 		    gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
 		    gtk_container_add(GTK_CONTAINER(frame2), handle);
 		}
-	    
-	    gtk_tooltips_set_tip (tooltips, GTK_WIDGET (applet),  _("Command Line"), NULL);
 	    
 	    if (prop->show_frame)
 		gtk_box_pack_start(GTK_BOX(mcdata->applet_inner_vbox), frame2, TRUE, TRUE, 0);
