@@ -123,20 +123,12 @@ session_save(int id, const char *cfgpath, const char *globcfgpath)
 }
 
 static gint
-quit_winlist(gpointer data)
+destroy_plug(GtkWidget *widget, gpointer data)
 {
-  exit(0);
+	gtk_exit(0);
+	return FALSE;
 }
 
-void
-shutdown_applet(int id)
-{
-  /*kill our plug using destroy to avoid warnings we need to
-    kill the plug but we also need to return from this call */
-  if (plug)
-    gtk_widget_destroy(plug);
-  gtk_idle_add(quit_winlist, NULL);
-}
 
 int
 main(int argc, char **argv)
@@ -182,6 +174,9 @@ main(int argc, char **argv)
   gtk_widget_show(w_winlist);
   gtk_container_add(GTK_CONTAINER(plug), w_winlist);
   gtk_widget_show(plug);
+  gtk_signal_connect(GTK_OBJECT(plug),"destroy",
+		     GTK_SIGNAL_FUNC(destroy_plug),
+		     NULL);
 
   result = gnome_panel_applet_register(plug, applet_id);
   if (result)
