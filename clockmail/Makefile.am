@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -16,9 +14,9 @@ clockmail_applet_SOURCES = \
 	rotate.h
 
 
-clockmail_applet_LDADD = ../../panel/libpanel_applet.la \
+clockmail_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	clockmail_applet.desktop	\
@@ -41,3 +39,5 @@ net_DATA = clockmail_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = clockmail_applet.gnorba
+
+SUBDIRS = themes
