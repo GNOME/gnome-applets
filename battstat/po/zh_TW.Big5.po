@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: battstat 2.0.10\n"
+"Project-Id-Version: battstat cvs 2001-05-27\n"
 "POT-Creation-Date: 2001-04-25 00:18+0200\n"
-"PO-Revision-Date: 2001-04-22 08:04+0800\n"
+"PO-Revision-Date: 2001-05-27 16:32+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,11 @@ msgstr ""
 #. on unsupported platform
 #: src/battstat_applet.c:263
 msgid "Your platform is not supported!\n"
-msgstr ""
+msgstr "不支援此平台！\n"
 
 #: src/battstat_applet.c:264
 msgid "The applet will not work properly (if at all).\n"
-msgstr ""
+msgstr "此小程式將不能正常運作（若有可能的話）。\n"
 
 # src/battstat_applet.c:313 src/battstat_applet.c:792
 #. The following four messages will be displayed as tooltips over
@@ -54,12 +54,11 @@ msgstr "正在充電"
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
 #: src/battstat_applet.c:429 src/battstat_applet.c:1087
-#, fuzzy
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 msgstr ""
-"系統正在使用%s\n"
+"系統正在使用電池\n"
 "電池︰%d%%（%s）"
 
 # src/battstat_applet.c:414
@@ -67,12 +66,11 @@ msgstr ""
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
 #: src/battstat_applet.c:437 src/battstat_applet.c:1095
-#, fuzzy
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
 msgstr ""
-"系統正在使用%s\n"
+"系統正在使用交流電\n"
 "電池︰%d%%（%s）"
 
 # src/battstat_applet.c:417
@@ -80,18 +78,16 @@ msgstr ""
 #. when the computer is using battery power.
 #: src/battstat_applet.c:446 src/battstat_applet.c:1027
 #: src/battstat_applet.c:1108
-#, fuzzy
 msgid "System is running on battery power"
-msgstr "系統正在使用%s"
+msgstr "系統正在使用電池"
 
 # src/battstat_applet.c:417
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
 #: src/battstat_applet.c:452 src/battstat_applet.c:1033
 #: src/battstat_applet.c:1114
-#, fuzzy
 msgid "System is running on AC power"
-msgstr "系統正在使用%s"
+msgstr "系統正在使用交流電"
 
 #. Displayed in the percentage label at the side of the battery meter
 #. * if the applet discovers that you have removed the battery
@@ -99,7 +95,7 @@ msgstr "系統正在使用%s"
 #.
 #: src/battstat_applet.c:472
 msgid "N/A"
-msgstr ""
+msgstr "不適用"
 
 # src/battstat_applet.c:565
 #. This message will be displayed in a Gnome Warning dialog
@@ -107,9 +103,8 @@ msgstr ""
 #. and the battery charge is dropping below the value
 #. specified by the user.
 #: src/battstat_applet.c:611
-#, fuzzy
 msgid "Battery low (%d%%) and AC is offline"
-msgstr "電池電量為低（%d%%）而交流電%s"
+msgstr "電池電量為低（%d%%）而交流電不存在"
 
 # src/battstat_applet.c:565
 #. This message will be displayed in a Gnome Warning dialog
@@ -117,27 +112,24 @@ msgstr "電池電量為低（%d%%）而交流電%s"
 #. value specified by the user. Technically this shouldn't
 #. happen if the battery is working properly.
 #: src/battstat_applet.c:618
-#, fuzzy
 msgid "Battery low (%d%%) and AC is online"
-msgstr "電池電量為低（%d%%）而交流電%s"
+msgstr "電池電量為低（%d%%）而交流電存在"
 
 # src/battstat_applet.c:579 src/battstat_applet.c:898
 # src/battstat_applet.c:955
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
 #: src/battstat_applet.c:638 src/battstat_applet.c:1007
-#, fuzzy
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "系統正在使用%s。電池︰%d%%（%s）"
+msgstr "系統正在使用電池。電池︰%d%%（%s）"
 
 # src/battstat_applet.c:579 src/battstat_applet.c:898
 # src/battstat_applet.c:955
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
 #: src/battstat_applet.c:645 src/battstat_applet.c:1014
-#, fuzzy
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "系統正在使用%s。電池︰%d%%（%s）"
+msgstr "系統正在使用交流電。電池︰%d%%（%s）"
 
 # src/battstat_applet.c:584
 #. This string will display as a tooltip over the
@@ -145,18 +137,16 @@ msgstr "系統正在使用%s。電池︰%d%%（%s）"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: src/battstat_applet.c:656
-#, fuzzy
 msgid "System is running on battery power. Battery: Not present"
-msgstr "系統正在使用%s。電池︰不存在"
+msgstr "系統正在使用電池。電池︰不存在"
 
 # src/battstat_applet.c:584
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: src/battstat_applet.c:662
-#, fuzzy
 msgid "System is running on AC power. Battery: Not present"
-msgstr "系統正在使用%s。電池︰不存在"
+msgstr "系統正在使用交流電。電池︰不存在"
 
 # src/battstat_applet.c:590
 #. Displayed as a tooltip over the battery meter when there is
@@ -213,9 +203,8 @@ msgstr "電池狀態工具"
 
 # src/battstat_applet.c:733
 #: src/battstat_applet.c:827
-#, fuzzy
 msgid "(C) 2000 The Gnulix Society"
-msgstr " (C) 2000 The Gnulix Society"
+msgstr "(C) 2000 The Gnulix Society"
 
 # src/battstat_applet.c:735
 #. Longer description of the applet in the About dialog.
@@ -270,7 +259,7 @@ msgstr "讓筆記型電腦進入待機模式"
 msgid ""
 "You have chosen to enable the Suspend function. This can potentionally be a "
 "security risc."
-msgstr "你選擇了待機的功\能。這有可能造成保安上的問題。"
+msgstr "你選擇了待機的功能。這有可能造成保安上的問題。"
 
 # src/properties.c:192
 #. This is the title of the properties window
@@ -400,29 +389,13 @@ msgstr "隱藏"
 
 # src/battstat_applet.c:732
 #: battstat_applet.desktop.in.h:1
-#, fuzzy
 msgid "Battery Status Utility"
 msgstr "電池狀態工具"
 
 # src/battstat_applet.c:735
 #: battstat_applet.desktop.in.h:2
-#, fuzzy
 msgid "Shows the status of the battery"
-msgstr "此工具能顯示筆記型電腦的電池狀態。"
-
-# src/battstat_applet.c:415 src/battstat_applet.c:418
-# src/battstat_applet.c:580 src/battstat_applet.c:586
-# src/battstat_applet.c:899 src/battstat_applet.c:907
-# src/battstat_applet.c:956 src/battstat_applet.c:964
-#~ msgid "AC"
-#~ msgstr "交流電"
-
-# src/battstat_applet.c:415 src/battstat_applet.c:418
-# src/battstat_applet.c:580 src/battstat_applet.c:586
-# src/battstat_applet.c:899 src/battstat_applet.c:907
-# src/battstat_applet.c:956 src/battstat_applet.c:964
-#~ msgid "battery"
-#~ msgstr "電池"
+msgstr "顯示電池的狀態"
 
 # src/battstat_applet.c:566
 #~ msgid "online"
@@ -431,7 +404,3 @@ msgstr "此工具能顯示筆記型電腦的電池狀態。"
 # src/battstat_applet.c:566
 #~ msgid "offline"
 #~ msgstr "不存在"
-
-# src/battstat_applet.c:906 src/battstat_applet.c:963
-#~ msgid "System is running on %s power."
-#~ msgstr "系統正在使用 %s。"
