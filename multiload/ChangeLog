@@ -1,3 +1,10 @@
+2005-01-09  Davyd Madeley  <davyd@madeley.id.au>
+
+	* Makefile.am: Remove -Wall, we shouldn't use this, plus it breaks
+	  some crazy IBM AIX compiler. Current accepted behaviour is if users
+	  want -Wall, they can add it to their CFLAGS, like -g.
+	  Fixes bug #161996.
+
 2004-12-20  Davyd Madeley  <davyd@madeley.id.au>
 
 	* main.c: Spurious line in translucency code.

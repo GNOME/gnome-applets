@@ -3,8 +3,7 @@ SUBDIRS = docs
 INCLUDES =			\
 	-I$(srcdir)		\
 	$(GNOME_APPLETS_CFLAGS)	\
-	$(GTOP_APPLETS_CFLAGS)	\
-	-Wall
+	$(GTOP_APPLETS_CFLAGS)
 
 libexec_PROGRAMS = multiload-applet-2
 
