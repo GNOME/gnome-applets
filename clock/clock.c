@@ -22,23 +22,22 @@
 #include "applet-lib.h"
 #include "applet-widget.h"
 
-typedef void (*ClockUpdateFunc) (GtkWidget *, time_t);
-
-typedef struct {
+typedef struct _ClockData ClockData;
+typedef void (*ClockUpdateFunc) (ClockData *, time_t);
+struct _ClockData {
+	GtkWidget *applet;
+	GtkWidget *clockw;
 	int timeout;
 	ClockUpdateFunc update_func;
 	PanelOrientType orient;
-} ClockData;
+};
+
+
 
 typedef struct {
 	GtkWidget *date;
 	GtkWidget *time;
 } ComputerClock;
-
-GtkWidget *applet = NULL;
-GtkWidget *clockw = NULL;
-
-ClockData *cd = NULL;
 
 static void
 free_data(GtkWidget * widget, gpointer data)
@@ -49,23 +48,24 @@ free_data(GtkWidget * widget, gpointer data)
 static int
 clock_timeout_callback(gpointer data)
 {
+	ClockData *cd = data;
 	time_t current_time;
 
 	time(&current_time);
 
-	(*cd->update_func) (clockw, current_time);
+	(*cd->update_func) (cd, current_time);
 
 	return 1;
 }
 
 static void
-computer_clock_update_func(GtkWidget *clock, time_t current_time)
+computer_clock_update_func(ClockData *cd, time_t current_time)
 {
 	ComputerClock *cc;
 	char *strtime;
 	char date[20], hour[20];
 
-	cc = gtk_object_get_user_data(GTK_OBJECT(clock));
+	cc = gtk_object_get_user_data(GTK_OBJECT(cd->clockw));
 
 	strtime = ctime(&current_time);
 
@@ -123,14 +123,16 @@ create_computer_clock_widget(GtkWidget ** clock, ClockUpdateFunc * update_func)
 static void
 destroy_clock(GtkWidget * widget, void *data)
 {
+	ClockData *cd = data;
 	gtk_timeout_remove(cd->timeout);
 	g_free(cd);
 }
 
-static GtkWidget *
-create_clock_widget(void)
+static ClockData *
+create_clock_widget(GtkWidget *applet)
 {
 	GtkWidget *clock;
+	ClockData *cd;
 	time_t current_time;
 
 	cd = g_new(ClockData, 1);
@@ -138,33 +140,37 @@ create_clock_widget(void)
 	/*FIXME: different clock types here */
 	create_computer_clock_widget(&clock, &cd->update_func);
 
+	cd->clockw = clock;
+	cd->applet = applet;
+
 	/* Install timeout handler */
 
-	cd->timeout = gtk_timeout_add(3000, clock_timeout_callback, clock);
+	cd->timeout = gtk_timeout_add(3000, clock_timeout_callback, cd);
 
 	cd->orient = ORIENT_UP;
 
 	gtk_signal_connect(GTK_OBJECT(clock), "destroy",
 			   (GtkSignalFunc) destroy_clock,
-			   NULL);
+			   cd);
 	/* Call the clock's update function so that it paints its first state */
 
 	time(&current_time);
 
-	(*cd->update_func) (clock, current_time);
+	(*cd->update_func) (cd, current_time);
 
-	return clock;
+	return cd;
 }
 
 /*these are commands sent over corba: */
 static void
 applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
+	ClockData *cd = data;
 	time_t current_time;
 
 	time(&current_time);
 	cd->orient = o;
-	(*cd->update_func) (clockw, current_time);
+	(*cd->update_func) (cd, current_time);
 }
 
 static gint
@@ -186,6 +192,9 @@ test_callback(int id, gpointer data)
 int
 main(int argc, char **argv)
 {
+	ClockData *cd;
+	GtkWidget *applet;
+
 	panel_corba_register_arguments();
 	gnome_init("clock_applet", NULL, argc, argv, 0, NULL);
 
@@ -193,19 +202,19 @@ main(int argc, char **argv)
 	if (!applet)
 		g_error("Can't create applet!\n");
 
-	clockw = create_clock_widget();
+	cd = create_clock_widget(applet);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
-			   NULL);
+			   cd);
 
-	gtk_widget_show(clockw);
-	applet_widget_add(APPLET_WIDGET(applet), clockw);
+	gtk_widget_show(cd->clockw);
+	applet_widget_add(APPLET_WIDGET(applet), cd->clockw);
 	gtk_widget_show(applet);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
 			   GTK_SIGNAL_FUNC(destroy_applet),
-			   NULL);
+			   cd);
 
 /*
 	gnome_panel_applet_register_callback(applet_id,
