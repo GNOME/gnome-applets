@@ -57,6 +57,7 @@ struct _DriveData
 	gchar *custom_icon_out;
 
 	GtkWidget *error_dialog;
+	GtkWidget *about_dialog;
 };
 
 void redraw_pixmap(DriveData *dd);

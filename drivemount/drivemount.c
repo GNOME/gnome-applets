@@ -280,6 +280,8 @@ create_drive_widget (PanelApplet *applet)
 	dd = g_new0 (DriveData, 1);
 	dd->applet = GTK_WIDGET (applet);
 
+	dd->about_dialog = NULL;
+
 	properties_load (dd);
 
 	dd->button = gtk_button_new ();
@@ -405,7 +407,10 @@ destroy_drive_widget (GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (dd->error_dialog);
 		dd->error_dialog = NULL;
 	}
-	
+
+	if (dd->about_dialog != NULL)
+		gtk_widget_destroy (dd->about_dialog);
+
 	g_free (dd->custom_icon_in);
 	g_free (dd->custom_icon_out);
 
@@ -522,7 +527,6 @@ about_cb (BonoboUIComponent *uic,
 	  DriveData         *drivemount,
 	  const char        *verb)
 {
-	static GtkWidget *about = NULL;
    	GdkPixbuf        *pixbuf;
    	GError           *error = NULL;
    	gchar            *file;
@@ -539,10 +543,12 @@ about_cb (BonoboUIComponent *uic,
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about) {
-		gtk_window_set_screen (GTK_WINDOW (about),
-				       gtk_widget_get_screen (drivemount->applet));
-		gtk_window_present (GTK_WINDOW (about));
+	if (drivemount->about_dialog)
+	{
+		gtk_window_set_screen (GTK_WINDOW (drivemount->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (drivemount->applet)));
+	
+		gtk_window_present (GTK_WINDOW (drivemount->about_dialog));
 		return;
 	}
 
@@ -555,7 +561,7 @@ about_cb (BonoboUIComponent *uic,
 		g_error_free (error);
 	}
 
-	about = gnome_about_new (_("Disk Mounter"), VERSION,
+	drivemount->about_dialog = gnome_about_new (_("Disk Mounter"), VERSION,
 				 _("(C) 1999-2001 The GNOME Hackers\n"),
 				 _
 				 ("Applet for mounting and unmounting block volumes."),
@@ -566,12 +572,14 @@ about_cb (BonoboUIComponent *uic,
 	if (pixbuf) 
    		gdk_pixbuf_unref (pixbuf);
    
-   	gtk_window_set_wmclass (GTK_WINDOW (about), "disk mounter", "Disk Mounter");
-	gtk_window_set_screen (GTK_WINDOW (about),
+   	gtk_window_set_wmclass (GTK_WINDOW (drivemount->about_dialog), "disk mounter", "Disk Mounter");
+	gtk_window_set_screen (GTK_WINDOW (drivemount->about_dialog),
 			       gtk_widget_get_screen (drivemount->applet));
-   	g_signal_connect (G_OBJECT (about), "destroy",
-			  G_CALLBACK (gtk_widget_destroyed), &about);
-	gtk_widget_show (about);
+
+	g_signal_connect (G_OBJECT (drivemount->about_dialog), "destroy",
+			  G_CALLBACK (gtk_widget_destroyed), &drivemount->about_dialog);
+
+	gtk_widget_show (drivemount->about_dialog);
 }
 
 /*

@@ -870,15 +870,6 @@ about_cb (BonoboUIComponent *uic,
    GdkPixbuf   *pixbuf;
    GError      *error = NULL;
    gchar       *file;
-  
-   if (battstat->about_dialog) 
-   {
-	gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (battstat->applet)));
-	   
-	gtk_window_present (GTK_WINDOW (battstat->about_dialog));
-	return;
-   }
    
    const gchar *authors[] = {
 	/* if your charset supports it, please replace the "o" in
@@ -894,6 +885,15 @@ about_cb (BonoboUIComponent *uic,
    };
 
    const gchar *translator_credits = _("translator_credits");
+
+   if (battstat->about_dialog) 
+   {
+	gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (battstat->applet)));
+	   
+	gtk_window_present (GTK_WINDOW (battstat->about_dialog));
+	return;
+   }
    
    file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "battstat.png", FALSE, NULL);
    pixbuf = gdk_pixbuf_new_from_file (file, &error);

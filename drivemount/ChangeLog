@@ -1,3 +1,16 @@
+2004-01-31  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* drivemount.h: Added an about_dialog GtkWidget to
+	the _DriveData structure.
+	* drivemount.c (create_drive_widget):
+	initialize about_dialog with NULL.
+	(destroy_drive_widget):
+	destroy about dialog when it's open.
+	(about_cb):
+	make use of the private about dialog.
+
+	Fixes #132527
+
 2004-01-18  Jason Leach  <leach@wam.umd.edu>
 
 	* Makefile.am (install-data-local): builddir != srcdir fix.
