@@ -194,14 +194,15 @@ key_writable (PanelApplet *applet, const char *key)
 {
 	gboolean writable;
 	char *fullkey;
-	GConfClient *client = gconf_client_get_default ();
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
 
 	fullkey = panel_applet_gconf_get_full_key (applet, key);
 
 	writable = gconf_client_key_is_writable (client, fullkey, NULL);
 
 	g_free (fullkey);
-	g_object_unref (G_OBJECT (client));
 
 	return writable;
 }

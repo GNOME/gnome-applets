@@ -1,3 +1,8 @@
+Thu Jul 03 15:46:15 2003  George Lebl <jirka@5z.com>
+
+	* mixer.c: when we obtain a gconf client, just cache the pointer,
+	  that will make the key_writable call marginally faster.
+
 Wed Jul 02 16:54:54 2003  George Lebl <jirka@5z.com>
 
 	* mixer.c: respect key-writability
