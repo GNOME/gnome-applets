@@ -4,19 +4,22 @@
 #include "applet-lib.h"
 #include "applet-widget.h"
 
-#define DU_UPDATE_TIME 2000
 
-/* default height when horizontal panel */
-#define DU_FRAME_HEIGHT 42
+#define DU_PIE_GAP 4		/* gap between pie and border */
+#define DU_TEXT_GAP 4		/* gap between text and border (on the right) */
 
-/* default width when vertical panel */
-#define DU_FRAME_WIDTH 44
+#define DU_MOUNTPOINT_X 5	/* offset of Mountpoint text  */
+#define DU_MOUNTPOINT_Y 15	/* (counting from end of area of piechart) */	
 
-/* width of a bar when horiz. pan. */
-#define DU_BAR_WIDTH 12
+#define DU_FREESPACE_X 5
+#define DU_FREESPACE_Y 30
 
-/* height of a bar when ver. pan. */
-#define DU_BAR_HEIGHT 10
+
+#define DU_MOUNTPOINT_Y_VERT 15	
+#define DU_MOUNTPOINT2_Y_VERT 30 /* broken into 2 lines when vertical panel */	
+#define DU_FREESPACE_Y_VERT 45	
+#define DU_FREESPACE2_Y_VERT 60	 /* broken into 2 lines when vertical panel */	
+
 
 #define DU_FS_TOTAL  0
 #define DU_FS_USED   1
@@ -39,10 +42,8 @@ typedef struct _DiskusageInfo DiskusageInfo;
 struct _DiskusageInfo {
 	FilesystemInfo filesystems [DU_MAX_FS];
 	unsigned n_filesystems;
-	unsigned previous_n_filesystems;
 	PanelOrientType orient;
-	gint bar_o;	/* current procbar orientation */
-	int	n_ProcBars; /* the number of procbars allready created */
+	unsigned selected_filesystem;
 };
 
 
