@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-09 03:32+0200\n"
-"PO-Revision-Date: 2004-08-09 13:13+0530\n"
+"POT-Creation-Date: 2004-08-09 11:34+0200\n"
+"PO-Revision-Date: 2004-08-09 17:30+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "<magnet@magnet-i.com>\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"\n"
 "\n"
 "X-Generator: KBabel 1.3.1\n"
 
@@ -81,13 +82,13 @@ msgstr "કીબોર્ડની સુલભ લાક્ષણિકતા�
 msgid "Utility"
 msgstr "ઉપયોગીતા"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1057
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
 #: mini-commander/src/about.c:50 mixer/mixer.c:1350
 #: modemlights/modemlights.c:118 multiload/main.c:60
-#: stickynotes/stickynotes_applet_callbacks.c:243
+#: stickynotes/stickynotes_applet_callbacks.c:261
 #: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
@@ -151,7 +152,7 @@ msgstr "કીબોર્ડની સુલભ લાક્ષણિકતા�
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
+#: battstat/battstat_applet.c:1078 battstat/battstat_applet.c:1824
 msgid "Battery Charge Monitor"
 msgstr "વીજકોષનો ભાર જુઅો"
 
@@ -160,7 +161,7 @@ msgid "Battstat Factory"
 msgstr "બૅટસ્ટેટનું કારખાનું"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1841
+#: battstat/battstat_applet.c:1825
 msgid "Monitor a laptop's remaining power"
 msgstr "લેપટોપની બાકીની કાર્યત્વરા જુઅો"
 
@@ -259,190 +260,126 @@ msgstr "વીજકોષનું સ્તર કે જેની નીચ�
 msgid "Yellow value level"
 msgstr "પીળાની કિંમતનું સ્તર"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:340
-msgid "Your platform is not supported!\n"
-msgstr "તમારો મંચ સહાયભૂત નથી!\n"
-
-#: battstat/battstat_applet.c:341
-msgid "The applet will not work properly (if at all).\n"
-msgstr "અેપ્લેટ યોગ્ય રીતે કામ કરશે નહિ (જો બધા હોય તો).\n"
-
-#: battstat/battstat_applet.c:360
-#, c-format
-msgid "%i minute"
-msgid_plural "%i minutes"
-msgstr[0] "%i મિનિટ"
-msgstr[1] "%i મિનિટો"
-
-#: battstat/battstat_applet.c:361
-#, c-format
-msgid "%i hour"
-msgid_plural "%i hours"
-msgstr[0] "%i કલાક"
-msgstr[1] "%i કલાકો"
-
-#. Translation Note: as in "No time remaining" or "No time till charged"
-#: battstat/battstat_applet.c:365
-msgid "No time"
-msgstr "સમય નથી"
-
-# gnome-session/gsm-client-row.c:43
-#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
-#. Translation Note: as in "Unknown time remaining"
-#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
-msgid "Unknown time"
-msgstr "અજ્ઞાત સમય"
-
-#. Translation note:
-#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
-#. * Swap the order with "%2$s %1$s" if needed.
-#: battstat/battstat_applet.c:386
-#, c-format
-msgid "%s %s"
-msgstr "%s %s"
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
-msgid "High"
-msgstr "ઊંચું"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
-msgid "Low"
-msgstr "નીચું"
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
-msgid "Critical"
-msgstr "કટોકટી"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
-msgid "Charging"
-msgstr "વીજભારિત થઈ રહ્યુ છે"
-
-#: battstat/battstat_applet.c:515
-#, c-format
-msgid ""
-"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
-"your laptop in."
-msgstr ""
-"%s (%d%%) બાકી છે. કામ ખોવાઈ જવાનું અવગણવા માટે મહેરબાની કરીને પાવર બંધ કરો,"
-"અટકાવો અથવા તમારુ લેપટોપ લગાવો."
-
-#: battstat/battstat_applet.c:519
-msgid "Your battery is running low"
-msgstr "તમારો વીજકોષ નીચો ચાલી રહ્યો છે"
-
-#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
-msgid "Battery Notice"
-msgstr "વીજકોષ સૂચન"
-
-#: battstat/battstat_applet.c:597
-msgid "Your battery is now fully recharged"
-msgstr "તમારો વીજકોષ હવે પૂરેપૂરો વીજભારિત થયો છે"
-
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:651
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"%s (%d%%) remaining"
-msgstr ""
-"સિસ્ટમ વીજકોષની શક્તિ પર ચાલી રહી છે\n"
-"%s (%d%%) બાકી છે"
-
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:655
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"%s (%d%%) till charged"
-msgstr ""
-"સિસ્ટમ AC પાવર પર ચાલી રહી છે\n"
-"%s (%d%%) હજુ વિજભારિત થાય છે"
-
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
-#: battstat/battstat_applet.c:1300
-msgid "System is running on battery power"
-msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા પર ચાલે છે"
-
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
-#: battstat/battstat_applet.c:1305
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "સિસ્ટમ AC કાર્યત્વરા પર ચાલે છે"
 
-#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
+#: battstat/battstat_applet.c:87
+msgid "System is running on battery power"
+msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા પર ચાલે છે"
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:342
+msgid "Your platform is not supported!\n"
+msgstr "તમારો મંચ સહાયભૂત નથી!\n"
+
+#: battstat/battstat_applet.c:343
+msgid "The applet will not work properly (if at all).\n"
+msgstr "અેપ્લેટ યોગ્ય રીતે કામ કરશે નહિ (જો બધા હોય તો).\n"
+
+#: battstat/battstat_applet.c:382
+#, c-format
+msgid "Battery charged (%d%%)"
+msgstr "વીજકોષ વીજભારિત છે (%d%%)"
+
+#: battstat/battstat_applet.c:384
+#, c-format
+msgid "Unknown time (%d%%) remaining"
+msgstr "અજ્ઞાત સમય (%d%%) બાકી છે"
+
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "Unknown time (%d%%) till charged"
+msgstr "અજ્ઞાત સમય (%d%%) હજુ વીજભારિત છે"
+
+#: battstat/battstat_applet.c:391
+#, c-format
+msgid "%d minute (%d%%) remaining"
+msgid_plural "%d minutes (%d%%) remaining"
+msgstr[0] "%d મિનિટ (%d%%) બાકી છે"
+msgstr[1] "%d મિનિટો (%d%%) બાકી છે"
+
+#: battstat/battstat_applet.c:396
+#, c-format
+msgid "%d minute till charged (%d%%)"
+msgid_plural "%d minutes till charged (%d%%)"
+msgstr[0] "%d પછી પણ વિજભારિત છે (%d%%)"
+msgstr[1] "%d મિનિટો પછી પણ વીજભારિત છે (%d%%)"
+
+#: battstat/battstat_applet.c:402
+#, c-format
+msgid "%d hour (%d%%) remaining"
+msgid_plural "%d hours (%d%%) remaining"
+msgstr[0] "%d કલાક (%d%%) બાકી છે"
+msgstr[1] "%d કલાકો (%d%%) બાકી છે"
+
+#: battstat/battstat_applet.c:407
+#, c-format
+msgid "%d hour (%d%%) till charged (%d%%)"
+msgid_plural "%d hours (%d%%) till charged (%d%%)"
+msgstr[0] "%d કલાક (%d%%) હજુ વીજભારિત છે (%d%%)"
+msgstr[1] "%d કલાકો (%d%%) હજુ પણ વીજભારિત છે (%d%%)"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:414
+#, c-format
+msgid "%d %s %d %s (%d%%) remaining"
+msgstr "%d %s %d %s (%d%%) બાકી છે"
+
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "કલાક"
+msgstr[1] "કલાકો"
+
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "મિનિટ"
+msgstr[1] "મિનિટો"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:421
+#, c-format
+msgid "%d %s %d %s till charged (%d%%)"
+msgstr "%d %s %d %s હજુ પણ વીજભારિત છે (%d%%)"
+
+#: battstat/battstat_applet.c:529
+msgid "Your battery is running low"
+msgstr "તમારો વીજકોષ નીચો ચાલી રહ્યો છે"
+
+#: battstat/battstat_applet.c:531
+msgid "To avoid losing work please power off, suspend or plug your laptop in."
+msgstr "તમારુ કરેલું કામ ખોવાઈ જતું ટાળવા માટે પાવર બંધ કરો, અટકાવો અથવા તમારુ લેપટોપ જોડો."
+
+#: battstat/battstat_applet.c:534 battstat/battstat_applet.c:587
+msgid "Battery Notice"
+msgstr "વીજકોષ સૂચન"
+
+#: battstat/battstat_applet.c:607
+msgid "Your battery is now fully recharged"
+msgstr "તમારો વીજકોષ હવે પૂરેપૂરો વીજભારિત થયો છે"
+
+#: battstat/battstat_applet.c:686 wireless/wireless-applet.c:148
 #: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "N/A"
 
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#. Translation note: %s is time in words (translated elsewhere)
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
-#, c-format
-msgid "System is running on battery power. %s (%d%%) remaining."
-msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા વીજકોષ પર ચાલે છે. %s (%d%%) બાકી છે."
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#. Translation note: %s is time in words (translated elsewhere)
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
-#, c-format
-msgid "System is running on AC power. %s (%d%%) till charged."
-msgstr "સિસ્ટમ AC કાર્યત્વરા વીજકોષ પર ચાલે છે. %s (%d%%) હજુ વિજભારિત થાય છે."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:827
-msgid "System is running on battery power. Battery status unknown."
-msgstr "સિસ્ટમ વીજકોષ કાર્યત્વરા પર ચાલે છે. વીજકોષની સ્થિતિ અજ્ઞાત છે."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:832
-msgid "System is running on AC power. No battery present."
-msgstr "સિસ્ટમ AC કાર્યત્વરા પર ચાલે છે. કોઈ વીજકોષ હાજર નથી."
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. contains a string of the time remaining
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:841
-#, c-format
-msgid "%s (%d%%) remaining"
-msgstr "%s (%d%%) બાકી છે"
+#: battstat/battstat_applet.c:828
+msgid "Battery status unknown"
+msgstr "વીજકોષની સ્થિતિ અજ્ઞાત"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:846
+#: battstat/battstat_applet.c:835 battstat/battstat_applet.c:847
 msgid "No battery present"
 msgstr "કોઈ વીજકોષ હાજર નથી"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:948
+#: battstat/battstat_applet.c:947
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -455,7 +392,7 @@ msgstr ""
 "તમને APM ઉપકરણ વાંચવાની પરવાનગી છે કે નહિ."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:957
+#: battstat/battstat_applet.c:956
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -465,7 +402,7 @@ msgstr ""
 "\"apm-e1\" (FreeBSD) ચલાવવાનો પ્રયત્ન કરો અને જુઅો કે \n"
 "મદદ છે કે નહિ.\n"
 
-#: battstat/battstat_applet.c:1013
+#: battstat/battstat_applet.c:1012
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -474,16 +411,16 @@ msgstr ""
 "અટકાવો અાદેશ ચલાવતા અાવતી ભૂલ :%s\n"
 "મહેરબાની કરીને અા ભૂલ સુધારવાનો પ્રયત્ન કરો"
 
-#: battstat/battstat_applet.c:1017
+#: battstat/battstat_applet.c:1016
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "અટકાવવાનો આદેશ '%s' સફળ રહ્યો નહિ."
 
-#: battstat/battstat_applet.c:1019
+#: battstat/battstat_applet.c:1018
 msgid "The Suspend command was unsuccessful."
 msgstr "અટકાવવાનો આદેશ સફળ રહ્યો નહિ."
 
-#: battstat/battstat_applet.c:1027
+#: battstat/battstat_applet.c:1026
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -493,47 +430,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1045
+#: battstat/battstat_applet.c:1044
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1081
+#: battstat/battstat_applet.c:1080
 msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1082
+#: battstat/battstat_applet.c:1081
 msgid "This utility shows the status of your laptop battery."
 msgstr "અા ઉપયોગિતા તમારા લેપટોપના વીજકોષની સ્થિતિઅો બતાવે છે."
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:1279
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"%s (%d%%) remaining."
-msgstr ""
-"સિસ્ટમ વીજકોષની શક્તિ પર ચાલી રહી છે\n"
-"%s (%d%%) બાકી છે."
-
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:1287
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"%s (%d%%) till charged."
-msgstr ""
-"સિસ્ટમ AC પાવર પર ચાલી રહી છે\n"
-"%s (%d%%) હજુ વીજભારિત થઈ રહ્યું છે."
-
-#: battstat/battstat_applet.c:1766
+#: battstat/battstat_applet.c:1750
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -588,7 +497,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "વીજકોષનો વીજભાર દેખાડતી પસંદગીઅો"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1045 mailcheck/mailcheck.c:2056
+#: gweather/gweather-pref.c:1049 mailcheck/mailcheck.c:2056
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "સામાન્ય"
@@ -648,8 +557,8 @@ msgstr "પીળો: (_Y)"
 #: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
 #: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
-#: stickynotes/stickynotes_applet_callbacks.c:384
+#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:238
+#: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -1487,7 +1396,7 @@ msgstr "કેનેડીઅન xkb કીમૅપ"
 #: gkb-new/descs/US.keyprop.desktop.in.h:1
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:1
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:364
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:365
 msgid "English"
 msgstr "અંગ્રેજી"
 
@@ -1597,9 +1506,9 @@ msgstr "ડેનમાર્ક"
 msgid "Danish keymap"
 msgstr "ડૅનિશ કીમૅપ"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:847
-#: gweather/gweather-pref.c:866 gweather/gweather-pref.c:890
-#: gweather/gweather-pref.c:914
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:868 gweather/gweather-pref.c:892
+#: gweather/gweather-pref.c:918
 msgid "Default"
 msgstr "મૂળભુત"
 
@@ -1611,7 +1520,7 @@ msgstr "જીનોમ કીહોર્ડના મૂળભુતો"
 # desktop-links/Internet.directory.in.h:1
 #: gkb-new/descs/Default.keyprop.desktop.in.h:3
 #: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:364
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:365
 msgid "International"
 msgstr "અાંતરરાષ્ટ્રીય"
 
@@ -2416,7 +2325,7 @@ msgstr "US ૧૦૧-કી કીબોર્ડ"
 #: gkb-new/descs/US.keyprop.desktop.in.h:3
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:3
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:360
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:361
 msgid "United States"
 msgstr "યુનાઇટેડ સ્ટેટ"
 
@@ -2589,25 +2498,25 @@ msgstr "GKB ઘર પાનું (http://projects.gnome.hu/gkb)"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:275
+#: gkb-new/gkb.c:276
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr "દ્રશ્યો વચ્ચે ફેરબદલી કરવા માટે હોટ કી દબાવો. હોટ કી ગુણધર્મોના સંવાદમાંથી ગોઠવાય છે. "
 
-#: gkb-new/gkb.c:352
+#: gkb-new/gkb.c:353
 msgid "US 105 key keyboard"
 msgstr "US ૧૦૫ કી કીબોર્ડ"
 
-#: gkb-new/gkb.c:352
+#: gkb-new/gkb.c:353
 msgid "Gnome Keyboard Default"
 msgstr "જીનોમ કીબોર્ડ મૂળભુત"
 
-#: gkb-new/gkb.c:356
+#: gkb-new/gkb.c:357
 msgid "default"
 msgstr "મૂળભુત"
 
-#: gkb-new/gkb.c:360
+#: gkb-new/gkb.c:361
 msgid "Gnome Keyboard"
 msgstr "જીનોમ કીબોર્ડ"
 
@@ -2644,30 +2553,38 @@ msgid "The country of the keyboard layout"
 msgstr "કીબોર્ડના દેખાવનો દેશ"
 
 #: gkb-new/gkb.schemas.in.h:9
+msgid "The default keymap"
+msgstr "મૂળભુત કીમૅપ"
+
+#: gkb-new/gkb.schemas.in.h:10
+msgid "The default keymap for the applet"
+msgstr "એપ્લેટ માટે મૂળભુત કીમૅપ"
+
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The label of the keyboard layout"
 msgstr "કીબોર્ડના દેખાવનું લેબલ"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:12
 msgid "The language of the keyboard layout"
 msgstr "કીબોર્ડના દેખાવની ભાષા"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:13
 msgid "The name of the keyboard layout"
 msgstr "કીબોર્ડના દેખાવનું નામ"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This flag will appear in flag field of the applet"
 msgstr "અા સૂચક એપ્લેટના સૂચક ક્ષેત્રમાં દેખાશે"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:15
 msgid "This information helps you to identify your keyboard layout"
 msgstr "તમારા કીબોર્ડના દેખાવને ઓળખવા માટે આ માહિતી તમને મદદ કરશે"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This is the binding for keypress-based layout change"
 msgstr "કી દબાવવાથી દેખાવ બદલવા માટેનું અા જોડનાર છે"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:17
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -2675,11 +2592,11 @@ msgstr ""
 "\"gkb_xmmap us\", \"setxkbmap us\" અથવા \"xmodmap something.xmm\" ના જેવુ હોઈ "
 "શકે"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:18
 msgid "This will appear in the label box of the applet"
 msgstr "આ એપ્લેટના લેબલનાં ખાનામાં દેખાશે"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:19
 msgid "This will identify the layout in the list"
 msgstr "અા યાદીમાં દેખાવને ઓળખાવશે"
 
@@ -2754,7 +2671,7 @@ msgstr "લેબલ"
 msgid "Flag and Label"
 msgstr "નિશાની અને લેબલ"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1030
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1034
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "દેખાડો"
@@ -3106,7 +3023,7 @@ msgstr "સંજ્ઞાઓ"
 msgid "Behavior"
 msgstr "વર્તણૂક"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:990
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:994
 msgid "Update"
 msgstr "બદલો"
 
@@ -3114,7 +3031,7 @@ msgstr "બદલો"
 msgid "Stock update fre_quency:"
 msgstr "જથ્થો બદલવાની આવૃત્તિ: (_q)"
 
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1014 mailcheck/mailcheck.c:2104
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1018 mailcheck/mailcheck.c:2104
 #: mailcheck/mailcheck.c:2110
 msgid "minutes"
 msgstr "મિનિટો"
@@ -3464,168 +3381,174 @@ msgid "Forecast not currently available for this location."
 msgstr "આ જગ્યા માટે હવામાન વર્તમાનમાં ઉપ્લબ્ધ નથી."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Location view"
 msgstr "જગ્યાનો દેખાવ"
 
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Select Location from the list"
 msgstr "યાદીમાંથી જગ્યા પસંદ કરો"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "સ્પિન બટન બદલો"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "બદલવા માટેનું સ્પિન બટન"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "સરનામાનો દાખલો"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "URL દાખલ કરો"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Centigrade) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:400 gweather/gweather-pref.c:409
+#: gweather/gweather-pref.c:401 gweather/gweather-pref.c:410
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "તાપમાનનો મૂળભુત એકમ"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:436 gweather/gweather-pref.c:446
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "ઝડપનો મૂળભુત એકમ"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
-#. Valid values are: "hPa" (hectoPascals), "mb" (millibars), "mmHg"
-#. (millimeters of mercury) and "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:483
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: gweather/gweather-pref.c:474 gweather/gweather-pref.c:485
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "દબાણનો મૂળભુત એકમ"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:509 gweather/gweather-pref.c:518
+#: gweather/gweather-pref.c:511 gweather/gweather-pref.c:520
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "અંતરનો મૂળભુત એકમ"
 
-#: gweather/gweather-pref.c:796
+#: gweather/gweather-pref.c:798
 msgid "Weather Preferences"
 msgstr "હવામાન પસંદગીઓ"
 
-#: gweather/gweather-pref.c:829 gweather/gweather-pref.c:994
+#: gweather/gweather-pref.c:831 gweather/gweather-pref.c:998
 msgid "_Automatically update every:"
 msgstr "આપોઆપ દરેક બદલો: (_A)"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:838
+#: gweather/gweather-pref.c:840
 msgid "_Temperature Unit:"
 msgstr "તાપમાનનો એકમ (_T):"
 
-#: gweather/gweather-pref.c:848
+#: gweather/gweather-pref.c:850
 msgid "Kelvin"
 msgstr "કેલ્વિન"
 
-#: gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:851
 msgid "Centigrade"
 msgstr "સેન્ટીગ્રેડ"
 
-#: gweather/gweather-pref.c:850
+#: gweather/gweather-pref.c:852
 msgid "Fahrenheit"
 msgstr "ફેરનહીટ"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:857
+#: gweather/gweather-pref.c:859
 msgid "_Wind Speed Unit:"
 msgstr "પવનની ઝડપનો એકમ (_W):"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:868
+#: gweather/gweather-pref.c:870
 msgid "m/s"
 msgstr "મી/સેક"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:872
 msgid "km/h"
 msgstr "કિમી/કલાક"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:874
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:876
 msgid "knots"
 msgstr "ક્નૉટ્સ"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:881
+#: gweather/gweather-pref.c:883
 msgid "_Pressure Unit:"
 msgstr "દબાણનો એકમ (_P):"
 
+#. TRANSLATOR: The pressure unit "kiloPascals"
+#: gweather/gweather-pref.c:894
+msgid "kPa"
+msgstr "kPa"
+
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:892
+#: gweather/gweather-pref.c:896
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:894
+#: gweather/gweather-pref.c:898
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:900
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:902
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:909
 msgid "_Visibility Unit:"
 msgstr "દ્રશ્યતાનો એકમ (_V):"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:916
+#: gweather/gweather-pref.c:920
 msgid "meters"
 msgstr "મીટરો"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:918
+#: gweather/gweather-pref.c:922
 msgid "km"
 msgstr "કિમી"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:924
 msgid "miles"
 msgstr "માઈલો"
 
-#: gweather/gweather-pref.c:945
+#: gweather/gweather-pref.c:949
 msgid "Enable _radar map"
 msgstr "રડારનો નક્શો સક્રિય કરો (_r)"
 
-#: gweather/gweather-pref.c:959
+#: gweather/gweather-pref.c:963
 msgid "Use _custom address for radar map"
 msgstr "રડારના નક્શા માટે કસ્ટમ સરનામુ વાપરો (_c)"
 
-#: gweather/gweather-pref.c:976
+#: gweather/gweather-pref.c:980
 msgid "A_ddress:"
 msgstr "સરનામુ (_d):"
 
-#: gweather/gweather-pref.c:1058
+#: gweather/gweather-pref.c:1062
 msgid "_Select a location:"
 msgstr "જગ્યા પસંદ કરો (_S):"
 
-#: gweather/gweather-pref.c:1088
+#: gweather/gweather-pref.c:1092
 msgid "Location"
 msgstr "જગ્યા"
 
@@ -3633,8 +3556,8 @@ msgstr "જગ્યા"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:135
-#: gweather/weather.c:140
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
+#: gweather/weather.c:141
 msgid "DEFAULT_CODE"
 msgstr "મૂળભુત કોડ (_C)"
 
@@ -3642,8 +3565,8 @@ msgstr "મૂળભુત કોડ (_C)"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:114
-#: gweather/weather.c:119 gweather/weather.c:120
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
+#: gweather/weather.c:120 gweather/weather.c:121
 msgid "DEFAULT_LOCATION"
 msgstr "મૂળભુત જગ્યા (_L)"
 
@@ -3651,8 +3574,8 @@ msgstr "મૂળભુત જગ્યા (_L)"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:166
-#: gweather/weather.c:171
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
+#: gweather/weather.c:172
 msgid "DEFAULT_RADAR"
 msgstr "મૂળભુત રડાર (_R)"
 
@@ -3660,8 +3583,8 @@ msgstr "મૂળભુત રડાર (_R)"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:151
-#: gweather/weather.c:156
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
+#: gweather/weather.c:157
 msgid "DEFAULT_ZONE"
 msgstr "મૂળભુત ઝોન (_Z)"
 
@@ -3754,107 +3677,107 @@ msgstr "અંગ્રજી એકમોની જગ્યાએ માપત
 msgid "weather location information."
 msgstr "જગ્યાની હવામાનની માહિતી."
 
-#: gweather/weather.c:127
+#: gweather/weather.c:128
 msgid "Pittsburgh"
 msgstr "પિટ્સબર્ગ"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:222
 msgid "Variable"
 msgstr "ચલ"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "North"
 msgstr "ઉત્તર"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "North - NorthEast"
 msgstr "ઉત્તર - ઉત્તરપૂર્વ"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "Northeast"
 msgstr "ઉત્તરપૂર્વ"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "East - NorthEast"
 msgstr "પૂર્વ - ઉત્તરપૂર્વ"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "East"
 msgstr "પૂર્વ"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "East - Southeast"
 msgstr "પૂર્વ - દક્ષિણપૂર્વ"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "Southeast"
 msgstr "દક્ષિણપૂર્વ"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "South - Southeast"
 msgstr "દક્ષિણ - દક્ષિણપૂર્વ"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "South"
 msgstr "દક્ષિણ"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "South - Southwest"
 msgstr "દક્ષિણ - દક્ષિણપશ્ર્ચિમ"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "Southwest"
 msgstr "દક્ષિણપશ્ર્ચિમ"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "West - Southwest"
 msgstr "પશ્ર્ચિમ - દક્ષિણપશ્ર્ચિમ"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "West"
 msgstr "પશ્ર્ચિમ"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "West - Northwest"
 msgstr "પશ્ર્ચિમ - ઉત્તરપશ્ર્ચિમ"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "Northwest"
 msgstr "ઉત્તરપશ્ર્ચિમ"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "North - Northwest"
 msgstr "ઉત્તર - ઉત્તરપશ્ર્ચિમ"
 
 # gnome-session/gsm-client-row.c:43
-#: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
-#: gweather/weather.c:2259 gweather/weather.c:2274 gweather/weather.c:2290
-#: gweather/weather.c:2321 gweather/weather.c:2333 gweather/weather.c:2352
-#: gweather/weather.c:2376 gweather/weather.c:2389 gweather/weather.c:2409
+#: gweather/weather.c:232 gweather/weather.c:2234 gweather/weather.c:2248
+#: gweather/weather.c:2260 gweather/weather.c:2275 gweather/weather.c:2291
+#: gweather/weather.c:2322 gweather/weather.c:2334 gweather/weather.c:2353
+#: gweather/weather.c:2381 gweather/weather.c:2394 gweather/weather.c:2414
 msgid "Unknown"
 msgstr "અજાણ્યુ"
 
-#: gweather/weather.c:233 gweather/weather.c:250 gweather/weather.c:321
+#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
 msgid "Invalid"
 msgstr "અયોગ્ય"
 
-#: gweather/weather.c:239
+#: gweather/weather.c:240
 msgid "Clear Sky"
 msgstr "સ્વચ્છ આકાશ"
 
-#: gweather/weather.c:240
+#: gweather/weather.c:241
 msgid "Broken clouds"
 msgstr "તૂટેલા વાદળો"
 
-#: gweather/weather.c:241
+#: gweather/weather.c:242
 msgid "Scattered clouds"
 msgstr "છુટાછવાયા વાદળો"
 
-#: gweather/weather.c:242
+#: gweather/weather.c:243
 msgid "Few clouds"
 msgstr "થોડા વાદળો"
 
-#: gweather/weather.c:243
+#: gweather/weather.c:244
 msgid "Overcast"
 msgstr "વાદળાથી ઘેરાયેલું"
 
@@ -3862,432 +3785,438 @@ msgstr "વાદળાથી ઘેરાયેલું"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:282 gweather/weather.c:284
+#: gweather/weather.c:283 gweather/weather.c:285
 msgid "Thunderstorm"
 msgstr "ગાજવીજ"
 
 #. DRIZZLE
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Drizzle"
 msgstr "ઝરમર"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Light drizzle"
 msgstr "આછું ઝરમર"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Moderate drizzle"
 msgstr "પ્રમાણસર ઝરમર"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Heavy drizzle"
 msgstr "ભારે ઝરમર"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Freezing drizzle"
 msgstr "બરફવાળુ ઝરમર"
 
 #. RAIN
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Rain"
 msgstr "વરસાદ"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Light rain"
 msgstr "ઓછો વરસાદ"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Moderate rain"
 msgstr "પ્રમાણસર વરસાદ"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Heavy rain"
 msgstr "ભારે વરસાદ"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Rain showers"
 msgstr "વરસાદના ફુવારા"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Freezing rain"
 msgstr "બરફવાળો વરસાદ"
 
 #. SNOW
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snow"
 msgstr "બરફ"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Light snow"
 msgstr "ઓછો બરફ"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Moderate snow"
 msgstr "પ્રમાણસર બરફ"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Heavy snow"
 msgstr "ભારે બરફ"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snowstorm"
 msgstr "બરફીલુ તોફાન"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Blowing snowfall"
 msgstr "ફૂંકાતા પવન સાથે પડતો બરફ"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snow showers"
 msgstr "બરફના ફુવારા"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Drifting snow"
 msgstr "ઘસડાતો બરફ"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Snow grains"
 msgstr "બરફના ટૂકડા"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Light snow grains"
 msgstr "ઓછા બરફના ટૂકડા"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Moderate snow grains"
 msgstr "પ્રમાણસર બરફના ટૂકડા"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Heavy snow grains"
 msgstr "ભારે બરફના ટૂકડા"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:287
+#: gweather/weather.c:288
 msgid "Ice crystals"
 msgstr "બરફનાં સ્ફટિકો"
 
 #. ICE_PELLETS
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Ice pellets"
 msgstr "બરફની પટ્ટીઓ"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Few ice pellets"
 msgstr "અમુક બરફની પટ્ટીઓ"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Moderate ice pellets"
 msgstr "પ્રમાણસર બરફની પટ્ટીઓ"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Heavy ice pellets"
 msgstr "ભારે બરફની પટ્ટીઓ"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Ice pellet storm"
 msgstr "બરફની પટ્ટીઓનું તોફાન"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Showers of ice pellets"
 msgstr "બરફની પટ્ટીઓના ફુવારા"
 
 #. HAIL
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hail"
 msgstr "બરફના કરા"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hailstorm"
 msgstr "કરાનું તોફાન"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hail showers"
 msgstr "કરાના ફુવારા"
 
 #. SMALL_HAIL
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Small hail"
 msgstr "નાના કરા"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Small hailstorm"
 msgstr "નાના કરાનું તોફાન"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Showers of small hail"
 msgstr "નાના કરાના ફુવારા"
 
 #. PRECIPITATION
-#: gweather/weather.c:291
+#: gweather/weather.c:292
 msgid "Unknown precipitation"
 msgstr "અજાણ્યુ ક્ષારણ"
 
 #. MIST
-#: gweather/weather.c:292
+#: gweather/weather.c:293
 msgid "Mist"
 msgstr "ભેજ"
 
 #. FOG
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Fog"
 msgstr "ધુમ્મસ"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Fog in the vicinity"
 msgstr "વિસ્તારોમાં ધુમ્મસ"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Shallow fog"
 msgstr "સામાન્ય ધુમ્મસ"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Patches of fog"
 msgstr "ધુમ્મસના ગોટાઓ"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Partial fog"
 msgstr "અંશત: ધુમ્મસ"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Freezing fog"
 msgstr "બરફવાળુ ધુમ્મસ"
 
 #. SMOKE
-#: gweather/weather.c:294
+#: gweather/weather.c:295
 msgid "Smoke"
 msgstr "ધુમાડો"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:295
+#: gweather/weather.c:296
 msgid "Volcanic ash"
 msgstr "જ્વાળામુખીની રાખ"
 
 #. SAND
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Sand"
 msgstr "રેતી"
 
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Blowing sand"
 msgstr "ફૂંકાતી રેતી"
 
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Drifting sand"
 msgstr "ઘસડાયેલી રેતી"
 
 #. HAZE
-#: gweather/weather.c:297
+#: gweather/weather.c:298
 msgid "Haze"
 msgstr "અાછો ભેજ"
 
 #. SPRAY
-#: gweather/weather.c:298
+#: gweather/weather.c:299
 msgid "Blowing sprays"
 msgstr "છાંટા આવી રહ્યા છે"
 
 #. DUST
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Dust"
 msgstr "ધૂળ"
 
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Blowing dust"
 msgstr "ધૂળ ફૂંકાય છે"
 
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Drifting dust"
 msgstr "ધૂળ ઘસડાય છે"
 
 #. SQUALL
-#: gweather/weather.c:300
+#: gweather/weather.c:301
 msgid "Squall"
 msgstr "ઓચિંતુ તોફાન"
 
 #. SANDSTORM
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Sandstorm"
 msgstr "રેતીનું તોફાન"
 
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Sandstorm in the vicinity"
 msgstr "વિસ્તારમાનું રેતીનું તોફાન"
 
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Heavy sandstorm"
 msgstr "રેતીનું ભારે તોફાન"
 
 #. DUSTSTORM
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Duststorm"
 msgstr "ધૂળનું તોફાન"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Duststorm in the vicinity"
 msgstr "વિસ્તારમાંનું ધૂળનું તોફાન"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Heavy duststorm"
 msgstr "ધૂળનું ભારે તોફાન"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:303
+#: gweather/weather.c:304
 msgid "Funnel cloud"
 msgstr "ભૂંગળી જેવું વાદળ"
 
 #. TORNADO
-#: gweather/weather.c:304
+#: gweather/weather.c:305
 msgid "Tornado"
 msgstr "વાવાઝોડુ"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:305
+#: gweather/weather.c:306
 msgid "Dust whirls"
 msgstr "ચક્રવાત"
 
-#: gweather/weather.c:305
+#: gweather/weather.c:306
 msgid "Dust whirls in the vicinity"
 msgstr "વિસ્તારમાંનું ચક્રવાત"
 
-#: gweather/weather.c:1021 gweather/weather.c:1063 gweather/weather.c:1815
+#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1816
 msgid "Failed to get METAR data.\n"
 msgstr "METAR માહિતી મેળવવામાં નિષ્ફળતા.\n"
 
-#: gweather/weather.c:1055 gweather/weather.c:1083 gweather/weather.c:1330
+#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
 msgid "WeatherInfo missing location"
 msgstr "જગ્યા માટે હવામાનની માહિતી નથી"
 
-#: gweather/weather.c:2147
+#: gweather/weather.c:2148
 msgid "%a, %b %d / %H:%M"
 msgstr "%a. %b %d / %H:%M"
 
-#: gweather/weather.c:2151
+#: gweather/weather.c:2152
 msgid "Unknown observation time"
 msgstr "અજાણ્યો નિરીક્ષણનો સમય"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2183 gweather/weather.c:2186
+#: gweather/weather.c:2184 gweather/weather.c:2187
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2191 gweather/weather.c:2194
+#: gweather/weather.c:2192 gweather/weather.c:2195
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2202 gweather/weather.c:2205
+#: gweather/weather.c:2203 gweather/weather.c:2206
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2210 gweather/weather.c:2213
+#: gweather/weather.c:2211 gweather/weather.c:2214
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2222
+#: gweather/weather.c:2223
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2225
+#: gweather/weather.c:2226
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2277
+#: gweather/weather.c:2278
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2302
+#: gweather/weather.c:2303
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f ક્નોટ"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2306
+#: gweather/weather.c:2307
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f માઈલપ્રતિકલાક"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2310
+#: gweather/weather.c:2311
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f કિમી/કલાક"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2314
+#: gweather/weather.c:2315
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f મી/સે"
 
-#: gweather/weather.c:2335
+#: gweather/weather.c:2336
 msgid "Calm"
 msgstr "શાંતિ"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2339
+#: gweather/weather.c:2340
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2357
+#: gweather/weather.c:2358
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2361
+#: gweather/weather.c:2362
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
+#. TRANSLATOR: This is pressure in kiloPascals
+#: gweather/weather.c:2366
+#, c-format
+msgid "%.2f kPa"
+msgstr "%.2f kPa"
+
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2365
+#: gweather/weather.c:2370
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2369
+#: gweather/weather.c:2374
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2394
+#: gweather/weather.c:2399
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f માઈલો"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2398
+#: gweather/weather.c:2403
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f કિમી"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2402
+#: gweather/weather.c:2407
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2443
+#: gweather/weather.c:2448
 msgid "Retrieval failed"
 msgstr "ફરીથી મેળવવાનું નિષ્ફળ ગયું"
 
@@ -5162,7 +5091,7 @@ msgid "Saved volume to restore on startup"
 msgstr "શરૂઆતમાં ફરીથી લાવવા માટે સંગ્રહાયેલો અવાજ"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:138 modemlights/modemlights.c:1599
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "મોડેમની લાઇટો"
 
@@ -5196,12 +5125,12 @@ msgstr "શું તમે સંપર્ક સાધવા માંગો �
 msgid "C_onnect"
 msgstr "જોડો (_o)"
 
-#: modemlights/modemlights.c:587
+#: modemlights/modemlights.c:591
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "% #.1fMb મળ્યા / %#.1fMb મોકલ્યા / સમય: %.1d:%.2d"
 
-#: modemlights/modemlights.c:592
+#: modemlights/modemlights.c:596
 msgid "not connected"
 msgstr "જોડાયેલ નથી"
 
@@ -5779,8 +5708,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "ડેસ્કટૉપ ઉપર સ્ટીકી નોંધ બનાવો, બતાવો અને સંભાળો"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:318 stickynotes/stickynotes_applet.c:436
-#: stickynotes/stickynotes_applet_callbacks.c:253
+#: stickynotes/stickynotes_applet.c:321 stickynotes/stickynotes_applet.c:439
+#: stickynotes/stickynotes_applet_callbacks.c:271
 msgid "Sticky Notes"
 msgstr "સ્ટીકી નોંધ"
 
@@ -6137,7 +6066,7 @@ msgstr "સિસ્ટમનો મૂળભુત રંગ વાપરવો
 msgid "Whether to use the default system font"
 msgstr "સિસ્ટમનો મૂળભુત ફોન્ટ વાપરવો કે નહિ"
 
-#: stickynotes/stickynotes_applet.c:436
+#: stickynotes/stickynotes_applet.c:439
 #, c-format
 msgid ""
 "%s\n"
@@ -6152,11 +6081,11 @@ msgstr[1] ""
 "%s\n"
 "%d નોંધો"
 
-#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes_applet_callbacks.c:273
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© ૨૦૦૨ ૨૦૦૩ લોબાન એ રહેમાન"
 
-#: stickynotes/stickynotes_applet_callbacks.c:256
+#: stickynotes/stickynotes_applet_callbacks.c:274
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "જીનોમ ડૅસ્કટૉપની ગોઠવણી માટેની સ્ટિકી નોંધો"
 
