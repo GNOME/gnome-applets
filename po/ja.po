@@ -7,17 +7,77 @@
 # Shingo Akagaki <dora@kondara.org>, 2000.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2000-2002.
 # Akira TAGOH <tagoh@gnome.gr.jp>, 2001.
+# Sun G11n <gnome_int_l10n@ireland.sun.com>, 2002.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.95.0\n"
-"POT-Creation-Date: 2002-04-19 01:53+0900\n"
-"PO-Revision-Date: 2002-04-19 02:12+0900\n"
+"Project-Id-Version: gnome-applets 2.0.0\n"
+"POT-Creation-Date: 2002-06-13 16:14+0900\n"
+"PO-Revision-Date: 2002-06-13 16:28+0900\n"
 "Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:831
+msgid "Battery Charge Monitor"
+msgstr "電池充電モニタ"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:2
+msgid "Battstat Factory"
+msgstr "電池充電モニタファクトリ"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr "ラップトップの電池の殘りをモニタします"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "ユーティリティ"
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+msgid "_About..."
+msgstr "情報(_A)..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+msgid "_Preferences..."
+msgstr "設定(_P)..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "_Suspend Computer..."
+msgstr "コンピュータをサスペンド(_S)..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -32,22 +92,22 @@ msgstr "このアプレットは正しく動作しません (あるいはまっ�
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:859
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:861
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:863
 msgid "Critical"
 msgstr "電池切れ"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:865
 msgid "Charging"
 msgstr "充電中"
 
@@ -56,14 +116,14 @@ msgstr "充電中"
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "電池が足りず(%d%%)、コンセントに差さってません"
 
-#: battstat/battstat_applet.c:426
+#: battstat/battstat_applet.c:427
 msgid "Battery is now fully re-charged!"
 msgstr "充電が完了しました!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1022
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -75,7 +135,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1030
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -86,32 +146,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:954
+#: battstat/battstat_applet.c:1043
 msgid "System is running on battery power"
 msgstr "システムは電池で動いています"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:1049
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:473
 msgid "N/A"
 msgstr "無し"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:934
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "システムは電池で動いています。充電率: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:941
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "システムは AC 電源で動いています。充電率: %d%% (%s)"
@@ -120,33 +180,33 @@ msgstr "システムは AC 電源で動いています。充電率: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
+#: battstat/battstat_applet.c:615
 msgid "System is running on battery power. Battery: Not present"
 msgstr "システムは電池で動いています。充電率: 電池なし"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
+#: battstat/battstat_applet.c:621
 msgid "System is running on AC power. Battery: Not present"
 msgstr "システムは AC 電源で動いています。充電率: 電池なし"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
+#: battstat/battstat_applet.c:630
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "充電率: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:636
+#: battstat/battstat_applet.c:637
 msgid "Battery: Not present"
 msgstr "充電率: 電池なし"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
+#: battstat/battstat_applet.c:712
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -159,7 +219,7 @@ msgstr ""
 "確認してください。"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:720
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -169,7 +229,7 @@ msgstr ""
 "\"apm -e 1\" (FreeBSD) を試してみて、うまくいくかどうか\n"
 "見てみてください。\n"
 
-#: battstat/battstat_applet.c:767
+#: battstat/battstat_applet.c:768
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -179,7 +239,7 @@ msgstr ""
 "エラーの修正を試みてください"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
+#: battstat/battstat_applet.c:771
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -189,7 +249,7 @@ msgstr ""
 "サスペンドコマンドの起動時にエラー発生。コマンドが \"%d\" を返しました\n"
 "このエラーの修正を試みてください"
 
-#: battstat/battstat_applet.c:778
+#: battstat/battstat_applet.c:779
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -197,16 +257,34 @@ msgstr ""
 "サスペンドコマンドが正しく設定されていません。\n"
 "設定を修正し、再挑戦してみてください。"
 
-#. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-msgid "Battery status utility"
-msgstr "電池充電モニタ"
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:808
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:809
+#: battstat/battstat_applet.c:818 cdplayer/cdplayer.c:438
+#: charpick/charpick.c:371 drivemount/drivemount.c:425 geyes/geyes.c:213
+#: gkb-new/gkb.c:593 gtik/gtik.c:714 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:44 mixer/mixer.c:766
+#: modemlights/modemlights.c:206 multiload/main.c:54
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr ""
+"Yukihiro Nakai <Nakai@abricot.co.jp>\n"
+"Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp>\n"
+"Eiichiro ITANI <emu@ceres.dti.ne.jp>\n"
+"Yuusuke Tahara <tahara@gnome.gr.jp>\n"
+"Shingo Akagaki <dora@kondara.org>\n"
+"Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
+"Akira TAGOH <tagoh@gnome.gr.jp>\n"
+"Sun G11n <gnome_int_l10n@ireland.sun.com>"
+
+#: battstat/battstat_applet.c:833
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:810
+#: battstat/battstat_applet.c:834
 msgid "This utility show the status of your laptop battery."
 msgstr "このユーティリティはラップトップの電池の状態を表示します"
 
@@ -253,8 +331,8 @@ msgid "Move towards top"
 msgstr "上に向かって移動"
 
 #: battstat/battstat_applet.glade.h:13
-msgid "Notify me when battery charge is _low"
-msgstr "電池の充電量が低いときに通知(_L)"
+msgid "Notify me when battery charge is low"
+msgstr "電池の充電が少なくなってきた場合に通知"
 
 #: battstat/battstat_applet.glade.h:14
 msgid "Notify me when battery is fully re-charged"
@@ -296,63 +374,6 @@ msgstr "警告"
 msgid "Yellow:"
 msgstr "黄:"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "電池充電モニタ"
-
-#: battstat/GNOME_BattstatApplet.server.in.h:2
-msgid "Battstat Factory"
-msgstr "電池充電モニタファクトリ"
-
-#: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Monitor a laptop's remaining power"
-msgstr "ラップトップの電池の殘りをモニタします"
-
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr "ユーティリティ"
-
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
-#: gweather/GNOME_GWeatherApplet.xml.h:1
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
-#: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "情報..."
-
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
-#: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "ヘルプ"
-
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:2
-msgid "Preferences..."
-msgstr "設定..."
-
-#: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
-msgstr "コンピュータをサスペンド..."
-
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
 msgstr "電池充電モニタ"
@@ -365,103 +386,10 @@ msgstr "充電が完了しました"
 msgid "Battery power low"
 msgstr "電池の残量少"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
-msgid "Stop"
-msgstr "停止"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
-msgid "Play / Pause"
-msgstr "再生 / 停止"
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "取り出し"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
-msgid "Previous Track"
-msgstr "前トラック"
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
-msgid "Next Track"
-msgstr "次トラック"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:161
+#: cdplayer/cdplayer.c:456 cdplayer/cdplayer.c:874
 msgid "CD Player"
 msgstr "CD プレーヤー"
-
-#: cdplayer/cdplayer.c:346
-msgid "CD Player Preferences"
-msgstr "CD プレーヤー設定"
-
-#: cdplayer/cdplayer.c:361
-msgid "Disc Image"
-msgstr "ディスク画像"
-
-#: cdplayer/cdplayer.c:361
-msgid "An image of a cd-rom disc"
-msgstr "CD-ROM ディスクの画像"
-
-#: cdplayer/cdplayer.c:363
-msgid "Device _Path:"
-msgstr "デバイスのパス(_P):"
-
-#: cdplayer/cdplayer.c:372
-msgid "Device Path"
-msgstr "デバイスのパス"
-
-#: cdplayer/cdplayer.c:372
-msgid "Set the device path here"
-msgstr "デバイスのパスをここに設定"
-
-#: cdplayer/cdplayer.c:375
-msgid "Use _Default"
-msgstr "デフォルトを使用(_D)"
-
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "CD プレーヤーアプレット"
-
-#: cdplayer/cdplayer.c:421
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 移植)"
-
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
-msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "CD プレーヤーアプレットはパネル用のシンプルな CD プレーヤーです"
-
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
-msgid "Elapsed time"
-msgstr "経過時間"
-
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
-msgid "Track number"
-msgstr "トラック番号"
-
-#: cdplayer/cdplayer.c:819
-msgid "Click this button to Stop playing the CD"
-msgstr "CD の再生を止めるにはこのボタンをクリック"
-
-#: cdplayer/cdplayer.c:821
-msgid "Click this button to Play or Pause the CD"
-msgstr "CD を再生したり一時停止したりするにはこのボタンをクリック"
-
-#: cdplayer/cdplayer.c:823
-msgid "Click this button to eject the CD"
-msgstr "CD をイジェクトするにはこのボタンをクリック"
-
-#: cdplayer/cdplayer.c:825
-msgid "Click this button to Play the previous track in the CD"
-msgstr "CD の前のトラックを再生するにはこのボタンをクリック"
-
-#: cdplayer/cdplayer.c:827
-msgid "Click this button to Play the next track in the CD"
-msgstr "CD の次のトラックを再生するにはこのボタンをクリック"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 msgid "CD Player Applet Factory"
@@ -481,30 +409,99 @@ msgid "Panel applet for playing audio CDs"
 msgstr "オーディオ CD を演奏するパネル アプレット"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-msgid "Run External CD Player"
-msgstr "別の CD プレーヤーを実行"
+msgid "_Run External CD Player"
+msgstr "別の CD プレーヤーを実行(_R)"
 
-#: charpick/charpick.c:363
-msgid "Character Picker"
-msgstr "キャラクタピッカー"
+#: cdplayer/cdplayer.c:149 cdplayer/cdplayer.c:864
+msgid "Stop"
+msgstr "停止"
 
-#: charpick/charpick.c:365
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998"
+#: cdplayer/cdplayer.c:151 cdplayer/cdplayer.c:866
+msgid "Play / Pause"
+msgstr "再生 / 停止"
 
-#: charpick/charpick.c:366
+#: cdplayer/cdplayer.c:153 cdplayer/cdplayer.c:868
+msgid "Eject"
+msgstr "取り出し"
+
+#: cdplayer/cdplayer.c:155 cdplayer/cdplayer.c:870
+msgid "Previous Track"
+msgstr "前トラック"
+
+#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:872
+msgid "Next Track"
+msgstr "次トラック"
+
+#: cdplayer/cdplayer.c:353
+msgid "CD Player Preferences"
+msgstr "CD プレーヤー設定"
+
+#: cdplayer/cdplayer.c:369
+msgid "Disc Image"
+msgstr "ディスク画像"
+
+#: cdplayer/cdplayer.c:369
+msgid "An image of a cd-rom disc"
+msgstr "CD-ROM ディスクの画像"
+
+#: cdplayer/cdplayer.c:371
+msgid "Device _Path:"
+msgstr "デバイスのパス(_P):"
+
+#: cdplayer/cdplayer.c:380
+msgid "Device Path"
+msgstr "デバイスのパス"
+
+#: cdplayer/cdplayer.c:380
+msgid "Set the device path here"
+msgstr "デバイスのパスをここに設定"
+
+#: cdplayer/cdplayer.c:383
+msgid "Use _Default"
+msgstr "デフォルトを使用(_D)"
+
+#: cdplayer/cdplayer.c:457
 msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr ""
-"私のキーボードからは打てない変わった文字を入力するためのパネルアプレットで"
-"す。GNU一般公有使用許諾書の下にリリースされています。"
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 移植)"
 
-#: charpick/charpick.c:444
-msgid "Insert special characters"
-msgstr "特殊な文字を挿入"
+#: cdplayer/cdplayer.c:459 cdplayer/cdplayer.c:875
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "CD プレーヤーアプレットはパネル用のシンプルな CD プレーヤーです"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
+#: cdplayer/cdplayer.c:741 cdplayer/cdplayer.c:752
+msgid "Elapsed time"
+msgstr "経過時間"
+
+#: cdplayer/cdplayer.c:744 cdplayer/cdplayer.c:754
+msgid "Track number"
+msgstr "トラック番号"
+
+#: cdplayer/cdplayer.c:865
+msgid "Click this button to Stop playing the CD"
+msgstr "CD の再生を止めるにはこのボタンをクリック"
+
+#: cdplayer/cdplayer.c:867
+msgid "Click this button to Play or Pause the CD"
+msgstr "CD を再生したり一時停止したりするにはこのボタンをクリック"
+
+#: cdplayer/cdplayer.c:869
+msgid "Click this button to eject the CD"
+msgstr "CD をイジェクトするにはこのボタンをクリック"
+
+#: cdplayer/cdplayer.c:871
+msgid "Click this button to Play the previous track in the CD"
+msgstr "CD の前のトラックを再生するにはこのボタンをクリック"
+
+#: cdplayer/cdplayer.c:873
+msgid "Click this button to Play the next track in the CD"
+msgstr "CD の次のトラックを再生するにはこのボタンをクリック"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:389
+#: charpick/charpick.c:480
 msgid "Character Palette"
 msgstr "キャラクタパレット"
 
@@ -515,6 +512,28 @@ msgstr "キャラクタピッカーアプレット ファクトリ"
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 msgid "Insert characters"
 msgstr "文字を挿入"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:363
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/charpick.c:391
+msgid "Copyright (C) 1998"
+msgstr "Copyright (C) 1998"
+
+#: charpick/charpick.c:392
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"私のキーボードからは打てない変わった文字を入力するためのパネルアプレットで"
+"す。GNU一般公有使用許諾書の下にリリースされています。"
+
+#: charpick/charpick.c:479
+msgid "Insert special characters"
+msgstr "特殊な文字を挿入"
 
 #: charpick/properties.c:79
 msgid "_Default character list:"
@@ -532,49 +551,15 @@ msgstr "ここにデフォルトのキャラクターリストを設定"
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
-msgstr "これらのキャラクタはパネルの起動時に表示されます。このリストに戻るには、アプレットがフォーカスされている時に<d>を押してください。"
+msgstr ""
+"これらのキャラクタはパネルの起動時に表示されます。このリストに戻るには、アプ"
+"レットがフォーカスされている時に<d>を押してください。"
 
-#: charpick/properties.c:144
+#: charpick/properties.c:152
 msgid "Character Palette Preferences"
 msgstr "キャラクタパレット設定"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
-msgstr "ドライブマウントアプレット"
-
-#: drivemount/drivemount.c:420
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 GNOME ハッカー\n"
-
-#: drivemount/drivemount.c:422
-msgid "Applet for mounting and unmounting block volumes."
-msgstr "ブロックボリュームをマスントしたりアンマウントしたりするアプレット"
-
-#: drivemount/drivemount.c:612
-msgid " mounted"
-msgstr "マウントされています"
-
-#: drivemount/drivemount.c:614
-msgid " not mounted"
-msgstr "マウントされていません"
-
-#: drivemount/drivemount.c:725
-msgid "Drive Mount Applet Warning"
-msgstr "ドライブマウントアプレットの警告"
-
-#: drivemount/drivemount.c:733
-msgid "\" reported:\n"
-msgstr "\" のお知らせ:\n"
-
-#: drivemount/drivemount.c:735
-msgid ""
-"Drivemount command failed.\n"
-"\""
-msgstr ""
-"ドライブマウントコマンドが失敗しました。\n"
-"\""
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:442
 msgid "Disk Mounter"
 msgstr "ディスク マウンタ"
 
@@ -591,96 +576,116 @@ msgid "Mount local disks and devices"
 msgstr "ローカルディスクとデバイスをマウント"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
-msgstr "参照..."
+msgid "_Browse..."
+msgstr "参照(_B)..."
 
-#: drivemount/properties.c:239
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "_Eject"
+msgstr "取り出し(_E)"
+
+#: drivemount/drivemount.c:443
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "(C) 1999-2001 GNOME ハッカー\n"
+
+#: drivemount/drivemount.c:445
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "ブロックボリュームをマスントしたりアンマウントしたりするアプレット"
+
+#: drivemount/drivemount.c:641
+msgid " mounted"
+msgstr "マウントされています"
+
+#: drivemount/drivemount.c:643
+msgid " not mounted"
+msgstr "マウントされていません"
+
+#: drivemount/drivemount.c:754
+msgid "Drive Mount Applet Warning"
+msgstr "ドライブマウントアプレットの警告"
+
+#: drivemount/drivemount.c:762
+msgid "\" reported:\n"
+msgstr "\" のお知らせ:\n"
+
+#: drivemount/drivemount.c:764
+msgid ""
+"Drivemount command failed.\n"
+"\""
+msgstr ""
+"ドライブマウントコマンドが失敗しました。\n"
+"\""
+
+#: drivemount/properties.c:251
 msgid "Disk Mounter Preferences"
 msgstr "ディスクマウンタの設定"
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:270
 msgid "_Mount point:"
 msgstr "マウントポイント(_M):"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:288
 msgid "_Update interval (seconds):"
 msgstr "更新間隔(秒)(_U):"
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:304 panel-menu/panel-menu-properties.c:108
 msgid "_Icon :"
 msgstr "アイコン(_I):"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:322
 msgid "Floppy"
 msgstr "フロッピー"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:325
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:328
 msgid "Cd Recorder"
 msgstr "CD レコーダ"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:331
 msgid "Zip Drive"
 msgstr "Zip ドライブ"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:334
 msgid "Hard Disk"
 msgstr "ハードディスク"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:337
 msgid "Jaz Drive"
 msgstr "Jaz ドライブ"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:340
 msgid "Custom"
 msgstr "カスタム"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:353
 msgid "Select icon for mounted"
 msgstr "マウント時のアイコン"
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:360
 msgid "Custom icon for moun_ted:"
 msgstr "マウント時のカスタムアイコン(_T):"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:369
 msgid "Select icon for unmounted"
 msgstr "非マウント時のアイコン"
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:376
 msgid "Custom icon for not mou_nted:"
 msgstr "非マウント時のカスタムアイコン(_N):"
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:386
 msgid "_Scale size to panel"
 msgstr "パネルの大きさに合わせる(_S)"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:393
 msgid "_Eject on unmount"
 msgstr "アンマウント時にイジェクト(_E)"
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:400
 msgid "Use _automount friendly status test"
 msgstr "オートマウント向きの状態テストを使用(_A)"
-
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "目玉"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "GNOME パネル用のキュートなお目々"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -690,7 +695,8 @@ msgstr "パネル用の目"
 msgid "Amusements"
 msgstr "娯楽"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:231 geyes/geyes.c:416
+#: geyes/geyes.c:418
 msgid "Geyes"
 msgstr "目玉"
 
@@ -698,15 +704,43 @@ msgstr "目玉"
 msgid "Geyes Applet Factory"
 msgstr "G目玉アプレット ファクトリ"
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:232
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:233
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "GNOME パネル用のキュートなお目々"
+
+#: geyes/geyes.c:419
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "目玉がマウスのポインタの方向を向きます"
+
+#: geyes/themes.c:215
 msgid "Geyes Preferences"
 msgstr "目玉の設定"
 
-#: geyes/themes.c:222
+#: geyes/themes.c:229
 msgid "T_heme Name"
 msgstr "テーマ名(_H)"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Change the keyboard layout"
+msgstr "キーボードのレイアウトを変更"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+msgid "GKB Factory"
+msgstr "GKB ファクトリ"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:604
+msgid "Keyboard Layout Switcher"
+msgstr "キーボード配列切替"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "キーボード配列切替アプレットを生成"
+
+#: gkb-new/gkb.c:112
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -714,46 +748,17 @@ msgstr ""
 "レイアウトを切り替えるにはホットキーを押してください。ホットキーは設定ダイア"
 "ログで設定できます。"
 
-#: gkb-new/gkb.c:404
-#, c-format
-msgid "name_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:408
-#, c-format
-msgid "label_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:412
-#, c-format
-msgid "country_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:416
-#, c-format
-msgid "lang_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:424
-#, c-format
-msgid "command_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "GNOMEキーボード切替アプレット"
-
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:606
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:607
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -770,25 +775,9 @@ msgstr ""
 "hu> の協力と、KevinV といった人たちの助力に感謝します。\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:624
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB ホームページ (http://projects.gnome.hu/gkb)"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr "キーボードのレイアウトを変更"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr "GKB ファクトリ"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-msgid "Keyboard Layout Switcher"
-msgstr "キーボード配列切替"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-msgid "Produces keyboard layout switcher applets."
-msgstr "キーボード配列切替アプレットを生成"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -802,396 +791,354 @@ msgstr "キーを押すか、ESC キーを押してキャンセル"
 msgid "Keyboards (select and press add)"
 msgstr "キーボード (選択して追加を押して)"
 
-#: gkb-new/prop-add.c:367
+#: gkb-new/prop-add.c:372
 msgid "Select Keyboard"
 msgstr "キーボードの選択"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "普通"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "大"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "国旗"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "ラベル"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "国旗とラベル"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr "表示"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-msgid "_Appearance: "
-msgstr "外観(_A): "
-
-#: gkb-new/prop.c:305
-msgid "Applet _size: "
-msgstr "アプレットサイズ(_S): "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "配列を切りかえるホットキー"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "ホットキーを取得"
-
-#. Create property box
-#: gkb-new/prop.c:405
-msgid "Keyboard Layout Switcher Preferences"
-msgstr "キーボード配列切替の設定"
-
-#: gkb-new/prop.c:419
-msgid "_Keymaps"
-msgstr "キーマップ(_K)"
-
-#: gkb-new/prop.c:431
-msgid "_Options"
-msgstr "オプション(_O)"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:398 gtik/gtik.c:1137
 msgid "_Add"
 msgstr "追加(_A)"
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:399
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:400
 msgid "_Up"
 msgstr "上(_U)"
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:401
 msgid "Dow_n"
 msgstr "下(_N)"
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:402
 msgid "_Delete"
 msgstr "削除(_D)"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:199
 msgid "Armenia"
 msgstr "アルメニア"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:200
 msgid "Australia"
 msgstr "オーストラリア"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:201
 msgid "Austria"
 msgstr "オーストリア"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:202
 msgid "Belgium"
 msgstr "ベルギー"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:203
 msgid "Brazil"
 msgstr "ブラジル"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:204
 msgid "Bulgaria"
 msgstr "ブルガリア"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:205
 msgid "Canada"
 msgstr "カナダ"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:206
 msgid "Caribic"
 msgstr "カリブ"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:207
 msgid "France"
 msgstr "フランス"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:208
 msgid "Georgia"
 msgstr "グルジア"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:209
 msgid "Germany"
 msgstr "ドイツ"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:210
 msgid "Great Britain"
 msgstr "グレートブリテン"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:211
+msgid "Greece"
+msgstr "ギリシア"
+
+#: gkb-new/prop-map.c:212
 msgid "Hungary"
 msgstr "ハンガリー"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:213
 msgid "Jamaica"
 msgstr "ジャマイカ"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:214
 msgid "New Zealand"
 msgstr "ニュージーランド"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:215
 msgid "Norway"
 msgstr "ノルウェー"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:216
 msgid "Poland"
 msgstr "ポーランド"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:217
 msgid "Portugal"
 msgstr "ポルトガル"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:218
 msgid "Russia"
 msgstr "ロシア"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:219
 msgid "Slovak Republic"
 msgstr "スロバキア共和国"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:220
 msgid "Slovenia"
 msgstr "スロベニア"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:221
 msgid "South Africa"
 msgstr "南アフリカ"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:222
 msgid "Spain"
 msgstr "スペイン"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:223
 msgid "Sweden"
 msgstr "スウェーデン"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:224
 msgid "Switzerland"
 msgstr "スイス"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:225
 msgid "Thailand"
 msgstr "タイ"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:226
 msgid "Turkey"
 msgstr "トルコ"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:227
 msgid "United Kingdom"
 msgstr "イギリス"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:228
 msgid "United States"
 msgstr "アメリカ"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:229
 msgid "Yugoslavia"
 msgstr "ユーゴスラビア"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:249
 msgid "Armenian"
 msgstr "アルメニア"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:250
 msgid "Basque"
 msgstr "バスク"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:251
 msgid "Bulgarian"
 msgstr "ブルガリア"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:252
 msgid "Dutch"
 msgstr "オランダ"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:253
 msgid "English"
 msgstr "英語"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:254
 msgid "French"
 msgstr "フランス語"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:255
 msgid "Georgian"
 msgstr "グルジア語"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:256
 msgid "German"
 msgstr "ドイツ語"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:257
+msgid "Greek"
+msgstr "ギリシャ語"
+
+#: gkb-new/prop-map.c:258
 msgid "Hungarian"
 msgstr "ハンガリー語"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:259
 msgid "Norwegian"
 msgstr "ノルウェー語"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:260
 msgid "Polish"
 msgstr "ポーランド語"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:261
 msgid "Portuguese"
 msgstr "ポルトガル語"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:262
 msgid "Russian"
 msgstr "ロシア語"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:263
 msgid "Slovak"
 msgstr "スロバキア語"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:264
 msgid "Slovenian"
 msgstr "スロベニア語"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:265
 msgid "Swedish"
 msgstr "スウェーデン語"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:266
 msgid "Thai"
 msgstr "タイ語"
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:267
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:268
 msgid "Wallon"
 msgstr "ワロン語"
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:269
 msgid "Yugoslavian"
 msgstr "ユーゴスラビア語"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:287
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:288
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:289
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:290
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:291
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:292
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:293
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:313
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:314
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
+msgid "iso-8859-7"
+msgstr "iso-8859-7"
+
+#: gkb-new/prop-map.c:316
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:317
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:318
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:319
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:320
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:321
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:322
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:340
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
-msgid "sun"
-msgstr "sun"
+#: gkb-new/prop-map.c:341
+msgid "Sun"
+msgstr "Sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:342
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:343
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:344
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:345
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
+#: gkb-new/prop-map.c:582
 msgid "Edit Keyboard"
 msgstr "キーボードの編集"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
+#: gkb-new/prop-map.c:610 panel-menu/panel-menu-directory.c:668
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "名前(_N):"
 
-#: gkb-new/prop-map.c:605
+#: gkb-new/prop-map.c:614
 msgid "_Label:"
 msgstr "ラベル(_L):"
 
-#: gkb-new/prop-map.c:609
+#: gkb-new/prop-map.c:618
 msgid "Lan_guage:"
 msgstr "言語(_G):"
 
-#: gkb-new/prop-map.c:615
+#: gkb-new/prop-map.c:624
 msgid "Count_ry:"
 msgstr "国(_R):"
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:631
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1199,23 +1146,23 @@ msgstr ""
 "国旗\n"
 "画像データ"
 
-#: gkb-new/prop-map.c:626
+#: gkb-new/prop-map.c:635
 msgid "Arc_hitecture:"
 msgstr "アーキテクチャ(_H):"
 
-#: gkb-new/prop-map.c:632
+#: gkb-new/prop-map.c:641
 msgid "_Type:"
 msgstr "種別(_T):"
 
-#: gkb-new/prop-map.c:638
+#: gkb-new/prop-map.c:647
 msgid "Code_page:"
 msgstr "コードページ(_P):"
 
-#: gkb-new/prop-map.c:645
+#: gkb-new/prop-map.c:654
 msgid "Co_mmand:"
 msgstr "コマンド(_M):"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:661
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1226,6 +1173,60 @@ msgstr ""
 "* xmodmap /full/path/xmodmap.jp\n"
 "* gkb__xmmap jp\n"
 "* setxkbmap jp"
+
+#: gkb-new/prop.c:130 gkb-new/prop.c:198
+msgid "Normal"
+msgstr "普通"
+
+#: gkb-new/prop.c:131 gkb-new/prop.c:202
+msgid "Big"
+msgstr "大"
+
+#: gkb-new/prop.c:149 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "国旗"
+
+#: gkb-new/prop.c:150 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "ラベル"
+
+#: gkb-new/prop.c:151 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "国旗とラベル"
+
+#: gkb-new/prop.c:287 modemlights/properties.c:382
+msgid "Display"
+msgstr "表示"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:307
+msgid "_Appearance: "
+msgstr "外観(_A): "
+
+#: gkb-new/prop.c:314
+msgid "Applet _size: "
+msgstr "アプレットサイズ(_S): "
+
+#: gkb-new/prop.c:340
+msgid "Hotkey for switching between layouts"
+msgstr "配列を切りかえるホットキー"
+
+#: gkb-new/prop.c:352
+msgid "Grab hotkey"
+msgstr "ホットキーを取得"
+
+#. Create property box
+#: gkb-new/prop.c:412
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "キーボード配列切替の設定"
+
+#: gkb-new/prop.c:427
+msgid "_Keymaps"
+msgstr "キーマップ(_K)"
+
+#: gkb-new/prop.c:439
+msgid "_Options"
+msgstr "オプション(_O)"
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
@@ -1244,23 +1245,19 @@ msgstr "株価をリアルタイム表示"
 msgid "Gtik Applet Factory"
 msgstr "Gtik アプレットファクトリ"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:730
 msgid "Stock Ticker"
 msgstr "ストックティッカー"
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
-msgstr "再読み込み"
+#: gtik/GNOME_GtikApplet.xml.h:4
+msgid "_Refresh"
+msgstr "再読み込み(_R)"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr "データが利用可能でないか、プロパティが設定されていません"
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr "GNOME ストックティッカー"
-
-#: gtik/gtik.c:670
+#: gtik/gtik.c:732
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1272,114 +1269,105 @@ msgstr ""
 "全に無保証です* GNOME ストックティッ カーを投資判断に使わないようにしてくださ"
 "い。単に情報を表示する 目的のためのものです。"
 
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1126
 msgid "_New Symbol:"
 msgstr "新規シンボル(_N):"
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1148
 msgid "_Remove Selected"
 msgstr "選択したものを削除(_R)"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-msgid "_Use HTTP proxy"
-msgstr "HTTP プロクシを使う(_U)"
-
-#: gtik/gtik.c:1232
-msgid "_Location :"
-msgstr "場所(_L) :"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr "ポート(_O) :"
-
-#: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr "プロクシにはユーザ名とパスワードが必要(_X)"
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-msgid "Us_ername:"
-msgstr "ユーザ名(_E):"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-msgid "Pass_word:"
-msgstr "パスワード(_W):"
-
-#: gtik/gtik.c:1357
+#: gtik/gtik.c:1224
 msgid "Stock Ticker Preferences"
 msgstr "ストックティッカーの設定"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1247
 msgid "Update Fre_quency in minutes:"
 msgstr "更新頻度(分単位)(_Q):"
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1265
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr " 下のボックスにシンボルを\"+\"で区切って入力してください。"
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1272
 msgid "Displa_y only symbols and price"
 msgstr "シンボルと価格のみを表示(_Y)"
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1275
 msgid "Scroll _left to right"
 msgstr "左から右へスクロール(_L)"
 
-#: gtik/gtik.c:1412
-msgid "Display a_rrows instead of -/+"
-msgstr "- や + の代わりに矢印を表示(_R)"
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1278
 msgid "_Enable scroll buttons"
 msgstr "スクロールボタンを使う(_E)"
 
-#. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1302
 msgid "+ C_olor"
 msgstr "+ の色(_O)"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1322
 msgid "- Colo_r"
 msgstr "- の色(_R)"
 
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1339
+msgid "_Unchanged Color"
+msgstr "変化無しの色(_U)"
+
+#: gtik/gtik.c:1356
+msgid "Back_ground Color"
+msgstr "背景色(_G)"
+
+#: gtik/gtik.c:1378
 msgid "Stock Sy_mbol:"
 msgstr "ストックシンボル(_M):"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1392
 msgid "Stock C_hange:"
 msgstr "ストック変更(_H):"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1416
 msgid "_Symbols"
 msgstr "シンボル(_S)"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1418
 msgid "_Behavior"
 msgstr "振舞い(_B)"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1420
 msgid "_Appearance"
 msgstr "外観(_A)"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-msgid "_Proxy"
-msgstr "プロクシ(_P)"
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1494
 msgid "Skip forward"
 msgstr "前へスキップ"
 
-#: gtik/gtik.c:1576
-msgid "Skip backword"
+#: gtik/gtik.c:1495
+msgid "Skip backward"
 msgstr "後へスキップ"
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1496
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+"株価ティッカー\n"
+"株価をリアルタイム表示"
+
+#: gtik/gtik.c:1683
 msgid "(No"
 msgstr "(いいえ"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1684
 msgid "Change "
 msgstr "変更 "
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+msgid "_Forecast"
+msgstr "予報(_F)"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:5
+msgid "_Update"
+msgstr "更新(_U)"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
@@ -1394,26 +1382,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "現在の天気概況と予報をモニタ"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr "天気概況"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "予報"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "更新"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "お天気 GNOME"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1423,83 +1400,87 @@ msgstr ""
 "\n"
 "各地の天気の状況をモニタするアプレットです。"
 
+#: gweather/gweather-applet.c:196
+msgid "GNOME Weather"
+msgstr "お天気 GNOME"
+
 #: gweather/gweather-applet.c:324
 msgid "Updating..."
 msgstr "更新中..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "予報"
+
+#: gweather/gweather-dialog.c:108
 msgid "Location:"
 msgstr "場所:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:116
 msgid "Update:"
 msgstr "時刻:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:124
 msgid "Conditions:"
 msgstr "状況:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:132
 msgid "Sky:"
 msgstr "空模様:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "気温:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:148
 msgid "Dew point:"
 msgstr "結露点:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Humidity:"
 msgstr "湿度:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:164
 msgid "Wind:"
 msgstr "風:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:172
 msgid "Pressure:"
 msgstr "気圧:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:180
 msgid "Visibility:"
 msgstr "視程:"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:279
 msgid "C_urrent conditions"
 msgstr "今の天気(_U)"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "ForeCast Report"
 msgstr "天気概況"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr "天気予報の詳細を見る"
 
-#: gweather/gweather-dialog.c:300
-msgid "_Forecast"
-msgstr "予報(_F)"
-
-#: gweather/gweather-dialog.c:332
+#: gweather/gweather-dialog.c:327
 msgid "_Visit Weather.com"
 msgstr "Weather.com を見よう(_V)"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr "URL リンクボタン"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "Click to Enter Weather.com"
 msgstr "クリックして Weather.com へ"
 
-#: gweather/gweather-dialog.c:341
+#: gweather/gweather-dialog.c:336
 msgid "_Radar map"
 msgstr "お天気レーダー(_R)"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:408
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1509,7 +1490,7 @@ msgstr ""
 "州の予報を試してみて下さい。なお IWIN 予報は\n"
 "アメリカの町以外では利用できません。"
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:410
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1520,121 +1501,81 @@ msgstr ""
 "アメリカの町以外では利用できません。"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:107
 msgid "Location view"
 msgstr "場所表示"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:107
 msgid "Select Location from the list"
 msgstr "一覧から場所を選択"
 
-#: gweather/gweather-pref.c:126
-msgid "URL Entry"
-msgstr "URL エントリ"
-
-#: gweather/gweather-pref.c:126
-msgid "Enter the Location"
-msgstr "場所を入力"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr "ポートエントリ"
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr "ポート番号を入力"
-
-#: gweather/gweather-pref.c:128
-msgid "User Entry"
-msgstr "ユーザエントリ"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr "ユーザ名を入力"
-
-#: gweather/gweather-pref.c:129
-msgid "Password Entry"
-msgstr "パスワードエントリ"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr "パスワードを入力"
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 msgid "Update spin button"
 msgstr "更新スピンボタン"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 msgid "Spinbutton for updating"
 msgstr "更新用スピンボタン"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Address Entry"
 msgstr "アドレスエントリ"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Enter the URL"
 msgstr "URL を入力"
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:559
 msgid "Weather Preferences"
 msgstr "お天気 GNOME のプロパティ"
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:606
 msgid "_Location"
 msgstr "位置(_L)"
 
-#: gweather/gweather-pref.c:775
-msgid "Locat_ion :"
-msgstr "場所(_I) :"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr "プロクシにはユーザ名とパスワードが必要(_X)"
-
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:637
 msgid "_Automatically update every"
 msgstr "自動的に更新(_A)"
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:643
 msgid "Use _metric system units"
 msgstr "メートル表記を使用(_M)"
 
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:649
 msgid "Enable _detailed forecast"
 msgstr "詳しい予報を有効にする(_D)"
 
-#: gweather/gweather-pref.c:891
+#: gweather/gweather-pref.c:656
 msgid "Enable _radar map"
 msgstr "レーダーマップを有効にする(_R)"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:662
 msgid "Use cus_tom address for radar map"
 msgstr "レーダーマップに特別なアドレスを使用(_T)"
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:673
 msgid "A_ddress :"
 msgstr "アドレス(_D) :"
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:685
 msgid "Updates"
 msgstr "更新"
 
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:691
 msgid "_Automatically update every "
 msgstr "自動的に更新(_A)"
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:711
 msgid "minute(s)"
 msgstr "秒"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:722
 msgid "Miscellaneous"
 msgstr "その他"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
-#: modemlights/properties.c:409
+#: gweather/gweather-pref.c:740 mini-commander/src/preferences.c:971
+#: modemlights/properties.c:417
 msgid "_General"
 msgstr "一般(_G)"
 
@@ -2812,60 +2753,70 @@ msgstr "高い塵旋風"
 msgid "Drifting dust whirls"
 msgstr "吹き寄せる塵旋風"
 
-#: gweather/weather.c:824 gweather/weather.c:862 gweather/weather.c:1431
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
 msgid "Failed to get METAR data.\n"
 msgstr "METAR データが取得できません。\n"
 
-#: gweather/weather.c:854 gweather/weather.c:882 gweather/weather.c:1077
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
 msgstr "位置が不明の天気情報"
 
-#: gweather/weather.c:1045
+#: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
 msgstr "IWIN データを取得できません。\n"
 
 #. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1087
+#: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
 msgstr "IWIN 予報データを取得できません。\n"
 
-#: gweather/weather.c:1286
+#: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
 msgstr "Met Office のデータを取得できません。\n"
 
-#: gweather/weather.c:1318
+#: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Met Office の予報データを取得できません。\n"
 
-#: gweather/weather.c:1461
+#: gweather/weather.c:1466
 msgid "Failed to get radar map image.\n"
 msgstr "レーダーマップの画像を取得できません。\n"
 
-#: gweather/weather.c:1754
+#: gweather/weather.c:1769
 msgid "%a, %b %d / %H:%M"
 msgstr "%m月%d日(%a) / %H:%M"
 
-#: gweather/weather.c:1758
+#: gweather/weather.c:1773
 msgid "Unknown observation time"
 msgstr "不明な観測時刻"
 
-#: gweather/weather.c:1818
+#: gweather/weather.c:1833
 msgid "Calm"
 msgstr "凪"
 
-#: gweather/weather.c:1844
+#: gweather/weather.c:1859
 msgid "Unknown"
 msgstr "謎"
 
-#: gweather/weather.c:1878
+#: gweather/weather.c:1893
 msgid "Retrieval failed"
 msgstr "取得に失敗"
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
-msgstr "ミニコマンダー・アプレット"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/about.c:62
+#: mini-commander/src/mini-commander_applet.c:316
+msgid "Command Line"
+msgstr "コマンドライン"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Mini-Commander"
+msgstr "ミニコマンダー"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "ミニコマンダー・アプレット ファクトリ"
+
+#: mini-commander/src/about.c:65
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2922,25 +2873,16 @@ msgstr "起動中..."
 msgid "autocompleted"
 msgstr "自動補完"
 
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr "履歴リストがありません"
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "コマンド履歴"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:514
 msgid "Start program"
 msgstr "起動プログラム"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:553
 msgid "Command line"
 msgstr "コマンドライン"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:554
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "ここにコマンドを入力すると Gnome がそれを実行します"
 
@@ -2951,19 +2893,6 @@ msgstr "fork エラー"
 #: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "子プロセスが終了しました"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-msgid "Command Line"
-msgstr "コマンドライン"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
-msgstr "ミニコマンダー"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-msgid "MiniCommander Applet Factory"
-msgstr "ミニコマンダー・アプレット ファクトリ"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -2985,127 +2914,132 @@ msgstr "向きが変わりました"
 msgid "size changed"
 msgstr "サイズが変わりました"
 
-#: mini-commander/src/mini-commander_applet.c:287
 #: mini-commander/src/mini-commander_applet.c:290
+#: mini-commander/src/mini-commander_applet.c:293
 msgid "Browser"
 msgstr "ブラウザ"
 
-#: mini-commander/src/mini-commander_applet.c:291
+#: mini-commander/src/mini-commander_applet.c:294
 msgid "Click this button to start the browser"
 msgstr "ブラウザを起動するにはこのボタンをクリック"
 
-#: mini-commander/src/mini-commander_applet.c:305
 #: mini-commander/src/mini-commander_applet.c:308
+#: mini-commander/src/mini-commander_applet.c:311
 msgid "History"
 msgstr "履歴"
 
-#: mini-commander/src/mini-commander_applet.c:309
+#: mini-commander/src/mini-commander_applet.c:312
 msgid "Click this button for the list of previous commands"
 msgstr "前のコマンドの一覧を見るにはこのボタンをクリック"
 
-#: mini-commander/src/mini-commander_applet.c:310
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Mini-Commander applet"
 msgstr "ミニコマンダー・アプレット"
 
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:314
 msgid "This applet adds a command line to the panel"
 msgstr "このアプレットでパネルにコマンドラインが追加されます"
 
-#: mini-commander/src/mini-commander_applet.c:443
+#: mini-commander/src/mini-commander_applet.c:448
 msgid "ready..."
 msgstr "準備中..."
 
-#: mini-commander/src/preferences.c:685
+#: mini-commander/src/preferences.c:702
 msgid "Command Line Preferences"
 msgstr "コマンドラインの設定"
 
-#: mini-commander/src/preferences.c:701
+#: mini-commander/src/preferences.c:719
 msgid "Clock"
 msgstr "時計"
 
 #. show time check box
-#: mini-commander/src/preferences.c:709
+#: mini-commander/src/preferences.c:727
 msgid "Show time"
 msgstr "時間を表示"
 
 #. show date check box
-#: mini-commander/src/preferences.c:716
+#: mini-commander/src/preferences.c:734
 msgid "Show date"
 msgstr "日付を表示"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:724
+#: mini-commander/src/preferences.c:742
 msgid "Appearance"
 msgstr "外観"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:732
+#: mini-commander/src/preferences.c:750
 msgid "Show han_dle"
 msgstr "把手を表示(_D)"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:739
+#: mini-commander/src/preferences.c:757
 msgid "Show fram_e"
 msgstr "枠を表示(_E)"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:748
+#: mini-commander/src/preferences.c:766
 msgid "Autocompletion"
 msgstr "自動補完"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:756
+#: mini-commander/src/preferences.c:774
 msgid "Enable _history based autocompletion"
 msgstr "履歴による自動補完を使用する(_H)"
 
 #. Size
-#: mini-commander/src/preferences.c:763
+#: mini-commander/src/preferences.c:781
 msgid "Size"
 msgstr "サイズ"
 
 #. applet width
-#: mini-commander/src/preferences.c:775
+#: mini-commander/src/preferences.c:793
 msgid "Applet _width:"
 msgstr "アプレットの幅(_W):"
 
 #. applet height
-#: mini-commander/src/preferences.c:809
+#: mini-commander/src/preferences.c:827
 msgid "Applet height:"
 msgstr "アプレットの高さ;"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:831
+#: mini-commander/src/preferences.c:849
 msgid "Command line height:"
 msgstr "コマンド行高さ:"
 
 #. Color
-#: mini-commander/src/preferences.c:866 multiload/properties.c:363
+#: mini-commander/src/preferences.c:884 multiload/properties.c:363
 msgid "Colors"
 msgstr "カラー"
 
+#. default bg and fg theme
+#: mini-commander/src/preferences.c:894
+msgid "_Use default theme colors"
+msgstr "テーマのデフォルトの色を使う(_U)"
+
 #. fg
-#: mini-commander/src/preferences.c:888
+#: mini-commander/src/preferences.c:906
 msgid "Command line _foreground:"
 msgstr "コマンド行前背色(_F):"
 
 #. bg
-#: mini-commander/src/preferences.c:922
+#: mini-commander/src/preferences.c:940
 msgid "Command line _background:"
 msgstr "コマンド行背景色(_B):"
 
 #. prefix
-#: mini-commander/src/preferences.c:982
+#: mini-commander/src/preferences.c:1000
 #, c-format
 msgid "Regex _%.2d:"
 msgstr "正規表現 %.2d(_%%):"
 
 #. command
-#: mini-commander/src/preferences.c:1002
+#: mini-commander/src/preferences.c:1020
 #, c-format
 msgid "   Macro _%.2d:"
 msgstr "  マクロ %.2d:(_%%)"
 
-#: mini-commander/src/preferences.c:1022
+#: mini-commander/src/preferences.c:1040
 msgid "_Macros"
 msgstr "マクロ(_M)"
 
@@ -3113,23 +3047,23 @@ msgstr "マクロ(_M)"
 msgid "Adjust the sound volume"
 msgstr "音量調整のアプレット"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:777
 msgid "Volume Control"
 msgstr "ボリュームコントロール"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
-msgstr "無音"
+msgid "_Mute"
+msgstr "無音(_M)"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "オーディオミキサを実行..."
+msgid "_Run Volume Control..."
+msgstr "ボリュームコントロールを実行(_R)..."
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:132
 msgid "Volume Control (muted)"
 msgstr "ボリュームコントロール (消音)"
 
-#: mixer/mixer.c:183
+#: mixer/mixer.c:184
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3137,39 +3071,39 @@ msgstr ""
 "注意: この gmix は、異なるバージョンの soundcard.h で\n"
 "コンパイルされています。\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:195
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "ミキサーデバイス %s の利用可能なチャンネルの検索が失敗しました\n"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr ""
 "警告： ミキサーにボリュームのチャンネルがありません - PCM を代わりに使いま"
 "す。\n"
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:205
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "ミキサーデバイス %s にはボリュームも PCM チャンネルもありません。\n"
 
-#: mixer/mixer.c:516
+#: mixer/mixer.c:531
 msgid "Volume Controller"
 msgstr "ボリュームコントローラ"
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:532
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "音量を変更するには上下の矢印キーを使ってください"
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:778
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:779
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "このボリュームコントロールでデスクトップの音量を設定できます"
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:958
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "このボリュームコントロールでデスクトップの音量を設定できます"
 
@@ -3178,14 +3112,11 @@ msgid "Internet"
 msgstr "インターネット"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "モデムモニタ"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "モデムライト・アプレット"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:226
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3195,7 +3126,7 @@ msgstr ""
 "モデムステータスのインジケータです。\n"
 "ライトは上または左から順に、送信と受信を表します。"
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:555
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3203,167 +3134,163 @@ msgstr ""
 "現在接続されています。\n"
 "切断しますか?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:570
 msgid "Do you want to connect?"
 msgstr "接続しますか?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:598
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb 受信 / %#.1fMb 送信 / 時間: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:603
 msgid "not connected"
 msgstr "接続されていません。"
 
-#: modemlights/properties.c:311
+#: modemlights/properties.c:319
 msgid "Modem Lights Preferences"
 msgstr "モデムライトの設定"
 
-#: modemlights/properties.c:323
+#: modemlights/properties.c:331
 msgid "Connecting"
 msgstr "接続中"
 
-#: modemlights/properties.c:337
+#: modemlights/properties.c:345
 msgid "Co_nnect command:"
 msgstr "接続コマンド(_N):"
 
-#: modemlights/properties.c:354
+#: modemlights/properties.c:362
 msgid "_Disconnect command:"
 msgstr "切断コマンド(_D):"
 
 #. confirmation checkbox
-#: modemlights/properties.c:367
+#: modemlights/properties.c:375
 msgid "Con_firm connection"
 msgstr "接続の確認(_F)"
 
-#: modemlights/properties.c:388
+#: modemlights/properties.c:396
 msgid "U_pdates per second"
 msgstr "更新間隔(秒)(_P)"
 
 #. extra info checkbox
-#: modemlights/properties.c:402
+#: modemlights/properties.c:410
 msgid "Sho_w connect time and throughput"
 msgstr "接続時間とスループットを表示する(_W)"
 
-#: modemlights/properties.c:419
+#: modemlights/properties.c:427
 msgid "Receive data"
 msgstr "データを受信"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:429
 msgid "_Foreground"
 msgstr "前景色(_F)"
 
-#: modemlights/properties.c:422
+#: modemlights/properties.c:430
 msgid "_Background"
 msgstr "背景色(_B)"
 
-#: modemlights/properties.c:424
+#: modemlights/properties.c:432
 msgid "Send data"
 msgstr "データ送信"
 
-#: modemlights/properties.c:426
+#: modemlights/properties.c:434
 msgid "Foregroun_d"
 msgstr "前景色(_D)"
 
-#: modemlights/properties.c:427
+#: modemlights/properties.c:435
 msgid "Backg_round"
 msgstr "背景色(_R)"
 
-#: modemlights/properties.c:429
+#: modemlights/properties.c:437
 msgid "Connection status"
 msgstr "接続状況"
 
-#: modemlights/properties.c:431
+#: modemlights/properties.c:439
 msgid "Co_nnected"
 msgstr "接続しました(_N)"
 
-#: modemlights/properties.c:432
+#: modemlights/properties.c:440
 msgid "No_t connected"
 msgstr "接続していません(_T)"
 
-#: modemlights/properties.c:433
+#: modemlights/properties.c:441
 msgid "A_waiting connection"
 msgstr "接続中(_W)"
 
-#: modemlights/properties.c:436
+#: modemlights/properties.c:444
 msgid "B_link"
 msgstr "点滅(_L)"
 
-#: modemlights/properties.c:443
+#: modemlights/properties.c:451
 msgid "Text"
 msgstr "文字"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:453
 msgid "For_eground"
 msgstr "前景色(_E)"
 
-#: modemlights/properties.c:446
+#: modemlights/properties.c:454
 msgid "Bac_kground"
 msgstr "背景色(_K)"
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:455
 msgid "O_utline"
 msgstr "アウトライン(_U)"
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:457
 msgid "C_olors"
 msgstr "カラー(_O)"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:466
 msgid "Modem options"
 msgstr "モデムオプション"
 
-#: modemlights/properties.c:472
+#: modemlights/properties.c:480
 msgid "_Modem lock file:"
 msgstr "モデムロックファイル(_M):"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:492
 msgid "_Verify owner of lock file"
 msgstr "ロックファイルの所有者を確認する(_V)"
 
-#: modemlights/properties.c:496
+#: modemlights/properties.c:504
 msgid "_Device:"
 msgstr "デバイス(_D):"
 
 #. ISDN checkbox
-#: modemlights/properties.c:509
+#: modemlights/properties.c:517
 msgid "U_se ISDN"
 msgstr "ISDN を使用する(_S)"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:537
 msgid "Set options as default"
 msgstr "オプションをデフォルトに設定"
 
-#: modemlights/properties.c:535
+#: modemlights/properties.c:543
 msgid "_Advanced"
 msgstr "上級(_A)"
-
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "CPU 負荷"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 msgid "A system load indicator"
 msgstr "システム負荷表示"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
 msgid "System Monitor"
 msgstr "システムモニタ"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-msgid "Run detailed system monitor"
-msgstr "詳細なシステムモニタを実行"
+msgid "_Run detailed system monitor"
+msgstr "詳細なシステムモニタを実行(_R)"
+
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "CPU 負荷"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "負荷平均"
 
-#: multiload/main.c:53
-msgid "System Monitor Applet"
-msgstr "システムモニタ・アプレット"
-
-#: multiload/main.c:55
+#: multiload/main.c:77
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3375,27 +3302,27 @@ msgstr ""
 "CPU、RAM、スワップファイルの使用状況、および、ネットワーク負荷のグラフを\n"
 "表示できるシステム負荷モニタです"
 
-#: multiload/main.c:177
+#: multiload/main.c:203
 msgid "Processor"
 msgstr "プロセッサ"
 
-#: multiload/main.c:179
+#: multiload/main.c:205
 msgid "Memory"
 msgstr "メモリ"
 
-#: multiload/main.c:181
+#: multiload/main.c:207
 msgid "Network"
 msgstr "ネットワーク"
 
-#: multiload/main.c:183
+#: multiload/main.c:209
 msgid "Swap File"
 msgstr "スワップファイル"
 
-#: multiload/main.c:185
+#: multiload/main.c:211
 msgid "Resource"
 msgstr "リソース"
 
-#: multiload/main.c:197
+#: multiload/main.c:223
 #, c-format
 msgid ""
 "%s:\n"
@@ -3404,11 +3331,11 @@ msgstr ""
 "%s:\n"
 "%d%% 使用"
 
-#: multiload/memload.c:39
+#: multiload/memload.c:50
 msgid "Memory Load"
 msgstr "メモリ負荷"
 
-#: multiload/netload.c:38
+#: multiload/netload.c:49
 msgid "Net Load"
 msgstr "ネット負荷"
 
@@ -3538,7 +3465,7 @@ msgstr "未使用(_F)"
 msgid "System Monitor Preferences"
 msgstr "システムモニタの設定"
 
-#: multiload/swapload.c:39
+#: multiload/swapload.c:51
 msgid "Swap Load"
 msgstr "スワップ負荷"
 
@@ -3584,43 +3511,41 @@ msgstr "ドキュメント"
 msgid "Applications"
 msgstr "アプリケーション"
 
-#: panel-menu/panel-menu.c:684
-msgid "PanelMenu Applet"
-msgstr "パネルメニュー アプレット"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr "(C) 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu-common.c:727
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
-msgstr "パネルメニューアプレットでパネルに自由にメニューバーを配置できます。"
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
+msgstr ""
+"このエントリを削除しても GNOME パネルからメニューバーアプレットが削除されるわ"
+"けではありません"
 
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:515
 msgid "Create directory item..."
 msgstr "ディレクトリアイウテムの作成..."
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:523
 msgid "Home"
 msgstr "ホーム"
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:594
 msgid "Edit directory item..."
 msgstr "ディレクトリの項目を編集..."
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:680 panel-menu/panel-menu-path.c:728
 msgid "_Path:"
 msgstr "パス(_P):"
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:688
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:698
 msgid "_Depth level:"
 msgstr "深さレベル(_D):"
+
+#: panel-menu/panel-menu-directory.c:795
+msgid "Path specified is currently not a valid directory."
+msgstr "指定されたパスは現在、有効なディレクトリではありません"
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3675,23 +3600,23 @@ msgstr "配置"
 msgid "_Applications Menu"
 msgstr "アプリケーションメニュー(_A)"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:114
 msgid "Select an icon for the Applications menu"
 msgstr "アプリケーションメニューのアイコンを選択してください"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:131
 msgid "_Preferences Menu"
 msgstr "設定メニュー(_P)"
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:142
 msgid "Ac_tions Menu"
 msgstr "アクションメニュー(_T)"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:153
 msgid "_Windows Menu"
 msgstr "ウインドウ メニュー(_W)"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:164
 msgid "W_orkspaces Menu"
 msgstr "ワークスペース メニュー(_O)"
 
@@ -3702,6 +3627,117 @@ msgstr "ウインドウ"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "ワークスペース"
+
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr "メニューバー"
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr "(C) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:692
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr "メニューバーでパネルにお好みのメニューバーを表示できます"
+
+#~ msgid "Battery status utility"
+#~ msgstr "電池充電モニタ"
+
+#~ msgid "CD Player Applet"
+#~ msgstr "CD プレーヤーアプレット"
+
+#~ msgid "Character Picker"
+#~ msgstr "キャラクタピッカー"
+
+#~ msgid "Drive Mount Applet"
+#~ msgstr "ドライブマウントアプレット"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "gEyes"
+#~ msgstr "目玉"
+
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "GNOMEキーボード切替アプレット"
+
+#~ msgid "The GNOME Stock Ticker"
+#~ msgstr "GNOME ストックティッカー"
+
+#~ msgid "_Use HTTP proxy"
+#~ msgstr "HTTP プロクシを使う(_U)"
+
+#~ msgid "_Location :"
+#~ msgstr "場所(_L) :"
+
+#~ msgid "P_ort :"
+#~ msgstr "ポート(_O) :"
+
+#~ msgid "Pro_xy requires a uername and password"
+#~ msgstr "プロクシにはユーザ名とパスワードが必要(_X)"
+
+#~ msgid "Us_ername:"
+#~ msgstr "ユーザ名(_E):"
+
+#~ msgid "Pass_word:"
+#~ msgstr "パスワード(_W):"
+
+#~ msgid "Display a_rrows instead of -/+"
+#~ msgstr "- や + の代わりに矢印を表示(_R)"
+
+#~ msgid "_Proxy"
+#~ msgstr "プロクシ(_P)"
+
+#~ msgid "URL Entry"
+#~ msgstr "URL エントリ"
+
+#~ msgid "Enter the Location"
+#~ msgstr "場所を入力"
+
+#~ msgid "Port Entry"
+#~ msgstr "ポートエントリ"
+
+#~ msgid "Enter the Port number"
+#~ msgstr "ポート番号を入力"
+
+#~ msgid "User Entry"
+#~ msgstr "ユーザエントリ"
+
+#~ msgid "Enter the user name"
+#~ msgstr "ユーザ名を入力"
+
+#~ msgid "Password Entry"
+#~ msgstr "パスワードエントリ"
+
+#~ msgid "Enter the Password"
+#~ msgstr "パスワードを入力"
+
+#~ msgid "Locat_ion :"
+#~ msgstr "場所(_I) :"
+
+#~ msgid "Pro_xy requires a username and password"
+#~ msgstr "プロクシにはユーザ名とパスワードが必要(_X)"
+
+#~ msgid "Mini-Commander Applet"
+#~ msgstr "ミニコマンダー・アプレット"
+
+#~ msgid "history list empty"
+#~ msgstr "履歴リストがありません"
+
+#~ msgid "Command history"
+#~ msgstr "コマンド履歴"
+
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "オーディオミキサを実行..."
+
+#~ msgid "Modem Lights Applet"
+#~ msgstr "モデムライト・アプレット"
+
+#~ msgid "System Monitor Applet"
+#~ msgstr "システムモニタ・アプレット"
+
+#~ msgid "PanelMenu Applet"
+#~ msgstr "パネルメニュー アプレット"
 
 #~ msgid "Battstat Settings"
 #~ msgstr "電池充電モニタの設定"
@@ -4422,9 +4458,6 @@ msgstr "ワークスペース"
 
 #~ msgid "Maximum:"
 #~ msgstr "最大:"
-
-#~ msgid "Use default properties"
-#~ msgstr "デフォルトの設定を使う"
 
 #~ msgid "Load average over 1 minute"
 #~ msgstr "1 分間の負荷平均"
