@@ -41,7 +41,8 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 EXTRA_DIST =					\
 	GNOME_ModemLightsApplet.server.in.in	\
 	digits.xpm 				\
-	$(schemas_in_files)				\
+	$(schemas_in_files)			\
+	$(pixmap_DATA)				\
 	$(ui_DATA)
 
 if GCONF_SCHEMAS_INSTALL

@@ -44,9 +44,10 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 @INTLTOOL_SCHEMAS_RULE@
 
 EXTRA_DIST = \
-	README AUTHORS ChangeLog \
-	GNOME_GtikApplet.server.in.in \
-	$(ui_DATA)		\
+	README AUTHORS ChangeLog	\
+	GNOME_GtikApplet.server.in.in	\
+	$(ui_DATA)			\
+	$(pixmap_DATA)			\
 	$(schemas_in_files)
 
 if GCONF_SCHEMAS_INSTALL

@@ -56,6 +56,7 @@ EXTRA_DIST = 				\
 	$(server_in_in_files)		\
 	$(glade_DATA)			\
 	$(pixmap_DATA)			\
+	$(icon_DATA)			\
 	$(ui_DATA)			\
 	$(NULL)
 
