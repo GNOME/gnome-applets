@@ -166,7 +166,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { "geyes_applet",
-					  "index.html#geyes-prefs" };
+					  "index.html#GEYES-PREFS" };
 	gnome_help_display(NULL, &help_entry);
 }
 

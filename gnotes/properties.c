@@ -109,7 +109,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { "gnotes_applet",
-					  "index.html#gnotes-properties" };
+					  "index.html#GNOTES-PROPERTIES" };
 	gnome_help_display(NULL, &help_entry);
 }
 

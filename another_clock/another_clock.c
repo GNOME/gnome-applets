@@ -223,7 +223,7 @@ help_cb (GtkWidget *applet, gpointer data)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-	help_cb (applet, "index.html#anotherclock-prefs");
+	help_cb (applet, "index.html#ANOTHERCLOCK-PREFS");
 }
 
 /*************

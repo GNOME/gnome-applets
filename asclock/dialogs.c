@@ -254,7 +254,7 @@ static void
 property_help_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
-		"asclock_applet", "index.html#asclock-prefs"
+		"asclock_applet", "index.html#ASCLOCK-PREFS"
 	};
 	gnome_help_display (NULL, &help_entry);
 }

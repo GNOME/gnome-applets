@@ -257,7 +257,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
-		"clockmail_applet", "index.html#clockmail-prefs"
+		"clockmail_applet", "index.html#CLOCKMAIL-PREFS"
 	};
 	gnome_help_display (NULL, &help_entry);
 }

@@ -183,16 +183,6 @@ void gweather_applet_create (int argc, char *argv[])
                           GDK_BUTTON_PRESS_MASK);
 
     applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
-					   "about",
-                                           GNOME_STOCK_MENU_ABOUT,
-					   _("About..."),
-                                           about_cb, NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), 
-					   "help",
-					   GNOME_STOCK_PIXMAP_HELP,
-					   _("Help"),
-					   help_cb, NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
 					   "update",
 					   GNOME_STOCK_MENU_REFRESH,
 					   _("Update"),
@@ -202,6 +192,16 @@ void gweather_applet_create (int argc, char *argv[])
                                            GNOME_STOCK_MENU_PREF,
 					   _("Properties..."),
                                            pref_cb, NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), 
+					   "help",
+					   GNOME_STOCK_PIXMAP_HELP,
+					   _("Help"),
+					   help_cb, NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
+					   "about",
+                                           GNOME_STOCK_MENU_ABOUT,
+					   _("About..."),
+                                           about_cb, NULL);
 
 
 #ifdef HAVE_SAVE_SESSION_SIGNAL

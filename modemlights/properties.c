@@ -176,7 +176,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { "modemlights_applet",
-					  "index.html#modemlights-prefs" };
+					  "index.html#MODEMLIGHTS-PREFS" };
 	gnome_help_display(NULL, &help_entry);
 }
 

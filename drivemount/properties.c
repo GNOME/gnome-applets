@@ -187,7 +187,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { "drivemount_applet",
-					  "index.html#drivemountapplet-prefs" };
+					  "index.html#DRIVEMOUNTAPPLET-PREFS" };
 	gnome_help_display(NULL, &help_entry);
 }
 

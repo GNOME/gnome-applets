@@ -61,7 +61,6 @@ always_built_SUBDIRS = \
 	asclock		\
 	battery		\
 	charpick	\
-	clipboard	\
 	clockmail	\
 	drivemount	\
 	fifteen		\
@@ -93,6 +92,7 @@ SUBDIRS = \
 DIST_SUBDIRS = \
 	intl po macros 		\
 	$(always_built_SUBDIRS)	\
+	clipboard		\
 	$(gtop_applets)		\
 	$(ghttp_applets)	\
 	$(ghttp_xml_applets)	\

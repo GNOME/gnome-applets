@@ -201,7 +201,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
-		"odometer_applet", "index.html#odometerapplet-prefs"
+		"odometer_applet", "index.html#ODOMETERAPPLET-PREFS"
 	};
 	gnome_help_display (NULL, &help_entry);
 }

@@ -385,23 +385,23 @@ create_eyes_applet (void)
 			    "delete_event",
 			    GTK_SIGNAL_FUNC (delete_cb),
 			    NULL);
-        
+
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "about",
-                                               GNOME_STOCK_MENU_ABOUT,
-                                               _("About..."),
-                                               (AppletCallbackFunc)about_cb,
-                                               NULL);
+                                               "properties",
+                                               GNOME_STOCK_MENU_PROP,
+                                               _("Properties..."),
+                                               (AppletCallbackFunc)properties_cb,
+                                               NULL);        
 	applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
 					       "help",
 					       GNOME_STOCK_PIXMAP_HELP,
 					       _("Help"),
 					       help_cb, NULL);
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "properties",
-                                               GNOME_STOCK_MENU_PROP,
-                                               _("Properties..."),
-                                               (AppletCallbackFunc)properties_cb,
+                                               "about",
+                                               GNOME_STOCK_MENU_ABOUT,
+                                               _("About..."),
+                                               (AppletCallbackFunc)about_cb,
                                                NULL);
         
         gtk_widget_realize (eyes_applet.applet);

@@ -214,7 +214,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
-		"webcontrol_applet", "index.html#webcontrol-applet-prefs"
+		"webcontrol_applet", "index.html#WEBCONTROL-APPLET-PREFS"
 	};
 	gnome_help_display (NULL, &help_entry);
 }
