@@ -685,6 +685,17 @@ wireless_applet_new (WirelessApplet *applet)
 			wireless_menu_verbs,
 			applet);
 
+	if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/WirelessProperties",
+					      "hidden", "1",
+					      NULL);
+	}
+
 	start_file_read (applet);
 	wireless_applet_timeout_handler (applet);
 
