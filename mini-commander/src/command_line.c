@@ -454,7 +454,7 @@ mc_show_file_browser (GtkWidget *widget,
 
     gtk_window_set_screen (GTK_WINDOW (mc->file_select), 
 			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
-    gtk_window_set_position (GTK_WINDOW (mc->file_select), GTK_WIN_POS_MOUSE);
+    gtk_window_set_position (GTK_WINDOW (mc->file_select), GTK_WIN_POS_CENTER);
     gtk_window_set_default_size(GTK_WINDOW(mc->file_select), 600, 400);
 
     gtk_widget_show(mc->file_select);
