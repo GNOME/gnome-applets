@@ -1,0 +1,345 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.101.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "2002年8月">
+  <!ENTITY applet "キーボード配列切替">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>キーボード配列切替アプレットのマニュアル V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN and Dan Mueth</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME ドキュメンテーションプロジェクト</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME ドキュメンテーションチーム</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+			 <address> <email>emese@gnome.hu</email></address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>キーボード配列切替アプレットのマニュアル V&manrevision;</revnumber> 
+		  <date>2002 年 8 月</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME ドキュメンテーションチーム
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>キーボード配列切替アプレットのマニュアル V2.0</revnumber> 
+		  <date>2002 年 5 月</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME ドキュメンテーションチーム
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>GNOME キーボードアプレット</revnumber> 
+		  <date>2002 年 1 月</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>		  
+		</revision>
+		<revision> 
+		  <revnumber>GNOME キーボードアプレット</revnumber> 
+		  <date>2000 年</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para>
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>		  
+		</revision>
+	 </revhistory>
+	 <releaseinfo>このマニュアルはキーボード配列切替のバージョン &appletversion; について説明します。
+		</releaseinfo>
+	 <legalnotice> 
+		<title>フィードバック</title>
+		<para>キーボード配列切替アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、<ulink url="ghelp:gnome-feedback" type="help">『GNOME フィードバックページ』</ulink> を参照してください。 </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>キーボード配列切替</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="gkb-introduction"> 
+	 <title>概要</title>
+
+	 <figure id="gkb-fig"> 
+		<title>キーボード配列切替アプレット</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>キーボード配列切替アプレットを表示。現在のキーボードレイアウトのフラグとラベルが含まれています。
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+
+	 <para><application>キーボード配列切替</application>アプレットを用いて、自分のキーボードにさまざまなレイアウトを割り当てることにより、各国語に対応することができます。アプレットは、現在のキーボードレイアウトに対応した国旗とラベルを表示します。 </para>
+	 <para><application>キーボード配列切替</application>をパネルに追加するには、パネルを右クリックして、<menuchoice><guimenu>「パネルに追加」</guimenu><guisubmenu>「ユーティリティ」</guisubmenu><guimenuitem>「キーボード配列切替」</guimenuitem>
+</menuchoice>を選択します。</para>
+  </sect1>
+
+
+  <sect1 id="gkb-usage"><title>使用方法</title>
+
+	 <para>別のキーボードレイアウトに切り換えるには、希望するキーボードレイアウトが表示されるまで、アプレットを繰り返しクリックします。アプレットに希望するキーボードレイアウトが含まれていない場合は、<xref 
+      linkend="gkb-keymaps"/>のアプレットへのキーボードレイアウトの追加方法を参照してください。 </para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs"> 
+	 <title>設定</title>
+	 <para><application>キーボード配列切替</application>を設定するには、アプレットを右クリックして、<guimenuitem>「設定」</guimenuitem>を選択します。</para>
+
+	 <sect2 id="gkb-keymaps">
+		
+		<title>「キーマップ」</title>
+		
+		<para><guilabel>「キーマップ」</guilabel>タブのセクションは、現在アプレットに設定されているキーボードレイアウトをリスト表示します。</para>
+		
+		<sect3 id="gkb-modify-list">
+		
+		<title>キーボードレイアウトリストを変更する</title>
+		
+		<para><guilabel>「キーマップ」</guilabel> リストにキーボードレイアウトを追加するには、 以下の手順に従ってください。 </para>
+		<orderedlist>
+			<listitem><para><guilabel>「キーマップ」</guilabel>タブのセクションの<guibutton>「追加」</guibutton>をクリックします。<guilabel>「キーボードの選択」</guilabel>ダイアログが表示されます。</para></listitem>
+			<listitem><para>追加したいキーボードレイアウトの国の隣の矢印をクリックして、希望のキーボードレイアウトを選択します。 </para></listitem>
+			<listitem><para><guibutton>「追加」</guibutton>をクリックして、キーボードレイアウトを<guilabel>「キーマップ」</guilabel>リストに追加します。</para></listitem>
+		</orderedlist>
+		
+		<para><guilabel>「キーマップ」</guilabel>リストからキーボードレイアウトを削除するには、キーボードレイアウトを選択して<guibutton>「削除」</guibutton>をクリックします。 </para>
+		
+		<para>キーボードレイアウトを 
+      <guilabel>「キーマップ」</guilabel>リストの上方に移動するには、キーボードレイアウトを選択して<guibutton>「上へ」</guibutton>をクリックします。キーボードレイアウトを<guilabel>「キーマップ」</guilabel>リストの下方に移動するには、キーボードレイアウトを選択して<guibutton>「下へ」</guibutton>をクリックします。 </para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout">
+		
+		<title>キーボードレイアウトを編集する</title>
+		<para>キーボードレイアウトを編集するには、キーボードレイアウトを選択して<guibutton>「編集」</guibutton>をクリックします。<guilabel>「キーボードの編集」</guilabel>ダイアログには 以下の要素が含まれます。 </para>
+		
+		<table frame="topbot" id="tbl-edit-layout">
+    		<title>キーボード要素の編集</title>
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead>
+		 <row valign="top">
+		  <entry>
+		  <para>ダイアログ要素</para></entry>
+		  <entry>
+		  <para>説明</para></entry>
+		 </row>
+	 	</thead>
+		<tbody>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「名前」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードレイアウト名。キーボードレイアウト名は、<guilabel>「設定」</guilabel>ダイアログの<guilabel>「キーマップ」</guilabel>タブのセクションで表示されます。 </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「ラベル」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードレイアウト用の短縮形ラベル。たとえば、アメリカ英語のキーボードレイアウトでは<guilabel>「us」</guilabel>となります。デフォルトでは、現在のキーボードレイアウトの国旗とラベルがアプレットに表示されます。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「言語」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードレイアウトの対応言語</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「国名」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードレイアウトが使用される国</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「国旗」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードレイアウトが使用される国の旗。デフォルトでは、現在のキーボードレイアウトの国旗とラベルがアプレットに表示されます。国旗をクリックして、国旗選択ダイアログを表示します。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「アーキテクチャ」</guilabel></para></entry>
+		  <entry>
+		  <para>ハードウェアシステムの種類</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「タイプ」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードの種類 (101 キー、105 キーなど)</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「コードページ」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボード言語が使用するコードセット。たとえば、デフォルトでアメリカ英語の場合、Western European ISO-8859-1 コードセットを使用します。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>「コマンド」</guilabel></para></entry>
+		  <entry>
+		  <para>キーボードレイアウトを変更するためのコマンド。以下のいずれかのコマンドを使用して、キーボードレイアウトを変更することができます。</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command>
+      <replaceable>us</replaceable> は、キーボードレイアウト用 <filename>xmodmap</filename> 
+      ファイルのファイル拡張です。</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command></para>
+     <para><replaceable>/path/xmodmap.us</replaceable> は、キーボードレイアウト用 
+      <filename>xmodmap</filename> ファイルです。 </para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command>。
+      <replaceable>us</replaceable> は、 キーボードレイアウト用 <filename>xmodmap</filename> 
+      ファイルのファイル拡張です。 </para>
+		  </entry>
+		 </row>
+	 	</tbody>
+		</tgroup>
+		</table>
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options">
+	 
+	 	<title>オプション</title>
+	 	<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>「表示」</guilabel></term> 
+			 <listitem>
+			 <para>ドロップダウンリストから以下のオプションのいずれか １ つを選択して、パネルの表示方法を指定します。</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>「国旗」</guilabel></para>
+			 	<para>国旗のみを表示</para></listitem>
+			 	<listitem><para><guilabel>「ラベル」</guilabel></para>
+			 	<para> ラベルのみを表示 </para></listitem>
+			 	<listitem><para><guilabel>「国旗とラベル」</guilabel></para>
+			 	<para> 国旗とラベルを表示</para></listitem>
+			 </itemizedlist>
+			 <para>初期値: <guilabel>「国旗」</guilabel></para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry>
+			 <term><guilabel>「アプレットサイズ」</guilabel></term> 
+			 <listitem>
+			 <para>ドロップダウンリストボックスから以下のオプションのいずれか 1 つを選択して、アプレットサイズを指定します。</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>「普通」</guilabel></para></listitem>
+			 	<listitem><para><guilabel>「大」</guilabel></para></listitem>
+			 </itemizedlist>
+			 <para>初期値: <guilabel>「大」</guilabel></para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry><term><guilabel>「配列を切りかえるホットキー」</guilabel></term><listitem>
+			 <para>ショートカットキーを使用して、キーボードレイアウトの切り換えを行うことができます。ショートカットキーをカスタマイズするには、 <guibutton>「ホットキーを取得」</guibutton>をクリックして使用したいキーを押します。テキストボックスにショートカットキーが表示されます。デフォルトショートカットキーは<keycombo><keycap>「Alt」</keycap><keycap>「Shift」</keycap><keycap>「L」</keycap></keycombo>で、テキストボックスに 
+      Mod1-Shift_L と表示されます。</para>
+			 <para>初期値: Mod1-Shift_L</para>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+	 
+	 </sect2>
+
+  </sect1>
+
+</article>

@@ -1,0 +1,349 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.101.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "Agosto 2002">
+  <!ENTITY applet "Cambia tastiera">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="it">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>Manuale dell'applet &applet; V&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN and Dan Mueth</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME Documentation Project</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME Documentation Team</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>emese@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Cambia tastiera V2.0</revnumber> 
+		  <date>Maggio 2002</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Applet GNOME Keyboard </revnumber> 
+		  <date>Gennaio 2002</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>		  
+		</revision>
+		<revision> 
+		  <revnumber>Applet GNOME Keyboard </revnumber> 
+		  <date>2000</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para>
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>		  
+		</revision>
+	 </revhistory>
+	 <releaseinfo> Questo manuale descrive la versione &appletversion; di &applet;.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Commenti</title>
+		<para> Per segnalare un problema o inviare suggerimenti sull'applet &applet; o su questo manuale, seguire le istruzioni presenti alla <ulink url="ghelp:gnome-feedback" type="help">Pagina di commenti su GNOME</ulink>. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>Cambia tastiera</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="gkb-introduction">  
+	 <title>Introduzione</title>
+
+	 <figure id="gkb-fig"> 
+		<title>Applet &applet;</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Mostra l'applet &applet;. Contiene la bandiera e l'etichetta del layout corrente della tastiera.
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+
+	 <para>L'applet <application>&applet;</application> permette di assegnare differenti layout alla tastiera per utilizzare lingue diverse. L'applet visualizza la bandiera e l'etichetta associati al layout corrente della tastiera.</para>
+	 <para>Per aggiungere <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere 
+	<menuchoice>
+	<guimenu>Aggiungi al pannello</guimenu> 
+	<guisubmenu>Utilit&agrave;</guisubmenu>
+	<guimenuitem>&applet;</guimenuitem>
+	</menuchoice>.</para>
+  </sect1>
+
+
+  <sect1 id="gkb-usage">
+   
+	 <title>Utilizzo</title>
+
+	 <para>Per cambiare il layout della tastiera, fare clic ripetutamente sull'applet finch&eacute; non compare il layout desiderato. Se l'applet non contiene il layout richiesto per la tastiera, vedere <xref linkend="gkb-keymaps"/> per informazioni su come aggiungere un nuovo layout all'applet.</para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs"> 
+	 <title>Preferenze</title>
+	 <para>Per configurare <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. </para>
+
+	 <sect2 id="gkb-keymaps"> 
+		
+		<title>Mappature</title>
+		
+		<para>La scheda <guilabel>Mappature</guilabel> elenca i layout correntemente configurati per l'applet. </para>
+		
+		<sect3 id="gkb-modify-list">
+		
+		<title>Modificare l'elenco dei layout della tastiera</title>
+		
+		<para>Per aggiungere un layout all'elenco <guilabel>Mappature</guilabel>, procedere come segue:</para>
+		<orderedlist>
+			<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> nella scheda <guilabel>Mappature</guilabel>. Viene aperta la finestra di dialogo <guilabel>Seleziona la mappatura</guilabel>.</para></listitem>
+			<listitem><para>Fare clic sulla freccia posta accanto al paese per il quale si desidera aggiungere il layout e selezionare il layout della tastiera. </para></listitem>
+			<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> per aggiungere il layout della tastiera all'elenco <guilabel>Mappature</guilabel>.</para></listitem>
+		</orderedlist>
+		
+		<para>Per eliminare un layout di tastiera dall'elenco <guilabel>Mappature</guilabel>, selezionarlo e fare clic su <guibutton>Cancella</guibutton>.</para>
+		
+		<para>Per spostare un layout verso l'alto nell'elenco <guilabel>Mappature</guilabel>, selezionarlo e fare clic su <guibutton>Su</guibutton>. Per spostare un layout verso il basso nell'elenco <guilabel>Mappature</guilabel>, selezionarlo e fare clic su <guibutton>Gi&ugrave;</guibutton>. </para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout">
+		
+		<title>Modificare un layout della tastiera</title>
+		<para>Per modificare un layout della tastiera, selezionarlo e fare clic su <guibutton>Modifica</guibutton>. La finestra di dialogo <guilabel>Modifica la mappatura</guilabel> contiene i seguenti elementi:</para>
+		
+		<table frame="topbot" id="tbl-edit-layout">
+    		<title>Elementi della finestra Modifica la mappatura</title>
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead>
+		 <row valign="top">
+		  <entry>
+		  <para>Elemento</para></entry>
+		  <entry>
+		  <para>Descrizione</para></entry>
+		 </row>
+	 	</thead>
+		<tbody>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Nome</guilabel></para></entry>
+		  <entry>
+		  <para>Nome del layout della tastiera. Questo nome viene visualizzato nella scheda <guilabel>Mappature</guilabel> della finestra di dialogo <guilabel>Preferenze</guilabel>.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Etichetta</guilabel></para></entry>
+		  <entry>
+		  <para>Etichetta abbreviata che rappresenta il layout della tastiera. Ad esempio, l'etichetta del layout della tastiera per l'inglese americano &egrave; <guilabel>us</guilabel>. Nella configurazione predefinita, l'applet visualizza la bandiera e l'etichetta del layout corrente della tastiera. </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Lingua</guilabel></para></entry>
+		  <entry>
+		  <para>Lingua a cui si adatta il layout della tastiera.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Paese</guilabel></para></entry>
+		  <entry>
+		  <para>Paese in cui viene usato il layout della tastiera.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Bandiera Immagine</guilabel></para></entry>
+		  <entry>
+		  <para>Bandiera del paese in cui &egrave; usato il layout della tastiera. Nella configurazione predefinita, l'applet visualizza la bandiera e l'etichetta del layout corrente della tastiera. Facendo clic sulla bandiera viene visualizzata una finestra di selezione. </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Architettura</guilabel></para></entry>
+		  <entry>
+		  <para>Tipo di sistema hardware.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Tipo</guilabel></para></entry>
+		  <entry>
+		  <para>Tipo di tastiera, ad esempio a 101 tasti, 105 tasti, ecc.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Codepage</guilabel></para></entry>
+		  <entry>
+		  <para>Set di codici utilizzato dalla lingua della tastiera. Ad esempio, l'inglese americano utilizza il set di codici Western European ISO-8859-1.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Comando</guilabel></para></entry>
+		  <entry>
+		  <para>Comando usato dall'applet per cambiare il layout della tastiera. Per cambiare il layout della tastiera si possono usare i comandi seguenti:</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command> dove <replaceable>us</replaceable>
+		  &egrave; l'estensione del file <filename>xmodmap</filename> associato al layout della tastiera.</para>
+		  <para><command>xmodmap <replaceable>/percorso/xmodmap.us</replaceable></command> dove 
+		  <replaceable>/percorso/xmodmap.us</replaceable> &egrave; il file <filename>xmodmap</filename> per il layout della tastiera.</para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command> dove <replaceable>us</replaceable>
+		  &egrave; l'estensione del file <filename>xmodmap</filename> per il layout della tastiera.</para>
+		  </entry>
+		 </row>
+	 	</tbody>
+		</tgroup>
+		</table>
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options">
+	 
+	 	<title>Opzioni</title>
+	 	<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Aspetto</guilabel></term> 
+			 <listitem>
+			 <para>Selezionare una delle seguenti opzioni dalla casella di riepilogo per specificare il tipo di visualizzazione dell'applet nel pannello:</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Bandiera</guilabel></para>
+			 	<para>Viene visualizzata solo una bandiera.</para></listitem>
+			 	<listitem><para><guilabel>Etichetta</guilabel></para>
+			 	<para>Viene visualizzata solo un'etichetta.</para></listitem>
+			 	<listitem><para><guilabel>Bandiera ed etichetta</guilabel></para>
+			 	<para>Vengono visualizzati una bandiera e un'etichetta.</para></listitem>
+			 </itemizedlist>
+			 <para>Perch&eacute; le modifiche a questa impostazione abbiano effetto &egrave; necessario riavviare il sistema. </para>
+			 <para>Impostazione predefinita:  <guilabel>Bandiera ed etichetta</guilabel>.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Dimensione applet</guilabel></term> 
+			 <listitem>
+			 <para>Selezionare una delle seguenti opzioni dalla casella di riepilogo per specificare la dimensione dell'applet nel pannello:</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Normale</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Grande</guilabel></para></listitem>
+			 </itemizedlist>
+			 <para>Perch&eacute; le modifiche a questa impostazione abbiano effetto &egrave; necessario riavviare il sistema. </para>
+			 <para>Impostazione predefinita:  <guilabel>Grande</guilabel>.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Scorciatoie per cambiare tastiera</guilabel></term> 
+			 <listitem>
+			 <para>Per cambiare il layout della tastiera &egrave; possibile usare una combinazione di scelta rapida. Per personalizzare la combinazione di scelta rapida, fare clic su <guibutton>Definisce le scorciatoie</guibutton> e premere i tasti che si desidera usare. L'applet visualizza la combinazione selezionata nella casella di testo. La combinazione di scelta rapida predefinita &egrave; <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo>, visualizzata nella casella di testo come Mod1-Shift_L.</para>
+			 <para>Impostazione predefinita:  Mod1-Shift_L.</para>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+	 
+	 </sect2>
+
+  </sect1>
+
+</article>

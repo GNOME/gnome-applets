@@ -1,0 +1,341 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.101.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Keyboard Layout Switcher">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_cn">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; 小程序手册 V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN 和 Dan Mueth</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME Documentation Project</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME Documentation Team</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>emese@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>键盘布局切换器小程序手册 V2.0</revnumber> 
+		  <date>2002 年 5 月</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>GNOME 键盘小程序</revnumber> 
+		  <date>2002 年 1 月</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>		  
+		</revision>
+		<revision> 
+		  <revnumber>GNOME 键盘小程序</revnumber> 
+		  <date>2000</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para>
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>		  
+		</revision>
+	 </revhistory>
+	 <releaseinfo> 本手册介绍 &applet; &appletversion; 版。
+		</releaseinfo>
+	 <legalnotice> 
+		<title>反馈</title>
+		<para> 要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>键盘布局切换器</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="gkb-introduction"> 
+
+	 <title>简介</title>
+
+	 <figure id="gkb-fig"> 
+		<title>&applet; 小程序</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>显示 &applet; 小程序。包含当前键盘布局的标记和标签。
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+
+	 <para><application>&applet;</application> 小程序使您能够给键盘分配不同的布局，以满足不同的语言环境。该小程序会显示与当前键盘布局关联的标记和标签。</para>
+	 <para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"实用程序"</guisubmenu><guimenuitem>"&applet;"</guimenuitem></menuchoice>。</para>
+  </sect1>
+
+
+  <sect1 id="gkb-usage">
+   
+	 <title>用法</title>
+
+	 <para>要切换为不同的键盘布局，请反复单击该小程序，直到该小程序显示您需要的键盘布局为止。如果该小程序不包含您所需要的键盘布局，有关如何向小程序添加键盘布局的信息，请参阅 <xref linkend="gkb-keymaps"/>。</para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs"><title>首选项</title>
+	 <para>要配置 <application>&applet;</application>，请右击该小程序，然后选择<guimenuitem>"首选项"</guimenuitem>。</para>
+
+	 <sect2 id="gkb-keymaps"> 
+		
+		<title>键盘映射表</title>
+		
+		<para><guilabel>"键盘映射表"</guilabel>选项卡式部分列出了当前为该小程序配置的键盘布局。</para>
+		
+		<sect3 id="gkb-modify-list">
+		
+		<title>修改键盘布局的列表</title>
+		
+		<para>要将键盘布局添加到<guilabel>"键盘映射表"</guilabel>列表中，请执行以下步骤：</para>
+		<orderedlist>
+			<listitem><para>单击<guilabel>"键盘映射表"</guilabel>选项卡式部分中的<guibutton>"添加"</guibutton>。该小程序会显示<guilabel>"选择键盘"</guilabel>对话框。</para></listitem>
+			<listitem><para>单击您要为其添加键盘布局的国家旁的箭头，然后选择您要添加的键盘布局。</para></listitem>
+			<listitem><para>单击<guibutton>"添加"</guibutton>，将键盘布局添加到<guilabel>"键盘映射表"</guilabel>列表中。</para></listitem>
+		</orderedlist>
+		
+		<para>要从<guilabel>"键盘映射表"</guilabel>列表中删除键盘布局，请首先选择该键盘布局，然后单击<guibutton>"删除"</guibutton>。</para>
+		
+		<para>要将<guilabel>"键盘映射表"</guilabel>列表中的某个键盘布局上移，请首先选择该键盘布局，然后单击<guibutton>"向上"</guibutton>。要将<guilabel>"键盘映射表"</guilabel>列表中的某个键盘布局下移，请首先选择该键盘布局，然后单击<guibutton>"向下"</guibutton>。</para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout">
+		
+		<title>编辑键盘布局</title>
+		<para>要编辑键盘布局，请首先选择该键盘布局，然后单击<guibutton>"编辑"</guibutton>。<guilabel>"编辑键盘"</guilabel>对话框包含以下元素：</para>
+		
+		<table frame="topbot" id="tbl-edit-layout">
+    		<title>编辑键盘元素</title>
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead>
+		 <row valign="top">
+		  <entry>
+		  <para>对话框元素</para></entry>
+		  <entry>
+		  <para>说明</para></entry>
+		 </row>
+	 	</thead>
+		<tbody>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>名称</guilabel></para></entry>
+		  <entry>
+		  <para>键盘布局的名称。此名称显示在<guilabel>"首选项"</guilabel>对话框的<guilabel>"键盘映射表"</guilabel>选项卡式部分中。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>标签</guilabel></para></entry>
+		  <entry>
+		  <para>键盘布局的短标签。例如，美国英语键盘布局的标签为<guilabel>"us"</guilabel>。在默认情况下，该小程序会在小程序显示中显示当前键盘布局的标记和标签。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>语言</guilabel></para></entry>
+		  <entry>
+		  <para>键盘布局适用于的语言。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>国家/地区</guilabel></para></entry>
+		  <entry>
+		  <para>使用该键盘布局的国家/地区。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>标记像素图</guilabel></para></entry>
+		  <entry>
+		  <para>该标记代表使用该键盘布局的国家。在默认情况下，该小程序会在小程序显示中显示当前键盘布局的标记和标签。单击该标记会显示标记选择器对话框。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>体系结构</guilabel></para></entry>
+		  <entry>
+		  <para>硬件系统的类型。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>类型</guilabel></para></entry>
+		  <entry>
+		  <para>键盘的类型，例如 101 键、105 键等等。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>代码页</guilabel></para></entry>
+		  <entry>
+		  <para>键盘的语言使用的代码集。例如，默认情况下，美国英语使用西欧 (Western European) ISO-8859-1 代码集。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>命令</guilabel></para></entry>
+		  <entry>
+		  <para>小程序用于更改键盘布局的命令。您可以使用以下任何命令来更改键盘布局：</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command>，其中 <replaceable>us</replaceable> 是键盘布局的 <filename>xmodmap</filename> 文件的扩展名。</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command>，其中 <replaceable>/path/xmodmap.us</replaceable> 是键盘布局的 <filename>xmodmap</filename> 文件。</para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command>，其中 <replaceable>us</replaceable> 是键盘布局的 <filename>xmodmap</filename> 文件的扩展名。</para>
+		  </entry>
+		 </row>
+	 	</tbody>
+		</tgroup>
+		</table>
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options">
+	 
+	 	<title>选项</title>
+	 	<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>外观</guilabel></term> 
+			 <listitem>
+			 <para>从下拉列表框中选择以下选项之一可以指定小程序在面板中显示的内容：</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>标记</guilabel></para>
+			 	<para>只显示标记。</para></listitem>
+			 	<listitem><para><guilabel>标签</guilabel></para>
+			 	<para>只显示标签。</para></listitem>
+			 	<listitem><para><guilabel>标记和标签</guilabel></para>
+			 	<para>显示标记和标签。</para></listitem>
+			 </itemizedlist>
+			 <para>您必须重启动计算机，对此设置的更改才能生效。</para>
+			 <para>默认值： <guilabel>标记和标签</guilabel>。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>小程序大小</guilabel></term> 
+			 <listitem>
+			 <para>从该下拉列表框中选择以下选项之一可以指定小程序在面板中的大小：</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>正常</guilabel></para></listitem>
+			 	<listitem><para><guilabel>大</guilabel></para></listitem>
+			 </itemizedlist>
+			 <para>您必须重启动计算机，对此设置的更改才能生效。</para>
+			 <para>默认值： <guilabel>大</guilabel>。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>切换布局的热键</guilabel></term> 
+			 <listitem>
+			 <para>您可以使用快捷键切换键盘布局。要定制快捷键，请单击<guibutton>"抓取热键"</guibutton>，然后按下您要使用的键。小程序会在文本框中显示快捷键。默认的快捷键是 <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo>，小程序会在文本框中显示为 Mod1-Shift_L。</para>
+			 <para>默认值： Mod1-Shift_L。</para>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+	 
+	 </sect2>
+
+  </sect1>
+
+</article>
