@@ -36,6 +36,8 @@
 #define APPLET_ID "Cdplayer"
 #define TIMEOUT_VALUE 500
 
+GtkWidget *aw;
+
 int applet_id=-1; /*this is our id we use to comunicate with the panel*/
 
 static void
@@ -311,11 +313,13 @@ main(int argc, char **argv)
 		exit (1);
 	}
 
-	led_init();
-
 	aw = applet_widget_new ();
 
-	cdplayer = create_cdplayer_widget (GTK_WIDGET(panel));
+	/* FIXME */
+	led_init(aw);
+
+	/* FIXME */
+	cdplayer = create_cdplayer_widget (GTK_WIDGET(aw));
 	gtk_widget_show(cdplayer);
 	applet_widget_add (APPLET_WIDGET (aw), cdplayer);
 	gtk_widget_show (aw);
