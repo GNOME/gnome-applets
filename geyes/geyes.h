@@ -20,7 +20,7 @@
 #ifndef __GEYES_H__
 #define __GEYES_H__
 #include <gnome.h>
-#include <applet-widget.h>
+
 
 #define MAX_EYES 5
 typedef struct
@@ -62,5 +62,7 @@ void create_eyes (void);
 void destroy_eyes (void);
 
 void load_theme (gchar *theme_name);
+#ifdef FIXME
 void properties_cb (AppletWidget *applet, gpointer data);
+#endif
 #endif

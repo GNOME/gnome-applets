@@ -20,8 +20,7 @@
 #include <config.h>
 #include <math.h>
 #include <gnome.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
+#include <panel-applet.h>
 #include <gconf/gconf-client.h>
 #include "geyes.h"
 
@@ -29,6 +28,7 @@
 
 EyesApplet eyes_applet = {0};
 guint timeout_handle = -1;
+GConfClient *client;
 
 /* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
  * printer applet (thanks to Inigo Serna who pointed this code out to me)
@@ -103,17 +103,17 @@ applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
 }
 
 static void
-applet_back_change (GtkWidget *w, 
-                    PanelBackType type,
-                    gchar *pixmap,
-                    GdkColor *color,
-                    EyesApplet *applet) 
+applet_back_change (PanelApplet *a,
+		    PanelAppletBackgroundType  type,
+		    GdkColor                  *color,
+		    const gchar               *pixmap,
+		    EyesApplet *applet) 
 {
 	switch (type) {
-	case PANEL_BACK_PIXMAP:
+	case PANEL_PIXMAP_BACKGOUND:
                 applet_set_back_pixmap (applet->fixed, pixmap);
 		break;
-        case PANEL_BACK_COLOR:
+        case PANEL_COLOR_BACKGROUND:
                 applet_set_back_color(applet->fixed, color);
 		break;
 	default:
@@ -121,7 +121,6 @@ applet_back_change (GtkWidget *w,
 		break;
 	}
 	return;
-	w = NULL;
 }
 
 /* TODO - Optimize this a bit */
@@ -257,8 +256,10 @@ about_cb (void)
         
         about = gnome_about_new (_("gEyes"), VERSION,
 				 _("Copyright (C) 1999 Dave Camp"),
-                                 authors,
                                  _("A goofy little xeyes clone for the GNOME panel."),
+                                 authors,
+                                 NULL,
+                                 NULL,
                                  NULL);
 	g_signal_connect (G_OBJECT(about), "destroy",
 			    G_CALLBACK(gtk_widget_destroyed), &about);
@@ -291,9 +292,12 @@ properties_save ()
 static void
 properties_load ()
 {
-        gchar *theme_path;
+        gchar *theme_path = NULL;
 
 	theme_path = gconf_client_get_string(client, "/applets/gEyes/theme-path", NULL);
+	/* FIXME: should install gconf schemas */
+	if (theme_path == NULL)
+		theme_path = g_strdup (GEYES_THEMES_DIR);
         load_theme (theme_path);
         g_free (theme_path);
 }
@@ -356,12 +360,11 @@ create_eyes (void)
                                     0);
         }
         gtk_fixed_put (GTK_FIXED (eyes_applet.fixed), eyes_applet.hbox, 0, 0);
-        applet_widget_add (APPLET_WIDGET (eyes_applet.applet), 
-                           eyes_applet.fixed);
         gtk_widget_show (eyes_applet.hbox);
         gtk_widget_show (eyes_applet.fixed);
 }
 
+#ifdef FIXME
 static gint
 delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
@@ -373,23 +376,20 @@ delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 	event = NULL;
 }
 
+
 static void
 help_cb (AppletWidget *applet, gpointer data)
 {
     static GnomeHelpMenuEntry help_entry = { "geyes_applet", "index.html"};
     gnome_help_display(NULL, &help_entry);
 }
-
+#endif
 
 static void
 create_eyes_applet (void)
 {
-	eyes_applet.applet = applet_widget_new ("geyes_applet");
-	
-	if (!eyes_applet.applet)
-		g_error ("Can't create applet!\n");
-        
-        g_object_connect (G_OBJECT (eyes_applet.applet),
+#ifdef FIXME
+	g_object_connect (G_OBJECT (eyes_applet.applet),
                             "save_session",
                             G_CALLBACK (save_session_cb), 
                             NULL);
@@ -418,38 +418,74 @@ create_eyes_applet (void)
                                                NULL);
         
         gtk_widget_realize (eyes_applet.applet);
+#endif
 }
 
-int 
-main (int argc, char *argv[])
+static BonoboObject *
+geyes_applet_new (void)
 {
-        GConfClient* client;
- 
-        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-        textdomain (PACKAGE);
-        
-        applet_widget_init ("geyes_applet", VERSION, argc, argv, NULL, 0, NULL);
-	gconf_init(argc, argv, NULL);
-
+	GtkWidget *applet;
+	
 	client = gconf_client_new ();
 	gconf_client_add_dir(client,
                         "/extra/test/directory",
                         GCONF_CLIENT_PRELOAD_NONE,
                         NULL);
-        gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-eyes.png");
+      
         create_eyes_applet ();
         properties_load ();
         create_eyes ();
         
         timeout_handle = gtk_timeout_add (UPDATE_TIMEOUT,
-			(GtkFunction)timer_cb, NULL);										  
-        
-        gtk_widget_show (eyes_applet.applet);
-        
-        applet_widget_gtk_main ();
-        
-        return 0;
+			(GtkFunction)timer_cb, NULL);
+	
+	eyes_applet.applet = panel_applet_new (eyes_applet.fixed);
+
+	gtk_widget_show_all (applet);
+#ifdef FIXME
+	g_signal_connect (G_OBJECT (applet),
+			  "change_orient",
+			  G_CALLBACK (test_applet_handle_orient_change),
+			  label);
+
+	g_signal_connect (G_OBJECT (applet),
+			  "change_size",
+			  G_CALLBACK (test_applet_handle_size_change),
+			  label);
+#endif
+	g_signal_connect (G_OBJECT (applet),
+			  "change_background",
+			  G_CALLBACK (applet_back_change),
+			  &eyes_applet);
+#ifdef FIXME
+	g_signal_connect (G_OBJECT (applet),
+			  "save_yourself",
+			  G_CALLBACK (test_applet_handle_save_yourself),
+			  label);
+#endif		  
+	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+	
 }
+
+static BonoboObject *
+geyes_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_Panel_TestBonoboApplet"))
+		applet = geyes_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GeyesApplet_Factory",
+			     "Big brother is watching you",
+			     "0",
+			     geyes_applet_factory,
+			     NULL)
+
 
 
 
