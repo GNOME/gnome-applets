@@ -122,41 +122,42 @@ applet_back_change (GtkWidget *w,
 	w = NULL;
 }
 
-/* TODO - Optimize this a bit */
 static void 
 calculate_pupil_xy  (gint x, gint y, gint *pupil_x, gint *pupil_y)
 {
-        double angle;
-        double sina;
-        double cosa;
-        double nx;
-        double ny;
-        double h;
-        
-        nx = x - ((double)eyes_applet.eye_width / 2);
-        ny = y - ((double)eyes_applet.eye_height / 2);
-        
-        angle = atan2 (nx, ny);
-        h = hypot (nx, ny);
-        if (abs (h) 
-            < (abs (hypot (eyes_applet.eye_height / 2, eyes_applet.eye_width / 2)) - eyes_applet.wall_thickness - eyes_applet.pupil_height)) {
-                *pupil_x = x;
-                *pupil_y = y;
-                return;
-        }
-        
-        sina = sin (angle);
-        cosa = cos (angle);
-        
-        *pupil_x = hypot ((eyes_applet.eye_height / 2) * cosa, (eyes_applet.eye_width / 2)* sina) * sina;
-        *pupil_y = hypot ((eyes_applet.eye_height / 2) * cosa, (eyes_applet.eye_width / 2)* sina) * cosa;
-        *pupil_x -= hypot ((eyes_applet.pupil_width / 2) * sina, (eyes_applet.pupil_height / 2)* cosa) * sina;
-        *pupil_y -= hypot ((eyes_applet.pupil_width / 2) * sina, (eyes_applet.pupil_height / 2) * cosa) * cosa;
-        *pupil_x -= hypot ((eyes_applet.wall_thickness / 2) * sina, (eyes_applet.wall_thickness / 2) * cosa) * sina;
-        *pupil_y -= hypot ((eyes_applet.wall_thickness / 2) * sina, (eyes_applet.wall_thickness / 2)* cosa) * cosa;
-        
-        *pupil_x += (eyes_applet.eye_width / 2);
-        *pupil_y += (eyes_applet.eye_height / 2);
+	double angle;
+	double sina;
+	double cosa;
+	double nx;
+	double ny;
+	double h;
+	double h1;
+
+	nx = (double) x - (eyes_applet.eye_width / 2.0);
+	ny = (double) y - (eyes_applet.eye_height / 2.0);
+
+	angle = atan2 (nx, ny);
+	h = hypot (nx, ny);
+	if (abs (h) < (abs (hypot (eyes_applet.eye_height / 2.0,
+	                           eyes_applet.eye_width  / 2.0)) -
+	                    eyes_applet.wall_thickness -
+	                    eyes_applet.pupil_height)) { /* inside.eyeball */
+		*pupil_x = x;
+		*pupil_y = y;
+		return;
+	}
+
+	sina = sin (angle);
+	cosa = cos (angle);
+	h1 = hypot ((eyes_applet.eye_height / 2.0) * cosa,
+	            (eyes_applet.eye_width  / 2.0) * sina) -
+	     hypot ((eyes_applet.pupil_width  / 2.0) * sina,
+	            (eyes_applet.pupil_height / 2.0) * cosa) -
+	     hypot ((eyes_applet.wall_thickness / 2.0) * sina,
+	            (eyes_applet.wall_thickness / 2.0) * cosa);
+
+	*pupil_x = (sina * h1) + (eyes_applet.eye_width  / 2.0) + 0.5;
+	*pupil_y = (cosa * h1) + (eyes_applet.eye_height / 2.0) + 0.5;
 }
 
 static void 
