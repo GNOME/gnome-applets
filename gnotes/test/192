@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<GNote Version="1.0" ID="932336148">
+  <Title>GNotes!</Title>
+  <Location>
+    <X>556</X>
+    <Y>571</Y>
+    <Width>393</Width>
+    <Height>377</Height>
+  </Location>
+  <State>
+    <Hidden>0</Hidden>
+  </State>
+  <Contents>
+    <Type>Text</Type>
+    <Data>
+       int rename(const char *oldpath, const char *newpath);
+
+DESCRIPTION
+       rename  renames  a  file, moving it between directories if
+       required.
+
+       Any other  hard  links  to  the  file  (as  created  using
+       link(2)) are unaffected.
+
+       If  newpath  already exists it will be atomically replaced
+       (subject to a few conditions - see ERRORS below), so  that
+       there  is  no point at which another process attempting to
+       access newpath will find it missing.
+
+       If newpath exists but the operation fails for some  reason
+       rename  guarantees  to  leave  an  instance  of newpath in
+       place.
+
+       However, when overwriting there will probably be a  window
+       in  which both oldpath and newpath refer to the file being
+       renamed.
+
+       If oldpath refers to a symbolic link the link is  renamed;
+       if  newpath  refers  to  a  symbolic link the link will be
+       o</Data>
+  </Contents>
+</GNote>
