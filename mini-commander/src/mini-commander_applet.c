@@ -342,6 +342,30 @@ mini_commander_applet_fill (PanelApplet *applet)
 {
     MCData *mc;
     GConfClient *client;
+
+    client = gconf_client_get_default ();
+    if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL)) {
+	    GtkWidget *error_dialog;
+
+	    error_dialog = gtk_message_dialog_new (NULL,
+						   GTK_DIALOG_DESTROY_WITH_PARENT,
+						   GTK_MESSAGE_ERROR,
+						   GTK_BUTTONS_OK,
+						   _("Command line has been disabled by your system administrator"));
+
+	    gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+	    gtk_dialog_set_has_separator (GTK_DIALOG (error_dialog), FALSE);
+	    gtk_window_set_screen (GTK_WINDOW (error_dialog),
+				   gtk_widget_get_screen (GTK_WIDGET (applet)));
+	    gtk_dialog_run (GTK_DIALOG (error_dialog));
+	    gtk_widget_destroy (error_dialog);
+
+	    /* Note that this is only kosher if this is an out of process thing,
+	       which we really are.  We really don't need/want this applet when
+	       command line is disabled */
+	    exit (1);
+    }
+
     
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR "/gnome-mini-commander.png");
     
@@ -385,14 +409,6 @@ mini_commander_applet_fill (PanelApplet *applet)
 					  "/commands/Props",
 					  "hidden", "1",
 					  NULL);
-    }
-
-    client = gconf_client_get_default ();
-    if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL)) {
-	    /* What would be the correct way to handle this?
-	       Really if the sysadmin doesn't allow command line, this applet
-	       should somehow be not addable */
-	    gtk_widget_set_sensitive (GTK_WIDGET (mc->applet), FALSE);
     }
 
     set_atk_name_description (GTK_WIDGET (applet),
