@@ -464,6 +464,12 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 }
 
 static void
+	start_gmix_cb()
+{
+	gnome_execute_shell(NULL, "gmix");
+}
+
+static void
 destroy_mixer(GtkWidget * widget, void *data)
 {
 	gtk_timeout_remove(md->timeout);
@@ -563,6 +569,12 @@ main(int argc, char **argv)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
+
+        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                                "run_gmix",
+                                                GNOME_STOCK_MENU_VOLUME,
+                                                _("Run gmix..."),
+                                                start_gmix_cb, NULL);
 
 	gtk_widget_show(applet);
 
