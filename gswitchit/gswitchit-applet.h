@@ -27,7 +27,6 @@ typedef struct _GSwitchItApplet {
 	GtkWidget *appletAncestor;
 	GtkWidget *notebook;
 	GtkWidget *ebox;
-	GtkWidget *aboutDialog;
 } GSwitchItApplet;
 
 typedef struct _GSwitchItAppletGlobals {

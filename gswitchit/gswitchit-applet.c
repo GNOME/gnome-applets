@@ -582,48 +582,20 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 		"Sergey V. Udaltsov<svu@gnome.org>",
 		NULL
 	};
-	gchar *translatorCredits;
-	GdkPixbuf *pixbuf = NULL;
-	gchar *file;
-	if (sia->aboutDialog) {
-		gtk_window_set_screen (GTK_WINDOW (sia->aboutDialog),
-				       gtk_widget_get_screen (GTK_WIDGET
-							      (sia->
-							       applet)));
-
-		gtk_window_present (GTK_WINDOW (sia->aboutDialog));
-		return;
-	}
-
-	file =
-	    gnome_program_locate_file (NULL,
-				       GNOME_FILE_DOMAIN_PIXMAP,
-				       "gswitchit-applet.png", TRUE, NULL);
-	pixbuf = gdk_pixbuf_new_from_file (file, NULL);
-	translatorCredits = _("translator_credits");
-	translatorCredits =
-	    strcmp (translatorCredits,
-		    "translator_credits") != 0 ? translatorCredits : NULL;
-	sia->aboutDialog =
-	    gnome_about_new (_("Keyboard Indicator"), VERSION,
+	
+	const gchar *translator_credits = _("translator_credits");
+		     
+	gtk_show_about_dialog (NULL,
+			       "name",         _("Keyboard Indicator"),
+			       "version",      VERSION,
 /* Translators: Please replace (C) with the proper copyright character. */
-			     _
-			     ("Copyright (c) Sergey V. Udaltsov 1999-2004"),
-			     _
-			     ("Keyboard layout indicator applet for GNOME"),
-			     authors, documenters, translatorCredits,
-			     pixbuf);
-	g_object_add_weak_pointer (G_OBJECT (sia->aboutDialog),
-				   (gpointer) & (sia->aboutDialog));
-	gnome_window_icon_set_from_file (GTK_WINDOW (sia->aboutDialog),
-					 file);
-	g_free (file);
-
-	gtk_window_set_screen (GTK_WINDOW (sia->aboutDialog),
-			       gtk_widget_get_screen (GTK_WIDGET
-						      (sia->applet)));
-
-	gtk_window_present (GTK_WINDOW (sia->aboutDialog));
+			       "copyright",    _("Copyright (c) Sergey V. Udaltsov 1999-2004"),
+			       "comments",     _("Keyboard layout indicator applet for GNOME"),
+			       "authors",      authors,
+			       "documenters",  documenters,
+			       "translator-credits",  strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+			       "logo-icon-name",       "gswitchit-applet",
+			       NULL);
 }
 
 static void
