@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.7\n"
-"POT-Creation-Date: 2000-01-29 20:32-0500\n"
-"PO-Revision-Date: 2000-01-18 19:15-05:00\n"
+"POT-Creation-Date: 2000-02-02 21:00-0500\n"
+"PO-Revision-Date: 2000-02-02 22:04-05:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -101,15 +101,15 @@ msgstr "Innstillinger for klokke"
 #: another_clock/another_clock.c:239 asclock/dialogs.c:359
 #: battery/properties.c:77 charpick/properties.c:257
 #: clockmail/properties.c:411 diskusage/properties.c:325
-#: drivemount/properties.c:339 mini-commander/src/preferences.c:755
-#: modemlights/properties.c:292 odometer/properties.c:261
-#: slashapp/properties.c:351 sound-monitor/properties.c:426
-#: tickastat/properties.c:416
+#: drivemount/properties.c:339 mini-commander/src/preferences.c:758
+#: modemlights/properties.c:292 odometer/properties.c:283
+#: screenshooter/screenshooter_applet.c:480 slashapp/properties.c:351
+#: sound-monitor/properties.c:426 tickastat/properties.c:416
 msgid "General"
 msgstr "Generelt"
 
 #. frame for colors
-#: another_clock/another_clock.c:249 mini-commander/src/preferences.c:677
+#: another_clock/another_clock.c:249 mini-commander/src/preferences.c:680
 #: multiload/load-graph.c:197
 msgid "Colors"
 msgstr "Farger"
@@ -159,9 +159,10 @@ msgstr "En analog klokke lik den som finnes i CDE-panelet"
 #: geyes/geyes.c:374 gkb/gkb.c:731 gnotes/gnotes_applet.c:164
 #: gumma/gumma.c:588 gweather/gweather-applet.c:175 jbc/jbc-applet.c:180
 #: life/life.c:270 mini-commander/src/mini-commander_applet.c:404
-#: modemlights/modemlights.c:1214 odometer/odo.c:573 slashapp/slashapp.c:58
-#: sound-monitor/main.c:347 tickastat/main.c:321 webcontrol/webcontrol.c:324
-#: whereami/whereami.c:219
+#: modemlights/modemlights.c:1214 odometer/odo.c:644
+#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:1365
+#: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
+#: webcontrol/webcontrol.c:324 whereami/whereami.c:219
 msgid "About..."
 msgstr "Om..."
 
@@ -171,9 +172,9 @@ msgstr "Om..."
 #: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:178
 #: mini-commander/src/mini-commander_applet.c:391
 #: modemlights/modemlights.c:1208 multiload/cpuload.c:68
-#: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:570
-#: slashapp/slashapp.c:55 sound-monitor/main.c:340 tickastat/main.c:315
-#: webcontrol/webcontrol.c:332
+#: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
+#: screenshooter/screenshooter_applet.c:1371 slashapp/slashapp.c:55
+#: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
 msgstr "Egenskaper ..."
 
@@ -245,6 +246,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Intern feil: ugyldig modus i battery_set_mode"
 
 #: battery/battery.c:655 jbc/jbc-applet.c:161
+#: screenshooter/screenshooter_applet.c:1267
 msgid "Can't create applet!\n"
 msgstr "Kan ikke opprette applet!\n"
 
@@ -430,7 +432,7 @@ msgstr "Innstillinger for tegnvelger"
 
 #: charpick/properties.c:166
 msgid "Minimum number of cells: (for autosize)"
-msgstr ""
+msgstr "Minste antall celler: (for autostørrelse)"
 
 #: charpick/properties.c:167
 msgid "Size of button: (pixels)"
@@ -446,9 +448,8 @@ msgstr "Antall kolonner med knapper:"
 
 #. the follow_panel_size check button
 #: charpick/properties.c:172
-#, fuzzy
 msgid "Follow panel size"
-msgstr "Bruk panelhint for størrelse"
+msgstr "Bruk panelets størrelse"
 
 #: clockmail/clockmail.c:56 slashapp/slashapp.c:130 sound-monitor/main.c:35
 #: tickastat/main.c:175
@@ -489,7 +490,7 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:141 odometer/properties.c:136
+#: clockmail/properties.c:141 odometer/properties.c:150
 #: sound-monitor/properties.c:166
 msgid "None (default)"
 msgstr "Ingen (forvalgt)"
@@ -502,7 +503,7 @@ msgstr "Tema:"
 msgid "ClockMail Settings"
 msgstr "Innstillinger for Clockmail"
 
-#: clockmail/properties.c:291 mini-commander/src/preferences.c:478
+#: clockmail/properties.c:291 mini-commander/src/preferences.c:481
 msgid "Clock"
 msgstr "Klokke"
 
@@ -538,7 +539,7 @@ msgstr "Når klikket på, kjør:"
 msgid "Theme file (directory):"
 msgstr "Temafil (katalog):"
 
-#: clockmail/properties.c:460 odometer/properties.c:302
+#: clockmail/properties.c:460 odometer/properties.c:324
 #: sound-monitor/properties.c:472
 msgid "Theme"
 msgstr "Tema"
@@ -679,7 +680,7 @@ msgstr "Velg ikon for ikke montert"
 msgid "Custom icon for not mounted:"
 msgstr "Egendefinert ikon for ikke montert:"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:327 odometer/properties.c:275
 msgid "Scale size to panel"
 msgstr "Skaler til panelets størrelse"
 
@@ -836,6 +837,22 @@ msgstr "Lag postit-lapper på skjermen."
 #: gnotes/gnotes_applet.c:152
 msgid "Can't create GNotes applet!"
 msgstr "Kan ikke opprette GNotes appleten!"
+
+#: gnotes/gnotes_applet.c:171
+msgid "Raise Notes"
+msgstr "Hev notiser"
+
+#: gnotes/gnotes_applet.c:173
+msgid "Lower Notes"
+msgstr "Senk notiser"
+
+#: gnotes/gnotes_applet.c:175
+msgid "Hide Notes"
+msgstr "Skjul notiser"
+
+#: gnotes/gnotes_applet.c:177
+msgid "Show Notes"
+msgstr "Vis notiser"
 
 #: gumma/gumma.c:314
 #, c-format
@@ -2337,7 +2354,7 @@ msgstr "barn avsluttet"
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#. timeFormat = _("%H:%M %Z");
+#. time_format = _("%H:%M %Z");
 #: mini-commander/src/message.c:105
 msgid "%H:%M"
 msgstr "%H:%M"
@@ -2390,88 +2407,88 @@ msgstr "klokke av"
 msgid "saving prefs..."
 msgstr "lagrer innstillinger..."
 
-#: mini-commander/src/preferences.c:472
+#: mini-commander/src/preferences.c:475
 msgid "Mini-Commander Properties"
 msgstr "Egenskaper for Mini-commander"
 
 #. show time check box
-#: mini-commander/src/preferences.c:486
+#: mini-commander/src/preferences.c:489
 msgid "Show time"
 msgstr "Vis tid"
 
 #. show date check box
-#: mini-commander/src/preferences.c:498
+#: mini-commander/src/preferences.c:501
 msgid "Show date"
 msgstr "Vis dato"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:511
+#: mini-commander/src/preferences.c:514
 msgid "Appearance"
 msgstr "Utseende"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:519
+#: mini-commander/src/preferences.c:522
 msgid "Show handle"
 msgstr "Vis håndtak"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:531
+#: mini-commander/src/preferences.c:534
 msgid "Show frame"
 msgstr "Vis ramme"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:545
+#: mini-commander/src/preferences.c:548
 msgid "Auto Completion"
 msgstr "Autoutfylling"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:553
+#: mini-commander/src/preferences.c:556
 msgid "Enable history based auto completion"
 msgstr "Slå på historikkbasert autoutfylling"
 
 #. Size
-#: mini-commander/src/preferences.c:565 tickastat/properties.c:492
+#: mini-commander/src/preferences.c:568 tickastat/properties.c:492
 msgid "Size"
 msgstr "Størrelse"
 
 #. applet width
-#: mini-commander/src/preferences.c:577
+#: mini-commander/src/preferences.c:580
 msgid "Applet width:"
 msgstr "Applet-bredde:"
 
 #. applet height
-#: mini-commander/src/preferences.c:606
+#: mini-commander/src/preferences.c:609
 msgid "Applet height:"
 msgstr "Applet-høyde:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:635
+#: mini-commander/src/preferences.c:638
 msgid "Command line height:"
 msgstr "Kommandolinjehøyde:"
 
 #. fg
-#: mini-commander/src/preferences.c:687
+#: mini-commander/src/preferences.c:690
 msgid "Command line foreground:"
 msgstr "Kommandolinjeforgrunn:"
 
 #. bg
-#: mini-commander/src/preferences.c:722
+#: mini-commander/src/preferences.c:725
 msgid "Command line background:"
 msgstr "Kommandolinjebakgrunn:"
 
 #. prefix
-#: mini-commander/src/preferences.c:782
+#: mini-commander/src/preferences.c:785
 #, c-format
 msgid "Prefix %.2d:"
 msgstr "Prefiks %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:800
+#: mini-commander/src/preferences.c:803
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
-#: mini-commander/src/preferences.c:819
+#: mini-commander/src/preferences.c:822
 msgid "Macros"
 msgstr "Makroer"
 
@@ -2687,37 +2704,411 @@ msgstr ""
 "en GNOME applet som følger og måler bevegelsen til muspekeren over "
 "skrivebordet."
 
-#: odometer/odo.c:557
+#: odometer/odo.c:622
 msgid "Can't create odometer applet!"
 msgstr "Kan ikke opprette odometer appleten!"
 
-#: odometer/odo.c:567
+#: odometer/odo.c:638
 msgid "Reset"
 msgstr "Nullstill"
 
-#: odometer/properties.c:218
+#: odometer/properties.c:234
 msgid "Odometer setting"
 msgstr "Odometer innstilling"
 
-#: odometer/properties.c:229
+#: odometer/properties.c:245
 msgid "Use Metric"
 msgstr "Bruk utgangsverdi"
 
-#: odometer/properties.c:235
+#: odometer/properties.c:251
 msgid "auto_reset"
 msgstr "auto_reset"
 
-#: odometer/properties.c:241 tickastat/mod_news.c:1251
+#: odometer/properties.c:257 tickastat/mod_news.c:1251
 msgid "enabled"
 msgstr "aktiv"
 
-#: odometer/properties.c:247
+#: odometer/properties.c:263
 msgid "Digits number"
 msgstr "Tall nummer"
 
-#: odometer/properties.c:276
+#: odometer/properties.c:298
 msgid "Theme file :"
 msgstr "Temafil :"
+
+#: quicklaunch/quicklaunch.c:63
+msgid "The QuickLaunch Applet"
+msgstr "Hurtigstart applet"
+
+#: quicklaunch/quicklaunch.c:65
+msgid ""
+"This applet adds some pretty small icons for your launchers to your panel, "
+"like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
+"launchers."
+msgstr ""
+"Denne appleten legger til noen ganske små ikoner for oppstartere på panelet, "
+"slik som hurtigstartmenylinjen i Windows, og unngår de svære GNOME "
+"startknappene."
+
+#: quicklaunch/quicklaunch.c:131
+msgid "Launcher Properties"
+msgstr "Egenskaper for oppstarter"
+
+#: quicklaunch/quicklaunch.c:229
+msgid ""
+"drop launchers from\n"
+"the menu here"
+msgstr ""
+"slipp oppstartere fra\n"
+"menyen her"
+
+#: quicklaunch/quicklaunch.c:267
+msgid "Launcher properties..."
+msgstr "Egenskaper for oppstarter..."
+
+#: quicklaunch/quicklaunch.c:279
+msgid "Delete launcher"
+msgstr "Slett oppstarter"
+
+#: quicklaunch/quicklaunch.c:419
+msgid ""
+"Cannot create directory:\n"
+"~/.gnome/quicklaunch.\n"
+"Aborting"
+msgstr ""
+"Kan ikke opprette katalog:\n"
+"~/.gnome/quicklaunch.\n"
+"Avbryter"
+
+#: screenshooter/screenshooter_applet.c:44
+msgid "Screen-Shooter Applet"
+msgstr "Skjermskyter applet!"
+
+#: screenshooter/screenshooter_applet.c:46
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr "Copyright (C) 1999 Tom Gilbert"
+
+#: screenshooter/screenshooter_applet.c:47
+msgid ""
+"A useful little screengrabber.\n"
+"The left/top button allows you to grab either:\n"
+"a window (click to select which one)\n"
+"or an area (click and drag to select a rectangle.)\n"
+"The right/bottom button will grab the entire desktop.\n"
+"Share and Enjoy ;)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:383
+msgid "Screen-Shooter Settings"
+msgstr "Instillinger for skjermskyter"
+
+#: screenshooter/screenshooter_applet.c:390
+msgid "Capture WM decorations when grabbing a window"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:399
+msgid "Give audio feedback using the keyboard bell"
+msgstr "Gi tilbakemelding med lyd via tastaturklokken"
+
+#: screenshooter/screenshooter_applet.c:408
+msgid "Display Spurious Options (I got carried away)"
+msgstr "Vis skiftende alternativer (Jeg ble revet med)"
+
+#: screenshooter/screenshooter_applet.c:417
+msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
+msgstr "Pause (sekunder) før dump tas (kun for dump av hele skrivebordet)"
+
+#: screenshooter/screenshooter_applet.c:439
+msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr "Komprimert kvalitet (JPEG/MIFF/PNG-modus) Høy: god kvalitet/stor fil"
+
+#: screenshooter/screenshooter_applet.c:464
+msgid "Create monochrome image"
+msgstr "Opprett monokromt bilde"
+
+#: screenshooter/screenshooter_applet.c:472
+msgid "Invert colours in image"
+msgstr "Inverter fargene i bildet"
+
+#: screenshooter/screenshooter_applet.c:493
+msgid "Directory to save images in:"
+msgstr "Katalog for lagring av bilder:"
+
+#: screenshooter/screenshooter_applet.c:517
+msgid "Image filename:"
+msgstr "Filnavn for bilde:"
+
+#: screenshooter/screenshooter_applet.c:532
+msgid "Show expanded filename"
+msgstr "Vis utvidet filnavn"
+
+#: screenshooter/screenshooter_applet.c:552
+#, c-format
+msgid ""
+"Filetype is determined from filename suffix.\n"
+"Default filetype (if no extension or unrecognised extension) is miff.\n"
+"Recognised suffixes are:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"and several obscure ones. Try your luck with something interesting!\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
+".shtml\n"
+"\n"
+"Recommendations:\n"
+"Small file, pretty good quality:   jpg, 75% quality\n"
+"Slightly larger file but lossless: png, as much compression as you like.\n"
+"- compressing pngs takes longer at higher ratios, but is still lossless"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:569
+msgid "View screenshot after saving it"
+msgstr "Vis skjermdump etter lagring"
+
+#: screenshooter/screenshooter_applet.c:580
+msgid "App to use for displaying screenshots:"
+msgstr "Applikasjon som skal brukes for å vise skjermdumpene:"
+
+#: screenshooter/screenshooter_applet.c:595
+msgid "Files, Apps"
+msgstr "Filer, applikasjoner"
+
+#: screenshooter/screenshooter_applet.c:604
+msgid "Create thumbnail of image too"
+msgstr "Opprett miniatyr også"
+
+#: screenshooter/screenshooter_applet.c:612
+msgid "Thumbnail Size (percentage of original)"
+msgstr "Størrelse for miniatyr (prosent av original)"
+
+#: screenshooter/screenshooter_applet.c:633
+msgid ""
+"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
+"Kompresjon for miniatyr (JPEG/MIFF/PNG-modus) Høy: god kvalitet/stor fil"
+
+#: screenshooter/screenshooter_applet.c:657
+msgid "Prefix to attach to thumbnail filename:"
+msgstr "Prefiks som skal setter inn i miniatyrfilnavnet:"
+
+#: screenshooter/screenshooter_applet.c:687
+msgid "Use high-quality intermediate for generating thumbnail"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:701
+msgid ""
+"(This'll chug loads of CPU, but will prevent compressing the image twice if "
+"a\n"
+"lossy file format is used)\n"
+"Don't use this if you're using a lossless compression format, or if you "
+"cherish\n"
+"speed and don't mind imperfection in your thumbnails."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:708
+msgid "Thumbnails"
+msgstr "Miniatyrer"
+
+#: screenshooter/screenshooter_applet.c:731
+msgid ""
+"All post-processing, frill and spurious options will chug more CPU than a\n"
+"simple screenshot, due to the creation and then conversion of an "
+"intermediate\n"
+"image. Intensive operations may take some time on less spiffy CPUs."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:744
+msgid "Normalize image (Span full range of color values to enhance contrast)"
+msgstr ""
+"Normaliser bildet (Gå gjennom hele spekteret av fargeverdier for å bedre "
+"kontrasten)"
+
+#: screenshooter/screenshooter_applet.c:754
+msgid "Equalize image (Perform histogram equalization)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:767
+msgid "Enhance image (reduce noise)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:775
+msgid "Despeckle Image (reduce spots)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:782
+msgid "Sharpen Image by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:801
+msgid "Rotate image clockwise by how many degrees?"
+msgstr "Hvor mange grader skal bildet roteres med klokken?"
+
+#: screenshooter/screenshooter_applet.c:820
+msgid "Adjust gamma"
+msgstr "Juster gamma"
+
+#: screenshooter/screenshooter_applet.c:827
+msgid "Gamma value"
+msgstr "Gammaverdi"
+
+#: screenshooter/screenshooter_applet.c:850
+msgid "Post Processing"
+msgstr "Postprosessering"
+
+#: screenshooter/screenshooter_applet.c:858
+msgid "Create frame around image"
+msgstr "Lag ramme rundt bildet"
+
+#: screenshooter/screenshooter_applet.c:865
+msgid "Frame Width (pixels)"
+msgstr "Rammebredde (piksler)"
+
+#: screenshooter/screenshooter_applet.c:888
+msgid "Mirror image vertically"
+msgstr "Speilvend bildet vertikalt"
+
+#: screenshooter/screenshooter_applet.c:895
+msgid "Mirror image horizontally"
+msgstr "Vend bildet horisontalt"
+
+#: screenshooter/screenshooter_applet.c:902
+msgid "Emboss image"
+msgstr "Lag trykk av bilde"
+
+#: screenshooter/screenshooter_applet.c:921
+msgid ""
+"When finished, send image and thumbnail filenames to script/program below"
+msgstr ""
+"Når ferdig, send bilde- og miniatyrfilnavnet til skriptet/programmet under"
+
+#: screenshooter/screenshooter_applet.c:933
+msgid "Script or program to launch:"
+msgstr "Skript eller program som skal startes:"
+
+#: screenshooter/screenshooter_applet.c:954
+msgid ""
+"Script/program will be launched after image creation with the image "
+"filenames\n"
+"specified on the commandline as follows:\n"
+"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
+"Hint: I use a script to update my website screenshot page.\n"
+"An example script should've been included in the tarball, or at my website."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:963
+msgid "Frills"
+msgstr "Ekstra"
+
+#: screenshooter/screenshooter_applet.c:972
+msgid "Blur Image"
+msgstr "Gjør uskarpt"
+
+#: screenshooter/screenshooter_applet.c:980
+msgid "Blur image by what factor?"
+msgstr "Gjør bildet uskarpt med hvilken faktor?"
+
+#: screenshooter/screenshooter_applet.c:1001
+msgid "Create Charcoal Effect"
+msgstr "Lag kulleffekt"
+
+#: screenshooter/screenshooter_applet.c:1009
+msgid "Charcoal by what factor?"
+msgstr "Faktor for kulleffekt?"
+
+#: screenshooter/screenshooter_applet.c:1030
+msgid "Find Edges in Image"
+msgstr "Finn kanter i bildet"
+
+#: screenshooter/screenshooter_applet.c:1038
+msgid "Find edges by what factor?"
+msgstr "Faktor for finn kanter?"
+
+#: screenshooter/screenshooter_applet.c:1058
+msgid "Implode Image"
+msgstr "Imploder bildet"
+
+#: screenshooter/screenshooter_applet.c:1066
+msgid "Implode by what factor?"
+msgstr "Faktor for implodering?"
+
+#: screenshooter/screenshooter_applet.c:1087
+msgid "Spurious"
+msgstr "Overflødig"
+
+#: screenshooter/screenshooter_applet.c:1096
+msgid "Create Painted Effect"
+msgstr "Lag tegnet effekt"
+
+#: screenshooter/screenshooter_applet.c:1104
+msgid "Paint what radius around each pixel?"
+msgstr "Radius for tegning rundt hver piksel?"
+
+#: screenshooter/screenshooter_applet.c:1124
+msgid "Solarise Image"
+msgstr "Solariser bildet"
+
+#: screenshooter/screenshooter_applet.c:1132
+msgid "Solarize factor?"
+msgstr "Faktor for solarisering?"
+
+#: screenshooter/screenshooter_applet.c:1152
+msgid "Spread image pixels"
+msgstr "Spre pikslene i bildet"
+
+#: screenshooter/screenshooter_applet.c:1160
+msgid "Radius to around each pixel to spread?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1181
+msgid "Swirl pixels. My favorite :-)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1189
+msgid "Radius to swirl pixels around?)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1209
+msgid "Spurious 2"
+msgstr "Overflødig 2"
+
+#: screenshooter/screenshooter_applet.c:1324
+#: screenshooter/screenshooter_applet.c:1327
+msgid "Grab a shot of a specific window or area"
+msgstr "Hent et dump av et spesifikt vindu eller område"
+
+#: screenshooter/screenshooter_applet.c:1325
+#: screenshooter/screenshooter_applet.c:1328
+msgid "Grab a shot of your entire desktop"
+msgstr "Hent et dump av hele skrivebordet"
+
+#: screenshooter/screenshooter_applet.c:1485
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the directory box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1501
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1851
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1863
+#, c-format
+msgid ""
+"The specified filename:\n"
+"%s\n"
+"expands to:\n"
+"%s\n"
+"when passed to a shell"
+msgstr ""
 
 #: slashapp/properties.c:203 slashapp/slashapp.c:61
 msgid "Articles"
