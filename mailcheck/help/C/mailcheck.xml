@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.5.4">
-  <!ENTITY manrevision "2.4">
-  <!ENTITY date "February 2004">
+  <!ENTITY appletversion "2.8">
+  <!ENTITY manrevision "2.8">
+  <!ENTITY date "September 2004">
   <!ENTITY applet "Inbox Monitor">
 ]>
 
@@ -21,7 +21,7 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-	 <title>&applet; Applet Manual V&manrevision;</title> 
+	 <title>&applet; Applet Manual</title> 
 	 <copyright> 
 		<year>2002</year>
 		<year>2003</year>  
@@ -83,6 +83,13 @@
 			 <address> <email>telsa@linuxchix.org</email> </address> 
 		  </affiliation> 
 		</author>  
+		<author>
+		  <firstname>Angela</firstname>
+		  <surname>Boyle</surname>
+		  <affiliation>
+		    <orgname>GNOME Documentation Project</orgname>
+		  </affiliation>
+		</author>
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
         <othercredit role="translator">
@@ -98,9 +105,17 @@
 	 </authorgroup>
 
 	 <revhistory>
+	   <revision>
+	     <revnumber>Version &manrevision;</revnumber>
+	     <date>&date;</date>
+	     <revdescription>
+	       <para role="author">GNOME Documentation Team</para>
+	       <para role="publisher">GNOME Documentation Project</para>
+	     </revdescription>
+	   </revision>
 		<revision> 
-		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
-		  <date>&date;</date> 
+		  <revnumber>&applet; Applet Manual V2.5</revnumber> 
+		  <date>August 2004</date> 
 		  <revdescription> 
 			 <para role="author">Sun GNOME Documentation Team</para>	 
 			 <para role="publisher">GNOME Documentation Project</para> 
@@ -199,59 +214,54 @@
                                                                                 
     <sect2 id="mailcheck-introduction-add">
       <title>To Add &applet; to a Panel</title>
-	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
-		<menuchoice> 
-		  <guimenu>Add to Panel</guimenu> 
-		  <guisubmenu>Internet</guisubmenu> 
-		  <guimenuitem>Inbox Monitor</guimenuitem> 
-		</menuchoice>.</para> 
+      <para>To add <application>&applet;</application> to a panel,
+      right-click on the panel, then choose <guimenuitem>Add to
+      Panel</guimenuitem>.  Select <application>&applet;</application>
+      in the <application>Add to the panel</application> dialog, then
+      click <guibutton>OK</guibutton>.</para>
     </sect2>
   </sect1>
 <!-- ================ Usage ================================ -->
 
-  <sect1 id="mailcheck-usage"> 
-	 <title>Usage</title> 
+  <sect1 id="mailcheck-checking"> 
+	 <title>Checking Your Mail</title> 
 	 
 		<para>To check the mail server for new messages, right-click on the applet, then choose <guimenuitem>Update</guimenuitem>. <application>&applet;</application> contacts the mail server to determine if there is new mail on the server.</para>
-		<para>You can configure <application>&applet;</application> to run a command when you click on the applet. See <xref linkend="mailcheck-behavior"/> for information about how to configure <application>&applet;</application> to run commands.</para>
-
-  </sect1>
-  
-<!-- ============= Preferences ============================= -->
-
-  <sect1 id="mailcheck-prefs"> 
-	 <title>Preferences</title> 
-	 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
 
 	 <sect2 id="mailcheck-behavior"> 
-	 
-		<title>Behavior</title> 
-			
+		<title>Changing Behavior</title> 
+		<para>To change the behavior of <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and select the <guilabel>Behavior</guilabel> tab.</para> 
 		<variablelist> 
 		  <varlistentry> 
-			 <term><guilabel>Check for mail every ... minutes ... seconds</guilabel></term> 
+			 <term>To change time period between checks:</term> 
 			 <listitem> 
-			 <para>Use the spin boxes to specify how often <application>&applet;</application> checks the mail server to determine if there is new mail. </para> 
+			 <para>Use the <guilabel>Check for mail every ... minutes ... seconds</guilabel> spin boxes to specify how often <application>&applet;</application> checks the mail server to determine if there is new mail. </para> 
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>Play a sound when new mail arrives</guilabel></term> 
+			 <term>To have audible alert to new mail:</term> 
 			 <listitem> 
-			 <para>Select this option to play a default sound when the applet finds new mail on the mail server. The default sound file is specified in <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>. </para> 
+			 <para>Select the <guilabel>Play a sound when new mail arrives</guilabel> option to play a default sound when the applet finds new mail on the mail server. The default sound file is specified in <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>. </para> 
 			 </listitem> 
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Stop animation when double clicked</guilabel></term> 
+			 <term>To stop animated alert:</term> 
 			 <listitem> 
-			 <para>If you select an animated image from the <guilabel>Select animation</guilabel> drop-down list, select this option to stop the animation when you double-click on the applet.</para> 
+			 <para>If you select an animated image from the <guilabel>Select animation</guilabel> drop-down list, select the <guilabel>Stop animation when double clicked</guilabel> option to stop the animation when you double-click on the applet.</para> 
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>Select animation</guilabel></term> 
+			 <term>To choose an alert:</term> 
 			 <listitem> 
-			 <para>Use this drop-down list box to select the type of display to use in the applet. You can display text, an image, or an animation.</para> 
+			 <para>Use the <guilabel>Select animation</guilabel> drop-down list box to select the type of display to use in the applet. You can display text, an image, or an animation.</para> 
 			 </listitem> 
 		  </varlistentry> 
+		</variablelist>
+	</sect2>
+	<sect2 id="mailcheck-commands">
+		<title>Changing Commands</title>
+		<para>To change the commands you can run from <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and select the <guilabel>Behavior</guilabel> tab. Set commands to run at the following times:</para> 
+		<variablelist>
 		  <varlistentry> 
 			 <term><guilabel>Before each update</guilabel></term> 
 			 <listitem> 
@@ -272,11 +282,11 @@
 		  </varlistentry> 
   		</variablelist> 
 	 </sect2>
+</sect1>
 
-	 <sect2 id="mailcheck-inboxsettings"> 
-
+<sect1 id="mailcheck-inboxsettings"> 
 		<title>Inbox Settings</title> 
-
+		<para>To configure the inbox settings for <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and select the <guilabel>Inbox</guilabel> tab.</para> 
 		<variablelist> 
 		  <varlistentry> 
 			 <term><guilabel>Mailbox resides on</guilabel></term> 
@@ -298,44 +308,39 @@
 			 </itemizedlist>
 			 </listitem> 
 		  </varlistentry> 
+		</variablelist>
+		<para>The different places your mail box resides will require different information from you. To following shows what needs to be filled out for different mailbox residences.</para>
+		<variablelist>
 		  <varlistentry> 
-			 <term><guilabel>Mail spool file</guilabel></term> 
+			 <term><guilabel>Local mailspool</guilabel> or <guilabel>Local maildir</guilabel></term> 
 			 <listitem> 
-			 <para>If you select <guilabel>Local mailspool</guilabel> or <guilabel>Local maildir</guilabel> as your mailbox location, use this field to specify the location to check for new messages.</para> 
+			 <para>Use the <guilabel>Mail spool file</guilabel> field to specify the location to check for new messages.</para> 
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>Mail server</guilabel></term> 
+			 <term><guilabel>Remote POP3-server</guilabel> or <guilabel>Remote IMAP-server</guilabel></term> 
 			 <listitem> 
-			 <para>If you select <guilabel>Remote POP3-server</guilabel> or <guilabel>Remote IMAP-server</guilabel> as your mailbox location, use this text box to specify the name of the remote mail server.</para> 
-			 </listitem> 
+				<itemizedlist>
+			 		<listitem>
+					<para>Use the <guilabel>Mail server</guilabel> text box to specify the name of the remote mail server.</para> 
+					 </listitem> 
+					 <listitem> 
+					 <para>Use the <guilabel>Username</guilabel> text box to specify the username to access the remote mail server.</para> 
+					 </listitem> 
+					 <listitem> 
+					 <para>Use the<guilabel>Password</guilabel> text box to specify the password to access the remote mail server.</para> 
+					 <para>Select the <guilabel>Save password to disk</guilabel> option to save the password in encrypted format in the <application>gconf</application> database. If you select this option, the applet does not prompt you to enter the password each time you want to access the mail server.</para> 
+					 </listitem> 
+				</itemizedlist>
+			</listitem>
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>Username</guilabel></term> 
+			 <term><guilabel>Remote IMAP-server</guilabel></term> 
 			 <listitem> 
-			 <para>If you select <guilabel>Remote POP3-server</guilabel> or <guilabel>Remote IMAP-server</guilabel> as your mailbox location, use this text box to specify the username to access the remote mail server.</para> 
-			 </listitem> 
-		  </varlistentry> 
-		  <varlistentry> 
-			 <term><guilabel>Password</guilabel></term> 
-			 <listitem> 
-			 <para>If you select <guilabel>Remote POP3-server</guilabel> or <guilabel>Remote IMAP-server</guilabel> as your mailbox location, use this text box to specify the password to access the remote mail server.</para> 
-			 </listitem> 
-		  </varlistentry> 
-		  <varlistentry> 
-			 <term><guilabel>Save password to disk</guilabel></term> 
-			 <listitem> 
-			 <para>Select this option to save the password in encrypted format in the <application>gconf</application> database. If you select this option, the applet does not prompt you to enter the password each time you want to access the mail server.</para> 
-			 </listitem> 
-		  </varlistentry> 
-		  <varlistentry> 
-			 <term><guilabel>Folder</guilabel></term> 
-			 <listitem> 
-			 <para>If you select <guilabel>Remote IMAP-server</guilabel> as your mailbox location, use this text box to specify the folder on the server that contains your mailbox.</para> 
+			 <para>Use the <guilabel>Folder</guilabel> text box to specify the folder on the server that contains your mailbox.</para> 
 			 </listitem> 
 		  </varlistentry> 
 		</variablelist> 
-	 </sect2> 
   </sect1>
 
 </article> 
