@@ -1,0 +1,21 @@
+1998-05-30  Raja R Harinath  <harinath@cs.umn.edu>
+
+	* Makefile.am: Cleaned up Automake hack not to generate
+	those pesky `dummy.cc' files.
+	
+1998-05-30  John Ellis  <johne@bellatlantic.net>
+
+	* clockmail.[ch], properties: user can now specify mailfile.
+	* clockmail.c (check_mail_file_status): at reset option for
+	when the mail file is changed in the properties dialog.
+
+1998-05-28  John Ellis  <johne@bellatlantic.net>
+
+	* globals.c: added to clockmail.c, removed.
+	* clockmail.c (update_display): changed date to use
+	strftime to work with locales.
+	* clockmail.c (set_tooltip): changed to work with longer
+	date strings.
+	* clockmail.[ch], properties.c: changed MILIT_TIME to
+	AM_PM_ENABLE and set the default to 24 hour clock.
+
