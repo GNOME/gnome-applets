@@ -16,7 +16,7 @@ slash_applet_LDADD = \
 
 EXTRA_DIST = \
 	slash_applet.desktop slashsplash.xpm \
-	slash_applet.gnorba
+	slash_applet.gnorba noimage.xpm back.xpm
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = slash_applet.desktop
