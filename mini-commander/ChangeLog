@@ -1,5 +1,23 @@
 1999-01-16  Oliver Maruhn  <om@linuxhq.com>
 
+	* src/cmd_completion.c (cmdCompletion): now command completion
+ 	delivers the largest possible completion [even if the given
+ 	command is not unique]
+
+	* src/macro.c (prefixLength_IncludingWhithespaces): added
+
+	* src/cmd_completion.c (cmdCompletion): now command completion
+ 	even works if a prefix is used
+
+	* src/macro.c (expandCommand): added
+	(prefixLength): added
+	(getPrefix): added
+
+	* src/macro.[ch]: added
+
+	* src/mini-commander_applet.c (main): tooltips added for
+ 	history/browser buttons
+
 	* src/preferences.c (loadSession): load history on program start
 	(saveSession): store history permanently
 

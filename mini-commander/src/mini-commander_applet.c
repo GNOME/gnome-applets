@@ -179,6 +179,9 @@ main(int argc, char **argv)
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
+    applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),
+				     GTK_WIDGET(button),
+				     _("Browser"));
     gtk_box_pack_start(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
 
     /* add history button */
@@ -189,6 +192,9 @@ main(int argc, char **argv)
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
+    applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),
+				     GTK_WIDGET(button),
+				     _("History"));
     gtk_box_pack_end(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
 
     /* add buttons into frame */

@@ -29,6 +29,7 @@
 
 #include "exec.h"
 #include "preferences.h"
+#include "macro.h"
 #include "message.h"
 
 /* 
@@ -44,61 +45,14 @@ execCommand(char *cmd)
 {
     pid_t pid;
     char *argv[10];
-    char url[1000];
     char command[1000];
-    char commandExec[1000];
-    char macro[1000];
-    char *substPtr;
-    int prefixRecognized = FALSE;
-    int i, j;
     pid_t PID = getpid();
 	    
     /* make local copy of cmd; now we can minipulate command without
        changing cmd (important for history) */
     strcpy(command, cmd);
 
-    /* prefix used? */
-    for(i=0; i<=MAX_PREFIXES-1; i++)
-	{
-	    if (prop.prefix[i] != (char *) NULL &&
-		strlen(prop.prefix[i]) > 0 &&
-		strncmp(command, prop.prefix[i], strlen(prop.prefix[i])) == 0)
-		{
-		    /* prefix recognized */
-		    prefixRecognized = TRUE;
-		    strcpy(macro, prop.command[i]);
-
-		    if ((substPtr = strstr(macro, "$1")) != (char *) NULL)
-			{
-			    /* "$1" found */
-			    *substPtr = '\000';
-			    strcpy(commandExec, macro);
-			    strcat(commandExec, command + strlen(prop.prefix[i]));
-			    strcat(commandExec, substPtr + 2);
-			}
-		    else
-			{
-			    /* no $1 in this macro */
-			    strcpy(commandExec, prop.command[i]); 
-			}
-
-		    for(j=0; j<10; j++)
-			{
-			    /* substitute up to ten $1's */
-			    strcpy(macro, commandExec);
-			    if ((substPtr = strstr(macro, "$1")) != (char *) NULL)
-				{
-				    /* "$1" found */
-				    *substPtr = '\000';
-				    strcpy(commandExec, macro);
-				    strcat(commandExec, command + strlen(prop.prefix[i]));
-				    strcat(commandExec, substPtr + 2);
-				}
-			}
-	    
-		    strcpy(command, commandExec);
-		}
-	}    
+    expandCommand(command);
 
     /* execute command */
     showMessage((gchar *) _("starting...")); 	    

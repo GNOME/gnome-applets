@@ -34,6 +34,7 @@
 
 #include "cmd_completion.h"
 #include "preferences.h"
+#include "macro.h"
 #include "message.h"
 
 static char shellScript[] = 
@@ -50,53 +51,74 @@ do\n\
 done\n\
 ";
 
-void cmdCompletion(char *cmd)
+void
+cmdCompletion(char *cmd)
 {
     FILE *pipe_fp;
     char buffer[MAX_COMMAND_LENGTH] = "";
     char dummyBuffer[MAX_COMMAND_LENGTH] = "";
     char shellCommand[2048];
-    int completionNotUnique = FALSE;
-
-    if(strlen(cmd) > 0)
+    char largestPossibleCompletion[MAX_COMMAND_LENGTH] = "";
+    int completionNotUnique = FALSE;   
+    int numWhitespaces, i, pos;
+  
+    if(strlen(cmd) == 0)
 	{
-	    showMessage((gchar *) _("completing..."));
+	    showMessage((gchar *) _("not unique"));
+	    return;
+	}
 
-	    strcpy(shellCommand, "/bin/sh -c '");
-	    strcat(shellCommand, "cmd=\"");
-	    strcat(shellCommand, cmd);
-	    strcat(shellCommand, "\"\n");
-	    strcat(shellCommand, shellScript);
-	    strcat(shellCommand, "'");
-	    
-	    if((pipe_fp = popen(shellCommand, "r")) == NULL)
-		showMessage((gchar *) _("no /bin/sh"));
-	    
-	    /* get first line from shell script answer */
-	    fgets(buffer, MAX_COMMAND_LENGTH-1, pipe_fp);
-	    /* erase \n */
-	    if(strlen(buffer) > 1)
-		buffer[strlen(buffer)-1]='\000';
+    showMessage((gchar *) _("completing..."));
 
-	    /* get the rest */
-	    while(fgets(dummyBuffer, MAX_COMMAND_LENGTH-1, pipe_fp))
-		if(strlen(dummyBuffer) > 1)
-		    completionNotUnique = TRUE;
-	    
-	    if(strlen(buffer) > 1 && completionNotUnique == FALSE)
-		{
-		    strcpy(cmd, buffer);
-		    showMessage((gchar *) _("completed"));
-		}
-	    else if(strlen(buffer) > 1 && completionNotUnique == TRUE)
-		showMessage((gchar *) _("not unique"));
+    numWhitespaces = prefixLength_IncludingWhithespaces(cmd) - prefixLength(cmd);
+
+    strcpy(shellCommand, "/bin/sh -c '");
+    strcat(shellCommand, "cmd=\"");
+    strcat(shellCommand, cmd + prefixLength_IncludingWhithespaces(cmd));
+    strcat(shellCommand, "\"\n");
+    strcat(shellCommand, shellScript);
+    strcat(shellCommand, "'");
+    
+    if((pipe_fp = popen(shellCommand, "r")) == NULL)
+	showMessage((gchar *) _("no /bin/sh"));
+
+    /* get first line from shell script answer */
+    fscanf(pipe_fp, "%s\n", largestPossibleCompletion);
+
+    /* get the rest */
+    while(fscanf(pipe_fp, "%s\n", buffer) == 1){
+	completionNotUnique = TRUE;
+	pos = 0;
+	while(largestPossibleCompletion[pos] != '\000' 
+	      && buffer[pos] != '\000'
+	      && strncmp(largestPossibleCompletion, buffer, pos + 1) == 0)
+	    pos++;
+	strncpy(largestPossibleCompletion, buffer, pos);
+	/* strncpy does not add \000 to the end */
+	largestPossibleCompletion[pos] = '\000';
+    }
+    pclose(pipe_fp);
+      
+    if(strlen(largestPossibleCompletion) > 1)
+	{
+	    if(getPrefix(cmd) != NULL)
+		strcpy(cmd, getPrefix(cmd));
 	    else
-		showMessage((gchar *) _("not found"));
+		strcpy(cmd, "");
 
-	    pclose(pipe_fp);
+	    /* fill up the whitespaces */
+	    for(i = 0; i < numWhitespaces; i++)
+		strcat(cmd, " ");	
+
+	    strcat(cmd, largestPossibleCompletion);
+
+	    if(!completionNotUnique)
+		showMessage((gchar *) _("completed"));
+	    else
+		showMessage((gchar *) _("not unique"));		
 	}
     else
-	showMessage((gchar *) _("not unique"));
+	showMessage((gchar *) _("not found"));
 }
 
 
