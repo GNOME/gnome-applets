@@ -10,21 +10,21 @@
  *
  */
 
-#define WIN_STATE_STICKY          (1<<0)
-#define WIN_STATE_RESERVED_BIT1   (1<<1)
-#define WIN_STATE_MAXIMIZED_VERT  (1<<2)
-#define WIN_STATE_MAXIMIZED_HORIZ (1<<3)
-#define WIN_STATE_HIDDEN          (1<<4)
-#define WIN_STATE_SHADED          (1<<5)
-#define WIN_STATE_HID_WORKSPACE   (1<<6)
-#define WIN_STATE_HID_TRANSIENT   (1<<7)
-#define WIN_STATE_FIXED_POSITION  (1<<8)
-#define WIN_STATE_ARRANGE_IGNORE  (1<<9)
+#define GWIN_STATE_STICKY          (1<<0)
+#define GWIN_STATE_RESERVED_BIT1   (1<<1)
+#define GWIN_STATE_MAXIMIZED_VERT  (1<<2)
+#define GWIN_STATE_MAXIMIZED_HORIZ (1<<3)
+#define GWIN_STATE_HIDDEN          (1<<4)
+#define GWIN_STATE_SHADED          (1<<5)
+#define GWIN_STATE_HID_WORKSPACE   (1<<6)
+#define GWIN_STATE_HID_TRANSIENT   (1<<7)
+#define GWIN_STATE_FIXED_POSITION  (1<<8)
+#define GWIN_STATE_ARRANGE_IGNORE  (1<<9)
 
-#define WIN_HINTS_SKIP_FOCUS             (1<<0)
-#define WIN_HINTS_SKIP_WINLIST           (1<<1)
-#define WIN_HINTS_SKIP_TASKBAR           (1<<2)
-#define WIN_HINTS_GROUP_TRANSIENT        (1<<3)
+#define GWIN_HINTS_SKIP_FOCUS             (1<<0)
+#define GWIN_HINTS_SKIP_WINLIST           (1<<1)
+#define GWIN_HINTS_SKIP_TASKBAR           (1<<2)
+#define GWIN_HINTS_GROUP_TRANSIENT        (1<<3)
 
 #include <X11/Xlib.h>
 #include <X11/Xmd.h>
@@ -112,9 +112,9 @@ GList              *workspace_list, *button_list, *tasks = NULL;
 gint                workspace_count, current_workspace = 1;
 gint                i_changed_it = 0;
 gint                tasks_in_row = 16;
-Atom                _XA_WIN_WORKSPACE;
-Atom                _XA_WIN_WORKSPACE_NAMES;
-Atom                _XA_WIN_STATE;
+Atom                _XA_GWIN_WORKSPACE;
+Atom                _XA_GWIN_WORKSPACE_NAMES;
+Atom                _XA_GWIN_STATE;
 PanelOrientType     orient;
 extern gint         gdk_error_warnings;
 
@@ -298,7 +298,7 @@ show_cb(GtkWidget * widget, Task * t)
     {
       ev.type = ClientMessage;
       ev.window = GDK_ROOT_WINDOW();
-      ev.message_type = _XA_WIN_WORKSPACE;
+      ev.message_type = _XA_GWIN_WORKSPACE;
       ev.format = 32;
       ev.data.l[0] = t->desktop;
       ev.data.l[1] = CurrentTime;
@@ -446,9 +446,9 @@ client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t)
   val = AtomGet(win, "WIN_STATE", XA_CARDINAL, &size);
   if (val)
     {
-      if (*val & WIN_STATE_STICKY)
+      if (*val & GWIN_STATE_STICKY)
 	t->sticky = 1;
-      if (*val & WIN_STATE_SHADED)
+      if (*val & GWIN_STATE_SHADED)
 	t->shaded = 1;
       g_free(val);
     }
@@ -555,7 +555,7 @@ add_task(Window win)
   val = AtomGet(win, "WM_HINTS", XA_CARDINAL, &size);
   if (val)
     {
-      if ((*val) & WIN_HINTS_SKIP_TASKBAR)
+      if ((*val) & GWIN_HINTS_SKIP_TASKBAR)
 	{
 	  g_free(val);
 	  return;
@@ -627,9 +627,9 @@ add_task(Window win)
   val = AtomGet(win, "WIN_STATE", XA_CARDINAL, &size);
   if (val)
     {
-      if ((*val) & WIN_STATE_STICKY)
+      if ((*val) & GWIN_STATE_STICKY)
 	t->sticky = 1;
-      if ((*val) & WIN_STATE_SHADED)
+      if ((*val) & GWIN_STATE_SHADED)
 	t->shaded = 1;
       g_free(val);
     }
@@ -990,10 +990,10 @@ main(int argc, char *argv[])
   applet_widget_init_defaults("wmpager_applet", NULL, argc, argv, 0, NULL, argv[0]);
 
   /* Get the Atom for making a window sticky, so that the detached pager appears on all screens */
-  _XA_WIN_STATE = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
+  _XA_GWIN_STATE = XInternAtom(GDK_DISPLAY(), XA_GWIN_STATE, False);
 
-  if (((_XA_WIN_WORKSPACE = XInternAtom(GDK_DISPLAY(), XA_WIN_WORKSPACE, True)) == None) ||
-      (_XA_WIN_WORKSPACE_NAMES = XInternAtom(GDK_DISPLAY(), XA_WIN_WORKSPACE_NAMES, True)) == None)
+  if (((_XA_GWIN_WORKSPACE = XInternAtom(GDK_DISPLAY(), XA_GWIN_WORKSPACE, True)) == None) ||
+      (_XA_GWIN_WORKSPACE_NAMES = XInternAtom(GDK_DISPLAY(), XA_GWIN_WORKSPACE_NAMES, True)) == None)
     {
       /* FIXME: This should check to make sure icewm (or equiv) is running.
        * Not sure if it is working though... */
@@ -1056,7 +1056,7 @@ get_workspaces(void)
   int                 count, i;
 
   XGetTextProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), &tp,
-		   _XA_WIN_WORKSPACE_NAMES);
+		   _XA_GWIN_WORKSPACE_NAMES);
   XTextPropertyToStringList(&tp, &list, &count);
   tmp_list = g_list_alloc();
   for (i = 0; i < count; i++)
@@ -1271,7 +1271,7 @@ prop_change_cb(GtkWidget * widget, GdkEventProperty * ev)
   gint                tmp_ws;
   GdkAtom             at;
 
-  at = gdk_atom_intern(XA_WIN_WORKSPACE, FALSE);
+  at = gdk_atom_intern(XA_GWIN_WORKSPACE, FALSE);
   if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
     {
       tmp_ws = get_current_workspace();
@@ -1323,7 +1323,7 @@ get_current_workspace(void)
   CARD32              wws = 0;
 
   if ((XGetWindowProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
-			  _XA_WIN_WORKSPACE,
+			  _XA_GWIN_WORKSPACE,
 			  0, 1, False, XA_CARDINAL,
 			  &type, &format, &nitems,
 			  &bytes_after, &prop)) == 1)
@@ -1345,7 +1345,7 @@ change_workspace(gint ws)
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
   xev.xclient.window = GDK_ROOT_WINDOW();
-  xev.xclient.message_type = _XA_WIN_WORKSPACE;
+  xev.xclient.message_type = _XA_GWIN_WORKSPACE;
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = ws - 1;
   xev.xclient.data.l[1] = CurrentTime;
@@ -1383,7 +1383,7 @@ make_sticky(Window win)
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
   xev.xclient.window = win;
-  xev.xclient.message_type = _XA_WIN_STATE;
+  xev.xclient.message_type = _XA_GWIN_STATE;
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = WinStateAllWorkspaces;
   xev.xclient.data.l[1] = WinStateAllWorkspaces;
@@ -1402,7 +1402,7 @@ make_shaded(Window win)
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
   xev.xclient.window = win;
-  xev.xclient.message_type = _XA_WIN_STATE;
+  xev.xclient.message_type = _XA_GWIN_STATE;
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = WinStateRollup;
   xev.xclient.data.l[1] = WinStateRollup;
@@ -1421,7 +1421,7 @@ make_unshaded(Window win)
   xev.type = ClientMessage;
   xev.xclient.type = ClientMessage;
   xev.xclient.window = win;
-  xev.xclient.message_type = _XA_WIN_STATE;
+  xev.xclient.message_type = _XA_GWIN_STATE;
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = WinStateRollup;
   xev.xclient.data.l[1] = 0;

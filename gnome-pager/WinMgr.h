@@ -11,7 +11,7 @@
  */
 /* 0.1 */
 
-#define XA_WIN_PROTOCOLS       "WIN_PROTOCOLS"
+#define XA_GWIN_PROTOCOLS       "WIN_PROTOCOLS"
 /* Type: array of Atom
  *       set on Root window by the window manager.
  *
@@ -19,13 +19,13 @@
  * the window manager (WM_HINTS, MWM_HINTS, WIN_*, etc.
  */
 
-#define XA_WIN_ICONS           "WIN_ICONS"
+#define XA_GWIN_ICONS           "WIN_ICONS"
 /* Type: array of XID, alternating between Pixmap and Mask for icons
  *       set by applications on their toplevel windows.
  *
  * This property contains additional icons for the application.
  * if this property is set, the WM will ignore default X icon hints
- * and KWM_WIN_ICON hint.
+ * and KWM_GWIN_ICON hint.
  *
  * There are two values for each icon: Pixmap and Mask (Mask can be None
  * if transparency is not required).
@@ -40,7 +40,7 @@
  */
 
 /* workspace */
-#define XA_WIN_WORKSPACE       "WIN_WORKSPACE"
+#define XA_GWIN_WORKSPACE       "WIN_WORKSPACE"
 /* Type: CARD32
  *       Root Window: current workspace, set by the window manager
  *
@@ -53,7 +53,7 @@
  * a ClientMessage to the Root window like this:
  *     xev.type = ClientMessage;
  *     xev.window = root_window or toplevel_window;
- *     xev.message_type = _XA_WIN_WORKSPACE;
+ *     xev.message_type = _XA_GWIN_WORKSPACE;
  *     xev.format = 32;
  *     xev.data.l[0] = workspace;
  *     xev.data.l[1] = timeStamp;
@@ -61,14 +61,14 @@
  *
  */
  
-#define XA_WIN_WORKSPACE_COUNT "WIN_WORKSPACE_COUNT"
+#define XA_GWIN_WORKSPACE_COUNT "WIN_WORKSPACE_COUNT"
 /* Type: CARD32
  *       workspace count, set by window manager
  *
  * NOT FINALIZED/IMPLEMENTED YET
  */
 
-#define XA_WIN_WORKSPACE_NAMES "WIN_WORKSPACE_NAMES"
+#define XA_GWIN_WORKSPACE_NAMES "WIN_WORKSPACE_NAMES"
 /* Type: StringList (TextPropery)
  *
  * 
@@ -80,7 +80,7 @@
 #define WinWorkspaceInvalid    0xFFFFFFFFUL
 
 /* layer */
-#define XA_WIN_LAYER           "WIN_LAYER"
+#define XA_GWIN_LAYER           "WIN_LAYER"
 /* Type: CARD32
  *       window layer
  *
@@ -96,7 +96,7 @@
  * like this:
  *     xev.type = ClientMessage;
  *     xev.window = toplevel_window;
- *     xev.message_type = _XA_WIN_LAYER;
+ *     xev.message_type = _XA_GWIN_LAYER;
  *     xev.format = 32;
  *     xev.data.l[0] = layer;
  *     xev.data.l[1] = timeStamp;
@@ -121,7 +121,7 @@
 #define WinLayerAboveDock      10UL
 
 /* state */
-#define XA_WIN_STATE           "WIN_STATE"
+#define XA_GWIN_STATE           "WIN_STATE"
 
 /* Type CARD32[2]
  *      window state. First CARD32 is the mask of set states,
@@ -134,7 +134,7 @@
  *
  *   xev.type = ClientMessage;
  *   xev.window = toplevel_window;
- *   xev.message_type = _XA_WIN_WORKSPACE;
+ *   xev.message_type = _XA_GWIN_WORKSPACE;
  *   xev.format = 32;
  *   xev.data.l[0] = mask; // mask of the states to change
  *   xev.data.l[1] = state; // new state values
@@ -173,7 +173,7 @@
  */
 
 /* hints */
-#define XA_WIN_HINTS           "WIN_HINTS"
+#define XA_GWIN_HINTS           "WIN_HINTS"
 #define WinHintsSkipFocus      (1 << 0)
 #define WinHintsSkipWindowMenu (1 << 1)
 #define WinHintsSkipTaskBar    (1 << 2)
@@ -188,7 +188,7 @@
  */
 
 /* work area */
-#define XA_WIN_WORKAREA        "WIN_WORKAREA"
+#define XA_GWIN_WORKAREA        "WIN_WORKAREA"
 /*
  * CARD32[4]
  *     minX, minY, maxX, maxY of workarea.
