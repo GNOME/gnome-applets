@@ -1,21 +1,23 @@
+# Përkthimi i mesazheve të gnome-applets.HEAD.sq.po në shqip
+# translation of gnome-applets.HEAD.sq.po to Albanian
 # Përkthimi i mesazheve të gnome-applets në shqip
-# Copyright (C) 2003, 2004 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004, 2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-applets package.
-# Elian Myftiu <elian@lycos.com>, 2003, 2004.
+# Elian Myftiu <elian@lycos.com>, 2003, 2004, 2005.
 #
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 11:45+0100\n"
-"PO-Revision-Date: 2005-01-12 15:32+0100\n"
+"POT-Creation-Date: 2005-01-16 19:48+0100\n"
+"PO-Revision-Date: 2005-01-17 10:45+0100\n"
 "Last-Translator: Elian Myftiu <elian@lycos.com>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1
@@ -24,7 +26,8 @@ msgstr ""
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 multiload/GNOME_MultiloadApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemLights.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
@@ -37,7 +40,8 @@ msgstr "_Informacione"
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 multiload/GNOME_MultiloadApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemLights.xml.h:4
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
@@ -52,7 +56,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrika për Statusin e Applet AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1335
+#: accessx-status/applet.c:1352
 msgid "Keyboard Accessibility Status"
 msgstr "Statusi i Tastierës së Lehtësuar"
 
@@ -64,14 +68,16 @@ msgstr "Fabrika për Applet e Statusit të Tastierës së Lehtësuar"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Tregon gjendjen e tastierës së thjeshtuar"
 
+#. "documenters",        documenters,
 #: accessx-status/applet.c:136 charpick/charpick.c:607
-#: drivemount/drivemount.c:132 geyes/geyes.c:200
-#: gswitchit/gswitchit-applet.c:591 trashapplet/src/trashapplet.c:681
+#: drivemount/drivemount.c:132 geyes/geyes.c:192
+#: gswitchit/gswitchit-applet.c:592 modemlights/modem-applet.c:995
+#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr "Elian Myftiu <elian@lycos.com>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:995
-#: accessx-status/applet.c:1135 accessx-status/applet.c:1338
+#: accessx-status/applet.c:157 accessx-status/applet.c:998
+#: accessx-status/applet.c:1138 accessx-status/applet.c:1355
 msgid "AccessX Status"
 msgstr "Statusi i AccessX"
 
@@ -98,30 +104,29 @@ msgstr "Ndodhi një gabim në lëshimin e konfiguruesit të tastierës : %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:996 accessx-status/applet.c:1136
+#: accessx-status/applet.c:999 accessx-status/applet.c:1139
 msgid "Shows keyboard status when accessibility features are used."
-msgstr ""
-"Tregon gjendjen e tastierës kur përdoren karakteristikat e açesibilitetit."
+msgstr "Tregon gjendjen e tastierës kur përdoren karakteristikat e açesibilitetit."
 
-#: accessx-status/applet.c:1030
+#: accessx-status/applet.c:1033
 msgid "XKB Extension is not enabled"
 msgstr "Ekstensioni XKB nuk është aktivuar"
 
-#: accessx-status/applet.c:1035
+#: accessx-status/applet.c:1038
 msgid "Unknown error"
 msgstr "Gabim i panjohur"
 
-#: accessx-status/applet.c:1043
+#: accessx-status/applet.c:1046
 #, c-format
 msgid "Error: %s"
 msgstr "Gabim: %s"
 
-#: accessx-status/applet.c:1340
+#: accessx-status/applet.c:1357
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Shfaq statusin e tanishëm për preferencat e tastierës së thjeshtuar"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:836 battstat/battstat_applet.c:1262
+#: battstat/battstat_applet.c:966 battstat/battstat_applet.c:1461
 msgid "Battery Charge Monitor"
 msgstr "Vëzhgues i Ngarkesës së Baterisë"
 
@@ -130,7 +135,7 @@ msgid "Battstat Factory"
 msgstr "Factory Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1263
+#: battstat/battstat_applet.c:1462
 msgid "Monitor a laptop's remaining power"
 msgstr "Kontrollon baterinë e mbetur tek një laptop"
 
@@ -224,71 +229,71 @@ msgstr "Niveli i baterisë poshtë të cilit bateria paraqitet·e verdhë"
 msgid "Yellow value level"
 msgstr "Niveli i vlerës së verdhë"
 
-#: battstat/battstat_applet.c:59
+#: battstat/battstat_applet.c:63
 msgid "System is running on AC power"
 msgstr "Sistemi po punon me korent"
 
-#: battstat/battstat_applet.c:60
+#: battstat/battstat_applet.c:64
 msgid "System is running on battery power"
 msgstr "Sistemi po punon me bateri"
 
-#: battstat/battstat_applet.c:291
+#: battstat/battstat_applet.c:358
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Ngarkesa e baterisë (%d%%)"
 
-#: battstat/battstat_applet.c:293
+#: battstat/battstat_applet.c:360
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Koha e mbetur nuk njihet (%d%%)"
 
-#: battstat/battstat_applet.c:295
+#: battstat/battstat_applet.c:362
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Koha e ngarkesës nuk njihet (%d%%)"
 
-#: battstat/battstat_applet.c:300
+#: battstat/battstat_applet.c:367
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minutë (%d%%) në dispozicion"
 msgstr[1] "%d minuta (%d%%) në dispozicion"
 
-#: battstat/battstat_applet.c:305
+#: battstat/battstat_applet.c:372
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minutë deri sa të ngarkohet (%d%%)"
 msgstr[1] "%d minuta me ngarkesë (%d%%)"
 
-#: battstat/battstat_applet.c:311
+#: battstat/battstat_applet.c:378
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d orë (%d%%) në dispozicion"
 msgstr[1] "%d orë (%d%%) në dispozicion"
 
-#: battstat/battstat_applet.c:316
+#: battstat/battstat_applet.c:383
 #, c-format
-msgid "%d hour (%d%%) until charged (%d%%)"
-msgid_plural "%d hours (%d%%) until charged (%d%%)"
-msgstr[0] "%d orë (%d%%) deri sa të ngarkohet (%d%%)"
-msgstr[1] "%d orë (%d%%) me ngarkesë (%d%%)"
+msgid "%d hour until charged (%d%%)"
+msgid_plural "%d hours until charged (%d%%)"
+msgstr[0] "%d orë deri sa të ngarkohet (%d%%)"
+msgstr[1] "%d orë deri sa të ngarkohet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:323
+#: battstat/battstat_applet.c:390
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) në dispozicion"
 
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:331
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:398
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "orë"
 msgstr[1] "orë"
 
-#: battstat/battstat_applet.c:325 battstat/battstat_applet.c:332
+#: battstat/battstat_applet.c:392 battstat/battstat_applet.c:399
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutë"
@@ -296,42 +301,42 @@ msgstr[1] "minuta"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:330
+#: battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s deri sa të ngarkohet (%d%%)"
 
-#: battstat/battstat_applet.c:351 battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:413 battstat/battstat_applet.c:477
 msgid "Battery Notice"
 msgstr "Gjendja e Baterisë"
 
-#: battstat/battstat_applet.c:375
+#: battstat/battstat_applet.c:437
 msgid "Your battery is now fully recharged"
 msgstr "Bateria tani është komplet e ngarkuar"
 
-#: battstat/battstat_applet.c:395
+#: battstat/battstat_applet.c:472
 msgid "Your battery is running low"
 msgstr "Bateria juaj është duke u shkarkuar"
 
-#: battstat/battstat_applet.c:397
+#: battstat/battstat_applet.c:474
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
 msgstr ""
 "Për të shmangur humbjen e punës ju lutem fikni, pezulloni apo mbyllni laptop-"
 "in tuaj."
 
-#: battstat/battstat_applet.c:458
+#: battstat/battstat_applet.c:541
 msgid "No battery present"
 msgstr "Bateria mungon"
 
-#: battstat/battstat_applet.c:461
+#: battstat/battstat_applet.c:544
 msgid "Battery status unknown"
 msgstr "Gjendja e baterisë nuk njihet"
 
-#: battstat/battstat_applet.c:582
+#: battstat/battstat_applet.c:693
 msgid "N/A"
 msgstr "Mungon"
 
-#: battstat/battstat_applet.c:793
+#: battstat/battstat_applet.c:921
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -340,16 +345,16 @@ msgstr ""
 "Ndodhi një gabim duke lëshuar komandën e Pezullimit: %s\n"
 "Të lutem përpiqu të korrigjosh këtë gabim"
 
-#: battstat/battstat_applet.c:797
+#: battstat/battstat_applet.c:925
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Komanda e pezullimit '%s' nuk pati sukses."
 
-#: battstat/battstat_applet.c:799
+#: battstat/battstat_applet.c:927
 msgid "The Suspend command was unsuccessful."
 msgstr "Komanda e pezullimit dështoi."
 
-#: battstat/battstat_applet.c:807
+#: battstat/battstat_applet.c:935
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -359,18 +364,18 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:821
+#: battstat/battstat_applet.c:951
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen·Pehrson·<jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:841
+#: battstat/battstat_applet.c:971
 msgid "This utility shows the status of your laptop battery."
 msgstr "Kjo vegël tregon statusin e baterisë së laptopit tuaj."
 
-#: battstat/battstat_applet.c:845 charpick/charpick.c:619
+#: battstat/battstat_applet.c:975 charpick/charpick.c:619
 #: cpufreq/src/cpufreq-applet.c:222 gtik/gtik.c:738
 #: gweather/gweather-about.c:56 mini-commander/src/about.c:54
-#: mixer/applet.c:1019 multiload/main.c:68
+#: mixer/applet.c:1036 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
 msgid "translator-credits"
 msgstr "Elian Myftiu <elian@lycos.com>"
@@ -430,7 +435,7 @@ msgstr "_Shfaq kohën/përqindjen e ngarkesës së mbetur:"
 msgid "_Warn when battery charge is low"
 msgstr "_Lajmëro kur ngarkesa e baterisë është e ulët"
 
-#: battstat/properties.c:258 drivemount/drivemount.c:156
+#: battstat/properties.c:262 drivemount/drivemount.c:156
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
@@ -708,9 +713,9 @@ msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr ""
-"Nuk do jesh në gjendje të ndryshosh frekuencën e kompjuterit tënd.  Kompjuteri "
-"yt mund të jetë konfiguruar keq ose mund të mos ketë mbështetjen e duhur për "
-"shkallëzimin e frekuencës së CPU-së."
+"Nuk do jesh në gjendje të ndryshosh frekuencën e kompjuterit tënd.  "
+"Kompjuteri yt mund të jetë konfiguruar keq ose mund të mos ketë mbështetjen "
+"e duhur për shkallëzimin e frekuencës së CPU-së."
 
 #: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
 #: gweather/weather.c:277 gweather/weather.c:1096 gweather/weather.c:1110
@@ -825,8 +830,8 @@ msgstr "Koha në sekonda midis freskimit të statusit"
 msgid "A set of eyeballs for your panel"
 msgstr "Një komplet sysh për panelin tuaj"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:220
-#: geyes/geyes.c:458 geyes/geyes.c:460
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:212
+#: geyes/geyes.c:450 geyes/geyes.c:452
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -834,15 +839,15 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Fabrika e Applet Geyes"
 
-#: geyes/geyes.c:221
+#: geyes/geyes.c:213
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright·(C)·1999·Dave·Camp"
 
-#: geyes/geyes.c:222
+#: geyes/geyes.c:214
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Një klon i vogël xeyes për panelin e GNOME."
 
-#: geyes/geyes.c:461
+#: geyes/geyes.c:453
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Këto sy vështrojnë në drejtim të shënuesit të mouse-it"
 
@@ -1507,7 +1512,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Treguesi i llojit të tastierës GNOME"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:596
+#: gswitchit/gswitchit-applet.c:597
 msgid "Keyboard Indicator"
 msgstr "Treguesi i Tastierës"
 
@@ -1520,19 +1525,19 @@ msgstr "Fabrika e applet-it të tastierës"
 msgid "Keyboard Indicator (%s)"
 msgstr "Tregues Tastiere (%s)"
 
-#: gswitchit/gswitchit-applet.c:599
+#: gswitchit/gswitchit-applet.c:600
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:601
+#: gswitchit/gswitchit-applet.c:602
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet-i treguesit të layout të tastierës për GNOME"
 
-#: gswitchit/gswitchit-applet.c:764
+#: gswitchit/gswitchit-applet.c:762
 msgid "XKB initialization error"
 msgstr "Gabim gjatë nisjes së XKB"
 
-#: gswitchit/gswitchit-applet.c:773
+#: gswitchit/gswitchit-applet.c:771
 msgid "Error loading XKB configuration registry"
 msgstr "Gabim gjatë leximit të regjistrit të konfigurimit të XKB"
 
@@ -1619,8 +1624,7 @@ msgstr "_Grupe të ndarë për çdo dritare"
 
 #: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
-"Shfaq flamujt kombëtarë si tregues të layout të tastierave korrisponduese"
+msgstr "Shfaq flamujt kombëtarë si tregues të layout të tastierave korrisponduese"
 
 #: gswitchit/gswitchit-properties.glade.h:10
 msgid "Use _flags as indicators"
@@ -1659,7 +1663,7 @@ msgid "Stock Ticker"
 msgstr "Applet i Aksioneve"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:190
 msgid "_Update"
 msgstr "_Rifresko"
 
@@ -1685,13 +1689,14 @@ msgid ""
 "Do not use the GNOME Stock Ticker for making investment decisions; it is for "
 "informational purposes only."
 msgstr ""
-"Ky program lidhet me një faqe interneti të njohur dhe tërheq kuotat e tanishme të aksioneve.\n"
+"Ky program lidhet me një faqe interneti të njohur dhe tërheq kuotat e "
+"tanishme të aksioneve.\n"
 "\n"
-"Applet i Aksioneve GNOME është një program i lirë dhe i bazuar në Internet.  Vjen pa "
-"ASNJË GARANCI.\n"
+"Applet i Aksioneve GNOME është një program i lirë dhe i bazuar në Internet.  "
+"Vjen pa ASNJË GARANCI.\n"
 "\n"
-"Mos e përdor Applet e Aksioneve GNOME për të ndërmarrë vendime investuese; vlen vetëm për "
-"qëllime informuese."
+"Mos e përdor Applet e Aksioneve GNOME për të ndërmarrë vendime investuese; "
+"vlen vetëm për qëllime informuese."
 
 #: gtik/gtik.c:1240
 msgid "Current _stocks:"
@@ -1835,8 +1840,7 @@ msgstr "(Asnjë Ndryshim)"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr ""
-"Applet shfleton nga e djathta në të majtë nëse ky buton është i vërtetë."
+msgstr "Applet shfleton nga e djathta në të majtë nëse ky buton është i vërtetë."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2009,95 +2013,95 @@ msgstr "Një program paneli për vëzhgimin lokal të motit."
 msgid "GNOME Weather"
 msgstr "Moti i GNOME"
 
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:188
 msgid "Details"
 msgstr "Hollësi"
 
-#: gweather/gweather-dialog.c:197
+#: gweather/gweather-dialog.c:229
 msgid "City:"
 msgstr "Qyteti:"
 
-#: gweather/gweather-dialog.c:205
+#: gweather/gweather-dialog.c:237
 msgid "Last update:"
 msgstr "Freskimi i fundit:"
 
-#: gweather/gweather-dialog.c:213
+#: gweather/gweather-dialog.c:245
 msgid "Conditions:"
 msgstr "Moti:"
 
-#: gweather/gweather-dialog.c:221
+#: gweather/gweather-dialog.c:253
 msgid "Sky:"
 msgstr "Qielli:"
 
-#: gweather/gweather-dialog.c:229
+#: gweather/gweather-dialog.c:261
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:237
+#: gweather/gweather-dialog.c:269
 msgid "Feels like:"
 msgstr "Ngjan si:"
 
-#: gweather/gweather-dialog.c:245
+#: gweather/gweather-dialog.c:277
 msgid "Dew point:"
 msgstr "Pika e vesës:"
 
-#: gweather/gweather-dialog.c:253
+#: gweather/gweather-dialog.c:285
 msgid "Relative humidity:"
 msgstr "Lagështia relative:"
 
-#: gweather/gweather-dialog.c:261
+#: gweather/gweather-dialog.c:293
 msgid "Wind:"
 msgstr "Era:"
 
-#: gweather/gweather-dialog.c:269
+#: gweather/gweather-dialog.c:301
 msgid "Pressure:"
 msgstr "Trysnia:"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:309
 msgid "Visibility:"
 msgstr "Dukshmëria:"
 
-#: gweather/gweather-dialog.c:285
+#: gweather/gweather-dialog.c:317
 msgid "Sunrise:"
 msgstr "Lindja e Diellit:"
 
-#: gweather/gweather-dialog.c:293
+#: gweather/gweather-dialog.c:325
 msgid "Sunset:"
 msgstr "Perëndimi i Diellit:"
 
-#: gweather/gweather-dialog.c:428
+#: gweather/gweather-dialog.c:460
 msgid "Current Conditions"
 msgstr "Moti i Tanishëm"
 
-#: gweather/gweather-dialog.c:445
+#: gweather/gweather-dialog.c:477
 msgid "Forecast Report"
 msgstr "Njoftimi i Parashikimit"
 
-#: gweather/gweather-dialog.c:445
+#: gweather/gweather-dialog.c:477
 msgid "See the ForeCast Details"
 msgstr "Shiko Parashikimin në Hollësi"
 
-#: gweather/gweather-dialog.c:455
+#: gweather/gweather-dialog.c:487
 msgid "Forecast"
 msgstr "Parashikimi"
 
-#: gweather/gweather-dialog.c:463
+#: gweather/gweather-dialog.c:495
 msgid "Radar Map"
 msgstr "Harta e Radarit"
 
-#: gweather/gweather-dialog.c:494
+#: gweather/gweather-dialog.c:526
 msgid "_Visit Weather.com"
 msgstr "_Vizito Weather.com"
 
-#: gweather/gweather-dialog.c:495
+#: gweather/gweather-dialog.c:527
 msgid "Visit Weather.com"
 msgstr "Vizito Weather.com"
 
-#: gweather/gweather-dialog.c:495
+#: gweather/gweather-dialog.c:527
 msgid "Click to Enter Weather.com"
 msgstr "Kliko të hysh në Weather.com"
 
-#: gweather/gweather-dialog.c:589
+#: gweather/gweather-dialog.c:645
 msgid "Forecast not currently available for this location."
 msgstr "Parashikimi nuk është i mundur për këtë vendndodhje."
 
@@ -2283,12 +2287,12 @@ msgstr "_Zgjidh një vendndodhje:"
 msgid "Location"
 msgstr "Vendodhja"
 
-#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
-#: gweather/weather-metar.c:556
+#: gweather/weather-iwin.c:243 gweather/weather-metar.c:529
+#: gweather/weather-metar.c:557
 msgid "WeatherInfo missing location"
 msgstr "Mungon vendndodhja WeatherInfo"
 
-#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
+#: gweather/weather-metar.c:495 gweather/weather-metar.c:537
 #: gweather/weather-wx.c:53
 msgid "Failed to get METAR data.\n"
 msgstr "Dështoi në tërheqjen e të dhënave METAR.\n"
@@ -2426,8 +2430,7 @@ msgstr "Përdor sistemin metrik kundrejt atij anglez."
 msgid ""
 "latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
-msgstr ""
-"gjerësia dhe gjatësia e vendndodhjes e shprehur në DD MM SS[NS] DD MM SS[EW]"
+msgstr "gjerësia dhe gjatësia e vendndodhjes e shprehur në DD MM SS[NS] DD MM SS[EW]"
 
 #: gweather/gweather.schemas.in.h:28
 msgid "location coordinates"
@@ -3034,8 +3037,7 @@ msgstr ""
 #: mini-commander/src/mc-install-default-macros.c:132
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr ""
-"E ndryshueshmja e ambientit GCONF_CONFIG_SOURCE duhet të jetë e përcaktuar\n"
+msgstr "E ndryshueshmja e ambientit GCONF_CONFIG_SOURCE duhet të jetë e përcaktuar\n"
 
 #: mini-commander/src/mc-install-default-macros.c:149
 #, c-format
@@ -3255,8 +3257,7 @@ msgstr "Kliko këtë buton për listën e komandave të mëparshme"
 
 #: mini-commander/src/mini-commander_applet.c:343
 msgid "Command line has been disabled by your system administrator"
-msgstr ""
-"Rreshti i komandës është ç'aktivizuar nga administratori juaj i sistemit"
+msgstr "Rreshti i komandës është ç'aktivizuar nga administratori juaj i sistemit"
 
 #: mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
@@ -3294,7 +3295,7 @@ msgstr "Komanda"
 msgid "Adjust the sound volume"
 msgstr "Rregullo volumin e zërit"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:223
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:240
 msgid "Volume Control"
 msgstr "Kontrolli i Volumit"
 
@@ -3306,21 +3307,21 @@ msgstr "_Pa Zë"
 msgid "_Open Volume Control"
 msgstr "_Hap Kontrollin e Zërit"
 
-#: mixer/applet.c:545
+#: mixer/applet.c:562
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Gabim gjatë nisjes së Kontrollit të Volumit: %s"
 
-#: mixer/applet.c:1000
+#: mixer/applet.c:1017
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Gabim gjatë nisjes së ndihmës: %s"
 
-#: mixer/applet.c:1013
+#: mixer/applet.c:1030
 msgid "Volume Applet"
 msgstr "Applet i Volumit"
 
-#: mixer/applet.c:1016
+#: mixer/applet.c:1033
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Një applet kontrolli volumi për GNOME/GStreamer"
 
@@ -3368,12 +3369,125 @@ msgstr "Preferencat e Kontrollit të Volumit"
 msgid "Select the device and track to control."
 msgstr "Zgjidh dispozitivin dhe kanalin për kontroll."
 
+#: modemlights/GNOME_ModemLights.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Aktivizo dhe kontrollo lidhjen e rrjetit me telefonatë (dial-up)"
+
+#: modemlights/GNOME_ModemLights.server.in.in.h:2
+msgid "Modem Monitor"
+msgstr "Monitori i Modem-it"
+
+#: modemlights/GNOME_ModemLights.xml.h:2
+msgid "_Activate"
+msgstr "_Çaktivizo"
+
+#: modemlights/GNOME_ModemLights.xml.h:3
+msgid "_Deactivate"
+msgstr "_"
+
+#: modemlights/GNOME_ModemLights.xml.h:5 stickynotes/stickynotes.glade.h:45
+msgid "_Properties"
+msgstr "_Pronësitë"
+
+#: modemlights/modem-applet.c:699
+msgid "Connection active, but could not get connection time"
+msgstr "Lidhja është aktive,por nuk arrita të llogaris kohën e lidhjes"
+
+#: modemlights/modem-applet.c:715
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Koha i lidhur: %.1d:%.2d"
+
+#: modemlights/modem-applet.c:719
+msgid "Not connected"
+msgstr "I shkëputur"
+
+#: modemlights/modem-applet.c:765
+msgid "The entered password is invalid"
+msgstr "Fjalëkalimi është i gabuar"
+
+#: modemlights/modem-applet.c:767
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr "Kontrollo që e ke shkruar saktë dhe që tasti \"caps lock\" nuk është aktivizuar"
+
+#: modemlights/modem-applet.c:865
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Për tu lidhur me furnizuesin tënd të shërbimit Internet (ISP), të duhen të drejta "
+"administratimi"
+
+#: modemlights/modem-applet.c:866
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Për tu shkëputur nga furnizuesi yt i shërbimit Internet(ISP), të duhen të drejta "
+"administrimi"
+
+#: modemlights/modem-applet.c:900
+msgid "Do you want to connect?"
+msgstr "Dëshiron të lidhesh?"
+
+#: modemlights/modem-applet.c:901
+msgid "Do you want to disconnect?"
+msgstr "Dëshiron të shkëputesh?"
+
+#: modemlights/modem-applet.c:910
+msgid "C_onnect"
+msgstr "Li_dhu"
+
+#: modemlights/modem-applet.c:910
+msgid "_Disconnect"
+msgstr "_Shkëputu"
+
+#: modemlights/modem-applet.c:965
+msgid "Could not launch network configuration tool"
+msgstr "Nuk munda të ekzekutoj programin e konfigurimit të rrjetit"
+
+#: modemlights/modem-applet.c:967
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr "Kontrollo që është instaluar në shtegun e saktë dhe që ka lejet e duhura"
+
+#: modemlights/modem-applet.c:989
+msgid "Modem monitor"
+msgstr "Vëzhguesi i modemit"
+
+#: modemlights/modem-applet.c:992
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr "Applet për të aktivizuar dhe vëzhguar lidhjen e rrjetit me telefonatë (dial-up)."
+
+#: modemlights/modemlights.glade.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Duke u lidhur me Furnizuesin e Shërbyesit "
+"Internet</span>"
+
+#: modemlights/modemlights.glade.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Kërkohet fjalëkalimi për root</span>"
+
+#: modemlights/modemlights.glade.h:3
+msgid "Enter password"
+msgstr "Fut fjalëkalimin"
+
+#: modemlights/modemlights.glade.h:4
+msgid "Password:"
+msgstr "Fjalëkalimi:"
+
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Tregues i ngarkesës së sistemit"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:59
+#: multiload/main.c:57
 msgid "System Monitor"
 msgstr "Monitori i sistemit"
 
@@ -3385,48 +3499,52 @@ msgstr "Vëzhgues i _Hapur i Sistemit"
 msgid "CPU Load"
 msgstr "Ngarkesa e CPU-së"
 
-#: multiload/loadavg.c:107 multiload/main.c:329
+#: multiload/diskload.c:48
+msgid "Disk Load"
+msgstr "Ngarkesë Disku"
+
+#: multiload/loadavg.c:107 multiload/main.c:327
 msgid "Load Average"
 msgstr "Ngarkesa Mesatare"
 
-#: multiload/main.c:63
+#: multiload/main.c:61
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr ""
-"Një vëzhgues i ngarkesës së sistemit që paraqet grafikë për CPU-në, memorjen, "
-"dhe hapësirën e përdorur swap, si dhe trafikun e rrjetit."
+"Një vëzhgues i ngarkesës së sistemit që paraqet grafikë për CPU-në, "
+"memorjen, dhe hapësirën e përdorur swap, si dhe trafikun e rrjetit."
 
-#: multiload/main.c:115
+#: multiload/main.c:113
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Pati një gabim në ekzekutimin e '%s':·%s"
 
-#: multiload/main.c:321 multiload/properties.c:595
+#: multiload/main.c:319 multiload/properties.c:595
 msgid "Processor"
 msgstr "Proçesori"
 
-#: multiload/main.c:323 multiload/properties.c:603
+#: multiload/main.c:321 multiload/properties.c:603
 msgid "Memory"
 msgstr "Kujtesa"
 
-#: multiload/main.c:325 multiload/properties.c:611
+#: multiload/main.c:323 multiload/properties.c:611
 msgid "Network"
 msgstr "Rrjeti"
 
-#: multiload/main.c:327 multiload/properties.c:619
+#: multiload/main.c:325 multiload/properties.c:619
 msgid "Swap Space"
 msgstr "Hapësira Swap"
 
-#: multiload/main.c:331
+#: multiload/main.c:329
 msgid "Disk"
 msgstr "Disk"
 
-#: multiload/main.c:333
+#: multiload/main.c:331
 msgid "Resource"
 msgstr "Burimi"
 
-#: multiload/main.c:349
+#: multiload/main.c:347
 #, c-format
 msgid ""
 "%s:\n"
@@ -3437,7 +3555,7 @@ msgstr ""
 "%d%% në përdorim prej nga\n"
 "%d%% është cache"
 
-#: multiload/main.c:352
+#: multiload/main.c:350
 #, c-format
 msgid ""
 "%s:\n"
@@ -3727,6 +3845,22 @@ msgstr "Preferencat e Vëzhguesit të Sistemit"
 msgid "Swap Load"
 msgstr "Ngarkesa e Memorjes Swap"
 
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player (Deprecated)"
+msgstr "Lexues CD-je (Zëvendësuar)"
+
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:2
+msgid "Panel applet for playing audio CDs"
+msgstr "Applet e panelit për leximin e CD-ve"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Sinjalizon kur vjen mesazh i ri"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Vëzhguesit Poste (Zëvendësuar)"
+
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
 msgstr "Fabrika për applet e harruara"
@@ -3734,6 +3868,14 @@ msgstr "Fabrika për applet e harruara"
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
 msgid "Null Applet Factory"
 msgstr "Fabrika për Applet Nul"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Kontrollon cilësinë e një lidhjeje rrjeti wireless"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "Vëzhgues i Lidhjes Wireless"
 
 #: null_applet/null_applet.c:155
 msgid "Some panel items are no longer available"
@@ -3744,8 +3886,8 @@ msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
 msgstr ""
-"Një apo më shumë elementë paneli (ndryshe quajtur applet) nuk gjenden "
-"më në hapësirën e punës GNOME."
+"Një apo më shumë elementë paneli (ndryshe quajtur applet) nuk gjenden më në "
+"hapësirën e punës GNOME."
 
 #: null_applet/null_applet.c:158
 msgid "These items will now be removed from your configuration:"
@@ -3855,8 +3997,7 @@ msgstr "Zgjidh nëse shënimet duhet të shfaqen në të gjitha hapësirat e pun
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Choose if the default style is forced on all notes"
-msgstr ""
-"Zgjidh nëse stili i paracaktuar duhet ti përshtatet të gjitha shënimeve"
+msgstr "Zgjidh nëse stili i paracaktuar duhet ti përshtatet të gjitha shënimeve"
 
 #: stickynotes/stickynotes.glade.h:22
 msgid "Close note"
@@ -3952,10 +4093,6 @@ msgstr "_Blloko Shënimin"
 msgid "_New Note"
 msgstr "Shënim i _Ri"
 
-#: stickynotes/stickynotes.glade.h:45
-msgid "_Properties"
-msgstr "_Pronësitë"
-
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr "_Vendos shënimin në të gjitha hapësirat e punës"
@@ -4042,8 +4179,7 @@ msgstr "Shënimet bosh do fshihen gjithmonë pa konfirmim."
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr ""
-"Sa herë që kalon numri i caktuar i minutave, shënimet ruhen automatikisht."
+msgstr "Sa herë që kalon numri i caktuar i minutave, shënimet ruhen automatikisht."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
@@ -4206,12 +4342,10 @@ msgstr "Ta Fshij Menjëherë?"
 
 #: trashapplet/src/trashapplet.c:730
 msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr ""
-"E pamundur zhvendosja e elementëve në kosh, dëshiron ti fshish menjëherë?"
+msgstr "E pamundur zhvendosja e elementëve në kosh, dëshiron ti fshish menjëherë?"
 
 #: trashapplet/src/trashapplet.c:733
-msgid ""
-"Cannot move some items to trash, do you want to delete these immediately?"
+msgid "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "E pamundur zhvendosja e disa elementëve në kosh, dëshiron ti fshish "
 "menjëherë?"
@@ -4225,1703 +4359,3 @@ msgstr ""
 "Nuk mund të zhvendos në kosh:\n"
 "%s"
 
-#~ msgid "Your platform is not supported!\n"
-#~ msgstr "Platforma juaj nuk suportohet!\n"
-
-#~ msgid "The applet will not work properly (if at all).\n"
-#~ msgstr "Applet nuk do punojë siç duhet(në mos fare).\n"
-
-#~ msgid ""
-#~ "Can't open the APM device!\n"
-#~ "\n"
-#~ "Make sure you have read permission to the\n"
-#~ "APM device."
-#~ msgstr ""
-#~ "Nuk mund të hap dispozitivit APM!\n"
-#~ "\n"
-#~ "Sigurohu që ke të drejtat e leximit tek\n"
-#~ "dispozitivit APM."
-
-#~ msgid ""
-#~ "The APM Management subsystem seems to be disabled.\n"
-#~ "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-#~ "that helps.\n"
-#~ msgstr ""
-#~ "Subsistemi i Menazhimit të APM duhet të jetë çaktivizuar.\n"
-#~ "Provo të ekzekutosh \"apm -e 1\" (FreeBSD) dhe shiko nëse \n"
-#~ "kjo të ndihmon.\n"
-
-#~ msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-#~ msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-
-#~ msgid ""
-#~ "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
-#~ "subsystem is working and the acpid daemon is running."
-#~ msgstr ""
-#~ "Nuk mund të lexojë të dhënat ACPI në /var/run/acpid.socket! Sigurohu që "
-#~ "nënsistemi ACPI dhe demoni acpid janë duke punuar."
-
-#~ msgid "CD Player"
-#~ msgstr "Lexuesi i CD"
-
-#~ msgid "CD Player Applet Factory"
-#~ msgstr "Fabrika Applet e Lexuesit CD"
-
-#~ msgid "Factory for CD player applet"
-#~ msgstr "Fabrika për applet e lexuesit CD"
-
-#~ msgid "Panel applet for playing audio CDs"
-#~ msgstr "Applet e panelit për leximin e CD-ve"
-
-#~ msgid "_Open CD Player"
-#~ msgstr "_Hap Lexuesin CD"
-
-#~ msgid "Stop"
-#~ msgstr "Ndal"
-
-#~ msgid "Play / Pause"
-#~ msgstr "Luaj / Pezullo"
-
-#~ msgid "Previous Track"
-#~ msgstr "Titulli i Përparshëm"
-
-#~ msgid "Next Track"
-#~ msgstr "Titulli Pasues"
-
-#~ msgid "You do not have permission to use the CD player."
-#~ msgstr "Nuk ke të drejtë të përdorësh lexuesin CD"
-
-#~ msgid "%s does not seem to be a CD player"
-#~ msgstr "%s nuk ngjan të jetë një lexues CD"
-
-#~ msgid "CD Player Preferences"
-#~ msgstr "Preferimet për lexuesin e CD"
-
-#~ msgid "Device _path:"
-#~ msgstr "P_ozicioni i dispozitivit:"
-
-#~ msgid "Device Path"
-#~ msgstr "Pozicioni i Dispozitivit"
-
-#~ msgid "Set the device path here"
-#~ msgstr "Cakto pozicionin e dispozitivit këtu"
-
-#~ msgid "Use _Default"
-#~ msgstr "Përdor të _Prezgjedhurin"
-
-#~ msgid ""
-#~ "(C) 1997 The Free Software Foundation\n"
-#~ "(C) 2001 Chris Phelps (GNOME 2 Port)"
-#~ msgstr ""
-#~ "(C)·1997·The·Free·Software·Foundation\n"
-#~ "(C)·2001·Chris·Phelps·(GNOME·2·Port)"
-
-#~ msgid "The CD Player applet is a simple audio CD player for your panel"
-#~ msgstr ""
-#~ "Applet i Lexuesit CD është një lexues CD i thjeshtë për panelin tuaj"
-
-#~ msgid "Elapsed time"
-#~ msgstr "Koha e kaluar"
-
-#~ msgid "Track number"
-#~ msgstr "Numri i pistës"
-
-#~ msgid "Audio device is busy, or being used by another application"
-#~ msgstr ""
-#~ "Dispozitivi i zërit është i zëne, ose i përdorur nga ndonjë program tjetër"
-
-#~ msgid "No Device Found or Illegal Format"
-#~ msgstr "Nuk U Gjet Asnjë Dispozitiv ose Format Ilegal"
-
-#~ msgid "Click this button to Stop playing the CD"
-#~ msgstr "Kliko këtë buton për të ndaluar leximin e CD-së"
-
-#~ msgid "Click this button to Play or Pause the CD"
-#~ msgstr "Kliko këtë buton për të Luajtur ose Pezulluar CD-në"
-
-#~ msgid "Click this button to eject the CD"
-#~ msgstr "Kliko këtë buton për të nxjerrë CD-në"
-
-#~ msgid "Click this button to Play the previous track in the CD"
-#~ msgstr "Kliko këtë buton për të luajtur titullin e mëparshëm në CD"
-
-#~ msgid "Click this button to Play the next track in the CD"
-#~ msgstr "Kliko këtë buton për të Luajtur titullin pasues në CD"
-
-#~ msgid "Kevin Vandersloot"
-#~ msgstr "Kevin·Vandersloot"
-
-#~ msgid "Copyright (C) 1998"
-#~ msgstr "Copyright·(C)·1998"
-
-#~ msgid "_About..."
-#~ msgstr "_Informacione..."
-
-#~ msgid "_Preferences..."
-#~ msgstr "_Preferimet..."
-
-#~ msgid ""
-#~ "Sorry, an internal error has occurred with the CPU Frequency Scaling "
-#~ "Monitor help"
-#~ msgstr ""
-#~ "Më vjen keq, një gabim i brendshëm ndodhi me ndihmësin e  Mbikqyrësit të "
-#~ "Shkallëzimit të Frekuencës."
-
-#~ msgid "Sorry, the document can not be found"
-#~ msgstr "Më vjen keq, dokumenti mungon"
-
-#~ msgid "Graphic Arts:"
-#~ msgstr "Zbukurimet Artistike:"
-
-#~ msgid "Copyright (C) 2004 Free Software Foundation. Inc."
-#~ msgstr "Copyright (C) 2004 Free Software Foundation. Inc."
-
-#~ msgid ""
-#~ "There is no cpufreq support in your system, needed to use CPU Frequency "
-#~ "Scaling Monitor.\n"
-#~ "If your system already supports cpufreq, check whether /sys or /proc file "
-#~ "systems are mounted.\n"
-#~ "Now the applet will only show the current cpu frequency."
-#~ msgstr ""
-#~ "Sistemi yt nuk ka suport për cpufreq, i nevojshëm për të përdorur "
-#~ "Mbikqyrësin e Shkallëzimit të Frekuencës.\n"
-#~ "Nëse sistemi yt suporton cpufreq, kontrollo nëse sistemet e skedave /sys "
-#~ "apo /proc janë montuar.\n"
-#~ "Tani applet do të shfaqë vetëm frekuencën e momentit."
-
-#~ msgid ""
-#~ "CPU %d - cpufreq Not Supported\n"
-#~ "%s (%s)"
-#~ msgstr ""
-#~ "CPU %d - cpufreq Nuk Punon\n"
-#~ "%s (%s)"
-
-#~ msgid "cpufreq Not Supported"
-#~ msgstr "cpufreq Nuk Punon"
-
-#~ msgid "Change the keyboard layout"
-#~ msgstr "Ndrysho planimetrinë tastierës"
-
-#~ msgid "GKB Factory"
-#~ msgstr "Fabrika e GKB"
-
-#~ msgid "Keyboard Layout Switcher"
-#~ msgstr "Ndryshuesi i Tastierës"
-
-#~ msgid "Produces keyboard layout switcher applets."
-#~ msgstr "Prodhon instrumentë për ndryshimin e planimetrisë së tastierës."
-
-#~ msgid "Armenia"
-#~ msgstr "Armenia"
-
-#~ msgid "Armenian xkb keymap"
-#~ msgstr "Tastiera xkb Armenisht"
-
-#~ msgid "Algeria"
-#~ msgstr "Algjeria"
-
-#~ msgid "Arabic"
-#~ msgstr "Arabe"
-
-#~ msgid "Arabic xkb keymap"
-#~ msgstr "Tastiera xkb Arabisht"
-
-#~ msgid "Bahrain"
-#~ msgstr "Bahrain"
-
-#~ msgid "Comoros"
-#~ msgstr "Komoros"
-
-#~ msgid "Djibouti"
-#~ msgstr "Xhibouti"
-
-#~ msgid "Egypt"
-#~ msgstr "Egjipti"
-
-#~ msgid "Iraq"
-#~ msgstr "Iraku"
-
-#~ msgid "Jordan"
-#~ msgstr "Jordania"
-
-#~ msgid "Kuwait"
-#~ msgstr "Kuvajti"
-
-#~ msgid "Lebanon"
-#~ msgstr "Libani"
-
-#~ msgid "Libyan Arab Jamahiriya"
-#~ msgstr "Jamahirija Arabe e Libisë"
-
-#~ msgid "Marocco"
-#~ msgstr "Maroku"
-
-#~ msgid "Oman"
-#~ msgstr "Omani"
-
-#~ msgid "Palestinian Territory"
-#~ msgstr "Territoret Palestineze"
-
-#~ msgid "Qatar"
-#~ msgstr "Katari"
-
-#~ msgid "Saudi Arabia"
-#~ msgstr "Arabia Saudite"
-
-#~ msgid "Somalia"
-#~ msgstr "Somalia"
-
-#~ msgid "Sudan"
-#~ msgstr "Sudani"
-
-#~ msgid "Syria"
-#~ msgstr "Siria"
-
-#~ msgid "Tunisia"
-#~ msgstr "Tunizia"
-
-#~ msgid "United Arab Emirates"
-#~ msgstr "Emiratet e Bashkuara Arabe"
-
-#~ msgid "Yemen"
-#~ msgstr "Jemen"
-
-#~ msgid "Azerbaidjan"
-#~ msgstr "Azerbajxhan"
-
-#~ msgid "Azerbaidjani Turkic"
-#~ msgstr "Turqishte Azerbaixhanit"
-
-#~ msgid "Azerbaidjani Turkic xkb keymap"
-#~ msgstr "Tastiera xkb Turqisht e Azerbaixhanit"
-
-#~ msgid "Belgium"
-#~ msgstr "Belgjika"
-
-#~ msgid "Dutch"
-#~ msgstr "Hollandeze"
-
-#~ msgid "Dutch xkb keymap"
-#~ msgstr "Tastiera xkb Hollandeze"
-
-#~ msgid "Bulgaria"
-#~ msgstr "Bullgaria"
-
-#~ msgid "Bulgarian"
-#~ msgstr "Bullgarisht"
-
-#~ msgid "Bulgarian xkb keymap"
-#~ msgstr "Tastiera xkb Bullgarisht"
-
-#~ msgid "Brazil"
-#~ msgstr "Brazili"
-
-#~ msgid "Brazil Portuguese xkb keymap"
-#~ msgstr "Tastiera xkb Portugalisht Braziliane"
-
-#~ msgid "Portuguese"
-#~ msgstr "Portugeze"
-
-#~ msgid "Belarus"
-#~ msgstr "Bjellorusia"
-
-#~ msgid "Belarusian"
-#~ msgstr "Bjellorusisht"
-
-#~ msgid "Belarusian xkb keymap"
-#~ msgstr "Tastiera xkb Bjelloruse"
-
-#~ msgid "Euskadi"
-#~ msgstr "Euskadi"
-
-#~ msgid "French"
-#~ msgstr "Frengjisht"
-
-#~ msgid "Wallon"
-#~ msgstr "Wallon"
-
-#~ msgid "Catalan"
-#~ msgstr "Katalane"
-
-#~ msgid "Catalan xkb keymap"
-#~ msgstr "Tastiera xkb Katalane"
-
-#~ msgid "Catalonia"
-#~ msgstr "Katalonia"
-
-#~ msgid "Canada"
-#~ msgstr "Kanada"
-
-#~ msgid "Canadian xkb keymap"
-#~ msgstr "Tastiera xkb Kanadeze"
-
-#~ msgid "English"
-#~ msgstr "Anglisht"
-
-#~ msgid "Switzerland"
-#~ msgstr "Zvicra"
-
-#~ msgid "Czech"
-#~ msgstr "Çekisht"
-
-#~ msgid "Czech qwertz xkb keymap"
-#~ msgstr "Tastiera xkb qwertz Çeke"
-
-#~ msgid "Former Czechoslovakia Czech Republic"
-#~ msgstr "Republika Çeke, ish Çekosllovakia"
-
-#~ msgid "Czech Republic"
-#~ msgstr "Republika Çeke"
-
-#~ msgid "Czech and Slovak xkb keymap"
-#~ msgstr "Tastiera xkb Çeke dhe Sllovake"
-
-#~ msgid "Slovak"
-#~ msgstr "Sllovake"
-
-#~ msgid "Slovak Republic"
-#~ msgstr "Republika Sllovake"
-
-#~ msgid "German xkb keymap"
-#~ msgstr "Tastiera xkb Gjermane"
-
-#~ msgid "Germany"
-#~ msgstr "Gjermania"
-
-#~ msgid "Danish"
-#~ msgstr "Danisht"
-
-#~ msgid "Danish xkb keymap"
-#~ msgstr "Tastiera xkb Daneze"
-
-#~ msgid "Denmark"
-#~ msgstr "Danimarka"
-
-#~ msgid "Gnome Keyboard default"
-#~ msgstr "Tastiera Bazë e Gnome"
-
-#~ msgid "International"
-#~ msgstr "Internacionale"
-
-#~ msgid "Dvorak xkb keymap"
-#~ msgstr "Tastiera xkb Dvorak"
-
-#~ msgid "Estonia"
-#~ msgstr "Estonia"
-
-#~ msgid "Estonian"
-#~ msgstr "Estonisht"
-
-#~ msgid "Estonian xkb keymap"
-#~ msgstr "Tastiera xkb Estonisht"
-
-#~ msgid "Spain"
-#~ msgstr "Spanja"
-
-#~ msgid "Spanish"
-#~ msgstr "Spanjisht"
-
-#~ msgid "Spanish PC/AT 101 keyboard"
-#~ msgstr "Tastiera PC/AT·101 Spanjisht"
-
-#~ msgid "Spanish xkb keymap"
-#~ msgstr "Tastiera xkb Spanjisht"
-
-#~ msgid "Finland"
-#~ msgstr "Finlanda"
-
-#~ msgid "Finnish"
-#~ msgstr "Finlandeze"
-
-#~ msgid "Finnish xkb keymap"
-#~ msgstr "Tastiera xkb Finlandeze"
-
-#~ msgid "France"
-#~ msgstr "Franca"
-
-#~ msgid "French PC/AT 101 keyboard"
-#~ msgstr "Tastiera PC/AT 101 Franceze"
-
-#~ msgid "French xkb keymap"
-#~ msgstr "Tastiera xkb Franceze"
-
-#~ msgid "Georgia"
-#~ msgstr "Gjeorgjia"
-
-#~ msgid "Georgian"
-#~ msgstr "Gjeorgjisht"
-
-#~ msgid "Greece"
-#~ msgstr "Greqia"
-
-#~ msgid "Greek"
-#~ msgstr "Greqisht"
-
-#~ msgid "Greek xkb keymap"
-#~ msgstr "Tastiera xkb Greqisht"
-
-#~ msgid "Austria"
-#~ msgstr "Austria"
-
-#~ msgid "Croatia"
-#~ msgstr "Kroacia"
-
-#~ msgid "Croatian"
-#~ msgstr "Kroate"
-
-#~ msgid "Croatian keymap"
-#~ msgstr "Tastiera Kroate"
-
-#~ msgid "Hungarian"
-#~ msgstr "Hungarisht"
-
-#~ msgid "Hungarian latin2 xkb keymap"
-#~ msgstr "Tastiera xkb latin2 Hungarisht"
-
-#~ msgid "Hungary"
-#~ msgstr "Hungaria"
-
-#~ msgid "Hebrew"
-#~ msgstr "Hebraike"
-
-#~ msgid "Hebrew xkb keymap"
-#~ msgstr "Tastiera xkb Hebraisht"
-
-#~ msgid "Israel"
-#~ msgstr "Izraeli"
-
-#~ msgid "Iceland"
-#~ msgstr "Islanda"
-
-#~ msgid "Icelandic"
-#~ msgstr "Islandeze"
-
-#~ msgid "Icelandic xkb keymap"
-#~ msgstr "Tastiera xkb Islanidisht"
-
-#~ msgid "Italian"
-#~ msgstr "Italisht"
-
-#~ msgid "Italian xkb keymap"
-#~ msgstr "Tastiera xkb Italisht"
-
-#~ msgid "Italy"
-#~ msgstr "Italia"
-
-#~ msgid "Japan"
-#~ msgstr "Japonia"
-
-#~ msgid "Japanese"
-#~ msgstr "Japonisht"
-
-#~ msgid "Japanese xkb keymap"
-#~ msgstr "Tastiera xkb Japonisht"
-
-#~ msgid "Korean"
-#~ msgstr "Koreane"
-
-#~ msgid "Korean 106 keyboard"
-#~ msgstr "Tastiera 106 Koreane"
-
-#~ msgid "South Korea"
-#~ msgstr "Korea e Jugut"
-
-#~ msgid "Lao"
-#~ msgstr "Lao"
-
-#~ msgid "Laos"
-#~ msgstr "Laos"
-
-#~ msgid "Lithuania"
-#~ msgstr "Lituania"
-
-#~ msgid "Lithuanian"
-#~ msgstr "Lituaniane"
-
-#~ msgid "Lithuanian qwerty xkb keymap"
-#~ msgstr "Tastiera xkb qwerty Lituanisht"
-
-#~ msgid "Lithuanian programmers xkb keymap"
-#~ msgstr "Tastiera xkb e programuesve Lituanë"
-
-#~ msgid "Lithuanian standard xkb keymap"
-#~ msgstr "Tastiera xkb standarte Lituanisht"
-
-#~ msgid "Latvia"
-#~ msgstr "Letonia"
-
-#~ msgid "Latvian"
-#~ msgstr "Letonisht"
-
-#~ msgid "Latvian (') xkb keymap"
-#~ msgstr "Tastiera xkb Letone(')"
-
-#~ msgid "Latvian standard xkb keymap"
-#~ msgstr "Tastiera xkb standarte Letone"
-
-#~ msgid "Latvian (~) xkb keymap"
-#~ msgstr "Tastiera xkb Letone (~)"
-
-#~ msgid "Macedonia"
-#~ msgstr "Maqedonia"
-
-#~ msgid "Macedonian xkb keymap"
-#~ msgstr "Tastiera xkb Maqedonisht"
-
-#~ msgid "Mongolia"
-#~ msgstr "Mongolia"
-
-#~ msgid "Mongolian"
-#~ msgstr "Mongoliane"
-
-#~ msgid "Mongolian keyboard"
-#~ msgstr "Tastiera Mongoliane"
-
-#~ msgid "Plain Mongolian keymap"
-#~ msgstr "Tastiera e thjeshtë Mongoliane"
-
-#~ msgid "Unicode Mongolian Keymap"
-#~ msgstr "Tastiera Unicode Mongoliane"
-
-#~ msgid "Netherlands"
-#~ msgstr "Hollanda"
-
-#~ msgid "Norway"
-#~ msgstr "Norvegjia"
-
-#~ msgid "Norwegian xkb keymap"
-#~ msgstr "Tastiera xkb Norvegjisht"
-
-#~ msgid "Poland"
-#~ msgstr "Polonia"
-
-#~ msgid "Polish xkb keymap"
-#~ msgstr "Tastiera xkb Polonisht"
-
-#~ msgid "Portuguese xkb keymap"
-#~ msgstr "Tastiera xkb Portugalisht"
-
-#~ msgid "Romania"
-#~ msgstr "Rumania"
-
-#~ msgid "Romanian"
-#~ msgstr "Rumanisht"
-
-#~ msgid "Romanian xkb keymap"
-#~ msgstr "Tastiera xkb Rumanisht"
-
-#~ msgid "Russia"
-#~ msgstr "Rusia"
-
-#~ msgid "Russian"
-#~ msgstr "Rusisht"
-
-#~ msgid "Russian xkb keymap"
-#~ msgstr "Tastiera xkb Rusisht"
-
-#~ msgid "Sweden"
-#~ msgstr "Suedia"
-
-#~ msgid "Swedish xkb keymap"
-#~ msgstr "Tastiera xkb Suedisht"
-
-#~ msgid "Slovenia"
-#~ msgstr "Sllovenia"
-
-#~ msgid "Slovenian xkb keymap"
-#~ msgstr "Tastiera xkb Sllovene"
-
-#~ msgid "Serb"
-#~ msgstr "Serbisht"
-
-#~ msgid "Serbia and Montenegro"
-#~ msgstr "Serbia e Mali i Zi"
-
-#~ msgid "Serbian standard xkb keymap"
-#~ msgstr "Tastiera xkb standarte Serbisht"
-
-#~ msgid " keymap"
-#~ msgstr " tastiera"
-
-#~ msgid "Syriac"
-#~ msgstr "Siriane"
-
-#~ msgid "Syriac xkb keymap"
-#~ msgstr "Tastiera xkb siriane"
-
-#~ msgid "Syriac Phonetic xkb keymap"
-#~ msgstr "Tastiera fonetike xkb Sirisht"
-
-#~ msgid "Thai xkb keymap"
-#~ msgstr "Tastiera xkb Tailandeze"
-
-#~ msgid "Thailand"
-#~ msgstr "Tajlanda"
-
-#~ msgid "Turkey"
-#~ msgstr "Turqia"
-
-#~ msgid "Turkish"
-#~ msgstr "Turqisht"
-
-#~ msgid "Turkish xkb keymap"
-#~ msgstr "Tastiera xkb Turqisht"
-
-#~ msgid "Ukraine"
-#~ msgstr "Ukrahina"
-
-#~ msgid "Ukrainian"
-#~ msgstr "Ukrahinase"
-
-#~ msgid "Ukrainian xkb keymap"
-#~ msgstr "Tastiera xkb Ukrainase"
-
-#~ msgid "United Kingdom"
-#~ msgstr "Mbretëria e Bashkuar"
-
-#~ msgid "United Kingdom xkb keymap"
-#~ msgstr "Tastiera xkb Angleze"
-
-#~ msgid "United States"
-#~ msgstr "Shtetet e Bashkuara"
-
-#~ msgid "US xkb keymap"
-#~ msgstr "Tastiera xkb Amerikane"
-
-#~ msgid "US International xkb keymap"
-#~ msgstr "Tastiera xkb Amerikane Internacionale"
-
-#~ msgid "Vietnam"
-#~ msgstr "Vietnami"
-
-#~ msgid "Vietnamese"
-#~ msgstr "Vietnameze"
-
-#~ msgid "Vietnamese xkb keymap"
-#~ msgstr "Tastiera xkb Vietnameze"
-
-#~ msgid "Serb keymap"
-#~ msgstr "Tastiera Serbe"
-
-#~ msgid "Azerbaijan"
-#~ msgstr "Azerbaijan"
-
-#~ msgid "Azerbaijani Turkish"
-#~ msgstr "Turqishte Azerbaixhanit"
-
-#~ msgid "Azerbaijani Turkish xkb keymap"
-#~ msgstr "Tastiera xkb Turqisht e Azerbaixhanit"
-
-#~ msgid "Former Czechoslovakia"
-#~ msgstr "Ish Çekosllovakia"
-
-#~ msgid "Morocco"
-#~ msgstr "Maroku"
-
-#~ msgid "Serb standard xkb keymap"
-#~ msgstr "Tastiera xkb standarte Serbisht"
-
-#~ msgid "Serbian"
-#~ msgstr "Sërbisht"
-
-#~ msgid "Syriac Phonetic"
-#~ msgstr "Fonetika Sirisht"
-
-#~ msgid "English Sun Type-4 keymap"
-#~ msgstr "Tastiera Angleze Sun Type-4"
-
-#~ msgid "English Sun USB keymap"
-#~ msgstr "Tastiera Sun USB anglisht"
-
-#~ msgid "English Sun keymap"
-#~ msgstr "Tastiera Sun Anglisht"
-
-#~ msgid "Serbo-Croatian"
-#~ msgstr "Serbo-Kroate"
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugosllavia"
-
-#~ msgid "(C) 1998-2000 Free Software Foundation"
-#~ msgstr "(C)·1998-2000·Free·Software·Foundation"
-
-#~ msgid ""
-#~ "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
-#~ "Mail me your flag and keyboard layout if you want support for your locale "
-#~ "(my email address is shooby@gnome.hu).\n"
-#~ "So long, and thanks for all the fish.\n"
-#~ "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-#~ "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
-#~ "Shooby Ban <shooby@gnome.hu>"
-#~ msgstr ""
-#~ "Kjo applet ndryshon hartat e tastierës duke përdorur setxkbmap ose "
-#~ "xmodmap.\n"
-#~ ".Më dërgoni me e-mail flamurin dhe layout e tastierës nëse doni ndihmë "
-#~ "për locale-n tuaj (adresa ime e e-mail është shooby@gnome.hu).\n"
-#~ "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-#~ "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
-#~ "Shooby Ban <shooby@gnome.hu>"
-
-#~ msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
-#~ msgstr "Faqja e internetit për GKB (http://projects.gnome.hu/gkb)"
-
-#~ msgid "GKB"
-#~ msgstr "GKB"
-
-#~ msgid ""
-#~ "Press the hotkey to switch between layouts. The hotkey can be set through "
-#~ "Properties dialog"
-#~ msgstr ""
-#~ "Shtyp tastin e duhur për të ndryshuar layout. Tasti i duhur mund të "
-#~ "konfigurohet tek dialogu i Preferencave"
-
-#~ msgid "US 105 key keyboard"
-#~ msgstr "Tastiera Amerikane 105 taste"
-
-#~ msgid "Gnome Keyboard Default"
-#~ msgstr "Tastiera Bazë e Gnome"
-
-#~ msgid "default"
-#~ msgstr "prezgjedhur"
-
-#~ msgid "Appearance mode of the applet"
-#~ msgstr "Mënyra e pamjes së applet"
-
-#~ msgid "Flag image for the keyboard layout"
-#~ msgstr "Imazhi i flamurit për tastierën"
-
-#~ msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
-#~ msgstr "Mund të jetë \"Flamur dhe Etiketë\", \"Etiketë\" ose \"Flamur\""
-
-#~ msgid "Keybinding for switching layout"
-#~ msgstr "Tastet e shpejta për ndërrimin e tastierës"
-
-#~ msgid "No longer used"
-#~ msgstr "I papërdorshëm"
-
-#~ msgid "Number of configured keymaps"
-#~ msgstr "Numri i tastierave të konfiguruara"
-
-#~ msgid "The command that switches your keymap to this layout"
-#~ msgstr "Komanda që ndërron llojin e tastierës"
-
-#~ msgid "The country of the keyboard layout"
-#~ msgstr "Shteti i tastierës"
-
-#~ msgid "The default keymap"
-#~ msgstr "Tastiera e prezgjedhur"
-
-#~ msgid "The default keymap for the applet"
-#~ msgstr "Tastiera e prezgjedhur e applet-it"
-
-#~ msgid "The label of the keyboard layout"
-#~ msgstr "Etiketa e tastierës"
-
-#~ msgid "The language of the keyboard layout"
-#~ msgstr "Gjuha e tastierës"
-
-#~ msgid "The name of the keyboard layout"
-#~ msgstr "Emri i tastierës"
-
-#~ msgid "This flag will appear in flag field of the applet"
-#~ msgstr "Ky flamur do të shfaqet në fushën e flamurit për applet"
-
-#~ msgid "This information helps you to identify your keyboard layout"
-#~ msgstr "Ky informacion të ndihmon për identifikimin e tastierës"
-
-#~ msgid "This is the binding for keypress-based layout change"
-#~ msgstr "Mënyra për ndërrimin e tastierës me anë të tasteve"
-
-#~ msgid ""
-#~ "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
-#~ "something.xmm\""
-#~ msgstr ""
-#~ "Kjo duhet të jetë si \"gkb_xmmap us\", \"setxkbmap us\" ose \"xmodmap "
-#~ "diçka.xmm\""
-
-#~ msgid "This will appear in the label box of the applet"
-#~ msgstr "Kjo do shfaqet në kutinë e etiketës për applet"
-
-#~ msgid "This will identify the layout in the list"
-#~ msgstr "Kjo do të tregojë tastierat në një listë"
-
-#~ msgid "Disabled"
-#~ msgstr "Jo aktiv"
-
-#~ msgid "Press a key or press Esc to cancel"
-#~ msgstr "Shtyp një tast ose Esc për ta anulluar"
-
-#~ msgid "Undefined"
-#~ msgstr "E papërcaktuar"
-
-#~ msgid "Keyboards (select and press add)"
-#~ msgstr "Tastierat (zgjidh dhe shtyp shto)"
-
-#~ msgid "Keymap `%s' for the country %s already exists"
-#~ msgstr "Tastiera `%s' për shtetin %s' tashmë ekziston"
-
-#~ msgid "Select Keyboard"
-#~ msgstr "Zgjidh Tastierën"
-
-#~ msgid "_Keyboards (select and press add):"
-#~ msgstr "_Tastierat (zgjidh dhe shtyp shto):"
-
-#~ msgid "Unknown Keyboard"
-#~ msgstr "Tastierë e Panjohur"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "Edit Keyboard"
-#~ msgstr "Ndrysho Tastierën"
-
-#~ msgid "_Name:"
-#~ msgstr "_Emri:"
-
-#~ msgid "_Label:"
-#~ msgstr "_Etiketa:"
-
-#~ msgid "_Flag:"
-#~ msgstr "_Flamuri:"
-
-#~ msgid "Flag"
-#~ msgstr "Flamur"
-
-#~ msgid "Label"
-#~ msgstr "Etiketa"
-
-#~ msgid "Flag and Label"
-#~ msgstr "Flamur dhe Etiketë"
-
-#~ msgid "_Appearance: "
-#~ msgstr "_Paraqitja: "
-
-#~ msgid "Keyboard Shortcuts"
-#~ msgstr "Kombinacione përshpejtuese nga tastiera"
-
-#~ msgid "_Grab keys"
-#~ msgstr "_Kap tastet"
-
-#~ msgid "Keyboard Layout Switcher Preferences"
-#~ msgstr "Preferencat e Ndryshuesit të Tastierës"
-
-#~ msgid "Keyboard Layout Selector"
-#~ msgstr "Zgjedhësi i Tastierës"
-
-#~ msgid "Keyboards"
-#~ msgstr "Tastierat"
-
-#~ msgid "_Keyboards:"
-#~ msgstr "_Tastierat:"
-
-#~ msgid ""
-#~ "An error occured.\n"
-#~ "\n"
-#~ "Keymap `%s' is not supported on this system. Please choose another "
-#~ "keymap.\n"
-#~ "\n"
-#~ "The command was: %s"
-#~ msgstr ""
-#~ "Ndodhi një gabim.\n"
-#~ "\n"
-#~ "Tastiera `%s' nuk suportohet nga ky sistem. Të lutem zgjidh një tastierë "
-#~ "tjetër \n"
-#~ "\n"
-#~ "Komanda ishte: %s"
-
-#~ msgid ""
-#~ "An error occured.\n"
-#~ "\n"
-#~ "Unable to load keymap `%s', probably because command `xmodmap' could not "
-#~ "be located in your PATH.\n"
-#~ "\n"
-#~ "The command was: %s"
-#~ msgstr ""
-#~ "Ndodhi një gabim.\n"
-#~ "I pamundur karikimi i tastierës `%s', ndoshta ngaqë komanda `xmodmap' nuk "
-#~ "u gjend në PATH-in tënd.\n"
-#~ "\n"
-#~ "Komanda ishte: %s"
-
-#~ msgid ""
-#~ "Make the layout accessible from the applet popup menu ONLY.\n"
-#~ "No way to switch to this layout using the keyboard."
-#~ msgstr ""
-#~ "Mundësia e VETME për të hyrë në vizatim le të jetë menu-ja popup e "
-#~ "programit.\n"
-#~ "Kapërcimi tek kjo dritare me anë të tastierës është i pamundur."
-
-#~ msgid "_Exclude from keyboard switching"
-#~ msgstr "_Përjashto nga ndryshimi me tastierë"
-
-#~ msgid "Not used"
-#~ msgstr "I pa përdorur"
-
-#~ msgid "Beep on group switch"
-#~ msgstr "Beep për ndryshim grupi"
-
-#~ msgid "Debug level"
-#~ msgstr "Niveli i Debug"
-
-#~ msgid "Default group, assigned on window creation"
-#~ msgstr "Grupi i prezgjedhur, përcaktuar në krijimin e dritares"
-
-#~ msgid "Keep and manage separate group per window"
-#~ msgstr "Mbaj dhe kontrollo grupe të ndarë për dritare"
-
-#~ msgid "Save/restore indicators together with layout groups"
-#~ msgstr "Ruaj/rikthe indikatorët së bashku me grupet e layout"
-
-#~ msgid "Show layout names instead of group names"
-#~ msgstr "Trego emrat e paraqitjeve në vend të emrave të grupeve"
-
-#~ msgid ""
-#~ "Show layout names instead of group names (only for versions of XFree "
-#~ "supporting multiple layouts)"
-#~ msgstr ""
-#~ "Trego emrat e paraqitjeve në vend të emrave të grupeve (vetëm për "
-#~ "versionet e XFree që suportojnë paraqitje multiple)"
-
-#~ msgid "_Add"
-#~ msgstr "_Shto"
-
-#~ msgid "_Remove"
-#~ msgstr "_Hiq"
-
-#~ msgid ""
-#~ "This GNOME applet adds a command line to the panel. It features command "
-#~ "completion, command history, and changeable macros.\n"
-#~ "\n"
-#~ " This program is free software; you can redistribute it and/or modify it "
-#~ "under the terms of the GNU General Public License as published by the "
-#~ "Free Software Foundation; either version 2 of the License, or (at your "
-#~ "option) any later version."
-#~ msgstr ""
-#~ "Ky ndihmës GNOME shton një rresht komande në panel. Afron plotësimin e "
-#~ "komandës, historikun e komandës dhe makro të ndryshueshme.\n"
-#~ "\n"
-#~ " Ky program është software i lirë; mund ta rishpërndash dhe ta ndryshosh "
-#~ "nën kushtet e Liçences Publike së Përgjithshme GNU, sikurse e publikuar "
-#~ "nga Free Software Foundation; ose versioni 2 i Liçences, ose (sipas "
-#~ "mendimit tuaj) ndonjë version i mëvonshëm."
-
-#~ msgid "Activate and monitor a dial-up network connection"
-#~ msgstr "Aktivizo dhe kontrollo lidhjen e rrjetit me telefonatë (dial-up)"
-
-#~ msgid "Modem Lights"
-#~ msgstr "Dritat e Modemit"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "A modem status indicator and dialer.\n"
-#~ "Lights in order from the top or left are Send data and Receive data."
-#~ msgstr ""
-#~ "Lëshuar nën liçencen e përgjithshme publike GNU.\n"
-#~ "Një tregues i gjendjes së modemit dhe thirrës.\n"
-#~ "Dritat nga e majta ose nga sipër janë të dhënat e Dërguara dhe të dhënat "
-#~ "e Marra."
-
-#~ msgid ""
-#~ "You are currently connected.\n"
-#~ "Do you want to disconnect?"
-#~ msgstr ""
-#~ "Je i lidhur tashmë.\n"
-#~ "Do të shkëputesh?"
-
-#~ msgid "_Disconnect"
-#~ msgstr "_Shkëputu"
-
-#~ msgid "Do you want to connect?"
-#~ msgstr "Do të lidhesh?"
-
-#~ msgid "C_onnect"
-#~ msgstr "Li_dhu"
-
-#~ msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-#~ msgstr "%#.1fMb marrë / %#.1f dërguar / koha: %.1d:%.2d"
-
-#~ msgid "Ask for confirmation when connecting/disconnecting"
-#~ msgstr "Pyet për pohim kur lidhesh/shkëputesh"
-
-#~ msgid "Blink when connecting"
-#~ msgstr "Fiku e ndizu kur lidhesh"
-
-#~ msgid "Command executed when connecting"
-#~ msgstr "Komanda për tu ekzekutuar kur lidhesh"
-
-#~ msgid "Command executed when disconnecting"
-#~ msgstr "Komanda për tu ekzekutuar kur shkëputesh"
-
-#~ msgid "Display a confirmation dialog when connecting or disconnecting."
-#~ msgstr "Shfaq një dialog pohues kur lidhesh apo shkëputesh."
-
-#~ msgid "Make the applet blink when the modem is connecting."
-#~ msgstr "Ndez dhe fik applet kur modemi është duke u lidhur."
-
-#~ msgid "Modem device name"
-#~ msgstr "Emri i dispozitivit të modemit"
-
-#~ msgid "Modem lock file"
-#~ msgstr "File kyç i modemit"
-
-#~ msgid "Receive background color"
-#~ msgstr "Ngjyra në sfond e marrjes"
-
-#~ msgid "Receive foreground color"
-#~ msgstr "Ngjyra ballore e marrjes"
-
-#~ msgid "Send background color"
-#~ msgstr "Ngjyra në sfond e dërgimit"
-
-#~ msgid "Send foreground color"
-#~ msgstr "Ngjyra ballore e dërgimit"
-
-#~ msgid "Show connect time and throughput"
-#~ msgstr "Shfaq kohën e lidhjes dhe të dhënat"
-
-#~ msgid ""
-#~ "Show extra information about the connect time and amount of data "
-#~ "transmitted and received."
-#~ msgstr ""
-#~ "Shfaq informacione të hollësishme rreth kohës i lidhur dhe sasisë së të "
-#~ "dhënave në dalje dhe hyrje."
-
-#~ msgid "Status connected color"
-#~ msgstr "Ngjyra e gjendjes i lidhur"
-
-#~ msgid "Status not connected color"
-#~ msgstr "Ngjyra e gjendjes i shkëputur"
-
-#~ msgid "Status waiting connection color"
-#~ msgstr "Ngjyra e gjendjes në pritje"
-
-#~ msgid "Text background color"
-#~ msgstr "Ngjyra në sfond e tekstit"
-
-#~ msgid "Text foreground color"
-#~ msgstr "Ngjyra ballore e tekstit"
-
-#~ msgid "Text outline color"
-#~ msgstr "Ngjyra e tekstit të vijëzuar"
-
-#~ msgid "The background color of the button used to indicate data received."
-#~ msgstr ""
-#~ "Ngjyra në sfond e butonit përdorur për tregimin e të dhënave në hyrje."
-
-#~ msgid "The background color of the button used to indicate data sent."
-#~ msgstr ""
-#~ "Ngjyra në sfond e butonit përdorur për tregimin e të dhënave në dalje."
-
-#~ msgid ""
-#~ "The color used to display the status button when the modem is connected."
-#~ msgstr "Ngjyra e përdorur e butonit të gjendjes kur modemi është i lidhur."
-
-#~ msgid ""
-#~ "The color used to display the status button when the modem is connecting."
-#~ msgstr ""
-#~ "Ngjyra e përdorur e butonit të gjendjes kur modemi është duke u lidhur."
-
-#~ msgid ""
-#~ "The color used to display the status button when the modem is not "
-#~ "connected."
-#~ msgstr ""
-#~ "Ngjyra e përdorur e butonit të gjendjes kur modemi është i shkëputur."
-
-#~ msgid "The color used to indicate that data has been received."
-#~ msgstr "Ngjyra e përdorur për të treguar që janë marrë të dhëna."
-
-#~ msgid "The color used to indicate that data has been sent."
-#~ msgstr "Ngjyra e përdorur për të treguar që janë dërguar të dhëna."
-
-#~ msgid "The fraction of a second until the applet updates."
-#~ msgstr "Fraksioni i një sekonde deri kur applet freskohet."
-
-#~ msgid "The name of the modem device."
-#~ msgstr "Emri i dispozitivit të modemit."
-
-#~ msgid "The name of the modem lock file."
-#~ msgstr "Emri i file-it bllokues të modemit."
-
-#~ msgid "Use isdn"
-#~ msgstr "Përdor isdn"
-
-#~ msgid "Use isdn instead of ppp to connect the modem."
-#~ msgstr "Përdor isdn në vend të ppp për të lidhur modemin."
-
-#~ msgid "Use this command to connect the modem."
-#~ msgstr "Përdor këtë komandë për të lidhur modemin."
-
-#~ msgid "Use this command to disconnect the modem."
-#~ msgstr "Përdor këtë komandë për të shkëputur modemin."
-
-#~ msgid "Verify owner of lock file"
-#~ msgstr "Verifiko pronarin e file-it bllokues"
-
-#~ msgid "Modem Lights Preferences"
-#~ msgstr "Preferencat e Dritave të Modemit"
-
-#~ msgid "U_pdate every:"
-#~ msgstr "F_resko çdo:"
-
-#~ msgid "seconds"
-#~ msgstr "sekonda"
-
-#~ msgid "Sho_w connect time and throughput"
-#~ msgstr "Shfa_q kohën e lidhjes dhe sasinë e të dhënave"
-
-#~ msgid "B_link connection status when connecting"
-#~ msgstr "Fi_k e ndiz gjendjen e lidhjes kur është duke u lidhur"
-
-#~ msgid "Connections"
-#~ msgstr "Lidhjet"
-
-#~ msgid "Co_nnection command:"
-#~ msgstr "Komanda e li_dhjes:"
-
-#~ msgid "_Disconnection command:"
-#~ msgstr "Komanda e _Shkëputjes:"
-
-#~ msgid "Con_firm connection"
-#~ msgstr "Po_ho lidhjen"
-
-#~ msgid "Receive Data"
-#~ msgstr "Tërhiq të Dhëna"
-
-#~ msgid "_Foreground:"
-#~ msgstr "_Balli:"
-
-#~ msgid "Send Data"
-#~ msgstr "Dërgo të Dhëna"
-
-#~ msgid "Foregroun_d:"
-#~ msgstr "Pamja Ball_ore:"
-
-#~ msgid "Backg_round:"
-#~ msgstr "Sf_ondi:"
-
-#~ msgid "Connection Status"
-#~ msgstr "Gjendja e Lidhjes"
-
-#~ msgid "Co_nnected:"
-#~ msgstr "Lidh_ur:"
-
-#~ msgid "Disconnec_ted:"
-#~ msgstr "Shkë_putur:"
-
-#~ msgid "C_onnecting:"
-#~ msgstr "Duke u Lid_hur:"
-
-#~ msgid "For_eground:"
-#~ msgstr "Pamja Bal_lore"
-
-#~ msgid "Bac_kground:"
-#~ msgstr "Sfon_di:"
-
-#~ msgid "O_utline:"
-#~ msgstr "Vijë_zim:"
-
-#~ msgid "Modem Options"
-#~ msgstr "Preferencat e Modemit"
-
-#~ msgid "_Device:"
-#~ msgstr "_Dispozitivi:"
-
-#~ msgid "_Lock file:"
-#~ msgstr "_File Bllokues:"
-
-#~ msgid "_Verify owner of lock file"
-#~ msgstr "_Verifiko pronarin e file-it bllokues"
-
-#~ msgid "U_se ISDN"
-#~ msgstr "Pë_rdor ISDN"
-
-#~ msgid "Advanced"
-#~ msgstr "Të detajuara"
-
-#~ msgid "Clic_k:"
-#~ msgstr "Kli_ko:"
-
-#~ msgid "Create a new note"
-#~ msgstr "Krijo një shënim të ri"
-
-#~ msgid "Lock/Unlock all notes"
-#~ msgstr "Blloko/Zhblloko të gjitha shënimet"
-
-#~ msgid "Show/Hide all notes"
-#~ msgstr "Shfaq/Fshih të gjitha shënimet"
-
-#~ msgid "Default click behavior of the applet"
-#~ msgstr "Sjellja e paracaktuar e klikimit i applet-it"
-
-#~ msgid ""
-#~ "Occurs when the applet is either left-clicked or \"enter\" is pressed. "
-#~ "The options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes"
-#~ "\", and \"2\" for \"Lock/Unlock All Notes\"."
-#~ msgstr ""
-#~ "Ndodh kur applet është klikuar me të majtën ose është shtypur \"enter\"."
-#~ "Mundësitë janë \"0\" për \"Shënim të Ri\", \"1\" për \"Shfaq/Fshih Të "
-#~ "Gjithë Shënimet\", dhe \"2\" për \"Blloko/Zhblloko Të Gjitha Shënimet\"."
-
-#~ msgid ""
-#~ "%s\n"
-#~ "%d note%s\n"
-#~ "%d notes"
-#~ msgstr ""
-#~ "%s\n"
-#~ "%d shënim%s\n"
-#~ "%d shënime"
-
-#~ msgid "(c) 2002-2003 Loban A Rahman"
-#~ msgstr "(c)·2002-2003·Loban·A·Rahman"
-
-#~ msgid "Monitor the quality of a wireless network link"
-#~ msgstr "Kontrollon cilësinë e një lidhjeje rrjeti wireless"
-
-#~ msgid "Wireless Link Monitor"
-#~ msgstr "Vëzhgues i Lidhjes Wireless"
-
-#~ msgid "Link Strength: %2.0d%%"
-#~ msgstr "Fuqia e Lidhjes: %2.0d%%"
-
-#~ msgid ""
-#~ "There doesn't seem to be any wireless devices configured on your system.\n"
-#~ "Please verify your configuration if you think this is incorrect."
-#~ msgstr ""
-#~ "Nuk duhet të ketë ndonjë dispozitiv wireless të konfiguruar në sistemin "
-#~ "tuaj.\n"
-#~ "Të lutem verifiko konfigurimin nëse mendon që kjo është e pasaktë."
-
-#~ msgid "No Wireless Devices"
-#~ msgstr "Asnjë Dispozitiv Wireless"
-
-#~ msgid "(C) 2001, 2002 Free Software Foundation "
-#~ msgstr "(C)·2001,·2002·Free·Software Foundation "
-
-#~ msgid "This utility shows the status of a wireless link."
-#~ msgstr "Ky mjet shfaq gjendjen e një lidhjeje wireless."
-
-#~ msgid "This utility shows the status of a wireless link"
-#~ msgstr "Ky mjet shfaq gjendjen e një lidhjeje wireless"
-
-#~ msgid "Show signal strength in _percentage"
-#~ msgstr "Shfaq fuqinë e sinjalit në _përqindje"
-
-#~ msgid "Wireless Link Monitor Preferences"
-#~ msgstr "Preferencat e Vëzhguesit të Lidhjes Wireless"
-
-#~ msgid "_Monitored device:"
-#~ msgstr "Dispozitivi i _vëzhguar:"
-
-#~ msgid "100%"
-#~ msgstr "100%"
-
-#~ msgid "<b>Battery Color Levels (%)</b>"
-#~ msgstr "<b>Niveli me Ngjyra i Baterisë (%)</b>"
-
-#~ msgid "<b>Layout</b>"
-#~ msgstr "<b>Planimetria</b>"
-
-#~ msgid "<b>Progress Bar Direction</b>"
-#~ msgstr "<b>Drejtimi i Kutisë së Progresit</b>"
-
-#~ msgid "Moves towards _bottom"
-#~ msgstr "Lëviz Përpara _poshtë"
-
-#~ msgid "Moves towards _top"
-#~ msgstr "Lëviz përpara _lart"
-
-#~ msgid "Sho_w battery charge percentages"
-#~ msgstr "Treg_o përqindjen e ngarkesës së baterisë"
-
-#~ msgid "_Beep when displaying a warning"
-#~ msgstr "_Bip kur shfaq një paraljmërim"
-
-#~ msgid "_Orange:"
-#~ msgstr "_Portokalli:"
-
-#~ msgid "_Preview:"
-#~ msgstr "_Pamja e parë:"
-
-#~ msgid "_Show battery status"
-#~ msgstr "_Shfaq statustin e baterisë"
-
-#~ msgid "_Yellow:"
-#~ msgstr "_E Verdhë:"
-
-#~ msgid "Progress Bar Direction Moves towards top"
-#~ msgstr "Drejtimi i Shtyllës së Progresit lëviz nga poshtë lart"
-
-#~ msgid "Progress Bar Direction Moves towards bottom"
-#~ msgstr "Drejtimi i Shtyllës së Progresit lëviz nga lart poshtë"
-
-#~ msgid "_Browse"
-#~ msgstr "_Shfleto"
-
-#~ msgid "There was an error executing %s: %s"
-#~ msgstr "Pati një gabim në ekzekutimin e %s:·%s"
-
-#~ msgid "Cannot browse device"
-#~ msgstr "Nuk mund të shfletoj periferinë"
-
-#~ msgid "Error displaying help"
-#~ msgstr "Gabim në shfaqjen e ndihmës"
-
-#~ msgid "(C) 1999-2001 The GNOME Hackers\n"
-#~ msgstr "(C)·1999-2001·The·GNOME·Hackers\n"
-
-#~ msgid "\" reported:\n"
-#~ msgstr "\" raportuar:\n"
-
-#~ msgid ""
-#~ "Drivemount command failed.\n"
-#~ "\""
-#~ msgstr ""
-#~ "Komanda e montimit dështoi.\n"
-#~ "\""
-
-#~ msgid "Cannot mount device"
-#~ msgstr "I pamundur montimi i periferisë"
-
-#~ msgid "Disk Mounter Preferences"
-#~ msgstr "Preferencat e Montuesit të Diskut"
-
-#~ msgid "Select Mount Directory"
-#~ msgstr "Zgjidh Kartelën e Montimit"
-
-#~ msgid "_Update interval:"
-#~ msgstr "Intervali i _rifreskimit:"
-
-#~ msgid "_Icon:"
-#~ msgstr "_Ikona:"
-
-#~ msgid "Floppy"
-#~ msgstr "Disketë floppy"
-
-#~ msgid "CD-ROM"
-#~ msgstr "CD-ROM"
-
-#~ msgid "CD Recorder"
-#~ msgstr "Regjistrues CD"
-
-#~ msgid "Zip Drive"
-#~ msgstr "Drive Zip"
-
-#~ msgid "Jaz Drive"
-#~ msgstr "Drive Jaz"
-
-#~ msgid "USB Stick"
-#~ msgstr "Fisha USB"
-
-#~ msgid "Custom"
-#~ msgstr "E personalizuar"
-
-#~ msgid "Select icon for mounted"
-#~ msgstr "Zgjidh ikonën për të montuarin"
-
-#~ msgid "Moun_ted icon:"
-#~ msgstr "Ikona e të mon_tuarit:"
-
-#~ msgid "Select icon for unmounted"
-#~ msgstr "Zgjidh ikonën për të zmontuarin"
-
-#~ msgid "Unmou_nted icon:"
-#~ msgstr "Ikona e të zmo_ntuarit:"
-
-#~ msgid "_Scale size to panel"
-#~ msgstr "_Shtrij madhesinë në panel"
-
-#~ msgid "_Eject disk when unmounted"
-#~ msgstr "_Nxirr diskun kur çmonton"
-
-#~ msgid "Use _automount-friendly status test"
-#~ msgstr "Përdor testin e statusit _automontues"
-
-#~ msgid "Alert you when new mail arrives"
-#~ msgstr "Sinjalizon kur vjen mesazh i ri"
-
-#~ msgid "Factory for creating inbox monitors."
-#~ msgstr "Fabrika për krijimin e vëzhguesve të postës"
-
-#~ msgid "Inbox Monitor Factory"
-#~ msgstr "Fabrika e Vëzhguesve të Postës"
-
-#~ msgid "Error checking mail"
-#~ msgstr "Gabim në kontrollin e postës"
-
-#~ msgid ""
-#~ "You didn't set a password in the preferences for the Inbox Monitor,\n"
-#~ "so you have to enter it each time it starts up."
-#~ msgstr ""
-#~ "Nuk vendose një fjalëkalim në preferencat e Vëzhguesit të Postës,\n"
-#~ "kështu që të duhet ta shkruash sa herë që ky i fundit niset."
-
-#~ msgid "Please enter your mailserver's _password:"
-#~ msgstr "Të lutem vendos _fjalëkalimin e serverit të postës:"
-
-#~ msgid "Password Entry box"
-#~ msgstr "Kutiza e Futjes së Fjalëkalimit"
-
-#~ msgid "_Save password to disk"
-#~ msgstr "_Ruaj fjalëkalimin në disk"
-
-#~ msgid "The username or password is incorrect."
-#~ msgstr "Emri i përdoruesit apo fjalëkalimi është i gabuar."
-
-#~ msgid "The server name is incorrect."
-#~ msgstr "Emri i serverit është i gabuar."
-
-#~ msgid "Error connecting to mail server."
-#~ msgstr "Gabim në lidhjen me serverin e postës."
-
-#~ msgid "You have new mail."
-#~ msgstr "Ke një mesazh të ri."
-
-#~ msgid "You have mail."
-#~ msgstr "Ke mesazhe."
-
-#~ msgid "%d unread"
-#~ msgid_plural "%d unread"
-#~ msgstr[0] "%d i palexuar"
-#~ msgstr[1] "%d i palexuar"
-
-#~ msgid "%d message"
-#~ msgid_plural "%d messages"
-#~ msgstr[0] "%d mesazh"
-#~ msgstr[1] "%d mesazh"
-
-#~ msgid "%s/%s"
-#~ msgstr "%s/%s"
-
-#~ msgid "No mail."
-#~ msgstr "Asnjë mesazh."
-
-#~ msgid "Status not updated"
-#~ msgstr "Gjendja jo e freskuar"
-
-#~ msgid "Inbox Settings"
-#~ msgstr "Preferencat e Postës"
-
-#~ msgid "Mailbox _resides on:"
-#~ msgstr "Posta _gjendet në:"
-
-#~ msgid "Local mailspool"
-#~ msgstr "Posta lokale"
-
-#~ msgid "Local maildir"
-#~ msgstr "Dosja e postës lokale"
-
-#~ msgid "Remote POP3-server"
-#~ msgstr "Serveri i jashtëm POP3"
-
-#~ msgid "Remote IMAP-server"
-#~ msgstr "Serveri i jashtëm IMAP"
-
-#~ msgid "Mail _spool file:"
-#~ msgstr "File _spool i postës:"
-
-#~ msgid "Browse"
-#~ msgstr "Shfleto"
-
-#~ msgid "Mail s_erver:"
-#~ msgstr "S_erveri i Postës:"
-
-#~ msgid "Mail Server Entry box"
-#~ msgstr "Kutiza e Futjes së Serverit të Postës"
-
-#~ msgid "_Username:"
-#~ msgstr "_Përdoruesi:"
-
-#~ msgid "Username Entry box"
-#~ msgstr "Kutiza e Futjes së Identifikuesit"
-
-#~ msgid "_Password:"
-#~ msgstr "_Fjalëkalimi:"
-
-#~ msgid "_Folder:"
-#~ msgstr "_Kartela:"
-
-#~ msgid "Folder Entry box"
-#~ msgstr "Kutiza e Futjes së Kartelës"
-
-#~ msgid "Check for mail _every:"
-#~ msgstr "Kontrollo për mail ç_do:"
-
-#~ msgid "Choose time interval in minutes to check mail"
-#~ msgstr "Zgjidh intervalin e kohës në minuta për të kontrolluar postën"
-
-#~ msgid "Choose time interval in seconds to check mail"
-#~ msgstr "Zgjidh intervalin e kohës në sekonda për të kontrolluar postën"
-
-#~ msgid "Play a _sound when new mail arrives"
-#~ msgstr "Përdor një _tingull kur vjen mesazh i ri"
-
-#~ msgid "Sto_p animation when clicked"
-#~ msgstr "Ndal_o animimin kur klikohet"
-
-#~ msgid "Select a_nimation:"
-#~ msgstr "Zgjidh një a_nimim:"
-
-#~ msgid "Commands"
-#~ msgstr "Komandat"
-
-#~ msgid "Before each _update:"
-#~ msgstr "Përpara çdo _freskimi:"
-
-#~ msgid "Command to execute before each update"
-#~ msgstr "Komanda për tu ekzekutuar përpara çdo freskimi"
-
-#~ msgid "When new mail _arrives:"
-#~ msgstr "Kur _vjen mesazh i ri:"
-
-#~ msgid "Command to execute when new mail arrives"
-#~ msgstr "Komanda për tu ekzekutuar kur vjen mesazh i ri"
-
-#~ msgid "When clicke_d:"
-#~ msgstr "Kur klikohe_t:"
-
-#~ msgid "Command to execute when clicked"
-#~ msgstr "Komanda për tu ekzekutuar kur klikohet"
-
-#~ msgid "Inbox Monitor Preferences"
-#~ msgstr "Preferencat e Vëzhguesit të Postës"
-
-#~ msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-#~ msgstr "Vëzhguesi i Postës të lajmëron kur vjen mesazh i ri"
-
-#~ msgid "Text only"
-#~ msgstr "Vetëm tekst"
-
-#~ msgid "Mail check"
-#~ msgstr "Kontrolli i postës"
-
-#~ msgid "Mail check notifies you when new mail arrives in your mailbox"
-#~ msgstr "Kontrolli i postës të lajmëron kur vjen mesazh i ri"
-
-#~ msgid "Command to execute when checking mail"
-#~ msgstr "Komanda për tu ekzekutuar kur kontrollon postën"
-
-#~ msgid "Command to execute when you click on the Inbox Monitor"
-#~ msgstr "Komanda për tu ekzekutuar kur klikon mbi Vëzhguesin e Postës"
-
-#~ msgid "Command to run before checking mail"
-#~ msgstr "Komanda për tu ekzekutuar përpara kontrollit të postës"
-
-#~ msgid "Do we run the exec-command"
-#~ msgstr "A ekziston komanda exec"
-
-#~ msgid "Do we run the newmail-command"
-#~ msgstr "A ekziston komanda newmail"
-
-#~ msgid "Do we want to save the password to disk"
-#~ msgstr "A duam ta ruajmë fjalëkalimin në disk"
-
-#~ msgid "Encrypted password"
-#~ msgstr "Fjalëkalim i kriptuar"
-
-#~ msgid "How often (in milliseconds) we check the mail"
-#~ msgstr "Sa shpesh (në milisekonda) e kontrollojmë postën"
-
-#~ msgid "If mail should be checked automatically"
-#~ msgstr "Nëse posta duhet kontrolluar automatikisht apo jo"
-
-#~ msgid "If this is enabled, we save the password in gconf"
-#~ msgstr "Nëse kjo është e aktivizuar, fjalëkalimi do ruhet tek gconf"
-
-#~ msgid "If this is set mail will be checked every update-freq milliseconds"
-#~ msgstr ""
-#~ "Nëse kjo është aktivizuar posta do kontrollohet çdo frekuence "
-#~ "milisekondash"
-
-#~ msgid "If this is set, we should run the exec-command"
-#~ msgstr "Nëse kjo është aktivizuar, duhet të ekzekutojmë komandën exec"
-
-#~ msgid "If this is set, we should run the newmail-command"
-#~ msgstr "Nëse kjo është aktivizuar, duhet të ekzekutojmë komandën newmail"
-
-#~ msgid "Interval for checking mail"
-#~ msgstr "Intervali për kontrollin e postës"
-
-#~ msgid "Path to the animation file"
-#~ msgstr "Vendndodhja e figurës së animimit"
-
-#~ msgid "Play a sound when mail is recieved"
-#~ msgstr "Luaj një tingull kur vjen mesazh i ri"
-
-#~ msgid "Remote folder for mail retrieval"
-#~ msgstr "Kartela jashtme për tërheqjen e mesazheve"
-
-#~ msgid "Remote server to connect to for our mail"
-#~ msgstr "Serveri i jashtëm për tu lidhur për postën tonë"
-
-#~ msgid "Run this command before we check the mail"
-#~ msgstr "Ekzekuto këtë komandë përpara se të kontrollojmë postën"
-
-#~ msgid "The mail server"
-#~ msgstr "Serveri i postës"
-
-#~ msgid "The user's encrypted password for the remote server"
-#~ msgstr "Fjalëkalimi i kriptuar i përdoruesit për serverin e jashtëm"
-
-#~ msgid "The user's password"
-#~ msgstr "Fjalëkalimi i përdoruesit"
-
-#~ msgid "The user's password for the remote server"
-#~ msgstr "Fjalëkalimi i përdoruesit për serverin e jashtëm"
-
-#~ msgid "This is how we check the mail, check the mail, check the mail..."
-#~ msgstr ""
-#~ "Ja se si e kontrollojmë postën, kontrollojmë postën, kontrollojmë "
-#~ "postën..."
-
-#~ msgid ""
-#~ "This is how we process the mail, process the mail, process the mail..."
-#~ msgstr ""
-#~ "Ja se si e përpunojmë postën, përpunojmë postën, përpunojmë postën..."
-
-#~ msgid ""
-#~ "This is the animation that will be displayed during normal Inbox Monitor "
-#~ "usage"
-#~ msgstr ""
-#~ "Ky është animimi që do të shfaqet gjatë përdorimit normal të Vëzhguesit "
-#~ "të Postës"
-
-#~ msgid "Username on the remote server"
-#~ msgstr "Identiteti tek serveri i jashtëm"
-
-#~ msgid "We run this command when the user clicks on Inbox Monitor"
-#~ msgstr ""
-#~ "Ekzekutojmë këtë komandë kur përdoruesi klikon tek Vëzhguesi i Postës"
-
-#~ msgid "Whether to reset mail status when you click on Inbox Monitor"
-#~ msgstr ""
-#~ "Nëse statusi i postës duhet rivendosur kur klikon tek Vëzhguesi i Postës"
-
-#~ msgid "You've got mail!"
-#~ msgstr "Keni mesazh të ri!"
-
-#~ msgid "Mailcheck"
-#~ msgstr "Kontrolli i postës"
-
-#~ msgid "New Mail"
-#~ msgstr "Mesazh i Ri"
-
-#~ msgid "Copyright (c) 2004 Michiel Sikkes"
-#~ msgstr "Copyright (c) 2004 Michiel Sikkes"
-
-#~ msgid "The GNOME Trash Applet"
-#~ msgstr "Applet i Koshit për GNOME"
-
-#~ msgid "_Open Trash folder"
-#~ msgstr "_Hap dosjen e Koshit"
-
-#~ msgid "Put Trash on the panel"
-#~ msgstr "Vendos Koshin në panel"
-
-#~ msgid "Unlocked note"
-#~ msgstr "Shënim i zhbllokuar"
-
-#~ msgid "GNOME VFS Error: %s"
-#~ msgstr "Gabim i VFS GNOME: %s"
-
-#~ msgid "Unable to acquire monitor of the Trash directory"
-#~ msgstr "Nuk mund të kontrolloj dosjen e Koshit"
