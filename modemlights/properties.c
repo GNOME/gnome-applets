@@ -8,6 +8,7 @@
 
 #include "modemlights.h"
 #include <panel-applet.h>
+#include <gconf/gconf-client.h>
 
 #define DEFAULT_PATH "/modemlights/"
 
@@ -17,37 +18,15 @@ static GtkWidget *disconnect_entry = NULL;
 static GtkWidget *lockfile_entry = NULL;
 static GtkWidget *device_entry = NULL;
 static GtkWidget *verify_checkbox = NULL;
-
-/* temporary variables modified by the properties dialog.  they get
-   copied to the permanent variables when the users selects Apply or
-   Ok */
-static gint P_UPDATE_DELAY = 10;
-static gint P_ask_for_confirmation = TRUE;
-static gint P_use_ISDN = FALSE;
-static gint P_verify_lock_file = TRUE;
-static gint P_show_extra_info = FALSE;
-static gint P_status_wait_blink = FALSE;
+GConfClient *client;
 
 static void show_extra_info_cb(GtkWidget *widget, gpointer data);
 static void verify_lock_file_cb(GtkWidget *widget, gpointer data);
-static void update_delay_cb(GtkWidget *widget, GtkWidget *spin);
+static void update_delay_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data);
 static void confirm_checkbox_cb(GtkWidget *widget, gpointer data);
 static void isdn_checkbox_cb(GtkWidget *widget, gpointer data);
 static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
-
-static gchar *P_display_color_text[COLOR_COUNT] = {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL
-};
 
 static gchar *color_rc_names[] = {
 	"color_rx",
@@ -80,7 +59,7 @@ static gchar *color_defaults[] = {
 
 void property_load(const char *path)
 {
-	gchar *buf;
+	gchar *buf, *key;
 	gint i;
 
 	g_free(command_connect);
@@ -88,18 +67,15 @@ void property_load(const char *path)
 	g_free(device_name);
 
 #ifdef FIXME
-	gnome_config_push_prefix(path);
-
-	if (gnome_config_get_int("modem/delay=0") == 0)
-		{
-		/* must be just added to panel, try defaults file */
-		gnome_config_pop_prefix();
-		gnome_config_push_prefix(DEFAULT_PATH);
-		}
-
-        UPDATE_DELAY = gnome_config_get_int("modem/delay=5");
-
-	buf = gnome_config_get_string("modem/lockfile=");
+	client = gconf_client_get_default ();
+	
+	key = g_strconcat (path, "delay", NULL);
+        UPDATE_DELAY = gconf_client_get_int (client, "key", NULL);
+	g_free (key);
+	
+	key = g_strconcat (path, "lockfile", NULL);
+	buf = gconf_client_get_string(client, key, NULL);
+	g_freee (key);
 	if (buf && strlen(buf) > 0)
 		{
 		g_free(lock_file);
@@ -107,25 +83,42 @@ void property_load(const char *path)
 		}
 	g_free(buf);
 
-	command_connect    = gnome_config_get_string("modem/connect=pppon");
-	command_disconnect = gnome_config_get_string("modem/disconnect=pppoff");
-	ask_for_confirmation = gnome_config_get_int("modem/confirmation=1");
-	device_name          = gnome_config_get_string("modem/device=ppp0");
-        use_ISDN	   = gnome_config_get_int("modem/isdn=0");
-	verify_lock_file   = gnome_config_get_int("modem/verify_lock=1");
-	show_extra_info    = gnome_config_get_int("modem/extra_info=0");
-	status_wait_blink  = gnome_config_get_int("modem/wait_blink=0");
-
+	key = g_strconcat (path, "conect", NULL);
+	command_connect    = gconf_client_get_string(client, key, NULL);
+	g_free (key);
+	key = g_strconcat (path, "disconnect", NULL);
+	command_disconnect = gconf_client_get_string(client, key, NULL);
+	g_free (key);
+	key = g_strconcat (path, "confirmation", NULL);
+	ask_for_confirmation = gconf_client_get_int(client, key, NULL);
+	g_free (key);
+	key = g_strconcat (path, "device", NULL);
+	device_name          = gconf_client_get_string(client, key, NULL);
+	g_free (key);
+	key = g_strconcat (path, "isdn", NULL);
+        use_ISDN	   = gconf_client_get_int(client, key, NULL);
+       	g_free (key);
+       	key = g_strconcat (path, "verify_lock", NULL);
+	verify_lock_file   = gconf_client_get_int(client, key, NULL);
+	g_free (key);
+	key = g_strconcat (path, "extra_info", NULL);
+	show_extra_info    = gconf_client_get_int(client, key, NULL);
+	g_free (key);
+	key = g_strconcat (path, "wait_blink", NULL);
+	status_wait_blink  = gconf_client_get_int(client, key, NULL);
+	g_free (key);
+	
 	for (i = 0; i < COLOR_COUNT; i++)
 		{
-		buf = g_strconcat("modem/", color_rc_names[i], "=", color_defaults[i], NULL);
+		buf = g_strconcat(path, color_rc_names[i], NULL);
 		g_free(display_color_text[i]);
-		display_color_text[i] = gnome_config_get_string(buf);
+		
+		display_color_text[i] = gconf_client_get_string(buf);
 
 		g_free(buf);
 		}
 
-	gnome_config_pop_prefix ();
+	
 #endif
 	
 	UPDATE_DELAY = 5;
@@ -197,55 +190,118 @@ void property_save(const char *path, gint to_default)
 #endif
 }
 
+static void connect_changed_cb(GtkEntry *entry, gpointer data)
+{
+	if (command_connect) g_free(command_connect);
+	command_connect = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
+#ifdef SAVE_WORKS
+	blah
+#endif
+}
+
+static void disconnect_changed_cb(GtkEntry *entry, gpointer data)
+{
+	if (command_disconnect) g_free(command_disconnect);
+	command_disconnect = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
+#ifdef SAVE_WORKS
+	blah
+#endif
+}
+
+static void lockfile_changed_cb(GtkEntry *entry, gpointer data)
+{
+	if (lock_file) g_free(lock_file);
+	lock_file = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
+#ifdef SAVE_WORKS
+	blah
+#endif
+}
+
+static void device_changed_cb(GtkEntry *entry, gpointer data)
+{
+	if (device_name) g_free(device_name);
+	device_name = gtk_editable_get_chars(GTK_EDITABLE(entry), 0, -1);
+#ifdef SAVE_WORKS
+	blah
+#endif
+}
+
 static void show_extra_info_cb(GtkWidget *widget, gpointer data)
 {
-	P_show_extra_info = GTK_TOGGLE_BUTTON (widget)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+	gint tmp = GTK_TOGGLE_BUTTON (widget)->active;
+	if (tmp != show_extra_info)
+		{
+		show_extra_info = tmp;
+		/* change display */
+		reset_orientation();
+		}
+#ifdef SAVE_WORKS
+	key = ?;
+	gconf_client_set_int (client, key, show_extra_info, NULL);
+#endif
 	return;
 	data = NULL;
 }
 
 static void verify_lock_file_cb(GtkWidget *widget, gpointer data)
 {
-	P_verify_lock_file = GTK_TOGGLE_BUTTON (widget)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
-        return;
+	verify_lock_file = GTK_TOGGLE_BUTTON (widget)->active;
+	
+#ifdef SAVE_WORKS
+	blah
+#endif
+	return;
         data = NULL;
 }
 
-static void update_delay_cb(GtkWidget *widget, GtkWidget *spin)
+static void update_delay_cb(GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
-        P_UPDATE_DELAY = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+	gchar *key;
+        UPDATE_DELAY = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widget));
+        start_callback_update();
+#ifdef SAVE_WORKS
+	key = ?;
+        gconf_client_set_int (client, key, UPDATE_DELAY, NULL);
+        g_free (key);
+#endif
         return;
         widget = NULL;
 }
 
 static void confirm_checkbox_cb(GtkWidget *widget, gpointer data)
 {
-	P_ask_for_confirmation = GTK_TOGGLE_BUTTON (widget)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+	ask_for_confirmation = GTK_TOGGLE_BUTTON (widget)->active;
+#ifdef SAVE_WORKS
+	blah
+#endif
+	
         return;
         data = NULL;
 }
 
 static void wait_blink_cb(GtkWidget *widget, gpointer data)
 {
-	P_status_wait_blink = GTK_TOGGLE_BUTTON (widget)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+	status_wait_blink = GTK_TOGGLE_BUTTON (widget)->active;
+#ifdef SAVE_WORKS
+	key = ?;
+	gconf_client_set_int (client, key, status_wait_blink, NULL);
+	g_free (key);
+#endif
         return;
         data = NULL;
 }
 
 static void isdn_checkbox_cb(GtkWidget *widget, gpointer data)
 {
-	P_use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
+	use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
 
-	gtk_widget_set_sensitive(lockfile_entry, !P_use_ISDN);
-	gtk_widget_set_sensitive(device_entry, !P_use_ISDN);
-	gtk_widget_set_sensitive(verify_checkbox, !P_use_ISDN);
+	gtk_widget_set_sensitive(lockfile_entry, !use_ISDN);
+	gtk_widget_set_sensitive(device_entry, !use_ISDN);
+	gtk_widget_set_sensitive(verify_checkbox, !use_ISDN);
 
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+#ifdef SAVE_WORKS
+	blah;
+#endif
         return;
         data = NULL;
 }
@@ -264,10 +320,14 @@ static void box_color_cb(GnomeColorPicker *cp, guint nopr, guint nopg, guint nop
 
 	gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &r, &g, &b, &a);
 
-	g_free(P_display_color_text[color]);
-	P_display_color_text[color] = g_strdup_printf("#%06X", (r << 16) + (g << 8) + b);
+	g_free(display_color_text[color]);
+	display_color_text[color] = g_strdup_printf("#%06X", (r << 16) + (g << 8) + b);
+	
+	reset_colors ();
 
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+#ifdef SAVE_WORKS
+	
+#endif
 }
 
 static GtkWidget *box_add_color(GtkWidget *box, const gchar *text, ColorType color)
@@ -276,9 +336,6 @@ static GtkWidget *box_add_color(GtkWidget *box, const gchar *text, ColorType col
 	GtkWidget *label;
 	GtkWidget *color_sel;
 	GdkColor c;
-
-	g_free(P_display_color_text[color]);
-	P_display_color_text[color] = NULL;
 
 	vbox = gtk_vbox_new(FALSE, 0);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
@@ -297,7 +354,8 @@ static GtkWidget *box_add_color(GtkWidget *box, const gchar *text, ColorType col
 	color_sel = gnome_color_picker_new();
 	gnome_color_picker_set_use_alpha(GNOME_COLOR_PICKER(color_sel), FALSE);
 	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_sel), c.red, c.green, c.blue, 0);
-	gtk_signal_connect(GTK_OBJECT(color_sel), "color_set", box_color_cb, GINT_TO_POINTER((gint)color));
+	g_signal_connect(G_OBJECT(color_sel), "color_set", 
+			 G_CALLBACK (box_color_cb), GINT_TO_POINTER((gint)color));
 	gtk_box_pack_start(GTK_BOX(vbox), color_sel, FALSE, FALSE, 0);
 	gtk_widget_show(color_sel);
 
@@ -330,7 +388,7 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 	const gchar *new_text;
 	gint i;
 	gint c_changed;
-
+#ifdef FIXME
 	if (page_num != -1) return;
 
 	if (lock_file) g_free(lock_file);
@@ -377,20 +435,12 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 	if (c_changed) reset_colors();
 
 	start_callback_update();
-#ifdef FIXME
+
 	applet_widget_sync_config(APPLET_WIDGET(applet));
 #endif
 	return;
 	widget = NULL;
 	data = NULL;
-}
-
-static gint property_destroy_cb(GtkWidget *widget, gpointer data)
-{
-        propwindow = NULL;
-	return FALSE;
-        widget = NULL;
-        data = NULL;
 }
 
 static void
@@ -403,10 +453,18 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 #endif
 }
 
+static void
+property_response_cb (GtkDialog *dialog, gint id, gpointer data)
+{
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+	propwindow = NULL;
+}
+
 void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	GtkWidget *frame;
 	GtkWidget *hbox;
+	GtkWidget *notebook;
 	GtkWidget *vbox;
 	GtkWidget *vbox1;
 	GtkWidget *label;
@@ -414,22 +472,21 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	GtkObject *delay_adj;
 	GtkWidget *checkbox;
 	GtkWidget *button;
-#ifdef FIXME
+
 	if(propwindow)
 		{
                 gdk_window_raise(propwindow->window);
                 return;
 		}
 
-        P_UPDATE_DELAY = UPDATE_DELAY;
-	P_ask_for_confirmation = ask_for_confirmation;
-	P_verify_lock_file = verify_lock_file;
-	P_show_extra_info = show_extra_info;
-	P_status_wait_blink = status_wait_blink;
-
-	propwindow = gnome_property_box_new();
-	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
-		_("Modem Lights Settings"));
+        propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Settings"), NULL,
+						  GTK_DIALOG_DESTROY_WITH_PARENT,
+						  GTK_STOCK_OK, GTK_RESPONSE_OK,
+						  NULL);
+						  
+	notebook = gtk_notebook_new ();
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), notebook,
+			    TRUE, TRUE, 0);
 	
 	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
@@ -454,9 +511,8 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	connect_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(connect_entry), command_connect);
-	gtk_signal_connect_object(GTK_OBJECT(connect_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(propwindow));
+	g_signal_connect (G_OBJECT (connect_entry), "activate",
+			  G_CALLBACK (connect_changed_cb), NULL);			  
         gtk_box_pack_start(GTK_BOX(hbox), connect_entry , TRUE, TRUE, 0);
 	gtk_widget_show(connect_entry);
 
@@ -471,17 +527,16 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	disconnect_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(disconnect_entry), command_disconnect);
-	gtk_signal_connect_object(GTK_OBJECT(disconnect_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(propwindow));
+	g_signal_connect (G_OBJECT (disconnect_entry), "activate",
+			  G_CALLBACK (disconnect_changed_cb), NULL);
         gtk_box_pack_start(GTK_BOX(hbox), disconnect_entry, TRUE, TRUE, 0);
 	gtk_widget_show(disconnect_entry);
 
 	/* confirmation checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Confirm connection"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
-	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
-			   GTK_SIGNAL_FUNC(confirm_checkbox_cb), NULL);
+	g_signal_connect (G_OBJECT (checkbox), "toggled",
+			  G_CALLBACK (confirm_checkbox_cb), NULL);
         gtk_box_pack_start(GTK_BOX(vbox1), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
@@ -503,25 +558,26 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
         gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	delay_adj = gtk_adjustment_new( P_UPDATE_DELAY, 1.0, 20.0, 1, 1, 1 );
+	delay_adj = gtk_adjustment_new( UPDATE_DELAY, 1.0, 20.0, 1, 1, 1 );
         delay_w  = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
         gtk_box_pack_start(GTK_BOX(hbox), delay_w, FALSE, FALSE, 0);
-	gtk_signal_connect(GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
-	gtk_signal_connect(GTK_OBJECT(delay_w),"changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
+	g_signal_connect (G_OBJECT (delay_w), "focus-out-event",
+			  G_CALLBACK (update_delay_cb), NULL);
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(delay_w),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(delay_w);
 
 	/* extra info checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Show connect time and throughput"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), show_extra_info);
-	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
-			   GTK_SIGNAL_FUNC(show_extra_info_cb), NULL);
+	g_signal_connect(G_OBJECT(checkbox), "toggled",
+			 G_CALLBACK(show_extra_info_cb), NULL);
         gtk_box_pack_start(GTK_BOX(vbox1), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
-        label = gtk_label_new(_("General"));
+        label = gtk_label_new_with_mnemonic (_("_General"));
         gtk_widget_show(vbox);
-        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
+        /*gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);*/
+        gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
 
 	/* color settings */
 
@@ -547,8 +603,8 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	checkbox = gtk_check_button_new_with_label(_("Blink"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), status_wait_blink);
-	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
-			   GTK_SIGNAL_FUNC(wait_blink_cb), NULL);
+	g_signal_connect(G_OBJECT(checkbox), "toggled",
+			 G_CALLBACK(wait_blink_cb), NULL);
         gtk_box_pack_start(GTK_BOX(vbox1), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
@@ -560,7 +616,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	label = gtk_label_new(_("Colors"));
 	gtk_widget_show(vbox);
-	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
+	gtk_notebook_append_page( GTK_NOTEBOOK(notebook), vbox, label);
 
 	/* advanced settings */
 
@@ -587,16 +643,15 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	lockfile_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(lockfile_entry), lock_file);
-	gtk_signal_connect_object(GTK_OBJECT(lockfile_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(propwindow));
+	g_signal_connect (G_OBJECT (lockfile_entry), "activate",
+			  G_CALLBACK (lockfile_changed_cb), NULL);
         gtk_box_pack_start(GTK_BOX(hbox), lockfile_entry, TRUE, TRUE, 0);
 	gtk_widget_show(lockfile_entry);
 
 	verify_checkbox = gtk_check_button_new_with_label(_("Verify owner of lock file"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (verify_checkbox), verify_lock_file);
-	gtk_signal_connect(GTK_OBJECT(verify_checkbox), "toggled",
-			   GTK_SIGNAL_FUNC(verify_lock_file_cb), NULL);
+	g_signal_connect(G_OBJECT(verify_checkbox), "toggled",
+			 G_CALLBACK(verify_lock_file_cb), NULL);
         gtk_box_pack_start(GTK_BOX(vbox1), verify_checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(verify_checkbox);
 
@@ -611,17 +666,16 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	device_entry = gtk_entry_new_with_max_length(16);
 	gtk_entry_set_text(GTK_ENTRY(device_entry), device_name);
-	gtk_signal_connect_object(GTK_OBJECT(device_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(propwindow));
+	g_signal_connect (G_OBJECT (device_entry), "activate",
+			  G_CALLBACK (device_changed_cb), NULL);
         gtk_box_pack_start(GTK_BOX(hbox), device_entry, TRUE, TRUE, 0);
 	gtk_widget_show(device_entry);
 
 	/* ISDN checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Use ISDN"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
-	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
-			   GTK_SIGNAL_FUNC(isdn_checkbox_cb), NULL);
+	g_signal_connect(G_OBJECT(checkbox), "toggled",
+			   G_CALLBACK(isdn_checkbox_cb), NULL);
         gtk_box_pack_start(GTK_BOX(vbox), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
@@ -631,7 +685,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		gtk_widget_set_sensitive(device_entry, FALSE);
 		gtk_widget_set_sensitive(verify_checkbox, FALSE);
 		}
-
+#ifdef SHOULD_THIS_BE_HERE
 	/* defaults save button */
 	
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
@@ -639,28 +693,24 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	gtk_widget_show(hbox);
 
 	button = gtk_button_new_with_label(_("Set options as default"));
-	gtk_signal_connect(GTK_OBJECT(button), "clicked",
-			   GTK_SIGNAL_FUNC(set_default_cb), NULL);
+	/*gtk_signal_connect(GTK_OBJECT(button), "clicked",
+			   GTK_SIGNAL_FUNC(set_default_cb), NULL);*/
 	gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, FALSE, 0);
 	gtk_widget_show(button);
-
+#endif
         label = gtk_label_new(_("Advanced"));
         gtk_widget_show(vbox);
-        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
+        gtk_notebook_append_page( GTK_NOTEBOOK(notebook), vbox, label);
 
-	gtk_signal_connect( GTK_OBJECT(propwindow), "apply",
-			    GTK_SIGNAL_FUNC(property_apply_cb), NULL );
-	gtk_signal_connect( GTK_OBJECT(propwindow), "destroy",
-			    GTK_SIGNAL_FUNC(property_destroy_cb), NULL );
-	gtk_signal_connect( GTK_OBJECT(propwindow), "help",
-			    GTK_SIGNAL_FUNC(phelp_cb), NULL);
+	g_signal_connect (G_OBJECT (propwindow), "response",
+			  G_CALLBACK (property_response_cb), NULL);
 
         gtk_widget_show_all(propwindow);
         return;
         applet = NULL;
         data = NULL;
         
-        #endif
+    
 } 
 
 
