@@ -27,20 +27,22 @@
 #include <applet-widget.h>
 #include <signal.h>
 
-#include "gnote.h"
+#include "gnotes_applet.h"
 #include "gnotes.xpm"
 #include "gnotes_session.h"
 
 
 GNotes gnotes;
 
-GtkWidget *propwindow;
-gint tmp_default_height;
-gint tmp_default_width;
-
 #define DEFAULT_HEIGHT (1)
 #define DEFAULT_WIDTH (1)
 
+GNotes *gnotes_get_main_info(void)
+{
+    return &gnotes;
+}
+
+/*----------------------------------------------------------------------*/
 static void gnotes_preferences_load(const char *path)
 {
     gboolean is_default;
@@ -79,7 +81,7 @@ static gint applet_button_press_cb(GtkWidget *widget, GdkEventButton *event,
     switch(event->button)
     {
     case 1:
-        gnote_new_cb(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_1x1);
+        gnote_new_cb(APPLET_WIDGET(gnotes.applet), "1x1");
         break;
     default:
         return(FALSE);
@@ -124,131 +126,13 @@ static void about(AppletWidget *applet, gpointer data)
     GtkWidget *about_box;
 
     about_box = gnome_about_new(_("GNotes!"), VERSION,
-                                _("Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com>, "
-                                  "Copyright (C) 1999 dres <dres@debian.org>"),
+                                _("Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \nCopyright (C) 1999 dres <dres@debian.org>"),
                                 authors,
                                 _("Create sticky notes on your screen."), NULL);
 
     gtk_widget_show(about_box);
 }
 
-static void update_height_cb(GtkWidget *wid, GtkWidget *data)
-{
-    tmp_default_height =
-        gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(data));
-    gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
-}
-
-static void update_width_cb(GtkWidget *wid, GtkWidget *data)
-{
-    tmp_default_width =
-        gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(data));
-    gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
-}
-
-static void property_apply_cb(GtkWidget *wid, gpointer data)
-{
-    gnotes.default_height = tmp_default_height;
-    gnotes.default_width = tmp_default_width;
-
-    applet_widget_sync_config(APPLET_WIDGET(gnotes.applet));
-}
-
-static gint property_destroy_cb(GtkWidget *wid, gpointer data)
-{
-    propwindow = NULL;
-    return FALSE;
-}
-
-static void properties_show(AppletWidget *applet, gpointer data)
-{
-    static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
-    
-    GtkWidget *frame;
-    GtkWidget *height_box;
-    GtkWidget *width_box;
-    GtkWidget *height_spinner;
-    GtkWidget *width_spinner;
-    GtkObject *height_adj;
-    GtkObject *width_adj;
-    GtkWidget *tmp_label;
-    
-    if(propwindow != 0)
-    {
-        gdk_window_raise(propwindow->window);
-        return;
-    }
-
-    help_entry.name = gnome_app_id;
-    
-    tmp_default_height = gnotes.default_height;
-    tmp_default_width = gnotes.default_width;
-
-    propwindow = gnome_property_box_new();
-
-    gtk_window_set_title(
-        GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
-        _("GNotes Settings"));
-
-    frame = gtk_vbox_new(FALSE, 5);
-
-    /* HEIGHT PART */
-    height_box = gtk_hbox_new(FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(frame), height_box, FALSE, FALSE, 5);
-    gtk_widget_show(height_box);
-
-    tmp_label = gtk_label_new(_("Default Height"));
-    gtk_box_pack_start(GTK_BOX(height_box), tmp_label, FALSE, FALSE, 5);
-    gtk_widget_show(tmp_label);
-    
-    height_adj = gtk_adjustment_new(tmp_default_height, 10.0, 500.0, 1, 1, 1);
-    
-    height_spinner = gtk_spin_button_new(GTK_ADJUSTMENT(height_adj), 1, 0);
-    gtk_box_pack_start(GTK_BOX(height_box), height_spinner, FALSE, FALSE, 5);
-    gtk_widget_show(height_spinner);
-
-    gtk_signal_connect(GTK_OBJECT(height_adj), "value_changed",
-                       GTK_SIGNAL_FUNC(update_height_cb), height_spinner);
-    gtk_signal_connect(GTK_OBJECT(height_spinner), "changed",
-                       GTK_SIGNAL_FUNC(update_height_cb), height_spinner);
-
-    /* WIDTH PART */
-    width_box = gtk_hbox_new(FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(frame), width_box, FALSE, FALSE, 5);
-    gtk_widget_show(width_box);
-    
-    tmp_label = gtk_label_new(_("Default Width"));
-    gtk_box_pack_start(GTK_BOX(width_box), tmp_label, FALSE, FALSE, 5);
-    gtk_widget_show(tmp_label);
-
-    width_adj = gtk_adjustment_new(tmp_default_width, 10.0, 500.0, 1, 1, 1);
-    
-    width_spinner = gtk_spin_button_new(GTK_ADJUSTMENT(width_adj), 1, 0);
-    gtk_box_pack_start(GTK_BOX(width_box), width_spinner, FALSE, FALSE, 5);
-    gtk_widget_show(width_spinner);
-
-    gtk_signal_connect(GTK_OBJECT(width_adj), "value_changed",
-                       GTK_SIGNAL_FUNC(update_width_cb), width_spinner);
-    gtk_signal_connect(GTK_OBJECT(width_spinner), "changed",
-                       GTK_SIGNAL_FUNC(update_width_cb), width_spinner);
-
-
-    tmp_label = gtk_label_new(_("General"));
-    gtk_widget_show(frame);
-    gnome_property_box_append_page(GNOME_PROPERTY_BOX(propwindow), frame,
-                                   tmp_label);
-
-    gtk_signal_connect(GTK_OBJECT(propwindow), "apply",
-                       GTK_SIGNAL_FUNC(property_apply_cb), NULL);
-    gtk_signal_connect(GTK_OBJECT(propwindow), "destroy",
-                       GTK_SIGNAL_FUNC(property_destroy_cb), NULL);
-    gtk_signal_connect( GTK_OBJECT(propwindow), "help",
-                        GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-                        &help_entry );
-
-    gtk_widget_show(propwindow);
-    
-}
 
 static gint applet_save_session(GtkWidget *widget, char *privcfpath,
                                 char *globcfpath)
@@ -283,6 +167,8 @@ int main(int argc, char **argv)
 
     gnotes.applet = applet_widget_new("gnotes_applet");
 
+    gnotes.onbottom = FALSE;
+    
     if (!gnotes.applet)
     {
         g_error(_("Can't create GNotes applet!"));
@@ -303,25 +189,6 @@ int main(int argc, char **argv)
 /*                                           _("Properties..."), properties_show, */
 /*                                           NULL); */
 
-    /*
-      applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
-      GNOTE_NEW_4x5, GNOME_STOCK_PIXMAP_NEW, _(GNOTE_NEW_4x5), gnote_new_cb,
-      GNOTE_NEW_4x5);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_4x4,
-      _(GNOTE_NEW_4x4), gnote_new_cb, GNOTE_NEW_4x4);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_3x4,
-      _(GNOTE_NEW_3x4), gnote_new_cb, GNOTE_NEW_3x4);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_3x3,
-      _(GNOTE_NEW_3x3), gnote_new_cb, GNOTE_NEW_3x3);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_2x3,
-      _(GNOTE_NEW_2x3), gnote_new_cb, GNOTE_NEW_2x3);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_2x2,
-      _(GNOTE_NEW_2x2), gnote_new_cb, GNOTE_NEW_2x2);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_1x2,
-      _(GNOTE_NEW_1x2), gnote_new_cb, GNOTE_NEW_1x2);
-      applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTE_NEW_1x1,
-      _(GNOTE_NEW_1x1), gnote_new_cb, GNOTE_NEW_1x1);
-    */
     applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTES_RAISE,
                                     _(GNOTES_RAISE), gnotes_raise, 0);
     applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTES_LOWER,
@@ -344,9 +211,6 @@ int main(int argc, char **argv)
     
     gtk_signal_connect(GTK_OBJECT(gnotes.applet), "save_session",
                        GTK_SIGNAL_FUNC(applet_save_session), NULL);
-
-    /* wait for a signal! */
-    signal(SIGHUP, gnote_signal_handler);
 
     applet_widget_gtk_main ();
 
