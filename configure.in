@@ -86,9 +86,9 @@ AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
 dnl Setup for libxklavier
-PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= 0.97,,
-    AC_MSG_ERROR([Upcoming releases of gnome-control-center will depend on libxklavier.
-The latest release is available from http://prdownloads.sourceforge.net/gswitchit], 1))
+PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= 1.10,,
+    AC_MSG_ERROR([libxklavier was not found and is required to build gnome-applets.
+Please get the latest version from http://freedesktop.org/Software/LibXklavier], 1))
 
 AC_SUBST(LIBXKLAVIER_CFLAGS)
 AC_SUBST(LIBXKLAVIER_LIBS)
