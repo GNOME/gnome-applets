@@ -1,3 +1,16 @@
+2005-04-03  Ryan Lortie  <desrt@desrt.ca>
+
+	** MERGE CHANGES FROM HEAD **
+
+	* gweather-pref.c: Since the current_location structure is free'd
+	by the row_changed callback and since we change the active row
+	while populating the TreeView in the XML parser, make a copy.
+
+	* gweather-xml.c: Replace a direct "return -1" with "goto error_out"
+	to ensure that things get free'd up in the error case.
+
+	Both of the above are fixes to problems spotted by Kjartan.
+
 2005-04-01  Ryan Lortie  <desrt@desrt.ca>
 
 	* gweather-pref.c: Remove _() around a message introduced in the last
