@@ -7,6 +7,9 @@ $(GCONF_APPLETS_CFLAGS)
 
 bin_PROGRAMS = drivemount_applet2
 
+desktop_iconsdir = $(datadir)/pixmaps
+desktop_icons_DATA = drivemount-applet.png
+
 drivemount_applet2_SOURCES = \
 drivemount.c \
 drivemount.h \
