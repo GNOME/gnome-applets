@@ -24,13 +24,16 @@
 extern gboolean
 gkb_factory (PanelApplet * applet, const gchar * iid, gpointer data);
 
+#if 0
 static gboolean
 GKBAppletNew (PanelApplet * applet)
 {
 	fprintf (stderr, "No xkb found, fallback to gkb\n");
 	return gkb_factory (applet, "OAFIID:GNOME_KeyboardApplet", NULL);
 }
+#endif
 
+#if 0
 static gboolean
 CheckXKB (void)
 {
@@ -47,17 +50,18 @@ CheckXKB (void)
 
 	return have_xkb;
 }
+#endif
 
 static gboolean
 KeyboardAppletFactory (PanelApplet * applet,
 		       const gchar * iid, gpointer data)
 {
 	if (!strcmp (iid, "OAFIID:GNOME_KeyboardApplet")) {
-		if (CheckXKB ())
+	/*	if (CheckXKB ())*/
 			return GSwitchItAppletNew (applet);
-		else
+	/*	else
 			return GKBAppletNew (applet);
-	}
+	*/}
 	return TRUE;
 }
 
