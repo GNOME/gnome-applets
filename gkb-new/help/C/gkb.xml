@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.4">
-  <!ENTITY date "September 2003">
+  <!ENTITY appletversion "2.5.5">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "February 2004">
   <!ENTITY applet "Keyboard Layout Switcher">
 ]>
 
@@ -25,6 +25,7 @@
 	 <copyright> 
 		<year>2002</year>
 		<year>2003</year>  
+		<year>2004</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -115,6 +116,22 @@
 		  </revdescription>   
 		</revision> 
 		<revision> 
+		  <revnumber>Keyboard Layout Switcher Applet Manual V2.4</revnumber> 
+		  <date>September 2003</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription>   
+		</revision>
+		<revision> 
+		  <revnumber>Keyboard Layout Switcher Applet Manual V2.3</revnumber> 
+		  <date>August 2003</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription>   
+		</revision>
+		<revision> 
 		  <revnumber>Keyboard Layout Switcher Applet Manual V2.2</revnumber> 
 		  <date>January 2003</date> 
 		<revdescription> 
@@ -165,9 +182,7 @@
 		</releaseinfo> 
 	 <legalnotice> 
 		<title>Feedback</title> 
-		<para> To report a bug or make a suggestion regarding the &applet; applet or this
-		  manual, follow the directions in the 
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		<para> To report a bug or make a suggestion regarding the &applet; applet or this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
 		
 	 </legalnotice> 
   </articleinfo> 
@@ -196,15 +211,12 @@
 		</screenshot> 
 	 </figure> 
 
-	 <para>The <application>&applet;</application> applet enables you to assign different layouts to
-	 your keyboard to suit different locales. The applet displays the flag and label associated with
-	 the current keyboard layout.</para> 
-	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
-		<menuchoice> 
-		  <guimenu>Add to Panel</guimenu> 
-		  <guisubmenu>Utility</guisubmenu> 
-		  <guimenuitem>&applet;</guimenuitem> 
-		</menuchoice>.</para> 
+	 <para>The <application>&applet;</application> applet enables you to assign different layouts to your keyboard to suit different locales. The applet displays the flag and label associated with the current keyboard layout.</para> 
+	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Utility</guisubmenu><guimenuitem>Keyboard Indicator</guimenuitem></menuchoice>.</para> 
+         <note>
+           <para>If you have an old version of XFree, <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Utility</guisubmenu><guimenuitem>Keyboard Indicator</guimenuitem></menuchoice> adds the <application>&applet;</application> applet to the panel, as documented in this manual.</para>
+           <para>If you have a new version of XFree, <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Utility</guisubmenu><guimenuitem>Keyboard Indicator</guimenuitem></menuchoice> adds a different keyboard layout applet, called <application>gswitchit</application>, to the panel. The <application>gswitchit</application> applet is documented in a separate manual.</para>
+         </note>
   </sect1>
 
 
@@ -212,56 +224,43 @@
    
 	 <title>Usage</title> 
 
-	 <para>To switch to a different keyboard layout, click repeatedly on the applet until the applet displays
-	 the keyboard layout that you want. If the applet does not contain the keyboard layout that you require, 
-	 see <xref linkend="gkb-keymaps"/> for information about how to add keyboard layouts to the applet.</para>
+	 <para>To switch to a different keyboard layout, click repeatedly on the applet until the applet displays the keyboard layout that you want. If the applet does not contain the keyboard layout that you require, see <xref linkend="gkb-keymaps"/> for information about how to add keyboard layouts to the applet.</para>
 
   </sect1>
 
 
   <sect1 id="gkb-prefs"> 
 	 <title>Preferences</title> 
-	 <para>To configure <application>&applet;</application>, right-click on the
-	 applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
+	 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
 
 	 <sect2 id="gkb-keymaps"> 
 		
 		<title>Keyboards</title> 
 		
-		<para>The <guilabel>Keyboards</guilabel> tabbed section lists the keyboard layouts that are
-		currently configured for the applet. </para>
+		<para>The <guilabel>Keyboards</guilabel> tabbed section lists the keyboard layouts that are currently configured for the applet. </para>
 		
 		<sect3 id="gkb-modify-list">
 		
 		<title>To Modify the List of Keyboard Layouts</title>
 		
-		<para>To add a keyboard layout to the <guilabel>Keyboards</guilabel> 
-		list, perform the following steps:</para>
+		<para>To add a keyboard layout to the <guilabel>Keyboards</guilabel> list, perform the following steps:</para>
 		<orderedlist>
-			<listitem><para>Click <guibutton>Add</guibutton> in the <guilabel>Keyboards</guilabel> tabbed 
-			section. The applet displays the <guilabel>Select Keyboard</guilabel> dialog.</para></listitem>
-			<listitem><para>Click on the arrow next to the country for which you want to add a keyboard
-			layout, then select the keyboard layout that you want to add. </para></listitem>
-			<listitem><para>Click <guibutton>Add</guibutton> to add the keyboard layout to the 
-			<guilabel>Keyboards</guilabel> list.</para></listitem>
+			<listitem><para>Click <guibutton>Add</guibutton>. The applet displays the <guilabel>Select Keyboard</guilabel> dialog.</para></listitem>
+			<listitem><para>Click on the arrow next to the country for which you want to add a keyboard layout, then select the keyboard layout that you want to add. </para></listitem>
+			<listitem><para>Click <guibutton>Add</guibutton> to add the keyboard layout to the <guilabel>Keyboards</guilabel> list.</para></listitem>
+			<listitem><para>Click <guibutton>Close</guibutton> to close the <guilabel>Select Keyboard</guilabel> dialog.</para></listitem>
 		</orderedlist>
 		
-		<para>To delete a keyboard layout from the <guilabel>Keyboards</guilabel> list, select the
-		keyboard layout, then click <guibutton>Delete</guibutton>.</para>
+		<para>To delete a keyboard layout from the <guilabel>Keyboards</guilabel> list, select the keyboard layout, then click <guibutton>Delete</guibutton>.</para>
 		
-		<para>To move a keyboard layout up in the <guilabel>Keyboards</guilabel> list, select the
-		keyboard layout, then click <guibutton>Up</guibutton>. To move a keyboard layout down in 
-		the <guilabel>Keyboards</guilabel> list, select the keyboard layout, then click 
-		<guibutton>Down</guibutton>.</para>
+		<para>To move a keyboard layout up the <guilabel>Keyboards</guilabel> list, select the keyboard layout, then click <guibutton>Up</guibutton>. To move a keyboard layout down the <guilabel>Keyboards</guilabel> list, select the keyboard layout, then click <guibutton>Down</guibutton>.</para>
 		
 		</sect3>
 		
 		<sect3 id="gkb-edit-layout">
 		
 		<title>To Edit a Keyboard Layout</title>
-		<para>To edit a keyboard layout, select the keyboard layout, then click 
-		<guibutton>Properties</guibutton>. The <guilabel>Edit Keyboard</guilabel> dialog
-		contains the following elements:</para>
+		<para>To edit a keyboard layout, select the keyboard layout, then click <guibutton>Properties</guibutton>. The <guilabel>Edit Keyboard</guilabel> dialog contains the following elements:</para>
 		
 		<table frame="topbot" id="tbl-edit-layout">
     		<title>Edit Keyboard Elements</title> 
@@ -281,16 +280,13 @@
 		  <entry> 
 		  <para><guilabel>Name</guilabel></para></entry> 
 		  <entry> 
-		  <para>The name of the keyboard layout. This name is displayed in the <guilabel>Keyboards</guilabel> tabbed
-		  section of the <guilabel>Preferences</guilabel> dialog.</para></entry>  
+		  <para>The name of the keyboard layout. This name is displayed in the <guilabel>Keyboards</guilabel> tabbed section of the <guilabel>Preferences</guilabel> dialog.</para></entry>  
 		 </row>
 		 <row valign="top"> 
 		  <entry> 
 		  <para><guilabel>Label</guilabel></para></entry> 
 		  <entry> 
-		  <para>A short label for the keyboard layout. For example, the label for a United States English keyboard 
-		  layout is <guilabel>us</guilabel>. By default, the applet displays the flag and label of
-		  the current keyboard layout in the applet display. </para></entry>  
+		  <para>A short label for the keyboard layout. For example, the label for a United States English keyboard layout is <guilabel>us</guilabel>. By default, the applet displays the flag and label of the current keyboard layout in the applet display. </para></entry>  
 		 </row>
 		 
 		 <!--
@@ -325,8 +321,7 @@
 		  <entry> 
 		  <para><guilabel>Codepage</guilabel></para></entry> 
 		  <entry> 
-		  <para>The codeset that the language of the keyboard uses. For example, by default United States English uses the 
-		  Western European ISO-8859-1 codeset.</para></entry>  
+		  <para>The codeset that the language of the keyboard uses. For example, by default United States English uses the Western European ISO-8859-1 codeset.</para></entry>  
 		 </row>
 		 -->
 		 
@@ -334,15 +329,10 @@
 		  <entry> 
 		  <para><guilabel>Command</guilabel></para></entry> 
 		  <entry> 
-		  <para>The command that the applet uses to change to the keyboard layout. You can use any 
-		  of the following commands to change the keyboard layout:</para>
-		  <para><command>gkb_xmmap <replaceable>us</replaceable></command> where <replaceable>us</replaceable>
-		  is the file extension of the <filename>xmodmap</filename> file for the keyboard layout.</para>
-		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command> where 
-		  <replaceable>/path/xmodmap.us</replaceable> is the <filename>xmodmap</filename> file for the 
-		  keyboard layout.</para>
-		  <para><command>setxkbmap <replaceable>us</replaceable></command> where <replaceable>us</replaceable>
-		  is the file extension of the <filename>xmodmap</filename> file for the keyboard layout.</para>
+		  <para>The command that the applet uses to change to the keyboard layout. You can use any of the following commands to change the keyboard layout:</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command> where <replaceable>us</replaceable> is the file extension of the <filename>xmodmap</filename> file for the keyboard layout.</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command> where <replaceable>/path/xmodmap.us</replaceable> is the <filename>xmodmap</filename> file for the keyboard layout.</para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command> where <replaceable>us</replaceable> is the file extension of the <filename>xmodmap</filename> file for the keyboard layout.</para>
 		  </entry>  
 		 </row> 
 		 
@@ -350,10 +340,7 @@
 		  <entry> 
 		  <para><guilabel>Flag</guilabel></para></entry> 
 		  <entry> 
-		  <para>The flag that represents the country in which the keyboard layout is 
-		  used. By default, the applet 
-		  displays the flag and label of the current keyboard layout in the applet display. Click on the flag
-		  to display a flag selector dialog. </para></entry>  
+		  <para>The flag that represents the country in which the keyboard layout is used. By default, the applet displays the flag and label of the current keyboard layout in the applet display. Click on the flag to display a flag selector dialog. </para></entry>  
 		 </row>
 
 	 	</tbody> 
@@ -370,8 +357,7 @@
 		  <varlistentry> 
 			 <term><guilabel>Appearance</guilabel></term> 
 			 <listitem> 
-			 <para>Select one of the following options from the drop-down list to
-			 specify what the applet displays in the panel:</para> 
+			 <para>Select one of the following options from the drop-down list to specify what the applet displays in the panel:</para> 
 			 <itemizedlist>
 			 	<listitem><para><guilabel>Flag</guilabel></para>
 			 	<para>Display a flag only.</para></listitem>
@@ -386,9 +372,7 @@
 		  <varlistentry> 
 			 <term><guilabel>Switch layout</guilabel></term> 
 			 <listitem> 
-			 <para>You can use a shortcut key to switch between keyboard layouts. To customize the
-			 shortcut key, click <guibutton>Grab keys</guibutton>, then press the keys that you
-			 want to use. The applet displays the shortcut key in the text box. </para> 
+			 <para>You can use a shortcut key to switch between keyboard layouts. To customize the shortcut key, click <guibutton>Grab keys</guibutton>, then press the keys that you want to use. The applet displays the shortcut key in the text box. </para> 
 			 </listitem> 
 		  </varlistentry> 
 		</variablelist> 
