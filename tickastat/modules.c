@@ -23,6 +23,7 @@ GList *modules_build_list(AppData *ad)
 	list = g_list_append(list, (gpointer)mod_coredump_init(ad));
 	list = g_list_append(list, (gpointer)mod_loadavg_init(ad));
 	list = g_list_append(list, (gpointer)mod_tail_init(ad));
+	list = g_list_append(list, (gpointer)mod_news_init(ad));
 
 	return list;
 }

@@ -9,7 +9,8 @@ module_sources = \
 	mod_test.c	\
 	mod_coredump.c	\
 	mod_loadavg.c	\
-	mod_tail.c
+	mod_tail.c	\
+	mod_news.c
 
 tickastat_applet_SOURCES = \
 	main.c		\

@@ -10,4 +10,5 @@ ModuleData *mod_test_init(AppData *ad);
 ModuleData *mod_coredump_init(AppData *ad);
 ModuleData *mod_loadavg_init(AppData *ad);
 ModuleData *mod_tail_init(AppData *ad);
+ModuleData *mod_news_init(AppData *ad);
 
