@@ -67,6 +67,15 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	/* Customize the colors */
 	stickynote_set_highlighted(note, FALSE);
 
+	/* Connect signals to the sticky note window */
+	g_signal_connect(G_OBJECT(note->window), "expose-event", G_CALLBACK(window_expose_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "configure-event", G_CALLBACK(window_configure_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "delete-event", G_CALLBACK(window_delete_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "enter-notify-event", G_CALLBACK(window_cross_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "leave-notify-event", G_CALLBACK(window_cross_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
+	
 	/* Other stuff */
 	{
 		GtkWidget *title_box = glade_xml_get_widget(note->glade, "title_box");
@@ -80,14 +89,6 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 		g_signal_connect(G_OBJECT(title_box), "button-press-event", G_CALLBACK(window_move_edit_cb), note);
 		g_signal_connect(G_OBJECT(resize_box), "button-press-event", G_CALLBACK(window_resize_cb), note);
 		g_signal_connect(G_OBJECT(close_box), "button-release-event", G_CALLBACK(window_close_cb), note);
-
-		g_signal_connect(G_OBJECT(note->window), "expose-event", G_CALLBACK(window_expose_cb), note);
-		g_signal_connect(G_OBJECT(note->window), "configure-event", G_CALLBACK(window_configure_cb), note);
-		g_signal_connect(G_OBJECT(note->window), "delete-event", G_CALLBACK(window_delete_cb), note);
-		g_signal_connect(G_OBJECT(note->window), "enter-notify-event", G_CALLBACK(window_cross_cb), note);
-		g_signal_connect(G_OBJECT(note->window), "leave-notify-event", G_CALLBACK(window_cross_cb), note);
-		g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
-		g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
 	}
 
 	return note;
@@ -224,6 +225,7 @@ void stickynotes_set_visible(StickyNotesApplet *stickynotes, gboolean visible)
 	gint i;
 	
 	if (visible) 
+		/* Show each sticky note, move to the corrected location on screen, and raise */
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			gtk_widget_show(note->window);
@@ -232,6 +234,7 @@ void stickynotes_set_visible(StickyNotesApplet *stickynotes, gboolean visible)
 		}
 	
 	else
+		/* Hide each sticky note */
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			gtk_widget_hide(note->window);
@@ -296,10 +299,10 @@ void stickynotes_save(StickyNotesApplet *stickynotes)
 			xmlNewProp(node, "w", w_str);
 			xmlNewProp(node, "h", h_str);
 		}
-	
+
 		/* Now that it has been saved, reset the modified flag */
 		gtk_text_buffer_set_modified(buffer, FALSE);
-
+	
 		g_free(x_str);
 		g_free(y_str);
 		g_free(w_str);

@@ -264,7 +264,6 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
 		stickynotes_set_locked(stickynotes, gconf_value_get_bool(entry->value));
-		stickynotes_applet_update_tooltips(stickynotes);
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/title_color") == 0

@@ -48,6 +48,14 @@ typedef struct
 
 } StickyNotesApplet;
 
+typedef enum
+{
+	STICKYNOTES_NEW = 0,
+	STICKYNOTES_SET_VISIBLE,
+	STICKYNOTES_SET_LOCKED
+
+} StickyNotesDefaultAction;
+
 /* Modify the applet */
 void stickynotes_applet_update_icon(StickyNotesApplet *stickynotes, gboolean highlighted);
 void stickynotes_applet_update_tooltips(StickyNotesApplet *stickynotes);
