@@ -468,7 +468,6 @@ void
 mc_create_command_entry (MCData *mc)
 {
     mc->entry = gtk_entry_new_with_max_length (MC_MAX_COMMAND_LENGTH); 
-
     g_signal_connect (mc->entry,"destroy",
 		      G_CALLBACK (gtk_widget_destroyed), &mc->entry);
     g_signal_connect (mc->entry, "key_press_event",
@@ -496,7 +495,7 @@ mc_command_update_entry_color (MCData *mc)
 
     gtk_widget_modify_text (mc->entry, GTK_STATE_NORMAL, &fg);
     gtk_widget_modify_text (mc->entry, GTK_STATE_PRELIGHT, &fg);
-
+   
     bg.red   = mc->preferences.cmd_line_color_bg_r;
     bg.green = mc->preferences.cmd_line_color_bg_g;
     bg.blue  = mc->preferences.cmd_line_color_bg_b;

@@ -136,9 +136,7 @@ mc_applet_draw (MCData *mc)
 {
     GtkWidget *icon;
     GtkWidget *button;
-    GtkWidget *hbox;
     GtkWidget *hbox_buttons;
-    GtkWidget *vbox;
     GtkWidget *frame;
     MCPreferences prefs = mc->preferences;
     int        size_frames = 0;
@@ -148,27 +146,15 @@ mc_applet_draw (MCData *mc)
 
     mc->cmd_line_size_y = mc->preferences.normal_size_y - size_frames;   
 
-    if (!mc->applet_vbox) {
-	mc->applet_vbox = gtk_vbox_new (FALSE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (mc->applet_vbox), 0);
+    if (mc->applet_box) {
+        gtk_widget_destroy (mc->applet_box);	
     }
+    mc->applet_box = gtk_hbox_new (FALSE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (mc->applet_box), 0);
 
-    if (mc->applet_inner_vbox)
-	gtk_widget_destroy (mc->applet_inner_vbox); 
-    mc->applet_inner_vbox = gtk_vbox_new (FALSE, 0);
-
-    gtk_container_set_border_width (GTK_CONTAINER (mc->applet_inner_vbox), 0);
-    g_signal_connect (mc->applet_inner_vbox, "destroy",
-		      G_CALLBACK (gtk_widget_destroyed),
-		      &mc->applet_inner_vbox);
-
-    vbox = gtk_hbox_new (FALSE, 0);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
-   
     mc_create_command_entry (mc);
 
     /* hbox for message label and buttons */
-    hbox = gtk_hbox_new (FALSE, 0);
     if (prefs.normal_size_y > GNOME_Vertigo_PANEL_X_SMALL) 
 	hbox_buttons = gtk_vbox_new (TRUE, 0);
     else
@@ -176,8 +162,7 @@ mc_applet_draw (MCData *mc)
 
     /* add file-browser button */
     button = gtk_button_new ();
-    gtk_widget_set_usize (button, 13, 10);
-
+    
     g_signal_connect (button, "clicked",
 		      G_CALLBACK (mc_show_file_browser), mc);
     g_signal_connect (button, "button_press_event",
@@ -195,8 +180,7 @@ mc_applet_draw (MCData *mc)
 
     /* add history button */
     button = gtk_button_new ();
-    gtk_widget_set_usize (button, 13, 10);
-
+    
     g_signal_connect (button, "clicked",
 		      G_CALLBACK (mc_show_history), mc);
     g_signal_connect (button, "button_press_event",
@@ -212,68 +196,57 @@ mc_applet_draw (MCData *mc)
 			      _("History"),
 			      _("Click this button for the list of previous commands"));
     
-    /* add buttons into frame */
-    frame = gtk_frame_new (NULL);
-    gtk_container_set_border_width (GTK_CONTAINER (frame), 1);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
-    gtk_container_add (GTK_CONTAINER (frame), hbox_buttons);
-    gtk_box_pack_start (GTK_BOX (hbox), frame, FALSE, FALSE, 0);
-
-    /* put message label and history/file-browser button into vbox */
-    gtk_box_pack_end (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 
     if (mc->preferences.show_handle) {
 	GtkWidget *handle;
+	GtkWidget *hbox;
 
 	/* add a handle box to allow moving away this appplet from the panel */
 	handle = gtk_handle_box_new ();
-
+	gtk_box_pack_start (GTK_BOX (mc->applet_box), handle, TRUE, TRUE, 0);
+	
+	hbox = gtk_hbox_new (FALSE, 2);
+	
 	if (mc->preferences.show_frame) {
-	    GtkWidget *frame2;
-
-	    /* inner frame */
+	    
 	    frame = gtk_frame_new (NULL);
 	    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-	    gtk_container_add (GTK_CONTAINER (frame), vbox);
-
 	    gtk_container_add (GTK_CONTAINER (handle), frame);
+	    gtk_container_add (GTK_CONTAINER (frame), hbox);
 
-	    /* outer frame */
-	    frame2 = gtk_frame_new (NULL);
-	    gtk_frame_set_shadow_type (GTK_FRAME(frame2), GTK_SHADOW_IN);
-	    gtk_container_add (GTK_CONTAINER (frame2), handle);
-
-	    gtk_box_pack_start (GTK_BOX (mc->applet_inner_vbox), frame2, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
 	} else {
-	    gtk_container_add (GTK_CONTAINER (handle), vbox);
-	    gtk_box_pack_start (GTK_BOX (mc->applet_inner_vbox), handle, TRUE, TRUE, 0);
+	    gtk_container_add (GTK_CONTAINER (handle), hbox);
+	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
 	}
     } else {
+        GtkWidget *hbox;
+        
+        hbox = gtk_hbox_new (FALSE, 2);
+        
 	if (mc->preferences.show_frame) {
-	    GtkWidget *frame2;
-
-	    /* inner frame */
-	    frame = gtk_frame_new (NULL);
+	   
+  	    frame = gtk_frame_new (NULL);
 	    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
-	    gtk_container_add (GTK_CONTAINER (frame), vbox);
+	    gtk_box_pack_start (GTK_BOX (mc->applet_box), frame, TRUE, TRUE, 0);
+	    gtk_container_add (GTK_CONTAINER (frame), hbox);
 		    
-	    /* outer frame */
-	    frame2 = gtk_frame_new (NULL);
-	    gtk_frame_set_shadow_type (GTK_FRAME (frame2), GTK_SHADOW_IN);
-	    gtk_container_add (GTK_CONTAINER (frame2), frame);
-		    
-	    gtk_box_pack_start (GTK_BOX (mc->applet_inner_vbox), frame2, TRUE, TRUE, 0);
-	} else
-	    gtk_box_pack_start (GTK_BOX (mc->applet_inner_vbox), vbox, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
+	
+	} else {
+	    gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
+	    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
+	}
     }
 
-    gtk_box_pack_start (GTK_BOX (mc->applet_vbox),
-			mc->applet_inner_vbox, 
-			TRUE, TRUE, 0);
-
-    gtk_box_pack_start (GTK_BOX (vbox), mc->entry, FALSE, FALSE, 0);
-
-    gtk_widget_show_all (mc->applet_vbox);
+    
+    gtk_container_add (GTK_CONTAINER (mc->applet), mc->applet_box);
+    
+    gtk_widget_show_all (mc->applet_box);
 }
 
 static void
@@ -338,7 +311,6 @@ mini_commander_applet_fill (PanelApplet *applet)
 		      G_CALLBACK (mc_pixel_size_changed), mc);
     mc_pixel_size_changed (mc->applet, panel_applet_get_size (applet), mc);
 
-    gtk_container_add (GTK_CONTAINER (mc->applet), mc->applet_vbox);
     gtk_widget_show (GTK_WIDGET (mc->applet));
     
     g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc); 

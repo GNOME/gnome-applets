@@ -47,8 +47,7 @@ struct _MCData {
 
     GtkTooltips   *tooltips;
 
-    GtkWidget     *applet_vbox;
-    GtkWidget     *applet_inner_vbox;
+    GtkWidget     *applet_box;
 
     GtkWidget     *entry;
     GtkWidget     *file_select;
