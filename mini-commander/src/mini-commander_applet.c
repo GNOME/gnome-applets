@@ -27,6 +27,7 @@
 #include "mini-commander_applet.h"
 #include "preferences.h"
 #include "command_line.h"
+#include "terminal.h"
 #include "message.h"
 #include "exec.h"
 #include "about.h"
@@ -168,7 +169,11 @@ redraw_applet(void)
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
     
     /* add command line; position: top */
-    initCommandEntry();
+    if(1)
+	initCommandEntry();
+    else
+	terminal_init();
+
 /*     gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0); */
 
     /* hbox for message label and buttons */
@@ -293,7 +298,15 @@ redraw_applet(void)
     /* allow pasting into the input box by packing it after
        applet_widdget_add has bound the middle mouse button (idea taken
        from the applet WebControl by Garrett Smith) */
-    gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
+    if(1)
+	gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
+    else
+	{
+	    frame = gtk_frame_new(NULL);
+	    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+	    gtk_container_add(GTK_CONTAINER(frame), terminal_zvt);
+	    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	}	
 
     gtk_widget_show_all(applet_vbox);
     gtk_widget_show_all(applet_inner_vbox);

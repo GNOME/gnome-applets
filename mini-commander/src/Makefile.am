@@ -29,11 +29,14 @@ mini_commander_applet_SOURCES =			\
 	macro.c					\
 	macro.h					\
 	preferences.c				\
-	preferences.h
+	preferences.h				\
+	terminal.c				\
+	terminal.h
 
 mini_commander_applet_LDADD =				\
 	$(GNOME_LIBDIR)					\
 	$(GNOME_APPLETS_LIBS)				\
+	$(ZVT_LIBS)					\
 	$(INTLLIBS) 
 
 # currently the installation of these bitmaps wouldn't be necessary

@@ -24,6 +24,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 #include <gdk/gdkkeysyms.h>
+#include <zvt/zvtterm.h>
 
 #include "command_line.h"
 #include "preferences.h"
@@ -499,3 +500,4 @@ historyAutoComplete(GtkWidget *widget, GdkEventKey *event)
     
     return NULL;
 }
+
