@@ -37,7 +37,7 @@ gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesA
 
 	stickynotes_applet_update_icon(applet);
 	
-	return FALSE;
+	return TRUE;
 }
 
 /* Applet Callback : Keypress on the applet. */
@@ -56,7 +56,7 @@ gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet 
 	
 	stickynotes_applet_update_icon(applet);
 	
-	return FALSE;
+	return TRUE;
 }
 
 /* Applet Callback : Cross (enter or leave) the applet. */
@@ -277,13 +277,13 @@ void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
 	if (response == GTK_RESPONSE_HELP)
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 	
-	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) || GTK_RESPONSE_DELETE_EVENT */
+	else /* if (response == GTK_RESPONSE_CLOSE  || response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_NONE)*/
 		gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
 /* About Callback : Response. */
 void about_response_cb(GtkDialog *dialog, gint response, gpointer data)
 {
-	if (response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_OK || response == GTK_RESPONSE_CLOSE)
+	if (response == GTK_RESPONSE_OK || response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_NONE)
 		gtk_widget_hide(GTK_WIDGET(dialog));
 }
