@@ -269,20 +269,91 @@ static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
     gweather_update (gw_applet);
 } 
 
+static void load_region (GWeatherApplet *gw_applet, GtkTreeIter *parent_iter, const gchar *region_key)
+{
+    GtkTreeView *tree;
+    GtkTreeStore *model;
+    GtkTreeIter region_iter;
+    gchar *subregions_key;
+    gint isubregions, nsubregions;
+    gchar **subregions;
+    gchar *name_key;
+    gchar *name;
+    void *iter;
+    gchar *iter_key, *iter_val;
+    
+    tree = GTK_TREE_VIEW (gw_applet->pref_tree);
+    model = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
+    
+    name_key = g_strconcat (region_key, "/name", NULL);
+    name = gnome_config_get_string (name_key);
+    
+    gtk_tree_store_insert (model, &region_iter, parent_iter, 0);
+    gtk_tree_store_set (model, &region_iter, COL_LOC, name, -1);
+    
+    subregions_key = g_strconcat (region_key, "/regions", NULL);
+    gnome_config_get_vector (subregions_key, &nsubregions, &subregions);
+    
+    for (isubregions = nsubregions-1;  isubregions >= 0;  isubregions--) {
+        gchar *subregion_key = g_strconcat (region_key, "_", subregions[isubregions], NULL);
+        
+        load_region (gw_applet, &region_iter, subregion_key);
+        
+        g_free (subregion_key);
+    }
+    
+    iter = gnome_config_init_iterator (region_key);
+    while ((iter = gnome_config_iterator_next (iter, &iter_key, &iter_val)) != NULL) {
+        if (strstr (iter_key, "loc") != NULL) {
+            GtkTreeIter loc_iter;
+            gchar **locdata;
+            gint nlocdata;
+            WeatherLocation *weather_location;
+            
+            gnome_config_make_vector (iter_val, &nlocdata, &locdata);
+            g_return_if_fail (nlocdata == 4);
+            
+            weather_location = weather_location_new (locdata[0], 
+                                                     locdata[1], 
+                                                     locdata[2], 
+                                                     locdata[3]);
+            gtk_tree_store_insert (model, &loc_iter, &region_iter, 0);
+            gtk_tree_store_set (model, &loc_iter, COL_LOC, locdata[0], 
+        			COL_POINTER, weather_location, -1);
+            
+            if (gw_applet->gweather_pref.location && weather_location_equal (weather_location, gw_applet->gweather_pref.location)) {
+                GtkTreePath *path;
+                path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
+                                                &loc_iter);
+                gtk_tree_view_expand_to_path (tree, path);
+                gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
+                gtk_tree_view_scroll_to_cell (tree, path, NULL, TRUE, 0.5, 0.5);
+                gtk_tree_path_free (path);
+            }
+            
+            g_strfreev (locdata);
+        }
+        
+        g_free(iter_key);
+        g_free(iter_val);
+    }
+    
+    g_free (name);
+    g_free (name_key);
+    g_free (subregions_key);
+    g_strfreev (subregions);
+}
+
 static void load_locations (GWeatherApplet *gw_applet)
 {
     GtkTreeView *tree = GTK_TREE_VIEW(gw_applet->pref_tree);
-    GtkTreeStore *model;
     GtkTreeViewColumn *column;
     GtkCellRenderer *cell_renderer;
-
-    gchar *pp[1], *path;
-    gint nregions, iregions;
+    gint iregions, nregions;
     gchar **regions;
+    gchar *pp[1], *path;
     gchar *file;
     
-    model = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
-
     file = gnome_datadir_file("gweather/Locations");
     g_return_if_fail (file);
     path = g_strdup_printf("=%s=/", file);
@@ -295,91 +366,14 @@ static void load_locations (GWeatherApplet *gw_applet)
 						       "text", COL_LOC, NULL);
     gtk_tree_view_append_column (tree, column);
     gtk_tree_view_set_expander_column (GTK_TREE_VIEW (tree), column);
-
-    gnome_config_get_vector("Main/regions", &nregions, &regions);
+    
+    gnome_config_get_vector ("Main/regions", &nregions, &regions);
 
     for (iregions = nregions-1;  iregions >= 0;  iregions--) {
-        GtkTreeIter region_iter;
-        gint nstates, istates;
-        gchar **states;
-        gchar *region_name;
-        gchar *region_name_key = g_strconcat(regions[iregions], "/name", NULL);
-        gchar *states_key = g_strconcat(regions[iregions], "/states", NULL);
-
-        region_name = gnome_config_get_string(region_name_key);
-
-        gtk_tree_store_insert (model, &region_iter, NULL, 0);
-        gtk_tree_store_set (model, &region_iter, COL_LOC, region_name, -1);
-        
-        gnome_config_get_vector(states_key, &nstates, &states);
-
-        for (istates = nstates - 1;  istates >= 0;  istates--) {
-            GtkTreeIter state_iter;
-            void *iter;
-            gchar *iter_key, *iter_val;
-            gchar *state_path = g_strconcat(regions[iregions], "_", states[istates], "/", NULL);
-            gchar *state_name_key = g_strconcat(state_path, "name", NULL);
-            gchar *state_name = gnome_config_get_string(state_name_key);
-
-	    gtk_tree_store_insert (model, &state_iter, &region_iter, 0);
-            gtk_tree_store_set (model, &state_iter, COL_LOC, state_name, -1);
-            
-            iter = gnome_config_init_iterator(state_path);
-            while ((iter = gnome_config_iterator_next(iter, &iter_key, &iter_val)) != NULL) {
-                if (strstr(iter_key, "loc") != NULL) {
-                    GtkTreeIter loc_iter;
-                    gchar **locdata;
-                    gint nlocdata;
-                    WeatherLocation *weather_location;
-
-                    gnome_config_make_vector(iter_val, &nlocdata, &locdata);
-                    g_return_if_fail(nlocdata == 4);
-                    
-		    weather_location = weather_location_new(locdata[0], 
-		    					    locdata[1], 
-		    					    locdata[2], 
-		    					    locdata[3]);
-                    gtk_tree_store_insert (model, &loc_iter, &state_iter, 0);
-                    gtk_tree_store_set (model, &loc_iter, COL_LOC, locdata[0], 
-                    			COL_POINTER, weather_location, -1);                 
-                    
-                    
-                    if (gw_applet->gweather_pref.location && weather_location_equal(weather_location, gw_applet->gweather_pref.location)) {
-                        GtkTreePath *path;
-                        path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
-                                                        &region_iter);
-                        gtk_tree_view_expand_row (tree, path, FALSE);
-                        gtk_tree_path_free (path);
-                        path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
-                                                        &state_iter);
-                        gtk_tree_view_expand_row (tree, path, FALSE);
-                        gtk_tree_path_free (path);
-                        path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
-                                                        &loc_iter);
-                        gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
-                        gtk_tree_view_scroll_to_cell (tree, path, NULL, TRUE, 0.5, 0.5);
-                        gtk_tree_path_free (path);
-                    }
-		    
-                    g_strfreev(locdata);
-                }
-
-                g_free(iter_key);
-                g_free(iter_val);
-            }
-
-            g_free(state_name);
-            g_free(state_path);
-            g_free(state_name_key);
-        }
-
-        g_strfreev(states);
-        g_free(region_name);
-        g_free(region_name_key);
-        g_free(states_key);
+        load_region (gw_applet, NULL, regions[iregions]);
     }
-    g_strfreev(regions);
-
+    
+    g_strfreev (regions);
     gnome_config_pop_prefix();
 }
 
