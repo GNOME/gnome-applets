@@ -356,6 +356,10 @@ void stickynote_set_visible(StickyNote *note, gboolean visible)
 		gtk_window_present(GTK_WINDOW(note->w_window));
 		if (note->x != -1 || note->y != -1)
 			gtk_window_move(GTK_WINDOW(note->w_window), note->x, note->y);
+		/* Put the note on all workspaces if necessary. */
+		if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
+			gtk_window_stick(GTK_WINDOW(note->w_window));
+
 	}
 	else {
 		/* Hide sticky note */
