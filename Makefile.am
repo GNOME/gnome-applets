@@ -48,14 +48,17 @@ if APPLET_MODEMLIGHTS
 modemlights_SUBDIRS = $(modemlights_applets)
 endif
 
+if BUILD_BATTSTAT_APPLET
+battstat_SUBDIR = battstat
+endif
+
 always_built_SUBDIRS = \
 	drivemount	\
 	panel-menu	\
 	charpick	\
 	geyes		\
 	mini-commander	\
-	gkb-new		\
-	battstat
+	gkb-new
 ##	whereami	
 
 SUBDIRS = \
@@ -65,7 +68,8 @@ SUBDIRS = \
 	$(cdplayer_SUBDIRS)	\
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
-	$(vfs_SUBDIRS)	\
+	$(vfs_SUBDIRS)		\
+	$(battstat_SUBDIR)	\
 	$(zvt_SUBDIRS)
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install

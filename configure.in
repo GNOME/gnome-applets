@@ -214,19 +214,10 @@ dnl ******************************************
 
 
 dnl ******************************************
-dnl **  battery applet check                **
-dnl ******************************************
-
-case "$host_os" in
-netbsd*)
-  AC_CHECK_HEADERS(machine/apmvar.h, AC_DEFINE(NETBSD_APM))
-  ;;
-esac
-
-dnl ******************************************
 dnl ** battstat check			    **
 dnl ******************************************
 
+build_battstat_applet=yes
 case "${host}" in
   powerpc-*-linux*)
   	HAVE_LIBAPM=no
@@ -238,7 +229,12 @@ case "${host}" in
 	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
 	AC_SUBST(HAVE_LIBAPM)  
 	;;
+  *solaris*)
+	build_battstat_applet=no
+	;;
 esac
+
+AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
 
 dnl *******************************************
 dnl ** mixer applet check                    **
