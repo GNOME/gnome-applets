@@ -16,8 +16,9 @@ gnomepager_applet_SOURCES = \
 	stripe.xbm
 
 gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) $(ORB_LIBS)         \
+		     $(GNOMEUI_LIBS) $(GNORBA_LIBS)      \
+		     $(INTLLIBS)
 
 EXTRA_DIST = gnomepager_applet.desktop
 
