@@ -70,7 +70,7 @@ static void place_widgets (void)
     size = 48;
 #endif /* HAVE_PANEL_PIXEL_SIZE */
 
-    if ((gweather_orient == ORIENT_LEFT) || (gweather_orient == ORIENT_RIGHT)) {
+    if (((gweather_orient == ORIENT_LEFT) || (gweather_orient == ORIENT_RIGHT)) ^ (size < 25)) {
         gint sep = MAX(0, (size - pix_requisition.width - lbl_requisition.width) / 3);
         gint lbl_x = sep + pix_requisition.width + sep;
         if (lbl_x + lbl_requisition.width > size) {
@@ -78,11 +78,11 @@ static void place_widgets (void)
             sep = MAX(0, (size - pix_requisition.width) / 2);
         }
 
-        gtk_widget_set_usize(frame, size, 26);
-        gtk_fixed_move(GTK_FIXED(fixed), pixmap, sep, 5);
-        gtk_fixed_move(GTK_FIXED(fixed), label, lbl_x, 4);
+        gtk_widget_set_usize(frame, MAX (size, 48), 24);
+        gtk_fixed_move(GTK_FIXED(fixed), pixmap, sep, 2);
+        gtk_fixed_move(GTK_FIXED(fixed), label, lbl_x, 2);
     } else {
-        gint panel_width = MAX(lbl_requisition.width, 24) + 2;
+        gint panel_width = MAX(lbl_requisition.width, 22);
         gint sep = MAX(0, (size - pix_requisition.height - lbl_requisition.height) / 3);
         gint lbl_y = sep + pix_requisition.height + sep;
         if (lbl_y + lbl_requisition.height > size) {
@@ -90,7 +90,7 @@ static void place_widgets (void)
             sep = MAX(0, (size - pix_requisition.height) / 2);
         }
 
-        gtk_widget_set_usize(frame, panel_width, size);
+        gtk_widget_set_usize(frame, 24, size);
         gtk_fixed_move(GTK_FIXED(fixed), pixmap, (panel_width - pix_requisition.width) / 2 - 1, sep);
         gtk_fixed_move(GTK_FIXED(fixed), label, (panel_width - lbl_requisition.width) / 2, lbl_y);
     }
