@@ -26,7 +26,8 @@ stickynotes_applet_SOURCES = \
 	stickynotes_applet_callbacks.c
 
 stickynotes_applet_LDADD = \
-	$(GNOME_APPLETS_LIBS)
+	$(GNOME_APPLETS_LIBS)	\
+	$(LIBGLADE_LIBS)
 
 icondir = $(datadir)/pixmaps/stickynotes
 
