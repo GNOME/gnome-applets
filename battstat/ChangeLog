@@ -1,3 +1,14 @@
+2004-08-03  Davyd Madeley  <davyd@ucc.asn.au>
+
+	* battstat_applet.c (size_allocate): Use the size_allocate signal
+	to get the panel real size. Fixes bug #144413.
+	(create_layout): Add a intermediate vbox to the applet layout to
+	make the applet icons centered on wide vertical panels. Fixes bug
+	#136457.
+	(change_orient): Test if the charge percent is displayed before
+	making the applet horizontal on vertical panels.
+	Patch by Vincent Noel <vnoel@cox.net>.
+
 2004-07-25  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* battstat_applet.c: (destroy_applet): Merge fix

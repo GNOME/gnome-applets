@@ -154,9 +154,7 @@ show_status_toggled (GtkToggleButton *button, gpointer data)
   }
   
   battstat->showstatus = toggled;
-  battstat->showstatus ?
-	gtk_widget_show (battstat->statuspixmapwid):
-	gtk_widget_hide (battstat->statuspixmapwid);
+	change_orient(applet, battstat->orienttype, battstat);
   
   panel_applet_gconf_set_bool   (applet, "show_status", 
   				 battstat->showstatus, NULL);
@@ -178,12 +176,8 @@ show_percent_toggled (GtkToggleButton *button, gpointer data)
   }
   
   battstat->showpercent = toggled;
-  if (battstat->horizont) 
-    battstat->showpercent ?
-	gtk_widget_show (battstat->percent):gtk_widget_hide (battstat->percent);
-  else
-    battstat->showpercent ?
-	gtk_widget_show (battstat->statuspercent):gtk_widget_hide (battstat->statuspercent);
+	change_orient(applet, battstat->orienttype, battstat);
+	
   panel_applet_gconf_set_bool   (applet, "show_percent", 
   				 battstat->showpercent, NULL);
   				 

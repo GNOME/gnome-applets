@@ -1087,16 +1087,16 @@ change_orient (PanelApplet       *applet,
    switch(battstat->orienttype) {
     case PANEL_APPLET_ORIENT_UP:
     case PANEL_APPLET_ORIENT_DOWN:
-      if(battstat->panelsize<40)
+      if(battstat->panelsize<46)
 	battstat->horizont=TRUE;
       else
 	battstat->horizont=FALSE;
       break;
     case PANEL_APPLET_ORIENT_LEFT:
     case PANEL_APPLET_ORIENT_RIGHT:
-      if (battstat->panelsize>=60)
-	battstat->horizont=TRUE;
-      else
+      if ( (!battstat->showpercent && battstat->panelsize>=60) || (battstat->showpercent && battstat->panelsize>=90) )
+	  battstat->horizont=TRUE;
+      else 
 	battstat->horizont=FALSE;
       break;
    }
@@ -1354,13 +1354,21 @@ adj_value_changed_cb (GtkAdjustment *ignored, gpointer data)
 
 
 void
-change_size(PanelApplet *applet, gint size, gpointer data)
+size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
 {
    ProgressData *battstat = data;
    
    if (DEBUG) g_print("applet_change_pixel_size()\n");
    
-   battstat->panelsize=size;
+   if (battstat->orienttype == PANEL_APPLET_ORIENT_LEFT || battstat->orienttype == PANEL_APPLET_ORIENT_RIGHT) {
+     if (battstat->panelsize == allocation->width)
+       return;
+     battstat->panelsize = allocation->width;
+   } else {
+     if (battstat->panelsize == allocation->height)
+       return;
+     battstat->panelsize = allocation->height;
+   }
    
    battstat->colors_changed=TRUE;
    change_orient(applet, battstat->orienttype, battstat);
@@ -1457,6 +1465,7 @@ gint
 create_layout(ProgressData *battstat)
 {
    int i;
+   GtkWidget *vbox;
    
    if (DEBUG) g_print("create_layout()\n");
    
@@ -1466,17 +1475,20 @@ create_layout(ProgressData *battstat)
 			       GTK_SHADOW_NONE);
    gtk_widget_show(battstat->framestatus);
    gtk_box_pack_start( GTK_BOX(battstat->hbox1), battstat->framestatus, 
-		       FALSE, TRUE, 0);
+		       TRUE, TRUE, 0);
    
    battstat->eventstatus = gtk_event_box_new ();
    gtk_widget_show (battstat->eventstatus);
    gtk_container_add (GTK_CONTAINER (battstat->framestatus), 
 		      battstat->eventstatus);
    
+   /* Intermediate vbox to get the 'status' and 'charge' indicators centered. */
+   vbox = gtk_vbox_new (FALSE, 0);
+   gtk_container_add(GTK_CONTAINER(battstat->eventstatus),
+		     vbox);
    battstat->statusvbox = gtk_vbox_new ( FALSE, 5);
-   gtk_widget_show (battstat->statusvbox);
-   gtk_container_add(GTK_CONTAINER(battstat->eventstatus), 
-		     battstat->statusvbox);
+   gtk_box_pack_start (GTK_BOX(vbox), battstat->statusvbox, TRUE, FALSE, 0);
+   gtk_widget_show_all (vbox);
    
    battstat->framebattery = gtk_frame_new(NULL);
    /*gtk_widget_set_usize( battstat->framebattery, -1, 24);*/
@@ -1484,7 +1496,7 @@ create_layout(ProgressData *battstat)
 			       GTK_SHADOW_NONE);
    gtk_widget_show(battstat->framebattery);
    gtk_box_pack_start(GTK_BOX(battstat->hbox1), battstat->framebattery, 
-		      FALSE, TRUE, 0);
+		      TRUE, TRUE, 0);
    
    battstat->eventbattery = gtk_event_box_new();
    gtk_widget_show (battstat->eventbattery);
@@ -1521,13 +1533,13 @@ create_layout(ProgressData *battstat)
 						    battstat->mask );
    battstat->pixmapwidy = gtk_image_new_from_pixmap( battstat->pixmapy,
 						     battstat->masky );
-   gtk_box_pack_start (GTK_BOX (battstat->hbox), GTK_WIDGET (battstat->pixmapwid), FALSE, TRUE, 0);
+   gtk_box_pack_start (GTK_BOX (battstat->hbox), GTK_WIDGET (battstat->pixmapwid), TRUE, FALSE, 0);
    gtk_widget_show ( GTK_WIDGET (battstat->pixmapwid) );
 
    battstat->frameybattery = gtk_frame_new(NULL);
    /*gtk_widget_set_usize( battstat->frameybattery, 24, 46);*/
    gtk_frame_set_shadow_type ( GTK_FRAME (battstat->frameybattery), GTK_SHADOW_NONE);
-   gtk_box_pack_start(GTK_BOX(battstat->hbox1), battstat->frameybattery, FALSE, TRUE, 0);
+   gtk_box_pack_start(GTK_BOX(battstat->hbox1), battstat->frameybattery, TRUE, FALSE, 0);
    battstat->eventybattery = gtk_event_box_new();
    gtk_widget_show (battstat->eventybattery);
    gtk_container_add (GTK_CONTAINER (battstat->frameybattery), battstat->eventybattery);
@@ -1543,7 +1555,7 @@ create_layout(ProgressData *battstat)
    
    battstat->percent = gtk_label_new ("0%");
    gtk_widget_show(battstat->percent);
-   gtk_box_pack_start (GTK_BOX(battstat->hbox), battstat->percent, FALSE, TRUE, 0);
+   gtk_box_pack_start (GTK_BOX(battstat->hbox), battstat->percent, TRUE, TRUE, 0);
    
    statusimage[BATTERY] = gdk_pixmap_create_from_xpm_d( battstat->applet->window,
 							&statusmask[BATTERY],
@@ -1631,8 +1643,8 @@ create_layout(ProgressData *battstat)
 		     battstat);
 
    g_signal_connect (battstat->applet,
-		     "change_size",
-   		     G_CALLBACK (change_size),
+		     "size_allocate",
+   		     G_CALLBACK (size_allocate),
 		     battstat);
 
    g_signal_connect (battstat->applet,

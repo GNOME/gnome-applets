@@ -150,7 +150,7 @@ void help_cb (BonoboUIComponent *, ProgressData *, const char *);
 void suspend_cb (BonoboUIComponent *, ProgressData *, const char *);
 void destroy_about (GtkWidget *, gpointer);
 void about_cb (BonoboUIComponent *, ProgressData *, const char *);
-void change_size(PanelApplet *, gint, gpointer);
+void size_allocate(PanelApplet *, GtkAllocation *, gpointer);
 void change_background(PanelApplet *a, PanelAppletBackgroundType type, 
 		GdkColor *color, GdkPixmap *pixmap, ProgressData *battstat);	
 gint create_layout(ProgressData *battstat);
