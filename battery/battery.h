@@ -53,6 +53,8 @@ typedef struct BatteryData {
   GdkGC *gc;
   GdkGC *readout_gc;
 
+  GtkWidget * about_box;
+
   /* Graph state */
   unsigned char * graph_values;
   time_t last_graph_update;
@@ -130,6 +132,9 @@ typedef struct BatteryData {
  * Prototypes
  *
  */
+void about_cb (AppletWidget *widget, gpointer data);
+void destroy_about(GtkWidget *w, gpointer data);
+
 void battery_set_size(BatteryData * bat);
 gint battery_update(gpointer data);
 gint battery_orient_handler(GtkWidget * w, PanelOrientType o,

@@ -501,13 +501,19 @@ make_new_battery_applet(void)
 		     GTK_SIGNAL_FUNC(battery_session_save),
 		     bat);
 
-  applet_widget_register_stock_callback(APPLET_WIDGET(bat->applet),
-					"properties",
-					GNOME_STOCK_MENU_PROP,
-					("Properties..."),
-					battery_properties_window,
-					bat);
+  applet_widget_register_stock_callback (APPLET_WIDGET(bat->applet),
+					 "about",
+					 GNOME_STOCK_MENU_ABOUT,
+					 _("About..."),
+					 about_cb,
+					 bat);
 
+  applet_widget_register_stock_callback (APPLET_WIDGET(bat->applet),
+					 "properties",
+					 GNOME_STOCK_MENU_PROP,
+					 ("Properties..."),
+					 battery_properties_window,
+					 bat);
 
   gtk_widget_show_all (bat->applet);
   gtk_widget_show (bat->graph_area);
@@ -528,6 +534,35 @@ make_new_battery_applet(void)
   bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
 					  (GtkFunction) battery_update, bat);
 } /* make_new_battery_applet */
+
+void
+destroy_about(GtkWidget *w, gpointer data)
+{
+  BatteryData *bat = data;
+} /* destroy_about */
+
+void
+about_cb (AppletWidget *widget, gpointer data)
+{
+  BatteryData *bat = data;
+  char *authors[2];
+  
+  authors[0] = "Nat Friedman <nat@nat.org>";
+  authors[1] = NULL;
+
+  bat->about_box =
+    gnome_about_new (_("The GNOME Battery Monitor Applet"), VERSION,
+		     _("(C) 1997-1998 The Free Software Foundation"),
+		     (const char **) authors,
+		     _("This applet monitors the charge of your laptop's battery.  "
+		       "Click on the picture of the battery to change display modes."),
+		     NULL);
+
+  gtk_signal_connect(GTK_OBJECT(bat->about_box), "destroy",
+		     GTK_SIGNAL_FUNC(destroy_about), bat);
+
+  gtk_widget_show (bat->about_box);
+} /* about_cb */
 
 void
 battery_setup_picture(BatteryData * bat)
