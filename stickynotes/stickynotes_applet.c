@@ -217,6 +217,17 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	/* Add the popup menu */
 	panel_applet_setup_menu_from_file(panel_applet, NULL, "GNOME_StickyNotesApplet.xml", NULL, stickynotes_applet_menu_verbs, applet);
 
+	if (panel_applet_get_locked_down (panel_applet)) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (panel_applet);
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/preferences",
+					      "hidden", "1",
+					      NULL);
+	}
+
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "show", (BonoboUIListenerFn) menu_toggle_show_cb, applet);
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
 
