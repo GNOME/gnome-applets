@@ -1362,7 +1362,7 @@ static gint updateOutput(gpointer data)
 		/* COLOR */
 		table = gtk_table_new (4, 2, FALSE);
 		
-		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor"));
+		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor:"));
 		upColor = gnome_color_picker_new();
 		gtk_table_attach (GTK_TABLE (table), upLabel, 0, 1, 0, 1,
 				  GTK_SHRINK, 0, 2, 0);
@@ -1382,7 +1382,7 @@ static gint updateOutput(gpointer data)
 		vbox3 = gtk_vbox_new(FALSE, 0); 
 		gtk_box_pack_start_defaults(GTK_BOX(vbox3),table);
 
-		downLabel = gtk_label_new_with_mnemonic(_("- Colo_r"));
+		downLabel = gtk_label_new_with_mnemonic(_("- Colo_r:"));
 		downColor = gnome_color_picker_new();
 		gtk_table_attach (GTK_TABLE (table), downLabel, 0, 1, 1, 2,
 				  0, 0, 2, 0);
@@ -1399,7 +1399,7 @@ static gint updateOutput(gpointer data)
 		gtk_signal_connect(GTK_OBJECT(downColor), "color_set",
 				GTK_SIGNAL_FUNC(dcolor_set_cb), stockdata);
 				
-		fgLabel = gtk_label_new_with_mnemonic(_("_Unchanged Color"));
+		fgLabel = gtk_label_new_with_mnemonic(_("_Unchanged Color:"));
 		fgColor = gnome_color_picker_new();
 		gtk_table_attach (GTK_TABLE (table), fgLabel, 0, 1, 2, 3,
 				  0, 0, 2, 0);
@@ -1416,7 +1416,7 @@ static gint updateOutput(gpointer data)
 		gtk_signal_connect(GTK_OBJECT(fgColor), "color_set",
 				GTK_SIGNAL_FUNC(fgcolor_set_cb), stockdata);
 
-		bgLabel = gtk_label_new_with_mnemonic(_("Back_ground Color"));
+		bgLabel = gtk_label_new_with_mnemonic(_("Back_ground Color:"));
 		bgColor = gnome_color_picker_new();
 		gtk_table_attach (GTK_TABLE (table), bgLabel, 0, 1, 3, 4,
 				  0, 0, 2, 0);
