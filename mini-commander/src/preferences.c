@@ -410,6 +410,7 @@ saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globc
 void
 propertiesBox(AppletWidget *applet, gpointer data)
 {
+    /* FIXME: "properties" does currently not exist */
     static GnomeHelpMenuEntry helpEntry = { NULL,  "properties" };
     GtkWidget *propertiesBox;
     GtkWidget *vbox, *vbox1, *frame;
