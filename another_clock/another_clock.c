@@ -316,7 +316,7 @@ void cb_about (AppletWidget *applet, gpointer data)
     {
 	int i=0;
 	
-	while (authors[i] != NULL) { authors[i]=_(authors[i]); i++ }
+	while (authors[i] != NULL) { authors[i]=_(authors[i]); i++; }
     }
 #endif
 
