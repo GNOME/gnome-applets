@@ -43,3 +43,5 @@
 
 /* Define if this NetBSD platform supports APM. */
 #undef NETBSD_APM
+
+#undef DEV_PATH

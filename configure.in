@@ -177,13 +177,13 @@ dnl ******************************************
 dnl ******************************************
 dnl ** cdplayer applet check                **
 dnl ******************************************
-
+dnl FIXME: What's the default device for irix? and is this correct for Netbsd
 dnl AC_CANONICAL_HOST
 case "$host" in
-*irix*) CDROM_HOST=irix; CDROM_LIBS="-lcdaudio -lmediad -lds";;
-*linux*) CDROM_HOST=linux;;
-*netbsd*) CDROM_HOST=netbsd;;
-*solaris*) CDROM_HOST=solaris;;
+*irix*) CDROM_HOST=irix; CDROM_LIBS="-lcdaudio -lmediad -lds";cd_device_path="/dev/cdrom";;
+*linux*) CDROM_HOST=linux;cd_device_path="/dev/cdrom";;
+*netbsd*) CDROM_HOST=netbsd;cd_device_path="/dev/rcd0";;
+*solaris*) CDROM_HOST=solaris;cd_device_path="/vol/dev/aliases/cdrom0";;
 esac
 case "$host" in
 sparc-*-solaris*)	gkb_type_sun=true;;
@@ -194,8 +194,9 @@ AM_CONDITIONAL(GKB_SUN, $gkb_type_sun)
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
 AC_SUBST(CDROM_LIBS)
+AC_DEFINE_UNQUOTED(DEV_PATH, "$cd_device_path")
 if test -z "$CDROM_HOST"; then
-dnl  AC_MSG_WARN([*** \`cd' plugin for gumma will not be built ***])
+dnl  
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
 fi
 

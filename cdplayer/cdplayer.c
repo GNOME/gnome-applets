@@ -46,16 +46,6 @@
 #include "images/cdplayer-next.xpm"
 #include "images/cdplayer-eject.xpm"
 
-#if defined(sun) || defined(__sun__)
-#if defined(SVR4) || defined(__svr4__)
-#   define DEV_PATH "/vol/dev/aliases/cdrom0"
-#else
-#   define DEV_PATH "/dev/rcd0"
-#endif
-#else
-#   define DEV_PATH "/dev/cdrom"
-#endif
-
 #define TIMEOUT_VALUE 500
 
 /* Function prototypes */
