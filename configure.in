@@ -204,18 +204,14 @@ dnl ******************************************
 dnl ** battstat check			    **
 dnl ******************************************
 
+HAVE_LIBAPM=no
 build_battstat_applet=yes
 case "${host}" in
   powerpc-*-linux*)
-  	HAVE_LIBAPM=no
-  	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
-	AC_SUBST(HAVE_LIBAPM)
 	;;
   # list of supported OS cores
   *-*-linux*|*-*-freebsd*|*-*-openbsd*)
 	AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
-	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
-	AC_SUBST(HAVE_LIBAPM)
 	;;
   *)
 	echo "warning: ${host} is not supported by battstat_applet, not building" >&2
@@ -223,6 +219,8 @@ case "${host}" in
 	;;
 esac
 
+AC_SUBST(HAVE_LIBAPM)
+AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
 AM_CONDITIONAL(BUILD_BATTSTAT_APPLET, test x$build_battstat_applet = xyes)
 
 dnl *******************************************
