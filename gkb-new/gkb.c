@@ -620,7 +620,6 @@ about_cb (BonoboUIComponent *uic,
   	g_object_unref (pixbuf);
 
   gtk_window_set_wmclass (GTK_WINDOW (about), "keyboard layout switcher", "Keyboard Layout Switcher");
-  gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gkb.png");
   g_signal_connect (G_OBJECT(about), "destroy",
                           (GCallback)gtk_widget_destroyed, &about);
 
@@ -761,7 +760,9 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   gkb->n = 0;
   gkb->cur = 0;
   gkb->applet = GTK_WIDGET (applet);
-
+  
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gkb.png");
+  
   panel_applet_add_preferences (applet, "/schemas/apps/gkb-applet/prefs", NULL);
   /* FIXME: is bah_window needed for anything */
   bah_window = gtk_window_new (GTK_WINDOW_POPUP);
