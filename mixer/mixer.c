@@ -122,6 +122,9 @@ static void mixer_update_image  (MixerData *data);
 static void mixer_popup_show    (MixerData *data);
 static void mixer_popup_hide    (MixerData *data, gboolean revert);
 
+static void mixer_start_gmix_cb (BonoboUIComponent *uic,
+				 MixerData         *data,
+				 const gchar       *verbname);
 
 static gint       mixerfd = -1;
 
@@ -421,7 +424,11 @@ event_box_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, Mixer
 		return TRUE;
 	} else {
 		if (event->button == 1) {
-			mixer_popup_show (data);
+			if (event->type == GDK_2BUTTON_PRESS) {
+				mixer_start_gmix_cb (NULL, data, NULL);
+			} else {
+				mixer_popup_show (data);
+			}
 		}
 	}
 
@@ -692,7 +699,7 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 		     MixerData         *data,
 		     const gchar       *verbname)
 {
-	gnome_execute_shell (NULL, "gmix");
+	gnome_execute_shell (NULL, "gnome-volume-control");
 }
 
 static void
@@ -798,7 +805,7 @@ static const char mixer_applet_menu_xml [] =
 "   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"\n/>"
 "   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-"   <menuitem name=\"About\" verb=\"About\" _label=\"About ...\"\n"
+"   <menuitem name=\"About\" verb=\"About\" _label=\"About...\"\n"
 "             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 "</popup>\n";
 
