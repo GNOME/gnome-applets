@@ -2,10 +2,10 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.0">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "May 2002">
-  <!ENTITY applet "Battstat">
+  <!ENTITY appletversion "2.5.4">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "February 2004">
+  <!ENTITY applet "Battery Charge Monitor">
 ]>
 
 <!-- 
@@ -21,78 +21,115 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-	 <title>&applet; Applet Manual V&manrevision;</title> 
-	 <copyright> 
-		<year>1999</year> 
-		<year>2000</year> 
-		<holder>Jorgen Pehrson</holder> 
-	 </copyright>
-	 <copyright>
-	        <year>2002</year>
-		<holder>Trevor Curtis</holder>
-	 </copyright>
+    <title>&applet; Applet Manual V&manrevision;</title> 
+    <copyright>
+      <year>2004</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright>
+      <year>2002</year>
+      <holder>Trevor Curtis</holder>
+    </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
 <!-- translators: uncomment this:
 
-  <copyright>
-   <year>2002</year>
-   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
-  </copyright>
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
 
    -->
 
-	 <publisher> 
-		<publishername> GNOME Documentation Project </publishername> 
-	 </publisher> 
-
-&legal;
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+  
+    &legal;
 <!-- This file  contains link to license for the documentation (GNU FDL), and 
      other legal stuff such as "NO WARRANTY" statement. Please do not change 
      any of this. -->
 
-	 <authorgroup> 
-		<author> 
-		  <firstname>Jorgen </firstname> 
-		  <surname> Pehrson</surname> 
-		  <affiliation> 
-			 <orgname>GNOME Documentation Project</orgname> 
-			 <address> <email>jp@spektr.eu.org</email> </address> 
-		  </affiliation> 
-		</author> 
-		<author>
-			<firstname>Trevor</firstname>
-			<surname>Curtis</surname>
-			<affiliation>
-				<orgname>GNOME Documentation Project</orgname>
-				<address> <email>tcurtis@somaradio.ca</email> </address>
-			</affiliation>
-		</author>
-      <!-- This is appropriate place for other contributors: translators,
-           maintainers,  etc. Commented out by default.
-           <othercredit role="translator">
-	     <firstname>Latin</firstname> 
-	     <surname>Translator 1</surname> 
-	     <affiliation> 
-	       <orgname>Latin Translation Team</orgname> 
-	       <address> <email>translator@gnome.org</email> </address> 
-	     </affiliation>
-	     <contrib>Latin translation</contrib>
-           </othercredit>
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Documentation Team</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Trevor</firstname>
+        <surname>Curtis</surname>
+        <affiliation>
+          <orgname>GNOME Documentation Project</orgname>
+          <address> <email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
+        <affiliation> 
+          <orgname>GNOME Documentation Project</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address> 
+        </affiliation> 
+      </author> 
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
 -->
 
-	 </authorgroup>
+    </authorgroup>
 
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
-    <legalnotice> 
-      <title>Feedback</title> 
-      <para> To report a bug or make a suggestion regarding
-	the &applet; applet or this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-      </para> 
+    <revhistory>
+      <revision>
+        <revnumber>Battery Charge Monitor Applet Manual V&manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">Sun GNOME Documentation Team</para>
+          <para role="publisher">GNOME Documentation Project</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>Battery Charge Monitor Applet Manual V2.0</revnumber>
+        <date>May 2002</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">GNOME Documentation Project</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo>This manual describes version &appletversion; of &applet;.
+    </releaseinfo>
+                                                                                                  
+    <legalnotice>
+      <title>Feedback</title>
+      <para>
+        To report a bug or make a suggestion regarding the &applet; applet or
+        this manual, follow the directions in the <ulink url="ghelp:gnome-feedback"
+        type="help">GNOME Feedback Page</ulink>.
+      </para>
     </legalnotice> 
   </articleinfo> 
+
+  <indexterm zone="index"> 
+	 <primary>Battery Charge Monitor Applet</primary> 
+  </indexterm> 
 
   <indexterm zone="index"> 
 	 <primary>Battstat Applet</primary> 
@@ -100,35 +137,53 @@
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
-  <sect1 id="battsatt-introduction"> 
-	 <title>Introduction</title> 
+  <sect1 id="battstat-introduction"> 
+    <title>Introduction</title> 
 
-    <para> The <application>&applet;</application> applet, shown in Figure 1, shows the status of the
-      power subsystem in your laptop. To add this applet to your Panel,
-      right click on the <guimenuitem>Panel and select Panel->Add to
-      panel->Applet->Monitors->Battery Status Utility</guimenuitem>.
+    <figure id="battstat-applet-fig"> 
+      <title>&applet; Applet</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>The &applet; applet.</phrase>
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
+
+    <para>
+      The <application>&applet;</application> applet shows the status of the power subsystem in your laptop. You can configure the applet to show the following components in the panel:
     </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Power connection status 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Battery status
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Battery charge percentage
+        </para>
+      </listitem>
+    </itemizedlist>
 
-      <figure id="mainwindow-fig"> 
-	<title>&applet; Applet</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/battstat-applet.png" format="PNG"/> 
-	    </imageobject>
-	    <!-- EPS versions of the figures are not required at the moment. -->
-            <!-- 
-		    <imageobject>
-      		<imagedata fileref="figures/image.eps" format="EPS"/>
-    		    </imageobject>
-	    -->
-	    <textobject> 
-		<phrase>The &applet; Applet.</phrase>
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-
+    <sect2 id="battstat-introduction-add">
+      <title>To Add &applet; to a Panel</title>
+      <para>
+        To add <application>&applet;</application> to a panel, right-click on the panel, then choose <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Utility</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>.
+      </para>
+      <para>
+        The layout of the <application>&applet;</application> applet varies depending on the size and type of panel in which the applet resides.
+      </para>
+    </sect2>
 
 </sect1>
 
@@ -136,238 +191,387 @@
 
   <sect1 id="battstat-usage">
     <title>Usage</title>
-    <para>&applet; applet requires no user input. You can, if you so
-    desire, configure it to some degree as described below. 
-    </para>
 
-    <para>  The figure above is shown when the laptop battery is fully
-    charged. 
-    </para>
+    <sect2 id="battstat-usage-power">
+      <title>To Determine the Power Connection Status</title>
+      <para>
+        The power connection status shows the current status of the laptop power supply:
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Icon</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Power Status</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for AC power.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The laptop is connected to a power supply. 
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for battery recharging.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The laptop battery is recharging.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for battery power.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The laptop is using battery power.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for low power.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  The laptop power is very low.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
 
-    <para> The little flash over the power cord is shown when the laptop
-    battery is recharging. It's flashing on and off until the battery is
-    fully recharged. 
-    </para>
+    <sect2 id="battstat-usage-progress">
+      <title>To Determine the Battery Status</title>
+      <para>
+        The battery-status icon is a progress bar within a battery image. The size and color of the progress bar indicate how much charge remains in the battery:
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Icon</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Battery Charge Level</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for high battery-charge level.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  High
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for medium battery-charge level.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Medium
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for low battery-charge level.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Low
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Shows icon for very low battery-charge level.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Very low
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        For information about how to set the battery color levels, see <xref linkend="battstat-prefs-general"/>.
+      </para>
+      <para>
+        For information about how to display the current battery charge as a percentage, see <xref linkend="battstat-prefs-appearance"/>.
+      </para>
+    </sect2>
 
-    <para> When you are running your laptop on battery it will display
-    this image. 
-    </para>
+    <sect2 id="battstat-usage-suspend">
+      <title>To Suspend the Computer</title>
+      <para>
+        To suspend the computer, right-click on the applet, then choose <guimenuitem>Suspend Computer</guimenuitem>. For information about how to specify which command to run when you choose <guimenuitem>Suspend Computer</guimenuitem>, see <xref linkend="battstatt-prefs"/>.
+      </para>
+    </sect2>
 
-    <para> Right-clicking on the applet brings up a menu containing the
-    following items: 
-      <variablelist>
-	<varlistentry>
-	  <term><guimenuitem>Preferences</guimenuitem></term>
-	  <listitem>
-	    <para>
-	      Opens the Properties dialog window.
-	    </para>
-	  </listitem>
-	</varlistentry>
-	<varlistentry>
-	  <term><guimenuitem>Help</guimenuitem></term>
-	  <listitem>
-	    <para>
-	      Displays this document.
-	    </para>
-	  </listitem>
-	</varlistentry>
-	<varlistentry>
-	  <term><guimenuitem>About</guimenuitem></term>
-	  <listitem>
-	    <para>
-	      Shows basic information about this applet.
-	    </para>
-	  </listitem>
-	</varlistentry>
-	<varlistentry>
-	  <term><guimenuitem>Suspend Computer</guimenuitem></term>
-	  <listitem>
-	    <para>
-	      Executes the command specified in
-	      the Preferences dialog. 
-	    </para>
-	  </listitem>
-	</varlistentry>
-      </variablelist>
-    </para>
   </sect1>
 
   <!-- ============= Customization ============================= -->
 
   <sect1 id="battstatt-prefs">
-    <title>Customization</title>
-    <para> You can customize the Battstat applet somewhat by
-    right-clicking on it and choose Preferences.... This will bring up
-    the preferences dialog window. 
-    </para>
-
-      <figure id="general-fig"> 
-	<title>&applet; General Preferences</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/battstat-general.png" format="PNG"/> 
-	    </imageobject>
-	    <!-- EPS versions of the figures are not required at the moment. -->
-            <!-- 
-		    <imageobject>
-      		<imagedata fileref="figures/image.eps" format="EPS"/>
-    		    </imageobject>
-	    -->
-	    <textobject> 
-	      <phrase>General preferences for the &applet; applet.</phrase>
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-
-
-    <para>The properties are:
-    
-      <itemizedlist>
-	<listitem>
-	  <para>Yellow: sets the battery level where the progress bar will switch
-	    from green to yellow. Default: 40. 
-	  </para>
-	</listitem>
-        <listitem>
-	  <para>Orange: sets the battery level where the progress bar
-	  will switch from yellow to orange. Default: 25. 
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>Red: sets the battery level where the progress bar will
-	  switch from orange to red. Default: 15. 
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>The preview frame contains the battery progress bar and
-	  a draggable slider. By dragging the slider you can preview how
-	  it will look when the battery level actually changes. It
-	  doesn't affect the battery in any way. 
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>Notify me when battery charge is low: By selecting this,
-	  a warning dialog will appear when the power falls below the
-	  value in the Red entry box. 
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>Notify me when battery is fully re-charged: By selecting
-	  this, a dialog window will appear when the battery is fully
-	  re-charged. 
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>Beep when either of the above is true: If you select
-	  this, your laptop will make an audible beep when any of the
-	  two above happens. 
-	  </para>
-	</listitem>
-	<listitem>
-	  <para>Suspend command: Whatever you enter here will be
-	  executed when you click on the Suspend Computer in the applet
-	  menu. For example, if you are using FreeBSD
-	  you could enter apm -z or zzz here. Before you enter anything
-	  though, first make sure that you can safely suspend your
-	  laptop by testing the command in a shell. 
-	  </para>
-	</listitem>
-      </itemizedlist>
-    </para>
-
-      <figure id="apperance-fig"> 
-	<title>&applet; Apperance Preferences</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/battstat-apperance.png" format="PNG"/> 
-	    </imageobject>
-	    <!-- EPS versions of the figures are not required at the moment. -->
-            <!-- 
-		    <imageobject>
-      		<imagedata fileref="figures/image.eps" format="EPS"/>
-    		    </imageobject>
-	    -->
-	    <textobject> 
-	      <phrase>Apperance preferences for the &applet; applet.</phrase>
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-
-
-      <para>The properties on this page are:
-        <variablelist>
-	  <varlistentry>
-	    <term>Move towards top:</term>
-	    <listitem>
-	      <para>If you select this radio button, the battery charge
-	      level meter will drain from right to left. 
-	      </para>
-	    </listitem>
-	  </varlistentry>
-	  <varlistentry>
-	    <term>Move towards bottom:</term>
-	    <listitem>
-	      <para>If you select this radio button, the battery charge
-	      level meter will drain from left to right 
-	      </para>
-	    </listitem>
-	  </varlistentry>
-	  <varlistentry>
-	    <term>Applet Layout:</term>
-	    <listitem>
-	      <para>Here you can select which parts of the applets you
-	      want to have visible. 
-	      </para>
-	    </listitem>
-	  </varlistentry>
-	</variablelist>
-      </para>
-    
-  </sect1>
-  
-<!-- This section contains info about the program (not docs), such as
-     author's name(s), web page, license, feedback address. This
-     section is optional: primary place for this info is "About.." box of
-     the program. However, if you do wish to include this info in the
-     manual, this is the place to put it. Alternatively, you can put this 
-     information in the title page.-->
-
-<sect1 id="battstat-about">
-  <title>About &applet;</title>
-
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
- 
-     <para> To report a bug or make a suggestion regarding
-	the &applet; applet or this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-      </para> 
-
-  <!-- For translations: uncomment this:
-
-  <para>
-   Latin translation was done by ME
-   (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
-   suggestions regarding this translation to SOMEWHERE.
-  </para>
-
-  -->
-
+    <title>Preferences</title>
     <para>
-      This program is distributed under the terms of the GNU General
-      Public license as published by the Free Software Foundation;
-      either version 2 of the License, or (at your option) any later
-      version. A copy of this license can be found at this <ulink
-      type="help" url="ghelp:gpl">link</ulink>, or in the file COPYING
-      included with the source code of this program. 
-   </para>
-   </sect1> 
+      To configure the <application>&applet;</application> applet, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Battery Charge Monitor Preferences</guilabel> dialog contains the following tabbed sections:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general">
+      <title>General</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Battery Color Levels %</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Yellow</guilabel>
+                </para>
+                <para>
+                  Use this spin box to set the battery-charge level at which the progress bar changes from green to yellow.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Orange</guilabel>
+                </para>
+                <para>
+                  Use this spin box to set the battery-charge level at which the progress bar changes from yellow to orange.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Red</guilabel>
+                </para>
+                <para>
+                  Use this spin box to set the battery-charge level at which the progress bar changes from orange to red.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Preview</guilabel>
+                </para>
+                <para>
+                  Move the slider to show how the progress bar changes when the battery-charge level changes.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Warnings</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Warn when battery charge is low</guilabel>
+                </para>
+                <para>
+                  Select this option to display an information alert when the battery-charge level falls below the value specified in the <guilabel>Red</guilabel> spin box.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Warn when battery is fully re-charged</guilabel>
+                </para>
+                <para>
+                  Select this option to display an information alert when the battery is fully recharged.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Beep when displaying a warning</guilabel>
+                </para>
+                <para>
+                  Select this option to play a beep sound when an information alert is displayed.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Suspend</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Suspend command</guilabel>
+                </para>
+                <para>
+                  Use this text box to specify which command to run when you choose <guimenuitem>Suspend Computer</guimenuitem> from the applet right-click popup menu.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance">
+      <title>Appearance</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Layout</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Show battery status</guilabel>
+                </para>
+                <para>
+                  Select this option to display the battery status.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Show power connection status</guilabel>
+                </para>
+                <para>
+                  Select this option to display the power connection status.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Show battery charge percentages</guilabel>
+                </para>
+                <para>
+                  Select this option to display how much charge the battery currently contains, expressed as a percentage.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Progress Bar Direction</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Moves towards top</guilabel>
+                </para>
+                <para>
+                  Select this option to specify that the progress bar decreases from right to left.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Moves towards bottom</guilabel>
+                </para>
+                <para>
+                  Select this option to specify that the progress bar decreases from left to right.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
 
 </article> 
