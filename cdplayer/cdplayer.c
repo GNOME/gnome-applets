@@ -283,7 +283,8 @@ start_gtcd_cb (BonoboUIComponent *component,
 					 GTK_DIALOG_DESTROY_WITH_PARENT,
 					 GTK_MESSAGE_ERROR,
 					 GTK_BUTTONS_CLOSE,
-					 _("There was an error executing gnome-cd : %s"),
+					 _("There was an error executing '%s' : %s"),
+					 "gnome-cd",
 					 error->message);
 
 	g_signal_connect (dialog, "response",
