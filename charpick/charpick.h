@@ -16,9 +16,9 @@
 typedef struct _charpick_data charpick_data;
 /* this type has basically all data for this program */
 struct _charpick_data {
-  const gchar * charlist;
+  gchar * charlist;  
   gchar * default_charlist;
-  gchar selected_char;
+  gunichar selected_unichar;
   gint last_index;
   GtkWidget *box;
   GtkWidget *frame;

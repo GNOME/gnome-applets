@@ -9,31 +9,36 @@
 #include "charpick.h"
 #include <egg-screen-help.h>
 
-static void
-update_default_list_cb (GtkEditable *editable, gpointer data)
+static gboolean
+update_default_list_cb (GtkWidget *editable, GdkEventFocus *event, gpointer data)
 {
   charpick_data *curr_data = data;
   PanelApplet *applet = PANEL_APPLET (curr_data->applet);
   gchar *text;
   
-  text = gtk_editable_get_chars (editable, 0, -1);
+  text = gtk_editable_get_chars (GTK_EDITABLE (editable), 0, -1);
   if (!text)
-  	return;
+  	return FALSE;
   g_strstrip (text);	
   if (g_utf8_strlen (text, -1) == 0){
   	g_free (text);
-  	g_print ("zero length \n");
-  	return;
+  	return FALSE;
   }
-  	
+  
+  if (g_ascii_strcasecmp (curr_data->charlist, curr_data->default_charlist) == 0) {
+  	g_free (curr_data->charlist);
+  	curr_data->charlist = g_strdup (text);
+  	build_table (curr_data);
+  }	
   if (curr_data->default_charlist)
-    g_free (curr_data->default_charlist	);
-  curr_data->default_charlist = g_convert (text, -1, "ISO-8859-1", "UTF-8", 
-  					   NULL, NULL, NULL);
+    g_free (curr_data->default_charlist);
+  curr_data->default_charlist = g_strdup (text);
   
   panel_applet_gconf_set_string (applet, "default_list", text, NULL);
+
   g_free (text);
   
+  return FALSE;
 }
 
 static void
@@ -72,19 +77,15 @@ static void default_chars_frame_create(charpick_data *curr_data)
   GtkWidget *default_list_label;
   GtkWidget *default_list_entry;
   GtkWidget *explain_label;
-  gchar *text_utf8;
-
+ 
   /* init widgets */
   frame = gtk_vbox_new(FALSE, 5);
   default_list_hbox = gtk_hbox_new(FALSE, 5);
   default_list_label = gtk_label_new_with_mnemonic(_("_Default character list:"));
   default_list_entry = gtk_entry_new ();
   gtk_entry_set_max_length (GTK_ENTRY(default_list_entry), MAX_BUTTONS);
-  text_utf8 = g_convert (curr_data->default_charlist, -1, "UTF-8", 
-  			 "ISO-8859-1", NULL, NULL, NULL);
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
-		     text_utf8);
-  g_free (text_utf8);
+		     curr_data->default_charlist);
   set_atk_relation (default_list_label, default_list_entry);
   set_atk_name_description (default_list_entry, _("Default list of characters"), 
               _("Set the default character list here"));
@@ -101,8 +102,8 @@ static void default_chars_frame_create(charpick_data *curr_data)
   gtk_box_pack_start( GTK_BOX(default_list_hbox), default_list_entry, 
 		      FALSE, FALSE, 5);
 
-  g_signal_connect (G_OBJECT(default_list_entry), "changed", 
-		    G_CALLBACK (update_default_list_cb), curr_data);
+  g_signal_connect (G_OBJECT (default_list_entry), "focus_out_event",
+  		            G_CALLBACK (update_default_list_cb), curr_data);
 
   gtk_widget_show_all(frame);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), frame, TRUE, TRUE, 0);
