@@ -183,9 +183,11 @@ main (int argc, char **argv)
     g_error (_("Can't create applet!\n"));
 
   canvas = gnome_canvas_new ();
-  gtk_widget_set_usize (canvas, CANVAS_WIDTH, CANVAS_HEIGHT);
   gnome_canvas_set_scroll_region (GNOME_CANVAS (canvas), 0.0, 0.0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+  panel_size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
+  redo_size(applet);
+  
   gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
 		      GTK_SIGNAL_FUNC (change_orient), canvas);
   gtk_signal_connect (GTK_OBJECT (applet), "change_pixel_size",
