@@ -24,7 +24,7 @@
 void start_timer( void );
 
 GtkWidget *cpuload;
-GdkPixmap *pixmap;
+GdkPixmap *pixmap = NULL;
 GtkWidget *disp;
 GdkGC *gc;
 GdkColor ucolor, scolor;
@@ -94,6 +94,8 @@ int draw(void)
 
 static gint cpuload_configure(GtkWidget *widget, GdkEventConfigure *event)
 {
+	if(pixmap)
+		gdk_pixmap_unref(pixmap);
         pixmap = gdk_pixmap_new( widget->window,
                                  widget->allocation.width,
                                  widget->allocation.height,
