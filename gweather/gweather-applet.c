@@ -184,7 +184,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, GWeatherApplet *gw_applet)
 			return TRUE;
 		}
 		break;
-	case GDK_f:
+	case GDK_d:
 		if (event->state == GDK_CONTROL_MASK) {
 			gweather_dialog_open (gw_applet);
 			return TRUE;
@@ -240,7 +240,7 @@ static void pref_cb (BonoboUIComponent *uic,
     gweather_pref_run (gw_applet);
 }
 
-static void forecast_cb (BonoboUIComponent *uic,
+static void details_cb (BonoboUIComponent *uic,
 		         GWeatherApplet    *gw_applet,
 			 const gchar       *verbname)
 {
@@ -256,7 +256,7 @@ static void update_cb (BonoboUIComponent *uic,
 
 
 static const BonoboUIVerb weather_applet_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("Forecast", forecast_cb),
+	BONOBO_UI_UNSAFE_VERB ("Details", details_cb),
 	BONOBO_UI_UNSAFE_VERB ("Update", update_cb),
         BONOBO_UI_UNSAFE_VERB ("Props", pref_cb),
         BONOBO_UI_UNSAFE_VERB ("Help", help_cb), 

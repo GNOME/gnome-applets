@@ -80,7 +80,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   GtkWidget *scrolled_window;
   GtkWidget *imagescroll_window;
 
-  gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
+  gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Details"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  _("_Update"),
 						  GTK_RESPONSE_OK,
@@ -176,7 +176,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_label_set_justify (GTK_LABEL (cond_dew_lbl), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (cond_dew_lbl), 0, 0.5);
 
-  cond_humidity_lbl = gtk_label_new (_("Humidity:"));
+  cond_humidity_lbl = gtk_label_new (_("Relative humidity:"));
   gtk_widget_show (cond_humidity_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_humidity_lbl, 0, 1, 7, 8,
                     (GtkAttachOptions) (GTK_FILL),
