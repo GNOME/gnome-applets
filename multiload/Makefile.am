@@ -1,26 +1,23 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(top_builddir)/panel \
-       -I$(srcdir)/../../panel                         \
+	-I$(top_builddir)/panel -I$(srcdir)/../../panel	\
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 
 bin_PROGRAMS = multiload_applet
 
-multiload_applet_SOURCES = cpuload.c 	\
-			   cpuload.h	\
-			   memload.c	\
-			   memload.h	\
-			   swapload.c	\
-			   swapload.h	\
+multiload_applet_SOURCES = cpuload.c		\
+			   memload.c		\
+			   swapload.c		\
 			   main.c		\
+			   global.h		\
+			   properties.c		\
+			   properties.h		\
+			   property-entries.c	\
+			   property-entries.h	\
 			   linux-proc.h 	\
 			   linux-proc.c 	\
-			   properties-cpu.c	\
-			   properties-cpu.h	\
-			   properties-mem.c	\
-			   properties-mem.h	\
-			   properties-swap.c	\
-			   properties-swap.h
+			   load-graph.c		\
+			   load-graph.h
 
 multiload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) \
