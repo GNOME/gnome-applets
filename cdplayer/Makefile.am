@@ -1,4 +1,5 @@
 INCLUDES =	 			\
+	-I..				\
 	-I../libapplet	 		\
 	-I$(srcdir)/../libapplet	\
 	-I../../..	 		\
@@ -15,7 +16,8 @@ cdplayer_applet_SOURCES = \
 MICO_VERS = 2.0.3
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
-cdplayer_applet_LDADD = ../libapplet/libapplet.a \
+#cdplayer_applet_LDADD = ../libapplet/libapplet.a \
+cdplayer_applet_LDADD = ../libpanel_applet.a \
 			$(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
 		        $(GNOMEUI_LIBS) $(INTLLIBS) -lstdc++
 
