@@ -576,7 +576,7 @@ about_cb (BonoboUIComponent *uic,
 			   _("(C) 1998-2000 Free Software Foundation"),
                            _("This applet switches between keyboard maps "
                              "using setxkbmap, or xmodmap.\n"
-                             "Mail me your flag and keyboard layout"
+                             "Mail me your flag and keyboard layout "
                              "if you want support for your locale "
                              "(my email address is shooby@gnome.hu).\n"
                              "So long, and thanks for all the fish.\n"
