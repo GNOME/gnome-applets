@@ -173,7 +173,7 @@ static void
 response_cb (GtkWidget *dialog, gint id, gpointer data)
 {
         if (id == GTK_RESPONSE_HELP)
-                gnome_help_display ("stickynotes_applet", "stickynotes-introduction", NULL);
+                gnome_help_display ("stickynotes_applet", "stickynotes-settings-individual", NULL);
         else
                 gtk_widget_hide (dialog);
 }
