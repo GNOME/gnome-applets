@@ -428,94 +428,136 @@ static gint get_connect_time(MLData *mldata, gint recalc_start)
 		return get_modem_connect_time(mldata, recalc_start);
 }
 
-static void execute_command(gchar *command)
+static void
+run_response_cb (GtkDialog *dialog, gint id, MLData *mldata)
+{
+	gtk_widget_destroy(GTK_WIDGET (dialog));
+
+	mldata->run_dialog = NULL;
+}
+
+static void execute_command(gchar *command, GtkWidget *parent, MLData *mldata)
 {
 	gboolean ret;
 	GError *error = NULL;
 
+	if (mldata->run_dialog) {
+		gtk_window_set_screen(GTK_WINDOW(mldata->run_dialog),
+				      gtk_widget_get_screen (parent));
+
+		gtk_window_present(GTK_WINDOW(mldata->run_dialog));
+
+		return;
+	}
+
 	ret = g_spawn_command_line_async(command, &error);
 	if (!ret) {
-		GtkWidget *dialog;
+		mldata->run_dialog = gtk_message_dialog_new(NULL, 0,
+							    GTK_MESSAGE_ERROR,
+							    GTK_BUTTONS_CLOSE,
+							    error->message);
 
-		dialog = gtk_message_dialog_new(NULL, 0,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_CLOSE,
-						error->message);
-		gtk_dialog_run(GTK_DIALOG(dialog));
-		gtk_widget_destroy(dialog);
+		gtk_window_set_screen(GTK_WINDOW(mldata->run_dialog),
+				      gtk_widget_get_screen(parent));
+
+		gtk_widget_show_all(mldata->run_dialog);
+		
+		gtk_window_present(GTK_WINDOW(mldata->run_dialog));
+
+		g_signal_connect(mldata->run_dialog, "response",
+				 G_CALLBACK(run_response_cb),
+				 mldata);
 	}
 }
 
 static void disconnect_dialog_response(GtkDialog *dialog, gint response, MLData *mldata)
 {
 		if (response == GTK_RESPONSE_OK)
-			execute_command(mldata->command_disconnect);
+			execute_command(mldata->command_disconnect, GTK_WIDGET (dialog), mldata);
 
 		gtk_widget_destroy(GTK_WIDGET(dialog));
-		mldata->confirm_dialog = FALSE;
+		mldata->connect_dialog = NULL;
 }
 
 static void connect_dialog_response(GtkDialog *dialog, gint response, MLData *mldata)
 {
 		if (response == GTK_RESPONSE_OK)
-			execute_command(mldata->command_connect);
+			execute_command(mldata->command_connect, GTK_WIDGET (dialog), mldata);
 
 		gtk_widget_destroy(GTK_WIDGET(dialog));
-		mldata->confirm_dialog = FALSE;
+		mldata->connect_dialog = NULL;
 }
 
 static void dial_cb(GtkWidget *widget, MLData *mldata)
 {
-	GtkWidget *dialog;
-
 	if (is_connected(mldata)) {
 
 		if (!mldata->ask_for_confirmation) {
-			execute_command(mldata->command_disconnect);
+			execute_command(mldata->command_disconnect, mldata->applet, mldata);
 			return;
 		}			
 
-		if (mldata->confirm_dialog)
-			return;
+		if (mldata->connect_dialog) {
+			gtk_window_set_screen(GTK_WINDOW(mldata->connect_dialog),
+					      gtk_widget_get_screen(mldata->applet));
 
-		mldata->confirm_dialog = TRUE;
-		dialog = gtk_message_dialog_new(NULL, 0,
-						GTK_MESSAGE_QUESTION,
-						GTK_BUTTONS_NONE,
-						_("You are currently connected.\n"
-						"Do you want to disconnect?"));
-		gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+			gtk_window_present(GTK_WINDOW(mldata->connect_dialog));
+
+			return;
+		}
+
+		mldata->connect_dialog = gtk_message_dialog_new(NULL, 0,
+								GTK_MESSAGE_QUESTION,
+								GTK_BUTTONS_NONE,
+								_("You are currently connected.\n"
+								"Do you want to disconnect?"));
+
+		gtk_window_set_screen(GTK_WINDOW(mldata->connect_dialog),
+				      gtk_widget_get_screen(mldata->applet));
+		
+		gtk_dialog_add_buttons(GTK_DIALOG(mldata->connect_dialog),
 				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 				       _("_Disconnect"), GTK_RESPONSE_OK,
 				       NULL);
-		g_signal_connect(G_OBJECT(dialog), "response",
+
+		g_signal_connect(G_OBJECT(mldata->connect_dialog), "response",
 				 G_CALLBACK(disconnect_dialog_response), mldata);
 
-		gtk_widget_show_all(dialog);
+		gtk_widget_show_all(mldata->connect_dialog);
 
 	} else {
 
 		if (!mldata->ask_for_confirmation) {
-			execute_command(mldata->command_connect);
+			execute_command(mldata->command_connect, mldata->applet, mldata);
 			return;
 		}
 
-		if (mldata->confirm_dialog)
-			return;
+		if (mldata->connect_dialog) {
+			gtk_window_set_screen(GTK_WINDOW(mldata->connect_dialog),
+					      gtk_widget_get_screen(mldata->applet));
 
-		mldata->confirm_dialog = TRUE;
-		dialog = gtk_message_dialog_new(NULL, 0,
-						GTK_MESSAGE_QUESTION,
-						GTK_BUTTONS_NONE,
-						_("Do you want to connect?"));
-		gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+			gtk_window_present(GTK_WINDOW(mldata->connect_dialog));
+
+			return;
+		}
+ 
+		mldata->connect_dialog = gtk_message_dialog_new(NULL, 0,
+								GTK_MESSAGE_QUESTION,
+								GTK_BUTTONS_NONE,
+								_("Do you want to connect?"));
+
+		gtk_window_set_screen(GTK_WINDOW(mldata->connect_dialog),
+				      gtk_widget_get_screen(mldata->applet));
+		
+		gtk_dialog_add_buttons(GTK_DIALOG(mldata->connect_dialog),
 				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 				       _("C_onnect"), GTK_RESPONSE_OK,
 				       NULL);
-		g_signal_connect(GTK_DIALOG(dialog), "response",
+
+		g_signal_connect(GTK_DIALOG(mldata->connect_dialog), "response",
 				 G_CALLBACK(connect_dialog_response), mldata);
 
-		gtk_widget_show_all(dialog);
+		gtk_widget_show_all(mldata->connect_dialog);
 	}
 }
 
@@ -1367,6 +1409,10 @@ destroy_cb (GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (mldata->about_dialog);
 	if (mldata->propwindow)
 		gtk_widget_destroy (mldata->propwindow);
+	if (mldata->connect_dialog)
+		gtk_widget_destroy (mldata->connect_dialog);
+	if (mldata->run_dialog)
+		gtk_widget_destroy (mldata->run_dialog);
 	
 }
 
@@ -1386,7 +1432,6 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->button_blink_on = 0;
 	mldata->button_blink_id = -1;
 	mldata->update_timeout_id = FALSE;
-	mldata->confirm_dialog = FALSE;
 	mldata->about_dialog = NULL;
 	mldata->setup_done = FALSE;
 	mldata->start_time = (time_t)0;
@@ -1401,7 +1446,9 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->last_time_was_connected = FALSE;
 	mldata->allocated = FALSE;
 	mldata->isdn_stats = NULL;
-	
+	mldata->connect_dialog = NULL;
+	mldata->run_dialog = NULL;
+
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-modem.png");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/modemlights/prefs", NULL);

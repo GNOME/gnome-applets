@@ -1,3 +1,19 @@
+2004-02-10  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* modemlights.h: Added connect_dialog and run_dialog entries
+	to the mldata structure.
+
+	* modemlights.c (dial_cb): Converted to be multihead aware
+	and cleanups.
+
+	(execute_command): Converted to be multihead aware and
+	cleanups.
+
+	(run_response_cb): Added to response on the message_dialog
+	within execute_command and changed it to be event driven
+	so we have more control over it, and it doesn't annoy
+	between instances.
+	
 2004-02-08  Jason Leach  <leach@wam.umd.edu>
 
 	* Makefile.am (CLEANFILES): Add .server and .server.in here.

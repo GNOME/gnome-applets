@@ -147,14 +147,16 @@ struct _MLData
 	GtkWidget *lockfile_entry;
 	GtkWidget *device_entry;
 	GtkWidget *verify_checkbox;
-	
+
+	GtkWidget *connect_dialog;
+	GtkWidget *run_dialog;
+
 	gint button_blinking;
 	gint button_blink_on;
 	gint button_blink_id;
 	
 	int update_timeout_id;
 	int ip_socket;
-	int confirm_dialog;
 	PanelAppletOrient orient;
 	gint sizehint;
 	gint setup_done;
