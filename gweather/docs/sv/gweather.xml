@@ -1,10 +1,10 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "Weather Report">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.3.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "V&auml;derrapport">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -22,9 +22,12 @@
      <title>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</title>	 
       <copyright>
 		<year>2003</year>
-		<holder>Suns GNOME-dokumentationsteam</holder>    	 
+		<holder>Sun Microsystems</holder>    	 
       </copyright>
-        	 
+      <copyright>
+		<year>2002</year>
+		<holder>Sun Microsystems</holder>    	 
+      </copyright>
       <copyright>
 		<year>1999</year>  		
 		<year>2000</year>
@@ -43,7 +46,7 @@
            document.  -->
       	 
       <publisher>
-		<publishername> Dokumentationsprojekt f&ouml;r GNOME </publishername>  	 
+		<publishername> Dokumentationsprojekt f&ouml;r GNOME  </publishername>  	 
       </publisher>
         &legal;
       <!-- This file  contains link to license for the documentation (GNU FDL), and 
@@ -53,12 +56,11 @@
       <authorgroup>
            		
 	<author>
-	<firstname>Suns </firstname>  		  
+	<firstname>Suns</firstname>  		  
 	<surname>GNOME-dokumentationsteam</surname>            		  
 
             <affiliation>
 		<orgname>Sun Microsystems</orgname>  			 
-		<address><email>gdocteam@sun.com</email></address>		  
             </affiliation>
               		
         </author>
@@ -74,13 +76,13 @@
               		
          </author>
            		
-         <author> 
-		  <firstname>Dan</firstname>
-		  <surname>Mueth</surname> 
-
-		  <affiliation> 
-			 <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname>
-			 <address><email>d-mueth@uchicago.edu</email> </address>		  
+         <author>
+	 <firstname>Dan</firstname>
+	 <surname>Mueth</surname>  	
+	  
+	     <affiliation>
+ 		<orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname>  			 
+		<address><email>d-mueth@uchicago.edu</email> </address>		  
              </affiliation>
               		
          </author>
@@ -101,80 +103,67 @@
       </authorgroup>
       	 
       <revhistory>
-         		
-         <revision>
-              	<revnumber>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</revnumber>  		
-             	<date>&date;</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Suns GNOME-dokumentationsteam <email>gdocteam@sun.com</email></para>
-                 			 
-		<para role="publisher">
-                Dokumentationsprojekt f&ouml;r GNOME
-             </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-         
-         <revision>
-              	<revnumber>Manual f&ouml;r panelprogrammet V&auml;derrapport, version&nbsp;2.1</revnumber>  		
-             	<date>Juli 2002</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Suns GNOME-dokumentationsteam <email>gdocteam@sun.com</email></para>
-                 			 
-		<para role="publisher">
-                Dokumentationsprojekt f&ouml;r GNOME
-             </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-         
-         <revision>
-              	<revnumber>Manual f&ouml;r panelprogrammet V&auml;derrapport, version&nbsp;2.0</revnumber>  		
-             	<date>Mars 2002</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Suns GNOME-dokumentationsteam <email>gdocteam@sun.com</email></para>
-                 			 
-		<para role="publisher">
-                Dokumentationsprojekt f&ouml;r GNOME
-             </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-           		
-         <revision>
-              	<revnumber>GNOME-panelprogrammet V&auml;derrapport</revnumber>  		
-             	<date>2000</date>  		  
-            	
-<revdescription>
-                 			 
-		 <para role="author">
-                  Spiros Papadimitriou 				
-		  <email>spapadim+@cs.cmu.edu</email>
-               </para>
-                 			 
-               <para role="author">
-                  Dan Mueth 				
-		  <email>d-mueth@uchicago.edu</email>
-               </para>
-               			 
-               <para role="publisher">
-                Dokumentationsprojekt f&ouml;r GNOME
-             </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-           	 
+        <revision>
+          <revnumber>Manual f&ouml;r panelprogrammet &applet;, version &manrevision;</revnumber>  		
+          <date>&date;</date>  		  
+          <revdescription>
+	    <para role="author">Suns GNOME-dokumentationsteam</para>
+	    <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual f&ouml;r panelprogrammet V&auml;derrapport, version 2.3</revnumber>  		
+          <date>Januari 2003</date>  		  
+          <revdescription>
+	    <para role="author">Suns GNOME-dokumentationsteam</para>
+	    <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual f&ouml;r panelprgrammet V&auml;derrapport, version 2.2</revnumber>  		
+          <date>Augusti 2002</date>  		  
+          <revdescription>
+	    <para role="author">Suns GNOME-dokumentationsteam</para>
+	    <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual f&ouml;r pnaelprogrammet V&auml;derrapport, version 2.1</revnumber>  		
+          <date>Juli 2002</date>  		  
+          <revdescription>
+	    <para role="author">Suns GNOME-dokumentationsteam</para>
+	    <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual f&ouml;r panelprogrammet V&auml;derrapport, version 2.0</revnumber>  		
+          <date>Mars 2002</date>  		  
+          <revdescription>
+	    <para role="author">Suns GNOME-dokumentationsteam</para>
+	    <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+	  <revnumber>Panelprogrammet GNOME-v&auml;der</revnumber>  		  
+	  <date>2000</date>
+          <revdescription>
+            <para role="author">
+              Spiros Papadimitriou 				
+              <email>spapadim+@cs.cmu.edu</email>
+            </para>
+            <para role="author">
+              Dan Mueth 				
+	      <email>d-mueth@uchicago.edu</email>
+            </para>
+            <para role="publisher">
+              Dokumentationsprojekt f&ouml;r GNOME
+            </para>
+          </revdescription>
+        </revision>
       </revhistory>
         	 
       <releaseinfo>
-          I den h&auml;r manualen beskrivs version &appletversion; av &applet;. 		
+          I den h&auml;r mamualen beskrivs version &appletversion; av &applet;. 		
       </releaseinfo>
         	 
       <legalnotice>
@@ -191,11 +180,11 @@
        </indexterm> 
    <!-- ============= Document Body ============================= -->
    <!-- ============= Introduction ============================== -->
-   <sect1 id="gweather-introduction"> 
-     <title>Introduktion</title>
+   <sect1 id="gweather-introduction">
+      <title>Introduktion</title>
       <!-- ==== Figure ============================================= -->
       	 
-      <figure id="weather-applet-fig"> 
+      <figure id="weather-applet-fig">
 	<title>Panelprogrammet &applet;</title>		
          <screenshot>		  
             <mediaobject>			 
@@ -212,15 +201,10 @@
       <!-- ==== End of Figure ======================================= -->
       <para>
          Panelprogrammet <application>&applet;</application> h&auml;mtar v&auml;derinformation
-          fr&aring;n NWS-servrar (US National Weather Service) inklusive IWIN (Weather Information
+          fr&aring;n NWS-servrar (US National Weather Service) inklusive IWIN (Weather Interactive
          Network). Du kan anv&auml;nda <application>&applet;</application> f&ouml;r att visa aktuell 
 	v&auml;derinformation p&aring; datorn. 
       </para>
-      <para>Du l&auml;gger till <application>&applet;</application> p&aring; en panel genom att h&ouml;gerklicka p&aring; panelen och v&auml;lja <menuchoice> 
-          <guimenu>L&auml;gg till p&aring; panelen</guimenu> 
-          <guisubmenu>Tillbeh&ouml;r</guisubmenu> 
-          <guimenuitem>&applet;</guimenuitem> 
-        </menuchoice>.</para>
       <note id="proxies-note-1">
          <para>
             Om din dator har en brandv&auml;gg m&aring;ste du anv&auml;nda en proxyserver
@@ -247,11 +231,36 @@
             </para>
          </listitem>
       </itemizedlist>
+
+    <sect2 id="gweather-introduction-add">
+      <title>S&aring; h&auml;r g&ouml;r du f&ouml;r att l&auml;gga till &applet; p&aring; en panel</title>
+      <para>
+        F&ouml;r att l&auml;gga till &applet; p&aring; en panel g&ouml;r du p&aring; f&ouml;ljande s&auml;tt:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            H&ouml;gerklicka p&aring; panelen.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            V&auml;lj
+            <menuchoice>
+              <guimenu>L&auml;gg till i panelen</guimenu>
+              <guisubmenu>Tillbeh&ouml;r</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
       
    </sect1>
    <!-- ============= Usage ===================================== -->
-   <sect1 id="gweather-usage"> 
-     <title>Anv&auml;ndning</title>
+   <sect1 id="gweather-usage">
+      <title>Anv&auml;ndning</title>
       <sect2 id="gweather-change-location">
          <title>S&aring; h&auml;r visar du v&auml;derinformation f&ouml;r en plats</title>
          <para>
@@ -269,8 +278,12 @@
                <para>
                   V&auml;lj <guimenuitem>Inst&auml;llningar</guimenuitem> p&aring; panelprogrammets
                   popupmeny. Panelprogrammet visar dialogrutan <guilabel>V&auml;deregenskaper</guilabel>.
-                  Fliken <guilabel>Plats</guilabel> inneh&aring;ller en lista
-                  med geografiska omr&aring;den, delomr&aring;den och specifika platser.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  V&auml;lj filken <guilabel>Plats</guilabel>.
+                  Fliken <guilabel>Plats</guilabel> inneh&aring;ller en lista &ouml;ver geografiska regioner, underregioner, och specifika platser.
                </para>
             </listitem>
             <listitem>
@@ -340,12 +353,12 @@
             </para>
             <informaltable>
                <tgroup cols="2">
-                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                   colwidth="1.19*"/>
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                    colwidth="1.19*"/>
                   <tbody>
                      <row valign="top">
                         <entry colname="col1">
                            <para>
-                              Plats
+                              Stad
                            </para>
                         </entry>
                         <entry colname="col2">
@@ -357,7 +370,7 @@
                      <row valign="top">
                         <entry colname="col1">
                            <para>
-                              Uppdatera
+                              Senaste uppdatering
                            </para>
                         </entry>
                         <entry colname="col2">
@@ -503,12 +516,8 @@
       <title>S&aring; h&auml;r st&auml;ller du in en proxyserver</title>
       <para>Om din dator har en brandv&auml;gg m&aring;ste du anv&auml;nda en proxyserver f&ouml;r att k&ouml;ra programmet 
       <application>&applet;</application>. 
-      Om du vill konfigurera GNOME att anv&auml;nda en proxyserver v&auml;ljer du 
-      <menuchoice>
-      <guimenu>Program</guimenu>
-      <guisubmenu>Visningsinst&auml;llningar</guisubmenu> 
-      <guimenuitem>N&auml;tverksproxy</guimenuitem>
-      </menuchoice>.</para>
+      Om du vill konfigurera GNOME till att av&auml;nda en proxyserver anv&auml;nder du inst&auml;llningsverktygen f&ouml;r att ange n&auml;tverksproxyserver f&ouml;r webbanslutningar.
+      </para>
       </sect2>
       
       <sect2 id="gweather-configure">
@@ -521,25 +530,16 @@
       <itemizedlist>
          <listitem>
             <para>
-               <link linkend="gweather-location">Plats</link>
-            </para>
-         </listitem>
-         <listitem>
-            <para>
            <link linkend="gweather-general">Allm&auml;nt</link>
           </para>
          </listitem>
+         <listitem>
+            <para>
+               <link linkend="gweather-location">Plats</link>
+            </para>
+         </listitem>
       </itemizedlist>
             
-      
-      <sect3 id="gweather-location">
-         <title>Plats</title>
-         <para>
-            P&aring; fliken <guilabel>Plats</guilabel> kan du v&auml;lja en plats som du vill visa
-            aktuell och kommande v&auml;derprognos f&ouml;r. Mer information om hur du v&auml;ljer en plats
-            finns p&aring; <xref linkend="gweather-change-location"/>.
-         </para>
-      </sect3>
       
       <sect3 id="gweather-general"> 
         <title>Allm&auml;nt</title>
@@ -554,9 +554,6 @@
                         med vilket panelprogrammet h&auml;mtar uppdaterad
                         information fr&aring;n v&auml;derservern. 
                      </para>
-                     <para>
-                  Standard:markerat, 30 minuter.
-                     </para>
                   </listitem>
                </varlistentry>
                <varlistentry>
@@ -570,7 +567,7 @@
                      </para>
                      <informaltable>
                         <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                            colname="col1"/><colspec colname="col2"/>
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                             colname="col1"/><colspec colname="col2"/>
                            <thead>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
@@ -613,7 +610,7 @@
                               <row valign="top">
                                  <entry colname="COLSPEC0">
                                     <para>
-                                       Vindstyrka
+                                       Vindhastighet
                                     </para>
                                  </entry>
                                  <entry colname="col1">
@@ -651,7 +648,7 @@
                                  </entry>
                                  <entry colname="col1">
                                     <para>
-                                       miles
+                                       engelska miles
                                     </para>
                                  </entry>
                                  <entry colname="col2">
@@ -663,21 +660,15 @@
                            </tbody>
                         </tgroup>
                      </informaltable>
-                     <para>
-                  Standard: ej markerat.
-                     </para>
                   </listitem>
                </varlistentry>
                <varlistentry>
-                  <term><guilabel>Anv&auml;nd radarkarta</guilabel> </term>
+                  <term><guilabel>Aktivera radarkarta</guilabel> </term>
                   <listitem>
                      <para>
                         Markera det h&auml;r alternativet om du vill anv&auml;nda radarkartor
                         p&aring; fliken <guilabel>Radarkarta</guilabel>
                         i dialogrutan <guilabel>Prognos</guilabel>. 
-                     </para>
-                     <para>
-                  Standard: ej markerat.
                      </para>
                   </listitem>
                </varlistentry>
@@ -690,13 +681,20 @@
                         en annan webbadress. Skriv adressen i textrutan 
                         <guilabel>Adress</guilabel>.
                      </para>
-                     <para>
-                  Standard: ej markerat.
-                     </para>
                   </listitem>
                </varlistentry>
             </variablelist>
       </sect3>
+      
+      <sect3 id="gweather-location">
+         <title>Plats</title>
+         <para>
+            P&aring; fliken <guilabel>Plats</guilabel> kan du v&auml;lja en plats som du vill visa
+            aktuell och kommande v&auml;derprognos f&ouml;r. Mer information om hur du v&auml;ljer en plats
+            finns p&aring; <xref linkend="gweather-change-location"/>.
+         </para>
+      </sect3>
+
       </sect2>
    </sect1>
 </article>

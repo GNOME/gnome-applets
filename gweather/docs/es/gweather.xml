@@ -1,12 +1,12 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "Agosto 2002">
-  <!ENTITY applet "Previsi&oacute;n meteorol&oacute;gica">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.3.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "Weather Report">
 ]>
-<!--
+<!-- 
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
@@ -17,213 +17,195 @@
 <article id="index" lang="es">
    <!-- please do not change the id; for translations, change lang to -->
    <!-- appropriate code -->
-
+     
    <articleinfo>
-      <title>Manual del aplique &applet;  V&manrevision;</title>
+      <title>Manual de la miniaplicaci&oacute;n &applet;  V&manrevision;</title>	 
       <copyright>
 		<year>2003</year>
-		<holder>Equipo de documentaci&oacute;n de Sun GNOME</holder>
+		<holder>Sun Microsystems</holder>    	 
       </copyright>
-
       <copyright>
-		<year>1999</year>
+		<year>2002</year>
+		<holder>Sun Microsystems</holder>    	 
+      </copyright>
+      <copyright>
+		<year>1999</year>  		
 		<year>2000</year>
-		<holder>Spiros Papadimitriou, Dan Mueth</holder>
+		<holder>Spiros Papadimitriou, Dan Mueth</holder>  	 
       </copyright>
       <!-- translators: uncomment this:
-
+      
         <copyright>
          <year>2002</year>
          <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
         </copyright>
-
+      
          -->
-      <!-- An address can be added to the publisher information.  If a role is
-           not specified, the publisher/author is the same for all versions of the
+      <!-- An address can be added to the publisher information.  If a role is 
+           not specified, the publisher/author is the same for all versions of the 
            document.  -->
-
+      	 
       <publisher>
-		<publishername> Proyecto de documentaci&oacute;n de GNOME</publishername>
+		<publishername> Proyecto de documentaci&oacute;n de GNOME</publishername>  	 
       </publisher>
         &legal;
-      <!-- This file  contains link to license for the documentation (GNU FDL), and
-           other legal stuff such as "NO WARRANTY" statement. Please do not change
+      <!-- This file  contains link to license for the documentation (GNU FDL), and 
+           other legal stuff such as "NO WARRANTY" statement. Please do not change 
            any of this. -->
-
+      	 
       <authorgroup>
-
+           		
 	<author>
-	  	<firstname>Equipo de documentaci&oacute;n de </firstname><surname>Sun GNOME</surname>
+	<firstname>Sun</firstname>  		  
+	<surname>Equipo de documentaci&oacute;n de GNOME</surname>            		  
 
             <affiliation>
-		<orgname>Sun Microsystems</orgname>
-		<address><email>gdocteam@sun.com</email></address>
+		<orgname>Sun Microsystems</orgname>  			 
             </affiliation>
-
+              		
         </author>
-
+           		
         <author>
-	<firstname>Spiros</firstname>
+	<firstname>Spiros</firstname>  		  
 	<surname>Papadimitriou</surname>
-
+             		  
             <affiliation>
-		<orgname>Proyecto de documentaci&oacute;n de GNOME</orgname>
-		<address><email>spapadim+@cs.cmu.edu</email> </address>
+		<orgname>Proyecto de documentaci&oacute;n de GNOME</orgname>  			 
+		<address><email>spapadim+@cs.cmu.edu</email> </address>		  
             </affiliation>
-
+              		
          </author>
-
+           		
          <author>
 	 <firstname>Dan</firstname>
-	 <surname>Mueth</surname>
-
+	 <surname>Mueth</surname>  	
+	  
 	     <affiliation>
- 		<orgname>Proyecto de documentaci&oacute;n de GNOME</orgname>
-		<address><email>d-mueth@uchicago.edu</email> </address>
+ 		<orgname>Proyecto de documentaci&oacute;n de GNOME</orgname>  			 
+		<address><email>d-mueth@uchicago.edu</email> </address>		  
              </affiliation>
-
+              		
          </author>
-
+               
          <!-- This is appropriate place for other contributors: translators,
                     maintainers,  etc. Commented out by default.
                     <othercredit role="translator">
-         	     <firstname>Latin</firstname>
-         	     <surname>Translator 1</surname>
-         	     <affiliation>
-         	       <orgname>Latin Translation Team</orgname>
-         	       <address> <email>translator@gnome.org</email> </address>
+         	     <firstname>Latin</firstname> 
+         	     <surname>Translator 1</surname> 
+         	     <affiliation> 
+         	       <orgname>Latin Translation Team</orgname> 
+         	       <address> <email>translator@gnome.org</email> </address> 
          	     </affiliation>
          	     <contrib>Latin translation</contrib>
                     </othercredit>
          -->
-
+         	 
       </authorgroup>
-
+      	 
       <revhistory>
-
-         <revision>
-              	<revnumber>Manual del aplique &applet; V&manrevision;</revnumber>
-             	<date>&date;</date>
-            	<revdescription>
-
-		<para role="author">Equipo de documentaci&oacute;n de Sun GNOME <email>gdocteam@sun.com</email>
-		</para>
-
-		<para role="publisher">
-                  Proyecto de documentaci&oacute;n de GNOME
-                </para>
-
-            </revdescription>
-
-         </revision>
-
-         <revision>
-              	<revnumber>Manual del aplique Previsi&oacute;n meteorol&oacute;gica V2.0</revnumber>
-             	<date>Marzo 2002</date>
-            	<revdescription>
-
-		<para role="author">Equipo de documentaci&oacute;n de Sun GNOME <email>gdocteam@sun.com</email>
-		</para>
-
-		<para role="publisher">
-                  Proyecto de documentaci&oacute;n de GNOME
-                </para>
-
-            </revdescription>
-
-         </revision>
-
-         <revision>
-              	<revnumber>Manual del aplique Previsi&oacute;n meteorol&oacute;gica V2.0</revnumber>
-             	<date>Marzo 2002</date>
-            	<revdescription>
-
-		<para role="author">Equipo de documentaci&oacute;n de Sun GNOME <email>gdocteam@sun.com</email>
-		</para>
-
-		<para role="publisher">
-                  Proyecto de documentaci&oacute;n de GNOME
-                </para>
-
-            </revdescription>
-
-         </revision>
-
-         <revision>
-		<revnumber>Aplique Clima de GNOME</revnumber>
-		<date>2000</date>
-
-            <revdescription>
-
-               <para role="author">
-                  Spiros Papadimitriou
-		  <email>spapadim+@cs.cmu.edu</email>
-               </para>
-
-               <para role="author">
-                  Dan Mueth
-		  <email>d-mueth@uchicago.edu</email>
-               </para>
-
-               <para role="publisher">
-                  Proyecto de documentaci&oacute;n de GNOME
-               </para>
-
-            </revdescription>
-
-         </revision>
-
+        <revision>
+          <revnumber>Manual de la miniaplicaci&oacute;n &applet; V&manrevision;</revnumber>  		
+          <date>&date;</date>  		  
+          <revdescription>
+	    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+	    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual de la miniaplicaci&oacute;n Previsi&oacute;n meteorol&oacute;gica V2.3</revnumber>  		
+          <date>Enero 2003</date>  		  
+          <revdescription>
+	    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+	    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual de la miniaplicaci&oacute;n Previsi&oacute;n meteorol&oacute;gica V2.2</revnumber>  		
+          <date>Agosto 2002</date>  		  
+          <revdescription>
+	    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+	    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual de la miniaplicaci&oacute;n Previsi&oacute;n meteorol&oacute;gica V2.1</revnumber>  		
+          <date>Julio 2002</date>  		  
+          <revdescription>
+	    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+	    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manual de la miniaplicaci&oacute;n Previsi&oacute;n meteorol&oacute;gica V2.0</revnumber>  		
+          <date>Marzo 2002</date>  		  
+          <revdescription>
+	    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+	    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+          </revdescription>
+        </revision>
+        <revision>
+	  <revnumber>Miniaplicaci&oacute;n Clima de GNOME</revnumber>  		  
+	  <date>2000</date>
+          <revdescription>
+            <para role="author">
+              Spiros Papadimitriou 				
+              <email>spapadim+@cs.cmu.edu</email>
+            </para>
+            <para role="author">
+              Dan Mueth 				
+	      <email>d-mueth@uchicago.edu</email>
+            </para>
+            <para role="publisher">
+                Proyecto de documentaci&oacute;n de GNOME
+             </para>
+          </revdescription>
+        </revision>
       </revhistory>
-
-      <releaseinfo> Este manual describe la versi&oacute;n &appletversion; del aplique &applet;.
+        	 
+      <releaseinfo>Este manual describe la versi&oacute;n &appletversion; de la miniaplicaci&oacute;n &applet;. 		
       </releaseinfo>
-
-      <legalnotice><title>Comentarios</title>
-         <para>Para informar de un defecto o hacer sugerencias sobre el aplique &applet; o sobre este manual, siga las instrucciones de <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.
+        	 
+      <legalnotice><title>Comentarios</title>		
+         <para>Para informar de un defecto o realizar una sugerencia sobre la miniaplicaci&oacute;n &applet; o el presente manual, siga las indicaciones que aparecen en  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
          </para>
-
+         		 	 
       </legalnotice>
-
+          
    </articleinfo>
-       <indexterm>
-       <primary>Previsi&oacute;n meteorol&oacute;gica</primary>
-       </indexterm>
+       <indexterm>  	 
+       <primary>Previsi&oacute;n meteorol&oacute;gica</primary>    
+       </indexterm> 
    <!-- ============= Document Body ============================= -->
    <!-- ============= Introduction ============================== -->
    <sect1 id="gweather-introduction"><title>Introducci&oacute;n</title>
       <!-- ==== Figure ============================================= -->
-
-      <figure id="weather-applet-fig"><title>Aplique &applet;</title>
-         <screenshot>
-            <mediaobject>
+      	 
+      <figure id="weather-applet-fig"> 
+		<title>Miniaplicaci&oacute;n &applet;</title>		
+         <screenshot>		  
+            <mediaobject>			 
                <imageobject>
-                  <imagedata fileref="figures/gweather_applet.png" format="PNG"/>
+                  <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>Muestra el aplique Previsi&oacute;n meteorol&oacute;gica. Contiene un icono de clima y la temperatura actual</phrase>
+                  <phrase>Muestra la miniaplicaci&oacute;n Previsi&oacute;n meteorol&oacute;gica. Contiene un icono del estado del tiempo y la temperatura actual</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
       </figure>
-
+       
       <!-- ==== End of Figure ======================================= -->
-      <para>El aplique <application>&applet;</application> descarga informaci&oacute;n meteorol&oacute;gica desde los servidores del U.S National Weather Service (NWS), incluyendo la Interactive Weather Information Network (IWIN). El aplique <application>&applet;</application> se puede usar para visualizar informes y predicciones meteorol&oacute;gicas en el ordenador.
+      <para>La miniaplicaci&oacute;n <application>&applet;</application> descarga informaci&oacute;n meteorol&oacute;gica desde los servidores del U.S National Weather Service (NWS), incluida la Interactive Weather Information Network (IWIN). La miniaplicaci&oacute;n <application>&applet;</application> se puede usar para visualizar informes y predicciones meteorol&oacute;gicas en el ordenador. 
       </para>
-      <para>Para a&ntilde;adir <application>&applet;</application> a un panel, haga clic con el bot&oacute;n derecho del rat&oacute;n en el panel y, a continuaci&oacute;n, seleccione
-        <menuchoice>
-          <guimenu>A&ntilde;adir al panel</guimenu>
-          <guisubmenu>Accesorios</guisubmenu>
-          <guimenuitem>&applet;</guimenuitem>
-        </menuchoice>.</para>
       <note id="proxies-note-1">
-         <para>Si el sistema est&aacute; situado detr&aacute;s de un cortafuegos, es necesario usar un servidor proxy para acceder a los servidores de servicios meteorol&oacute;gicos. Para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo especificar un servidor proxy, consulte <xref linkend="gweather-set-proxy"/>.
+         <para>Si el sistema est&aacute; situado detr&aacute;s de un cortafuegos, es necesario usar un servidor proxy para acceder a los servidores de servicios meteorol&oacute;gicos. Para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo especificar un servidor proxy, consulte <xref linkend="gweather-set-proxy"/>.        
          </para>
       </note>
-      <para><application>&applet;</application> muestra la informaci&oacute;n siguiente para la ubicaci&oacute;n predeterminada o una ubicaci&oacute;n que se especifique:
+      <para>La miniaplicaci&oacute;n <application>&applet;</application> muestra la informaci&oacute;n siguiente para la ubicaci&oacute;n predeterminada o la que se especifique:
       </para>
       <itemizedlist>
          <listitem>
-            <para>Un icono de clima que representa la situaci&oacute;n general del tiempo. Por ejemplo, un icono en forma de sol representa un clima soleado. Para ver una descripci&oacute;n escrita de la situaci&oacute;n general del clima, se&ntilde;ale el aplique para que se muestre un consejo.
+            <para>Un icono que representa el tiempo atmosf&eacute;rico. Por ejemplo, un icono en forma de sol representa un tiempo soleado. Para ver una descripci&oacute;n del tiempo meteorol&oacute;gico general, ponga el cursor sobre la miniaplicaci&oacute;n para que se muestre un consejo.
             </para>
          </listitem>
          <listitem>
@@ -232,20 +214,50 @@
          </listitem>
       </itemizedlist>
 
+    <sect2 id="gweather-introduction-add">
+      <title>Para agregar la miniaplicaci&oacute;n &applet; a un panel</title>
+      <para>
+        Para agregar &applet; a un panel, efect&uacute;e los siguientes pasos:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Haga clic con el bot&oacute;n derecho en el panel.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Seleccione
+            <menuchoice>
+              <guimenu>Agregar al panel</guimenu>
+              <guisubmenu>Accesorios</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+      
    </sect1>
    <!-- ============= Usage ===================================== -->
    <sect1 id="gweather-usage"><title>Uso</title>
-      <sect2 id="gweather-change-location"><title>Ver la informaci&oacute;n meteorol&oacute;gica de una ubicaci&oacute;n en particular</title>
-         <para>Cuando agrega el aplique <application>&applet;</application> a un panel por primera vez, &eacute;ste muestra de manera predeterminada el tiempo en Pittsburg, Pensilvania. Para visualizar el tiempo de otra ubicaci&oacute;n, lleve a cabo los pasos siguientes:
+      <sect2 id="gweather-change-location"><title>Para ver la informaci&oacute;n meteorol&oacute;gica de una ubicaci&oacute;n en particular</title>
+         <para>Cuando agrega la miniaplicaci&oacute;n <application>&applet;</application> a un panel por primera vez, &eacute;sta muestra de manera predeterminada el tiempo en Pittsburg, Pensilvania. Para visualizar el tiempo de otra ubicaci&oacute;n, lleve a cabo los pasos siguientes:
          </para>
          <orderedlist>
             <listitem>
-               <para>Haga clic con el bot&oacute;n derecho del rat&oacute;n en el aplique.
+               <para>Haga clic con el bot&oacute;n derecho del rat&oacute;n en la miniaplicaci&oacute;n.
                </para>
             </listitem>
             <listitem>
-               <para>Seleccione <guimenuitem>Preferencias</guimenuitem> en el men&uacute; emergente del aplique. El aplique muestra el cuadro de di&aacute;logo <guilabel>Propiedades de Clima de GNOME</guilabel>.
-La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> contiene una lista de regiones y subregiones geogr&aacute;ficas, as&iacute; como ubicaciones espec&iacute;ficas.
+               <para>Seleccione <guimenuitem>Preferencias</guimenuitem> en el men&uacute; emergente de la miniaplicaci&oacute;n. La miniaplicaci&oacute;n muestra el cuadro de di&aacute;logo <guilabel>Propiedades de Clima de GNOME</guilabel>.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  Seleccione la pesta&ntilde;a <guilabel>Ubicaci&oacute;n</guilabel>.
+                  La pesta&ntilde;a <guilabel>Ubicaci&oacute;n</guilabel> contiene una lista de regiones geogr&aacute;ficas, subregiones y ubicaciones espec&iacute;ficas.
                </para>
             </listitem>
             <listitem>
@@ -257,7 +269,7 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
                </para>
             </listitem>
             <listitem>
-               <para>Haga clic en una ubicaci&oacute;n. Si se se&ntilde;ala el aplique mientras &eacute;ste est&aacute; cargando la informaci&oacute;n meteorol&oacute;gica para la nueva ubicaci&oacute;n, aparece el mensaje "Actualizando".
+               <para>Haga clic en una ubicaci&oacute;n. Si pone el cursor sobre la miniaplicaci&oacute;n mientras &eacute;sta est&aacute; cargando la informaci&oacute;n meteorol&oacute;gica para la nueva ubicaci&oacute;n, aparece el mensaje "Actualizando".
                </para>
             </listitem>
             <listitem>
@@ -266,14 +278,14 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
             </listitem>
          </orderedlist>
       </sect2>
-      <sect2 id="gweather-update"><title>Actualizar la informaci&oacute;n meteorol&oacute;gica</title>
-         <para>Para actualizar la informaci&oacute;n meteorol&oacute;gica que muestra el aplique en el panel, haga clic con el bot&oacute;n derecho del rat&oacute;n y seleccione <guimenuitem>Actualizar</guimenuitem>.
+      <sect2 id="gweather-update"><title>Para actualizar la informaci&oacute;n meteorol&oacute;gica</title>
+         <para>Para actualizar la informaci&oacute;n meteorol&oacute;gica que muestra la miniaplicaci&oacute;n en el panel, haga clic con el bot&oacute;n derecho del rat&oacute;n y seleccione <guimenuitem>Actualizar</guimenuitem>.
          </para>
-         <para>Puede configurar el aplique para que actualice autom&aacute;ticamente la informaci&oacute;n a intervalos regulares. Consulte <xref linkend="gweather-configure"/> para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo configurar el aplique.
+         <para>Puede configurar la miniaplicaci&oacute;n para que actualice autom&aacute;ticamente la informaci&oacute;n a intervalos regulares. Consulte <xref linkend="gweather-configure"/> para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo configurar la miniaplicaci&oacute;n. 
          </para>
       </sect2>
-      <sect2 id="gweather-detailed"><title>Ver informaci&oacute;n meteorol&oacute;gica detallada</title>
-         <para>Para obtener una informaci&oacute;n meteorol&oacute;gica detallada, haga clic con el bot&oacute;n derecho del rat&oacute;n en el aplique y seleccione <guimenuitem>Pron&oacute;stico</guimenuitem>. El aplique muestra el cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel>. El cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel> contiene las siguientes secciones predeterminadas con pesta&ntilde;as:
+      <sect2 id="gweather-detailed"><title>Para ver informaci&oacute;n meteorol&oacute;gica detallada</title>
+         <para>Para obtener una informaci&oacute;n meteorol&oacute;gica detallada, haga clic con el bot&oacute;n derecho del rat&oacute;n en la miniaplicaci&oacute;n y seleccione <guimenuitem>Pron&oacute;stico</guimenuitem>. La miniaplicaci&oacute;n muestra el cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel>. El cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel> contiene las siguientes secciones predeterminadas con las siguientes fichas:
          </para>
          <itemizedlist>
             <listitem>
@@ -286,24 +298,26 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
             </listitem>
          </itemizedlist>
          <sect3 id="gweather-current-conditions"><title>Condiciones actuales</title>
-            <para>La secci&oacute;n de pesta&ntilde;a <guilabel>Condiciones actuales</guilabel> muestra la informaci&oacute;n siguiente:
+            <para>La ficha <guilabel>Condiciones actuales</guilabel> muestra la informaci&oacute;n siguiente:
             </para>
             <informaltable>
                <tgroup cols="2">
-                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                   colwidth="1.19*"/>
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                    colwidth="1.19*"/>
                   <tbody>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>Ubicaci&oacute;n </para>
+                           <para>
+                              Ciudad
+                           </para>
                         </entry>
                         <entry colname="col2">
-                           <para>La ubicaci&oacute;n a la que se aplican las condiciones meteorol&oacute;gicas actuales.
+                           <para>La ubicaci&oacute;n a la que corresponden las condiciones meteorol&oacute;gicas actuales.
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>Actualizaci&oacute;n </para>
+                           <para>&Uacute;ltima actualizaci&oacute;n </para>
                         </entry>
                         <entry colname="col2">
                            <para>La hora a la que se actualizaron por &uacute;ltima vez las condiciones en el servidor meteorol&oacute;gico.
@@ -315,7 +329,7 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
                            <para>Condiciones                           </para>
                         </entry>
                         <entry colname="col2">
-                           <para>Las condiciones generales del tiempo.
+                           <para>Las condiciones meteorol&oacute;gicas generales.
                            </para>
                         </entry>
                      </row>
@@ -371,7 +385,7 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
                            <para>Presi&oacute;n atmosf&eacute;rica </para>
                         </entry>
                         <entry colname="col2">
-                           <para>La presi&oacute;n atmosf&eacute;rica en pulgadas de mercurio.
+                           <para>La presi&oacute;n atmosf&eacute;rica en pulgadas de mercurio. 
                            </para>
                         </entry>
                      </row>
@@ -381,7 +395,7 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>Rango de visi&oacute;n determinado por las condiciones atmosf&eacute;ricas y de luz.
+                           <para>El rango de visi&oacute;n determinado por las condiciones atmosf&eacute;ricas y de luz.
                            </para>
                         </entry>
                      </row>
@@ -390,7 +404,7 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
             </informaltable>
          </sect3>
          <sect3 id="gweather-forecast"><title>Pron&oacute;stico</title>
-            <para>La secci&oacute;n de pesta&ntilde;a <guilabel>Pron&oacute;stico</guilabel> muestra una previsi&oacute;n del clima de la ubicaci&oacute;n seleccionada para los d&iacute;as siguientes, normalmente los cinco siguientes.
+            <para>La ficha <guilabel>Pron&oacute;stico</guilabel> muestra una previsi&oacute;n del clima de la ubicaci&oacute;n seleccionada para los d&iacute;as siguientes, normalmente cinco. 
             </para>
             <note>
                <para>Las previsiones s&oacute;lo est&aacute;n disponibles para algunas ubicaciones de EE.UU.
@@ -398,62 +412,55 @@ La secci&oacute;n con pesta&ntilde;as <guilabel>Ubicaci&oacute;n</guilabel> cont
             </note>
          </sect3>
          <sect3 id="gweather-radar-map"><title>Mapa radar</title>
-            <para>De forma predeterminada, la secci&oacute;n de pesta&ntilde;a <guilabel>Mapa radar</guilabel> no se muestra en el cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel>. Consulte <xref linkend="gweather-configure"/> para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo configurar el aplique para que muestre mapas de radar. <application>&applet;</application> descarga los mapas de radar de www.weather.com. Si el mapa de radar no est&aacute; disponible en www.weather.com, el aplique muestra un signo de interrogaci&oacute;n. Para ir a la p&aacute;gina www.weather.com, haga clic en el bot&oacute;n <guibutton>Visitar weather.com</guibutton>.
+            <para>De forma predeterminada, la ficha <guilabel>Mapa radar</guilabel> no se muestra en el cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel>. Consulte <xref linkend="gweather-configure"/> para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo configurar la miniaplicaci&oacute;n para que muestre mapas de radar. La miniaplicaci&oacute;n <application>&applet;</application> descarga los mapas de radar de www.weather.com. Si el mapa de radar no est&aacute; disponible en www.weather.com, la miniaplicaci&oacute;n muestra un signo de interrogaci&oacute;n. Para ir a la p&aacute;gina www.weather.com, haga clic en el bot&oacute;n <guibutton>Visitar weather.com</guibutton>.
             </para>
          </sect3>
       </sect2>
    </sect1>
    <!-- ============= Preferences ================================== -->
    <sect1 id="gweather-settings">
-     <title>Preferencias</title>
-
-      <sect2 id="gweather-set-proxy"><title>Configurar un servidor proxy</title>
-      <para>Si su sistema est&aacute; situado detr&aacute;s de un cortafuegos, es necesario usar un servidor proxy para ejecutar <application>&applet;</application> satisfactoriamente.
-Para configurar GNOME para que utilice un servidor proxy, seleccione <menuchoice><guimenu>Aplicaciones</guimenu>
-      <guisubmenu>Preferencias</guisubmenu>
-      <guimenuitem>Red</guimenuitem>
-      </menuchoice>.</para>
+<title>Preferencias</title>
+      
+      <sect2 id="gweather-set-proxy"><title>Para configurar un servidor proxy</title>
+      <para>Si su sistema est&aacute; situado detr&aacute;s de un cortafuegos, es necesario usar un servidor proxy para ejecutar <application>&applet;</application> satisfactoriamente. 
+Para configurar GNOME para el uso de un servidor proxy, utilice sus herramientas favoritas para especificar el servidor proxy de red para conexiones de Internet.
+      </para>
       </sect2>
-
-      <sect2 id="gweather-configure"><title>Configurar &applet;</title>
+      
+      <sect2 id="gweather-configure"><title>Para configurar la miniaplicaci&oacute;n &applet;</title>
       <para>
-         Para configurar <application>&applet;</application>, haga clic con el bot&oacute;n derecho del rat&oacute;n encima del aplique y, a continuaci&oacute;n, seleccione <guimenuitem>Preferencias</guimenuitem>. El cuadro de di&aacute;logo <guilabel>Propiedades de Clima de GNOME</guilabel> contiene las secciones de pesta&ntilde;a siguientes:
+      Para configurar la miniaplicaci&oacute;n <application>&applet;</application>, haga clic con el bot&oacute;n derecho en ella y seleccione <guimenuitem>Preferencias</guimenuitem>. El cuadro de di&aacute;logo <guilabel>Propiedades de Clima de GNOME</guilabel> contiene las fichas siguientes:
       </para>
       <itemizedlist>
+         <listitem>
+            <para>
+               <link linkend="gweather-general">General</link>
+            </para>
+         </listitem>
          <listitem>
             <para><link linkend="gweather-location">Ubicaci&oacute;n</link>
             </para>
          </listitem>
-         <listitem>
-            <para><link linkend="gweather-general">General</link>
-            </para>
-         </listitem>
       </itemizedlist>
-
-
-      <sect3 id="gweather-location"><title>Ubicaci&oacute;n</title>
-         <para>La secci&oacute;n de pesta&ntilde;a <guilabel>Ubicaci&oacute;n</guilabel> permite seleccionar la ubicaci&oacute;n para la que desea mostrar las condiciones clim&aacute;ticas actuales y futuras. Para obtener informaci&oacute;n sobre c&oacute;mo seleccionar una ubicaci&oacute;n, consulte <xref linkend="gweather-change-location"/>.
-         </para>
-      </sect3>
-
-      <sect3 id="gweather-general"><title>General</title>
+            
+      
+      <sect3 id="gweather-general">
+         <title>General</title>
            <variablelist>
                <varlistentry><term><guilabel>Actualizar autom&aacute;ticamente cada xx minutos</guilabel>
                   </term>
                   <listitem>
-                     <para>Seleccione esta opci&oacute;n para permitir que el aplique cargue autom&aacute;ticamente informaci&oacute;n actualizada desde el servidor meteorol&oacute;gico a intervalos regulares. Use el cuadro de incremento para especificar el intervalo en minutos en el que desea que la aplicaci&oacute;n actualice la informaci&oacute;n meteorol&oacute;gica.
-                     </para>
-                     <para>Valor predeterminado:  seleccionado, 30 minutos.
+                     <para>Seleccione esta opci&oacute;n para permitir que la miniaplicaci&oacute;n cargue autom&aacute;ticamente informaci&oacute;n actualizada desde el servidor meteorol&oacute;gico a intervalos regulares. Use el cuadro de incremento para especificar el intervalo en minutos en el que desea que la miniaplicaci&oacute;n actualice la informaci&oacute;n meteorol&oacute;gica. 
                      </para>
                   </listitem>
                </varlistentry>
-               <varlistentry><term><guilabel>Usar sistema m&eacute;trico</guilabel> </term>
+               <varlistentry><term><guilabel>Usar sistema m&eacute;trico</guilabel></term>
                   <listitem>
-                     <para>Seleccione esa opci&oacute;n para que el aplique use unidades de medida Celsius y m&eacute;tricas en lugar de Fahrenheit e imperiales. &Eacute;sta es la forma en que esta opci&oacute;n afecta a las unidades de medida que se muestran en el aplique:
+                     <para>Seleccione esa opci&oacute;n para que la miniaplicaci&oacute;n use unidades de medida Celsius y m&eacute;tricas en lugar de Fahrenheit e imperiales. &Eacute;sta es la forma en que esta opci&oacute;n afecta a las unidades de medida que se muestran en la miniaplicaci&oacute;n:
                      </para>
                      <informaltable>
                         <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                            colname="col1"/><colspec colname="col2"/>
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                             colname="col1"/><colspec colname="col2"/>
                            <thead>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
@@ -479,7 +486,7 @@ Para configurar GNOME para que utilice un servidor proxy, seleccione <menuchoice
                                     </para>
                                  </entry>
                                  <entry colname="col2">
-                                    <para>grados cent&iacute;grados
+                                    <para>grados Celsius
                                     </para>
                                  </entry>
                               </row>
@@ -523,28 +530,28 @@ Para configurar GNOME para que utilice un servidor proxy, seleccione <menuchoice
                            </tbody>
                         </tgroup>
                      </informaltable>
-                     <para>Valor predeterminado: no seleccionado.
-                     </para>
                   </listitem>
                </varlistentry>
                <varlistentry><term><guilabel>Activar mapas de radar</guilabel></term>
              <listitem>
-                     <para>Seleccione esta opci&oacute;n para indicar al aplique que muestre mapas de radar en la secci&oacute;n con pesta&ntilde;as <guilabel>Mapa radar</guilabel> del cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel>.
-                     </para>
-                     <para>Valor predeterminado: no seleccionado.
+                     <para>Seleccione esta opci&oacute;n para indicar a la miniaplicaci&oacute;n que muestre mapas de radar en la ficha <guilabel>Mapa radar</guilabel> del cuadro de di&aacute;logo <guilabel>Pron&oacute;stico</guilabel>.                   
                      </para>
                   </listitem>
                </varlistentry>
-               <varlistentry><term><guilabel>Utilizar direcci&oacute;n personalizada para mapa de radar</guilabel> </term>
+               <varlistentry><term><guilabel>Utilizar direcci&oacute;n personalizada para mapa de radar</guilabel></term>
                   <listitem>
-                     <para>De forma predeterminada, <application>&applet;</application> descarga los mapas de radar de www.weather.com. Seleccione esta opci&oacute;n para que se muestren mapas de radar procedentes de una direcci&oacute;n alternativa de Internet. Escriba la direcci&oacute;n en el cuadro de texto <guilabel>Direcci&oacute;n</guilabel>.
-                     </para>
-                     <para>Valor predeterminado: no seleccionado.
+                     <para>De forma predeterminada, la miniaplicaci&oacute;n <application>&applet;</application> descarga los mapas de radar de www.weather.com. Seleccione esta opci&oacute;n para que se muestren mapas de radar procedentes de una direcci&oacute;n alternativa de Internet. Escriba la direcci&oacute;n en el cuadro de texto <guilabel>Direcci&oacute;n</guilabel>.
                      </para>
                   </listitem>
                </varlistentry>
             </variablelist>
       </sect3>
+      
+      <sect3 id="gweather-location"><title>Ubicaci&oacute;n</title>
+         <para>La ficha <guilabel>Ubicaci&oacute;n</guilabel> permite seleccionar la ubicaci&oacute;n para la que desea mostrar las condiciones clim&aacute;ticas actuales y futuras. Para obtener informaci&oacute;n sobre c&oacute;mo seleccionar una ubicaci&oacute;n, consulte <xref linkend="gweather-change-location"/>.
+         </para>
+      </sect3>
+
       </sect2>
    </sect1>
 </article>

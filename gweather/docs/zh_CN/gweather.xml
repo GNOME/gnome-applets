@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.3.1">
+  <!ENTITY date "December 2003">
   <!ENTITY applet "Weather Report">
 ]>
 <!-- 
@@ -19,12 +19,15 @@
    <!-- appropriate code -->
      
    <articleinfo>
-      <title>&applet; 小程序手册 V&manrevision;</title>	 
+<title>&applet; 小程序手册 V&manrevision;</title>	 
+      <copyright>
+		<year>2003</year>
+		<holder>Sun Microsystems</holder>    	 
+      </copyright>
       <copyright>
 		<year>2002</year>
-		<holder>Sun GNOME Documentation Team</holder>    	 
+		<holder>Sun Microsystems</holder>    	 
       </copyright>
-        	 
       <copyright>
 		<year>1999</year>  		
 		<year>2000</year>
@@ -58,7 +61,6 @@
 
             <affiliation>
 		<orgname>Sun Microsystems</orgname>  			 
-		<address><email>gdocteam@sun.com</email></address>		  
             </affiliation>
               		
         </author>
@@ -101,338 +103,286 @@
       </authorgroup>
       	 
       <revhistory>
-         		
-         <revision>
-              	<revnumber>&applet; 小程序手册 V&manrevision;</revnumber>  		
-             	<date>&date;</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
-		</para>
-                 			 
-		<para role="publisher">
-                  GNOME Documentation Project
-                </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-         
-         <revision>
-              	<revnumber>天气报告小程序手册 V2.1</revnumber>  		
-             	<date>2002 年 7 月</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
-		</para>
-                 			 
-		<para role="publisher">
-                  GNOME Documentation Project
-                </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-         
-         <revision>
-              	<revnumber>天气报告小程序手册 V2.0</revnumber>  		
-             	<date>2002 年 3 月</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
-		</para>
-                 			 
-		<para role="publisher">
-                  GNOME Documentation Project
-                </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-           		
-         <revision>
-		<revnumber>GNOME 天气小程序</revnumber>  		  
-		<date>2000</date>
-             		  
-            <revdescription>
-                 			 
-               <para role="author">
-                  Spiros Papadimitriou 				
-		  <email>spapadim+@cs.cmu.edu</email>
-               </para>
-                 			 
-               <para role="author">
-                  Dan Mueth 				
-		  <email>d-mueth@uchicago.edu</email>
-               </para>
-               			 
-               <para role="publisher">
-                  GNOME Documentation Project
-               </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-           	 
+        <revision><revnumber>&applet; 小程序手册 V&manrevision;</revnumber>  		
+          <date>&date;</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision><revnumber>气象报告小程序手册 V2.3</revnumber>  		
+          <date>2003 年 1 月</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision><revnumber>气象报告小程序手册 V2.2</revnumber>  		
+          <date>2002 年 8 月</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision><revnumber>气象报告小程序手册 V2.1</revnumber>  		
+          <date>2002 年 7 月</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>气象报告小程序手册 V2.0</revnumber>  		
+          <date>2002 年 3 月</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision><revnumber>GNOME 气象小程序</revnumber>  		  
+	  <date>2000</date>
+          <revdescription>
+            <para role="author">
+              Spiros Papadimitriou 				
+              <email>spapadim+@cs.cmu.edu</email>
+            </para>
+            <para role="author">
+              Dan Mueth 				
+	      <email>d-mueth@uchicago.edu</email>
+            </para>
+            <para role="publisher">
+              GNOME Documentation Project
+            </para>
+          </revdescription>
+        </revision>
       </revhistory>
         	 
-      <releaseinfo>
-          本手册介绍 &applet; &appletversion; 版。		
+      <releaseinfo>本手册介绍 &applet; &appletversion; 版。		
       </releaseinfo>
         	 
-      <legalnotice>
-         <title>反馈</title>		
-         <para>
-             要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。
+      <legalnotice><title>反馈</title>		
+         <para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。
          </para>
          		 	 
       </legalnotice>
           
    </articleinfo>
        <indexterm>  	 
-       <primary>天气报告</primary>    
+       <primary>气象报告</primary>    
        </indexterm> 
    <!-- ============= Document Body ============================= -->
    <!-- ============= Introduction ============================== -->
-   <sect1 id="gweather-introduction">
-      <title>简介</title>
+   <sect1 id="gweather-introduction"><title>简介</title>
       <!-- ==== Figure ============================================= -->
       	 
-      <figure id="weather-applet-fig">
-	<title>&applet; 小程序</title>		
+      <figure id="weather-applet-fig"><title>&applet; 小程序</title>		
          <screenshot>		  
             <mediaobject>			 
                <imageobject>
                   <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>显示天气报告小程序。包含一个天气图标和当前气温</phrase> 			 
+                  <phrase>显示气象报告小程序。包含一个天气图标和当前温度</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
       </figure>
        
       <!-- ==== End of Figure ======================================= -->
-      <para>
-         <application>&applet;</application> 小程序从美国国家气象局 (U.S National Weather Service, NWS) 的服务器，包括交互气象信息网络 (Interactive Weather Information Network, IWIN) 下载天气信息。 您可以使用 <application>&applet;</application> 在计算机上显示当前的天气信息和天气预报。
+      <para><application>&applet;</application> 小程序从美国国家气象局（U.S National Weather Service，NWS）的服务器，包括交互气象信息网络（Interactive Weather Information Network，IWIN）下载天气信息。 您可以使用 <application>&applet;</application> 在计算机上显示当前的天气信息和天气预报。
      </para>
-      <para>
-         要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice>        <guimenu>"添加到面板"</guimenu><guisubmenu>"附件"</guisubmenu><guimenuitem>"&applet;"</guimenuitem></menuchoice>。</para>
       <note id="proxies-note-1">
-         <para>
-           如果您的计算机位于防火墙后，必须使用代理服务器才能访问气象服务器。有关如何指定代理服务器的更多信息，请参阅 <xref linkend="gweather-set-proxy"/>。      
+         <para>如果您的计算机位于防火墙后，必须使用代理服务器才能访问气象服务器。有关如何指定代理服务器的更多信息，请参阅 <xref linkend="gweather-set-proxy"/>。      
          </para>
       </note>
-      <para>
-         <application>&applet;</application> 显示默认地点或者您指定的地点的以下信息。
+      <para><application>&applet;</application> 显示默认地点或者您指定的地点的以下信息：
      </para>
       <itemizedlist>
          <listitem>
-            <para>
-               代表总体天气状况的天气图标。例如，太阳图标就代表晴天。要查看总体天气状况的文字说明，请指向小程序以显示工具提示。
+            <para>代表总体天气状况的天气图标。例如，太阳图标就代表晴天。 要查看总体天气状况的文字说明，请指向小程序以显示工具提示。
             </para>
          </listitem>
          <listitem>
-            <para>
-               当前温度。
+            <para>当前温度。
             </para>
          </listitem>
       </itemizedlist>
+
+    <sect2 id="gweather-introduction-add"><title>向面板中添加 &applet;</title>
+      <para>要向面板中添加 &applet;，请执行下列步骤：
+     </para>
+      <orderedlist>
+        <listitem>
+          <para>右击面板。
+          </para>
+        </listitem>
+        <listitem>
+          <para> 选择<menuchoice><guimenu>添加到面板</guimenu><guisubmenu>附件</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
       
    </sect1>
    <!-- ============= Usage ===================================== -->
-   <sect1 id="gweather-usage">
-      <title>用法</title>
-      <sect2 id="gweather-change-location">
-         <title>查看特定地点的天气信息</title>
-         <para>
-            在首次将 <application>&applet;</application> 小程序添加到面板上之后，该小程序默认显示的是宾夕法尼亚州的匹兹堡的天气信息。要显示其它地点的天气信息，请执行以下步骤：
+   <sect1 id="gweather-usage"><title>用法</title>
+      <sect2 id="gweather-change-location"><title>查看特定地点的天气信息</title>
+         <para>在首次将 <application>&applet;</application> 小程序添加到面板上之后，该小程序默认显示的是宾夕法尼亚州的匹兹堡的天气信息。要显示其他地点的天气信息，请执行下列步骤：
          </para>
          <orderedlist>
             <listitem>
-               <para>
-                  右击小程序。
+               <para>右击小程序。
                </para>
             </listitem>
             <listitem>
-               <para>
-                  从小程序弹出菜单中选择<guimenuitem>"首选项"</guimenuitem>。此时，小程序会显示<guilabel>"天气首选项"</guilabel>对话框。
-                  <guilabel>"地点"</guilabel>选项卡式部分包含了一个地理区域、子区域和特定地点的列表。
+               <para>从小程序弹出菜单中选择<guimenuitem>首选项</guimenuitem>。此时，小程序会显示<guilabel>天气首选项</guilabel>对话框。
                </para>
             </listitem>
             <listitem>
-               <para>
-                  单击区域旁边的箭头可以显示该区域的子区域。
+               <para>选择<guilabel>地点</guilabel>选项卡。<guilabel>地点</guilabel>选项卡式部分包含地理区域、子区域和特定地点的列表。
                </para>
             </listitem>
             <listitem>
-               <para>
-                  单击子区域旁边的箭头可以显示出该子区域中的地点。
+               <para>单击区域旁边的箭头可以显示该区域的子区域。
                </para>
             </listitem>
             <listitem>
-               <para>
-                  单击某个地点。当小程序检索新地点的天气信息时，如果您指向该小程序，会出现"正在更新"工具提示。
+               <para>单击子区域旁边的箭头可以显示出该子区域中的地点。
                </para>
             </listitem>
             <listitem>
-               <para>
-                  单击<guibutton>"关闭"</guibutton>可以关闭<guilabel>"天气首选项"</guilabel>对话框。
+               <para>单击某个地点。当小程序检索新地点的天气信息时，如果您指向该小程序，会出现&ldquo;正在更新&rdquo;工具提示。
+               </para>
+            </listitem>
+            <listitem>
+               <para>单击<guibutton>关闭</guibutton>可以关闭<guilabel>天气首选项</guilabel>对话框。
                </para>
             </listitem>
          </orderedlist>
       </sect2>
-      <sect2 id="gweather-update">
-         <title>更新天气信息</title>
-         <para>
-            要更新小程序显示在面板中的天气信息，可右击该程序，然后选择<guimenuitem>"更新"</guimenuitem>。
+      <sect2 id="gweather-update"><title>更新天气信息</title>
+         <para>要更新小程序在面板中显示的天气信息，可右击该小程序，然后选择<guimenuitem>更新</guimenuitem>。
          </para>
-         <para>
-            您可以将小程序配置为定期自动更新天气信息。有关如何配置小程序的更多信息，请参阅 <xref linkend="gweather-configure"/>。
+         <para>您可以将小程序配置为定期自动更新天气信息。有关如何配置该小程序的更多信息，请参阅 <xref linkend="gweather-configure"/>。
          </para>
       </sect2>
-      <sect2 id="gweather-detailed">
-         <title>查看详细的天气信息</title>
-         <para>
-            要查看详细的天气信息，请右击小程序，然后选择<guimenuitem>"预报"</guimenuitem>。此时，小程序会显示<guilabel>"预报"</guilabel>对话框。<guilabel>"预报"</guilabel>对话框包含以下默认的选项卡式部分：
+      <sect2 id="gweather-detailed"><title>查看详细的天气信息</title>
+         <para>要查看详细的天气信息，请右击该小程序，然后选择<guimenuitem>预报</guimenuitem>。此时，小程序会显示<guilabel>预报</guilabel>对话框。<guilabel>预报</guilabel>对话框包含以下默认的选项卡式部分：
          </para>
          <itemizedlist>
             <listitem>
-               <para>
-                  <guilabel>当前状况</guilabel>
+               <para><guilabel>当前天气状况</guilabel>
                </para>
             </listitem>
             <listitem>
-               <para>
-                  <guilabel>预报</guilabel>
+               <para><guilabel>预报</guilabel>
                </para>
             </listitem>
          </itemizedlist>
-         <sect3 id="gweather-current-conditions">
-            <title>当前天气状况</title>
-            <para>
-               <guilabel>"当前状况"</guilabel>选项卡式部分显示了以下信息：
+         <sect3 id="gweather-current-conditions"><title>当前天气状况</title>
+            <para><guilabel>当前天气状况</guilabel>选项卡式部分显示以下信息：
             </para>
             <informaltable>
                <tgroup cols="2">
-                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                   colwidth="1.19*"/>
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                    colwidth="1.19*"/>
                   <tbody>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              地点
+                           <para>城市
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              当前天气状况所在的地点。
+                           <para>当前天气状况所在的地点。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              更新
+                           <para>上次更新
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              天气状况上一次在气象服务器上更新的时间。
+                           <para>天气状况上一次在气象服务器上更新的时间。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              状况
+                           <para>天气状况
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              总体天气状况。
+                           <para>总体天气状况。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              天空                           </para>
+                           <para>天空                           </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              总体天空状况。
+                           <para>总体天空状况。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              温度
+                           <para>温度
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              当前温度。
+                           <para>当前温度。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              露点
+                           <para>露点
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              结露的温度。
+                           <para>结露的温度。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              湿度
+                           <para>湿度
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              大气中水分的百分比。
+                           <para>大气中水分的百分比。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              风
+                           <para>风
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              风向和风速。
+                           <para>风向和风速。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              气压
+                           <para>气压
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              以英寸汞柱为单位表示的气压。
+                           <para>以英寸汞柱为单位表示的气压。
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
-                           <para>
-                              能见度
+                           <para>能见度
                            </para>
                         </entry>
                         <entry colname="col2">
-                           <para>
-                              由阳光和大气条件决定的视力范围。
+                           <para>由阳光和大气条件决定的视力范围。
                            </para>
                         </entry>
                      </row>
@@ -440,100 +390,72 @@
                </tgroup>
             </informaltable>
          </sect3>
-         <sect3 id="gweather-forecast">
-            <title>预报</title>
-            <para>
-              <guilabel>"预报"</guilabel>选项卡式部分显示的是该地点未来几天，通常是今后五天的天气预报。
+         <sect3 id="gweather-forecast"><title>预报</title>
+            <para><guilabel>预报</guilabel>选项卡式部分显示的是该地点未来几天，通常是今后五天的天气预报。
             </para>
             <note>
-               <para>
-                  只为美国的部分地点提供了预报信息。
+               <para>只为美国的部分地点提供了预报信息。
                </para>
             </note>
          </sect3>
-         <sect3 id="gweather-radar-map">
-            <title>雷达图</title>
-            <para>
-               在默认情况下，<guilabel>"雷达图"</guilabel>选项卡式部分不会显示在<guilabel>"预报"</guilabel>对话框中。有关如何配置小程序以显示雷达图的更多信息，请参阅 <xref linkend="gweather-configure"/>。<application>&applet;</application>  可从 www.weather.com 下载雷达图。 如果无法从 www.weather.com 下载雷达图，小程序将会显示一个问号。要转至 www.weather.com Web 站点，请单击<guibutton>"访问 Weather.com"</guibutton>按钮。
+         <sect3 id="gweather-radar-map"><title>雷达图</title>
+            <para>在默认情况下，<guilabel>雷达图</guilabel>选项卡式部分不会显示在<guilabel>预报</guilabel>对话框中。有关如何配置该小程序以显示雷达图的更多信息，请参阅 <xref linkend="gweather-configure"/>。<application>&applet;</application>  可从 www.weather.com 下载雷达图。 如果无法从 www.weather.com 下载雷达图，小程序将会显示一个问号。要转至 www.weather.com Web 站点，请单击<guibutton>访问 Weather.com </guibutton>按钮。
             </para>
          </sect3>
       </sect2>
    </sect1>
    <!-- ============= Preferences ================================== -->
-   <sect1 id="gweather-settings">
-      <title>首选项</title>
+   <sect1 id="gweather-settings"><title>首选项</title>
       
-      <sect2 id="gweather-set-proxy">
-      <title>设置代理服务器</title>
+      <sect2 id="gweather-set-proxy"><title>设置代理服务器</title>
       <para>如果您的计算机位于防火墙后，则必须使用代理服务器才能成功运行 <application>&applet;</application>。
-      要将 GNOME 配置为使用代理服务器，请选择<menuchoice><guimenu>"应用程序"</guimenu><guisubmenu>"桌面首选项"</guisubmenu><guimenuitem>"网络代理"</guimenuitem></menuchoice>。</para>
+要配置 GNOME 使用代理服务器，请使用首选项工具指定用于互联网连接的网络代理服务器。
+     </para>
       </sect2>
       
-      <sect2 id="gweather-configure">
-      <title>配置 &applet;</title>
-      <para>
-         要配置 <application>&applet;</application>，请右击小程序，然后选择<guimenuitem>"首选项"</guimenuitem>。 <guilabel>"天气首选项"</guilabel>对话框包含以下选项卡式部分：
+      <sect2 id="gweather-configure"><title>配置 &applet;</title>
+      <para>要配置 <application>&applet;</application>，请右击该小程序，然后选择<guimenuitem>首选项</guimenuitem>。 <guilabel>天气首选项</guilabel>对话框包含以下选项卡式部分：
      </para>
       <itemizedlist>
          <listitem>
-            <para>
-               <link linkend="gweather-location">地点</link>
+            <para><link linkend="gweather-general">常规</link>
             </para>
          </listitem>
          <listitem>
-            <para>
-               <link linkend="gweather-general">常规</link>
+            <para><link linkend="gweather-location">地点</link>
             </para>
          </listitem>
       </itemizedlist>
             
       
-      <sect3 id="gweather-location">
-         <title>地点</title>
-         <para>
-            <guilabel>"地点"</guilabel>选项卡式部分使您能够选择要显示其当前天气和预测天气状况的地点。有关如何选择地点的信息，请参阅 <xref linkend="gweather-change-location"/>。
-         </para>
-      </sect3>
-      
-      <sect3 id="gweather-general">
-         <title>常规</title>
+      <sect3 id="gweather-general"><title>常规</title>
            <variablelist>
-               <varlistentry>
-                  <term><guilabel>每 xx 分钟自动更新</guilabel>
+               <varlistentry><term><guilabel>每 xx 分钟自动更新一次</guilabel>
                   </term>
                   <listitem>
-                     <para>
-                        选择此选项可使小程序定期地自动从气象服务器上检索更新的信息。使用此旋转框可以指定小程序从气象服务器检索更新信息的间隔分钟数。 
-                     </para>
-                     <para>
-                        默认值：选定，30 分钟。
+                     <para>选择此选项可使小程序定期地自动从气象服务器上检索更新的信息。使用旋转框可以指定小程序从气象服务器检索更新信息的间隔分钟数。 
                      </para>
                   </listitem>
                </varlistentry>
-               <varlistentry>
-                  <term><guilabel>使用公制系统单位</guilabel> </term>
+               <varlistentry><term><guilabel>使用公制单位</guilabel> </term>
                   <listitem>
-                     <para>
-                        选择此选项可以在小程序中使用摄氏度和公制度量单位，而不使用华氏度和英制度量单位。此选项对小程序中显示的度量单位的影响如下：
+                     <para>选择此选项可以在小程序中使用摄氏度和公制度量单位，而不使用华氏度和英制度量单位。此选项对小程序中显示的度量单位的影响如下：
                      </para>
                      <informaltable>
                         <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                            colname="col1"/><colspec colname="col2"/>
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                             colname="col1"/><colspec colname="col2"/>
                            <thead>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
-                                    <para>
-                                       以下两种情况时，显示的度量单位...
+                                    <para>在以下两种情况下显示的度量单位...
                                     </para>
                                  </entry>
                                  <entry colname="col1">
-                                    <para>
-                                       未选定<guilabel>"使用公制系统单位"</guilabel>选项
+                                    <para>未选定<guilabel>使用公制单位</guilabel>选项
                                     </para>
                                  </entry>
                                  <entry colname="col2">
-                                    <para>
-                                       选定<guilabel>"使用公制系统单位"</guilabel>选项
+                                    <para>选定了<guilabel>使用公制单位</guilabel>选项
                                     </para>
                                  </entry>
                               </row>
@@ -541,104 +463,85 @@
                            <tbody>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
-                                    <para>
-                                      温度和露点
+                                    <para> 温度和露点
                                     </para>
                                  </entry>
                                  <entry colname="col1">
-                                    <para>
-                                       华氏度
+                                    <para>华氏度
                                     </para>
                                  </entry>
                                  <entry colname="col2">
-                                    <para>
-                                       摄氏度
+                                    <para>摄氏度
                                     </para>
                                  </entry>
                               </row>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
-                                    <para>
-                                      风速
+                                    <para>风速
                                     </para>
                                  </entry>
                                  <entry colname="col1">
-                                    <para>
-                                       英里/小时 (mph)
+                                    <para>英里/小时 (mph)
                                     </para>
                                  </entry>
                                  <entry colname="col2">
-                                    <para>
-                                       公里/小时 (kph)
+                                    <para>公里/小时 (kph)
                                     </para>
                                  </entry>
                               </row>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
-                                    <para>
-                                       气压
+                                    <para>气压
                                     </para>
                                  </entry>
                                  <entry colname="col1">
-                                    <para>
-                                      英寸汞柱 (inHg)
+                                    <para>英寸汞柱 (inHg)
                                     </para>
                                  </entry>
                                  <entry colname="col2">
-                                    <para>
-                                       毫米汞柱 (mmHg)
+                                    <para>毫米汞柱 (mmHg)
                                     </para>
                                  </entry>
                               </row>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
-                                    <para>
-                                       能见度
+                                    <para>能见度
                                     </para>
                                  </entry>
                                  <entry colname="col1">
-                                    <para>
-                                       英里
+                                    <para>英里
                                     </para>
                                  </entry>
                                  <entry colname="col2">
-                                    <para>
-                                      公里
+                                    <para>公里
                                     </para>
                                  </entry>
                               </row>
                            </tbody>
                         </tgroup>
                      </informaltable>
-                     <para>
-                        默认值：未选中。
+                  </listitem>
+               </varlistentry>
+               <varlistentry> <term><guilabel>启用雷达图</guilabel> </term>
+                  <listitem>
+                     <para>选择此选项使小程序能够在<guilabel>预报</guilabel>对话框的<guilabel>雷达图</guilabel>选项卡式部分中显示雷达图。        
                      </para>
                   </listitem>
                </varlistentry>
-               <varlistentry>
-                  <term><guilabel>启用雷达图</guilabel> </term>
+               <varlistentry><term><guilabel>使用雷达图的定制地址</guilabel> </term>
                   <listitem>
-                     <para>
-                        选择此选项使小程序能够在<guilabel>"预报"</guilabel>对话框的<guilabel>"雷达图"</guilabel>选项卡式部分中显示雷达图。        
-                     </para>
-                     <para>
-                        默认值：未选中。
-                     </para>
-                  </listitem>
-               </varlistentry>
-               <varlistentry>
-                  <term><guilabel>对雷达图使用定制地址</guilabel> </term>
-                  <listitem>
-                     <para>
-                        在默认情况下，<application>&applet;</application> 会从 www.weather.com 下载雷达图。 选择此选项可以显示来自其它 Internet 地址的雷达图。在<guilabel>"地址"</guilabel>文本框中键入地址。
-                     </para>
-                     <para>
-                        默认值：未选中。
+                     <para>在默认情况下，<application>&applet;</application> 会从 www.weather.com 下载雷达图。 选择此选项可以显示来自其他 Internet 地址的雷达图。在<guilabel>地址</guilabel>文本框中键入地址。
                      </para>
                   </listitem>
                </varlistentry>
             </variablelist>
       </sect3>
+      
+      <sect3 id="gweather-location"><title>地点</title>
+         <para><guilabel>地点</guilabel>选项卡式部分使您能够选择要显示哪个地点的当前天气和预报天气状况。有关如何选择地点的信息，请参阅 <xref linkend="gweather-change-location"/>。
+         </para>
+      </sect3>
+
       </sect2>
    </sect1>
 </article>

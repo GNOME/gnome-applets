@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "Agosto 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.3.1">
+  <!ENTITY date "Dicembre 2003">
   <!ENTITY applet "Previsioni del tempo">
 ]>
 <!-- 
@@ -22,9 +22,12 @@
       <title>Manuale dell'applet &applet; V&manrevision;</title>	 
       <copyright>
 		<year>2003</year>
-		<holder>Sun GNOME Documentation Team</holder>    	 
+		<holder>Sun Microsystems</holder>    	 
       </copyright>
-        	 
+      <copyright>
+		<year>2002</year>
+		<holder>Sun Microsystems</holder>    	 
+      </copyright>
       <copyright>
 		<year>1999</year>  		
 		<year>2000</year>
@@ -58,7 +61,6 @@
 
             <affiliation>
 		<orgname>Sun Microsystems</orgname>  			 
-		<address><email>gdocteam@sun.com</email></address>		  
             </affiliation>
               		
         </author>
@@ -101,79 +103,63 @@
       </authorgroup>
       	 
       <revhistory>
-         		
-         <revision>
-              	<revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber>  		
-             	<date>&date;</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
-		</para>
-                 			 
-		<para role="publisher">
-                  GNOME Documentation Project
-                </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-         
-         <revision>
-              	<revnumber>Manuale dell'applet Previsioni del tempo V2.1</revnumber>  		
-             	<date>Luglio 2002</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
-		</para>
-                 			 
-		<para role="publisher">
-                  GNOME Documentation Project
-                </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-         
-         <revision>
-              	<revnumber>Manuale dell'applet Previsioni del tempo V2.0</revnumber>  		
-             	<date>Marzo 2002</date>  		  
-            	<revdescription>
-                 			 
-		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
-		</para>
-                 			 
-		<para role="publisher">
-                  GNOME Documentation Project
-                </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-           		
-         <revision>
-		<revnumber>Applet Previsioni del tempo GNOME</revnumber>  		  
-		<date>2000</date>
-             		  
-            <revdescription>
-                 			 
-               <para role="author">
-                  Spiros Papadimitriou 				
-		  <email>spapadim+@cs.cmu.edu</email>
-               </para>
-                 			 
-               <para role="author">
-                  Dan Mueth 				
-		  <email>d-mueth@uchicago.edu</email>
-               </para>
-               			 
-               <para role="publisher">
-                  GNOME Documentation Project
-               </para>
-                 		  
-            </revdescription>
-              		
-         </revision>
-           	 
+        <revision>
+          <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber>  		
+          <date>&date;</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manuale dell'applet Previsioni del tempo V2.3</revnumber>  		
+          <date>Gennaio 2003</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manuale dell'applet Previsioni del tempo V2.2</revnumber>  		
+          <date>Agosto 2002</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manuale dell'applet Previsioni del tempo V2.1</revnumber>  		
+          <date>Luglio 2002</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision>
+          <revnumber>Manuale dell'applet Previsioni del tempo V2.0</revnumber>  		
+          <date>Marzo 2002</date>  		  
+          <revdescription>
+	    <para role="author">Sun GNOME Documentation Team</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+          </revdescription>
+        </revision>
+        <revision>
+	  <revnumber>Applet Previsioni del tempo di GNOME</revnumber>  		  
+	  <date>2000</date>
+          <revdescription>
+            <para role="author">
+              Spiros Papadimitriou 				
+              <email>spapadim+@cs.cmu.edu</email>
+            </para>
+            <para role="author">
+              Dan Mueth 				
+	      <email>d-mueth@uchicago.edu</email>
+            </para>
+            <para role="publisher">
+              GNOME Documentation Project
+            </para>
+          </revdescription>
+        </revision>
       </revhistory>
         	 
       <releaseinfo>
@@ -196,15 +182,15 @@
    <sect1 id="gweather-introduction">      <title>Introduzione</title>
       <!-- ==== Figure ============================================= -->
       	 
-      <figure id="weather-applet-fig">
-	<title>Applet &applet;</title>		
+      <figure id="weather-applet-fig"> 
+		<title>Applet &applet;</title>		
          <screenshot>		  
             <mediaobject>			 
                <imageobject>
                   <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>Mostra l'applet Previsioni del tempo. Contiene un'icona che indica le condizioni del tempo e la temperatura corrente</phrase> 			 
+                  <phrase>Mostra l'applet Previsioni del tempo. Contiene l'icona del tempo e la temperatura attuale</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
@@ -212,19 +198,12 @@
        
       <!-- ==== End of Figure ======================================= -->
       <para>
-         L'applet <application>&applet;</application> scarica informazioni meteorologiche dai server del National Weather Service (NWS) statunitense, che includono la rete IWIN (Interactive
-         Weather Information Network). L'applet <application>&applet;</application> permette di visualizzare sul computer le informazioni correnti sul meteo e le previsioni per le ore successive. 
+         L'applet <application>&applet;</application> scarica le informazioni meteorologiche dai server del National Weather Service (NWS) statunitense, che includono la rete IWIN (Interactive
+         Weather Information Network). L'applet <application>&applet;</application> permette di visualizzare sul computer le informazioni meteorologiche aggiornate e le previsioni per le ore successive. 
       </para>
-      <para>
-         Per aggiungere <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere
-<menuchoice>
-            <guimenu>Aggiungi al pannello</guimenu> 
-            <guisubmenu>Accessori</guisubmenu> 
-            <guimenuitem>&applet;</guimenuitem>
-         </menuchoice>.</para>
       <note id="proxies-note-1">
          <para>
-            Se il computer &egrave; protetto da un firewall, per accedere ai server del servizio meteo &egrave; necessario utilizzare un server proxy. Per maggiori informazioni sulla configurazione di un server proxy, vedere <xref linkend="gweather-set-proxy"/>.        
+            Se il computer &egrave; protetto da un firewall, per accedere ai server del servizio meteorologico &egrave; necessario utilizzare un server proxy. Per maggiori informazioni sulla configurazione di un server proxy, vedere <xref linkend="gweather-set-proxy"/>.        
          </para>
       </note>
       <para>
@@ -233,24 +212,48 @@
       <itemizedlist>
          <listitem>
             <para>
-               Un'icona che rappresenta le condizioni generali del tempo. Ad esempio, l'icona del sole indica condizioni di cielo sereno. Per visualizzare una descrizione delle condizioni meteo generali, spostare il puntatore sull'applet per visualizzare la descrizione.
+               Un'icona che rappresenta le condizioni generali del tempo. Ad esempio, l'icona con il sole indica condizioni di cielo sereno. Per visualizzare una descrizione delle condizioni meteorologiche generali, spostare il puntatore sull'applet per visualizzare la descrizione.
             </para>
          </listitem>
          <listitem>
             <para>
-               La temperatura corrente.
+               La temperatura attuale.
             </para>
          </listitem>
       </itemizedlist>
+
+    <sect2 id="gweather-introduction-add">
+      <title>Aggiungere le &applet; a un pannello</title>
+      <para>
+        Per aggiungere l'applet &applet; a un pannello, procedere come segue:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Fare clic con il pulsante destro del mouse sul pannello.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Scegliere <menuchoice>
+              <guimenu>Aggiungi al pannello</guimenu>
+              <guisubmenu>Accessori</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
       
    </sect1>
    <!-- ============= Usage ===================================== -->
    <sect1 id="gweather-usage">  
      <title>Utilizzo</title>
       <sect2 id="gweather-change-location">
-         <title>Visualizzare le condizioni meteo per una regione specifica</title>
+         <title>Visualizzare le condizioni meteorologiche per una regione specifica</title>
          <para>
-            Quando si aggiunge per la prima volta l'applet <application>&applet;</application> a un pannello, vengono visualizzate le previsioni meteo per Pittsburg, in Pennsylvania. Per visualizzare le condizioni meteo di un'altra regione, procedere come segue:
+            Quando si aggiunge per la prima volta l'applet <application>&applet;</application> a un pannello, vengono visualizzate le previsioni del tempo relative alla citt&agrave; di Pittsburg, in Pennsylvania. Per visualizzare le condizioni meteorologiche di un'altra regione, procedere come segue:
          </para>
          <orderedlist>
             <listitem>
@@ -260,47 +263,52 @@
             </listitem>
             <listitem>
                <para>
-                  Selezionare <guimenuitem>Preferenze</guimenuitem> dal menu popup
-                  dell'applet. Viene aperta la finestra di dialogo <guilabel>Propriet&agrave; GNOME Meteo</guilabel>.
-                  La scheda <guilabel>Localit&agrave;</guilabel> contiene un elenco di regioni geografiche, distretti e localit&agrave; specifiche.
+                  Scegliere <guimenuitem>Preferenze</guimenuitem> dal menu popup
+                  dell'applet. Viene aperta la finestra di dialogo <guilabel>Propriet&agrave; del Meteo di GNOME</guilabel>.
                </para>
             </listitem>
             <listitem>
                <para>
-                  Per visualizzare i distretti di una regione, fare clic sulla freccia posta accanto al nome.
+                  Selezionare la scheda <guilabel>Localit&agrave;</guilabel>.
+                  Questa scheda contiene un elenco di aree geografiche, stati e localit&agrave; specifiche.
                </para>
             </listitem>
             <listitem>
                <para>
-                  Facendo clic sulla freccia vicino al nome di un distretto vengono visualizzate le singole localit&agrave; all'interno di quel territorio.
+                  Per visualizzare gli stati inclusi in un'area geografica, fare clic sulla freccia posta accanto al nome.
                </para>
             </listitem>
             <listitem>
                <para>
-                  Fare clic sulla localit&agrave; di interesse. Mentre vengono richiamate le informazioni meteo relative alla localit&agrave; selezionata, puntando sull'applet compare l'indicazione "sto aggiornando".
+                  Facendo clic sulla freccia posta accanto al nome di uno stato vengono visualizzate le singole localit&agrave; all'interno di quello stato.
                </para>
             </listitem>
             <listitem>
                <para>
-                  Fare clic su <guibutton>Chiudi</guibutton> per chiudere la finestra di dialogo <guilabel>Propriet&agrave; GNOME Meteo</guilabel>.
+                  Fare clic sulla localit&agrave; di interesse. Mentre vengono richiamate le informazioni meteorologiche relative alla localit&agrave; selezionata,spostando il puntatore sull'applet compare l'indicazione "Aggiornamento in corso".
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  Fare clic su <guibutton>Chiudi</guibutton> per chiudere la finestra di dialogo <guilabel>Propriet&agrave; del Meteo di GNOME</guilabel>.
                </para>
             </listitem>
          </orderedlist>
       </sect2>
       <sect2 id="gweather-update">
-         <title>Aggiornare le informazioni meteo</title>
+         <title>Aggiornare le informazioni meteorologiche</title>
          <para>
-            Per aggiornare le informazioni meteo visualizzate nel pannello,
+            Per aggiornare le informazioni meteorologiche visualizzate nel pannello,
             fare clic sull'applet con il pulsante destro del mouse e scegliere <guimenuitem>Aggiorna</guimenuitem>.
          </para>
          <para>
-            &Egrave; anche possibile configurare l'applet in modo che aggiorni automaticamente le informazioni meteo ad intervalli regolari. Per maggiori informazioni sulla configurazione dell'applet, vedere <xref linkend="gweather-configure"/>. 
+            &Egrave; anche possibile configurare l'applet in modo che aggiorni automaticamente le informazioni meteorologiche ad intervalli regolari. Per maggiori informazioni sulla configurazione dell'applet, vedere <xref linkend="gweather-configure"/>. 
          </para>
       </sect2>
       <sect2 id="gweather-detailed">
-         <title>Visualizzare informazioni meteo dettagliate</title>
+         <title>Visualizzare informazioni meteorologiche dettagliate</title>
          <para>
-            Per visualizzare informazioni dettagliate sulle condizioni meteo, fare clic sull'applet con il pulsante destro del mouse e scegliere <guimenuitem>Previsione</guimenuitem>. Viene aperta la finestra di dialogo <guilabel>Previsione</guilabel>. Questa finestra contiene le seguenti schede predefinite:
+            Per visualizzare informazioni dettagliate sulle condizioni meteorologiche, fare clic sull'applet con il pulsante destro del mouse e scegliere <guimenuitem>Previsione</guimenuitem>. Viene aperta la finestra di dialogo <guilabel>Previsione</guilabel>. Questa finestra contiene le seguenti schede predefinite:
          </para>
          <itemizedlist>
             <listitem>
@@ -321,29 +329,29 @@
             </para>
             <informaltable>
                <tgroup cols="2">
-                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                   colwidth="1.19*"/>
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                    colwidth="1.19*"/>
                   <tbody>
                      <row valign="top">
                         <entry colname="col1">
                            <para>
-                              Localit&agrave;
+                              Citt&agrave;
                            </para>
                         </entry>
                         <entry colname="col2">
                            <para>
-                              La localit&agrave; a cui si riferiscono le condizioni meteo visualizzate.
+                              La localit&agrave; a cui si riferiscono le condizioni meteorologiche visualizzate.
                            </para>
                         </entry>
                      </row>
                      <row valign="top">
                         <entry colname="col1">
                            <para>
-                              Aggiorna
+                              Ultimo aggiornamento
                            </para>
                         </entry>
                         <entry colname="col2">
                            <para>
-                              L'ora dell'ultima rilevazione delle condizioni meteo sul server.
+                              L'ora dell'ultima rilevazione delle condizioni meteorologiche sul server.
                            </para>
                         </entry>
                      </row>
@@ -379,7 +387,7 @@ Cielo
                         </entry>
                         <entry colname="col2">
                            <para>
-                              La temperatura corrente.
+                              La temperatura attuale.
                            </para>
                         </entry>
                      </row>
@@ -450,7 +458,7 @@ Cielo
          <sect3 id="gweather-forecast">
             <title>Previsione</title>
             <para>
-               La scheda <guilabel>Previsione</guilabel> contiene le previsioni meteo relative alla localit&agrave; selezionata per i giorni successivi, solitamente per cinque giorni. 
+               La scheda <guilabel>Previsione</guilabel> contiene le previsioni meteorologiche relative alla localit&agrave; selezionata per i giorni successivi, solitamente per cinque giorni. 
             </para>
             <note>
                <para>
@@ -474,38 +482,27 @@ Cielo
       <sect2 id="gweather-set-proxy">
       <title>Impostare un server proxy</title>
       <para>Se il computer &egrave; protetto da un firewall, per eseguire l'applet <application>&applet;</application> &egrave; necessario usare un server proxy. 
-      Per configurare GNOME per l'uso di un server proxy, scegliere <menuchoice>
-      <guimenu>Programmi</guimenu>
-      <guisubmenu>Preferenze del desktop</guisubmenu> 
-      <guimenuitem>Proxy di rete</guimenuitem>
-      </menuchoice>.</para>
+Per configurare GNOME per l'uso di un server proxy, aprire la finestra di preferenze e specificare il proxy di rete da utilizzare per le connessioni a Internet.
+      </para>
       </sect2>
       
       <sect2 id="gweather-configure">
       <title>Configurare l'applet &applet;</title>
-      <para>
-         Per configurare <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. La finestra di dialogo <guilabel>Propriet&agrave; GNOME Meteo</guilabel> contiene le seguenti schede:
+      <para>Per configurare l'applet <application>&applet;</application>, farvi clic con il pulsante destro del mouse e scegliere <guimenuitem>Preferenze</guimenuitem>. La finestra di dialogo <guilabel>Propriet&agrave; del Meteo di GNOME</guilabel> contiene le seguenti schede:
       </para>
       <itemizedlist>
-         <listitem>
-            <para>
-               <link linkend="gweather-location">Localit&agrave;</link>
-            </para>
-         </listitem>
          <listitem>
             <para>
                <link linkend="gweather-general">Generali</link>
             </para>
          </listitem>
+         <listitem>
+            <para>
+               <link linkend="gweather-location">Localit&agrave;</link>
+            </para>
+         </listitem>
       </itemizedlist>
             
-      
-      <sect3 id="gweather-location">
-         <title>Localit&agrave;</title>
-         <para>
-            La scheda <guilabel>Localit&agrave;</guilabel> permette di selezionare la localit&agrave; per la quale si desidera visualizzare le condizioni e le previsioni meteo. Per informazioni sulla scelta della localit&agrave;, vedere <xref linkend="gweather-change-location"/>.
-         </para>
-      </sect3>
       
       <sect3 id="gweather-general">
          <title>Generali</title>
@@ -515,10 +512,7 @@ Cielo
                   </term>
                   <listitem>
                      <para>
-                        Questa opzione abilita l'applet a rilevare automaticamente le informazioni aggiornate dal server del servizio meteo ad intervalli regolari. La casella di selezione permette di specificare i minuti di intervallo con cui dovranno essere richiamate le informazioni aggiornate dal server. 
-                     </para>
-                     <para>
-                  Impostazione predefinita: l'intervallo predefinito &egrave; di 30 minuti.
+                        Questa opzione abilita l'applet a rilevare automaticamente le informazioni aggiornate dal server del servizio meteorologico ad intervalli regolari. La casella di selezione permette di specificare la frequenza con cui dovranno essere richiamate le informazioni aggiornate dal server. 
                      </para>
                   </listitem>
                </varlistentry>
@@ -530,7 +524,7 @@ Cielo
                      </para>
                      <informaltable>
                         <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                            colname="col1"/><colspec colname="col2"/>
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                             colname="col1"/><colspec colname="col2"/>
                            <thead>
                               <row valign="top">
                                  <entry colname="COLSPEC0">
@@ -621,35 +615,34 @@ Cielo
                            </tbody>
                         </tgroup>
                      </informaltable>
-                     <para>
-                  Impostazione predefinita: non selezionato.
-                     </para>
                   </listitem>
                </varlistentry>
                <varlistentry>
                   <term><guilabel>Abilita le mappe radar</guilabel> </term>
                   <listitem>
                      <para>
-                        Questa opzione abilita l'applet a visualizzare le mappe radar in un'apposita scheda <guilabel>Mappa radar</guilabel> nella finestra di dialogo <guilabel>Previsione</guilabel>.                   
-                     </para>
-                     <para>
-                  Impostazione predefinita: non selezionato.
+                        Questa opzione abilita la visualizzazione delle mappe radar in un'apposita scheda <guilabel>Mappa radar</guilabel> della finestra di dialogo <guilabel>Previsione</guilabel>.                   
                      </para>
                   </listitem>
                </varlistentry>
                <varlistentry>
-                  <term><guilabel>Usa un indirizzo scelto per le mappe radar</guilabel> </term>
+                  <term><guilabel>Usa indirizzo personalizzato per le mappe radar</guilabel> </term>
                   <listitem>
                      <para>
-                        Nella configurazione predefinita, l'applet <application>&applet;</application> scarica le mappe radar dal www.weather.com. Selezionare questa opzione per visualizzare le mappe radar da un indirizzo Internet alternativo. Digitare l'indirizzo nella casella di testo <guilabel>Indirizzo</guilabel>.
-                     </para>
-                     <para>
-                  Impostazione predefinita: non selezionato.
+                        Nella configurazione predefinita, l'applet <application>&applet;</application> scarica le mappe radar dal sito www.weather.com. Selezionare questa opzione per prelevare le mappe radar da un indirizzo Internet alternativo. Digitare l'indirizzo nella casella di testo <guilabel>Indirizzo</guilabel>.
                      </para>
                   </listitem>
                </varlistentry>
             </variablelist>
       </sect3>
+      
+      <sect3 id="gweather-location">
+         <title>Localit&agrave;</title>
+         <para>
+            La scheda <guilabel>Localit&agrave;</guilabel> permette di selezionare la localit&agrave; per la quale si desidera visualizzare le condizioni e le previsioni meteorologiche. Per informazioni sulla scelta della localit&agrave;, vedere <xref linkend="gweather-change-location"/>.
+         </para>
+      </sect3>
+
       </sect2>
    </sect1>
 </article>
