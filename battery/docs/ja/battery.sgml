@@ -1,0 +1,791 @@
+  <!-- ###############   Battery Charge Monitor   ############### -->
+  <sect1 id="Battery-Charge-Monitor">
+<!--
+   <title>Battery Charge Monitor Applet</title>
+-->
+   <title>バッテリ充電モニタアプレット</title>
+
+   <para> 
+<!--
+    <application>Battery Charge Monitor</application> applet, shown in <link
+    linkend="Battery-Charge-Monitor-fig1">Figure 1</link>, displays the 
+    charge status of your portable computer battery. To learn how to
+    add this applet to a <interface>Panel</interface>, 
+    right-click on the <interface>Panel</interface> and choose
+-->
+    <link linkend="Battery-Charge-Monitor-fig1">Figure 1</link>のような外観を持つ<application>バッテリ充電モニタ</application>アプレットは、あなたのラップトップPCの充電状況を表示します。このアプレットをパネルに追加するには、パネルを右クリックして、
+
+    <menuchoice>
+<!--
+      <guimenu>Panel</guimenu>
+      <guisubmenu>Add to panel</guisubmenu>
+      <guisubmenu>Applet</guisubmenu>
+      <guisubmenu>Monitors</guisubmenu>
+      <guimenuitem>Battery Charge Monitor</guimenuitem>
+-->
+      <guimenu>パネル</guimenu>
+      <guisubmenu>パネルに追加</guisubmenu>
+      <guisubmenu>アプレット</guisubmenu>
+      <guisubmenu>モニタ</guisubmenu>
+      <guimenuitem>バッテリ充電モニタ</guimenuitem>
+    </menuchoice>
+    と選択します。
+  </para>
+  
+   <note>
+    <para>
+<!--
+     In order for <application>Battery Charge
+     Monitor</application> to function correctly, your computer must
+     have been configured to support <systemitem>Advanced Power
+     Management</systemitem>.
+-->
+     <application>バッテリ充電モニタ</application>を正しく動作させるためには、あなたのコンピュータが<systemitem>アドバンストパワーマネジメント(APM)</systemitem>をサポートするよう設定されていなければなりません。
+    </para>
+   </note>
+
+   <figure id="Battery-Charge-Monitor-fig1">
+<!--
+    <title>Battery Charge Monitor</title>
+-->
+    <title>バッテリ充電モニタ</title>
+    <screenshot>
+<!--
+     <screeninfo>Battery Charge Monitor</screeninfo>
+-->
+     <screeninfo>バッテリ充電モニタ</screeninfo>
+     <graphic format="png" fileref="figures/battery-applet-ac-offline-25-20"
+	      srccredit="James Cope">
+    </graphic>
+    </screenshot>
+   </figure>
+
+   <sect2 id="Battery-Charge-Monitor-usage">
+<!--
+    <title>Usage</title>
+-->
+    <title>使い方</title>
+    <para>
+<!--
+     <application>Battery Charge Monitor</application> just sits in
+     your panel monitoring the status of your computer battery. By
+     <mousebutton>left</mousebutton>-clicking on the applet you can
+     toggle the view between Readout View and Graph View described in the 
+     <link linkend="Battery-Charge-Monitor-Readout-sec">Readout View</link> 
+     and <link linkend="Battery-Charge-Monitor-Graph-sec">Graph View</link> 
+     sections respectively.
+-->
+     <application>バッテリ充電モニタ</application>は、パネル上であなたのコンピュータのバッテリの状態をモニタします。アプレットを<mousebutton>左</mousebutton>クリックすると、読み出し表示とグラフ表示の切り替えができます。それぞれは<link linkend="Battery-Charge-Monitor-Readout-sec">読み出し表示</link>セクションと<link linkend="Battery-Charge-Monitor-Graph-sec">グラフ表示</link>セクションで解説されています。
+    </para>
+
+    <sect3 id="Battery-Charge-Monitor-Readout-sec">
+<!--
+     <title>Readout View</title>
+-->
+     <title>読み出し表示</title>
+     <para>
+<!--
+      Readout View, the default mode of view, displays the current
+      battery status in an iconic and textual format. In this mode
+      <application>Battery Charge Monitor</application> displays
+      the following information:
+-->
+      デフォルトのモードである読み出し表示は、現在のバッテリの状態をアイコンとテキストで表示します。この表示では以下の情報を表示します：
+     </para>
+
+     <variablelist>
+      <varlistentry>
+<!--
+       <term><emphasis>Battery Icon</emphasis></term>
+-->
+       <term><emphasis>バッテリアイコン</emphasis></term>
+       <listitem>
+	<para>
+<!--
+         The iconic representation of a battery on the left of the
+         applet, shows how fully charged your battery is
+         currently. The coloured area of the battery represents the
+         ammount of charge left in your battery, with the top of the
+         battery representing 100&percnt; charged.
+-->
+         アプレットの左側にあるバッテリのアイコンは、現在のバッテリがどの程度充電されているのが表示します。バッテリの着色されている部分がバッテリの残量を示します。一番上まで着色されているのが、100&percnt;充電されていることを示します。
+	</para>
+	
+	<para>
+<!--
+	 The colour of the battery changes when the charge drops below
+         the current <guilabel>Low Charge Threshold</guilabel> (see
+         <link linkend="Battery-Charge-Monitor-properties-general">Properties &mdash; 
+	 General</link>). The default colour of the battery is green in a normal state and
+         red when it drops below the <guilabel>Low Charge Threshold</guilabel>.
+-->
+         バッテリの残量が<guilabel>低蓄電とする闘値</guilabel>(<link linkend="Battery-Charge-Monitor-properties-general">設定 &mdash; 一般タブ</link>参照)を下回るとバッテリアイコンの色が変化します。通常の状態でのデフォルトの色は緑ですが、<guilabel>低蓄電とする闘値</guilabel>を下回ると赤になります。
+        </para>
+
+	<para>
+<!--
+         When your computer is attached to the power supply, a
+         small lightning bolt appears on the battery representation to
+         indicate that the battery is attached to the power supply
+         and is in a charging state. An example of this is shown in
+         <link linkend="Battery-Charge-Monitor-fig2">Figure 2</link>. 
+	 You can also configure the battery to change colour when it is or isn't
+         connected to the power supply, see
+         <link linkend="Battery-Charge-Monitor-properties-readout">
+	 Properties &mdash; Readout</link> for further details on this feature.
+-->
+         コンピュータを電源と接続すると小さなイナズマがバッテリアイコンに表示され、バッテリが電源に接続され充電中であることを示します。<link linkend="Battery-Charge-Monitor-fig2">Figure 2</link>にこの例を示します。また、電源に接続したり切断したりしたときに色を変化させるように設定することもできます。この機能の詳細は、<link linkend="Battery-Charge-Monitor-properties-readout">設定 &mdash; 読み出し</link>を参照してください。
+        </para>
+      
+	<figure id="Battery-Charge-Monitor-fig2">
+<!--
+         <title>Battery Charge Monitor with the power supply connected</title>
+-->
+         <title>バッテリ充電モニタ 電源接続時</title>
+         <screenshot>
+<!--
+	  <screeninfo>Battery Charge Monitor</screeninfo>
+-->
+          <screeninfo>バッテリ充電モニタ 電源接続時</screeninfo>
+	  <graphic format="png" 
+		   fileref="figures/battery-applet-ac-online-25-20"
+		   srccredit="James Cope">
+          </graphic>
+         </screenshot>
+	</figure>
+
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+<!--
+       <term><emphasis>Percentage Remaining</emphasis></term>
+-->
+       <term><emphasis>残量のパーセンテージ</emphasis></term>
+       <listitem>
+	<para>
+<!--
+         The percentage readout on the top right of the applet
+         represents how fully charged your computer battery is currently.
+-->
+         アプレットの右上に表示されているパーセンテージは、現在のバッテリの残量です。
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+<!--
+       <term><emphasis>Time Remaining</emphasis></term>
+-->
+       <term><emphasis>残り時間</emphasis></term>
+       <listitem>
+       <para>
+<!--
+        The time remaining readout on the bottom right of the applet
+        shows how much running time the battery has left. The time is
+        shown in hours and minutes.
+-->
+        アプレットの右下に表示されている残り時間は、バッテリに残された駆動時間を表示します。これは時間と分で表示されます。
+       </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </sect3>
+    
+    <sect3 id="Battery-Charge-Monitor-Graph-sec">
+<!--
+     <title>Graph View</title>
+-->
+     <title>グラフ表示</title>
+     <para>
+<!--
+      Graph View displays the percentage of charge remaining in your
+      battery as a moving graph. The horizontal axis represents time
+      and the vertical axis represents charge percentage with 100&percnt;
+      charged being the top of the graph. By default the graph is
+      green when your computer is connected to the power supply and
+      blue when it isn't. The graph also changes colour when the
+      charge drops below the <guilabel>Low Charge Threshold</guilabel>
+      (see <link linkend="Battery-Charge-Monitor-properties-general">
+      Properties &mdash; General</link>) the default colour in this case is red.
+-->
+      グラフ表示では、動くグラフとしてバッテリの残量のパーセンテージを表示します。水平方向の軸は時間を表し、垂直方向の軸は充電量を、頂上が100&percnt;であるように表します。デフォルトでは、コンピュータが電源に接続されているときは緑、接続されていないときは青で表示されるようになっています。また、バッテリの残量が<guilabel>低蓄電とする闘値</guilabel>(<link linkend="Battery-Charge-Monitor-properties-general">設定 &mdash; 一般タブ</link>参照)を下回ったときのデフォルトの色は赤になっています。
+     </para>
+
+     <figure>
+<!--
+      <title>Battery Charge Monitor in Graph View</title>
+-->
+      <title>バッテリ充電モニタ グラフ表示</title>
+       <screenshot>
+<!--
+        <screeninfo>Battery Charge Monitor in Graph View</screeninfo>
+-->
+        <screeninfo>バッテリ充電モニタ グラフ表示</screeninfo>
+        <graphic format="png"
+		 fileref="figures/battery-applet-graph"
+		 srccredit="James Cope">
+        </graphic>
+       </screenshot>
+      </figure>
+    </sect3>
+   </sect2>
+
+   <sect2 id="Battery-Charge-Monitor-right-click">
+<!--
+    <title>Right-Click Pop-Up Menu Items</title>
+-->
+    <title>ポップアップメニュー</title>
+    <para> 
+<!--
+     In addition to the standard menu items, the right-click pop-up menu has 
+     the following item: 
+-->
+     一般的なメニュー項目に加えて、右クリックで表示されるポップアップメニューには次の項目があります：
+     <itemizedlist> 	
+      <listitem>
+       <para>
+<!--
+        <guimenuitem>Properties...</guimenuitem> &mdash; This menu
+        item opens the <interface>Properties</interface> dialog (see
+        <link linkend="Battery-Charge-Monitor-properties">Properties</link>) 
+	which allows you to customize the appearance and behavior of this applet.
+-->
+        <guimenuitem>設定...</guimenuitem> &mdash;
+        <interface>設定</interface>ダイアログ(<link linkend="Battery-Charge-Monitor-properties">設定</link>参照)が表示され、アプレットの外観や動作をカスタマイズすることができます。
+       </para>
+      </listitem>
+     </itemizedlist>
+    </para>
+   </sect2>
+
+   <sect2 id="Battery-Charge-Monitor-properties">
+<!--
+    <title>Properties</title>
+-->
+    <title>設定</title>
+    <para>
+<!--
+     You can configure <application>Battery Charge
+     Monitor</application> applet by right-clicking on the applet and
+     choosing the <guimenuitem>Properties...</guimenuitem> menu
+     item. This will open the <interface>Properties</interface>
+     dialog, with four groups of configurable items arranged in the
+     following tabbed pages:
+     <link
+     linkend="Battery-Charge-Monitor-properties-general">General</link>,
+     <link
+     linkend="Battery-Charge-Monitor-properties-readout">Readout</link>,
+     <link
+     linkend="Battery-Charge-Monitor-properties-graph">Graph</link> and
+      <link linkend="Battery-Charge-Monitor-properties-messages">Battery
+    Charge Messages</link>.
+-->
+     <application>バッテリ充電モニタ</application>アプレットをカスタマイズするには、アプレットを右クリックして<guimenuitem>設定&hellip;</guimenuitem>メニュー項目を選択します。次のタブを持った四つのグループがある<interface>設定</interface>ダイアログが表示されます：<link linkend="Battery-Charge-Monitor-properties-general">一般</link>、<link linkend="Battery-Charge-Monitor-properties-readout">読み出し</link>、<link linkend="Battery-Charge-Monitor-properties-graph">グラフ</link>、<link linkend="Battery-Charge-Monitor-properties-messages">充電容量のメッセージ</link>。
+    </para>
+
+    <sect3 id="Battery-Charge-Monitor-properties-general">
+<!--
+     <title>Properties &mdash; General</title>
+-->
+     <title>設定 &mdash; 一般</title>
+    
+     <figure id="Battery-Charge-Monitor-properties-fig1">
+<!--
+      <title>Properties Dialogue &mdash; General</title>
+-->
+      <title>設定ダイアログ &mdash; 一般タブ</title>
+      <screenshot>
+<!--
+       <screeninfo>Properties Dialogue &mdash; General</screeninfo> 
+-->
+       <screeninfo>設定ダイアログ &mdash; 一般タブ</screeninfo> 
+       <graphic format="png" 
+		fileref="figures/battery-applet-properties-general"
+<!--
+		srccredit="James Cope">
+-->
+                srccredit="KAMAGASAKO Masatoshi">
+        </graphic>
+      </screenshot>
+     </figure>
+
+     <itemizedlist>
+      <listitem>
+       <para>
+<!--
+        <guilabel>Follow Panel Size</guilabel> &mdash; instructs
+	<application>Battery Charge Monitor</application> to resize
+	when the panel changes size. It is checked on by default. In
+	order for <guilabel>Applet Height</guilabel> and
+	<guilabel>Applet Width</guilabel> settings to take affect, it
+	must be unchecked.
+-->
+        <guilabel>パネルの大きさに合わせる</guilabel> &mdash;
+        パネルのサイズが変更された場合、それに合わせてサイズを変更します。デフォルトでは有効になっています。<guilabel>アプレットの高さ</guilabel>と<guilabel>アプレットの幅</guilabel>の設定を有効にするには、この設定は無効になっていなければなりません。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Applet Height &amp; Applet Width</guilabel> &mdash;
+	these two spin buttons allow you to specify the dimensions
+	of <application>Battery Charge Monitor</application> exactly
+	in pixels. In order for these settings to take affect,
+	<guilabel>Follow Panel Size</guilabel> must be unchecked. The
+	default values are both set to 48.
+-->
+	<guilabel>アプレットの高さ &amp; アプレットの幅</guilabel> &mdash;
+        <application>バッテリ充電モニタ</application>のサイズをピクセル単位で正確に指定できます。この設定を有効にするには<guilabel>パネルの大きさに合わせる</guilabel>が無効になっていなければなりません。デフォルトではともに48ピクセルに設定されています。
+       </para>
+
+       <note>
+	<para>
+<!--
+	 Setting these values very small (below 28 pixels)
+	 results in the battery icon not being displayed due to lack
+	 of space.
+-->
+         この設定を非常に小さく(28ピクセル以下)に設定すると、スペースがないためにバッテリアイコンが表示されなくなります。
+        </para>
+       </note>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Update Interval</guilabel> &mdash; specifies in
+	seconds how often <application>Battery Charge
+	Monitor</application> refreshes the battery charge
+	information it displays. The default setting is two seconds.
+-->
+	<guilabel>更新間隔</guilabel> &mdash;
+        表示するバッテリ情報を更新する間隔を秒数で指定します。デフォルトの設定は2秒です。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Low Charge Threshold</guilabel> &mdash; is a
+	percentage value of the battery charge that
+	<application>Battery Charge Monitor</application> uses to
+	optionally display a warning, it then considers the battery to
+	have little power remaining. For example this information is
+	used to decide when to change the colour of the battery icon in
+	Readout View. The default value is 25.
+-->
+	<guilabel>低蓄電とする闘値</guilabel> &mdash;
+        <application>バッテリ充電モニタ</application>がオプションとして警告を表示し、バッテリには残量がほとんどないとみなすバッテリ残量のパーセンテージです。例えば、この設定は読み出し表示でバッテリアイコンの色を変化させる基準になります。デフォルト値は25パーセントです。
+       </para>
+      </listitem>
+
+      <listitem>	 
+       <para>
+<!--
+	<guilabel>Applet Mode</guilabel> &mdash; the two
+	<guibutton>Readout</guibutton> and
+	<guibutton>Graph</guibutton> checkboxes are another way of
+	toggling between <link linkend="Battery-Charge-Monitor-Readout-sec">
+	Readout View</link> and <link linkend="Battery-Charge-Monitor-Graph-sec">
+	Graph View</link>.
+-->
+	<guilabel>アプレットのモード</guilabel> &mdash;
+        <link linkend="Battery-Charge-Monitor-Readout-sec">読み出し</link>表示と<link linkend="Battery-Charge-Monitor-Graph-sec">グラフ</link>表示を切り替えるための、もう一つの手段です。
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-readout">
+<!--
+     <title>Properties &mdash; Readout</title>
+-->
+     <title>設定 &mdash; 読み出し</title>
+     
+     <para>
+<!--
+      The settings on this tab only affect <application>Battery Charge
+      Monitor</application> when it is in <link linkend="Battery-Charge-Monitor-Readout-sec">
+      Readout View</link>.
+-->
+      このタブでの設定は、<application>バッテリ充電モニタ</application>の<link linkend="Battery-Charge-Monitor-Readout-sec">読み出し表示</link>だけに影響します。
+     </para>
+
+     <para> 
+<!--
+      All of the coloured rectangles on this tab can be
+      <mousebutton>left</mousebutton> clicked on to display the GNOME
+      colour wheel. This enables you to choose colours that you may
+      prefer more than the defaults.
+-->
+      色の表示されている四角をマウスの<mousebutton>左</mousebutton>ボタンでクリックすると、GNOMEカラーホイールが表示されます。デフォルトより好みの色を選択することができます。
+     </para>
+
+     <figure id="Battery-Charge-Monitor-properties-fig2">
+<!--
+      <title>Properties Dialogue &mdash; Readout</title>
+-->
+      <title>設定ダイアログ &mdash; 読み出しタブ</title>
+      <screenshot>
+<!--
+       <screeninfo>Properties Dialogue &mdash; Readout</screeninfo>
+-->
+       <screeninfo>設定ダイアログ &mdash; 読み出しタブ</screeninfo>
+       <graphic format="png"
+		fileref="figures/battery-applet-properties-readout"
+<!--
+                srccredit="James Cope">
+-->
+                srccredit="KAMAGASAKO Masatoshi">
+       </graphic>
+      </screenshot>
+     </figure>
+	
+     <itemizedlist>
+      <listitem>
+       <para>
+<!--
+	<guilabel>AC-On Battery Color</guilabel> &mdash; specifies the
+	colour of the battery icon in Readout view when your computer
+	is connected to the AC power supply. The default colour is
+	green.
+-->
+	<guilabel>電源オン時のバッテリの色</guilabel> &mdash;
+        AC電源にコンピュータが接続されているときの、読み出し表示におけるバッテリアイコンの色を指定します。デフォルトの色は緑です。
+       </para>
+      </listitem> 
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>AC-Off Battery Color</guilabel> &mdash; specifies
+	the colour of the battery icon in Readout View when your
+	computer is not connected to the AC power supply. The default
+	colour is green.
+-->
+	<guilabel>電源オフ時のバッテリの色</guilabel> &mdash;
+        AC電源にコンピュータが接続されていないときの、読み出し表示におけるバッテリアイコンの色を指定します。デフォルトの色は緑です。
+       </para>
+      </listitem>
+
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Low Battery Color</guilabel> &mdash; specifies the
+	colour of the battery icon in Readout View when the charge
+	percentage rate drops below the <guilabel>Low Charge
+	Threshold</guilabel> (see <link
+ linkend="Battery-Charge-Monitor-properties-general">Properties 
+	&mdash; General</link>). The default colour is red.
+-->
+	<guilabel>低バッテリの時の色</guilabel> &mdash;
+        読み出し表示において、バッテリの残量が<guilabel>低蓄電とする闘値</guilabel>(<link linkend="Battery-Charge-Monitor-properties-general">設定 &mdash; 一般</link>参照)を下回ったときのバッテリアイコンの色を指定します。デフォルトの色は赤です。
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-graph">
+<!--
+     <title>Properties &mdash; Graph</title>
+-->
+     <title>設定 &mdash; グラフ</title>
+
+     <para>
+<!--
+      The settings on this tab only affect <application>Battery Charge
+      Monitor</application> when it is in <link linkend="Battery-Charge-Monitor-Graph-sec">
+      Graph View</link>.
+-->
+      このタブでの設定は、バッテリ充電モニタのグラフ表示だけに影響します。
+     </para>
+
+     <para>
+<!--
+       All of the coloured rectangles on this tab can be
+      <mousebutton>left</mousebutton> clicked on to display the GNOME
+      colour wheel. This enables you to choose colours that you may
+      prefer more than the defaults.
+-->
+      色の表示されている四角をマウスの<mousebutton>左</mousebutton>ボタンでクリックすると、GNOMEカラーホイールが表示されます。デフォルトより好みの色を選択することができます。
+     </para>
+
+     <figure id="Battery-Charge-Monitor-properties-fig3">
+<!--
+      <title>Properties Dialogue &mdash; Graph</title>
+-->
+      <title>設定ダイアログ &mdash; グラフタブ</title>
+      <screenshot>
+<!--
+       <screeninfo>Properties Dialogue &mdash; Graph</screeninfo>
+-->
+       <screeninfo>設定ダイアログ &mdash; グラフタブ</screeninfo>
+       <graphic format="png"
+		fileref="figures/battery-applet-properties-graph"
+<!--
+                srccredit="James Cope">
+-->
+                srccredit="KAMAGASAKO Masatoshi">
+       </graphic>
+      </screenshot>
+     </figure>
+
+	
+     <itemizedlist>
+      <listitem>
+       <para>
+<!--
+	<guilabel>AC-On Battery Color</guilabel> &mdash;
+	specifies the colour of the graph when your computer is
+	connected to the AC power supply. The default colour is
+	green.
+-->
+	<guilabel>電源オン時のバッテリの色</guilabel> &mdash;
+        AC電源にコンピュータが接続されているときの、グラフの色を指定します。デフォルトの色は緑です。
+       </para>
+      </listitem>
+	 
+      <listitem>
+       <para>
+<!--
+	<guilabel>AC-Off Battery Color</guilabel> &mdash: specifies
+	the colour of the graph when your computer is not connected to
+	the AC power supply. The default colour is blue.
+-->
+	<guilabel>電源オフ時のバッテリの色</guilabel> &mdash:
+        AC電源にコンピュータが接続されていないときの、グラフの色を指定します。デフォルトの色は青です。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Graph Battery Low Color</guilabel> &mdash; specifies
+	the colour of the graph when the charge percentage rate drops
+	below the <guilabel>Low Charge Threshold</guilabel>. The
+	default colour is red.
+-->
+	<guilabel>グラフの低バッテリ時の色</guilabel> &mdash;
+        バッテリの残量が<guilabel>低蓄電とする闘値</guilabel>(<link linkend="Battery-Charge-Monitor-properties-general">設定 &mdash; 一般</link>参照)を下回ったときのグラフの色を指定します。デフォルトの色は赤です。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Graph Tick Color</guilabel> &mdash; specifies the
+	colour of the graph division lines on the graph which mark the
+	25&percnt;, 50&percnt; and 75&percnt; charge points. The default colour is dark
+	grey.
+-->
+	<guilabel>グラフの目盛の色</guilabel> &mdash;
+        グラフを25&percnt;、50&percnt;、75&percnt;で区切る目盛の色を指定します。デフォルトの色はグレーです。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Graph Direction</guilabel> &mdash;
+	specifies which direction the graph moves over time. The
+	default direction is <guilabel>Right to Left</guilabel>.
+-->
+	<guilabel>グラフの方向</guilabel> &mdash;
+        グラフが時間経過で移動していく方向を指定します。デフォルトの方向は<guilabel>右から左へ</guilabel>です。
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-messages">
+<!--
+     <title>Properties &mdash; Battery Charge Messages</title>
+-->
+     <title>設定 &mdash; 充電容量のメッセージ</title>
+
+     <figure id="Battery-Charge-Monitor-properties-fig4">
+<!--
+      <title>Properties Dialogue &mdash; Battery Charge
+        Messages</title>
+-->
+      <title>設定 &mdash; 充電容量のメッセージ</title>
+      <screenshot>
+<!--
+       <screeninfo>Properties Dialogue &mdash; Battery Charge
+        Messages</screeninfo>
+-->
+       <screeninfo>設定 &mdash; 充電容量のメッセージ</screeninfo>
+       <graphic format="png"
+		fileref="figures/battery-applet-properties-messages"
+<!--
+                srccredit="James Cope">
+-->
+                srccredit="KAMAGASAKO Masatoshi">
+       </graphic>
+      </screenshot>
+     </figure>
+
+     <itemizedlist>
+      <listitem>
+       <para>
+<!--
+	<guilabel>Warn in the battery charge dips below</guilabel>
+	&mdash; specifies the charge percentage at which
+	<application>Battery Charge Monitor</application> shows a
+	warning dialogue box that the battery is at a low charge. This
+	warning is only displayed if <guilabel>Enable Low Battery
+	Warning</guilabel> is checked. The default setting is 5&percnt;.
+-->
+        
+	<guilabel>警告を出す充電容量</guilabel> &mdash;
+	バッテリの残量がないという警告ダイアログを表示する充電容量をパーセンテージで指定します。この警告は、<guilabel>充電容量が低くなったら警告を出す</guilabel>チェックボックスが有効になっているときのみ表示されます。デフォルトの設定は5&percnt;です。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Enable Low Battery Warning</guilabel> &mdash;
+	specifies if <application>Battery Charge Monitor</application>
+	should display a dialogue box warning that the battery charge
+	has dropped below the charge percentage specified in the
+	<guilabel>Warn if the battery charge dips below</guilabel>
+	setting. The default value is checked.
+-->
+	<guilabel>充電容量が低くなったら警告を出す</guilabel> &mdash;
+        バッテリの残量が<guilabel>警告を出す充電容量</guilabel>の設定を下回ったときに表示される警告ダイアログボックスを表示するか否か設定できます。デフォルトでは有効になっています。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+	<guilabel>Enable Full-Charge Notification</guilabel> &mdash;
+	specifies if <application>Battery Charge
+	Monitor</application> should display a dialogue box when the
+	battery has reached its 100&percnt; charged rate. The default value
+	is unchecked.
+-->
+	<guilabel>フル充電</guilabel> &mdash;
+        バッテリが100&percnt;充電されたときにダイアログボックスを表示するか否か設定できます。デフォルトでは有効になっています。
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+<!-- Not needed in for 1.x applets
+    <sect3>
+     <title>Further Information</title>
+     <para>
+      For more information on the <interface>Properties</interface>
+      dialog, including descriptions of the <guibutton>OK</guibutton>,
+      <guibutton>Apply</guibutton>, <guibutton>Close</guibutton>, and
+      <guibutton>Help</guibutton> buttons, see <xref
+      linkend="applet-properties-dialog">.
+     </para>
+    </sect3>
+-->
+   </sect2>
+  
+   <sect2 id="Battery-Charge-Monitor-bugs">
+<!--
+    <title> Known Bugs and Limitations</title>
+-->
+    <title>既知のバグと制限</title>
+    <para>
+<!--
+     One oddity is if you start <application>Battery Charge
+     Monitor</application> on a computer that has no Advanced Power
+     Management support. This causes the <guilabel>Low Battery
+     Warning</guilabel> dialogue box to be displayed which may be
+     mis-leading.
+-->
+     APMをサポートしていないコンピュータで<application>バッテリ充電モニタ</application>を起動すると、正常に動作しません。勘違いで<guilabel>低バッテリー警告</guilabel>が表示されます。
+    </para>
+   </sect2>
+
+   <sect2 id="Battery-Charge-Monitor-authors">
+<!--
+    <title>Authors</title>
+-->
+    <title>作者</title>
+    <para>
+<!--
+      This applet was writen by Nat Friedman
+      <email>nat@nat.org</email>.   Please send all comments,
+      suggestions, and bug reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+      bug tracking database</ulink>. (Instructions for submitting bug
+      reports can be found <ulink url="http://bugs.gnome.org/Reporting.html" type="http">
+      on-line</ulink>. If you are using GNOME 1.1 or later, you can also use 
+      <application>Bug Report Tool</application> (<command>bug-buddy</command>), 
+      available in the <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+      Menu</guimenu>, for submitting bug reports.
+-->
+      このアプレットはNat Friedman (<email>nat@nat.org</email>)によって書かれました。コメント、提案、バグレポートなどはすべて<ulink url="http://bugs.gnome.org" type="http">GNOMEバグ追跡データベース</ulink>へお願いします(バグレポートの利用法は<ulink url="http://bugs.gnome.org/Reporting.html" type="http">オンライン</ulink>で参照できます)。もしあなたがGNOME 1.1あるいはそれ以降の版を利用しているのなら、<application>バグレポートツール</application>(<command>bug-buddy</command>)を利用できます。これは<guimenu>メインメニュー</guimenu>の<guisubmenu>ユーティリティ</guisubmenu>サブメニューにあり、バグレポートの送信に利用します。
+    </para>
+
+    <para>
+<!--
+      The documentation for this applet
+      which you are reading now was written by
+      James Cope <email>jcope@bcs.org.uk</email>.. Please send all comments and
+      suggestions regarding this manual to the <ulink type="http"
+      url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+      by sending an email to <email>docs@gnome.org</email>. You can also
+      submit comments online by using the <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status Table</ulink>.
+-->
+      このマニュアルはJames Cope (<email>jcope@bcs.org.uk</email>)によって書かれました。このマニュアルに関するコメントや提案は<ulink type="http" url="http://developer.gnome.org/projects/gdp/">GNOMEドキュメンテーションプロジェクト</ulink>へ<email>docs@gnome.org</email>宛にお寄せください。また、<ulink type="http" url="http://www.gnome.org/gdp/doctable/">GNOMEドキュメンテーションステータステーブル</ulink>を利用してあなたのコメントをオンラインで加えることもできます。
+    </para>
+
+    <para>
+      この日本語翻訳は鎌ヶ迫正俊(<email>emerald@gnome.gr.jp</email>)によるものです。この翻訳に関するコメントや提案はすべて<email>emerald@gnome.gr.jp</email>へお寄せください。
+    </para>
+
+   </sect2>
+
+  <sect2 id="license">
+<!--
+   <title>License</title>
+-->
+   <title>ライセンス</title>
+   <para>
+<!--
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+-->
+    このプログラムはフリーソフトウェアです。フリーソフトウェア財団発行の<citetitle>GNU 一般公有使用許諾契約書</citetitle>第二版あるいは(あなたの選択で)後の版の下おいて再配布や改変することができます。
+   </para>
+   <para>
+<!--
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+-->
+    このプログラムは有用であることを期待して配布していますが、無保証です。商業目的や特定の目的に適合した場合の暗黙の保証すら含まれておりません。詳細は<citetitle>GNU 一般公有使用許諾契約書</citetitle>をご覧ください。
+   </para>
+   <para>
+<!--
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+-->
+    <citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写は<citetitle>GNOMEユーザーズガイド</citetitle>の付録として収録されています。<citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写はフリーソフトウェア財団から、彼らの<ulink type="http" url="http://www.fsf.org">ウェブサイト</ulink>を訪れることにより、また、以下の住所に手紙を書くことによっても入手することも可能です。
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+</sect1>
