@@ -118,7 +118,7 @@ static void set_tooltip(struct tm *time_data, AppData *ad)
 	if (time_data->tm_yday != ad->old_yday)
 		{
 		gchar date[128];
-		strftime(date, 128, "%a, %b %d", time_data);
+		strftime(date, 128, _("%a, %b %d"), time_data);
 
 		if (ad->use_gmt)
 			{

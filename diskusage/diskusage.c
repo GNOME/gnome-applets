@@ -501,7 +501,7 @@ void add_mount_list_menu_items (void) {
 
   applet_widget_register_callback_dir (APPLET_WIDGET (my_applet),
 				       "filesystem",
-				       "File Systems");
+				       _("File Systems"));
 
   for (lim1 = 0; lim1 < n_mpoints; lim1++) {
 
@@ -549,7 +549,7 @@ void update_mount_list_menu_items () {
 
   if (!retval) {
 
-    printf ("File System Changed!\n");
+    printf (_("File System Changed!\n"));
 
     for (lim1 = 0; lim1 < num_mpoints; lim1++) {
 

@@ -262,7 +262,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *spin;
 	GtkWidget *scrolled;
 	GtkWidget *theme_clist;
-	gchar *theme_title[] = { "Themes:", };
+	gchar *theme_title[] = { N_("Themes:"), };
 
 	if(ad->propwindow)
 		{
@@ -279,7 +279,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	ad->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
-		"ClockMail Settings");
+		_("ClockMail Settings"));
 	
 	vbox = gtk_vbox_new(0, TRUE);
 
@@ -423,6 +423,9 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(scrolled);
 
 	/* theme list */
+#ifdef ENABLE_NLS
+	theme_title[0]=_(theme_title[0]);
+#endif
 	theme_clist=gtk_clist_new_with_titles (1, theme_title);
 	gtk_clist_column_titles_passive (GTK_CLIST (theme_clist)); 
 	gtk_signal_connect (GTK_OBJECT (theme_clist), "select_row",(GtkSignalFunc) theme_selected_cb, ad);

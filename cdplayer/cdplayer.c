@@ -296,6 +296,9 @@ main(int argc, char **argv)
 {
 	GtkWidget *cdplayer;
 
+	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
+	textdomain(PACKAGE);
+
 	applet_widget_init("cdplayer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 

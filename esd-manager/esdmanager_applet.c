@@ -5,6 +5,7 @@
  * Author: The Rasterman (Carsten Haitzler)
  */
 
+#include <config.h>
 #include <esd.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
@@ -59,12 +60,16 @@ cb_properties_dialog(AppletWidget * widget, gpointer data)
 int 
 main(int argc, char *argv[])
 {
+  /* Initialize the i18n stuff */
+  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+  textdomain (PACKAGE);
+
   applet_widget_init("esdmanager_applet", NULL, argc, argv,
 		     NULL, 0, NULL);
 
   applet = applet_widget_new("esdmanager_applet");
   if (!applet)
-    g_error("Can't create applet!\n");
+    g_error(_("Can't create applet!\n"));
 
   gtk_widget_realize(applet);
   gtk_widget_show(applet);

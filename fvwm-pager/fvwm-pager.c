@@ -16,6 +16,7 @@
  * License along with this library; if not, write to the Free
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
+#include <config.h>
 #include <stdio.h>
 #include <signal.h>
 
@@ -218,7 +219,9 @@ main(int argc, char* argv[])
   Window root_window;
   gint   desktop_idx = 6;
 
-  
+  /* Initialize the i18n stuff */
+  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+  textdomain (PACKAGE);   
   
   while (!wfd)
     ;

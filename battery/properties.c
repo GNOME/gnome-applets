@@ -28,6 +28,7 @@
  * Author: Nat Friedman <nat@nat.org>
  */
 
+#include <config.h>
 #include <stdio.h>
 #include <gnome.h>
 #include "battery.h"

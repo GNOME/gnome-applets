@@ -430,6 +430,9 @@ int main( int argc, char *argv[] )
     GdkColor colour;
     GdkColormap *cmap;
 
+    bindtextdomain(PACKAGE, GNOMELOCALEDIR);
+    textdomain(PACKAGE);
+
     my = (asclock *)malloc(sizeof(asclock));
     memset(my, sizeof(my), 0);
     config();

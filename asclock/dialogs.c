@@ -1,3 +1,4 @@
+#include <config.h>
 #include <gdk/gdk.h>
 #include <gnome.h>
 #include <applet-widget.h>
@@ -16,7 +17,7 @@ void about_dialog(AppletWidget *applet, gpointer data)
 
   about = gnome_about_new (_("ASClock"), 
 			ASCLOCK_VERSION,
-                        "(C) 1998 the Free Software Foundation",
+                        _("(C) 1998 the Free Software Foundation"),
                         authors,
                         _("Who said NeXT is dead?"),
                         NULL);
@@ -223,8 +224,8 @@ static int property_close_cb(AppletWidget *applet, gpointer data)
 
 void properties_dialog(AppletWidget *applet, gpointer data)
 {
-  gchar *timezone_titles[2] = { "Continent/City" , NULL};
-  gchar *themes_titles[2] = { "Clock Theme", NULL};
+  gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
+  gchar *themes_titles[2] = { N_("Clock Theme"), NULL};
   GtkWidget *label;
   GtkWidget *frame;
   GtkWidget *hbox;
@@ -256,12 +257,15 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   my_asclock->pwin = gnome_property_box_new();
   
   gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(my_asclock->pwin)->dialog.window),
-                "ASClock Settings");
+                _("ASClock Settings"));
 
   frame = gtk_vbox_new(5, TRUE);
   hbox =  gtk_hbox_new(TRUE, 5);
   opts = gtk_vbox_new(5, TRUE);
 
+#ifdef ENABLE_NLS
+  themes_titles[0]=_(themes_titles[0]);
+#endif
   list = gtk_clist_new_with_titles(1, themes_titles);
   gtk_clist_set_column_width(GTK_CLIST(list), 0, 200);
 
@@ -343,6 +347,9 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_widget_show(my_asclock->pic);
 
 
+#ifdef ENABLE_NLS
+  timezone_titles[0]=_(timezone_titles[0]);
+#endif
   list = gtk_clist_new_with_titles(1, timezone_titles);
 
   gtk_clist_set_column_width(GTK_CLIST(list), 0, 200);

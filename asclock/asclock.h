@@ -15,8 +15,8 @@
 #include <sys/time.h>
 #include <sys/stat.h>
 #ifdef ASCLOCK_GNOME
-#include "applet-widget.h"
 #include "../../config.h"
+#include "applet-widget.h"
 #endif
 
 #include "version.h"

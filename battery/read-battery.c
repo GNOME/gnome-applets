@@ -28,6 +28,7 @@
  * Author: Nat Friedman <nat@nat.org>
  */
 
+#include <config.h>
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
