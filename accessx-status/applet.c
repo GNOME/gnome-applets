@@ -1024,7 +1024,7 @@ popup_error_dialog (AccessxStatusApplet* sapplet)
 
 	switch (sapplet->error_type) {
 		case ACCESSX_STATUS_ERROR_XKB_DISABLED : 
-			error_txt = g_strdup (_("XKB Extenstion is not enabled"));
+			error_txt = g_strdup (_("XKB Extension is not enabled"));
 			break;
 
 		case ACCESSX_STATUS_ERROR_UNKNOWN :
