@@ -99,7 +99,7 @@ load_graph_update (LoadGraph *g)
 {
     gint i, j;
 
-    g->get_data (g->width, g->data [0]);
+    g->get_data (g->height, g->data [0]);
 
     for (i=0; i < g->width-1; i++)
 	for (j=0; j < g->n; j++)

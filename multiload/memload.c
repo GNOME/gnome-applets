@@ -45,7 +45,9 @@ make_memload_applet (const gchar *goad_id)
 	g_error ("Can't create applet!\n");
 
     g = load_graph_new (4, N_("Memory Load"), &multiload_properties.memload,
-			500, 40, 40, GetMemory);
+			multiload_properties.memload.adj_data[0],
+			multiload_properties.memload.adj_data[1],
+			multiload_properties.memload.adj_data[2], GetMemory);
 
     applet_widget_add (APPLET_WIDGET(applet), g->frame);
     gtk_widget_show (applet);

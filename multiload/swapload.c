@@ -45,7 +45,9 @@ make_swapload_applet (const gchar *goad_id)
 	g_error ("Can't create applet!\n");
 
     g = load_graph_new (2, N_("Swap Load"), &multiload_properties.swapload,
-			500, 40, 40, GetSwap);
+			multiload_properties.swapload.adj_data[0],
+			multiload_properties.swapload.adj_data[1],
+			multiload_properties.swapload.adj_data[2], GetSwap);
 
     applet_widget_add (APPLET_WIDGET(applet), g->frame);
     gtk_widget_show (applet);
