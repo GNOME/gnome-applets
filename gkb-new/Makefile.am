@@ -1,6 +1,4 @@
 INCLUDES =                                           \
-	-I.			                     \
-	$(WARN_CFLAGS)                               \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"     \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
