@@ -15,10 +15,14 @@ jbc_applet_LDADD = \
 
 SUBDIRS = pixmaps
 
-EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba README AUTHORS ChangeLog
+EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba README AUTHORS \
+             ChangeLog gnome-jbc.png
 
 sysdir = $(datadir)/applets/Clocks
 sys_DATA = jbc_applet.desktop
+
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-jbc.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = jbc_applet.gnorba
