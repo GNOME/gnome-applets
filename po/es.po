@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-22 23:16+0100\n"
-"PO-Revision-Date: 2004-12-22 23:24+0100\n"
+"POT-Creation-Date: 2004-12-29 01:05+0100\n"
+"PO-Revision-Date: 2004-12-29 01:21+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,8 +81,8 @@ msgstr "Muestra el estado de las características de accesibilidad del teclado"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:607
-#: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
-#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:562 gtik/gtik.c:722
+#: cpufreq/src/cpufreq-applet.c:231 drivemount/drivemount.c:132
+#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:572 gtik/gtik.c:722
 #: gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
@@ -798,7 +798,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferencias de la tabla de caracteres"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
+#: cpufreq/src/cpufreq-applet.c:224 cpufreq/src/cpufreq-applet.c:786
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor de frecuencia de la CPU"
 
@@ -880,31 +880,47 @@ msgstr "CPU _monitorizada:"
 msgid "_Show in mode:"
 msgstr "_Mostrar en modo"
 
-#: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
+#: cpufreq/src/cpufreq-applet.c:184 cpufreq/src/cpufreq-prefs.c:246
 msgid "Could not open help document"
 msgstr "No se pudo abrir el documento de ayuda"
 
-#: cpufreq/src/cpufreq-applet.c:138
-msgid "Graphic Arts:"
-msgstr "Grafismo:"
-
-#: cpufreq/src/cpufreq-applet.c:164
+#: cpufreq/src/cpufreq-applet.c:226
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
 msgstr "Copyright © 2004 Free Software Foundation. Inc."
 
-#: cpufreq/src/cpufreq-applet.c:165
+#: cpufreq/src/cpufreq-applet.c:227
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Esta utilidad muestra el estado actual del escalado de frecuencia de la CPU."
 
+#: cpufreq/src/cpufreq-applet.c:787
+msgid "This utility shows the current CPU Frequency"
+msgstr "Esta utilidad muestra la frecuencia actual de la CPU"
+
+#: cpufreq/src/cpufreq-prefs.c:310
+msgid "Graphic"
+msgstr "Gráfico"
+
+#: cpufreq/src/cpufreq-prefs.c:315 modemlights/properties.c:609
+msgid "Text"
+msgstr "Texto"
+
+#: cpufreq/src/cpufreq-prefs.c:320
+msgid "Graphic and Text"
+msgstr "Gráfico y texto"
+
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:183
+msgid "Frequency Scaling Unsupported"
+msgstr "Sin soporte para escalado de frecuencia"
+
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi	nk is better than do nothing. I have to notify it to the user, because
-#. * he could think	 that cpufreq is supported but it doesn't work succesfully
+#. * I thi nk is better than do nothing. I have to notify it to the user, because
+#. * he could think   that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-applet.c:601
+#: cpufreq/src/cpufreq-monitor-factory.c:44
 msgid "CPU frequency scaling unsupported"
 msgstr "Escalado de frecuencia de la CPU no soportado"
 
-#: cpufreq/src/cpufreq-applet.c:602
+#: cpufreq/src/cpufreq-monitor-factory.c:45
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -913,40 +929,11 @@ msgstr ""
 "configurada o no tener soporte hardware para el escalado de frecuencia de la "
 "CPU."
 
-#: cpufreq/src/cpufreq-applet.c:607
-#, c-format
-msgid ""
-"CPU %d - Frequency Scaling Unsupported\n"
-"%s %s (%s)"
-msgstr ""
-"CPU %d - Sin soporte de escalado de frecuencia\n"
-"%s %s (%s)"
-
-#: cpufreq/src/cpufreq-applet.c:613
-msgid "Frequency Scaling Unsupported"
-msgstr "Sin soporte para escalado de frecuencia"
-
-#: cpufreq/src/cpufreq-applet.c:744
-msgid "This utility shows the current CPU Frequency"
-msgstr "Esta utilidad muestra la frecuencia actual de la CPU"
-
-#: cpufreq/src/cpufreq-prefs.c:280
-msgid "Graphic"
-msgstr "Gráfico"
-
-#: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
-msgid "Text"
-msgstr "Texto"
-
-#: cpufreq/src/cpufreq-prefs.c:290
-msgid "Graphic and Text"
-msgstr "Gráfico y texto"
-
-#: cpufreq/src/cpufreq.c:231 gweather/weather.c:277 gweather/weather.c:1081
-#: gweather/weather.c:1095 gweather/weather.c:1107 gweather/weather.c:1122
-#: gweather/weather.c:1138 gweather/weather.c:1169 gweather/weather.c:1181
-#: gweather/weather.c:1200 gweather/weather.c:1228 gweather/weather.c:1241
-#: gweather/weather.c:1261
+#: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
+#: gweather/weather.c:277 gweather/weather.c:1081 gweather/weather.c:1095
+#: gweather/weather.c:1107 gweather/weather.c:1122 gweather/weather.c:1138
+#: gweather/weather.c:1169 gweather/weather.c:1181 gweather/weather.c:1200
+#: gweather/weather.c:1228 gweather/weather.c:1241 gweather/weather.c:1261
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -1739,7 +1726,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Indicador de distribución del teclado de Gnome"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:567
+#: gswitchit/gswitchit-applet.c:577
 msgid "Keyboard Indicator"
 msgstr "Indicador del teclado"
 
@@ -1752,19 +1739,19 @@ msgstr "Fábrica de la miniaplicación del teclado"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicador del teclado (%s)"
 
-#: gswitchit/gswitchit-applet.c:570
+#: gswitchit/gswitchit-applet.c:580
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:572
+#: gswitchit/gswitchit-applet.c:582
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Indicador de la distribución del teclado para Gnome"
 
-#: gswitchit/gswitchit-applet.c:729
+#: gswitchit/gswitchit-applet.c:738
 msgid "XKB initialization error"
 msgstr "Error de inicialización de KXB"
 
-#: gswitchit/gswitchit-applet.c:737
+#: gswitchit/gswitchit-applet.c:746
 msgid "Error loading XKB configuration registry"
 msgstr "Error al cargar el registro de configuración XKB"
 
@@ -2286,7 +2273,7 @@ msgstr "Temperatura:"
 
 #: gweather/gweather-dialog.c:237
 msgid "Feels like:"
-msgstr "Siente como:"
+msgstr "Se siente como:"
 
 #: gweather/gweather-dialog.c:245
 msgid "Dew point:"
@@ -2367,7 +2354,7 @@ msgstr "Actualizar botón de opciones"
 
 #: gweather/gweather-pref.c:192
 msgid "Spinbutton for updating"
-msgstr "Botón de opciones para la actualización"
+msgstr "Botón giratorio para la actualización"
 
 #: gweather/gweather-pref.c:193
 msgid "Address Entry"
@@ -2375,7 +2362,7 @@ msgstr "Dirección"
 
 #: gweather/gweather-pref.c:193
 msgid "Enter the URL"
-msgstr "Ingrese la URL"
+msgstr "Introduzca la URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
@@ -2388,7 +2375,7 @@ msgstr "C"
 #. "mph" (miles per hour) and "knots"
 #: gweather/gweather-pref.c:439 gweather/gweather-pref.c:449
 msgid "DEFAULT_SPEED_UNIT"
-msgstr "km/h"
+msgstr "Km/h"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
@@ -2402,11 +2389,11 @@ msgstr "mmHg"
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
 #: gweather/gweather-pref.c:514 gweather/gweather-pref.c:523
 msgid "DEFAULT_DISTANCE_UNIT"
-msgstr "km"
+msgstr "Km"
 
 #: gweather/gweather-pref.c:801
 msgid "Weather Preferences"
-msgstr "Preferencias de GNOME Meteorología"
+msgstr "Preferencias de meteorología"
 
 #: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1011
 msgid "_Automatically update every:"
@@ -2448,7 +2435,7 @@ msgstr "m/s"
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
 #: gweather/gweather-pref.c:876
 msgid "km/h"
-msgstr "km/h"
+msgstr "Km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
 #: gweather/gweather-pref.c:878
@@ -2503,7 +2490,7 @@ msgstr "metros"
 #. TRANSLATOR: The distance unit "kilometers"
 #: gweather/gweather-pref.c:926
 msgid "km"
-msgstr "km"
+msgstr "Km"
 
 #. TRANSLATOR: The distance unit "miles"
 #: gweather/gweather-pref.c:928
@@ -2534,6 +2521,16 @@ msgstr "_Seleccione una ubicación:"
 #: gweather/gweather-pref.c:1105
 msgid "Location"
 msgstr "Ubicación"
+
+#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
+#: gweather/weather-metar.c:556
+msgid "WeatherInfo missing location"
+msgstr "Ubicación no existente para WeatherInfo"
+
+#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
+#: gweather/weather-wx.c:51
+msgid "Failed to get METAR data.\n"
+msgstr "Ha fallado la obtención de los datos METAR.\n"
 
 #. TRANSLATOR: Change this to the default location code (2nd parameter) in the
 #. gweather/Locations file
@@ -2593,7 +2590,7 @@ msgstr "Unidades de distancia"
 
 #: gweather/gweather.schemas.in.h:9
 msgid "Fetch a radar map on each update."
-msgstr "Traer un mapa de radar con cada actualización."
+msgstr "Obtener un mapa de radar con cada actualización."
 
 #: gweather/gweather.schemas.in.h:10
 msgid ""
@@ -2668,9 +2665,7 @@ msgstr "Usa unidades métricas en vez de las unidades inglesas."
 msgid ""
 "latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
-msgstr ""
-"latitud y longitud de su ubicación expresada en DD-MM-SS[NS] DD-MM-SS"
-"[EW]"
+msgstr "latitud y longitud de su ubicación expresada en DD-MM-SS[NS] DD-MM-SS[EW]"
 
 #: gweather/gweather.schemas.in.h:28
 msgid "location coordinates"
@@ -2694,15 +2689,15 @@ msgstr "Norte"
 
 #: gweather/weather.c:268
 msgid "North - NorthEast"
-msgstr "Norte - Noroeste"
+msgstr "Norte - Noreste"
 
 #: gweather/weather.c:268
 msgid "Northeast"
-msgstr "Noroeste"
+msgstr "Noreste"
 
 #: gweather/weather.c:268
 msgid "East - NorthEast"
-msgstr "Este - Noroeste"
+msgstr "Este - Noreste"
 
 #: gweather/weather.c:269
 msgid "East"
@@ -2754,7 +2749,7 @@ msgstr "Norte - Noroeste"
 
 #: gweather/weather.c:279 gweather/weather.c:296 gweather/weather.c:367
 msgid "Invalid"
-msgstr "Invalido"
+msgstr "Inválido"
 
 #: gweather/weather.c:285
 msgid "Clear Sky"
@@ -2770,11 +2765,11 @@ msgstr "Nubes dispersas"
 
 #: gweather/weather.c:288
 msgid "Few clouds"
-msgstr "Poca nubosidad"
+msgstr "Algunas nubes"
 
 #: gweather/weather.c:289
 msgid "Overcast"
-msgstr "Pronóstico adelantado"
+msgstr "Cubierto de nubes"
 
 #. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
@@ -2908,7 +2903,7 @@ msgstr "Tormenta de bolitas de hielo"
 
 #: gweather/weather.c:334
 msgid "Showers of ice pellets"
-msgstr "Lluvia con bolitas de hielo"
+msgstr "Chorros de bolitas de hielo"
 
 #. HAIL
 #: gweather/weather.c:335
@@ -2961,7 +2956,7 @@ msgstr "Niebla muy gruesa"
 
 #: gweather/weather.c:339
 msgid "Patches of fog"
-msgstr "Lugares con niebla"
+msgstr "Niebla dispersa"
 
 #: gweather/weather.c:339
 msgid "Partial fog"
@@ -2969,7 +2964,7 @@ msgstr "Niebla parcial"
 
 #: gweather/weather.c:339
 msgid "Freezing fog"
-msgstr "Niebla con hielo"
+msgstr "Niebla helada"
 
 #. SMOKE
 #: gweather/weather.c:340
@@ -3258,7 +3253,7 @@ msgstr "Línea de comando"
 
 #: mini-commander/src/command_line.c:505
 msgid "Type a command here and Gnome will execute it for you"
-msgstr "Escriba un comando aquí y GNOME los ejecutará por usted"
+msgstr "Escriba un comando aquí y Gnome los ejecutará por usted"
 
 #: mini-commander/src/mc-install-default-macros.c:78
 #, c-format
@@ -4824,6 +4819,16 @@ msgstr "Preferencias del monitor de enlace inalámbrico"
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorizado:"
 
+#~ msgid "Graphic Arts:"
+#~ msgstr "Grafismo:"
+
+#~ msgid ""
+#~ "CPU %d - Frequency Scaling Unsupported\n"
+#~ "%s %s (%s)"
+#~ msgstr ""
+#~ "CPU %d - Sin soporte de escalado de frecuencia\n"
+#~ "%s %s (%s)"
+
 #~ msgid "Change the keyboard layout"
 #~ msgstr "Cambia la distribución del teclado"
 
@@ -5606,12 +5611,6 @@ msgstr "Dispositivo _monitorizado:"
 #~ msgstr ""
 #~ "Mostrar nombres de distribución en lugar de nombres de grupo (sólo para "
 #~ "versiones de XFree que soporten múltiples distribuciones)"
-
-#~ msgid "Failed to get METAR data.\n"
-#~ msgstr "Ha fallado la obtención de los datos METAR.\n"
-
-#~ msgid "WeatherInfo missing location"
-#~ msgstr "dirección perdida para WeatherInfo"
 
 #~ msgid ""
 #~ "Sorry, an internal error has occurred with the CPU Frequency Scaling "
