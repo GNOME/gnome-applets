@@ -1,3 +1,17 @@
+2004-06-01  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* cdplayer.h: Added error_io_dialog and error_busy_dialog widgets
+	to the applet structure.
+
+	* cdplayer.c (pplet_fill): Initialize the error dialogs with NULL.
+	(cdplayer_destroy): Destroy the error dialogs.
+	(cdplayer_play_pause): Show an dialog on IO error, and let both
+	dialogs be privates per instance.
+
+	Based on a fix by: Santhosh  <santhu842k2@yahoo.co.in>
+
+	Fixes bug #142093.
+
 2004-03-17  Glynn Foster  <glynn.foster@sun.com>
 
 	* Makefile.am: Add inlinepixbuf to SOURCES. Should fix one

@@ -159,7 +159,9 @@ applet_fill (PanelApplet *applet)
     cd->panel.applet = GTK_WIDGET (applet);
 
     cd->about_dialog = NULL;
-    
+    cd->error_busy_dialog = NULL;
+    cd->error_io_dialog = NULL;
+
     /* the rest of the widgets go in here */
     cdplayer = cd->panel.frame = gtk_hbox_new(FALSE, 0);
    
@@ -338,6 +340,12 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
  
     if (cd->prefs_dialog)
       gtk_widget_destroy (cd->prefs_dialog);
+
+    if (cd->error_busy_dialog)
+      gtk_widget_destroy (cd->error_busy_dialog);
+
+    if (cd->error_io_dialog)
+      gtk_widget_destroy (cd->error_io_dialog);
 
     cd->devpath = NULL;
     g_free(cd);
@@ -634,6 +642,7 @@ about_cb (BonoboUIComponent *component,
 
     g_signal_connect (G_OBJECT(cd->about_dialog), "destroy",
                       G_CALLBACK(gtk_widget_destroyed), &cd->about_dialog);
+
     gtk_widget_show (cd->about_dialog);
 }
 
@@ -955,7 +964,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
                    cd->played_by_applet = 1;
             break;
         }
-    } else if(status == DISC_TRAY_OPEN) {
+    } else if (status == DISC_TRAY_OPEN) {
         cdrom_load(cd->cdrom_device);
         cdrom_read_track_info(cd->cdrom_device);
         ret = cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
@@ -965,20 +974,57 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
     }
 
     if (ret == DISC_DEVICE_BUSY) {
-		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new (NULL,
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_OK,
-						 _("Audio device is busy, or being used by another application"),
-						 NULL);
-		gtk_window_set_screen (GTK_WINDOW (dialog),
-				       gtk_widget_get_screen (cd->panel.applet));
-		g_signal_connect_swapped (GTK_OBJECT (dialog), "response",
-		                          G_CALLBACK (gtk_widget_destroy),
-					  GTK_OBJECT (dialog));
+	    if (cd->error_busy_dialog) {
+		    gtk_window_set_screen (GTK_WINDOW (cd->error_busy_dialog),
+				    gtk_window_get_screen (cd->panel.applet));
 
-		gtk_widget_show_all (dialog);
+		    gtk_window_present (GTK_WINDOW (cd->error_busy_dialog));
+
+		    return;
+	    }
+
+	    cd->error_busy_dialog = gtk_message_dialog_new (NULL,
+			    GTK_DIALOG_DESTROY_WITH_PARENT,
+			    GTK_MESSAGE_ERROR,
+			    GTK_BUTTONS_OK,
+			    _("Audio device is busy, or being used by another application"),
+			    NULL);
+
+	    gtk_window_set_screen (GTK_WINDOW (cd->error_busy_dialog),
+			    gtk_widget_get_screen (cd->panel.applet));
+
+	    g_signal_connect_swapped (GTK_OBJECT (cd->error_busy_dialog), "response",
+			    G_CALLBACK (gtk_widget_destroy),
+			    GTK_OBJECT (cd->error_busy_dialog));
+
+	    gtk_widget_show_all (cd->error_busy_dialog);
+    }
+
+    if (ret == DISC_IO_ERROR) {
+	    if (cd->error_io_dialog) {
+		    gtk_window_set_screen (GTK_WINDOW (cd->error_io_dialog),
+				    gtk_window_get_screen (cd->panel.applet));
+
+		    gtk_window_present (GTK_WINDOW (cd->error_io_dialog));
+
+		    return;
+	    }
+
+	    cd->error_io_dialog = gtk_message_dialog_new (NULL,
+			    GTK_DIALOG_DESTROY_WITH_PARENT,
+			    GTK_MESSAGE_ERROR,
+			    GTK_BUTTONS_OK,
+			    _("No Device Found or Illegal Format"),
+			    NULL);
+
+	    gtk_window_set_screen (GTK_WINDOW (cd->error_io_dialog),
+			    gtk_widget_get_screen (cd->panel.applet));
+
+	    g_signal_connect_swapped (GTK_OBJECT (cd->error_io_dialog), "response",
+			    G_CALLBACK (gtk_widget_destroy),
+			    GTK_OBJECT (cd->error_io_dialog));
+
+	    gtk_widget_show_all (cd->error_io_dialog);
     }
 }
 
