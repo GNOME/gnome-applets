@@ -694,8 +694,9 @@ static gint updateOutput(gpointer data)
 
 
 	/*-----------------------------------------------------------------*/
-	static void about_cb (BonoboUIComponent *uic, gpointer data, 
-			      const gchar *verbname) {
+	static void about_cb (BonoboUIComponent *uic,
+			      StockData         *stockdata, 
+			      const gchar       *verbname) {
 		GtkWidget *about;
 		GdkPixbuf *pixbuf;
 		GError    *error = NULL;
@@ -742,8 +743,7 @@ static gint updateOutput(gpointer data)
 		
 		if (pixbuf)
 			gdk_pixbuf_unref (pixbuf);
-		
-		
+
 		gtk_widget_show (about);
 
 		return;
@@ -1229,7 +1229,7 @@ static gint updateOutput(gpointer data)
 						             GTK_STOCK_HELP, 
 						             GTK_RESPONSE_HELP,
 						  	     NULL);
-		
+
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);
@@ -1446,10 +1446,10 @@ static gint updateOutput(gpointer data)
     	}
     
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
-        	BONOBO_UI_VERB ("Props", properties_cb),
-        	BONOBO_UI_VERB ("Refresh", refresh_cb),
-        	BONOBO_UI_VERB ("Help", help_cb),
-        	BONOBO_UI_VERB ("About", about_cb),
+        	BONOBO_UI_UNSAFE_VERB ("Props", properties_cb),
+        	BONOBO_UI_UNSAFE_VERB ("Refresh", refresh_cb),
+        	BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
+        	BONOBO_UI_UNSAFE_VERB ("About", about_cb),
 
         	BONOBO_UI_VERB_END
 	};
