@@ -33,8 +33,11 @@
 /* properties prop = { TRUE, TRUE, 11, 12, 13, 14, 15, 0, 0, 0, 50000, 50000, 50000 }; */
 /* properties propTmp = { -1, -1, -1, -1, -1, -1, -1 -1, -1, -1, -1, -1, -1}; */
 
+static void resetTemporaryPrefs(void);
+
 properties prop;
 properties propTmp;
+
 
 static void
 checkBoxToggled_signal(GtkWidget *checkBoxWidget, int *data)
@@ -81,6 +84,26 @@ colorCmdBgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
 }
 
 static void
+resetTemporaryPrefs(void)
+{
+    /* reset temporary prefereces */
+    propTmp.showTime = -1;
+    propTmp.showDate = -1;
+    propTmp.normalSizeX = -1;
+    propTmp.normalSizeY = -1;
+    propTmp.reducedSizeX = -1;
+    propTmp.reducedSizeY = -1;
+    propTmp.cmdLineY = -1;
+    propTmp.cmdLineColorFgR = -1;
+    propTmp.cmdLineColorFgG = -1;
+    propTmp.cmdLineColorFgB = -1;
+    propTmp.cmdLineColorBgR = -1;
+    propTmp.cmdLineColorBgG = -1;
+    propTmp.cmdLineColorBgB = -1;
+}
+
+
+static void
 propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpointer data)
 {
     GtkStyle *style;
@@ -106,9 +129,6 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	    showMessage((gchar *) _("date on")); 
 	else
 	    showMessage((gchar *) _("clock off")); 
-	
-	propTmp.showTime = -1;
-	propTmp.showDate = -1;
     }
 
     if(propTmp.normalSizeX != -1)
@@ -138,12 +158,6 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 
     if(propTmp.cmdLineY != -1)
 	gtk_widget_set_usize(GTK_WIDGET(entryCommand), -1, prop.cmdLineY);
-
-    propTmp.normalSizeX = -1;
-    propTmp.normalSizeY = -1;
-    propTmp.reducedSizeX = -1;
-    propTmp.reducedSizeY = -1;
-    propTmp.cmdLineY = -1;
 
     /* colors */
     if(propTmp.cmdLineColorFgR != -1)
@@ -176,13 +190,6 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	    gtk_widget_set_style(entryCommand, style);
 	}
 
-    propTmp.cmdLineColorFgR = -1;
-    propTmp.cmdLineColorFgG = -1;
-    propTmp.cmdLineColorFgB = -1;
-    propTmp.cmdLineColorBgR = -1;
-    propTmp.cmdLineColorBgG = -1;
-    propTmp.cmdLineColorBgB = -1;
-
     /* prefix & command */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
@@ -201,6 +208,7 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 		}
 	}    
 
+    resetTemporaryPrefs();
 
     /*    gtk_widget_queue_resize(applet); */
 
@@ -239,12 +247,11 @@ loadSession(void)
     prop.cmdLineColorBgG = gnome_config_get_int("mini_commander/cmd_line_color_bg_g=0");
     prop.cmdLineColorBgB = gnome_config_get_int("mini_commander/cmd_line_color_bg_b=0");
 
-
     /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
 	    switch (i+1) 
-		/* set default prefixes */
+		/* set default macros */
 		{
 		case 1:
 		    strcpy(defaultPrefix, "http://");
@@ -330,6 +337,7 @@ saveSession(void)
     char section[100];
 
     /* gnome_config_push_prefix(globcfgpath); */
+    /* all instances of mini-commander use the same global settings */
     gnome_config_push_prefix("/mini-commander/"); 
 
     /* version */
@@ -413,23 +421,11 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *label;
     GtkWidget *entry;
     GtkWidget *colorPicker;
+    GtkWidget *scrolledWindow;
     char textLabel[50], buffer[50];
     int i, j;
 
-    /* reset temporary prefereces */
-    propTmp.showTime = -1;
-    propTmp.showDate = -1;
-    propTmp.normalSizeX = -1;
-    propTmp.normalSizeY = -1;
-    propTmp.reducedSizeX = -1;
-    propTmp.reducedSizeY = -1;
-    propTmp.cmdLineY = -1;
-    propTmp.cmdLineColorFgR = -1;
-    propTmp.cmdLineColorFgG = -1;
-    propTmp.cmdLineColorFgB = -1;
-    propTmp.cmdLineColorBgR = -1;
-    propTmp.cmdLineColorBgG = -1;
-    propTmp.cmdLineColorBgB = -1;
+    resetTemporaryPrefs();
 
     propertiesBox = gnome_property_box_new();
     
@@ -664,71 +660,67 @@ propertiesBox(AppletWidget *applet, gpointer data)
 
 
 
-    /*Prefixes */
-    for(j=0; j<3; j++)
+    /* Macros */   
+    frame = gtk_frame_new((gchar *) NULL);
+
+    gtk_container_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL); 
+    
+    scrolledWindow = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledWindow),
+				   GTK_POLICY_AUTOMATIC,
+				   GTK_POLICY_AUTOMATIC);
+    gtk_container_border_width(GTK_CONTAINER(scrolledWindow), GNOME_PAD_SMALL); 
+    gtk_container_add(GTK_CONTAINER(frame), scrolledWindow); 
+
+    vbox1 = gtk_vbox_new(TRUE, GNOME_PAD_SMALL);
+    gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+    /* gtk_container_add(GTK_CONTAINER(scrolledWindow), vbox1); does not work */
+    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolledWindow), vbox1);
+
+    for(i=0; i < MAX_PREFIXES; i++)
 	{
-	    vbox = gtk_vbox_new(FALSE, GNOME_PAD_BIG);
-	    gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+	    hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+  	    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);   
 	    
-	    frame = gtk_frame_new(_("Special Prefixes"));
-	    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	    /* prefix */    
+	    g_snprintf(textLabel, sizeof(textLabel), _("Prefix %.2d:"), i+1);
+	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
 	    
-	    vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
-	    gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
-	    gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	    entry = gtk_entry_new_with_max_length(MAX_PREFIX_LENGTH);
+	    gtk_widget_set_usize(entry, 75, -1);
+	    if (prop.prefix[i] != (gchar *) NULL)
+		gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop.prefix[i]);
+	    gtk_signal_connect(GTK_OBJECT(entry),
+			       "changed",
+			       GTK_SIGNAL_FUNC(entryChanged_signal),
+			       &propTmp.prefix[i]);
+	    gtk_signal_connect_object(GTK_OBJECT(entry),
+				      "changed",
+				      GTK_SIGNAL_FUNC(gnome_property_box_changed),
+				      GTK_OBJECT(propertiesBox));      
+	    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, TRUE, 0);
 	    
-	    /*    gtk_box_pack_start(GTK_BOX(vbox1),
-		  gtk_label_new((gchar *) _("HGjshd ajhs djah dkjha sjhd akjshda jshdajks dhjkashd ahjshd ajkshd ajkshd jkashdjkas hdjkas hdjkashd jhasd jkashdjkh.")), 
-		  FALSE, 
-		  FALSE, 
-		  0); */
+	    /* command */
+	    g_snprintf(textLabel, sizeof(textLabel), _("   Macro %.2d:"), i+1);
+	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
 	    
-	    for(i=(MAX_PREFIXES/3)*j; i<=(MAX_PREFIXES/3)*(j+1)-1; i++)
-		{
-		    hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-		    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);
-		    
-		    /* prefix */    
-		    g_snprintf(textLabel, sizeof(textLabel), _("Prefix %.2d:"), i+1);
-		    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
-		    
-		    entry = gtk_entry_new_with_max_length(MAX_PREFIX_LENGTH);
-		    gtk_widget_set_usize(entry, 75, -1);
-		    if (prop.prefix[i] != (gchar *) NULL)
-			gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop.prefix[i]);
-		    gtk_signal_connect(GTK_OBJECT(entry),
-				       "changed",
-				       GTK_SIGNAL_FUNC(entryChanged_signal),
-				       &propTmp.prefix[i]);
-		    gtk_signal_connect_object(GTK_OBJECT(entry),
-					      "changed",
-					      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-					      GTK_OBJECT(propertiesBox));      
-		    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, TRUE, 0);
-		    
-		    /* command */
-		    g_snprintf(textLabel, sizeof(textLabel), _("   Command %.2d:"), i+1);
-		    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
-		    
-		    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
-		    if (prop.command[i] != (gchar *) NULL)
-			gtk_entry_set_text(GTK_ENTRY(entry), prop.command[i]);
-		    gtk_signal_connect(GTK_OBJECT(entry),
-				       "changed",
-				       GTK_SIGNAL_FUNC(entryChanged_signal),
-				       &propTmp.command[i]);
-		    gtk_signal_connect_object(GTK_OBJECT(entry),
-					      "changed",
-					      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-					      GTK_OBJECT(propertiesBox));  
-		    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
-		}
-	    
-	    g_snprintf(textLabel, sizeof(textLabel), _("Prefixes %d"), j+1);
-	    gnome_property_box_append_page(GNOME_PROPERTY_BOX(propertiesBox),
-					   vbox,
-					   gtk_label_new((gchar *) textLabel));
+	    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
+	    if (prop.command[i] != (gchar *) NULL)
+		gtk_entry_set_text(GTK_ENTRY(entry), prop.command[i]);
+	    gtk_signal_connect(GTK_OBJECT(entry),
+			       "changed",
+			       GTK_SIGNAL_FUNC(entryChanged_signal),
+			       &propTmp.command[i]);
+	    gtk_signal_connect_object(GTK_OBJECT(entry),
+				      "changed",
+				      GTK_SIGNAL_FUNC(gnome_property_box_changed),
+				      GTK_OBJECT(propertiesBox));  
+	    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
 	}
+
+    gnome_property_box_append_page(GNOME_PROPERTY_BOX(propertiesBox),
+				   frame,
+				   gtk_label_new((gchar *) _("Macros")));
 
     gtk_signal_connect(GTK_OBJECT(propertiesBox), 
 		       "apply",

@@ -263,6 +263,9 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      /* scrollbars */
      /* create scrolled window to put the GtkList widget inside */
      scrolled_window=gtk_scrolled_window_new(NULL, NULL);
+     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled_window),
+				    GTK_POLICY_AUTOMATIC,
+				    GTK_POLICY_AUTOMATIC);
      gtk_signal_connect(GTK_OBJECT(scrolled_window),
 			"button_press_event",
 			GTK_SIGNAL_FUNC(historyPopupClickedInside_cb),
@@ -295,16 +298,13 @@ showHistory_signal(GtkWidget *widget, gpointer data)
 			NULL);
      
      
-     /* add history items to list */
+     /* add history entries to list */
      for(i = 0; i < HISTORY_DEPTH; i++)
 	 {
 	     if(existsHistoryEntry(i))
 		 {
-		     commandList[0] = (gchar *) malloc(sizeof(gchar) * (strlen(getHistoryEntry(i)) + 1));
-		     /* commandList[0] = (gchar *) malloc(sizeof(gchar) * (MAX_COMMAND_LENGTH + 1)); */
-		     strcpy(commandList[0], getHistoryEntry(i));
+		     commandList[0] = getHistoryEntry(i);
 		     gtk_clist_append(GTK_CLIST(clist), commandList);
-		     free(commandList[0]);
 		 }
 	 }
      gtk_container_add(GTK_CONTAINER(scrolled_window), clist);

@@ -1,3 +1,15 @@
+1999-01-17  Oliver Maruhn  <om@linuxhq.com>
+
+	* src/preferences.c (resetTemporaryPrefs): added
+	(propertiesBox_apply_signal): cleanup [now using resetTemporaryPrefs()]
+
+	* src/preferences.h (MAX_PREFIXES): now up to 99 macros are supported
+
+	* src/preferences.c (propertiesBox): macros put into a scrolled
+ 	windows
+
+	* src/command_line.c (showHistory_signal): only add scrollbars when needed
+
 1999-01-16  Oliver Maruhn  <om@linuxhq.com>
 
 	* src/command_line.c (commandKey_event): more control keys
