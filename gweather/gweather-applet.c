@@ -325,6 +325,8 @@ static void update_finish (WeatherInfo *info)
 
 void gweather_update (void)
 {
+    gboolean update_success;
+
     /* Let user know we are updating */
     weather_info_get_pixmap_mini(gweather_info, &cond_pixmap, &cond_mask);
     gtk_pixmap_set(GTK_PIXMAP(pixmap), cond_pixmap, cond_mask);
@@ -346,11 +348,13 @@ void gweather_update (void)
     /* Update current conditions */
     if (gweather_pref.update_enabled) {
         if (gweather_info && weather_location_equal(gweather_info->location, gweather_pref.location)) {
-            weather_info_update(gweather_info, update_finish);
+            update_success = weather_info_update(gweather_info, update_finish);
         } else {
             weather_info_free(gweather_info);
-            weather_info_new(gweather_pref.location, update_finish);
+            update_success = weather_info_new(gweather_pref.location, update_finish);
         }
+        if (!update_success)
+            gnome_error_dialog("Update failed! Maybe another already in progress?");  /* FIX */
     } else {
         if (gweather_info) {
             if (gweather_pref.use_metric)

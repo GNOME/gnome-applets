@@ -18,51 +18,136 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include <pthread.h>
+#include <signal.h>
+
 #include <gnome.h>
 
 #include "http.h"
 
+
+/*
+ * Request structure
+ */
+
 struct _HttpBgRequest {
-    ghttp_request *req;
-    HttpCallback   cb;
-    gpointer       cb_data;
+    struct _HttpBgRequest *next;  /* Must be first field */
+    ghttp_request         *req;
+    HttpCallback          cb;
+    gpointer              cb_data;
 };
 
 typedef struct _HttpBgRequest HttpBgRequest;
 
 
-static gint http_check_idle_cb (gpointer data)
+/*
+ * Request queue
+ */
+
+static HttpBgRequest *http_req_queue = NULL;
+
+static void http_req_enqueue (HttpBgRequest *req)
 {
-    HttpBgRequest *bg_req = (HttpBgRequest *)data;
-    ghttp_status status = ghttp_process(bg_req->req);
-    if (status != ghttp_not_done) {
-        (*bg_req->cb)(bg_req->req, status, bg_req->cb_data);
-        return 0;  /* We're done with this idle callback */
+    HttpBgRequest **p = &http_req_queue;
+
+    while (*p != NULL)
+        p = (HttpBgRequest **)*p;
+    req->next = NULL;
+    *p = req;
+}
+
+static HttpBgRequest *http_req_dequeue (void)
+{
+    HttpBgRequest *req = http_req_queue;
+    if (http_req_queue != NULL)
+        http_req_queue = http_req_queue->next;
+    return req;
+}
+
+/*
+ * HTTP task thread
+ */
+
+static pthread_mutex_t http_mutex = PTHREAD_MUTEX_INITIALIZER;
+static pthread_cond_t  http_cond = PTHREAD_COND_INITIALIZER;
+
+static void *http_task (void *arg)
+{
+    HttpBgRequest *req;
+    ghttp_status status;
+
+
+    while (1) {
+        pthread_mutex_lock(&http_mutex);
+        pthread_cond_wait(&http_cond, &http_mutex);
+        while ((req = http_req_dequeue()) != NULL) {
+            fprintf(stderr, "Processing HTTP request...\n");
+            ghttp_prepare(req->req);
+            ghttp_set_sync(req->req, ghttp_sync);
+            status = ghttp_process(req->req);
+
+            pthread_mutex_unlock(&http_mutex);
+            gdk_threads_enter();
+            (*req->cb)(req->req, status, req->cb_data);
+            gdk_threads_leave();
+            pthread_mutex_lock(&http_mutex);
+
+            g_free(req);
+        }
+        pthread_mutex_unlock(&http_mutex);
     }
-    return 1;  /* Call us next time around, still work to do */
+
+    g_assert_not_reached();
 }
 
-static void http_check_destroy_cb (gpointer data)
-{
-    HttpBgRequest *bg_req = (HttpBgRequest *)data;
-    g_free(bg_req);
-}
 
+/*
+ * Exported functions
+ */
 
 guint http_process_bg (ghttp_request *req, HttpCallback cb, gpointer data)
 {
-    HttpBgRequest *bg_req = g_new(HttpBgRequest, 1);
+    HttpBgRequest *bg_req;
+
+    /*
+     * FIX !!
+     * Program will deadlock if gdk_threads_leave() is not
+     * called here _without_ a matching gdk_threads_enter().
+     * This is because this function's caller may either
+     * hold or not hold the GTK mutex.
+     * Ommiting gtk_threads_leave() will cause a deadlock
+     * (because of contention for the GTK mutex and http_mutex)
+     * if caller holds GTK mutex.  Adding gtk_threads_enter()
+     * will deadlock if caller does not hold GTK mutex (because
+     * the call will be normally repeated later, in the main
+     * GTK loop).
+     */
+    gdk_threads_leave();
+
+    pthread_mutex_lock(&http_mutex);
+    bg_req = g_new(HttpBgRequest, 1);
     bg_req->req = req;
     bg_req->cb = cb;
     bg_req->cb_data = data;
-    ghttp_prepare(req);
-    ghttp_set_sync(req, ghttp_async);
-    return gtk_idle_add_full(GTK_PRIORITY_DEFAULT, http_check_idle_cb,
-                             NULL, bg_req, http_check_destroy_cb);
+
+    /* Insert request into queue and signal HTTP task */
+    http_req_enqueue(bg_req);
+    pthread_cond_signal(&http_cond);
+    pthread_mutex_unlock(&http_mutex);
+
+    return 0;
 }
 
-void http_request_remove (int tag)
+static pthread_t http_thread;
+
+void http_init (void)
 {
-    gtk_idle_remove(tag);
+    /* Create HTTP task thread */
+    pthread_create(&http_thread, NULL, http_task, NULL);
+}
+
+void http_done (void)
+{
+    pthread_kill(http_thread, SIGINT);
 }
 

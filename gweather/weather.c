@@ -1078,12 +1078,19 @@ static void wx_get_start (WeatherInfo *info)
 
 gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
 {
+    g_return_val_if_fail(((info == NULL) && (location != NULL)) || \
+                         ((info != NULL) && (location == NULL)), FALSE);
+
+    /* FIX */
+    if (!requests_init(cb, info)) {
+        g_warning(_("Another update already in progress!\n"));
+        return FALSE;
+    }
+
     if (!info) {
-        g_return_val_if_fail(location != NULL, FALSE);
         info = g_new(WeatherInfo, 1);
         info->location = weather_location_clone(location);
     } else {
-        g_return_val_if_fail(location == NULL, FALSE);
         location = info->location;
         g_free(info->forecast);
         gdk_imlib_free_pixmap(info->radar);
@@ -1105,11 +1112,6 @@ gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, Weath
     info->visibility = -1.0;
     info->forecast = NULL;
     info->radar = NULL;
-
-    if (!requests_init(cb, info)) {
-        g_warning(_("Another update already in progress!\n"));
-        return FALSE;
-    }
 
     metar_get_start(info);
  

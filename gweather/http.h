@@ -15,6 +15,7 @@
 
 #include <ghttp.h>
 
+
 /*
  * Called whenever a background request finishes,
  * either successfully or unsuccesfully.  Remember to
@@ -25,18 +26,17 @@ typedef void (*HttpCallback) (ghttp_request *req,
                               gpointer       data);
 
 /*
+ * Initialize asynchronous HTTP transfer functions.
+ */
+extern void http_init (void);
+
+/*
  * Set an HTTP request for background processing.
- * Upon error returns -1, else returns a bg job tag.
+ * Returns 0 upon success, -1 otherwise.
  */
 extern guint http_process_bg (ghttp_request *req,
                               HttpCallback   cb,
                               gpointer       data);
-
-/*
- * Clear a background HTTP request.  You are still responsible
- * for destroying the request that corresponds to this tag.
- */
-extern void http_request_remove (int tag);
 
 #endif /* __HTTP_H_ */
 
