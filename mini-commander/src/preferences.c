@@ -853,6 +853,7 @@ mc_macros_free (GSList *macros)
     for (l = macros; l; l = l->next) {
 	MCMacro *macro = l->data;
 
+	regfree(&macro->regex);
 	g_free (macro->pattern);
 	g_free (macro->command);
 	g_free (macro);
