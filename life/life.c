@@ -7,11 +7,11 @@
  */
 
 #include <config.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <gdk/gdk.h>
 
 #define LIFE_CYCLE 600
