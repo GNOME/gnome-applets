@@ -23,7 +23,7 @@
 #endif
 
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
  
 #include <gtk/gtk.h>
 #include <time.h>
@@ -39,57 +39,18 @@
 
 #define STOCK_QUOTE(sq) ((StockQuote *)(sq))
 
-	GtkWidget *applet;
-	GtkWidget *label;
-
-
-	static GdkPixmap *pixmap = NULL;
-	GtkWidget * drawing_area;
-	GtkWidget * leftButton;
-	GtkWidget * rightButton;
-
-	int location;
-	int MOVE;
-
-	typedef struct {
-		char *price;
-		char *change;
-		int color;
-	} StockQuote;
-	GArray *quotes;
-
 	enum {
 		WHITE,
 		RED,
 		GREEN
 	};
-
-	static const int max_rgb_str_len = 7;
-	static const int max_rgb_str_size = 8;
-
-	int setCounter;
-
-	GdkGC *gc;
-	GdkColor gdkUcolor,gdkDcolor;
-
-	/* end of COLOR vars */
-
-
-	char *configFileName;
-
-
-	/*  properties vars */
- 	 
-	GtkWidget *tik_syms_entry;
-
-	GtkWidget *fontDialog = NULL;
-
-	GtkWidget * pb;
-	char buttons[16]="blank";
-	char arrows[16]="blank";
-	char scroll[16]="blank";
-	char poutput[16]="blank";
-
+	
+	typedef struct {
+		char *price;
+		char *change;
+		int color;
+	} StockQuote;
+	
 	typedef struct
 	{
 		char *tik_syms;
@@ -97,54 +58,90 @@
 		char *scroll;
 		char *arrows;
 		gint timeout;
-		gchar dcolor[8];
-		gchar ucolor[8];
+		gchar *dcolor;
+		gchar *ucolor;
 		gchar *font;
 		gchar *font2;
 		gchar *buttons;
 
 	} gtik_properties;
 
-	gtik_properties props = {"cald+rhat+corl","default","right2left",
-			"arrows",5,"#ff0000","#00ff00","fixed",
-			"-*-clean-medium-r-normal-*-*-100-*-*-c-*-iso8859-1",
-			"yes"};
+	
+	typedef struct 
+	{
+		GtkWidget *applet;
+		GtkWidget *label;
 
-	/* end prop vars */
+		GdkPixmap *pixmap;
+		GtkWidget * drawing_area;
+		GtkWidget * leftButton;
+		GtkWidget * rightButton;
 
+		int location;
+		int MOVE;
+	
+		GArray *quotes;
 
-	gint timeout = 0;
-	gint drawTimeID, updateTimeID;
+		int max_rgb_str_len;
+		int max_rgb_str_size;
 
+		int setCounter;
+
+		GdkGC *gc;
+		GdkColor gdkUcolor,gdkDcolor;
+
+		/* end of COLOR vars */
+
+		char *configFileName;
+
+		/*  properties vars */
+ 	 
+		GtkWidget *tik_syms_entry;
+
+		GtkWidget *fontDialog;
+
+		GtkWidget * pb;
+		gchar *buttons;
+		gchar *arrows;
+		gchar *scroll;
+		gchar *poutput;
+	
+		gtik_properties props; 
+	
+		gint timeout;
+		gint drawTimeID, updateTimeID;
+		/* For fonts */
+		GdkFont * my_font;
+		gchar * new_font;
+		GdkFont * extra_font;
+		GdkFont * small_font;
+		gint symbolfont;
+		gint whichlabel;
+	} StockData;
+	
 	void removeSpace(char *buffer); 
-	int configured(void);
+	int configured(StockData *stockdata);
 	void timeout_cb( GtkWidget *widget, GtkWidget *spin );
 	void properties_save(char *path) ;
 	static void destroy_applet(GtkWidget *widget, gpointer data) ;
 	char *getSymsFromClist(GtkWidget *clist) ;
 
 	char *splitPrice(char *data);
-	char *splitChange(char *data);
+	char *splitChange(StockData *stockdata, char *data);
 
 	/* FOR COLOR */
 
-	static void updateOutput(void) ;
-	static void reSetOutputArray(void) ;
-	static void setOutputArray(char *param1) ;
-	void setup_colors(void);
-	int create_gc(void) ;
-	void ucolor_set_cb(GnomeColorPicker *cp) ;
-	void dcolor_set_cb(GnomeColorPicker *cp) ;
+	static gint updateOutput(gpointer data) ;
+	static void reSetOutputArray(StockData *stockdata) ;
+	static void setOutputArray(StockData *stockdata, char *param1) ;
+	void setup_colors(StockData *stockdata);
+	int create_gc(StockData *stockdata) ;
+	void ucolor_set_cb(GnomeColorPicker *cp, gpointer data) ;
+	void dcolor_set_cb(GnomeColorPicker *cp, gpointer data) ;
 
 	/* end of color funcs */
 
-	/* For fonts */
-	GdkFont * my_font;
-	gchar * new_font = NULL;
-	GdkFont * extra_font;
-	GdkFont * small_font;
-	static gint symbolfont = 1;
-	static gint whichlabel = 1;
+	
 
         gint font_cb( GtkWidget *widget, void *data ) ;
         gint OkClicked( GtkWidget *widget, void *data ) ;
@@ -152,114 +149,138 @@
 	/* end font funcs and vars */
 
 	/*-----------------------------------------------------------------*/
-	static gint applet_save_session(GtkWidget *widget, char *privcfgpath, 
-				char *globcfgpath) {
-		properties_save(privcfgpath);
-		return FALSE;
-	}
-
-
-	/*-----------------------------------------------------------------*/
-	static void load_fonts()
+	static void load_fonts(StockData *stockdata)
 	{
-		if (new_font != NULL) {
-			if (whichlabel == 1)
-				my_font = gdk_fontset_load(new_font);
+		
+		if (stockdata->new_font != NULL) {
+			if (stockdata->whichlabel == 1)
+				stockdata->my_font = gdk_fontset_load(stockdata->new_font);
 			else
-				small_font = gdk_fontset_load(new_font);
+				stockdata->small_font = gdk_fontset_load(stockdata->new_font);
 		}
-		if (!my_font)
-			my_font = gdk_fontset_load (props.font);
+g_print ("new font \n");
+		if (!stockdata->my_font)
+			stockdata->my_font = gdk_fontset_load (stockdata->props.font);
 
-		if (!extra_font)
-			extra_font = gdk_fontset_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
-		if (!small_font)
-			small_font = gdk_fontset_load (props.font2);
+		if (!stockdata->extra_font)
+			stockdata->extra_font = gdk_fontset_load ("fixed");
+
+		if (!stockdata->small_font)
+			stockdata->small_font = gdk_fontset_load (stockdata->props.font2);
 
 
 		/* If fonts do not load */
-		if (!my_font)
+		if (!stockdata->my_font)
 			g_error("Could not load fonts!");
 
-		if ( !extra_font || (strcmp(props.arrows,"noArrows")) == 0 ) {
+		if ( !stockdata->extra_font || (strcmp(stockdata->props.arrows,"noArrows")) == 0 ) {
 			
-			if (extra_font)
-				gdk_font_unref(extra_font);
-			extra_font = gdk_fontset_load("fixed");
-			symbolfont = 0;
+			if (stockdata->extra_font)
+				gdk_font_unref(stockdata->extra_font);
+			stockdata->extra_font = gdk_fontset_load("fixed");
+			stockdata->symbolfont = 0;
 		}
 		else {
-			if (extra_font)
-				gdk_font_unref(extra_font);
-			extra_font = gdk_fontset_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
-			symbolfont = 1;
+			if (stockdata->extra_font)
+				gdk_font_unref(stockdata->extra_font);
+			stockdata->extra_font = gdk_fontset_load ("fixed");
+			stockdata->symbolfont = 1;
 
 		}
-		if (!small_font) {
-			if (small_font)
-				gdk_font_unref(small_font);
-			small_font = gdk_fontset_load("fixed");
+		if (!stockdata->small_font) {
+			if (stockdata->small_font)
+				gdk_font_unref(stockdata->small_font);
+			stockdata->small_font = gdk_fontset_load("fixed");
 		}
+
 	}
 
 /*-----------------------------------------------------------------*/
 static void xfer_callback (GnomeVFSAsyncHandle *handle, GnomeVFSXferProgressInfo *info, gpointer data)
 {
+	StockData *stockdata = data;
+g_print ("%d \n", info->phase);
 	if (info->phase == GNOME_VFS_XFER_PHASE_COMPLETED) {
-		if (!configured()) {
-			reSetOutputArray();
+g_print ("completed \n");
+		if (!configured(stockdata)) {
+			reSetOutputArray(stockdata);
 			fprintf(stderr, "No data!\n");
-			setOutputArray(_("No data available or properties not set"));
+			setOutputArray(stockdata,
+				       _("No data available or properties not set"));
 		}
 	}
 }
 
 /*-----------------------------------------------------------------*/
-static void updateOutput(void)
+static gint updateOutput(gpointer data)
 {
-	GList *sources, *dests;
+	StockData *stockdata = data;
+	GList *sources = NULL, *dests = NULL;
 	GnomeVFSURI *source_uri, *dest_uri;
 	char *source_text_uri;
 	GnomeVFSAsyncHandle *vfshandle;
 
 	source_text_uri = g_strconcat("http://finance.yahoo.com/q?s=",
-				      props.tik_syms,
+				      stockdata->props.tik_syms,
 				      "&d=v2",
 				      NULL);
+g_print ("%s \n", source_text_uri);
 	source_uri = gnome_vfs_uri_new(source_text_uri);
-	sources = g_list_append(NULL, source_uri);
+	sources = g_list_append(sources, source_uri);
 	g_free(source_text_uri);
-
-	dest_uri = gnome_vfs_uri_new(configFileName);
-	dests = g_list_append(NULL, dest_uri);
-
+g_print ("%s \n", stockdata->configFileName);
+	dest_uri = gnome_vfs_uri_new(stockdata->configFileName);
+	dests = g_list_append(dests, dest_uri);
+#if 1
 	if (GNOME_VFS_OK !=
 	    gnome_vfs_async_xfer(&vfshandle, sources, dests,
 				 GNOME_VFS_XFER_DEFAULT,
 				 GNOME_VFS_XFER_ERROR_MODE_ABORT,
 				 GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
+				 GNOME_VFS_PRIORITY_DEFAULT,
 				 (GnomeVFSAsyncXferProgressCallback) xfer_callback,
-				 NULL, NULL, NULL)) {
+				 stockdata, 
+				 NULL, NULL)) {
 		GnomeVFSXferProgressInfo info;
+g_print ("hello \n");
 		info.phase = GNOME_VFS_XFER_PHASE_COMPLETED;
-		xfer_callback(NULL, &info, NULL);
-	}	
-
+		xfer_callback(NULL, &info, stockdata);
+	}
+#else
+	gnome_vfs_xfer_uri (source_uri, dest_uri, GNOME_VFS_XFER_DEFAULT,
+			    GNOME_VFS_XFER_ERROR_MODE_ABORT,
+			    GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
+			    NULL,
+			    NULL);
+	configured (stockdata);
+#endif
 	g_list_free(sources);
 	g_list_free(dests);
 
 	gnome_vfs_uri_unref(source_uri);
 	gnome_vfs_uri_unref(dest_uri);
+	
+	return FALSE;
 }
 
 
 
 
 	/*-----------------------------------------------------------------*/
-	static void properties_load( char *path) {
-
-
-		gnome_config_push_prefix (path);
+	static void properties_load(StockData *stockdata) {
+		stockdata->props.tik_syms = g_strdup ("cald+rhat+corl");
+		stockdata->props.output = g_strdup ("default");
+		stockdata->props.scroll = g_strdup ("right2left");
+		stockdata->props.arrows = g_strdup ("arrows");
+		stockdata->props.timeout = 5;
+		stockdata->props.dcolor = g_strdup ("#ff0000");
+		stockdata->props.ucolor = g_strdup ("#00ff00");
+		stockdata->props.font = g_strdup ("fixed");
+		stockdata->props.font2 = g_strdup ("-*-clean-medium-r-normal-*-*-100-*-*-c-*-iso8859-1");
+		stockdata->props.buttons = g_strdup ("yes");
+#ifdef FIXME	
+		
+		gnome_config_push_prefix ("/");
 		if( gnome_config_get_string ("gtik/tik_syms") != NULL ) 
 		   props.tik_syms = gnome_config_get_string("gtik/tik_syms");
 		
@@ -293,13 +314,14 @@ static void updateOutput(void)
 			props.buttons = gnome_config_get_string("gtik/buttons");
 		
 		gnome_config_pop_prefix ();
+#endif
 	}
 
 
 
 	/*-----------------------------------------------------------------*/
 	void properties_save(char *path) {
-
+#ifdef FIXME
 		gnome_config_push_prefix (path);
 		gnome_config_set_string( "gtik/tik_syms", props.tik_syms );
 		gnome_config_set_string( "gtik/output", props.output );
@@ -316,24 +338,25 @@ static void updateOutput(void)
 		gnome_config_pop_prefix ();
 		gnome_config_sync();
 		gnome_config_drop_all();
+#endif
 	}	
 
 
 	/*-----------------------------------------------------------------*/
-	static void properties_set (gboolean update) {
-		if (!strcmp(props.buttons,"yes")) {
-			gtk_widget_show(leftButton);
-			gtk_widget_show(rightButton);
+	static void properties_set (StockData *stockdata, gboolean update) {
+		if (!strcmp(stockdata->props.buttons,"yes")) {
+			gtk_widget_show(stockdata->leftButton);
+			gtk_widget_show(stockdata->rightButton);
 		}
 		else {
-			gtk_widget_hide(leftButton);
-			gtk_widget_hide(rightButton);
+			gtk_widget_hide(stockdata->leftButton);
+			gtk_widget_hide(stockdata->rightButton);
 		}
 
-		setup_colors();		
-		load_fonts();
+		setup_colors(stockdata);		
+		load_fonts(stockdata);
 		if (update)
-			updateOutput();
+			updateOutput(stockdata);
 	}
 
 
@@ -385,7 +408,7 @@ static void updateOutput(void)
 		int flag=0;
 		char *section = NULL;
 		char *ptr;
-
+g_print ("parse \n");
 		if (strlen(line) > 64) AllOneLine=1;
 
 		if (AllOneLine) {
@@ -458,18 +481,18 @@ static void updateOutput(void)
 
 
 	/*-----------------------------------------------------------------*/
-	int configured() {
+	int configured(StockData *stockdata) {
 		int retVar;
 
 		char  buffer[512];
 		static FILE *CONFIG;
 
-		CONFIG = fopen((const char *)configFileName,"r");
-
+		CONFIG = fopen((const char *)stockdata->configFileName,"r");
+g_print ("configured \n");
 		retVar = 0;
 
 		/* clear the output variable */
-		reSetOutputArray();
+		reSetOutputArray(stockdata);
 
 		if ( CONFIG ) {
 			while ( !feof(CONFIG) ) {
@@ -478,7 +501,7 @@ static void updateOutput(void)
 				if (strstr(buffer,
 				    "<td nowrap align=left><a href=\"/q\?s=")) {
 
-				      setOutputArray(parseQuote(CONFIG,buffer));
+				      setOutputArray(stockdata, parseQuote(CONFIG,buffer));
 				      retVar = 1;
 				}
 				else {
@@ -497,11 +520,11 @@ static void updateOutput(void)
 
 
 	/*-----------------------------------------------------------------*/
-	static gint expose_event (GtkWidget *widget,GdkEventExpose *event) {
-
+	static gint expose_event (GtkWidget *widget,GdkEventExpose *event, gpointer data) {
+		StockData *stockdata = data;
 		gdk_draw_pixmap(widget->window,
 		widget->style->fg_gc[GTK_WIDGET_STATE(widget)],
-		pixmap,
+		stockdata->pixmap,
 		event->area.x, event->area.y,
 		event->area.x, event->area.y,
 		event->area.width,event->area.height);
@@ -512,13 +535,14 @@ static void updateOutput(void)
 
 
 	/*-----------------------------------------------------------------*/
-	static gint configure_event(GtkWidget *widget,GdkEventConfigure *event){
-
-		if(pixmap) {
-			gdk_pixmap_unref (pixmap);
+	static gint configure_event(GtkWidget *widget,GdkEventConfigure *event, 
+				    gpointer data){
+		StockData *stockdata = data;
+		if(stockdata->pixmap) {
+			gdk_pixmap_unref (stockdata->pixmap);
 		}
 
-		pixmap = gdk_pixmap_new(widget->window,
+		stockdata->pixmap = gdk_pixmap_new(widget->window,
 		widget->allocation.width,
 		widget->allocation.height,
 		-1);
@@ -533,7 +557,13 @@ static void updateOutput(void)
 
 	/*-----------------------------------------------------------------*/
 	static gint Repaint (gpointer data) {
-		GtkWidget* drawing_area = (GtkWidget *) data;
+		StockData *stockdata = data;
+		GtkWidget* drawing_area = stockdata->drawing_area;
+		GArray *quotes = stockdata->quotes;
+		GdkFont *my_font = stockdata->my_font;
+		GdkFont *small_font = stockdata->small_font;
+		GdkFont *extra_font = stockdata->extra_font;
+		GdkGC *gc = stockdata->gc;
 		GdkRectangle update_rect;
 		int	comp;
 
@@ -548,7 +578,7 @@ static void updateOutput(void)
 		totalLen = 0;
 
 		/* clear the pixmap */
-		gdk_draw_rectangle (pixmap,
+		gdk_draw_rectangle (stockdata->pixmap,
 		drawing_area->style->black_gc,
 		TRUE,
 		0,0,
@@ -556,10 +586,10 @@ static void updateOutput(void)
 		drawing_area->allocation.height);
 
 
-		for(i=0;i<setCounter;i++) {
+		for(i=0;i<stockdata->setCounter;i++) {
 			totalLen += (gdk_string_width(my_font,
-					STOCK_QUOTE(quotes->data)[i].price) + 10);
-			if (!strcmp(props.output,"default")) {
+				STOCK_QUOTE(quotes->data)[i].price) + 10);
+			if (!strcmp(stockdata->props.output,"default")) {
 				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
 					totalLen += (gdk_text_width(extra_font,
 								    STOCK_QUOTE(quotes->data)[i].change,1) + 10);
@@ -571,26 +601,27 @@ static void updateOutput(void)
 
 		comp = 0 - totalLen;
 
-		if (MOVE == 1) { MOVE = 0; } else { MOVE = 1; }
+		if (stockdata->MOVE == 1) { stockdata->MOVE = 0; } 
+		else { stockdata->MOVE = 1; }
 
-		if (MOVE == 1) {
+		if (stockdata->MOVE == 1) {
 
 
-		  if (!strcmp(props.scroll,"right2left")) {
-			if (location > comp) {
-				location--;
+		  if (!strcmp(stockdata->props.scroll,"right2left")) {
+			if (stockdata->location > comp) {
+				stockdata->location--;
 			}
 			else {
-				location = drawing_area->allocation.width;
+				stockdata->location = drawing_area->allocation.width;
 			}
 
 		  }
 		  else {
-                       if (location < drawing_area->allocation.width) {
-                                location ++;
+                       if (stockdata->location < drawing_area->allocation.width) {
+                                stockdata->location ++;
                         }
                         else {
-                                location = comp;
+                                stockdata->location = comp;
                         }
 		  }
 
@@ -598,37 +629,38 @@ static void updateOutput(void)
 
 		}
 
-		for (i=0;i<setCounter;i++) {
+		for (i=0;i<stockdata->setCounter;i++) {
 
 			/* COLOR */
-			if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
-				gdk_gc_set_foreground( gc, &gdkUcolor );
+			/*if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
+				gdk_gc_set_foreground( gc, &stockdata->gdkUcolor );
 			}
 			else if (STOCK_QUOTE(quotes->data)->color == RED) {
-				gdk_gc_set_foreground( gc, &gdkDcolor );
+				gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
 			}
-			else {
+			else {*/
 				gdk_gc_copy( gc, drawing_area->style->white_gc );
-			}
+			/*}*/
 
 			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
-			gdk_draw_string (pixmap,my_font,
-			gc,
-			location + totalLoc ,14,STOCK_QUOTE(quotes->data)[i].price);
+			gdk_draw_string (stockdata->pixmap,my_font, gc,
+			stockdata->location + totalLoc ,14,
+			STOCK_QUOTE(quotes->data)[i].price);
+
 			totalLoc += (gdk_string_width(my_font,tmpSym) + 10); 
 
 
-			if (!strcmp(props.output,"default")) {
+			if (!strcmp(stockdata->props.output,"default")) {
 				tmpSym = STOCK_QUOTE(quotes->data)[i].change;
 				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
-					gdk_draw_text (pixmap,extra_font,
-					     gc, location + totalLoc,
+					gdk_draw_text (stockdata->pixmap,extra_font,
+					     gc, stockdata->location + totalLoc,
 					     14,STOCK_QUOTE(quotes->data)[i].change,1);
 					totalLoc += (gdk_text_width(extra_font,
 							STOCK_QUOTE(quotes->data)[i].change,1) + 5);
 				}
-				gdk_draw_string (pixmap,small_font,
-				     gc, location + totalLoc,
+				gdk_draw_string (stockdata->pixmap,small_font,
+				     gc, stockdata->location + totalLoc,
 				     14, &STOCK_QUOTE(quotes->data)[i].change[1]);
 				totalLoc += (gdk_string_width(small_font,
 						tmpSym) + 10); 
@@ -648,7 +680,8 @@ static void updateOutput(void)
 
 
 	/*-----------------------------------------------------------------*/
-	static void about_cb (AppletWidget *widget, gpointer data) {
+	static void about_cb (BonoboUIComponent *uic, gpointer data, 
+			      const gchar *verbname) {
 		GtkWidget *about;
 		static const gchar *authors[] = {
 			"Jayson Lorenzen <jayson_lorenzen@yahoo.com>",
@@ -658,13 +691,15 @@ static void updateOutput(void)
 
 		about = gnome_about_new (_("The GNOME Stock Ticker"), VERSION,
 		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
-		authors,
 		_("This program connects to "
 		"a popular site and downloads current stock quotes.  "
 		"The GNOME Stock Ticker is a free Internet-based application.  "
 		"It comes with ABSOLUTELY NO WARRANTY.  "
 		"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
 		"informational purposes only."),
+		authors,
+		NULL,
+		NULL,
 		NULL);
 		gtk_widget_show (about);
 
@@ -674,36 +709,40 @@ static void updateOutput(void)
 
 
 	/*-----------------------------------------------------------------*/
-	static void refresh_cb(AppletWidget *widget, gpointer data) {
-		updateOutput();
+	static void refresh_cb(BonoboUIComponent *uic, gpointer data, 
+			       const gchar *verbname) {
+		StockData *stockdata = data;
+		updateOutput(stockdata);
 	}
 
 
 	/*-----------------------------------------------------------------*/
 	static void zipLeft(GtkWidget *widget, gpointer data) {
+		StockData *stockdata = data;
 		gchar *current;
 		gint i;
 
-		current = g_strdup(props.scroll);
-		props.scroll = g_strdup("right2left");
+		current = g_strdup(stockdata->props.scroll);
+		stockdata->props.scroll = g_strdup("right2left");
 		for (i=0;i<151;i++) {
-			Repaint((gpointer)drawing_area);
+			Repaint(stockdata);
 		}
-		props.scroll = g_strdup(current);
+		stockdata->props.scroll = g_strdup(current);
 		g_free(current);
 	}
 
 	/*-----------------------------------------------------------------*/
 	static void zipRight(GtkWidget *widget, gpointer data) {
+		StockData *stockdata = data;
 		gchar *current;
 		gint i;
 
-		current = g_strdup(props.scroll);
-		props.scroll = g_strdup("left2right");
+		current = g_strdup(stockdata->props.scroll);
+		stockdata->props.scroll = g_strdup("left2right");
 		for (i=0;i<151;i++) {
-			Repaint((gpointer)drawing_area);
+			Repaint(stockdata);
 		}
-		props.scroll = g_strdup(current);
+		stockdata->props.scroll = g_strdup(current);
 		g_free(current);
 	}
 
@@ -724,45 +763,55 @@ static void updateOutput(void)
 
 	/*-----------------------------------------------------------------*/
 	static void toggle_output_cb(GtkWidget *widget, gpointer data) {
+#ifdef FIXME
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(poutput,"nochange");
 		else
 			strcpy(poutput,"default");
+#endif
 			
 	}
 
 	/*-----------------------------------------------------------------*/
 	static void toggle_scroll_cb(GtkWidget *widget, gpointer data) {
+#ifdef FIXME
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(scroll,"left2right");
 		else
 			strcpy(scroll,"right2left");
+#endif
 			
 	}
 
 
 	/*-----------------------------------------------------------------*/
 	static void toggle_arrows_cb(GtkWidget *widget, gpointer data) {
+#ifdef FIXME
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(arrows,"arrows");
 		else
 			strcpy(arrows,"noArrows");
-			
+#endif			
 	}
 
 	/*-----------------------------------------------------------------*/
 	static void toggle_buttons_cb(GtkWidget *widget, gpointer data) {
+#ifdef FIXME
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(buttons,"yes");
 		else
 			strcpy(buttons,"no");
+#endif
 	}
 
 
 	/*-----------------------------------------------------------------*/
 	void timeout_cb( GtkWidget *widget, GtkWidget *spin ) {
+#ifdef FIXME
 		timeout=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+
 		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
+#endif
 	}
 
 
@@ -775,7 +824,7 @@ static void updateOutput(void)
 
 		tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
 		props.tik_syms = g_strdup(tmpText);
-#endif
+
 		props.tik_syms = getSymsFromClist(tik_syms_entry);
 		if  (props.timeout) {	
 			props.timeout = timeout > 0 ? timeout : props.timeout;
@@ -807,7 +856,9 @@ static void updateOutput(void)
 				   (gpointer)updateOutput,"NULL");
 
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
+
 		properties_set(TRUE);
+#endif
 	}
 
 
@@ -822,6 +873,7 @@ static void updateOutput(void)
 
 	/*-----------------------------------------------------------------*/
         static gint font_selector( GtkWidget *widget, void *data ) {
+#ifdef FIXME
 		if (!fontDialog) {
 			fontDialog = gtk_font_selection_dialog_new("Font Selector");
 			gtk_signal_connect (GTK_OBJECT (GTK_FONT_SELECTION_DIALOG(fontDialog)->ok_button),
@@ -838,22 +890,26 @@ static void updateOutput(void)
             		gtk_widget_show(fontDialog);
 		} else
 			gdk_window_raise(fontDialog->window);
-			
+#endif			
 		return FALSE;
 	}
 
         /*-----------------------------------------------------------------*/
 
 	gint font_cb(GtkWidget *widget, gpointer data) {
+#ifdef FIXME
 		whichlabel = 1;
 		font_selector(widget,data);
+#endif
 		return FALSE;
 	}
 
         /*-----------------------------------------------------------------*/
 	static gint font2_cb(GtkWidget *widget, gpointer data) {
+#ifdef FIXME
 		whichlabel = 2;
 		font_selector(widget,data);
+#endif
 		return FALSE;
 	}
 
@@ -861,16 +917,17 @@ static void updateOutput(void)
         gint OkClicked( GtkWidget *widget, void *fontDialog ) {
                 gchar *newFont = NULL;
 
-
+#ifdef FIXME
                 GtkFontSelectionDialog *fsd = 
 			GTK_FONT_SELECTION_DIALOG(fontDialog);
 
                 newFont = gtk_font_selection_dialog_get_font_name(fsd);
                 new_font = g_strdup(newFont);
                 gtk_widget_destroy(fontDialog);
+#endif
 		return FALSE;
         }
-
+#ifdef FIXME
         /*-----------------------------------------------------------------*/
         gint QuitFontDialog( GtkWidget *widget, void *data ) {
 		fontDialog = NULL;
@@ -1062,9 +1119,10 @@ static void updateOutput(void)
 		return(mainhbox);
 
 	}
-	
+#endif	
 	/*-----------------------------------------------------------------*/
-	static void properties_cb (AppletWidget *widget, gpointer data) {
+	static void properties_cb (BonoboUIComponent *uic, gpointer data, 
+				   const gchar *verbname) {
 		GtkWidget * vbox;
 		GtkWidget * vbox2;
 		GtkWidget * vbox3;
@@ -1073,7 +1131,7 @@ static void updateOutput(void)
 #if 0
 		GtkWidget *urlcheck, *launchcheck;
 #endif
-
+#ifdef FIXME
 		GtkWidget *panela, *panel1 ,*panel2;
 		GtkWidget *label1, *label5;
 
@@ -1261,149 +1319,150 @@ static void updateOutput(void)
 				    GTK_SIGNAL_FUNC(apply_cb), NULL);
 
 		gtk_widget_show_all(pb);
+#endif
 	}
 
+	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
+        	BONOBO_UI_VERB ("Props", properties_cb),
+        	BONOBO_UI_VERB ("Refresh", refresh_cb),
+        	BONOBO_UI_VERB ("About", about_cb),
+
+        	BONOBO_UI_VERB_END
+	};
+
+	static const char gtik_applet_menu_xml [] =
+		"<popup name=\"button3\">\n"
+		"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
+		"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+		"   <menuitem name=\"Item 2\" verb=\"Refresh\" _label=\"Refresh\"/>\n"
+		"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
+		"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+		"</popup>\n";
 
 
 	/*-----------------------------------------------------------------*/
-	int main(int argc, char **argv) {
+	static gboolean gtik_applet_fill (PanelApplet *applet){
+		StockData *stockdata;
 		GtkWidget * vbox;
 		GtkWidget * frame;
 
-		configFileName = g_strconcat (g_getenv ("HOME"), "/.gtik.conf", NULL);
-
-		/* Initialize the i18n stuff */
-		bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-		textdomain (PACKAGE);
-
-
-		/* intialize, this will basically set up the applet, corba and
-		call gnome_init */
-		applet_widget_init(GTIK_APPLET_NAME, VERSION, argc, argv,
-				    NULL, 0, NULL);
 		gnome_vfs_init();
+		
+		stockdata = g_new0 (StockData, 1);
+		stockdata->max_rgb_str_len = 7;
+		stockdata->max_rgb_str_size = 8;
+		stockdata->buttons = g_strdup ("blank");
+		stockdata->arrows = g_strdup ("blank");
+		stockdata->scroll = g_strdup ("blank");
+		stockdata->poutput = g_strdup ("blank");
+		stockdata->timeout = 0;
+		stockdata->configFileName = g_strconcat (g_getenv ("HOME"), 
+						         "/.gtik.conf", NULL);
 
-		/* create a new applet_widget */
-		applet = applet_widget_new(GTIK_APPLET_NAME);
-		/* in the rare case that the communication with the panel
-		failed, error out */
-		if (!applet)
-			g_error("Can't create applet!\n");
-
-		quotes = g_array_new(FALSE, FALSE, sizeof(StockQuote));	
+		stockdata->quotes = g_array_new(FALSE, FALSE, sizeof(StockQuote));	
 
 		vbox = gtk_hbox_new (FALSE,0);
-		leftButton = gtk_button_new_with_label("<<");
-		rightButton = gtk_button_new_with_label(">>");
-		gtk_signal_connect (GTK_OBJECT (leftButton),
+		stockdata->leftButton = gtk_button_new_with_label("<<");
+		stockdata->rightButton = gtk_button_new_with_label(">>");
+		gtk_signal_connect (GTK_OBJECT (stockdata->leftButton),
 					"clicked",
-					GTK_SIGNAL_FUNC(zipLeft),NULL);
-		gtk_signal_connect (GTK_OBJECT (rightButton),
+					GTK_SIGNAL_FUNC(zipLeft),stockdata);
+		gtk_signal_connect (GTK_OBJECT (stockdata->rightButton),
 					"clicked",
-					GTK_SIGNAL_FUNC(zipRight),NULL);
+					GTK_SIGNAL_FUNC(zipRight),stockdata);
 
 
 		frame = gtk_frame_new(NULL);
 		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 
 
-		drawing_area = gtk_drawing_area_new();
-		gtk_drawing_area_size(GTK_DRAWING_AREA (drawing_area),200,20);
+		stockdata->drawing_area = gtk_drawing_area_new();
+		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),200,20);
 
-		gtk_widget_show(drawing_area);
-		gtk_container_add(GTK_CONTAINER(frame),drawing_area);
+		gtk_widget_show(stockdata->drawing_area);
+		gtk_container_add(GTK_CONTAINER(frame),stockdata->drawing_area);
 		gtk_widget_show(frame);
 
-		gtk_box_pack_start(GTK_BOX(vbox),leftButton,FALSE,FALSE,0);
+		gtk_box_pack_start(GTK_BOX(vbox),stockdata->leftButton,FALSE,FALSE,0);
 		gtk_box_pack_start(GTK_BOX (vbox), frame,TRUE,TRUE,0);
-		gtk_box_pack_start(GTK_BOX(vbox),rightButton,FALSE,FALSE,0);
+		gtk_box_pack_start(GTK_BOX(vbox),stockdata->rightButton,FALSE,FALSE,0);
 
 		gtk_widget_show(vbox);
 
-		applet_widget_add (APPLET_WIDGET (applet), vbox);
+		gtk_container_add (GTK_CONTAINER (applet), vbox);
 
-		gtk_signal_connect(GTK_OBJECT(drawing_area),"expose_event",
-		(GtkSignalFunc) expose_event, NULL);
+		gtk_signal_connect(GTK_OBJECT(stockdata->drawing_area),"expose_event",
+		(GtkSignalFunc) expose_event, stockdata);
 
-		gtk_signal_connect(GTK_OBJECT(drawing_area),"configure_event",
-		(GtkSignalFunc) configure_event, NULL);
+		gtk_signal_connect(GTK_OBJECT(stockdata->drawing_area),"configure_event",
+		(GtkSignalFunc) configure_event, stockdata);
 
 
 		/* CLEAN UP WHEN REMOVED FROM THE PANEL */
 		gtk_signal_connect(GTK_OBJECT(applet), "destroy",
-			GTK_SIGNAL_FUNC(destroy_applet), NULL);
+			GTK_SIGNAL_FUNC(destroy_applet), stockdata);
 
 
 
-		gtk_widget_show (applet);
-		create_gc();
-
-		/* add an item to the applet menu */
-		applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-			"refresh",
-			GNOME_STOCK_MENU_REFRESH,
-			_("Refresh"),
-			refresh_cb,
-			NULL);
+		gtk_widget_show (GTK_WIDGET (applet));
+		create_gc(stockdata);
 
 
-
-		/* add an item to the applet menu */
-		applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-			"properties",
-			GNOME_STOCK_MENU_PROP,
-			_("Properties..."),
-			properties_cb,
-			NULL);
-
-
-		/* add an item to the applet menu */
-		applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-                                              "about",
-                                              GNOME_STOCK_MENU_ABOUT,
-                                              _("About..."),
-                                              about_cb,
-                                              NULL);
-
-
-
-
-
-		properties_load(APPLET_WIDGET(applet)->privcfgpath);
-		properties_set(FALSE);
-
-		gtk_signal_connect(GTK_OBJECT(applet),"save_session",
-		GTK_SIGNAL_FUNC(applet_save_session), NULL);
-
+		properties_load(stockdata);
+		properties_set(stockdata,FALSE);
+		
+		panel_applet_setup_menu (PANEL_APPLET (applet),
+				         gtik_applet_menu_xml,
+				         gtik_applet_menu_verbs,
+				         stockdata);
 
 		/* KEEPING TIMER ID FOR CLEANUP IN DESTROY */
-		drawTimeID   = gtk_timeout_add(2,Repaint,drawing_area);
-		updateTimeID = gtk_timeout_add(props.timeout * 60000,
-				   (gpointer)updateOutput,"NULL");
+		stockdata->drawTimeID = gtk_timeout_add(100,Repaint,stockdata);
+		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
+				                          updateOutput,stockdata);
 
 
-		if (!strcmp(props.buttons,"yes")) {
-			gtk_widget_show(leftButton);
-			gtk_widget_show(rightButton);
+		if (!strcmp(stockdata->props.buttons,"yes")) {
+			gtk_widget_show(stockdata->leftButton);
+			gtk_widget_show(stockdata->rightButton);
 		}
 
-		updateOutput();
+		updateOutput(stockdata);
 
-		/* special corba main loop */
-		applet_widget_gtk_main ();
-
-		return 0;
+		return TRUE;
 	}
+	
+	static gboolean
+	gtik_applet_factory (PanelApplet *applet,
+			     const gchar *iid,
+			     gpointer     data)
+	{
+		gboolean retval;
+    
+		if (!strcmp (iid, "OAFIID:GNOME_GtikApplet"))
+			retval = gtik_applet_fill (applet); 
+    
+		return retval;
+	}
+
+	PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GtikApplet_Factory",
+			     	"Gtik applet",
+			     	"0",
+			     	gtik_applet_factory,
+			     	NULL)
+
 
 
 
 /* JHACK */
 	/*-----------------------------------------------------------------*/
 	static void destroy_applet(GtkWidget *widget, gpointer data) {
-	
-		if (drawTimeID > 0) { gtk_timeout_remove(drawTimeID); }
-		if (updateTimeID >0) { gtk_timeout_remove(updateTimeID); }
-		gtk_widget_destroy(drawing_area);
+		StockData *stockdata = data;
+		if (stockdata->drawTimeID > 0) { 
+			gtk_timeout_remove(stockdata->drawTimeID); }
+		if (stockdata->updateTimeID >0) { 
+			gtk_timeout_remove(stockdata->updateTimeID); }
+		gtk_widget_destroy(stockdata->drawing_area);
 
 	}
 
@@ -1413,8 +1472,8 @@ static void updateOutput(void)
 	
 /*HERE*/
 	/*-----------------------------------------------------------------*/
-	static void reSetOutputArray() {
-
+	static void reSetOutputArray(StockData *stockdata) {
+		GArray *quotes = stockdata->quotes;
 		while (quotes->len) {
 			int i = quotes->len - 1;
 			g_free(STOCK_QUOTE(quotes->data)[i].price);
@@ -1422,7 +1481,7 @@ static void updateOutput(void)
 			g_array_remove_index(quotes, i);
 		}
 
-		setCounter = 0;
+		stockdata->setCounter = 0;
 	}	
 
 
@@ -1445,7 +1504,7 @@ static void updateOutput(void)
 	}
 
 	/*-----------------------------------------------------------------*/
-	char *splitChange(char *data) {
+	char *splitChange(StockData *stockdata,char *data) {
 		char buff[128]="";
 		static char buff2[128]="";
 		char *var1, *var2, *var3, *var4;
@@ -1460,12 +1519,12 @@ static void updateOutput(void)
 			return data;
 
 		if (var3[0] == '+') { 
-			if (symbolfont)
+			if (stockdata->symbolfont)
 				var3[0] = 221;
 			var4[0] = '(';
 		}
 		else if (var3[0] == '-') {
-			if (symbolfont)
+			if (stockdata->symbolfont)
 				var3[0] = 223;	
 			var4[0] = '(';
 		}
@@ -1479,13 +1538,13 @@ static void updateOutput(void)
 	}
 
 	/*-----------------------------------------------------------------*/
-	static void setOutputArray(char *param1) {
+	static void setOutputArray(StockData *stockdata, char *param1) {
 		StockQuote quote;
 		char *price;
 		char *change;
 
 		price = splitPrice(param1);
-		change = splitChange(param1);
+		change = splitChange(stockdata, param1);
 
 		quote.price = g_strdup(price);
 		quote.change = g_strdup(change);
@@ -1497,35 +1556,36 @@ static void updateOutput(void)
 		else
 			quote.color = WHITE;
 
-#if 0
+#if 1
 		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
 #endif
 
-		g_array_append_val(quotes, quote);
+		g_array_append_val(stockdata->quotes, quote);
 
-		setCounter++;
+		stockdata->setCounter++;
 	}
 
 
 
 	/*-----------------------------------------------------------------*/
 
-	void setup_colors(void) {
+	void setup_colors(StockData *stockdata) {
 		GdkColormap *colormap;
 
-		colormap = gtk_widget_get_colormap(drawing_area);
+		colormap = gtk_widget_get_colormap(stockdata->drawing_area);
 
-		gdk_color_parse(props.ucolor, &gdkUcolor);
-		gdk_color_alloc(colormap, &gdkUcolor);
+		gdk_color_parse(stockdata->props.ucolor, &stockdata->gdkUcolor);
+		gdk_color_alloc(colormap, &stockdata->gdkUcolor);
 
-		gdk_color_parse(props.dcolor, &gdkDcolor);
-		gdk_color_alloc(colormap, &gdkDcolor);
+		gdk_color_parse(stockdata->props.dcolor, &stockdata->gdkDcolor);
+		gdk_color_alloc(colormap, &stockdata->gdkDcolor);
+
 	}
 
 	
-	int create_gc(void) {
-		gc = gdk_gc_new( drawing_area->window );
-		gdk_gc_copy( gc, drawing_area->style->white_gc );
+	int create_gc(StockData *stockdata) {
+		stockdata->gc = gdk_gc_new( stockdata->drawing_area->window );
+		gdk_gc_copy(stockdata->gc, stockdata->drawing_area->style->white_gc );
 		return 0;
 	}
 
@@ -1535,7 +1595,8 @@ static void updateOutput(void)
 
 
 
-	void ucolor_set_cb(GnomeColorPicker *cp) {
+	void ucolor_set_cb(GnomeColorPicker *cp, gpointer data) {
+		StockData *stockdata = data;
 		guint8 r,g,b;
 		gnome_color_picker_get_i8(cp,
 					&r,
@@ -1543,23 +1604,24 @@ static void updateOutput(void)
 					&b,
 					NULL);
 
-		g_snprintf( props.ucolor, max_rgb_str_size,
+		g_snprintf( stockdata->props.ucolor, stockdata->max_rgb_str_size,
 		"#%02x%02x%02x", r, g, b );
-		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
+		gnome_property_box_changed(GNOME_PROPERTY_BOX(stockdata->pb));
 	}
 
 
 
-	void dcolor_set_cb(GnomeColorPicker *cp) {
+	void dcolor_set_cb(GnomeColorPicker *cp, gpointer data) {
+		StockData *stockdata = data;
 		guint8 r,g,b;
 		gnome_color_picker_get_i8(cp,
 					&r,
 					&g,
 					&b,
 					NULL);
-		g_snprintf( props.dcolor, max_rgb_str_size,
+		g_snprintf( stockdata->props.dcolor, stockdata->max_rgb_str_size,
 		"#%02x%02x%02x", r, g, b );
-		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
+		gnome_property_box_changed(GNOME_PROPERTY_BOX(stockdata->pb));
 	}
 
 

@@ -1,25 +1,21 @@
 
 INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-		 -I$(includedir)  $(GNOME_INCLUDEDIR) $(VFS_CFLAGS) \
+		 $(GNOME_APPLETS_CFLAGS) $(GNOME_VFS_APPLETS_CFLAGS) \
 		 -DGTIK_APPLET_NAME=\"gtik2_applet\"
 
-bin_PROGRAMS = gtik2_applet
+bin_PROGRAMS = gtik2_applet2
 
-gtik2_applet_SOURCES = gtik.c 
+gtik2_applet2_SOURCES = gtik.c 
 
-gtik2_applet_LDADD = 	$(GNOMEUI_LIBS) \
-			$(GNOME_APPLETS_LIBS) \
-			$(VFS_LIBS)
+gtik2_applet2_LDADD = 	$(GNOME_APPLETS_LIBS) \
+			$(GNOME_VFS_APPLETS_LIBS)
+			
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_GtikApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
-sysdir = $(datadir)/applets/Network
-sys_predata = gtik2_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
-
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = gtik2_applet.gnorba
+@INTLTOOL_SERVER_RULE@
 
 EXTRA_DIST = \
-	README AUTHORS ChangeLog	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
-
+	README AUTHORS ChangeLog \
+	$(server_in_files)
