@@ -19,7 +19,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 #include <config.h>
 #include <gnome.h>
-#include "gnote.h"
+#include "gnotes_applet.h"
 
 static int save_state (GnomeClient *client, gint phase, 
 		       GnomeRestartStyle save_style,
