@@ -13,10 +13,10 @@ static void use_gmt_cb(GtkWidget *w, gpointer data);
 static void gmt_offset_cb(GtkObject *adj, gpointer data);
 static void always_blink_cb(GtkWidget *w, gpointer data);
 static void mail_max_cb(GtkObject *adj, gpointer data);
-static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data);
+static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
-void property_load(gchar *path, AppData *ad)
+void property_load(const gchar *path, AppData *ad)
 {
 	g_free(ad->mail_file);
 	g_free(ad->theme_file);
@@ -36,7 +36,7 @@ void property_load(gchar *path, AppData *ad)
         gnome_config_pop_prefix ();
 }
 
-void property_save(gchar *path, AppData *ad)
+void property_save(const gchar *path, AppData *ad)
 {
         gnome_config_push_prefix(path);
         gnome_config_set_int("clockmail/12hour", ad->am_pm_enable);
@@ -195,10 +195,12 @@ static void populate_theme_list(GtkWidget *clist)
 	g_free(themepath);
 }
 
-static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
+static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 {
 	AppData *ad = data;
 	gchar *buf;
+
+	if (page_num != -1) return;
 
 	buf = gtk_entry_get_text(GTK_ENTRY(ad->mail_file_entry));
 	if (ad->mail_file == NULL || strcmp(buf, ad->mail_file) != 0)
@@ -242,7 +244,6 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
 	return;
 	widget = NULL;
-	nodata = NULL;
 }
 
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)

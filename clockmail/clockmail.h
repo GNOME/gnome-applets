@@ -29,7 +29,7 @@ void set_tooltip(struct tm *time_data, AppData *ad);
 
 void reload_skin(AppData *ad);
 
-void property_load(gchar *path, AppData *ad);
-void property_save(gchar *path, AppData *ad);
+void property_load(const gchar *path, AppData *ad);
+void property_save(const gchar *path, AppData *ad);
 void property_show(AppletWidget *applet, gpointer data);
 
