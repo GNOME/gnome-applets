@@ -80,6 +80,7 @@ struct _ModemAppletPrivate
   /* interface data */
   gboolean configured;  /* is configured? */
   gboolean enabled;     /* is enabled? */
+  gboolean is_isdn;     /* is an isdn device? */
   gchar *dev;           /* device name */
   gchar *lock_file;     /* lock file */
 
@@ -96,8 +97,6 @@ struct _BackendDirective
 static void modem_applet_class_init (ModemAppletClass *class);
 static void modem_applet_init       (ModemApplet      *applet);
 static void modem_applet_finalize   (GObject          *object);
-static void launch_backend          (ModemApplet      *applet,
-				     gboolean          root_auth);
 
 static gboolean update_tooltip      (ModemApplet *applet);
 static gboolean dispatch_directives (ModemApplet *applet);
@@ -125,6 +124,12 @@ static void on_modem_applet_properties_clicked (BonoboUIComponent *uic,
 static void on_modem_applet_help_clicked  (BonoboUIComponent *uic,
 					   ModemApplet       *applet,
 					   const char        *verb);
+
+static void launch_backend                (ModemApplet      *applet,
+					   gboolean          root_auth);
+static void shutdown_backend              (ModemApplet *applet,
+					   gboolean     backend_alive,
+					   gboolean     already_waiting);
 
 static gpointer parent_class;
 
@@ -203,6 +208,9 @@ modem_applet_init (ModemApplet *applet)
   priv->report_window_image    = glade_xml_get_widget (priv->xml, "report_window_image");
   priv->report_window_progress = glade_xml_get_widget (priv->xml, "report_window_progress");
 
+  g_signal_connect (G_OBJECT (priv->report_window), "delete-event",
+		    G_CALLBACK (gtk_widget_hide), NULL);
+
   pixbuf = gtk_icon_theme_load_icon (priv->icon_theme, "gnome-modem", 48, 0, NULL);
   gtk_image_set_from_pixbuf (GTK_IMAGE (priv->report_window_image), pixbuf);
   gdk_pixbuf_unref (pixbuf);
@@ -230,9 +238,14 @@ modem_applet_finalize (GObject *object)
 
   if (priv)
     {
-      /* TODO: free things */
-      g_object_unref (priv->icon_theme);
-      gdk_pixbuf_unref (priv->icon);
+      shutdown_backend (MODEM_APPLET (object), TRUE, TRUE);
+
+      gtk_widget_destroy (priv->auth_dialog);
+      gtk_widget_destroy (priv->report_window);
+      g_object_unref (priv->icon);
+
+      g_free (priv->dev);
+      g_free (priv->lock_file);
     }
 
   if (G_OBJECT_CLASS (parent_class)->finalize)
@@ -246,7 +259,7 @@ modem_applet_change_size (PanelApplet *applet,
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
 
   if (priv->icon)
-    gdk_pixbuf_unref (priv->icon);
+    g_object_unref (priv->icon);
 
   /* this might be too much overload, maybe should we get just one icon size and scale? */
   priv->icon = gtk_icon_theme_load_icon (priv->icon_theme,
@@ -319,7 +332,6 @@ find_first_element (xmlNodePtr node, const gchar *name)
   return n;
 }
 
-
 static xmlNodePtr
 find_next_element (xmlNodePtr node, const gchar *name)
 {
@@ -338,7 +350,7 @@ find_next_element (xmlNodePtr node, const gchar *name)
 static gchar *
 element_get_attribute (xmlNodePtr node, const gchar *attribute)
 {
-  xmlAttrPtr  a;
+  xmlAttrPtr a;
 
   g_return_val_if_fail (node != NULL, NULL);
   a = node->properties;
@@ -357,7 +369,7 @@ element_get_attribute (xmlNodePtr node, const gchar *attribute)
 static gchar *
 element_get_child_content (xmlNodePtr node, const gchar *tag)
 {
-  xmlNodePtr  child, n;
+  xmlNodePtr child, n;
 
   child = find_first_element (node, tag);
   if (!child)
@@ -383,8 +395,12 @@ find_dialup_interface_node (xmlNodePtr root)
       type = element_get_attribute (node, "type");
 
       if (type && (strcmp (type, "modem") == 0 || strcmp (type, "isdn") == 0))
-        return node;
+        {
+	  g_free (type);
+	  return node;
+	}
 
+      g_free (type);
       node = find_next_element (node, "interface");
     }
 
@@ -456,16 +472,12 @@ read_xml (ModemApplet *applet, gboolean show_report)
   backend_alive = (waitpid (priv->pid, NULL, WNOHANG) == 0);
 
   /* if show_report, create pulse timeout and show window */
-/*
   if (show_report)
     {
-      priv->progress_id = gtk_timeout_add (500, (GSourceFunc) pulse_progressbar, priv->report_window_progress);
+      priv->progress_id = gtk_timeout_add (200, (GSourceFunc) pulse_progressbar, priv->report_window_progress);
       gtk_window_set_screen (GTK_WINDOW (priv->report_window), gtk_widget_get_screen (GTK_WIDGET (applet)));
       gtk_widget_show (priv->report_window);
     }
-*/
-
-  g_print ("ENTRAAAAAAAAAAA\n");
 
   while (backend_alive && !g_strrstr (str->str, END_OF_REQUEST))
     {
@@ -473,23 +485,19 @@ read_xml (ModemApplet *applet, gboolean show_report)
       fgets (buffer, BUF_SIZE, priv->read_stream);
       g_string_append (str, buffer);
 
-      /* FIXME: Turn communication asynchronous */
-/*
       while (gtk_events_pending ())
         gtk_main_iteration ();
-*/
+
       backend_alive = (waitpid (priv->pid, NULL, WNOHANG) == 0);
     }
 
   /* if show_report, hide window and so */
-/*
   if (show_report)
     {
       g_source_remove (priv->progress_id);
       priv->progress_id = 0;
       gtk_widget_hide (priv->report_window);
     }
-*/
 
   s = str->str;
 
@@ -512,18 +520,16 @@ queue_directive (ModemApplet       *applet,
 		 ...)
 {
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
-  BackendDirective *directive;
+  BackendDirective   *directive;
   GSList  *list = NULL;
   va_list  ap;
   gchar   *arg;
 
-  g_print ("queue directive: %s\n", dir);
-  
   list = g_slist_prepend (list, g_strdup (dir));
   va_start (ap, dir);
 
   while ((arg = va_arg (ap, gchar *)) != NULL)
-    list = g_slist_prepend (list, arg);
+    list = g_slist_prepend (list, g_strdup (arg));
 
   va_end (ap);
   list = g_slist_reverse (list);
@@ -543,15 +549,17 @@ dispatch_directives (ModemApplet *applet)
   BackendDirective   *directive;
   xmlDoc             *doc;
   gchar              *dir;
+  GSList             *elem;
 
   if (priv->directive_running)
     return TRUE;
 
   priv->directive_running = TRUE;
+  elem = priv->directives;
 
-  while (priv->directives)
+  while (elem)
     {
-      directive = priv->directives->data;
+      directive = elem->data;
 
       dir = compose_directive_string (directive->directive);
       fputs (dir, priv->write_stream);
@@ -559,43 +567,48 @@ dispatch_directives (ModemApplet *applet)
 
       doc = read_xml (applet, directive->show_report);
 
-      if (doc && directive->callback)
+      if (directive->callback)
 	directive->callback (applet, doc);
 
       if (doc)
 	xmlFreeDoc (doc);
 
       g_slist_foreach (directive->directive, (GFunc) g_free, NULL);
-      priv->directives = priv->directives->next;
+      g_slist_free (directive->directive);
+
+      elem = elem->next;
     }
 
+  g_slist_foreach (priv->directives, (GFunc) g_free, NULL);
+  g_slist_free (priv->directives);
+  priv->directives = NULL;
   priv->directive_running = FALSE;
+
   return TRUE;
 }
 
 static void
-shutdown_backend (ModemApplet *applet, gboolean backend_alive)
+shutdown_backend (ModemApplet *applet, gboolean backend_alive, gboolean already_waiting)
 {
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
 
   if (priv->info_id)
     {
-      g_print ("quitando id de info\n");
       g_source_remove (priv->info_id);
       priv->info_id = 0;
     }
 
   if (priv->timeout_id)
     {
-      g_print ("quitando id de muete\n");
       g_source_remove (priv->timeout_id);
       priv->timeout_id = 0;
     }
 
   if (backend_alive)
-    {
-      queue_directive (applet, NULL, FALSE, "end", NULL);
+    kill (priv->pid, 9);
 
+  if (!already_waiting)
+    {
       /* don't leave zombies */
       while (waitpid (priv->pid, NULL, WNOHANG) <= 0)
         {
@@ -658,14 +671,19 @@ get_interface_data (ModemApplet *applet, xmlNodePtr iface)
 
       if (text)
         {
-          /* Modem device */
-          device = strrchr (text, '/');
-          priv->lock_file = g_strdup_printf ("/var/lock/LCK..%s", device + 1);
-          g_free (text);
+	  /* Modem device */
+	  device = strrchr (text, '/');
+	  priv->lock_file = g_strdup_printf ("/var/lock/LCK..%s", device + 1);
+	  g_free (text);
+
+	  priv->is_isdn = FALSE;
         }
       else
-        /* isdn device */
-        priv->lock_file = g_strdup ("/var/lock/LCK..capi_0");
+        {
+	  /* isdn device */
+	  priv->lock_file = g_strdup ("/var/lock/LCK..capi_0");
+	  priv->is_isdn = TRUE;
+	}
     }
   else
     {
@@ -684,7 +702,6 @@ get_connection_time (const gchar *lock_file)
 
   return 0;
 }
-
 
 static gboolean
 update_tooltip (ModemApplet *applet)
@@ -725,10 +742,61 @@ update_tooltip (ModemApplet *applet)
 }
 
 static void
-update_info_callback (ModemApplet *applet, xmlDoc *doc)
+rerun_backend_callback (ModemApplet *applet, xmlDoc *doc)
 {
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
+  gchar    *text, *password;
+  gint      response;
+  gboolean  enable;
+
+  shutdown_backend (applet, FALSE, FALSE);
+  launch_backend   (applet, TRUE);
+
+  enable = !priv->enabled;
+
+  text = (enable) ?
+    _("To connect to your Internet service provider, you need administrator privileges") :
+    _("To disconnect from your Internet service provider, you need administrator privileges");
+
+  gtk_label_set_text (GTK_LABEL (priv->auth_dialog_label), text);
+  gtk_window_set_screen (GTK_WINDOW (priv->auth_dialog),
+			 gtk_widget_get_screen (GTK_WIDGET (applet)));
+
+  gtk_widget_grab_focus (priv->auth_dialog_entry);
+  response = gtk_dialog_run (GTK_DIALOG (priv->auth_dialog));
+  gtk_widget_hide (priv->auth_dialog);
+  password = (gchar *) gtk_entry_get_text (GTK_ENTRY (priv->auth_dialog_entry));
+
+  if (response == GTK_RESPONSE_OK)
+    {
+
+      password = (gchar *) gtk_entry_get_text (GTK_ENTRY (priv->auth_dialog_entry));
+      fputs (password, priv->write_stream);
+      fputs ("\n", priv->write_stream);
+
+      while (fflush (priv->write_stream) != 0);
+
+      queue_directive (applet, NULL, enable,
+		       "enable_iface", priv->dev, (enable) ? "1" : "0", NULL);
+    }
+  else
+    {
+      shutdown_backend (applet, TRUE, FALSE);
+      launch_backend   (applet, FALSE);
+    }
+
+  /* stab the root password */
+  memset (password, ' ', sizeof (password));
+  gtk_entry_set_text (GTK_ENTRY (priv->auth_dialog_entry), "");
+}
+
+static void
+update_info_callback (ModemApplet *applet, xmlDoc *doc)
+{
   xmlNodePtr iface;
+
+  if (!doc)
+    return;
 
   iface = find_dialup_interface_node (get_root_node (doc));
   get_interface_data (applet, iface);
@@ -749,14 +817,12 @@ check_backend (ModemApplet *applet)
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
   gint       status, pid = -1;
   GtkWidget *dialog;
-  xmlNodePtr iface;
-  xmlDocPtr  doc;
 
   pid = waitpid (priv->pid, &status, WNOHANG);
 
   if (pid != 0)
     {
-      if (errno = ECHILD || (WIFEXITED (status)) && (WEXITSTATUS (status)) && (WEXITSTATUS(status) < 255))
+      if (errno == ECHILD || ((WIFEXITED (status)) && (WEXITSTATUS (status)) && (WEXITSTATUS(status) < 255)))
         {
 	  dialog = gtk_message_dialog_new (NULL,
 					   GTK_DIALOG_MODAL,
@@ -771,7 +837,7 @@ check_backend (ModemApplet *applet)
 	}
 
       priv->timeout_id = 0;
-      shutdown_backend (applet, FALSE);
+      shutdown_backend (applet, FALSE, TRUE);
       launch_backend (applet, FALSE);
 
       return FALSE;
@@ -780,13 +846,12 @@ check_backend (ModemApplet *applet)
   return TRUE;
 }
 
-/* TODO: detect su in configure time */
 static void
 launch_backend (ModemApplet *applet, gboolean root_auth)
 {
   ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
   gchar  *non_auth_args[] = { STB_SCRIPTS_DIR "/network-conf", NULL };
-  gchar  *auth_args[]     = { "/bin/su", "-c", STB_SCRIPTS_DIR "/network-conf", NULL };
+  gchar  *auth_args[]     = { SU_PATH, "-c", STB_SCRIPTS_DIR "/network-conf", NULL };
   gchar **args;
   int     p[2];
 
@@ -831,7 +896,7 @@ launch_backend (ModemApplet *applet, gboolean root_auth)
 }
 
 static gboolean
-launch_config_tool (GdkScreen *screen)
+launch_config_tool (GdkScreen *screen, gboolean is_isdn)
 {
   gchar    *argv[4], *application;
   gboolean  ret;
@@ -843,8 +908,7 @@ launch_config_tool (GdkScreen *screen)
 
   argv[0] = application;
   argv[1] = "--configure-type";
-  /* TODO: check isdn ifaces */
-  argv[2] = "modem";
+  argv[2] = (is_isdn) ? "isdn" : "modem";
   argv[3] = NULL;
 
   ret = gdk_spawn_on_screen (screen, NULL, argv, NULL, 0,
@@ -856,37 +920,8 @@ launch_config_tool (GdkScreen *screen)
 static void
 toggle_interface_non_root (ModemApplet *applet, gboolean enable)
 {
-  ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
-  GtkWidget *dialog;
-  gchar     *text, *password;
-  gint       response;
-
-  text = (enable) ?
-    _("To connect to your Internet service provider, you need administrator privileges") :
-    _("To disconnect from your Internet service provider, you need administrator privileges");
-
-  gtk_label_set_text (GTK_LABEL (priv->auth_dialog_label), text);
-  gtk_window_set_screen (GTK_WINDOW (priv->auth_dialog),
-			 gtk_widget_get_screen (GTK_WIDGET (applet)));
-
-  response = gtk_dialog_run (GTK_DIALOG (priv->auth_dialog));
-  password = (gchar *) gtk_entry_get_text (GTK_ENTRY (priv->auth_dialog_entry));
-
-  if (response == GTK_RESPONSE_OK)
-    {
-      shutdown_backend (applet, TRUE);
-      launch_backend   (applet, TRUE);
-      fputs (password, priv->write_stream);
-      fputs ("\n", priv->write_stream);
-
-      queue_directive (applet, NULL, enable,
-		       "enable_iface", priv->dev, (enable) ? "1" : "0", NULL);
-    }
-
-  /* stab the root password */
-  memset (password, ' ', sizeof (password));
-  gtk_entry_set_text (GTK_ENTRY (priv->auth_dialog_entry), "");
-  gtk_widget_hide (priv->auth_dialog);
+  queue_directive (applet, rerun_backend_callback,
+		   FALSE, "end", NULL);
 }
 
 static void
@@ -951,12 +986,13 @@ on_modem_applet_properties_clicked (BonoboUIComponent *uic,
 				    ModemApplet       *applet,
 				    const gchar       *verb)
 {
+  ModemAppletPrivate *priv = MODEM_APPLET_GET_PRIVATE (applet);
   GdkScreen *screen;
   GtkWidget *dialog;
 
   screen = gtk_widget_get_screen (GTK_WIDGET (applet));
 
-  if (!launch_config_tool (screen))
+  if (!launch_config_tool (screen, priv->is_isdn))
     {
       dialog = gtk_message_dialog_new (NULL,
 				       GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -980,11 +1016,11 @@ on_modem_applet_about_clicked (BonoboUIComponent *uic,
     "Carlos Garnacho Parro <carlosg@gnome.org>",
     NULL
   };
-
+/*
   const gchar *documenters[] = {
     NULL
   };
-
+*/
   gtk_show_about_dialog (NULL,
 			 "name",               _("Modem monitor"),
 			 "version",            VERSION,

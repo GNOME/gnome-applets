@@ -327,20 +327,23 @@ dnl ******************************************
 dnl ** modemlights applet check             **
 dnl ******************************************
 
+SU_TOOL=
 P_MODEMLIGHTS=
 HAVE_LIBUTIL=
 
+AC_PATH_PROG(SU_TOOL, su)
 AC_CHECK_LIB(util, forkpty, HAVE_LIBUTIL=true, HAVE_LIBUTIL=false)
 AM_PATH_SYSTEM_TOOLS_BACKENDS($SYSTEM_TOOLS_BACKENDS_REQUIRED, P_MODEMLIGHTS=modemlights)
 
 AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "x$HAVE_LIBUTIL" = "xtrue" -a "x$P_MODEMLIGHTS" = "xmodemlights")
 
-if test "x$HAVE_LIBUTIL" != "xtrue" -o "x$P_MODEMLIGHTS" != "xmodemlights"; then
+if test "x$SU_TOOL" == "x" -o "x$HAVE_LIBUTIL" != "xtrue" -o "x$P_MODEMLIGHTS" != "xmodemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
 else
   MODEMLIGHTS_LIBS=" -lutil"
   AC_SUBST(MODEMLIGHTS_LIBS)
   AC_DEFINE_UNQUOTED(STB_SCRIPTS_DIR, "$STB_SCRIPTS_DIR", [System tools backends])
+  AC_DEFINE_UNQUOTED(SU_PATH, "${SU_TOOL}", [su executable path])
 fi
 
 dnl ******************************************
