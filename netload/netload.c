@@ -250,7 +250,7 @@ about_cb (AppletWidget *widget, gpointer data)
 	  NULL
 	  };
 
-	about = gnome_about_new ( "The GNOME Fish Applet", "3.4.7.4",
+	about = gnome_about_new ( "The GNOME Network Load Applet", "0.0.2",
 			"(C) 1998 the Free Software Foundation",
 			authors,
 			"This applet shows the load on a network device. "
