@@ -1044,7 +1044,7 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     }
     else if (result != GNOME_VFS_OK) {
 	g_print("%s", gnome_vfs_result_to_string(result));
-        g_warning(_("Failed to get IWIN data.\n"));
+        g_warning("Failed to get IWIN data.\n");
     } else {
 	gnome_vfs_async_read(handle, body, DATA_SIZE - 1, iwin_finish_read, info);
 
@@ -1088,7 +1088,7 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 
     if (result != GNOME_VFS_OK) {
         /* forecast data is not really interesting anyway ;) */
-	  g_warning(_("Failed to get IWIN forecast data.\n")); 
+	  g_warning("Failed to get IWIN forecast data.\n"); 
         info->iwin_handle = NULL;
         requests_done_check (info);
         g_free (body);
@@ -1287,7 +1287,7 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	g_print("%s", gnome_vfs_result_to_string(result));
 	info->met_handle = NULL;
 	requests_done_check (info);
-        g_warning(_("Failed to get Met Office data.\n"));
+        g_warning("Failed to get Met Office data.\n");
     } else {
 	gnome_vfs_async_read(handle, body, DATA_SIZE - 1, met_finish_read, info);
 
@@ -1321,7 +1321,7 @@ static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     g_return_if_fail(loc != NULL);
 
     if (result != GNOME_VFS_OK) {
-        g_warning(_("Failed to get Met Office forecast data.\n"));
+        g_warning("Failed to get Met Office forecast data.\n");
         info->met_handle = NULL;
         requests_done_check (info);
         g_free (body);
@@ -1465,7 +1465,7 @@ static void wx_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
     g_return_if_fail(loc != NULL);
 
     if (result != GNOME_VFS_OK) {
-        g_warning(_("Failed to get radar map image.\n"));
+        g_warning("Failed to get radar map image.\n");
         info->wx_handle = NULL;
         requests_done_check (info);
         g_free (body);

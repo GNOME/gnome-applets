@@ -269,26 +269,6 @@ static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
     gweather_update (gw_applet);
 } 
 
-static void row_activated_cb (GtkTreeView *tree, 
-			      GtkTreePath *path, 
-			      GtkTreeViewColumn *column,
-			      gpointer data)
-{
-    GWeatherApplet *gw_applet = data;
-    GtkTreeModel *model = gtk_tree_view_get_model (tree);
-    WeatherLocation *loc = NULL;
-    GtkTreeIter iter;
-    
-    if (!gtk_tree_model_get_iter (model, &iter, path))
-    	return;
-    	
-    gtk_tree_model_get (model, &iter, COL_POINTER, &loc, -1);
-   
-    if (loc) {
-      gweather_update (gw_applet);
-    }
-}
-
 static void load_locations (GWeatherApplet *gw_applet)
 {
     GtkTreeView *tree = GTK_TREE_VIEW(gw_applet->pref_tree);
@@ -659,15 +639,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     		      G_CALLBACK (metric_toggled), gw_applet);
     if ( ! key_writable (gw_applet->applet, "enable_metric"))
 	    hard_set_sensitive (gw_applet->pref_basic_metric_btn, FALSE);
-#if 0   		      
-    gw_applet->pref_basic_detailed_btn = gtk_check_button_new_with_mnemonic (_("Enable _detailed forecast"));
-    gtk_widget_show (gw_applet->pref_basic_detailed_btn);
-    gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), gw_applet->pref_basic_detailed_btn);
-    g_signal_connect (G_OBJECT (gw_applet->pref_basic_detailed_btn), "toggled",
-    		      G_CALLBACK (detailed_toggled), gw_applet);
-    if ( ! key_writable (gw_applet->applet, "enable_detailed_forecast"))
-	    hard_set_sensitive (gw_applet->pref_basic_detailed_btn, FALSE);
-#endif
+
 #ifdef RADARMAP
     gw_applet->pref_basic_radar_btn = gtk_check_button_new_with_mnemonic (_("Enable _radar map"));
     gtk_widget_show (gw_applet->pref_basic_radar_btn);
@@ -704,13 +676,13 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 	    hard_set_sensitive (gw_applet->pref_basic_radar_url_entry, FALSE);
 #endif /* RADARMAP */
 
-    frame = gtk_frame_new (_("Updates"));
+    frame = gtk_frame_new (_("Update"));
     gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 
     pref_basic_update_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
     gtk_container_border_width (GTK_CONTAINER (pref_basic_update_hbox), GNOME_PAD_SMALL);
 
-    pref_basic_update_lbl = gtk_label_new_with_mnemonic (_("_Automatically update every "));
+    pref_basic_update_lbl = gtk_label_new_with_mnemonic (_("_Automatically update every:"));
     gtk_widget_show (pref_basic_update_lbl);
     
 
@@ -730,7 +702,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_spin), "value_changed",
     		      G_CALLBACK (update_interval_changed), gw_applet);
     
-    pref_basic_update_sec_lbl = gtk_label_new (_("minute(s)"));
+    pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
     if ( ! key_writable (gw_applet->applet, "auto_update_interval")) {
 	    hard_set_sensitive (gw_applet->pref_basic_update_spin, FALSE);
@@ -745,7 +717,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
 
     /* The Miscellaneous frame */
-    frame = gtk_frame_new (_("Miscellaneous"));
+    frame = gtk_frame_new (_("Display"));
     gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 
     vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
@@ -789,9 +761,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (gw_applet->pref_tree));
     g_signal_connect (G_OBJECT (selection), "changed",
     		      G_CALLBACK (row_selected_cb), gw_applet);
-    /* Update applet when user double clicks */
-    g_signal_connect (G_OBJECT (gw_applet->pref_tree), "row_activated",
-    		      G_CALLBACK (row_activated_cb), gw_applet);
     
     gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->pref_tree);
     gtk_widget_show (gw_applet->pref_tree);

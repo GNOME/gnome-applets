@@ -220,16 +220,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
-
-    /* PUSH */
-    gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-
-    /*gtk_widget_realize(GTK_WIDGET(gw_applet->applet));
-
-    gtk_widget_set_events(GTK_WIDGET(gw_applet->applet), gtk_widget_get_events(GTK_WIDGET(gw_applet->applet)) | \
-                          GDK_BUTTON_PRESS_MASK);*/
-
-
+    
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",
@@ -259,9 +250,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->tooltips = tooltips;
 	
     place_widgets(gw_applet);
-    /* POP */
-    gtk_widget_pop_colormap ();
-    
+  
 	return;
 }
 

@@ -107,7 +107,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_set_row_spacings (GTK_TABLE (cond_table), 4);
   gtk_table_set_col_spacings (GTK_TABLE (cond_table), 4);
 
-  cond_location_lbl = gtk_label_new (_("Location:"));
+  cond_location_lbl = gtk_label_new (_("City:"));
   gtk_widget_show (cond_location_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_location_lbl, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -115,7 +115,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_label_set_justify (GTK_LABEL (cond_location_lbl), GTK_JUSTIFY_RIGHT);
   gtk_misc_set_alignment (GTK_MISC (cond_location_lbl), 1, 0.5);
 
-  cond_update_lbl = gtk_label_new (_("Update:"));
+  cond_update_lbl = gtk_label_new (_("Last update:"));
   gtk_widget_show (cond_update_lbl);
   gtk_table_attach (GTK_TABLE (cond_table), cond_update_lbl, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -278,7 +278,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_widget_show (cond_vsep);
   gtk_box_pack_end (GTK_BOX (cond_hbox), cond_vsep, FALSE, FALSE, 0);
 
-  current_note_lbl = gtk_label_new_with_mnemonic (_("C_urrent conditions"));
+  current_note_lbl = gtk_label_new (_("Current Conditions"));
   gtk_widget_show (current_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 0), current_note_lbl);
 
@@ -291,7 +291,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 				  GTK_POLICY_AUTOMATIC);
 
   gw_applet->forecast_text = gtk_text_view_new ();
-  set_access_namedesc (gw_applet->forecast_text, _("ForeCast Report"),                                                             _("See the ForeCast Details"));
+  set_access_namedesc (gw_applet->forecast_text, _("Forecast Report"),                                                             _("See the ForeCast Details"));
   gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->forecast_text);
   gtk_text_view_set_editable (GTK_TEXT_VIEW (gw_applet->forecast_text), FALSE);
   gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), GNOME_PAD);
@@ -301,7 +301,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
   gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
 
-  forecast_note_lbl = gtk_label_new_with_mnemonic (_("_Forecast"));
+  forecast_note_lbl = gtk_label_new (_("Forecast"));
   gtk_widget_show (forecast_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
 
