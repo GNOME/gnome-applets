@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.0\n"
-"POT-Creation-Date: 2003-02-21 12:03+0100\n"
-"PO-Revision-Date: 2003-02-22 21:27+0100\n"
+"POT-Creation-Date: 2003-04-07 20:18+0200\n"
+"PO-Revision-Date: 2003-04-07 23:58+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -266,10 +266,10 @@ msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
 #: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:887
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr "Michal Bukovjan"
 
@@ -382,7 +382,7 @@ msgid "Battery power low"
 msgstr "Téměř vybité baterie"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:926
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:944
 msgid "CD Player"
 msgstr "CD Přehrávač"
 
@@ -407,27 +407,27 @@ msgstr "Aplet pro přehrávání zvukových CD"
 msgid "_Run External CD Player"
 msgstr "Spustit exte_rní CD přehrávač"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:916
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:934
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:918
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:936
 msgid "Play / Pause"
 msgstr "Hrát / Pauza"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:920
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:938
 msgid "Eject"
 msgstr "Vysunout"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:922
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:940
 msgid "Previous Track"
 msgstr "Předchozí skladba"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:924
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:942
 msgid "Next Track"
 msgstr "Následující skladba"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:853
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
@@ -469,7 +469,7 @@ msgstr ""
 "©1997 Free Software Foundation\n"
 "©2001 Chris Phelps (Port pro GNOME 2)"
 
-#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:927
+#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:945
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "Tento aplet pro přehrávání CD slouží k jednoduchému přehrávání CD na vašem "
@@ -483,23 +483,27 @@ msgstr "Uplynulý čas"
 msgid "Track number"
 msgstr "Číslo skladby"
 
-#: cdplayer/cdplayer.c:917
+#: cdplayer/cdplayer.c:860
+msgid "Audio device is busy, or being used by another application"
+msgstr "Zvukové zařízení pracuje nebo je používáno jinou aplikací"
+
+#: cdplayer/cdplayer.c:935
 msgid "Click this button to Stop playing the CD"
 msgstr "Stisknutím tohoto tlačítka zastavíte přehrávání CD"
 
-#: cdplayer/cdplayer.c:919
+#: cdplayer/cdplayer.c:937
 msgid "Click this button to Play or Pause the CD"
 msgstr "Stisknutím tohoto tlačítka spustíte nebo zastavíte přehrávání CD"
 
-#: cdplayer/cdplayer.c:921
+#: cdplayer/cdplayer.c:939
 msgid "Click this button to eject the CD"
 msgstr "Stisknutím tohoto tlačítka vysunete CD"
 
-#: cdplayer/cdplayer.c:923
+#: cdplayer/cdplayer.c:941
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na předcházející skladbu CD"
 
-#: cdplayer/cdplayer.c:925
+#: cdplayer/cdplayer.c:943
 msgid "Click this button to Play the next track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na následující skladbu CD"
 
@@ -603,15 +607,15 @@ msgstr " připojen"
 msgid " not mounted"
 msgstr " není připojen"
 
-#: drivemount/drivemount.c:786
+#: drivemount/drivemount.c:791
 msgid "Drive Mount Applet Warning"
 msgstr "Varování apletu Připojování disků"
 
-#: drivemount/drivemount.c:796
+#: drivemount/drivemount.c:801
 msgid "\" reported:\n"
 msgstr "\" hlásí:\n"
 
-#: drivemount/drivemount.c:798
+#: drivemount/drivemount.c:803
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -736,7 +740,7 @@ msgstr "Změna rozložení klávesnice"
 msgid "GKB Factory"
 msgstr "Vytvářející rozhraní programu GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Přepínání rozložení klávesnice"
 
@@ -752,15 +756,15 @@ msgstr ""
 "Stisknutím klávesové zkratky přepnete rozložení klávesnice. Klávesovou "
 "zkratku lze určit v dialogu Nastavení."
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "©1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -780,7 +784,7 @@ msgstr ""
 "KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Domovská stránka programu GKB (http://projects.gnome.hu/gkb)"
 
@@ -788,7 +792,7 @@ msgstr "Domovská stránka programu GKB (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Vypnuto"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Stiskněte klávesu nebo zrušte akci klávesou Esc"
 
@@ -800,25 +804,25 @@ msgstr "Rozložení (vyberte a stiskněte Přidat)"
 msgid "Select Keyboard"
 msgstr "Vybrat rozložení"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:232
 msgid "Edit Keyboard"
 msgstr "Upravit rozložení"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
+#: gkb-new/prop-map.c:251 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Název:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:254
 msgid "_Label:"
 msgstr "_Popis:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:257
 msgid "Co_mmand:"
 msgstr "Přík_az:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:265
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -830,7 +834,7 @@ msgstr ""
 " * gkb_xmmap hu\n"
 " * setxkbmap hu"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:298
 msgid "_Flag"
 msgstr "_Vlajka"
 
@@ -876,11 +880,11 @@ msgid "_Grab hotkey"
 msgstr "Zachytit _klávesu"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:424
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Nastavení Přepínání rozložení klávesnice"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:441
 msgid "Keymaps"
 msgstr "Rozložení kláves"
 
@@ -890,7 +894,7 @@ msgstr "Rozložení kláves"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:453 multiload/properties.c:313
 msgid "Options"
 msgstr "Volby"
 
@@ -1172,7 +1176,7 @@ msgstr "Po klepnutí navštívíte Weather.com"
 msgid "_Radar map"
 msgstr "_Radarová mapa"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:411
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1182,7 +1186,7 @@ msgstr ""
 "Zkuste prosím státní předpověď; předpovědi IWIN jsou k dispozici pouze pro "
 "města v USA."
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:413
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -2491,7 +2495,7 @@ msgstr "Získávání selhalo"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Příkazový řádek"
 
@@ -2523,15 +2527,15 @@ msgstr ""
 "licence nebo (podle vaší volby) jakékoli verze pozdější."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Spustit program"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Příkazový řádek"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Napište zde příkaz a prostředí GNOME ho pro vás vykoná"
 
@@ -2664,11 +2668,11 @@ msgstr "Historie"
 msgid "Click this button for the list of previous commands"
 msgstr "Klepnutím na toto tlačítko necháte vypsat předchozí příkazy"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Aplet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Tento aplet přidá na panel příkazový řádek"
 
@@ -2693,7 +2697,7 @@ msgid "Adjust the sound volume"
 msgstr "Upravit hlasitost zvuku"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/mixer.c:900
 msgid "Volume Control"
 msgstr "Ovládání hlasitosti"
 
@@ -2731,24 +2735,24 @@ msgstr "varování: mixér nemá kanál hlasitosti - používám místo něj PCM
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Zařízení mixéru %s nemá kanál ani hlasitosti, ani PCM.\n"
 
-#: mixer/mixer.c:575
+#: mixer/mixer.c:645
 msgid "Volume Controller"
 msgstr "Ovladač hlasitosti"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:646
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Hlasitost změníte pomocí kláves s šipkami Nahoru/Dolů"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:901
 msgid "(C) 2001 Richard Hult"
 msgstr "©2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:902
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače."
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1155
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
@@ -3300,11 +3304,11 @@ msgstr ""
 "Obrázky nezbytné k provozu sledování bezdrátového spojení chybí.\n"
 "Ujistěte se prosím, že jsou řádně nainstalovány."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Žádná bezdrátová zařízení"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3312,16 +3316,16 @@ msgstr ""
 "Zdá se, že na vašem systému nejsou nastavena žádná bezdrátová zařízení.\n"
 "Zkontrolujte prosím vaše nastavení, pokud si myslíte, že to není správně."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Sledování bezdrátového spojení"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "©2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj ukazuje stav bezdrátového spojení."
 
