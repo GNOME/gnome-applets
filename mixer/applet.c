@@ -85,11 +85,11 @@ static struct {
   gchar *filename;
   GdkPixbuf *pixbuf;
 } pix[] = {
-  { GNOME_PIXMAPSDIR "/mixer/volume-mute.png",   NULL },
-  { GNOME_PIXMAPSDIR "/mixer/volume-zero.png",   NULL },
-  { GNOME_PIXMAPSDIR "/mixer/volume-min.png",    NULL },
-  { GNOME_PIXMAPSDIR "/mixer/volume-medium.png", NULL },
-  { GNOME_PIXMAPSDIR "/mixer/volume-max.png",    NULL },
+  { "stock_volume-mute", NULL },
+  { "stock_volume-0",    NULL },
+  { "stock_volume-min",  NULL },
+  { "stock_volume-med",  NULL },
+  { "stock_volume-max",  NULL },
   { NULL, NULL }
 };
 
@@ -163,12 +163,34 @@ flip (GdkPixbuf *pix)
 }
 
 static void
+init_pixbufs (GnomeVolumeApplet *applet)
+{
+  gint n;
+  
+  /* FIXME: implement "changed" signal from GtkIconTheme */
+  /* FIXME: load new icons on panel resize */
+  for (n = 0; pix[n].filename != NULL; n++) {
+    if (pix[n].pixbuf)
+      g_object_unref (pix[n].pixbuf);
+    
+    pix[n].pixbuf = gtk_icon_theme_load_icon (
+      	    gtk_icon_theme_get_default (),
+      	    pix[n].filename,
+      	    panel_applet_get_size (&applet->parent),
+      	    0,
+      	    NULL);
+    if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
+      flip (pix[n].pixbuf);
+    }
+  }
+}
+
+static void
 gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
   PanelAppletClass *panelapplet_class = PANEL_APPLET_CLASS (klass);
-  gint n;
 
   parent_class = g_type_class_ref (PANEL_TYPE_APPLET);
 
@@ -183,14 +205,6 @@ gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
   /* FIXME:
    * - style-set.
    */
-
-  /* init pixbufs */
-  for (n = 0; pix[n].filename != NULL; n++) {
-    pix[n].pixbuf = gdk_pixbuf_new_from_file (pix[n].filename, NULL);
-    if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
-      flip (pix[n].pixbuf);
-    }
-  }
 }
 
 static void
@@ -207,6 +221,9 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->lock = FALSE;
   applet->state = -1;
   applet->prefs = NULL;
+  
+  /* init pixbufs */
+  init_pixbufs (applet);
 
   /* icon (our main UI) */
   image = gtk_image_new ();
