@@ -65,7 +65,8 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     if((key == GDK_Tab
        || key == GDK_KP_Tab
        || key == GDK_ISO_Left_Tab)
-       && event->state != GDK_SHIFT_MASK)
+       && event->state != GDK_SHIFT_MASK
+       && event->state != GDK_CONTROL_MASK)
 	{	
 	    /* tab key pressed */
 	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
