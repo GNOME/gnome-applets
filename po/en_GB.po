@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-23 22:26-0400\n"
-"PO-Revision-Date: 2004-06-23 22:27-0400\n"
+"POT-Creation-Date: 2004-07-06 21:13-0400\n"
+"PO-Revision-Date: 2004-07-06 22:03-0400\n"
 "Last-Translator: Gareth Owen <gowen72@yahoo.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr "Utility"
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:559 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
-#: mini-commander/src/about.c:50 mixer/mixer.c:1330
+#: mini-commander/src/about.c:50 mixer/mixer.c:1348
 #: modemlights/modemlights.c:118 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
 #: wireless/wireless-applet.c:570
@@ -359,6 +359,9 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:745 battstat/battstat_applet.c:1120
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -366,6 +369,9 @@ msgstr "System is running on battery power. Battery: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1126
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -579,7 +585,7 @@ msgstr "_Yellow:"
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
 #: mailcheck/mailcheck.c:2611 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1443 stickynotes/stickynotes_applet_callbacks.c:220
+#: mixer/mixer.c:1461 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:540 wireless/wireless-applet.c:624
 #, c-format
@@ -587,11 +593,11 @@ msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
 
 #: battstat/properties.c:500
-msgid "Probress Bar Direction Moves towards top"
+msgid "Progress Bar Direction Moves towards top"
 msgstr "Progress Bar Direction Moves towards top"
 
 #: battstat/properties.c:510
-msgid "Probress Bar Direction Moves towards bottom"
+msgid "Progress Bar Direction Moves towards bottom"
 msgstr "Progress Bar Direction Moves towards bottom"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
@@ -656,7 +662,7 @@ msgstr "Next Track"
 msgid "You do not have permission to use the CD player."
 msgstr "You do not have permission to use the CD player."
 
-#: cdplayer/cdplayer.c:380 mixer/mixer.c:1297 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1315 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "There was an error executing '%s': %s"
@@ -2549,8 +2555,8 @@ msgid "Keyboard Indicator (%s)"
 msgstr "Keyboard Indicator (%s)"
 
 #: gswitchit/gswitchit-applet.c:616
-msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
-msgstr "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
+msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
 #: gswitchit/gswitchit-applet.c:618
 msgid "Keyboard layout indicator applet for GNOME"
@@ -2736,7 +2742,7 @@ msgid "Stock Ticker"
 msgstr "Stock Ticker"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:84 mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:85 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Update"
 
@@ -2748,7 +2754,7 @@ msgstr "Could not retrieve the stock data."
 msgid "No stock list"
 msgstr "No stock list"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:468
+#: gtik/gtik.c:313 gweather/gweather-applet.c:477
 msgid "Updating..."
 msgstr "Updating..."
 
@@ -3071,83 +3077,87 @@ msgstr ""
 "\n"
 "An applet for monitoring local weather conditions."
 
-#: gweather/gweather-applet.c:348 gweather/gweather-applet.c:352
+#: gweather/gweather-applet.c:357 gweather/gweather-applet.c:361
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:82 gweather/gweather-dialog.c:316
+#: gweather/gweather-dialog.c:83 gweather/gweather-dialog.c:336
 msgid "Forecast"
 msgstr "Forecast"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:123
 msgid "City:"
 msgstr "City:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:131
 msgid "Last update:"
 msgstr "Last update:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:139
 msgid "Conditions:"
 msgstr "Conditions:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:147
 msgid "Sky:"
 msgstr "Sky:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:155
 msgid "Temperature:"
 msgstr "Temperature:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:163
+msgid "Feels like:"
+msgstr "Feels like:"
+
+#: gweather/gweather-dialog.c:171
 msgid "Dew point:"
 msgstr "Dew point:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:179
 msgid "Humidity:"
 msgstr "Humidity:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:187
 msgid "Wind:"
 msgstr "Wind:"
 
-#: gweather/gweather-dialog.c:186
+#: gweather/gweather-dialog.c:195
 msgid "Pressure:"
 msgstr "Pressure:"
 
-#: gweather/gweather-dialog.c:194
+#: gweather/gweather-dialog.c:203
 msgid "Visibility:"
 msgstr "Visibility:"
 
-#: gweather/gweather-dialog.c:289
+#: gweather/gweather-dialog.c:309
 msgid "Current Conditions"
 msgstr "Current Conditions"
 
-#: gweather/gweather-dialog.c:306
+#: gweather/gweather-dialog.c:326
 msgid "Forecast Report"
 msgstr "Forecast Report"
 
-#: gweather/gweather-dialog.c:306
+#: gweather/gweather-dialog.c:326
 msgid "See the ForeCast Details"
 msgstr "See the Forecast Details"
 
-#: gweather/gweather-dialog.c:324
+#: gweather/gweather-dialog.c:344
 msgid "Radar Map"
 msgstr "Radar Map"
 
-#: gweather/gweather-dialog.c:355
+#: gweather/gweather-dialog.c:375
 msgid "_Visit Weather.com"
 msgstr "_Visit Weather.com"
 
-#: gweather/gweather-dialog.c:356
+#: gweather/gweather-dialog.c:376
 msgid "Visit Weather.com"
 msgstr "Visit Weather.com"
 
-#: gweather/gweather-dialog.c:356
+#: gweather/gweather-dialog.c:376
 msgid "Click to Enter Weather.com"
 msgstr "Click to Enter Weather.com"
 
-#: gweather/gweather-dialog.c:444
+#: gweather/gweather-dialog.c:465
 msgid "Forecast not currently available for this location."
 msgstr "Forecast not currently available for this location."
 
@@ -3523,10 +3533,10 @@ msgstr "Northwest"
 msgid "North - Northwest"
 msgstr "North - Northwest"
 
-#: gweather/weather.c:231 gweather/weather.c:2163 gweather/weather.c:2177
-#: gweather/weather.c:2189 gweather/weather.c:2201 gweather/weather.c:2234
-#: gweather/weather.c:2246 gweather/weather.c:2265 gweather/weather.c:2289
-#: gweather/weather.c:2302 gweather/weather.c:2322
+#: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
+#: gweather/weather.c:2259 gweather/weather.c:2273 gweather/weather.c:2288
+#: gweather/weather.c:2319 gweather/weather.c:2331 gweather/weather.c:2350
+#: gweather/weather.c:2374 gweather/weather.c:2387 gweather/weather.c:2407
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -3845,145 +3855,145 @@ msgstr "Dust whirls"
 msgid "Dust whirls in the vicinity"
 msgstr "Dust whirls in the vicinity"
 
-#: gweather/weather.c:947 gweather/weather.c:989 gweather/weather.c:1741
+#: gweather/weather.c:1021 gweather/weather.c:1063 gweather/weather.c:1815
 msgid "Failed to get METAR data.\n"
 msgstr "Failed to get METAR data.\n"
 
-#: gweather/weather.c:981 gweather/weather.c:1009 gweather/weather.c:1256
+#: gweather/weather.c:1055 gweather/weather.c:1083 gweather/weather.c:1330
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo missing location"
 
-#: gweather/weather.c:2077
+#: gweather/weather.c:2147
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b / %l:%M %P"
 
-#: gweather/weather.c:2081
+#: gweather/weather.c:2151
 msgid "Unknown observation time"
 msgstr "Unknown observation time"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2113 gweather/weather.c:2116
+#: gweather/weather.c:2183 gweather/weather.c:2186
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2121 gweather/weather.c:2124
+#: gweather/weather.c:2191 gweather/weather.c:2194
 #, c-format
 msgid "%dF"
 msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2132 gweather/weather.c:2135
+#: gweather/weather.c:2202 gweather/weather.c:2205
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2140 gweather/weather.c:2143
+#: gweather/weather.c:2210 gweather/weather.c:2213
 #, c-format
 msgid "%dC"
 msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2152
+#: gweather/weather.c:2222
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2155
+#: gweather/weather.c:2225
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2204
+#: gweather/weather.c:2276
 #, c-format
-msgid "%d%%"
-msgstr "%d%%"
+msgid "%.f%%"
+msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2215
+#: gweather/weather.c:2300
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f knots"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2219
+#: gweather/weather.c:2304
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2223
+#: gweather/weather.c:2308
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2227
+#: gweather/weather.c:2312
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2248
+#: gweather/weather.c:2333
 msgid "Calm"
 msgstr "Calm"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2252
+#: gweather/weather.c:2337
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2270
+#: gweather/weather.c:2355
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2274
+#: gweather/weather.c:2359
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2278
+#: gweather/weather.c:2363
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2282
+#: gweather/weather.c:2367
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2307
+#: gweather/weather.c:2392
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2311
+#: gweather/weather.c:2396
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2315
+#: gweather/weather.c:2400
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2356
+#: gweather/weather.c:2441
 msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
@@ -4420,10 +4430,12 @@ msgid "Set default list value for %s\n"
 msgstr "Set default list value for %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 
@@ -4664,8 +4676,8 @@ msgstr "Command"
 msgid "Adjust the sound volume"
 msgstr "Adjust the sound volume"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
-#: mixer/mixer.c:1344
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:200
+#: mixer/mixer.c:1362
 msgid "Volume Control"
 msgstr "Volume Control"
 
@@ -4777,15 +4789,15 @@ msgstr "Radio"
 msgid "Monitor"
 msgstr "Monitor"
 
-#: mixer/mixer.c:200
+#: mixer/mixer.c:201
 msgid "Volume Control (muted)"
 msgstr "Volume Control (muted)"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "No audio device"
 msgstr "No audio device"
 
-#: mixer/mixer.c:518
+#: mixer/mixer.c:519
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4793,50 +4805,50 @@ msgstr ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:876
+#: mixer/mixer.c:894
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Couldn't open mixer device %s\n"
 
-#: mixer/mixer.c:1045
+#: mixer/mixer.c:1063
 msgid "Volume Controller"
 msgstr "Volume Controller"
 
-#: mixer/mixer.c:1046
+#: mixer/mixer.c:1064
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Use Up/Down arrow keys to change volume"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1070
+#: mixer/mixer.c:1088
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1071
+#: mixer/mixer.c:1089
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1345
+#: mixer/mixer.c:1363
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1346
+#: mixer/mixer.c:1364
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "The volume control lets you set the volume level for your desktop."
 
-#: mixer/mixer.c:1493
+#: mixer/mixer.c:1511
 msgid "Volume Control Preferences"
 msgstr "Volume Control Preferences"
 
-#: mixer/mixer.c:1517
+#: mixer/mixer.c:1535
 msgid "Audio Channels"
 msgstr "Audio Channels"
 
-#: mixer/mixer.c:1533
+#: mixer/mixer.c:1551
 msgid "_Select channel to control:"
 msgstr "_Select channel to control:"
 
-#: mixer/mixer.c:1869
+#: mixer/mixer.c:1887
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "The volume control lets you set the volume level for your desktop"
 
