@@ -1,0 +1,510 @@
+<sect1 id="tickastat">
+  <title>Tick-a-Stat Applet</title>
+
+  <para>
+    L'applet <application>Tick-a-Stat</application>, mostrato in <xref
+      linkend="tickastat-applet-fig">, controlla molti aspetti del vostro
+      computer e mostra informazioni quando avvengono degli eventi. Per esempio
+      è in grado di controllare il carico del processore e avvisarvi quando
+      questo è sovraccarico per la presenza di troppi processi. Per aggiungere
+      questa applet ad un <interface>Pannello</interface> cliccate sul
+      <interface>Pannello</interface> e scegliete
+      <menuchoice>
+	<guimenu>Pannello</guimenu>
+	<guisubmenu>Aggiungi al pannello</guisubmenu>
+	<guisubmenu>Applet</guisubmenu>
+	<guisubmenu>Utilità</guisubmenu>
+	<guimenuitem>Tick-a-Stat</guimenuitem>
+      </menuchoice>.
+  </para>
+
+  <figure id="tickastat-applet-fig">
+    <title>Applet Tick-a-Stat</title>
+    <screenshot>
+      <screeninfo>Applet Tick-a-Stat</screeninfo>
+      <graphic format="png" fileref="tickastat_applet" 
+	     srccredit="muet">
+      </graphic>
+    </screenshot>
+  </figure>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="tickastat-usage">
+    <title>Uso</title>
+    <para>
+      Dopo che è stato configurato <application>Tick-a-Stat</application>,
+      girerà continuamente e non richiederà alcun input da parte vostra. La
+      configurazione generale di <application>Tick-a-Stat</application> viene
+      spiegata in <xref linkend="tickastat-prefs">. Ci sono molti moduli che
+      possono essere usati, la cui funzione e configurazione viene descritta in
+      <xref linkend="tickastat-modules">.
+    </para>
+
+    <para>
+      Cliccando con il tasto destro del mouse sull'applet appare un menù con le
+      seguenti voci:
+      <itemizedlist>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Proprietà&hellip;</guimenuitem> &mdash; apre la
+	    finestra di dialogo <link linkend="tickastat-prefs">
+	    <guilabel>Proprietà</guilabel></link>.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Controllo eventi&hellip;</guimenuitem> &mdash; apre la
+	    finestra di dialogo <link linkend="tickastat-eventlog">
+	    <guilabel>Controllo eventi</guilabel></link>.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Aiuto</guimenuitem> &mdash; mostra questo documento.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Informazioni su&hellip;</guimenuitem> &mdash; mostra
+	    informazioni a proposito dell'<application>Applet
+	    Tick-a-Stat</application> come la versione e il nome dell'autore.
+	  </para>
+	</listitem>
+
+      </itemizedlist>
+    </para>
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="tickastat-prefs">
+    <title>Personalizzazione</title>
+    <para>
+      È possibile personalizzare l'applet <application>Tick-a-Stat</application>
+      cliccandoci con il tasto destro del mouse e scegliendo
+      <guimenuitem>Proprietà&hellip;</guimenuitem>. Si apre così la finestra di
+      dialogo <interface>Proprietà</interface> (mostrata in <xref
+      linkend="tickastat-settings-fig">), da dove è possibile modificare molte
+      impostazioni.
+    </para>
+
+    <figure id="tickastat-settings-fig">
+      <title>Finestra di dialogo Proprietà</title>
+      <screenshot>
+	<screeninfo>Finestra di dialogo Proprietà</screeninfo>
+	<graphic format="png" fileref="tickastat_settings"
+		 srccredit="muet">
+	</graphic>
+      </screenshot>
+    </figure>
+
+    <para>
+      La sezione <guilabel>Moduli</guilabel> elenca i vari moduli
+      abilitabili. Selezionate un modulo dall'elenco <guilabel>Moduli</guilabel>
+      sulla sinistra per configurarlo nella parte destra. Ogni modulo e le sue
+      proprietà configurabili sono descritti  in <xref
+      linkend="tickastat-modules">.
+    </para>
+
+    <para>
+      Le proprietà nella sezione <guilabel>Generali</guilabel> sono:
+      <itemizedlist>
+	<listitem>
+	  <para>
+	    Abilita il log degli eventi &mdash; Se questo bottone è
+	    selezionato viene scritto un log da di tutti gli eventi individuati
+	    dai moduli abilitati nel file indicato nel campo <guilabel>Percorso
+	    del Log</guilabel>.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Percorso del log &mdash; Questo è il file usato per il log degli
+	    eventi.
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+
+    <para>
+      La proprietà nella sezione <guilabel>Visualizzazione</guilabel> sono:
+      <itemizedlist>
+
+	<listitem>
+	  <para>
+	    Scorrimento intelligente &mdash; Selezionando questo bottone i
+	    vecchi eventi scorrono in alto solo quando ne avvengono di nuovi,
+	    invece di scorrere continuamente.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Tipo di scorrimento intelligente &mdash; Selezionando questo bottone
+	    il nuovo testo scorre nell'applet lentamente come se venisse
+	    digitato invece di scorrere rapidamente.
+	  </para>
+	</listitem>
+
+      <listitem>
+	  <para>
+	    Ritardo del ritorno a capo &mdash; Questo è il ritardo (in decimi di
+	    secondo) con cui viene ritornato a capo il testo di un messaggio che
+	    oltrepassa il limite destro dell'applet.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Velocità di scorrimento fra le linee &mdash; Questa è la velocità
+	    con cui le linee vengono scorse in alto.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Larghezza &mdash; Questa è la larghezza (in pixel) dell'applet.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Usa tutto lo spazio sul pannello &mdash; Selezionando questo bottone
+	    l'applet occuperà tutto lo spazio disponibile sul
+	    <interface>Pannello</interface> (fino all'oggetto successivo, se
+	    esiste). 
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Altezza &mdash; Questa è l'altezza (in pixel) dell'applet.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Usa la dimensione del pannello &mdash; Selezionando questo bottone
+	    l'applet si dimensionerà usando la dimensione del
+	    <interface>Pannello</interface>.
+	  </para>
+	</listitem>
+
+      </itemizedlist>
+    </para>
+
+
+    <para> 
+      Fatti i cambiamenti voluti cliccate sul pulsante <guibutton>OK</guibutton>
+      per salvarli e chiudete la finestra di dialogo
+      <interface>Proprietà</interface>. Per annullare le modifiche e tornare
+      alle impostazioni precedenti, cliccate sul pulsante
+      <guibutton>Chiudi</guibutton>.
+    </para>
+  </sect2>
+
+  <!-- ============= Modules ============================= -->
+  <sect2 id="tickastat-modules">
+    <title>Moduli</title>
+    <para>
+      <application>Tick-a-Stat</application> contiene molti moduli. Ognuno di
+      questi controlla una certa parte del vostro sistema e risponde a
+      determinati eventi. Ne possono essere usati molti contemporaneamente. I
+      moduli standard di <application>Tick-a-Stat</application> vengono
+      descritti più avanti.
+    </para>
+
+    <sect3 id="tickastat-testmodule">
+      <title>Modulo di prova</title>
+      <para>
+	Il Modulo di Prova è un semplice modulo che scrive semplicemente
+	<quote>Questa è la descrizione del modulo di prova</quote> nell'applet
+	ogni pochi secondi.
+      </para>
+    </sect3>     
+
+    <sect3 id="tickastat-coredumpmodule">
+      <title>Modulo di ricerca di Core Dump</title>
+      <para>
+	Il modulo Controllo Dump cerca in un determinato percorso file di core
+	dump e nel caso questi vengano trovati questi vengono datati e ne
+	archivia la backtrace. Viene anche mostrato un logo del core dump e un
+	messaggio nell'applet principale, così come mostrato in <xref
+	linkend="tickastat-coredump-fig"> ed opzionalmente viene aperta una
+	finestra dove viene mostrata la backtrace.
+      </para>
+      <figure id="tickastat-coredump-fig">
+	<title>Tick-a-Stat che mostra un Core Dump</title>
+	<screenshot>
+	  <screeninfo>Tick-a-Stat che mostra un Core Dump</screeninfo>
+	  <graphic format="png" fileref="tickastat_coredump"
+		   srccredit="muet">
+	  </graphic>
+	</screenshot>
+      </figure> 
+
+      <para>
+	Le impostazioni del modulo Core Dump sono:
+	<itemizedlist>
+
+	  <listitem>
+	    <para>
+	      Abilita questo modulo &mdash; Selezionando questo bottone il
+	      modulo viene attivato.
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      Mostra la finestra delle backtrace per i nuovi core dump &mdash;
+	      Selezionando questo bottone <application>Tick-a-Stat</application>
+	      apre una finestra di dialogo che mostra la backtrace ogni volta
+	      che viene generato un nuovo file core.
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      Percorso da controllare &mdash; Immettete il percorso della
+	      directory che volete controllare per nuovi file di core dump.
+	    </para>
+	  </listitem>
+	</itemizedlist>
+      </para>
+    </sect3>
+
+    <sect3 id="tickastat-loadmonitormodule">
+      <title>Modulo Carico Medio</title>
+      <para>
+	Il Modulo Carico Medio controlla l'uso del processore e vi avvisa quando
+	il numero di processi (programmi) che lo stanno usando è troppo
+	alto. (In questa eventualità sono possibili basse prestazioni di ogni
+	processo e può essere dovuta da un programma o un demoni
+	sballati). Quando il carico sul processore è alto viene mostrato un
+	avviso come mostrato in <xref linkend="tickastat-loadmonitor-fig">. Per
+	  ogni carico ancora più alto viene sempre mostrato un avviso.
+      </para>
+      <figure id="tickastat-loadmonitor-fig">
+	<title>Tick-a-Stat che mostra un avviso di Carico Alto</title>
+	<screenshot>
+	  <screeninfo>Tick-a-Stat che mostra un avviso di Carico Alto</screeninfo>
+	  <graphic format="png" fileref="tickastat_loadaverage"
+		   srccredit="muet">
+	  </graphic>
+	</screenshot>
+      </figure> 
+
+      <para>
+	Le impostazioni del modulo Carico Medio sono:
+	<itemizedlist>
+
+	  <listitem>
+	    <para>
+	      Abilita questo modulo &mdash; Selezionando questo bottone il
+	      modulo viene attivato.
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      Controlla ogni (Secondi) &mdash; Imposta l'intervallo (in secondi)
+	      entro il quale viene fatto il controllo del carico.
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      Mostra finestra di dialogo per questo evento &mdash; Selezionando
+	      questo bottone appare una finestra di dialogo ogni volta che viene
+	      generato un avviso (o un allarme). (Questa opzione è valida sia
+	      per le sezioni Avviso e Allarme).
+	    </para>
+	  </listitem>
+	  <!-- Threshold (?) -->
+	  <listitem>
+	    <para>
+	      Livello di Carico Medio (threshold) &mdash; Impostate questo valore
+	      al carico (il numero medio di programmi che girano
+	      contemporaneamente sul processore). (Questa opzione è valida sia
+	      per le sezioni Avviso e Allarme).
+
+	      <!--
+	      Set this to the load (the
+	      average number of running programs which request use of the
+	      CPU at any instant in time). (This option occurs in both the
+	      Warning and Alert sections.) 
+	      -->
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      Testo da mostrare &mdash; Immettete il testo che deve essere
+	      mostrato quando il carico raggiunge il livello.
+	      <!--
+	      Enter the message which should be
+	      displayed when the load reaches the threshold level.
+	      -->
+	    </para>
+	  </listitem>
+
+	</itemizedlist>
+      </para>
+    </sect3>
+    <!-- Tail (?) -->
+    <sect3 id="tickastat-filetailermodule">
+      <title>File Tailer Module</title>
+      <para>
+	The File Tailer module shows any lines which are added to the
+	end of a given file.  This is typically used to monitor the
+	output log files created by many programs.
+      </para>
+
+
+      <para>
+	The File Tailerr module settings are:
+	<itemizedlist>
+
+	  <listitem>
+	    <para>
+	      Enable this module &mdash; Selecting this button activates the
+	      module.
+	    </para>
+	  </listitem>
+
+	  <listitem>
+	    <para>
+	      Path to tail &mdash; Set this to the name of the file you
+	      wish to tail.  (The term "tail" refers to watching the tail,
+	      or end, of a file.  In a shell, one can do this using the
+	      <command>tail</command> command, typically with the "-f"
+	      flag.) 
+	    </para>
+	  </listitem>
+	  
+	  <listitem>
+	    <para>
+	      Show pop-up dialog for new line &mdash; Select this
+	      to have a pop-up dialog showing the new line open each time a
+	      new line is added to the file.
+	    </para>
+	  </listitem>
+
+	</itemizedlist>
+      </para>
+    </sect3>
+    
+  </sect2>
+
+
+  <!-- ============= Event Log ============================== -->
+  <sect2 id="tickastat-eventlog">
+    <title>Log degli eventi</title>
+    <para>
+      Il log degli eventi serve per tener traccia di eventi registrati da
+      <application>Tick-a-Stat</application>. Il file usato per il log degli
+      eventi e per qualunque altro log abilitato vengono specificati nella
+      sezione <guilabel>Generali</guilabel> della finestra di dialogo <link
+      linkend="tickastat-prefs"> <guilabel>Proprietà</guilabel></link>. Per
+      vedere il log degli eventi cliccate con il tasto destro del mouse
+      sull'applet e scegliete <guimenuitem>Log degli
+      eventi&hellip;</guimenuitem>.
+    </para>
+
+  </sect2>
+
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+  the program if there are any - please be frank and list all
+  problems you know of -->
+  <sect2 id="tickastatapplet-bugs">
+    <title>Bug conosciuti e Limitazioni</title>
+    <para>
+      Questa applet non ha bug conosciuti.
+    </para>
+  </sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="tickastat-authors">
+    <title>Autori</title>
+    <para>
+      L'<application>Applet Tick-a-Stat</application> è stata scritta da John
+      Ellis (<email>johne@bellatlantic.net</email>). Inviate tutti i commenti,
+      suggerimenti e notifiche di errori al <ulink url="http://bugs.gnome.org"
+      type="http">GNOME bug tracking database</ulink>. (Le istruzioni per
+      riportare errori possono essere trovate <ulink
+      url="http://bugs.gnome.org/Reporting.html" type="http">on-line</ulink>. Se
+      state usando la versione di GNOME 1.1 o una più recente è possibile usare
+      anche il programma <application>bug-buddy</application>
+      (<command>bug-buddy</command>), che si trova nel sotto-menù
+      <guisubmenu>Utilità</guisubmenu> nel <guimenu>Menù Principale</guimenu>,
+      per riportare errori.
+   </para>
+
+    <para>
+      Questo manuale è stato scritto da Dan Mueth
+      (<email>d-mueth@uchicago.edu</email>). Inviate tutti i commenti e i
+      suggerimenti riguardo questo manuale allo <ulink type="http"
+      url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink>
+      mandando un email a <email>docs@gnome.org</email>. È possibile anche
+      spedire commenti on-line usando lo <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+      Table</ulink>.
+    </para>
+
+    <para>
+      La traduzione italiana è stata curata da Leandro Noferini
+      (<email>lnoferin@cybervalley.org</email>). Inviate tutti i commenti e
+      suggerimenti riguardo questa traduzione a
+      <email>gnome-i18n@lists.it.gnome.org</email>.
+    </para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+    <title>Licenza</title>
+    <para>
+      This program is free software; you can redistribute it and/or
+      modify it under the terms of the <citetitle>GNU General Public
+	License</citetitle> as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version.
+    </para>
+    <para>
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      <citetitle>GNU General Public License</citetitle> for more details.
+    </para>
+    <para>
+      A copy of the <citetitle>GNU General Public License</citetitle> is
+      included as an appendix to the <citetitle>GNOME Users
+	Guide</citetitle>.  You may also obtain a copy of the
+      <citetitle>GNU General Public License</citetitle> from the Free
+      Software Foundation by visiting <ulink type="http"
+      url="http://www.fsf.org">their Web site</ulink> or by writing to
+      <address>
+	Free Software Foundation, Inc.
+	<street>59 Temple Place</street> - Suite 330
+	<city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+	<country>USA</country>
+      </address>
+    </para>
+  </sect2>
+  
+</sect1>
+
+
+
+
