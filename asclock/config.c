@@ -80,8 +80,7 @@ static int findTheme(char*input, char *ret)
 
       if( strlen(*dir) < n )
 	{
-	  strncpy(ret, *dir, MAX_PATH_LEN);
-	  strncat(ret, input, MAX_PATH_LEN);      
+	  g_snprintf (ret, MAX_PATH_LEN, "%s%s", *dir, input);
 
 	  if( (d = opendir(ret)) != NULL )
 	  {

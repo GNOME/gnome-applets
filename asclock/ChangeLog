@@ -1,3 +1,9 @@
+Mon Jul 02 02:32:00 2001  George Lebl <jirka@5z.com>
+
+	* config.c, dialogs.c, gnome_config.c, timezone.c:  Fix temporary
+	  file creation (with 0600 permissions rather then 0777), and
+	  fix usage of strncpy (note! it does not null terminate!!!)
+
 2001-06-20  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* dialogs.c: Swap include order for <math.h>.

@@ -40,7 +40,8 @@ void enum_timezones(asclock *my_asclock, GtkWidget *clist )
         if (pos)
 	  {
 	    pos += strlen ("zoneinfo/");
-	    strncpy(my_asclock->timezone, g_strdup (pos), MAX_PATH_LEN);
+	    strncpy(my_asclock->timezone, pos, MAX_PATH_LEN);
+	    my_asclock->timezone[MAX_PATH_LEN-1] = '\0';
  	  }
       }
   }

@@ -31,6 +31,7 @@ void get_gnome_config(asclock *my, char *config_path)
   tmp =
   gnome_config_get_string_with_default("ASClock/theme_filename=", &is_default);
   strncpy(my->theme_filename, tmp, 512);
+  my->theme_filename[511] = '\0';
 
   g_free(tmp);
 
@@ -43,6 +44,7 @@ void get_gnome_config(asclock *my, char *config_path)
   tmp =
   gnome_config_get_string_with_default("ASClock/timezone=", &is_default);
   strncpy(my->timezone, tmp, 512);
+  my->timezone[511] = '\0';
 
   g_free(tmp);
 

@@ -52,18 +52,20 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   do {
 	  
 	  fname = tempnam(NULL, "asclock_globe");
-	  fd = open (fname, O_CREAT | O_EXCL, 0777);
+	  fd = open (fname, O_CREAT | O_EXCL, 0600);
   } while (fd == -1);
 
   close (fd);
   
-  old_locale = setlocale(LC_NUMERIC, "C");
+  old_locale = g_strdup (setlocale(LC_NUMERIC, NULL));
+  setlocale(LC_NUMERIC, "C");
   g_snprintf(cmd, sizeof(cmd), 
 	     "xearth -ppm -night 15 -size '320 320' -mag 0.95 -pos 'fixed 0 %.4f' -nostars >> %s",
 	     lon, fname);
 
   system(cmd);
   setlocale(LC_NUMERIC, old_locale);
+  g_free (old_locale);
 
   gdk_imlib_load_file_to_pixmap(fname, &pmap, &mask);
 
@@ -100,6 +102,7 @@ static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButto
   gtk_clist_get_text(GTK_CLIST(list), row, 0, &line);
 
   strncpy(my_asclock->selected_theme_filename, line, MAX_PATH_LEN);
+  my_asclock->selected_theme_filename[MAX_PATH_LEN-1] = '\0';
 
   if(strncmp(my_asclock->selected_theme_filename, my_asclock->theme_filename, MAX_PATH_LEN)!=0)
     gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
@@ -121,6 +124,7 @@ static void location_selected(GtkWidget *list, gint row, gint column, GdkEventBu
   gtk_clist_get_text(GTK_CLIST(list), row, 1, &line);
 
   strncpy(my_asclock->selected_timezone, line, MAX_PATH_LEN);
+  my_asclock->selected_timezone[MAX_PATH_LEN-1] = '\0';
 
   properties_timezone_render(my_asclock, list, my->lat, my->lon);
   return;
@@ -179,6 +183,7 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
       }
 
     strncpy(static_my_asclock->timezone, static_my_asclock->selected_timezone, MAX_PATH_LEN);
+    static_my_asclock->timezone[MAX_PATH_LEN-1] = '\0';
 #ifdef HAVE_SETENV
      setenv("TZ", static_my_asclock->timezone, TRUE);
 #else
@@ -207,6 +212,7 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
     set_clock_pixmap();
   
     strncpy(static_my_asclock->theme_filename, static_my_asclock->selected_theme_filename, MAX_PATH_LEN);
+    static_my_asclock->theme_filename[MAX_PATH_LEN-1] = '\0';
   }
 
   if(static_my_asclock->showampm != static_my_asclock->selected_showampm)
