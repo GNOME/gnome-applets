@@ -47,9 +47,6 @@ gchar * get_current_date(const gchar *format)
   	return date;
 }
 
-#if 0
-/* These are some unrequired X functions that are instead being implemented *
- * with libwnck. They are here just because I don't want to lose them       */
 static Atom
 xstuff_atom_get (const char *atom_name)
 {
@@ -117,7 +114,6 @@ xstuff_get_current_workspace (GtkWindow *window)
 
 	return retval;
 }
-#endif
 void
 xstuff_change_workspace (GtkWindow *window,
                          int        new_space)
@@ -136,7 +132,7 @@ xstuff_change_workspace (GtkWindow *window,
   xev.xclient.send_event = True;
   xev.xclient.display = gdk_display;
   xev.xclient.window = xwindow;
-  xev.xclient.message_type = _wnck_atom_get ("_NET_WM_DESKTOP");
+  xev.xclient.message_type = xstuff_atom_get ("_NET_WM_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_space;
   xev.xclient.data.l[1] = 0;
