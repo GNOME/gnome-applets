@@ -1687,7 +1687,7 @@ static gint updateOutput(gpointer data)
     	{
     		StockData *stockdata = data;
     		
-    		if (stockdata->props.use_default_theme);
+    		if (stockdata->props.use_default_theme)
     			load_fonts (stockdata);
     	}
 
