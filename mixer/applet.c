@@ -545,7 +545,7 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
   gint x, y;
 
   /* show (before reposition, so size allocation is done) */
-  gtk_widget_show (GTK_WIDGET (applet->dock));
+  gtk_widget_show_all (GTK_WIDGET (applet->dock));
 
   /* reposition */
   gnome_volume_applet_get_dock_position (applet, &x, &y);
@@ -582,7 +582,7 @@ gnome_volume_applet_popdown_dock (GnomeVolumeApplet *applet)
   gtk_grab_remove (widget);
 
   /* hide */
-  gtk_widget_hide (GTK_WIDGET (applet->dock));
+  gtk_widget_hide_all (GTK_WIDGET (applet->dock));
 
   /* set menu item as active */
   gtk_widget_set_state (GTK_WIDGET (applet), GTK_STATE_NORMAL);
