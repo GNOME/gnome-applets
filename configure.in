@@ -126,7 +126,9 @@ dnl Fvwm pager
 AC_CHECK_HEADER(fvwm.h, fvwm=true, fvwm=false)
 AM_CONDITIONAL(HAVE_FVWM, $fvwm)
 
-dnl 
+dnl screenshooter
+AM_CONDITIONAL(APPLET_SCREENSAVER, xyes)
+
 ALL_LINGUAS="ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko nl no pl pt ru sk sv wa zh_TW.Big5"
 AM_GNU_GETTEXT
 
@@ -179,6 +181,7 @@ multiload/Makefile
 odometer/Makefile
 odometer/def_theme/Makefile
 odometer/themes/Makefile
+screenshooter/Makefile
 slashapp/Makefile
 sound-monitor/Makefile
 sound-monitor/def_theme/Makefile

@@ -1,0 +1,78 @@
+#!/bin/sh
+# Example shell script for using the output from Screen-Shooter
+# If this is ugly, its because my shell scripting is worse than my C
+# programming, which is bad enough to start with ;)
+# If you improve this script, could you send me the results?
+
+# Change these variables to reflect the location of your web-page
+# The page doesn't need to exist, but if it does, stuff is added to it
+SCREENSHOTPAGE=screenshots.html
+WEBSITEDIR=~/
+
+SCRSHOT=$1
+[ -z $2 ] && {
+THUMB=""
+} || {
+THUMB=$2
+}
+
+cd $WEBSITEDIR
+
+[ -f "$SCREENSHOTPAGE" ] && {
+FILE_EXISTED=TRUE
+# Create backup of existing file if it exists
+mv $SCREENSHOTPAGE ${SCREENSHOTPAGE}_OLD
+# Rip the headers out of the file if it exists.
+# Replace <BODY with another unique tag, if you want some more of the
+# body transferred too. I add to the top of my page, you could sed for a
+# special comment marker if you prefer, like <!-- ADD -->, but I didn't want
+# to enforce the alteration of existing pages. Its easier to change the
+# script. This script just sticks the new image in after the <BODY ...> tag.
+sed '/<BODY/q' ${SCREENSHOTPAGE}_OLD > $SCREENSHOTPAGE
+} || {
+# Otherwise, (page doesn't already exist), create basic headers.
+# Feel free to alter these to suit yourselves
+echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">" >> $SCREENSHOTPAGE
+echo "<HTML lang=\"en\">" >> $SCREENSHOTPAGE
+echo "<HEAD>" >> $SCREENSHOTPAGE
+echo "" >> $SCREENSHOTPAGE
+echo "<META name=\"Author\" content=\"\">" >> $SCREENSHOTPAGE
+echo -n "<META http-equiv=\"Content-Type\" content=\"text/html;" >> $SCREENSHOTPAGE
+echo "charset=iso-8859-1\">" >> $SCREENSHOTPAGE
+echo "<TITLE>Screenshot Page created by the Screen-Shooter Applet</TITLE>" >> $SCREENSHOTPAGE
+echo "</HEAD>" >> $SCREENSHOTPAGE
+echo "" >> $SCREENSHOTPAGE
+echo "<BODY>" >> $SCREENSHOTPAGE
+}
+
+# Add the image to the page. Feel free to change this bit, change the alt
+# text, add a default size (a percentage of your resolution for example),
+# some text, and any other stuff you add on a per-shot basis.
+echo "" >> $SCREENSHOTPAGE
+echo -n "<a href=\"" >> $SCREENSHOTPAGE
+echo -n $SCRSHOT >> $SCREENSHOTPAGE
+echo -n "\" target=\"main\"><img src=\"" >> $SCREENSHOTPAGE
+echo -n $THUMB >> $SCREENSHOTPAGE
+echo -n "\" border=\"0\" alt=\"Screenshot. Taken using Screen-Shooter\"" >> $SCREENSHOTPAGE
+echo " align=\"left\"></a>" >> $SCREENSHOTPAGE
+echo -n "Screenshot captured on " >> $SCREENSHOTPAGE
+echo `date +%d-%m-%y` >> $SCREENSHOTPAGE
+echo "<br clear=\"all\">" >> $SCREENSHOTPAGE
+echo "<br>" >> $SCREENSHOTPAGE
+echo "<p>" >> $SCREENSHOTPAGE
+echo "" >> $SCREENSHOTPAGE
+
+[ -z $FILE_EXISTED ] && {
+# We've created a new html file, so we'll need to terminate it correctly.
+# Add some default stuff to the end.
+echo "</BODY>" >> $SCREENSHOTPAGE
+echo "</HTML>" >> $SCREENSHOTPAGE
+
+} || {
+# This is an addition to an existing page, so 
+# add the rest of the page back on to the end.
+sed -n '/<BODY*\>/,//p' ${SCREENSHOTPAGE}_OLD | grep -v "<BODY*\>" >> $SCREENSHOTPAGE
+}
+
+# If you want, you can keep the backup by commenting out this line....
+rm -f ${SCREENSHOTPAGE}_OLD
