@@ -7,23 +7,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2002-11-25 22:49+0300\n"
-"Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
+"POT-Creation-Date: 2004-02-27 03:47+0100\n"
+"PO-Revision-Date: 2004-02-27 14:30+0300\n"
+"Last-Translator: Priit Laes <amd@tt.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: battstat/GNOME_BattstatApplet.xml.h:1
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1
+#: geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
+#: gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1
+#: modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
@@ -31,15 +36,22 @@ msgid "_About..."
 msgstr "_Info..."
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: battstat/GNOME_BattstatApplet.xml.h:2
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4
+#: geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
+#: gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2
+#: modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Abi"
 
@@ -54,7 +66,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Geyes Applet Factory"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1178
+#: accessx-status/applet.c:1249
 msgid "Keyboard Accessibility Status"
 msgstr ""
 
@@ -71,58 +83,79 @@ msgstr ""
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 msgid "Utility"
 msgstr "Utiliit"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:48 mixer/mixer.c:1060
-#: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: accessx-status/applet.c:134
+#: battstat/battstat_applet.c:898
+#: cdplayer/cdplayer.c:603
+#: charpick/charpick.c:556
+#: drivemount/drivemount.c:553
+#: geyes/geyes.c:204
+#: gkb-new/gkb-applet.c:84
+#: gswitchit/gswitchit-applet.c:534
+#: gtik/gtik.c:717
+#: gweather/gweather-about.c:47
+#: mailcheck/mailcheck.c:2461
+#: mini-commander/src/about.c:50
+#: mixer/mixer.c:1332
+#: modemlights/modemlights.c:115
+#: multiload/main.c:60
+#: stickynotes/stickynotes_applet_callbacks.c:230
+#: wireless/wireless-applet.c:572
 msgid "translator_credits"
 msgstr ""
 "Tõlge eesti keelde:\n"
 "       Ilmar Kerm <ikerm@hot.ee>, 2001, 2002.\n"
 "       Tõivo Leedjärv <toivo@linux.ee>, 2002."
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1181
+#: accessx-status/applet.c:155
+#: accessx-status/applet.c:985
+#: accessx-status/applet.c:1083
+#: accessx-status/applet.c:1252
 msgid "AccessX Status"
 msgstr ""
 
-#: accessx-status/applet.c:158
+#: accessx-status/applet.c:156
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr ""
 
-#: accessx-status/applet.c:159
+#: accessx-status/applet.c:157
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
 
-#: accessx-status/applet.c:198
+#: accessx-status/applet.c:193
 #, fuzzy, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "'%s' käivitamisel tekkis viga : %s"
 
-#: accessx-status/applet.c:221
+#: accessx-status/applet.c:228
 #, fuzzy, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "'%s' käivitamisel tekkis viga : %s"
 
-#: accessx-status/applet.c:462 accessx-status/applet.c:496
+#  Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:476
+#: accessx-status/applet.c:514
 msgid "a"
+msgstr "a"
+
+#: accessx-status/applet.c:986
+#: accessx-status/applet.c:1084
+msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 
-#: accessx-status/applet.c:1183
+#: accessx-status/applet.c:1254
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:919
+#: battstat/battstat_applet.c:1673
 msgid "Battery Charge Monitor"
 msgstr "Aku olukorra jälgija"
 
@@ -131,20 +164,26 @@ msgid "Battstat Factory"
 msgstr "Battstat Factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
+#: battstat/battstat_applet.c:1674
 msgid "Monitor a laptop's remaining power"
 msgstr "Jälgi sülearvuti akutoidet"
 
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
+#: battstat/GNOME_BattstatApplet.xml.h:3
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5
+#: geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:6
+#: gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:5
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "_Häälestus..."
 
@@ -234,49 +273,54 @@ msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:338
 msgid "Your platform is not supported!\n"
 msgstr "Sinu arvuti platvorm ei ole toetatud!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:339
 msgid "The applet will not work properly (if at all).\n"
 msgstr "See rakend ei tööta korralikult (kui üldse).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:370
+#: battstat/battstat_applet.c:956
 msgid "High"
 msgstr "Kõrge"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:372
+#: battstat/battstat_applet.c:958
 msgid "Low"
 msgstr "Madal"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:374
+#: battstat/battstat_applet.c:960
 msgid "Critical"
 msgstr "Kriitiline"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:376
+#: battstat/battstat_applet.c:962
 msgid "Charging"
 msgstr "Laeb"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:457
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Aku tühjeneb (%d%%) ja võrgutoidet pole taga"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:481
 msgid "Battery is now fully re-charged!"
 msgstr "Aku on nüüd täis laetud!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:500
+#: battstat/battstat_applet.c:1120
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -288,7 +332,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:504
+#: battstat/battstat_applet.c:1128
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -299,32 +344,46 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:510
+#: battstat/battstat_applet.c:1052
+#: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "Süsteem jookseb akutoitel"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:513
+#: battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "Süsteem jookseb vooluvõrgu toitel"
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:527
+#: wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "puudub"
 
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#  This string will display as a tooltip over the battery frame
+#  when the computer is using battery power.
+#  This string will display as a tooltip over the status frame
+#  when the computer is using battery power and the battery meter
+#  and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:651
+#: battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Süsteem jookseb akutoitel. Aku: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:658
+#: battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Süsteem jookseb vooluvõrgu toitel. Aku: %d%% (%s)"
@@ -333,33 +392,36 @@ msgstr "Süsteem jookseb vooluvõrgu toitel. Aku: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Süsteem jookseb akutoitel. Aku: info puudub"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Süsteem jookseb vooluvõrgu toitel. Aku: info puudub"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:684
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Aku: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "Aku: info puudub"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:789
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -371,15 +433,15 @@ msgstr ""
 "Palun kontrolli, et sul oleks lugemisõigus\n"
 "APM seadmele."
 
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#  Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:798
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 msgstr ""
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:854
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -388,18 +450,16 @@ msgstr ""
 "Suspend käsu käivitamisel tekkis viga: %s\n"
 "Palun proovi see viga kõrvaldada"
 
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:858
 #, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
+msgid "The Suspend command '%s' was unsuccessful."
 msgstr ""
-"Suspend käsu käivitamisel tekkis viga ja programm tagastas \"%d\"\n"
-"Palun proovi see viga kõrvaldada"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:860
+msgid "The Suspend command was unsuccessful."
+msgstr ""
+
+#: battstat/battstat_applet.c:868
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -407,24 +467,29 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:886
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:921
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:922
 #, fuzzy
 msgid "This utility shows the status of your laptop battery."
 msgstr "See utiliit näitab sinu sülearvuti aku olukorda"
 
+#: battstat/battstat_applet.c:1599
+msgid "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI subsystem is working and the acpid daemon is running."
+msgstr ""
+
 #: battstat/battstat_applet.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: battstat/battstat_applet.glade.h:2
 #: mini-commander/src/mini-commander.glade.h:2
@@ -462,7 +527,8 @@ msgstr "Peata"
 msgid "<b>Warnings</b>"
 msgstr "Hoiatused"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11
+#: gtik/gtik.c:1476
 msgid "Appearance"
 msgstr "Väljanägemine"
 
@@ -470,11 +536,14 @@ msgstr "Väljanägemine"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Aku olukorra jälgija häälestus"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
-#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: battstat/battstat_applet.glade.h:13
+#: drivemount/properties.c:358
+#: gweather/gweather-pref.c:753
+#: mailcheck/mailcheck.c:2047
+#: mini-commander/src/mini-commander.glade.h:13
+#: modemlights/properties.c:563
 msgid "General"
-msgstr "Üldine"
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:14
 #, fuzzy
@@ -491,9 +560,8 @@ msgid "Sho_w battery charge percentages"
 msgstr ""
 
 #: battstat/battstat_applet.glade.h:17
-#, fuzzy
 msgid "Show _power connection status"
-msgstr "Ühenduse staatus"
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:18
 #, fuzzy
@@ -538,10 +606,17 @@ msgstr "Anna mulle märku, kui aku hakkab tühjaks saama"
 msgid "_Yellow:"
 msgstr "Kollane:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:468
-#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: battstat/properties.c:297
+#: drivemount/drivemount.c:510
+#: drivemount/properties.c:604
+#: mailcheck/mailcheck.c:2314
+#: mailcheck/mailcheck.c:2569
+#: mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1445
+#: stickynotes/stickynotes_applet_callbacks.c:207
+#: stickynotes/stickynotes_applet_callbacks.c:371
+#: wireless/wireless-applet.c:542
+#: wireless/wireless-applet.c:626
 #, fuzzy, c-format
 msgid "There was an error displaying help: %s"
 msgstr "'%s' käivitamisel tekkis viga : %s"
@@ -558,8 +633,9 @@ msgstr "Aku on täis laetud"
 msgid "Battery power low"
 msgstr "Aku hakkab tühjaks saama"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1
+#: cdplayer/cdplayer.c:620
+#: cdplayer/cdplayer.c:1084
 msgid "CD Player"
 msgstr "CD mängija"
 
@@ -585,62 +661,69 @@ msgstr "Paneelirakend muusika CD-de mängimiseks"
 msgid "_Open CD Player"
 msgstr "CD mängija"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:178
+#: cdplayer/cdplayer.c:1074
 msgid "Stop"
 msgstr "Peata"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:182
+#: cdplayer/cdplayer.c:1076
 msgid "Play / Pause"
 msgstr "Mängi / paus"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:186
+#: cdplayer/cdplayer.c:1078
 msgid "Eject"
 msgstr "Väljasta meedia"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:190
+#: cdplayer/cdplayer.c:1080
 msgid "Previous Track"
 msgstr "Eelmine lugu"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:194
+#: cdplayer/cdplayer.c:1082
 msgid "Next Track"
 msgstr "Järgmine lugu"
 
-#: cdplayer/cdplayer.c:235
+#: cdplayer/cdplayer.c:253
 msgid "You do not have permission to use the CD player."
 msgstr ""
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:385
+#: mixer/mixer.c:1299
+#: multiload/main.c:144
 #, fuzzy, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s' käivitamisel tekkis viga : %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:436
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr ""
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:502
 msgid "CD Player Preferences"
 msgstr "CD mängija häälestus"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:523
 #, fuzzy
 msgid "Device _path:"
 msgstr "Seadme _rada:"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:532
 msgid "Device Path"
 msgstr "Seadme rada"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:532
 msgid "Set the device path here"
 msgstr "Määra seadme kataloogitee siin"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:535
 msgid "Use _Default"
 msgstr "Kasuta _vaikeväärtust"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:621
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -648,39 +731,42 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:623
+#: cdplayer/cdplayer.c:1085
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD mängija rakend on lihtne muusika-cd mängija sinu paneelil"
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:899
+#: cdplayer/cdplayer.c:910
 msgid "Elapsed time"
 msgstr "Kulunud aeg"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:902
+#: cdplayer/cdplayer.c:912
 msgid "Track number"
 msgstr "Loo number"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:973
 msgid "Audio device is busy, or being used by another application"
 msgstr ""
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1075
 msgid "Click this button to Stop playing the CD"
 msgstr "CD mängimise lõpetamiseks klõpsa sellel nupul"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1077
 msgid "Click this button to Play or Pause the CD"
 msgstr "CD mängimise alustamiseks või peatamiseks klõpsa sellel nupul"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1079
 msgid "Click this button to eject the CD"
 msgstr "CD väljastamiseks klõpsa sellel nupul"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1081
 msgid "Click this button to Play the previous track in the CD"
 msgstr "CD pealt eelmise loo mängimiseks klõpsa sellel nupul"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1083
 msgid "Click this button to Play the next track in the CD"
 msgstr "CD pealt järgmise loo mängimiseks klõpsa sellel nupul"
 
@@ -689,13 +775,13 @@ msgid "Path to the device"
 msgstr ""
 
 #: cdplayer/cdplayer.schemas.in.h:2
-msgid ""
-"This is the full path of the device that will be used to play cd's from this "
-"applet"
+msgid "This is the full path of the device that will be used to play cd's from this applet"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1
+#: charpick/charpick.c:576
+#: charpick/charpick.c:727
+#: charpick/properties.c:425
 msgid "Character Palette"
 msgstr "Märgipalett"
 
@@ -704,46 +790,35 @@ msgid "Charpicker Applet Factory"
 msgstr "Charpicker Applet Factory"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#: charpick/charpick.c:727
 msgid "Insert characters"
 msgstr "Lisa märke"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
-msgid "Add Palette"
-msgstr ""
-
-#: charpick/charpick.c:363
-msgid "Add a palette..."
-msgstr ""
-
-#: charpick/charpick.c:446
+#: charpick/charpick.c:419
 msgid "Available palettes"
 msgstr ""
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "Lisa sümboleid"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:545
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:546
 msgid "Kevin Vandersloot"
-msgstr ""
+msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:578
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:603
-msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
+#: charpick/charpick.c:579
+msgid "Gnome Panel applet for selecting strange characters that are not on my keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Gnome paneeli rakend valimaks märgistikust märke, mis puuduvad minu "
-"klaviatuuril. Avaldatud GNU Üldise Avaliku Litsentsi all."
 
 #: charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
@@ -753,7 +828,8 @@ msgstr ""
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr ""
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+#: charpick/charpick.schemas.in.h:3
+#: charpick/properties.c:352
 msgid "List of available palettes"
 msgstr ""
 
@@ -762,71 +838,74 @@ msgid "List of strings containing the available palettes"
 msgstr ""
 
 #: charpick/charpick.schemas.in.h:5
-msgid ""
-"The string that the user had selected when the applet was last used. This "
-"string will be displayed when the user starts the applet."
+msgid "The string that the user had selected when the applet was last used. This string will be displayed when the user starts the applet."
 msgstr ""
 
-#: charpick/properties.c:88
+#: charpick/properties.c:90
 #, fuzzy
 msgid "_Palette:"
 msgstr "Muster:"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:98
 msgid "Palette entry"
 msgstr ""
 
-#: charpick/properties.c:96
-msgid "Modify a palette by adding or removing chacters"
+#: charpick/properties.c:99
+msgid "Modify a palette by adding or removing characters"
 msgstr ""
 
-#: charpick/properties.c:160
+#: charpick/properties.c:213
+msgid "Add Palette"
+msgstr ""
+
+#: charpick/properties.c:250
 #, fuzzy
 msgid "Edit Palette"
 msgstr "Märgipalett"
 
-#: charpick/properties.c:259
+#: charpick/properties.c:351
 #, fuzzy
 msgid "Palettes list"
 msgstr "Paiguti hajusat udu"
 
-#: charpick/properties.c:338
+#: charpick/properties.c:430
 #, fuzzy
 msgid "Pal_ettes:"
 msgstr "Muster:"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:446
 msgid "Add button"
-msgstr ""
+msgstr "Lisa nupp"
 
-#: charpick/properties.c:355
+#: charpick/properties.c:447
 msgid "Click to add a new palette"
 msgstr ""
 
-#: charpick/properties.c:362
+#: charpick/properties.c:454
 #, fuzzy
 msgid "Edit button"
 msgstr "Uuendamise spinnerinupp"
 
-#: charpick/properties.c:363
+#: charpick/properties.c:455
 msgid "Click to edit the selected palette"
 msgstr ""
 
-#: charpick/properties.c:370
+#: charpick/properties.c:462
 #, fuzzy
 msgid "Delete button"
 msgstr "_Kustuta"
 
-#: charpick/properties.c:371
+#: charpick/properties.c:463
 msgid "Click to delete the selected palette"
 msgstr ""
 
-#: charpick/properties.c:423
+#: charpick/properties.c:515
 msgid "Character Palette Preferences"
 msgstr "Märgipaleti häälestus"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:528
+#: drivemount/drivemount.c:268
+#: drivemount/drivemount.c:572
 msgid "Disk Mounter"
 msgstr "Ketaste ühendaja"
 
@@ -840,7 +919,7 @@ msgstr "Factory for drive mount applet"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
 msgid "Mount local disks and devices"
-msgstr "Ühenda lokaalseid kettaid ja seadmeid"
+msgstr ""
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
 msgid "_Browse..."
@@ -848,44 +927,47 @@ msgstr "_Vali..."
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
-msgstr "V_äljasta meedia"
+msgstr ""
 
-#: drivemount/drivemount.c:409 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:451
+#: mailcheck/mailcheck.c:661
 #, fuzzy, c-format
 msgid "There was an error executing %s: %s"
 msgstr "'%s' käivitamisel tekkis viga : %s"
 
-#: drivemount/drivemount.c:416
+#: drivemount/drivemount.c:458
 msgid "Cannot browse device"
 msgstr ""
 
-#: drivemount/drivemount.c:474 drivemount/properties.c:595
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
+#: drivemount/drivemount.c:516
+#: drivemount/properties.c:610
+#: mailcheck/mailcheck.c:2320
+#: mailcheck/mailcheck.c:2575
 #, fuzzy
 msgid "Error displaying help"
 msgstr "'%s' käivitamisel tekkis viga : %s"
 
-#: drivemount/drivemount.c:529
+#: drivemount/drivemount.c:573
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:531
+#: drivemount/drivemount.c:575
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Kettaseadmete kokku- ja lahtiühendamise rakend."
 
-#: drivemount/drivemount.c:731
+#: drivemount/drivemount.c:777
 msgid " mounted"
 msgstr " on ühendatud"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:779
 msgid " not mounted"
 msgstr " ei ole ühendatud"
 
-#: drivemount/drivemount.c:845
+#: drivemount/drivemount.c:891
 msgid "\" reported:\n"
 msgstr "\" teatas:\n"
 
-#: drivemount/drivemount.c:847
+#: drivemount/drivemount.c:893
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -893,7 +975,7 @@ msgstr ""
 "Mount käsk ei läinud läbi.\n"
 "\""
 
-#: drivemount/drivemount.c:853
+#: drivemount/drivemount.c:899
 #, fuzzy
 msgid "Cannot mount device"
 msgstr " ei ole ühendatud"
@@ -906,90 +988,94 @@ msgstr ""
 msgid "Time in seconds between status updates"
 msgstr ""
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:336
 msgid "Disk Mounter Preferences"
 msgstr "Ketaste ühendaja häälestus"
 
-#: drivemount/properties.c:355
-#, fuzzy
+#: drivemount/properties.c:364
 msgid "_Mount directory:"
-msgstr "_Ühendamiskataloog:"
+msgstr ""
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:370
 msgid "Select Mount Directory"
 msgstr ""
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:392
 #, fuzzy
 msgid "_Update interval:"
 msgstr "_Info uuendamise sagedus (sek):"
 
-#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: drivemount/properties.c:415
+#: mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2124
+#: modemlights/properties.c:468
 #, fuzzy
 msgid "seconds"
 msgstr "millisekundit"
 
-#: drivemount/properties.c:419
+#: drivemount/properties.c:428
 #, fuzzy
 msgid "_Icon:"
 msgstr "_Ikoon :"
 
-#: drivemount/properties.c:445
+#: drivemount/properties.c:454
 msgid "Floppy"
 msgstr "Flopi"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:457
 msgid "Cdrom"
 msgstr "CDROM"
 
-#: drivemount/properties.c:451
+#: drivemount/properties.c:460
 msgid "Cd Recorder"
 msgstr "CD salvesti"
 
-#: drivemount/properties.c:454
+#: drivemount/properties.c:463
 msgid "Zip Drive"
 msgstr "ZIP seade"
 
-#: drivemount/properties.c:457
+#: drivemount/properties.c:466
 msgid "Hard Disk"
 msgstr "Kõvaketas"
 
-#: drivemount/properties.c:460
+#: drivemount/properties.c:469
 msgid "Jaz Drive"
 msgstr "Jaz seade"
 
-#: drivemount/properties.c:463
+#: drivemount/properties.c:472
+msgid "USB Stick"
+msgstr "USB mälupulk"
+
+#: drivemount/properties.c:475
 msgid "Custom"
 msgstr "Omavalitud"
 
-#: drivemount/properties.c:482
+#: drivemount/properties.c:494
 msgid "Select icon for mounted"
 msgstr "Valige ühendatud seadme ikoon"
 
-#: drivemount/properties.c:489
-#, fuzzy
+#: drivemount/properties.c:501
 msgid "Moun_ted icon:"
-msgstr "_Ühendamiskataloog:"
+msgstr ""
 
-#: drivemount/properties.c:510
+#: drivemount/properties.c:522
 msgid "Select icon for unmounted"
 msgstr "Valige ühendamata seadme ikoon"
 
-#: drivemount/properties.c:517
+#: drivemount/properties.c:529
 msgid "Unmou_nted icon:"
 msgstr ""
 
-#: drivemount/properties.c:533
+#: drivemount/properties.c:545
 msgid "_Scale size to panel"
 msgstr "_Määra suurus paneeli järgi"
 
-#: drivemount/properties.c:540
+#: drivemount/properties.c:552
 #, fuzzy
 msgid "_Eject disk when unmounting"
 msgstr "_Väljasta meedia lahtiühendamisel"
 
-#: drivemount/properties.c:550
+#: drivemount/properties.c:562
 msgid "Use _automount friendly status test"
 msgstr "Uuri seisundit _automounterile meelepärasel viisil"
 
@@ -1001,8 +1087,10 @@ msgstr "Paar silmamuna sinu paneelile"
 msgid "Amusements"
 msgstr "Meelelahutus"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
-#: geyes/geyes.c:454 geyes/geyes.c:456
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3
+#: geyes/geyes.c:224
+#: geyes/geyes.c:454
+#: geyes/geyes.c:456
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -1010,11 +1098,11 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes Applet Factory"
 
-#: geyes/geyes.c:249
+#: geyes/geyes.c:225
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:250
+#: geyes/geyes.c:226
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "xeyes kloon GNOME paneelile."
 
@@ -1026,15 +1114,24 @@ msgstr "Silmad vaatavad hiirekursori suunas"
 msgid "Directory in which the theme is located"
 msgstr ""
 
-#: geyes/themes.c:257
+#: geyes/themes.c:123
+msgid "Can not launch the eyes applet."
+msgstr ""
+
+#: geyes/themes.c:124
+#, fuzzy
+msgid "There was a fatal error while trying to load the theme."
+msgstr "'%s' käivitamisel tekkis viga : %s"
+
+#: geyes/themes.c:294
 msgid "Geyes Preferences"
 msgstr "Geyes häälestus"
 
-#: geyes/themes.c:289
+#: geyes/themes.c:326
 msgid "Themes"
 msgstr ""
 
-#: geyes/themes.c:310
+#: geyes/themes.c:347
 msgid "_Select a theme:"
 msgstr ""
 
@@ -1055,11 +1152,13 @@ msgstr "Klahvitabeli valija"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Loob rakendeid klahvitabeli vahetamiseks."
 
-#: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
+#: gkb-new/descs.sun/presets.xml.in.h:1
+#: gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
 msgstr "Armeenia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:2 gkb-new/descs/presets.xml.in.h:6
+#: gkb-new/descs.sun/presets.xml.in.h:2
+#: gkb-new/descs/presets.xml.in.h:6
 msgid "Armenian"
 msgstr "Armeenia"
 
@@ -1067,23 +1166,28 @@ msgstr "Armeenia"
 msgid "Armenian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaidjan"
-msgstr ""
+#: gkb-new/descs.sun/presets.xml.in.h:4
+#: gkb-new/descs/presets.xml.in.h:9
+msgid "Azerbaijan"
+msgstr "Aserbaidžaan"
 
-#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaidjani Turkic"
+#: gkb-new/descs.sun/presets.xml.in.h:5
+#: gkb-new/descs/presets.xml.in.h:10
+msgid "Azerbaijani Turkish"
 msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaidjani Turkic Sun keymap"
-msgstr ""
+#, fuzzy
+msgid "Azerbaijani Turkish Sun keymap"
+msgstr "Türgi"
 
-#: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
+#: gkb-new/descs.sun/presets.xml.in.h:7
+#: gkb-new/descs/presets.xml.in.h:14
 msgid "Belarus"
-msgstr ""
+msgstr "Valgevene"
 
-#: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
+#: gkb-new/descs.sun/presets.xml.in.h:8
+#: gkb-new/descs/presets.xml.in.h:15
 #, fuzzy
 msgid "Belarussian"
 msgstr "Bulgaaria"
@@ -1092,11 +1196,14 @@ msgstr "Bulgaaria"
 msgid "Belarussian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
+#: gkb-new/descs.sun/presets.xml.in.h:10
+#: gkb-new/descs/presets.xml.in.h:18
+#, fuzzy
 msgid "Belgium"
 msgstr "Belgia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
+#: gkb-new/descs.sun/presets.xml.in.h:11
+#: gkb-new/descs/presets.xml.in.h:19
 msgid "Brazil"
 msgstr "Brasiilia"
 
@@ -1108,11 +1215,13 @@ msgstr ""
 msgid "Brazil Portuguese Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
+#: gkb-new/descs.sun/presets.xml.in.h:14
+#: gkb-new/descs/presets.xml.in.h:22
 msgid "Bulgaria"
 msgstr "Bulgaaria"
 
-#: gkb-new/descs.sun/presets.xml.in.h:15 gkb-new/descs/presets.xml.in.h:23
+#: gkb-new/descs.sun/presets.xml.in.h:15
+#: gkb-new/descs/presets.xml.in.h:23
 msgid "Bulgarian"
 msgstr "Bulgaaria"
 
@@ -1121,7 +1230,8 @@ msgstr "Bulgaaria"
 msgid "Bulgarian Sun keymap"
 msgstr "Bulgaaria"
 
-#: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
+#: gkb-new/descs.sun/presets.xml.in.h:17
+#: gkb-new/descs/presets.xml.in.h:27
 msgid "Canada"
 msgstr "Kanada"
 
@@ -1129,11 +1239,13 @@ msgstr "Kanada"
 msgid "Canadian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
+#: gkb-new/descs.sun/presets.xml.in.h:19
+#: gkb-new/descs/presets.xml.in.h:33
 msgid "Czech"
-msgstr ""
+msgstr "Tšehhi"
 
-#: gkb-new/descs.sun/presets.xml.in.h:20 gkb-new/descs/presets.xml.in.h:34
+#: gkb-new/descs.sun/presets.xml.in.h:20
+#: gkb-new/descs/presets.xml.in.h:34
 #, fuzzy
 msgid "Czech Republic"
 msgstr "Slovakkia"
@@ -1142,7 +1254,8 @@ msgstr "Slovakkia"
 msgid "Czech Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
+#: gkb-new/descs.sun/presets.xml.in.h:22
+#: gkb-new/descs/presets.xml.in.h:38
 #, fuzzy
 msgid "Danish"
 msgstr "Inglise"
@@ -1159,11 +1272,13 @@ msgstr ""
 msgid "Danish Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
+#: gkb-new/descs.sun/presets.xml.in.h:26
+#: gkb-new/descs/presets.xml.in.h:41
 msgid "Denmark"
-msgstr ""
+msgstr "Taani"
 
-#: gkb-new/descs.sun/presets.xml.in.h:27 gkb-new/descs/presets.xml.in.h:43
+#: gkb-new/descs.sun/presets.xml.in.h:27
+#: gkb-new/descs/presets.xml.in.h:43
 msgid "Dutch"
 msgstr "Saksa"
 
@@ -1171,7 +1286,8 @@ msgstr "Saksa"
 msgid "Dutch Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
+#: gkb-new/descs.sun/presets.xml.in.h:29
+#: gkb-new/descs/presets.xml.in.h:48
 msgid "English"
 msgstr "Inglise"
 
@@ -1187,36 +1303,42 @@ msgstr ""
 msgid "English Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
+#: gkb-new/descs.sun/presets.xml.in.h:33
+#: gkb-new/descs/presets.xml.in.h:50
 msgid "Estonia"
-msgstr ""
+msgstr "Eesti"
 
-#: gkb-new/descs.sun/presets.xml.in.h:34 gkb-new/descs/presets.xml.in.h:51
+#: gkb-new/descs.sun/presets.xml.in.h:34
+#: gkb-new/descs/presets.xml.in.h:51
 msgid "Estonian"
-msgstr ""
+msgstr "eesti"
 
 #: gkb-new/descs.sun/presets.xml.in.h:35
 msgid "Estonian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
+#: gkb-new/descs.sun/presets.xml.in.h:36
+#: gkb-new/descs/presets.xml.in.h:55
 #, fuzzy
 msgid "Finland"
 msgstr "Tai"
 
-#: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
+#: gkb-new/descs.sun/presets.xml.in.h:37
+#: gkb-new/descs/presets.xml.in.h:56
 msgid "Finnish"
-msgstr ""
+msgstr "soome"
 
 #: gkb-new/descs.sun/presets.xml.in.h:38
 msgid "Finnish Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
+#: gkb-new/descs.sun/presets.xml.in.h:39
+#: gkb-new/descs/presets.xml.in.h:60
 msgid "France"
 msgstr "Prantsuse"
 
-#: gkb-new/descs.sun/presets.xml.in.h:40 gkb-new/descs/presets.xml.in.h:61
+#: gkb-new/descs.sun/presets.xml.in.h:40
+#: gkb-new/descs/presets.xml.in.h:61
 msgid "French"
 msgstr "Prantsuse"
 
@@ -1228,7 +1350,8 @@ msgstr ""
 msgid "French Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
+#: gkb-new/descs.sun/presets.xml.in.h:43
+#: gkb-new/descs/presets.xml.in.h:75
 msgid "German"
 msgstr "Saksa"
 
@@ -1244,23 +1367,27 @@ msgstr ""
 msgid "German Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
+#: gkb-new/descs.sun/presets.xml.in.h:47
+#: gkb-new/descs/presets.xml.in.h:79
 msgid "Germany"
 msgstr "Saksamaa"
 
-#: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
+#: gkb-new/descs.sun/presets.xml.in.h:48
+#: gkb-new/descs/presets.xml.in.h:80
 msgid "Gnome Keyboard default"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
+#: gkb-new/descs.sun/presets.xml.in.h:49
+#: gkb-new/descs/presets.xml.in.h:85
 msgid "Hebrew"
-msgstr ""
+msgstr "heebrea"
 
 #: gkb-new/descs.sun/presets.xml.in.h:50
 msgid "Hebrew Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
+#: gkb-new/descs.sun/presets.xml.in.h:51
+#: gkb-new/descs/presets.xml.in.h:88
 msgid "Hungarian"
 msgstr "Ungari"
 
@@ -1272,33 +1399,39 @@ msgstr ""
 msgid "Hungarian type5 latin 1 keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
+#: gkb-new/descs.sun/presets.xml.in.h:54
+#: gkb-new/descs/presets.xml.in.h:96
 msgid "Hungary"
 msgstr "Ungari"
 
-#: gkb-new/descs.sun/presets.xml.in.h:55 gkb-new/descs/presets.xml.in.h:97
+#: gkb-new/descs.sun/presets.xml.in.h:55
+#: gkb-new/descs/presets.xml.in.h:97
 #, fuzzy
 msgid "Iceland"
 msgstr "Poola"
 
-#: gkb-new/descs.sun/presets.xml.in.h:56 gkb-new/descs/presets.xml.in.h:98
+#: gkb-new/descs.sun/presets.xml.in.h:56
+#: gkb-new/descs/presets.xml.in.h:98
 msgid "Icelandic"
-msgstr ""
+msgstr "islandi"
 
 #: gkb-new/descs.sun/presets.xml.in.h:57
 msgid "Icelandic Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
+#: gkb-new/descs.sun/presets.xml.in.h:58
+#: gkb-new/descs/presets.xml.in.h:101
 #, fuzzy
 msgid "International"
 msgstr "Internet"
 
-#: gkb-new/descs.sun/presets.xml.in.h:59 gkb-new/descs/presets.xml.in.h:103
+#: gkb-new/descs.sun/presets.xml.in.h:59
+#: gkb-new/descs/presets.xml.in.h:103
 msgid "Israel"
-msgstr ""
+msgstr "Iisrael"
 
-#: gkb-new/descs.sun/presets.xml.in.h:60 gkb-new/descs/presets.xml.in.h:104
+#: gkb-new/descs.sun/presets.xml.in.h:60
+#: gkb-new/descs/presets.xml.in.h:104
 #, fuzzy
 msgid "Italian"
 msgstr "Austraalia"
@@ -1315,17 +1448,20 @@ msgstr ""
 msgid "Italian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
+#: gkb-new/descs.sun/presets.xml.in.h:64
+#: gkb-new/descs/presets.xml.in.h:107
 msgid "Italy"
-msgstr ""
+msgstr "Itaalia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:65 gkb-new/descs/presets.xml.in.h:108
+#: gkb-new/descs.sun/presets.xml.in.h:65
+#: gkb-new/descs/presets.xml.in.h:108
 msgid "Japan"
-msgstr ""
+msgstr "Jaapan"
 
-#: gkb-new/descs.sun/presets.xml.in.h:66 gkb-new/descs/presets.xml.in.h:109
+#: gkb-new/descs.sun/presets.xml.in.h:66
+#: gkb-new/descs/presets.xml.in.h:109
 msgid "Japanese"
-msgstr ""
+msgstr "jaapani"
 
 #: gkb-new/descs.sun/presets.xml.in.h:67
 msgid "Japanese Sun Type-4 keymap"
@@ -1337,7 +1473,7 @@ msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:69
 msgid "Latvia"
-msgstr ""
+msgstr "Läti"
 
 #: gkb-new/descs.sun/presets.xml.in.h:70
 #, fuzzy
@@ -1348,36 +1484,42 @@ msgstr "Asukoht:"
 msgid "Latvian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
+#: gkb-new/descs.sun/presets.xml.in.h:72
+#: gkb-new/descs/presets.xml.in.h:119
 #, fuzzy
 msgid "Lithuania"
 msgstr "Nõrk rahesadu"
 
-#: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
+#: gkb-new/descs.sun/presets.xml.in.h:73
+#: gkb-new/descs/presets.xml.in.h:120
 msgid "Lithuanian"
-msgstr ""
+msgstr "Leedu"
 
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
+#: gkb-new/descs.sun/presets.xml.in.h:75
+#: gkb-new/descs/presets.xml.in.h:125
 msgid "Macedonia"
-msgstr ""
+msgstr "Makedoonia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:76 gkb-new/descs/presets.xml.in.h:126
+#: gkb-new/descs.sun/presets.xml.in.h:76
+#: gkb-new/descs/presets.xml.in.h:126
 msgid "Macedonian"
-msgstr ""
+msgstr "makedoonia"
 
 #: gkb-new/descs.sun/presets.xml.in.h:77
 msgid "Macedonian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
+#: gkb-new/descs.sun/presets.xml.in.h:78
+#: gkb-new/descs/presets.xml.in.h:136
 msgid "Norway"
 msgstr "Norra"
 
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:136
+#: gkb-new/descs.sun/presets.xml.in.h:79
+#: gkb-new/descs/presets.xml.in.h:137
 msgid "Norwegian"
 msgstr "Norra"
 
@@ -1386,11 +1528,13 @@ msgstr "Norra"
 msgid "Norwegian Sun keymap"
 msgstr "Norra"
 
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
+#: gkb-new/descs.sun/presets.xml.in.h:81
+#: gkb-new/descs/presets.xml.in.h:142
 msgid "Poland"
 msgstr "Poola"
 
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
+#: gkb-new/descs.sun/presets.xml.in.h:82
+#: gkb-new/descs/presets.xml.in.h:143
 msgid "Polish"
 msgstr "Poola"
 
@@ -1398,11 +1542,13 @@ msgstr "Poola"
 msgid "Polish Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
+#: gkb-new/descs.sun/presets.xml.in.h:84
+#: gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal"
 msgstr "Portugal"
 
-#: gkb-new/descs.sun/presets.xml.in.h:85 gkb-new/descs/presets.xml.in.h:148
+#: gkb-new/descs.sun/presets.xml.in.h:85
+#: gkb-new/descs/presets.xml.in.h:148
 msgid "Portuguese"
 msgstr "Portugali"
 
@@ -1415,11 +1561,13 @@ msgstr ""
 msgid "Portuguese Sun keymap"
 msgstr "Portugali"
 
-#: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
+#: gkb-new/descs.sun/presets.xml.in.h:88
+#: gkb-new/descs/presets.xml.in.h:152
 msgid "Romania"
-msgstr ""
+msgstr "Rumeenia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:89 gkb-new/descs/presets.xml.in.h:153
+#: gkb-new/descs.sun/presets.xml.in.h:89
+#: gkb-new/descs/presets.xml.in.h:153
 #, fuzzy
 msgid "Romanian"
 msgstr "Vihm"
@@ -1428,11 +1576,13 @@ msgstr "Vihm"
 msgid "Romanian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
+#: gkb-new/descs.sun/presets.xml.in.h:91
+#: gkb-new/descs/presets.xml.in.h:155
 msgid "Russia"
 msgstr "Venemaa"
 
-#: gkb-new/descs.sun/presets.xml.in.h:92 gkb-new/descs/presets.xml.in.h:156
+#: gkb-new/descs.sun/presets.xml.in.h:92
+#: gkb-new/descs/presets.xml.in.h:156
 msgid "Russian"
 msgstr "Vene"
 
@@ -1446,13 +1596,15 @@ msgstr ""
 
 #: gkb-new/descs.sun/presets.xml.in.h:95
 msgid "Serbo-Croatian"
-msgstr ""
+msgstr "serbia-horvaatia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:165
+#: gkb-new/descs.sun/presets.xml.in.h:96
+#: gkb-new/descs/presets.xml.in.h:166
 msgid "Slovak"
 msgstr "Slovakkia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:166
+#: gkb-new/descs.sun/presets.xml.in.h:97
+#: gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak Republic"
 msgstr "Slovakkia"
 
@@ -1460,11 +1612,13 @@ msgstr "Slovakkia"
 msgid "Slovak Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
+#: gkb-new/descs.sun/presets.xml.in.h:99
+#: gkb-new/descs/presets.xml.in.h:169
 msgid "Slovenia"
 msgstr "Sloveenia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:169
+#: gkb-new/descs.sun/presets.xml.in.h:100
+#: gkb-new/descs/presets.xml.in.h:170
 msgid "Slovenian"
 msgstr "Sloveenia"
 
@@ -1473,11 +1627,13 @@ msgstr "Sloveenia"
 msgid "Slovenian Sun keymap"
 msgstr "Sloveenia"
 
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
+#: gkb-new/descs.sun/presets.xml.in.h:102
+#: gkb-new/descs/presets.xml.in.h:174
 msgid "Spain"
 msgstr "Hispaania"
 
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
+#: gkb-new/descs.sun/presets.xml.in.h:103
+#: gkb-new/descs/presets.xml.in.h:175
 #, fuzzy
 msgid "Spanish"
 msgstr "Hispaania"
@@ -1494,11 +1650,13 @@ msgstr ""
 msgid "Spanish Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
+#: gkb-new/descs.sun/presets.xml.in.h:107
+#: gkb-new/descs/presets.xml.in.h:181
 msgid "Sweden"
 msgstr "Rootsi"
 
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:181
+#: gkb-new/descs.sun/presets.xml.in.h:108
+#: gkb-new/descs/presets.xml.in.h:182
 msgid "Swedish"
 msgstr "Rootsi"
 
@@ -1518,11 +1676,13 @@ msgstr ""
 msgid "Swiss German Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
+#: gkb-new/descs.sun/presets.xml.in.h:113
+#: gkb-new/descs/presets.xml.in.h:186
 msgid "Switzerland"
 msgstr "Šveits"
 
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:189
+#: gkb-new/descs.sun/presets.xml.in.h:114
+#: gkb-new/descs/presets.xml.in.h:190
 msgid "Thai"
 msgstr "Tai"
 
@@ -1530,15 +1690,18 @@ msgstr "Tai"
 msgid "Thai Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
+#: gkb-new/descs.sun/presets.xml.in.h:116
+#: gkb-new/descs/presets.xml.in.h:194
 msgid "Thailand"
 msgstr "Tai"
 
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
+#: gkb-new/descs.sun/presets.xml.in.h:117
+#: gkb-new/descs/presets.xml.in.h:196
 msgid "Turkey"
 msgstr "Türgi"
 
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:196
+#: gkb-new/descs.sun/presets.xml.in.h:118
+#: gkb-new/descs/presets.xml.in.h:197
 msgid "Turkish"
 msgstr "Türgi"
 
@@ -1558,34 +1721,40 @@ msgstr ""
 msgid "US Sun type5 keyboard"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
+#: gkb-new/descs.sun/presets.xml.in.h:123
+#: gkb-new/descs/presets.xml.in.h:216
 #, fuzzy
 msgid "Ukraine"
 msgstr "Prantsuse"
 
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:216
+#: gkb-new/descs.sun/presets.xml.in.h:124
+#: gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian"
-msgstr ""
+msgstr "ukraina"
 
 #: gkb-new/descs.sun/presets.xml.in.h:125
 msgid "Ukrainian Sun keymap"
 msgstr ""
 
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
+#: gkb-new/descs.sun/presets.xml.in.h:126
+#: gkb-new/descs/presets.xml.in.h:220
 msgid "United Kingdom"
 msgstr "Ühendkuningriik"
 
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
+#: gkb-new/descs.sun/presets.xml.in.h:127
+#: gkb-new/descs/presets.xml.in.h:222
 msgid "United States"
 msgstr "Ühendriigid"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
+#: gkb-new/descs.sun/presets.xml.in.h:128
+#: gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
-msgstr ""
+msgstr "vietnami"
 
 #: gkb-new/descs.sun/presets.xml.in.h:130
 msgid "Vietnamese Sun keymap"
@@ -1606,8 +1775,9 @@ msgid "Arabic"
 msgstr "Kariibi"
 
 #: gkb-new/descs/presets.xml.in.h:3
+#, fuzzy
 msgid "Arabic keymap"
-msgstr ""
+msgstr "_Napsa kiirklahv"
 
 #: gkb-new/descs/presets.xml.in.h:4
 msgid "Arabic xkb keymap"
@@ -1622,8 +1792,9 @@ msgid "Austria"
 msgstr "Austria"
 
 #: gkb-new/descs/presets.xml.in.h:11
-msgid "Azerbaidjani Turkic xkb keymap"
-msgstr ""
+#, fuzzy
+msgid "Azerbaijani Turkish xkb keymap"
+msgstr "Türgi"
 
 #: gkb-new/descs/presets.xml.in.h:12
 #, fuzzy
@@ -1711,7 +1882,7 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:42
 msgid "Djibouti"
-msgstr ""
+msgstr "Džibuti"
 
 #: gkb-new/descs/presets.xml.in.h:44
 msgid "Dutch keymap"
@@ -1727,7 +1898,7 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:47
 msgid "Egypt"
-msgstr ""
+msgstr "Egiptus"
 
 #: gkb-new/descs/presets.xml.in.h:49
 #, fuzzy
@@ -1890,7 +2061,7 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:102
 msgid "Iraq"
-msgstr ""
+msgstr "Iraak"
 
 #: gkb-new/descs/presets.xml.in.h:105
 msgid "Italian keymap"
@@ -1910,11 +2081,11 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:112
 msgid "Jordan"
-msgstr ""
+msgstr "Jordan"
 
 #: gkb-new/descs/presets.xml.in.h:113
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuveit"
 
 #: gkb-new/descs/presets.xml.in.h:114
 #, fuzzy
@@ -1927,11 +2098,11 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:116
 msgid "Laos"
-msgstr ""
+msgstr "Laos"
 
 #: gkb-new/descs/presets.xml.in.h:117
 msgid "Lebanon"
-msgstr ""
+msgstr "Liibanon"
 
 #: gkb-new/descs/presets.xml.in.h:118
 msgid "Libyan Arab Jamahiriya"
@@ -1964,11 +2135,11 @@ msgstr "Makrod"
 
 #: gkb-new/descs/presets.xml.in.h:129
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongoolia"
 
 #: gkb-new/descs/presets.xml.in.h:130
 msgid "Mongolian"
-msgstr ""
+msgstr "mongoolia"
 
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
@@ -1984,43 +2155,43 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:134
 #, fuzzy
+msgid "Morocco"
+msgstr "Makrod"
+
+#: gkb-new/descs/presets.xml.in.h:135
+#, fuzzy
 msgid "Netherlands"
 msgstr "Šveits"
 
-#: gkb-new/descs/presets.xml.in.h:137
+#: gkb-new/descs/presets.xml.in.h:138
 #, fuzzy
 msgid "Norwegian xkb keymap"
 msgstr "Norra"
 
-#: gkb-new/descs/presets.xml.in.h:138
-msgid "Oman"
-msgstr ""
-
 #: gkb-new/descs/presets.xml.in.h:139
+msgid "Oman"
+msgstr "Omaan"
+
+#: gkb-new/descs/presets.xml.in.h:140
 msgid "Palestinian Territory"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:140
+#: gkb-new/descs/presets.xml.in.h:141
 msgid "Plain Russian keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:143
+#: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish deadkeys"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:144
+#: gkb-new/descs/presets.xml.in.h:145
 msgid "Polish xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:146
+#: gkb-new/descs/presets.xml.in.h:147
 #, fuzzy
 msgid "Portugal Deadkeys"
 msgstr "Portugal"
-
-#: gkb-new/descs/presets.xml.in.h:147
-#, fuzzy
-msgid "Portuglese"
-msgstr "Portugali"
 
 #: gkb-new/descs/presets.xml.in.h:149
 #, fuzzy
@@ -2034,7 +2205,7 @@ msgstr "Portugali"
 
 #: gkb-new/descs/presets.xml.in.h:151
 msgid "Qatar"
-msgstr ""
+msgstr "Katar"
 
 #: gkb-new/descs/presets.xml.in.h:154
 msgid "Romanian xkb keymap"
@@ -2056,205 +2227,209 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:160
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudi Araabia"
 
 #: gkb-new/descs/presets.xml.in.h:161
 msgid "Serb"
-msgstr ""
+msgstr "serbia"
 
 #: gkb-new/descs/presets.xml.in.h:162
-msgid "Serb keymap"
-msgstr ""
-
-#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:164
+#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serbia and Montenegro"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:167
+#: gkb-new/descs/presets.xml.in.h:164
+#, fuzzy
+msgid "Serbian"
+msgstr "Gruusia"
+
+#: gkb-new/descs/presets.xml.in.h:165
+#, fuzzy
+msgid "Serbian keymap"
+msgstr "Gruusia"
+
+#: gkb-new/descs/presets.xml.in.h:168
 #, fuzzy
 msgid "Slovak keymap"
 msgstr "Slovakkia"
 
-#: gkb-new/descs/presets.xml.in.h:170
+#: gkb-new/descs/presets.xml.in.h:171
 #, fuzzy
 msgid "Slovenian keymap"
 msgstr "Sloveenia"
 
-#: gkb-new/descs/presets.xml.in.h:171
+#: gkb-new/descs/presets.xml.in.h:172
 #, fuzzy
 msgid "Slovenian xkb keymap"
 msgstr "Sloveenia"
 
-#: gkb-new/descs/presets.xml.in.h:172
+#: gkb-new/descs/presets.xml.in.h:173
 #, fuzzy
 msgid "Somalia"
 msgstr "Normaalne"
 
-#: gkb-new/descs/presets.xml.in.h:175
+#: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:176
+#: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:177
+#: gkb-new/descs/presets.xml.in.h:178
 msgid "Spanish xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:178
+#: gkb-new/descs/presets.xml.in.h:179
 #, fuzzy
 msgid "Sudan"
 msgstr "Liiv"
 
-#: gkb-new/descs/presets.xml.in.h:179
+#: gkb-new/descs/presets.xml.in.h:180
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:182
+#: gkb-new/descs/presets.xml.in.h:183
 #, fuzzy
 msgid "Swedish keymap"
 msgstr "Rootsi"
 
-#: gkb-new/descs/presets.xml.in.h:183
+#: gkb-new/descs/presets.xml.in.h:184
 msgid "Swedish xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:184
+#: gkb-new/descs/presets.xml.in.h:185
 msgid "Swiss keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:186
-msgid "Syria"
-msgstr ""
-
 #: gkb-new/descs/presets.xml.in.h:187
+msgid "Syria"
+msgstr "Süüria"
+
+#: gkb-new/descs/presets.xml.in.h:188
 msgid "Syriac"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:188
+#: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:190
+#: gkb-new/descs/presets.xml.in.h:191
 msgid "Thai Kedmanee"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:191
+#: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:192
+#: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:194
+#: gkb-new/descs/presets.xml.in.h:195
 #, fuzzy
 msgid "Tunisia"
 msgstr "Venemaa"
 
-#: gkb-new/descs/presets.xml.in.h:197
+#: gkb-new/descs/presets.xml.in.h:198
 msgid "Turkish \"F\" keyboard"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:198
+#: gkb-new/descs/presets.xml.in.h:199
 msgid "Turkish \"Q\" keyboard"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:199
+#: gkb-new/descs/presets.xml.in.h:200
 #, fuzzy
 msgid "Turkish keymap"
 msgstr "Türgi"
 
-#: gkb-new/descs/presets.xml.in.h:200
+#: gkb-new/descs/presets.xml.in.h:201
 msgid "Turkish xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:201
+#: gkb-new/descs/presets.xml.in.h:202
 msgid "UK 105-key"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:202
-msgid "UK PC/AT keyboard"
-msgstr ""
-
 #: gkb-new/descs/presets.xml.in.h:203
+#, fuzzy
+msgid "UK PC/AT keyboard"
+msgstr "Muuda klaviatuuri"
+
+#: gkb-new/descs/presets.xml.in.h:204
 msgid "US 101-key keyboard"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:204
+#: gkb-new/descs/presets.xml.in.h:205
 msgid "US 105-key keyboard (with windows keys)"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:205
+#: gkb-new/descs/presets.xml.in.h:206
 msgid "US 84-key"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:206
+#: gkb-new/descs/presets.xml.in.h:207
 msgid "US DEC 450"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:207
+#: gkb-new/descs/presets.xml.in.h:208
 msgid "US IBM RS/6000"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:208
+#: gkb-new/descs/presets.xml.in.h:209
 msgid "US International"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:209
+#: gkb-new/descs/presets.xml.in.h:210
 msgid "US International xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:210
+#: gkb-new/descs/presets.xml.in.h:211
 msgid "US Macintosh"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:211
+#: gkb-new/descs/presets.xml.in.h:212
 msgid "US PC/AT 101 keyboard"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:212
+#: gkb-new/descs/presets.xml.in.h:213
 msgid "US Silicon Graphics 101-key"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:213
+#: gkb-new/descs/presets.xml.in.h:214
 msgid "US Sun type5"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:214
+#: gkb-new/descs/presets.xml.in.h:215
 msgid "US xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:217
+#: gkb-new/descs/presets.xml.in.h:218
 msgid "Ukrainian xkb keymap"
 msgstr ""
 
-#: gkb-new/descs/presets.xml.in.h:218
+#: gkb-new/descs/presets.xml.in.h:219
 #, fuzzy
 msgid "United Arab Emirates"
 msgstr "Ühendriigid"
 
-#: gkb-new/descs/presets.xml.in.h:220
+#: gkb-new/descs/presets.xml.in.h:221
 #, fuzzy
 msgid "United Kingdom xkb keymap"
 msgstr "Ühendkuningriik"
 
-#: gkb-new/descs/presets.xml.in.h:222
-msgid "Viet_namese"
-msgstr ""
-
-#: gkb-new/descs/presets.xml.in.h:223
-msgid "Viet_namese xkb keymap"
-msgstr ""
-
 #: gkb-new/descs/presets.xml.in.h:225
+#, fuzzy
+msgid "Vietnamese xkb keymap"
+msgstr "Portugali"
+
+#: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
-msgstr ""
+msgstr "Jeemen"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2263,36 +2438,28 @@ msgstr "(C) 1998-2000 Free Software Foundation"
 #: gkb-new/gkb-applet.c:98
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
-"Mail me your flag and keyboard layout if you want support for your locale "
-"(my email address is shooby@gnome.hu).\n"
+"Mail me your flag and keyboard layout if you want support for your locale (my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"See rakend võimaldab setxkbmap või xmodmap programmi abil vahetada "
-"klaviatuuri klahvitabeleid.\n"
-"Kui soovid, et sinu lokaat oleks toetatud, siis saada mulle oma riigi lipp "
-"ja klaviatuuri paigutus (meiliaadress: shooby@gnome.hu).\n"
-"Tänud: Balazs Nagy (Kevin) <julian7@iksz.hu> ja Emese Kovacs <emese@gnome."
-"hu>.\n"
+"See rakend võimaldab setxkbmap või xmodmap programmi abil vahetada klaviatuuri klahvitabeleid.\n"
+"Kui soovid, et sinu lokaat oleks toetatud, siis saada mulle oma riigi lipp ja klaviatuuri paigutus (meiliaadress: shooby@gnome.hu).\n"
+"Tänud: Balazs Nagy (Kevin) <julian7@iksz.hu> ja Emese Kovacs <emese@gnome.hu>.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
 #: gkb-new/gkb-applet.c:115
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB koduleht (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/gkb-applet.c:203 gkb-new/gkb-applet.c:210
+#: gkb-new/gkb-applet.c:203
+#: gkb-new/gkb-applet.c:210
 msgid "GKB"
 msgstr "GKB"
 
 #: gkb-new/gkb.c:275
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
-msgstr ""
-"Vajuta kiirklahvi erinevate klahvitabelite vahetamiseks. Kiirklahvi saad "
-"seada omaduste lehelt"
+msgid "Press the hotkey to switch between layouts. The hotkey can be set through Properties dialog"
+msgstr "Vajuta kiirklahvi erinevate klahvitabelite vahetamiseks. Kiirklahvi saad seada omaduste lehelt"
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
@@ -2357,9 +2524,7 @@ msgid "This is the binding for keypress-based layout change"
 msgstr ""
 
 #: gkb-new/gkb.schemas.in.h:15
-msgid ""
-"This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
-"something.xmm\""
+msgid "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap something.xmm\""
 msgstr ""
 
 #: gkb-new/gkb.schemas.in.h:16
@@ -2370,7 +2535,8 @@ msgstr ""
 msgid "This will identify the layout in the list"
 msgstr ""
 
-#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
+#: gkb-new/keygrab.c:69
+#: gkb-new/keygrab.c:148
 msgid "Disabled"
 msgstr "Blokeeritud"
 
@@ -2378,7 +2544,8 @@ msgstr "Blokeeritud"
 msgid "Press a key or press Esc to cancel"
 msgstr "Vajuta suvalist klahvi või Esc-i loobumiseks"
 
-#: gkb-new/preset.c:155 gkb-new/preset.c:158
+#: gkb-new/preset.c:155
+#: gkb-new/preset.c:158
 msgid "Undefined"
 msgstr ""
 
@@ -2407,43 +2574,53 @@ msgstr "Muuda klaviatuuri"
 
 #: gkb-new/prop-map.c:91
 msgid "?"
-msgstr ""
+msgstr "?"
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:278
 msgid "Edit Keyboard"
 msgstr "Muuda klaviatuuri"
 
-#: gkb-new/prop-map.c:297
+#: gkb-new/prop-map.c:303
 msgid "_Name:"
 msgstr "_Nimi:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:307
 msgid "_Label:"
 msgstr "_Silt:"
 
-#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "K_äsk:"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
 #, fuzzy
 msgid "_Flag:"
 msgstr "Lipp"
 
-#: gkb-new/prop.c:126 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:126
+#: gkb-new/util.c:41
+#: gkb-new/util.c:48
+#: gkb-new/util.c:74
 msgid "Flag"
 msgstr "Lipp"
 
-#: gkb-new/prop.c:127 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:127
+#: gkb-new/util.c:38
+#: gkb-new/util.c:71
 msgid "Label"
 msgstr "Nimi"
 
-#: gkb-new/prop.c:128 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:128
+#: gkb-new/util.c:44
+#: gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Lipp ja nimi"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: gkb-new/prop.c:257
+#: gtik/gtik.c:1483
+#: gweather/gweather-pref.c:739
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Esitus"
 
@@ -2486,7 +2663,8 @@ msgstr "Muuda klaviatuuri"
 msgid "_Keyboards:"
 msgstr "Muuda klaviatuuri"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457
+#: multiload/properties.c:426
 msgid "Options"
 msgstr "Häälestus"
 
@@ -2505,10 +2683,224 @@ msgstr ""
 msgid ""
 "An error occured.\n"
 "\n"
-"Unable to load keymap `%s', probably because command `xmodmap' could not be "
-"located in your PATH.\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be located in your PATH.\n"
 "\n"
 "The command was: %s"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
+msgid "Pl_ugins..."
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
+msgid "_Groups"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:5
+#, fuzzy
+msgid "_Open Keyboard Preferences"
+msgstr "Menüüriba häälestus"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
+#, fuzzy
+msgid "GNOME keyboard applet factory"
+msgstr "Gweather Applet Factory"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
+#, fuzzy
+msgid "GNOME keyboard layout indicator"
+msgstr "Klahvitabeli valija"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+#: gswitchit/gswitchit-applet.c:539
+#, fuzzy
+msgid "Keyboard Indicator"
+msgstr "Süsteemi koormuse indikaator"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+#, fuzzy
+msgid "Keyboard applet factory"
+msgstr "Geyes Applet Factory"
+
+#: gswitchit/gswitchit-applet.c:107
+#, c-format
+msgid "Keyboard Indicator (%s)"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:542
+msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:544
+#, fuzzy
+msgid "Keyboard layout indicator applet for GNOME"
+msgstr "Klahvitabeli valija"
+
+#: gswitchit/gswitchit-applet.c:698
+msgid "XKB initialization error"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:706
+msgid "Error loading XKB configuration registry"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:185
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:265
+msgid "_Exclude from keyboard switching"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:296
+#, fuzzy
+msgid "Not used"
+msgstr "ei leia"
+
+#: gswitchit/gswitchit-plugins-add.c:105
+#: gswitchit/gswitchit-plugins.c:117
+msgid "No description."
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.c:331
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:4
+#, fuzzy
+msgid "Close the dialog"
+msgstr ""
+"%s:\n"
+"%d%% kasutuses"
+
+#: gswitchit/gswitchit-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:9
+#, fuzzy
+msgid "Keyboard Indicator Plugins"
+msgstr "Süsteemi koormuse indikaator"
+
+#: gswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:2
+#: stickynotes/stickynotes.glade.h:3
+#, fuzzy
+msgid "<b>Behavior</b>"
+msgstr "_Käitumine"
+
+#: gswitchit/gswitchit-properties.glade.h:3
+msgid "Choose the default group (for newly created windows)."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:4
+msgid "Keep separate group for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:5
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:6
+#, fuzzy
+msgid "Keyboard Indicator Preferences"
+msgstr "Klahvitabelite valija häälestus"
+
+#: gswitchit/gswitchit-properties.glade.h:7
+msgid "Save/restore _indicators with group"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:8
+msgid "Separate _group for each window"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:9
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:10
+#, fuzzy
+msgid "Use _flags as indicators"
+msgstr "Süsteemi koormuse indikaator"
+
+#: gswitchit/gswitchit-properties.glade.h:11
+msgid "_Default group:"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:2
+#, fuzzy
+msgid "Debug level"
+msgstr "_Sügavus:"
+
+#: gswitchit/gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:7
+#, fuzzy
+msgid "Show flags in the applet"
+msgstr "Jääterade valingud"
+
+#: gswitchit/gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:10
+msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
 msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
@@ -2525,180 +2917,186 @@ msgstr ""
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Factory"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4
+#: gtik/gtik.c:740
 msgid "Stock Ticker"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+#: gtik/GNOME_GtikApplet.xml.h:4
+#: gweather/GNOME_GWeatherApplet.xml.h:5
 #: mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Uuenda"
 
-#: gtik/gtik.c:255
+#: gtik/gtik.c:258
 msgid "Could not retrieve the stock data."
 msgstr ""
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:346
+#: gtik/gtik.c:307
+#: gweather/gweather-applet.c:419
 msgid "Updating..."
 msgstr "Uuendamine..."
 
-#: gtik/gtik.c:792
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.  "
-"The GNOME Stock Ticker is a free Internet-based application.  It comes with "
-"ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
-"investment decisions; it is for informational purposes only."
+#: gtik/gtik.c:742
+msgid "This program connects to a popular site and downloads current stock quotes.  The GNOME Stock Ticker is a free Internet-based application.  It comes with ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making investment decisions; it is for informational purposes only."
 msgstr ""
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1232
 #, fuzzy
 msgid "Current _stocks:"
 msgstr "_Praegused tingimused"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1240
 #, fuzzy
 msgid "_New symbol:"
 msgstr "_Uus sümbol:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1249
 msgid "_Add"
 msgstr "_Lisa"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1258
 #, fuzzy
 msgid "_Remove"
 msgstr "_Eemalda valitud"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1364
 msgid "Stock Ticker Preferences"
 msgstr ""
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1386
 #, fuzzy
 msgid "Symbols"
 msgstr "_Sümbolid"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1393
+#: mailcheck/mailcheck.c:2389
 #, fuzzy
 msgid "Behavior"
 msgstr "_Käitumine"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1396
+#: gweather/gweather-pref.c:699
 #, fuzzy
 msgid "Update"
 msgstr "_Uuenda"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1400
 #, fuzzy
 msgid "Stock update fre_quency:"
 msgstr "Uuendamise _sagedus minutites:"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
-#: mailcheck/mailcheck.c:2080
+#: gtik/gtik.c:1412
+#: gweather/gweather-pref.c:723
+#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2101
 #, fuzzy
 msgid "minutes"
 msgstr "minuti järel"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1418
 msgid "Scrolling"
 msgstr ""
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1422
 #, fuzzy
 msgid "_Scroll speed:"
 msgstr "Kerimise kiirus :"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1426
 #, fuzzy
 msgid "Slow"
 msgstr "Näita"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1428
 #, fuzzy
 msgid "Medium"
 msgstr "Belgia"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1430
 #, fuzzy
 msgid "Fast"
 msgstr "_Ennustus"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1450
 msgid "_Enable scroll buttons"
 msgstr "_Luba kerimisnupud"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1462
 msgid "Scroll _left to right"
 msgstr "Keri _vasakult paremale"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1488
 msgid "Displa_y only symbols and price"
 msgstr "_Näita ainult sümboleid koos hinnaga"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1501
+#: mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 #, fuzzy
 msgid "_Width:"
 msgstr "_Laius :"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: gtik/gtik.c:1515
+#: mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:489
 msgid "pixels"
 msgstr "pikslit"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1524
 #, fuzzy
 msgid "Font and Colors"
 msgstr "_Muutumata värv:"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1530
 #, fuzzy
 msgid "Use _default theme font and colors"
 msgstr "_Kasuta teema vaikevärve"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1545
+#: stickynotes/stickynotes.glade.h:42
 #, fuzzy
 msgid "_Font:"
 msgstr "_Kirjatüüp:"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1569
 msgid "Stock _raised:"
 msgstr ""
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1588
 #, fuzzy
 msgid "Stock _lowered:"
 msgstr "Börsi _sümbol"
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1607
 msgid "Stock _unchanged:"
 msgstr ""
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1626
+#: modemlights/properties.c:580
 #, fuzzy
 msgid "_Background:"
 msgstr "_Taust"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1769
 msgid "Skip forward"
 msgstr "Hüppa edasi"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1770
 msgid "Skip backward"
 msgstr "Hüppa tagasi"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1778
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr ""
 
-# PALUN JÄRGNEVAID 2 MITTE PARANDADA -- NEED ON KORREKTSED
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:1990
 msgid "(No"
 msgstr "(Muutusi"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:1991
 msgid "Change "
 msgstr "pole "
 
@@ -2712,9 +3110,7 @@ msgid "Background color"
 msgstr "_Taustavärv:"
 
 #: gtik/gtik.schemas.in.h:3
-msgid ""
-"Display only stock symbols along with their value. Do not diplay changes in "
-"value."
+msgid "Display only stock symbols along with their value. Do not diplay changes in value."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:4
@@ -2728,9 +3124,7 @@ msgid "Font"
 msgstr "_Kirjatüüp:"
 
 #: gtik/gtik.schemas.in.h:6
-msgid ""
-"List containing the stocks to be displayed. Consists of the stock id "
-"separated by \"+\""
+msgid "List containing the stocks to be displayed. Consists of the stock id separated by \"+\""
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:7
@@ -2754,9 +3148,7 @@ msgid "Show arrow buttons"
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:12
-msgid ""
-"Show arrow buttons on the side of the display so that the user can scroll "
-"forward or backward."
+msgid "Show arrow buttons on the side of the display so that the user can scroll forward or backward."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:13
@@ -2764,33 +3156,23 @@ msgid "Stocks to monitor - must be seperated by a +"
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:14
-msgid ""
-"The color of the background of the display. Has no effect when the user "
-"chooses to use the default theme fonts and colors."
+msgid "The color of the background of the display. Has no effect when the user chooses to use the default theme fonts and colors."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:15
-msgid ""
-"The color used when the stock's values has lowered. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
+msgid "The color used when the stock's values has lowered. Has no effect when the user chooses to use the default theme fonts and colors."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:16
-msgid ""
-"The color used when the stock's values has not changed. Has no effect when "
-"the user chooses to use the default theme fonts and colors."
+msgid "The color used when the stock's values has not changed. Has no effect when the user chooses to use the default theme fonts and colors."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:17
-msgid ""
-"The color used when the stock's values has raised. Has no effect when the "
-"user chooses to use the default theme fonts and colors."
+msgid "The color used when the stock's values has raised. Has no effect when the user chooses to use the default theme fonts and colors."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:18
-msgid ""
-"The font used for the display. Has no effect when the user chooses to use "
-"the default theme fonts and colors."
+msgid "The font used for the display. Has no effect when the user chooses to use the default theme fonts and colors."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:19
@@ -2810,7 +3192,8 @@ msgstr ""
 msgid "Unchanged color"
 msgstr "_Muutumata värv:"
 
-#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: gtik/gtik.schemas.in.h:23
+#: gweather/gweather.schemas.in.h:8
 #: modemlights/modemlights.schemas.in.h:31
 #, fuzzy
 msgid "Update interval"
@@ -2825,7 +3208,8 @@ msgstr "_Kasuta teema vaikevärve"
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr ""
 
-#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
+#: gtik/gtik.schemas.in.h:26
+#: mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr ""
 
@@ -2850,35 +3234,33 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Jälgi hetke ilmastikutingimusi ja ennustusi"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:68
 msgid "Weather Report"
 msgstr "Ilmateade"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:69
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:66
+#: gweather/gweather-about.c:70
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
-"Avaldatud GNU Üldise Avaliku Litsentsi all.\n"
-"\n"
-"Rakend ilma jälgimiseks."
 
-#: gweather/gweather-applet.c:237
+#: gweather/gweather-applet.c:299
 msgid "GNOME Weather"
 msgstr "GNOME ilmajaam"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
+#: gweather/gweather-dialog.c:73
+#: gweather/gweather-dialog.c:300
 msgid "Forecast"
 msgstr "Ennustus"
 
 #: gweather/gweather-dialog.c:109
 msgid "City:"
-msgstr ""
+msgstr "Linn:"
 
 #: gweather/gweather-dialog.c:117
 #, fuzzy
@@ -2911,7 +3293,7 @@ msgstr "Tuul:"
 
 #: gweather/gweather-dialog.c:173
 msgid "Pressure:"
-msgstr "Õhurõhk:"
+msgstr ""
 
 #: gweather/gweather-dialog.c:181
 #, fuzzy
@@ -2952,22 +3334,18 @@ msgstr "_Radarikaart"
 #: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+"Please try the state forecast; note that IWIN forecasts are available only for US cities."
 msgstr ""
 "Selle asukoha jaoks ei ole ilmaennustus saadaval.\n"
-"Palun proovi osariigi ennustust; IWIN ennustused on saadaval ainult USA "
-"linnade jaoks."
+"Palun proovi osariigi ennustust; IWIN ennustused on saadaval ainult USA linnade jaoks."
 
 #: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
+"Please try the detailed forecast; note that IWIN forecasts are available only for US cities."
 msgstr ""
 "Selle asukoha jaoks ei ole osariigi ilmaennustus saadaval.\n"
-"Palun proovi üldist ennustus; IWIN ennustused on saadaval ainult USA linnade "
-"jaoks."
+"Palun proovi üldist ennustus; IWIN ennustused on saadaval ainult USA linnade jaoks."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:149
@@ -2994,45 +3372,44 @@ msgstr "Aadressi sisestus"
 msgid "Enter the URL"
 msgstr "Sisesta URL"
 
-#: gweather/gweather-pref.c:611
+#: gweather/gweather-pref.c:605
 msgid "Weather Preferences"
 msgstr "Ilmajaama häälestus"
 
-#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
+#: gweather/gweather-pref.c:638
+#: gweather/gweather-pref.c:703
 #, fuzzy
 msgid "_Automatically update every:"
 msgstr "_Uuenda automaatselt iga"
 
-#: gweather/gweather-pref.c:652
+#: gweather/gweather-pref.c:646
 msgid "Use _metric system units"
 msgstr "Kasuta _meetermõõdustikku"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:654
 msgid "Enable _radar map"
 msgstr "Näita _radarikaarti"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:668
 msgid "Use cus_tom address for radar map"
 msgstr "Kasuta radarikaardi jaoks _oma aadressi"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:685
 #, fuzzy
 msgid "A_ddress:"
 msgstr "Aa_dress :"
 
-#: gweather/gweather-pref.c:774
+#: gweather/gweather-pref.c:766
 msgid "_Select a location:"
 msgstr ""
 
-#: gweather/gweather-pref.c:803
+#: gweather/gweather-pref.c:795
 #, fuzzy
 msgid "Location"
 msgstr "Asukoht:"
 
 #: gweather/gweather.schemas.in.h:1
-msgid ""
-"Determines whether the applet automatically updates its weather statistics "
-"or not."
+msgid "Determines whether the applet automatically updates its weather statistics or not."
 msgstr ""
 
 #: gweather/gweather.schemas.in.h:2
@@ -3045,9 +3422,7 @@ msgid "Fetch a radar map on each update."
 msgstr ""
 
 #: gweather/gweather.schemas.in.h:4
-msgid ""
-"If true, then retreive a radar map from a location specified by the \"radar"
-"\" key."
+msgid "If true, then retreive a radar map from a location specified by the \"radar\" key."
 msgstr ""
 
 #: gweather/gweather.schemas.in.h:5
@@ -3091,442 +3466,454 @@ msgstr "Kasuta _meetermõõdustikku"
 msgid "weather location information."
 msgstr ""
 
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "knots"
 msgstr "sõlme"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "kph"
 msgstr "km/h"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "inHg"
 msgstr "tolli/Hg"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "miles"
 msgstr "miili"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "kilometers"
 msgstr "kilomeetrit"
 
-#: gweather/weather.c:132
+#: gweather/weather.c:133
 msgid "Variable"
 msgstr "Muutlik"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North"
 msgstr "Põhjast"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North - NorthEast"
 msgstr "Põhjast - kirdest"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "Northeast"
 msgstr "Kirdest"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "East - NorthEast"
 msgstr "Idast - kirdest"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East"
 msgstr "Idast"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East - Southeast"
 msgstr "Idast - kagust"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "Southeast"
 msgstr "Kagust"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "South - Southeast"
 msgstr "Lõunast - kagust"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South"
 msgstr "Lõunast"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South - Southwest"
 msgstr "Lõunast - edelast"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "Southwest"
 msgstr "Edelast"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "West - Southwest"
 msgstr "Läänest - edelast"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West"
 msgstr "Läänest"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West - Northwest"
 msgstr "Läänest - loodest"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "Northwest"
 msgstr "Loodest"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "North - Northwest"
 msgstr "Põhjast - loodest"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
+#: gweather/weather.c:143
+#: gweather/weather.c:1971
+#: gweather/weather.c:1983
+#: gweather/weather.c:1995
+#: gweather/weather.c:2007
+#: gweather/weather.c:2025
+#: gweather/weather.c:2037
+msgid "Unknown"
+msgstr "Teadmata"
+
+#: gweather/weather.c:145
+#: gweather/weather.c:162
+#: gweather/weather.c:233
 msgid "Invalid"
 msgstr "Vigane"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:151
 msgid "Clear Sky"
 msgstr "Selge taevas"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:152
 msgid "Broken clouds"
 msgstr "Pilvitus selginemistega"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:153
 msgid "Scattered clouds"
 msgstr "Vahelduv pilvisus"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:154
 msgid "Few clouds"
-msgstr "Üksikud pilved"
+msgstr ""
 
-#: gweather/weather.c:153
+#: gweather/weather.c:155
 msgid "Overcast"
 msgstr "Lauspilves"
 
-#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
-#. * etc means, you can go to http://www.weather.com/glossary/ and
-#. * http://www.crh.noaa.gov/arx/wx.tbl.html
-#. NONE
-#: gweather/weather.c:192 gweather/weather.c:194
-#, fuzzy
+#  TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#  * etc means, you can go to http://www.weather.com/glossary/ and
+#  * http://www.crh.noaa.gov/arx/wx.tbl.html
+#  NONE
+#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Thunderstorm"
 msgstr "Äike"
 
 #. DRIZZLE
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Drizzle"
 msgstr "Uduvihm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 #, fuzzy
 msgid "Light drizzle"
-msgstr "Pisut vihma"
+msgstr "Kerge vine"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Moderate drizzle"
 msgstr "Mõõdukas uduvihm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Heavy drizzle"
 msgstr "Tugev uduvihm"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Freezing drizzle"
 msgstr "Jäätuv uduvihm"
 
 #. RAIN
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Rain"
 msgstr "Vihm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Light rain"
 msgstr "Pisut vihma"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Moderate rain"
 msgstr "Mõõdukas vihm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 #, fuzzy
 msgid "Heavy rain"
 msgstr "Tugev vihm"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Rain showers"
 msgstr "Vihmavalingud"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Freezing rain"
 msgstr "Jäätuv vihm"
 
 #. SNOW
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Snow"
 msgstr "Lumi"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Light snow"
 msgstr "Nõrk lumesadu"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Moderate snow"
 msgstr "Mõõdukas lumesadu"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Heavy snow"
 msgstr "Tugev lumesadu"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Snowstorm"
 msgstr "Lumetorm"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Blowing snowfall"
 msgstr "Lumesadu tuulega"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Snow showers"
 msgstr "Hootised lumesajud"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Drifting snow"
 msgstr "Liikuv lumesadu"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 #, fuzzy
 msgid "Snow grains"
 msgstr "Lumeterade valingud"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 msgid "Light snow grains"
 msgstr "Nõrgalt lumeteri"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 msgid "Moderate snow grains"
 msgstr "Mõõdukalt lumeteri"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 msgid "Heavy snow grains"
 msgstr "Tihedalt lumeteri"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:197
+#: gweather/weather.c:199
 msgid "Ice crystals"
 msgstr "Jääkristallid"
 
 #. ICE_PELLETS
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Ice pellets"
 msgstr "Jääterad"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Few ice pellets"
 msgstr "Vähe jääteri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Moderate ice pellets"
 msgstr "Mõõdukalt jääteri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Heavy ice pellets"
 msgstr "Tihedalt jääteri"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Ice pellet storm"
 msgstr "Jääterade torm"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Showers of ice pellets"
 msgstr "Jääterade valingud"
 
 #. HAIL
-#: gweather/weather.c:199
+#: gweather/weather.c:201
 msgid "Hail"
 msgstr "Rahe"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:201
 msgid "Hailstorm"
 msgstr "Rahetorm"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:201
 msgid "Hail showers"
 msgstr "Rahehood"
 
 #. SMALL_HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:202
 msgid "Small hail"
 msgstr "Peen rahe"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:202
 msgid "Small hailstorm"
 msgstr "Peene rahe tuisk"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:202
 msgid "Showers of small hail"
 msgstr "Peene rahe hood"
 
 #. PRECIPITATION
-#: gweather/weather.c:201
+#: gweather/weather.c:203
 msgid "Unknown precipitation"
 msgstr "Teadmata sademed"
 
 #. MIST
-#: gweather/weather.c:202
+#: gweather/weather.c:204
 msgid "Mist"
 msgstr "Hajus udu"
 
 #. FOG
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Fog"
 msgstr "Udu"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Fog in the vicinity"
 msgstr "Udu läheduses"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Shallow fog"
 msgstr "Madal udu"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Patches of fog"
 msgstr "Paiguti udu"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Partial fog"
 msgstr "Hooti udu"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Freezing fog"
 msgstr "Jäätuv udu"
 
 #. SMOKE
-#: gweather/weather.c:204
+#: gweather/weather.c:206
 msgid "Smoke"
 msgstr "Suits"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:205
+#: gweather/weather.c:207
 msgid "Volcanic ash"
 msgstr "Vulkaaniline tuhk"
 
 #. SAND
-#: gweather/weather.c:206
+#: gweather/weather.c:208
 msgid "Sand"
 msgstr "Liiv"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:208
 msgid "Blowing sand"
 msgstr "Liiv tuulega"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:208
 msgid "Drifting sand"
 msgstr "Liikuv liiv"
 
 #. HAZE
-#: gweather/weather.c:207
+#: gweather/weather.c:209
 msgid "Haze"
 msgstr "Vine"
 
 #. SPRAY
-#: gweather/weather.c:208
+#: gweather/weather.c:210
 msgid "Blowing sprays"
 msgstr "Veetolm tuulega"
 
 #. DUST
-#: gweather/weather.c:209
+#: gweather/weather.c:211
 msgid "Dust"
 msgstr "Tolm"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:211
 msgid "Blowing dust"
 msgstr "Tolm tuulega"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:211
 msgid "Drifting dust"
 msgstr "Liikuv tolm"
 
 #. SQUALL
-#: gweather/weather.c:210
+#: gweather/weather.c:212
 msgid "Squall"
 msgstr "Tuuleiilid"
 
 #. SANDSTORM
-#: gweather/weather.c:211
+#: gweather/weather.c:213
 msgid "Sandstorm"
 msgstr "Liivatorm"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:213
 msgid "Sandstorm in the vicinity"
 msgstr "Liivatorm läheduses"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:213
 msgid "Heavy sandstorm"
 msgstr "Tugev liivatorm"
 
 #. DUSTSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:214
 msgid "Duststorm"
 msgstr "Tolmutorm"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:214
 msgid "Duststorm in the vicinity"
 msgstr "Tolmutorm läheduses"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:214
 msgid "Heavy duststorm"
 msgstr "Tugev tolmutorm"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:213
+#: gweather/weather.c:215
 msgid "Funnel cloud"
 msgstr "Tuulispask"
 
 #. TORNADO
-#: gweather/weather.c:214
+#: gweather/weather.c:216
 msgid "Tornado"
 msgstr "Tornaado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:215
+#: gweather/weather.c:217
 msgid "Dust whirls"
 msgstr "Tolmupöörised"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:217
 msgid "Dust whirls in the vicinity"
 msgstr "Tolmupöörised läheduses"
 
-#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
+#: gweather/weather.c:836
+#: gweather/weather.c:876
+#: gweather/weather.c:1597
 msgid "Failed to get METAR data.\n"
 msgstr "Ei saa lugeda METAR andmeid.\n"
 
-#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
+#: gweather/weather.c:868
+#: gweather/weather.c:896
+#: gweather/weather.c:1134
 msgid "WeatherInfo missing location"
 msgstr "Ilmaennustuse puuduv asukoht"
 
-#: gweather/weather.c:1778
+#: gweather/weather.c:1935
 msgid "%a, %b %d / %H:%M"
 msgstr "%d. %b %a / %H:%M"
 
-#: gweather/weather.c:1782
+#: gweather/weather.c:1939
 msgid "Unknown observation time"
 msgstr "Tundmatu vaatlusaeg"
 
-#: gweather/weather.c:1842
+#: gweather/weather.c:2009
 msgid "Calm"
 msgstr "Tuulevaikus"
 
-#: gweather/weather.c:1868
-msgid "Unknown"
-msgstr "Teadmata"
-
-#: gweather/weather.c:1912
+#: gweather/weather.c:2082
 msgid "Retrieval failed"
 msgstr "Uuendamine ebaõnnestus"
 
@@ -3540,7 +3927,8 @@ msgid "Factory for creating inbox monitors."
 msgstr "Factory for creating the weather applet."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
+#: mailcheck/mailcheck.c:805
+#: mailcheck/mailcheck.c:2475
 msgid "Inbox Monitor"
 msgstr ""
 
@@ -3554,212 +3942,217 @@ msgstr ""
 msgid "Internet"
 msgstr "Internet"
 
-#: mailcheck/mailcheck.c:666
+#: mailcheck/mailcheck.c:668
 msgid "Error checking mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:797
+#: mailcheck/mailcheck.c:811
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
 
-#: mailcheck/mailcheck.c:805
+#: mailcheck/mailcheck.c:819
 msgid "Please enter your mailserver's _password:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
+#: mailcheck/mailcheck.c:824
+#: mailcheck/mailcheck.c:1948
 msgid "Password Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
+#: mailcheck/mailcheck.c:839
+#: mailcheck/mailcheck.c:1975
 msgid "_Save password to disk"
 msgstr ""
 
-#: mailcheck/mailcheck.c:888
+#: mailcheck/mailcheck.c:895
 msgid "Could not connect to the Internet."
 msgstr ""
 
-#: mailcheck/mailcheck.c:892
+#: mailcheck/mailcheck.c:899
 msgid "The username or password is incorrect."
 msgstr ""
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:902
 msgid "The server name is incorrect."
 msgstr ""
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:906
 msgid "Error connecting to mail server."
 msgstr ""
 
-#: mailcheck/mailcheck.c:904
+#: mailcheck/mailcheck.c:911
 msgid "Error"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1083
+#: mailcheck/mailcheck.c:1087
 msgid "You have new mail."
 msgstr ""
 
-#: mailcheck/mailcheck.c:1085
+#: mailcheck/mailcheck.c:1089
 msgid "You have mail."
 msgstr ""
 
-#: mailcheck/mailcheck.c:1089
+#  translators: this is of the form "%d unread/%d messages"
+#: mailcheck/mailcheck.c:1093
+#: mailcheck/mailcheck.c:1094
+#: mailcheck/mailcheck.c:1103
+#: mailcheck/mailcheck.c:1097
 #, c-format
-msgid "%d unread/ %d messages"
+msgid "%s/%s"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1091
-#, c-format
-msgid "%d messages"
-msgstr ""
-
-#: mailcheck/mailcheck.c:1095
+#: mailcheck/mailcheck.c:1110
 #, fuzzy
 msgid "No mail."
 msgstr "Normaalne"
 
-#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
+#: mailcheck/mailcheck.c:1564
+#: mailcheck/mailcheck.c:1565
+#: mailcheck/mailcheck.c:2845
+#: mailcheck/mailcheck.c:2846
 msgid "Status not updated"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
+#: mailcheck/mailcheck.c:1767
+#: mailcheck/mailcheck.c:2393
 #, fuzzy
 msgid "Inbox Settings"
 msgstr "Sätted"
 
-#: mailcheck/mailcheck.c:1777
+#: mailcheck/mailcheck.c:1793
 msgid "Mailbox _resides on:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1788
+#: mailcheck/mailcheck.c:1804
 msgid "Local mailspool"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1796
+#: mailcheck/mailcheck.c:1812
 msgid "Local maildir"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1820
 msgid "Remote POP3-server"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1828
 msgid "Remote IMAP-server"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:1853
 msgid "Mail _spool file:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1844
+#: mailcheck/mailcheck.c:1860
 #, fuzzy
 msgid "Browse"
 msgstr "Valija"
 
-#: mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:1880
 msgid "Mail s_erver:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1873
+#: mailcheck/mailcheck.c:1889
 msgid "Mail Server Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1892
+#: mailcheck/mailcheck.c:1908
 #, fuzzy
 msgid "_Username:"
 msgstr "_Kasutaja"
 
-#: mailcheck/mailcheck.c:1903
+#: mailcheck/mailcheck.c:1919
 msgid "Username Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:1937
 msgid "_Password:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1974
+#: mailcheck/mailcheck.c:1990
 msgid "_Folder:"
-msgstr ""
+msgstr "_Kataloog:"
 
-#: mailcheck/mailcheck.c:1985
+#: mailcheck/mailcheck.c:2001
 msgid "Folder Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2052
+#: mailcheck/mailcheck.c:2073
 msgid "Check for mail _every:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in minutes to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2118
 msgid "Choose time interval in seconds to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2114
+#: mailcheck/mailcheck.c:2135
 msgid "Play a _sound when new mail arrives"
 msgstr ""
 
-#. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2124
+#  l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
+#: mailcheck/mailcheck.c:2145
 msgid "Sto_p animation when double clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2137
+#: mailcheck/mailcheck.c:2158
 msgid "Select a_nimation:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2154
+#: mailcheck/mailcheck.c:2176
 #, fuzzy
 msgid "Commands"
 msgstr "Käsk:"
 
-#: mailcheck/mailcheck.c:2183
+#: mailcheck/mailcheck.c:2205
 msgid "Before each _update:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2200
+#: mailcheck/mailcheck.c:2222
 msgid "Command to execute before each update"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2212
+#: mailcheck/mailcheck.c:2234
 msgid "When new mail _arrives:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2249
+#: mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2239
+#: mailcheck/mailcheck.c:2261
 msgid "When double clicke_d:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2254
+#: mailcheck/mailcheck.c:2276
 msgid "Command to execute when clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2339
+#: mailcheck/mailcheck.c:2362
 #, fuzzy
 msgid "Inbox Monitor Preferences"
 msgstr "Süsteemi jälgija häälestus"
 
-#: mailcheck/mailcheck.c:2450
+#: mailcheck/mailcheck.c:2477
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2776
+#: mailcheck/mailcheck.c:2805
 #, fuzzy
 msgid "Text only"
 msgstr "Tekst"
 
-#: mailcheck/mailcheck.c:2807
+#: mailcheck/mailcheck.c:2847
 msgid "Mail check"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2808
+#: mailcheck/mailcheck.c:2848
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr ""
 
@@ -3864,9 +4257,7 @@ msgid "This is how we process the mail, process the mail, process the mail..."
 msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:27
-msgid ""
-"This is the animation that will be displayed during normal Inbox Monitor "
-"usage"
+msgid "This is the animation that will be displayed during normal Inbox Monitor usage"
 msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:28
@@ -3895,7 +4286,7 @@ msgid "New Mail"
 msgstr "Uus-Meremaa"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:66
+#: mini-commander/src/about.c:69
 msgid "Command Line"
 msgstr "Käsurida"
 
@@ -3907,34 +4298,31 @@ msgstr "Pisi-käsurida"
 msgid "MiniCommander Applet Factory"
 msgstr "MiniCommander Applet Factory"
 
-#: mini-commander/src/about.c:69
+#: mini-commander/src/about.c:72
 #, fuzzy
 msgid ""
-"This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, and changeable macros.\n"
+"This GNOME applet adds a command line to the panel. It features command completion, command history, and changeable macros.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"\\ This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 msgstr ""
-"See rakend lisab paneelile käsurea interpretaatori. Ta tunnistab "
-"käsutäiendusi, ajalugu, seadistatavaid makrokäske ja soovi korral näitab "
-"kellaaega.\n"
+"See rakend lisab paneelile käsurea interpretaatori. Ta tunnistab käsutäiendusi, ajalugu, seadistatavaid makrokäske ja soovi korral näitab kellaaega.\n"
 "\n"
-"See programm on vabatarkvara; teda on lubatud kopeerida ja/või muuta "
-"vastavalt GNU GPL litsentsi tingimustele (listsentsi versioon 2 või suurem)."
+"See programm on vabatarkvara; teda on lubatud kopeerida ja/või muuta vastavalt GNU GPL litsentsi tingimustele (listsentsi versioon 2 või suurem)."
+
+#: mini-commander/src/command_line.c:315
+msgid "No items in history"
+msgstr ""
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:439
 msgid "Start program"
 msgstr "Käivita programm"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:482
 msgid "Command line"
 msgstr "Käsurida"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:483
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Kirjuta siia käsk, mille Gnome käivitab"
 
@@ -3954,10 +4342,12 @@ msgid "Set default list value for %s\n"
 msgstr ""
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr ""
 
@@ -4037,9 +4427,8 @@ msgid "_Delete Macro"
 msgstr "_Kustuta makro"
 
 #: mini-commander/src/mini-commander.glade.h:20
-#, fuzzy
 msgid "_Macros:"
-msgstr "Makrod"
+msgstr "_Makrod:"
 
 #: mini-commander/src/mini-commander.glade.h:21
 #, fuzzy
@@ -4055,27 +4444,30 @@ msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Color background blue component"
-msgstr ""
+#, fuzzy
+msgid "Background color, blue component"
+msgstr "_Taustavärv:"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Color background green component"
-msgstr ""
+#, fuzzy
+msgid "Background color, green component"
+msgstr "_Taustavärv:"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Color background red component"
-msgstr ""
+#, fuzzy
+msgid "Background color, red component"
+msgstr "_Taustavärv:"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Color foreground blue component"
+msgid "Foreground color, blue component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Color foreground green component"
+msgid "Foreground color, green component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-msgid "Color foreground red component"
+msgid "Foreground color, red component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
@@ -4096,8 +4488,9 @@ msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
+#, fuzzy
 msgid "Macro command list"
-msgstr ""
+msgstr "Käsurida"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Macro pattern list"
@@ -4164,29 +4557,33 @@ msgstr ""
 msgid "Width"
 msgstr "_Laius :"
 
-#: mini-commander/src/mini-commander_applet.c:222
-#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:232
 msgid "Browser"
 msgstr "Valija"
 
-#: mini-commander/src/mini-commander_applet.c:227
+#: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
 msgstr "Brauseri käivitamiseks klõpsa sellel nupul"
 
-#: mini-commander/src/mini-commander_applet.c:240
-#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:246
+#: mini-commander/src/mini-commander_applet.c:250
 msgid "History"
 msgstr "Ajalugu"
 
-#: mini-commander/src/mini-commander_applet.c:245
+#: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
 msgstr "Eelmiste käskude nimekirja avamiseks klõpsa sellel nupul"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:363
+msgid "Command line has been disabled by your system administrator"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:426
 msgid "Mini-Commander applet"
 msgstr "Pisi-käsurea rakend"
 
-#: mini-commander/src/mini-commander_applet.c:380
+#: mini-commander/src/mini-commander_applet.c:427
 msgid "This applet adds a command line to the panel"
 msgstr "See rakend lisab paneelile käsurea"
 
@@ -4206,12 +4603,23 @@ msgstr "Sa pead käsu määrama"
 msgid "You may not specify duplicate patterns"
 msgstr "Korduvaid mustreid ei saa määrata"
 
+#: mini-commander/src/preferences.c:850
+#, fuzzy
+msgid "Pattern"
+msgstr "Muster:"
+
+#: mini-commander/src/preferences.c:860
+#, fuzzy
+msgid "Command"
+msgstr "Käsk:"
+
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Reguleeri helitugevust"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1073
+#: mixer/GNOME_MixerApplet.server.in.in.h:3
+#: mixer/mixer.c:199
+#: mixer/mixer.c:1346
 msgid "Volume Control"
 msgstr "Helitugevuse reguleerija"
 
@@ -4224,118 +4632,116 @@ msgstr "_Tumm"
 msgid "_Open Volume Control"
 msgstr "Helitugevuse reguleerija"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Main Volume"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Bass"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Treble"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Synth"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Pcm"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Speaker"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Line"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Microphone"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "CD"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Mix"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Pcm2"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Recording Level"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Input Gain"
 msgstr ""
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Output Gain"
 msgstr ""
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line1"
 msgstr ""
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line2"
 msgstr ""
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line3"
 msgstr ""
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Digital1"
 msgstr ""
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital2"
 msgstr ""
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital3"
 msgstr ""
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Input"
 msgstr ""
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Output"
 msgstr ""
 
-#: mixer/mixer.c:119
-#, fuzzy
+#: mixer/mixer.c:131
 msgid "Video"
-msgstr "Peida"
+msgstr "Video"
 
-#: mixer/mixer.c:119
-#, fuzzy
+#: mixer/mixer.c:131
 msgid "Radio"
-msgstr "Vihm"
+msgstr "Raadio"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 #, fuzzy
 msgid "Monitor"
 msgstr "Süsteemi jälgija"
 
-#: mixer/mixer.c:176
+#: mixer/mixer.c:200
 msgid "Volume Control (muted)"
 msgstr "Helitugevuse reguleerija (tumm)"
 
-#: mixer/mixer.c:177
+#: mixer/mixer.c:201
 msgid "No audio device"
 msgstr ""
 
-#: mixer/mixer.c:278
+#: mixer/mixer.c:518
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4343,47 +4749,53 @@ msgstr ""
 "Hoiatus: see gmix versioon on kompileeritud erineva\n"
 "soundcard.h versiooniga\n"
 
-#: mixer/mixer.c:801
+#: mixer/mixer.c:878
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr ""
+
+#: mixer/mixer.c:1047
 msgid "Volume Controller"
 msgstr "Helitugevuse kontroller"
 
-#: mixer/mixer.c:802
+#: mixer/mixer.c:1048
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Helitugevuse muutmiseks kasuta üles ja alla nooli"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:826
+#: mixer/mixer.c:1072
 msgid "+"
 msgstr ""
 
-#: mixer/mixer.c:827
+#: mixer/mixer.c:1073
 msgid "-"
 msgstr ""
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1347
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1075
+#: mixer/mixer.c:1348
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 
-#: mixer/mixer.c:1217
+#: mixer/mixer.c:1495
 #, fuzzy
 msgid "Volume Control Preferences"
 msgstr "Helitugevuse kontroller"
 
-#: mixer/mixer.c:1241
+#: mixer/mixer.c:1519
 #, fuzzy
 msgid "Audio Channels"
 msgstr "pole "
 
-#: mixer/mixer.c:1257
+#: mixer/mixer.c:1535
+#, fuzzy
 msgid "_Select channel to control:"
-msgstr ""
+msgstr "Valige ühendatud seadme ikoon"
 
-#: mixer/mixer.c:1587
+#: mixer/mixer.c:1874
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 
@@ -4400,11 +4812,12 @@ msgid "Saved volume to restore on startup"
 msgstr ""
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:133
+#: modemlights/modemlights.c:135
+#: modemlights/modemlights.c:1582
 msgid "Modem Lights"
 msgstr "Modemitulukesed"
 
-#: modemlights/modemlights.c:135
+#: modemlights/modemlights.c:137
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4414,34 +4827,32 @@ msgstr ""
 "Modemi seisundi näidik ja helistaja.\n"
 "Tuled alates ülevalt või vasakult on RX ja TX (saabuvad ja lahkuvad andmed)"
 
-#: modemlights/modemlights.c:485
+#: modemlights/modemlights.c:518
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"Ühendus on hetkel püsti.\n"
-"Kas tahate selle katkestada?"
 
-#: modemlights/modemlights.c:489
+#: modemlights/modemlights.c:526
 #, fuzzy
 msgid "_Disconnect"
 msgstr "Käsk ühenduse _katkestamiseks:"
 
-#: modemlights/modemlights.c:510
+#: modemlights/modemlights.c:553
 msgid "Do you want to connect?"
 msgstr "Kas Te tahate ühenduse luua?"
 
-#: modemlights/modemlights.c:513
+#: modemlights/modemlights.c:560
 #, fuzzy
 msgid "C_onnect"
 msgstr "Loome ühendust"
 
-#: modemlights/modemlights.c:536
+#: modemlights/modemlights.c:584
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb vastu võetud / %#.1fMb saadetud / aeg: %.1d:%.2d"
 
-#: modemlights/modemlights.c:541
+#: modemlights/modemlights.c:589
 msgid "not connected"
 msgstr "ühendus puudub"
 
@@ -4502,9 +4913,7 @@ msgid "Show connect time and throughput"
 msgstr "Näi_ta ühenduse aega ja liikluse mahtu"
 
 #: modemlights/modemlights.schemas.in.h:14
-msgid ""
-"Show extra information about the connect time and amount of data transmitted "
-"and received."
+msgid "Show extra information about the connect time and amount of data transmitted and received."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:15
@@ -4544,18 +4953,15 @@ msgid "The background color of the button used to indicate data sent."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid ""
-"The color used to display the status button when the modem is connected."
+msgid "The color used to display the status button when the modem is connected."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid ""
-"The color used to display the status button when the modem is connecting."
+msgid "The color used to display the status button when the modem is connecting."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid ""
-"The color used to display the status button when the modem is not connected."
+msgid "The color used to display the status button when the modem is not connected."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:26
@@ -4600,135 +5006,134 @@ msgstr ""
 msgid "Verify owner of lock file"
 msgstr "_Kontrolli lukustusfaili omanikku"
 
-#: modemlights/properties.c:416
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Modemitulukeste häälestus"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:451
 #, fuzzy
 msgid "U_pdate every:"
 msgstr "Info _uuendamise sagedus sekundis"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Näi_ta ühenduse aega ja liikluse mahtu"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr ""
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:496
 #, fuzzy
 msgid "Connections"
 msgstr "Loome ühendust"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:505
 #, fuzzy
 msgid "Co_nnection command:"
 msgstr "Kä_sk ühenduse loomiseks:"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:531
 #, fuzzy
 msgid "_Disconnection command:"
 msgstr "Käsk ühenduse _katkestamiseks:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Ki_nnitage, et soovite ühendust luua"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:572
 #, fuzzy
 msgid "Receive Data"
 msgstr "Võta andmed vastu"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:578
 #, fuzzy
 msgid "_Foreground:"
 msgstr "_Tekst"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:583
 #, fuzzy
 msgid "Send Data"
 msgstr "Saada andmed"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:588
 #, fuzzy
 msgid "Foregroun_d:"
 msgstr "Teks_t"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:590
 #, fuzzy
 msgid "Backg_round:"
 msgstr "Tau_st"
 
-#: modemlights/properties.c:583
-#, fuzzy
-msgid "Connection Status"
-msgstr "Ühenduse staatus"
-
-#: modemlights/properties.c:591
-#, fuzzy
-msgid "Co_nnected:"
-msgstr "_Ühendatud"
-
 #: modemlights/properties.c:593
+msgid "Connection Status"
+msgstr ""
+
+#: modemlights/properties.c:601
+msgid "Co_nnected:"
+msgstr ""
+
+#: modemlights/properties.c:603
 #, fuzzy
 msgid "Disconnec_ted:"
 msgstr "Käsk ühenduse _katkestamiseks:"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:606
 #, fuzzy
 msgid "C_onnecting:"
 msgstr "Loome ühendust"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Tekst"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:617
 #, fuzzy
 msgid "For_eground:"
 msgstr "T_ekst"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:619
 #, fuzzy
 msgid "Bac_kground:"
 msgstr "Ta_ust"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "_Kontuur"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:624
+#: multiload/properties.c:534
 msgid "Colors"
 msgstr "Värvid"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:633
 #, fuzzy
 msgid "Modem Options"
 msgstr "Modemi häälestus"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Seade:"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:668
 #, fuzzy
 msgid "_Lock file:"
 msgstr "_Modemi lukustusfail:"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "_Kontrolli lukustusfaili omanikku"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "Ka_suta ISDN-i"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:717
 #, fuzzy
 msgid "Advanced"
 msgstr "_Edasijõudnutele"
@@ -4738,11 +5143,11 @@ msgid "A system load indicator"
 msgstr "Süsteemi koormuse indikaator"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:78
+#: multiload/main.c:80
 msgid "System Monitor"
 msgstr "Süsteemi jälgija"
 
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:3
 #, fuzzy
 msgid "_Open System Monitor"
 msgstr "Süsteemi jälgija"
@@ -4751,44 +5156,44 @@ msgstr "Süsteemi jälgija"
 msgid "CPU Load"
 msgstr "Protsessori koormus"
 
-#: multiload/loadavg.c:107 multiload/main.c:280
+#: multiload/loadavg.c:107
+#: multiload/main.c:347
 msgid "Load Average"
 msgstr "Keskmine koormus"
 
-#: multiload/main.c:80
-#, fuzzy
+#: multiload/main.c:82
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
-"A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"space use, plus network traffic."
+"A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."
 msgstr ""
-"Avaldatud GNU Üldise Avaliku Litsentsi all.\n"
-"\n"
-"Rakend ilma jälgimiseks."
 
-#: multiload/main.c:272 multiload/properties.c:553
+#: multiload/main.c:339
+#: multiload/properties.c:559
 msgid "Processor"
 msgstr "Protsessor"
 
-#: multiload/main.c:274 multiload/properties.c:560
+#: multiload/main.c:341
+#: multiload/properties.c:566
 msgid "Memory"
 msgstr "Mälu"
 
-#: multiload/main.c:276 multiload/properties.c:568
+#: multiload/main.c:343
+#: multiload/properties.c:574
 msgid "Network"
 msgstr "Võrk"
 
-#: multiload/main.c:278 multiload/properties.c:576
+#: multiload/main.c:345
+#: multiload/properties.c:582
 #, fuzzy
 msgid "Swap Space"
 msgstr "Saalefail"
 
-#: multiload/main.c:282
+#: multiload/main.c:349
 msgid "Resource"
 msgstr "Resurss"
 
-#: multiload/main.c:293
+#: multiload/main.c:360
 #, c-format
 msgid ""
 "%s:\n"
@@ -4806,8 +5211,9 @@ msgid "Applet refresh rate in milliseconds"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:2
+#, fuzzy
 msgid "CPU graph background color"
-msgstr ""
+msgstr "_Taustavärv:"
 
 #: multiload/multiload.schemas.in.h:3
 #, fuzzy
@@ -4835,9 +5241,7 @@ msgid "Enable swap load graph"
 msgstr "Näita _radarikaarti"
 
 #: multiload/multiload.schemas.in.h:8
-msgid ""
-"For horizontal panels, the width of the graphs in pixels. For vertical "
-"panels, this is the height of the graphs."
+msgid "For horizontal panels, the width of the graphs in pixels. For vertical panels, this is the height of the graphs."
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:9
@@ -4897,141 +5301,146 @@ msgid "Graph size"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:23
+#, fuzzy
 msgid "Load graph background color"
-msgstr ""
+msgstr "_Taustavärv:"
 
 #: multiload/multiload.schemas.in.h:24
+#, fuzzy
 msgid "Memory graph background color"
-msgstr ""
+msgstr "_Taustavärv:"
 
 #: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:26
+#, fuzzy
 msgid "Swap graph background color"
-msgstr ""
+msgstr "_Taustavärv:"
 
 #: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Võrgu koormatus"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:332
 msgid "Monitored Resources"
 msgstr "Jälgitavad ressursid"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:357
 msgid "_Processor"
 msgstr "_Protsessor"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:370
 msgid "_Memory"
 msgstr "_Mälu"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:383
 msgid "_Network"
 msgstr "_Võrk"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:396
 #, fuzzy
 msgid "S_wap Space"
 msgstr "Saalefail"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:409
 #, fuzzy
 msgid "_Load"
 msgstr "Protsessori koormus"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:456
 msgid "System m_onitor width: "
 msgstr "Süsteemi _jälgija laius: "
 
-#: multiload/properties.c:452
+#: multiload/properties.c:458
 msgid "System m_onitor height: "
 msgstr "Süsteemi jälgija _kõrgus: "
 
-#: multiload/properties.c:491
+#: multiload/properties.c:497
 msgid "Sys_tem monitor update interval: "
 msgstr "Süs_teemi jälgija kiirus: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:523
 msgid "milliseconds"
 msgstr "millisekundit"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:561
+#: multiload/properties.c:568
 msgid "_User"
 msgstr "_Kasutaja"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:562
 msgid "S_ystem"
 msgstr "_Süsteem"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:563
 msgid "N_ice"
 msgstr ""
 
-#: multiload/properties.c:558
+#: multiload/properties.c:564
 msgid "I_dle"
 msgstr "_Jõude"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:569
 msgid "Sh_ared"
 msgstr "_Jagatud"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:570
 msgid "_Buffers"
 msgstr "_Puhvrid"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:571
 msgid "Cach_ed"
 msgstr ""
 
-#: multiload/properties.c:566
+#: multiload/properties.c:572
 msgid "F_ree"
 msgstr "_Vaba"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:576
 #, fuzzy
 msgid "_SLIP"
 msgstr "S_LIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:577
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:578
 #, fuzzy
 msgid "_Ethernet"
 msgstr "Et_hernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:579
 #, fuzzy
 msgid "Othe_r"
 msgstr "M_uu"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:580
+#: multiload/properties.c:590
 msgid "_Background"
 msgstr "_Taust"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:584
 msgid "_Used"
 msgstr "_Kasutatud"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:585
 msgid "_Free"
 msgstr "_Vaba"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:587
 #, fuzzy
 msgid "Load"
-msgstr "Protsessori koormus"
+msgstr "Võrgu koormatus"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:589
 #, fuzzy
 msgid "_Average"
 msgstr "Keskmine koormus"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:613
 msgid "System Monitor Preferences"
 msgstr "Süsteemi jälgija häälestus"
 
@@ -5044,8 +5453,9 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:307
+#: stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet_callbacks.c:240
 msgid "Sticky Notes"
 msgstr ""
 
@@ -5071,20 +5481,15 @@ msgstr ""
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:7
 #, fuzzy
 msgid "_Show Notes"
-msgstr "Näita kellaaega"
+msgstr "Näita kuupäeva"
 
-#: stickynotes/stickynotes.c:314
+#: stickynotes/stickynotes.c:334
 msgid "Locked note"
 msgstr ""
 
-#: stickynotes/stickynotes.c:319
+#: stickynotes/stickynotes.c:339
 msgid "Unlocked note"
 msgstr ""
-
-#: stickynotes/stickynotes.glade.h:3
-#, fuzzy
-msgid "<b>Behavior</b>"
-msgstr "_Käitumine"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
@@ -5143,17 +5548,19 @@ msgid "Clic_k:"
 msgstr "Kell"
 
 #: stickynotes/stickynotes.glade.h:20
+#, fuzzy
 msgid "Close note"
 msgstr ""
+"%s:\n"
+"%d%% kasutuses"
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Force _default color and font on notes"
 msgstr ""
 
 #: stickynotes/stickynotes.glade.h:22
-#, fuzzy
 msgid "H_eight:"
-msgstr "Kõrge"
+msgstr "_Kõrgus:"
 
 #: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
@@ -5226,14 +5633,12 @@ msgid "Use fo_nt from the system theme"
 msgstr ""
 
 #: stickynotes/stickynotes.glade.h:39
-#, fuzzy
 msgid "_Color:"
-msgstr "Värvid"
+msgstr "_Värv:"
 
 #: stickynotes/stickynotes.glade.h:40
-#, fuzzy
 msgid "_Delete ALL"
-msgstr "_Kustuta"
+msgstr "_Kustuta KÕIK"
 
 #: stickynotes/stickynotes.glade.h:41
 #, fuzzy
@@ -5275,10 +5680,7 @@ msgid "Autosave timeout in minutes"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:2
-msgid ""
-"By default, sticky notes are given the current date as the title when they "
-"are created. This format is used; anything that can be parsed by strftime() "
-"is valid."
+msgid "By default, sticky notes are given the current date as the title when they are created. This format is used; anything that can be parsed by strftime() is valid."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:3
@@ -5295,9 +5697,7 @@ msgid "Default color for new notes"
 msgstr "Vaikimisi märgid"
 
 #: stickynotes/stickynotes.schemas.in.h:6
-msgid ""
-"Default color for new sticky notes. This should be in html hex "
-"specification, for example \"#30FF50\"."
+msgid "Default color for new sticky notes. This should be in html hex specification, for example \"#30FF50\"."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:7
@@ -5306,9 +5706,7 @@ msgid "Default font for new notes"
 msgstr "Vaikimisi märgid"
 
 #: stickynotes/stickynotes.schemas.in.h:8
-msgid ""
-"Default font for new sticky notes. This should be a Pango Font Name, for "
-"example \"Sans Italic 10\""
+msgid "Default font for new sticky notes. This should be a Pango Font Name, for example \"Sans Italic 10\""
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:9
@@ -5335,34 +5733,23 @@ msgid "Empty notes are always deleted without confirmation"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:14
-msgid ""
-"Every time the specified number of minutes pass, the sticky notes are "
-"automatically saved."
+msgid "Every time the specified number of minutes pass, the sticky notes are automatically saved."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:15
-msgid ""
-"If this option is disabled, a custom color can be used as the default color "
-"for all sticky notes."
+msgid "If this option is disabled, a custom color can be used as the default color for all sticky notes."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:16
-msgid ""
-"If this option is disabled, a custom font can be used as the default font "
-"for all sticky notes."
+msgid "If this option is disabled, a custom font can be used as the default font for all sticky notes."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:17
-msgid ""
-"If this option is enabled, the custom colors and fonts that have been "
-"assigned to individual notes will be ignored."
+msgid "If this option is enabled, the custom colors and fonts that have been assigned to individual notes will be ignored."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:18
-msgid ""
-"Occurs when the applet is either left-clicked or \"enter\" is pressed. The "
-"options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
-"\"2\" for \"Lock/Unlock All Notes\"."
+msgid "Occurs when the applet is either left-clicked or \"enter\" is pressed. The options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and \"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:19
@@ -5370,9 +5757,7 @@ msgid "Specifies whether the sticky notes are locked (non-editable) or not."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:20
-msgid ""
-"Specifies whether the sticky notes are visible on ALL workspaces on the "
-"desktop, or not."
+msgid "Specifies whether the sticky notes are visible on ALL workspaces on the desktop, or not."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:21
@@ -5410,26 +5795,13 @@ msgstr "_Kasuta teema vaikevärve"
 msgid "Whether to use the default system font"
 msgstr ""
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet_callbacks.c:242
 #, fuzzy, c-format
-msgid ""
-"%s\n"
-"%d note"
-msgid_plural ""
-"%s\n"
-"%d notes"
-msgstr[0] ""
-"%s:\n"
-"%d%% kasutuses"
-msgstr[1] ""
-"%s:\n"
-"%d%% kasutuses"
-
-#: stickynotes/stickynotes_applet_callbacks.c:182
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr ""
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:243
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr ""
 
@@ -5438,27 +5810,34 @@ msgid "Monitor the quality of a wireless network link"
 msgstr ""
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:588
+#: wireless/wireless-applet.c:837
 msgid "Wireless Link Monitor"
 msgstr ""
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:365
+#: wireless/wireless-applet.c:502
 msgid "No Wireless Devices"
 msgstr ""
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:367
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:591
 #, fuzzy
 msgid "This utility shows the status of a wireless link."
+msgstr "See utiliit näitab sinu sülearvuti aku olukorda"
+
+#: wireless/wireless-applet.c:838
+#, fuzzy
+msgid "This utility shows the status of a wireless link"
 msgstr "See utiliit näitab sinu sülearvuti aku olukorda"
 
 #: wireless/wireless-applet.glade.h:1
@@ -5471,1079 +5850,6 @@ msgid "Wireless Link Monitor Preferences"
 msgstr "Ketaste ühendaja häälestus"
 
 #: wireless/wireless-applet.glade.h:3
-#, fuzzy
 msgid "_Monitored device:"
-msgstr "Jälgitav seade:"
+msgstr "_Jälgitav seade:"
 
-#~ msgid "Applet layout"
-#~ msgstr "Vali paigutus"
-
-#~ msgid "Beep when either of the above is true"
-#~ msgstr "Tee piiks, kui vähemalt üks ülal olevatest on tõene"
-
-#~ msgid "Hide"
-#~ msgstr "Peida"
-
-#~ msgid "Show"
-#~ msgstr "Näita"
-
-#~ msgid "_Run External CD Player"
-#~ msgstr "_Käivita väline CD mängija"
-
-#~ msgid "Disc Image"
-#~ msgstr "Kettapilt"
-
-#~ msgid "An image of a cd-rom disc"
-#~ msgstr "Pilt cd-rom kettast"
-
-#~ msgid "_Default character list:"
-#~ msgstr "_Vaikimisi märgid:"
-
-#~ msgid "Default list of characters"
-#~ msgstr "Vaikimisi märgid"
-
-#~ msgid "Set the default character list here"
-#~ msgstr "Siin sea vaikimisi märgistik"
-
-#~ msgid ""
-#~ "These characters will appear when the panel is started. To return to this "
-#~ "list, hit <d> while the applet has focus."
-#~ msgstr ""
-#~ "Need märgid ilmuvad paneeli käivitamise ajal. Kui soovid seda nimekirja "
-#~ "uuesti näha, vajuta pärast rakendi aktiveerimist <d>."
-
-#~ msgid "Drive Mount Applet Warning"
-#~ msgstr "Ketaste ühendaja hoiatus"
-
-#~ msgid "Custom icon for moun_ted:"
-#~ msgstr "Ikoon ühenda_tud seadmele:"
-
-#~ msgid "Custom icon for not mou_nted:"
-#~ msgstr "Ikoon ühe_ndamata seadmele:"
-
-#~ msgid "_Theme Name:"
-#~ msgstr "_Teema nimi:"
-
-#, fuzzy
-#~ msgid ""
-#~ "Where command can be:\n"
-#~ " * xmodmap /full/path/xmodmap.hu\n"
-#~ " * gkb_xmmap hu\n"
-#~ " * setxkbmap hu"
-#~ msgstr ""
-#~ "Kus käsk saab olla:\n"
-#~ "* xmodmap /täielik/tee/xmodmap.hu\n"
-#~ "* gkb__xmmap hu\n"
-#~ "* setxkbmap hu"
-
-#~ msgid "Big"
-#~ msgstr "Suur"
-
-#~ msgid "Applet _size: "
-#~ msgstr "Rakendi _suurus: "
-
-#, fuzzy
-#~ msgid "Keymaps"
-#~ msgstr "_Klahvitabelid"
-
-#~ msgid "No data available or properties not set"
-#~ msgstr "Puuduvad kas anded või seatud omadused"
-
-#, fuzzy
-#~ msgid "Precipitation"
-#~ msgstr "Hooti sademeid"
-
-#, fuzzy
-#~ msgid "Condition"
-#~ msgstr "Tingimused:"
-
-#~ msgid "minute(s)"
-#~ msgstr "minuti järel"
-
-#, fuzzy
-#~ msgid "Current city:"
-#~ msgstr "_Praegused tingimused"
-
-#, fuzzy
-#~ msgid "Country"
-#~ msgstr "_Riik:"
-
-#, fuzzy
-#~ msgid "Windy"
-#~ msgstr "Tuul:"
-
-#, fuzzy
-#~ msgid "Light Flurries"
-#~ msgstr "Nõrk uduvihm"
-
-#, fuzzy
-#~ msgid "Snow and Wind"
-#~ msgstr "Lumeterad"
-
-#, fuzzy
-#~ msgid "Sunny"
-#~ msgstr "Sun"
-
-#, fuzzy
-#~ msgid "Nothing"
-#~ msgstr "Põhjast"
-
-#, fuzzy
-#~ msgid "Command Entry box"
-#~ msgstr "Käsurida"
-
-#, fuzzy
-#~ msgid "Execute"
-#~ msgstr "Väljasta meedia"
-
-#~ msgid "Applet _width:"
-#~ msgstr "Rakendi _laius:"
-
-#~ msgid "Size"
-#~ msgstr "Suurus"
-
-#~ msgid "_Run Volume Control..."
-#~ msgstr "_Käivita helitugevuse reguleerija..."
-
-#~ msgid "No_t connected"
-#~ msgstr "Ühendus _puudub"
-
-#~ msgid "B_link"
-#~ msgstr "_Vilgu"
-
-#~ msgid "Set options as default"
-#~ msgstr "Salvesta häälestus vaikimisi olevaks"
-
-#~ msgid "_Run detailed system monitor"
-#~ msgstr "_Käivita põhjalikum süsteemijälgija"
-
-#, fuzzy
-#~ msgid "_Swap Space"
-#~ msgstr "_Saalefail"
-
-#~ msgid "_Other"
-#~ msgstr "_Muu"
-
-#, fuzzy
-#~ msgid "Background color of title"
-#~ msgstr "_Taustavärv:"
-
-#~ msgid "_Up"
-#~ msgstr "_Üles"
-
-#~ msgid "Dow_n"
-#~ msgstr "_Alla"
-
-#~ msgid "Great Britain"
-#~ msgstr "Suurbritannia"
-
-#~ msgid "Jamaica"
-#~ msgstr "Jamaika"
-
-#~ msgid "South Africa"
-#~ msgstr "Lõuna-Aafrika"
-
-#~ msgid "Wallon"
-#~ msgstr "Vallooni"
-
-#~ msgid "Yugoslavian"
-#~ msgstr "Jugoslaavia"
-
-#~ msgid "105"
-#~ msgstr "105"
-
-#~ msgid "101"
-#~ msgstr "101"
-
-#~ msgid "102"
-#~ msgstr "102"
-
-#~ msgid "450"
-#~ msgstr "450"
-
-#~ msgid "84"
-#~ msgstr "84"
-
-#~ msgid "mklinux"
-#~ msgstr "mklinux"
-
-#~ msgid "type5"
-#~ msgstr "type5"
-
-#~ msgid "iso-8859-1"
-#~ msgstr "iso-8859-1"
-
-#~ msgid "iso-8859-2"
-#~ msgstr "iso-8859-2"
-
-#~ msgid "iso-8859-7"
-#~ msgstr "iso-8859-7"
-
-#~ msgid "iso-8859-9"
-#~ msgstr "iso-8859-9"
-
-#~ msgid "am-armscii8"
-#~ msgstr "am-armscii8"
-
-#~ msgid "be-latin1"
-#~ msgstr "be-latin1"
-
-#~ msgid "cp1251"
-#~ msgstr "cp1251"
-
-#~ msgid "georgian-academy"
-#~ msgstr "georgian-academy"
-
-#~ msgid "koi8-r"
-#~ msgstr "koi8-r"
-
-#~ msgid "tis620"
-#~ msgstr "tis620"
-
-#~ msgid "ix86"
-#~ msgstr "ix86"
-
-#~ msgid "mac"
-#~ msgstr "mac"
-
-#~ msgid "sgi"
-#~ msgstr "sgi"
-
-#~ msgid "dec"
-#~ msgstr "dec"
-
-#~ msgid "ibm"
-#~ msgstr "ibm"
-
-#~ msgid "Lan_guage:"
-#~ msgstr "_Keel:"
-
-#~ msgid ""
-#~ "_Flag\n"
-#~ "Pixmap:"
-#~ msgstr ""
-#~ "_Lipp\n"
-#~ "Pilt:"
-
-#~ msgid "Arch_itecture:"
-#~ msgstr "_Arhitektuur:"
-
-#~ msgid "_Type:"
-#~ msgstr "_Tüüp:"
-
-#~ msgid "Code_page:"
-#~ msgstr "Koodi_tabel:"
-
-#~ msgid "_Options"
-#~ msgstr "_Häälestus"
-
-#~ msgid "The keymap switching command returned with error!"
-#~ msgstr "Klahvitabeli vahetamise käsk tagastas vea!"
-
-#~ msgid "- Colo_r:"
-#~ msgstr "- vä_rv:"
-
-#~ msgid "_Appearance"
-#~ msgstr "_Väljanägemine"
-
-#~ msgid "_Location"
-#~ msgstr "_Asukoht"
-
-#~ msgid "Enable _detailed forecast"
-#~ msgstr "Näita _täpset ilmaennustust"
-
-#~ msgid "Updates"
-#~ msgstr "Uuendused"
-
-#~ msgid "_Automatically update every "
-#~ msgstr "_Uuenda automaatselt iga "
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Mitmesugust"
-
-#~ msgid "_General"
-#~ msgstr "_Üldine"
-
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "Uduvihm läheduses"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "Madal uduvihm"
-
-#~ msgid "Patches of drizzle"
-#~ msgstr "Paiguti sajab uduvihma"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "Aeg-ajalt sajab uduvihma"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "Uduvihm tuulega"
-
-#~ msgid "Showers"
-#~ msgstr "Vihmavalingud"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "Liikuv uduvihm"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "Läheduses sajab"
-
-#~ msgid "Shallow rain"
-#~ msgstr "Madal vihm"
-
-#~ msgid "Patches of rain"
-#~ msgstr "Paiguti sajab vihma"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "Hoovihmad"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "Vihm tuulega"
-
-#~ msgid "Drifting rain"
-#~ msgstr "Liikuv vihm"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "Läheduses sajab lund"
-
-#~ msgid "Shallow snow"
-#~ msgstr "Madal lumesadu"
-
-#~ msgid "Patches of snow"
-#~ msgstr "Paiguti sajab lund"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "Hooti sajab lund"
-
-#~ msgid "Freezing snow"
-#~ msgstr "Jäätuv lumesadu"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "Läheduses sajab lumeteri"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "Madalal sajab lumeteri"
-
-#~ msgid "Patches of snow grains"
-#~ msgstr "Paiguti sajab lumeteri"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "Hooti sajab lumeteri"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "Lumeterad tuulega"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "Liikuvad lumeterad"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "Jäätuvad lumeterad"
-
-#~ msgid "Ice crystals in the vicinity"
-#~ msgstr "Jääkristallid läheduses"
-
-#~ msgid "Few ice crystals"
-#~ msgstr "Vähe jääkristalle"
-
-#~ msgid "Moderate ice crystals"
-#~ msgstr "Mõõdukalt jääkristalle"
-
-#~ msgid "Heavy ice crystals"
-#~ msgstr "Tihedalt jääkristalle"
-
-#~ msgid "Patches of ice crystals"
-#~ msgstr "Paiguti on jääkristalle"
-
-#~ msgid "Partial ice crystals"
-#~ msgstr "Hooti sajab jääkristalle"
-
-#~ msgid "Ice crystal storm"
-#~ msgstr "Jääkristallide torm"
-
-#~ msgid "Blowing ice crystals"
-#~ msgstr "Jääkristallid tuulega"
-
-#~ msgid "Showers of ice crystals"
-#~ msgstr "Jääkristallide valingud"
-
-#~ msgid "Drifting ice crystals"
-#~ msgstr "Liikuvad jäkristallid"
-
-#~ msgid "Freezing ice crystals"
-#~ msgstr "Jäätuvad jääkristallid"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "Jääterad läheduses"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "Madalad jääterad"
-
-#~ msgid "Patches of ice pellets"
-#~ msgstr "Paiguti jääteri"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "Hooti jääteri"
-
-#~ msgid "Blowing ice pellets"
-#~ msgstr "Jääterad tuulega"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "Liikuvad jääterad"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "Jäätuvad jääterad"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "Rahe läheduses"
-
-#~ msgid "Moderate hail"
-#~ msgstr "Mõõdukas rahesadu"
-
-#~ msgid "Heavy hail"
-#~ msgstr "Tugev rahesadu"
-
-#~ msgid "Shallow hail"
-#~ msgstr "Madal rahesadu"
-
-#~ msgid "Patches of hail"
-#~ msgstr "Paiguti on rahesadu"
-
-#~ msgid "Partial hail"
-#~ msgstr "Hooti on rahesadu"
-
-#~ msgid "Blowing hail"
-#~ msgstr "Rahesadu tuulega"
-
-#~ msgid "Drifting hail"
-#~ msgstr "Liikuv rahesadu"
-
-#~ msgid "Freezing hail"
-#~ msgstr "Jäätuv rahesadu"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "Peen rahe läheduses"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "Mõõdukalt peent rahet"
-
-#~ msgid "Heavy small hail"
-#~ msgstr "Tugevalt peent rahet"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "Madal peen rahe"
-
-#~ msgid "Patches of small hail"
-#~ msgstr "Paiguti on peent rahet"
-
-#~ msgid "Partial small hail"
-#~ msgstr "Hooti on peent rahet"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "Peen rahe tuulega"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "Liikuv peene rahe sadu"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "Jäätuv peene rahe sadu"
-
-#~ msgid "Precipitation in the vicinity"
-#~ msgstr "Sademed läheduses"
-
-#~ msgid "Light precipitation"
-#~ msgstr "Nõrgad sademed"
-
-#~ msgid "Moderate precipitation"
-#~ msgstr "Mõõdukad sademed"
-
-#~ msgid "Heavy precipitation"
-#~ msgstr "Tugevad sademed"
-
-#~ msgid "Shallow precipitation"
-#~ msgstr "Madalad sademed"
-
-#~ msgid "Patches of precipitation"
-#~ msgstr "Paiguti sademeid"
-
-#~ msgid "Unknown thunderstorm"
-#~ msgstr "Teadmata äike"
-
-#~ msgid "Blowing precipitation"
-#~ msgstr "Sademed tuulega"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "Teadmata sademete hood"
-
-#~ msgid "Drifting precipitation"
-#~ msgstr "Liikuvad sademed"
-
-#~ msgid "Freezing precipitation"
-#~ msgstr "Jäätuvad sademed"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "Läheduses on hajus udu"
-
-#~ msgid "Light mist"
-#~ msgstr "Kerge uduvine"
-
-#~ msgid "Moderate mist"
-#~ msgstr "Keskmise hajusat udu"
-
-#~ msgid "Thick mist"
-#~ msgstr "Tihedalt hajusat udu"
-
-#~ msgid "Shallow mist"
-#~ msgstr "Madal hajus udu"
-
-#~ msgid "Partial mist"
-#~ msgstr "Hooti hajusat udu"
-
-#~ msgid "Mist with wind"
-#~ msgstr "Hajus udu tuulega"
-
-#~ msgid "Drifting mist"
-#~ msgstr "Liikuv hajus udu"
-
-#~ msgid "Freezing mist"
-#~ msgstr "Jäätuv hajus udu"
-
-#~ msgid "Light fog"
-#~ msgstr "Nõrk udu"
-
-#~ msgid "Moderate fog"
-#~ msgstr "Mõõdukas udu"
-
-#~ msgid "Thick fog"
-#~ msgstr "Paks udu"
-
-#~ msgid "Fog with wind"
-#~ msgstr "Udu tuulega"
-
-#~ msgid "Drifting fog"
-#~ msgstr "Liikuv udu"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "Suits läheduses"
-
-#~ msgid "Thin smoke"
-#~ msgstr "Vähene suits"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "Mõõdukas suits"
-
-#~ msgid "Thick smoke"
-#~ msgstr "Paks suits"
-
-#~ msgid "Shallow smoke"
-#~ msgstr "Madal suits"
-
-#~ msgid "Patches of smoke"
-#~ msgstr "Paiguti suitsu"
-
-#~ msgid "Partial smoke"
-#~ msgstr "Hooti suitsu"
-
-#~ msgid "Smoke w/ thunders"
-#~ msgstr "Suits ja äike"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "Suits tuulega"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "Liikuv suits"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "Vulkaaniline tuhk läheduses"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "Mõõdukalt vulkaanilist tuhka"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "Tihedalt vulkaanilist tuhke"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "Madal vulkaaniline tuhk"
-
-#~ msgid "Patches of volcanic ash"
-#~ msgstr "Paiguti vulkaanilist tuhka"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "Hooti vulkaanilist tuhka"
-
-#~ msgid "Volcanic ash w/ thunders"
-#~ msgstr "Vulkaanilise tuha tormid"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "Vulkaaniline tuhk tuulega"
-
-#~ msgid "Showers of volcanic ash "
-#~ msgstr "Vulkaanilise tuha valangud"
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "Liikuv vulkaaniline tuhk"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "Jäätuv vulkaaniline tuhk"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "Liiv läheduses"
-
-#~ msgid "Light sand"
-#~ msgstr "Pisut liiva"
-
-#~ msgid "Moderate sand"
-#~ msgstr "Mõõdukalt liiva"
-
-#~ msgid "Heavy sand"
-#~ msgstr "Tihedalt liiva"
-
-#~ msgid "Patches of sand"
-#~ msgstr "Paiguti liiva"
-
-#~ msgid "Partial sand"
-#~ msgstr "Hooti liiva"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "Vine läheduses"
-
-#~ msgid "Light haze"
-#~ msgstr "Kerge vine"
-
-#~ msgid "Moderate haze"
-#~ msgstr "Mõõdukas vine"
-
-#~ msgid "Thick haze"
-#~ msgstr "Paks vine"
-
-#~ msgid "Shallow haze"
-#~ msgstr "Madal vine"
-
-#~ msgid "Patches of haze"
-#~ msgstr "Paiguti vine"
-
-#~ msgid "Partial haze"
-#~ msgstr "Hooti vine"
-
-#~ msgid "Haze with wind"
-#~ msgstr "Vine tuulega"
-
-#~ msgid "Drifting haze"
-#~ msgstr "Liikuv vine"
-
-#~ msgid "Freezing haze"
-#~ msgstr "Jäätuv vine"
-
-#~ msgid "Sprays"
-#~ msgstr "Veetolm"
-
-#~ msgid "Sprays in the vicinity"
-#~ msgstr "Veetolm läheduses"
-
-#~ msgid "Light sprays"
-#~ msgstr "Nõrgalt veetolmu"
-
-#~ msgid "Moderate sprays"
-#~ msgstr "Mõõdukalt veetolmu"
-
-#~ msgid "Heavy sprays"
-#~ msgstr "Tihedalt veetolmu"
-
-#~ msgid "Shallow sprays"
-#~ msgstr "Madalal veetolmu"
-
-#~ msgid "Patches of sprays"
-#~ msgstr "Paiguti veetolmu"
-
-#~ msgid "Partial sprays"
-#~ msgstr "Hooti veetolmu"
-
-#~ msgid "Drifting sprays"
-#~ msgstr "Liikuv veetolm"
-
-#~ msgid "Freezing sprays"
-#~ msgstr "Jäätuv veetolm"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "Tolm läheduses"
-
-#~ msgid "Light dust"
-#~ msgstr "Pisut tolmu"
-
-#~ msgid "Moderate dust"
-#~ msgstr "Mõõdukalt tolmu"
-
-#~ msgid "Heavy dust"
-#~ msgstr "Paksult tolmu"
-
-#~ msgid "Patches of dust"
-#~ msgstr "Paiguti tolmu"
-
-#~ msgid "Partial dust"
-#~ msgstr "Hooti tolmu"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "Tuuleiilid läheduses"
-
-#~ msgid "Light squall"
-#~ msgstr "Nõrgad tuuleiilid"
-
-#~ msgid "Moderate squall"
-#~ msgstr "Mõõdukad tuuleiilid"
-
-#~ msgid "Heavy squall"
-#~ msgstr "Tugevad tuuleiilid"
-
-#~ msgid "Partial squall"
-#~ msgstr "Hooti tuuleiilid"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "Tormipuhangud"
-
-#~ msgid "Blowing squall"
-#~ msgstr "Puhanguline tuul"
-
-#~ msgid "Drifting squall"
-#~ msgstr "Liikuvad tuuleiilid"
-
-#~ msgid "Freezing squall"
-#~ msgstr "Jäätuvad tuuleiilid"
-
-#~ msgid "Light standstorm"
-#~ msgstr "Nõrk liivatorm"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "Mõõdukas liivatorm"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "Madal liivatorm"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "Hooti liivatorm"
-
-#~ msgid "Thunderous sandstorm"
-#~ msgstr "Metsik liivatorm"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "Tugev liivatorm"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "Liikuv liivatorm"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "Jäätuv liivatorm"
-
-#~ msgid "Light duststorm"
-#~ msgstr "Nõrk tolmutorm"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "Mõõdukas tolmutorm"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "Madal tolmutorm"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "Hooti tolmutorm"
-
-#~ msgid "Thunderous duststorm"
-#~ msgstr "Metsik tolmutorm"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "Tugev tolmutorm"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "Liikuv tolmutorm"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "Jäätuv tolmutorm"
-
-#~ msgid "Funnel cloud in the vicinity"
-#~ msgstr "Tuulispask läheduses"
-
-#~ msgid "Light funnel cloud"
-#~ msgstr "Nõrk tuulispask"
-
-#~ msgid "Moderate funnel cloud"
-#~ msgstr "Mõõdukas tuulispask"
-
-#~ msgid "Thick funnel cloud"
-#~ msgstr "Tugev tuulispask"
-
-#~ msgid "Shallow funnel cloud"
-#~ msgstr "Madal tuulispask"
-
-#~ msgid "Patches of funnel clouds"
-#~ msgstr "Paiguti tuulispasad"
-
-#~ msgid "Partial funnel clouds"
-#~ msgstr "Hooti tuulispasad"
-
-#~ msgid "Funnel cloud w/ wind"
-#~ msgstr "Tuulispask ja tugev tuul"
-
-#~ msgid "Drifting funnel cloud"
-#~ msgstr "Liikuv tuulispask"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "Tornaado läheduses"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "Mõõdukas tornaado"
-
-#~ msgid "Raging tornado"
-#~ msgstr "Raevukas tornaado"
-
-#~ msgid "Partial tornado"
-#~ msgstr "Hooti tornadadod"
-
-#~ msgid "Thunderous tornado"
-#~ msgstr "Metsik tornaado"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "Liikuv tornaado"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "Jäätuv tornaado"
-
-#~ msgid "Light dust whirls"
-#~ msgstr "Nõrgad tolmupöörised"
-
-#~ msgid "Moderate dust whirls"
-#~ msgstr "Mõõdukad tolmupöörised"
-
-#~ msgid "Heavy dust whirls"
-#~ msgstr "Tugevad tolmupöörised"
-
-#~ msgid "Shallow dust whirls"
-#~ msgstr "Madalad tolmupöörised"
-
-#~ msgid "Patches of dust whirls"
-#~ msgstr "Paiguti tolmupöörised"
-
-#~ msgid "Partial dust whirls"
-#~ msgstr "Hooti tolmupöörised"
-
-#~ msgid "Blowing dust whirls"
-#~ msgstr "Tolmupöörised tuulega"
-
-#~ msgid "Drifting dust whirls"
-#~ msgstr "Liikuvad tolmupöörised"
-
-#~ msgid "Failed to get IWIN data.\n"
-#~ msgstr "Ei saa lugeda IWIN andmeid.\n"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "Ei saa lugeda IWIN ennustuse andmeid.\n"
-
-#~ msgid "Failed to get Met Office data.\n"
-#~ msgstr "Ei saa lugeda Met Office andmeid.\n"
-
-#~ msgid "Failed to get Met Office forecast data.\n"
-#~ msgstr "Ei saa lugeda Met Office ennustuse andmeid.\n"
-
-#~ msgid "Failed to get radar map image.\n"
-#~ msgstr "Ei saa lugeda radarikaarti.\n"
-
-#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
-#~ msgstr "hoiatus: mikseril ei ole heli valjuse kanalit - kasutan PCM-i.\n"
-
-#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
-#~ msgstr "Mikseriseadmel %s ei ole helivaljuse ega PCM kanalit.\n"
-
-#~ msgid "C_olors"
-#~ msgstr "_Värvid"
-
-#~ msgid "P_rocessor"
-#~ msgstr "P_rotsessor"
-
-#~ msgid "M_emory"
-#~ msgstr "Mä_lu"
-
-#~ msgid "Net_work"
-#~ msgstr "Võr_k"
-
-#~ msgid "Swap _File"
-#~ msgstr "Saale_fail"
-
-#~ msgid "Factory for Panel Menu Applet"
-#~ msgstr "Factory for Panel Menu Applet"
-
-#~ msgid "Panel Menu Applet Factory"
-#~ msgstr "Panel Menu Applet Factory"
-
-#~ msgid "Panel applet for displaying menus"
-#~ msgstr "Rakend paneelile menüüde näitamiseks"
-
-#~ msgid "Actions"
-#~ msgstr "Tegevused"
-
-#~ msgid "Actions Menu"
-#~ msgstr "Tegevuste menüü"
-
-#~ msgid "Add items to the Menu Bar"
-#~ msgstr "Lisa elemente menüüribale"
-
-#~ msgid "My Documents"
-#~ msgstr "Minu dokumendid"
-
-#~ msgid "Documents"
-#~ msgstr "Dokumendid"
-
-#~ msgid "Applications"
-#~ msgstr "Rakendused"
-
-#~ msgid "Create directory item..."
-#~ msgstr "Loo kataloogi element..."
-
-#~ msgid "Home"
-#~ msgstr "Kodu"
-
-#~ msgid "Edit directory item..."
-#~ msgstr "Muuda kataloogi elementi..."
-
-#~ msgid "_Path:"
-#~ msgstr "_Otsingutee:"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "_Depth level:"
-#~ msgstr "_Sügavus:"
-
-#~ msgid "Create documents item..."
-#~ msgstr "Loo dokumentide emelent..."
-
-#~ msgid "Rename documents item..."
-#~ msgstr "Nimeta ümber dokumentide element..."
-
-#~ msgid "KDE Menus"
-#~ msgstr "KDE menüüd"
-
-#~ msgid "Programs"
-#~ msgstr "Programmid"
-
-#~ msgid "Create links item..."
-#~ msgstr "Loo linkide element..."
-
-#~ msgid "Rename links item..."
-#~ msgstr "Nimeta ümber linkide element..."
-
-#~ msgid "KDE"
-#~ msgstr "KDE"
-
-#~ msgid "Preferences"
-#~ msgstr "Häälestus"
-
-#~ msgid "Menu Bar Preferences"
-#~ msgstr "Menüüriba häälestus"
-
-#~ msgid "_Applications Menu"
-#~ msgstr "_Rakenduste menüü"
-
-#~ msgid "Select an icon for the Applications menu"
-#~ msgstr "Vali ikoon rakenduste menüüle"
-
-#~ msgid "_Preferences Menu"
-#~ msgstr "_Häälestuste menüü"
-
-#~ msgid "Ac_tions Menu"
-#~ msgstr "_Tegevuste menüü"
-
-#~ msgid "_Windows Menu"
-#~ msgstr "_Akende menüü"
-
-#~ msgid "W_orkspaces Menu"
-#~ msgstr "Tööt_soonide menüü"
-
-#~ msgid "Windows"
-#~ msgstr "Aknad"
-
-#~ msgid "Menu Bar"
-#~ msgstr "Menüüriba"
-
-#~ msgid "(c) 2001 Chris Phelps"
-#~ msgstr "(c) 2001 Chris Phelps"
-
-#~ msgid ""
-#~ "The Menu Bar allows you to display customized menubars on your panels."
-#~ msgstr "Menüüriba võimaldab sul kohandatud menüüde kuvamist oma paneelidel."
-
-#~ msgid "Enter symbols delimited with \"+\" in the box below."
-#~ msgstr "Sisesta allolevasse kasti soovitud sümbolid, eraldajaks \"+\"."
-
-#~ msgid "not unique"
-#~ msgstr "ei ole unikaalne"
-
-#~ msgid "completing..."
-#~ msgstr "lõpetame..."
-
-#~ msgid "completed"
-#~ msgstr "lõpetatud"
-
-#~ msgid "not found"
-#~ msgstr "ei leia"
-
-#~ msgid "no /bin/sh"
-#~ msgstr "ei ole programmi /bin/sh"
-
-#~ msgid "end of history list"
-#~ msgstr "ajaloo lõpp"
-
-#~ msgid "starting..."
-#~ msgstr "alustame..."
-
-#~ msgid "autocompleted"
-#~ msgstr "Rida lõpetati automaatselt"
-
-#~ msgid "%H:%M - %d. %b"
-#~ msgstr "%H:%M  %d. %b"
-
-#~ msgid "%H:%M"
-#~ msgstr "%H:%M"
-
-#~ msgid "%d. %b"
-#~ msgstr "%d. %b"
-
-#~ msgid "orient. changed"
-#~ msgstr "suund muudetud"
-
-#~ msgid "ready..."
-#~ msgstr "valmis..."
-
-#~ msgid "Applet height:"
-#~ msgstr "Rakendi kõrgus:"
-
-#~ msgid "Command line height:"
-#~ msgstr "Käsurea kõrgus:"
-
-#~ msgid "Regex _%.2d:"
-#~ msgstr "Regex _%.2d:"
-
-#~ msgid "   Macro _%.2d:"
-#~ msgstr "   Makro _%.2d:"
-
-#~ msgid "Apperance"
-#~ msgstr "Väljanägemine"
-
-#~ msgid "name_%d"
-#~ msgstr "nimi_%d"
-
-#~ msgid "label_%d"
-#~ msgstr "lühend_%d"
-
-#~ msgid "country_%d"
-#~ msgstr "riik_%d"
-
-#~ msgid "lang_%d"
-#~ msgstr "keel_%d"
-
-#~ msgid "command_%d"
-#~ msgstr "käsk_%d"
-
-#~ msgid "_Refresh"
-#~ msgstr "_Värskenda"
-
-#~ msgid "fork error"
-#~ msgstr "'fork' viga"
-
-#~ msgid "child exited"
-#~ msgstr "programm lõpetas"
