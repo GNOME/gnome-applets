@@ -21,10 +21,14 @@
 
 #include "gswitchit-applet.h"
 
+extern gboolean
+gkb_factory (PanelApplet * applet, const gchar * iid, gpointer data);
+
 static gboolean
 GKBAppletNew (PanelApplet * applet)
 {
 	fprintf (stderr, "No xkb found, fallback to gkb\n");
+	gkb_factory (applet, "OAFIID:GNOME_KeyboardApplet", NULL);
 	return FALSE;
 }
 
@@ -47,7 +51,7 @@ CheckXKB (void)
 
 static gboolean
 KeyboardAppletFactory (PanelApplet * applet,
-			const gchar * iid, gpointer data)
+		       const gchar * iid, gpointer data)
 {
 	if (!strcmp (iid, "OAFIID:GNOME_KeyboardApplet")) {
 		if (CheckXKB ())

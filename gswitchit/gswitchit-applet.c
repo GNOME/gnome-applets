@@ -41,6 +41,10 @@ static void GSwitchItAppletCmdProps (BonoboUIComponent * uic,
 				     GSwitchItApplet * sia,
 				     const gchar * verb);
 
+static void GSwitchItAppletCmdCapplet (BonoboUIComponent * uic,
+				       GSwitchItApplet * sia,
+				       const gchar * verb);
+
 static void GSwitchItAppletCmdPlugins (BonoboUIComponent * uic,
 				       GSwitchItApplet * sia,
 				       const gchar * verb);
@@ -75,6 +79,7 @@ static gint GSwitchItAppletButtonPressed (GtkWidget * widget,
 
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Props", GSwitchItAppletCmdProps),
+	BONOBO_UI_UNSAFE_VERB ("Capplet", GSwitchItAppletCmdCapplet),
 	BONOBO_UI_UNSAFE_VERB ("Plugins", GSwitchItAppletCmdPlugins),
 	BONOBO_UI_UNSAFE_VERB ("About", GSwitchItAppletCmdAbout),
 	BONOBO_UI_UNSAFE_VERB ("Help", GSwitchItAppletCmdHelp),
@@ -94,7 +99,7 @@ GSwitchItAppletSetTooltip (GSwitchItApplet * sia, const char *str)
 	gtk_object_sink (GTK_OBJECT (tooltips));
 	g_object_set_data_full (G_OBJECT (sia->applet), "tooltips",
 				tooltips, (GDestroyNotify) g_object_unref);
-	g_snprintf (buf, sizeof (buf), _("Keyboard switcher (%s)"), str);
+	g_snprintf (buf, sizeof (buf), _("Keyboard Indicator (%s)"), str);
 	gtk_tooltips_set_tip (tooltips, sia->applet, buf, NULL);
 }
 
@@ -425,6 +430,13 @@ GSwitchItAppletCmdProps (BonoboUIComponent *
 }
 
 void
+GSwitchItAppletCmdCapplet(BonoboUIComponent *
+			   uic, GSwitchItApplet * sia, const gchar * verb)
+{
+	gnome_execute_shell (NULL, "gnome-keyboard-properties");
+}
+
+void
 GSwitchItAppletCmdPlugins (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
@@ -496,7 +508,7 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	    strcmp (translatorCredits,
 		    "translator_credits") != 0 ? translatorCredits : NULL;
 	sia->aboutDialog =
-	    gnome_about_new (_("GSwitchIt"), VERSION,
+	    gnome_about_new (_("Keyboard indicator"), VERSION,
 /* Translators: Please replace (C) with the proper copyright character. */
 			     _
 			     ("Copyright (c) Sergey V. Oudaltsov 1999-2004"),
