@@ -1,3 +1,5 @@
+/* GKB properies definitions
+*/
 #ifndef PROPERTIES_H__
 #define PROPERTIES_H__
 
@@ -7,6 +9,7 @@ typedef struct
 {
         gchar * dmap[2];
         gchar * dfile[2];
+        gchar * dcmd;
 } gkb_properties;
 
 void properties(AppletWidget *applet, gpointer data);
