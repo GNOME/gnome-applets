@@ -1,3 +1,10 @@
+Mon Apr 12 16:27:06 1999  Owen Taylor  <otaylor@redhat.com>
+
+	* gnomepager_applet.c (cb_applet_properties): Connect
+	signals after creating _all_ toggle buttons, otherwise,
+	setting one radio button can cause another to change,
+	triggering a segfault.
+
 Sun Apr 04 04:31:35 1999  George Lebl  <jirka@5z.com>
 
 	* gnomepager_applet.c: new window is made as GDK_WINDOW_TEMP,

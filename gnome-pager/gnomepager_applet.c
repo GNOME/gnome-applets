@@ -188,7 +188,8 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 {
   static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   static GtkWidget *prop = NULL;
-  GtkWidget *hbox,*hbox1,*vbox,*vbox1,*frame,*label, *spin, *check, *rb1, *sh;
+  GtkWidget *hbox,*hbox1,*vbox,*vbox1,*frame,*label, *spin, *check, *sh;
+  GtkWidget *rb1, *rb2;
   GtkAdjustment *adj;
   
   if(prop)
@@ -285,6 +286,8 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
   hbox1 = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
   gtk_box_pack_start(GTK_BOX(vbox),hbox1,FALSE,FALSE,0);
   
+  /* Radio buttons for which tasks to show */
+  
   frame = gtk_frame_new(_("Which tasks to show"));
   gtk_box_pack_start(GTK_BOX(hbox1),frame,FALSE,FALSE,0);
   vbox1 = gtk_vbox_new(FALSE,GNOME_PAD_SMALL);
@@ -296,26 +299,28 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 
   rb1 = check = gtk_radio_button_new_with_label(NULL,_("Show all tasks"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.minimized_tasks);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks);
   gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
   gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
 
-  check = gtk_radio_button_new_with_label(
-			  gtk_radio_button_group (GTK_RADIO_BUTTON (rb1)),
+  check = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON (rb1),
 			  _("Show normal tasks only"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check),
 				!config.minimized_tasks && !config.minimized_tasks_only);
   gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
   
-  check = gtk_radio_button_new_with_label(
-			  gtk_radio_button_group (GTK_RADIO_BUTTON (rb1)),
+  rb2 = check = gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON (rb1),
 			  _("Show minimized tasks only"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.minimized_tasks_only);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks_only);
   gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
   gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
+
+  /* We connect these signals afterwards, so that when we set the
+   * states above, we don't trigger these callbacks.
+   */
+  gtk_signal_connect(GTK_OBJECT(rb1), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks);
+  gtk_signal_connect(GTK_OBJECT(rb2), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks_only);
 
   check = gtk_check_button_new_with_label(_("Show all tasks on all desktops"));
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.tasks_all);
