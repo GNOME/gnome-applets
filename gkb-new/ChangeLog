@@ -1,3 +1,16 @@
+2002-02-27  Kevin Vandersloot <kfv101@psu.edu>
+
+	Fix about thirteen seperate memory leaks. Still need to clean up
+	prop-add.c and prop-map.c
+	* prop.c: loads of mem leak fixes
+	* prop-add.c: ditto. Just hide the window so it doesn't
+	have to get recreated every time
+	* preset.c: ditto. Call closedir when done on the
+	dir
+
+	* gkb.c: don't create new tooltips every update. More
+	memleak fixes
+
 2002-02-22  Mark McLoughlin  <mark@skynet.ie>
 
 	* gkb_applet.desktop.in:

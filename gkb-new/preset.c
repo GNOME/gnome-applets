@@ -38,12 +38,20 @@ find_presets ()
   DIR *dir;
   struct dirent *actfile;
   GList *diritems = NULL;
+  gchar *text;
 
   /* TODO: user's local presets */
 
-  dir = opendir (gnome_unconditional_datadir_file ("gnome/gkb/"));
+  text = gnome_unconditional_datadir_file ("gnome/gkb/");
+  if (!text)
+  	return NULL;
+  dir = opendir (text);
 
-  prefixdir = g_strdup (gnome_unconditional_datadir_file ("gnome/gkb/"));
+  if (prefixdir)
+    g_free (prefixdir);
+  prefixdir = g_strdup (text);
+  
+  g_free (text);
 
   if (dir == NULL)
     return NULL;
@@ -60,6 +68,7 @@ find_presets ()
 					   (GCompareFunc) strcmp);
 	}
     }
+  closedir (dir);  
   return diritems;
 }
 

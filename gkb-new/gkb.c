@@ -66,13 +66,6 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
 static void gkb_destroy (GtkWidget * widget, gpointer data);
 
-static void
-set_tooltip (GtkWidget * w, const gchar * tip)
-{
-  GtkTooltips *t = gtk_tooltips_new ();
-  gtk_tooltips_set_tip (t, w, tip, NULL);
-}
-
 void alert(const gchar * str){
  GtkWidget * window;
  window = gnome_message_box_new (str,
@@ -116,7 +109,7 @@ gkb_draw (GKB * gkb)
       gtk_label_set_text (GTK_LABEL (gkb->label2), gkb->keymap->label);
     }
 
-  set_tooltip (gkb->applet, gkb->keymap->name);
+  gtk_tooltips_set_tip (gkb->tooltips, gkb->applet, gkb->keymap->name, NULL);
 
 }
 
@@ -275,12 +268,16 @@ gkb_sized_render (GKB * gkb)
       real_name = gnome_unconditional_pixmap_file (name);
       if (g_file_exists (real_name))
 	{
+	  if (keymap->pixbuf) 
+	    g_object_unref (keymap->pixbuf);
 	  keymap->pixbuf = gdk_pixbuf_new_from_file (real_name,NULL);
 	}
       else
 	{
 	  g_free (real_name);
 	  real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+	  if (keymap->pixbuf)
+	    g_object_unref (keymap->pixbuf);
 	  keymap->pixbuf = gdk_pixbuf_new_from_file (real_name,NULL);
 	}
       g_free (name);
@@ -404,22 +401,26 @@ loadprop (int i)
 
   buf = g_strdup_printf (_("name_%d"),i);
   actdata->name = gkb_load_pref (buf, (i?"Hungarian 105 keys keyboard":"US 105 key keyboard"));
+  g_free (buf);
 
   buf = g_strdup_printf (_("label_%d"), i);
   actdata->label = gkb_load_pref (buf, (i?"hu":"us"));
-
+  g_free (buf);
+  
   buf = g_strdup_printf (_("country_%d"), i);
   actdata->country = gkb_load_pref (buf, (i?"Hungary":"United States"));
-
+  g_free (buf);
+  
   buf = g_strdup_printf (_("lang_%d"), i);
   actdata->lang = gkb_load_pref (buf, (i?"Hungarian":"English"));
-
+  g_free (buf);
+  
   buf = g_strdup_printf (("flag_%d"), i);
   actdata->flag = gkb_load_pref (buf, (i?"hu.png":"us.png"));
-
+  g_free (buf);
+  
   buf = g_strdup_printf (_("command_%d"), i);
   actdata->command = gkb_load_pref (buf, (i?"gkb_xmmap hu":"gkb_xmmap us"));
-
   g_free(buf);
 
   actdata->pixbuf = NULL;
@@ -534,6 +535,8 @@ create_gkb_widget ()
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->label_frame2), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (gkb->label_frame2), gkb->label2);
   gtk_container_add (GTK_CONTAINER (gkb->hbox), gkb->label_frame2);
+  
+  gkb->tooltips = gtk_tooltips_new ();
 
 }
 

@@ -254,26 +254,32 @@ preadd_cb (GtkTreeSelection *selection,
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
                               NAME_COL, &value, -1);
   tdata->name = g_strdup (value);
+  g_free (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
                               FLAG_COL, &value, -1);
   tdata->flag = g_strdup (value);
+  g_free (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
                               COMMAND_COL, &value, -1);
   tdata->command = g_strdup (value);
+  g_free (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
                               COUNTRY_COL, &value, -1);
   tdata->country = g_strdup (value);
+  g_free (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
                               LABEL_COL, &value, -1);
   tdata->label = g_strdup (value);
+  g_free (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
                               LANG_COL, &value, -1); 
   tdata->lang = g_strdup (value);
+  g_free (value);
 
   pbi->keymap_for_add = tdata;
 
@@ -332,8 +338,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     addhelp_cb (NULL, NULL);
     break;
   default:
-    gtk_widget_destroy (GTK_WIDGET (dialog));
-    gkb->addwindow = NULL;
+    gtk_widget_hide (GTK_WIDGET (dialog));
     break;
   }
  
