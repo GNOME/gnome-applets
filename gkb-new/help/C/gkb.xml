@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.1.3">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "January 2003">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "August 2003">
   <!ENTITY applet "Keyboard Layout Switcher">
 ]>
 
@@ -23,6 +23,7 @@
   <articleinfo> 
 	 <title>&applet; Applet Manual V&manrevision;</title> 
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
@@ -54,7 +55,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address> 
+			 <address></address> 
 		  </affiliation> 
 		</author>
 		<author> 
@@ -100,17 +101,23 @@
 		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		<revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
 			 <para role="publisher">GNOME Documentation Project</para> 
 		  </revdescription>   
 		</revision> 
 		<revision> 
+		  <revnumber>Keyboard Layout Switcher Applet Manual V2.2</revnumber> 
+		  <date>January 2003</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription>   
+		</revision>
+		<revision> 
 		  <revnumber>Keyboard Layout Switcher Applet Manual V2.1</revnumber> 
 		  <date>August 2002</date> 
 		<revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
 			 <para role="publisher">GNOME Documentation Project</para> 
 		  </revdescription>   
 		</revision> 
@@ -118,8 +125,7 @@
 		  <revnumber>Keyboard Layout Switcher Applet Manual V2.0</revnumber> 
 		  <date>May 2002</date> 
 		<revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
 			 <para role="publisher">GNOME Documentation Project</para> 
 		  </revdescription>   
 		</revision> 
@@ -292,7 +298,7 @@
 		  <para>The country where the keyboard layout is used.</para></entry>  
 		 </row>
 		 -->
-		 
+
 		 <!--
 		 <row valign="top"> 
 		  <entry> 
@@ -329,17 +335,18 @@
 		  <para><command>setxkbmap <replaceable>us</replaceable></command> where <replaceable>us</replaceable>
 		  is the file extension of the <filename>xmodmap</filename> file for the keyboard layout.</para>
 		  </entry>  
+		 </row> 
 		 
-		 </row>
 		 <row valign="top"> 
 		  <entry> 
 		  <para><guilabel>Flag</guilabel></para></entry> 
 		  <entry> 
-		  <para>The flag that represents the country in which the keyboard layout is used. By default, the applet 
+		  <para>The flag that represents the country in which the keyboard layout is 
+		  used. By default, the applet 
 		  displays the flag and label of the current keyboard layout in the applet display. Click on the flag
 		  to display a flag selector dialog. </para></entry>  
-		 </row> 
-		 
+		 </row>
+
 	 	</tbody> 
 		</tgroup> 
 		</table>  
@@ -368,25 +375,11 @@
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>Size</guilabel></term> 
-			 <listitem> 
-			 <para>Select one of the following options from the drop-down list box to
-			 specify the size of the applet in the panel:</para> 
-			 <itemizedlist>
-			 	<listitem><para><guilabel>Normal</guilabel></para></listitem>
-			 	<listitem><para><guilabel>Big</guilabel></para></listitem>
-			 </itemizedlist>
-			 <para>You must reboot your machine to effect a change to this setting.</para>
-			 </listitem> 
-		  </varlistentry> 
-		  <varlistentry> 
-			 <term><guilabel>Keyboard Shortcuts</guilabel></term> 
+			 <term><guilabel>Switch layout</guilabel></term> 
 			 <listitem> 
 			 <para>You can use a shortcut key to switch between keyboard layouts. To customize the
 			 shortcut key, click <guibutton>Grab keys</guibutton>, then press the keys that you
-			 want to use. The applet displays the shortcut key in the text box. The default shortcut
-			 key is <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo> which the applet displays
-			 in the text box as Mod1-Shift_L.</para> 
+			 want to use. The applet displays the shortcut key in the text box. </para> 
 			 </listitem> 
 		  </varlistentry> 
 		</variablelist> 
