@@ -31,6 +31,7 @@
 #include <panel-applet-gconf.h>
 #include <libgnome/libgnome.h>
 #include <libgnomeui/gnome-color-picker.h>
+#include <libgnomeui/gnome-help.h>
 #include <glade/glade-xml.h>
 #include <gconf/gconf-client.h>
 
