@@ -3,8 +3,7 @@
  */
 
 #include <config.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
+#include <panel-applet.h>
 #include "charpick.h"
 
 
@@ -224,10 +223,12 @@ toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
 static int
 button_press_cb (GtkWidget *widget, GdkEventButton *event)
 {
+
   if (event->button > 1)
   {
     return gtk_widget_event (curr_data.applet, (GdkEvent *)event);
   }
+
   return TRUE;
 }
 
@@ -392,6 +393,7 @@ build_table(charpick_data *p_curr_data)
   display_charlist(p_curr_data);
 }
 
+#ifdef FIXME
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, 
                                 char *globcfgpath, gpointer data)
 {
@@ -399,18 +401,20 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
   property_save(privcfgpath, curr_data.properties);
   return FALSE;
 }
+#endif
 
-static void applet_change_pixel_size(GtkWidget *widget, int size)
+static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
 {
   curr_data.panel_size = size;
+
   build_table (&curr_data);
   return;
 }
 
-static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
+static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpointer data)
 {
-  if (o == ORIENT_UP ||
-      o == ORIENT_DOWN)
+  if (o == PANEL_APPLET_ORIENT_UP ||
+      o == PANEL_APPLET_ORIENT_DOWN)
     curr_data.panel_vertical = FALSE;
   else
     curr_data.panel_vertical = TRUE;
@@ -418,8 +422,9 @@ static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
   return;
 }
 
+
 static void
-about (AppletWidget *applet, gpointer data)
+about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
   static const char *authors[] = { "Alexandre Muñiz <munizao@xprt.net", NULL };
   static GtkWidget *about_box = NULL;
@@ -433,10 +438,12 @@ about (AppletWidget *applet, gpointer data)
   about_box = gnome_about_new (_("Character Picker"),
 			       CHARPICK_VERSION,
 			       _("Copyright (C) 1998"),
-			       authors,
 			       _("Gnome Panel applet for selecting strange "
 			         "characters that are not on my keyboard. "
 				 "Released under GNU General Public Licence."),
+			       authors,
+			       NULL,
+			       NULL,
 			       NULL);
 
   gtk_signal_connect(GTK_OBJECT(about_box), "destroy",
@@ -447,16 +454,34 @@ about (AppletWidget *applet, gpointer data)
 
 
 static void
-help_cb (AppletWidget *applet, gpointer data)
+help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
+#ifdef FIXME
         GnomeHelpMenuEntry help_entry = { "charpick_applet",
                                           "index.html" };
         gnome_help_display(NULL, &help_entry);
+#endif
 }
 
 
-int
-main (int argc, char *argv[])
+static const BonoboUIVerb charpick_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Props", property_show),
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char charpick_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"</popup>\n";
+
+
+static BonoboObject *
+charpicker_applet_new (void)
 {
   GtkWidget *applet = NULL;
   GtkWidget *frame = NULL;
@@ -502,25 +527,11 @@ main (int argc, char *argv[])
   curr_data.table = table;
   curr_data.event_box = event_box;
   curr_data.frame = frame;
-  curr_data.applet = applet;
   curr_data.properties = &default_properties;
 
+/* FIXME: hook up to gconf */
+  property_load(NULL, &default_properties);
 
-  /* Initialize the i18n stuff */
-  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-  textdomain (PACKAGE);
-  /* initialize applet */
-  applet_widget_init("charpick_applet", CHARPICK_VERSION, argc, argv,
-			      NULL, 0, NULL);
-  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/charpick.png");
-  /* create a new applet_widget*/
-  applet = applet_widget_new("charpick_applet");
-  curr_data.applet = applet; 
-  /* in the rare case that the communication with the panel
-     failed, error out */
-  if (!applet)
-    g_error("Can't create applet!\n");
-  property_load(APPLET_WIDGET(applet)->privcfgpath, &default_properties);
   curr_data.charlist = default_properties.default_charlist;
   /* Create the event_box (needed to catch keypress and focus change events) */
 
@@ -558,41 +569,61 @@ main (int argc, char *argv[])
   gtk_signal_connect (GTK_OBJECT (event_box), "selection_clear_event",
 		      GTK_SIGNAL_FUNC (selection_clear_cb),
 		      &curr_data);
-  /* session save signal */ 
+ 
+		    
+#ifdef FIXME
   gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		     GTK_SIGNAL_FUNC(applet_save_session), 
                      &default_properties);
-  gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-		     GTK_SIGNAL_FUNC(applet_change_pixel_size), NULL);
-  gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-		     GTK_SIGNAL_FUNC(applet_change_orient), NULL);
 
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-				         "properties",
-					 GNOME_STOCK_MENU_PROP,
-					 _("Properties..."),
-					 property_show,
-					 &curr_data);
-
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-				         "help",
-					 GNOME_STOCK_PIXMAP_HELP,
-					 _("Help"),
-					 help_cb, NULL);
-
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-				         "about",
-					 GNOME_STOCK_MENU_ABOUT,
-					 _("About..."),
-					 about,
-					 NULL);
-
-
+#endif
+  applet = panel_applet_new (frame);
+  curr_data.applet = applet;
   
-  applet_widget_add (APPLET_WIDGET (applet), frame);
-  gtk_widget_show_all (applet);
-  applet_widget_gtk_main ();
+  /* session save signal */ 
+  g_signal_connect (G_OBJECT (applet), "change_orient",
+		    G_CALLBACK (applet_change_orient), NULL);
 
-  return 0;
+  g_signal_connect (G_OBJECT (applet), "change_size",
+		    G_CALLBACK (applet_change_pixel_size), NULL);
+  
+  gtk_widget_show_all (applet);
+  
+  panel_applet_setup_menu (PANEL_APPLET (applet),
+			   charpick_applet_menu_xml,
+			   charpick_applet_menu_verbs,
+			   &curr_data);
+
+#ifdef FIXME
+	
+
+	test_applet_setup_tooltips (GTK_WIDGET (applet));
+
+	g_signal_connect (G_OBJECT (applet),
+			  "save_yourself",
+			  G_CALLBACK (test_applet_handle_save_yourself),
+			  label);
+#endif		
+
+  return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
 }
+
+static BonoboObject *
+charpicker_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_CharpickerApplet"))
+		applet = charpicker_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CharpickerApplet_Factory",
+			     "Inserts characters",
+			     "0",
+			     charpicker_applet_factory,
+			     NULL)
 

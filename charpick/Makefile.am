@@ -1,33 +1,31 @@
 SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	$(GNOME_APPLETS_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) 
 
 CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
 
-bin_PROGRAMS = charpick_applet
+bin_PROGRAMS = charpick_applet2
 
-charpick_applet_SOURCES = charpick.c \
+charpick_applet2_SOURCES = charpick.c \
                           charpick.h \
                           properties.c
 
-charpick_applet_LDADD = \
-		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+charpick_applet2_LDADD = \
+		       $(GNOME_APPLETS_LIBS)
 
 charpickbitmapsdir = $(datadir)/pixmaps/
 charpickbitmaps_DATA = charpick.png
 
-sysdir = $(datadir)/applets/Utility
-sys_predata = charpick_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_CharpickerApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = charpick_applet.gnorba
+@XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = \
-	charpick.png	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	charpick.png $(server_in_files)	
+	
 

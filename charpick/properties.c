@@ -13,6 +13,7 @@ charpick_persistant_properties temp_properties;
 
 void property_load (char *path, gpointer data)
 {
+#ifdef FIXME
   /* charpick_persistant_properties * properties = data; */
   /* default charlist is not yet handled by sm.(this is now done in main) */
   /*  properties->default_charlist = a_list; */
@@ -27,7 +28,14 @@ void property_load (char *path, gpointer data)
   curr_data.properties->size = gnome_config_get_int("charpick/buttonsize=22");
   curr_data.properties->default_charlist = 
     gnome_config_get_string("charpick/deflist=байнсуЅ©");
-
+#endif
+  curr_data.properties->follow_panel_size = TRUE;
+  curr_data.properties->min_cells = 8;
+  curr_data.properties->rows = 2;
+  curr_data.properties->cols = 4;
+  curr_data.properties->size = 22;
+  curr_data.properties->default_charlist = g_strdup ("байнсуЅ©");
+  
   /* sanity check the properties read from config */
   if (curr_data.properties->rows < 1)
   {
@@ -51,12 +59,15 @@ void property_load (char *path, gpointer data)
     curr_data.properties->min_cells = DEFAULT_ROWS; 
   }
 
+#ifdef FIXME
   gnome_config_pop_prefix();
+#endif
   return;
 }
 
 void property_save (char *path, charpick_persistant_properties *properties)
 {
+#ifdef FIXME
   gnome_config_push_prefix(path);
   gnome_config_set_int("charpick/buttonsize", properties->size);
   gnome_config_set_int("charpick/rows", properties->rows);
@@ -68,6 +79,7 @@ void property_save (char *path, charpick_persistant_properties *properties)
   		          properties->default_charlist);
   gnome_config_pop_prefix();
   gnome_config_sync();
+#endif
 }
 
 static void update_spin_cb( GtkWidget *spin, gint *data)
@@ -101,8 +113,10 @@ static void property_apply_cb (GtkWidget *widget, void *data)
   curr_data.properties->size = temp_properties.size;
   curr_data.properties->default_charlist = 
     g_strdup(temp_properties.default_charlist);
+#ifdef FIXME
   applet_widget_sync_config(APPLET_WIDGET(curr_data.applet));
   /* set applet to applied state */
+#endif
   curr_data.charlist = curr_data.properties->default_charlist;
   build_table(&curr_data);
   return;
@@ -295,14 +309,15 @@ static void default_chars_frame_create(void)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
+#ifdef FIXME
 	GnomeHelpMenuEntry help_entry = { "charpick_applet",
                                           "index.html#CHARPICKAPPLET-PREFS" };
 	gnome_help_display(NULL, &help_entry);
+#endif
 }
 
-
 void
-property_show(AppletWidget *applet, gpointer data)
+property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
   temp_properties.default_charlist = 
     g_strdup(curr_data.properties->default_charlist);

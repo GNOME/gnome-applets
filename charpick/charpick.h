@@ -2,7 +2,8 @@
 
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
+
 #define CHARPICK_VERSION "0.05"
 #define NO_LAST_INDEX -1
 #define DEFAULT_ROWS 2
@@ -64,7 +65,7 @@ void start_callback_update();
 void build_table(charpick_data *curr_data);
 void property_load(char *path, gpointer data);
 void property_save(char *path, charpick_persistant_properties *properties);
-void property_show(AppletWidget *applet, gpointer data);
+void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 
 
 
