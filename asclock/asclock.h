@@ -189,7 +189,7 @@ extern char *sec_map;
 
 /********** asclock.c ****************/
 void load_pixmaps(GtkWidget *window, GtkStyle *style);
-void set_clock_pixmap();
+void set_clock_pixmap(void);
 
 /************ draw.c ******************/
 void analog(asclock *my, GdkPixmap *p, GdkGC *gc, struct tm *clk);
@@ -198,11 +198,11 @@ void Twelve(asclock *my, GdkPixmap *p, GdkGC *gc , struct tm *clk);
 void TwentyFour(asclock *my, GdkPixmap *p, GdkGC *gc , struct tm *clk);
 
 /********** config.c ****************/
-void init_symbols();
-void config();
+void init_symbols(void);
+void config(void);
 void parseArgs(asclock *my, int argc, char **argv);
 int loadTheme(char *themesdir);
-void postconfig();
+void postconfig(void);
 
 /********** rot.c *******************/
 void rotate(GdkImage *img, char *map, int center_x, int center_y, int rot_x, int rot_y, double alpha);
@@ -225,14 +225,9 @@ void get_gnome_config(asclock *my, char *configpath);
 int read_init(FILE *f);
 int read_type(int *type);
 int read_token(char *str, int max);
-int read_assign();
+int read_assign(void);
 int read_int(int *ret);
-int read_semicolon();
+int read_semicolon(void);
 
 #endif /* ASCLOCK_H */
-
-
-
-
-
 

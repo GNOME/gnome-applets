@@ -60,18 +60,18 @@ gint visual_depth=0;
 
 /* when invoked (via signal delete_event), terminates the application.
  */
-void close_application( GtkWidget *widget, GdkEvent *event, gpointer *data ) {
+static void close_application( GtkWidget *widget, GdkEvent *event, gpointer *data ) {
     gtk_main_quit();
 }
 
-void fail2load(char *filename)
+static void fail2load(char *filename)
 {
   perror(filename);
   exit(-1);
 
 }
 
-void fail2display(char *pointer)
+static void fail2display(char *pointer)
 {
   fprintf(stderr, "The %s pointer's origin must completely reside inside xpm\n", pointer);
   exit(-1);
@@ -303,7 +303,7 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
     
       }      
 
-int mytime()
+static int mytime()
 {
   struct timeval tv;
   struct timezone tz;
@@ -313,7 +313,7 @@ int mytime()
   return tv.tv_sec;
 }
 
-gint update_clock(gpointer data)
+static gint update_clock(gpointer data)
 {
   time_t unix_now;
   asclock *my;
@@ -363,7 +363,7 @@ gint update_clock(gpointer data)
   return 1;
 }
 
-asclock my;
+static asclock my;
 
 void set_clock_pixmap()
 {
@@ -435,7 +435,7 @@ int main( int argc, char *argv[] )
        the application */
 #ifdef ASCLOCK_GNOME
 
-   applet_widget_init("asclock_applet", VERSION, argc, argv,
+   applet_widget_init("asclock_applet", ASCLOCK_VERSION, argc, argv,
                                  NULL, 0, NULL);
    { char *
    goad_id = (char *)goad_server_activation_id();
@@ -453,7 +453,7 @@ int main( int argc, char *argv[] )
     parseArgs(&my, argc, argv);
     gtk_init( &argc, &argv );
     window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
-    gtk_window_set_title (GTK_WINDOW (window), VERSION);
+    gtk_window_set_title (GTK_WINDOW (window), ASCLOCK_VERSION);
 
     gtk_signal_connect( GTK_OBJECT (window), "delete_event",
                         GTK_SIGNAL_FUNC (close_application), NULL );

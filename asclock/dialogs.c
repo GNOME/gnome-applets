@@ -15,7 +15,7 @@ void about_dialog(AppletWidget *applet, gpointer data)
                 };
 
   about = gnome_about_new (_("ASClock"), 
-			VERSION,
+			ASCLOCK_VERSION,
                         "(C) 1998 the Free Software Foundation",
                         authors,
                         _("Who said NeXT is dead?"),
@@ -26,7 +26,7 @@ void about_dialog(AppletWidget *applet, gpointer data)
         return;
 }
 
-GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, char *timezone, float lat, float lon)
+static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, char *timezone, float lat, float lon)
 {
   GdkPixmap *pmap;
   GdkBitmap * mask;
@@ -71,7 +71,7 @@ GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, c
   return NULL;
 }
 
-void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
+static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
 {
   gchar *line;
   GtkStyle *style;
@@ -89,7 +89,7 @@ void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButton *even
   
 }
 
-void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
+static void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
 {
   location *my;
   gchar *line;
@@ -106,7 +106,7 @@ void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *e
 }
 
 static asclock *static_my_asclock;
-void dialog_clicked_cb(GnomeDialog * dialog, gint button_number, 
+static void dialog_clicked_cb(GnomeDialog * dialog, gint button_number, 
 		       gpointer data)
 {
   char cmd[1024];
@@ -127,7 +127,7 @@ void dialog_clicked_cb(GnomeDialog * dialog, gint button_number,
   gnome_dialog_close(dialog);
 }
          
-int property_apply_cb(AppletWidget *applet, gpointer data)
+static int property_apply_cb(AppletWidget *applet, gpointer data)
 {
 
   if(static_my_asclock->timezone_changed) {
@@ -163,7 +163,7 @@ int property_apply_cb(AppletWidget *applet, gpointer data)
   return FALSE;
 }
 
-int property_close_cb(AppletWidget *applet, gpointer data)
+static int property_close_cb(AppletWidget *applet, gpointer data)
 {
   asclock *my_asclock = (asclock *)data;
 

@@ -132,7 +132,7 @@ int beats_y;
 int beats_elem_width;
 int beats_elem_height;
 
-void init_symbols() 
+void init_symbols(void) 
 {
 
  led_visible=0;
@@ -207,7 +207,7 @@ void init_symbols()
 
 #define PROPAGATE(from,to,inc) if((to == UNDEFINED) && (from != UNDEFINED)) { to = from + inc; }
 
-void postconfig()
+void postconfig(void)
 {
 
     if(analog_visible==VISIBLE) {

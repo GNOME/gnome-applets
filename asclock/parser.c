@@ -5,7 +5,7 @@
 static char next;
 static FILE *file;
 
-static void buferr()
+static void buferr(void)
 {
   fprintf(stderr, "please do not enter numbers bigger than the number of atoms in the universe. thanks\n");
   exit(-1);
@@ -72,7 +72,7 @@ int read_token(char *str, int max)
   return TRUE;
 }
 
-int read_assign() 
+int read_assign(void) 
 {
 
   while(next!='=')
@@ -106,7 +106,7 @@ int read_int(int *ret)
   return TRUE;
 }
 
-int read_semicolon() 
+int read_semicolon(void) 
 {
 
   while(next!=';')

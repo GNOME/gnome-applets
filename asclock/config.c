@@ -2,7 +2,7 @@
 
 /* load the variables from a predefined theme ****************************************/
 
-void config ()
+void config (void)
 {
   init_symbols();
 #include "default_theme/config"
@@ -32,7 +32,7 @@ char *themes_directories[] = {
   NULL
 };
 
-void usage(char *ProgName)
+static void usage(char *ProgName)
 {
   char **cpp;
   DIR *dfd;
@@ -67,7 +67,7 @@ void usage(char *ProgName)
   exit(1);
 }
 
-int findTheme(char*input, char *ret)
+static int findTheme(char*input, char *ret)
 {
   char **dir;
   DIR *d;
@@ -144,13 +144,13 @@ int loadTheme(char *themesdir)
 	exit(-1);
       } 
 
-      if(!read_assign(f))
+      if(!read_assign())
 	printf("read_assign failed\n");
       
       if(!read_int(s->addr))
 	printf("read_int failed\n");
       
-      if(!read_semicolon(f))
+      if(!read_semicolon())
 	printf("read_semicolon failed\n");
     }
 
@@ -207,12 +207,12 @@ void parseArgs(asclock *my, int argc, char **argv)
       switch(arg[1]) {
 
       case 'v':
-	printf("%s: Version ASClock %s\n", argv[0], VERSION);
+	printf("%s: Version ASClock %s\n", argv[0], ASCLOCK_VERSION);
         exit(0);
       case '-':
         if(strncmp(arg+2, "version", 7)==0)
         {
-          printf("%s: Version %s\n", argv[0], VERSION);
+          printf("%s: Version %s\n", argv[0], ASCLOCK_VERSION);
           exit(0);
 	}
 	/* FALLTHROUGH */

@@ -34,7 +34,7 @@ match_color (int red, int green, int blue)
 
 
 
-void get_pixel(int x, int y, int *r, int *g, int *b)
+static void get_pixel(int x, int y, int *r, int *g, int *b)
 {
   guint32 pixel;
 
@@ -54,7 +54,7 @@ void get_pixel(int x, int y, int *r, int *g, int *b)
     
 }
 
-void set_pixel(int x, int y, double weight, int r, int g, int b)
+static void set_pixel(int x, int y, double weight, int r, int g, int b)
 {
   guint32 old, pixel;
   int or, og, ob;
@@ -96,7 +96,7 @@ void set_pixel(int x, int y, double weight, int r, int g, int b)
 void rotate(GdkImage *img, char *map, int center_x, int center_y, int rot_x, int rot_y, double alpha)
 {
   int left, right, bottom, top;
-  int done, miss, missed;
+  int done, miss, missed=0;
   int goup;
   int goleft;
 
