@@ -1317,7 +1317,7 @@ mailbox_properties_page(MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 
-	control_hbox = gtk_hbox_new(FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
 
@@ -1370,9 +1370,9 @@ mailbox_properties_page(MailCheck *mc)
 	gtk_option_menu_set_history(GTK_OPTION_MENU(l), mc->mailbox_type_temp = mc->mailbox_type);
 	gtk_widget_show(l);
   
-	gtk_box_pack_start (GTK_BOX (control_hbox), l, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (control_hbox), l, TRUE, TRUE, 0);
 
-	control_hbox = gtk_hbox_new (FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
 
@@ -1394,7 +1394,7 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "changed",
 			   G_CALLBACK(mail_file_changed), mc);
 
-	control_hbox = gtk_hbox_new (FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
   
@@ -1417,7 +1417,7 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "changed",
 			   G_CALLBACK(remote_server_changed), mc);
 	
-	control_hbox = gtk_hbox_new (FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
   
@@ -1441,7 +1441,7 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "changed",
 			   G_CALLBACK(remote_username_changed), mc);
 
-	control_hbox = gtk_hbox_new (FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
 
@@ -1465,7 +1465,7 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "changed",
                      G_CALLBACK(remote_password_changed), mc);
 
-	control_hbox = gtk_hbox_new (FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);  
 
@@ -1537,11 +1537,11 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
 
-	control_hbox = gtk_hbox_new (FALSE, 6);
+	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show(control_hbox);
 
-	check_box = l = gtk_check_button_new_with_mnemonic (_("Check for mail _every"));
+	check_box = l = gtk_check_button_new_with_mnemonic (_("Check for mail _every:"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->auto_update);
 	g_signal_connect(G_OBJECT(l), "toggled",
 			 G_CALLBACK(auto_update_toggled), mc);
@@ -1594,7 +1594,7 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_widget_show(l);
 	gtk_box_pack_start(GTK_BOX (control_vbox), l, TRUE, TRUE, 0);
 
-	hbox = gtk_hbox_new (FALSE, 6);
+	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 
@@ -1634,7 +1634,7 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_widget_show (control_vbox);
 
 	table = gtk_table_new (3, 2, FALSE);
-	gtk_table_set_col_spacings (GTK_TABLE (table), 6);
+	gtk_table_set_col_spacings (GTK_TABLE (table), 12);
 	gtk_table_set_row_spacings (GTK_TABLE (table), 6);
 	gtk_container_set_border_width (GTK_CONTAINER (table), 0);
 	gtk_widget_show(table);
@@ -1791,12 +1791,14 @@ mailcheck_properties (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbna
 	gtk_window_set_screen (GTK_WINDOW (mc->property_window), 
 			       gtk_widget_get_screen (GTK_WIDGET (mc->property_window)));
 	gtk_dialog_set_default_response (GTK_DIALOG (mc->property_window), GTK_RESPONSE_CLOSE);
+	gtk_dialog_set_has_separator (GTK_DIALOG (mc->property_window), FALSE);
 	gnome_window_icon_set_from_file (GTK_WINDOW (mc->property_window),
 					 GNOME_ICONDIR"/gnome-mailcheck.png");
 	gtk_window_set_screen (GTK_WINDOW (mc->property_window),
 			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
 	
 	notebook = gtk_notebook_new ();
+	gtk_container_set_border_width (GTK_CONTAINER (notebook), 12);
 	gtk_widget_show (notebook);
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mc->property_window)->vbox), notebook,
 			    TRUE, TRUE, 0);
