@@ -1,14 +1,10 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
-/* File: prop.c
- * Purpose: GNOME Keyboard switcher property box
+/* File: prop-map.c
+ * Purpose: GNOME Keyboard switcher keyprop editor property box
  *
  * Copyright (C) 1998-2000 Free Software Foundation
  * Authors: Szabolcs BAN <shooby@gnome.hu>
  *          Chema Celorio <chema@celorio.com>
- *
- * Some of functions came from Helixcode's keyboard grabbing sections.
- * Other functions, ideas stolen from other applets, for example
- * from the fish applet, Wanda.
  *
  * Thanks for aid of George Lebl <jirka@5z.com> and solidarity
  * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>
@@ -48,108 +44,56 @@ struct _GkbMapDialogInfo
   GkbPropertyBoxInfo *pbi;
   GkbKeymap *keymap;
   GtkWidget *dialog;
-  gboolean changed;
 
   /* Buttons */
-  GtkWidget *ok_button;
-  GtkWidget *apply_button;
   GtkWidget *close_button;
   GtkWidget *help_button;
 
   /* Entries */
   GtkWidget *name_entry;
   GtkWidget *label_entry;
-  GtkWidget *language_entry;
-  GtkWidget *country_entry;
-  GtkWidget *codepage_entry;
-  GtkWidget *type_entry;
-  GtkWidget *arch_entry;
   GtkWidget *command_entry;
-
-  GtkWidget *icon_entry;
+  GtkWidget *flag_entry;
 
 };
 
-
-
-
 /**
- * gkb_prop_map_apply_clicked:
+ * gkb_prop_map_close_clicked:
  * @mdi: 
  * 
- * Update the selected keymap settings when the apply button is clicked
- **/
-static void
-gkb_prop_map_apply_clicked (GkbMapDialogInfo * mdi)
-{
-  GkbKeymap *keymap;
-
-  keymap = mdi->keymap;
-
-  gkb_keymap_free_internals (keymap);
-
-  keymap->name = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->name_entry)));
-  keymap->label =
-    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->label_entry)));
-  keymap->lang =
-    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->language_entry)));
-  keymap->country =
-    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->country_entry)));
-  keymap->codepage =
-    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->codepage_entry)));
-  keymap->type = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->type_entry)));
-  keymap->arch = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->arch_entry)));
-  keymap->command =
-    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->command_entry)));
-  keymap->flag =
-    g_strdup (g_basename
-	      (gnome_icon_entry_get_filename
-	       (GNOME_ICON_ENTRY (mdi->icon_entry))));
-
-  mdi->pbi->selected_keymap = keymap;
-
-  gkb_prop_list_reload (mdi->pbi);
-
-  gkb_apply(mdi->pbi);   
-
-  applet_save_session(mdi->pbi->gkb);
-
-  gtk_widget_set_sensitive (mdi->apply_button, FALSE);
-  mdi->changed = FALSE;
-
-}
-
-/**
- * gkb_prop_map_ok_clicked:
- * @mdi: 
- * 
- * Handle the clos button clicked event
+ * Handle the close button clicked event
  **/
 static void
 gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
 {
+  GkbKeymap *keymap;
+                                                                                
+  keymap = mdi->keymap;
+                                                                                
+  gkb_keymap_free_internals (keymap);
+                                                                                
+  keymap->name = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->name_entry)));
+  keymap->label =
+    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->label_entry)));
+  keymap->command =
+    g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->command_entry)));
+  keymap->flag =
+    g_strdup (g_basename
+              (gnome_icon_entry_get_filename
+               (GNOME_ICON_ENTRY (mdi->flag_entry))));
+                                                                                
+  mdi->pbi->selected_keymap = keymap;
+                                                                                
+  gkb_prop_list_reload (mdi->pbi);
+                                                                                
+  gkb_apply(mdi->pbi);
+                                                                                
   gtk_widget_destroy (mdi->dialog);
 
   applet_save_session(mdi->pbi->gkb);
    
   mdi->dialog = NULL;
 }
-
-
-/**
- * gkb_prop_map_ok_clicked:
- * @mdi: 
- * 
- * Handle the ok button clicked event
- **/
-static void
-gkb_prop_map_ok_clicked (GkbMapDialogInfo * mdi)
-{
-  if (mdi->changed)
-    gkb_prop_map_apply_clicked (mdi);
-  gkb_prop_map_close_clicked (mdi);
-}
-
 
 /**
  * gkb_prop_map_help_clicked:
@@ -169,191 +113,6 @@ gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 	/* FIXME: display error to the user */
 }
 
-
-/**
- * gkb_prop_map_button_clicked:
- * @widget: 
- * @dummy: 
- * 
- * Handle the button clicked event for the map dialog
- **/
-static void
-gkb_prop_map_button_clicked (GtkWidget * widget, GkbMapDialogInfo * mdi)
-{
-  if (widget == mdi->help_button)
-    gkb_prop_map_help_clicked (mdi);
-  else if (widget == mdi->apply_button)
-    gkb_prop_map_apply_clicked (mdi);
-  else if (widget == mdi->ok_button)
-    gkb_prop_map_ok_clicked (mdi);
-  else if (widget == mdi->close_button)
-    gkb_prop_map_close_clicked (mdi);
-}
-
-/**
- * gkb_prop_map_get_countries:
- * @pbi: 
- * 
- * Returns a list of const gchar pointers of the selectable countires
- * 
- * Return Value: 
- **/
-static GList *
-gkb_prop_map_get_countries (GkbPropertyBoxInfo * pbi)
-{
-  GList *list = NULL;
-
-  list = g_list_prepend (list, _("Armenia"));
-  list = g_list_prepend (list, _("Australia"));
-  list = g_list_prepend (list, _("Austria"));
-  list = g_list_prepend (list, _("Belgium"));
-  list = g_list_prepend (list, _("Brazil"));
-  list = g_list_prepend (list, _("Bulgaria"));
-  list = g_list_prepend (list, _("Canada"));
-  list = g_list_prepend (list, _("Caribic"));
-  list = g_list_prepend (list, _("France"));
-  list = g_list_prepend (list, _("Georgia"));
-  list = g_list_prepend (list, _("Germany"));
-  list = g_list_prepend (list, _("Great Britain"));
-  list = g_list_prepend (list, _("Greece"));
-  list = g_list_prepend (list, _("Hungary"));
-  list = g_list_prepend (list, _("Jamaica"));
-  list = g_list_prepend (list, _("New Zealand"));
-  list = g_list_prepend (list, _("Norway"));
-  list = g_list_prepend (list, _("Poland"));
-  list = g_list_prepend (list, _("Portugal"));
-  list = g_list_prepend (list, _("Russia"));
-  list = g_list_prepend (list, _("Slovak Republic"));
-  list = g_list_prepend (list, _("Slovenia"));
-  list = g_list_prepend (list, _("South Africa"));
-  list = g_list_prepend (list, _("Spain"));
-  list = g_list_prepend (list, _("Sweden"));
-  list = g_list_prepend (list, _("Switzerland"));
-  list = g_list_prepend (list, _("Thailand"));
-  list = g_list_prepend (list, _("Turkey"));
-  list = g_list_prepend (list, _("United Kingdom"));
-  list = g_list_prepend (list, _("United States"));
-  list = g_list_prepend (list, _("Yugoslavia"));
-
-  return g_list_reverse (list);
-}
-
-
-
-/**
- * gkb_prop_map_get_languages:
- * @pbi: 
- * 
- * Returns a list of const gchar pointers of the selectable languages
- * 
- * Return Value: 
- **/
-static GList *
-gkb_prop_map_get_languages (GkbPropertyBoxInfo * pbi)
-{
-  GList *list = NULL;
-
-  list = g_list_prepend (list, _("Armenian"));
-  list = g_list_prepend (list, _("Basque"));
-  list = g_list_prepend (list, _("Bulgarian"));
-  list = g_list_prepend (list, _("Dutch"));
-  list = g_list_prepend (list, _("English"));
-  list = g_list_prepend (list, _("French"));
-  list = g_list_prepend (list, _("Georgian"));
-  list = g_list_prepend (list, _("German"));
-  list = g_list_prepend (list, _("Greek"));
-  list = g_list_prepend (list, _("Hungarian"));
-  list = g_list_prepend (list, _("Norwegian"));
-  list = g_list_prepend (list, _("Polish"));
-  list = g_list_prepend (list, _("Portuguese"));
-  list = g_list_prepend (list, _("Russian"));
-  list = g_list_prepend (list, _("Slovak"));
-  list = g_list_prepend (list, _("Slovenian"));
-  list = g_list_prepend (list, _("Swedish"));
-  list = g_list_prepend (list, _("Thai"));
-  list = g_list_prepend (list, _("Turkish"));
-  list = g_list_prepend (list, _("Wallon"));
-  list = g_list_prepend (list, _("Yugoslavian"));
-
-  return g_list_reverse (list);
-}
-
-/**
- * gkb_prop_map_get_types:
- * @pbi: 
- * 
- * Returns a list of const gchar pointers of the selectable keyboar types
- * 
- * Return Value: 
- **/
-static GList *
-gkb_prop_map_get_types (GkbPropertyBoxInfo * pbi)
-{
-  GList *list = NULL;
-
-  list = g_list_prepend (list, _("105"));
-  list = g_list_prepend (list, _("101"));
-  list = g_list_prepend (list, _("102"));
-  list = g_list_prepend (list, _("450"));
-  list = g_list_prepend (list, _("84"));
-  list = g_list_prepend (list, _("mklinux"));
-  list = g_list_prepend (list, _("type5"));
-
-  return g_list_reverse (list);
-}
-
-
-/**
- * gkb_prop_map_get_codepages:
- * @pbi: 
- * 
- *
- * Returns a list of const gchar pointers of the selectable codepagess
- * 
- * Return Value: 
- **/
-static GList *
-gkb_prop_map_get_codepages (GkbPropertyBoxInfo * pbi)
-{
-  GList *list = NULL;
-
-  list = g_list_prepend (list, _("iso-8859-1"));
-  list = g_list_prepend (list, _("iso-8859-2"));
-  list = g_list_prepend (list, _("iso-8859-7"));
-  list = g_list_prepend (list, _("iso-8859-9"));
-  list = g_list_prepend (list, _("am-armscii8"));
-  list = g_list_prepend (list, _("be-latin1"));
-  list = g_list_prepend (list, _("cp1251"));
-  list = g_list_prepend (list, _("georgian-academy"));
-  list = g_list_prepend (list, _("koi8-r"));
-  list = g_list_prepend (list, _("tis620"));
-
-  return g_list_reverse (list);
-}
-
-/**
- * gkb_prop_map_get_arquitectures:
- * @pbi: 
- * 
- * Returns a list of const gchar pointers of the selectable arquitectures
- * 
- * Return Value: 
- **/
-static GList *
-gkb_prop_map_get_arquitectures (GkbPropertyBoxInfo * pbi)
-{
-  GList *list = NULL;
-
-  list = g_list_prepend (list, _("ix86"));
-  list = g_list_prepend (list, _("Sun"));
-  list = g_list_prepend (list, _("mac"));
-  list = g_list_prepend (list, _("sgi"));
-  list = g_list_prepend (list, _("dec"));
-  list = g_list_prepend (list, _("ibm"));
-
-  return g_list_reverse (list);
-}
-
 /**
  * gkb_prop_map_label_at:
  * @table: 
@@ -367,8 +126,6 @@ static void
 gkb_prop_map_label_at (GtkWidget * table, gint row, gint col,
 		       const gchar * label_text)
 {
-  /*GtkWidget *label;*/
-
   label_prop_map = gtk_label_new_with_mnemonic (label_text);
   gtk_table_attach (GTK_TABLE (table), label_prop_map,
 		    row, row + 1, col, col + 1,
@@ -376,53 +133,6 @@ gkb_prop_map_label_at (GtkWidget * table, gint row, gint col,
 		    (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (label_prop_map), GTK_JUSTIFY_RIGHT);
   gtk_misc_set_alignment (GTK_MISC (label_prop_map), 1, 0.5);
-}
-
-/**
- * gkb_prop_map_load_stock_button:
- * @stock_button: 
- * @container: 
- * 
- * Load a stock buttin
- * 
- * Return Value: The newly created button, NULL on error
- **/
-static GtkWidget *
-gkb_prop_map_load_stock_button (const gchar * stock_button,
-				GtkContainer * container,
-				GkbMapDialogInfo * mdi)
-{
-  GtkWidget *button;
-
-  button = gtk_button_new_from_stock (stock_button);
-
-  g_signal_connect (button, "clicked",
-		      G_CALLBACK (gkb_prop_map_button_clicked), mdi);
-
-  gtk_container_add (GTK_CONTAINER (container), button);
-  GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
-
-  return button;
-}
-
-
-
-/**
- * gkb_prop_map_data_changed:
- * @mdi: 
- * 
- * Call whenever data is changed so that we can update the apply
- * button sensitivity
- **/
-static void
-gkb_prop_map_data_changed (GtkWidget * unused, GkbMapDialogInfo * mdi)
-{
-  if (mdi->changed)
-    return;
-
-  mdi->changed = TRUE;
-
-  gtk_widget_set_sensitive (mdi->apply_button, TRUE);
 }
 
 /**
@@ -451,9 +161,6 @@ gkb_prop_map_entry_at (GtkWidget * table, gint row, gint col,
 		    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
 		    (GtkAttachOptions) (0), 0, 0);
 
-  g_signal_connect (entry, "changed",
-		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
-  
   gtk_label_set_mnemonic_widget( GTK_LABEL(label_prop_map), entry);
   if (gail_loaded)
     {
@@ -462,112 +169,34 @@ gkb_prop_map_entry_at (GtkWidget * table, gint row, gint col,
   return entry;
 }
 
-/**
- * gkb_prop_map_combo_at:
- * @table: 
- * @row: 
- * @col: 
- * @list: 
- * @text: 
- * 
- * Create a combo menu item and add it to a table in a specifid location
- * 
- * Return Value: 
- **/
-static GtkWidget *
-gkb_prop_map_combo_at (GtkWidget * table, gint row, gint col,
-		       GList * list, GkbMapDialogInfo * mdi,
-		       const gchar * text)
+static void
+window_response (GtkWidget *w, int response, gpointer data)
 {
-  GtkWidget *combo;
-  GtkWidget *entry;
-
-  combo = gtk_combo_new ();
-
-  gtk_table_attach (GTK_TABLE (table), combo,
-		    row, row + 1, col, col + 1,
-		    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
-		    (GtkAttachOptions) (0), 0, 0);
-
-  gtk_combo_set_popdown_strings (GTK_COMBO (combo), list);
-
-  entry = GTK_COMBO (combo)->entry;
-
-  if (text)
-    gtk_entry_set_text (GTK_ENTRY (entry), text);
-
-  g_signal_connect (entry, "changed",
-		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
-
-  gtk_label_set_mnemonic_widget(GTK_LABEL(label_prop_map), entry); 
-  if (gail_loaded)
-    {
-      add_atk_relation(combo, label_prop_map, ATK_RELATION_LABELLED_BY);
-    }
-  return entry;
-}
-
-/**
- * gkb_prop_map_pixmap_at:
- * @table: 
- * @row: 
- * @col: 
- * @flag: 
- * 
- * Load a pixmap and add it to a label at a specified position
- **/
-static GtkWidget *
-gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
-			GkbMapDialogInfo * mdi, const gchar * flag)
-{
-  GtkWidget *icon_entry;
-  icon_entry = gnome_icon_entry_new (NULL, NULL);
-
-  gnome_icon_entry_set_pixmap_subdir (GNOME_ICON_ENTRY (icon_entry), "gkb");
-
-  gtk_table_attach (GTK_TABLE (table), icon_entry,
-		    row, row + 1, col, col + 1,
-		    (GtkAttachOptions) (GTK_FILL),
-		    (GtkAttachOptions) (GTK_FILL), 0, 0);
-
-  gnome_icon_entry_set_filename (GNOME_ICON_ENTRY (icon_entry), flag);
-
-  g_signal_connect (icon_entry,
-		      "changed", G_CALLBACK (gkb_prop_map_data_changed),
-		      mdi);
-  
-  gtk_label_set_mnemonic_widget(GTK_LABEL(label_prop_map), icon_entry); 
-  if (gail_loaded)
-  {
-    add_atk_relation(icon_entry, label_prop_map, ATK_RELATION_LABELLED_BY);
+  GkbMapDialogInfo * mdi = data;
+  if (response == GTK_RESPONSE_HELP)
+    gkb_prop_map_help_clicked (mdi);
+  else {
+   gkb_prop_map_close_clicked (mdi);
   }
-  return icon_entry;
 }
 
-
 /**
- * gkb_prop_map_edit:
- * @pbi: 
- * 
- * Implement the map edit dialog
- **/
+* gkb_prop_map_edit:
+* @pbi:
+*
+* Implement the map edit dialog
+**/
 void
 gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
 {
   GkbMapDialogInfo *mdi;
-  GtkContainer *button_box;
-  GkbKeymap *keymap;
-  GtkWidget *dialog;
-  GtkWidget *left_table;
-  GtkWidget *right_table;
-  GtkWidget *vseparator;
-  GtkWidget *entry;
-  GtkWidget *label;
-  GtkWidget *hbox1;
   GtkWidget *vbox2;
-  GtkWidget *vbox3;
-  GtkWidget *hseparator1;
-  GList *list;
+  GtkWidget *table1;
+  GtkWidget *hbox1;
+  GtkWidget *label4;
+  GtkWidget *frame1;
+  GtkWidget *label5;
+  GkbKeymap *keymap;
 
   if (pbi->selected_keymap == NULL)
     {
@@ -578,128 +207,88 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   mdi = g_new0 (GkbMapDialogInfo, 1);
   mdi->pbi = pbi;
   mdi->keymap = pbi->selected_keymap;
-  mdi->changed = FALSE;
 
   keymap = pbi->selected_keymap;
 
-  dialog = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  mdi->dialog = dialog;
-  gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
-  gtk_window_set_screen (GTK_WINDOW (dialog),
-			 gtk_widget_get_screen (pbi->gkb->applet));
-  gtk_object_set_data (GTK_OBJECT (dialog), "mapedit", dialog);
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Edit Keyboard"));
+  mdi->dialog = gtk_dialog_new_with_buttons (_("Edit Keyboard"), NULL,
+  				GTK_DIALOG_DESTROY_WITH_PARENT,
+  				GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+  				GTK_STOCK_OK, GTK_RESPONSE_OK,
+  				NULL);
+
+  gtk_window_set_modal (GTK_WINDOW (mdi->dialog), TRUE);
 
   vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (dialog), vbox2);
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mdi->dialog)->vbox), vbox2,
+                        TRUE, TRUE, 0);
+
+  table1 = gtk_table_new (3, 2, FALSE);
+  gtk_box_pack_start (GTK_BOX (vbox2), table1, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (table1), 3);
+  gtk_table_set_row_spacings (GTK_TABLE (table1), 3);
+  gtk_table_set_col_spacings (GTK_TABLE (table1), 3);
+
+  gkb_prop_map_label_at (table1, 0, 0, _("_Name:"));
+  mdi->name_entry = gkb_prop_map_entry_at (table1, 1, 0, mdi, keymap->name);
+
+  gkb_prop_map_label_at (table1, 0, 1, _("_Label:"));
+  mdi->label_entry = gkb_prop_map_entry_at (table1, 1, 1, mdi, keymap->label);
+
+  gkb_prop_map_label_at (table1, 0, 2, _("Co_mmand:"));
+  mdi->command_entry = gkb_prop_map_entry_at (table1, 1, 2, mdi, keymap->command);
+
+  gtk_widget_show_all (table1);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (vbox2), hbox1, TRUE, TRUE, 0);
-  vseparator = gtk_vseparator_new ();
-  gtk_box_pack_start (GTK_BOX (hbox1), vseparator, TRUE, TRUE, 0);
 
-  /* Create the right table */
-  right_table = gtk_table_new (5, 2, FALSE);
-  gtk_box_pack_start (GTK_BOX (hbox1), right_table, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (right_table), 5);
-  gtk_table_set_row_spacings (GTK_TABLE (right_table), 8);
-  gtk_table_set_col_spacings (GTK_TABLE (right_table), 5);
+  label4 = gtk_label_new (_("Where command can be:\n * xmodmap /full/path/xmodmap.hu\n * gkb_xmmap hu\n * setxkbmap hu"));
+  gtk_widget_show (label4);
+  gtk_box_pack_start (GTK_BOX (hbox1), label4, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label4), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_padding (GTK_MISC (label4), 5, 0);
 
-  /* Create the left table */
-  vbox3 = gtk_vbox_new (FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (hbox1), vbox3, TRUE, TRUE, 0);
+  if (gail_loaded)
+   {
+     add_atk_relation(label4, mdi->command_entry, ATK_RELATION_LABEL_FOR);
+     add_atk_relation(mdi->command_entry, label4, ATK_RELATION_LABELLED_BY);
+   }
 
-  left_table = gtk_table_new (4, 2, FALSE);
-  gtk_box_pack_start (GTK_BOX (vbox3), left_table, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (left_table), 5);
-  gtk_table_set_row_spacings (GTK_TABLE (left_table), 8);
-  gtk_table_set_col_spacings (GTK_TABLE (left_table), 5);
+  frame1 = gtk_frame_new (NULL);
+  gtk_widget_show (frame1);
+  gtk_box_pack_start (GTK_BOX (hbox1), frame1, TRUE, TRUE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (frame1), 3);
 
-  /* Add the labels  and entries/combos/icon_entry */
-  gkb_prop_map_label_at (right_table, 0, 0, _("_Name:"));
-  mdi->name_entry =
-    gkb_prop_map_entry_at (right_table, 1, 0, mdi, keymap->name);
+  mdi->flag_entry = gnome_icon_entry_new (NULL, NULL);
+  gnome_icon_entry_set_pixmap_subdir (GNOME_ICON_ENTRY (mdi->flag_entry), "gkb");
 
-  gkb_prop_map_label_at (right_table, 0, 1, _("_Label:"));
-  mdi->label_entry =
-    gkb_prop_map_entry_at (right_table, 1, 1, mdi, keymap->label);
+  gtk_widget_show (mdi->flag_entry);
+  gtk_container_add (GTK_CONTAINER (frame1), mdi->flag_entry);
+  gtk_container_set_border_width (GTK_CONTAINER (mdi->flag_entry), 5);
 
-  gkb_prop_map_label_at (right_table, 0, 2, _("Lan_guage:"));
-  list = gkb_prop_map_get_languages (pbi);
-  entry = gkb_prop_map_combo_at (right_table, 1, 2, list, mdi, keymap->lang);
-  mdi->language_entry = entry;
-  g_list_free (list);
+  gnome_icon_entry_set_filename (GNOME_ICON_ENTRY (mdi->flag_entry), keymap->flag);
+  
+  if (gail_loaded)
+   {
+      add_atk_relation(mdi->flag_entry, label_prop_map, ATK_RELATION_LABELLED_BY);
+      add_atk_relation(label_prop_map, mdi->flag_entry, ATK_RELATION_LABEL_FOR);
+   }
+                                                              
 
-  gkb_prop_map_label_at (right_table, 0, 3, _("Count_ry:"));
-  list = gkb_prop_map_get_countries (pbi);
-  entry =
-    gkb_prop_map_combo_at (right_table, 1, 3, list, mdi, keymap->country);
-  mdi->country_entry = entry;
-  g_list_free (list);
+  label5 = gtk_label_new_with_mnemonic (_("_Flag"));
+  gtk_widget_show (label5);
+  gtk_frame_set_label_widget (GTK_FRAME (frame1), label5);
+  gtk_label_set_justify (GTK_LABEL (label5), GTK_JUSTIFY_LEFT);
 
-  gkb_prop_map_label_at (right_table, 0, 4, _("_Flag\nPixmap:"));
-  mdi->icon_entry =
-    gkb_prop_map_pixmap_at (right_table, 1, 4, mdi, keymap->flag);
+  g_signal_connect (G_OBJECT (mdi->dialog), "response",
+                    G_CALLBACK (window_response),
+                    mdi);
 
-  gkb_prop_map_label_at (left_table, 0, 0, _("Arch_itecture:"));
-  list = gkb_prop_map_get_arquitectures (pbi),
-    entry = gkb_prop_map_combo_at (left_table, 1, 0, list, mdi, keymap->arch);
-  mdi->arch_entry = entry;
-  g_list_free (list);
+  gtk_widget_show_all (hbox1);
 
-  gkb_prop_map_label_at (left_table, 0, 1, _("_Type:"));
-  list = gkb_prop_map_get_types (pbi);
-  entry = gkb_prop_map_combo_at (left_table, 1, 1, list, mdi, keymap->type);
-  mdi->type_entry = entry;
-  g_list_free (list);
-
-  gkb_prop_map_label_at (left_table, 0, 2, _("Code_page:"));
-  list = gkb_prop_map_get_codepages (pbi);
-  entry =
-    gkb_prop_map_combo_at (left_table, 1, 2, list, mdi, keymap->codepage);
-  mdi->codepage_entry = entry;
-  g_list_free (list);
-
-  gkb_prop_map_label_at (left_table, 0, 3, _("Co_mmand:"));
-  mdi->command_entry =
-    gkb_prop_map_entry_at (left_table, 1, 3, mdi, keymap->command);
-
-  /* Add the where comand can be label */
-  label = gtk_label_new ("");
-  gtk_label_parse_uline (GTK_LABEL (label),
-			 _("Where command can be:\n"
-			   "* xmodmap /full/path/xmodmap.hu\n"
-			   "* gkb__xmmap hu\n" "* setxkbmap hu"));
-  gtk_box_pack_start (GTK_BOX (vbox3), label, FALSE, FALSE, 0);
-  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-
- if (gail_loaded)
-  {
-    add_atk_relation(label, mdi->command_entry, ATK_RELATION_LABEL_FOR);
-    add_atk_relation(mdi->command_entry, label, ATK_RELATION_LABELLED_BY);
-  }
-  /* Load buttons */
-  hseparator1 = gtk_hseparator_new ();
-  gtk_box_pack_start (GTK_BOX (vbox2), hseparator1, TRUE, TRUE, 0);
-
-  button_box = GTK_CONTAINER (gtk_hbutton_box_new ());
-  gtk_box_pack_start (GTK_BOX (vbox2), GTK_WIDGET (button_box), TRUE, TRUE,
-		      0);
-  mdi->help_button =
-    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_HELP, button_box, mdi);
-  mdi->apply_button =
-    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_APPLY, button_box,
-				    mdi);
-  mdi->close_button =
-    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_CLOSE, button_box,
-				    mdi);
-  mdi->ok_button =
-    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_OK, button_box, mdi);
-
-  gtk_widget_set_sensitive (mdi->apply_button, FALSE);
+  gtk_widget_show_all (vbox2);
 
   /* Go, go go !! */
-  gtk_widget_show_all (dialog);
+  gtk_widget_show_all (mdi->dialog);
 
-  return;
 }
