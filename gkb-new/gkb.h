@@ -2,8 +2,9 @@
 /* File: gkb.h
  * Purpose: GNOME Keyboard switcher header file
  *
- * Copyright (C) 1999 Free Software Foundation
- * Author: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
+ * Copyright (C) 1998-2000 Free Software Foundation
+ * Authors: Szabolcs Ban  <shooby@gnome.hu>
+ *          Chema Celorio <chema@celorio.com>
  *
  * Thanks for aid of George Lebl <jirka@5z.com> and solidarity
  * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>
@@ -158,5 +159,8 @@ GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
 GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
 
 void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
+
+/* keygrab.c */
+void grab_button_pressed (GtkButton *button, gpointer data);
 
 gchar * prefixdir;

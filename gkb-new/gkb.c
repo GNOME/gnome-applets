@@ -2,8 +2,9 @@
 /* File: gkb.c
  * Purpose: GNOME Keyboard switcher
  *
- * Copyright (C) 1999 Free Software Foundation
- * Author: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
+ * Copyright (C) 1998-2000 Free Software Foundation
+ * Authors: Szabolcs Ban  <shooby@gnome.hu>
+ *          Chema Celorio <chema@celorio.com>
  *
  * Thanks for aid of George Lebl <jirka@5z.com> and solidarity
  * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>

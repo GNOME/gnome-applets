@@ -1,8 +1,9 @@
 /* File: preset.c
  * Purpose: GNOME Keyboard switcher property box
  *
- * Copyright (C) 1999 Free Software Foundation
- * Author: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
+ * Copyright (C) 1998-2000 Free Software Foundation
+ * Authors: Szabolcs Ban  <shooby@gnome.hu>
+ *          Chema Celorio <chema@celorio.com>
  *
  * Some of functions came from Helixcode's keyboard grabbing sections.
  * Other functions, ideas stolen from other applets, for example

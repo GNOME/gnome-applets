@@ -2,8 +2,8 @@
 /* File: prop.c
  * Purpose: GNOME Keyboard switcher property box
  *
- * Copyright (C) 1999 Free Software Foundation
- * Authors: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
+ * Copyright (C) 1998-2000 Free Software Foundation
+ * Authors: Szabolcs BAN <shooby@gnome.hu>
  *          Chema Celorio <chema@celorio.com>
  *
  * Some of functions came from Helixcode's keyboard grabbing sections.
