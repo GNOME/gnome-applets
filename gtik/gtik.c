@@ -199,7 +199,7 @@ static void xfer_callback (GnomeVFSAsyncHandle *handle, GnomeVFSXferProgressInfo
 		if (!configured(stockdata)) {
 			reSetOutputArray(stockdata);
 			setOutputArray(stockdata,
-				       _("No data available or properties not set"));
+				       _("Could not retrieve the stock data."));
 		}
 	}
 }
@@ -231,6 +231,9 @@ static gint updateOutput(gpointer data)
 	dest_uri = gnome_vfs_uri_new(dest_text_uri);
 	dests = g_list_append(NULL, dest_uri);
 	g_free (dest_text_uri);
+	
+	reSetOutputArray(stockdata);
+	setOutputArray(stockdata,  _("Updating..."));
 
 	if (GNOME_VFS_OK !=
 	    gnome_vfs_async_xfer(&stockdata->vfshandle, sources, dests,
@@ -600,7 +603,6 @@ static gint updateOutput(gpointer data)
 
 		if (stockdata->MOVE == 1) {
 
-
 		  if (stockdata->props.scroll == TRUE) {
 			if (stockdata->location > comp) {
 				stockdata->location -= stockdata->delta;	
@@ -845,26 +847,26 @@ static gint updateOutput(gpointer data)
 		
 	}
 	
-	static gboolean width_changed (GtkWidget *spin, GdkEventFocus *event, StockData *stockdata)
+	static void width_changed (GtkSpinButton *spin, StockData *stockdata)
  	{
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
-		gint width, height;
+		gint width;
 		
 		width=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
 		if (width < 1)
-			return FALSE;
+			return;
 			
 		if (stockdata->props.width == width)
-			return FALSE;
+			return;
 			
 		stockdata->props.width = width;
 		panel_applet_gconf_set_int (applet, "width", 
 					    stockdata->props.width, NULL);
-		height = panel_applet_get_size (applet) - 4;			    
+				    
 		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
-						stockdata->props.width,height);
+						stockdata->props.width,-1);
 	
-		return FALSE;
+		return;
 	}
 	
 	static void
@@ -1432,7 +1434,7 @@ static gint updateOutput(gpointer data)
 		spin = gtk_spin_button_new_with_range (20, 500, 10);
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
 		gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), stockdata->props.width);
-		g_signal_connect (G_OBJECT (spin), "focus_out_event",
+		g_signal_connect (G_OBJECT (spin), "value_changed",
 					   G_CALLBACK (width_changed), stockdata);
 		gtk_box_pack_start (GTK_BOX (hbox3), spin, FALSE, FALSE, 0);
 		label = gtk_label_new (_("pixels"));
@@ -1567,12 +1569,12 @@ static gint updateOutput(gpointer data)
 		StockData *stockdata;
 		GtkWidget * vbox;
 		GtkWidget * frame;
-		gint height;
 
 		gnome_vfs_init();
 		
 		gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-money.png");
 		panel_applet_add_preferences (applet, "/schemas/apps/gtik/prefs", NULL);
+		panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 		
 		access_stock = stockdata = g_new0 (StockData, 1);
 		stockdata->applet = GTK_WIDGET (applet);
@@ -1610,9 +1612,8 @@ static gint updateOutput(gpointer data)
 		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 
 		access_drawing_area = stockdata->drawing_area = GTK_WIDGET (custom_drawing_area_new());
-		height = panel_applet_get_size (applet) - 4;
 		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
-						stockdata->props.width,height);
+						stockdata->props.width,-1);
 
 		gtk_widget_show(stockdata->drawing_area);
 
@@ -1774,7 +1775,7 @@ static gint updateOutput(gpointer data)
 		var4 = strtok(NULL,"");
 
 		if (!var3 || !var4)
-			return data;
+			return NULL;
 
 		if (var3[0] == '+') { 
 #if 0
@@ -1816,10 +1817,17 @@ static gint updateOutput(gpointer data)
 		pango_layout_set_text (stockdata->layout, price, -1);
 		pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
 		quote.pricelen = rect.width;
-		quote.change = g_strdup(change);
-		pango_layout_set_text (stockdata->layout, change, -1);
-		pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
-		quote.changelen = rect.width;
+		if (change) {
+			quote.change = g_strdup(change);
+			pango_layout_set_text (stockdata->layout, change, -1);
+			pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
+			quote.changelen = rect.width;
+		}
+		else {
+			quote.change = g_strdup("");
+			quote.changelen = 0;
+		}
+		
 
 #if 0
 		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
