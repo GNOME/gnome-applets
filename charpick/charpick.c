@@ -101,6 +101,24 @@ static const gunichar *chartable[] = {
 	misc_code
 };
 
+gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
+
 
 /* sets the picked character as the selection when it gets a request */
 static void
@@ -290,7 +308,8 @@ menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
 	
 	curr_data->charlist = string;
 	build_table (curr_data);
-	panel_applet_gconf_set_string (applet, "current_list", curr_data->charlist, NULL);
+	if (key_writable (applet, "current_list"))
+		panel_applet_gconf_set_string (applet, "current_list", curr_data->charlist, NULL);
 }
 
 static void
@@ -346,6 +365,8 @@ populate_menu (charpick_data *curr_data)
 	g_signal_connect (G_OBJECT (menuitem), "activate",
 				   G_CALLBACK (add_palette), curr_data);
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+	if ( ! key_writable (PANEL_APPLET (curr_data->applet), "chartable"))
+		gtk_widget_set_sensitive (menuitem, FALSE);
 	
 }
 
@@ -413,7 +434,7 @@ build_table(charpick_data *p_curr_data)
   if (p_curr_data->box)
     gtk_widget_destroy(p_curr_data->box);
     
-  if (p_curr_data->panel_vertical == TRUE)
+  if (p_curr_data->panel_vertical)
     box = gtk_vbox_new (FALSE, 0);
   else 
     box = gtk_hbox_new (FALSE, 0);
@@ -689,7 +710,8 @@ get_chartable (charpick_data *curr_data)
 			curr_data->chartable = g_list_append (curr_data->chartable, string);
 		
 		}
-		save_chartable (curr_data);
+		if ( ! key_writable (PANEL_APPLET (curr_data->applet), "chartable"))
+			save_chartable (curr_data);
 	}
 	
 
@@ -742,8 +764,7 @@ charpicker_applet_fill (PanelApplet *applet)
   
   get_chartable (curr_data);
   
-  string  = panel_applet_gconf_get_string (applet, 
-  							     "current_list", NULL);
+  string  = panel_applet_gconf_get_string (applet, "current_list", NULL);
   if (string) {
   	list = curr_data->chartable;
   	while (list) {
@@ -751,10 +772,16 @@ charpicker_applet_fill (PanelApplet *applet)
   			curr_data->charlist = list->data;
   		list = g_list_next (list);
   	}
-  	g_free (string);
-  } 
-  else
+	/* FIXME: yeah leak, but this code is full of leaks and evil
+	   point shuffling.  This should really be rewritten
+	   -George */
+	if (curr_data->charlist == NULL)
+		curr_data->charlist = string;
+	else
+		g_free (string);
+  } else {
   	curr_data->charlist = curr_data->chartable->data;  
+  }
  
   curr_data->panel_size = panel_applet_get_size (applet);
   

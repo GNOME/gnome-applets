@@ -1,6 +1,7 @@
 /* charpick.h -- header file for character picker applet */
 
 #include <gnome.h>
+#include <gconf/gconf-client.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -47,4 +48,5 @@ gchar *run_edit_dialog  (gchar *string, gchar *title);
 void set_atk_name_description (GtkWidget         *widget,
 			       const char        *name,
 			       const char        *description);
+gboolean key_writable (PanelApplet *applet, const char *key);
 

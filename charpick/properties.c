@@ -169,6 +169,8 @@ edit_palette (GtkButton *button, charpick_data *curr_data)
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
 		curr_data->charlist = new;
 		build_table (curr_data);
+		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
+			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet), "current_list", curr_data->charlist, NULL);
 	}
 	g_free (charlist);
 	
@@ -194,6 +196,8 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
 		curr_data->charlist = curr_data->chartable->data;
 		build_table (curr_data);
+		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
+			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet), "current_list", curr_data->charlist, NULL);
 	}
 	g_free (charlist);
 	
@@ -364,6 +368,9 @@ static void default_chars_frame_create(charpick_data *curr_data)
   g_object_set_data (G_OBJECT (scrolled), "delete_button", button);
   set_access_namedesc (button, _("Delete button"),
 				         _("Click to delete the selected palette"));
+
+  if ( ! key_writable (PANEL_APPLET (curr_data->applet), "chartable"))
+	  gtk_widget_set_sensitive (vbox3, FALSE);
    
   return;
 }

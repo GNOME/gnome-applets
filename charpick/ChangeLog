@@ -1,3 +1,15 @@
+Thu Jul 03 17:08:30 2003  George Lebl <jirka@5z.com>
+
+	* charpick.[ch], properties.c: key-writability fixes.  If chartable
+	  is not writable don't allow editting it/adding to it.  If the
+	  current_list is not writable still allow switching between pallets,
+	  just don't save the value for next loadup (that seems to make more
+	  sense then not allowing switching at all).  Also fix crash when
+	  you change the current pallete and then log out.  The code is
+	  a nightmare of pointer shuffling and memory leaks.
+
+	* charpick.schemas.in: fix owner of chartable, fix typo
+
 2003-06-16  Kevin Vandersloot
 
 	* properties.c: add some accesibility stuff. Also set the sensitivity of the edit/remove buttons
