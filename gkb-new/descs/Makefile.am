@@ -32,7 +32,9 @@ preset_data_predata = AM_Armenian.keyprop.in AR_Arabic.keyprop.in \
 		JP_Japanese_x.keyprop.in LA_Lao_x.keyprop.in \
 		LT_Lithuanian.keyprop.in LT_Lithuanian_x.keyprop.in \
 		LT_Prog.keyprop.in LT_Standard.keyprop.in \
-		MK_Macedonian.keyprop.in NL_Dutch_x.keyprop.in \
+		MK_Macedonian.keyprop.in MN_Mongolian.keyprop.in \
+		MN_Mongolian_x.keyprop.in MN_Mongolian_x_rev.keyprop.in \
+		MN_Mongolian_x_uni.keyprop.in NL_Dutch_x.keyprop.in \
 		NO_Norwegian.keyprop.in Norwegian.keyprop.in \
 		PL_Polish.keyprop.in PT_Portuguese.keyprop.in \
 		PT_Portuguese_x.keyprop.in Polish.keyprop.in \
