@@ -39,7 +39,7 @@ static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
 
 
 static int history_position = MC_HISTORY_LIST_LENGTH;
-static char browsed_filename[300] = "";
+static gchar *browsed_folder = NULL;
 
 static gboolean
 command_key_event (GtkEntry   *entry,
@@ -404,15 +404,17 @@ file_browser_response_signal(GtkWidget *widget, gint response, gpointer mc_data)
     gchar *filename;
 
     if (response == GTK_RESPONSE_OK) {
-        /* get selected file name */
+    
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(mc->file_select));
+        
         if (filename != NULL) {
-            strcpy(browsed_filename, (char *) filename);
+            if (browsed_folder)
+                g_free (browsed_folder);
+            
+            browsed_folder = gtk_file_chooser_get_current_folder (GTK_FILE_CHOOSER(mc->file_select));
+            
+            mc_exec_command(mc, filename);
             g_free(filename);
-            /* printf("Filename: %s\n", (char *) browsed_filename); */
-
-            /* execute command */
-            mc_exec_command(mc, browsed_filename);
        }
     }
 
@@ -447,8 +449,9 @@ mc_show_file_browser (GtkWidget *widget,
 		     mc);
 
     /* set path to last selected path */
-    /*gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(mc->file_select),
-			          (gchar *) browsed_filename);*/
+    if (browsed_folder)
+        gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER(mc->file_select),
+			          (gchar *) browsed_folder);
 
     /* Set as modal */
     gtk_window_set_modal(GTK_WINDOW(mc->file_select),TRUE);
@@ -456,8 +459,7 @@ mc_show_file_browser (GtkWidget *widget,
     gtk_window_set_screen (GTK_WINDOW (mc->file_select), 
 			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
     gtk_window_set_position (GTK_WINDOW (mc->file_select), GTK_WIN_POS_CENTER);
-    gtk_window_set_default_size(GTK_WINDOW(mc->file_select), 600, 400);
-
+    
     gtk_widget_show(mc->file_select);
 
     return FALSE;

@@ -36,7 +36,7 @@ void
 mc_exec_command (MCData     *mc,
 		 const char *cmd)
 {
-	GError *error;
+	GError *error = NULL;
 	char command [1000];
 	char **argv = NULL;
 
@@ -46,8 +46,10 @@ mc_exec_command (MCData     *mc,
 	mc_macro_expand_command (mc, command);
 
 	if (!g_shell_parse_argv (command, NULL, &argv, &error)) {
-		if (error != NULL)
+		if (error != NULL) {
 			g_error_free (error);
+			error = NULL;
+		}
 
 		return;
 	}
