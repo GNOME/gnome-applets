@@ -415,7 +415,7 @@ about_cb (AppletWidget *widget,
 	GKB *gkb = (GKB*)gkbx;
 	static const char *authors[] = 
 			{ "Szabolcs Ban (Shooby) <bansz@szif.hu>",
-			  "Balazs Nagy (Julian) <julian7@kva.hu>", NULL };
+			   NULL };
 
         if(gkb->aboutbox) {
 		gtk_widget_show(gkb->aboutbox);
@@ -423,8 +423,8 @@ about_cb (AppletWidget *widget,
 		return;
 	}
 
-	gkb->aboutbox = gnome_about_new (_("The GNOME KB Applet"),
-			_("1.0.0"),
+	gkb->aboutbox = gnome_about_new (_("The GNOME KeyBoard Applet"),
+			_("1.0.1"),
                         _("(C) 1998-99 LSC - Linux Supporting Center"),
                         (const char **)authors,
                         _("This applet switches between "   
@@ -434,7 +434,9 @@ about_cb (AppletWidget *widget,
                           "temporarily to URL http://lsc.kva.hu/gkb."
                           "Mail me your flag, please (60x40 size),"
                           "I will put it to CVS."
-                          "So long, and thanks for all the fish."
+                          "So long, and thanks for all the fish.\n"
+			  "Thanks for Balazs Nagy (Kevin)"
+			  "<julian7@kva.hu> for minor help."
                           ),
                         _("gkb.xpm"));
 

@@ -1,4 +1,4 @@
-GKB_BITMAPS = be.xpm bg.xpm ca.xpm ch.xpm \
+GKB_BITMAPS = at.xpm be.xpm bg.xpm ca.xpm ch.xpm \
 	cz.xpm de.xpm dk.xpm es.xpm \
 	fi.xpm fr.xpm gb.xpm gr.xpm \
 	hu.xpm il.xpm is.xpm it.xpm \
