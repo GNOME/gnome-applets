@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <assert.h>
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__NetBSD__)
 #include <sys/socket.h>
 #include <net/if.h>
 #endif
@@ -242,7 +242,7 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
     int delta[COUNT_TYPES], i;
     static int ticks = 0;
     static gulong past[COUNT_TYPES] = {0};
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__NetBSD__)
     struct if_nameindex *ifindex, *ifptr;
     static int max = 500;
 
