@@ -353,7 +353,13 @@ static gint
 applet_save_session(PanelApplet *applet, gpointer data)
 {
 	DriveData *dd = data;
+	gchar *global_key;
+	gchar *private_key;
+
 	/* FIXME: Save our prefs ? */
+    global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
+    private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
+	g_print("(save_yourself) global key is %s, and private key is %s\n", global_key, private_key);
 	return(FALSE);
 }
 
@@ -546,7 +552,6 @@ update_pixmap(DriveData *dd, gint t)
 
 	gint hint = dd->sizehint;
 
-    g_print("Updating pixmap...\n");
 	if (dd->device_pixmap > icon_list_count - 1) dd->device_pixmap = 0;
 	if (dd->device_pixmap < 0 && (!dd->custom_icon_in || !dd->custom_icon_out) ) dd->device_pixmap = 0;
 
