@@ -15,63 +15,63 @@
 
 /* This is the default list used when starting charpick the first time */
 /* aacute, agrave, eacute, iacute, oacute, frac12, copy*/
-static const gchar *def_list = "áàéíñóœ©";
+/* static const gchar *def_list = "áàéíñóœ©"; */
 static gunichar def_code[] = {225, 224, 233, 237, 241, 243, 189, 169, 1579, -1};
 
 /* aacute, agrave, acirc, atilde, auml. aring, aelig, ordf */
-static const gchar *a_list = "áàâãäåæª";
+/* static const gchar *a_list = "áàâãäåæª"; */
 static gunichar a_code[] = {225, 224, 226, 227, 228, 229, 230, 170, -1};
-static const gchar *cap_a_list = "ÁÀÂÃÄÅÆª";
+/* static const gchar *cap_a_list = "ÁÀÂÃÄÅÆª"; */
 static gunichar cap_a_code[] = {192, 193, 194, 195, 196, 197, 198, 170, -1}; 
 /* ccedil, cent, copy */
-static const gchar *c_list = "çÇ¢©";
+/* static const gchar *c_list = "çÇ¢©"; */
 static gunichar c_code[] = {231, 199, 162, 169, -1};
 /* eacute, egrave, ecirc, euml, aelig */
-static const gchar *e_list = "éèêëæ";
+/* static const gchar *e_list = "éèêëæ"; */
 static gunichar e_code[] = {232, 233, 234, 235, 230, -1};
-static const gchar *cap_e_list = "ÉÈÊËÆ";
+/* static const gchar *cap_e_list = "ÉÈÊËÆ"; */
 static gunichar cap_e_code[] = {200, 201, 202, 203, 198, -1};
 /* iacute, igrave, icirc, iuml */
-static const gchar *i_list = "íìîï";
+/* static const gchar *i_list = "íìîï"; */
 static gunichar i_code[] = {236, 237, 238, 239, -1};
-static const gchar *cap_i_list = "ÍÌÎÏ";
+/* static const gchar *cap_i_list = "ÍÌÎÏ"; */
 static gunichar cap_i_code[] = {204, 205, 206, 207, -1};
 /* ntilde (this is the most important line in this program.) */
-static const gchar *n_list = "ñ, Ñ";
+/* static const gchar *n_list = "ñ, Ñ"; */
 static gunichar n_code[] = {241, 209, -1};
 /* oacute, ograve, ocirc, otilde, ouml, oslash, ordm */
-static const gchar *o_list = "óòôõöøº";
+/* static const gchar *o_list = "óòôõöøº"; */
 static gunichar o_code[] = {242, 243, 244, 245, 246, 248, 176, -1};
-static const gchar *cap_o_list = "ÓÒÔÕÖØº";
+/* static const gchar *cap_o_list = "ÓÒÔÕÖØº"; */
 static gunichar cap_o_code[] = {210, 211, 212, 213, 214, 216, 176, -1};
 /* szlig, sect, dollar */
-static const gchar *s_list = "ß§$";
+/* static const gchar *s_list = "ß§$"; */
 static gunichar s_code[] = {223, 167, 36, -1};
 /* eth, thorn */
-static const gchar *t_list = "ðÐþÞ";
+/* static const gchar *t_list = "ðÐþÞ"; */
 static gunichar t_code[] = {240, 208, 254, 222, -1};
 /* uacute, ugrave, ucirc, uuml */
-static const gchar *u_list = "úùûü";
+/* static const gchar *u_list = "úùûü"; */
 static gunichar u_code[] = {249, 250, 251, 252, -1};
-static const gchar *cap_u_list = "ÚÙÛÜ";
+/* static const gchar *cap_u_list = "ÚÙÛÜ"; */
 static gunichar cap_u_code[] = {217, 218, 219, 220, -1};
 /* yacute, yuml, yen Yes, there is no capital yuml in iso 8859-1.*/
-static const gchar *y_list = "ýÝÿ¥";
+/* static const gchar *y_list = "ýÝÿ¥"; */
 static gunichar y_code[] = {253, 221, 255, 165, -1};
 
 /* extra characters unrelated to the latin alphabet. All characters in 
    ISO-8859-1 should now be accounted for.*/
 /* not shy macr plusmn */
-static const gchar *dash_list = "¬­¯±";
+/* static const gchar *dash_list = "¬­¯±"; */
 static gunichar dash_code[] = {172, 173, 175, 177, -1};
 /* laquo raquo uml */
-static const gchar *quote_list = "«»š·×";
+/* static const gchar *quote_list = "«»š·×"; */
 static gunichar quote_code[] = {171, 187, 168, 183, 215, -1};
 /* curren, pound, yen, cent, dollar */
-static const gchar *currency_list = "€£¥¢$";
+/* static const gchar *currency_list = "€£¥¢$"; */
 static gunichar currency_code[] = {164, 163, 165, 162, 36, 8364, -1}; 
 /* sup1 frac12 */
-static const gchar *one_list = "¹œŒ";
+/* static const gchar *one_list = "¹œŒ"; */
 static gunichar one_code[] = {185, 178, 179, 188, 189, 190, -1};
 /* µ ¶ ® ¿ |  */
 static gunichar misc_code[] = {181, 182, 174, 191, 124, -1};
@@ -274,7 +274,7 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
   p_curr_data->last_toggle_button = NULL;
   build_table(p_curr_data);
 #endif
-  return TRUE;
+  return FALSE;
 }
 
 static void
@@ -302,7 +302,7 @@ populate_menu (charpick_data *curr_data)
 
 	if (curr_data->menu)
 		gtk_widget_destroy (curr_data->menu);
-		
+
 	curr_data->menu = gtk_menu_new ();
 	menu  = GTK_MENU (curr_data->menu);
 	
@@ -314,12 +314,12 @@ populate_menu (charpick_data *curr_data)
 		g_object_set_data (G_OBJECT (menuitem), "string", string);
 		g_signal_connect (G_OBJECT (menuitem), "activate",
 				   G_CALLBACK (menuitem_activated), curr_data);
-		gtk_menu_append (menu, menuitem);
+		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 		if (g_ascii_strcasecmp (curr_data->charlist, string) == 0)
 			gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
 		list = g_list_next (list);
 	}
-
+	
 }
 
 static void
@@ -389,9 +389,9 @@ build_table(charpick_data *p_curr_data)
     box = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (box);
   p_curr_data->box = box;
-  
-  button = gtk_button_new ();  
   tooltips = gtk_tooltips_new ();
+  button = gtk_button_new ();
+
   gtk_tooltips_set_tip (tooltips, button, _("Available palettes"), NULL);
   switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
      	case PANEL_APPLET_ORIENT_DOWN:
@@ -406,12 +406,12 @@ build_table(charpick_data *p_curr_data)
      	case PANEL_APPLET_ORIENT_RIGHT:
      		arrow = gtk_arrow_new (GTK_ARROW_RIGHT, GTK_SHADOW_OUT);  
 		break;
-     	}
+  }
   gtk_container_add (GTK_CONTAINER (button), arrow);
   gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
-  g_signal_connect (G_OBJECT (button), "pressed",
-  			     G_CALLBACK (chooser_button_clicked), p_curr_data);
-  g_signal_connect (G_OBJECT (button), "button_press_event", 
+  g_signal_connect (G_OBJECT (button), "clicked",
+                            G_CALLBACK (chooser_button_clicked), p_curr_data);
+  g_signal_connect (G_OBJECT (button), "button_press_event",
                              G_CALLBACK (button_press_hack), p_curr_data->applet);
 
   len = g_utf8_strlen (p_curr_data->charlist, -1);
@@ -425,6 +425,9 @@ build_table(charpick_data *p_curr_data)
     toggle_button = gtk_toggle_button_new_with_label (label);
     gtk_box_pack_start (GTK_BOX (box), toggle_button, TRUE, TRUE, 0);
     gtk_button_set_relief(GTK_BUTTON(toggle_button), GTK_RELIEF_NONE);
+    gtk_tooltips_set_tip (tooltips, toggle_button, 
+                      _("Insert special characters"), NULL);
+  
     g_object_set_data (G_OBJECT (toggle_button), "unichar", 
 				GINT_TO_POINTER(g_utf8_get_char (label)));
     gtk_signal_connect (GTK_OBJECT (toggle_button), "toggled",
@@ -561,17 +564,10 @@ static void
 applet_destroy (GtkWidget *widget, gpointer data)
 {
   charpick_data *curr_data = data;
-  GtkTooltips *tooltips;
   GtkWidget *applet = curr_data->applet;
 
   g_return_if_fail (curr_data);
    
-  tooltips = g_object_get_data (G_OBJECT (applet), "tooltips");
-  if (tooltips) {
-      g_object_unref (tooltips);
-      g_object_set_data (G_OBJECT (applet), "tooltips", NULL);
-  }
-  
   if (curr_data->propwindow)
     gtk_widget_destroy (curr_data->propwindow);
 
@@ -662,13 +658,6 @@ set_atk_name_description (GtkWidget *widget, const gchar *name,
 static void
 make_applet_accessible (GtkWidget *applet)
 {
-  GtkTooltips *tooltips;
-  tooltips = gtk_tooltips_new ();
-  g_object_ref (tooltips);
-  gtk_object_sink (GTK_OBJECT (tooltips));
-  g_object_set_data (G_OBJECT (applet), "tooltips", tooltips); 
-  gtk_tooltips_set_tip (tooltips, applet, 
-                      _("Insert special characters"), NULL);
   set_atk_name_description (applet, _("Character Palette"), NULL);
 }
 
@@ -689,7 +678,7 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data->applet = GTK_WIDGET (applet);
   
   get_chartable (curr_data);
-
+  
   string  = panel_applet_gconf_get_string (applet, 
   							     "current_list", NULL);
   if (string) {
