@@ -1,6 +1,9 @@
-/*#####################################################*/
-/*##           drivemount applet 0.2.1               ##*/
-/*#####################################################*/
+/* GNOME drivemount applet
+ * (C) 1999 John Ellis
+ *
+ * Author: John Ellis
+ *
+ */
 
 #include "drivemount.h"
 

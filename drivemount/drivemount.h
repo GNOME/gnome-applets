@@ -1,6 +1,9 @@
-/*#####################################################*/
-/*##           drivemount applet 0.2.1               ##*/
-/*#####################################################*/
+/* GNOME drivemount applet
+ * (C) 1999 John Ellis
+ *
+ * Author: John Ellis
+ *
+ */
 
 #include <config.h>
 #include <stdio.h>
@@ -12,8 +15,8 @@
 #include <applet-widget.h>
 
 #define DRIVEMOUNT_APPLET_VERSION_MAJ 0
-#define DRIVEMOUNT_APPLET_VERSION_MIN 2
-#define DRIVEMOUNT_APPLET_VERSION_REV 1
+#define DRIVEMOUNT_APPLET_VERSION_MIN 99
+#define DRIVEMOUNT_APPLET_VERSION_REV 0
 
 typedef struct _DriveData DriveData;
 struct _DriveData
