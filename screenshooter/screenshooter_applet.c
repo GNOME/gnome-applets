@@ -1004,7 +1004,7 @@ main (int argc, char *argv[])
 					 (AppletCallbackFunc) cb_about, NULL);
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					 "help",
-					 GNOME_STOCK_MENU_ABOUT,
+					 GNOME_STOCK_PIXMAP_HELP,
 					 _ ("Help"),
 					 (AppletCallbackFunc) showHelp, NULL);
 
