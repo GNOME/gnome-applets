@@ -30,3 +30,5 @@ XMM_XML = $(xmm_xml_in_file:.xml.in=.xml)
 %.xml: %.xml.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po)
 		$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -x -u \
 		-c $(top_srcdir)/po/.intltool-merge-cache
+
+CLEANFILES = base.xml

@@ -54,7 +54,7 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_in_files) 
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
 
 @INTLTOOL_SERVER_RULE@
 

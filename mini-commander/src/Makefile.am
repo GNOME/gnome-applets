@@ -63,7 +63,7 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = mini-commander.schemas.in mini-commander-global.schemas.in

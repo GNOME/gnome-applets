@@ -62,7 +62,7 @@ EXTRA_DIST = 						\
 	$(mixer_pixmaps_DATA)				\
 	$(schemas_in_files)
 
-CLEANFILES = $(server_in_files) $(server_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:

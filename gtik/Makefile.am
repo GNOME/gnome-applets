@@ -38,7 +38,7 @@ schemasdir   = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = gtik.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
-CLEANFILES = $(server_in_files) $(server_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
 
 @INTLTOOL_SCHEMAS_RULE@
 

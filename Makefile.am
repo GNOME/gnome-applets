@@ -108,3 +108,7 @@ EXTRA_DIST = \
 # mess behind.
 distuninstallcheck_listfiles = 	\
         find -regex '.*/var/scrollkeeper/.*' -prune -or -type f -print
+
+DISTCLEANFILES = intltool-extract	\
+		 intltool-merge		\
+		 intltool-update
