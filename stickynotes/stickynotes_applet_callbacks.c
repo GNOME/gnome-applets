@@ -232,7 +232,7 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
 	GError *error = NULL;
-	gnome_help_display_on_screen("stickynotes_applet", "stickynotes-introduction", gtk_widget_get_screen(applet->w_applet), &error);
+	gnome_help_display_on_screen("stickynotes_applet", NULL, gtk_widget_get_screen(applet->w_applet), &error);
 	if (error) {
 		GtkWidget *dialog = gtk_message_dialog_new(NULL, GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 							   _("There was an error displaying help: %s"), error->message);
