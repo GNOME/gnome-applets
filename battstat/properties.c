@@ -66,7 +66,7 @@ extern void simul_cb(GtkWidget *, gpointer);
 extern void helppref_cb(AppletWidget *, gpointer);
 extern void load_font(gpointer);
 extern gint pixmap_timeout(gpointer);
-extern void change_orient(gpointer);
+extern void change_orient(GtkWidget *, PanelOrientType, gpointer);
 extern guint pixmap_type;
 
 #ifdef __OpenBSD__
@@ -126,7 +126,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 					  FALSE);
   }
 
-  change_orient ( battstat );
+  change_orient ( NULL, battstat->orienttype, battstat );
 
   applet_widget_sync_config (APPLET_WIDGET (battstat->applet));
 

@@ -773,7 +773,7 @@ applet_save_session(GtkWidget *w,
 }
 
 void
-change_orient (gpointer data)
+change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 {
   ProgressData *battstat = data;
   gchar new_label[80];
@@ -787,6 +787,7 @@ change_orient (gpointer data)
     gettext_noop ("Critical"),
     gettext_noop ("Charging")};
   int width;
+  battstat->orienttype=o;
 
   if (DEBUG) g_print("change_orient()\n");
 
@@ -833,6 +834,27 @@ change_orient (gpointer data)
   ac_status = 0;
   batterypresent = TRUE;
 #endif
+
+  switch(battstat->orienttype) {
+  case ORIENT_UP:
+    if(battstat->panelsize<40)
+      battstat->horizont=TRUE;
+    else
+      battstat->horizont=FALSE;
+    break;
+  case ORIENT_DOWN:
+    if(battstat->panelsize<40)
+      battstat->horizont=TRUE;
+    else
+      battstat->horizont=FALSE;
+    break;
+  case ORIENT_LEFT:
+    battstat->horizont=FALSE;
+    break;
+  case ORIENT_RIGHT:
+    battstat->horizont=FALSE;
+    break;
+  }
 
   if (!(battstat->showbattery || battstat->showpercent || battstat->showstatus)) {
     gnome_error_dialog(_("You can't hide all elements of the applet!"));
@@ -1137,6 +1159,20 @@ build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
   return;
 }
 
+#ifdef HAVE_PANEL_PIXEL_SIZE
+void
+applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+{
+  ProgressData *battstat = data;
+  
+  if (DEBUG) g_print("applet_change_pixel_size()\n");
+
+  battstat->panelsize=size;
+  printf("Panelsize=%d\n", battstat->panelsize);
+  change_orient(w, battstat->orienttype, battstat);
+  pixmap_timeout( battstat );
+}
+#endif
 
 static gint
 load_preferences(gpointer data)
@@ -1192,6 +1228,9 @@ create_layout(int argc, char *argv[], gpointer data)
 
   battstat->hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_show(battstat->hbox1);
+
+  
+  
 
   applet_widget_add (APPLET_WIDGET (battstat->applet), battstat->hbox1);
 
@@ -1368,6 +1407,16 @@ create_layout(int argc, char *argv[], gpointer data)
 		     battstat);
   status_docklet_run(STATUS_DOCKLET(statusdock));
 
+#ifdef HAVE_PANEL_PIXEL_SIZE
+  gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_pixel_size",
+		     GTK_SIGNAL_FUNC(applet_change_pixel_size),
+		     battstat);
+#endif
+
+  gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_orient",
+		     GTK_SIGNAL_FUNC(change_orient),
+		     battstat);
+
   return FALSE;
 }
 
@@ -1396,9 +1445,9 @@ main(int argc, char *argv[])
   load_preferences ( battstat );
   create_layout ( argc, argv, battstat );
   load_font( battstat );
-  change_orient ( battstat );
   pixmap_timeout ( battstat );
- 
+
+  change_orient(NULL, ORIENT_UP, battstat);
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
 
   applet_widget_gtk_main();

@@ -108,6 +108,7 @@ typedef struct _ProgressData {
   guint orange_val;
   guint yellow_val;
   gint panelsize;
+  PanelOrientType orienttype;
   GtkObject *ered_adj;
   GtkObject *eorange_adj;
   GtkObject *eyellow_adj;
