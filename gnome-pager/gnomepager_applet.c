@@ -1463,8 +1463,26 @@ main(int argc, char *argv[])
   gdk_imlib_data_to_pixmap(icon1_xpm, &p_1, &m_1);
   gdk_imlib_data_to_pixmap(icon2_xpm, &p_2, &m_2);
   gdk_imlib_data_to_pixmap(icon3_xpm, &p_3, &m_3);
-  printf("%p %p %p\n", p_1, p_2, p_3);
 
+  /* advertise to a WM that we exist and are here */
+    {
+      GdkAtom atom;
+      GdkWindow *win;
+      GdkWindowAttr attr;
+      Window ww;
+      
+      atom = gdk_atom_intern("_GNOME_PAGER_ACTIVE", FALSE);
+      attr.x = -99;
+      attr.y = -99;
+      attr.width = 88;
+      attr.height = 88;
+      win = gdk_window_new(NULL, &attr, 0);
+      ww = GDK_WINDOW_XWINDOW(win);
+      gdk_property_change(GDK_ROOT_PARENT(), atom, (GdkAtom)XA_WINDOW, 32, 
+			  GDK_PROP_MODE_REPLACE, (guchar *)(&ww), 1);
+      gdk_property_change(win, atom, (GdkAtom)XA_WINDOW, 32, 
+			  GDK_PROP_MODE_REPLACE, (guchar *)(&ww), 1);
+    }
   applet_widget_gtk_main();
   return 0;
 }
