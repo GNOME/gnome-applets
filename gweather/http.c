@@ -34,11 +34,13 @@ typedef struct _HttpBgRequest HttpBgRequest;
 static gint http_check_idle_cb (gpointer data)
 {
     HttpBgRequest *bg_req = (HttpBgRequest *)data;
-    if (bg_req)
+    if (bg_req) {
 	ghttp_status status = ghttp_process(bg_req->req);
-    if (status != ghttp_not_done) {
-        (*bg_req->cb)(bg_req->req, status, bg_req->cb_data);
-        return 0;  /* We're done with this idle callback */
+
+        if (status != ghttp_not_done) {
+	    (*bg_req->cb)(bg_req->req, status, bg_req->cb_data);
+    	    return 0;  /* We're done with this idle callback */
+	}
     }
     return 1;  /* Call us next time around, still work to do */
 }
