@@ -749,7 +749,6 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
                     break;
             }
         }
-        cd_close(cd);
     }
     else
     {
@@ -819,7 +818,6 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
                cd->cdrom_device->track1);
     }
 
-    cd_close(cd);
 }
 
 static void 
@@ -830,7 +828,6 @@ cdplayer_stop(GtkWidget * w, gpointer data)
         return;
     cdrom_stop(cd->cdrom_device);
 
-    cd_close(cd);
 }
 
 static void 
@@ -841,7 +838,6 @@ cdplayer_prev(GtkWidget * w, gpointer data)
         return;
     cdrom_prev(cd->cdrom_device);
 
-    cd_close(cd);
 }
 
 static void 
@@ -852,7 +848,6 @@ cdplayer_next(GtkWidget * w, gpointer data)
         return;
     cdrom_next(cd->cdrom_device);
 
-    cd_close(cd);
 }
 
 static void 

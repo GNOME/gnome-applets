@@ -6,7 +6,11 @@
 #include <sys/types.h>
 #include <sys/cdio.h>
 #include "cdrom-interface.h"
+#include "cdda-solaris.h"
+#include "writer-solaris.h"
 
+int msf2lba(track_info_t *);
+void lba2msf(cdrom_device_t, int, struct cdrom_subchnl *);
 
 #define ASSIGN_MSF(dest, src) \
 { \
@@ -19,6 +23,16 @@ cdrom_play(cdrom_device_t cdp, int start, int stop)
 {
 	struct cdrom_ti ti;
  	struct cdrom_msf msf;
+	int start_lba, end_lba;
+
+	/* If CDDA convert addresses to LBA format */
+	if (cdp->cdda) {
+		start_lba = msf2lba(&cdp->track_info[start - 1]);
+		end_lba = msf2lba(&cdp->track_info[stop]);
+		audio_stop(cdp->cdda);
+		audio_start(cdp->cdda, start_lba, end_lba);
+		return (DISC_NO_ERROR);
+	}
 
  	/* Set up CDROMPLAYMSF call. If this fails try CDROMPLAYTRKIND */
  	msf.cdmsf_min0 = cdp->track_info[start-1].address.minute;
@@ -70,16 +84,28 @@ cdrom_play_msf(cdrom_device_t cdp, cdrom_msf_t * start)
 int
 cdrom_pause(cdrom_device_t cdp)
 {
-	if (ioctl(cdp->device, CDROMPAUSE, 0) == -1) {
-		return DISC_IO_ERROR;
-		cdp->my_errno = errno;
+	/* CDDA ? */
+	if (cdp->cdda) {
+		audio_pause(cdp->cdda);
+		return DISC_NO_ERROR;
 	}
-	return DISC_IO_ERROR;
+
+	if (ioctl(cdp->device, CDROMPAUSE, 0) == -1) {
+		cdp->my_errno = errno;
+		return DISC_IO_ERROR;
+	}
+	return DISC_NO_ERROR;
 }
 
 int
 cdrom_resume(cdrom_device_t cdp)
 {
+	/* CDDA ? */
+	if (cdp->cdda) {
+		audio_resume(cdp->cdda);
+		return DISC_NO_ERROR;
+	}
+
 	if (ioctl(cdp->device, CDROMRESUME, 0) == -1) {
 		cdp->my_errno = errno;
 		return DISC_IO_ERROR;
@@ -91,6 +117,12 @@ cdrom_resume(cdrom_device_t cdp)
 int
 cdrom_stop(cdrom_device_t cdp)
 {
+	/* CDDA ? */
+	if (cdp->cdda) {
+		audio_stop(cdp->cdda);
+		return DISC_NO_ERROR;
+	}
+
 	if (ioctl(cdp->device, CDROMSTOP, 0) == -1) {
 		cdp->my_errno = errno;
 		return DISC_IO_ERROR;
@@ -154,12 +186,22 @@ int
 cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat)
 {
 	struct cdrom_subchnl subchnl;
+	int lba;
 
-	subchnl.cdsc_format = CDROM_MSF;
-	if (ioctl(cdp->device, CDROMSUBCHNL, &subchnl) == -1) {
-		cdp->my_errno = errno;
-		return DISC_IO_ERROR;
-	}
+	/* CDDA ? */
+	if (cdp->cdda) {
+		memset(&subchnl, 0, sizeof (subchnl));
+		lba = audio_get_state(cdp->cdda, &subchnl);
+		if (lba) {
+			lba2msf(cdp, lba, &subchnl);
+		}
+	} else {
+		subchnl.cdsc_format = CDROM_MSF;
+		if (ioctl(cdp->device, CDROMSUBCHNL, &subchnl) == -1) {
+			cdp->my_errno = errno;
+			return DISC_IO_ERROR;
+ 		}
+	}	
 	switch (subchnl.cdsc_audiostatus) {
 	case CDROM_AUDIO_PLAY:
 		stat->audio_status = DISC_PLAY;
@@ -203,6 +245,24 @@ cdrom_open(char *device, int *errcode)
 	}
 	cdp->nr_track = 0;
 	cdp->track_info = NULL;
+
+	/* Read track information */
+ 	if (cdrom_read_track_info(cdp) == DISC_IO_ERROR) {
+		g_free(cdp);
+		return NULL;
+	}
+
+	/*
+	 * Determine whether the device supports analog playback.
+	 * If analog playback is supported then use it. If analog
+	 * playback is not supported use the CDDA method and set
+	 * up for using this method. The call below will set cdda
+	 * to NULL if analog playback is supported. We pass the
+	 * CDROM fd as a parameter as the CDDA structure keeps its
+	 * own copy.
+	 */
+	cdda_check(&cdp->cdda, cdp->device);
+
 	return cdp;
 }
 
@@ -212,23 +272,30 @@ cdrom_close(cdrom_device_t cdp)
 	if (cdp->nr_track)
 		g_free(cdp->track_info);
 	close(cdp->device);
+
+	/* CDDA ? */
+	if (cdp->cdda) {
+		cdda_cleanup(cdp->cdda);
+	}
+
 	g_free(cdp);
 }
 
 int
 cdrom_load(cdrom_device_t cdp)
 {
-	/*if (ioctl(cdp->device, CDROMCLOSETRAY, 0) == -1) {
-		cdp->my_errno = errno;
-		return DISC_IO_ERROR;
-	};*/
-	/*XXX: is this supported under solaris??*/
+	/* Not supported under solaris */
 	return DISC_NO_ERROR;
 }
 
 int
 cdrom_eject(cdrom_device_t cdp)
 {
+	/* CDDA ? */
+	if (cdp->cdda) {
+		audio_stop(cdp->cdda);
+	}
+
 	if (ioctl(cdp->device, CDROMEJECT, 0) == -1) {
 		cdp->my_errno = errno;
 		return DISC_IO_ERROR;
@@ -243,8 +310,7 @@ cdrom_next(cdrom_device_t cdp)
 	cdrom_device_status_t stat;
 	int track;
 
-	if ((cdrom_read_track_info(cdp) == DISC_IO_ERROR) ||
-	    (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR))
+	if (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR)
 		return DISC_IO_ERROR;
 	track = stat.track + 1;
 	/* Don't advance if on the last track */
@@ -259,8 +325,7 @@ cdrom_prev(cdrom_device_t cdp)
 	cdrom_device_status_t stat;
 	int track;
 
-	if ((cdrom_read_track_info(cdp) == DISC_IO_ERROR) ||
-	    (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR))
+	if (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR)
 		return DISC_IO_ERROR;
 	track = stat.track - 1;
 	/* Don't go back if stopped or on the first track */
@@ -327,4 +392,89 @@ cdrom_track_length(cdrom_device_t cdp, int track, cdrom_msf_t * length)
 
 	length->minute = cdp->track_info[index + 1].address.minute -
 	    cdp->track_info[index].address.minute - i;
+}
+
+/*
+ * msf2lba()
+ *
+ * Description:
+ *	Convert MSF address to LBA format. We subtract 150 blocks (2s),
+ *	from the final result otherwise play seems to start a couple
+ *	of seconds into the track.
+ *
+ * Arguments:
+ *	track_info_t	*track_info		Address to convert
+ *
+ * Returns:
+ *	Address in lba format
+ */
+int
+msf2lba(track_info_t *track_info)
+{
+	int	lba;
+
+	lba = track_info->address.minute * 60 * 75 +
+		track_info->address.second * 75 +
+		track_info->address.frame;
+
+	/* Go back 2 seconds */
+	lba -= 150;
+
+	return (lba);
+}
+
+/*
+ * lba2msf()
+ *
+ * Description:
+ *	Convert lba to msf format and fill in subchannel info.
+ *
+ * Arguments:
+ *	cdrom_device_t		cdp		cdrom device
+ *	int			lba		Address to convert
+ *	struct cdrom_subchnl	*subchnl	Structure to return
+ *
+ * Returns:
+ *	void
+ */
+void
+lba2msf(cdrom_device_t cdp, int lba, struct cdrom_subchnl *subchnl)
+{
+	int		i;
+	div_t		lba_div_t;
+
+	/* Which track are we on? */
+	for (i = 0; i < cdp->nr_track; i++) {
+		if ((msf2lba(&cdp->track_info[i]) <= lba) &&
+		    (lba < msf2lba(&cdp->track_info[i + 1])))
+			break;
+	}
+
+	/* Return if we're out of bounds */
+	if (i == cdp->nr_track) {
+		memset(subchnl, 0, sizeof (*subchnl));
+		return;
+	}
+
+	/* Track */
+	subchnl->cdsc_trk = i + 1;
+
+	/* Minute */
+	lba -= msf2lba(&cdp->track_info[i]);
+
+	lba_div_t = div(lba, 75 * 60);
+
+	subchnl->cdsc_reladdr.msf.minute = lba_div_t.quot;
+
+	/* Second */
+	lba = lba_div_t.rem;
+
+	lba_div_t = div(lba, 75);
+
+	subchnl->cdsc_reladdr.msf.second = lba_div_t.quot;
+
+	/* Frame */
+	subchnl->cdsc_reladdr.msf.frame = lba_div_t.rem;
+
+	return;
 }

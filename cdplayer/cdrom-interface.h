@@ -54,6 +54,7 @@ typedef struct cdrom_device {
 	cdrom_msf_t leadout;
 #endif
 
+	void *cdda;
 	int my_errno;
 } *cdrom_device_t;
 

@@ -175,6 +175,7 @@ sparc-*-solaris*)	gkb_type_sun=true;;
 *)			gkb_type_sun=false;;
 esac
 AM_CONDITIONAL(GKB_SUN, $gkb_type_sun)
+AM_CONDITIONAL(CDDA_SOLARIS, $gkb_type_sun)
 
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)

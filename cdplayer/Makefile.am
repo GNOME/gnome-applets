@@ -5,6 +5,16 @@ $(GNOME_APPLETS_CFLAGS) \
 -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
 $(CDROM_CFLAGS)
 
+if CDDA_SOLARIS
+CDROM_CDDA_SRCS = \
+	reader-solaris.c \
+	writer-solaris.c 
+	
+CDROM_CDDA_DEPS = \
+	reader-solaris.c \
+	writer-solaris.c
+endif
+
 bin_PROGRAMS = cdplayer_applet2
 
 cdplayer_applet2_SOURCES = \
@@ -13,10 +23,15 @@ cdplayer.h \
 cdrom-interface.h \
 led.c \
 led.h \
-cdrom-@CDROM_HOST@.c 
+reader-solaris.h \
+writer-solaris.h \
+cdda-solaris.h \
+cdrom-@CDROM_HOST@.c \
+$(CDROM_CDDA_SRCS)
 
 cdplayer_applet2_DEPENDS = \
-cdrom-@CDROM_HOST@.c 
+cdrom-@CDROM_HOST@.c \
+$(CDROM_CDDA_DEPS)
 
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
@@ -49,6 +64,8 @@ images/cdplayer-stop.xpm \
 cdrom-irix.c \
 cdrom-linux.c \
 cdrom-solaris.c \
+reader-solaris.c \
+writer-solaris.c \
 $(icon_DATA) \
 $(server_in_files) \
 $(schema_DATA)	\
