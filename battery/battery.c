@@ -387,7 +387,7 @@ make_new_battery_applet(void)
   GtkWidget * readout_battery_frame;
   gchar * param = "battery_applet";
 
-  bat = g_new(BatteryData, 1);
+  bat = g_new0(BatteryData, 1);
 
   bat->applet = applet_widget_new("battery_applet");
 

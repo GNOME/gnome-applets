@@ -498,6 +498,7 @@ int main (int argc, char *argv[])
 {
 	DriveData *dd;
 	GtkWidget *applet;
+	char *goad_id;
 
 	/* Initialize the i18n stuff */
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -507,14 +508,18 @@ int main (int argc, char *argv[])
 			   NULL, 0, NULL);
 	applet_factory_new("drivemount_applet_factory", NULL, applet_start_new_applet);
 
-	applet = applet_widget_new("drivemount_applet");
-	if (!applet)
-		g_error("Can't create applet!\n");
+	goad_id = goad_server_activation_id();
 
-	dd = create_drive_widget(applet);
+	if(goad_id && strcmp(goad_id, "drivemount_applet")) {
+		applet = applet_widget_new("drivemount_applet");
+		if (!applet)
+			g_error("Can't create applet!\n");
 
-	applet_widget_add(APPLET_WIDGET(applet), dd->button);
-	gtk_widget_show(applet);
+		dd = create_drive_widget(applet);
+
+		applet_widget_add(APPLET_WIDGET(applet), dd->button);
+		gtk_widget_show(applet);
+	}
 
 	applet_widget_gtk_main();
 	return 0;

@@ -34,7 +34,10 @@ make_new_applet (const gchar *goad_id)
   else if (!strcmp (goad_id, "multiload_swapload_applet"))
     return make_swapload_applet (goad_id);
   /* else *//* avoid gcc warning */
-  return make_cpuload_applet (goad_id);
+  else if(!strcmp(goad_id, "multiload_cpuload_applet"))
+    return make_cpuload_applet (goad_id);
+  else
+    return NULL;
 }
 
 int
@@ -51,12 +54,11 @@ main (int argc, char **argv)
 			    NULL);
 
 	applet_factory_new("multiload_applet", NULL,
-			   (AppletFactoryActivator)make_cpuload_applet);
+			   (AppletFactoryActivator)make_new_applet);
 
 	goad_id = goad_server_activation_id();
-	if(!goad_id)
-		return 0;
-	make_new_applet(goad_id);
+	if(goad_id && strcmp(goad_id, "multiload_applet"))
+		make_new_applet(goad_id);
 
 	applet_widget_gtk_main ();
 	
