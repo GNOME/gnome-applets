@@ -1,17 +1,23 @@
 # Lithuanian translation for GNOME applets
 # Copyright (C) 2000 Free Software Foundation, Inc.
 # Gediminas Paulauskas <menesis@delfi.lt>, 2000
-#
+# Vaidotas Zemlys <mpiktas@delfi.lt>, 2003.
+# Žygimantas Beručka <uid0@tuxfamily.org>, 2003.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2003-02-08 18:22--300\n"
-"Last-Translator: Vaidotas Zemlys <mpiktas@delfi.lt>\n"
+"Project-Id-Version: gnome-applets\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-11 18:44+0300\n"
+"PO-Revision-Date: 2003-10-11 18:21+0300\n"
+"Last-Translator: Žygimantas Beručka <uid0@tuxfamily.org>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
+"100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -38,31 +44,30 @@ msgstr "_Apie..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Pagalba"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:3
-#, fuzzy
 msgid "_Keyboard Accessibility Preferences"
-msgstr "Klaviatūros išdėstymo perjungiklio parinktys"
+msgstr "_Klaviatūros prieinamumo nuostatos"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:1
-#, fuzzy
 msgid "AccessX Status Applet Factory"
-msgstr "Geyes Applet Factory"
+msgstr "AccessX būklės įtaiso gamykla"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1178
+#: accessx-status/applet.c:1189
 msgid "Keyboard Accessibility Status"
-msgstr ""
+msgstr "Klaviatūros prieinamumo būklė"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
-msgstr ""
+msgstr "Klaviatūros prieinamumo būklės įtaiso gamykla"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
-msgstr ""
+msgstr "Rodo klaviatūros pagalbinių ypatybių būklę"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:5
 #: battstat/GNOME_BattstatApplet.server.in.in.h:4
@@ -74,58 +79,59 @@ msgstr ""
 msgid "Utility"
 msgstr "Pagalbinė programa"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:844
+#: cdplayer/cdplayer.c:586 charpick/charpick.c:584 drivemount/drivemount.c:521
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
-#: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: modemlights/modemlights.c:115 multiload/main.c:58
+#: stickynotes/stickynotes_applet_callbacks.c:191
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr ""
 "Gediminas Paulauskas <menesis@delfi.lt>\n"
-"Vaidotas Zemlys <mpiktas@delfi.lt>"
+"Vaidotas Zemlys <mpiktas@delfi.lt>\n"
+"Žygimantas Beručka <uid0@tuxfamily.org>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1181
+#: accessx-status/applet.c:157 accessx-status/applet.c:1192
 msgid "AccessX Status"
-msgstr ""
+msgstr "AccessX būklė"
 
 #: accessx-status/applet.c:158
 msgid "Copyright (C) 2003 Sun Microsystems"
-msgstr ""
+msgstr "Autorinės teisės (C) 2003 Sun Microsystems"
 
 #: accessx-status/applet.c:159
 msgid "Shows the state of AccessX features such as latched modifiers"
-msgstr ""
+msgstr "Rodo AccessX ypatybių tokių kaip \"latced modifiers\" būseną"
 
 #: accessx-status/applet.c:198
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error launching the help viewer : %s"
-msgstr "Įvyko klaida vykdant '%s' : %s"
+msgstr "Įvyko klaida paleidžiant pagalbos žiūryklę: %s"
 
 #: accessx-status/applet.c:221
-#, fuzzy, c-format
+#, c-format
 msgid "There was an error launching the keyboard capplet : %s"
-msgstr "Įvyko klaida vykdant '%s' : %s"
+msgstr "Įvyko klaida paleidžiant klaviatūros įtaisą: %s"
 
 #: accessx-status/applet.c:462 accessx-status/applet.c:496
 msgid "a"
-msgstr ""
+msgstr "a"
 
-#: accessx-status/applet.c:1183
+#: accessx-status/applet.c:1194
 msgid "Displays current state of keyboard accessibility features"
-msgstr ""
+msgstr "Rodo dabartinę klaviatūros pagalbinių savybių būseną"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:857
 msgid "Battery Charge Monitor"
-msgstr "Baterijų stebėtuvas"
+msgstr "Baterijos pakrovimo stebėtuvas"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
-msgstr "Battstat Factory"
+msgstr "Battstat gamykla"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
 msgid "Monitor a laptop's remaining power"
@@ -141,7 +147,7 @@ msgstr "Stebėti likusią nešiojamojo kompiuterio energiją"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "_Parinktys..."
 
@@ -151,82 +157,79 @@ msgstr "_Sulaikyti kompiuterį..."
 
 #: battstat/battstat.schemas.in.h:1
 msgid "Beep for warnings"
-msgstr ""
+msgstr "Pyptelti esant įspėjimams"
 
 #: battstat/battstat.schemas.in.h:2
 msgid "Beep when displaying a warning"
-msgstr ""
+msgstr "Pyptelti kai rodomas įspėjimas"
 
 #: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
-msgstr ""
+msgstr "Komanda kurią perduoti kompiuterio sulaikymui"
 
 #: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
-msgstr ""
+msgstr "Mažėti iš viršaus"
 
 #: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
-msgstr ""
+msgstr "Įspėjimas esant pilnai baterijai"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
-msgstr ""
+msgstr "Įspėjimas baterijai išsikraunant"
 
 #: battstat/battstat.schemas.in.h:7
-#, fuzzy
 msgid "Notify user when the battery is full"
-msgstr "Pranešti, kai baterijos pilnai pasikrovusios"
+msgstr "Įspėti vartotoją, kai baterija yra pilna"
 
 #: battstat/battstat.schemas.in.h:8
-#, fuzzy
 msgid "Notify user when the battery is low"
-msgstr "Pranešti, kai baterijos yra beveik nusėdusios"
+msgstr "Įspėti vartotoją, kai baterija yra beveik išsikrovusi"
 
 #: battstat/battstat.schemas.in.h:9
 msgid "Orange value level"
-msgstr ""
+msgstr "Oranžinės vertės lygis"
 
 #: battstat/battstat.schemas.in.h:10
 msgid "Red value level"
-msgstr ""
+msgstr "Raudonos vertės lygis"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
-msgstr ""
+msgstr "Rodyti baterijos būklę"
 
 #: battstat/battstat.schemas.in.h:12
 msgid "Show percent full label"
-msgstr ""
+msgstr "Rodyti procentinę etiketę"
 
 #: battstat/battstat.schemas.in.h:13
 msgid "Show the battery"
-msgstr ""
+msgstr "Rodyti bateriją"
 
 #: battstat/battstat.schemas.in.h:14
 msgid "Show the battery meter draining from the top of the battery"
-msgstr ""
+msgstr "Baterijos matuoklis mažėja iš viršaus žemyn"
 
 #: battstat/battstat.schemas.in.h:15
-#, fuzzy
 msgid "Suspend Command"
-msgstr "Sulaikyti komandą:"
+msgstr "Sulaikymo komanda"
 
 #: battstat/battstat.schemas.in.h:16
 msgid "The battery level below which the battery is displayed as orange."
-msgstr ""
+msgstr "Baterijos lygis žemiau kurio baterija yra oranžinės spalvos."
 
 #: battstat/battstat.schemas.in.h:17
 msgid "The battery level below which the battery is displayed as red."
-msgstr ""
+msgstr "Baterijos lygis žemiau kurio baterija yra raudonos spalvos."
 
 #: battstat/battstat.schemas.in.h:18
 msgid "The battery level below which the battery is displayed as yellow."
-msgstr ""
+msgstr "Baterijos lygis žemiau kurio baterija yra geltonos spalvos."
 
 #: battstat/battstat.schemas.in.h:19
 msgid "Yellow value level"
-msgstr ""
+msgstr "Geltonos reikšmės lygis"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -241,22 +244,22 @@ msgstr "Įtaisas neveiks teisingai (jei iš viso veiks).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:888
 msgid "High"
-msgstr "Aukšta"
+msgstr "Aukštas"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:890
 msgid "Low"
-msgstr "Žema"
+msgstr "Žemas"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:892
 msgid "Critical"
-msgstr "Būtina"
+msgstr "Kritinis"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:894
 msgid "Charging"
 msgstr "Kraunasi"
 
@@ -267,24 +270,24 @@ msgstr "Baterija nusėdusi (%d%%) o kintama srovė neprijungta"
 
 #: battstat/battstat_applet.c:429
 msgid "Battery is now fully re-charged!"
-msgstr "Baterijos yra pilnai pakrautos."
+msgstr "Baterija dabar yra pilnai pakrauta!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1052
 #, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 msgstr ""
-"Sistema naudoja baterijas\n"
+"Sistema naudoja bateriją\n"
 "Baterija: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1060
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -295,15 +298,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1073
 msgid "System is running on battery power"
-msgstr "Sistema naudoja bateriją"
+msgstr "Sistema naudoja baterijos energiją"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:990
+#: battstat/battstat_applet.c:1079
 msgid "System is running on AC power"
 msgstr "Sistema naudoja kintamą srovę"
 
@@ -313,7 +316,7 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:964
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr ""
@@ -322,7 +325,7 @@ msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:971
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr ""
@@ -344,7 +347,7 @@ msgstr ""
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:623
 msgid "System is running on AC power. Battery: Not present"
-msgstr "Sistema naudoja kintamą srovę. Baterijos nėra"
+msgstr "Sistema naudoja kintamą srovę. Baterijos nėra."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
@@ -361,7 +364,7 @@ msgid "Battery: Not present"
 msgstr "Baterijos nėra"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:727
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -374,7 +377,7 @@ msgstr ""
 "APM įrenginį"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:736
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -384,7 +387,7 @@ msgstr ""
 " Pabandykite paleisti \"apm -e 1\" (FreeBSD) gal\n"
 " tai padės.\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:792
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -394,7 +397,7 @@ msgstr ""
 "Pabandykite ištaisyti šią klaidą"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:795
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -404,7 +407,7 @@ msgstr ""
 "Beleidžiand sulaikymo komandą įvyko klaida: komanda grąžino \"%d\"\n"
 " Pabandykite ištaisyti šią klaidą"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:803
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -414,16 +417,15 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:834
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:859
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
-#, fuzzy
+#: battstat/battstat_applet.c:860
 msgid "This utility shows the status of your laptop battery."
 msgstr ""
 "Ši pagalbinė programa parodo jūsų nešiojamo kompiuterio baterijos būseną."
@@ -432,7 +434,7 @@ msgstr ""
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #: battstat/battstat_applet.glade.h:2
 #: mini-commander/src/mini-commander.glade.h:2
@@ -446,31 +448,27 @@ msgid "100%"
 msgstr "100%"
 
 #: battstat/battstat_applet.glade.h:6
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "<b>Battery Color Levels (%)</b>"
-msgstr "Baterijos spalvų lygiai (%)"
+msgstr "<b>Baterijos spalvų lygiai (%)</b>"
 
 #: battstat/battstat_applet.glade.h:7
-#, fuzzy
 msgid "<b>Layout</b>"
-msgstr "Išdėstymas"
+msgstr "<b>Išdėstymas</b>"
 
 #: battstat/battstat_applet.glade.h:8
-#, fuzzy
 msgid "<b>Progress Bar Direction</b>"
-msgstr "Pažangos juostos kryptis"
+msgstr "<b>Pažangos juostos kryptis</b>"
 
 #: battstat/battstat_applet.glade.h:9
-#, fuzzy
 msgid "<b>Suspend</b>"
-msgstr "Sulaikyti"
+msgstr "<b>Sulaikyti</b>"
 
 #: battstat/battstat_applet.glade.h:10
-#, fuzzy
 msgid "<b>Warnings</b>"
-msgstr "Perspėjimai"
+msgstr "<b>Perspėjimai</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "Išvaizda"
 
@@ -479,80 +477,72 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Baterijų krovimo stebėtuvo parinktys"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
-#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2031
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:560
 msgid "General"
-msgstr "Bendrai"
+msgstr "Pagrindinės"
 
 #: battstat/battstat_applet.glade.h:14
-#, fuzzy
 msgid "Moves towards _bottom"
-msgstr "Perkelti žemyn"
+msgstr "Juda že_myn"
 
 #: battstat/battstat_applet.glade.h:15
-#, fuzzy
 msgid "Moves towards _top"
-msgstr "Perkelti į viršų"
+msgstr "Juda į _viršų"
 
 #: battstat/battstat_applet.glade.h:16
 msgid "Sho_w battery charge percentages"
-msgstr ""
+msgstr "R_odyti baterijos pakrovimą procentais"
 
 #: battstat/battstat_applet.glade.h:17
-#, fuzzy
 msgid "Show _power connection status"
-msgstr "Jungimosi būsena"
+msgstr "Rodyti _srovės pajungimo būseną"
 
 #: battstat/battstat_applet.glade.h:18
-#, fuzzy
 msgid "War_n when battery is fully re-charged"
-msgstr "Pranešti, kai baterijos pilnai pasikrovusios"
+msgstr "Pra_nešti, kai baterija yra pilnai pakraunama"
 
 #: battstat/battstat_applet.glade.h:19
 msgid "_Beep when displaying a warning"
-msgstr ""
+msgstr "_Pyptelti kai rodomas įspėjimas"
 
 #: battstat/battstat_applet.glade.h:20
-#, fuzzy
 msgid "_Orange:"
-msgstr "Oranžinis:"
+msgstr "_Oranžinis:"
 
 #: battstat/battstat_applet.glade.h:21
-#, fuzzy
 msgid "_Preview:"
-msgstr "Peržiūra:"
+msgstr "_Peržiūra:"
 
 #: battstat/battstat_applet.glade.h:22
-#, fuzzy
 msgid "_Red:"
-msgstr "Raudona:"
+msgstr "_Raudona:"
 
 #: battstat/battstat_applet.glade.h:23
 msgid "_Show battery status"
-msgstr ""
+msgstr "_Rodyti baterijos būklę"
 
 #: battstat/battstat_applet.glade.h:24
-#, fuzzy
 msgid "_Suspend command:"
-msgstr "Sulaikyti komandą:"
+msgstr "_Sulaikymo komanda:"
 
 #: battstat/battstat_applet.glade.h:25
-#, fuzzy
 msgid "_Warn when battery charge is low"
-msgstr "Pranešti, kai baterijos yra beveik nusėdusios"
+msgstr "_Pranešti, kai baterija yra beveik išsikrovusi"
 
 #: battstat/battstat_applet.glade.h:26
-#, fuzzy
 msgid "_Yellow:"
-msgstr "Geltona:"
+msgstr "_Geltona:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:468
-#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
-#, fuzzy, c-format
+#: battstat/properties.c:296 drivemount/drivemount.c:479
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2298
+#: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
+#, c-format
 msgid "There was an error displaying help: %s"
-msgstr "Įvyko klaida vykdant '%s' : %s"
+msgstr "Įvyko klaida rodant pagalbą: %s"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -566,20 +556,18 @@ msgstr "Baterijos yra pilnai pakrautos."
 msgid "Battery power low"
 msgstr "Baterijos beveik nusėdusios"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:604
+#: cdplayer/cdplayer.c:1052
 msgid "CD Player"
 msgstr "CD grotuvas"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
-#, fuzzy
 msgid "CD Player Applet Factory"
-msgstr "CD Grotuvo įtaisas"
+msgstr "CD grotuvo įtaiso gamykla"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
-#, fuzzy
 msgid "Factory for CD player applet"
-msgstr "CD Grotuvo priedas"
+msgstr "Gamykla CD grotuvo įtaisui"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
 #: mixer/GNOME_MixerApplet.server.in.in.h:2
@@ -591,66 +579,64 @@ msgid "Panel applet for playing audio CDs"
 msgstr "Audio CD groti skirtas skydelio įtaisas"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#, fuzzy
 msgid "_Open CD Player"
-msgstr "CD grotuvas"
+msgstr "_Atidaryti CD grotuvą"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1042
 msgid "Stop"
 msgstr "Sustoti"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1044
 msgid "Play / Pause"
 msgstr "Groti / Pauzė"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1046
 msgid "Eject"
 msgstr "Išmesti"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1048
 msgid "Previous Track"
-msgstr "Prieš tai buvęs takelis"
+msgstr "Ankstesnis takelis"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1050
 msgid "Next Track"
 msgstr "Kitas takelis"
 
-#: cdplayer/cdplayer.c:235
+#: cdplayer/cdplayer.c:246
 msgid "You do not have permission to use the CD player."
-msgstr ""
+msgstr "Tu neturi leidimo naudoti CD grotuvą."
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
-#, fuzzy, c-format
+#: cdplayer/cdplayer.c:368 mixer/mixer.c:1026 multiload/main.c:119
+#, c-format
 msgid "There was an error executing '%s': %s"
-msgstr "Įvyko klaida vykdant '%s' : %s"
+msgstr "Įvyko klaida vykdant '%s': %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:419
 #, c-format
 msgid "%s does not seem to be a CD player"
-msgstr ""
+msgstr "Nepanašu, kad %s yra CD grotuvas"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:485
 msgid "CD Player Preferences"
 msgstr "CD Grotuvo parinktys"
 
-#: cdplayer/cdplayer.c:495
-#, fuzzy
+#: cdplayer/cdplayer.c:506
 msgid "Device _path:"
-msgstr "Kelias iki į_renginio:"
+msgstr "Ke_lias iki įrenginio:"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:515
 msgid "Device Path"
 msgstr "Kelias iki įrenginio"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:515
 msgid "Set the device path here"
 msgstr "Nustatyti įrenginio kelią čia"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:518
 msgid "Use _Default"
 msgstr "Naudoti įpras_tą"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:605
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -658,197 +644,193 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:607 cdplayer/cdplayer.c:1053
 msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "CD Grotuvo priedas yra paprastas CD grotuvas tavo skydeliui"
+msgstr "CD Grotuvo įtaisas yra paprastas CD grotuvas tavo skydeliui"
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:882 cdplayer/cdplayer.c:893
 msgid "Elapsed time"
 msgstr "Grotas laikas"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:885 cdplayer/cdplayer.c:895
 msgid "Track number"
 msgstr "Takelio numeris"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:951
 msgid "Audio device is busy, or being used by another application"
-msgstr ""
+msgstr "Audio įrenginys yra užimtas arba yra naudojamas kitos programos"
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1043
 msgid "Click this button to Stop playing the CD"
 msgstr "Norėdamas nutraukti CD grojimą paspausk šį mygtuką"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1045
 msgid "Click this button to Play or Pause the CD"
 msgstr "Norėdamas pradėti groti arba sustabdyti CD paspausk šį mygtuką"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1047
 msgid "Click this button to eject the CD"
 msgstr "Norėdamas išmesti CD, paspausk šį mygtuką"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1049
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Norėdamas groti prieš tai buvusį CD takelį, paspausk šį mygtuką"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1051
 msgid "Click this button to Play the next track in the CD"
 msgstr "Norėdamas groti kitą CD takelį, paspausk šį mygtuką"
 
 #: cdplayer/cdplayer.schemas.in.h:1
 msgid "Path to the device"
-msgstr ""
+msgstr "Kelias iki įrenginio"
 
 #: cdplayer/cdplayer.schemas.in.h:2
 msgid ""
 "This is the full path of the device that will be used to play cd's from this "
 "applet"
 msgstr ""
+"Tai pilnas kelias iki įrenginio kuris bus naudojamas groti kompaktinius "
+"diskus iš šio įtaiso"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Simbolių rinkiklis"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr "Charpicker Applet Factory"
+msgstr "Charpicker įtaiso gamykla"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:3
 msgid "Insert characters"
 msgstr "Įterpti simbolius"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
-msgstr ""
+msgstr "Pridėti paletę"
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
-msgstr ""
+msgstr "Pridėti paletę..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
-msgstr ""
+msgstr "Prieinamos paletės"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "Įterpti specialius simbolius"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
-msgstr ""
+msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"GNOME skydelio priedas, padedantis įterpti keistus simbolius, kurių nėra "
-"klaviatūroje. Išleistas GPL sąlygomis"
+"GNOME skydelio įtaisas, padedantis įterpti keistus simbolius, kurių nėra "
+"klaviatūroje. Išleistas GPL sąlygomis."
 
 #: charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
-msgstr ""
+msgstr "Simboliai rodomi įtaiso paleidimo metu"
 
 #: charpick/charpick.schemas.in.h:2
 msgid "DEPRECATED - Characters shown on applet startup"
-msgstr ""
+msgstr "NENAUDOJAMA - Simboliai rodomi įtaiso paleidimo metu"
 
 #: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
-msgstr ""
+msgstr "Galimų palečių sąrašas"
 
 #: charpick/charpick.schemas.in.h:4
 msgid "List of strings containing the available palettes"
-msgstr ""
+msgstr "Eilučių, turinčių prieinamas paletes, sąrašas"
 
 #: charpick/charpick.schemas.in.h:5
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
+"Eilutė kurią vartotojas buvo pažymėjęs paskutinio įtaiso naudojimo metu. Ši "
+"eilutė bus rodoma kai vartotojas vėl paleis įtaisą."
 
 #: charpick/properties.c:88
-#, fuzzy
 msgid "_Palette:"
-msgstr "Raštas:"
+msgstr "_Paletė:"
 
 #: charpick/properties.c:95
 msgid "Palette entry"
-msgstr ""
+msgstr "Paletės įvestis"
 
 #: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
-msgstr ""
+msgstr "Keisti paletę pridedant arba pašalinant simbolius"
 
 #: charpick/properties.c:160
-#, fuzzy
 msgid "Edit Palette"
-msgstr "Redaguoti kelio elementą..."
+msgstr "Redaguoti paletę"
 
 #: charpick/properties.c:259
-#, fuzzy
 msgid "Palettes list"
-msgstr "Patches of mist"
+msgstr "Palečių sąrašas"
 
 #: charpick/properties.c:338
-#, fuzzy
 msgid "Pal_ettes:"
-msgstr "Raštas:"
+msgstr "Pal_etės:"
 
 #: charpick/properties.c:354
 msgid "Add button"
-msgstr ""
+msgstr "Pridėti mygtuką"
 
 #: charpick/properties.c:355
 msgid "Click to add a new palette"
-msgstr ""
+msgstr "Spragtelk, kad pridėtum naują paletę"
 
 #: charpick/properties.c:362
-#, fuzzy
 msgid "Edit button"
-msgstr "Redaguoti kelio elementą..."
+msgstr "Redaguoti mygtuką"
 
 #: charpick/properties.c:363
 msgid "Click to edit the selected palette"
-msgstr ""
+msgstr "Spragtelk, kad redaguoti pažymėtą paletę"
 
 #: charpick/properties.c:370
-#, fuzzy
 msgid "Delete button"
-msgstr "_Pašalinti makrosą"
+msgstr "Pašalinti mygtuką"
 
 #: charpick/properties.c:371
 msgid "Click to delete the selected palette"
-msgstr ""
+msgstr "Spragtelk, kad ištrinti pažymėtą paletę"
 
 #: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "Simbolių rinkiklio parinktys"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:528
+#: drivemount/drivemount.c:539
 msgid "Disk Mounter"
 msgstr "Diskų montuoklis"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
-#, fuzzy
 msgid "Drive Mount Applet Factory"
-msgstr "Diskų montavimo įtaisas"
+msgstr "Diskų montavimo priedo gamykla"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
-#, fuzzy
 msgid "Factory for drive mount applet"
-msgstr "Diskų montavimo priedas"
+msgstr "Disko montavimo priedo gamykla"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
 msgid "Mount local disks and devices"
@@ -862,91 +844,84 @@ msgstr "_Naršyti..."
 msgid "_Eject"
 msgstr "_Išmesti"
 
-#: drivemount/drivemount.c:409 mailcheck/mailcheck.c:659
-#, fuzzy, c-format
+#: drivemount/drivemount.c:420 mailcheck/mailcheck.c:659
+#, c-format
 msgid "There was an error executing %s: %s"
-msgstr "Įvyko klaida vykdant '%s' : %s"
+msgstr "Įvyko klaida vykdant %s: %s"
 
-#: drivemount/drivemount.c:416
+#: drivemount/drivemount.c:427
 msgid "Cannot browse device"
-msgstr ""
+msgstr "Negaliu naršyti įrenginio"
 
-#: drivemount/drivemount.c:474 drivemount/properties.c:595
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
-#, fuzzy
+#: drivemount/drivemount.c:485 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
 msgid "Error displaying help"
-msgstr "Įvyko klaida vykdant '%s' : %s"
+msgstr "Įvyko klaida rodant pagalbą"
 
-#: drivemount/drivemount.c:529
+#: drivemount/drivemount.c:540
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:531
-#, fuzzy
+#: drivemount/drivemount.c:542
 msgid "Applet for mounting and unmounting block volumes."
-msgstr "Applet for mounting and unmounting block volumes."
+msgstr "Įtaisas duomenų laikmenų montavimui ir išmontavimui."
 
-#: drivemount/drivemount.c:731
+#: drivemount/drivemount.c:742
 msgid " mounted"
 msgstr " užmontuotas"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:744
 msgid " not mounted"
-msgstr " numontuotas"
+msgstr " išmontuotas"
 
-#: drivemount/drivemount.c:845
+#: drivemount/drivemount.c:856
 msgid "\" reported:\n"
-msgstr "“ pranešė:\n"
+msgstr "\" pranešė:\n"
 
-#: drivemount/drivemount.c:847
+#: drivemount/drivemount.c:858
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
 "Disko montavimo komanda nepavyko.\n"
-"„"
+"\""
 
-#: drivemount/drivemount.c:853
-#, fuzzy
+#: drivemount/drivemount.c:864
 msgid "Cannot mount device"
-msgstr " numontuotas"
+msgstr "Negaliu sumontuoti įrenginio"
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
-msgstr ""
+msgstr "Intervalas tarp montavimo taškų patikrinimų"
 
 #: drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
-msgstr ""
+msgstr "Laikas sekundėmis tarp būklės atnaujinimų"
 
 #: drivemount/properties.c:327
 msgid "Disk Mounter Preferences"
 msgstr "Diskų montavimo įtaiso parinktys"
 
 #: drivemount/properties.c:355
-#, fuzzy
 msgid "_Mount directory:"
-msgstr "_Montavimo vieta:"
+msgstr "_Montavimo katalogas:"
 
 #: drivemount/properties.c:361
 msgid "Select Mount Directory"
-msgstr ""
+msgstr "Pasirink montavimo katalogą"
 
 #: drivemount/properties.c:383
-#, fuzzy
 msgid "_Update interval:"
-msgstr "_Atnaujinimo intervalas (sekundėmis):"
+msgstr "_Atnaujinimo intervalas:"
 
-#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
-#, fuzzy
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:467
 msgid "seconds"
-msgstr "milisekundžių"
+msgstr "sekundės"
 
 #: drivemount/properties.c:419
-#, fuzzy
 msgid "_Icon:"
-msgstr "_Ikona:"
+msgstr "_Piktograma:"
 
 #: drivemount/properties.c:445
 msgid "Floppy"
@@ -954,7 +929,7 @@ msgstr "Diskelis"
 
 #: drivemount/properties.c:448
 msgid "Cdrom"
-msgstr "Kompaktas"
+msgstr "Kompaktinis diskas"
 
 #: drivemount/properties.c:451
 msgid "Cd Recorder"
@@ -962,7 +937,7 @@ msgstr "CD įrašinėtojas"
 
 #: drivemount/properties.c:454
 msgid "Zip Drive"
-msgstr "Zip kaupiklis"
+msgstr "Zip diskas"
 
 #: drivemount/properties.c:457
 msgid "Hard Disk"
@@ -970,7 +945,7 @@ msgstr "Kietas diskas"
 
 #: drivemount/properties.c:460
 msgid "Jaz Drive"
-msgstr "Jaz kaupiklis"
+msgstr "Jaz diskas"
 
 #: drivemount/properties.c:463
 msgid "Custom"
@@ -978,33 +953,31 @@ msgstr "Kitokia"
 
 #: drivemount/properties.c:482
 msgid "Select icon for mounted"
-msgstr "Pasirink ikoną primontuotiems"
+msgstr "Pasirink piktogramą sumontuotiems"
 
 #: drivemount/properties.c:489
-#, fuzzy
 msgid "Moun_ted icon:"
-msgstr "_Montavimo vieta:"
+msgstr "Sumon_tuoto piktograma:"
 
 #: drivemount/properties.c:510
 msgid "Select icon for unmounted"
-msgstr "Pasirink ikoną primontuotiems"
+msgstr "Pasirink piktogramą išmontuotiems"
 
 #: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
-msgstr ""
+msgstr "Išmo_ntuoto piktograma:"
 
 #: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "_Pritaikyti dydį prie skydelio"
 
 #: drivemount/properties.c:540
-#, fuzzy
 msgid "_Eject disk when unmounting"
-msgstr "N_umontavus išmesti"
+msgstr "Išmontavus diską _išmesti"
 
 #: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
-msgstr "Naudoti _automount'ui draugišką būsenos patikrinimą"
+msgstr "Naudoti _automontavimuii draugišką būsenos patikrinimą"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -1015,14 +988,13 @@ msgid "Amusements"
 msgstr "Pramogos"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
-#: geyes/geyes.c:454 geyes/geyes.c:456
+#: geyes/geyes.c:465 geyes/geyes.c:467
 msgid "Geyes"
 msgstr "Geyes"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:4
-#, fuzzy
 msgid "Geyes Applet Factory"
-msgstr "Geyes Applet Factory"
+msgstr "Geyes įtaiso gamykla"
 
 #: geyes/geyes.c:249
 msgid "Copyright (C) 1999 Dave Camp"
@@ -1032,34 +1004,33 @@ msgstr "Copyright (C) 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Persekiojančios akys GNOME skydelyje. xeyes klonas."
 
-#: geyes/geyes.c:457
+#: geyes/geyes.c:468
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Akys žiūri pelės žymeklio kryptimis"
 
 #: geyes/geyes.schemas.in.h:1
 msgid "Directory in which the theme is located"
-msgstr ""
+msgstr "Katalogas kuriame yra tema"
 
 #: geyes/themes.c:257
 msgid "Geyes Preferences"
-msgstr "Gakių parinktys"
+msgstr "Geyes parinktys"
 
 #: geyes/themes.c:289
 msgid "Themes"
-msgstr ""
+msgstr "Temos"
 
 #: geyes/themes.c:310
 msgid "_Select a theme:"
-msgstr ""
+msgstr "Pa_sirink temą:"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
 msgstr "Pakeisti klaviatūros išdėstymą"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
-#, fuzzy
 msgid "GKB Factory"
-msgstr "GKB Factory"
+msgstr "GKB gamykla"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
 #: gkb-new/gkb-applet.c:95
@@ -1072,1169 +1043,1151 @@ msgstr "Daro klaviatūros išdėstymo perjungklio įtaisus"
 
 #: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
-msgstr ""
+msgstr "Armenija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:2 gkb-new/descs/presets.xml.in.h:6
 msgid "Armenian"
-msgstr ""
+msgstr "Armenų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:3
 msgid "Armenian Sun keymap"
-msgstr ""
+msgstr "Armėnų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
 msgid "Azerbaidjan"
-msgstr ""
+msgstr "Azerbaidžanas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
 msgid "Azerbaidjani Turkic"
-msgstr ""
+msgstr "Azerbaidžano Turkų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
 msgid "Azerbaidjani Turkic Sun keymap"
-msgstr ""
+msgstr "Azerbaidžano Turkų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
 msgid "Belarus"
-msgstr ""
+msgstr "Baltarusija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
 msgid "Belarussian"
-msgstr ""
+msgstr "Baltarusių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:9
 msgid "Belarussian Sun keymap"
-msgstr ""
+msgstr "Baltarusių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
 msgid "Belgium"
-msgstr ""
+msgstr "Belgija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
 msgid "Brazil"
-msgstr ""
+msgstr "Brazilija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:12
 msgid "Brazil Portuguese Sun USB keymap"
-msgstr ""
+msgstr "Brazilų Portugalų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:13
 msgid "Brazil Portuguese Sun keymap"
-msgstr ""
+msgstr "Brazilų Portugalų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulgarija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:15 gkb-new/descs/presets.xml.in.h:23
 msgid "Bulgarian"
-msgstr ""
+msgstr "Bulgarų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:16
 msgid "Bulgarian Sun keymap"
-msgstr ""
+msgstr "Bulgarų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 #: gkb-new/descs.sun/presets.xml.in.h:18
 msgid "Canadian Sun keymap"
-msgstr ""
+msgstr "Kanadiečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
 msgid "Czech"
-msgstr ""
+msgstr "Čekų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:20 gkb-new/descs/presets.xml.in.h:34
 msgid "Czech Republic"
-msgstr ""
+msgstr "Čekija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:21
 msgid "Czech Sun keymap"
-msgstr ""
+msgstr "Čekų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
 msgid "Danish"
-msgstr ""
+msgstr "Danų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:23
 msgid "Danish Sun Type-4 keymap"
-msgstr ""
+msgstr "Danų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:24
 msgid "Danish Sun USB keymap"
-msgstr ""
+msgstr "Danų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:25
 msgid "Danish Sun keymap"
-msgstr ""
+msgstr "Danų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
 msgid "Denmark"
-msgstr ""
+msgstr "Danija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:27 gkb-new/descs/presets.xml.in.h:43
-#, fuzzy
 msgid "Dutch"
-msgstr "Dust"
+msgstr "Olandų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:28
 msgid "Dutch Sun keymap"
-msgstr ""
+msgstr "Olandų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
 msgid "English"
-msgstr ""
+msgstr "Anglų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:30
 msgid "English Sun Type-4 keymap"
-msgstr ""
+msgstr "Anglų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:31
 msgid "English Sun USB keymap"
-msgstr ""
+msgstr "Anglų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:32
 msgid "English Sun keymap"
-msgstr ""
+msgstr "Anglų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
 msgid "Estonia"
-msgstr ""
+msgstr "Estija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:34 gkb-new/descs/presets.xml.in.h:51
 msgid "Estonian"
-msgstr ""
+msgstr "Estų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:35
 msgid "Estonian Sun keymap"
-msgstr ""
+msgstr "Estų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
 msgid "Finland"
-msgstr ""
+msgstr "Suomija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
 msgid "Finnish"
-msgstr ""
+msgstr "Suomių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:38
 msgid "Finnish Sun keymap"
-msgstr ""
+msgstr "Suomių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
-#, fuzzy
 msgid "France"
-msgstr "Išvaizda"
+msgstr "Prancūzija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:40 gkb-new/descs/presets.xml.in.h:61
 msgid "French"
-msgstr ""
+msgstr "Prancūzų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:41
 msgid "French Sun USB keymap"
-msgstr ""
+msgstr "Prancūzų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:42
 msgid "French Sun keymap"
-msgstr ""
+msgstr "Prancūzų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
-#, fuzzy
 msgid "German"
-msgstr "Bendrai"
+msgstr "Vokiečių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:44
 msgid "German Sun Type-4 keymap"
-msgstr ""
+msgstr "Vokiečių Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:45
 msgid "German Sun USB keymap"
-msgstr ""
+msgstr "Vokiečių Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:46
 msgid "German Sun keymap"
-msgstr ""
+msgstr "Vokiečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
 msgid "Germany"
-msgstr ""
+msgstr "Vokietija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
 msgid "Gnome Keyboard default"
-msgstr ""
+msgstr "Įprasta Gnome klaviatūra"
 
 #: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
 msgid "Hebrew"
-msgstr ""
+msgstr "Hebrajų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:50
 msgid "Hebrew Sun keymap"
-msgstr ""
+msgstr "Hebrajų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
 msgid "Hungarian"
-msgstr ""
+msgstr "Vengriškų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:52
 msgid "Hungarian latin2 Sun keymap"
-msgstr ""
+msgstr "Vengrų latin2 Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:53
 msgid "Hungarian type5 latin 1 keymap"
-msgstr ""
+msgstr "Vengrų type5 latin1 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
 msgid "Hungary"
-msgstr ""
+msgstr "Vengrija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:55 gkb-new/descs/presets.xml.in.h:97
 msgid "Iceland"
-msgstr ""
+msgstr "Islandija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:56 gkb-new/descs/presets.xml.in.h:98
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:57
 msgid "Icelandic Sun keymap"
-msgstr ""
+msgstr "Islandų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
-#, fuzzy
 msgid "International"
-msgstr "Internetas"
+msgstr "Tarptautinės"
 
 #: gkb-new/descs.sun/presets.xml.in.h:59 gkb-new/descs/presets.xml.in.h:103
 msgid "Israel"
-msgstr ""
+msgstr "Izraelis"
 
 #: gkb-new/descs.sun/presets.xml.in.h:60 gkb-new/descs/presets.xml.in.h:104
 msgid "Italian"
-msgstr ""
+msgstr "Italų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:61
 msgid "Italian Sun Type-4 keymap"
-msgstr ""
+msgstr "Italų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:62
 msgid "Italian Sun USB keymap"
-msgstr ""
+msgstr "Italų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:63
 msgid "Italian Sun keymap"
-msgstr ""
+msgstr "Italų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
 msgid "Italy"
-msgstr ""
+msgstr "Italija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:65 gkb-new/descs/presets.xml.in.h:108
 msgid "Japan"
-msgstr ""
+msgstr "Japonija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:66 gkb-new/descs/presets.xml.in.h:109
 msgid "Japanese"
-msgstr ""
+msgstr "Japonų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:67
 msgid "Japanese Sun Type-4 keymap"
-msgstr ""
+msgstr "Japonų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:68
 msgid "Japanese Sun keymap"
-msgstr ""
+msgstr "Japonų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:69
 msgid "Latvia"
-msgstr ""
+msgstr "Latvija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:70
-#, fuzzy
 msgid "Latvian"
-msgstr "Vietovė"
+msgstr "Latvija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:71
 msgid "Latvian Sun keymap"
-msgstr ""
+msgstr "Latvių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
-#, fuzzy
 msgid "Lithuania"
-msgstr "Light hail"
+msgstr "Lietuva"
 
 #: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lietuvių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
-msgstr ""
+msgstr "Lietuviškas Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
 msgid "Macedonia"
-msgstr ""
+msgstr "Makedonija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:76 gkb-new/descs/presets.xml.in.h:126
 msgid "Macedonian"
-msgstr ""
+msgstr "Makedoniečių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:77
 msgid "Macedonian Sun keymap"
-msgstr ""
+msgstr "Makedoniečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
-#, fuzzy
 msgid "Norway"
-msgstr "Normalus"
+msgstr "Norvegija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:136
 msgid "Norwegian"
-msgstr ""
+msgstr "Norvegų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:80
 msgid "Norwegian Sun keymap"
-msgstr ""
+msgstr "Norvegų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
 msgid "Poland"
-msgstr ""
+msgstr "Lenkija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
 msgid "Polish"
-msgstr ""
+msgstr "Lenkų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:83
 msgid "Polish Sun keymap"
-msgstr ""
+msgstr "Lenkų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
 msgid "Portugal"
-msgstr ""
+msgstr "Portugalija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:85 gkb-new/descs/presets.xml.in.h:148
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:86
 msgid "Portuguese Sun Type-4 keymap"
-msgstr ""
+msgstr "Portugalų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:87
 msgid "Portuguese Sun keymap"
-msgstr ""
+msgstr "Portugalų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
 msgid "Romania"
-msgstr ""
+msgstr "Rumunija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:89 gkb-new/descs/presets.xml.in.h:153
-#, fuzzy
 msgid "Romanian"
-msgstr "Rain"
+msgstr "Rumunų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:90
 msgid "Romanian Sun keymap"
-msgstr ""
+msgstr "Rumunų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
 msgid "Russia"
-msgstr ""
+msgstr "Rusija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:92 gkb-new/descs/presets.xml.in.h:156
 msgid "Russian"
-msgstr ""
+msgstr "Rusiška"
 
 #: gkb-new/descs.sun/presets.xml.in.h:93
 msgid "Russian Sun keymap"
-msgstr ""
+msgstr "Rusų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:94
 msgid "Serbian Sun standard keymap"
-msgstr ""
+msgstr "Serbų Sun standartinis išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:95
 msgid "Serbo-Croatian"
-msgstr ""
+msgstr "Serbų-Kroatų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:165
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:166
 msgid "Slovak Republic"
-msgstr ""
+msgstr "Slovakija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:98
 msgid "Slovak Sun keymap"
-msgstr ""
+msgstr "Slovakų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovėnija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:169
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovėnų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:101
 msgid "Slovenian Sun keymap"
-msgstr ""
+msgstr "Slovėnų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
-#, fuzzy
 msgid "Spain"
-msgstr "Rain"
+msgstr "Ispanija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
-#, fuzzy
 msgid "Spanish"
-msgstr "Sprays"
+msgstr "Ispanų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:104
 msgid "Spanish Sun Type-4 keymap"
-msgstr ""
+msgstr "Ispanų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:105
 msgid "Spanish Sun USB keymap"
-msgstr ""
+msgstr "Ispanų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:106
 msgid "Spanish Sun keymap"
-msgstr ""
+msgstr "Ispanų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
 msgid "Sweden"
-msgstr ""
+msgstr "Švedija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:181
 msgid "Swedish"
-msgstr ""
+msgstr "Švedų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:109
 msgid "Swedish Sun Type-4 keymap"
-msgstr ""
+msgstr "Švedų Sun Type-4 išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:110
 msgid "Swedish Sun USB keymap"
-msgstr ""
+msgstr "Švedų Sun USB išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:111
 msgid "Swedish Sun keymap"
-msgstr ""
+msgstr "Švedų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:112
 msgid "Swiss German Sun keymap"
-msgstr ""
+msgstr "Šveicarų Vokiečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
 msgid "Switzerland"
-msgstr ""
+msgstr "Šveicarija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:189
 msgid "Thai"
-msgstr ""
+msgstr "Tailandiečių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:115
 msgid "Thai Sun keymap"
-msgstr ""
+msgstr "Tailandiečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
 msgid "Thailand"
-msgstr ""
+msgstr "Tailandas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
 msgid "Turkey"
-msgstr ""
+msgstr "Turkija"
 
 #: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:196
 msgid "Turkish"
-msgstr ""
+msgstr "Turkų"
 
 #: gkb-new/descs.sun/presets.xml.in.h:119
 msgid "Turkish Sun keymap"
-msgstr ""
+msgstr "Turkų Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:120
 msgid "US Sun Type-4 keyboard"
-msgstr ""
+msgstr "JAV Sun Type-4 klaviatūra"
 
 #: gkb-new/descs.sun/presets.xml.in.h:121
 msgid "US Sun USB keyboard"
-msgstr ""
+msgstr "JAV Sun USB klaviatūra"
 
 #: gkb-new/descs.sun/presets.xml.in.h:122
 msgid "US Sun type5 keyboard"
-msgstr ""
+msgstr "JAV Sun type5 klaviatūra"
 
 #: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukraina"
 
 #: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:216
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainiečių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:125
 msgid "Ukrainian Sun keymap"
-msgstr ""
+msgstr "Ukrainiečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
 msgid "United Kingdom"
-msgstr ""
+msgstr "Jungtinė karalystė"
 
 #: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
 msgid "United States"
-msgstr ""
+msgstr "Jungtinės valstijos"
 
 #: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnamas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:129
 msgid "Vietnamese"
-msgstr ""
+msgstr "Vietnamiečių"
 
 #: gkb-new/descs.sun/presets.xml.in.h:130
 msgid "Vietnamese Sun keymap"
-msgstr ""
+msgstr "Vietnamiečių Sun išdėstymas"
 
 #: gkb-new/descs.sun/presets.xml.in.h:131
 msgid "Yugoslavia"
-msgstr ""
+msgstr "Jugoslavija"
 
 #: gkb-new/descs/presets.xml.in.h:1
 msgid "Algeria"
-msgstr ""
+msgstr "Algeria"
 
 #: gkb-new/descs/presets.xml.in.h:2
 msgid "Arabic"
-msgstr ""
+msgstr "Arabų"
 
 #: gkb-new/descs/presets.xml.in.h:3
 msgid "Arabic keymap"
-msgstr ""
+msgstr "Arabų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:4
 msgid "Arabic xkb keymap"
-msgstr ""
+msgstr "Arabų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:7
 msgid "Armenian xkb keymap"
-msgstr ""
+msgstr "Armėnų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:8
 msgid "Austria"
-msgstr ""
+msgstr "Austrija"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaidjani Turkic xkb keymap"
-msgstr ""
+msgstr "Azerbaidžano Turkų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:12
 msgid "Bahrain"
-msgstr ""
+msgstr "Bahreinas"
 
 #: gkb-new/descs/presets.xml.in.h:13
 msgid "Basque"
-msgstr ""
+msgstr "Baskų"
 
 #: gkb-new/descs/presets.xml.in.h:16
 msgid "Belarussian xkb keymap"
-msgstr ""
+msgstr "Baltarusių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:17
-#, fuzzy
 msgid "Belgian"
-msgstr "M_irksėti"
+msgstr "Belgų"
 
 #: gkb-new/descs/presets.xml.in.h:20
 msgid "Brazil Portuguese keymap"
-msgstr ""
+msgstr "Brazilų Portugalų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:21
 msgid "Brazil Portuguese xkb keymap"
-msgstr ""
+msgstr "Brazilų Portugalų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:24
 msgid "Bulgarian Cyrillic"
-msgstr ""
+msgstr "Bulgarų kirilica"
 
 #: gkb-new/descs/presets.xml.in.h:25
 msgid "Bulgarian keymap"
-msgstr ""
+msgstr "Bulgarų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:26
 msgid "Bulgarian xkb keymap"
-msgstr ""
+msgstr "Bulgarų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:28
 msgid "Canadian xkb keymap"
-msgstr ""
+msgstr "Kandiečių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:29
-#, fuzzy
 msgid "Comoros"
-msgstr "Spalvos"
+msgstr "Komorai"
 
 #: gkb-new/descs/presets.xml.in.h:30
-#, fuzzy
 msgid "Croatia"
-msgstr "Būtina"
+msgstr "Kroatija"
 
 #: gkb-new/descs/presets.xml.in.h:31
-#, fuzzy
 msgid "Croatian"
-msgstr "Būtina"
+msgstr "Kroatų"
 
 #: gkb-new/descs/presets.xml.in.h:32
 msgid "Croatian keymap"
-msgstr ""
+msgstr "Kroatų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:35
 msgid "Czech and Slovak xkb keymap"
-msgstr ""
+msgstr "Čekų ir Slovakų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:36
 msgid "Czech keymap"
-msgstr ""
+msgstr "Čekų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:37
 msgid "Czech qwertz xkb keymap"
-msgstr ""
+msgstr "Čekų qwertz xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:39
 msgid "Danish keymap"
-msgstr ""
+msgstr "Danų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:40
 msgid "Danish xkb keymap"
-msgstr ""
+msgstr "Danų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:42
 msgid "Djibouti"
-msgstr ""
+msgstr "Djibouti"
 
 #: gkb-new/descs/presets.xml.in.h:44
 msgid "Dutch keymap"
-msgstr ""
+msgstr "Olandų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:45
 msgid "Dutch xkb keymap"
-msgstr ""
+msgstr "Olandų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:46
 msgid "Dvorak xkb keymap"
-msgstr ""
+msgstr "Dvorako xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:47
 msgid "Egypt"
-msgstr ""
+msgstr "Egiptas"
 
 #: gkb-new/descs/presets.xml.in.h:49
 msgid "English keymap"
-msgstr ""
+msgstr "Anglų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:52
 msgid "Estonian keymap"
-msgstr ""
+msgstr "Estų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:53
 msgid "Estonian xkb keymap"
-msgstr ""
+msgstr "Estų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:54
 msgid "Euskadi"
-msgstr ""
+msgstr "Euskadi"
 
 #: gkb-new/descs/presets.xml.in.h:57
 msgid "Finnish keymap"
-msgstr ""
+msgstr "Suomių išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:58
 msgid "Finnish xkb keymap"
-msgstr ""
+msgstr "Suomių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:59
 msgid "Former Czechoslovakia"
-msgstr ""
+msgstr "Buvusi Čekoslovakija"
 
 #: gkb-new/descs/presets.xml.in.h:62
 msgid "French PC/AT 101 keyboard"
-msgstr ""
+msgstr "Prancūzų PC/AT 101 klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:63
 msgid "French Swiss"
-msgstr ""
+msgstr "Prancūzų Šveicarų"
 
 #: gkb-new/descs/presets.xml.in.h:64
 msgid "French Swiss keymap"
-msgstr ""
+msgstr "Prancūzų Šveicarų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:65
 msgid "French keymap"
-msgstr ""
+msgstr "Prancūzų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:66
 msgid "French xkb keymap"
-msgstr ""
+msgstr "Prancūzų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:67
 msgid "French-Canadian 105-key"
-msgstr ""
+msgstr "Prancūzų-Kanadiečių 105-klavišų"
 
 #: gkb-new/descs/presets.xml.in.h:68
 msgid "GB 102-key"
-msgstr ""
+msgstr "GB 102-klavišų"
 
 #: gkb-new/descs/presets.xml.in.h:69
 msgid "GB 105-key"
-msgstr ""
+msgstr "GB 105-klavišų"
 
 #: gkb-new/descs/presets.xml.in.h:70
 msgid "Georgia"
-msgstr ""
+msgstr "Gruzija"
 
 #: gkb-new/descs/presets.xml.in.h:71
 msgid "Georgian"
-msgstr ""
+msgstr "Gruzinų"
 
 #: gkb-new/descs/presets.xml.in.h:72
 msgid "Georgian Latin"
-msgstr ""
+msgstr "Gruzinų Lotynų"
 
 #: gkb-new/descs/presets.xml.in.h:73
 msgid "Georgian Russian layout"
-msgstr ""
+msgstr "Gruzinų Rusų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:74
 msgid "Georgian keymap"
-msgstr ""
+msgstr "Gruzinų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:76
 msgid "German Swiss with Euro"
-msgstr ""
+msgstr "Vokiečių Šveicarų su Euru"
 
 #: gkb-new/descs/presets.xml.in.h:77
 msgid "German keymap"
-msgstr ""
+msgstr "Vokiečių išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:78
 msgid "German xkb keymap"
-msgstr ""
+msgstr "Vokiečių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:81
 msgid "Greece"
-msgstr ""
+msgstr "Graikija"
 
 #: gkb-new/descs/presets.xml.in.h:82
 msgid "Greek"
-msgstr ""
+msgstr "Graikų"
 
 #: gkb-new/descs/presets.xml.in.h:83
 msgid "Greek keymap"
-msgstr ""
+msgstr "Graikų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:84
 msgid "Greek xkb keymap"
-msgstr ""
+msgstr "Graikų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:86
 msgid "Hebrew keymap"
-msgstr ""
+msgstr "Hebrajų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:87
 msgid "Hebrew xkb keymap"
-msgstr ""
+msgstr "Hebrajų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:89
 msgid "Hungarian 101-key latin 1"
-msgstr ""
+msgstr "Vengrų 101-klavišo latin1"
 
 #: gkb-new/descs/presets.xml.in.h:90
 msgid "Hungarian 101-key latin 2"
-msgstr ""
+msgstr "Vengrų 101-klavišo latin2"
 
 #: gkb-new/descs/presets.xml.in.h:91
 msgid "Hungarian 105-key latin 1"
-msgstr ""
+msgstr "Vengrų 105-klavišų latin1"
 
 #: gkb-new/descs/presets.xml.in.h:92
 msgid "Hungarian 105-key latin 2"
-msgstr ""
+msgstr "Vengrų 105-klavišų latin2"
 
 #: gkb-new/descs/presets.xml.in.h:93
 msgid "Hungarian PC/AT 101 keyboard"
-msgstr ""
+msgstr "Vengrų PC/AT 101 klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:94
 msgid "Hungarian latin1"
-msgstr ""
+msgstr "Vengrų latin1"
 
 #: gkb-new/descs/presets.xml.in.h:95
 msgid "Hungarian latin2 xkb keymap"
-msgstr ""
+msgstr "Vengrų latin2 xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:99
 msgid "Icelandic keymap"
-msgstr ""
+msgstr "Islandų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:100
 msgid "Icelandic xkb keymap"
-msgstr ""
+msgstr "Islandų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:102
 msgid "Iraq"
-msgstr ""
+msgstr "Irakas"
 
 #: gkb-new/descs/presets.xml.in.h:105
 msgid "Italian keymap"
-msgstr ""
+msgstr "Italų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:106
 msgid "Italian xkb keymap"
-msgstr ""
+msgstr "Italų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:110
 msgid "Japanese keymap"
-msgstr ""
+msgstr "Japonų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:111
 msgid "Japanese xkb keymap"
-msgstr ""
+msgstr "Japonų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:112
 msgid "Jordan"
-msgstr ""
+msgstr "Jordanija"
 
 #: gkb-new/descs/presets.xml.in.h:113
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuveitas"
 
 #: gkb-new/descs/presets.xml.in.h:114
-#, fuzzy
 msgid "Lao"
-msgstr "Žema"
+msgstr "Lao"
 
 #: gkb-new/descs/presets.xml.in.h:115
 msgid "Lao keymap"
-msgstr ""
+msgstr "Laoso išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:116
 msgid "Laos"
-msgstr ""
+msgstr "Laosas"
 
 #: gkb-new/descs/presets.xml.in.h:117
 msgid "Lebanon"
-msgstr ""
+msgstr "Libanas"
 
 #: gkb-new/descs/presets.xml.in.h:118
 msgid "Libyan Arab Jamahiriya"
-msgstr ""
+msgstr "Libyan Arab Jamahiriya"
 
 #: gkb-new/descs/presets.xml.in.h:121
 msgid "Lithuanian keymap"
-msgstr ""
+msgstr "Lietuviškas išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:122
 msgid "Lithuanian programmers xkb keymap"
-msgstr ""
+msgstr "Lietuviškas programuotojų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:123
 msgid "Lithuanian qwerty xkb keymap"
-msgstr ""
+msgstr "Lietuviškas qwerty xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:124
 msgid "Lithuanian standard xkb keymap"
-msgstr ""
+msgstr "Lietuviškas standartinis xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:127
 msgid "Macedonian xkb keymap"
-msgstr ""
+msgstr "Makedoniečių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:128
-#, fuzzy
 msgid "Marocco"
-msgstr "Makrosai"
+msgstr "Maroko"
 
 #: gkb-new/descs/presets.xml.in.h:129
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolija"
 
 #: gkb-new/descs/presets.xml.in.h:130
 msgid "Mongolian"
-msgstr ""
+msgstr "Mongolų"
 
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
-msgstr ""
+msgstr "Mongolų alt išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:132
 msgid "Mongolian keymap"
-msgstr ""
+msgstr "Mongolų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:133
 msgid "Mongolian phonetic keymap"
-msgstr ""
+msgstr "Mongolų fonetinis išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:134
 msgid "Netherlands"
-msgstr ""
+msgstr "Nyderlandai"
 
 #: gkb-new/descs/presets.xml.in.h:137
 msgid "Norwegian xkb keymap"
-msgstr ""
+msgstr "Norvegų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:138
 msgid "Oman"
-msgstr ""
+msgstr "Omanas"
 
 #: gkb-new/descs/presets.xml.in.h:139
 msgid "Palestinian Territory"
-msgstr ""
+msgstr "Palestiniečių teritorijos"
 
 #: gkb-new/descs/presets.xml.in.h:140
 msgid "Plain Russian keymap"
-msgstr ""
+msgstr "Paprastas Rusų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:143
 msgid "Polish deadkeys"
-msgstr ""
+msgstr "Lenkų deadkeys"
 
 #: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish xkb keymap"
-msgstr ""
+msgstr "Lenkų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal Deadkeys"
-msgstr ""
+msgstr "Portugalų Deadkeys"
 
 #: gkb-new/descs/presets.xml.in.h:147
 msgid "Portuglese"
-msgstr ""
+msgstr "Portugalų"
 
 #: gkb-new/descs/presets.xml.in.h:149
 msgid "Portuguese keymap"
-msgstr ""
+msgstr "Portugalų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:150
 msgid "Portuguese xkb keymap"
-msgstr ""
+msgstr "Portugalų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:151
 msgid "Qatar"
-msgstr ""
+msgstr "Kataras"
 
 #: gkb-new/descs/presets.xml.in.h:154
 msgid "Romanian xkb keymap"
-msgstr ""
+msgstr "Rumunų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:157
 msgid "Russian Cyrillic"
-msgstr ""
+msgstr "Rusų kirilica"
 
 #: gkb-new/descs/presets.xml.in.h:158
 msgid "Russian keymap"
-msgstr ""
+msgstr "Rusų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:159
 msgid "Russian xkb keymap"
-msgstr ""
+msgstr "Rusų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:160
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudo Arabija"
 
 #: gkb-new/descs/presets.xml.in.h:161
 msgid "Serb"
-msgstr ""
+msgstr "Serbija"
 
 #: gkb-new/descs/presets.xml.in.h:162
 msgid "Serb keymap"
-msgstr ""
+msgstr "Serbų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
-msgstr ""
+msgstr "Serbų standartinis xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:164
 msgid "Serbia and Montenegro"
-msgstr ""
+msgstr "Serbija ir Juodkalnija"
 
 #: gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak keymap"
-msgstr ""
+msgstr "Slovakų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:170
 msgid "Slovenian keymap"
-msgstr ""
+msgstr "Slovėnų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:171
 msgid "Slovenian xkb keymap"
-msgstr ""
+msgstr "Slovėnų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:172
-#, fuzzy
 msgid "Somalia"
-msgstr "Normalus"
+msgstr "Somalis"
 
 #: gkb-new/descs/presets.xml.in.h:175
 msgid "Spanish PC/AT 101 keyboard"
-msgstr ""
+msgstr "Ispanų PC/AT 101 klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish keymap"
-msgstr ""
+msgstr "Ispanų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish xkb keymap"
-msgstr ""
+msgstr "Ispanų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:178
-#, fuzzy
 msgid "Sudan"
-msgstr "Sand"
+msgstr "Sudanas"
 
 #: gkb-new/descs/presets.xml.in.h:179
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr ""
+msgstr "Sun (!ne PC!) type5 Vengrų lotynų 2"
 
 #: gkb-new/descs/presets.xml.in.h:182
 msgid "Swedish keymap"
-msgstr ""
+msgstr "Švedų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:183
 msgid "Swedish xkb keymap"
-msgstr ""
+msgstr "Švedų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:184
 msgid "Swiss keymap"
-msgstr ""
+msgstr "Šveicarų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:186
 msgid "Syria"
-msgstr ""
+msgstr "Sirija"
 
 #: gkb-new/descs/presets.xml.in.h:187
 msgid "Syriac"
-msgstr ""
+msgstr "Sirijos"
 
 #: gkb-new/descs/presets.xml.in.h:188
 msgid "Syriac Phonetic"
-msgstr ""
+msgstr "Sirojos fonetiškas"
 
 #: gkb-new/descs/presets.xml.in.h:190
 msgid "Thai Kedmanee"
-msgstr ""
+msgstr "Thai Kedmanee"
 
 #: gkb-new/descs/presets.xml.in.h:191
 msgid "Thai keymap"
-msgstr ""
+msgstr "Tajų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai xkb keymap"
-msgstr ""
+msgstr "Tajų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:194
 msgid "Tunisia"
-msgstr ""
+msgstr "Tunisas"
 
 #: gkb-new/descs/presets.xml.in.h:197
 msgid "Turkish \"F\" keyboard"
-msgstr ""
+msgstr "Turkų \"F\" klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:198
 msgid "Turkish \"Q\" keyboard"
-msgstr ""
+msgstr "Turkų \"Q\" klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:199
 msgid "Turkish keymap"
-msgstr ""
+msgstr "Turkų išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:200
 msgid "Turkish xkb keymap"
-msgstr ""
+msgstr "Turkų xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:201
 msgid "UK 105-key"
-msgstr ""
+msgstr "UK 105-klavišų"
 
 #: gkb-new/descs/presets.xml.in.h:202
 msgid "UK PC/AT keyboard"
-msgstr ""
+msgstr "UK PC/AT klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:203
 msgid "US 101-key keyboard"
-msgstr ""
+msgstr "JAV 101-klavišo klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:204
 msgid "US 105-key keyboard (with windows keys)"
-msgstr ""
+msgstr "JAV 105-klavišų klaviatūra (su windows klavišais)"
 
 #: gkb-new/descs/presets.xml.in.h:205
 msgid "US 84-key"
-msgstr ""
+msgstr "US 84-klavišų"
 
 #: gkb-new/descs/presets.xml.in.h:206
 msgid "US DEC 450"
-msgstr ""
+msgstr "US DEC 450"
 
 #: gkb-new/descs/presets.xml.in.h:207
 msgid "US IBM RS/6000"
-msgstr ""
+msgstr "US IBM RS/6000"
 
 #: gkb-new/descs/presets.xml.in.h:208
 msgid "US International"
-msgstr ""
+msgstr "US tarptautinė"
 
 #: gkb-new/descs/presets.xml.in.h:209
 msgid "US International xkb keymap"
-msgstr ""
+msgstr "JAV tarptautinė xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:210
 msgid "US Macintosh"
-msgstr ""
+msgstr "US Macintosh"
 
 #: gkb-new/descs/presets.xml.in.h:211
 msgid "US PC/AT 101 keyboard"
-msgstr ""
+msgstr "JAV PC/AT 101 klaviatūra"
 
 #: gkb-new/descs/presets.xml.in.h:212
 msgid "US Silicon Graphics 101-key"
-msgstr ""
+msgstr "JAV Silicon Graphics 101-klavišo"
 
 #: gkb-new/descs/presets.xml.in.h:213
 msgid "US Sun type5"
-msgstr ""
+msgstr "US Sun type5"
 
 #: gkb-new/descs/presets.xml.in.h:214
 msgid "US xkb keymap"
-msgstr ""
+msgstr "US xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian xkb keymap"
-msgstr ""
+msgstr "Ukrainiečių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:218
 msgid "United Arab Emirates"
-msgstr ""
+msgstr "Jungtiniai Arabų Emiratai"
 
 #: gkb-new/descs/presets.xml.in.h:220
 msgid "United Kingdom xkb keymap"
-msgstr ""
+msgstr "Jungtinės Karalystės xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:222
 msgid "Viet_namese"
-msgstr ""
+msgstr "Viet_namiečių"
 
 #: gkb-new/descs/presets.xml.in.h:223
 msgid "Viet_namese xkb keymap"
-msgstr ""
+msgstr "Viet_namiečių xkb išdėstymas"
 
 #: gkb-new/descs/presets.xml.in.h:225
 msgid "Yemen"
-msgstr ""
+msgstr "Jemenas"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2277,79 +2230,75 @@ msgstr ""
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
-msgstr ""
+msgstr "Įtaiso išvaizdos rėžimas"
 
 #: gkb-new/gkb.schemas.in.h:2
-#, fuzzy
 msgid "Flag image for the keyboard layout"
-msgstr "Pakeisti klaviatūros išdėstymą"
+msgstr "Vėliavos paveiksliukas klaviatūros išdėstymui."
 
 #: gkb-new/gkb.schemas.in.h:3
 msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
-msgstr ""
+msgstr "Gali būti \"Vėliava ir etiketė, \"Etiketė\" arba \"Vėliava\""
 
 #: gkb-new/gkb.schemas.in.h:4
-#, fuzzy
 msgid "Keybinding for switching layout"
 msgstr "Spartusis klavišas išsidėstymų keitimui"
 
 #: gkb-new/gkb.schemas.in.h:5
 msgid "No longer used"
-msgstr ""
+msgstr "Nenaudojamas"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
-msgstr ""
+msgstr "Sukonfigūruotų išdėstymų skaičius"
 
 #: gkb-new/gkb.schemas.in.h:7
 msgid "The command that switches your keymap to this layout"
-msgstr ""
+msgstr "Komanda kuri perjungia tavo išdėstymą į šį"
 
 #: gkb-new/gkb.schemas.in.h:8
-#, fuzzy
 msgid "The country of the keyboard layout"
-msgstr "Pakeisti klaviatūros išdėstymą"
+msgstr "Klaviatūros išdėstymo valstybė"
 
 #: gkb-new/gkb.schemas.in.h:9
-#, fuzzy
 msgid "The label of the keyboard layout"
-msgstr "Pakeisti klaviatūros išdėstymą"
+msgstr "Klaviatūros išdėstymo etiketė"
 
 #: gkb-new/gkb.schemas.in.h:10
-#, fuzzy
 msgid "The language of the keyboard layout"
-msgstr "Pakeisti klaviatūros išdėstymą"
+msgstr "Klaviatūros išdėstymo kalba"
 
 #: gkb-new/gkb.schemas.in.h:11
-#, fuzzy
 msgid "The name of the keyboard layout"
-msgstr "Pakeisti klaviatūros išdėstymą"
+msgstr "Klaviatūros išdėstymo pavadinimas"
 
 #: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
-msgstr ""
+msgstr "Ši vėliava bus rodoma priedo vėliavos laukelyje"
 
 #: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
-msgstr ""
+msgstr "Ši informacija padeda tau identifikuoti tavo klaviatūros išdėstymą"
 
 #: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
-msgstr ""
+msgstr "Tai yra susiejimas klavišų paspaudimu paremto išdėstymų pakeitimo"
 
 #: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
 msgstr ""
+"Tai turėtų būti pvz. \"gkb_xmmap us\", \"setxkbmap us\" arba \"xmodmap "
+"kažkas.xmm\""
 
 #: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
-msgstr ""
+msgstr "Ši etiketė bus rodoma priedo etiketės laukelyje"
 
 #: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
-msgstr ""
+msgstr "Tai identifikuos išdėstymą esantį sąraše"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -2361,7 +2310,7 @@ msgstr "Spauskite klavišą arba spauskite Esc atsisakymui"
 
 #: gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
-msgstr ""
+msgstr "Nenurodytas"
 
 #: gkb-new/prop-add.c:87
 msgid "Keyboards (select and press add)"
@@ -2370,46 +2319,43 @@ msgstr "Klaviatūros (pažymėkite ir paspauskite pridėti)"
 #: gkb-new/prop-add.c:229
 #, c-format
 msgid "Keymap `%s' for the country %s already exists"
-msgstr ""
+msgstr "Išdėstymas `%s' valstybei %s jau egzistuoja"
 
 #: gkb-new/prop-add.c:328
 msgid "Select Keyboard"
 msgstr "Pasirinkti klaviatūrą"
 
 #: gkb-new/prop-add.c:353
-#, fuzzy
 msgid "_Keyboards (select and press add):"
-msgstr "Klaviatūros (pažymėkite ir paspauskite pridėti)"
+msgstr "_Klaviatūros (pažymėkite ir paspauskite pridėti):"
 
 #: gkb-new/prop-map.c:80
-#, fuzzy
 msgid "Unknown Keyboard"
-msgstr "Redaguoti klaviatūrą"
+msgstr "Nežinoma klaviatūra"
 
 #: gkb-new/prop-map.c:91
 msgid "?"
-msgstr ""
+msgstr "?"
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:277
 msgid "Edit Keyboard"
 msgstr "Redaguoti klaviatūrą"
 
-#: gkb-new/prop-map.c:297
+#: gkb-new/prop-map.c:302
 msgid "_Name:"
 msgstr "_Vardas:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:306
 msgid "_Label:"
-msgstr "Ž_ymė:"
+msgstr "_Užrašas:"
 
-#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "Ko_manda:"
 
-#: gkb-new/prop-map.c:307
-#, fuzzy
+#: gkb-new/prop-map.c:314
 msgid "_Flag:"
-msgstr "Vė_liava"
+msgstr "_Vėliava:"
 
 #: gkb-new/prop.c:126 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
@@ -2417,14 +2363,14 @@ msgstr "Vėliava"
 
 #: gkb-new/prop.c:127 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
-msgstr "Žymė"
+msgstr "Užrašas"
 
 #: gkb-new/prop.c:128 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
-msgstr "Vėliava ir žymė"
+msgstr "Vėliava ir užrašas"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
+#: modemlights/properties.c:443
 msgid "Display"
 msgstr "Rodymas"
 
@@ -2434,45 +2380,40 @@ msgid "_Appearance: "
 msgstr "_Išvaizda"
 
 #: gkb-new/prop.c:307
-#, fuzzy
 msgid "Keyboard Shortcuts"
-msgstr "Nuorodos"
+msgstr "Spartieji klavišai"
 
 #: gkb-new/prop.c:313
 msgid "S_witch layout:"
-msgstr ""
+msgstr "Pa_keisti išdėstymą:"
 
 #: gkb-new/prop.c:326
-#, fuzzy
 msgid "_Grab keys"
-msgstr "_Spauskite spartųjį klavišą"
+msgstr "_Griebti klavišus"
 
 #: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Klaviatūros išdėstymo perjungiklio parinktys"
 
 #: gkb-new/prop.c:407
-#, fuzzy
 msgid "Keyboard Layout Selector"
 msgstr "Klaviatūros išdėstymo perjungiklis"
 
 #: gkb-new/prop.c:434
-#, fuzzy
 msgid "Keyboards"
-msgstr "Redaguoti klaviatūrą"
+msgstr "Klaviatūros"
 
 #. Page 1 Frame
 #: gkb-new/prop.c:438
-#, fuzzy
 msgid "_Keyboards:"
-msgstr "Redaguoti klaviatūrą"
+msgstr "_Klaviatūros:"
 
 #: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "Parinktys"
 
 #: gkb-new/system.c:44
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occured.\n"
 "\n"
@@ -2482,12 +2423,13 @@ msgid ""
 msgstr ""
 "Įvyko klaida.\n"
 "\n"
-"Keymap `%s'  šitoje sistemoje nepalaikomas. Pasirinkite prašau kitą keymap.\n"
+"Išdėstymas `%s'  šitoje sistemoje nepalaikomas. Prašau pasirinkite kitą "
+"išdėstymą.\n"
 "\n"
-"Komanda buvo: %s "
+"Komanda buvo: %s"
 
 #: gkb-new/system.c:49
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "An error occured.\n"
 "\n"
@@ -2496,12 +2438,12 @@ msgid ""
 "\n"
 "The command was: %s"
 msgstr ""
-"An error occured.\n"
+"Įvyko klaida.\n"
 "\n"
-"Unable to load keymap `%s', probably because command `xmodmap' could not be "
-"located in your PATH.\n"
+"Negaliu įkelti išdėstymo `%s', greičiausiai todėl, kad komanda `xmodmap' "
+"negali būti rasta tavo PATH.\n"
 "\n"
-"The command was: %s"
+"Komanda buvo: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -2517,7 +2459,7 @@ msgstr "Gauti pastoviai atnaujinamas akcijų kainas"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Factory"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "Akcijų kurso pranešėjas"
 
@@ -2528,13 +2470,13 @@ msgstr "_Atnaujinti"
 
 #: gtik/gtik.c:255
 msgid "Could not retrieve the stock data."
-msgstr ""
+msgstr "Nepavyko gauti akcijų duomenų."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:346
+#: gtik/gtik.c:289 gweather/gweather-applet.c:357
 msgid "Updating..."
 msgstr "Atnaujinu..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2546,143 +2488,126 @@ msgstr ""
 "NESUTEIKIAMA JOKIA GARANTIJA. Nesinaudokite akcijų kurso pranešėju spręsdami "
 "kur investuoti savo pinigus; jis skirtas tik informaciniams tikslams."
 
-#: gtik/gtik.c:1278
-#, fuzzy
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
-msgstr "E_samos sąlygos"
+msgstr "Dabartinės _akcijos:"
 
-#: gtik/gtik.c:1286
-#, fuzzy
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
-msgstr "_Naujas simbolis"
+msgstr "_Naujas simbolis:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "_Pridėti"
 
-#: gtik/gtik.c:1304
-#, fuzzy
+#: gtik/gtik.c:1305
 msgid "_Remove"
-msgstr "_Pašalinti pažymėtus"
+msgstr "_Pašalinti"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "Akcijų kurso pranešėjo savybės"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "Simboliai"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2373
 msgid "Behavior"
 msgstr "Elgesys"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
-#, fuzzy
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
-msgstr "_Atnaujinti"
+msgstr "Atnaujinti"
 
-#: gtik/gtik.c:1446
-#, fuzzy
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
-msgstr "Atnaujinimo dažnis minutėmis:"
+msgstr "Akcijų atnaujinimo _dažnis:"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
-#: mailcheck/mailcheck.c:2080
-#, fuzzy
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2085
 msgid "minutes"
 msgstr "minutę(čių)"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
-msgstr ""
+msgstr "Slankiojimas"
 
-#: gtik/gtik.c:1468
-#, fuzzy
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
-msgstr "Slinkimo greitis:"
+msgstr "_Slinkimo greitis:"
 
-#: gtik/gtik.c:1472
-#, fuzzy
+#: gtik/gtik.c:1473
 msgid "Slow"
-msgstr "Rodyti"
+msgstr "Lėtas"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
-msgstr ""
+msgstr "Vidutinis"
 
-#: gtik/gtik.c:1476
-#, fuzzy
+#: gtik/gtik.c:1477
 msgid "Fast"
-msgstr "Pro_gnozė"
+msgstr "Greitas"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "Į_jungti slinkimo mygtukus"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "Slinkti iš _kairės į dešinę"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "Rod_yti tik simbolius ir kainą"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
-#, fuzzy
 msgid "_Width:"
 msgstr "_Plotis:"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "taškų"
 
-#: gtik/gtik.c:1570
-#, fuzzy
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
-msgstr "N_epakeista spalva:"
+msgstr "Šriftas ir spalvos"
 
-#: gtik/gtik.c:1576
-#, fuzzy
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
-msgstr "_Naudoti įprastos temos spalvas"
+msgstr "Nau_doti įprastas temos spalvas ir šriftą"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
-#, fuzzy
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "Šri_ftas:"
 
-#: gtik/gtik.c:1615
-#, fuzzy
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
-msgstr "Akcijų kurso pranešėjas"
+msgstr "Akcijos _pakilo:"
 
-#: gtik/gtik.c:1634
-#, fuzzy
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
-msgstr "Akcijų kurso pranešėjas"
+msgstr "Akcijos _nukrito:"
 
-#: gtik/gtik.c:1653
-#, fuzzy
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
-msgstr "Akcijų kurso pranešėjas"
+msgstr "Akcijos n_epasikeitė:"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
-#, fuzzy
+#: gtik/gtik.c:1673 modemlights/properties.c:577
 msgid "_Background:"
-msgstr "_Fonas"
+msgstr "_Fonas:"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "Eiti į priekį"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "Eiti atgal"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2690,159 +2615,163 @@ msgstr ""
 "Akcijų kurso pranešėjas\n"
 " Gauk pastoviai atnaujinamus akcijų kursus"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2020
 msgid "(No"
 msgstr "(Ne"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2021
 msgid "Change "
 msgstr "Keisti"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr ""
+msgstr "Įtaisas slenka iš dešinės į kairę kai šio rakto reikšmė yra \"true\"."
 
 #: gtik/gtik.schemas.in.h:2
-#, fuzzy
 msgid "Background color"
-msgstr "Fo_no spalva:"
+msgstr "Fono spalva"
 
 #: gtik/gtik.schemas.in.h:3
 msgid ""
 "Display only stock symbols along with their value. Do not diplay changes in "
 "value."
 msgstr ""
+"Rodyti tik akcijų simbolius su jų vertėmis. Nerodyti akcijų vertės pakitimų."
 
 #: gtik/gtik.schemas.in.h:4
-#, fuzzy
 msgid "Display only symbols and price"
-msgstr "Rod_yti tik simbolius ir kainą"
+msgstr "Rodyti tik simbolius ir kainą"
 
 #: gtik/gtik.schemas.in.h:5
-#, fuzzy
 msgid "Font"
-msgstr "Šri_ftas:"
+msgstr "Šriftas"
 
 #: gtik/gtik.schemas.in.h:6
 msgid ""
 "List containing the stocks to be displayed. Consists of the stock id "
 "separated by \"+\""
-msgstr ""
+msgstr "Stebimų akcijų sąrašas. Susideda iš akcijų id atskirtų \"+\""
 
 #: gtik/gtik.schemas.in.h:7
 msgid "Lowered color"
-msgstr ""
+msgstr "Nukritusių spalva"
 
 #: gtik/gtik.schemas.in.h:8
 msgid "Raised color"
-msgstr ""
+msgstr "Pakilusių spalva"
 
 #: gtik/gtik.schemas.in.h:9
 msgid "Right to left scrolling"
-msgstr ""
+msgstr "Slinkimas iš dešinės į kairę"
 
 #: gtik/gtik.schemas.in.h:10
 msgid "Shorter time means the stocks scroll by faster."
-msgstr ""
+msgstr "Trumpesnis laikas reiškia greitesnį akcijų slinkimą."
 
 #: gtik/gtik.schemas.in.h:11
-#, fuzzy
 msgid "Show arrow buttons"
-msgstr "Rodyti _dialogų langelius"
+msgstr "Rodyti mygtukus su rodyklėm"
 
 #: gtik/gtik.schemas.in.h:12
 msgid ""
 "Show arrow buttons on the side of the display so that the user can scroll "
 "forward or backward."
 msgstr ""
+"Rodyti rodyklių mygtukus ekrano šone, kad vartotojas galėtų slankioti pirmyn "
+"ir atgal."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
-msgstr ""
+msgstr "Stebimos akcijos - turi būti atskirtos + ženklu"
 
 #: gtik/gtik.schemas.in.h:14
 msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
 msgstr ""
+"Ekrano fono spalva. Neturi jokio efekto kai vartotojas pasirenka naudoti "
+"įprastas temos spalvas ir šriftus."
 
 #: gtik/gtik.schemas.in.h:15
 msgid ""
 "The color used when the stock's values has lowered. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
 msgstr ""
+"Spalva naudojama kai akcijų vertė nukrinta. Neturi jokio efekto kai "
+"vartotojas pasirenka naudoti įprastas temos spalvas ir šriftus."
 
 #: gtik/gtik.schemas.in.h:16
 msgid ""
 "The color used when the stock's values has not changed. Has no effect when "
 "the user chooses to use the default theme fonts and colors."
 msgstr ""
+"Spalva naudojama kai akcijų vertė nepakito. Neturi jokio efekto kai "
+"vartotojas pasirenka naudoti įprastas temos spalvas."
 
 #: gtik/gtik.schemas.in.h:17
 msgid ""
 "The color used when the stock's values has raised. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
 msgstr ""
+"Spalva naudojama kai akcijų vertė pakyla. Neturi jokio efekto kai vartotojas "
+"pasirenka naudoti įprastas temos spalvas ir šriftus."
 
 #: gtik/gtik.schemas.in.h:18
 msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
 msgstr ""
+"Šriftas naudojamas ekrane. Neturi jokio efekto kai vartotojas pasirenka "
+"naudoti įprastas temos spalvas ir šriftus."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
-msgstr ""
+msgstr "Laiko intervalas tarp akcijų duomenų atnaujinimų."
 
 #: gtik/gtik.schemas.in.h:20
 msgid "The width in pixels of the applet."
-msgstr ""
+msgstr "Priedo plotis taškais."
 
 #: gtik/gtik.schemas.in.h:21
 msgid "Time in milliseconds for display update"
-msgstr ""
+msgstr "Laikas milisekundėmis tarp atnaujinimų"
 
 #: gtik/gtik.schemas.in.h:22
-#, fuzzy
 msgid "Unchanged color"
-msgstr "N_epakeista spalva:"
+msgstr "Nepakeista spalva"
 
 #: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
 #: modemlights/modemlights.schemas.in.h:31
-#, fuzzy
 msgid "Update interval"
-msgstr "_Atnaujinimo intervalas (sekundėmis):"
+msgstr "Atnaujinimo intervalas"
 
 #: gtik/gtik.schemas.in.h:24
-#, fuzzy
 msgid "Use default theme fonts and colors"
-msgstr "_Naudoti įprastos temos spalvas"
+msgstr "Naudoti įprastas temos spalvas ir šriftus"
 
 #: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
-msgstr ""
+msgstr "Naudoti įprastas temos spalvas ir šriftus vietoje savo pasirinktų"
 
 #: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
-msgstr ""
+msgstr "Priedo plotis"
 
 #: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
-msgstr ""
+msgstr "šriftas 2 - daugiau nebenaudojamas"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "Pro_gnozė"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
-#, fuzzy
 msgid "Factory for creating the weather applet."
-msgstr "Factory for creating the weather applet."
+msgstr "Gamykla oro įtaiso sukūrimui."
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
-#, fuzzy
 msgid "Gweather Applet Factory"
-msgstr "Gweather Applet Factory"
+msgstr "Gweather įtaiso gamykla"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
@@ -2877,12 +2806,11 @@ msgstr "Prognozė"
 
 #: gweather/gweather-dialog.c:109
 msgid "City:"
-msgstr ""
+msgstr "Miestas:"
 
 #: gweather/gweather-dialog.c:117
-#, fuzzy
 msgid "Last update:"
-msgstr "Atnaujinti:"
+msgstr "Paskutinis atnaujinimas:"
 
 #: gweather/gweather-dialog.c:125
 msgid "Conditions:"
@@ -2913,17 +2841,14 @@ msgid "Pressure:"
 msgstr "Slėgis:"
 
 #: gweather/gweather-dialog.c:181
-#, fuzzy
 msgid "Visibility:"
 msgstr "Matomumas:"
 
 #: gweather/gweather-dialog.c:276
-#, fuzzy
 msgid "Current Conditions"
-msgstr "E_samos sąlygos"
+msgstr "Esamos sąlygos"
 
 #: gweather/gweather-dialog.c:290
-#, fuzzy
 msgid "Forecast Report"
 msgstr "Prognozės ataskaita"
 
@@ -2944,9 +2869,8 @@ msgid "Click to Enter Weather.com"
 msgstr "_Spausk, jei nori aplankyti Weather.com"
 
 #: gweather/gweather-dialog.c:334
-#, fuzzy
 msgid "Radar Map"
-msgstr "_Radarinis žemėlapis"
+msgstr "Radarinis žemėlapis"
 
 #: gweather/gweather-dialog.c:410
 msgid ""
@@ -2998,9 +2922,8 @@ msgid "Weather Preferences"
 msgstr "Oro parinktys"
 
 #: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
-#, fuzzy
 msgid "_Automatically update every:"
-msgstr "_Atnaujinti kas"
+msgstr "_Automatiškai atnaujinti kas:"
 
 #: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
@@ -3015,13 +2938,12 @@ msgid "Use cus_tom address for radar map"
 msgstr "Naudok pa_rinktą adresą radaro žemėlapiui"
 
 #: gweather/gweather-pref.c:691
-#, fuzzy
 msgid "A_ddress:"
 msgstr "A_dresas:"
 
 #: gweather/gweather-pref.c:774
 msgid "_Select a location:"
-msgstr ""
+msgstr "_Pasirink vietovę:"
 
 #: gweather/gweather-pref.c:803
 msgid "Location"
@@ -3032,62 +2954,60 @@ msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
+"Nustato ar įtaisas automatiškai atnaujina savo oro sąlygų statistiką ar ne."
 
 #: gweather/gweather.schemas.in.h:2
-#, fuzzy
 msgid "Display radar map"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Rodyti _radarinius žemėlapius"
 
 #: gweather/gweather.schemas.in.h:3
 msgid "Fetch a radar map on each update."
-msgstr ""
+msgstr "Gauti radarinį žemėlapį kiekvieno atnaujinimo metu."
 
 #: gweather/gweather.schemas.in.h:4
 msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
+"Jeigu reikšmė \"true\", tada radarinį žemėlapį gauti adresu nurodytu \"radar"
+"\" rakto."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Not used anymore"
-msgstr ""
+msgstr "Daugiau nebenaudojamas"
 
 #: gweather/gweather.schemas.in.h:6
 msgid "The custom url from where to retrieve a radar map."
-msgstr ""
+msgstr "Vartotojo nustatytas URL iš kur gaunamas radarinis žemėlapis."
 
 #: gweather/gweather.schemas.in.h:7
 msgid "The interval, in seconds, between automatic updates."
-msgstr ""
+msgstr "Intervalas, sekundėmis, tarp automatiškų atnaujinimų."
 
 #: gweather/gweather.schemas.in.h:9
 msgid "Update the data automatically"
-msgstr ""
+msgstr "Atnaujinti duomenis automatiškai"
 
 #: gweather/gweather.schemas.in.h:10
-#, fuzzy
 msgid "Url for the radar map"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Radarinio žemėlapio URL"
 
 #: gweather/gweather.schemas.in.h:11
-#, fuzzy
 msgid "Use custom url for the radar map"
-msgstr "Naudok pa_rinktą adresą radaro žemėlapiui"
+msgstr "Naudok pasirinktą adresą radaro žemėlapiui"
 
 #: gweather/gweather.schemas.in.h:12
-#, fuzzy
 msgid "Use metric units"
-msgstr "Naudoti _metrinę matų sistemą"
+msgstr "Naudoti metrinius vienetus"
 
 #: gweather/gweather.schemas.in.h:13
-#, fuzzy
 msgid "Use metric units instead of english units."
-msgstr "Naudoti _metrinę matų sistemą"
+msgstr "Naudoti metrinę matų sistemą vietoje angliškų vienetų."
 
 #: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
-msgstr ""
+msgstr "vietovės oro sąlygų informacija."
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -3210,366 +3130,299 @@ msgstr "Debesuotas"
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
 #: gweather/weather.c:192 gweather/weather.c:194
-#, fuzzy
 msgid "Thunderstorm"
-msgstr "Thunderstorm"
+msgstr "Perkūnija"
 
 #. DRIZZLE
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Drizzle"
-msgstr "Drizzle"
+msgstr "Dulksna"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Light drizzle"
-msgstr "Light rain"
+msgstr "Lengva dulksna"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Moderate drizzle"
-msgstr "Moderate drizzle"
+msgstr "Vidutiniška dulksna"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Heavy drizzle"
-msgstr "Heavy drizzle"
+msgstr "Stipri dulksna"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Freezing drizzle"
-msgstr "Freezing drizzle"
+msgstr "Šalanti dulksna"
 
 #. RAIN
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Rain"
-msgstr "Rain"
+msgstr "Lietus"
 
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Light rain"
-msgstr "Light rain"
+msgstr "Silpnas lietus"
 
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Moderate rain"
-msgstr "Moderate rain"
+msgstr "Vidutinis lietus"
 
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Heavy rain"
-msgstr "Heavy rain"
+msgstr "Stiprus lietus"
 
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Rain showers"
-msgstr "Rain showers"
+msgstr "Labai stiprus lietus"
 
 #: gweather/weather.c:194
-#, fuzzy
 msgid "Freezing rain"
-msgstr "Freezing rain"
+msgstr "Šalantis lietus"
 
 #. SNOW
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Snow"
-msgstr "Snow"
+msgstr "Sniegas"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Light snow"
-msgstr "Light snow"
+msgstr "Silpnai sninga"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Moderate snow"
-msgstr "Moderate snow"
+msgstr "Sninga"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Heavy snow"
-msgstr "Heavy snow"
+msgstr "Stipriai sninga"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Snowstorm"
-msgstr "Snowstorm"
+msgstr "Sniego audra"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Blowing snowfall"
-msgstr "Blowing snowfall"
+msgstr "Pūga"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Snow showers"
-msgstr "Snow showers"
+msgstr "L. stipriai sninga"
 
 #: gweather/weather.c:195
-#, fuzzy
 msgid "Drifting snow"
-msgstr "Drifting snow"
+msgstr "Pusto"
 
 #. SNOW_GRAINS
 #: gweather/weather.c:196
-#, fuzzy
 msgid "Snow grains"
-msgstr "Snow grain showers"
+msgstr "Labai stipriai sninga"
 
 #: gweather/weather.c:196
-#, fuzzy
 msgid "Light snow grains"
-msgstr "Light snow grains"
+msgstr "Silpnai sninga"
 
 #: gweather/weather.c:196
-#, fuzzy
 msgid "Moderate snow grains"
-msgstr "Moderate snow grains"
+msgstr "Vidutiniškai sninga"
 
 #: gweather/weather.c:196
-#, fuzzy
 msgid "Heavy snow grains"
-msgstr "Heavy snow grains"
+msgstr "Stipriai sninga"
 
 #. ICE_CRYSTALS
 #: gweather/weather.c:197
-#, fuzzy
 msgid "Ice crystals"
-msgstr "Ice crystals"
+msgstr "Ledo kristalai"
 
 #. ICE_PELLETS
 #: gweather/weather.c:198
-#, fuzzy
 msgid "Ice pellets"
-msgstr "Ice pellets"
+msgstr "Ledo gabalėliai"
 
 #: gweather/weather.c:198
-#, fuzzy
 msgid "Few ice pellets"
-msgstr "Few ice pellets"
+msgstr "Maži ledo gabalėliai"
 
 #: gweather/weather.c:198
-#, fuzzy
 msgid "Moderate ice pellets"
-msgstr "Moderate ice pellets"
+msgstr "Vidutiniai ledo gabalėliai"
 
 #: gweather/weather.c:198
-#, fuzzy
 msgid "Heavy ice pellets"
-msgstr "Heavy ice pellets"
+msgstr "Sunkūs ledo gabalėliai"
 
 #: gweather/weather.c:198
-#, fuzzy
 msgid "Ice pellet storm"
-msgstr "Ice pellet storm"
+msgstr "Audra su ledais"
 
 #: gweather/weather.c:198
-#, fuzzy
 msgid "Showers of ice pellets"
-msgstr "Showers of ice pellets"
+msgstr "Liūtis su ledais"
 
 #. HAIL
 #: gweather/weather.c:199
-#, fuzzy
 msgid "Hail"
-msgstr "Hail"
+msgstr "Kruša"
 
 #: gweather/weather.c:199
-#, fuzzy
 msgid "Hailstorm"
-msgstr "Hailstorm"
+msgstr "Krušos audra"
 
 #: gweather/weather.c:199
-#, fuzzy
 msgid "Hail showers"
-msgstr "Hail showers"
+msgstr "Krušos dušai"
 
 #. SMALL_HAIL
 #: gweather/weather.c:200
-#, fuzzy
 msgid "Small hail"
-msgstr "Small hail"
+msgstr "Maža kruša"
 
 #: gweather/weather.c:200
-#, fuzzy
 msgid "Small hailstorm"
-msgstr "Small hailstorm"
+msgstr "Nedidelė kruša"
 
 #: gweather/weather.c:200
-#, fuzzy
 msgid "Showers of small hail"
-msgstr "Showers of small hail"
+msgstr "Stipri kruša"
 
 #. PRECIPITATION
 #: gweather/weather.c:201
-#, fuzzy
 msgid "Unknown precipitation"
-msgstr "Unknown precipitation"
+msgstr "Nežinomi krituliai"
 
 #. MIST
 #: gweather/weather.c:202
-#, fuzzy
 msgid "Mist"
-msgstr "Mist"
+msgstr "Migla"
 
 #. FOG
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Fog"
-msgstr "Fog"
+msgstr "Rūkas"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Fog in the vicinity"
-msgstr "Fog in the vicinity"
+msgstr "Rūkas kaimynystėje"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Shallow fog"
-msgstr "Shallow fog"
+msgstr "Paviršinis rūkas"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Patches of fog"
-msgstr "Patches of fog"
+msgstr "Rūkas lopais"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Partial fog"
-msgstr "Partial fog"
+msgstr "Dalinis rūkas"
 
 #: gweather/weather.c:203
-#, fuzzy
 msgid "Freezing fog"
-msgstr "Freezing fog"
+msgstr "Šalantis rūkas"
 
 #. SMOKE
 #: gweather/weather.c:204
-#, fuzzy
 msgid "Smoke"
-msgstr "Smoke"
+msgstr "Dūmai"
 
 #. VOLCANIC_ASH
 #: gweather/weather.c:205
-#, fuzzy
 msgid "Volcanic ash"
-msgstr "Volcanic ash"
+msgstr "Vulkaniniai pelenai"
 
 #. SAND
 #: gweather/weather.c:206
-#, fuzzy
 msgid "Sand"
-msgstr "Sand"
+msgstr "Smėlis"
 
 #: gweather/weather.c:206
-#, fuzzy
 msgid "Blowing sand"
-msgstr "Blowing sand"
+msgstr "Pučiamas smėlis"
 
 #: gweather/weather.c:206
-#, fuzzy
 msgid "Drifting sand"
-msgstr "Drifting sand"
+msgstr "Pustomas smėlis"
 
 #. HAZE
 #: gweather/weather.c:207
-#, fuzzy
 msgid "Haze"
-msgstr "Haze"
+msgstr "Migla"
 
 #. SPRAY
 #: gweather/weather.c:208
-#, fuzzy
 msgid "Blowing sprays"
-msgstr "Blowing sprays"
+msgstr "Pučiami purslai"
 
 #. DUST
 #: gweather/weather.c:209
-#, fuzzy
 msgid "Dust"
-msgstr "Dust"
+msgstr "Dulkės"
 
 #: gweather/weather.c:209
-#, fuzzy
 msgid "Blowing dust"
-msgstr "Blowing dust"
+msgstr "Pučiamos dulkės"
 
 #: gweather/weather.c:209
-#, fuzzy
 msgid "Drifting dust"
-msgstr "Drifting dust"
+msgstr "Pustomos dulkės"
 
 #. SQUALL
 #: gweather/weather.c:210
-#, fuzzy
 msgid "Squall"
-msgstr "Squall"
+msgstr "Škvalas"
 
 #. SANDSTORM
 #: gweather/weather.c:211
-#, fuzzy
 msgid "Sandstorm"
-msgstr "Sandstorm"
+msgstr "Smėlio audra"
 
 #: gweather/weather.c:211
-#, fuzzy
 msgid "Sandstorm in the vicinity"
-msgstr "Sandstorm in the vicinity"
+msgstr "Kaimynystėje smėlio audra"
 
 #: gweather/weather.c:211
-#, fuzzy
 msgid "Heavy sandstorm"
-msgstr "Heavy sandstorm"
+msgstr "Stipri smėlio audra"
 
 #. DUSTSTORM
 #: gweather/weather.c:212
-#, fuzzy
 msgid "Duststorm"
-msgstr "Duststorm"
+msgstr "Dulkių audra"
 
 #: gweather/weather.c:212
-#, fuzzy
 msgid "Duststorm in the vicinity"
-msgstr "Duststorm in the vicinity"
+msgstr "Kaimynystėje dulkių audra"
 
 #: gweather/weather.c:212
-#, fuzzy
 msgid "Heavy duststorm"
-msgstr "Heavy duststorm"
+msgstr "Stipri dulkių audra"
 
 #. FUNNEL_CLOUD
 #: gweather/weather.c:213
-#, fuzzy
 msgid "Funnel cloud"
-msgstr "Funnel cloud"
+msgstr "Lietingi debesys"
 
 #. TORNADO
 #: gweather/weather.c:214
-#, fuzzy
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
 #: gweather/weather.c:215
-#, fuzzy
 msgid "Dust whirls"
-msgstr "Dust whirls"
+msgstr "Dulkių sūkuriai"
 
 #: gweather/weather.c:215
-#, fuzzy
 msgid "Dust whirls in the vicinity"
-msgstr "Dust whirls in the vicinity"
+msgstr "Kaimynystėje dulkių sūkuriai"
 
 #: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
 msgid "Failed to get METAR data.\n"
 msgstr "Nepavyko gauti METAR duomenų.\n"
 
 #: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
-#, fuzzy
 msgid "WeatherInfo missing location"
-msgstr "Trūksta WeatherInfo vietos"
+msgstr "WeatherInfo trūksta vietos"
 
 #: gweather/weather.c:1778
 msgid "%a, %b %d / %H:%M"
@@ -3580,9 +3433,8 @@ msgid "Unknown observation time"
 msgstr "Nežinomas stebėjimo laikas"
 
 #: gweather/weather.c:1842
-#, fuzzy
 msgid "Calm"
-msgstr "Calm"
+msgstr "Ramuma"
 
 #: gweather/weather.c:1868
 msgid "Unknown"
@@ -3594,21 +3446,20 @@ msgstr "Parsiuntimas nepavyko"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
 msgid "Alert you when new mail arrives"
-msgstr ""
+msgstr "Įspėti kai gaunamas naujas paštas"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
-#, fuzzy
 msgid "Factory for creating inbox monitors."
-msgstr "Factory for creating the weather applet."
+msgstr "Gamykla inbox stebyklių kūrimui."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2455
 msgid "Inbox Monitor"
-msgstr ""
+msgstr "Inbox stebyklė"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
 msgid "Inbox Monitor Factory"
-msgstr ""
+msgstr "Inbox stebyklės gamykla"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
@@ -3618,341 +3469,339 @@ msgstr "Internetas"
 
 #: mailcheck/mailcheck.c:666
 msgid "Error checking mail"
-msgstr ""
+msgstr "Klaida tikrinant paštą"
 
 #: mailcheck/mailcheck.c:797
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
+"Tu nenurodei slaptažodžio Inbox stebyklės nuostatose,\n"
+"taigi tu turėsi jį įvedinėti kiekvieno jos starto metu."
 
 #: mailcheck/mailcheck.c:805
 msgid "Please enter your mailserver's _password:"
-msgstr ""
+msgstr "Prašau įvesti tavo pašto serverio sla_ptažodį:"
 
 #: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
 msgid "Password Entry box"
-msgstr ""
+msgstr "Slaptažodžio įvedimo laukas"
 
 #: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
 msgid "_Save password to disk"
-msgstr ""
+msgstr "Iš_saugoti slaptažodį diske"
 
 #: mailcheck/mailcheck.c:888
 msgid "Could not connect to the Internet."
-msgstr ""
+msgstr "Negaliu prisijungti prie Interneto."
 
 #: mailcheck/mailcheck.c:892
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "Vartotojo vardas ir slaptažodis yra neteisingi."
 
 #: mailcheck/mailcheck.c:895
 msgid "The server name is incorrect."
-msgstr ""
+msgstr "Serverio vardas yra neteisingas."
 
 #: mailcheck/mailcheck.c:899
 msgid "Error connecting to mail server."
-msgstr ""
+msgstr "Įvyko klaida jungiantis prie pašto serverio."
 
 #: mailcheck/mailcheck.c:904
 msgid "Error"
-msgstr ""
+msgstr "Klaida"
 
 #: mailcheck/mailcheck.c:1083
 msgid "You have new mail."
-msgstr ""
+msgstr "Tu gavai naują paštą."
 
 #: mailcheck/mailcheck.c:1085
 msgid "You have mail."
-msgstr ""
+msgstr "Tu turi paštą."
 
 #: mailcheck/mailcheck.c:1089
 #, c-format
 msgid "%d unread/ %d messages"
-msgstr ""
+msgstr "%d neskaitytų/ %d žinučių"
 
 #: mailcheck/mailcheck.c:1091
 #, c-format
 msgid "%d messages"
-msgstr ""
+msgstr "%d žinutės"
 
 #: mailcheck/mailcheck.c:1095
-#, fuzzy
 msgid "No mail."
-msgstr "Normalus"
+msgstr "Pašto nėra."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
+#: mailcheck/mailcheck.c:2823 mailcheck/mailcheck.c:2824
 msgid "Status not updated"
-msgstr ""
+msgstr "Būklė neatnaujinta"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2377
 msgid "Inbox Settings"
-msgstr ""
+msgstr "Inbox Nuostatos"
 
 #: mailcheck/mailcheck.c:1777
 msgid "Mailbox _resides on:"
-msgstr ""
+msgstr "Pašto _dėžutė yra:"
 
 #: mailcheck/mailcheck.c:1788
 msgid "Local mailspool"
-msgstr ""
+msgstr "Vietinis pašto kaupas"
 
 #: mailcheck/mailcheck.c:1796
 msgid "Local maildir"
-msgstr ""
+msgstr "Vietinė pašto dėžutė"
 
 #: mailcheck/mailcheck.c:1804
 msgid "Remote POP3-server"
-msgstr ""
+msgstr "Nuotolinis POP3-serveris"
 
 #: mailcheck/mailcheck.c:1812
 msgid "Remote IMAP-server"
-msgstr ""
+msgstr "Nuotolinis IMAP-serveris"
 
 #: mailcheck/mailcheck.c:1837
 msgid "Mail _spool file:"
-msgstr ""
+msgstr "Pašto _spool byla:"
 
 #: mailcheck/mailcheck.c:1844
-#, fuzzy
 msgid "Browse"
-msgstr "Naršyklė"
+msgstr "Naršyti"
 
 #: mailcheck/mailcheck.c:1864
 msgid "Mail s_erver:"
-msgstr ""
+msgstr "Pašto s_erveris:"
 
 #: mailcheck/mailcheck.c:1873
 msgid "Mail Server Entry box"
-msgstr ""
+msgstr "Pašto serverio įvedimo laukas"
 
 #: mailcheck/mailcheck.c:1892
-#, fuzzy
 msgid "_Username:"
-msgstr "_Vartotojas"
+msgstr "_Vartotojas:"
 
 #: mailcheck/mailcheck.c:1903
 msgid "Username Entry box"
-msgstr ""
+msgstr "Vartotojo vardo įvedimo laukas"
 
 #: mailcheck/mailcheck.c:1921
 msgid "_Password:"
-msgstr ""
+msgstr "_Slaptažodis:"
 
 #: mailcheck/mailcheck.c:1974
 msgid "_Folder:"
-msgstr ""
+msgstr "_Katalogas:"
 
 #: mailcheck/mailcheck.c:1985
 msgid "Folder Entry box"
-msgstr ""
+msgstr "Katalogo įvedimo laukas"
 
-#: mailcheck/mailcheck.c:2052
+#: mailcheck/mailcheck.c:2057
 msgid "Check for mail _every:"
-msgstr ""
+msgstr "Tikrinti paštą _kas:"
 
-#: mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2079
 msgid "Choose time interval in minutes to check mail"
-msgstr ""
+msgstr "Pasirink laiko intervalą minutėmis tarp pašto tikrinimų"
 
-#: mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2102
 msgid "Choose time interval in seconds to check mail"
-msgstr ""
+msgstr "Pasirink laiko intervalą sekundėmis tarp pašto tikrinimų"
 
-#: mailcheck/mailcheck.c:2114
+#: mailcheck/mailcheck.c:2119
 msgid "Play a _sound when new mail arrives"
-msgstr ""
+msgstr "_Sugroti kai gaunamas naujas paštas"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2124
+#: mailcheck/mailcheck.c:2129
 msgid "Sto_p animation when double clicked"
-msgstr ""
+msgstr "Du kartus spragtelėjus sta_bdyti animaciją"
 
-#: mailcheck/mailcheck.c:2137
+#: mailcheck/mailcheck.c:2142
 msgid "Select a_nimation:"
-msgstr ""
+msgstr "Pasirink a_nimaciją:"
 
-#: mailcheck/mailcheck.c:2154
-#, fuzzy
+#: mailcheck/mailcheck.c:2160
 msgid "Commands"
-msgstr "Komanda:"
+msgstr "Komandos"
 
-#: mailcheck/mailcheck.c:2183
+#: mailcheck/mailcheck.c:2189
 msgid "Before each _update:"
-msgstr ""
+msgstr "Prieš kiekvieną _atnaujinimą:"
 
-#: mailcheck/mailcheck.c:2200
+#: mailcheck/mailcheck.c:2206
 msgid "Command to execute before each update"
-msgstr ""
+msgstr "Komanda kurią leisti prieš kiekvieną atnaujinimą"
 
-#: mailcheck/mailcheck.c:2212
+#: mailcheck/mailcheck.c:2218
 msgid "When new mail _arrives:"
-msgstr ""
+msgstr "Kai _gaunamas naujas paštas:"
 
-#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2233 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
-msgstr ""
+msgstr "Komanda kurią leisti kai gaunamas naujas paštas"
 
-#: mailcheck/mailcheck.c:2239
+#: mailcheck/mailcheck.c:2245
 msgid "When double clicke_d:"
-msgstr ""
+msgstr "_Dvigubo spragtelėjimo metu:"
 
-#: mailcheck/mailcheck.c:2254
+#: mailcheck/mailcheck.c:2260
 msgid "Command to execute when clicked"
-msgstr ""
+msgstr "Spragtelėjus vykdoma komanda"
 
-#: mailcheck/mailcheck.c:2339
-#, fuzzy
+#: mailcheck/mailcheck.c:2346
 msgid "Inbox Monitor Preferences"
-msgstr "Sistemos stebėtuvo parinktys"
+msgstr "Inbox stebėtuvo parinktys"
 
-#: mailcheck/mailcheck.c:2450
+#: mailcheck/mailcheck.c:2457
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr ""
+msgstr "Inbox stebyklė įspėja tave kai tu gauni naują paštą"
 
-#: mailcheck/mailcheck.c:2776
-#, fuzzy
+#: mailcheck/mailcheck.c:2783
 msgid "Text only"
-msgstr "Tekstas"
+msgstr "Tik tekstas"
 
-#: mailcheck/mailcheck.c:2807
+#: mailcheck/mailcheck.c:2825
 msgid "Mail check"
-msgstr ""
+msgstr "Pašto tikrinimas"
 
-#: mailcheck/mailcheck.c:2808
+#: mailcheck/mailcheck.c:2826
 msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr ""
+msgstr "Pašto tikrinimas įspėja tave kai gaunamas naujas paštas"
 
 #: mailcheck/mailcheck.schemas.in.h:1
 msgid "Command to execute when checking mail"
-msgstr ""
+msgstr "Komanda kurią leisti kai tikrinamas paštas"
 
 #: mailcheck/mailcheck.schemas.in.h:3
 msgid "Command to execute when you click on the Inbox Monitor"
-msgstr ""
+msgstr "Komanda kurią leisti kai tu spragtelni Inbox stebyklę"
 
 #: mailcheck/mailcheck.schemas.in.h:4
 msgid "Command to run before checking mail"
-msgstr ""
+msgstr "Paleisti komandą prieš tikrinant paštą"
 
 #: mailcheck/mailcheck.schemas.in.h:5
 msgid "Do we run the exec-command"
-msgstr ""
+msgstr "Ar mes leidžiam exec komandą"
 
 #: mailcheck/mailcheck.schemas.in.h:6
 msgid "Do we run the newmail-command"
-msgstr ""
+msgstr "Ar mes leidžiam newmail komandą"
 
 #: mailcheck/mailcheck.schemas.in.h:7
 msgid "Do we want to save the password to disk"
-msgstr ""
+msgstr "Ar mes norim išsaugoti slaptažodį diske"
 
 #: mailcheck/mailcheck.schemas.in.h:8
 msgid "Encrypted password"
-msgstr ""
+msgstr "Užkoduotas slaptažodis"
 
 #: mailcheck/mailcheck.schemas.in.h:9
 msgid "How often (in milliseconds) we check the mail"
-msgstr ""
+msgstr "Kaip dažnai (milisekundėmis) tikrinti paštą"
 
 #: mailcheck/mailcheck.schemas.in.h:10
 msgid "If mail should be checked automatically"
-msgstr ""
+msgstr "Jeigu paštas tikrinamas automatiškai"
 
 #: mailcheck/mailcheck.schemas.in.h:11
 msgid "If this is enabled, we save the password in gconf"
-msgstr ""
+msgstr "Jeigu šitas įjungtas, mes išsaugom slaptažodį į gconf"
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
 msgstr ""
+"Jeigu šitas įjungtas, paštas bus tikrinamas kiekvieno atnaujimo (dažnis "
+"milisekundėmis) metu"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
-msgstr ""
+msgstr "Jeigu šitas nustatytas, mes turėtume leisti exec komandą"
 
 #: mailcheck/mailcheck.schemas.in.h:14
 msgid "If this is set, we should run the newmail-command"
-msgstr ""
+msgstr "Jeigu šitas nustatytas, mes turėtume leist newmail komandą"
 
 #: mailcheck/mailcheck.schemas.in.h:15
 msgid "Interval for checking mail"
-msgstr ""
+msgstr "Intervalas tarp pašto tikrinimo"
 
 #: mailcheck/mailcheck.schemas.in.h:16
 msgid "Path to the animation file"
-msgstr ""
+msgstr "Kelias iki animacijos bylos"
 
 #: mailcheck/mailcheck.schemas.in.h:17
 msgid "Play a sound when mail is recieved"
-msgstr ""
+msgstr "Sugroti garsą kai gaunamas paštas"
 
 #: mailcheck/mailcheck.schemas.in.h:18
 msgid "Remote folder for mail retrieval"
-msgstr ""
+msgstr "Nuotolinis katalogas pašto gavimui"
 
 #: mailcheck/mailcheck.schemas.in.h:19
 msgid "Remote server to connect to for our mail"
-msgstr ""
+msgstr "Nuotolinis serveris prie kurio jungiames dėl mūsų pašto"
 
 #: mailcheck/mailcheck.schemas.in.h:20
 msgid "Run this command before we check the mail"
-msgstr ""
+msgstr "Vykdyti šią komandą prieš tikrinant paštą"
 
 #: mailcheck/mailcheck.schemas.in.h:21
 msgid "The mail server"
-msgstr ""
+msgstr "Pašto serveris"
 
 #: mailcheck/mailcheck.schemas.in.h:22
 msgid "The user's encrypted password for the remote server"
-msgstr ""
+msgstr "Užkoduotas vartotojo slaptažodis nuotoliniame serveryje"
 
 #: mailcheck/mailcheck.schemas.in.h:23
 msgid "The user's password"
-msgstr ""
+msgstr "Vartotojo slaptažodis"
 
 #: mailcheck/mailcheck.schemas.in.h:24
 msgid "The user's password for the remote server"
-msgstr ""
+msgstr "Vartotojo slaptažodis nuotoliniame serveryje"
 
 #: mailcheck/mailcheck.schemas.in.h:25
 msgid "This is how we check the mail, check the mail, check the mail..."
-msgstr ""
+msgstr "Kaip mes tikriname paštą, tikriname paštą, tikriname paštą..."
 
 #: mailcheck/mailcheck.schemas.in.h:26
 msgid "This is how we process the mail, process the mail, process the mail..."
-msgstr ""
+msgstr "Kaip mes apdorojame paštą, apdorojame paštą, apdorojame paštą..."
 
 #: mailcheck/mailcheck.schemas.in.h:27
 msgid ""
 "This is the animation that will be displayed during normal Inbox Monitor "
 "usage"
-msgstr ""
+msgstr "Čia animacija kuri bus rodoma normaliu Inbox stebyklės naudojimo metu."
 
 #: mailcheck/mailcheck.schemas.in.h:28
 msgid "Username on the remote server"
-msgstr ""
+msgstr "Vartotojo vardas nutolusiame serveryje"
 
 #: mailcheck/mailcheck.schemas.in.h:29
 msgid "We run this command when the user clicks on Inbox Monitor"
-msgstr ""
+msgstr "Mes leidžiam šią komandą kai vartotojas spragteli ant Inbox stebyklės"
 
 #: mailcheck/mailcheck.schemas.in.h:30
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr ""
+msgstr "Ar atnaujinti pašto būklę spragtelėjus ant Inbox stebyklės"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
-msgstr ""
+msgstr "Tu gavai paštą!"
 
 #: mailcheck/mailcheck.soundlist.in.h:1
 msgid "Mailcheck"
-msgstr ""
+msgstr "Pašto tikrinimas"
 
 #: mailcheck/mailcheck.soundlist.in.h:2
 msgid "New Mail"
-msgstr ""
+msgstr "Naujas paštas"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
@@ -3964,12 +3813,10 @@ msgid "Mini-Commander"
 msgstr "Komandinė eilutė"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
-#, fuzzy
 msgid "MiniCommander Applet Factory"
-msgstr "Komandinės eilutės priedas"
+msgstr "MiniCommander priedo gamykla"
 
 #: mini-commander/src/about.c:69
-#, fuzzy
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
@@ -3979,10 +3826,13 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Šis priedas prideda komandinę eilutę į skydelį. Jo privalumai: komandų "
-"papildymas, komandų žurnalas, keičiami macro'sai ir nebūtinas įstatytas "
-"laikrodis.\n"
-"Išleistas GNU General Public License sąlygomis."
+"Šis GNOME įtaisas prideda komandinę eilutę į skydelį. Jo privalumai: komandų "
+"papildymas, komandų žurnalas, keičiami makro'sai.\n"
+"\n"
+"Ši programa yra laisva programinė įranga; tu gali ją platinti ir/ar "
+"modifikuoti ją pagal GNU General Public License sąlygas paskelbtos Free "
+"Software Foundation;arba licencijos 2 versiją, arba (tavo pasirinkimu) bet "
+"kurią vėlesnę versiją."
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:440
@@ -3998,14 +3848,14 @@ msgid "Type a command here and Gnome will execute it for you"
 msgstr "Surink čia komandą ir GNOME ją ivykdys"
 
 #: mini-commander/src/mc-install-default-macros.c:71
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot get schema for %s: %s"
-msgstr "Cannot get schema for %s : %s"
+msgstr "Negaliu gauti schemos reikalingos %s : %s"
 
 #: mini-commander/src/mc-install-default-macros.c:99
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot set schema for %s: %s"
-msgstr "Cannot set schema for %s : %s"
+msgstr "Negaliu pritaikyti schemos reikalingos %s : %s"
 
 #: mini-commander/src/mc-install-default-macros.c:105
 #, c-format
@@ -4033,23 +3883,20 @@ msgid "Error syncing config data: %s"
 msgstr "Klaida suvienodinant nustatymų duomenis: %s "
 
 #: mini-commander/src/mini-commander.glade.h:3
-#, fuzzy
 msgid "<b>Appearance</b>"
-msgstr "Išvaizda"
+msgstr "<b>Išvaizda</b>"
 
 #: mini-commander/src/mini-commander.glade.h:4
-#, fuzzy
 msgid "<b>Auto Completion</b>"
-msgstr "Auto-papildymas"
+msgstr "<b>Auto-papildymas</b>"
 
 #: mini-commander/src/mini-commander.glade.h:5
-#, fuzzy
 msgid "<b>Colors</b>"
-msgstr "Spalvos"
+msgstr "<b>Spalvos</b>"
 
 #: mini-commander/src/mini-commander.glade.h:6
 msgid "<b>Size</b>"
-msgstr ""
+msgstr "<b>Dydis</b>"
 
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Add New Macro"
@@ -4068,7 +3915,6 @@ msgid "Command line _foreground:"
 msgstr "Komandinės eilutės _priekinis planas:"
 
 #: mini-commander/src/mini-commander.glade.h:12
-#, fuzzy
 msgid "E_nable history-based auto completion"
 msgstr "L_eisti istorija paremtą auto-papildymą"
 
@@ -4089,141 +3935,132 @@ msgid "Show han_dle"
 msgstr "Rodyti ranke_nėlę"
 
 #: mini-commander/src/mini-commander.glade.h:18
-#, fuzzy
 msgid "_Add Macro..."
-msgstr "_Pridėti naują makrosą"
+msgstr "_Pridėti makrosą..."
 
 #: mini-commander/src/mini-commander.glade.h:19
 msgid "_Delete Macro"
 msgstr "_Pašalinti makrosą"
 
 #: mini-commander/src/mini-commander.glade.h:20
-#, fuzzy
 msgid "_Macros:"
-msgstr "Makrosai"
+msgstr "_Makrokomandos:"
 
 #: mini-commander/src/mini-commander.glade.h:21
-#, fuzzy
 msgid "_Pattern:"
-msgstr "Raštas:"
+msgstr "_Šablonas:"
 
 #: mini-commander/src/mini-commander.glade.h:22
 msgid "_Use default theme colors"
-msgstr "_Naudoti įprastos temos spalvas"
+msgstr "_Naudoti įprastas temos spalvas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
+msgstr "Bandyti komandų auto-užbaigimą iš įvestų komandų žurnalo."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Color background blue component"
-msgstr ""
+msgstr "Spalvoto fono mėlynas komponentas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
 msgid "Color background green component"
-msgstr ""
+msgstr "Spalvoto fono žalias komponentas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
 msgid "Color background red component"
-msgstr ""
+msgstr "Spalvoto fono raudonas komponentas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
 msgid "Color foreground blue component"
-msgstr ""
+msgstr "Spalvoto pirmo plano mėlynas komponentas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
 msgid "Color foreground green component"
-msgstr ""
+msgstr "Spalvoto pirmo plano žalias komponentas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
 msgid "Color foreground red component"
-msgstr ""
+msgstr "Spalvoto pirmo plano raudonas komponentas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-#, fuzzy
 msgid "History list"
 msgstr "Žurnalas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
-msgstr ""
+msgstr "GConfValue elementų, turinčių istorijos žurnalo eilutes, sąrašas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
 msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr ""
+msgstr "GConfValue elementų, turinčių makro komandų eilutes, sąrašas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
 msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr ""
+msgstr "GConfValue elementų, turinčių makro palečių eilutes, sąrašas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Macro command list"
-msgstr ""
+msgstr "Makro komandų sąrašas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Macro pattern list"
-msgstr ""
+msgstr "Makro raštų sąrašas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-#, fuzzy
 msgid "Perform history autocompletion"
-msgstr "L_eisti istorija paremtą auto-papildymą"
+msgstr "Leisti istorijos auto-papildymą"
 
 #: mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show a frame surrounding the applet."
-msgstr ""
+msgstr "Rodyti aplink įtaisą rėmelį."
 
 #: mini-commander/src/mini-commander.schemas.in.h:17
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
+msgstr "Rodyti rankeną, kad būtų galima atkabinti įtaisą nuo skydelio."
 
 #: mini-commander/src/mini-commander.schemas.in.h:18
-#, fuzzy
 msgid "Show frame"
-msgstr "Rodyti rėm_elį"
+msgstr "Rodyti rėmelį"
 
 #: mini-commander/src/mini-commander.schemas.in.h:19
-#, fuzzy
 msgid "Show handle"
-msgstr "Rodyti ranke_nėlę"
+msgstr "Rodyti rankenėlę"
 
 #: mini-commander/src/mini-commander.schemas.in.h:20
 msgid "The blue component of the background color."
-msgstr ""
+msgstr "Fono spalvos mėlynas elementas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:21
 msgid "The blue component of the foreground color."
-msgstr ""
+msgstr "Priekinio plano spalvos mėlynas komponentas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:22
 msgid "The green component of the background color."
-msgstr ""
+msgstr "Fono spalvos žalias komponentas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:23
 msgid "The green component of the foreground color."
-msgstr ""
+msgstr "Priekinio plano spalvos žalias komponentas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:24
 msgid "The red component of the background color."
-msgstr ""
+msgstr "Fono spalvos raudonas komponentas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:25
 msgid "The red component of the foreground color."
-msgstr ""
+msgstr "Priekinio plano spalvos raudonas komponentas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:26
-#, fuzzy
 msgid "Use the default theme colors"
-msgstr "_Naudoti įprastos temos spalvas"
+msgstr "Naudoti įprastos temos spalvas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Use theme colors instead of custom ones."
-msgstr ""
+msgstr "Naudoti temos spalvas vietoje pasirinktų."
 
 #: mini-commander/src/mini-commander.schemas.in.h:28
-#, fuzzy
 msgid "Width"
-msgstr "_Plotis:"
+msgstr "Plotis"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -4243,11 +4080,15 @@ msgstr "Žurnalas"
 msgid "Click this button for the list of previous commands"
 msgstr "Norėdamas gauti pastarųjų komandų sąrašą, spausk šį mygtuką"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:354
+msgid "Command line has been disabled by your system administrator"
+msgstr "Komandinė eilutė buvo atjungta tavo sistemos administratoriaus"
+
+#: mini-commander/src/mini-commander_applet.c:415
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander įtaisas"
 
-#: mini-commander/src/mini-commander_applet.c:380
+#: mini-commander/src/mini-commander_applet.c:416
 msgid "This applet adds a command line to the panel"
 msgstr "Šis įtaisas į skydelį įdeda komandinę eilutę"
 
@@ -4281,112 +4122,108 @@ msgid "_Mute"
 msgstr "_Nutildyti"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-#, fuzzy
 msgid "_Open Volume Control"
-msgstr "Garso valdymas"
+msgstr "Atidaryti garso valdymą"
 
 #: mixer/mixer.c:113
 msgid "Main Volume"
-msgstr ""
+msgstr "Pagrindinis garsas"
 
 #: mixer/mixer.c:113
 msgid "Bass"
-msgstr ""
+msgstr "Bosai"
 
 #: mixer/mixer.c:113
 msgid "Treble"
-msgstr ""
+msgstr "Aukšti"
 
 #: mixer/mixer.c:113
 msgid "Synth"
-msgstr ""
+msgstr "Synth"
 
 #: mixer/mixer.c:114
 msgid "Pcm"
-msgstr ""
+msgstr "Pcm"
 
 #: mixer/mixer.c:114
 msgid "Speaker"
-msgstr ""
+msgstr "Garsiakalbis"
 
 #: mixer/mixer.c:114
 msgid "Line"
-msgstr ""
+msgstr "Linija"
 
 #: mixer/mixer.c:115
 msgid "Microphone"
-msgstr ""
+msgstr "Mikrofonas"
 
 #: mixer/mixer.c:115
 msgid "CD"
-msgstr ""
+msgstr "CD"
 
 #: mixer/mixer.c:115
 msgid "Mix"
-msgstr ""
+msgstr "Mix"
 
 #: mixer/mixer.c:115
 msgid "Pcm2"
-msgstr ""
+msgstr "Pcm2"
 
 #: mixer/mixer.c:116
 msgid "Recording Level"
-msgstr ""
+msgstr "Įrašymo lygis"
 
 #: mixer/mixer.c:116
 msgid "Input Gain"
-msgstr ""
+msgstr "Įvesties padidėjimas"
 
 #: mixer/mixer.c:116
 msgid "Output Gain"
-msgstr ""
+msgstr "Išvesties padidėjimas"
 
 #: mixer/mixer.c:117
 msgid "Line1"
-msgstr ""
+msgstr "Linija1"
 
 #: mixer/mixer.c:117
 msgid "Line2"
-msgstr ""
+msgstr "Linija2"
 
 #: mixer/mixer.c:117
 msgid "Line3"
-msgstr ""
+msgstr "Linija3"
 
 #: mixer/mixer.c:117
 msgid "Digital1"
-msgstr ""
+msgstr "Skaitmeninis1"
 
 #: mixer/mixer.c:118
 msgid "Digital2"
-msgstr ""
+msgstr "Skaitmeninis2"
 
 #: mixer/mixer.c:118
 msgid "Digital3"
-msgstr ""
+msgstr "Skaitmeninis3"
 
 #: mixer/mixer.c:119
 msgid "Phone Input"
-msgstr ""
+msgstr "Telefono įvestis"
 
 #: mixer/mixer.c:119
 msgid "Phone Output"
-msgstr ""
+msgstr "Telefono išvestis"
 
 #: mixer/mixer.c:119
-#, fuzzy
 msgid "Video"
-msgstr "Slėpti"
+msgstr "Video"
 
 #: mixer/mixer.c:119
-#, fuzzy
 msgid "Radio"
-msgstr "Rain"
+msgstr "Radijas"
 
 #: mixer/mixer.c:119
-#, fuzzy
 msgid "Monitor"
-msgstr "Sistemos stebėtojas"
+msgstr "Stebėtojas"
 
 #: mixer/mixer.c:176
 msgid "Volume Control (muted)"
@@ -4394,7 +4231,7 @@ msgstr "Garso valdymas (užtildytas)"
 
 #: mixer/mixer.c:177
 msgid "No audio device"
-msgstr ""
+msgstr "Nėra audio įrenginio"
 
 #: mixer/mixer.c:278
 msgid ""
@@ -4403,6 +4240,11 @@ msgid ""
 msgstr ""
 "pavojus: ši gmix versija buvo sukompiliuota su kita bylos soundcard.h "
 "versija.\n"
+
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "Negalių atidaryti \"mixer\" įrenginio %s\n"
 
 #: mixer/mixer.c:801
 msgid "Volume Controller"
@@ -4416,11 +4258,11 @@ msgstr "Norėdamas pakeisti garsumą, naudok aukštyn/žemyn klavišus "
 #. ** I don't know if there are sensible alternatives in other languages
 #: mixer/mixer.c:826
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #: mixer/mixer.c:827
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: mixer/mixer.c:1074
 msgid "(C) 2001 Richard Hult"
@@ -4431,18 +4273,16 @@ msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Garso valdymas leidžia jums nustatyti garsumo lygį savo darbalaukyje"
 
 #: mixer/mixer.c:1217
-#, fuzzy
 msgid "Volume Control Preferences"
-msgstr "Garso valdiklis"
+msgstr "Garso valdymo nuostatos"
 
 #: mixer/mixer.c:1241
-#, fuzzy
 msgid "Audio Channels"
-msgstr "Keisti"
+msgstr "Audio kanalai"
 
 #: mixer/mixer.c:1257
 msgid "_Select channel to control:"
-msgstr ""
+msgstr "_Rinkis valdomą kanalą:"
 
 #: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
@@ -4450,15 +4290,15 @@ msgstr "Garso valdymas leidžia jums nustatyti garsumo lygį savo darbalaukyje"
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
-msgstr ""
+msgstr "Kanalas valdomas įtaiso. Tinka tik naudojant OSS."
 
 #: mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
-msgstr ""
+msgstr "Išsaugota nebyli būklė"
 
 #: mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
-msgstr ""
+msgstr "Išsaugotas garso lygis atstatomas paleidmo metu."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:133
@@ -4484,18 +4324,16 @@ msgstr ""
 "Ar nori atsijungti?"
 
 #: modemlights/modemlights.c:489
-#, fuzzy
 msgid "_Disconnect"
-msgstr "_Atsijungimo komanda:"
+msgstr "_Atsijungti"
 
 #: modemlights/modemlights.c:510
 msgid "Do you want to connect?"
 msgstr "Ar nori prisijungti?"
 
 #: modemlights/modemlights.c:513
-#, fuzzy
 msgid "C_onnect"
-msgstr "Jungimasis"
+msgstr "_Prisijungti"
 
 #: modemlights/modemlights.c:536
 #, c-format
@@ -4508,288 +4346,265 @@ msgstr "nesujungta"
 
 #: modemlights/modemlights.schemas.in.h:1
 msgid "Ask for confirmation when connecting/disconnecting"
-msgstr ""
+msgstr "Paklausti patvirtinimo kai prisijungiama/atsijungiama"
 
 #: modemlights/modemlights.schemas.in.h:2
 msgid "Blink when connecting"
-msgstr ""
+msgstr "Mirksėti kai jungiamasi"
 
 #: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
-msgstr ""
+msgstr "Komanda vykdoma prisijungiant"
 
 #: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
-msgstr ""
+msgstr "Komanda vykdoma atsijungiant"
 
 #: modemlights/modemlights.schemas.in.h:5
 msgid "Display a confirmation dialog when connecting or disconnecting."
-msgstr ""
+msgstr "Rodyti patvirtinimo dialogą prisijungimo bei atsijungimo metu."
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr ""
+msgstr "Padaryti įtaisą mirksintį kai modemas jungiasi."
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
-msgstr ""
+msgstr "Modemo įrenginio pavadinimas"
 
 #: modemlights/modemlights.schemas.in.h:8
-#, fuzzy
 msgid "Modem lock file"
-msgstr "_Modemo lock byla:"
+msgstr "Modemo lock byla"
 
 #: modemlights/modemlights.schemas.in.h:9
-#, fuzzy
 msgid "Receive background color"
-msgstr "Fo_no spalva:"
+msgstr "Gavimo fono spalvą"
 
 #: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
-msgstr ""
+msgstr "Gavimo priekinio plano spalvą"
 
 #: modemlights/modemlights.schemas.in.h:11
-#, fuzzy
 msgid "Send background color"
-msgstr "Fo_no spalva:"
+msgstr "Siuntimo fono spalvą"
 
 #: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
-msgstr ""
+msgstr "Siuntimo pirmo plano spalva"
 
 #: modemlights/modemlights.schemas.in.h:13
-#, fuzzy
 msgid "Show connect time and throughput"
-msgstr "Rod_yti prisijungimo laiką ir pralaidumą"
+msgstr "Rodyti prisijungimo laiką ir pralaidumą"
 
 #: modemlights/modemlights.schemas.in.h:14
 msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
 msgstr ""
+"Rodyti papildomą informaciją apie prisijungimo laiką ir perduotus bei gautus "
+"duomenis."
 
 #: modemlights/modemlights.schemas.in.h:15
-#, fuzzy
 msgid "Status connected color"
-msgstr "nesujungta"
+msgstr "Prisijungimo būklės spalva"
 
 #: modemlights/modemlights.schemas.in.h:16
-#, fuzzy
 msgid "Status not connected color"
-msgstr "nesujungta"
+msgstr "Atsijungimo būklės spalva"
 
 #: modemlights/modemlights.schemas.in.h:17
-#, fuzzy
 msgid "Status waiting connection color"
-msgstr "La_ukia jungimosi"
+msgstr "Būklė laukia prisijungimo spalvos"
 
 #: modemlights/modemlights.schemas.in.h:18
-#, fuzzy
 msgid "Text background color"
-msgstr "Fo_no spalva:"
+msgstr "Teksto fo_no spalva"
 
 #: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
-msgstr ""
+msgstr "Teksto priekinio plano spalva"
 
 #: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
-msgstr ""
+msgstr "Teksto kontūro spalva"
 
 #: modemlights/modemlights.schemas.in.h:21
 msgid "The background color of the button used to indicate data received."
-msgstr ""
+msgstr "Mygtuko naudojamo parodyti gautus duomenis fono spalva."
 
 #: modemlights/modemlights.schemas.in.h:22
 msgid "The background color of the button used to indicate data sent."
-msgstr ""
+msgstr "Mygtuko naudojamo parodyti išsiųstus duomenis fono spalva."
 
 #: modemlights/modemlights.schemas.in.h:23
 msgid ""
 "The color used to display the status button when the modem is connected."
 msgstr ""
+"Ši spalva yra naudojama vaizduoti būklės mygtuką kai modemas yra prisijungęs."
 
 #: modemlights/modemlights.schemas.in.h:24
 msgid ""
 "The color used to display the status button when the modem is connecting."
-msgstr ""
+msgstr "Ši spalva yra naudojama vaizduoti būklės mygtuką kai modemas jungiasi."
 
 #: modemlights/modemlights.schemas.in.h:25
 msgid ""
 "The color used to display the status button when the modem is not connected."
 msgstr ""
+"Ši spalva yra naudojama vaizduoti būklės mygtuką kai modemas neprisijungęs."
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
-msgstr ""
+msgstr "Spalva naudojama parodyti, kad duomenys buvo gauti."
 
 #: modemlights/modemlights.schemas.in.h:27
 msgid "The color used to indicate that data has been sent."
-msgstr ""
+msgstr "Spalva naudojama parodyti, kad duomenys buvo nusiųsti."
 
 #: modemlights/modemlights.schemas.in.h:28
 msgid "The fraction of a second until the applet updates."
-msgstr ""
+msgstr "Sekundės dalys iki kol įtaisas atnaujins duomenis."
 
 #: modemlights/modemlights.schemas.in.h:29
 msgid "The name of the modem device."
-msgstr ""
+msgstr "Modemo įrenginio pavadinimas."
 
 #: modemlights/modemlights.schemas.in.h:30
 msgid "The name of the modem lock file."
-msgstr ""
+msgstr "Modemo lock bylos vardas."
 
 #: modemlights/modemlights.schemas.in.h:32
-#, fuzzy
 msgid "Use isdn"
-msgstr "_Užimta"
+msgstr "Naudoti isdn"
 
 #: modemlights/modemlights.schemas.in.h:33
 msgid "Use isdn instead of ppp to connect the modem."
-msgstr ""
+msgstr "Naudoti isdn vietoje ppp modemo prisijingimui."
 
 #: modemlights/modemlights.schemas.in.h:34
 msgid "Use this command to connect the modem."
-msgstr ""
+msgstr "Naudoti šią komandą modemo prisijungimui."
 
 #: modemlights/modemlights.schemas.in.h:35
 msgid "Use this command to disconnect the modem."
-msgstr ""
+msgstr "Naudoti šią komandą modemo atsijungimui."
 
 #: modemlights/modemlights.schemas.in.h:36
-#, fuzzy
 msgid "Verify owner of lock file"
-msgstr "_Tikrinti lock bylos savininką"
+msgstr "Tikrinti lock bylos savininką"
 
-#: modemlights/properties.c:416
+#: modemlights/properties.c:421
 msgid "Modem Lights Preferences"
 msgstr "Modemo lempučių parinktys"
 
-#: modemlights/properties.c:445
-#, fuzzy
+#: modemlights/properties.c:450
 msgid "U_pdate every:"
-msgstr "At_naujinimai per sekundę"
+msgstr "At_naujinti kas:"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:475
 msgid "Sho_w connect time and throughput"
 msgstr "Rod_yti prisijungimo laiką ir pralaidumą"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:485
 msgid "B_link connection status when connecting"
-msgstr ""
+msgstr "Mir_ksėti prisijungimo būklei prisijungimo metu"
 
-#: modemlights/properties.c:490
-#, fuzzy
+#: modemlights/properties.c:495
 msgid "Connections"
-msgstr "Jungimasis"
+msgstr "Jungimaisi"
 
-#: modemlights/properties.c:499
-#, fuzzy
+#: modemlights/properties.c:504
 msgid "Co_nnection command:"
 msgstr "Prisiju_ngimo komanda:"
 
-#: modemlights/properties.c:523
-#, fuzzy
+#: modemlights/properties.c:529
 msgid "_Disconnection command:"
 msgstr "_Atsijungimo komanda:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:550
 msgid "Con_firm connection"
 msgstr "Pa_tvirtinti jungimąsi"
 
-#: modemlights/properties.c:562
-#, fuzzy
+#: modemlights/properties.c:569
 msgid "Receive Data"
 msgstr "Gauti duomenis"
 
-#: modemlights/properties.c:568
-#, fuzzy
+#: modemlights/properties.c:575
 msgid "_Foreground:"
-msgstr "_Priekinis planas"
+msgstr "_Priekinis planas:"
 
-#: modemlights/properties.c:573
-#, fuzzy
+#: modemlights/properties.c:580
 msgid "Send Data"
 msgstr "Siųsti duomenis"
 
-#: modemlights/properties.c:578
-#, fuzzy
+#: modemlights/properties.c:585
 msgid "Foregroun_d:"
-msgstr "Priekinis p_lanas"
+msgstr "Priekinis p_lanas:"
 
-#: modemlights/properties.c:580
-#, fuzzy
+#: modemlights/properties.c:587
 msgid "Backg_round:"
-msgstr "Fo_nas"
+msgstr "Fo_nas:"
 
-#: modemlights/properties.c:583
-#, fuzzy
+#: modemlights/properties.c:590
 msgid "Connection Status"
 msgstr "Jungimosi būsena"
 
-#: modemlights/properties.c:591
-#, fuzzy
+#: modemlights/properties.c:598
 msgid "Co_nnected:"
-msgstr "Su_jungta"
+msgstr "Su_jungta:"
 
-#: modemlights/properties.c:593
-#, fuzzy
+#: modemlights/properties.c:600
 msgid "Disconnec_ted:"
-msgstr "_Atsijungimo komanda:"
+msgstr "_Atsijungta:"
 
-#: modemlights/properties.c:596
-#, fuzzy
+#: modemlights/properties.c:603
 msgid "C_onnecting:"
-msgstr "Jungimasis"
+msgstr "J_ungiamasi:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:606
 msgid "Text"
 msgstr "Tekstas"
 
-#: modemlights/properties.c:607
-#, fuzzy
+#: modemlights/properties.c:614
 msgid "For_eground:"
-msgstr "Pri_ekinis planas"
+msgstr "Pri_ekinis planas:"
 
-#: modemlights/properties.c:609
-#, fuzzy
+#: modemlights/properties.c:616
 msgid "Bac_kground:"
-msgstr "Fo_nas"
+msgstr "Fo_nas:"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:618
 msgid "O_utline"
 msgstr "Me_tmenys"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:621 multiload/properties.c:528
 msgid "Colors"
 msgstr "Spalvos"
 
-#: modemlights/properties.c:623
-#, fuzzy
+#: modemlights/properties.c:630
 msgid "Modem Options"
-msgstr "Modemo pasirinktys"
+msgstr "Modemo parinktys"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:639
 msgid "_Device:"
 msgstr "Į_renginys:"
 
-#: modemlights/properties.c:656
-#, fuzzy
+#: modemlights/properties.c:664
 msgid "_Lock file:"
-msgstr "_Modemo lock byla:"
+msgstr "_Užrakinimo byla:"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:684
 msgid "_Verify owner of lock file"
 msgstr "_Tikrinti lock bylos savininką"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:695
 msgid "U_se ISDN"
 msgstr "Na_udoti ISDN"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:712
 msgid "Advanced"
 msgstr "Papildomai"
 
@@ -4798,25 +4613,23 @@ msgid "A system load indicator"
 msgstr "Sistemos apkrovimo indikatorius"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:78
+#: multiload/main.c:79
 msgid "System Monitor"
 msgstr "Sistemos stebėtojas"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:2
-#, fuzzy
 msgid "_Open System Monitor"
-msgstr "Sistemos stebėtojas"
+msgstr "_Atidaryti sistemos stebėtoją"
 
 #: multiload/cpuload.c:50
 msgid "CPU Load"
 msgstr "CPU apkrovimas"
 
-#: multiload/loadavg.c:107 multiload/main.c:280
+#: multiload/loadavg.c:107 multiload/main.c:281
 msgid "Load Average"
-msgstr "Apkrovimo vidurkis"
+msgstr "Apkrovos vidurkis"
 
-#: multiload/main.c:80
-#, fuzzy
+#: multiload/main.c:81
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -4825,31 +4638,30 @@ msgid ""
 msgstr ""
 "Išleistas GNU General Public License sąlygomis.\n"
 "\n"
-"Sistemos apkrovimo stebėtojas, galintis grafiškai rodyti procesoriaus, RAM, "
-"swap bylos ir tinklo apkrovimą"
+"Sistemos apkrovos stebėtojas, galintis grafiškai rodyti procesoriaus, RAM, "
+"swap bylos ir tinklo apkrovą."
 
-#: multiload/main.c:272 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:553
 msgid "Processor"
 msgstr "Procesorius"
 
-#: multiload/main.c:274 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:560
 msgid "Memory"
 msgstr "Atmintis"
 
-#: multiload/main.c:276 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:568
 msgid "Network"
 msgstr "Tinklas"
 
-#: multiload/main.c:278 multiload/properties.c:576
-#, fuzzy
+#: multiload/main.c:279 multiload/properties.c:576
 msgid "Swap Space"
-msgstr "Swap byla"
+msgstr "Swap talpa"
 
-#: multiload/main.c:282
+#: multiload/main.c:283
 msgid "Resource"
-msgstr "Resursai"
+msgstr "Resursas"
 
-#: multiload/main.c:293
+#: multiload/main.c:294
 #, c-format
 msgid ""
 "%s:\n"
@@ -4860,118 +4672,115 @@ msgstr ""
 
 #: multiload/memload.c:50
 msgid "Memory Load"
-msgstr "Atminties apkrovimas"
+msgstr "Atminties apkrova"
 
 #: multiload/multiload.schemas.in.h:1
 msgid "Applet refresh rate in milliseconds"
-msgstr ""
+msgstr "Įtaiso atnaujinimo dažnis milisekundėmis"
 
 #: multiload/multiload.schemas.in.h:2
 msgid "CPU graph background color"
-msgstr ""
+msgstr "CPU grafiko fono spalva"
 
 #: multiload/multiload.schemas.in.h:3
-#, fuzzy
 msgid "Enable CPU load graph"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Įjungti CPU apkrovos grafiką"
 
 #: multiload/multiload.schemas.in.h:4
-#, fuzzy
 msgid "Enable load average graph"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Įjungti vidutinės apkrovos grafiką"
 
 #: multiload/multiload.schemas.in.h:5
-#, fuzzy
 msgid "Enable memory load graph"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Įjungti atminties apkrovos grafiką"
 
 #: multiload/multiload.schemas.in.h:6
-#, fuzzy
 msgid "Enable network load graph"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Įjungti tinklo apkrovos grafiką"
 
 #: multiload/multiload.schemas.in.h:7
-#, fuzzy
 msgid "Enable swap load graph"
-msgstr "Leisti _radarinius žemėlapius"
+msgstr "Įjungti swap apkrovos grafiką"
 
 #: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
+"Horizontaliems skydeliams, grafikų plotis taškais. Vertikaliems skydeliams, "
+"tai yra grafikų aukštis."
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
-msgstr ""
+msgstr "Ethernet tinklo veiklos grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:10
 msgid "Graph color for PLIP network activity"
-msgstr ""
+msgstr "PLIP tinklo veiklos grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:11
 msgid "Graph color for SLIP network activity"
-msgstr ""
+msgstr "SLIP tinklo veiklos grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:12
 msgid "Graph color for buffer memory"
-msgstr ""
+msgstr "Buferio atminties grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:13
 msgid "Graph color for cached memory"
-msgstr ""
+msgstr "Sparčiosios atmintinės grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:14
 msgid "Graph color for load average"
-msgstr ""
+msgstr "Vidutinės apkrovos grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:15
 msgid "Graph color for nice-related CPU activity"
-msgstr ""
+msgstr "Grafiko, susijusio su nice CPU veikla, spalva"
 
 #: multiload/multiload.schemas.in.h:16
 msgid "Graph color for other network usage"
-msgstr ""
+msgstr "Kitos tinklo veiklos grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:17
 msgid "Graph color for shared memory"
-msgstr ""
+msgstr "Bendrai naudojamos atminties grafiko spalva"
 
 #: multiload/multiload.schemas.in.h:18
 msgid "Graph color for system-related CPU activity"
-msgstr ""
+msgstr "Grafiko, susijusio su sistemos CPU veikla, spalva"
 
 #: multiload/multiload.schemas.in.h:19
 msgid "Graph color for user-related CPU activity"
-msgstr ""
+msgstr "Grafiko, susijusio su vartotojo CPU veikla, spalva"
 
 #: multiload/multiload.schemas.in.h:20
 msgid "Graph color for user-related memory usage"
-msgstr ""
+msgstr "Grafiko, susijusio su vartotojo naudojama atmintimi, spalva"
 
 #: multiload/multiload.schemas.in.h:21
 msgid "Graph color for user-related swap usage"
-msgstr ""
+msgstr "Grafiko, susijusio su vartotojo swap naudojimu, spalva"
 
 #: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
-msgstr ""
+msgstr "Grafiko dydis"
 
 #: multiload/multiload.schemas.in.h:23
 msgid "Load graph background color"
-msgstr ""
+msgstr "Apkrovos grafiko fono spalva"
 
 #: multiload/multiload.schemas.in.h:24
 msgid "Memory graph background color"
-msgstr ""
+msgstr "Atminties grafiko fono spalva"
 
 #: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
-msgstr ""
+msgstr "Tinklo grafiko fono spalva"
 
 #: multiload/multiload.schemas.in.h:26
 msgid "Swap graph background color"
-msgstr ""
+msgstr "Swap grafiko fono spalva"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4994,14 +4803,12 @@ msgid "_Network"
 msgstr "_Tinklas"
 
 #: multiload/properties.c:390
-#, fuzzy
 msgid "S_wap Space"
-msgstr "Swap byla"
+msgstr "S_wap vieta"
 
 #: multiload/properties.c:403
-#, fuzzy
 msgid "_Load"
-msgstr "CPU apkrovimas"
+msgstr "_Apkrova"
 
 #: multiload/properties.c:450
 msgid "System m_onitor width: "
@@ -5045,28 +4852,25 @@ msgstr "_Buferiai"
 
 #: multiload/properties.c:565
 msgid "Cach_ed"
-msgstr ""
+msgstr "K_ešuota"
 
 #: multiload/properties.c:566
 msgid "F_ree"
 msgstr "L_aisva"
 
 #: multiload/properties.c:570
-#, fuzzy
 msgid "_SLIP"
-msgstr "S_LIP"
+msgstr "_SLIP"
 
 #: multiload/properties.c:571
 msgid "PL_IP"
 msgstr "PL_IP"
 
 #: multiload/properties.c:572
-#, fuzzy
 msgid "_Ethernet"
-msgstr "Et_hernet"
+msgstr "_Ethernet"
 
 #: multiload/properties.c:573
-#, fuzzy
 msgid "Othe_r"
 msgstr "Kito_kia"
 
@@ -5083,14 +4887,12 @@ msgid "_Free"
 msgstr "_Laisva"
 
 #: multiload/properties.c:581
-#, fuzzy
 msgid "Load"
-msgstr "CPU apkrovimas"
+msgstr "Apkrovimas"
 
 #: multiload/properties.c:583
-#, fuzzy
 msgid "_Average"
-msgstr "Apkrovimo vidurkis"
+msgstr "_Vidurkis"
 
 #: multiload/properties.c:604
 msgid "System Monitor Preferences"
@@ -5102,55 +4904,50 @@ msgstr "Swap apkrovimas"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr ""
+msgstr "Sukurk, žiūrėk ir tvarkyk lipnius darbastalio rašelius"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:349
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
-msgstr ""
+msgstr "Limpantys Rašteliai"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
-#, fuzzy
 msgid "Sticky Notes Applet Factory"
-msgstr "Gtik Applet Factory"
+msgstr "Lipnių raštelių priedo gamykla"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
-#, fuzzy
 msgid "_Delete Notes..."
-msgstr "_Pašalinti makrosą"
+msgstr "_Pašalinti raštelius..."
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
-#, fuzzy
 msgid "_Lock Notes"
-msgstr "Rodyti _dialogų langelius"
+msgstr "_Užrakinti raštelius"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
 #: stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
-msgstr ""
+msgstr "_Naujas raštelis"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:7
-#, fuzzy
 msgid "_Show Notes"
-msgstr "Rodyti _dialogų langelius"
+msgstr "_Rodyti raštelius"
 
 #: stickynotes/stickynotes.c:314
 msgid "Locked note"
-msgstr ""
+msgstr "Užrakintas raštelis"
 
 #: stickynotes/stickynotes.c:319
 msgid "Unlocked note"
-msgstr ""
+msgstr "Atrakintas raštelis"
 
 #: stickynotes/stickynotes.glade.h:3
-#, fuzzy
 msgid "<b>Behavior</b>"
-msgstr "Elgesys"
+msgstr "<b>Elgesys</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
-msgstr ""
+msgstr "<b>Įprasti raštelio nustatymai</b>"
 
 #: stickynotes/stickynotes.glade.h:5
 msgid ""
@@ -5158,6 +4955,9 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>Pašalinti VISUS lipnius raštelius?</b>\n"
+"\n"
+"Pakeitimai bus išsaugoti akimirksniu."
 
 #: stickynotes/stickynotes.glade.h:8
 msgid ""
@@ -5165,174 +4965,166 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>Pašalinti šį lipnų raštelį?</b>\n"
+"\n"
+"Pakeitimai bus išsaugoti akimirksniu."
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
-msgstr ""
+msgstr "<b>Savybės</b>"
 
 #: stickynotes/stickynotes.glade.h:12
-#, fuzzy
 msgid "C_olor:"
-msgstr "+ Sp_alva:"
+msgstr "Sp_alva:"
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
-msgstr ""
+msgstr "Pasirink pagrindo spalvą naudoti visuose lipniuose rašteliuose"
 
 #: stickynotes/stickynotes.glade.h:14
 msgid "Choose a color for the note"
-msgstr ""
+msgstr "Pasirink raštelio spalvą"
 
 #: stickynotes/stickynotes.glade.h:15
 msgid "Choose a font for the note"
-msgstr ""
+msgstr "Pasirink raštelio šriftą"
 
 #: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font to use for all sticky notes"
-msgstr ""
+msgstr "Pasirink šriftą naudoti visuose lipniuose rašteliuose"
 
 #: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
-msgstr ""
+msgstr "Pasirink jeigu rašteliai yra matomi VISOSE darbo erdvėse"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
+"Pasirink jeigu visuose rašteliuose priverstinai naudojamas įprastas stilius"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
-msgstr ""
+msgstr "Spragtel_k:"
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
-msgstr ""
+msgstr "Uždaryti raštelį"
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Force _default color and font on notes"
-msgstr ""
+msgstr "Priverstinai nau_doti įprastą šriftą ir spalvas"
 
 #: stickynotes/stickynotes.glade.h:22
-#, fuzzy
 msgid "H_eight:"
-msgstr "Aukšta"
+msgstr "_Aukštis"
 
 #: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
-msgstr ""
+msgstr "Užrakinti/Atrakinti raštelį"
 
 #: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
-msgstr ""
+msgstr "Pasirink lipnaus raštelio spalvą"
 
 #: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
-msgstr ""
+msgstr "Pasirink įprastą lipnaus raštelio spalvą"
 
 #: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
-msgstr ""
+msgstr "Pasirink įprastą lipnaus raštelio šriftą"
 
 #: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
-msgstr ""
+msgstr "Pasirink lipnaus raštelio šriftą"
 
 #: stickynotes/stickynotes.glade.h:28
 msgid "Resize note"
-msgstr ""
+msgstr "Pakeisti raštelio dydį"
 
 #: stickynotes/stickynotes.glade.h:29
-#, fuzzy
 msgid "Specify a title for the note"
-msgstr "Į_prastas simbolių sąrašas"
+msgstr "Nurodyk raštelio antraštę"
 
 #: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
-msgstr ""
+msgstr "Nurodyk įprastą naujų raštelių aukštį (taškais)"
 
 #: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
-msgstr ""
+msgstr "Nurodyk įprastą naujų raštelių plotį (taškais)"
 
 #: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
-msgstr ""
+msgstr "Lipnus raštelis"
 
 #: stickynotes/stickynotes.glade.h:33
-#, fuzzy
 msgid "Sticky Note Properties"
-msgstr "Diskų montavimo įtaiso parinktys"
+msgstr "Lipnių raštelių savybės"
 
 #: stickynotes/stickynotes.glade.h:34
-#, fuzzy
 msgid "Sticky Notes Preferences"
-msgstr "Diskų montavimo įtaiso parinktys"
+msgstr "Lipnių raštelių nuostatos"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Use co_lor from the system theme"
-msgstr ""
+msgstr "Naudoti sistemos temos _spalvą"
 
 #: stickynotes/stickynotes.glade.h:36
-#, fuzzy
 msgid "Use default co_lor"
-msgstr "_Naudoti įprastos temos spalvas"
+msgstr "Naudoti standartinę spa_lvą"
 
 #: stickynotes/stickynotes.glade.h:37
-#, fuzzy
 msgid "Use default fo_nt"
-msgstr "Naudoti įpras_tą"
+msgstr "Naudoti įprastą š_riftą"
 
 #: stickynotes/stickynotes.glade.h:38
 msgid "Use fo_nt from the system theme"
-msgstr ""
+msgstr "Naudoti sistemos temos šri_ftą"
 
 #: stickynotes/stickynotes.glade.h:39
-#, fuzzy
 msgid "_Color:"
-msgstr "Spalvos"
+msgstr "_Spalva:"
 
 #: stickynotes/stickynotes.glade.h:40
-#, fuzzy
 msgid "_Delete ALL"
-msgstr "_Pašalinti makrosą"
+msgstr "_Pašalinti VISUS"
 
 #: stickynotes/stickynotes.glade.h:41
-#, fuzzy
 msgid "_Delete Note..."
-msgstr "_Pašalinti makrosą"
+msgstr "_Pašalinti raštelį..."
 
 #: stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
-msgstr ""
+msgstr "_Užrakinti raštelį"
 
 #: stickynotes/stickynotes.glade.h:45
-#, fuzzy
 msgid "_Properties..."
-msgstr "_Parinktys..."
+msgstr "_Nustatymai..."
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr ""
+msgstr "_Patalpinti visose darbo erdvėse"
 
 #: stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
-msgstr ""
+msgstr "_Antraštė:"
 
 #: stickynotes/stickynotes.glade.h:49
 msgid "_lock/unlock all notes"
-msgstr ""
+msgstr "_užrakinti/atrakinti visus raštelius"
 
 #: stickynotes/stickynotes.glade.h:50
-#, fuzzy
 msgid "_show/hide all notes"
-msgstr "Rodyti _dialogų langelius"
+msgstr "_rodyti/paslėpti visus raštelius"
 
 #: stickynotes/stickynotes.glade.h:51
 msgid "create a _new note"
-msgstr ""
+msgstr "sukurti _naują raštelį"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
-msgstr ""
+msgstr "Laikas tarp auto-saugojimų minutėmis"
 
 #: stickynotes/stickynotes.schemas.in.h:2
 msgid ""
@@ -5340,83 +5132,93 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
+"Standartiškai, lipniems rašteliams yra priskiriama dabartinė data kaip "
+"pavadinimas kai tik jie sukuriami. Naudojamas šis formatas; viskas kas gali "
+"būti apdorojama strftime() funkcijos tinka."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
-msgstr ""
+msgstr "Datos formatas raštelio antraštėje"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
-msgstr ""
+msgstr "Įprasta įtaiso spragtelėjimo elgsena"
 
 #: stickynotes/stickynotes.schemas.in.h:5
-#, fuzzy
 msgid "Default color for new notes"
-msgstr "Į_prastas simbolių sąrašas"
+msgstr "Standartinė naujų raštelių spalva"
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
+"Įprasta lipnių raštelių spalva. Ji turėtų būti nurodyta html šešioliktainiu "
+"pavidalu, pvz. \"#30FF50\"."
 
 #: stickynotes/stickynotes.schemas.in.h:7
-#, fuzzy
 msgid "Default font for new notes"
-msgstr "Į_prastas simbolių sąrašas"
+msgstr "Standartinis naujų raštelių šriftas"
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"Standartinis naujų lipnių raštelių šriftas. Jis turėtų būti Pango šrifto "
+"vardas, pvz. \"Sans italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
-msgstr ""
+msgstr "Standartinis naujų raštelių aukštis"
 
 #: stickynotes/stickynotes.schemas.in.h:10
-#, fuzzy
 msgid "Default height for new sticky notes in pixels."
-msgstr "Į_prastas simbolių sąrašas"
+msgstr "Standartinis naujų raštelių aukštis taškais."
 
 #: stickynotes/stickynotes.schemas.in.h:11
-#, fuzzy
 msgid "Default width for new notes"
-msgstr "Į_prastas simbolių sąrašas"
+msgstr "Standartinis naujų raštelių plotis"
 
 #: stickynotes/stickynotes.schemas.in.h:12
-#, fuzzy
 msgid "Default width for new sticky notes in pixels."
-msgstr "Į_prastas simbolių sąrašas"
+msgstr "Standartinis naujų raštelių plotis taškais."
 
 #: stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
-msgstr ""
+msgstr "Tušti rašteliai visada ištrinami nelaukiant patvirtinimo"
 
 #: stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
 msgstr ""
+"Kiekvieną kartą praėjus nurodytam minučių skaičiui, lipnūs rašteliai yra "
+"automatiškai išsaugomi."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr ""
+"Jeigu ši parinktis yra atjungta, bus naudojama vartotojo parinkta spalva "
+"kaip įprasta spalva visiems lipniems lapeliams."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr ""
+"Jeigu ši parinktis yra atjungta, bus naudojmas vartotojo parinktas šriftas "
+"kaip įprastas šriftas visuose lipniuose lapaliuose."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
+"Jeigu šis parametras yra įjungtas, nustytos spalvos ir šriftai kurie buvo "
+"priskirti idividualiems rašteliams bus įgnoruojamos."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5424,54 +5226,58 @@ msgid ""
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
+"Pasirodo kai ant įtaiso yra paspaudžiama kairiuoju mygtuku arba yra "
+"paspaudžiamas \"enter\" klavišas. Parinktys yra: \"0\" - \"Naujas raštelis\","
+"\"1\" - \"Rodyti/Slėpti visus raštelius\" ir \"2\" - \"Užrakinti/Atrakinti "
+"visus raštelius."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
+msgstr "Nurodo ar lipnūs rašteliai yra užrakinti (ne redaguojami) ar ne."
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr ""
+"Nurodo ar lipnūs rašteliai yra matomi VISOSE darbo erdvėse darbastalyje, ar "
+"ne"
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
-msgstr ""
+msgstr "Nurodo ar lipnūs rašteliai yra matomi ar ne."
 
 #: stickynotes/stickynotes.schemas.in.h:22
-#, fuzzy
 msgid "Sticky notes' locked state"
-msgstr "Gtik Applet Factory"
+msgstr "Lipnių raštelių užrakinimo būsena"
 
 #: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
-msgstr ""
+msgstr "Lipnių raštelių matomumas"
 
 #: stickynotes/stickynotes.schemas.in.h:24
-#, fuzzy
 msgid "Sticky notes' workspace stickyness"
-msgstr "Darbalaukiai"
+msgstr "Lipnių raštelių darbo erdvių lipnumas"
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
+msgstr "Ar klausti patvirtinimo ištrinant raštelį"
 
 #: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
 msgstr ""
+"Ar priverstinai naudoti standartinį šriftą ir spalvas visuose rašteliuose"
 
 #: stickynotes/stickynotes.schemas.in.h:27
-#, fuzzy
 msgid "Whether to use the default system color"
-msgstr "_Naudoti įprastos temos spalvas"
+msgstr "Ar naudoti įprastas sistemos spalvas"
 
 #: stickynotes/stickynotes.schemas.in.h:28
 msgid "Whether to use the default system font"
-msgstr ""
+msgstr "Ar naudoti įprastą sistemos šriftą"
 
-#: stickynotes/stickynotes_applet.c:339
-#, fuzzy, c-format
+#: stickynotes/stickynotes_applet.c:349
+#, c-format
 msgid ""
 "%s\n"
 "%d note"
@@ -5479,34 +5285,37 @@ msgid_plural ""
 "%s\n"
 "%d notes"
 msgstr[0] ""
-"%s:\n"
-" naudojama %d%% "
+"%s\n"
+"%d raštelis"
 msgstr[1] ""
-"%s:\n"
-" naudojama %d%% "
+"%s\n"
+"%d rašteliai"
+msgstr[2] ""
+"%s\n"
+"%d raštelių"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
-msgstr ""
+msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
-msgstr ""
+msgstr "Limpantys rašteliai skirti Gnome Darbalaukio Aplinkai"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
 msgstr "Stebėti bevielio ryšio kokybę"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "Bevielio ryšio stebėtuvas"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "Nėra bevielių įrenginių"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5514,11 +5323,11 @@ msgstr ""
 "Atrodo, kad tavo sistemoje nėra nustatytų bevielių įrenginių.\n"
 "Pasitikrink savo nustatymus, jei su tuo nesutinki."
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "Ši pagalbinė programa rodo bevielio ryšio būseną"
 
@@ -5531,9 +5340,8 @@ msgid "Wireless Link Monitor Preferences"
 msgstr "Bevielio ryšio stebėtuvo parinktys"
 
 #: wireless/wireless-applet.glade.h:3
-#, fuzzy
 msgid "_Monitored device:"
-msgstr "Stebimas įrenginys:"
+msgstr "_Stebimas įrenginys:"
 
 #~ msgid "Applet layout"
 #~ msgstr "Įtaiso išdėstymas"
@@ -5552,10 +5360,10 @@ msgstr "Stebimas įrenginys:"
 
 #, fuzzy
 #~ msgid "Disc Image"
-#~ msgstr "Disko vaizdas"
+#~ msgstr "Disko atvaizdis"
 
 #~ msgid "An image of a cd-rom disc"
-#~ msgstr "CD-ROM disko vaizdas"
+#~ msgstr "CD-ROM disko atvaizdis"
 
 #~ msgid "_Default character list:"
 #~ msgstr "Į_prastas simbolių sąrašas:"
@@ -5612,9 +5420,8 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "Precipitation"
 #~ msgstr "Partial precipitation"
 
-#, fuzzy
 #~ msgid "Condition"
-#~ msgstr "Sąlygos:"
+#~ msgstr "Sąlygos"
 
 #~ msgid "minute(s)"
 #~ msgstr "minutę(čių)"
@@ -5635,17 +5442,15 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "Snow and Wind"
 #~ msgstr "Snow grains"
 
-#, fuzzy
 #~ msgid "Nothing"
-#~ msgstr "Šiaurės"
+#~ msgstr "Nieko"
 
 #, fuzzy
 #~ msgid "Command Entry box"
 #~ msgstr "Komandinė eilutė"
 
-#, fuzzy
 #~ msgid "Execute"
-#~ msgstr "Išmesti"
+#~ msgstr "Vykdyti"
 
 #~ msgid "Applet _width:"
 #~ msgstr "Įtaiso _plotis:"
@@ -5665,9 +5470,8 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "_Run detailed system monitor"
 #~ msgstr "_Leisti detalų sistemos stebėtoją"
 
-#, fuzzy
 #~ msgid "_Swap Space"
-#~ msgstr "_Swap byla"
+#~ msgstr "_Swap vieta"
 
 #~ msgid "_Other"
 #~ msgstr "_Kitokia"
@@ -5729,9 +5533,8 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "Drifting drizzle"
 #~ msgstr "Drifting drizzle"
 
-#, fuzzy
 #~ msgid "Rain in the vicinity"
-#~ msgstr "Rain in the vicinity"
+#~ msgstr "Kaimynystėje lietus"
 
 #, fuzzy
 #~ msgid "Shallow rain"
@@ -5989,33 +5792,27 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "Freezing precipitation"
 #~ msgstr "Freezing precipitation"
 
-#, fuzzy
 #~ msgid "Mist in the vicinity"
-#~ msgstr "Mist in the vicinity"
+#~ msgstr "Kaimynystėje migla"
 
-#, fuzzy
 #~ msgid "Light mist"
-#~ msgstr "Light mist"
+#~ msgstr "Lengva migla"
 
-#, fuzzy
 #~ msgid "Moderate mist"
-#~ msgstr "Moderate mist"
+#~ msgstr "Vidutinė migla"
 
-#, fuzzy
 #~ msgid "Thick mist"
-#~ msgstr "Thick mist"
+#~ msgstr "Stipri migla"
 
 #, fuzzy
 #~ msgid "Shallow mist"
 #~ msgstr "Shallow mist"
 
-#, fuzzy
 #~ msgid "Partial mist"
-#~ msgstr "Partial mist"
+#~ msgstr "Dalinė migla"
 
-#, fuzzy
 #~ msgid "Mist with wind"
-#~ msgstr "Mist with wind"
+#~ msgstr "Migla su vėju"
 
 #, fuzzy
 #~ msgid "Drifting mist"
@@ -6025,9 +5822,8 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "Freezing mist"
 #~ msgstr "Freezing mist"
 
-#, fuzzy
 #~ msgid "Light fog"
-#~ msgstr "Light fog"
+#~ msgstr "Mažas rūkas"
 
 #, fuzzy
 #~ msgid "Moderate fog"
@@ -6464,7 +6260,6 @@ msgstr "Stebimas įrenginys:"
 #~ msgid "Failed to get radar map image.\n"
 #~ msgstr "Nepavyko gauti radaro žemėlapio vaizdo.\n"
 
-#, fuzzy
 #~ msgid "Querying available channels of mixer device %s failed\n"
 #~ msgstr "Nepavyko užklausti esamų mikserio %s kanalų\n"
 
