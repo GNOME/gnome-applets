@@ -25,6 +25,7 @@
 #include <string.h>
 
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
 #include <libgnomeui/gnome-window-icon.h>
@@ -145,6 +146,29 @@ send_button_to_entry_event (GtkWidget *widget, GdkEventButton *event, MCData *mc
 
 }
 
+static gboolean
+key_press_cb (GtkWidget *widget, GdkEventKey *event, MCData *mc)
+{
+	switch (event->keyval) {	
+	case GDK_b:
+		if (event->state == GDK_CONTROL_MASK) {
+			mc_show_file_browser (NULL, mc);
+			return TRUE;
+		}
+		break;
+	case GDK_h:
+		if (event->state == GDK_CONTROL_MASK) {
+			mc_show_history (NULL, mc);
+			return TRUE;
+		}
+		break;
+	default:
+		break;
+	}
+
+	return FALSE;
+
+}
 
 void
 mc_applet_draw (MCData *mc)
@@ -340,7 +364,9 @@ mini_commander_applet_fill (PanelApplet *applet)
     
     g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc); 
     g_signal_connect (mc->applet, "button_press_event",
-    			       G_CALLBACK (send_button_to_entry_event), mc);    
+    			       G_CALLBACK (send_button_to_entry_event), mc);
+    g_signal_connect (mc->applet, "key_press_event",
+    			       G_CALLBACK (key_press_cb), mc);
 
     panel_applet_setup_menu_from_file (mc->applet,
 				       NULL,
