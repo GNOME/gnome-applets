@@ -1,3 +1,8 @@
+2001-03-11  Timur Bakeyev  <mc@bat.ru>
+
+	* src/macro.c, src/preferences.h: Added sys/types.h before regex.h,
+	as the last one can use some system types.
+	
 2001-03-10  Timur Bakeyev  <mc@bat.ru>
 
 	* src/exec.c: On some OS's none of the used signal flags do exist. Use

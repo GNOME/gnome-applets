@@ -1,3 +1,4 @@
+#include <sys/types.h>
 #include <regex.h>
 #include <applet-widget.h>
 
@@ -5,7 +6,7 @@
 #define MAX_COMMAND_LENGTH        500
 #define MAX_NUM_MACROS            99
 #define MAX_NUM_MACRO_PARAMETERS  100
-#define MAX_MACRO_PATTERN_LENGTH         25
+#define MAX_MACRO_PATTERN_LENGTH  25
 
 typedef struct struct_properties properties;
 
