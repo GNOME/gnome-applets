@@ -191,7 +191,7 @@ gkb_count_sizes (GKB * gkb)
        }
       else
        { /* 8 */
-        COUNT2(1,0.375,1,0.375,3);
+        COUNT2(1,0.375,0.5,0.375,3);
        }
      }
     else
@@ -667,7 +667,7 @@ about_cb (AppletWidget * widget)
   about = gnome_about_new (_("The GNOME KeyBoard Switcher Applet"),
 			   VERSION,
 			   _
-			   ("(C) 1998-2000 LSC - Linux Support Center"),
+			   ("(C) 1998-2000 Free Software Foundation"),
 			   authors,
 			   _
 			   ("This applet switches between keyboard maps. "
