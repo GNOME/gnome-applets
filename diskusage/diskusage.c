@@ -673,8 +673,8 @@ int main(int argc, char **argv)
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-        applet_widget_init_defaults("diskusage_applet", NULL, argc, argv, 0,
-				    NULL,argv[0]);
+        applet_widget_init_defaults("diskusage_applet", NULL, argc, argv,
+				    NULL, 0, NULL);
 
 	applet = applet_widget_new();
 	if (!applet)

@@ -50,11 +50,8 @@ void
 about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	gchar *authors[2];
+	static const gchar *authors[2] = {"Garrett Smith <gsmith@serv.net>", NULL};
 	const gchar * author_format = _("%s the Fish");
-	
-	authors[0] = _("Garrett Smith <gsmith@serv.net>");
-	authors[1] = NULL;
 
 	about = gnome_about_new (_("The Web Browser Controller"), "0.1",
 			"(C) 1998 the Free Software Foundation",
@@ -279,8 +276,8 @@ main(int argc, char **argv)
 
 	/* intialize, this will basically set up the applet, corba and
 	   call gnome_init */
-	applet_widget_init_defaults("webcontrol_applet", NULL, argc, argv, 0,
-				    NULL, argv[0]);
+	applet_widget_init_defaults("webcontrol_applet", VERSION, argc, argv,
+				    NULL, 0, NULL);
 
 	/* create a new applet_widget */
 	WC.applet = applet_widget_new();

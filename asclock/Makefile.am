@@ -1,7 +1,8 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-DVERSION=\""$(VERSION)"\"
 
 bin_PROGRAMS = asclock_applet
 

@@ -33,7 +33,7 @@ main(int argc, char ** argv)
   textdomain (PACKAGE);
 
   /* Initialize the applet */
-  applet_widget_init("battery_applet", &parser, argc, argv, 0, NULL, argv[0],
+  applet_widget_init("battery_applet", VERSION, argc, argv, NULL, 0, NULL,
 		     TRUE, 0, applet_start_new_applet, NULL);
 
   /* Create the battery applet widget */
@@ -670,29 +670,3 @@ applet_start_new_applet(const gchar *param, gpointer data)
 {
   make_new_battery_applet();
 } /* applet_start_new_applet */
-
-
-error_t
-battery_parse_an_arg (int key, char *arg, struct argp_state *state)
-{
-	return 0;
-} /* parse_an_arg */
-
-/* These are the arguments that our application supports.  */
-struct argp_option arguments[] =
-{
-  { NULL, 0, NULL, 0, NULL, 0 }
-};
-
-struct argp parser =
-{
-  arguments,			/* Options.  */
-  battery_parse_an_arg,		/* The parser function.  */
-  NULL,				/* Some docs.  */
-  NULL,				/* Some more docs.  */
-  NULL,				/* Child arguments -- gnome_init fills
-				   this in for us.  */
-  NULL,				/* Help filter.  */
-  NULL				/* Translation domain; for the app it
-				   can always be NULL.  */
-};

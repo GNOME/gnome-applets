@@ -998,7 +998,7 @@ main(int argc, char *argv[])
 
   panel_corba_register_arguments();
 
-  applet_widget_init_defaults("wmpager_applet", NULL, argc, argv, 0, NULL, argv[0]);
+  applet_widget_init_defaults("wmpager_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   /* Get the Atom for making a window sticky, so that the detached pager appears on all screens */
   _XA_GWIN_STATE = XInternAtom(GDK_DISPLAY(), XA_GWIN_STATE, False);

@@ -31,8 +31,8 @@ GtkWidget *fresh;
 bindtextdomain(PACKAGE, GNOMELOCALEDIR);
 textdomain(PACKAGE);
 
-applet_widget_init_defaults("fresh_applet", NULL, argc, argv, 0, NULL,
-                            argv[0]);
+applet_widget_init_defaults("fresh_applet", VERSION, argc, argv, NULL,
+			    0, NULL);
 
 applet = applet_widget_new();
   if (!applet)

@@ -143,15 +143,6 @@ void battery_setup_picture(BatteryData * bat);
 void battery_set_mode(BatteryData * bat);
 
 void applet_start_new_applet(const gchar *param, gpointer data);
-error_t battery_parse_an_arg (int key, char *arg, struct argp_state *state);
-
-/*
- *
- * Externs...
- *
- */
-extern struct argp_option arguments[];
-extern struct argp parser;
 
 #endif /* _BATTERY_H */
 

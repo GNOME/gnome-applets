@@ -112,6 +112,8 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 			break;
 		}
 	}
+
+	return 0;
 }
 
 static int 
@@ -289,8 +291,8 @@ main(int argc, char **argv)
 {
 	GtkWidget *cdplayer;
 
-	applet_widget_init_defaults("cdplayer_applet", NULL, argc, argv, 0,
-				    NULL, argv[0]);
+	applet_widget_init_defaults("cdplayer_applet", VERSION, argc, argv,
+				    NULL, 0, NULL);
 
 	applet = applet_widget_new();
 	if (!applet)

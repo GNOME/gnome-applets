@@ -326,7 +326,7 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 		if (!vector || length < 3)
 			{
 			g_free(lang_filename);
-			gnome_string_array_free (vector);
+			g_strfreev (vector);
 			return NULL;
 			}
 		}
@@ -335,7 +335,7 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 		if (!vector || length < 4)
 			{
 			g_free(lang_filename);
-			gnome_string_array_free (vector);
+			g_strfreev (vector);
 			return NULL;
 			}
 		}
@@ -366,7 +366,7 @@ static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sectio
 		y = strtol(vector[3], NULL, 0);
 		}
 
-	gnome_string_array_free (vector);
+	g_strfreev (vector);
 
 	if (!g_file_exists(filename))
 		{
@@ -441,7 +441,7 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint co
 
 	if (!vector || length < 3)
 		{
-		gnome_string_array_free (vector);
+		g_strfreev (vector);
 		return NULL;
 		}
 
@@ -449,7 +449,7 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint co
 	x = strtol(vector[1], NULL, 0);
 	y = strtol(vector[2], NULL, 0);
 
-	gnome_string_array_free (vector);
+	g_strfreev (vector);
 
 	if (!strcasecmp(filename, "Large"))
 		digit = skin->dig_large;

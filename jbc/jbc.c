@@ -151,8 +151,8 @@ main (int argc, char *argv[])
 
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain(PACKAGE); 	
-	applet_widget_init_defaults("jbc_applet", NULL, argc, argv, 0,
-					NULL, argv[0]);
+	applet_widget_init_defaults("jbc_applet", VERSION, argc, argv, NULL,
+				    0, NULL);
 	
 	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	gtk_widget_realize(GTK_WIDGET(window));

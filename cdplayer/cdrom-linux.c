@@ -2,6 +2,8 @@
 #include <string.h>
 #include <fcntl.h>
 #include <glib.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
 
 #include <linux/types.h>
 #include <linux/cdrom.h>
@@ -291,4 +293,6 @@ cdrom_track_length(cdrom_device_t cdp, int track, cdrom_msf_t * length)
 
 	length->minute = cdp->track_info[index + 1].address.minute -
 	    cdp->track_info[index].address.minute - i;
+
+	return 0;
 }

@@ -124,17 +124,13 @@ main(int argc, char* argv[])
   int  idx;
   int  ndesks;
   char* tmp;
-  char* dummy_argv[2] = {NULL};
   static GtkWidget* pager = 0;
   GList* desktops;
   
 
 
-  dummy_argv[0] = "fvwmpager";
-  
-  panel_corba_register_arguments();
-  
-  applet_widget_init_defaults("#fvwmpager", NULL, 1, dummy_argv, 0, NULL, argv[0]);
+  applet_widget_init_defaults("#fvwmpager", VERSION, argc, argv,
+			      NULL, 0, NULL);
 
   window = applet_widget_new();
 

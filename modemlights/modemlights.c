@@ -10,6 +10,9 @@
 #include "button_off.xpm"
 #include "button_on.xpm"
 
+#include <errno.h>
+#include <ctype.h>
+
 #ifdef __linux__
 #include <linux/isdn.h>
 #include <sys/ioctl.h>
@@ -643,8 +646,8 @@ int main (int argc, char *argv[])
 		load_hist_tx[i] = 0;
 		}
 
-	applet_widget_init_defaults("modemlights_applet", NULL, argc, argv, 0,
-				    NULL,argv[0]);
+	applet_widget_init_defaults("modemlights_applet", VERSION, argc, argv,
+				    NULL, 0, NULL);
 
 	lock_file = g_strdup("/var/lock/LCK..modem");
 	device_name = g_strdup("ppp0");

@@ -27,18 +27,6 @@ extern void
 init_winlist(int argc, char **argv, int firstarg);
 extern void
 switch_to_window(guint win_id);
-static error_t
-parseAnArg (int key, char *arg, struct argp_state *state);
-
-
-static struct argp_option options[] = {
-	{ NULL, 0, NULL, 0, NULL, 0 }
-};
-
-static struct argp parser = {
-	options, parseAnArg, N_("readfd writefd"),  NULL,  NULL, NULL, NULL
-};
-
 
 static void activate_winlist_menu_item(GtkWidget *menu_item,
 				       gpointer window_id)
@@ -136,43 +124,16 @@ g_message("In shutdown_applet");
 }
 #endif
 
-
-static error_t
-parseAnArg (int key, char *arg, struct argp_state *state)
-{
-	gint val;
-	
-	/* We dont recognize the key they specified */
-	if (key != ARGP_KEY_ARG)
-		return ARGP_ERR_UNKNOWN;
-
-#if 0	
-	/* if they already specfied URL, we dont take more than one */
-	if (fvwm)
-		argp_usage (state);
-	
-	/* must be user specified URL */
-	helpURL = g_strdup(arg);
-	return 0;
-#endif
-}
-
-
 int
 main(int argc, char **argv)
 {
   guint32 lastarg;
   GtkWidget *w_winlist;
   int i=0;
+  poptContext ctx;
 
-/*  while (!i);  */
-
-g_message("argc is %d\n",argc);
-for (lastarg = 0; lastarg < argc; lastarg++)
-  g_message("argv[%d] -> %s",lastarg, argv[lastarg]);
-
-  applet_widget_init_defaults("winlist_applet", &parser, argc, argv, 0,
-			      &lastarg,argv[0]);
+  applet_widget_init_defaults("winlist_applet", VERSION, argc, argv, NULL, 0,
+			      NULL);
 
   winlist = g_hash_table_new(g_direct_hash, NULL);
 

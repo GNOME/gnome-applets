@@ -38,7 +38,7 @@ int dialer_start(GtkWidget * w, gpointer data)
 void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	gchar *authors[] = {
+	static const gchar *authors[] = {
 		"Alex Roberts (bse@dial.pipex.com)",
 		NULL
 		};
@@ -142,7 +142,7 @@ int main(int argc, char **argv)
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 	
-	applet_widget_init_defaults ("dialer applet", NULL, argc, argv, 0, NULL, argv[0]);
+	applet_widget_init_defaults ("dialer applet", VERSION, argc, argv, NULL, 0, NULL);
 	
 	applet = applet_widget_new();
 	if(!applet) g_print("Cannot create applet!\n");

@@ -5,6 +5,8 @@
 #include "slashapp.h"
 #include "http_get.h"
 #include "slashsplash.xpm"
+#include <errno.h>
+#include <ctype.h>
 
 static void launch_url(AppData *ad, gchar *url);
 static void click_headline_cb(AppData *ad, gpointer data);
@@ -610,8 +612,8 @@ int main (int argc, char *argv[])
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	applet_widget_init("scroll_applet", NULL, argc, argv, 0, NULL,
-			argv[0], TRUE, TRUE, applet_start_new_applet, NULL);
+	applet_widget_init("scroll_applet", VERSION, argc, argv, NULL,
+			   0, NULL, TRUE, TRUE, applet_start_new_applet, NULL);
 
 	applet = applet_widget_new();
 	if (!applet)

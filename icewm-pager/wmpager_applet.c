@@ -40,10 +40,8 @@ Atom _XA_WIN_STATE;
 
 int main(int argc, char *argv[])
 {
-
-    panel_corba_register_arguments();
-
-    applet_widget_init_defaults("wmpager_applet", NULL, argc, argv, 0, NULL, argv[0]);
+    applet_widget_init_defaults("wmpager_applet", VERSION, argc, argv,
+				NULL, 0, NULL);
 
     /* Get the Atom for making a window sticky, so that the detached pager appears on all screens */
     _XA_WIN_STATE = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
@@ -215,7 +213,7 @@ void setup()
 void about_cb (AppletWidget *widget, gpointer data)
 {
     GtkWidget *about;
-    gchar *authors[] = {"M.Watson", NULL};
+    static const gchar *authors[] = {"M.Watson", NULL};
 
     about = gnome_about_new ( _("Desktop Pager Applet"), "0.0",
                               _("Copyright (C)1998 M.Watson"),

@@ -25,37 +25,13 @@ void make_cpuload_applet  (const gchar *);
 void make_memload_applet  (const gchar *);
 void make_swapload_applet (const gchar *);
 
-/* These are the arguments that our application supports.  */
-static struct argp_option arguments[] =
-{
-	{ "cpu",  -1, NULL, 0, N_("Start in CPU mode"), 1 },
-	{ "mem",  -1, NULL, 0, N_("Start in memory mode"), 1 },
-	{ "swap", -1, NULL, 0, N_("Start in swapload mode"), 1 },
-	{ NULL, 0, NULL, 0, NULL, 0 }
-};
+static int start_cpuload = 0, start_memload = 0, start_swapload = 0;
 
-/* Forward declaration of the function that gets called when one of
-   our arguments is recognized.  */
-/* we ignore the arguments */
-static error_t
-parse_an_arg (int key, char *arg, struct argp_state *state)
-{
-	return 0;
-}
-
-/* This structure defines our parser.  It can be used to specify some
-   options for how our parsing function should be called.  */
-static struct argp parser =
-{
-	arguments,			/* Options.  */
-	parse_an_arg,			/* The parser function.  */
-	NULL,				/* Some docs.  */
-	NULL,				/* Some more docs.  */
-	NULL,				/* Child arguments -- gnome_init fills
-					   this in for us.  */
-	NULL,				/* Help filter.  */
-	NULL				/* Translation domain; for the app it
-					   can always be NULL.  */
+static const struct poptOption options[] = {
+  {"cpu", '\0', POPT_ARG_NONE, &start_cpuload, 0, N_("CPU load graph")},
+  {"mem", '\0', POPT_ARG_NONE, &start_memload, 0, N_("Memory usage graph")},
+  {"swap", '\0', POPT_ARG_NONE, &start_swapload, 0, N_("Swap load graph")},
+  {NULL, '\0', 0, NULL, 0}
 };
 
 static void
@@ -79,21 +55,30 @@ applet_start_new_applet (const gchar *param, gpointer data)
 int
 main (int argc, char **argv)
 {
-	gchar *param;
+	gchar *param = NULL, **args;
+	poptContext ctx;
 
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
+	applet_widget_init ("multiload_applet", VERSION, argc, argv, options, 0,
+			    NULL, TRUE, TRUE, applet_start_new_applet, NULL);
+
 	/*we make a param string, instead of first parsing the params with
 	  argp, we will allways use a string, since the panel will only
 	  give us a string */
-	param = make_param_string (argc,argv);
+	param = g_strjoinv(" ", argv+1);
 
-	applet_widget_init ("multiload_applet", &parser, argc, argv, 0, NULL,
-			    argv[0], TRUE, TRUE, applet_start_new_applet, NULL);
+	if(start_cpuload)
+	  make_cpuload_applet(param);
 
-	make_new_applet (param);
+	if(start_memload)
+	  make_memload_applet(param);
+
+	if(start_swapload)
+	  make_swapload_applet(param);
+
 	g_free (param);
 
 	applet_widget_gtk_main ();

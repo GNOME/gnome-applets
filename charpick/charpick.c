@@ -254,8 +254,9 @@ main (int argc, char *argv[])
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
   /* initialize applet */
-  applet_widget_init_defaults("hello_applet", NULL, argc, argv, 0,
-                               NULL, argv[0]);
+  applet_widget_init_defaults("hello_applet", VERSION, argc, argv,
+			      NULL, 0, NULL);
+
   /* create a new applet_widget */
   applet = applet_widget_new();
   /* in the rare case that the communication with the panel

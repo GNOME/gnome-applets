@@ -109,7 +109,8 @@ int main( int argc, char *argv[] )
 
     /* create the main window, and attach delete_event signal to terminating
        the application */
-    applet_widget_init_defaults("asclock_applet", NULL, argc, argv, 0, NULL, argv[0] );
+    applet_widget_init_defaults("asclock_applet", VERSION, argc, argv,
+				NULL, 0, NULL);
 
     applet = applet_widget_new();
 

@@ -20,6 +20,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <errno.h>
 #include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
@@ -552,8 +553,8 @@ int
 main(int argc, char **argv)
 {
 	openMixer("/dev/mixer");
-	applet_widget_init_defaults("mixer_applet", NULL, argc, argv, 0, NULL,
-				    argv[0]);
+	applet_widget_init_defaults("mixer_applet", VERSION, argc, argv,
+				    NULL, 0, NULL);
 
 	applet = applet_widget_new();
 	if (!applet)

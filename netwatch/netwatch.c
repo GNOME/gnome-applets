@@ -61,8 +61,8 @@ create_netwatch_widget (void)
 int
 main(int argc, char **argv)
 {
-        applet_widget_init_defaults("netwatch_applet", NULL, argc, argv, 0,
-				    NULL,argv[0]);
+        applet_widget_init_defaults("netwatch_applet", VERSION, argc, argv,
+				    NULL, 0, NULL);
 
 	applet = applet_widget_new();
 	if (!applet)

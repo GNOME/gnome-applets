@@ -492,8 +492,8 @@ int main (int argc, char *argv[])
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	applet_widget_init("clockmail_applet", NULL, argc, argv, 0, NULL,
-			argv[0], TRUE, TRUE, applet_start_new_applet, NULL);
+	applet_widget_init("clockmail_applet", VERSION, argc, argv, NULL, 0,
+			NULL, TRUE, TRUE, applet_start_new_applet, NULL);
 
 	applet = applet_widget_new();
 	if (!applet)

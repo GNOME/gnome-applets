@@ -48,8 +48,8 @@ int main(int argc, char **argv)
   GtkWidget *l_applet = NULL;
   
   /* set up the usual stuff */
-  applet_widget_init_defaults("bussign_applet", NULL, argc, argv, 0, NULL,
-			      argv[0]);
+  applet_widget_init_defaults("bussign_applet", VERSION, argc, argv, NULL, 0, NULL);
+
   l_applet = applet_widget_new();
   if (!l_applet)
     g_error("Can't create applet!\n");
