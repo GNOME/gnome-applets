@@ -22,11 +22,9 @@ ghttp_applets = \
 ghttp_nb_applets = \
 	bussign		\
 	oldslashapp
-if FALSE
 if HAVE_LIBGHTTP
 ghttp_SUBDIRS = $(ghttp_applets)
 ghttp_nb_SUBDIRS = $(ghttp_nb_applets)
-endif
 endif
 
 esd_applets = \
