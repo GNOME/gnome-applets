@@ -293,7 +293,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 				G_CALLBACK(property_toggled_cb), "view_netload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
 	
-	check_box = gtk_check_button_new_with_mnemonic(_("_Swap File"));
+	check_box = gtk_check_button_new_with_mnemonic(_("_Swap Space"));
 	ma->check_boxes[3] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_swapload", NULL));
@@ -388,7 +388,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector(page, _("Et_hernet"), "netload_color2", ma);
 	add_color_selector(page, _("_Other"), "netload_color3", ma);
 	
-	page = add_page(notebook,  _("Swap File"));
+	page = add_page(notebook,  _("Swap Space"));
 	add_color_selector(page, _("_Used"), "swapload_color0", ma);
 	add_color_selector(page, _("_Free"), "swapload_color1", ma);
 	

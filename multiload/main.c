@@ -78,7 +78,7 @@ about_cb (BonoboUIComponent *uic,
 	(_("System Monitor"), VERSION,
 	 "(C) 1999 - 2002 The Free Software Foundation",
 	 _("Released under the GNU General Public License.\n\n"
-	   "A system load monitor capable of displaying graphs for CPU, ram, and swap file use, plus network traffic."),
+	   "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."),
 	 authors,
 	 documenters,
 	 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
@@ -239,7 +239,7 @@ multiload_applet_tooltip_update(LoadGraph *g)
 	else if (!strncmp(g->name, "netload", strlen("netload")))
 		name = g_strdup(_("Network"));
 	else if (!strncmp(g->name, "swapload", strlen("swapload")))
-		name = g_strdup(_("Swap File"));
+		name = g_strdup(_("Swap Space"));
 	else
 		name = g_strdup(_("Resource"));
 	
