@@ -300,8 +300,9 @@ about_cb (AppletWidget *widget, gpointer data)
 	  };
 
 	about = gnome_about_new ( "The GNOME Network Load Applet", "0.0.3",
-			"(C) 1998 the Free Software Foundation",
+			"(C) 1998 Stephen Norris",
 			authors,
+			"This applet is released under the terms and conditions of the GNU Public Licence."
 			"This applet shows the load on a network device. "
 			"It requires the /proc/net/ip_acct interface to be present and "
 			"set up correctly for the device.",
