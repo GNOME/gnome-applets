@@ -1487,7 +1487,7 @@ desktop_draw(gint i)
     desktop_cb_redraw(desk_widget[i], NULL);
 }
 
-void
+gboolean
 desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event)
 {
   gint desk, selm, button;
@@ -1496,30 +1496,40 @@ desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event)
   button = event->button;  
   desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
   
-  if (button == 1)
+  if (button == 1) {
     gnome_win_hints_set_current_workspace(desk);
-  w = widget->allocation.width - 4;
-  h = widget->allocation.height - 4;
-  x = (((gint)event->x * area_w) - 2) / w;
-  y = (((gint)event->y * area_h) - 2) / h;
-  if (x >= area_w)
-    x = area_w - 1;
-  if (x < 0)
-    x = 0;
-  if (y >= area_h)
-    y = area_h - 1;
-  if (y < 0)
-    y = 0;
-  desktop_set_area(x, y);
+    
+    w = widget->allocation.width - 4;
+    h = widget->allocation.height - 4;
+    x = (((gint)event->x * area_w) - 2) / w;
+    y = (((gint)event->y * area_h) - 2) / h;
+    if (x >= area_w)
+      x = area_w - 1;
+    if (x < 0)
+      x = 0;
+    if (y >= area_h)
+      y = area_h - 1;
+    if (y < 0)
+      y = 0;
+    desktop_set_area(x, y);
+
+    return TRUE;
+  }
+
+  return FALSE;
 }
 
-void
+gboolean
 desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event)
 {
   gint desk, selm, button;
-  
-  button = event->button;  
-  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
+
+  if (event->button == 1) {
+    button = event->button;  
+    desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
+  }
+
+  return TRUE;
 }
 
 void
@@ -1890,36 +1900,45 @@ init_applet_gui_vert(void)
   populate_tasks();
 }
 
-void
+gboolean
 task_cb_button_enter(GtkWidget * widget, GdkEventCrossing *event)
 {
   Task *t;
   
   t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
   set_task_info_to_button(t);
+
+  return TRUE;
 }
 
-void
+gboolean
 task_cb_button_leave(GtkWidget * widget, GdkEventCrossing *event)
 {
   Task *t;
   
   t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
   set_task_info_to_button(t);
+
+  return TRUE;
 }
 
-void
+gboolean
 task_cb_button_down(GtkWidget * widget, GdkEventButton *event)
 {
   gint button;
   Task *t;
   
-  button = event->button;  
-  t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
-  set_task_info_to_button(t);
+  button = event->button;
+  if ((button == 1) || (button == 2))
+    {
+      t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
+      set_task_info_to_button(t);
+      return TRUE;
+    }
+  return FALSE;
 }
 
-void
+gboolean
 task_cb_button_up(GtkWidget * widget, GdkEventButton *event)
 {
   gint button;
@@ -1929,14 +1948,19 @@ task_cb_button_up(GtkWidget * widget, GdkEventButton *event)
   t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
   set_task_info_to_button(t);
   if (button == 1)
-    client_win_show(t);
+    {
+      client_win_show(t);
+      return TRUE;
+    }
   else if (button == 2)
     {
       if (t->iconified)
 	client_win_show(t);
       else
 	client_win_iconify(t);
+      return TRUE;
     }
+  return FALSE;
 }
 
 void

@@ -84,15 +84,15 @@ void init_applet_gui_horiz(void);
 void init_applet_gui_vert(void);
 
 void desktop_draw(gint i);
-void desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event);
-void desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event);
+gboolean desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event);
+gboolean desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event);
 void desktop_cb_redraw(GtkWidget *widget, gpointer data);
 GtkWidget *make_desktop_pane(gint desktop, gint width, gint height);
 
-void task_cb_button_enter(GtkWidget * widget, GdkEventCrossing *event);
-void task_cb_button_leave(GtkWidget * widget, GdkEventCrossing *event);
-void task_cb_button_down(GtkWidget * widget, GdkEventButton *event);
-void task_cb_button_up(GtkWidget * widget, GdkEventButton *event);
+gboolean task_cb_button_enter(GtkWidget * widget, GdkEventCrossing *event);
+gboolean task_cb_button_leave(GtkWidget * widget, GdkEventCrossing *event);
+gboolean task_cb_button_down(GtkWidget * widget, GdkEventButton *event);
+gboolean task_cb_button_up(GtkWidget * widget, GdkEventButton *event);
 
 void cb_showhide(GtkWidget * widget, Task *t);
 void cb_shade(GtkWidget * widget, Task *t);
