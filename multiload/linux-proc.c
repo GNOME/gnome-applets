@@ -1,4 +1,4 @@
-/* From wmload.c, v0.9.2, licensed under the GPL. */
+/* fROM Wmload.c, v0.9.2, licensed under the GPL. */
 #include <sys/types.h>
 #include <math.h>
 #include <fcntl.h>
@@ -81,7 +81,7 @@ GetLoad (int Maximum, int data [4])
 void
 GetMemory (int Maximum, int data [4])
 {
-    int used, shared, buffer, cached;
+    int user, shared, buffer, free;
 
     glibtop_mem mem;
 	
@@ -89,18 +89,19 @@ GetMemory (int Maximum, int data [4])
 	
     assert ((mem.flags & needed_mem_flags) == needed_mem_flags);
 
-    mem.total = mem.free + mem.used + mem.shared +
-	mem.buffer + mem.cached;
-
-    used    = rint (Maximum * (float)mem.used   / mem.total);
+    user = mem.used - mem.buffer - mem.shared;
+	
+    user    = rint (Maximum * (float)user   / mem.total);
     shared  = rint (Maximum * (float)mem.shared / mem.total);
     buffer  = rint (Maximum * (float)mem.buffer / mem.total);
-    cached  = rint (Maximum * (float)mem.cached / mem.total);
+    free    = rint (Maximum * (float)mem.free / mem.total);
+	
+    printf("user: %d, shared: %d, buffer: %d, free %d\n", user, shared, buffer, free);
 
-    data [0] = used;
+    data [0] = user;
     data [1] = shared;
     data [2] = buffer;
-    data [3] = cached;
+    data [3] = free;
 }
 
 void
