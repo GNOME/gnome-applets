@@ -60,12 +60,14 @@
 		gboolean output;
 		gboolean scroll;
 		gint timeout;
+		gint scroll_speed;
 		gchar *dcolor;
 		gchar *ucolor;
 		gchar *bgcolor;
 		gchar *fgcolor;
 		gchar *font;
 		gboolean buttons;
+		gint width;
 
 	} gtik_properties;
 
@@ -313,6 +315,16 @@ static gint updateOutput(gpointer data)
 		stockdata->props.buttons = panel_applet_gconf_get_bool(applet,
 									  "buttons",
 									  NULL);
+									  
+		stockdata->props.scroll_speed = panel_applet_gconf_get_int (applet,
+									    "scroll_speed",
+									    NULL);
+		stockdata->props.scroll_speed = MAX (stockdata->props.scroll_speed, 5);
+		
+		stockdata->props.width = panel_applet_gconf_get_int (applet,
+							 	     "width",
+								     NULL);
+		stockdata->props.width = MAX (stockdata->props.width, 20);
 									
 	}
 
@@ -771,7 +783,7 @@ static gint updateOutput(gpointer data)
 			Repaint(stockdata);
 		}*/
 		Repaint(stockdata);
-		stockdata->delta = 1;
+		stockdata->delta = 2;
 		stockdata->props.scroll = current;
 	}
 
@@ -790,7 +802,7 @@ static gint updateOutput(gpointer data)
 			Repaint(stockdata);
 		}*/
 		Repaint(stockdata);
-		stockdata->delta = 1;
+		stockdata->delta = 2;
 		stockdata->props.scroll = current;
 	}
 
@@ -821,6 +833,42 @@ static gint updateOutput(gpointer data)
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
 				                          updateOutput, stockdata);
 		
+	}
+	
+	static void scroll_timeout_cb(GtkSpinButton *spin, gpointer data ) {
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		gint timeout;
+		
+		timeout=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+		if (timeout < 1)
+			return;
+
+		stockdata->props.scroll_speed = timeout;
+		panel_applet_gconf_set_int (applet, "scroll_speed", 
+					    stockdata->props.timeout, NULL);
+		gtk_timeout_remove(stockdata->drawTimeID);
+		stockdata->drawTimeID = gtk_timeout_add(stockdata->props.scroll_speed,
+						        Repaint,stockdata);
+		
+	}
+	
+	static void width_changed (GtkSpinButton *spin, StockData *stockdata) {
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		gint width, height;
+		
+		width=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+		if (width < 1)
+			return;
+			
+		stockdata->props.width = width;
+		panel_applet_gconf_set_int (applet, "width", 
+					    stockdata->props.width, NULL);
+		height = panel_applet_get_size (applet) - 4;			    
+		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
+						stockdata->props.width,height);
+	
+	
 	}
 	
 	static void
@@ -1198,11 +1246,11 @@ static gint updateOutput(gpointer data)
 		GtkWidget * vbox3, * vbox4;
 		GtkWidget * hbox3;
 		GtkWidget *hbox;
-		GtkWidget * label;
+		GtkWidget * label, *spin;
 		GtkWidget *table;
 		GtkWidget *panela, *panel1 ,*panel2;
 		GtkWidget *label1, *label5;
-		GtkWidget *timeout_label,*timeout_c;
+		GtkWidget *timeout_label,*timeout_c, *scroll_label;
 		GtkObject *timeout_a;
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
 		GtkWidget *fgColor, *fgLabel;
@@ -1247,7 +1295,7 @@ static gint updateOutput(gpointer data)
 		gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
 
-		timeout_label = gtk_label_new_with_mnemonic(_("Update Fre_quency in minutes:"));
+		timeout_label = gtk_label_new_with_mnemonic(_("Stock update Fre_quency in minutes:"));
 		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 1, 128, 
 					       1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
@@ -1264,13 +1312,39 @@ static gint updateOutput(gpointer data)
 				  G_CALLBACK (timeout_cb), stockdata);
 		gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(timeout_c),
 						   GTK_UPDATE_ALWAYS );
-						   
-		label1 = gtk_label_new(_("Enter symbols delimited with \"+\" in the box below."));
+		
+		panel2 = gtk_hbox_new(FALSE, 0);				   
+		scroll_label = gtk_label_new_with_mnemonic (_("Scroll Speed :"));
+		timeout_a = gtk_adjustment_new( stockdata->props.scroll_speed, 1, 128, 
+					       1, 8, 8 );
+		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
+		gtk_widget_set_usize(timeout_c,60,-1);
 
-		stockdata->tik_syms_entry = gtk_entry_new_with_max_length(60);
+		set_relation(timeout_c, GTK_LABEL(scroll_label));
 
-		gtk_entry_set_text(GTK_ENTRY(stockdata->tik_syms_entry), 
-			stockdata->props.tik_syms ? stockdata->props.tik_syms : "");
+		gtk_box_pack_start_defaults( GTK_BOX(panel2), scroll_label );
+		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
+		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
+				    FALSE, 0);
+				    
+		g_signal_connect (G_OBJECT (timeout_c), "value_changed",
+				  G_CALLBACK (scroll_timeout_cb), stockdata);
+		gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(timeout_c),
+						   GTK_UPDATE_ALWAYS );
+				    
+		hbox = gtk_hbox_new (FALSE, 0);
+		
+		label = gtk_label_new_with_mnemonic (_("_Width :"));
+		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+		
+		spin = gtk_spin_button_new_with_range (20, 500, 10);
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
+		gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), stockdata->props.width);
+		g_signal_connect (G_OBJECT (spin), "value_changed",
+				  G_CALLBACK (width_changed), stockdata);
+		gtk_box_pack_start (GTK_BOX (hbox), spin, TRUE, TRUE, 0);
+		gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
+		set_relation(spin, GTK_LABEL(label));
 		
 		check = gtk_check_button_new_with_mnemonic(_("Displa_y only symbols and price"));
 		g_signal_connect (G_OBJECT (check), "toggled",
@@ -1393,11 +1467,6 @@ static gint updateOutput(gpointer data)
                                  
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
-
-
-		gtk_box_pack_start(GTK_BOX(panel1), label1, FALSE, 
-				   FALSE, 0);
-
 		gtk_box_pack_start(GTK_BOX(vbox2), panela, FALSE,
 				    FALSE, 0);
 
@@ -1434,6 +1503,15 @@ static gint updateOutput(gpointer data)
 		}
 		return FALSE;
     	}
+    	
+    	static void
+    	applet_change_size (PanelApplet *applet, guint size, StockData *stockdata)
+    	{
+    	
+    		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
+				      stockdata->props.width,size-4);
+    	
+    	}
     
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
         	BONOBO_UI_UNSAFE_VERB ("Props", properties_cb),
@@ -1449,6 +1527,7 @@ static gint updateOutput(gpointer data)
 		StockData *stockdata;
 		GtkWidget * vbox;
 		GtkWidget * frame;
+		gint height;
 
 		gnome_vfs_init();
 		
@@ -1458,12 +1537,13 @@ static gint updateOutput(gpointer data)
 		access_stock = stockdata = g_new0 (StockData, 1);
 		stockdata->applet = GTK_WIDGET (applet);
 		stockdata->timeout = 0;
-		stockdata->delta = 1;
+		stockdata->delta = 2;
 		stockdata->vfshandle = NULL;
 		stockdata->configFileName = g_strconcat (g_getenv ("HOME"), 
 						         "/.gtik.conf", NULL);
 
-		stockdata->quotes = g_array_new(FALSE, FALSE, sizeof(StockQuote));	
+		stockdata->quotes = g_array_new(FALSE, FALSE, sizeof(StockQuote));
+		properties_load(stockdata);	
 
 		vbox = gtk_hbox_new (FALSE,0);
 		stockdata->leftButton = gtk_button_new_with_label("<<");
@@ -1490,7 +1570,9 @@ static gint updateOutput(gpointer data)
 		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 
 		access_drawing_area = stockdata->drawing_area = GTK_WIDGET (custom_drawing_area_new());
-		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),200,20);
+		height = panel_applet_get_size (applet) - 4;
+		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
+						stockdata->props.width,height);
 
 		gtk_widget_show(stockdata->drawing_area);
 
@@ -1519,13 +1601,13 @@ static gint updateOutput(gpointer data)
 		gtk_signal_connect(GTK_OBJECT(applet), "destroy",
 			GTK_SIGNAL_FUNC(destroy_applet), stockdata);
 
-
+		g_signal_connect (G_OBJECT (applet), "change_size",
+				  G_CALLBACK (applet_change_size), stockdata);
 
 		gtk_widget_show (GTK_WIDGET (applet));
 		
 		create_gc(stockdata);
 
-		properties_load(stockdata);
 		properties_set(stockdata,FALSE);
 		
 		panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
@@ -1536,7 +1618,8 @@ static gint updateOutput(gpointer data)
 				                   stockdata);
 
 		/* KEEPING TIMER ID FOR CLEANUP IN DESTROY */
-		stockdata->drawTimeID = gtk_timeout_add(10,Repaint,stockdata);
+		stockdata->drawTimeID = gtk_timeout_add(stockdata->props.scroll_speed,
+						        Repaint,stockdata);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
 				                          updateOutput,stockdata);
 
