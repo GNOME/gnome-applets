@@ -629,6 +629,7 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 	}
 
 	applet->prefs = glade_property_box;
+	gtk_window_set_resizable (GTK_WINDOW (applet->prefs), FALSE);
 
 	pct = glade_xml_get_widget (xml, "pct_check_button");
 	dialog = glade_xml_get_widget (xml, "dialog_check_button");
