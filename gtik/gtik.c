@@ -41,6 +41,8 @@
 
 #define STOCK_QUOTE(sq) ((StockQuote *)(sq))
 
+#define MAX_SYMBOL_LEN 1024
+
 #define NEVER_SENSITIVE		"never_sensitive"
 
 	enum {
@@ -429,7 +431,7 @@ static gint updateOutput(gpointer data)
 
 
 	/*-----------------------------------------------------------------*/
-	static char *parseQuote(char line[1024]) {
+	static char *parseQuote(char line[MAX_SYMBOL_LEN]) {
 		
                 char *symbol;
                 char *price;
@@ -478,7 +480,7 @@ static gint updateOutput(gpointer data)
 	int configured(StockData *stockdata) {
 		int retVar;
 
-		char  buffer[1024];
+		char  buffer[MAX_SYMBOL_LEN];
 		static FILE *CONFIG;
 
 		CONFIG = fopen((const char *)stockdata->configFileName,"r");
@@ -1969,8 +1971,8 @@ static gint updateOutput(gpointer data)
 
 	/*-----------------------------------------------------------------*/
 	char *splitPrice(char *data) {
-		char buff[128]="";
-		static char buff2[128]="";
+		char buff[MAX_SYMBOL_LEN]="";
+		static char buff2[MAX_SYMBOL_LEN]="";
 		char *var1, *var2;
 
 		strcpy(buff,data);
@@ -1987,13 +1989,13 @@ static gint updateOutput(gpointer data)
 
 	/*-----------------------------------------------------------------*/
 	char *splitChange(StockData *stockdata,char *data, StockQuote *quote) {
-		char buff[128]; 
-		static char buff2[128];
+		char buff[MAX_SYMBOL_LEN]; 
+		static char buff2[MAX_SYMBOL_LEN];
 		char *var1, *var2, *var3, *var4;
 		char rise[2]; 
 
-                bzero(buff, 128); 
-                bzero(buff2, 128); 
+                bzero(buff, MAX_SYMBOL_LEN); 
+                bzero(buff2, MAX_SYMBOL_LEN); 
                 bzero(rise, 2); 
                 
 		strcpy(buff,data);
