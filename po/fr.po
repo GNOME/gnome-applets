@@ -1,11 +1,12 @@
 # gnome-applets fr.po
-# Copyright (C) 1998,1999 Free Software Foundation, Inc.
-# Vincent Renardias <vincent@ldsol.com>, 1998,1999.
+# Copyright (C) 1998,1999,2000 Free Software Foundation, Inc.
+# Vincent Renardias <vincent@ldsol.com>, 1998,1999,2000.
+# Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>, 2000.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.0-pre1\n"
-"POT-Creation-Date: 2000-04-20 03:20-0400\n"
+"POT-Creation-Date: 2000-04-28 13:13+0200\n"
 "PO-Revision-Date: 1998-02-28 19:34+0100\n"
 "Last-Translator: Joaquim Fellmann <joaquim@hrnet.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@gnomefr.traduc.org>\n"
@@ -157,7 +158,7 @@ msgstr "Une horloge analogique similaire a celle du panel CDE."
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
-#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:192
+#: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:189 gweather/gweather-applet.c:192
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
@@ -170,7 +171,7 @@ msgstr "Propriétés..."
 #: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
 #: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
-#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:197
+#: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:193 gweather/gweather-applet.c:197
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
@@ -184,8 +185,8 @@ msgstr "Aide"
 #: battery/battery.c:955 cdplayer/cdplayer.c:408 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
-#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
-#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:202
+#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb-new/gkb.c:445
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:202
 #: jbc/jbc-applet.c:201 life/life.c:288
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
@@ -546,7 +547,7 @@ msgstr " (GMT %+d)"
 msgid "None (default)"
 msgstr "Aucun (défaut)"
 
-#: clockmail/properties.c:278
+#: clockmail/properties.c:278 odometer/properties.c:227
 msgid "Themes:"
 msgstr "Thèmes:"
 
@@ -590,7 +591,7 @@ msgstr "Lorsque cliqué, exécuter:"
 msgid "Theme file (directory):"
 msgstr "Fichiers de thème (répertoire):"
 
-#: clockmail/properties.c:469 odometer/properties.c:333
+#: clockmail/properties.c:469 odometer/properties.c:334
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Thème"
@@ -763,7 +764,7 @@ msgstr "Personnaliser l'icône pour 'démonté'"
 
 #: drivemount/properties.c:340 odometer/properties.c:284
 msgid "Scale size to panel"
-msgstr ""
+msgstr "Adapter la taille au tableau de bord"
 
 #: drivemount/properties.c:346
 msgid "Use automount friendly status test"
@@ -825,60 +826,69 @@ msgstr "Paramétres de gEyes"
 msgid "Themes"
 msgstr "Thèmes"
 
-#: gkb/gkb.c:91
-msgid "Browse"
-msgstr "Parcourir"
-
-#: gkb/gkb.c:348
+#: gkb-new/gkb.c:319
 #, fuzzy
-msgid "GKB Properties"
-msgstr "Propriétés"
-
-#: gkb/gkb.c:360
-msgid "Flag One"
-msgstr "Drapeau 1"
-
-#: gkb/gkb.c:392
-msgid "Flag Two"
-msgstr "Drapeau 2"
-
-#: gkb/gkb.c:420
-msgid "Program"
-msgstr "Programme"
-
-#: gkb/gkb.c:430
-msgid "Xkb"
-msgstr "Xkb"
-
-#: gkb/gkb.c:434
-msgid "Xmodmap"
-msgstr "Xmodmap"
-
-#: gkb/gkb.c:445
-msgid "Menu"
-msgstr "Menu"
-
-#: gkb/gkb.c:566
-msgid "The GNOME KeyBoard Applet"
+msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "L'Applet GNOME KeyBoard"
 
-#: gkb/gkb.c:568
-msgid "(C) 1998-99 LSC - Linux Supporting Center"
+#: gkb-new/gkb.c:321
+#, fuzzy
+msgid "(C) 1998-2000 LSC - Linux Support Center"
 msgstr "(C) 1998-99 LSC - Linux Supporting Center"
 
-#: gkb/gkb.c:570
+#: gkb-new/gkb.c:323
+#, fuzzy
 msgid ""
-"This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
-"xmodmap. The main site of this app moved temporarily to URL "
-"http://lsc.kva.hu/gkb.Mail me your flag, please (60x40 size),I will put it "
-"to CVS.So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
+"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
+"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
+"Kovacs <emese@eik.bme.hu> for her solidarity."
 msgstr ""
 "Cette applet permet de changer de configuration clavier. Rien de plus.Elle "
 "utilise setxkbmap, ou xmodmap. Le site principal de ce logiciel a été "
 "temporairement déplacé à l'URL http://lsc.kva.hu/gkb. E-mailez moi votre "
 "drapeau (60x40) pour que je puisse l'inclure dans le CVS.\n"
 "Merci à Balazs Nagy (Kevin)<julian7@kva.hu> pour son aide."
+
+#: gkb-new/gkb.c:334
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr ""
+
+#: gkb-new/prop.c:303
+msgid "Keymap name"
+msgstr ""
+
+#: gkb-new/prop.c:329
+msgid "Keymap control"
+msgstr ""
+
+#: gkb-new/prop.c:342
+msgid "New keymap"
+msgstr ""
+
+#: gkb-new/prop.c:355
+#, fuzzy
+msgid "Delete this keymap"
+msgstr "Effacer la note"
+
+#: gkb-new/prop.c:380
+msgid "Keymap icon"
+msgstr ""
+
+#: gkb-new/prop.c:407
+#, fuzzy
+msgid "Iconpath"
+msgstr "Icone:"
+
+#: gkb-new/prop.c:429
+msgid "Full command"
+msgstr ""
+
+#: gkb-new/prop.c:486
+#, fuzzy
+msgid "GKB Properties"
+msgstr "Propriétés"
 
 #: gnotes/gnote.c:225
 msgid "Raise Note"
@@ -916,19 +926,19 @@ msgstr "Crée des notes qui collent a votre écran."
 msgid "Can't create GNotes applet!"
 msgstr "Impossible de créér l'applet GNotes!"
 
-#: gnotes/gnotes_applet.c:190
+#: gnotes/gnotes_applet.c:180
 msgid "Raise Notes"
 msgstr "Élecver les Notes"
 
-#: gnotes/gnotes_applet.c:192
+#: gnotes/gnotes_applet.c:182
 msgid "Lower Notes"
 msgstr "Diminuer les Notes"
 
-#: gnotes/gnotes_applet.c:194
+#: gnotes/gnotes_applet.c:184
 msgid "Hide Notes"
 msgstr "Cacher les Notes"
 
-#: gnotes/gnotes_applet.c:196
+#: gnotes/gnotes_applet.c:186
 msgid "Show Notes"
 msgstr "Afficher les Notes"
 
@@ -2843,58 +2853,52 @@ msgstr ""
 "Monte et démonte des lecteurs..."
 
 #: odometer/odo.c:140
-#, fuzzy
 msgid "Odometer"
-msgstr "Géométrie"
+msgstr "Odometer"
 
 #: odometer/odo.c:142
-#, fuzzy
 msgid "(C) 1999 The Free Software Foundation"
-msgstr "(C) 1999 the Free Software Foundation"
+msgstr "(C) 1999 The Free Software Foundation"
 
 #: odometer/odo.c:144
 msgid ""
 "a GNOME applet that tracks and measures the movements of your mouse pointer "
 "across the desktop."
 msgstr ""
+"Une applet GNOME pour mesurer la distance parcourue par votre pointeur de "
+"souris."
 
 #: odometer/odo.c:639
-#, fuzzy
 msgid "Can't create odometer applet!"
-msgstr "Impossible de créér l'applet GNotes!"
+msgstr "Impossible de créér l'applet odometer!"
 
 #: odometer/odo.c:655
-#, fuzzy
 msgid "Reset"
-msgstr "Ouest"
+msgstr "R.A.Z. du compteur"
 
 #: odometer/properties.c:243
-#, fuzzy
 msgid "Odometer setting"
-msgstr "Paramétres du pageur GNOME"
+msgstr "Paramètres de l'odometer"
 
 #: odometer/properties.c:254
-#, fuzzy
 msgid "Use Metric"
 msgstr "Utiliser le système métrique"
 
 #: odometer/properties.c:260
 msgid "auto_reset"
-msgstr ""
+msgstr "R.A.Z. à chaque lancement"
 
 #: odometer/properties.c:266 tickastat/mod_news.c:1251
-#, fuzzy
 msgid "enabled"
-msgstr "Mise à jour activée"
+msgstr "activé"
 
 #: odometer/properties.c:272
 msgid "Digits number"
-msgstr ""
+msgstr "Nombre de chiffres"
 
 #: odometer/properties.c:307
-#, fuzzy
 msgid "Theme file :"
-msgstr "Fichiers de thème (répertoire):"
+msgstr "Fichiers de thème :"
 
 #: quicklaunch/quicklaunch.c:63
 msgid "The QuickLaunch Applet"
@@ -3846,6 +3850,27 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr ""
+
+#~ msgid "Browse"
+#~ msgstr "Parcourir"
+
+#~ msgid "Flag One"
+#~ msgstr "Drapeau 1"
+
+#~ msgid "Flag Two"
+#~ msgstr "Drapeau 2"
+
+#~ msgid "Program"
+#~ msgstr "Programme"
+
+#~ msgid "Xkb"
+#~ msgstr "Xkb"
+
+#~ msgid "Xmodmap"
+#~ msgstr "Xmodmap"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
 
 #~ msgid "gkb.xpm"
 #~ msgstr "gkb.xpm"
