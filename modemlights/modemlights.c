@@ -428,64 +428,94 @@ static gint get_connect_time(MLData *mldata, gint recalc_start)
 		return get_modem_connect_time(mldata, recalc_start);
 }
 
-static void command_connect_cb(gint button, gpointer data)
+static void execute_command(gchar *command)
 {
-	MLData *mldata = data;
-	mldata->confirm_dialog = FALSE;
-	if (!button) gnome_execute_shell(NULL, mldata->command_connect);
-        return;
+	gboolean ret;
+	GError *error = NULL;
+
+	ret = g_spawn_command_line_async(command, &error);
+	if (!ret) {
+		GtkWidget *dialog;
+
+		dialog = gtk_message_dialog_new(NULL, 0,
+						GTK_MESSAGE_ERROR,
+						GTK_BUTTONS_CLOSE,
+						error->message);
+		gtk_dialog_run(GTK_DIALOG(dialog));
+		gtk_widget_destroy(dialog);
+	}
 }
 
-static void command_disconnect_cb(gint button, gpointer data)
+static void disconnect_dialog_response(GtkDialog *dialog, gint response, MLData *mldata)
 {
-	MLData *mldata = data;
-	mldata->confirm_dialog = FALSE;
-	if (!button) gnome_execute_shell(NULL, mldata->command_disconnect);
-        return;
+		if (response == GTK_RESPONSE_OK)
+			execute_command(mldata->command_disconnect);
+
+		gtk_widget_destroy(GTK_WIDGET(dialog));
+		mldata->confirm_dialog = FALSE;
 }
 
-static void confirm_dialog_destroy(GtkObject *o, gpointer data)
+static void connect_dialog_response(GtkDialog *dialog, gint response, MLData *mldata)
 {
-	MLData *mldata = data;
- 	mldata->confirm_dialog = FALSE;
-        return;
-        o = NULL;
+		if (response == GTK_RESPONSE_OK)
+			execute_command(mldata->command_connect);
+
+		gtk_widget_destroy(GTK_WIDGET(dialog));
+		mldata->confirm_dialog = FALSE;
 }
 
-static void dial_cb(GtkWidget *widget, gpointer data)
+static void dial_cb(GtkWidget *widget, MLData *mldata)
 {
-	MLData *mldata = data;
 	GtkWidget *dialog;
 
 	if (is_connected(mldata)) {
-	  if (mldata->ask_for_confirmation) {
-	    if (mldata->confirm_dialog) return;
-	    mldata->confirm_dialog = TRUE;
-	    dialog = gnome_question_dialog (_("You are currently connected.\n"
-					      "Do you want to disconnect?"),
-					    (GnomeReplyCallback)command_disconnect_cb,
-					    mldata);
-	    gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
-				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
-				mldata);
-	  } else {
-	    gnome_execute_shell(NULL, mldata->command_disconnect);
-	    mldata->confirm_dialog = FALSE;
-	  }
+
+		if (!mldata->ask_for_confirmation) {
+			execute_command(mldata->command_disconnect);
+			return;
+		}			
+
+		if (mldata->confirm_dialog)
+			return;
+
+		mldata->confirm_dialog = TRUE;
+		dialog = gtk_message_dialog_new(NULL, 0,
+						GTK_MESSAGE_QUESTION,
+						GTK_BUTTONS_NONE,
+						_("You are currently connected.\n"
+						"Do you want to disconnect?"));
+		gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				       _("_Disconnect"), GTK_RESPONSE_OK,
+				       NULL);
+		g_signal_connect(G_OBJECT(dialog), "response",
+				 G_CALLBACK(disconnect_dialog_response), mldata);
+
+		gtk_widget_show_all(dialog);
+
 	} else {
-	  if (mldata->ask_for_confirmation) {
-	    if (mldata->confirm_dialog) return;
-	    mldata->confirm_dialog = TRUE;
-	    dialog = gnome_question_dialog (_("Do you want to connect?"),
-					    (GnomeReplyCallback)command_connect_cb,
-					    mldata);
-	    gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
-				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
-				mldata);
-	  } else {
-	    gnome_execute_shell(NULL, mldata->command_connect);
-	    mldata->confirm_dialog = FALSE;
-	  }
+
+		if (!mldata->ask_for_confirmation) {
+			execute_command(mldata->command_connect);
+			return;
+		}
+
+		if (mldata->confirm_dialog)
+			return;
+
+		mldata->confirm_dialog = TRUE;
+		dialog = gtk_message_dialog_new(NULL, 0,
+						GTK_MESSAGE_QUESTION,
+						GTK_BUTTONS_NONE,
+						_("Do you want to connect?"));
+		gtk_dialog_add_buttons(GTK_DIALOG(dialog),
+				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+				       _("C_onnect"), GTK_RESPONSE_OK,
+				       NULL);
+		g_signal_connect(GTK_DIALOG(dialog), "response",
+				 G_CALLBACK(connect_dialog_response), mldata);
+
+		gtk_widget_show_all(dialog);
 	}
 }
 
@@ -1388,13 +1418,10 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->layout_current = &layout_data[LAYOUT_HORIZONTAL];
 	
 	if (g_file_exists("/dev/modem"))
-		{
 		mldata->lock_file = g_strdup("/var/lock/LCK..modem");
-		}
 	else
-		{
 		mldata->lock_file = g_strdup("/var/lock/LCK..ttyS0");
-		}
+
 
 	mldata->device_name = g_strdup("ppp0");
 	mldata->command_connect = g_strdup("pppon");
@@ -1425,9 +1452,10 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->button = gtk_button_new();
 	gtk_widget_set_usize(mldata->button,5,5);
 	gtk_fixed_put(GTK_FIXED(mldata->frame),mldata->button,5,0);
-	gtk_signal_connect(GTK_OBJECT(mldata->button),"clicked",GTK_SIGNAL_FUNC(dial_cb),mldata);
-	g_signal_connect (G_OBJECT (mldata->button), "button_press_event",
-			  G_CALLBACK (button_press_hack), GTK_WIDGET (applet));
+	g_signal_connect(G_OBJECT(mldata->button), "clicked",
+			 G_CALLBACK(dial_cb), mldata);
+	g_signal_connect(G_OBJECT (mldata->button), "button_press_event",
+			 G_CALLBACK(button_press_hack), GTK_WIDGET (applet));
 	gtk_widget_show(mldata->button);
 
 	gtk_widget_realize(GTK_WIDGET (applet));
