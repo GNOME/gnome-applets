@@ -11,6 +11,7 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #ifdef HAVE_LIBINTL
 #    include <libintl.h>
 #endif
@@ -41,13 +42,27 @@ GtkWidget *plug = NULL;
 
 int applet_id = -1;/*this is our id we use to comunicate with the panel */
 
+char *devpath;
+
+static int
+cd_try_open(CDPlayerData *cd)
+{
+	int err;
+	if(!cd->cdrom_device) {
+		cd->cdrom_device = cdrom_open(devpath, &err);
+		return cd->cdrom_device!=NULL;
+	}
+	return TRUE;
+}
+
 static void 
 cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 {
 	cdrom_device_status_t stat;
 	int retval;
 
-	if (cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
+	if (cd_try_open(cd) &&
+	    cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
 		switch (stat.audio_status) {
 		case DISC_PLAY:
 			led_time(cd->panel.time,
@@ -82,6 +97,9 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 	CDPlayerData *cd = data;
 	cdrom_device_status_t stat;
 
+	if(!cd_try_open(cd))
+		return 0;
+
 	if (cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
 		switch (stat.audio_status) {
 		case DISC_PLAY:
@@ -105,6 +123,8 @@ static int
 cdplayer_stop(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
+	if(!cd_try_open(cd))
+		return 0;
 	cdrom_stop(cd->cdrom_device);
 	return 0;
 }
@@ -113,6 +133,8 @@ static int
 cdplayer_prev(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
+	if(!cd_try_open(cd))
+		return 0;
 	cdrom_prev(cd->cdrom_device);
 	return 0;
 }
@@ -121,6 +143,8 @@ static int
 cdplayer_next(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
+	if(!cd_try_open(cd))
+		return 0;
 	cdrom_next(cd->cdrom_device);
 	return 0;
 }
@@ -129,6 +153,8 @@ static int
 cdplayer_eject(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
+	if(!cd_try_open(cd))
+		return 0;
 	cdrom_eject(cd->cdrom_device);
 	return 0;
 }
@@ -225,7 +251,8 @@ destroy_cdplayer(GtkWidget * widget, void *data)
 
 	cd = gtk_object_get_user_data(GTK_OBJECT(widget));
 	gtk_timeout_remove(cd->timeout);
-	cdrom_close(cd->cdrom_device);
+	if(cd->cdrom_device)
+		cdrom_close(cd->cdrom_device);
 	g_free(cd);
 }
 
@@ -238,17 +265,12 @@ create_cdplayer_widget(GtkWidget *window)
 	GtkWidget *cdpanel;
 	time_t current_time;
 	int err;
+	int i;
 
 	cd = g_new(CDPlayerData, 1);
 
 	devpath = gnome_config_get_string("/panel/cdplayer/devpath=/dev/cdrom");
 	cd->cdrom_device = cdrom_open(devpath, &err);
-	g_free(devpath);
-	if (cd->cdrom_device == NULL) {
-		printf("Error: Can't open cdrom(%s)\n", strerror(err));
-		g_free(cd);
-		return NULL;
-	}
 	cdpanel = create_cdpanel_widget(window,cd);
 
 	/* Install timeout handler */
@@ -323,6 +345,12 @@ main(int argc, char **argv)
 	gtk_widget_realize(plug);
 
 	cdplayer = create_cdplayer_widget (plug);
+
+	if(cdplayer == NULL) {
+		gnome_panel_applet_abort_id(applet_id);
+		return 1;
+	}
+
 	gtk_widget_show(cdplayer);
 	gtk_container_add (GTK_CONTAINER (plug), cdplayer);
 	gtk_widget_show (plug);

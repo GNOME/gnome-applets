@@ -54,6 +54,8 @@ led_stop(GtkWidget * time, GtkWidget * track)
 			0, 3 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
 	gdk_draw_pixmap(p, style->white_gc, led_pixmap, 10 * DIGIT_WIDTH + 7,
 			0, 4 * DIGIT_WIDTH - 1, 1, DIGIT_WIDTH, -1);
+	gtk_pixmap_get(GTK_PIXMAP(track), &p, NULL);
+	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
 	gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
 	gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
 
@@ -136,5 +138,4 @@ led_nodisc(GtkWidget * time, GtkWidget * track)
 	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
 	gtk_signal_emit_by_name(GTK_OBJECT(time), "draw", &retval);
 	gtk_signal_emit_by_name(GTK_OBJECT(track), "draw", &retval);
-
 }
