@@ -126,32 +126,6 @@ void stickynotes_applet_init_icons()
 	g_object_unref(G_OBJECT(icon_factory));
 }
 
-static void
-setup_sensitivity (const char *wid1,
-		   const char *wid2,
-		   const char *key)
-{
-	GtkWidget *w;
-
-	if (gconf_client_key_is_writable (stickynotes->gconf, key, NULL))
-		return;
-
-	w = glade_xml_get_widget (stickynotes->prefs, wid1);
-	g_assert (w != NULL);
-	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
-			   GINT_TO_POINTER (1));
-	gtk_widget_set_sensitive (w, FALSE);
-
-	if (wid2 != NULL) {
-		w = glade_xml_get_widget (stickynotes->prefs, wid2);
-		g_assert (w != NULL);
-		g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
-				   GINT_TO_POINTER (1));
-		gtk_widget_set_sensitive (w, FALSE);
-	}
-}
-
-
 void stickynotes_applet_init_prefs()
 {
 	stickynotes->prefs = glade_xml_new(GLADE_PATH, "preferences_dialog", NULL);
@@ -179,34 +153,6 @@ void stickynotes_applet_init_prefs()
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sticky), "toggled", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_force), "toggled", G_CALLBACK(preferences_save_cb), NULL);
 
-	setup_sensitivity ("width_spin",
-			   "width_label",
-			   GCONF_PATH "/defaults/width");
-	setup_sensitivity ("height_spin",
-			   "height_label",
-			   GCONF_PATH "/defaults/height");
-	setup_sensitivity ("sys_color_check",
-			   NULL,
-			   GCONF_PATH "/settings/use_system_color");
-	setup_sensitivity ("sys_font_check",
-			   NULL,
-			   GCONF_PATH "/settings/use_system_font");
-	setup_sensitivity ("click_label",
-			   "click_behavior_menu",
-			   GCONF_PATH "/settings/click_behavior");
-	setup_sensitivity ("sticky_check",
-			   NULL,
-			   GCONF_PATH "/settings/sticky");
-	setup_sensitivity ("force_default_check",
-			   NULL,
-			   GCONF_PATH "/settings/force_default");
-	setup_sensitivity ("color_label",
-			   "default_color",
-			   GCONF_PATH "/defaults/color");
-	setup_sensitivity ("font_label",
-			   "default_font",
-			   GCONF_PATH "/defaults/font");
-	
 	{
 		GtkSizeGroup *group = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
 
@@ -218,6 +164,35 @@ void stickynotes_applet_init_prefs()
 		g_object_unref(group);
 	}
 			
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/width", NULL)) {
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "width_label"), FALSE);
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "width_spin"), FALSE);
+	}
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL)) {
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "height_label"), FALSE);
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "height_spin"), FALSE);
+	}
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL)) {
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), FALSE);
+		gtk_widget_set_sensitive(stickynotes->w_prefs_color, FALSE);
+	}
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL))
+		gtk_widget_set_sensitive(stickynotes->w_prefs_sys_color, FALSE);
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL)) {
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "font_label"), FALSE);
+		gtk_widget_set_sensitive(stickynotes->w_prefs_font, FALSE);
+	}
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL))
+		gtk_widget_set_sensitive(stickynotes->w_prefs_sys_font, FALSE);
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL)) {
+		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "click_label"), FALSE);
+		gtk_widget_set_sensitive(stickynotes->w_prefs_click, FALSE);
+	}
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
+		gtk_widget_set_sensitive(stickynotes->w_prefs_sticky, FALSE);
+	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL))
+		gtk_widget_set_sensitive(stickynotes->w_prefs_force, FALSE);
+
 	stickynotes_applet_update_prefs();
 }
 
@@ -316,26 +291,25 @@ void stickynotes_applet_update_prefs()
 	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(stickynotes->w_prefs_color), color.red, color.green, color.blue, 65535);
 	gnome_font_picker_set_font_name(GNOME_FONT_PICKER(stickynotes->w_prefs_font), font_str);
 
-	if ( ! g_object_get_data (G_OBJECT (glade_xml_get_widget(stickynotes->prefs, "color_label")),
-				  NEVER_SENSITIVE))
+	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL)) {
 		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), !sys_color);
-	if ( ! g_object_get_data (G_OBJECT (stickynotes->w_prefs_color), NEVER_SENSITIVE))
 		gtk_widget_set_sensitive(stickynotes->w_prefs_color, !sys_color);
-	if ( ! g_object_get_data (G_OBJECT (glade_xml_get_widget(stickynotes->prefs, "font_label")),
-				  NEVER_SENSITIVE))
+	}
+	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL)) {
 		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "font_label"), !sys_font);
-	if ( ! g_object_get_data (G_OBJECT (stickynotes->w_prefs_font), NEVER_SENSITIVE))
 		gtk_widget_set_sensitive(stickynotes->w_prefs_font, !sys_font);
+	}
 }
 
 void stickynotes_applet_update_menus()
 {
 	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
-	gboolean visible_writable = gconf_client_key_is_writable (stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
 	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
-	gboolean locked_writable = gconf_client_key_is_writable (stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
+	
+	gboolean visible_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
+	gboolean locked_writable = gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
+	
 	gboolean inconsistent = FALSE;
-
 	gint i;
 
 	for (i = 0; i < g_list_length(stickynotes->notes) && !inconsistent; i++) {
@@ -351,7 +325,8 @@ void stickynotes_applet_update_menus()
 		
 		bonobo_ui_component_set_prop(popup, "/commands/show", "state", visible ? "1" : "0", NULL);
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);
-		bonobo_ui_component_set_prop(popup, "/commands/lock", "inconsistent", inconsistent ? "1" : "0", NULL);
+
+		bonobo_ui_component_set_prop(popup, "/commands/lock", "inconsistent", inconsistent ? "1" : "0", NULL); /* FIXME : Doesn't work */
 
 		bonobo_ui_component_set_prop(popup, "/commands/show", "sensitive", visible_writable ? "1" : "0", NULL);
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "sensitive", locked_writable ? "1" : "0", NULL);
@@ -385,12 +360,12 @@ void stickynotes_applet_do_default_action()
 			break;
 
 		case STICKYNOTES_SET_VISIBLE:
-			if (gconf_client_key_is_writable (stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
+			if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
 				gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", !visible, NULL);
 			break;
 
 		case STICKYNOTES_SET_LOCKED:
-			if (gconf_client_key_is_writable (stickynotes->gconf, GCONF_PATH "/settings/locked", NULL))
+			if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL))
 				gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", !locked, NULL);
 			break;
 	}
