@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2002-10-04 14:23+1200\n"
-"PO-Revision-Date: 2002-06-09 13:00+0200\n"
+"POT-Creation-Date: 2002-12-05 19:35+0100\n"
+"PO-Revision-Date: 2002-12-05 18:11+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -271,12 +271,12 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:481
+#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:501
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:593 gtik/gtik.c:708 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:794
+#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:814
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:704
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
 msgid "translator_credits"
 msgstr "Ole Laursen <olau@hardworking.dk>"
 
@@ -293,7 +293,7 @@ msgstr "Dette værktøj viser status for batteriet på din bærbare."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Udseende"
@@ -316,7 +316,8 @@ msgstr "Batterifarveniveauer (%)"
 msgid "Beep when either of the above is true"
 msgstr "Bip når en af de ovenstående er tilfældet"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "Generelt"
 
@@ -388,8 +389,8 @@ msgstr "Batteriet er fuldt opladet"
 msgid "Battery power low"
 msgstr "Batteriladning er lav"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:171
-#: cdplayer/cdplayer.c:499 cdplayer/cdplayer.c:914
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
+#: cdplayer/cdplayer.c:519 cdplayer/cdplayer.c:912
 msgid "CD Player"
 msgstr "Cd-afspiller"
 
@@ -414,61 +415,61 @@ msgstr "Panelprogram til afspilning af lyd-cd'er"
 msgid "_Run External CD Player"
 msgstr "_Kør ekstern cd-afspiller..."
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:902
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:904
 msgid "Play / Pause"
 msgstr "Afspil/pause"
 
-#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:906
 msgid "Eject"
 msgstr "Skub ud"
 
-#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:908
 msgid "Previous Track"
 msgstr "Foregående spor"
 
-#: cdplayer/cdplayer.c:167 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:910
 msgid "Next Track"
 msgstr "Næste spor"
 
-#: cdplayer/cdplayer.c:283 drivemount/drivemount.c:399 mixer/mixer.c:760
+#: cdplayer/cdplayer.c:303 drivemount/drivemount.c:399 mixer/mixer.c:780
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
-msgstr ""
+msgstr "Der opstod en fejl ved kørsel af '%s': %s"
 
-#: cdplayer/cdplayer.c:388
+#: cdplayer/cdplayer.c:408
 msgid "CD Player Preferences"
 msgstr "Indstillinger for cd-afspiller"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:426
 msgid "Disc Image"
 msgstr "Diskaftryk"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:426
 msgid "An image of a cd-rom disc"
 msgstr "Et aftryk af en cd-skive"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:428
 msgid "Device _Path:"
 msgstr "St_i til enhed:"
 
-#: cdplayer/cdplayer.c:417
+#: cdplayer/cdplayer.c:437
 msgid "Device Path"
 msgstr "Sti til enhed"
 
-#: cdplayer/cdplayer.c:417
+#: cdplayer/cdplayer.c:437
 msgid "Set the device path here"
 msgstr "Angiv stien til enheden her"
 
-#: cdplayer/cdplayer.c:420
+#: cdplayer/cdplayer.c:440
 msgid "Use _Default"
 msgstr "Benyt _standard"
 
-#: cdplayer/cdplayer.c:500
+#: cdplayer/cdplayer.c:520
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -476,35 +477,35 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (Gnome 2-porten)"
 
-#: cdplayer/cdplayer.c:502 cdplayer/cdplayer.c:915
+#: cdplayer/cdplayer.c:522 cdplayer/cdplayer.c:913
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Cd-afspillerpanelprogrammet er en simpel cd-afspiller til panelet"
 
-#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:796
+#: cdplayer/cdplayer.c:781 cdplayer/cdplayer.c:792
 msgid "Elapsed time"
 msgstr "Forløbet tid"
 
-#: cdplayer/cdplayer.c:788 cdplayer/cdplayer.c:798
+#: cdplayer/cdplayer.c:784 cdplayer/cdplayer.c:794
 msgid "Track number"
 msgstr "Spornummer"
 
-#: cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:903
 msgid "Click this button to Stop playing the CD"
 msgstr "Stop afspilningen af cd'en"
 
-#: cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:905
 msgid "Click this button to Play or Pause the CD"
 msgstr "Sæt afspilningen i gang eller på pause"
 
-#: cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:907
 msgid "Click this button to eject the CD"
 msgstr "Skub cd-skuffen ud"
 
-#: cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:909
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Afspil det foregående spor på cd'en"
 
-#: cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:911
 msgid "Click this button to Play the next track in the CD"
 msgstr "Afspil det næste spor på cd'en"
 
@@ -730,8 +731,8 @@ msgid "Geyes Preferences"
 msgstr "Indstillinger til Øjne"
 
 #: geyes/themes.c:239
-msgid "T_heme Name"
-msgstr "T_emanavn"
+msgid "_Theme Name:"
+msgstr "_Temanavn:"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
@@ -741,7 +742,7 @@ msgstr "Skift tastaturlayout"
 msgid "GKB Factory"
 msgstr "Fabrik for tastaturomskifter"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:604
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
 msgid "Keyboard Layout Switcher"
 msgstr "Tastaturomskifter"
 
@@ -749,7 +750,7 @@ msgstr "Tastaturomskifter"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Producerer tastaturomskifterpanelprogrammer"
 
-#: gkb-new/gkb.c:112
+#: gkb-new/gkb.c:113
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -757,15 +758,15 @@ msgstr ""
 "Tryk på genvejstasten for at skifte mellem udseender. Genvejstasten kan "
 "konfigureres under indstillingerne."
 
-#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
+#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
 msgid "GKB"
 msgstr "Tastaturomskifter"
 
-#: gkb-new/gkb.c:606
+#: gkb-new/gkb.c:607
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:608
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -783,7 +784,7 @@ msgstr ""
 "Kovacs <emese@gnome.hu> for hendes solidaritet, desuden for hjælp fra gutter "
 "som KevinV. Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:624
+#: gkb-new/gkb.c:625
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Programmets hjemmeside (http://projects.gnome.hu/gkb)"
 
@@ -791,7 +792,7 @@ msgstr "Programmets hjemmeside (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Deaktiveret"
 
-#: gkb-new/keygrab.c:303
+#: gkb-new/keygrab.c:305
 msgid "Press a key or press Esc to cancel"
 msgstr "Tryk på en tast eller tryk Esc for at annullere"
 
@@ -799,447 +800,137 @@ msgstr "Tryk på en tast eller tryk Esc for at annullere"
 msgid "Keyboards (select and press add)"
 msgstr "Tastaturer (vælg og tryk \"tilføj\")"
 
-#: gkb-new/prop-add.c:375
+#: gkb-new/prop-add.c:393
 msgid "Select Keyboard"
 msgstr "Vælg tastatur"
 
-#: gkb-new/prop-list.c:398 gtik/gtik.c:1167
-msgid "_Add"
-msgstr "_Tilføj"
-
-#: gkb-new/prop-list.c:399
-msgid "_Edit"
-msgstr "_Redigér"
-
-#: gkb-new/prop-list.c:400
-msgid "_Up"
-msgstr "_Op"
-
-#: gkb-new/prop-list.c:401
-msgid "Dow_n"
-msgstr "_Ned"
-
-#: gkb-new/prop-list.c:402
-msgid "_Delete"
-msgstr "_Slet"
-
-#: gkb-new/prop-map.c:206
-msgid "Armenia"
-msgstr "Armenien"
-
-#: gkb-new/prop-map.c:207
-msgid "Australia"
-msgstr "Australien"
-
-#: gkb-new/prop-map.c:208
-msgid "Austria"
-msgstr "Østrig"
-
-#: gkb-new/prop-map.c:209
-msgid "Belgium"
-msgstr "Belgien"
-
-#: gkb-new/prop-map.c:210
-msgid "Brazil"
-msgstr "Brasilien"
-
-#: gkb-new/prop-map.c:211
-msgid "Bulgaria"
-msgstr "Bulgarien"
-
-#: gkb-new/prop-map.c:212
-msgid "Canada"
-msgstr "Canada"
-
 #: gkb-new/prop-map.c:213
-msgid "Caribic"
-msgstr "Karibien"
-
-#: gkb-new/prop-map.c:214
-msgid "France"
-msgstr "Frankrig"
-
-#: gkb-new/prop-map.c:215
-msgid "Georgia"
-msgstr "Georgien"
-
-#: gkb-new/prop-map.c:216
-msgid "Germany"
-msgstr "Tyskland"
-
-#: gkb-new/prop-map.c:217
-msgid "Great Britain"
-msgstr "Storbritannien"
-
-#: gkb-new/prop-map.c:218
-msgid "Greece"
-msgstr "Grækenland"
-
-#: gkb-new/prop-map.c:219
-msgid "Hungary"
-msgstr "Ungarn"
-
-#: gkb-new/prop-map.c:220
-msgid "Jamaica"
-msgstr "Jamaica"
-
-#: gkb-new/prop-map.c:221
-msgid "New Zealand"
-msgstr "New Zealand"
-
-#: gkb-new/prop-map.c:222
-msgid "Norway"
-msgstr "Norge"
-
-#: gkb-new/prop-map.c:223
-msgid "Poland"
-msgstr "Polen"
-
-#: gkb-new/prop-map.c:224
-msgid "Portugal"
-msgstr "Portugal"
-
-#: gkb-new/prop-map.c:225
-msgid "Russia"
-msgstr "Rusland"
-
-#: gkb-new/prop-map.c:226
-msgid "Slovak Republic"
-msgstr "Slovakiske republik"
-
-#: gkb-new/prop-map.c:227
-msgid "Slovenia"
-msgstr "Slovenien"
-
-#: gkb-new/prop-map.c:228
-msgid "South Africa"
-msgstr "Sydafrika"
-
-#: gkb-new/prop-map.c:229
-msgid "Spain"
-msgstr "Spanien"
-
-#: gkb-new/prop-map.c:230
-msgid "Sweden"
-msgstr "Sverige"
-
-#: gkb-new/prop-map.c:231
-msgid "Switzerland"
-msgstr "Scweiz"
-
-#: gkb-new/prop-map.c:232
-msgid "Thailand"
-msgstr "Thailand"
-
-#: gkb-new/prop-map.c:233
-msgid "Turkey"
-msgstr "Tyrkiet"
-
-#: gkb-new/prop-map.c:234
-msgid "United Kingdom"
-msgstr "UK"
-
-#: gkb-new/prop-map.c:235
-msgid "United States"
-msgstr "USA"
-
-#: gkb-new/prop-map.c:236
-msgid "Yugoslavia"
-msgstr "Jugoslavien"
-
-#: gkb-new/prop-map.c:256
-msgid "Armenian"
-msgstr "Armensk"
-
-#: gkb-new/prop-map.c:257
-msgid "Basque"
-msgstr "Baskisk"
-
-#: gkb-new/prop-map.c:258
-msgid "Bulgarian"
-msgstr "Bulgarsk"
-
-#: gkb-new/prop-map.c:259
-msgid "Dutch"
-msgstr "Hollandsk"
-
-#: gkb-new/prop-map.c:260
-msgid "English"
-msgstr "Engelsk"
-
-#: gkb-new/prop-map.c:261
-msgid "French"
-msgstr "Fransk"
-
-#: gkb-new/prop-map.c:262
-msgid "Georgian"
-msgstr "Georgisk"
-
-#: gkb-new/prop-map.c:263
-msgid "German"
-msgstr "Tysk"
-
-#: gkb-new/prop-map.c:264
-msgid "Greek"
-msgstr "Græsk"
-
-#: gkb-new/prop-map.c:265
-msgid "Hungarian"
-msgstr "Ungarnsk"
-
-#: gkb-new/prop-map.c:266
-msgid "Norwegian"
-msgstr "Norsk"
-
-#: gkb-new/prop-map.c:267
-msgid "Polish"
-msgstr "Polsk"
-
-#: gkb-new/prop-map.c:268
-msgid "Portuguese"
-msgstr "Portugisisk"
-
-#: gkb-new/prop-map.c:269
-msgid "Russian"
-msgstr "Russisk"
-
-#: gkb-new/prop-map.c:270
-msgid "Slovak"
-msgstr "Slovakisk"
-
-#: gkb-new/prop-map.c:271
-msgid "Slovenian"
-msgstr "Slovensk"
-
-#: gkb-new/prop-map.c:272
-msgid "Swedish"
-msgstr "Svensk"
-
-#: gkb-new/prop-map.c:273
-msgid "Thai"
-msgstr "Thai"
-
-#: gkb-new/prop-map.c:274
-msgid "Turkish"
-msgstr "Tyrkisk"
-
-#: gkb-new/prop-map.c:275
-msgid "Wallon"
-msgstr "Vallonsk"
-
-#: gkb-new/prop-map.c:276
-msgid "Yugoslavian"
-msgstr "Jugoslavisk"
-
-#: gkb-new/prop-map.c:294
-msgid "105"
-msgstr "105"
-
-#: gkb-new/prop-map.c:295
-msgid "101"
-msgstr "101"
-
-#: gkb-new/prop-map.c:296
-msgid "102"
-msgstr "102"
-
-#: gkb-new/prop-map.c:297
-msgid "450"
-msgstr "450"
-
-#: gkb-new/prop-map.c:298
-msgid "84"
-msgstr "84"
-
-#: gkb-new/prop-map.c:299
-msgid "mklinux"
-msgstr "mklinux"
-
-#: gkb-new/prop-map.c:300
-msgid "type5"
-msgstr "type5"
-
-#: gkb-new/prop-map.c:320
-msgid "iso-8859-1"
-msgstr "iso-8859-1"
-
-#: gkb-new/prop-map.c:321
-msgid "iso-8859-2"
-msgstr "iso-8859-2"
-
-#: gkb-new/prop-map.c:322
-msgid "iso-8859-7"
-msgstr "iso-8859-7"
-
-#: gkb-new/prop-map.c:323
-msgid "iso-8859-9"
-msgstr "iso-8859-9"
-
-#: gkb-new/prop-map.c:324
-msgid "am-armscii8"
-msgstr "am-armscii8"
-
-#: gkb-new/prop-map.c:325
-msgid "be-latin1"
-msgstr "be-latin1"
-
-#: gkb-new/prop-map.c:326
-msgid "cp1251"
-msgstr "cp1251"
-
-#: gkb-new/prop-map.c:327
-msgid "georgian-academy"
-msgstr "georgian-academy"
-
-#: gkb-new/prop-map.c:328
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: gkb-new/prop-map.c:329
-msgid "tis620"
-msgstr "tis620"
-
-#: gkb-new/prop-map.c:347
-msgid "ix86"
-msgstr "ix86"
-
-#: gkb-new/prop-map.c:348
-msgid "Sun"
-msgstr "Sun"
-
-#: gkb-new/prop-map.c:349
-msgid "mac"
-msgstr "mac"
-
-#: gkb-new/prop-map.c:350
-msgid "sgi"
-msgstr "sgi"
-
-#: gkb-new/prop-map.c:351
-msgid "dec"
-msgstr "dec"
-
-#: gkb-new/prop-map.c:352
-msgid "ibm"
-msgstr "ibm"
-
-#: gkb-new/prop-map.c:591
 msgid "Edit Keyboard"
 msgstr "Redigér tastatur"
 
-#. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:619 panel-menu/panel-menu-directory.c:674
+#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Navn:"
 
-#: gkb-new/prop-map.c:623
+#: gkb-new/prop-map.c:235
 msgid "_Label:"
 msgstr "_Etiket:"
 
-#: gkb-new/prop-map.c:627
-msgid "Lan_guage:"
-msgstr "_Sprog:"
-
-#: gkb-new/prop-map.c:633
-msgid "Count_ry:"
-msgstr "_Land:"
-
-#: gkb-new/prop-map.c:640
-msgid ""
-"Flag\n"
-"Pixmap"
-msgstr ""
-"Flag\n"
-"Billede"
-
-#: gkb-new/prop-map.c:644
-msgid "Arc_hitecture:"
-msgstr "_Opbygning:"
-
-#: gkb-new/prop-map.c:650
-msgid "_Type:"
-msgstr "_Type:"
-
-#: gkb-new/prop-map.c:656
-msgid "Code_page:"
-msgstr "Tegns_æt:"
-
-#: gkb-new/prop-map.c:663
+#: gkb-new/prop-map.c:238
 msgid "Co_mmand:"
 msgstr "_Kommando:"
 
-#: gkb-new/prop-map.c:670
+#: gkb-new/prop-map.c:246
 msgid ""
 "Where command can be:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
+" * xmodmap /full/path/xmodmap.hu\n"
+" * gkb_xmmap hu\n"
+" * setxkbmap hu"
 msgstr ""
 "Hvor kommando kan være:\n"
-"* xmodmap /komplet/sti/xmodmap.da\n"
-"* gkb__xmmap da\n"
-"* setxkbmap da"
+" * xmodmap /komplet/sti/xmodmap.da\n"
+" * gkb_xmmap da\n"
+" * setxkbmap da"
 
-#: gkb-new/prop.c:131 gkb-new/prop.c:199
+#: gkb-new/prop-map.c:279
+msgid "_Flag"
+msgstr "_Flag"
+
+#: gkb-new/prop.c:132 gkb-new/prop.c:202
 msgid "Normal"
 msgstr "Normal"
 
-#: gkb-new/prop.c:132 gkb-new/prop.c:203
+#: gkb-new/prop.c:133 gkb-new/prop.c:206
 msgid "Big"
 msgstr "Stor"
 
-#: gkb-new/prop.c:150 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:151 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Flag"
 
-#: gkb-new/prop.c:151 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:152 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Etiket"
 
-#: gkb-new/prop.c:152 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:153 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Flag og etiket"
 
-#: gkb-new/prop.c:288 modemlights/properties.c:393
+#: gkb-new/prop.c:291 modemlights/properties.c:393
 msgid "Display"
 msgstr "Vis"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:308
+#: gkb-new/prop.c:311
 msgid "_Appearance: "
 msgstr "_Udseende: "
 
 # "applet" er overflødigt
-#: gkb-new/prop.c:315
+#: gkb-new/prop.c:318
 msgid "Applet _size: "
 msgstr "_Størrelse: "
 
-#: gkb-new/prop.c:341
+#: gkb-new/prop.c:345
 msgid "Hotkey for switching between layouts"
 msgstr "Tast for at skifte mellem udseender"
 
-#: gkb-new/prop.c:353
-msgid "Grab hotkey"
-msgstr "Opsnap tast"
+#: gkb-new/prop.c:357
+msgid "_Grab hotkey"
+msgstr "_Opsnap tast"
 
 #. Create property box
-#: gkb-new/prop.c:418
+#: gkb-new/prop.c:423
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Indstillinger for tastaturomskifter"
 
-#: gkb-new/prop.c:435
-msgid "_Keymaps"
-msgstr "_Tastaturopsætninger"
+#: gkb-new/prop.c:440
+msgid "Keymaps"
+msgstr "Tastaturopsætninger"
 
-#: gkb-new/prop.c:447
-msgid "_Options"
-msgstr "_Indstillinger"
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:452 multiload/properties.c:313
+msgid "Options"
+msgstr "Indstillinger"
 
-#: gkb-new/system.c:45
-msgid "The keymap switching command returned with error!"
-msgstr "Kommandoen til skift af tastatur returnerede med fejl!"
+#: gkb-new/system.c:46
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Keymap `%s' is not supported on this system. Please choose another keymap.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"En fejl opstod.\n"
+"\n"
+"Tastaturopsætningen '%s' understøttes ikke på dette system. Vælg en anden "
+"opsætning.\n"
+"\n"
+"Kommandoen var: %s"
+
+#: gkb-new/system.c:51
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be "
+"located in your PATH.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"En fejl opstod.\n"
+"\n"
+"Kunne ikke indlæse tastaturopsætningen '%s', sandsynligvis fordi kommandoen "
+"'xmodmap' ikke bliv fundet i din PATH.\n"
+"\n"
+"Kommandoen var: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -1254,7 +945,7 @@ msgstr "Få løbende opdaterede børsnoteringer"
 msgid "Gtik Applet Factory"
 msgstr "Fabrik for børsnoteringspanelprogram"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:720
 msgid "Stock Ticker"
 msgstr "Børsnoteringer"
 
@@ -1266,7 +957,7 @@ msgstr "_Opdatér"
 msgid "No data available or properties not set"
 msgstr "Ingen data tilgængelig eller indstillingerne er ikke sat"
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:722
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1278,96 +969,93 @@ msgstr ""
 "Lad være med at bruge aktieoplysningerne til investeringsbeslutninger; det "
 "er kun til informeringsformål."
 
-#: gtik/gtik.c:1156
+#: gtik/gtik.c:1147
 msgid "_New Symbol:"
 msgstr "_Nyt symbol:"
 
-#: gtik/gtik.c:1178
+#: gtik/gtik.c:1158
+msgid "_Add"
+msgstr "_Tilføj"
+
+#: gtik/gtik.c:1169
 msgid "_Remove Selected"
 msgstr "_Fjern valgte"
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1251
 msgid "Stock Ticker Preferences"
 msgstr "Indstillinger for børsnoteringer"
 
-#: gtik/gtik.c:1284
-#, fuzzy
+#: gtik/gtik.c:1275
 msgid "Stock update Fre_quency in minutes:"
 msgstr "Opdaterings_interval i minutter:"
 
-#: gtik/gtik.c:1303
+#: gtik/gtik.c:1294
 msgid "Scroll Speed :"
-msgstr ""
+msgstr "Rullehastighed:"
 
-#: gtik/gtik.c:1323
-#, fuzzy
+#: gtik/gtik.c:1314
 msgid "_Width :"
-msgstr "Bredde:"
+msgstr "_Bredde:"
 
-#: gtik/gtik.c:1335
+#: gtik/gtik.c:1326
 msgid "Displa_y only symbols and price"
 msgstr "Vis kun s_ymboler og pris"
 
-#: gtik/gtik.c:1338
+#: gtik/gtik.c:1329
 msgid "Scroll _left to right"
 msgstr "Rul fra _venstre mod højre"
 
-#: gtik/gtik.c:1341
+#: gtik/gtik.c:1332
 msgid "_Enable scroll buttons"
 msgstr "Vis _rulleknapper"
 
-#: gtik/gtik.c:1365
-msgid "+ C_olor"
-msgstr "P_ositiv farve"
+#: gtik/gtik.c:1356
+msgid "+ C_olor:"
+msgstr "P_ositiv farve:"
 
-#: gtik/gtik.c:1385
-msgid "- Colo_r"
-msgstr "N_egativ farve"
+#: gtik/gtik.c:1376
+msgid "- Colo_r:"
+msgstr "N_egativ farve:"
 
-#: gtik/gtik.c:1402
-msgid "_Unchanged Color"
-msgstr "_Uændret farve"
+#: gtik/gtik.c:1393
+msgid "_Unchanged Color:"
+msgstr "_Uændret farve:"
 
-#: gtik/gtik.c:1419
-msgid "Back_ground Color"
-msgstr "_Baggrundsfarve"
+#: gtik/gtik.c:1410
+msgid "Back_ground Color:"
+msgstr "_Baggrundsfarve:"
 
-#: gtik/gtik.c:1441
-#, fuzzy
+#: gtik/gtik.c:1432
 msgid "_Font:"
-msgstr "Skrifttype:"
+msgstr "Skrift_type:"
 
-#: gtik/gtik.c:1461
-msgid "_Symbols"
-msgstr "_Symboler"
+#: gtik/gtik.c:1452
+msgid "Symbols"
+msgstr "Symboler"
 
-#: gtik/gtik.c:1463
-msgid "_Behavior"
-msgstr "_Opførsel"
+#: gtik/gtik.c:1454
+msgid "Behavior"
+msgstr "Opførsel"
 
-#: gtik/gtik.c:1465
-msgid "_Appearance"
-msgstr "_Udseende"
-
-#: gtik/gtik.c:1550
+#: gtik/gtik.c:1541
 msgid "Skip forward"
 msgstr "Spring fremad"
 
-#: gtik/gtik.c:1551
+#: gtik/gtik.c:1542
 msgid "Skip backward"
 msgstr "Spring bagud"
 
-#: gtik/gtik.c:1552
+#: gtik/gtik.c:1543
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr "Få løbende opdaterede børsnoteringer"
 
-#: gtik/gtik.c:1739
+#: gtik/gtik.c:1731
 msgid "(No"
 msgstr "(Ingen"
 
-#: gtik/gtik.c:1740
+#: gtik/gtik.c:1732
 msgid "Change "
 msgstr "Ændring "
 
@@ -1535,57 +1223,52 @@ msgstr "Indtast URL'en"
 msgid "Weather Preferences"
 msgstr "Indstillinger for vejret"
 
-#: gweather/gweather-pref.c:610
-msgid "_Location"
-msgstr "_Placering"
-
 # hvert hænger sammen med minut
-#: gweather/gweather-pref.c:641
+#: gweather/gweather-pref.c:604
 msgid "_Automatically update every"
 msgstr "_Opdatér automatisk hvert"
 
-#: gweather/gweather-pref.c:647
+#: gweather/gweather-pref.c:610
 msgid "Use _metric system units"
 msgstr "Benyt _metriske mål"
 
-#: gweather/gweather-pref.c:653
+#: gweather/gweather-pref.c:616
 msgid "Enable _detailed forecast"
 msgstr "Aktivér _detaljeret prognose"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:623
 msgid "Enable _radar map"
 msgstr "Aktivér _radarkort"
 
-#: gweather/gweather-pref.c:666
+#: gweather/gweather-pref.c:629
 msgid "Use cus_tom address for radar map"
 msgstr "Benyt selv_valgt adresse til radarkortet"
 
-#: gweather/gweather-pref.c:677
+#: gweather/gweather-pref.c:640
 msgid "A_ddress :"
 msgstr "A_dresse:"
 
-#: gweather/gweather-pref.c:689
+#: gweather/gweather-pref.c:652
 msgid "Updates"
 msgstr "Opdateringer"
 
 # hvert hænger sammen med minut
-#: gweather/gweather-pref.c:695
+#: gweather/gweather-pref.c:658
 msgid "_Automatically update every "
 msgstr "_Opdatér automatisk hvert "
 
-#: gweather/gweather-pref.c:715
+#: gweather/gweather-pref.c:678
 msgid "minute(s)"
 msgstr "minut"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:726
+#: gweather/gweather-pref.c:689
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: gweather/gweather-pref.c:744 mini-commander/src/mini-commander.glade.h:19
-#: modemlights/properties.c:428
-msgid "_General"
-msgstr "_Generelt"
+#: gweather/gweather-pref.c:744
+msgid "Location"
+msgstr "Placering"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2764,7 +2447,7 @@ msgstr "Blæsende støvhvirvler"
 msgid "Drifting dust whirls"
 msgstr "Drivende støvhvirvler"
 
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
 msgid "Failed to get METAR data.\n"
 msgstr "Kunne ikke få METAR data.\n"
 
@@ -2789,33 +2472,33 @@ msgstr "Kunne ikke få Met Office-data.\n"
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Kunne ikke få Met Office udsigtsdata.\n"
 
-#: gweather/weather.c:1466
+#: gweather/weather.c:1468
 msgid "Failed to get radar map image.\n"
 msgstr "Kunne ikke få radarkortbillede.\n"
 
-#: gweather/weather.c:1769
+#: gweather/weather.c:1771
 msgid "%a, %b %d / %H:%M"
 msgstr "%A d. %d. %B kl. %H:%M"
 
-#: gweather/weather.c:1773
+#: gweather/weather.c:1775
 msgid "Unknown observation time"
 msgstr "Ukendt observationstid"
 
-#: gweather/weather.c:1833
+#: gweather/weather.c:1835
 msgid "Calm"
 msgstr "Stille"
 
-#: gweather/weather.c:1859
+#: gweather/weather.c:1861
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: gweather/weather.c:1893
+#: gweather/weather.c:1895
 msgid "Retrieval failed"
 msgstr "Hentning fejlede"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:313
+#: mini-commander/src/mini-commander_applet.c:353
 msgid "Command Line"
 msgstr "Kommandolinje"
 
@@ -2847,58 +2530,59 @@ msgstr ""
 "version."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:427
+#: mini-commander/src/command_line.c:430
 msgid "Start program"
 msgstr "Start program"
 
-#: mini-commander/src/command_line.c:470
+#: mini-commander/src/command_line.c:473
 msgid "Command line"
 msgstr "Kommandolinje"
 
-#: mini-commander/src/command_line.c:471
+#: mini-commander/src/command_line.c:474
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Indtast en kommando her og Gnome vil udføre den for dig"
 
 #: mini-commander/src/mc-install-default-macros.c:71
 #, c-format
 msgid "Cannot get schema for %s : %s"
-msgstr ""
+msgstr "Kan ikke få fat i skema for %s: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:99
 #, c-format
 msgid "Cannot set schema for %s : %s"
-msgstr ""
+msgstr "Kan ikke sætte skema for %s: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:105
 #, c-format
 msgid "Set default list value for %s\n"
-msgstr ""
+msgstr "Sæt standardlisteværdien for %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL er sat, installerer ikke skemaer\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr ""
+msgstr "Skal sætte GCONF_CONFIG_SOURCE-miljøvariablen\n"
 
 #: mini-commander/src/mc-install-default-macros.c:142
 #, c-format
 msgid "Failed to access configuration source(s): %s\n"
-msgstr ""
+msgstr "Kunne ikke tilgå konfigurationskilde: %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:154
 #, c-format
 msgid "Error syncing config data: %s"
-msgstr ""
+msgstr "Fejl ved synkronisering af konfigurataionsdata: %s"
 
 #: mini-commander/src/mini-commander.glade.h:1
 msgid "*"
-msgstr ""
+msgstr "*"
 
 #: mini-commander/src/mini-commander.glade.h:2
 msgid "Add New Macro"
-msgstr ""
+msgstr "Tilføj ny makro"
 
 # "applet" overflødigt
 #: mini-commander/src/mini-commander.glade.h:4
@@ -2909,7 +2593,8 @@ msgstr "_Bredde:"
 msgid "Autocompletion"
 msgstr "Autofuldførelse"
 
-#: mini-commander/src/mini-commander.glade.h:6 multiload/properties.c:365
+#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
+#: multiload/properties.c:365
 msgid "Colors"
 msgstr "Farver"
 
@@ -2926,100 +2611,97 @@ msgid "Command line _foreground:"
 msgstr "Kommandolinje_forgrund:"
 
 #: mini-commander/src/mini-commander.glade.h:10
-#, fuzzy
 msgid "Command:"
-msgstr "_Kommando:"
+msgstr "Kommando:"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "Enable _history based autocompletion"
+msgid "E_nable history based autocompletion"
 msgstr "Benyt _historikbaseret autofuldførelse"
 
-#: mini-commander/src/mini-commander.glade.h:12
-msgid "Pattern:"
-msgstr ""
-
 #: mini-commander/src/mini-commander.glade.h:13
-#, fuzzy
-msgid "Pick a color"
-msgstr "Urfarver"
+msgid "Macros"
+msgstr "Makroer"
 
 #: mini-commander/src/mini-commander.glade.h:14
+msgid "Pattern:"
+msgstr "Mønster:"
+
+#: mini-commander/src/mini-commander.glade.h:15
+msgid "Pick a color"
+msgstr "Vælg en farve"
+
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "Show fram_e"
 msgstr "Vis _kant"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "Show han_dle"
 msgstr "Vis hånd_tag"
 
-#: mini-commander/src/mini-commander.glade.h:16
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "Size"
 msgstr "Størrelse"
 
-#: mini-commander/src/mini-commander.glade.h:17
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Add new macro..."
-msgstr ""
-
-#: mini-commander/src/mini-commander.glade.h:18
-#, fuzzy
-msgid "_Delete Macro"
-msgstr "Slet genvej"
+msgstr "_Tilføj ny makro..."
 
 #: mini-commander/src/mini-commander.glade.h:20
-msgid "_Macros"
-msgstr "_Makroer"
+msgid "_Delete Macro"
+msgstr "_Slet makro"
 
 #: mini-commander/src/mini-commander.glade.h:21
 msgid "_Use default theme colors"
 msgstr "_Benyt standardtemafarver"
 
-#: mini-commander/src/mini-commander_applet.c:143
-#: mini-commander/src/mini-commander_applet.c:147
+#: mini-commander/src/mini-commander_applet.c:189
+#: mini-commander/src/mini-commander_applet.c:193
 msgid "Browser"
 msgstr "Surfningsprogram"
 
-#: mini-commander/src/mini-commander_applet.c:148
+#: mini-commander/src/mini-commander_applet.c:194
 msgid "Click this button to start the browser"
 msgstr "Start surfningsprogrammet"
 
-#: mini-commander/src/mini-commander_applet.c:164
-#: mini-commander/src/mini-commander_applet.c:168
+#: mini-commander/src/mini-commander_applet.c:208
+#: mini-commander/src/mini-commander_applet.c:212
 msgid "History"
 msgstr "Historik"
 
-#: mini-commander/src/mini-commander_applet.c:169
+#: mini-commander/src/mini-commander_applet.c:213
 msgid "Click this button for the list of previous commands"
 msgstr "Vis en liste over tidligere kommandoer"
 
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:351
 msgid "Mini-Commander applet"
 msgstr "Kommandopanelprogram"
 
-#: mini-commander/src/mini-commander_applet.c:312
+#: mini-commander/src/mini-commander_applet.c:352
 msgid "This applet adds a command line to the panel"
 msgstr "Kommandelinje til panelet"
 
 #: mini-commander/src/preferences.c:343
 msgid "You must specify a pattern"
-msgstr ""
+msgstr "Du skal angive et mønster"
 
 #: mini-commander/src/preferences.c:347
 msgid "You must specify a pattern and a command"
-msgstr ""
+msgstr "Du skal angive et mønster og en kommando"
 
 #: mini-commander/src/preferences.c:348
 msgid "You must specify a command"
-msgstr ""
+msgstr "Du skal angive en kommando"
 
 #: mini-commander/src/preferences.c:351
 msgid "You may not specify duplicate patterns"
-msgstr ""
+msgstr "Du kan ikke angive flere ens mønstre"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Justér lydstyrken"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:130
-#: mixer/mixer.c:807
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
+#: mixer/mixer.c:827
 msgid "Volume Control"
 msgstr "Lydstyrke"
 
@@ -3031,11 +2713,11 @@ msgstr "_Dæmp"
 msgid "_Run Volume Control..."
 msgstr "_Lydstyrke..."
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:144
 msgid "Volume Control (muted)"
 msgstr "Lydstyrkekontrol (dæmpet)"
 
-#: mixer/mixer.c:183
+#: mixer/mixer.c:196
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3043,37 +2725,37 @@ msgstr ""
 "advarsel: denne version af gmix blev oversat med en anden version af "
 "soundcard.h\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:207
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Forespørgsel om tilgængelige kanaler på mixerenheden %s mislykkedes\n"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:214
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "advarsel: mixeren har ingen lydstyrkekanal - bruger PCM i stedet.\n"
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:217
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Mixerenheden %s har hverken lydstyrke- eller PCM-kanaler.\n"
 
-#: mixer/mixer.c:552
+#: mixer/mixer.c:572
 msgid "Volume Controller"
 msgstr "Lydstyrkekontrol"
 
-#: mixer/mixer.c:553
+#: mixer/mixer.c:573
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Brug op- og ned-piletasterne til at ændre lydstyrken"
 
-#: mixer/mixer.c:808
+#: mixer/mixer.c:828
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:809
+#: mixer/mixer.c:829
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Lydstyrkekontrollen lader dig sætte lydstyrken for skrivebordsmiljøet."
 
-#: mixer/mixer.c:1019
+#: mixer/mixer.c:1074
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Lydstyrkekontrollen lader dig sætte lydstyrken for skrivebordet"
 
@@ -3207,10 +2889,6 @@ msgstr "Baggr_und"
 msgid "O_utline"
 msgstr "S_ammendrag"
 
-#: modemlights/properties.c:468
-msgid "C_olors"
-msgstr "F_arver"
-
 #: modemlights/properties.c:477
 msgid "Modem options"
 msgstr "Modemindstillinger"
@@ -3237,8 +2915,8 @@ msgid "Set options as default"
 msgstr "Vælg standardindstillingerne"
 
 #: modemlights/properties.c:554
-msgid "_Advanced"
-msgstr "_Avanceret"
+msgid "Advanced"
+msgstr "Avanceret"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3272,19 +2950,19 @@ msgstr ""
 "og swapfilsforbrug, plus netværkstraffik. Udgivet under GNU general public "
 "license."
 
-#: multiload/main.c:236
+#: multiload/main.c:236 multiload/properties.c:373
 msgid "Processor"
 msgstr "Processor"
 
-#: multiload/main.c:238
+#: multiload/main.c:238 multiload/properties.c:379
 msgid "Memory"
 msgstr "Hukommelse"
 
-#: multiload/main.c:240
+#: multiload/main.c:240 multiload/properties.c:385
 msgid "Network"
 msgstr "Netværk"
 
-#: multiload/main.c:242
+#: multiload/main.c:242 multiload/properties.c:391
 msgid "Swap File"
 msgstr "Swapfil"
 
@@ -3329,16 +3007,6 @@ msgstr "_Netværk"
 msgid "_Swap File"
 msgstr "_Swapfile"
 
-#.
-#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-#.
-#: multiload/properties.c:313
-msgid "Options"
-msgstr "Indstillinger"
-
 #: multiload/properties.c:326
 msgid "System m_onitor width: "
 msgstr "System_overvågningsbredde:"
@@ -3359,10 +3027,6 @@ msgstr "Sys_temovervågningsinterval:"
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: multiload/properties.c:373
-msgid "P_rocessor"
-msgstr "P_rocessor"
-
 #: multiload/properties.c:374
 msgid "_User"
 msgstr "_Bruger"
@@ -3378,10 +3042,6 @@ msgstr "V_enlighedsværdi"
 #: multiload/properties.c:377
 msgid "I_dle"
 msgstr "_Inaktiv"
-
-#: multiload/properties.c:379
-msgid "M_emory"
-msgstr "_Hukommelse"
 
 #: multiload/properties.c:380
 msgid "Ot_her"
@@ -3399,10 +3059,6 @@ msgstr "_Mellemlagring"
 msgid "F_ree"
 msgstr "L_edig"
 
-#: multiload/properties.c:385
-msgid "Net_work"
-msgstr "Net_værk"
-
 #: multiload/properties.c:386
 msgid "S_LIP"
 msgstr "S_LIP"
@@ -3418,10 +3074,6 @@ msgstr "Et_hernet"
 #: multiload/properties.c:389
 msgid "_Other"
 msgstr "_Andre"
-
-#: multiload/properties.c:391
-msgid "Swap _File"
-msgstr "Swap_fil"
 
 #: multiload/properties.c:392
 msgid "_Used"
@@ -3612,11 +3264,11 @@ msgstr "Menulinjen giver mulighed for tilpassede menulinjer på panelet."
 
 #: screen-exec/egg-screen-help.c:174
 msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-msgstr ""
+msgstr "Kan ikke finde GNOME_FILE_DOMAIN_APP_HELP-domænet."
 
 #: screen-exec/egg-screen-help.c:187
 msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-msgstr ""
+msgstr "Kan ikke finde GNOME_FILE_DOMAIN_HELP-domænet."
 
 #: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
 #, c-format
@@ -3624,6 +3276,7 @@ msgid ""
 "Unable to show help as %s is not a directory.  Please check your "
 "installation."
 msgstr ""
+"Kan ikke vise hjælp da %s ikke er en mappe. Kontrollér din installation."
 
 #: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
 #, c-format
@@ -3631,76 +3284,341 @@ msgid ""
 "Unable to find the help files in either %s or %s.  Please check your "
 "installation"
 msgstr ""
+"Kan ikke finde hjælpefilerne i hverken %s eller %s. Kontrollér din "
+"installation."
 
 #: screen-exec/egg-screen-help.c:315
 #, c-format
 msgid "Unable to find doc_id %s in the help path"
-msgstr ""
+msgstr "Kan ikke finde doc_id %s i hjælpestien"
 
 #: screen-exec/egg-screen-help.c:336
 #, c-format
 msgid "Help document %s/%s not found"
-msgstr ""
+msgstr "Hjælpedokument %s/%s ikke fundet"
 
-#: wireless/wireless-applet.c:344
+#: wireless/wireless-applet.c:343
 msgid ""
 "The images necessary to run the wireless monitor are missing.\n"
 "Please make sure that it is correctly installed."
 msgstr ""
+"De billeder der skal bruges til at køre programmet, mangler.\n"
+"Kontrollér at det er korrekt installeret."
 
-#: wireless/wireless-applet.c:525
+#: wireless/wireless-applet.c:524
 msgid "No Wireless Devices"
-msgstr ""
+msgstr "Ingen trådløse enheder"
 
-#: wireless/wireless-applet.c:527
+#: wireless/wireless-applet.c:526
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
+"Der ser ikke ud til at være nogen trådløse enheder konfigureret på dit "
+"system.\n"
+"Kontrollér din konfiguration hvis du mener at dette er forkert."
 
+# 'monitor' bliver lidt langt
+#: wireless/wireless-applet.c:718
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:719
 msgid "Wireless Link Monitor"
-msgstr ""
+msgstr "Trådløs forbindelse"
+
+#: wireless/wireless-applet.c:720
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "© 2001, 2002 Free Software Foundation"
 
 #: wireless/wireless-applet.c:721
-#, fuzzy
-msgid "(C) 2001, 2002 Free Software Foundation "
-msgstr "© 1998-2000 Free Software Foundation"
-
-#: wireless/wireless-applet.c:722
-#, fuzzy
 msgid "This utility shows the status of a wireless link."
-msgstr "Dette værktøj viser status for batteriet på din bærbare."
+msgstr "Dette værktøj viser status for en trådløs forbindelse."
 
 #: wireless/wireless-applet.glade.h:1
-#, fuzzy
 msgid "Monitored Device:"
-msgstr "Overvågede resurser"
+msgstr "Overvåget enhed:"
 
 #: wireless/wireless-applet.glade.h:2
-#, fuzzy
 msgid "Show _dialog boxes"
-msgstr "Vis hånd_tag"
+msgstr "Vis _vinduer"
 
 #: wireless/wireless-applet.glade.h:3
 msgid "Show signal strength in _percentage"
-msgstr ""
+msgstr "Vis signalstyrk i _procent"
 
 #: wireless/wireless-applet.glade.h:4
-#, fuzzy
 msgid "Wireless Link Monitor Preferences"
-msgstr "Indstillinger for diskmontering"
+msgstr "Indstillinger for trådløs forbindelse"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
-msgstr ""
+msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
-#~ msgid "Apperance"
-#~ msgstr "Udseende"
+#~ msgid "Settings"
+#~ msgstr "Indstillinger"
 
-#~ msgid "_Refresh"
-#~ msgstr "_Opdatér"
+#~ msgid "_Edit"
+#~ msgstr "_Redigér"
+
+#~ msgid "_Up"
+#~ msgstr "_Op"
+
+#~ msgid "Dow_n"
+#~ msgstr "_Ned"
+
+#~ msgid "_Delete"
+#~ msgstr "_Slet"
+
+#~ msgid "Armenia"
+#~ msgstr "Armenien"
+
+#~ msgid "Australia"
+#~ msgstr "Australien"
+
+#~ msgid "Austria"
+#~ msgstr "Østrig"
+
+#~ msgid "Belgium"
+#~ msgstr "Belgien"
+
+#~ msgid "Brazil"
+#~ msgstr "Brasilien"
+
+#~ msgid "Bulgaria"
+#~ msgstr "Bulgarien"
+
+#~ msgid "Canada"
+#~ msgstr "Canada"
+
+#~ msgid "Caribic"
+#~ msgstr "Karibien"
+
+#~ msgid "France"
+#~ msgstr "Frankrig"
+
+#~ msgid "Georgia"
+#~ msgstr "Georgien"
+
+#~ msgid "Germany"
+#~ msgstr "Tyskland"
+
+#~ msgid "Great Britain"
+#~ msgstr "Storbritannien"
+
+#~ msgid "Greece"
+#~ msgstr "Grækenland"
+
+#~ msgid "Hungary"
+#~ msgstr "Ungarn"
+
+#~ msgid "Jamaica"
+#~ msgstr "Jamaica"
+
+#~ msgid "New Zealand"
+#~ msgstr "New Zealand"
+
+#~ msgid "Norway"
+#~ msgstr "Norge"
+
+#~ msgid "Poland"
+#~ msgstr "Polen"
+
+#~ msgid "Portugal"
+#~ msgstr "Portugal"
+
+#~ msgid "Russia"
+#~ msgstr "Rusland"
+
+#~ msgid "Slovak Republic"
+#~ msgstr "Slovakiske republik"
+
+#~ msgid "Slovenia"
+#~ msgstr "Slovenien"
+
+#~ msgid "South Africa"
+#~ msgstr "Sydafrika"
+
+#~ msgid "Spain"
+#~ msgstr "Spanien"
+
+#~ msgid "Sweden"
+#~ msgstr "Sverige"
+
+#~ msgid "Switzerland"
+#~ msgstr "Scweiz"
+
+#~ msgid "Thailand"
+#~ msgstr "Thailand"
+
+#~ msgid "Turkey"
+#~ msgstr "Tyrkiet"
+
+#~ msgid "United Kingdom"
+#~ msgstr "UK"
+
+#~ msgid "United States"
+#~ msgstr "USA"
+
+#~ msgid "Yugoslavia"
+#~ msgstr "Jugoslavien"
+
+#~ msgid "Armenian"
+#~ msgstr "Armensk"
+
+#~ msgid "Basque"
+#~ msgstr "Baskisk"
+
+#~ msgid "Bulgarian"
+#~ msgstr "Bulgarsk"
+
+#~ msgid "Dutch"
+#~ msgstr "Hollandsk"
+
+#~ msgid "English"
+#~ msgstr "Engelsk"
+
+#~ msgid "French"
+#~ msgstr "Fransk"
+
+#~ msgid "Georgian"
+#~ msgstr "Georgisk"
+
+#~ msgid "German"
+#~ msgstr "Tysk"
+
+#~ msgid "Greek"
+#~ msgstr "Græsk"
+
+#~ msgid "Hungarian"
+#~ msgstr "Ungarnsk"
+
+#~ msgid "Norwegian"
+#~ msgstr "Norsk"
+
+#~ msgid "Polish"
+#~ msgstr "Polsk"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugisisk"
+
+#~ msgid "Russian"
+#~ msgstr "Russisk"
+
+#~ msgid "Slovak"
+#~ msgstr "Slovakisk"
+
+#~ msgid "Slovenian"
+#~ msgstr "Slovensk"
+
+#~ msgid "Swedish"
+#~ msgstr "Svensk"
+
+#~ msgid "Thai"
+#~ msgstr "Thai"
+
+#~ msgid "Turkish"
+#~ msgstr "Tyrkisk"
+
+#~ msgid "Wallon"
+#~ msgstr "Vallonsk"
+
+#~ msgid "Yugoslavian"
+#~ msgstr "Jugoslavisk"
+
+#~ msgid "105"
+#~ msgstr "105"
+
+#~ msgid "101"
+#~ msgstr "101"
+
+#~ msgid "102"
+#~ msgstr "102"
+
+#~ msgid "450"
+#~ msgstr "450"
+
+#~ msgid "84"
+#~ msgstr "84"
+
+#~ msgid "mklinux"
+#~ msgstr "mklinux"
+
+#~ msgid "type5"
+#~ msgstr "type5"
+
+#~ msgid "iso-8859-1"
+#~ msgstr "iso-8859-1"
+
+#~ msgid "iso-8859-2"
+#~ msgstr "iso-8859-2"
+
+#~ msgid "iso-8859-7"
+#~ msgstr "iso-8859-7"
+
+#~ msgid "iso-8859-9"
+#~ msgstr "iso-8859-9"
+
+#~ msgid "am-armscii8"
+#~ msgstr "am-armscii8"
+
+#~ msgid "be-latin1"
+#~ msgstr "be-latin1"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "georgian-academy"
+#~ msgstr "georgian-academy"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "tis620"
+#~ msgstr "tis620"
+
+#~ msgid "ix86"
+#~ msgstr "ix86"
+
+#~ msgid "Sun"
+#~ msgstr "Sun"
+
+#~ msgid "mac"
+#~ msgstr "mac"
+
+#~ msgid "sgi"
+#~ msgstr "sgi"
+
+#~ msgid "dec"
+#~ msgstr "dec"
+
+#~ msgid "ibm"
+#~ msgstr "ibm"
+
+#~ msgid "Lan_guage:"
+#~ msgstr "_Sprog:"
+
+#~ msgid "Count_ry:"
+#~ msgstr "_Land:"
+
+#~ msgid ""
+#~ "_Flag\n"
+#~ "Pixmap:"
+#~ msgstr ""
+#~ "_Flag-\n"
+#~ "billede"
+
+#~ msgid "Arc_hitecture:"
+#~ msgstr "_Opbygning:"
+
+#~ msgid "_Type:"
+#~ msgstr "_Type:"
+
+#~ msgid "Code_page:"
+#~ msgstr "Tegns_æt:"
+
+#~ msgid "_Options"
+#~ msgstr "_Indstillinger"
+
+#~ msgid "The keymap switching command returned with error!"
+#~ msgstr "Kommandoen til skift af tastatur returnerede med fejl!"
 
 #~ msgid "Enter symbols delimited with \"+\" in the box below."
 #~ msgstr "Indtast symboler adskilt med '+' i boksen nedenunder."
@@ -3710,6 +3628,12 @@ msgstr ""
 
 #~ msgid "Stock C_hange:"
 #~ msgstr "Aktieæn_dring:"
+
+#~ msgid "_Appearance"
+#~ msgstr "_Udseende"
+
+#~ msgid "_General"
+#~ msgstr "_Generelt"
 
 #~ msgid "not unique"
 #~ msgstr "ikke unik"
@@ -3734,12 +3658,6 @@ msgstr ""
 
 #~ msgid "autocompleted"
 #~ msgstr "autofuldført"
-
-#~ msgid "fork error"
-#~ msgstr "forgreningsfejl"
-
-#~ msgid "child exited"
-#~ msgstr "afkom afsluttede"
 
 #~ msgid "%H:%M - %d. %b"
 #~ msgstr "%H:%M - %d. %b"
@@ -3779,6 +3697,42 @@ msgstr ""
 
 #~ msgid "   Macro _%.2d:"
 #~ msgstr "   Makro _%.2d:"
+
+#~ msgid "C_olors"
+#~ msgstr "F_arver"
+
+#~ msgid "P_rocessor"
+#~ msgstr "P_rocessor"
+
+#~ msgid "M_emory"
+#~ msgstr "_Hukommelse"
+
+#~ msgid "Net_work"
+#~ msgstr "Net_værk"
+
+#~ msgid "Swap _File"
+#~ msgstr "Swap_fil"
+
+#~ msgid "There was an error executing gnome-cd : %s"
+#~ msgstr "Der opstod en fejl ved kørsel af gnome-cd: %s"
+
+#~ msgid "There was an error executing %s : %s"
+#~ msgstr "Der opstod en fejl ved kørsel af '%s': %s"
+
+#~ msgid "There was an error executing 'gnome-system-monitor' : %s"
+#~ msgstr "Der opstod en fejl ved kørsel af 'gnome-system-monitor': %s"
+
+#~ msgid "Apperance"
+#~ msgstr "Udseende"
+
+#~ msgid "_Refresh"
+#~ msgstr "_Opdatér"
+
+#~ msgid "fork error"
+#~ msgstr "forgreningsfejl"
+
+#~ msgid "child exited"
+#~ msgstr "afkom afsluttede"
 
 #~ msgid "name_%d"
 #~ msgstr "navn_%d"
@@ -4334,9 +4288,6 @@ msgstr ""
 
 #~ msgid "Regions"
 #~ msgstr "Regioner"
-
-#~ msgid "Clock Settings"
-#~ msgstr "Indstillinger for ur"
 
 #~ msgid "Hour needle color"
 #~ msgstr "Timeviserfarve"
