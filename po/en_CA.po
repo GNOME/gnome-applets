@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-09 15:01-0400\n"
-"PO-Revision-Date: 2004-06-09 11:59-0700\n"
+"POT-Creation-Date: 2004-06-10 18:42-0700\n"
+"PO-Revision-Date: 2004-06-10 18:44-0700\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -30,8 +30,8 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
-msgid "_About..."
-msgstr "_About..."
+msgid "_About"
+msgstr "_About"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
@@ -82,13 +82,13 @@ msgid "Utility"
 msgstr "Utility"
 
 #: accessx-status/applet.c:134 battstat/battstat_applet.c:987
-#: cdplayer/cdplayer.c:598 charpick/charpick.c:556 drivemount/drivemount.c:553
+#: cdplayer/cdplayer.c:598 charpick/charpick.c:559 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:721 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2462
-#: mini-commander/src/about.c:50 mixer/mixer.c:1332
-#: modemlights/modemlights.c:115 multiload/main.c:60
+#: mini-commander/src/about.c:50 mixer/mixer.c:1330
+#: modemlights/modemlights.c:118 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
-#: wireless/wireless-applet.c:574
+#: wireless/wireless-applet.c:570
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -155,8 +155,8 @@ msgstr "Monitor a laptop's remaining power"
 #: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Preferences..."
+msgid "_Preferences"
+msgstr "_Preferences"
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
@@ -572,12 +572,20 @@ msgstr "_Yellow:"
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2315
 #: mailcheck/mailcheck.c:2603 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:220
+#: mixer/mixer.c:1443 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
-#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
+#: wireless/wireless-applet.c:540 wireless/wireless-applet.c:624
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
+
+#: battstat/properties.c:500
+msgid "Probress Bar Direction Moves towards top"
+msgstr "Progess Bar Direction Moves towards top"
+
+#: battstat/properties.c:510
+msgid "Probress Bar Direction Moves towards bottom"
+msgstr "Progess Bar Direction Moves towards bottom"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -641,7 +649,7 @@ msgstr "Next Track"
 msgid "You do not have permission to use the CD player."
 msgstr "You do not have permission to use the CD player."
 
-#: cdplayer/cdplayer.c:380 mixer/mixer.c:1299 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1297 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "There was an error executing '%s': %s"
@@ -731,8 +739,8 @@ msgstr ""
 "This is the full path of the device that will be used to play cd's from this "
 "applet"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:576
-#: charpick/charpick.c:727 charpick/properties.c:426
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
+#: charpick/charpick.c:730 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Character Palette"
 
@@ -740,7 +748,7 @@ msgstr "Character Palette"
 msgid "Charpicker Applet Factory"
 msgstr "Charpicker Applet Factory"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:727
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:730
 msgid "Insert characters"
 msgstr "Insert characters"
 
@@ -748,25 +756,30 @@ msgstr "Insert characters"
 msgid "Available palettes"
 msgstr "Available palettes"
 
-#: charpick/charpick.c:456
+#: charpick/charpick.c:454
+#, c-format
+msgid "insert special character %s"
+msgstr "insert special character %s"
+
+#: charpick/charpick.c:459
 msgid "Insert special characters"
 msgstr "Insert special characters"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:545
+#: charpick/charpick.c:548
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:546
+#: charpick/charpick.c:549
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:578
+#: charpick/charpick.c:581
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:579
+#: charpick/charpick.c:582
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -782,7 +795,7 @@ msgstr "Characters shown on applet startup"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "DEPRECATED - Characters shown on applet startup"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:353
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:376
 msgid "List of available palettes"
 msgstr "List of available palettes"
 
@@ -798,59 +811,63 @@ msgstr ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 
-#: charpick/properties.c:90
+#: charpick/properties.c:24
+msgid "_Edit"
+msgstr "_Edit"
+
+#: charpick/properties.c:113
 msgid "_Palette:"
 msgstr "_Palette:"
 
-#: charpick/properties.c:98
+#: charpick/properties.c:121
 msgid "Palette entry"
 msgstr "Palette entry"
 
-#: charpick/properties.c:99
+#: charpick/properties.c:122
 msgid "Modify a palette by adding or removing characters"
 msgstr "Modify a palette by adding or removing characters"
 
-#: charpick/properties.c:213
+#: charpick/properties.c:236
 msgid "Add Palette"
 msgstr "Add Palette"
 
-#: charpick/properties.c:250
+#: charpick/properties.c:273
 msgid "Edit Palette"
 msgstr "Edit Palette"
 
-#: charpick/properties.c:352
+#: charpick/properties.c:375
 msgid "Palettes list"
 msgstr "Palettes list"
 
-#: charpick/properties.c:431
-msgid "Pal_ettes:"
-msgstr "Pal_ettes:"
+#: charpick/properties.c:454
+msgid "_Palettes:"
+msgstr "_Palettes:"
 
-#: charpick/properties.c:447
+#: charpick/properties.c:470
 msgid "Add button"
 msgstr "Add button"
 
-#: charpick/properties.c:448
+#: charpick/properties.c:471
 msgid "Click to add a new palette"
 msgstr "Click to add a new palette"
 
-#: charpick/properties.c:455
+#: charpick/properties.c:478
 msgid "Edit button"
 msgstr "Edit button"
 
-#: charpick/properties.c:456
+#: charpick/properties.c:479
 msgid "Click to edit the selected palette"
 msgstr "Click to edit the selected palette"
 
-#: charpick/properties.c:463
+#: charpick/properties.c:486
 msgid "Delete button"
 msgstr "Delete button"
 
-#: charpick/properties.c:464
+#: charpick/properties.c:487
 msgid "Click to delete the selected palette"
 msgstr "Click to delete the selected palette"
 
-#: charpick/properties.c:516
+#: charpick/properties.c:539
 msgid "Character Palette Preferences"
 msgstr "Character Palette Preferences"
 
@@ -872,8 +889,8 @@ msgid "Mount local disks and devices"
 msgstr "Mount local disks and devices"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "_Browse..."
-msgstr "_Browse..."
+msgid "_Browse"
+msgstr "_Browse"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
@@ -2491,8 +2508,8 @@ msgstr ""
 "The command was: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins..."
-msgstr "Pl_ugins..."
+msgid "Pl_ugins"
+msgstr "Pl_ugins"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
@@ -2724,7 +2741,7 @@ msgstr "Could not retrieve the stock data."
 msgid "No stock list"
 msgstr "No stock list"
 
-#: gtik/gtik.c:311 gweather/gweather-applet.c:466
+#: gtik/gtik.c:311 gweather/gweather-applet.c:468
 msgid "Updating..."
 msgstr "Updating..."
 
@@ -3051,7 +3068,7 @@ msgstr ""
 "\n"
 "An applet for monitoring local weather conditions."
 
-#: gweather/gweather-applet.c:343 gweather/gweather-applet.c:347
+#: gweather/gweather-applet.c:345 gweather/gweather-applet.c:349
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
@@ -3120,14 +3137,14 @@ msgid "_Visit Weather.com"
 msgstr "_Visit Weather.com"
 
 #: gweather/gweather-dialog.c:345
-msgid "URL link Button"
-msgstr "URL link Button"
+msgid "Visit Weather.com"
+msgstr "Visit Weather.com"
 
 #: gweather/gweather-dialog.c:345
 msgid "Click to Enter Weather.com"
 msgstr "Click to Enter Weather.com"
 
-#: gweather/gweather-dialog.c:426
+#: gweather/gweather-dialog.c:433
 msgid "Forecast not currently available for this location."
 msgstr "Forecast not currently available for this location."
 
@@ -3904,8 +3921,8 @@ msgstr "Play a _sound when new mail arrives"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
 #: mailcheck/mailcheck.c:2146
-msgid "Sto_p animation when double clicked"
-msgstr "Sto_p animation when double clicked"
+msgid "Sto_p animation when clicked"
+msgstr "Sto_p animation when clicked"
 
 #: mailcheck/mailcheck.c:2159
 msgid "Select a_nimation:"
@@ -3932,8 +3949,8 @@ msgid "Command to execute when new mail arrives"
 msgstr "Command to execute when new mail arrives"
 
 #: mailcheck/mailcheck.c:2262
-msgid "When double clicke_d:"
-msgstr "When double clicke_d:"
+msgid "When clicke_d:"
+msgstr "When clicke_d:"
 
 #: mailcheck/mailcheck.c:2277
 msgid "Command to execute when clicked"
@@ -4402,7 +4419,7 @@ msgid "Adjust the sound volume"
 msgstr "Adjust the sound volume"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
-#: mixer/mixer.c:1346
+#: mixer/mixer.c:1344
 msgid "Volume Control"
 msgstr "Volume Control"
 
@@ -4530,50 +4547,50 @@ msgstr ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:878
+#: mixer/mixer.c:876
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Couldn't open mixer device %s\n"
 
-#: mixer/mixer.c:1047
+#: mixer/mixer.c:1045
 msgid "Volume Controller"
 msgstr "Volume Controller"
 
-#: mixer/mixer.c:1048
+#: mixer/mixer.c:1046
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Use Up/Down arrow keys to change volume"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1072
+#: mixer/mixer.c:1070
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1071
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1347
+#: mixer/mixer.c:1345
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1348
+#: mixer/mixer.c:1346
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "The volume control lets you set the volume level for your desktop."
 
-#: mixer/mixer.c:1495
+#: mixer/mixer.c:1493
 msgid "Volume Control Preferences"
 msgstr "Volume Control Preferences"
 
-#: mixer/mixer.c:1519
+#: mixer/mixer.c:1517
 msgid "Audio Channels"
 msgstr "Audio Channels"
 
-#: mixer/mixer.c:1535
+#: mixer/mixer.c:1533
 msgid "_Select channel to control:"
 msgstr "_Select channel to control:"
 
-#: mixer/mixer.c:1871
+#: mixer/mixer.c:1869
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "The volume control lets you set the volume level for your desktop"
 
@@ -4590,11 +4607,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Saved volume to restore on startup"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1583
 msgid "Modem Lights"
 msgstr "Modem Lights"
 
-#: modemlights/modemlights.c:137
+#: modemlights/modemlights.c:140
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4604,7 +4621,7 @@ msgstr ""
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 
-#: modemlights/modemlights.c:518
+#: modemlights/modemlights.c:521
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -4612,24 +4629,24 @@ msgstr ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 
-#: modemlights/modemlights.c:526
+#: modemlights/modemlights.c:529
 msgid "_Disconnect"
 msgstr "_Disconnect"
 
-#: modemlights/modemlights.c:553
+#: modemlights/modemlights.c:556
 msgid "Do you want to connect?"
 msgstr "Do you want to connect?"
 
-#: modemlights/modemlights.c:560
+#: modemlights/modemlights.c:563
 msgid "C_onnect"
 msgstr "C_onnect"
 
-#: modemlights/modemlights.c:584
+#: modemlights/modemlights.c:587
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 
-#: modemlights/modemlights.c:589
+#: modemlights/modemlights.c:592
 msgid "not connected"
 msgstr "not connected"
 
@@ -4951,7 +4968,18 @@ msgstr "Swap Space"
 msgid "Resource"
 msgstr "Resource"
 
-#: multiload/main.c:358
+#: multiload/main.c:363
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use of which\n"
+"%d%% is cache"
+msgstr ""
+"%s:\n"
+"%d%% in use of which\n"
+"%d%% is cache"
+
+#: multiload/main.c:366
 #, c-format
 msgid ""
 "%s:\n"
@@ -5207,8 +5235,8 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Sticky Notes Applet Factory"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
-msgid "_Delete Notes..."
-msgstr "_Delete Notes..."
+msgid "_Delete Notes"
+msgstr "_Delete Notes"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
@@ -5396,8 +5424,8 @@ msgid "_Lock Note"
 msgstr "_Lock Note"
 
 #: stickynotes/stickynotes.glade.h:48
-msgid "_Properties..."
-msgstr "_Properties..."
+msgid "_Properties"
+msgstr "_Properties"
 
 #: stickynotes/stickynotes.glade.h:49
 msgid "_Put notes on all workspaces"
@@ -5564,13 +5592,11 @@ msgstr "Whether to use the default system font"
 msgid ""
 "%s\n"
 "%d note"
-msgid_plural ""
 "%s\n"
 "%d notes"
-msgstr[0] ""
+msgstr ""
 "%s\n"
 "%d note"
-msgstr[1] ""
 "%s\n"
 "%d notes"
 
@@ -5587,15 +5613,16 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor the quality of a wireless network link"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:837
+#: wireless/wireless-applet.c:586 wireless/wireless-applet.c:838
 msgid "Wireless Link Monitor"
 msgstr "Wireless Link Monitor"
 
-#: wireless/wireless-applet.c:367 wireless/wireless-applet.c:504
-msgid "No Wireless Devices"
-msgstr "No Wireless Devices"
+#: wireless/wireless-applet.c:144
+#, c-format
+msgid "Link Strength: %2.0d%%"
+msgstr "Link Strength: %2.0d%%"
 
-#: wireless/wireless-applet.c:369
+#: wireless/wireless-applet.c:365
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5603,15 +5630,19 @@ msgstr ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 
-#: wireless/wireless-applet.c:592
+#: wireless/wireless-applet.c:500 wireless/wireless-applet.c:827
+msgid "No Wireless Devices"
+msgstr "No Wireless Devices"
+
+#: wireless/wireless-applet.c:588
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:593
+#: wireless/wireless-applet.c:589
 msgid "This utility shows the status of a wireless link."
 msgstr "This utility shows the status of a wireless link."
 
-#: wireless/wireless-applet.c:838
+#: wireless/wireless-applet.c:839
 msgid "This utility shows the status of a wireless link"
 msgstr "This utility shows the status of a wireless link"
 
@@ -5627,3 +5658,11 @@ msgstr "Wireless Link Monitor Preferences"
 msgid "_Monitored device:"
 msgstr "_Monitored device:"
 
+#~ msgid "Pal_ettes:"
+#~ msgstr "Pal_ettes:"
+
+#~ msgid "_Browse..."
+#~ msgstr "_Browse..."
+
+#~ msgid "URL link Button"
+#~ msgstr "URL link Button"
