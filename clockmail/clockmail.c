@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.2 alpha       ##*/
+/*##                         clock & mail applet 0.1.3             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -17,6 +17,10 @@ int ALWAYS_BLINK = FALSE;
 
 /* mail file location */
 char *mail_file = NULL;
+
+/* execute a command on new mail */
+char *newmail_exec_cmd = NULL;
+int EXEC_CMD_ON_NEWMAIL = FALSE;
 
 static GtkWidget *applet;
 static GtkWidget *frame;
@@ -98,7 +102,7 @@ void check_mail_file_status (int reset)
 	anymail = newsize > 0;
 	unreadmail = (s.st_mtime >= s.st_atime && newsize > 0);
 
-	checktime = (ALWAYS_BLINK || newtime > oldtime);
+	checktime = (newtime > oldtime);
 	if (newsize >= oldsize && unreadmail && checktime){
 		newmail = 1;
 		mailcleared = 0;
@@ -248,11 +252,16 @@ static gint update_display()
 	if (!blinking)
 		{
 		if (anymail)
-			if (newmail)
+			if (newmail || ALWAYS_BLINK)
 				{
 				update_mail_display(1);
 				blinking = TRUE;
 				blink_timeout_id = gtk_timeout_add( BLINK_DELAY , (GtkFunction)blink_callback, NULL);
+				if (newmail && EXEC_CMD_ON_NEWMAIL)
+					{
+					if (newmail_exec_cmd && strlen(newmail_exec_cmd) > 0)
+						gnome_execute_shell(NULL, newmail_exec_cmd);
+					}
 				}
 			else
 				{
@@ -354,13 +363,19 @@ int main (int argc, char *argv[])
 	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
 		GTK_SIGNAL_FUNC(applet_session_save), NULL);
 
-	applet_widget_register_callback(APPLET_WIDGET(applet),
-					     "properties",
-					     _("Properties..."),
-					     property_show,
-					     NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+						"properties",
+						GNOME_STOCK_MENU_PROP,
+						_("Properties..."),
+						property_show,
+						NULL);
 
-	applet_widget_register_callback(APPLET_WIDGET(applet), "about", _("About..."), about_cb, NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+						"about",
+						GNOME_STOCK_MENU_ABOUT,
+						_("About..."),
+						about_cb,
+						NULL);
 
 	gdk_draw_pixmap     (display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
 		display_back, 0, 0, 0, 0, 46, 42);

@@ -1,3 +1,11 @@
+Tue Jun 30 12:45:35 1998  John Ellis  <johne@bellatlantic.net>
+
+	* clockmail.[ch], properties.c: Added function to exec a command
+	when new mail arrives. example use: playing a sound.
+	* clockmail.c (check_mail_file_status): ALWAYS_BLINK should
+	not have effected the newmail variable.
+	(update_display): ALWAYS_BLINK is now tested here.
+
 1998-05-30  John Ellis  <johne@bellatlantic.net>
 
 	* clockmail.c (main): used strdup for getnev("MAIL") so it
