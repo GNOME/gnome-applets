@@ -1,3 +1,11 @@
+2004-01-07  Vijaykumar Patwari <vijaykumar.patwari@wipro.com>
+
+	* mailcheck.c: (get_remote_password): Set
+	gtk_entry_set_activates_default on entry box to
+	activate the default widget (dialog).
+	(password_response_cb): saving the password if save
+	checkbox is set, after OK button is pressed.
+
 2003-12-14  Kevin Vandersloot
 
 	* remote-helper.c: Fix possible race condition. Patch from Paul

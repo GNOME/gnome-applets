@@ -759,10 +759,17 @@ password_response_cb (GtkWidget  *dialog,
 
 	switch (response_id) {
 		GtkWidget *entry;
+		GtkWidget *save_toggle_button;
 
 	case GTK_RESPONSE_OK:
 		entry = g_object_get_data (G_OBJECT (dialog), "password_entry");
 		mc->real_password = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+		save_toggle_button = g_object_get_data (G_OBJECT (dialog), "save
+_password");
+		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (save_toggle
+_button)))
+			 remote_password_save_toggled (GTK_TOGGLE_BUTTON (save_to
+ggle_button), mc);
 		check_remote_mailbox (mc);
 		break;
 	}
@@ -810,15 +817,10 @@ get_remote_password (MailCheck *mc)
 	set_atk_name_description (entry, _("Password Entry box"), "");
 	set_atk_relation (entry, label, ATK_RELATION_LABELLED_BY);	
 	gtk_entry_set_visibility (GTK_ENTRY (entry), FALSE);
+	gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), entry, FALSE, FALSE, 0);
 	gtk_widget_show_all (hbox);
 	gtk_widget_grab_focus (GTK_WIDGET (entry));
-
-	g_signal_connect (G_OBJECT(entry), "focus_out_event",
-			 G_CALLBACK(focus_out_cb), mc);
-
-	g_signal_connect (G_OBJECT(entry), "activate",
-			  G_CALLBACK(remote_password_changed), mc);
 
 	hbox = gtk_hbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, 
@@ -844,15 +846,14 @@ get_remote_password (MailCheck *mc)
 	gtk_widget_show (save_password_checkbox);
 	gtk_box_pack_start (GTK_BOX (hbox), save_password_checkbox, FALSE, FALSE, 0);
 	
-	g_signal_connect (G_OBJECT (save_password_checkbox), "toggled", 
-			  G_CALLBACK(remote_password_save_toggled), mc);
-
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
 
 	g_signal_connect (dialog, "response",
                           G_CALLBACK (password_response_cb), mc);
 
+	g_object_set_data (G_OBJECT (dialog), "save_password", save_password_che
+ckbox);
 	g_object_set_data (G_OBJECT (dialog), "password_entry", entry);
 	gtk_widget_show (GTK_WIDGET (dialog));
 }
