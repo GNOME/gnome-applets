@@ -1,5 +1,5 @@
-pixmapdir  = ${prefix}/share/accessx-status-applet/pixmaps
-pixmap_DATA =	\
+iconsdir  = $(datadir)/pixmaps/accessx-status-applet
+icons_DATA =	\
 	ax-applet.png			\
 	ax-key-base.png			\
 	ax-key-inverse.png		\
@@ -38,4 +38,4 @@ pixmap_DATA =	\
 	ax-bouncekeys.png	
 
 EXTRA_DIST = \
-	$(pixmap_DATA) 
+	$(icons_DATA) 

@@ -1,0 +1,9 @@
+2003-05-28  Kevin Vandersloot <kfv101@psu.edu>
+
+	* Makefile.am, pixmaps/Makefile.am: get the pixmapdirs correct
+	
+	* applet.c: search for pixmaps in the correct directory. Pass the GtkStyle of the box
+	widget otherwise gtk_icon_set_render_icon won't work properly. Don't destroy the sapplet->box
+	after removing it from teh container since it is unrefed when removed. 
+	
+	* .server.in.in: get the icon from the proper directory

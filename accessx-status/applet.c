@@ -863,28 +863,28 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 {
 	GtkIconFactory *factory = gtk_icon_factory_new ();
         gint            i = 0;
-        GnomeProgram   *program;
-	GtkIconSet     *icon_set;
+        GtkIconSet     *icon_set;
                                                                                 
 	gtk_icon_factory_add_default (factory);
-
-        program = gnome_program_get ();
-
+       
         while (i <  G_N_ELEMENTS (stock_icons)) {
 		gchar *set_name = stock_icons[i].stock_id;
                 icon_set = gtk_icon_set_new ();
 		do {
-			char *filename;
+			char *filename, *tmp;
 			GtkIconSource *source = gtk_icon_source_new ();
-			filename = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_APP_PIXMAP, 
-							      stock_icons[i].name, TRUE, NULL);
+			tmp = g_strdup_printf (PIXMAPDIR"accessx-status-applet/%s", stock_icons[i].name);
+			filename = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, 
+					  tmp, 
+					  FALSE, NULL);
+			g_free (tmp);
 			if (!filename) {
 				GtkIconSet *default_set = 
 					gtk_icon_factory_lookup_default (GTK_STOCK_MISSING_IMAGE);
 				gtk_icon_source_set_pixbuf (source,
 							    gtk_icon_set_render_icon (
 								    default_set, 
-								    NULL,
+								    gtk_widget_get_style (widget),
 								    GTK_TEXT_DIR_NONE,
 								    GTK_STATE_NORMAL,
 								    icon_size_spec,
@@ -942,9 +942,9 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 	if (sapplet->stickyfoo) {
 		gtk_widget_destroy (sapplet->stickyfoo); 
 	}
+
 	if (sapplet->box) {
 		gtk_container_remove (GTK_CONTAINER (sapplet->applet), sapplet->box);
-		gtk_widget_destroy (sapplet->box);
 	}
 
 	gtk_container_add (GTK_CONTAINER (sapplet->applet), box);
@@ -977,12 +977,7 @@ create_applet (PanelApplet *applet)
 	AccessxStatusApplet *sapplet = g_new0 (AccessxStatusApplet, 1);
 	GtkWidget           *box, *stickyfoo;
 	gint large_toolbar_pixels;
-	int argc = 1;
-	char *argv[2] = { "accessx-applet" };
-
-	gnome_program_init ("accessx-applet", VERSION, LIBGNOME_MODULE, argc, argv,
-			    GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
-	
+		
 	sapplet->xkb = NULL;
 	sapplet->xkb_display = NULL;
 	sapplet->box = NULL;
@@ -1003,7 +998,7 @@ create_applet (PanelApplet *applet)
 		icon_size_spec = GTK_ICON_SIZE_LARGE_TOOLBAR;       
         else 
 		icon_size_spec = GTK_ICON_SIZE_SMALL_TOOLBAR;
-      
+  
 	accessx_applet_add_stock_icons (sapplet, box);
 	sapplet->mousefoo = gtk_image_new_from_pixbuf (
 		accessx_status_applet_mousekeys_image (sapplet, NULL));
@@ -1088,7 +1083,7 @@ accessx_status_applet_reset (gpointer user_data)
 {
 	AccessxStatusApplet *sapplet = user_data;
 	g_assert (sapplet->applet);
-	accessx_status_applet_reorient (sapplet->applet, 
+	accessx_status_applet_reorient (GTK_WIDGET (sapplet->applet), 
 					panel_applet_get_orient (sapplet->applet), sapplet);
 	return FALSE;
 }
