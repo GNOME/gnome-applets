@@ -1,6 +1,6 @@
 /*
  * Mini-Commander Applet
- * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
+ * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
  *
@@ -38,6 +38,7 @@ static gint historyPopupClicked_cb(GtkWidget *widget, gpointer data);
 static gint historyPopupClickedInside_cb(GtkWidget *widget, gpointer data);
 static void historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
 				    GdkEventButton *event, gpointer data);
+static gchar* historyAutoComplete(GtkWidget *widget, GdkEventKey *event);
 
 
 GtkWidget *entryCommand;
@@ -126,6 +127,25 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    strcpy(currentCommand, "");
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) "");
 	    propagateEvent = FALSE;
+	}
+    else if(prop.autoCompleteHistory && key >= GDK_space && key <= GDK_asciitilde )
+	{
+            char *completedCommand;
+	    gint currentPosition = gtk_editable_get_position(GTK_EDITABLE(widget));
+	    
+	    if(currentPosition != 0)
+		{
+		    gtk_editable_delete_text( GTK_EDITABLE(widget), currentPosition, -1 );
+		    completedCommand = historyAutoComplete(widget, event);
+		    
+		    if(completedCommand != NULL)
+			{
+			    gtk_entry_set_text(GTK_ENTRY(widget), completedCommand);
+			    gtk_editable_set_position(GTK_EDITABLE(widget), currentPosition );
+			    propagateEvent = FALSE;
+			    showMessage((gchar *) _("autocompleted"));
+			}
+		}	    
 	}
     
 
@@ -441,4 +461,26 @@ command_entry_update_size(void)
 {
     if(propTmp.cmdLineY != -1)
 	gtk_widget_set_usize(GTK_WIDGET(entryCommand), -1, prop.cmdLineY);
+}
+
+
+/* Thanks to Halfline <halfline@hawaii.rr.com> for his initial version
+   of historyAutoComplete */
+gchar *
+historyAutoComplete(GtkWidget *widget, GdkEventKey *event)
+{
+    gchar currentCommand[MAX_COMMAND_LENGTH];
+    gchar* completedCommand;
+    int i;
+    sprintf(currentCommand, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string);
+    
+    for(i = 0; i < HISTORY_DEPTH; i++)
+	{
+	    completedCommand = getHistoryEntry(i);
+	    if(!g_strncasecmp(completedCommand, currentCommand, strlen( currentCommand)) )
+		{
+		    return completedCommand;
+		}
+	}
+    return NULL;
 }

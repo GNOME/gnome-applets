@@ -1,3 +1,17 @@
+1999-08-22  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c: added new option "enable history based autocomplete"
+
+	* src/preferences.h (struct structProperties): added
+ 	autoCompleteHistory
+
+	* src/command_line.c (historyAutoComplete): added [Thanks to
+ 	Halfline <halfline@hawaii.rr.com> for his idea and initial version
+ 	of historyAutoComplete]
+
+	(commandKey_event): added Halfline's initial additions for
+ 	historyAutoComplete
+
 1999-07-11  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* src/preferences.c (saveSession): use VERSION instead of

@@ -1,6 +1,6 @@
 /*
  * Mini-Commander Applet
- * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
+ * Copyright (C) 1998, 1999 Oliver Maruhn <oliver@maruhn.com>
  *
  * Author: Oliver Maruhn <oliver@maruhn.com>
  *
@@ -29,9 +29,6 @@
 #include "history.h"
 #include "message.h"
 #include "mini-commander_applet.h"
-
-/* properties prop = { TRUE, TRUE, 11, 12, 13, 14, 15, 0, 0, 0, 50000, 50000, 50000 }; */
-/* properties propTmp = { -1, -1, -1, -1, -1, -1, -1 -1, -1, -1, -1, -1, -1}; */
 
 static void resetTemporaryPrefs(void);
 
@@ -90,10 +87,12 @@ resetTemporaryPrefs(void)
     propTmp.showDate = -1;
     propTmp.showHandle = -1;
     propTmp.showFrame = -1;
+    propTmp.autoCompleteHistory = -1;
     propTmp.normalSizeX = -1;
     propTmp.normalSizeY = -1;
     propTmp.reducedSizeX = -1;
     propTmp.reducedSizeY = -1;
+    propTmp.autoCompleteHistory = -1;
     propTmp.cmdLineY = -1;
     propTmp.cmdLineColorFgR = -1;
     propTmp.cmdLineColorFgG = -1;
@@ -124,6 +123,10 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
     if(propTmp.showFrame != -1)
 	/* checkbox has been changed */
         prop.showFrame = propTmp.showFrame;
+
+    if(propTmp.autoCompleteHistory != -1)
+	/* checkbox has been changed */
+        prop.autoCompleteHistory = propTmp.autoCompleteHistory;
 
     if(propTmp.showTime != -1 || propTmp.showDate != -1) {
 	/* checkbox has been changed */
@@ -224,6 +227,8 @@ loadSession(void)
     prop.showDate = gnome_config_get_bool("mini_commander/show_date=false");
     prop.showHandle = gnome_config_get_bool("mini_commander/show_handle=true");
     prop.showFrame = gnome_config_get_bool("mini_commander/show_frame=true");
+
+    prop.autoCompleteHistory = gnome_config_get_bool("mini_commander/autocomplete_history=true");
 
     /* size */
     prop.normalSizeX = gnome_config_get_int("mini_commander/normal_size_x=148");
@@ -363,6 +368,8 @@ saveSession(void)
     gnome_config_set_bool("mini_commander/show_handle", prop.showHandle);
     gnome_config_set_bool("mini_commander/show_frame", prop.showFrame);
 
+    gnome_config_set_bool("mini_commander/autocomplete_history", prop.autoCompleteHistory);
+
     /* size */
     gnome_config_set_int("mini_commander/normal_size_x", prop.normalSizeX);
     gnome_config_set_int("mini_commander/normal_size_y", prop.normalSizeY);
@@ -434,7 +441,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox, *hbox1;
     GtkWidget *table;
-    GtkWidget *checkTime, *checkDate, *checkHandle, *checkFrame;
+    GtkWidget *checkTime, *checkDate, *checkHandle, *checkFrame, *checkAutoCompleteHistory;
     GtkWidget *label;
     GtkWidget *entry;
     GtkWidget *colorPicker;
@@ -485,7 +492,8 @@ propertiesBox(AppletWidget *applet, gpointer data)
 			      GTK_OBJECT(propertiesBox));
     gtk_box_pack_start(GTK_BOX(vbox1), checkDate, FALSE, TRUE, 0);
 
-    /* appearance */
+
+    /* appearance frame */
     frame = gtk_frame_new(_("Appearance (experimental, you have to restart the applet)"));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 
@@ -516,6 +524,28 @@ propertiesBox(AppletWidget *applet, gpointer data)
                               GTK_SIGNAL_FUNC(gnome_property_box_changed),
                               GTK_OBJECT(propertiesBox));
     gtk_box_pack_start(GTK_BOX(vbox1), checkFrame, FALSE, TRUE, 0);
+
+
+
+    /* auto complete frame */
+    frame = gtk_frame_new(_("Auto Complete"));
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+
+    vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+    gtk_container_add(GTK_CONTAINER(frame), vbox1);
+
+    /* show history autocomplete */
+    checkAutoCompleteHistory = gtk_check_button_new_with_label (_("Enable history based auto complete"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkAutoCompleteHistory), prop.autoCompleteHistory);
+    gtk_signal_connect(GTK_OBJECT(checkAutoCompleteHistory),
+                       "toggled",
+                       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
+                       &propTmp.autoCompleteHistory);
+    gtk_signal_connect_object(GTK_OBJECT(checkAutoCompleteHistory), "toggled",
+                              GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                              GTK_OBJECT(propertiesBox));
+    gtk_box_pack_start(GTK_BOX(vbox1), checkAutoCompleteHistory, FALSE, TRUE, 0);
 
     /* Size */
     frame = gtk_frame_new(_("Size"));

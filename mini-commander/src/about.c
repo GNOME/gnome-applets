@@ -31,7 +31,7 @@ void aboutBox(AppletWidget *applet, gpointer data)
 
         aboutBox = gnome_about_new (_("Mini-Commander Applet"), 
 				    VERSION,
-				    "(C) 1998 Oliver Maruhn",
+				    "(C) 1998, 1999 Oliver Maruhn",
 				    authors,
 _("This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n\n\
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."),

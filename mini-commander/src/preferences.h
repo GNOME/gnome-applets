@@ -12,6 +12,7 @@ struct structProperties
     int showDate;
     int showHandle;
     int showFrame;
+    int autoCompleteHistory;
     int normalSizeX;
     int normalSizeY;
     int reducedSizeX;
