@@ -553,6 +553,7 @@ void gnote_destroy_cb(GtkWidget *widget, gpointer handle_boxptr)
 	    gtk_widget_destroy(GTK_WIDGET(the_note->menu));
     
     g_free(the_note->title);
+    g_free(the_note->type);
     g_ptr_array_remove(note_list, the_note);
     g_free(the_note);
 }
