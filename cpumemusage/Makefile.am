@@ -17,7 +17,7 @@ MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)
+		     $(GNOMEUI_LIBS) $(INTLLIBS) -lcrypt
 
 cpumemusage_applet_LINK = $(CXXLINK)
 
