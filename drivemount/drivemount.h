@@ -34,6 +34,7 @@ struct _DriveData
 	gchar *mount_base;
 	gchar *mount_point;
 	PanelOrientType orient;
+	PanelSizeType size;
 	GtkTooltips *tooltip;
 	/* the rest is for the properties window */
 	GtkWidget *propwindow;

@@ -352,7 +352,8 @@ void create_pixmaps(DriveData *dd)
 	char **pmap_d_in;
 	char **pmap_d_out;
 
-	if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
+	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
+	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
 		{
 		switch (dd->device_pixmap)
 			{
@@ -445,7 +446,28 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	create_pixmaps(dd);
 
-	if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
+	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
+	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
+		{
+		gtk_widget_set_usize(dd->button,46,16);
+		}
+	else
+		{
+		gtk_widget_set_usize(dd->button,16,46);
+		}
+	redraw_pixmap(dd);
+}
+
+static void applet_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
+{
+	/* resize the applet and set the proper pixmaps */
+	DriveData *dd = data;
+	dd->size = o;
+
+	create_pixmaps(dd);
+
+	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
+	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
 		{
 		gtk_widget_set_usize(dd->button,46,16);
 		}
@@ -481,6 +503,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 
 	dd->applet = applet;
 	dd->orient = ORIENT_UP;
+	dd->size = SIZE_STANDARD;
 	dd->device_pixmap = 0;
 	dd->mount_point = NULL;
 	dd->propwindow = NULL;
@@ -516,6 +539,9 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 /* attach applet signals here */
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
+				dd);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+				GTK_SIGNAL_FUNC(applet_change_size),
 				dd);
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 				GTK_SIGNAL_FUNC(applet_save_session),

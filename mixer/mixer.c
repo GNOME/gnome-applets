@@ -50,6 +50,7 @@ typedef struct {
 	gint timeout;
 	MixerUpdateFunc update_func;
 	PanelOrientType orient;
+	PanelSizeType size;
 } MixerData;
 
 typedef struct {
@@ -233,10 +234,17 @@ mixer_set_color(MixerWidget* mx)
 	gint win_height, win_width;
 
 	/* operate on the slider that's currently showing */
-	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) 
-	       	cur_slider=mx->vslider;
-	else 
-		cur_slider=mx->hslider;
+	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
+		if(md->size == SIZE_TINY)
+			cur_slider=mx->hslider;
+		else
+			cur_slider=mx->vslider;
+	} else  {
+		if(md->size == SIZE_TINY)
+			cur_slider=mx->vslider;
+		else
+			cur_slider=mx->hslider;
+	}
 
 	/* don't do anything if the slider isn't mapped to the screen */
 	if (GTK_RANGE(cur_slider)->trough){
@@ -425,10 +433,17 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 	gtk_widget_show (hscale);
 	gtk_widget_show (align);
 
-	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN)
-		gtk_widget_show(vbox);
-	else
-		gtk_widget_show(hbox);
+	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
+		if(md->size == SIZE_TINY)
+			gtk_widget_show(hbox);
+		else
+			gtk_widget_show(vbox);
+	} else  {
+		if(md->size == SIZE_TINY)
+			gtk_widget_show(vbox);
+		else
+			gtk_widget_show(hbox);
+	}
 		
 	/* signal handlers can use gtk_object_get_user_data to get a
    	pointer to mx and access any of the mixer's widgets. */	   
@@ -490,8 +505,9 @@ create_mixer_widget(void)
 
 	md = g_new(MixerData, 1);
 	
-	/* ask the panel for its current orientation. */
+	/* ask the panel for its current orientation and size. */
 	md->orient = applet_widget_get_panel_orient(APPLET_WIDGET(applet));
+	md->size = applet_widget_get_panel_size(APPLET_WIDGET(applet));
 
 	/* do the nitty-gritty GTK-related stuff */
 	create_computer_mixer_widget(&mixer, &md->update_func);
@@ -526,17 +542,31 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 
 	mx = gtk_object_get_user_data(GTK_OBJECT(w));	
 
-	/* hide one box */
-	if((ORIENT_UP == md->orient) || (ORIENT_DOWN == md->orient))
-		gtk_widget_hide(mx->vbox);
-	else
-		gtk_widget_hide(mx->hbox);
+	if(md->size == SIZE_TINY) {
+		/* hide one box */
+		if((ORIENT_UP == md->orient) || (ORIENT_DOWN == md->orient))
+			gtk_widget_hide(mx->hbox);
+		else
+			gtk_widget_hide(mx->vbox);
 
-	/* and show the other */
-	if(ORIENT_UP == o || ORIENT_DOWN == o)
-		gtk_widget_show(mx->vbox);
-	else
-		gtk_widget_show(mx->hbox);
+		/* and show the other */
+		if(ORIENT_UP == o || ORIENT_DOWN == o)
+			gtk_widget_show(mx->hbox);
+		else
+			gtk_widget_show(mx->vbox);
+	} else {
+		/* hide one box */
+		if((ORIENT_UP == md->orient) || (ORIENT_DOWN == md->orient))
+			gtk_widget_hide(mx->vbox);
+		else
+			gtk_widget_hide(mx->hbox);
+
+		/* and show the other */
+		if(ORIENT_UP == o || ORIENT_DOWN == o)
+			gtk_widget_show(mx->vbox);
+		else
+			gtk_widget_show(mx->hbox);
+	}
 
 	md->orient = o;
 
@@ -545,13 +575,43 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 	while(gtk_events_pending())
 		gtk_main_iteration();
 }
-/*
-void
-test_callback(int id, gpointer data)
+static void
+applet_change_size(GtkWidget *w, PanelSizeType o)
 {
-	puts("TEST");
+	gint mvol;
+	MixerWidget* mx;
+	
+	mvol = readMixer();
+
+	(*md->update_func) (mixerw, mvol);
+
+	mx = gtk_object_get_user_data(GTK_OBJECT(w));	
+	
+	md->size = o;
+
+	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
+		if(md->size == SIZE_TINY) {
+			gtk_widget_hide(mx->vbox);
+			gtk_widget_show(mx->hbox);
+		} else {
+			gtk_widget_hide(mx->hbox);
+			gtk_widget_show(mx->vbox);
+		}
+	} else  {
+		if(md->size == SIZE_TINY) {
+			gtk_widget_hide(mx->hbox);
+			gtk_widget_show(mx->vbox);
+		} else {
+			gtk_widget_hide(mx->vbox);
+			gtk_widget_show(mx->hbox);
+		}
+	}
+
+	/* without this, the mixer sometimes draws itself incorrectly
+	   if you drag the panel around the screen a lot. */
+	while(gtk_events_pending())
+		gtk_main_iteration();
 }
-*/
 
 
 int
@@ -578,6 +638,9 @@ main(int argc, char **argv)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+			   GTK_SIGNAL_FUNC(applet_change_size),
+			   NULL);
 
         applet_widget_register_stock_callback(APPLET_WIDGET(applet),
                                                 "run_gmix",
@@ -586,14 +649,6 @@ main(int argc, char **argv)
                                                 start_gmix_cb, NULL);
 
 	gtk_widget_show(applet);
-
-/*
-	gnome_panel_applet_register_callback(applet_id,
-					     "test",
-					     "TEST CALLBACK",
-					     test_callback,
-					     NULL);
-*/
 
 	applet_widget_gtk_main();
 
