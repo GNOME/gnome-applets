@@ -41,13 +41,21 @@
 #include "diskusage.h"
 #include "properties.h"
 
-/*#define DU_DEBUG*/
+
+/* Many systems reserve some space on each filesystem that only the superuser
+ * can use. Set this to true if you want count this space towards the among of
+ * free space. This would be the opposite of what 'df' does. */
+#undef ADD_RESERVED_SPACE
 
 diskusage_properties props;
 
 static gint update_values (void);
 
 DiskusageInfo   summary_info;
+	
+glibtop_fsusage fsu;
+glibtop_mountlist mountlist;
+glibtop_mountentry *mount_list;
 
 static GtkWidget *diskusage;
 static GtkWidget *my_applet;
@@ -58,6 +66,7 @@ GdkColor ucolor, fcolor, tcolor, bcolor;
 
 void update_mount_list_menu_items (void);
 void diskusage_resize (void);
+void diskusage_read (void);
 int draw_h(void);
 int draw_v(void);
 void draw(void);
@@ -74,11 +83,29 @@ guint num_mpoints;
 
 int timer_index=-1;
 
-int first_time=1;
 
 void diskusage_resize ()
 {
 	gtk_widget_set_usize(disp, props.width, props.height);
+}
+
+/* Get list of currently mounted filesystems. */
+void diskusage_read ()
+{
+	int i;
+
+	if (mount_list != NULL)
+		free (mount_list);
+	mount_list = glibtop_get_mountlist (&mountlist, 0);
+	
+	assert (mount_list != NULL);
+
+	summary_info.n_filesystems = 0;
+	for (i=0; i<mountlist.number; i++) {
+		glibtop_get_fsusage (&fsu, mount_list [i].mountdir);
+		if (fsu.blocks > 0)
+			summary_info.n_filesystems++;
+	}
 }
 
 /*
@@ -89,6 +116,7 @@ int draw_h(void)
 
 	GdkFont* my_font;
 	char *text;
+	unsigned free_space;
 	double ratio;		/* % of space used */
 	int pie_width;		/* width+height of piechart */
 	int pie_spacing;	/* space between piechart and border */
@@ -107,16 +135,25 @@ int draw_h(void)
 
 
 	/* Mountpoint text */
-	text = summary_info.filesystems[sel_fs].mount_dir;
+	text = mount_list [sel_fs].mountdir;
 
 	strcpy(avail_buf1, "MP: ");
 	strcat(avail_buf1, text);
 
 
 	/* Free Space text */		        
-	g_snprintf (avail_buf2, sizeof(avail_buf2), 
-		    "av: %u", summary_info.filesystems[sel_fs].sizeinfo[2]);
+	glibtop_get_fsusage (&fsu, mount_list [sel_fs].mountdir);
 
+	fsu.blocks /= 2;
+	fsu.bfree /= 2;
+	fsu.bavail /= 2;
+
+#ifdef ADD_RESERVED_SPACE
+	free_space = fsu.bfree; /* Free blocks available to superuser. */
+#else
+	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
+#endif
+	g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %u", free_space);
 
 
 	gdk_gc_set_foreground( gc, &bcolor );
@@ -145,9 +182,8 @@ int draw_h(void)
 	/* Draw % usage Pie */
 	gdk_gc_set_foreground( gc, &ucolor );
 	
-	
-	ratio = ((double) summary_info.filesystems[sel_fs].sizeinfo[1]
-		 / (double) summary_info.filesystems[sel_fs].sizeinfo[0]);
+	/* fsu.blocks 	Total blocks */	
+	ratio = ((double) (fsu.blocks - free_space) / (double) fsu.blocks);
 
 	/* 
 	 * ratio      0..1   used space
@@ -193,6 +229,7 @@ int draw_v(void)
 
 	GdkFont* my_font;
 	char *text;
+	unsigned free_space;
 	double ratio;		/* % of space used */
 	int pie_width;		/* width+height of piechart */
 	int pie_spacing;	/* space between piechart and border */
@@ -244,13 +281,24 @@ int draw_v(void)
 			avail_buf2);
 	
 	/* Mountpoint text, part 2*/
-	text = summary_info.filesystems[sel_fs].mount_dir;
+	text = mount_list [sel_fs].mountdir;
 
 	strcpy(avail_buf1, text);
 
 
 	/* Free Space text, part2*/		        
-	g_snprintf (avail_buf2,sizeof(avail_buf2),"%u", summary_info.filesystems[sel_fs].sizeinfo[2]);
+	glibtop_get_fsusage (&fsu, mount_list [sel_fs].mountdir);
+
+	fsu.blocks /= 2;
+	fsu.bfree /= 2;
+	fsu.bavail /= 2;
+
+#ifdef ADD_RESERVED_SPACE
+	free_space = fsu.bfree; /* Free blocks available to superuser. */
+#else
+	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
+#endif
+	g_snprintf (avail_buf2,sizeof(avail_buf2),"%u", free_space);
 
 	/* draw text strings 2nd part*/
 	gdk_draw_string(pixmap, my_font, gc,
@@ -267,8 +315,8 @@ int draw_v(void)
 	gdk_gc_set_foreground( gc, &ucolor );
 	
 	
-	ratio = ((double) summary_info.filesystems[sel_fs].sizeinfo[1]
-		 / (double) summary_info.filesystems[sel_fs].sizeinfo[0]);
+	/* fsu.blocks 	Total blocks */	
+	ratio = ((double) (fsu.blocks - free_space) / (double) fsu.blocks);
 
 	/* 
 	 * ratio      0..1   used space
@@ -346,9 +394,6 @@ void create_gc(void)
 
 void start_timer( void )
 {
-#ifdef DU_DEBUG
-	printf ("restarting timer with %u \n", props.speed);
-#endif
 	if( timer_index != -1 )
 		gtk_timeout_remove(timer_index);
 
@@ -365,9 +410,6 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	guint tmp;
 
-#ifdef DU_DEBUG
-	printf ("entering applet_change_orient  \n");
-#endif
 	summary_info.orient = o;
 
 	/*
@@ -392,9 +434,6 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	diskusage_resize();
 
-#ifdef DU_DEBUG
-	printf ("leaving applet_change_orient  \n");
-#endif
 }
 
 
@@ -404,11 +443,15 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 static gint update_values (void)
 {
 
-#ifdef DU_DEBUG
-	printf ("update\n");
-#endif
 
-	diskusage_read (&summary_info);
+	diskusage_read ();
+
+	/* if selected filesystem was last, and that got unmounted
+	 * meanwhile
+	 */
+	if (summary_info.selected_filesystem >= mountlist.number)
+		summary_info.selected_filesystem = 0;
+
 	update_mount_list_menu_items ();
 	
 	draw();
@@ -448,19 +491,30 @@ static gint diskusage_expose(GtkWidget *widget, GdkEventExpose *event)
         return FALSE;
 }
 
+/* Left click on the applet switches to next filesystem */
 static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e, 
 				gpointer data) {
+	int n;
 
 	if (e->button != 1) {
 		/* Ignore buttons 2 and 3 */
 		return FALSE; 
 	}
 
-	
-	summary_info.selected_filesystem++;
-	
-	if (summary_info.selected_filesystem >= summary_info.n_filesystems)
-		summary_info.selected_filesystem = 0;
+
+	n = 0;
+
+	do {
+		summary_info.selected_filesystem++;
+		
+		if (summary_info.selected_filesystem >= mountlist.number)
+			summary_info.selected_filesystem = 0;
+
+		glibtop_get_fsusage (&fsu, 
+				mount_list [summary_info.selected_filesystem].mountdir);
+		n++;
+	/* skip over filesystems with 0 blocks (like /proc) */
+	} while ((fsu.blocks == 0) & (n < mountlist.number));
 
 	props.startfs = summary_info.selected_filesystem;
 	
@@ -475,11 +529,11 @@ void change_filesystem_cb (AppletWidget *applet, gpointer data) {
 
   gchar *my_mpoint = (gchar *)data;
 
-  guint n_mpoints = summary_info.n_filesystems;
+  guint n_mpoints = mountlist.number;
   guint lim1;
 
   for (lim1 = 0; lim1 < n_mpoints; lim1++)
-    if (!strcmp (my_mpoint, summary_info.filesystems [lim1].mount_dir))
+    if (!strcmp (my_mpoint, mount_list [lim1].mountdir))
       break;
 
   summary_info.selected_filesystem = lim1;
@@ -491,7 +545,7 @@ void change_filesystem_cb (AppletWidget *applet, gpointer data) {
 
 void add_mount_list_menu_items (void) {
 
-  guint n_mpoints = summary_info.n_filesystems;
+  guint n_mpoints = mountlist.number;
   guint lim1;
 
   gchar digit1 = '0', digit2 = '0';
@@ -504,8 +558,8 @@ void add_mount_list_menu_items (void) {
 				       _("File Systems"));
 
   for (lim1 = 0; lim1 < n_mpoints; lim1++) {
-
-    mpoints [lim1] = g_string_new (summary_info.filesystems [lim1].mount_dir);
+    
+    mpoints [lim1] = g_string_new (mount_list [lim1].mountdir);
 
     menuitem [lim1] = g_string_new ("filesystem/fsitem");
     g_string_append_c (menuitem [lim1], digit1);
@@ -517,6 +571,11 @@ void add_mount_list_menu_items (void) {
     }
     else
       digit2++;
+    
+    /* don't register entrys with total blocks=0, like /proc */
+    glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
+    if (fsu.blocks == 0)
+	    continue;
 
     applet_widget_register_callback (APPLET_WIDGET (my_applet),
 				     menuitem [lim1]->str,
@@ -532,7 +591,7 @@ void add_mount_list_menu_items (void) {
 
 void update_mount_list_menu_items () {
 
-  guint n_mpoints = summary_info.n_filesystems;
+  guint n_mpoints = mountlist.number;
   guint lim1;
   int retval = TRUE;
 
@@ -542,7 +601,7 @@ void update_mount_list_menu_items () {
     retval = FALSE;
 
   for (lim1 = 0; (lim1 < n_mpoints) && retval; lim1++)
-    if (strcmp (mpoints [lim1]->str, summary_info.filesystems [lim1].mount_dir)) {
+    if (strcmp (mpoints [lim1]->str, mount_list [lim1].mountdir)) {
       retval = FALSE;
       break;
     }
@@ -555,8 +614,11 @@ void update_mount_list_menu_items () {
 
       /* This causes a sigsegv if the menu is actually open... dunno
 	 what to do about it :) */
-
-      applet_widget_unregister_callback (APPLET_WIDGET (my_applet), 
+    
+      /* don't unregister entrys with total blocks=0, like /proc */
+      glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
+      if (fsu.blocks > 0)
+      	applet_widget_unregister_callback (APPLET_WIDGET (my_applet), 
 					 menuitem [lim1]->str);
 
       g_string_free (mpoints [lim1], TRUE);
@@ -574,7 +636,7 @@ void update_mount_list_menu_items () {
 
     for (lim1 = 0; lim1 < num_mpoints; lim1++) {
 
-      mpoints [lim1] = g_string_new (summary_info.filesystems [lim1].mount_dir);
+      mpoints [lim1] = g_string_new (mount_list [lim1].mountdir);
 
       menuitem [lim1] = g_string_new ("filesystem/fsitem");
       g_string_append_c (menuitem [lim1], digit1);
@@ -586,6 +648,12 @@ void update_mount_list_menu_items () {
       }
       else
 	digit2++;
+   
+
+      /* don't register entrys with total blocks=0, like /proc */
+      glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
+      if (fsu.blocks == 0)
+	    continue;
 
       applet_widget_register_callback (APPLET_WIDGET (my_applet),
 				       menuitem [lim1]->str,
@@ -607,19 +675,16 @@ GtkWidget *diskusage_widget(void)
 	GtkWidget *frame, *box;
 	GtkWidget *event_box;
 
-#ifdef DU_DEBUG
-	printf ("entering diskusage_widget  \n");
-#endif
 
 	summary_info.selected_filesystem = 0;
-
-	diskusage_read (&summary_info);
+	
+	diskusage_read ();
 
 	/* We save the information about the selected filesystem. */
 
 	summary_info.selected_filesystem = props.startfs;
 
-	if (summary_info.selected_filesystem >= summary_info.n_filesystems)
+	if (summary_info.selected_filesystem >= mountlist.number)
 		summary_info.selected_filesystem = 0;
 
 	props.startfs = summary_info.selected_filesystem;

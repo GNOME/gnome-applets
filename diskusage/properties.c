@@ -1,8 +1,7 @@
-/* GNOME diskusage panel applet - properties dialog
+/* 
+ * GNOME diskusage panel applet - properties dialog
  *
  * (C) 1997 The Free Software Foundation
- *
- * this was cut & past'ed nearly 1:1 from the cpuload applet
  *
  */
 
@@ -14,7 +13,6 @@
 #include "properties.h"
 #include "diskusage.h"
 
-/* #define DU_DEBUG */
 
 GtkWidget *propbox=NULL;
 static diskusage_properties temp_props;
@@ -163,9 +161,6 @@ GtkWidget *create_frame(void)
 	GtkWidget *ucolor_gcp, *fcolor_gcp, *tcolor_gcp, *bcolor_gcp;
         int ur,ug,ub, fr,fg,fb, tr,tg,tb, br, bg, bb;
 
-#ifdef DU_DEBUG
-	printf (" entering create_frame\n");
-#endif
 	        
 	sscanf( temp_props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
         sscanf( temp_props.fcolor, "#%02x%02x%02x", &fr,&fg,&fb );
@@ -202,9 +197,6 @@ GtkWidget *create_frame(void)
 	gtk_signal_connect(GTK_OBJECT(bcolor_gcp), "color_set",
 			GTK_SIGNAL_FUNC(bcolor_set_cb), NULL);
 
-#ifdef DU_DEBUG
-	printf (" label_new \n");
-#endif
 
 	label = gtk_label_new(_("Used Diskspace"));
 	gtk_box_pack_start_defaults( GTK_BOX(color1), label );
@@ -257,17 +249,11 @@ GtkWidget *create_frame(void)
 
 
 	label = gtk_label_new(_("Update Frequency"));
-#ifdef DU_DEBUG
-	g_print( "%d %d\n", temp_props.speed, temp_props.speed/1000 );
-#endif
 	freq_a = gtk_adjustment_new( (float)temp_props.speed/1000, 0.1, 60, 0.1, 5, 5 );
 	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 0.1, 1 );
 	gtk_box_pack_start( GTK_BOX(speed), label,TRUE, FALSE, 0 );
 	gtk_box_pack_start( GTK_BOX(speed), freq, TRUE, TRUE, 0 );
 
-#ifdef DU_DEBUG
-	printf (" signal_connect\n");
-#endif
 	
         gtk_signal_connect( GTK_OBJECT(freq_a),"value_changed",
 		GTK_SIGNAL_FUNC(freq_cb), freq );
@@ -310,53 +296,29 @@ void properties(AppletWidget *applet, gpointer data)
 
 	help_entry.name = gnome_app_id;
 
-#ifdef DU_DEBUG
-	printf ("entering diskusage properties( \n");
-#endif
 
 	if( propbox ) {
 		gdk_window_raise(propbox->window);
 		return;
 	}
-#ifdef DU_DEBUG
-	printf ("  memcpy \n");
-#endif
 
 	memcpy(&temp_props,&props,sizeof(diskusage_properties));
 
-#ifdef DU_DEBUG
-	printf ("  memcpy ...\n");
-#endif
 
         propbox = gnome_property_box_new();
 	gtk_window_set_title( 
 		GTK_WINDOW(&GNOME_PROPERTY_BOX(propbox)->dialog.window), 
 		_("Diskusage Settings"));
 
-#ifdef DU_DEBUG
-	printf ("  frame \n");
-#endif
 	
 	frame = create_frame();
-#ifdef DU_DEBUG
-	printf ("  label_new\n");
-#endif
 	label = gtk_label_new(_("General"));
-#ifdef DU_DEBUG
-	printf ("  widget_show\n");
-#endif
         gtk_widget_show(frame);
 
-#ifdef DU_DEBUG
-	printf ("  property_box_append_page\n");
-#endif
 	
 	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propbox),
 		frame, label );
 
-#ifdef DU_DEBUG
-	printf ("  gtk_signal_connect \n");
-#endif
         gtk_signal_connect( GTK_OBJECT(propbox),
 		"apply", GTK_SIGNAL_FUNC(apply_cb), NULL );
 

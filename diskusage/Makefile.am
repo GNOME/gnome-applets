@@ -10,7 +10,6 @@ bin_PROGRAMS = diskusage_applet
 diskusage_applet_SOURCES = \
 	diskusage.c		\
 	diskusage.h		\
-	diskusage_read.c	\
 	properties.c		\
 	properties.h
 
