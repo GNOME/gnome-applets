@@ -298,6 +298,9 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 
   gkb_prop_list_reload (pbi);
 
+  gkb_apply(pbi);
+  applet_save_session();
+
   return FALSE;
 }
 

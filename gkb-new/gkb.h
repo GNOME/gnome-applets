@@ -171,6 +171,7 @@ void alert (const gchar * str);
 void applet_save_session ();
 
 /* prop.c */
+void gkb_apply (GkbPropertyBoxInfo * pbi);
 void properties_dialog (BonoboUIComponent *uic,
                         GKB	 *gkb,
                         const gchar	 *verbname);

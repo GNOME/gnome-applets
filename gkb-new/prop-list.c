@@ -167,6 +167,8 @@ gkb_prop_list_delete_clicked (GkbPropertyBoxInfo * pbi)
 
   gkb_prop_list_reload (pbi);
 
+  gkb_apply(pbi);
+
   return;
 }
 
@@ -193,7 +195,7 @@ gkb_util_g_list_swap (GList * item1, GList * item2)
  * @pbi: 
  * @up: 
  * 
- * 
+ * Property box Up or Down button clicked
  **/
 static void
 gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
@@ -217,6 +219,8 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
     gkb_util_g_list_swap (keymap_node, keymap_node->next);
 
   gkb_prop_list_reload (pbi);
+
+  gkb_apply(pbi);
 
   return;
 }

@@ -216,6 +216,7 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   guint  state;
   char buf[10];
   char *key;
+  guint newkey;
 
   if (xevent->type != KeyRelease)
     return GDK_FILTER_CONTINUE;
@@ -225,15 +226,33 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   state = xevent->xkey.state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
 
   XLookupString (&xevent->xkey, buf, 0, &keysym, NULL);
-
-  key = convert_keysym_state_to_string (event->key.keyval, event->key.state);
-  gtk_entry_set_text (GTK_ENTRY (entry), key ? key : "");
-  g_free (key);
-
+  
   gdk_keyboard_ungrab (GDK_CURRENT_TIME);
   gtk_widget_destroy (grab_dialog);
   gdk_window_remove_filter (gdk_get_default_root_window(), grab_key_filter, data);
+  
+  /* Esc cancels */
+  if (event->key.keyval == GDK_Escape) 
+    return GDK_FILTER_REMOVE;
+  
+  key = convert_keysym_state_to_string (event->key.keyval, event->key.state);
+  gtk_entry_set_text (GTK_ENTRY (entry), key ? key : "");
+  
+  newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
+  gkb_xungrab (key, gkb->state);
+
+  gkb->key = g_strdup (key);
+  g_free (key);
+  
+  convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
+
+  newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
+
+  gkb_xgrab ( newkey, gkb->state);
+  
+  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
+  
   return GDK_FILTER_REMOVE;
 }
 
@@ -264,7 +283,7 @@ grab_button_pressed (GtkButton * button, gpointer data)
   gtk_container_set_border_width (GTK_CONTAINER (box), 20);
   gtk_container_add (GTK_CONTAINER (frame), box);
 
-  label = gtk_label_new (_("Press a key..."));
+  label = gtk_label_new (_("Press a key or press Esc to cancel"));
   gtk_container_add (GTK_CONTAINER (box), label);
 
   gtk_widget_show_all (grab_dialog);

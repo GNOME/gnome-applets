@@ -33,6 +33,7 @@
 #include <gdk/gdkx.h>
 #include <sys/stat.h>
 #include <X11/Xlib.h>
+#include <panel-applet-gconf.h>
 #include "gkb.h"
 
 
@@ -47,18 +48,14 @@ struct _KeymapData
 };
 
 /**
- * gkb_prop_apply_clicked:
- * @pb: 
- * @page: 
- * @pbi: 
+ * gkb_apply:
+ * @pbi: Propbox information
  * 
  * Apply settings.
  **/
-static void
-gkb_prop_apply_clicked (GtkWidget * pb, GkbPropertyBoxInfo * pbi)
+void
+gkb_apply (GkbPropertyBoxInfo * pbi)
 {
-  static guint key = 0;
-
   /* Swap the lists of keymaps */
   gkb_keymap_free_list (gkb->maps);
   gkb->maps = gkb_keymap_copy_list (pbi->keymaps);
@@ -68,23 +65,7 @@ gkb_prop_apply_clicked (GtkWidget * pb, GkbPropertyBoxInfo * pbi)
   gkb->cur = 0;
   gkb->keymap = g_list_nth_data (gkb->maps, 0);
 
-  /* misc props from pbi */
-  gkb->is_small = pbi->is_small;
-  gkb->mode = pbi->mode;
-
-  key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
-
-  gkb_xungrab (key, gkb->state);
-
-  gkb->key = g_strdup (gtk_entry_get_text (GTK_ENTRY (pbi->hotkey_entry)));
-  convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
-
-  key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
-
-  gkb_xgrab ( key, gkb->state);
-
-  applet_save_session ();
-
+ 
   /* Render & update */
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
@@ -179,7 +160,12 @@ gkb_prop_mode_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
 
   g_return_if_fail (text != NULL);
 
-  pbi->mode = gkb_util_get_mode_from_text (text);
+  gkb->mode = gkb_util_get_mode_from_text (text);
+
+  gkb_sized_render (gkb);
+  gkb_update (gkb, TRUE);
+
+  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
 
 }
 
@@ -201,16 +187,20 @@ gkb_prop_size_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
 
   if (strcmp (text, _("Normal")) == 0)
     {
-      pbi->is_small = TRUE;
+      gkb->is_small = TRUE;
     }
   else if (strcmp (text, _("Big")) == 0)
     {
-      pbi->is_small = FALSE;
+      gkb->is_small = FALSE;
     }
   else
     {
       g_warning ("Could not interpret size change [%s]\n", text);
     }
+    
+  gkb_sized_render (gkb);
+  gkb_update (gkb, TRUE);
+  panel_applet_gconf_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
 
 }
 
@@ -375,17 +365,11 @@ prophelp_cb (PanelApplet * applet, gpointer data)
 static void
 window_response (GtkWidget *w, int response, gpointer data)
 {
-        switch (response) {
-        case GTK_RESPONSE_APPLY:
-                gkb_prop_apply_clicked(w, data);
-		break;
-        case GTK_RESPONSE_OK:
-                gkb_prop_apply_clicked(w, data);
-	case GTK_RESPONSE_CLOSE:
-                gtk_widget_destroy (w);
-	case GTK_RESPONSE_HELP:
-                prophelp_cb (gkb->applet, data);
-        }
+	if (response == GTK_RESPONSE_HELP)
+		prophelp_cb (gkb->applet, data);
+	else
+		gtk_widget_destroy (w);
+       
 }
 
 
@@ -399,7 +383,6 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   GtkWidget *buttons_vbox;
   GtkWidget *page_1_hbox;
   GtkWidget *page_2_vbox;
-  GtkWidget *page;
   GtkWidget *scrolled_window;
   GtkWidget *page_1_label;
   GtkWidget *page_2_label;
@@ -407,10 +390,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Create property box */
   propwindow = gtk_dialog_new_with_buttons (_("GKB Properties"), NULL,
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            GTK_STOCK_HELP, GTK_RESPONSE_HELP,
-                                            GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
-                                            GTK_STOCK_OK, GTK_RESPONSE_OK,
                                             NULL);
 
   propnotebook =  gtk_notebook_new ();
@@ -422,11 +402,8 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Add page 1 */
   page_1_hbox = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (page_1_hbox);
-  gtk_container_add (GTK_CONTAINER (propnotebook), page_1_hbox);
-  page_1_label = gtk_label_new (_("Keymaps"));
-  page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 0);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), page,
-			      page_1_label);
+  page_1_label = gtk_label_new_with_mnemonic (_("_Keymaps"));
+  gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_1_hbox, page_1_label);
 
   /* Page 1 Frame */
   scrolled_window = gkb_prop_create_scrolled_window (pbi);
@@ -437,11 +414,9 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Add page 2 */
   page_2_vbox = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (page_2_vbox);
-  gtk_container_add (GTK_CONTAINER (propnotebook), page_2_vbox);
-  page_2_label = gtk_label_new (_("Options"));
-  page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 1);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), page,
-			      page_2_label);
+  page_2_label = gtk_label_new_with_mnemonic (_("_Options"));
+  gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_2_vbox, page_2_label);
+ 
 
   /* Page 2 Frames */
   display_frame = gkb_prop_create_display_frame (pbi);
@@ -463,7 +438,7 @@ gkb_prop_box_destroy (GtkWidget * box, GkbPropertyBoxInfo * pbi)
   g_return_val_if_fail (pbi != NULL, TRUE);
   g_return_val_if_fail (box == pbi->box, TRUE);
 
-  gtk_widget_destroy (box);
+  gtk_widget_destroy (GTK_WIDGET (box));
   /* This is hackish, but I could not find the correct
    * solution for it. The problem is that when we destroy
    * the list, the selection changes if there is a selected
@@ -497,8 +472,8 @@ properties_dialog (BonoboUIComponent *uic,
 
   pbi->box = gkb_prop_create_property_box (pbi);
 
-  g_signal_connect (pbi->box, "destroy",
-		      G_CALLBACK (gkb_prop_box_destroy), pbi);
+  g_signal_connect (G_OBJECT (pbi->box), "destroy",
+  		    G_CALLBACK (gkb_prop_box_destroy), pbi);
 
   gtk_widget_show_all (pbi->box);
   gdk_window_raise (pbi->box->window);
