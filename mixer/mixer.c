@@ -44,6 +44,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 #include <libgnomeui/gnome-about.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <panel-applet.h>
 #include <egg-screen-exec.h>
 #include <egg-screen-help.h>
@@ -86,6 +87,15 @@
 #define VOLUME_MAX 255
 #endif
 
+#define VOLUME_STOCK_MUTE             "volume-mute"
+#define VOLUME_STOCK_ZERO	      "volume-zero"
+#define VOLUME_STOCK_MIN              "volume-min"
+#define VOLUME_STOCK_MED              "volume-med"
+#define VOLUME_STOCK_MAX              "volume-max"
+
+#define VOLUME_DEFAULT_ICON_SIZE 48
+static GtkIconSize volume_icon_size = 0;
+
 #define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
 typedef struct {
@@ -106,6 +116,12 @@ typedef struct {
 	GtkWidget         *popup;
 	GtkWidget         *scale;
 
+	GdkPixbuf	  *zero;
+	GdkPixbuf	  *min;
+	GdkPixbuf	  *max;
+	GdkPixbuf         *med;
+	GdkPixbuf	  *muted;
+
 	GtkTooltips	  *tooltips;
 } MixerData;
 
@@ -121,10 +137,6 @@ static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 void add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
 static gint mixerfd = -1;
-static GdkPixbuf *zero_pixbuf = NULL, *min_pixbuf, 
-		 *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
-static GdkPixbuf *zero_pixbuf_small = NULL, *min_pixbuf_small, 
-		 *medium_pixbuf_small, *max_pixbuf_small, *mute_pixbuf_small;
 static gchar *run_mixer_cmd = NULL;
 
 static const gchar *access_name = N_("Volume Control");     
@@ -340,38 +352,54 @@ mixer_update_slider (MixerData *data)
 }
 
 static void
+mixer_load_volume_images (MixerData *data) {
+	if (data->zero)
+		g_object_unref (data->zero);
+	if (data->min)
+		g_object_unref (data->min);
+	if (data->med)
+		g_object_unref (data->med);
+	if (data->max)
+		g_object_unref (data->max);
+	if (data->muted)
+		g_object_unref (data->muted);
+
+	data->zero = gtk_widget_render_icon (data->applet, VOLUME_STOCK_ZERO,
+					     volume_icon_size, NULL);
+	data->min = gtk_widget_render_icon (data->applet, VOLUME_STOCK_MIN,
+					     volume_icon_size, NULL);
+	data->med = gtk_widget_render_icon (data->applet, VOLUME_STOCK_MED,
+					     volume_icon_size, NULL);
+	data->max = gtk_widget_render_icon (data->applet, VOLUME_STOCK_MAX,
+					     volume_icon_size, NULL);
+	data->muted = gtk_widget_render_icon (data->applet, VOLUME_STOCK_MUTE,
+					     volume_icon_size, NULL);
+}
+
+static void
 mixer_update_image (MixerData *data)
 {
 	gint vol, size;
-	gboolean small;
-	GdkPixbuf *pixbuf, *copy = NULL, *new_pixbuf;
+	GdkPixbuf *pixbuf, *copy, *scaled = NULL;
 
 	vol = data->vol;
+
 	size = panel_applet_get_size (PANEL_APPLET (data->applet));
-	if (size > GNOME_Vertigo_PANEL_X_SMALL)
-		small = FALSE;
+
+	if (vol <= 0)
+		pixbuf = gdk_pixbuf_copy (data->zero);
+	else if (vol <= VOLUME_MAX / 3)
+		pixbuf = gdk_pixbuf_copy (data->min);
+	else if (vol <= 2 * VOLUME_MAX / 3)
+		pixbuf = gdk_pixbuf_copy (data->med);
 	else
-		small = TRUE;
-	
-	if (vol <= 0) {
-		pixbuf = small ? zero_pixbuf_small : zero_pixbuf;
-	}
-	else if (vol <= VOLUME_MAX / 3) {
-		pixbuf = small ? min_pixbuf_small : min_pixbuf;
-	}
-	else if (vol <= 2 * VOLUME_MAX / 3) {
-		pixbuf = small ? medium_pixbuf_small : medium_pixbuf;
-	}
-	else {
-		pixbuf = small ? max_pixbuf_small : max_pixbuf;
-	}
+		pixbuf = gdk_pixbuf_copy (data->max);
 
 	if (data->mute) {
-		GdkPixbuf *mute = small ? mute_pixbuf_small : mute_pixbuf;
-		copy = gdk_pixbuf_copy (pixbuf);
+		GdkPixbuf *mute = gdk_pixbuf_copy (data->muted);
 
 		gdk_pixbuf_composite (mute,
-				      copy,
+				      pixbuf,
 				      0,
 				      0,
 				      gdk_pixbuf_get_width (mute),
@@ -381,26 +409,17 @@ mixer_update_image (MixerData *data)
 				      1.0,
 				      1.0,
 				      GDK_INTERP_BILINEAR,
-				      127);
-		pixbuf = copy;
+				      255);
+		g_object_unref (mute);
 	}
 
-	if (size == GNOME_Vertigo_PANEL_X_SMALL || size == GNOME_Vertigo_PANEL_MEDIUM) {
-		/* Don't need to scale for this size */
-		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), pixbuf);
-		
-	}
-	else {
-		new_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-					size, size, GDK_INTERP_BILINEAR); 
-		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), new_pixbuf);
-		g_object_unref (new_pixbuf);
-	}
-	
-	gtk_widget_set_size_request (GTK_WIDGET (data->frame),
-                                     MAX (11, size-1),MAX (11, size-1));
-        if (copy)
-        	g_object_unref (copy);
+
+	scaled = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_BILINEAR);
+	gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), scaled);
+	g_object_unref (scaled);
+	gtk_widget_set_size_request (GTK_WIDGET (data->frame), 
+					     MAX (11, size), MAX (11, size));
+	g_object_unref (pixbuf);
 }
 
 static gboolean
@@ -670,7 +689,7 @@ mixer_popup_hide (MixerData *data, gboolean revert)
 		/* Ref the adjustment or it will get destroyed
 		 * when the scale goes away.
 		 */
-		gtk_object_ref (GTK_OBJECT (data->adj));
+		g_object_ref (G_OBJECT (data->adj));
 
 		gtk_widget_destroy (GTK_WIDGET (data->popup));
 
@@ -733,7 +752,7 @@ applet_change_orient_cb (GtkWidget *w, PanelAppletOrient o, MixerData *data)
 
 static void
 applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
-{
+{	
 	mixer_popup_hide (data, FALSE);
 	mixer_update_image (data);
 }
@@ -904,32 +923,59 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 	}
 }
 
-static void
-initialize_pixbufs ()
+typedef struct
 {
-	zero_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-zero.png",
-						NULL);
-	min_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-min.png",
-						   NULL);
-	medium_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-medium.png",
-						      NULL);
-	max_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-max.png",
-						   NULL);
-	mute_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-mute.png",
-						    NULL);
-						    
-	zero_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-zero-small.png",
-						NULL);
-	min_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-min-small.png",
-						   NULL);
-	medium_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-medium-small.png",
-						      NULL);
-	max_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-max-small.png",
-						   NULL);
-	mute_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-mute-small.png",
-						    NULL);
+	char *stock_id;
+	const guint8 *icon_data;
+} MixerStockIcon;
+    
+static MixerStockIcon items[] =
+    {
+        { VOLUME_STOCK_MUTE, GNOME_ICONDIR"/mixer/volume-mute.png" },
+	{ VOLUME_STOCK_ZERO, GNOME_ICONDIR"/mixer/volume-zero.png" },
+	{ VOLUME_STOCK_MIN, GNOME_ICONDIR"/mixer/volume-min.png" },
+	{ VOLUME_STOCK_MED, GNOME_ICONDIR"/mixer/volume-medium.png" },
+	{ VOLUME_STOCK_MAX, GNOME_ICONDIR"/mixer/volume-max.png" }
+};
 
+static void
+register_mixer_stock_icons (GtkIconFactory *factory)
+{
+    GtkIconSource *source;
+    int i;
 
+    source = gtk_icon_source_new ();
+
+    for (i = 0; i < G_N_ELEMENTS (items); i++) {
+	GtkIconSet *icon_set;
+
+	gtk_icon_source_set_filename (source, items[i].icon_data);
+
+	icon_set = gtk_icon_set_new ();
+	gtk_icon_set_add_source (icon_set, source);
+
+	gtk_icon_factory_add (factory, items[i].stock_id, icon_set);
+
+	gtk_icon_set_unref (icon_set);
+    }
+    gtk_icon_source_free (source);
+}
+
+static void
+mixer_init_stock_icons ()
+{
+	GtkIconFactory *factory;
+
+	volume_icon_size = gtk_icon_size_register ("panel-menu", 
+						   VOLUME_DEFAULT_ICON_SIZE,
+						   VOLUME_DEFAULT_ICON_SIZE);
+
+	factory = gtk_icon_factory_new ();
+	gtk_icon_factory_add_default (factory);
+
+	register_mixer_stock_icons (factory);
+
+	g_object_unref (factory);
 }
 
 const BonoboUIVerb mixer_applet_menu_verbs [] = {
@@ -942,6 +988,12 @@ const BonoboUIVerb mixer_applet_menu_verbs [] = {
 };
 
 static void
+applet_style_event_cb (GtkWidget *w, GtkStyle *prev_style, gpointer *user_data)
+{
+	mixer_load_volume_images (user_data);
+	mixer_update_image (user_data);
+}
+
 mixer_applet_create (PanelApplet *applet)
 {
 	MixerData         *data;
@@ -967,7 +1019,7 @@ mixer_applet_create (PanelApplet *applet)
 	device = g_strdup_printf("%sctl",ctl);
 	retval = openMixer(device);
 #endif
-
+	mixer_init_stock_icons ();
 	if (!retval) {
 		GtkWidget *dialog;
 		dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -986,10 +1038,6 @@ mixer_applet_create (PanelApplet *applet)
 
 	data = g_new0 (MixerData, 1);
 
-	if (zero_pixbuf == NULL) {
-		initialize_pixbufs ();
-	}
-	
 	/* Try to find some mixers - sdtaudiocontrol is on Solaris and is needed
 	** because gnome-volume-meter doesn't work */
 	if (run_mixer_cmd == NULL) 
@@ -1007,6 +1055,7 @@ mixer_applet_create (PanelApplet *applet)
 	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
 
 	data->applet = GTK_WIDGET (applet);
+	mixer_load_volume_images (data);
 
         data->tooltips = gtk_tooltips_new ();                                   
         gtk_tooltips_set_tip (data->tooltips,
@@ -1033,7 +1082,12 @@ mixer_applet_create (PanelApplet *applet)
 			  "scroll-event",
 			  (GCallback) applet_scroll_event_cb,
 			  data);
- 
+
+	g_signal_connect (data->applet,
+			  "style-set",
+			  (GCallback) applet_style_event_cb,
+			  data);
+	
 	data->adj = GTK_ADJUSTMENT (
 		gtk_adjustment_new (-50,
 				    -VOLUME_MAX,

@@ -1,3 +1,13 @@
+2002-10-30  Glynn Foster  <glynn.foster@sun.com>
+
+	* Makefile.am: Remove installation of the -small images.
+	* mixer.c: (mixer_load_volume_images), (mixer_update_image),
+	(mixer_popup_hide), (applet_change_size_cb),
+	(register_mixer_stock_icons), (mixer_init_stock_icons),
+	(applet_style_event_cb), (mixer_applet_create): We now have
+	icon theming. Theme the volume and mute icons. Fixes bug 
+	#96085.
+
 2002-09-19  Mark McLoughlin  <mark@skynet.ie>
 
 	* mixer.c: (mixer_popup_show), (mixer_start_gmix_cb),
