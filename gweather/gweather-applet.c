@@ -31,6 +31,17 @@
 #include "gweather-applet.h"
 #include "location.h"
 
+
+static void
+set_all_tooltips (GWeatherApplet *applet, gchar *text)
+{
+	gint i;
+
+	for (i=0; i<=applet->gweather_info->numforecasts-1; i++) {
+		gtk_tooltips_set_tip (applet->tooltips,applet->events[i], text, NULL);
+	}
+}
+
 void update_display (GWeatherApplet *applet)
 {
 	WeatherInfo *info = applet->gweather_info;
@@ -80,7 +91,13 @@ void update_display (GWeatherApplet *applet)
 	
 	}
 
-
+	if (!info->success) {
+		set_all_tooltips (applet, _("There was an error retrieving the forecast"));
+		for (i=0; i<=applet->gweather_info->numforecasts-1; i++) {
+			gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[i]), 
+							  get_conditions_pixbuf (-1));
+		}
+	}
 }
 
 void place_widgets (GWeatherApplet *gw_applet)
@@ -290,13 +307,8 @@ void gweather_update (GWeatherApplet *gw_applet)
     gboolean update_success;
     gint i;
 
-    gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), 
-    			                 _("Updating..."), NULL);
+    set_all_tooltips (gw_applet, _("Updating..."));
     
-    for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
-    	gtk_tooltips_set_tip (gw_applet->tooltips, gw_applet->events[i], NULL, NULL);
-    }
-
     update_success = update_weather (gw_applet);
     
     return;

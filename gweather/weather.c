@@ -511,10 +511,9 @@ finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 
 	if (result == GNOME_VFS_ERROR_EOF)
     	{
-		parse_xml (info);
+		info->success = parse_xml (info);
 		g_free (info->xml);
 		info->xml = NULL;
-		info->success = TRUE;
 		end_animation (applet);
 		update_display (applet);
 		gweather_dialog_update (applet);
@@ -528,6 +527,7 @@ finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     			                 	    _("Could not download forecast"), NULL);
 		info->success = FALSE;
 		end_animation (applet);
+		update_display (applet);
     	} else {
 		gnome_vfs_async_read(handle, body, DATA_SIZE - 1, 
 							    finish_read, applet);
@@ -548,11 +548,9 @@ url_opened (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 	if (result != GNOME_VFS_OK) {
         	g_print("%s", gnome_vfs_result_to_string(result));
         	info->main_handle = NULL;
-		gtk_tooltips_set_tip(applet->tooltips, 
-						    GTK_WIDGET(applet->applet), 
-    			                 	    _("Could not download forecast"), NULL);
 		end_animation (applet);
 		info->success = FALSE;
+		update_display (applet);
     	} else {
 		body = g_malloc0(DATA_SIZE);
         	gnome_vfs_async_read(handle, body, DATA_SIZE -1, 
@@ -698,19 +696,15 @@ do_update (gpointer data)
 
 	if (applet->animation_loc == 1) {
 		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[0]), 
-							  get_conditions_pixbuf (applet->gweather_info->wid));
+							  get_conditions_pixbuf (31));
 	}
 	else {
 		if (applet->animation_loc == 0)
 			oldnum = applet->gweather_info->numforecasts-1;
 		else
 			oldnum = applet->animation_loc - 1;
-		forecast = g_list_nth_data (list, oldnum-1);
-		if (forecast)
-			gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[oldnum]), 
-						  	  	  get_conditions_pixbuf (forecast->wid));
-		else
-			gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[oldnum]), 
+		
+		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[oldnum]), 
 						  	  	  get_conditions_pixbuf (31));
 	}
 	applet->animation_loc ++;
