@@ -26,8 +26,20 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <gnome.h>
-#include <gtk/gtk.h>
+
+#include <gtk/gtkbox.h>
+#include <gtk/gtkcellrenderertext.h>
+#include <gtk/gtkcombobox.h>
+#include <gtk/gtkdialog.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtkliststore.h>
+#include <gtk/gtkmisc.h>
+#include <gtk/gtkscrolledwindow.h>
+#include <gtk/gtkstock.h>
+#include <gtk/gtktreemodel.h>
+#include <gtk/gtktreeselection.h>
+#include <gtk/gtkvbox.h>
+
 #include <gst/mixer/mixer.h>
 
 #include "preferences.h"

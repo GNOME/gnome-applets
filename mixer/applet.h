@@ -25,9 +25,10 @@
 
 #include <glib.h>
 
-#include <panel-applet-gconf.h>
+#include <gtk/gtkicontheme.h>
 #include <gtk/gtkimage.h>
 #include <gconf/gconf-client.h>
+#include <panel-applet-gconf.h>
 #include <gst/gst.h>
 #include <gst/mixer/mixer.h>
 

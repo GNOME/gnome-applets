@@ -25,7 +25,7 @@
 
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <glib/glist.h>
 #include <gst/propertyprobe/propertyprobe.h>
 
 #include "applet.h"

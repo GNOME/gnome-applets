@@ -26,9 +26,19 @@
 
 #include <string.h>
 
-#include <libgnomeui/libgnomeui.h>
+#include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
+
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkicontheme.h>
+#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtkrange.h>
+#include <gtk/gtktooltips.h>
+#include <gtk/gtkwidget.h>
+
+#include <gconf/gconf-client.h>
+
+#include <libgnome/gnome-help.h>
 
 #include "applet.h"
 #include "keys.h"
@@ -130,7 +140,7 @@ gnome_volume_applet_get_type (void)
  */
 
 static inline void
-flip_byte (gchar *one, gchar *two)
+flip_byte (guchar *one, guchar *two)
 {
   gint temp;
 
@@ -140,7 +150,7 @@ flip_byte (gchar *one, gchar *two)
 }
 
 static inline void
-flip_pixel (gchar *line, gint pixel, gint width, gint bpp)
+flip_pixel (guchar *line, gint pixel, gint width, gint bpp)
 {
   gint n;
 
@@ -156,7 +166,7 @@ flip (GdkPixbuf *pix)
        h = gdk_pixbuf_get_height (pix),
        x, y, stride = gdk_pixbuf_get_rowstride (pix),
        bpp = gdk_pixbuf_get_n_channels (pix);
-  gchar *data = gdk_pixbuf_get_pixels (pix);
+  guchar *data = gdk_pixbuf_get_pixels (pix);
 
   for (y = 0; y < h; y++) {
     for (x = 0; x < (w / 2); x++) {

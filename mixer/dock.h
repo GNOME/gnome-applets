@@ -24,6 +24,8 @@
 
 #include <glib.h>
 
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkrange.h>
 #include <gtk/gtkwindow.h>
 #include <gst/gst.h>
 #include <gst/mixer/mixer.h>

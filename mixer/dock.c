@@ -23,9 +23,16 @@
 #include "config.h"
 #endif
 
+#include <glib-object.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
-#include <gnome.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkframe.h>
+#include <gtk/gtkrange.h>
+#include <gtk/gtkhscale.h>
+#include <gtk/gtktable.h>
+#include <gtk/gtkvscale.h>
+#include <gtk/gtkwidget.h>
+
 
 #include "dock.h"
 
