@@ -75,7 +75,8 @@ static void GSwitchItAppletCleanupNotebook (GSwitchItApplet * sia);
 
 static gboolean GSwitchItAppletButtonPressed (GtkWidget * widget,
 					      GdkEventButton * event,
-					      GSwitchItAppletConfig * config);
+					      GSwitchItAppletConfig *
+					      config);
 
 static gboolean GSwitchItAppletKeyPressed (GtkWidget * widget,
 					   GdkEventKey * event,
@@ -192,45 +193,8 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 {
 	XEvent *xevent = (XEvent *) xev;
 	Display *display = xevent->xany.display;
-	int ignoredByXkl = XklFilterEvents (xevent);
-/**
- * WM_PROTOCOLS are handled in a special way - 
- * otherwize gtk drives CPU crazy.
- * We do it manually - because gdk_add_client_message_filter calls only
- * one filter per atom :(
- **/
-	switch (xevent->type) {
-	case ClientMessage:
-		{
-			Atom message_type = xevent->xclient.message_type;
-			if (XInternAtom (display, "WM_PROTOCOLS", FALSE)
-			    == message_type
-			    && (GDK_FILTER_REMOVE ==
-				GSwitchItAppletWmProtocolsFilter (xev,
-								  event,
-								  sia)))
-				return GDK_FILTER_REMOVE;
-		}
-		break;
-	case ReparentNotify:
-		{
-			XReparentEvent *rne = (XReparentEvent *) xev;
-			GtkWidget *w1;
-			GdkWindow *w;
-			w1 = gtk_widget_get_ancestor (sia->applet,
-						      GTK_TYPE_WINDOW);
-			if (w1 == NULL)
-				return GDK_FILTER_CONTINUE;
-			w = w1->window;
-			if (w == NULL || GDK_WINDOW_XID (w) != rne->window)
-				return GDK_FILTER_CONTINUE;
-			XklSetTransparent (GDK_WINDOW_XID (w), TRUE);
-			return GDK_FILTER_CONTINUE;
-		}
-		break;
-	}
-
-	return ignoredByXkl ? GDK_FILTER_CONTINUE : GDK_FILTER_REMOVE;
+	XklFilterEvents (xevent);
+	return GDK_FILTER_CONTINUE;
 }
 
 GdkFilterReturn
@@ -324,7 +288,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 			char *variantName;
 			if (!GSwitchItConfigSplitItems
 			    (fullLayoutName, &layoutName, &variantName))
-			    /* just in case */
+				/* just in case */
 				layoutName = fullLayoutName;
 
 			g_snprintf (configItem.name,
@@ -347,12 +311,12 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 				  G_CALLBACK
 				  (GSwitchItAppletButtonPressed), sia);
 
-		g_signal_connect (G_OBJECT (sia->applet), 
+		g_signal_connect (G_OBJECT (sia->applet),
 				  "key_press_event",
-				  G_CALLBACK 
+				  G_CALLBACK
 				  (GSwitchItAppletKeyPressed), sia);
 
-		gtk_container_add (GTK_CONTAINER (ebox), align); 
+		gtk_container_add (GTK_CONTAINER (ebox), align);
 		gtk_container_add (GTK_CONTAINER (align), label);
 		gtk_container_set_border_width (GTK_CONTAINER (align), 2);
 	}
@@ -422,8 +386,7 @@ GSwitchItAppletKeyPressed (GtkWidget *
 			   GdkEventKey *
 			   event, GSwitchItAppletConfig * config)
 {
-	switch (event->keyval)
-	{
+	switch (event->keyval) {
 	case GDK_KP_Enter:
 	case GDK_ISO_Enter:
 	case GDK_3270_Enter:
@@ -458,8 +421,10 @@ GSwitchItAppletCmdProps (BonoboUIComponent *
 	/* Only one preferences window at a time */
 	if (sia->propsDialog) {
 		gtk_window_set_screen (GTK_WINDOW (sia->propsDialog),
-				       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
-		
+				       gtk_widget_get_screen (GTK_WIDGET
+							      (sia->
+							       applet)));
+
 		gtk_window_present (GTK_WINDOW (sia->propsDialog));
 		return;
 	}
@@ -468,13 +433,15 @@ GSwitchItAppletCmdProps (BonoboUIComponent *
 }
 
 void
-GSwitchItAppletCmdCapplet(BonoboUIComponent *
+GSwitchItAppletCmdCapplet (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
 	GError *error = NULL;
-	
-	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
-					  "gnome-keyboard-properties", &error);
+
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen
+					  (GTK_WIDGET (sia->applet)),
+					  "gnome-keyboard-properties",
+					  &error);
 
 	if (error != NULL) {
 		/* FIXME: After string ui freeze are over, we want to show an error message here */
@@ -488,8 +455,10 @@ GSwitchItAppletCmdPlugins (BonoboUIComponent *
 {
 	GError *error = NULL;
 
-	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
-					  "gswitchit-plugins-capplet", &error);
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen
+					  (GTK_WIDGET (sia->applet)),
+					  "gswitchit-plugins-capplet",
+					  &error);
 
 	if (error != NULL) {
 		/* FIXME: after string ui freeze are over, we want to show an error message here */
@@ -549,8 +518,10 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	gchar *file;
 	if (sia->aboutDialog) {
 		gtk_window_set_screen (GTK_WINDOW (sia->aboutDialog),
-				       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
-		
+				       gtk_widget_get_screen (GTK_WIDGET
+							      (sia->
+							       applet)));
+
 		gtk_window_present (GTK_WINDOW (sia->aboutDialog));
 		return;
 	}
@@ -580,8 +551,9 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	g_free (file);
 
 	gtk_window_set_screen (GTK_WINDOW (sia->aboutDialog),
-			       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
-	
+			       gtk_widget_get_screen (GTK_WIDGET
+						      (sia->applet)));
+
 	gtk_window_present (GTK_WINDOW (sia->aboutDialog));
 }
 
@@ -828,9 +800,9 @@ GSwitchItAppletNew (PanelApplet * applet)
 		rv = GSwitchItAppletInit (sia, applet);
 		XklDebug (100, "The applet successfully started: %d\n",
 			  rv);
-	}
-	XklDebug (0,
-		  "Please do not call the initialization method twice!!!\n");
+	} else
+		XklDebug (0,
+			  "Please do not call the initialization method twice!!!\n");
 	return rv;
 }
 
