@@ -63,7 +63,7 @@ main (int argc, char ** argv)
  *
  */
 gint
-battery_update(gpointer data)
+battery_update (gpointer data)
 {
   BatteryData * bat = data;
   time_t curr_time;
@@ -78,6 +78,8 @@ battery_update(gpointer data)
   
   char labelstr[256];
   int height, y, body_perc, i;
+
+  int graph_height, graph_width;
 
   if (!bat->setup)
     return 0;
@@ -100,6 +102,13 @@ battery_update(gpointer data)
    * Graph Mode 
    *
    */
+
+  graph_height = bat->graph_area->allocation.height;
+  graph_width = bat->graph_area->allocation.width;
+  if (graph_height == 0)
+    graph_height = bat->height;
+  if (graph_width == 0)
+    graph_width = bat->width;
 
   /* First check that it is time to update the graph. */
   time (&curr_time);
@@ -138,26 +147,26 @@ battery_update(gpointer data)
       else
 	gdk_gc_set_foreground ( bat->gc, &(bat->graph_color_ac_off) );
 
-      for (i = 0 ; i < bat->width ; i++)
+      for (i = 0 ; i < graph_width ; i++)
 	{
 	  gdk_draw_line (bat->graph_pixmap, bat->gc, i,
-			 (100 - bat->graph_values[i]) * bat->height / 100,
-			 i, bat->height);
+			 (100 - bat->graph_values[i]) * graph_height / 100,
+			 i, graph_height);
 	}
 
       gdk_gc_set_foreground (bat->gc, &(bat->graph_color_line));
 
       gdk_draw_line (bat->graph_pixmap, bat->gc,
-		     0, 74 * bat->height / 100,
-		     bat->width, 74 * bat->height / 100);
+		     0, (75 * graph_height / 100),
+		     bat->width, (75 * graph_height / 100));
 
       gdk_draw_line (bat->graph_pixmap, bat->gc,
-		     0, 49 * bat->height / 100,
-		     bat->width, 49 * bat->height / 100);
+		     0, (50 * graph_height / 100),
+		     bat->width, (50 * graph_height / 100));
 
       gdk_draw_line (bat->graph_pixmap, bat->gc,
-		     0, 24 * bat->height / 100,
-		     bat->width, 24 * bat->height / 100);
+		     0, (25 * graph_height / 100),
+		     bat->width, (25 * graph_height / 100));
       
     }
 
@@ -264,7 +273,7 @@ battery_update(gpointer data)
     }
 
   /* Update the display */
-  battery_expose_handler(bat->graph_area, NULL, bat);
+  battery_expose_handler (bat->graph_area, NULL, bat);
 
   /* Save these values... */
   last_minutes_remaining = minutes_remaining;
@@ -365,9 +374,9 @@ battery_set_mode(BatteryData * bat)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bat->mode_radio_graph),
 				    1);
 
-      battery_expose_handler(bat->graph_area, NULL, bat);
-      gtk_widget_hide_all(bat->readout_frame);
-      gtk_widget_show_all(bat->graph_frame);
+      battery_expose_handler (bat->graph_area, NULL, bat);
+      gtk_widget_hide_all (bat->readout_frame);
+      gtk_widget_show_all (bat->graph_frame);
     }
   else if (!strcmp(bat->mode_string, BATTERY_MODE_READOUT))
     {
@@ -384,9 +393,11 @@ battery_set_mode(BatteryData * bat)
       g_error(_("Internal error: invalid mode in battery_set_mode"));
     }
 
-  /* When we chagne modes, make sure there's not a fraction of a second
-     where our pixmap is displayed as black ... */
-  battery_expose_handler(bat->graph_area, NULL, bat);
+  /*
+   * When we change modes, make sure there's not a fraction of a second
+   * where our pixmap is displayed as black ...
+   */
+  battery_expose_handler (bat->graph_area, NULL, bat);
 
 } /* battery_set_mode */
 
@@ -546,29 +557,39 @@ make_new_battery_applet (const gchar *goad_id)
 					 bat);
 
   gtk_widget_show_all (bat->applet);
-  gtk_widget_show (bat->graph_area);
   
   /* Allocate the colors... */
   battery_create_gc (bat);
   battery_setup_colors (bat);
 
-  /* Display only one mode */
-  battery_set_mode(bat);
-
   /* Nothing is drawn until this is set. */
   bat->setup = TRUE;
 
+  /*
+   * These will get reset to the correct values when the graph area is
+   * mapped.
+   */
+     
+  bat->graph_area->allocation.height = 0;
+  bat->graph_area->allocation.width = 0;
+  
   /* Size things according to the saved settings */
-  battery_set_size(bat);
+  battery_set_size (bat);
 
-  bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
-					  (GtkFunction) battery_update, bat);
+  /* Display only one mode */
+  battery_set_mode (bat);
+
+  bat->graph_timeout_id = gtk_timeout_add (1000 * bat->graph_interval,
+					   (GtkFunction) battery_update, bat);
+
+  bat->force_update = TRUE;
+  battery_update (bat);
 
   return bat->applet;
 } /* make_new_battery_applet */
 
 void
-destroy_about(GtkWidget *w, gpointer data)
+destroy_about (GtkWidget *w, gpointer data)
 {
   BatteryData *bat = data;
 } /* destroy_about */
@@ -656,9 +677,9 @@ battery_setup_picture(BatteryData * bat)
 void
 battery_set_size(BatteryData * bat)
 {
-  gtk_widget_set_usize(bat->readout_area, bat->width * 0.4, bat->height);
-  gtk_widget_set_usize(bat->graph_frame, bat->width, bat->height);
-  gtk_widget_set_usize(bat->readout_frame, bat->width, bat->height);
+  gtk_widget_set_usize (bat->readout_area, bat->width * 0.4, bat->height);
+  gtk_widget_set_usize (bat->graph_frame, bat->width, bat->height);
+  gtk_widget_set_usize (bat->readout_frame, bat->width, bat->height);
 
   /*
    * If pixmaps have already been allocated, then free them here
@@ -673,18 +694,26 @@ battery_set_size(BatteryData * bat)
     }
 
   bat->graph_pixmap = gdk_pixmap_new(bat->graph_area->window,
-				     bat->width, bat->height,
+				     bat->width,
+				     bat->height,
 			     gtk_widget_get_visual(bat->graph_area)->depth);
 
-  gdk_draw_rectangle(bat->graph_pixmap, bat->graph_area->style->black_gc,
-		     TRUE, 0, 0,  bat->width, bat->height);
+  gdk_draw_rectangle (bat->graph_pixmap,
+		      bat->graph_area->style->black_gc,
+		      TRUE, 0, 0,
+		      bat->graph_area->allocation.width,
+		      bat->graph_area->allocation.height);
 
   bat->readout_pixmap = gdk_pixmap_new(bat->readout_area->window,
-				       bat->width,   bat->height,
+				       bat->width,
+				       bat->height,
 		       gtk_widget_get_visual(bat->readout_area)->depth);
 
-  gdk_draw_rectangle(bat->readout_pixmap, bat->readout_area->style->black_gc,
-		     TRUE, 0, 0, bat->width, bat->height);
+  gdk_draw_rectangle(bat->readout_pixmap,
+		     bat->readout_area->style->black_gc,
+		     TRUE, 0, 0,
+		     bat->readout_area->allocation.width,
+		     bat->readout_area->allocation.height);
 
   /* If we've been resized, don't throw away the old graph data */
   if (bat->graph_values != NULL)

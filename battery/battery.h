@@ -118,7 +118,7 @@ typedef struct BatteryData {
 
 /* Global configuration parameters */
 #define BATTERY_DEFAULT_MODE_STRING   "readout"
-#define BATTERY_DEFAULT_HEIGHT        "50"
+#define BATTERY_DEFAULT_HEIGHT        "48"
 #define BATTERY_DEFAULT_WIDTH         "75"
 
 
