@@ -83,9 +83,15 @@ void property_load(PanelApplet *applet)
 	g_free(buf);
 
 	command_connect    = panel_applet_gconf_get_string(applet, "connect", NULL);
+	if (!command_connect)
+		command_connect = g_strdup ("pppon");
 	command_disconnect = panel_applet_gconf_get_string(applet, "disconnect", NULL);
+	if (!command_disconnect)
+		command_disconnect = g_strdup ("pppoff");
 	ask_for_confirmation = panel_applet_gconf_get_int(applet, "confirmation", NULL);
 	device_name          = panel_applet_gconf_get_string(applet, "device", NULL);
+	if (!device_name)
+		device_name = g_strdup ("ppp0");
 	use_ISDN	   = panel_applet_gconf_get_int(applet, "isdn", NULL);
        	verify_lock_file   = panel_applet_gconf_get_int(applet, "verify_lock", NULL);
 	show_extra_info    = panel_applet_gconf_get_int(applet, "extra_info", NULL);
@@ -98,6 +104,7 @@ void property_load(PanelApplet *applet)
 		display_color_text[i] = panel_applet_gconf_get_string(applet, 
 							              color_rc_names[i], 
 							              NULL);
+		
 
 		}
 
