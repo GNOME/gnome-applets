@@ -183,6 +183,8 @@ create_cdpanel_widget(GtkWidget *window, CDPlayerData * cd)
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
+	led_init(window);
+
 	led_create_widget(window,&cd->panel.time, &cd->panel.track);
 	gtk_box_pack_start_defaults(GTK_BOX(vbox), cd->panel.time);
 	gtk_widget_show(cd->panel.time);
