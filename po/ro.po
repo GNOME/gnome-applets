@@ -1,216 +1,47 @@
 # Romanian translation for gnome-applets.
 # Copyright (C) 2000-2001 Free Software Foundation, Inc.
 # Marius Andreiana <mandreiana@yahoo.com>, 2000.
-# Dan Damian <dand@dnttm.ro>, 2000-2001.
-# 
+# Dan Damian <dand@dnttm.ro>, 2000, 2001.
+# Mugurel Tudor <mugurelu@go.ro>, 2002.
+#
 # TODO : threshold, readout, basic, custom
 # sliding, goofy, dew, caveat spurious Despeckle Emboss Frills, threshold
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.3.0\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
-"PO-Revision-Date: 2000-12-18 11:10+0200\n"
-"Last-Translator: Dan Damian <dand@dnttm.ro>\n"
-"Language-Team: Romanian <gnome-ro@pelican.level7.ro>\n"
+"POT-Creation-Date: 2002-08-26 17:56-0400\n"
+"PO-Revision-Date: 2002-09-06 20:59+0300\n"
+"Last-Translator: Mugurel Tudor <mugurelu@go.ro>\n"
+"Language-Team: romÃ¢nÄƒ <ro@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:284
-msgid "Your platform is not supported!\n"
-msgstr ""
-
-#: battstat/battstat_applet.c:285
-msgid "The applet will not work properly (if at all).\n"
-msgstr ""
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
-#, fuzzy
-msgid "High"
-msgstr "Înãlşime:"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
-msgid "Low"
-msgstr ""
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
-#, fuzzy
-msgid "Critical"
-msgstr "Caraibe"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
-#, fuzzy
-msgid "Charging"
-msgstr "Schimbare"
-
-#: battstat/battstat_applet.c:403
-msgid "Battery low (%d%%) and AC is offline"
-msgstr ""
-
-#: battstat/battstat_applet.c:426
-#, fuzzy
-msgid "Battery is now fully re-charged!"
-msgstr "Bateria este complet încãrcatã."
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
-msgid ""
-"System is running on battery power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
-msgid ""
-"System is running on AC power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
-msgid "System is running on battery power"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
-msgid "System is running on AC power"
-msgstr ""
-
-#: battstat/battstat_applet.c:472
-msgid "N/A"
-msgstr ""
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
-msgid "System is running on battery power. Battery: Not present"
-msgstr ""
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
-msgid "System is running on AC power. Battery: Not present"
-msgstr ""
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
-msgid "Battery: %d%% (%s)"
-msgstr ""
-
-#. Displayed as a tooltip over the battery meter when no
-#. battery is present.
-#: battstat/battstat_applet.c:636
-msgid "Battery: Not present"
-msgstr ""
-
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
-msgid ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
-msgstr ""
-
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
-msgid ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
-msgstr ""
-
-#: battstat/battstat_applet.c:767
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command: %s\n"
-"Please try to correct this error"
-msgstr ""
-
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
-msgstr ""
-
-#: battstat/battstat_applet.c:778
-msgid ""
-"Suspend command wasn't setup correctly in the preferences.\n"
-"Please change the preferences and try again."
-msgstr ""
 
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-msgid "Battery status utility"
-msgstr ""
-
-#: battstat/battstat_applet.c:809
-#, fuzzy
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 the Free Software Foundation"
-
-#: battstat/battstat_applet.c:810
-msgid "This utility show the status of your laptop battery."
-msgstr ""
-
-#: battstat/GNOME_BattstatApplet.server.in.h:1
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:839
 msgid "Battery Charge Monitor"
-msgstr "Monitor încãrcare baterie"
+msgstr "Monitor Ã®ncÄƒrcare baterie"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
-msgstr ""
+msgstr "Factory status baterie"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
 msgid "Monitor a laptop's remaining power"
-msgstr ""
+msgstr "MonitorizeazÄƒ puterea rÄƒmasÄƒ pentru un laptop"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
-msgstr ""
+msgstr "Utilitate"
 
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
@@ -220,470 +51,716 @@ msgstr ""
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "Despre..."
+msgid "_About..."
+msgstr "_Despre..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Ajutor"
+msgid "_Help"
+msgstr "_Ajutor"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
 #: charpick/GNOME_CharpickerApplet.xml.h:3
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
-#, fuzzy
-msgid "Preferences..."
-msgstr "Proprietãşi"
+msgid "_Preferences..."
+msgstr "_PreferinÅ£e..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
+msgid "_Suspend Computer..."
+msgstr "_SuspendÄƒ computer..."
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:284
+msgid "Your platform is not supported!\n"
+msgstr "Platforma dumneavoastrÄƒ nu este suportatÄƒ !\n"
+
+#: battstat/battstat_applet.c:285
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Apletul nu va funcÅ£iona corect (admiÅ£Ã¢nd cÄƒ va funcÅ£iona).\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:868
+msgid "High"
+msgstr "ÃnÄƒlÅ£ime"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:870
+msgid "Low"
+msgstr "Jos"
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:872
+msgid "Critical"
+msgstr "Critic"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:874
+msgid "Charging"
+msgstr "Schimbare"
+
+#: battstat/battstat_applet.c:403
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Baterie este pe terminate (%d%%) ÅŸi AC nu este conectat"
+
+#: battstat/battstat_applet.c:427
+msgid "Battery is now fully re-charged!"
+msgstr "Bateria este complet Ã®ncÄƒrcatÄƒ !"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1032
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
 msgstr ""
+"Sistemul ruleazÄƒ alimentat de baterie\n"
+"Baterie: %d%%(%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1040
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Sistemul ruleazÄƒ alimentat AC\n"
+"Baterie: %d%%(%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:964
+#: battstat/battstat_applet.c:1053
+msgid "System is running on battery power"
+msgstr "Sistemul ruleazÄƒ alimentat de baterie"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:970
+#: battstat/battstat_applet.c:1059
+msgid "System is running on AC power"
+msgstr "Sistemul ruleazÄƒ alimentat AC"
+
+#: battstat/battstat_applet.c:473
+msgid "N/A"
+msgstr "N/A"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:944
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "Sistemul ruleazÄƒ alimentat de baterie. Baterie: %d%% (%s)"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:951
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "Sistemul ruleazÄƒ alimentat AC. Baterie: %d%% (%s)"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:615
+msgid "System is running on battery power. Battery: Not present"
+msgstr "Sistemul ruleazÄƒ alimentat de baterie. Baterie: Nu este prezentÄƒ"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:621
+msgid "System is running on AC power. Battery: Not present"
+msgstr "Sistemul ruleazÄƒ alimentat AC. Baterie: Nu este prezentÄƒ"
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:630
+msgid "Battery: %d%% (%s)"
+msgstr "Baterie: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:637
+msgid "Battery: Not present"
+msgstr "Baterie: Nu este prezentÄƒ"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:715
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"Nu am putut deschide dispozitivul APM!\n"
+"\n"
+"AsiguraÅ£i-vÄƒ cÄƒ aveÅ£i permisiunea pentru citire\n"
+"setatÄƒ corect pentru dispozitivul APM."
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:724
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"Subsistemul de management APM se pare cÄƒ este dezactivat.\n"
+"ÃncercaÅ£i sÄƒ executaÅ£i \"apm -e 1\" (FreeBSD) ÅŸi vedeÅ£i\n"
+"dacÄƒ problema este rezolvatÄƒ.\n"
+
+#: battstat/battstat_applet.c:774
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+"A intervenit o eroare la lansarea comenzii Suspend: %s\n"
+"ÃncercaÅ£i sÄƒ corectaÅ£i aceastÄƒ eroare"
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:777
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+"A intervenit o eroare la lansarea comenzii Suspend, comanda returnÃ¢nd "
+"\"%d\"\n"
+"ÃncercaÅ£i sÄƒ corectaÅ£i aceastÄƒ eroare"
+
+#: battstat/battstat_applet.c:785
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+"Comanda de suspendare nu a fost setatÄƒ corect Ã®n preferinÅ£e.\n"
+"VÄƒ rugÄƒm schimbaÅ£i preferinÅ£ele ÅŸi Ã®ncercaÅ£i din nou."
+
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:816
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
+
+#: battstat/battstat_applet.c:826 cdplayer/cdplayer.c:467
+#: charpick/charpick.c:373 drivemount/drivemount.c:449 geyes/geyes.c:215
+#: gkb-new/gkb.c:592 gtik/gtik.c:712 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:46 mixer/mixer.c:785
+#: modemlights/modemlights.c:208 multiload/main.c:56
+#: panel-menu/panel-menu.c:673
+msgid "translator_credits"
+msgstr ""
+"Marius Andreiana <mandreiana@yahoo.com>\n"
+"Dan Damian <dand@dnttm.ro>\n"
+"Mugurel Tudor <mugurelu@go.ro>"
+
+#: battstat/battstat_applet.c:841
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 FundaÅ£ia pentru Software Liber"
+
+#: battstat/battstat_applet.c:842
+msgid "This utility show the status of your laptop battery."
+msgstr "Acest utilitar vÄƒ aratÄƒ starea bateriei de la laptop"
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#. appearance frame
+#: battstat/battstat_applet.glade.h:3 mini-commander/src/preferences.c:743
+msgid "Appearance"
+msgstr "Aspect"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "ÃnfÄƒÅ£iÅŸare applet:"
+
+#: battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "PreferinÅ£e Monitor Ã®ncÄƒrcare baterie"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "Culori nivele baterie (%)"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "Bip cÃ¢nd oricare din cele de mai sus sunt adevÄƒrate"
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "General"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Ascunde"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "Se miÅŸcÄƒ Ã®n jos"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "Se miÅŸcÄƒ Ã®n sus"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr "AnunÅ£Äƒ-mÄƒ cÃ¢nd bateria este aproape descÄƒrcatÄƒ"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "AnunÅ£Äƒ-mÄƒ cÃ¢nd bateria este complet reÃ®ncÄƒrcatÄƒ"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Oranj:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Previzualizare:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "DirecÅ£ia barei de progres"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "RoÅŸu:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "AratÄƒ"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "Suspendare"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "ComandÄƒ suspendare:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "AtenÅ£ionÄƒri"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Galben:"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
-msgstr ""
+msgstr "Utilitar monitorizare baterie"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:2
-#, fuzzy
 msgid "Battery fully re-charged"
-msgstr "Bateria este complet încãrcatã."
+msgstr "Baterie complet reÃ®ncÄƒrcatÄƒ"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:3
-#, fuzzy
 msgid "Battery power low"
-msgstr "Culoare grafic baterie aproape descãrcatã:"
+msgstr "Baterie pe terminate"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
-#, fuzzy
-msgid "Stop"
-msgstr "topic"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
-msgid "Play / Pause"
-msgstr ""
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Ejecteazã"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
-msgid "Previous Track"
-msgstr ""
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
-msgid "Next Track"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:169
+#: cdplayer/cdplayer.c:483 cdplayer/cdplayer.c:896
 msgid "CD Player"
 msgstr "CD Player"
 
-#: cdplayer/cdplayer.c:346
-#, fuzzy
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
+msgid "CD Player Applet Factory"
+msgstr "Factory Aplet CD Player"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
+msgid "Factory for CD player applet"
+msgstr "Factory pentru apletul CD player"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
+msgid "Panel applet for playing audio CDs"
+msgstr "Aplet pentru redarea CD-urilor audio"
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
+msgid "_Run External CD Player"
+msgstr "_RuleazÄƒ CD Player extern..."
+
+#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:886
+msgid "Stop"
+msgstr "Stop"
+
+#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:888
+msgid "Play / Pause"
+msgstr "Play / PauzÄƒ"
+
+#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:890
+msgid "Eject"
+msgstr "EjecteazÄƒ"
+
+#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:892
+msgid "Previous Track"
+msgstr "Precedenta melodie"
+
+#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:894
+msgid "Next Track"
+msgstr "UrmÄƒtoarea melodie"
+
+#: cdplayer/cdplayer.c:280 drivemount/drivemount.c:397 mixer/mixer.c:752
+#: multiload/main.c:111
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr "A intervenit o eroare la executarea '%s' : %s"
+
+#: cdplayer/cdplayer.c:379
 msgid "CD Player Preferences"
-msgstr "Applet CD Player"
+msgstr "PreferinÅ£e CD Player"
 
-#: cdplayer/cdplayer.c:361
-#, fuzzy
+#: cdplayer/cdplayer.c:395
 msgid "Disc Image"
-msgstr "Utilizare disk"
+msgstr "Imagine disc"
 
-#: cdplayer/cdplayer.c:361
+#: cdplayer/cdplayer.c:395
 msgid "An image of a cd-rom disc"
-msgstr ""
+msgstr "O imagine a CD-ROM-ului"
 
-#: cdplayer/cdplayer.c:363
-#, fuzzy
+#: cdplayer/cdplayer.c:397
 msgid "Device _Path:"
-msgstr "Dispozitiv:"
+msgstr "_Cale dispozitiv:"
 
-#: cdplayer/cdplayer.c:372
-#, fuzzy
+#: cdplayer/cdplayer.c:406
 msgid "Device Path"
-msgstr "Dispozitiv:"
+msgstr "Cale dispozitiv"
 
-#: cdplayer/cdplayer.c:372
+#: cdplayer/cdplayer.c:406
 msgid "Set the device path here"
-msgstr ""
+msgstr "SeteazÄƒ calea cÄƒtre dispozitiv aici"
 
-#: cdplayer/cdplayer.c:375
-#, fuzzy
+#: cdplayer/cdplayer.c:409
 msgid "Use _Default"
-msgstr "Nici una (standard)"
+msgstr "FoloseÅŸte _implicit"
 
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "Applet CD Player"
-
-#: cdplayer/cdplayer.c:421
-#, fuzzy
+#: cdplayer/cdplayer.c:484
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr "(c) 1997 Fundaşia Software gratuit"
+msgstr ""
+"(C) 1997 FundaÅ£ia pentru Software Liber\n"
+"(C) 2001 Chris Phelps (Portare GNOME 2)"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
+#: cdplayer/cdplayer.c:486 cdplayer/cdplayer.c:897
 msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "Appletul CD Player este un simplu CD audio player pentru panelul dvs."
+msgstr "Apletul CD Player este un simplu CD audio player pentru panelul dvs"
 
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
+#: cdplayer/cdplayer.c:767 cdplayer/cdplayer.c:778
 msgid "Elapsed time"
-msgstr ""
+msgstr "Timp trecut"
 
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
+#: cdplayer/cdplayer.c:770 cdplayer/cdplayer.c:780
 msgid "Track number"
-msgstr ""
+msgstr "NumÄƒr melodie"
 
-#: cdplayer/cdplayer.c:819
+#: cdplayer/cdplayer.c:887
 msgid "Click this button to Stop playing the CD"
-msgstr ""
+msgstr "ApÄƒsaÅ£i acest buton pentru a opri audiÅ£ia CD-ului"
 
-#: cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:889
 msgid "Click this button to Play or Pause the CD"
-msgstr ""
+msgstr "ApÄƒsaÅ£i acest buton pentru a Ã®ncepe reda/pauza CD-ul"
 
-#: cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:891
 msgid "Click this button to eject the CD"
-msgstr ""
+msgstr "ApÄƒsaÅ£i acest buton pentru ejectarea CD-ului"
 
-#: cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:893
 msgid "Click this button to Play the previous track in the CD"
-msgstr ""
+msgstr "ApÄƒsaÅ£i acest buton pentru a reda precedenta melodie de pe CD"
 
-#: cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:895
 msgid "Click this button to Play the next track in the CD"
-msgstr ""
+msgstr "ApÄƒsaÅ£i acest buton pentru a reda urmÄƒtoarea melodie de pe CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
-#, fuzzy
-msgid "CD Player Applet Factory"
-msgstr "Applet CD Player"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
-msgid "Factory for CD player applet"
-msgstr "Applet CD Player"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.h:2
-msgid "Multimedia"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
-msgid "Panel applet for playing audio CDs"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#, fuzzy
-msgid "Run External CD Player"
-msgstr "Ruleazã CD Player..."
-
-#: charpick/charpick.c:363
-msgid "Character Picker"
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:389
+#: charpick/charpick.c:482
+msgid "Character Palette"
 msgstr "Selector caractere"
 
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
+msgid "Charpicker Applet Factory"
+msgstr "Factory aplet selcar"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+msgid "Insert characters"
+msgstr "InsereazÄƒ caracterele"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
 #: charpick/charpick.c:365
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/charpick.c:391
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:366
+#: charpick/charpick.c:392
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Applet panel Gnome pentru a selecta caractere ciudate care nu sunt pe "
-"tastatura mea. Publicat sub licenşa publicã generalã GNU."
+"Aplet panel Gnome pentru a selecta caractere ciudate care nu sunt pe "
+"tastatura mea. Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU."
 
-#: charpick/charpick.c:444
-#, fuzzy
+#: charpick/charpick.c:481
 msgid "Insert special characters"
-msgstr "Lista standard de caractere:"
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
-#, fuzzy
-msgid "Character Palette"
-msgstr "Selector caractere"
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
-msgid "Charpicker Applet Factory"
-msgstr ""
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
-#, fuzzy
-msgid "Insert characters"
-msgstr "Lista standard de caractere:"
+msgstr "InsereazÄƒ caractere speciale"
 
 #: charpick/properties.c:79
-#, fuzzy
 msgid "_Default character list:"
-msgstr "Lista standard de caractere:"
+msgstr "Lista de caractere _implicitÄƒ:"
 
 #: charpick/properties.c:88
-#, fuzzy
 msgid "Default list of characters"
-msgstr "Lista standard de caractere:"
+msgstr "Lista implicitÄƒ de caractere"
 
 #: charpick/properties.c:89
-#, fuzzy
 msgid "Set the default character list here"
-msgstr "Lista standard de caractere:"
+msgstr "SeteazÄƒ lista implicitÄƒ de caractere aici"
 
 #: charpick/properties.c:91
-#, fuzzy
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
 msgstr ""
-"Aceste caractere vor apare cãnd panelul este pornit. Pentru a vã reîntoarce "
-"la aceastã listã, apãsaşi <space> când appletul are focus."
+"Aceste caractere vor apare cÃ¢nd panelul este pornit. Pentru a vÄƒ reÃ®ntoarce "
+"la aceastÄƒ listÄƒ, apÄƒsaÅ£i <d> cÃ¢nd appletul este focalizat."
 
-#: charpick/properties.c:144
-#, fuzzy
+#: charpick/properties.c:150
 msgid "Character Palette Preferences"
-msgstr "Setãri Selector caractere"
+msgstr "PreferinÅ£e Selector Caractere"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
-msgstr "Applet Montare Drive"
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:465
+msgid "Disk Mounter"
+msgstr "Montare Dispozitiv"
 
-#: drivemount/drivemount.c:420
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
+msgid "Drive Mount Applet Factory"
+msgstr "Factory Aplet Montare Dispozitiv"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
+msgid "Factory for drive mount applet"
+msgstr "Factory pentru apletul de montare a dispozitivelor"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr "MonteazÄƒ discurile ÅŸi dispozitivele locale"
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+msgid "_Browse..."
+msgstr "_NavigheazÄƒ..."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "_Eject"
+msgstr "_EjecteazÄƒ"
+
+#: drivemount/drivemount.c:466
 msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr ""
+msgstr "(C) 1999-2001 Hackerii GNOME\n"
 
-#: drivemount/drivemount.c:422
+#: drivemount/drivemount.c:468
 msgid "Applet for mounting and unmounting block volumes."
-msgstr ""
+msgstr "Aplet pentru montarea ÅŸi demontarea dispozitivelor bloc"
 
-#: drivemount/drivemount.c:612
+#: drivemount/drivemount.c:664
 msgid " mounted"
 msgstr " montat "
 
-#: drivemount/drivemount.c:614
+#: drivemount/drivemount.c:666
 msgid " not mounted"
-msgstr " nemontat "
+msgstr " nu este montat "
 
-#: drivemount/drivemount.c:725
-#, fuzzy
+#: drivemount/drivemount.c:776
 msgid "Drive Mount Applet Warning"
-msgstr "Applet Montare Drive"
+msgstr "Avertisment Aplet Montare Dispozitiv"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:784
 msgid "\" reported:\n"
 msgstr "\" a raportat:\n"
 
-#: drivemount/drivemount.c:735
+#: drivemount/drivemount.c:786
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
-"Comanda de montare a driveului nu a reuºit.\n"
+"Comanda de montare a dispozitivului nu a reuÅŸit.\n"
 "\""
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
-#, fuzzy
-msgid "Disk Mounter"
-msgstr "Montare Dispozitiv"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
-msgid "Drive Mount Applet Factory"
-msgstr "Applet Montare Drive"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
-msgid "Factory for drive mount applet"
-msgstr "Applet Montare Drive"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
-msgid "Mount local disks and devices"
-msgstr ""
-
-#: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
-msgstr "Rãsfoieºte..."
-
-#: drivemount/properties.c:239
-#, fuzzy
+#: drivemount/properties.c:252
 msgid "Disk Mounter Preferences"
-msgstr "Proprietãşi applet Monteazã driveuri"
+msgstr "PreferinÅ£e Montare Dispozitive"
 
 #: drivemount/properties.c:258
-#, fuzzy
+msgid "Settings"
+msgstr "SetÄƒri"
+
+#: drivemount/properties.c:271
 msgid "_Mount point:"
-msgstr "Punct montare:"
+msgstr "_Punct montare:"
 
-#: drivemount/properties.c:276
-#, fuzzy
+#: drivemount/properties.c:289
 msgid "_Update interval (seconds):"
-msgstr "Interval actualizare (secunde):"
+msgstr "Interval _actualizare (secunde):"
 
-#: drivemount/properties.c:292
-#, fuzzy
+#: drivemount/properties.c:305 panel-menu/panel-menu-properties.c:109
 msgid "_Icon :"
-msgstr "Icon:"
+msgstr "_IconiÅ£Äƒ :"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:323
 msgid "Floppy"
 msgstr "Floppy"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:326
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:329
 msgid "Cd Recorder"
-msgstr ""
+msgstr "Cd Recorder"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:332
 msgid "Zip Drive"
-msgstr "Drive Zip"
+msgstr "Unitate Zip"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:335
 msgid "Hard Disk"
 msgstr "Hard Disk"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:338
 msgid "Jaz Drive"
-msgstr "Drive Jaz"
-
-#: drivemount/properties.c:328
-msgid "Custom"
-msgstr "Particular"
+msgstr "Unitate Jaz"
 
 #: drivemount/properties.c:341
+msgid "Custom"
+msgstr "Personalizat"
+
+#: drivemount/properties.c:354
 msgid "Select icon for mounted"
-msgstr "Selectaşi iconul pentru montat"
+msgstr "SelectaÅ£i iconul pentru montat"
 
-#: drivemount/properties.c:348
-#, fuzzy
+#: drivemount/properties.c:361
 msgid "Custom icon for moun_ted:"
-msgstr "Icon particular pentru montat:"
+msgstr "IconiÅ£Äƒ personalizatÄƒ pentru mon_tat:"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:370
 msgid "Select icon for unmounted"
-msgstr "Selectaşi iconul pentru demontat"
+msgstr "SelectaÅ£i iconiÅ£a pentru demontat"
 
-#: drivemount/properties.c:364
-#, fuzzy
+#: drivemount/properties.c:377
 msgid "Custom icon for not mou_nted:"
-msgstr "Icon particular pentru nemontat:"
+msgstr "IconiÅ£Äƒ personalizatÄƒ pentru _nemontat:"
 
-#: drivemount/properties.c:374
-#, fuzzy
+#: drivemount/properties.c:387
 msgid "_Scale size to panel"
-msgstr "Potriveºte mãrimea pentru panel"
+msgstr "_ScaleazÄƒ mÄƒrimea dupÄƒ panel"
 
-#: drivemount/properties.c:381
-#, fuzzy
+#: drivemount/properties.c:394
 msgid "_Eject on unmount"
-msgstr "Ejecteazã la demontare"
+msgstr "_EjecteazÄƒ la demontare"
 
-#: drivemount/properties.c:388
-#, fuzzy
+#: drivemount/properties.c:401
 msgid "Use _automount friendly status test"
-msgstr "Foloseºte testul automount prietenos"
+msgstr "FoloseÅŸte testul prietenos de montare _automatÄƒ"
 
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gOchi"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "O micã clonã xeyes pentru panelul GNOME."
-
-#: geyes/GNOME_GeyesApplet.server.in.h:1
-#, fuzzy
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
-msgstr "Foloseºte tot locul de pe panel"
+msgstr "Un set de ochi pentru panelul dumneavoastrÄƒ"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:2
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
 msgid "Amusements"
-msgstr ""
+msgstr "Amuzante"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
-#, fuzzy
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:232
+#: geyes/geyes.c:419 geyes/geyes.c:421
 msgid "Geyes"
 msgstr "gOchi"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
-msgstr ""
+msgstr "Factory aplet gOchi"
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:233
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:234
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "O micÄƒ clonÄƒ xeyes pentru panelul GNOME."
+
+#: geyes/geyes.c:422
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "Ochii se uitÄƒ Ã®n direcÅ£ia mouse-ului."
+
+#: geyes/themes.c:215
 msgid "Geyes Preferences"
-msgstr ""
+msgstr "PreferinÅ£e gOchi"
 
-#: geyes/themes.c:222
-#, fuzzy
+#: geyes/themes.c:229
 msgid "T_heme Name"
-msgstr "Numele temei"
+msgstr "Numele _temei"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
+msgid "Change the keyboard layout"
+msgstr "SchimbÄƒ layout-ul tastaturii"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
+msgid "GKB Factory"
+msgstr "Factory GKB"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:603
+msgid "Keyboard Layout Switcher"
+msgstr "SchimbÄƒtor layout tastaturÄƒ"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "Produce apleÅ£i pentru schimbarea layout-ului tastaturii"
+
+#: gkb-new/gkb.c:111
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
+"ApÄƒsaÅ£i tasta predefinitÄƒ pentru a schimba Ã®ntre layout-uri. AceastÄƒ tastÄƒ "
+"poate fi setatÄƒ prin intermediul dialogului ProprietÄƒÅ£i"
 
-#: gkb-new/gkb.c:404
-#, c-format
-msgid "name_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:408
-#, fuzzy, c-format
-msgid "label_%d"
-msgstr "Etichetã"
-
-#: gkb-new/gkb.c:412
-#, fuzzy, c-format
-msgid "country_%d"
-msgstr "Şara"
-
-#: gkb-new/gkb.c:416
-#, fuzzy, c-format
-msgid "lang_%d"
-msgstr "Polonia"
-
-#: gkb-new/gkb.c:424
-#, fuzzy, c-format
-msgid "command_%d"
-msgstr "Comandã"
-
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:550 gkb-new/gkb.c:557
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "Appletul Schimbãtor tastaturã GNOME"
-
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:605
 msgid "(C) 1998-2000 Free Software Foundation"
-msgstr "(C) 1998-2000 Free Software Foundation"
+msgstr "(C) 1998-2000 FundaÅ£ia pentru Software Liber"
 
-#: gkb-new/gkb.c:579
-#, fuzzy
+#: gkb-new/gkb.c:606
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -691,956 +768,816 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Acest applet schimbã mapãri de tastaturã. Foloseºte setxkbmap, sau xmodmap.\n"
-"Trimeşi-mi prin mail steagul dvs., vã rog (mãrime 60x40), o sã-l pun în "
-"CVS.\n"
-"Pe curând, ºi mersi pentru tot peºtele.\n"
-"Mulşumiri lui Balazs Nagy (Kevin) <julian7@kva.hu> pentru ajutor ºi lui "
+"Acest applet schimbÄƒ mapÄƒrile de tastaturÄƒ. FoloseÅŸte setxkbmap, sau xmodmap.\n"
+"TrimeÅ£i-mi prin mail steagul dvs., vÄƒ rog (mÄƒrime 60x40), o sÄƒ-l pun Ã®n "
+"CVS (shooby@gnome.hu).\n"
+"Pe curÃ¢nd, ÅŸi mersi pentru tot peÅŸtele.\n"
+"MulÅ£umiri lui Balazs Nagy (Kevin) <julian7@kva.hu> pentru ajutor ÅŸi lui "
 "Emese Kovacs <emese@eik.bme.hu> pentru solidaritatea ei."
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:623
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Home Page (http://projects.gnome.hu/gkb)"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#, fuzzy
-msgid "Keyboard Layout Switcher"
-msgstr "GKB - Schimbãtorul de tastaturã GNOME"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-#, fuzzy
-msgid "Produces keyboard layout switcher applets."
-msgstr "GKB - Schimbãtorul de aspect tastaturã Gnome"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
 msgstr "Dezactivat"
 
-#: gkb-new/keygrab.c:292
+#: gkb-new/keygrab.c:299
 msgid "Press a key or press Esc to cancel"
-msgstr ""
+msgstr "ApÄƒsaÅ£i o tastÄƒ sau Esc pentru anulare"
 
 #: gkb-new/prop-add.c:86
 msgid "Keyboards (select and press add)"
-msgstr ""
+msgstr "Tastaturi (selectaÅ£i ÅŸi apÄƒsaÅ£i adÄƒugare)"
 
-#: gkb-new/prop-add.c:367
-#, fuzzy
+#: gkb-new/prop-add.c:371
 msgid "Select Keyboard"
-msgstr "Selecteazã aspect"
+msgstr "SelecteazÄƒ tastatura"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "Normal"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "Mare"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "Steag"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "Etichetã"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "Steag ºi etichetã"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr "Display"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-#, fuzzy
-msgid "_Appearance: "
-msgstr "Aspect"
-
-#: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
-msgstr "Dimensiune applet "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "Hotkey for switching between layouts"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "Grab hotkey"
-
-#. Create property box
-#: gkb-new/prop.c:405
-#, fuzzy
-msgid "Keyboard Layout Switcher Preferences"
-msgstr "GKB - Schimbãtorul de tastaturã GNOME"
-
-#: gkb-new/prop.c:419
-#, fuzzy
-msgid "_Keymaps"
-msgstr "Keymap-uri"
-
-#: gkb-new/prop.c:431
-#, fuzzy
-msgid "_Options"
-msgstr "Opşiuni"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
-#, fuzzy
+#: gkb-new/prop-list.c:398 gtik/gtik.c:1134
 msgid "_Add"
-msgstr "Adaugã"
+msgstr "_AdÄƒugare"
 
-#: gkb-new/prop-list.c:390
-#, fuzzy
+#: gkb-new/prop-list.c:399
 msgid "_Edit"
-msgstr "Editeazã"
+msgstr "_Editare"
 
-#: gkb-new/prop-list.c:391
-#, fuzzy
+#: gkb-new/prop-list.c:400
 msgid "_Up"
-msgstr "Sus"
+msgstr "_Sus"
 
-#: gkb-new/prop-list.c:392
-#, fuzzy
+#: gkb-new/prop-list.c:401
 msgid "Dow_n"
-msgstr "Jos"
+msgstr "_Jos"
 
-#: gkb-new/prop-list.c:393
-#, fuzzy
+#: gkb-new/prop-list.c:402
 msgid "_Delete"
-msgstr "ªterge"
+msgstr "_Återge"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:199
 msgid "Armenia"
 msgstr "Armenia"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:200
 msgid "Australia"
 msgstr "Australia"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:201
 msgid "Austria"
 msgstr "Austria"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:202
 msgid "Belgium"
 msgstr "Belgia"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:203
 msgid "Brazil"
 msgstr "Brazilia"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:204
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:205
 msgid "Canada"
 msgstr "Canada"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:206
 msgid "Caribic"
 msgstr "Caraibe"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:207
 msgid "France"
-msgstr "Franşa"
+msgstr "FranÅ£a"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:208
 msgid "Georgia"
 msgstr "Georgia"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:209
 msgid "Germany"
 msgstr "Germania"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:210
 msgid "Great Britain"
 msgstr "Marea Britanie"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:211
+msgid "Greece"
+msgstr "Grecia"
+
+#: gkb-new/prop-map.c:212
 msgid "Hungary"
 msgstr "Ungaria"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:213
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:214
 msgid "New Zealand"
-msgstr "Noua Zeelandã"
+msgstr "Noua ZeelandÄƒ"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:215
 msgid "Norway"
 msgstr "Norvegia"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:216
 msgid "Poland"
 msgstr "Polonia"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:217
 msgid "Portugal"
 msgstr "Portugalia"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:218
 msgid "Russia"
 msgstr "Rusia"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:219
 msgid "Slovak Republic"
-msgstr "Republica Slovacã"
+msgstr "Republica SlovacÄƒ"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:220
 msgid "Slovenia"
 msgstr "Slovenia"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:221
 msgid "South Africa"
 msgstr "Africa de Sud"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:222
 msgid "Spain"
 msgstr "Spania"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:223
 msgid "Sweden"
 msgstr "Suedia"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:224
 msgid "Switzerland"
-msgstr "Elveşia"
+msgstr "ElveÅ£ia"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:225
 msgid "Thailand"
 msgstr "Tailanda"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:226
 msgid "Turkey"
 msgstr "Turcia"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:227
 msgid "United Kingdom"
 msgstr "Marea Britanie"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:228
 msgid "United States"
 msgstr "Statele Unite"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:229
 msgid "Yugoslavia"
 msgstr "Iugoslavia"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:249
 msgid "Armenian"
 msgstr "Armenia"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:250
 msgid "Basque"
-msgstr "Şara Bascilor"
+msgstr "Å¢ara Bascilor"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:251
 msgid "Bulgarian"
 msgstr "Bulgaria"
 
-#: gkb-new/prop-map.c:245
-msgid "Dutch"
-msgstr "Olandezã"
-
-#: gkb-new/prop-map.c:246
-msgid "English"
-msgstr "Englezã"
-
-#: gkb-new/prop-map.c:247
-msgid "French"
-msgstr "Francezã"
-
-#: gkb-new/prop-map.c:248
-msgid "Georgian"
-msgstr "Georgianã"
-
-#: gkb-new/prop-map.c:249
-msgid "German"
-msgstr "Germanã"
-
-#: gkb-new/prop-map.c:250
-msgid "Hungarian"
-msgstr "Ungarã"
-
-#: gkb-new/prop-map.c:251
-msgid "Norwegian"
-msgstr "Norvegianã"
-
 #: gkb-new/prop-map.c:252
-msgid "Polish"
-msgstr "Polonezã"
+msgid "Dutch"
+msgstr "OlandezÄƒ"
 
 #: gkb-new/prop-map.c:253
-msgid "Portuguese"
-msgstr "Portughezã"
+msgid "English"
+msgstr "EnglezÄƒ"
 
 #: gkb-new/prop-map.c:254
-msgid "Russian"
-msgstr "Rusã"
+msgid "French"
+msgstr "FrancezÄƒ"
 
 #: gkb-new/prop-map.c:255
-msgid "Slovak"
-msgstr "Slovacã"
+msgid "Georgian"
+msgstr "GeorgianÄƒ"
 
 #: gkb-new/prop-map.c:256
-msgid "Slovenian"
-msgstr "Slovenã"
+msgid "German"
+msgstr "GermanÄƒ"
 
 #: gkb-new/prop-map.c:257
-msgid "Swedish"
-msgstr "Suedezã"
+msgid "Greek"
+msgstr "GreceascÄƒ"
 
 #: gkb-new/prop-map.c:258
-msgid "Thai"
-msgstr "Tailandezã"
+msgid "Hungarian"
+msgstr "UngarÄƒ"
 
 #: gkb-new/prop-map.c:259
-msgid "Turkish"
-msgstr "Turcã"
+msgid "Norwegian"
+msgstr "NorvegianÄƒ"
 
 #: gkb-new/prop-map.c:260
-msgid "Wallon"
-msgstr "Wallon"
+msgid "Polish"
+msgstr "PolonezÄƒ"
 
 #: gkb-new/prop-map.c:261
-msgid "Yugoslavian"
-msgstr "Iugoslavã"
+msgid "Portuguese"
+msgstr "PortughezÄƒ"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:262
+msgid "Russian"
+msgstr "RusÄƒ"
+
+#: gkb-new/prop-map.c:263
+msgid "Slovak"
+msgstr "SlovacÄƒ"
+
+#: gkb-new/prop-map.c:264
+msgid "Slovenian"
+msgstr "SlovenÄƒ"
+
+#: gkb-new/prop-map.c:265
+msgid "Swedish"
+msgstr "SuedezÄƒ"
+
+#: gkb-new/prop-map.c:266
+msgid "Thai"
+msgstr "TailandezÄƒ"
+
+#: gkb-new/prop-map.c:267
+msgid "Turkish"
+msgstr "TurcÄƒ"
+
+#: gkb-new/prop-map.c:268
+msgid "Wallon"
+msgstr "ValonÄƒ"
+
+#: gkb-new/prop-map.c:269
+msgid "Yugoslavian"
+msgstr "IugoslavÄƒ"
+
+#: gkb-new/prop-map.c:287
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:288
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:289
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:290
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:291
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:292
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:293
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:313
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:314
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
+msgid "iso-8859-7"
+msgstr "iso-8859-7"
+
+#: gkb-new/prop-map.c:316
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:317
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:318
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:319
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:320
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:321
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:322
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:340
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
-msgid "sun"
-msgstr "sun"
+#: gkb-new/prop-map.c:341
+msgid "Sun"
+msgstr "Sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:342
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:343
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:344
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:345
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
-#, fuzzy
+#: gkb-new/prop-map.c:582
 msgid "Edit Keyboard"
-msgstr "Editeazã keymap"
+msgstr "EditeazÄƒ tastaura"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: gkb-new/prop-map.c:610 panel-menu/panel-menu-directory.c:672
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
-#, fuzzy
 msgid "_Name:"
-msgstr "Nume"
+msgstr "_Nume:"
 
-#: gkb-new/prop-map.c:605
-#, fuzzy
+#: gkb-new/prop-map.c:614
 msgid "_Label:"
-msgstr "Etichetã"
+msgstr "_EtichetÄƒ:"
 
-#: gkb-new/prop-map.c:609
-#, fuzzy
+#: gkb-new/prop-map.c:618
 msgid "Lan_guage:"
-msgstr "Limba"
+msgstr "_LimbÄƒ:"
 
-#: gkb-new/prop-map.c:615
-#, fuzzy
+#: gkb-new/prop-map.c:624
 msgid "Count_ry:"
-msgstr "Şara"
+msgstr "_Å¢arÄƒ:"
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:631
 msgid ""
 "Flag\n"
 "Pixmap"
 msgstr ""
-"Pozã\n"
+"PozÄƒ\n"
 "steag"
 
-#: gkb-new/prop-map.c:626
-#, fuzzy
+#: gkb-new/prop-map.c:635
 msgid "Arc_hitecture:"
-msgstr "Arhitecturã"
+msgstr "_ArhitecturÄƒ:"
 
-#: gkb-new/prop-map.c:632
-#, fuzzy
+#: gkb-new/prop-map.c:641
 msgid "_Type:"
-msgstr "Tip"
+msgstr "_Tip:"
 
-#: gkb-new/prop-map.c:638
-#, fuzzy
+#: gkb-new/prop-map.c:647
 msgid "Code_page:"
-msgstr "Codepage"
+msgstr "Cod _paginÄƒ:"
 
-#: gkb-new/prop-map.c:645
-#, fuzzy
+#: gkb-new/prop-map.c:654
 msgid "Co_mmand:"
-msgstr "Comandã"
+msgstr "Co_mandÄƒ"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:661
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 msgstr ""
-"Unde poate sã fie comanda:\n"
-"* xmodmap /cale/completã/xmodmap.ro\n"
+"Unde comanda poate fi:\n"
+"* xmodmap /cale/completÄƒ/xmodmap.ro\n"
 "* gkb__xmmap ro\n"
 "* setxkbmap ro"
 
+#: gkb-new/prop.c:130 gkb-new/prop.c:198
+msgid "Normal"
+msgstr "Normal"
+
+#: gkb-new/prop.c:131 gkb-new/prop.c:202
+msgid "Big"
+msgstr "Mare"
+
+#: gkb-new/prop.c:149 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "Steag"
+
+#: gkb-new/prop.c:150 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "EtichetÄƒ"
+
+#: gkb-new/prop.c:151 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Steag ÅŸi etichetÄƒ"
+
+#: gkb-new/prop.c:287 modemlights/properties.c:389
+msgid "Display"
+msgstr "AfiÅŸare"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:307
+msgid "_Appearance: "
+msgstr "_Aspect:"
+
+#: gkb-new/prop.c:314
+msgid "Applet _size: "
+msgstr "_Dimensiune aplet: "
+
+#: gkb-new/prop.c:340
+msgid "Hotkey for switching between layouts"
+msgstr "CombinaÅ£ia de taste pentru schimbarea layout-urilor"
+
+#: gkb-new/prop.c:352
+msgid "Grab hotkey"
+msgstr "ÃnregistreazÄƒ combinaÅ£ia"
+
+#. Create property box
+#: gkb-new/prop.c:412
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "PreferinÅ£e Schimbare layout tastaturÄƒ"
+
+#: gkb-new/prop.c:427
+msgid "_Keymaps"
+msgstr "_Keymap-uri"
+
+#: gkb-new/prop.c:439
+msgid "_Options"
+msgstr "_OpÅ£iuni"
+
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
-msgstr "Comanda de schimbare a hãrşii de tastaturã s-a încheiat cu eroare!"
+msgstr "Comanda de schimbare a hÄƒrÅ£ii de tastaturÄƒ s-a Ã®ncheiat cu eroare!"
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
-#, fuzzy
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Accessories"
-msgstr "Presiune:"
+msgstr "Accesorii"
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
-msgstr ""
+msgstr "PrimeÅŸte Ã®n continuu ultimele valori ale acÅ£iunilor"
 
-#: gtik/GNOME_GtikApplet.server.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
-msgstr ""
+msgstr "Factory aplet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
-#, fuzzy
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:728
 msgid "Stock Ticker"
-msgstr "Afiºaj bursã GNOME"
+msgstr "AfiÅŸaj bursÄƒ"
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
-msgstr "Reîmprospãtare"
+#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+msgid "_Update"
+msgstr "_ActualizeazÄƒ"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:206
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Nici o datÄƒ disponibilÄƒ sau proprietÄƒÅ£ile nu au fost setate"
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr "Ticker-ul GNOME de bursã"
-
-#: gtik/gtik.c:670
+#: gtik/gtik.c:730
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 msgstr ""
-"Acest program se conecteazã la un sit popular ºi descarcã cotaşiile de bursã "
-"curente.\n"
-"GNOME Stock Ticker este o aplicaşie Internet liberã. Este distribuitã cu\n"
-"ABSOLUT NICI O GARANŞIE. Nu folosişi GNOME Stock Ticker pentru a face "
-"decizii de\n"
-"investişii; este pentru scopuri pur informaşionale."
+"Acest program se conecteazÄƒ la un sit popular ÅŸi descarcÄƒ cotaÅ£iile de bursÄƒ "
+"curente. GNOME Stock Ticker este o aplicaÅ£ie Internet liberÄƒ. Este distribuitÄƒ cu "
+"ABSOLUT NICI O GARANÅ¢IE. Nu folosiÅ£i GNOME Stock Ticker pentru a face "
+"decizii de investiÅ£ii; este pentru scopuri pur informaÅ£ionale."
 
-#: gtik/gtik.c:1152
-#, fuzzy
+#: gtik/gtik.c:1123
 msgid "_New Symbol:"
-msgstr "Simbol nou:"
+msgstr "Simbol _nou:"
 
-#: gtik/gtik.c:1174
-#, fuzzy
+#: gtik/gtik.c:1145
 msgid "_Remove Selected"
-msgstr "Eliminã cel selectat"
+msgstr "_EliminÄƒ pe cel selectat"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-#, fuzzy
-msgid "_Use HTTP proxy"
-msgstr "Foloseºte proxy"
-
-#: gtik/gtik.c:1232
-#, fuzzy
-msgid "_Location :"
-msgstr "Locaşie:"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr ""
-
-#: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr ""
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-#, fuzzy
-msgid "Us_ername:"
-msgstr "Nume utilizator:"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-#, fuzzy
-msgid "Pass_word:"
-msgstr "Parola:"
-
-#: gtik/gtik.c:1357
-#, fuzzy
+#: gtik/gtik.c:1221
 msgid "Stock Ticker Preferences"
-msgstr "Proprietãşi Gnome Stock Ticker"
+msgstr "ProprietÄƒÅ£i Stock Ticker"
 
-#: gtik/gtik.c:1378
-#, fuzzy
+#: gtik/gtik.c:1244
 msgid "Update Fre_quency in minutes:"
-msgstr "Actualizaşi frecvenşa în minute:"
+msgstr "ActualizaÅ£i _frecvenÅ£a Ã®n minute:"
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1262
 msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr "Introduceşi simbolurile, delimitate cu \"+\" în cãsuşa de mai jos."
+msgstr "IntroduceÅ£i simbolurile, delimitate cu \"+\" Ã®n cÄƒsuÅ£a de mai jos."
 
-#: gtik/gtik.c:1406
-#, fuzzy
+#: gtik/gtik.c:1269
 msgid "Displa_y only symbols and price"
-msgstr "Afiºeazã numai simboluri ºi preşuri"
+msgstr "Afi_ÅŸeazÄƒ numai simboluri ÅŸi preÅ£uri"
 
-#: gtik/gtik.c:1409
-#, fuzzy
+#: gtik/gtik.c:1272
 msgid "Scroll _left to right"
-msgstr "Defileazã de la stânga la dreapta"
+msgstr "DefileazÄƒ de la _stÃ¢nga la dreapta"
 
-#: gtik/gtik.c:1412
-#, fuzzy
-msgid "Display a_rrows instead of -/+"
-msgstr "Afiºeazã sãgeşi în loc de -/+"
+#: gtik/gtik.c:1275
+msgid "_Enable scroll buttons"
+msgstr "_ActiveazÄƒ butoanele de defilare"
+
+#: gtik/gtik.c:1299
+msgid "+ C_olor"
+msgstr "+ C_uloare"
+
+#: gtik/gtik.c:1319
+msgid "- Colo_r"
+msgstr "- Cu_loare"
+
+#: gtik/gtik.c:1336
+msgid "_Unchanged Color"
+msgstr "_Culoare neschimbatÄƒ"
+
+#: gtik/gtik.c:1353
+msgid "Back_ground Color"
+msgstr "Culoare f_undal"
+
+#: gtik/gtik.c:1375
+msgid "Stock Sy_mbol:"
+msgstr "_Simbol bursÄƒ:"
+
+#: gtik/gtik.c:1389
+msgid "Stock C_hange:"
+msgstr "Schimbare _cotaÅ£ie:"
+
+#: gtik/gtik.c:1413
+msgid "_Symbols"
+msgstr "_Simboluri"
 
 #: gtik/gtik.c:1415
-#, fuzzy
-msgid "_Enable scroll buttons"
-msgstr "Activeazã butoanele de defilare"
-
-#. COLOR
-#: gtik/gtik.c:1441
-#, fuzzy
-msgid "+ C_olor"
-msgstr "+ Culoare"
-
-#: gtik/gtik.c:1460
-#, fuzzy
-msgid "- Colo_r"
-msgstr "- Culoare"
-
-#: gtik/gtik.c:1482
-#, fuzzy
-msgid "Stock Sy_mbol:"
-msgstr "Simbol bursã:"
-
-#: gtik/gtik.c:1496
-#, fuzzy
-msgid "Stock C_hange:"
-msgstr "Schimbare cotaşie:"
-
-#: gtik/gtik.c:1520
-#, fuzzy
-msgid "_Symbols"
-msgstr "Simboluri"
-
-#: gtik/gtik.c:1522
-#, fuzzy
 msgid "_Behavior"
-msgstr "Comportament"
+msgstr "_Comportament"
 
-#: gtik/gtik.c:1524
-#, fuzzy
+#: gtik/gtik.c:1417
 msgid "_Appearance"
-msgstr "Înfãşiºare"
+msgstr "_Aspect"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-#, fuzzy
-msgid "_Proxy"
-msgstr "Foloseºte proxy"
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1491
 msgid "Skip forward"
-msgstr ""
+msgstr "SÄƒri Ã®nainte"
 
-#: gtik/gtik.c:1576
-msgid "Skip backword"
-msgstr ""
+#: gtik/gtik.c:1492
+msgid "Skip backward"
+msgstr "SÄƒri Ã®napoi"
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1493
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+"Stock Ticker\n"
+"AfiÅŸeazÄƒ Ã®ncontinuu date bursiere"
+
+#: gtik/gtik.c:1679
 msgid "(No"
 msgstr "(Nu"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1680
 msgid "Change "
 msgstr "Schimbare"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
-#, fuzzy
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+msgid "_Forecast"
+msgstr "_Previziune"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Factory for creating the weather applet."
-msgstr "Appletul odometru nu poate fi creat!"
+msgstr "Factory pentru crearea apletului meteorologic."
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
-msgstr ""
+msgstr "Factory Aplet Gvreme"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
-msgstr ""
+msgstr "MonitorizeazÄƒ condiÅ£iile meteorologice curente, ÅŸi previziunile"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/gweather-about.c:61
 msgid "Weather Report"
-msgstr ""
+msgstr "Raport meteorologic"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "Previziune"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "Actualizeazã"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "Vremea GNOME"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:62
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 de S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
-#, fuzzy
+#: gweather/gweather-about.c:63
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
-"Publicat sub licenşa publicã generalã GNU.\n"
+"Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
 "\n"
-"Applet Încãrcare reşea."
+"Un aplet pentru monitorizarea condiÅ£iilor meteorologice locale."
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:194
+msgid "GNOME Weather"
+msgstr "Vremea GNOME"
+
+#: gweather/gweather-applet.c:319
 msgid "Updating..."
 msgstr "Actualizez..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "Previziune"
+
+#: gweather/gweather-dialog.c:108
 msgid "Location:"
-msgstr "Locaşie:"
+msgstr "LocaÅ£ie:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:116
 msgid "Update:"
-msgstr "Actualizeazã:"
+msgstr "ActualizeazÄƒ:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:124
 msgid "Conditions:"
-msgstr "Condişii:"
+msgstr "CondiÅ£ii:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:132
 msgid "Sky:"
 msgstr "Cer:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
-msgstr "Temperaturã:"
+msgstr "TemperaturÄƒ:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:148
 msgid "Dew point:"
 msgstr "Punct dew:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Humidity:"
 msgstr "Umiditate:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:164
 msgid "Wind:"
-msgstr "Vãnt:"
+msgstr "VÃ¢nt:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:172
 msgid "Pressure:"
 msgstr "Presiune:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:180
 msgid "Visibility:"
 msgstr "Vizibilitate:"
 
-#: gweather/gweather-dialog.c:277
-#, fuzzy
+#: gweather/gweather-dialog.c:279
 msgid "C_urrent conditions"
-msgstr "Condişii curente"
+msgstr "CondiÅ£ii _curente"
 
-#: gweather/gweather-dialog.c:290
-#, fuzzy
+#: gweather/gweather-dialog.c:292
 msgid "ForeCast Report"
-msgstr "Previziune"
+msgstr "Raport previziune"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
-msgstr ""
+msgstr "Vezi detalii despre previziune"
 
-#: gweather/gweather-dialog.c:300
-#, fuzzy
-msgid "_Forecast"
-msgstr "Previziune"
-
-#: gweather/gweather-dialog.c:332
-#, fuzzy
+#: gweather/gweather-dialog.c:327
 msgid "_Visit Weather.com"
-msgstr "Vizitaşi Weather.com"
+msgstr "_VizitaÅ£i Weather.com"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
-msgstr ""
+msgstr "Buton legÄƒturÄƒ URL"
 
-#: gweather/gweather-dialog.c:333
-#, fuzzy
+#: gweather/gweather-dialog.c:328
 msgid "Click to Enter Weather.com"
-msgstr "Vizitaşi Weather.com"
+msgstr "VizitaÅ£i Weather.com"
 
-#: gweather/gweather-dialog.c:341
-#, fuzzy
+#: gweather/gweather-dialog.c:336
 msgid "_Radar map"
-msgstr "Hartã radar"
+msgstr "HartÄƒ _radar"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:408
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
-"Previziunea detaliatã nu este disponibilã pentru aceastã locaşie.\n"
-"Vã rog sã incercaşi previziunea statala; notaşi cã previziunile IWIN sunt "
-"disponibile numai pentru oraºele US."
+"Previziunea detaliatÄƒ nu este disponibilÄƒ pentru aceastÄƒ locaÅ£ie.\n"
+"VÄƒ rog sÄƒ incercaÅ£i previziunea statala; notaÅ£i cÄƒ previziunile IWIN sunt "
+"disponibile numai pentru oraÅŸele US."
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:410
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
-"Previziunea statala nu este disponibilã pentru aceastã locaşie.\n"
-"Vã rog sã incercaşi previziunea statala; notaşi cã previziunile IWIN sunt "
-"disponibile numai pentru oraºele US."
+"Previziunea statala nu este disponibilÄƒ pentru aceastÄƒ locaÅ£ie.\n"
+"VÄƒ rog sÄƒ Ã®ncercaÅ£i previziunea detaliatÄƒ; notaÅ£i cÄƒ previziunile IWIN sunt "
+"disponibile numai pentru oraÅŸele US."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
-#, fuzzy
+#: gweather/gweather-pref.c:107
 msgid "Location view"
-msgstr "Locaşie"
+msgstr "Vizualizare locaÅ£ie"
 
-#: gweather/gweather-pref.c:125
-#, fuzzy
+#: gweather/gweather-pref.c:107
 msgid "Select Location from the list"
-msgstr "Selectaşi iconul pentru montat"
+msgstr "SelectaÅ£i locaÅ£ia din listÄƒ"
 
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "URL Entry"
-msgstr " Istoric URL "
-
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "Enter the Location"
-msgstr "Locaşie"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr ""
-
-#: gweather/gweather-pref.c:128
-#, fuzzy
-msgid "User Entry"
-msgstr "Foloseºte proxy"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr ""
-
-#: gweather/gweather-pref.c:129
-#, fuzzy
-msgid "Password Entry"
-msgstr "Parola:"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr ""
-
-#: gweather/gweather-pref.c:131
-#, fuzzy
+#: gweather/gweather-pref.c:109
 msgid "Update spin button"
-msgstr "Actualizare în secunde:"
+msgstr "Actualizarea roteÅŸte buton"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 msgid "Spinbutton for updating"
-msgstr ""
+msgstr "Butonul pulseazÄƒ la actualizare"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Address Entry"
-msgstr ""
+msgstr "Intrare adresÄƒ"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Enter the URL"
-msgstr ""
+msgstr "IntroduceÅ£i URL"
 
-#: gweather/gweather-pref.c:707
-#, fuzzy
+#: gweather/gweather-pref.c:560
 msgid "Weather Preferences"
-msgstr "Proprietâşi GNOME Weather"
+msgstr "PreferinÅ£e vreme"
 
-#: gweather/gweather-pref.c:752
-#, fuzzy
+#: gweather/gweather-pref.c:607
 msgid "_Location"
-msgstr "Locaşie"
+msgstr "_LocaÅ£ie"
 
-#: gweather/gweather-pref.c:775
-#, fuzzy
-msgid "Locat_ion :"
-msgstr "Locaşie:"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr ""
-
-#: gweather/gweather-pref.c:872
-#, fuzzy
+#: gweather/gweather-pref.c:638
 msgid "_Automatically update every"
-msgstr "Alege automat cea mai bunã mãrime a appletului"
+msgstr "ActualizeazÄƒ _automat la fiecare"
 
-#: gweather/gweather-pref.c:878
-#, fuzzy
+#: gweather/gweather-pref.c:644
 msgid "Use _metric system units"
-msgstr "Foloseºte metric"
+msgstr "FoloseÅŸte sistemul _metric de mÄƒsurare"
 
-#: gweather/gweather-pref.c:884
-#, fuzzy
+#: gweather/gweather-pref.c:650
 msgid "Enable _detailed forecast"
-msgstr "Previziune detaliatã"
+msgstr "ActiveazÄƒ previziune _detaliatÄƒ"
 
-#: gweather/gweather-pref.c:891
-#, fuzzy
+#: gweather/gweather-pref.c:657
 msgid "Enable _radar map"
-msgstr "Activeazã hãrşi radar"
+msgstr "ActiveazÄƒ harta _radar"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:663
 msgid "Use cus_tom address for radar map"
-msgstr ""
+msgstr "FoloseÅŸte adresÄƒ _personalizabilÄƒ pentru harta radar"
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:674
 msgid "A_ddress :"
-msgstr ""
+msgstr "A_dresÄƒ:"
 
-#: gweather/gweather-pref.c:920
-#, fuzzy
+#: gweather/gweather-pref.c:686
 msgid "Updates"
-msgstr "Actualizeazã"
+msgstr "ActualizÄƒri"
 
-#: gweather/gweather-pref.c:926
-#, fuzzy
+#: gweather/gweather-pref.c:692
 msgid "_Automatically update every "
-msgstr "Alege automat cea mai bunã mãrime a appletului"
+msgstr "ActualizeazÄƒ _automat la fiecare "
 
-#: gweather/gweather-pref.c:946
-#, fuzzy
+#: gweather/gweather-pref.c:712
 msgid "minute(s)"
-msgstr "Linie (linii):"
+msgstr "minut(e)"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:723
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Diverse"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
-#: modemlights/properties.c:409
-#, fuzzy
+#: gweather/gweather-pref.c:741 mini-commander/src/preferences.c:972
+#: modemlights/properties.c:424
 msgid "_General"
-msgstr "General"
+msgstr "_General"
 
 #: gweather/weather.c:132
 msgid "Variable"
-msgstr "Variabilã"
+msgstr "VariabilÄƒ"
 
 #: gweather/weather.c:133
 msgid "North"
@@ -1716,15 +1653,15 @@ msgstr "Cer senin"
 
 #: gweather/weather.c:150
 msgid "Broken clouds"
-msgstr "Nori sparşi"
+msgstr "Nori sparÅ£i"
 
 #: gweather/weather.c:151
 msgid "Scattered clouds"
-msgstr "Nori împrãºtiaşi"
+msgstr "Nori Ã®mprÄƒÅŸtiaÅ£i"
 
 #: gweather/weather.c:152
 msgid "Few clouds"
-msgstr "Puşini nori"
+msgstr "PuÅ£ini nori"
 
 #: gweather/weather.c:153
 msgid "Overcast"
@@ -1744,7 +1681,7 @@ msgstr "Averse locale"
 
 #: gweather/weather.c:186
 msgid "Light drizzle"
-msgstr "Averse uºoare"
+msgstr "Averse uÅŸoare"
 
 #: gweather/weather.c:186
 msgid "Moderate drizzle"
@@ -1764,27 +1701,27 @@ msgstr "Averse izolate"
 
 #: gweather/weather.c:186
 msgid "Partial drizzle"
-msgstr "Averse parşiale"
+msgstr "Averse parÅ£iale"
 
 #: gweather/weather.c:186 gweather/weather.c:187
 msgid "Thunderstorm"
-msgstr "Furtunã"
+msgstr "FurtunÄƒ"
 
 #: gweather/weather.c:186
 msgid "Windy drizzle"
-msgstr "Averse de zãpadã"
+msgstr "Averse de zÄƒpadÄƒ"
 
 #: gweather/weather.c:186
 msgid "Showers"
-msgstr "Ploi torenşiale"
+msgstr "Ploi torenÅ£iale"
 
 #: gweather/weather.c:186
 msgid "Drifting drizzle"
-msgstr "Averse în rafalã"
+msgstr "Averse Ã®n rafalÄƒ"
 
 #: gweather/weather.c:186
 msgid "Freezing drizzle"
-msgstr "Averse cu lapovişã"
+msgstr "Averse cu lapoviÅ£Äƒ"
 
 #. RAIN
 #: gweather/weather.c:187
@@ -1793,7 +1730,7 @@ msgstr "Ploaie"
 
 #: gweather/weather.c:187
 msgid "Rain in the vicinity"
-msgstr "Ploaie localã"
+msgstr "Ploaie localÄƒ"
 
 #: gweather/weather.c:187
 msgid "Light rain"
@@ -1801,39 +1738,39 @@ msgstr "Averse de ploaie"
 
 #: gweather/weather.c:187
 msgid "Moderate rain"
-msgstr "Ploaie moderatã"
+msgstr "Ploaie moderatÄƒ"
 
 #: gweather/weather.c:187
 msgid "Heavy rain"
-msgstr "Ploaie intensificatã"
+msgstr "Ploaie intensificatÄƒ"
 
 #: gweather/weather.c:187
 msgid "Shallow rain"
-msgstr "Ploaie superficialã"
+msgstr "Ploaie superficialÄƒ"
 
 #: gweather/weather.c:187
 msgid "Patches of rain"
-msgstr "Ploaie izolatã"
+msgstr "Ploaie izolatÄƒ"
 
 #: gweather/weather.c:187
 msgid "Partial rainfall"
-msgstr "Ploaie parşialã"
+msgstr "Ploaie parÅ£ialÄƒ"
 
 #: gweather/weather.c:187
 msgid "Blowing rainfall"
-msgstr "Ploaie cu vânt puternic"
+msgstr "Ploaie cu vÃ¢nt puternic"
 
 #: gweather/weather.c:187
 msgid "Rain showers"
-msgstr "Ploaie torenşialã"
+msgstr "Ploaie torenÅ£ialÄƒ"
 
 #: gweather/weather.c:187
 msgid "Drifting rain"
-msgstr "Ploaie în rafale"
+msgstr "Ploaie Ã®n rafale"
 
 #: gweather/weather.c:187
 msgid "Freezing rain"
-msgstr "Lapovişã"
+msgstr "LapoviÅ£Äƒ"
 
 #. SNOW
 #: gweather/weather.c:188
@@ -1842,35 +1779,35 @@ msgstr "Ninsoare"
 
 #: gweather/weather.c:188
 msgid "Snow in the vicinity"
-msgstr "Ninsoare localã"
+msgstr "Ninsoare localÄƒ"
 
 #: gweather/weather.c:188
 msgid "Light snow"
-msgstr "Ninsoare uºoarã"
+msgstr "Ninsoare uÅŸoarÄƒ"
 
 #: gweather/weather.c:188
 msgid "Moderate snow"
-msgstr "Ninsoare moderatã"
+msgstr "Ninsoare moderatÄƒ"
 
 #: gweather/weather.c:188
 msgid "Heavy snow"
-msgstr "Ninsoare intensificatã"
+msgstr "Ninsoare intensificatÄƒ"
 
 #: gweather/weather.c:188
 msgid "Shallow snow"
-msgstr "Ninsoare superficialã"
+msgstr "Ninsoare superficialÄƒ"
 
 #: gweather/weather.c:188
 msgid "Patches of snow"
-msgstr "Ninsoare izolatã"
+msgstr "Ninsoare izolatÄƒ"
 
 #: gweather/weather.c:188
 msgid "Partial snowfall"
-msgstr "Ninsoare parşialã"
+msgstr "Ninsoare parÅ£ialÄƒ"
 
 #: gweather/weather.c:188 gweather/weather.c:189
 msgid "Snowstorm"
-msgstr "Furtunã de zãpadã"
+msgstr "FurtunÄƒ de zÄƒpadÄƒ"
 
 #: gweather/weather.c:188
 msgid "Blowing snowfall"
@@ -1878,60 +1815,60 @@ msgstr "Viscol"
 
 #: gweather/weather.c:188
 msgid "Snow showers"
-msgstr "Torente de zãpadã"
+msgstr "Torente de zÄƒpadÄƒ"
 
 #: gweather/weather.c:188
 msgid "Drifting snow"
-msgstr "Ninsoare în rafale"
+msgstr "Ninsoare Ã®n rafale"
 
 #: gweather/weather.c:188
 msgid "Freezing snow"
-msgstr "Lapovişã ºi ninsoare"
+msgstr "LapoviÅ£Äƒ ÅŸi ninsoare"
 
 #. SNOW_GRAINS
 #: gweather/weather.c:189
 msgid "Snow grains"
-msgstr "Grindinã"
+msgstr "GrindinÄƒ"
 
 #: gweather/weather.c:189
 msgid "Snow grains in the vicinity"
-msgstr "Grindinã localã"
+msgstr "GrindinÄƒ localÄƒ"
 
 #: gweather/weather.c:189
 msgid "Light snow grains"
-msgstr "Grindinã uºoarã"
+msgstr "GrindinÄƒ uÅŸoarÄƒ"
 
 #: gweather/weather.c:189
 msgid "Moderate snow grains"
-msgstr "Grindinã moderatã"
+msgstr "GrindinÄƒ moderatÄƒ"
 
 #: gweather/weather.c:189
 msgid "Heavy snow grains"
-msgstr "Grindinã intensificatã"
+msgstr "GrindinÄƒ intensificatÄƒ"
 
 #: gweather/weather.c:189
 msgid "Shallow snow grains"
-msgstr "Grindinã superficialã"
+msgstr "GrindinÄƒ superficialÄƒ"
 
 #: gweather/weather.c:189
 msgid "Patches of snow grains"
-msgstr "Grindinã izolatã"
+msgstr "GrindinÄƒ izolatÄƒ"
 
 #: gweather/weather.c:189
 msgid "Partial snow grains"
-msgstr "Grindinã parşialã"
+msgstr "GrindinÄƒ parÅ£ialÄƒ"
 
 #: gweather/weather.c:189
 msgid "Blowing snow grains"
-msgstr "Grindinã viscolitã"
+msgstr "GrindinÄƒ viscolitÄƒ"
 
 #: gweather/weather.c:189
 msgid "Snow grain showers"
-msgstr "Grindinã ºi ninsoare"
+msgstr "GrindinÄƒ ÅŸi ninsoare"
 
 #: gweather/weather.c:189
 msgid "Drifting snow grains"
-msgstr "Grindinã în rafale"
+msgstr "GrindinÄƒ Ã®n rafale"
 
 #: gweather/weather.c:189
 msgid "Freezing snow grains"
@@ -2209,7 +2146,7 @@ msgstr "Light mist"
 
 #: gweather/weather.c:195
 msgid "Moderate mist"
-msgstr "Ceaşã moderatã"
+msgstr "CeaÅ£Äƒ moderatÄƒ"
 
 #: gweather/weather.c:195
 msgid "Thick mist"
@@ -2242,7 +2179,7 @@ msgstr "Freezing mist"
 #. FOG
 #: gweather/weather.c:196
 msgid "Fog"
-msgstr "Ceaşã"
+msgstr "CeaÅ£Äƒ"
 
 #: gweather/weather.c:196
 msgid "Fog in the vicinity"
@@ -2788,62 +2725,70 @@ msgstr "Blowing dust whirls"
 msgid "Drifting dust whirls"
 msgstr "Drifting dust whirls"
 
-#: gweather/weather.c:824 gweather/weather.c:862 gweather/weather.c:1431
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
 msgid "Failed to get METAR data.\n"
-msgstr "Nu am putut obºine datele METAR.\n"
+msgstr "Nu am putut obÅŸine datele METAR.\n"
 
-#: gweather/weather.c:854 gweather/weather.c:882 gweather/weather.c:1077
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
-msgstr "Lipseºte locaşia pentru WeatherInfo."
+msgstr "LipseÅŸte locaÅ£ia pentru WeatherInfo."
 
-#: gweather/weather.c:1045
-#, fuzzy
+#: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
-msgstr "Nu am putut obşine datele de prognozã IWIN.\n"
+msgstr "Nu am putut obÅ£ine datele de prognozÄƒ IWIN.\n"
 
 #. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1087
+#: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
-msgstr "Nu am putut obşine datele de prognozã IWIN.\n"
+msgstr "Nu am putut obÅ£ine datele de prognozÄƒ IWIN.\n"
 
-#: gweather/weather.c:1286
-#, fuzzy
+#: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
-msgstr "Nu am putut obşine datele de prognozã Met Office.\n"
+msgstr "Nu am putut obÅ£ine datele de prognozÄƒ Met Office.\n"
 
-#: gweather/weather.c:1318
+#: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
-msgstr "Nu am putut obşine datele de prognozã Met Office.\n"
+msgstr "Nu am putut obÅ£ine datele de prognozÄƒ Met Office.\n"
 
-#: gweather/weather.c:1461
+#: gweather/weather.c:1466
 msgid "Failed to get radar map image.\n"
-msgstr "Nu am putut obşine harta imaginii radar.\n"
+msgstr "Nu am putut obÅ£ine harta imaginii radar.\n"
 
-#: gweather/weather.c:1754
+#: gweather/weather.c:1769
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1758
+#: gweather/weather.c:1773
 msgid "Unknown observation time"
 msgstr "Timp de observare necunoscut"
 
-#: gweather/weather.c:1818
+#: gweather/weather.c:1833
 msgid "Calm"
 msgstr "Calm"
 
-#: gweather/weather.c:1844
+#: gweather/weather.c:1859
 msgid "Unknown"
-msgstr "Necunoscutã"
+msgstr "NecunoscutÄƒ"
 
-#: gweather/weather.c:1878
+#: gweather/weather.c:1893
 msgid "Retrieval failed"
-msgstr "Recepşionare eºuatã"
+msgstr "RecepÅ£ionare eÅŸuatÄƒ"
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
-msgstr "Applet Mini-Commander"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
+#: mini-commander/src/about.c:62
+#: mini-commander/src/mini-commander_applet.c:317
+msgid "Command Line"
+msgstr "ComandÄƒ"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
+msgid "Mini-Commander"
+msgstr "Mini-Commander"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "Factory aplet MiniCommander"
+
+#: mini-commander/src/about.c:65
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2854,9 +2799,9 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Acest applet GNOME adauga o linie de comand ã la panel. Dispune de "
-"completarea comenzii, istorie comenzi, macrouri schimbabile ºi un ceas "
-"opşional.\n"
+"Acest applet GNOME adauga o linie de comandÄƒ la panel. Dispune de "
+"completarea comenzii, istorie comenzi, macrouri schimbabile ÅŸi un ceas "
+"opÅ£ional.\n"
 "\n"
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -2868,7 +2813,7 @@ msgstr ""
 #: mini-commander/src/cmd_completion.c:151
 #: mini-commander/src/cmd_completion.c:202
 msgid "not unique"
-msgstr "nu unic"
+msgstr "nu e unic"
 
 #: mini-commander/src/cmd_completion.c:73
 #: mini-commander/src/cmd_completion.c:155
@@ -2883,80 +2828,47 @@ msgstr "completat"
 #: mini-commander/src/cmd_completion.c:118
 #: mini-commander/src/cmd_completion.c:205
 msgid "not found"
-msgstr "nu a fost gãsit"
+msgstr "nu a fost gÄƒsit"
 
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
+#: mini-commander/src/cmd_completion.c:167
 msgid "no /bin/sh"
-msgstr "nu existã /bin/sh"
+msgstr "nu existÄƒ /bin/sh"
 
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
+#: mini-commander/src/command_line.c:98 mini-commander/src/command_line.c:118
 msgid "end of history list"
-msgstr "sfârºitul listei istorice"
+msgstr "sfÃ¢rÅŸitul listei de istoric"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:128
 msgid "starting..."
-msgstr "încep..."
+msgstr "Ã®ncep..."
 
-#: mini-commander/src/command_line.c:153
+#: mini-commander/src/command_line.c:157
 msgid "autocompleted"
 msgstr "autocompletat"
 
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr "lista istoricã goalã"
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "Istoria comenzilor"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:498
 msgid "Start program"
-msgstr "Începe program"
+msgstr "Ãncepe program"
 
-#: mini-commander/src/command_line.c:501
-#, fuzzy
+#: mini-commander/src/command_line.c:534
 msgid "Command line"
-msgstr "Comandã"
+msgstr "Linie de comandÄƒ"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:535
 msgid "Type a command here and Gnome will execute it for you"
-msgstr ""
+msgstr "ScrieÅ£i o comandÄƒ aici ÅŸi Gnome o va executa pentru dumneavoastrÄƒ"
 
-#: mini-commander/src/exec.c:61
-msgid "fork error"
-msgstr "eroare fork"
-
-#: mini-commander/src/exec.c:105
-msgid "child exited"
-msgstr "copilul a ieºit"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-#, fuzzy
-msgid "Command Line"
-msgstr "Comandã"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
-msgid "MiniCommander Applet Factory"
-msgstr "Applet Mini-Commander"
-
-#: mini-commander/src/message.c:155
+#: mini-commander/src/message.c:149
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#: mini-commander/src/message.c:157
+#: mini-commander/src/message.c:151
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:159
+#: mini-commander/src/message.c:153
 msgid "%d. %b"
 msgstr "%d. %b"
 
@@ -2966,495 +2878,449 @@ msgstr "orient. s-a schimbat"
 
 #: mini-commander/src/mini-commander_applet.c:140
 msgid "size changed"
-msgstr "mãrimea s-a schimbat"
+msgstr "mÄƒrimea s-a schimbat"
 
-#: mini-commander/src/mini-commander_applet.c:287
 #: mini-commander/src/mini-commander_applet.c:290
+#: mini-commander/src/mini-commander_applet.c:293
 msgid "Browser"
-msgstr "Browser"
+msgstr "Navigator"
 
-#: mini-commander/src/mini-commander_applet.c:291
+#: mini-commander/src/mini-commander_applet.c:294
 msgid "Click this button to start the browser"
-msgstr ""
-
-#: mini-commander/src/mini-commander_applet.c:305
-#: mini-commander/src/mini-commander_applet.c:308
-msgid "History"
-msgstr "Istorie"
+msgstr "ApÄƒsaÅ£i acest buton pentru a naviga"
 
 #: mini-commander/src/mini-commander_applet.c:309
+#: mini-commander/src/mini-commander_applet.c:312
+msgid "History"
+msgstr "Istoric"
+
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Click this button for the list of previous commands"
-msgstr ""
+msgstr "ApÄƒsaÅ£i acest buton pentru o listÄƒ a comenzilor anterioare"
 
-#: mini-commander/src/mini-commander_applet.c:310
-#, fuzzy
+#: mini-commander/src/mini-commander_applet.c:314
 msgid "Mini-Commander applet"
-msgstr "Applet Mini-Commander"
+msgstr "Aplet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:315
 msgid "This applet adds a command line to the panel"
-msgstr ""
+msgstr "Acest aplet adaugÄƒ o linie de comandÄƒ panelului"
 
-#: mini-commander/src/mini-commander_applet.c:443
+#: mini-commander/src/mini-commander_applet.c:448
 msgid "ready..."
 msgstr "gata..."
 
-#: mini-commander/src/preferences.c:685
-#, fuzzy
+#: mini-commander/src/preferences.c:703
 msgid "Command Line Preferences"
-msgstr "Proprietãşi Mini-Commander"
+msgstr "PreferinÅ£e Mini-Commander"
 
-#: mini-commander/src/preferences.c:701
+#: mini-commander/src/preferences.c:720
 msgid "Clock"
 msgstr "Ceas"
 
 #. show time check box
-#: mini-commander/src/preferences.c:709
+#: mini-commander/src/preferences.c:728
 msgid "Show time"
-msgstr "Aratã timp"
+msgstr "AratÄƒ timp"
 
 #. show date check box
-#: mini-commander/src/preferences.c:716
+#: mini-commander/src/preferences.c:735
 msgid "Show date"
-msgstr "Aratã data"
-
-#. appearance frame
-#: mini-commander/src/preferences.c:724
-msgid "Appearance"
-msgstr "Înfãşiºare"
+msgstr "AratÄƒ data"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:732
-#, fuzzy
+#: mini-commander/src/preferences.c:751
 msgid "Show han_dle"
-msgstr "Aratã handle"
+msgstr "AratÄƒ _gestionar"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:739
-#, fuzzy
+#: mini-commander/src/preferences.c:758
 msgid "Show fram_e"
-msgstr "Aratã frame"
+msgstr "AratÄƒ _cadru"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:748
-#, fuzzy
+#: mini-commander/src/preferences.c:767
 msgid "Autocompletion"
-msgstr "Auto Completare"
+msgstr "Autocompletare"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:756
-#, fuzzy
+#: mini-commander/src/preferences.c:775
 msgid "Enable _history based autocompletion"
-msgstr "Activeazã auto completarea bazatã pe istorie"
+msgstr "ActiveazÄƒ autocompletarea bazatÄƒ pe _istoric"
 
 #. Size
-#: mini-commander/src/preferences.c:763
+#: mini-commander/src/preferences.c:782
 msgid "Size"
-msgstr "Mãrime"
+msgstr "MÄƒrime"
 
 #. applet width
-#: mini-commander/src/preferences.c:775
-#, fuzzy
+#: mini-commander/src/preferences.c:794
 msgid "Applet _width:"
-msgstr "Lãşime applet:"
+msgstr "_LÄƒÅ£ime aplet:"
 
 #. applet height
-#: mini-commander/src/preferences.c:809
+#: mini-commander/src/preferences.c:828
 msgid "Applet height:"
-msgstr "Înãlşime applet:"
+msgstr "ÃnÄƒlÅ£ime aplet:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:831
+#: mini-commander/src/preferences.c:850
 msgid "Command line height:"
-msgstr "Înãlşime linie comandã:"
+msgstr "ÃnÄƒlÅ£ime linie comandÄƒ:"
 
 #. Color
-#: mini-commander/src/preferences.c:866 multiload/properties.c:363
+#: mini-commander/src/preferences.c:885 multiload/properties.c:365
 msgid "Colors"
 msgstr "Culori"
 
+#. default bg and fg theme
+#: mini-commander/src/preferences.c:895
+msgid "_Use default theme colors"
+msgstr "_FoloseÅŸte culorile implicite ale temei"
+
 #. fg
-#: mini-commander/src/preferences.c:888
-#, fuzzy
+#: mini-commander/src/preferences.c:907
 msgid "Command line _foreground:"
-msgstr "Culoare scris linie comandã:"
+msgstr "Culoare _prim plan linie de comandÄƒ:"
 
 #. bg
-#: mini-commander/src/preferences.c:922
-#, fuzzy
+#: mini-commander/src/preferences.c:941
 msgid "Command line _background:"
-msgstr "Fundal linie comandã:"
+msgstr "Culoare _fundal linie de comandÄƒ:"
 
 #. prefix
-#: mini-commander/src/preferences.c:982
-#, fuzzy, c-format
+#: mini-commander/src/preferences.c:1001
+#, c-format
 msgid "Regex _%.2d:"
-msgstr "Regex %.2d:"
+msgstr "Regex _%.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:1002
-#, fuzzy, c-format
+#: mini-commander/src/preferences.c:1021
+#, c-format
 msgid "   Macro _%.2d:"
-msgstr "   Macro %.2d:"
+msgstr "   Macro _%.2d:"
 
-#: mini-commander/src/preferences.c:1022
-#, fuzzy
+#: mini-commander/src/preferences.c:1041
 msgid "_Macros"
-msgstr "Macrouri"
+msgstr "_Macrouri"
 
-#: mixer/GNOME_MixerApplet.server.in.h:1
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
-msgstr ""
+msgstr "AjusteazÄƒ volumul sunetului"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
-#, fuzzy
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:131
+#: mixer/mixer.c:796
 msgid "Volume Control"
-msgstr "WebControl"
+msgstr "Control volum"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
-msgstr ""
+msgid "_Mute"
+msgstr "_Mut"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "Ruleazã Mixerul Audio..."
+msgid "_Run Volume Control..."
+msgstr "_RuleazÄƒ Control volum..."
 
-#: mixer/mixer.c:131
-#, fuzzy
+#: mixer/mixer.c:132
 msgid "Volume Control (muted)"
-msgstr "WebControl"
+msgstr "Control volum (mut)"
 
-#: mixer/mixer.c:183
+#: mixer/mixer.c:184
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 msgstr ""
-"atenşie: aceastã versiune gmix a fost compilatã cu o verssiune diferitã a\n"
+"atenÅ£ie: aceastÄƒ versiune gmix a fost compilatÄƒ cu o versiune diferitÄƒ a\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:195
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
+msgstr "Interogarea canalelor disponibile ale dispozitivului mixer %s a eÅŸuat\n"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
+msgstr "avertisment: mixerul nu are un canal de volum - folosesc PCM Ã®n loc.\n"
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:205
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr ""
+msgstr "Dispozitivul mixer %s nu are canale nici de volum nici PCM.\n"
 
-#: mixer/mixer.c:516
-#, fuzzy
+#: mixer/mixer.c:545
 msgid "Volume Controller"
-msgstr "WebControl"
+msgstr "Control volum"
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:546
 msgid "Use Up/Down arrow keys to change volume"
-msgstr ""
+msgstr "FoloseÅŸte sÄƒgeÅ£ile sus/jos pentru a schimba volumul"
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:797
 msgid "(C) 2001 Richard Hult"
-msgstr ""
+msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:798
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
+"Controlul volumului vÄƒ permite setarea nivelului volumului pentru desktop-ul "
+"dumneavoastrÄƒ."
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:977
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
+"Controlul volumului vÄƒ permite setarea nivelului volumului pentru desktop-ul "
+"dumneavoastrÄƒ."
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
-#, fuzzy
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Internet"
-msgstr "Altul"
+msgstr "Internet"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
+#: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "Lumini modem"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Applet Lumini modem"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:226
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
-"Publicat sub licenşa publicã generalã GNU.\n"
-"Un indicator al stãrii modemului ºi dialer.\n"
-"Luminile in ordine de la vârf say stânga sunt Trimite date si Primeºte date."
+"Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
+"Un indicator al stÄƒrii modemului ÅŸi dialer.\n"
+"Luminile Ã®n ordine de la vÃ¢rf sau stÃ¢nga sunt Trimite date si PrimeÅŸte date."
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:553
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"Acum sunteşi conectat.\n"
-"Dorişi sã vã deconectaşi?"
+"Acum sunteÅ£i conectat.\n"
+"DoriÅ£i sÄƒ vÄƒ deconectaÅ£i?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:568
 msgid "Do you want to connect?"
-msgstr "Dorişi sã vã conectaşi?"
+msgstr "DoriÅ£i sÄƒ vÄƒ conectaÅ£i?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:596
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-msgstr "%#.1fMb primişi / %#.1fMb trimiºi / timp: %.1d:%.2d"
+msgstr "%#.1fMb primiÅ£i / %#.1fMb trimiÅŸi / timp: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:601
 msgid "not connected"
 msgstr "neconectat"
 
-#: modemlights/properties.c:311
-#, fuzzy
+#: modemlights/properties.c:326
 msgid "Modem Lights Preferences"
-msgstr "Setãri Lumini modem"
+msgstr "SetÄƒri Lumini modem"
 
-#: modemlights/properties.c:323
+#: modemlights/properties.c:338
 msgid "Connecting"
-msgstr "Mã conectez"
+msgstr "MÄƒ conectez"
 
-#: modemlights/properties.c:337
-#, fuzzy
+#: modemlights/properties.c:352
 msgid "Co_nnect command:"
-msgstr "Comanda conectare:"
+msgstr "Comanda co_nectare:"
 
-#: modemlights/properties.c:354
-#, fuzzy
+#: modemlights/properties.c:369
 msgid "_Disconnect command:"
-msgstr "Comanda conectare:"
+msgstr "Comanda _deconectare:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:367
-#, fuzzy
+#: modemlights/properties.c:382
 msgid "Con_firm connection"
-msgstr "Confirmaşi conexiunea"
+msgstr "Con_firmaÅ£i conexiunea"
 
-#: modemlights/properties.c:388
-#, fuzzy
+#: modemlights/properties.c:403
 msgid "U_pdates per second"
-msgstr "Actualizãri pe secundã"
+msgstr "_ActualizÄƒri pe secundÄƒ"
 
 #. extra info checkbox
-#: modemlights/properties.c:402
-#, fuzzy
+#: modemlights/properties.c:417
 msgid "Sho_w connect time and throughput"
-msgstr "Aratã timpul de conectare ºi transferul"
+msgstr "A_ratÄƒ timpul de conectare ÅŸi transferul"
 
-#: modemlights/properties.c:419
+#: modemlights/properties.c:434
 msgid "Receive data"
-msgstr "Recepşionare date"
+msgstr "RecepÅ£ionare date"
 
-#: modemlights/properties.c:421
-#, fuzzy
+#: modemlights/properties.c:436
 msgid "_Foreground"
-msgstr "Prim-plan"
+msgstr "_Prim plan"
 
-#: modemlights/properties.c:422
-#, fuzzy
+#: modemlights/properties.c:437
 msgid "_Background"
-msgstr "Fundal"
+msgstr "_Fundal"
 
-#: modemlights/properties.c:424
+#: modemlights/properties.c:439
 msgid "Send data"
 msgstr "Trimitere date"
 
-#: modemlights/properties.c:426
-#, fuzzy
+#: modemlights/properties.c:441
 msgid "Foregroun_d"
-msgstr "Prim-plan"
+msgstr "Prim-p_lan"
 
-#: modemlights/properties.c:427
-#, fuzzy
+#: modemlights/properties.c:442
 msgid "Backg_round"
-msgstr "Fundal"
+msgstr "_Fundal"
 
-#: modemlights/properties.c:429
+#: modemlights/properties.c:444
 msgid "Connection status"
 msgstr "Stare conexiune"
 
-#: modemlights/properties.c:431
-#, fuzzy
+#: modemlights/properties.c:446
 msgid "Co_nnected"
-msgstr "Conectat"
+msgstr "Co_nectat"
 
-#: modemlights/properties.c:432
-#, fuzzy
+#: modemlights/properties.c:447
 msgid "No_t connected"
-msgstr "Neconectat"
+msgstr "_Neconectat"
 
-#: modemlights/properties.c:433
-#, fuzzy
+#: modemlights/properties.c:448
 msgid "A_waiting connection"
-msgstr "Aştept conexiunea"
+msgstr "A_ÅŸtept conexiunea"
 
-#: modemlights/properties.c:436
-#, fuzzy
+#: modemlights/properties.c:451
 msgid "B_link"
-msgstr "Clipire"
+msgstr "C_lipire"
 
-#: modemlights/properties.c:443
+#: modemlights/properties.c:458
 msgid "Text"
 msgstr "Text"
 
-#: modemlights/properties.c:445
-#, fuzzy
+#: modemlights/properties.c:460
 msgid "For_eground"
-msgstr "Prim-plan"
+msgstr "Pri_m plan"
 
-#: modemlights/properties.c:446
-#, fuzzy
+#: modemlights/properties.c:461
 msgid "Bac_kground"
-msgstr "Fundal"
+msgstr "Fun_dal"
 
-#: modemlights/properties.c:447
-#, fuzzy
+#: modemlights/properties.c:462
 msgid "O_utline"
-msgstr "Outline"
+msgstr "Linie _exterioarÄƒ"
 
-#: modemlights/properties.c:449
-#, fuzzy
+#: modemlights/properties.c:464
 msgid "C_olors"
-msgstr "Culori"
+msgstr "C_ulori"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:473
 msgid "Modem options"
-msgstr "Opşiuni modem"
+msgstr "OpÅ£iuni modem"
 
-#: modemlights/properties.c:472
-#, fuzzy
+#: modemlights/properties.c:487
 msgid "_Modem lock file:"
-msgstr "Fiºierul lock modem:"
+msgstr "FiÅŸierul lock _modem:"
 
-#: modemlights/properties.c:484
-#, fuzzy
+#: modemlights/properties.c:499
 msgid "_Verify owner of lock file"
-msgstr "Verificã deşinãtorul fiºierului lock"
+msgstr "_VerificÄƒ deÅ£inÄƒtorul fiÅŸierului lock"
 
-#: modemlights/properties.c:496
-#, fuzzy
+#: modemlights/properties.c:511
 msgid "_Device:"
-msgstr "Dispozitiv:"
+msgstr "_Dispozitiv:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:509
-#, fuzzy
+#: modemlights/properties.c:524
 msgid "U_se ISDN"
-msgstr "Foloseºte ISDN"
+msgstr "Folo_seÅŸte ISDN"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:544
 msgid "Set options as default"
-msgstr "Seteazã opşiunile drept implicite"
+msgstr "SeteazÄƒ opÅ£iunile drept implicite"
 
-#: modemlights/properties.c:535
-#, fuzzy
+#: modemlights/properties.c:550
 msgid "_Advanced"
-msgstr "Avansat"
+msgstr "_Avansat"
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Încãrcare CPU"
-
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
-#, fuzzy
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
-msgstr "Indicator vârf"
+msgstr "Un indicator al Ã®ncÄƒrcÄƒrii sistemului"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#, fuzzy
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:75
 msgid "System Monitor"
-msgstr "Monitor sunet"
+msgstr "Monitor sistem"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-#, fuzzy
-msgid "Run detailed system monitor"
-msgstr "Foloseºte metric"
+msgid "_Run detailed system monitor"
+msgstr "_MonitorizeazÄƒ Ã®n detaliu sistemul"
 
-#: multiload/loadavg.c:94
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "ÃncÄƒrcare CPU"
+
+#: multiload/loadavg.c:107
 msgid "Load Average"
-msgstr "Încãrcare medie"
+msgstr "ÃncÄƒrcare medie"
 
-#: multiload/main.c:53
-#, fuzzy
-msgid "System Monitor Applet"
-msgstr "Applet Monitor sunet"
-
-#: multiload/main.c:55
-#, fuzzy
+#: multiload/main.c:77
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "file use, plus network traffic."
 msgstr ""
-"Publicat sub licenşa publicã generalã GNU.\n"
-"Monitorizeazã spaşiul folosit ºi disponibil pe discurile dvs."
+"Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
+"Un monitor al sistemului capabil de a afiÅŸa grafice despre CPU, ram, swap "
+"folosit, plus traficul pe reÅ£ea."
 
-#: multiload/main.c:177
-#, fuzzy
+#: multiload/main.c:227
 msgid "Processor"
-msgstr "Presiune:"
+msgstr "Procesor"
 
-#: multiload/main.c:179
-#, fuzzy
+#: multiload/main.c:229
 msgid "Memory"
-msgstr "Încãrcare memorie"
+msgstr "Memorie"
 
-#: multiload/main.c:181
+#: multiload/main.c:231
 msgid "Network"
-msgstr "Reşea"
+msgstr "ReÅ£ea"
 
-#: multiload/main.c:183
+#: multiload/main.c:233
 msgid "Swap File"
-msgstr ""
+msgstr "Swap"
 
-#: multiload/main.c:185
-#, fuzzy
+#: multiload/main.c:235
 msgid "Resource"
-msgstr "Reseteazã"
+msgstr "Resurse"
 
-#: multiload/main.c:197
+#: multiload/main.c:247
 msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
+"%s:\n"
+"%d%% folosit"
 
-#: multiload/memload.c:39
+#: multiload/memload.c:50
 msgid "Memory Load"
-msgstr "Încãrcare memorie"
+msgstr "ÃncÄƒrcare memorie"
 
-#: multiload/netload.c:38
+#: multiload/netload.c:49
 msgid "Net Load"
-msgstr "Încãrcare reşea"
+msgstr "ÃncÄƒrcare reÅ£ea"
 
-#: multiload/properties.c:256
+#: multiload/properties.c:258
 msgid "Monitored Resources"
-msgstr ""
+msgstr "Resurse monitorizate"
 
-#: multiload/properties.c:264
-#, fuzzy
+#: multiload/properties.c:266
 msgid "_Processor"
-msgstr "Presiune:"
+msgstr "_Procesor:"
 
-#: multiload/properties.c:274
-#, fuzzy
+#: multiload/properties.c:276
 msgid "_Memory"
-msgstr "Încãrcare memorie"
+msgstr "_Memorie"
 
-#: multiload/properties.c:284
-#, fuzzy
+#: multiload/properties.c:286
 msgid "_Network"
-msgstr "Reşea"
+msgstr "_ReÅ£ea"
 
-#: multiload/properties.c:294
+#: multiload/properties.c:296
 msgid "_Swap File"
-msgstr ""
+msgstr "_Swap"
 
 #.
 #. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
@@ -3462,307 +3328,395 @@ msgstr ""
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: multiload/properties.c:311
+#: multiload/properties.c:313
 msgid "Options"
-msgstr "Opşiuni"
-
-#: multiload/properties.c:324
-#, fuzzy
-msgid "System m_onitor width: "
-msgstr "Monitor sunet"
+msgstr "OpÅ£iuni"
 
 #: multiload/properties.c:326
-#, fuzzy
+msgid "System m_onitor width: "
+msgstr "LÄƒÅ£ime m_onitor sistem:"
+
+#: multiload/properties.c:328
 msgid "System m_onitor height: "
-msgstr "Applet Monitor sunet"
+msgstr "ÃnÄƒlÅ£ime monitor sistem:"
 
-#: multiload/properties.c:340
+#: multiload/properties.c:342
 msgid "pixels"
-msgstr ""
+msgstr "pixeli"
 
-#: multiload/properties.c:346
-#, fuzzy
+#: multiload/properties.c:348
 msgid "Sys_tem monitor update interval: "
-msgstr "Applet Monitor sunet"
+msgstr "Interval de _actualizare monitorizare:"
 
-#: multiload/properties.c:358
-#, fuzzy
+#: multiload/properties.c:360
 msgid "milliseconds"
-msgstr "Secunde"
-
-#: multiload/properties.c:371
-#, fuzzy
-msgid "P_rocessor"
-msgstr "Presiune:"
-
-#: multiload/properties.c:372
-#, fuzzy
-msgid "_User"
-msgstr "Utilizator"
+msgstr "milisecunde"
 
 #: multiload/properties.c:373
-#, fuzzy
-msgid "S_ystem"
-msgstr "Sistem"
+msgid "P_rocessor"
+msgstr "P_rocesor"
 
 #: multiload/properties.c:374
-#, fuzzy
-msgid "N_ice"
-msgstr "Drãguş"
+msgid "_User"
+msgstr "_Utilizator"
 
 #: multiload/properties.c:375
-#, fuzzy
-msgid "I_dle"
-msgstr "ªtã degeaba"
+msgid "S_ystem"
+msgstr "S_istem"
+
+#: multiload/properties.c:376
+msgid "N_ice"
+msgstr "N_ice"
 
 #: multiload/properties.c:377
-#, fuzzy
-msgid "M_emory"
-msgstr "Încãrcare memorie"
-
-#: multiload/properties.c:378
-#, fuzzy
-msgid "Ot_her"
-msgstr "Altul"
+msgid "I_dle"
+msgstr "Ne_folosit"
 
 #: multiload/properties.c:379
-#, fuzzy
-msgid "Sh_ared"
-msgstr "Împãrşit"
+msgid "M_emory"
+msgstr "Me_morie"
 
 #: multiload/properties.c:380
-#, fuzzy
-msgid "_Buffers"
-msgstr "Buffere"
+msgid "Ot_her"
+msgstr "A_ltul"
 
 #: multiload/properties.c:381
-#, fuzzy
-msgid "F_ree"
-msgstr "Liber"
+msgid "Sh_ared"
+msgstr "_ÃmpÄƒrÅ£it"
+
+#: multiload/properties.c:382
+msgid "_Buffers"
+msgstr "_Buffere"
 
 #: multiload/properties.c:383
-#, fuzzy
-msgid "Net_work"
-msgstr "Reşea"
-
-#: multiload/properties.c:384
-#, fuzzy
-msgid "S_LIP"
-msgstr "SLIP"
+msgid "F_ree"
+msgstr "L_iber"
 
 #: multiload/properties.c:385
-#, fuzzy
-msgid "PL_IP"
-msgstr "SLIP"
+msgid "Net_work"
+msgstr "Re_Å£ea"
 
 #: multiload/properties.c:386
-#, fuzzy
-msgid "Et_hernet"
-msgstr "Altul"
+msgid "S_LIP"
+msgstr "S_LIP"
 
 #: multiload/properties.c:387
-#, fuzzy
-msgid "_Other"
-msgstr "Altul"
+msgid "PL_IP"
+msgstr "PL_IP"
+
+#: multiload/properties.c:388
+msgid "Et_hernet"
+msgstr "Et_hernet"
 
 #: multiload/properties.c:389
-msgid "Swap _File"
-msgstr ""
-
-#: multiload/properties.c:390
-#, fuzzy
-msgid "_Used"
-msgstr "Folosit"
+msgid "_Other"
+msgstr "_Altul"
 
 #: multiload/properties.c:391
-#, fuzzy
+msgid "Swap _File"
+msgstr "_Swap"
+
+#: multiload/properties.c:392
+msgid "_Used"
+msgstr "_Folosit"
+
+#: multiload/properties.c:393
 msgid "_Free"
-msgstr "Liber"
+msgstr "_Liber"
 
 #: multiload/properties.c:411
-#, fuzzy
 msgid "System Monitor Preferences"
-msgstr "Proprietãşi ControlWeb"
+msgstr "PreferinÅ£e monitorizare sistem"
 
-#: multiload/swapload.c:39
+#: multiload/swapload.c:51
 msgid "Swap Load"
-msgstr "Încãrcare swap"
+msgstr "ÃncÄƒrcare swap"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
 msgid "Factory for Panel Menu Applet"
-msgstr ""
+msgstr "Factory pentru aplet meniu panel"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
 msgid "Panel Menu Applet Factory"
-msgstr ""
+msgstr "Factory aplet meniu panel"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-#, fuzzy
 msgid "Panel applet for displaying menus"
-msgstr "Aplicaşia folositã pentru a afiºa capturile ecran:"
+msgstr "Aplet pentru afiÅŸarea meniurilor"
 
 #: panel-menu/panel-menu-actions.c:99
-#, fuzzy
 msgid "Actions"
-msgstr "Opşiuni"
+msgstr "AcÅ£iuni"
 
 #: panel-menu/panel-menu-actions.c:100
 msgid "Actions Menu"
-msgstr ""
+msgstr "Meniu AcÅ£iuni"
 
-#: panel-menu/panel-menu-add.c:76
+#: panel-menu/panel-menu-add.c:77
 msgid "Add items to the Menu Bar"
-msgstr ""
+msgstr "AdaugÄƒ elemente la bara de meniu"
 
-#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:240 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
-#, fuzzy
 msgid "Shortcuts"
-msgstr "Ploi torenşiale"
+msgstr "ScurtÄƒturi"
 
-#: panel-menu/panel-menu-add.c:241
+#: panel-menu/panel-menu-add.c:246
 msgid "My Documents"
-msgstr ""
+msgstr "Documentele mele"
 
-#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:252 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
-msgstr ""
+msgstr "Documente"
 
 #: panel-menu/panel-menu-applications.c:80
-#, fuzzy
 msgid "Applications"
-msgstr "Opşiuni"
+msgstr "AplicaÅ£ii"
 
-#: panel-menu/panel-menu.c:684
-#, fuzzy
-msgid "PanelMenu Applet"
-msgstr "Applet mixaj"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr ""
-
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu-common.c:735
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
 msgstr ""
+"Nu este permisÄƒ ÅŸtergerea acestei intrÄƒri deoarce acest lucru va duce la "
+"ÅŸtergerea apletului bara de meniu din panelul GNOME"
 
-#: panel-menu/panel-menu-directory.c:482
-#, fuzzy
+#: panel-menu/panel-menu-directory.c:516
 msgid "Create directory item..."
-msgstr "Creez director utilizator: %s\n"
-
-#: panel-menu/panel-menu-directory.c:485
-#, fuzzy
-msgid "Home"
-msgstr "Volum"
+msgstr "Creere element director..."
 
 #: panel-menu/panel-menu-directory.c:524
+msgid "Home"
+msgstr "AcasÄƒ"
+
+#: panel-menu/panel-menu-directory.c:595
 msgid "Edit directory item..."
-msgstr ""
+msgstr "Editare element director..."
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:684 panel-menu/panel-menu-path.c:734
 msgid "_Path:"
-msgstr ""
+msgstr "_Cale:"
 
-#: panel-menu/panel-menu-directory.c:644
-#, fuzzy
+#: panel-menu/panel-menu-directory.c:692
 msgid "..."
-msgstr "Ajutor..."
+msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:702
 msgid "_Depth level:"
-msgstr ""
+msgstr "_Nivel adÃ¢ncime:"
+
+#: panel-menu/panel-menu-directory.c:799
+msgid "Path specified is currently not a valid directory."
+msgstr "Calea specificatÄƒ nu este un director valid."
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
-msgstr ""
+msgstr "Creere elemente documente..."
 
-#: panel-menu/panel-menu-documents.c:433
+#: panel-menu/panel-menu-documents.c:434
 msgid "Rename documents item..."
-msgstr ""
+msgstr "RedenumeÅŸte elementele documente..."
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
 msgid "KDE Menus"
-msgstr ""
+msgstr "Meniuri KDE"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
-#: panel-menu/panel-menu-path.c:557
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
+#: panel-menu/panel-menu-path.c:559
 msgid "Programs"
-msgstr ""
+msgstr "Programe"
 
 #: panel-menu/panel-menu-links.c:403
 msgid "Create links item..."
-msgstr ""
+msgstr "Creere elemente legÄƒturÄƒ..."
 
 #: panel-menu/panel-menu-links.c:439
 msgid "Rename links item..."
-msgstr ""
+msgstr "Redenumire elemente legÄƒturÄƒ"
 
-#: panel-menu/panel-menu-path.c:228
+#: panel-menu/panel-menu-path.c:230
 msgid "KDE"
-msgstr ""
+msgstr "KDE"
 
-#: panel-menu/panel-menu-path.c:655
+#: panel-menu/panel-menu-path.c:658
 msgid "Create menu path item..."
-msgstr ""
+msgstr "Creere element cale meniu..."
 
-#: panel-menu/panel-menu-path.c:697
+#: panel-menu/panel-menu-path.c:701
 msgid "Edit path item..."
-msgstr ""
+msgstr "Editare element cale..."
 
 #: panel-menu/panel-menu-preferences.c:78
 msgid "Preferences"
-msgstr ""
+msgstr "PreferinÅ£e"
 
-#: panel-menu/panel-menu-properties.c:71
-#, fuzzy
+#: panel-menu/panel-menu-properties.c:72
 msgid "Menu Bar Preferences"
-msgstr "Proprietãşi GKB"
+msgstr "PreferinÅ£e barÄƒ de meniu"
 
-#: panel-menu/panel-menu-properties.c:75
-#, fuzzy
+#: panel-menu/panel-menu-properties.c:76
 msgid "Layout"
-msgstr "Readout"
+msgstr "Layout"
 
-#: panel-menu/panel-menu-properties.c:90
-#, fuzzy
+#: panel-menu/panel-menu-properties.c:91
 msgid "_Applications Menu"
-msgstr "Opşiuni"
+msgstr "Meniu _AplicaÅ£ii"
 
-#: panel-menu/panel-menu-properties.c:110
-#, fuzzy
+#: panel-menu/panel-menu-properties.c:115
 msgid "Select an icon for the Applications menu"
-msgstr "Selectaşi iconul pentru montat"
+msgstr "SelectaÅ£i iconul pentru meniul AplicaÅ£ii"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:132
 msgid "_Preferences Menu"
-msgstr ""
+msgstr "Meniu _PreferinÅ£e"
 
-#: panel-menu/panel-menu-properties.c:137
-#, fuzzy
+#: panel-menu/panel-menu-properties.c:143
 msgid "Ac_tions Menu"
-msgstr "Opşiuni"
+msgstr "Meniu Ac_Å£iuni"
 
-#: panel-menu/panel-menu-properties.c:148
-#, fuzzy
+#: panel-menu/panel-menu-properties.c:154
 msgid "_Windows Menu"
-msgstr "Vãnt:"
+msgstr "Meniu _Ferestre"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:165
 msgid "W_orkspaces Menu"
-msgstr ""
+msgstr "Meniu _SpaÅ£ii de lucru"
 
 #: panel-menu/panel-menu-windows.c:99
-#, fuzzy
 msgid "Windows"
-msgstr "Vãnt:"
+msgstr "Ferestre"
 
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
+msgstr "SpaÅ£ii de lucru"
+
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr "Bara de meniu"
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr "(c) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:692
+msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr ""
+"Bara de meniu vÄƒ permite afiÅŸarea bÄƒrilor de meniu personalizate Ã®n "
+"panelurile dumneavoastrÄƒ."
+
+#~ msgid "CD Player Applet"
+#~ msgstr "Applet CD Player"
+
+#~ msgid "Character Picker"
+#~ msgstr "Selector caractere"
+
+#~ msgid "Drive Mount Applet"
+#~ msgstr "Applet Montare Drive"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "gEyes"
+#~ msgstr "gOchi"
+
+#, fuzzy
+#~ msgid "label_%d"
+#~ msgstr "EtichetÄƒ"
+
+#, fuzzy
+#~ msgid "country_%d"
+#~ msgstr "Å¢ara"
+
+#, fuzzy
+#~ msgid "lang_%d"
+#~ msgstr "Polonia"
+
+#, fuzzy
+#~ msgid "command_%d"
+#~ msgstr "ComandÄƒ"
+
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "Appletul SchimbÄƒtor tastaturÄƒ GNOME"
+
+#~ msgid "Refresh"
+#~ msgstr "ReÃ®mprospÄƒtare"
+
+#~ msgid "The GNOME Stock Ticker"
+#~ msgstr "Ticker-ul GNOME de bursÄƒ"
+
+#, fuzzy
+#~ msgid "_Use HTTP proxy"
+#~ msgstr "FoloseÅŸte proxy"
+
+#, fuzzy
+#~ msgid "_Location :"
+#~ msgstr "LocaÅ£ie:"
+
+#, fuzzy
+#~ msgid "Us_ername:"
+#~ msgstr "Nume utilizator:"
+
+#, fuzzy
+#~ msgid "Pass_word:"
+#~ msgstr "Parola:"
+
+#, fuzzy
+#~ msgid "Display a_rrows instead of -/+"
+#~ msgstr "AfiÅŸeazÄƒ sÄƒgeÅ£i Ã®n loc de -/+"
+
+#, fuzzy
+#~ msgid "_Proxy"
+#~ msgstr "FoloseÅŸte proxy"
+
+#, fuzzy
+#~ msgid "URL Entry"
+#~ msgstr " Istoric URL "
+
+#, fuzzy
+#~ msgid "Enter the Location"
+#~ msgstr "LocaÅ£ie"
+
+#, fuzzy
+#~ msgid "User Entry"
+#~ msgstr "FoloseÅŸte proxy"
+
+#, fuzzy
+#~ msgid "Password Entry"
+#~ msgstr "Parola:"
+
+#, fuzzy
+#~ msgid "Locat_ion :"
+#~ msgstr "LocaÅ£ie:"
+
+#~ msgid "Mini-Commander Applet"
+#~ msgstr "Applet Mini-Commander"
+
+#~ msgid "history list empty"
+#~ msgstr "lista istoricÄƒ goalÄƒ"
+
+#~ msgid "Command history"
+#~ msgstr "Istoria comenzilor"
+
+#~ msgid "fork error"
+#~ msgstr "eroare fork"
+
+#~ msgid "child exited"
+#~ msgstr "copilul a ieÅŸit"
+
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "RuleazÄƒ Mixerul Audio..."
+
+#~ msgid "Modem Lights Applet"
+#~ msgstr "Applet Lumini modem"
+
+#, fuzzy
+#~ msgid "System Monitor Applet"
+#~ msgstr "Applet Monitor sunet"
+
+#, fuzzy
+#~ msgid "PanelMenu Applet"
+#~ msgstr "Applet mixaj"
 
 #, fuzzy
 #~ msgid "Laptop battery monitor applet"
@@ -3773,7 +3727,7 @@ msgstr ""
 #~ msgstr "Selector caractere"
 
 #~ msgid "An applet that watches your mouse."
-#~ msgstr "Un applet care urmãreºte mouse-ul dvs."
+#~ msgstr "Un applet care urmÄƒreÅŸte mouse-ul dvs."
 
 #, fuzzy
 #~ msgid "Geyes Applet"
@@ -3781,36 +3735,36 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Properties"
-#~ msgstr "Proprietãşi"
+#~ msgstr "ProprietÄƒÅ£i"
 
 #~ msgid "GKB Keyboard Switcher"
-#~ msgstr "GKB - Schimbãtorul de tastaturã GNOME"
+#~ msgstr "GKB - SchimbÄƒtorul de tastaturÄƒ GNOME"
 
 #, fuzzy
 #~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-#~ msgstr "GKB - Schimbãtorul de aspect tastaturã Gnome"
+#~ msgstr "GKB - SchimbÄƒtorul de aspect tastaturÄƒ Gnome"
 
 #, fuzzy
 #~ msgid "Keyboard Layout Switcher Applet"
-#~ msgstr "GKB - Schimbãtorul de aspect tastaturã Gnome"
+#~ msgstr "GKB - SchimbÄƒtorul de aspect tastaturÄƒ Gnome"
 
 #~ msgid "GKB Properties"
-#~ msgstr "Proprietãşi GKB"
+#~ msgstr "ProprietÄƒÅ£i GKB"
 
 #~ msgid "Add"
-#~ msgstr "Adaugã"
+#~ msgstr "AdaugÄƒ"
 
 #~ msgid "Name"
 #~ msgstr "Nume"
 
 #~ msgid "GNOME Stock Ticker"
-#~ msgstr "Afiºaj bursã GNOME"
+#~ msgstr "AfiÅŸaj bursÄƒ GNOME"
 
 #~ msgid "GNOME Stock Ticker Panel Applet"
-#~ msgstr "Applet-ul de afiºaj bursã GNOME"
+#~ msgstr "Applet-ul de afiÅŸaj bursÄƒ GNOME"
 
 #~ msgid "Select Font"
-#~ msgstr "Selecteazã font"
+#~ msgstr "SelecteazÄƒ font"
 
 #, fuzzy
 #~ msgid "The GNOME weather monitor"
@@ -3818,7 +3772,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Update failed! Maybe another update was already in progress?"
-#~ msgstr "Altã actualizare este deja în progress!\n"
+#~ msgstr "AltÄƒ actualizare este deja Ã®n progress!\n"
 
 #~ msgid "GNOME weather monitor applet"
 #~ msgstr "Appletul GNOME de monitorizare a vremii"
@@ -3828,7 +3782,7 @@ msgstr ""
 #~ "Properties remain unchanged."
 #~ msgstr ""
 #~ "Proxy URL nu este de forma http://host:port/\n"
-#~ "Proprietãşile rãmân neschimbate."
+#~ "ProprietÄƒÅ£ile rÄƒmÃ¢n neschimbate."
 
 #, fuzzy
 #~ msgid "Proxy URL:"
@@ -3840,14 +3794,11 @@ msgstr ""
 #~ "unencrypted text in a private configuration\n"
 #~ "file."
 #~ msgstr ""
-#~ "Atenşie: Chiar dacã parola dvs. va fi salvatã în fiºierul\n"
-#~ "de configurare privat, o sã fie neencriptatã!"
-
-#~ msgid "General"
-#~ msgstr "General"
+#~ "AtenÅ£ie: Chiar dacÄƒ parola dvs. va fi salvatÄƒ Ã®n fiÅŸierul\n"
+#~ "de configurare privat, o sÄƒ fie neencriptatÄƒ!"
 
 #~ msgid "Another update already in progress!\n"
-#~ msgstr "Altã actualizare este deja în progress!\n"
+#~ msgstr "AltÄƒ actualizare este deja Ã®n progress!\n"
 
 #, fuzzy
 #~ msgid "still not ported"
@@ -3860,7 +3811,7 @@ msgstr ""
 #~ msgstr "timpul activat"
 
 #~ msgid "date on"
-#~ msgstr "data activatã"
+#~ msgstr "data activatÄƒ"
 
 #~ msgid "clock off"
 #~ msgstr "ceasul dezactivat"
@@ -3869,61 +3820,58 @@ msgstr ""
 #~ msgstr "Nu s-a putut deschide dispozitivul mixaj %s\n"
 
 #~ msgid "Show modem status"
-#~ msgstr "Afiºeazã starea modem-ului"
+#~ msgstr "AfiÅŸeazÄƒ starea modem-ului"
 
 #~ msgid "CPU Load Meter"
-#~ msgstr "Monitor încãrcare CPU"
+#~ msgstr "Monitor Ã®ncÄƒrcare CPU"
 
 #~ msgid "CPULoad"
-#~ msgstr "Încãrcare CPU"
+#~ msgstr "ÃncÄƒrcare CPU"
 
 #~ msgid "Load Average Applet"
-#~ msgstr "Applet Încãrcare medie"
+#~ msgstr "Applet ÃncÄƒrcare medie"
 
 #~ msgid "MemLoad"
-#~ msgstr "Încãrcare memorie"
+#~ msgstr "ÃncÄƒrcare memorie"
 
 #~ msgid "Memory Load Meter"
-#~ msgstr "Monitor încãrcare memorie"
+#~ msgstr "Monitor Ã®ncÄƒrcare memorie"
 
 #~ msgid "NetLoad"
-#~ msgstr "Încãrcare reşea"
+#~ msgstr "ÃncÄƒrcare reÅ£ea"
 
 #~ msgid "Network Activity Meter"
-#~ msgstr "Monitor activitate reşea"
+#~ msgstr "Monitor activitate reÅ£ea"
 
 #~ msgid "Swap Load Meter"
-#~ msgstr "Monitor încãrcare swap"
+#~ msgstr "Monitor Ã®ncÄƒrcare swap"
 
 #~ msgid "SwapLoad"
-#~ msgstr "Încãrcare swap"
-
-#~ msgid "Clock Settings"
-#~ msgstr "Setãri ceas"
+#~ msgstr "ÃncÄƒrcare swap"
 
 #~ msgid "Clock color"
 #~ msgstr "Culoare ceas"
 
 #~ msgid "Hour needle color"
-#~ msgstr "Culoare limbã orã"
+#~ msgstr "Culoare limbÄƒ orÄƒ"
 
 #~ msgid "Minute needle color"
-#~ msgstr "Culoare limbã minut"
+#~ msgstr "Culoare limbÄƒ minut"
 
 #~ msgid "Second needle color"
-#~ msgstr "Culoare limbã secundã"
+#~ msgstr "Culoare limbÄƒ secundÄƒ"
 
 #~ msgid "Show seconds needle"
-#~ msgstr "Afiºeazã limbã secunde"
+#~ msgstr "AfiÅŸeazÄƒ limbÄƒ secunde"
 
 #~ msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-#~ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
+#~ msgstr "IÅ„igo Serna <inigo@gaztelan.bi.ehu.es>"
 
 #~ msgid "Another Clock Applet"
 #~ msgstr "Applet Another Clock"
 
 #~ msgid "(C) 1999 the Free Software Foundation"
-#~ msgstr "(C) 1999 Fundaşia Software gratuit"
+#~ msgstr "(C) 1999 FundaÅ£ia Software gratuit"
 
 #~ msgid "An analog clock similar to that in CDE panel."
 #~ msgstr "Un ceas analog similar celui din panelul CDE"
@@ -3932,43 +3880,43 @@ msgstr ""
 #~ msgstr "ASClock"
 
 #~ msgid "(C) 1998 the Free Software Foundation"
-#~ msgstr "(C) 1998 Fundaşia Software gratuit"
+#~ msgstr "(C) 1998 FundaÅ£ia Software gratuit"
 
 #~ msgid "Who said NeXT is dead?"
-#~ msgstr "Cine a zis cã NeXT a murit?"
+#~ msgstr "Cine a zis cÄƒ NeXT a murit?"
 
 #~ msgid ""
 #~ "Since you are root, would you like to set the system's default timezone?"
 #~ msgstr ""
-#~ "Devreme ce sunteşi root, aşi dori sã setaşi zona de timp standard a "
+#~ "Devreme ce sunteÅ£i root, aÅ£i dori sÄƒ setaÅ£i zona de timp standard a "
 #~ "sistemului?"
 
 #~ msgid "My Title"
 #~ msgstr "Titlul meu"
 
 #~ msgid "Continent/City"
-#~ msgstr "Continent/Oraº"
+#~ msgstr "Continent/OraÅŸ"
 
 #~ msgid "Clock Theme"
 #~ msgstr "Tema ceas"
 
 #~ msgid "ASClock Settings"
-#~ msgstr "Setãri ASClock"
+#~ msgstr "SetÄƒri ASClock"
 
 #~ msgid "Display time in 12 hour format (AM/PM)"
-#~ msgstr "Afiºeazã timpul in format 12 ore (AM/PM)"
+#~ msgstr "AfiÅŸeazÄƒ timpul in format 12 ore (AM/PM)"
 
 #~ msgid "Blinking elements in clock"
-#~ msgstr "Elemente clipitoare în ceas"
+#~ msgstr "Elemente clipitoare Ã®n ceas"
 
 #~ msgid "Timezone"
 #~ msgstr "Zona timp"
 
 #~ msgid "The battery is low."
-#~ msgstr "Bateria este aproape descãrcatã."
+#~ msgstr "Bateria este aproape descÄƒrcatÄƒ."
 
 #~ msgid "Internal error: invalid mode in battery_set_mode"
-#~ msgstr "Eroare internã: mod invalid in bettery_set_mode"
+#~ msgstr "Eroare internÄƒ: mod invalid in bettery_set_mode"
 
 #~ msgid "Can't create applet!\n"
 #~ msgstr "Nu pot crea appletul!\n"
@@ -3978,43 +3926,40 @@ msgstr ""
 #~ "\n"
 #~ "Make sure that your kernel was built with APM support."
 #~ msgstr ""
-#~ "Eroare la chestionarea încãrcãrii bateriei.\n"
+#~ "Eroare la chestionarea Ã®ncÄƒrcÄƒrii bateriei.\n"
 #~ "\n"
-#~ "Verificaşi dacã kernelul dvs. are suport pentru APM."
+#~ "VerificaÅ£i dacÄƒ kernelul dvs. are suport pentru APM."
 
 #~ msgid "The GNOME Battery Monitor Applet"
 #~ msgstr "Appletul GNOME Monitor Baterie"
 
 #~ msgid " (C) 1997-1998 The Free Software Foundation"
-#~ msgstr " (C) 1997-1998 Fundaşia Software gratuit"
+#~ msgstr " (C) 1997-1998 FundaÅ£ia Software gratuit"
 
 #~ msgid ""
 #~ "This applet monitors the charge of your laptop's battery.  Click on it to "
 #~ "change display modes."
 #~ msgstr ""
-#~ "Acest applet monitorizeazã încãrcarea bateriei laptopului dvs. Fãceşi click "
-#~ "pe el pentru a schimba modurile de afiºare."
+#~ "Acest applet monitorizeazÄƒ Ã®ncÄƒrcarea bateriei laptopului dvs. FÄƒceÅ£i click "
+#~ "pe el pentru a schimba modurile de afiÅŸare."
 
 #~ msgid "Could not allocate space for graph values"
-#~ msgstr "Nu a putut fi alocat spaşiu pentru valori grafic"
+#~ msgstr "Nu a putut fi alocat spaÅ£iu pentru valori grafic"
 
 #~ msgid "Battery Monitor Settings"
-#~ msgstr "Setãri Monitor Baterie"
+#~ msgstr "SetÄƒri Monitor Baterie"
 
 #~ msgid "Follow panel size"
-#~ msgstr "Urmeazã mãrimea panelului"
+#~ msgstr "UrmeazÄƒ mÄƒrimea panelului"
 
 #~ msgid "Applet Height:"
-#~ msgstr "Înãlşime applet:"
+#~ msgstr "ÃnÄƒlÅ£ime applet:"
 
 #~ msgid "Applet Width:"
-#~ msgstr "Lãşime applet:"
+#~ msgstr "LÄƒÅ£ime applet:"
 
 #~ msgid "Low Charge Threshold:"
-#~ msgstr "Threshold încãrcare micã:"
-
-#~ msgid "Applet Mode:"
-#~ msgstr "Mod applet:"
+#~ msgstr "Threshold Ã®ncÄƒrcare micÄƒ:"
 
 #~ msgid "Graph"
 #~ msgstr "Grafic"
@@ -4026,65 +3971,62 @@ msgstr ""
 #~ msgstr "Culoare baterie pentru nealimentare AC"
 
 #~ msgid "Low Battery Color:"
-#~ msgstr "Culoare baterie aproape descãrcatã:"
+#~ msgstr "Culoare baterie aproape descÄƒrcatÄƒ:"
 
 #~ msgid "Graph Tick Color:"
 #~ msgstr "Culoare grafic tick:"
 
 #~ msgid "Graph Direction:"
-#~ msgstr "Direcşie grafic:"
+#~ msgstr "DirecÅ£ie grafic:"
 
 #~ msgid "Left to Right"
-#~ msgstr "Stânga la dreapta"
+#~ msgstr "StÃ¢nga la dreapta"
 
 #~ msgid "Right to Left"
-#~ msgstr "Dreapta la stânga"
+#~ msgstr "Dreapta la stÃ¢nga"
 
 #~ msgid "Battery Charge Messages"
-#~ msgstr "Mesaje încãrcare baterie"
+#~ msgstr "Mesaje Ã®ncÄƒrcare baterie"
 
 #~ msgid "Enable Low Battery Warning"
-#~ msgstr "Activeazã anunş baterie aproape descãrcatã"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "Warn if the battery charge dips below:"
+#~ msgstr "ActiveazÄƒ anunÅ£ baterie aproape descÄƒrcatÄƒ"
 
 #~ msgid "Enable Full-Charge Notification"
-#~ msgstr "Activeazã anunş baterie încãrcatã"
+#~ msgstr "ActiveazÄƒ anunÅ£ baterie Ã®ncÄƒrcatÄƒ"
 
 #~ msgid ""
 #~ "Cannot open /proc/apm!  Make sure that you built APM support into your "
 #~ "kernel.\n"
 #~ msgstr ""
-#~ "Nu se poate deschide /proc/apm!  Verificaşi dacã kernelul dvs. are suport "
+#~ "Nu se poate deschide /proc/apm!  VerificaÅ£i dacÄƒ kernelul dvs. are suport "
 #~ "pentru APM.\n"
 
 #~ msgid "Could not dup() APM file descriptor: %s\n"
 #~ msgstr "Could not dup() APM file descriptor: %s\n"
 
 #~ msgid "Cannot open /dev/apm; can't get data."
-#~ msgstr "Nu se poate deschide /dev/apm; nu se pot obşine date."
+#~ msgstr "Nu se poate deschide /dev/apm; nu se pot obÅ£ine date."
 
 #~ msgid "ioctl failed on /dev/apm."
-#~ msgstr "ioctl nu a reuºit pe /dev/apm"
+#~ msgstr "ioctl nu a reuÅŸit pe /dev/apm"
 
 #~ msgid "APM is disabled!  Cannot read battery charge information."
-#~ msgstr "APM este dezactivat!  Nu se poate citi încãrcarea bateriei."
+#~ msgstr "APM este dezactivat!  Nu se poate citi Ã®ncÄƒrcarea bateriei."
 
 #~ msgid "Minimum number of cells: (for autosize)"
-#~ msgstr "Numãr minim de celule: (pentru auto-mãrime)"
+#~ msgstr "NumÄƒr minim de celule: (pentru auto-mÄƒrime)"
 
 #~ msgid "Size of button: (pixels)"
-#~ msgstr "Mãrime buton: (pixeli)"
+#~ msgstr "MÄƒrime buton: (pixeli)"
 
 #~ msgid "Number of rows of buttons:"
-#~ msgstr "Numãr linii de butoane:"
+#~ msgstr "NumÄƒr linii de butoane:"
 
 #~ msgid "Number of columns of buttons:"
-#~ msgstr "Numãr coloane de butoane:"
+#~ msgstr "NumÄƒr coloane de butoane:"
 
 #~ msgid "Default List"
-#~ msgstr "Listã standard"
+#~ msgstr "ListÄƒ standard"
 
 #~ msgid "Clipboard Applet"
 #~ msgstr "Applet Clipboard"
@@ -4096,14 +4038,14 @@ msgstr ""
 #~ "Gnome panel applet for copying and retrieving selections with a history "
 #~ "list. Released under GNU General Public Licence."
 #~ msgstr ""
-#~ "Applet panel Gnome pentru copiere si obşinere selecşii cu o listã istoricã. "
-#~ "Publicat sub licenşa publicã generalã GNU."
+#~ "Applet panel Gnome pentru copiere si obÅ£inere selecÅ£ii cu o listÄƒ istoricÄƒ. "
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU."
 
 #~ msgid "John Ellis <johne@bellatlantic.net>"
 #~ msgstr "John Ellis <johne@bellatlantic.net>"
 
 #~ msgid "Clock and Mail Notify Applet"
-#~ msgstr "Applet Ceas si atenşionare mail"
+#~ msgstr "Applet Ceas si atenÅ£ionare mail"
 
 #~ msgid "(C) 2000"
 #~ msgstr "(C) 2000"
@@ -4114,10 +4056,10 @@ msgstr ""
 #~ "Mail blinking can be for any unread mail, or only briefly when new mail "
 #~ "arrives."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
-#~ "Ceas digital basic cu data într-un tooltip. Opşional afiºare timp 12/24. "
-#~ "Clipirea mail poate fi pentru orice mail necitit, sau doar scurt cãnd "
-#~ "soseºte mail nou."
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
+#~ "Ceas digital basic cu data Ã®ntr-un tooltip. OpÅ£ional afiÅŸare timp 12/24. "
+#~ "Clipirea mail poate fi pentru orice mail necitit, sau doar scurt cÄƒnd "
+#~ "soseÅŸte mail nou."
 
 #~ msgid "%a, %b %d"
 #~ msgstr "%a, %b %d"
@@ -4132,78 +4074,78 @@ msgstr ""
 #~ msgstr "Teme:"
 
 #~ msgid "ClockMail Settings"
-#~ msgstr "Setãri ClockMail"
+#~ msgstr "SetÄƒri ClockMail"
 
 #~ msgid "Display time relative to GMT (Greenwich Mean Time):"
-#~ msgstr "Afiºeazã timpul relativ la GMT (Greenwich Mean Time):"
+#~ msgstr "AfiÅŸeazÄƒ timpul relativ la GMT (Greenwich Mean Time):"
 
 #~ msgid "Mail"
 #~ msgstr "Mail"
 
 #~ msgid "Mail file:"
-#~ msgstr "Fiºier mail:"
+#~ msgstr "FiÅŸier mail:"
 
 #~ msgid "When new mail is received run:"
-#~ msgstr "Când este primit mail nou ruleazã:"
+#~ msgstr "CÃ¢nd este primit mail nou ruleazÄƒ:"
 
 #~ msgid "Always blink when any mail is waiting."
-#~ msgstr "ântotdeauna clipeºte când orice mail aºteaptã."
+#~ msgstr "Ã¢ntotdeauna clipeÅŸte cÃ¢nd orice mail aÅŸteaptÄƒ."
 
 #~ msgid "Number of messages to consider mailbox full:"
 #~ msgstr ""
-#~ "Numãrul de mesaje pentru care cãsuşa poºtalã este consideratã plinã:"
+#~ "NumÄƒrul de mesaje pentru care cÄƒsuÅ£a poÅŸtalÄƒ este consideratÄƒ plinÄƒ:"
 
 #~ msgid "When clicked, run:"
-#~ msgstr "Când este clickat, ruleazã:"
+#~ msgstr "CÃ¢nd este clickat, ruleazÄƒ:"
 
 #~ msgid "Theme file (directory):"
-#~ msgstr "Fiºier (director) temã:"
+#~ msgstr "FiÅŸier (director) temÄƒ:"
 
 #~ msgid "Theme"
-#~ msgstr "Temã"
+#~ msgstr "TemÄƒ"
 
 #~ msgid "CPU/Mem Usage Applet"
 #~ msgstr "Applet Folosire CPU/Mem"
 
 #~ msgid "(c) 1997 the Free Software Foundation"
-#~ msgstr "(c) 1997 Fundaşia Software gratuit"
+#~ msgstr "(c) 1997 FundaÅ£ia Software gratuit"
 
 #~ msgid ""
 #~ "The CPU/Mem usage applet displays your system resources with 3 colorful "
 #~ "stacked bar graphs (processor, memory, swap)"
 #~ msgstr ""
-#~ "Appletul Folosire CPU/Mem afiºeazã resursele sistemului dvs. cu 3 bare "
+#~ "Appletul Folosire CPU/Mem afiÅŸeazÄƒ resursele sistemului dvs. cu 3 bare "
 #~ "colorate (procesor, memorie, swap)"
 
 #~ msgid "File Systems"
-#~ msgstr "Sisteme fiºiere"
+#~ msgstr "Sisteme fiÅŸiere"
 
 #~ msgid "File System Changed!\n"
-#~ msgstr "Sistem fiºiere schimbat!\n"
+#~ msgstr "Sistem fiÅŸiere schimbat!\n"
 
 #~ msgid "Disk Usage Applet"
 #~ msgstr "Applet Folosire disk"
 
 #~ msgid "Update..."
-#~ msgstr "Actualizeazã..."
+#~ msgstr "ActualizeazÄƒ..."
 
 #~ msgid "Used Diskspace:"
-#~ msgstr "Spaşiu disc folosit:"
+#~ msgstr "SpaÅ£iu disc folosit:"
 
 #~ msgid "Text:"
 #~ msgstr "Text:"
 
 #~ msgid "Free Diskspace:"
-#~ msgstr "Spaşiu disc disponibil"
+#~ msgstr "SpaÅ£iu disc disponibil"
 
 #~ msgid "Background:"
 #~ msgstr "Fundal:"
 
 #~ msgid "Automatically pick best applet size"
-#~ msgstr "Alege automat cea mai bunã mãrime a appletului"
+#~ msgstr "Alege automat cea mai bunÄƒ mÄƒrime a appletului"
 
 #~ msgid "Update Frequency (seconds):"
-#~ msgstr "Frecvenşã actualizare (secunde)"
+#~ msgstr "FrecvenÅ£Äƒ actualizare (secunde)"
 
 #~ msgid "Fonts"
 #~ msgstr "Fonturi"
@@ -4212,43 +4154,43 @@ msgstr ""
 #~ msgstr "Font:"
 
 #~ msgid "Diskusage Settings"
-#~ msgstr "Setãri Folosire disc"
+#~ msgstr "SetÄƒri Folosire disc"
 
 #~ msgid ""
 #~ "Released under the GNU general public license.\n"
 #~ "Mounts and Unmounts drives."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
-#~ "Monteazã ºi demonteazã driveuri."
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
+#~ "MonteazÄƒ ÅŸi demonteazÄƒ driveuri."
 
 #~ msgid ""
 #~ "You win!\n"
 #~ "Moves"
 #~ msgstr ""
-#~ "Ai câºtigat!\n"
-#~ "Mutãri"
+#~ "Ai cÃ¢ÅŸtigat!\n"
+#~ "MutÄƒri"
 
 #~ msgid "Fifteen sliding pieces"
 #~ msgstr "Cincisprezece piese"
 
 #~ msgid "Copyright (C) The Free Software Foundation"
-#~ msgstr "Copyright (C) Fundaşia Software gratuit"
+#~ msgstr "Copyright (C) FundaÅ£ia Software gratuit"
 
 #~ msgid ""
 #~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
 #~ "Guaranteed to be a productivity buster."
 #~ msgstr ""
-#~ "Jocul favorit al tuturor timpurilor al lui Sam Lloyd, acum pentru plãcerea "
-#~ "dvs. în panelul Gnome. Garantat pentru a mãri productivitatea."
+#~ "Jocul favorit al tuturor timpurilor al lui Sam Lloyd, acum pentru plÄƒcerea "
+#~ "dvs. Ã®n panelul Gnome. Garantat pentru a mÄƒri productivitatea."
 
 #~ msgid "Can't create fifteen applet!"
 #~ msgstr "Appletul cincisprezece nu poate fi creat!"
 
 #~ msgid "Scramble pieces"
-#~ msgstr "Amestecã piesele"
+#~ msgstr "AmestecÄƒ piesele"
 
 #~ msgid "gEyes Settings"
-#~ msgstr "Setãri gOchi"
+#~ msgstr "SetÄƒri gOchi"
 
 #~ msgid "Themes"
 #~ msgstr "Teme"
@@ -4293,19 +4235,16 @@ msgstr ""
 #~ msgstr "Chema Celorio <chema@celorio.com>"
 
 #~ msgid "Press a key..."
-#~ msgstr "Apãsaşi o tastã..."
+#~ msgstr "ApÄƒsaÅ£i o tastÄƒ..."
 
 #~ msgid "Raise Note"
-#~ msgstr "Ridicã nota"
+#~ msgstr "RidicÄƒ nota"
 
 #~ msgid "Lower Note"
-#~ msgstr "Coboarã nota"
-
-#~ msgid "Hide Note"
-#~ msgstr "Ascunde nota"
+#~ msgstr "CoboarÄƒ nota"
 
 #~ msgid "Delete Note"
-#~ msgstr "ªterge nota"
+#~ msgstr "Återge nota"
 
 #~ msgid "GNotes!"
 #~ msgstr "GNote!"
@@ -4315,31 +4254,31 @@ msgstr ""
 #~ msgstr "Copyright (C) 1999"
 
 #~ msgid "Create sticky notes on your screen."
-#~ msgstr "Creeazã note lipicioase pe ecranul dvs."
+#~ msgstr "CreeazÄƒ note lipicioase pe ecranul dvs."
 
 #~ msgid "Can't create GNotes applet!"
 #~ msgstr "Appletul GNotes nu poate fi creat!"
 
 #~ msgid "Raise Notes"
-#~ msgstr "Ridicã notele"
+#~ msgstr "RidicÄƒ notele"
 
 #~ msgid "Lower Notes"
-#~ msgstr "Coboarã notele"
+#~ msgstr "CoboarÄƒ notele"
 
 #~ msgid "Hide Notes"
 #~ msgstr "Ascunde notele"
 
 #~ msgid "Show Notes"
-#~ msgstr "Aratã notele"
+#~ msgstr "AratÄƒ notele"
 
 #~ msgid "GNotes Settings"
-#~ msgstr "Setãri GNote"
+#~ msgstr "SetÄƒri GNote"
 
 #~ msgid "Default Height"
-#~ msgstr "Înãlşime standard"
+#~ msgstr "ÃnÄƒlÅ£ime standard"
 
 #~ msgid "Default Width"
-#~ msgstr "Lãşime standard"
+#~ msgstr "LÄƒÅ£ime standard"
 
 #~ msgid ""
 #~ "GNOME weather monitor applet.\n"
@@ -4353,14 +4292,14 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Detailed Forecast"
-#~ msgstr "Previziune detaliatã"
+#~ msgstr "Previziune detaliatÄƒ"
 
 #~ msgid ""
 #~ "Invalid location chosen!\n"
 #~ "Properties remain unchanged."
 #~ msgstr ""
-#~ "Locaşie invalidã aleasã!\n"
-#~ "Proprietãşile rãmân neschimbate."
+#~ "LocaÅ£ie invalidÄƒ aleasÄƒ!\n"
+#~ "ProprietÄƒÅ£ile rÄƒmÃ¢n neschimbate."
 
 #~ msgid "Regions"
 #~ msgstr "Regiuni"
@@ -4378,7 +4317,7 @@ msgstr ""
 #~ msgstr "Odometru"
 
 #~ msgid "Location vector needs to be 4 elements long"
-#~ msgstr "Vectorul de locaşie trebuie sã aibe 4 elemente lungime"
+#~ msgstr "Vectorul de locaÅ£ie trebuie sÄƒ aibe 4 elemente lungime"
 
 #~ msgid "Jon's Binary Clock"
 #~ msgstr "Ceasul binar al lui Jon"
@@ -4391,21 +4330,21 @@ msgstr ""
 #~ "Displays time in Binary Coded Decimal\n"
 #~ "http://snoopy.net/~jon/jbc/."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
-#~ "Afiºeazã timpul in Cod binar\n"
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
+#~ "AfiÅŸeazÄƒ timpul in Cod binar\n"
 #~ "http://snoopy.net/~jon/jbc/."
 
 #~ msgid "The Game of Life"
-#~ msgstr "Jocul Vieşii"
+#~ msgstr "Jocul VieÅ£ii"
 
 #~ msgid "A complete waste of perfectly good CPU cycles."
-#~ msgstr "O risipã completã de cicluri procesor perfect bune"
+#~ msgstr "O risipÄƒ completÄƒ de cicluri procesor perfect bune"
 
 #~ msgid "Can't create life applet!"
-#~ msgstr "Appletul viaşã nu poate fi creat!"
+#~ msgstr "Appletul viaÅ£Äƒ nu poate fi creat!"
 
 #~ msgid "Randomize"
-#~ msgstr "Amestecã"
+#~ msgstr "AmestecÄƒ"
 
 #~ msgid "saving prefs..."
 #~ msgstr "salvez pref..."
@@ -4414,69 +4353,63 @@ msgstr ""
 #~ msgstr "Volum principal si mut"
 
 #~ msgid "(c) 1998 The Free Software Foundation"
-#~ msgstr "(c) 1998 Fundaşia Software gratuit"
+#~ msgstr "(c) 1998 FundaÅ£ia Software gratuit"
 
 #~ msgid ""
 #~ "The mixer applet gives you instant access to setting the master volume level "
 #~ "on your soundcard device"
 #~ msgstr ""
-#~ "Appletul de mixaj vã dã acces instant la setarea volumului master a placii "
+#~ "Appletul de mixaj vÄƒ dÄƒ acces instant la setarea volumului master a placii "
 #~ "dvs. de sunet"
 
 #~ msgid "CPU Load Applet"
-#~ msgstr "Applet Încãrcare CPU"
+#~ msgstr "Applet ÃncÄƒrcare CPU"
 
 #~ msgid ""
 #~ "Released under the GNU general public license.\n"
 #~ "\n"
 #~ "CPU Load Meter Applet."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
 #~ "\n"
-#~ "Applet mãsurãtor încãrcare CPU."
+#~ "Applet mÄƒsurÄƒtor Ã®ncÄƒrcare CPU."
 
 #~ msgid "Default Properties..."
-#~ msgstr "Preoprietãşi standard..."
+#~ msgstr "PreoprietÄƒÅ£i standard..."
 
 #~ msgid "Run gtop..."
-#~ msgstr "Ruleazã gtop..."
+#~ msgstr "RuleazÄƒ gtop..."
 
 #~ msgid "Load average over 1 minute"
-#~ msgstr "Încãrcarea medie peste 1 minut"
+#~ msgstr "ÃncÄƒrcarea medie peste 1 minut"
 
 #~ msgid "Load average over 5 minutes"
-#~ msgstr "Încãrcarea medie peste 5 minute"
+#~ msgstr "ÃncÄƒrcarea medie peste 5 minute"
 
 #~ msgid "Load average over 15 minutes"
-#~ msgstr "Încãrcarea medie peste 15 minute"
+#~ msgstr "ÃncÄƒrcarea medie peste 15 minute"
 
 #~ msgid ""
 #~ "Released under the GNU general public license.\n"
 #~ "\n"
 #~ "Load Average Meter Applet."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
 #~ "\n"
-#~ "Applet mãsurãtor încãrcare medie."
+#~ "Applet mÄƒsurÄƒtor Ã®ncÄƒrcare medie."
 
 #~ msgid "Load Graph"
-#~ msgstr "Grafic încãrcare"
+#~ msgstr "Grafic Ã®ncÄƒrcare"
 
 #, fuzzy
 #~ msgid "Interval:"
 #~ msgstr "General"
 
 #~ msgid "Size:"
-#~ msgstr "Mãrime:"
+#~ msgstr "MÄƒrime:"
 
 #~ msgid "Maximum:"
 #~ msgstr "Maxim:"
-
-#~ msgid "Speed:"
-#~ msgstr "Vitezã:"
-
-#~ msgid "Use default properties"
-#~ msgstr "Foloseºte proprietãşile standard"
 
 #~ msgid "PPP"
 #~ msgstr "PPP"
@@ -4485,53 +4418,53 @@ msgstr ""
 #~ msgstr "ETH"
 
 #~ msgid "Memory Load Applet"
-#~ msgstr "Applet Încãrcare memorie"
+#~ msgstr "Applet ÃncÄƒrcare memorie"
 
 #~ msgid ""
 #~ "Released under the GNU general public license.\n"
 #~ "\n"
 #~ "Memory Load Applet."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
 #~ "\n"
-#~ "Applet Încãrcare memorie."
+#~ "Applet ÃncÄƒrcare memorie."
 
 #~ msgid "Network Load Applet"
-#~ msgstr "Applet Încãrcare reşea"
+#~ msgstr "Applet ÃncÄƒrcare reÅ£ea"
 
 #~ msgid "Network Load"
-#~ msgstr "Încãrcare reşea"
+#~ msgstr "ÃncÄƒrcare reÅ£ea"
 
 #~ msgid "Swap Load Applet"
-#~ msgstr "Applet Încãrcare swap"
+#~ msgstr "Applet ÃncÄƒrcare swap"
 
 #~ msgid ""
 #~ "Released under the GNU general public license.\n"
 #~ "\n"
 #~ "Swap Load Meter Applet."
 #~ msgstr ""
-#~ "Publicat sub licenşa publicã generalã GNU.\n"
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU.\n"
 #~ "\n"
-#~ "Applet mãsurãtor încãrcare swap."
+#~ "Applet mÄƒsurÄƒtor Ã®ncÄƒrcare swap."
 
 #~ msgid "Odometer"
 #~ msgstr "Odometru"
 
 #~ msgid "(C) 1999 The Free Software Foundation"
-#~ msgstr "(C) 1999 Fundaşia Software gratuit"
+#~ msgstr "(C) 1999 FundaÅ£ia Software gratuit"
 
 #~ msgid ""
 #~ "a GNOME applet that tracks and measures the movements of your mouse pointer "
 #~ "across the desktop."
 #~ msgstr ""
-#~ "un applet GNOME care urmãreºte ºi mãsoarã miºcãrile pointerului mouseului "
+#~ "un applet GNOME care urmÄƒreÅŸte ÅŸi mÄƒsoarÄƒ miÅŸcÄƒrile pointerului mouseului "
 #~ "dvs. de-a lungul desktopului."
 
 #~ msgid "Odometer setting"
-#~ msgstr "Setãri odometru"
+#~ msgstr "SetÄƒri odometru"
 
 #~ msgid "Use Metric"
-#~ msgstr "Foloseºte metric"
+#~ msgstr "FoloseÅŸte metric"
 
 #~ msgid "auto_reset"
 #~ msgstr "auto_reset"
@@ -4540,45 +4473,45 @@ msgstr ""
 #~ msgstr "activat"
 
 #~ msgid "Digits number"
-#~ msgstr "Numãr cifre"
+#~ msgstr "NumÄƒr cifre"
 
 #, fuzzy
 #~ msgid "Theme file:"
-#~ msgstr "Fiºier teme :"
+#~ msgstr "FiÅŸier teme :"
 
 #~ msgid "The QuickLaunch Applet"
-#~ msgstr "Applet Lansare rapidã"
+#~ msgstr "Applet Lansare rapidÄƒ"
 
 #~ msgid ""
 #~ "This applet adds some pretty small icons for your launchers to your panel, "
 #~ "like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
 #~ "launchers."
 #~ msgstr ""
-#~ "Acest applet adaugã niºte iconuri drãguşe ºi mici pentru lansatoarele dvs. "
-#~ "la panel, asemenea bãrii de unelte QuickLaunch de pe Windwows, evitând acele "
-#~ "lansatoare GNOME uriaºe ºi confuze."
+#~ "Acest applet adaugÄƒ niÅŸte iconuri drÄƒguÅ£e ÅŸi mici pentru lansatoarele dvs. "
+#~ "la panel, asemenea bÄƒrii de unelte QuickLaunch de pe Windwows, evitÃ¢nd acele "
+#~ "lansatoare GNOME uriaÅŸe ÅŸi confuze."
 
 #~ msgid "Launcher Properties"
-#~ msgstr "Proprietãşi Lansator"
+#~ msgstr "ProprietÄƒÅ£i Lansator"
 
 #~ msgid ""
 #~ "drop launchers from\n"
 #~ "the menu here"
 #~ msgstr ""
-#~ "daşi drumul lansatoarelor\n"
+#~ "daÅ£i drumul lansatoarelor\n"
 #~ "din meniu aici"
 
 #~ msgid "Launcher properties..."
-#~ msgstr "Proprietãşi Lansator..."
+#~ msgstr "ProprietÄƒÅ£i Lansator..."
 
 #~ msgid "Delete launcher"
-#~ msgstr "ªterge lansator"
+#~ msgstr "Återge lansator"
 
 #~ msgid "File '%s' does not exist"
-#~ msgstr "Fiºierul '%s' nu existã"
+#~ msgstr "FiÅŸierul '%s' nu existÄƒ"
 
 #~ msgid "Don't know how to make a launcher out of: '%s'"
-#~ msgstr "Nu ºtiu cum sã fac un lansator din: '%s'"
+#~ msgstr "Nu ÅŸtiu cum sÄƒ fac un lansator din: '%s'"
 
 #~ msgid ""
 #~ "Cannot create directory:\n"
@@ -4603,51 +4536,51 @@ msgstr ""
 #~ "The right/bottom button will grab the entire desktop.\n"
 #~ "Share and Enjoy ;)"
 #~ msgstr ""
-#~ "Un capturator de ecran mic ºi folositor.\n"
-#~ "Butonul din stânga/sus vã permite sã capturaşi fie:\n"
-#~ "o fereastrã (click pentru a selecta care)\n"
-#~ "fie o zonã (click ºi drag pentru a selecta un dreptunghi.)\n"
-#~ "Butonul dreapta/jos va captura întregul desktop.\n"
-#~ "Împãrşişi ºi bucuraşi-vã ;)"
+#~ "Un capturator de ecran mic ÅŸi folositor.\n"
+#~ "Butonul din stÃ¢nga/sus vÄƒ permite sÄƒ capturaÅ£i fie:\n"
+#~ "o fereastrÄƒ (click pentru a selecta care)\n"
+#~ "fie o zonÄƒ (click ÅŸi drag pentru a selecta un dreptunghi.)\n"
+#~ "Butonul dreapta/jos va captura Ã®ntregul desktop.\n"
+#~ "ÃmpÄƒrÅ£iÅ£i ÅŸi bucuraÅ£i-vÄƒ ;)"
 
 #~ msgid "Visit the author's Website"
-#~ msgstr "Vizitaşi web siteul autorului"
+#~ msgstr "VizitaÅ£i web siteul autorului"
 
 #~ msgid "Screen-Shooter Settings"
-#~ msgstr "Setãri capturator ecran "
+#~ msgstr "SetÄƒri capturator ecran "
 
 #~ msgid "Capture WM decorations when grabbing a window"
-#~ msgstr "Captureazã decoraşiunile ferestrelor când captureza o fereastrã"
+#~ msgstr "CaptureazÄƒ decoraÅ£iunile ferestrelor cÃ¢nd captureza o fereastrÄƒ"
 
 #~ msgid "Give audio feedback using the keyboard bell"
-#~ msgstr "Dã feedback audio folosind sunetul de tastaturã"
+#~ msgstr "DÄƒ feedback audio folosind sunetul de tastaturÄƒ"
 
 #~ msgid "Display Spurious Options (I got carried away)"
-#~ msgstr "Afiºeazã opşiuni de deformare (m-am lãsat dus de val)"
+#~ msgstr "AfiÅŸeazÄƒ opÅ£iuni de deformare (m-am lÄƒsat dus de val)"
 
 #~ msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
 #~ msgstr ""
-#~ "Pauzã (secunde) înainte de a poza (numai pentru poze ale întregului desktop)"
+#~ "PauzÄƒ (secunde) Ã®nainte de a poza (numai pentru poze ale Ã®ntregului desktop)"
 
 #~ msgid ""
 #~ "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
 #~ msgstr ""
-#~ "Calitate compresat (mod JPEG/MIFF/PNG) Înaltã: calitate bunã/fiºier mare"
+#~ "Calitate compresat (mod JPEG/MIFF/PNG) ÃnaltÄƒ: calitate bunÄƒ/fiÅŸier mare"
 
 #~ msgid "Create monochrome image"
-#~ msgstr "Creeazã imagine monocromã"
+#~ msgstr "CreeazÄƒ imagine monocromÄƒ"
 
 #~ msgid "Invert colours in image"
-#~ msgstr "Inverseazã culorile în imagine"
+#~ msgstr "InverseazÄƒ culorile Ã®n imagine"
 
 #~ msgid "Directory to save images in:"
-#~ msgstr "Director în care se salveazã imaginile:"
+#~ msgstr "Director Ã®n care se salveazÄƒ imaginile:"
 
 #~ msgid "Image filename:"
-#~ msgstr "Nume fiºier imagine:"
+#~ msgstr "Nume fiÅŸier imagine:"
 
 #~ msgid "Show expanded filename"
-#~ msgstr "Aratã numele fiºier extins"
+#~ msgstr "AratÄƒ numele fiÅŸier extins"
 
 #~ msgid ""
 #~ "Filetype is determined from filename suffix.\n"
@@ -4664,43 +4597,43 @@ msgstr ""
 #~ "Slightly larger file but lossless: png, as much compression as you like.\n"
 #~ "- compressing pngs takes longer at higher ratios, but is still lossless"
 #~ msgstr ""
-#~ "Tipul fiºierului este determinat de suffixul numelui.\n"
-#~ "Tipul standard (daca nu are extensie sau ea nu este recunoscutã) este miff.\n"
+#~ "Tipul fiÅŸierului este determinat de suffixul numelui.\n"
+#~ "Tipul standard (daca nu are extensie sau ea nu este recunoscutÄƒ) este miff.\n"
 #~ "Suffixe recunoscute sunt:\n"
 #~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 #~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "ºi câteva obscure. Încercaşi-vã norocul cu ceva interesant!\n"
-#~ "Ex .html pentru un image map pentru client. O sã obşineşi un .gif, .html, ºi "
+#~ "ÅŸi cÃ¢teva obscure. ÃncercaÅ£i-vÄƒ norocul cu ceva interesant!\n"
+#~ "Ex .html pentru un image map pentru client. O sÄƒ obÅ£ineÅ£i un .gif, .html, ÅŸi "
 #~ "un .shtml\n"
 #~ "\n"
-#~ "Recomandãri:\n"
-#~ "Fiºier mic, calitate destul de bunã:   jpg, calitate 75%\n"
-#~ "Fiºier ceva mai mare dar fãrã pierderi: png, câtã compresie dorişi.\n"
-#~ "- compresarea png dureazã mai mult la procentaj mai mare, dar este tot fãrã "
+#~ "RecomandÄƒri:\n"
+#~ "FiÅŸier mic, calitate destul de bunÄƒ:   jpg, calitate 75%\n"
+#~ "FiÅŸier ceva mai mare dar fÄƒrÄƒ pierderi: png, cÃ¢tÄƒ compresie doriÅ£i.\n"
+#~ "- compresarea png dureazÄƒ mai mult la procentaj mai mare, dar este tot fÄƒrÄƒ "
 #~ "pierderi"
 
 #~ msgid "View screenshot after saving it"
-#~ msgstr "Vizualizeazã captura ecran dupã salvare"
+#~ msgstr "VizualizeazÄƒ captura ecran dupÄƒ salvare"
 
 #~ msgid "Files, Apps"
-#~ msgstr "Fiºiere, aplicaşii"
+#~ msgstr "FiÅŸiere, aplicaÅ£ii"
 
 #~ msgid "Create thumbnail of image too"
-#~ msgstr "Creeaza ºi miniatura imaginii"
+#~ msgstr "Creeaza ÅŸi miniatura imaginii"
 
 #~ msgid "Thumbnail Size (percentage of original)"
-#~ msgstr "Mãrime miniaturã (procent din original)"
+#~ msgstr "MÄƒrime miniaturÄƒ (procent din original)"
 
 #~ msgid ""
 #~ "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
 #~ msgstr ""
-#~ "Compresie miniaturã (mod JPEG/MIFF/PNG) Înaltã: calitate bunã/fiºier mare"
+#~ "Compresie miniaturÄƒ (mod JPEG/MIFF/PNG) ÃnaltÄƒ: calitate bunÄƒ/fiÅŸier mare"
 
 #~ msgid "Prefix to attach to thumbnail filename:"
-#~ msgstr "Prefix de ataºat la nume fiºier miniaturã:"
+#~ msgstr "Prefix de ataÅŸat la nume fiÅŸier miniaturÄƒ:"
 
 #~ msgid "Use high-quality intermediate for generating thumbnail"
-#~ msgstr "Foloseºte intermediar de calitate înaltã pentru a genera miniatura"
+#~ msgstr "FoloseÅŸte intermediar de calitate Ã®naltÄƒ pentru a genera miniatura"
 
 #~ msgid ""
 #~ "(This'll chug loads of CPU, but will prevent compressing the image twice if "
@@ -4710,11 +4643,11 @@ msgstr ""
 #~ "cherish\n"
 #~ "speed and don't mind imperfection in your thumbnails."
 #~ msgstr ""
-#~ "(Aceata o sã mestece încãrcãturi de CPU, dar o sã previna compresarea "
-#~ "imaginii de douã ori daca folosişi\n"
+#~ "(Aceata o sÄƒ mestece Ã®ncÄƒrcÄƒturi de CPU, dar o sÄƒ previna compresarea "
+#~ "imaginii de douÄƒ ori daca folosiÅ£i\n"
 #~ "un format cu pierderi)\n"
-#~ "Nu folosişi aceasta daca folosişi un format de compresie fãrã pierderi, sau "
-#~ "dacã vã bucuraşi de vitezã ºi nu vã supãrã imprefecşia in miniaturile dvs."
+#~ "Nu folosiÅ£i aceasta daca folosiÅ£i un format de compresie fÄƒrÄƒ pierderi, sau "
+#~ "dacÄƒ vÄƒ bucuraÅ£i de vitezÄƒ ÅŸi nu vÄƒ supÄƒrÄƒ imprefecÅ£ia in miniaturile dvs."
 
 #~ msgid "Thumbnails"
 #~ msgstr "Miniaturi"
@@ -4725,24 +4658,24 @@ msgstr ""
 #~ "intermediate\n"
 #~ "image. Intensive operations may take some time on less spiffy CPUs."
 #~ msgstr ""
-#~ "Toate opşiunile de post-procesare, decorare ºi deformare vor ocupa mai mult "
+#~ "Toate opÅ£iunile de post-procesare, decorare ÅŸi deformare vor ocupa mai mult "
 #~ "procesor\n"
-#~ "decât o simplã capturã de ecran, din cauza creãrii ºi apoi a conversiei unei "
+#~ "decÃ¢t o simplÄƒ capturÄƒ de ecran, din cauza creÄƒrii ÅŸi apoi a conversiei unei "
 #~ "imagini\n"
 #~ "intermediare.\n"
-#~ "Operaşiunile intensive pot lua ceva timp pe procesoare mai slãbuşe."
+#~ "OperaÅ£iunile intensive pot lua ceva timp pe procesoare mai slÄƒbuÅ£e."
 
 #~ msgid ""
 #~ "Normalize image (Span full range of color values to enhance contrast)"
 #~ msgstr ""
-#~ "Normalizeazã imaginea (întinde pe toatã gama de culori pentru a mãri "
+#~ "NormalizeazÄƒ imaginea (Ã®ntinde pe toatÄƒ gama de culori pentru a mÄƒri "
 #~ "contrastul)"
 
 #~ msgid "Equalize image (Perform histogram equalization)"
-#~ msgstr "Egalizeazã imaginea (Efectueazã egalizarea histogramei)"
+#~ msgstr "EgalizeazÄƒ imaginea (EfectueazÄƒ egalizarea histogramei)"
 
 #~ msgid "Enhance image (reduce noise)"
-#~ msgstr "Îmbunãtãşeºte imaginea (reduce zgomotul)"
+#~ msgstr "ÃmbunÄƒtÄƒÅ£eÅŸte imaginea (reduce zgomotul)"
 
 #~ msgid "Despeckle Image (reduce spots)"
 #~ msgstr "Despeckle imaginea (reduce punctele)"
@@ -4751,10 +4684,10 @@ msgstr ""
 #~ msgstr "Ascute imaginea cu ce factor?"
 
 #~ msgid "Rotate image clockwise by how many degrees?"
-#~ msgstr "Roteºte imaginea în sensul acelor de ceasornic cu câte grade?"
+#~ msgstr "RoteÅŸte imaginea Ã®n sensul acelor de ceasornic cu cÃ¢te grade?"
 
 #~ msgid "Adjust gamma"
-#~ msgstr "Ajusteazã gamma"
+#~ msgstr "AjusteazÄƒ gamma"
 
 #~ msgid "Gamma value"
 #~ msgstr "Valoare gamma"
@@ -4763,24 +4696,24 @@ msgstr ""
 #~ msgstr "Post procesare"
 
 #~ msgid "Create frame around image"
-#~ msgstr "Creeazã ramã în jurul imaginii"
+#~ msgstr "CreeazÄƒ ramÄƒ Ã®n jurul imaginii"
 
 #~ msgid "Frame Width (pixels)"
-#~ msgstr "Lãşime frame (pixeli)"
+#~ msgstr "LÄƒÅ£ime frame (pixeli)"
 
 #~ msgid "Mirror image vertically"
-#~ msgstr "Oglindeºte imaginea vertical"
+#~ msgstr "OglindeÅŸte imaginea vertical"
 
 #~ msgid "Mirror image horizontally"
-#~ msgstr "Oglindeºte imaginea orizontal"
+#~ msgstr "OglindeÅŸte imaginea orizontal"
 
 #~ msgid "Emboss image"
-#~ msgstr "Reliefeazã imaginea"
+#~ msgstr "ReliefeazÄƒ imaginea"
 
 #~ msgid ""
 #~ "When finished, send image and thumbnail filenames to script/program below"
 #~ msgstr ""
-#~ "Când s-a terminat, trimite imaginea ºi miniatura scriptului/programului de "
+#~ "CÃ¢nd s-a terminat, trimite imaginea ÅŸi miniatura scriptului/programului de "
 #~ "mai jos"
 
 #~ msgid "Script or program to launch:"
@@ -4794,101 +4727,101 @@ msgstr ""
 #~ "Hint: I use a script to update my website screenshot page.\n"
 #~ "An example script should've been included in the tarball, or at my website."
 #~ msgstr ""
-#~ "Scriptul/programul o sã fie lansat dupã crearea imaginii cu numele "
-#~ "fiºierelor\n"
-#~ "specificat în linia de commandã precum urmeazã:\n"
+#~ "Scriptul/programul o sÄƒ fie lansat dupÄƒ crearea imaginii cu numele "
+#~ "fiÅŸierelor\n"
+#~ "specificat Ã®n linia de commandÄƒ precum urmeazÄƒ:\n"
 #~ "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
 #~ "Sfat: Eu folosesc un script pentru a actualiza pagina screenshot a web "
 #~ "siteului meu.\n"
-#~ "Un exemplu de script ar fi trebuit sã fie inclus, sau pe web siteul meu."
+#~ "Un exemplu de script ar fi trebuit sÄƒ fie inclus, sau pe web siteul meu."
 
 #~ msgid "Frills"
-#~ msgstr "Decoraşiuni"
+#~ msgstr "DecoraÅ£iuni"
 
 #~ msgid "Blur image"
-#~ msgstr "Disperseazã imaginea"
+#~ msgstr "DisperseazÄƒ imaginea"
 
 #~ msgid "Blur image by what factor?"
-#~ msgstr "Disperseazã imaginea cu ce factor?"
+#~ msgstr "DisperseazÄƒ imaginea cu ce factor?"
 
 #~ msgid "Create Charcoal Effect"
-#~ msgstr "Creaazã efect charcoal"
+#~ msgstr "CreaazÄƒ efect charcoal"
 
 #~ msgid "Charcoal by what factor?"
 #~ msgstr "Charcoal cu ce factor?"
 
 #~ msgid "Find Edges in Image"
-#~ msgstr "Gãseºte marginile în imagine"
+#~ msgstr "GÄƒseÅŸte marginile Ã®n imagine"
 
 #~ msgid "Find edges by what factor?"
-#~ msgstr "Gãseºte marginile în imagine cu ce factor?"
+#~ msgstr "GÄƒseÅŸte marginile Ã®n imagine cu ce factor?"
 
 #~ msgid "Implode Image"
-#~ msgstr "Deformeazã imaginea"
+#~ msgstr "DeformeazÄƒ imaginea"
 
 #~ msgid "Implode by what factor?"
-#~ msgstr "Deformeazã cu ce factor?"
+#~ msgstr "DeformeazÄƒ cu ce factor?"
 
 #~ msgid "Spurious"
-#~ msgstr "Deformãri"
+#~ msgstr "DeformÄƒri"
 
 #~ msgid "Create Painted Effect"
-#~ msgstr "Creeazã efect de picturã"
+#~ msgstr "CreeazÄƒ efect de picturÄƒ"
 
 #~ msgid "Paint what radius around each pixel?"
-#~ msgstr "Picteazã cu câte grade în jurul fiecãrui pixel?"
+#~ msgstr "PicteazÄƒ cu cÃ¢te grade Ã®n jurul fiecÄƒrui pixel?"
 
 #~ msgid "Solarise Image"
-#~ msgstr "Solarizeazã imaginea"
+#~ msgstr "SolarizeazÄƒ imaginea"
 
 #~ msgid "Solarize factor?"
 #~ msgstr "Factor solarizare?"
 
 #~ msgid "Spread image pixels"
-#~ msgstr "Împrãºtie pixelii imaginii"
+#~ msgstr "ÃmprÄƒÅŸtie pixelii imaginii"
 
 #~ msgid "Radius to around each pixel to spread?"
-#~ msgstr "Gradul de împrãºtiere în jurul fiecãrui pixel?"
+#~ msgstr "Gradul de Ã®mprÄƒÅŸtiere Ã®n jurul fiecÄƒrui pixel?"
 
 #~ msgid "Swirl pixels. My favorite :-)"
-#~ msgstr "Rãsuceste pixelii. Favoritul meu :-)"
+#~ msgstr "RÄƒsuceste pixelii. Favoritul meu :-)"
 
 #~ msgid "Radius to swirl pixels around?)"
-#~ msgstr "Gradul de rãsucire a pixelilor?"
+#~ msgstr "Gradul de rÄƒsucire a pixelilor?"
 
 #~ msgid "Spurious 2"
-#~ msgstr "Deformãri 2"
+#~ msgstr "DeformÄƒri 2"
 
 #~ msgid "Grab a shot of a specific window or area"
-#~ msgstr "Captureazã o pozã a unei zone specifice a ferestrei"
+#~ msgstr "CaptureazÄƒ o pozÄƒ a unei zone specifice a ferestrei"
 
 #~ msgid "Grab a shot of your entire desktop"
-#~ msgstr "Captureazã o pozã a întregului desktop"
+#~ msgstr "CaptureazÄƒ o pozÄƒ a Ã®ntregului desktop"
 
 #~ msgid ""
 #~ "There was a word expansion error\n"
 #~ "I think you have stuck something funny in the directory box\n"
 #~ "Screenshot aborted"
 #~ msgstr ""
-#~ "A fost o eroare de expandara a cuvântului\n"
-#~ "Cred cã aşi introdus ceva ciudat în cutia directorului\n"
-#~ "Capturarea opritã"
+#~ "A fost o eroare de expandara a cuvÃ¢ntului\n"
+#~ "Cred cÄƒ aÅ£i introdus ceva ciudat Ã®n cutia directorului\n"
+#~ "Capturarea opritÄƒ"
 
 #~ msgid ""
 #~ "There was a word expansion error\n"
 #~ "I think you have stuck something funny in the filename box\n"
 #~ "Screenshot aborted"
 #~ msgstr ""
-#~ "A fost o eroare de expandara a cuvântului\n"
-#~ "Cred cã aşi introdus ceva ciudat în cutia fiºierului\n"
-#~ "Capturarea opritã"
+#~ "A fost o eroare de expandara a cuvÃ¢ntului\n"
+#~ "Cred cÄƒ aÅ£i introdus ceva ciudat Ã®n cutia fiÅŸierului\n"
+#~ "Capturarea opritÄƒ"
 
 #~ msgid ""
 #~ "There was a word expansion error\n"
 #~ "I think you have stuck something funny in the filename box"
 #~ msgstr ""
-#~ "A fost o eroare de expandara a cuvântului\n"
-#~ "Cred cã aşi introdus ceva ciudat în cutia fiºierului"
+#~ "A fost o eroare de expandara a cuvÃ¢ntului\n"
+#~ "Cred cÄƒ aÅ£i introdus ceva ciudat Ã®n cutia fiÅŸierului"
 
 #~ msgid ""
 #~ "The specified filename:\n"
@@ -4897,11 +4830,11 @@ msgstr ""
 #~ "%s\n"
 #~ "when passed to a shell"
 #~ msgstr ""
-#~ "Numele fiºierului specificat :\n"
+#~ "Numele fiÅŸierului specificat :\n"
 #~ "%s\n"
 #~ "este extins la:\n"
 #~ "%s\n"
-#~ "când este pasat unui shell"
+#~ "cÃ¢nd este pasat unui shell"
 
 #~ msgid "Site"
 #~ msgstr "Site"
@@ -4916,7 +4849,7 @@ msgstr ""
 #~ msgstr "Articole"
 
 #~ msgid "Delay between articles (10 = 1 sec):"
-#~ msgstr "Pauzã între articole (10 = 1 sec):"
+#~ msgstr "PauzÄƒ Ã®ntre articole (10 = 1 sec):"
 
 #~ msgid "Proxy Host: "
 #~ msgstr "Host proxy:"
@@ -4925,28 +4858,25 @@ msgstr ""
 #~ msgstr "Port proxy:"
 
 #~ msgid "(These settings do not take effect until a refresh)"
-#~ msgstr "(Aceste setãri nu devin active pânã la o reîmprospãtare)"
+#~ msgstr "(Aceste setÄƒri nu devin active pÃ¢nÄƒ la o reÃ®mprospÄƒtare)"
 
 #~ msgid "Scrolling"
 #~ msgstr "Derulare"
 
 #~ msgid "Smooth scroll"
-#~ msgstr "Derulare linã"
+#~ msgstr "Derulare linÄƒ"
 
 #~ msgid "Smooth type"
 #~ msgstr "Tip derulare"
 
-#~ msgid "Speed"
-#~ msgstr "Vitezã"
-
 #~ msgid "Delay when wrapping text:"
-#~ msgstr "Pauzã când împart textul:"
+#~ msgstr "PauzÄƒ cÃ¢nd Ã®mpart textul:"
 
 #~ msgid "Scroll speed between lines (Smooth scroll):"
-#~ msgstr "Vitezã derulare între linii (derulare linã):"
+#~ msgstr "VitezÄƒ derulare Ã®ntre linii (derulare linÄƒ):"
 
 #~ msgid "Loading headlines..."
-#~ msgstr "Încarc titluri ºtiri..."
+#~ msgstr "Ãncarc titluri ÅŸtiri..."
 
 #~ msgid "Unable to create user directory: %s\n"
 #~ msgstr "Nu se poate creea director utilizator: %s\n"
@@ -4973,7 +4903,7 @@ msgstr ""
 #~ msgstr "Applet\n"
 
 #~ msgid "SlashApp Article List"
-#~ msgstr "Listã articole SlashApp"
+#~ msgstr "ListÄƒ articole SlashApp"
 
 #~ msgid "No articles"
 #~ msgstr "Nici un articol"
@@ -4982,13 +4912,13 @@ msgstr ""
 #~ msgstr "Documentul nu poate fi citit\n"
 
 #~ msgid "Can't parse XML. Net connection down?"
-#~ msgstr "Nu pot parse-ui XML-ul. Conexiunea la reşea este opritã?"
+#~ msgstr "Nu pot parse-ui XML-ul. Conexiunea la reÅ£ea este opritÄƒ?"
 
 #~ msgid "Unable to initialize request. Shouldn't happen\n"
-#~ msgstr "Nu se poate inişializa cererea. N-ar trebui sã se întâmple\n"
+#~ msgstr "Nu se poate iniÅ£ializa cererea. N-ar trebui sÄƒ se Ã®ntÃ¢mple\n"
 
 #~ msgid "Unable to prepare request.\n"
-#~ msgstr "Nu se poate pregãti cererea.\n"
+#~ msgstr "Nu se poate pregÄƒti cererea.\n"
 
 #~ msgid "Unable to process request.\n"
 #~ msgstr "Nu se poate procesa cererea.\n"
@@ -5007,18 +4937,18 @@ msgstr ""
 #~ "\n"
 #~ "Released under the GNU general public license."
 #~ msgstr ""
-#~ "Interfaşã monitor sunet la Esound\n"
+#~ "InterfaÅ£Äƒ monitor sunet la Esound\n"
 #~ "\n"
-#~ "Publicat sub licenşa publicã generalã GNU."
+#~ "Publicat sub licenÅ£a publicÄƒ generalÄƒ GNU."
 
 #~ msgid "Place Esound in standby"
-#~ msgstr "Mutã Esound în standby"
+#~ msgstr "MutÄƒ Esound Ã®n standby"
 
 #~ msgid "Resume Esound"
 #~ msgstr "Reia Esound"
 
 #~ msgid "Start Esound"
-#~ msgstr "Porneºte Esound"
+#~ msgstr "PorneÅŸte Esound"
 
 #~ msgid "Manager..."
 #~ msgstr "Manager..."
@@ -5033,7 +4963,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Rate"
-#~ msgstr "datã"
+#~ msgstr "datÄƒ"
 
 #, fuzzy
 #~ msgid "Format"
@@ -5052,7 +4982,7 @@ msgstr ""
 #~ msgstr "Sud est"
 
 #~ msgid "Balance"
-#~ msgstr "Balanşã"
+#~ msgstr "BalanÅ£Äƒ"
 
 #~ msgid ""
 #~ "You have enabled the \"Monitor sound input\" option.\n"
@@ -5063,14 +4993,14 @@ msgstr ""
 #~ "\n"
 #~ "You have been warned!"
 #~ msgstr ""
-#~ "Aşi activat opşiunea \"Monitorizeazã intrare sunet\".\n"
+#~ "AÅ£i activat opÅ£iunea \"MonitorizeazÄƒ intrare sunet\".\n"
 #~ "\n"
-#~ "Dacã placa dvs. de sunet nu este 100% FULL DUPLEX (poate face intrare ºi "
-#~ "ieºire simultan),\n"
-#~ "atunci aceasta poate atinge buguri în driverul de sunet care ar putea bloca "
+#~ "DacÄƒ placa dvs. de sunet nu este 100% FULL DUPLEX (poate face intrare ÅŸi "
+#~ "ieÅŸire simultan),\n"
+#~ "atunci aceasta poate atinge buguri Ã®n driverul de sunet care ar putea bloca "
 #~ "sistemul.\n"
 #~ "\n"
-#~ "Aşi fost avertizat!"
+#~ "AÅ£i fost avertizat!"
 
 #, fuzzy
 #~ msgid "Sound Monitor Applet Settings"
@@ -5086,23 +5016,23 @@ msgstr ""
 #~ msgstr "lin"
 
 #~ msgid "Peak indicator falloff speed"
-#~ msgstr "Viteza cãdere indicator vârf"
+#~ msgstr "Viteza cÄƒdere indicator vÃ¢rf"
 
 #~ msgid "Scope (scale 1:X, where X = ? )"
 #~ msgstr "Scope (scara 1:X, unde X = ? )"
 
 #~ msgid "Connect points in scope"
-#~ msgstr "Conecteazã punctele în scope"
+#~ msgstr "ConecteazÄƒ punctele Ã®n scope"
 
 #~ msgid "Screen refresh (frames per second)"
-#~ msgstr "Reîmprospãtare ecran (cadre pe secunda)"
+#~ msgstr "ReÃ®mprospÄƒtare ecran (cadre pe secunda)"
 
 #~ msgid "ESD host to monitor:"
-#~ msgstr "Gazda ESD pe care sã o monitorizez:"
+#~ msgstr "Gazda ESD pe care sÄƒ o monitorizez:"
 
 #~ msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
 #~ msgstr ""
-#~ "Monitorizeazã intrare sunet (folosişi numai dacã placa de sunet este FULL "
+#~ "MonitorizeazÄƒ intrare sunet (folosiÅ£i numai dacÄƒ placa de sunet este FULL "
 #~ "DUPLEX)"
 
 #~ msgid "Tick-a-Stat event log"
@@ -5121,19 +5051,19 @@ msgstr ""
 #~ msgstr "(C) 1999 John Ellis"
 
 #~ msgid "A ticker to display various information and statistics.\n"
-#~ msgstr "Un ticker pentru a afiºa diverse informaşii ºi statistici.\n"
+#~ msgstr "Un ticker pentru a afiÅŸa diverse informaÅ£ii ÅŸi statistici.\n"
 
 #~ msgid "unable to create user directory: %s\n"
 #~ msgstr "Nu se poate crea directorul user: %s\n"
 
 #~ msgid "The unique information and status ticker."
-#~ msgstr "Informaşia unicã ºi tickerul status."
+#~ msgstr "InformaÅ£ia unicÄƒ ÅŸi tickerul status."
 
 #~ msgid "Event log..."
 #~ msgstr "Log evenimente..."
 
 #~ msgid "Core dump information (Tick-a-Stat)"
-#~ msgstr "Core dump informaşie (Tick-a-Stat)"
+#~ msgstr "Core dump informaÅ£ie (Tick-a-Stat)"
 
 #~ msgid "Core dump module (Tick-A-Stat)"
 #~ msgstr "Core dump modul (Tick-A-Stat)"
@@ -5143,16 +5073,16 @@ msgstr ""
 #~ "processing a core file..."
 #~ msgstr ""
 #~ "Core dump modul\n"
-#~ "proceseazã un fiºier core..."
+#~ "proceseazÄƒ un fiÅŸier core..."
 
 #~ msgid "Core Dump Module"
 #~ msgstr "Modul Core Dump"
 
 #~ msgid "Enable this module"
-#~ msgstr "Activeazã acest modul"
+#~ msgstr "ActiveazÄƒ acest modul"
 
 #~ msgid "Show backtrace dialog on new core files"
-#~ msgstr "Afiºeazã dialogul backtrace pe fiºiere core noi"
+#~ msgstr "AfiÅŸeazÄƒ dialogul backtrace pe fiÅŸiere core noi"
 
 #~ msgid "Path to monitor:"
 #~ msgstr "Calea de monitorizat:"
@@ -5164,48 +5094,45 @@ msgstr ""
 #~ "This module monitors a path for core dumps, if one is\n"
 #~ " found it is time stamped and a backtrace logged (using gdb)."
 #~ msgstr ""
-#~ "Acest modul monitorizeazã o cale pentru core dump, dacã una este\n"
-#~ " gasitã este marcatã cu timpul ºi logat un backtrace (folosind gdb)."
+#~ "Acest modul monitorizeazÄƒ o cale pentru core dump, dacÄƒ una este\n"
+#~ " gasitÄƒ este marcatÄƒ cu timpul ÅŸi logat un backtrace (folosind gdb)."
 
 #~ msgid "Load Average information (Tick-a-Stat)"
-#~ msgstr "Informaşie Încãrcãturã medie (Tick-a-Stat)"
+#~ msgstr "InformaÅ£ie ÃncÄƒrcÄƒturÄƒ medie (Tick-a-Stat)"
 
 #~ msgid "The Load average is very high."
-#~ msgstr "Încãrcãtura medie este foarte ridicatã."
+#~ msgstr "ÃncÄƒrcÄƒtura medie este foarte ridicatÄƒ."
 
 #~ msgid "Load average is at a critical point, help me!"
-#~ msgstr "Încãrcãtura medie este la un punct critic, ajutor!"
+#~ msgstr "ÃncÄƒrcÄƒtura medie este la un punct critic, ajutor!"
 
 #~ msgid "Load Average Module"
-#~ msgstr "Modul Încãrcãturã medie"
+#~ msgstr "Modul ÃncÄƒrcÄƒturÄƒ medie"
 
 #~ msgid "Check every:"
 #~ msgstr "Verifica la fiecare:"
 
-#~ msgid "Warning options"
-#~ msgstr "Opşiuni atenşionare"
-
 #~ msgid "Show pop-up dialog for this event"
-#~ msgstr "Aratã dialoguri pop-up pentru acest eveniment"
+#~ msgstr "AratÄƒ dialoguri pop-up pentru acest eveniment"
 
 #~ msgid "Load average threshhold:"
-#~ msgstr "Threshold Încãrcãturã medie"
+#~ msgstr "Threshold ÃncÄƒrcÄƒturÄƒ medie"
 
 #~ msgid "Text to display:"
-#~ msgstr "Text de afiºat:"
+#~ msgstr "Text de afiÅŸat:"
 
 #~ msgid "Alert options"
-#~ msgstr "Opşiuni alerte"
+#~ msgstr "OpÅ£iuni alerte"
 
 #~ msgid "Load average monitor"
-#~ msgstr "Monitor Încãrcãturã medie"
+#~ msgstr "Monitor ÃncÄƒrcÄƒturÄƒ medie"
 
 #~ msgid ""
 #~ "This module monitors the system load average,\n"
 #~ " and displays warning when it rises above certain points."
 #~ msgstr ""
-#~ "Acest modul monitorizeazã încãrcãtura medie a sistemului,\n"
-#~ " ºi afiºeazã mesaje de eroare când creºte peste anumite puncte."
+#~ "Acest modul monitorizeazÄƒ Ã®ncÄƒrcÄƒtura medie a sistemului,\n"
+#~ " ÅŸi afiÅŸeazÄƒ mesaje de eroare cÃ¢nd creÅŸte peste anumite puncte."
 
 #~ msgid "script \""
 #~ msgstr "script \""
@@ -5217,7 +5144,7 @@ msgstr ""
 #~ msgstr "Activat"
 
 #~ msgid "Line delay"
-#~ msgstr "Întârziere linie"
+#~ msgstr "ÃntÃ¢rziere linie"
 
 #~ msgid "Update interval"
 #~ msgstr "Interval actualizare"
@@ -5235,7 +5162,7 @@ msgstr ""
 #~ msgstr "B"
 
 #~ msgid "News and Information Module"
-#~ msgstr "Modul ªtiri ºi informaşii"
+#~ msgstr "Modul Åtiri ÅŸi informaÅ£ii"
 
 #~ msgid "Line (s):"
 #~ msgstr "Linie (linii):"
@@ -5244,56 +5171,53 @@ msgstr ""
 #~ msgstr "Actualizare (m)"
 
 #~ msgid "body"
-#~ msgstr "conşinut"
+#~ msgstr "conÅ£inut"
 
 #~ msgid "image"
 #~ msgstr "imagine"
 
 #~ msgid "date"
-#~ msgstr "datã"
-
-#~ msgid "Show:"
-#~ msgstr "Aratã:"
+#~ msgstr "datÄƒ"
 
 #~ msgid "News and information ticker"
-#~ msgstr "ªtiri ºi informaşii ticker"
+#~ msgstr "Åtiri ÅŸi informaÅ£ii ticker"
 
 #~ msgid "This module can display news and other information."
-#~ msgstr "Acest modul poate afiºa ºtiri ºi alte informaşii."
+#~ msgstr "Acest modul poate afiÅŸa ÅŸtiri ÅŸi alte informaÅ£ii."
 
 #~ msgid "File tail view file (Tick-a-Stat)"
-#~ msgstr "Vizualizeazã fiºier (coada) (Tick-a-Stat)"
+#~ msgstr "VizualizeazÄƒ fiÅŸier (coada) (Tick-a-Stat)"
 
 #~ msgid "no file specified"
-#~ msgstr "nici un fiºier specificat"
+#~ msgstr "nici un fiÅŸier specificat"
 
 #~ msgid "File tail information (Tick-a-Stat)"
-#~ msgstr "Informaşii coadã fiºier (Tick-a-Stat)"
+#~ msgstr "InformaÅ£ii coadÄƒ fiÅŸier (Tick-a-Stat)"
 
 #~ msgid "File tail for "
-#~ msgstr "Coadã fiºier pentru "
+#~ msgstr "CoadÄƒ fiÅŸier pentru "
 
 #~ msgid "File Tail Module"
-#~ msgstr "Modul Coadã fiºier"
+#~ msgstr "Modul CoadÄƒ fiÅŸier"
 
 #~ msgid "Path to tail:"
-#~ msgstr "Calea pentru coadã:"
+#~ msgstr "Calea pentru coadÄƒ:"
 
 #~ msgid "Choose a file to tail"
-#~ msgstr "Alegeşi un fiºier pentru a-i afiºa coada"
+#~ msgstr "AlegeÅ£i un fiÅŸier pentru a-i afiÅŸa coada"
 
 #~ msgid "Show pop up dialog for new lines."
-#~ msgstr "Aratã dialog pop up pentru linii noi."
+#~ msgstr "AratÄƒ dialog pop up pentru linii noi."
 
 #~ msgid "File tailer"
-#~ msgstr "Coadã fiºier"
+#~ msgstr "CoadÄƒ fiÅŸier"
 
 #~ msgid ""
 #~ "This module monitors a file for appended text,\n"
 #~ " and prints it. Useful for log files."
 #~ msgstr ""
-#~ "Acest module monitorizeazã un fiºier pentur text adaugat,\n"
-#~ " ºi îl afiºeazã. Folositor pentru fiºiere loguri."
+#~ "Acest module monitorizeazÄƒ un fiÅŸier pentur text adaugat,\n"
+#~ " ÅŸi Ã®l afiÅŸeazÄƒ. Folositor pentru fiÅŸiere loguri."
 
 #~ msgid "Test Module"
 #~ msgstr "Modul test"
@@ -5308,19 +5232,19 @@ msgstr ""
 #~ msgstr "Log evenimente"
 
 #~ msgid "Enable logging of events"
-#~ msgstr "Activeazã logarea evenimentelor"
+#~ msgstr "ActiveazÄƒ logarea evenimentelor"
 
 #~ msgid "Log path:"
 #~ msgstr "Calea log:"
 
 #~ msgid "Choose a log file"
-#~ msgstr "Alegeşi un fiºier log:"
+#~ msgstr "AlegeÅ£i un fiÅŸier log:"
 
 #~ msgid "Width:"
-#~ msgstr "Lãşime:"
+#~ msgstr "LÄƒÅ£ime:"
 
 #~ msgid "Use panel size hint"
-#~ msgstr "Foloseºte hintul de mãrime panel"
+#~ msgstr "FoloseÅŸte hintul de mÄƒrime panel"
 
 #~ msgid "The Web Browser Controller"
 #~ msgstr "Controler browser web"
@@ -5329,8 +5253,8 @@ msgstr ""
 #~ "An applet to launch URLs in a web browser, search using various web sites "
 #~ "and have a ton of fun!"
 #~ msgstr ""
-#~ "Un applet de lansare URL-uri într-un navigator web, cautã utilizând diverse "
-#~ "site-uri web ºi se distreazã de minune!"
+#~ "Un applet de lansare URL-uri Ã®ntr-un navigator web, cautÄƒ utilizÃ¢nd diverse "
+#~ "site-uri web ÅŸi se distreazÄƒ de minune!"
 
 #~ msgid "URL:"
 #~ msgstr "URL:"
@@ -5339,10 +5263,10 @@ msgstr ""
 #~ msgstr "Du-te"
 
 #~ msgid " Clear "
-#~ msgstr "ªterge"
+#~ msgstr "Återge"
 
 #~ msgid "Launch new window"
-#~ msgstr "Lanseazã fereastrã nouã"
+#~ msgstr "LanseazÄƒ fereastrÄƒ nouÄƒ"
 
 #~ msgid "Where Am I?"
 #~ msgstr "Unde sunt?"
@@ -5355,21 +5279,21 @@ msgstr ""
 #~ "= Clicking mouse button 1 grabs the cursor.\n"
 #~ "= Dragging with mouse button 1 held down shows the size of the region."
 #~ msgstr ""
-#~ "Applet care raporteazã pozişia cursorului.\n"
-#~ "= Apãsând butonul 1 al mouseului apucã cursorul.\n"
-#~ "= Tragând cu butonul 1 apãsat aratã mãrimea regiunii."
+#~ "Applet care raporteazÄƒ poziÅ£ia cursorului.\n"
+#~ "= ApÄƒsÃ¢nd butonul 1 al mouseului apucÄƒ cursorul.\n"
+#~ "= TragÃ¢nd cu butonul 1 apÄƒsat aratÄƒ mÄƒrimea regiunii."
 
 #~ msgid "whereami_applet"
 #~ msgstr "whereami_applet"
 
 #~ msgid "Info and status ticker"
-#~ msgstr "Afiºaj de informaşii ºi stãri"
+#~ msgstr "AfiÅŸaj de informaÅ£ii ÅŸi stÄƒri"
 
 #~ msgid "Clipboard"
 #~ msgstr "Clipboard"
 
 #~ msgid "Copy multiple selections into a persistant clipboard"
-#~ msgstr "Copiazã selecşii multiple într-un clipboard persistent"
+#~ msgstr "CopiazÄƒ selecÅ£ii multiple Ã®ntr-un clipboard persistent"
 
 #~ msgid "AfterStep Clock"
 #~ msgstr "Ceas AfterStep"
@@ -5378,7 +5302,7 @@ msgstr ""
 #~ msgstr "Doar alt ceas"
 
 #~ msgid "Mounts and unmount drives"
-#~ msgstr "Monteazã ºi demonteazã dispozitive"
+#~ msgstr "MonteazÄƒ ÅŸi demonteazÄƒ dispozitive"
 
 #~ msgid "CPU/MEM usage"
 #~ msgstr "Utilizare CPU/MEM"
@@ -5393,16 +5317,16 @@ msgstr ""
 #~ msgstr "Alt ceas"
 
 #~ msgid "Clock and Mailcheck"
-#~ msgstr "Ceas ºi verificare mesaje"
+#~ msgstr "Ceas ÅŸi verificare mesaje"
 
 #~ msgid "Displays new mail and time"
-#~ msgstr "Afiºeazã mesajele noi ºi timpul"
+#~ msgstr "AfiÅŸeazÄƒ mesajele noi ÅŸi timpul"
 
 #~ msgid "Show last news from slashdot.org"
-#~ msgstr "Afiºeazã ultimele noutãşi de la slashdot.org"
+#~ msgstr "AfiÅŸeazÄƒ ultimele noutÄƒÅ£i de la slashdot.org"
 
 #~ msgid "Shows Cursor Position"
-#~ msgstr "Afiºeazã pozişie cursor"
+#~ msgstr "AfiÅŸeazÄƒ poziÅ£ie cursor"
 
 #~ msgid "Fifteen"
 #~ msgstr "Fifteen"
@@ -5423,16 +5347,16 @@ msgstr ""
 #~ msgstr "Mixer"
 
 #~ msgid "QuickLaunch"
-#~ msgstr "Lansare rapidã"
+#~ msgstr "Lansare rapidÄƒ"
 
 #~ msgid "Small Launchers "
 #~ msgstr "Lansatoare mici"
 
 #~ msgid "Mouse movements counter"
-#~ msgstr "Contor miºcãri mouse"
+#~ msgstr "Contor miÅŸcÄƒri mouse"
 
 #~ msgid "Screen Shooter is a screenshot grabber"
-#~ msgstr "ScreenShooter captureazã ecranul într-o imagine"
+#~ msgstr "ScreenShooter captureazÄƒ ecranul Ã®ntr-o imagine"
 
 #~ msgid "ScreenShooter"
 #~ msgstr "Capturare ecran"
@@ -5441,13 +5365,13 @@ msgstr ""
 #~ msgstr "Monitor utilizare disk"
 
 #~ msgid "Game of Life"
-#~ msgstr "Jocul vieşii"
+#~ msgstr "Jocul vieÅ£ii"
 
 #~ msgid "The Game of Life (to waste your time)"
-#~ msgstr "Jocul vieşii (pentru pierdere de timp)"
+#~ msgstr "Jocul vieÅ£ii (pentru pierdere de timp)"
 
 #~ msgid "Displays the time whith in binary representation"
-#~ msgstr "Afiºeazã timpul în reprezentare binarã"
+#~ msgstr "AfiÅŸeazÄƒ timpul Ã®n reprezentare binarÄƒ"
 
 #~ msgid "JBC Binary Clock"
 #~ msgstr "Ceasul binar al lui Jon"
@@ -5456,7 +5380,7 @@ msgstr ""
 #~ msgstr "ESounD Persistent Volume Daemon versiunea %s\n"
 
 #~ msgid "options:\n"
-#~ msgstr "opşiuni:\n"
+#~ msgstr "opÅ£iuni:\n"
 
 #, fuzzy
 #~ msgid "  -n, --noX     Allow to run without X server\n"
@@ -5471,40 +5395,40 @@ msgstr ""
 #~ msgstr "Comanda conectare:"
 
 #~ msgid "URL bar width:"
-#~ msgstr "Lungime barã URL:"
+#~ msgstr "Lungime barÄƒ URL:"
 
 #~ msgid "Display GO Button"
-#~ msgstr "Afiºeazã buton Du-te"
+#~ msgstr "AfiÅŸeazÄƒ buton Du-te"
 
 #~ msgid "Display \"launch new window\" option"
-#~ msgstr "Afiºeazã opşiunea \"lanseazã fereastrã nouã\""
+#~ msgstr "AfiÅŸeazÄƒ opÅ£iunea \"lanseazÄƒ fereastrÄƒ nouÄƒ\""
 
 #~ msgid "Display \"Clear\" button"
-#~ msgstr "Afiºeazã buton \"ªterge\""
+#~ msgstr "AfiÅŸeazÄƒ buton \"Återge\""
 
 #~ msgid "\"Clear\" button on top?"
-#~ msgstr "Butonul \"ªterge\" pozişionat sus?"
+#~ msgstr "Butonul \"Återge\" poziÅ£ionat sus?"
 
 #~ msgid " URL Activation "
 #~ msgstr " Activare URL "
 
 #~ msgid "Use default MIME handler"
-#~ msgstr "Foloseºte handler-ul MIME"
+#~ msgstr "FoloseÅŸte handler-ul MIME"
 
 #~ msgid "Use custom browser:"
-#~ msgstr "Utilizeazã navigator special:"
+#~ msgstr "UtilizeazÄƒ navigator special:"
 
 #~ msgid "Remove"
-#~ msgstr "Eliminã"
+#~ msgstr "EliminÄƒ"
 
 #~ msgid "Size of URL history: "
 #~ msgstr " Dimensiunea istoricului URL: "
 
 #~ msgid "Clear"
-#~ msgstr "ªterge"
+#~ msgstr "Återge"
 
 #~ msgid "all entries in URL history"
-#~ msgstr "toate intrãrile în istoricul de URL-uri"
+#~ msgstr "toate intrÄƒrile Ã®n istoricul de URL-uri"
 
 #~ msgid "keymap_%d/flag=us.png"
 #~ msgstr "keymap_%d/flag=us.png"
@@ -5519,11 +5443,11 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Page Load"
-#~ msgstr "Încãrcare CPU"
+#~ msgstr "ÃncÄƒrcare CPU"
 
 #, fuzzy
 #~ msgid "PAGE Load"
-#~ msgstr "Încãrcare CPU"
+#~ msgstr "ÃncÄƒrcare CPU"
 
 #~ msgid ""
 #~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
@@ -5533,7 +5457,7 @@ msgstr ""
 #~ "Copyright (C) 1999 dres <dres@debian.org>"
 
 #~ msgid "Update enabled"
-#~ msgstr "Actualizare activatã"
+#~ msgstr "Actualizare activatÄƒ"
 
 #~ msgid "(sec)"
 #~ msgstr "(sec)"
@@ -5551,7 +5475,7 @@ msgstr ""
 #~ msgstr "Control keymap"
 
 #~ msgid "Delete this keymap"
-#~ msgstr "ªterge acest keymap"
+#~ msgstr "Återge acest keymap"
 
 #~ msgid "Keymap icon"
 #~ msgstr "Icon keymap"
@@ -5559,33 +5483,31 @@ msgstr ""
 #~ msgid "Iconpath"
 #~ msgstr "Cale iconuri"
 
-#~ msgid "Full command"
-#~ msgstr "Comanda întreagã"
-
 #~ msgid "Show topic images"
-#~ msgstr "Aratã imagini topic"
+#~ msgstr "AratÄƒ imagini topic"
 
 #~ msgid "Show department"
-#~ msgstr "Aratã departamentul"
+#~ msgstr "AratÄƒ departamentul"
 
 #~ msgid "Show extra information (Time, Author, Comments)"
-#~ msgstr "Aratã extra informaşie (Timp, Autor, Comentarii)"
+#~ msgstr "AratÄƒ extra informaÅ£ie (Timp, Autor, Comentarii)"
 
 #~ msgid "Open new window"
-#~ msgstr "Deschide o nouã fereastrã"
+#~ msgstr "Deschide o nouÄƒ fereastrÄƒ"
 
 #~ msgid ""
 #~ "This applet currently sends getURL commands to netscape throught the -remote "
 #~ "interface.  Hopefully later more webrowsers will be supported."
 #~ msgstr ""
-#~ "Acest applet curent trimite comenzi getURL lui Netscape prin interfaşa "
-#~ "-remote. Sperãm cã mai târziu mai multe browsere web vor fi suportate."
+#~ "Acest applet curent trimite comenzi getURL lui Netscape prin interfaÅ£a "
+#~ "-remote. SperÄƒm cÄƒ mai tÃ¢rziu mai multe browsere web vor fi suportate."
 
 #~ msgid "Url:"
 #~ msgstr "URL:"
 
 #~ msgid "Display URL label"
-#~ msgstr "Afiºeazã etichetã URL"
+#~ msgstr "AfiÅŸeazÄƒ etichetÄƒ URL"
 
 #~ msgid "Look"
-#~ msgstr "Uitã-te"
+#~ msgstr "UitÄƒ-te"
+
