@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.5\n"
-"POT-Creation-Date: 1999-07-10 08:38+0200\n"
+"POT-Creation-Date: 1999-07-10 16:46+0900\n"
 "PO-Revision-Date: 1999-04-18 17:10+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@adam.kaist.ac.kr>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -99,11 +99,11 @@ msgstr "시계 설정"
 #.
 #. ---
 #: another_clock/another_clock.c:215 asclock/dialogs.c:345
-#: battery/properties.c:77 charpick/properties.c:185
-#: clockmail/properties.c:403 diskusage/properties.c:315
-#: drivemount/properties.c:222 fvwm-pager/properties.c:247
-#: mini-commander/src/preferences.c:709 modemlights/properties.c:244
-#: netload/properties.c:280 slashapp/properties.c:347
+#: battery/properties.c:77 clockmail/properties.c:403
+#: diskusage/properties.c:315 drivemount/properties.c:222
+#: fvwm-pager/properties.c:247 mini-commander/src/preferences.c:709
+#: modemlights/properties.c:244 netload/properties.c:280
+#: slashapp/properties.c:347
 msgid "General"
 msgstr "일반"
 
@@ -152,28 +152,30 @@ msgstr "(C) 1999 the Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "CDE 패널의 시계와 비슷한 아날로그 시계"
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:595
-#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
-#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
-#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
-#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
-#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
-#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
-#: webcontrol/webcontrol.c:307
-msgid "About..."
-msgstr "이 프로그램은..."
-
-#: another_clock/another_clock.c:620 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
+#: another_clock/another_clock.c:614 asclock/asclock.c:601
+#: charpick/charpick.c:440 clockmail/clockmail.c:538 diskusage/diskusage.c:799
 #: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
-#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
-#: gnome-pager/gnomepager_applet.c:2556
+#: gkb/gkb.c:618 gnome-pager/gnomepager_applet.c:2556
 #: mini-commander/src/mini-commander_applet.c:252
 #: modemlights/modemlights.c:1018 multiload/cpuload.c:64
 #: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
 #: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
 msgid "Properties..."
 msgstr "속성..."
+
+#: another_clock/another_clock.c:620 battery/battery.c:770
+#: charpick/charpick.c:433 clockmail/clockmail.c:545
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: fifteen/fifteen.c:309 gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550
+#: jbc/jbc-applet.c:141 life/life.c:198 modemlights/modemlights.c:1024
+#: netload/netload.c:339 webcontrol/webcontrol.c:307
+msgid "About..."
+msgstr "이 프로그램은..."
+
+#: asclock/asclock.c:594 mini-commander/src/mini-commander_applet.c:265
+#: slashapp/slashapp.c:58
+msgid "About"
+msgstr "이 프로그램은"
 
 #: asclock/dialogs.c:19
 msgid "ASClock"
@@ -243,7 +245,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "내부 애러: battery_set_mode에 잘못된 모드"
 
 #: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
-#: jbc/jbc-applet.c:129 netload/netload.c:321
+#: jbc/jbc-applet.c:126 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr "애플릿을 만들 수 없음!\n"
 
@@ -399,25 +401,6 @@ msgid ""
 msgstr ""
 "내 키보드에 없는 괴상한 글자를 선택하는 그놈 패널 애플릿.  GNU General "
 "Public License로 배포함"
-
-#: charpick/properties.c:124
-#, fuzzy
-msgid "Character Picker Settings"
-msgstr "문자 선택"
-
-#: charpick/properties.c:131
-msgid "Size of button: (pixels)"
-msgstr ""
-
-#: charpick/properties.c:132
-#, fuzzy
-msgid "Number of rows of buttons:"
-msgstr "가로 태스크의 줄 개수"
-
-#: charpick/properties.c:133
-#, fuzzy
-msgid "Number of columns of buttons:"
-msgstr "세로 태스크의 열 개수"
 
 #: clockmail/clockmail.c:53 slashapp/slashapp.c:124
 #, c-format
@@ -693,6 +676,14 @@ msgstr "Copyright (C) 1998 M. Lausch"
 msgid "Desk %d"
 msgstr "데스크탑 %d"
 
+#: fvwm-pager/fvwm-pager.c:406
+msgid "About\t"
+msgstr "이 프로그램은\t"
+
+#: fvwm-pager/fvwm-pager.c:412
+msgid "Properties"
+msgstr "속성"
+
 #: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
 msgid "Active Window Color"
 msgstr "활성 윈도우 색깔"
@@ -712,38 +703,6 @@ msgstr "비활성 데스크탑 색깔"
 #: fvwm-pager/properties.c:243
 msgid "Fvwm Pager Settings"
 msgstr "Fvwm 페이저 설정"
-
-#: geyes/geyes.c:221
-msgid "Dave Camp <dave@davec.dhs.org>"
-msgstr ""
-
-#: geyes/geyes.c:223
-msgid "gEyes"
-msgstr ""
-
-#: geyes/geyes.c:223
-#, fuzzy
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1998"
-
-#: geyes/geyes.c:225
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr ""
-
-#: geyes/themes.c:160
-#, fuzzy
-msgid "Theme Name"
-msgstr "테마"
-
-#: geyes/themes.c:173
-#, fuzzy
-msgid "gEyes Settings"
-msgstr "설정"
-
-#: geyes/themes.c:195
-#, fuzzy
-msgid "Themes"
-msgstr "테마:"
 
 #: gkb/gkb.c:276
 msgid "GKB settings"
@@ -778,9 +737,8 @@ msgid "The GNOME KeyBoard Applet"
 msgstr "그놈 키보드 애플릿"
 
 #: gkb/gkb.c:528
-#, fuzzy
 msgid "1.0.5"
-msgstr "1.0.1"
+msgstr "1.0.5"
 
 #: gkb/gkb.c:529
 msgid "(C) 1998-99 LSC - Linux Supporting Center"
@@ -1513,29 +1471,26 @@ msgid "Display"
 msgstr "표시"
 
 #: slashapp/slashapp.c:64
-#, fuzzy
 msgid "Refresh"
-msgstr "기사 다시 표시하기"
+msgstr "다시 표시"
 
 #: slashapp/slashapp.c:72
-#, fuzzy
 msgid "Loading headlines..."
 msgstr "헤드라인을 읽고 있습니다........"
 
 #: slashapp/slashapp.c:83
-#, fuzzy, c-format
+#, c-format
 msgid "Creating user directory: %s\n"
 msgstr "사용자 디렉토리 만들기: %s\n"
 
 #: slashapp/slashapp.c:85
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to create user directory: %s\n"
 msgstr "사용자 디렉토리를 만들 수 없습니다: %s\n"
 
 #: slashapp/slashapp.c:126
-#, fuzzy
 msgid "Justin Maurer <justin@slashdot.org>"
-msgstr "Justin Maurer <justin@openprojects.net>"
+msgstr "Justin Maurer <justin@slashdot.org>"
 
 #: slashapp/slashapp.c:128
 msgid "Craig Small <csmall@eye-net.com.au>"
@@ -1550,18 +1505,16 @@ msgid "SlashApp"
 msgstr "SlashApp"
 
 #: slashapp/slashapp.c:133
-#, fuzzy
 msgid "(C) 1998-1999"
-msgstr "(C) 1999"
+msgstr "(C) 1998-1999"
 
 #: slashapp/slashapp.c:135
 msgid "A stock ticker-like applet\n"
-msgstr ""
+msgstr "증권시세표시기와 같은 애플릿\n"
 
 #: slashapp/slashapp.c:149
-#, fuzzy
 msgid "SlashApp Article List"
-msgstr "Slashapp 기사 목록"
+msgstr "SlashApp 기사 목록"
 
 #: slashapp/slashapp.c:236
 msgid "No articles"
@@ -1569,19 +1522,19 @@ msgstr "기사가 없습니다"
 
 #: slashapp/slashapp.c:290
 msgid "Unable to parse document\n"
-msgstr ""
+msgstr "문서를 파싱할 수 없습니다\n"
 
 #: slashapp/slashapp.c:308
 msgid "Unable to initialize request. Shouldn't "
-msgstr ""
+msgstr "요청을 초기화할 수 없습니다. 불가능 "
 
 #: slashapp/slashapp.c:333
 msgid "Unable to prepare request.\n"
-msgstr ""
+msgstr "요청을 준비할 수 없습니다.\n"
 
 #: slashapp/slashapp.c:337
 msgid "Unable to process request.\n"
-msgstr ""
+msgstr "요청을 처리할 수 없습니다.\n"
 
 #: webcontrol/webcontrol.c:56
 msgid "The Web Browser Controller"
@@ -1598,7 +1551,7 @@ msgstr ""
 #. create the widget we are going to put on the applet
 #: webcontrol/webcontrol.c:117
 msgid "Url:"
-msgstr "Url:"
+msgstr "URL:"
 
 #: webcontrol/webcontrol.c:120
 msgid "Clear"
