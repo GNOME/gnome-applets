@@ -6,26 +6,26 @@ doc_DATA =	\
 	topic.dat
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = modemlights.sgml topic.dat
+EXTRA_DIST = modemlights-applet.sgml topic.dat
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
 
-index.html: modemlights/modemlights.html
-	-cp modemlights/modemlights.html index.html
+index.html: modemlights-applet/modemlights-applet.html
+	-cp modemlights-applet/modemlights-applet.html index.html
 
-modemlights/index.html: $(srcdir)/modemlights.sgml
+modemlights-applet/index.html: $(srcdir)/modemlights-applet.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
-	db2html $$srcdir/modemlights.sgml
+	db2html $$srcdir/modemlights-applet.sgml
 
 dist-hook: index.html
-	mkdir $(distdir)/modemlights
-	-cp $(srcdir)/modemlights/*.html $(distdir)/modemlights
-	-cp $(srcdir)/modemlights/*.css $(distcidr)/modemlights
+	mkdir $(distdir)/modemlights-applet
+	-cp $(srcdir)/modemlights-applet/*.html $(distdir)/modemlights-applet
+	-cp $(srcdir)/modemlights-applet/*.css $(distcidr)/modemlights-applet
 
 install-data-local: index.html
 	-$(mkinstalldirs) $(DESTDIR)$(docdir)/fig
-	-for file in modemlights/*.html modemlights/*.css; do \
+	-for file in modemlights-applet/*.html modemlights-applet/*.css; do \
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
 	done
