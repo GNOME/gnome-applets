@@ -154,7 +154,7 @@
 
 		if (!stockdata->extra_font)
 			stockdata->extra_font = gdk_font_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
-g_print ("extra \n");
+
 		if (!stockdata->small_font)
 			stockdata->small_font = gdk_font_load (stockdata->props.font2);
 
@@ -189,9 +189,9 @@ g_print ("extra \n");
 static void xfer_callback (GnomeVFSAsyncHandle *handle, GnomeVFSXferProgressInfo *info, gpointer data)
 {
 	StockData *stockdata = data;
-g_print ("%d \n", info->phase);
+
 	if (info->phase == GNOME_VFS_XFER_PHASE_COMPLETED) {
-g_print ("completed \n");
+
 		if (!configured(stockdata)) {
 			reSetOutputArray(stockdata);
 			fprintf(stderr, "No data!\n");
@@ -205,23 +205,25 @@ g_print ("completed \n");
 static gint updateOutput(gpointer data)
 {
 	StockData *stockdata = data;
-	GList *sources = NULL, *dests = NULL;
+	GList *sources, *dests;
 	GnomeVFSURI *source_uri, *dest_uri;
-	char *source_text_uri;
+	char *source_text_uri, *dest_text_uri;
 	GnomeVFSAsyncHandle *vfshandle;
 
 	source_text_uri = g_strconcat("http://finance.yahoo.com/q?s=",
 				      stockdata->props.tik_syms,
 				      "&d=v2",
 				      NULL);
-g_print ("%s \n", source_text_uri);
+
 	source_uri = gnome_vfs_uri_new(source_text_uri);
-	sources = g_list_append(sources, source_uri);
+	sources = g_list_append(NULL, source_uri);
 	g_free(source_text_uri);
-g_print ("%s \n", stockdata->configFileName);
-	dest_uri = gnome_vfs_uri_new(stockdata->configFileName);
-	dests = g_list_append(dests, dest_uri);
-#if 0
+	dest_text_uri = g_strconcat ("file://",stockdata->configFileName, NULL);
+
+	dest_uri = gnome_vfs_uri_new(dest_text_uri);
+	dests = g_list_append(NULL, dest_uri);
+	g_free (dest_text_uri);
+
 	if (GNOME_VFS_OK !=
 	    gnome_vfs_async_xfer(&vfshandle, sources, dests,
 				 GNOME_VFS_XFER_DEFAULT,
@@ -229,21 +231,13 @@ g_print ("%s \n", stockdata->configFileName);
 				 GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
 				 GNOME_VFS_PRIORITY_DEFAULT,
 				 (GnomeVFSAsyncXferProgressCallback) xfer_callback,
-				 stockdata, 
-				 NULL, NULL)) {
+				 stockdata, NULL, NULL)) {
 		GnomeVFSXferProgressInfo info;
-g_print ("hello \n");
+
 		info.phase = GNOME_VFS_XFER_PHASE_COMPLETED;
 		xfer_callback(NULL, &info, stockdata);
 	}
-#else
-	gnome_vfs_xfer_uri (source_uri, dest_uri, GNOME_VFS_XFER_DEFAULT,
-			    GNOME_VFS_XFER_ERROR_MODE_ABORT,
-			    GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
-			    NULL,
-			    NULL);
-	configured (stockdata);
-#endif
+
 	g_list_free(sources);
 	g_list_free(dests);
 
@@ -372,7 +366,7 @@ g_print ("hello \n");
 		int flag=0;
 		char *section = NULL;
 		char *ptr;
-g_print ("parse \n");
+
 		if (strlen(line) > 64) AllOneLine=1;
 
 		if (AllOneLine) {
@@ -436,7 +430,6 @@ g_print ("parse \n");
 			}
 			linenum++;
 		}
-		g_print ("%s \n", change);
 		sprintf(result,"%s:%s:%s:%s",
 				symbol,price,change,percent);			
 		return(result);
@@ -453,7 +446,7 @@ g_print ("parse \n");
 		static FILE *CONFIG;
 
 		CONFIG = fopen((const char *)stockdata->configFileName,"r");
-g_print ("configured \n");
+
 		retVar = 0;
 
 		/* clear the output variable */
@@ -859,7 +852,6 @@ g_print ("configured \n");
 		if (!symbol)
 			return;
 		
-		g_print ("%s \n", symbol);
 		tmp = stockdata->props.tik_syms;
 		/* don't add the "+" if the symbol is the first one */
 		if (stockdata->props.tik_syms)
@@ -1392,7 +1384,7 @@ g_print ("configured \n");
 				                   stockdata);
 
 		/* KEEPING TIMER ID FOR CLEANUP IN DESTROY */
-		stockdata->drawTimeID = gtk_timeout_add(100,Repaint,stockdata);
+		stockdata->drawTimeID = gtk_timeout_add(4,Repaint,stockdata);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
 				                          updateOutput,stockdata);
 
@@ -1513,7 +1505,6 @@ g_print ("configured \n");
 		}
 
 		sprintf(buff2,"%s %s)",var3,var4);
-		g_print ("%s %s change \n", var4, var3);
 		return(buff2);
 	}
 
@@ -1528,15 +1519,8 @@ g_print ("configured \n");
 
 		quote.price = g_strdup(price);
 		quote.change = g_strdup(change);
+
 #if 0
-		if (strstr(change,"-"))
-			quote.color = RED;
-		else if (strstr(change,"+"))
-			quote.color = GREEN;
-		else
-			quote.color = WHITE;
-#endif
-#if 1
 		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
 #endif
 
