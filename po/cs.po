@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-27 03:49+0200\n"
-"PO-Revision-Date: 2004-05-27 14:03+0200\n"
+"POT-Creation-Date: 2004-05-29 14:44+0200\n"
+"PO-Revision-Date: 2004-05-29 18:06+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 msgid "Utility"
 msgstr "Nástroj"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:990
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:987
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:601
 #: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
@@ -141,7 +141,7 @@ msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1011 battstat/battstat_applet.c:1760
+#: battstat/battstat_applet.c:1008 battstat/battstat_applet.c:1753
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -150,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1761
+#: battstat/battstat_applet.c:1754
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -275,43 +275,45 @@ msgstr "zbývá %d hodin a %d minut"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1048
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1045
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1050
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1047
 msgid "Low"
 msgstr "Nízké"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1052
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1049
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1051
 msgid "Charging"
 msgstr "Nabíjení"
 
-#: battstat/battstat_applet.c:477
+#: battstat/battstat_applet.c:478
 #, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr ""
-"Baterie není příliš nabitá (%d%%) a připojení k el. síti není k dispozici"
+msgid ""
+"Your battery is running low (%d%%, %s). You should recharge your battery to "
+"avoid losing your work."
+msgstr "Vaše baterie se vybíjí (%d%%, %s). Abyste nepřišli o svou práci, měli byste baterii dobít."
 
-#: battstat/battstat_applet.c:480 battstat/battstat_applet.c:525
+#: battstat/battstat_applet.c:481 battstat/battstat_applet.c:528
 msgid "Battery Notice"
 msgstr "Upozornění o baterii"
 
-#: battstat/battstat_applet.c:544
-msgid "Battery is now fully re-charged!"
-msgstr "Baterie jsou nyní zcela dobité!"
+#: battstat/battstat_applet.c:547
+msgid "Your battery is now fully recharged."
+msgstr "Vaše baterie jsou nyní zcela dobité."
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:588 battstat/battstat_applet.c:1212
+#: battstat/battstat_applet.c:591 battstat/battstat_applet.c:1206
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -320,10 +322,11 @@ msgstr ""
 "Systém je napájen bateriemi.\n"
 "Baterie: %d%% (%s)"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:592 battstat/battstat_applet.c:1220
+#: battstat/battstat_applet.c:594 battstat/battstat_applet.c:1213
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -332,24 +335,23 @@ msgstr ""
 "Systém je napájen el. sítí.\n"
 "Baterie: %d%% (%s)"
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1233
-#, c-format
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:1226
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1150
-#: battstat/battstat_applet.c:1239
-#, c-format
+#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1231
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: battstat/battstat_applet.c:615 wireless/wireless-applet.c:146
-#, c-format
+#: battstat/battstat_applet.c:616 wireless/wireless-applet.c:146
 msgid "N/A"
 msgstr "N/A"
 
@@ -358,7 +360,7 @@ msgstr "N/A"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:744 battstat/battstat_applet.c:1124
+#: battstat/battstat_applet.c:745 battstat/battstat_applet.c:1120
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
@@ -368,7 +370,7 @@ msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1131
+#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1126
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
@@ -377,36 +379,33 @@ msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:760
-#, c-format
+#: battstat/battstat_applet.c:759
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systém je napájen bateriemi. Baterie: Není přítomná"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:766
-#, c-format
+#: battstat/battstat_applet.c:764
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systém je napájen el. sítí. Baterie: Není přítomná"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:775
+#. contains a string of the time remaining
+#: battstat/battstat_applet.c:772
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Baterie: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:781
-#, c-format
+#: battstat/battstat_applet.c:777
 msgid "Battery: Not present"
 msgstr "Baterie: Není přítomná"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:878
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -419,7 +418,7 @@ msgstr ""
 "zařízení APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:890
+#: battstat/battstat_applet.c:887
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -429,7 +428,7 @@ msgstr ""
 "Zkuste spustit \"apm -e 1\" (FreeBSD) a možná to\n"
 "pomůže.\n"
 
-#: battstat/battstat_applet.c:946
+#: battstat/battstat_applet.c:943
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -438,16 +437,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: battstat/battstat_applet.c:950
+#: battstat/battstat_applet.c:947
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:949
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:957
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -457,19 +456,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:978
+#: battstat/battstat_applet.c:975
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1013
+#: battstat/battstat_applet.c:1010
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1014
+#: battstat/battstat_applet.c:1011
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1686
+#: battstat/battstat_applet.c:1679
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -3399,9 +3398,9 @@ msgstr "Severozápad"
 msgid "North - Northwest"
 msgstr "Sever - Severozápad"
 
-#: gweather/weather.c:193 gweather/weather.c:2097 gweather/weather.c:2109
-#: gweather/weather.c:2121 gweather/weather.c:2133 gweather/weather.c:2151
-#: gweather/weather.c:2163
+#: gweather/weather.c:193 gweather/weather.c:2105 gweather/weather.c:2117
+#: gweather/weather.c:2129 gweather/weather.c:2141 gweather/weather.c:2159
+#: gweather/weather.c:2171
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -3728,19 +3727,19 @@ msgstr "Nemohu získat data METAR.\n"
 msgid "WeatherInfo missing location"
 msgstr "Chybí umístění WeatherInfo"
 
-#: gweather/weather.c:2061
+#: gweather/weather.c:2069
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d. %b, %H:%M"
 
-#: gweather/weather.c:2065
+#: gweather/weather.c:2073
 msgid "Unknown observation time"
 msgstr "Neznámý čas pozorování"
 
-#: gweather/weather.c:2135
+#: gweather/weather.c:2143
 msgid "Calm"
 msgstr "Bezvětří"
 
-#: gweather/weather.c:2208
+#: gweather/weather.c:2216
 msgid "Retrieval failed"
 msgstr "Stahování selhalo"
 
