@@ -332,8 +332,11 @@ static gint update_clock(gpointer data)
 
       my->beats = floor(( ( unix_now + 60*60) % (24*60*60) ) / 86.4);
 
-      if(analog_visible) analog(my, my->pixmap, my->white_gc, now);
-      
+      gdk_draw_pixmap(my->pixmap, my->white_gc, clock_pixmap,
+                        0, 0,
+                        0, 0,
+                        my->width, my->height);
+
       if(beats_visible) swatch_beats(my, my->pixmap, my->white_gc, now, my->beats);
 
       if(my->showampm)
@@ -341,6 +344,8 @@ static gint update_clock(gpointer data)
       else
 	TwentyFour(my, my->pixmap, my->white_gc, now);
 
+      if(analog_visible) analog(my, my->pixmap, my->white_gc, now);
+      
       if(itdocks==FALSE) 
 	{
 	  

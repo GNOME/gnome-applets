@@ -13,17 +13,17 @@ void analog(asclock *my, GdkPixmap *p, GdkGC *gc, struct tm *clk)
   if(clock_img)
     gdk_image_destroy(clock_img); 
   
-  clock_img = gdk_image_get(clock_pixmap, 0, 0,
+  clock_img = gdk_image_get(p, 0, 0,
 			    ((GdkWindowPrivate *)clock_pixmap)->width, 
 			    ((GdkWindowPrivate *)clock_pixmap)->height);
-  
+
   if(hour_visible) {
-    t = ((clk->tm_hour)*60 + clk->tm_min)/2;
+    t = ((double) (clk->tm_hour)*60 + clk->tm_min)/2 + ((double)clk->tm_sec)/120;
     rotate(hour_img, hour_map, hour_center_x, hour_center_y, hour_rot_x, hour_rot_y, t);
   }
   
   if(min_visible) {
-    t = (clk->tm_min*60 + clk->tm_sec)/10;
+    t = (clk->tm_min*60 + (double)clk->tm_sec)/10;
     rotate(min_img, min_map, min_center_x, min_center_y, min_rot_x, min_rot_y, t);
   }
   
