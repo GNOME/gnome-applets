@@ -1,15 +1,15 @@
 # English/Canada translation of gnome-applets.
-# Copyright (C) 2004 Adam Weinberger and the GNOME Foundation
+# Copyright (C) 2004-2005 Adam Weinberger and the GNOME Foundation
 # This file is distributed under the same licence as the gnome-applets package.
-# Maintainer: Adam Weinberger <adamw@FreeBSD.org>.
+# Maintainer: Adam Weinberger <adamw@FreeBSD.org>, 2004, 2005.
 # 
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-10 20:08-0500\n"
-"PO-Revision-Date: 2005-01-10 16:42-0400\n"
+"POT-Creation-Date: 2005-01-11 09:52-0500\n"
+"PO-Revision-Date: 2005-01-11 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,11 +64,9 @@ msgstr "Keyboard Accessibility Status Applet Factory"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "See the status of keyboard accessibility features"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
-#: charpick/charpick.c:607 cpufreq/src/cpufreq-applet.c:231
+#: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:200
-#: gswitchit/gswitchit-applet.c:579 mini-commander/src/about.c:48
-#: trashapplet/src/trashapplet.c:681
+#: gswitchit/gswitchit-applet.c:579 trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -121,9 +119,8 @@ msgstr "Error: %s"
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Displays current state of keyboard accessibility features"
 
-#. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1750
+#: battstat/battstat_applet.c:835 battstat/battstat_applet.c:1261
 msgid "Battery Charge Monitor"
 msgstr "Battery Charge Monitor"
 
@@ -132,7 +129,7 @@ msgid "Battstat Factory"
 msgstr "Battstat Factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1751
+#: battstat/battstat_applet.c:1262
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor your battery's remaining power"
 
@@ -226,61 +223,51 @@ msgstr "The battery level below which the battery is displayed as yellow."
 msgid "Yellow value level"
 msgstr "Yellow value level"
 
-#: battstat/battstat_applet.c:86
+#: battstat/battstat_applet.c:59
 msgid "System is running on AC power"
 msgstr "System is running on AC power"
 
-#: battstat/battstat_applet.c:87
+#: battstat/battstat_applet.c:60
 msgid "System is running on battery power"
 msgstr "System is running on battery power"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:342
-msgid "Your platform is not supported!\n"
-msgstr "Your platform is not supported!\n"
-
-#: battstat/battstat_applet.c:343
-msgid "The applet will not work properly (if at all).\n"
-msgstr "The applet will not work properly (if at all).\n"
-
-#: battstat/battstat_applet.c:382
+#: battstat/battstat_applet.c:291
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Battery charged (%d%%)"
 
-#: battstat/battstat_applet.c:384
+#: battstat/battstat_applet.c:293
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Unknown time (%d%%) remaining"
 
-#: battstat/battstat_applet.c:386
+#: battstat/battstat_applet.c:295
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Unknown time (%d%%) until charged"
 
-#: battstat/battstat_applet.c:391
+#: battstat/battstat_applet.c:300
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minute (%d%%) remaining"
 msgstr[1] "%d minutes (%d%%) remaining"
 
-#: battstat/battstat_applet.c:396
+#: battstat/battstat_applet.c:305
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minute until charged (%d%%)"
 msgstr[1] "%d minutes until charged (%d%%)"
 
-#: battstat/battstat_applet.c:402
+#: battstat/battstat_applet.c:311
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d hour (%d%%) remaining"
 msgstr[1] "%d hours (%d%%) remaining"
 
-#: battstat/battstat_applet.c:407
+#: battstat/battstat_applet.c:316
 #, c-format
 msgid "%d hour (%d%%) until charged (%d%%)"
 msgid_plural "%d hours (%d%%) until charged (%d%%)"
@@ -289,18 +276,18 @@ msgstr[1] "%d hours (%d%%) until charged (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:414
+#: battstat/battstat_applet.c:323
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) remaining"
 
-#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:331
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hour"
 msgstr[1] "hours"
 
-#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
+#: battstat/battstat_applet.c:325 battstat/battstat_applet.c:332
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minute"
@@ -308,66 +295,40 @@ msgstr[1] "minutes"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:421
+#: battstat/battstat_applet.c:330
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s until charged (%d%%)"
 
-#: battstat/battstat_applet.c:536
-msgid "Your battery is running low"
-msgstr "Your battery is running low"
-
-#: battstat/battstat_applet.c:538
-msgid "To avoid losing work please power off, suspend or plug your laptop in."
-msgstr "To avoid losing work please power off, suspend or plug in your laptop."
-
-#: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
+#: battstat/battstat_applet.c:351 battstat/battstat_applet.c:400
 msgid "Battery Notice"
 msgstr "Battery Notice"
 
-#: battstat/battstat_applet.c:614
+#: battstat/battstat_applet.c:375
 msgid "Your battery is now fully recharged"
 msgstr "Your battery is now fully recharged"
 
-#: battstat/battstat_applet.c:703
-msgid "N/A"
-msgstr "N/A"
+#: battstat/battstat_applet.c:395
+msgid "Your battery is running low"
+msgstr "Your battery is running low"
 
-#: battstat/battstat_applet.c:844
-msgid "Battery status unknown"
-msgstr "Battery status unknown"
+#: battstat/battstat_applet.c:397
+msgid "To avoid losing work please power off, suspend or plug your laptop in."
+msgstr "To avoid losing work please power off, suspend or plug in your laptop."
 
-#. Displayed as a tooltip over the battery meter when no
-#. battery is present.
-#: battstat/battstat_applet.c:851 battstat/battstat_applet.c:863
+#: battstat/battstat_applet.c:458
 msgid "No battery present"
 msgstr "No battery present"
 
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:962
-msgid ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
-msgstr ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
+#: battstat/battstat_applet.c:461
+msgid "Battery status unknown"
+msgstr "Battery status unknown"
 
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:971
-msgid ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
-msgstr ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
+#: battstat/battstat_applet.c:581
+msgid "N/A"
+msgstr "N/A"
 
-#: battstat/battstat_applet.c:1027
+#: battstat/battstat_applet.c:792
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -376,16 +337,16 @@ msgstr ""
 "An error occured while launching the Suspend command: %s\n"
 "Please try to correct this error"
 
-#: battstat/battstat_applet.c:1031
+#: battstat/battstat_applet.c:796
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "The Suspend command '%s' was unsuccessful."
 
-#: battstat/battstat_applet.c:1033
+#: battstat/battstat_applet.c:798
 msgid "The Suspend command was unsuccessful."
 msgstr "The Suspend command was unsuccessful."
 
-#: battstat/battstat_applet.c:1041
+#: battstat/battstat_applet.c:806
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -395,25 +356,21 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1057
+#: battstat/battstat_applet.c:820
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1087
-msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-
-#: battstat/battstat_applet.c:1088
+#: battstat/battstat_applet.c:840
 msgid "This utility shows the status of your laptop battery."
 msgstr "This utility shows the status of your laptop battery."
 
-#: battstat/battstat_applet.c:1676
-msgid ""
-"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
-"subsystem is working and the acpid daemon is running."
-msgstr ""
-"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
-"subsystem is working and the acpid daemon is running."
+#: battstat/battstat_applet.c:844 charpick/charpick.c:619
+#: cpufreq/src/cpufreq-applet.c:222 gtik/gtik.c:738
+#: gweather/gweather-about.c:56 mini-commander/src/about.c:54
+#: mixer/applet.c:1019 multiload/main.c:68
+#: stickynotes/stickynotes_applet_callbacks.c:442
+msgid "translator-credits"
+msgstr "Adam Weinberger <adamw@gnome.org>"
 
 #: battstat/battstat_applet.glade.h:1 cpufreq/cpufreq-preferences.glade.h:1
 #: gswitchit/gswitchit-properties.glade.h:1
@@ -470,7 +427,7 @@ msgstr "_Show time/percentage remaining:"
 msgid "_Warn when battery charge is low"
 msgstr "_Warn when battery charge is low"
 
-#: battstat/properties.c:262 drivemount/drivemount.c:156
+#: battstat/properties.c:258 drivemount/drivemount.c:156
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
@@ -491,8 +448,8 @@ msgstr "Battery fully re-charged"
 msgid "Battery power low"
 msgstr "Battery power low"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:620
-#: charpick/charpick.c:774 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:610
+#: charpick/charpick.c:750 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Character Palette"
 
@@ -500,7 +457,7 @@ msgstr "Character Palette"
 msgid "Charpicker Applet Factory"
 msgstr "Charpicker Applet Factory"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:774
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:750
 msgid "Insert characters"
 msgstr "Character Palette"
 
@@ -532,15 +489,7 @@ msgstr "insert special character %s"
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:597
-msgid "Kevin Vandersloot"
-msgstr "Kevin Vandersloot"
-
-#: charpick/charpick.c:622
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998"
-
-#: charpick/charpick.c:623
+#: charpick/charpick.c:614
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -633,7 +582,7 @@ msgid "Character Palette Preferences"
 msgstr "Character Palette Preferences"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:224 cpufreq/src/cpufreq-applet.c:786
+#: cpufreq/src/cpufreq-applet.c:214 cpufreq/src/cpufreq-applet.c:766
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU Frequency Scaling Monitor"
 
@@ -719,15 +668,11 @@ msgstr "_Show in mode:"
 msgid "Could not open help document"
 msgstr "Could not open help document"
 
-#: cpufreq/src/cpufreq-applet.c:226
-msgid "Copyright (C) 2004 Free Software Foundation. Inc."
-msgstr "Copyright (C) 2004 Free Software Foundation, Inc."
-
-#: cpufreq/src/cpufreq-applet.c:227
+#: cpufreq/src/cpufreq-applet.c:217
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "This utility shows the current CPU Frequency Scaling."
 
-#: cpufreq/src/cpufreq-applet.c:787
+#: cpufreq/src/cpufreq-applet.c:767
 msgid "This utility shows the current CPU Frequency"
 msgstr "This utility shows the current CPU Frequency"
 
@@ -1743,11 +1688,6 @@ msgstr ""
 "\n"
 "Do not use the GNOME Stock Ticker for making investment decisions; it is for "
 "informational purposes only."
-
-#: gtik/gtik.c:738 gweather/gweather-about.c:56 multiload/main.c:68
-#: stickynotes/stickynotes_applet_callbacks.c:442
-msgid "translator-credits"
-msgstr "Adam Weinberger <adamw@gnome.org>"
 
 #: gtik/gtik.c:1240
 msgid "Current _stocks:"
@@ -3026,7 +2966,7 @@ msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:61
+#: mini-commander/src/about.c:46
 msgid "Command Line"
 msgstr "Command Line"
 
@@ -3038,23 +2978,13 @@ msgstr "Mini-Commander"
 msgid "MiniCommander Applet Factory"
 msgstr "MiniCommander Applet Factory"
 
-#: mini-commander/src/about.c:64
+#: mini-commander/src/about.c:49
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, and changeable macros.\n"
-"\n"
-" This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"completion, command history, and changeable macros."
 msgstr ""
 "This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, and changeable macros.\n"
-"\n"
-" This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public Licence as published by the Free "
-"Software Foundation; either version 2 of the Licence, or (at your option) "
-"any later version."
+"completion, command history, and changeable macros."
 
 #: mini-commander/src/command_line.c:337
 msgid "No items in history"
@@ -3370,7 +3300,7 @@ msgstr "_Open Volume Control"
 msgid "Failed to start Volume Control: %s"
 msgstr "Failed to start Volume Control: %s"
 
-#: mixer/applet.c:997
+#: mixer/applet.c:1000
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Failed to display help: %s"
