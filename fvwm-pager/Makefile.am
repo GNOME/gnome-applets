@@ -4,7 +4,7 @@ INCLUDES =                                              \
 	-Dsafemalloc=g_malloc                           \
 	-I. -I$(srcdir)                                 \
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(top_srcdir)/panel			\
+	-I$(srcdir)/../../../panel			\
 	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
@@ -28,7 +28,7 @@ fvwm_pager_LDADD = \
 	$(GNOMEGNORBA_LIBS)                \
 	$(INTLLIBS)
 
-CFLAGS += -DVERSION=\"0.2\"
+CFLAGS += -DVERSION=\"0.3\"
 
 EXTRA_DIST = TODO README NEWS fvwm_pager.gnorba
 gnorbadir  = $(sysconfdir)/CORBA/servers

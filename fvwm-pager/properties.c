@@ -100,8 +100,8 @@ create_properties_frame (void)
   GtkWidget* size;
   GtkWidget* height;
   GtkWidget* width;
-  GtkWidget* height_a;
-  GtkWidget* width_a;
+  GtkObject* height_a;
+  GtkObject* width_a;
   
   GtkWidget* actwin_gcs;
   GtkWidget* inactwin_gcs;

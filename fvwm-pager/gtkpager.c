@@ -392,6 +392,7 @@ gtk_fvwmpager_set_current_desk(GtkFvwmPager* pager, int desktop)
       g_log("fvwm-pager", G_LOG_LEVEL_ERROR, "desktop requested: %d, max = %d\n",desktop, pager->num_of_desks);
       return;
     }
+
   if (!pager->current_desktop || pager->current_desktop->idx != desktop)
     {
       

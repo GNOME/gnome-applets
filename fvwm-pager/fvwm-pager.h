@@ -24,5 +24,6 @@
 #include <glib.h>
 
 
+void        set_window_desktop(Window xid, gint desktop);
 
 #endif

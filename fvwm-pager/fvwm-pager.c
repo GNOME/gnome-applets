@@ -37,11 +37,14 @@
 void        DeadPipe             (int);
 static void ParseOptions         (void);
 static void switch_to_desktop    (GtkFvwmPager* unused, int desktop_offset, gpointer sendit);
+void        set_focus(GtkFvwmPager* pager, unsigned long* body);
+
 #if 0
 static void move_window          (GtkFvwmPager* pager, unsigned long xid, int desktop, int x, int y);
 #endif
 
 PagerProps pager_props;
+int  ndesks;
 
 gint   pager_width  = 170;
 gint   pager_height = 70;
@@ -132,8 +135,13 @@ fvwm_command_received(gpointer data,
 
   if ((count = ReadFvwmPacket(source, header, &body)) > 0)
     {
-      process_message(pager, header[1], body);
-      free(body);
+      if (body) {
+	process_message(pager, header[1], body);
+	free(body);
+      }
+      else
+	fprintf(stderr,"NULL body message received\n");
+      fprintf(stderr,"Message process, waiting for new message\n");
     }
 }
 
@@ -204,7 +212,6 @@ main(int argc, char* argv[])
   GtkWidget* window = 0;
   char bfr[128];
   int  idx;
-  int  ndesks;
   char* tmp;
   static GtkWidget* pager = 0;
   GList* desktops;
@@ -213,6 +220,8 @@ main(int argc, char* argv[])
 
   
   
+  while (!wfd)
+    ;
   tmp = strrchr(argv[0], '/');
   if (tmp)
     tmp++;
@@ -307,8 +316,6 @@ main(int argc, char* argv[])
       new_desk->title = g_strdup(bfr);
       desktops = g_list_append(desktops, new_desk);
     }
-  while (!wfd)
-    ;
   SetMessageMask(fd,
 	     M_ADD_WINDOW       |
 	     M_CONFIGURE_WINDOW |
@@ -416,6 +423,7 @@ main(int argc, char* argv[])
   
   SendInfo(fd, "Send_WindowList", 0);
   applet_widget_gtk_main();
+  fprintf(stderr,"applet_wiget_gtk_main returned\n");
   if (!noapplet)
     save_fvwmpager_properties ("fvwmpager", &pager_props);
   return 0;
@@ -514,7 +522,7 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
       
       XChangeProperty(GDK_DISPLAY(), xid,
 		      _XA_WIN_STATE, XA_CARDINAL,
-		      32, PropModeReplace, &new_state, 1);
+		      32, PropModeReplace, (char*)&new_state, 1);
     }
   if (!noapplet)
     gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), new_window ? 0 : &old, xid);
@@ -561,7 +569,7 @@ destroy_window(GtkFvwmPager* pager, unsigned long* body)
   win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
   if (!win)
     {
-      fprintf(stderr,"Warning: Deleting unknown window (not in hash table) %p\n", xid);
+      fprintf(stderr,"Warning: Deleting unknown window (not in hash table) 0x%08lx\n", xid);
     }
   else
     {
@@ -660,15 +668,21 @@ void process_message(GtkFvwmPager* pager, unsigned long type,unsigned long *body
 	long desktop = (long)body[0];
 
 	g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_NEW_DESK received, setting workspace prop to %ld\n", desktop);
+	if (desktop >= ndesks)
+	  {
+	    fprintf(stderr,"Desktop %ld out of range, not switching\n", desktop);
+	    return;
+	  }
 	if (!noapplet)
 	  gtk_fvwmpager_set_current_desk(GTK_FVWMPAGER(pager), desktop);
-	  switch_to_desktop(0, desktop, 1);
+
+	switch_to_desktop(0, desktop, (gpointer)1);
 	XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
 			_XA_WIN_WORKSPACE, XA_CARDINAL,
 			32, PropModeReplace, (unsigned char*)&desktop,
 			1);
 	g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: property changed\n");
-
+	  
       }
       break;
     case M_RAISE_WINDOW:

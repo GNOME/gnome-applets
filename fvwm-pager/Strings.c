@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
+#include <glib.h>
 #include "fvwmlib.h"
 
 /************************************************************************
@@ -138,7 +138,7 @@ char *stripcpy(char *source)
       tmp--;
       len--;
     }
-  ptr = safemalloc(len+1);
+  ptr = g_malloc(len+1);
   strncpy(ptr,source,len);
   ptr[len]=0;
   return ptr;

@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <unistd.h>
+#include <glib.h>
 
 #include "fvwmlib.h"
 #include "module.h"
@@ -151,4 +153,5 @@ void *GetConfigLine(int *fd, char **tline)
       *tline = NULL;
     }
   }
+return 0;			/* shut up compiler */
 }
