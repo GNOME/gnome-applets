@@ -33,14 +33,22 @@
 /* FIX - This code is WAY too kludgy!... */
 static void place_widgets (GWeatherApplet *gw_applet)
 {
+    PangoLayout *panlay;
     gint size = gw_applet->size;
     const gchar *temp;   
+    int textheight, width;
  
+
     if (gw_applet->box)
-        gtk_widget_destroy (gw_applet->box);
+	gtk_widget_destroy (gw_applet->box);
     
+    gw_applet->label = gtk_label_new("0\302\260F");
+
+    panlay = gtk_label_get_layout(GTK_LABEL (gw_applet->label));
+    pango_layout_get_pixel_size(panlay, &width, &textheight);
+
     if (((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || 
-         (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) ^ (size < 25)) {
+         (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) ^ (size < 25+textheight)) {
          gw_applet->box = gtk_hbox_new (FALSE, 2);
          
     }
@@ -55,14 +63,13 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gw_applet->image = gtk_image_new_from_pixbuf (gw_applet->applet_pixbuf);
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, FALSE, FALSE, 0);
          
-    gw_applet->label = gtk_label_new("0\302\260F");
+
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, FALSE, FALSE, 0);
     
     gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
     			       gw_applet->applet_pixbuf);
 
     /* Update temperature text */
-
     temp = weather_info_get_temp_summary(gw_applet->gweather_info);
     if (temp) {
     	gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);

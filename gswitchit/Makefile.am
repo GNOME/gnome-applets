@@ -89,4 +89,5 @@ gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
 
 gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
             $(GNOME_LIBS2_LIBS) \
-            $(top_builddir)/libgswitchit/libgswitchit.a 
+            $(top_builddir)/libgswitchit/libgswitchit.a  \
+            $(top_builddir)/screen-exec/libscreen-exec.la
