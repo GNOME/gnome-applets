@@ -3,7 +3,7 @@ GKB_BITMAPS = at.png be.png bg.png ca.png ch.png \
 	es.png br.png un.png \
 	fi.png fr.png gb.png gr.png \
 	hu.png il.png is.png it.png \
-	jp.png nl.png no.png pl.png \
+	jp.png lt.png nl.png no.png pl.png \
 	pt.png qc.png ro.png ru.png se.png \
 	si.png sk.png th.png tr.png \
 	us.png uy.png yu.png mx.png cu.png
