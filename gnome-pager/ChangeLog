@@ -1,3 +1,12 @@
+Sun Feb 14 21:01:10 1999  George Lebl  <jirka@5z.com>
+
+	* gnomepager_applet.c,gnomepager.h: event handlers have to return a
+	  TRUE/FALSE, timeouts have to return a TRUE/FALSE, session is
+	  supposed to be saved in save_session signal handler, removed some
+	  utterly useless code, change init to work on panels of all
+	  orientations, don't show the applet until the first orient change
+	  signal (which is during init), don't pass null to gtk_label_new
+
 Thu Feb 11 22:25:40 EST 1999 The Rasterman <raster@redhat.com>
 
         * gnomepager_applet.c: Added more efficient desktop redraw and

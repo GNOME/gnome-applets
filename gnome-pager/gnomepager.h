@@ -42,16 +42,16 @@ int main(int argc, char **argv);
 void cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data);
 void cb_applet_about(AppletWidget * widget, gpointer data);
 void cb_check_show_icons(GtkWidget *widget, gpointer data);
+void cb_check_show_arrow(GtkWidget *widget, gpointer data);
 void cb_check_pager_size(GtkWidget *widget, gpointer data);
 void cb_check_all_tasks(GtkWidget *widget, gpointer data);
 void cb_check_show_tasks(GtkWidget *widget, gpointer data);
 void cb_check_show_pager(GtkWidget *widget, gpointer data);
 void cb_adj_max_width(GtkAdjustment *adj, GtkAdjustment *adj1);
+void cb_adj_max_vwidth(GtkAdjustment *adj, GtkAdjustment *adj1);
 void cb_adj_rows_h(GtkAdjustment *adj, GtkAdjustment *adj1);
 void cb_adj_rows_v(GtkAdjustment *adj, GtkAdjustment *adj1);
 void cb_adj_rows(GtkAdjustment *adj, GtkAdjustment *adj1);
-void cb_prop_cancel(GtkWidget *widget, gpointer data);
-void cb_prop_cancel(GtkWidget *widget, gpointer data);
 void cb_prop_apply(GtkWidget *widget, gpointer data);
 void cb_applet_properties(AppletWidget * widget, gpointer data);
 
@@ -88,9 +88,11 @@ void init_applet_gui_horiz(void);
 void init_applet_gui_vert(void);
 
 void desktop_draw(gint i);
+int actual_redraw(gpointer data);
 gboolean desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event);
 gboolean desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event);
-void desktop_cb_redraw(GtkWidget *widget, gpointer data);
+int desktop_cb_redraw(GtkWidget *widget, gpointer data);
+void cb_desk_destroy(GtkWidget *widget, gpointer data);
 GtkWidget *make_desktop_pane(gint desktop, gint width, gint height);
 
 gboolean task_cb_button_enter(GtkWidget * widget, GdkEventCrossing *event);
@@ -110,7 +112,7 @@ void populate_tasks(void);
 
 void desktop_set_area(int ax, int ay);
 void create_popbox(void);
-void showpop_cb(GtkWidget *widget, gpointer data);
+int showpop_cb(GtkWidget *widget, gpointer data);
 
 void get_window_root_and_frame_id(Window w, Window *ret_frame, 
 				      Window *ret_root);
