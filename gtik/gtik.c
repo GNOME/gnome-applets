@@ -133,7 +133,7 @@
 
 	
 
-        gint font_cb( GtkWidget *widget, void *data ) ;
+        void font_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) ;
         gint OkClicked( GtkWidget *widget, void *data ) ;
         gint QuitFontDialog( GtkWidget *widget, void *data ) ;
 	/* end font funcs and vars */
@@ -141,22 +141,22 @@
 	/*-----------------------------------------------------------------*/
 	static void load_fonts(StockData *stockdata)
 	{
+		PangoFontDescription *font;
 		
-		if (stockdata->new_font != NULL) {
-			if (stockdata->whichlabel == 1)
-				stockdata->my_font = gdk_font_load(stockdata->new_font);
-			else
-				stockdata->small_font = gdk_font_load(stockdata->new_font);
-		}
+		if (stockdata->my_font)
+			gdk_font_unref (stockdata->my_font);
+		font = pango_font_description_from_string (stockdata->props.font);
+		stockdata->my_font = gdk_font_from_description (font);
+		
 
-		if (!stockdata->my_font)
-			stockdata->my_font = gdk_font_load (stockdata->props.font);
-
-		if (!stockdata->extra_font)
+		if (!stockdata->extra_font) {
 			stockdata->extra_font = gdk_font_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
-
-		if (!stockdata->small_font)
-			stockdata->small_font = gdk_font_load (stockdata->props.font2);
+		}
+		
+		if (stockdata->small_font)
+				gdk_font_unref(stockdata->small_font);
+		font = pango_font_description_from_string (stockdata->props.font2);
+		stockdata->small_font = gdk_font_from_description (font);
 
 
 		/* If fonts do not load */
@@ -167,7 +167,8 @@
 			
 			if (stockdata->extra_font)
 				gdk_font_unref(stockdata->extra_font);
-			stockdata->extra_font = gdk_font_load("fixed");
+			font = pango_font_description_from_string ("fixed 12");
+			stockdata->extra_font = gdk_font_from_description (font);
 			stockdata->symbolfont = 0;
 		}
 		else {
@@ -895,92 +896,38 @@ static gint updateOutput(gpointer data)
 		
 	}
 
-#ifdef FIXME
-	/*-----------------------------------------------------------------*/
-	static void apply_cb( GtkWidget *widget, void *data ) {
-
-		char *tmpText;
-#ifdef FIXME
-		if (new_font != NULL) {
-			if (whichlabel == 1) 
-				props.font = g_strdup(new_font);
-			else
-				props.font2 = g_strdup(new_font);
-		}
+	void font_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) {
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		
+		if (!font_name)
+			return; 
+		
+		if (stockdata->props.font)
+			g_free (stockdata->props.font);
+		stockdata->props.font = g_strdup (font_name);
+		load_fonts (stockdata);
+		panel_applet_gconf_set_string (applet,"font",
+					       stockdata->props.font, NULL);
 
-		properties_set(TRUE);
-#endif
 	}
 
-
-	/*-----------------------------------------------------------------*/
-        static gint font_selector( GtkWidget *widget, void *data ) {
-
-		if (!fontDialog) {
-			fontDialog = gtk_font_selection_dialog_new("Font Selector");
-			gtk_signal_connect (GTK_OBJECT (GTK_FONT_SELECTION_DIALOG(fontDialog)->ok_button),
-					    "clicked",
-					    GTK_SIGNAL_FUNC(OkClicked),fontDialog);
-            		gtk_signal_connect_object(GTK_OBJECT(GTK_FONT_SELECTION_DIALOG(fontDialog)->cancel_button),
-						  "clicked",
-						  GTK_SIGNAL_FUNC(gtk_widget_destroy),
-						  GTK_OBJECT(fontDialog));
-            		gtk_signal_connect (GTK_OBJECT (fontDialog), "destroy",
-					    GTK_SIGNAL_FUNC(QuitFontDialog),
-					    fontDialog);
+        /*-----------------------------------------------------------------*/
+	static void font2_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) {
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		if (!font_name)
+			return;
 			
-            		gtk_widget_show(fontDialog);
-		} else
-			gdk_window_raise(fontDialog->window);
-		
-		return FALSE;
-	}
-#endif	
-        /*-----------------------------------------------------------------*/
+		stockdata->props.font2 = g_strdup (font_name);
+		load_fonts (stockdata);
+		panel_applet_gconf_set_string (applet,"font2",
+					       stockdata->props.font2, NULL);
 
-	gint font_cb(GtkWidget *widget, gpointer data) {
-#ifdef FIXME
-		whichlabel = 1;
-		font_selector(widget,data);
-#endif
-		return FALSE;
 	}
 
-        /*-----------------------------------------------------------------*/
-	static gint font2_cb(GtkWidget *widget, gpointer data) {
-#ifdef FIXME
-		whichlabel = 2;
-		font_selector(widget,data);
-#endif
-		return FALSE;
-	}
-
-        /*-----------------------------------------------------------------*/
-        gint OkClicked( GtkWidget *widget, void *fontDialog ) {
-#ifdef FIXME
-                gchar *newFont = NULL;
-
-
-                GtkFontSelectionDialog *fsd = 
-			GTK_FONT_SELECTION_DIALOG(fontDialog);
-
-                newFont = gtk_font_selection_dialog_get_font_name(fsd);
-                new_font = g_strdup(newFont);
-                gtk_widget_destroy(fontDialog);
-#endif
-		return FALSE;
-        }
-
-        /*-----------------------------------------------------------------*/
-        gint QuitFontDialog( GtkWidget *widget, void *data ) {
-        
-		/*fontDialog = NULL;*/
-	
-		return FALSE;
-        }
-
-	static void populatelist(StockData *stockdata, GtkWidget *list) {
+        static void populatelist(StockData *stockdata, GtkWidget *list) {
 	
 		gchar *symbol;
 		gchar *syms;
@@ -1124,6 +1071,7 @@ static gint updateOutput(gpointer data)
 		GtkObject *timeout_a;
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
 		GtkWidget *check, *check2, *check3, *check4, *fontButton;
+		GtkWidget *font_picker;
 
 		int ur,ug,ub, dr,dg,db; 
 
@@ -1247,26 +1195,23 @@ static gint updateOutput(gpointer data)
 		vbox3 = gtk_vbox_new(FALSE, 5); 
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		label5 = gtk_label_new(_("Stock Symbol:"));
-                fontButton = gtk_button_new_with_label(_("Select Font"));
-                gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
-                gtk_box_pack_start_defaults(GTK_BOX(hbox3),fontButton);
-                gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
-                gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(font_cb),GTK_OBJECT(stockdata->pb));
-                gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 
+		font_picker = gnome_font_picker_new ();
+		gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
+                gtk_box_pack_start_defaults(GTK_BOX(hbox3),font_picker);
+                gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
+                g_signal_connect (G_OBJECT (font_picker), "font_set",
+                		  G_CALLBACK (font_cb), stockdata);
+                                
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		label5 = gtk_label_new(_("Stock Change:"));
-                fontButton = gtk_button_new_with_label(_("Select Font"));
+                font_picker = gnome_font_picker_new ();
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
-                gtk_box_pack_start_defaults(GTK_BOX(hbox3),fontButton);
+                gtk_box_pack_start_defaults(GTK_BOX(hbox3),font_picker);
                 gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
-                gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(font2_cb),GTK_OBJECT(stockdata->pb));
-                gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-
+                g_signal_connect (G_OBJECT(font_picker),"font_set",
+                                  G_CALLBACK(font2_cb),stockdata);
+                
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
 
@@ -1285,13 +1230,6 @@ static gint updateOutput(gpointer data)
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
 		label = gtk_label_new_with_mnemonic (_("_Appearance"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox2, label);
-		
-
-#if 0
-		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), 
-				   "changed",GTK_SIGNAL_FUNC(changed_cb),
-				   GTK_OBJECT(pb));
-#endif
 
 		gtk_widget_show_all(stockdata->pb);
 		
