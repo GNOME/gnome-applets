@@ -185,7 +185,7 @@ multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name
 	
 	ma = (MultiloadApplet *)data;
 	
-	dialog = gtk_dialog_new_with_buttons(_("SystemLoad Properties"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
+	dialog = gtk_dialog_new_with_buttons(_("System Monitor Properties"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
 				
 	fill_properties(dialog, ma);
 	

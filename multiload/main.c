@@ -50,7 +50,7 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 	}
 	
     about = gnome_about_new
-	(_("System Load Applet"), VERSION,
+	(_("System Monitor Applet"), VERSION,
 	 "(C) 1999 - 2002 The Free Software Foundation",
 	 _("Released under the GNU general public license.\n\n"
 	   "A system load monitor capable of displaying graphs for cpu, ram, and swap file use, plus network traffic."),
