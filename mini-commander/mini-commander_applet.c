@@ -30,13 +30,15 @@
 #include "message.h"
 #include "exec.h"
 #include "about.h"
+#include "help.h"
 
 GtkWidget *applet;
 
 static int appletDestroy_signal(GtkWidget *widget, gpointer data);
 
 
-int appletDestroy_signal(GtkWidget *widget, gpointer data)
+int 
+appletDestroy_signal(GtkWidget *widget, gpointer data)
 {
     /* applet will be destroyed; save settings now */
     saveSession();
@@ -44,112 +46,120 @@ int appletDestroy_signal(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
-static void drawApplet(void)
+static void
+drawApplet(void)
 {
     /* not needed yet */
 }
 
-
-int main(int argc, char **argv)
+int 
+main(int argc, char **argv)
 {
-	GtkWidget *vbox;
-	GtkWidget *frame;
-	GtkWidget *frame2;
+    GtkWidget *vbox;
+    GtkWidget *frame;
+    GtkWidget *frame2;
+    
+    GtkStyle *style;
+    GdkColor color;
 
-        GtkStyle *style;
-        GdkColor color;
+    
+    /* install signal handler */
+    initExecSignalHandler();
+    
+    /* initialize the i18n stuff */
+    bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+    textdomain (PACKAGE);
+    
+    /* intialize, this will basically set up the applet, corba and
+       call gnome_init */
+    applet_widget_init("mini-commander_applet", VERSION, argc, argv, NULL, 0,
+		       NULL);
+    
+    /* create a new applet_widget */
+    
+    /*
+      style = malloc(sizeof(GtkStyle));
+      style->bg_pixmap[GTK_STATE_NORMAL] = bgPixmap;
+      gtk_widget_push_style (style);
+    */
+    applet = applet_widget_new("mini-commander_applet");
+    /*
+      gtk_widget_pop_style ();
+    */
+    
+    /* in the rare case that the communication with the panel
+       failed, error out */
+    if (!applet)
+	{
+	    g_error("Can't create applet!\n");
+	    exit(1);
+	}
+    
+    loadSession();
+    
+    gtk_signal_connect(GTK_OBJECT(applet), "destroy",
+		       (GtkSignalFunc) appletDestroy_signal,
+		       NULL); 
+    
+    /* bind the session save signal */
+    gtk_signal_connect(GTK_OBJECT(applet),
+		       "save_session",
+		       GTK_SIGNAL_FUNC(saveSession_signal),
+		       NULL);
+    
+    vbox = gtk_vbox_new(FALSE, 0);
+    gtk_container_border_width(GTK_CONTAINER(vbox), 0);
+    
+    /* add command line; position: top */
+    initCommandEntry();
+    gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
+    
+    /* add message label */
+    initMessageLabel();
+    /* do not center text but put it to bottom */
+    gtk_misc_set_alignment(GTK_MISC(labelMessage), 0.0, 1.0);
+    gtk_box_pack_end(GTK_BOX(vbox), labelMessage, TRUE, TRUE, 0);
+    
+    frame = gtk_frame_new(NULL);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
+    gtk_container_add(GTK_CONTAINER(frame), vbox);
+    
+    frame2 = gtk_frame_new(NULL);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
+    gtk_container_add(GTK_CONTAINER(frame2), frame);
+    
+    applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander"));
+    applet_widget_add (APPLET_WIDGET (applet), frame2);
+    gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
+    
+    gtk_widget_show_all(applet);
+    
+    /* add items to applet menu */
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "properties",
+					  GNOME_STOCK_MENU_PROP,
+					  _("Properties..."),
+					  propertiesBox,
+					  NULL);
+    
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "help",
+					  GNOME_STOCK_MENU_ABOUT,
+					  _("Help"),
+					  showHelp,
+					  NULL);
 
-
-	/* install signal handler */
-	initExecSignalHandler();
-
-        /* initialize the i18n stuff */
-        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-        textdomain (PACKAGE);
-
-        /* intialize, this will basically set up the applet, corba and
-           call gnome_init */
-        applet_widget_init("mini-commander_applet", VERSION, argc, argv, NULL, 0,
-			   NULL);
-
-        /* create a new applet_widget */
-
-	/*
-		style = malloc(sizeof(GtkStyle));
-		style->bg_pixmap[GTK_STATE_NORMAL] = bgPixmap;
-		gtk_widget_push_style (style);
-	*/
-        applet = applet_widget_new("mini-commander_applet");
-	/*
-		gtk_widget_pop_style ();
-	*/
-
-        /* in the rare case that the communication with the panel
-           failed, error out */
-        if (!applet)
-	    {
-                g_error("Can't create applet!\n");
-		exit(1);
-	    }
-
-	loadSession();
-
-        gtk_signal_connect(GTK_OBJECT(applet), "destroy",
-                           (GtkSignalFunc) appletDestroy_signal,
-                           NULL); 
-
-        /* bind the session save signal */
-        gtk_signal_connect(GTK_OBJECT(applet),
-			   "save_session",
-                           GTK_SIGNAL_FUNC(saveSession_signal),
-                           NULL);
-
-        vbox = gtk_vbox_new(FALSE, 0);
-	gtk_container_border_width(GTK_CONTAINER(vbox), 0);
-
-	/* add command line; position: top */
-	initCommandEntry();
-        gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
-
-	/* add message label */
-	initMessageLabel();
-	/* do not center text but put it to bottom */
-	gtk_misc_set_alignment(GTK_MISC(labelMessage), 0.0, 1.0);
-        gtk_box_pack_end(GTK_BOX(vbox), labelMessage, TRUE, TRUE, 0);
-
-        frame = gtk_frame_new(NULL);
-        gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
-        gtk_container_add(GTK_CONTAINER(frame), vbox);
-
-        frame2 = gtk_frame_new(NULL);
-        gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
-        gtk_container_add(GTK_CONTAINER(frame2), frame);
-
-	applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander"));
-        applet_widget_add (APPLET_WIDGET (applet), frame2);
-	gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
-
-        gtk_widget_show_all(applet);
-
-        /* add items to applet menu */
-        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "properties",
-					      GNOME_STOCK_MENU_PROP,
-					      _("Properties..."),
-					      propertiesBox,
-					      NULL);
-
-        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("Help & About..."),
-					      aboutBox,
-					      NULL);
-	
-	showMessage((gchar *) _("ready...")); 
-
-        /* special corba main loop */
-        applet_widget_gtk_main ();
-
-        return 0;
+    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					  "about",
+					  GNOME_STOCK_MENU_ABOUT,
+					  _("About"),
+					  aboutBox,
+					  NULL);
+    
+    showMessage((gchar *) _("ready...")); 
+    
+    /* special corba main loop */
+    applet_widget_gtk_main ();
+    
+    return 0;
 }
