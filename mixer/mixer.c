@@ -159,7 +159,8 @@ readMixer(void)
 /*	printf("vol=%d l=%d r=%d\n",vol, l, r); */
 
 	return (r+l)/2;
-#elif SUN_API
+#endif
+#ifdef SUN_API
  	audio_info_t ainfo;
         AUDIO_INITINFO (&ainfo);	
  	ioctl (mixerfd, AUDIO_GETINFO, &ainfo);
@@ -178,7 +179,8 @@ setMixer(gint vol)
 	tvol = (vol << 8) + vol;
 /*g_message("Saving mixer value of %d",tvol);*/
 	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_VOLUME), &tvol);
-#elif SUN_API
+#endif
+#if SUN_API
  	audio_info_t ainfo;
 	AUDIO_INITINFO (&ainfo);
  	ainfo.play.gain = vol;
