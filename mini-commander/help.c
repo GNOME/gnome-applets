@@ -20,10 +20,10 @@
  */
 
 #include <config.h>
-#include <gnome.h>
+#include "help.h"
 
-void
-showHelp(void)
+void 
+showHelp(AppletWidget *applet, gpointer data)
 {
     static GnomeHelpMenuEntry help_entry = {"mini-commander", "index.html"};
     gnome_help_display(NULL, &help_entry);

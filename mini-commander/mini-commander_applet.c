@@ -142,12 +142,11 @@ main(int argc, char **argv)
 					  propertiesBox,
 					  NULL);
     
-    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					  "help",
-					  GNOME_STOCK_MENU_ABOUT,
-					  _("Help"),
-					  showHelp,
-					  NULL);
+    applet_widget_register_callback(APPLET_WIDGET(applet),
+				    "help",
+				    _("Help"),
+				    showHelp,
+				    NULL);
 
     applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					  "about",
