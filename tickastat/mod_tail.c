@@ -84,7 +84,7 @@ static void show_log_file(TailData *td)
 	if (td->path)
 		label = gtk_label_new(td->path);
 	else
-		label = gtk_label_new(_("no file dpecified"));
+		label = gtk_label_new(_("no file specified"));
 	gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(td->log_dialog)->vbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
