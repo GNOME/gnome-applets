@@ -1,0 +1,246 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.05">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "Agosto 2002">
+  <!ENTITY applet "Tabla de caracteres">
+]>
+<!--
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="es">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>Manual del aplique &applet; V&manrevision;</title>
+	 <copyright>
+		<year>2003</year>
+		<holder>Sun Microsystems</holder> </copyright>
+	 <copyright>
+		<year>2000</year>
+		<holder>Dan Mueth</holder> </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+	 <publisher>
+		<publishername>Proyecto de documentaci&oacute;n de GNOME</publishername>
+	 </publisher> &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and
+        other legal stuff such as "NO WARRANTY" statement. Please do not change
+	any of this. -->
+	 <authorgroup>
+		<author>
+		 <firstname>Equipo de documentaci&oacute;n de Sun</firstname>
+		  <surname>GNOME</surname>
+		  <affiliation>
+			 <orgname>Sun Microsystems</orgname>
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author>
+		  <firstname>Dan</firstname>
+		  <surname>Mueth</surname>
+		  <affiliation>
+			 <orgname>Equipo de documentaci&oacute;n de GNOME</orgname>
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname>
+	<surname>Translator 1</surname>
+	<affiliation>
+	  <orgname>Latin Translation Team</orgname>
+	  <address> <email>translator@gnome.org</email> </address>
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+	 </authorgroup>
+	 <revhistory>
+		<revision>
+		  <revnumber>Manual del aplique &applet; V&manrevision;</revnumber>
+		  <date>&date;</date>
+		  <revdescription>
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Manual del aplique Tabla de caracteres V2.1</revnumber>
+		  <date>Julio 2002</date>
+		  <revdescription>
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Manual del aplique Tabla de caracteres V2.0</revnumber>
+		  <date>Marzo 2002</date>
+		  <revdescription>
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Aplique Tabla de caracteres</revnumber>
+		  <date>2000</date>
+		  <revdescription>
+			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email>
+				</para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo>Este manual describe la versi&oacute;n &appletversion; de &applet;.
+		</releaseinfo>
+	 <legalnotice>
+		<title>Comentarios</title>
+		<para> Para informar de un defecto o hacer una sugerencia sobre el aplique &applet; o el presente manual, siga las indicaciones que aparecen en
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.
+		  </para>
+<!-- Translators may also add here feedback address for translations -->
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> <primary>Tabla de caracteres</primary> </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="charpick-introduction">
+	 <title>Introducci&oacute;n</title>
+       <!-- ==== Figure ============================================= -->
+	 <figure id="applet-fig">
+		<title>Aplique &applet;</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/charpalette_applet.png"  				format="PNG"/> </imageobject>
+			 <textobject><phrase>Muestra el aplique Tabla de caracteres.</phrase></textobject></mediaobject>
+		</screenshot>
+	 </figure>
+       <!-- ==== End of Figure ======================================= -->
+	 <para>El aplique <application>&applet;</application> permite acceder c&oacute;modamente a caracteres que no son est&aacute;ndar, como los caracteres acentuados, s&iacute;mbolos matem&aacute;ticos, caracteres especiales y signos de puntuaci&oacute;n. Puede insertar
+ caracteres del aplique en cadenas de texto, por ejemplo, en documentos de texto
+ o en la l&iacute;nea de comandos. Puede personalizar el contenido del aplique para adecuarlo a sus necesidades. <application>&applet;</application> cumple con la especificaci&oacute;n ISO-8859-1
+ de conjunto de caracteres	(Latin 1) que cubre la mayor&iacute;a de idiomas europeos.
+		</para>
+	 <para>Para a&ntilde;adir <application>&applet;</application> a un panel, haga clic con el bot&oacute;n derecho del rat&oacute;n encima de &eacute;ste para abrir el men&uacute; y, a continuaci&oacute;n, elija  <menuchoice>
+<guimenu>A&ntilde;adir al panel</guimenu>
+<guisubmenu>Utilidad</guisubmenu>
+<guimenuitem>Tabla de caracteres</guimenuitem>
+</menuchoice>.</para>
+  </sect1>
+<!-- ================ Usage ================================ -->
+  <sect1 id="charpick-usage">
+	 <title>Uso</title>
+	 <para>Cuando a&ntilde;ada <application>&applet;</application> a un panel por primera vez, el aplique muestra una lista predeterminada de caracteres. Puede seleccionar un car&aacute;cter de la lista predeterminada o bien de los grupos predeterminados de caracteres. Cada grupo de caracteres predefinido se asocia con un car&aacute;cter est&aacute;ndar del teclado. </para>
+	 <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-charselect">
+		<title>Seleccionar un car&aacute;cter</title>
+		<para>Para seleccionar un car&aacute;cter del aplique e insertarlo en una cadena de texto, ejecute los siguientes pasos: </para>
+		  <orderedlist>
+			 <listitem>
+				<para>Haga clic en el car&aacute;cter deseado del aplique. El bot&oacute;n del car&aacute;cter se presiona para indicar que se ha seleccionado este car&aacute;cter.
+				  </para>
+			 </listitem>
+			 <listitem>
+				<para>Se&ntilde;ale d&oacute;nde desea colocar el car&aacute;cter en la aplicaci&oacute;n y haga clic con el bot&oacute;n central del rat&oacute;n para insertarlo. Si la funci&oacute;n Pegar est&aacute; disponible, tambi&eacute;n puede pegar el car&aacute;cter en la aplicaci&oacute;n. Puede repetir la inserci&oacute;n tantas veces como desee, ya que el car&aacute;cter permanece seleccionado hasta que haga clic encima de otro car&aacute;cter de la aplicaci&oacute;n. </para>
+			 </listitem>
+		  </orderedlist>
+		<para>Algunas aplicaciones no cumplen con la especificaci&oacute;n ISO-8859-1 de conjunto de caracteres. En este caso no es posible insertar caracteres en la aplicaci&oacute;n.</para>
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-display-chargroup">
+		<title>Mostrar un grupo predefinido de caracteres</title>
+		<para>Puede cambiar los caracteres que se muestran en la lista predeterminada del aplique por un grupo predefinido de caracteres.</para>
+		<para>Para mostrar un grupo predefinido de caracteres, ejecute los siguientes pasos:  </para>
+		  <orderedlist>
+			 <listitem>
+				<para>Haga clic en cualquier car&aacute;cter incluido en la lista predeterminada para activar el aplique. </para>
+			 </listitem>
+			 <listitem>
+				<para>Pulse el car&aacute;cter del teclado que est&aacute; asociado con el grupo de caracteres que desea visualizar. Por ejemplo, pulse
+				  <keycap>A</keycap> para visualizar el grupo de caracteres que aparecen en el siguiente gr&aacute;fico.
+              <!-- ==== Figure ============================================= -->
+				  <figure id="charpick-chargroup">
+					 <title>Grupo de caracteres asociados con la tecla A</title>
+					 <screenshot>
+						<mediaobject>
+						  <imageobject>
+							 <imagedata fileref="figures/charpalette_chargroup.png"  							  format="PNG"/> </imageobject>
+						  <textobject><phrase>Muestra el grupo de caracteres asociado con la tecla "A". </phrase></textobject></mediaobject>
+					 </screenshot>
+				  </figure>
+              <!-- ==== End of Figure ======================================= -->
+				</para>
+			 </listitem>
+		  </orderedlist>
+		<para>Puede seleccionar el car&aacute;cter que desee dentro del grupo de caracteres del aplique y, a continuaci&oacute;n, insertar el car&aacute;cter en la cadena de texto.
+		  </para>
+		<para>En el siguiente diagrama se enumeran los caracteres del teclado y sus grupos de caracteres asociados. Los caracteres del teclado aparecen en la primera columna de cada secci&oacute;n del diagrama. Los grupos de caracteres que est&aacute;n asociados con cada car&aacute;cter del teclado se muestran en las otras columnas. </para>
+      <!-- ==== Figure ============================================= -->
+		<figure id="charpick-characters">
+		  <title>Grupos de caracteres asociados con el teclado</title>
+		  <screenshot>
+			 <mediaobject>
+				<imageobject>
+				  <imagedata fileref="figures/charpick_characters.png"  					format="PNG"/> </imageobject>
+				<textobject><phrase>Muestra los grupos de caracteres asociados con diversas teclas del teclado.  </phrase></textobject></mediaobject>
+		  </screenshot>
+		</figure>
+      <!-- ==== End of Figure ======================================= -->
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-default-list">
+		<title>Volver a la lista predeterminada</title>
+		<para>Si desea volver a la lista predeterminada de caracteres, haga clic encima de cualquier car&aacute;cter del aplique y, a continuaci&oacute;n, pulse la tecla <keycap>barra espaciadora</keycap> del teclado. </para>
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-default-new">
+		<title>Configurar una nueva lista predeterminada</title>
+		<para>Para configurar una nueva lista predeterminada, puede utilizar la aplicaci&oacute;n de selecci&oacute;n de caracteres <application>Mapa de caracteres de GNOME</application>.
+		  Por ejemplo, para crear una nueva lista predeterminada mediante <application>Mapa de caracteres GNOME</application>, ejecute los siguientes pasos: </para>
+		<orderedlist>
+		  <listitem>
+			 <para>Haga clic con el bot&oacute;n derecho del rat&oacute;n en cualquier parte del aplique y, a continuaci&oacute;n, seleccione				<guimenuitem>Preferencias</guimenuitem>. </para>
+		  </listitem>
+		  <listitem>
+			 <para>En el cuadro de di&aacute;logo <guilabel>Preferencias de la Tabla de caracteres</guilabel>, seleccione el contenido del cuadro de texto <guilabel>Lista predeterminada de caracteres</guilabel>
+ y, a continuaci&oacute;n, pulse la tecla <keycap>Retroceso</keycap> para borrar la lista predeterminada actual. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Abra <application>Mapa de caracteres de GNOME</application> y, a continuaci&oacute;n, seleccione los caracteres que desea incluir en la nueva lista predeterminada. Puede seleccionar hasta un m&aacute;ximo de 25 caracteres. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Copie el contenido del cuadro de texto <guilabel>Texto que copiar</guilabel> de <application>Mapa de caracteres de GNOME</application> al cuadro de texto				<guilabel>Lista predeterminada de caracteres</guilabel>. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Haga clic en <guibutton>Aplicar</guibutton> para ver la nueva lista predeterminada del aplique y, a continuaci&oacute;n, haga clic en <guibutton>Aceptar</guibutton>. </para>
+		  </listitem>
+		</orderedlist>
+	 </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="charpick-prefs">
+	 <title>Preferencias</title>
+	 <para>Para configurar <application>&applet;</application>, haga clic con el bot&oacute;n derecho del rat&oacute;n en el aplique y, a continuaci&oacute;n, seleccione <guimenuitem>Preferencias</guimenuitem>.
+		El cuadro de di&aacute;logo <guilabel>Preferencias de la Tabla de caracteres</guilabel> contiene el cuadro de texto <guilabel>Lista predeterminada de caracteres</guilabel>. Use este cuadro de texto para especificar su propia lista predeterminada de caracteres. Vea
+		<xref linkend="charpick-default-new"/> para obtener m&aacute;s informaci&oacute;n. </para>
+  </sect1>
+</article>

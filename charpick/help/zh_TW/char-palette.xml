@@ -1,0 +1,224 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.05">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Character Palette">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_tw">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet 手冊 V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year>
+		<holder>Sun Microsystems</holder> </copyright>
+	 <copyright> 
+		<year>2000</year>
+		<holder>Dan Mueth</holder> </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+	 <publisher> 
+		<publishername>GNOME 文件專案 </publishername>
+	 </publisher> &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname>
+		  <surname>GNOME 文件小組</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname>
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname>
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME 文件專案</orgname>
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <address> <email>translator@gnome.org</email> </address> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+	 </authorgroup>
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber>
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>字元板 Applet 手冊 V2.1</revnumber>
+		  <date>2002 年 7 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>字元板 Applet 手冊 V2.0</revnumber>
+		  <date>2002 年 3 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>字元挖掘者 Applet</revnumber>
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email>
+				</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo>本手冊的內容是說明 &appletversion; 版的 &applet;。
+		</releaseinfo>
+	 <legalnotice> <title>回饋</title>
+		<para>關於 &applet; 應用程式或本手冊，如果要報告錯誤或提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。
+		  </para>
+<!-- Translators may also add here feedback address for translations -->
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> <primary>字元板</primary> </indexterm> 
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="charpick-introduction"> <title>介紹</title>
+       <!-- ==== Figure ============================================= -->
+	 <figure id="applet-fig"><title>&applet; Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/charpalette_applet.png"  				format="PNG"/> </imageobject>
+			 <textobject><phrase>顯示字元板	 Applet。</phrase></textobject></mediaobject>
+		</screenshot>
+	 </figure>
+       <!-- ==== End of Figure ======================================= -->
+	 <para>使用 <application>&applet;</application> Applet，您可以輕鬆地存取非標準字元，例如重音字元、數學符號、特殊符號以及標點符號。 您可以從 Applet 中，將字元插入文字字串內，例如文字文件或指令行。 您可以自訂 Applet 的內容，以符合您的需求。 <application>&applet;</application> 支援 ISO-8859-1〈拉丁語 1〉字元集規格，這個規格也涵蓋了大部分的歐系語言。
+		</para>
+	 <para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇<menuchoice><guimenu>加入面板</guimenu><guisubmenu>公用程式</guisubmenu><guimenuitem>字元板</guimenuitem></menuchoice>。</para>
+  </sect1>
+<!-- ================ Usage ================================ -->
+  <sect1 id="charpick-usage"><title>使用</title>
+	 <para>當您第一次將 <application>&applet;</application> 加入面板時，Applet 會顯示預設的字元清單。您可以從預設清單中選取字元，也可以從預先定義的字元群組中選取字元。 每個預先定義的字元群組，都會對應到鍵盤的標準字元。 </para>
+	 <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-charselect"><title>選取字元</title>
+		<para>如果要從 applet 中選取字元，並將該字元插入文字字串內，請執行下列步驟：   </para>
+		  <orderedlist>
+			 <listitem>
+				<para>在 applet 中，按一下所要的字元。 字元按鈕會呈按下狀態，表示已經選取該字元。
+				  </para>
+			 </listitem>
+			 <listitem>
+				<para>在應用程式中，將滑鼠指向要放置字元的位置，然後按滑鼠中鍵，插入字元。 如果有貼上功能，您也可以將字元貼入應用程式。 您可以重複多次插入的動作，因為在按下 Applet 中其他的字元前，原先所選取的字元會一直保持在選取狀態。 </para>
+			 </listitem>
+		  </orderedlist>
+		<para>某些應用程式不支援完整的 ISO-8859-1 字元集規格。 您無法在應用程式中，插入不受支援的字元。</para>
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-display-chargroup"><title>顯示預先定義的字元群組</title>
+		<para>您可以將顯示在 Applet 預設清單內的字元，更改為顯示在預先定義的字元群組中。</para>
+		<para>如果要顯示預先定義的字元群組，請執行下列步驟：   </para>
+		  <orderedlist>
+			 <listitem>
+				<para>按一下預設清單中的任何字元，啟動 Applet。 </para>
+			 </listitem>
+			 <listitem>
+				<para>按下與要顯示之字元群組對應的鍵盤字元。 例如，按下 <keycap>A</keycap>，會顯示下圖中的字元群組。 
+              <!-- ==== Figure ============================================= -->
+				  <figure id="charpick-chargroup"><title>與 A 鍵對應的字元群組</title>
+					 <screenshot>
+						<mediaobject>
+						  <imageobject>
+							 <imagedata fileref="figures/charpalette_chargroup.png"  							  format="PNG"/> </imageobject>
+						  <textobject><phrase>顯示與 "A" 鍵對應的字元群組。 </phrase></textobject></mediaobject>
+					 </screenshot>
+				  </figure>
+              <!-- ==== End of Figure ======================================= -->
+				</para>
+			 </listitem>
+		  </orderedlist>
+		<para>您可以從 Applet 的字元群組中，選取所要的字元，然後再將該字元插入文字字串內。
+		  </para>
+		<para>下表列出的，便是鍵盤字元以及與其對應的字元群組。 鍵盤字元是列於圖表每段的第一欄。 其他欄位則會顯示對應至每個鍵盤字元的字元群組。 </para>
+      <!-- ==== Figure ============================================= -->
+		<figure id="charpick-characters"><title>對應至鍵盤按鍵的字元群組</title>
+		  <screenshot>
+			 <mediaobject>
+				<imageobject>
+				  <imagedata fileref="figures/charpick_characters.png"  					format="PNG"/> </imageobject>
+				<textobject><phrase>顯示對應至不同鍵盤按鍵的字元群組。 </phrase></textobject></mediaobject>
+		  </screenshot>
+		</figure>
+      <!-- ==== End of Figure ======================================= -->
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-default-list"><title>回到預設的清單</title>
+		<para>如果要回到目前的預設字元清單，請按一下 Applet 上的任何字元，然後再按鍵盤上的 <keycap>空白鍵</keycap>。 </para>
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-default-new"> <title>設定新的預設清單</title>
+		<para>您可以使用字元選取應用程式，例如 <application>GNOME 字元對映</application>，設定新的預設清單。
+		例如，如果要用 <application>GNOME 字元對映</application>建立新的預設清單，請執行下列步驟：   </para>
+		<orderedlist>
+		  <listitem>
+			 <para>在Applet 的任何位置上按滑鼠右鍵，然後選取<guimenuitem>個人喜好</guimenuitem>。</para>
+		  </listitem>
+		  <listitem>
+			 <para>在<guilabel>字元板個人喜好設定</guilabel>對話方塊中，選取<guilabel>預設字元清單</guilabel>文字方塊的內容，然後再按<keycap>退格鍵</keycap>，刪除目前的預設清單。 </para>
+		  </listitem>
+		  <listitem>
+			 <para>開啟 <application>GNOME 字元對映</application>，然後
+為新的預設清單選取所需的字元。 您最多可以選取 25 個字元。 </para>
+		  </listitem>
+		  <listitem>
+			 <para>將<guilabel>要複製的文字</guilabel>文字方塊的內容，從 <application>GNOME 字元對映</application>複製到<guilabel>預設字元清單</guilabel>文字方塊中。</para>
+		  </listitem>
+		  <listitem>
+			 <para>按一下<guibutton>套用</guibutton>，檢視 Applet 中新的預設清單，然後按一下 <guibutton>確定</guibutton>。</para>
+		  </listitem>
+		</orderedlist>
+	 </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="charpick-prefs"><title>個人喜好</title>
+	 <para>如果要配置 <application>&applet;</application>，請在  Applet 上按滑鼠右鍵，然後選擇 <guimenuitem>個人喜好</guimenuitem>。
+		在<guilabel>字元版個人喜好設定</guilabel>對話方塊中，含有<guilabel>預設字元清單</guilabel>文字方塊。 請使用這個文字方塊，指定您自己的預設字元清單。 如需進一步資訊，請參閱<xref linkend="charpick-default-new"/>。 </para>
+  </sect1>
+</article>

@@ -1,0 +1,241 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.05">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Character Palette">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="fr">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Manuel de l'applet V&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>
+		<holder>Sun Microsystems</holder> </copyright>
+	 <copyright> 
+		<year>2000</year>
+		<holder>Dan Mueth</holder> </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+	 <publisher> 
+		<publishername>Projet de documentation GNOME</publishername>
+	 </publisher> &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname>
+		  <surname>Equipe de documentation GNOME</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname>
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname>
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>Projet de documentation GNOME</orgname>
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <address> <email>translator@gnome.org</email> </address> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+	 </authorgroup>
+	 <revhistory>
+		<revision> 
+		  <revnumber>Manuel de l'applet &applet; V&manrevision;</revnumber>
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Table de caract&egrave;res V2.1</revnumber>
+		  <date>Juillet 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Table de caract&egrave;res V2.0</revnumber>
+		  <date>Mars 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Applet S&eacute;lecteur de caract&egrave;res</revnumber>
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email>
+				</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo>Le pr&eacute;sent manuel d&eacute;crit la version &appletversion; de &applet;.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Votre avis</title>
+		<para>Pour signaler un probl&egrave;me ou faire une suggestion concernant l'application &applet; ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute; &agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+		  </para>
+<!-- Translators may also add here feedback address for translations -->
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> <primary>Table de caract&egrave;res</primary> </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="charpick-introduction"> 
+	 <title>Introduction</title>
+       <!-- ==== Figure ============================================= -->
+	 <figure id="applet-fig"> 
+		<title>Applet &applet;</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/charpalette_applet.png"  				format="PNG"/> </imageobject>
+			 <textobject><phrase>Affiche l'applet Table de caract&egrave;res.</phrase></textobject></mediaobject>
+		</screenshot>
+	 </figure>
+       <!-- ==== End of Figure ======================================= -->
+	 <para>L'applet <application>&applet;</application> permet d'acc&eacute;der ais&eacute;ment aux caract&egrave;res particuliers, tels que les caract&egrave;res accentu&eacute;s, les symboles math&eacute;matiques, les caract&egrave;res sp&eacute;ciaux et les signes de ponctuation. Il est possible d'ins&eacute;rer des caract&egrave;res dans une cha&icirc;ne de texte, par exemple dans des documents texte ou dans une ligne de commande, depuis l'applet. Par ailleurs, vous pouvez adapter le contenu de l'applet &agrave; vos besoins personnels. <application>&applet;</application> reconna&icirc;t le jeu de caract&egrave;res ISO-8859-1(Latin 1), qui couvre la plupart des langues europ&eacute;ennes.
+		</para>
+	 <para>Pour ajouter <application>&applet;</application> &agrave; un tableau de bord, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez 
+		<menuchoice> 
+		<guimenu>Ajouter au tableau de bord</guimenu>
+		<guisubmenu>Utilitaires</guisubmenu> 
+		<guimenuitem>Table de caract&egrave;res</guimenuitem>
+		</menuchoice>.</para>
+  </sect1>
+<!-- ================ Usage ================================ -->
+  <sect1 id="charpick-usage"> 
+	 <title>Utilisation</title>
+	 <para>Lorsque vous ajoutez <application>&applet;</application> &agrave; un tableau de bord pour la premi&egrave;re fois, il affiche une liste des caract&egrave;res par d&eacute;faut. Vous pouvez s&eacute;lectionner un caract&egrave;re dans cette liste ou dans des groupes de caract&egrave;res pr&eacute;d&eacute;finis. Chacun de ces groupes est associ&eacute; &agrave; un caract&egrave;re standard du clavier. </para>
+	 <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-charselect"> 
+		<title>S&eacute;lection d'un caract&egrave;re</title>
+		<para>Pour s&eacute;lectionner un caract&egrave;re de l'applet et l'ins&eacute;rer dans une cha&icirc;ne de texte, proc&eacute;dez comme suit :                    </para>
+		  <orderedlist>
+			 <listitem>
+				<para>Cliquez sur le caract&egrave;re requis dans l'applet. Le bouton du caract&egrave;re est enfonc&eacute;. Ceci indique qu'il est s&eacute;lectionn&eacute;.
+				  </para>
+			 </listitem>
+			 <listitem>
+				<para>Pointez sur l'emplacement o&ugrave; le caract&egrave;re doit &ecirc;tre ins&eacute;r&eacute; et appuyez sur le bouton central. Vous pouvez &eacute;galement coller le caract&egrave;re dans l'application si une option correspondante est disponible. Vous pouvez r&eacute;p&eacute;ter l'insertion autant de fois que n&eacute;cessaire. En effet, le caract&egrave;re reste s&eacute;lectionn&eacute; jusqu'&agrave; ce que vous cliquiez sur une autre entr&eacute;e de l'applet. </para>
+			 </listitem>
+		  </orderedlist>
+		<para>Certaines applications ne reconnaissent pas le jeu de caract&egrave;res ISO-8859-1 dans son ensemble. Il est impossible d'ins&eacute;rer des caract&egrave;res non pris en charge dans une application.</para>
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-display-chargroup"> 
+		<title>Affichage d'un groupe de caract&egrave;res pr&eacute;d&eacute;fini</title>
+		<para>Vous pouvez passer de la liste de caract&egrave;res par d&eacute;faut &agrave; un groupe pr&eacute;d&eacute;fini.</para>
+		<para>Pour afficher un groupe pr&eacute;d&eacute;fini, proc&eacute;dez comme suit : </para>
+		  <orderedlist>
+			 <listitem>
+				<para>Cliquez sur l'un des caract&egrave;res de la liste par d&eacute;faut pour activer l'applet. </para>
+			 </listitem>
+			 <listitem>
+				<para>Appuyez sur la touche du clavier associ&eacute;e au groupe de caract&egrave;res &agrave; afficher. Par exemple, appuyez sur <keycap>A</keycap> pour afficher le groupe de caract&egrave;res de la figure suivante. 
+              <!-- ==== Figure ============================================= -->
+				  <figure id="charpick-chargroup"> 
+					 <title>Groupe de caract&egrave;res associ&eacute; &agrave; la touche A</title>
+					 <screenshot>
+						<mediaobject>
+						  <imageobject>
+							 <imagedata fileref="figures/charpalette_chargroup.png"  							  format="PNG"/> </imageobject>
+						  <textobject><phrase>Affiche le groupe de caract&egrave;res associ&eacute; &agrave; la touche "A". </phrase></textobject></mediaobject>
+					 </screenshot>
+				  </figure>
+              <!-- ==== End of Figure ======================================= -->
+				</para>
+			 </listitem>
+		  </orderedlist>
+		<para>Vous pouvez s&eacute;lectionner le caract&egrave;re requis dans le groupe, puis l'ins&eacute;rer dans votre cha&icirc;ne de texte.
+		  </para>
+		<para>Le tableau suivant r&eacute;pertorie les touches du clavier et les groupes qui leur sont associ&eacute;s. Les touches sont affich&eacute;es dans la premi&egrave;re colonne de chaque section du tableau. Les groupes de caract&egrave;res associ&eacute;s &agrave; chacune d'entre elles figurent dans les autres colonnes. </para>
+      <!-- ==== Figure ============================================= -->
+		<figure id="charpick-characters"> 
+		  <title>Groupes de caract&egrave;res associ&eacute;s aux touches du clavier</title>
+		  <screenshot>
+			 <mediaobject>
+				<imageobject>
+				  <imagedata fileref="figures/charpick_characters.png"  					format="PNG"/> </imageobject>
+				<textobject><phrase>Affiche les groupes de caract&egrave;res associ&eacute;s aux diff&eacute;rentes touches du clavier. </phrase></textobject></mediaobject>
+		  </screenshot>
+		</figure>
+      <!-- ==== End of Figure ======================================= -->
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-default-list"> 
+		<title>Retour &agrave; la liste par d&eacute;faut</title>
+		<para>Pour retourner &agrave; la liste de caract&egrave;res par d&eacute;faut courante, cliquez sur l'un des caract&egrave;res de l'applet, puis appuyez sur la <keycap>barre d'espace</keycap> de votre clavier. </para>
+	 </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+	 <sect2 id="charpick-default-new"> 
+		<title>Configuration d'une nouvelle liste par d&eacute;faut</title>
+		<para>Vous pouvez utiliser une application de s&eacute;lection de caract&egrave;res, telle que <application>GNOME Character Map</application> pour configurer une nouvelle liste par d&eacute;faut.
+		Par exemple, pour cr&eacute;er une nouvelle liste par d&eacute;faut &agrave; l'aide de l'application <application>GNOME Character map</application>, proc&eacute;dez comme suit : </para>
+		<orderedlist>
+		  <listitem>
+			 <para>Cliquez avec le bouton droit &agrave; un endroit quelconque de l'applet, puis s&eacute;lectionnez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Dans la bo&icirc;te de dialogue <guilabel>Pr&eacute;f&eacute;rences de la liste de caract&egrave;res</guilabel>, s&eacute;lectionnez le contenu de la zone de texte <guilabel>Liste de caract&egrave;res par d&eacute;faut</guilabel>, puis appuyez sur la touche <keycap>Espace arri&egrave;re</keycap> pour supprimer la liste par d&eacute;faut active. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Ouvrez <application>Table de caract&egrave;res GNOME</application>, puis s&eacute;lectionnez les caract&egrave;res souhait&eacute;s pour votre nouvelle liste par d&eacute;faut. Vous pouvez en s&eacute;lectionner jusqu'&agrave; 25. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Copiez le  contenu de la zone de texte <guilabel>Texte &agrave; copier</guilabel> de <application>Table de caract&egrave;res GNOME</application> dans la zone de texte <guilabel>Liste de caract&egrave;res par d&eacute;faut</guilabel>. </para>
+		  </listitem>
+		  <listitem>
+			 <para>Cliquez sur <guibutton>Appliquer</guibutton> pour afficher la nouvelle liste par d&eacute;faut dans l'applet, puis sur <guibutton>OK</guibutton>. </para>
+		  </listitem>
+		</orderedlist>
+	 </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="charpick-prefs"> 
+	 <title>Pr&eacute;f&eacute;rences</title>
+	 <para>Pour configurer <application>&applet;</application>, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>.
+		La bo&icirc;te de dialogue <guilabel>Pr&eacute;f&eacute;rences de la liste de caract&egrave;res</guilabel> contient la zone de texte <guilabel>Liste de caract&egrave;res par d&eacute;faut</guilabel>. Cette zone de texte permet d'indiquer votre propre liste de caract&egrave;res par d&eacute;faut. Consultez <xref linkend="charpick-default-new"/> pour plus d'informations. </para>
+  </sect1>
+</article>
+
