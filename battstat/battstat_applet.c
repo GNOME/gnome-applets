@@ -1735,7 +1735,7 @@ battstat_applet_fill (PanelApplet *applet)
 
   if (DEBUG) g_print("main()\n");
   
-  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/battstat.png");
+  gtk_window_set_default_icon_name ("battstat");
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs", NULL);
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);

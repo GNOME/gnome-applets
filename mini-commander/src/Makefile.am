@@ -54,7 +54,7 @@ glade_DATA = mini-commander.glade
 bitmapsdir = $(datadir)/pixmaps/mini-commander
 bitmaps_DATA = browser-mini.xpm history-mini.xpm
 
-pixmapdir = $(datadir)/pixmaps
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gnome-mini-commander.png
 
 serverdir       = $(libdir)/bonobo/servers

@@ -73,7 +73,7 @@ install-data-local:
         fi
 endif
 
-pixmapdir = $(datadir)/pixmaps
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png
 
 gladedir   =  $(datadir)/gswitchit

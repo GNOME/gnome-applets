@@ -207,7 +207,7 @@ applet_fill (PanelApplet *applet)
 	gchar *tmp_path;
 	AtkObject *atk_obj;
 	
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/drivemount-applet.png");
+	gtk_window_set_default_icon_name ("drivemount-applet");
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	
 	panel_applet_add_preferences (applet,

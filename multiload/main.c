@@ -456,7 +456,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->about_dialog = NULL;
 	ma->prop_dialog = NULL;
 
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-monitor.png");
+	gtk_window_set_default_icon_name ("gnome-monitor");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);

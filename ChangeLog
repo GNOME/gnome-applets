@@ -1,5 +1,43 @@
 2004-10-05  Davyd Madeley  <davyd@madeley.id.au>
 
+	* configure.in: Bump requirements for GTK+ and other core libraries.
+	  We now require gtk+-2.5 for icon theming.
+
+	* battstat/Makefile.am:
+	* charpick/Makefile.am:
+	* drivemount/Makefile.am:
+	* geyes/Makefile.am:
+	* gkb-new/Makefile.am:
+	* gswitchit/Makefile.am:
+	* mini-commander/src/Makefile.am:
+	* mixer/Makefile.am:
+	* multiload/Makefile.am: Switch from installing in
+	  $prefix/share/pixmaps to $prefix/share/icons/48x48/apps
+
+	* wireless/GNOME_Panel_WirelessApplet.server.in.in:
+	* wireless/Makefile.am: Split the application icon out to install as
+	  above, leave the application pixmaps in $prefix/share/pixmaps
+
+	- already correct: cdplayer, gweather, stickynotes
+	- need to correct: gtik, mailcheck, modemlights
+	  have to move their icons from gnome-desktop
+	- pixmap directories need to be moved, but require changes to icon
+	  theming lookup code
+	
+	* battstat/battstat_applet.c:
+	* charpick/charpick.c:
+	* drivemount/drivemount.c:
+	* geyes/geyes.c:
+	* gkb-new/gkb.c:
+	* gtik/gtik.c:
+	* mini-commander/src/mini-commander_applet.c:
+	* modemlights/modemlights.c:
+	* multiload/main.c:
+	* wireless/wireless-applet.c: Use gtk_window_set_default_icon_name()
+	  to get the icon from the theme
+
+2004-10-05  Davyd Madeley  <davyd@madeley.id.au>
+
 	* configure.in: Bump requirements for libxklavier to 1.10, required to
 	build the latest libgswitchit.
 

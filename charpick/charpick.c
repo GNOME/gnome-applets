@@ -775,7 +775,7 @@ charpicker_applet_fill (PanelApplet *applet)
   GList *list;
   gchar *string;
   
-  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/charpick.png");
+  gtk_window_set_default_icon_name ("charpick");
   
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);

@@ -29,7 +29,7 @@ multiload_applet_2_LDADD = \
 
 pixmaps = gnome-cpu.png
 
-pixmapdir = $(datadir)/pixmaps
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = $(pixmaps)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

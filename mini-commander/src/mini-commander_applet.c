@@ -356,7 +356,7 @@ mini_commander_applet_fill (PanelApplet *applet)
     }
 
     
-    gnome_window_icon_set_default_from_file (GNOME_ICONDIR "/gnome-mini-commander.png");
+    gtk_window_set_default_icon_name ("gnome-mini-commander");
     
     mc = g_new0 (MCData, 1);
     mc->applet = applet;

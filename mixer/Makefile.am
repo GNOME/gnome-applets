@@ -1,6 +1,6 @@
 SUBDIRS = docs
 
-iconsdir = $(datadir)/pixmaps
+iconsdir = $(datadir)/icons/hicolor/48x48/apps
 icons_DATA = gnome-mixer-applet.png
 
 pixmapsdir = $(datadir)/pixmaps/mixer

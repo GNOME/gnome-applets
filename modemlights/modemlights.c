@@ -1478,7 +1478,7 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->connect_dialog = NULL;
 	mldata->run_dialog = NULL;
 
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-modem.png");
+	gtk_window_set_default_icon_name ("gnome-modem");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/modemlights/prefs", NULL);
 		

@@ -19,21 +19,23 @@ GNOME_COMPILE_WARNINGS
 
 dnl Stuff we might need, not quite sure yet
 
-GTK_REQUIRED=2.1.0
-LIBGNOME_REQUIRED=2.0.0
-LIBGNOMEUI_REQUIRED=2.0.0
-GNOME_VFS_REQUIRED=1.9.16
-GCONF_REQUIRED=1.1.11
+GTK_REQUIRED=2.5.0
+LIBGNOME_REQUIRED=2.8.0
+LIBGNOMEUI_REQUIRED=2.8.0
+GNOME_VFS_REQUIRED=2.8.0
+GCONF_REQUIRED=2.8.0
 SCROLLKEEPER_REQUIRED=0.1.4
-LIBPANEL_REQUIRED=2.6.0
-LIBGTOP_REQUIRED=2.5.0
-LIBGLADE_REQUIRED=2.0.0
+LIBPANEL_REQUIRED=2.8.0
+LIBGTOP_REQUIRED=2.8.0
+LIBGLADE_REQUIRED=2.4.0
+LIBGAIL_REQUIRED=1.1.0
+LIBXKLAVIER_REQUIRED=1.1.0
 
 dnl ******************************************
 dnl ** pkg-config dependacy checks          **
 dnl ******************************************
 
-PKG_CHECK_MODULES(GAILUTIL, gail >= 0.13)
+PKG_CHECK_MODULES(GAILUTIL, gail >= $LIBGAIL_REQUIRED)
 AC_SUBST(GAILUTIL_CFLAGS)
 AC_SUBST(GAILUTIL_LIBS)
 
@@ -86,7 +88,7 @@ AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
 dnl Setup for libxklavier
-PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= 1.10,,
+PKG_CHECK_MODULES(LIBXKLAVIER, libxklavier >= $LIBXKLAVIER_REQUIRED,,
     AC_MSG_ERROR([libxklavier was not found and is required to build gnome-applets.
 Please get the latest version from http://freedesktop.org/Software/LibXklavier], 1))
 

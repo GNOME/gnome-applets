@@ -7,7 +7,7 @@ $(GNOME_APPLETS_CFLAGS)
 
 libexec_PROGRAMS = drivemount_applet2
 
-desktop_iconsdir = $(datadir)/pixmaps
+desktop_iconsdir = $(datadir)/icons/hicolor/48x48/apps
 desktop_icons_DATA = drivemount-applet.png
 
 drivemount_applet2_SOURCES = \

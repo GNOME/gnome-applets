@@ -36,7 +36,7 @@ SUBDIRS= gkb help $(gkb_DDIRS)
 
 GKB_ICON = gkb.png gkb-icon.png
 
-gkbicondir = $(datadir)/pixmaps
+gkbicondir = $(datadir)/icons/hicolor/48x48/apps
 gkbicon_DATA = $(GKB_ICON)
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

@@ -39,7 +39,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 themesdir = $(datadir)/geyes
 
-pixmapdir = $(datadir)/pixmaps
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
 pixmap_DATA = gnome-eyes.png
 
 EXTRA_DIST = \

@@ -2,7 +2,7 @@
 gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
 
-pixmapsdir = $(datadir)/pixmaps
+pixmapsdir = $(datadir)/icons/hicolor/48x48/apps
 pixmaps_DATA = battstat.png
 
 if NEED_LIBAPM

@@ -854,8 +854,7 @@ wireless_applet_new (WirelessApplet *applet)
 static gboolean
 wireless_applet_fill (WirelessApplet *applet)
 {
-	gnome_window_icon_set_default_from_file
-		(ICONDIR"/wireless-applet/wireless-applet.png");
+	gtk_window_set_default_icon_name ("wireless-applet");
 
 	glade_gnome_init ();
 	glade_file = gnome_program_locate_file

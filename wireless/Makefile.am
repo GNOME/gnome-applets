@@ -45,8 +45,10 @@ pixmap_DATA = no-link-0.png	\
 	signal-41-60.png	\
 	signal-61-80.png	\
 	signal-81-100.png	\
-	wireless-applet.png	\
 	$(NULL)
+
+icondir = $(datadir)/icons/hicolor/48x48/apps
+icon_DATA = wireless-applet.png
 
 CLEANFILES = $(server_in_files) $(server_DATA) *.bak *.gladep
 

@@ -464,7 +464,7 @@ gkb_new (void)
 
 	do_at_first_run ();
 	load_properties (gkb);
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gkb.png");
+	gtk_window_set_default_icon_name ("gkb");
 
 	gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
 	if (!gkb->keymap) {
