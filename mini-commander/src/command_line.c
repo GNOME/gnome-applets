@@ -31,6 +31,8 @@
 #include "cmd_completion.h"
 #include "message.h"
 
+static gint fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect);
+
 GtkWidget *entryCommand;
 static int historyPosition = HISTORY_DEPTH;
 static char *historyCommand[HISTORY_DEPTH];
@@ -147,7 +149,7 @@ activateCommandLine_signal(GtkWidget *widget, gpointer data)
     return (FALSE);
 }
 
-int 
+gint 
 showHistory_signal(GtkWidget *widget, gpointer data)
 {
     /* FIXME: write this routine */
@@ -164,10 +166,9 @@ showHistory_signal(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
-static int 
+static gint 
 fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect)
 {
-    
     /* get selected file name */
     strcpy(browsedFilename, (char *) gtk_file_selection_get_filename(GTK_FILE_SELECTION(fileSelect)));
 
@@ -183,7 +184,7 @@ fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect)
     return FALSE;  
 }
 
-int 
+gint 
 showFileBrowser_signal(GtkWidget *widget, gpointer data)
 {
     /* FIXME: write this routine */
