@@ -72,6 +72,27 @@ find_presets ()
   return diritems;
 }
 
+static gint 
+comparepreset(gconstpointer a, gconstpointer b)
+{
+ gint aa,bb;
+ const GkbKeymap *k1 = a, *k2 = b;
+
+ aa = strcoll (k1->lang, k2->lang);
+ bb = strcoll (k2->lang, k1->lang);
+ if (aa == bb) {
+  aa = strcoll (k1->country, k2->country);
+  bb = strcoll (k2->country, k1->country); 
+  if (aa == bb) {
+   return strcoll (k1->name, k2->name);
+  } else {
+   return aa;
+  } 
+ } else {
+  return aa;
+ } 
+}
+
 GList *
 gkb_preset_load (GList * list)
 {
@@ -113,7 +134,6 @@ gkb_preset_load (GList * list)
 	{
 	  val = g_new0 (GkbKeymap, 1);
 
-
 	  set = g_strdup_printf ("=/Country %d/", i);
 	  prefix = g_strconcat ("=", prefixdir, "/", filename, set, NULL);
 	  gnome_config_push_prefix (prefix);
@@ -144,5 +164,7 @@ gkb_preset_load (GList * list)
       g_free (tcommand);
 
     }
+  retlist = g_list_sort (retlist, comparepreset);
+
   return retlist;
 }
