@@ -678,7 +678,7 @@ int main (int argc, char *argv[])
 
 	list = g_list_append(NULL,"scroll_applet");
 	applet_widget_init("scroll_applet", VERSION, argc, argv, NULL,
-			   0, NULL, TRUE, list, applet_start_new_applet, NULL);
+			   0, NULL);
 	g_list_free(list);
 
 	applet = applet_widget_new("scroll_applet");
