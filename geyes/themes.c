@@ -194,7 +194,7 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 	g_return_if_fail (theme);
 	
 	theme_dir = g_strdup_printf ("%s/", theme);
-	if (!g_strcasecmp (theme_dir, eyes_applet->theme_dir)) {
+	if (!g_ascii_strncasecmp (theme_dir, eyes_applet->theme_dir, strlen (theme_dir))) {
 		g_free (theme_dir);
 		return;
 	}
@@ -372,7 +372,8 @@ properties_cb (BonoboUIComponent *uic,
                                         gtk_list_store_insert (model, &iter, 0);
                                         gtk_list_store_set (model, &iter, 0, &filename, -1);
                                         theme_dir = g_strdup_printf ("%s/", filename);
-                                        if (!g_strcasecmp (eyes_applet->theme_dir, theme_dir)) {
+                                        
+					if (!g_ascii_strncasecmp (eyes_applet->theme_dir, theme_dir, strlen (theme_dir))) {
                                         	GtkTreePath *path;
                                         	path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
                                                         			&iter);

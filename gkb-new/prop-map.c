@@ -67,7 +67,7 @@ static void
 gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
 {
   GkbKeymap *keymap;
-  gchar *name, *label, *command, *flag;
+  gchar *name, *label, *command, *flag, *filename;
                                                                                 
   keymap = mdi->keymap;
                                                                                 
@@ -100,10 +100,11 @@ gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
   	keymap->command = g_strdup (command);
 	g_free (command);
   }
-  flag =
-    g_strdup (g_basename
-              (gnome_icon_entry_get_filename
-               (GNOME_ICON_ENTRY (mdi->flag_entry))));
+  filename = g_path_get_basename (gnome_icon_entry_get_filename (GNOME_ICON_ENTRY (mdi->flag_entry)));
+
+  flag = g_strdup (g_path_get_basename (filename));
+  g_free (filename);
+
   if (flag) {
   	 if  (keymap->flag)
   		g_free (keymap->flag);
