@@ -145,20 +145,20 @@ cpufreq_applet_display_error (const gchar *message,
                               const gchar *secondary)
 {
         GtkWidget *dialog;
-        gchar     *bold_str;
            
-        bold_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", message, "</span>", NULL);            
-
-        dialog = gtk_message_dialog_new_with_markup (NULL,
-                                                     GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                     GTK_MESSAGE_ERROR,
-                                                     GTK_BUTTONS_OK,
-                                                     bold_str);
+        dialog = gtk_message_dialog_new (NULL,
+                                         GTK_DIALOG_DESTROY_WITH_PARENT,
+                                         GTK_MESSAGE_ERROR,
+                                         GTK_BUTTONS_OK,
+                                         message);
         gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
                                                   secondary);
-        gtk_dialog_run (GTK_DIALOG (dialog));
-        gtk_widget_destroy (dialog);
-        g_free (bold_str);
+        gtk_window_set_title (GTK_WINDOW (dialog), ""); /* as per HIG */
+        gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dialog), TRUE);
+        g_signal_connect (G_OBJECT (dialog),
+                          "response",
+                          G_CALLBACK (gtk_widget_destroy), NULL);
+        gtk_widget_show (dialog);
 }
 
 static void
