@@ -495,7 +495,7 @@ int main (int argc, char *argv[])
 
 	applet_widget_init("clockmail_applet", VERSION, argc, argv, NULL, 0,
 			   NULL);
-	applet_factory_new("clockmail_applet", NULL, applet_start_new_applet);
+	applet_factory_new("clockmail_applet_factory", NULL, applet_start_new_applet);
 
 	applet = applet_widget_new("clockmail_applet");
 	if (!applet)

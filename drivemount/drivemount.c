@@ -501,7 +501,7 @@ int main (int argc, char *argv[])
 
 	applet_widget_init("drivemount_applet", VERSION, argc, argv,
 			   NULL, 0, NULL);
-	applet_factory_new("drivemount_applet", NULL, applet_start_new_applet);
+	applet_factory_new("drivemount_applet_factory", NULL, applet_start_new_applet);
 
 	applet = applet_widget_new("drivemount_applet");
 	if (!applet)
