@@ -31,7 +31,7 @@ static GtkWidget *gweather_about_new (void)
     };
     GtkWidget *about_dialog;
     
-    about_dialog = gnome_about_new ("GNOME Weather", VERSION,
+    about_dialog = gnome_about_new ("GNOME Weather", "0.05",
                                     _("Copyright (c)1999 by S. Papadimitriou"),
                                     authors,
                                     _("GNOME weather monitor applet.\nWeb: http://gweather.dhs.org/"),
