@@ -107,67 +107,63 @@ fork_new_handler (RemoteHandler handler, RemoteHandler error_handler,
 		  gpointer data, GDestroyNotify destroy_notify)
 {
 	pid_t pid;
-	int fd[2];
+	int pidpipe[2], mailpipe[2];
 	RemoteHandlerData *handler_data;
 
-	if (pipe (fd) != 0)
+	if (pipe (pidpipe) != 0)
 		return NULL;
+	if (pipe (mailpipe) != 0) {
+		close (pidpipe[0]);
+		close (pidpipe[1]);
+		return NULL;
+	}
 
 	handler_data = g_new0 (RemoteHandlerData, 1);
 
 	pid = fork ();
 	if (pid < 0) {
-		close (fd[0]);
-		close (fd[1]);
+		close (pidpipe[0]);
+		close (pidpipe[1]);
+		close (mailpipe[0]);
+		close (mailpipe[1]);
 		g_free (handler_data);
 		return NULL;
 	} else if (pid == 0) {
 		/*child*/
 		pid = fork ();
 		if (pid != 0) {
-			write (fd[1], &pid, sizeof (pid));
+			write (pidpipe[1], &pid, sizeof (pid));
 			_exit (0);
 		} else {
 			/* grand child */
 
-			/* Make sure that the pid is written first */
-
-			struct pollfd poll_list[1];
-
-			poll_list[0].fd = fd[0];
-			poll_list[0].events = POLLIN;
-			poll (poll_list, 1, POLLTIMEOUT);
-
-			close (fd [0]);
-
-			if (((poll_list[0].revents&POLLHUP) == POLLHUP) ||
-			    ((poll_list[0].revents&POLLERR) == POLLERR) ||
-			    ((poll_list[0].revents&POLLERR) == POLLNVAL)) {
-				g_free (handler_data);
-				return NULL;
-			}
+			close (pidpipe [0]);
+			close (pidpipe [1]);
 
 			handler_data->pid = 0;
-			handler_data->fd = fd[1];
+			handler_data->fd = mailpipe[1];
 			return handler_data;
 		}
 	} else {
 		/*parent*/
-		close (fd[1]);
+		close (pidpipe[1]);
+		close (mailpipe[1]);
 		while ((waitpid (pid, 0, 0) == -1) && errno == EINTR);
-		read (fd[0], &pid, sizeof (pid));
+		if (read (pidpipe[0], &pid, sizeof (pid)) == -1)
+			pid = -1;
+		close (pidpipe[0]);
 		
 		if (pid <= 0) {
-			close (fd[0]);
+			close (mailpipe[0]);
 			g_free (handler_data);
 			return NULL;
 		}
 
 		/* set to nonblocking */
-		fcntl(fd[0], F_SETFL, O_NONBLOCK);
+		fcntl(mailpipe[0], F_SETFL, O_NONBLOCK);
 
 		handler_data->pid = pid;
-		handler_data->fd = fd[0];
+		handler_data->fd = mailpipe[0];
 		handler_data->handler = handler;
 		handler_data->error_handler = error_handler;
 		handler_data->data = data;
