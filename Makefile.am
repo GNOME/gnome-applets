@@ -12,7 +12,6 @@ endif
 
 
 ghttp_applets = \
-	freshapp	\
 	slashapp
 ghttp_nb_applets = \
 	bussign		\
