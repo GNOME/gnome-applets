@@ -129,8 +129,8 @@ tree_create (GtkTreeStore *model)
 
 	      gtk_tree_store_set (GTK_TREE_STORE(model), &citer,
 				NAME_COL, item->country,
-				COMMAND_COL, NULL,
-				FLAG_COL, NULL,
+				COMMAND_COL, item->country,
+				FLAG_COL, item->flag,
 				LABEL_COL, item->label,
 				LANG_COL, item->lang,
 				COUNTRY_COL, item->country,
