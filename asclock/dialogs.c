@@ -300,9 +300,9 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(my_asclock->pwin)->dialog.window),
                 _("ASClock Settings"));
 
-  frame = gtk_vbox_new(5, TRUE);
+  frame = gtk_vbox_new(TRUE, 5);
   hbox =  gtk_hbox_new(TRUE, 5);
-  opts = gtk_vbox_new(5, TRUE);
+  opts = gtk_vbox_new(TRUE, 5);
 
 #ifdef ENABLE_NLS
   themes_titles[0]=_(themes_titles[0]);
@@ -317,7 +317,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
       if((dfd = opendir(*cpp)) != NULL){
 	gchar *elems[2];
 	elems[0] = filename;
-	elems[2] = NULL;
+	elems[1] = NULL;
         while((dp = readdir(dfd)) != NULL){
           if ( dp->d_name[0]!='.' ) {
 	    strcpy(filename, *cpp);
@@ -380,7 +380,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   label = gtk_label_new(_("General"));
   gnome_property_box_append_page( GNOME_PROPERTY_BOX(my_asclock->pwin),frame ,label);
 
-  frame =  gtk_vbox_new(5, TRUE);
+  frame =  gtk_vbox_new(TRUE, 5);
 
   label = gtk_label_new(_("Timezone"));
 

@@ -1,3 +1,9 @@
+Tue Aug 29 17:49:34 2000  George Lebl <jirka@5z.com>
+
+	* asclock.c, dialogs.c, timezone.c: Use glib g_malloc/g_new/g_free
+	  remove broken memset, fix [hv]box_new parameters, fix a buffer
+	  overrun when reading the theme directories
+
 Wed May 31 14:50:35 2000  George Lebl <jirka@5z.com>
 
 	* dialogs.c: protect the snprintf with setlocale(LC_NUMERIC, "C")

@@ -218,10 +218,12 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
       w = ((GdkWindowPrivate *)hour_pixmap)->width;
       h = ((GdkWindowPrivate *)hour_pixmap)->height;
 
-      if(hour_img) gdk_image_destroy(hour_img);
+      if(hour_img)
+	      gdk_image_destroy(hour_img);
       hour_img = gdk_image_get(hour_mask, 0, 0, w, h);
-      if(hour_map) free(hour_map);
-      hour_map = (char *) malloc(2*w*h*sizeof(char));
+      if(hour_map)
+	      g_free(hour_map);
+      hour_map = g_malloc(2*w*h*sizeof(char));
       for(y=0;y<h;y++) {
 	for(x=0;x<w;x++) {
 	  l = gdk_image_get_pixel(hour_img, x, y);
@@ -254,10 +256,12 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
       w = ((GdkWindowPrivate *)min_pixmap)->width;
       h = ((GdkWindowPrivate *)min_pixmap)->height;
 
-      if(min_img) gdk_image_destroy(min_img);
+      if(min_img)
+	      gdk_image_destroy(min_img);
       min_img = gdk_image_get(min_mask, 0, 0, w, h);
-      if(min_map) free(min_map);
-      min_map = (char *) malloc(w*h*sizeof(char));
+      if(min_map)
+	      g_free(min_map);
+      min_map = g_malloc(w*h*sizeof(char));
       for(y=0;y<h;y++) {
 	for(x=0;x<w;x++) {
 	  l = gdk_image_get_pixel(min_img, x, y);
@@ -292,10 +296,12 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
       w = ((GdkWindowPrivate *)sec_pixmap)->width;
       h = ((GdkWindowPrivate *)sec_pixmap)->height;
      
-      if(sec_img) gdk_image_destroy(sec_img); 
+      if(sec_img)
+	      gdk_image_destroy(sec_img); 
       sec_img = gdk_image_get(sec_mask, 0, 0, w, h);
-      if(sec_map) free(sec_map);
-      sec_map = (char *) malloc(w*h*sizeof(char));
+      if(sec_map)
+	      g_free(sec_map);
+      sec_map = g_malloc(w*h*sizeof(char));
       for(y=0;y<h;y++) {
 	for(x=0;x<w;x++) {
 	  l = gdk_image_get_pixel(sec_img, x, y);
@@ -452,8 +458,7 @@ int main( int argc, char *argv[] )
     bindtextdomain(PACKAGE, GNOMELOCALEDIR);
     textdomain(PACKAGE);
 
-    my = (asclock *)malloc(sizeof(asclock));
-    memset(my, sizeof(my), 0);
+    my = g_new0 (asclock, 1);
     config();
     
     /* create the main window, and attach delete_event signal to terminating
@@ -516,7 +521,7 @@ int main( int argc, char *argv[] )
 #else
 #ifdef HAVE_PUTENV
      char line[MAX_PATH_LEN];
-     snprintf(line, MAX_PATH_LEN, "TZ=%s", my->timezone);
+     g_snprintf(line, MAX_PATH_LEN, "TZ=%s", my->timezone);
      putenv(line);
 #else
 #error neither setenv nor putenv defined

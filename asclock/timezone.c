@@ -72,7 +72,7 @@ void enum_timezones(asclock *my_asclock, GtkWidget *clist )
     if((i<1024) && (strlen(newelem[1])>0))
       {
 	gint lat, lon;
-	location *loc = malloc(sizeof(location));
+	location *loc = g_new0(location, 1);
 
 	sscanf(newelem[0], "%d%d", &lat, &lon);
 	if(newelem[0][5]=='+' || newelem[0][5]=='-')
