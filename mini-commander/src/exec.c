@@ -92,15 +92,16 @@ execCommand(char *cmd)
 static
 void sighandle_sigchld(int sig)
 {
-    pid_t pid = 0;
-    int status;
+    int show_message = 0;
 
     /* call waitpid to remove the child process and to prevent that it
        becomes a zombie */
-    /* if (waitpid(0, &status, WNOHANG ) > 0) */
-    /* 	  showMessage((gchar *) _("child exited"));  */
-    wait(&status);
-    showMessage((gchar *) _("child exited"));
+
+    while(waitpid(0, NULL, WNOHANG) > 0)
+	show_message = 1;
+
+    if(show_message)
+	showMessage((gchar *) _("child exited"));
 }
 
 static
