@@ -154,15 +154,10 @@ static int get_current_headlines(gpointer data)
   fgets(buf, sizeof(buf), gticker_file);
   fgets(buf, sizeof(buf), gticker_file);
   strncpy(splashurl, buf, 80);
-  g_print("about to set the uri to: %s\n", splashurl);
   ghttp_set_uri(req, splashurl);
-  g_print("bork bork bork bork!\n");
-  /* the following line will crash me */
   ghttp_set_header(req, http_hdr_Connection, "close");
-  g_print("i made it!\n");
   ghttp_prepare(req); 
   ghttp_process(req);
-  g_print("i made it here!\n");
   if ((splash_file = fopen(splashfilename, "w")) == NULL) {
 	  fprintf(stderr, "Failed to open file \"%s\": %s\n", splashfilename,
 			  strerror(errno));
@@ -172,11 +167,11 @@ static int get_current_headlines(gpointer data)
   }
  
   g_print("About to fwrite()\n");
-  fwrite(ghttp_get_body(req), ghttp_get_body_len(req), 1, splash_file);
+  g_print("i'm writing this many bits: %d\n!", fwrite(ghttp_get_body(req), 
+		  ghttp_get_body_len(req), 1, splash_file));
   fclose(splash_file);
   ghttp_close(req);
   ghttp_clean(req);
-  g_print("This suxxors\n");
 
   if ((splash_file = fopen(splashfilename, "r")) == NULL) {
 	  fprintf(stderr, "Failed to open file \"%s\": %s\n", splashfilename,
