@@ -8,12 +8,13 @@
 # Carlos Perelló Marín <carlos@gnome-db.org> 2001.
 # Pablo Gonzalo del Campo <pablodc@bigfoot.com> 2002-2003.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2003.
+# Tatiana Gutiérrez Bunster <tgutierr@ubiobio.cl>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-14 15:05+0100\n"
+"POT-Creation-Date: 2003-12-21 23:17+0000\n"
 "PO-Revision-Date: 2003-12-14 15:38+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -35,6 +36,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "A_cerca de..."
 
@@ -49,6 +51,7 @@ msgstr "A_cerca de..."
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "A_yuda"
 
@@ -61,7 +64,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fábrica de la miniaplicación de estado de AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1180
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr "Estado de accesibilidad del teclado"
 
@@ -80,6 +83,7 @@ msgstr "Muestra el estado de las características de accesibilidad del teclado"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Utilidades"
 
@@ -90,7 +94,7 @@ msgstr "Utilidades"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
 msgid "translator_credits"
 msgstr ""
 "Pablo Gonzalo del Campo <pablodc@bigfoot.com>\n"
@@ -100,7 +104,7 @@ msgstr ""
 "Pablo Saratxaga <srtxg@chanae.alphanet.ch>\n"
 "Miguel de Icaza <miguel@metropolis.nuclecu.unam.mx>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1183
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr "Estado de AccessX"
 
@@ -124,11 +128,12 @@ msgstr "Ha ocurrido un error al ejecutar el visor de la ayuda: %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Ha ocurrido un error al ejecutar el capplet del teclado: %s"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1185
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "Muestra el estado actual de las características de accesibilidad del teclado"
@@ -436,11 +441,14 @@ msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 
-#: battstat/battstat_applet.c:1544
+#: battstat/battstat_applet.c:1531
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
-msgstr "No se puede acceder a los eventos ACPI en /var/run/acpid.socket. Asegúrese de que el sistema ACPI está funcionando y que el demonio acpid está ejecutándose."
+msgstr ""
+"No se puede acceder a los eventos ACPI en /var/run/acpid.socket. Asegúrese "
+"de que el sistema ACPI está funcionando y que el demonio acpid está "
+"ejecutándose."
 
 #: battstat/battstat_applet.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -490,7 +498,7 @@ msgstr "Preferencias del monitor de carga batería"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
 #: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:559
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "General"
 
@@ -780,7 +788,10 @@ msgstr "Lista de cadenas que contienen las paletas disponibles"
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
-msgstr "La cadena que el usuario ha seleccionado cuando la miniaplicación fue utilizada por última vez. Esta cadena será mostrada cuando el usuario ejecute la miniaplicación."
+msgstr ""
+"La cadena que el usuario ha seleccionado cuando la miniaplicación fue "
+"utilizada por última vez. Esta cadena será mostrada cuando el usuario "
+"ejecute la miniaplicación."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -932,7 +943,7 @@ msgid "_Update interval:"
 msgstr "Intervalo de act_ualización:"
 
 #: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:466
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "segundos"
 
@@ -2395,7 +2406,7 @@ msgid "Flag and Label"
 msgstr "Bandera y etiqueta"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
-#: modemlights/properties.c:442
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Mostrar"
 
@@ -2433,7 +2444,7 @@ msgstr "Teclados"
 msgid "_Keyboards:"
 msgstr "_Teclados:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "Opciones"
 
@@ -2593,7 +2604,7 @@ msgid "_Width:"
 msgstr "A_ncho:"
 
 #: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr "píxeles"
 
@@ -2621,7 +2632,7 @@ msgstr "Valor en ba_ja:"
 msgid "Stock _unchanged:"
 msgstr "Valor sin ca_mbios:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:576
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Fondo:"
 
@@ -3891,11 +3902,11 @@ msgstr ""
 msgid "Start program"
 msgstr "Lanzar el programa"
 
-#: mini-commander/src/command_line.c:481
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "Línea de comando"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Escriba un comando aquí y GNOME los ejecutará por usted"
 
@@ -4144,7 +4155,8 @@ msgstr "Pulse sobre este botón para la lista de comandos anteriores"
 
 #: mini-commander/src/mini-commander_applet.c:360
 msgid "Command line has been disabled by your system administrator"
-msgstr "La línea de comandos ha sido desactivada por su administrador del sistema"
+msgstr ""
+"La línea de comandos ha sido desactivada por su administrador del sistema"
 
 #: mini-commander/src/mini-commander_applet.c:421
 msgid "Mini-Commander applet"
@@ -4434,7 +4446,8 @@ msgstr "Mostrar un diálogo de confirmación al conectarse o desconectarse."
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr "Hacer que la miniaplicación parpadee cuando el módem se esté conectando."
+msgstr ""
+"Hacer que la miniaplicación parpadee cuando el módem se esté conectando."
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
@@ -4566,119 +4579,119 @@ msgstr "Utilizar este comando para desconectar el módem."
 msgid "Verify owner of lock file"
 msgstr "Comprobar el dueño del archivo de bloqueo"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Preferencias de luces del módem"
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "Ac_tualizar cada:"
 
 #. extra info checkbox
-#: modemlights/properties.c:474
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Mostra_r tiempo de conexión y caudal"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "El estado de conexión _parpadea al conectarse"
 
-#: modemlights/properties.c:494
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "Conexiones"
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "Comando de co_nexión:"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "Comando de _desconexión:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:549
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Con_firmar conexión"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "Datos recibidos"
 
-#: modemlights/properties.c:574
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "_Frente:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "Datos enviados"
 
-#: modemlights/properties.c:584
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "F_rente:"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "Fo_ndo:"
 
-#: modemlights/properties.c:589
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "Estado de la conexión"
 
-#: modemlights/properties.c:597
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "Co_nectado:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "Desconec_tado:"
 
-#: modemlights/properties.c:602
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "C_onectando:"
 
-#: modemlights/properties.c:605
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Texto"
 
-#: modemlights/properties.c:613
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "Fr_ente:"
 
-#: modemlights/properties.c:615
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "Fon_do:"
 
-#: modemlights/properties.c:617
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "B_orde"
 
 # gnome-terminal/gnome-terminal.c:801
-#: modemlights/properties.c:620 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "Colores"
 
-#: modemlights/properties.c:629
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "Opciones del módem"
 
-#: modemlights/properties.c:638
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Dispositivo:"
 
-#: modemlights/properties.c:663
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "Archivo de b_loqueo:"
 
-#: modemlights/properties.c:683
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "_Verificar el dueño del archivo de bloqueo"
 
 #. ISDN checkbox
-#: modemlights/properties.c:694
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "U_sar RDSI"
 
-#: modemlights/properties.c:711
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Avanzado"
 
@@ -4715,19 +4728,19 @@ msgstr ""
 "Un monitor de carga del sistema capaz de mostrar gráficos para la CPU, RAM y "
 "del uso del espacio intercambio, además del tráfico de red."
 
-#: multiload/main.c:273 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:558
 msgid "Processor"
 msgstr "Procesador"
 
-#: multiload/main.c:275 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "Memoria"
 
-#: multiload/main.c:277 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "Red"
 
-#: multiload/main.c:279 multiload/properties.c:576
+#: multiload/main.c:279 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Espacio de intercambio"
 
@@ -4863,115 +4876,115 @@ msgstr "Color de fondo del gráfico del espacio de intercambio"
 msgid "Net Load"
 msgstr "Carga de red"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr "Recursos monitorizados"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr "_Procesador"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr "_Memoria"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr "_Red"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:395
 msgid "S_wap Space"
 msgstr "Es_pacio de intercambio"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:408
 msgid "_Load"
 msgstr "Car_ga"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr "Anchura del m_onitor del sistema:"
 
-#: multiload/properties.c:452
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr "Altura del m_onitor del sistema:"
 
-#: multiload/properties.c:491
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr "Intervalo de actualización del monitor del sis_tema:"
 
-#: multiload/properties.c:517
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "milisegundos"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "_Usuario"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "S_istema"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr "Pri_oridad"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "I_nactivo"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "Memori_a compartida"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr "_Búferes"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr "Cache_ada"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "Li_bre"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:575
 msgid "_SLIP"
 msgstr "S_LIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:577
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:578
 msgid "Othe_r"
 msgstr "Ot_ro"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "_Fondo"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "_Usado"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "_Libre"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:586
 msgid "Load"
 msgstr "Carga"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:588
 msgid "_Average"
 msgstr "P_romedio"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Preferencias del monitor del sistema"
 
@@ -5077,7 +5090,8 @@ msgstr "Seleccione si las notas serán visibles en todas las áreas de trabajo"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr "Seleccione si se debe forzar el estilo predeterminado en todas las notas"
+msgstr ""
+"Seleccione si se debe forzar el estilo predeterminado en todas las notas"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
@@ -5176,7 +5190,7 @@ msgstr "_Borrar la nota..."
 msgid "_Lock Note"
 msgstr "B_loquear la nota"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "_Propiedades..."
 
@@ -5424,3 +5438,459 @@ msgstr "Preferencias del monitor de enlace inalámbrico"
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorizado:"
 
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr "Aplique GNOME XKB"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:2
+msgid "GNOME XKB applet factory"
+msgstr "Fábrica del aplique GNOME XKB"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:3
+msgid "GSwitchIt applet"
+msgstr "Aplique GSwitchIt"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:4
+msgid "GSwitchIt applet factory"
+msgstr "Fábrica del aplique GSwitchit"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr "_Grupos"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr "Com_plementos..."
+
+#: applet/gswitchit_applet.c:96
+#, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "Cambiador de teclado (%s)"
+
+#: applet/gswitchit_applet.c:483
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr "Copyright Sergey V. Udaltsov © 1999-2002"
+
+#: applet/gswitchit_applet.c:484
+msgid "XKB toolkit for GNOME"
+msgstr "Conjunto de herramientas XKB para GNOME"
+
+#: applet/gswitchit_applet.c:613
+msgid "XKB initialization error"
+msgstr "Error de inicialización de KXB"
+
+#: applet/gswitchit_applet.c:622
+msgid "Error loading XKB configuration registry"
+msgstr "Error al cargar el registro de configuración XKB"
+
+#: capplets/gswitchit_capplet.c:142
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+"Hacer accesible la distribución ÚNICAMENTE desde el menú emergente del "
+"aplique.\n"
+"No hay forma de cambiar a esta distribución usando el teclado."
+
+#: capplets/gswitchit_capplet.c:224
+msgid "Exclude from keyboard switching"
+msgstr "Excluir del intercambio de teclado"
+
+#: capplets/gswitchit_capplet.c:250
+msgid "not used"
+msgstr "no usado"
+
+#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "La inicialización de GConf ha fallado%s\n"
+
+#: capplets/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Activar más complementos"
+
+#: capplets/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr "Añadir complemento"
+
+#: capplets/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr "Cerrar el diálogo"
+
+#: capplets/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr "Configurar el complemento seleccionado"
+
+#: capplets/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr "Desactivar el complemento seleccionado"
+
+#: capplets/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr "Reducir la prioridad del complemento"
+
+#: capplets/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr "Complementos de GSwitchIt"
+
+#: capplets/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Aumentar la prioridad del complemento"
+
+#: capplets/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr "La lista de complementos activos"
+
+#: capplets/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr "Complementos _activos"
+
+#: capplets/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "Complementos _disponibles:"
+
+#: capplets/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr "Elegir el grupo predeterminado (para las nuevas ventanas)."
+
+#: capplets/gswitchit-properties.glade.h:2
+msgid "GSwitchIt Properties"
+msgstr "Propiedades de GSwitchIt"
+
+#: capplets/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr "Mantener separado el grupo para cada ventana de aplicación."
+
+#: capplets/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+"Mantener el estado de indicador separadamente para cada ventana de "
+"aplicación."
+
+#: capplets/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr "Guardar/restaurar _indicadores con grupo"
+
+#: capplets/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr "_Grupos separados para cada ventana"
+
+#: capplets/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+"Mostrar banderas nacionales como indicadores de las distribuciones "
+"correspondientes"
+
+#: capplets/gswitchit-properties.glade.h:8
+msgid "Use _flags as indicators"
+msgstr "Usar _banderas como indicadores"
+
+#: capplets/gswitchit-properties.glade.h:9
+#, fuzzy
+msgid "_Default group:"
+msgstr "Grupo pre_determinado"
+
+#: gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr "Emitir sonido al cambiar de grupo"
+
+#: gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr "Nivel de depuración"
+
+#: gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Grupo predeterminado, asignado en la creación de la ventana"
+
+#: gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Mantener y administrar grupos separados por ventana"
+
+#: gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "Guardar/restaurar indicadores junto con los grupos de distribuciones"
+
+#: gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr "Grupos secundarios"
+
+#: gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr "Mostrar banderas en el aplique"
+
+#: gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Mostrar banderas en el aplique para indicar la distribución actual"
+
+#: gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr "Mostrar nombres de distribución en lugar de nombres de grupo"
+
+#: gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Mostrar nombres de distribución en lugar de nombres de grupo (sólo para "
+"versiones de XFree que soporten múltiples distribuciones)"
+
+#~ msgid "Apply XKB configuration and quit"
+#~ msgstr "Aplicar la configuración de XKB y salir"
+
+#~ msgid ""
+#~ "Error activating XKB configuration.\n"
+#~ "Probably internal X server problem.\n"
+#~ "\n"
+#~ "X server version data:\n"
+#~ "%s\n"
+#~ "%d%s"
+#~ msgstr ""
+#~ "Error al aplicar la configuración de XKB.\n"
+#~ "Probablemente es un problema interno del servidor X.\n"
+#~ "\n"
+#~ "Versión de Xserver:\n"
+#~ "%s\n"
+#~ "%d%s"
+
+#~ msgid ""
+#~ "You are using XFree 4.3.0.\n"
+#~ "There are known problems with complex XKB configurations.\n"
+#~ "Try using simpler configuration or taking more fresh version of XFree "
+#~ "software."
+#~ msgstr ""
+#~ "Está usando XFree 4.3.0.\n"
+#~ "Hay problemas conocidos con las configuraciones complejas de XKB.\n"
+#~ "Intente usar una configuración más simple u obtener una versión más nueva "
+#~ "de XFree."
+
+#~ msgid "Could not initialize Bonobo"
+#~ msgstr "No se pudo inicializar Bonobo"
+
+#~ msgid "Failed to init XklConfigRegistry\n"
+#~ msgstr "La inicialización de XklConfigRegistry ha fallado\n"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Postscript preview component is not available"
+#~ msgstr "El componente de vista preliminar PostScript no está disponible."
+
+#~ msgid "Keyboard layout preview"
+#~ msgstr "Previsualización de la distribución de teclado XKB"
+
+#~ msgid "Bonobo Error"
+#~ msgstr "Error de Bonobo"
+
+#~ msgid "Configure keyboard layouts"
+#~ msgstr "Configurar las distribuciones de teclado"
+
+#~ msgid "Keyboard layouts"
+#~ msgstr "Distribuciones de teclado"
+
+#~ msgid "Choose the layout."
+#~ msgstr "Elegir la distribución"
+
+#~ msgid "Choose the layout. Note: one layout can provide several groups."
+#~ msgstr ""
+#~ "Elegir la distribución. Nota: una distribución puede proporcionar varios "
+#~ "grupos."
+
+#~ msgid "Choose the model of the keyboard (brand, number of keys, etc.)."
+#~ msgstr "Elegir el modelo de teclado (marca, número de teclas, etc.)."
+
+#~ msgid "Clear"
+#~ msgstr "Vaciar"
+
+#~ msgid "Clear."
+#~ msgstr "Vaciar."
+
+#~ msgid "Extra"
+#~ msgstr "Extra"
+
+#~ msgid "Keyboard _model:"
+#~ msgstr "_Modelo de teclado:"
+
+#~ msgid "Keyboard layouts' settings: "
+#~ msgstr "Ajustes de la distribución de teclado"
+
+#~ msgid "Options 1"
+#~ msgstr "Opción 1"
+
+#~ msgid "Options 2"
+#~ msgstr "Opción 2"
+
+#~ msgid "Show _advanced parameters"
+#~ msgstr "Mostrar parámetros _avanzados"
+
+#~ msgid "Show tabs with advanced keyboard parameters (for power users)."
+#~ msgstr ""
+#~ "Mostrar solapas con parámetros de teclado avanzados (para usuarios "
+#~ "expertos)."
+
+#~ msgid ""
+#~ "This version of XFree86 does not support multiple layouts, so only one "
+#~ "layout can be choosen."
+#~ msgstr ""
+#~ "Esta versión de XFree86 no soporta distribuciones múltiples, por lo "
+#~ "tanto, sólo un formato puede ser elegido."
+
+#~ msgid "Use custom settings, ignore global configuration set in XF86Config."
+#~ msgstr ""
+#~ "Usar la configuración predeterminada, ignorar la configuración global "
+#~ "establecida en XF86Config."
+
+#~ msgid "Use global configuration set in XF86Config."
+#~ msgstr "Usar la configuración global establecida en XF86Config."
+
+#~ msgid "_Custom"
+#~ msgstr "Personali_zada"
+
+#~ msgid "_Global Preconfigured"
+#~ msgstr "Preconfiguración _global"
+
+#~ msgid "_Layouts:"
+#~ msgstr "Dispo_siciones:"
+
+#~ msgid "_Preview"
+#~ msgstr "Vista _preliminar"
+
+#~ msgid "_Switch shortcut"
+#~ msgstr "_Cambiar combinación de teclas"
+
+#~ msgid "Default XKB setting"
+#~ msgstr "Configuración predeterminada de XKB"
+
+#~ msgid "Right Control"
+#~ msgstr "Tecla de control derecho"
+
+#~ msgid "Left Control"
+#~ msgstr "Tecla de control izquierdo"
+
+#~ msgid "Right Shift"
+#~ msgstr "Tecla de mayúsculas derecha"
+
+#~ msgid "Left Shift"
+#~ msgstr "Tecla de mayúsculas izquierda"
+
+#~ msgid "Grave"
+#~ msgstr "Tecla de acento fuerte"
+
+#~ msgid "The id of active switchcut"
+#~ msgstr "El id del intercambio corto activo"
+
+#~ msgid "XKB keyboard layout"
+#~ msgstr "Distribución de teclado XKB"
+
+#~ msgid "XKB keyboard model"
+#~ msgstr "Modelo de teclado XKB"
+
+#~ msgid "XKB options"
+#~ msgstr "Opciones de XKB"
+
+#~ msgid "XKB settings should be overridden"
+#~ msgstr "Los ajustes de XKB deberían ser omitidos"
+
+#~ msgid "[us]"
+#~ msgstr "[us]"
+
+#~ msgid "Choose the color"
+#~ msgstr "Elegir el color"
+
+#~ msgid "Highlighter"
+#~ msgstr "Resaltador"
+
+#~ msgid "Highlights the applet on the GNOME panel"
+#~ msgstr "Resalta el aplique en el panel de GNOME"
+
+#~ msgid "Highlighter plugin properties"
+#~ msgstr "Propiedades del complemento resaltador"
+
+#~ msgid "_Background color"
+#~ msgstr "Color de _fondo"
+
+#~ msgid "_Text color"
+#~ msgstr "color del _texto"
+
+#~ msgid "Keyboard events"
+#~ msgstr "Eventos de teclado"
+
+#~ msgid "Switching to group 1"
+#~ msgstr "Cambiando a grupo 1"
+
+#~ msgid "Switching to group 2"
+#~ msgstr "Cambiando·a·grupo·2"
+
+#~ msgid "Switching to group 3"
+#~ msgstr "Cambiando·a·grupo·3"
+
+#~ msgid "Switching to group 4"
+#~ msgstr "Cambiando·a·grupo·4"
+
+#~ msgid "Sound plugin"
+#~ msgstr "Complemento de sonido"
+
+#~ msgid "Enables standard GNOME sound notifications for the group switching"
+#~ msgstr "Activa las notificaciones estándar de Gnome para el cambio de grupo"
+
+#~ msgid "Test plugin"
+#~ msgstr "Complemento de prueba"
+
+#~ msgid "Test GSwitchIt plugin"
+#~ msgstr "Complemento de prueba de GSwitchIt"
+
+#~ msgid "Secondary"
+#~ msgstr "Secundario"
+
+#~ msgid "GSwitchIt Applet Properties"
+#~ msgstr "Propiedades del aplique de GSwitchIt"
+
+#~ msgid "Enable _beep"
+#~ msgstr "Activar _emisión de sonidos"
+
+#~ msgid "Use the system beep to indicate the switch."
+#~ msgstr "Usar el timbre del sistema para indicar el cambio."
+
+#~ msgid "GSwitchIt web page @ Sourceforge.net"
+#~ msgstr "Página web de GSwitchIt en sourceforge.net"
+
+#~ msgid "General XKB Properties"
+#~ msgstr "Propiedades generales de XKB"
+
+#~ msgid "XKB Properties"
+#~ msgstr "Propiedades de XKB"
+
+#~ msgid "To _default"
+#~ msgstr "Pre_determinado"
+
+#~ msgid "To _fit"
+#~ msgstr "A_justar"
+
+#~ msgid "Update the preview. Can take some time."
+#~ msgstr "Actualizar la vista preliminar. Puede tardar algunos minutos."
+
+#~ msgid "XKB settings: "
+#~ msgstr "Configuración de XKB: "
+
+#~ msgid "Zoom"
+#~ msgstr "Zoom"
+
+#~ msgid "Zoom in."
+#~ msgstr "Zoom para acercar."
+
+#~ msgid "Zoom out."
+#~ msgstr "Zoom para alejar."
+
+#~ msgid "Zoom to default."
+#~ msgstr "Zoom predeterminado."
+
+#~ msgid "Zoom to fit."
+#~ msgstr "Zoom para ajustar."
+
+#~ msgid "_In"
+#~ msgstr "_En"
+
+#~ msgid "_Out"
+#~ msgstr "_Fuera"
+
+#~ msgid "_Update preview"
+#~ msgstr "Act_ualizar vista preliminar"

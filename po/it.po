@@ -1,12 +1,13 @@
 # SOME DESCRIPTIVE TITLE: file po delle applet del pannello di GNOME
 # Copyright (C) 1999-2000 Free Software Foundation, Inc.
 # Christopher R. Gabriel, <cgabriel@pluto.linux.it> 2000
+# Francesco Marletta <francesco.marletta@tiscali.it>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-10 10:51+0200\n"
+"POT-Creation-Date: 2003-12-21 23:17+0000\n"
 "PO-Revision-Date: 2003-10-10 11:14+0200\n"
 "Last-Translator: Leandro Noferini <lnoferin@cybervalley.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -27,6 +28,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "I_nformazioni"
 
@@ -41,6 +43,7 @@ msgstr "I_nformazioni"
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "A_iuto"
 
@@ -53,7 +56,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabbrica Applet Stato AccesX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1189
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr "Stato Accessibilità Tastiera"
 
@@ -72,21 +75,22 @@ msgstr "Mostra lo stato delle caratteristiche dell'accessibilità tastiera"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Utilità"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:586 charpick/charpick.c:584 drivemount/drivemount.c:521
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:894
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
-#: mini-commander/src/about.c:48 mixer/mixer.c:1060
+#: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:191
-#: wireless/wireless-applet.c:560
+#: stickynotes/stickynotes_applet_callbacks.c:198
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
 msgid "translator_credits"
 msgstr "traduttori"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1192
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr "Stato AccessX"
 
@@ -110,18 +114,19 @@ msgstr "Si è verificato un errore mostrando l'aiuto: %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Si è verificato un errore mostrando l'aiuto: %s"
 
-#: accessx-status/applet.c:462 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1194
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "Mostrare lo stato attuale delle caratteristiche dell'accessibilità tastiera"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:907
 msgid "Battery Charge Monitor"
 msgstr "Controllo di carica della batteria"
 
@@ -232,49 +237,49 @@ msgstr "Valore del livello giallo"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "Questa piattaforma non è supportata!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr "L'applet non funzionerà correttamente ammesso che funzioni.\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:938
 msgid "High"
 msgstr "Carica"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:940
 msgid "Low"
 msgstr "Scarica"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:942
 msgid "Critical"
 msgstr "Critico"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:944
 msgid "Charging"
 msgstr "Ricarica"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Batteria scarica (%d%%) e alimentazione staccata"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "La batteria è completamente carica!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1102
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -286,7 +291,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1110
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -297,32 +302,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
+#: battstat/battstat_applet.c:1123
 msgid "System is running on battery power"
 msgstr "Il computer sta funzionando con la batteria"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
+#: battstat/battstat_applet.c:1129
 msgid "System is running on AC power"
 msgstr "Il computer sta funzionando con l'alimentazione"
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Il computer sta funzionando con la batteria. Batteria: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Il computer sta funzionando con l'alimentazione. Batteria: %d%% (%s)"
@@ -331,14 +336,14 @@ msgstr "Il computer sta funzionando con l'alimentazione. Batteria: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Il computer sta funzionando con la batteria. Batteria: Non presente"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr ""
 "Il computer sta funzionando con l'alimentazione. Batteria: non presente"
@@ -346,19 +351,19 @@ msgstr ""
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batteria: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr "Batteria: non presente"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:777
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -371,7 +376,7 @@ msgstr ""
 "sulla periferica APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:786
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -381,7 +386,7 @@ msgstr ""
 "Provare ad eseguire \"apm -e 1\" (FreeBSD) e accertatevi\n"
 "che questo funzioni.\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:842
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -391,7 +396,7 @@ msgstr ""
 "Provare a correggere questo errore"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:845
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -402,7 +407,7 @@ msgstr ""
 "\"\n"
 "Provare a correggere questo errore"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:853
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -412,17 +417,23 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:884
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:909
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:910
 msgid "This utility shows the status of your laptop battery."
 msgstr "Questa utilità mostra lo stato della batteria del vostro portatile."
+
+#: battstat/battstat_applet.c:1531
+msgid ""
+"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
+"subsystem is working and the acpid daemon is running."
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -470,9 +481,9 @@ msgstr "Aspetto"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferenze del controllo di carica della batteria"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
-#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:560
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
+#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Generali"
 
@@ -528,11 +539,11 @@ msgstr "A_vvisare quando la carica della batteria è bassa"
 msgid "_Yellow:"
 msgstr "_Giallo:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:479
-#: drivemount/properties.c:589 mailcheck/mailcheck.c:2298
+#: battstat/properties.c:296 drivemount/drivemount.c:498
+#: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
 #: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
-#: stickynotes/stickynotes_applet_callbacks.c:317
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
+#: stickynotes/stickynotes_applet_callbacks.c:324
 #: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -550,8 +561,8 @@ msgstr "La batteria è completamente carica"
 msgid "Battery power low"
 msgstr "Carica della batteria bassa"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:604
-#: cdplayer/cdplayer.c:1052
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:609
+#: cdplayer/cdplayer.c:1072
 msgid "CD Player"
 msgstr "Lettore CD"
 
@@ -576,23 +587,23 @@ msgstr "Applet del pannello per suonare cd audio"
 msgid "_Open CD Player"
 msgstr "_Aprire il lettore CD"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1062
 msgid "Stop"
 msgstr "Ferma"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1044
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1064
 msgid "Play / Pause"
 msgstr "Suona / Pausa"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1046
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1066
 msgid "Eject"
 msgstr "Espelli"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1048
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1068
 msgid "Previous Track"
 msgstr "Brano precedente"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1050
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1070
 msgid "Next Track"
 msgstr "Prossimo brano"
 
@@ -600,37 +611,37 @@ msgstr "Prossimo brano"
 msgid "You do not have permission to use the CD player."
 msgstr "Non hai i permessi per usare il lettore CD."
 
-#: cdplayer/cdplayer.c:368 mixer/mixer.c:1026 multiload/main.c:119
+#: cdplayer/cdplayer.c:373 mixer/mixer.c:1028 multiload/main.c:119
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Si è verificato un errore durante l'esecuzione di '%s' : %s"
 
-#: cdplayer/cdplayer.c:419
+#: cdplayer/cdplayer.c:424
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s non sembra essere un lettore CD"
 
-#: cdplayer/cdplayer.c:485
+#: cdplayer/cdplayer.c:490
 msgid "CD Player Preferences"
 msgstr "Preferenze Lettore CD"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:511
 msgid "Device _path:"
 msgstr "_Percorso dispositivo:"
 
-#: cdplayer/cdplayer.c:515
+#: cdplayer/cdplayer.c:520
 msgid "Device Path"
 msgstr "Percorso device"
 
-#: cdplayer/cdplayer.c:515
+#: cdplayer/cdplayer.c:520
 msgid "Set the device path here"
 msgstr "Impostare il percorso del device qui"
 
-#: cdplayer/cdplayer.c:518
+#: cdplayer/cdplayer.c:523
 msgid "Use _Default"
 msgstr "Usare il pre_definito"
 
-#: cdplayer/cdplayer.c:605
+#: cdplayer/cdplayer.c:610
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -638,41 +649,41 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:607 cdplayer/cdplayer.c:1053
+#: cdplayer/cdplayer.c:612 cdplayer/cdplayer.c:1073
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "L'applet Lettore CD è un semplice lettore CD audio per il vostro pannello"
 
-#: cdplayer/cdplayer.c:882 cdplayer/cdplayer.c:893
+#: cdplayer/cdplayer.c:887 cdplayer/cdplayer.c:898
 msgid "Elapsed time"
 msgstr "Tempo trascorso"
 
-#: cdplayer/cdplayer.c:885 cdplayer/cdplayer.c:895
+#: cdplayer/cdplayer.c:890 cdplayer/cdplayer.c:900
 msgid "Track number"
 msgstr "Numero brano"
 
-#: cdplayer/cdplayer.c:951
+#: cdplayer/cdplayer.c:961
 msgid "Audio device is busy, or being used by another application"
 msgstr ""
 "Il dispositivo audio è occupato o in uso da parte di un'altra applicazione"
 
-#: cdplayer/cdplayer.c:1043
+#: cdplayer/cdplayer.c:1063
 msgid "Click this button to Stop playing the CD"
 msgstr "Cliccare su questo pulsante per fermare il CD"
 
-#: cdplayer/cdplayer.c:1045
+#: cdplayer/cdplayer.c:1065
 msgid "Click this button to Play or Pause the CD"
 msgstr "Cliccare su questo pulsante per suonare o mettere in pausa il CD"
 
-#: cdplayer/cdplayer.c:1047
+#: cdplayer/cdplayer.c:1067
 msgid "Click this button to eject the CD"
 msgstr "Cliccare su questo pulsante per espellere il CD"
 
-#: cdplayer/cdplayer.c:1049
+#: cdplayer/cdplayer.c:1069
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Cliccare su questo pulsante per ascoltare il brano precedente"
 
-#: cdplayer/cdplayer.c:1051
+#: cdplayer/cdplayer.c:1071
 msgid "Click this button to Play the next track in the CD"
 msgstr "Cliccare su questo pulsante per ascoltare il brano successivo"
 
@@ -688,8 +699,8 @@ msgstr ""
 "Questo è il percorso completo per il dispositivo usato per ascoltare i CD "
 "musicali da questa applet"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
-#: charpick/charpick.c:746 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
+#: charpick/charpick.c:753 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "Insieme Caratteri"
 
@@ -701,37 +712,37 @@ msgstr "Fabbrica Applet Selettore Caratteri"
 msgid "Insert characters"
 msgstr "Inserire caratteri"
 
-#: charpick/charpick.c:324 charpick/properties.c:125
+#: charpick/charpick.c:321 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Aggiungere insieme"
 
-#: charpick/charpick.c:365
+#: charpick/charpick.c:372
 msgid "Add a palette..."
 msgstr "Aggiungere un insieme..."
 
-#: charpick/charpick.c:448
+#: charpick/charpick.c:455
 msgid "Available palettes"
 msgstr "Insiemi disponibili:"
 
-#: charpick/charpick.c:485
+#: charpick/charpick.c:492
 msgid "Insert special characters"
 msgstr "Inserire caratteri speciali"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:575
+#: charpick/charpick.c:582
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:576
+#: charpick/charpick.c:583
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:604
+#: charpick/charpick.c:611
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:605
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -747,7 +758,7 @@ msgstr "Caratteri mostrati all'avvio dell'applet"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "DEPRECATED - Caratteri mostrati all'avvio dell'applet"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
 msgid "List of available palettes"
 msgstr "Lista degli insiemi disponibili"
 
@@ -772,51 +783,52 @@ msgid "Palette entry"
 msgstr "Voce di un insieme"
 
 #: charpick/properties.c:96
-msgid "Modify a palette by adding or removing chacters"
+#, fuzzy
+msgid "Modify a palette by adding or removing characters"
 msgstr "Modificare un insieme aggiungendo o rimuovendo i caratteri"
 
-#: charpick/properties.c:160
+#: charpick/properties.c:171
 msgid "Edit Palette"
 msgstr "Modificare l'insieme"
 
-#: charpick/properties.c:259
+#: charpick/properties.c:271
 msgid "Palettes list"
 msgstr "Lista degli insiemi"
 
-#: charpick/properties.c:338
+#: charpick/properties.c:350
 msgid "Pal_ettes:"
 msgstr "Insi_emi:"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:366
 msgid "Add button"
 msgstr "Aggiungere bottone"
 
-#: charpick/properties.c:355
+#: charpick/properties.c:367
 msgid "Click to add a new palette"
 msgstr "Cliccare per aggiungere un insieme"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:374
 msgid "Edit button"
 msgstr "Bottone di modifica"
 
-#: charpick/properties.c:363
+#: charpick/properties.c:375
 msgid "Click to edit the selected palette"
 msgstr "Cliccare per modificare l'insieme selezionato"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:382
 msgid "Delete button"
 msgstr "Cancellare il bottone"
 
-#: charpick/properties.c:371
+#: charpick/properties.c:383
 msgid "Click to delete the selected palette"
 msgstr "Cliccare per cancellare l'insieme selezionato"
 
-#: charpick/properties.c:423
+#: charpick/properties.c:435
 msgid "Character Palette Preferences"
 msgstr "Impostazioni Insieme Caratteri"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:539
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
 msgid "Disk Mounter"
 msgstr "Montadischi"
 
@@ -840,41 +852,41 @@ msgstr "_Sfoglia..."
 msgid "_Eject"
 msgstr "_Espelli"
 
-#: drivemount/drivemount.c:420 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Si è verificato un errore durante l'esecuzione di %s : %s"
 
-#: drivemount/drivemount.c:427
+#: drivemount/drivemount.c:446
 msgid "Cannot browse device"
 msgstr "Non riesco a sfogliare il dispositivo"
 
-#: drivemount/drivemount.c:485 drivemount/properties.c:595
+#: drivemount/drivemount.c:504 drivemount/properties.c:601
 #: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
 msgid "Error displaying help"
 msgstr "Si è verificato un errore mostrando l'aiuto"
 
-#: drivemount/drivemount.c:540
+#: drivemount/drivemount.c:559
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 gli Hackers di GNOME\n"
 
-#: drivemount/drivemount.c:542
+#: drivemount/drivemount.c:561
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet per montare e smontare volumi a blocchi."
 
-#: drivemount/drivemount.c:742
+#: drivemount/drivemount.c:761
 msgid " mounted"
 msgstr " montato"
 
-#: drivemount/drivemount.c:744
+#: drivemount/drivemount.c:763
 msgid " not mounted"
 msgstr " non montato"
 
-#: drivemount/drivemount.c:856
+#: drivemount/drivemount.c:875
 msgid "\" reported:\n"
 msgstr "\" ha riportato:\n"
 
-#: drivemount/drivemount.c:858
+#: drivemount/drivemount.c:877
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -882,7 +894,7 @@ msgstr ""
 "Comando per il montaggio del drive fallito.\n"
 "\""
 
-#: drivemount/drivemount.c:864
+#: drivemount/drivemount.c:883
 msgid "Cannot mount device"
 msgstr "Impossibile montare il device"
 
@@ -894,84 +906,88 @@ msgstr "Intervallo di tempo per controllare lo stato dei mount point"
 msgid "Time in seconds between status updates"
 msgstr "Intervallo in secondi fra ogni controllo"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:330
 msgid "Disk Mounter Preferences"
 msgstr "Proprietà Applet per montare dischi"
 
-#: drivemount/properties.c:355
+#: drivemount/properties.c:358
 msgid "_Mount directory:"
 msgstr "_Monta directory:"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:364
 msgid "Select Mount Directory"
 msgstr "Selezionare directory di mount"
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:386
 msgid "_Update interval:"
 msgstr "_Intervallo di aggiornamento:"
 
-#: drivemount/properties.c:406 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:467
+#: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "secondi"
 
-#: drivemount/properties.c:419
+#: drivemount/properties.c:422
 msgid "_Icon:"
 msgstr "_Icona:"
 
-#: drivemount/properties.c:445
+#: drivemount/properties.c:448
 msgid "Floppy"
 msgstr "Floppy"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:451
 msgid "Cdrom"
 msgstr "CD ROM"
 
-#: drivemount/properties.c:451
+#: drivemount/properties.c:454
 msgid "Cd Recorder"
 msgstr "Masterizzatore"
 
-#: drivemount/properties.c:454
+#: drivemount/properties.c:457
 msgid "Zip Drive"
 msgstr "Drive Zip"
 
-#: drivemount/properties.c:457
+#: drivemount/properties.c:460
 msgid "Hard Disk"
 msgstr "Hard Disk"
 
-#: drivemount/properties.c:460
+#: drivemount/properties.c:463
 msgid "Jaz Drive"
 msgstr "Drive Jaz"
 
-#: drivemount/properties.c:463
+#: drivemount/properties.c:466
+msgid "USB Stick"
+msgstr ""
+
+#: drivemount/properties.c:469
 msgid "Custom"
 msgstr "Personalizzato"
 
-#: drivemount/properties.c:482
+#: drivemount/properties.c:488
 msgid "Select icon for mounted"
 msgstr "Seleziona icona per il dispositivo montato"
 
-#: drivemount/properties.c:489
+#: drivemount/properties.c:495
 msgid "Moun_ted icon:"
 msgstr "Icona mon_tato:"
 
-#: drivemount/properties.c:510
+#: drivemount/properties.c:516
 msgid "Select icon for unmounted"
 msgstr "Selezionare icona per il dispositivo non montato"
 
-#: drivemount/properties.c:517
+#: drivemount/properties.c:523
 msgid "Unmou_nted icon:"
 msgstr "Icona smo_ntato:"
 
-#: drivemount/properties.c:533
+#: drivemount/properties.c:539
 msgid "_Scale size to panel"
 msgstr "_Ridimensiona in base al pannello"
 
-#: drivemount/properties.c:540
+#: drivemount/properties.c:546
 msgid "_Eject disk when unmounting"
 msgstr "_Espellere dopo aver smontato"
 
-#: drivemount/properties.c:550
+#: drivemount/properties.c:556
 msgid "Use _automount friendly status test"
 msgstr "Controllare compatibilità con _automount"
 
@@ -2369,8 +2385,8 @@ msgstr "Etichetta"
 msgid "Flag and Label"
 msgstr "Bandiera ed Etichetta"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
-#: modemlights/properties.c:443
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Visualizzazione"
 
@@ -2408,7 +2424,7 @@ msgstr "Tastiere"
 msgid "_Keyboards:"
 msgstr "_Tastiere:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "Opzioni"
 
@@ -2569,7 +2585,7 @@ msgid "_Width:"
 msgstr "_Larghezza:"
 
 #: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr "pixel"
 
@@ -2597,7 +2613,7 @@ msgstr "Azione in ri_basso:"
 msgid "Stock _unchanged:"
 msgstr "Azione _stabile:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:577
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "S_fondo:"
 
@@ -2617,11 +2633,11 @@ msgstr ""
 "Stock Ticker\n"
 "Aggiorna continuamente le quotazioni azionarie"
 
-#: gtik/gtik.c:2020
+#: gtik/gtik.c:2021
 msgid "(No"
 msgstr "(No"
 
-#: gtik/gtik.c:2021
+#: gtik/gtik.c:2022
 msgid "Change "
 msgstr "Cambia "
 
@@ -2947,11 +2963,11 @@ msgstr "U_sare un indirizzo specifico per le mappe radar"
 msgid "A_ddress:"
 msgstr "In_dirizzo:"
 
-#: gweather/gweather-pref.c:774
+#: gweather/gweather-pref.c:772
 msgid "_Select a location:"
 msgstr "_Selezionare una località:"
 
-#: gweather/gweather-pref.c:803
+#: gweather/gweather-pref.c:801
 msgid "Location"
 msgstr "Località"
 
@@ -2959,7 +2975,9 @@ msgstr "Località"
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
-msgstr "Imposta se l'applet deve aggiornare o meno automaticamente le statistiche meteo"
+msgstr ""
+"Imposta se l'applet deve aggiornare o meno automaticamente le statistiche "
+"meteo"
 
 #: gweather/gweather.schemas.in.h:2
 msgid "Display radar map"
@@ -3106,27 +3124,33 @@ msgstr "NordOvest"
 msgid "North - Northwest"
 msgstr "Nord / NordOvest"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
+#: gweather/weather.c:142 gweather/weather.c:1817 gweather/weather.c:1829
+#: gweather/weather.c:1841 gweather/weather.c:1853 gweather/weather.c:1871
+#: gweather/weather.c:1883
+msgid "Unknown"
+msgstr "Sconosciuta"
+
+#: gweather/weather.c:144 gweather/weather.c:161 gweather/weather.c:232
 msgid "Invalid"
 msgstr "Non valido"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:150
 msgid "Clear Sky"
 msgstr "Cielo Sereno"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:151
 msgid "Broken clouds"
 msgstr "Nuvolosità sparsa"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:152
 msgid "Scattered clouds"
 msgstr "Poco nuvoloso"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:153
 msgid "Few clouds"
 msgstr "Nuvole rade"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:154
 msgid "Overcast"
 msgstr "Previsione a lungo termine"
 
@@ -3134,318 +3158,314 @@ msgstr "Previsione a lungo termine"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:192 gweather/weather.c:194
+#: gweather/weather.c:193 gweather/weather.c:195
 msgid "Thunderstorm"
 msgstr "Uragano"
 
 #. DRIZZLE
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Drizzle"
 msgstr "Pioggia fine"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Light drizzle"
 msgstr "Pioggia leggera"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Moderate drizzle"
 msgstr "Pioggia fine moderata"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Heavy drizzle"
 msgstr "Pioggia fine insistente"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Freezing drizzle"
 msgstr "Pioggia fine ghiacciata"
 
 #. RAIN
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Rain"
 msgstr "Pioggia"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Light rain"
 msgstr "Pioggia leggera"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Moderate rain"
 msgstr "Pioggia moderata"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Heavy rain"
 msgstr "Pioggia intensa"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Rain showers"
 msgstr "Scrosci di pioggia"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Freezing rain"
 msgstr "Pioggia ghiacciata"
 
 #. SNOW
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snow"
 msgstr "Neve"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Light snow"
 msgstr "Nevischio"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Moderate snow"
 msgstr "Neve moderata"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Heavy snow"
 msgstr "Neve intensa"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snowstorm"
 msgstr "Tempesta di neve"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Blowing snowfall"
 msgstr "Nevicata a vento"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snow showers"
 msgstr "Nevicata a scrosci"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Drifting snow"
 msgstr "Nevicata a vento"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snow grains"
 msgstr "Neve ghiacciata"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Light snow grains"
 msgstr "Neve ghiacciata leggera"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Moderate snow grains"
 msgstr "Neve ghiacciata moderata"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Heavy snow grains"
 msgstr "Neve ghiacciata intensa"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Ice crystals"
 msgstr "Cristalli di ghiaccio"
 
 #. ICE_PELLETS
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice pellets"
 msgstr "Palle di neve"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Few ice pellets"
 msgstr "Rade palle di neve"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Moderate ice pellets"
 msgstr "Moderate palle di neve"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Heavy ice pellets"
 msgstr "Intense palle di neve"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice pellet storm"
 msgstr "Tempesta di palle di neve"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Showers of ice pellets"
 msgstr "Palle di neve a scrosci"
 
 #. HAIL
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hail"
 msgstr "Grandine"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hailstorm"
 msgstr "Tempesta di grandine"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hail showers"
 msgstr "Grandine a scrosci"
 
 #. SMALL_HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Small hail"
 msgstr "Piccola grandine"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Small hailstorm"
 msgstr "Leggera tempesta di piccola grandine"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Showers of small hail"
 msgstr "Piccola grandine a scrosci"
 
 #. PRECIPITATION
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Unknown precipitation"
 msgstr "Precipitazione sconosciuta"
 
 #. MIST
-#: gweather/weather.c:202
+#: gweather/weather.c:203
 msgid "Mist"
 msgstr "Foschia"
 
 #. FOG
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Fog"
 msgstr "Nebbia"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Fog in the vicinity"
 msgstr "Nebbia nelle vicinanze"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Shallow fog"
 msgstr "Nebbia al suolo"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Patches of fog"
 msgstr "Nebbia a banchi"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Partial fog"
 msgstr "Nebbia parziale"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Freezing fog"
 msgstr "Nebbia ghiacciata"
 
 #. SMOKE
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Smoke"
 msgstr "Fumo"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:205
+#: gweather/weather.c:206
 msgid "Volcanic ash"
 msgstr "Cenere vulcanica"
 
 #. SAND
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Sand"
 msgstr "Sabbia"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Blowing sand"
 msgstr "Sabbia a vento"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Drifting sand"
 msgstr "Sabbia a vento"
 
 #. HAZE
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Haze"
 msgstr "Bruma"
 
 #. SPRAY
-#: gweather/weather.c:208
+#: gweather/weather.c:209
 msgid "Blowing sprays"
 msgstr "Raffiche a vento"
 
 #. DUST
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Dust"
 msgstr "Polvere"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Blowing dust"
 msgstr "Polvere a vento"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Drifting dust"
 msgstr "Polvere a vento"
 
 #. SQUALL
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Squall"
 msgstr "Scrosci"
 
 #. SANDSTORM
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Sandstorm"
 msgstr "Tempesta di sabbia"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Sandstorm in the vicinity"
 msgstr "Tempesta di sabbia nelle vicinanze"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Heavy sandstorm"
 msgstr "Tempesta di sabbia intensa"
 
 #. DUSTSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Duststorm"
 msgstr "Tempesta di polvere"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Duststorm in the vicinity"
 msgstr "Tempesta di polvere nelle vicinanze"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Heavy duststorm"
 msgstr "Tempesta di polvere intensa"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Funnel cloud"
 msgstr "Nuvola da tornado"
 
 #. TORNADO
-#: gweather/weather.c:214
+#: gweather/weather.c:215
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Dust whirls"
 msgstr "Turbini di polvere"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Dust whirls in the vicinity"
 msgstr "Turbini di polvere nelle vicinanze"
 
-#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
+#: gweather/weather.c:832 gweather/weather.c:872 gweather/weather.c:1445
 msgid "Failed to get METAR data.\n"
 msgstr "Impossibile scaricare i dati METAR.\n"
 
-#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
+#: gweather/weather.c:864 gweather/weather.c:892 gweather/weather.c:1089
 msgid "WeatherInfo missing location"
 msgstr "Weatherinfo non trova la località"
 
-#: gweather/weather.c:1778
+#: gweather/weather.c:1781
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1782
+#: gweather/weather.c:1785
 msgid "Unknown observation time"
 msgstr "Precipitazione sconosciuta"
 
-#: gweather/weather.c:1842
+#: gweather/weather.c:1855
 msgid "Calm"
 msgstr "Calma"
 
-#: gweather/weather.c:1868
-msgid "Unknown"
-msgstr "Sconosciuta"
-
-#: gweather/weather.c:1912
+#: gweather/weather.c:1928
 msgid "Retrieval failed"
 msgstr "Informazioni non ottenute"
 
@@ -3848,15 +3868,15 @@ msgstr ""
 "qualsiasi versione successiva."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:436
 msgid "Start program"
 msgstr "Eseguire programma"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "Linea di comando"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Digitare un comando e Gnome lo eseguirà"
 
@@ -3973,27 +3993,33 @@ msgstr ""
 "Provo a completare un comando in base alla cronologia dei comandi inviati."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Color background blue component"
+#, fuzzy
+msgid "Background color, blue component"
 msgstr "Componente blue del colore di sfondo"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Color background green component"
+#, fuzzy
+msgid "Background color, green component"
 msgstr "Componente verde del colore di sfondo"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Color background red component"
+#, fuzzy
+msgid "Background color, red component"
 msgstr "Componente rosso del colore di sfondo"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Color foreground blue component"
+#, fuzzy
+msgid "Foreground color, blue component"
 msgstr "Componente blue del colore di primo piano"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Color foreground green component"
+#, fuzzy
+msgid "Foreground color, green component"
 msgstr "Componente verde del colore di primo piano"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-msgid "Color foreground red component"
+#, fuzzy
+msgid "Foreground color, red component"
 msgstr "Componente rosso del colore di primo piano"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
@@ -4082,34 +4108,34 @@ msgstr "Usare i colori del tema anziché quelli personalizzati."
 msgid "Width"
 msgstr "Larghezza"
 
-#: mini-commander/src/mini-commander_applet.c:222
-#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:232
 msgid "Browser"
 msgstr "Browser"
 
-#: mini-commander/src/mini-commander_applet.c:227
+#: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
 msgstr "Cliccare sul pulsante per avviare il browser"
 
-#: mini-commander/src/mini-commander_applet.c:240
-#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:246
+#: mini-commander/src/mini-commander_applet.c:250
 msgid "History"
 msgstr "Cronologia"
 
-#: mini-commander/src/mini-commander_applet.c:245
+#: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
 msgstr "Cliccare sul pulsante per la lista dei comandi precedenti"
 
-#: mini-commander/src/mini-commander_applet.c:354
+#: mini-commander/src/mini-commander_applet.c:360
 msgid "Command line has been disabled by your system administrator"
 msgstr ""
 "La linea di comando è stata disabilitata dall'amministratore del sistema"
 
-#: mini-commander/src/mini-commander_applet.c:415
+#: mini-commander/src/mini-commander_applet.c:421
 msgid "Mini-Commander applet"
 msgstr "Applet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:422
 msgid "This applet adds a command line to the panel"
 msgstr "Questa applet aggiunge una linea di comando al pannello"
 
@@ -4134,7 +4160,7 @@ msgid "Adjust the sound volume"
 msgstr "Aggiustare il volume"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1075
 msgid "Volume Control"
 msgstr "Controllo Volume"
 
@@ -4286,29 +4312,29 @@ msgstr "+"
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1076
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1075
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Il controllo del volume permette di controllare il volume del vostro "
 "computer."
 
-#: mixer/mixer.c:1217
+#: mixer/mixer.c:1220
 msgid "Volume Control Preferences"
 msgstr "Preferenze Controllo Volume"
 
-#: mixer/mixer.c:1241
+#: mixer/mixer.c:1244
 msgid "Audio Channels"
 msgstr "Canali Audio"
 
-#: mixer/mixer.c:1257
+#: mixer/mixer.c:1260
 msgid "_Select channel to control:"
 msgstr "_Selezionare il canale da controllare:"
 
-#: mixer/mixer.c:1587
+#: mixer/mixer.c:1592
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Il controllo del volume permette di controllare il volume del vostro computer"
@@ -4520,118 +4546,118 @@ msgstr "Eseguire questo comando per disconnettere il modem."
 msgid "Verify owner of lock file"
 msgstr "Verificare il proprietario del file di lock"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Impostazioni Spie Modem"
 
-#: modemlights/properties.c:450
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "A_ggiorna ogni:"
 
 #. extra info checkbox
-#: modemlights/properties.c:475
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Mos_tra il tempo di connessione e le prestazioni"
 
-#: modemlights/properties.c:485
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "_Lampeggia quando si è in attesa della connessione"
 
-#: modemlights/properties.c:495
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "Connessioni"
 
-#: modemlights/properties.c:504
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "Comando di con_nessione:"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "Comando di _disconnesione:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:550
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Con_ferma connessione"
 
-#: modemlights/properties.c:569
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "Receive data"
 
-#: modemlights/properties.c:575
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "_Primo piano:"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "Send data"
 
-#: modemlights/properties.c:585
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "P_rimo piano:"
 
-#: modemlights/properties.c:587
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "S_fondo:"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "Stato della connessione"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "Co_nnesso:"
 
-#: modemlights/properties.c:600
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "Disconne_sso:"
 
-#: modemlights/properties.c:603
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "C_onnessione in corso:"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Testo"
 
-#: modemlights/properties.c:614
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "Pr_imo piano:"
 
-#: modemlights/properties.c:616
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "Sfon_do:"
 
-#: modemlights/properties.c:618
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "_Contornato"
 
-#: modemlights/properties.c:621 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "Colori"
 
-#: modemlights/properties.c:630
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "Opzioni del modem"
 
-#: modemlights/properties.c:639
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Dispositivo:"
 
-#: modemlights/properties.c:664
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "File di _lock:"
 
-#: modemlights/properties.c:684
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "_Verificare il proprietario del file di lock"
 
 #. ISDN checkbox
-#: modemlights/properties.c:695
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "U_sare ISDN"
 
-#: modemlights/properties.c:712
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Avanzate"
 
@@ -4668,19 +4694,19 @@ msgstr ""
 "Controllo del carico può visualizzare grafici per la CPU, la ram, e l'uso "
 "del file di swap, oltre che al traffico di rete."
 
-#: multiload/main.c:273 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:558
 msgid "Processor"
 msgstr "Processore"
 
-#: multiload/main.c:275 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "Memoria"
 
-#: multiload/main.c:277 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "Rete"
 
-#: multiload/main.c:279 multiload/properties.c:576
+#: multiload/main.c:279 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "File di swap"
 
@@ -4814,115 +4840,115 @@ msgstr "Colore di sfondo del grafico dello swap"
 msgid "Net Load"
 msgstr "Carico di rete"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr "Risorse controllate"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr "_Processore"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr "_Memoria"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr "_Rete"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:395
 msgid "S_wap Space"
 msgstr "File di s_wap"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:408
 msgid "_Load"
 msgstr "_Carico"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr "_Larghezza controllo sistema: "
 
-#: multiload/properties.c:452
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr "_Altezza controllo sistema: "
 
-#: multiload/properties.c:491
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr "VelocitÃ  di aggiornamen_to controllo sistema: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "millisecondi"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "_Utente"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "S_istema"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr "Ni_ce"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "I_nattività"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "Condivis_a"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr "_Buffer"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr "Nella cach_e"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "Libe_ra"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:575
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:577
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:578
 msgid "Othe_r"
 msgstr "Alt_ro"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "_Sfondo"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "_Usata"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "Li_bera"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:586
 msgid "Load"
 msgstr "Carico"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:588
 msgid "_Average"
 msgstr "Medi_a"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Proprietà del Controllo Sistema"
 
@@ -4935,8 +4961,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crea, visualizza e gestisce le note adesive sulla scrivania"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:349
-#: stickynotes/stickynotes_applet_callbacks.c:193
+#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet_callbacks.c:200
 msgid "Sticky Notes"
 msgstr "Note adesive"
 
@@ -4961,11 +4987,11 @@ msgstr "_Nuova nota"
 msgid "_Show Notes"
 msgstr "_Mostrare le note"
 
-#: stickynotes/stickynotes.c:314
+#: stickynotes/stickynotes.c:316
 msgid "Locked note"
 msgstr "Nota bloccata"
 
-#: stickynotes/stickynotes.c:319
+#: stickynotes/stickynotes.c:321
 msgid "Unlocked note"
 msgstr "Nota sbloccata"
 
@@ -5125,7 +5151,7 @@ msgstr "_Cancellare la nota..."
 msgid "_Lock Note"
 msgstr "B_loccare la nota"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "_Proprietà..."
 
@@ -5301,7 +5327,7 @@ msgstr "Se deve essere usato il colore di sistema"
 msgid "Whether to use the default system font"
 msgstr "Se deve essere usato il font di sistema"
 
-#: stickynotes/stickynotes_applet.c:349
+#: stickynotes/stickynotes_applet.c:355
 #, c-format
 msgid ""
 "%s\n"
@@ -5316,11 +5342,11 @@ msgstr[1] ""
 "%s:\n"
 "%d note"
 
-#: stickynotes/stickynotes_applet_callbacks.c:195
+#: stickynotes/stickynotes_applet_callbacks.c:202
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:196
+#: stickynotes/stickynotes_applet_callbacks.c:203
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Note adesive per l'Ambiente Desktop di Gnome"
 
@@ -5364,3 +5390,389 @@ msgstr "Proprietà Controllo Collegamento Wireless"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Dispositivo controllato:"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr "Applet XKB per GNOME"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:2
+msgid "GNOME XKB applet factory"
+msgstr "Fabbrica dell'applet XKB per GNOME"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:3
+msgid "GSwitchIt applet"
+msgstr "Applet GSwitchIt"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:4
+msgid "GSwitchIt applet factory"
+msgstr "Fabbrica dell'applet GSwitchIt"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr "_Gruppi"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr "_Plugin..."
+
+#: applet/gswitchit_applet.c:96
+#, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "Commutatore di tastiera (%s)"
+
+#: applet/gswitchit_applet.c:483
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr "Copyright Sergey V. Udaltsov © 1999-2002"
+
+#: applet/gswitchit_applet.c:484
+msgid "XKB toolkit for GNOME"
+msgstr "Toolkit XKB per GNOME"
+
+#: applet/gswitchit_applet.c:613
+msgid "XKB initialization error"
+msgstr "Errore di inizializzazione di XKB"
+
+#: applet/gswitchit_applet.c:622
+msgid "Error loading XKB configuration registry"
+msgstr "Errore nel caricamento del registro di configurazione di XKB"
+
+#: capplets/gswitchit_capplet.c:142
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+"Rende lo schema accessibile SOLO dal menù popup dell'applet.\n"
+"Non ci sarà modo di passare a questo schema usando la tastiera."
+
+#: capplets/gswitchit_capplet.c:224
+msgid "Exclude from keyboard switching"
+msgstr "Escludi dal cambio di tastiera"
+
+#: capplets/gswitchit_capplet.c:250
+msgid "not used"
+msgstr "non usato"
+
+#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Inizializzazione di GConf fallita: %s\n"
+
+#: capplets/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Attiva più plugin"
+
+#: capplets/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr "Aggiungi plugin"
+
+#: capplets/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr "Chiude la finestra di dialogo"
+
+#: capplets/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr "Configura il plugin selezionato"
+
+#: capplets/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr "Disattiva il plugin selezionato"
+
+#: capplets/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr "Diminuisce la priorità del plugin"
+
+#: capplets/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr "Plugin di GSwitchIt"
+
+#: capplets/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Aumenta la priorità del plugin"
+
+#: capplets/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr "L'elenco dei plugin attivi"
+
+#: capplets/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr "Plugin _attivi"
+
+#: capplets/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "Plugin _disponibili:"
+
+#: capplets/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr "Scegliere il gruppo predefinito (per le nuove finestre)."
+
+#: capplets/gswitchit-properties.glade.h:2
+msgid "GSwitchIt Properties"
+msgstr "Proprietà di GSwitchIt"
+
+#: capplets/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr "Mantenere gruppi separati per ogni finestra applicativa."
+
+#: capplets/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+"Mantenere gli indicatori di stato separatamente per ogni finestra "
+"applicativa."
+
+#: capplets/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr "Salva/Ripristina gli _indicatori con il gruppo"
+
+#: capplets/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr "_Gruppo separato per ogni finestra"
+
+#: capplets/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+"Mostra le bandiere nazionali come indicatori degli schemi corrispondenti"
+
+#: capplets/gswitchit-properties.glade.h:8
+msgid "Use _flags as indicators"
+msgstr "Usa le _bandiere come indicatori"
+
+#: capplets/gswitchit-properties.glade.h:9
+#, fuzzy
+msgid "_Default group:"
+msgstr "Gruppo pre_definito"
+
+#: gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr "Bip al cambio di gruppo"
+
+#: gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr "Livello di debug"
+
+#: gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Gruppo predefinito, assegnato all'avvio"
+
+#: gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Mantenere e gestire gruppi separati per finestra"
+
+#: gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "Salva/Ripristina gli indicatori insieme ai gruppi di schema"
+
+#: gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr "Gruppi secondari"
+
+#: gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr "Mostra le bandiere nell'applet"
+
+#: gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Mostra le bandiere nell'applet per indicare lo schema attuale"
+
+#: gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr "Mostra i nomi degli schemi invece di quelli dei gruppi"
+
+#: gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Mostra i nomi degli schemi invece di quelli dei gruppi (solo per le versioni "
+"di XFree che supportano schemi multipli)"
+
+#~ msgid "Apply XKB configuration and quit"
+#~ msgstr "Applicare la configurazione di XKB ed uscire"
+
+#~ msgid ""
+#~ "Error activating XKB configuration.\n"
+#~ "Probably internal X server problem.\n"
+#~ "\n"
+#~ "X server version data:\n"
+#~ "%s\n"
+#~ "%d%s"
+#~ msgstr ""
+#~ "Errore nell'attivazione della configurazione di XKB.\n"
+#~ "Probabilmente è un problema interno del server X.\n"
+#~ "\n"
+#~ "Dati della versione del server X:\n"
+#~ "%s\n"
+#~ "%d%s"
+
+#~ msgid ""
+#~ "You are using XFree 4.3.0.\n"
+#~ "There are known problems with complex XKB configurations.\n"
+#~ "Try using simpler configuration or taking more fresh version of XFree "
+#~ "software."
+#~ msgstr ""
+#~ "Si sta usando XFree 4.3.0.\n"
+#~ "Sono noti alcuni problemi con configurazioni complesse di XKB.\n"
+#~ "Si provi ad usare una configurazione più semplice o una versione più "
+#~ "recente di XFree."
+
+#~ msgid "Could not initialize Bonobo"
+#~ msgstr "Impossibile inizializzare Bonobo"
+
+#~ msgid "Failed to init XklConfigRegistry\n"
+#~ msgstr "Inizializzazione di XklConfigRegistry fallita\n"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Postscript preview component is not available"
+#~ msgstr "Il componente per l'anteprima PostScript non è disponibile"
+
+#~ msgid "Keyboard layout preview"
+#~ msgstr "Anteprima dello schema di tastiera"
+
+#~ msgid "Bonobo Error"
+#~ msgstr "Errore di Bonobo"
+
+#~ msgid "Configure keyboard layouts"
+#~ msgstr "Configura gli schemi di tastiera"
+
+#~ msgid "Keyboard layouts"
+#~ msgstr "Schemi di tastiera"
+
+#~ msgid "Choose the layout."
+#~ msgstr "Scegliere lo schema."
+
+#~ msgid "Choose the layout. Note: one layout can provide several groups."
+#~ msgstr "Scegliere lo schema. Nota: uno schema può fornire parecchi gruppi."
+
+#~ msgid "Choose the model of the keyboard (brand, number of keys, etc.)."
+#~ msgstr "Scegliere il modello della tastiera (marca, numero di tasti, ecc.)."
+
+# NdT: non è una traduzione letterale, ma funzionale (vedere screenshot)
+#~ msgid "Clear"
+#~ msgstr "Togli"
+
+# NdT: questo dovrebbe essere il tooltip
+#~ msgid "Clear."
+#~ msgstr "Togli lo schema."
+
+#~ msgid "Extra"
+#~ msgstr "Extra"
+
+#~ msgid "Keyboard _model:"
+#~ msgstr "_Modello di tastiera:"
+
+#~ msgid "Keyboard layouts' settings: "
+#~ msgstr "Impostazioni degli schemi di tastiera:"
+
+#~ msgid "Options 1"
+#~ msgstr "Opzioni 1"
+
+#~ msgid "Options 2"
+#~ msgstr "Opzioni 2"
+
+#~ msgid "Show _advanced parameters"
+#~ msgstr "Mostra i parametri _avanzati"
+
+#~ msgid "Show tabs with advanced keyboard parameters (for power users)."
+#~ msgstr ""
+#~ "Mostra le linguette con i parametri di tastiera avanzati (per utenti "
+#~ "esperti)."
+
+#~ msgid ""
+#~ "This version of XFree86 does not support multiple layouts, so only one "
+#~ "layout can be choosen."
+#~ msgstr ""
+#~ "Questa versione di XFree86 non supporta schemi multipli, quindi si potrà "
+#~ "scegliere un solo schema."
+
+#~ msgid "Use custom settings, ignore global configuration set in XF86Config."
+#~ msgstr ""
+#~ "Usare le impostazioni personali, ignorare la configurazione globale in "
+#~ "XF86Config."
+
+#~ msgid "Use global configuration set in XF86Config."
+#~ msgstr "Usare la configurazione globale impostata in XF86Config."
+
+#~ msgid "_Custom"
+#~ msgstr "_Personalizzate"
+
+#~ msgid "_Global Preconfigured"
+#~ msgstr "Preconfigurate _globali"
+
+#~ msgid "_Layouts:"
+#~ msgstr "_Schemi:"
+
+#~ msgid "_Preview"
+#~ msgstr "Antepri_ma"
+
+#~ msgid "_Switch shortcut"
+#~ msgstr "_Scorciatoia"
+
+#~ msgid "Default XKB setting"
+#~ msgstr "Impostazioni predefinite di XKB"
+
+#~ msgid "Right Control"
+#~ msgstr "Control destro"
+
+#~ msgid "Left Control"
+#~ msgstr "Control sinistro"
+
+#~ msgid "Right Shift"
+#~ msgstr "Shift destro"
+
+#~ msgid "Left Shift"
+#~ msgstr "Shift sinistro"
+
+# Per ora ho messo così!
+#~ msgid "Grave"
+#~ msgstr "Grave"
+
+#~ msgid "The id of active switchcut"
+#~ msgstr "L'id della combinazione di scambio attiva"
+
+#~ msgid "XKB keyboard layout"
+#~ msgstr "Schema di tastiera XKB"
+
+#~ msgid "XKB keyboard model"
+#~ msgstr "Modello di tastiera XKB"
+
+#~ msgid "XKB options"
+#~ msgstr "Opzioni di XKB"
+
+#~ msgid "XKB settings should be overridden"
+#~ msgstr "Le impostazioni di XKB saranno scavalcate"
+
+#~ msgid "[us]"
+#~ msgstr "[it]"
+
+#, fuzzy
+#~ msgid "Choose the color"
+#~ msgstr "Scegliere lo schema."
+
+#~ msgid "Keyboard events"
+#~ msgstr "Eventi di tastiera"
+
+#~ msgid "Switching to group 1"
+#~ msgstr "Passa al gruppo 1"
+
+#~ msgid "Switching to group 2"
+#~ msgstr "Passa al gruppo 2"
+
+#~ msgid "Switching to group 3"
+#~ msgstr "Passa al gruppo 3"
+
+#~ msgid "Switching to group 4"
+#~ msgstr "Passa al gruppo 4"
+
+#~ msgid "Sound plugin"
+#~ msgstr "Plugin audio"
+
+#~ msgid "Enables standard GNOME sound notifications for the group switching"
+#~ msgstr ""
+#~ "Abilita la notifica sonora standard di GNOME per il cambio di gruppo"
+
+#~ msgid "Test plugin"
+#~ msgstr "Plugin di prova"
+
+#~ msgid "Test GSwitchIt plugin"
+#~ msgstr "Plugin di prova di GSwitchIt"

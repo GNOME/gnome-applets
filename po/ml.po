@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.ml\n"
-"POT-Creation-Date: 2003-06-06 04:14+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-21 23:17+0000\n"
 "PO-Revision-Date: 2003-08-31 23:26-0600\n"
 "Last-Translator: vps <mvpsuresh@yahoo.com>\n"
 "Language-Team: Malayalam <smc-discuss@lists.sarovar.org>\n"
@@ -28,6 +29,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "കുറിപ്പ്..."
 
@@ -41,51 +43,58 @@ msgstr "കുറിപ്പ്..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "സഹായം"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:3
-msgid "_Launch Preferences Dialog"
-msgstr "ഗുണഗണ ക്രമീകരണങ്ങള് തുറക്കുക"
+#, fuzzy
+msgid "_Keyboard Accessibility Preferences"
+msgstr "മിഴിയിണ മുന്ഗണനകള്"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:1
 msgid "AccessX Status Applet Factory"
 msgstr "ആക്സസ്സ്X അവസ്ഥ ആപ്-ലെറ്റ് ശാല"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: gtik/GNOME_GtikApplet.server.in.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
-msgid "Accessories"
-msgstr "സഹപ്രയോഗങ്ങള്"
-
-#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
-#: accessx-status/applet.c:1124
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr ""
 
-#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
+#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
 msgstr ""
 
-#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:5
+#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
 msgstr ""
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:548 charpick/charpick.c:534 drivemount/drivemount.c:491
-#: geyes/geyes.c:228 gkb-new/gkb.c:622 gtik/gtik.c:708
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2263
-#: mini-commander/src/about.c:48 mixer/mixer.c:1012
-#: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes.glade.h:53 stickynotes/stickynotes_applet.c:142
-#: wireless/wireless-applet.c:735
+#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:5
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
+msgid "Utility"
+msgstr "ഉപകാരി"
+
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:894
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
+#: mini-commander/src/about.c:48 mixer/mixer.c:1062
+#: modemlights/modemlights.c:115 multiload/main.c:58
+#: stickynotes/stickynotes_applet_callbacks.c:198
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
 msgid "translator_credits"
 msgstr ""
 "എഫ്.എസ്.എഫ് - ഇന്ത്യ <gnu@gnu.org.in>\n"
 "സ്വതന്ത്ര മലയാളം കംപ്യുട്ടിങ് <http://smc.sarovar.org>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1127
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr ""
 
@@ -107,17 +116,18 @@ msgstr "സഹായ ദര്ശിനി തുറക്കുമ്പോള�
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "കീബോര്ഡ് കാപ്ലെറ്റ് തുറക്കുമ്പോള് തകരാര് : %s"
 
-#: accessx-status/applet.c:452 accessx-status/applet.c:486
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "എ"
 
-#: accessx-status/applet.c:1129
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:907
 msgid "Battery Charge Monitor"
 msgstr "ബാറ്ററി ചാര്ജ്ജ് നിരീക്ഷകന്്"
 
@@ -129,15 +139,6 @@ msgstr "ബാറ്റ്സ്റ്റാറ്റ് ശാല"
 msgid "Monitor a laptop's remaining power"
 msgstr "ബാറ്ററി ചാര്ജ്ജ് നിരീക്ഷിക്കുക"
 
-#: battstat/GNOME_BattstatApplet.server.in.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-msgid "Utility"
-msgstr "ഉപകാരി"
-
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
@@ -148,7 +149,7 @@ msgstr "ഉപകാരി"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "മുന്ഗണനകള്..."
 
@@ -156,53 +157,132 @@ msgstr "മുന്ഗണനകള്..."
 msgid "_Suspend Computer..."
 msgstr "കംപ്യൂട്ടര് താല്‌ക്കാലികമായി നിര്‌ത്തിവയ്‌ക്കൂ"
 
+#: battstat/battstat.schemas.in.h:1
+msgid "Beep for warnings"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:2
+#, fuzzy
+msgid "Beep when displaying a warning"
+msgstr "മുന്നറിയിപ്പ് കാണിക്കുമ്പോള് ശബ്ദമുണ്ടാക്കുക"
+
+#: battstat/battstat.schemas.in.h:3
+msgid "Command to send to suspend the computer"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:4
+msgid "Drain from top"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:5
+msgid "Full Battery Notification"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:8
+#, fuzzy
+msgid "Notify user when the battery is low"
+msgstr "ബാറ്ററി ചാര്ജ്ജ്  കുറഞ്ഞാല് മുന്നറിയിപ്പു നല്കുക"
+
+#: battstat/battstat.schemas.in.h:9
+msgid "Orange value level"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:10
+msgid "Red value level"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:11
+#, fuzzy
+msgid "Show battery status"
+msgstr "ബാറ്ററി അവസ്ഥ കാണിക്കുക"
+
+#: battstat/battstat.schemas.in.h:12
+msgid "Show percent full label"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:13
+#, fuzzy
+msgid "Show the battery"
+msgstr "ബാറ്ററി അവസ്ഥ കാണിക്കുക"
+
+#: battstat/battstat.schemas.in.h:14
+msgid "Show the battery meter draining from the top of the battery"
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:15
+#, fuzzy
+msgid "Suspend Command"
+msgstr "Suspend നിര്ദ്ദേശം:"
+
+#: battstat/battstat.schemas.in.h:16
+msgid "The battery level below which the battery is displayed as orange."
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:17
+msgid "The battery level below which the battery is displayed as red."
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr ""
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr ""
+
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "പ്രവ‌ര്‍ത്തന മണ്ഡലം പിന്തുണയ്‌ക്കപ്പെടുന്നില്ല!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr ""
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
-#: gweather/gweather-dialog.c:82
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:938
 msgid "High"
 msgstr "ഉയര്‍ന്ന"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
-#: gweather/gweather-dialog.c:82
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:940
 msgid "Low"
 msgstr "കുറഞ്ഞ"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:942
 msgid "Critical"
 msgstr "ഗുരുതരമായ"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:944
 msgid "Charging"
 msgstr "നിറയ്ക്കുന്നു"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "ബാറ്ററി താഴ്ന്ന നിലയില്(%d%%). വൈദ്ദ്യുതിയില്ല"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "ബാറ്ററി നിറഞ്ഞു"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1102
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -214,7 +294,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1110
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -225,32 +305,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
+#: battstat/battstat_applet.c:1123
 msgid "System is running on battery power"
 msgstr "സിസ്റ്റം ബാറ്ററിയില് ഒാടിക്കൊണ്ടിരിക്കുന്നു"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
+#: battstat/battstat_applet.c:1129
 msgid "System is running on AC power"
 msgstr "സിസ്റ്റം വൈദ്ദ്യുതിയില് ഒാടിക്കൊണ്ടിരിക്കുന്നു"
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "അസാധു"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "സിസ്റ്റം ബാറ്ററിയില് ഒാടിക്കൊണ്ടിരിക്കുന്നു ബാറ്ററി : %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "സിസ്റ്റം വൈദ്ദ്യുതിയില് ഒാടിക്കൊണ്ടിരിക്കുന്നു ബാറ്ററി : %d%% (%s)"
@@ -259,33 +339,33 @@ msgstr "സിസ്റ്റം വൈദ്ദ്യുതിയില് ഒ�
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "സിസ്റ്റം ബാറ്ററിയില് ഒാടിക്കൊണ്ടിരിക്കുന്നു  ബാറ്ററി :നിലവിലില്ല"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr "സിസ്റ്റം വൈദ്ദ്യുതിയില് ഒാടിക്കൊണ്ടിരിക്കുന്നു ബാറ്ററി :നിലവിലില്ല"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "ബാറ്ററി : %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr "ബാറ്ററി :നിലവിലില്ല"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:777
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -297,7 +377,7 @@ msgstr ""
 "APM ഉപകരണം വായിക്കാനുള്ള അനുവാദമുണ്ടെന്ന് ഉറപ്പ് വരുത്തുക"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:786
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -306,7 +386,7 @@ msgstr ""
 "APM നിയന്ത്രണ ഉപ-പ്രയോഗം പ്രവര്ത്തനരഹിതം\n"
 "\"apm -e 1\" നിര്ദ്ദേശം ഉപയോഗിച്ച്  പ്രവര്ത്തനനിരതമാക്കുക\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:842
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -316,7 +396,7 @@ msgstr ""
 "ദയവായി ഈ തകരാര് തിരുത്തുക"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:845
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -326,7 +406,7 @@ msgstr ""
 "Suspend നിര്ദ്ദേശം പാലിക്കുന്നതില് തകരാര്. \"%d\" \n"
 "ദയവായി ഈ തകരാര് തിരുത്തുക"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:853
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -336,17 +416,23 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:884
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "ജോര്ഹന് പെഹ്സന് <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:909
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:910
 msgid "This utility shows the status of your laptop battery."
 msgstr "ലാപ്ടോപ് ബാറ്ററിയുടെ അവസ്ഥ ക്ാണിക്കുന്ന ഉപകാരി"
+
+#: battstat/battstat_applet.c:1531
+msgid ""
+"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
+"subsystem is working and the acpid daemon is running."
+msgstr ""
 
 #: battstat/battstat_applet.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -356,7 +442,7 @@ msgstr "...."
 
 #: battstat/battstat_applet.glade.h:2
 #: mini-commander/src/mini-commander.glade.h:2
-#: stickynotes/stickynotes.glade.h:3
+#: stickynotes/stickynotes.glade.h:2
 msgid "*"
 msgstr "*"
 
@@ -386,7 +472,7 @@ msgstr ""
 msgid "<b>Warnings</b>"
 msgstr "<b>മുന്നറിയിപ്പുകള്</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1409
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "കാഴ്ച"
 
@@ -394,9 +480,9 @@ msgstr "കാഴ്ച"
 msgid "Battery Charge Monitor Preferences"
 msgstr "ബാറ്ററി നിരീക്ഷണം:മുന്ഗണനകള്"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:294 mailcheck/mailcheck.c:1895
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
+#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "സാര്‍വത്രികമായ"
 
@@ -452,10 +538,12 @@ msgstr "ബാറ്ററി ചാര്ജ്ജ്  കുറഞ്ഞാല
 msgid "_Yellow:"
 msgstr "മഞ്ഞ"
 
-#: battstat/properties.c:256 drivemount/drivemount.c:456
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2127
-#: mailcheck/mailcheck.c:2341 mini-commander/src/preferences.c:352
-#: mixer/mixer.c:1119
+#: battstat/properties.c:296 drivemount/drivemount.c:498
+#: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
+#: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
+#: stickynotes/stickynotes_applet_callbacks.c:324
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "സഹായം ലഭിക്കുന്നതില് തകരാറ്: %s"
@@ -472,8 +560,8 @@ msgstr "ബാറ്ററി ചാര്ജ്ജ് നിറഞ്ഞു"
 msgid "Battery power low"
 msgstr "ബാറ്ററി ചാര്ജ്ജ് കുറഞ്ഞ അവസ്ഥ"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:566
-#: cdplayer/cdplayer.c:1014
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:609
+#: cdplayer/cdplayer.c:1072
 msgid "CD Player"
 msgstr "സി.ഡി പ്ളേയര്‍"
 
@@ -498,62 +586,61 @@ msgstr "പാട്ടു സി.ഡികള് പാടിക്കാനു
 msgid "_Open CD Player"
 msgstr "സി.ഡി പ്ളേയര് തുറക്കുക"
 
-#: cdplayer/cdplayer.c:170 cdplayer/cdplayer.c:1004
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1062
 msgid "Stop"
 msgstr "നിര്‌ത്തുക"
 
-#: cdplayer/cdplayer.c:174 cdplayer/cdplayer.c:1006
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1064
 msgid "Play / Pause"
 msgstr "പ്രവ‌ര്‍ത്തിപ്പിക്കുക / സ്തംഭിപ്പിക്കുക"
 
-#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1008
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1066
 msgid "Eject"
 msgstr "പുറന്തള്ളുക"
 
-#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1010
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1068
 msgid "Previous Track"
 msgstr "മുന് ഭാഗം"
 
-#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1012
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1070
 msgid "Next Track"
 msgstr "അടുത്ത ഭാഗം"
 
-#: cdplayer/cdplayer.c:234
+#: cdplayer/cdplayer.c:246
 msgid "You do not have permission to use the CD player."
 msgstr "നിങ്ങള്ക്ക് സി.ഡി പ്ളേയര് ഉപയോഗിക്കാനുള്ള അനുവാദമില്ല"
 
-#: cdplayer/cdplayer.c:337 drivemount/drivemount.c:400 mixer/mixer.c:978
-#: multiload/main.c:118
+#: cdplayer/cdplayer.c:373 mixer/mixer.c:1028 multiload/main.c:119
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s' പ്രവര്ത്തിപ്പിക്കുന്നതില് തകരാര്: %s"
 
-#: cdplayer/cdplayer.c:388
+#: cdplayer/cdplayer.c:424
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s ഒരു  സി.ഡി പ്ളേയറല്ല "
 
-#: cdplayer/cdplayer.c:454
+#: cdplayer/cdplayer.c:490
 msgid "CD Player Preferences"
 msgstr "സി.ഡി പ്ളേയര്‍ മുന്ഗണനകള്"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:511
 msgid "Device _path:"
 msgstr "ഉപകരണ വഴി:"
 
-#: cdplayer/cdplayer.c:483
+#: cdplayer/cdplayer.c:520
 msgid "Device Path"
 msgstr "ഉപകരണ ‌വഴി"
 
-#: cdplayer/cdplayer.c:483
+#: cdplayer/cdplayer.c:520
 msgid "Set the device path here"
 msgstr "ഉപകരണ ‌വഴി സജ്ജീകരിക്കുക"
 
-#: cdplayer/cdplayer.c:486
+#: cdplayer/cdplayer.c:523
 msgid "Use _Default"
 msgstr "സ്വതേയുള്ളത് ഉപയോഗിക്കുക"
 
-#: cdplayer/cdplayer.c:567
+#: cdplayer/cdplayer.c:610
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -561,44 +648,55 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:569 cdplayer/cdplayer.c:1015
+#: cdplayer/cdplayer.c:612 cdplayer/cdplayer.c:1073
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 
-#: cdplayer/cdplayer.c:844 cdplayer/cdplayer.c:855
+#: cdplayer/cdplayer.c:887 cdplayer/cdplayer.c:898
 msgid "Elapsed time"
 msgstr "ഉപയോഗിച്ച സമയും"
 
-#: cdplayer/cdplayer.c:847 cdplayer/cdplayer.c:857
+#: cdplayer/cdplayer.c:890 cdplayer/cdplayer.c:900
 msgid "Track number"
 msgstr "ഭാഗ സംഖ്യ"
 
-#: cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:961
 msgid "Audio device is busy, or being used by another application"
 msgstr ""
 
-#: cdplayer/cdplayer.c:1005
+#: cdplayer/cdplayer.c:1063
 msgid "Click this button to Stop playing the CD"
 msgstr "നിര്‍ത്താന് ഇവിടെ ക്ളിക്ക് ചെയ്യുക"
 
-#: cdplayer/cdplayer.c:1007
+#: cdplayer/cdplayer.c:1065
 msgid "Click this button to Play or Pause the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:1009
+#: cdplayer/cdplayer.c:1067
 msgid "Click this button to eject the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:1011
+#: cdplayer/cdplayer.c:1069
 msgid "Click this button to Play the previous track in the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:1013
+#: cdplayer/cdplayer.c:1071
 msgid "Click this button to Play the next track in the CD"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:552
-#: charpick/charpick.c:695 charpick/properties.c:287
+#: cdplayer/cdplayer.schemas.in.h:1
+#, fuzzy
+msgid "Path to the device"
+msgstr "ഛായാചിത്രസഞ്ചരണ രചനയിലേക്കുള്ള വഴി"
+
+#: cdplayer/cdplayer.schemas.in.h:2
+msgid ""
+"This is the full path of the device that will be used to play cd's from this "
+"applet"
+msgstr ""
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
+#: charpick/charpick.c:753 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "അക്ഷര തട്ട്"
 
@@ -610,56 +708,119 @@ msgstr ""
 msgid "Insert characters"
 msgstr "അക്ഷരങ്ങള്‍ ഉള്‍പ്പെടുത്തുക"
 
-#: charpick/charpick.c:399
+#: charpick/charpick.c:321 charpick/properties.c:125
+msgid "Add Palette"
+msgstr ""
+
+#: charpick/charpick.c:372
+msgid "Add a palette..."
+msgstr ""
+
+#: charpick/charpick.c:455
 msgid "Available palettes"
 msgstr ""
 
-#: charpick/charpick.c:435
+#: charpick/charpick.c:492
 msgid "Insert special characters"
 msgstr "പ്രത്യേകാക്ഷരങ്ങള്‍ ഉള്‍പ്പെടുത്തുക"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:525
+#: charpick/charpick.c:582
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "അലക്സാണ്‌ര്‌ മുനിസ് <munizao@xprt.net>"
 
-#: charpick/charpick.c:526
+#: charpick/charpick.c:583
 msgid "Kevin Vandersloot"
 msgstr ""
 
-#: charpick/charpick.c:554
+#: charpick/charpick.c:611
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:555
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 
-#: charpick/properties.c:70
+#: charpick/charpick.schemas.in.h:1
+msgid "Characters shown on applet startup"
+msgstr ""
+
+#: charpick/charpick.schemas.in.h:2
+msgid "DEPRECATED - Characters shown on applet startup"
+msgstr ""
+
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
+msgid "List of available palettes"
+msgstr ""
+
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr ""
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr ""
 
-#: charpick/properties.c:105
-msgid "Add Palette"
+#: charpick/properties.c:95
+msgid "Palette entry"
 msgstr ""
 
-#: charpick/properties.c:140
+#: charpick/properties.c:96
+msgid "Modify a palette by adding or removing characters"
+msgstr ""
+
+#: charpick/properties.c:171
 msgid "Edit Palette"
 msgstr ""
 
-#: charpick/properties.c:292
+#: charpick/properties.c:271
+msgid "Palettes list"
+msgstr ""
+
+#: charpick/properties.c:350
 msgid "Pal_ettes:"
 msgstr ""
 
-#: charpick/properties.c:364
+#: charpick/properties.c:366
+msgid "Add button"
+msgstr ""
+
+#: charpick/properties.c:367
+msgid "Click to add a new palette"
+msgstr ""
+
+#: charpick/properties.c:374
+msgid "Edit button"
+msgstr ""
+
+#: charpick/properties.c:375
+msgid "Click to edit the selected palette"
+msgstr ""
+
+#: charpick/properties.c:382
+#, fuzzy
+msgid "Delete button"
+msgstr "മാക്രോ നീക്കം ചെയ്യ‍ുക"
+
+#: charpick/properties.c:383
+msgid "Click to delete the selected palette"
+msgstr ""
+
+#: charpick/properties.c:435
 msgid "Character Palette Preferences"
 msgstr "അക്ഷര തട്ട് മുന്ഗണനകള്"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:509
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
 msgid "Disk Mounter"
 msgstr ""
 
@@ -683,114 +844,141 @@ msgstr "അന്വേഷണം..."
 msgid "_Eject"
 msgstr "പുറന്തള്ളുക"
 
-#: drivemount/drivemount.c:510
+#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
+#, c-format
+msgid "There was an error executing %s: %s"
+msgstr "%s പ്രവ‍ര്ത്തിക്കുന്നതില് തകരാറ്: %s"
+
+#: drivemount/drivemount.c:446
+msgid "Cannot browse device"
+msgstr ""
+
+#: drivemount/drivemount.c:504 drivemount/properties.c:601
+#: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
+#, fuzzy
+msgid "Error displaying help"
+msgstr "സഹായം ലഭിക്കുന്നതില് തകരാറ്: %s"
+
+#: drivemount/drivemount.c:559
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:512
+#: drivemount/drivemount.c:561
 msgid "Applet for mounting and unmounting block volumes."
 msgstr ""
 
-#: drivemount/drivemount.c:712
+#: drivemount/drivemount.c:761
 msgid " mounted"
 msgstr ""
 
-#: drivemount/drivemount.c:714
+#: drivemount/drivemount.c:763
 msgid " not mounted"
 msgstr ""
 
-#: drivemount/drivemount.c:831
-msgid "Drive Mount Applet Warning"
-msgstr ""
-
-#: drivemount/drivemount.c:841
+#: drivemount/drivemount.c:875
 msgid "\" reported:\n"
 msgstr ""
 
-#: drivemount/drivemount.c:843
+#: drivemount/drivemount.c:877
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
 
-#: drivemount/properties.c:284
+#: drivemount/drivemount.c:883
+msgid "Cannot mount device"
+msgstr ""
+
+#: drivemount/drivemount.schemas.in.h:1
+msgid "Interval timeout to check mount point status"
+msgstr ""
+
+#: drivemount/drivemount.schemas.in.h:2
+msgid "Time in seconds between status updates"
+msgstr ""
+
+#: drivemount/properties.c:330
 msgid "Disk Mounter Preferences"
 msgstr ""
 
-#: drivemount/properties.c:311
+#: drivemount/properties.c:358
 msgid "_Mount directory:"
 msgstr ""
 
-#: drivemount/properties.c:317
+#: drivemount/properties.c:364
 msgid "Select Mount Directory"
 msgstr ""
 
-#: drivemount/properties.c:334
+#: drivemount/properties.c:386
 msgid "_Update interval:"
 msgstr ""
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1955
-#: mailcheck/mailcheck.c:1959 modemlights/properties.c:419
+#: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "സെക്കന്റ്സ്"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:422
 msgid "_Icon:"
 msgstr ""
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:448
 msgid "Floppy"
 msgstr "ഫ്‍ളോപ്പി"
 
-#: drivemount/properties.c:384
+#: drivemount/properties.c:451
 msgid "Cdrom"
 msgstr ""
 
-#: drivemount/properties.c:387
+#: drivemount/properties.c:454
 msgid "Cd Recorder"
 msgstr ""
 
-#: drivemount/properties.c:390
+#: drivemount/properties.c:457
 msgid "Zip Drive"
 msgstr "സിപ് ഡ്രൈവ്"
 
-#: drivemount/properties.c:393
+#: drivemount/properties.c:460
 msgid "Hard Disk"
 msgstr ""
 
-#: drivemount/properties.c:396
+#: drivemount/properties.c:463
 msgid "Jaz Drive"
 msgstr ""
 
-#: drivemount/properties.c:399
+#: drivemount/properties.c:466
+msgid "USB Stick"
+msgstr ""
+
+#: drivemount/properties.c:469
 msgid "Custom"
 msgstr "യഥേഷ്ടം"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:488
 msgid "Select icon for mounted"
 msgstr ""
 
-#: drivemount/properties.c:425
+#: drivemount/properties.c:495
 msgid "Moun_ted icon:"
 msgstr ""
 
-#: drivemount/properties.c:441
+#: drivemount/properties.c:516
 msgid "Select icon for unmounted"
 msgstr ""
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:523
 msgid "Unmou_nted icon:"
 msgstr ""
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:539
 msgid "_Scale size to panel"
 msgstr ""
 
-#: drivemount/properties.c:466
+#: drivemount/properties.c:546
 msgid "_Eject disk when unmounting"
 msgstr ""
 
-#: drivemount/properties.c:473
+#: drivemount/properties.c:556
 msgid "Use _automount friendly status test"
 msgstr ""
 
@@ -803,7 +991,7 @@ msgid "Amusements"
 msgstr "വിനോദോപാധി‌"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
-#: geyes/geyes.c:454 geyes/geyes.c:456
+#: geyes/geyes.c:465 geyes/geyes.c:467
 msgid "Geyes"
 msgstr "മിഴിയിണ"
 
@@ -819,19 +1007,23 @@ msgstr ""
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr ""
 
-#: geyes/geyes.c:457
+#: geyes/geyes.c:468
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr ""
 
-#: geyes/themes.c:237
+#: geyes/geyes.schemas.in.h:1
+msgid "Directory in which the theme is located"
+msgstr ""
+
+#: geyes/themes.c:257
 msgid "Geyes Preferences"
 msgstr "മിഴിയിണ മുന്ഗണനകള്"
 
-#: geyes/themes.c:268
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "പ്രമേയങ്ങള്"
 
-#: geyes/themes.c:289
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr ""
 
@@ -843,7 +1035,8 @@ msgstr ""
 msgid "GKB Factory"
 msgstr ""
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:633
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
+#: gkb-new/gkb-applet.c:95
 msgid "Keyboard Layout Switcher"
 msgstr ""
 
@@ -851,21 +1044,1178 @@ msgstr ""
 msgid "Produces keyboard layout switcher applets."
 msgstr ""
 
-#: gkb-new/gkb.c:113
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
+#: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
+msgid "Armenia"
 msgstr ""
 
-#: gkb-new/gkb.c:580 gkb-new/gkb.c:587
-msgid "GKB"
+#: gkb-new/descs.sun/presets.xml.in.h:2 gkb-new/descs/presets.xml.in.h:6
+msgid "Armenian"
 msgstr ""
 
-#: gkb-new/gkb.c:635
+#: gkb-new/descs.sun/presets.xml.in.h:3
+msgid "Armenian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
+msgid "Azerbaidjan"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
+msgid "Azerbaidjani Turkic"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:6
+msgid "Azerbaidjani Turkic Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
+msgid "Belarus"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
+msgid "Belarussian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:9
+msgid "Belarussian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
+#, fuzzy
+msgid "Belgium"
+msgstr "വേഗം"
+
+#: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
+msgid "Brazil"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:12
+msgid "Brazil Portuguese Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:13
+msgid "Brazil Portuguese Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
+msgid "Bulgaria"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:15 gkb-new/descs/presets.xml.in.h:23
+msgid "Bulgarian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:16
+msgid "Bulgarian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
+msgid "Canada"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:18
+msgid "Canadian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
+msgid "Czech"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:20 gkb-new/descs/presets.xml.in.h:34
+msgid "Czech Republic"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:21
+msgid "Czech Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
+msgid "Danish"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:23
+msgid "Danish Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:24
+msgid "Danish Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:25
+msgid "Danish Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
+msgid "Denmark"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:27 gkb-new/descs/presets.xml.in.h:43
+#, fuzzy
+msgid "Dutch"
+msgstr "തെക്ക്"
+
+#: gkb-new/descs.sun/presets.xml.in.h:28
+msgid "Dutch Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
+msgid "English"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:30
+msgid "English Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:31
+msgid "English Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:32
+msgid "English Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
+msgid "Estonia"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:34 gkb-new/descs/presets.xml.in.h:51
+msgid "Estonian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:35
+msgid "Estonian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
+msgid "Finland"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
+msgid "Finnish"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:38
+msgid "Finnish Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
+#, fuzzy
+msgid "France"
+msgstr "കാഴ്ച"
+
+#: gkb-new/descs.sun/presets.xml.in.h:40 gkb-new/descs/presets.xml.in.h:61
+msgid "French"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:41
+msgid "French Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:42
+msgid "French Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
+#, fuzzy
+msgid "German"
+msgstr "സാര്‍വത്രികമായ"
+
+#: gkb-new/descs.sun/presets.xml.in.h:44
+msgid "German Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:45
+msgid "German Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:46
+msgid "German Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
+msgid "Germany"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
+msgid "Gnome Keyboard default"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
+msgid "Hebrew"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:50
+msgid "Hebrew Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
+msgid "Hungarian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:52
+msgid "Hungarian latin2 Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:53
+msgid "Hungarian type5 latin 1 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
+msgid "Hungary"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:55 gkb-new/descs/presets.xml.in.h:97
+msgid "Iceland"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:56 gkb-new/descs/presets.xml.in.h:98
+msgid "Icelandic"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:57
+msgid "Icelandic Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
+#, fuzzy
+msgid "International"
+msgstr "വിവരമണ്ഡലം"
+
+#: gkb-new/descs.sun/presets.xml.in.h:59 gkb-new/descs/presets.xml.in.h:103
+msgid "Israel"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:60 gkb-new/descs/presets.xml.in.h:104
+msgid "Italian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:61
+msgid "Italian Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:62
+msgid "Italian Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:63
+msgid "Italian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
+msgid "Italy"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:65 gkb-new/descs/presets.xml.in.h:108
+msgid "Japan"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:66 gkb-new/descs/presets.xml.in.h:109
+msgid "Japanese"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:67
+msgid "Japanese Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:68
+msgid "Japanese Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:69
+msgid "Latvia"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:70
+#, fuzzy
+msgid "Latvian"
+msgstr "സ്ഥാനം"
+
+#: gkb-new/descs.sun/presets.xml.in.h:71
+msgid "Latvian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
+msgid "Lithuania"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
+msgid "Lithuanian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:74
+msgid "Lithuanian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
+msgid "Macedonia"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:76 gkb-new/descs/presets.xml.in.h:126
+msgid "Macedonian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:77
+msgid "Macedonian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
+#, fuzzy
+msgid "Norway"
+msgstr "സാധാരണ"
+
+#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:136
+msgid "Norwegian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:80
+msgid "Norwegian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
+#, fuzzy
+msgid "Poland"
+msgstr "നിറയ്ക്കുക"
+
+#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
+msgid "Polish"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:83
+msgid "Polish Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
+msgid "Portugal"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:85 gkb-new/descs/presets.xml.in.h:148
+msgid "Portuguese"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:86
+msgid "Portuguese Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:87
+msgid "Portuguese Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
+msgid "Romania"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:89 gkb-new/descs/presets.xml.in.h:153
+#, fuzzy
+msgid "Romanian"
+msgstr "മഴ"
+
+#: gkb-new/descs.sun/presets.xml.in.h:90
+msgid "Romanian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
+msgid "Russia"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:92 gkb-new/descs/presets.xml.in.h:156
+msgid "Russian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:93
+msgid "Russian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:94
+msgid "Serbian Sun standard keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:95
+msgid "Serbo-Croatian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:165
+#, fuzzy
+msgid "Slovak"
+msgstr "പതുക്കെ"
+
+#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:166
+msgid "Slovak Republic"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:98
+msgid "Slovak Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
+msgid "Slovenia"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:169
+msgid "Slovenian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:101
+msgid "Slovenian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
+#, fuzzy
+msgid "Spain"
+msgstr "മഴ"
+
+#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
+msgid "Spanish"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:104
+msgid "Spanish Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:105
+msgid "Spanish Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:106
+msgid "Spanish Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
+msgid "Sweden"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:181
+msgid "Swedish"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:109
+msgid "Swedish Sun Type-4 keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:110
+msgid "Swedish Sun USB keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:111
+msgid "Swedish Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:112
+msgid "Swiss German Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
+msgid "Switzerland"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:189
+msgid "Thai"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:115
+msgid "Thai Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
+msgid "Thailand"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
+msgid "Turkey"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:196
+msgid "Turkish"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:119
+msgid "Turkish Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:120
+msgid "US Sun Type-4 keyboard"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:121
+msgid "US Sun USB keyboard"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:122
+msgid "US Sun type5 keyboard"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
+msgid "Ukraine"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:216
+msgid "Ukrainian"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:125
+msgid "Ukrainian Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
+msgid "United Kingdom"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
+msgid "United States"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
+msgid "Vietnam"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:129
+msgid "Vietnamese"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:130
+msgid "Vietnamese Sun keymap"
+msgstr ""
+
+#: gkb-new/descs.sun/presets.xml.in.h:131
+msgid "Yugoslavia"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:1
+msgid "Algeria"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:2
+msgid "Arabic"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:3
+msgid "Arabic keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:4
+msgid "Arabic xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:7
+msgid "Armenian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:8
+msgid "Austria"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:11
+msgid "Azerbaidjani Turkic xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:12
+msgid "Bahrain"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:13
+#, fuzzy
+msgid "Basque"
+msgstr "ആധാരം"
+
+#: gkb-new/descs/presets.xml.in.h:16
+msgid "Belarussian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:17
+msgid "Belgian"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:20
+msgid "Brazil Portuguese keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:21
+msgid "Brazil Portuguese xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:24
+msgid "Bulgarian Cyrillic"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:25
+msgid "Bulgarian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:26
+msgid "Bulgarian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:28
+msgid "Canadian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:29
+#, fuzzy
+msgid "Comoros"
+msgstr "നറങ്ങള്"
+
+#: gkb-new/descs/presets.xml.in.h:30
+#, fuzzy
+msgid "Croatia"
+msgstr "ഗുരുതരമായ"
+
+#: gkb-new/descs/presets.xml.in.h:31
+#, fuzzy
+msgid "Croatian"
+msgstr "ഗുരുതരമായ"
+
+#: gkb-new/descs/presets.xml.in.h:32
+msgid "Croatian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:35
+msgid "Czech and Slovak xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:36
+msgid "Czech keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:37
+msgid "Czech qwertz xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:39
+msgid "Danish keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:40
+msgid "Danish xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:42
+msgid "Djibouti"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:44
+msgid "Dutch keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:45
+msgid "Dutch xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:46
+msgid "Dvorak xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:47
+msgid "Egypt"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:49
+msgid "English keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:52
+msgid "Estonian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:53
+msgid "Estonian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:54
+msgid "Euskadi"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:57
+msgid "Finnish keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:58
+msgid "Finnish xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:59
+msgid "Former Czechoslovakia"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:62
+msgid "French PC/AT 101 keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:63
+msgid "French Swiss"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:64
+msgid "French Swiss keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:65
+msgid "French keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:66
+msgid "French xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:67
+msgid "French-Canadian 105-key"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:68
+msgid "GB 102-key"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:69
+msgid "GB 105-key"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:70
+msgid "Georgia"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:71
+msgid "Georgian"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:72
+msgid "Georgian Latin"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:73
+msgid "Georgian Russian layout"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:74
+msgid "Georgian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:76
+msgid "German Swiss with Euro"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:77
+msgid "German keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:78
+msgid "German xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:81
+msgid "Greece"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:82
+#, fuzzy
+msgid "Greek"
+msgstr "സ്വതന്ത്ര"
+
+#: gkb-new/descs/presets.xml.in.h:83
+msgid "Greek keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:84
+msgid "Greek xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:86
+msgid "Hebrew keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:87
+msgid "Hebrew xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:89
+msgid "Hungarian 101-key latin 1"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:90
+msgid "Hungarian 101-key latin 2"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:91
+msgid "Hungarian 105-key latin 1"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:92
+msgid "Hungarian 105-key latin 2"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:93
+msgid "Hungarian PC/AT 101 keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:94
+msgid "Hungarian latin1"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:95
+msgid "Hungarian latin2 xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:99
+msgid "Icelandic keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:100
+msgid "Icelandic xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:102
+msgid "Iraq"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:105
+msgid "Italian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:106
+msgid "Italian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:110
+msgid "Japanese keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:111
+msgid "Japanese xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:112
+msgid "Jordan"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:113
+msgid "Kuwait"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:114
+#, fuzzy
+msgid "Lao"
+msgstr "കുറഞ്ഞ"
+
+#: gkb-new/descs/presets.xml.in.h:115
+msgid "Lao keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:116
+msgid "Laos"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:117
+msgid "Lebanon"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:118
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:121
+msgid "Lithuanian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:122
+msgid "Lithuanian programmers xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:123
+msgid "Lithuanian qwerty xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:124
+msgid "Lithuanian standard xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:127
+msgid "Macedonian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:128
+msgid "Marocco"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:129
+msgid "Mongolia"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:130
+msgid "Mongolian"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:131
+msgid "Mongolian alt keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:132
+msgid "Mongolian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:133
+msgid "Mongolian phonetic keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:134
+#, fuzzy
+msgid "Netherlands"
+msgstr "വടക്ക്-കിഴക്ക്"
+
+#: gkb-new/descs/presets.xml.in.h:137
+msgid "Norwegian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:138
+msgid "Oman"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:139
+msgid "Palestinian Territory"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:140
+msgid "Plain Russian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:143
+msgid "Polish deadkeys"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:144
+msgid "Polish xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:146
+msgid "Portugal Deadkeys"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:147
+msgid "Portuglese"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:149
+msgid "Portuguese keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:150
+msgid "Portuguese xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:151
+msgid "Qatar"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:154
+msgid "Romanian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:157
+msgid "Russian Cyrillic"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:158
+msgid "Russian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:159
+msgid "Russian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:160
+msgid "Saudi Arabia"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:161
+msgid "Serb"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:162
+msgid "Serb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:163
+msgid "Serb standard xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:164
+msgid "Serbia and Montenegro"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:167
+msgid "Slovak keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:170
+msgid "Slovenian keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:171
+msgid "Slovenian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:172
+#, fuzzy
+msgid "Somalia"
+msgstr "സാധാരണ"
+
+#: gkb-new/descs/presets.xml.in.h:175
+msgid "Spanish PC/AT 101 keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:176
+msgid "Spanish keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:177
+msgid "Spanish xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:178
+msgid "Sudan"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:179
+msgid "Sun (!not PC!) type5 Hungarian latin 2"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:182
+msgid "Swedish keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:183
+msgid "Swedish xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:184
+msgid "Swiss keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:186
+msgid "Syria"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:187
+msgid "Syriac"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:188
+msgid "Syriac Phonetic"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:190
+msgid "Thai Kedmanee"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:191
+msgid "Thai keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:192
+msgid "Thai xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:194
+msgid "Tunisia"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:197
+msgid "Turkish \"F\" keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:198
+msgid "Turkish \"Q\" keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:199
+msgid "Turkish keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:200
+msgid "Turkish xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:201
+msgid "UK 105-key"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:202
+msgid "UK PC/AT keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:203
+msgid "US 101-key keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:204
+msgid "US 105-key keyboard (with windows keys)"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:205
+msgid "US 84-key"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:206
+msgid "US DEC 450"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:207
+msgid "US IBM RS/6000"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:208
+msgid "US International"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:209
+msgid "US International xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:210
+msgid "US Macintosh"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:211
+msgid "US PC/AT 101 keyboard"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:212
+msgid "US Silicon Graphics 101-key"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:213
+msgid "US Sun type5"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:214
+msgid "US xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:217
+msgid "Ukrainian xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:218
+msgid "United Arab Emirates"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:220
+msgid "United Kingdom xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:222
+msgid "Viet_namese"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:223
+msgid "Viet_namese xkb keymap"
+msgstr ""
+
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Yemen"
+msgstr ""
+
+#: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:636
+#: gkb-new/gkb-applet.c:98
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -876,8 +2226,88 @@ msgid ""
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
 
-#: gkb-new/gkb.c:653
+#: gkb-new/gkb-applet.c:115
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr ""
+
+#: gkb-new/gkb-applet.c:203 gkb-new/gkb-applet.c:210
+msgid "GKB"
+msgstr ""
+
+#: gkb-new/gkb.c:275
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:1
+msgid "Appearance mode of the applet"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:2
+msgid "Flag image for the keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:3
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:4
+msgid "Keybinding for switching layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:5
+msgid "No longer used"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:6
+msgid "Number of configured keymaps"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:7
+msgid "The command that switches your keymap to this layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:8
+msgid "The country of the keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:9
+msgid "The label of the keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:10
+msgid "The language of the keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:11
+msgid "The name of the keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:12
+msgid "This flag will appear in flag field of the applet"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:13
+msgid "This information helps you to identify your keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:14
+msgid "This is the binding for keypress-based layout change"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:15
+msgid ""
+"This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
+"something.xmm\""
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:16
+msgid "This will appear in the label box of the applet"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:17
+msgid "This will identify the layout in the list"
 msgstr ""
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
@@ -888,112 +2318,113 @@ msgstr "അപ്രാപ്യം"
 msgid "Press a key or press Esc to cancel"
 msgstr ""
 
-#: gkb-new/preset.c:153 gkb-new/preset.c:156
+#: gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr ""
 
-#: gkb-new/prop-add.c:88
+#: gkb-new/prop-add.c:87
 msgid "Keyboards (select and press add)"
 msgstr ""
 
-#: gkb-new/prop-add.c:315
+#: gkb-new/prop-add.c:229
 #, c-format
 msgid "Keymap `%s' for the country %s already exists"
 msgstr ""
 
-#: gkb-new/prop-add.c:426
+#: gkb-new/prop-add.c:328
 msgid "Select Keyboard"
 msgstr "കീബോര്‍ഡ് തെരഞ്ഞെടുക്കുക"
 
-#: gkb-new/prop-add.c:450
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr ""
 
-#: gkb-new/prop-map.c:267
+#: gkb-new/prop-map.c:80
+#, fuzzy
+msgid "Unknown Keyboard"
+msgstr "കീബോര്‍ഡ് ചിട്ടപ്പെടുത്തുക"
+
+#: gkb-new/prop-map.c:91
+msgid "?"
+msgstr ""
+
+#: gkb-new/prop-map.c:277
 msgid "Edit Keyboard"
 msgstr "കീബോര്‍ഡ് ചിട്ടപ്പെടുത്തുക"
 
-#: gkb-new/prop-map.c:291
+#: gkb-new/prop-map.c:302
 msgid "_Name:"
 msgstr "പേര‍്:"
 
-#: gkb-new/prop-map.c:295
+#: gkb-new/prop-map.c:306
 msgid "_Label:"
 msgstr "ലിഖിതം:"
 
-#: gkb-new/prop-map.c:298 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "നിര്‍ദ്ദേശം:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:314
 msgid "_Flag:"
 msgstr ""
 
-#: gkb-new/prop.c:129 gkb-new/prop.c:199
-msgid "Normal"
-msgstr "സാധാരണ"
-
-#: gkb-new/prop.c:130 gkb-new/prop.c:203
-msgid "Big"
-msgstr "വലിയ"
-
-#: gkb-new/prop.c:148 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:126 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "പതാക"
 
-#: gkb-new/prop.c:149 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:127 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "ലിഖിതം"
 
-#: gkb-new/prop.c:150 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:128 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "പതാകയും ലിഖിതവും"
 
-#: gkb-new/prop.c:323 gtik/gtik.c:1414 gweather/gweather-pref.c:333
-#: modemlights/properties.c:395
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "പ്രദ‍ര്ശനം"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:336
+#: gkb-new/prop.c:270
 msgid "_Appearance: "
 msgstr "കാഴ്ച:"
 
-#: gkb-new/prop.c:347
-msgid "_Size: "
-msgstr ""
-
-#: gkb-new/prop.c:381
+#: gkb-new/prop.c:307
 msgid "Keyboard Shortcuts"
 msgstr "കീബോര്‍ഡ് കുറക്കുവഴികള്"
 
-#: gkb-new/prop.c:387
+#: gkb-new/prop.c:313
 msgid "S_witch layout:"
 msgstr ""
 
-#: gkb-new/prop.c:400
+#: gkb-new/prop.c:326
 msgid "_Grab keys"
 msgstr ""
 
-#. Create property box
-#: gkb-new/prop.c:471
+#: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
 msgstr ""
 
-#: gkb-new/prop.c:493
+#: gkb-new/prop.c:407
+#, fuzzy
+msgid "Keyboard Layout Selector"
+msgstr "കീബോര്‍ഡ് കുറക്കുവഴികള്"
+
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr ""
 
 #. Page 1 Frame
-#: gkb-new/prop.c:497
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr ""
 
-#: gkb-new/prop.c:512 multiload/properties.c:362
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "ബദലുകള്‌"
 
-#: gkb-new/system.c:46
+#: gkb-new/system.c:44
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -1003,7 +2434,7 @@ msgid ""
 "The command was: %s"
 msgstr ""
 
-#: gkb-new/system.c:51
+#: gkb-new/system.c:49
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -1014,6 +2445,12 @@ msgid ""
 "The command was: %s"
 msgstr ""
 
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
+msgid "Accessories"
+msgstr "സഹപ്രയോഗങ്ങള്"
+
 #: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr ""
@@ -1022,7 +2459,7 @@ msgstr ""
 msgid "Gtik Applet Factory"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr ""
 
@@ -1031,15 +2468,15 @@ msgstr ""
 msgid "_Update"
 msgstr "പരിഷ്ക്കരിക്കുക"
 
-#: gtik/gtik.c:202
+#: gtik/gtik.c:255
 msgid "Could not retrieve the stock data."
 msgstr ""
 
-#: gtik/gtik.c:236 gweather/gweather-applet.c:338
+#: gtik/gtik.c:289 gweather/gweather-applet.c:357
 msgid "Updating..."
 msgstr "പരിഷ്കരിക്കുന്നു..."
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1047,134 +2484,267 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 
-#: gtik/gtik.c:1187
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr ""
 
-#: gtik/gtik.c:1195
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr ""
 
-#: gtik/gtik.c:1204
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "ചേര്ക്കുക"
 
-#: gtik/gtik.c:1213
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "നീക്കുക"
 
-#: gtik/gtik.c:1315
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr ""
 
-#: gtik/gtik.c:1334
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr ""
 
-#: gtik/gtik.c:1340 mailcheck/mailcheck.c:2194
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2373
 msgid "Behavior"
 msgstr "പെരുമാറ്റം"
 
-#: gtik/gtik.c:1343 gweather/gweather-pref.c:299
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "പരിഷ്ക്കരിക്കുക"
 
-#: gtik/gtik.c:1347
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr ""
 
-#: gtik/gtik.c:1359 gweather/gweather-pref.c:329 mailcheck/mailcheck.c:1937
-#: mailcheck/mailcheck.c:1941
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2085
 msgid "minutes"
 msgstr "മിനിട്ട്"
 
-#: gtik/gtik.c:1362
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr ""
 
-#: gtik/gtik.c:1366
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr ""
 
-#: gtik/gtik.c:1370
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "പതുക്കെ"
 
-#: gtik/gtik.c:1372
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "വേഗം"
 
-#: gtik/gtik.c:1374
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "വേഗം"
 
-#: gtik/gtik.c:1391
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "നിരക്കല് മൊട്ടുകള്‍ പ്രാപ്യമാക്കുക"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr ""
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr ""
 
-#: gtik/gtik.c:1427 mini-commander/src/mini-commander.glade.h:23
-#: stickynotes/stickynotes.glade.h:49
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
+#: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "വീതി:"
 
-#: gtik/gtik.c:1440 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:420
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr ""
 
-#: gtik/gtik.c:1445 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1571
+msgid "Font and Colors"
+msgstr ""
+
+#: gtik/gtik.c:1577
+#, fuzzy
+msgid "Use _default theme font and colors"
+msgstr "സ്വതേയുള്ള രംഗവിധാനത്തിലെ നിറങ്ങള്‍ ഉപയോഗിക്കുക"
+
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "അക്ഷരരൂപം:"
 
-#: gtik/gtik.c:1459 modemlights/properties.c:549 multiload/properties.c:460
-msgid "Colors"
-msgstr "നറങ്ങള്"
-
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr ""
 
-#: gtik/gtik.c:1479
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr ""
 
-#: gtik/gtik.c:1494
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr ""
 
-#: gtik/gtik.c:1509 modemlights/properties.c:505
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr ""
 
-#: gtik/gtik.c:1606
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "മുന്നോട്ട് തെന്നിനീങ്ങുക"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "പിന്നോട്ട് തെന്നിനീങ്ങുക"
 
-#: gtik/gtik.c:1608
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr ""
 
-#: gtik/gtik.c:1797
+#: gtik/gtik.c:2021
 msgid "(No"
 msgstr "(ഒന്നുമില്ല"
 
-#: gtik/gtik.c:1798
+#: gtik/gtik.c:2022
 msgid "Change "
 msgstr "മാറ്റം "
+
+#: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:2
+#, fuzzy
+msgid "Background color"
+msgstr "പശ്ചാത്തലം"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:4
+msgid "Display only symbols and price"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:5
+#, fuzzy
+msgid "Font"
+msgstr "അക്ഷരരൂപം:"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:13
+msgid "Stocks to monitor - must be seperated by a +"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:24
+#, fuzzy
+msgid "Use default theme fonts and colors"
+msgstr "സ്വതേയുള്ള രംഗവിധാനത്തിലെ നിറങ്ങള്‍ ഉപയോഗിക്കുക"
+
+#: gtik/gtik.schemas.in.h:25
+msgid "Use default theme fonts and colors instead of custom ones"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
+msgid "Width of the applet"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:27
+msgid "font 2 - No Longer used"
+msgstr ""
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -1208,360 +2778,650 @@ msgid ""
 "An applet for monitoring local weather conditions."
 msgstr ""
 
-#: gweather/gweather-applet.c:54
-#, c-format
-msgid ""
-"%s\n"
-"Today: %s\n"
-"Current temperature %d"
+#: gweather/gweather-applet.c:237
+msgid "GNOME Weather"
 msgstr ""
 
-#: gweather/gweather-applet.c:75
-#, c-format
-msgid ""
-"%s\n"
-"%s: %s\n"
-"Low %d, High %d"
-msgstr ""
-
-#: gweather/gweather-applet.c:95
-msgid "There was an error retrieving the forecast"
-msgstr ""
-
-#: gweather/gweather-dialog.c:82
-msgid "Day"
-msgstr ""
-
-#: gweather/gweather-dialog.c:83
-msgid "Precipitation"
-msgstr ""
-
-#: gweather/gweather-dialog.c:83
-msgid "Condition"
-msgstr "ഉപാധി"
-
-#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
+#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
 msgid "Forecast"
 msgstr "പ്രവചനം"
 
-#: gweather/gweather-dialog.c:110
-msgid "Current Conditions"
-msgstr ""
-
-#: gweather/gweather-dialog.c:121
+#: gweather/gweather-dialog.c:109
 msgid "City:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:128
+#: gweather/gweather-dialog.c:117
 msgid "Last update:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:135
+#: gweather/gweather-dialog.c:125
 msgid "Conditions:"
 msgstr "അവസ്ഥ‍:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:133
+msgid "Sky:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:141
 msgid "Temperature:"
 msgstr "താപനില:"
 
-#: gweather/gweather-dialog.c:153
-msgid "Feels like:"
+#: gweather/gweather-dialog.c:149
+msgid "Dew point:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:160
+#: gweather/gweather-dialog.c:157
 msgid "Humidity:"
 msgstr "ആര്‍ദ്രത"
 
-#: gweather/gweather-dialog.c:167
+#: gweather/gweather-dialog.c:165
 msgid "Wind:"
 msgstr "കാറ്റ്:"
 
-#: gweather/gweather-dialog.c:174
-msgid "Visibility:"
-msgstr "ദൃശ്യത:"
-
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:173
 msgid "Pressure:"
 msgstr "മ‌ര്‍ദ്ദം:"
 
-#: gweather/gweather-dialog.c:307
-#, c-format
-msgid "%s / %.1f %s"
+#: gweather/gweather-dialog.c:181
+msgid "Visibility:"
+msgstr "ദൃശ്യത:"
+
+#: gweather/gweather-dialog.c:276
+msgid "Current Conditions"
+msgstr ""
+
+#: gweather/gweather-dialog.c:290
+#, fuzzy
+msgid "Forecast Report"
+msgstr "പ്രവചനം"
+
+#: gweather/gweather-dialog.c:290
+msgid "See the ForeCast Details"
+msgstr ""
+
+#: gweather/gweather-dialog.c:325
+msgid "_Visit Weather.com"
+msgstr ""
+
+#: gweather/gweather-dialog.c:326
+msgid "URL link Button"
+msgstr ""
+
+#: gweather/gweather-dialog.c:326
+msgid "Click to Enter Weather.com"
+msgstr ""
+
+#: gweather/gweather-dialog.c:334
+msgid "Radar Map"
+msgstr ""
+
+#: gweather/gweather-dialog.c:410
+msgid ""
+"Detailed forecast not available for this location.\n"
+"Please try the state forecast; note that IWIN forecasts are available only "
+"for US cities."
+msgstr ""
+
+#: gweather/gweather-dialog.c:412
+msgid ""
+"State forecast not available for this location.\n"
+"Please try the detailed forecast; note that IWIN forecasts are available "
+"only for US cities."
 msgstr ""
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:95
+#: gweather/gweather-pref.c:149
+#, fuzzy
+msgid "Location view"
+msgstr "സ്ഥാനം"
+
+#: gweather/gweather-pref.c:149
+msgid "Select Location from the list"
+msgstr ""
+
+#: gweather/gweather-pref.c:151
 msgid "Update spin button"
 msgstr ""
 
-#: gweather/gweather-pref.c:95
+#: gweather/gweather-pref.c:151
 msgid "Spinbutton for updating"
 msgstr ""
 
-#: gweather/gweather-pref.c:265
+#: gweather/gweather-pref.c:152
+msgid "Address Entry"
+msgstr ""
+
+#: gweather/gweather-pref.c:152
+msgid "Enter the URL"
+msgstr ""
+
+#: gweather/gweather-pref.c:611
 msgid "Weather Preferences"
 msgstr "കാലാവസ്ഥാ മുന്ഗണനകള്"
 
-#: gweather/gweather-pref.c:303
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
 msgid "_Automatically update every:"
 msgstr ""
 
-#: gweather/gweather-pref.c:335
+#: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
 msgstr ""
 
-#: gweather/gweather-pref.c:343
-msgid "Display _temperatures"
+#: gweather/gweather-pref.c:660
+msgid "Enable _radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:354
-msgid "Number of _days to display:"
+#: gweather/gweather-pref.c:674
+msgid "Use cus_tom address for radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:367
-#, fuzzy
-msgid "days"
-msgstr "ഇന്ന്"
+#: gweather/gweather-pref.c:691
+msgid "A_ddress:"
+msgstr ""
 
-#: gweather/gweather-pref.c:374 gweather/gweather-pref.c:383
-#: gweather/location.c:354
+#: gweather/gweather-pref.c:772
+msgid "_Select a location:"
+msgstr ""
+
+#: gweather/gweather-pref.c:801
 msgid "Location"
 msgstr "സ്ഥാനം"
 
-#: gweather/gweather-pref.c:394
-msgid "Current city:"
+#: gweather/gweather.schemas.in.h:1
+msgid ""
+"Determines whether the applet automatically updates its weather statistics "
+"or not."
 msgstr ""
 
-#: gweather/gweather-pref.c:406
-msgid "Available c_ountries:"
+#: gweather/gweather.schemas.in.h:2
+msgid "Display radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:418
-msgid "Available c_ities:"
+#: gweather/gweather.schemas.in.h:3
+msgid "Fetch a radar map on each update."
 msgstr ""
 
-#: gweather/location.c:184
-msgid "Could not download countries"
+#: gweather/gweather.schemas.in.h:4
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
 msgstr ""
 
-#: gweather/location.c:186
-msgid "Could not download cities"
+#: gweather/gweather.schemas.in.h:5
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
 msgstr ""
 
-#: gweather/location.c:243
-msgid "Downloading Cities..."
+#: gweather/gweather.schemas.in.h:6
+msgid "The custom url from where to retrieve a radar map."
 msgstr ""
 
-#: gweather/location.c:305
-msgid "Country"
-msgstr "രാജ്യം"
-
-#: gweather/location.c:388
-msgid "Downloading Countries..."
+#: gweather/gweather.schemas.in.h:7
+msgid "The interval, in seconds, between automatic updates."
 msgstr ""
 
-#: gweather/weather.c:49
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:14
+msgid "weather location information."
+msgstr ""
+
+#: gweather/weather.c:57
 msgid "knots"
 msgstr ""
 
-#: gweather/weather.c:49
+#: gweather/weather.c:57
 msgid "kph"
 msgstr "kph"
 
-#: gweather/weather.c:54
+#: gweather/weather.c:62
 msgid "inHg"
 msgstr ""
 
-#: gweather/weather.c:54
+#: gweather/weather.c:62
 msgid "hPa"
 msgstr ""
 
-#: gweather/weather.c:58
+#: gweather/weather.c:66
 msgid "miles"
 msgstr "മൈല്‍"
 
-#: gweather/weather.c:58
+#: gweather/weather.c:66
 msgid "kilometers"
 msgstr "കിലോമീറ്റര്"
 
-#: gweather/weather.c:63
-msgid "Clear Sky"
-msgstr "തെളിഞ്ഞ ആകാശം"
-
-#: gweather/weather.c:64
-msgid "Broken clouds"
-msgstr "ചിഹ്ന മേഘങ്ങള്‍"
-
-#: gweather/weather.c:65
-msgid "Scattered clouds"
-msgstr "ചതറിയ മേഘങ്ങള്‍"
-
-#: gweather/weather.c:66
-msgid "Few clouds"
-msgstr "കുറച്ച് മേഘങ്ങള്‍"
-
-#: gweather/weather.c:67
-msgid "Overcast"
-msgstr ""
-
-#: gweather/weather.c:71
-msgid "Windy"
-msgstr ""
-
-#: gweather/weather.c:72
-msgid "Thunder Storms"
-msgstr ""
-
-#: gweather/weather.c:73
-msgid "Snow"
-msgstr ""
-
-#: gweather/weather.c:74
-msgid "Rain"
-msgstr "മഴ"
-
-#: gweather/weather.c:75
-msgid "Heavy Rain"
-msgstr ""
-
-#: gweather/weather.c:76
-msgid "Sleet"
-msgstr ""
-
-#: gweather/weather.c:77
-msgid "Light Flurries"
-msgstr ""
-
-#: gweather/weather.c:78
-msgid "Flurries"
-msgstr ""
-
-#: gweather/weather.c:79
-msgid "Snow and Wind"
-msgstr ""
-
-#: gweather/weather.c:80
-msgid "Dust"
-msgstr ""
-
-#: gweather/weather.c:81
-msgid "Fog"
-msgstr ""
-
-#: gweather/weather.c:82
-msgid "Haze"
-msgstr ""
-
-#: gweather/weather.c:83
-msgid "Smoke"
-msgstr ""
-
-#: gweather/weather.c:84
-msgid "Cold"
-msgstr ""
-
-#: gweather/weather.c:85
-msgid "Cloudy"
-msgstr ""
-
-#: gweather/weather.c:86
-msgid "Mostly Cloudy"
-msgstr ""
-
-#: gweather/weather.c:87
-msgid "Partly Cloudy"
-msgstr ""
-
-#: gweather/weather.c:88
-msgid "Sunny"
-msgstr ""
-
-#: gweather/weather.c:89
-msgid "Mostly Sunny"
-msgstr ""
-
-#: gweather/weather.c:90
-msgid "Hot"
-msgstr ""
-
-#: gweather/weather.c:91
-msgid "Nothing"
-msgstr ""
-
-#: gweather/weather.c:95
+#: gweather/weather.c:132
 msgid "Variable"
 msgstr "മാറിവരുന്ന"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "North"
 msgstr "വടക്ക്"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "North - NorthEast"
 msgstr "വടക്ക് - വടക്ക്-കിഴക്ക്"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "Northeast"
 msgstr "വടക്ക്-കിഴക്ക്"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "East - NorthEast"
 msgstr "കിഴക്ക് - വടക്ക്-കിഴക്ക്"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "East"
 msgstr "കിഴക്ക്"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "East - Southeast"
 msgstr "കിഴക്ക് - തെക്ക്-കിഴക്ക്"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "Southeast"
 msgstr "തെക്ക്-കിഴക്ക്"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "South - Southeast"
 msgstr "തെക്ക് - തെക്ക്-കിഴക്ക്‌"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "South"
 msgstr "തെക്ക്"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "South - Southwest"
 msgstr "തെക്ക് - തെക്ക്-പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "Southwest"
 msgstr "തെക്ക്-പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "West - Southwest"
 msgstr "പടിഞ്ഞാറ് - തെക്ക്-പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "West"
 msgstr "പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "West - Northwest"
 msgstr "പടിഞ്ഞാറ് - വടക്ക്-പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "Northwest"
 msgstr "വടക്ക്-പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "North - Northwest"
 msgstr "വടക്ക് - വടക്ക്-പടിഞ്ഞാറ്"
 
-#: gweather/weather.c:100
+#: gweather/weather.c:142 gweather/weather.c:1817 gweather/weather.c:1829
+#: gweather/weather.c:1841 gweather/weather.c:1853 gweather/weather.c:1871
+#: gweather/weather.c:1883
+msgid "Unknown"
+msgstr ""
+
+#: gweather/weather.c:144 gweather/weather.c:161 gweather/weather.c:232
+msgid "Invalid"
+msgstr ""
+
+#: gweather/weather.c:150
+msgid "Clear Sky"
+msgstr "തെളിഞ്ഞ ആകാശം"
+
+#: gweather/weather.c:151
+msgid "Broken clouds"
+msgstr "ചിഹ്ന മേഘങ്ങള്‍"
+
+#: gweather/weather.c:152
+msgid "Scattered clouds"
+msgstr "ചതറിയ മേഘങ്ങള്‍"
+
+#: gweather/weather.c:153
+msgid "Few clouds"
+msgstr "കുറച്ച് മേഘങ്ങള്‍"
+
+#: gweather/weather.c:154
+msgid "Overcast"
+msgstr ""
+
+#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#. * etc means, you can go to http://www.weather.com/glossary/ and
+#. * http://www.crh.noaa.gov/arx/wx.tbl.html
+#. NONE
+#: gweather/weather.c:193 gweather/weather.c:195
+msgid "Thunderstorm"
+msgstr ""
+
+#. DRIZZLE
+#: gweather/weather.c:194
+msgid "Drizzle"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Light drizzle"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Moderate drizzle"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Heavy drizzle"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Freezing drizzle"
+msgstr ""
+
+#. RAIN
+#: gweather/weather.c:195
+msgid "Rain"
+msgstr "മഴ"
+
+#: gweather/weather.c:195
+msgid "Light rain"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Moderate rain"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Heavy rain"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Rain showers"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Freezing rain"
+msgstr ""
+
+#. SNOW
+#: gweather/weather.c:196
+msgid "Snow"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Light snow"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Moderate snow"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Heavy snow"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Snowstorm"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Blowing snowfall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Snow showers"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Drifting snow"
+msgstr ""
+
+#. SNOW_GRAINS
+#: gweather/weather.c:197
+msgid "Snow grains"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Light snow grains"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Moderate snow grains"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Heavy snow grains"
+msgstr ""
+
+#. ICE_CRYSTALS
+#: gweather/weather.c:198
+msgid "Ice crystals"
+msgstr ""
+
+#. ICE_PELLETS
+#: gweather/weather.c:199
+msgid "Ice pellets"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Few ice pellets"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Moderate ice pellets"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Heavy ice pellets"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Ice pellet storm"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Showers of ice pellets"
+msgstr ""
+
+#. HAIL
+#: gweather/weather.c:200
+msgid "Hail"
+msgstr ""
+
+#: gweather/weather.c:200
+#, fuzzy
+msgid "Hailstorm"
+msgstr "ചരിത്രം"
+
+#: gweather/weather.c:200
+msgid "Hail showers"
+msgstr ""
+
+#. SMALL_HAIL
+#: gweather/weather.c:201
+msgid "Small hail"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Small hailstorm"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Showers of small hail"
+msgstr ""
+
+#. PRECIPITATION
+#: gweather/weather.c:202
+msgid "Unknown precipitation"
+msgstr ""
+
+#. MIST
+#: gweather/weather.c:203
+msgid "Mist"
+msgstr ""
+
+#. FOG
+#: gweather/weather.c:204
+msgid "Fog"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Fog in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Shallow fog"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Patches of fog"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Partial fog"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Freezing fog"
+msgstr ""
+
+#. SMOKE
+#: gweather/weather.c:205
+msgid "Smoke"
+msgstr ""
+
+#. VOLCANIC_ASH
+#: gweather/weather.c:206
+msgid "Volcanic ash"
+msgstr ""
+
+#. SAND
+#: gweather/weather.c:207
+msgid "Sand"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Blowing sand"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Drifting sand"
+msgstr ""
+
+#. HAZE
+#: gweather/weather.c:208
+msgid "Haze"
+msgstr ""
+
+#. SPRAY
+#: gweather/weather.c:209
+msgid "Blowing sprays"
+msgstr ""
+
+#. DUST
+#: gweather/weather.c:210
+msgid "Dust"
+msgstr ""
+
+#: gweather/weather.c:210
+msgid "Blowing dust"
+msgstr ""
+
+#: gweather/weather.c:210
+msgid "Drifting dust"
+msgstr ""
+
+#. SQUALL
+#: gweather/weather.c:211
+msgid "Squall"
+msgstr ""
+
+#. SANDSTORM
+#: gweather/weather.c:212
+msgid "Sandstorm"
+msgstr ""
+
+#: gweather/weather.c:212
+msgid "Sandstorm in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:212
+msgid "Heavy sandstorm"
+msgstr ""
+
+#. DUSTSTORM
+#: gweather/weather.c:213
+#, fuzzy
+msgid "Duststorm"
+msgstr "യഥേഷ്ടം"
+
+#: gweather/weather.c:213
+msgid "Duststorm in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:213
+msgid "Heavy duststorm"
+msgstr ""
+
+#. FUNNEL_CLOUD
+#: gweather/weather.c:214
+#, fuzzy
+msgid "Funnel cloud"
+msgstr "കുറച്ച് മേഘങ്ങള്‍"
+
+#. TORNADO
+#: gweather/weather.c:215
+msgid "Tornado"
+msgstr ""
+
+#. DUST_WHIRLS
+#: gweather/weather.c:216
+msgid "Dust whirls"
+msgstr ""
+
+#: gweather/weather.c:216
+msgid "Dust whirls in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:832 gweather/weather.c:872 gweather/weather.c:1445
+msgid "Failed to get METAR data.\n"
+msgstr ""
+
+#: gweather/weather.c:864 gweather/weather.c:892 gweather/weather.c:1089
+msgid "WeatherInfo missing location"
+msgstr ""
+
+#: gweather/weather.c:1781
+msgid "%a, %b %d / %H:%M"
+msgstr ""
+
+#: gweather/weather.c:1785
+msgid "Unknown observation time"
+msgstr ""
+
+#: gweather/weather.c:1855
 msgid "Calm"
 msgstr ""
 
-#: gweather/weather.c:527
-msgid "Could not download forecast"
+#: gweather/weather.c:1928
+msgid "Retrieval failed"
 msgstr ""
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
@@ -1573,7 +3433,7 @@ msgid "Factory for creating inbox monitors."
 msgstr ""
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2455
 msgid "Inbox Monitor"
 msgstr "എഴുത്ത് പെട്ടി സൂചകന്"
 
@@ -1587,206 +3447,206 @@ msgstr ""
 msgid "Internet"
 msgstr "വിവരമണ്ഡലം"
 
-#: mailcheck/mailcheck.c:512
-#, c-format
-msgid "There was an error executing %s: %s"
-msgstr "%s പ്രവ‍ര്ത്തിക്കുന്നതില് തകരാറ്: %s"
+#: mailcheck/mailcheck.c:666
+#, fuzzy
+msgid "Error checking mail"
+msgstr "തപാല്‌ പരിശോധിക്കുന്നതിനുള്ള ഇടവേള:"
 
-#: mailcheck/mailcheck.c:643
+#: mailcheck/mailcheck.c:797
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
 
-#: mailcheck/mailcheck.c:651
+#: mailcheck/mailcheck.c:805
 msgid "Please enter your mailserver's _password:"
 msgstr "ദയവായി നിങ്ങളുടെ മെയില് സെ‍ര്‍വ്വറിന്റെ പാസ്‍വേ‍ര്ഡ് നല്കുക:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1815
+#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
 msgid "Password Entry box"
 msgstr "പാസ്‍വേ‍ര്ഡ് നല്കുന്ന പെട്ടി"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
 msgid "_Save password to disk"
 msgstr ""
 
-#: mailcheck/mailcheck.c:724
+#: mailcheck/mailcheck.c:888
 msgid "Could not connect to the Internet."
 msgstr ""
 
-#: mailcheck/mailcheck.c:728
+#: mailcheck/mailcheck.c:892
 msgid "The username or password is incorrect."
 msgstr ""
 
-#: mailcheck/mailcheck.c:731
+#: mailcheck/mailcheck.c:895
 msgid "The server name is incorrect."
 msgstr ""
 
-#: mailcheck/mailcheck.c:735
+#: mailcheck/mailcheck.c:899
 msgid "Error connecting to mail server."
 msgstr ""
 
-#: mailcheck/mailcheck.c:740
+#: mailcheck/mailcheck.c:904
 msgid "Error"
 msgstr "പിശക്"
 
-#: mailcheck/mailcheck.c:919
+#: mailcheck/mailcheck.c:1083
 msgid "You have new mail."
 msgstr "നിങ്ങള്ക്ക് ഒരു പുതിയ കത്തുണ്ട്"
 
-#: mailcheck/mailcheck.c:921
+#: mailcheck/mailcheck.c:1085
 msgid "You have mail."
 msgstr "നിങ്ങള്ക്ക് പുതിയ കത്തുണ്ട്."
 
-#: mailcheck/mailcheck.c:925
+#: mailcheck/mailcheck.c:1089
 #, c-format
 msgid "%d unread/ %d messages"
 msgstr ""
 
-#: mailcheck/mailcheck.c:927
+#: mailcheck/mailcheck.c:1091
 #, c-format
 msgid "%d messages"
 msgstr "%d കത്തുകള്"
 
-#: mailcheck/mailcheck.c:931
+#: mailcheck/mailcheck.c:1095
 msgid "No mail."
 msgstr "കത്ത് ഇല്ല."
 
-#: mailcheck/mailcheck.c:1455 mailcheck/mailcheck.c:1456
-#: mailcheck/mailcheck.c:2466 mailcheck/mailcheck.c:2467
+#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
+#: mailcheck/mailcheck.c:2823 mailcheck/mailcheck.c:2824
 msgid "Status not updated"
 msgstr "അവസ്ഥ പുതുക്കിയില്ല"
 
-#: mailcheck/mailcheck.c:1654 mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2377
 msgid "Inbox Settings"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1680
+#: mailcheck/mailcheck.c:1777
 msgid "Mailbox _resides on:"
 msgstr "മെയില്-പെട്ടി നില്ക്കുന്നത്:"
 
-#: mailcheck/mailcheck.c:1691
+#: mailcheck/mailcheck.c:1788
 msgid "Local mailspool"
 msgstr "പ്രാദേശിക കത്ത് ശേഖരണസ്ഥലം"
 
-#: mailcheck/mailcheck.c:1699
+#: mailcheck/mailcheck.c:1796
 msgid "Local maildir"
 msgstr "പ്രാദേശിക കത്ത് ഡയറക്ടറി"
 
-#: mailcheck/mailcheck.c:1707
+#: mailcheck/mailcheck.c:1804
 msgid "Remote POP3-server"
 msgstr "വിദൂര POP3-സ‍ര്‍വ്വര്"
 
-#: mailcheck/mailcheck.c:1715
+#: mailcheck/mailcheck.c:1812
 msgid "Remote IMAP-server"
 msgstr "വിദൂര IMAP-സ‍ര്‍വ്വര്"
 
-#: mailcheck/mailcheck.c:1735
+#: mailcheck/mailcheck.c:1837
 msgid "Mail _spool file:"
 msgstr "കത്ത് ശേഖരണ രചന:"
 
-#: mailcheck/mailcheck.c:1742
+#: mailcheck/mailcheck.c:1844
 msgid "Browse"
 msgstr "അന്വോഷണം"
 
-#: mailcheck/mailcheck.c:1757
+#: mailcheck/mailcheck.c:1864
 msgid "Mail s_erver:"
 msgstr "കത്ത് സ‍ര്‍വ്വര്:"
 
-#: mailcheck/mailcheck.c:1766
+#: mailcheck/mailcheck.c:1873
 msgid "Mail Server Entry box"
 msgstr "ഉപയോക്തൃനാമം നല്കുന്ന ഇടം"
 
-#: mailcheck/mailcheck.c:1780
+#: mailcheck/mailcheck.c:1892
 msgid "_Username:"
 msgstr "ഉപയോക്തൃ നാമം:"
 
-#: mailcheck/mailcheck.c:1791
+#: mailcheck/mailcheck.c:1903
 msgid "Username Entry box"
 msgstr "ഉപയോക്തൃനാമം നല്കുന്ന ഇടം"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1921
 msgid "_Password:"
 msgstr "അടയാളവാക്ക്:"
 
-#: mailcheck/mailcheck.c:1849
+#: mailcheck/mailcheck.c:1974
 msgid "_Folder:"
 msgstr "കൂട്:"
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1985
 msgid "Folder Entry box"
 msgstr "പ്രവ‍ര്ത്തിപ്പിക്കാനുള്ള നിര്‍ദ്ദേശം നല്കുന്ന സ്ഥലം"
 
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:2057
 msgid "Check for mail _every:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:2079
 msgid "Choose time interval in minutes to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1955
+#: mailcheck/mailcheck.c:2102
 msgid "Choose time interval in seconds to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1968
+#: mailcheck/mailcheck.c:2119
 msgid "Play a _sound when new mail arrives"
 msgstr "പുതിയ കത്തുകള് വരുമ്പോള് ശബ്ദം ഉണ്ടാക്കുക"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:1976
+#: mailcheck/mailcheck.c:2129
 msgid "Sto_p animation when double clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1987
+#: mailcheck/mailcheck.c:2142
 msgid "Select a_nimation:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2000
+#: mailcheck/mailcheck.c:2160
 msgid "Commands"
 msgstr "നിര്ദ്ദേശങ്ങള്്"
 
-#: mailcheck/mailcheck.c:2029
+#: mailcheck/mailcheck.c:2189
 msgid "Before each _update:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2044
+#: mailcheck/mailcheck.c:2206
 msgid "Command to execute before each update"
 msgstr "ഓരോ പുതുക്കലിനും മുന്പ് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
 
-#: mailcheck/mailcheck.c:2054
+#: mailcheck/mailcheck.c:2218
 msgid "When new mail _arrives:"
 msgstr "പുതിയ കത്തുകള് വരുമ്പോള്:"
 
-#: mailcheck/mailcheck.c:2067 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2233 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "പുതിയ കത്തുകള് വരുമ്പോള് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
 
-#: mailcheck/mailcheck.c:2077
+#: mailcheck/mailcheck.c:2245
 msgid "When double clicke_d:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2090
+#: mailcheck/mailcheck.c:2260
 msgid "Command to execute when clicked"
 msgstr "കൊട്ടുമ്പോള് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
 
-#: mailcheck/mailcheck.c:2168
+#: mailcheck/mailcheck.c:2346
 msgid "Inbox Monitor Preferences"
 msgstr "ജാലക നാമാവലി മുന്ഗണനകള്"
 
-#: mailcheck/mailcheck.c:2278
+#: mailcheck/mailcheck.c:2457
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "പുതിയ കത്തുകള് വരുമ്പോള് എഴുത്ത് പെട്ടി സൂചകന് നിങ്ങളുടെ ശ്രദ്ധയില് പെടുത്തും"
 
-#: mailcheck/mailcheck.c:2442
+#: mailcheck/mailcheck.c:2783
 msgid "Text only"
 msgstr "വാചകം മാത്രം"
 
-#: mailcheck/mailcheck.c:2468
+#: mailcheck/mailcheck.c:2825
 msgid "Mail check"
 msgstr "കത്തുനോക്കുക"
 
-#: mailcheck/mailcheck.c:2469
+#: mailcheck/mailcheck.c:2826
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "കത്തുനോക്കുമ്പോള് പുതിയ കത്തുകള് വരുമ്പോള് ശ്രദ്ദിപ്പിക്കുക"
 
@@ -1922,7 +3782,6 @@ msgstr "പുതിയ കത്ത്"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:328
 msgid "Command Line"
 msgstr "ആജ്ഞമേഘല"
 
@@ -1946,15 +3805,15 @@ msgid ""
 msgstr ""
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:436
 msgid "Start program"
 msgstr ""
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "ആജ്ഞാമേഖല"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
@@ -2063,45 +3922,161 @@ msgstr ""
 msgid "_Use default theme colors"
 msgstr "സ്വതേയുള്ള രംഗവിധാനത്തിലെ നിറങ്ങള്‍ ഉപയോഗിക്കുക"
 
-#: mini-commander/src/mini-commander_applet.c:174
-#: mini-commander/src/mini-commander_applet.c:178
+#: mini-commander/src/mini-commander.schemas.in.h:1
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:2
+msgid "Background color, blue component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:3
+msgid "Background color, green component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:4
+msgid "Background color, red component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:5
+msgid "Foreground color, blue component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:6
+msgid "Foreground color, green component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Foreground color, red component"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:8
+#, fuzzy
+msgid "History list"
+msgstr "ചരിത്രം"
+
+#: mini-commander/src/mini-commander.schemas.in.h:9
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:12
+#, fuzzy
+msgid "Macro command list"
+msgstr "ആജ്ഞാമേഖല"
+
+#: mini-commander/src/mini-commander.schemas.in.h:13
+msgid "Macro pattern list"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:15
+msgid "Perform history autocompletion"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+#, fuzzy
+msgid "Use the default theme colors"
+msgstr "സ്വതേയുള്ള രംഗവിധാനത്തിലെ നിറങ്ങള്‍ ഉപയോഗിക്കുക"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+#, fuzzy
+msgid "Width"
+msgstr "വീതി:"
+
+#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:232
 msgid "Browser"
 msgstr "അന്വേഷകന്"
 
-#: mini-commander/src/mini-commander_applet.c:179
+#: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
 msgstr "അന്വേഷകനെ തുടങ്ങാന് ഈ മൊട്ട് ക്ളിക്ക് ചെയ്യ‍ുക"
 
-#: mini-commander/src/mini-commander_applet.c:192
-#: mini-commander/src/mini-commander_applet.c:196
+#: mini-commander/src/mini-commander_applet.c:246
+#: mini-commander/src/mini-commander_applet.c:250
 msgid "History"
 msgstr "ചരിത്രം"
 
-#: mini-commander/src/mini-commander_applet.c:197
+#: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:326
+#: mini-commander/src/mini-commander_applet.c:360
+msgid "Command line has been disabled by your system administrator"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:421
 msgid "Mini-Commander applet"
 msgstr "ലഘു ആജ്ഞാമേഖല"
 
-#: mini-commander/src/mini-commander_applet.c:327
+#: mini-commander/src/mini-commander_applet.c:422
 msgid "This applet adds a command line to the panel"
 msgstr ""
 
-#: mini-commander/src/preferences.c:387
+#: mini-commander/src/preferences.c:428
 msgid "You must specify a pattern"
 msgstr ""
 
-#: mini-commander/src/preferences.c:391
+#: mini-commander/src/preferences.c:432
 msgid "You must specify a pattern and a command"
 msgstr ""
 
-#: mini-commander/src/preferences.c:392
+#: mini-commander/src/preferences.c:433
 msgid "You must specify a command"
 msgstr ""
 
-#: mini-commander/src/preferences.c:395
+#: mini-commander/src/preferences.c:436
 msgid "You may not specify duplicate patterns"
 msgstr ""
 
@@ -2109,8 +4084,8 @@ msgstr ""
 msgid "Adjust the sound volume"
 msgstr "ശബ്ദം ക്രമീകരിക്കുക"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:170
-#: mixer/mixer.c:1025
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
+#: mixer/mixer.c:1075
 msgid "Volume Control"
 msgstr "ശബ്ദം ക്രമീകാരി"
 
@@ -2122,173 +4097,190 @@ msgstr "നിശബദമാക്കുക"
 msgid "_Open Volume Control"
 msgstr ""
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:113
 msgid "Main Volume"
 msgstr ""
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:113
 #, fuzzy
 msgid "Bass"
 msgstr "ആധാരം"
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:113
 #, fuzzy
 msgid "Treble"
 msgstr "വൃക്ഷം"
 
-#: mixer/mixer.c:112
+#: mixer/mixer.c:113
 msgid "Synth"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:114
 msgid "Pcm"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:114
 msgid "Speaker"
 msgstr ""
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:114
 msgid "Line"
 msgstr "വരി‌"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:115
 msgid "Microphone"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:115
 msgid "CD"
 msgstr "സി.ഡി"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:115
 msgid "Mix"
 msgstr ""
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:115
 msgid "Pcm2"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:116
 msgid "Recording Level"
 msgstr ""
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:116
 #, fuzzy
 msgid "Input Gain"
 msgstr "നിവേശകം"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:116
 #, fuzzy
 msgid "Output Gain"
 msgstr "നിര്ഗ്ഗമ വരികള്"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:117
 #, fuzzy
 msgid "Line1"
 msgstr "വരികള്‌"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:117
 #, fuzzy
 msgid "Line2"
 msgstr "വരികള്‌"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:117
 #, fuzzy
 msgid "Line3"
 msgstr "വരികള്‌"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:117
 #, fuzzy
 msgid "Digital1"
 msgstr "അക്കങ്ങള്"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:118
 #, fuzzy
 msgid "Digital2"
 msgstr "അക്കങ്ങള്"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:118
 #, fuzzy
 msgid "Digital3"
 msgstr "അക്കങ്ങള്"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:119
 msgid "Phone Input"
 msgstr ""
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:119
 #, fuzzy
 msgid "Phone Output"
 msgstr "ആജ്ഞമേഘല ഫലം"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:119
 msgid "Video"
 msgstr "ചലനചിത്രം"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:119
 #, fuzzy
 msgid "Radio"
 msgstr "പ്രവ‍ര്ത്തനങ്ങള്‌"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:119
 #, fuzzy
 msgid "Monitor"
 msgstr "മോണിറ്റര്‌..."
 
-#: mixer/mixer.c:171
+#: mixer/mixer.c:176
 msgid "Volume Control (muted)"
 msgstr "ശബ്ദം ക്രമീകാരി (നിശബദമാക്കി)"
 
-#: mixer/mixer.c:172
+#: mixer/mixer.c:177
 msgid "No audio device"
 msgstr ""
 
-#: mixer/mixer.c:254
+#: mixer/mixer.c:278
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 msgstr ""
 
-#: mixer/mixer.c:753
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr ""
+
+#: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "ശബ്ദം ക്രമീകാരി"
 
-#: mixer/mixer.c:754
+#: mixer/mixer.c:802
 msgid "Use Up/Down arrow keys to change volume"
 msgstr ""
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:778
+#: mixer/mixer.c:826
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:779
+#: mixer/mixer.c:827
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1026
+#: mixer/mixer.c:1076
 msgid "(C) 2001 Richard Hult"
 msgstr ""
 
-#: mixer/mixer.c:1027
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 
-#: mixer/mixer.c:1169
+#: mixer/mixer.c:1220
 msgid "Volume Control Preferences"
 msgstr ""
 
-#: mixer/mixer.c:1192
+#: mixer/mixer.c:1244
 msgid "Audio Channels"
 msgstr ""
 
-#: mixer/mixer.c:1208
+#: mixer/mixer.c:1260
 msgid "_Select channel to control:"
 msgstr ""
 
-#: mixer/mixer.c:1476
+#: mixer/mixer.c:1592
 msgid "The volume control lets you set the volume level for your desktop"
+msgstr ""
+
+#: mixer/mixer.schemas.in.h:1
+msgid "Channel controlled by applet. Only for OSS setups"
+msgstr ""
+
+#: mixer/mixer.schemas.in.h:2
+msgid "Saved mute state"
+msgstr ""
+
+#: mixer/mixer.schemas.in.h:3
+msgid "Saved volume to restore on startup"
 msgstr ""
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
@@ -2306,133 +4298,297 @@ msgstr ""
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 
-#: modemlights/modemlights.c:464
+#: modemlights/modemlights.c:485
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
 
-#: modemlights/modemlights.c:479
+#: modemlights/modemlights.c:489
+msgid "_Disconnect"
+msgstr ""
+
+#: modemlights/modemlights.c:510
 msgid "Do you want to connect?"
 msgstr ""
 
-#: modemlights/modemlights.c:506
+#: modemlights/modemlights.c:513
+msgid "C_onnect"
+msgstr ""
+
+#: modemlights/modemlights.c:536
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr ""
 
-#: modemlights/modemlights.c:511
+#: modemlights/modemlights.c:541
 msgid "not connected"
 msgstr ""
 
-#: modemlights/properties.c:374
+#: modemlights/modemlights.schemas.in.h:1
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:3
+#, fuzzy
+msgid "Command executed when connecting"
+msgstr "കൊട്ടുമ്പോള് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
+
+#: modemlights/modemlights.schemas.in.h:4
+#, fuzzy
+msgid "Command executed when disconnecting"
+msgstr "കൊട്ടുമ്പോള് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
+
+#: modemlights/modemlights.schemas.in.h:5
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:6
+msgid "Make the applet blink when the modem is connecting."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:8
+msgid "Modem lock file"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:9
+msgid "Receive background color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:10
+msgid "Receive foreground color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:11
+msgid "Send background color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:12
+msgid "Send foreground color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:13
+msgid "Show connect time and throughput"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:16
+#, fuzzy
+msgid "Status not connected color"
+msgstr "അവസ്ഥ പുതുക്കിയില്ല"
+
+#: modemlights/modemlights.schemas.in.h:17
+msgid "Status waiting connection color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:18
+msgid "Text background color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:19
+msgid "Text foreground color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:20
+msgid "Text outline color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to indicate data received."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to indicate data sent."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:29
+#, fuzzy
+msgid "The name of the modem device."
+msgstr "വിദൂരസ‌‌ര്‌വറിനുവേണ്ടിയുള്ള ഉപയോക്തൃ പേര‌്"
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:32
+#, fuzzy
+msgid "Use isdn"
+msgstr "ഉപയോഗിച്ച"
+
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:34
+#, fuzzy
+msgid "Use this command to connect the modem."
+msgstr "എഴുത്ത് പരിശോധിക്കിനന്തിന‌് മുന്പ് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
+
+#: modemlights/modemlights.schemas.in.h:35
+#, fuzzy
+msgid "Use this command to disconnect the modem."
+msgstr "എഴുത്ത് പരിശോധിക്കിനന്തിന‌് മുന്പ് പ്രവ‍ര്ത്തിക്കേണ്ട നിര്‍ദ്ദേശം"
+
+#: modemlights/modemlights.schemas.in.h:36
+msgid "Verify owner of lock file"
+msgstr ""
+
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr ""
 
-#: modemlights/properties.c:402
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr ""
 
 #. extra info checkbox
-#: modemlights/properties.c:424
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr ""
 
-#: modemlights/properties.c:431
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr ""
 
-#: modemlights/properties.c:438
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr ""
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr ""
 
-#: modemlights/properties.c:466
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr ""
 
 #. confirmation checkbox
-#: modemlights/properties.c:481
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr ""
 
-#: modemlights/properties.c:497
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr ""
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr ""
 
-#: modemlights/properties.c:508
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr ""
 
-#: modemlights/properties.c:513
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr ""
 
-#: modemlights/properties.c:515
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr ""
 
-#: modemlights/properties.c:518
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr ""
 
-#: modemlights/properties.c:526
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr ""
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr ""
 
-#: modemlights/properties.c:531
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr ""
 
-#: modemlights/properties.c:534
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "വാചകം"
 
-#: modemlights/properties.c:542
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr ""
 
-#: modemlights/properties.c:544
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr ""
 
-#: modemlights/properties.c:546
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr ""
 
-#: modemlights/properties.c:558
+#: modemlights/properties.c:624 multiload/properties.c:533
+msgid "Colors"
+msgstr "നറങ്ങള്"
+
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr ""
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "ഉപകരണങ്ങള്‌"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr ""
 
-#: modemlights/properties.c:600
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr ""
 
 #. ISDN checkbox
-#: modemlights/properties.c:608
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr ""
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "പുരോഗമിച്ച"
 
@@ -2441,7 +4597,7 @@ msgid "A system load indicator"
 msgstr ""
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:78
+#: multiload/main.c:79
 msgid "System Monitor"
 msgstr "വ്യ‍ൂഹ നിരീക്ഷണി"
 
@@ -2453,11 +4609,11 @@ msgstr ""
 msgid "CPU Load"
 msgstr ""
 
-#: multiload/loadavg.c:107 multiload/main.c:280
+#: multiload/loadavg.c:107 multiload/main.c:281
 msgid "Load Average"
 msgstr ""
 
-#: multiload/main.c:80
+#: multiload/main.c:81
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -2465,28 +4621,28 @@ msgid ""
 "space use, plus network traffic."
 msgstr ""
 
-#: multiload/main.c:272 multiload/properties.c:485
+#: multiload/main.c:273 multiload/properties.c:558
 #, fuzzy
 msgid "Processor"
 msgstr "പൂരോഗതി‌"
 
-#: multiload/main.c:274 multiload/properties.c:492
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "ഓര്മ്മ"
 
-#: multiload/main.c:276 multiload/properties.c:500
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "വലക്കെട്ട്"
 
-#: multiload/main.c:278 multiload/properties.c:508
+#: multiload/main.c:279 multiload/properties.c:581
 msgid "Swap Space"
 msgstr ""
 
-#: multiload/main.c:282
+#: multiload/main.c:283
 msgid "Resource"
 msgstr ""
 
-#: multiload/main.c:292
+#: multiload/main.c:294
 #, c-format
 msgid ""
 "%s:\n"
@@ -2497,119 +4653,225 @@ msgstr ""
 msgid "Memory Load"
 msgstr ""
 
+#: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:8
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:22
+msgid "Graph size"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:25
+msgid "Network graph background color"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:26
+msgid "Swap graph background color"
+msgstr ""
+
 #: multiload/netload.c:49
 msgid "Net Load"
 msgstr ""
 
-#: multiload/properties.c:283
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr ""
 
-#: multiload/properties.c:308
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr ""
 
-#: multiload/properties.c:318
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr ""
 
-#: multiload/properties.c:328
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr ""
 
-#: multiload/properties.c:338
+#: multiload/properties.c:395
 msgid "S_wap Space"
 msgstr ""
 
-#: multiload/properties.c:348
+#: multiload/properties.c:408
 msgid "_Load"
 msgstr ""
 
-#: multiload/properties.c:392
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr ""
 
-#: multiload/properties.c:394
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr ""
 
-#: multiload/properties.c:428
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr ""
 
-#: multiload/properties.c:449
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "മില്ലി സെക്കന്റ്സ്"
 
-#: multiload/properties.c:487 multiload/properties.c:494
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "ഉപയോക്താവ്"
 
-#: multiload/properties.c:488
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "വ്യ‍ുഹം"
 
-#: multiload/properties.c:489
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr ""
 
-#: multiload/properties.c:490
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "അനക്കമില്ല"
 
-#: multiload/properties.c:495
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "പങ്കുവെച്ച"
 
-#: multiload/properties.c:496
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr ""
 
-#: multiload/properties.c:497
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr ""
 
-#: multiload/properties.c:498
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "സ്വതന്ത്ര"
 
-#: multiload/properties.c:502
+#: multiload/properties.c:575
 msgid "_SLIP"
 msgstr ""
 
-#: multiload/properties.c:503
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr ""
 
-#: multiload/properties.c:504
+#: multiload/properties.c:577
 msgid "_Ethernet"
 msgstr ""
 
-#: multiload/properties.c:505
+#: multiload/properties.c:578
 msgid "Othe_r"
 msgstr ""
 
-#: multiload/properties.c:506 multiload/properties.c:516
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "പശ്ചാത്തലം"
 
-#: multiload/properties.c:510
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "ഉപയോഗിച്ച"
 
-#: multiload/properties.c:511
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "സ്വതന്ത്ര"
 
-#: multiload/properties.c:513
+#: multiload/properties.c:586
 msgid "Load"
 msgstr "നിറയ്ക്കുക"
 
-#: multiload/properties.c:515
+#: multiload/properties.c:588
 msgid "_Average"
 msgstr ""
 
-#: multiload/properties.c:536
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr ""
 
@@ -2621,9 +4883,9 @@ msgstr ""
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
 
-#. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:134 stickynotes/stickynotes_applet.c:305
+#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet_callbacks.c:200
 msgid "Sticky Notes"
 msgstr "സ്റ്റികി നോട്ട്സ്"
 
@@ -2640,7 +4902,7 @@ msgid "_Lock Notes"
 msgstr ""
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
 msgstr ""
 
@@ -2648,43 +4910,44 @@ msgstr ""
 msgid "_Show Notes"
 msgstr ""
 
-#: stickynotes/stickynotes.c:311
+#: stickynotes/stickynotes.c:316
 msgid "Locked note"
 msgstr ""
 
-#: stickynotes/stickynotes.c:315
+#: stickynotes/stickynotes.c:321
 msgid "Unlocked note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:2
-msgid "(c) 2002-2003 Loban A Rahman"
-msgstr ""
-
-#: stickynotes/stickynotes.glade.h:4
+#: stickynotes/stickynotes.glade.h:3
 msgid "<b>Behavior</b>"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:5
+#: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:6
+#: stickynotes/stickynotes.glade.h:5
 msgid ""
 "<b>Delete ALL sticky notes?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:9
+#: stickynotes/stickynotes.glade.h:8
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:12
+#: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
 msgstr ""
+
+#: stickynotes/stickynotes.glade.h:12
+#, fuzzy
+msgid "C_olor:"
+msgstr "വ‍ര്ണ്ണ‍ങ്ങള്‌:"
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
@@ -2719,59 +4982,60 @@ msgid "Close note"
 msgstr ""
 
 #: stickynotes/stickynotes.glade.h:21
-msgid "Force _default color & font on all notes"
+msgid "Force _default color and font on notes"
 msgstr ""
 
 #: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "H_eight:"
+msgstr "ഉയരം:"
+
+#: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:28
 msgid "Resize note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:29
 msgid "Specify a title for the note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:33
 msgid "Sticky Note Properties"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:33
-msgid "Sticky Notes Preferences"
-msgstr ""
-
 #: stickynotes/stickynotes.glade.h:34
-msgid "Sticky Notes for the Gnome Desktop Environment"
+msgid "Sticky Notes Preferences"
 msgstr ""
 
 #: stickynotes/stickynotes.glade.h:35
@@ -2803,34 +5067,30 @@ msgid "_Delete Note..."
 msgstr ""
 
 #: stickynotes/stickynotes.glade.h:43
-msgid "_Height:"
-msgstr "ഉയരം:"
-
-#: stickynotes/stickynotes.glade.h:44
 msgid "_Lock Note"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "ഗുണഗണങ്ങള്...‌"
 
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:48
+#: stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
 msgstr "തലക്കെട്ട്:"
 
-#: stickynotes/stickynotes.glade.h:50
+#: stickynotes/stickynotes.glade.h:49
 msgid "_lock/unlock all notes"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:51
+#: stickynotes/stickynotes.glade.h:50
 msgid "_show/hide all notes"
 msgstr ""
 
-#: stickynotes/stickynotes.glade.h:52
+#: stickynotes/stickynotes.glade.h:51
 msgid "create a _new note"
 msgstr ""
 
@@ -2943,8 +5203,9 @@ msgid "Sticky notes' locked state"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:23
-msgid "Sticky notes' visiblity"
-msgstr ""
+#, fuzzy
+msgid "Sticky notes' visibility"
+msgstr "സ്റ്റികി നോട്ട്സ്"
 
 #: stickynotes/stickynotes.schemas.in.h:24
 msgid "Sticky notes' workspace stickyness"
@@ -2966,7 +5227,7 @@ msgstr ""
 msgid "Whether to use the default system font"
 msgstr ""
 
-#: stickynotes/stickynotes_applet.c:305
+#: stickynotes/stickynotes_applet.c:355
 #, c-format
 msgid ""
 "%s\n"
@@ -2977,52 +5238,275 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
+#: stickynotes/stickynotes_applet_callbacks.c:202
+msgid "(c) 2002-2003 Loban A Rahman"
+msgstr ""
+
+#: stickynotes/stickynotes_applet_callbacks.c:203
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
+
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
 msgstr ""
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr ""
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr ""
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr ""
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr ""
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr ""
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr ""
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr ""
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr ""
 
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
+msgid "GNOME XKB applet factory"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
+msgid "GSwitchIt applet"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
+#, fuzzy
+msgid "GSwitchIt applet factory"
+msgstr "ആക്സസ്സ്X അവസ്ഥ ആപ്-ലെറ്റ് ശാല"
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:96
+#, fuzzy, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "കീബോര്‍ഡ് കുറക്കുവഴികള്"
+
+#: gswitchit/gswitchit-applet.c:483
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:484
+msgid "XKB toolkit for GNOME"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:613
+msgid "XKB initialization error"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:622
+msgid "Error loading XKB configuration registry"
+msgstr ""
+
+#: capplets/gswitchit_capplet.c:142
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+
+#: capplets/gswitchit_capplet.c:224
+msgid "Exclude from keyboard switching"
+msgstr ""
+
+#: capplets/gswitchit_capplet.c:250
+msgid "not used"
+msgstr ""
+
+#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#, fuzzy, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "ആതിഥേയനാമം ലഭിക്കുന്നതില്‌ പരാജയപ്പെട്ടു: %s\n"
+
+#: capplets/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr ""
+
+#: capplets/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:2
+msgid "GSwitchIt Properties"
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:8
+msgid "Use _flags as indicators"
+msgstr ""
+
+#: capplets/gswitchit-properties.glade.h:9
+msgid "_Default group:"
+msgstr ""
+
+#: gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr ""
+
+#: gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr ""
+
+#: gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr ""
+
+#: gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr ""
+
+#: gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr ""
+
+#: gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr ""
+
+#: gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr ""
+
+#: gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr ""
+
+#: gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr ""
+
+#: gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+
+#~ msgid "_Launch Preferences Dialog"
+#~ msgstr "ഗുണഗണ ക്രമീകരണങ്ങള് തുറക്കുക"
+
+#~ msgid "Big"
+#~ msgstr "വലിയ"
+
+#~ msgid "Condition"
+#~ msgstr "ഉപാധി"
+
+#, fuzzy
+#~ msgid "days"
+#~ msgstr "ഇന്ന്"
+
+#~ msgid "Country"
+#~ msgstr "രാജ്യം"
+
+#, fuzzy
+#~ msgid "Could not initialize Bonobo"
+#~ msgstr "നിറം സംസ്ഥാപിക്കാന്‌ കഴിയുന്നില്ല"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Clear"
+#~ msgstr "വൃത്തിയാക്കല്"
+
+#~ msgid "_Custom"
+#~ msgstr "യഥേഷ്ടം"
+
+#, fuzzy
+#~ msgid "_Preview"
+#~ msgstr "തിരനോട്ടം"
+
+#~ msgid "Secondary"
+#~ msgstr "രണ്ടാമത്തെ"
+
+#~ msgid "Zoom"
+#~ msgstr "വലുതാക്കുക"

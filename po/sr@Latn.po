@@ -3,13 +3,14 @@
 # 
 # This file is distributed under the same license as the gnome-applets package.
 # 
+# Aleksandar Urošević <urke@gmx.net>
 # Maintainer: Danilo Šegan <dsegan@gmx.net>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-03 04:30+0100\n"
+"POT-Creation-Date: 2003-12-21 23:17+0000\n"
 "PO-Revision-Date: 2003-12-03 04:30+0100\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
@@ -31,6 +32,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "_O programu"
 
@@ -45,6 +47,7 @@ msgstr "_O programu"
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "_Pomoć"
 
@@ -57,7 +60,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Proizvodnja programčeta za stanje upotrebljivosti"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1177
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr "Stanje upotrebljivosti tastature"
 
@@ -76,24 +79,25 @@ msgstr "Prikazuje stanje za mogućonosti u vezi sa upotrebljivošću tastature"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Pomoćni alati"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:894
-#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:535
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:191
-#: wireless/wireless-applet.c:560
+#: stickynotes/stickynotes_applet_callbacks.c:198
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
 msgid "translator_credits"
 msgstr ""
 "Danilo Šegan <danilo@prevod.org>\n"
 "\n"
 "Prevod.org — prevod na srpski jezik."
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1180
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr "Stanje upotrebljivosti"
 
@@ -118,11 +122,12 @@ msgid "There was an error launching the keyboard capplet : %s"
 msgstr ""
 "Došlo je do greške pri pokretanju kontrolnog programčeta za tastaturu: %s"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1182
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Prikazuje tekuće stanje mogućnosti u vezi sa upotrebljivošću tastature"
 
@@ -400,8 +405,8 @@ msgid ""
 "\"%d\"\n"
 "Please try to correct this error"
 msgstr ""
-"Došlo je do greške pri pokretanju naredbe za suspenziju. Naredba je vratila „%"
-"d“\n"
+"Došlo je do greške pri pokretanju naredbe za suspenziju. Naredba je vratila "
+"„%d“\n"
 "Pokušajte da ispravite ovu grešku"
 
 #: battstat/battstat_applet.c:853
@@ -426,7 +431,7 @@ msgstr "©2000 Gnuliks Društvo, ©2002 Zadužbina za Slobodni Softver"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ova alatka prikazuje stanje baterije vašeg prenosnog računara."
 
-#: battstat/battstat_applet.c:1544
+#: battstat/battstat_applet.c:1531
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -482,7 +487,7 @@ msgstr "Postavke praćenja stanja baterije"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
 #: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:559
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Opšte"
 
@@ -538,11 +543,11 @@ msgstr "_Upozori kada je baterija slaba"
 msgid "_Yellow:"
 msgstr "_Žuto:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:493
+#: battstat/properties.c:296 drivemount/drivemount.c:498
 #: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
 #: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:169
-#: stickynotes/stickynotes_applet_callbacks.c:317
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
+#: stickynotes/stickynotes_applet_callbacks.c:324
 #: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -768,8 +773,8 @@ msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
-"Niska koju je izabrao korisnik pri poslednjoj upotrebi programčeta. Ova niska "
-"će biti prikazana kada korisnik pokrene programče."
+"Niska koju je izabrao korisnik pri poslednjoj upotrebi programčeta. Ova "
+"niska će biti prikazana kada korisnik pokrene programče."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -824,7 +829,7 @@ msgid "Character Palette Preferences"
 msgstr "Postavke palete znakova"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:553
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
 msgid "Disk Mounter"
 msgstr "Priključenje diska"
 
@@ -848,41 +853,41 @@ msgstr "_Pretraži..."
 msgid "_Eject"
 msgstr "_Izbaci"
 
-#: drivemount/drivemount.c:434 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Došlo je do greške pri izvršavanju „%s“: %s"
 
-#: drivemount/drivemount.c:441
+#: drivemount/drivemount.c:446
 msgid "Cannot browse device"
 msgstr "Ne može da razgleda uređaj"
 
-#: drivemount/drivemount.c:499 drivemount/properties.c:601
+#: drivemount/drivemount.c:504 drivemount/properties.c:601
 #: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
 msgid "Error displaying help"
 msgstr "Greška pri prikazu pomoći"
 
-#: drivemount/drivemount.c:554
+#: drivemount/drivemount.c:559
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999–2001 Gnom hakeri\n"
 
-#: drivemount/drivemount.c:556
+#: drivemount/drivemount.c:561
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Programče za priključivanje i isključivanje blok uređaja."
 
-#: drivemount/drivemount.c:756
+#: drivemount/drivemount.c:761
 msgid " mounted"
 msgstr " priključen"
 
-#: drivemount/drivemount.c:758
+#: drivemount/drivemount.c:763
 msgid " not mounted"
 msgstr " nije priključen"
 
-#: drivemount/drivemount.c:870
+#: drivemount/drivemount.c:875
 msgid "\" reported:\n"
 msgstr "“ prijavio:\n"
 
-#: drivemount/drivemount.c:872
+#: drivemount/drivemount.c:877
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -890,7 +895,7 @@ msgstr ""
 "Naredba za priključenje nije izvršena.\n"
 "„"
 
-#: drivemount/drivemount.c:878
+#: drivemount/drivemount.c:883
 msgid "Cannot mount device"
 msgstr "Ne može da priključi uređaj"
 
@@ -919,7 +924,7 @@ msgid "_Update interval:"
 msgstr "_Vreme između provera:"
 
 #: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:466
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "sekundi"
 
@@ -2214,8 +2219,8 @@ msgid ""
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
 "Ovo programče menja mape tastatura pomoću setxkbmap-a ili xmodmap-a.\n"
-"Pošaljite vašu zastavu i mapu tasture ako želite podršku za vaš jezik (moja e-"
-"adresa je shooby@gnome.hu).\n"
+"Pošaljite vašu zastavu i mapu tasture ako želite podršku za vaš jezik (moja "
+"e-adresa je shooby@gnome.hu).\n"
 "Zbogom, i hvala na svoj ribi.\n"
 "Hvala Balašu Nagiju (Kevin) <julian7@iksz.hu> za njegovu pomoć i Emeze Kovač "
 "<emese@gnome.hu> za njenu solidarnost, i pomoć od onih kao što je KevinV.\n"
@@ -2379,7 +2384,7 @@ msgid "Flag and Label"
 msgstr "Zastava i oznaka"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
-#: modemlights/properties.c:442
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Prikaz"
 
@@ -2417,7 +2422,7 @@ msgstr "Tastature"
 msgid "_Keyboards:"
 msgstr "_Tastature:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "Opcije"
 
@@ -2493,8 +2498,8 @@ msgid ""
 msgstr ""
 "Ovaj program se povezuje na popularnu stranicu i preuzima trenutno stanje "
 "akcija na berzi.  GNOME Praćenje berze je slobodan program zasnovan na "
-"Internetu.  Nema nikakvu garanciju. Ne koristite Praćenje berze za pravljenje "
-"odluka o ulaganju; namena mu je samo obaveštajne prirode."
+"Internetu.  Nema nikakvu garanciju. Ne koristite Praćenje berze za "
+"pravljenje odluka o ulaganju; namena mu je samo obaveštajne prirode."
 
 #: gtik/gtik.c:1279
 msgid "Current _stocks:"
@@ -2577,7 +2582,7 @@ msgstr "_Širina:"
 
 # Ja bih stavio "tacaka", ali...
 #: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr "tačaka"
 
@@ -2605,7 +2610,7 @@ msgstr "Akcija _opala:"
 msgid "Stock _unchanged:"
 msgstr "Akcija ne_izmenjena:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:576
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Pozadina:"
 
@@ -2625,11 +2630,11 @@ msgstr ""
 "Praćenje berze\n"
 "Neprekidno osvežavanje stanja na berzi"
 
-#: gtik/gtik.c:2020
+#: gtik/gtik.c:2021
 msgid "(No"
 msgstr "(Nema"
 
-#: gtik/gtik.c:2021
+#: gtik/gtik.c:2022
 msgid "Change "
 msgstr "Promena "
 
@@ -2902,8 +2907,8 @@ msgid ""
 "only for US cities."
 msgstr ""
 "Državna prognoza nije dostupna za ovo mesto.\n"
-"Molim probajte detaljnu prognozu; obratite pažnju na to da IWIN prognoze nisu "
-"dostupne van Amerike."
+"Molim probajte detaljnu prognozu; obratite pažnju na to da IWIN prognoze "
+"nisu dostupne van Amerike."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:149
@@ -2981,8 +2986,8 @@ msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
-"Ukoliko je postavljeno, dovlači radarsku mapu sa adrese navedene pomoću ključa "
-"„radar“."
+"Ukoliko je postavljeno, dovlači radarsku mapu sa adrese navedene pomoću "
+"ključa „radar“."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
@@ -3679,7 +3684,8 @@ msgstr "Postavke praćenja sandučeta"
 
 #: mailcheck/mailcheck.c:2457
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr "Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
+msgstr ""
+"Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
 
 #: mailcheck/mailcheck.c:2783
 msgid "Text only"
@@ -3858,15 +3864,15 @@ msgstr ""
 "kojeg novijeg izdanja."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:436
 msgid "Start program"
 msgstr "Pokreni program"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "Naredba"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ovde unesite naredbu i Gnome će je izvršiti za vas"
 
@@ -4519,119 +4525,119 @@ msgstr "Koristi ovu naredbu za raskid veze modemom."
 msgid "Verify owner of lock file"
 msgstr "Proveri vlasnika datoteke za zaključavanje"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Postavke lampica modema"
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "O_sveži svakih:"
 
 # "protok" vise odgovara za "bandwidth", ali zasto da ne i ovako?
 #. extra info checkbox
-#: modemlights/properties.c:474
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Pri_kaži vreme trajanja veze i protok"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "Sta_nje veze treperi pri povezivanju"
 
-#: modemlights/properties.c:494
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "Veze"
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "_Naredba za povezivanje:"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "Naredba za _raskid veze:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:549
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "_Potvrditi uspostavljanje veze"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "Primljeni podaci"
 
-#: modemlights/properties.c:574
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "_Boja:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "Poslati podaci"
 
-#: modemlights/properties.c:584
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "Bo_ja:"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "Pozad_ina:"
 
-#: modemlights/properties.c:589
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "Stanje veze"
 
-#: modemlights/properties.c:597
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "Po_vezan:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "Veza _raskinuta:"
 
-#: modemlights/properties.c:602
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "Usp_ostavlja vezu:"
 
-#: modemlights/properties.c:605
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Tekst"
 
-#: modemlights/properties.c:613
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "_Boja:"
 
-#: modemlights/properties.c:615
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "Po_zadina:"
 
-#: modemlights/properties.c:617
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "U_gašene brojke"
 
-#: modemlights/properties.c:620 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "Boje"
 
-#: modemlights/properties.c:629
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "Podešavanje modema"
 
-#: modemlights/properties.c:638
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Uređaj:"
 
-#: modemlights/properties.c:663
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "Dato_teka za zaključavanje:"
 
-#: modemlights/properties.c:683
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "_Proveri vlasnika datoteke za zaključavanje"
 
 #. ISDN checkbox
-#: modemlights/properties.c:694
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "_Koristi ISDN"
 
-#: modemlights/properties.c:711
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Napredno"
 
@@ -4665,22 +4671,22 @@ msgid ""
 msgstr ""
 "Objavljeno pod Gnuovom Opštom javnom licencom.\n"
 "\n"
-"Praćenje opterećenja sistema omogućava prikaz grafika za procesor, memoriju, i "
-"memoriju na disku, a uz to i mrežni saobraćaj."
+"Praćenje opterećenja sistema omogućava prikaz grafika za procesor, memoriju, "
+"i memoriju na disku, a uz to i mrežni saobraćaj."
 
-#: multiload/main.c:273 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:558
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:275 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "Memorija"
 
-#: multiload/main.c:277 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "Mreža"
 
-#: multiload/main.c:279 multiload/properties.c:576
+#: multiload/main.c:279 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Zamena za memoriju"
 
@@ -4814,115 +4820,115 @@ msgstr "Boja pozadine za praćenje zamene za memoriju"
 msgid "Net Load"
 msgstr "Opterećenje mreže"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr "Praćeni resursi"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr "_Procesor"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr "_Memorija"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr "M_reža"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:395
 msgid "S_wap Space"
 msgstr "_Zamena za memoriju"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:408
 msgid "_Load"
 msgstr "_Opterećenje"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr "_Širina programčeta: "
 
-#: multiload/properties.c:452
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr "_Visina programčeta: "
 
-#: multiload/properties.c:491
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr "_Vreme između dva osvežavanja prikaza"
 
-#: multiload/properties.c:517
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "milisekundi"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "_Korisnik"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "_Sistem"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr "_Manjeprioritetno"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "_Neuposlen"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "_Deljena"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr "_Baferi"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr "Keš_irana"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "_Slobodna"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:575
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:577
 msgid "_Ethernet"
 msgstr "E_ternet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:578
 msgid "Othe_r"
 msgstr "_Ostala"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "_Pozadina"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "Is_korišćeno"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "_Slobodno"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:586
 msgid "Load"
 msgstr "Opterećenje"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:588
 msgid "_Average"
 msgstr "Pro_sečno"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Postavke praćenja sistema"
 
@@ -4935,8 +4941,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Napravite, gledajte i upravljajte kratkim beleškama na radnoj površini"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:349
-#: stickynotes/stickynotes_applet_callbacks.c:193
+#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet_callbacks.c:200
 msgid "Sticky Notes"
 msgstr "Kratke beleške"
 
@@ -5125,7 +5131,7 @@ msgstr "_Ukloni belešku..."
 msgid "_Lock Note"
 msgstr "_Zaključaj belešku"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "_Osobine..."
 
@@ -5243,8 +5249,8 @@ msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
-"Ukoliko je ova opcija uključena, neće se koristiti podešavanja boja i fontova "
-"za pojedinačne beleške."
+"Ukoliko je ova opcija uključena, neće se koristiti podešavanja boja i "
+"fontova za pojedinačne beleške."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5300,7 +5306,7 @@ msgstr "Da li se koristi uobičajena boja na sistemu"
 msgid "Whether to use the default system font"
 msgstr "Da li se koristi uobičajeni font na sistemu"
 
-#: stickynotes/stickynotes_applet.c:349
+#: stickynotes/stickynotes_applet.c:355
 #, c-format
 msgid ""
 "%s\n"
@@ -5318,11 +5324,11 @@ msgstr[2] ""
 "%s\n"
 "%d beleški"
 
-#: stickynotes/stickynotes_applet_callbacks.c:195
+#: stickynotes/stickynotes_applet_callbacks.c:202
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "©2002–2003 Loban A. Raman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:196
+#: stickynotes/stickynotes_applet_callbacks.c:203
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Kratke beleške za radno okruženje Gnom"
 
@@ -5368,5 +5374,451 @@ msgstr "Postavke praćenja bežične veze"
 msgid "_Monitored device:"
 msgstr "_Praćeni uređaj:"
 
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr "Gnom XKB apleta"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:2
+msgid "GNOME XKB applet factory"
+msgstr "Radionica Gnom XKB apleta"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:3
+msgid "GSwitchIt applet"
+msgstr "GSwitchIt aplet"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:4
+msgid "GSwitchIt applet factory"
+msgstr "Radionica GSwitchIt apleta"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr "_Grupe"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr "_Dodaci..."
+
+#: applet/gswitchit_applet.c:96
+#, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "Izmenjivač tastature (%s)"
+
+#: applet/gswitchit_applet.c:483
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr "Autorska prava Sergey V. Udaltsov (C) 1999-2002"
+
+#: applet/gswitchit_applet.c:484
+msgid "XKB toolkit for GNOME"
+msgstr "XKB alat za Gnome"
+
+#: applet/gswitchit_applet.c:613
+msgid "XKB initialization error"
+msgstr "XKB inicijalna greška"
+
+#: applet/gswitchit_applet.c:622
+msgid "Error loading XKB configuration registry"
+msgstr "Nastala je greška pri učitavanju registra za podešavanje XKB-a"
+
+#: capplets/gswitchit_capplet.c:142
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+"Postavi dostupnost rasporedu samo preko iskačućeg menija apleta.\n"
+"Nema mogućnosti da se odabere ovaj raspored upotrebom tastature."
+
+#: capplets/gswitchit_capplet.c:224
+msgid "Exclude from keyboard switching"
+msgstr "Isključi iz prebacivanja pomoću tastature"
+
+#: capplets/gswitchit_capplet.c:250
+msgid "not used"
+msgstr "nije u upotrebi"
+
+#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Neuspešno pokretanje GConf-a: %s\n"
+
+#: capplets/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Pokreni još dodataka"
+
+#: capplets/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr "Dodaj dodatak"
+
+#: capplets/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr "Zatvori prozorče"
+
+#: capplets/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr "Podesi izabrani dodatak"
+
+#: capplets/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr "Isključi izabrani dodatak"
+
+#: capplets/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr "Umanji prioritet dodatka"
+
+#: capplets/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr "GSwitchIt dodaci"
+
+#: capplets/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Povećaj prioritet dodatka"
+
+#: capplets/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr "Spisak pokrenutih dodataka"
+
+#: capplets/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr "_Pokrenuti dodaci"
+
+#: capplets/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_Dostupni dodaci:"
+
+#: capplets/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr "Odaberite podrazumevanu grupu (za novokreirane prozore)."
+
+#: capplets/gswitchit-properties.glade.h:2
+msgid "GSwitchIt Properties"
+msgstr "GSwitchIt podešavanja"
+
+#: capplets/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr "Zadrži odvojene grupe za prozor svakog programa."
+
+#: capplets/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr "Zadrži status indikatora posebno za prozor svakog programa."
+
+#: capplets/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr "Sačuvaj/Povrati _indikatore za grupu"
+
+#: capplets/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr "Razdvoj _grupu za svaki prozor"
+
+#: capplets/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr "Prikaži državne zastave kao oznake odgovarajućih rasporeda"
+
+#: capplets/gswitchit-properties.glade.h:8
+msgid "Use _flags as indicators"
+msgstr "Koristi _zastave za oznake"
+
+#: capplets/gswitchit-properties.glade.h:9
+msgid "_Default group:"
+msgstr "_Podrazumevana grupa:"
+
+#: gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr "Zvučni signal za promenu grupe"
+
+#: gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr "Nivo pronalaženja grešaka"
+
+#: gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Podrazumevana grupa, dodeljuje se pri kreiranju prozora"
+
+#: gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Zadrži i omogući razdvojene grupe za prozore"
+
+#: gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "Sačuvaj/povrati indikatorezajedno sa grupama rasporeda"
+
+#: gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr "grupe drugog nivoa"
+
+#: gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr "Prikaži zastave u programčetu"
+
+#: gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Prikaži zastave u programčetu radi označavanja tekućeg rasporeda"
+
+#: gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr "Prikaži nazive rasporeda umesto naziva grupa"
+
+#: gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Prikaži nazive rasporeda umesto naziva grupa (samo za verzije IksFrija koje "
+"podržavaju višeslojne rasporede)"
+
 #~ msgid "Vietnamese xkb keymap"
 #~ msgstr "Vijetnamski xkb raspored"
+
+#~ msgid "Apply XKB configuration and quit"
+#~ msgstr "Primeni podešavanja XKB-a i napusti program"
+
+#~ msgid ""
+#~ "Error activating XKB configuration.\n"
+#~ "Probably internal X server problem.\n"
+#~ "\n"
+#~ "X server version data:\n"
+#~ "%s\n"
+#~ "%d%s"
+#~ msgstr ""
+#~ "Greška pri pokretanju XKB podešavanja.\n"
+#~ "Verovatno interna greška sa X serverom.\n"
+#~ "\n"
+#~ "Podaci o izdanju X servera:\n"
+#~ "%s\n"
+#~ "%d%s"
+
+#~ msgid ""
+#~ "You are using XFree 4.3.0.\n"
+#~ "There are known problems with complex XKB configurations.\n"
+#~ "Try using simpler configuration or taking more fresh version of XFree "
+#~ "software."
+#~ msgstr ""
+#~ "Koristite XFree 4.3.0.\n"
+#~ "Postoje poznati problemi sa složenim XKB podešavanjima.\n"
+#~ "Pokušajte da koristite jednostavnija podešavanja ili preuzmite svežije "
+#~ "izdanje XFree softvera."
+
+#~ msgid "Could not initialize Bonobo"
+#~ msgstr "Ne mogu da pokrenem Bonobo"
+
+#~ msgid "Failed to init XklConfigRegistry\n"
+#~ msgstr "Neuspešno pokretanje XklConfigRegistry\n"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Postscript preview component is not available"
+#~ msgstr "Nije dostupna komponenta za pregled Postscript-a"
+
+#~ msgid "Keyboard layout preview"
+#~ msgstr "Pregled rasporeda tastature"
+
+#~ msgid "Bonobo Error"
+#~ msgstr "Bonobo greška"
+
+#~ msgid "Configure keyboard layouts"
+#~ msgstr "Podesi rasporede tastatura"
+
+#~ msgid "Keyboard layouts"
+#~ msgstr "Rasporedi tastatura"
+
+#~ msgid "Choose the layout."
+#~ msgstr "Odaberite raspored."
+
+#~ msgid "Choose the layout. Note: one layout can provide several groups."
+#~ msgstr ""
+#~ "Odaberite raspored. Napomena: jedan raspored može sadržati nekoliko grupa."
+
+#~ msgid "Choose the model of the keyboard (brand, number of keys, etc.)."
+#~ msgstr "Odaberite model tastature (marka, broj tastera, i sl.)."
+
+#~ msgid "Clear"
+#~ msgstr "Očisti"
+
+#~ msgid "Clear."
+#~ msgstr "Očišćeno."
+
+#~ msgid "Extra"
+#~ msgstr "Dodatno"
+
+#~ msgid "Keyboard _model:"
+#~ msgstr "_Model tastature:"
+
+#~ msgid "Keyboard layouts' settings: "
+#~ msgstr "Podešavanja rasporeda tastatura:"
+
+#~ msgid "Options 1"
+#~ msgstr "Opcije 1"
+
+#~ msgid "Options 2"
+#~ msgstr "Opcije 2"
+
+#~ msgid "Show _advanced parameters"
+#~ msgstr "Prikaži _napredna podešavanja"
+
+#~ msgid "Show tabs with advanced keyboard parameters (for power users)."
+#~ msgstr ""
+#~ "Prikaži listove sa naprednim podešavanjima tastature (za napredne "
+#~ "korisnike)."
+
+#~ msgid ""
+#~ "This version of XFree86 does not support multiple layouts, so only one "
+#~ "layout can be choosen."
+#~ msgstr ""
+#~ "Ovo izdanje IksFri86 ne podržava više rasporeda, te stoga možete odabrati "
+#~ "samo jedan raspored."
+
+#~ msgid "Use custom settings, ignore global configuration set in XF86Config."
+#~ msgstr ""
+#~ "Koristi korisnička podešavanja, odbaci opšta podešavanja u XF86Config."
+
+#~ msgid "Use global configuration set in XF86Config."
+#~ msgstr "Koristi opšta podešavanja iz XF86Config."
+
+#~ msgid "_Custom"
+#~ msgstr "_Korisnički"
+
+#~ msgid "_Global Preconfigured"
+#~ msgstr "_Opšte unapred podešeno"
+
+#~ msgid "_Layouts:"
+#~ msgstr "_Rasporedi:"
+
+#~ msgid "_Preview"
+#~ msgstr "_Prikaz"
+
+#~ msgid "_Switch shortcut"
+#~ msgstr "Pre_čica za promenu"
+
+#~ msgid "Default XKB setting"
+#~ msgstr "Podrazumevana XKB podešavanja"
+
+#~ msgid "Right Control"
+#~ msgstr "Desni Kontrol"
+
+#~ msgid "Left Control"
+#~ msgstr "Levi Kontrol"
+
+#~ msgid "Right Shift"
+#~ msgstr "Desni Šift"
+
+#~ msgid "Left Shift"
+#~ msgstr "Levi Šift"
+
+#~ msgid "Grave"
+#~ msgstr "Gravis"
+
+#~ msgid "The id of active switchcut"
+#~ msgstr "Identifikacioni broj aktivne prečice za promenu"
+
+#~ msgid "XKB keyboard layout"
+#~ msgstr "XKB raspored tastature"
+
+#~ msgid "XKB keyboard model"
+#~ msgstr "XKB model tastature"
+
+#~ msgid "XKB options"
+#~ msgstr "XKB opcije"
+
+#~ msgid "XKB settings should be overridden"
+#~ msgstr "XKB podešavanja će se zaobići"
+
+#~ msgid "[us]"
+#~ msgstr "[us]"
+
+#~ msgid "Choose the color"
+#~ msgstr "Odaberite boju"
+
+#~ msgid "Highlighter"
+#~ msgstr "Isticanje"
+
+#~ msgid "Highlights the applet on the GNOME panel"
+#~ msgstr "Isticanje programčeta na Gnomovom panelu"
+
+#~ msgid "Highlighter plugin properties"
+#~ msgstr "Osobine dodatka za isticanje"
+
+#~ msgid "_Background color"
+#~ msgstr "Boja _pozadine"
+
+#~ msgid "_Text color"
+#~ msgstr "Boja _teksta"
+
+#~ msgid "Keyboard events"
+#~ msgstr "Događaji tastature"
+
+#~ msgid "Switching to group 1"
+#~ msgstr "Prebacivanje u 1. grupu"
+
+#~ msgid "Switching to group 2"
+#~ msgstr "Prebacivanje u 2. grupu"
+
+#~ msgid "Switching to group 3"
+#~ msgstr "Prebacivanje u 3. grupu"
+
+#~ msgid "Switching to group 4"
+#~ msgstr "Prebacivanje u 4. grupu"
+
+#~ msgid "Sound plugin"
+#~ msgstr "Dodatak za zvuk"
+
+#~ msgid "Enables standard GNOME sound notifications for the group switching"
+#~ msgstr "Omogućava obične zvučne objave Gnoma pri izmeni grupe"
+
+#~ msgid "Test plugin"
+#~ msgstr "Dodatak za isprobavanje"
+
+#~ msgid "Test GSwitchIt plugin"
+#~ msgstr "Dodatak GSwitchIt-a za isprobavanje"
+
+#~ msgid "GSwitchIt Applet Properties"
+#~ msgstr "Podešavanja GSwitchIt apleta"
+
+#~ msgid "Enable _beep"
+#~ msgstr "Omogući _zvučni signal"
+
+#~ msgid "Use the system beep to indicate the switch."
+#~ msgstr "Koristi zvučni signal sistema za naznačavanje promene."
+
+#~ msgid "Secondary"
+#~ msgstr "Drugi nivo"
+
+#~ msgid "XKB Properties"
+#~ msgstr "XKB podešavanja"
+
+#~ msgid "XKB settings: "
+#~ msgstr "XKB podešavanja: "
+
+#~ msgid "General XKB Properties"
+#~ msgstr "Opšta podešavanja XKB-a"
+
+#~ msgid "To _default"
+#~ msgstr "Na _podrazumevano"
+
+#~ msgid "Update the preview. Can take some time."
+#~ msgstr "Osveži prikaz. Može potrajati neko vreme."
+
+#~ msgid "Zoom"
+#~ msgstr "Zumiranje"
+
+#~ msgid "Zoom in."
+#~ msgstr "Približi."
+
+#~ msgid "Zoom out."
+#~ msgstr "Udalji."
+
+#~ msgid "Zoom to default."
+#~ msgstr "Normalna veličina."
+
+#~ msgid "Zoom to fit."
+#~ msgstr "Veličina prilagođena prozoru."
+
+#~ msgid "_In"
+#~ msgstr "_U"
+
+#~ msgid "_Out"
+#~ msgstr "_Iz"
+
+#~ msgid "_Update preview"
+#~ msgstr "_Osveži prikaz"
+
+#~ msgid "GSwitchIt web page @ Sourceforge.net"
+#~ msgstr "GSwitchIt Internet stranica na Sourceforge.net"

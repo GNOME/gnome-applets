@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-16 00:00+0900\n"
+"POT-Creation-Date: 2003-12-21 23:17+0000\n"
 "PO-Revision-Date: 2003-12-15 23:52+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -36,6 +36,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "情報(_A)..."
 
@@ -50,6 +51,7 @@ msgstr "情報(_A)..."
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
@@ -62,7 +64,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX ステータス・アプレットのファクトリ"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1180
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr "キーボード操作性のステータス"
 
@@ -81,6 +83,7 @@ msgstr "キーボード操作性の設定値を表示します"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "ユーティリティ"
 
@@ -91,7 +94,7 @@ msgstr "ユーティリティ"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
 msgid "translator_credits"
 msgstr ""
 "Yukihiro Nakai <Nakai@abricot.co.jp>\n"
@@ -105,7 +108,7 @@ msgstr ""
 "KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "Takeshi AIHANA <aihana@gnome.gr.jp>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1183
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr "AccessX ステータス"
 
@@ -127,11 +130,12 @@ msgstr "ヘルプを表示する際にエラーが発生しました : %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "キーボード・アプレットを起動する際にエラーが発生しました : %s"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1185
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr "キーボード操作性に関連する機能の現在のステータスを表示します"
 
@@ -312,7 +316,6 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
 #: battstat/battstat_applet.c:1123
-#, c-format
 msgid "System is running on battery power"
 msgstr "システムはバッテリで動いています"
 
@@ -320,20 +323,15 @@ msgstr "システムはバッテリで動いています"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
 #: battstat/battstat_applet.c:1129
-#, c-format
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
 #: battstat/battstat_applet.c:518
-#, c-format
 msgid "N/A"
 msgstr "無し"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -341,9 +339,6 @@ msgstr "システムはバッテリで動いています。充電率: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -354,7 +349,6 @@ msgstr "システムは AC 電源で動いています。充電率: %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:660
-#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "システムはバッテリで動いています。充電率: 電池なし"
 
@@ -362,7 +356,6 @@ msgstr "システムはバッテリで動いています。充電率: 電池な�
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:666
-#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "システムは AC 電源で動いています。バッテリ: 残量なし"
 
@@ -377,10 +370,10 @@ msgstr "充電率: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:682
-#, c-format
 msgid "Battery: Not present"
 msgstr "バッテリ: 残量なし"
 
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:777
 msgid ""
 "Can't open the APM device!\n"
@@ -393,6 +386,7 @@ msgstr ""
 "あなたが APM の読み出し権限を持っているか、\n"
 "確認して下さい。"
 
+#. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:786
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
@@ -445,7 +439,7 @@ msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "このユーティリティはラップトップのバッテリの状態を表示します"
 
-#: battstat/battstat_applet.c:1544
+#: battstat/battstat_applet.c:1531
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -501,7 +495,7 @@ msgstr "バッテリ充電モニタ設定"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
 #: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:559
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "全般"
 
@@ -936,7 +930,7 @@ msgid "_Update interval:"
 msgstr "更新間隔(_U):"
 
 #: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:466
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "秒"
 
@@ -2395,7 +2389,7 @@ msgid "Flag and Label"
 msgstr "国旗とラベル"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
-#: modemlights/properties.c:442
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "表示"
 
@@ -2620,7 +2614,7 @@ msgstr "株価の低下(_L):"
 msgid "Stock _unchanged:"
 msgstr "株価の不動(_U):"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:576
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "背景色(_B):"
 
@@ -3863,11 +3857,11 @@ msgstr ""
 msgid "Start program"
 msgstr "起動するプログラムの選択"
 
-#: mini-commander/src/command_line.c:481
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "コマンドライン"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "ここにコマンドを入力すると GNOME がそれを実行します"
 
@@ -3887,14 +3881,12 @@ msgid "Set default list value for %s\n"
 msgstr "%s のデフォルトのリストの値を設定\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
-#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL が設定されています。スキーマはインス"
 "トールされていません\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
-#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "環境変数 GCONF_CONFIG_COURCE を設定して下さい\n"
 
@@ -4515,118 +4507,118 @@ msgstr "モデムと切断する際に使用するコマンドです。"
 msgid "Verify owner of lock file"
 msgstr "ロック・ファイルの所有者を確認するかどうか"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "モデム・モニタの設定"
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "更新間隔(_P):"
 
 #. extra info checkbox
-#: modemlights/properties.c:474
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "接続時間とスループットを表示する(_W)"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "接続したら接続ステータスを点滅させる(_L)"
 
-#: modemlights/properties.c:494
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "接続"
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "接続時のコマンド(_N):"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "切断時のコマンド(_D):"
 
 #. confirmation checkbox
-#: modemlights/properties.c:549
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "接続を確認する(_F)"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "データの受信"
 
-#: modemlights/properties.c:574
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "前景色(_F):"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "データの送信"
 
-#: modemlights/properties.c:584
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "前景色(_D):"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "背景色(_R):"
 
-#: modemlights/properties.c:589
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "接続ステータス"
 
-#: modemlights/properties.c:597
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "接続済み(_N):"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "接続断(_T):"
 
-#: modemlights/properties.c:602
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "接続中(_O):"
 
-#: modemlights/properties.c:605
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "文字"
 
-#: modemlights/properties.c:613
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "前景色(_E):"
 
-#: modemlights/properties.c:615
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "背景色(_K):"
 
-#: modemlights/properties.c:617
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "アウトライン(_U)"
 
-#: modemlights/properties.c:620 multiload/properties.c:533
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "色"
 
-#: modemlights/properties.c:629
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "モデムのオプション"
 
-#: modemlights/properties.c:638
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "デバイス(_D):"
 
-#: modemlights/properties.c:663
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "ロック・ファイル(_L):"
 
-#: modemlights/properties.c:683
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "ロック・ファイルの所有者を確認する(_V)"
 
 #. ISDN checkbox
-#: modemlights/properties.c:694
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "ISDN を使用する(_S)"
 
-#: modemlights/properties.c:711
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "拡張"
 
@@ -5119,7 +5111,7 @@ msgstr "付箋紙の削除(_D)"
 msgid "_Lock Note"
 msgstr "付箋紙をロックする(_L)"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "プロパティ(_P)..."
 
@@ -5353,3 +5345,411 @@ msgstr "ワイヤレス接続モニタの設定"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "監視対象デバイス(_M):"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr "GNOME XKB アプレット"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:2
+msgid "GNOME XKB applet factory"
+msgstr "GNOME XKB アプレットファクトリ"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:3
+msgid "GSwitchIt applet"
+msgstr "GSwitchIt アプレット"
+
+#: applet/GNOME_GSwitchItApplet.server.in.in.h:4
+msgid "GSwitchIt applet factory"
+msgstr "GSwitchIt アプレットファクトリ"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr "グループ(_G)"
+
+#: applet/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr "プラグイン(_P)..."
+
+#: applet/gswitchit_applet.c:96
+#, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "キーボード切り替え器 (%s)"
+
+#: applet/gswitchit_applet.c:483
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr "Copyright Sergey V. Udaltsov (C) 1999-2002"
+
+#: applet/gswitchit_applet.c:484
+msgid "XKB toolkit for GNOME"
+msgstr "GNOME 用 XKB ツールキット"
+
+#: applet/gswitchit_applet.c:613
+msgid "XKB initialization error"
+msgstr "XKB 初期化エラー"
+
+#: applet/gswitchit_applet.c:622
+msgid "Error loading XKB configuration registry"
+msgstr "XKB 設定レジストリの読み込みエラー"
+
+#: capplets/gswitchit_capplet.c:142
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+"レイアウトにアクセスできるのは、アプレットのポップアップメニューからのみにし"
+"ます。\n"
+"キーボードを利用してこのレイアウトに変更する手段はありません。"
+
+#: capplets/gswitchit_capplet.c:224
+msgid "Exclude from keyboard switching"
+msgstr "キーボード切り替えから外す"
+
+#: capplets/gswitchit_capplet.c:250
+msgid "not used"
+msgstr "不使用"
+
+#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "GConf の初期化に失敗しました: %s\n"
+
+#: capplets/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "他のプラグインを有効にする"
+
+#: capplets/gswitchit-plugins.glade.h:2
+msgid "Add plugin"
+msgstr "プラグインを追加する"
+
+#: capplets/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr "ダイアログを閉じる"
+
+#: capplets/gswitchit-plugins.glade.h:4
+msgid "Configure the selected plugin"
+msgstr "選択したプラグインを設定する"
+
+#: capplets/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr "選択したプラグインを無効にする"
+
+#: capplets/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr "プラグインの優先度を下げる"
+
+#: capplets/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr "GSwitchIt プラグイン"
+
+#: capplets/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "プラグインの優先度を上げる"
+
+#: capplets/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr "有効なプラグインのリスト"
+
+#: capplets/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr "プラグインを有効にする(_A)"
+
+#: capplets/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "利用可能なプライグン(_A):"
+
+#: capplets/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr ""
+"デフォルトグループを選択してください(新規に作成されるウィンドウで利用しま"
+"す)。"
+
+#: capplets/gswitchit-properties.glade.h:2
+msgid "GSwitchIt Properties"
+msgstr "GSwitchIt 設定"
+
+#: capplets/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr "各アプリケーションウィンドウごとにグループを分けておく。"
+
+#: capplets/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr "各アプリケーションウィンドウごとに、インジケータの状態を分けておく"
+
+#: capplets/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr "グループのインジケータを保存/回復する(_I)"
+
+#: capplets/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr "ウィンドウごとにグループを分ける(_G)"
+
+#: capplets/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr "対応するレイアウトを示す国旗を表示する"
+
+#: capplets/gswitchit-properties.glade.h:8
+msgid "Use _flags as indicators"
+msgstr "国旗を使る(_F)"
+
+#: capplets/gswitchit-properties.glade.h:9
+#, fuzzy
+msgid "_Default group:"
+msgstr "デフォルトグループ(_D)"
+
+#: gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr "グループ切り替え時にビープ"
+
+#: gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr "デバッグレベル"
+
+#: gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "ウィンドウ生成時に割り当てられるデフォルトのグループ"
+
+#: gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "ウィンドウごとにグループを分けて管理する"
+
+#: gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "レイアウトグループと一緒にインジケータを保存/回復する"
+
+#: gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr "第 2 グループ"
+
+#: gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr "アプレットに旗を表示"
+
+#: gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "現在のレイアウトを示すために、アプレットに旗を表示します"
+
+#: gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr "グループ名の代わりにレイアウト名を表示する"
+
+#: gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"グループ名の代わりにレイアウト名を表示する(複数のレイアウトをサポートするバー"
+"ジョンの XFree 用)"
+
+#~ msgid "Apply XKB configuration and quit"
+#~ msgstr "XKB の設定を適用し終了する"
+
+#~ msgid ""
+#~ "Error activating XKB configuration.\n"
+#~ "Probably internal X server problem.\n"
+#~ "\n"
+#~ "X server version data:\n"
+#~ "%s\n"
+#~ "%d%s"
+#~ msgstr ""
+#~ "XKB の設定を有効にするときにエラー発生。\n"
+#~ "おそらく内部的な X サーバの問題です。\n"
+#~ "\n"
+#~ "X サーバのバージョン情報:\n"
+#~ "%s\n"
+#~ "%d%s"
+
+#~ msgid ""
+#~ "You are using XFree 4.3.0.\n"
+#~ "There are known problems with complex XKB configurations.\n"
+#~ "Try using simpler configuration or taking more fresh version of XFree "
+#~ "software."
+#~ msgstr ""
+#~ "あなたは XFree 4.3.0 を使用しています。\n"
+#~ "これには複雑な XKB 設定についての既知の問題があります。\n"
+#~ "設定を単純にするか、XFree ソフトウェアのバージョンを上げてみて下さい。"
+
+#~ msgid "Could not initialize Bonobo"
+#~ msgstr "Bonobo を初期化できませんでした"
+
+#~ msgid "Failed to init XklConfigRegistry\n"
+#~ msgstr "XklConfigRegistryの初期化に失敗しました\n"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "Postscript preview component is not available"
+#~ msgstr "ポストスクリプト・プレビュー・コンポーネントは利用できません"
+
+#~ msgid "Keyboard layout preview"
+#~ msgstr "キーボードレイアウトのプレビュー"
+
+#~ msgid "Bonobo Error"
+#~ msgstr "Bonobo エラー"
+
+#~ msgid "Configure keyboard layouts"
+#~ msgstr "キーボードレイアウトの設定"
+
+#~ msgid "Keyboard layouts"
+#~ msgstr "キーボードレイアウト"
+
+#~ msgid "Choose the layout."
+#~ msgstr "レイアウトの選択"
+
+#~ msgid "Choose the layout. Note: one layout can provide several groups."
+#~ msgstr ""
+#~ "レイアウトを選択してください。注意: 一つのレイアウトは複数のグループを提供"
+#~ "できます。"
+
+#~ msgid "Choose the model of the keyboard (brand, number of keys, etc.)."
+#~ msgstr "キーボードのモデルを選択してください (ブランド、キーの数 など)。"
+
+#~ msgid "Clear"
+#~ msgstr "クリア"
+
+#~ msgid "Clear."
+#~ msgstr "クリアします。"
+
+#~ msgid "Extra"
+#~ msgstr "その他"
+
+#~ msgid "Keyboard _model:"
+#~ msgstr "キーボードのモデル(_M):"
+
+#~ msgid "Keyboard layouts' settings: "
+#~ msgstr "キーボードレイアウトの設定: "
+
+#~ msgid "Options 1"
+#~ msgstr "オプション 1"
+
+#~ msgid "Options 2"
+#~ msgstr "オプション 2"
+
+#~ msgid "Show _advanced parameters"
+#~ msgstr "高度なパラメータを表示(_A)"
+
+#~ msgid "Show tabs with advanced keyboard parameters (for power users)."
+#~ msgstr ""
+#~ "高度なキーボード・パラメータのタブを表示します (パワー・ユーザ向け)。"
+
+#~ msgid ""
+#~ "This version of XFree86 does not support multiple layouts, so only one "
+#~ "layout can be choosen."
+#~ msgstr ""
+#~ "このバージョンの XFree86 は複数のレイアウトをサポートしません。レイアウト"
+#~ "を一つだけ選択してください。"
+
+#~ msgid "Use custom settings, ignore global configuration set in XF86Config."
+#~ msgstr ""
+#~ "カスタマイズした設定を利用し、XF86Config で設定されたグローバルな設定は無"
+#~ "視します。"
+
+#~ msgid "Use global configuration set in XF86Config."
+#~ msgstr "XF86Config で設定されたグローバルな設定を利用します。"
+
+#~ msgid "_Custom"
+#~ msgstr "カスタマイズ(_C)"
+
+#~ msgid "_Global Preconfigured"
+#~ msgstr "グローバルに設定された設定(_G)"
+
+#~ msgid "_Layouts:"
+#~ msgstr "レイアウト(_L):"
+
+#~ msgid "_Preview"
+#~ msgstr "プレビュー(_P)"
+
+#~ msgid "_Switch shortcut"
+#~ msgstr "切り替えショートカット(_S)"
+
+#~ msgid "Default XKB setting"
+#~ msgstr "デフォルト XKB 設定"
+
+#~ msgid "Right Control"
+#~ msgstr "右 Control キー"
+
+#~ msgid "Left Control"
+#~ msgstr "左 Control キー"
+
+#~ msgid "Right Shift"
+#~ msgstr "右 Shift キー"
+
+#~ msgid "Left Shift"
+#~ msgstr "左 Shift キー"
+
+#~ msgid "Grave"
+#~ msgstr "取り込み"
+
+#~ msgid "The id of active switchcut"
+#~ msgstr "アクティブなスイッチカットのID"
+
+#~ msgid "XKB keyboard layout"
+#~ msgstr "XKB キーボードレイアウト"
+
+#~ msgid "XKB keyboard model"
+#~ msgstr "XKB キーボードのモデル"
+
+#~ msgid "XKB options"
+#~ msgstr "XKB オプション"
+
+#~ msgid "XKB settings should be overridden"
+#~ msgstr "XKB の設定は上書きされます"
+
+#~ msgid "[us]"
+#~ msgstr "[英語]"
+
+#~ msgid "GSwitchIt Applet Properties"
+#~ msgstr "GSwitchIt アプレット設定"
+
+#~ msgid "Enable _beep"
+#~ msgstr "ビープを有効にする(_B)"
+
+#~ msgid "Use the system beep to indicate the switch."
+#~ msgstr "変更を通知するのにビープ音を利用する。"
+
+#~ msgid "Secondary"
+#~ msgstr "その2"
+
+#~ msgid "XKB Properties"
+#~ msgstr "XKB 設定"
+
+#~ msgid "XKB settings: "
+#~ msgstr "XKB 設定: "
+
+#~ msgid "General XKB Properties"
+#~ msgstr "一般的な XKB 設定"
+
+#~ msgid "To _default"
+#~ msgstr "デフォルトに戻す(_D)"
+
+#~ msgid "To _fit"
+#~ msgstr "適用する(_F)"
+
+#~ msgid "Update the preview. Can take some time."
+#~ msgstr "プレビューを更新します。少し時間がかかります。"
+
+#~ msgid "Zoom"
+#~ msgstr "ズーム"
+
+#~ msgid "Zoom in."
+#~ msgstr "ズームイン。"
+
+#~ msgid "Zoom out."
+#~ msgstr "ズームアウト。"
+
+#~ msgid "Zoom to default."
+#~ msgstr "デフォルトのズーム。"
+
+#~ msgid "Zoom to fit."
+#~ msgstr "フィットするズーム。"
+
+#~ msgid "_In"
+#~ msgstr "拡大(_I)"
+
+#~ msgid "_Out"
+#~ msgstr "縮小(_O)"
+
+#~ msgid "_Update preview"
+#~ msgstr "プレビューを更新(_P)"
+
+#~ msgid "GSwitchIt web page @ Sourceforge.net"
+#~ msgstr "GSwitchIt ウェブページ @ Sourceforge.net"
