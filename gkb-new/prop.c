@@ -371,7 +371,7 @@ static void
 prophelp_cb (GtkWidget *widget, gpointer data)
 {
 	GError *error = NULL;
-        gnome_help_display("gkb","gkbapplet-prefs",&error);
+        gnome_help_display("gkb","gkb-prefs",&error);
 }
 
 static void
