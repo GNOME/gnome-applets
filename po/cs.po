@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-07 04:02+0200\n"
-"PO-Revision-Date: 2004-07-07 13:12+0200\n"
+"POT-Creation-Date: 2004-07-29 19:31+0200\n"
+"PO-Revision-Date: 2004-07-29 21:36+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,15 +79,14 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 #: battstat/GNOME_BattstatApplet.server.in.in.h:4
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 msgid "Utility"
 msgstr "Nástroj"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:987
-#: cdplayer/cdplayer.c:598 charpick/charpick.c:559 drivemount/drivemount.c:553
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:996
+#: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
 #: mini-commander/src/about.c:50 mixer/mixer.c:1348
@@ -154,7 +153,7 @@ msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1008 battstat/battstat_applet.c:1753
+#: battstat/battstat_applet.c:1017 battstat/battstat_applet.c:1758
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -163,7 +162,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1754
+#: battstat/battstat_applet.c:1759
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -288,26 +287,26 @@ msgstr "zbývá %d hodin a %d minut"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1045
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1054
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1056
 msgid "Low"
 msgstr "Nízké"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1049
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1058
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1060
 msgid "Charging"
 msgstr "Nabíjení"
 
-#: battstat/battstat_applet.c:478
+#: battstat/battstat_applet.c:482
 #, c-format
 msgid ""
 "Your battery is running low (%d%%, %s). You should recharge your battery to "
@@ -316,11 +315,11 @@ msgstr ""
 "Vaše baterie se vybíjí (%d%%, %s). Abyste nepřišli o svou práci, měli byste "
 "baterii dobít."
 
-#: battstat/battstat_applet.c:481 battstat/battstat_applet.c:528
+#: battstat/battstat_applet.c:485 battstat/battstat_applet.c:532
 msgid "Battery Notice"
 msgstr "Upozornění o baterii"
 
-#: battstat/battstat_applet.c:547
+#: battstat/battstat_applet.c:551
 msgid "Your battery is now fully recharged."
 msgstr "Vaše baterie jsou nyní zcela dobité."
 
@@ -328,7 +327,7 @@ msgstr "Vaše baterie jsou nyní zcela dobité."
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:591 battstat/battstat_applet.c:1206
+#: battstat/battstat_applet.c:595 battstat/battstat_applet.c:1211
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -341,7 +340,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:594 battstat/battstat_applet.c:1213
+#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1218
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -353,20 +352,20 @@ msgstr ""
 #. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:1139
-#: battstat/battstat_applet.c:1226
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1231
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
 #. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1231
+#: battstat/battstat_applet.c:605 battstat/battstat_applet.c:1149
+#: battstat/battstat_applet.c:1236
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: battstat/battstat_applet.c:616 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:620 wireless/wireless-applet.c:146
 msgid "N/A"
 msgstr "N/A"
 
@@ -375,7 +374,7 @@ msgstr "N/A"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:745 battstat/battstat_applet.c:1120
+#: battstat/battstat_applet.c:753 battstat/battstat_applet.c:1125
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
@@ -385,7 +384,7 @@ msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1126
+#: battstat/battstat_applet.c:758 battstat/battstat_applet.c:1131
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
@@ -394,33 +393,33 @@ msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:759
+#: battstat/battstat_applet.c:767
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systém je napájen bateriemi. Baterie: Není přítomná"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:764
+#: battstat/battstat_applet.c:772
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systém je napájen el. sítí. Baterie: Není přítomná"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. contains a string of the time remaining
-#: battstat/battstat_applet.c:772
+#: battstat/battstat_applet.c:780
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Baterie: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:777
+#: battstat/battstat_applet.c:785
 msgid "Battery: Not present"
 msgstr "Baterie: Není přítomná"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:878
+#: battstat/battstat_applet.c:887
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -433,7 +432,7 @@ msgstr ""
 "zařízení APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:896
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -443,7 +442,7 @@ msgstr ""
 "Zkuste spustit \"apm -e 1\" (FreeBSD) a možná to\n"
 "pomůže.\n"
 
-#: battstat/battstat_applet.c:943
+#: battstat/battstat_applet.c:952
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -452,16 +451,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: battstat/battstat_applet.c:947
+#: battstat/battstat_applet.c:956
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: battstat/battstat_applet.c:949
+#: battstat/battstat_applet.c:958
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: battstat/battstat_applet.c:957
+#: battstat/battstat_applet.c:966
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -471,19 +470,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:984
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1010
+#: battstat/battstat_applet.c:1019
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1011
+#: battstat/battstat_applet.c:1020
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1679
+#: battstat/battstat_applet.c:1684
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -538,7 +537,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Nastavení Sledování stavu baterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1041 mailcheck/mailcheck.c:2056
+#: gweather/gweather-pref.c:1045 mailcheck/mailcheck.c:2056
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Obecné"
@@ -597,7 +596,7 @@ msgstr "_Žlutá:"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
-#: mailcheck/mailcheck.c:2611 mini-commander/src/preferences.c:365
+#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1461 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:540 wireless/wireless-applet.c:624
@@ -767,8 +766,8 @@ msgstr ""
 "Toto je úplná cesta zařízení, které bude použito pro přehrávání cd z tohoto "
 "apletu"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
-#: charpick/charpick.c:730 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:583
+#: charpick/charpick.c:734 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -776,7 +775,7 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:730
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:734
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
@@ -795,19 +794,19 @@ msgstr "Vkládání speciálních znaků"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:548
+#: charpick/charpick.c:552
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:549
+#: charpick/charpick.c:553
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:581
+#: charpick/charpick.c:585
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:582
+#: charpick/charpick.c:586
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -934,7 +933,7 @@ msgid "Cannot browse device"
 msgstr "Nemohu procházet zařízení"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2617
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2620
 msgid "Error displaying help"
 msgstr "Chyba při zobrazování nápovědy"
 
@@ -946,19 +945,19 @@ msgstr "© 1999-2001 The GNOME Hackers\n"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
 
-#: drivemount/drivemount.c:777
+#: drivemount/drivemount.c:781
 msgid " mounted"
 msgstr " připojen"
 
-#: drivemount/drivemount.c:779
+#: drivemount/drivemount.c:783
 msgid " not mounted"
 msgstr " není připojen"
 
-#: drivemount/drivemount.c:891
+#: drivemount/drivemount.c:895
 msgid "\" reported:\n"
 msgstr "\" hlásí:\n"
 
-#: drivemount/drivemount.c:893
+#: drivemount/drivemount.c:897
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -966,7 +965,7 @@ msgstr ""
 "Příkaz pro připojení selhal.\n"
 "\""
 
-#: drivemount/drivemount.c:899
+#: drivemount/drivemount.c:903
 msgid "Cannot mount device"
 msgstr "Nemohu připojit zařízení"
 
@@ -1116,910 +1115,1356 @@ msgstr "Témata"
 msgid "_Select a theme:"
 msgstr "_Vyberte téma:"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
-msgid "Change the keyboard layout"
-msgstr "Změna rozložení klávesnice"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
-msgid "GKB Factory"
-msgstr "Generátor GKB"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
-#: gkb-new/gkb-applet.c:95
-msgid "Keyboard Layout Switcher"
-msgstr "Přepínání rozložení klávesnice"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
-msgid "Produces keyboard layout switcher applets."
-msgstr "Vytváří aplety pro přepínání rozložení klávesnice"
-
-#: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Armenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
 msgstr "Arménie"
 
-#: gkb-new/descs.sun/presets.xml.in.h:2 gkb-new/descs/presets.xml.in.h:6
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Armenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:6
 msgid "Armenian"
 msgstr "Arménská"
 
-#: gkb-new/descs.sun/presets.xml.in.h:3
-msgid "Armenian Sun keymap"
-msgstr "Arménská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaijan"
-msgstr "Ázerbajdžán"
-
-#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaijani Turkish"
-msgstr "Ázerbajdžánská turecká"
-
-#: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Ázerbajdžánská turecká mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
-msgid "Belarus"
-msgstr "Bělorusko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
-msgid "Belarusian"
-msgstr "Běloruská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarusian Sun keymap"
-msgstr "Běloruská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
-msgid "Belgium"
-msgstr "Belgie"
-
-#: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
-msgid "Brazil"
-msgstr "Brazílie"
-
-#: gkb-new/descs.sun/presets.xml.in.h:12
-msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Brazilská portugalská mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:13
-msgid "Brazil Portuguese Sun keymap"
-msgstr "Brazilská portugalská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
-msgid "Bulgaria"
-msgstr "Bulharsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:15 gkb-new/descs/presets.xml.in.h:23
-msgid "Bulgarian"
-msgstr "Bulharská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:16
-msgid "Bulgarian Sun keymap"
-msgstr "Bulharská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
-msgid "Canada"
-msgstr "Kanada"
-
-#: gkb-new/descs.sun/presets.xml.in.h:18
-msgid "Canadian Sun keymap"
-msgstr "Kanadská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
-msgid "Czech"
-msgstr "Česká"
-
-#: gkb-new/descs.sun/presets.xml.in.h:20 gkb-new/descs/presets.xml.in.h:34
-msgid "Czech Republic"
-msgstr "Česká republika"
-
-#: gkb-new/descs.sun/presets.xml.in.h:21
-msgid "Czech Sun keymap"
-msgstr "Česká mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
-msgid "Danish"
-msgstr "Dánská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:23
-msgid "Danish Sun Type-4 keymap"
-msgstr "Dánská mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:24
-msgid "Danish Sun USB keymap"
-msgstr "Dánská mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:25
-msgid "Danish Sun keymap"
-msgstr "Dánská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
-msgid "Denmark"
-msgstr "Dánsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:27 gkb-new/descs/presets.xml.in.h:43
-msgid "Dutch"
-msgstr "Holandská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:28
-msgid "Dutch Sun keymap"
-msgstr "Holandská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
-msgid "English"
-msgstr "Anglická"
-
-#: gkb-new/descs.sun/presets.xml.in.h:30
-msgid "English Sun Type-4 keymap"
-msgstr "Anglická mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:31
-msgid "English Sun USB keymap"
-msgstr "Anglická mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:32
-msgid "English Sun keymap"
-msgstr "Anglická mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
-msgid "Estonia"
-msgstr "Estonsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:34 gkb-new/descs/presets.xml.in.h:51
-msgid "Estonian"
-msgstr "Estonská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:35
-msgid "Estonian Sun keymap"
-msgstr "Estonská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
-msgid "Finland"
-msgstr "Finsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
-msgid "Finnish"
-msgstr "Finská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:38
-msgid "Finnish Sun keymap"
-msgstr "Finská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
-msgid "France"
-msgstr "Francie"
-
-#: gkb-new/descs.sun/presets.xml.in.h:40 gkb-new/descs/presets.xml.in.h:61
-msgid "French"
-msgstr "Francouzská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:41
-msgid "French Sun USB keymap"
-msgstr "Francouzská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:42
-msgid "French Sun keymap"
-msgstr "Francouzská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
-msgid "German"
-msgstr "Německá"
-
-#: gkb-new/descs.sun/presets.xml.in.h:44
-msgid "German Sun Type-4 keymap"
-msgstr "Německá mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:45
-msgid "German Sun USB keymap"
-msgstr "Německá mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:46
-msgid "German Sun keymap"
-msgstr "Německá mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
-msgid "Germany"
-msgstr "Německo"
-
-#: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
-msgid "Gnome Keyboard default"
-msgstr "Implicitní klávesnice Gnome"
-
-#: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
-msgid "Hebrew"
-msgstr "Hebrejská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:50
-msgid "Hebrew Sun keymap"
-msgstr "Hebrejská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
-msgid "Hungarian"
-msgstr "Maďarská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:52
-msgid "Hungarian latin2 Sun keymap"
-msgstr "Maďarská mapa kláves Sun latin2"
-
-#: gkb-new/descs.sun/presets.xml.in.h:53
-msgid "Hungarian type5 latin 1 keymap"
-msgstr "Maďarská mapa type5 latin 1"
-
-#: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
-msgid "Hungary"
-msgstr "Maďarsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:55 gkb-new/descs/presets.xml.in.h:97
-msgid "Iceland"
-msgstr "Island"
-
-#: gkb-new/descs.sun/presets.xml.in.h:56 gkb-new/descs/presets.xml.in.h:98
-msgid "Icelandic"
-msgstr "Islandská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:57
-msgid "Icelandic Sun keymap"
-msgstr "Islandská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
-msgid "International"
-msgstr "Mezinárodní"
-
-#: gkb-new/descs.sun/presets.xml.in.h:59 gkb-new/descs/presets.xml.in.h:103
-msgid "Israel"
-msgstr "Izrael"
-
-#: gkb-new/descs.sun/presets.xml.in.h:60 gkb-new/descs/presets.xml.in.h:104
-msgid "Italian"
-msgstr "Italská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:61
-msgid "Italian Sun Type-4 keymap"
-msgstr "Italská mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:62
-msgid "Italian Sun USB keymap"
-msgstr "Italská mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:63
-msgid "Italian Sun keymap"
-msgstr "Italská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
-msgid "Italy"
-msgstr "Itálie"
-
-#: gkb-new/descs.sun/presets.xml.in.h:65 gkb-new/descs/presets.xml.in.h:108
-msgid "Japan"
-msgstr "Japonsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:66 gkb-new/descs/presets.xml.in.h:109
-msgid "Japanese"
-msgstr "Japonská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:67
-msgid "Japanese Sun Type-4 keymap"
-msgstr "Japonská mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:68
-msgid "Japanese Sun keymap"
-msgstr "Japonská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:69
-msgid "Latvia"
-msgstr "Lotyšsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:70
-msgid "Latvian"
-msgstr "Lotyšská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:71
-msgid "Latvian Sun keymap"
-msgstr "Lotyšská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
-msgid "Lithuania"
-msgstr "Litva"
-
-#: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
-msgid "Lithuanian"
-msgstr "Litevská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:74
-msgid "Lithuanian Sun keymap"
-msgstr "Litevská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
-msgid "Macedonia"
-msgstr "Makedonie"
-
-#: gkb-new/descs.sun/presets.xml.in.h:76 gkb-new/descs/presets.xml.in.h:126
-msgid "Macedonian"
-msgstr "Makedonská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:77
-msgid "Macedonian Sun keymap"
-msgstr "Makedonská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
-msgid "Norway"
-msgstr "Norsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:137
-msgid "Norwegian"
-msgstr "Norská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:80
-msgid "Norwegian Sun keymap"
-msgstr "Norská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
-msgid "Poland"
-msgstr "Polsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:143
-msgid "Polish"
-msgstr "Polská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:83
-msgid "Polish Sun keymap"
-msgstr "Polská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
-msgid "Portugal"
-msgstr "Portugalsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:85 gkb-new/descs/presets.xml.in.h:148
-msgid "Portuguese"
-msgstr "Portugalská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:86
-msgid "Portuguese Sun Type-4 keymap"
-msgstr "Portugalská mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:87
-msgid "Portuguese Sun keymap"
-msgstr "Portugalská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
-msgid "Romania"
-msgstr "Rumunsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:89 gkb-new/descs/presets.xml.in.h:153
-msgid "Romanian"
-msgstr "Rumunská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:90
-msgid "Romanian Sun keymap"
-msgstr "Rumunská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
-msgid "Russia"
-msgstr "Rusko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:92 gkb-new/descs/presets.xml.in.h:156
-msgid "Russian"
-msgstr "Ruská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:93
-msgid "Russian Sun keymap"
-msgstr "Ruská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:94
-msgid "Serbian Sun standard keymap"
-msgstr "Standardní srbská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:95
-msgid "Serbo-Croatian"
-msgstr "Srbochorvatská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:166
-msgid "Slovak"
-msgstr "Slovenská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
-msgid "Slovak Republic"
-msgstr "Slovenská republika"
-
-#: gkb-new/descs.sun/presets.xml.in.h:98
-msgid "Slovak Sun keymap"
-msgstr "Slovenská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
-msgid "Slovenia"
-msgstr "Slovinsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:170
-msgid "Slovenian"
-msgstr "Slovinská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:101
-msgid "Slovenian Sun keymap"
-msgstr "Slovinská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
-msgid "Spain"
-msgstr "Španělsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:175
-msgid "Spanish"
-msgstr "Španělská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:104
-msgid "Spanish Sun Type-4 keymap"
-msgstr "Španělská mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:105
-msgid "Spanish Sun USB keymap"
-msgstr "Španělská mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:106
-msgid "Spanish Sun keymap"
-msgstr "Španělská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
-msgid "Sweden"
-msgstr "Švédsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:182
-msgid "Swedish"
-msgstr "Švédská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:109
-msgid "Swedish Sun Type-4 keymap"
-msgstr "Švédská mapa kláves Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:110
-msgid "Swedish Sun USB keymap"
-msgstr "Švédská mapa kláves Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:111
-msgid "Swedish Sun keymap"
-msgstr "Švédská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:112
-msgid "Swiss German Sun keymap"
-msgstr "Švýcarská německá mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
-msgid "Switzerland"
-msgstr "Švýcarsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:190
-msgid "Thai"
-msgstr "Thajská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:115
-msgid "Thai Sun keymap"
-msgstr "Thajská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
-msgid "Thailand"
-msgstr "Thajsko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:196
-msgid "Turkey"
-msgstr "Turecko"
-
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:197
-msgid "Turkish"
-msgstr "Turecká"
-
-#: gkb-new/descs.sun/presets.xml.in.h:119
-msgid "Turkish Sun keymap"
-msgstr "Turecká mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:120
-msgid "US Sun Type-4 keyboard"
-msgstr "US klávesnice Sun Type-4"
-
-#: gkb-new/descs.sun/presets.xml.in.h:121
-msgid "US Sun USB keyboard"
-msgstr "US klávesnice Sun USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:122
-msgid "US Sun type5 keyboard"
-msgstr "US klávesnice Sun type5"
-
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
-msgid "Ukraine"
-msgstr "Ukrajina"
-
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:217
-msgid "Ukrainian"
-msgstr "Ukrajinská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:125
-msgid "Ukrainian Sun keymap"
-msgstr "Ukrajinská klávesnice Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
-msgid "United Kingdom"
-msgstr "Velká Británie"
-
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:222
-msgid "United States"
-msgstr "Spojené státy americké"
-
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
-msgid "Vietnam"
-msgstr "Vietnam"
-
-#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
-msgid "Vietnamese"
-msgstr "Vietnamská"
-
-#: gkb-new/descs.sun/presets.xml.in.h:130
-msgid "Vietnamese Sun keymap"
-msgstr "Vietnamská mapa kláves Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:131
-msgid "Yugoslavia"
-msgstr "Jugoslávie"
-
-#: gkb-new/descs/presets.xml.in.h:1
-msgid "Algeria"
-msgstr "Alžírsko"
-
-#: gkb-new/descs/presets.xml.in.h:2
-msgid "Arabic"
-msgstr "Arabská"
-
-#: gkb-new/descs/presets.xml.in.h:3
-msgid "Arabic keymap"
-msgstr "Arabská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:4
-msgid "Arabic xkb keymap"
-msgstr "Arabská mapa kláves xkb"
-
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:7
 msgid "Armenian xkb keymap"
 msgstr "Arménská mapa kláves xkb"
 
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:1
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:1
+msgid "Algeria"
+msgstr "Alžírsko"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:2
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:2
+msgid "Arabic"
+msgstr "Arabská"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:4
+msgid "Arabic xkb keymap"
+msgstr "Arabská mapa kláves xkb"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:4
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:12
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:5
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:5
+#: gkb-new/descs/presets.xml.in.h:29
+msgid "Comoros"
+msgstr "Komory"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:6
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:6
+#: gkb-new/descs/presets.xml.in.h:42
+msgid "Djibouti"
+msgstr "Džibuti"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:7
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:7
+#: gkb-new/descs/presets.xml.in.h:47
+msgid "Egypt"
+msgstr "Egypt"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:8
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:8
+#: gkb-new/descs/presets.xml.in.h:102
+msgid "Iraq"
+msgstr "Irák"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:9
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:9
+#: gkb-new/descs/presets.xml.in.h:112
+msgid "Jordan"
+msgstr "Jordánsko"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:10
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:10
+#: gkb-new/descs/presets.xml.in.h:113
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:11
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:11
+#: gkb-new/descs/presets.xml.in.h:117
+msgid "Lebanon"
+msgstr "Libanon"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:12
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:12
+#: gkb-new/descs/presets.xml.in.h:118
+msgid "Libyan Arab Jamahiriya"
+msgstr "Libyjská arabská džamahírie"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:13
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:13
+#: gkb-new/descs/presets.xml.in.h:128
+msgid "Marocco"
+msgstr "Maroko"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:14
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:14
+#: gkb-new/descs/presets.xml.in.h:139
+msgid "Oman"
+msgstr "Omán"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:15
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:15
+#: gkb-new/descs/presets.xml.in.h:140
+msgid "Palestinian Territory"
+msgstr "Palestinské území"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:16
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:16
+#: gkb-new/descs/presets.xml.in.h:151
+msgid "Qatar"
+msgstr "Katar"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:17
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:17
+#: gkb-new/descs/presets.xml.in.h:160
+msgid "Saudi Arabia"
+msgstr "Saúdská Arábie"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:18
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:18
+#: gkb-new/descs/presets.xml.in.h:173
+msgid "Somalia"
+msgstr "Somálsko"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:19
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:19
+#: gkb-new/descs/presets.xml.in.h:179
+msgid "Sudan"
+msgstr "Súdán"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:20
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:20
+#: gkb-new/descs/presets.xml.in.h:187
+msgid "Syria"
+msgstr "Sýrie"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:21
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:21
+#: gkb-new/descs/presets.xml.in.h:195
+msgid "Tunisia"
+msgstr "Tunisko"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:22
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:22
+#: gkb-new/descs/presets.xml.in.h:219
+msgid "United Arab Emirates"
+msgstr "Spojené arabské emiráty"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:23
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:23
+#: gkb-new/descs/presets.xml.in.h:226
+msgid "Yemen"
+msgstr "Jemen"
+
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:3
+msgid "Arabic keymap"
+msgstr "Arabská mapa kláves"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:1
+msgid "Azerbaidjan"
+msgstr "Ázerbajdžán"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:2
+msgid "Azerbaidjani Turkic"
+msgstr "Ázerbajdžánská turecká"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:3
+msgid "Azerbaidjani Turkic xkb keymap"
+msgstr "Ázerbajdžánská turecká mapa kláves xkb"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:18
+msgid "Belgium"
+msgstr "Belgie"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:43
+msgid "Dutch"
+msgstr "Holandská"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:45
+msgid "Dutch xkb keymap"
+msgstr "Holandská mapa kláves xkb"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:22
+msgid "Bulgaria"
+msgstr "Bulharsko"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:23
+msgid "Bulgarian"
+msgstr "Bulharská"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:26
+msgid "Bulgarian xkb keymap"
+msgstr "Bulharská mapa kláves xkb"
+
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:25
+msgid "Bulgarian keymap"
+msgstr "Bulharská mapa kláves"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:19
+msgid "Brazil"
+msgstr "Brazílie"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:21
+msgid "Brazil Portuguese xkb keymap"
+msgstr "Brazilská portugalská mapa kláves xkb"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:148
+msgid "Portuguese"
+msgstr "Portugalská"
+
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:20
+msgid "Brazil Portuguese keymap"
+msgstr "Brazilská portugalská mapa kláves"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:14
+msgid "Belarus"
+msgstr "Bělorusko"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:15
+msgid "Belarusian"
+msgstr "Běloruská"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:16
+msgid "Belarusian xkb keymap"
+msgstr "Běloruská mapa kláves xkb"
+
+#: gkb-new/descs/Basque.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:13
+msgid "Basque"
+msgstr "Baskická"
+
+#: gkb-new/descs/Basque.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:54
+msgid "Euskadi"
+msgstr "Euskadi"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:17
+msgid "Belgian"
+msgstr "Belgická"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:61
+msgid "French"
+msgstr "Francouzská"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:5
+msgid "Wallon"
+msgstr "Valonsko"
+
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:24
+msgid "Bulgarian Cyrillic"
+msgstr "Bulharská azbuka"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:27
+msgid "Canada"
+msgstr "Kanada"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:28
+msgid "Canadian xkb keymap"
+msgstr "Kanadská mapa kláves xkb"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/US.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:364
+msgid "English"
+msgstr "Anglická"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/German.keyprop.desktop.in.h:2
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:75
+msgid "German"
+msgstr "Německá"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:185
+msgid "Swiss keymap"
+msgstr "Švýcarská mapa kláves"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:4
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:186
+msgid "Switzerland"
+msgstr "Švýcarsko"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:33
+msgid "Czech"
+msgstr "Česká"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:37
+msgid "Czech qwertz xkb keymap"
+msgstr "Česká qwertz mapa kláves xkb"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
+msgid "Former Czechoslovakia Czech Republic"
+msgstr "Dřívější Československo Česká republika"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:34
+msgid "Czech Republic"
+msgstr "Česká republika"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:35
+msgid "Czech and Slovak xkb keymap"
+msgstr "Československá mapa kláves xkb"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:166
+msgid "Slovak"
+msgstr "Slovenská"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:167
+msgid "Slovak Republic"
+msgstr "Slovenská republika"
+
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:36
+msgid "Czech keymap"
+msgstr "Česká mapa kláves"
+
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:78
+msgid "German xkb keymap"
+msgstr "Německá mapa kláves xkb"
+
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:79
+msgid "Germany"
+msgstr "Německo"
+
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:77
+msgid "German keymap"
+msgstr "Německá mapa kláves"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:38
+msgid "Danish"
+msgstr "Dánská"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:40
+msgid "Danish xkb keymap"
+msgstr "Dánská mapa kláves xkb"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:41
+msgid "Denmark"
+msgstr "Dánsko"
+
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:39
+msgid "Danish keymap"
+msgstr "Dánská mapa kláves"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:847
+#: gweather/gweather-pref.c:866 gweather/gweather-pref.c:890
+#: gweather/gweather-pref.c:914
+msgid "Default"
+msgstr "Implicitní"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:80
+msgid "Gnome Keyboard default"
+msgstr "Implicitní klávesnice Gnome"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:3
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:364
+msgid "International"
+msgstr "Mezinárodní"
+
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:46
+msgid "Dvorak xkb keymap"
+msgstr "Mapa kláves Dvorak xkb"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:50
+msgid "Estonia"
+msgstr "Estonsko"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:51
+msgid "Estonian"
+msgstr "Estonská"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:53
+msgid "Estonian xkb keymap"
+msgstr "Estonská mapa kláves xkb"
+
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:52
+msgid "Estonian keymap"
+msgstr "Estonská mapa kláves"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:174
+msgid "Spain"
+msgstr "Španělsko"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:175
+msgid "Spanish"
+msgstr "Španělská"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
+msgid "Spanish PC/AT 101 keyboard "
+msgstr "Španělská klávesnice PC/AT 101"
+
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:178
+msgid "Spanish xkb keymap"
+msgstr "Španělská mapa kláves xkb"
+
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:177
+msgid "Spanish keymap"
+msgstr "Španělská mapa kláves"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:55
+msgid "Finland"
+msgstr "Finsko"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:56
+msgid "Finnish"
+msgstr "Finská"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:58
+msgid "Finnish xkb keymap"
+msgstr "Finská mapa kláves xkb"
+
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:57
+msgid "Finnish keymap"
+msgstr "Finská mapa kláves"
+
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:60
+msgid "France"
+msgstr "Francie"
+
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:62
+msgid "French PC/AT 101 keyboard"
+msgstr "Francouzská klávesnice PC/AT 101"
+
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:66
+msgid "French xkb keymap"
+msgstr "Francouzská mapa kláves xkb"
+
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:65
+msgid "French keymap"
+msgstr "Francouzská mapa kláves"
+
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:67
+msgid "French-Canadian 105-key"
+msgstr "Francouzsko-kanadská 105-klávesová"
+
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:63
+msgid "French Swiss"
+msgstr "Francouzská švýcarská"
+
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:64
+msgid "French Swiss keymap"
+msgstr "Francouzská švýcarská mapa kláves"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:1
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:70
+msgid "Georgia"
+msgstr "Gruzie"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:2
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:71
+msgid "Georgian"
+msgstr "Gruzijská"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:74
+msgid "Georgian keymap"
+msgstr "Gruzijská mapa kláves"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:1
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:81
+msgid "Greece"
+msgstr "Řecko"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:2
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:82
+msgid "Greek"
+msgstr "Řecká"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:84
+msgid "Greek xkb keymap"
+msgstr "Řecká mapa kláves xkb"
+
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:83
+msgid "Greek keymap"
+msgstr "Řecká mapa kláves"
+
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:72
+msgid "Georgian Latin"
+msgstr "Gruzijská latinka"
+
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:73
+msgid "Georgian Russian layout"
+msgstr "Gruzijské ruské rozložení"
+
+#: gkb-new/descs/German.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:8
 msgid "Austria"
 msgstr "Rakousko"
+
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:76
+msgid "German Swiss with Euro"
+msgstr "Německá švýcarská s Eurem"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:30
+msgid "Croatia"
+msgstr "Chorvatsko"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:31
+msgid "Croatian"
+msgstr "Chorvatská"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:32
+msgid "Croatian keymap"
+msgstr "Chorvatská mapa kláves"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:88
+msgid "Hungarian"
+msgstr "Maďarská"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:95
+msgid "Hungarian latin2 xkb keymap"
+msgstr "Maďarská mapa kláves latin2 xkb"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:96
+msgid "Hungary"
+msgstr "Maďarsko"
+
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:94
+msgid "Hungarian latin1"
+msgstr "Maďarská latin1"
+
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:91
+msgid "Hungarian 105-key latin 1"
+msgstr "Maďarská 105-klávesová latin 1"
+
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:180
+msgid "Sun (!not PC!) type5 Hungarian latin 2"
+msgstr "Maďarská latin1 Sun (!ne PC!) type5"
+
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:2
+msgid "Hungarian PC/AT 101 keyboard "
+msgstr "Maďarská klávesnice PC/AT 101"
+
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:92
+msgid "Hungarian 105-key latin 2"
+msgstr "Maďarská 105-klávesová latin 2"
+
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:89
+msgid "Hungarian 101-key latin 1"
+msgstr "Maďarská 101-klávesová latin 1"
+
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:90
+msgid "Hungarian 101-key latin 2"
+msgstr "Maďarská 101-klávesová latin 2"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:85
+msgid "Hebrew"
+msgstr "Hebrejská"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:87
+msgid "Hebrew xkb keymap"
+msgstr "Hebrejská mapa kláves xkb"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:103
+msgid "Israel"
+msgstr "Izrael"
+
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:86
+msgid "Hebrew keymap"
+msgstr "Hebrejská mapa kláves"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:97
+msgid "Iceland"
+msgstr "Island"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:98
+msgid "Icelandic"
+msgstr "Islandská"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:100
+msgid "Icelandic xkb keymap"
+msgstr "Islandská mapa kláves xkb"
+
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:99
+msgid "Icelandic keymap"
+msgstr "Islandská mapa kláves"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:104
+msgid "Italian"
+msgstr "Italská"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:106
+msgid "Italian xkb keymap"
+msgstr "Italská mapa kláves xkb"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:107
+msgid "Italy"
+msgstr "Itálie"
+
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:105
+msgid "Italian keymap"
+msgstr "Italská mapa kláves"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:108
+msgid "Japan"
+msgstr "Japonsko"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:109
+msgid "Japanese"
+msgstr "Japonská"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:111
+msgid "Japanese xkb keymap"
+msgstr "Japonská mapa kláves xkb"
+
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:110
+msgid "Japanese keymap"
+msgstr "Japonská mapa kláves"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:1
+msgid "Korean"
+msgstr "Korejská"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:2
+msgid "Korean 106 keyboard"
+msgstr "Korejská klávesnice 106"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:3
+msgid "South Korea"
+msgstr "Jižní Korea"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:114
+msgid "Lao"
+msgstr "Laoská"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:115
+msgid "Lao keymap"
+msgstr "Laoská mapa kláves"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:116
+msgid "Laos"
+msgstr "Laos"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:119
+msgid "Lithuania"
+msgstr "Litva"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:120
+msgid "Lithuanian"
+msgstr "Litevská"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:123
+msgid "Lithuanian qwerty xkb keymap"
+msgstr "Litevská qwerty mapa kláves xkb"
+
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:121
+msgid "Lithuanian keymap"
+msgstr "Litevská mapa kláves"
+
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:122
+msgid "Lithuanian programmers xkb keymap"
+msgstr "Litevská programátorská mapa kláves xkb"
+
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:124
+msgid "Lithuanian standard xkb keymap"
+msgstr "Litevská standardní mapa kláves xkb"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:125
+msgid "Macedonia"
+msgstr "Makedonie"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:126
+msgid "Macedonian"
+msgstr "Makedonská"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:127
+msgid "Macedonian xkb keymap"
+msgstr "Makedonská mapa kláves xkb"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:129
+msgid "Mongolia"
+msgstr "Mongolsko"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:130
+msgid "Mongolian"
+msgstr "Mongolská"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:3
+msgid "Mongolian keyboard"
+msgstr "Mongolská klávesnice"
+
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:132
+msgid "Mongolian keymap"
+msgstr "Mongolská mapa kláves"
+
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:3
+msgid "Plain Mongolian keymap"
+msgstr "Jednoduchá mongolská mapa kláves"
+
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:3
+msgid "Unicode Mongolian Keymap"
+msgstr "Mongolská mapa kláves Unicode"
+
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:44
+msgid "Dutch keymap"
+msgstr "Holandská mapa kláves"
+
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:135
+msgid "Netherlands"
+msgstr "Nizozemsko"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:136
+msgid "Norway"
+msgstr "Norsko"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:137
+msgid "Norwegian"
+msgstr "Norská"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:138
+msgid "Norwegian xkb keymap"
+msgstr "Norská mapa kláves xkb"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:142
+msgid "Poland"
+msgstr "Polsko"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:143
+msgid "Polish"
+msgstr "Polská"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:145
+msgid "Polish xkb keymap"
+msgstr "Polská mapa kláves xkb"
+
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:146
+msgid "Portugal"
+msgstr "Portugalsko"
+
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:150
+msgid "Portuguese xkb keymap"
+msgstr "Portugalská mapa kláves xkb"
+
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:149
+msgid "Portuguese keymap"
+msgstr "Portugalská mapa kláves"
+
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:144
+msgid "Polish deadkeys"
+msgstr "Ruská s mrtvými klávesami"
+
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:147
+msgid "Portugal Deadkeys"
+msgstr "Portugalská s mrtvými klávesami"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:152
+msgid "Romania"
+msgstr "Rumunsko"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:153
+msgid "Romanian"
+msgstr "Rumunská"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:154
+msgid "Romanian xkb keymap"
+msgstr "Rumunská mapa kláves xkb"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:155
+msgid "Russia"
+msgstr "Rusko"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:156
+msgid "Russian"
+msgstr "Ruská"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:159
+msgid "Russian xkb keymap"
+msgstr "Ruská mapa kláves xkb"
+
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:158
+msgid "Russian keymap"
+msgstr "Ruská mapa kláves"
+
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:141
+msgid "Plain Russian keymap"
+msgstr "Jednoduchá ruská mapa kláves"
+
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:157
+msgid "Russian Cyrillic"
+msgstr "Ruská azbuka"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:181
+msgid "Sweden"
+msgstr "Švédsko"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:182
+msgid "Swedish"
+msgstr "Švédská"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:184
+msgid "Swedish xkb keymap"
+msgstr "Švédská mapa kláves xkb"
+
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:183
+msgid "Swedish keymap"
+msgstr "Švédská mapa kláves"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:169
+msgid "Slovenia"
+msgstr "Slovinsko"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:170
+msgid "Slovenian"
+msgstr "Slovinská"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:172
+msgid "Slovenian xkb keymap"
+msgstr "Slovinská mapa kláves xkb"
+
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:171
+msgid "Slovenian keymap"
+msgstr "Slovinská mapa kláves"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:161
+msgid "Serb"
+msgstr "Srbská"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:163
+msgid "Serbia and Montenegro"
+msgstr "Srbsko a Černá hora"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:3
+msgid "Serbian standard xkb keymap"
+msgstr "Srbská standardní mapa kláves xkb"
+
+#: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
+#: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:188
+msgid "Syriac"
+msgstr "Syrská"
+
+#: gkb-new/descs/Syriac.keyprop.desktop.in.h:2
+msgid "Syriac xkb keymap"
+msgstr "Syrská mapa kláves xkb"
+
+#: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:2
+msgid "Syriac Phonetic xkb keymap"
+msgstr "Syrská fonetická mapa kláves xkb"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:190
+msgid "Thai"
+msgstr "Thajská"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:193
+msgid "Thai xkb keymap"
+msgstr "Thajská mapa kláves xkb"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:194
+msgid "Thailand"
+msgstr "Thajsko"
+
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:192
+msgid "Thai keymap"
+msgstr "Thajská mapa kláves"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:196
+msgid "Turkey"
+msgstr "Turecko"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:197
+msgid "Turkish"
+msgstr "Turecká"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:198
+msgid "Turkish \"F\" keyboard"
+msgstr "Turecká klávesnice \"F\""
+
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:199
+msgid "Turkish \"Q\" keyboard"
+msgstr "Turecká klávesnice \"Q\""
+
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:201
+msgid "Turkish xkb keymap"
+msgstr "Turecká mapa kláves xkb"
+
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:200
+msgid "Turkish keymap"
+msgstr "Turecká mapa kláves"
+
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:191
+msgid "Thai Kedmanee"
+msgstr "Thajská Kedmanee"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:216
+msgid "Ukraine"
+msgstr "Ukrajina"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:217
+msgid "Ukrainian"
+msgstr "Ukrajinská"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:218
+msgid "Ukrainian xkb keymap"
+msgstr "Ukrajinská mapa kláves xkb"
+
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:68
+msgid "GB 102-key"
+msgstr "VB 102-klávesová"
+
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:220
+msgid "United Kingdom"
+msgstr "Velká Británie"
+
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
+msgid "UK PC/AT keyboard "
+msgstr "VB klávesnice PC/AT"
+
+#: gkb-new/descs/UK.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:202
+msgid "UK 105-key"
+msgstr "VB 105-klávesová"
+
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:221
+msgid "United Kingdom xkb keymap"
+msgstr "Mapa kláves xkb Velké Británie"
+
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:49
+msgid "English keymap"
+msgstr "Anglická mapa kláves"
+
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:69
+msgid "GB 105-key"
+msgstr "VB 105-klávesová"
+
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:204
+msgid "US 101-key keyboard"
+msgstr "VB 101-klávesová"
+
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/US.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:360
+msgid "United States"
+msgstr "Spojené státy americké"
+
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:212
+msgid "US PC/AT 101 keyboard"
+msgstr "US klávesnice PC/AT 101"
+
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:206
+msgid "US 84-key"
+msgstr "US 84-klávesová"
+
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:207
+msgid "US DEC 450"
+msgstr "US DEC 450"
+
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:208
+msgid "US IBM RS/6000"
+msgstr "US IBM RS/6000"
+
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:209
+msgid "US International"
+msgstr "US mezinárodní"
+
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:211
+msgid "US Macintosh"
+msgstr "US Macintosh"
+
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:213
+msgid "US Silicon Graphics 101-key"
+msgstr "US Silicon Graphics 101-klávesová"
+
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:214
+msgid "US Sun type5"
+msgstr "US Sun type5"
+
+#: gkb-new/descs/US.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:205
+msgid "US 105-key keyboard (with windows keys)"
+msgstr "VB 105-klávesová (s klávesami windows)"
+
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:215
+msgid "US xkb keymap"
+msgstr "US mapa kláves xkb"
+
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:210
+msgid "US International xkb keymap"
+msgstr "US mezinárodní mapa kláves xkb"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:223
+msgid "Vietnam"
+msgstr "Vietnam"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:224
+msgid "Vietnamese"
+msgstr "Vietnamská"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
+msgstr "Vietnamská mapa kláves xkb"
+
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:2
+msgid "Serb keymap"
+msgstr "Srbská mapa kláves"
+
+#: gkb-new/descs/presets.xml.in.h:9
+msgid "Azerbaijan"
+msgstr "Ázerbajdžán"
+
+#: gkb-new/descs/presets.xml.in.h:10
+msgid "Azerbaijani Turkish"
+msgstr "Ázerbajdžánská turecká"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaijani Turkish xkb keymap"
 msgstr "Ázerbajdžánská turecká mapa kláves xkb"
 
-#: gkb-new/descs/presets.xml.in.h:12
-msgid "Bahrain"
-msgstr "Bahrain"
-
-#: gkb-new/descs/presets.xml.in.h:13
-msgid "Basque"
-msgstr "Baskická"
-
-#: gkb-new/descs/presets.xml.in.h:16
-msgid "Belarusian xkb keymap"
-msgstr "Běloruská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:17
-msgid "Belgian"
-msgstr "Belgická"
-
-#: gkb-new/descs/presets.xml.in.h:20
-msgid "Brazil Portuguese keymap"
-msgstr "Brazilská portugalská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:21
-msgid "Brazil Portuguese xkb keymap"
-msgstr "Brazilská portugalská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:24
-msgid "Bulgarian Cyrillic"
-msgstr "Bulharská azbuka"
-
-#: gkb-new/descs/presets.xml.in.h:25
-msgid "Bulgarian keymap"
-msgstr "Bulharská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:26
-msgid "Bulgarian xkb keymap"
-msgstr "Bulharská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:28
-msgid "Canadian xkb keymap"
-msgstr "Kanadská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:29
-msgid "Comoros"
-msgstr "Komory"
-
-#: gkb-new/descs/presets.xml.in.h:30
-msgid "Croatia"
-msgstr "Chorvatsko"
-
-#: gkb-new/descs/presets.xml.in.h:31
-msgid "Croatian"
-msgstr "Chorvatská"
-
-#: gkb-new/descs/presets.xml.in.h:32
-msgid "Croatian keymap"
-msgstr "Chorvatská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:35
-msgid "Czech and Slovak xkb keymap"
-msgstr "Československá mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:36
-msgid "Czech keymap"
-msgstr "Česká mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:37
-msgid "Czech qwertz xkb keymap"
-msgstr "Česká qwertz mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:39
-msgid "Danish keymap"
-msgstr "Dánská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:40
-msgid "Danish xkb keymap"
-msgstr "Dánská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:42
-msgid "Djibouti"
-msgstr "Džibuti"
-
-#: gkb-new/descs/presets.xml.in.h:44
-msgid "Dutch keymap"
-msgstr "Holandská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:45
-msgid "Dutch xkb keymap"
-msgstr "Holandská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:46
-msgid "Dvorak xkb keymap"
-msgstr "Mapa kláves Dvorak xkb"
-
-#: gkb-new/descs/presets.xml.in.h:47
-msgid "Egypt"
-msgstr "Egypt"
-
-#: gkb-new/descs/presets.xml.in.h:49
-msgid "English keymap"
-msgstr "Anglická mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:52
-msgid "Estonian keymap"
-msgstr "Estonská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:53
-msgid "Estonian xkb keymap"
-msgstr "Estonská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:54
-msgid "Euskadi"
-msgstr "Euskadi"
-
-#: gkb-new/descs/presets.xml.in.h:57
-msgid "Finnish keymap"
-msgstr "Finská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:58
-msgid "Finnish xkb keymap"
-msgstr "Finská mapa kláves xkb"
-
 #: gkb-new/descs/presets.xml.in.h:59
 msgid "Former Czechoslovakia"
 msgstr "Dřívější Československo"
-
-#: gkb-new/descs/presets.xml.in.h:62
-msgid "French PC/AT 101 keyboard"
-msgstr "Francouzská klávesnice PC/AT 101"
-
-#: gkb-new/descs/presets.xml.in.h:63
-msgid "French Swiss"
-msgstr "Francouzská švýcarská"
-
-#: gkb-new/descs/presets.xml.in.h:64
-msgid "French Swiss keymap"
-msgstr "Francouzská švýcarská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:65
-msgid "French keymap"
-msgstr "Francouzská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:66
-msgid "French xkb keymap"
-msgstr "Francouzská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:67
-msgid "French-Canadian 105-key"
-msgstr "Francouzsko-kanadská 105-klávesová"
-
-#: gkb-new/descs/presets.xml.in.h:68
-msgid "GB 102-key"
-msgstr "VB 102-klávesová"
-
-#: gkb-new/descs/presets.xml.in.h:69
-msgid "GB 105-key"
-msgstr "VB 105-klávesová"
-
-#: gkb-new/descs/presets.xml.in.h:70
-msgid "Georgia"
-msgstr "Gruzie"
-
-#: gkb-new/descs/presets.xml.in.h:71
-msgid "Georgian"
-msgstr "Gruzijská"
-
-#: gkb-new/descs/presets.xml.in.h:72
-msgid "Georgian Latin"
-msgstr "Gruzijská latinka"
-
-#: gkb-new/descs/presets.xml.in.h:73
-msgid "Georgian Russian layout"
-msgstr "Gruzijské ruské rozložení"
-
-#: gkb-new/descs/presets.xml.in.h:74
-msgid "Georgian keymap"
-msgstr "Gruzijská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:76
-msgid "German Swiss with Euro"
-msgstr "Německá švýcarská s Eurem"
-
-#: gkb-new/descs/presets.xml.in.h:77
-msgid "German keymap"
-msgstr "Německá mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:78
-msgid "German xkb keymap"
-msgstr "Německá mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:81
-msgid "Greece"
-msgstr "Řecko"
-
-#: gkb-new/descs/presets.xml.in.h:82
-msgid "Greek"
-msgstr "Řecká"
-
-#: gkb-new/descs/presets.xml.in.h:83
-msgid "Greek keymap"
-msgstr "Řecká mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:84
-msgid "Greek xkb keymap"
-msgstr "Řecká mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:86
-msgid "Hebrew keymap"
-msgstr "Hebrejská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:87
-msgid "Hebrew xkb keymap"
-msgstr "Hebrejská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:89
-msgid "Hungarian 101-key latin 1"
-msgstr "Maďarská 101-klávesová latin 1"
-
-#: gkb-new/descs/presets.xml.in.h:90
-msgid "Hungarian 101-key latin 2"
-msgstr "Maďarská 101-klávesová latin 2"
-
-#: gkb-new/descs/presets.xml.in.h:91
-msgid "Hungarian 105-key latin 1"
-msgstr "Maďarská 105-klávesová latin 1"
-
-#: gkb-new/descs/presets.xml.in.h:92
-msgid "Hungarian 105-key latin 2"
-msgstr "Maďarská 105-klávesová latin 2"
 
 #: gkb-new/descs/presets.xml.in.h:93
 msgid "Hungarian PC/AT 101 keyboard"
 msgstr "Maďarská klávesnice PC/AT 101"
 
-#: gkb-new/descs/presets.xml.in.h:94
-msgid "Hungarian latin1"
-msgstr "Maďarská latin1"
-
-#: gkb-new/descs/presets.xml.in.h:95
-msgid "Hungarian latin2 xkb keymap"
-msgstr "Maďarská mapa kláves latin2 xkb"
-
-#: gkb-new/descs/presets.xml.in.h:99
-msgid "Icelandic keymap"
-msgstr "Islandská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:100
-msgid "Icelandic xkb keymap"
-msgstr "Islandská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:102
-msgid "Iraq"
-msgstr "Irák"
-
-#: gkb-new/descs/presets.xml.in.h:105
-msgid "Italian keymap"
-msgstr "Italská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:106
-msgid "Italian xkb keymap"
-msgstr "Italská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:110
-msgid "Japanese keymap"
-msgstr "Japonská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:111
-msgid "Japanese xkb keymap"
-msgstr "Japonská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:112
-msgid "Jordan"
-msgstr "Jordánsko"
-
-#: gkb-new/descs/presets.xml.in.h:113
-msgid "Kuwait"
-msgstr "Kuwait"
-
-#: gkb-new/descs/presets.xml.in.h:114
-msgid "Lao"
-msgstr "Laoská"
-
-#: gkb-new/descs/presets.xml.in.h:115
-msgid "Lao keymap"
-msgstr "Laoská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:116
-msgid "Laos"
-msgstr "Laos"
-
-#: gkb-new/descs/presets.xml.in.h:117
-msgid "Lebanon"
-msgstr "Libanon"
-
-#: gkb-new/descs/presets.xml.in.h:118
-msgid "Libyan Arab Jamahiriya"
-msgstr "Libyjská arabská džamahírie"
-
-#: gkb-new/descs/presets.xml.in.h:121
-msgid "Lithuanian keymap"
-msgstr "Litevská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:122
-msgid "Lithuanian programmers xkb keymap"
-msgstr "Litevská programátorská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:123
-msgid "Lithuanian qwerty xkb keymap"
-msgstr "Litevská qwerty mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:124
-msgid "Lithuanian standard xkb keymap"
-msgstr "Litevská standardní mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:127
-msgid "Macedonian xkb keymap"
-msgstr "Makedonská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:128
-msgid "Marocco"
-msgstr "Maroko"
-
-#: gkb-new/descs/presets.xml.in.h:129
-msgid "Mongolia"
-msgstr "Mongolsko"
-
-#: gkb-new/descs/presets.xml.in.h:130
-msgid "Mongolian"
-msgstr "Mongolská"
-
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
 msgstr "Mongolská alternativní mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:132
-msgid "Mongolian keymap"
-msgstr "Mongolská mapa kláves"
 
 #: gkb-new/descs/presets.xml.in.h:133
 msgid "Mongolian phonetic keymap"
@@ -2029,81 +2474,9 @@ msgstr "Mongolská fonetická mapa kláves"
 msgid "Morocco"
 msgstr "Maroko"
 
-#: gkb-new/descs/presets.xml.in.h:135
-msgid "Netherlands"
-msgstr "Nizozemsko"
-
-#: gkb-new/descs/presets.xml.in.h:138
-msgid "Norwegian xkb keymap"
-msgstr "Norská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:139
-msgid "Oman"
-msgstr "Omán"
-
-#: gkb-new/descs/presets.xml.in.h:140
-msgid "Palestinian Territory"
-msgstr "Palestinské území"
-
-#: gkb-new/descs/presets.xml.in.h:141
-msgid "Plain Russian keymap"
-msgstr "Jednoduchá ruská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:144
-msgid "Polish deadkeys"
-msgstr "Ruská s mrtvými klávesami"
-
-#: gkb-new/descs/presets.xml.in.h:145
-msgid "Polish xkb keymap"
-msgstr "Polská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:147
-msgid "Portugal Deadkeys"
-msgstr "Portugalská s mrtvými klávesami"
-
-#: gkb-new/descs/presets.xml.in.h:149
-msgid "Portuguese keymap"
-msgstr "Portugalská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:150
-msgid "Portuguese xkb keymap"
-msgstr "Portugalská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:151
-msgid "Qatar"
-msgstr "Katar"
-
-#: gkb-new/descs/presets.xml.in.h:154
-msgid "Romanian xkb keymap"
-msgstr "Rumunská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:157
-msgid "Russian Cyrillic"
-msgstr "Ruská azbuka"
-
-#: gkb-new/descs/presets.xml.in.h:158
-msgid "Russian keymap"
-msgstr "Ruská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:159
-msgid "Russian xkb keymap"
-msgstr "Ruská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:160
-msgid "Saudi Arabia"
-msgstr "Saúdská Arábie"
-
-#: gkb-new/descs/presets.xml.in.h:161
-msgid "Serb"
-msgstr "Srbská"
-
 #: gkb-new/descs/presets.xml.in.h:162
 msgid "Serb standard xkb keymap"
 msgstr "Srbská standardní mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:163
-msgid "Serbia and Montenegro"
-msgstr "Srbsko a Černá hora"
 
 #: gkb-new/descs/presets.xml.in.h:164
 msgid "Serbian"
@@ -2117,169 +2490,21 @@ msgstr "Srbská mapa kláves"
 msgid "Slovak keymap"
 msgstr "Slovenská mapa kláves"
 
-#: gkb-new/descs/presets.xml.in.h:171
-msgid "Slovenian keymap"
-msgstr "Slovinská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:172
-msgid "Slovenian xkb keymap"
-msgstr "Slovinská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:173
-msgid "Somalia"
-msgstr "Somálsko"
-
 #: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
 msgstr "Španělská klávesnice PC/AT 101"
-
-#: gkb-new/descs/presets.xml.in.h:177
-msgid "Spanish keymap"
-msgstr "Španělská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:178
-msgid "Spanish xkb keymap"
-msgstr "Španělská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:179
-msgid "Sudan"
-msgstr "Súdán"
-
-#: gkb-new/descs/presets.xml.in.h:180
-msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr "Maďarská latin1 Sun (!ne PC!) type5"
-
-#: gkb-new/descs/presets.xml.in.h:183
-msgid "Swedish keymap"
-msgstr "Švédská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:184
-msgid "Swedish xkb keymap"
-msgstr "Švédská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:185
-msgid "Swiss keymap"
-msgstr "Švýcarská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:187
-msgid "Syria"
-msgstr "Sýrie"
-
-#: gkb-new/descs/presets.xml.in.h:188
-msgid "Syriac"
-msgstr "Syrská"
 
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Syrská fonetická"
 
-#: gkb-new/descs/presets.xml.in.h:191
-msgid "Thai Kedmanee"
-msgstr "Thajská Kedmanee"
-
-#: gkb-new/descs/presets.xml.in.h:192
-msgid "Thai keymap"
-msgstr "Thajská mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:193
-msgid "Thai xkb keymap"
-msgstr "Thajská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:195
-msgid "Tunisia"
-msgstr "Tunisko"
-
-#: gkb-new/descs/presets.xml.in.h:198
-msgid "Turkish \"F\" keyboard"
-msgstr "Turecká klávesnice \"F\""
-
-#: gkb-new/descs/presets.xml.in.h:199
-msgid "Turkish \"Q\" keyboard"
-msgstr "Turecká klávesnice \"Q\""
-
-#: gkb-new/descs/presets.xml.in.h:200
-msgid "Turkish keymap"
-msgstr "Turecká mapa kláves"
-
-#: gkb-new/descs/presets.xml.in.h:201
-msgid "Turkish xkb keymap"
-msgstr "Turecká mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:202
-msgid "UK 105-key"
-msgstr "VB 105-klávesová"
-
 #: gkb-new/descs/presets.xml.in.h:203
 msgid "UK PC/AT keyboard"
 msgstr "VB klávesnice PC/AT"
 
-#: gkb-new/descs/presets.xml.in.h:204
-msgid "US 101-key keyboard"
-msgstr "VB 101-klávesová"
-
-#: gkb-new/descs/presets.xml.in.h:205
-msgid "US 105-key keyboard (with windows keys)"
-msgstr "VB 105-klávesová (s klávesami windows)"
-
-#: gkb-new/descs/presets.xml.in.h:206
-msgid "US 84-key"
-msgstr "US 84-klávesová"
-
-#: gkb-new/descs/presets.xml.in.h:207
-msgid "US DEC 450"
-msgstr "US DEC 450"
-
-#: gkb-new/descs/presets.xml.in.h:208
-msgid "US IBM RS/6000"
-msgstr "US IBM RS/6000"
-
-#: gkb-new/descs/presets.xml.in.h:209
-msgid "US International"
-msgstr "US mezinárodní"
-
-#: gkb-new/descs/presets.xml.in.h:210
-msgid "US International xkb keymap"
-msgstr "US mezinárodní mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:211
-msgid "US Macintosh"
-msgstr "US Macintosh"
-
-#: gkb-new/descs/presets.xml.in.h:212
-msgid "US PC/AT 101 keyboard"
-msgstr "US klávesnice PC/AT 101"
-
-#: gkb-new/descs/presets.xml.in.h:213
-msgid "US Silicon Graphics 101-key"
-msgstr "US Silicon Graphics 101-klávesová"
-
-#: gkb-new/descs/presets.xml.in.h:214
-msgid "US Sun type5"
-msgstr "US Sun type5"
-
-#: gkb-new/descs/presets.xml.in.h:215
-msgid "US xkb keymap"
-msgstr "US mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:218
-msgid "Ukrainian xkb keymap"
-msgstr "Ukrajinská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:219
-msgid "United Arab Emirates"
-msgstr "Spojené arabské emiráty"
-
-#: gkb-new/descs/presets.xml.in.h:221
-msgid "United Kingdom xkb keymap"
-msgstr "Mapa kláves xkb Velké Británie"
-
-#: gkb-new/descs/presets.xml.in.h:225
-msgid "Vietnamese xkb keymap"
-msgstr "Vietnamská mapa kláves xkb"
-
-#: gkb-new/descs/presets.xml.in.h:226
-msgid "Yemen"
-msgstr "Jemen"
+#: gkb-new/gkb-applet.c:95
+msgid "Keyboard Layout Switcher"
+msgstr "Přepínání rozložení klávesnice"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2320,6 +2545,22 @@ msgid ""
 msgstr ""
 "Stisknutím klávesové zkratky přepnete rozložení klávesnice. Klávesovou "
 "zkratku lze určit v dialogu Nastavení."
+
+#: gkb-new/gkb.c:352
+msgid "US 105 key keyboard"
+msgstr "VB 105-klávesová klávesnice"
+
+#: gkb-new/gkb.c:352
+msgid "Gnome Keyboard Default"
+msgstr "Implicitní klávesnice Gnome"
+
+#: gkb-new/gkb.c:356
+msgid "default"
+msgstr "implicitní"
+
+#: gkb-new/gkb.c:360
+msgid "Gnome Keyboard"
+msgstr "Klávesnice Gnome"
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
@@ -2401,7 +2642,7 @@ msgstr "Vypnuto"
 msgid "Press a key or press Esc to cancel"
 msgstr "Stiskněte klávesu nebo zrušte akci klávesou Esc"
 
-#: gkb-new/preset.c:154 gkb-new/preset.c:157
+#: gkb-new/preset.c:152 gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr "Nedefinováno"
 
@@ -2462,7 +2703,7 @@ msgstr "Popis"
 msgid "Flag and Label"
 msgstr "Vlajka a popis"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1026
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1030
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Zobrazení"
@@ -2505,7 +2746,7 @@ msgstr "_Rozložení:"
 msgid "Options"
 msgstr "Volby"
 
-#: gkb-new/system.c:44
+#: gkb-new/system.c:45
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -2521,7 +2762,7 @@ msgstr ""
 "\n"
 "Příkaz zněl: %s"
 
-#: gkb-new/system.c:49
+#: gkb-new/system.c:50
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -2772,7 +3013,7 @@ msgstr "Nemohu získat předdefinovaná data."
 msgid "No stock list"
 msgstr "Žádný seznam akcií"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:468
+#: gtik/gtik.c:313 gweather/gweather-applet.c:477
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
@@ -2817,7 +3058,7 @@ msgstr "Symboly"
 msgid "Behavior"
 msgstr "Chování"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:986
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:990
 msgid "Update"
 msgstr "Aktualizace"
 
@@ -2825,7 +3066,7 @@ msgstr "Aktualizace"
 msgid "Stock update fre_quency:"
 msgstr "_Frekvence aktualizace:"
 
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1010 mailcheck/mailcheck.c:2104
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1014 mailcheck/mailcheck.c:2104
 #: mailcheck/mailcheck.c:2110
 msgid "minutes"
 msgstr "minut"
@@ -3095,7 +3336,7 @@ msgstr ""
 "\n"
 "Aplet pro sledování místního počasí."
 
-#: gweather/gweather-applet.c:348 gweather/gweather-applet.c:352
+#: gweather/gweather-applet.c:357 gweather/gweather-applet.c:361
 msgid "GNOME Weather"
 msgstr "GNOME Počasí"
 
@@ -3213,140 +3454,135 @@ msgstr "C"
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:434 gweather/gweather-pref.c:444
+#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
 #. Valid values are: "hPa" (hectoPascals), "mb" (millibars), "mmHg"
 #. (millimeters of mercury) and "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:471 gweather/gweather-pref.c:481
+#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:483
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:506 gweather/gweather-pref.c:515
+#: gweather/gweather-pref.c:509 gweather/gweather-pref.c:518
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: gweather/gweather-pref.c:792
+#: gweather/gweather-pref.c:796
 msgid "Weather Preferences"
 msgstr "Nastavení Počasí"
 
-#: gweather/gweather-pref.c:825 gweather/gweather-pref.c:990
+#: gweather/gweather-pref.c:829 gweather/gweather-pref.c:994
 msgid "_Automatically update every:"
 msgstr "Automaticky aktualizovat _každých:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:834
+#: gweather/gweather-pref.c:838
 msgid "_Temperature Unit:"
 msgstr "Jednotka _teploty:"
 
-#: gweather/gweather-pref.c:843 gweather/gweather-pref.c:862
-#: gweather/gweather-pref.c:886 gweather/gweather-pref.c:910
-msgid "Default"
-msgstr "Implicitní"
-
-#: gweather/gweather-pref.c:844
+#: gweather/gweather-pref.c:848
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: gweather/gweather-pref.c:845
+#: gweather/gweather-pref.c:849
 msgid "Centigrade"
 msgstr "Stupeň Celsia"
 
-#: gweather/gweather-pref.c:846
+#: gweather/gweather-pref.c:850
 msgid "Fahrenheit"
 msgstr "Stupeň Fahrenheita"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:853
+#: gweather/gweather-pref.c:857
 msgid "_Wind Speed Unit:"
 msgstr "Jednotka _rychlosti větru:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:864
+#: gweather/gweather-pref.c:868
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:866
+#: gweather/gweather-pref.c:870
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:868
+#: gweather/gweather-pref.c:872
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:874
 msgid "knots"
 msgstr "uzly"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:877
+#: gweather/gweather-pref.c:881
 msgid "_Pressure Unit:"
 msgstr "Jednotka _tlaku:"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:888
+#: gweather/gweather-pref.c:892
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:890
+#: gweather/gweather-pref.c:894
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:892
+#: gweather/gweather-pref.c:896
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:894
+#: gweather/gweather-pref.c:898
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:901
+#: gweather/gweather-pref.c:905
 msgid "_Visibility Unit:"
 msgstr "Jednotka _viditelnosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:912
+#: gweather/gweather-pref.c:916
 msgid "meters"
 msgstr "metry"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:914
+#: gweather/gweather-pref.c:918
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:916
+#: gweather/gweather-pref.c:920
 msgid "miles"
 msgstr "míle"
 
-#: gweather/gweather-pref.c:941
+#: gweather/gweather-pref.c:945
 msgid "Enable _radar map"
 msgstr "Povolit mapu _radaru"
 
-#: gweather/gweather-pref.c:955
+#: gweather/gweather-pref.c:959
 msgid "Use _custom address for radar map"
 msgstr "Používat _vlastní adresu pro mapu radaru"
 
-#: gweather/gweather-pref.c:972
+#: gweather/gweather-pref.c:976
 msgid "A_ddress:"
 msgstr "_Adresa:"
 
-#: gweather/gweather-pref.c:1054
+#: gweather/gweather-pref.c:1058
 msgid "_Select a location:"
 msgstr "Vyberte _umístění:"
 
-#: gweather/gweather-pref.c:1084
+#: gweather/gweather-pref.c:1088
 msgid "Location"
 msgstr "Umístění"
 
@@ -3549,9 +3785,9 @@ msgid "North - Northwest"
 msgstr "Sever - Severozápad"
 
 #: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
-#: gweather/weather.c:2259 gweather/weather.c:2273 gweather/weather.c:2288
-#: gweather/weather.c:2319 gweather/weather.c:2331 gweather/weather.c:2350
-#: gweather/weather.c:2374 gweather/weather.c:2387 gweather/weather.c:2407
+#: gweather/weather.c:2259 gweather/weather.c:2274 gweather/weather.c:2290
+#: gweather/weather.c:2321 gweather/weather.c:2333 gweather/weather.c:2352
+#: gweather/weather.c:2376 gweather/weather.c:2389 gweather/weather.c:2409
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -3927,88 +4163,88 @@ msgid "%dK"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2276
+#: gweather/weather.c:2277
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2300
+#: gweather/weather.c:2302
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f uzlů"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2304
+#: gweather/weather.c:2306
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2308
+#: gweather/weather.c:2310
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2312
+#: gweather/weather.c:2314
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2333
+#: gweather/weather.c:2335
 msgid "Calm"
 msgstr "Bezvětří"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2337
+#: gweather/weather.c:2339
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2355
+#: gweather/weather.c:2357
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2359
+#: gweather/weather.c:2361
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2363
+#: gweather/weather.c:2365
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2367
+#: gweather/weather.c:2369
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2392
+#: gweather/weather.c:2394
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2396
+#: gweather/weather.c:2398
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2400
+#: gweather/weather.c:2402
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: gweather/weather.c:2441
+#: gweather/weather.c:2443
 msgid "Retrieval failed"
 msgstr "Stahování selhalo"
 
@@ -4114,7 +4350,7 @@ msgid "No mail."
 msgstr "Žádná pošta."
 
 #: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
-#: mailcheck/mailcheck.c:2897 mailcheck/mailcheck.c:2898
+#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
 msgid "Status not updated"
 msgstr "Stav neaktualizován"
 
@@ -4241,15 +4477,15 @@ msgstr ""
 "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
 "nová pošta"
 
-#: mailcheck/mailcheck.c:2850
+#: mailcheck/mailcheck.c:2853
 msgid "Text only"
 msgstr "Jen text"
 
-#: mailcheck/mailcheck.c:2899
+#: mailcheck/mailcheck.c:2902
 msgid "Mail check"
 msgstr "Kontrola pošty"
 
-#: mailcheck/mailcheck.c:2900
+#: mailcheck/mailcheck.c:2903
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Kontrola pošty vás upozorňuje, když do vaší schránky přijde nová pošta"
 
@@ -4640,33 +4876,33 @@ msgstr "Používat barvy tématu místo vlastních."
 msgid "Width"
 msgstr "Šířka"
 
-#: mini-commander/src/mini-commander_applet.c:226
-#: mini-commander/src/mini-commander_applet.c:230
+#: mini-commander/src/mini-commander_applet.c:236
+#: mini-commander/src/mini-commander_applet.c:240
 msgid "Browser"
 msgstr "Prohlížeč"
 
-#: mini-commander/src/mini-commander_applet.c:231
+#: mini-commander/src/mini-commander_applet.c:241
 msgid "Click this button to start the browser"
 msgstr "Klepnutím na toto tlačítko spustíte prohlížeč"
 
-#: mini-commander/src/mini-commander_applet.c:244
-#: mini-commander/src/mini-commander_applet.c:248
+#: mini-commander/src/mini-commander_applet.c:254
+#: mini-commander/src/mini-commander_applet.c:258
 msgid "History"
 msgstr "Historie"
 
-#: mini-commander/src/mini-commander_applet.c:249
+#: mini-commander/src/mini-commander_applet.c:259
 msgid "Click this button for the list of previous commands"
 msgstr "Klepnutím na toto tlačítko necháte vypsat předchozí příkazy"
 
-#: mini-commander/src/mini-commander_applet.c:319
+#: mini-commander/src/mini-commander_applet.c:343
 msgid "Command line has been disabled by your system administrator"
 msgstr "Příkazový řádek byl zakázán vaším správcem systému"
 
-#: mini-commander/src/mini-commander_applet.c:382
+#: mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
 msgstr "Aplet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:383
+#: mini-commander/src/mini-commander_applet.c:411
 msgid "This applet adds a command line to the panel"
 msgstr "Tento aplet přidá na panel příkazový řádek"
 
@@ -4889,7 +5125,7 @@ msgid "Saved volume to restore on startup"
 msgstr "Uložená hlasitost, kterou obnovit při startu"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:138 modemlights/modemlights.c:1583
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1596
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
 
@@ -5944,3 +6180,24 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
+
+#~ msgid "Change the keyboard layout"
+#~ msgstr "Změna rozložení klávesnice"
+
+#~ msgid "GKB Factory"
+#~ msgstr "Generátor GKB"
+
+#~ msgid "Produces keyboard layout switcher applets."
+#~ msgstr "Vytváří aplety pro přepínání rozložení klávesnice"
+
+#~ msgid "Latvia"
+#~ msgstr "Lotyšsko"
+
+#~ msgid "Latvian"
+#~ msgstr "Lotyšská"
+
+#~ msgid "Serbo-Croatian"
+#~ msgstr "Srbochorvatská"
+
+#~ msgid "Yugoslavia"
+#~ msgstr "Jugoslávie"
