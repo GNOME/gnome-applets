@@ -1,4 +1,15 @@
 2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
+	
+	* properties.c (multiload_properties_cb):
+	Stupid bug fix.
+
+	Disconnected the destroy signal it gets handled
+	within properties_close_cb where we're also able to NULLify
+	the prop_dialog entry.
+
+	and a few small cleanups here and there.
+
+2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* global.h:
 	Add a prop_dialog entry to the MultiloadApplet

@@ -91,11 +91,12 @@ properties_set_insensitive(MultiloadApplet *ma)
 }
 
 void
-properties_close_cb(GtkWidget *widget, gint arg, gpointer data)
+properties_close_cb(GtkWidget *widget, gint arg, MultiloadApplet *ma)
 {
-	
 	gtk_widget_destroy(widget);
-	
+
+	ma->prop_dialog = NULL;
+
 	return;
 }
 
@@ -597,14 +598,16 @@ multiload_properties_cb (BonoboUIComponent *uic,
 			 MultiloadApplet   *ma,
 			 const char        *name)
 {
-	GtkWidget *dialog = ma->prop_dialog;
+	GtkWidget *dialog = NULL;
 	
-	if (dialog) {
-            gtk_window_set_screen (GTK_WINDOW (dialog),
-                                   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+	if (ma->prop_dialog) {
+		dialog = ma->prop_dialog;
 
-	    gtk_window_present (GTK_WINDOW (dialog));
-	    return;
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+
+		gtk_window_present (GTK_WINDOW (dialog));
+		return;
 	}
 	
 	dialog = gtk_dialog_new_with_buttons (_("System Monitor Preferences"),
@@ -623,11 +626,11 @@ multiload_properties_cb (BonoboUIComponent *uic,
 
 	properties_set_insensitive(ma);
 	
-	g_signal_connect (G_OBJECT(dialog), "destroy",
-			  G_CALLBACK(gtk_widget_destroyed), &dialog);			
 	g_signal_connect(G_OBJECT(dialog), "response",
-			G_CALLBACK(properties_close_cb), NULL);
-			
+			 G_CALLBACK(properties_close_cb), ma);
+
+	ma->prop_dialog = dialog;
+	
 	gtk_widget_show_all(dialog);
 	
 	return;

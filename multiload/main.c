@@ -109,7 +109,7 @@ help_cb (BonoboUIComponent *uic,
                                                                                 
     	egg_help_display_on_screen (
                 "multiload", NULL,
-                gtk_widget_get_screen (ma->applet),
+                gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
                 &error);
                                                                                 
     	if (error) { /* FIXME: the user needs to see this */
@@ -213,7 +213,9 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (ma->prop_dialog);
 
 	gtk_widget_destroy(GTK_WIDGET(ma->applet));
-			
+
+	g_free (ma);
+
 	return;
 }
 

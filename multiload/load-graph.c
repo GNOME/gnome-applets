@@ -110,7 +110,6 @@ void
 load_graph_unalloc (LoadGraph *g)
 {
     int i;
-	gchar name[32];
 	
     if (!g->allocated)
 		return;
@@ -128,7 +127,6 @@ load_graph_unalloc (LoadGraph *g)
     g->pos = NULL;
     g->data = g->odata = NULL;
     
-    g_snprintf(name, sizeof(name), "%s_size", g->name);
     g->size = panel_applet_gconf_get_int(g->applet, "size", NULL);
     g->size = MAX (g->size, 10);
 
@@ -221,7 +219,6 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     LoadGraph *g = (LoadGraph *) data_ptr;
 	
     load_graph_stop (g);
-
     gtk_widget_destroy(widget);
     object_list = g_list_remove (object_list, g);
     return;
