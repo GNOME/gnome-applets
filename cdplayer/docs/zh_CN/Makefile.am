@@ -7,8 +7,8 @@ figs = \
 	figures/cdplayer_applet_prevtrack.png \
 	figures/cdplayer_applet_stop.png
 docname = cdplayer
-lang = it
-omffile = cdplayer-it.omf
+lang = zh_CN
+omffile = cdplayer-zh_CN.omf
 entities = legal.xml
 include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook

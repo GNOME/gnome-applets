@@ -1,0 +1,261 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.100.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "CD Player">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ko">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; 애플릿 설명서 V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year> 
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Chris Lyttle</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+	 <publisher> 
+		<publishername>그놈 문서 프로젝트</publishername> 
+	 </publisher> 
+
+&legal;
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>그놈 문서 팀</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Chris</firstname> 
+		  <surname>Lyttle</surname> 
+		  <affiliation> 
+			 <orgname>그놈 문서 프로젝트</orgname> 
+			 <address> <email>chris@wilddev.net</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; 애플릿 설명서 V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>CD 플레이어 애플릿 설명서 V2.0</revnumber> 
+		  <date>2002년 5월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>CD 플레이어 애플릿</revnumber> 
+		  <date>2000년</date> 
+		  <revdescription> 
+			 <para role="author">Chris Lyttle
+				
+<email>chris@wilddev.net</email></para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo> 이 설명서에서는 &applet;의 버전 &appletversion;에 대해 설명합니다.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>피드백</title>
+		<para> &applet; 애플릿 또는 이 설명서에 대한 버그를 보고하거나
+		  의견을 제시하려면 
+		  
+		<ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>CD 플레이어 애플릿</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="cdplayer_applet_introduction"> 
+	 <title>소개</title>
+	 <!-- ==== Figure ============================================= -->
+	 <figure id="applet-fig"> 
+		<title>&applet; 애플릿</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/cdplayer_applet.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>&applet; 애플릿을 표시합니다. 중지, 재생/일시 중지, 꺼내기, 이전 트랙 및 다음 트랙 버튼이 들어 있습니다.
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    	<!-- ==== End of Figure ======================================= -->
+	<para><application>&applet;</application> 애플릿을 사용하면 컴퓨터에서 오디오 CD(컴팩트 디스크)를 재생할 수 있습니다. </para>
+	<para>패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭한 다음 <menuchoice>
+<guimenu>패널에 추가</guimenu>
+<guisubmenu>멀티미디어</guisubmenu>
+<guimenuitem>CD 플레이어</guimenuitem>
+</menuchoice>를 선택합니다.
+	 <application>&applet;</application> 애플릿의 레이아웃은 해당 애플릿이 상주하는 패널의 크기 및 유형에 따라 달라집니다.</para>
+  </sect1>
+
+  <sect1 id="cdplayer_applet_usage">
+	<title>사용</title>
+
+	<sect2 id="cdplayer_applet_play">
+	<title>CD를 재생하려면</title>
+	<para>CD를 재생하려면 컴퓨터의 CD 드라이브에 CD를 
+넣은 다음 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>재생/일시 중지 버튼을 표시합니다. </phrase></textobject>
+	</inlinemediaobject> 버튼을 클릭합니다. </para>
+	<figure id="fig-cd-playing"> 
+		<title>CD 재생 중의 &applet; 애플릿 상태</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/cdplayer_applet_playing.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>CD 재생 중의 &applet; 애플릿 상태를 표시합니다.
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+	<para>이 애플릿에는 
+<xref linkend="fig-cd-playing"/>에 나타나 있는 것처럼 다음 정보가 표시됩니다. </para>
+	<itemizedlist>
+		<listitem><para>현재 트랙에서 경과된 시간</para></listitem>
+		<listitem><para>현재 재생 중인 트랙의 번호</para></listitem>
+	</itemizedlist>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_pause">
+	<title>CD를 일시 중지하려면</title>
+	<para>재생 중인 CD를 일시 중지하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>재생/일시 중지 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다. 
+	CD를 일시 중지하면 CD를 다시 재생할 때까지 현재 트랙에서의 경과 시간이 깜빡거리며 표시됩니다. CD 재생을 재개하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>재생/일시 중지 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 다시 클릭합니다.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_movetracks">
+	<title>트랙 간에 이동하려면</title>
+	<para>CD에서 다음 트랙으로 이동하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>다음 트랙 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다. 
+	CD에서 다음 트랙으로의 이동을 
+계속하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>다음 트랙 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다.</para>
+	<para>CD에서 이전 트랙으로 이동하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>이전 트랙 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다. CD에서 이전 트랙으로의 이동을 
+계속하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>이전 트랙 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_stop">
+	<title>CD를 중지하려면</title>
+	<para>CD를 중지하려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_stop.png" format="PNG"/></imageobject>
+	<textobject><phrase>중지 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다.</para>
+	</sect2>
+
+	<sect2 id="cdplayer_applet_eject">
+	<title>CD를 꺼내려면</title>
+	<para>CD를 꺼내려면 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject>
+	<textobject><phrase>꺼내기 버튼을 표시합니다. </phrase></textobject>	
+	</inlinemediaobject> 버튼을 클릭합니다. 
+	CD 드라이브에서 CD가 나옵니다. CD를 꺼낸 후 드라이브를 닫습니다. </para>
+	</sect2>
+
+	<sect2 id="cdplayer_additional_features">
+	<title>추가 기능에 액세스하려면</title>
+	<para>트랙 정보 편집이나 볼륨 조절 같은 오디오 CD 재생에 대한 추가 기능에 액세스하려면 <application>CD 플레이어</application> 응용프로그램을 시작합니다. CD 플레이어에서 <application>
+	CD 플레이어</application> 응용프로그램을 시작하려면 애플릿을 마우스 오른쪽 버튼으로 
+	클릭한 다음 <guimenuitem>외부 CD 플레이어 실행</guimenuitem>을 선택합니다. </para>
+	</sect2>
+
+  </sect1>
+
+<!-- ============= Preferences ============================= -->
+  <sect1 id="cdplayer_applet_prefs"> 
+	 <title>환경 설정</title>
+
+	 <sect2 id="cdplayer-applet_specify_cd">
+	 <title>CD 장치를 지정하려면</title>
+	 <para>애플릿이 액세스할 CD 장치를 지정하려면 해당 애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.
+	<guilabel>장치 경로</guilabel> 텍스트 상자에 CD 장치 경로를 입력합니다. 시스템의 기본 CD 장치를 사용하려면 <guibutton>기본값 사용</guibutton>를 클릭합니다.
+	변경 내용을 저장하고 <guilabel>CD 플레이어 환경 설정</guilabel> 대화 상자를 닫으려면  <guibutton>닫기</guibutton>
+를 클릭합니다.  </para>
+	 </sect2>
+	 
+  </sect1>
+
+</article>
