@@ -379,6 +379,36 @@ GSwitchItAppletChangePixelSize (PanelApplet *
 	GSwitchItAppletRevalidate (sia);
 }
 
+static void
+GSwitchItAppletChangeBackground (PanelApplet *
+				 widget, PanelAppletBackgroundType type,
+				 GdkColor *color, GdkPixmap *pixmap,
+				 GSwitchItApplet * sia)
+{
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+	switch (type) {
+		case PANEL_PIXMAP_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
+			break;
+
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (sia->applet), GTK_STATE_NORMAL, color);
+			break;
+
+		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
+			break;
+
+		default:
+			gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
+			break;
+	}
+
+	gtk_rc_style_unref (rc_style);
+
+	return;
+}
 
 static gboolean
 GSwitchItAppletKeyPressed (GtkWidget *
@@ -744,6 +774,10 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	g_signal_connect (G_OBJECT (sia->applet), "change_size",
 			  G_CALLBACK (GSwitchItAppletChangePixelSize),
 			  sia);
+	g_signal_connect (G_OBJECT (sia->applet), "change_background",
+			  G_CALLBACK (GSwitchItAppletChangeBackground),
+			  sia);
+	
 	GSwitchItAppletStartListen (sia);
 	gtk_widget_add_events (sia->applet, GDK_BUTTON_PRESS_MASK);
 
