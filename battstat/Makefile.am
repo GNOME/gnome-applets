@@ -82,7 +82,7 @@ EXTRA_DIST = 			\
 	$(pixmaps_DATA)		\
 	$(glade_DATA)		\
 	$(ui_DATA)		\
-	$(server_in_files)	\
+	GNOME_BattstatApplet.server.in.in	\
 	$(schemas_in_files)
 
 
