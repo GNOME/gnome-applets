@@ -11,8 +11,8 @@ EXTRA_DIST = modemlights-applet.sgml modemlights.sgml topic.dat
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
 
-index.html: modemlights-applet/modemlights-applet.html
-	-cp modemlights-applet/modemlights-applet.html index.html
+index.html: modemlights-applet/index.html
+	-cp modemlights-applet/index.html .
 
 modemlights-applet/index.html: $(srcdir)/modemlights-applet.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
