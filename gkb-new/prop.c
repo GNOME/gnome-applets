@@ -66,7 +66,7 @@ switch_small_cb (GnomePropertyBox * pb, GkbPropertyBoxInfo * pbi)
  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 }
 
-void
+static void
 apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 {
   GList * list;

@@ -1,3 +1,22 @@
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop.c (apply_cb): make static to avoid compile warning
+
+	* prop-list.c (gkb_prop_list_reload): make public as
+	prop-map needs it.
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-map.c
+
+	* prop-map.c : new file, move all the map editing
+	and adding from prop-list into here.
+	(gkb_prop_map_add): reanme from addwin
+	(mapedit_cb): rename to :
+	(gkb_prop_map_edit): 
+
+	* prop-list.c (gkb_prop_list_reload): when reloading
+	the list of items, honor the previously selected item.
+	This keeps the selected item thru an up/down action.
+	
 2000-12-08  Shooby Ban <shooby@gnome.hu>
 
 	* gkb.h: added gkb_sized_render()
@@ -10,7 +29,7 @@
 	(del_select_cb): rename to :
 	(gkb_prop_list_button_clicked_cb): call the new function here
 	(gkb_prop_list_create_item): implement.
-
+	
 2000-12-08  Shooby Ban <shooby@gnome.hu>
 
 	* gkb.h: restructuring

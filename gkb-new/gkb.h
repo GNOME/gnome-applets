@@ -158,7 +158,12 @@ GkbKeymap * loadprop (int i);
 /* prop-list.c */
 GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
 GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
-void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
+       void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
+       void gkb_prop_list_reload (GkbPropertyBoxInfo *pbi);
+
+/* prop-map.h */
+void gkb_prop_map_edit (GkbPropertyBoxInfo *pbi);
+void gkb_prop_map_add (GkbPropertyBoxInfo *pbi);
 
 /* keygrab.c */
 gboolean convert_string_to_keysym_state(const char *string,

@@ -13,7 +13,8 @@ gkb_applet_SOURCES = \
 		gkb.h		\
 		prop.c 		\
 		prop-list.c	\
-		preset.c	\
+		prop-map.c	\
+		preset.c		\
 		keygrab.c
 
 #lib_LTLIBRARIES=libgkb_applet.la
