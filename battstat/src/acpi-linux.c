@@ -21,12 +21,20 @@
 // ACPI battery read-out functions for Linux >= 2.4.12
 // October 2001 by Lennart Poettering <lennart@poettering.de>
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef __linux__
+
 #include <stdio.h>
 #include <apm.h>
 #include <glib.h>
 #include <string.h>
 #include <stdlib.h>
 
+// Returns the first line of file f which starts with "field: " in
+// tmp. Return value is a pointer to the end of the string
 static gchar *al_get_field(FILE *f, const gchar *field, gchar *tmp, int s)
 {
   g_assert(f && field && tmp && s);
@@ -37,17 +45,17 @@ static gchar *al_get_field(FILE *f, const gchar *field, gchar *tmp, int s)
       
       if (!fgets(tmp, s, f)) break;
       
-      if ((c = strchr(tmp, ':')))
+      if ((c = strchr(tmp, ':'))) // Is a colon separated line
         {
           *c = 0;
-          if (strcmp(tmp, field) == 0)
+          if (strcmp(tmp, field) == 0) // It is the right line
             {
-              c++;
+              c++; // Find the beginning of the data
               if (*c)
                 c ++;
               c = c + strspn(c, " \t");
               
-              if ((e = strchr(c, 0)) > tmp)
+              if ((e = strchr(c, 0)) > tmp) // Remove NL from end
                 {
                   e--;
                   if (*e == '\n')
@@ -63,15 +71,22 @@ static gchar *al_get_field(FILE *f, const gchar *field, gchar *tmp, int s)
   return NULL;
 }
 
+// Returns the same as the function above, but converted into an integer
 static int al_get_field_int(FILE *f, const gchar *field)
 {
   gchar tmp[256];
+  gchar *p;
   
   g_assert(f && field);
  
-  return atoi(al_get_field(f, field, tmp, sizeof(tmp)));
+  if (p = al_get_field(f, field, tmp, sizeof(tmp)))
+    return atoi(p);
+  else
+    return 0;
 }
 
+// Fills out a classic apm_info structure with the data gathered from
+// the ACPI kernel interface in /proc
 gboolean acpi_linux_read(struct apm_info *apminfo)
 {
   guint32 max_capacity, low_capacity, critical_capacity, remain;
@@ -137,3 +152,5 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
 
   return TRUE;
 }
+
+#endif
