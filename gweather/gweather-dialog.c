@@ -81,7 +81,10 @@ void gweather_dialog_create (void)
   g_return_if_fail(gweather_dialog == NULL);
 
   gweather_dialog = gnome_dialog_new (_("GNOME Weather"), NULL);
-  gtk_widget_set_usize (gweather_dialog, 640, 420);
+  if (gweather_pref.radar_enabled)
+      gtk_widget_set_usize (gweather_dialog, 640, 420);
+  else
+      gtk_widget_set_usize (gweather_dialog, 590, 340);
   gtk_window_set_policy (GTK_WINDOW (gweather_dialog), FALSE, FALSE, FALSE);
   gnome_dialog_close_hides(GNOME_DIALOG(gweather_dialog), TRUE);
 
