@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-30 03:44+0100\n"
-"PO-Revision-Date: 2004-01-30 12:16+0100\n"
+"POT-Creation-Date: 2004-02-02 14:55+0100\n"
+"PO-Revision-Date: 2004-02-02 18:44+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generátor pro stavový aplet AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1194
+#: accessx-status/applet.c:1195
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
@@ -85,14 +85,14 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 msgid "Utility"
 msgstr "Nástroj"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:897
-#: cdplayer/cdplayer.c:599 charpick/charpick.c:591 drivemount/drivemount.c:540
-#: geyes/geyes.c:227 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:540
-#: gtik/gtik.c:776 gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:47 mixer/mixer.c:1329
-#: modemlights/modemlights.c:115 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:889
+#: cdplayer/cdplayer.c:601 charpick/charpick.c:553 drivemount/drivemount.c:546
+#: geyes/geyes.c:230 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:540
+#: gtik/gtik.c:777 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2450
+#: mini-commander/src/about.c:50 mixer/mixer.c:1329
+#: modemlights/modemlights.c:115 multiload/main.c:57
+#: stickynotes/stickynotes_applet_callbacks.c:202
+#: wireless/wireless-applet.c:566
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -102,40 +102,45 @@ msgstr ""
 "Michal Bukovjan <bukm@centrum.cz>\n"
 "Miloslav Trmač <mitr@volny.cz>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1197
+#: accessx-status/applet.c:154 accessx-status/applet.c:962
+#: accessx-status/applet.c:1060 accessx-status/applet.c:1198
 msgid "AccessX Status"
 msgstr "Stav AccessX"
 
-#: accessx-status/applet.c:158
+#: accessx-status/applet.c:155
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Copyright © 2003 Sun Microsystems"
 
-#: accessx-status/applet.c:159
+#: accessx-status/applet.c:156
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Zobrazí stav vlastností AccessX, například zablokovaných modifikátorů"
 
-#: accessx-status/applet.c:198
+#: accessx-status/applet.c:195
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Při spouštění zobrazení nápovědy došlo k chybě: %s"
 
-#: accessx-status/applet.c:221
+#: accessx-status/applet.c:218
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Při spouštění capletu klávesnice došlo k chybě: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:461 accessx-status/applet.c:499
+#: accessx-status/applet.c:458 accessx-status/applet.c:496
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1199
+#: accessx-status/applet.c:963 accessx-status/applet.c:1061
+msgid "Shows keyboard status when accessibility features are used."
+msgstr "Zobrazuje stav klávesnice, když se používají funkce zpřístupnění."
+
+#: accessx-status/applet.c:1200
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:910 battstat/battstat_applet.c:1608
+#: battstat/battstat_applet.c:910 battstat/battstat_applet.c:1614
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -144,7 +149,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1609
+#: battstat/battstat_applet.c:1615
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -256,22 +261,22 @@ msgstr "Tento aplet nebude fungovat správně (pokud vůbec).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:941
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:946
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:943
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:948
 msgid "Low"
 msgstr "Nízké"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:945
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:950
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:947
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:952
 msgid "Charging"
 msgstr "Nabíjení"
 
@@ -288,7 +293,7 @@ msgstr "Baterie jsou nyní zcela dobité!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1105
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1110
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -300,7 +305,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1113
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1118
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -311,16 +316,16 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1037
-#: battstat/battstat_applet.c:1126
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1042
+#: battstat/battstat_applet.c:1131
 #, c-format
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1043
-#: battstat/battstat_applet.c:1132
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1048
+#: battstat/battstat_applet.c:1137
 #, c-format
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
@@ -335,7 +340,7 @@ msgstr "N/A"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1017
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1022
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
@@ -345,7 +350,7 @@ msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1029
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
@@ -383,7 +388,7 @@ msgid "Battery: Not present"
 msgstr "Baterie: Není přítomná"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:777
+#: battstat/battstat_applet.c:780
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -396,7 +401,7 @@ msgstr ""
 "zařízení APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:789
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -406,7 +411,7 @@ msgstr ""
 "Zkuste spustit \"apm -e 1\" (FreeBSD) a možná to\n"
 "pomůže.\n"
 
-#: battstat/battstat_applet.c:842
+#: battstat/battstat_applet.c:845
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -415,16 +420,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: battstat/battstat_applet.c:846
+#: battstat/battstat_applet.c:849
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: battstat/battstat_applet.c:848
+#: battstat/battstat_applet.c:851
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: battstat/battstat_applet.c:856
+#: battstat/battstat_applet.c:859
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -434,7 +439,7 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:877
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
@@ -446,7 +451,7 @@ msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1535
+#: battstat/battstat_applet.c:1540
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -492,7 +497,7 @@ msgstr "<b>Uspat</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Varování</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1532
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1533
 msgid "Appearance"
 msgstr "Vzhled"
 
@@ -501,7 +506,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Nastavení Sledování stavu baterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
-#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2024
+#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2036
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Obecné"
@@ -558,12 +563,12 @@ msgstr "_Varovat, když je nabití baterie nízké"
 msgid "_Yellow:"
 msgstr "_Žlutá:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:498
-#: drivemount/properties.c:595 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1435 stickynotes/stickynotes_applet_callbacks.c:176
-#: stickynotes/stickynotes_applet_callbacks.c:324
-#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
+#: battstat/properties.c:296 drivemount/drivemount.c:503
+#: drivemount/properties.c:595 mailcheck/mailcheck.c:2303
+#: mailcheck/mailcheck.c:2555 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1435 stickynotes/stickynotes_applet_callbacks.c:179
+#: stickynotes/stickynotes_applet_callbacks.c:340
+#: wireless/wireless-applet.c:536 wireless/wireless-applet.c:617
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -580,8 +585,8 @@ msgstr "Baterie jsou plně dobity"
 msgid "Battery power low"
 msgstr "Téměř vybité baterie"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:613
-#: cdplayer/cdplayer.c:1077
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:615
+#: cdplayer/cdplayer.c:1079
 msgid "CD Player"
 msgstr "CD Přehrávač"
 
@@ -606,23 +611,23 @@ msgstr "Aplet pro přehrávání zvukových CD"
 msgid "_Open CD Player"
 msgstr "_Otevřít CD přehrávač"
 
-#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1067
+#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1069
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1069
+#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1071
 msgid "Play / Pause"
 msgstr "Hrát / Pauza"
 
-#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1071
+#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1073
 msgid "Eject"
 msgstr "Vysunout"
 
-#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1073
+#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1075
 msgid "Previous Track"
 msgstr "Předchozí skladba"
 
-#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1075
+#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1077
 msgid "Next Track"
 msgstr "Následující skladba"
 
@@ -630,7 +635,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:383 mixer/mixer.c:1296 multiload/main.c:119
+#: cdplayer/cdplayer.c:383 mixer/mixer.c:1296 multiload/main.c:115
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -660,7 +665,7 @@ msgstr "Nastavte zde cestu k zařízení"
 msgid "Use _Default"
 msgstr "Použít _implicitní"
 
-#: cdplayer/cdplayer.c:614
+#: cdplayer/cdplayer.c:616
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -668,41 +673,41 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (Port pro GNOME 2)"
 
-#: cdplayer/cdplayer.c:616 cdplayer/cdplayer.c:1078
+#: cdplayer/cdplayer.c:618 cdplayer/cdplayer.c:1080
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "Tento aplet pro přehrávání CD slouží k jednoduchému přehrávání CD na vašem "
 "panelu"
 
-#: cdplayer/cdplayer.c:892 cdplayer/cdplayer.c:903
+#: cdplayer/cdplayer.c:894 cdplayer/cdplayer.c:905
 msgid "Elapsed time"
 msgstr "Uplynulý čas"
 
-#: cdplayer/cdplayer.c:895 cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:897 cdplayer/cdplayer.c:907
 msgid "Track number"
 msgstr "Číslo skladby"
 
-#: cdplayer/cdplayer.c:966
+#: cdplayer/cdplayer.c:968
 msgid "Audio device is busy, or being used by another application"
 msgstr "Zvukové zařízení je zaneprázdněno nebo používáno jinou aplikací"
 
-#: cdplayer/cdplayer.c:1068
+#: cdplayer/cdplayer.c:1070
 msgid "Click this button to Stop playing the CD"
 msgstr "Stisknutím tohoto tlačítka zastavíte přehrávání CD"
 
-#: cdplayer/cdplayer.c:1070
+#: cdplayer/cdplayer.c:1072
 msgid "Click this button to Play or Pause the CD"
 msgstr "Stisknutím tohoto tlačítka spustíte nebo zastavíte přehrávání CD"
 
-#: cdplayer/cdplayer.c:1072
+#: cdplayer/cdplayer.c:1074
 msgid "Click this button to eject the CD"
 msgstr "Stisknutím tohoto tlačítka vysunete CD"
 
-#: cdplayer/cdplayer.c:1074
+#: cdplayer/cdplayer.c:1076
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na předcházející skladbu CD"
 
-#: cdplayer/cdplayer.c:1076
+#: cdplayer/cdplayer.c:1078
 msgid "Click this button to Play the next track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na následující skladbu CD"
 
@@ -718,8 +723,8 @@ msgstr ""
 "Toto je úplná cesta zařízení, které bude použito pro přehrávání cd z tohoto "
 "apletu"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
-#: charpick/charpick.c:755 charpick/properties.c:345
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:570
+#: charpick/charpick.c:721 charpick/properties.c:425
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -727,41 +732,33 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:755
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:721
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
-#: charpick/charpick.c:321 charpick/properties.c:125
-msgid "Add Palette"
-msgstr "Přidat paletu"
-
-#: charpick/charpick.c:372
-msgid "Add a palette..."
-msgstr "Přidat paletu..."
-
-#: charpick/charpick.c:455
+#: charpick/charpick.c:416
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
-#: charpick/charpick.c:492
+#: charpick/charpick.c:453
 msgid "Insert special characters"
 msgstr "Vkládání speciálních znaků"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:582
+#: charpick/charpick.c:542
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:583
+#: charpick/charpick.c:543
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:611
+#: charpick/charpick.c:572
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:612
+#: charpick/charpick.c:573
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -777,7 +774,7 @@ msgstr "Znaky zobrazované při spuštění apletu"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "ZASTARALÉ - Znaky zobrazované při spuštění apletu"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:352
 msgid "List of available palettes"
 msgstr "Seznam dostupných palet"
 
@@ -793,60 +790,64 @@ msgstr ""
 "Řetězec, který uživatel vybral, když byl aplet naposledy použit. Tento "
 "řetězec bude zobrazen, když uživatel aplet spustí."
 
-#: charpick/properties.c:88
+#: charpick/properties.c:90
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:98
 msgid "Palette entry"
 msgstr "Položka palety"
 
-#: charpick/properties.c:96
+#: charpick/properties.c:99
 msgid "Modify a palette by adding or removing characters"
 msgstr "Upravte paletu přidáním nebo odstraněním znaků"
 
-#: charpick/properties.c:171
+#: charpick/properties.c:213
+msgid "Add Palette"
+msgstr "Přidat paletu"
+
+#: charpick/properties.c:250
 msgid "Edit Palette"
 msgstr "Upravit paletu"
 
-#: charpick/properties.c:271
+#: charpick/properties.c:351
 msgid "Palettes list"
 msgstr "Seznam palet"
 
-#: charpick/properties.c:350
+#: charpick/properties.c:430
 msgid "Pal_ettes:"
 msgstr "Pa_lety:"
 
-#: charpick/properties.c:366
+#: charpick/properties.c:446
 msgid "Add button"
 msgstr "Přidat tlačítko"
 
-#: charpick/properties.c:367
+#: charpick/properties.c:447
 msgid "Click to add a new palette"
 msgstr "Kliknutím přidáte novou paletu"
 
-#: charpick/properties.c:374
+#: charpick/properties.c:454
 msgid "Edit button"
 msgstr "Upravit tlačítko"
 
-#: charpick/properties.c:375
+#: charpick/properties.c:455
 msgid "Click to edit the selected palette"
 msgstr "Kliknutím upravíte vybranou paletu"
 
-#: charpick/properties.c:382
+#: charpick/properties.c:462
 msgid "Delete button"
 msgstr "Odstranit tlačítko"
 
-#: charpick/properties.c:383
+#: charpick/properties.c:463
 msgid "Click to delete the selected palette"
 msgstr "Kliknutím odstraníte vybranou paletu"
 
-#: charpick/properties.c:435
+#: charpick/properties.c:515
 msgid "Character Palette Preferences"
 msgstr "Nastavení Palety znaků"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:565
 msgid "Disk Mounter"
 msgstr "Připojování disků"
 
@@ -870,41 +871,41 @@ msgstr "Pro_bírat..."
 msgid "_Eject"
 msgstr "_Vysunout"
 
-#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:444 mailcheck/mailcheck.c:659
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Při spouštění %s došlo k chybě: %s"
 
-#: drivemount/drivemount.c:446
+#: drivemount/drivemount.c:451
 msgid "Cannot browse device"
 msgstr "Nemohu procházet zařízení"
 
-#: drivemount/drivemount.c:504 drivemount/properties.c:601
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
+#: drivemount/drivemount.c:509 drivemount/properties.c:601
+#: mailcheck/mailcheck.c:2309 mailcheck/mailcheck.c:2561
 msgid "Error displaying help"
 msgstr "Chyba při zobrazování nápovědy"
 
-#: drivemount/drivemount.c:559
+#: drivemount/drivemount.c:566
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:561
+#: drivemount/drivemount.c:568
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
 
-#: drivemount/drivemount.c:761
+#: drivemount/drivemount.c:770
 msgid " mounted"
 msgstr " připojen"
 
-#: drivemount/drivemount.c:763
+#: drivemount/drivemount.c:772
 msgid " not mounted"
 msgstr " není připojen"
 
-#: drivemount/drivemount.c:875
+#: drivemount/drivemount.c:884
 msgid "\" reported:\n"
 msgstr "\" hlásí:\n"
 
-#: drivemount/drivemount.c:877
+#: drivemount/drivemount.c:886
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -912,7 +913,7 @@ msgstr ""
 "Příkaz pro připojení selhal.\n"
 "\""
 
-#: drivemount/drivemount.c:883
+#: drivemount/drivemount.c:892
 msgid "Cannot mount device"
 msgstr "Nemohu připojit zařízení"
 
@@ -940,8 +941,8 @@ msgstr "Vybrat adresář připojení"
 msgid "_Update interval:"
 msgstr "Interval _aktualizace:"
 
-#: drivemount/properties.c:409 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101 modemlights/properties.c:468
+#: drivemount/properties.c:409 mailcheck/mailcheck.c:2107
+#: mailcheck/mailcheck.c:2113 modemlights/properties.c:468
 msgid "seconds"
 msgstr "sekund"
 
@@ -1017,8 +1018,8 @@ msgstr "Pár očí pro váš panel"
 msgid "Amusements"
 msgstr "Zábava"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:244
-#: geyes/geyes.c:466 geyes/geyes.c:468
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:247
+#: geyes/geyes.c:471 geyes/geyes.c:473
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -1026,15 +1027,15 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Generátor pro aplet Geyes"
 
-#: geyes/geyes.c:245
+#: geyes/geyes.c:248
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright © 1999 Dave Camp"
 
-#: geyes/geyes.c:246
+#: geyes/geyes.c:249
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Malá zábavná imitace X očí pro panel GNOME."
 
-#: geyes/geyes.c:469
+#: geyes/geyes.c:474
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Oči pokukují po vašem kurzoru myši"
 
@@ -1042,15 +1043,23 @@ msgstr "Oči pokukují po vašem kurzoru myši"
 msgid "Directory in which the theme is located"
 msgstr "Adresář, ve kterém je téma umístěno"
 
-#: geyes/themes.c:257
+#: geyes/themes.c:109
+msgid "Can not launch the eyes applet."
+msgstr "Nemohu spustit aplet očí."
+
+#: geyes/themes.c:110
+msgid "There was a fatal error while trying to load the theme."
+msgstr "Při pokusu načíst téma došlo k fatální chybě."
+
+#: geyes/themes.c:280
 msgid "Geyes Preferences"
 msgstr "Nastavení Geyes"
 
-#: geyes/themes.c:289
+#: geyes/themes.c:312
 msgid "Themes"
 msgstr "Témata"
 
-#: geyes/themes.c:310
+#: geyes/themes.c:333
 msgid "_Select a theme:"
 msgstr "_Vyberte téma:"
 
@@ -2404,7 +2413,7 @@ msgstr "Popis"
 msgid "Flag and Label"
 msgstr "Vlajka a popis"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1539 gweather/gweather-pref.c:745
+#: gkb-new/prop.c:257 gtik/gtik.c:1540 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Zobrazení"
@@ -2689,7 +2698,7 @@ msgstr "Získává neustále aktualizované kurzy akcií"
 msgid "Gtik Applet Factory"
 msgstr "Generátor pro aplet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:796
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:797
 msgid "Stock Ticker"
 msgstr "Sledování burzy"
 
@@ -2706,7 +2715,7 @@ msgstr "Nemohu získat předdefinovaná data."
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
-#: gtik/gtik.c:798
+#: gtik/gtik.c:799
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2719,126 +2728,126 @@ msgstr ""
 "aplikaci při rozhodování o investicích; tato aplikace slouží pouze k "
 "informativním účelům."
 
-#: gtik/gtik.c:1288
+#: gtik/gtik.c:1289
 msgid "Current _stocks:"
 msgstr "Aktuální _akcie:"
 
-#: gtik/gtik.c:1296
+#: gtik/gtik.c:1297
 msgid "_New symbol:"
 msgstr "Nový _symbol:"
 
-#: gtik/gtik.c:1305
+#: gtik/gtik.c:1306
 msgid "_Add"
 msgstr "Přid_at"
 
-#: gtik/gtik.c:1314
+#: gtik/gtik.c:1315
 msgid "_Remove"
 msgstr "_Odstranit"
 
-#: gtik/gtik.c:1420
+#: gtik/gtik.c:1421
 msgid "Stock Ticker Preferences"
 msgstr "Nastavení Sledování burzy"
 
-#: gtik/gtik.c:1442
+#: gtik/gtik.c:1443
 msgid "Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1449 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1450 mailcheck/mailcheck.c:2378
 msgid "Behavior"
 msgstr "Chování"
 
-#: gtik/gtik.c:1452 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1453 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "Aktualizace"
 
-#: gtik/gtik.c:1456
+#: gtik/gtik.c:1457
 msgid "Stock update fre_quency:"
 msgstr "_Frekvence aktualizace:"
 
-#: gtik/gtik.c:1468 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2072
-#: mailcheck/mailcheck.c:2078
+#: gtik/gtik.c:1469 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2084
+#: mailcheck/mailcheck.c:2090
 msgid "minutes"
 msgstr "minut"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Scrolling"
 msgstr "Posouvání"
 
-#: gtik/gtik.c:1478
+#: gtik/gtik.c:1479
 msgid "_Scroll speed:"
 msgstr "_Rychlost posouvání:"
 
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1483
 msgid "Slow"
 msgstr "Pomalá"
 
-#: gtik/gtik.c:1484
+#: gtik/gtik.c:1485
 msgid "Medium"
 msgstr "Střední"
 
-#: gtik/gtik.c:1486
+#: gtik/gtik.c:1487
 msgid "Fast"
 msgstr "Rychlá"
 
-#: gtik/gtik.c:1506
+#: gtik/gtik.c:1507
 msgid "_Enable scroll buttons"
 msgstr "_Povolit tlačítka pro posun"
 
-#: gtik/gtik.c:1518
+#: gtik/gtik.c:1519
 msgid "Scroll _left to right"
 msgstr "Posunovat z_leva doprava"
 
-#: gtik/gtik.c:1544
+#: gtik/gtik.c:1545
 msgid "Displa_y only symbols and price"
 msgstr "Zobrazovat pouze s_ymboly a ceny"
 
-#: gtik/gtik.c:1557 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1558 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Šířka:"
 
-#: gtik/gtik.c:1571 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1572 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:488
 msgid "pixels"
 msgstr "bodů"
 
-#: gtik/gtik.c:1580
+#: gtik/gtik.c:1581
 msgid "Font and Colors"
 msgstr "Písmo a barvy"
 
-#: gtik/gtik.c:1586
+#: gtik/gtik.c:1587
 msgid "Use _default theme font and colors"
 msgstr "Po_užívat implicitní písmo a barvy tématu"
 
-#: gtik/gtik.c:1601 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1602 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Písmo:"
 
-#: gtik/gtik.c:1625
+#: gtik/gtik.c:1626
 msgid "Stock _raised:"
 msgstr "Kurz _stoupl:"
 
-#: gtik/gtik.c:1644
+#: gtik/gtik.c:1645
 msgid "Stock _lowered:"
 msgstr "Kurz _klesl:"
 
-#: gtik/gtik.c:1663
+#: gtik/gtik.c:1664
 msgid "Stock _unchanged:"
 msgstr "Kurz _nezměněn:"
 
-#: gtik/gtik.c:1682 modemlights/properties.c:580
+#: gtik/gtik.c:1683 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "Po_zadí:"
 
-#: gtik/gtik.c:1825
+#: gtik/gtik.c:1826
 msgid "Skip forward"
 msgstr "Přeskočit dopředu"
 
-#: gtik/gtik.c:1826
+#: gtik/gtik.c:1827
 msgid "Skip backward"
 msgstr "Přeskočit dozadu"
 
-#: gtik/gtik.c:1834
+#: gtik/gtik.c:1835
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2846,11 +2855,11 @@ msgstr ""
 "Sledování burzy\n"
 "Získává neustále aktualizované kurzy akcií"
 
-#: gtik/gtik.c:2043
+#: gtik/gtik.c:2044
 msgid "(No"
 msgstr "(Žádná"
 
-#: gtik/gtik.c:2044
+#: gtik/gtik.c:2045
 msgid "Change "
 msgstr "Změna "
 
@@ -3011,15 +3020,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Sleduje aktuální počasí a předpovědi"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:62
+#: gweather/gweather-about.c:65
 msgid "Weather Report"
 msgstr "Zprávy o počasí"
 
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:66
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright © 1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:67
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3150,35 +3159,35 @@ msgstr "Pole adresy"
 msgid "Enter the URL"
 msgstr "Zadejte URL"
 
-#: gweather/gweather-pref.c:611
+#: gweather/gweather-pref.c:605
 msgid "Weather Preferences"
 msgstr "Nastavení Počasí"
 
-#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
+#: gweather/gweather-pref.c:638 gweather/gweather-pref.c:703
 msgid "_Automatically update every:"
 msgstr "Automaticky aktualizovat _každých:"
 
-#: gweather/gweather-pref.c:652
+#: gweather/gweather-pref.c:646
 msgid "Use _metric system units"
 msgstr "Používat _metrické jednotky"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:654
 msgid "Enable _radar map"
 msgstr "Povolit mapu _radaru"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:668
 msgid "Use cus_tom address for radar map"
 msgstr "Používat _vlastní adresu pro mapu radaru"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:685
 msgid "A_ddress:"
 msgstr "_Adresa:"
 
-#: gweather/gweather-pref.c:772
+#: gweather/gweather-pref.c:766
 msgid "_Select a location:"
 msgstr "Vyberte _umístění:"
 
-#: gweather/gweather-pref.c:801
+#: gweather/gweather-pref.c:795
 msgid "Location"
 msgstr "Umístění"
 
@@ -3686,7 +3695,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Generátor pro vytváření sledování poštovní schránky."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:795 mailcheck/mailcheck.c:2448
+#: mailcheck/mailcheck.c:795 mailcheck/mailcheck.c:2463
 msgid "Inbox Monitor"
 msgstr "Sledování poštovní schránky"
 
@@ -3716,11 +3725,11 @@ msgstr ""
 msgid "Please enter your mailserver's _password:"
 msgstr "Zadejte prosím _heslo svého poštovního serveru:"
 
-#: mailcheck/mailcheck.c:814 mailcheck/mailcheck.c:1925
+#: mailcheck/mailcheck.c:814 mailcheck/mailcheck.c:1937
 msgid "Password Entry box"
 msgstr "Pole pro zadání hesla"
 
-#: mailcheck/mailcheck.c:829 mailcheck/mailcheck.c:1952
+#: mailcheck/mailcheck.c:829 mailcheck/mailcheck.c:1964
 msgid "_Save password to disk"
 msgstr "Uložit heslo na _disk"
 
@@ -3744,165 +3753,177 @@ msgstr "Chyba při připojování k poštovnímu serveru."
 msgid "Error"
 msgstr "Chyba"
 
-#: mailcheck/mailcheck.c:1076
+#: mailcheck/mailcheck.c:1077
 msgid "You have new mail."
 msgstr "Máte novou poštu."
 
-#: mailcheck/mailcheck.c:1078
+#: mailcheck/mailcheck.c:1079
 msgid "You have mail."
 msgstr "Máte poštu"
 
-#: mailcheck/mailcheck.c:1082
+#: mailcheck/mailcheck.c:1083
 #, c-format
-msgid "%d unread/ %d messages"
-msgstr "%d nepřečtených/ %d zpráv"
+msgid "%d unread"
+msgid_plural "%d unread"
+msgstr[0] "%d nepřečtená"
+msgstr[1] "%d nepřečtené"
+msgstr[2] "%d nepřečtených"
 
-#: mailcheck/mailcheck.c:1084
+#: mailcheck/mailcheck.c:1084 mailcheck/mailcheck.c:1093
 #, c-format
-msgid "%d messages"
-msgstr "%d zpráv"
+msgid "%d message"
+msgid_plural "%d messages"
+msgstr[0] "%d zpráva"
+msgstr[1] "%d zprávy"
+msgstr[2] "%d zpráv"
 
-#: mailcheck/mailcheck.c:1088
+#. translators: this is of the form "%d unread/%d messages"
+#: mailcheck/mailcheck.c:1087
+#, c-format
+msgid "%s/%s"
+msgstr "%s/%s"
+
+#: mailcheck/mailcheck.c:1100
 msgid "No mail."
 msgstr "Žádná pošta."
 
-#: mailcheck/mailcheck.c:1541 mailcheck/mailcheck.c:1542
-#: mailcheck/mailcheck.c:2816 mailcheck/mailcheck.c:2817
+#: mailcheck/mailcheck.c:1553 mailcheck/mailcheck.c:1554
+#: mailcheck/mailcheck.c:2831 mailcheck/mailcheck.c:2832
 msgid "Status not updated"
 msgstr "Stav neaktualizován"
 
-#: mailcheck/mailcheck.c:1744 mailcheck/mailcheck.c:2370
+#: mailcheck/mailcheck.c:1756 mailcheck/mailcheck.c:2382
 msgid "Inbox Settings"
 msgstr "Nastavení poštovní schránky"
 
-#: mailcheck/mailcheck.c:1770
+#: mailcheck/mailcheck.c:1782
 msgid "Mailbox _resides on:"
 msgstr "Poštovní schránka je _umístěna na:"
 
-#: mailcheck/mailcheck.c:1781
+#: mailcheck/mailcheck.c:1793
 msgid "Local mailspool"
 msgstr "Místní mailspool"
 
-#: mailcheck/mailcheck.c:1789
+#: mailcheck/mailcheck.c:1801
 msgid "Local maildir"
 msgstr "Místní maildir"
 
-#: mailcheck/mailcheck.c:1797
+#: mailcheck/mailcheck.c:1809
 msgid "Remote POP3-server"
 msgstr "Vzdálený server POP3"
 
-#: mailcheck/mailcheck.c:1805
+#: mailcheck/mailcheck.c:1817
 msgid "Remote IMAP-server"
 msgstr "Vzdálený server IMAP"
 
-#: mailcheck/mailcheck.c:1830
+#: mailcheck/mailcheck.c:1842
 msgid "Mail _spool file:"
 msgstr "Soubor _úložiště pošty:"
 
-#: mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:1849
 msgid "Browse"
 msgstr "Prohlížet"
 
-#: mailcheck/mailcheck.c:1857
+#: mailcheck/mailcheck.c:1869
 msgid "Mail s_erver:"
 msgstr "Poštovní _server:"
 
-#: mailcheck/mailcheck.c:1866
+#: mailcheck/mailcheck.c:1878
 msgid "Mail Server Entry box"
 msgstr "Pole pro zadání poštovního serveru"
 
-#: mailcheck/mailcheck.c:1885
+#: mailcheck/mailcheck.c:1897
 msgid "_Username:"
 msgstr "Jméno _uživatele:"
 
-#: mailcheck/mailcheck.c:1896
+#: mailcheck/mailcheck.c:1908
 msgid "Username Entry box"
 msgstr "Pole pro zadání jména uživatele"
 
-#: mailcheck/mailcheck.c:1914
+#: mailcheck/mailcheck.c:1926
 msgid "_Password:"
 msgstr "_Heslo:"
 
-#: mailcheck/mailcheck.c:1967
+#: mailcheck/mailcheck.c:1979
 msgid "_Folder:"
 msgstr "S_ložka:"
 
-#: mailcheck/mailcheck.c:1978
+#: mailcheck/mailcheck.c:1990
 msgid "Folder Entry box"
 msgstr "Pole pro zadání složky"
 
-#: mailcheck/mailcheck.c:2050
+#: mailcheck/mailcheck.c:2062
 msgid "Check for mail _every:"
 msgstr "_Kontrolovat poštu každých:"
 
-#: mailcheck/mailcheck.c:2072
+#: mailcheck/mailcheck.c:2084
 msgid "Choose time interval in minutes to check mail"
 msgstr "Zvolte interval pro kontrolu pošty v minutách"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2107
 msgid "Choose time interval in seconds to check mail"
 msgstr "Zvolte interval pro kontrolu pošty v sekundách"
 
-#: mailcheck/mailcheck.c:2112
+#: mailcheck/mailcheck.c:2124
 msgid "Play a _sound when new mail arrives"
 msgstr "Pře_hrát zvuk, když přijde nová pošta"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2122
+#: mailcheck/mailcheck.c:2134
 msgid "Sto_p animation when double clicked"
 msgstr "Zastavit animace po _dvojitém kliknutí"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2147
 msgid "Select a_nimation:"
 msgstr "Vyberte _animaci:"
 
-#: mailcheck/mailcheck.c:2153
+#: mailcheck/mailcheck.c:2165
 msgid "Commands"
 msgstr "Příkazy"
 
-#: mailcheck/mailcheck.c:2182
+#: mailcheck/mailcheck.c:2194
 msgid "Before each _update:"
 msgstr "Před každou _aktualizací:"
 
-#: mailcheck/mailcheck.c:2199
+#: mailcheck/mailcheck.c:2211
 msgid "Command to execute before each update"
 msgstr "Příkaz, který spustit před každou aktualizací"
 
-#: mailcheck/mailcheck.c:2211
+#: mailcheck/mailcheck.c:2223
 msgid "When new mail _arrives:"
 msgstr "Když _přijde nová pošta:"
 
-#: mailcheck/mailcheck.c:2226 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2238 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Příkaz, který spustit, když přijde nová pošta"
 
-#: mailcheck/mailcheck.c:2238
+#: mailcheck/mailcheck.c:2250
 msgid "When double clicke_d:"
 msgstr "Při d_vojitém kliknutí:"
 
-#: mailcheck/mailcheck.c:2253
+#: mailcheck/mailcheck.c:2265
 msgid "Command to execute when clicked"
 msgstr "Příkaz, který spustit při kliknutí"
 
-#: mailcheck/mailcheck.c:2339
+#: mailcheck/mailcheck.c:2351
 msgid "Inbox Monitor Preferences"
 msgstr "Nastavení Sledování poštovní schránky"
 
-#: mailcheck/mailcheck.c:2450
+#: mailcheck/mailcheck.c:2465
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
 "nová pošta"
 
-#: mailcheck/mailcheck.c:2776
+#: mailcheck/mailcheck.c:2791
 msgid "Text only"
 msgstr "Jen text"
 
-#: mailcheck/mailcheck.c:2818
+#: mailcheck/mailcheck.c:2833
 msgid "Mail check"
 msgstr "Kontrola pošty"
 
-#: mailcheck/mailcheck.c:2819
+#: mailcheck/mailcheck.c:2834
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Kontrola pošty vás upozorňuje, když do vaší schránky přijde nová pošta"
 
@@ -4042,7 +4063,7 @@ msgid "New Mail"
 msgstr "Nová pošta"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:63
+#: mini-commander/src/about.c:66
 msgid "Command Line"
 msgstr "Příkazový řádek"
 
@@ -4054,7 +4075,7 @@ msgstr "Mini-Commander"
 msgid "MiniCommander Applet Factory"
 msgstr "Generátor apletu Mini-Commander"
 
-#: mini-commander/src/about.c:66
+#: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
@@ -4077,15 +4098,15 @@ msgid "No items in history"
 msgstr "V historii nejsou položky"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:436
+#: mini-commander/src/command_line.c:437
 msgid "Start program"
 msgstr "Spustit program"
 
-#: mini-commander/src/command_line.c:479
+#: mini-commander/src/command_line.c:480
 msgid "Command line"
 msgstr "Příkazový řádek"
 
-#: mini-commander/src/command_line.c:480
+#: mini-commander/src/command_line.c:481
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Napište zde příkaz a prostředí GNOME ho pro vás vykoná"
 
@@ -4554,11 +4575,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Uložená hlasitost, kterou obnovit při startu"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:133
+#: modemlights/modemlights.c:132
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
 
-#: modemlights/modemlights.c:135
+#: modemlights/modemlights.c:134
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4867,7 +4888,7 @@ msgid "A system load indicator"
 msgstr "Indikátor zatížení systému"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:79
+#: multiload/main.c:74
 msgid "System Monitor"
 msgstr "Sledování systému"
 
@@ -4879,11 +4900,11 @@ msgstr "_Otevřít sledování systému"
 msgid "CPU Load"
 msgstr "Zátěž CPU"
 
-#: multiload/loadavg.c:107 multiload/main.c:281
+#: multiload/loadavg.c:107 multiload/main.c:282
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
-#: multiload/main.c:81
+#: multiload/main.c:76
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -4895,27 +4916,27 @@ msgstr ""
 "Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
 "paměť, využití odkládacího prostoru a zatížení sítě."
 
-#: multiload/main.c:273 multiload/properties.c:558
+#: multiload/main.c:274 multiload/properties.c:558
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:275 multiload/properties.c:565
+#: multiload/main.c:276 multiload/properties.c:565
 msgid "Memory"
 msgstr "Paměť"
 
-#: multiload/main.c:277 multiload/properties.c:573
+#: multiload/main.c:278 multiload/properties.c:573
 msgid "Network"
 msgstr "Síť"
 
-#: multiload/main.c:279 multiload/properties.c:581
+#: multiload/main.c:280 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: multiload/main.c:283
+#: multiload/main.c:284
 msgid "Resource"
 msgstr "Zdroj"
 
-#: multiload/main.c:294
+#: multiload/main.c:295
 #, c-format
 msgid ""
 "%s:\n"
@@ -5161,8 +5182,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytvořit, zobrazit a spravovat lepící poznámky na pracovní ploše"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
-#: stickynotes/stickynotes_applet_callbacks.c:200
+#: stickynotes/stickynotes_applet.c:306 stickynotes/stickynotes_applet.c:412
+#: stickynotes/stickynotes_applet_callbacks.c:212
 msgid "Sticky Notes"
 msgstr "Lepící poznámky"
 
@@ -5527,7 +5548,7 @@ msgstr "Jestli se má použít implicitní barva tématu"
 msgid "Whether to use the default system font"
 msgstr "Jestli se má použít implicitní písmo tématu"
 
-#: stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet.c:412
 #, c-format
 msgid ""
 "%s\n"
@@ -5545,11 +5566,11 @@ msgstr[2] ""
 "%s\n"
 "%d poznámek"
 
-#: stickynotes/stickynotes_applet_callbacks.c:202
+#: stickynotes/stickynotes_applet_callbacks.c:214
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:203
+#: stickynotes/stickynotes_applet_callbacks.c:215
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Lepící poznámky pro prostředí pracovní plochy Gnome"
 
@@ -5558,15 +5579,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Sledování kvality bezdrátového síťového spojení"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:575 wireless/wireless-applet.c:785
+#: wireless/wireless-applet.c:582 wireless/wireless-applet.c:799
 msgid "Wireless Link Monitor"
 msgstr "Sledování bezdrátového spojení"
 
-#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
+#: wireless/wireless-applet.c:359 wireless/wireless-applet.c:496
 msgid "No Wireless Devices"
 msgstr "Žádná bezdrátová zařízení"
 
-#: wireless/wireless-applet.c:360
+#: wireless/wireless-applet.c:361
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5574,15 +5595,15 @@ msgstr ""
 "Zdá se, že na vašem systému nejsou nastavena žádná bezdrátová zařízení.\n"
 "Zkontrolujte prosím vaše nastavení, pokud si myslíte, že to není správně."
 
-#: wireless/wireless-applet.c:577
+#: wireless/wireless-applet.c:584
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:578
+#: wireless/wireless-applet.c:585
 msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení."
 
-#: wireless/wireless-applet.c:786
+#: wireless/wireless-applet.c:800
 msgid "This utility shows the status of a wireless link"
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení"
 
@@ -5598,8 +5619,8 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
 
-#~ msgid "Keyboard indicator"
-#~ msgstr "Indikátor klávesnice"
+#~ msgid "Add a palette..."
+#~ msgstr "Přidat paletu..."
 
 #~ msgid ""
 #~ "The images necessary to run the wireless monitor are missing.\n"
@@ -6282,9 +6303,6 @@ msgstr "_Sledované zařízení:"
 #~ "%s\n"
 #~ "%s: %s\n"
 #~ "Nejnižší %d%s, Nejvyšší %d%s"
-
-#~ msgid "There was an error retrieving the forecast"
-#~ msgstr "Při získávání předpovědi došlo k chybě"
 
 #~ msgid "Day"
 #~ msgstr "Den"
