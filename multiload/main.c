@@ -242,7 +242,7 @@ main (int argc, char **argv)
     applet_factory_new ("multiload_applet", NULL, applet_start_new_applet);
 
     /* Only do if factory wasn't requested. */
-    if(strcmp(goad_id, "multiload_applet"))
+    if(goad_id && strcmp(goad_id, "multiload_applet"))
 	make_new_applet(goad_id);
 
     applet_widget_gtk_main ();

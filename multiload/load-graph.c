@@ -345,26 +345,26 @@ applet_save_session_cb (GtkWidget *w, const char *privcfgpath,
     for (i=0; i < g->prop_data->n; i++) {
 	GdkColor *color = &(g->prop_data->colors [i]);
 
-	sprintf (temp, "#%04x%04x%04x",
+	g_snprintf (temp, sizeof(temp), "#%04x%04x%04x",
 		 color->red, color->green, color->blue);
 	
-	sprintf (name, "%s/color%d", g->prop_data->name, i);
+	g_snprintf (name, sizeof(name), "%s/color%d", g->prop_data->name, i);
 	gnome_config_set_string (name, temp);
     }
 
-    sprintf (name, "%s/speed", g->prop_data->name);
+    g_snprintf (name, sizeof(name), "%s/speed", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->adj_data [0]);
 
-    sprintf (name, "%s/size", g->prop_data->name);
+    g_snprintf (name, sizeof(name), "%s/size", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->adj_data [1]);
 
-    sprintf (name, "%s/maximum", g->prop_data->name);
+    g_snprintf (name, sizeof(name), "%s/maximum", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->adj_data [2]);
 
-    sprintf (name, "%s/use_default", g->prop_data->name);
+    g_snprintf (name, sizeof(name), "%s/use_default", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->use_default);
 
-    sprintf (name, "%s/loadavg_type", g->prop_data->name);
+    g_snprintf (name, sizeof(name), "%s/loadavg_type", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->loadavg_type);
 
     gnome_config_pop_prefix();
@@ -399,7 +399,7 @@ applet_load_config (LoadGraph *g)
     for (i=0; i < g->prop_data->n; i++) {
 	GdkColor *color = &(g->prop_data->colors [i]);
 	
-	sprintf (name, "%s/color%d=%s",
+	g_snprintf (name, sizeof(name), "%s/color%d=%s",
 		 g->prop_data->name, i, g->prop_data->color_defs [i]);
 
 	temp = gnome_config_get_string (name);
@@ -407,22 +407,22 @@ applet_load_config (LoadGraph *g)
 	g_free (temp);
     }
 
-    sprintf (name, "%s/speed=%ld",
+    g_snprintf (name, sizeof(name), "%s/speed=%ld",
 	     g->prop_data->name, g->prop_data->adj_data [0]);
     g->prop_data->adj_data [0] = gnome_config_get_int (name);
 
-    sprintf (name, "%s/size=%ld",
+    g_snprintf (name, sizeof(name), "%s/size=%ld",
 	     g->prop_data->name, g->prop_data->adj_data [1]);
     g->prop_data->adj_data [1] = gnome_config_get_int (name);
 
-    sprintf (name, "%s/maximum=%ld",
+    g_snprintf (name, sizeof(name), "%s/maximum=%ld",
 	     g->prop_data->name, g->prop_data->adj_data [2]);
     g->prop_data->adj_data [2] = gnome_config_get_int (name);
 
-    sprintf (name, "%s/use_default=1", g->prop_data->name);
+    g_snprintf (name, sizeof(name), "%s/use_default=1", g->prop_data->name);
     g->prop_data->use_default = gnome_config_get_int (name);
 
-    sprintf (name, "%s/loadavg_type=%d",
+    g_snprintf (name, sizeof(name), "%s/loadavg_type=%d",
 	     g->prop_data->name, g->prop_data->loadavg_type);
     g->prop_data->loadavg_type = gnome_config_get_int (name);
 
@@ -571,7 +571,7 @@ load_graph_properties_init (GnomePropertyObject *object)
     /* guint i; */
 
     static const gchar *adj_data_texts [3] = {
-	N_("Speed:"), N_("Size:"), N_("Maximum:")
+	N_("Interval:"), N_("Size:"), N_("Maximum:")
     };
 
     static glong adj_data_descr [3*8] = {
@@ -617,7 +617,7 @@ load_graph_properties_load (GnomePropertyObject *object)
     for (i=0; i < prop_data->n; i++) {
 	GdkColor *color = &(prop_data->colors [i]);
 	
-	sprintf (name, "multiload/%s/color%d=%s",
+	g_snprintf (name, sizeof(name), "multiload/%s/color%d=%s",
 		 prop_data->name, i, prop_data->color_defs [i]);
 
 	temp = gnome_config_get_string (name);
@@ -625,19 +625,19 @@ load_graph_properties_load (GnomePropertyObject *object)
 	g_free (temp);
     }
 
-    sprintf (name, "multiload/%s/speed=%ld",
+    g_snprintf (name, sizeof(name), "multiload/%s/speed=%ld",
 	     prop_data->name, prop_data->adj_data [0]);
     prop_data->adj_data [0] = gnome_config_get_int (name);
 
-    sprintf (name, "multiload/%s/size=%ld",
+    g_snprintf (name, sizeof(name), "multiload/%s/size=%ld",
 	     prop_data->name, prop_data->adj_data [1]);
     prop_data->adj_data [1] = gnome_config_get_int (name);
 
-    sprintf (name, "multiload/%s/maximum=%ld",
+    g_snprintf (name, sizeof(name), "multiload/%s/maximum=%ld",
 	     prop_data->name, prop_data->adj_data [2]);
     prop_data->adj_data [2] = gnome_config_get_int (name);
 
-    sprintf (name, "multiload/%s/loadavg_type=%d",
+    g_snprintf (name, sizeof(name), "multiload/%s/loadavg_type=%d",
 	     prop_data->name, prop_data->loadavg_type);
     prop_data->loadavg_type = gnome_config_get_int (name);
 }
@@ -652,23 +652,23 @@ load_graph_properties_save (GnomePropertyObject *object)
     for (i=0; i < prop_data->n; i++) {
 	GdkColor *color = &(prop_data->colors [i]);
 
-	sprintf (temp, "#%04x%04x%04x",
+	g_snprintf (temp, sizeof(temp), "#%04x%04x%04x",
 		 color->red, color->green, color->blue);
 	
-	sprintf (name, "multiload/%s/color%d", prop_data->name, i);
+	g_snprintf (name, sizeof(name), "multiload/%s/color%d", prop_data->name, i);
 	gnome_config_set_string (name, temp);
     }
 
-    sprintf (name, "multiload/%s/speed", prop_data->name);
+    g_snprintf (name, sizeof(name), "multiload/%s/speed", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [0]);
 
-    sprintf (name, "multiload/%s/size", prop_data->name);
+    g_snprintf (name, sizeof(name), "multiload/%s/size", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [1]);
 
-    sprintf (name, "multiload/%s/maximum", prop_data->name);
+    g_snprintf (name, sizeof(name), "multiload/%s/maximum", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [2]);
 
-    sprintf (name, "multiload/%s/loadavg_type", prop_data->name);
+    g_snprintf (name, sizeof(name), "multiload/%s/loadavg_type", prop_data->name);
     gnome_config_set_int (name, prop_data->loadavg_type);
 }
 
