@@ -545,7 +545,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 }
 
 static void
-start_gmix_cb(void)
+start_gmix_cb (AppletWidget *applet, gpointer data)
 {
 	gnome_execute_shell(NULL, "gmix");
 }
@@ -747,7 +747,7 @@ main(int argc, char **argv)
         applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					       "run_gmix",
 					       GNOME_STOCK_MENU_VOLUME,
-					       _("Run gmix..."),
+					       _("Run Audio Mixer..."),
 					       start_gmix_cb,
 					       NULL);
 
