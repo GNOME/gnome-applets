@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.8">
-  <!ENTITY manrevision "2.8">
-  <!ENTITY date "August 2004">
+  <!ENTITY appletversion "2.10">
+  <!ENTITY manrevision "2.10">
+  <!ENTITY date "March 2005">
   <!ENTITY applet "Command Line">
 ]>
 <!-- 
@@ -20,7 +20,11 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
 <articleinfo> 
-  <title>&applet; Applet Manual</title> 
+  <title>&applet; Manual</title> 
+  <copyright>
+    <year>2005</year>
+    <holder>Davyd Madeley</holder>
+  </copyright>
   <copyright>
     <year>2004</year>
     <holder>Angela Boyle</holder>
@@ -82,6 +86,13 @@
         <orgname>GNOME Documentation Project</orgname>
       </affiliation>
     </author>
+    <author>
+      <firstname>Davyd</firstname><surname>Madeley</surname>
+      <email>davyd@madeley.id.au</email>
+      <affiliation>
+        <orgname>GNOME Project</orgname>
+      </affiliation>
+    </author>
     <!-- This is appropriate place for other contributors: translators,
          maintainers,  etc. Commented out by default.
          <othercredit role="translator">
@@ -96,6 +107,13 @@
     -->
   </authorgroup> 
   <revhistory>
+    <revision>
+      <revnumber>Version 2.10</revnumber>
+      <date>March 2005</date>
+      <revdescription>
+        <para role="author">Davyd Madeley</para>
+      </revdescription>
+    </revision>
     <revision>
       <revnumber>Version 2.8</revnumber>
       <date>September 2004</date>
@@ -233,20 +251,20 @@
      
      <!-- ==== Figure ==================-->
      <figure id="applet-fig"> 
-        <title>&applet; Applet</title> 
+        <title>&applet;</title> 
         <screenshot> 
           <mediaobject> 
              <imageobject><imagedata fileref="figures/command-line.png"
                 format="PNG"/> 
              </imageobject> 
              <textobject> 
-                <phrase>Shows &applet; applet.</phrase> 
+                <phrase>Shows &applet;.</phrase> 
              </textobject> 
           </mediaobject> 
         </screenshot> 
      </figure> 
      <para>
-        The <application>&applet;</application> applet provides a command line that you can use within any panel on the desktop. </para>
+        The <application>&applet;</application> provides a command line that you can use within any panel on the desktop. </para>
      <para>
         <application>&applet;</application> contains the following interactive elements: </para>
         
@@ -262,7 +280,7 @@
           </varlistentry>
           <varlistentry>
              <term>
-                <guilabel>Browser</guilabel> button&mdash;the bullet</term>
+                <guilabel>Browser</guilabel> button &mdash; the bullet</term>
              <listitem>
                 <para>
                   You can use the <guibutton>Browser</guibutton> button to look through your file system for programs. A solid-circle icon identifies the <guibutton>Browser</guibutton> button.
@@ -271,7 +289,7 @@
           </varlistentry>
           <varlistentry>
              <term>
-                <guibutton>History</guibutton> button&mdash;the down arrow</term>
+                <guibutton>History</guibutton> button &mdash; the down arrow</term>
              <listitem>
                 <para>
                   You can use the <guibutton>History</guibutton> button to recall previous commands. A down-arrow icon identifies the <guibutton>History</guibutton> button.
@@ -421,40 +439,57 @@
              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
              <tbody> 
                 <row valign="top"> 
-                  <entry>
-                     <para>
-                        <userinput>t</userinput>
-                     </para>
-                  </entry> 
-                  <entry>
-                     <para>
-                        Starts a terminal. 
-                     </para>
-                  </entry> 
+                  <entry><para><userinput>http://</userinput> or
+		  <userinput>www.</userinput></para></entry> 
+                  <entry><para>
+                   Anything starting with <userinput>http://</userinput> or
+		   <userinput>www.</userinput> will be
+		   treated as a URL and loaded in your web browser.
+		  </para></entry> 
                 </row> 
                 <row valign="top"> 
-                  <entry>
-                     <para>
-                        <userinput>n</userinput>
-                     </para>
-                  </entry> 
-                  <entry>
-                     <para>
-                        Starts a Netscape browser.
-                     </para>
-                  </entry> 
+                  <entry><para><userinput>ftp://</userinput> or
+		  <userinput>ftp.</userinput></para></entry> 
+                  <entry><para>
+                   Anything starting <userinput>ftp://</userinput> or
+		   <userinput>ftp.</userinput> will be
+		   treated as a URL and loaded in your default FTP software.
+                  </para></entry> 
                 </row> 
                 <row valign="top"> 
-                  <entry>
-                     <para>
-                        <userinput>dictionary</userinput>
-                     </para>
-                  </entry> 
-                  <entry>
-                     <para>
-                        Starts a Netscape browser displaying a dictionary search page. 
-                     </para>
-                  </entry> 
+                  <entry><para><userinput>dictionary:</userinput></para></entry> 
+                  <entry><para>
+		   Use <userinput>dictionary:</userinput> to look up a word
+		   using <application>GNOME Dictionary</application>.
+                  </para></entry> 
+                </row> 
+                <row valign="top"> 
+                  <entry><para><userinput>google:</userinput></para></entry> 
+                  <entry><para>
+		   Use <userinput>google:</userinput> to search for something
+		   using the Google search engine.
+                  </para></entry> 
+                </row> 
+                <row valign="top"> 
+                  <entry><para><userinput>av:</userinput></para></entry> 
+                  <entry><para>
+		   Use <userinput>av:</userinput> to search for something using
+		   the Altavista search engine.
+                  </para></entry> 
+                </row> 
+                <row valign="top"> 
+                  <entry><para><userinput>yahoo:</userinput></para></entry> 
+                  <entry><para>
+		   Use the <userinput>yahoo:</userinput> macro to search for
+		   things using the Yahoo search engine.
+                  </para></entry> 
+                </row> 
+                <row valign="top"> 
+                  <entry><para><userinput>fm:</userinput></para></entry> 
+                  <entry><para>
+		   Use <userinput>fm:</userinput> to search for packages in the
+		   Freshmeat package database.
+                  </para></entry> 
                 </row> 
              </tbody> 
           </tgroup> 
@@ -462,6 +497,19 @@
      </sect2> 
     <sect2 id="command-line-prefs-2"> 
         <title>Customizing Your Macros</title> 
+     <figure id="applet-macro-fig"> 
+        <title>Configuring Macros</title> 
+        <screenshot> 
+          <mediaobject> 
+             <imageobject><imagedata fileref="figures/prefs-macros.png"
+                format="PNG"/> 
+             </imageobject> 
+             <textobject> 
+                <phrase>Configuring Macros</phrase> 
+             </textobject> 
+          </mediaobject> 
+        </screenshot> 
+     </figure> 
         <para>
           This tabbed section contains a list of macros that you can use with <application>&applet;</application>. The list contains the following information: 
 			</para>
@@ -492,6 +540,19 @@
   <sect1 id="command-line-apperance"> 
      <title>Customizing the Appearance</title> 
      <para>
+     <figure id="applet-prefs-fig"> 
+        <title>Preferences</title> 
+        <screenshot> 
+          <mediaobject> 
+             <imageobject><imagedata fileref="figures/prefs.png"
+                format="PNG"/> 
+             </imageobject> 
+             <textobject> 
+                <phrase>Preferences Dialog</phrase> 
+             </textobject> 
+          </mediaobject> 
+        </screenshot> 
+     </figure> 
         To configure the appearance of <application>&applet;</application>, right-click on an area of the applet outside the interactive elements, then choose <guimenuitem>Preferences</guimenuitem> and select the <guilabel>General</guilabel> tab.
      </para>
         <variablelist>
