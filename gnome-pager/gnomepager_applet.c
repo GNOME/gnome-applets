@@ -2208,7 +2208,7 @@ populate_tasks(void)
       
       if (popbox)
 	{
-	  button = gtk_button_new_with_label(t->name);
+	  button = gtk_button_new_with_label(t->name ? t->name : "");
 	  gtk_widget_show(button);
 	  gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
 			     GTK_SIGNAL_FUNC(task_cb_button_down), t);
