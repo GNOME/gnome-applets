@@ -16,14 +16,13 @@ bin_PROGRAMS = bussign_applet
 
 bussign_applet_SOURCES = \
 	bussign.c	\
-	bussign.h	\
-	http_get.c	\
-	http_get.h
+	bussign.h
 
 
 bussign_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)
+		     $(GNOMEUI_LIBS) $(INTLLIBS)      \
+                     $(GHTTP_LIB)
 
 bussign_applet_LINK = $(CXXLINK)
 
