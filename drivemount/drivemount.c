@@ -128,12 +128,12 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"(C) 1999",
 			authors,
 			_("Released under the GNU general public license.\n"
-			"Mounts and Unmounts drives."
-			"."),
+			  "Mounts and Unmounts drives."),
 			NULL);
 	gtk_signal_connect(GTK_OBJECT(about), "destroy",
 	                   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
+
 	return;
 	widget = NULL;
 	data = NULL;
@@ -660,17 +660,19 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "properties",
-					      GNOME_STOCK_MENU_PROP,
-					      _("Properties..."),
-					      property_show,
-					      dd);
+
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "about",
 					      GNOME_STOCK_MENU_ABOUT,
 					      _("About..."),
 					      about_cb, NULL);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "browse",
+					      GNOME_STOCK_MENU_OPEN,
+					      _("Browse..."),
+					      browse_cb,
+					      dd);
 
 	/* add "eject" entry if eject program is found in PATH */
 	tmp_path = gnome_is_program_in_path("eject");
@@ -685,10 +687,10 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 		}
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "browse",
-					      GNOME_STOCK_MENU_OPEN,
-					      _("Browse..."),
-					      browse_cb,
+					      "properties",
+					      GNOME_STOCK_MENU_PROP,
+					      _("Properties..."),
+					      property_show,
 					      dd);
 
 	redraw_pixmap(dd);

@@ -1,3 +1,10 @@
+2000-03-15  Jason Leach  <leach@wam.umd.edu>
+
+	* drivemount.c (create_drive_widget): rearrange right click applet
+	menu, About on top, Properties on bottom seemed to make sense
+
+	* properties.c (property_show): fix bug #6671
+
 Thu Mar  2 19:54:01 2000  John Ellis  <johne@bellatlantic.net>
 
 	* drivemount.c (get_device): returns gint instead of dev_t. return -1
@@ -19,12 +26,13 @@ Tue Feb 29 05:26:04 2000  John Ellis  <johne@bellatlantic.net>
 
 2000-02-23  Peter Hawkins <peterhawkins@ozemail.com.au>
 
-	* drivemount.[ch]: Stopped multiple error boxes from the same drivemount
-	from being shown at once.
+	* drivemount.[ch]: Stopped multiple error boxes from the same
+	drivemount from being shown at once.
 
 2000-02-23  Peter Hawkins <peterhawkins@ozemail.com.au>
 
-	* drivemount.c: stopped about box from being opened multiple times.
+	* drivemount.c: stopped about box from being opened multiple
+	times.
 
 2000-02-11  Jason Leach  <leach@wam.umd.edu>
 
@@ -34,9 +42,9 @@ Tue Feb 29 05:26:04 2000  John Ellis  <johne@bellatlantic.net>
 
 Sat Feb 05 17:37:34 2000  George Lebl <jirka@5z.com>
 
-	* drivemount.c: fix possible segfault and test for the output
-	  of "eject -u" since some eject progs don't take the -u option
-	  and will umount by themselves
+	* drivemount.c: fix possible segfault and test for the output of
+	"eject -u" since some eject progs don't take the -u option and
+	will umount by themselves
 
 Sat Jan 29 00:57:32 2000  Tom Gilbert  <gilbertt@tomgilbert.freeserve.co.uk>
 
@@ -49,8 +57,8 @@ Sun Oct 31 17:32:32 1999  George Lebl  <jirka@5z.com>
 
 Thu Oct 28 23:43:49 1999  John Ellis  <johne@bellatlantic.net>
 
-	* drivemount.[ch], properties.c: Switch to new panel size signal, add
-	scaling option, add custom icon option.
+	* drivemount.[ch], properties.c: Switch to new panel size signal,
+	add scaling option, add custom icon option.
 
 Fri Oct 22 17:13:56 1999  John Ellis  <johne@bellatlantic.net>
 
@@ -71,8 +79,8 @@ Sun May 30 11:43:02 1999  George Lebl  <jirka@5z.com>
 
 Thu May 20 12:54:48 1999  John Ellis  <johne@bellatlantic.net>
 
-	* Makefile.am, drivemount.c, properties.c, jazdrive*.xpm: Add icon for
-	jaz drives, patch from Owen Cliffe <oc197@ecs.soton.ac.uk>.
+	* Makefile.am, drivemount.c, properties.c, jazdrive*.xpm: Add icon
+	for jaz drives, patch from Owen Cliffe <oc197@ecs.soton.ac.uk>.
 
 Sat Mar 27 16:21:45 1999  John Ellis  <johne@bellatlantic.net>
 

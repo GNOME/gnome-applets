@@ -211,8 +211,8 @@ void property_show(AppletWidget *applet, gpointer data)
 	dd->prop_scale_applet = dd->scale_applet;
 
 	dd->propwindow = gnome_property_box_new();
-	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(dd->propwindow)->dialog.window),
-		_("Drive Mount Settings"));
+	gtk_window_set_title(GTK_WINDOW(GNOME_PROPERTY_BOX(dd->propwindow)),
+		_("Drive Mount Applet Properties"));
 
 	frame = gtk_frame_new(NULL);
 	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
