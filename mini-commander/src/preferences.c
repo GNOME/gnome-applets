@@ -109,15 +109,13 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
     GtkStyle *style;
     int i;
 
-    if(propTmp.showTime != -1) {
+    if(propTmp.showTime != -1)
 	/* checkbox has been changed */
 	prop.showTime = propTmp.showTime;
-    }
 
-    if(propTmp.showTime != -1 || propTmp.showDate != -1) {
+    if(propTmp.showDate != -1)
 	/* checkbox has been changed */
 	prop.showDate = propTmp.showDate;
-    }
 
     if(propTmp.showTime != -1 || propTmp.showDate != -1) {
 	/* checkbox has been changed */
@@ -190,7 +188,7 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	    gtk_widget_set_style(entryCommand, style);
 	}
 
-    /* prefix & command */
+    /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
 	    if (propTmp.prefix[i] != (char *) NULL)
@@ -267,7 +265,7 @@ loadSession(void)
 		    break;
 		case 4:
 		    strcpy(defaultPrefix, "ftp.");
-		    strcpy(defaultCommand, "netscape -remote openURL\\(ftp.://$1\\) || netscape ftp://ftp.$1");
+		    strcpy(defaultCommand, "netscape -remote openURL\\(ftp.://ftp.$1\\) || netscape ftp://ftp.$1");
 		    break;
 		case 5:
 		    strcpy(defaultPrefix, "lynx:");
