@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-16 16:45-0700\n"
-"PO-Revision-Date: 2004-05-16 16:52-0700\n"
+"POT-Creation-Date: 2004-05-24 14:02-0700\n"
+"PO-Revision-Date: 2004-05-24 14:02-0700\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX Status Applet Factory"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1260
 msgid "Keyboard Accessibility Status"
 msgstr "Keyboard Accessibility Status"
 
@@ -81,7 +81,7 @@ msgstr "Shows the status of keyboard accessibility features"
 msgid "Utility"
 msgstr "Utility"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:917
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:990
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:601
 #: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
@@ -93,7 +93,7 @@ msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
 #: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:1068 accessx-status/applet.c:1263
 msgid "AccessX Status"
 msgstr "AccessX Status"
 
@@ -120,17 +120,17 @@ msgstr "There was an error launching the keyboard capplet : %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:984 accessx-status/applet.c:1069
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Shows keyboard status when accessibility features are used."
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1265
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Displays current state of keyboard accessibility features"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:938 battstat/battstat_applet.c:1690
+#: battstat/battstat_applet.c:1011 battstat/battstat_applet.c:1760
 msgid "Battery Charge Monitor"
 msgstr "Battery Charge Monitor"
 
@@ -139,7 +139,7 @@ msgid "Battstat Factory"
 msgstr "Battstat Factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1691
+#: battstat/battstat_applet.c:1761
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor a laptop's remaining power"
 
@@ -240,23 +240,23 @@ msgstr "Yellow value level"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:338
+#: battstat/battstat_applet.c:340
 msgid "Your platform is not supported!\n"
 msgstr "Your platform is not supported!\n"
 
-#: battstat/battstat_applet.c:339
+#: battstat/battstat_applet.c:341
 msgid "The applet will not work properly (if at all).\n"
 msgstr "The applet will not work properly (if at all).\n"
 
-#: battstat/battstat_applet.c:356
+#: battstat/battstat_applet.c:358
 msgid "charged"
 msgstr "charged"
 
-#: battstat/battstat_applet.c:358
+#: battstat/battstat_applet.c:360
 msgid "..."
 msgstr "..."
 
-#: battstat/battstat_applet.c:360
+#: battstat/battstat_applet.c:362
 #, c-format
 msgid "%d hours %d minutes remaining"
 msgstr "%d hours %d minutes remaining"
@@ -264,38 +264,42 @@ msgstr "%d hours %d minutes remaining"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:385 battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1048
 msgid "High"
 msgstr "High"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:387 battstat/battstat_applet.c:977
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1050
 msgid "Low"
 msgstr "Low"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1052
 msgid "Critical"
 msgstr "Critical"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1054
 msgid "Charging"
 msgstr "Charging"
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:477
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Battery low (%d%%) and AC is offline"
 
-#: battstat/battstat_applet.c:496
+#: battstat/battstat_applet.c:480 battstat/battstat_applet.c:525
+msgid "Battery Notice"
+msgstr "Battery Notice"
+
+#: battstat/battstat_applet.c:544
 msgid "Battery is now fully re-charged!"
 msgstr "Battery is now fully re-charged!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:515 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:588 battstat/battstat_applet.c:1212
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -307,7 +311,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:519 battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:592 battstat/battstat_applet.c:1220
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -318,21 +322,21 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:525 battstat/battstat_applet.c:1071
-#: battstat/battstat_applet.c:1160
+#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1233
 #, c-format
 msgid "System is running on battery power"
 msgstr "System is running on battery power"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:528 battstat/battstat_applet.c:1077
-#: battstat/battstat_applet.c:1166
+#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1150
+#: battstat/battstat_applet.c:1239
 #, c-format
 msgid "System is running on AC power"
 msgstr "System is running on AC power"
 
-#: battstat/battstat_applet.c:542 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:615 wireless/wireless-applet.c:146
 #, c-format
 msgid "N/A"
 msgstr "N/A"
@@ -342,7 +346,7 @@ msgstr "N/A"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:671 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:744 battstat/battstat_applet.c:1124
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "System is running on battery power. Battery: %d%% (%s)"
@@ -352,7 +356,7 @@ msgstr "System is running on battery power. Battery: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:677 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1131
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "System is running on AC power. Battery: %d%% (%s)"
@@ -361,7 +365,7 @@ msgstr "System is running on AC power. Battery: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:687
+#: battstat/battstat_applet.c:760
 #, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "System is running on battery power. Battery: Not present"
@@ -369,7 +373,7 @@ msgstr "System is running on battery power. Battery: Not present"
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:693
+#: battstat/battstat_applet.c:766
 #, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "System is running on AC power. Battery: Not present"
@@ -377,19 +381,19 @@ msgstr "System is running on AC power. Battery: Not present"
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:702
+#: battstat/battstat_applet.c:775
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Battery: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:708
+#: battstat/battstat_applet.c:781
 #, c-format
 msgid "Battery: Not present"
 msgstr "Battery: Not present"
 
-#: battstat/battstat_applet.c:808
+#: battstat/battstat_applet.c:881
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -401,7 +405,7 @@ msgstr ""
 "Make sure you have read permission to the\n"
 "APM device."
 
-#: battstat/battstat_applet.c:817
+#: battstat/battstat_applet.c:890
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -411,7 +415,7 @@ msgstr ""
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 
-#: battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:946
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -420,16 +424,16 @@ msgstr ""
 "An error occured while launching the Suspend command: %s\n"
 "Please try to correct this error"
 
-#: battstat/battstat_applet.c:877
+#: battstat/battstat_applet.c:950
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "The Suspend command '%s' was unsuccessful."
 
-#: battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:952
 msgid "The Suspend command was unsuccessful."
 msgstr "The Suspend command was unsuccessful."
 
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:960
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -439,19 +443,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:905
+#: battstat/battstat_applet.c:978
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:940
+#: battstat/battstat_applet.c:1013
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:941
+#: battstat/battstat_applet.c:1014
 msgid "This utility shows the status of your laptop battery."
 msgstr "This utility shows the status of your laptop battery."
 
-#: battstat/battstat_applet.c:1616
+#: battstat/battstat_applet.c:1686
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
