@@ -596,6 +596,9 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 
 	g_object_unref (pixbuf);
 
+	gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
+			       gtk_widget_get_screen (&applet->base));
+
 	g_signal_connect (applet->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &applet->about_dialog);
