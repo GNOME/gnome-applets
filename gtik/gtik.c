@@ -115,6 +115,7 @@
 	gint timeout = 0;
 	gint drawTimeID, updateTimeID;
 
+	void removeSpace(char *buffer); 
 	int configured();
 	void timeout_cb( GtkWidget *widget, GtkWidget *spin );
 	static int http_get_to_file(gchar *a_host, gint a_port, 
@@ -912,6 +913,9 @@
 			row=GPOINTER_TO_INT(selection->data);
 			selection=selection->next;
 			gtk_clist_get_text(GTK_CLIST(clist),row,0,&symbol);
+
+			removeSpace(symbol);
+
 			if (!strcmp(symlist,""))
 				strcpy(symlist,symbol);
 			else {
@@ -1569,4 +1573,46 @@
 		"#%02x%02x%02x", r, g, b );
 		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
 	}
+
+
+
+	//------------------------------------------------------------
+	void removeSpace(char *buffer) {
+
+		int i;
+		int j;
+		int len;
+		char buff[strlen(buffer)+1];
+		
+		j = 0;
+		if(strlen(buffer) > 1) {
+			for (i = 0;i<strlen(buffer);i++){
+				if ( (unsigned char) buffer[i] > 32 ) {
+					strcpy(buff+j,buffer+i);
+					j++;
+				}
+			}				
+
+
+			j = 0;
+
+			for (i = 0;i<strlen(buff);i++) {
+				if ( (unsigned char) buff[i] > 32 ) {
+					j = i;
+					break;
+				}
+			}
+			strcpy(buffer,buff+j);
+			len = strlen(buffer);
+			for (i = len - 1; i >= 0; i--) {
+				if ( (unsigned char) buff[i] > 32 ) {
+					buffer[i+1] = 0;
+					break;
+				}
+			}
+			memset(buff,0,sizeof(buff));
+		}
+	}
+
+
 
