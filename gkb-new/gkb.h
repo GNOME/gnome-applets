@@ -172,6 +172,9 @@ void gkb_update (GKB *gkb, gboolean set_command);
 void alert (const gchar * str);
 void applet_save_session (void);
 
+void add_atk_relation(GtkWidget *obj1, GtkWidget *obj2, AtkRelationType type);  
+void add_atk_namedesc(GtkWidget *widget, const gchar *name, const gchar *desc); 
+
 /* prop.c */
 void gkb_apply (GkbPropertyBoxInfo * pbi);
 void properties_dialog (BonoboUIComponent *uic,

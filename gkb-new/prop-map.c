@@ -36,6 +36,9 @@
 
 #include "gkb.h"
 
+extern gboolean gail_loaded;
+static GtkWidget *label_prop_map = NULL;
+
 typedef struct _GkbMapDialogInfo GkbMapDialogInfo;
 
 struct _GkbMapDialogInfo
@@ -348,15 +351,15 @@ static void
 gkb_prop_map_label_at (GtkWidget * table, gint row, gint col,
 		       const gchar * label_text)
 {
-  GtkWidget *label;
+  /*GtkWidget *label;*/
 
-  label = gtk_label_new (label_text);
-  gtk_table_attach (GTK_TABLE (table), label,
+  label_prop_map = gtk_label_new_with_mnemonic (label_text);
+  gtk_table_attach (GTK_TABLE (table), label_prop_map,
 		    row, row + 1, col, col + 1,
 		    (GtkAttachOptions) (GTK_FILL),
 		    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (label_prop_map), GTK_JUSTIFY_RIGHT);
+  gtk_misc_set_alignment (GTK_MISC (label_prop_map), 1, 0.5);
 }
 
 /**
@@ -434,7 +437,12 @@ gkb_prop_map_entry_at (GtkWidget * table, gint row, gint col,
 
   g_signal_connect (entry, "changed",
 		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
-
+  
+  gtk_label_set_mnemonic_widget( GTK_LABEL(label_prop_map), entry);
+  if (gail_loaded)
+    {
+      add_atk_relation(entry, label_prop_map, ATK_RELATION_LABELLED_BY);
+    }
   return entry;
 }
 
@@ -475,6 +483,11 @@ gkb_prop_map_combo_at (GtkWidget * table, gint row, gint col,
   g_signal_connect (entry, "changed",
 		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
 
+  gtk_label_set_mnemonic_widget(GTK_LABEL(label_prop_map), entry);
+  if (gail_loaded)
+    {
+      add_atk_relation(combo, label_prop_map, ATK_RELATION_LABELLED_BY);
+    }
   return entry;
 }
 
@@ -492,7 +505,6 @@ gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
 			GkbMapDialogInfo * mdi, const gchar * flag)
 {
   GtkWidget *icon_entry;
-
   icon_entry = gnome_icon_entry_new (NULL, NULL);
 
   gnome_icon_entry_set_pixmap_subdir (GNOME_ICON_ENTRY (icon_entry), "gkb");
@@ -507,7 +519,12 @@ gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
   g_signal_connect (icon_entry,
 		      "changed", G_CALLBACK (gkb_prop_map_data_changed),
 		      mdi);
-
+  
+  if (gail_loaded)
+  {
+    add_atk_relation(icon_entry, label_prop_map, ATK_RELATION_LABELLED_BY);
+    add_atk_relation(label_prop_map, icon_entry, ATK_RELATION_LABEL_FOR);
+  }
   return icon_entry;
 }
 
@@ -580,57 +597,54 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   gtk_table_set_row_spacings (GTK_TABLE (left_table), 8);
   gtk_table_set_col_spacings (GTK_TABLE (left_table), 5);
 
-  /* Add the labels */
-  gkb_prop_map_label_at (right_table, 0, 0, _("Name"));
-  gkb_prop_map_label_at (right_table, 0, 1, _("Label"));
-  gkb_prop_map_label_at (right_table, 0, 2, _("Language"));
-  gkb_prop_map_label_at (right_table, 0, 3, _("Country"));
-  gkb_prop_map_label_at (right_table, 0, 4, _("Flag\nPixmap"));
-
-  gkb_prop_map_label_at (left_table, 0, 0, _("Architecture"));
-  gkb_prop_map_label_at (left_table, 0, 1, _("Type"));
-  gkb_prop_map_label_at (left_table, 0, 2, _("Codepage"));
-  gkb_prop_map_label_at (left_table, 0, 3, _("Command"));
-
-  /* Add the entries */
+  /* Add the labels  and entries/combos/icon_entry */
+  gkb_prop_map_label_at (right_table, 0, 0, _("_Name"));
   mdi->name_entry =
     gkb_prop_map_entry_at (right_table, 1, 0, mdi, keymap->name);
+
+  gkb_prop_map_label_at (right_table, 0, 1, _("_Label"));
   mdi->label_entry =
     gkb_prop_map_entry_at (right_table, 1, 1, mdi, keymap->label);
-  mdi->command_entry =
-    gkb_prop_map_entry_at (left_table, 1, 3, mdi, keymap->command);
 
-  /* Add the combos */
+  gkb_prop_map_label_at (right_table, 0, 2, _("Lan_guage"));
   list = gkb_prop_map_get_languages (pbi);
   entry = gkb_prop_map_combo_at (right_table, 1, 2, list, mdi, keymap->lang);
   mdi->language_entry = entry;
   g_list_free (list);
 
+  gkb_prop_map_label_at (right_table, 0, 3, _("Count_ry"));
   list = gkb_prop_map_get_countries (pbi);
   entry =
     gkb_prop_map_combo_at (right_table, 1, 3, list, mdi, keymap->country);
   mdi->country_entry = entry;
   g_list_free (list);
 
+  gkb_prop_map_label_at (right_table, 0, 4, _("Flag\nPixmap"));
+  mdi->icon_entry =
+    gkb_prop_map_pixmap_at (right_table, 1, 4, mdi, keymap->flag);
+
+  gkb_prop_map_label_at (left_table, 0, 0, _("Arc_hitecture"));
   list = gkb_prop_map_get_arquitectures (pbi),
     entry = gkb_prop_map_combo_at (left_table, 1, 0, list, mdi, keymap->arch);
   mdi->arch_entry = entry;
   g_list_free (list);
 
+  gkb_prop_map_label_at (left_table, 0, 1, _("_Type"));
   list = gkb_prop_map_get_types (pbi);
   entry = gkb_prop_map_combo_at (left_table, 1, 1, list, mdi, keymap->type);
   mdi->type_entry = entry;
   g_list_free (list);
 
+  gkb_prop_map_label_at (left_table, 0, 2, _("Code_page"));
   list = gkb_prop_map_get_codepages (pbi);
   entry =
     gkb_prop_map_combo_at (left_table, 1, 2, list, mdi, keymap->codepage);
   mdi->codepage_entry = entry;
   g_list_free (list);
 
-  /* Add the flag pixmap */
-  mdi->icon_entry =
-    gkb_prop_map_pixmap_at (right_table, 1, 4, mdi, keymap->flag);
+  gkb_prop_map_label_at (left_table, 0, 3, _("Co_mmand"));
+  mdi->command_entry =
+    gkb_prop_map_entry_at (left_table, 1, 3, mdi, keymap->command);
 
   /* Add the where comand can be label */
   label = gtk_label_new ("");
@@ -641,6 +655,11 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   gtk_box_pack_start (GTK_BOX (vbox3), label, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
+ if (gail_loaded)
+  {
+    add_atk_relation(label, mdi->command_entry, ATK_RELATION_LABEL_FOR);
+    add_atk_relation(mdi->command_entry, label, ATK_RELATION_LABELLED_BY);
+  }
   /* Load buttons */
   hseparator1 = gtk_hseparator_new ();
   gtk_box_pack_start (GTK_BOX (vbox2), hseparator1, TRUE, TRUE, 0);

@@ -39,6 +39,7 @@
 
 #define GKB_MENU_ITEM_TEXT "GtkMenuItemText"
 
+extern gboolean gail_loaded;
 
 typedef struct _KeymapData KeymapData;
 struct _KeymapData
@@ -46,6 +47,8 @@ struct _KeymapData
   GtkWidget *widget;
   GkbKeymap *preset;
 };
+
+static GtkWidget *label = NULL;
 
 /**
  * gkb_apply:
@@ -91,9 +94,7 @@ static void
 gkb_prop_label_at (GtkWidget * table, gint row, gint col,
 		   const gchar * label_text)
 {
-  GtkWidget *label;
-
-  label = gtk_label_new (label_text);
+  label = gtk_label_new_with_mnemonic (label_text);
   gtk_table_attach (GTK_TABLE (table), label,
 		    row, row + 1, col, col + 1,
 		    (GtkAttachOptions) (GTK_FILL),
@@ -247,6 +248,10 @@ gkb_prop_option_menu_at (GtkWidget * table, gint row, gint col,
 		    (GtkAttachOptions) (GTK_FILL),
 		    (GtkAttachOptions) (GTK_EXPAND), 0, 0);
 
+  gtk_label_set_mnemonic_widget(GTK_LABEL(label), option_menu );                
+  if (gail_loaded)                                                              
+    {                                                                           
+      add_atk_relation(option_menu, label, ATK_RELATION_LABELLED_BY);               }
 }
 
 
@@ -289,17 +294,15 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
   gtk_container_set_border_width (GTK_CONTAINER (table), 5);
   gtk_table_set_row_spacings (GTK_TABLE (table), 15);
 
-  /* Labels */
-  gkb_prop_label_at (table, 0, 0, _("Appearance "));
-  gkb_prop_label_at (table, 0, 1, _("Applet size "));
-
-  /* Option menus */
+  /* Labels and option Menus */
+  gkb_prop_label_at (table, 0, 0, _("_Appearance "));
   mode = gkb_prop_get_mode ();
   gkb_prop_option_menu_at (table, 1, 0, mode,
 			   GTK_SIGNAL_FUNC (gkb_prop_mode_changed), pbi,
 			   gkb_util_get_int_from_mode (pbi->mode));
   g_list_free (mode);
-
+  
+  gkb_prop_label_at (table, 0, 1, _("Applet _size "));
   sizes = gkb_prop_get_sizes ();
   gkb_prop_option_menu_at (table, 1, 1, sizes,
 			   GTK_SIGNAL_FUNC (gkb_prop_size_changed),
@@ -338,7 +341,13 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
   gtk_entry_set_text (GTK_ENTRY (pbi->hotkey_entry), gkb->key);
 
   button = gtk_button_new_with_label (_("Grab hotkey"));
-
+  if (gail_loaded)                                                              
+    {                                                                           
+      add_atk_relation(GTK_WIDGET(pbi->hotkey_entry),
+			button, ATK_RELATION_CONTROLLED_BY);                                                                      
+      add_atk_relation(button, GTK_WIDGET(pbi->hotkey_entry),
+			ATK_RELATION_CONTROLLER_FOR );                              }
+                                                                           
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, FALSE, TRUE, 0);
 

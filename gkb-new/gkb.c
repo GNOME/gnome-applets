@@ -48,6 +48,7 @@
 
 int NumLockMask, CapsLockMask, ScrollLockMask;
 
+gboolean gail_loaded = FALSE;
 GtkWidget *bah_window = NULL;
 
 gchar *
@@ -110,6 +111,8 @@ gkb_draw (GKB * gkb)
     }
 
   gtk_tooltips_set_tip (gkb->tooltips, gkb->applet, gkb->keymap->name, NULL);
+  add_atk_namedesc(gkb->applet, gkb->keymap->name, _("Press the hotkey to switch
+between layouts. The hotkey can be set through Properties dialog"));
 
 }
 
@@ -807,7 +810,10 @@ gkb_factory (PanelApplet *applet,
 		gpointer     data)
 {
  	gboolean retval = FALSE;
-
+	if ( GTK_IS_ACCESSIBLE(gtk_widget_get_accessible(applet)))
+	  {
+            gail_loaded = TRUE;
+          }
         if (!strcmp (iid, "OAFIID:GNOME_KeyboardApplet"))
 		retval = fill_gkb_applet (applet);
 
@@ -820,3 +826,37 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory",
                              "0",
                              gkb_factory,
                              NULL)
+
+/* Add AtkRelation */                                                           
+void                                                                            
+add_atk_relation(GtkWidget *obj1, GtkWidget *obj2, AtkRelationType rel_type)
+{
+    AtkObject *atk_obj1, *atk_obj2;
+    AtkRelationSet *relation_set;
+    AtkRelation *relation;
+
+    atk_obj1 = gtk_widget_get_accessible(obj1);
+
+    atk_obj2 = gtk_widget_get_accessible(obj2);
+
+    relation_set = atk_object_ref_relation_set (atk_obj1);
+    relation = atk_relation_new(&atk_obj2, 1, rel_type);
+    atk_relation_set_add(relation_set, relation);
+    g_object_unref(G_OBJECT (relation));
+}
+
+/* Accessible name and description */                                           
+void                                                                            
+add_atk_namedesc(GtkWidget *widget, const gchar *name, const gchar *desc)       
+{                                                                               
+    AtkObject *atk_widget;                                                      
+    atk_widget = gtk_widget_get_accessible(widget);                             
+    if (name)                                                                   
+    {                                                                           
+      atk_object_set_name(atk_widget, name);                                    
+    }                                                                           
+    if (desc)                                                                   
+    {                                                                           
+      atk_object_set_description(atk_widget, desc);                             
+    }                                                                           
+}                                                                               

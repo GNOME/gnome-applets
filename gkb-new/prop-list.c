@@ -40,6 +40,8 @@
 
 #define GKB_KEYMAP_TAG  "GkbKeymapTag"
 
+extern gboolean gail_loaded;
+
 /**
  * gkb_util_get_pixmap_name:
  * @keymap: 
@@ -103,7 +105,11 @@ gkb_prop_list_create_item (GkbKeymap * keymap)
   list_item = gtk_list_item_new ();
   gtk_container_add (GTK_CONTAINER (list_item), hbox);
   gtk_object_set_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG, keymap);
-
+  
+  if (gail_loaded)
+  {
+    add_atk_namedesc(GTK_WIDGET(list_item), keymap->name, NULL );
+  }
   return list_item;
 }
 
@@ -349,7 +355,7 @@ gkb_prop_list_create_button (const gchar * name, GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *button;
 
-  button = gtk_button_new_with_label (name);
+  button = gtk_button_new_with_mnemonic (name);
   g_signal_connect (button, "clicked",
 		      G_CALLBACK (gkb_prop_list_button_clicked_cb), pbi);
   gtk_container_add (GTK_CONTAINER (pbi->buttons_vbox), button);
@@ -380,11 +386,11 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo * pbi)
   gtk_button_box_set_child_ipadding (GTK_BUTTON_BOX (vbox), 2, 0);
 
   pbi->buttons_vbox = vbox;
-  pbi->add_button = gkb_prop_list_create_button (_("Add"), pbi);
-  pbi->edit_button = gkb_prop_list_create_button (_("Edit"), pbi);
-  pbi->up_button = gkb_prop_list_create_button (_("Up"), pbi);
-  pbi->down_button = gkb_prop_list_create_button (_("Down"), pbi);
-  pbi->delete_button = gkb_prop_list_create_button (_("Delete"), pbi);
+  pbi->add_button = gkb_prop_list_create_button (_("_Add"), pbi);
+  pbi->edit_button = gkb_prop_list_create_button (_("_Edit"), pbi);
+  pbi->up_button = gkb_prop_list_create_button (_("_Up"), pbi);
+  pbi->down_button = gkb_prop_list_create_button (_("Dow_n"), pbi);
+  pbi->delete_button = gkb_prop_list_create_button (_("_Delete"), pbi);
 
   gkb_prop_list_update_sensitivity (pbi);
 
