@@ -1,5 +1,112 @@
 2001-03-20  Dan Mueth  <dan@eazel.com>
 
+        Updating doc build stuff to new build system.  Note that
+        figures belong in a directory called "figures".
+
+	* multiload/docs/C/cpuload/Makefile.am:
+	* multiload/docs/C/cpuload/cpuload-applet-default.png:
+	* multiload/docs/C/cpuload/cpuload-applet-greyed.png:
+	* multiload/docs/C/cpuload/cpuload-applet-properties.png:
+	* multiload/docs/C/cpuload/cpuload-applet.png:
+	* multiload/docs/C/cpuload/cpuload.sgml:
+	* multiload/docs/C/cpuload/figures/cpuload-applet-default.png:
+	* multiload/docs/C/cpuload/figures/cpuload-applet-greyed.png:
+	* multiload/docs/C/cpuload/figures/cpuload-applet-properties.png:
+	* multiload/docs/C/cpuload/figures/cpuload-applet.png:
+	* multiload/docs/C/loadavg/Makefile.am:
+	* multiload/docs/C/loadavg/figures/loadavg-applet-default.png:
+	* multiload/docs/C/loadavg/figures/loadavg-applet-greyed.png:
+	* multiload/docs/C/loadavg/figures/loadavg-applet-properties.png:
+	* multiload/docs/C/loadavg/figures/loadavg-applet.png:
+	* multiload/docs/C/loadavg/loadavg-applet-default.png:
+	* multiload/docs/C/loadavg/loadavg-applet-greyed.png:
+	* multiload/docs/C/loadavg/loadavg-applet-properties.png:
+	* multiload/docs/C/loadavg/loadavg-applet.png:
+	* multiload/docs/C/loadavg/loadavg.sgml:
+	* multiload/docs/C/memload/Makefile.am:
+	* multiload/docs/C/memload/figures/memload-applet-default.png:
+	* multiload/docs/C/memload/figures/memload-applet-greyed.png:
+	* multiload/docs/C/memload/figures/memload-applet-properties.png:
+	* multiload/docs/C/memload/figures/memload-applet.png:
+	* multiload/docs/C/memload/memload-applet-default.png:
+	* multiload/docs/C/memload/memload-applet-greyed.png:
+	* multiload/docs/C/memload/memload-applet-properties.png:
+	* multiload/docs/C/memload/memload-applet.png:
+	* multiload/docs/C/memload/memload.sgml:
+	* multiload/docs/C/netload/Makefile.am:
+	* multiload/docs/C/netload/figures/netload-applet-default.png:
+	* multiload/docs/C/netload/figures/netload-applet-greyed.png:
+	* multiload/docs/C/netload/figures/netload-applet-properties.png:
+	* multiload/docs/C/netload/figures/netload-applet.png:
+	* multiload/docs/C/netload/netload-applet-default.png:
+	* multiload/docs/C/netload/netload-applet-greyed.png:
+	* multiload/docs/C/netload/netload-applet-properties.png:
+	* multiload/docs/C/netload/netload-applet.png:
+	* multiload/docs/C/netload/netload.sgml:
+	* multiload/docs/C/swapload/Makefile.am:
+	* multiload/docs/C/swapload/figures/swapload-applet-default.png:
+	* multiload/docs/C/swapload/figures/swapload-applet-greyed.png:
+	* multiload/docs/C/swapload/figures/swapload-applet-properties.png:
+	* multiload/docs/C/swapload/figures/swapload-applet.png:
+	* multiload/docs/C/swapload/swapload-applet-default.png:
+	* multiload/docs/C/swapload/swapload-applet-greyed.png:
+	* multiload/docs/C/swapload/swapload-applet-properties.png:
+	* multiload/docs/C/swapload/swapload-applet.png:
+	* multiload/docs/C/swapload/swapload.sgml:
+	* multiload/docs/it/cpuload/Makefile.am:
+	* multiload/docs/it/cpuload/cpuload-applet-default.png:
+	* multiload/docs/it/cpuload/cpuload-applet-greyed.png:
+	* multiload/docs/it/cpuload/cpuload-applet-properties.png:
+	* multiload/docs/it/cpuload/cpuload-applet.png:
+	* multiload/docs/it/cpuload/cpuload.sgml:
+	* multiload/docs/it/cpuload/figures/cpuload-applet-default.png:
+	* multiload/docs/it/cpuload/figures/cpuload-applet-greyed.png:
+	* multiload/docs/it/cpuload/figures/cpuload-applet-properties.png:
+	* multiload/docs/it/cpuload/figures/cpuload-applet.png:
+	* multiload/docs/it/loadavg/Makefile.am:
+	* multiload/docs/it/loadavg/figures/loadavg-applet-default.png:
+	* multiload/docs/it/loadavg/figures/loadavg-applet-greyed.png:
+	* multiload/docs/it/loadavg/figures/loadavg-applet-properties.png:
+	* multiload/docs/it/loadavg/figures/loadavg-applet.png:
+	* multiload/docs/it/loadavg/loadavg-applet-default.png:
+	* multiload/docs/it/loadavg/loadavg-applet-greyed.png:
+	* multiload/docs/it/loadavg/loadavg-applet-properties.png:
+	* multiload/docs/it/loadavg/loadavg-applet.png:
+	* multiload/docs/it/loadavg/loadavg.sgml:
+	* multiload/docs/it/memload/Makefile.am:
+	* multiload/docs/it/memload/figures/memload-applet-default.png:
+	* multiload/docs/it/memload/figures/memload-applet-greyed.png:
+	* multiload/docs/it/memload/figures/memload-applet-properties.png:
+	* multiload/docs/it/memload/figures/memload-applet.png:
+	* multiload/docs/it/memload/memload-applet-default.png:
+	* multiload/docs/it/memload/memload-applet-greyed.png:
+	* multiload/docs/it/memload/memload-applet-properties.png:
+	* multiload/docs/it/memload/memload-applet.png:
+	* multiload/docs/it/memload/memload.sgml:
+	* multiload/docs/it/netload/Makefile.am:
+	* multiload/docs/it/netload/figures/netload-applet-default.png:
+	* multiload/docs/it/netload/figures/netload-applet-greyed.png:
+	* multiload/docs/it/netload/figures/netload-applet-properties.png:
+	* multiload/docs/it/netload/figures/netload-applet.png:
+	* multiload/docs/it/netload/netload-applet-default.png:
+	* multiload/docs/it/netload/netload-applet-greyed.png:
+	* multiload/docs/it/netload/netload-applet-properties.png:
+	* multiload/docs/it/netload/netload-applet.png:
+	* multiload/docs/it/netload/netload.sgml:
+	* multiload/docs/it/swapload/Makefile.am:
+	* multiload/docs/it/swapload/figures/swapload-applet-default.png:
+	* multiload/docs/it/swapload/figures/swapload-applet-greyed.png:
+	* multiload/docs/it/swapload/figures/swapload-applet-properties.png
+	:
+	* multiload/docs/it/swapload/figures/swapload-applet.png:
+	* multiload/docs/it/swapload/swapload-applet-default.png:
+	* multiload/docs/it/swapload/swapload-applet-greyed.png:
+	* multiload/docs/it/swapload/swapload-applet-properties.png:
+	* multiload/docs/it/swapload/swapload-applet.png:
+	* multiload/docs/it/swapload/swapload.sgml:
+
+2001-03-20  Dan Mueth  <dan@eazel.com>
+
 	Fixing a few OMF and Makefile bugs.
 
 	* another_clock/docs/C/anotherclock_applet-C.omf:

@@ -1,10 +1,12 @@
-applet = swapload
 figs = \
-	swapload-applet-default.png\
-	swapload-applet-greyed.png\
-	swapload-applet-properties.png\
-	swapload-applet.png
+	figures/swapload-applet-default.png		\
+	figures/swapload-applet-properties.png		\
+	figures/swapload-applet-greyed.png		\
+	figures/swapload-applet.png
+docname = swapload_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = swapload_applet-it.omf
+sgml_ents = swapload.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

@@ -1,10 +1,12 @@
-applet = loadavg
 figs = \
-	loadavg-applet-default.png\
-	loadavg-applet-greyed.png\
-	loadavg-applet-properties.png\
-	loadavg-applet.png
+	figures/loadavg-applet-default.png		\	
+	figures/loadavg-applet-properties.png		\
+	figures/loadavg-applet-greyed.png		\
+	figures/loadavg-applet.png
+docname = loadavg_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = loadavg_applet-C.omf
+sgml_ents = loadavg.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

@@ -1,10 +1,12 @@
-applet = cpuload
 figs = \
-	cpuload-applet-default.png\
-	cpuload-applet-greyed.png\
-	cpuload-applet-properties.png\
-	cpuload-applet.png
+	figures/cpuload-applet-default.png		\
+	figures/cpuload-applet-properties.png		\
+	figures/cpuload-applet-greyed.png		\
+	figures/cpuload-applet.png
+docname = cpuload_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = cpuload_applet-it.omf
+sgml_ents = cpuload.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

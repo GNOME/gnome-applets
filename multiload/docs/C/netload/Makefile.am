@@ -1,10 +1,12 @@
-applet = netload
 figs = \
-	netload-applet-default.png\
-	netload-applet-greyed.png\
-	netload-applet-properties.png\
-	netload-applet.png
+	figures/netload-applet-default.png		\
+	figures/netload-applet-properties.png		\
+	figures/netload-applet-greyed.png		\
+	figures/netload-applet.png
+docname = netload_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = netload_applet-C.omf
+sgml_ents = netload.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
