@@ -8,15 +8,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.5.5\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2004-02-21 16:18+0100\n"
+"Project-Id-Version: gnome-applets 2.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-05-04 21:50+0200\n"
+"PO-Revision-Date: 2004-05-04 21:48+0200\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -85,12 +85,12 @@ msgstr "Werkzeug"
 
 #: accessx-status/applet.c:134 battstat/battstat_applet.c:898
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
-#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:601
+#: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:230
-#: wireless/wireless-applet.c:572
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -333,6 +333,7 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "System läuft mit Batteriestrom"
 
@@ -340,15 +341,20 @@ msgstr "System läuft mit Batteriestrom"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "System läuft mit Netzstrom"
 
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "N/V"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -356,6 +362,9 @@ msgstr "System läuft mit Batteriestrom. Batterie: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -366,6 +375,7 @@ msgstr "System läuft mit Netzstrom. Batterie: %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "System läuft mit Batteriestrom. Batterie: Nicht vorhanden"
 
@@ -373,6 +383,7 @@ msgstr "System läuft mit Batteriestrom. Batterie: Nicht vorhanden"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "System läuft mit Netzstrom. Batterie: Nicht vorhanden"
 
@@ -387,6 +398,7 @@ msgstr "Batterie: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "Batterie: Nicht vorhanden"
 
@@ -500,7 +512,7 @@ msgstr "<b>Ruhezustand</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Warnungen</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1478
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
@@ -571,7 +583,7 @@ msgstr "_Gelb:"
 #: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
 #: stickynotes/stickynotes_applet_callbacks.c:371
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
@@ -2439,7 +2451,7 @@ msgstr "Beschriftung"
 msgid "Flag and Label"
 msgstr "Flagge und Beschriftung"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1485 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Anzeige"
@@ -2537,7 +2549,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME-Tastaturbelegunsindikator"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:575
+#: gswitchit/gswitchit-applet.c:606
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
@@ -2550,19 +2562,19 @@ msgstr "Tastatur-Applet-Fabrik"
 msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
 
-#: gswitchit/gswitchit-applet.c:578
+#: gswitchit/gswitchit-applet.c:609
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright (C) Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:580
+#: gswitchit/gswitchit-applet.c:611
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Tastaturbelegungs-Indikator-Applet für GNOME"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:765
 msgid "XKB initialization error"
 msgstr "XKB-Initialisierungsfehler"
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:773
 msgid "Error loading XKB configuration registry"
 msgstr "Fehler beim Laden der XKB-Konfigurations-Registry"
 
@@ -2737,7 +2749,7 @@ msgstr "Ständig aktualisierte Aktienkurse abrufen"
 msgid "Gtik Applet Factory"
 msgstr "Gtik-Applet-Fabrik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:742
 msgid "Stock Ticker"
 msgstr "Börsenticker"
 
@@ -2750,11 +2762,11 @@ msgstr "_Aktualisieren"
 msgid "Could not retrieve the stock data."
 msgstr "Die Aktiendaten konnten nicht empfangen werden."
 
-#: gtik/gtik.c:307 gweather/gweather-applet.c:426
+#: gtik/gtik.c:309 gweather/gweather-applet.c:456
 msgid "Updating..."
 msgstr "Aktualisieren..."
 
-#: gtik/gtik.c:742
+#: gtik/gtik.c:744
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2767,126 +2779,126 @@ msgstr ""
 "GNOME Aktien-Ticker nicht um Investitions-Entscheidungen zu treffen; er ist "
 "lediglich für Informationszwecke."
 
-#: gtik/gtik.c:1232
+#: gtik/gtik.c:1234
 msgid "Current _stocks:"
 msgstr "_Beobachtete Aktien:"
 
-#: gtik/gtik.c:1240
+#: gtik/gtik.c:1242
 msgid "_New symbol:"
 msgstr "_Neues Symbol:"
 
-#: gtik/gtik.c:1249
+#: gtik/gtik.c:1251
 msgid "_Add"
 msgstr "_Hinzufügen"
 
-#: gtik/gtik.c:1258
+#: gtik/gtik.c:1260
 msgid "_Remove"
 msgstr "_Entfernen"
 
-#: gtik/gtik.c:1364
+#: gtik/gtik.c:1366
 msgid "Stock Ticker Preferences"
 msgstr "Einstellungen des Börsentickers"
 
-#: gtik/gtik.c:1386
+#: gtik/gtik.c:1388
 msgid "Symbols"
 msgstr "Symbole"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1395 mailcheck/mailcheck.c:2389
 msgid "Behavior"
 msgstr "Verhalten"
 
-#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1398 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "Aktualisieren"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1402
 msgid "Stock update fre_quency:"
 msgstr "_Aktualisieren alle:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
+#: gtik/gtik.c:1414 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
 #: mailcheck/mailcheck.c:2101
 msgid "minutes"
 msgstr "Minuten"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1420
 msgid "Scrolling"
 msgstr "Rollen"
 
-#: gtik/gtik.c:1422
+#: gtik/gtik.c:1424
 msgid "_Scroll speed:"
 msgstr "_Rollgeschwindigkeit:"
 
-#: gtik/gtik.c:1426
+#: gtik/gtik.c:1428
 msgid "Slow"
 msgstr "Langsam"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1430
 msgid "Medium"
 msgstr "Mittel"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1432
 msgid "Fast"
 msgstr "Schnell"
 
-#: gtik/gtik.c:1450
+#: gtik/gtik.c:1452
 msgid "_Enable scroll buttons"
 msgstr "Roll_knöpfe anzeigen"
 
-#: gtik/gtik.c:1462
+#: gtik/gtik.c:1464
 msgid "Scroll _left to right"
 msgstr "Von _links nach rechts rollen"
 
-#: gtik/gtik.c:1488
+#: gtik/gtik.c:1490
 msgid "Displa_y only symbols and price"
 msgstr "Lediglich S_ymbol und Preis anzeigen"
 
-#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Breite:"
 
-#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "Pixel"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1526
 msgid "Font and Colors"
 msgstr "Schrift und Farben"
 
-#: gtik/gtik.c:1530
+#: gtik/gtik.c:1532
 msgid "Use _default theme font and colors"
 msgstr "Voreingestellte _Themenfarben und -schriften verwenden"
 
-#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1547 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Schrift:"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1571
 msgid "Stock _raised:"
 msgstr "Kurs _gestiegen:"
 
-#: gtik/gtik.c:1588
+#: gtik/gtik.c:1590
 msgid "Stock _lowered:"
 msgstr "Kurs ge_fallen:"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1609
 msgid "Stock _unchanged:"
 msgstr "Kurs _unverändert:"
 
-#: gtik/gtik.c:1626 modemlights/properties.c:580
+#: gtik/gtik.c:1628 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Hintergrund:"
 
-#: gtik/gtik.c:1769
+#: gtik/gtik.c:1771
 msgid "Skip forward"
 msgstr "Vor"
 
-#: gtik/gtik.c:1770
+#: gtik/gtik.c:1772
 msgid "Skip backward"
 msgstr "Zurück"
 
-#: gtik/gtik.c:1778
+#: gtik/gtik.c:1780
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2894,11 +2906,11 @@ msgstr ""
 "Börsenticker\n"
 "Ständig aktualisierte Aktienkurse abrufen"
 
-#: gtik/gtik.c:1990
+#: gtik/gtik.c:1992
 msgid "(No"
 msgstr "(Nein"
 
-#: gtik/gtik.c:1991
+#: gtik/gtik.c:1993
 msgid "Change "
 msgstr "Veränderung "
 
@@ -3083,7 +3095,7 @@ msgstr ""
 "\n"
 "Ein Applet zum Überwachen der lokalen Wetterbedingungen."
 
-#: gweather/gweather-applet.c:306
+#: gweather/gweather-applet.c:336
 msgid "GNOME Weather"
 msgstr "Das GNOME-Wetter"
 
@@ -3389,9 +3401,9 @@ msgstr "Nordwest"
 msgid "North - Northwest"
 msgstr "Nord bis Nordwest"
 
-#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
-#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
-#: gweather/weather.c:2033
+#: gweather/weather.c:143 gweather/weather.c:1975 gweather/weather.c:1987
+#: gweather/weather.c:1999 gweather/weather.c:2011 gweather/weather.c:2029
+#: gweather/weather.c:2041
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -3710,27 +3722,27 @@ msgstr "Staubteufel"
 msgid "Dust whirls in the vicinity"
 msgstr "Staubteufel in der Umgebung"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
+#: gweather/weather.c:844 gweather/weather.c:884 gweather/weather.c:1601
 msgid "Failed to get METAR data.\n"
 msgstr "Fehler beim Abrufen der METAR-Daten.\n"
 
-#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
+#: gweather/weather.c:876 gweather/weather.c:904 gweather/weather.c:1142
 msgid "WeatherInfo missing location"
 msgstr "Standort in WeatherInfo fehlt"
 
-#: gweather/weather.c:1931
+#: gweather/weather.c:1939
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:1943
 msgid "Unknown observation time"
 msgstr "Unbekannte Beobachtungszeit"
 
-#: gweather/weather.c:2005
+#: gweather/weather.c:2013
 msgid "Calm"
 msgstr "Ruhig"
 
-#: gweather/weather.c:2078
+#: gweather/weather.c:2086
 msgid "Retrieval failed"
 msgstr "Abrufen fehlgeschlagen"
 
@@ -4186,12 +4198,14 @@ msgid "Set default list value for %s\n"
 msgstr "Voreingestellten Listenwert für %s festlegen\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "»GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL« ist gesetzt, Schemata werden nicht "
 "installiert\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Die Umgebungsvariable »GCONF_CONFIG_SOURCE« muss gesetzt sein\n"
 
@@ -4467,7 +4481,7 @@ msgstr "_Stummschalten"
 # Konsistent zu GNOME-Media
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "_Open Volume Control"
-msgstr "_Mischpult aufrufen"
+msgstr "_Lautstärkeregler öffnen"
 
 #: mixer/mixer.c:125
 msgid "Main Volume"
@@ -4588,7 +4602,7 @@ msgstr ""
 #: mixer/mixer.c:878
 #, c-format
 msgid "Couldn't open mixer device %s\n"
-msgstr "Das Mischpultgerät %s konnte nicht geöffnet werden\n"
+msgstr "Das Mixer-Gerät %s konnte nicht geöffnet werden\n"
 
 #: mixer/mixer.c:1047
 msgid "Volume Controller"
@@ -5636,7 +5650,7 @@ msgid "Whether to use the default system font"
 msgstr "Voreingestellte Systemschrift verwenden?"
 
 #: stickynotes/stickynotes_applet.c:433
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s\n"
 "%d note"
@@ -5663,15 +5677,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Die Verbindungsqualität eines drahtlosen Netzwerks überwachen"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:837
 msgid "Wireless Link Monitor"
 msgstr "Drahtlose Geräte überwachen"
 
-#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
+#: wireless/wireless-applet.c:367 wireless/wireless-applet.c:504
 msgid "No Wireless Devices"
 msgstr "Keine drahtlosen Geräte"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5679,15 +5693,15 @@ msgstr ""
 "Scheinbar sind auf dem System keine drahtlosen Geräte konfiguriert.\n"
 "Bitte überprüfen Sie Ihre Konfiguration."
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 1998, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Dieses Werkzeug überwacht den Status einer drahtlosen Schnittstelle."
 
-#: wireless/wireless-applet.c:836
+#: wireless/wireless-applet.c:838
 msgid "This utility shows the status of a wireless link"
 msgstr "Dieses Werkzeug überwacht den Status einer drahtlosen Schnittstelle"
 
