@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.8">
-  <!ENTITY manrevision "2.8">
-  <!ENTITY date "August 2004">
+  <!ENTITY appletversion "2.10">
+  <!ENTITY manrevision "2.10">
+  <!ENTITY date "March 2005">
   <!ENTITY applet "System Monitor">
 ]>
 <!-- 
@@ -20,8 +20,11 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-    <title>&applet; Applet Manual V2.2</title> 
-
+    <title>&applet; Manual</title> 
+    <copyright>
+     <year>2005</year>
+     <holder>Davyd Madeley</holder>
+    </copyright>
     <copyright>
       <year>2004</year>
       <holder>Sun Microsystems</holder>
@@ -64,7 +67,13 @@
 	  <orgname>GNOME Documentation Project</orgname> 
 	</affiliation> 
 	<email>cbhoh@mimos.my</email>
-      </author> 
+      </author>
+
+      <author>
+       <firstname>Davyd</firstname><surname>Madeley</surname>
+       <email>davyd@madeley.id.au</email>
+       <affiliation><orgname>GNOME Project</orgname></affiliation>
+      </author>
 
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
@@ -81,10 +90,17 @@
     </authorgroup>
 
     <revhistory>
-
-      <revision> 
-	<revnumber>Version &manrevision;</revnumber> 
-	<date>&date;</date> 
+      <revision>
+        <revnumber>Version 2.10</revnumber>
+	<date>March 2005</date>
+	<revdescription>
+	  <para role="author">Davyd Madeley</para>
+	</revdescription>
+      </revision>
+    
+      <revision>
+	<revnumber>Version 2.8</revnumber> 
+	<date>August 2004</date> 
 	<revdescription> 
           <para role="author">Angela Boyle</para>
           <para role="publisher">GNOME Documentation Project</para>
@@ -138,14 +154,14 @@
 
       <!-- ==== Figure ============================================= -->
       <figure id="system-monitor-applet-fig"> 
-        <title>&applet; Applet</title> 
+        <title>&applet;</title> 
         <screenshot> 
         <mediaobject> 
           <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"
 			format="PNG"/> 
           </imageobject>
  	  <textobject> 
- 	    <phrase>Shows &applet; applet. Displays a graph for system CPU load.
+ 	    <phrase>Shows &applet;. Displays a graph for system CPU load.
             </phrase> 
           </textobject> 
         </mediaobject> 
@@ -154,7 +170,7 @@
       <!-- ==== End of Figure ======================================= -->
 
       <para>
-        The <application>&applet;</application> applet displays
+        The <application>&applet;</application> displays
         system load information in graphical format in a panel.
         You can configure <application>&applet;</application> to display 
         the following information for your system:
@@ -185,6 +201,7 @@
             Average system load 
           </para>
         </listitem>
+	<listitem><para>disk load</para></listitem>
       </itemizedlist>
 
       <sect2 id="multiload-introduction-add"> 
@@ -195,7 +212,7 @@
 	in the <application>Add to the panel</application> dialog, then
 	click <guibutton>OK</guibutton>.</para>
         <para>
-          The layout of the <application>&applet;</application> applet varies 
+          The layout of the <application>&applet;</application> varies 
           depending on the size and type of panel in which the applet resides.
         </para>     
       </sect2>
@@ -252,6 +269,12 @@
                 Select this option to display the graph for average system load.
               </para>
             </listitem>
+	    <listitem>
+	     <para><guilabel>Harddisk</guilabel></para>
+	     <para>
+	      Select this option to display the graph for disk usage.
+	     </para>
+	    </listitem>
           </itemizedlist>
     </sect2>
 	<!-- ================ displaying current usage of system resources================== -->
@@ -284,6 +307,20 @@
 <!-- ============= Preferences =========================== -->
   <sect1 id="multiload-prefs">
     <title>Customizing Appearance</title> 
+      <figure id="system-monitor-prefs-fig"> 
+        <title>Preferences Dialog</title> 
+        <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata fileref="figures/multiload-preferences.png"
+			format="PNG"/> 
+          </imageobject>
+ 	  <textobject> 
+ 	    <phrase>Preferences Dialog
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+	</screenshot> 
+      </figure> 
     <sect2 id="multiload-size">
         <title>To Change the Width</title>
               <para>In the right-click menu, go to <guimenuitem>Preferences</guimenuitem>. Under <guilabel>Options</guilabel>, use the <guilabel>System monitor width</guilabel> spin box to specify the width of each <application>&applet;</application> graph in pixels.</para>
@@ -366,6 +403,12 @@
                       <entry><para><guilabel>Nice</guilabel></para></entry>
                       <entry><para>Processor time used by high-priority processes</para></entry>
                     </row>
+		    <row valign="top">
+		      <entry><para><guilabel>IOWait</guilabel></para></entry>
+		      <entry>
+		       <para>Processor time used waiting for I/O</para>
+		      </entry>
+		    </row>
                     <row valign="top">
                       <entry><para><guilabel>Idle</guilabel></para></entry>
                       <entry><para>Unused processory capacity</para></entry>
@@ -469,14 +512,34 @@
               <para>
                 Select this tab to display the color buttons for the following parameters:
               </para>
-              <itemizedlist>
-                <listitem>
-                  <para><guilabel>Used</guilabel> swap space</para>
-                </listitem>
-                <listitem>
-                  <para><guilabel>Free</guilabel> swap space</para>
-                </listitem>
-              </itemizedlist>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Description</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+		     <entry><para><guilabel>Used</guilabel></para></entry>
+		     <entry>
+		      <para>Swap space being used by the system</para>
+		     </entry>
+		    </row>
+		    <row valign="top">
+		     <entry><para><guilabel>Free</guilabel></para></entry>
+		     <entry>
+		      <para>Swap space that is free to be used</para>
+		     </entry>
+		    </row>
+		  </tbody>
+		</tgroup>
+              </informaltable>
             </listitem>
             <listitem>
               <para>
@@ -485,15 +548,67 @@
               <para>
                 Select this tab to display the color buttons for the following parameters:
               </para>
-              <itemizedlist>
-                <listitem>
-                  <para><guilabel>Average</guilabel> load</para>
-                </listitem>
-                <listitem>
-                  <para><guilabel>Background</guilabel>, that is, no load</para>
-                </listitem>
-              </itemizedlist>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Description</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+		     <entry><para><guilabel>Average</guilabel></para></entry>
+		     <entry><para>System Load</para></entry>
+		    </row>
+		    <row valign="top">
+		     <entry><para><guilabel>Background</guilabel></para></entry>
+		     <entry><para>that is, no load</para></entry>
+		    </row>
+		  </tbody>
+		</tgroup>
+	      </informaltable>
             </listitem>
+            <listitem>
+              <para>
+                <guilabel>Network</guilabel>
+              </para>
+              <para>
+                Select this tab to display the color buttons for the following parameters:
+              </para>
+              <informaltable frame="all">
+                <tgroup cols="2" colsep="1" rowsep="1">
+                  <colspec colname="COLSPEC0" colwidth="50*"/>
+                  <colspec colname="COLSPEC1" colwidth="50*"/>
+                  <thead>
+                    <row valign="top">
+                      <entry colname="COLSPEC0">
+                        <para>Parameter</para></entry>
+                      <entry colname="COLSPEC1">
+                        <para>Description</para></entry>
+                    </row>
+                  </thead>
+                  <tbody>
+                    <row valign="top">
+                      <entry><para><guilabel>Read</guilabel></para></entry>
+                      <entry><para>Disk read rate</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Write</guilabel></para></entry>
+                      <entry><para>Disk write rate</para></entry>
+                    </row>
+                    <row valign="top">
+                      <entry><para><guilabel>Background</guilabel></para></entry>
+                      <entry><para>Idle disk time</para></entry>
+                    </row>
+		  </tbody>
+		</tgroup>
+	      </informaltable>
+	    </listitem>
           </itemizedlist>
     </sect2>
   </sect1>
