@@ -11,6 +11,8 @@ struct _ProcBar {
 	GtkWidget *frame;
 	GtkWidget *bar;
 
+	gboolean   vertical : 1;
+
 	GdkPixmap *bs;
 	GdkColor *colors;
 
@@ -28,6 +30,7 @@ ProcBar * procbar_new         (GtkWidget *label,
 			       gint n, GdkColor *colors,
 			       gint (*cb)());
 void      procbar_set_values  (ProcBar *pb, unsigned val []);
+void      procbar_set_orient  (ProcBar *pb, gboolean vertical);
 void      procbar_start       (ProcBar *pb, gint time);
 void      procbar_stop        (ProcBar *pb);
 

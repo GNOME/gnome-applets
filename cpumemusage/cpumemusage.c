@@ -3,6 +3,7 @@
  * (C) 1997 The Free Software Foundation
  *
  * Author: Radek Doulik
+ *         Orientation switching: Owen Taylor <otaylor@redhat.com>
  *
  */
 
@@ -43,6 +44,7 @@ static GdkColor bar_swap_colors [PROC_SWAP_SIZE-1] = {
 static ProcInfo   summary_info;
 static ProcBar   *cpu, *mem, *swap = NULL;
 static GtkWidget *cpumemusage;
+static GtkWidget *applet;
 
 static gint
 update_values ()
@@ -62,14 +64,39 @@ update_values ()
 }
 
 static GtkWidget *
+pack_procbars(gboolean vertical)
+{
+	GtkWidget *box;
+	
+	if (vertical) {
+		box = gtk_hbox_new (TRUE, GNOME_PAD_SMALL >> 1);
+		gtk_widget_set_usize (box, 40, 80);
+	} else {
+		box = gtk_vbox_new (TRUE, GNOME_PAD_SMALL >> 1);
+		gtk_widget_set_usize (box, 80, 40);
+	}
+
+	procbar_set_orient (cpu, vertical);
+	gtk_box_pack_start_defaults (GTK_BOX (box), cpu->hbox);
+	procbar_set_orient (mem, vertical);
+	gtk_box_pack_start_defaults (GTK_BOX (box), mem->hbox);
+	
+	if (swap) {
+		procbar_set_orient (swap, vertical);
+		gtk_box_pack_start_defaults (GTK_BOX (box), swap->hbox);
+	}
+
+	gtk_widget_show (box);
+
+	return box;
+}
+
+static GtkWidget *
 cpumemusage_widget ()
 {
-	GtkWidget *vbox;
-
+	GtkWidget *box;
+	
 	proc_read_mem (&summary_info);
-
-	vbox = gtk_vbox_new (TRUE, GNOME_PAD_SMALL >> 1);
-	gtk_widget_set_usize (vbox, 80, 40);
 
 	cpu  = procbar_new (NULL, PROC_CPU_SIZE-1, bar_cpu_colors,
 			    update_values);
@@ -80,29 +107,63 @@ cpumemusage_widget ()
 		swap = procbar_new (NULL, PROC_SWAP_SIZE-1, bar_swap_colors,
 				    NULL);
 
-	gtk_box_pack_start_defaults (GTK_BOX (vbox), cpu->hbox);
-	gtk_box_pack_start_defaults (GTK_BOX (vbox), mem->hbox);
-
-	if (swap)
-		gtk_box_pack_start_defaults (GTK_BOX (vbox), swap->hbox);
-
-	gtk_widget_show (vbox);
-
+	box = pack_procbars (FALSE);
 	procbar_start (cpu, 200);
 
-	return vbox;
+	return box;
+}
+
+
+
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+{
+	GtkWidget *box;
+	gboolean vertical;
+	
+	switch (o) {
+	case ORIENT_UP:
+	case ORIENT_DOWN:
+		vertical = FALSE;
+		break;
+	case ORIENT_LEFT:
+	case ORIENT_RIGHT:
+		vertical = TRUE;
+		break;
+	}
+		
+	if (swap) {
+		gtk_widget_ref (swap->hbox);
+		gtk_container_remove (GTK_CONTAINER(cpumemusage), swap->hbox);
+	}
+	gtk_widget_ref (cpu->hbox);
+	gtk_container_remove (GTK_CONTAINER(cpumemusage), cpu->hbox);
+	gtk_widget_ref (mem->hbox);
+	gtk_container_remove (GTK_CONTAINER(cpumemusage), mem->hbox);
+	
+	box = pack_procbars (vertical);
+
+	if (swap)
+		gtk_widget_unref (swap->hbox);
+	gtk_widget_unref (cpu->hbox);
+	gtk_widget_unref (mem->hbox);
+
+	gtk_container_remove (GTK_CONTAINER (applet), cpumemusage);
+	gtk_container_add (GTK_CONTAINER (applet), box);
+	cpumemusage = box;
 }
 
 int main(int argc, char **argv)
 {
-	GtkWidget *applet;
-
         applet_widget_init_defaults("cpumemusage_applet", NULL, argc, argv, 0,
 				    NULL, argv[0]);
 
 	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+			   GTK_SIGNAL_FUNC(applet_change_orient),
+			   NULL);
 
         cpumemusage = cpumemusage_widget();
         applet_widget_add( APPLET_WIDGET(applet), cpumemusage );

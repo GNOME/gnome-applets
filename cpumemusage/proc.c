@@ -50,7 +50,8 @@ proc_read_mem (ProcInfo *ps)
 
 	ps->mem [PROC_MEM_USER] = ps->mem [PROC_MEM_TOTAL]
 		- ps->mem [PROC_MEM_FREE]
-		- ps->mem [PROC_MEM_SHARED];
+		- ps->mem [PROC_MEM_SHARED] 
+                - ps->mem [PROC_MEM_BUF];
 
 	/* printf ("Mem: %u %u %u %u %u %u\n",
 		ps->mem [PROC_MEM_TOTAL],

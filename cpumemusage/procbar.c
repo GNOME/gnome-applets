@@ -84,6 +84,7 @@ procbar_new (GtkWidget *label, gint n, GdkColor *colors, gint (*cb)())
 	pb->first_request = 1;
 	pb->colors = colors;
 	pb->colors_allocated = 0;
+	pb->vertical = FALSE;
 
 	pb->last = g_new (unsigned, n+1);
 	pb->last [0] = 0;
@@ -121,6 +122,12 @@ procbar_new (GtkWidget *label, gint n, GdkColor *colors, gint (*cb)())
 	return pb;
 }
 
+void      
+procbar_set_orient  (ProcBar *pb, gboolean vertical)
+{
+	pb->vertical = vertical;
+}
+
 #define W (pb->bar)
 #define A ((pb->bar)->allocation)
 
@@ -130,8 +137,8 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 	unsigned tot = val [0];
 	gint i;
 	gint change = 0;
-	gint x;
-	gint wr, w;
+	gint offset;
+	gint lengthr, length;
 	GdkGC *gc;
 
 	if (!GTK_WIDGET_REALIZED (pb->bar))
@@ -150,8 +157,8 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 	if (!change || !tot)
 		return;
 
-	w = A.width;
-	x = 0;
+	length = pb->vertical ? A.height : A.width;
+	offset = 0;
 
 	gc = gdk_gc_new (pb->bar->window);
 
@@ -159,24 +166,31 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 
 	for (i=0; i<pb->n; i++) {
 		if (i<pb->n-1)
-			wr = (unsigned) w * ((float)val [i+1]/tot);
+			lengthr = (unsigned) length * ((float)val [i+1]/tot);
 		else
-			wr = A.width - x;
+			lengthr = (pb->vertical ? A.height : A.width) - offset;
 
-		/* printf ("%d %d %d %d\n", x, 0, wr, A.height);
+		/* printf ("%d %d %d %d\n", offset, 0, lengthr, A.height);
 		printf ("%u ", val[i+1]);
-		printf ("%d ", wr); */
+		printf ("%d ", lengthr); */
 
 		gdk_gc_set_foreground (gc,
 				       &pb->colors [i]);
 
-		gdk_draw_rectangle (pb->bs,
-				    gc,
-				    TRUE,
-				    x, 0,
-				    wr, A.height);
+		if (pb->vertical)
+			gdk_draw_rectangle (pb->bs,
+					    gc,
+					    TRUE,
+					    0, A.height - offset - lengthr,
+					    A.width, lengthr);
+		else
+			gdk_draw_rectangle (pb->bs,
+					    gc,
+					    TRUE,
+					    offset, 0,
+					    lengthr, A.height);
 
-		x += wr;
+		offset += lengthr;
 	}
 	/* printf ("\n"); */
 		
@@ -211,3 +225,4 @@ procbar_stop (ProcBar *pb)
 
 	pb->tag = -1;
 }
+
