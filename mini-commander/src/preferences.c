@@ -891,7 +891,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_add(GTK_CONTAINER(frame), table);
 
     /* default bg and fg theme */
-    check_theme = gtk_check_button_new_with_mnemonic("_Use default theme colors");
+    check_theme = gtk_check_button_new_with_mnemonic(_("_Use default theme colors"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_theme), prop->show_default_theme);
     g_signal_connect (G_OBJECT (check_theme), "toggled",
     		      G_CALLBACK (check_theme_toggled), mcdata); 
