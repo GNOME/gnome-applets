@@ -269,7 +269,7 @@ properties_show (BonoboUIComponent *uic,
 	GtkWidget *dialog;
 	GtkWidget *box;
 	GtkWidget *frame;
-	GtkWidget *hbox;
+	GtkWidget *hbox, *hbox2;
 	GtkWidget *vbox, *vbox1;
 	GtkWidget *fbox;
 	GtkWidget *label;
@@ -289,6 +289,7 @@ properties_show (BonoboUIComponent *uic,
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (dd->applet));
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
@@ -297,7 +298,7 @@ properties_show (BonoboUIComponent *uic,
 	size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 	
 	vbox = gtk_vbox_new(FALSE, 18);
-	gtk_container_set_border_width(GTK_CONTAINER(vbox), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_box_pack_start (GTK_BOX (box), vbox, FALSE, FALSE, 0);
 	gtk_widget_show(vbox);
 	
@@ -336,16 +337,20 @@ properties_show (BonoboUIComponent *uic,
 	gtk_widget_show(label);
 	gtk_size_group_add_widget (size, label);
 
+	hbox2 = gtk_hbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(hbox), hbox2, FALSE, FALSE, 0);
+	gtk_widget_show(hbox2);
+	
 	widgets->update_spin = gtk_spin_button_new(GTK_ADJUSTMENT(gtk_adjustment_new(dd->interval, 1.0, 300.0, 5, 1, 1)), 1, 0);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->update_spin);
-	gtk_box_pack_start(GTK_BOX(hbox), widgets->update_spin, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox2), widgets->update_spin, FALSE, FALSE, 0);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(widgets->update_spin),GTK_UPDATE_ALWAYS);
 	gtk_widget_show(widgets->update_spin);
 	g_signal_connect (G_OBJECT (widgets->update_spin), "focus_out_event",
 				  G_CALLBACK (spin_changed), dd);
 	
 	label = gtk_label_new_with_mnemonic (_("seconds"));
-	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_widget_show (label);
 
