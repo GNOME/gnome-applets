@@ -3,8 +3,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.101.0">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "May 2002">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Keyboard Layout Switcher">
 ]>
 
@@ -14,6 +14,7 @@
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
   Template last modified Apr 11, 2002
+  
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
@@ -105,6 +106,15 @@
 		  </revdescription>   
 		</revision> 
 		<revision> 
+		  <revnumber>Keyboard Layout Switcher Applet Manual V2.0</revnumber> 
+		  <date>May 2002</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription>   
+		</revision> 
+		<revision> 
 		  <revnumber>GNOME Keyboard Applet</revnumber> 
 		  <date>January 2002</date>
 		  <revdescription> 
@@ -165,8 +175,7 @@
 	 <para>The <application>&applet;</application> applet enables you to assign different layouts to
 	 your keyboard to suit different locales. The applet displays the flag and label associated with
 	 the current keyboard layout.</para> 
-	 <para>To add <application>&applet;</application> to a panel, right-click on the panel to open the 
-		panel popup menu, then choose 
+	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
 		<menuchoice> 
 		  <guimenu>Add to Panel</guimenu> 
 		  <guisubmenu>Utility</guisubmenu> 
@@ -187,10 +196,9 @@
 
 
   <sect1 id="gkb-prefs"> 
-	 <title>Settings</title> 
+	 <title>Preferences</title> 
 	 <para>To configure <application>&applet;</application>, right-click on the
-	 applet, then choose <guimenuitem>Preferences</guimenuitem> from the applet 
-	 popup menu.</para> 
+	 applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
 
 	 <sect2 id="gkb-keymaps"> 
 		
@@ -331,12 +339,15 @@
 			 <para>Select one of the following options from the drop-down list box to
 			 specify what the applet displays in the panel:</para> 
 			 <itemizedlist>
-			 	<listitem><para><guilabel>Flag</guilabel>: display a flag only.</para></listitem>
-			 	<listitem><para><guilabel>Label</guilabel>: display a label only.</para></listitem>
-			 	<listitem><para><guilabel>Flag and Label</guilabel>: display a flag and label.</para></listitem>
+			 	<listitem><para><guilabel>Flag</guilabel></para>
+			 	<para>Display a flag only.</para></listitem>
+			 	<listitem><para><guilabel>Label</guilabel></para>
+			 	<para>Display a label only.</para></listitem>
+			 	<listitem><para><guilabel>Flag and Label</guilabel></para>
+			 	<para>Display a flag and label.</para></listitem>
 			 </itemizedlist>
 			 <para>You must reboot your machine to effect a change to this setting.</para>
-			 <para>Default: <guilabel>Flag and Label</guilabel></para>
+			 <para>Default: <guilabel>Flag and Label</guilabel>.</para>
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
@@ -349,7 +360,7 @@
 			 	<listitem><para><guilabel>Big</guilabel></para></listitem>
 			 </itemizedlist>
 			 <para>You must reboot your machine to effect a change to this setting.</para>
-			 <para>Default: <guilabel>Big</guilabel></para>
+			 <para>Default: <guilabel>Big</guilabel>.</para>
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
@@ -360,7 +371,7 @@
 			 want to use. The applet displays the shortcut key in the text box. The default shortcut
 			 key is <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo> which the applet displays
 			 in the text box as Mod1-Shift_L.</para> 
-			 <para>Default: Mod1-Shift_L</para>
+			 <para>Default: Mod1-Shift_L.</para>
 			 </listitem> 
 		  </varlistentry> 
 		</variablelist> 
