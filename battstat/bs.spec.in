@@ -12,7 +12,7 @@ Release:   %{rel}
 Copyright: GPL
 Group:     homegrown
 Source:    @PACKAGE@-@VERSION@.tar.gz
-Patch:     rpm-po.patch
+#Patch:     rpm-po.patch
 BuildRoot: /tmp/@PACKAGE@-@VERSION@-buildroot
 Requires:  gtk+ >= 1.2.7
 Requires:  gnome-libs >= 1.2.0
@@ -28,7 +28,7 @@ Provides:  battstat_applet
 
 %prep
 %setup -n @TAR_NAME@
-%patch -p0
+#%patch -p0
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure %{config_opts}
@@ -46,7 +46,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc README INSTALL COPYING ChangeLog NEWS TODO AUTHORS
 %{prefix}/bin/battstat_applet
 %{prefix}/share/pixmaps/battstat*
-%{prefix}/share/locale/*/LC_MESSAGES/battstat_applet.mo
+%{prefix}/share/locale/de/LC_MESSAGES/battstat_applet.mo
+%{prefix}/share/locale/hu/LC_MESSAGES/battstat_applet.mo
+%{prefix}/share/locale/pl/LC_MESSAGES/battstat_applet.mo
+%{prefix}/share/locale/sv/LC_MESSAGES/battstat_applet.mo
+%{prefix}/share/locale/zh_TW/LC_MESSAGES/battstat_applet.mo
 %{prefix}/share/gnome/help/battstat_applet/*
 %{prefix}/share/applets/Monitors/battstat_applet.desktop
 %{prefix}/share/battstat_applet/*

@@ -149,7 +149,7 @@ battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c
 battstat_applet_LDADD =  			$(GNOME_LIBDIR) 				$(GNOME_APPLETS_LIBS)   	 		${GNOME_DOCKLETS_LIBS}				-lglade						-lglade-gnome
 
 
-EXTRADIST = $(glade_DATA)
+EXTRA_DIST = $(glade_DATA)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
