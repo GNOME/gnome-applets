@@ -33,6 +33,7 @@ typedef struct _VSliderClass  VSliderClass;
 
 struct _VSlider {
     GtkVScale parent;
+    
 };
 
 struct _VSliderClass {

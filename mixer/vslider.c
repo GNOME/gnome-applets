@@ -33,18 +33,29 @@
 /* widget stuff */
 /****************/
 
+static void gtk_real_range_draw_trough (GtkRange *range);
 
 static void
 vslider_class_init(VSliderClass *vsliderclass)
 {
+	GtkRangeClass *range_class;
+	range_class = GTK_RANGE_CLASS (vsliderclass);
+
+	range_class->draw_trough = gtk_real_range_draw_trough;
 	GTK_SCALE_CLASS(vsliderclass)->slider_length = 7;
 }
 
+static int
+button_press (VSlider *vslider, GdkEventButton *event)
+{
+	if (event->button > 1)
+		gtk_signal_emit_stop_by_name (GTK_OBJECT (vslider), "button_press_event");
+}
 static void
 vslider_init(VSlider *vslider)
 {
+	gtk_signal_connect (GTK_OBJECT (vslider), "button_press_event", button_press, NULL);
 }
-
 
 guint
 vslider_get_type(void)
@@ -74,3 +85,22 @@ vslider_new(void)
         return GTK_WIDGET(gtk_type_new(vslider_get_type()));
 }
 
+static void
+gtk_real_range_draw_trough (GtkRange *range)
+{
+  g_return_if_fail (range != NULL);
+  g_return_if_fail (GTK_IS_RANGE (range));
+
+  if (range->trough)
+     {
+	gtk_paint_shadow (GTK_WIDGET (range)->style, range->trough,
+			  GTK_STATE_ACTIVE, GTK_SHADOW_IN,
+			  NULL, GTK_WIDGET(range), "trough",
+			  0, 0, -1, -1);
+	if (GTK_WIDGET_HAS_FOCUS (range))
+	  gtk_paint_focus (GTK_WIDGET (range)->style,
+			  range->trough,
+			   NULL, GTK_WIDGET(range), "trough",
+			   0, 0, -1, -1);
+    }
+}
