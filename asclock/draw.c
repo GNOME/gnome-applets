@@ -121,18 +121,18 @@ void Twelve(asclock *my, GdkPixmap *p, GdkGC *gc , struct tm *clk)
     if (clk->tm_mday>9)
       {
 	gdk_draw_pixmap(p, gc, date_pixmap, 
-			day_elem_width * ((clk->tm_mday / 10 +9) % 10), 0, 
+			day_elem_width * (clk->tm_mday / 10), 0, 
 			day1_x, day_y,
 			day_elem_width, day_elem_height);
 	
 	gdk_draw_pixmap(p, gc, date_pixmap, 
-			day_elem_width * ((clk->tm_mday % 10 +9) % 10), 0, 
+			day_elem_width * (clk->tm_mday % 10), 0, 
 			day2_x, day_y,
 			day_elem_width, day_elem_height);
       }
     else
       gdk_draw_pixmap(p, gc, date_pixmap,
-		      day_elem_width * (clk->tm_mday -1), 0, 
+		      day_elem_width * (clk->tm_mday ), 0, 
 		      day_x, day_y,
 		      day_elem_width, day_elem_height);
   }
@@ -201,18 +201,18 @@ void TwentyFour(asclock *my, GdkPixmap *p, GdkGC *gc , struct tm *clk)
       if (clk->tm_mday>9)
 	{
 	  gdk_draw_pixmap(p, gc, date_pixmap, 
-			  day_elem_width * ((clk->tm_mday / 10 +9) % 10), 0, 
+			  day_elem_width * (clk->tm_mday / 10 ), 0, 
 			  day1_x, day_y,
 			  day_elem_width, day_elem_height); 
 	  
 	  gdk_draw_pixmap(p, gc, date_pixmap, 
-			  day_elem_width * ((clk->tm_mday % 10 +9) % 10), 0, 
+			  day_elem_width * (clk->tm_mday % 10), 0, 
 			  day2_x, day_y,
 			  day_elem_width, day_elem_height);
 	}
       else
 	gdk_draw_pixmap(p, gc, date_pixmap,
-			day_elem_width * (clk->tm_mday -1), 0, 
+			day_elem_width * clk->tm_mday, 0, 
 			day_x, day_y,
 			day_elem_width, day_elem_height);
     }

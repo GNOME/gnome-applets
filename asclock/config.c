@@ -155,7 +155,7 @@ int loadTheme(char *themesdir)
     }
 
   day_x = (day1_x + day2_x)/2;
-  analog_visible = hour_visible || min_visible || sec_visible;
+  analog_visible = hour_visible | min_visible | sec_visible;
 
   fclose(f);
 

@@ -185,7 +185,7 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
 	date_pixmap = gdk_pixmap_create_from_xpm_d(window->window, &date_mask,
 						&style->bg[GTK_STATE_NORMAL], date_xpm);
       if(!date_pixmap) fail2load(date_xpm_fn);
-      day_elem_width =((GdkWindowPrivate *)date_pixmap)->width/11;
+      day_elem_width =((GdkWindowPrivate *)date_pixmap)->width/10;
       day_elem_height=((GdkWindowPrivate *)date_pixmap)->height;
     }
 
