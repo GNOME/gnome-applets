@@ -20,7 +20,7 @@
 #include <poll.h>
 
 #include "popcheck.h"
-
+#include "mailcheck.h"
 #include "remote-helper.h"
 
 #define POLLTIMEOUT 5000 /* 5 milliseconds */
@@ -206,16 +206,16 @@ helper_pop3_check (RemoteHandler handler, RemoteHandler error_handler,
 	if (handler_data->pid == 0) {
 		int mails;
 
-		if (command != NULL &&
-		    command[0] != '\0')
-			system (command);
-	       
 		mails = pop3_check (h, n, e);
 
 		write (handler_data->fd, &mails, sizeof (mails));
 
 		_exit (0);
 	}
+        
+	if (command != NULL &&
+            command[0] != '\0')
+                command_execute_shell (data, command);
 
 	return handler_data;
 }
@@ -247,10 +247,6 @@ helper_imap_check (RemoteHandler handler, RemoteHandler error_handler,
 
 	if (handler_data->pid == 0) {
 		int mails;
-
-		if (command != NULL &&
-		    command[0] != '\0')
-			system (command);
 	       
 		mails = imap_check (h, n, e, f);
 
@@ -258,6 +254,10 @@ helper_imap_check (RemoteHandler handler, RemoteHandler error_handler,
 
 		_exit (0);
 	}
+
+        if (command != NULL &&
+            command[0] != '\0')
+                command_execute_shell (data, command);
 
 	return handler_data;
 }

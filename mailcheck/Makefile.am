@@ -19,6 +19,7 @@ DISABLE_DEPRECATED_CFLAGS =			\
 
 mailcheck_applet_SOURCES = \
 	mailcheck.c \
+	mailcheck.h \
 	popcheck.c \
 	popcheck.h \
 	remote-helper.c \

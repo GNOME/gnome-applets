@@ -29,6 +29,7 @@
 
 #include "popcheck.h"
 #include "remote-helper.h"
+#include "mailcheck.h"
 
 #include "egg-screen-help.h"
 #include "egg-screen-exec.h"
@@ -679,6 +680,14 @@ mailcheck_execute_shell (MailCheck  *mailcheck,
 
 		g_error_free (error);
 	}
+}
+
+void
+command_execute_shell (gpointer data,
+                       const char *command)
+{
+        MailCheck *mc = (MailCheck *) data;
+        mailcheck_execute_shell (mc, command);
 }
 
 static G_CONST_RETURN char *
