@@ -1,4 +1,9 @@
 2005-01-13  Ryan Lortie  <desrt@desrt.ca>
+	* acpi_linux.c: acpi_linux_init: On failure to connect to the apicd
+		this function would set acpiinfo->event_fd = -1; but not
+		close the socket, thus leaking an fd.  Fixed.
+
+2005-01-13  Ryan Lortie  <desrt@desrt.ca>
 	* battstat_applet.c: GdkPixmaps need to be unref'd after being
 				 added to a GtkImage
 

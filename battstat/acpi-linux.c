@@ -270,6 +270,7 @@ gboolean acpi_linux_init(struct acpi_info * acpiinfo)
     }
   }
 
+  close(fd);
   acpiinfo->event_fd = -1;
   return FALSE;
 }
