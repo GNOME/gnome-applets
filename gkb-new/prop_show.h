@@ -1,5 +1,5 @@
 static void
-advanced_show(GKB * gkb)
+advanced_show()
 {
   GList * list;
   PropWg * prop;
@@ -20,7 +20,7 @@ advanced_show(GKB * gkb)
 }
 
 static void
-prop_show (GKB * gkb)
+prop_show ()
 {
   int i=1;
   GList * list;
@@ -30,5 +30,5 @@ prop_show (GKB * gkb)
     gtk_widget_show(gtk_notebook_get_nth_page (GTK_NOTEBOOK (gkb->notebook),
     					      (i++)));
   }
-  advanced_show(gkb);
+  advanced_show();
 }

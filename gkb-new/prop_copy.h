@@ -1,5 +1,5 @@
 static GList *
-copy_props (GKB * gkb)
+copy_props ()
 {
   GList * tempmaps = NULL;
   GList * list;
@@ -18,7 +18,7 @@ copy_props (GKB * gkb)
 }
 
 static GList *
-copy_propwgs (GKB * gkb)
+copy_propwgs ()
 {
   GList * tempmaps = NULL;
   GList * list;

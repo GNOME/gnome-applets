@@ -1,54 +1,103 @@
 static GList *
 find_presets ()
 {
-	DIR *dir;
-	struct dirent *actfile;
-	GList *diritems = NULL;
+  DIR *dir;
+  struct dirent *actfile;
+  GList *diritems = NULL;
 
-	dir = opendir (gnome_unconditional_datadir_file ("gnome/gkb/"));
+  dir = opendir (gnome_unconditional_datadir_file ("gnome/gkb/"));
 
-	prefixdir=g_strdup(gnome_unconditional_datadir_file ("gnome/gkb/"));
-  
-	if (dir == NULL)
-		return NULL;
-	
-	while ((actfile = readdir (dir)) != NULL) {
-	        if (!strstr(actfile->d_name, ".keyprop"))
-	                continue;
-	
-		if (actfile->d_name[0] != '.') {
-			diritems = g_list_insert_sorted(diritems,
-	                                     g_strdup(actfile->d_name),
-			                     (GCompareFunc)strcmp);
-		}
+  prefixdir = g_strdup (gnome_unconditional_datadir_file ("gnome/gkb/"));
+
+  if (dir == NULL)
+    return NULL;
+
+  while ((actfile = readdir (dir)) != NULL)
+    {
+      if (!strstr (actfile->d_name, ".keyprop"))
+	continue;
+
+      if (actfile->d_name[0] != '.')
+	{
+	  diritems = g_list_insert_sorted (diritems,
+					   g_strdup (actfile->d_name),
+					   (GCompareFunc) strcmp);
 	}
-	return diritems;
+    }
+  return diritems;
 }
 
-static GKBpreset *
-gkb_preset_load (const char *filename)
+static GList *
+gkb_preset_load (GList * list)
 {
-        GKBpreset *retval;
-        gchar * prefix;
+  GKBpreset * val;
+  GList * retlist, * templist, * newitem;
+  gchar * prefix;
+  gchar * tname, * tcodepage;
+  gchar * ttype, * tarch, * tcommand;
+  gchar * set, * filename;
+  gint i, knum = 1;
 
- 	g_assert (filename != NULL);
+  templist = list;
+  retlist = NULL;
 
-        retval = g_new0(GKBpreset, 1);
+  while (templist = g_list_next (templist))
+    {
 
- 	prefix = g_strconcat ("=",prefixdir,"/", filename, "=/Keymap Entry/", NULL);
+      filename = templist->data;
 
- 	gnome_config_push_prefix (prefix);
- 	g_free (prefix);
+      g_assert (filename != NULL);
 
-	retval->name = gnome_config_get_translated_string ("Name");
-	retval->lang = gnome_config_get_translated_string ("Language");
-	retval->country = gnome_config_get_translated_string ("Country");
-	retval->codepage = gnome_config_get_string ("Codepage");
-	retval->flag = gnome_config_get_string ("Flag");
-	retval->label = gnome_config_get_string ("Label");
-	retval->type = gnome_config_get_string ("Type");
-	retval->arch = gnome_config_get_string ("Arch");
-	retval->command = gnome_config_get_string ("Command");
+      prefix =
+	g_strconcat ("=", prefixdir, "/", filename, "=/Keymap Entry/", NULL);
 
-        return retval;
+      gnome_config_push_prefix (prefix);
+      g_free (prefix);
+
+      knum = gnome_config_get_int ("Countries");
+
+      tname = gnome_config_get_translated_string ("Name");
+      tcodepage = gnome_config_get_string ("Codepage");
+      ttype = gnome_config_get_string ("Type");
+      tarch = gnome_config_get_string ("Arch");
+      tcommand = gnome_config_get_string ("Command");
+
+      gnome_config_pop_prefix ();
+
+      for (i = 0; i < knum; i++)
+	{
+	  val = g_new0 (GKBpreset, 1);
+
+
+	  set = g_strdup_printf ("=/Country %d/", i);
+	  prefix = g_strconcat ("=", prefixdir, "/", filename, set, NULL);
+	  gnome_config_push_prefix (prefix);
+	  g_free (prefix);
+	  g_free (set);
+
+	  val->name = g_strdup (tname);
+	  val->codepage = g_strdup (tcodepage);
+	  val->type = g_strdup (ttype);
+	  val->arch = g_strdup (tarch);
+	  val->command = g_strdup (tcommand);
+
+          val->flag = gnome_config_get_string ("Flag");
+          val->label = gnome_config_get_string ("Label");
+
+	  val->lang = gnome_config_get_translated_string ("Language");
+	  val->country = gnome_config_get_translated_string ("Country");
+
+	  retlist = g_list_append(retlist,val);
+
+	  gnome_config_pop_prefix ();
+	}
+
+      g_free (tname);
+      g_free (tcodepage);
+      g_free (ttype);
+      g_free (tarch);
+      g_free (tcommand);
+
+    }
+  return retlist;
 }

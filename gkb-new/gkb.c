@@ -29,10 +29,9 @@
 
 GtkWidget *bah_window = NULL;
 
-static void gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * e,
-				       GKB * gkb);
-static void about_cb (AppletWidget * widget, gpointer gkbx);
-static void help_cb (AppletWidget * widget, gpointer data);
+static void gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * e);
+static void about_cb (AppletWidget * widget);
+static void help_cb (AppletWidget * widget);
 
 static void
 makepix (Prop * actdata, char *fname, int w, int h)
@@ -88,7 +87,7 @@ makepix (Prop * actdata, char *fname, int w, int h)
 }
 
 void
-sized_render (GKB * gkb)
+sized_render ()
 {
   Prop *actdata;
   int i = 0;
@@ -124,34 +123,40 @@ sized_render (GKB * gkb)
 }
 
 static void
-gkb_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
+gkb_change_orient (GtkWidget * w, PanelOrientType o)
 {
-  GKB *gkb = data;
 
   gkb->orient = o;
-  sized_render (gkb);
-  gkb_draw (gkb);
+  sized_render ();
+  gkb_draw ();
 }
 
 static void
 gkb_change_pixel_size (GtkWidget * w, int size, gpointer data)
 {
-  GKB *gkb = data;
-
   gkb->size = size;
-  sized_render (gkb);
-  gkb_draw (gkb);
+  sized_render ();
+  gkb_draw ();
 }
 
 Prop *
-loadprop (GKB * gkb, int i)
+loadprop (int i)
 {
   char buf[256];
 
   Prop *actdata = g_new0 (Prop, 1);
 
-  g_snprintf (buf, 256, "map_%d/name=Us", i);
+  g_snprintf (buf, 256, "map_%d/name=US", i);
   actdata->name = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, "map_%d/keymap=US", i);
+  actdata->keymap = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, "map_%d/country=United States", i);
+  actdata->country = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, "map_%d/lang=English", i);
+  actdata->lang = gnome_config_get_string (buf);
 
   g_snprintf (buf, 256, "map_%d/image=%s", i,
 	      gnome_unconditional_pixmap_file ("gkb/hu.png"));
@@ -188,7 +193,7 @@ loadprop (GKB * gkb, int i)
 }
 
 static void
-load_properties (GKB * gkb)
+load_properties ()
 {
   int i;
 
@@ -206,18 +211,18 @@ load_properties (GKB * gkb)
 
   if (gkb->n == 0)
     {
-      actdata = loadprop (gkb, 0);
+      actdata = loadprop (0);
       gkb->maps = g_list_append (gkb->maps, actdata);
       gkb->n++;
 
-      actdata = loadprop (gkb, 1);
+      actdata = loadprop (1);
       gkb->maps = g_list_append (gkb->maps, actdata);
       gkb->n++;
     }
   else
     for (i = 0; i < gkb->n; i++)
       {
-	actdata = loadprop (gkb, i);
+	actdata = loadprop (i);
 	gkb->maps = g_list_append (gkb->maps, actdata);
       }
 
@@ -228,7 +233,7 @@ load_properties (GKB * gkb)
 }
 
 void
-gkb_draw (GKB * gkb)
+gkb_draw ()
 {
 
   g_return_if_fail (gkb->darea != NULL);
@@ -241,7 +246,7 @@ gkb_draw (GKB * gkb)
 
 static void
 gkb_button_press_event_cb (GtkWidget * widget,
-			   GdkEventButton * event, GKB * gkb)
+			   GdkEventButton * event)
 {
   if (event->button != 1)	/* Ignore mouse buttons 2 and 3 */
     return;
@@ -254,13 +259,13 @@ gkb_button_press_event_cb (GtkWidget * widget,
       gkb->dact = g_list_nth_data (gkb->maps, gkb->cur);
     }
 
-  gkb_draw (gkb);
+  gkb_draw ();
   if (system (gkb->dact->command))
    gnome_error_dialog(_("The keymap switching command returned with error!"));
 }
 
 static int
-gkb_expose (GtkWidget * darea, GdkEventExpose * event, GKB * gkb)
+gkb_expose (GtkWidget * darea, GdkEventExpose * event)
 {
   Prop *d = gkb->dact;
 
@@ -275,7 +280,7 @@ gkb_expose (GtkWidget * darea, GdkEventExpose * event, GKB * gkb)
 }
 
 static void
-create_gkb_widget (GKB * gkb)
+create_gkb_widget ()
 {
   GtkStyle *style;
 
@@ -295,9 +300,9 @@ create_gkb_widget (GKB * gkb)
   gtk_widget_show (gkb->darea);
 
   gtk_signal_connect (GTK_OBJECT (gkb->darea), "button_press_event",
-		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), gkb);
+		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (gkb->darea), "expose_event",
-		      GTK_SIGNAL_FUNC (gkb_expose), gkb);
+		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
 
   gkb->dact = g_list_nth_data (gkb->maps, 0);
 
@@ -309,7 +314,7 @@ create_gkb_widget (GKB * gkb)
 }
 
 static void
-about_cb (AppletWidget * widget, gpointer gkbx)
+about_cb (AppletWidget * widget)
 {
   static GtkWidget *about;
   const char *authors[2];
@@ -351,7 +356,7 @@ about_cb (AppletWidget * widget, gpointer gkbx)
 }
 
 static void
-help_cb (AppletWidget * applet, gpointer data)
+help_cb (AppletWidget * applet)
 {
   GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html" };
 
@@ -361,7 +366,7 @@ help_cb (AppletWidget * applet, gpointer data)
 static gboolean
 applet_save_session (GtkWidget * w,
 		     const char *privcfgpath,
-		     const char *globcfgpath, GKB * gkb)
+		     const char *globcfgpath)
 {
   Prop *actdata;
   int i = 0;
@@ -379,6 +384,12 @@ applet_save_session (GtkWidget * w,
       if(actdata) {
 	      g_snprintf (str, sizeof(str), "map_%d/name", i);
 	      gnome_config_set_string (str, actdata->name);
+	      g_snprintf (str, sizeof(str), "map_%d/country", i);
+	      gnome_config_set_string (str, actdata->country);
+	      g_snprintf (str, sizeof(str), "map_%d/lang", i);
+	      gnome_config_set_string (str, actdata->lang);
+	      g_snprintf (str, sizeof(str), "map_%d/keymap", i);
+	      gnome_config_set_string (str, actdata->keymap);
 	      g_snprintf (str, sizeof(str), "map_%d/image", i);
 	      gnome_config_set_string (str, actdata->iconpath);
 	      g_snprintf (str, sizeof(str), "map_%d/command", i);
@@ -403,13 +414,12 @@ gkb_activator (PortableServer_POA poa,
 	       const char **params,
 	       gpointer * impl_ptr, CORBA_Environment * ev)
 {
-  GKB *gkb;
 
   gkb = g_new0 (GKB, 1);
 
   gkb->applet = applet_widget_new (goad_id);
 
-  create_gkb_widget (gkb);
+  create_gkb_widget ();
 
   gtk_widget_show (gkb->frame);
   applet_widget_add (APPLET_WIDGET (gkb->applet), gkb->frame);
@@ -430,16 +440,16 @@ gkb_activator (PortableServer_POA poa,
 			    gdk_screen_height () + 1);
   gtk_widget_show_now (bah_window);
 
-  load_properties (gkb);
+  load_properties ();
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
-		      GTK_SIGNAL_FUNC (applet_save_session), gkb);
+		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_orient",
-		      GTK_SIGNAL_FUNC (gkb_change_orient), gkb);
+		      GTK_SIGNAL_FUNC (gkb_change_orient), NULL);
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_pixel_size",
-		      GTK_SIGNAL_FUNC (gkb_change_pixel_size), gkb);
+		      GTK_SIGNAL_FUNC (gkb_change_pixel_size), NULL);
 
   gkb->dact = g_list_nth_data (gkb->maps, 0);
 
@@ -449,7 +459,7 @@ gkb_activator (PortableServer_POA poa,
 					 "properties",
 					 GNOME_STOCK_MENU_PROP,
 					 _("Properties..."),
-					 properties_dialog, gkb);
+					 properties_dialog, NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "help",

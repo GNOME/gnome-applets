@@ -26,6 +26,7 @@
  */
 
 #include <dirent.h>
+#include "capplet-widget.h"
 #include "gkb.h"
 
 typedef struct _PropWg PropWg;
@@ -50,8 +51,8 @@ struct _PropWg
   GtkWidget *frame21, *frame22, *label25, *entry21;
   GtkWidget *vbox1, *hbox1, *vbox2, *hbox2, *hbox3, *hboxmap;
   GtkWidget *frame1, *frame2, *frame3, *frame4, *frame6;
-  GtkWidget *vbox21, *hbox21, *hbox22;
-  GtkWidget *list, *tree, *iconentry21, *button21;
+  GtkWidget *vbox21, *hbox21;
+  GtkWidget *list, *tree, *iconentry21;
   GtkWidget *newkeymap, *delkeymap;
 };
 
@@ -83,15 +84,22 @@ struct _LangData
   GHashTable * countries;
 };
 
+typedef struct _GKBData GKBData;
+struct _GKBData
+{
+ PropWg * actdata;
+ GKBpreset * preset;
+};
+
 static void prophelp_cb (AppletWidget * widget, gpointer data);
-static void makenotebook (GKB * gkb, PropWg * actdata, int i);
-static void advanced_show (GKB * gkb);
+static void makenotebook (PropWg * actdata, int i);
+static void advanced_show ();
 static PropWg *cp_prop (Prop * data);
-static GList *copy_props (GKB * gkb);
+static GList *copy_props ();
 static Prop *cp_propwg (PropWg * data);
-static GList *copy_propwgs (GKB * gkb);
+static GList *copy_propwgs ();
 static GKBpreset * gkbpreset_load (const char *filename);
-GtkWidget * defpage_create (GKB * gkb);
+GtkWidget * defpage_create ();
 
 static gchar *prefixdir;
 
@@ -100,62 +108,33 @@ static gchar *prefixdir;
 #include "prop_cb.h"
 #include "prop_preset.h"
 
-
-static gint
-country_select_cb(GtkWidget * widget, CountryData * cdata)
-{
- /* TODO: Write this... */
- GtkWidget * listwg;
- GList * list;
-
- listwg = cdata->data->list;
-
- gtk_list_clear_items (GTK_LIST (listwg), 0, -1);
-
- list = cdata->keymaps;
-
- while (list != NULL)
- {
-  GKBpreset * item;
-  GtkWidget *label, *list_item;
-
-  item = (GKBpreset *) list->data;
-
-  label=gtk_label_new(item->name);
-  list_item=gtk_list_item_new();
-  gtk_container_add(GTK_CONTAINER(list_item), label);
-  gtk_widget_show(label);
-  gtk_container_add(GTK_CONTAINER(listwg), list_item);
-  gtk_widget_show(list_item);
-
-  list = list->next;
- }
- return FALSE;
-}
-
 static void
 treeitems_create(GtkWidget *tree, PropWg * actdata)
 {
-	GList * list, * presets = NULL;
+	GList * list = NULL;
+	GList * sets = NULL;
+
 	GHashTable * langs = g_hash_table_new(g_str_hash, g_str_equal);
 	LangData * ldata;
 	CountryData * cdata;
 
 	/* TODO: Error checking... */
 	list=find_presets();
-
-	while (list = g_list_next(list))
-	{
+	sets = gkb_preset_load(list);
+        
+        while ((sets = g_list_next(sets)) != NULL)
+         {
 	  GKBpreset * item; 
 
-	  item = gkb_preset_load((gchar *)list->data);
+	  item = sets->data;
 
-	  if (ldata = g_hash_table_lookup (langs,item->lang))
+	  if ((ldata = g_hash_table_lookup (langs,item->lang)) != NULL)
 	   {
 	    /* There is lang */
-	    if (cdata = g_hash_table_lookup (ldata->countries,item->country))
+	    if ((cdata = g_hash_table_lookup (ldata->countries,item->country)) != NULL)
 	     {
 	      /* There is country */
+	     cdata->data = actdata;
              cdata->keymaps = g_list_append(cdata->keymaps,item);
              gtk_signal_connect (GTK_OBJECT(cdata->widget), "select",     
                                   GTK_SIGNAL_FUNC(country_select_cb),
@@ -165,7 +144,7 @@ treeitems_create(GtkWidget *tree, PropWg * actdata)
 	     {
 	      /* There is no country */
 
-	      GtkWidget * subtree, *subitem;
+	      GtkWidget *subitem;
 
 	      subitem = gtk_tree_item_new_with_label (item->country);
 	      gtk_tree_append (GTK_TREE(ldata->widget), subitem);
@@ -230,7 +209,7 @@ treeitems_create(GtkWidget *tree, PropWg * actdata)
 }
 
 GtkWidget *
-defpage_create (GKB * gkb)
+defpage_create ()
 {
   GtkWidget *frame1;
   GtkWidget *vbox1;
@@ -296,12 +275,12 @@ defpage_create (GKB * gkb)
   optionmenu2_menu = gtk_menu_new ();
   menuitem = gtk_menu_item_new_with_label (_("Normal"));
   gtk_signal_connect (GTK_OBJECT (menuitem), "activate",
-		      (GtkSignalFunc) switch_normal_cb, gkb);
+		      (GtkSignalFunc) switch_normal_cb, NULL);
   gtk_widget_show (menuitem);
   gtk_menu_append (GTK_MENU (optionmenu2_menu), menuitem);
   menuitem = gtk_menu_item_new_with_label (_("Small"));
   gtk_signal_connect (GTK_OBJECT (menuitem), "activate",
-		      (GtkSignalFunc) switch_small_cb, gkb);
+		      (GtkSignalFunc) switch_small_cb, NULL);
   gtk_widget_show (menuitem);
   gtk_menu_append (GTK_MENU (optionmenu2_menu), menuitem);
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu2), optionmenu2_menu);
@@ -353,7 +332,7 @@ defpage_create (GKB * gkb)
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (gkb->advanced),
 				gkb->advconf);
   gtk_signal_connect (GTK_OBJECT (gkb->advanced), "toggled",
-		      GTK_SIGNAL_FUNC (switch_adv_cb), gkb);
+		      GTK_SIGNAL_FUNC (switch_adv_cb), NULL);
   gtk_widget_ref (gkb->advanced);
   gtk_widget_show (gkb->advanced);
   gtk_box_pack_start (GTK_BOX (vbox1), gkb->advanced, TRUE, TRUE, 0);
@@ -367,7 +346,7 @@ defpage_create (GKB * gkb)
 }
 
 static void
-makenotebook (GKB * gkb, PropWg * actdata, int i)
+makenotebook (PropWg * actdata, int i)
 {
   actdata->notebook = gkb->notebook;
   actdata->propbox = gkb->propbox;
@@ -411,7 +390,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_container_add (GTK_CONTAINER (actdata->frame4), actdata->keymapname);
 
   gtk_signal_connect (GTK_OBJECT (actdata->keymapname),
-		      "changed", GTK_SIGNAL_FUNC (changed_cb), gkb);
+		      "changed", GTK_SIGNAL_FUNC (changed_cb), NULL);
 
   actdata->frame6 = gtk_frame_new (_("Keymap control"));
   gtk_widget_ref (actdata->frame6);
@@ -429,7 +408,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_widget_show (actdata->newkeymap);
 
   gtk_signal_connect (GTK_OBJECT (actdata->newkeymap),
-		      "clicked", (GtkSignalFunc) newmap_cb, gkb);
+		      "clicked", (GtkSignalFunc) newmap_cb, NULL);
 
   gtk_container_add (GTK_CONTAINER (actdata->hboxmap), actdata->newkeymap);
   gtk_container_set_border_width (GTK_CONTAINER (actdata->newkeymap), 2);
@@ -440,7 +419,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_widget_show (actdata->delkeymap);
 
   gtk_signal_connect (GTK_OBJECT (actdata->delkeymap),
-		      "clicked", (GtkSignalFunc) delmap_cb, gkb);
+		      "clicked", (GtkSignalFunc) delmap_cb, NULL);
 
   gtk_container_add (GTK_CONTAINER (actdata->hboxmap), actdata->delkeymap);
   gtk_container_set_border_width (GTK_CONTAINER (actdata->delkeymap), 2);
@@ -506,7 +485,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_entry_set_text (GTK_ENTRY (actdata->commandinput), actdata->command);
 
   gtk_signal_connect (GTK_OBJECT (actdata->commandinput), "changed",
-		      GTK_SIGNAL_FUNC (changed_cb), gkb);
+		      GTK_SIGNAL_FUNC (changed_cb), NULL);
   gtk_container_add (GTK_CONTAINER (actdata->frame2), actdata->commandinput);
 
 /*  Normal conf */
@@ -570,6 +549,9 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_widget_show (actdata->list);
   gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW(actdata->scrolledwinl), actdata->list);
 
+  gtk_signal_connect (GTK_OBJECT(actdata->list), "selection_changed",     
+                    GTK_SIGNAL_FUNC(keymap_select_cb),actdata);
+
   actdata->vbox21 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (actdata->vbox21);
 
@@ -577,26 +559,12 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_box_pack_start (GTK_BOX (actdata->hbox21), actdata->vbox21, TRUE, TRUE,
 		      0);
 
-  actdata->hbox22 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (actdata->hbox22);
-
-  gtk_widget_show (actdata->hbox22);
-  gtk_box_pack_start (GTK_BOX (actdata->vbox21), actdata->hbox22, FALSE,
-		      FALSE, 0);
-
   actdata->entry21 = gtk_entry_new ();
   gtk_widget_ref (actdata->entry21);
   gtk_widget_show (actdata->entry21);
-  gtk_box_pack_start (GTK_BOX (actdata->hbox22), actdata->entry21, FALSE,
+  gtk_box_pack_start (GTK_BOX (actdata->vbox21), actdata->entry21, FALSE,
 		      FALSE, 0);
   gtk_widget_set_usize (actdata->entry21, 89, -2);
-
-  actdata->button21 = gtk_button_new_with_label (_("Set label"));
-  gtk_widget_ref (actdata->button21);
-
-  gtk_widget_show (actdata->button21);
-  gtk_box_pack_start (GTK_BOX (actdata->hbox22), actdata->button21, FALSE,
-		      FALSE, 0);
 
   actdata->iconentry21 = gnome_icon_entry_new (NULL, NULL);
   gtk_widget_ref (actdata->iconentry21);
@@ -626,15 +594,14 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 			      actdata->label1);
 
   treeitems_create(actdata->tree,actdata);
-  advanced_show (gkb);
+  advanced_show ();
 
 }
 
 void
-properties_dialog (AppletWidget * applet, gpointer gkbx)
+properties_dialog (AppletWidget * applet)
 {
 
-  GKB *gkb = (GKB *) gkbx;
   int i = 0;
 
   GtkWidget *defpage;
@@ -661,10 +628,11 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
     }
   g_list_free (gkb->tempmaps);
 
-  gkb->tempmaps = copy_props (gkb);
+  gkb->tempmaps = copy_props ();
   gkb->tn = gkb->n;
 
-  gkb->propbox = gnome_property_box_new ();
+  gkb->propbox = gtk_notebook_new ();
+
   gtk_object_set_data (GTK_OBJECT (gkb->propbox), "propbox", gkb->propbox);
   gtk_window_set_title (GTK_WINDOW (gkb->propbox), _("GKB Properties"));
   gtk_window_set_policy (GTK_WINDOW (gkb->propbox), FALSE, FALSE, TRUE);
@@ -675,9 +643,9 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
   gtk_widget_show (gkb->notebook);
   gtk_notebook_set_scrollable (GTK_NOTEBOOK (gkb->notebook), TRUE);
   gtk_notebook_popup_enable (GTK_NOTEBOOK (gkb->notebook));
-  prop_show (gkb);
+  prop_show ();
 
-  defpage = defpage_create (gkb);
+  defpage = defpage_create ();
 
   gtk_notebook_append_page (GTK_NOTEBOOK (gkb->notebook), defpage,
 			    gtk_label_new (_("General")));
@@ -686,17 +654,17 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
   while (list)
     {
       if (list->data)
-	makenotebook (gkb, list->data, i++);
+	makenotebook (list->data, i++);
       list = list->next;
     }
 
   gtk_signal_connect (GTK_OBJECT (gkb->propbox),
-		      "apply", GTK_SIGNAL_FUNC (apply_cb), gkb);
+		      "apply", GTK_SIGNAL_FUNC (apply_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (gkb->propbox),
-		      "destroy", GTK_SIGNAL_FUNC (destroy_cb), gkb);
+		      "destroy", GTK_SIGNAL_FUNC (destroy_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (gkb->propbox),
 		      "help", GTK_SIGNAL_FUNC (prophelp_cb), NULL);
-  prop_show (gkb);
+  prop_show ();
 
   return;
   applet = NULL;
