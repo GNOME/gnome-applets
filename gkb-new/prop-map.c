@@ -570,7 +570,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   mdi->dialog = dialog;
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
   gtk_object_set_data (GTK_OBJECT (dialog), "mapedit", dialog);
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Edit keymap"));
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Edit Keyboard"));
 
   vbox2 = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (dialog), vbox2);

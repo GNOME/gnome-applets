@@ -83,7 +83,7 @@ tree_create (GtkTreeStore *model)
   
   cell = gtk_cell_renderer_text_new ();
  
-  column = gtk_tree_view_column_new_with_attributes (_("Keymaps (select and press add)"), cell,
+  column = gtk_tree_view_column_new_with_attributes (_("Keyboards (select and press add)"), cell,
                                                            "text", 0, NULL);
 
   gtk_tree_view_append_column (GTK_TREE_VIEW (tree1), column);
@@ -364,12 +364,13 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
       return;
     }
 
-  gkb->addwindow = gtk_dialog_new_with_buttons (_("Select layout"), NULL,
+  gkb->addwindow = gtk_dialog_new_with_buttons (_("Select Keyboard"), NULL,
 						GTK_DIALOG_DESTROY_WITH_PARENT,
 						GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 						GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						GTK_STOCK_ADD, 100,
 						NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (gkb->addwindow), 100);
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
 		       gkb->addwindow);
   

@@ -402,7 +402,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   GtkWidget *page_2_label;
 
   /* Create property box */
-  propwindow = gtk_dialog_new_with_buttons (_("GKB Properties"), NULL,
+  propwindow = gtk_dialog_new_with_buttons (_("Keyboard Layout Switcher Preferences"), NULL,
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                             NULL);
