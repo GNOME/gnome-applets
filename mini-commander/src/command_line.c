@@ -588,16 +588,15 @@ command_entry_update_size(GtkWidget *entry_command,properties *prop)
 {
     int size_y = -1;
 
-    if(prop->flat_layout)  {
-	if(prop->show_handle && !prop->show_frame)
-	    size_y = prop->normal_size_x - 17 - 10;
-	else if(!prop->show_handle && !prop->show_frame)
-	    size_y = prop->normal_size_x - 17;
-	if(prop->show_handle && prop->show_frame)
-	    size_y = prop->normal_size_x - 17 - 10 - 10;
-	else if(!prop->show_handle && prop->show_frame)
-	    size_y = prop->normal_size_x - 17 - 10;
-    }
+    if(prop->show_handle && !prop->show_frame)
+	size_y = prop->normal_size_x - 17 - 10;
+    else if(!prop->show_handle && !prop->show_frame)
+	size_y = prop->normal_size_x - 17;
+    if(prop->show_handle && prop->show_frame)
+	size_y = prop->normal_size_x - 17 - 10 - 10;
+    else if(!prop->show_handle && prop->show_frame)
+	size_y = prop->normal_size_x - 17 - 10;
+
     gtk_widget_set_usize(GTK_WIDGET(entry_command), size_y, prop->cmd_line_size_y);
 }
 
