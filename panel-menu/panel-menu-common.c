@@ -770,13 +770,14 @@ panel_menu_common_single_entry_dialog_new (gchar *title, gchar *label,
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
 
-	l = gtk_label_new (label);
+	l = gtk_label_new_with_mnemonic (label);
 	gtk_box_pack_start (GTK_BOX (hbox), l, FALSE, FALSE, 5);
 	gtk_widget_show (l);
 
 	*entry = gtk_entry_new_with_max_length (50);
 	gtk_box_pack_start (GTK_BOX (hbox), *entry, TRUE, TRUE, 5);
 
+	gtk_label_set_mnemonic_widget(GTK_LABEL(l), *entry);
 	set_relation(*entry, GTK_LABEL(l));
 
 	gtk_widget_show (*entry);

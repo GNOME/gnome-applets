@@ -395,7 +395,7 @@ panel_menu_documents_new_with_dialog (PanelMenu *panel_menu)
 
 	dialog = panel_menu_common_single_entry_dialog_new (_
 							    ("Create documents item..."),
-							    _("Name:"),
+							    _("_Name:"),
 							    _("Documents"),
 							    &name_entry);
 	gtk_widget_show (dialog);
@@ -431,7 +431,7 @@ rename_documents_cb (GtkWidget *widget, PanelMenuEntry *entry,
 	documents = (PanelMenuDocuments *) entry->data;
 
 	dialog = panel_menu_common_single_entry_dialog_new (_("Rename documents item..."),
-							    _("Name:"),
+							    _("_Name:"),
 							    documents->name,
 							    &name_entry);
 	gtk_widget_show (dialog);

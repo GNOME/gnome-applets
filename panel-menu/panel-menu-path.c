@@ -725,7 +725,7 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
 
-	label = gtk_label_new (_("Path:"));
+	label = gtk_label_new_with_mnemonic (_("_Path:"));
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 5);
 	gtk_widget_show (label);
 
@@ -734,6 +734,7 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 	gtk_widget_show (*entry);
 	gtk_entry_set_text (GTK_ENTRY (*entry), value);
 
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), *entry);
 	set_relation (*entry, GTK_LABEL(label));
 	return dialog;
 }

@@ -401,7 +401,7 @@ panel_menu_links_new_with_dialog (PanelMenu *panel_menu)
 
 	dialog = panel_menu_common_single_entry_dialog_new (_
 							    ("Create links item..."),
-							    _("Name:"),
+							    _("_Name:"),
 							    _("Shortcuts"),
 							    &name_entry);
 	gtk_widget_show (dialog);
@@ -437,7 +437,7 @@ rename_links_cb (GtkWidget *widget, PanelMenuEntry *entry)
 
 	dialog = panel_menu_common_single_entry_dialog_new (_
 							    ("Rename links item..."),
-							    _("Name:"),
+							    _("_Name:"),
 							    links->name,
 							    &name_entry);
 	gtk_widget_show (dialog);

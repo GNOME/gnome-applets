@@ -621,23 +621,28 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
-	label = gtk_label_new (_("Name:"));
+	label = gtk_label_new_with_mnemonic (_("_Name:"));
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 5);
 	gtk_widget_show (label);
 	*nentry = gtk_entry_new_with_max_length (50);
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), *nentry);
+	set_relation(*nentry, GTK_LABEL(label));
 	gtk_box_pack_start (GTK_BOX (hbox), *nentry, TRUE, TRUE, 5);
 	gtk_widget_show (*nentry);
 
 	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
-	label = gtk_label_new (_("Path:"));
+	label = gtk_label_new_with_mnemonic (_("_Path:"));
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 5);
 	gtk_widget_show (label);
 	*pentry = gtk_entry_new ();
 	gtk_box_pack_start (GTK_BOX (hbox), *pentry, TRUE, TRUE, 5);
 	gtk_widget_show (*pentry);
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), *pentry);
+	set_relation(*pentry, GTK_LABEL(label));
 	browse = gtk_button_new_with_label (_("..."));
+	add_tooltip(browse, "Browse to select a directory");
 	gtk_box_pack_start (GTK_BOX (hbox), browse, FALSE, FALSE, 5);
 	g_signal_connect (G_OBJECT (browse), "clicked",
 			  G_CALLBACK(browse_callback), *pentry);
@@ -646,12 +651,14 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (box), hbox, FALSE, FALSE, 5);
 	gtk_widget_show (hbox);
-	label = gtk_label_new (_("Depth level:"));
+	label = gtk_label_new_with_mnemonic (_("_Depth level:"));
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 5);
 	gtk_widget_show (label);
 	*spin = gtk_spin_button_new (GTK_ADJUSTMENT
 				     (gtk_adjustment_new (1, 1.0, 10, 1, 1, 1)),
 				     1, 0);
+	gtk_label_set_mnemonic_widget(GTK_LABEL(label), *spin);
+	set_relation(*spin, GTK_LABEL(label));
 	gtk_box_pack_end (GTK_BOX (hbox), *spin, TRUE, TRUE, 5);
 	gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (*spin),
 					   GTK_UPDATE_ALWAYS);
