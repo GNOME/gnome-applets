@@ -22,7 +22,7 @@ server_DATA = $(server_in_files:.server.in=.server)
 GNOME_NullApplet_Factory.server.in: GNOME_NullApplet_Factory.server.in.in
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA)
+CLEANFILES = GNOME_NullApplet_Factory.server.in $(server_DATA)
 
 EXTRA_DIST =					\
 	GNOME_NullApplet_Factory.server.in.in	\
