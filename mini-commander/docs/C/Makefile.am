@@ -7,7 +7,9 @@ doc_DATA =	\
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
 EXTRA_DIST =	\
+	index.html			\
 	mini-commander.sgml		\
+	gpl2.sgml			\
 	topic.dat			\
 	fig/mini-commander.png		\
 	fig/mini-commander-prefs-1.png	\
@@ -19,8 +21,8 @@ all: index.html
 index.html: mini-commander/index.html
 	-cp mini-commander/index.html .
 
-gpl2.sgml: $(top_srcdir)/docs/C/gpl2.sgml
-	-cp $(top_srcdir)/docs/C/gpl2.sgml .
+gpl2.sgml: $(srcdir)/gpl2.sgml
+	-cp $(srcdir)/gpl2.sgml .
 
 mini-commander/index.html: $(srcdir)/mini-commander.sgml gpl2.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
