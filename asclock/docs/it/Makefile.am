@@ -1,6 +1,4 @@
-figs = \
-	figures/asclock_applet.png	\
-	figures/asclock_settings.png
+figs =
 docname = asclock_applet
 lang = it
 omffile = asclock_applet-it.omf
