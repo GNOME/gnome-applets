@@ -19,11 +19,8 @@
 
 #include <config.h>
 #include <panel-applet-gconf.h>
-#if HAVE_EGG
+
 #include <egg-screen-help.h>
-#else
-#include <libgnome/gnome-help.h>
-#endif
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
@@ -177,16 +174,13 @@ help_cb (BonoboUIComponent   *uic,
 	 const char          *verbname)
 {
 	GError *error = NULL;
-#if HAVE_EGG
+
 	egg_help_display_on_screen (
-		"accessx-help.xml", NULL,
+		"accessx-status.xml", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
 		&error);
+
 	if (error) { 
-#else 
-	gboolean retval = gnome_help_display ("accessx-status.xml", NULL, &error);
-	if (!retval) {
-#endif
 		GtkWidget *dialog = 
 			gtk_message_dialog_new (GTK_WINDOW (sapplet->applet),
 						GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -194,10 +188,15 @@ help_cb (BonoboUIComponent   *uic,
 						GTK_BUTTONS_CLOSE,
 						_("There was an error launching the help viewer : %s"), 
 						error->message);
+
 		g_signal_connect (G_OBJECT (dialog),
 				  "response",
 				  G_CALLBACK (gtk_widget_destroy), NULL);
+
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+		
 		gtk_widget_show (dialog);
 		g_error_free (error);
 	}
@@ -209,7 +208,12 @@ dialog_cb (BonoboUIComponent *component,
 	   const char        *verb)
 {
 	GError *err = NULL;
-	if (!g_spawn_command_line_async ("gnome-accessibility-keyboard-properties", &err)) {
+	int ret;
+
+	ret = egg_screen_execute_shell (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
+					NULL, "gnome-accessibility-keyboard-properties", &err);
+
+	if (ret < 0) {
 		GtkWidget *dialog = 
 			gtk_message_dialog_new (NULL,
 						GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -217,10 +221,15 @@ dialog_cb (BonoboUIComponent *component,
 						GTK_BUTTONS_CLOSE,
 						_("There was an error launching the keyboard capplet : %s"), 
 						err->message);
+
 		g_signal_connect (G_OBJECT (dialog),
 				  "response",
 				  G_CALLBACK (gtk_widget_destroy), NULL);
+
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
 		gtk_widget_show (dialog);
 		g_error_free (err);
 	}

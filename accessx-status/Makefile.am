@@ -7,6 +7,7 @@ accessx_status_applet_SOURCES = \
 	applet.h
 
 accessx_status_applet_LDADD = \
+	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS) \
         $(X_LIBS)
 
@@ -23,6 +24,7 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_AccessxApplet.xml
 
 INCLUDES   = $(GNOME_APPLETS_CFLAGS)     \
+	     -I$(top_srcdir)/screen-exec \
 	     -DGLADEDIR=\""$(gladedir)"\" \
 	     -DPIXMAPDIR=\""$(datadir)/pixmaps/"\"\
 	     -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"

@@ -29,12 +29,24 @@
 #include <egg-screen-help.h>
 #include "geyes.h"
 
-gchar *theme_directories[] = {
-        GEYES_THEMES_DIR,
-        "~/.gnome/geyes-themes/"
-};
 #define NUM_THEME_DIRECTORIES 2
 #define HIG_IDENTATION  "    "
+
+gchar *theme_directories[NUM_THEME_DIRECTORIES];
+
+void
+theme_dirs_create ()
+{
+	static themes_created = FALSE;
+	
+	if (themes_created == TRUE)
+		return;
+
+	theme_directories[0] = g_strdup (GEYES_THEMES_DIR);
+	theme_directories[1] = g_strdup_printf ("%s/.gnome2/geyes-themes/", g_get_home_dir());
+
+	themes_created = TRUE;
+}
 
 static void
 parse_theme_file (EyesApplet *eyes_applet, FILE *theme_file)

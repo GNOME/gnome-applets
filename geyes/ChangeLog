@@ -1,3 +1,17 @@
+2004-02-22  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* themes.c (theme_dirs_create):
+	Added function that fills the theme_directories
+	list. Removed the static declaration so themes
+	installed in ~/.gnome2/geyes-themes/ works again.
+
+	* themes.h: Added prototype for theme_dirs_create.
+
+	* geyes.c (geyes_applet_factory):
+	Call theme_dirs_create.
+
+	Fixes bug #122872.
+
 2004-02-12 Breda McColgan <breda.mccolgan@sun.com>
 
 	* docs/C/geyes.xml: Updated for GNOME 2.6.

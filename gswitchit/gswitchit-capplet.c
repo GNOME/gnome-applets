@@ -154,7 +154,7 @@ static void
 CappletResponse (GtkDialog * capplet, gint id, GSwitchItApplet * sia)
 {
 	if (id == GTK_RESPONSE_HELP) {
-		GSwitchItHelp (GTK_WINDOW (sia->propsDialog),
+		GSwitchItHelp (GTK_WIDGET (sia->propsDialog),
 			       "gswitchitPropsCapplet");
 		return;
 	}

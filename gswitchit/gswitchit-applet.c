@@ -471,14 +471,16 @@ void
 GSwitchItAppletCmdCapplet(BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	gnome_execute_shell (NULL, "gnome-keyboard-properties");
+	egg_screen_execute_shell (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
+				  NULL, "gnome-keyboard-properties");
 }
 
 void
 GSwitchItAppletCmdPlugins (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	gnome_execute_shell (NULL, "gswitchit-plugins-capplet");
+ 	egg_screen_execute_shell (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
+				  NULL, "gswitchit-plugins-capplet");
 }
 
 static void
@@ -513,7 +515,7 @@ void
 GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	GSwitchItHelp (sia->applet, "gswitchitApplet");
+	GSwitchItHelp (GTK_WIDGET (sia->applet), "gswitchitApplet");
 }
 
 void

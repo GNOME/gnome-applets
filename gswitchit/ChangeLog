@@ -1,3 +1,15 @@
+2004-02-21  Dennis Smit  <ds@nerds-incorporated.org>
+	
+	* gswitchit-applet.c (GSwitchItAppletCmdPlugins):
+	replaced the gnome_execute_shell with
+	egg_screen_execute_shell so we can be
+	multihead aware.
+
+	(GSwitchItAppletCmdCapplet):
+	Likewise.
+
+	Fixes bug #134025.
+
 2004-02-12  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gswitchit-applet.c (GSwitchItAppletCmdAbout):

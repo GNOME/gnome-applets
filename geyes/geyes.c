@@ -502,7 +502,9 @@ geyes_applet_factory (PanelApplet *applet,
 		      gpointer     data)
 {
 	gboolean retval = FALSE;
-    
+
+	theme_dirs_create ();
+
 	if (!strcmp (iid, "OAFIID:GNOME_GeyesApplet"))
 		retval = geyes_applet_fill (applet); 
    
