@@ -7,7 +7,7 @@ GKB_BITMAPS = \
 	mx.png nl.png no.png om.png pl.png ps.png pt.png qa.png qc.png \
 	ro.png ru.png sa.png se.png si.png sk.png so.png su.png sv.png \
 	sy.png th.png tn.png tr.png ua.png uk.png un.png us.png uy.png \
-	vn.png ye.png yu.png lam.png sr.png kr.png
+	vn.png ye.png yu.png lam.png sr.png kr.png mn.png
 
 
 EXTRA_DIST = $(GKB_BITMAPS)
