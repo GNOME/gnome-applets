@@ -25,27 +25,30 @@ void property_load (char *path, gpointer data)
   curr_data.properties->rows = gnome_config_get_int("charpick/rows=2");
   curr_data.properties->cols = gnome_config_get_int("charpick/cols=4");
   curr_data.properties->size = gnome_config_get_int("charpick/buttonsize=22");
+  curr_data.properties->default_charlist = 
+    gnome_config_get_string("charpick/deflist=באגדהוז×");
+
   /* sanity check the properties read from config */
   if (curr_data.properties->rows < 1)
   {
-  curr_data.properties->rows = DEFAULT_ROWS; 
+    curr_data.properties->rows = DEFAULT_ROWS; 
   }
   if (curr_data.properties->cols < 1)
   {
-  curr_data.properties->cols =  DEFAULT_COLS; 
+    curr_data.properties->cols =  DEFAULT_COLS; 
   }
   if (curr_data.properties->size < 1)
   {
-  curr_data.properties->size = DEFAULT_SIZE; 
+    curr_data.properties->size = DEFAULT_SIZE; 
   }
 
   if (curr_data.properties->min_cells < 1)
   {
-  curr_data.properties->min_cells = DEFAULT_ROWS; 
+    curr_data.properties->min_cells = DEFAULT_ROWS; 
   }
   else if (curr_data.properties->min_cells > MAX_BUTTONS)
   {
-  curr_data.properties->min_cells = DEFAULT_ROWS; 
+    curr_data.properties->min_cells = DEFAULT_ROWS; 
   }
 
   gnome_config_pop_prefix();
@@ -62,6 +65,8 @@ void property_save (char *path, charpick_persistant_properties *properties)
   gnome_config_set_int("charpick/min_cells", properties->min_cells);
   gnome_config_set_bool("charpick/follow_panel_size",
 			properties->follow_panel_size);
+  gnome_config_set_string("charpick/deflist", 
+  		          properties->default_charlist);
   gnome_config_pop_prefix();
   gnome_config_sync();
 }
@@ -80,6 +85,13 @@ static void update_bool_cb( GtkWidget *cb, gboolean *data)
   return;
 }
 
+static void update_default_list_cb( GtkWidget *entry, gpointer data)
+{
+  temp_properties.default_charlist = g_strdup(gtk_entry_get_text(GTK_ENTRY(entry)));
+   gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+  return;
+}
+
 static void property_apply_cb (GtkWidget *widget, void *data)
 {
   /*charpick_data * curr_data = data;*/
@@ -88,7 +100,11 @@ static void property_apply_cb (GtkWidget *widget, void *data)
   curr_data.properties->rows = temp_properties.rows;
   curr_data.properties->cols = temp_properties.cols;
   curr_data.properties->size = temp_properties.size;
+  curr_data.properties->default_charlist = 
+    g_strdup(temp_properties.default_charlist);
   applet_widget_sync_config(APPLET_WIDGET(curr_data.applet));
+  /* set applet to applied state */
+  curr_data.charlist = curr_data.properties->default_charlist;
   build_table(&curr_data);
   return;
   data = NULL;
@@ -115,7 +131,7 @@ static void check_button_enable_cb (GtkWidget *cb, GtkWidget *todisable)
   gtk_widget_set_sensitive (todisable, active);
 }
 
-void property_show(AppletWidget *applet, gpointer data)
+static void size_frame_create()
 {
   /* the property box consists of three hboxen in a vbox, each with a 
    *label, an adjustment entry, and a spin-button.
@@ -140,12 +156,6 @@ void property_show(AppletWidget *applet, gpointer data)
   GtkWidget *cols_sb;
   GtkWidget *follow_cb;
 
-  /*curr_data = data;*/
-  temp_properties.follow_panel_size = curr_data.properties->follow_panel_size;
-  temp_properties.min_cells = curr_data.properties->min_cells;
-  temp_properties.size = curr_data.properties->size;
-  temp_properties.rows = curr_data.properties->rows;
-  temp_properties.cols = curr_data.properties->cols;
   /*if the properties dialog is already open, just raise it.*/
   if(propwindow)
   {
@@ -254,11 +264,58 @@ void property_show(AppletWidget *applet, gpointer data)
 		      cols_hbox);
   check_button_disable_cb (follow_cb, cols_hbox);
 
-  tab_label = gtk_label_new(_("General"));
+  tab_label = gtk_label_new(_("Size"));
   gtk_widget_show(frame);
   gnome_property_box_append_page (GNOME_PROPERTY_BOX(propwindow), 
                                   frame , tab_label);
+  return;
+}
 
+static void default_chars_frame_create()
+{
+  GtkWidget *tab_label;
+  GtkWidget *frame;
+  GtkWidget *default_list_hbox;
+  GtkWidget *default_list_label;
+  GtkWidget *default_list_entry;
+  
+  /* init widgets */
+  frame = gtk_vbox_new(FALSE, 5);
+  default_list_hbox = gtk_hbox_new(FALSE, 5);
+  default_list_label = gtk_label_new(_("Default character list:"));
+  default_list_entry = gtk_entry_new_with_max_length (MAX_BUTTONS);
+  gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
+		     curr_data.properties->default_charlist);
+  /* pack the main vbox */
+  gtk_box_pack_start (GTK_BOX(frame), default_list_hbox, FALSE, FALSE, 5);
+  /* default_list hbox */
+  gtk_box_pack_start(GTK_BOX(default_list_hbox), default_list_label, FALSE, FALSE, 5);
+  gtk_box_pack_start( GTK_BOX(default_list_hbox), default_list_entry, 
+		      FALSE, FALSE, 5);
+  gtk_signal_connect (GTK_OBJECT(default_list_entry), "changed", 
+		      GTK_SIGNAL_FUNC(update_default_list_cb), 
+		      &temp_properties.default_charlist);
+
+  /* add tab to propwindow */
+  tab_label = gtk_label_new(_("Default List"));
+  gtk_widget_show_all(frame);
+  gnome_property_box_append_page (GNOME_PROPERTY_BOX(propwindow), 
+                                  frame, tab_label);
+  return;
+}
+
+void property_show(AppletWidget *applet, gpointer data)
+{
+  temp_properties.default_charlist = 
+    g_strdup(curr_data.properties->default_charlist);
+  temp_properties.follow_panel_size = curr_data.properties->follow_panel_size;
+  temp_properties.min_cells = curr_data.properties->min_cells;
+  temp_properties.size = curr_data.properties->size;
+  temp_properties.rows = curr_data.properties->rows;
+  temp_properties.cols = curr_data.properties->cols;
+
+  size_frame_create();
+  default_chars_frame_create();
   gtk_signal_connect (GTK_OBJECT(propwindow), "apply",
 		      GTK_SIGNAL_FUNC(property_apply_cb), &curr_data);
   gtk_signal_connect (GTK_OBJECT(propwindow), "destroy",
@@ -268,4 +325,8 @@ void property_show(AppletWidget *applet, gpointer data)
   applet = NULL;
   data = NULL;
 }
+
+
+
+
 

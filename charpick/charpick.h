@@ -3,7 +3,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
-#define CHARPICK_VERSION "0.04"
+#define CHARPICK_VERSION "0.05"
 #define NO_LAST_INDEX -1
 #define DEFAULT_ROWS 2
 #define DEFAULT_COLS 4

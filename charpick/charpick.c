@@ -315,6 +315,9 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case '3' : p_curr_data->charlist = three_list;
                break;
+    case ' ' : p_curr_data->charlist = 
+	         p_curr_data->properties->default_charlist;
+               break;
     }
   if (p_curr_data->last_index != NO_LAST_INDEX)
     gtk_toggle_button_set_state
@@ -510,6 +513,7 @@ main (int argc, char *argv[])
   if (!applet)
     g_error("Can't create applet!\n");
   property_load(APPLET_WIDGET(applet)->privcfgpath, &default_properties);
+  curr_data.charlist = default_properties.default_charlist;
   /* Create the event_box (needed to catch keypress and focus change events) */
 
   event_box = gtk_event_box_new ();
