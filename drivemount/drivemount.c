@@ -121,6 +121,61 @@ static int mount_cb(GtkWidget *widget, gpointer data)
 	return FALSE;
 }
 
+static void eject_cb(AppletWidget *applet, gpointer data)
+{
+	DriveData *dd = data;
+	char command_line[300];
+	char buffer[200];
+	char dn[100];	/* Devicename */
+	char mp[100];	/* Mountpoint */
+	FILE *ml;	/* Mountlist */
+
+
+	/*
+	 * Search the output of mount for dd->mount_point
+	 * and use the corresponting device name
+	 * as argument for eject
+	 * if the device is not mounted currently, use
+	 * /etc/fstab for the check
+	 */
+	
+	if (dd->mounted) {
+		ml = popen("mount", "r");
+		while (fgets(buffer, 200, ml)) {
+			sscanf(buffer, "%s %*s %s", dn, mp);
+			if (!strcmp(mp, dd->mount_point))
+				break;
+		}
+		pclose (ml);
+	} else {
+		ml = fopen("/etc/fstab", "r");
+		while (fgets(buffer, 200, ml)) {
+			sscanf(buffer, "%s %s", dn, mp);
+			if (!strcmp(mp, dd->mount_point))
+				break;
+		}
+		fclose (ml);
+	}
+	
+	if (strcmp(mp, dd->mount_point)) {	/* mp != dd->mount_point */
+		printf("WARNING: drivemount.c ... dd->mount_point not found in list\
+			 (output of mount, or /etc/fstab) \n");
+		return;
+	}
+
+	if (dd->mounted)
+		sprintf (command_line, "eject -u %s", dn);
+	else	
+		sprintf (command_line, "eject %s", dn);
+
+	system (command_line);
+
+	
+	return;
+
+}	
+
+
 /* start or change the update callback timeout interval */
 void start_callback_update(DriveData *dd)
 {
@@ -288,6 +343,12 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 					      GNOME_STOCK_MENU_PROP,
 					      _("Properties..."),
 					      property_show,
+					      dd);
+	
+	applet_widget_register_callback(APPLET_WIDGET(applet),
+					      "eject",
+					      _("Eject"),
+					      eject_cb,
 					      dd);
 
 	start_callback_update(dd);
