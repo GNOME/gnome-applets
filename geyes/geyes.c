@@ -27,83 +27,57 @@
 
 #define UPDATE_TIMEOUT 100
 
+/* FIXME crashes, need to fix */
 static void
-applet_set_back_pixmap (GtkWidget *widget, const gchar *pixmap)
+applet_set_back_pixmap (PanelApplet *applet, GtkWidget *widget, GdkPixmap *pixmap)
 {
-#ifdef FIXME    
-        GdkPixbuf *pixbuf;
-        GdkPixmap *pm;
-        GtkStyle *new_style;
-        if (!pixmap || strcmp (pixmap, "") == 0) {
-                new_style = gtk_style_copy (widget->style);
-                gtk_style_ref (new_style);
-                pm = new_style->bg_pixmap [GTK_STATE_NORMAL];
+	GtkStyle *new_style;
 
-                if (pm) 
-                        gdk_imlib_free_pixmap (pm);
-
-                new_style->bg_pixmap [GTK_STATE_NORMAL] = NULL;
-                gtk_widget_set_style (widget, new_style);
-                gtk_style_unref (new_style);
-                return;
-        }
-        if (!g_file_exists (pixmap)) 
-                return;
-        
-        pixbuf = gdk_pixbuf_new_from_file (pixmap, NULL);
-        /*imlib_image = gdk_imlib_load_image (pixmap);*/
-        if (!pixbuf)
-                return;
-        
-        /*gdk_imlib_render (imlib_image, 
-	  imlib_image->rgb_width,
-	  imlib_image->rgb_height);*/
-        /*pm = gdk_imlib_move_image (imlib_image);*/
-        gdk_pixbuf_render_pixmap_and_mask (pixbuf,&pm,NULL,0);
         new_style = gtk_style_copy (widget->style);
         gtk_style_ref (new_style);
-
-        if (new_style->bg_pixmap [GTK_STATE_NORMAL]) 
-                gdk_imlib_free_pixmap (new_style->bg_pixmap [GTK_STATE_NORMAL]);
-
-        new_style->bg_pixmap [GTK_STATE_NORMAL] = pm;
+/* FIXME should this be done ? */
+/*
+        if (new_style->bg_pixmap [GTK_STATE_NORMAL])
+		g_object_unref (new_style->bg_pixmap [GTK_STATE_NORMAL]);
+*/
+        new_style->bg_pixmap [GTK_STATE_NORMAL] = pixmap;
         gtk_widget_set_style (widget, new_style);
         gtk_style_unref (new_style);
-        gdk_pixbuf_unref (pixbuf);
-#endif
 }
 
 static void
-applet_back_change (PanelApplet *a,
-		    PanelAppletBackgroundType  type,
-		    GdkColor                  *color,
-		    const gchar               *pixmap,
-		    EyesApplet                *eyes_applet) 
+applet_back_change (PanelApplet			*a,
+		    PanelAppletBackgroundType	type,
+		    GdkColor			*color,
+		    GdkPixmap			*pixmap,
+		    EyesApplet			*eyes_applet) 
 {
 	GtkRcStyle *rc_style = gtk_rc_style_new ();
-	gint i;
-                
+
 	switch (type) {
 	case PANEL_PIXMAP_BACKGROUND:
-                applet_set_back_pixmap (eyes_applet->vbox, pixmap);
+		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
+/* FIXME can't get to work */
+//		applet_set_back_pixmap (a, GTK_WIDGET (eyes_applet->applet), pixmap);
 		break;
-        case PANEL_COLOR_BACKGROUND:
-                for (i = 0; i < eyes_applet->num_eyes; i++) {
-                	gtk_widget_modify_bg (eyes_applet->eyes[i],
-					      GTK_STATE_NORMAL,
-			    	       	      color);
-        	}
+
+	case PANEL_COLOR_BACKGROUND:
+		gtk_widget_modify_bg (GTK_WIDGET (eyes_applet->applet), GTK_STATE_NORMAL, color);
 		break;
+
+	case PANEL_NO_BACKGROUND:
+		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
+		break;
+
 	default:
-                for (i = 0; i < eyes_applet->num_eyes; i++) {
-                	gtk_widget_modify_style (eyes_applet->eyes[i], rc_style);
-        	}
+		gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
 		break;
 	}
+
 	gtk_rc_style_unref (rc_style);
+
 	return;
 }
-
 
 /* TODO - Optimize this a bit */
 static void 
