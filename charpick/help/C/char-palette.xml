@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "0.0.5">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
+  <!ENTITY appletversion "0.05">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Character Palette">
 ]>
 <!-- 
@@ -13,6 +13,7 @@
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
   Template last modified Feb 12, 2002
+  
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
@@ -81,6 +82,24 @@
 		  </revdescription>
 		</revision>
 		<revision> 
+		  <revnumber>Character Palette Applet Manual V2.1</revnumber>
+		  <date>July 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Character Palette Applet Manual V2.0</revnumber>
+		  <date>March 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun Microsystems <email>gdocteam@sun.com</email>
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
 		  <revnumber>Character Picker Applet</revnumber>
 		  <date>2000</date> 
 		  <revdescription> 
@@ -112,9 +131,9 @@
 		<title>&applet; Applet</title>
 		<screenshot> 
 		  <mediaobject> 
-			 <imageobject><imagedata fileref="figures/charpick_applet.png"
+			 <imageobject><imagedata fileref="figures/charpalette_applet.png"
 				format="PNG"/> </imageobject>
-			 <textobject> <phrase>Screenshot of the Character Palette
+			 <textobject> <phrase>Shows Character Palette
 			 applet.</phrase> </textobject> </mediaobject>
 		</screenshot>
 	 </figure> 
@@ -127,11 +146,12 @@
 		requirements. <application>&applet;</application> supports the ISO-8859-1
 		(Latin 1) character set specification, which covers most European languages.
 		</para>
-	 <para>To add <application>&applet;</application> to a panel open the
-		<guimenu>Panel</guimenu> menu from the panel, then choose 
-		<menuchoice> <guimenu>Add to panel</guimenu>
-		  <guisubmenu>Utility</guisubmenu> <guimenuitem>Character Palette</guimenuitem>
-		  </menuchoice>.</para>
+	 <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
+		<menuchoice> 
+		<guimenu>Add to Panel</guimenu>
+		<guisubmenu>Utility</guisubmenu> 
+		<guimenuitem>Character Palette</guimenuitem>
+		</menuchoice>.</para>
   </sect1>
 <!-- ================ Usage ================================ -->
   <sect1 id="charpick-usage"> 
@@ -141,24 +161,6 @@
 		character from the default list, or you can select a character from predefined
 		groups of characters. Each predefined group of characters is associated with a
 		standard character on your keyboard. </para>
-	 <itemizedlist> 
-		<listitem> 
-		  <para><link linkend="charpick-charselect">To Select a Character</link>
-			 </para>
-		</listitem>
-		<listitem> 
-		  <para><link linkend="charpick-display-chargroup">To Display a
-			 Predefined Group of Characters</link> </para>
-		</listitem>
-		<listitem> 
-		  <para><link linkend="charpick-default-list">To Return to the Default
-			 List</link> </para>
-		</listitem>
-		<listitem> 
-		  <para><link linkend="charpick-default-new">To Set Up a New Default
-			 List</link> </para>
-		</listitem>
-	 </itemizedlist> 
 	 <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-charselect"> 
 		<title>To Select a Character</title>
@@ -166,7 +168,7 @@
 		  a text string, perform the following steps: </para>
 		  <orderedlist> 
 			 <listitem> 
-				<para>Click on the character in the applet that you require. The
+				<para>In the applet, click on the character that you require. The
 				  character button is pressed in to indicate that the character is selected.
 				  </para>
 			 </listitem>
@@ -179,7 +181,7 @@
 			 </listitem>
 		  </orderedlist>
 		<para>Some applications do not support the full ISO-8859-1 character set
-		  specification. You can not insert unsupported characters into an
+		  specification. You cannot insert unsupported characters into an
 		  application.</para>
 	 </sect2> 
     <!-- ================ Usage Subsection ================================ -->
@@ -204,9 +206,9 @@
 					 <screenshot> 
 						<mediaobject> 
 						  <imageobject> 
-							 <imagedata fileref="figures/charpick_chargroup.png"
+							 <imagedata fileref="figures/charpalette_chargroup.png"
 							  format="PNG"/> </imageobject>
-						  <textobject> <phrase>Screen shot of the character group
+						  <textobject> <phrase>Shows the character group
 						  associated with the "A" key. </phrase> </textobject> </mediaobject>
 					 </screenshot>
 				  </figure> 
@@ -229,7 +231,7 @@
 				<imageobject> 
 				  <imagedata fileref="figures/charpick_characters.png"
 					format="PNG"/> </imageobject>
-				<textobject> <phrase>Screen shot of character groups associated
+				<textobject> <phrase>Shows character groups associated
 				with various keyboard keys. </phrase> </textobject> </mediaobject>
 		  </screenshot>
 		</figure> 
@@ -239,7 +241,7 @@
 	 <sect2 id="charpick-default-list"> 
 		<title>To Return to the Default List</title>
 		<para>To return to the current default character list click on any
-		  character in the applet, then press the space bar on your keyboard. </para>
+		  character in the applet, then press the <keycap>spacebar</keycap> on your keyboard. </para>
 	 </sect2>
     <!-- ================ Usage Subsection ================================ -->
 	 <sect2 id="charpick-default-new"> 
@@ -250,7 +252,7 @@
 		  Map</application>, perform the following steps: </para>
 		<orderedlist> 
 		  <listitem> 
-			 <para>Right-click anywhere in the applet, then select
+			 <para>Right-click anywhere on the applet, then select
 				<guimenuitem>Preferences</guimenuitem>. </para>
 		  </listitem>
 		  <listitem> 
@@ -276,16 +278,16 @@
 		</orderedlist>
 	 </sect2>
   </sect1>
-<!-- ============= Customization ============================= -->
+<!-- ============= Preferences ============================= -->
 <!-- Use this section to describe how to customize the applet. -->
   <sect1 id="charpick-prefs"> 
-	 <title>Settings</title>
+	 <title>Preferences</title>
 	 <para>To configure <application>&applet;</application>, right-click on the
-		applet, then choose <guimenuitem>Preferences</guimenuitem> from the popup menu.
+		applet, then choose <guimenuitem>Preferences</guimenuitem>.
 		The <guilabel>Character Palette Preferences</guilabel> dialog contains the
 		<guilabel>Default character list</guilabel> text box. Use this text box to
 		specify your own default character list. See
-		<link linkend="charpick-default-new"> To Set Up a New Default List</link> for
+		<xref linkend="charpick-default-new"/> for
 		more information. </para>
   </sect1>
 </article>
