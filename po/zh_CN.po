@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-04 20:52+0100\n"
-"PO-Revision-Date: 2005-01-24 22:57+0800\n"
+"POT-Creation-Date: 2005-02-07 21:57+0100\n"
+"PO-Revision-Date: 2005-02-08 06:36+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,6 @@ msgstr "显示键盘辅助功能特性的状态"
 #: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:192
 #: gswitchit/gswitchit-applet.c:602 modemlights/modem-applet.c:1031
-#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr "开源软件国际化简体中文组(http://i18n.linux.net.cn)"
 
@@ -369,6 +368,7 @@ msgstr "该工具显示您的笔记本电脑电池的状态。"
 #: gweather/gweather-about.c:53 mini-commander/src/about.c:54
 #: mixer/applet.c:1056 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
+#: trashapplet/src/trashapplet.c:647
 msgid "translator-credits"
 msgstr "开源软件国际化简体中文组(http://i18n.linux.net.cn)"
 
@@ -431,7 +431,7 @@ msgstr "当电池电量低时提醒我(_W)"
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "显示帮助时发生错误：%s"
@@ -4206,6 +4206,7 @@ msgid "Trash"
 msgstr "回收站"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+#: trashapplet/src/trashapplet.c:536
 msgid "_Empty Trash"
 msgstr "清空回收站(_E)"
 
@@ -4213,34 +4214,32 @@ msgstr "清空回收站(_E)"
 msgid "_Open"
 msgstr "打开(_O)"
 
-#: trashapplet/src/trashapplet.c:160
+#: trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "找不到回收站目录：%s"
 
-#: trashapplet/src/trashapplet.c:391
+#: trashapplet/src/trashapplet.c:393
 msgid "No Items in Trash"
 msgstr "回收站中无项目"
 
-#: trashapplet/src/trashapplet.c:395
+#: trashapplet/src/trashapplet.c:397
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "回收站中有 %d 项"
 
-#: trashapplet/src/trashapplet.c:543
-msgid "Are you sure you want to empty all of the items from the trash?"
-msgstr "您确定想要清空回收站中的全部项目吗？"
+#: trashapplet/src/trashapplet.c:513
+msgid "Empty all of the items from the trash?"
+msgstr "清空回收站中的全部项目吗？"
 
-#: trashapplet/src/trashapplet.c:557
-msgid "If you empty the trash, items will be permanently deleted."
-msgstr "如果您清空回收站，其中的删除将被永久删除。"
+#: trashapplet/src/trashapplet.c:516
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr "如果您选择清空回收站，其中的项目将被永久删除。请注意，您还可以单个删除其中的项目。"
 
-#: trashapplet/src/trashapplet.c:569
-msgid "_Empty"
-msgstr "清空(_E)"
-
-#: trashapplet/src/trashapplet.c:626
+#: trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4249,11 +4248,11 @@ msgstr ""
 "调用 Nautilus 出错：\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:673
+#: trashapplet/src/trashapplet.c:639
 msgid "Trash Applet"
 msgstr "回收站小程序"
 
-#: trashapplet/src/trashapplet.c:676
+#: trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4261,20 +4260,20 @@ msgstr ""
 "位于您面板上的 GNOME 回收站。您可以使用它查看回收站，或者将项目拖曳至回收站"
 "中。"
 
-#: trashapplet/src/trashapplet.c:701
+#: trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "立即删除吗？"
 
-#: trashapplet/src/trashapplet.c:730
+#: trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "无法将项目移至回收站，您想要立即删除吗？"
 
-#: trashapplet/src/trashapplet.c:733
+#: trashapplet/src/trashapplet.c:699
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr "无法将某些项目移至回收站，您想要立即删除这些项目吗？"
 
-#: trashapplet/src/trashapplet.c:834 trashapplet/src/trashapplet.c:851
+#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4283,5 +4282,3 @@ msgstr ""
 "无法移动到回收站：\n"
 "%s"
 
-#~ msgid "1 Item in Trash"
-#~ msgstr "回收站中有 1 项"
