@@ -3,15 +3,15 @@
 #include <string.h>
 #include "read-battery.h"
 
-#ifdef __linux__
-/* This was mainly lifted out of the APM sample interface functions that
-   came with the APM package. */ 
 int
 battery_read_charge(char * percentage,
 		    char * ac_online,
 		    char * hours_remaining,
 		    char * minutes_remaining)
 {
+#ifdef __linux__
+/* This was mainly lifted out of the APM sample interface functions that
+   came with the APM package. */ 
   char buffer[256], units[10];
   apm_info i;
   FILE * f;
@@ -69,16 +69,7 @@ battery_read_charge(char * percentage,
   *ac_online = i.ac_line_status;
   
   return TRUE;
-} /* battery_read_charge */
-
 #elif __FreeBSD__  /* was #ifdef __linux__ */
-
-int
-battery_read_charge(char * percentage,
-		    char * ac_online,
-		    char * hours_remaining,
-		    char * minutes_remaining)
-{
   struct apm_info aip;
   int fd;
 
@@ -108,5 +99,12 @@ battery_read_charge(char * percentage,
   *percentage = aip.ai_batt_life;
 
   close(fd);
+  return TRUE;
+#else /* ! ( __linux__ || __FreeBSD__) */
+  /* Assume always connected to power.  */
+  *ac_online = 1;
+  *percentage = 100;
+  *hours_remaining = -1;
+  *minutes_remaining = 1;
+#endif /* __linux__ || __FreeBSD__ */
 } /* battery_read_charge */
-#endif /* __FreeBsd__ */
