@@ -1,0 +1,43 @@
+## Process this file with automake to produce Makefile.in
+
+INCLUDES = 						\
+	-I.						\
+	-I$(srcdir)					\
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	-I$(top_builddir)/panel				\
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-I$(includedir) $(GNOME_INCLUDEDIR)
+
+bin_PROGRAMS = mini_commander_applet
+
+mini_commander_applet_SOURCES =			\
+	about.c					\
+	about.h					\
+	cmd_completion.c			\
+	cmd_completion.h			\
+	command_line.c				\
+	command_line.h				\
+	exec.c					\
+	exec.h					\
+	message.c				\
+	message.h				\
+	mini-commander_applet.c			\
+	mini-commander_applet.h			\
+	help.c					\
+	help.h					\
+	preferences.c				\
+	preferences.h
+
+mini_commander_applet_LDADD =				\
+	$(top_builddir)/panel/libpanel_applet.la	\
+	$(GNOME_LIBDIR)					\
+	$(GNOMEGNORBA_LIBS)				\
+	$(INTLLIBS) 
+
+EXTRA_DIST = mini-commander_applet.desktop mini-commander_applet.gnorba
+
+sysdir = $(datadir)/applets/Utility
+sys_DATA = mini-commander_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = mini-commander_applet.gnorba
