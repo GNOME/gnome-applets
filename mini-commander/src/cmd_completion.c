@@ -99,7 +99,7 @@ cmdCompletion(char *cmd)
     }
     pclose(pipe_fp);
       
-    if(strlen(largestPossibleCompletion) > 1)
+    if(strlen(largestPossibleCompletion) > 0)
 	{
 	    if(getPrefix(cmd) != NULL)
 		strcpy(cmd, getPrefix(cmd));
