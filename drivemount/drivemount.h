@@ -50,6 +50,7 @@ struct _DriveData
 	gint auto_eject;
 	gint autofs_friendly;
 	PanelAppletOrient orient;
+	GtkTooltips *tooltips;
 	gint sizehint;
 
 	gchar *custom_icon_in;

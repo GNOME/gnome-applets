@@ -96,7 +96,8 @@ cb_mount_activate (GtkEntry *entry, gpointer data)
 	else
 		dd->mount_point = g_strdup(text);
 	
-	sync_mount_base (dd);	
+	sync_mount_base (dd);
+	redraw_pixmap (dd);	
 	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "mount-point", 
 				      dd->mount_point, NULL);
 	g_free (text);

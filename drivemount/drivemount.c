@@ -189,6 +189,7 @@ applet_fill (PanelApplet *applet)
 	gtk_container_add (GTK_CONTAINER (applet), dd->button);
 
 	dd->applet = GTK_WIDGET (applet);
+	dd->tooltips = gtk_tooltips_new ();
 	dd->orient = panel_applet_get_orient (PANEL_APPLET (applet));
 	dd->sizehint = panel_applet_get_size (PANEL_APPLET (applet));
 	g_signal_connect (G_OBJECT (dd->button), "button_press_event",
@@ -613,7 +614,7 @@ update_pixmap (DriveData *dd, gint t)
 		text = _(" not mounted");
 	}
 	tiptext = g_strconcat (dd->mount_point, text, NULL);
-	/* applet_widget_set_tooltip(APPLET_WIDGET(dd->applet), tiptext); */
+	gtk_tooltips_set_tip (dd->tooltips, dd->applet, tiptext, NULL);
 	g_free (tiptext);
 }
 
