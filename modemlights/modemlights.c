@@ -1104,6 +1104,15 @@ static void applet_change_pixel_size(GtkWidget *w, int s, gpointer data)
 }
 #endif
 
+static void show_help_cb(AppletWidget *applet, gpointer data)
+{
+	static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
+
+	help_entry.name = gnome_app_id;
+    
+	gnome_help_display (NULL, &help_entry);
+}
+
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
 {
 	property_save(privcfgpath);
@@ -1222,6 +1231,10 @@ int main (int argc, char *argv[])
 					      GNOME_STOCK_MENU_ABOUT,
 					      _("About..."),
 					      about_cb, NULL);
+	applet_widget_register_callback(APPLET_WIDGET(applet),
+					"help",
+					_("Help..."),
+					show_help_cb, NULL);
 
 	start_callback_update();
 
