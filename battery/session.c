@@ -150,6 +150,8 @@ battery_session_save(GtkWidget * w,
   gnome_config_set_int ("battery/interval", bat->update_interval);
   gnome_config_set_int ("battery/low_charge_val", bat->low_charge_val);
   gnome_config_set_int ("battery/low_warn_val", bat->low_warn_val);
+  gnome_config_set_bool ("battery/low_warn_enable",
+			 bat->low_warn_enable);
   gnome_config_set_bool ("battery/full_notify_enable",
 			 bat->full_notify_enable);
 
