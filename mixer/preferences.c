@@ -144,7 +144,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
   view = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
 				  GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  gtk_widget_set_usize (view, -1, 100);
+  gtk_widget_set_size_request (view, -1, 100);
 
   hadjustment = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (view));
   vadjustment = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (view));
