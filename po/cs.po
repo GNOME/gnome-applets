@@ -1,5 +1,6 @@
 # Czech message catalog for gnome-applets.
 # Copyright (C) 1999,2003 Free Software Foundation, Inc.
+# Copyright (C) 2003 Miloslav Trmac <mitr@volny.cz>
 # David Sauer <davids@penguin.cz> (David Šauer), 1999.
 # GIS <gis@academy.cas.cz>, 1999.
 # George Lebl <jirka@5z.com>, 2000-2001.
@@ -11,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-08 03:47+0100\n"
-"PO-Revision-Date: 2003-12-08 12:30+0100\n"
+"POT-Creation-Date: 2003-12-24 04:05+0100\n"
+"PO-Revision-Date: 2003-12-24 14:59+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +34,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "_O programu..."
 
@@ -47,6 +49,7 @@ msgstr "_O programu..."
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "Nápo_věda"
 
@@ -59,7 +62,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generátor pro stavový aplet AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1180
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
@@ -78,17 +81,18 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Nástroj"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:894
-#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:535
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -98,7 +102,7 @@ msgstr ""
 "Michal Bukovjan <bukm@centrum.cz>\n"
 "Miloslav Trmač <mitr@volny.cz>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1183
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr "Stav AccessX"
 
@@ -120,11 +124,12 @@ msgstr "Při spouštění zobrazení nápovědy došlo k chybě: %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Při spouštění capletu klávesnice došlo k chybě: %s"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1185
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
@@ -429,7 +434,7 @@ msgstr "©2000 The Gnulix Society, ©2002 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1544
+#: battstat/battstat_applet.c:1531
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -485,7 +490,7 @@ msgstr "Nastavení Sledování stavu baterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
 #: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:559
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Obecné"
 
@@ -541,7 +546,7 @@ msgstr "_Varovat, když je nabití baterie nízké"
 msgid "_Yellow:"
 msgstr "_Žlutá:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:493
+#: battstat/properties.c:296 drivemount/drivemount.c:498
 #: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
 #: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
@@ -702,7 +707,7 @@ msgstr ""
 "apletu"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
-#: charpick/charpick.c:753 charpick/properties.c:345
+#: charpick/charpick.c:755 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -710,7 +715,7 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:755
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
@@ -829,7 +834,7 @@ msgid "Character Palette Preferences"
 msgstr "Nastavení Palety znaků"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:553
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
 msgid "Disk Mounter"
 msgstr "Připojování disků"
 
@@ -853,41 +858,41 @@ msgstr "Pro_bírat..."
 msgid "_Eject"
 msgstr "_Vysunout"
 
-#: drivemount/drivemount.c:434 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Při spouštění %s došlo k chybě: %s"
 
-#: drivemount/drivemount.c:441
+#: drivemount/drivemount.c:446
 msgid "Cannot browse device"
 msgstr "Nemohu procházet zařízení"
 
-#: drivemount/drivemount.c:499 drivemount/properties.c:601
+#: drivemount/drivemount.c:504 drivemount/properties.c:601
 #: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
 msgid "Error displaying help"
 msgstr "Chyba při zobrazování nápovědy"
 
-#: drivemount/drivemount.c:554
+#: drivemount/drivemount.c:559
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:556
+#: drivemount/drivemount.c:561
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
 
-#: drivemount/drivemount.c:756
+#: drivemount/drivemount.c:761
 msgid " mounted"
 msgstr " připojen"
 
-#: drivemount/drivemount.c:758
+#: drivemount/drivemount.c:763
 msgid " not mounted"
 msgstr " není připojen"
 
-#: drivemount/drivemount.c:870
+#: drivemount/drivemount.c:875
 msgid "\" reported:\n"
 msgstr "\" hlásí:\n"
 
-#: drivemount/drivemount.c:872
+#: drivemount/drivemount.c:877
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -895,7 +900,7 @@ msgstr ""
 "Příkaz pro připojení selhal.\n"
 "\""
 
-#: drivemount/drivemount.c:878
+#: drivemount/drivemount.c:883
 msgid "Cannot mount device"
 msgstr "Nemohu připojit zařízení"
 
@@ -924,7 +929,7 @@ msgid "_Update interval:"
 msgstr "Interval _aktualizace:"
 
 #: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:466
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "sekund"
 
@@ -2384,7 +2389,7 @@ msgid "Flag and Label"
 msgstr "Vlajka a popis"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
-#: modemlights/properties.c:442
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Zobrazení"
 
@@ -2422,7 +2427,7 @@ msgstr "Rozložení"
 msgid "_Keyboards:"
 msgstr "_Rozložení:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "Volby"
 
@@ -2582,7 +2587,7 @@ msgid "_Width:"
 msgstr "_Šířka:"
 
 #: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr "bodů"
 
@@ -2610,7 +2615,7 @@ msgstr "Kurz _klesl:"
 msgid "Stock _unchanged:"
 msgstr "Kurz _nezměněn:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:576
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "Po_zadí:"
 
@@ -2630,11 +2635,11 @@ msgstr ""
 "Sledování burzy\n"
 "Získává neustále aktualizované kurzy akcií"
 
-#: gtik/gtik.c:2020
+#: gtik/gtik.c:2021
 msgid "(No"
 msgstr "(Žádná"
 
-#: gtik/gtik.c:2021
+#: gtik/gtik.c:2022
 msgid "Change "
 msgstr "Změna "
 
@@ -3861,11 +3866,11 @@ msgstr ""
 msgid "Start program"
 msgstr "Spustit program"
 
-#: mini-commander/src/command_line.c:481
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "Příkazový řádek"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Napište zde příkaz a prostředí GNOME ho pro vás vykoná"
 
@@ -4517,118 +4522,118 @@ msgstr "Používat tento příkaz pro odpojení modemu."
 msgid "Verify owner of lock file"
 msgstr "Ověřit vlastníka souboru zámku"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Nastavení Kontrolek modemu"
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "_Aktualizovat každých:"
 
 #. extra info checkbox
-#: modemlights/properties.c:474
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Zobrazovat _rychlost a dobu připojení"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "_Blikat stavem připojení při připojování"
 
-#: modemlights/properties.c:494
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "Připojení"
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "Příkaz pro _připojení:"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "Příkaz pro _odpojení:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:549
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Po_tvrzovat připojení"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "Příjem dat"
 
-#: modemlights/properties.c:574
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "_Popředí:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "Posílání dat"
 
-#: modemlights/properties.c:584
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "Popře_dí:"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "P_ozadí:"
 
-#: modemlights/properties.c:589
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "Stav připojení"
 
-#: modemlights/properties.c:597
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "Připoje_no:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "_Odpojeno:"
 
-#: modemlights/properties.c:602
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "_Připojuji se:"
 
-#: modemlights/properties.c:605
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Text"
 
-#: modemlights/properties.c:613
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "Popř_edí:"
 
-#: modemlights/properties.c:615
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "Pozad_í:"
 
-#: modemlights/properties.c:617
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "Obr_ysy"
 
-#: modemlights/properties.c:620 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "Barvy"
 
-#: modemlights/properties.c:629
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "Volby modemu"
 
-#: modemlights/properties.c:638
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Zařízení:"
 
-#: modemlights/properties.c:663
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "_Soubor zámku:"
 
-#: modemlights/properties.c:683
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "_Ověřit vlastníka souboru zámku"
 
 #. ISDN checkbox
-#: modemlights/properties.c:694
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "Používat _ISDN"
 
-#: modemlights/properties.c:711
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Pokročilé"
 
@@ -4665,19 +4670,19 @@ msgstr ""
 "Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
 "paměť, využití odkládacího prostoru a zatížení sítě."
 
-#: multiload/main.c:273 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:558
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:275 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "Paměť"
 
-#: multiload/main.c:277 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "Síť"
 
-#: multiload/main.c:279 multiload/properties.c:576
+#: multiload/main.c:279 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
@@ -4810,115 +4815,115 @@ msgstr "Barva pozadí grafu okládacího prostoru"
 msgid "Net Load"
 msgstr "Zatížení sítě"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr "Sledované zdroje"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr "_Procesor"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr "Pa_měť"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr "_Síť"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:395
 msgid "S_wap Space"
 msgstr "_Odkládací soubor"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:408
 msgid "_Load"
 msgstr "_Zátěž"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr "Šířka sledování systé_mu"
 
-#: multiload/properties.c:452
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr "Výška sledování systé_mu"
 
-#: multiload/properties.c:491
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr "Frekvence _aktualizace sledování systému: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "milisekund"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "_Uživatel"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "S_ystém"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr "N_ice"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "Neč_innost"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "Sdíl_eno"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr "Bu_ffery"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr "_Kešováno"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "_Volno"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:575
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:577
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:578
 msgid "Othe_r"
 msgstr "_Jiné"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "Po_zadí"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "Po_užito"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "_Volno"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:586
 msgid "Load"
 msgstr "Zátěž"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:588
 msgid "_Average"
 msgstr "_Průměr"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Nastavení Sledování systému"
 
@@ -4931,7 +4936,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytvořit, zobrazit a spravovat lepicí poznámky na pracovní ploše"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:350
+#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
 #: stickynotes/stickynotes_applet_callbacks.c:200
 msgid "Sticky Notes"
 msgstr "Lepicí poznámky"
@@ -5121,7 +5126,7 @@ msgstr "O_dstranit poznámku..."
 msgid "_Lock Note"
 msgstr "_Zamknout poznámku"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "_Vlastnosti..."
 
@@ -5297,7 +5302,7 @@ msgstr "Zda-li se má použít výchozí barva tématu"
 msgid "Whether to use the default system font"
 msgstr "Zda-li se má použít výchozí písmo tématu"
 
-#: stickynotes/stickynotes_applet.c:350
+#: stickynotes/stickynotes_applet.c:355
 #, c-format
 msgid ""
 "%s\n"
@@ -5364,195 +5369,151 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:1
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
 msgid "GNOME XKB applet"
-msgstr "GNOME applet XKB"
+msgstr "Aplet GNOME XKB"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:2
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
 msgid "GNOME XKB applet factory"
-msgstr "Generátor GNOME appletu XKB"
+msgstr "Generátor apletu GNOME XKB"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
 msgid "GSwitchIt applet"
-msgstr "Applet GSwitchIt"
+msgstr "Aplet GSwitchIt"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:4
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
 msgid "GSwitchIt applet factory"
-msgstr "Generátor appletu GSwitchIt"
+msgstr "Generátor apletu GSwitchIt"
 
-#: applet/GNOME_GSwitchItApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
 msgid "_Groups"
 msgstr "_Skupiny"
 
-#: applet/GNOME_GSwitchItApplet.xml.h:4
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Plugins..."
-msgstr "Zásuvné _moduly..."
+msgstr "_Moduly..."
 
-#: applet/gswitchit_applet.c:96
+#: gswitchit/gswitchit-applet.c:96
 #, c-format
 msgid "Keyboard switcher (%s)"
-msgstr "Přepínač klávesnice (%s)"
+msgstr "Přepínání klávesnice (%s)"
 
-#: applet/gswitchit_applet.c:483
+#: gswitchit/gswitchit-applet.c:483
 msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
-msgstr "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr "Copyright Sergey V. Udaltsov © 1999-2002"
 
-#: applet/gswitchit_applet.c:484
+#: gswitchit/gswitchit-applet.c:484
 msgid "XKB toolkit for GNOME"
 msgstr "Sada nástrojů XKB pro GNOME"
 
-#: applet/gswitchit_applet.c:613
+#: gswitchit/gswitchit-applet.c:613
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: applet/gswitchit_applet.c:622
+#: gswitchit/gswitchit-applet.c:622
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
-#: capplets/gswitchit_capplet.c:142
+#: gswitchit/gswitchit-capplet.c:142
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
 msgstr ""
-"Zpřístupnit toto rozložení JEN z menu appletu.\n"
-"Žádný způsob, jak se na toto rozložení přepnout pomocí klávesnice."
+"Zpřístupnit rozložení JEN z vyskakovacího menu apletu.\n"
+"Na toto rozložení se nedá přepnout pomocí klávesnice."
 
-#: capplets/gswitchit_capplet.c:224
+#: gswitchit/gswitchit-capplet.c:224
 msgid "Exclude from keyboard switching"
 msgstr "Vyjmout z přepínání klávesnicí"
 
-#: capplets/gswitchit_capplet.c:250
+#: gswitchit/gswitchit-capplet.c:250
 msgid "not used"
-msgstr "nepoužitý"
+msgstr "nepoužívá se"
 
-#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#: gswitchit/gswitchit-capplet.c:307 gswitchit/gswitchit-plugins.c:288
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nemohu inicializovat GConf: %s\n"
 
-#: capplets/gswitchit-plugins.glade.h:1
+#: gswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr "Aktivovat více zásuvných modulů"
+msgstr "Aktivovat více modulů"
 
-#: capplets/gswitchit-plugins.glade.h:2
+#: gswitchit/gswitchit-plugins.glade.h:2
 msgid "Add plugin"
-msgstr "Přidat zásuvný modul"
+msgstr "Přidat modul"
 
-#: capplets/gswitchit-plugins.glade.h:3
+#: gswitchit/gswitchit-plugins.glade.h:3
 msgid "Close the dialog"
 msgstr "Zavřít dialog"
 
-#: capplets/gswitchit-plugins.glade.h:4
+#: gswitchit/gswitchit-plugins.glade.h:4
 msgid "Configure the selected plugin"
-msgstr "Nastavit vybraný zásuvný modul"
+msgstr "Nastavit vybraný modul"
 
-#: capplets/gswitchit-plugins.glade.h:5
+#: gswitchit/gswitchit-plugins.glade.h:5
 msgid "Deactivate selected plugin"
-msgstr "Deaktivovat vybraný zásuvný modul"
+msgstr "Deaktivovat vybraný modul"
 
-#: capplets/gswitchit-plugins.glade.h:6
+#: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Decrease the plugin priority"
-msgstr "Snížit prioritu zásuvného modulu"
+msgstr "Snížit prioritu modulu"
 
-#: capplets/gswitchit-plugins.glade.h:7
+#: gswitchit/gswitchit-plugins.glade.h:7
 msgid "GSwitchIt Plugins"
-msgstr "Zásuvné moduly GSwitchIt"
+msgstr "Moduly GSwitchIt"
 
-#: capplets/gswitchit-plugins.glade.h:8
+#: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr "Zvýšit prioritu zásuvného modulu"
+msgstr "Zvýšit prioritu modulu"
 
-#: capplets/gswitchit-plugins.glade.h:9
+#: gswitchit/gswitchit-plugins.glade.h:9
 msgid "The list of active plugins"
-msgstr "Seznam aktivních zásuvných modulů"
+msgstr "Seznam aktivních modulů"
 
-#: capplets/gswitchit-plugins.glade.h:10
+#: gswitchit/gswitchit-plugins.glade.h:10
 msgid "_Active plugins"
-msgstr "_Aktivní zásuvné moduly"
+msgstr "_Aktivní moduly"
 
-#: capplets/gswitchit-plugins.glade.h:11
+#: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
-msgstr "_Dostupné zásuvné moduly:"
+msgstr "_Dostupné moduly:"
 
-#: capplets/gswitchit-properties.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:1
 msgid "Choose the default group (for newly created windows)."
-msgstr "Zvolte implicitní skupinu (pro nově vytvořená okna)."
+msgstr "Zvolte implicitní skupinu (pro nově vytvářená okna)."
 
-#: capplets/gswitchit-properties.glade.h:2
+#: gswitchit/gswitchit-properties.glade.h:2
 msgid "GSwitchIt Properties"
 msgstr "Vlastnosti GSwitchIt"
 
-#: capplets/gswitchit-properties.glade.h:3
+#: gswitchit/gswitchit-properties.glade.h:3
 msgid "Keep separate group for each application window."
-msgstr "Udržovat oddělenou skupinu pro každé okno aplikace."
+msgstr "Udržovat skupinu odděleně pro každé okno aplikace."
 
-#: capplets/gswitchit-properties.glade.h:4
+#: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep the state of indicators separately for each application window."
 msgstr "Udržovat stav indikátorů odděleně pro každé okno aplikace."
 
-#: capplets/gswitchit-properties.glade.h:5
+#: gswitchit/gswitchit-properties.glade.h:5
 msgid "Save/restore _indicators with group"
-msgstr "Ukládat/obnovovat _indikátory se skupinou"
+msgstr "Ukládádat/obnovovat _indikátory se skupinou"
 
-#: capplets/gswitchit-properties.glade.h:6
+#: gswitchit/gswitchit-properties.glade.h:6
 msgid "Separate _group for each window"
 msgstr "Oddělená _skupina pro každé okno"
 
-#: capplets/gswitchit-properties.glade.h:7
+#: gswitchit/gswitchit-properties.glade.h:7
 msgid "Show national flags as indicators of corresponding layouts"
 msgstr "Zobrazovat národní vlajky jako indikátory odpovídajících rozložení"
 
-#: capplets/gswitchit-properties.glade.h:8
+#: gswitchit/gswitchit-properties.glade.h:8
 msgid "Use _flags as indicators"
 msgstr "Používat _vlajky jako indikátory"
 
-#: capplets/gswitchit-properties.glade.h:9
+#: gswitchit/gswitchit-properties.glade.h:9
 msgid "_Default group:"
 msgstr "_Implicitní skupina:"
-
-#: gswitchit.schemas.in.h:1
-msgid "Beep on group switch"
-msgstr "Pípnout při přepnutí skupiny"
-
-#: gswitchit.schemas.in.h:2
-msgid "Debug level"
-msgstr "Úroveň ladění"
-
-#: gswitchit.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr "Implicitní skupina, přiřazena při vytvoření okna"
-
-#: gswitchit.schemas.in.h:4
-msgid "Keep and manage separate group per window"
-msgstr "Udržovat a spravovat oddělenou skupinu pro každé okno"
-
-#: gswitchit.schemas.in.h:5
-msgid "Save/restore indicators together with layout groups"
-msgstr "Ukládat/obnovovat indikátory se skupinami rozložení"
-
-#: gswitchit.schemas.in.h:6
-msgid "Secondary groups"
-msgstr "Sekundární skupiny"
-
-#: gswitchit.schemas.in.h:7
-msgid "Show flags in the applet"
-msgstr "Zobrazovat v apletu vlajky"
-
-#: gswitchit.schemas.in.h:8
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Zobrazovat v apletu vlajky pro indikaci aktuálního rozložení"
-
-#: gswitchit.schemas.in.h:9
-msgid "Show layout names instead of group names"
-msgstr "Zobrazovat názvy rozložení místo názvů skupin"
-
-#: gswitchit.schemas.in.h:10
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-"Zobrazovat názvy rozložení místo názvů skupin (jen pro verze XFree, které "
-"podporují více rozložení)"
 
 #~ msgid ""
 #~ "The images necessary to run the wireless monitor are missing.\n"
@@ -6402,212 +6363,3 @@ msgstr ""
 
 #~ msgid "<b>Style</b>"
 #~ msgstr "<b>Styl</b>"
-
-#~ msgid "Apply XKB configuration and quit"
-#~ msgstr "Provést konfiguraci XKB a skončit"
-
-#~ msgid ""
-#~ "Error activating XKB configuration.\n"
-#~ "Probably internal X server problem.\n"
-#~ "\n"
-#~ "X server version data:\n"
-#~ "%s\n"
-#~ "%d%s"
-#~ msgstr ""
-#~ "Chyba při aktivaci konfigurace XKB.\n"
-#~ "Pravděpodobně interní problém X serveru.\n"
-#~ "\n"
-#~ "Data verze X serveru:\n"
-#~ "%s\n"
-#~ "%d%s"
-
-#~ msgid ""
-#~ "You are using XFree 4.3.0.\n"
-#~ "There are known problems with complex XKB configurations.\n"
-#~ "Try using simpler configuration or taking more fresh version of XFree "
-#~ "software."
-#~ msgstr ""
-#~ "Používáte XFree 4.3.0.\n"
-#~ "Jsou známy problémy se složitými konfiguracemi XKB.\n"
-#~ "Zkuste použít jednodušší konfiguraci nebo novější verzi software XFree."
-
-#~ msgid "Could not initialize Bonobo"
-#~ msgstr "Nemohu inicializovat Bonobo"
-
-#~ msgid "Failed to init XklConfigRegistry\n"
-#~ msgstr "Nemohu inicializovat XklConfigRegistry\n"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Postscript preview component is not available"
-#~ msgstr "Komponenta náhledu Postscriptu není k dispozici"
-
-#~ msgid "Keyboard layout preview"
-#~ msgstr "Náhled rozložení klávesnice"
-
-#~ msgid "Bonobo Error"
-#~ msgstr "Chyba Bonobo"
-
-#~ msgid "Configure keyboard layouts"
-#~ msgstr "Nastavit rozložení klávesnice"
-
-#~ msgid "Keyboard layouts"
-#~ msgstr "Rozložení klávesnice"
-
-#~ msgid "Choose the layout."
-#~ msgstr "Zvolte rozložení."
-
-#~ msgid "Choose the layout. Note: one layout can provide several groups."
-#~ msgstr ""
-#~ "Zvolte rozložení. Poznámka: jedno rozložení může poskytovat několik "
-#~ "skupin."
-
-#~ msgid "Choose the model of the keyboard (brand, number of keys, etc.)."
-#~ msgstr "Zvolte model klávesnice (značka, počet kláves atd.)."
-
-#~ msgid "Clear"
-#~ msgstr "Vymazat"
-
-#~ msgid "Clear."
-#~ msgstr "Vymazat."
-
-#~ msgid "Extra"
-#~ msgstr "Extra"
-
-#~ msgid "Keyboard _model:"
-#~ msgstr "_Model klávesnice:"
-
-#~ msgid "Keyboard layouts' settings: "
-#~ msgstr "Nastavení rozložení klávesnice:"
-
-#~ msgid "Options 1"
-#~ msgstr "Možnosti 1"
-
-#~ msgid "Options 2"
-#~ msgstr "Možnosti 2"
-
-#~ msgid "Show _advanced parameters"
-#~ msgstr "Zobrazit _pokročilé parametry"
-
-#~ msgid "Show tabs with advanced keyboard parameters (for power users)."
-#~ msgstr ""
-#~ "Zobrazit záložky s pokročilými parametry klávesnice (pro zkušené "
-#~ "uživatele)."
-
-#~ msgid ""
-#~ "This version of XFree86 does not support multiple layouts, so only one "
-#~ "layout can be choosen."
-#~ msgstr ""
-#~ "Tato verze XFree86 nepodporuje více rozložení, takže může být zvoleno jen "
-#~ "jedno rozložení."
-
-#~ msgid "Use custom settings, ignore global configuration set in XF86Config."
-#~ msgstr ""
-#~ "Používat vlastní nastavení, ignorovat globální konfiguraci nastavenou v "
-#~ "XF68Config."
-
-#~ msgid "Use global configuration set in XF86Config."
-#~ msgstr "Používat globální konfiguraci nastavenou v XF86Config."
-
-#~ msgid "_Custom"
-#~ msgstr "_Vlastní"
-
-#~ msgid "_Global Preconfigured"
-#~ msgstr "_Globálně přednastavené"
-
-#~ msgid "_Layouts:"
-#~ msgstr "_Rozložení:"
-
-#~ msgid "_Preview"
-#~ msgstr "_Náhled"
-
-#~ msgid "_Switch shortcut"
-#~ msgstr "_Přepínací zkratka"
-
-#~ msgid "Default XKB setting"
-#~ msgstr "Implicitní nastavení XKB"
-
-#~ msgid "Right Control"
-#~ msgstr "Pravý Control"
-
-#~ msgid "Left Control"
-#~ msgstr "Levý Control"
-
-#~ msgid "Right Shift"
-#~ msgstr "Pravý Shift"
-
-#~ msgid "Left Shift"
-#~ msgstr "Levý Shift"
-
-#~ msgid "Grave"
-#~ msgstr "Grave"
-
-#~ msgid "The id of active switchcut"
-#~ msgstr "ID aktivní přepínací zkratky"
-
-#~ msgid "XKB keyboard layout"
-#~ msgstr "XKB rozložení klávesnice"
-
-#~ msgid "XKB keyboard model"
-#~ msgstr "XKB model klávesnice"
-
-#~ msgid "XKB options"
-#~ msgstr "Možnosti XKB"
-
-#~ msgid "XKB settings should be overridden"
-#~ msgstr "Nastavení XKB mají být přepsána"
-
-#~ msgid "Choose the color"
-#~ msgstr "Zvolte barvu"
-
-#~ msgid "Highlighter"
-#~ msgstr "Zvýrazňovač"
-
-#~ msgid "Highlights the applet on the GNOME panel"
-#~ msgstr "Zvýrazňuje aplet na panelu GNOME"
-
-#~ msgid "Highlighter plugin properties"
-#~ msgstr "Vlastnosti zásuvného modulu zvýrazňovače"
-
-#~ msgid "_Background color"
-#~ msgstr "Barva _pozadí"
-
-#~ msgid "_Text color"
-#~ msgstr "Barva _textu"
-
-#~ msgid "Keyboard events"
-#~ msgstr "Události klávesnice"
-
-#~ msgid "Sound plugin"
-#~ msgstr "Zásuvný modul zvuku"
-
-#~ msgid "Enables standard GNOME sound notifications for the group switching"
-#~ msgstr "Povoluje standardní zvuková upozornění GNOME pro přepnutí skupiny"
-
-#~ msgid "Test plugin"
-#~ msgstr "Testovací zásuvný modul"
-
-#~ msgid "Test GSwitchIt plugin"
-#~ msgstr "Testovací zásuvné moduly GSwitchIt"
-
-#~ msgid "GSwitchIt Applet Properties"
-#~ msgstr "Vlastnosti appletu GSwitchIt"
-
-#~ msgid "Secondary"
-#~ msgstr "Sekundární"
-
-#~ msgid "Preview"
-#~ msgstr "Náhled"
-
-#~ msgid "To _default"
-#~ msgstr "_Implicitní"
-
-#~ msgid "Zoom"
-#~ msgstr "Zvětšení"
-
-#~ msgid "_In"
-#~ msgstr "Z_většit"
-
-#~ msgid "_Out"
-#~ msgstr "Z_menšit"
