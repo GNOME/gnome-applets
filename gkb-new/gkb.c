@@ -58,7 +58,7 @@ makepix (GkbKeymap *actdata, char *fname, int w, int h)
       g_assert (bah_window);
       g_assert (bah_window->window);
 
-      width = gdk_pixbuf_get_width (pix);
+      width  = gdk_pixbuf_get_width (pix);
       height = gdk_pixbuf_get_height (pix);
 
       affine[1] = affine[2] = affine[4] = affine[5] = 0;
@@ -703,7 +703,6 @@ gkb_activator_register_callbacks (GKB * gkb)
 					 GNOME_STOCK_MENU_BOOK_OPEN,
 					 _("Help"),
 					 GTK_SIGNAL_FUNC (help_cb), NULL);
-
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "about",
 					 GNOME_STOCK_MENU_ABOUT,
@@ -725,7 +724,6 @@ gkb_activator (CORBA_Object poa_in,
   gkb = g_new0 (GKB, 1);
 
   gkb->applet = applet_widget_new (goad_id);
-  gkb->property_box = NULL;
 
   create_gkb_widget ();
 

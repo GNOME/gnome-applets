@@ -1,5 +1,18 @@
 2000-12-07  Chema Celorio  <chema@celorio.com>
 
+	* prop-list.c (move_select_cb): rename to :
+	(gkb_prop_list_move_clicked): and rewrite.
+	(gkb_utils_free_keymap): implement
+	(gkb_utils_copy_keymap): implement
+	(gkb_prop_list_load_keymaps): use here
+	(gkb_prop_list_free_keymaps): use here
+	(gkb_prop_list_selection_changed): implement
+
+	* prop.c (gkb_prop_create_hotkey_frame): conect the signals
+	after setting the entry's text (as they got trigered)
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+	
 	* prop-list.c
 	(gkb_prop_create_buttons_vbox): clean
 	(gkb_prop_list_create_button): implement

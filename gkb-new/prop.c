@@ -138,7 +138,7 @@ convert_string_to_keysym_state(const char *string,
 
 char *
 convert_keysym_state_to_string(guint keysym,
-						 guint state)
+			       guint state)
 {
 	GString *gs;
 	char *sep = "";
@@ -247,30 +247,30 @@ grab_key_filter(GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data)
 static void
 grab_button_pressed (GtkButton *button, gpointer data)
 {
- 	GtkWidget *frame;
- 	GtkWidget *box;  
-	GtkWidget *label;
-	grab_dialog = gtk_window_new (GTK_WINDOW_POPUP);
+  GtkWidget *frame;
+  GtkWidget *box;  
+  GtkWidget *label;
+  grab_dialog = gtk_window_new (GTK_WINDOW_POPUP);
 
-	gdk_keyboard_grab (GDK_ROOT_PARENT(), TRUE, GDK_CURRENT_TIME);   
-	gdk_window_add_filter (GDK_ROOT_PARENT(), grab_key_filter, data);
-
-	gtk_window_set_policy (GTK_WINDOW (grab_dialog), FALSE, FALSE, TRUE);  
-	gtk_window_set_position (GTK_WINDOW (grab_dialog), GTK_WIN_POS_CENTER);
-	gtk_window_set_modal (GTK_WINDOW (grab_dialog), TRUE);
-
-	frame = gtk_frame_new (NULL);
-	gtk_container_add (GTK_CONTAINER (grab_dialog), frame);
-
-	box = gtk_hbox_new (0, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (box), 20);
-	gtk_container_add (GTK_CONTAINER (frame), box);
-
-	label = gtk_label_new (_("Press a key..."));
-	gtk_container_add (GTK_CONTAINER (box), label);
+  gdk_keyboard_grab (GDK_ROOT_PARENT(), TRUE, GDK_CURRENT_TIME);   
+  gdk_window_add_filter (GDK_ROOT_PARENT(), grab_key_filter, data);
 	
-	gtk_widget_show_all (grab_dialog);
-	return;
+  gtk_window_set_policy (GTK_WINDOW (grab_dialog), FALSE, FALSE, TRUE);  
+  gtk_window_set_position (GTK_WINDOW (grab_dialog), GTK_WIN_POS_CENTER);
+  gtk_window_set_modal (GTK_WINDOW (grab_dialog), TRUE);
+  
+  frame = gtk_frame_new (NULL);
+  gtk_container_add (GTK_CONTAINER (grab_dialog), frame);
+
+  box = gtk_hbox_new (0, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 20);
+  gtk_container_add (GTK_CONTAINER (frame), box);
+
+  label = gtk_label_new (_("Press a key..."));
+  gtk_container_add (GTK_CONTAINER (box), label);
+  
+  gtk_widget_show_all (grab_dialog);
+  return;
 }
 
 
@@ -365,36 +365,42 @@ gkb_prop_create_display_frame ()
 }
 
 
+/**
+ * gkb_prop_create_hotkey_frame:
+ * @void: 
+ * 
+ * Implement the hotkey properties frame
+ * 
+ * Return Value: 
+ **/
 static GtkWidget *
-gkb_prop_create_hotkey_frame ()
+gkb_prop_create_hotkey_frame (void)
 {
   GtkWidget *frame;
-  GtkWidget *button6;
-  GtkWidget *entry1;
-  GtkWidget *hbox10;
+  GtkWidget *button;
+  GtkWidget *entry;
+  GtkWidget *hbox;
 
   frame = gtk_frame_new (_("Hotkey for switching between layouts"));
+  hbox  = gtk_hbox_new (TRUE, 0);
+  
+  gtk_container_add (GTK_CONTAINER (frame), hbox);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
 
-  hbox10 = gtk_hbox_new (TRUE, 0);
-  gtk_container_add (GTK_CONTAINER (frame), hbox10);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox10), 10);
+  entry = gtk_entry_new ();
+  gtk_entry_set_text (GTK_ENTRY(entry), gkb->key);
 
-  entry1 = gtk_entry_new ();
+  button = gtk_button_new_with_label (_("Grab hotkey"));
 
-  gtk_signal_connect (GTK_OBJECT(entry1), "changed", 
+  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), entry, FALSE, TRUE, 0);
+
+  gtk_signal_connect (GTK_OBJECT (entry), "changed", 
                       GTK_SIGNAL_FUNC (changed_cb),
 		      NULL);
-
-  gtk_entry_set_text (GTK_ENTRY(entry1), gkb->key);
-
-  gtk_box_pack_start (GTK_BOX (hbox10), entry1, FALSE, TRUE, 0);
-
-  button6 = gtk_button_new_with_label (_("Grab hotkey"));
-  gtk_signal_connect (GTK_OBJECT(button6), "clicked", 
+  gtk_signal_connect (GTK_OBJECT (button), "clicked", 
                       GTK_SIGNAL_FUNC (grab_button_pressed),
-		      entry1);
-
-  gtk_box_pack_start (GTK_BOX (hbox10), button6, TRUE, FALSE, 0);
+		      entry);
 
   return frame;
 }
@@ -459,12 +465,12 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), page, page_2_label);
 
   /* Page 2 Frame */
-  scrolled_window = gkb_prop_create_scrolled_window ();
+  scrolled_window = gkb_prop_create_scrolled_window (pbi);
   buttons_vbox    = gkb_prop_create_buttons_vbox (pbi);
   gtk_box_pack_start (GTK_BOX (page_2_hbox), scrolled_window, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_2_hbox), buttons_vbox, FALSE, TRUE, 0);
 
-  /* Add the page labels to the pages */
+  /* Connect the signals */
   gtk_signal_connect (GTK_OBJECT (propbox), "destroy",
 		      GTK_SIGNAL_FUNC (gtk_widget_destroyed), &gkb->propbox);
   gtk_signal_connect (GTK_OBJECT (propbox), "help",
@@ -484,19 +490,26 @@ properties_dialog (AppletWidget * applet)
 	gkb->propbox= NULL;
     }
 
-  gkb_prop_list_free_tempmaps (gkb);
+#if 0	/* FIXME now */
+  gkb_prop_list_free_keymaps (pbi);
+#endif	
 
+  
   pbi = g_new0 (GkbPropertyBoxInfo, 1);
-  gkb->property_box = pbi;
+  pbi->add_button    = NULL;
+  pbi->edit_button   = NULL;
+  pbi->delete_button = NULL;
+  pbi->up_button     = NULL;
+  pbi->down_button   = NULL;
+  pbi->selected_keymap = NULL;
   
   gkb->tn = gkb->n;
   gkb->propbox = gkb_prop_create_property_box (pbi);
-
-  pbi->window = gkb->propbox->window;
+  
   pbi->box    = gkb->propbox;
   
   gtk_widget_show_all (pbi->box);
-  gdk_window_raise    (pbi->window);
+  gdk_window_raise    (pbi->box->window);
 
   return;
 }

@@ -52,8 +52,6 @@ GKB * gkb;
 
 struct _GkbPropertyBoxInfo
 {
-  GdkWindow *window;
-
   GtkWidget *box;
 
   /* Buttons */
@@ -63,6 +61,11 @@ struct _GkbPropertyBoxInfo
   GtkWidget *up_button;
   GtkWidget *down_button;
   GtkWidget *delete_button;
+
+  /* Keymaps */
+  GList *keymaps;              /* A list of GkbKemap pointers */
+  GtkList *list;               /* The widget displaying the keymaps */
+  GkbKeymap *selected_keymap;  /* A pointer to the selected keymap */
 };
 
 struct _GkbKeymap
@@ -88,7 +91,6 @@ struct _GKB
   GtkWidget *darea;
   GtkWidget *mapedit;
   GtkWidget *addwindow;
-  GtkWidget *list1;
   GtkWidget *propbox;
 
   gint n;
@@ -104,10 +106,7 @@ struct _GKB
   gchar *key;
   guint keysym, state;
 
-  GkbPropertyBoxInfo *property_box;
-  
   GList *maps;
-  GList *tempmaps;
   GkbKeymap *dact;
   PanelOrientType orient;
 };
@@ -155,9 +154,9 @@ GList * gkb_preset_load (GList * list);
 GList *     find_presets (void);
 
 /* prop-list.c */
-void        gkb_prop_list_init (void);
 GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
-GtkWidget * gkb_prop_create_scrolled_window (void);
-void        gkb_prop_list_free_tempmaps (GKB *gkb);
+GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
+
+void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
 
 gchar * prefixdir;
