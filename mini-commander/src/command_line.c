@@ -213,33 +213,6 @@ command_line_activate_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
     data = NULL;
 }
 
-static void
-history_selection_made_cb (GtkTreeView *treeview, GtkTreePath *arg1,
-                           GtkTreeViewColumn *arg2, gpointer data)
-{
-    PanelApplet *applet = data;
-    gchar *command;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-    GValue val = {0,};
-    GtkWidget *widget;
-
-    widget = (GtkWidget *) treeview;
-    model = gtk_tree_view_get_model (treeview);
-    gtk_tree_model_get_iter ( model, &iter, arg1);
-    gtk_tree_model_get_value (GTK_TREE_MODEL (model), &iter,
-                              0, &val);
-    command = g_strdup (g_value_get_string (&val));
-    exec_command(command, applet);
-
-    g_value_unset(&val);
-    g_free(command);
-    /* close history window */
-    gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
-    return;
-    data = NULL;
-}
-
 #if 0
 static gint
 history_item_clicked_cb(GtkWidget *widget, gpointer data)
@@ -267,6 +240,7 @@ static gint
 history_popup_clicked_cb(GtkWidget *widget, gpointer data)
 {
     gdk_pointer_ungrab(GDK_CURRENT_TIME);
+    gdk_keyboard_ungrab(GDK_CURRENT_TIME);
     gtk_grab_remove(GTK_WIDGET(widget));
     gtk_widget_destroy(GTK_WIDGET(widget));
     widget = NULL;
@@ -285,6 +259,78 @@ history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data)
     data = NULL;
 }
 
+static gboolean
+history_key_press_cb (GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+   
+    if (event->keyval == GDK_Escape) {
+        gdk_pointer_ungrab(GDK_CURRENT_TIME);
+        gdk_keyboard_ungrab(GDK_CURRENT_TIME);
+        gtk_grab_remove(GTK_WIDGET(widget));
+        gtk_widget_destroy(GTK_WIDGET(widget));
+        widget = NULL;
+    }
+
+    return FALSE;
+    
+}
+
+static gboolean
+history_list_key_press_cb (GtkWidget *widget, GdkEventKey *event, gpointer data)
+{
+    PanelApplet *applet = data;
+    GtkTreeView *tree = g_object_get_data (G_OBJECT (applet), "tree");
+    GtkTreeIter iter;
+    GtkTreeModel *model;
+    gchar *command;
+    
+    switch (event->keyval) {
+    case GDK_KP_Enter:
+    case GDK_ISO_Enter:
+    case GDK_3270_Enter:
+    case GDK_Return:
+    case GDK_space:
+    case GDK_KP_Space:
+        if (!gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tree),
+        				      &model,
+        				      &iter))        				    
+            return FALSE;
+        gtk_tree_model_get (GTK_TREE_MODEL (model), &iter,
+                            0, &command, -1);
+        exec_command(command, applet);
+        g_free (command);
+        gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
+        break;
+    default:
+        break;
+    }
+    
+    return FALSE;
+}
+
+static gboolean 
+history_list_button_press_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
+{
+    PanelApplet *applet = data;
+    GtkTreeView *tree = g_object_get_data (G_OBJECT (applet), "tree");
+    GtkTreeIter iter;
+    GtkTreeModel *model;
+    gchar *command;
+    
+    if (event->type == GDK_2BUTTON_PRESS) {
+    	if (!gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tree),
+        				      &model,
+        				      &iter))        				    
+            return FALSE;
+        gtk_tree_model_get (GTK_TREE_MODEL (model), &iter,
+                            0, &command, -1);
+        exec_command(command, applet);
+        g_free (command);
+        gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
+    }
+    return FALSE;
+}
+
 gint 
 show_history_signal(GtkWidget *widget, gpointer data)
 {
@@ -299,9 +345,10 @@ show_history_signal(GtkWidget *widget, gpointer data)
      GtkWidget    *treeview;
      GtkCellRenderer *cell_renderer;
      GtkTreeViewColumn *column;
-     /*Gtk_style *style;*/
+     GtkRequisition  req;
      gchar *command_list[1];
      int i, j;
+     gint x, y, width, height, screen_width, screen_height;
 
      /* count commands stored in history list */
      for(i = 0, j = 0; i < LENGTH_HISTORY_LIST; i++)
@@ -323,14 +370,13 @@ show_history_signal(GtkWidget *widget, gpointer data)
 			      "button_press_event",
 			      GTK_SIGNAL_FUNC(history_popup_clicked_cb),
 			      NULL);
-     /* position */
-     gtk_window_set_position (GTK_WINDOW (window), GTK_WIN_POS_MOUSE);
+     g_signal_connect_after (G_OBJECT (window), "key_press_event",
+     		       G_CALLBACK (history_key_press_cb), NULL);
+     
      /* size */
      gtk_widget_set_usize(GTK_WIDGET(window), 200, 350);
-     /* title */
-     gtk_window_set_title(GTK_WINDOW(window), (gchar *) _("Command history"));
-     gtk_widget_show(window);
-
+     
+     
      /* frame */
      frame = gtk_frame_new(NULL);
      gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
@@ -350,25 +396,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
      gtk_container_add(GTK_CONTAINER(frame), scrolled_window);
      gtk_container_set_border_width (GTK_CONTAINER(scrolled_window), 2);
      gtk_widget_show(scrolled_window);
-     
-
-     /* the history list */
-     /* style 
-     style = malloc(sizeof(Gtk_style));
-     style = gtk_style_copy(gtk_widget_get_style(GTK_WIDGET(applet)));
-
-     style->fg[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_fg_r;
-     style->fg[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_fg_g;
-     style->fg[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_fg_b;
-
-     style->base[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_bg_r;
-     style->base[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_bg_g;
-     style->base[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_bg_b;
-     
-     gtk_widget_push_style (style);
-     */
-     /*      gtk_widget_pop_style (); */
-     
+          
      store = gtk_list_store_new (1, G_TYPE_STRING);
 
      /* add history entries to list */
@@ -384,6 +412,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
      
      model = GTK_TREE_MODEL(store);
      treeview = gtk_tree_view_new_with_model (model);
+     g_object_set_data (G_OBJECT (applet), "tree", treeview);
      cell_renderer = gtk_cell_renderer_text_new ();
      column = gtk_tree_view_column_new_with_attributes (NULL, cell_renderer,
                                                        "text", 0, NULL);
@@ -392,13 +421,42 @@ show_history_signal(GtkWidget *widget, gpointer data)
      gtk_tree_selection_set_mode( (GtkTreeSelection *)gtk_tree_view_get_selection
                                 (GTK_TREE_VIEW (treeview)),
                                  GTK_SELECTION_SINGLE);
-     gtk_signal_connect(GTK_OBJECT(treeview),
-                        "row_activated",
-                        GTK_SIGNAL_FUNC(history_selection_made_cb),
-                        applet);
+     g_signal_connect (G_OBJECT (treeview), "button_press_event",
+     		       G_CALLBACK (history_list_button_press_cb), applet);
+     g_signal_connect (G_OBJECT (treeview), "key_press_event",
+     		       G_CALLBACK (history_list_key_press_cb), applet);
      g_object_unref (G_OBJECT (model));
      gtk_container_add(GTK_CONTAINER(scrolled_window),treeview);
      gtk_widget_show (treeview); 
+     
+     gtk_widget_size_request (window, &req);
+     gdk_window_get_origin (GTK_WIDGET (applet)->window, &x, &y);
+     gdk_window_get_geometry (GTK_WIDGET (applet)->window, NULL, NULL,
+     			      &width, &height, NULL);
+   
+     switch (panel_applet_get_orient (applet)) {
+     case PANEL_APPLET_ORIENT_DOWN:
+        y += height;
+     	break;
+     case PANEL_APPLET_ORIENT_UP:
+        g_print ("up \n");
+     	y -= req.height;
+     	break;
+     case PANEL_APPLET_ORIENT_LEFT:
+     	x -= req.width;
+	break;
+     case PANEL_APPLET_ORIENT_RIGHT:
+     	x += width;
+	break;
+     }
+
+     screen_width = gdk_screen_width ();
+     screen_height = gdk_screen_height ();
+     x = CLAMP (x - 2, 0, MAX (0, screen_width - req.width));
+     y = CLAMP (y - 2, 0, MAX (0, screen_height - req.height));
+     gtk_window_move (GTK_WINDOW (window), x, y);
+     gtk_widget_show(window);
+
      /* grab focus */
      gdk_pointer_grab (window->window,
 		       TRUE,
@@ -410,20 +468,10 @@ show_history_signal(GtkWidget *widget, gpointer data)
 		       NULL,
 		       NULL,
 		       GDK_CURRENT_TIME); 
+     gdk_keyboard_grab (window->window, TRUE, GDK_CURRENT_TIME);
      gtk_grab_add(window);
-     
-     
-     /*
-       gnome_dialog_run
-       (GNOME_DIALOG
-       (gnome_message_box_new((gchar *) _("The history list comes later."),
-       GNOME_MESSAGE_BOX_INFO,
-       GNOME_STOCK_BUTTON_OK,
-       NULL)
-       )
-       );
-     */
-     
+     gtk_widget_grab_focus (treeview);
+ 
      /* go on */
      return FALSE;
      widget = NULL;
@@ -518,7 +566,7 @@ init_command_entry(MCData *mcdata)
 		       GTK_SIGNAL_FUNC(command_line_focus_in_cb),
 		       NULL);
 #endif
-#if 1
+#if 0
     gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
 		       GTK_SIGNAL_FUNC(command_line_activate_cb),
 		       mcdata);

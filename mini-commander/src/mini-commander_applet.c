@@ -461,7 +461,7 @@ mini_commander_applet_factory(PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MiniCommanderApplet_Factory",
 			     PANEL_TYPE_APPLET,
-                             "Mini-Commander",
+                             "command-line",
                              "0",
                              mini_commander_applet_factory,
                              NULL)
