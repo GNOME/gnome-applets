@@ -305,17 +305,28 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
 
 	/* Connect all signals for applet management */
-	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event", G_CALLBACK(applet_button_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "button-release-event", G_CALLBACK(applet_button_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "key-press-event", G_CALLBACK(applet_key_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "focus-in-event", G_CALLBACK(applet_focus_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "focus-out-event", G_CALLBACK(applet_focus_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "enter-notify-event", G_CALLBACK(applet_cross_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "leave-notify-event", G_CALLBACK(applet_cross_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "size-allocate", G_CALLBACK(applet_size_allocate_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "change-orient", G_CALLBACK(applet_change_orient_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "change-background", G_CALLBACK(applet_change_bg_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "destroy", G_CALLBACK(applet_destroy_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event",
+			G_CALLBACK(applet_button_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "button-release-event",
+			G_CALLBACK(applet_button_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "key-press-event",
+			G_CALLBACK(applet_key_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "focus-in-event",
+			G_CALLBACK(applet_focus_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "focus-out-event",
+			G_CALLBACK(applet_focus_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "enter-notify-event",
+			G_CALLBACK(applet_cross_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "leave-notify-event",
+			G_CALLBACK(applet_cross_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "size-allocate",
+			G_CALLBACK(applet_size_allocate_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "change-orient",
+			G_CALLBACK(applet_change_orient_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "change_background",
+			G_CALLBACK(applet_change_bg_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "destroy",
+			G_CALLBACK(applet_destroy_cb), applet);
 
 	atk_obj = gtk_widget_get_accessible (applet->w_applet);
 	atk_object_set_name (atk_obj, _("Sticky Notes"));
