@@ -97,7 +97,7 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
     if ((ev == NULL) || (ev->button != 1))
 	    return FALSE;
     if (ev->type == GDK_2BUTTON_PRESS) {
-	gweather_dialog_display_toggle(gw_applet);
+	gweather_dialog_open(gw_applet);
 	return TRUE;
     }
     
@@ -132,7 +132,7 @@ static void forecast_cb (BonoboUIComponent *uic, gpointer data, const gchar *ver
 {
     GWeatherApplet *gw_applet = data;
 
-    gweather_dialog_display_toggle(gw_applet);
+    gweather_dialog_open(gw_applet);
 
     return;
 }

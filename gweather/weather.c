@@ -1361,8 +1361,10 @@ static void iwin_start_open (WeatherInfo *info)
     g_strdown (zone);
     state = g_strdup (zone);
     state[2] = '\0';
+
     url = g_strdup_printf ("http://weather.noaa.gov/pub/data/forecasts/zone/%s/%s.txt",
         		   state, zone); 
+
     g_free (zone);   
     g_free (state);
 
