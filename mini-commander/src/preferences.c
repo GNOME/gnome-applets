@@ -355,7 +355,7 @@ saveSession(void)
     gnome_config_push_prefix("/mini-commander/"); 
 
     /* version */
-    gnome_config_set_string("mini_commander/version", (gchar *) INTERNAL_VERSION);
+    gnome_config_set_string("mini_commander/version", (gchar *) VERSION);
 
     /* clock */
     gnome_config_set_bool("mini_commander/show_time", prop.showTime);
