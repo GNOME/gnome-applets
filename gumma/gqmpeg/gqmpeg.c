@@ -205,7 +205,9 @@ parse_input (gpointer data, gint source,
 	
 	p  = fgets (buf, BUFLEN-1, gq->ifp);
 	if (!p) {
-		g_message ("no input!!");
+		g_message ("no input!!  (closing file)");
+		close_infile (gq);
+		open_infile (gq);
 		return;
 	}
 
