@@ -198,10 +198,10 @@
 	 <title>Usage</title> 
 	 
 		<para>To check the mail server for new messages, right-click on the applet, then choose 
-		<guimenuitem>Check for mail</guimenuitem>. <application>&applet;</application> contacts the mail
+		<guimenuitem>Update</guimenuitem>. <application>&applet;</application> contacts the mail
 		server to determine if there is new mail on the server.</para>
 		<para>You can configure <application>&applet;</application> to run a command when 
-		you click on the applet. See <xref linkend="mailcheck-mailcheck"/> for information about how to 
+		you click on the applet. See <xref linkend="mailcheck-behavior"/> for information about how to 
 		configure <application>&applet;</application> to run commands.</para>
 
   </sect1>
@@ -213,11 +213,40 @@
 	 <para>To configure <application>&applet;</application>, right-click on the
 	 applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
 
-	 <sect2 id="mailcheck-mailcheck"> 
+	 <sect2 id="mailcheck-behavior"> 
 	 
-		<title>Mail check</title> 
+		<title>Behavior</title> 
 			
 		<variablelist> 
+		  <varlistentry> 
+			 <term><guilabel>Check for mail every</guilabel></term> 
+			 <listitem> 
+			 <para>Use this spin box to specify how often <application>&applet;</application>
+			 checks the mail server to determine if there is new mail. </para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Play a sound when new mail arrives</guilabel></term> 
+			 <listitem> 
+			 <para>Select this option to play a default sound when the applet finds new mail 
+			 on the mail server. The default sound file is specified in
+			 <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>. </para> 
+			 </listitem> 
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Set the number of unread mails to zero when clicked</guilabel></term> 
+			 <listitem> 
+			 <para>Select this option to set the number of unread messages to zero 
+			 when you click on the applet.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Select animation</guilabel></term> 
+			 <listitem> 
+			 <para>Use this drop-down list box to select the type of display to use
+			 in the applet. You can display text, an image, or an animation.</para> 
+			 </listitem> 
+		  </varlistentry> 
 		  <varlistentry> 
 			 <term><guilabel>Before each update</guilabel></term> 
 			 <listitem> 
@@ -243,42 +272,13 @@
 			 For example, to start a <application>Netscape Messenger</application> window when you 
 			 click on the applet, type <command>netscape -mail</command> in the text box.</para> 
 			 </listitem> 
-		  </varlistentry>  
-		  <varlistentry> 
-			 <term><guilabel>Set the number of unread mails to zero</guilabel></term> 
-			 <listitem> 
-			 <para>Select this option to set the number of unread messages to zero 
-			 when you click on the applet.</para> 
-			 </listitem> 
 		  </varlistentry> 
-		  <varlistentry> 
-			 <term><guilabel>Check for mail every</guilabel></term> 
-			 <listitem> 
-			 <para>Use this spin box to specify how often <application>&applet;</application>
-			 checks the mail server to determine if there is new mail. </para> 
-			 </listitem> 
-		  </varlistentry> 
-		  <varlistentry> 
-			 <term><guilabel>Play a sound when new mail arrives</guilabel></term> 
-			 <listitem> 
-			 <para>Select this option to play a default sound when the applet finds new mail 
-			 on the mail server. The default sound file is specified in
-			 <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>. </para> 
-			 </listitem> 
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Select animation</guilabel></term> 
-			 <listitem> 
-			 <para>Use this drop-down list box to select the type of display to use
-			 in the applet. You can display text, an image, or an animation.</para> 
-			 </listitem> 
-		  </varlistentry> 
-		</variablelist> 
+  		</variablelist> 
 	 </sect2>
 
-	 <sect2 id="mailcheck-mailbox"> 
+	 <sect2 id="mailcheck-inboxsettings"> 
 
-		<title>Mailbox</title> 
+		<title>Inbox Settings</title> 
 
 		<variablelist> 
 		  <varlistentry> 
@@ -344,7 +344,7 @@
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>Command to run before checking for mail</guilabel></term> 
+			 <term><guilabel>Run command before each update</guilabel></term> 
 			 <listitem> 
 			 <para>If you select <guilabel>Remote POP3-server</guilabel> or
 			 <guilabel>Remote IMAP-server</guilabel> as your mailbox location, 
