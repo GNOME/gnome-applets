@@ -4,7 +4,9 @@
 #include <load-graph.h>
 
 void GetLoad (int Maximum, int data [4], LoadGraph *g);
+#if 0
 void GetPage (int Maximum, int data [3], LoadGraph *g);
+#endif /* 0 */
 void GetMemory (int Maximum, int data [4], LoadGraph *g);
 void GetSwap (int Maximum, int data [2], LoadGraph *g);
 void GetLoadAvg (int Maximum, int data [2], LoadGraph *g);

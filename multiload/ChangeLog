@@ -1,3 +1,13 @@
+2005-01-09  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* linux-proc.h:
+	* linux-proc.c: (GetLoad), (GetMemory), (GetLoadAvg):
+	Little cleanups.
+	Replaced assert by g_return_if_fail. Closes #144156.
+
+	(GetNet): No more hacks to get interface list : uses glibtop_get_netlist.
+	(GetSwap): Fixed if there's no swap at all.
+
 2005-01-09  Nickolay V. Shmyrev <nshmyrev@yandex.ru>
 
 	* main.c: Start g-s-m on single click. Fix for 113958.
