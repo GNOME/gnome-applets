@@ -1,4 +1,14 @@
 2004-06-10  Dennis Smit  <ds@nerds-incorporated.org>
+	
+	* modemlights.c (ISDN_MAX_CHANNELS): Copy needed defines from
+	linux/isdn.h instead of including it, unbreaking build with linux
+	2.6 kernel headers.
+
+	Patch by: Jon K Hellan  <hellan@acm.org>
+
+	Fixes bug 129630.
+
+2004-06-10  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* modemlights.c (update_display): Added
 	tooltip. Removed static variable usage. Fixes bug #141484.

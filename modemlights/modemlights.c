@@ -42,13 +42,16 @@
 
 #ifdef __linux__
 #include <linux/if_ppp.h>
-#include <linux/isdn.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <fcntl.h>
 
 #ifndef ISDN_MAX_CHANNELS
 #define ISDN_MAX_CHANNELS 64
+#endif
+
+#ifndef IIOCGETCPS
+#define IIOCGETCPS  _IO('I',21)
 #endif
 
 #endif
