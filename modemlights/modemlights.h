@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           modemlights applet 0.2.0 alpha        ##*/
+/*##           modemlights applet 0.3.0 alpha        ##*/
 /*#####################################################*/
 
 #include <stdio.h>
@@ -18,11 +18,13 @@
 #include "applet-widget.h"
 
 #define MODEMLIGHTS_APPLET_VERSION_MAJ 0
-#define MODEMLIGHTS_APPLET_VERSION_MIN 2
+#define MODEMLIGHTS_APPLET_VERSION_MIN 3
 #define MODEMLIGHTS_APPLET_VERSION_REV 0
 
 extern gint UPDATE_DELAY;
-extern gchar lock_file[];
+extern gchar *lock_file;
+extern gchar *command_connect;
+extern gchar *command_disconnect;
 
 void start_callback_update();
 
