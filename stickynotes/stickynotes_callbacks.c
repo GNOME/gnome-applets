@@ -20,7 +20,6 @@
 #include <config.h>
 #include <stickynotes_callbacks.h>
 
-
 /* Sticky Window Callback : Lock/Unlock the window */
 gboolean stickynote_toggle_lock_cb(GtkWidget *widget, StickyNote *note)
 {
@@ -28,6 +27,7 @@ gboolean stickynote_toggle_lock_cb(GtkWidget *widget, StickyNote *note)
 
 	return TRUE;
 }
+
 /* Sticky Window Callback : Close the window. */
 gboolean stickynote_close_cb(GtkWidget *widget, StickyNote *note)
 {

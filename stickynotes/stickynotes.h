@@ -25,8 +25,8 @@
 typedef struct
 {
 	GladeXML *window;		/* Glade object for note window */
-	GladeXML *menu;			/* Glade object for popup menu */
-	GladeXML *properties;		/* Glade object for properties dialog */
+	GladeXML *menu;			/* Glade object for note popup menu */
+	GladeXML *properties;		/* Glade object for note properties dialog */
 
 	GtkWidget *w_window;		/* Sticky Note window */
 	GtkWidget *w_menu;		/* Sticky Note menu */
@@ -49,7 +49,7 @@ typedef struct
 	gchar *font;			/* Note font */
 	gboolean locked;		/* Note locked state */
 	gboolean visible;		/* Note visibility */
-
+	
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
 	gint w;				/* Note width */
