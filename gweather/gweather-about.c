@@ -48,6 +48,9 @@ void gweather_about_run (GWeatherApplet *gw_applet)
 
     
     if (gw_applet->about_dialog) {
+	gtk_window_set_screen (GTK_WINDOW (gw_applet->about_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+
 	gtk_window_present (GTK_WINDOW (gw_applet->about_dialog));
 	return;
     }
