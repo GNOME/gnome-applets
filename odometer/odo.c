@@ -153,54 +153,21 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
    return;
 }
 
-
-static void
-properties_save (gchar *path, OdoApplet *oa)
-{
-#ifdef DEBUG
-   printf ("properties_save\nTrip=%f\ndistance=%f\n",
-   	oa->trip_distance,oa->distance);
-#endif
-#ifdef FIXME
-   gnome_config_push_prefix (path);
-   gnome_config_set_bool ("odometer/use_metric",oa->use_metric);
-   gnome_config_set_bool ("odometer/auto_reset",oa->auto_reset);
-   gnome_config_set_bool ("odometer/enabled",oa->enabled);
-   gnome_config_set_int ("odometer/digits_nb",oa->digits_nb);
-   gnome_config_set_bool ("odometer/scale_applet",oa->scale_applet);
-   gnome_config_set_float ("odometer/trip_distance",oa->trip_distance);
-   gnome_config_set_float ("odometer/distance",oa->distance);
-   gnome_config_set_string ("odometer/theme_file",oa->theme_file);
-   gnome_config_sync ();
-   gnome_config_drop_all ();
-   gnome_config_pop_prefix ();
-#endif
-}
-
 static void
 properties_load (gchar *path,OdoApplet *oa)
 {
-#ifdef FIXME
-   gnome_config_push_prefix (path);
-   oa->use_metric=gnome_config_get_bool_with_default ("odometer/use_metric=true",NULL);
-   oa->auto_reset=gnome_config_get_bool_with_default ("odometer/auto_reset=true",NULL);
-   oa->enabled=gnome_config_get_bool_with_default ("odometer/enabled=true",NULL);
-   oa->digits_nb=gnome_config_get_int_with_default ("odometer/digits_nb=5",NULL);
-   oa->scale_applet=gnome_config_get_bool_with_default ("odometer/scale_applet=true",NULL);
-   oa->trip_distance=gnome_config_get_float_with_default ("odometer/trip_distance=0",NULL);
-   oa->distance=gnome_config_get_float_with_default ("odometer/distance=0",NULL);
+   PanelApplet *applet = PANEL_APPLET (oa->applet);
 
-   oa->theme_file=gnome_config_get_string("odometer/theme_file");
-#endif
-   oa->use_metric=TRUE;
-   oa->auto_reset=TRUE;
-   oa->enabled=TRUE;
-   oa->digits_nb=5;
-   oa->scale_applet=TRUE;
-   oa->trip_distance=0.0;
-   oa->distance=0.0;
+   oa->use_metric=panel_applet_gconf_get_bool (applet,"use_metric",NULL);
+   oa->auto_reset=panel_applet_gconf_get_bool (applet,"auto_reset",NULL);
+   oa->enabled=panel_applet_gconf_get_bool (applet,"enabled",NULL);
+   oa->digits_nb=panel_applet_gconf_get_int (applet,"digits_nb",NULL);
+   oa->scale_applet=panel_applet_gconf_get_bool (applet,"scale_applet",NULL);
+   oa->trip_distance=panel_applet_gconf_get_float (applet,"trip_distance",NULL);
+   oa->distance=panel_applet_gconf_get_float (applet,"distance",NULL);
 
-   oa->theme_file=NULL;
+   oa->theme_file=panel_applet_gconf_get_string(applet,"theme_file",NULL);
+
 #ifdef DEBUG
    printf ("properties_load\nTrip=%f\ndistance=%f\n",
    	oa->trip_distance,oa->distance);
@@ -475,6 +442,7 @@ static gint
 timer_cb(gpointer data)
 {
    OdoApplet *oa = data;
+   PanelApplet *applet = PANEL_APPLET (oa->applet);
 
    oa->last_x_coord=oa->x_coord;
    oa->last_y_coord=oa->y_coord;
@@ -492,9 +460,11 @@ timer_cb(gpointer data)
 	oa->cycles_since_last_save++;
 	if (oa->cycles_since_last_save>100) {
 		oa->cycles_since_last_save=0;
-	#ifdef FIXME	
-		properties_save (APPLET_WIDGET (oa->applet)->privcfgpath,oa);
-	#endif
+		panel_applet_gconf_set_float (applet, "distance",
+					      oa->distance, NULL);
+		panel_applet_gconf_set_float (applet, "trip_distance",
+					      oa->trip_distance, NULL); 
+	
 	};
    }
    return TRUE;
@@ -585,7 +555,10 @@ create_odo(OdoApplet *oa)
    gtk_container_add (GTK_CONTAINER (oa->applet), oa->vbox);
    
    oa->orient = panel_applet_get_orient (PANEL_APPLET(oa->applet));
+   /* FIXME
    oa->size   = panel_applet_get_size (PANEL_APPLET(oa->applet));
+   */
+   oa->size   = GNOME_Vertigo_PANEL_MEDIUM;
 
    /*
     * Get screen size in millimeters. 
@@ -616,14 +589,8 @@ init_applet (OdoApplet *oa)
    oa->auto_reset=TRUE;
    oa->scale_applet=TRUE;
 
-   oa->p_use_metric=TRUE;
-   oa->p_enabled=TRUE;
-   oa->p_auto_reset=TRUE;
-   oa->p_scale_applet=TRUE;
-
    oa->digits_nb=9;
-   oa->p_digits_nb=9;
-
+   
    oa->digit_width=10;
    oa->digit_height=20;
 
@@ -668,6 +635,8 @@ odometer_applet_fill (PanelApplet *applet)
     OdoApplet *oa;
     
     gdk_rgb_init ();
+    
+    panel_applet_add_preferences (applet, "/schemas/apps/odometer/prefs", NULL);
     
     oa = g_new0(OdoApplet,1);
     init_applet (oa);

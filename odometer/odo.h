@@ -16,6 +16,7 @@
 
 #include <gnome.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #define ODO_VERSION "0.7"
 #define UPDATE_TIMEOUT 75
@@ -70,11 +71,11 @@ struct _OdoApplet {
 	/* Properties */
 	GtkWidget *pbox;
 	GtkWidget *spinner;
-	gboolean use_metric,p_use_metric;
-	gboolean enabled,p_enabled;
-	gboolean auto_reset,p_auto_reset;
-	gint digits_nb,p_digits_nb;
-	gboolean scale_applet,p_scale_applet;
+	gboolean use_metric;
+	gboolean enabled;
+	gboolean auto_reset;
+	gint digits_nb;
+	gboolean scale_applet;
 
 	/* Odometer */
 	int last_x_coord;

@@ -18,8 +18,10 @@ auto_reset_selected_cb (GtkWidget *b, gpointer data)
 {
    OdoApplet *oa = data;
 
-   oa->p_auto_reset=GTK_TOGGLE_BUTTON (b)->active;
-   gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
+   oa->auto_reset=GTK_TOGGLE_BUTTON (b)->active;
+   
+   panel_applet_gconf_set_bool (PANEL_APPLET(oa->applet), "auto_reset",
+   				oa->auto_reset, NULL);
    return FALSE;
 }
 
@@ -28,8 +30,9 @@ use_metric_selected_cb (GtkWidget *b, gpointer data)
 {
    OdoApplet *oa = data;
 
-   oa->p_use_metric=GTK_TOGGLE_BUTTON (b)->active;
-   gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
+   oa->use_metric=GTK_TOGGLE_BUTTON (b)->active;
+   panel_applet_gconf_set_bool (PANEL_APPLET(oa->applet), "use_metric",
+   				oa->use_metric, NULL);
    return FALSE;
 }
 
@@ -38,8 +41,9 @@ enabled_selected_cb (GtkWidget *b, gpointer data)
 {
    OdoApplet *oa = data;
 
-   oa->p_enabled=GTK_TOGGLE_BUTTON (b)->active;
-   gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
+   oa->enabled=GTK_TOGGLE_BUTTON (b)->active;
+   panel_applet_gconf_set_bool (PANEL_APPLET(oa->applet), "enabled",
+   				oa->enabled, NULL);
    return FALSE;
 }
 
@@ -48,10 +52,13 @@ digits_number_changed_cb (GtkWidget *widget, gpointer data)
 {
    OdoApplet *oa = data;
 
-   oa->p_digits_nb = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(oa->spinner));
-   gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
+   oa->digits_nb = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(oa->spinner));
+   panel_applet_gconf_set_int (PANEL_APPLET(oa->applet), "digits_nb",
+   			       oa->digits_nb, NULL);
+   
+   change_digits_nb (oa);
+   refresh(oa);
    return FALSE;
-   widget = NULL;
 }
 
 static int
@@ -59,38 +66,34 @@ scale_applet_cb (GtkWidget *b, gpointer data)
 {
    OdoApplet *oa = data;
 
-   oa->p_scale_applet=GTK_TOGGLE_BUTTON (b)->active;
-   gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
+   oa->scale_applet=GTK_TOGGLE_BUTTON (b)->active;
+   change_theme(oa->theme_file, oa);
+   panel_applet_gconf_set_bool (PANEL_APPLET(oa->applet), "scale_applet",
+   				oa->scale_applet, NULL);
    return FALSE;
 }
 
 static void
-properties_apply_cb (GtkWidget *b, gint page_num, gpointer data)
+theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 {
-   OdoApplet *oa = data;
-   const gchar *buf;
-
-   oa->use_metric = oa->p_use_metric;
-   oa->auto_reset = oa->p_auto_reset;
-   oa->enabled = oa->p_enabled;
-   if (oa->digits_nb != oa->p_digits_nb) {
-   	oa->digits_nb = oa->p_digits_nb;
-   	change_digits_nb (oa);
-   }
-   if (oa->scale_applet != oa->p_scale_applet) {
-	oa->scale_applet = oa->p_scale_applet;
-	change_theme(oa->theme_file, oa);
-   }
-
-   buf = gtk_entry_get_text(GTK_ENTRY(oa->theme_entry));
-   if (buf && oa->theme_file && strcmp(buf, oa->theme_file) != 0) {
+  OdoApplet *oa = data;
+  GtkTreeModel *model;
+  GtkTreeIter iter;
+  gchar *theme;
+  
+  if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+		return;
+		
+  gtk_tree_model_get (model, &iter, 1, &theme, -1);
+  
+  if (theme && oa->theme_file && strcmp(theme, oa->theme_file) != 0) {
    	g_free (oa->theme_file);
-   	oa->theme_file = g_strdup(buf);
+   	oa->theme_file = g_strdup(theme);
    	if (!change_theme(oa->theme_file, oa))
    		change_theme(NULL, oa);
-   } else if (buf && strlen(buf) != 0) {
+   } else if (theme && strlen(theme) != 0) {
    	if (oa->theme_file) g_free (oa->theme_file);
-   	oa->theme_file = g_strdup(buf);
+   	oa->theme_file = g_strdup(theme);
    	if (!change_theme(oa->theme_file, oa))
    		change_theme(NULL, oa);
    } else {
@@ -98,37 +101,14 @@ properties_apply_cb (GtkWidget *b, gint page_num, gpointer data)
    	oa->theme_file = NULL;
    	change_theme(NULL, oa);
    }
-
-#ifdef FIXME
-   applet_widget_sync_config (APPLET_WIDGET (oa->applet));
-#endif
-   refresh(oa);
-   return;
-   b = NULL;
-   page_num = 0;
-}
-
-static gint
-properties_destroy_cb (GtkWidget *widget, gpointer data)
-{
-   OdoApplet *oa = data;
-   oa->pbox = NULL;
-   return FALSE;
-   widget = NULL;
-}
-
-static void
-theme_selected_cb (GtkWidget *clist,
-	gint row,gint col,
-	GdkEventButton *event,
-	gpointer data)
-{
-  OdoApplet *oa = data;
-  gchar *text = gtk_clist_get_row_data(GTK_CLIST(clist), row);
-  if (text) gtk_entry_set_text(GTK_ENTRY(oa->theme_entry),text);
+  
+  if (theme) gtk_entry_set_text(GTK_ENTRY(oa->theme_entry),theme);
+  
+  refresh(oa);
+  
+  g_free (theme);
+  
   return;
-  col = 0;
-  event = NULL;
 }
 
 static gint
@@ -138,7 +118,7 @@ sort_theme_list_cb(void *a, void *b)
 }
 
 static void
-populate_theme_list (GtkWidget *clist)
+populate_theme_list (GtkWidget *tree)
 {
    DIR *dp;
    struct dirent *dir;
@@ -148,11 +128,15 @@ populate_theme_list (GtkWidget *clist)
    gchar *themepath;
    GList *theme_list = NULL;
    GList *list;
+   GtkTreeIter iter;
+   GtkListStore *model;
+   
+   model = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (tree)));
 
    /* add default theme */
    buf[0] = _("None (default)");
-   row = gtk_clist_append(GTK_CLIST(clist),buf);
-   gtk_clist_set_row_data(GTK_CLIST(clist), row, "");
+   gtk_list_store_insert (model, &iter, 0);
+   gtk_list_store_set (model, &iter, 0, buf[0], -1);
 
    themepath = gnome_unconditional_datadir_file("odometer");
 
@@ -188,9 +172,11 @@ populate_theme_list (GtkWidget *clist)
    	if (g_file_exists(themedata_file)) {
    		gchar *theme_file = g_strconcat (themepath, "/", list->data, NULL);
    		buf[0] = list->data;
-   		row = gtk_clist_append(GTK_CLIST(clist),buf);
-   		gtk_clist_set_row_data_full(GTK_CLIST(clist), row,
-   			theme_file, (GtkDestroyNotify) g_free);
+   		gtk_list_store_insert (model, &iter, 0);
+   		gtk_list_store_set (model, &iter, 0, buf[0], 
+   						  1, theme_file,
+   						  -1);
+   		g_free (theme_file);
 	}
    	g_free(themedata_file);
    	g_free(list->data);
@@ -211,6 +197,15 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 #endif
 }
 
+static void
+response_cb (GtkDialog *dialog, gint id, gpointer data)
+{
+    OdoApplet *oa = data;
+    gtk_widget_destroy (oa->pbox);
+    oa->pbox = NULL;
+	
+}
+
 /*
  * Callback to access properties of the applet: you can toggle:
  *   - the Metric mode
@@ -221,13 +216,18 @@ void
 properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
    OdoApplet *oa = data;
+   GtkWidget *notebook;
    GtkWidget *label;
    GtkWidget *frame;
    GtkWidget *frame2;
    GtkWidget *hbox;
    GtkWidget *vbox;
    GtkWidget *scrolled;
-   GtkWidget *theme_clist;
+   GtkWidget *tree;
+   GtkListStore *model;
+   GtkTreeViewColumn *column;
+   GtkCellRenderer *cell;
+   GtkTreeSelection *selection;
    GtkAdjustment *adj;
    gchar *theme_title[] = { N_("Themes:"), NULL };
 
@@ -236,17 +236,14 @@ properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
    	return;
    }
 
-   oa->p_use_metric = oa->use_metric;
-   oa->p_enabled = oa->enabled;
-   oa->p_auto_reset = oa->auto_reset;
-   oa->p_digits_nb = oa->digits_nb;
-   oa->p_scale_applet = oa->scale_applet;
-
-   oa->pbox=gnome_property_box_new();
-   gtk_window_set_title (
-   	GTK_WINDOW(&GNOME_PROPERTY_BOX(oa->pbox)->dialog.window),
-   	_("Odometer setting"));
-
+   oa->pbox=gtk_dialog_new_with_buttons (_("Properties"), NULL,
+					 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_STOCK_OK, GTK_RESPONSE_OK,
+					 NULL);
+					 
+   notebook = gtk_notebook_new ();
+   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (oa->pbox)->vbox), notebook, TRUE, TRUE, 0);
+   
    /* General Tab */
 
    frame = gtk_frame_new(NULL);
@@ -258,19 +255,19 @@ properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
    label = gtk_check_button_new_with_label (_("Use Metric"));
    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
-   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->p_use_metric);
+   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->use_metric);
    gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc)
    	use_metric_selected_cb,oa);
 
    label = gtk_check_button_new_with_label (_("auto_reset"));
    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
-   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->p_auto_reset);
+   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->auto_reset);
    gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc)
    	auto_reset_selected_cb,oa);
 
    label = gtk_check_button_new_with_label (_("enabled"));
    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
-   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->p_enabled);
+   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->enabled);
    gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc)
    	enabled_selected_cb,oa);
 
@@ -281,23 +278,20 @@ properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
    adj = (GtkAdjustment *) gtk_adjustment_new ((gdouble)oa->digits_nb, 1.0, 10.0, 1.0, 1.0, 0.0);
    oa->spinner = gtk_spin_button_new (adj,1.0,0);
    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (oa->spinner),TRUE);
-#ifdef GO_AWAY
-   gtk_spin_button_set_shadow_type (GTK_SPIN_BUTTON (oa->spinner), GTK_SHADOW_IN);
-#endif
    gtk_container_add (GTK_CONTAINER (frame2), oa->spinner);
    gtk_signal_connect (GTK_OBJECT (adj),"value_changed",
-   	GTK_SIGNAL_FUNC (digits_number_changed_cb),oa);
+   		       GTK_SIGNAL_FUNC (digits_number_changed_cb),oa);
 
    label = gtk_check_button_new_with_label (_("Scale size to panel"));
    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
-   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->p_scale_applet);
+   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->scale_applet);
    gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc)
    	scale_applet_cb, oa);
 
    gtk_widget_show(frame);
 
    label = gtk_label_new(_("General"));
-   gnome_property_box_append_page(GNOME_PROPERTY_BOX(oa->pbox),frame,label);
+   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), frame, label);
 
    /* Theme Tab */
 
@@ -317,37 +311,39 @@ properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
    oa->theme_entry = gtk_entry_new();
    if (oa->theme_file)
    	gtk_entry_set_text(GTK_ENTRY(oa->theme_entry), oa->theme_file);
-   gtk_signal_connect_object(GTK_OBJECT(oa->theme_entry), "changed",
-   	GTK_SIGNAL_FUNC(gnome_property_box_changed),
-   	GTK_OBJECT(oa->pbox));
+   gtk_editable_set_editable (GTK_EDITABLE (oa->theme_entry), FALSE);
    gtk_box_pack_start(GTK_BOX(hbox),oa->theme_entry , TRUE, TRUE, 0);
    gtk_widget_show(oa->theme_entry);
 
    scrolled = gtk_scrolled_window_new(NULL, NULL);
    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled),
-   	GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
+   	GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
    gtk_box_pack_start(GTK_BOX(vbox), scrolled, TRUE, TRUE, 0);
 
    /* theme list */
-   theme_title[0] = _(theme_title[0]);
-   theme_clist=gtk_clist_new_with_titles (1, theme_title);
-   gtk_clist_column_titles_passive (GTK_CLIST (theme_clist));
-   gtk_signal_connect (GTK_OBJECT (theme_clist), "select_row",
-   	GTK_SIGNAL_FUNC(theme_selected_cb), oa);
-   gtk_container_add (GTK_CONTAINER (scrolled), theme_clist);
+   
+   model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
+   tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+   gtk_container_add (GTK_CONTAINER (scrolled), tree);
+   g_object_unref (model);
+	
+   cell = gtk_cell_renderer_text_new ();
+   column = gtk_tree_view_column_new_with_attributes (theme_title[0], cell,
+                                                      "text", 0, NULL);
+   gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+                                                           
+   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+   g_signal_connect (G_OBJECT (selection), "changed",
+        	     G_CALLBACK (theme_selected_cb), oa);
 
-   populate_theme_list(theme_clist);
+   populate_theme_list(tree);
 
    label = gtk_label_new(_("Theme"));
    gtk_widget_show(frame);
-   gnome_property_box_append_page( GNOME_PROPERTY_BOX(oa->pbox),frame,label);
+   gtk_notebook_append_page (GTK_NOTEBOOK (notebook), frame, label);
 
-   gtk_signal_connect (GTK_OBJECT (oa->pbox),
-   	"apply", GTK_SIGNAL_FUNC (properties_apply_cb), oa);
-   gtk_signal_connect (GTK_OBJECT (oa->pbox),
-   	"destroy", GTK_SIGNAL_FUNC (properties_destroy_cb), oa);
-   gtk_signal_connect (GTK_OBJECT (oa->pbox),
-	"help", GTK_SIGNAL_FUNC (phelp_cb), NULL);
+   g_signal_connect (G_OBJECT (oa->pbox), "response",
+   		     G_CALLBACK (response_cb), oa);
    gtk_widget_show_all(oa->pbox);
    return;
 }
