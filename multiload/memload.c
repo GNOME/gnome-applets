@@ -244,21 +244,21 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 
 /* start a new instance of the memload applet */
 void
-make_memload_applet (const gchar *param)
+make_memload_applet (const gchar *goad_id)
 {
         GtkWidget *applet;
         GtkWidget *label;
 	Memload *memload;
 
         /* create a new applet_widget */
-        applet = applet_widget_new_with_param (param, "multiload_memload_applet");
+        applet = applet_widget_new(goad_id);
         /* in the rare case that the communication with the panel
            failed, error out */
         if (!applet)
                 g_error ("Can't create applet!\n");
 
 	fprintf (stderr, "make_memload_applet (%s): %p\n",
-		 param, applet);
+		 goad_id, applet);
 
         load_mem_properties (APPLET_WIDGET(applet)->privcfgpath, &mem_props);
 

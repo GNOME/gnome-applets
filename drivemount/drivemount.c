@@ -34,7 +34,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data);
 static void destroy_drive_widget(GtkWidget *widget, gpointer data);
 static DriveData * create_drive_widget(GtkWidget *applet);
-static void applet_start_new_applet(const gchar *param, gpointer data);
+static void applet_start_new_applet(const gchar *goad_id, gpointer data);
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -473,12 +473,12 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	return dd;
 }
 
-static void applet_start_new_applet(const gchar *param, gpointer data)
+static void applet_start_new_applet(const gchar *goad_id, gpointer data)
 {
 	DriveData *dd;
 	GtkWidget *applet;
 
-	applet = applet_widget_new_with_param(param, "drivemount_applet");
+	applet = applet_widget_new(goad_id);
 		if (!applet)
 			g_error("Can't create applet!\n");
 
@@ -492,13 +492,16 @@ int main (int argc, char *argv[])
 {
 	DriveData *dd;
 	GtkWidget *applet;
+	GList *list;
 
 	/* Initialize the i18n stuff */
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
+	list = g_list_prepend(NULL,"drivemount_applet");
 	applet_widget_init("drivemount_applet", VERSION, argc, argv, NULL,
-			   0, NULL, TRUE, TRUE, applet_start_new_applet, NULL);
+			   0, NULL, TRUE, list, applet_start_new_applet, NULL);
+	g_list_free(list);
 
 	applet = applet_widget_new("drivemount_applet");
 	if (!applet)

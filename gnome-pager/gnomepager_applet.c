@@ -1179,8 +1179,8 @@ main(int argc, char *argv[])
     }
   
   /*  panel_corba_register_arguments();*/
-  applet_widget_init("gnomepager_applet","0.1", argc, argv, NULL, 
-		     0, NULL, TRUE, FALSE, NULL, NULL);
+  applet_widget_init_defaults("gnomepager_applet","0.1", argc, argv, NULL, 
+			      0, NULL);
   gtk_widget_push_visual(gdk_imlib_get_visual());
   gtk_widget_push_colormap(gdk_imlib_get_colormap());
   gnome_win_hints_init();

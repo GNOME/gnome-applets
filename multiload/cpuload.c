@@ -205,21 +205,21 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 
 /* start a new instance of the cpuload applet */
 void
-make_cpuload_applet (const gchar *param)
+make_cpuload_applet (const gchar *goad_id)
 {
         GtkWidget *applet;
         GtkWidget *label;
 	Cpuload *cpuload;
 
         /* create a new applet_widget */
-        applet = applet_widget_new_with_param (param, "multiload_cpuload_applet");
+        applet = applet_widget_new(goad_id);
         /* in the rare case that the communication with the panel
            failed, error out */
         if (!applet)
                 g_error ("Can't create applet!\n");
 
 	fprintf (stderr, "make_cpuload_applet (%s): %p\n",
-		 param, applet);
+		 goad_id, applet);
 
         load_cpu_properties (APPLET_WIDGET(applet)->privcfgpath, &cpu_props);
 

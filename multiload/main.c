@@ -25,61 +25,47 @@ void make_cpuload_applet  (const gchar *);
 void make_memload_applet  (const gchar *);
 void make_swapload_applet (const gchar *);
 
-static int start_cpuload = 0, start_memload = 0, start_swapload = 0;
-
-static const struct poptOption options[] = {
-  {"cpu", '\0', POPT_ARG_NONE, &start_cpuload, 0, N_("CPU load graph")},
-  {"mem", '\0', POPT_ARG_NONE, &start_memload, 0, N_("Memory usage graph")},
-  {"swap", '\0', POPT_ARG_NONE, &start_swapload, 0, N_("Swap load graph")},
-  {NULL, '\0', 0, NULL, 0}
-};
 
 static void
-make_new_applet (const gchar *param)
+make_new_applet (const gchar *goad_id)
 {
-	if (!strcmp (param, "--mem"))
-		make_memload_applet (param);
-	else if (!strcmp (param, "--swap"))
-		make_swapload_applet (param);
+	if (!strcmp (goad_id, "multiload_memload_applet"))
+		make_memload_applet (goad_id);
+	else if (!strcmp (goad_id, "multiload_swapload_applet"))
+		make_swapload_applet (goad_id);
 	else
-		make_cpuload_applet (param);
+		make_cpuload_applet (goad_id);
 }
 
 /*when we get a command to start a new widget*/
 static void
-applet_start_new_applet (const gchar *param, gpointer data)
+applet_start_new_applet (const gchar *goad_id, gpointer data)
 {
-	make_new_applet (param);
+	make_new_applet (goad_id);
 }
 
 int
 main (int argc, char **argv)
 {
-	gchar *param = NULL, **args;
-	poptContext ctx;
+	GList *list = NULL;
+	char *goad_id;
 
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	applet_widget_init ("multiload_applet", VERSION, argc, argv, options, 0,
-			    NULL, TRUE, TRUE, applet_start_new_applet, NULL);
 
-	/*we make a param string, instead of first parsing the params with
-	  argp, we will allways use a string, since the panel will only
-	  give us a string */
-	param = g_strjoinv(" ", argv+1);
+	list = g_list_prepend(list,"multiload_cpuload_applet");
+	list = g_list_prepend(list,"multiload_memload_applet");
+	list = g_list_prepend(list,"multiload_swapload_applet");
+	applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0,
+			    NULL, TRUE, list, applet_start_new_applet, NULL);
+	g_list_free(list);
 
-	if(start_cpuload)
-	  make_cpuload_applet(param);
-
-	if(start_memload)
-	  make_memload_applet(param);
-
-	if(start_swapload)
-	  make_swapload_applet(param);
-
-	g_free (param);
+	goad_id = goad_server_activation_id();
+	if(!goad_id)
+		return 0;
+	make_new_applet(goad_id);
 
 	applet_widget_gtk_main ();
 	

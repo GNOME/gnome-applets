@@ -28,13 +28,16 @@
 int
 main(int argc, char ** argv)
 {
+	GList *list;
   /* Initialize i18n */
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
 
+  list = g_list_prepend(NULL,"battery_applet");
   /* Initialize the applet */
   applet_widget_init("battery_applet", VERSION, argc, argv, NULL, 0, NULL,
-		     TRUE, 0, applet_start_new_applet, NULL);
+		     TRUE,list, applet_start_new_applet, NULL);
+  g_list_free(list);
 
   /* Create the battery applet widget */
   make_new_battery_applet();
@@ -392,7 +395,7 @@ make_new_battery_applet(void)
 
   bat = g_new(BatteryData, 1);
 
-  bat->applet = applet_widget_new_with_param(param, "battery_applet");
+  bat->applet = applet_widget_new("battery_applet");
 
   if (bat->applet == NULL)
     g_error(_("Can't create applet!\n"));
@@ -666,7 +669,7 @@ battery_setup_colors(BatteryData * bat)
 
 /* When we get a command to start a new widget. */
 void
-applet_start_new_applet(const gchar *param, gpointer data)
+applet_start_new_applet(const gchar *goad_id, gpointer data)
 {
   make_new_battery_applet();
 } /* applet_start_new_applet */

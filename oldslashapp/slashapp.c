@@ -23,7 +23,7 @@ static void destroy_applet(GtkWidget *widget, gpointer data);
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 					gchar *globcfgpath, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
-static void applet_start_new_applet(const gchar *param, gpointer data);
+static void applet_start_new_applet(const gchar *goad_id, gpointer data);
 
 static int
 http_get_to_file(gchar *a_host, gint a_port, gchar *a_resource, FILE *a_file)
@@ -651,11 +651,11 @@ static AppData *create_new_app(GtkWidget *applet)
 	return ad;
 }
 
-static void applet_start_new_applet(const gchar *param, gpointer data)
+static void applet_start_new_applet(const gchar *goad_id, gpointer data)
 {
 	GtkWidget *applet;
 
-	applet = applet_widget_new_with_param(param, "scroll_applet");
+	applet = applet_widget_new(goad_id);
 		if (!applet)
 			g_error("Can't create applet!\n");
 
@@ -665,13 +665,16 @@ static void applet_start_new_applet(const gchar *param, gpointer data)
 int main (int argc, char *argv[])
 {
 	GtkWidget *applet;
+	GList *list;
 
 	/* Initialize the i18n stuff */
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
+	list = g_list_append(NULL,"scroll_applet");
 	applet_widget_init("scroll_applet", VERSION, argc, argv, NULL,
-			   0, NULL, TRUE, TRUE, applet_start_new_applet, NULL);
+			   0, NULL, TRUE, list, applet_start_new_applet, NULL);
+	g_list_free(list);
 
 	applet = applet_widget_new("scroll_applet");
 	if (!applet)

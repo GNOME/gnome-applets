@@ -24,11 +24,14 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 int main(int argc, char *argv[])
 {
      GtkWidget *applet;
+     GList *list;
      bindtextdomain(PACKAGE, GNOMELOCALEDIR);
      textdomain(PACKAGE);
 
+     list = g_list_append(NULL,"gticker_applet");
      applet_widget_init("gticker_applet", NULL, argc, argv, 0, NULL, argv[0], 
-		     TRUE, TRUE, start_new_applet, NULL);
+		     TRUE, list, start_new_applet, NULL);
+     g_list_free(list);
      applet = applet_widget_new("gticker_applet");
      if (!applet)
              g_error("Can't create applet!\n");
@@ -86,11 +89,11 @@ static AppData *create_new_app(GtkWidget *applet)
   return appdata;
 }
 
-static void start_new_applet(const gchar *param, gpointer data)
+static void start_new_applet(const gchar *goad_id, gpointer data)
 {
   GtkWidget *applet;
  
-  applet = applet_widget_new_with_param(param, "ticker_applet");
+  applet = applet_widget_new(goad_id);
           if (!applet)
 	    g_error("Can't create applet!\n");
   create_new_app(applet);

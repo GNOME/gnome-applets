@@ -205,21 +205,21 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 
 /* start a new instance of the swapload applet */
 void
-make_swapload_applet (const gchar *param)
+make_swapload_applet (const gchar *goad_id)
 {
         GtkWidget *applet;
         GtkWidget *label;
 	Swapload *swapload;
 
         /* create a new applet_widget */
-        applet = applet_widget_new_with_param (param, "multiload_swapload_applet");
+        applet = applet_widget_new (goad_id);
         /* in the rare case that the communication with the panel
            failed, error out */
         if (!applet)
                 g_error ("Can't create applet!\n");
 
 	fprintf (stderr, "make_swapload_applet (%s): %p\n",
-		 param, applet);
+		 goad_id, applet);
 
         load_swap_properties (APPLET_WIDGET(applet)->privcfgpath, &swap_props);
 
