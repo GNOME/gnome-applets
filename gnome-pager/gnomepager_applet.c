@@ -311,6 +311,8 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
 void 
 cb_applet_properties(AppletWidget * widget, gpointer data)
 {
+  static GnomeHelpMenuEntry help_entry = { "gnome-pager_applet",
+					   "properties" };
   GtkWidget *prop = NULL;
   GtkWidget *table, *label, *spin, *check;
   GtkAdjustment *adj;
@@ -322,6 +324,9 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 			  GTK_SIGNAL_FUNC(cb_prop_cancel), NULL);
       gtk_signal_connect (GTK_OBJECT(prop), "apply",
 			  GTK_SIGNAL_FUNC(cb_prop_apply), NULL);
+      gtk_signal_connect (GTK_OBJECT(prop), "help",
+			  GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+			  &help_entry);
       gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(prop)->dialog.window),
 			   _("Gnome Pager Settings"));
       table = gtk_table_new(1, 1, FALSE);
