@@ -468,11 +468,12 @@ void
 mc_create_command_entry (MCData *mc)
 {
     mc->entry = gtk_entry_new_with_max_length (MC_MAX_COMMAND_LENGTH); 
+    
     g_signal_connect (mc->entry,"destroy",
 		      G_CALLBACK (gtk_widget_destroyed), &mc->entry);
     g_signal_connect (mc->entry, "key_press_event",
 		      G_CALLBACK (command_key_event), mc);
-
+   
     if (!mc->preferences.show_default_theme)
         mc_command_update_entry_color (mc); 
 
@@ -508,7 +509,8 @@ void
 mc_command_update_entry_size (MCData *mc)
 {
     int size_x = -1;
-
+    GtkRequisition req;
+    
     size_x = mc->preferences.normal_size_x - 17;
 
     if (mc->preferences.show_handle)
@@ -516,8 +518,8 @@ mc_command_update_entry_size (MCData *mc)
 
     if (mc->preferences.show_frame)
 	size_x -= 10;
-
-    gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, -1); 
+    
+    gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, mc->preferences.normal_size_y+4); 
 }
 
 

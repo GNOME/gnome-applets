@@ -131,6 +131,21 @@ button_press_hack (GtkWidget      *widget,
     return FALSE;
 }
 
+/* Send button presses on the applet to the entry. This makes Fitts' law work (ie click on the bottom
+** most pixel and the key press will be sent to the entry */
+static gboolean
+send_button_to_entry_event (GtkWidget *widget, GdkEventButton *event, MCData *mc)
+{
+
+	if (event->button == 1) {
+		gtk_widget_grab_focus (mc->entry);
+		return TRUE;
+	}
+	return FALSE;
+
+}
+
+
 void
 mc_applet_draw (MCData *mc)
 {
@@ -234,7 +249,7 @@ mc_applet_draw (MCData *mc)
         GtkWidget *hbox;
         
         hbox = gtk_hbox_new (FALSE, 2);
-        
+        gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
 	if (mc->preferences.show_frame) {
 	   
   	    frame = gtk_frame_new (NULL);
@@ -309,6 +324,7 @@ mini_commander_applet_fill (PanelApplet *applet)
     mc->applet = applet;
 
     panel_applet_add_preferences (applet, "/schemas/apps/mini-commander/prefs", NULL);
+    panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
     mc_load_preferences (mc);
     command_line_init_stock_icons ();
 
@@ -323,6 +339,8 @@ mini_commander_applet_fill (PanelApplet *applet)
     gtk_widget_show (GTK_WIDGET (mc->applet));
     
     g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc); 
+    g_signal_connect (mc->applet, "button_press_event",
+    			       G_CALLBACK (send_button_to_entry_event), mc);    
 
     panel_applet_setup_menu_from_file (mc->applet,
 				       NULL,
@@ -334,8 +352,7 @@ mini_commander_applet_fill (PanelApplet *applet)
     set_atk_name_description (GTK_WIDGET (applet),
 			      _("Mini-Commander applet"),
 			      _("This applet adds a command line to the panel"));
-    gtk_tooltips_set_tip (mc->tooltips, GTK_WIDGET (applet),  _("Command Line"), NULL);
-
+    
     return TRUE;
 }
 
