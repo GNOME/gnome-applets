@@ -3,7 +3,9 @@
  */
 
 #include <config.h>
-#include <tgmath.h>
+#ifndef sun
+  #include <tgmath.h>
+#endif
 #include <panel-applet.h>
 #include <egg-screen-help.h>
 #include "charpick.h"
