@@ -2,7 +2,8 @@ gnome_applets_helpdir = $(datadir)/gnome/help/gnome-applets/C
 
 gnome_applets_help_DATA = 	\
 	index.html		\
-	topic.dat
+	topic.dat		\
+	gnome-applets.sgml
 
 EXTRA_DIST =	\
 	config.sgml.in		\

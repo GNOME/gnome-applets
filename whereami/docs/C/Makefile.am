@@ -5,7 +5,9 @@ figs =
 docdir = $(datadir)/gnome/help/whereami_applet/C
 doc_DATA =	\
 	index.html	\
-	topic.dat
+	topic.dat	\
+	whereami-applet.sgml \
+	whereami.sgml
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
 EXTRA_DIST = whereami-applet.sgml whereami.sgml topic.dat $(figs)
