@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-11 01:44+0100\n"
-"PO-Revision-Date: 2005-01-11 01:53+0100\n"
+"POT-Creation-Date: 2005-01-15 22:56+0100\n"
+"PO-Revision-Date: 2005-01-15 23:00+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,7 @@ msgstr ""
 #: mixer/GNOME_MixerApplet.xml.h:1 multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
+#: modemlights/GNOME_ModemLights.xml.h:1
 msgid "_About"
 msgstr "_Om"
 
@@ -38,6 +39,7 @@ msgstr "_Om"
 #: mixer/GNOME_MixerApplet.xml.h:2 multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
+#: modemlights/GNOME_ModemLights.xml.h:4
 msgid "_Help"
 msgstr "_Hjelp"
 
@@ -50,7 +52,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Factory for AccessX-statusapplet"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1335
+#: accessx-status/applet.c:1338
 msgid "Keyboard Accessibility Status"
 msgstr "Status for tilgjengelighet for tastaturet"
 
@@ -62,16 +64,16 @@ msgstr "Fabrikk for panelprogram for tilgjengelighet for tastatur"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Viser status for tilgjengelighetsfunksjoner for tastaturet"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
-#: charpick/charpick.c:607 cpufreq/src/cpufreq-applet.c:231
+#. "documenters",        documenters,
+#: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:200
-#: gswitchit/gswitchit-applet.c:579 mini-commander/src/about.c:48
-#: trashapplet/src/trashapplet.c:681
+#: gswitchit/gswitchit-applet.c:591 trashapplet/src/trashapplet.c:681
+#: modemlights/modem-applet.c:995
 msgid "translator_credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:995
-#: accessx-status/applet.c:1135 accessx-status/applet.c:1338
+#: accessx-status/applet.c:157 accessx-status/applet.c:998
+#: accessx-status/applet.c:1138 accessx-status/applet.c:1341
 msgid "AccessX Status"
 msgstr "Status for aksessibilitet"
 
@@ -100,31 +102,30 @@ msgstr "Det oppsto en feil under kjøring av brukervalg for tastatur : %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:996 accessx-status/applet.c:1136
+#: accessx-status/applet.c:999 accessx-status/applet.c:1139
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Viser tastaturstatus når tilgjengelighetsfunksjoner er i bruk."
 
-#: accessx-status/applet.c:1030
+#: accessx-status/applet.c:1033
 msgid "XKB Extension is not enabled"
 msgstr "XKB-tillegg er ikke aktivert"
 
-#: accessx-status/applet.c:1035
+#: accessx-status/applet.c:1038
 msgid "Unknown error"
 msgstr "Ukjent feil"
 
-#: accessx-status/applet.c:1043
+#: accessx-status/applet.c:1046
 #, c-format
 msgid "Error: %s"
 msgstr "Feil: %s"
 
-#: accessx-status/applet.c:1340
+#: accessx-status/applet.c:1343
 msgid "Displays current state of keyboard accessibility features"
 msgstr ""
 "Viser nåværende tilstand for funksjoner for aksessibilitet for tastatur"
 
-#. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1750
+#: battstat/battstat_applet.c:966 battstat/battstat_applet.c:1461
 msgid "Battery Charge Monitor"
 msgstr "Overvåking av batterilading"
 
@@ -133,7 +134,7 @@ msgid "Battstat Factory"
 msgstr "Battstat-factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1751
+#: battstat/battstat_applet.c:1462
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåk gjenværende strøm på en bærbar"
 
@@ -227,81 +228,71 @@ msgstr "Batterinivå hvor batteriet vises som gult."
 msgid "Yellow value level"
 msgstr "Verdinivå for gult"
 
-#: battstat/battstat_applet.c:86
+#: battstat/battstat_applet.c:63
 msgid "System is running on AC power"
 msgstr "Systemet kjører på nettstrøm"
 
-#: battstat/battstat_applet.c:87
+#: battstat/battstat_applet.c:64
 msgid "System is running on battery power"
 msgstr "Systemet kjører på batteristrøm"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:342
-msgid "Your platform is not supported!\n"
-msgstr "Din plattform er ikke støttet!\n"
-
-#: battstat/battstat_applet.c:343
-msgid "The applet will not work properly (if at all).\n"
-msgstr "Appleten vil ikke fungere riktig (hvis i det hele tatt).\n"
-
-#: battstat/battstat_applet.c:382
+#: battstat/battstat_applet.c:358
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Batteriet er oppladet (%d%%)"
 
-#: battstat/battstat_applet.c:384
+#: battstat/battstat_applet.c:360
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Ukjent tid gjenstår (%d%%)"
 
-#: battstat/battstat_applet.c:386
+#: battstat/battstat_applet.c:362
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Ukjent tid før batteriet er oppladet (%d%%)"
 
-#: battstat/battstat_applet.c:391
+#: battstat/battstat_applet.c:367
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
 msgstr[0] "%d minutt (%d%%) gjenstår"
 msgstr[1] "%d minutter (%d%%) gjenstår"
 
-#: battstat/battstat_applet.c:396
+#: battstat/battstat_applet.c:372
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
 msgstr[0] "%d minutt før batteriet er oppladet (%d%%)"
 msgstr[1] "%d minutter før batteriet er oppladet (%d%%)"
 
-#: battstat/battstat_applet.c:402
+#: battstat/battstat_applet.c:378
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
 msgstr[0] "%d time (%d%%) gjenstår"
 msgstr[1] "%d timer (%d%%) gjenstår"
 
-#: battstat/battstat_applet.c:407
+#: battstat/battstat_applet.c:383
 #, c-format
-msgid "%d hour (%d%%) until charged (%d%%)"
-msgid_plural "%d hours (%d%%) until charged (%d%%)"
-msgstr[0] "%d time (%d%%) før batteriet er oppladet (%d%%)"
-msgstr[1] "%d timer (%d%%) før batteriet er oppladet (%d%%)"
+msgid "%d hour until charged (%d%%)"
+msgid_plural "%d hours until charged (%d%%)"
+msgstr[0] "%d time før batteriet er oppladet (%d%%)"
+msgstr[1] "%d timer før batteriet er oppladet (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:414
+#: battstat/battstat_applet.c:390
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "%d %s %d %s (%d%%) gjenstår"
 
-#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:398
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "time"
 msgstr[1] "timer"
 
-#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
+#: battstat/battstat_applet.c:392 battstat/battstat_applet.c:399
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutt"
@@ -309,68 +300,42 @@ msgstr[1] "minutter"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:421
+#: battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s før batteriet er oppladet (%d%%)"
 
-#: battstat/battstat_applet.c:536
+#: battstat/battstat_applet.c:413 battstat/battstat_applet.c:477
+msgid "Battery Notice"
+msgstr "Melding om batteri"
+
+#: battstat/battstat_applet.c:437
+msgid "Your battery is now fully recharged"
+msgstr "Batteriet er nå fullt oppladet"
+
+#: battstat/battstat_applet.c:472
 msgid "Your battery is running low"
 msgstr "Batteriet er i ferd med å lades ut"
 
-#: battstat/battstat_applet.c:538
+#: battstat/battstat_applet.c:474
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
 msgstr ""
 "Du må slå av maskinen, sette den i hvilemodus eller sette i strømmen igjen "
 "for å unngå å miste arbeid."
 
-#: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
-msgid "Battery Notice"
-msgstr "Melding om batteri"
-
-#: battstat/battstat_applet.c:614
-msgid "Your battery is now fully recharged"
-msgstr "Batteriet er nå fullt oppladet"
-
-#: battstat/battstat_applet.c:703
-msgid "N/A"
-msgstr "I/T"
-
-#: battstat/battstat_applet.c:844
-msgid "Battery status unknown"
-msgstr "Ukjent batteristatus"
-
-#. Displayed as a tooltip over the battery meter when no
-#. battery is present.
-#: battstat/battstat_applet.c:851 battstat/battstat_applet.c:863
+#: battstat/battstat_applet.c:541
 msgid "No battery present"
 msgstr "Batteri er ikke tilstede"
 
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:962
-msgid ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
-msgstr ""
-"Kan ikke åpne APM-enhet!\n"
-"\n"
-"Sjekk at du har leserettigheter til\n"
-"APM-enheten."
+#: battstat/battstat_applet.c:544
+msgid "Battery status unknown"
+msgstr "Ukjent batteristatus"
 
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:971
-msgid ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
-msgstr ""
-"Støttesystemet for APM-håndtering ser ut til å være \n"
-"deaktivert. Prøv å kjøre «apm -e 1» (FreeBSD) \n"
-"og se om det hjelper.\n"
+#: battstat/battstat_applet.c:693
+msgid "N/A"
+msgstr "I/T"
 
-#: battstat/battstat_applet.c:1027
+#: battstat/battstat_applet.c:921
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -379,16 +344,16 @@ msgstr ""
 "En feil oppsto under start av kommandoen for hvilemodus: %s\n"
 "Vennligst prøv å rette opp denne feilen"
 
-#: battstat/battstat_applet.c:1031
+#: battstat/battstat_applet.c:925
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Kommando «%s» for hvilemodus feilet."
 
-#: battstat/battstat_applet.c:1033
+#: battstat/battstat_applet.c:927
 msgid "The Suspend command was unsuccessful."
 msgstr "Kommando for hvilemodus feilet."
 
-#: battstat/battstat_applet.c:1041
+#: battstat/battstat_applet.c:935
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -398,25 +363,21 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1057
+#: battstat/battstat_applet.c:951
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1087
-msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
-msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
-
-#: battstat/battstat_applet.c:1088
+#: battstat/battstat_applet.c:971
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette verktøyet viser status for batteriet på din bærbare PC."
 
-#: battstat/battstat_applet.c:1676
-msgid ""
-"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
-"subsystem is working and the acpid daemon is running."
-msgstr ""
-"Kan ikke aksessere ACPI-hendelser i /var/run/acpid.socket! Sjekk at ACPI-"
-"systemet fungerer og at acpid-daemonen kjører."
+#: battstat/battstat_applet.c:975 charpick/charpick.c:619
+#: cpufreq/src/cpufreq-applet.c:222 gtik/gtik.c:738
+#: gweather/gweather-about.c:56 mini-commander/src/about.c:54
+#: mixer/applet.c:1019 multiload/main.c:66
+#: stickynotes/stickynotes_applet_callbacks.c:442
+msgid "translator-credits"
+msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
 #: battstat/battstat_applet.glade.h:1 cpufreq/cpufreq-preferences.glade.h:1
 #: gswitchit/gswitchit-properties.glade.h:1
@@ -494,8 +455,8 @@ msgstr "Batteriet er fullt oppladet"
 msgid "Battery power low"
 msgstr "Lav strømstyrke"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:620
-#: charpick/charpick.c:774 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:610
+#: charpick/charpick.c:750 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Tegnpalett"
 
@@ -503,7 +464,7 @@ msgstr "Tegnpalett"
 msgid "Charpicker Applet Factory"
 msgstr "Factory for tegnvelger"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:774
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:750
 msgid "Insert characters"
 msgstr "Sett inn tegn"
 
@@ -535,15 +496,7 @@ msgstr "sett inn spesialtegn %s"
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:597
-msgid "Kevin Vandersloot"
-msgstr "Kevin Vandersloot"
-
-#: charpick/charpick.c:622
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998"
-
-#: charpick/charpick.c:623
+#: charpick/charpick.c:614
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -636,7 +589,7 @@ msgid "Character Palette Preferences"
 msgstr "Brukervalg for tegnpalett"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:224 cpufreq/src/cpufreq-applet.c:786
+#: cpufreq/src/cpufreq-applet.c:214 cpufreq/src/cpufreq-applet.c:766
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Overvåking av CPU-frekvens"
 
@@ -653,6 +606,8 @@ msgid ""
 "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
 "show percentage instead of frequency."
 msgstr ""
+"Bruk verdien for å vise cpu-frekvens, 1 vises frekvens og enheter og 2 for å "
+"vise prosent i stedet for frekvens"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
@@ -660,6 +615,9 @@ msgid ""
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
+"Bruk verdien 0 for å vise panelprogrammet i grafisk modus (kun bilde), 1 for "
+"å vise programmet i tekstmodus (ikke vis bildet) og 2 for å vise både "
+"grafikk og tekst."
 
 #: cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -671,13 +629,15 @@ msgstr "Modus for visning av cpu-bruk"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:5
 msgid "Mode to show when show_mode is text or both"
-msgstr ""
+msgstr "Modus som skal vises når «show_mode» er tekst eller begge"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
+"Sett CPU som skall overvåkes. Du trenger ikke å endre dette hvis du bare har "
+"en CPU."
 
 #: cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
@@ -715,15 +675,11 @@ msgstr "Vi_s i modus:"
 msgid "Could not open help document"
 msgstr "Kunne ikke åpne hjelpdokument"
 
-#: cpufreq/src/cpufreq-applet.c:226
-msgid "Copyright (C) 2004 Free Software Foundation. Inc."
-msgstr "Opphavsrett © 2004 Free Software Foundation"
-
-#: cpufreq/src/cpufreq-applet.c:227
+#: cpufreq/src/cpufreq-applet.c:217
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dette verktøyet viser status for frekvensskalering for CPU."
 
-#: cpufreq/src/cpufreq-applet.c:787
+#: cpufreq/src/cpufreq-applet.c:767
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dette verktøyet viser nåværende CPU-frekvens"
 
@@ -1554,7 +1510,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME tastaturindikator"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:584
+#: gswitchit/gswitchit-applet.c:596
 msgid "Keyboard Indicator"
 msgstr "Tastaturindikator"
 
@@ -1562,24 +1518,24 @@ msgstr "Tastaturindikator"
 msgid "Keyboard applet factory"
 msgstr "Factory for tastaturpanelprogram"
 
-#: gswitchit/gswitchit-applet.c:106
+#: gswitchit/gswitchit-applet.c:116
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Tastaturindikator (%s)"
 
-#: gswitchit/gswitchit-applet.c:587
+#: gswitchit/gswitchit-applet.c:599
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Opphavsrett © Sergey V. Udaltsov © 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:589
+#: gswitchit/gswitchit-applet.c:601
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME panelprogram for tastaturutforming"
 
-#: gswitchit/gswitchit-applet.c:754
+#: gswitchit/gswitchit-applet.c:764
 msgid "XKB initialization error"
 msgstr "Feil ved initiering av XKB"
 
-#: gswitchit/gswitchit-applet.c:763
+#: gswitchit/gswitchit-applet.c:773
 msgid "Error loading XKB configuration registry"
 msgstr "Feil under lasting av  register for XKB-konfigurasjon"
 
@@ -1733,14 +1689,11 @@ msgid ""
 msgstr ""
 "Dette programmet laster ned aksjekurser fra populære nettsteder.\n"
 "\n"
-"GNOME aksjeovervåker er en fri internett-basert applikasjon. Det følger IKKE MED NOEN GARANTIER.\n"
+"GNOME aksjeovervåker er en fri internett-basert applikasjon. Det følger IKKE "
+"MED NOEN GARANTIER.\n"
 "\n"
-"Ikke bruk GNOME aksjeovervåker til å gjøre investeringsavgjørelser; kun for informasjonsformål."
-
-#: gtik/gtik.c:738 gweather/gweather-about.c:56 multiload/main.c:68
-#: stickynotes/stickynotes_applet_callbacks.c:442
-msgid "translator-credits"
-msgstr "Kjartan Maraas <kmaraas@gnome.org>"
+"Ikke bruk GNOME aksjeovervåker til å gjøre investeringsavgjørelser; kun for "
+"informasjonsformål."
 
 #: gtik/gtik.c:1240
 msgid "Current _stocks:"
@@ -2329,12 +2282,12 @@ msgstr "_Velg en lokasjon:"
 msgid "Location"
 msgstr "Sted"
 
-#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
-#: gweather/weather-metar.c:556
+#: gweather/weather-iwin.c:243 gweather/weather-metar.c:529
+#: gweather/weather-metar.c:557
 msgid "WeatherInfo missing location"
 msgstr "VærInfo mangler sted"
 
-#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
+#: gweather/weather-metar.c:495 gweather/weather-metar.c:537
 #: gweather/weather-wx.c:53
 msgid "Failed to get METAR data.\n"
 msgstr "Kunne ikke hente METAR-data.\n"
@@ -3017,7 +2970,7 @@ msgid "Retrieval failed"
 msgstr "Henting feilet"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:61
+#: mini-commander/src/about.c:46
 msgid "Command Line"
 msgstr "Kommandolinje"
 
@@ -3029,23 +2982,13 @@ msgstr "Mini-kommander"
 msgid "MiniCommander Applet Factory"
 msgstr "Factory for mini-kommander-applet"
 
-#: mini-commander/src/about.c:64
+#: mini-commander/src/about.c:49
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, and changeable macros.\n"
-"\n"
-" This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"completion, command history, and changeable macros."
 msgstr ""
-"Dette GNOME-programmet legger til en kommandolinje på panelet. Denne støtter "
-"kommandofullføring, kommandohistorikk og redigerbare makroer.\n"
-"\n"
-"Dette programmet er fri programvare; du kan distribuere det og/eller endre "
-"det i følge betingelsene gitt i GNU General License som publisert av Free "
-"Software Foundation, enten versjon 2 av lisensen, eller (hvis du velger) "
-"enhver senere versjon."
+"Dette panelprogrammet for GNOME legger til en kommandolinje på panelet. Det "
+"støtter kommandofullføring, kommandohistorikk og redigerbare makroer."
 
 #: mini-commander/src/command_line.c:337
 msgid "No items in history"
@@ -3276,6 +3219,8 @@ msgid ""
 "This per-applet key is deprecated in favour of the global key, /schemas/apps/"
 "mini-commander-global/macro_patterns."
 msgstr ""
+"Denne nøkkelen er per instans og bør ikke brukes. I stedet bør den globale "
+"nøkkelen /schemas/apps/mini-commander-global/macro_patterns brukes."
 
 #: mini-commander/src/mini-commander.schemas.in.h:25
 msgid "Use the default theme colors"
@@ -3365,7 +3310,7 @@ msgstr "_Åpne volumkontroll"
 msgid "Failed to start Volume Control: %s"
 msgstr "Kunne ikke starte volumkontroll: %s"
 
-#: mixer/applet.c:997
+#: mixer/applet.c:1000
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Kunne ikke vise hjelp: %s"
@@ -3427,7 +3372,7 @@ msgid "A system load indicator"
 msgstr "Måler systembelasning"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:59
+#: multiload/main.c:57
 msgid "System Monitor"
 msgstr "Systemmonitor"
 
@@ -3439,46 +3384,52 @@ msgstr "_Åpne systemmonitor"
 msgid "CPU Load"
 msgstr "Prosessorlast"
 
-#: multiload/loadavg.c:107 multiload/main.c:329
+#: multiload/diskload.c:48
+msgid "Disk Load"
+msgstr "Diskbelastning"
+
+#: multiload/loadavg.c:107 multiload/main.c:327
 msgid "Load Average"
 msgstr "Snittbelastning"
 
-#: multiload/main.c:63
+#: multiload/main.c:61
 msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
-msgstr "Systemmonitor som kan vise grafer for bruk av CPU, RAM og bruk av swap i tillegg til nettverkstrafikk."
+msgstr ""
+"Systemmonitor som kan vise grafer for bruk av CPU, RAM og bruk av swap i "
+"tillegg til nettverkstrafikk."
 
-#: multiload/main.c:115
+#: multiload/main.c:113
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Det oppsto en feil under kjøring av «%s» : %s"
 
-#: multiload/main.c:321 multiload/properties.c:595
+#: multiload/main.c:319 multiload/properties.c:595
 msgid "Processor"
 msgstr "Prosessor"
 
-#: multiload/main.c:323 multiload/properties.c:603
+#: multiload/main.c:321 multiload/properties.c:603
 msgid "Memory"
 msgstr "Minne"
 
-#: multiload/main.c:325 multiload/properties.c:611
+#: multiload/main.c:323 multiload/properties.c:611
 msgid "Network"
 msgstr "Nettverk"
 
-#: multiload/main.c:327 multiload/properties.c:619
+#: multiload/main.c:325 multiload/properties.c:619
 msgid "Swap Space"
 msgstr "Swap-område"
 
-#: multiload/main.c:331
+#: multiload/main.c:329
 msgid "Disk"
 msgstr "Disk"
 
-#: multiload/main.c:333
+#: multiload/main.c:331
 msgid "Resource"
 msgstr "Ressurs"
 
-#: multiload/main.c:349
+#: multiload/main.c:347
 #, c-format
 msgid ""
 "%s:\n"
@@ -3489,7 +3440,7 @@ msgstr ""
 "%d%% i bruk og\n"
 "%d%% i buffer"
 
-#: multiload/main.c:352
+#: multiload/main.c:350
 #, c-format
 msgid ""
 "%s:\n"
@@ -4003,7 +3954,7 @@ msgstr "_Lås notat"
 msgid "_New Note"
 msgstr "_Nytt notat"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 modemlights/GNOME_ModemLights.xml.h:5
 msgid "_Properties"
 msgstr "_Egenskaper"
 
@@ -4052,7 +4003,9 @@ msgstr ""
 msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
-msgstr "Forvalgt farge for nye notater. Dette oppgis i heksadesimal notasjon som i HTML. For eksempel «#000000»."
+msgstr ""
+"Forvalgt farge for nye notater. Dette oppgis i heksadesimal notasjon som i "
+"HTML. For eksempel «#000000»."
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new notes"
@@ -4268,6 +4221,197 @@ msgstr ""
 "Kan ikke flytte til papirkurv:\n"
 "%s"
 
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player (Deprecated)"
+msgstr "CD-spiller (utfaset)"
+
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:2
+msgid "Panel applet for playing audio CDs"
+msgstr "Panelapplet for avspilling av lyd-CDer"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Meld fra når ny e-post ankommer"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Innboksmonitor (utfaset)"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Overvåk kvaliteten på den trådløse tilkoblingen"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "Overvåking av trådløs tilkobling"
+
+#: modemlights/GNOME_ModemLights.server.in.h:1
+#: modemlights/GNOME_ModemLights.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Aktiver og overvåk oppringte nettverksforbindelser"
+
+#: modemlights/GNOME_ModemLights.server.in.h:2
+#: modemlights/GNOME_ModemLights.server.in.in.h:2
+msgid "Modem Monitor"
+msgstr "Modemovervåking"
+
+#: modemlights/GNOME_ModemLights.xml.h:2
+msgid "_Activate"
+msgstr "_Aktiver"
+
+#: modemlights/GNOME_ModemLights.xml.h:3
+msgid "_Deactivate"
+msgstr "_Deaktiver"
+
+#: modemlights/modem-applet.c:699
+msgid "Connection active, but could not get connection time"
+msgstr "Tilkobling aktiv, men kunne ikke finne tid for tilkobling"
+
+#: modemlights/modem-applet.c:715
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Tid tilkoblet: %.1d:%.2d"
+
+#: modemlights/modem-applet.c:719
+msgid "Not connected"
+msgstr "Ikke tilkoblet"
+
+#: modemlights/modem-applet.c:765
+msgid "The entered password is invalid"
+msgstr "Oppgitt passord er ugyldig"
+
+#: modemlights/modem-applet.c:767
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr "Sjekk at du har skrevet det riktig og at du ikke har aktivert «caps lock»-tasten"
+
+#: modemlights/modem-applet.c:865
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr "Du må ha administratorrettigheter for å koble til din internettleverandør"
+
+#: modemlights/modem-applet.c:866
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr "Du må ha administratorrettigheter for å koble fra din internettleverandør"
+
+#: modemlights/modem-applet.c:900
+msgid "Do you want to connect?"
+msgstr "Vil du koble til?"
+
+#: modemlights/modem-applet.c:901
+msgid "Do you want to disconnect?"
+msgstr "Vil du koble fra?"
+
+#: modemlights/modem-applet.c:910
+msgid "C_onnect"
+msgstr "K_oble til"
+
+#: modemlights/modem-applet.c:910
+msgid "_Disconnect"
+msgstr "_Koble fra"
+
+#: modemlights/modem-applet.c:965
+msgid "Could not launch network configuration tool"
+msgstr "Kunne ikke starte verktøy for konfigurasjon av nettverk"
+
+#: modemlights/modem-applet.c:967
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr "Sjekk at det er installert på riktig sted og at det har riktige rettigheter"
+
+#: modemlights/modem-applet.c:989
+msgid "Modem monitor"
+msgstr "Modemovervåking"
+
+#: modemlights/modem-applet.c:992
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr "Panelprogram for å aktivere og overvåke oppringte nettverksforbindelser."
+
+#: modemlights/modemlights.glade.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Kobler til internettleverandør</span>"
+
+#: modemlights/modemlights.glade.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Passord for root kreves</span>"
+
+#: modemlights/modemlights.glade.h:3
+msgid "Enter password"
+msgstr "Oppgi passord"
+
+#: modemlights/modemlights.glade.h:4
+msgid "Password:"
+msgstr "Passord:"
+
+#~ msgid "Your platform is not supported!\n"
+#~ msgstr "Din plattform er ikke støttet!\n"
+
+#~ msgid "The applet will not work properly (if at all).\n"
+#~ msgstr "Appleten vil ikke fungere riktig (hvis i det hele tatt).\n"
+
+#~ msgid ""
+#~ "Can't open the APM device!\n"
+#~ "\n"
+#~ "Make sure you have read permission to the\n"
+#~ "APM device."
+#~ msgstr ""
+#~ "Kan ikke åpne APM-enhet!\n"
+#~ "\n"
+#~ "Sjekk at du har leserettigheter til\n"
+#~ "APM-enheten."
+
+#~ msgid ""
+#~ "The APM Management subsystem seems to be disabled.\n"
+#~ "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+#~ "that helps.\n"
+#~ msgstr ""
+#~ "Støttesystemet for APM-håndtering ser ut til å være \n"
+#~ "deaktivert. Prøv å kjøre «apm -e 1» (FreeBSD) \n"
+#~ "og se om det hjelper.\n"
+
+#~ msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
+#~ msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
+
+#~ msgid ""
+#~ "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
+#~ "subsystem is working and the acpid daemon is running."
+#~ msgstr ""
+#~ "Kan ikke aksessere ACPI-hendelser i /var/run/acpid.socket! Sjekk at ACPI-"
+#~ "systemet fungerer og at acpid-daemonen kjører."
+
+#~ msgid "Kevin Vandersloot"
+#~ msgstr "Kevin Vandersloot"
+
+#~ msgid "Copyright (C) 1998"
+#~ msgstr "Copyright (C) 1998"
+
+#~ msgid "Copyright (C) 2004 Free Software Foundation. Inc."
+#~ msgstr "Opphavsrett © 2004 Free Software Foundation"
+
+#~ msgid ""
+#~ "This GNOME applet adds a command line to the panel. It features command "
+#~ "completion, command history, and changeable macros.\n"
+#~ "\n"
+#~ " This program is free software; you can redistribute it and/or modify it "
+#~ "under the terms of the GNU General Public License as published by the "
+#~ "Free Software Foundation; either version 2 of the License, or (at your "
+#~ "option) any later version."
+#~ msgstr ""
+#~ "Dette GNOME-programmet legger til en kommandolinje på panelet. Denne "
+#~ "støtter kommandofullføring, kommandohistorikk og redigerbare makroer.\n"
+#~ "\n"
+#~ "Dette programmet er fri programvare; du kan distribuere det og/eller "
+#~ "endre det i følge betingelsene gitt i GNU General License som publisert "
+#~ "av Free Software Foundation, enten versjon 2 av lisensen, eller (hvis du "
+#~ "velger) enhver senere versjon."
+
 #~ msgid "CD Player"
 #~ msgstr "CD-spiller"
 
@@ -4276,9 +4420,6 @@ msgstr ""
 
 #~ msgid "Factory for CD player applet"
 #~ msgstr "Factory for CD-spiller-applet"
-
-#~ msgid "Panel applet for playing audio CDs"
-#~ msgstr "Panelapplet for avspilling av lyd-CDer"
 
 #~ msgid "_Open CD Player"
 #~ msgstr "_Åpne CD-spiller"
@@ -4303,9 +4444,6 @@ msgstr ""
 
 #~ msgid "%s does not seem to be a CD player"
 #~ msgstr "%s ser ikke ut til å være en CD-spiller"
-
-#~ msgid "CD Player Preferences"
-#~ msgstr "Brukervalg for CD-spiller"
 
 #~ msgid "Device _path:"
 #~ msgstr "St_i til enhet:"
@@ -4371,9 +4509,6 @@ msgstr ""
 #~ msgid "_Remove"
 #~ msgstr "Fje_rn"
 
-#~ msgid "Activate and monitor a dial-up network connection"
-#~ msgstr "Aktiver og overvåk oppringte nettverksforbindelser"
-
 #~ msgid "Modem Lights"
 #~ msgstr "Modemlys"
 
@@ -4393,20 +4528,8 @@ msgstr ""
 #~ "Du er nå tilkoblet.\n"
 #~ "Vil du koble fra?"
 
-#~ msgid "_Disconnect"
-#~ msgstr "_Koble fra"
-
-#~ msgid "Do you want to connect?"
-#~ msgstr "Vil du koble til?"
-
-#~ msgid "C_onnect"
-#~ msgstr "K_oble til"
-
 #~ msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 #~ msgstr "%#.1fMb mottatt / %#.1fMb sendt / tid: %.1d:%.2d"
-
-#~ msgid "not connected"
-#~ msgstr "ikke tilkoblet"
 
 #~ msgid "Ask for confirmation when connecting/disconnecting"
 #~ msgstr "Spør om bekreftelse ved til- og frakobling"
@@ -4602,12 +4725,6 @@ msgstr ""
 #~ msgid "Advanced"
 #~ msgstr "Avansert"
 
-#~ msgid "Alert you when new mail arrives"
-#~ msgstr "Meld fra når ny e-post ankommer"
-
-#~ msgid "Inbox Monitor (Deprecated)"
-#~ msgstr "Innboksmonitor (utfaset)"
-
 #~ msgid "Clic_k:"
 #~ msgstr "Kli_kk:"
 
@@ -4634,12 +4751,6 @@ msgstr ""
 
 #~ msgid "(c) 2002-2003 Loban A Rahman"
 #~ msgstr "© 2002-2003 Loban A Rahman"
-
-#~ msgid "Monitor the quality of a wireless network link"
-#~ msgstr "Overvåk kvaliteten på den trådløse tilkoblingen"
-
-#~ msgid "Wireless Link Monitor"
-#~ msgstr "Overvåking av trådløs tilkobling"
 
 #~ msgid "Link Strength: %2.0d%%"
 #~ msgstr "Styrke på tilkobling: %2.0d%%"
@@ -5610,9 +5721,6 @@ msgstr ""
 #~ msgid "Could not connect to the Internet."
 #~ msgstr "Kunne ikke koble til Internett."
 
-#~ msgid "The username or password is incorrect."
-#~ msgstr "Brukernavn eller passord er ugyldig."
-
 #~ msgid "The server name is incorrect."
 #~ msgstr "Navn på tjener er ugyldig."
 
@@ -5679,9 +5787,6 @@ msgstr ""
 
 #~ msgid "Username Entry box"
 #~ msgstr "Boks for oppføring av brukernavn"
-
-#~ msgid "_Password:"
-#~ msgstr "_Passord:"
 
 #~ msgid "_Folder:"
 #~ msgstr "_Mappe:"
@@ -5758,9 +5863,6 @@ msgstr ""
 
 #~ msgid "Do we want to save the password to disk"
 #~ msgstr "Lagre passordet til disk"
-
-#~ msgid "Encrypted password"
-#~ msgstr "Kryptert passord"
 
 #~ msgid "How often (in milliseconds) we check the mail"
 #~ msgstr "Hvor ofte sjekkes e-post (i millisekunder)"
