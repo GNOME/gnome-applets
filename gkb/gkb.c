@@ -1,4 +1,6 @@
-/* gkb.c - The gkb keyboard map changer wired (it will change) hu and us keymap
+/* gkb.c - The gkb keyboard map changer (setxkbmap frontend) for GNOME panel
+ * Written by Szabolcs Ban <bansz@szif.hu>
+ * Thanx for help to Neko <neko@kornel.szif.hu>
  */
 
 #include <config.h>
@@ -13,9 +15,11 @@
 
 gkb_properties pr;
 
-static GtkWidget *pixmap;
+gint curpix = 0;
+
+GtkWidget *pixmap;
+
 static GtkWidget *applet;
-static gint curpix = 0;
 
 static gint 
 gkb_clicked_cb(GtkWidget * widget, GdkEventButton * e, 
@@ -86,16 +90,16 @@ about_cb (AppletWidget *widget, gpointer data)
 
         static const char *authors[] = { "Shooby Ban <bansz@szif.hu>", NULL };
 	
-	about = gnome_about_new (_("The GNOME KB Applet"), _("0.1"),
+	about = gnome_about_new (_("The GNOME KB Applet"), _("0.28"),
 			_("(C) 1998 LSC - Linux Supporting Center"),
 			authors,
 			_("This applet used to switch between "
 			  "keyboard maps. No more. It uses "
-			  "setxkbmap. This is a very simple "
-			  "alpha code, will be continued. "
+			  "setxkbmap. "
 			  "The main site of this app moved "
-			  "tempolary to URL "
-			  "http://lsc.kva.hu/gkb."
+			  "tempolary to URL http://lsc.kva.hu/gkb."
+			  "Mail me your flag, please (60x40 size),"
+			  "I will put it to CVS."
 			  ),
 			_("gkb.xpm"));
 	gtk_widget_show (about);
