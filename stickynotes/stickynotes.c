@@ -51,15 +51,15 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	note->h = 0;
 	note->stickynotes = stickynotes;
 
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_img")), STICKYNOTES_ICONDIR "/resize.png");
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "close_img")), STICKYNOTES_ICONDIR "/close.png");
-	
 	/* Customize the window */
 	gtk_window_set_decorated(GTK_WINDOW(note->window), FALSE);
 	if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/sticky", NULL))
 		gtk_window_stick(GTK_WINDOW(note->window));
 	gtk_window_resize(GTK_WINDOW(note->window), gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/defaults/width", NULL),
 						    gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/defaults/height", NULL));
+	
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_img")), STICKYNOTES_ICONDIR "/resize.png");
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "close_img")), STICKYNOTES_ICONDIR "/close.png");
 	
 	/* Customize the date in the title label */
 	stickynote_set_title(note, NULL);
@@ -76,19 +76,13 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
 	g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
 	
-	/* Connect signals for window management on the sticky note */
-	{
-		GtkWidget *title_box = glade_xml_get_widget(note->glade, "title_box");
-		GtkWidget *resize_box = glade_xml_get_widget(note->glade, "resize_box");
-		GtkWidget *close_box = glade_xml_get_widget(note->glade, "close_box");
-		
-		g_signal_connect(G_OBJECT(title_box), "button-press-event", G_CALLBACK(window_move_edit_cb), note);
-		g_signal_connect(G_OBJECT(resize_box), "button-press-event", G_CALLBACK(window_resize_cb), note);
-		g_signal_connect(G_OBJECT(close_box), "button-release-event", G_CALLBACK(window_close_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "resize_button")), "pressed", G_CALLBACK(window_resize_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "close_button")), "clicked", G_CALLBACK(window_close_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "title_box")), "button-press-event", G_CALLBACK(window_move_cb), note);
 
-		/* Connect a popup menu to the title label */
-		gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), title_box, note);
-	}
+	/* Connect a popup menu to the buttons and title */
+	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), glade_xml_get_widget(note->glade, "resize_button"), note);
+	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), glade_xml_get_widget(note->glade, "close_button"), note);
 
 	return note;
 }
@@ -141,9 +135,9 @@ void stickynote_set_highlighted(StickyNote *note, gboolean highlighted)
 	gdk_color_parse(color_str, &color);
 	g_free(color_str);
 
+	gtk_widget_modify_fg(glade_xml_get_widget(note->glade, "resize_button"), GTK_STATE_NORMAL, &color);
+	gtk_widget_modify_fg(glade_xml_get_widget(note->glade, "close_button"), GTK_STATE_NORMAL, &color);
 	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "title_box"), GTK_STATE_NORMAL, &color);
-	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "resize_box"), GTK_STATE_NORMAL, &color);
-	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "close_box"), GTK_STATE_NORMAL, &color);
 		
 	if (highlighted)
 		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/body_color_prelight", NULL);
@@ -167,7 +161,7 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	gtk_window_set_title(GTK_WINDOW(note->window), title);
 
 	{
-		gchar *bold_title = g_strdup_printf("<b>%s</b>", title);
+		gchar *bold_title = g_strdup_printf("<b> %s </b>", title);
 		gtk_label_set_markup(GTK_LABEL(note->title), bold_title);
 		g_free(bold_title);
 	}

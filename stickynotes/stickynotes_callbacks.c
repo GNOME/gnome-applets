@@ -20,33 +20,30 @@
 #include <config.h>
 #include <stickynotes_callbacks.h>
 
+/* Sticky Window Callback : Resize the window. */
+gboolean window_resize_cb(GtkWidget *widget, StickyNote *note)
+{
+//	gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST, event->button, event->x_root, event->y_root, event->time);
+	
+	return TRUE;
+}
+
+/* Sticky Window Callback : Close the window. */
+gboolean window_close_cb(GtkWidget *widget, StickyNote *note)
+{
+	stickynotes_remove(note->stickynotes, note);
+	
+	return TRUE;
+}
+
 /* Sticky Window Callback : Move the window or edit the title. */
-gboolean window_move_edit_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
+gboolean window_move_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
 		gtk_window_begin_move_drag(GTK_WINDOW(note->window), event->button, event->x_root, event->y_root, event->time);
 	else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
 		stickynote_edit_title(note);
 
-	return TRUE;
-}
-
-/* Sticky Window Callback : Resize the window. */
-gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
-{
-	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
-		gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST,
-					     event->button, event->x_root, event->y_root, event->time);
-	
-	return TRUE;
-}
-
-/* Sticky Window Callback : Close the window. */
-gboolean window_close_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
-{
-	if (event->type == GDK_BUTTON_RELEASE && event->button == 1)
-		stickynotes_remove(note->stickynotes, note);
-	
 	return TRUE;
 }
 

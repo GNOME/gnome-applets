@@ -6,7 +6,7 @@
 
 <widget class="GnomeAbout" id="about_dialog">
   <property name="destroy_with_parent">False</property>
-  <property name="copyright" translatable="no">© 2002-2003 Loban A Rahman</property>
+  <property name="copyright" translatable="yes">© 2002-2003 Loban A Rahman</property>
   <property name="comments" translatable="yes">Sticky Notes for the Gnome Desktop Environment</property>
   <property name="authors">Loban A Rahman &lt;loban@earthling.net&gt;</property>
   <property name="documenters">Loban A Rahman &lt;loban@earthling.net&gt;</property>
@@ -470,7 +470,7 @@
 			  </child>
 
 			  <child>
-			      <widget class="GtkMenuItem" id="lock_unlock_all_notes">
+			    <widget class="GtkMenuItem" id="lock_unlock_all_notes">
 			      <property name="visible">True</property>
 			      <property name="label" translatable="yes">_Lock/_Unlock All Notes</property>
 			      <property name="use_underline">True</property>
@@ -981,14 +981,19 @@ Changes will be saved instantly.</property>
 	  <property name="spacing">0</property>
 
 	  <child>
-	    <widget class="GtkEventBox" id="resize_box">
+	    <widget class="GtkButton" id="resize_button">
+	      <property name="width_request">24</property>
+	      <property name="height_request">24</property>
 	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Resize note</property>
+	      <property name="can_focus">True</property>
+	      <property name="relief">GTK_RELIEF_NONE</property>
 
 	      <child>
 		<widget class="GtkImage" id="resize_img">
 		  <property name="visible">True</property>
-		  <property name="xalign">0.5</property>
-		  <property name="yalign">0.5</property>
+		  <property name="xalign">0</property>
+		  <property name="yalign">0</property>
 		  <property name="xpad">0</property>
 		  <property name="ypad">0</property>
 		</widget>
@@ -1004,16 +1009,15 @@ Changes will be saved instantly.</property>
 	  <child>
 	    <widget class="GtkEventBox" id="title_box">
 	      <property name="visible">True</property>
-	      <property name="tooltip" translatable="yes">Double-click or Right-click for more options</property>
 
 	      <child>
 		<widget class="GtkLabel" id="title_label">
 		  <property name="visible">True</property>
 		  <property name="label" translatable="yes"></property>
 		  <property name="use_underline">False</property>
-		  <property name="use_markup">False</property>
+		  <property name="use_markup">True</property>
 		  <property name="justify">GTK_JUSTIFY_CENTER</property>
-		  <property name="wrap">True</property>
+		  <property name="wrap">False</property>
 		  <property name="selectable">False</property>
 		  <property name="xalign">0.5</property>
 		  <property name="yalign">0.5</property>
@@ -1030,8 +1034,13 @@ Changes will be saved instantly.</property>
 	  </child>
 
 	  <child>
-	    <widget class="GtkEventBox" id="close_box">
+	    <widget class="GtkButton" id="close_button">
+	      <property name="width_request">24</property>
+	      <property name="height_request">24</property>
 	      <property name="visible">True</property>
+	      <property name="tooltip" translatable="yes">Delete note</property>
+	      <property name="can_focus">True</property>
+	      <property name="relief">GTK_RELIEF_NONE</property>
 
 	      <child>
 		<widget class="GtkImage" id="close_img">
@@ -1061,6 +1070,7 @@ Changes will be saved instantly.</property>
 	<widget class="GtkTextView" id="body_text">
 	  <property name="visible">True</property>
 	  <property name="can_focus">True</property>
+	  <property name="has_focus">True</property>
 	  <property name="editable">True</property>
 	  <property name="justification">GTK_JUSTIFY_LEFT</property>
 	  <property name="wrap_mode">GTK_WRAP_WORD</property>
