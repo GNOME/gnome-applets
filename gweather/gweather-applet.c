@@ -61,22 +61,28 @@ static void place_widgets (GWeatherApplet *gw_applet)
     pango_layout_get_pixel_size(panlay, &textwidth, &textheight);
 
     /* Set the right box for the dimension and panel type */
-    if ((gw_applet->orient == PANEL_APPLET_ORIENT_UP || gw_applet->orient == PANEL_APPLET_ORIENT_DOWN)
-		&& (size < picheight + textheight + 9)) {
+    if (gw_applet->orient == PANEL_APPLET_ORIENT_UP || gw_applet->orient == PANEL_APPLET_ORIENT_DOWN) {
+	size = gw_applet->container->allocation.height;
 
-	gw_applet->box =gtk_hbox_new (FALSE, 2);
+	if (size < picheight + textheight + 9)
+		gw_applet->box = gtk_hbox_new (FALSE, 2);
+	else
+		gw_applet->box = gtk_vbox_new (FALSE, 2);
+	
+    } else if (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT || gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) {
+	size = gw_applet->container->allocation.width;
 
-    } else if ((gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT || gw_applet->orient == PANEL_APPLET_ORIENT_LEFT)
-		&& (size > picwidth + textwidth + 18)) {
-
-	gw_applet->box = gtk_hbox_new (FALSE, 2);
+	if (size > picwidth + textwidth + 18)
+		gw_applet->box = gtk_hbox_new (FALSE, 2);
+	else
+		gw_applet->box = gtk_vbox_new (FALSE, 2);
     
     } else {
 	gw_applet->box = gtk_vbox_new (FALSE, 2);
     }
 
     /* Rebuild the applet it's visual area */
-    gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->box);
+    gtk_container_add (GTK_CONTAINER (gw_applet->container), gw_applet->box);
 
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, FALSE, FALSE, 0);
@@ -280,7 +286,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
         gnome_window_icon_set_default_from_file (gtk_icon_info_get_filename (icon_info));
         gtk_icon_info_free (icon_info);
     }
-    
+
+    gw_applet->container = gtk_hbox_new (FALSE, 0);
+    gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->container);
+
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",

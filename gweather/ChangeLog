@@ -1,3 +1,18 @@
+2004-02-28  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* gweather-applet.c (place_widgets):
+	Should size better to panel now because we're using
+	widget allocation sizes instead of normalized panel
+	sizes. The panel only emits change_size signals on
+	normalized values tho. bleh.
+
+	(gweather_applet_create): Initialize the container
+	box we use for the allocation sizes.
+
+	* gweather.h: Added a container entry to the
+	GWeatherApplet structure to read allocated
+	applet size from.
+
 2004-02-26  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-applet.c (gweather_applet_create):

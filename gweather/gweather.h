@@ -41,7 +41,8 @@ struct _GWeatherApplet
 {
 	PanelApplet *applet;
 	WeatherInfo *gweather_info;
-	
+
+	GtkWidget *container;
 	GtkWidget *box;	
 	GtkWidget *label;
 	GtkWidget *image;
