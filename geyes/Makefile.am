@@ -12,7 +12,9 @@ geyes_applet_SOURCES =	\
 	themes.c \
 	geyes.h
 
-geyes_applet_LDADD = $(GNOME_LIBDIR) $(GNOME_APPLETS_LIBS)
+geyes_applet_LDADD = \
+	$(GNOME_LIBDIR) \
+	$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = geyes_applet.desktop \
 	     geyes_applet.gnorba \
