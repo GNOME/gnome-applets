@@ -10,16 +10,14 @@ dnl Just going to comment stuff out that I don't think we'll need for now
 dnl AM_ACLOCAL_INCLUDE(macros)
 dnl GNOME_INIT(applets)
 
-GNOME_COMPILE_WARNINGS
-GNOME_PLATFORM_GNOME_2(yes, force)
-GNOME2_X_CHECKS
-gnome_cv_use_gnome=yes
-
 AC_ISC_POSIX
 AC_PROG_CC
 AC_STDC_HEADERS
 AM_PROG_LIBTOOL
 AC_PATH_PROGS(PATH_TO_XRDB, "xrdb")
+AC_PATH_XTRA
+X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
+AC_SUBST(X_LIBS)
 
 dnl Stuff we might need, not quite sure yet
 
