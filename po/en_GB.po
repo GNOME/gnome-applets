@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-13 22:04+0100\n"
-"PO-Revision-Date: 2004-10-13 22:04+0100\n"
+"POT-Creation-Date: 2004-10-19 20:01+0100\n"
+"PO-Revision-Date: 2004-10-19 20:02+0100\n"
 "Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX Status Applet Factory"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1332
+#: accessx-status/applet.c:1335
 msgid "Keyboard Accessibility Status"
 msgstr "Keyboard Accessibility Status"
 
@@ -94,14 +94,14 @@ msgstr "Shows the status of keyboard accessibility features"
 #: multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:261
 #: wireless/wireless-applet.c:572
-#: trashapplet/src/trashapplet.c:522
+#: trashapplet/src/trashapplet.c:434
 msgid "translator_credits"
 msgstr "Gareth Owen <gowen72@yahoo.com>"
 
 #: accessx-status/applet.c:157
-#: accessx-status/applet.c:992
-#: accessx-status/applet.c:1132
-#: accessx-status/applet.c:1335
+#: accessx-status/applet.c:995
+#: accessx-status/applet.c:1135
+#: accessx-status/applet.c:1338
 msgid "AccessX Status"
 msgstr "AccessX Status"
 
@@ -113,41 +113,41 @@ msgstr "Copyright (C) 2003 Sun Microsystems"
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Shows the state of AccessX features such as latched modifiers"
 
-#: accessx-status/applet.c:195
+#: accessx-status/applet.c:198
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "There was an error launching the help viewer : %s"
 
-#: accessx-status/applet.c:234
+#: accessx-status/applet.c:237
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "There was an error launching the keyboard capplet : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:483
-#: accessx-status/applet.c:521
+#: accessx-status/applet.c:486
+#: accessx-status/applet.c:524
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:993
-#: accessx-status/applet.c:1133
+#: accessx-status/applet.c:996
+#: accessx-status/applet.c:1136
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Shows keyboard status when accessibility features are used."
 
-#: accessx-status/applet.c:1027
+#: accessx-status/applet.c:1030
 msgid "XKB Extension is not enabled"
 msgstr "XKB Extension is not enabled"
 
-#: accessx-status/applet.c:1032
+#: accessx-status/applet.c:1035
 msgid "Unknown error"
 msgstr "Unknown error"
 
-#: accessx-status/applet.c:1040
+#: accessx-status/applet.c:1043
 #, c-format
 msgid "Error: %s"
 msgstr "Error: %s"
 
-#: accessx-status/applet.c:1337
+#: accessx-status/applet.c:1340
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Displays current state of keyboard accessibility features"
 
@@ -580,7 +580,7 @@ msgstr "_Yellow:"
 #: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:542
 #: wireless/wireless-applet.c:626
-#: trashapplet/src/trashapplet.c:510
+#: trashapplet/src/trashapplet.c:422
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
@@ -3145,11 +3145,11 @@ msgstr ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
 
-#: gswitchit/gswitchit-capplet.c:265
+#: gswitchit/gswitchit-capplet.c:262
 msgid "_Exclude from keyboard switching"
 msgstr "_Exclude from keyboard switching"
 
-#: gswitchit/gswitchit-capplet.c:296
+#: gswitchit/gswitchit-capplet.c:293
 msgid "Not used"
 msgstr "Not used"
 
@@ -6334,42 +6334,37 @@ msgstr "Put the Wastebasket on the panel"
 msgid "Trash Applet"
 msgstr "Wastebasket Applet"
 
-#: trashapplet/src/trashapplet.c:122
+#: trashapplet/src/trashapplet.c:123
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Unable to find the Wastebasket directory: %s"
 
-#: trashapplet/src/trashapplet.c:145
-#, c-format
-msgid "GNOME VFS Error: %s"
-msgstr "GNOME VFS Error: %s"
-
-#: trashapplet/src/trashapplet.c:276
+#: trashapplet/src/trashapplet.c:232
 msgid "No Items in Trash"
 msgstr "No items in the Wastebasket"
 
-#: trashapplet/src/trashapplet.c:279
+#: trashapplet/src/trashapplet.c:235
 msgid "1 Item in Trash"
 msgstr "1 Item in the Wastebasket"
 
-#: trashapplet/src/trashapplet.c:282
+#: trashapplet/src/trashapplet.c:238
 #, c-format
 msgid "%d Items in Trash"
 msgstr "%d Items in the Wastebasket"
 
-#: trashapplet/src/trashapplet.c:362
+#: trashapplet/src/trashapplet.c:318
 msgid "Are you sure you want to empty all of the items from the trash?"
 msgstr "Are you sure you want to empty all of the items from the wastebasket?"
 
-#: trashapplet/src/trashapplet.c:376
+#: trashapplet/src/trashapplet.c:332
 msgid "If you empty the trash, items will be permanently deleted."
 msgstr "If you empty the wastebasket, items will be permanently deleted."
 
-#: trashapplet/src/trashapplet.c:388
+#: trashapplet/src/trashapplet.c:344
 msgid "_Empty"
 msgstr "_Empty"
 
-#: trashapplet/src/trashapplet.c:489
+#: trashapplet/src/trashapplet.c:401
 #, c-format
 msgid ""
 "Error while spawing nautilus:\n"
@@ -6378,15 +6373,28 @@ msgstr ""
 "Error while spawing nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:537
+#: trashapplet/src/trashapplet.c:449
 msgid "Copyright (c) 2004 Michiel Sikkes"
 msgstr "Copyright (c) 2004 Michiel Sikkes"
 
-#: trashapplet/src/trashapplet.c:538
+#: trashapplet/src/trashapplet.c:450
 msgid "The GNOME Trash Applet"
 msgstr "The GNOME Wastebasket Applet"
 
-#: trashapplet/src/trashapplet.c:623
+#: trashapplet/src/trashapplet.c:509
+msgid "Delete Immediately?"
+msgstr "Delete Immediately?"
+
+#: trashapplet/src/trashapplet.c:538
+msgid "Cannot move items to trash, do you want to delete them immediately?"
+msgstr "Cannot move items to trash, do you want to delete them immediately?"
+
+#: trashapplet/src/trashapplet.c:541
+msgid "Cannot move some items to trash, do you want to delete these immediately?"
+msgstr "Cannot move some items to trash, do you want to delete these immediately?"
+
+#: trashapplet/src/trashapplet.c:639
+#: trashapplet/src/trashapplet.c:656
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -6394,8 +6402,4 @@ msgid ""
 msgstr ""
 "Unable to move to the wastebasket:\n"
 "%s"
-
-#: trashapplet/src/trashapplet.c:808
-msgid "Unable to acquire monitor of the Trash directory"
-msgstr "Unable to acquire monitor of the Wastebasket directory"
 
