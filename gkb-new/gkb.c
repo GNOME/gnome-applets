@@ -629,6 +629,9 @@ about_cb (BonoboUIComponent *uic,
   	g_object_unref (pixbuf);
 
   gtk_window_set_wmclass (GTK_WINDOW (about), "keyboard layout switcher", "Keyboard Layout Switcher");
+#ifdef HAVE_GTK_MULTIHEAD
+  gtk_window_set_screen (GTK_WINDOW (about), gtk_widget_get_screen (gkb->applet));
+#endif
   g_signal_connect (G_OBJECT(about), "destroy",
                           (GCallback)gtk_widget_destroyed, &about);
 

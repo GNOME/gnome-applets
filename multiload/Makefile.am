@@ -9,7 +9,10 @@ INCLUDES =						\
 
 bin_PROGRAMS = multiload-applet-2
 
+EGGFILES = egg-screen-exec.h egg-screen-exec.c
+
 multiload_applet_2_SOURCES = \
+			$(EGGFILES)	\
 			global.h	\
 			linux-proc.h	\
 			load-graph.h	\
@@ -39,6 +42,7 @@ install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 		
 EXTRA_DIST =	\
+		update-from-egg.sh \
 		GNOME_MultiLoadApplet_Factory.server.in \
 		multiload.schemas \
 		$(pixmaps) \
@@ -52,3 +56,9 @@ server_in_files = GNOME_MultiLoadApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
+
+EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
+
+regenerate-built-sources:
+	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh
+

@@ -9,7 +9,10 @@ bin_PROGRAMS = drivemount_applet2
 desktop_iconsdir = $(datadir)/pixmaps
 desktop_icons_DATA = drivemount-applet.png
 
+EGGFILES = egg-screen-exec.h egg-screen-exec.c
+
 drivemount_applet2_SOURCES = \
+$(EGGFILES) \
 drivemount.c \
 drivemount.h \
 properties.c \
@@ -57,8 +60,13 @@ jazdrive_v_out.xpm \
 $(server_in_files) \
 $(schema_DATA)	\
 $(ui_DATA)	\
+update-from-egg.sh \
 drivemount-applet.png
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 
+EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
+
+regenerate-built-sources:
+	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh

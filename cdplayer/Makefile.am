@@ -7,12 +7,15 @@ $(CDROM_CFLAGS)
 
 bin_PROGRAMS = cdplayer_applet2
 
+EGGFILES = egg-screen-exec.h egg-screen-exec.c
+
 cdplayer_applet2_SOURCES = \
 cdplayer.c \
 cdplayer.h \
 cdrom-interface.h \
 led.c \
 led.h \
+$(EGGFILES) \
 cdrom-@CDROM_HOST@.c 
 
 cdplayer_applet2_DEPENDS = \
@@ -38,6 +41,7 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CDPlayerApplet.xml
 
 EXTRA_DIST = \
+update-from-egg.sh \
 images/cdplayer-backward.xpm \
 images/cdplayer-eject.xpm \
 images/cdplayer-forward.xpm \
@@ -57,3 +61,7 @@ $(ui_DATA)
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 
+EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
+
+regenerate-built-sources:
+	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh

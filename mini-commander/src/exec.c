@@ -23,10 +23,12 @@
 #include <string.h>
 
 #include <libgnome/gnome-exec.h>
+#include "egg-screen-exec.h"
 
 #include "exec.h"
 #include "macro.h"
 #include "preferences.h"
+#include "egg-screen-exec.h"
 
 void
 exec_command (const char  *cmd,
@@ -42,5 +44,11 @@ exec_command (const char  *cmd,
 
 	expand_command (command, prop);
 
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_execute_shell (
+			gtk_widget_get_screen (GTK_WIDGET (applet)),
+			g_get_home_dir (), command);
+#else
 	gnome_execute_shell (g_get_home_dir (), command);
+#endif
 }

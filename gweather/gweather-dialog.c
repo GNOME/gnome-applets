@@ -84,6 +84,10 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   else
       gtk_widget_set_usize (gw_applet->gweather_dialog, 590, 340);
 
+#ifdef HAVE_GTK_MULTIHEAD
+  gtk_window_set_screen (GTK_WINDOW (gw_applet->gweather_dialog),
+			 gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+#endif
   gtk_window_set_policy (GTK_WINDOW (gw_applet->gweather_dialog), FALSE, FALSE, FALSE);
   
   weather_vbox = GTK_DIALOG (gw_applet->gweather_dialog)->vbox;

@@ -11,7 +11,10 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = mixer_applet2
 
+EGGFILES = egg-screen-exec.h egg-screen-exec.c
+
 mixer_applet2_SOURCES = 				\
+	$(EGGFILES)					\
 	mixer.c
 
 mixer_applet2_LDADD = 					\
@@ -24,10 +27,16 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
+EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
+
+regenerate-built-sources:
+	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh
+
 uidir   = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_MixerApplet.xml
 
 EXTRA_DIST = 						\
+	update-from-egg.sh				\
 	$(server_DATA) 					\
 	$(server_in_files)				\
 	$(ui_DATA) 					\

@@ -265,6 +265,11 @@ prop_cb (BonoboUIComponent *uic,
   if (DEBUG) g_print("prop_cb()\n");
 
    if (battstat->prop_win) { 
+#ifdef HAVE_GTK_MULTIHEAD
+     gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
+			    gtk_widget_get_screen (battstat->applet));
+
+#endif
      gtk_window_present (GTK_WINDOW (battstat->prop_win));
      return;
    } 
@@ -274,6 +279,10 @@ prop_cb (BonoboUIComponent *uic,
   
   battstat->prop_win = GTK_DIALOG (glade_xml_get_widget (glade_xml, 
   				   "battstat_properties"));
+#ifdef HAVE_GTK_MULTIHEAD
+  gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
+			 gtk_widget_get_screen (battstat->applet));
+#endif
 	
   widget = glade_xml_get_widget (glade_xml, "yellow_spin");
   

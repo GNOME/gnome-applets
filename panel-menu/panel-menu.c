@@ -673,6 +673,10 @@ applet_about_cb (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (about) {
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (about),
+				       gtk_widget_get_screen (GTK_WIDGET (panel_menu->applet)));
+#endif
 		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}
@@ -695,6 +699,10 @@ applet_about_cb (BonoboUIComponent *uic,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 				 pixbuf);
 
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (about),
+			       gtk_widget_get_screen (GTK_WIDGET (panel_menu->applet)));
+#endif
 	gtk_window_set_wmclass (GTK_WINDOW (about), "panel-menu", "PanelMenu");
 	if (pixbuf) {
 		gtk_window_set_icon (GTK_WINDOW (about), pixbuf);

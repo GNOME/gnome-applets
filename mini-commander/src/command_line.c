@@ -356,6 +356,10 @@ show_history_signal (GtkWidget   *widget,
 	     j++;
 
      window = gtk_window_new(GTK_WINDOW_POPUP); 
+#ifdef HAVE_GTK_MULTIHEAD
+     gtk_window_set_screen (GTK_WINDOW (window),
+			    gtk_widget_get_screen (GTK_WIDGET (applet)));
+#endif
      gtk_window_set_policy(GTK_WINDOW(window), 0, 0, 1);
      /* cb */
      gtk_signal_connect_after(GTK_OBJECT(window),
@@ -525,6 +529,10 @@ show_file_browser_signal (GtkWidget   *widget,
     /* Set as modal */
     gtk_window_set_modal(GTK_WINDOW(file_select),TRUE);
 
+#ifdef HAVE_GTK_MULTIHEAD
+    gtk_window_set_screen (GTK_WINDOW (file_select), 
+			   gtk_widget_get_screen (GTK_WIDGET (applet)));
+#endif
     gtk_window_set_position (GTK_WINDOW (file_select), GTK_WIN_POS_MOUSE);
 
     gtk_widget_show(file_select);

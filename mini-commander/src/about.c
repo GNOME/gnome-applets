@@ -46,6 +46,10 @@ void about_box (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (about_box) {
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (about_box),
+				       gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
+#endif
 		gtk_window_present (GTK_WINDOW (about_box));
 		return;
 	}
@@ -70,7 +74,11 @@ This program is free software; you can redistribute it and/or modify it under th
 				     pixbuf);
         if (pixbuf) 
    		gdk_pixbuf_unref (pixbuf);
-   
+
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (about_box),
+			       gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
+#endif
    	gtk_window_set_wmclass (GTK_WINDOW (about_box), "command line", "Command Line");
    	g_signal_connect (about_box, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),

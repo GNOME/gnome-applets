@@ -27,6 +27,7 @@
 
 #include "drivemount.h"
 #include "properties.h"
+#include "egg-screen-exec.h"
 
 #include "floppy_v_in.xpm"
 #include "floppy_v_out.xpm"
@@ -385,7 +386,12 @@ browse_cb (BonoboUIComponent *uic,
 		return;
 
 	command = g_strdup_printf ("nautilus %s", drivemount->mount_point);
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_execute_command_line_async (
+		gtk_widget_get_screen (drivemount->applet), command, &error);
+#else
 	g_spawn_command_line_async (command, &error);
+#endif
 	g_free (command);
 	if (error) {
 		GtkWidget *dialog;
@@ -403,6 +409,10 @@ browse_cb (BonoboUIComponent *uic,
 				  NULL);
 
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (drivemount->applet));
+#endif
 
 		gtk_widget_show (dialog);
 
@@ -449,6 +459,10 @@ about_cb (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (about) {
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (about),
+				       gtk_widget_get_screen (drivemount->applet));
+#endif
 		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}
@@ -474,6 +488,10 @@ about_cb (BonoboUIComponent *uic,
    		gdk_pixbuf_unref (pixbuf);
    
    	gtk_window_set_wmclass (GTK_WINDOW (about), "disk mounter", "Disk Mounter");
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (about),
+			       gtk_widget_get_screen (drivemount->applet));
+#endif
    	g_signal_connect (G_OBJECT (about), "destroy",
 			  G_CALLBACK (gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
@@ -730,6 +748,10 @@ mount_cb (GtkWidget *widget,
 
 	/* Stop the user from displaying zillions of error messages */
 	if (dd->error_dialog) {
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (dd->error_dialog),
+				       gtk_widget_get_screen (dd->applet));
+#endif
 		gtk_window_present (GTK_WINDOW (dd->error_dialog));
 		return;
 	}
@@ -777,6 +799,10 @@ mount_cb (GtkWidget *widget,
 						     NULL, GTK_DIALOG_MODAL,
 						     GTK_STOCK_OK,
 						     GTK_RESPONSE_OK, NULL);
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (dd->error_dialog),
+				       gtk_widget_get_screen (dd->applet));
+#endif
 		hbox = gtk_hbox_new (FALSE, 0);
 		gtk_box_pack_start (GTK_BOX
 				    (GTK_DIALOG (dd->error_dialog)->vbox), hbox,

@@ -404,6 +404,10 @@ multiload_properties_cb (BonoboUIComponent *uic,
 	static GtkWidget *dialog = NULL;
 	
 	if (dialog) {
+#ifdef HAVE_GTK_MULTIHEAD
+            gtk_window_set_screen (GTK_WINDOW (dialog),
+                                   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+#endif
 	    gtk_window_present (GTK_WINDOW (dialog));
 	    return;
 	}
@@ -412,6 +416,10 @@ multiload_properties_cb (BonoboUIComponent *uic,
 					      NULL, 0,
 					      GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					      NULL);
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+#endif
 
 	fill_properties(dialog, ma);
 

@@ -696,6 +696,10 @@ battstat_error_dialog (PanelApplet *applet,
 			GTK_MESSAGE_ERROR,
 			GTK_BUTTONS_OK,
 			msg);
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (applet)));
+#endif
 
 	gtk_dialog_run (GTK_DIALOG(dialog));
 	gtk_widget_destroy (dialog);
@@ -849,6 +853,10 @@ about_cb (BonoboUIComponent *uic,
    	gdk_pixbuf_unref (pixbuf);
 
    gtk_window_set_wmclass (GTK_WINDOW (about_box), "battery charge monitor", "Batter Charge Monitor");
+#ifdef HAVE_GTK_MULTIHEAD
+   gtk_window_set_screen (GTK_WINDOW (about_box),
+			  gtk_widget_get_screen (battstat->applet));
+#endif
    gtk_widget_show (about_box);
 }
 

@@ -1,5 +1,16 @@
 2002-07-11  Mark McLoughlin  <mark@skynet.ie>
 
+	* Makefile.am: add egg-screen-exec.[ch] to the build.
+
+	* mixer.c:
+	(mixer_start_gmix_cb): lauch mixer on the same screen
+	as the applet.
+	(mixer_popup_show), (mixer_start_gmix_cb), (mixer_about_cb),
+	(mixer_applet_create): realise dialogs on the same screen as
+	the applet.
+
+2002-07-11  Mark McLoughlin  <mark@skynet.ie>
+
 	* mixer.c:
 	(mixer_start_gmix_cb): pop up error dialog if
 	we fail to execute mixer.

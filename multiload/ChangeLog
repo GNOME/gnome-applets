@@ -1,5 +1,18 @@
 2002-07-11  Mark McLoughlin  <mark@skynet.ie>
 
+	* Makefile.am: add egg-screen-exec.[ch] to the
+	build.
+
+	* main.c:
+	(start_procman_cb): launch procman on the same
+	screen as the applet.
+	(about_cb): realise dialogs on the same screen
+	as the applet.
+
+	* properties.c: (multiload_properties_cb): ditto.
+
+2002-07-11  Mark McLoughlin  <mark@skynet.ie>
+
 	* global.h: don't export start_procman_cb.
 
 	* main.c: (about_cb): use gtk_window_present.

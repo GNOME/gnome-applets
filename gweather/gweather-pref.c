@@ -564,7 +564,11 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
     gtk_widget_set_usize (gw_applet->pref, -2, 280);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
-    
+#ifdef HAVE_GTK_MULTIHEAD 
+    gtk_window_set_screen (GTK_WINDOW (gw_applet->pref),
+			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+#endif
+
     pref_vbox = GTK_DIALOG (gw_applet->pref)->vbox;
     gtk_widget_show (pref_vbox);
 

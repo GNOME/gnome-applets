@@ -70,6 +70,10 @@ applet_properties_cb (BonoboUIComponent *uic,
 
 	dialog = gtk_dialog_new ();
 	gtk_window_set_title (GTK_WINDOW (dialog), _("Menu Bar Preferences"));
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (panel_menu->applet)));
+#endif
 	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
 	box = GTK_DIALOG (dialog)->vbox;
 

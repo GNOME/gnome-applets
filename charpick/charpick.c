@@ -373,6 +373,10 @@ about (BonoboUIComponent *uic,
   const gchar *translator_credits = _("translator_credits");
 
   if (about_box) {
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (about_box),
+			       gtk_widget_get_screen (curr_data->applet));
+#endif
 	gtk_window_present (GTK_WINDOW (about_box));
 	return;
   }
@@ -400,6 +404,10 @@ about (BonoboUIComponent *uic,
   if (pixbuf) 
   	gdk_pixbuf_unref (pixbuf);
    
+#ifdef HAVE_GTK_MULTIHEAD
+  gtk_window_set_screen (GTK_WINDOW (about_box),
+			 gtk_widget_get_screen (curr_data->applet));
+#endif
   gtk_window_set_wmclass (GTK_WINDOW (about_box), "character palette", "Character Palette");
   gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/charpick.png");
 

@@ -143,6 +143,10 @@ show_preferences_dialog (BonoboUIComponent *uic,
 			 const gchar       *verbname)
 {
   if (curr_data->propwindow) {
+#ifdef HAVE_GTK_MULTIHEAD
+    gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
+			   gtk_widget_get_screen (curr_data->applet));
+#endif
     gtk_window_present (GTK_WINDOW (curr_data->propwindow));
     return;
   }
@@ -153,6 +157,10 @@ show_preferences_dialog (BonoboUIComponent *uic,
 					    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					    GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 					    NULL);
+#ifdef HAVE_GTK_MULTIHEAD
+  gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
+			 gtk_widget_get_screen (curr_data->applet));
+#endif
   gtk_dialog_set_default_response (GTK_DIALOG (curr_data->propwindow), GTK_RESPONSE_CLOSE);
   /*size_frame_create();*/
   default_chars_frame_create(curr_data);

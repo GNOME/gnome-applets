@@ -364,6 +364,10 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
  
   if (gkb->addwindow)
     {
+#ifdef HAVE_GTK_MULTIHEAD
+      gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
+			     gtk_widget_get_screen (gkb->applet));
+#endif
       gtk_window_present (GTK_WINDOW (gkb->addwindow));
       return;
     }
@@ -375,6 +379,10 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 						GTK_STOCK_ADD, 100,
 						NULL);
   gtk_dialog_set_default_response (GTK_DIALOG (gkb->addwindow), 100);
+#ifdef HAVE_GTK_MULTIHEAD
+  gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
+			 gtk_widget_get_screen (gkb->applet));
+#endif
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
 		       gkb->addwindow);
   

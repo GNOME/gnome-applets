@@ -9,7 +9,10 @@ INCLUDES = 						\
 
 bin_PROGRAMS = mini_commander_applet
 
+EGGFILES = egg-screen-exec.h egg-screen-exec.c
+
 mini_commander_applet_SOURCES =			\
+	$(EGGFILES)				\
 	about.c					\
 	about.h					\
 	cmd_completion.c			\
@@ -56,7 +59,13 @@ install-data-local:
 
 @INTLTOOL_SERVER_RULE@
 
+EGGDIR = $(srcdir)/../../../libegg/libegg/screen-exec
+
+regenerate-built-sources:
+	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh
+
 EXTRA_DIST =			\
+	update-from-egg.sh	\
 	$(server_in_files)	\
 	$(pixmap_DATA)		\
 	$(bitmaps_DATA)		\

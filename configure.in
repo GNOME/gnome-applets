@@ -101,6 +101,18 @@ AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
 
+
+dnl
+dnl Check for gtk+ with multihead support
+dnl
+AC_MSG_CHECKING([for gtk+ multihead support])
+if $PKG_CONFIG --atleast-version 2.1.0 gtk+-2.0; then
+   AC_DEFINE(HAVE_GTK_MULTIHEAD,,[gtk+ with multihead support found])
+   AC_MSG_RESULT(yes)
+else
+   AC_MSG_RESULT(no)
+fi
+
 dnl ************************
 dnl **   Set up gettext   **
 dnl ************************

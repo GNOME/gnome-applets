@@ -30,6 +30,7 @@
 #include <libart_lgpl/libart.h>
 
 #include "global.h"
+#include "egg-screen-exec.h"
 
 static void
 about_cb (BonoboUIComponent *uic,
@@ -56,6 +57,10 @@ about_cb (BonoboUIComponent *uic,
     const gchar *translator_credits = _("translator_credits");
 
     if (about) {
+#ifdef HAVE_GTK_MULTIHEAD 
+	gtk_window_set_screen (GTK_WINDOW (about),
+			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+#endif
 	gtk_window_present (GTK_WINDOW (about));
 	return;
     }
@@ -83,7 +88,11 @@ about_cb (BonoboUIComponent *uic,
 
     if (pixbuf) 
    	gdk_pixbuf_unref (pixbuf);
-   
+  
+#ifdef HAVE_GTK_MULTIHEAD 
+    gtk_window_set_screen (GTK_WINDOW (about),
+   			   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+#endif
     gtk_window_set_wmclass (GTK_WINDOW (about), "system monitor", "System Monitor");
     g_signal_connect (G_OBJECT (about), "destroy",
 			G_CALLBACK (gtk_widget_destroyed), &about);
@@ -100,7 +109,13 @@ start_procman_cb (BonoboUIComponent *uic,
 {
 	GError *error = NULL;
 
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_execute_command_line_async (
+			gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
+			"gnome-system-monitor", &error);
+#else
 	g_spawn_command_line_async ("gnome-system-monitor", &error);
+#endif
 	if (error) {
 		GtkWidget *dialog;
 
@@ -116,6 +131,10 @@ start_procman_cb (BonoboUIComponent *uic,
 				  NULL);
 
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+#endif
 
 		gtk_widget_show (dialog);
 

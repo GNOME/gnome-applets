@@ -744,6 +744,10 @@ static gint updateOutput(gpointer data)
 		if (pixbuf)
 			gdk_pixbuf_unref (pixbuf);
 
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (about),
+				       gtk_widget_get_screen (stockdata->applet));
+#endif
 		gtk_widget_show (about);
 
 		return;
@@ -1217,6 +1221,10 @@ static gint updateOutput(gpointer data)
 		int ur,ug,ub, dr,dg,db; 
 		
 		if (stockdata->pb) {
+#ifdef HAVE_GTK_MULTIHEAD
+			gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
+					       gtk_widget_get_screen (stockdata->applet));
+#endif
 			gtk_window_present (GTK_WINDOW (stockdata->pb));
 			return;
 		}
@@ -1229,7 +1237,10 @@ static gint updateOutput(gpointer data)
 						             GTK_STOCK_HELP, 
 						             GTK_RESPONSE_HELP,
 						  	     NULL);
-
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
+				       gtk_widget_get_screen (stockdata->applet));
+#endif
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);

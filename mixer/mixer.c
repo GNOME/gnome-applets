@@ -504,6 +504,10 @@ mixer_popup_show (MixerData *data)
 	GdkGrabStatus   pointer, keyboard;
 
 	data->popup = gtk_window_new (GTK_WINDOW_POPUP);
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (data->popup),
+			       gtk_widget_get_screen (data->applet));
+#endif
 
 	data->vol_before_popup = readMixer ();
 	
@@ -740,7 +744,12 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 	if (!run_mixer_cmd)
 		return;
 
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_execute_command_line_async (
+			gtk_widget_get_screen (data->applet), run_mixer_cmd, &error);
+#else
 	g_spawn_command_line_async (run_mixer_cmd, &error);
+#endif
 	if (error) {
 		GtkWidget *dialog;
 
@@ -757,7 +766,10 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 				  NULL);
 
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (data->applet));
+#endif
 		gtk_widget_show (dialog);
 
 		g_error_free (error);
@@ -784,6 +796,10 @@ mixer_about_cb (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 	
         if (about) {
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (about),
+				       gtk_widget_get_screen (data->applet));
+#endif
                 gtk_window_present (GTK_WINDOW (about));
                 return;
         }
@@ -800,6 +816,10 @@ mixer_about_cb (BonoboUIComponent *uic,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
                                  pixbuf);
 
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (about),
+			       gtk_widget_get_screen (data->applet));
+#endif
 	gtk_window_set_wmclass (GTK_WINDOW(about), "volume control", "Volume Control");
 	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-mixer-applet.png");
         g_signal_connect (G_OBJECT (about), "destroy",
@@ -929,6 +949,10 @@ mixer_applet_create (PanelApplet *applet)
 						 GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
 						 ("Couldn't open mixer device %s\n"),
 						 device, NULL);
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (applet)));
+#endif
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);
 	}

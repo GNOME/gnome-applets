@@ -696,6 +696,10 @@ properties_box (BonoboUIComponent *uic,
     int i;
 
     if (mcdata->properties_box) {
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (mcdata->properties_box),
+			       gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
+#endif
         gtk_window_present (GTK_WINDOW (mcdata->properties_box));
 	return;
     }
@@ -708,6 +712,10 @@ properties_box (BonoboUIComponent *uic,
 						  NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (mcdata->properties_box), GTK_RESPONSE_CLOSE);
     gtk_window_set_default_size (GTK_WINDOW (mcdata->properties_box), 400, 300);
+#ifdef HAVE_GTK_MULTIHEAD
+    gtk_window_set_screen (GTK_WINDOW (mcdata->properties_box),
+			   gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
+#endif
     
     notebook = gtk_notebook_new ();
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mcdata->properties_box)->vbox), 
