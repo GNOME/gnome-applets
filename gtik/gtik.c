@@ -1033,7 +1033,7 @@
 		gtk_clist_column_titles_passive(GTK_CLIST(clist));
 		gtk_widget_set_usize(clist,100,-1);
 		gtk_clist_set_column_width(GTK_CLIST(clist),0,60);
-		gtk_clist_set_reorderable(GTK_CLIST(clist),FALSE);
+		gtk_clist_set_reorderable(GTK_CLIST(clist),TRUE);
 		gtk_signal_connect_object(GTK_OBJECT(clist),"drag_drop",
 				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
