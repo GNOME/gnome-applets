@@ -25,16 +25,16 @@
 
 G_BEGIN_DECLS
 
-PanelMenuEntry *panel_menu_actions_new(PanelMenu *parent, gchar *name);
-void panel_menu_actions_set_name(PanelMenuEntry *entry, gchar *name);
-void panel_menu_actions_destroy(PanelMenuEntry *entry);
-GtkWidget *panel_menu_actions_get_widget(PanelMenuEntry *entry);
-GtkWidget *panel_menu_actions_get_checkitem(PanelMenuEntry *entry);
-GtkWidget *panel_menu_actions_get_popup(PanelMenuEntry *entry);
-gchar *panel_menu_actions_dump_xml(PanelMenuEntry *entry);
-gboolean panel_menu_actions_accept_drop(PanelMenuEntry *entry, gchar *uri);
-gboolean panel_menu_actions_append_item(PanelMenuEntry *entry, gchar *uri);
-void panel_menu_actions_new_with_dialog(PanelMenu *panel_menu);
+PanelMenuEntry *panel_menu_actions_new (PanelMenu *parent, gchar *name);
+void panel_menu_actions_set_name (PanelMenuEntry *entry, const gchar *name);
+void panel_menu_actions_merge_ui (PanelMenuEntry *entry);
+void panel_menu_actions_destroy (PanelMenuEntry *entry);
+GtkWidget *panel_menu_actions_get_widget (PanelMenuEntry *entry);
+GtkWidget *panel_menu_actions_get_checkitem (PanelMenuEntry *entry);
+gchar *panel_menu_actions_dump_xml (PanelMenuEntry *entry);
+gboolean panel_menu_actions_accept_drop (PanelMenuEntry *entry, gchar *uri);
+gboolean panel_menu_actions_append_item (PanelMenuEntry *entry, gchar *uri);
+void panel_menu_actions_new_with_dialog (PanelMenu *panel_menu);
 
 G_END_DECLS
 

@@ -1,11 +1,15 @@
-/* quick-desktop-reader.h - Quick .desktop file reader
+/*
+   panel-menu-desktop-item.c - Quick .desktop file reader
 
+   From quick-desktop-reader:
    Copyright (C) 1999, 2000 Red Hat Inc.
    Copyright (C) 2001 Sid Vicious
    All rights reserved.
-
    This file is part of the Gnome Library.
-
+   Developed by Elliot Lee <sopwith@redhat.com> and Sid Vicious
+   
+   Modified for use in PanelMenu by Chris Phelps <chicane@reninet.com>
+   
    The Gnome Library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License as
    published by the Free Software Foundation; either version 2 of the
@@ -31,8 +35,7 @@
 
 G_BEGIN_DECLS
 
-typedef struct _PanelMenuDesktopItem
-{
+typedef struct _PanelMenuDesktopItem {
 	char *type;
 	/* localized and in UTF-8 */
 	char *name;
@@ -45,10 +48,14 @@ typedef struct _PanelMenuDesktopItem
 }PanelMenuDesktopItem;
 
 #define PANEL_MENU_DESKTOP_ITEM_TYPE (panel_menu_desktop_item_get_type ())
-GType panel_menu_desktop_item_get_type(void);
 
-PanelMenuDesktopItem *panel_menu_desktop_item_load_file(const char *file, const char *expected_type, gboolean run_tryexec);
-PanelMenuDesktopItem *panel_menu_desktop_item_load_uri (const char *uri, const char *expected_type, gboolean run_tryexec);
+GType panel_menu_desktop_item_get_type(void);
+PanelMenuDesktopItem *panel_menu_desktop_item_load_file (const char *file,
+							 const char *expected_type,
+							 gboolean run_tryexec);
+PanelMenuDesktopItem *panel_menu_desktop_item_load_uri (const char *uri,
+							const char *expected_type,
+							gboolean run_tryexec);
 void panel_menu_desktop_item_destroy(PanelMenuDesktopItem *item);
 char *panel_menu_desktop_item_find_icon(const char *icon);
 

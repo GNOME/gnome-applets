@@ -25,15 +25,18 @@
 
 G_BEGIN_DECLS
 
-PanelMenuEntry *panel_menu_options_new(PanelMenu *parent, const gchar *icon);
-void panel_menu_options_set_icon(PanelMenuEntry *entry, const gchar *icon, gint size);
-
-void panel_menu_options_destroy(PanelMenuEntry *entry);
-GtkWidget *panel_menu_options_get_widget(PanelMenuEntry *entry);
-void panel_menu_options_append_option(PanelMenuEntry *entry, GtkWidget *option);
-void panel_menu_options_insert_option(PanelMenuEntry *entry, GtkWidget *option, gint position);
-gchar *panel_menu_options_dump_xml(PanelMenuEntry *entry);
-void panel_menu_options_rescale(PanelMenuEntry *entry);
+PanelMenuEntry *panel_menu_options_new (PanelMenu *parent, const gchar *icon);
+void panel_menu_options_set_icon (PanelMenuEntry *entry,
+				  const gchar *icon,
+				  gint size);
+void panel_menu_options_destroy (PanelMenuEntry *entry);
+GtkWidget *panel_menu_options_get_widget (PanelMenuEntry *entry);
+void panel_menu_options_append_option (PanelMenuEntry *entry,
+				       GtkWidget *option);
+void panel_menu_options_insert_option (PanelMenuEntry *entry, GtkWidget *option,
+				       gint position);
+gchar *panel_menu_options_dump_xml (PanelMenuEntry *entry);
+void panel_menu_options_rescale (PanelMenuEntry *entry);
 
 G_END_DECLS
 

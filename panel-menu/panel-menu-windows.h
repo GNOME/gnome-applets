@@ -25,12 +25,12 @@
 
 G_BEGIN_DECLS
 
-PanelMenuEntry *panel_menu_windows_new(PanelMenu *parent);
-void panel_menu_windows_destroy(PanelMenuEntry *entry);
-GtkWidget *panel_menu_windows_get_widget(PanelMenuEntry *entry);
-GtkWidget *panel_menu_windows_get_checkitem(PanelMenuEntry *entry);
-GtkWidget *panel_menu_windows_get_popup(PanelMenuEntry *entry);
-gchar *panel_menu_windows_dump_xml(PanelMenuEntry *entry);
+PanelMenuEntry *panel_menu_windows_new (PanelMenu *parent);
+void panel_menu_windows_merge_ui (PanelMenuEntry *entry);
+void panel_menu_windows_destroy (PanelMenuEntry *entry);
+GtkWidget *panel_menu_windows_get_widget (PanelMenuEntry *entry);
+GtkWidget *panel_menu_windows_get_checkitem (PanelMenuEntry *entry);
+gchar *panel_menu_windows_dump_xml (PanelMenuEntry *entry);
 
 G_END_DECLS
 

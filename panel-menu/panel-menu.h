@@ -29,59 +29,59 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-    PANEL_MENU_TYPE_OPTIONS,
-    PANEL_MENU_TYPE_MENU_PATH,
-    PANEL_MENU_TYPE_LINKS,
-    PANEL_MENU_TYPE_DIRECTORY,
-    PANEL_MENU_TYPE_DOCUMENTS,
-    PANEL_MENU_TYPE_ACTIONS,
-    PANEL_MENU_TYPE_WINDOWS,
-    PANEL_MENU_TYPE_WORKSPACES
+	PANEL_MENU_TYPE_OPTIONS,
+	PANEL_MENU_TYPE_MENU_PATH,
+	PANEL_MENU_TYPE_LINKS,
+	PANEL_MENU_TYPE_DIRECTORY,
+	PANEL_MENU_TYPE_DOCUMENTS,
+	PANEL_MENU_TYPE_ACTIONS,
+	PANEL_MENU_TYPE_WINDOWS,
+	PANEL_MENU_TYPE_WORKSPACES
 }PanelMenuEntryType;
 
 typedef struct _PanelMenu
 {
-    PanelApplet *applet;
-    GtkWidget *menubar;
-    /* Information that we keep around */
-    GtkOrientation orientation;
-    gint size;
-    /* Background info */
-    PanelAppletBackgroundType bg_type;
-    GdkColor bg_color;
-    GdkPixbuf *bg_pixbuf;
-    gint pos_x;
-    gint pos_y;
-    /* Can't seem to re-set the style to a default, so we keep this around */
-    gboolean orig_bg_set;
-    GdkColor orig_bg_color;
-    GtkStyle *orig_style;
-    /* For session loading/saving */
-    gchar *profile_id;
-    gchar *applet_id;
-    /* Settings */
-    gboolean show_icon_handle;
-    gchar *icon_handle_image;
-    /* Settings (GConf) */
-    gboolean auto_popup_menus;
-    gint auto_popup_menus_timeout;
-    gboolean auto_directory_update;
-    gint auto_directory_update_timeout;
-    gboolean auto_save_config;
-    /* DnD data */
-    gint position;
-    gboolean on_item;
-    /* List of our children */
-    GList *entries;
-    /* If the config has changed since last save */
-    gboolean changed;
+	PanelApplet *applet;
+	GtkWidget *menubar;
+	/* Information that we keep around */
+	GtkOrientation orientation;
+	gint size;
+	/* Background info */
+	PanelAppletBackgroundType bg_type;
+	GdkColor bg_color;
+	GdkPixmap *bg_pixmap;
+	gint pos_x;
+	gint pos_y;
+	/* Can't seem to re-set the style to a default, so we keep this around */
+	gboolean orig_bg_set;
+	GdkColor orig_bg_color;
+	GtkStyle *orig_style;
+	/* For session loading/saving */
+	gchar *profile_id;
+	gchar *applet_id;
+	/* Settings */
+	gboolean show_icon_handle;
+	gchar *icon_handle_image;
+	/* Settings (GConf) */
+	gboolean auto_popup_menus;
+	gint auto_popup_menus_timeout;
+	gboolean auto_directory_update;
+	gint auto_directory_update_timeout;
+	gboolean auto_save_config;
+	/* DnD data */
+	gint position;
+	gboolean on_item;
+	/* List of our children */
+	GList *entries;
+	/* If the config has changed since last save */
+	gboolean changed;
 }PanelMenu;
 
 typedef struct _PanelMenuEntry
 {
-    PanelMenuEntryType type;
-    PanelMenu *parent;
-    gpointer data;
+	PanelMenuEntryType type;
+	PanelMenu *parent;
+	gpointer data;
 }PanelMenuEntry;
 
 gboolean panel_menu_construct_applet(PanelApplet *applet);

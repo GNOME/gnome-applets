@@ -27,32 +27,43 @@ G_BEGIN_DECLS
 
 #define ICON_SIZE 20
 
-void panel_menu_common_initialize(void);
-void panel_menu_common_set_changed(PanelMenu *panel_menu);
+void panel_menu_common_initialize (void);
+void panel_menu_common_set_changed (PanelMenu *panel_menu);
 
-void panel_menu_common_widget_dnd_init(PanelMenuEntry *entry);
+void panel_menu_common_widget_dnd_init (PanelMenuEntry *entry);
 
-void panel_menu_common_apps_menuitem_dnd_init(GtkWidget *menuitem);
-void panel_menu_common_activate_apps_menuitem(GtkWidget *menuitem, gpointer data);
-void panel_menu_common_destroy_apps_menuitem(GtkWidget *menuitem, gpointer data);
+void panel_menu_common_apps_menuitem_dnd_init (GtkWidget *menuitem);
+void panel_menu_common_activate_apps_menuitem (GtkWidget *menuitem, gpointer data);
+void panel_menu_common_destroy_apps_menuitem (GtkWidget *menuitem, gpointer data);
 
-void panel_menu_common_set_icon_scaled_from_file(GtkMenuItem *menuitem, gchar *file);
-void panel_menu_common_set_visibility(GtkCheckMenuItem *checkitem, GtkWidget *target);
-gchar *panel_menu_common_build_full_path(const gchar *path, const gchar *selection);
+void panel_menu_common_set_icon_scaled_from_file (GtkMenuItem *menuitem, gchar *file);
+void panel_menu_common_set_visibility (GtkCheckMenuItem *checkitem, GtkWidget *target);
+gchar *panel_menu_common_build_full_path (const gchar *path, const gchar *selection);
 
 PanelMenuEntry *panel_menu_common_find_options(PanelMenu *panel_menu);
 
-GtkWidget *panel_menu_common_menuitem_from_path(gchar *uri, GtkMenuShell *parent, gboolean append);
-GtkWidget *panel_menu_common_menu_from_path(gchar *name, gchar *subpath, GtkMenuShell *parent, gboolean append);
+GtkWidget *panel_menu_common_menuitem_from_path(gchar *uri, GtkMenuShell *parent,
+						gboolean append);
+GtkWidget *panel_menu_common_menu_from_path(gchar *name, gchar *subpath,
+					    GtkMenuShell *parent, gboolean append);
 
-GtkWidget *panel_menu_common_get_entry_menuitem(PanelMenuEntry *entry);
-GtkWidget *panel_menu_common_get_entry_checkitem(PanelMenuEntry *entry);
-GtkWidget *panel_menu_common_get_entry_popup(PanelMenuEntry *entry);
-void panel_menu_common_call_entry_destroy(PanelMenuEntry *entry);
+GtkWidget *panel_menu_common_get_entry_menuitem (PanelMenuEntry *entry);
+GtkWidget *panel_menu_common_get_entry_checkitem (PanelMenuEntry *entry);
 
-GtkWidget *panel_menu_common_construct_entry_popup(PanelMenuEntry *entry);
+void panel_menu_common_call_entry_destroy (PanelMenuEntry *entry);
 
-GtkWidget *panel_menu_common_single_entry_dialog_new(gchar *title, gchar *label, gchar *value, GtkWidget **entry);
+void panel_menu_common_merge_entry_ui (PanelMenuEntry *entry);
+
+void panel_menu_common_remove_entry (GtkWidget *widget,
+				     PanelMenuEntry *entry,
+				     const char *verb);
+
+void panel_menu_common_demerge_ui (PanelApplet *applet);
+
+GtkWidget *panel_menu_common_construct_entry_popup (PanelMenuEntry *entry);
+
+GtkWidget *panel_menu_common_single_entry_dialog_new (gchar *title, gchar *label,
+						      gchar *value, GtkWidget **entry);
 
 G_END_DECLS
 #endif

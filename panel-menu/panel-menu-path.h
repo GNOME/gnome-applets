@@ -1,4 +1,4 @@
-/*  panel-menu-documents.h
+/*  panel-menu-path.h
  *
  *  This library is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Library General Public License as published by
@@ -25,16 +25,16 @@
 
 G_BEGIN_DECLS
 
-PanelMenuEntry *panel_menu_path_new(PanelMenu *parent, gchar *menu_path);
-void panel_menu_path_set_uri(PanelMenuEntry *entry, gchar *uri);
-void panel_menu_path_destroy(PanelMenuEntry *entry);
-GtkWidget *panel_menu_path_get_widget(PanelMenuEntry *entry);
-GtkWidget *panel_menu_path_get_checkitem(PanelMenuEntry *entry);
-GtkWidget *panel_menu_path_get_popup(PanelMenuEntry *entry);
-gboolean panel_menu_path_accept_drop(PanelMenuEntry *entry, GnomeVFSURI *uri);
-gchar *panel_menu_path_dump_xml(PanelMenuEntry *entry);
-gboolean panel_menu_path_append_item(PanelMenuEntry *entry, gchar *uri);
-void panel_menu_path_new_with_dialog(PanelMenu *panel_menu);
+PanelMenuEntry *panel_menu_path_new (PanelMenu *parent, gchar *menu_path);
+void panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri);
+void panel_menu_path_merge_ui (PanelMenuEntry *entry);
+void panel_menu_path_destroy (PanelMenuEntry *entry);
+GtkWidget *panel_menu_path_get_widget (PanelMenuEntry *entry);
+GtkWidget *panel_menu_path_get_checkitem (PanelMenuEntry *entry);
+gboolean panel_menu_path_accept_drop (PanelMenuEntry *entry, GnomeVFSURI *uri);
+gchar *panel_menu_path_dump_xml (PanelMenuEntry *entry);
+gboolean panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri);
+void panel_menu_path_new_with_dialog (PanelMenu *panel_menu);
 
 G_END_DECLS
 

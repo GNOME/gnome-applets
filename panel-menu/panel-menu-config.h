@@ -1,4 +1,5 @@
 /*  panel-menu-config.h
+ *
  *  This library is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU Library General Public License as published by
  *  the Free Software Foundation; either version 2 of the License, or
@@ -26,13 +27,16 @@
 
 G_BEGIN_DECLS
 
-void applet_load_config_cb(BonoboUIComponent *uic, PanelMenu *panel_menu, const gchar *verbname);
-void applet_save_config_cb(BonoboUIComponent *uic, PanelMenu *panel_menu, const gchar *verbname);
-void panel_menu_config_load_prefs(PanelMenu *panel_menu);
-void panel_menu_config_save_prefs(PanelMenu *panel_menu);
-gboolean panel_menu_config_load_xml(PanelMenu *panel_menu);
-gboolean panel_menu_config_load_xml_string(PanelMenu *panel_menu, gchar *string, gint length);
-void panel_menu_config_save_xml(PanelMenu *panel_menu);
+void applet_load_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
+			   const gchar *verbname);
+void applet_save_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
+			   const gchar *verbname);
+void panel_menu_config_load_prefs (PanelMenu *panel_menu);
+void panel_menu_config_save_prefs (PanelMenu *panel_menu);
+gboolean panel_menu_config_load_xml (PanelMenu *panel_menu);
+gboolean panel_menu_config_load_xml_string (PanelMenu *panel_menu,
+					    gchar *string, gint length);
+void panel_menu_config_save_xml (PanelMenu *panel_menu);
 
 G_END_DECLS
 

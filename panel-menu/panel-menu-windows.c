@@ -25,12 +25,18 @@
 #include "panel-menu-common.h"
 #include "panel-menu-windows.h"
 
+static const gchar *windows_menu_xml =
+	"    <placeholder name=\"ChildItem\">\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Windows\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
+	"        <separator/>"
+	"    </placeholder>";
+
 typedef struct _PanelMenuWindows
 {
     GtkWidget *checkitem;
     GtkWidget *windows;
     GtkWidget *menu;
-    GtkWidget *popup;
     GtkWidget *active;
     /* What we are attached to */
     WnckScreen *screen;
@@ -84,13 +90,29 @@ panel_menu_windows_new(PanelMenu *parent)
     gtk_menu_shell_append(GTK_MENU_SHELL(windows->menu), tearoff);
     gtk_widget_show(tearoff);
     gtk_menu_item_set_submenu(GTK_MENU_ITEM(windows->windows), windows->menu);
-    windows->popup = panel_menu_common_construct_entry_popup(entry);
     /* Put *all* of the items in the menu */
     fill_windows_menu(GTK_MENU_SHELL(windows->menu));
     /* hide/show the proper windows */
     wnck_active_workspace_changed(wnck_screen_get(0), windows);
     setup_windows_signals(windows);
     return(entry);
+}
+
+void
+panel_menu_windows_merge_ui (PanelMenuEntry *entry)
+{
+	BonoboUIComponent  *component;
+	gchar *xml;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_WINDOWS);
+
+	component = panel_applet_get_popup_component (entry->parent->applet);
+
+	bonobo_ui_component_add_verb (component, "Remove",
+				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
+	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
+				 windows_menu_xml, NULL);
 }
 
 void
@@ -102,7 +124,6 @@ panel_menu_windows_destroy(PanelMenuEntry *entry)
     g_return_if_fail(entry->type == PANEL_MENU_TYPE_WINDOWS);
 
     windows = (PanelMenuWindows *)entry->data;
-    g_print("destroying the windows item...\n");
     g_signal_handler_disconnect(windows->screen, windows->active_window);
     g_signal_handler_disconnect(windows->screen, windows->window_opened);
     g_signal_handler_disconnect(windows->screen, windows->window_closed);
@@ -110,7 +131,6 @@ panel_menu_windows_destroy(PanelMenuEntry *entry)
     gtk_widget_destroy(windows->checkitem);
     gtk_widget_destroy(windows->windows);
     g_free(windows);
-    g_print("done destroying the windows item.\n");
 }
 
 GtkWidget *
@@ -136,19 +156,6 @@ panel_menu_windows_get_checkitem(PanelMenuEntry *entry)
     windows = (PanelMenuWindows *)entry->data;
     return(windows->checkitem);
 }
-
-GtkWidget *
-panel_menu_windows_get_popup(PanelMenuEntry *entry)
-{
-    PanelMenuWindows *windows;
-
-    g_return_val_if_fail(entry != NULL, NULL);
-    g_return_val_if_fail(entry->type == PANEL_MENU_TYPE_WINDOWS, NULL);
-
-    windows = (PanelMenuWindows *)entry->data;
-    return(windows->popup);
-}
-
 
 gchar *
 panel_menu_windows_dump_xml(PanelMenuEntry *entry)
