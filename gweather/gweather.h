@@ -68,9 +68,7 @@ struct _GWeatherApplet
 	GtkWidget *pref_net_proxy_url_entry;
 	GtkWidget *pref_net_proxy_user_entry;
 	GtkWidget *pref_net_proxy_passwd_entry;
-	GtkWidget *pref_loc_ctree;
-	GtkCTreeNode *pref_loc_root;
-	GtkCTreeNode *pref_loc_sel_node;
+	GtkWidget *pref_tree;
 	
 	/* dialog stuff */
 	GtkWidget *gweather_dialog;

@@ -29,7 +29,13 @@
 #include "gweather-pref.h"
 #include "gweather-applet.h"
 
-static void close_cb (GtkButton *button, gpointer user_data);
+enum
+{
+    COL_LOC = 0,
+    COL_POINTER,
+    NUM_COLUMNS,
+}; 
+
 
 static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
 {
@@ -76,16 +82,7 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     			      gw_applet->gweather_pref.use_proxy);
     gtk_widget_set_sensitive (gw_applet->pref_net_proxy_user_entry,
     			      gw_applet->gweather_pref.use_proxy);
-    gtk_widget_set_sensitive (gw_applet->pref_basic_update_spin, 
-    			      gw_applet->gweather_pref.update_enabled);
-    			      
-    node = gtk_ctree_find_by_row_data_custom(GTK_CTREE(gw_applet->pref_loc_ctree),
-                                     gw_applet->pref_loc_root, 
-                                     gw_applet->gweather_pref.location,
-                                     (GCompareFunc)cmp_loc);
-    g_return_val_if_fail(node != NULL, FALSE);
-    gtk_ctree_select(GTK_CTREE(gw_applet->pref_loc_ctree), node);
-
+    
     return TRUE;
 }
 
@@ -164,12 +161,18 @@ static void change_cb (GtkButton *button, gpointer user_data)
     return;
 }
 
-static void tree_select_row_cb (GtkCTree     *ctree,
-                                GtkCTreeNode *row,
-                                gint          column, gpointer data)
+static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-    WeatherLocation *loc = (WeatherLocation *)gtk_ctree_node_get_row_data(ctree, row);
+    GtkTreeModel *model;
+    WeatherLocation *loc = NULL;
+    GtkTreeIter iter;
+    
+    if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+    	return;
+    	
+    gtk_tree_model_get (model, &iter, COL_POINTER, &loc, -1);
+    
     if (!loc)
     	return;
     	
@@ -179,32 +182,56 @@ static void tree_select_row_cb (GtkCTree     *ctree,
     panel_applet_gconf_set_string(gw_applet->applet, "location1", loc->code, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location2", loc->zone, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location3", loc->radar, NULL);
+     
+} 
+
+static void row_activated_cb (GtkTreeView *tree, 
+			      GtkTreePath *path, 
+			      GtkTreeViewColumn *column,
+			      gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+    GtkTreeModel *model = gtk_tree_view_get_model (tree);
+    WeatherLocation *loc = NULL;
+    GtkTreeIter iter;
     
-    return;
+    if (!gtk_tree_model_get_iter (model, &iter, path))
+    	return;
+    	
+    gtk_tree_model_get (model, &iter, COL_POINTER, &loc, -1);
+    
+    if (loc)
+        gweather_update (gw_applet);
+
 }
 
 static void load_locations (GWeatherApplet *gw_applet)
 {
-    GtkCTreeNode *region, *state, *location;
-    GtkCTree *ctree = GTK_CTREE(gw_applet->pref_loc_ctree);
+    GtkTreeView *tree = GTK_TREE_VIEW(gw_applet->pref_tree);
+    GtkTreeStore *model;
+    GtkTreeViewColumn *column;
+    GtkCellRenderer *cell_renderer;
 
     gchar *pp[1], *path;
     gint nregions, iregions;
     gchar **regions;
+    
+    model = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
 
     path = g_strdup_printf("=%s=/", gnome_datadir_file("gweather/Locations"));
     gnome_config_push_prefix(path);
     g_free(path);
-
-    pp[0] = _("Regions");
-    gw_applet->pref_loc_root = gtk_ctree_insert_node (ctree, NULL, NULL, pp, 0,
-                                           NULL, NULL, NULL, NULL,
-                                           FALSE, TRUE);
+    
+    cell_renderer = gtk_cell_renderer_text_new ();
+    column = gtk_tree_view_column_new_with_attributes ("not used", cell_renderer,
+						       "text", COL_LOC, NULL);
+    gtk_tree_view_append_column (tree, column);
+    gtk_tree_view_set_expander_column (GTK_TREE_VIEW (tree), column);
 
     gnome_config_get_vector("Main/regions", &nregions, &regions);
 
-    region = NULL;
     for (iregions = nregions-1;  iregions >= 0;  iregions--) {
+        GtkTreeIter region_iter;
         gint nstates, istates;
         gchar **states;
         gchar *region_name;
@@ -213,51 +240,59 @@ static void load_locations (GWeatherApplet *gw_applet)
 
         region_name = gnome_config_get_string(region_name_key);
 
-        pp[0] = region_name;
-        region = gtk_ctree_insert_node (ctree, gw_applet->pref_loc_root, region, pp, 0,
-                                        NULL, NULL, NULL, NULL,
-                                        FALSE, FALSE);
-
+        gtk_tree_store_insert (model, &region_iter, NULL, 0);
+        gtk_tree_store_set (model, &region_iter, COL_LOC, region_name, -1);
+        
         gnome_config_get_vector(states_key, &nstates, &states);
 
-        state = NULL;
         for (istates = nstates - 1;  istates >= 0;  istates--) {
+            GtkTreeIter state_iter;
             void *iter;
             gchar *iter_key, *iter_val;
             gchar *state_path = g_strconcat(regions[iregions], "_", states[istates], "/", NULL);
             gchar *state_name_key = g_strconcat(state_path, "name", NULL);
             gchar *state_name = gnome_config_get_string(state_name_key);
 
-            pp[0] = state_name;
-            state = gtk_ctree_insert_node (ctree, region, state, pp, 0,
-                                            NULL, NULL, NULL, NULL,
-                                            FALSE, FALSE);
-
-            location = NULL;
+	    gtk_tree_store_insert (model, &state_iter, &region_iter, 0);
+            gtk_tree_store_set (model, &state_iter, COL_LOC, state_name, -1);
+            
             iter = gnome_config_init_iterator(state_path);
             while ((iter = gnome_config_iterator_next(iter, &iter_key, &iter_val)) != NULL) {
                 if (strstr(iter_key, "loc") != NULL) {
+                    GtkTreeIter loc_iter;
                     gchar **locdata;
                     gint nlocdata;
                     WeatherLocation *weather_location;
 
                     gnome_config_make_vector(iter_val, &nlocdata, &locdata);
                     g_return_if_fail(nlocdata == 4);
-
-                    pp[0] = locdata[0];
-                    location = gtk_ctree_insert_node (ctree, state, location, pp, 0,
-                                                      NULL, NULL, NULL, NULL,
-                                                      FALSE, TRUE);
-                    weather_location = weather_location_new(locdata[0], locdata[1], locdata[2], locdata[3]);
-                    gtk_ctree_node_set_row_data_full (ctree, location,
-                                                      weather_location,
-                                                      (GtkDestroyNotify)weather_location_free);
-
+                    
+		    weather_location = weather_location_new(locdata[0], 
+		    					    locdata[1], 
+		    					    locdata[2], 
+		    					    locdata[3]);
+                    gtk_tree_store_insert (model, &loc_iter, &state_iter, 0);
+                    gtk_tree_store_set (model, &loc_iter, COL_LOC, locdata[0], 
+                    			COL_POINTER, weather_location, -1);                 
+                    
+                    
                     if (gw_applet->gweather_pref.location && weather_location_equal(weather_location, gw_applet->gweather_pref.location)) {
-                        gtk_ctree_expand (ctree, state);
-                        gtk_ctree_expand (ctree, region);
+                        GtkTreePath *path;
+                        path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
+                                                        &region_iter);
+                        gtk_tree_view_expand_row (tree, path, FALSE);
+                        gtk_tree_path_free (path);
+                        path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
+                                                        &state_iter);
+                        gtk_tree_view_expand_row (tree, path, FALSE);
+                        gtk_tree_path_free (path);
+                        path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), 
+                                                        &loc_iter);
+                        gtk_tree_view_set_cursor (tree, path, NULL, FALSE);
+                        gtk_tree_view_scroll_to_cell (tree, path, NULL, TRUE, 0.5, 0.5);
+                        gtk_tree_path_free (path);
                     }
-
+		    
                     g_strfreev(locdata);
                 }
 
@@ -404,8 +439,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     GWeatherApplet *gw_applet = data;
     gtk_widget_destroy (GTK_WIDGET (dialog));
     gw_applet->pref = NULL;
-    
-    gweather_update(gw_applet);    
+     
 }
 
 static void gweather_pref_create (GWeatherApplet *gw_applet)
@@ -433,7 +467,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
-
+    GtkTreeStore *model;
+    GtkTreeSelection *selection;
     GtkWidget *pref_basic_vbox;
     GtkWidget *vbox;
     GtkWidget *frame;
@@ -460,18 +495,27 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
     scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    gtk_container_set_border_width (GTK_CONTAINER (scrolled_window), GNOME_PAD_SMALL);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
 				    GTK_POLICY_AUTOMATIC,
 				    GTK_POLICY_AUTOMATIC);
 
-    gw_applet->pref_loc_ctree = gtk_ctree_new (1, 0);
-    gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->pref_loc_ctree);
-    gtk_widget_show (gw_applet->pref_loc_ctree);
+    model = gtk_tree_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
+    gw_applet->pref_tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+    gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (gw_applet->pref_tree), FALSE);
+    g_object_unref (G_OBJECT (model));
+    
+    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (gw_applet->pref_tree));
+    g_signal_connect (G_OBJECT (selection), "changed",
+    		      G_CALLBACK (row_selected_cb), gw_applet);
+    /* Update applet when user double clicks */
+    g_signal_connect (G_OBJECT (gw_applet->pref_tree), "row_activated",
+    		      G_CALLBACK (row_activated_cb), gw_applet);
+    
+    gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->pref_tree);
+    gtk_widget_show (gw_applet->pref_tree);
     gtk_widget_show (scrolled_window);
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
-    gtk_clist_set_column_width (GTK_CLIST (gw_applet->pref_loc_ctree), 0, 80);
-    gtk_clist_set_selection_mode (GTK_CLIST (gw_applet->pref_loc_ctree), GTK_SELECTION_BROWSE);
-    gtk_clist_column_titles_hide (GTK_CLIST (gw_applet->pref_loc_ctree));
     load_locations(gw_applet);
 
     pref_loc_note_lbl = gtk_label_new (_("Location"));
@@ -664,9 +708,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (pref_basic_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2), pref_basic_note_lbl);
 
-    
-    gtk_signal_connect (GTK_OBJECT (gw_applet->pref_loc_ctree), "tree_select_row",
-			GTK_SIGNAL_FUNC (tree_select_row_cb), gw_applet);
+
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
     		      G_CALLBACK (response_cb), gw_applet);
 
@@ -696,40 +738,9 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.use_proxy =
     	panel_applet_gconf_get_bool(gw_applet->applet, "enable_proxy", NULL);
     gw_applet->gweather_pref.location = weather_location_config_read(gw_applet->applet);
-gw_applet->gweather_pref.detailed = FALSE;
-gw_applet->gweather_pref.radar_enabled = FALSE;
 
 	return;
 }
-/*
-void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet)
-{
-    gchar *prefix;
-
-    g_return_if_fail(path != NULL);
-
-    prefix = g_strconcat (path, "Preferences/", NULL);
-    gnome_config_push_prefix(prefix);
-    fprintf(stderr, "gweather_pref_save: %s\n", prefix);
-    g_free(prefix);
-
-    gnome_config_set_int("update_interval", gw_applet->gweather_pref.update_interval);
-    gnome_config_set_bool("update_enabled", gw_applet->gweather_pref.update_enabled);
-    gnome_config_set_bool("use_metric", gw_applet->gweather_pref.use_metric);
-    gnome_config_set_bool("detailed", gw_applet->gweather_pref.detailed);
-    gnome_config_set_bool("radar_enabled", gw_applet->gweather_pref.radar_enabled);
-    weather_location_config_write("location", gw_applet->gweather_pref.location);
-    gnome_config_set_string("proxy_url", gw_applet->gweather_pref.proxy_url);
-    gnome_config_set_string("proxy_user", gw_applet->gweather_pref.proxy_user);
-    gnome_config_private_set_string("proxy_passwd", gw_applet->gweather_pref.proxy_passwd);
-    gnome_config_set_bool("use_proxy", gw_applet->gweather_pref.use_proxy);
-
-    gnome_config_pop_prefix();
-
-    gnome_config_sync();
-    gnome_config_drop_all();
-}
-*/
 
 static void help_cb (void)
 {
@@ -744,8 +755,10 @@ static void help_cb (void)
 void gweather_pref_run (GWeatherApplet *gw_applet)
 {
     /* Only one preferences window at a time */
-    if (gw_applet->pref)
+    if (gw_applet->pref) {
+        gtk_window_present (GTK_WINDOW (gw_applet->pref));
 	return;
+    }
 
     gweather_pref_create(gw_applet);
     update_dialog(gw_applet);

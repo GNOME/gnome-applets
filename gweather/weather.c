@@ -85,21 +85,6 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
     return location;
 }
 
-void weather_location_config_write (gchar *prefix, WeatherLocation *location)
-{
-    gchar **locdata;
-
-    g_return_if_fail(prefix != NULL);
-
-    locdata = g_new(gchar *, 4);
-    locdata[0] = location->name;
-    locdata[1] = location->code;
-    locdata[2] = location->zone;
-    locdata[3] = location->radar;
-    gnome_config_set_vector(prefix, 4, (const char **)locdata);
-    g_free(locdata);
-}
-
 WeatherLocation *weather_location_config_read (PanelApplet *applet)
 {
     WeatherLocation *location;
@@ -1567,7 +1552,6 @@ void weather_info_config_write (WeatherInfo *info)
     g_return_if_fail(info != NULL);
 
     gnome_config_set_bool("valid", info->valid);
-    weather_location_config_write("location", info->location);
     gnome_config_set_int("units", (gint)info->units);
     gnome_config_set_int("update", info->update);
     gnome_config_set_int("sky", (gint)info->sky);

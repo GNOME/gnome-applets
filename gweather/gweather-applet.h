@@ -17,10 +17,6 @@
 #include "gweather.h"
 
 G_BEGIN_DECLS
-/*
-extern GtkWidget *gweather_applet;
-extern WeatherInfo *gweather_info;
-*/
 
 extern void gweather_applet_create(GWeatherApplet *gw_applet);
 
