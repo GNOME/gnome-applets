@@ -155,6 +155,13 @@ void create_gc(void)
                                 
 }
 
+static gint
+destroy_plug(GtkWidget *widget, gpointer data)
+{
+	gtk_exit(0);
+	return FALSE;
+}
+
 int main(int argc, char **argv)
 {
 	GtkWidget *plug;
@@ -184,6 +191,9 @@ int main(int argc, char **argv)
         cpuload = cpuload_new();
         gtk_container_add( GTK_CONTAINER(plug), cpuload );
         gtk_widget_show(plug);
+	gtk_signal_connect(GTK_OBJECT(plug),"destroy",
+			   GTK_SIGNAL_FUNC(destroy_plug),
+			   NULL);
 	
 	create_gc();
 
