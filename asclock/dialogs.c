@@ -1,9 +1,9 @@
 #include <config.h>
 #include <gdk/gdk.h>
+#include <math.h>
 #include <gnome.h>
 #include <applet-widget.h>
 #include <stdio.h>
-#include <math.h>
 #include <fcntl.h>
 #include <locale.h>
 #include "asclock.h"
