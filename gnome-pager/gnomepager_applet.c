@@ -198,7 +198,7 @@ cb_applet_about(AppletWidget * widget, gpointer data)
 	     _("Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"),
 	     authors,
 	     _("Pager for a GNOME compliant Window Manager"),
-	     NULL);
+	     "gnome-deskguide-splash.png");
 	gtk_widget_show(about);
 }
 
