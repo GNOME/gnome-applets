@@ -206,6 +206,7 @@ applet_fill (PanelApplet *applet)
 	DriveData *dd;
 	BonoboUIComponent *component;
 	gchar *tmp_path;
+	AtkObject *atk_obj;
 	
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/drivemount-applet.png");
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
@@ -262,6 +263,10 @@ applet_fill (PanelApplet *applet)
 		g_free (tmp_path);
 
 	redraw_pixmap (dd);
+
+	atk_obj = gtk_widget_get_accessible (dd->button);
+	atk_object_set_name (atk_obj, _("Disk Mounter"));
+
 	gtk_widget_show (GTK_WIDGET (applet));
 	start_callback_update (dd);
 	return TRUE;
