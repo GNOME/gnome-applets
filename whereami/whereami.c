@@ -26,7 +26,7 @@
 
 static char *idle_msg = N_("Where\nAm I?");
 
-static enum { idle, position, size } state;
+static enum { IDLE, POSITION, SIZE } state;
  
 static void
 about(AppletWidget *applet, gpointer data)
@@ -48,7 +48,7 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
   static int x, y;
   char where[100];
  
-  if (state == position)
+  if (state == POSITION)
     sprintf(where, "%+d\n%+d", x = motion->x_root, y = motion->y_root);
   else
     sprintf(where, "%+d\n%+d", (int)motion->x_root-x, (int)motion->y_root-y);
@@ -59,7 +59,7 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
 static void
 button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 {
-  if (state == idle && button->type == GDK_BUTTON_RELEASE)
+  if (state == IDLE && button->type == GDK_BUTTON_RELEASE)
     {
       GdkEventMask events =  GDK_POINTER_MOTION_MASK |
 	GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK;
@@ -71,17 +71,17 @@ button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
       gdk_cursor_destroy(cursor);
       /* FIX THIS: we should report the real cursor position here. */
       gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), "+0\n+0");
-      state = position;
+      state = POSITION;
     }
 
-  if (state == position && button->type == GDK_BUTTON_PRESS)
-    state = size;
+  if (state == POSITION && button->type == GDK_BUTTON_PRESS)
+    state = SIZE;
 
-  if (state == size && button->type == GDK_BUTTON_RELEASE)
+  if (state == SIZE && button->type == GDK_BUTTON_RELEASE)
     {
       gdk_pointer_ungrab(GDK_CURRENT_TIME);
       gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), idle_msg);
-      state = idle;
+      state = IDLE;
     }
 }
 
