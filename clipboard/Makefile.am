@@ -14,10 +14,14 @@ clipboard_applet_LDADD = \
 EXTRA_DIST = \
 	clipboard_applet.desktop	\
 	clipboard_applet.gnorba		\
-	copy.xpm set_selection.xpm
+	copy.xpm set_selection.xpm \
+	gnome-clipboard.png
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = clipboard_applet.desktop
+
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-clipboard.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = clipboard_applet.gnorba
