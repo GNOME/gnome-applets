@@ -12,7 +12,7 @@ bussign_applet_SOURCES = \
 
 
 bussign_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
+		     $(GNOME_LIBDIR) $(GNOMEGNORBA_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)      \
                      $(GHTTP_LIB)
 

@@ -11,7 +11,7 @@ slash_applet_SOURCES =  slashapp.c	\
 			properties.c
 
 slash_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS) -lXt \
+		     $(GNOME_LIBDIR) $(GNOMEGNORBA_LIBS) -lXt \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)      \
                      $(GHTTP_LIB)
 
