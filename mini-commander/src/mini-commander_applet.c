@@ -181,12 +181,13 @@ redraw_applet(void)
 
     if (prop.showHandle)
 	{
-	    if (prop.showFrame) {
-		/* inner frame */
-		frame = gtk_frame_new(NULL);
-		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
-		gtk_container_add(GTK_CONTAINER(frame), vbox);
-	    }
+	    if (prop.showFrame)
+		{
+		    /* inner frame */
+		    frame = gtk_frame_new(NULL);
+		    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
+		    gtk_container_add(GTK_CONTAINER(frame), vbox);
+		}
 	    
 	    /* add a handle box to allow moving away this appplet from the
 	       panel */
@@ -202,12 +203,13 @@ redraw_applet(void)
 	    else
 		gtk_container_add(GTK_CONTAINER(handle), vbox);
 	    
-	    if (prop.showFrame) {
-		/* outer frame */
-		frame2 = gtk_frame_new(NULL);
-		gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
-		gtk_container_add(GTK_CONTAINER(frame2), handle);
-	    }
+	    if (prop.showFrame)
+		{
+		    /* outer frame */
+		    frame2 = gtk_frame_new(NULL);
+		    gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
+		    gtk_container_add(GTK_CONTAINER(frame2), handle);
+		}
 	    
 	    /* there was trouble with thr tooltip */
 	    /* applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander")); */
@@ -219,19 +221,20 @@ redraw_applet(void)
 	} 
     else 
 	{
-	    if (prop.showFrame) {
-		/* inner frame */
-		frame = gtk_frame_new(NULL);
-		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
-		gtk_container_add(GTK_CONTAINER(frame), vbox);
-		
-		/* outer frame */
-		frame2 = gtk_frame_new(NULL);
-		gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
-		gtk_container_add(GTK_CONTAINER(frame2), frame);
-
-		gtk_box_pack_start(GTK_BOX(applet_inner_vbox), frame2, TRUE, TRUE, 0);
-	    }
+	    if (prop.showFrame)
+		{
+		    /* inner frame */
+		    frame = gtk_frame_new(NULL);
+		    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
+		    gtk_container_add(GTK_CONTAINER(frame), vbox);
+		    
+		    /* outer frame */
+		    frame2 = gtk_frame_new(NULL);
+		    gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
+		    gtk_container_add(GTK_CONTAINER(frame2), frame);
+		    
+		    gtk_box_pack_start(GTK_BOX(applet_inner_vbox), frame2, TRUE, TRUE, 0);
+		}
 	    else
 		gtk_box_pack_start(GTK_BOX(applet_inner_vbox), vbox, TRUE, TRUE, 0);
     }

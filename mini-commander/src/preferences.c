@@ -208,9 +208,8 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 
     resetTemporaryPrefs();
 
-    /*    gtk_widget_queue_resize(applet); */
-
-    /* why is this not done automatically??? */
+    /* Why is this not done automatically??? */
+    /* Ok, looks like this is done right now. */
     /*    saveSession(); */
 }
 
@@ -650,6 +649,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
     
     /* hint */
+    /*
     label = gtk_label_new((gchar *) _("\nSometimes the applet has to be moved on the panel\nto make a change of the size visible."));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
@@ -659,6 +659,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     3, 4,
 		     GTK_FILL, 0,
 		     0, 0);
+    */
 
     /* Color */
     frame = gtk_frame_new(_("Colors"));
