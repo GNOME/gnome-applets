@@ -2,7 +2,7 @@ SUBDIRS = themes default_theme docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-DASCLOCK_THEMES_DIR=\""$(datadir)/asclock/"\"   \
+	-DASCLOCK_THEMES_DIR=\""$(datadir)/asclock/"\"  \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	-DASCLOCK_GNOME -DVERSION=\""$(VERSION)"\"

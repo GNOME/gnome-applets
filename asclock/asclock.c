@@ -1,9 +1,8 @@
+#include <config.h>
 #include "asclock.h"
 #include <X11/X.h>
 #include <X11/Intrinsic.h>
 #ifdef ASCLOCK_GNOME
-/* needed for i18n stuff */
-#include <config.h>
 #include <gnome.h>
 #endif
 #include <gdk/gdkx.h>
@@ -316,16 +315,6 @@ void load_pixmaps(GtkWidget *window, GtkStyle *style)
     }
 }
 
-static int mytime()
-{
-  struct timeval tv;
-  struct timezone tz;
-
-  gettimeofday(&tv, &tz);
-
-  return tv.tv_sec;
-}
-
 static gint update_clock(gpointer data)
 {
   time_t unix_now;
@@ -335,7 +324,7 @@ static gint update_clock(gpointer data)
 
   my = (asclock *)data;
 
-  unix_now = mytime();
+  unix_now = time(NULL);
 
   if(unix_now != my->actual_time)
     {

@@ -1,5 +1,7 @@
 #ifndef ASCLOCK_H
 #define ASCLOCK_H
+#include <config.h>
+#include <sys/time.h>
 #include <ctype.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkprivate.h>
@@ -11,11 +13,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <dirent.h>
-#include <time.h>
-#include <sys/time.h>
 #include <sys/stat.h>
 #ifdef ASCLOCK_GNOME
-#include <config.h>
 #include <applet-widget.h>
 #endif
 
