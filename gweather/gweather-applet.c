@@ -297,6 +297,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     GtkWidget *pixmap;
     GtkTooltips *tooltips;
     GtkIconInfo *icon_info;
+    AtkObject *atk_obj;
 
     gw_applet->about_dialog = NULL;
  
@@ -334,6 +335,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     tooltips = gtk_tooltips_new();
 
     gtk_tooltips_set_tip(tooltips, GTK_WIDGET(gw_applet->applet), _("GNOME Weather"), NULL);
+
+    atk_obj = gtk_widget_get_accessible (GTK_WIDGET (gw_applet->applet));
+    if (GTK_IS_ACCESSIBLE (atk_obj))
+	   atk_object_set_name (atk_obj, _("GNOME Weather"));
 
     gw_applet->size = panel_applet_get_size (gw_applet->applet);
 
