@@ -663,7 +663,7 @@ int main (int argc, char *argv[])
 		}
 
 
-	applet = applet_widget_new();
+	applet = applet_widget_new("modemlights_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 

@@ -14,8 +14,8 @@ clockmail_applet_SOURCES = \
 
 
 clockmail_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	clockmail_applet.desktop	\
@@ -23,8 +23,11 @@ EXTRA_DIST = \
 	digmed.xpm			\
 	mailpics.xpm			\
 	clockmaildata			\
-	THEME-SPEC
+	THEME-SPEC			\
+	clockmail_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = clockmail_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = clockmail_applet.gnorba

@@ -112,7 +112,7 @@ int main( int argc, char *argv[] )
     applet_widget_init_defaults("asclock_applet", VERSION, argc, argv,
 				NULL, 0, NULL);
 
-    applet = applet_widget_new();
+    applet = applet_widget_new("asclock_applet");
 
     if (!applet)
       g_error("Can't create asclock applet");

@@ -13,8 +13,8 @@ modemlights_applet_SOURCES = \
 	properties.c
 
 modemlights_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	modemlights_applet.desktop	\
@@ -22,8 +22,11 @@ EXTRA_DIST = \
 	backgrnd_s.xpm			\
 	button_off.xpm			\
 	button_on.xpm			\
-	lights.xpm
+	lights.xpm			\
+	modemlights_applet.gnorba
 
 sysdir = $(datadir)/applets/Network
 sys_DATA = modemlights_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = modemlights_applet.gnorba

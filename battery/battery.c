@@ -392,7 +392,7 @@ make_new_battery_applet(void)
 
   bat = g_new(BatteryData, 1);
 
-  bat->applet = applet_widget_new_with_param(param);
+  bat->applet = applet_widget_new_with_param(param, "battery_applet");
 
   if (bat->applet == NULL)
     g_error(_("Can't create applet!\n"));

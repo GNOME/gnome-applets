@@ -477,7 +477,7 @@ static void applet_start_new_applet(const gchar *param, gpointer data)
 {
 	GtkWidget *applet;
 
-	applet = applet_widget_new_with_param(param);
+	applet = applet_widget_new_with_param(param, "clockmail_applet");
 		if (!applet)
 			g_error("Can't create applet!\n");
 
@@ -493,9 +493,9 @@ int main (int argc, char *argv[])
 	textdomain (PACKAGE);
 
 	applet_widget_init("clockmail_applet", VERSION, argc, argv, NULL, 0,
-			NULL, TRUE, TRUE, applet_start_new_applet, NULL);
+			   NULL, TRUE, TRUE, applet_start_new_applet, NULL);
 
-	applet = applet_widget_new();
+	applet = applet_widget_new("clockmail_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 

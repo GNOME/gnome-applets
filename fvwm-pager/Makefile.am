@@ -22,12 +22,12 @@ fvwm_pager_SOURCES = fvwm-pager.c \
 fvwm_pager_LDADD = \
 	../../panel/libpanel_applet.la \
 	@FVWM2LIBS@                    \
-	$(GNOME_LIBDIR) $(ORB_LIBS)    \
-	$(GNOMEUI_LIBS)                \
+	$(GNOME_LIBDIR) \
+	$(GNOMEGNORBA_LIBS)                \
 	$(INTLLIBS)
 
 CFLAGS += -DVERSION=\"0.2\"
 
-EXTRA_DIST = TODO README NEWS
-
-
+EXTRA_DIST = TODO README NEWS fvwm_pager.gnorba
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = fvwm_pager.gnorba 

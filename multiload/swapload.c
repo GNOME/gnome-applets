@@ -212,7 +212,7 @@ make_swapload_applet (const gchar *param)
 	Swapload *swapload;
 
         /* create a new applet_widget */
-        applet = applet_widget_new_with_param (param);
+        applet = applet_widget_new_with_param (param, "multiload_swapload_applet");
         /* in the rare case that the communication with the panel
            failed, error out */
         if (!applet)

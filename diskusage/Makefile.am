@@ -14,11 +14,14 @@ diskusage_applet_SOURCES = \
 	properties.h
 
 diskusage_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-EXTRA_DIST = diskusage_applet.desktop
+EXTRA_DIST = diskusage_applet.desktop diskusage_applet.gnorba
 
 sysdir = $(datadir)/applets/Monitors
 sys_DATA = diskusage_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = diskusage_applet.gnorba

@@ -284,7 +284,7 @@ main (int argc, char **argv)
 	applet_widget_init_defaults ("fifteen_applet", VERSION, argc,
 				     argv, NULL, 0, NULL);
 
-	applet = applet_widget_new ();
+	applet = applet_widget_new ("fifteen_applet");
 	if (!applet)
 		g_error (_("Can't create fifteen applet!"));
 

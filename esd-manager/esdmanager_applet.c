@@ -64,7 +64,7 @@ main(int argc, char *argv[])
   
   applet_widget_init_defaults("esdmanager_applet", NULL, argc, argv, 0, NULL, argv[0]);
 
-  applet = applet_widget_new();
+  applet = applet_widget_new("esdmanager_applet");
   if (!applet)
     g_error("Can't create applet!\n");
 

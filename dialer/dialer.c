@@ -142,9 +142,9 @@ int main(int argc, char **argv)
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 	
-	applet_widget_init_defaults ("dialer applet", VERSION, argc, argv, NULL, 0, NULL);
+	applet_widget_init_defaults ("dialer_applet", VERSION, argc, argv, NULL, 0, NULL);
 	
-	applet = applet_widget_new();
+	applet = applet_widget_new("dialer_applet");
 	if(!applet) g_print("Cannot create applet!\n");
 	
 	gtk_widget_realize(applet);

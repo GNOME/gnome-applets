@@ -12,8 +12,8 @@ drivemount_applet_SOURCES = \
 	properties.c
 
 drivemount_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	drivemount_applet.desktop	\
@@ -32,8 +32,11 @@ EXTRA_DIST = \
 	zipdrive_h_in.xpm		\
 	zipdrive_h_out.xpm		\
 	zipdrive_v_in.xpm		\
-	zipdrive_v_out.xpm
+	zipdrive_v_out.xpm		\
+	drivemount_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = drivemount_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = drivemount_applet.gnorba

@@ -22,13 +22,13 @@ multiload_applet_SOURCES = cpuload.c 	\
 			   properties-swap.h
 
 multiload_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
 EXTRA_DIST = Multiload.desktop \
 		cpuload_applet.desktop memload_applet.desktop \
-		swapload_applet.desktop
+		swapload_applet.desktop multiload_applet.gnorba
 
 appletdir	= $(datadir)/applets
 
@@ -46,3 +46,6 @@ EXTRA_DIST	= $(Directory_files) $(Multiload_DATA)
 install-data-local:
 	$(mkinstalldirs) $(Multiloaddir)
 	$(INSTALL_DATA) $(srcdir)/Multiload.directory $(Multiloaddir)/.directory
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = multiload_applet.gnorba 

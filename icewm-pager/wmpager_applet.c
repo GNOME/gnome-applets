@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    applet = applet_widget_new();
+    applet = applet_widget_new("wmpager_applet");
     if (!applet)
         g_error("Can't create applet!\n");
 

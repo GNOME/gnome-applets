@@ -9,12 +9,14 @@ bin_PROGRAMS = charpick_applet
 charpick_applet_SOURCES = charpick.c
 
 charpick_applet_LDADD = ../../panel/libpanel_applet.la	\
-		       $(GNOME_LIBDIR) $(ORB_LIBS)	\
-		       $(GNOMEUI_LIBS) $(INTLLIBS) 
+		       $(GNOME_LIBDIR) \
+		       $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	charpick_applet.desktop
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = charpick_applet.desktop
+sys_DATA = charpick_applet.desktop charpick_applet.gnorba
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = charpick_applet.gnorba

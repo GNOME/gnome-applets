@@ -9,12 +9,14 @@ bin_PROGRAMS = fifteen_applet
 fifteen_applet_SOURCES = fifteen.c
 
 fifteen_applet_LDADD = ../../panel/libpanel_applet.la	\
-		       $(GNOME_LIBDIR) $(ORB_LIBS)	\
-		       $(GNOMEUI_LIBS) $(INTLLIBS) 
+		       $(GNOME_LIBDIR) \
+		       $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
-	fifteen_applet.desktop
+	fifteen_applet.desktop fifteen_applet.gnorba
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = fifteen_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = fifteen_applet.gnorba

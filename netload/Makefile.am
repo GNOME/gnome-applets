@@ -16,11 +16,14 @@ netload_applet_SOURCES = \
 	properties.h
 
 netload_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-EXTRA_DIST = netload_applet.desktop
+EXTRA_DIST = netload_applet.desktop netload_applet.gnorba
 
 sysdir = $(datadir)/applets/Network
 sys_DATA = netload_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = netload_applet.gnorba 

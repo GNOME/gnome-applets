@@ -15,10 +15,11 @@ cdplayer_applet_SOURCES =	\
 	cdrom-$(CDROM_HOST).c 
 
 cdplayer_applet_LDADD = ../../panel/libpanel_applet.la		\
-		     $(GNOME_LIBDIR) $(ORB_LIBS)     		\
-		     $(GNOMEUI_LIBS) $(INTLLIBS)
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)
 
-EXTRA_DIST = cdplayer_applet.desktop cdrom-linux.c cdrom-solaris.c
+EXTRA_DIST = cdplayer_applet.desktop cdrom-linux.c cdrom-solaris.c \
+	     cdplayer_applet.gnorba
 
 sysdir = $(datadir)/applets/Multimedia
 sys_DATA = cdplayer_applet.desktop
@@ -26,3 +27,6 @@ sys_DATA = cdplayer_applet.desktop
 dist-hook:
 	mkdir $(distdir)/images
 	cp $(srcdir)/images/*.xpm $(distdir)/images
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = cdplayer_applet.gnorba 

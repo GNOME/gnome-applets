@@ -444,7 +444,7 @@ main(int argc, char **argv)
 	applet_widget_init_defaults("batmon_applet", VERSION, argc,
 				    argv, NULL, 0, NULL);
 
-	applet = applet_widget_new();
+	applet = applet_widget_new("batmon_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 

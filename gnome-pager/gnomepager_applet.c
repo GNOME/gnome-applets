@@ -1226,7 +1226,7 @@ main(int argc, char *argv[])
   gdk_imlib_data_to_pixmap(icon1_xpm, &p_1, &m_1);
   gdk_imlib_data_to_pixmap(icon2_xpm, &p_2, &m_2);
   gdk_imlib_data_to_pixmap(icon3_xpm, &p_3, &m_3);
-  applet = applet_widget_new();
+  applet = applet_widget_new("gnomepager_applet");
   if (!applet)
     {
       g_error("Can't create applet!\n");

@@ -15,8 +15,8 @@ asclock_applet_SOURCES = \
 
 
 asclock_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	asclock_applet.desktop	\
@@ -24,8 +24,11 @@ EXTRA_DIST = \
 	led.xpm			\
 	weekday.xpm             \
         month.xpm               \
-        date.xpm
+        date.xpm		\
+	asclock_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = asclock_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = asclock_applet.gnorba

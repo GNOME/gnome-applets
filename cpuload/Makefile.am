@@ -14,11 +14,14 @@ cpuload_applet_SOURCES = cpuload.c 	\
 			 properties.h
 
 cpuload_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-EXTRA_DIST = cpuload_applet.desktop
+EXTRA_DIST = cpuload_applet.desktop cpuload_applet.gnorba
 
 sysdir = $(datadir)/applets/Monitors
 sys_DATA = cpuload_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = cpuload_applet.gnorba 

@@ -676,7 +676,7 @@ int main(int argc, char **argv)
         applet_widget_init_defaults("diskusage_applet", NULL, argc, argv,
 				    NULL, 0, NULL);
 
-	applet = applet_widget_new();
+	applet = applet_widget_new("diskusage_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 

@@ -254,11 +254,11 @@ main (int argc, char *argv[])
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
   /* initialize applet */
-  applet_widget_init_defaults("hello_applet", VERSION, argc, argv,
+  applet_widget_init_defaults("charpick_applet", VERSION, argc, argv,
 			      NULL, 0, NULL);
 
   /* create a new applet_widget */
-  applet = applet_widget_new();
+  applet = applet_widget_new("charpick_applet");
   /* in the rare case that the communication with the panel
      failed, error out */
   if (!applet)

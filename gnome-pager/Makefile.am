@@ -12,11 +12,13 @@ gnomepager_applet_SOURCES = \
 	gnomepager.h
 
 gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = gnomepager_applet.desktop
+EXTRA_DIST = gnomepager_applet.desktop gnomepager_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gnomepager_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = gnomepager_applet.gnorba 

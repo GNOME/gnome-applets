@@ -280,7 +280,7 @@ main(int argc, char **argv)
 				    NULL, 0, NULL);
 
 	/* create a new applet_widget */
-	WC.applet = applet_widget_new();
+	WC.applet = applet_widget_new("webcontrol_applet");
 	/* in the rare case that the communication with the panel
 	   failed, error out */
 	if (!WC.applet)

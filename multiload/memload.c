@@ -251,7 +251,7 @@ make_memload_applet (const gchar *param)
 	Memload *memload;
 
         /* create a new applet_widget */
-        applet = applet_widget_new_with_param (param);
+        applet = applet_widget_new_with_param (param, "multiload_memload_applet");
         /* in the rare case that the communication with the panel
            failed, error out */
         if (!applet)

@@ -16,11 +16,14 @@ cpumemusage_applet_SOURCES = \
 
 
 cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(GNOME_LIBDIR) \
+		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-EXTRA_DIST = cpumemusage_applet.desktop
+EXTRA_DIST = cpumemusage_applet.desktop cpumemusage_applet.gnorba
 
 sysdir = $(datadir)/applets/Monitors
 sys_DATA = cpumemusage_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = cpumemusage_applet.gnorba 

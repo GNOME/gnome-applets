@@ -16,10 +16,13 @@ battery_applet_SOURCES = battery.c 	\
 			 session.h
 
 battery_applet_LDADD = ../../panel/libpanel_applet.la \
-			$(GNOME_LIBDIR) $(ORB_LIBS)      \
-			$(GNOMEUI_LIBS) $(INTLLIBS)
+			$(GNOME_LIBDIR)  \
+			$(GNOMEGNORBA_LIBS) $(INTLLIBS)
 
-EXTRA_DIST = battery_applet.desktop
+EXTRA_DIST = battery_applet.desktop battery_applet.gnorba
 
 sysdir = $(datadir)/applets/Monitors
 sys_DATA = battery_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = battery_applet.gnorba
