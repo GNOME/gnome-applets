@@ -107,10 +107,13 @@ int main(int argc, char **argv)
         vbox = gtk_vbox_new(FALSE, 0);
 	gtk_container_border_width(GTK_CONTAINER(vbox), 0);
 
+	/* add command line; position: top */
 	initCommandEntry();
-        gtk_box_pack_start(GTK_BOX(vbox), entryCommand, TRUE, TRUE, 0);
+        gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
 
+	/* add message label */
 	initMessageLabel();
+	/* do not center text but put it to bottom */
 	gtk_misc_set_alignment(GTK_MISC(labelMessage), 0.0, 1.0);
         gtk_box_pack_end(GTK_BOX(vbox), labelMessage, TRUE, TRUE, 0);
 
