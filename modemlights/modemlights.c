@@ -632,16 +632,7 @@ static void setup_colors()
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	/* resize the applet and set the proper background pixmap */
-	static int first_call_flag = FALSE;
 	orient = o;
-
-	/* catch 22 with the display_area realize and the signal connect for the orient
-	   first time through only needs to get the orient, errors if anything is drawn */
-	if (!first_call_flag)
-		{
-		first_call_flag = TRUE;
-		return;
-		}
 
 	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
 		{
@@ -721,7 +712,7 @@ int main (int argc, char *argv[])
 	gtk_widget_show(frame);
 
 	display_area = gtk_drawing_area_new();
-	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),20,30);
+	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),5,5);
 	gtk_fixed_put(GTK_FIXED(frame),display_area,0,0);
 	gtk_widget_show(display_area);
 
@@ -734,21 +725,20 @@ int main (int argc, char *argv[])
         style->bg[GTK_STATE_PRELIGHT] = button_color2;
         gtk_widget_set_style(button, style);
 
-	gtk_widget_set_usize(button,20,16);
-	gtk_fixed_put(GTK_FIXED(frame),button,0,30);
+	gtk_widget_set_usize(button,5,5);
+	gtk_fixed_put(GTK_FIXED(frame),button,5,0);
 	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
 	gtk_widget_show(button);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-				GTK_SIGNAL_FUNC(applet_change_orient),
-				NULL);
 	applet_widget_add(APPLET_WIDGET(applet), frame);
 	gtk_widget_realize(applet);
 	gtk_widget_realize(display_area);
 
 	setup_colors();
 	create_pixmaps();
-	applet_change_orient(applet, orient, NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+				GTK_SIGNAL_FUNC(applet_change_orient),
+				NULL);
 
 	button_pixmap = gtk_pixmap_new(button_off, NULL);
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
