@@ -730,8 +730,16 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
 void gweather_pref_load (GWeatherApplet *gw_applet)
 {
+    GError *error = NULL;
+
     gw_applet->gweather_pref.update_interval = 
-    	panel_applet_gconf_get_int(gw_applet->applet, "auto_update_interval", NULL);
+    	panel_applet_gconf_get_int(gw_applet->applet, "auto_update_interval", &error);
+    if (error) {
+	g_print ("%s \n", error->message);
+	g_error_free (error);
+	error = NULL;
+    }
+    gw_applet->gweather_pref.update_interval = MAX (gw_applet->gweather_pref.update_interval, 1000);
     gw_applet->gweather_pref.update_enabled =
     	panel_applet_gconf_get_bool(gw_applet->applet, "auto_update", NULL);
     gw_applet->gweather_pref.use_metric = 
