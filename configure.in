@@ -1,7 +1,7 @@
 AC_INIT(sound-monitor/main.c)
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 1.1.2cvs)
+AM_INIT_AUTOMAKE(gnome-applets, 1.1.3cvs)
 
 AM_MAINTAINER_MODE
 
@@ -45,22 +45,22 @@ AM_PATH_ESD(,have_libesd=yes,
 AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
 
 dnl gumma
-have_xmms=false
-CPPFLAGS_save=$CPPFLAGS
-LDFLAGS_save=$LDFLAGS
-CPPFLAGS=`gnome-config --cflags gnomeui`
-LDFLAGS=`gnome-config --libs gnomeui`
+dnl have_xmms=false
+dnl CPPFLAGS_save=$CPPFLAGS
+dnl LDFLAGS_save=$LDFLAGS
+dnl CPPFLAGS=`gnome-config --cflags gnomeui`
+dnl LDFLAGS=`gnome-config --libs gnomeui`
 
-AC_CHECK_HEADER(xmms/xmmsctrl.h,
-[AC_CHECK_LIB(xmms, xmms_remote_is_running,have_xmms=true)])
-AM_CONDITIONAL(HAVE_XMMS,$have_xmms)
-CPPFLAGS=$CPPFLAGS_save
-LDFLAGS=$LDFLAGS_save
+dnl AC_CHECK_HEADER(xmms/xmmsctrl.h,
+dnl [AC_CHECK_LIB(xmms, xmms_remote_is_running,have_xmms=true)])
+dnl AM_CONDITIONAL(HAVE_XMMS,$have_xmms)
+dnl CPPFLAGS=$CPPFLAGS_save
+dnl LDFLAGS=$LDFLAGS_save
 
 dnl AM_CONDITIONAL(HAVE_XMMS,test $have_xmms)
-if test x$HAVE_XMMS != x$yes; then
-  AC_MSG_WARN([*** \`xmms' plugin for gumma will not be built ***])
-fi
+dnl if test x$HAVE_XMMS != x$yes; then
+dnl   AC_MSG_WARN([*** \`xmms' plugin for gumma will not be built ***])
+dnl fi
 
 dnl screenshooter
 have_wordexp=false
@@ -79,7 +79,7 @@ esac
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
 if test -z "$CDROM_HOST"; then
-  AC_MSG_WARN([*** \`cd' plugin for gumma will not be built ***])
+dnl  AC_MSG_WARN([*** \`cd' plugin for gumma will not be built ***])
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
 fi
 
@@ -110,7 +110,6 @@ GNOME_XML_HOOK
 AM_CONDITIONAL(HAVE_LIBXML, test -n "$GNOME_XML_LIB")
 if test -z "$GNOME_XML_LIB"; then
   AC_MSG_WARN([*** \`gnotes' applet will not be built ***])
-  AC_MSG_WARN([*** \`bug-applet' applet will not be built ***])
   AC_MSG_WARN([*** \`slashapp' applet will not be build ***])
 fi
 
@@ -156,7 +155,6 @@ asclock/Makefile
 asclock/default_theme/Makefile
 asclock/themes/Makefile
 battery/Makefile
-bug-applet/Makefile
 cdplayer/Makefile
 clipboard/Makefile
 clockmail/Makefile
@@ -172,10 +170,6 @@ gkb/Makefile
 gkb/gkb/Makefile
 gkb/xmodmap/Makefile
 gnotes/Makefile
-gumma/Makefile
-gumma/cd/Makefile
-gumma/gqmpeg/Makefile
-gumma/xmms/Makefile
 gweather/Makefile
 gweather/pixmaps/Makefile
 gweather/docs/Makefile
@@ -210,6 +204,10 @@ dnl esd-manager/Makefile
 dnl fvwm-pager/Makefile
 dnl gnome-pager/Makefile
 dnl gticker/Makefile
+dnl gumma/Makefile
+dnl gumma/cd/Makefile
+dnl gumma/gqmpeg/Makefile
+dnl gumma/xmms/Makefile
 dnl icewm-pager/Makefile
 dnl netload/Makefile
 dnl netwatch/Makefile

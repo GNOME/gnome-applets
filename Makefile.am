@@ -13,8 +13,7 @@ wordexp_SUBDIRS = $(wordexp_applets)
 endif
 
 xml_applets = \
-	gnotes	\
-	bug-applet
+	gnotes
 if HAVE_LIBXML
 xml_SUBDIRS = $(xml_applets)
 endif
@@ -93,7 +92,6 @@ SUBDIRS = \
 
 DIST_SUBDIRS = \
 	intl po macros		\
-	gumma			\
 	$(always_built_SUBDIRS)	\
 	$(gtop_applets)		\
 	$(ghttp_applets)	\
