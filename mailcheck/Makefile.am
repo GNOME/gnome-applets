@@ -5,10 +5,6 @@ INCLUDES = 							\
 	$(WARN_CFLAGS) 						\
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(DISABLE_DEPRECATED_CFLAGS)				\
-	-DDATADIR=\""$(datadir)"\"				\
-	-DLIBDIR=\""$(libdir)"\"				\
-	-DSYSCONFDIR=\""$(sysconfdir)"\"			\
-	-DPREFIX=\""$(prefix)"\"				\
 	-DGNOME_ICONDIR=\""$(datadir)/pixmaps\""		\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 
 
