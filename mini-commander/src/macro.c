@@ -22,8 +22,8 @@
 #include <config.h>
 #include <sys/types.h>
 #include <string.h>
+#include <stdlib.h>
 #include <regex.h>
-#include <gnome.h>
 
 #include "macro.h"
 #include "preferences.h"

@@ -21,9 +21,21 @@
 
 #include <config.h>
 #include <string.h>
-#include <gnome.h>
-#include <panel-applet.h>
+#include <stdlib.h>
+
 #include <gdk/gdkkeysyms.h>
+#include <gtk/gtkcellrenderertext.h>
+#include <gtk/gtkentry.h>
+#include <gtk/gtkfilechooser.h>
+#include <gtk/gtkfilechooserdialog.h>
+#include <gtk/gtkframe.h>
+#include <gtk/gtkmain.h>
+#include <gtk/gtkscrolledwindow.h>
+#include <gtk/gtkstock.h>
+#include <gtk/gtktreeselection.h>
+#include <gtk/gtktreeview.h>
+
+#include <panel-applet.h>
 
 #include "mini-commander_applet.h"
 #include "command_line.h"

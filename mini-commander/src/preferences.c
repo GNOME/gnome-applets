@@ -26,10 +26,17 @@
 #include "preferences.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
+
+#include <gtk/gtkcellrenderertext.h>
+#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtktogglebutton.h>
+#include <gtk/gtkspinbutton.h>
+#include <gtk/gtktreeselection.h>
+#include <gtk/gtktreeview.h>
+
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-#include <libgnome/libgnome.h>
+#include <libgnome/gnome-init.h>
 #include <libgnomeui/gnome-color-picker.h>
 #include <libgnomeui/gnome-help.h>
 #include <glade/glade-xml.h>

@@ -22,11 +22,9 @@
 #include <config.h>
 #include <string.h>
 
-#include <libgnome/gnome-exec.h>
-
 #include <glib.h>
-#include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <gdk/gdkspawn.h>
+#include <gtk/gtkentry.h>
 #include <gconf/gconf-client.h>
 
 #include "exec.h"

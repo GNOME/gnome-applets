@@ -33,7 +33,7 @@
 #include <config.h>
 #include <stdio.h>
 
-#include <libgnome/gnome-i18n.h>
+#include <glib/gi18n.h>
 #include <gconf/gconf.h>
 #include <gconf/gconf-client.h>
 #include <gconf/gconf-engine.h>

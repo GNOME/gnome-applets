@@ -21,7 +21,8 @@
 
 #include <config.h>
 
-#include <gtk/gtk.h>
+#include <glib.h>
+#include <gtk/gtkaboutdialog.h>
 
 #include "about.h"
 

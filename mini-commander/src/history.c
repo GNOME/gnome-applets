@@ -24,7 +24,8 @@
 
 #include <config.h>
 #include <string.h>
-#include <gnome.h>
+#include <stdlib.h>
+
 #include <gconf/gconf.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>

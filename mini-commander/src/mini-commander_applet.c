@@ -25,8 +25,18 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
+
+#include <gtk/gtkaccessible.h>
+#include <gtk/gtkbutton.h>
+#include <gtk/gtkentry.h>
+#include <gtk/gtkenums.h>
+#include <gtk/gtkhbox.h>
+#include <gtk/gtkiconfactory.h>
+#include <gtk/gtkmain.h>
+#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtkvbox.h>
+
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
 #include <libgnomeui/gnome-window-icon.h>

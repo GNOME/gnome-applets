@@ -29,7 +29,8 @@
 
 #include <config.h>
 #include <string.h>
-#include <gnome.h>
+#include <stdlib.h>
+
 #include <panel-applet.h>
 
 #include <sys/stat.h>
