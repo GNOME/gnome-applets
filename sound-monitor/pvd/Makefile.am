@@ -13,4 +13,4 @@ esdpvd_SOURCES = \
 
 esdpvd_LDADD = \
 	$(GNOME_LIBDIR)	\
-	$(GNOME_LIBS)	$(INTLLIBS)
+	$(GNOME_LIBS) $(GNOMEUI_LIBS) $(INTLLIBS)

@@ -1,3 +1,11 @@
+Mon Oct 23 17:34:17 2000  John Ellis  <johne@bellatlantic.net>
+
+	* pvd/esdpvd.[ch]: Added rudimentary session management so that it
+	will be restarted between sessions without special handling.
+	Retained the old behavior of not requiring X by adding the -n, --noX
+	command line option. Also made the reported version be VERSION.
+	* pvd/Makefile.am: Added GNOMEUI_LIBS to link line.
+
 Mon Oct 23 16:39:10 2000  John Ellis  <johne@bellatlantic.net>
 
 	* esdcalls.[ch], skin.[ch], sound-monitor.h, theme.[ch]:

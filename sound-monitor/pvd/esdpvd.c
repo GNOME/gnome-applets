@@ -1,6 +1,6 @@
 /* esound persistent volume daemon, this program is part of the
  * GNOME Esound Monitor Control applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
@@ -373,6 +373,19 @@ static void sample_list_register(esd_sample_info_t *sample)
 
 /*
  * -------------------------------------------------------------------------
+ * session management (very simple)
+ * -------------------------------------------------------------------------
+ */
+
+static void session_die(GnomeClient *client, gpointer data)
+{
+	gtk_main_quit();
+	return;
+	data = NULL;
+}
+
+/*
+ * -------------------------------------------------------------------------
  * update callback
  * -------------------------------------------------------------------------
  */
@@ -428,24 +441,56 @@ static gint update_cb(gpointer data)
 	data = NULL;
 }
 
-	GMainLoop *loop;
 
 int main (int argc, char *argv[])
 {
+	gint noX = FALSE;
+	gint i;
 
-	printf("ESounD Persistent Volume Daemon version %d.%d.%d\n", ESDPVD_VERSION_MAJ, ESDPVD_VERSION_MIN, ESDPVD_VERSION_REV);
-	printf("there are no options, to stop it, kill it.\n");
-
-	gnomelib_init ("esdpvd", "0.0.0");
+	for (i = 1; i < argc; i++)
+		{
+		if (strcmp(argv[i], "-n") == 0 || strcmp(argv[i], "--noX") == 0)
+			{
+			noX = TRUE;
+			}
+		else
+			{
+			/* help */
+			printf(_("ESounD Persistent Volume Daemon version %s\n"), VERSION);
+			printf(_("options:\n"));
+			printf(_("  -n, --noX     Allow to run with X server\n"));
+			}
+		}
 
 	datafile_path = g_strdup("/esd_persistent_volumes");
 
-	update_timeout_id = g_timeout_add(CHECK_TIMEOUT_INTERVAL, (GSourceFunc) update_cb, NULL);
+	if (noX)
+		{
+		GMainLoop *loop;	/* glib event loop */
+		gnomelib_init ("esdpvd", VERSION);
 
-	/* this is how to do a main loop in glib, without gtk */
-	loop = g_main_new (FALSE);
-	g_main_run (loop);
-	g_main_destroy (loop);
+		/* this is how to do a main loop in glib, without gtk */
+		loop = g_main_new (FALSE);
+
+		update_timeout_id = g_timeout_add(CHECK_TIMEOUT_INTERVAL, (GSourceFunc) update_cb, NULL);
+
+		g_main_run (loop);
+		g_main_destroy (loop);
+		}
+	else
+		{
+		GnomeClient *client;
+
+		gnome_init ("esdpvd", VERSION, argc, argv);
+
+		client = gnome_master_client();
+		gtk_signal_connect(GTK_OBJECT (client), "die",
+				   GTK_SIGNAL_FUNC (session_die), NULL);
+
+		update_timeout_id = gtk_timeout_add(CHECK_TIMEOUT_INTERVAL, (GtkFunction) update_cb, NULL);
+
+		gtk_main();
+		}
 
 	return 0;
 	argc = 0;

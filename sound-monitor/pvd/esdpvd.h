@@ -1,21 +1,19 @@
 /* esound persistent volume daemon, this program is part of the
  * GNOME Esound Monitor Control applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
  */
 
+#include <config.h>
+#include <gnome.h>
+
+#include <esd.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include <gnome.h>
-#include <esd.h>
-
-#define ESDPVD_VERSION_MAJ 0
-#define ESDPVD_VERSION_MIN 1
-#define ESDPVD_VERSION_REV 0
 
 #define CHECK_TIMEOUT_INTERVAL 500
 
