@@ -42,9 +42,9 @@ static GdkBitmap *cond_mask = NULL;
 static GtkTooltips *tooltips = NULL;
 
 static PanelOrientType gweather_orient = ORIENT_DOWN;
-#ifdef HAVE_PANEL_SIZE
-static PanelSizeType gweather_size = SIZE_STANDARD;
-#endif /* HAVE_PANEL_SIZE */
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static int gweather_size = PIXEL_SIZE_STANDARD;
+#endif /* HAVE_PANEL_PIXEL_SIZE */
 
 /* FIX - This code is WAY too kludgy!... */
 static void place_widgets (void)
@@ -62,26 +62,11 @@ static void place_widgets (void)
     gtk_widget_get_child_requisition(label, &lbl_requisition);
     gtk_widget_get_child_requisition(pixmap, &pix_requisition);
 
-#ifdef HAVE_PANEL_SIZE
-    switch(gweather_size) {
-    case SIZE_TINY:
-        size = 24;
-        break;
-    case SIZE_STANDARD:
-        size = 48;
-        break;
-    case SIZE_LARGE:
-        size = 64;
-        break;
-    case SIZE_HUGE:
-        size = 80;
-        break;
-    default:
-        g_return_if_fail(FALSE);  /* insanity */
-    }
-#else /* HAVE_PANEL_SIZE */
+#ifdef HAVE_PANEL_PIXEL_SIZE
+    size = gweather_size;
+#else /* HAVE_PANEL_PIXEL_SIZE */
     size = 48;
-#endif /* HAVE_PANEL_SIZE */
+#endif /* HAVE_PANEL_PIXEL_SIZE */
 
     if ((gweather_orient == ORIENT_LEFT) || (gweather_orient == ORIENT_RIGHT)) {
         gint sep = MAX(0, (size - pix_requisition.width - lbl_requisition.width) / 3);
@@ -115,13 +100,13 @@ static void change_orient_cb (AppletWidget *w, PanelOrientType o)
     place_widgets();
 }
 
-#ifdef HAVE_PANEL_SIZE
-static void change_size_cb (AppletWidget *w, PanelSizeType s)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void change_pixel_size_cb (AppletWidget *w, int s)
 {
     gweather_size = s;
     place_widgets();
 }
-#endif /* HAVE_PANEL_SIZE */
+#endif /* HAVE_PANEL_PIXEL_SIZE */
 
 #ifdef HAVE_SAVE_SESSION_SIGNAL
 static int save_session_cb (AppletWidget *w, gchar *privcfgpath, gchar *globcfgpath)
@@ -183,10 +168,10 @@ void gweather_applet_create (int argc, char *argv[])
 #endif /* HAVE_SAVE_SESSION_SIGNAL */
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "change_orient",
                        GTK_SIGNAL_FUNC(change_orient_cb), NULL);
-#ifdef HAVE_PANEL_SIZE
-    gtk_signal_connect (GTK_OBJECT(gweather_applet), "change_size",
-                       GTK_SIGNAL_FUNC(change_size_cb), NULL);
-#endif /* HAVE_PANEL_SIZE */
+#ifdef HAVE_PANEL_PIXEL_SIZE
+    gtk_signal_connect (GTK_OBJECT(gweather_applet), "change_pixel_size",
+                       GTK_SIGNAL_FUNC(change_pixel_size_cb), NULL);
+#endif /* HAVE_PANEL_PIXEL_SIZE */
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "button_press_event",
                        GTK_SIGNAL_FUNC(clicked_cb), NULL);
     gtk_signal_connect (GTK_OBJECT(gweather_applet), "destroy",
