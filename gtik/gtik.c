@@ -1078,7 +1078,7 @@ g_print ("configured \n");
 
 		hbox = gtk_hbox_new(FALSE,5);
 
-		button = gtk_button_new_with_label(_("Remove Selected"));
+		button = gtk_button_new_with_mnemonic(_("_Remove Selected"));
 		g_object_set_data (G_OBJECT (button), "list", list);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (remove_symbol), stockdata);

@@ -1,6 +1,6 @@
 AC_INIT(drivemount/drivemount.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 1.92.2)
+AM_INIT_AUTOMAKE(gnome-applets, 1.93.0)
 
 AM_MAINTAINER_MODE
 
@@ -173,12 +173,12 @@ dnl ******************************************
 dnl ** screenshooter applet check           **
 dnl ******************************************
 
-have_wordexp=false
-AC_CHECK_FUNC(wordexp,have_wordexp=true)
-AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
-if test -z "$have_wordexp"; then
-AC_MSG_WARN([*** No wordexp (glibc >=2.1) Screen-shooter will not be built ***])
-fi
+dnl have_wordexp=false
+dnl AC_CHECK_FUNC(wordexp,have_wordexp=true)
+dnl AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
+dnl if test -z "$have_wordexp"; then
+dnl AC_MSG_WARN([*** No wordexp (glibc >=2.1) Screen-shooter will not be built ***])
+dnl fi
 
 dnl ******************************************
 dnl ******************************************
@@ -310,7 +310,6 @@ mini-commander/Makefile
 mini-commander/src/Makefile
 mixer/Makefile
 drivemount/Makefile
-screenshooter/Makefile
 modemlights/Makefile
 cdplayer/Makefile
 multiload/Makefile
@@ -429,7 +428,8 @@ dnl drivemount/docs/it/Makefile
 dnl drivemount/docs/ja/Makefile
 
 
-
+dnl This should be replaced by panel screenshooter
+dnl screenshooter/Makefile
 
 
 

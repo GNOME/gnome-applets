@@ -5,10 +5,10 @@ if BUILD_GTOP_APPLETS
 gtop_SUBDIRS = $(gtop_applets)
 endif
 
-wordexp_applets = screenshooter
-if HAVE_WORDEXP
-wordexp_SUBDIRS = $(wordexp_applets)
-endif
+# wordexp_applets = screenshooter
+# if HAVE_WORDEXP
+# wordexp_SUBDIRS = $(wordexp_applets)
+# endif
 
 vfs_applets = \
 	gtik	\
@@ -62,7 +62,6 @@ SUBDIRS = \
 	po			\
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
-	$(wordexp_SUBDIRS)      \
 	$(cdplayer_SUBDIRS)	\
 	$(always_built_SUBDIRS)	\
  	$(gtop_SUBDIRS)		\
