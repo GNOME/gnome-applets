@@ -9,6 +9,7 @@ preset_data_predata = \
 		BG_Bulgarian.keyprop.desktop.in BG_Bulgarian_x.keyprop.desktop.in \
 		BR_Portuguese.keyprop.desktop.in BR_Portuguese_x.keyprop.desktop.in \
 		BulgarianCyril.keyprop.desktop.in BY_Belarussian.keyprop.desktop.in \
+		Catalan.keyprop.desktop.in \
 		CA_English.keyprop.desktop.in CH_German_x.keyprop.desktop.in \
 		CZ_Czech.keyprop.desktop.in CZ_Czech_Slovak.keyprop.desktop.in \
 		CZ_Czech_x.keyprop.desktop.in Default.keyprop.desktop.in \

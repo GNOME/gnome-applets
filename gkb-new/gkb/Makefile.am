@@ -1,6 +1,6 @@
 GKB_BITMAPS = \
 	ae.png am.png ar.png at.png az.png be.png bg.png bh.png br.png \
-	by.png ca.png ch.png cu.png cz.png de.png dj.png dk.png \
+	by.png ca.png ch.png ct.png cu.png cz.png de.png dj.png dk.png \
 	dz.png ee.png eg.png es.png eu.png fi.png fr.png uk.png ge.png \
 	gkb.png gr.png hr.png hu.png il.png iq.png is.png it.png jo.png \
 	jp.png km.png kw.png la.png lb.png lt.png lv.png ly.png ma.png mk.png \
