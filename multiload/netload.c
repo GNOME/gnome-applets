@@ -22,6 +22,36 @@
 
 #include "global.h"
 
+static void
+about_cb (AppletWidget *widget, gpointer data)
+{
+    static GtkWidget *about = NULL;
+    const gchar *authors[8];
+
+    if (about != NULL)
+	{
+	    gdk_window_show(about->window);
+	    gdk_window_raise(about->window);
+	    return;
+	}
+
+    authors[0] = "Martin Baulig <martin@home-of-linux.org>";
+    authors[1] = NULL;
+
+    about = gnome_about_new
+	(_("Network Load Applet"), VERSION,
+	 "(C) 1999",
+	 authors,
+	 _("Released under the GNU general public license.\n\n"
+	   "Network Load Meter Applet."),
+	 NULL);
+
+    gtk_signal_connect (GTK_OBJECT (about), "destroy",
+			GTK_SIGNAL_FUNC (gtk_widget_destroyed), &about);
+
+    gtk_widget_show (about);
+}
+
 /* start a new instance of the netload applet */
 GtkWidget *
 make_netload_applet (const gchar *goad_id)
@@ -70,6 +100,12 @@ make_netload_applet (const gchar *goad_id)
 					   _("Run gtop..."),
 					   start_gtop_cb, NULL);
     
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "about",
+					   GNOME_STOCK_MENU_ABOUT,
+					   _("About..."),
+					   about_cb, NULL);
+
     applet_widget_set_tooltip(APPLET_WIDGET(applet), "Network Load");
     
     return applet;
