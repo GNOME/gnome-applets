@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-21 15:40-0400\n"
-"PO-Revision-Date: 2004-10-21 16:42-0400\n"
+"POT-Creation-Date: 2004-10-31 15:16-0500\n"
+"PO-Revision-Date: 2004-10-31 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,6 @@ msgstr ""
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
-#: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
@@ -37,11 +36,10 @@ msgstr "_About"
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:2 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
-#: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: multiload/GNOME_MultiloadApplet.xml.h:2
@@ -72,13 +70,13 @@ msgstr "Keyboard Accessibility Status Applet Factory"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "See the status of keyboard accessibility features"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
-#: cdplayer/cdplayer.c:596 charpick/charpick.c:592 drivemount/drivemount.c:552
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
+#: cdplayer/cdplayer.c:596 charpick/charpick.c:601 drivemount/drivemount.c:100
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
-#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2468
-#: mini-commander/src/about.c:50 modemlights/modemlights.c:118
-#: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:572 trashapplet/src/trashapplet.c:434
+#: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
+#: modemlights/modemlights.c:116 multiload/main.c:56
+#: stickynotes/stickynotes_applet_callbacks.c:261
+#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:434
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -133,7 +131,7 @@ msgstr "Displays current state of keyboard accessibility features"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1831
+#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1724
 msgid "Battery Charge Monitor"
 msgstr "Battery Charge Monitor"
 
@@ -142,17 +140,15 @@ msgid "Battstat Factory"
 msgstr "Battstat Factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1832
+#: battstat/battstat_applet.c:1725
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor your battery's remaining power"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3 geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:6 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
-#: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:4
@@ -344,22 +340,22 @@ msgstr "Battery Notice"
 msgid "Your battery is now fully recharged"
 msgstr "Your battery is now fully recharged"
 
-#: battstat/battstat_applet.c:693 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:703 wireless/wireless-applet.c:146
 #: wireless/wireless-applet.c:147
 msgid "N/A"
 msgstr "N/A"
 
-#: battstat/battstat_applet.c:835
+#: battstat/battstat_applet.c:844
 msgid "Battery status unknown"
 msgstr "Battery status unknown"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:842 battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:851 battstat/battstat_applet.c:863
 msgid "No battery present"
 msgstr "No battery present"
 
-#: battstat/battstat_applet.c:954
+#: battstat/battstat_applet.c:962
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -371,7 +367,7 @@ msgstr ""
 "Make sure you have read permission to the\n"
 "APM device."
 
-#: battstat/battstat_applet.c:963
+#: battstat/battstat_applet.c:971
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -381,7 +377,7 @@ msgstr ""
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 
-#: battstat/battstat_applet.c:1019
+#: battstat/battstat_applet.c:1027
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -390,16 +386,16 @@ msgstr ""
 "An error occured while launching the Suspend command: %s\n"
 "Please try to correct this error"
 
-#: battstat/battstat_applet.c:1023
+#: battstat/battstat_applet.c:1031
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "The Suspend command '%s' was unsuccessful."
 
-#: battstat/battstat_applet.c:1025
+#: battstat/battstat_applet.c:1033
 msgid "The Suspend command was unsuccessful."
 msgstr "The Suspend command was unsuccessful."
 
-#: battstat/battstat_applet.c:1033
+#: battstat/battstat_applet.c:1041
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -409,7 +405,7 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:1057
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
@@ -421,7 +417,7 @@ msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "This utility shows the status of your laptop battery."
 
-#: battstat/battstat_applet.c:1757
+#: battstat/battstat_applet.c:1650
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -436,121 +432,62 @@ msgid "    "
 msgstr "    "
 
 #: battstat/battstat_applet.glade.h:2
-#: mini-commander/src/mini-commander.glade.h:2
-#: stickynotes/stickynotes.glade.h:2
-msgid "*"
-msgstr "*"
+msgid "<b>Appearance</b>"
+msgstr "<b>Appearance</b>"
 
-#: battstat/battstat_applet.glade.h:4
-#, no-c-format
-msgid "100%"
-msgstr "100%"
-
-#: battstat/battstat_applet.glade.h:6
-#, no-c-format
-msgid "<b>Battery Color Levels (%)</b>"
-msgstr "<b>Battery Colour Levels (%)</b>"
-
-#: battstat/battstat_applet.glade.h:7
-msgid "<b>Layout</b>"
-msgstr "<b>Layout</b>"
-
-#: battstat/battstat_applet.glade.h:8
-msgid "<b>Progress Bar Direction</b>"
-msgstr "<b>Progress Bar Direction</b>"
-
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:3
 msgid "<b>Suspend</b>"
 msgstr "<b>Suspend</b>"
 
-#: battstat/battstat_applet.glade.h:10
+#: battstat/battstat_applet.glade.h:4
 msgid "<b>Warnings</b>"
 msgstr "<b>Warnings</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1514
-msgid "Appearance"
-msgstr "Appearance"
-
-#: battstat/battstat_applet.glade.h:12
+#: battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
 msgstr "Battery Charge Monitor Preferences"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1052 mailcheck/mailcheck.c:2054
-#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
-msgid "General"
-msgstr "General"
+#: battstat/battstat_applet.glade.h:6
+msgid "Show _battery status"
+msgstr "Show _battery status"
 
-#: battstat/battstat_applet.glade.h:14
-msgid "Moves towards _bottom"
-msgstr "Moves towards _bottom"
+#: battstat/battstat_applet.glade.h:7
+msgid "Show _percentage remaining"
+msgstr "Show _percentage remaining"
 
-#: battstat/battstat_applet.glade.h:15
-msgid "Moves towards _top"
-msgstr "Moves towards _top"
+#: battstat/battstat_applet.glade.h:8
+msgid "Show _time remaining"
+msgstr "Show _time remaining"
 
-#: battstat/battstat_applet.glade.h:16
-msgid "Sho_w battery charge percentages"
-msgstr "Sho_w battery charge percentages"
+#: battstat/battstat_applet.glade.h:9
+msgid "Show power _connection status"
+msgstr "Show power _connection status"
 
-#: battstat/battstat_applet.glade.h:17
-msgid "Show _power connection status"
-msgstr "Show _power connection status"
-
-#: battstat/battstat_applet.glade.h:18
+#: battstat/battstat_applet.glade.h:10
 msgid "War_n when battery is fully re-charged"
 msgstr "War_n when battery is fully re-charged"
 
-#: battstat/battstat_applet.glade.h:19
-msgid "_Beep when displaying a warning"
-msgstr "_Beep when displaying a warning"
+#: battstat/battstat_applet.glade.h:11
+msgid "_Show time/percentage remaining:"
+msgstr "_Show time/percentage remaining:"
 
-#: battstat/battstat_applet.glade.h:20
-msgid "_Orange:"
-msgstr "_Orange:"
-
-#: battstat/battstat_applet.glade.h:21
-msgid "_Preview:"
-msgstr "_Preview:"
-
-#: battstat/battstat_applet.glade.h:22
-msgid "_Red:"
-msgstr "_Red:"
-
-#: battstat/battstat_applet.glade.h:23
-msgid "_Show battery status"
-msgstr "_Show battery status"
-
-#: battstat/battstat_applet.glade.h:24
+#: battstat/battstat_applet.glade.h:12
 msgid "_Suspend command:"
 msgstr "_Suspend command:"
 
-#: battstat/battstat_applet.glade.h:25
+#: battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
 msgstr "_Warn when battery charge is low"
 
-#: battstat/battstat_applet.glade.h:26
-msgid "_Yellow:"
-msgstr "_Yellow:"
-
-#: battstat/properties.c:291 drivemount/drivemount.c:509
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2321
-#: mailcheck/mailcheck.c:2615 mini-commander/src/preferences.c:364
+#: battstat/properties.c:262 drivemount/drivemount.c:124
+#: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
-#: trashapplet/src/trashapplet.c:422
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
+#: trashapplet/src/trashapplet.c:421
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
-
-#: battstat/properties.c:494
-msgid "Progress Bar Direction Moves towards top"
-msgstr "Progress Bar Direction Moves towards top"
-
-#: battstat/properties.c:504
-msgid "Progress Bar Direction Moves towards bottom"
-msgstr "Progress Bar Direction Moves towards bottom"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -609,7 +546,7 @@ msgstr "Next Track"
 msgid "You do not have permission to use the CD player."
 msgstr "You do not have permission to use the CD player."
 
-#: cdplayer/cdplayer.c:378 multiload/main.c:142
+#: cdplayer/cdplayer.c:378 multiload/main.c:133
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "There was an error executing '%s': %s"
@@ -687,8 +624,8 @@ msgstr "Click this button to Play the previous track in the CD"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Click this button to Play the next track in the CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:612
-#: charpick/charpick.c:766 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:614
+#: charpick/charpick.c:768 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Character Palette"
 
@@ -696,38 +633,43 @@ msgstr "Character Palette"
 msgid "Charpicker Applet Factory"
 msgstr "Charpicker Applet Factory"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:766
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:768
 msgid "Insert characters"
 msgstr "Character Palette"
 
-#: charpick/charpick.c:444
+#: charpick/charpick.c:445
 msgid "Available palettes"
 msgstr "Available palettes"
 
-#: charpick/charpick.c:481
+#. TRANSLATOR: This sentance reads something like 'Insert "PILCROW SIGN"'
+#. *             hopefully, the name of the unicode character has already
+#. *             been translated.
+#.
+#: charpick/charpick.c:486
+#, c-format
+msgid "Insert \"%s\""
+msgstr "Insert \"%s\""
+
+#: charpick/charpick.c:490
 #, c-format
 msgid "insert special character %s"
 msgstr "insert special character %s"
 
-#: charpick/charpick.c:488
-msgid "Insert special characters"
-msgstr "Insert special characters"
-
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:581
+#: charpick/charpick.c:590
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:582
+#: charpick/charpick.c:591
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:614
+#: charpick/charpick.c:616
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:615
+#: charpick/charpick.c:617
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -820,7 +762,7 @@ msgid "Character Palette Preferences"
 msgstr "Character Palette Preferences"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:267 drivemount/drivemount.c:571
+#: drivemount/drivemount.c:94
 msgid "Disk Mounter"
 msgstr "Disk Mounter"
 
@@ -836,59 +778,9 @@ msgstr "Factory for drive mount applet"
 msgid "Mount local disks and devices"
 msgstr "Mount local disks and devices from the panel"
 
-#: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "_Browse"
-msgstr "_Browse"
-
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "_Eject"
-msgstr "_Eject"
-
-#: drivemount/drivemount.c:450 mailcheck/mailcheck.c:659
-#, c-format
-msgid "There was an error executing %s: %s"
-msgstr "There was an error executing %s: %s"
-
-#: drivemount/drivemount.c:457
-msgid "Cannot browse device"
-msgstr "Cannot browse device"
-
-#: drivemount/drivemount.c:515 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2327 mailcheck/mailcheck.c:2621
-msgid "Error displaying help"
-msgstr "Error displaying help"
-
-#: drivemount/drivemount.c:572
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 The GNOME Hackers\n"
-
-#: drivemount/drivemount.c:574
+#: drivemount/drivemount.c:97
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet for mounting and unmounting block volumes."
-
-#: drivemount/drivemount.c:780
-msgid " mounted"
-msgstr " mounted"
-
-#: drivemount/drivemount.c:782
-msgid " not mounted"
-msgstr " not mounted"
-
-#: drivemount/drivemount.c:894
-msgid "\" reported:\n"
-msgstr "\" reported:\n"
-
-#: drivemount/drivemount.c:896
-msgid ""
-"Drivemount command failed.\n"
-"\""
-msgstr ""
-"Drivemount command failed.\n"
-"\""
-
-#: drivemount/drivemount.c:902
-msgid "Cannot mount device"
-msgstr "Cannot mount device"
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -897,91 +789,6 @@ msgstr "Interval timeout to check mount point status"
 #: drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
 msgstr "Time in seconds between status updates"
-
-#: drivemount/properties.c:336
-msgid "Disk Mounter Preferences"
-msgstr "Disk Mounter Preferences"
-
-#: drivemount/properties.c:364
-msgid "_Mount directory:"
-msgstr "_Mount directory:"
-
-#: drivemount/properties.c:370
-msgid "Select Mount Directory"
-msgstr "Select Mount Directory"
-
-#: drivemount/properties.c:392
-msgid "_Update interval:"
-msgstr "_Update interval:"
-
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2125
-#: mailcheck/mailcheck.c:2131 modemlights/properties.c:468
-msgid "seconds"
-msgstr "seconds"
-
-#: drivemount/properties.c:428
-msgid "_Icon:"
-msgstr "_Icon:"
-
-#: drivemount/properties.c:454
-msgid "Floppy"
-msgstr "Floppy"
-
-#: drivemount/properties.c:457
-msgid "CD-ROM"
-msgstr "CD-ROM"
-
-#: drivemount/properties.c:460
-msgid "CD Recorder"
-msgstr "CD Recorder"
-
-#: drivemount/properties.c:463
-msgid "Zip Drive"
-msgstr "Zip Drive"
-
-#: drivemount/properties.c:466
-msgid "Hard Disk"
-msgstr "Hard Disk"
-
-#: drivemount/properties.c:469
-msgid "Jaz Drive"
-msgstr "Jaz Drive"
-
-#: drivemount/properties.c:472
-msgid "USB Stick"
-msgstr "USB Stick"
-
-#: drivemount/properties.c:475
-msgid "Custom"
-msgstr "Custom"
-
-#: drivemount/properties.c:494
-msgid "Select icon for mounted"
-msgstr "Select icon for mounted"
-
-#: drivemount/properties.c:501
-msgid "Moun_ted icon:"
-msgstr "Moun_ted icon:"
-
-#: drivemount/properties.c:522
-msgid "Select icon for unmounted"
-msgstr "Select icon for unmounted"
-
-#: drivemount/properties.c:529
-msgid "Unmou_nted icon:"
-msgstr "Unmou_nted icon:"
-
-#: drivemount/properties.c:545
-msgid "_Scale size to panel"
-msgstr "_Scale size to panel"
-
-#: drivemount/properties.c:552
-msgid "_Eject disk when unmounted"
-msgstr "_Eject disk when unmounted"
-
-#: drivemount/properties.c:562
-msgid "Use _automount-friendly status test"
-msgstr "Use _automount-friendly status test"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -1339,6 +1146,18 @@ msgstr "Wallon"
 #: gkb-new/descs/presets.xml.in.h:24
 msgid "Bulgarian Cyrillic"
 msgstr "Bulgarian Cyrillic"
+
+#: gkb-new/descs/Catalan.keyprop.desktop.in.h:1
+msgid "Catalan"
+msgstr "Catalan"
+
+#: gkb-new/descs/Catalan.keyprop.desktop.in.h:2
+msgid "Catalan xkb keymap"
+msgstr "Catalan xkb keymap"
+
+#: gkb-new/descs/Catalan.keyprop.desktop.in.h:3
+msgid "Catalonia"
+msgstr "Catalonia"
 
 #: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
 #: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
@@ -1906,6 +1725,32 @@ msgstr "Lithuanian programmers xkb keymap"
 #: gkb-new/descs/presets.xml.in.h:124
 msgid "Lithuanian standard xkb keymap"
 msgstr "Lithuanian standard xkb keymap"
+
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:1
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:1
+#: gkb-new/descs.sun/presets.xml.in.h:69
+msgid "Latvia"
+msgstr "Latvia"
+
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:2
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:2
+#: gkb-new/descs.sun/presets.xml.in.h:70
+msgid "Latvian"
+msgstr "Latvian"
+
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:3
+msgid "Latvian (') xkb keymap"
+msgstr "Latvian (') xkb keymap"
+
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:3
+msgid "Latvian standard xkb keymap"
+msgstr "Latvian standard xkb keymap"
+
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:3
+msgid "Latvian (~) xkb keymap"
+msgstr "Latvian (~) xkb keymap"
 
 #: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
@@ -2560,14 +2405,6 @@ msgstr "Japanese Sun Type-4 keymap"
 msgid "Japanese Sun keymap"
 msgstr "Japanese Sun keymap"
 
-#: gkb-new/descs.sun/presets.xml.in.h:69
-msgid "Latvia"
-msgstr "Latvia"
-
-#: gkb-new/descs.sun/presets.xml.in.h:70
-msgid "Latvian"
-msgstr "Latvian"
-
 #: gkb-new/descs.sun/presets.xml.in.h:71
 msgid "Latvian Sun keymap"
 msgstr "Latvian Sun keymap"
@@ -2883,7 +2720,7 @@ msgstr "Label"
 msgid "Flag and Label"
 msgstr "Flag and Label"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1037
+#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1037
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Display"
@@ -3169,12 +3006,12 @@ msgstr "Get continuously updated stock quotes"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Factory"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:3 gtik/gtik.c:746
+#: gtik/GNOME_GtikApplet.server.in.in.h:3 gtik/gtik.c:736
 msgid "Stock Ticker"
 msgstr "Stock Ticker"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:85 mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:156
 msgid "_Update"
 msgstr "_Update"
 
@@ -3186,11 +3023,11 @@ msgstr "Could not retrieve the stock data."
 msgid "No stock list"
 msgstr "No stock list"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:476
+#: gtik/gtik.c:313 gweather/gweather-applet.c:480
 msgid "Updating..."
 msgstr "Updating..."
 
-#: gtik/gtik.c:748
+#: gtik/gtik.c:738
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -3202,126 +3039,129 @@ msgstr ""
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 
-#: gtik/gtik.c:1270
+#: gtik/gtik.c:1260
 msgid "Current _stocks:"
 msgstr "Current _stocks:"
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1268
 msgid "_New symbol:"
 msgstr "_New symbol:"
 
-#: gtik/gtik.c:1287
+#: gtik/gtik.c:1277
 msgid "_Add"
 msgstr "_Add"
 
-#: gtik/gtik.c:1296
+#: gtik/gtik.c:1286
 msgid "_Remove"
 msgstr "_Remove"
 
-#: gtik/gtik.c:1402
+#: gtik/gtik.c:1392
 msgid "Stock Ticker Preferences"
 msgstr "Stock Ticker Preferences"
 
-#: gtik/gtik.c:1424
+#: gtik/gtik.c:1414
 msgid "Symbols"
 msgstr "Symbols"
 
-#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2396
+#: gtik/gtik.c:1421
 msgid "Behavior"
 msgstr "Behaviour"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:997
+#: gtik/gtik.c:1424 gweather/gweather-pref.c:997
 msgid "Update"
 msgstr "Update"
 
-#: gtik/gtik.c:1438
+#: gtik/gtik.c:1428
 msgid "Stock update fre_quency:"
 msgstr "Stock update fre_quency:"
 
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1021 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108
+#: gtik/gtik.c:1440 gweather/gweather-pref.c:1021
 msgid "minutes"
 msgstr "minutes"
 
-#: gtik/gtik.c:1456
+#: gtik/gtik.c:1446
 msgid "Scrolling"
 msgstr "Scrolling"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1450
 msgid "_Scroll speed:"
 msgstr "_Scroll speed:"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1454
 msgid "Slow"
 msgstr "Slow"
 
-#: gtik/gtik.c:1466
+#: gtik/gtik.c:1456
 msgid "Medium"
 msgstr "Medium"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1458
 msgid "Fast"
 msgstr "Fast"
 
-#: gtik/gtik.c:1488
+#: gtik/gtik.c:1478
 msgid "_Enable scroll buttons"
 msgstr "_Enable scroll buttons"
 
-#: gtik/gtik.c:1500
+#: gtik/gtik.c:1490
 msgid "Scroll _left to right"
 msgstr "Scroll _left to right"
 
-#: gtik/gtik.c:1526
+#: gtik/gtik.c:1504
+msgid "Appearance"
+msgstr "Appearance"
+
+#: gtik/gtik.c:1516
 msgid "Displa_y only symbols and price"
 msgstr "Displa_y only symbols and price"
 
-#: gtik/gtik.c:1539 mini-commander/src/mini-commander.glade.h:20
+#: gtik/gtik.c:1529 mini-commander/src/mini-commander.glade.h:20
 #: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "_Width:"
 
-#: gtik/gtik.c:1553 mini-commander/src/mini-commander.glade.h:21
+#: gtik/gtik.c:1543 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:490
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1562
+#: gtik/gtik.c:1552
 msgid "Font and Colors"
 msgstr "Font and Colours"
 
-#: gtik/gtik.c:1568
+#: gtik/gtik.c:1558
 msgid "Use _default theme font and colors"
 msgstr "Use _default theme font and colours"
 
-#: gtik/gtik.c:1583 stickynotes/stickynotes.glade.h:45
+#: gtik/gtik.c:1573 stickynotes/stickynotes.glade.h:45
 msgid "_Font:"
 msgstr "_Font:"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1597
 msgid "Stock _raised:"
 msgstr "Stock _raised:"
 
-#: gtik/gtik.c:1626
+#: gtik/gtik.c:1616
 msgid "Stock _lowered:"
 msgstr "Stock _lowered:"
 
-#: gtik/gtik.c:1645
+#: gtik/gtik.c:1635
 msgid "Stock _unchanged:"
 msgstr "Stock _unchanged:"
 
-#: gtik/gtik.c:1664 modemlights/properties.c:580
+#: gtik/gtik.c:1654 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Background:"
 
-#: gtik/gtik.c:1807
+#: gtik/gtik.c:1797
 msgid "Skip forward"
 msgstr "Skip forward"
 
-#: gtik/gtik.c:1808
+#: gtik/gtik.c:1798
 msgid "Skip backward"
 msgstr "Skip backward"
 
-#: gtik/gtik.c:1816
+#: gtik/gtik.c:1806
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -3329,17 +3169,17 @@ msgstr ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:1995
 #, c-format
 msgid "+%s (%s)"
 msgstr "+%s (%s)"
 
-#: gtik/gtik.c:2009
+#: gtik/gtik.c:1999
 #, c-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: gtik/gtik.c:2012
+#: gtik/gtik.c:2002
 msgid "(No Change)"
 msgstr "(No Change)"
 
@@ -3476,7 +3316,7 @@ msgstr "Use default theme fonts and colours"
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr "Use default theme fonts and colours instead of custom ones"
 
-#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:25
 msgid "Width of the applet"
 msgstr "Width of the applet"
 
@@ -3501,109 +3341,109 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitor current weather conditions and forecasts"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: gweather/gweather-about.c:68
+#: gweather/gweather-about.c:69
 msgid "Weather Report"
 msgstr "Weather Report"
 
-#: gweather/gweather-about.c:69
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Copyright (c)1999 by S. Papadimitriou"
-
 #: gweather/gweather-about.c:70
+msgid "Copyright (c)1999-2004 by S. Papadimitriou and others"
+msgstr "Copyright (c)1999-2004 by S. Papadimitriou and others"
+
+#: gweather/gweather-about.c:71
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
-"An applet for monitoring local weather conditions."
+"A panel application for monitoring local weather conditions."
 msgstr ""
 "Released under the GNU General Public Licence.\n"
 "\n"
-"An applet for monitoring local weather conditions."
+"A panel application for monitoring local weather conditions."
 
-#: gweather/gweather-applet.c:356 gweather/gweather-applet.c:360
+#: gweather/gweather-applet.c:360 gweather/gweather-applet.c:364
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:83
+#: gweather/gweather-dialog.c:154
 msgid "Details"
 msgstr "Details"
 
-#: gweather/gweather-dialog.c:123
+#: gweather/gweather-dialog.c:195
 msgid "City:"
 msgstr "City:"
 
-#: gweather/gweather-dialog.c:131
+#: gweather/gweather-dialog.c:203
 msgid "Last update:"
 msgstr "Last update:"
 
-#: gweather/gweather-dialog.c:139
+#: gweather/gweather-dialog.c:211
 msgid "Conditions:"
 msgstr "Conditions:"
 
-#: gweather/gweather-dialog.c:147
+#: gweather/gweather-dialog.c:219
 msgid "Sky:"
 msgstr "Sky:"
 
-#: gweather/gweather-dialog.c:155
+#: gweather/gweather-dialog.c:227
 msgid "Temperature:"
 msgstr "Temperature:"
 
-#: gweather/gweather-dialog.c:163
+#: gweather/gweather-dialog.c:235
 msgid "Feels like:"
 msgstr "Feels like:"
 
-#: gweather/gweather-dialog.c:171
+#: gweather/gweather-dialog.c:243
 msgid "Dew point:"
 msgstr "Dew point:"
 
-#: gweather/gweather-dialog.c:179
+#: gweather/gweather-dialog.c:251
 msgid "Relative humidity:"
 msgstr "Relative humidity:"
 
-#: gweather/gweather-dialog.c:187
+#: gweather/gweather-dialog.c:259
 msgid "Wind:"
 msgstr "Wind:"
 
-#: gweather/gweather-dialog.c:195
+#: gweather/gweather-dialog.c:267
 msgid "Pressure:"
 msgstr "Pressure:"
 
-#: gweather/gweather-dialog.c:203
+#: gweather/gweather-dialog.c:275
 msgid "Visibility:"
 msgstr "Visibility:"
 
-#: gweather/gweather-dialog.c:320
+#: gweather/gweather-dialog.c:392
 msgid "Current Conditions"
 msgstr "Current Conditions"
 
-#: gweather/gweather-dialog.c:337
+#: gweather/gweather-dialog.c:409
 msgid "Forecast Report"
 msgstr "Forecast Report"
 
-#: gweather/gweather-dialog.c:337
+#: gweather/gweather-dialog.c:409
 msgid "See the ForeCast Details"
 msgstr "See the ForeCast Details"
 
-#: gweather/gweather-dialog.c:347
+#: gweather/gweather-dialog.c:419
 msgid "Forecast"
 msgstr "Forecast"
 
-#: gweather/gweather-dialog.c:355
+#: gweather/gweather-dialog.c:427
 msgid "Radar Map"
 msgstr "Radar Map"
 
-#: gweather/gweather-dialog.c:386
+#: gweather/gweather-dialog.c:458
 msgid "_Visit Weather.com"
 msgstr "_Visit Weather.com"
 
-#: gweather/gweather-dialog.c:387
+#: gweather/gweather-dialog.c:459
 msgid "Visit Weather.com"
 msgstr "Visit Weather.com"
 
-#: gweather/gweather-dialog.c:387
+#: gweather/gweather-dialog.c:459
 msgid "Click to Enter Weather.com"
 msgstr "Click to Enter Weather.com"
 
-#: gweather/gweather-dialog.c:476
+#: gweather/gweather-dialog.c:550
 msgid "Forecast not currently available for this location."
 msgstr "Forecast not currently available for this location."
 
@@ -3772,6 +3612,11 @@ msgstr "Use _custom address for radar map"
 msgid "A_ddress:"
 msgstr "A_ddress:"
 
+#: gweather/gweather-pref.c:1052 mini-commander/src/mini-commander.glade.h:12
+#: modemlights/properties.c:563
+msgid "General"
+msgstr "General"
+
 #: gweather/gweather-pref.c:1065
 msgid "_Select a location:"
 msgstr "_Select a location:"
@@ -3845,7 +3690,7 @@ msgstr ""
 "\" key."
 
 #: gweather/gweather.schemas.in.h:10
-#: mini-commander/src/mini-commander.schemas.in.h:14
+#: mini-commander/src/mini-commander.schemas.in.h:10
 msgid "Not used anymore"
 msgstr "Not used anymore"
 
@@ -4451,371 +4296,8 @@ msgstr "%.0fm"
 msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
-#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
-msgid "Alert you when new mail arrives"
-msgstr "Alerts you when new mail arrives"
-
-#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
-msgid "Factory for creating inbox monitors."
-msgstr "Factory for creating inbox monitors."
-
-#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:804 mailcheck/mailcheck.c:2482
-msgid "Inbox Monitor"
-msgstr "Inbox Monitor"
-
-#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
-msgid "Inbox Monitor Factory"
-msgstr "Inbox Monitor Factory"
-
-#: mailcheck/mailcheck.c:666
-msgid "Error checking mail"
-msgstr "Error checking mail"
-
-#: mailcheck/mailcheck.c:810
-msgid ""
-"You didn't set a password in the preferences for the Inbox Monitor,\n"
-"so you have to enter it each time it starts up."
-msgstr ""
-"You didn't set a password in the preferences for the Inbox Monitor,\n"
-"so you have to enter it each time it starts up."
-
-#: mailcheck/mailcheck.c:818
-msgid "Please enter your mailserver's _password:"
-msgstr "Please enter your mailserver's _password:"
-
-#: mailcheck/mailcheck.c:823 mailcheck/mailcheck.c:1955
-msgid "Password Entry box"
-msgstr "Password Entry box"
-
-#: mailcheck/mailcheck.c:838 mailcheck/mailcheck.c:1982
-msgid "_Save password to disk"
-msgstr "_Save password to disk"
-
-#: mailcheck/mailcheck.c:894
-msgid "Could not connect to the Internet."
-msgstr "Could not connect to the Internet."
-
-#: mailcheck/mailcheck.c:898
-msgid "The username or password is incorrect."
-msgstr "The username or password is incorrect."
-
-#: mailcheck/mailcheck.c:901
-msgid "The server name is incorrect."
-msgstr "The server name is incorrect."
-
-#: mailcheck/mailcheck.c:905
-msgid "Error connecting to mail server."
-msgstr "Error connecting to mail server."
-
-#: mailcheck/mailcheck.c:910
-msgid "Error"
-msgstr "Error"
-
-#: mailcheck/mailcheck.c:1086
-msgid "You have new mail."
-msgstr "You have new mail."
-
-#: mailcheck/mailcheck.c:1088
-msgid "You have mail."
-msgstr "You have mail."
-
-#: mailcheck/mailcheck.c:1092
-#, c-format
-msgid "%d unread"
-msgid_plural "%d unread"
-msgstr[0] "%d unread"
-msgstr[1] "%d unread"
-
-#: mailcheck/mailcheck.c:1093 mailcheck/mailcheck.c:1102
-#, c-format
-msgid "%d message"
-msgid_plural "%d messages"
-msgstr[0] "%d message"
-msgstr[1] "%d messages"
-
-#. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1096
-#, c-format
-msgid "%s/%s"
-msgstr "%s/%s"
-
-#: mailcheck/mailcheck.c:1109
-msgid "No mail."
-msgstr "No mail."
-
-#: mailcheck/mailcheck.c:1571 mailcheck/mailcheck.c:1572
-#: mailcheck/mailcheck.c:2901 mailcheck/mailcheck.c:2902
-msgid "Status not updated"
-msgstr "Status not updated"
-
-#: mailcheck/mailcheck.c:1774 mailcheck/mailcheck.c:2400
-msgid "Inbox Settings"
-msgstr "Inbox Settings"
-
-#: mailcheck/mailcheck.c:1800
-msgid "Mailbox _resides on:"
-msgstr "Mailbox _resides on:"
-
-#: mailcheck/mailcheck.c:1811
-msgid "Local mailspool"
-msgstr "Local mailspool"
-
-#: mailcheck/mailcheck.c:1819
-msgid "Local maildir"
-msgstr "Local maildir"
-
-#: mailcheck/mailcheck.c:1827
-msgid "Remote POP3-server"
-msgstr "Remote POP3-server"
-
-#: mailcheck/mailcheck.c:1835
-msgid "Remote IMAP-server"
-msgstr "Remote IMAP-server"
-
-#: mailcheck/mailcheck.c:1860
-msgid "Mail _spool file:"
-msgstr "Mail _spool file:"
-
-#: mailcheck/mailcheck.c:1867
-msgid "Browse"
-msgstr "Browse"
-
-#: mailcheck/mailcheck.c:1887
-msgid "Mail s_erver:"
-msgstr "Mail s_erver:"
-
-#: mailcheck/mailcheck.c:1896
-msgid "Mail Server Entry box"
-msgstr "Mail Server Entry box"
-
-#: mailcheck/mailcheck.c:1915
-msgid "_Username:"
-msgstr "_Username:"
-
-#: mailcheck/mailcheck.c:1926
-msgid "Username Entry box"
-msgstr "Username Entry box"
-
-#: mailcheck/mailcheck.c:1944
-msgid "_Password:"
-msgstr "_Password:"
-
-#: mailcheck/mailcheck.c:1997
-msgid "_Folder:"
-msgstr "_Folder:"
-
-#: mailcheck/mailcheck.c:2008
-msgid "Folder Entry box"
-msgstr "Folder Entry box"
-
-#: mailcheck/mailcheck.c:2080
-msgid "Check for mail _every:"
-msgstr "Check for mail _every:"
-
-#: mailcheck/mailcheck.c:2102
-msgid "Choose time interval in minutes to check mail"
-msgstr "Choose time interval in minutes to check mail"
-
-#: mailcheck/mailcheck.c:2125
-msgid "Choose time interval in seconds to check mail"
-msgstr "Choose time interval in seconds to check mail"
-
-#: mailcheck/mailcheck.c:2142
-msgid "Play a _sound when new mail arrives"
-msgstr "Play a _sound when new mail arrives"
-
-#. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2152
-msgid "Sto_p animation when clicked"
-msgstr "Sto_p animation when clicked"
-
-#: mailcheck/mailcheck.c:2165
-msgid "Select a_nimation:"
-msgstr "Select a_nimation:"
-
-#: mailcheck/mailcheck.c:2183
-msgid "Commands"
-msgstr "Commands"
-
-#: mailcheck/mailcheck.c:2212
-msgid "Before each _update:"
-msgstr "Before each _update:"
-
-#: mailcheck/mailcheck.c:2229
-msgid "Command to execute before each update"
-msgstr "Command to execute before each update"
-
-#: mailcheck/mailcheck.c:2241
-msgid "When new mail _arrives:"
-msgstr "When new mail _arrives:"
-
-#: mailcheck/mailcheck.c:2256 mailcheck/mailcheck.schemas.in.h:2
-msgid "Command to execute when new mail arrives"
-msgstr "Command to execute when new mail arrives"
-
-#: mailcheck/mailcheck.c:2268
-msgid "When clicke_d:"
-msgstr "When clicke_d:"
-
-#: mailcheck/mailcheck.c:2283
-msgid "Command to execute when clicked"
-msgstr "Command to execute when clicked"
-
-#: mailcheck/mailcheck.c:2369
-msgid "Inbox Monitor Preferences"
-msgstr "Inbox Monitor Preferences"
-
-#: mailcheck/mailcheck.c:2484
-msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr "Inbox Monitor notifies you when new mail arrives in your mailbox"
-
-#: mailcheck/mailcheck.c:2854
-msgid "Text only"
-msgstr "Text only"
-
-#: mailcheck/mailcheck.c:2903
-msgid "Mail check"
-msgstr "Mail check"
-
-#: mailcheck/mailcheck.c:2904
-msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr "Mail check notifies you when new mail arrives in your mailbox"
-
-#: mailcheck/mailcheck.schemas.in.h:1
-msgid "Command to execute when checking mail"
-msgstr "Command to execute when checking mail"
-
-#: mailcheck/mailcheck.schemas.in.h:3
-msgid "Command to execute when you click on the Inbox Monitor"
-msgstr "Command to execute when you click on the Inbox Monitor"
-
-#: mailcheck/mailcheck.schemas.in.h:4
-msgid "Command to run before checking mail"
-msgstr "Command to run before checking mail"
-
-#: mailcheck/mailcheck.schemas.in.h:5
-msgid "Do we run the exec-command"
-msgstr "Do we run the exec-command"
-
-#: mailcheck/mailcheck.schemas.in.h:6
-msgid "Do we run the newmail-command"
-msgstr "Do we run the newmail-command"
-
-#: mailcheck/mailcheck.schemas.in.h:7
-msgid "Do we want to save the password to disk"
-msgstr "Do we want to save the password to disk"
-
-#: mailcheck/mailcheck.schemas.in.h:8
-msgid "Encrypted password"
-msgstr "Encrypted password"
-
-#: mailcheck/mailcheck.schemas.in.h:9
-msgid "How often (in milliseconds) we check the mail"
-msgstr "How often (in milliseconds) we check the mail"
-
-#: mailcheck/mailcheck.schemas.in.h:10
-msgid "If mail should be checked automatically"
-msgstr "If mail should be checked automatically"
-
-#: mailcheck/mailcheck.schemas.in.h:11
-msgid "If this is enabled, we save the password in gconf"
-msgstr "If this is enabled, we save the password in gconf"
-
-#: mailcheck/mailcheck.schemas.in.h:12
-msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr "If this is set mail will be checked every update-freq milliseconds"
-
-#: mailcheck/mailcheck.schemas.in.h:13
-msgid "If this is set, we should run the exec-command"
-msgstr "If this is set, we should run the exec-command"
-
-#: mailcheck/mailcheck.schemas.in.h:14
-msgid "If this is set, we should run the newmail-command"
-msgstr "If this is set, we should run the newmail-command"
-
-#: mailcheck/mailcheck.schemas.in.h:15
-msgid "Interval for checking mail"
-msgstr "Interval for checking mail"
-
-#: mailcheck/mailcheck.schemas.in.h:16
-msgid "Path to the animation file"
-msgstr "Path to the animation file"
-
-#: mailcheck/mailcheck.schemas.in.h:17
-msgid "Play a sound when mail is recieved"
-msgstr "Play a sound when mail is recieved"
-
-#: mailcheck/mailcheck.schemas.in.h:18
-msgid "Remote folder for mail retrieval"
-msgstr "Remote folder for mail retrieval"
-
-#: mailcheck/mailcheck.schemas.in.h:19
-msgid "Remote server to connect to for our mail"
-msgstr "Remote server to connect to for our mail"
-
-#: mailcheck/mailcheck.schemas.in.h:20
-msgid "Run this command before we check the mail"
-msgstr "Run this command before we check the mail"
-
-#: mailcheck/mailcheck.schemas.in.h:21
-msgid "The mail server"
-msgstr "The mail server"
-
-#: mailcheck/mailcheck.schemas.in.h:22
-msgid "The user's encrypted password for the remote server"
-msgstr "The user's encrypted password for the remote server"
-
-#: mailcheck/mailcheck.schemas.in.h:23
-msgid "The user's password"
-msgstr "The user's password"
-
-#: mailcheck/mailcheck.schemas.in.h:24
-msgid "The user's password for the remote server"
-msgstr "The user's password for the remote server"
-
-#: mailcheck/mailcheck.schemas.in.h:25
-msgid "This is how we check the mail, check the mail, check the mail..."
-msgstr "This is how we check the mail, check the mail, check the mail..."
-
-#: mailcheck/mailcheck.schemas.in.h:26
-msgid "This is how we process the mail, process the mail, process the mail..."
-msgstr "This is how we process the mail, process the mail, process the mail..."
-
-#: mailcheck/mailcheck.schemas.in.h:27
-msgid ""
-"This is the animation that will be displayed during normal Inbox Monitor "
-"usage"
-msgstr ""
-"This is the animation that will be displayed during normal Inbox Monitor "
-"usage"
-
-#: mailcheck/mailcheck.schemas.in.h:28
-msgid "Username on the remote server"
-msgstr "Username on the remote server"
-
-#: mailcheck/mailcheck.schemas.in.h:29
-msgid "We run this command when the user clicks on Inbox Monitor"
-msgstr "We run this command when the user clicks on Inbox Monitor"
-
-#: mailcheck/mailcheck.schemas.in.h:30
-msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr "Whether to reset mail status when you click on Inbox Monitor"
-
-#: mailcheck/mailcheck.schemas.in.h:31
-msgid "You've got mail!"
-msgstr "You've got mail!"
-
-#: mailcheck/mailcheck.soundlist.in.h:1
-msgid "Mailcheck"
-msgstr "Mailcheck"
-
-#: mailcheck/mailcheck.soundlist.in.h:2
-msgid "New Mail"
-msgstr "New Mail"
-
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:69
+#: mini-commander/src/about.c:61
 msgid "Command Line"
 msgstr "Command Line"
 
@@ -4827,7 +4309,7 @@ msgstr "Mini-Commander"
 msgid "MiniCommander Applet Factory"
 msgstr "MiniCommander Applet Factory"
 
-#: mini-commander/src/about.c:72
+#: mini-commander/src/about.c:64
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
@@ -4896,6 +4378,11 @@ msgstr "Failed to access configuration source(s): %s\n"
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Error syncing config data: %s"
+
+#: mini-commander/src/mini-commander.glade.h:2
+#: stickynotes/stickynotes.glade.h:2
+msgid "*"
+msgstr "*"
 
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "<b>Auto Completion</b>"
@@ -4994,75 +4481,59 @@ msgstr "History list"
 msgid "List of GConfValue entries containing strings for history entries."
 msgstr "List of GConfValue entries containing strings for history entries."
 
-#: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr "List of GConfValue entries containing strings for the macro commands."
-
 #: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr "List of GConfValue entries containing strings for the macro patterns."
-
-#: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "Macro command list"
-msgstr "Macro command list"
-
-#: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "Macro pattern list"
-msgstr "Macro pattern list"
-
-#: mini-commander/src/mini-commander.schemas.in.h:15
 msgid "Perform history autocompletion"
 msgstr "Perform history autocompletion"
 
-#: mini-commander/src/mini-commander.schemas.in.h:16
+#: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Show a frame surrounding the applet."
 msgstr "Show a frame surrounding the applet."
 
-#: mini-commander/src/mini-commander.schemas.in.h:17
+#: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Show a handle so the applet can be detached from the panel."
 msgstr "Show a handle so the applet can be detached from the panel."
 
-#: mini-commander/src/mini-commander.schemas.in.h:18
+#: mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Show frame"
 msgstr "Show frame"
 
-#: mini-commander/src/mini-commander.schemas.in.h:19
+#: mini-commander/src/mini-commander.schemas.in.h:15
 msgid "Show handle"
 msgstr "Show handle"
 
-#: mini-commander/src/mini-commander.schemas.in.h:20
+#: mini-commander/src/mini-commander.schemas.in.h:16
 msgid "The blue component of the background color."
 msgstr "The blue component of the background colour."
 
-#: mini-commander/src/mini-commander.schemas.in.h:21
+#: mini-commander/src/mini-commander.schemas.in.h:17
 msgid "The blue component of the foreground color."
 msgstr "The blue component of the foreground colour."
 
-#: mini-commander/src/mini-commander.schemas.in.h:22
+#: mini-commander/src/mini-commander.schemas.in.h:18
 msgid "The green component of the background color."
 msgstr "The green component of the background colour."
 
-#: mini-commander/src/mini-commander.schemas.in.h:23
+#: mini-commander/src/mini-commander.schemas.in.h:19
 msgid "The green component of the foreground color."
 msgstr "The green component of the foreground colour."
 
-#: mini-commander/src/mini-commander.schemas.in.h:24
+#: mini-commander/src/mini-commander.schemas.in.h:20
 msgid "The red component of the background color."
 msgstr "The red component of the background colour."
 
-#: mini-commander/src/mini-commander.schemas.in.h:25
+#: mini-commander/src/mini-commander.schemas.in.h:21
 msgid "The red component of the foreground color."
 msgstr "The red component of the foreground colour."
 
-#: mini-commander/src/mini-commander.schemas.in.h:26
+#: mini-commander/src/mini-commander.schemas.in.h:22
 msgid "Use the default theme colors"
 msgstr "Use the default theme colours"
 
-#: mini-commander/src/mini-commander.schemas.in.h:27
+#: mini-commander/src/mini-commander.schemas.in.h:23
 msgid "Use theme colors instead of custom ones."
 msgstr "Use theme colours instead of custom ones."
 
-#: mini-commander/src/mini-commander.schemas.in.h:28
+#: mini-commander/src/mini-commander.schemas.in.h:24
 msgid "Width"
 msgstr "Width"
 
@@ -5096,27 +4567,27 @@ msgstr "Mini-Commander applet"
 msgid "This applet adds a command line to the panel"
 msgstr "This applet adds a command line to the panel"
 
-#: mini-commander/src/preferences.c:399
+#: mini-commander/src/preferences.c:403
 msgid "You must specify a pattern"
 msgstr "You must specify a pattern"
 
-#: mini-commander/src/preferences.c:403
+#: mini-commander/src/preferences.c:407
 msgid "You must specify a pattern and a command"
 msgstr "You must specify a pattern and a command"
 
-#: mini-commander/src/preferences.c:404
+#: mini-commander/src/preferences.c:408
 msgid "You must specify a command"
 msgstr "You must specify a command"
 
-#: mini-commander/src/preferences.c:407
+#: mini-commander/src/preferences.c:411
 msgid "You may not specify duplicate patterns"
 msgstr "You may not specify duplicate patterns"
 
-#: mini-commander/src/preferences.c:777
+#: mini-commander/src/preferences.c:785
 msgid "Pattern"
 msgstr "Pattern"
 
-#: mini-commander/src/preferences.c:787
+#: mini-commander/src/preferences.c:795
 msgid "Command"
 msgstr "Command"
 
@@ -5124,7 +4595,7 @@ msgstr "Command"
 msgid "Adjust the sound volume"
 msgstr "Adjust the sound volume"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:168
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:218
 msgid "Volume Control"
 msgstr "Volume Control"
 
@@ -5136,21 +4607,21 @@ msgstr "_Mute"
 msgid "_Open Volume Control"
 msgstr "_Open Volume Control"
 
-#: mixer/applet.c:455
+#: mixer/applet.c:536
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Failed to start Volume Control: %s"
 
-#: mixer/applet.c:866
+#: mixer/applet.c:955
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Failed to display help: %s"
 
-#: mixer/applet.c:878
+#: mixer/applet.c:971
 msgid "Volume Applet"
 msgstr "Volume Applet"
 
-#: mixer/applet.c:881
+#: mixer/applet.c:974
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "A GNOME/GStreamer-based volume control applet"
 
@@ -5203,11 +4674,11 @@ msgid "Activate and monitor a dial-up network connection"
 msgstr "Activate and monitor a dial-up network connection"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
+#: modemlights/modemlights.c:129 modemlights/modemlights.c:1594
 msgid "Modem Lights"
 msgstr "Modem Lights"
 
-#: modemlights/modemlights.c:140
+#: modemlights/modemlights.c:131
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -5217,7 +4688,7 @@ msgstr ""
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 
-#: modemlights/modemlights.c:521
+#: modemlights/modemlights.c:512
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -5225,24 +4696,24 @@ msgstr ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 
-#: modemlights/modemlights.c:529
+#: modemlights/modemlights.c:520
 msgid "_Disconnect"
 msgstr "_Disconnect"
 
-#: modemlights/modemlights.c:556
+#: modemlights/modemlights.c:547
 msgid "Do you want to connect?"
 msgstr "Do you want to connect?"
 
-#: modemlights/modemlights.c:563
+#: modemlights/modemlights.c:554
 msgid "C_onnect"
 msgstr "C_onnect"
 
-#: modemlights/modemlights.c:591
+#: modemlights/modemlights.c:582
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 
-#: modemlights/modemlights.c:596
+#: modemlights/modemlights.c:587
 msgid "not connected"
 msgstr "not connected"
 
@@ -5404,6 +4875,10 @@ msgstr "Modem Lights Preferences"
 msgid "U_pdate every:"
 msgstr "U_pdate every:"
 
+#: modemlights/properties.c:468
+msgid "seconds"
+msgstr "seconds"
+
 #. extra info checkbox
 #: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
@@ -5516,7 +4991,7 @@ msgid "A system load indicator"
 msgstr "A system load indicator"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:78
+#: multiload/main.c:69
 msgid "System Monitor"
 msgstr "System Monitor"
 
@@ -5528,11 +5003,11 @@ msgstr "_Open System Monitor"
 msgid "CPU Load"
 msgstr "CPU Load"
 
-#: multiload/loadavg.c:107 multiload/main.c:343
+#: multiload/loadavg.c:107 multiload/main.c:334
 msgid "Load Average"
 msgstr "Load Average"
 
-#: multiload/main.c:80
+#: multiload/main.c:71
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -5544,27 +5019,27 @@ msgstr ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 
-#: multiload/main.c:335 multiload/properties.c:560
+#: multiload/main.c:326 multiload/properties.c:560
 msgid "Processor"
 msgstr "Processor"
 
-#: multiload/main.c:337 multiload/properties.c:567
+#: multiload/main.c:328 multiload/properties.c:567
 msgid "Memory"
 msgstr "Memory"
 
-#: multiload/main.c:339 multiload/properties.c:575
+#: multiload/main.c:330 multiload/properties.c:575
 msgid "Network"
 msgstr "Network"
 
-#: multiload/main.c:341 multiload/properties.c:583
+#: multiload/main.c:332 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Swap Space"
 
-#: multiload/main.c:345
+#: multiload/main.c:336
 msgid "Resource"
 msgstr "Resource"
 
-#: multiload/main.c:361
+#: multiload/main.c:352
 #, c-format
 msgid ""
 "%s:\n"
@@ -5575,7 +5050,7 @@ msgstr ""
 "%d%% in use of which\n"
 "%d%% is cache"
 
-#: multiload/main.c:364
+#: multiload/main.c:355
 #, c-format
 msgid ""
 "%s:\n"
@@ -6211,7 +5686,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor the quality of a wireless network link"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:840
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
 msgid "Wireless Link Monitor"
 msgstr "Wireless Link Monitor"
 
@@ -6220,7 +5695,7 @@ msgstr "Wireless Link Monitor"
 msgid "Link Strength: %2.0d%%"
 msgstr "Link Strength: %2.0d%%"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -6228,19 +5703,19 @@ msgstr ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 
-#: wireless/wireless-applet.c:502 wireless/wireless-applet.c:829
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
 msgid "No Wireless Devices"
 msgstr "No Wireless Devices"
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "This utility shows the status of a wireless link."
 
-#: wireless/wireless-applet.c:841
+#: wireless/wireless-applet.c:843
 msgid "This utility shows the status of a wireless link"
 msgstr "This utility shows the status of a wireless link"
 
@@ -6272,37 +5747,37 @@ msgstr "Go to Trash"
 msgid "Trash"
 msgstr "Trash"
 
-#: trashapplet/src/trashapplet.c:123
+#: trashapplet/src/trashapplet.c:122
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Unable to find the Trash directory: %s"
 
-#: trashapplet/src/trashapplet.c:232
+#: trashapplet/src/trashapplet.c:231
 msgid "No Items in Trash"
 msgstr "No Items in Trash"
 
-#: trashapplet/src/trashapplet.c:235
+#: trashapplet/src/trashapplet.c:234
 msgid "1 Item in Trash"
 msgstr "1 Item in Trash"
 
-#: trashapplet/src/trashapplet.c:238
+#: trashapplet/src/trashapplet.c:237
 #, c-format
 msgid "%d Items in Trash"
 msgstr "%d Items in Trash"
 
-#: trashapplet/src/trashapplet.c:318
+#: trashapplet/src/trashapplet.c:317
 msgid "Are you sure you want to empty all of the items from the trash?"
 msgstr "Are you sure you want to empty all of the items from the trash?"
 
-#: trashapplet/src/trashapplet.c:332
+#: trashapplet/src/trashapplet.c:331
 msgid "If you empty the trash, items will be permanently deleted."
 msgstr "If you empty the trash, its contents will be permanently deleted."
 
-#: trashapplet/src/trashapplet.c:344
+#: trashapplet/src/trashapplet.c:343
 msgid "_Empty"
 msgstr "_Empty"
 
-#: trashapplet/src/trashapplet.c:401
+#: trashapplet/src/trashapplet.c:400
 #, c-format
 msgid ""
 "Error while spawing nautilus:\n"
@@ -6311,29 +5786,33 @@ msgstr ""
 "Error while opening nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:449
+#: trashapplet/src/trashapplet.c:453
 msgid "Copyright (c) 2004 Michiel Sikkes"
 msgstr "Copyright (c) 2004 Michiel Sikkes"
 
-#: trashapplet/src/trashapplet.c:450
-msgid "The GNOME Trash Applet"
-msgstr "The GNOME Trash Applet"
+#: trashapplet/src/trashapplet.c:454
+msgid ""
+"A GNOME trash bin that lives in your panel. You can use it to view the trash "
+"or drag and drop items into the trash."
+msgstr ""
+"A GNOME trash bin that lives in your panel. You can use it to view the trash "
+"or drag and drop items into the trash."
 
-#: trashapplet/src/trashapplet.c:509
+#: trashapplet/src/trashapplet.c:518
 msgid "Delete Immediately?"
 msgstr "Delete Immediately?"
 
-#: trashapplet/src/trashapplet.c:538
+#: trashapplet/src/trashapplet.c:547
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Cannot move items to trash. Do you want to delete them immediately?"
 
-#: trashapplet/src/trashapplet.c:541
+#: trashapplet/src/trashapplet.c:550
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Cannot move some items to trash. Do you want to delete these immediately?"
 
-#: trashapplet/src/trashapplet.c:639 trashapplet/src/trashapplet.c:656
+#: trashapplet/src/trashapplet.c:648 trashapplet/src/trashapplet.c:665
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
