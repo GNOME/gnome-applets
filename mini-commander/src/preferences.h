@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <regex.h>
 #include <panel-applet.h>
+#include "mini-commander_applet.h"
 
 #define LENGTH_HISTORY_LIST       50
 #define MAX_COMMAND_LENGTH        500
@@ -11,7 +12,7 @@
 #define MAX_NUM_MACRO_PARAMETERS  100
 #define MAX_MACRO_PATTERN_LENGTH  25
 
-typedef struct struct_properties properties;
+
 
 struct struct_properties
 {

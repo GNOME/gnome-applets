@@ -26,6 +26,7 @@
 #include <gdk/gdkkeysyms.h>
 /* include <zvt/zvtterm.h> */
 
+#include "mini-commander_applet.h"
 #include "command_line.h"
 #include "preferences.h"
 #include "exec.h"
@@ -42,14 +43,17 @@ static void history_selection_made_cb(GtkWidget *clist, gint row, gint column,
 static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
 
 
-GtkWidget *entry_command = NULL;
 static int history_position = LENGTH_HISTORY_LIST;
 static char browsed_filename[300] = "";
+
+static GtkWidget *entry_command;
+
 
 static gint
 command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     guint key = event->keyval;
     char *command;
@@ -198,8 +202,9 @@ command_line_activate_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
     /* Sometimes the text entry does not get the keyboard focus
        although it should.  This workaround fixes this problem. */
+#if 1
     gtk_widget_grab_focus(GTK_WIDGET(widget));
-
+#endif
     /* go on */
     return (FALSE);
     widget = NULL;
@@ -455,15 +460,18 @@ show_file_browser_signal(GtkWidget *widget, gpointer data)
     data = NULL;
 }
 
-void
-init_command_entry(PanelApplet *applet)
+GtkWidget *
+init_command_entry(MCData *mcdata)
 {
-    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
+    PanelApplet *applet = mcdata->applet;
+    properties *prop = mcdata->prop;
+    
     if(entry_command)
     	gtk_widget_destroy(GTK_WIDGET(entry_command));    
     
     /* create the widget we are going to put on the applet */
     entry_command = gtk_entry_new_with_max_length((guint16) MAX_COMMAND_LENGTH); 
+        
     /* in case we get destroyed elsewhere */
     gtk_signal_connect(GTK_OBJECT(entry_command),"destroy",
 		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
@@ -471,7 +479,7 @@ init_command_entry(PanelApplet *applet)
     
     gtk_signal_connect(GTK_OBJECT(entry_command), "key_press_event",
 		       GTK_SIGNAL_FUNC(command_key_event),
-		       applet);
+		       mcdata);
 
 #if 0
     gtk_signal_connect(GTK_OBJECT(entry_command), "focus_out_event",
@@ -481,47 +489,42 @@ init_command_entry(PanelApplet *applet)
 		       GTK_SIGNAL_FUNC(command_line_focus_in_cb),
 		       NULL);
 #endif
-
+#if 1
     gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
 		       GTK_SIGNAL_FUNC(command_line_activate_cb),
-		       applet);
+		       mcdata);
+#endif    
+    command_entry_update_color(entry_command, prop);
+    command_entry_update_size(entry_command, prop);
     
-    command_entry_update_color(prop);
-    command_entry_update_size(prop);
+    return entry_command;
 }
 
 
 void
-command_entry_update_color(properties *prop)
+command_entry_update_color(GtkWidget *entry_command, properties *prop)
 {
-    GtkStyle *style;
-    
-    /* change widget style */
-    /* style = malloc(sizeof(Gtk_style)); */
-    gtk_widget_ensure_style(entry_command);
-    style = gtk_style_copy(gtk_widget_get_style(entry_command));
-    
-    /* set text color */
-    style->text[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_fg_r;
-    style->text[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_fg_g;
-    style->text[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_fg_b;
+    GdkColor fg, bg;
 
-    /* does someone know how to set the color of the cursor? */
-
-    /* set background color */
-    style->base[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_bg_r;
-    style->base[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_bg_g;
-    style->base[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_bg_b;
-    
-    gtk_widget_set_style(entry_command, style);
+    fg.red = prop->cmd_line_color_fg_r;
+    fg.green = prop->cmd_line_color_fg_g;
+    fg.blue = prop->cmd_line_color_fg_b;
+    bg.red = prop->cmd_line_color_bg_r;
+    bg.green = prop->cmd_line_color_bg_g;
+    bg.blue = prop->cmd_line_color_bg_b;
+    gtk_widget_modify_text (entry_command, GTK_STATE_NORMAL, &fg);
+    gtk_widget_modify_text (entry_command, GTK_STATE_PRELIGHT, &fg);
+    gtk_widget_modify_base (entry_command, GTK_STATE_NORMAL, &bg);
+    gtk_widget_modify_base (entry_command, GTK_STATE_PRELIGHT, &bg);
+   
 }
 
 
 void
-command_entry_update_size(properties *prop)
+command_entry_update_size(GtkWidget *entry_command,properties *prop)
 {
     int size_y = -1;
-  
+
     if(prop->flat_layout)  {
 	if(prop->show_handle && !prop->show_frame)
 	    size_y = prop->normal_size_x - 17 - 10;
@@ -532,7 +535,6 @@ command_entry_update_size(properties *prop)
 	else if(!prop->show_handle && prop->show_frame)
 	    size_y = prop->normal_size_x - 17 - 10;
     }
-
     gtk_widget_set_usize(GTK_WIDGET(entry_command), size_y, prop->cmd_line_size_y);
 }
 

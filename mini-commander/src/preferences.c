@@ -50,7 +50,8 @@ static void
 color_cmd_fg_changed_signal(GtkWidget *color_picker_widget,
                             guint r, guint b, guint g, guint a, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     
     prop = g_object_get_data (G_OBJECT (applet), "prop");
@@ -58,8 +59,9 @@ color_cmd_fg_changed_signal(GtkWidget *color_picker_widget,
     prop->cmd_line_color_fg_r = (int) r;
     prop->cmd_line_color_fg_g = (int) g; 
     prop->cmd_line_color_fg_b = (int) b;
-    
-    command_entry_update_color (prop);
+   
+    command_entry_update_color (mcdata->entry, prop);
+
     return;
     data = NULL;
 }
@@ -68,7 +70,8 @@ static void
 color_cmd_bg_changed_signal(GtkWidget *color_picker_widget, 
 			    guint r, guint b, guint g, guint a, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     
     prop = g_object_get_data (G_OBJECT (applet), "prop");
@@ -76,8 +79,9 @@ color_cmd_bg_changed_signal(GtkWidget *color_picker_widget,
     prop->cmd_line_color_bg_r = (int) r;
     prop->cmd_line_color_bg_g = (int) g; 
     prop->cmd_line_color_bg_b = (int) b;
-    
-    command_entry_update_color (prop);
+   
+    command_entry_update_color (mcdata->entry, prop);
+
     return;
     data = NULL;
 }
@@ -442,7 +446,8 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 static void
 check_time_toggled (GtkToggleButton *button, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     gboolean toggled;
     
@@ -454,14 +459,15 @@ check_time_toggled (GtkToggleButton *button, gpointer data)
         return;
         
     prop->show_time = toggled;
-    redraw_applet (applet);
+    redraw_applet (mcdata);
     
 }
 
 static void
 check_date_toggled (GtkToggleButton *button, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     gboolean toggled;
     
@@ -473,14 +479,15 @@ check_date_toggled (GtkToggleButton *button, gpointer data)
         return;
         
     prop->show_date = toggled;
-    redraw_applet (applet);
+    redraw_applet (mcdata);
     
 }
 
 static void
 check_handle_toggled (GtkToggleButton *button, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     gboolean toggled;
     
@@ -492,14 +499,15 @@ check_handle_toggled (GtkToggleButton *button, gpointer data)
         return;
         
     prop->show_handle = toggled;
-    redraw_applet (applet);
+    redraw_applet (mcdata);
     
 }
 
 static void
 check_frame_toggled (GtkToggleButton *button, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     gboolean toggled;
     
@@ -511,14 +519,15 @@ check_frame_toggled (GtkToggleButton *button, gpointer data)
         return;
         
     prop->show_frame = toggled;
-    redraw_applet (applet);
+    redraw_applet (mcdata);
     
 }
 
 static void
 autocomplete_toggled (GtkToggleButton *button, gpointer data)
 {
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     gboolean toggled;
     
@@ -546,7 +555,8 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
    #if 0 /* FIXME */
     static GnomeHelpMenuEntry help_entry = { NULL,  "properties" };
    #endif
-    PanelApplet *applet = data;
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
     properties *prop;
     static GtkWidget *properties_box = NULL;
     GtkWidget *notebook;
@@ -574,6 +584,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
+    gtk_window_set_default_size (GTK_WINDOW (properties_box), 400, 300);
     
     notebook = gtk_notebook_new ();
     gtk_box_pack_start (GTK_BOX (GTK_DIALOG (properties_box)->vbox), 
@@ -582,7 +593,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     /* time & date */
     vbox = gtk_vbox_new(FALSE, GNOME_PAD_BIG);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
-
+#if 0
     frame = gtk_frame_new(_("Clock"));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 
@@ -594,16 +605,16 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     check_time = gtk_check_button_new_with_label (_("Show time"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_time), prop->show_time);
     g_signal_connect (G_OBJECT (check_time), "toggled",
-    		      G_CALLBACK (check_time_toggled), applet);
+    		      G_CALLBACK (check_time_toggled), mcdata);
     gtk_box_pack_start(GTK_BOX(vbox1), check_time, FALSE, TRUE, 0);
 
     /* show date check box */
     check_date = gtk_check_button_new_with_label (_("Show date"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_date), prop->show_date);
     g_signal_connect (G_OBJECT (check_date), "toggled",
-    		      G_CALLBACK (check_date_toggled), applet);
+    		      G_CALLBACK (check_date_toggled), mcdata);
     gtk_box_pack_start(GTK_BOX(vbox1), check_date, FALSE, TRUE, 0);
-
+#endif
 
     /* appearance frame */
     frame = gtk_frame_new(_("Appearance"));
@@ -617,14 +628,14 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     check_handle = gtk_check_button_new_with_label (_("Show handle"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_handle), prop->show_handle);
     g_signal_connect (G_OBJECT (check_handle), "toggled",
-    		      G_CALLBACK (check_handle_toggled), applet);
+    		      G_CALLBACK (check_handle_toggled), mcdata);
     gtk_box_pack_start(GTK_BOX(vbox1), check_handle, FALSE, TRUE, 0);
 
     /* show frame check box */
     check_frame = gtk_check_button_new_with_label (_("Show frame"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_frame), prop->show_frame);
     g_signal_connect (G_OBJECT (check_frame), "toggled",
-    		      G_CALLBACK (check_frame_toggled), applet);
+    		      G_CALLBACK (check_frame_toggled), mcdata);
     gtk_box_pack_start(GTK_BOX(vbox1), check_frame, FALSE, TRUE, 0);
 
 
@@ -641,7 +652,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     check_auto_complete_history = gtk_check_button_new_with_label (_("Enable history based autocompletion"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_auto_complete_history), prop->auto_complete_history);
     g_signal_connect (G_OBJECT (check_auto_complete_history), "toggled",
-    		      G_CALLBACK (autocomplete_toggled), applet);
+    		      G_CALLBACK (autocomplete_toggled), mcdata);
     gtk_box_pack_start(GTK_BOX(vbox1), check_auto_complete_history, FALSE, TRUE, 0);
 #if 0
     /* Size */
@@ -785,7 +796,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
 		       GTK_SIGNAL_FUNC(color_cmd_fg_changed_signal),
-		       applet);
+		       mcdata);
     /*
       gtk_box_pack_start(GTK_BOX(hbox), color_picker, FALSE, TRUE, 0);
     */
@@ -815,7 +826,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
 		       GTK_SIGNAL_FUNC(color_cmd_bg_changed_signal),
-		       applet);
+		       mcdata);
     gtk_table_attach(GTK_TABLE(table), 
 		     color_picker,
 		     1, 2,

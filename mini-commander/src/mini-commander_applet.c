@@ -35,9 +35,9 @@
 #include "browser-mini.xpm"
 #include "history-mini.xpm"
 
-static gint applet_destroy_signal(GtkWidget *widget, gpointer data);
-static gint applet_detached_signal(GtkWidget *widget, gpointer data);
-static gint applet_attached_signal(GtkWidget *widget, gpointer data);
+static void applet_destroy_signal(GtkWidget *widget, gpointer data);
+static gint applet_detached_signal(GtkHandleBox *hb, GtkWidget *widget, gpointer data);
+static gint applet_attached_signal(GtkHandleBox *hb, GtkWidget *widget, gpointer data);
 static gint applet_orient_changed_cb(GtkWidget *widget, gpointer data);
 static void applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data);
 
@@ -49,20 +49,30 @@ static const BonoboUIVerb mini_commander_menu_verbs[] = {
         BONOBO_UI_VERB_END
 };
 
-static gint
+static void
 applet_destroy_signal(GtkWidget *widget, gpointer data)
 {
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
+    
     /* applet will be destroyed; save settings now */
     save_session();
 
+   
+    if (mcdata->label_timeout > 0)
+    	gtk_timeout_remove (GPOINTER_TO_INT (mcdata->label_timeout));
+#if 0 /* Freeing these prevents the applet from restarting - not sure what's up */
+  
+    g_free (mcdata->prop);
+    g_free (mcdata);
+  
+#endif
     /* go on */
-    return FALSE;  
-    widget = NULL;
-    data = NULL;
+    return;  
 }
 
 static gint
-applet_detached_signal(GtkWidget *widget, gpointer data)
+applet_detached_signal(GtkHandleBox *hb, GtkWidget *widget, gpointer data)
 {
     PanelApplet *applet = data;
     properties *prop;
@@ -71,9 +81,9 @@ applet_detached_signal(GtkWidget *widget, gpointer data)
     
     /* applet has been detached; make it smaller */
 
-    gtk_widget_set_usize(GTK_WIDGET(applet),
+    /*gtk_widget_set_usize(GTK_WIDGET(applet),
 			 20,
-			 prop->normal_size_y);
+			 prop->normal_size_y);*/
   
     /* go on */
     return FALSE;  
@@ -82,7 +92,7 @@ applet_detached_signal(GtkWidget *widget, gpointer data)
 }
 
 static gint
-applet_attached_signal(GtkWidget *widget, gpointer data)
+applet_attached_signal(GtkHandleBox *hb, GtkWidget *widget, gpointer data)
 {
     PanelApplet *applet = data;
     properties *prop;
@@ -91,9 +101,9 @@ applet_attached_signal(GtkWidget *widget, gpointer data)
     
     /* applet has been detached; restore original size */
 
-    gtk_widget_set_usize(GTK_WIDGET(applet),
+    /*gtk_widget_set_usize(GTK_WIDGET(applet),
 			 prop->normal_size_x,
-			 prop->normal_size_y);
+			 prop->normal_size_y);*/
   
     /* go on */
     return FALSE;  
@@ -104,6 +114,7 @@ applet_attached_signal(GtkWidget *widget, gpointer data)
 static gint
 applet_orient_changed_cb(GtkWidget *widget, gpointer data)
 {
+    MCData *mcdata = data;
     PanelApplet *applet = data;
     static int counter = 0;
 
@@ -120,12 +131,12 @@ applet_orient_changed_cb(GtkWidget *widget, gpointer data)
 static void
 applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
 {
+    MCData *mcdata = data;
     PanelApplet *applet = data;
-    properties *prop;
+    properties *prop = mcdata->prop;
 
-    prop = g_object_get_data (G_OBJECT (applet), "prop");
    
-	show_message((gchar *) _("size changed")); 
+    show_message((gchar *) _("size changed")); 
 
     prop->normal_size_y = size;
     if(size <= GNOME_Vertigo_PANEL_X_SMALL)
@@ -145,16 +156,17 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
 	    prop->flat_layout = FALSE;
 	}
 
-    redraw_applet(applet);
+    redraw_applet(mcdata);
     return;
     widget = NULL;
     data = NULL;
 }
 
 void
-redraw_applet(PanelApplet *applet)
+redraw_applet(MCData *mcdata)
 {
-    properties *prop;
+    PanelApplet *applet = mcdata->applet;
+    properties *prop = mcdata->prop;
     GtkWidget *hbox, *hbox_buttons;
     GtkWidget *button;
     GtkWidget *frame;
@@ -165,15 +177,10 @@ redraw_applet(PanelApplet *applet)
     GtkTooltips *tooltips;
     int size_frames = 0;
     int size_status_line = 18;
+    gboolean first_time = FALSE;
 
-    static GtkWidget *applet_vbox = NULL;
-    static GtkWidget *applet_inner_vbox = NULL;
-    static int first_time = TRUE;   
-    
     tooltips = gtk_tooltips_new ();
     
-    prop = g_object_get_data (G_OBJECT (applet), "prop");
-
     /* recalculate sizes */
     if(prop->show_handle)
 	size_frames += 0;
@@ -183,22 +190,23 @@ redraw_applet(PanelApplet *applet)
 	size_status_line = 0;
     prop->cmd_line_size_y = prop->normal_size_y - size_status_line - size_frames;   
 
-    if(!applet_vbox)
+    if(!mcdata->applet_vbox)
 	{
-	    applet_vbox = gtk_vbox_new(FALSE, 0);
-	    gtk_container_set_border_width(GTK_CONTAINER(applet_vbox), 0);
+	    mcdata->applet_vbox = gtk_vbox_new(FALSE, 0);
+	    gtk_container_set_border_width(GTK_CONTAINER(mcdata->applet_vbox), 0);
+	    first_time = TRUE;
 	}
 
-    if(applet_inner_vbox)
+    if(mcdata->applet_inner_vbox)
       /* clean up */
-      gtk_widget_destroy(GTK_WIDGET(applet_inner_vbox)); 
+      gtk_widget_destroy(GTK_WIDGET(mcdata->applet_inner_vbox)); 
 
-    applet_inner_vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_set_border_width(GTK_CONTAINER(applet_inner_vbox), 0);
+    mcdata->applet_inner_vbox = gtk_vbox_new(FALSE, 0);
+    gtk_container_set_border_width(GTK_CONTAINER(mcdata->applet_inner_vbox), 0);
     /* in case we get destroyed elsewhere */
-    gtk_signal_connect(GTK_OBJECT(applet_inner_vbox),"destroy",
+    gtk_signal_connect(GTK_OBJECT(mcdata->applet_inner_vbox),"destroy",
 		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
-		       &applet_inner_vbox);
+		       &mcdata->applet_inner_vbox);
 
 
     /*
@@ -214,23 +222,23 @@ redraw_applet(PanelApplet *applet)
     else
 	vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
-    
+   
     /* add command line; position: top */
-    init_command_entry(applet);
+    mcdata->entry = init_command_entry(mcdata);
 
 /*     gtk_box_pack_start(GTK_BOX(vbox), entry_command, FALSE, FALSE, 0); */
 
     /* hbox for message label and buttons */
     hbox = gtk_hbox_new(FALSE, 0);
-    
+#ifdef MESSAGES_NOT_NEEDED_FOR_NOW    
     /* add message label */
-    init_message_label(applet);
+    init_message_label(mcdata);
 
     /* do not center text but put it to bottom instead */
     gtk_misc_set_alignment(GTK_MISC(label_message), 0.0, 1.0);
     gtk_box_pack_start(GTK_BOX(hbox), label_message, TRUE, TRUE, 0);
-
-    if(prop->flat_layout) 
+#endif
+    if(prop->flat_layout && (prop->normal_size_y > GNOME_Vertigo_PANEL_X_SMALL)) 
 	hbox_buttons = gtk_vbox_new(TRUE, 0);
     else
 	hbox_buttons = gtk_hbox_new(TRUE, 0);
@@ -284,10 +292,10 @@ redraw_applet(PanelApplet *applet)
 	    handle = gtk_handle_box_new();
 	    gtk_signal_connect(GTK_OBJECT(handle), "child_detached",
 			       GTK_SIGNAL_FUNC(applet_detached_signal),
-			       NULL);
+			       applet);
 	    gtk_signal_connect(GTK_OBJECT(handle), "child_attached",
 			       GTK_SIGNAL_FUNC(applet_attached_signal),
-			       NULL);
+			       applet);
 	    if (prop->show_frame)
 		gtk_container_add(GTK_CONTAINER(handle), frame);
 	    else
@@ -305,9 +313,9 @@ redraw_applet(PanelApplet *applet)
 	    /* applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander")); */
 	    
 	    if (prop->show_frame)
-		gtk_box_pack_start(GTK_BOX(applet_inner_vbox), frame2, TRUE, TRUE, 0);
+		gtk_box_pack_start(GTK_BOX(mcdata->applet_inner_vbox), frame2, TRUE, TRUE, 0);
 	    else
-		gtk_box_pack_start(GTK_BOX(applet_inner_vbox), handle, TRUE, TRUE, 0);
+		gtk_box_pack_start(GTK_BOX(mcdata->applet_inner_vbox), handle, TRUE, TRUE, 0);
 	} 
     else 
 	{
@@ -323,25 +331,25 @@ redraw_applet(PanelApplet *applet)
 		    gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
 		    gtk_container_add(GTK_CONTAINER(frame2), frame);
 		    
-		    gtk_box_pack_start(GTK_BOX(applet_inner_vbox), frame2, TRUE, TRUE, 0);
+		    gtk_box_pack_start(GTK_BOX(mcdata->applet_inner_vbox), frame2, TRUE, TRUE, 0);
 		}
 	    else
-		gtk_box_pack_start(GTK_BOX(applet_inner_vbox), vbox, TRUE, TRUE, 0);
+		gtk_box_pack_start(GTK_BOX(mcdata->applet_inner_vbox), vbox, TRUE, TRUE, 0);
     }
 
-    gtk_box_pack_start(GTK_BOX(applet_vbox), applet_inner_vbox, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(mcdata->applet_vbox), mcdata->applet_inner_vbox, 
+    		       TRUE, TRUE, 0);
 
-    if(first_time)
-        gtk_container_add(GTK_CONTAINER(applet), applet_vbox);
-    first_time = FALSE;
-
-    gtk_widget_set_usize(GTK_WIDGET(applet), prop->normal_size_x, prop->normal_size_y);
+    if (first_time)
+        gtk_container_add(GTK_CONTAINER(applet), mcdata->applet_vbox);
+  
+    /*gtk_widget_set_usize(GTK_WIDGET(applet), prop->normal_size_x, prop->normal_size_y);*/
 
     /* allow pasting into the input box by packing it after
        applet_widdget_add has bound the middle mouse button (idea taken
        from the applet Web_control by Garrett Smith) */
 #if 1
-    gtk_box_pack_start(GTK_BOX(vbox), entry_command, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), mcdata->entry, FALSE, FALSE, 0);
 #else
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
@@ -349,26 +357,26 @@ redraw_applet(PanelApplet *applet)
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 #endif
 
-    gtk_widget_show_all(applet_vbox);
-    gtk_widget_show_all(applet_inner_vbox);
-  
     gtk_widget_show_all(GTK_WIDGET (applet));
-    
+
+   
 }
 
-/* int main_(int argc, char **argv) */
 static gboolean
 mini_commander_applet_fill(PanelApplet *applet)
 {
-    properties *prop;
+    MCData *mcdata;
     
+    mcdata = g_new0 (MCData, 1);
+    mcdata->applet = applet;
+  
     /* install signal handler */
     init_exec_signal_handler();
 
     g_signal_connect(GTK_OBJECT(applet),
 		     "change_orient",
 		     G_CALLBACK(applet_orient_changed_cb),
-		     NULL);
+		     mcdata);
 
     /*we have to bind change_pixel_size before we do applet_widget_add 
       since we need to get an initial change_pixel_size signal to set our
@@ -376,26 +384,26 @@ mini_commander_applet_fill(PanelApplet *applet)
 	g_signal_connect(G_OBJECT(applet),
 		     "change_size",
 		     G_CALLBACK(applet_pixel_size_changed_cb),
-		     applet);
+		     mcdata);
     
-    prop = load_session();
-    g_object_set_data (G_OBJECT (applet), "prop", prop);
+    mcdata->prop = load_session();
+    g_object_set_data (G_OBJECT (applet), "prop", mcdata->prop);
     
     g_signal_connect(G_OBJECT(applet), "destroy",
 		     G_CALLBACK(applet_destroy_signal),
-		     applet); 
+		     mcdata); 
 
-    applet_pixel_size_changed_cb(NULL, panel_applet_get_size (applet), applet);
+    applet_pixel_size_changed_cb(NULL, panel_applet_get_size (applet), mcdata);
 
     panel_applet_setup_menu_from_file (applet,
 			    NULL, /* opt. datadir */
 			    "GNOME_MiniCommanderApplet.xml",
 			    NULL,
 			    mini_commander_menu_verbs,
-			    applet);
-      
+			    mcdata);
+#if 0      
     show_message((gchar *) _("ready...")); 
- 
+#endif 
     return TRUE;
 }
 

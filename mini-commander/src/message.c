@@ -39,10 +39,16 @@ static GtkWidget *window_message_label;
 
 
 void
-init_message_label(PanelApplet *applet)
+init_message_label(MCData *mcdata)
 {
+#if 0
+    PanelApplet *applet = mcdata->applet;
+    gint timeout;
     label_message = gtk_label_new((gchar *) "");
-    gtk_timeout_add(15*1000, (GtkFunction) show_interesting_information, applet);
+    mcdata->label_timeout = gtk_timeout_add(15*1000, 
+    					    (GtkFunction) show_interesting_information, 
+    					    applet);
+#endif
 }
 
 void show_message(gchar *message)
@@ -130,6 +136,7 @@ hide_message(gpointer data)
 static gint
 show_interesting_information(gpointer data)
 {
+#if 0
     PanelApplet *applet = data;
     properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     /* shows intersting information while there is no text
@@ -183,5 +190,6 @@ show_interesting_information(gpointer data)
     /* continue timeout function */
     return TRUE;
     data = NULL;
+#endif
 }
 

@@ -2,7 +2,6 @@
 
 INCLUDES = 						\
 	 $(GNOME_APPLETS_CFLAGS)			\
-	 $(ZVT_APPLETS_CFLAGS)	\
 	-I.						\
 	-I$(srcdir)					\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
@@ -30,14 +29,11 @@ mini_commander_applet_SOURCES =			\
 	macro.c					\
 	macro.h					\
 	preferences.c				\
-	preferences.h				\
-	terminal.c				\
-	terminal.h
+	preferences.h
 
 mini_commander_applet_LDADD =				\
-	$(GNOME_APPLETS_LIBS)				\
-	$(ZVT_APPLETS_LIBS)
-
+	$(GNOME_APPLETS_LIBS)
+	
 # currently the installation of these bitmaps wouldn't be necessary
 bitmapsdir = $(datadir)/pixmaps/mini-commander
 bitmaps_DATA = browser-mini.xpm history-mini.xpm
