@@ -19,7 +19,7 @@
 
 #include "factory.h"
 
-void
+static void
 setup_factory (void)
 {
 	AtkRegistry* default_registry;

@@ -162,8 +162,8 @@
 	/* end font funcs and vars */
 
 	/* accessibility funcs and vars */
-	GtkWidget *access_drawing_area;
-	StockData *access_stock;
+	static GtkWidget *access_drawing_area;
+	static StockData *access_stock;
 
 	extern void set_relation (GtkWidget *widget, GtkLabel *label);
 	static void setup_refchild_nchildren(GtkWidget * vbox);
@@ -2184,7 +2184,7 @@ static gint updateOutput(gpointer data)
 		
 	}
 
-	gchar* gtik_get_text(void) {
+	static gchar* gtik_get_text(void) {
 		GArray *quotes = access_stock->quotes;
 		gchar **strs = NULL;
 		gchar *buff;
