@@ -404,6 +404,7 @@ static gint draw_display_line(AppData *ad)
 	gchar c;
 	GdkFont *font;
 	gint new_line = FALSE;
+	int len;	/* byte length of a character */
 
 	if (!ad->info_current && !ad->info_list) return TRUE;
 
@@ -452,18 +453,20 @@ static gint draw_display_line(AppData *ad)
 
 	/* skip leading space on new line */
 	c = id->text[ad->text_pos];
+	len = mblen(&id->text[ad->text_pos], id->length);
 	if (ad->x_pos == id->offset && c == ' ' &&
-			ad->text_pos < id->length - 1 && id->text[ad->text_pos +1] != ' ')
+			ad->text_pos < id->length - 1 && id->text[ad->text_pos + len] != ' ')
 		{
-		ad->text_pos++;
+		ad->text_pos += len;
 		c = id->text[ad->text_pos];
+		len = mblen(&id->text[ad->text_pos], id->length);
 		}
 
 	gdk_draw_text(ad->display, font,
 			ad->draw_area->style->fg_gc[GTK_WIDGET_STATE(ad->draw_area)],
-			ad->x_pos, ad->height - ad->text_y_line, id->text + ad->text_pos, 1);
-	ad->x_pos += gdk_char_width (font, c);
-	ad->text_pos ++;
+			ad->x_pos, ad->height - ad->text_y_line, id->text + ad->text_pos, len);
+	ad->x_pos += gdk_text_width(font, &id->text[ad->text_pos], len);
+	ad->text_pos += len;
 
 	if (ad->text_pos >= id->length)
 		{
@@ -472,7 +475,8 @@ static gint draw_display_line(AppData *ad)
 	else
 		{
 		c = id->text[ad->text_pos];
-		if (ad->x_pos + gdk_char_width (font, c) > ad->width)
+		len = mblen(&id->text[ad->text_pos], id->length);
+		if (ad->x_pos + gdk_text_width(font, &id->text[ad->text_pos], len) > ad->width)
 			{
 			new_line = TRUE;
 			}
