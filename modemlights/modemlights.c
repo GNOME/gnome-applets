@@ -1426,12 +1426,6 @@ int main (int argc, char *argv[])
 	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
 	gtk_widget_show(button);
 
-	applet_widget_add(APPLET_WIDGET(applet), frame);
-	gtk_widget_realize(applet);
-	gtk_widget_realize(display_area);
-
-	setup_colors();
-	update_pixmaps();
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				NULL);
@@ -1440,6 +1434,13 @@ int main (int argc, char *argv[])
 				GTK_SIGNAL_FUNC(applet_change_pixel_size),
 				NULL);
 #endif
+
+	applet_widget_add(APPLET_WIDGET(applet), frame);
+	gtk_widget_realize(applet);
+	gtk_widget_realize(display_area);
+
+	setup_colors();
+	update_pixmaps();
 
 	button_pixmap = gtk_pixmap_new(button_off, button_mask);
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);

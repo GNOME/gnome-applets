@@ -1034,8 +1034,6 @@ main (int argc, char **argv)
 
         diskusage_wid = diskusage_widget ();
 
-        applet_widget_add (APPLET_WIDGET(applet), diskusage_wid);
-
 	/* connect signals */
 	gtk_signal_connect (GTK_OBJECT(applet),"change_orient",
 			    GTK_SIGNAL_FUNC(applet_change_orient),
@@ -1047,6 +1045,8 @@ main (int argc, char **argv)
 	gtk_signal_connect (GTK_OBJECT(applet),"save_session",
 			    GTK_SIGNAL_FUNC(applet_save_session),
 			    NULL);
+
+        applet_widget_add (APPLET_WIDGET(applet), diskusage_wid);
 
 
 	/* add applets right click menu */

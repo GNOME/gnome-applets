@@ -68,12 +68,6 @@ AppData *create_new_app(GtkWidget *applet)
 	ad->user_height = 48;
 	ad->draw_area = NULL;
 
-	init_app_display(ad);
-
-	gtk_signal_connect_after (GTK_OBJECT (applet), "show",
-				  GTK_SIGNAL_FUNC (applet_shown),
-				  ad);
-
 	/* from tick-a-stat */
         gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
                 GTK_SIGNAL_FUNC(applet_change_orient), ad);
@@ -81,6 +75,12 @@ AppData *create_new_app(GtkWidget *applet)
         gtk_signal_connect(GTK_OBJECT(ad->applet),"change_pixel_size",
                 GTK_SIGNAL_FUNC(applet_change_pixel_size), ad);
 #endif
+
+	init_app_display(ad);
+
+	gtk_signal_connect_after (GTK_OBJECT (applet), "show",
+				  GTK_SIGNAL_FUNC (applet_shown),
+				  ad);
 
         gtk_widget_set_usize(ad->applet, 10, 10);
 	

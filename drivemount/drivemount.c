@@ -687,18 +687,6 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, dd);
 
-	dd->button=gtk_button_new();
-	applet_widget_add(APPLET_WIDGET(applet), dd->button);
-	gtk_widget_show(dd->button);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-				GTK_SIGNAL_FUNC(destroy_drive_widget),
-				dd);
-	gtk_signal_connect(GTK_OBJECT(dd->button),"clicked",
-				GTK_SIGNAL_FUNC(mount_cb),
-				dd);
-	dnd_init(dd);
-
 	/* attach applet signals here */
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
@@ -714,6 +702,19 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
 
+
+
+	dd->button=gtk_button_new();
+	applet_widget_add(APPLET_WIDGET(applet), dd->button);
+	gtk_widget_show(dd->button);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+				GTK_SIGNAL_FUNC(destroy_drive_widget),
+				dd);
+	gtk_signal_connect(GTK_OBJECT(dd->button),"clicked",
+				GTK_SIGNAL_FUNC(mount_cb),
+				dd);
+	dnd_init(dd);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "browse",

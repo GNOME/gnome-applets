@@ -360,11 +360,15 @@ main (int argc, char **argv)
 	applet_widget_add (APPLET_WIDGET (applet), fifteen);
 	gtk_widget_show (fifteen);
 
-	gtk_widget_show (applet);
-
+	/* here it is ok to connect here, this is because we have already
+	 * gotten the size before, and thus don't care about the initial
+	 * signal */
 	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
 			   GTK_SIGNAL_FUNC(change_pixel_size),
 			   canvas);
+
+
+	gtk_widget_show (applet);
 
 	applet_widget_register_callback (APPLET_WIDGET (applet),
 					 "scramble",

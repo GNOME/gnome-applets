@@ -294,10 +294,6 @@ static AppData *create_new_app(GtkWidget *applet)
 		GTK_SIGNAL_FUNC(destroy_applet), ad);
 	gtk_widget_show(ad->display);
 
-	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display);
-
-	display_events_init(ad);
-
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
 		GTK_SIGNAL_FUNC(applet_change_orient), ad);
 
@@ -305,6 +301,10 @@ static AppData *create_new_app(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_pixel_size",
 		GTK_SIGNAL_FUNC(applet_change_pixel_size), ad);
 #endif
+
+	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display);
+
+	display_events_init(ad);
 
 #ifdef HAVE_PANEL_DRAW_SIGNAL
 	applet_widget_send_draw(APPLET_WIDGET(ad->applet), TRUE);

@@ -708,10 +708,6 @@ int main (int argc, char *argv[])
     gtk_timeout_add (500, update_clock, &clk);
     update_clock (&clk);
 
-    /* show applet */
-    applet_widget_add (APPLET_WIDGET(applet), clk.area);
-    gtk_widget_show (applet);
-
     /* callbacks for session, background change, about, properties, etc. */
     gtk_signal_connect (GTK_OBJECT(applet), "save_session",
 			GTK_SIGNAL_FUNC(save_session), NULL);
@@ -719,6 +715,11 @@ int main (int argc, char *argv[])
 	                GTK_SIGNAL_FUNC(applet_back_change), clk.area);
     gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
 		       GTK_SIGNAL_FUNC(change_pixel_size), NULL);
+
+    /* show applet */
+    applet_widget_add (APPLET_WIDGET(applet), clk.area);
+    gtk_widget_show (applet);
+
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "properties",
 					   GNOME_STOCK_MENU_PROP,

@@ -1,3 +1,15 @@
+Tue Dec 05 20:11:24 2000  George Lebl <jirka@5z.com>
+
+	* another_clock/another_clock.c, battery/battery.c,
+	  clockmail/clockmail.c, diskusage/diskusage.c,
+	  drivemount/drivemount.c, fifteen/fifteen.c, gkb-new/gkb.c,
+	  gnotes/gnotes_applet.c, life/life.c, mixer/mixer.c, 
+	  modemlights/modemlights.c, screenshooter/screenshooter_applet.c,
+	  slashapp/slashapp.c, sound-monitor/main.c:
+	  I have not yet figured out why we wrote docs, since no one seems
+	  to be using it.  Hmm, bind signals on applet widget before we
+	  call applet_widget_add as otherwise we have a race.
+
 Wed Nov 29 2000  Darragh O'Brien <darragh.obrien@sun.com>
 
 	* cdplayer/cdplayer.c, cdplayer/cdrom-solaris.c: Added Solaris

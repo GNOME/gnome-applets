@@ -732,19 +732,19 @@ main(int argc, char **argv)
 	if (!applet)
 		g_error(("Can't create applet!\n"));
 
-	mixerw = create_mixer_widget();
-	gtk_widget_show(mixerw);
-	applet_widget_add(APPLET_WIDGET(applet), mixerw);
-
-	gtk_object_set_user_data(GTK_OBJECT(applet),
-				gtk_object_get_user_data(GTK_OBJECT(mixerw)));
-
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
 	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
 			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
+
+	mixerw = create_mixer_widget();
+	gtk_widget_show(mixerw);
+	applet_widget_add(APPLET_WIDGET(applet), mixerw);
+
+	gtk_object_set_user_data(GTK_OBJECT(applet),
+				gtk_object_get_user_data(GTK_OBJECT(mixerw)));
 
         applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					       "run_gmix",

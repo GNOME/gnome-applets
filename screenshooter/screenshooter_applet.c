@@ -990,6 +990,17 @@ main (int argc, char *argv[])
   gtk_widget_show (hbox);
   gtk_widget_show (mainbox);
 
+  gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
+		      GTK_SIGNAL_FUNC (cb_applet_change_orient), NULL);
+
+#ifdef HAVE_PANEL_PIXEL_SIZE
+  gtk_signal_connect (GTK_OBJECT (applet), "change_pixel_size",
+		      GTK_SIGNAL_FUNC (applet_change_pixel_size), NULL);
+#endif
+
+  gtk_signal_connect (GTK_OBJECT (applet), "save_session",
+		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
+
   applet_widget_add (APPLET_WIDGET (applet), mainbox);
 
   orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
@@ -1016,17 +1027,6 @@ main (int argc, char *argv[])
 					 GNOME_STOCK_MENU_ABOUT,
 					 _ ("About..."),
 					 (AppletCallbackFunc) cb_about, NULL);
-
-  gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
-		      GTK_SIGNAL_FUNC (cb_applet_change_orient), NULL);
-
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  gtk_signal_connect (GTK_OBJECT (applet), "change_pixel_size",
-		      GTK_SIGNAL_FUNC (applet_change_pixel_size), NULL);
-#endif
-
-  gtk_signal_connect (GTK_OBJECT (applet), "save_session",
-		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
 
   gtk_widget_show (applet);
   applet_widget_gtk_main ();

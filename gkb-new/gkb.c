@@ -431,6 +431,15 @@ gkb_activator (PortableServer_POA poa,
 
   create_gkb_widget (gkb);
 
+  gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
+		      GTK_SIGNAL_FUNC (applet_save_session), gkb);
+
+  gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_orient",
+		      GTK_SIGNAL_FUNC (gkb_change_orient), gkb);
+
+  gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_pixel_size",
+		      GTK_SIGNAL_FUNC (gkb_change_pixel_size), gkb);
+
   gtk_widget_show (gkb->frame);
   applet_widget_add (APPLET_WIDGET (gkb->applet), gkb->frame);
   gtk_widget_show (gkb->applet);
@@ -451,15 +460,6 @@ gkb_activator (PortableServer_POA poa,
   gtk_widget_show_now (bah_window);
 
   load_properties (gkb);
-
-  gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
-		      GTK_SIGNAL_FUNC (applet_save_session), gkb);
-
-  gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_orient",
-		      GTK_SIGNAL_FUNC (gkb_change_orient), gkb);
-
-  gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_pixel_size",
-		      GTK_SIGNAL_FUNC (gkb_change_pixel_size), gkb);
 
   gkb->dact = g_list_nth_data (gkb->maps, 0);
 

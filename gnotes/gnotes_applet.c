@@ -173,6 +173,12 @@ int main(int argc, char **argv)
     }
 
     gnotes_button = create_gnotes_button(&gnotes);
+
+    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "change_pixel_size",
+                       GTK_SIGNAL_FUNC(applet_change_pixel_size), &gnotes);
+    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "save_session",
+                       GTK_SIGNAL_FUNC(applet_save_session), NULL);
+
     applet_widget_add(APPLET_WIDGET(gnotes.applet), gnotes_button);
 
     gtk_widget_show(gnotes_button);
@@ -205,11 +211,6 @@ int main(int argc, char **argv)
     gnotes_preferences_load(APPLET_WIDGET(gnotes.applet)->privcfgpath,
                             &gnotes);
     
-    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "change_pixel_size",
-                       GTK_SIGNAL_FUNC(applet_change_pixel_size), &gnotes);
-    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "save_session",
-                       GTK_SIGNAL_FUNC(applet_save_session), NULL);
-
     applet_widget_gtk_main ();
 
     return(0);

@@ -931,8 +931,6 @@ make_new_battery_applet (const gchar *goad_id)
 		      (GtkSignalFunc)battery_configure_handler, bat);
   gtk_widget_set_events (bat->readout_area, GDK_EXPOSURE_MASK | GDK_CONFIGURE);
 
-  applet_widget_add (APPLET_WIDGET (bat->applet), root);
-
   gtk_signal_connect (GTK_OBJECT (bat->applet), "save_session",
 		      GTK_SIGNAL_FUNC (battery_session_save),
 		      bat);
@@ -944,6 +942,8 @@ make_new_battery_applet (const gchar *goad_id)
 		      GTK_SIGNAL_FUNC (battery_change_pixel_size),
 		      bat);
 #endif
+
+  applet_widget_add (APPLET_WIDGET (bat->applet), root);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
 					 "properties",

@@ -265,15 +265,15 @@ main (int argc, char **argv)
 	size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet)) - 2;
 	if(size>MAX_SIZE) size=MAX_SIZE;
 
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
+			   NULL);
+
 	life = create_life ();
 	applet_widget_add (APPLET_WIDGET (applet), life);
 	gtk_widget_show (life);
 
 	gtk_widget_show (applet);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
-			   NULL);
 
 	applet_widget_register_callback (APPLET_WIDGET (applet),
 					 "randomize",
