@@ -24,7 +24,7 @@ gkb_applet_2_LDADD = \
 
 @INTLTOOL_SERVER_RULE@
 
-SUBDIRS= gkb xmodmap #descs
+SUBDIRS= gkb xmodmap descs
 
 GKB_ICON = gkb.png gkb-icon.png
 
