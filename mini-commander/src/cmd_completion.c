@@ -27,8 +27,8 @@
   should work on every system with a bash-alike shell.  
 */
 
-#include <string.h>
 #include <config.h>
+#include <string.h>
 #include <gnome.h>
 #include <panel-applet.h>
 

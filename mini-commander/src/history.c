@@ -22,8 +22,8 @@
 /* Actually the command history is a simple list.  So, I guess this
    here could also be done with the list routines of glib. */
 
-#include <string.h>
 #include <config.h>
+#include <string.h>
 #include <gnome.h>
 
 #include "history.h"
