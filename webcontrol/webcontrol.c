@@ -1,58 +1,37 @@
 /*
  * GNOME web browser control module
- * (C) 1998 The Free Software Foundation
+ * (C) 2000 The Free Software Foundation
  *
  * based on:
  * GNOME fish module.
  * code snippets from APPLET_WRITING document
  *
- * Author: Garrett Smith
+ * Authors: Garrett Smith
+ *          Rusty Geldmacher
  *
  */
 
-#include <config.h>
-#include <gnome.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "webcontrol.h"
 
-typedef struct _webcontrol_properties webcontrol_properties;
-
-struct _webcontrol_properties {
-	gint newwindow;			/* do we launch a new window */
-	gint showurl;			/* do we show the url label in front */
-	gint showcheck;			/* do we show the "Launch new window" checkbox */
-};
-
-typedef struct _WebControl WebControl;
-
-struct _WebControl {
-	webcontrol_properties properties;
-	webcontrol_properties tmp_properties;
-	GtkWidget *applet;
-	GtkWidget *label;
-	GtkWidget *check;
-	GtkWidget *clear;
-};
-
-static WebControl WC = {
-	{FALSE, TRUE, TRUE},
-	{-1, -1, -1},
+static WebControl WC = 
+{
+	NULL,
 	NULL,
 	NULL,
 	NULL,
 	NULL
 };
 
-/*the most important dialog in the whole application*/
-/* shamelessly jacked from the fish applet.   --Garrett */
+extern webcontrol_properties props;
+extern webcontrol_properties tmp_props;
+
 static void
 about_cb (AppletWidget *widget, gpointer data)
 {
 	static GtkWidget *about = NULL;
-	static const gchar *authors[2] =
-	{"Garrett Smith <gsmith@serv.net>", NULL};
+	static const gchar *authors[3] = {"Garrett Smith <gsmith@serv.net>", 
+					  "Rusty Geldmacher <rusty@wpi.edu>",
+					  NULL};
 
 	if (about != NULL)
 	{
@@ -60,218 +39,247 @@ about_cb (AppletWidget *widget, gpointer data)
 		gdk_window_raise(about->window);
 		return;
 	}
+		
 	about = gnome_about_new (_("The Web Browser Controller"),
-			VERSION,
-			"(C) 1998 the Free Software Foundation",
-			authors,
-			_("This applet currently sends getURL commands "
-			  "to netscape throught the -remote "
-			  "interface.  Hopefully later more webrowsers "
-			  "will be supported."),
-			NULL);
-	gtk_signal_connect( GTK_OBJECT(about), "destroy",
-			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
+				 VERSION,
+				 _("(C) 2000 the Free Software Foundation"),
+				 authors,
+				 _("This applet sends typed in URLs to "
+				   "the browser of your choice."),
+				 NULL);
+						
+	gtk_signal_connect (GTK_OBJECT (about), "destroy",
+			    GTK_SIGNAL_FUNC (gtk_widget_destroyed), &about);
+
 	gtk_widget_show (about);
-
-	return;
-	widget = NULL;
-	data = NULL;
 }
 
 
-static void check_box_toggled(GtkWidget *check, int *data)
+static void 
+clear_cb (GtkWidget *button, GtkWidget *input)
 {
-	*data = GTK_TOGGLE_BUTTON(check)->active;
+    gtk_entry_set_text (GTK_ENTRY (GTK_COMBO (WC.input)->entry), "");
 }
 
-static void clear_callback(GtkWidget *button, GtkWidget *input)
-{
-    gtk_entry_set_text(GTK_ENTRY(input), "");
-    return;
-    button = NULL;
-}
-
-static void goto_callback(GtkWidget *entry, GtkWidget *check)
+static void 
+goto_cb (GtkWidget *entry, gpointer data)
 {
 	gchar *url;
 	int status;
-	
-        url = gtk_entry_get_text(GTK_ENTRY(entry));
+
+        url = gtk_editable_get_chars (GTK_EDITABLE (GTK_COMBO (WC.input)->entry), 
+				      0, -1);	
         
-        if(fork() == 0) {
+        if (fork () == 0) {
         	/* child  */
-		if(WC.properties.newwindow) {
+		if (props.newwindow) 
+		{
 			execlp ("gnome-moz-remote", "gnome-moz-remote", "--newwin", url, NULL);
-		} else {
+		} 
+		else 
+		{
 			execlp ("gnome-moz-remote", "gnome-moz-remote", url, NULL);
 		}
 		g_warning (_("gnome-moz-remote not found or unable to launch it"));
 		/* something went wrong, perhaps gnome-moz-remote was not found */
 		_exit (1);
-        } else {
-        	wait(&status);
-        	if(WEXITSTATUS(status) != 0) {  /* command didn't work, use normal url show
-						 * routine */
+        } 
+	else 
+	{
+        	wait (&status);
+        	if (WEXITSTATUS (status) != 0)  /* command didn't work, use normal url show */
+		{				/* routine */
 			gnome_url_show (url);
         	}
 	}
+
+	g_free (url);
+
 	return;
-	check = NULL;
 }
 
-static void create_widget(void)
-{
-	GtkWidget *input;
-	GtkWidget *topbox, *bottombox, *vbox;
-	
-	/* create the widget we are going to put on the applet */
-	WC.label = gtk_label_new(_("Url:"));
-	if(WC.properties.showurl)
-		gtk_widget_show(WC.label);
-	WC.clear = gtk_button_new_with_label(_("Clear"));
-	gtk_widget_show(WC.clear);
-	
-	input = gtk_entry_new();
-	gtk_widget_show(input);
-	
-	vbox = gtk_vbox_new(FALSE, 0);
-	gtk_widget_show(vbox);
-	
-	topbox = gtk_hbox_new(FALSE, 0);
-	gtk_widget_show(topbox);
-	bottombox = gtk_hbox_new(FALSE, 0);
-	gtk_widget_show(bottombox);
-	
-	gtk_box_pack_start(GTK_BOX(topbox), WC.label, FALSE, FALSE, 3);
-	
-	WC.check = gtk_check_button_new_with_label (_("Launch new window"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(WC.check), WC.properties.newwindow);
-	if(WC.properties.showcheck)
-		gtk_widget_show(WC.check);
-	
-	gtk_box_pack_start(GTK_BOX(bottombox), WC.check, FALSE, FALSE, 3);
-	gtk_box_pack_start(GTK_BOX(bottombox), WC.clear, FALSE, FALSE, 3);
-	gtk_signal_connect(GTK_OBJECT(WC.check),"toggled",
-			   GTK_SIGNAL_FUNC(check_box_toggled),
-			   &WC.properties.newwindow);
-	
-	gtk_box_pack_start(GTK_BOX(vbox), topbox, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox), bottombox, FALSE, FALSE, 0);
-	
-	gtk_signal_connect(GTK_OBJECT(input), "activate",
-                           GTK_SIGNAL_FUNC(goto_callback),
-                           WC.check);
 
-	gtk_signal_connect(GTK_OBJECT(WC.clear), "clicked",
-                           GTK_SIGNAL_FUNC(clear_callback),
-                           input);
-	
-	/* add the widget to the applet-widget, and thereby actually
-	   putting it "onto" the panel */
-	applet_widget_add (APPLET_WIDGET (WC.applet), vbox);
-
-	/*we want to allow pasting into the input box so we pack it after
-	  applet_widdget_add has bound the middle button*/
-	gtk_box_pack_start(GTK_BOX(topbox), input, FALSE, FALSE, 0);
-}
-
+/* function for adding the url to the history. adapted from
+ * the code for a similar function in Gnapster */
 static void
-apply_cb(GnomePropertyBox * pb, gint page, gpointer data)
+add_url_to_history (GtkWidget *entry, GtkWidget *combo)
 {
-	/* gchar * new_name; */
+	char *url, 
+	     *str_t = NULL;
+	GList *ptr;
+	GtkWidget *list, *child, *lbl;
 
-	if (page != -1) return; /* Only honor global apply */
-	
-	if(WC.tmp_properties.showurl != -1) {
-		WC.properties.showurl = WC.tmp_properties.showurl;
-		if(WC.properties.showurl == FALSE)
-			gtk_widget_hide(WC.label);
-		else
-			gtk_widget_show(WC.label);
-		WC.tmp_properties.showurl = -1;
-	}
-	
-	if(WC.tmp_properties.showcheck != -1) {
-		WC.properties.showcheck = WC.tmp_properties.showcheck;
-		if(WC.properties.showcheck == FALSE)
-			gtk_widget_hide(WC.check);
-		else
-			gtk_widget_show(WC.check);
-		WC.tmp_properties.showcheck = -1;
-	}
-	
-	gtk_widget_queue_resize(WC.applet);
-	return;
-	pb = NULL;
-	data = NULL;
-}
-
-static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
-{
-	GnomeHelpMenuEntry help_entry = { 
-		"webcontrol_applet", "index.html#WEBCONTROL-APPLET-PREFS"
-	};
-	gnome_help_display (NULL, &help_entry);
-}
-
-static void
-properties_cb (AppletWidget *widget, gpointer data)
-{
-	static GtkWidget * pb = NULL;
-	GtkWidget * vbox;
-	GtkWidget *urlcheck, *launchcheck;
-
-	/* Stop the property box from being opened multiple times */
-	if (pb != NULL)
-	{
-		gdk_window_show( GTK_WIDGET(pb)->window );
-		gdk_window_raise( GTK_WIDGET(pb)->window );
+	/* get the url from the entry box, if nothing, return */
+	url = gtk_entry_get_text (GTK_ENTRY (entry));
+	if (!url || !(*url))
 		return;
+
+	/* make sure it's not a duplicate, if it is return */
+	for (ptr = GTK_LIST (GTK_COMBO (combo)->list)->children; 
+	     ptr; ptr = ptr->next) 
+	{
+		child = ptr->data;
+		if (!child)
+			continue;
+      
+		lbl = GTK_BIN (child)->child;
+      
+		str_t = GTK_LABEL (lbl)->label;
+      
+		if (!strcmp (str_t, url))
+			return;
 	}
-	pb = gnome_property_box_new();
-
-	gtk_window_set_title(GTK_WINDOW(pb), _("WebControl Properties"));
-
-	vbox = gtk_vbox_new(GNOME_PAD, FALSE);
-	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
-
-	urlcheck = gtk_check_button_new_with_label (_("Display URL label"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(urlcheck), WC.properties.showurl);
-	gtk_signal_connect(GTK_OBJECT(urlcheck),"toggled",
-			   GTK_SIGNAL_FUNC(check_box_toggled),
-			   &WC.tmp_properties.showurl);
-	gtk_signal_connect_object(GTK_OBJECT(urlcheck), "toggled",
-				  GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				  GTK_OBJECT(pb));
 	
-	launchcheck = gtk_check_button_new_with_label (_("Display \"launch new window\" option"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(launchcheck), WC.properties.showcheck);
-	gtk_signal_connect(GTK_OBJECT(launchcheck),"toggled",
-			   GTK_SIGNAL_FUNC(check_box_toggled),
-			   &WC.tmp_properties.showcheck);
-	gtk_signal_connect_object(GTK_OBJECT(launchcheck), "toggled",
-				  GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				  GTK_OBJECT(pb));
-	
-	gtk_box_pack_start(GTK_BOX(vbox), urlcheck, FALSE, FALSE, GNOME_PAD);
-	gtk_box_pack_start(GTK_BOX(vbox), launchcheck, TRUE, TRUE, GNOME_PAD);
+	str_t = g_strdup (url);
 
-	gnome_property_box_append_page(GNOME_PROPERTY_BOX(pb), vbox,
-				       gtk_label_new(_("Look")));
+	list = gtk_list_item_new_with_label (str_t);
+	gtk_widget_show (list);
 
-	gtk_signal_connect(GTK_OBJECT(pb), "apply", GTK_SIGNAL_FUNC(apply_cb),
-			   NULL);
-	gtk_signal_connect(GTK_OBJECT(pb), "destroy",
-			  gtk_widget_destroyed,
-			  (gpointer) &pb);
-	gtk_signal_connect(GTK_OBJECT(pb), "help",
-			   phelp_cb, NULL);
-	gtk_widget_show_all(pb);
+	gtk_container_add (GTK_CONTAINER (GTK_COMBO (combo)->list), list);
+
+	/* keep the list the required size */
+	ptr = GTK_LIST (GTK_COMBO (combo)->list)->children;
+	if (g_list_length (ptr) > props.hist_len)
+	{
+		ptr = g_list_first (ptr);
+		gtk_container_remove (GTK_CONTAINER (GTK_COMBO (combo)->list),
+				      GTK_WIDGET (ptr->data));		
+	}
+
+	gtk_entry_set_text (GTK_ENTRY(entry), str_t);
+   
+	g_free (str_t); 
+
 	return;
-	widget = NULL;
-	data = NULL;
 }
+
+
+extern void 
+draw_applet (void)
+{
+	static GtkWidget *topbox = NULL;
+	static GtkWidget *bottombox = NULL;
+	static GtkWidget *vbox = NULL;
+	static gboolean appletDrawn = FALSE;
+
+	/* create the widget we are going to put on the applet */
+
+	/* if run for first time, create boxes for other widgets */
+	if (!vbox)
+	{
+		vbox = gtk_vbox_new (FALSE, 0);
+		gtk_widget_show (vbox);
+	}
+	if (!topbox)
+	{
+		topbox = gtk_hbox_new (FALSE, 0);
+		gtk_widget_show (topbox);
+	}
+	if (!bottombox)
+	{
+		bottombox = gtk_hbox_new (FALSE, 0);
+		gtk_widget_show (bottombox);
+	}
+
+	/* URL label */
+	if (WC.label == NULL)
+	{
+		WC.label = gtk_label_new (_("URL:"));
+		gtk_box_pack_start (GTK_BOX (topbox), WC.label, 
+				    FALSE, FALSE, 3);
+	}
+
+	if (props.show_url)
+	{
+		gtk_widget_show (WC.label);
+	}
+	else
+	{
+		gtk_widget_hide (WC.label);
+	}
+
+	/* URL combo box */
+	if (WC.input == NULL)
+	{
+		WC.input = gtk_combo_new (); 
+		gtk_combo_disable_activate (GTK_COMBO (WC.input));
+		gtk_widget_show (WC.input);
+		gtk_signal_connect (GTK_OBJECT (GTK_COMBO (WC.input)->entry),
+				    "activate",
+				    GTK_SIGNAL_FUNC (add_url_to_history),
+				    GTK_COMBO (WC.input));
+		gtk_signal_connect (GTK_OBJECT (GTK_COMBO (WC.input)->entry), 
+				    "activate", GTK_SIGNAL_FUNC (goto_cb),
+				    NULL);
+	}
+
+	gtk_widget_set_usize (GTK_WIDGET (GTK_COMBO (WC.input)->entry), 
+			      props.width, 0);
+
+
+	/* Show new window check box */
+	if (WC.check == NULL)
+	{
+		WC.check = gtk_check_button_new_with_label (_("Launch new window"));
+		gtk_signal_connect (GTK_OBJECT (WC.check),"toggled",
+				    GTK_SIGNAL_FUNC (check_box_toggled),
+				    &props.newwindow);
+		gtk_box_pack_start (GTK_BOX (bottombox), WC.check, FALSE, 
+				    FALSE, 3);
+	}
+
+	if (props.show_check)
+	{
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WC.check), 
+					      props.newwindow);
+		gtk_widget_show (WC.check);
+	}	
+	else
+	{
+		gtk_widget_hide (WC.check);
+	}
+
+	/* Clear button */
+	if (WC.clear == NULL)
+	{
+		WC.clear = gtk_button_new_with_label (_(" Clear "));
+		gtk_signal_connect (GTK_OBJECT (WC.clear), "clicked",
+				    GTK_SIGNAL_FUNC (clear_cb),
+				    WC.input);		
+		gtk_box_pack_start (GTK_BOX (bottombox), WC.clear, FALSE, 
+				    FALSE, 3);
+	}
+	if (props.show_clear)
+	{
+		gtk_widget_show (WC.clear);	       
+	}
+	else
+	{
+		gtk_widget_hide (WC.clear);
+	}
+	
+	/* if this is the first time drawing the applet, put all widgets on 
+           the applet together and add it to the panel, then indicate that
+           that applet has actually been drawn once before. */
+	if (!appletDrawn)
+	{
+		gtk_box_pack_start (GTK_BOX (vbox), topbox, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (vbox), bottombox, FALSE, FALSE, 0);
+
+		applet_widget_add (APPLET_WIDGET (WC.applet), vbox);
+	
+		/* add the widget to the applet-widget, and thereby actually
+		   putting it "onto" the panel */
+		gtk_widget_show (WC.applet);
+
+		/* we want to allow pasting into the input box so we pack it 
+		   after applet_widget_add has bound the middle button */
+		gtk_box_pack_start (GTK_BOX (topbox), WC.input, FALSE, FALSE, 0);
+
+		appletDrawn = TRUE;
+	}	
+}
+
 
 static void 
 show_help_cb (AppletWidget *applet, gpointer data)
@@ -283,22 +291,21 @@ show_help_cb (AppletWidget *applet, gpointer data)
 	gnome_help_display (NULL, &help_entry);
 }
 
-/* sesion save signal handler*/
 static gint
-applet_save_session(GtkWidget *w,
-		    const char *privcfgpath,
-		    const char *globcfgpath)
+applet_save_session (GtkWidget *w,
+		     const char *privcfgpath,
+		     const char *globcfgpath)
 {	
-	gnome_config_push_prefix(privcfgpath);
-	gnome_config_set_bool("web/newwindow", WC.properties.newwindow);
-	gnome_config_set_bool("web/showurl", WC.properties.showurl);
-	gnome_config_set_bool("web/showcheck", WC.properties.showcheck);
-	gnome_config_pop_prefix();
+	gnome_config_push_prefix (privcfgpath);
+	gnome_config_set_bool ("web/newwindow", props.newwindow);
+	gnome_config_set_bool ("web/show_url", props.show_url);
+	gnome_config_set_bool ("web/show_check", props.show_check);
+	gnome_config_pop_prefix ();
 
-	gnome_config_sync();
+	gnome_config_sync ();
 	/* you need to use the drop_all here since we're all writing to
 	   one file, without it, things might not work too well */
-	gnome_config_drop_all();
+	gnome_config_drop_all ();
 		
 	/* make sure you return FALSE, otherwise your applet might not
 	   work compeltely, there are very few circumstances where you
@@ -308,78 +315,97 @@ applet_save_session(GtkWidget *w,
 	   other state such as the panel you are on, position,
 	   parameter, etc ... */
 	return FALSE;
-	w = NULL;
-	globcfgpath = NULL;
 }
 
 int
-main(int argc, char **argv)
+main (int argc, char **argv)
 {
-       /*
-        * GtkWidget *label;
-	* GtkWidget *input;
-	* GtkWidget *hbox, *vbox;
-	* GtkWidget *check;
-	*/
-	
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
 	/* intialize, this will basically set up the applet, corba and
 	   call gnome_init */
-	applet_widget_init("webcontrol_applet", VERSION, argc, argv,
-				    NULL, 0, NULL);
+	applet_widget_init ("webcontrol_applet", VERSION, argc, argv,
+			    NULL, 0, NULL);
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-mnemonic.png");
 
 	/* create a new applet_widget */
-	WC.applet = applet_widget_new("webcontrol_applet");
+	WC.applet = applet_widget_new ("webcontrol_applet");
 	/* in the rare case that the communication with the panel
 	   failed, error out */
 	if (!WC.applet)
-		g_error("Can't create applet!\n");
+		g_error ("Can't create applet!\n");
 	
-	gnome_config_push_prefix(APPLET_WIDGET(WC.applet)->privcfgpath);
-	WC.properties.newwindow = gnome_config_get_bool("web/newwindow=false");
-	WC.properties.showurl = gnome_config_get_bool("web/showurl=true");
-	WC.properties.showcheck = gnome_config_get_bool("web/showcheck=true");
-	gnome_config_pop_prefix();
+	gnome_config_push_prefix (APPLET_WIDGET (WC.applet)->privcfgpath);
+	props.newwindow = gnome_config_get_bool ("web/newwindow=false");
+	props.show_url = gnome_config_get_bool ("web/show_url=true");
+	/* props.show_check = gnome_config_get_bool ("web/show_check=true"); */
+	gnome_config_pop_prefix ();
 	
-	create_widget();
+	draw_applet ();
 	
 	/* bind the session save signal */
-	gtk_signal_connect(GTK_OBJECT(WC.applet),"save_session",
-			   GTK_SIGNAL_FUNC(applet_save_session),
-			   NULL);
+	gtk_signal_connect (GTK_OBJECT (WC.applet),"save_session",
+			    GTK_SIGNAL_FUNC (applet_save_session),
+			    NULL);
 
 	/* add an item to the applet menu */
-	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
-					      "properties",
-					      GNOME_STOCK_MENU_PROP,
-					      _("Properties..."),
-					      properties_cb,
-					      NULL);
+	applet_widget_register_stock_callback (APPLET_WIDGET (WC.applet),
+					       "properties",
+					       GNOME_STOCK_MENU_PROP,
+					       _("Properties..."),
+					       properties_box,
+					       NULL);
 
-	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
-					      "help",
-					      GNOME_STOCK_PIXMAP_HELP,
-					      _("Help"),
-					      show_help_cb,
-					      NULL);
+	applet_widget_register_stock_callback (APPLET_WIDGET (WC.applet),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"),
+					       show_help_cb,
+					       NULL);
 	
-	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb,
-					      NULL);
+	applet_widget_register_stock_callback (APPLET_WIDGET (WC.applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       about_cb,
+					       NULL);
 	
-	/* add the widget to the applet-widget, and thereby actually
-	   putting it "onto" the panel */
-	gtk_widget_show (WC.applet);
-
 	/* special corba main loop */
 	applet_widget_gtk_main ();
 
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
