@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.93.0">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Weather Report">
 ]>
 <!-- 
@@ -118,6 +118,38 @@
             </revdescription>
               		
          </revision>
+         
+         <revision>
+              	<revnumber>Weather Report Applet Manual V2.1</revnumber>  		
+             	<date>July 2002</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME Documentation Project
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
+              	<revnumber>Weather Report Applet Manual V2.0</revnumber>  		
+             	<date>March 2002</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME Documentation Project
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
            		
          <revision>
 		<revnumber>GNOME Weather Applet</revnumber>  		  
@@ -175,7 +207,7 @@
                   <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>Screenshot of the Weather Report applet.</phrase> 			 
+                  <phrase>Shows Weather Report applet. Contains a weather icon and current temperature</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
@@ -185,21 +217,27 @@
       <para>
          The <application>&applet;</application> applet downloads weather information
           from the U.S National Weather Service (NWS) servers, including the Interactive
-         Weather Information Network (IWIN). You can use the applet to display current
+         Weather Information Network (IWIN). You can use <application>&applet;</application> to display current
          weather information and weather forecasts on your computer. 
       </para>
       <para>
          To add <application>&applet;</application> to a panel, right-click on the
-         panel to  open the <guimenu>Panel</guimenu> menu, then choose 
+         panel, then choose 
          <menuchoice>
-            <guimenu>Add to panel </guimenu> <guisubmenu> Accessories </guisubmenu> <guimenuitem>
-            &applet;</guimenuitem>
-         </menuchoice>
-         .
-      </para>
+            <guimenu>Add to Panel</guimenu> 
+            <guisubmenu>Accessories</guisubmenu> 
+            <guimenuitem>&applet;</guimenuitem>
+         </menuchoice>.</para>
+      <note id="proxies-note-1">
+         <para>
+            If your computer is located behind a firewall, you must use a proxy server
+            to access the weather servers. For more information about how to specify 
+            a proxy server, see <xref linkend="gweather-set-proxy"/>.        
+         </para>
+      </note>   
       <para>
          <application>&applet;</application> displays the following information for
-         the default location, or for a location that you specify:
+         the default location, or a location that you specify:
       </para>
       <itemizedlist>
          <listitem>
@@ -216,14 +254,7 @@
             </para>
          </listitem>
       </itemizedlist>
-      <note>
-         <para>
-            If your computer is located behind a firewall, you must use a proxy server
-            to access the weather servers. See <xref linkend="gweather-settings"/> for
-            information about how to configure the applet to use a proxy server.
-            
-         </para>
-      </note>
+      
    </sect1>
    <!-- ============= Usage ===================================== -->
    <sect1 id="gweather-usage">
@@ -244,7 +275,7 @@
             </listitem>
             <listitem>
                <para>
-                  Select <guimenuitem>Preferences</guimenuitem> from the applet popup
+                  Choose <guimenuitem>Preferences</guimenuitem> from the applet popup
                   menu. The applet displays the <guilabel>Weather Preferences</guilabel> dialog.
                   The <guilabel>Location</guilabel> tabbed section contains a list
                   of geographical regions, subregions, and specific locations.
@@ -272,7 +303,7 @@
             <listitem>
                <para>
                   Click <guibutton>Close</guibutton> to close the <guilabel>Weather
-                  Properties</guilabel> dialog.
+                  Preferences</guilabel> dialog.
                </para>
             </listitem>
          </orderedlist>
@@ -285,7 +316,7 @@
          </para>
          <para>
             You can configure the applet to automatically update the information
-            at regular intervals. See <xref linkend="gweather-settings"/> for more
+            at regular intervals. See <xref linkend="gweather-configure"/> for more
             information about how to configure the applet. 
          </para>
       </sect2>
@@ -320,7 +351,7 @@
                   <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"
                   colwidth="1.19*"/>
                   <tbody>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Location
@@ -333,7 +364,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Update
@@ -346,7 +377,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Conditions
@@ -358,7 +389,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Sky
@@ -370,7 +401,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Temperature
@@ -382,7 +413,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Dew point
@@ -394,7 +425,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Humidity
@@ -406,7 +437,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Wind
@@ -418,7 +449,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Pressure
@@ -430,7 +461,7 @@
                            </para>
                         </entry>
                      </row>
-                     <row>
+                     <row valign="top">
                         <entry colname="col1">
                            <para>
                               Visibility
@@ -451,29 +482,19 @@
             <title>Forecast</title>
             <para>
                The <guilabel>Forecast</guilabel> tabbed section displays a forecast
-                for the location for the coming days. 
+               for the location for the coming days, usually the next five days. 
             </para>
             <note>
                <para>
                   Forecasts are only available for some locations in the U.S.A.
                </para>
             </note>
-            <para>
-               The detail in the forecast and the number of the days that the forecast
-               covers depends on whether you configure the applet to display detailed
-               forecast information. See <xref linkend="gweather-settings"/> for more
-               information about how to configure the applet to display detailed
-               forecasts. If detailed forecasts are enabled, the applet usually displays
-               a detailed forecast for the next five days. If detailed forecasts
-               are not enabled, the applet usually displays a less detailed forecast
-               for a larger region that encompasses your location.
-            </para>
          </sect3>
          <sect3 id="gweather-radar-map">
             <title>Radar map</title>
             <para>
                By default, the <guilabel>Radar map</guilabel> tabbed section is not
-               displayed in the <guilabel>Forecast</guilabel> dialog. See <xref linkend="gweather-settings"/>
+               displayed in the <guilabel>Forecast</guilabel> dialog. See <xref linkend="gweather-configure"/>
                for more  information about how to configure the applet to display
                radar maps. <application>&applet;</application>  downloads the radar
                maps from www.weather.com. If the radar map is not available from
@@ -484,13 +505,27 @@
          </sect3>
       </sect2>
    </sect1>
-   <!-- ============= Settings ================================== -->
+   <!-- ============= Preferences ================================== -->
    <sect1 id="gweather-settings">
-      <title>Settings</title>
+      <title>Preferences</title>
+      
+      <sect2 id="gweather-set-proxy">
+      <title>To Set a Proxy Server</title>
+      <para>If your computer is located behind a firewall you must use a proxy server to run 
+      <application>&applet;</application> successfully. 
+      To configure GNOME to use a proxy server, choose 
+      <menuchoice>
+      <guimenu>Applications</guimenu>
+      <guisubmenu>Desktop Preferences</guisubmenu> 
+      <guimenuitem>Network Proxy</guimenuitem>
+      </menuchoice>.</para>
+      </sect2>
+      
+      <sect2 id="gweather-configure">
+      <title>To Configure &applet;</title>
       <para>
-         To configure the <application>&applet;</application> applet, right-click
-         on the applet, then choose <guimenuitem>Properties</guimenuitem> from the
-         applet popup menu. The <guilabel>Weather Properties</guilabel> dialog contains
+         To configure <application>&applet;</application>, right-click
+         on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Weather Preferences</guilabel> dialog contains
          the following tabbed sections:
       </para>
       <itemizedlist>
@@ -505,7 +540,9 @@
             </para>
          </listitem>
       </itemizedlist>
-      <sect2 id="gweather-location">
+            
+      
+      <sect3 id="gweather-location">
          <title>Location</title>
          <para>
             The <guilabel>Location</guilabel> tabbed section enables you to select
@@ -513,13 +550,11 @@
             conditions. See <xref linkend="gweather-change-location"/> for information
             about how to select a location.
          </para>
-      </sect2>
+      </sect3>
       
-      <sect2 id="gweather-general">
+      <sect3 id="gweather-general">
          <title>General</title>
-         <sect3 id="gweather-general-updates">
-            <title>Updates</title>
-            <variablelist>
+           <variablelist>
                <varlistentry>
                   <term><guilabel>Automatically update every xx minutes</guilabel>
                   </term>
@@ -536,11 +571,6 @@
                      </para>
                   </listitem>
                </varlistentry>
-            </variablelist>
-         </sect3>
-         <sect3 id="gweather-general-misc">
-            <title>Miscellaneous</title>
-            <variablelist>
                <varlistentry>
                   <term><guilabel>Use metric system units</guilabel> </term>
                   <listitem>
@@ -555,7 +585,7 @@
                            <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec
                            colname="col1"/><colspec colname="col2"/>
                            <thead>
-                              <row>
+                              <row valign="top">
                                  <entry colname="COLSPEC0">
                                     <para>
                                        Measurement unit displayed for...
@@ -576,7 +606,7 @@
                               </row>
                            </thead>
                            <tbody>
-                              <row>
+                              <row valign="top">
                                  <entry colname="COLSPEC0">
                                     <para>
                                        Temperature and dew point
@@ -593,7 +623,7 @@
                                     </para>
                                  </entry>
                               </row>
-                              <row>
+                              <row valign="top">
                                  <entry colname="COLSPEC0">
                                     <para>
                                        Wind speed
@@ -610,7 +640,7 @@
                                     </para>
                                  </entry>
                               </row>
-                              <row>
+                              <row valign="top">
                                  <entry colname="COLSPEC0">
                                     <para>
                                        Pressure
@@ -627,7 +657,7 @@
                                     </para>
                                  </entry>
                               </row>
-                              <row>
+                              <row valign="top">
                                  <entry colname="COLSPEC0">
                                     <para>
                                        Visibility
@@ -652,33 +682,35 @@
                      </para>
                   </listitem>
                </varlistentry>
-               
                <varlistentry>
                   <term><guilabel>Enable radar map</guilabel> </term>
                   <listitem>
                      <para>
                         Select this option to enable the applet to display radar
-                        maps for the location in a <guilabel>Radar map</guilabel>
-                        tabbed section of the <guilabel>Forecast</guilabel> dialog.
-                        
+                        maps in a <guilabel>Radar map</guilabel>
+                        tabbed section of the <guilabel>Forecast</guilabel> dialog.                   
                      </para>
                      <para>
                         Default: unselected.
                      </para>
                   </listitem>
                </varlistentry>
-	  <varlistentry>
-	    <term><guilabel>Use custom address for radar map</guilabel></term>
-	    <listitem>
-	      <para>
-		An alternative <acronym>URI</acronym> can be entered in the
-		<guilabel>Address</guilabel> field to be used as the source for
-		the radar map.
-	      </para>
-	    </listitem>
-	  </varlistentry>
+               <varlistentry>
+                  <term><guilabel>Use custom address for radar map</guilabel> </term>
+                  <listitem>
+                     <para>
+                        By default, <application>&applet;</application> downloads the radar
+                        maps from www.weather.com. Select this option to display radar maps from 
+                        an alternative Internet address. Type the address in the 
+                        <guilabel>Address</guilabel> text box.
+                     </para>
+                     <para>
+                        Default: unselected.
+                     </para>
+                  </listitem>
+               </varlistentry>
             </variablelist>
-         </sect3>
+      </sect3>
       </sect2>
    </sect1>
 </article>
