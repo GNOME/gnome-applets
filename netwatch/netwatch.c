@@ -115,11 +115,16 @@ fork_exec(char *path, char *arg)
 static int
 has_redhat_ppp_maps()
 {
+  static int is_redhat = -1;
+
   /* for now, just test if it is a Red Hat system.  Other systems
    * that adopt the same thing can add tests for their systems here
    */
-  if (access("/etc/redhat-release", R_OK)) return 1;
-  return 0;
+  if (is_redhat == -1) {
+    if (access("/etc/redhat-release", R_OK) == 0) is_redhat = 1;
+    else is_redhat = 0;
+  }
+  return is_redhat;
 }
 
 
@@ -130,12 +135,16 @@ ppp_logical_to_physical(const gchar *logical_name)
   char map_file_name[100];
   /* way too much space for "ppp??" */
   char buffer[20];
-  int f;
+  char *p;
+  int f, n;
   char *physical_device = NULL;
 
   sprintf(map_file_name, "/var/run/ppp-%s.dev", logical_name);
-  if (f = open(map_file_name, O_RDONLY) >= 0) {
-    if (read(f, buffer, 20) > 0) {
+  if ((f = open(map_file_name, O_RDONLY)) > 0) {
+    if ((n = read(f, buffer, 20)) > 0) {
+      buffer[n] = '\0';
+      /* get rid of \n */
+      p = buffer; while (*p && *p != '\n' && p < buffer+n) p++; *p = '\0';
       physical_device = g_strdup(buffer);
     }
     close(f);
@@ -351,7 +360,8 @@ create_netwatch (GtkWidget *window, char *parameters)
 	/* atexit(netwatch_destroy); */
 #endif
 
-	update_tag = gtk_timeout_add (10, update_status, NULL);
+	/* update the network status every 10 seconds */
+	update_tag = gtk_timeout_add (10000, update_status, NULL);
 
 	return parent_widget;
 }
@@ -391,6 +401,8 @@ create_instance (Panel *panel, char *params, int xpos, int ypos)
 	GtkWidget *netwatch;
 	PanelCommand cmd;
 
+	/* for debugging */
+	/* sleep (600); */
 	netwatch = create_netwatch (panel->window, params);
 
 	if (!netwatch)
