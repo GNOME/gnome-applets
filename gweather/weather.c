@@ -1779,11 +1779,12 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     }
     else
     {
+	gdk_pixbuf_loader_close(info->radar_loader, NULL);
         g_print("%s", gnome_vfs_result_to_string(result));
         g_warning(_("Failed to get METAR data.\n"));
         info->wx_handle = NULL;
         requests_done_check (info);
-	if(info->radar_loader)  g_object_unref (G_OBJECT (info->radar_loader));
+	g_object_unref (G_OBJECT (info->radar_loader));
     }
     
     request_done(info->wx_handle, info);
