@@ -550,7 +550,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	return;
     }
     prop = g_object_get_data (G_OBJECT (applet), "prop");
-    mcdata->properties_box = gtk_dialog_new_with_buttons (_("Command Line Properties"), 
+    mcdata->properties_box = gtk_dialog_new_with_buttons (_("Command Line Preferences"), 
     						  NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
@@ -844,8 +844,8 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
   	    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);   
 	    
 	    /* prefix */    
-	    g_snprintf(text_label, sizeof(text_label), _("Regex %.2d:"), i+1);
-	    label = gtk_label_new(text_label);
+	    g_snprintf(text_label, sizeof(text_label), _("Regex _%.2d:"), i+1);
+	    label = gtk_label_new_with_mnemonic(text_label);
 	    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_MACRO_PATTERN_LENGTH);
@@ -862,8 +862,8 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, TRUE, 0);
 	    
 	    /* command */
-	    g_snprintf(text_label, sizeof(text_label), _("   Macro %.2d:"), i+1);
-	    label = gtk_label_new(text_label);
+	    g_snprintf(text_label, sizeof(text_label), _("   Macro _%.2d:"), i+1);
+	    label = gtk_label_new_with_mnemonic(text_label);
 	    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
