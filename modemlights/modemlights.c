@@ -334,8 +334,18 @@ static int get_stats(int *in, int *out)
 
 static gint get_ISDN_connect_time(gint recalc_start)
 {
-	/* Fixme! not implemented for ISDN */
-	return 0;
+	/* this is a bad hack just to get some (not very accurate) timing */
+	static time_t start_time = (time_t)0;
+
+	if (recalc_start)
+		{
+		start_time = time(0);
+		}
+
+	if (start_time != (time_t)0)
+		return (gint)(time(0) - start_time);
+	else
+		return -1;
 }
 
 static gint get_modem_connect_time(gint recalc_start)
