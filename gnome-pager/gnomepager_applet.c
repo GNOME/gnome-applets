@@ -763,15 +763,60 @@ GdkFilterReturn
 cb_filter_intercept(GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data)
 {
   XEvent *xevent;
-
-  xevent = (XEvent *)gdk_xevent; 
-  if ((xevent->type == DestroyNotify))
-     {
-      if (xevent->type == DestroyNotify)
-	gdk_window_destroy_notify(((GdkEventAny *)event)->window);
+  Task *t;
+  GList *ptr;
+  
+  xevent = (XEvent *)gdk_xevent;
+  switch (xevent->type)
+    {
+     case DestroyNotify:
+      gdk_window_destroy_notify(((GdkEventAny *)event)->window);
+      return GDK_FILTER_REMOVE;
+      break;
+     case FocusIn:
+     case FocusOut:
+      ptr = tasks;
+      while (ptr)
+	{
+	  t = (Task *)(ptr->data);
+	  if (t->win == xevent->xfocus.window)
+	    {
+	      cb_task_change(NULL, (GdkEventProperty *)event, t);
+	      return GDK_FILTER_CONTINUE;
+	    }
+	  ptr = ptr->next;
+	}
+      break;
+     case ConfigureNotify:
+      ptr = tasks;
+      while (ptr)
+	{
+	  t = (Task *)(ptr->data);
+	  if (t->win == xevent->xconfigure.window)
+	    {
+	      cb_task_change(NULL, (GdkEventProperty *)event, t);
+	      return GDK_FILTER_CONTINUE;
+	    }
+	  ptr = ptr->next;
+	}
+      break;
+     case PropertyNotify:
+      ptr = tasks;
+      while (ptr)
+	{
+	  t = (Task *)(ptr->data);
+	  if (t->win == xevent->xproperty.window)
+	    {
+	      cb_task_change(NULL, (GdkEventProperty *)event, t);
+	      return GDK_FILTER_CONTINUE;
+	    }
+	  ptr = ptr->next;
+	}
+      break;
+     default:
       return GDK_FILTER_REMOVE;
     }
-  return GDK_FILTER_CONTINUE;
+  return GDK_FILTER_REMOVE;
 }
 
 /* TASK manipulation functions */
@@ -921,14 +966,14 @@ task_add(Window win)
     gdk_window_ref(t->gdkwin);
   else
     t->gdkwin = gdk_window_foreign_new(win);
-  t->dummy = gtk_window_new(GTK_WINDOW_POPUP);
+/*  t->dummy = gtk_window_new(GTK_WINDOW_POPUP);*/
   /* realize that damn widget */
-  gtk_widget_realize(t->dummy);
+/*  gtk_widget_realize(t->dummy);*/
   gdk_window_add_filter(t->gdkwin, cb_filter_intercept, t->dummy);  
   /* fake events form win producing signals on dummy widget */
-  gdk_window_set_user_data(t->gdkwin, t->dummy);
+/*  gdk_window_set_user_data(t->gdkwin, t->dummy);*/
   /* conntect to "faked" signals */
-  gtk_signal_connect(GTK_OBJECT(t->dummy), "property_notify_event",
+/*  gtk_signal_connect(GTK_OBJECT(t->dummy), "property_notify_event",
 		     GTK_SIGNAL_FUNC(cb_task_change), t);
   gtk_signal_connect(GTK_OBJECT(t->dummy), "focus_in_event",
 		     GTK_SIGNAL_FUNC(cb_task_change), t);
@@ -936,7 +981,7 @@ task_add(Window win)
 		     GTK_SIGNAL_FUNC(cb_task_change), t);
   gtk_signal_connect(GTK_OBJECT(t->dummy), "configure_event",
 		     GTK_SIGNAL_FUNC(cb_task_change), t);
-
+*/
   /* make sure we get the events */
   XSelectInput(GDK_DISPLAY(), win, PropertyChangeMask | FocusChangeMask |
 	       StructureNotifyMask);
@@ -967,8 +1012,8 @@ task_delete(Window win)
 	    g_free(t->name);
 	  if (t->gdkwin)
 	    gdk_window_unref(t->gdkwin);
-	  if (t->dummy)
-	    gtk_widget_destroy(t->dummy);
+/*	  if (t->dummy)
+	    gtk_widget_destroy(t->dummy);*/
 	  tasks = g_list_remove(tasks, t);
 	  g_free(t);
 	  if (!tstick)
