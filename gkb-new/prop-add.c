@@ -324,14 +324,6 @@ static gboolean
 row_activated_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
   GkbPropertyBoxInfo * pbi = data;
-  GKB * gkb = pbi->gkb;
-  GtkWidget * addbutton = gtk_object_get_data (GTK_OBJECT (gkb->addwindow), "addbutton");
-
-  if (pbi->keymap_for_add->command != NULL) {
-    gtk_widget_set_sensitive (addbutton, TRUE);
-  } else {
-    gtk_widget_set_sensitive (addbutton, FALSE);
-  }
 
   if (event->type == GDK_2BUTTON_PRESS) {
   	addwadd_cb (NULL, pbi);
@@ -340,6 +332,22 @@ row_activated_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
   
   return FALSE;
   
+}
+
+static void
+addbutton_sensitive_cb (GtkTreeView * treeview, gpointer data)
+{
+  GkbPropertyBoxInfo * pbi = data;
+  GKB * gkb = pbi->gkb;
+  GtkWidget * addbutton = gtk_object_get_data (GTK_OBJECT (gkb->addwindow), "addbutton");
+
+  g_message("asdfasdf");
+  if (pbi->keymap_for_add->command != NULL) {
+    gtk_widget_set_sensitive (addbutton, TRUE);
+  } else {
+    gtk_widget_set_sensitive (addbutton, FALSE);
+  }
+
 }
 
 static void
@@ -429,6 +437,8 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   /* Signal for double clicks or user pressing space */
   g_signal_connect (G_OBJECT (tree1), "button_press_event",
                     G_CALLBACK (row_activated_cb), pbi);
+  g_signal_connect (G_OBJECT (tree1), "cursor_changed",
+                    G_CALLBACK (addbutton_sensitive_cb), pbi);
        
   g_signal_connect (G_OBJECT (gkb->addwindow), "response",
   		    G_CALLBACK (response_cb), pbi);
