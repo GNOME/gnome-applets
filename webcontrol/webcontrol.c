@@ -66,60 +66,62 @@ clear_cb (GtkWidget *button, GtkWidget *input)
 }
 
 
-/* function to open a URL in the currently selected browser */
+/* builds an array for the command to lauch the browser 
+ * pass in an empty array of gchar pointers to put commands in
+ * returns the number of items in the array */
 static void
-open_url (gchar *url)
+build_browser_command (GPtrArray *command, gchar *url)
 {
-	gchar *b_command, *b_newwin;
-	gint status;
+	gchar *temp;
 
-	b_command = B_LIST_COMMAND (props.curr_browser);
-	b_newwin = B_LIST_NEWWIN (props.curr_browser);
+	temp = B_LIST_COMMAND (props.curr_browser);
+	g_ptr_array_add (command, temp);
 
-        if (fork () == 0) 
+	if (props.newwindow)
 	{
-        	/* child  */
-		if (props.newwindow) 
+		if (B_LIST_NEWWIN (props.curr_browser))
 		{
-			execlp (b_command, b_command, b_newwin, url, NULL);
-		} 
-		else 
-		{			
-			execlp (b_command, b_command, url, NULL);
+			temp = B_LIST_NEWWIN (props.curr_browser);
+			g_ptr_array_add (command, temp);
 		}
-		g_warning (_("gnome-moz-remote not found or unable to launch it"));
-		/* something went wrong, perhaps gnome-moz-remote was not found */
-		_exit (1);
-        } 
-	else 
-	{
-        	wait (&status); 
-		/* command didn't work, use normal url show */
-        	if (WEXITSTATUS (status) != 0)  
-		{				/* routine */
-			gnome_url_show (url);
-			g_print ("doing gnome_url_show!\n");
-        	}
 	}
+	else
+	{	       
+		if (B_LIST_NO_NEWWIN (props.curr_browser))
+		{
+			temp = B_LIST_NO_NEWWIN (props.curr_browser);
+			g_ptr_array_add (command, temp);
+		}
+	}
+
+	g_ptr_array_add (command, url);
 
 	return;
 }
 
 
-static void 
-goto_cb (GtkWidget *entry, GtkWidget *check)
+/* function to open a URL in the currently selected browser */
+static void
+open_url (gchar *url)
 {
-	gchar *url;
+	GPtrArray *command;
+	gint status;
 
-	url = gtk_editable_get_chars (GTK_EDITABLE (GTK_COMBO (WC.input)->entry), 
-				      0, -1);	
-        
-	if (props.use_mime)
-		gnome_url_show (url);
-	else
-		open_url (url);
+	command = g_ptr_array_new ();
+	build_browser_command (command, url);
+
+	g_print ("length=%d\n", command->len);
+	for (status = 0; status < command->len; status++)
+		g_print ("%s ", (char *) command->pdata[status]);
+	g_print ("\n");
+
+	status = gnome_execute_async (NULL, command->len, (char **) command->pdata);
 	
-	g_free (url);
+	if (status == -1)
+		gnome_url_show (url);
+	
+	if (command)
+		g_ptr_array_free (command, TRUE);
 
 	return;
 }
@@ -128,17 +130,18 @@ goto_cb (GtkWidget *entry, GtkWidget *check)
 /* function for adding the url to the history. adapted from
  * the code for a similar function in Gnapster */
 static void
-add_url_to_history (GtkWidget *entry, GtkWidget *combo)
+add_url_to_history (const gchar *url)
 {
-	gchar *url, 
-	      *str_t = NULL;
+	gchar *str_t = NULL;
 	GList *ptr;
-	GtkWidget *list, *child, *lbl;
+	GtkWidget *list, *child, 
+		  *lbl, *entry, *combo;
 
-	/* get the url from the entry box, if nothing, return */
-	url = gtk_entry_get_text (GTK_ENTRY (entry));
 	if (!url || !(*url))
-		return;
+		return;       
+
+	combo = WC.input;
+	entry = GTK_COMBO (combo)->entry;
 
 	/* make sure it's not a duplicate, if it is return */
 	for (ptr = GTK_LIST (GTK_COMBO (combo)->list)->children; 
@@ -175,6 +178,27 @@ add_url_to_history (GtkWidget *entry, GtkWidget *combo)
 	gtk_entry_set_text (GTK_ENTRY (entry), str_t);
    
 	g_free (str_t); 
+
+	return;
+}
+
+
+static void 
+goto_cb (GtkWidget *entry, GtkWidget *check)
+{
+	gchar *url;
+
+	url = gtk_editable_get_chars (GTK_EDITABLE (GTK_COMBO (WC.input)->entry), 
+				      0, -1);	
+        
+	add_url_to_history (url);
+
+	if (props.use_mime)
+		gnome_url_show (url);
+	else
+		open_url (url);
+	
+	g_free (url);
 
 	return;
 }
@@ -231,10 +255,6 @@ draw_applet (void)
 		WC.input = gtk_combo_new (); 
 		gtk_combo_disable_activate (GTK_COMBO (WC.input));
 		gtk_widget_show (WC.input);
-		gtk_signal_connect (GTK_OBJECT (GTK_COMBO (WC.input)->entry),
-				    "activate",
-				    GTK_SIGNAL_FUNC (add_url_to_history),
-				    GTK_COMBO (WC.input));
 		gtk_signal_connect (GTK_OBJECT (GTK_COMBO (WC.input)->entry), 
 				    "activate", GTK_SIGNAL_FUNC (goto_cb),
 				    (gpointer) props.newwindow);	     

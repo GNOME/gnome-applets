@@ -11,12 +11,14 @@
 #define B_LIST_NAME(b) ((browser *) b->data)->name
 #define B_LIST_COMMAND(b) ((browser *) b->data)->command
 #define B_LIST_NEWWIN(b) ((browser *) b->data)->newwin
+#define B_LIST_NO_NEWWIN(b) ((browser *) b->data)->no_newwin
 
 typedef struct _browser
 {
 	gchar *name;
 	gchar *command;
 	gchar *newwin;
+	gchar *no_newwin;
 } browser;
 
 typedef struct _webcontrol_properties 

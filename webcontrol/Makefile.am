@@ -7,7 +7,13 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = webcontrol_applet
 
-webcontrol_applet_SOURCES = properties.c session.c webcontrol.c
+webcontrol_applet_SOURCES = \
+	properties.c		\
+	properties.h		\
+	session.c		\
+	session.h		\
+	webcontrol.c		\
+	webcontrol.h
 
 webcontrol_applet_LDADD = \
 		     $(GNOME_LIBDIR) \

@@ -34,7 +34,23 @@ wc_load_browsers (void)
 			
 			b->name = g_strdup (WC_BROWSER_NAME (key));
 			b->command = gnome_config_get_string ("command");
-			b->newwin = gnome_config_get_string ("newwin");
+			b->newwin = gnome_config_get_string ("newwin=");
+			if (!b->newwin 
+			    || b->newwin[0] == '\020'         /* why?!! */
+			    || !strcmp (b->newwin, ""))
+			{
+				g_free (b->newwin);
+				b->newwin = NULL;
+			}
+
+			b->no_newwin = gnome_config_get_string ("no_newwin=");
+			if (!b->no_newwin 
+			    || b->no_newwin[0] == '\020'   
+			    || !strcmp (b->no_newwin, ""))
+			{
+				g_free (b->no_newwin);
+				b->no_newwin = NULL;
+			}
 			
 			list = g_slist_append (list, (gpointer) b);
 
@@ -187,6 +203,7 @@ wc_save_session (GtkWidget *w, gpointer data)
 		
 		gnome_config_set_string ("command", B_LIST_COMMAND (b));
 		gnome_config_set_string ("newwin", B_LIST_NEWWIN (b));
+		gnome_config_set_string ("no_newwin", B_LIST_NO_NEWWIN (b));
 
 		gnome_config_pop_prefix ();
 		

@@ -160,7 +160,7 @@ properties_box (AppletWidget *widget, gpointer data)
 	GtkWidget *width_label;
 	GtkWidget *entry;
 	GtkWidget *label;
-	GtkWidget *button;
+	GtkWidget *button, *button2;
 	GtkWidget *frame;
 	GtkWidget *sw;
 	GtkWidget *browser_list;
@@ -289,6 +289,14 @@ properties_box (AppletWidget *widget, gpointer data)
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
 				      props.use_mime);
 	gtk_widget_show (button);
+	
+	url_act_group = gtk_radio_button_group (GTK_RADIO_BUTTON (button));
+
+	button2 = gtk_radio_button_new_with_label 
+		(url_act_group, _("Use custom browser:"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button2),
+				      !props.use_mime);
+	gtk_widget_show (button2);
 
 	gtk_signal_connect (GTK_OBJECT (button), "toggled",
 			    GTK_SIGNAL_FUNC (check_box_toggled),
@@ -297,17 +305,9 @@ properties_box (AppletWidget *widget, gpointer data)
 	gtk_signal_connect_object (GTK_OBJECT (button), "toggled",
 				   GTK_SIGNAL_FUNC (gnome_property_box_changed),
 				   GTK_OBJECT (pb));
-
+	
 	gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 2);
-
-	url_act_group = gtk_radio_button_group (GTK_RADIO_BUTTON (button));
-
-	button = gtk_radio_button_new_with_label 
-		(url_act_group, _("Use custom browser:"));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
-				      !props.use_mime);
-	gtk_widget_show (button);
-	gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX (vbox2), button2, FALSE, FALSE, 2);
 
 	hbox = gtk_hbox_new (FALSE, 3);
 	gtk_widget_show (hbox);
