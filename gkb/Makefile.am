@@ -26,20 +26,25 @@ libgkb_applet_la_SOURCES = gkb.c
 
 # gkb_applet_LINK = $(CXXLINK)
 
-GKB_BITMAPS = be.xpm bg.xpm ca.xpm ch.xpm cz.xpm de.xpm dk.xpm es.xpm fi.xpm \
-	fr.xpm gb.xpm gr.xpm hu.xpm il.xpm is.xpm it.xpm jp.xpm nl.xpm \
-	no.xpm pl.xpm pt.xpm qc.xpm ru.xpm se.xpm si.xpm th.xpm tr.xpm \
-	us.xpm yu.xpm
+GKB_BITMAPS = 
+	pixmaps/be.xpm pixmaps/bg.xpm pixmaps/ca.xpm pixmaps/ch.xpm \
+	pixmaps/cz.xpm pixmaps/de.xpm pixmaps/dk.xpm pixmaps/es.xpm \
+	pixmaps/fi.xpm pixmaps/fr.xpm pixmaps/gb.xpm pixmaps/gr.xpm \
+	pixmaps/hu.xpm pixmaps/il.xpm pixmaps/is.xpm pixmaps/it.xpm \
+	pixmaps/jp.xpm pixmaps/nl.xpm pixmaps/no.xpm pixmaps/pl.xpm \
+	pixmaps/pt.xpm pixmaps/qc.xpm pixmaps/ru.xpm pixmaps/se.xpm \
+	pixmaps/si.xpm pixmaps/th.xpm pixmaps/tr.xpm pixmaps/us.xpm \
+	pixmaps/yu.xpm
 
-GKB_MAPS = xmodmap.be xmodmap.bg xmodmap.ch xmodmap.cz \
-	xmodmap.de xmodmap.dk xmodmap.dvorak xmodmap.es \
-	xmodmap.fi xmodmap.fr xmodmap.gr xmodmap.hu \
-	xmodmap.hu.old xmodmap.il xmodmap.is xmodmap.it \
-	xmodmap.la xmodmap.nl xmodmap.no xmodmap.pl \
-	xmodmap.pt xmodmap.qc xmodmap.ru xmodmap.ru_koi8 \
-	xmodmap.se xmodmap.sf xmodmap.sg xmodmap.si \
-	xmodmap.sk xmodmap.th xmodmap.tr_f xmodmap.tr_q \
-	xmodmap.uk xmodmap.us xmodmap.us.old xmodmap.yu
+GKB_MAPS = xmodmaps/xmodmap.be xmodmaps/xmodmap.bg xmodmaps/xmodmap.ch xmodmaps/xmodmap.cz \
+	xmodmaps/xmodmap.de xmodmaps/xmodmap.dk xmodmaps/xmodmap.dvorak xmodmaps/xmodmap.es \
+	xmodmaps/xmodmap.fi xmodmaps/xmodmap.fr xmodmaps/xmodmap.gr xmodmaps/xmodmap.hu \
+	xmodmaps/xmodmap.hu.old xmodmaps/xmodmap.il xmodmaps/xmodmap.is xmodmaps/xmodmap.it \
+	xmodmaps/xmodmap.la xmodmaps/xmodmap.nl xmodmaps/xmodmap.no xmodmaps/xmodmap.pl \
+	xmodmaps/xmodmap.pt xmodmaps/xmodmap.qc xmodmaps/xmodmap.ru xmodmaps/xmodmap.ru_koi8 \
+	xmodmaps/xmodmap.se xmodmaps/xmodmap.sf xmodmaps/xmodmap.sg xmodmaps/xmodmap.si \
+	xmodmaps/xmodmap.sk xmodmaps/xmodmap.th xmodmaps/xmodmap.tr_f xmodmaps/xmodmap.tr_q \
+	xmodmaps/xmodmap.uk xmodmaps/xmodmap.us xmodmaps/xmodmap.us.old xmodmaps/xmodmap.yu
 
 
 GKB_ICON = gkb.xpm
