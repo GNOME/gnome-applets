@@ -32,7 +32,7 @@ else
 gkb_DDIRS= xmodmap descs
 endif
 
-SUBDIRS= gkb $(gkb_DDIRS)
+SUBDIRS= gkb help $(gkb_DDIRS)
 
 GKB_ICON = gkb.png gkb-icon.png
 
