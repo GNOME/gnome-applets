@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-03-04 14:46+0100\n"
-"PO-Revision-Date: 2004-03-11 01:19-0600\n"
+"PO-Revision-Date: 2004-03-12 01:13-0600\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@users.sf.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -2721,11 +2721,11 @@ msgstr "แสดงราคาหลักทรัพย์ปัจจุบ
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
-msgstr "โรงงานแอพเพล็ต Gtik"
+msgstr "โรงงานแอพเพล็ตแสดงราคาหลักทรัพย์"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
 msgid "Stock Ticker"
-msgstr "ตัวแสดงราคาหลักทรัพย์"
+msgstr "ราคาหลักทรัพย์"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
 #: mailcheck/GNOME_MailCheckApplet.xml.h:4
@@ -2828,7 +2828,7 @@ msgstr "แ_สดงเฉพาะสัญลักษณ์และรา�
 #: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
-msgstr "_กว้าง:"
+msgstr "ความ_กว้าง:"
 
 #: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:489
@@ -3960,9 +3960,8 @@ msgid "Mail check"
 msgstr "เช็กอีเมล์"
 
 #: mailcheck/mailcheck.c:2889
-#, fuzzy
 msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr "ตัวติดตามอีเมล์ใหม่ แจ้งให้คุณทราบเวลามีอีเมล์ใหม่"
+msgstr "ตัวติดตามอีเมล์ใหม่ แจ้งให้คุณทราบเวลามีอีเมล์ใหม่ในกล่องขาเข้า"
 
 #: mailcheck/mailcheck.schemas.in.h:1
 msgid "Command to execute when checking mail"
@@ -3978,15 +3977,15 @@ msgstr "คำสั่งที่ควรเรียกใช้ก่อน
 
 #: mailcheck/mailcheck.schemas.in.h:5
 msgid "Do we run the exec-command"
-msgstr ""
+msgstr "เรียกใช้ exec-command หรือไม่"
 
 #: mailcheck/mailcheck.schemas.in.h:6
 msgid "Do we run the newmail-command"
-msgstr ""
+msgstr "เรียกใช้ newmail-command หรือไม่"
 
 #: mailcheck/mailcheck.schemas.in.h:7
 msgid "Do we want to save the password to disk"
-msgstr ""
+msgstr "บันทึกรหัสผ่านไว้ใช้ภายหลังหรือไม่"
 
 #: mailcheck/mailcheck.schemas.in.h:8
 msgid "Encrypted password"
@@ -4058,17 +4057,17 @@ msgstr "รหัสผ่านของผู้ใช้สำหรับเ
 
 #: mailcheck/mailcheck.schemas.in.h:25
 msgid "This is how we check the mail, check the mail, check the mail..."
-msgstr ""
+msgstr "จะเช็กอีเมล์ต้องทำอย่างนี้ จำไว้นะ จะไว้นะ..."
 
 #: mailcheck/mailcheck.schemas.in.h:26
 msgid "This is how we process the mail, process the mail, process the mail..."
-msgstr ""
+msgstr "จะประมวลผมอีเมล์ต้องทำอย่างนี้ จำไว้นะ จะไว้นะ..."
 
 #: mailcheck/mailcheck.schemas.in.h:27
 msgid ""
 "This is the animation that will be displayed during normal Inbox Monitor "
 "usage"
-msgstr ""
+msgstr "นี่เป็นภาพเคลื่อนไหวที่จะแสดง ระหว่างการทำงานปกติของตัวติดตามกล่องอีเมล์เข้า"
 
 #: mailcheck/mailcheck.schemas.in.h:28
 msgid "Username on the remote server"
@@ -4122,7 +4121,7 @@ msgstr ""
 "และยอมให้คุณตั้งมาโครได้\n"
 "\n"
 "นี่เป็นโปรแกรมเสรี คุณสามารถคัดลอก จัดแจก แก้ไข มันได้ภายใต้ GNU General Public License "
-"รุ่น 2 หรือใหม่กว่า ตามที่ตีพิมพ์โดย Free Software Foundation"
+"รุ่น 2 หรือใหม่กว่า ตามที่เผยแพร่โดย Free Software Foundation"
 
 #: mini-commander/src/command_line.c:315
 msgid "No items in history"
@@ -4607,7 +4606,7 @@ msgstr "ระดับเสียงที่บันทึกไว้ใช
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
 msgid "Modem Lights"
-msgstr ""
+msgstr "ควบคุมโมเด็ม"
 
 #: modemlights/modemlights.c:137
 msgid ""
@@ -4615,20 +4614,28 @@ msgid ""
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
+"เผยแพร่ภายใต้ GNU General Public License\n"
+"ตัวแสดงสถานะและควบคุมโมเด็ม\n"
+"แสงดวงบน (หรือซ้าย) แสดงการส่งข้อมูล ส่วนอีกดวงแสดงการรับข้อมูล"
 
+# Has to be careful between "connecting" (verb) and "connected" (adj.)
+# Trying to differentiate these by using ทำการเชื่อมต่ออยู่ and เชื่อมต่อติดอยู่ 
+# "not connected" can be translated as ไม่ได้เชื่อมต่ออยู่ without confusion.
 #: modemlights/modemlights.c:518
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
+"คุณกำลังเชื่อมต่อติดอยู่\n"
+"จะยุติการเชื่อมต่อไหม?"
 
 #: modemlights/modemlights.c:526
 msgid "_Disconnect"
-msgstr ""
+msgstr "ยุ_ติการเชื่อมต่อ"
 
 #: modemlights/modemlights.c:553
 msgid "Do you want to connect?"
-msgstr ""
+msgstr "ต้องการจะเชื่อมต่อออกไปไหม?"
 
 #: modemlights/modemlights.c:560
 msgid "C_onnect"
@@ -4637,226 +4644,228 @@ msgstr "เ_ชื่อมต่อ"
 #: modemlights/modemlights.c:584
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-msgstr ""
+msgstr "รับมา %#.1fMb / ส่งไป %#.1fMb / เวลา: %.1d:%.2d"
 
 #: modemlights/modemlights.c:589
 msgid "not connected"
-msgstr ""
+msgstr "ไม่ได้เชื่อมต่ออยู่"
 
 #: modemlights/modemlights.schemas.in.h:1
 msgid "Ask for confirmation when connecting/disconnecting"
-msgstr ""
+msgstr "ถามก่อนจะ เริ่ม/ยุติ การเชื่อมต่อ"
 
 #: modemlights/modemlights.schemas.in.h:2
 msgid "Blink when connecting"
-msgstr ""
+msgstr "กระพริบเวลาทำการเชื่อมต่อ"
 
 #: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
-msgstr ""
+msgstr "คำสั่งสำหรับทำการเชื่อมต่อ"
 
 #: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
-msgstr ""
+msgstr "คำสั่งสำหรับยุติการเชื่อมต่อ"
 
 #: modemlights/modemlights.schemas.in.h:5
 msgid "Display a confirmation dialog when connecting or disconnecting."
-msgstr ""
+msgstr "แสดงหน้าต่างถามก่อนจะ เริ่ม/ยุติ การเชื่อมต่อ"
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr ""
+msgstr "กระพริบแอพเพล็ตเวลาทำการเชื่อมต่อ"
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
-msgstr ""
+msgstr "ชื่ออุปกรณ์โมเด็ม"
 
+# How to make this not confused with log?
 #: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
-msgstr ""
+msgstr "แฟ้มล็อคของโมเด็ม"
 
 #: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
-msgstr ""
+msgstr "สีพื้นหลังการรับ"
 
 #: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
-msgstr ""
+msgstr "สีเบื้องหน้าการรับ"
 
 #: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
-msgstr ""
+msgstr "สีพื้นหลังการส่ง"
 
 #: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
-msgstr ""
+msgstr "สีเบื้องหน้าการส่ง"
 
 #: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
-msgstr ""
+msgstr "แสดงระยะเวลาการเชื่อมต่อและความเร็วการรับส่งข้อมูล"
 
 #: modemlights/modemlights.schemas.in.h:14
 msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
-msgstr ""
+msgstr "แสดงระยะเวลาการเชื่อมต่อและขนาดข้อมูลที่ถูกรับมาหรือส่งไป"
 
 #: modemlights/modemlights.schemas.in.h:15
 msgid "Status connected color"
-msgstr ""
+msgstr "สีสถานะเชื่อมต่อติดอยู่"
 
 #: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
-msgstr ""
+msgstr "สีสถานะไม่ได้เชื่อมต่ออยู่"
 
 #: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
-msgstr ""
+msgstr "สีสถานะทำการเชื่อมต่ออยู่"
 
 #: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
-msgstr ""
+msgstr "สีพื้นหลังข้อความ"
 
 #: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
-msgstr ""
+msgstr "สีเบื้องหน้าข้อความ"
 
 #: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
-msgstr ""
+msgstr "สีขอบข้อความ"
 
 #: modemlights/modemlights.schemas.in.h:21
 msgid "The background color of the button used to indicate data received."
-msgstr ""
+msgstr "สีพื้นหลังของปุ่มแสดงการได้รับข้อมูล"
 
 #: modemlights/modemlights.schemas.in.h:22
 msgid "The background color of the button used to indicate data sent."
-msgstr ""
+msgstr "สีพื้นหลังของปุ่มแสดงการส่งข้อมูล"
 
 #: modemlights/modemlights.schemas.in.h:23
 msgid ""
 "The color used to display the status button when the modem is connected."
-msgstr ""
+msgstr "สีที่ใช้แสดงปุ่มสถานะเวลาโมเด็มเชื่อมต่อติดอยู่"
 
 #: modemlights/modemlights.schemas.in.h:24
 msgid ""
 "The color used to display the status button when the modem is connecting."
-msgstr ""
+msgstr "สีที่ใช้แสดงปุ่มสถานะเวลาโมเด็มทำการเชื่อมต่ออยู่"
 
 #: modemlights/modemlights.schemas.in.h:25
 msgid ""
 "The color used to display the status button when the modem is not connected."
-msgstr ""
+msgstr "สีที่ใช้แสดงปุ่มสถานะเวลาโมเด็มไม่ได้เชื่อมต่ออยู่"
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
-msgstr ""
+msgstr "สีที่ใช้การได้รับข้อมูล"
 
 #: modemlights/modemlights.schemas.in.h:27
 msgid "The color used to indicate that data has been sent."
-msgstr ""
+msgstr "สีที่ใช้การส่งข้อมูล"
 
+# This string might be wrong, see bug #136941
 #: modemlights/modemlights.schemas.in.h:28
 msgid "The fraction of a second until the applet updates."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:29
 msgid "The name of the modem device."
-msgstr ""
+msgstr "ชื่ออุปกรณ์โมเด็ม"
 
 #: modemlights/modemlights.schemas.in.h:30
 msgid "The name of the modem lock file."
-msgstr ""
+msgstr "ชื่อแฟ้มล็อคของโมเด็ม"
 
 #: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
-msgstr ""
+msgstr "ใช้ isdn"
 
 #: modemlights/modemlights.schemas.in.h:33
 msgid "Use isdn instead of ppp to connect the modem."
-msgstr ""
+msgstr "ใช้ isdn แทนที่จะใช้ ppp ในการเชื่อมต่อโมเด็ม"
 
 #: modemlights/modemlights.schemas.in.h:34
 msgid "Use this command to connect the modem."
-msgstr ""
+msgstr "ใช้คำสั่งนี้สำหรับเชื่อมต่อโมเด็ม"
 
 #: modemlights/modemlights.schemas.in.h:35
 msgid "Use this command to disconnect the modem."
-msgstr ""
+msgstr "ใช้คำสั่งนี้สำหรับยุติการเชื่อมต่อโมเด็ม"
 
 #: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
-msgstr ""
+msgstr "ตรวจเจ้าของแฟ้มล็อค"
 
 #: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
-msgstr ""
+msgstr "ปรับแต่งตัวควบคุมโมเด็ม"
 
 #: modemlights/properties.c:451
 msgid "U_pdate every:"
-msgstr ""
+msgstr "_อัพเดตทุกๆ:"
 
 #. extra info checkbox
 #: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
-msgstr ""
+msgstr "แ_สดงระยะเวลาการเชื่อมต่อและความเร็วการรับส่งข้อมูล"
 
 #: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
-msgstr ""
+msgstr "_กระพริบช่องสถานะการเชื่อมต่อเวลาทำการเชื่อมต่อ"
 
 #: modemlights/properties.c:496
 msgid "Connections"
-msgstr ""
+msgstr "การเชื่อมต่อ"
 
 #: modemlights/properties.c:505
 msgid "Co_nnection command:"
-msgstr ""
+msgstr "คำสั่งเ_ชื่อมต่อ:"
 
 #: modemlights/properties.c:531
 msgid "_Disconnection command:"
-msgstr ""
+msgstr "คำสั่งยุ_ติการเชื่อมต่อ:"
 
 #. confirmation checkbox
 #: modemlights/properties.c:553
 msgid "Con_firm connection"
-msgstr ""
+msgstr "_ถามก่อน เริ่ม/ยุติ การเชื่อมต่อ"
 
 #: modemlights/properties.c:572
 msgid "Receive Data"
-msgstr ""
+msgstr "รับข้อมูล"
 
 #: modemlights/properties.c:578
 msgid "_Foreground:"
-msgstr ""
+msgstr "เ_บื้องหน้า:"
 
 #: modemlights/properties.c:583
 msgid "Send Data"
-msgstr ""
+msgstr "ส่งข้อมูล"
 
 #: modemlights/properties.c:588
 msgid "Foregroun_d:"
-msgstr ""
+msgstr "เบื้_องหน้า:"
 
 #: modemlights/properties.c:590
 msgid "Backg_round:"
-msgstr ""
+msgstr "พื้_นหลัง:"
 
 #: modemlights/properties.c:593
 msgid "Connection Status"
-msgstr ""
+msgstr "สถานะการเชื่อมต่อ"
 
 #: modemlights/properties.c:601
 msgid "Co_nnected:"
-msgstr ""
+msgstr "เ_ชื่อมต่อติดอยู่:"
 
 #: modemlights/properties.c:603
 msgid "Disconnec_ted:"
-msgstr ""
+msgstr "ไ_ม่ได้เชื่อมต่ออยู่:"
 
 #: modemlights/properties.c:606
 msgid "C_onnecting:"
-msgstr ""
+msgstr "_กำลังทำการเชื่อมต่อ:"
 
 #: modemlights/properties.c:609
 msgid "Text"
@@ -4864,15 +4873,15 @@ msgstr "ข้อความ"
 
 #: modemlights/properties.c:617
 msgid "For_eground:"
-msgstr ""
+msgstr "เบื้อ_งหน้า:"
 
 #: modemlights/properties.c:619
 msgid "Bac_kground:"
-msgstr ""
+msgstr "พื้น_หลัง:"
 
 #: modemlights/properties.c:621
 msgid "O_utline"
-msgstr ""
+msgstr "_ขอบ:"
 
 #: modemlights/properties.c:624 multiload/properties.c:534
 msgid "Colors"
@@ -4880,24 +4889,24 @@ msgstr "สี"
 
 #: modemlights/properties.c:633
 msgid "Modem Options"
-msgstr ""
+msgstr "ตัวเลือกของโมเด็ม"
 
 #: modemlights/properties.c:642
 msgid "_Device:"
-msgstr "อุป_กรณ์"
+msgstr "อุป_กรณ์:"
 
 #: modemlights/properties.c:668
 msgid "_Lock file:"
-msgstr ""
+msgstr "แ_ฟ้มล็อค:"
 
 #: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
-msgstr ""
+msgstr "_ตรวจเจ้าของแฟ้มล็อค"
 
 #. ISDN checkbox
 #: modemlights/properties.c:700
 msgid "U_se ISDN"
-msgstr ""
+msgstr "ใ_ช้ ISDN"
 
 #: modemlights/properties.c:717
 msgid "Advanced"
@@ -4905,24 +4914,24 @@ msgstr "ขั้นสูง"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
-msgstr ""
+msgstr "แสดงการใช้งานทรัพยากรระบบ"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
 #: multiload/main.c:80
 msgid "System Monitor"
-msgstr ""
+msgstr "ตัวติดตามทรัพยากรระบบ"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
-msgstr ""
+msgstr "_เปิดตัวติดตามทรัพยากรระบบ"
 
 #: multiload/cpuload.c:50
 msgid "CPU Load"
-msgstr ""
+msgstr "การใช้งาน CPU"
 
 #: multiload/loadavg.c:107 multiload/main.c:345
 msgid "Load Average"
-msgstr ""
+msgstr "Load Average"
 
 #: multiload/main.c:82
 msgid ""
@@ -4931,14 +4940,17 @@ msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr ""
+"เผยแพร่ภายใต้ GNU General Public License\n"
+"\n"
+"ตัวติดตามทรัพยากรระบบ สามารถแสดงกราฟระดับการใช้งานตัวประมวลผล หน่วยความจำ และเครือข่าย"
 
 #: multiload/main.c:337 multiload/properties.c:559
 msgid "Processor"
-msgstr ""
+msgstr "ตัวประมวลผล"
 
 #: multiload/main.c:339 multiload/properties.c:566
 msgid "Memory"
-msgstr ""
+msgstr "หน่วยความจำ"
 
 #: multiload/main.c:341 multiload/properties.c:574
 msgid "Network"
@@ -4946,11 +4958,11 @@ msgstr "เครือข่าย"
 
 #: multiload/main.c:343 multiload/properties.c:582
 msgid "Swap Space"
-msgstr ""
+msgstr "พื้นที่สลับ"
 
 #: multiload/main.c:347
 msgid "Resource"
-msgstr ""
+msgstr "ทรัพยากร"
 
 #: multiload/main.c:358
 #, c-format
@@ -4958,6 +4970,8 @@ msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
+"%s:\n"
+"ใช้อยู่ %d%%"
 
 #: multiload/memload.c:50
 msgid "Memory Load"
@@ -4965,61 +4979,66 @@ msgstr ""
 
 #: multiload/multiload.schemas.in.h:1
 msgid "Applet refresh rate in milliseconds"
-msgstr ""
+msgstr "จำนวนมิลลิวินาทีระหว่างการเขียนแอพเพล็ต"
 
 #: multiload/multiload.schemas.in.h:2
 msgid "CPU graph background color"
-msgstr ""
+msgstr "สีพื้นหลังกราฟตัวประมวลผล"
 
 #: multiload/multiload.schemas.in.h:3
 msgid "Enable CPU load graph"
-msgstr ""
+msgstr "แสดงกราฟตัวประมวลผล"
 
+# "load" is defined rather mythically in Linux.
+# It could be thought of as a proper noun, so not translating.
+#
+# แสดงกราฟการใช้งานเฉลี่ย
 #: multiload/multiload.schemas.in.h:4
 msgid "Enable load average graph"
-msgstr ""
+msgstr "แสดงกราฟ load average"
 
 #: multiload/multiload.schemas.in.h:5
 msgid "Enable memory load graph"
-msgstr ""
+msgstr "แสดงกราฟหน่วยความจำ"
 
 #: multiload/multiload.schemas.in.h:6
 msgid "Enable network load graph"
-msgstr ""
+msgstr "แสดงกราฟเครือข่าย"
 
 #: multiload/multiload.schemas.in.h:7
 msgid "Enable swap load graph"
-msgstr ""
+msgstr "แสดงกราฟเนื้อที่สลับ"
 
 #: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
+"ความกว้างของกราฟ (ในหน่วยพิกเซล) ถ้าอยู่ในพาเนลแนวขวาง  หรือความสูงถ้าอยู่ในพาเนลแนวตั้ง"
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
-msgstr ""
+msgstr "สีกราฟแสดงการใช้งานเครือข่าย Ethernet"
 
 #: multiload/multiload.schemas.in.h:10
 msgid "Graph color for PLIP network activity"
-msgstr ""
+msgstr "สีกราฟแสดงการใช้งานเครือข่าย PLIP"
 
 #: multiload/multiload.schemas.in.h:11
 msgid "Graph color for SLIP network activity"
-msgstr ""
+msgstr "สีกราฟแสดงการใช้งานเครือข่าย SLIP"
 
 #: multiload/multiload.schemas.in.h:12
 msgid "Graph color for buffer memory"
-msgstr ""
+msgstr "สีกราฟหน่วยความจำบัฟเฟอร์"
 
 #: multiload/multiload.schemas.in.h:13
 msgid "Graph color for cached memory"
-msgstr ""
+msgstr "สีกราฟหน่วยความจำแคช"
 
 #: multiload/multiload.schemas.in.h:14
 msgid "Graph color for load average"
-msgstr ""
+msgstr "สีกราฟ load average"
 
 #: multiload/multiload.schemas.in.h:15
 msgid "Graph color for nice-related CPU activity"
@@ -5027,63 +5046,63 @@ msgstr ""
 
 #: multiload/multiload.schemas.in.h:16
 msgid "Graph color for other network usage"
-msgstr ""
+msgstr "สีกราฟการใช้งานเครือข่ายชนิดอื่น"
 
 #: multiload/multiload.schemas.in.h:17
 msgid "Graph color for shared memory"
-msgstr ""
+msgstr "สีกราฟหน่วยความจำใช้ร่วม"
 
 #: multiload/multiload.schemas.in.h:18
 msgid "Graph color for system-related CPU activity"
-msgstr ""
+msgstr "สีกราฟตัวประมวลผลถูกใช้งานโดยระบบ"
 
 #: multiload/multiload.schemas.in.h:19
 msgid "Graph color for user-related CPU activity"
-msgstr ""
+msgstr "สีกราฟตัวประมวลผลถูกใช้งานโดยผู้ใช้"
 
 #: multiload/multiload.schemas.in.h:20
 msgid "Graph color for user-related memory usage"
-msgstr ""
+msgstr "สีกราฟหน่วยความจำถูกใช้งานโดยผู้ใช้"
 
 #: multiload/multiload.schemas.in.h:21
 msgid "Graph color for user-related swap usage"
-msgstr ""
+msgstr "สีกราฟพื้นที่สลับถูกใช้งานโดยผู้ใช้"
 
 #: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
-msgstr ""
+msgstr "ขนาดกราฟ"
 
 #: multiload/multiload.schemas.in.h:23
 msgid "Load graph background color"
-msgstr ""
+msgstr "สีพื้นหลังกราฟ load"
 
 #: multiload/multiload.schemas.in.h:24
 msgid "Memory graph background color"
-msgstr ""
+msgstr "สีพื้นหลังกราฟหน่วยความจำ"
 
 #: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
-msgstr ""
+msgstr "สีพื้นหลังกราฟเครือข่าย"
 
 #: multiload/multiload.schemas.in.h:26
 msgid "Swap graph background color"
-msgstr ""
+msgstr "สีพื้นหลังกราฟพื้นที่สลับ"
 
 #: multiload/netload.c:49
 msgid "Net Load"
-msgstr ""
+msgstr "การใช้งานเครือข่าย"
 
 #: multiload/properties.c:332
 msgid "Monitored Resources"
-msgstr ""
+msgstr "ติดตามทรัพยากรระบบ"
 
 #: multiload/properties.c:357
 msgid "_Processor"
-msgstr ""
+msgstr "_ตัวประมวลผล"
 
 #: multiload/properties.c:370
 msgid "_Memory"
-msgstr ""
+msgstr "_หน่วยความจำ"
 
 #: multiload/properties.c:383
 msgid "_Network"
@@ -5091,23 +5110,24 @@ msgstr "เค_รือข่าย"
 
 #: multiload/properties.c:396
 msgid "S_wap Space"
-msgstr ""
+msgstr "_พื้นที่สลับ"
 
 #: multiload/properties.c:409
 msgid "_Load"
-msgstr ""
+msgstr "_Load"
 
+# Not a direct translation, but helps shorten the message.
 #: multiload/properties.c:456
 msgid "System m_onitor width: "
-msgstr ""
+msgstr "_ความกว้างของแอพเพล็ต:"
 
 #: multiload/properties.c:458
 msgid "System m_onitor height: "
-msgstr ""
+msgstr "_ความสูงของแอพเพล็ต:"
 
 #: multiload/properties.c:497
 msgid "Sys_tem monitor update interval: "
-msgstr ""
+msgstr "_อัพเดตข้อมูลทุกๆ:"
 
 #: multiload/properties.c:523
 msgid "milliseconds"
@@ -5115,264 +5135,273 @@ msgstr "มิลลิวินาที"
 
 #: multiload/properties.c:561 multiload/properties.c:568
 msgid "_User"
-msgstr ""
+msgstr "ผู้ใ_ช้"
 
 #: multiload/properties.c:562
 msgid "S_ystem"
-msgstr ""
+msgstr "_ระบบ"
 
 #: multiload/properties.c:563
 msgid "N_ice"
-msgstr ""
+msgstr "N_ice"
 
 #: multiload/properties.c:564
 msgid "I_dle"
-msgstr ""
+msgstr "_ว่าง"
 
 #: multiload/properties.c:569
 msgid "Sh_ared"
-msgstr ""
+msgstr "ใช้_ร่วม"
 
 #: multiload/properties.c:570
 msgid "_Buffers"
-msgstr ""
+msgstr "_บัฟเฟอร์"
 
 #: multiload/properties.c:571
 msgid "Cach_ed"
-msgstr ""
+msgstr "แ_คช"
 
+# free memory
 #: multiload/properties.c:572
 msgid "F_ree"
-msgstr ""
+msgstr "เ_หลือ"
 
 #: multiload/properties.c:576
 msgid "_SLIP"
-msgstr ""
+msgstr "_SLIP"
 
 #: multiload/properties.c:577
 msgid "PL_IP"
-msgstr ""
+msgstr "PL_IP"
 
 #: multiload/properties.c:578
 msgid "_Ethernet"
-msgstr ""
+msgstr "_Ethernet"
 
 #: multiload/properties.c:579
 msgid "Othe_r"
-msgstr ""
+msgstr "_อื่นๆ"
 
 #: multiload/properties.c:580 multiload/properties.c:590
 msgid "_Background"
-msgstr ""
+msgstr "_พื้นหลัง"
 
 #: multiload/properties.c:584
 msgid "_Used"
-msgstr ""
+msgstr "ใ_ช้อยู่"
 
 #: multiload/properties.c:585
 msgid "_Free"
-msgstr ""
+msgstr "เ_หลือ"
 
 #: multiload/properties.c:587
 msgid "Load"
-msgstr ""
+msgstr "Load"
 
 #: multiload/properties.c:589
 msgid "_Average"
-msgstr ""
+msgstr "เฉ_ลี่ย"
 
 #: multiload/properties.c:613
 msgid "System Monitor Preferences"
-msgstr ""
+msgstr "ปรับแต่งตัวติดตามทรัพยากรระบบ"
 
 #: multiload/swapload.c:51
 msgid "Swap Load"
-msgstr ""
+msgstr "การใช้งานพื้นที่สลับ"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr ""
+msgstr "สร้าง แสดง และจัดการโน๊ตติดกาว บนพื้นโต๊ะ"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 #: stickynotes/stickynotes_applet.c:307 stickynotes/stickynotes_applet.c:425
 #: stickynotes/stickynotes_applet_callbacks.c:240
 msgid "Sticky Notes"
-msgstr ""
+msgstr "โน๊ตติดกาว"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
 msgid "Sticky Notes Applet Factory"
-msgstr ""
+msgstr "โรงงานแอพเพล็ตโน๊ตติดกาว"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
 msgid "_Delete Notes..."
-msgstr ""
+msgstr "ล_บโน๊ตทั้งหมด..."
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
-msgstr ""
+msgstr "ล็_อคโน๊ต"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
 #: stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
-msgstr ""
+msgstr "_สร้างโน๊ตใหม่"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Show Notes"
-msgstr ""
+msgstr "_แสดงโน๊ต"
 
 #: stickynotes/stickynotes.c:334
 msgid "Locked note"
-msgstr ""
+msgstr "โน๊ตถูกล็อคอยู่"
 
 #: stickynotes/stickynotes.c:339
 msgid "Unlocked note"
-msgstr ""
+msgstr "โน๊ตไม่ถูกล็อคอยู่"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
-msgstr ""
+msgstr "<b>คุณสมบัติปริยายของโน๊ต</b>"
 
+# Not a direct translation, but conveys the same idea.
 #: stickynotes/stickynotes.glade.h:5
 msgid ""
 "<b>Delete ALL sticky notes?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>ลบโน๊ตทั้งหมดแน่นะ?</b>\n"
+"\n"
+"ลบแล้วจะไม่สามารถเรียกกลับคืนมาได้"
 
+# Try to keep the first line different from "delete all note"
 #: stickynotes/stickynotes.glade.h:8
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>ลบโน๊ตนี้ไหม?</b>\n"
+"\n"
+"ลบแล้วจะไม่สามารถเรียกกลับคืนมาได้"
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
-msgstr ""
+msgstr "<b>คุณสมบัติ</b>"
 
 #: stickynotes/stickynotes.glade.h:12
 msgid "C_olor:"
-msgstr ""
+msgstr "_สี:"
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
-msgstr ""
+msgstr "เลือกสีปริยายสำหรับโน๊ตทั้งหมด"
 
 #: stickynotes/stickynotes.glade.h:14
 msgid "Choose a color for the note"
-msgstr ""
+msgstr "เลือกสีสำหรับโน๊ตนี้"
 
 #: stickynotes/stickynotes.glade.h:15
 msgid "Choose a font for the note"
-msgstr ""
+msgstr "เลือกแบบอักษรสำหรับโน๊ต"
 
 #: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font to use for all sticky notes"
-msgstr ""
+msgstr "เลือกแบบอักษรปริยายสำหรับโน๊ตทั้งหมด"
 
 #: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
-msgstr ""
+msgstr "เลือกว่าจะแสดงโน๊ตบนทุกพื้นที่ทำงานหรือไม่"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr ""
+msgstr "เลือกว่าจะบังคับให้โน๊ตทุกแผ่นใช้รูปโฉมปริยายหรือไม่"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
-msgstr ""
+msgstr "_คลิกแล้ว:"
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
-msgstr ""
+msgstr "ปิดโน๊ต"
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Force _default color and font on notes"
-msgstr ""
+msgstr "บังคับใ_ห้โน๊ตทุกแผ่นใช้สีและแบบอักษรปริยาย"
 
 #: stickynotes/stickynotes.glade.h:22
 msgid "H_eight:"
-msgstr ""
+msgstr "ความสู_ง:"
 
 #: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
-msgstr ""
+msgstr "ล็อค/ปลดล็อค โน๊ต"
 
 #: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
-msgstr ""
+msgstr "เลือกสีสำหรับโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
-msgstr ""
+msgstr "เลือกสีปริยายสำหรับโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
-msgstr ""
+msgstr "เลือกแบบอักษรปริยายสำหรับโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
-msgstr ""
+msgstr "เลือกแบบอักษรสำหรับโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:28
 msgid "Resize note"
-msgstr ""
+msgstr "ปรับขนาดโน๊ต"
 
 #: stickynotes/stickynotes.glade.h:29
 msgid "Specify a title for the note"
-msgstr ""
+msgstr "ตั้งชื่อโน๊ต"
 
 #: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
-msgstr ""
+msgstr "ตั้งความสูงปริยายของโน๊ต (ในหน่วยพิกเซล)"
 
 #: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
-msgstr ""
+msgstr "ตั้งความกว้างปริยายของโน๊ต (ในหน่วยพิกเซล)"
 
 #: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
-msgstr ""
+msgstr "โน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:33
 msgid "Sticky Note Properties"
-msgstr ""
+msgstr "คุณสมบัติโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:34
 msgid "Sticky Notes Preferences"
-msgstr ""
+msgstr "ปรับแต่งโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Use co_lor from the system theme"
-msgstr ""
+msgstr "_ใช้สีปริยายของชุดตกแต่ง"
 
 #: stickynotes/stickynotes.glade.h:36
 msgid "Use default co_lor"
-msgstr ""
+msgstr "_ใช้สีปริยาย"
 
 #: stickynotes/stickynotes.glade.h:37
 msgid "Use default fo_nt"
-msgstr ""
+msgstr "ใช้_แบบอักษรปริยาย"
 
 #: stickynotes/stickynotes.glade.h:38
 msgid "Use fo_nt from the system theme"
-msgstr ""
+msgstr "ใ_ช้แบบอักษรปริยายของชุดตกแต่ง"
 
 #: stickynotes/stickynotes.glade.h:39
 msgid "_Color:"
-msgstr ""
+msgstr "_สี:"
 
 #: stickynotes/stickynotes.glade.h:40
 msgid "_Delete ALL"
-msgstr ""
+msgstr "_ลบทั้งหมด"
 
 #: stickynotes/stickynotes.glade.h:41
 msgid "_Delete Note..."
-msgstr ""
+msgstr "_ลบโน๊ต..."
 
 #: stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
-msgstr ""
+msgstr "ล็อ_คโน๊ต"
 
 #: stickynotes/stickynotes.glade.h:45
 msgid "_Properties..."
@@ -5380,27 +5409,28 @@ msgstr "คุณ_สมบัติ..."
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr ""
+msgstr "_แสดงโน๊ตในทุกพื้นที่ทำงาน"
 
 #: stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
-msgstr "หัวเรื่อง (_T):"
+msgstr "_ชื่อโน๊ต:"
 
+# These accelerators should be removed.  See bug #120695
 #: stickynotes/stickynotes.glade.h:49
 msgid "_lock/unlock all notes"
-msgstr ""
+msgstr "ล็อค/ปลดล็อค โน๊ตทุกแผ่น"
 
 #: stickynotes/stickynotes.glade.h:50
 msgid "_show/hide all notes"
-msgstr ""
+msgstr "แสดง/ซ่อน โน๊ตทุกแผ่น"
 
 #: stickynotes/stickynotes.glade.h:51
 msgid "create a _new note"
-msgstr ""
+msgstr "สร้างโน๊ตใหม่"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
-msgstr ""
+msgstr "จำนวนนาทีระหว่างการบันทึกอัตโนมัติ"
 
 #: stickynotes/stickynotes.schemas.in.h:2
 msgid ""
@@ -5408,78 +5438,82 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
+"โน๊ตสร้างใหม่จะมีชื่อเป็นวันที่ที่ถูกสร้าง ใช่ค่านี้กำหนดรูปแบบวันที่ที่ควรใช้ "
+"สามารถตั้งเป็นอะไรก็ได้ที่ใช้ได้ใน strftime()"
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
-msgstr ""
+msgstr "รูปแบบวันที่สำหรับชื่อโน๊ต"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
-msgstr ""
+msgstr "พฤติกรรมปริยายเมื่อแอพเพล็ตถูกคลิก"
 
 #: stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new notes"
-msgstr ""
+msgstr "สีปริยายสำหรับโน๊ตใหม่"
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
-msgstr ""
+msgstr "สีปริยายสำหรับโน๊ตที่พึ่งถูกสร้างใหม่ ควรตั้งเป็นเลขฐานสิบหก ตัวอย่างเช่น \"#30FF50\"."
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
-msgstr ""
+msgstr "แบบอักษรปริยายสำหรับโน๊ตใหม่"
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"แบบอักษรปริยายสำหรับโน๊ตที่พึ่งถูกสร้างใหม่ ควรใช้ชื่อแบบอักษรของ Pango ตัวอย่างเช่น \"Sans "
+"Italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
-msgstr ""
+msgstr "ความสูงปริยายสำหรับโน๊ตใหม่"
 
 #: stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
-msgstr ""
+msgstr "ความสูงปริยายสำหรับโน๊ตใหม่ในหน่วยพิกเซล"
 
 #: stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
-msgstr ""
+msgstr "ความกว้างปริยายสำหรับโน๊ตใหม่"
 
 #: stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
-msgstr ""
+msgstr "ความกว้างปริยายสำหรับโน๊ตใหม่ในหน่วยพิกเซล"
 
 #: stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
-msgstr ""
+msgstr "ไม่ขอคำยืนยันจากผู้ใช้เวลาโน๊ตเปล่าถูกลบ"
 
 #: stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr ""
+msgstr "ทุกๆ จำนวนนาทีที่ตั้ง ข้อความในโน๊ตติดกาว จะถูกบันทึกโดยอัตโนมัติ"
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
-msgstr ""
+msgstr "ถ้าไม่เลือกตัวเลือกนี้ สามารถตั้งสีสำหรับใช้เป็นสีปริยาย ในโน๊ตติดกาวทั้งหมด"
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
-msgstr ""
+msgstr "ถ้าไม่เลือกตัวเลือกนี้ สามารถตั้งแบบอักษรสำหรับใช้เป็นสีปริยาย ในโน๊ตติดกาวทั้งหมด"
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
-msgstr ""
+msgstr "ถ้าตั้ง สีและแบบอักษรที่ตั้งไว้ เฉพาะสำหรับโน๊ตแต่ละแผ่น จะไม่ถูกใช้"
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5487,49 +5521,53 @@ msgid ""
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
+"เกิดขึ้นเมื่อแอพเพล็ตถูกคลิกซ้าย หรือผู้ใช้กดปุ่ม \"Enter\"  สามารถตั้งเป็น \"0\" สำหรับ "
+"\"สร้างโน๊ตใหม่\",  \"1\" สำหรับ \"แ_สดง/ซ่อน โน๊ตทุกแผ่น\", หรือ \"2\" สำหรับ \"ล็อค/"
+"ปลดล็อค โน๊ตทุกแผ่น\""
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
+msgstr "ตั้งว่าโน๊ตทั้งหมดถูกล็อคอยู่ (แก้ไขไม่ได้) หรือไม่"
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr ""
+msgstr "ตั้งว่าจะแสดงโน๊ตบนทุกพื้นที่ทำงานหรือไม่"
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
-msgstr ""
+msgstr "ตั้งว่าแสดงโน๊ตอยู่หรือไม่"
 
 #: stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' locked state"
-msgstr ""
+msgstr "สถานะการล็อคของโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
-msgstr ""
+msgstr "สถานะการแสดงของโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.schemas.in.h:24
 msgid "Sticky notes' workspace stickyness"
-msgstr ""
+msgstr "สถานะการแสดงบนทุกพื้นที่ทำงานของโน๊ตติดกาว"
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
+msgstr "ว่าจะขอคำยืนยันก่อนจะลบโน๊ตหรือไม่"
 
 #: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
-msgstr ""
+msgstr "ว่าจะบังคับให้โน๊ตทุกแผ่นใช้สีและแบบอักษรปริยายหรือไม่"
 
 #: stickynotes/stickynotes.schemas.in.h:27
 msgid "Whether to use the default system color"
-msgstr ""
+msgstr "ว่าจะใช้สีปริยายของชุดตกแต่งหรือไม่"
 
 #: stickynotes/stickynotes.schemas.in.h:28
 msgid "Whether to use the default system font"
-msgstr ""
+msgstr "ว่าจะใช้แบบอักษรปริยายของชุดตกแต่งหรือไม่"
 
+# มีโน๊ตติดกาวอยู่ 3 แผ่น
 #: stickynotes/stickynotes_applet.c:425
 #, c-format
 msgid ""
@@ -5538,35 +5576,37 @@ msgid ""
 msgid_plural ""
 "%s\n"
 "%d notes"
-msgstr[0] ""
+msgstr[0] "มี%sอยู่ %d แผ่น"
 msgstr[1] ""
 
 #: stickynotes/stickynotes_applet_callbacks.c:242
 msgid "(c) 2002-2003 Loban A Rahman"
-msgstr ""
+msgstr "(c) 2002-2003 Loban A Rahman"
 
 #: stickynotes/stickynotes_applet_callbacks.c:243
 msgid "Sticky Notes for the Gnome Desktop Environment"
-msgstr ""
+msgstr "โน๊ตติดกาวสำหรับพื้นโต๊ะ GNOME"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
-msgstr ""
+msgstr "ติดตามคุณภาพสัญญาณเครือข่ายไร้สาย"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
 #: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
 msgid "Wireless Link Monitor"
-msgstr ""
+msgstr "ติดตามคุณภาพสัญญาณไร้สาย"
 
 #: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
 msgid "No Wireless Devices"
-msgstr ""
+msgstr "ไม่มีอุปกรณ์ไร้สาย"
 
 #: wireless/wireless-applet.c:367
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
+"ดูเหมือนเครื่องของคุณจะไม่มีอุปกรณ์เครื่อข่ายแบบไร้สาย\n"
+"ถ้านี่ไม่ถูกต้อง โปรดตรวจสอบการติดตั้ง และตรวจว่าค่าตั้งถูกกำหนดไว้ถูกต้อง"
 
 #: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
@@ -5574,20 +5614,21 @@ msgstr "(C) 2001, 2002 Free Software Foundation "
 
 #: wireless/wireless-applet.c:591
 msgid "This utility shows the status of a wireless link."
-msgstr ""
+msgstr "แอพเพล็ตแสดงสถานะสัญญาณเครือข่ายไร้สาย"
 
 #: wireless/wireless-applet.c:836
 msgid "This utility shows the status of a wireless link"
-msgstr ""
+msgstr "แอพเพล็ตแสดงสถานะสัญญาณเครือข่ายไร้สาย"
 
+# It's "percentage or nothing", not "percentage or value"
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
-msgstr ""
+msgstr "แ_สดงเปอร์เซ็นต์พลังสัญญาณ"
 
 #: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
-msgstr ""
+msgstr "ปรับแต่งตัวติดตามคุณภาพสัญญาณไร้สาย"
 
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
-msgstr ""
+msgstr "อุป_กรณ์ที่ติดตาม:"
