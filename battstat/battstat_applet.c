@@ -1247,6 +1247,35 @@ change_size(PanelApplet *applet, gint size, gpointer data)
    battstat->colors_changed=FALSE;
 }
 
+static gboolean
+button_press_cb (GtkWidget *widget, GdkEventButton *event, ProgressData *battstat)
+{
+	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) 
+		suspend_cb (NULL, battstat, NULL);
+
+	return FALSE;
+}
+
+static gboolean
+key_press_cb (GtkWidget *widget, GdkEventKey *event, ProgressData *battstat)
+{
+	switch (event->keyval) {
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		suspend_cb (NULL, battstat, NULL);
+		return TRUE;
+
+	default:
+		break;
+	}
+
+	return FALSE;
+}
+
 
 #define GCONF_PATH ""
 
@@ -1454,6 +1483,11 @@ create_layout(ProgressData *battstat)
 		      battstat);
    g_signal_connect (G_OBJECT (battstat->applet), "change_size",
    		     G_CALLBACK (change_size), battstat);
+   		     
+   g_signal_connect (battstat->applet, "button_press_event",
+   			     G_CALLBACK (button_press_cb), battstat);
+   g_signal_connect (battstat->applet, "key_press_event",
+   			     G_CALLBACK (key_press_cb), battstat);
 
    return FALSE;
 }
