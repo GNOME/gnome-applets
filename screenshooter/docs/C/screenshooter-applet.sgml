@@ -1,9 +1,8 @@
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
-<article id="screenshooter">
+<!DOCTYPE book PUBLIC "-//Davenport//DTD DocBook V3.0//EN">
+<book id="index">
  
+ <bookinfo>
 
- <artheader> 
- 
   <title>The ScreenShooter Applet</title>
   <authorgroup>
    <author>
@@ -24,21 +23,33 @@
 
   <releaseinfo>documentation in progress</releaseinfo>
 
-  <legalnotice>
-     <para>
-       Permission is granted to copy, distribute and/or modify this
-       document under the terms of the GNU Free Documentation License,
-       Version 1.1 or any later version published by the Free Software
-       Foundation; with no Invariant Sections, with no  Front-Cover
-       Texts, and with no Back-Cover Texts.  A copy of the license is
-       available from the Free Software Foundation and can be viewed <ulink
-       url="http://www.gnu.org/copyleft/fdl.html"
-       type="http">online</ulink>.
-      </para>
-   
+  <legalnotice>   
+        <para>This documentation is free software; you can redistribute
+        it and/or modify it under the terms of the GNU General Public
+        License as published by the Free Software Foundation; either
+        version 2 of the License, or (at your option) any later
+        version.</para>
+
+      <para>This program is distributed in the hope that it will be
+        useful, but WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+        See the GNU General Public License for more details.</para>
+
+      <para>You should have received a copy of the GNU General Public
+        License along with this program; if not, write to the Free
+        Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+        MA 02111-1307 USA</para>
+
+      <para>For more details see the file COPYING in the source
+        distribution of GNOME.</para>
   </legalnotice>
-  </artheader>
+
+ </bookinfo>
  
+ <toc></toc>
+ 
+ <chapter id="screenshooteruse">
+  <title>ScreenShooter</title>
  
   <sect1 id="intro">
    <title>Introduction</title>
@@ -50,16 +61,16 @@
    <itemizedlist>
     <listitem>
      <para>
-       Clicking on the bottom or right-hand <interface>Panel</interface> 
+       Clicking on the bottom or right-hand <interface>panel</interface> 
        <guibutton>button</guibutton> with <mousebutton>mouse button one
        </mousebutton> (which is generally the <mousebutton>left mouse
        button</mousebutton>) takes a picture of the entire 
-       <interface>desktop</interface>. 
+       <interface>desktop </interface>. 
      </para>
     </listitem>
     <listitem>
      <para>
-       Clicking on the top or left-hand <interface>Panel</interface> 
+       Clicking on the top or left-hand <interface>panel</interface> 
        <guibutton>button</guibutton> with <mousebutton>mouse button one
        </mousebutton> allows you to select a <interface>window</interface> 
        or an area for <application>Screen-Shooter</application> to grab. 
@@ -75,15 +86,10 @@
    <title>Settings</title>
  
    <para>
-     <application>Screen-Shooter</application> can be configured to do
-     a number of different things. To configure
-     <application>Screen-Shooter</application>, click on the applet
-     with mouse button 3 (usually, right mouse button) and select
-     <guimenuitem>Properties</guimenuitem> from the
-     <guimenu>popup</guimenu> menu. The
-     <interface>Preferences</interface> dialogue has seven sections
-     described below. Five of these are visible initially: two more
-     sections are available from a toggle in the first section.
+     <application>Screen-Shooter</application> can be configured to do a 
+     number of different things. The preferences dialogue has seven sections 
+     covering these. Five of these are visible initially: two more sections
+     are available from a toggle in the first section.
    </para>
    </sect1>
  
@@ -92,12 +98,10 @@
  
     <variablelist>
      <varlistentry>
-      <term>
-        <guilabel>Capture WM decorations when grabbing a window</guilabel>
-      </term>
+      <term>Capture WM decorations when grabbing a window</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> controls whether or
+         This <guilabel>checkbox</guilabel> controls whether or
          not the <interface>title-bar</interface> and edges of a 
          <interface>window</interface> are included. It is only relevant
          when <application>Screen-Shooter</application> is taking a 
@@ -110,24 +114,23 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Give audio feedback using the keyboard bell
-      </guilabel></term>
+      <term>Give audio feedback using the keyboard bell</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> controls whether or not
-	 <application>Screen-Shooter</application> will beep when it
-	 actually takes the shot. The default is to beep.
+         This <guilabel>checkbox</guilabel> controls whether or not
+	 Screen-Shooter will beep when it actually takes the shot. The
+	 default is to beep.
        </para>
       </listitem>
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Display spurious options</guilabel></term>
+      <term>Display spurious options</term>
       <listitem>
        <para>
-         This is a <guibutton>checkbox</guibutton> which controls whether
+         This is a <guilabel>checkbox</guilabel> which controls whether
          some of <application>Screen-Shooter</application>'s more esoteric
-         options are available. The default is off (i.e., they are not
+         options are available. The default is off (ie they are not
          available). Checking this option makes two sections called 
          <link linkend="preferences-5">Spurious 1</link> and 
          <link linkend="preferences-5">Spurious 2</link> visible
@@ -137,11 +140,11 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Delay before taking shot</guilabel></term>
+      <term>Delay before taking shot</term>
       <listitem>
        <para>
          When taking shots of the <interface>desktop</interface>, you can 
-         set a delay between pressing the <interface>Panel</interface>
+         set a delay between pressing the <interface>panel</interface>
          <guibutton>button</guibutton> and the shot being taken. The delay
          can be up to one minute. This can be very useful when you want to 
          focus on a particular <interface>window</interface> or if you want to
@@ -151,21 +154,21 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Compression quality</guilabel></term>
+      <term>Compression quality</term>
       <listitem>
        <para>
          Compression quality does not refer to how tightly a file is
          compressed, but to how well it retains detail after
          compression. The higher the compression quality, the better
          the quality of the image, but the larger the size of the resulting 
-         file. It is relevant when you are saving something as a JPEG,
-         a MIFF, or a PNG file. The default compression quality is 75%.
+         file. It is relevant when you are saving something as a JEPG,
+         a MIFF or a PNG file. The default compression quality is 75%.
        </para>
       </listitem>
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Create monochrome image</guilabel></term>
+      <term>Create monochrome image</term>
       <listitem>
        <para>
          A fairly self-explanatory option: if this is selected,
@@ -175,7 +178,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Invert colours in image</guilabel></term>
+      <term>Invert colours in image</term>
       <listitem>
        <para>
          Another self-explanatory option: if this is selected, the colours 
@@ -192,7 +195,7 @@
  
     <variablelist>
      <varlistentry>
-      <term><guilabel>Directory to save file in</guilabel></term>
+      <term>Directory to save file in</term>
       <listitem>
        <para>
          The directory to save the shot in must exist already:
@@ -205,7 +208,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Filename for images</guilabel></term>
+      <term>Filename for images</term>
       <listitem>
        <para>
          <application>Screen-Shooter</application> is designed to allow the
@@ -297,8 +300,7 @@
          This <guilabel>checkbox</guilabel> is unchecked by default. After
          checking it, you will get a view of the shot once it has been 
          taken. You need to specify a viewer for this: the default is
-         <command>ee</command> (this command launches
-         <application>Electric Eyes</application> image viewing program). 
+         <command>ee</command>. 
        </para>
       </listitem>
      </varlistentry>
@@ -311,18 +313,18 @@
     
     <variablelist>
      <varlistentry>
-      <term><guilabel>Create thumbnail of image too</guilabel></term>
+      <term>Create thumbnail of image too</term>
       <listitem>
        <para>
          None of the other options on this page will have any effect
-         if this <guibutton>checkbox</guibutton> is not checked. By default,
+         if this <guilabel>checkbox</guilabel>is not checked. By default,
          it is off.
        </para>
       </listitem>    
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Thumbnail size</guilabel></term>
+      <term>Thumbnail size</term>
       <listitem>
        <para>
          This is the percentage of the original's size that the thumbnail
@@ -332,7 +334,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Thumbnail compression</guilabel></term>
+      <term>Thumbnail compression</term>
       <listitem>
        <para>
          This is the quality of compression to use. As with the general
@@ -344,7 +346,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Prefix to attach to filename</guilabel></term>
+      <term>Prefix to attach to filename</term>
       <listitem>
       <para>
         This is the prefix to attach to the thumbnail filename to distinguish
@@ -356,12 +358,10 @@
      </varlistentry>
  
      <varlistentry>
-	  <term><guilabel>Use high-quality intermediate for 
-	      generating thumbnail</guilabel>
-	  </term>
+      <term>Use high-quality intermediate for generating thumbnail</term>
       <listitem>
       <para>
-        This <guibutton>checkbox</guibutton> is off by default. It generates
+        This <guilabel>checkbox</guilabel> is off by default. It generates
         a MIFF image whilst making the thumbnail. A 'lossy' file format
         refers to a file format where data and detail is irretrievably
         lost, but which is typically much smaller than a non-lossy
@@ -387,10 +387,10 @@
     
     <variablelist>
      <varlistentry>
-      <term><guilabel>Normalize image</guilabel></term>
+      <term>Normalize image</term>
       <listitem>
       <para>
-        This <guibutton>checkbox</guibutton> transforms the image to span the
+        This <guilabel>checkbox</guilabel> transforms the image to span the
 	full range of colour values.
         Default is off.
       </para>
@@ -398,10 +398,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Equalize image</guilabel></term>
+      <term>Equalize image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> enables histogram-based image
+         This <guilabel>checkbox</guilabel> enables histogram-based image
 	 equalization.
          Default is off.
        </para>
@@ -409,10 +409,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Enhance image</guilabel></term>
+      <term>Enhance image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> tell Screen-Shooter to clean up
+         This <guilabel>checkbox</guilabel> tell Screen-Shooter to clean up
 	 the image as best it can, and try to remove any noise.
 	 Default is off.
        </para>
@@ -420,10 +420,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Despeckle image</guilabel></term>
+      <term>Despeckle image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> reduces spotting by removing
+         This <guilabel>checkbox</guilabel> reduces spotting by removing
          single pixels which are very different in colour from their
          surroundings. The default is off.
        </para>
@@ -431,7 +431,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Sharpen image by factor</guilabel></term>
+      <term>Sharpen image by factor</term>
       <listitem>
        <para>
          Sharpening the image sharpens the image. The default is a factor
@@ -441,7 +441,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Rotate image clockwise</guilabel></term>
+      <term>Rotate image clockwise</term>
       <listitem>
        <para>
          This is how many degrees clockwise to rotate the image. The 
@@ -451,10 +451,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Adjust gamma</guilabel></term>
+      <term>Adjust gamma</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> enables you to adjust the
+         This <guilabel>checkbox</guilabel> enables you to adjust the
          gamma. The gamma value is a value to do with the intensity
          of the lightness of an image (and rather complicated). The
          range <application>Screen-Shooter</application> provides is
@@ -471,10 +471,10 @@
     <title>Frills</title>
     <variablelist>
      <varlistentry>
-      <term><guilabel>Create frame around image</guilabel></term>
+      <term>Create frame around image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default. Checking
+         This <guilabel>checkbox</guilabel> is off by default. Checking
          it produces a frame around the shot taken. This frame is always
 	 grey, but if anybody requests it, I'll add options for setting its
 	 colour.
@@ -483,7 +483,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Frame width</guilabel></term>
+      <term>Frame width</term>
       <listitem>
        <para>
          This determines the size of the frame in pixels. The range
@@ -493,7 +493,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Flip image vertically</guilabel></term>
+      <term>Flip image vertically</term>
       <listitem>
        <para>
          This gives a vertical mirror image of the shot. It can be combined
@@ -503,7 +503,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Flip image horizontally</guilabel></term>
+      <term>Flip image horizontally</term>
       <listitem>
        <para>
          This gives a horizontal mirror image of the shot. It can be combined 
@@ -513,7 +513,7 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Emboss image</guilabel></term>
+      <term>Emboss image</term>
       <listitem>
        <para>
          Embossing an image produces an image drained of most colour and
@@ -523,11 +523,11 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Send image and thumbnail to...</guilabel></term>
+      <term>Send image and thumbnail to...</term>
       <listitem>
        <para>
          By placing a script or program name in the box and checking this 
-         <guibutton>checkbox</guibutton>, you can invoke that script or 
+         <guilabel>checkbox</guilabel>, you can invoke that script or 
          program to be automatically run on the image and thumbnail.
          This could be used to print the image out automatically,
          to invoke a script to catalogue the files, or to add the
@@ -551,10 +551,10 @@
  
     <variablelist>
      <varlistentry>
-      <term><guilabel>Blur image</guilabel></term>
+      <term>Blur image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default and the
+         This <guilabel>checkbox</guilabel> is off by default and the
          blur factor is set to zero. By checking the checkbox and altering
          the blur factor you can blur the image. Even at the highest
          rating (100), a typical font on a typical terminal window is
@@ -564,10 +564,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Create charcoal effect</guilabel></term>
+      <term>Create charcoal effect</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton>is off by default and the 
+         This <guilabel>checkbox</guilabel>is off by default and the 
          charcoal factor is set to zero. Charcoaling produces a
          monochrome image with a slight smudginess which increases
          with the charcoal factor. It does not deal with highlighted
@@ -577,10 +577,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Find edges</guilabel></term>
+      <term>Find edges</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton>is off by default and the
+         This <guilabel>checkbox</guilabel>is off by default and the
          factor is set to zero. Using it produces a monochrome image
          where, rather than highlighting areas of different colours, it
          highlights the edges and borders between areas of different
@@ -591,10 +591,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Implode image</guilabel></term>
+      <term>Implode image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default and the
+         This <guilabel>checkbox</guilabel> is off by default and the
          factor is set to zero. Using it warps the resulting screenshot
          as if a weight had been pressed into the centre of the shot.
          The maximum factor for this is 100.
@@ -609,10 +609,10 @@
  
     <variablelist>
      <varlistentry>
-      <term><guilabel>Create painted effect</guilabel></term>
+      <term>Create painted effect</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default and the
+         This <guilabel>checkbox</guilabel> is off by default and the
          radius to paint around each pixel is set to zero. Checking it
          with a radius of about 5 produces an effect like an Impressionist
          painting. Checking it with a radius of about 50 will eat your
@@ -624,10 +624,10 @@
      </varlistentry>
    
      <varlistentry>
-      <term><guilabel>Solarise image</guilabel></term>
+      <term>Solarise image</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default and the
+         This <guilabel>checkbox</guilabel> is off by default and the
          factor is set to zero. Solarising is an effect first noticed 
          in developing photographs from negatives. It results in a 
          negative image with different colouring from that of the
@@ -639,10 +639,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Spread image pixels</guilabel></term>
+      <term>Spread image pixels</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default and the
+         This <guilabel>checkbox</guilabel> is off by default and the
          factor is set to zero. The result of spreading the image
          pixels by a radius of about 5 is similar to looking through
          lightly frosted glass; for heavily-frosted glass, try 25.
@@ -652,10 +652,10 @@
      </varlistentry>
  
      <varlistentry>
-      <term><guilabel>Swirl pixels</guilabel></term>
+      <term>Swirl pixels</term>
       <listitem>
        <para>
-         This <guibutton>checkbox</guibutton> is off by default and the
+         This <guilabel>checkbox</guilabel> is off by default and the
          factor is set to zero. Swirling the pixels results in a
          distorted image similar to an imploded image except that it 
          swirls around the central point rather than stretching to
@@ -668,44 +668,5 @@
      </varlistentry>
     </variablelist>
    </sect1>
-    <sect1 id="bugs">
-    <title>Known bugs and limitations</title>
-    <para>
-      Often screenshots saved in PNG format show incorrectly in
-      Netscape or GNOME Help Browser. This is due to bugs in Netscape
-      (and GNOME image libraries), not bugs in
-      <application>Screen-Shooter</application>. Try changing image
-      compression level in <link
-      linkend="preferences-0"><interface>Preferences</interface>
-      dialog</link>; sometimes it helps. 
-    </para>
-  </sect1>
-
-
-    <sect1 id="authors">
-      <title>Authors</title>
-     
-
-      <para>
-	The <application>Screen-Shooter</application> applet was
-	written by Tom Gilbert
-	<email>gilbertt@tomgilbert.freeserve.co.uk</email>.  Please
-	send all comments, suggestions, and bug reports to the <ulink
-	url="http://bugs.gnome.org" type="http">GNOME bug tracking
-	database</ulink>. If you are using
-	GNOME 1.1 or later, you can also use command
-	<command>bug-buddy</command> for submitting bug reports.
-      </para> 
-      <para>
-	This manual was written by Tom Gilbert
-	<email>gilbertt@tomgilbert.freeserve.co.uk</email> and Telsa
-	Gwynne <email>hobbit@aloss.ukuu.org.uk</email>.  Please send
-	all comments and suggestions regarding this manual to the
-	GNOME Documentation Project at <email>docs@gnome.org</email>
-	or enter your comments online using the <ulink type="http"
-	url="http://www.gnome.org/gdp/doctable">GNOME Documentation
-	Status Table</ulink>.
-      </para>
-    </sect1>
-</article>
-
+ </chapter>
+</book>

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.6\n"
-"POT-Creation-Date: 2000-03-29 04:16+0200\n"
+"POT-Creation-Date: 2000-04-03 18:49-0400\n"
 "PO-Revision-Date: 2000-03-28 03:44+0100\n"
 "Last-Translator: Gediminas Paulauskas <menesis@delfi.lt>\n"
 "Language-Team: Lithuanian\n"
@@ -103,7 +103,7 @@ msgstr "Laikrodþio nustatymai"
 #: diskusage/properties.c:466 drivemount/properties.c:352
 #: mini-commander/src/preferences.c:786 modemlights/properties.c:297
 #: odometer/properties.c:292 screenshooter/screenshooter_applet.c:433
-#: slashapp/properties.c:351 sound-monitor/properties.c:426
+#: slashapp/properties.c:351 sound-monitor/properties.c:436
 #: tickastat/properties.c:416
 msgid "General"
 msgstr "Bendrai"
@@ -157,12 +157,12 @@ msgstr "Rodyklinis laikrodis, panaðus á esantá CDE."
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:579 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:403
-#: gkb/gkb.c:691 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:203
+#: gkb/gkb.c:656 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:203
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
 #: screenshooter/screenshooter_applet.c:1014 slashapp/slashapp.c:55
-#: sound-monitor/main.c:348 tickastat/main.c:332 webcontrol/webcontrol.c:362
+#: sound-monitor/main.c:369 tickastat/main.c:332 webcontrol/webcontrol.c:362
 msgid "Properties..."
 msgstr "Savybës..."
 
@@ -171,10 +171,11 @@ msgstr "Savybës..."
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
 #: gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:193
 #: jbc/jbc-applet.c:196 life/life.c:284
-#: mini-commander/src/mini-commander_applet.c:404 multiload/cpuload.c:108
-#: multiload/memload.c:108 multiload/swapload.c:108 odometer/odo.c:661
-#: screenshooter/screenshooter_applet.c:1008 webcontrol/webcontrol.c:369
-#: whereami/whereami.c:236
+#: mini-commander/src/mini-commander_applet.c:404 mixer/mixer.c:757
+#: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
+#: odometer/odo.c:661 quicklaunch/quicklaunch.c:509
+#: screenshooter/screenshooter_applet.c:1008 sound-monitor/main.c:376
+#: webcontrol/webcontrol.c:369 whereami/whereami.c:236
 msgid "Help"
 msgstr "Pagalba"
 
@@ -182,14 +183,14 @@ msgstr "Pagalba"
 #: battery/battery.c:955 cdplayer/cdplayer.c:386 charpick/charpick.c:572
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
-#: fifteen/fifteen.c:366 geyes/geyes.c:392 gkb/gkb.c:684
+#: fifteen/fifteen.c:366 geyes/geyes.c:392 gkb/gkb.c:663
 #: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:188
 #: jbc/jbc-applet.c:201 life/life.c:288
-#: mini-commander/src/mini-commander_applet.c:411 mixer/mixer.c:744
+#: mini-commander/src/mini-commander_applet.c:411 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
 #: multiload/memload.c:115 multiload/swapload.c:115 odometer/odo.c:664
-#: quicklaunch/quicklaunch.c:502 screenshooter/screenshooter_applet.c:1003
-#: slashapp/slashapp.c:58 sound-monitor/main.c:355 tickastat/main.c:338
+#: quicklaunch/quicklaunch.c:513 screenshooter/screenshooter_applet.c:1003
+#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:338
 #: webcontrol/webcontrol.c:376 whereami/whereami.c:238
 msgid "About..."
 msgstr "Apie..."
@@ -420,6 +421,22 @@ msgstr "CD Grotuvo priedas yra paprastas CD grotuvas tavo skydeliui"
 msgid "Run CD Player..."
 msgstr "Paleisti CD Grotuvà..."
 
+#: clipboard/clipboard.c:181
+msgid "Clipboard Applet"
+msgstr "Krepðio priedas"
+
+#: clipboard/clipboard.c:183
+msgid "Copyright (C) 1999"
+msgstr "Copyright (C) 1999"
+
+#: clipboard/clipboard.c:185
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"GNOME skydelio priedas, skirtas kopijuoti ir atgauti pasirinkimus, ádëtus á "
+"krepðá, su þurnalu. Iðleistas GNU General Public Licence sàlygomis."
+
 #: charpick/charpick.c:440
 msgid "Character Picker"
 msgstr "Simboliø rinkiklis"
@@ -470,22 +487,6 @@ msgstr "Rodomø simboliø sàraðas:"
 #: charpick/properties.c:300
 msgid "Default List"
 msgstr "Simboliø sàraðas"
-
-#: clipboard/clipboard.c:181
-msgid "Clipboard Applet"
-msgstr "Krepðio priedas"
-
-#: clipboard/clipboard.c:183
-msgid "Copyright (C) 1999"
-msgstr "Copyright (C) 1999"
-
-#: clipboard/clipboard.c:185
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"GNOME skydelio priedas, skirtas kopijuoti ir atgauti pasirinkimus, ádëtus á "
-"krepðá, su þurnalu. Iðleistas GNU General Public Licence sàlygomis."
 
 #: clockmail/clockmail.c:62 slashapp/slashapp.c:137 sound-monitor/main.c:41
 #: tickastat/main.c:190
@@ -570,12 +571,12 @@ msgstr "Laiðkø skaièius, reiðkiantis, kad paðto dëþë pilna:"
 msgid "When clicked, run:"
 msgstr "Kai spragteltas, paleisti:"
 
-#: clockmail/properties.c:438 sound-monitor/properties.c:444
+#: clockmail/properties.c:438 sound-monitor/properties.c:454
 msgid "Theme file (directory):"
 msgstr "Temø byla (direktorija):"
 
 #: clockmail/properties.c:469 odometer/properties.c:333
-#: sound-monitor/properties.c:472
+#: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Tema"
 
@@ -799,47 +800,47 @@ msgstr "gEyes nustatymai"
 msgid "Themes"
 msgstr "Temos"
 
-#: gkb/gkb.c:92
+#: gkb/gkb.c:90
 msgid "Browse"
 msgstr "Narðyti"
 
-#: gkb/gkb.c:365
+#: gkb/gkb.c:347
 msgid "GKB Properties"
 msgstr "GKB Savybës"
 
-#: gkb/gkb.c:378
+#: gkb/gkb.c:359
 msgid "Flag One"
 msgstr "Pirma vëliava"
 
-#: gkb/gkb.c:410
+#: gkb/gkb.c:391
 msgid "Flag Two"
 msgstr "Antra vëliava"
 
-#: gkb/gkb.c:438
+#: gkb/gkb.c:419
 msgid "Program"
 msgstr "Programa"
 
-#: gkb/gkb.c:448
+#: gkb/gkb.c:429
 msgid "Xkb"
 msgstr "Xkb"
 
-#: gkb/gkb.c:452
+#: gkb/gkb.c:433
 msgid "Xmodmap"
 msgstr "Xmodmap"
 
-#: gkb/gkb.c:464
+#: gkb/gkb.c:444
 msgid "Menu"
 msgstr "Meniu"
 
-#: gkb/gkb.c:601
+#: gkb/gkb.c:565
 msgid "The GNOME KeyBoard Applet"
 msgstr "GNOME klaviatûros priedas"
 
-#: gkb/gkb.c:603
+#: gkb/gkb.c:567
 msgid "(C) 1998-99 LSC - Linux Supporting Center"
 msgstr "(C) 1998-99 LSC - Linux Supporting Center"
 
-#: gkb/gkb.c:605
+#: gkb/gkb.c:569
 msgid ""
 "This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
 "xmodmap. The main site of this app moved temporarily to URL "
@@ -852,10 +853,6 @@ msgstr ""
 "http://lsc.kva.hu/gkb. Atsiøskite man trûkstamas vëliavas (60x40 dydþio), ir "
 "að jas ádësiu á CVS. Iki pasimatymo, ir aèiû uþ visà reikalà.\n"
 "Dëkoju Balazs Nagy (Kevin)<julian7@kva.hu> uþ smulkià pagalbà."
-
-#: gkb/gkb.c:616
-msgid "gkb.xpm"
-msgstr "gkb.xpm"
 
 #: gnotes/gnote.c:225
 msgid "Raise Note"
@@ -908,18 +905,6 @@ msgstr "Paslëpti lapelius"
 #: gnotes/gnotes_applet.c:196
 msgid "Show Notes"
 msgstr "Parodyti lapelius"
-
-#: gweather/gweather-about.c:41
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Copyright © S. Papadimitriou, 1999"
-
-#: gweather/gweather-about.c:43
-msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
-msgstr ""
-"GNOME oro stebëjimo priedas.\n"
-"http://gweather.dhs.org/"
 
 #: gweather/gweather-applet.c:180
 msgid "Cannot create applet!\n"
@@ -1091,13 +1076,21 @@ msgstr "Tinklas"
 msgid "Location"
 msgstr "Vietovë"
 
+#: gweather/gweather-about.c:41
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "Copyright © S. Papadimitriou, 1999"
+
+#: gweather/gweather-about.c:43
+msgid ""
+"GNOME weather monitor applet.\n"
+"Web: http://gweather.dhs.org/"
+msgstr ""
+"GNOME oro stebëjimo priedas.\n"
+"http://gweather.dhs.org/"
+
 #: gweather/weather.c:137
 msgid "Variable"
 msgstr "Nepastovus"
-
-#: gweather/weather.c:138
-msgid "East - NorthEast"
-msgstr "Rytø - Ðiaurës Rytø"
 
 #: gweather/weather.c:138
 msgid "North"
@@ -1111,6 +1104,10 @@ msgstr "Ðiaurës - Ðiaurës Rytø"
 msgid "Northeast"
 msgstr "Ðiaurës Rytø"
 
+#: gweather/weather.c:138
+msgid "East - NorthEast"
+msgstr "Rytø - Ðiaurës Rytø"
+
 #: gweather/weather.c:139
 msgid "East"
 msgstr "Rytø"
@@ -1120,12 +1117,12 @@ msgid "East - Southeast"
 msgstr "Rytø - Pietryèiø"
 
 #: gweather/weather.c:139
-msgid "South - Southeast"
-msgstr "Pietø - Pietryèiø"
-
-#: gweather/weather.c:139
 msgid "Southeast"
 msgstr "Pietryèiø"
+
+#: gweather/weather.c:139
+msgid "South - Southeast"
+msgstr "Pietø - Pietryèiø"
 
 #: gweather/weather.c:140
 msgid "South"
@@ -1144,20 +1141,20 @@ msgid "West - Southwest"
 msgstr "Vakarø - Pietvakariø"
 
 #: gweather/weather.c:141
-msgid "North - Northwest"
-msgstr "Ðiaurës - Ðiaurës Vakarø"
-
-#: gweather/weather.c:141
-msgid "Northwest"
-msgstr "Ðiaurës Vakarø"
-
-#: gweather/weather.c:141
 msgid "West"
 msgstr "Vakarø"
 
 #: gweather/weather.c:141
 msgid "West - Northwest"
 msgstr "Vakarø - Ðiaurës Vakarø"
+
+#: gweather/weather.c:141
+msgid "Northwest"
+msgstr "Ðiaurës Vakarø"
+
+#: gweather/weather.c:141
+msgid "North - Northwest"
+msgstr "Ðiaurës - Ðiaurës Vakarø"
 
 #: gweather/weather.c:150
 msgid "Clear Sky"
@@ -1179,10 +1176,6 @@ msgstr "Maþai debesuotas"
 msgid "Overcast"
 msgstr "Debesuotas"
 
-#: gweather/weather.c:179
-msgid "Drifting drizzle"
-msgstr ""
-
 #. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
@@ -1196,14 +1189,6 @@ msgid "Drizzle in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:179
-msgid "Freezing drizzle"
-msgstr ""
-
-#: gweather/weather.c:179
-msgid "Heavy drizzle"
-msgstr ""
-
-#: gweather/weather.c:179
 msgid "Light drizzle"
 msgstr ""
 
@@ -1212,11 +1197,7 @@ msgid "Moderate drizzle"
 msgstr ""
 
 #: gweather/weather.c:179
-msgid "Partial drizzle"
-msgstr ""
-
-#: gweather/weather.c:179
-msgid "Patches of drizzle"
+msgid "Heavy drizzle"
 msgstr ""
 
 #: gweather/weather.c:179
@@ -1224,7 +1205,11 @@ msgid "Shallow drizzle"
 msgstr ""
 
 #: gweather/weather.c:179
-msgid "Showers"
+msgid "Patches of drizzle"
+msgstr ""
+
+#: gweather/weather.c:179
+msgid "Partial drizzle"
 msgstr ""
 
 #: gweather/weather.c:179 gweather/weather.c:180
@@ -1235,36 +1220,16 @@ msgstr ""
 msgid "Windy drizzle"
 msgstr ""
 
-#: gweather/weather.c:180
-msgid "Blowing rainfall"
+#: gweather/weather.c:179
+msgid "Showers"
 msgstr ""
 
-#: gweather/weather.c:180
-msgid "Drifting rain"
+#: gweather/weather.c:179
+msgid "Drifting drizzle"
 msgstr ""
 
-#: gweather/weather.c:180
-msgid "Freezing rain"
-msgstr ""
-
-#: gweather/weather.c:180
-msgid "Heavy rain"
-msgstr ""
-
-#: gweather/weather.c:180
-msgid "Light rain"
-msgstr ""
-
-#: gweather/weather.c:180
-msgid "Moderate rain"
-msgstr ""
-
-#: gweather/weather.c:180
-msgid "Partial rainfall"
-msgstr ""
-
-#: gweather/weather.c:180
-msgid "Patches of rain"
+#: gweather/weather.c:179
+msgid "Freezing drizzle"
 msgstr ""
 
 #. RAIN
@@ -1277,47 +1242,43 @@ msgid "Rain in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:180
-msgid "Rain showers"
+msgid "Light rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Moderate rain"
+msgstr ""
+
+#: gweather/weather.c:180
+msgid "Heavy rain"
 msgstr ""
 
 #: gweather/weather.c:180
 msgid "Shallow rain"
 msgstr ""
 
-#: gweather/weather.c:181
-msgid "Blowing snowfall"
+#: gweather/weather.c:180
+msgid "Patches of rain"
 msgstr ""
 
-#: gweather/weather.c:181
-msgid "Drifting snow"
+#: gweather/weather.c:180
+msgid "Partial rainfall"
 msgstr ""
 
-#: gweather/weather.c:181
-msgid "Freezing snow"
+#: gweather/weather.c:180
+msgid "Blowing rainfall"
 msgstr ""
 
-#: gweather/weather.c:181
-msgid "Heavy snow"
+#: gweather/weather.c:180
+msgid "Rain showers"
 msgstr ""
 
-#: gweather/weather.c:181
-msgid "Light snow"
+#: gweather/weather.c:180
+msgid "Drifting rain"
 msgstr ""
 
-#: gweather/weather.c:181
-msgid "Moderate snow"
-msgstr ""
-
-#: gweather/weather.c:181
-msgid "Partial snowfall"
-msgstr ""
-
-#: gweather/weather.c:181
-msgid "Patches of snow"
-msgstr ""
-
-#: gweather/weather.c:181
-msgid "Shallow snow"
+#: gweather/weather.c:180
+msgid "Freezing rain"
 msgstr ""
 
 #. SNOW
@@ -1330,51 +1291,47 @@ msgid "Snow in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:181
-msgid "Snow showers"
+msgid "Light snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Moderate snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Heavy snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Shallow snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Patches of snow"
+msgstr ""
+
+#: gweather/weather.c:181
+msgid "Partial snowfall"
 msgstr ""
 
 #: gweather/weather.c:181 gweather/weather.c:182
 msgid "Snowstorm"
 msgstr ""
 
-#: gweather/weather.c:182
-msgid "Blowing snow grains"
+#: gweather/weather.c:181
+msgid "Blowing snowfall"
 msgstr ""
 
-#: gweather/weather.c:182
-msgid "Drifting snow grains"
+#: gweather/weather.c:181
+msgid "Snow showers"
 msgstr ""
 
-#: gweather/weather.c:182
-msgid "Freezing snow grains"
+#: gweather/weather.c:181
+msgid "Drifting snow"
 msgstr ""
 
-#: gweather/weather.c:182
-msgid "Heavy snow grains"
-msgstr ""
-
-#: gweather/weather.c:182
-msgid "Light snow grains"
-msgstr ""
-
-#: gweather/weather.c:182
-msgid "Moderate snow grains"
-msgstr ""
-
-#: gweather/weather.c:182
-msgid "Partial snow grains"
-msgstr ""
-
-#: gweather/weather.c:182
-msgid "Patches of snow grains"
-msgstr ""
-
-#: gweather/weather.c:182
-msgid "Shallow snow grains"
-msgstr ""
-
-#: gweather/weather.c:182
-msgid "Snow grain showers"
+#: gweather/weather.c:181
+msgid "Freezing snow"
 msgstr ""
 
 #. SNOW_GRAINS
@@ -1386,28 +1343,44 @@ msgstr ""
 msgid "Snow grains in the vicinity"
 msgstr ""
 
-#: gweather/weather.c:183
-msgid "Blowing ice crystals"
+#: gweather/weather.c:182
+msgid "Light snow grains"
 msgstr ""
 
-#: gweather/weather.c:183
-msgid "Drifting ice crystals"
+#: gweather/weather.c:182
+msgid "Moderate snow grains"
 msgstr ""
 
-#: gweather/weather.c:183
-msgid "Few ice crystals"
+#: gweather/weather.c:182
+msgid "Heavy snow grains"
 msgstr ""
 
-#: gweather/weather.c:183
-msgid "Freezing ice crystals"
+#: gweather/weather.c:182
+msgid "Shallow snow grains"
 msgstr ""
 
-#: gweather/weather.c:183
-msgid "Heavy ice crystals"
+#: gweather/weather.c:182
+msgid "Patches of snow grains"
 msgstr ""
 
-#: gweather/weather.c:183
-msgid "Ice crystal storm"
+#: gweather/weather.c:182
+msgid "Partial snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Blowing snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Snow grain showers"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Drifting snow grains"
+msgstr ""
+
+#: gweather/weather.c:182
+msgid "Freezing snow grains"
 msgstr ""
 
 #. ICE_CRYSTALS
@@ -1420,11 +1393,15 @@ msgid "Ice crystals in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:183
+msgid "Few ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
 msgid "Moderate ice crystals"
 msgstr ""
 
 #: gweather/weather.c:183
-msgid "Partial ice crystals"
+msgid "Heavy ice crystals"
 msgstr ""
 
 #: gweather/weather.c:183
@@ -1432,31 +1409,27 @@ msgid "Patches of ice crystals"
 msgstr ""
 
 #: gweather/weather.c:183
+msgid "Partial ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Ice crystal storm"
+msgstr ""
+
+#: gweather/weather.c:183
+msgid "Blowing ice crystals"
+msgstr ""
+
+#: gweather/weather.c:183
 msgid "Showers of ice crystals"
 msgstr ""
 
-#: gweather/weather.c:184
-msgid "Blowing ice pellets"
+#: gweather/weather.c:183
+msgid "Drifting ice crystals"
 msgstr ""
 
-#: gweather/weather.c:184
-msgid "Drifting ice pellets"
-msgstr ""
-
-#: gweather/weather.c:184
-msgid "Few ice pellets"
-msgstr ""
-
-#: gweather/weather.c:184
-msgid "Freezing ice pellets"
-msgstr ""
-
-#: gweather/weather.c:184
-msgid "Heavy ice pellets"
-msgstr ""
-
-#: gweather/weather.c:184
-msgid "Ice pellet storm"
+#: gweather/weather.c:183
+msgid "Freezing ice crystals"
 msgstr ""
 
 #. ICE_PELLETS
@@ -1469,15 +1442,15 @@ msgid "Ice pellets in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:184
+msgid "Few ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
 msgid "Moderate ice pellets"
 msgstr ""
 
 #: gweather/weather.c:184
-msgid "Partial ice pellets"
-msgstr ""
-
-#: gweather/weather.c:184
-msgid "Patches of ice pellets"
+msgid "Heavy ice pellets"
 msgstr ""
 
 #: gweather/weather.c:184
@@ -1485,19 +1458,31 @@ msgid "Shallow ice pellets"
 msgstr ""
 
 #: gweather/weather.c:184
+msgid "Patches of ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Partial ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Ice pellet storm"
+msgstr ""
+
+#: gweather/weather.c:184
+msgid "Blowing ice pellets"
+msgstr ""
+
+#: gweather/weather.c:184
 msgid "Showers of ice pellets"
 msgstr ""
 
-#: gweather/weather.c:185
-msgid "Blowing hail"
+#: gweather/weather.c:184
+msgid "Drifting ice pellets"
 msgstr ""
 
-#: gweather/weather.c:185
-msgid "Drifting hail"
-msgstr ""
-
-#: gweather/weather.c:185
-msgid "Freezing hail"
+#: gweather/weather.c:184
+msgid "Freezing ice pellets"
 msgstr ""
 
 #. HAIL
@@ -1509,18 +1494,6 @@ msgstr ""
 msgid "Hail in the vicinity"
 msgstr ""
 
-#: gweather/weather.c:185
-msgid "Hail showers"
-msgstr ""
-
-#: gweather/weather.c:185
-msgid "Hailstorm"
-msgstr ""
-
-#: gweather/weather.c:185
-msgid "Heavy hail"
-msgstr ""
-
 #: gweather/weather.c:185 gweather/weather.c:186
 msgid "Light hail"
 msgstr ""
@@ -1530,7 +1503,11 @@ msgid "Moderate hail"
 msgstr ""
 
 #: gweather/weather.c:185
-msgid "Partial hail"
+msgid "Heavy hail"
+msgstr ""
+
+#: gweather/weather.c:185
+msgid "Shallow hail"
 msgstr ""
 
 #: gweather/weather.c:185
@@ -1538,43 +1515,27 @@ msgid "Patches of hail"
 msgstr ""
 
 #: gweather/weather.c:185
-msgid "Shallow hail"
+msgid "Partial hail"
 msgstr ""
 
-#: gweather/weather.c:186
-msgid "Blowing small hail"
+#: gweather/weather.c:185
+msgid "Hailstorm"
 msgstr ""
 
-#: gweather/weather.c:186
-msgid "Drifting small hail"
+#: gweather/weather.c:185
+msgid "Blowing hail"
 msgstr ""
 
-#: gweather/weather.c:186
-msgid "Freezing small hail"
+#: gweather/weather.c:185
+msgid "Hail showers"
 msgstr ""
 
-#: gweather/weather.c:186
-msgid "Heavy small hail"
+#: gweather/weather.c:185
+msgid "Drifting hail"
 msgstr ""
 
-#: gweather/weather.c:186
-msgid "Moderate small hail"
-msgstr ""
-
-#: gweather/weather.c:186
-msgid "Partial small hail"
-msgstr ""
-
-#: gweather/weather.c:186
-msgid "Patches of small hail"
-msgstr ""
-
-#: gweather/weather.c:186
-msgid "Shallow small hail"
-msgstr ""
-
-#: gweather/weather.c:186
-msgid "Showers of small hail"
+#: gweather/weather.c:185
+msgid "Freezing hail"
 msgstr ""
 
 #. SMALL_HAIL
@@ -1587,23 +1548,52 @@ msgid "Small hail in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:186
+msgid "Moderate small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Heavy small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Shallow small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Patches of small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Partial small hail"
+msgstr ""
+
+#: gweather/weather.c:186
 msgid "Small hailstorm"
 msgstr ""
 
+#: gweather/weather.c:186
+msgid "Blowing small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Showers of small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Drifting small hail"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Freezing small hail"
+msgstr ""
+
+#. PRECIPITATION
 #: gweather/weather.c:187
-msgid "Blowing precipitation"
+msgid "Unknown precipitation"
 msgstr ""
 
 #: gweather/weather.c:187
-msgid "Drifting precipitation"
-msgstr ""
-
-#: gweather/weather.c:187
-msgid "Freezing precipitation"
-msgstr ""
-
-#: gweather/weather.c:187
-msgid "Heavy precipitation"
+msgid "Precipitation in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:187
@@ -1615,15 +1605,7 @@ msgid "Moderate precipitation"
 msgstr ""
 
 #: gweather/weather.c:187
-msgid "Partial precipitation"
-msgstr ""
-
-#: gweather/weather.c:187
-msgid "Patches of precipitation"
-msgstr ""
-
-#: gweather/weather.c:187
-msgid "Precipitation in the vicinity"
+msgid "Heavy precipitation"
 msgstr ""
 
 #: gweather/weather.c:187
@@ -1631,28 +1613,31 @@ msgid "Shallow precipitation"
 msgstr ""
 
 #: gweather/weather.c:187
-msgid "Showers, type unknown"
+msgid "Patches of precipitation"
 msgstr ""
 
-#. PRECIPITATION
 #: gweather/weather.c:187
-msgid "Unknown precipitation"
+msgid "Partial precipitation"
 msgstr ""
 
 #: gweather/weather.c:187
 msgid "Unknown thunderstorm"
 msgstr ""
 
-#: gweather/weather.c:188
-msgid "Drifting mist"
+#: gweather/weather.c:187
+msgid "Blowing precipitation"
 msgstr ""
 
-#: gweather/weather.c:188
-msgid "Freezing mist"
+#: gweather/weather.c:187
+msgid "Showers, type unknown"
 msgstr ""
 
-#: gweather/weather.c:188
-msgid "Light mist"
+#: gweather/weather.c:187
+msgid "Drifting precipitation"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Freezing precipitation"
 msgstr ""
 
 #. MIST
@@ -1665,7 +1650,7 @@ msgid "Mist in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:188
-msgid "Mist with wind"
+msgid "Light mist"
 msgstr ""
 
 #: gweather/weather.c:188
@@ -1673,11 +1658,7 @@ msgid "Moderate mist"
 msgstr ""
 
 #: gweather/weather.c:188
-msgid "Partial mist"
-msgstr ""
-
-#: gweather/weather.c:188
-msgid "Patches of mist"
+msgid "Thick mist"
 msgstr ""
 
 #: gweather/weather.c:188
@@ -1685,11 +1666,23 @@ msgid "Shallow mist"
 msgstr ""
 
 #: gweather/weather.c:188
-msgid "Thick mist"
+msgid "Patches of mist"
 msgstr ""
 
-#: gweather/weather.c:189
-msgid "Drifting fog"
+#: gweather/weather.c:188
+msgid "Partial mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Mist with wind"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Drifting mist"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Freezing mist"
 msgstr ""
 
 #. FOG
@@ -1702,14 +1695,6 @@ msgid "Fog in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:189
-msgid "Fog with wind"
-msgstr ""
-
-#: gweather/weather.c:189
-msgid "Freezing fog"
-msgstr ""
-
-#: gweather/weather.c:189
 msgid "Light fog"
 msgstr ""
 
@@ -1718,11 +1703,7 @@ msgid "Moderate fog"
 msgstr ""
 
 #: gweather/weather.c:189
-msgid "Partial fog"
-msgstr ""
-
-#: gweather/weather.c:189
-msgid "Patches of fog"
+msgid "Thick fog"
 msgstr ""
 
 #: gweather/weather.c:189
@@ -1730,27 +1711,23 @@ msgid "Shallow fog"
 msgstr ""
 
 #: gweather/weather.c:189
-msgid "Thick fog"
+msgid "Patches of fog"
 msgstr ""
 
-#: gweather/weather.c:190
-msgid "Drifting smoke"
+#: gweather/weather.c:189
+msgid "Partial fog"
 msgstr ""
 
-#: gweather/weather.c:190
-msgid "Moderate smoke"
+#: gweather/weather.c:189
+msgid "Fog with wind"
 msgstr ""
 
-#: gweather/weather.c:190
-msgid "Partial smoke"
+#: gweather/weather.c:189
+msgid "Drifting fog"
 msgstr ""
 
-#: gweather/weather.c:190
-msgid "Patches of smoke"
-msgstr ""
-
-#: gweather/weather.c:190
-msgid "Shallow smoke"
+#: gweather/weather.c:189
+msgid "Freezing fog"
 msgstr ""
 
 #. SMOKE
@@ -1763,6 +1740,30 @@ msgid "Smoke in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:190
+msgid "Thin smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Moderate smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Thick smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Shallow smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Patches of smoke"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Partial smoke"
+msgstr ""
+
+#: gweather/weather.c:190
 msgid "Smoke w/ thunders"
 msgstr ""
 
@@ -1771,47 +1772,7 @@ msgid "Smoke with wind"
 msgstr ""
 
 #: gweather/weather.c:190
-msgid "Thick smoke"
-msgstr ""
-
-#: gweather/weather.c:190
-msgid "Thin smoke"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Blowing volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Drifting volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Freezing volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Moderate volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Partial volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Patches of volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Shallow volcanic ash"
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Showers of volcanic ash "
-msgstr ""
-
-#: gweather/weather.c:191
-msgid "Thick volcanic ash"
+msgid "Drifting smoke"
 msgstr ""
 
 #. VOLCANIC_ASH
@@ -1824,35 +1785,43 @@ msgid "Volcanic ash in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:191
+msgid "Moderate volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Thick volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Shallow volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Patches of volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Partial volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:191
 msgid "Volcanic ash w/ thunders"
 msgstr ""
 
-#: gweather/weather.c:192
-msgid "Blowing sand"
+#: gweather/weather.c:191
+msgid "Blowing volcanic ash"
 msgstr ""
 
-#: gweather/weather.c:192
-msgid "Drifting sand"
+#: gweather/weather.c:191
+msgid "Showers of volcanic ash "
 msgstr ""
 
-#: gweather/weather.c:192
-msgid "Heavy sand"
+#: gweather/weather.c:191
+msgid "Drifting volcanic ash"
 msgstr ""
 
-#: gweather/weather.c:192
-msgid "Light sand"
-msgstr ""
-
-#: gweather/weather.c:192
-msgid "Moderate sand"
-msgstr ""
-
-#: gweather/weather.c:192
-msgid "Partial sand"
-msgstr ""
-
-#: gweather/weather.c:192
-msgid "Patches of sand"
+#: gweather/weather.c:191
+msgid "Freezing volcanic ash"
 msgstr ""
 
 #. SAND
@@ -1864,12 +1833,32 @@ msgstr ""
 msgid "Sand in the vicinity"
 msgstr ""
 
-#: gweather/weather.c:193
-msgid "Drifting haze"
+#: gweather/weather.c:192
+msgid "Light sand"
 msgstr ""
 
-#: gweather/weather.c:193
-msgid "Freezing haze"
+#: gweather/weather.c:192
+msgid "Moderate sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Heavy sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Patches of sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Partial sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Blowing sand"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Drifting sand"
 msgstr ""
 
 #. HAZE
@@ -1882,10 +1871,6 @@ msgid "Haze in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:193
-msgid "Haze with wind"
-msgstr ""
-
-#: gweather/weather.c:193
 msgid "Light haze"
 msgstr ""
 
@@ -1894,11 +1879,7 @@ msgid "Moderate haze"
 msgstr ""
 
 #: gweather/weather.c:193
-msgid "Partial haze"
-msgstr ""
-
-#: gweather/weather.c:193
-msgid "Patches of haze"
+msgid "Thick haze"
 msgstr ""
 
 #: gweather/weather.c:193
@@ -1906,7 +1887,56 @@ msgid "Shallow haze"
 msgstr ""
 
 #: gweather/weather.c:193
-msgid "Thick haze"
+msgid "Patches of haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Partial haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Haze with wind"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Drifting haze"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Freezing haze"
+msgstr ""
+
+#. SPRAY
+#: gweather/weather.c:194
+msgid "Sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Sprays in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Light sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Moderate sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Heavy sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Shallow sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Patches of sprays"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Partial sprays"
 msgstr ""
 
 #: gweather/weather.c:194
@@ -1921,47 +1951,6 @@ msgstr ""
 msgid "Freezing sprays"
 msgstr ""
 
-#: gweather/weather.c:194
-msgid "Heavy sprays"
-msgstr ""
-
-#: gweather/weather.c:194
-msgid "Light sprays"
-msgstr ""
-
-#: gweather/weather.c:194
-msgid "Moderate sprays"
-msgstr ""
-
-#: gweather/weather.c:194
-msgid "Partial sprays"
-msgstr ""
-
-#: gweather/weather.c:194
-msgid "Patches of sprays"
-msgstr ""
-
-#: gweather/weather.c:194
-msgid "Shallow sprays"
-msgstr ""
-
-#. SPRAY
-#: gweather/weather.c:194
-msgid "Sprays"
-msgstr ""
-
-#: gweather/weather.c:194
-msgid "Sprays in the vicinity"
-msgstr ""
-
-#: gweather/weather.c:195
-msgid "Blowing dust"
-msgstr ""
-
-#: gweather/weather.c:195
-msgid "Drifting dust"
-msgstr ""
-
 #. DUST
 #: gweather/weather.c:195
 msgid "Dust"
@@ -1969,10 +1958,6 @@ msgstr ""
 
 #: gweather/weather.c:195
 msgid "Dust in the vicinity"
-msgstr ""
-
-#: gweather/weather.c:195
-msgid "Heavy dust"
 msgstr ""
 
 #: gweather/weather.c:195
@@ -1984,11 +1969,52 @@ msgid "Moderate dust"
 msgstr ""
 
 #: gweather/weather.c:195
-msgid "Partial dust"
+msgid "Heavy dust"
 msgstr ""
 
 #: gweather/weather.c:195
 msgid "Patches of dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Partial dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Blowing dust"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Drifting dust"
+msgstr ""
+
+#. SQUALL
+#: gweather/weather.c:196
+msgid "Squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Squall in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Light squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Moderate squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Heavy squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Partial squall"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Thunderous squall"
 msgstr ""
 
 #: gweather/weather.c:196
@@ -2003,33 +2029,37 @@ msgstr ""
 msgid "Freezing squall"
 msgstr ""
 
-#: gweather/weather.c:196
-msgid "Heavy squall"
+#. SANDSTORM
+#: gweather/weather.c:197
+msgid "Sandstorm"
 msgstr ""
 
-#: gweather/weather.c:196
-msgid "Light squall"
+#: gweather/weather.c:197
+msgid "Sandstorm in the vicinity"
 msgstr ""
 
-#: gweather/weather.c:196
-msgid "Moderate squall"
+#: gweather/weather.c:197
+msgid "Light standstorm"
 msgstr ""
 
-#: gweather/weather.c:196
-msgid "Partial squall"
+#: gweather/weather.c:197
+msgid "Moderate sandstorm"
 msgstr ""
 
-#. SQUALL
-#: gweather/weather.c:196
-msgid "Squall"
+#: gweather/weather.c:197
+msgid "Heavy sandstorm"
 msgstr ""
 
-#: gweather/weather.c:196
-msgid "Squall in the vicinity"
+#: gweather/weather.c:197
+msgid "Shallow sandstorm"
 msgstr ""
 
-#: gweather/weather.c:196
-msgid "Thunderous squall"
+#: gweather/weather.c:197
+msgid "Partial sandstorm"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Thunderous sandstorm"
 msgstr ""
 
 #: gweather/weather.c:197
@@ -2044,47 +2074,6 @@ msgstr ""
 msgid "Freezing sandstorm"
 msgstr ""
 
-#: gweather/weather.c:197
-msgid "Heavy sandstorm"
-msgstr ""
-
-#: gweather/weather.c:197
-msgid "Light standstorm"
-msgstr ""
-
-#: gweather/weather.c:197
-msgid "Moderate sandstorm"
-msgstr ""
-
-#: gweather/weather.c:197
-msgid "Partial sandstorm"
-msgstr ""
-
-#. SANDSTORM
-#: gweather/weather.c:197
-msgid "Sandstorm"
-msgstr ""
-
-#: gweather/weather.c:197
-msgid "Sandstorm in the vicinity"
-msgstr ""
-
-#: gweather/weather.c:197
-msgid "Shallow sandstorm"
-msgstr ""
-
-#: gweather/weather.c:197
-msgid "Thunderous sandstorm"
-msgstr ""
-
-#: gweather/weather.c:198
-msgid "Blowing duststorm"
-msgstr ""
-
-#: gweather/weather.c:198
-msgid "Drifting duststorm"
-msgstr ""
-
 #. DUSTSTORM
 #: gweather/weather.c:198
 msgid "Duststorm"
@@ -2092,14 +2081,6 @@ msgstr ""
 
 #: gweather/weather.c:198
 msgid "Duststorm in the vicinity"
-msgstr ""
-
-#: gweather/weather.c:198
-msgid "Freezing duststorm"
-msgstr ""
-
-#: gweather/weather.c:198
-msgid "Heavy duststorm"
 msgstr ""
 
 #: gweather/weather.c:198
@@ -2111,7 +2092,7 @@ msgid "Moderate duststorm"
 msgstr ""
 
 #: gweather/weather.c:198
-msgid "Partial duststorm"
+msgid "Heavy duststorm"
 msgstr ""
 
 #: gweather/weather.c:198
@@ -2119,11 +2100,23 @@ msgid "Shallow duststorm"
 msgstr ""
 
 #: gweather/weather.c:198
+msgid "Partial duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
 msgid "Thunderous duststorm"
 msgstr ""
 
-#: gweather/weather.c:199
-msgid "Drifting funnel cloud"
+#: gweather/weather.c:198
+msgid "Blowing duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Drifting duststorm"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Freezing duststorm"
 msgstr ""
 
 #. FUNNEL_CLOUD
@@ -2136,10 +2129,6 @@ msgid "Funnel cloud in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:199
-msgid "Funnel cloud w/ wind"
-msgstr ""
-
-#: gweather/weather.c:199
 msgid "Light funnel cloud"
 msgstr ""
 
@@ -2148,11 +2137,7 @@ msgid "Moderate funnel cloud"
 msgstr ""
 
 #: gweather/weather.c:199
-msgid "Partial funnel clouds"
-msgstr ""
-
-#: gweather/weather.c:199
-msgid "Patches of funnel clouds"
+msgid "Thick funnel cloud"
 msgstr ""
 
 #: gweather/weather.c:199
@@ -2160,31 +2145,19 @@ msgid "Shallow funnel cloud"
 msgstr ""
 
 #: gweather/weather.c:199
-msgid "Thick funnel cloud"
+msgid "Patches of funnel clouds"
 msgstr ""
 
-#: gweather/weather.c:200
-msgid "Drifting tornado"
+#: gweather/weather.c:199
+msgid "Partial funnel clouds"
 msgstr ""
 
-#: gweather/weather.c:200
-msgid "Freezing tornado"
+#: gweather/weather.c:199
+msgid "Funnel cloud w/ wind"
 msgstr ""
 
-#: gweather/weather.c:200
-msgid "Moderate tornado"
-msgstr ""
-
-#: gweather/weather.c:200
-msgid "Partial tornado"
-msgstr ""
-
-#: gweather/weather.c:200
-msgid "Raging tornado"
-msgstr ""
-
-#: gweather/weather.c:200
-msgid "Thunderous tornado"
+#: gweather/weather.c:199
+msgid "Drifting funnel cloud"
 msgstr ""
 
 #. TORNADO
@@ -2196,12 +2169,28 @@ msgstr ""
 msgid "Tornado in the vicinity"
 msgstr ""
 
-#: gweather/weather.c:201
-msgid "Blowing dust whirls"
+#: gweather/weather.c:200
+msgid "Moderate tornado"
 msgstr ""
 
-#: gweather/weather.c:201
-msgid "Drifting dust whirls"
+#: gweather/weather.c:200
+msgid "Raging tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Partial tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Thunderous tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Drifting tornado"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Freezing tornado"
 msgstr ""
 
 #. DUST_WHIRLS
@@ -2214,10 +2203,6 @@ msgid "Dust whirls in the vicinity"
 msgstr ""
 
 #: gweather/weather.c:201
-msgid "Heavy dust whirls"
-msgstr ""
-
-#: gweather/weather.c:201
 msgid "Light dust whirls"
 msgstr ""
 
@@ -2226,7 +2211,11 @@ msgid "Moderate dust whirls"
 msgstr ""
 
 #: gweather/weather.c:201
-msgid "Partial dust whirls"
+msgid "Heavy dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Shallow dust whirls"
 msgstr ""
 
 #: gweather/weather.c:201
@@ -2234,7 +2223,15 @@ msgid "Patches of dust whirls"
 msgstr ""
 
 #: gweather/weather.c:201
-msgid "Shallow dust whirls"
+msgid "Partial dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Blowing dust whirls"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Drifting dust whirls"
 msgstr ""
 
 #: gweather/weather.c:772
@@ -2551,7 +2548,8 @@ msgstr ""
 "garso árenginyje"
 
 #: mixer/mixer.c:750
-msgid "Run gmix..."
+#, fuzzy
+msgid "Run Audio Mixer..."
 msgstr "Paleisti gmix..."
 
 #: modemlights/modemlights.c:115
@@ -2644,7 +2642,7 @@ msgstr "Árenginys:"
 msgid "Use ISDN"
 msgstr "Naudoti ISDN"
 
-#: modemlights/properties.c:371 sound-monitor/properties.c:511
+#: modemlights/properties.c:371 sound-monitor/properties.c:521
 msgid "Advanced"
 msgstr "Papildomai"
 
@@ -2679,44 +2677,36 @@ msgid "Load Graph"
 msgstr "Apkrovimo grafikas"
 
 #: multiload/load-graph.c:573 multiload/load-graph.c:765
-msgid "Maximum:"
-msgstr "Maksimumas:"
+msgid "Speed:"
+msgstr "Greitis:"
 
 #: multiload/load-graph.c:573 multiload/load-graph.c:765
 msgid "Size:"
 msgstr "Dydis:"
 
 #: multiload/load-graph.c:573 multiload/load-graph.c:765
-msgid "Speed:"
-msgstr "Greitis:"
+msgid "Maximum:"
+msgstr "Maksimumas:"
 
 #: multiload/load-graph.c:804
 msgid "Use default properties"
 msgstr "Naudoti standartines savybes"
 
 #: multiload/main.c:27
-msgid "Idle"
-msgstr ""
-
-#: multiload/main.c:27
-msgid "Nice"
-msgstr ""
+msgid "User"
+msgstr "Vartotojas"
 
 #: multiload/main.c:27
 msgid "System"
 msgstr "Sistema"
 
 #: multiload/main.c:27
-msgid "User"
-msgstr "Vartotojas"
-
-#: multiload/main.c:31
-msgid "Buffers"
+msgid "Nice"
 msgstr ""
 
-#: multiload/main.c:31 multiload/main.c:35 multiload/main.c:43
-msgid "Free"
-msgstr "Laisva"
+#: multiload/main.c:27
+msgid "Idle"
+msgstr ""
 
 #: multiload/main.c:31 multiload/main.c:39
 msgid "Other"
@@ -2726,21 +2716,29 @@ msgstr "Kiti"
 msgid "Shared"
 msgstr ""
 
+#: multiload/main.c:31
+msgid "Buffers"
+msgstr ""
+
+#: multiload/main.c:31 multiload/main.c:35 multiload/main.c:43
+msgid "Free"
+msgstr "Laisva"
+
 #: multiload/main.c:35 multiload/main.c:43
 msgid "Used"
 msgstr "Uþimta"
 
 #: multiload/main.c:39
-msgid "ETH"
-msgstr "ETH"
+msgid "SLIP"
+msgstr "SLIP"
 
 #: multiload/main.c:39
 msgid "PPP"
 msgstr "PPP"
 
 #: multiload/main.c:39
-msgid "SLIP"
-msgstr "SLIP"
+msgid "ETH"
+msgstr "ETH"
 
 #: multiload/main.c:216 multiload/memload.c:74
 msgid "Memory Load"
@@ -2878,7 +2876,7 @@ msgstr "Nëra tokios bylos ¥%s´"
 msgid "Don't know how to make a launcher out of: '%s'"
 msgstr "Neþinau kaip padaryti leistukà ið ¥%s´"
 
-#: quicklaunch/quicklaunch.c:469
+#: quicklaunch/quicklaunch.c:476
 msgid ""
 "Cannot create directory:\n"
 "~/.gnome/quicklaunch.\n"
@@ -3367,11 +3365,11 @@ msgstr "Uþmigdyti Esound (stanby)"
 msgid "Resume Esound"
 msgstr "Tæsti Esound"
 
-#: sound-monitor/main.c:102 sound-monitor/main.c:369
+#: sound-monitor/main.c:102 sound-monitor/main.c:363
 msgid "Start Esound"
 msgstr "Paleisti Esound"
 
-#: sound-monitor/main.c:362
+#: sound-monitor/main.c:356
 msgid "Manager..."
 msgstr "Vadybininkas..."
 
@@ -3401,43 +3399,43 @@ msgstr ""
 "\n"
 "Að tave áspëjau!"
 
-#: sound-monitor/properties.c:339
+#: sound-monitor/properties.c:349
 msgid "Peak indicator"
 msgstr "Piko rodiklis"
 
-#: sound-monitor/properties.c:348
+#: sound-monitor/properties.c:358
 msgid "off"
 msgstr "iðjungtas"
 
-#: sound-monitor/properties.c:355
+#: sound-monitor/properties.c:365
 msgid "active"
 msgstr "veiklus"
 
-#: sound-monitor/properties.c:362
+#: sound-monitor/properties.c:372
 msgid "smooth"
 msgstr "glodus"
 
-#: sound-monitor/properties.c:369
+#: sound-monitor/properties.c:379
 msgid "Peak indicator falloff speed"
 msgstr "Piko rodiklio atkritimo greitis"
 
-#: sound-monitor/properties.c:386
+#: sound-monitor/properties.c:396
 msgid "Scope (scale 1:X, where X = ? )"
 msgstr "Akiratis (mastelis 1:X, kur X = ?)"
 
-#: sound-monitor/properties.c:403
+#: sound-monitor/properties.c:413
 msgid "Connect points in scope"
 msgstr "Sujungti taðkus akiratyje"
 
-#: sound-monitor/properties.c:409
+#: sound-monitor/properties.c:419
 msgid "Screen refresh (frames per second)"
 msgstr "Vaizdo atnaujinimas (kadrais per sekundæ)"
 
-#: sound-monitor/properties.c:490
+#: sound-monitor/properties.c:500
 msgid "ESD host to monitor:"
 msgstr "ESD host'as, kurá stebëti:"
 
-#: sound-monitor/properties.c:504
+#: sound-monitor/properties.c:514
 msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
 msgstr "Stebëti garso áëjimà (naudok tik jei garso korta yra FULL DUPLEX)"
 
@@ -3576,11 +3574,11 @@ msgid "Enabled"
 msgstr ""
 
 #: tickastat/mod_news.c:1203
-msgid "Line delay"
+msgid "Name"
 msgstr ""
 
 #: tickastat/mod_news.c:1203
-msgid "Name"
+msgid "Line delay"
 msgstr ""
 
 #: tickastat/mod_news.c:1203
@@ -3588,11 +3586,11 @@ msgid "Update interval"
 msgstr ""
 
 #: tickastat/mod_news.c:1204
-msgid "B"
+msgid "D"
 msgstr ""
 
 #: tickastat/mod_news.c:1204
-msgid "D"
+msgid "T"
 msgstr ""
 
 #: tickastat/mod_news.c:1204
@@ -3600,7 +3598,7 @@ msgid "I"
 msgstr ""
 
 #: tickastat/mod_news.c:1204
-msgid "T"
+msgid "B"
 msgstr ""
 
 #: tickastat/mod_news.c:1208
@@ -3784,3 +3782,6 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "kuraðesu_priedas"
+
+#~ msgid "gkb.xpm"
+#~ msgstr "gkb.xpm"

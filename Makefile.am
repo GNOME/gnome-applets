@@ -108,5 +108,8 @@ DIST_SUBDIRS = \
 @MAINT@macros/macros.dep: macros/Makefile.am
 @MAINT@	cd macros && $(MAKE) macros.dep
 
-EXTRA_DIST = gnome-applets.spec
+EXTRA_DIST = \
+	gnome-applets.spec.in	\
+	gnome-applets.spec	\
+	applet-docs.make
 

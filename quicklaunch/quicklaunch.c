@@ -452,6 +452,13 @@ ignore_1st_click(GtkWidget *widget, GdkEvent *event)
 }
 
 static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "quicklaunch_applet", "index.html"};
+	gnome_help_display(NULL, &help_entry);
+}
+
+static void
 init_quicklaunch (void)
 {
 
@@ -496,6 +503,10 @@ init_quicklaunch (void)
 	gtk_container_add (GTK_CONTAINER (handlebox), launcher_table);
 	gtk_container_add (GTK_CONTAINER (frame), handlebox);
 	applet_widget_add (APPLET_WIDGET (wnd), frame);
+	applet_widget_register_stock_callback (APPLET_WIDGET (wnd),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"), help_cb, NULL);
 	applet_widget_register_stock_callback (APPLET_WIDGET (wnd),
 					       "about",
 					       GNOME_STOCK_MENU_ABOUT,

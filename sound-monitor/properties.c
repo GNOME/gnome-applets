@@ -290,6 +290,14 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	widget = NULL;
 	nodata = NULL;
 }
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "sound-monitor_applet",
+					  "index.html#SOUNDMONITORAPPLET-PREFS" };
+	gnome_help_display(NULL, &help_entry);
+}
+
 
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 {
@@ -298,6 +306,8 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 	return FALSE;
 	widget = NULL;
 }
+
+
 
 void property_show(AppletWidget *applet, gpointer data)
 {
@@ -514,7 +524,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"apply", GTK_SIGNAL_FUNC(property_apply_cb), ad);
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), ad );
-
+	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"help", GTK_SIGNAL_FUNC(phelp_cb), NULL );
 	gtk_widget_show_all(ad->propwindow);
 	return;
 	applet = NULL;

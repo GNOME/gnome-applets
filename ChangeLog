@@ -1,3 +1,28 @@
+2000-03-28  Jason Leach  <leach@wam.umd.edu>
+
+	* gkb/gkb.c (gkb_expose): oops, made a boo-boo, we need to have
+	the expose callback because if the user adds an applet then moves
+	their panel we need to redraw.
+
+2000-03-27  Jason Leach  <leach@wam.umd.edu>
+
+	(cleaning up and closing bug #6686)
+	
+	* gkb/gkb.c (struct _GKB): removed unnecessary variable 'curpix'
+	(create_gkb_widget): no need to connect all the other signals
+	besides the "button_press_event".
+	(gkb_expose): removed the now unused function (and its prototype).
+	(gkb_empty): ditto.
+	(load_properties): we don't really need a static gkb_properties
+	struct of 'defaults', its gone.  spaced things out a little nicer
+	here too.
+	(gkb_activator): organize the right click popup as Properties then
+	About
+
+2000-03-30  Jacob Berkman  <jacob@helixcode.com>
+
+	* cpumemusage/docs/C/cpumemusage.sgml: remove DOCTYPE
+
 2000-03-27  Christopher R. Gabriel  <cgabriel@firenze.linux.it>
 
 	* configure.in: added clockmail manual (italian

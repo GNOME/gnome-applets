@@ -1,0 +1,327 @@
+ <sect1 id="soundmonitorapplet">
+  <title>Sound Monitor Applet</title> 
+
+  <para> 
+   <application>Sound Monitor Applet</application>, shown in its
+   default theme(appearance) in <xref
+   linkend="soundmonitorapplet-fig">, is a sound volume display and an
+   interface for controlling ESD (the Enlightened Sound Daemon). If
+   you are not familiar with ESD, it is a program which controls sound
+   on your system and allows all of your applications to play sound at
+   the same time.  To add this applet to a <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Multimedia</guisubmenu>
+    <guimenuitem>Sound Monitor</guimenuitem>
+   </menuchoice>.
+  </para>
+  
+  <figure id="soundmonitorapplet-fig">
+   <title>Sound Monitor Applet</title>
+   <screenshot>
+    <screeninfo>Sound Monitor Applet</screeninfo>
+    <graphic format="png" fileref="soundmonitor_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
+
+  <sect2 id="soundmonitorapplet-usage">
+   <title>Usage</title>
+   <para>
+    <application>Sound Monitor</application> always displays the
+    volume of sound being produced on your system graphically.
+    You may control sound by turning ESD on or off by right-clicking
+    on the applet and selecting <guimenuitem>Place Esound in
+    standby</guimenuitem> or <guimenuitem>Resume Esound</guimenuitem>
+    respectively, as described below.  
+   </para>
+   <para> 
+    If you right-click on the applet, it brings up a
+    menu, containing the following commands: 
+      <itemizedlist> 
+
+	<listitem>
+	  <para>
+	    <guimenuitem>About&hellip;</guimenuitem> &mdash; shows info about
+            the <application>Sound Monitor</application>, inluding the
+            version and the author's name and email address. 
+	    </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Help&hellip;</guimenuitem> &mdash; brings up this
+            document. 
+	    </para>
+	</listitem>
+
+	<listitem>
+	 <para>
+          <guimenuitem>Properties&hellip;</guimenuitem>&mdash; brings up
+          the <link linkend="soundmonitorapplet-prefs">
+          <interface>Properties</interface></link> dialog.
+	 </para>
+	</listitem>
+
+	<listitem>
+	 <para>
+	  <guimenuitem>Manager&hellip;</guimenuitem> &mdash; brings
+	  up the <link linkend="soundmonitorapplet-manager">
+          <interface>Sound Monitor Manager</interface></link> dialog,
+          which allows you to view and control current ESD settings.
+	 </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Place Esound in
+            standby</guimenuitem>/<guimenuitem>Resume
+            Esound</guimenuitem> &mdash; These menu items allow you to
+            temporarily place ESD in standby and then resume ESD.
+            This is useful if you have a sound application which is
+            unable to work with ESD, but needs direct access to the
+            sound device.  
+	    </para>
+	</listitem>
+
+      </itemizedlist>
+    </para>
+
+   <note>
+    <title>Note About Sound in GNOME</title>
+    <para>
+     For sound to work in GNOME, you must have sound enabled in the
+     <application>Control Center</application>.  To configure sound,
+     click on the <guibutton>Main Menu</guibutton> button (the foot
+     icon) and select
+     <menuchoice>
+      <guimenu>Programs</guimenu>
+      <guisubmenu>Setting</guisubmenu>
+      <guisubmenu>Multimedia</guisubmenu>
+      <guimenuitem>Sound</guimenuitem>
+     </menuchoice>. Make sure both sound options are enabled in the
+     <guilabel>General</guilabel> tab.  Feel free to configure and
+     test things in the <guilabel>Sound Events</guilabel> section.
+     Note that you may have to exit GNOME and restart for sound to
+     work properly after enabling it in the <application>Control
+     Center</application> for the first time.
+    </para>
+   </note>
+  </sect2>
+
+  <sect2 id="soundmonitorapplet-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>Sound Monitor</application> by
+      right-clicking on it and choosing
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="soundmonitorappletsettings-fig">), which allows you to 
+      change various settings.
+    </para>
+    <figure id="soundmonitorappletsettings-fig">
+     <title>Properties dialog</title>
+     <screenshot>
+      <screeninfo>Properties dialog</screeninfo>
+      <graphic format="png" fileref="soundmonitor_applet_settings"
+      srccredit="muet">
+      </graphic>
+     </screenshot>
+    </figure>
+
+    <para>
+     The properties in the <guilabel>General</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        Peak indicator &mdash; This controls the behavior of the peak
+        indicator (the bright line which tracks the peak volume),
+        either turning it off (<guilabel>off</guilabel>), having it
+        follow the peak as if it is floating on top
+        (<guilabel>active</guilabel>), or having it follow a more
+        smooth sense of the peak(<guilabel>smooth</guilabel>), which
+        may actually lie slightly below the active peak which can
+        briefly increase above the smooth peak.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Peak indicator falloff speed &mdash; This controls the speed
+        the peak indicator falls back to zero volume.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Scope (scale 1:X, where X=?) &mdash; This controls the
+        horizontal (time) axis scale for <application>Sound
+        Monitor</application> themes which resemble a scope. (Since
+        the default theme is not a scope, this control does not do
+        anything until you have modified the theme, as described below.) 
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Connect points in scope &mdash; This determines whether the
+        sampled volume points are connected. (For scope themes only.)
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Screen refresh (frames per second) &mdash; This controls the
+        number of times the <application>Sound Monitor</application>
+        display is updated each second.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </para>
+
+    <para>
+     The properties in the <guilabel>Theme</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        Theme file (directory) &mdash; This is the theme for you
+        <application>Sound Monitor</application>, which determines the
+        overall appearance of the applet.  You can either select a
+        theme from the list <guilabel>Themes:</guilabel>, or else type
+        in the directory and name of another theme if available. Some
+        of the standard themes are shown in <xref
+        linkend="soundmonitorappletthemes-fig">. 
+ 
+        <figure id="soundmonitorappletthemes-fig">
+        <title>Example Sound Monitor Themes</title>
+        <screenshot>
+         <screeninfo>Example Sound Monitor Themes</screeninfo>
+         <graphic format="png" fileref="soundmonitor_applet_themes"
+         srccredit="muet">
+         </graphic>
+        </screenshot>
+       </figure>
+       </para>
+
+      </listitem>
+
+     </itemizedlist>
+    </para>
+ 
+    <para>
+     The properties in the <guilabel>Advanced</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        ESD host to monitor &mdash;
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    <para> After you made all the choices you want, click on
+      <guibutton>OK</guibutton> to make the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click the
+      <guibutton>Cancel</guibutton> button.
+    </para>
+
+  </sect2>
+
+  <sect2 id="soundmonitorapplet-manager">
+    <title>The Sound Monitor Manager</title>
+    <para>
+      To start the <interface>Sound Monitor Manager</interface>,
+      right-click on the applet and choose
+      <guimenuitem>Manager&hellip;</guimenuitem>. This will open the
+      <interface>Sound Monitor - Manager</interface> dialog(shown in <xref
+      linkend="soundmonitorappletmanager-fig">), which allows you to 
+      view and modify various ESD settings.
+    </para>
+    <figure id="soundmonitorappletmanager-fig">
+     <title>Properties dialog</title>
+     <screenshot>
+      <screeninfo>Sound Monitor Manager dialog</screeninfo>
+      <graphic format="png" fileref="soundmonitor_manager_server"
+      srccredit="muet">
+      </graphic>
+     </screenshot>
+    </figure>
+
+    <para>
+     The <guilabel>Server</guilabel> tab displays the following information:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        Esound version &mdash;
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+     <para>
+     The properties in the <guilabel>Streams</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        Peak indicator &mdash;
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+ 
+    <para>
+     The properties in the <guilabel>Samples</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        ESD host to monitor &mdash;
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    <para> After you made all the choices you want, click on
+      <guibutton>OK</guibutton> to make the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click the
+      <guibutton>Cancel</guibutton> button.
+    </para>
+
+  </sect2>
+
+
+  <sect2 id="soundmonitorapplet-bugs">
+   <title>Known bugs and limitations</title>
+   <para>
+    There are no known bugs.
+   </para>
+  </sect2>
+
+  <sect2 id="soundmonitorapplet-authors">
+   <title>Authors</title>
+   <para>
+    This applet was writen by John Ellis
+    <email>johne@bellatlantic.net</email>.  To submit suggestions and
+    bug reports, use <ulink type="http"
+    url="http://bugs.gnome.org">The GNOME Bug Tracking System</ulink>
+    or the <application>bug-buddy</application> utility in the
+    <interface>Main Menu</interface>.
+   </para>
+  </sect2>
+
+ </sect1>
+

@@ -284,6 +284,14 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	widget = NULL;
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "sound-monitor_applet", 
+					  "index.html" };
+	gnome_help_display(NULL, &help_entry);
+}
+
 static AppData *create_new_app(GtkWidget *applet)
 {
         AppData *ad;
@@ -343,20 +351,6 @@ static AppData *create_new_app(GtkWidget *applet)
 		GTK_SIGNAL_FUNC(applet_change_back), ad);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
-						"properties",
-						GNOME_STOCK_MENU_PROP,
-						_("Properties..."),
-						property_show,
-						ad);
-
-	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
-						"about",
-						GNOME_STOCK_MENU_ABOUT,
-						_("About..."),
-						about_cb,
-						NULL);
-
-	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
 						"manager",
 						GNOME_STOCK_MENU_BOOK_OPEN,
 						_("Manager..."),
@@ -369,6 +363,24 @@ static AppData *create_new_app(GtkWidget *applet)
 						_("Start Esound"),
 						esd_control_cb,
 						ad);
+	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
+						"properties",
+						GNOME_STOCK_MENU_PROP,
+						_("Properties..."),
+						property_show,
+						ad);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
+					      "help",
+					      GNOME_STOCK_PIXMAP_HELP,
+					      _("Help"), help_cb, NULL);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
+						"about",
+						GNOME_STOCK_MENU_ABOUT,
+						_("About..."),
+						about_cb,
+						NULL);
 
 
 	update_display(ad);

@@ -703,6 +703,12 @@ applet_change_pixel_size(GtkWidget *w, int size)
 		gtk_main_iteration();
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "mixer_applet", "index.html"};
+	gnome_help_display(NULL, &help_entry);
+}
 
 int
 main(int argc, char **argv)
@@ -738,17 +744,23 @@ main(int argc, char **argv)
 			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
 
-	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					       "about",
-					       GNOME_STOCK_MENU_ABOUT,
-					       _("About..."),
-					       mixer_about,
-					       NULL);
         applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					       "run_gmix",
 					       GNOME_STOCK_MENU_VOLUME,
 					       _("Run Audio Mixer..."),
 					       start_gmix_cb,
+					       NULL);
+
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"), help_cb, NULL);
+
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       mixer_about,
 					       NULL);
 
 	gtk_widget_show(applet);

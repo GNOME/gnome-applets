@@ -64,7 +64,7 @@ multiload_properties_changed (void)
 }
 
 static void
-phelp_cb (GtkWidget *w, gint tab)
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { "multiload_applet" };
 	char *das_pages[] = {

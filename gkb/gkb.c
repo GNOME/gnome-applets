@@ -10,6 +10,7 @@
 #include <gnome.h>
 #include <gdk_imlib.h>
 #include <applet-widget.h>
+
 #ifdef HAVE_LIBXKBFILE
 #include <gdk/gdkx.h>		/* for GDK_DISPLAY() */
 #include <X11/Xlib.h>		/* for XFree() */
@@ -21,6 +22,7 @@
 				 * and XkbRF_Free().
 				 */
 #endif /* HAVE_LIBXKBFILE */
+
 #include <sys/types.h>
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
@@ -48,77 +50,73 @@ struct _GKB {
 
         GdkImlibImage *pix[2];
 
-	GtkWidget *aboutbox;
 	GtkWidget *propbox;
 
         PanelOrientType orient;
 	int size;
 
-      	int curpix;
-
       	int width;
       	int height;
 };
 
-static void do_that_command(GKB *);
-static void gkb_cb(GtkWidget * widget, GdkEventButton * e, GKB * gkb);
-static void gkb_draw(GtkWidget *darea, GKB *gkb);                        
-static int  gkb_expose(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
-static int  gkb_empty(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
-void        properties_dialog(AppletWidget *applet, gpointer gkbx);
+static void do_that_command (GKB *);
+static void gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * e, GKB * gkb);
+static void gkb_draw (GtkWidget *darea, GKB *gkb);                        
+void        properties_dialog (AppletWidget *applet, gpointer gkbx);
 static void about_cb (AppletWidget *widget, gpointer gkbx);
+static void help_cb (AppletWidget *widget, gpointer data);
 
 static GtkWidget *
-gkb_create_icon_entry(GtkWidget *table,
-		      char *history_id,
-		      int cols, int cole,
-		      char *label,
-		      char *text,
-		      GtkWidget *w)
+gkb_create_icon_entry (GtkWidget *table,
+		       char *history_id,
+		       int cols, int cole,
+		       char *label,
+		       char *text,
+		       GtkWidget *w)
 {
 	GtkWidget *wlabel;
 	GtkWidget *entry;
 	GtkWidget *t;
 
-	wlabel = gtk_label_new(label);
-	gtk_misc_set_alignment(GTK_MISC(wlabel), 0.0, 0.5);
-	gtk_table_attach(GTK_TABLE(table), wlabel,
-			 cols, cole, 2, 3,
-			 GTK_SHRINK,
-			 GTK_EXPAND | GTK_FILL | GTK_SHRINK,
-			 GNOME_PAD_SMALL, GNOME_PAD_SMALL);
-	gtk_widget_show(wlabel);
+	wlabel = gtk_label_new (label);
+	gtk_misc_set_alignment (GTK_MISC(wlabel), 0.0, 0.5);
+	gtk_table_attach (GTK_TABLE(table), wlabel,
+			  cols, cole, 2, 3,
+			  GTK_SHRINK,
+			  GTK_EXPAND | GTK_FILL | GTK_SHRINK,
+			  GNOME_PAD_SMALL, GNOME_PAD_SMALL);
+	gtk_widget_show (wlabel);
 
-	entry = gnome_icon_entry_new(history_id,_("Browse"));
+	entry = gnome_icon_entry_new (history_id,_("Browse"));
+
 	if (text)
-		gnome_icon_entry_set_icon(GNOME_ICON_ENTRY(entry),text);
+		gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(entry), text);
 
 	t = gnome_icon_entry_gtk_entry (GNOME_ICON_ENTRY (entry));
-	gtk_table_attach(GTK_TABLE(table), entry,
-			 cols, cole, 1, 2,
-			 GTK_EXPAND | GTK_FILL | GTK_SHRINK,
-			 GTK_FILL | GTK_SHRINK,
-			 GNOME_PAD_SMALL, GNOME_PAD_SMALL);
+	gtk_table_attach (GTK_TABLE(table), entry,
+			  cols, cole, 1, 2,
+			  GTK_EXPAND | GTK_FILL | GTK_SHRINK,
+			  GTK_FILL | GTK_SHRINK,
+			  GNOME_PAD_SMALL, GNOME_PAD_SMALL);
 
-	if(w) {
+	if (w)
 		gtk_signal_connect_object_while_alive (GTK_OBJECT (t), "changed",
 						       GTK_SIGNAL_FUNC(gnome_property_box_changed), 
-						       GTK_OBJECT(w));
-	}
+						       GTK_OBJECT (w));
+
 	return entry;
 }
 
 
 static void
-sized_render(GKB * gkb)
+sized_render (GKB *gkb)
 {
-
-	if(gkb->pix[0])
+	if (gkb->pix[0])
 		gdk_imlib_destroy_image(gkb->pix[0]);
-	if(gkb->pix[1])
+	if (gkb->pix[1])
 		gdk_imlib_destroy_image(gkb->pix[1]);
 		
-	if((gkb->orient==ORIENT_LEFT) || (gkb->orient==ORIENT_RIGHT)) {
+	if ((gkb->orient==ORIENT_LEFT) || (gkb->orient==ORIENT_RIGHT)) {
 		gkb->width=(gkb->size-4);
 		gkb->height=(gkb->size-4)/1.5;
 	} else {
@@ -126,133 +124,121 @@ sized_render(GKB * gkb)
 		gkb->height=(gkb->size-4);
 	}
 	
-	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
-	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
+	gkb->pix[0] = gdk_imlib_load_image (gkb->properties.image[0]);
+	gkb->pix[1] = gdk_imlib_load_image (gkb->properties.image[1]);
 
         gdk_imlib_render (gkb->pix[0], gkb->width, gkb->height);
         gdk_imlib_render (gkb->pix[1], gkb->width, gkb->height);
 
-
-        gtk_drawing_area_size(GTK_DRAWING_AREA(gkb->darea), gkb->width+2, gkb->height+2);
+        gtk_drawing_area_size (GTK_DRAWING_AREA(gkb->darea), gkb->width+2, gkb->height+2);
 	gtk_widget_set_usize (GTK_WIDGET(gkb->darea),       gkb->width+2, gkb->height+2);
 	gtk_widget_set_usize (GTK_WIDGET(gkb->frame),       gkb->width+2, gkb->height+2);
 	gtk_widget_set_usize (GTK_WIDGET(gkb->applet),      gkb->width+2, gkb->height+2);
 
-	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
-
+	gkb_draw (GTK_WIDGET(gkb->darea), gkb);
 }
 
 static void
-gkb_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+gkb_change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 {
         GKB *gkb = data;
-
 
         gkb->orient = o;
-	sized_render(gkb);
+	sized_render (gkb);
 }
 
 static void
-gkb_change_pixel_size(GtkWidget *w, int size, gpointer data)
+gkb_change_pixel_size (GtkWidget *w, int size, gpointer data)
 {
         GKB *gkb = data;
 
-
         gkb->size = size;
-        sized_render(gkb);
+        sized_render (gkb);
 }
 
 
 static void
-load_properties(GKB *gkb)
+load_properties (GKB *gkb)
 {
 	char buf[256];
-static  gkb_properties defaults = {
-	 "setxkbmap",
-	 { NULL, NULL },
-         { "us", "hu" },
-	 0
-	};
-
-
 
 	gnome_config_push_prefix(APPLET_WIDGET(gkb->applet)->privcfgpath);
-	g_free(gkb->properties.command);
+
+	g_free (gkb->properties.command);
 	/* I was sooo... Thanx Carsten */
-	g_snprintf(buf,256,"gkb/command=%s",defaults.command);
+	g_snprintf (buf,256,"gkb/command=setxkbmap");
 	gkb->properties.command = gnome_config_get_string(buf);
-	g_free(gkb->properties.image[0]);
-	g_snprintf(buf,256,"gkb/image0=%s",gnome_unconditional_pixmap_file("gkb/us.xpm"));
+
+	g_free (gkb->properties.image[0]);
+	g_snprintf (buf,256,"gkb/image0=%s",gnome_unconditional_pixmap_file("gkb/us.xpm"));
 	gkb->properties.image[0] = gnome_config_get_string(buf);
-	g_free(gkb->properties.image[1]);
-	g_snprintf(buf,256,"gkb/image1=%s",gnome_unconditional_pixmap_file("gkb/hu.xpm"));
+
+	g_free (gkb->properties.image[1]);
+	g_snprintf (buf,256,"gkb/image1=%s",gnome_unconditional_pixmap_file("gkb/hu.xpm"));
 	gkb->properties.image[1] = gnome_config_get_string(buf);
-	g_free(gkb->properties.dmap[0]);
-	g_snprintf(buf,256,"gkb/map0=%s",defaults.dmap[0]);
+
+	g_free (gkb->properties.dmap[0]);
+	g_snprintf (buf,256,"gkb/map0=us");
 	gkb->properties.dmap[0] = gnome_config_get_string(buf);
-	g_free(gkb->properties.dmap[1]);
-	g_snprintf(buf,256,"gkb/map1=%s",defaults.dmap[1]);
+
+	g_free (gkb->properties.dmap[1]);
+	g_snprintf (buf,256,"gkb/map1=hu");
 	gkb->properties.dmap[1] = gnome_config_get_string(buf);
+
 	gnome_config_pop_prefix();
 
-        gkb->orient = applet_widget_get_panel_orient(APPLET_WIDGET(gkb->applet));
-        gkb->size   = applet_widget_get_panel_pixel_size  (APPLET_WIDGET(gkb->applet));
+        gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET(gkb->applet));
+        gkb->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET(gkb->applet));
 
-	sized_render(gkb);
+	sized_render (gkb);
 }
 
 static void
-apply_cb(GnomePropertyBox * pb,
-	GKB * gkb)
+changed_cb (GnomePropertyBox *pb,
+	  GKB *gkb)
 {
-
-
-    	gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
+    	gnome_property_box_changed (GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
 static void
-apply_callback(GtkWidget * pb,
-	gint page,
-	GKB * gkb)
+apply_cb (GtkWidget * pb,
+	  gint page,
+	  GKB * gkb)
 {
-
-
 	if (page != -1)
 	    	return;	/* Thanks Havoc -- Julian7 */
-	memcpy( &gkb->properties, &gkb->temp_props, sizeof(gkb_properties) );
+
+	/*	memcpy (&gkb->properties, &gkb->temp_props, sizeof(gkb_properties)); */
 	gkb->properties.image[0] =
 			gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(gkb->entry_1));
 	gkb->properties.image[1] =
 			gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(gkb->entry_2));
-	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
-	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
 
         gkb->properties.dmap[0]= malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo1)->entry))) + 1));
         strcpy(gkb->properties.dmap[0], gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo1)->entry)));
         gkb->properties.dmap[1]= malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry))) + 1));
         strcpy(gkb->properties.dmap[1], gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry)));
 	
-        gdk_imlib_render (gkb->pix[0], gkb->width, gkb->height);
-	    gdk_imlib_render (gkb->pix[1], gkb->width, gkb->height);
-	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
-	gkb->curpix=0;
-	do_that_command(gkb);
+
+	sized_render (gkb);
+
+	do_that_command (gkb);
 }
 
 static void
-ch_xkb_cb(GtkWidget *widget,
-	GKB * gkb)
+ch_xkb_cb (GtkWidget *widget,
+	   GKB * gkb)
 {
-
-    	gkb->temp_props.command = g_strdup("setxkbmap");
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox)); 
+    	gkb->temp_props.command = g_strdup ("setxkbmap");
+        gnome_property_box_changed (GNOME_PROPERTY_BOX(gkb->propbox)); 
 }
+
 static void 
 ch_xmodmap_cb (GtkWidget *widget,
 	       GKB * gkb)
 {
-        gkb->temp_props.command = g_strdup("xmodmap");
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
+        gkb->temp_props.command = g_strdup ("xmodmap");
+        gnome_property_box_changed (GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
 static void
@@ -301,30 +287,29 @@ append_xmodmap_items(GList *list)
 	DIR *dir;
 	struct dirent *dir_ent;
 
-	if ((dir = opendir(gnome_datadir_file("xmodmap")))) {
-	  while ((dir_ent = readdir(dir)))
-	    if (strncmp(dir_ent->d_name, "xmodmap.", 8)) {
-	      c = dir_ent->d_name + 8;
-	      if (*c)
-		list = g_list_append(list, c);
-	    }
-	  closedir(dir);
+	if ((dir = opendir (gnome_datadir_file("xmodmap")))) {
+		while ((dir_ent = readdir (dir)))
+			if (strncmp (dir_ent->d_name, "xmodmap.", 8)) {
+				c = dir_ent->d_name + 8;
+				if (*c)
+					list = g_list_append (list, c);
+			}
+		closedir (dir);
 	}
 
 	return list;
 }
 
-/*
- * That's the prop-dialog ,,,
- * */
-
-
+/**
+ * properties_dialog:
+ *
+ * The properties dialog
+ **/
 void
-properties_dialog(AppletWidget *applet,
-	gpointer gkbx)
+properties_dialog (AppletWidget *applet,
+		   gpointer gkbx)
 {
-        static GnomeHelpMenuEntry help_entry = { "gkb", "properties" };
-	GKB * gkb = (GKB*) gkbx;
+	GKB *gkb = (GKB*) gkbx;
 	GtkWidget *vbox3;
         GtkWidget *hbox5;          
         GtkWidget *hbox6;          
@@ -341,30 +326,26 @@ properties_dialog(AppletWidget *applet,
         GtkWidget *frame2;
 	int i;
 
-static	char *basemaps[]= {
-	"am", "be", "bg", "br", "be", "bg", "ch", "ch_de", "ch_fr",
-	 "cz", "de", "dk", "dvorak", "ee", "es", "fi", "fr", "fr-2",
-	"ge_la", "ge_ru", "gr", "hu", "hu_latin1", "il", "il_phonetic",
-	"is", "it", "la", "lt", "lt_b", "lt_p", "nl", "no", "pl", "pl2",
-	"pt", "pt-dead", "qc", "ru", "ru_yawerty", "se", "sf", "sg",
-	"si", "sk", "th", "tr_f", "tr_q", "uk", "us", "us_intl", "yu", 0 
+	char *basemaps[]= {
+		"am", "be", "bg", "br", "be", "bg", "ch", "ch_de", "ch_fr",
+		"cz", "de", "dk", "dvorak", "ee", "es", "fi", "fr", "fr-2",
+		"ge_la", "ge_ru", "gr", "hu", "hu_latin1", "il", "il_phonetic",
+		"is", "it", "la", "lt", "lt_b", "lt_p", "nl", "no", "pl", "pl2",
+		"pt", "pt-dead", "qc", "ru", "ru_yawerty", "se", "sf", "sg",
+		"si", "sk", "th", "tr_f", "tr_q", "uk", "us", "us_intl", "yu", 0 
 	};
 
-
-	help_entry.name = gnome_app_id;
-
-        if( gkb->propbox ) {
-         gdk_window_raise(gkb->propbox->window);
-         return;
+        if (gkb->propbox) {
+		gdk_window_raise(gkb->propbox->window);
+		return;
         }
  
-        memcpy(&gkb->temp_props,&gkb->properties,sizeof(gkb_properties));
+        memcpy (&gkb->temp_props, &gkb->properties, sizeof(gkb_properties));
    
         gkb->propbox = gnome_property_box_new();
-        gtk_window_set_title(GTK_WINDOW(gkb->propbox), 
-           _("GKB Properties")
-        );
-        gtk_window_set_policy(GTK_WINDOW(gkb->propbox), FALSE, FALSE, TRUE);
+        gtk_window_set_title (GTK_WINDOW(gkb->propbox), 
+			      _("GKB Properties"));
+        gtk_window_set_policy (GTK_WINDOW(gkb->propbox), FALSE, FALSE, TRUE);
    
         vbox3 = gtk_hbox_new (FALSE, 0);
         
@@ -374,10 +355,10 @@ static	char *basemaps[]= {
         table1 = gtk_table_new(2,2,FALSE);
         gtk_container_set_border_width(GTK_CONTAINER (table1), 3);
    
-        gkb->entry_1 = gkb_create_icon_entry(table1,"tile_file1",1,2,
-					     _("Flag One"),
-					     gkb->temp_props.image[0],
-					     GTK_WIDGET(gkb->propbox));
+        gkb->entry_1 = gkb_create_icon_entry (table1,"tile_file1",1,2,
+					      _("Flag One"),
+					      gkb->temp_props.image[0],
+					      GTK_WIDGET(gkb->propbox));
         
         gtk_box_pack_start (GTK_BOX (hbox6), table1, TRUE, TRUE, 0);
    
@@ -385,7 +366,7 @@ static	char *basemaps[]= {
         gtk_box_pack_start (GTK_BOX (hbox6), hbox8, TRUE, TRUE, 0);
    
         gkb->combo1 = gtk_combo_new ();
-        gtk_box_pack_start (GTK_BOX (hbox8), gkb->combo1, FALSE, FALSE, 30);
+        gtk_box_pack_start (GTK_BOX (hbox8), gkb->combo1, FALSE, FALSE, GNOME_PAD);
         gtk_container_set_border_width (GTK_CONTAINER (gkb->combo1), 2);
 
 
@@ -398,23 +379,23 @@ static	char *basemaps[]= {
         
 	gtk_combo_set_popdown_strings (GTK_COMBO (gkb->combo1), combo1_items);
         gtk_signal_connect (GTK_OBJECT (GTK_COMBO(gkb->combo1)->entry),
-	                            "changed",
-				    (GtkSignalFunc) apply_cb, gkb);
+			    "changed",
+			    (GtkSignalFunc) changed_cb, gkb);
 								
 	g_list_free (combo1_items);
    
         table2 = gtk_table_new(2,2,FALSE);
         gtk_container_set_border_width(GTK_CONTAINER (table2), 3);
    
-        gkb->entry_2 = gkb_create_icon_entry(table2,"tile_file2",1,2,
-					     _("Flag Two"),
-					     gkb->temp_props.image[1],
-					     gkb->propbox);
+        gkb->entry_2 = gkb_create_icon_entry (table2,"tile_file2",1,2,
+					      _("Flag Two"),
+					      gkb->temp_props.image[1],
+					      gkb->propbox);
         
         gtk_box_pack_start (GTK_BOX (hbox8), table2, TRUE, TRUE, 0);
    
         gkb->combo2 = gtk_combo_new ();
-        gtk_box_pack_start (GTK_BOX (hbox8), gkb->combo2, FALSE, FALSE, 30);
+        gtk_box_pack_start (GTK_BOX (hbox8), gkb->combo2, FALSE, FALSE, GNOME_PAD);
         gtk_container_set_border_width (GTK_CONTAINER (gkb->combo2), 2);
         GTK_WIDGET_SET_FLAGS (gkb->combo2, GTK_CAN_FOCUS);
    
@@ -427,15 +408,15 @@ static	char *basemaps[]= {
    
         gtk_combo_set_popdown_strings (GTK_COMBO(gkb->combo2), combo2_items);
         gtk_signal_connect (GTK_OBJECT (GTK_COMBO(gkb->combo2)->entry),
-	                            "changed",
-	                        (GtkSignalFunc) apply_cb, gkb);
+			    "changed",
+			    (GtkSignalFunc) changed_cb, gkb);
         
 	g_list_free (combo2_items);
    
         hbox5 = gtk_vbox_new (FALSE, 0);
         gtk_box_pack_start (GTK_BOX (vbox3), hbox5, TRUE, TRUE, 0);
    
-        frame2 = gtk_frame_new ( _("Program") );
+        frame2 = gtk_frame_new (_("Program"));
         gtk_box_pack_start (GTK_BOX (hbox5), frame2, FALSE, FALSE, 0);
         gtk_container_set_border_width (GTK_CONTAINER (frame2), 8);
    
@@ -445,42 +426,40 @@ static	char *basemaps[]= {
         GTK_WIDGET_SET_FLAGS (option1, GTK_CAN_DEFAULT);
    
         option1_menu = gtk_menu_new ();
-        g2_menuitem = gtk_menu_item_new_with_label ( _("Xkb"));
+        g2_menuitem = gtk_menu_item_new_with_label (_("Xkb"));
         gtk_menu_append (GTK_MENU (option1_menu), g2_menuitem);
         gtk_signal_connect (GTK_OBJECT (g2_menuitem), "activate",
-				(GtkSignalFunc) ch_xkb_cb, gkb);
-        g2_menuitem = gtk_menu_item_new_with_label ( _("Xmodmap"));
+			    (GtkSignalFunc) ch_xkb_cb, gkb);
+        g2_menuitem = gtk_menu_item_new_with_label (_("Xmodmap"));
         gtk_menu_append (GTK_MENU (option1_menu), g2_menuitem);
         gtk_signal_connect (GTK_OBJECT (g2_menuitem), "activate",
-				(GtkSignalFunc) ch_xmodmap_cb, gkb);
-	gtk_menu_set_active(GTK_MENU (option1_menu),
-		! strcmp(gkb->temp_props.command,"xmodmap"));
+			    (GtkSignalFunc) ch_xmodmap_cb, gkb);
+	gtk_menu_set_active (GTK_MENU (option1_menu),
+			     ! strcmp(gkb->temp_props.command,"xmodmap"));
         gtk_option_menu_set_menu (GTK_OPTION_MENU (option1),
 				 option1_menu);
 
-        gtk_notebook_append_page (GTK_NOTEBOOK(
-		    		  GNOME_PROPERTY_BOX(gkb->propbox)->notebook),
-                         	  vbox3, gtk_label_new (
-                         	  _("Menu") ));
+        gtk_notebook_append_page (GTK_NOTEBOOK(GNOME_PROPERTY_BOX(gkb->propbox)->notebook),
+                         	  vbox3,
+				  gtk_label_new (_("Menu")));
 				     
-        gtk_signal_connect( GTK_OBJECT(gkb->propbox),
-             "apply", GTK_SIGNAL_FUNC(apply_callback), gkb );
-        gtk_signal_connect( GTK_OBJECT(gkb->propbox),
-             "destroy", GTK_SIGNAL_FUNC(destroy_cb), gkb );
-        gtk_signal_connect( GTK_OBJECT(gkb->propbox),
-             "help", GTK_SIGNAL_FUNC(gnome_help_pbox_display), & help_entry );
+        gtk_signal_connect (GTK_OBJECT(gkb->propbox),
+			    "apply", GTK_SIGNAL_FUNC (apply_cb), gkb);
+        gtk_signal_connect (GTK_OBJECT(gkb->propbox),
+			    "destroy", GTK_SIGNAL_FUNC (destroy_cb), gkb);
+        gtk_signal_connect (GTK_OBJECT(gkb->propbox),
+			    "help", GTK_SIGNAL_FUNC (help_cb), NULL);
 	     
-        gtk_widget_show_all(gkb->propbox);
+        gtk_widget_show_all (gkb->propbox);
 }
 
 static void
 gkb_draw (GtkWidget *darea,
 	  GKB *gkb)
 {
-	if(gkb->darea!=NULL ||
-	   !GTK_WIDGET_REALIZED(gkb->darea) ||
-	   !gkb->pix[gkb->properties.curpix]->pixmap)
-		return;
+	g_return_if_fail (gkb->darea != NULL);
+	g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
+	g_return_if_fail (gkb->pix[gkb->properties.curpix]->pixmap);
 
 	gdk_draw_pixmap (gkb->darea->window,
 			 gkb->darea->style->fg_gc[GTK_WIDGET_STATE(gkb->darea)],
@@ -489,94 +468,79 @@ gkb_draw (GtkWidget *darea,
 }
 
 static void
-do_that_command(GKB *gkb)
+do_that_command (GKB *gkb)
 {
        char comm[100];
        int len; 
 
-       len=(strlen(gkb->properties.command)+(strcmp(gkb->properties.command,"xmodmap")?11:                                    
-           strlen(gnome_datadir_file(g_strconcat ("xmodmap/",
-           "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)) )+7));
-	g_snprintf(comm, len, "%s %s%c", gkb->properties.command,
-	(strcmp(gkb->properties.command,"xmodmap")?gkb->properties.dmap[gkb->properties.curpix]:
-	gnome_datadir_file(g_strconcat ("xmodmap/",
-           "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)) ),0);
-	system(comm);
+       len = (strlen(gkb->properties.command)
+	      +(strcmp(gkb->properties.command, "xmodmap")
+		?
+		11 : strlen(gnome_datadir_file(g_strconcat ("xmodmap/", "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)))+7));
+       
+	g_snprintf (comm, len, "%s %s%c", gkb->properties.command,
+		    (strcmp(gkb->properties.command,"xmodmap")?gkb->properties.dmap[gkb->properties.curpix]:
+		     gnome_datadir_file(g_strconcat ("xmodmap/",
+						     "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)) ),0);
+	system (comm);
 }
 
 static void 
-gkb_cb (GtkWidget *widget,
-	GdkEventButton *event, 
-	GKB *gkb)
+gkb_button_press_event_cb (GtkWidget *widget,
+			   GdkEventButton *event, 
+			   GKB *gkb)
 {
-        if (event->button != 1) {
-		/* Ignore buttons 2 and 3 */
+	/* Ignore buttons 2 and 3 */
+        if (event->button != 1)
 		return; 
-	}
 
 	gkb->properties.curpix = gkb->properties.curpix ? 0 : 1;
-	sized_render(gkb);
-	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
+	sized_render (gkb);
 
-	do_that_command(gkb);
+	do_that_command (gkb);
 }
 
 static int
-gkb_empty(GtkWidget *darea,
-	GdkEventExpose *event,
-	GKB *gkb)
+gkb_expose (GtkWidget *darea,
+	    GdkEventExpose *event,
+	    GKB *gkb)
 {
 
-        return FALSE;
-}
+	gkb_draw (darea, gkb);
 
-static int
-gkb_expose(GtkWidget *darea,
-	GdkEventExpose *event,
-	GKB *gkb)
-{
-
-	gdk_draw_pixmap(gkb->darea->window,
-			gkb->darea->style->fg_gc[GTK_WIDGET_STATE(
-						 gkb->darea)],
-			gkb->pix[gkb->properties.curpix]->pixmap,
-			event->area.x, event->area.y,
-			event->area.x, event->area.y,
-			gkb->width, gkb->height);
-        return FALSE;
+	return TRUE;
 }
 
 static void
-create_gkb_widget(GKB *gkb)
+create_gkb_widget (GKB *gkb)
 {
 	GtkStyle *style;
 
 	gtk_widget_push_visual (gdk_imlib_get_visual ());
 	gtk_widget_push_colormap (gdk_imlib_get_colormap ());
-	style = gtk_widget_get_style(gkb->applet);
+	style = gtk_widget_get_style (gkb->applet);
 	
 	gkb->darea = gtk_drawing_area_new();
-	gtk_drawing_area_size(GTK_DRAWING_AREA(gkb->darea),
-			      gkb->width,
-			      gkb->height);
-	gtk_widget_set_events(gkb->darea, 
-			      gtk_widget_get_events(gkb->darea) |
-			      GDK_BUTTON_PRESS_MASK);
-	gtk_signal_connect(GTK_OBJECT(gkb->darea), "button_press_event",
-			   GTK_SIGNAL_FUNC(gkb_cb), gkb);
-	gtk_signal_connect_after(GTK_OBJECT(gkb->darea), "realize",
-			   GTK_SIGNAL_FUNC(gkb_draw), gkb);
-	gtk_signal_connect(GTK_OBJECT(gkb->darea), "expose_event",
-			   GTK_SIGNAL_FUNC(gkb_expose), gkb);
-	gtk_signal_connect(GTK_OBJECT(gkb->darea), "event",
-			   GTK_SIGNAL_FUNC(gkb_empty), gkb);
+	gtk_drawing_area_size (GTK_DRAWING_AREA(gkb->darea),
+			       gkb->width,
+			       gkb->height);
+	gtk_widget_set_events (gkb->darea, 
+			       gtk_widget_get_events(gkb->darea) |
+			       GDK_BUTTON_PRESS_MASK);
 
-        gtk_widget_show(gkb->darea);
+        gtk_widget_show (gkb->darea);
+
+
+	gtk_signal_connect (GTK_OBJECT (gkb->darea), "button_press_event",
+			    GTK_SIGNAL_FUNC (gkb_button_press_event_cb), gkb);
+	gtk_signal_connect (GTK_OBJECT (gkb->darea), "expose_event",
+			    GTK_SIGNAL_FUNC (gkb_expose), gkb);
+
         gkb->properties.curpix = 0;
 
-        gkb->frame = gtk_frame_new(NULL);
-        gtk_frame_set_shadow_type(GTK_FRAME(gkb->frame),GTK_SHADOW_IN);
-        gtk_container_add(GTK_CONTAINER(gkb->frame),gkb->darea);
+        gkb->frame = gtk_frame_new (NULL);
+        gtk_frame_set_shadow_type (GTK_FRAME(gkb->frame), GTK_SHADOW_IN);
+        gtk_container_add (GTK_CONTAINER(gkb->frame), gkb->darea);
 
 	gtk_widget_pop_colormap ();
 	gtk_widget_pop_visual ();
@@ -586,128 +550,135 @@ static void
 about_cb (AppletWidget *widget,
 	  gpointer gkbx)
 {
-	GKB *gkb = (GKB*)gkbx;
-	static const char *authors[] = {
-		"Szabolcs Ban (Shooby) <bansz@szif.hu>",
-		NULL
-	};
+	static GtkWidget *about;
+	const char *authors[2];
 
-        if(gkb->aboutbox) {
-		gtk_widget_show(gkb->aboutbox);
-		gdk_window_raise(gkb->aboutbox->window);
+        if (about) {
+		gtk_widget_show (about);
+		gdk_window_raise (about->window);
 		return;
 	}
 
-	gkb->aboutbox = gnome_about_new (_("The GNOME KeyBoard Applet"),
-			VERSION,
-                        _("(C) 1998-99 LSC - Linux Supporting Center"),
-                        (const char **)authors,
-                        _("This applet switches between "   
-                          "keyboard maps. Not more. It uses "
-                          "setxkbmap, or xmodmap. "
-                          "The main site of this app moved "
-                          "temporarily to URL http://lsc.kva.hu/gkb."
-                          "Mail me your flag, please (60x40 size),"
-                          "I will put it to CVS."
-                          "So long, and thanks for all the fish.\n"
-			  "Thanks for Balazs Nagy (Kevin)"
-			  "<julian7@kva.hu> for minor help."
-                          ),
-                        _("gkb.xpm"));
+	authors[0] = "Szabolcs Ban (Shooby) <bansz@szif.hu>";
+	authors[1] = NULL;
 
-	gtk_signal_connect(GTK_OBJECT(gkb->aboutbox),"destroy",
-			   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &gkb->aboutbox);
-	gtk_widget_show (gkb->aboutbox);
+	about = gnome_about_new (_("The GNOME KeyBoard Applet"),
+				 VERSION,
+				 _("(C) 1998-99 LSC - Linux Supporting Center"),
+				 authors,
+				 _("This applet switches between "   
+				   "keyboard maps. Not more. It uses "
+				   "setxkbmap, or xmodmap. "
+				   "The main site of this app moved "
+				   "temporarily to URL http://lsc.kva.hu/gkb."
+				   "Mail me your flag, please (60x40 size),"
+				   "I will put it to CVS."
+				   "So long, and thanks for all the fish.\n"
+				   "Thanks for Balazs Nagy (Kevin)"
+				   "<julian7@kva.hu> for minor help."),
+				 "gkb.xpm");
+
+	gtk_signal_connect (GTK_OBJECT(about),"destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+	gtk_widget_show (about);
 
         return;
 }
 
+/* Do the applet Help callback */
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "gkb", "properties" };
+
+	gnome_help_display (NULL, &help_entry);
+}
+
 static int
-applet_save_session(GtkWidget *w,
-        const char *privcfgpath,
-	const char *globcfgpath,
-	GKB *gkb)
+applet_save_session (GtkWidget *w,
+		     const char *privcfgpath,
+		     const char *globcfgpath,
+		     GKB *gkb)
 {
 
-	gnome_config_push_prefix(privcfgpath);
-	gnome_config_set_string("gkb/command",gkb->properties.command);
-	gnome_config_set_string("gkb/image0",gkb->properties.image[0]);
-	gnome_config_set_string("gkb/image1",gkb->properties.image[1]);
-	gnome_config_set_string("gkb/map0",gkb->properties.dmap[0]);
-	gnome_config_set_string("gkb/map1",gkb->properties.dmap[1]);
-	gnome_config_pop_prefix();
+	gnome_config_push_prefix (privcfgpath);
+	gnome_config_set_string ("gkb/command",gkb->properties.command);
+	gnome_config_set_string ("gkb/image0",gkb->properties.image[0]);
+	gnome_config_set_string ("gkb/image1",gkb->properties.image[1]);
+	gnome_config_set_string ("gkb/map0",gkb->properties.dmap[0]);
+	gnome_config_set_string ("gkb/map1",gkb->properties.dmap[1]);
+	gnome_config_pop_prefix ();
 
-	gnome_config_sync();
-	gnome_config_drop_all();
+	gnome_config_sync ();
+	gnome_config_drop_all ();
 
 	return FALSE;
 }
 
 static CORBA_Object
-gkb_activator(PortableServer_POA poa,
-	const char *goad_id,
-	const char **params,
-	gpointer *impl_ptr,
-	CORBA_Environment *ev)
+gkb_activator (PortableServer_POA poa,
+	       const char *goad_id,
+	       const char **params,
+	       gpointer *impl_ptr,
+	       CORBA_Environment *ev)
 {
         GKB *gkb;
         
-
-
-        gkb = g_new0(GKB,1);
+        gkb = g_new0 (GKB, 1);
       
-        gkb->applet=applet_widget_new(goad_id);
+        gkb->applet = applet_widget_new (goad_id);
 
-        create_gkb_widget(gkb);        
-        load_properties(gkb);
+        create_gkb_widget (gkb);        
 
-        gtk_widget_show(gkb->frame);
-        applet_widget_add(APPLET_WIDGET(gkb->applet), gkb->frame);
-        gtk_widget_show(gkb->applet);
+        gtk_widget_show (gkb->frame);
+        applet_widget_add (APPLET_WIDGET(gkb->applet), gkb->frame);
+        gtk_widget_show (gkb->applet);
+
+        load_properties (gkb);
       
-        gtk_signal_connect(GTK_OBJECT(gkb->applet),"save_session",
-                               	     GTK_SIGNAL_FUNC(applet_save_session),
-                             	     gkb);
+        gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
+			    GTK_SIGNAL_FUNC (applet_save_session),
+			    gkb);
 
-        gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_orient",
-                                     GTK_SIGNAL_FUNC(gkb_change_orient),
-                                     gkb);
+        gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_orient",
+			    GTK_SIGNAL_FUNC (gkb_change_orient),
+			    gkb);
 
-        gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_pixel_size",
-                                     GTK_SIGNAL_FUNC(gkb_change_pixel_size),
-                                     gkb);
+        gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_pixel_size",
+			    GTK_SIGNAL_FUNC (gkb_change_pixel_size),
+			    gkb);
 
-        do_that_command(gkb);
-	applet_widget_register_stock_callback(APPLET_WIDGET(gkb->applet),
-                      				"about",
-                    				GNOME_STOCK_MENU_ABOUT,
-                     				_("About..."),
-                       				about_cb,
-                     				gkb);
+        do_that_command (gkb);
       
-        applet_widget_register_stock_callback(APPLET_WIDGET(gkb->applet),
-                      				"properties",
-                     				GNOME_STOCK_MENU_PROP,
-                      				_("Properties..."),
-                   				properties_dialog,
-                       				gkb);
+        applet_widget_register_stock_callback (APPLET_WIDGET(gkb->applet),
+					       "properties",
+					       GNOME_STOCK_MENU_PROP,
+					       _("Properties..."),
+					       properties_dialog,
+					       gkb);
+
+	applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       about_cb,
+					       NULL);
       
-        return applet_widget_corba_activate(gkb->applet,
-						poa, goad_id, params,
-				      		impl_ptr, ev);
+        return applet_widget_corba_activate (gkb->applet, poa, goad_id, params,
+					     impl_ptr, ev);
 }
 
 static void
-gkb_deactivator(PortableServer_POA poa,
-	const char *goad_id,
-	gpointer impl_ptr,
-	CORBA_Environment *ev)
+gkb_deactivator (PortableServer_POA poa,
+		 const char *goad_id,
+		 gpointer impl_ptr,
+		 CORBA_Environment *ev)
 {
-        applet_widget_corba_deactivate(poa, goad_id, impl_ptr, ev);
+        applet_widget_corba_deactivate (poa, goad_id, impl_ptr, ev);
 }
 
 int
-main(int argc, char *argv[])
+main (int argc, char *argv[])
 {
        gpointer gkb_impl;
 
@@ -715,13 +686,13 @@ main(int argc, char *argv[])
        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
        textdomain (PACKAGE);
 
-       applet_widget_init("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
+       applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
 
-       APPLET_ACTIVATE(gkb_activator, "gkb_applet", &gkb_impl);
+       APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
 	
-       applet_widget_gtk_main();
+       applet_widget_gtk_main ();
 
-       APPLET_DEACTIVATE(gkb_deactivator, "gkb_applet", gkb_impl);
+       APPLET_DEACTIVATE (gkb_deactivator, "gkb_applet", gkb_impl);
 
        return 0;
 }

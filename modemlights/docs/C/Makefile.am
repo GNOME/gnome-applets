@@ -1,44 +1,7 @@
-## Process this file with automake to produce Makefile.in
+figs = modemlights-advpref.png  modemlights-prefs.png  modemlights.png
+applet = modemlights
+lang = C
+sgml_ents = $(applet).sgml
+include $(top_srcdir)/applet-docs.make
+dist-hook: applet-dist-hook
 
-docdir = $(datadir)/gnome/help/modemlights_applet/C
-doc_DATA =	\
-	index.html	\
-	topic.dat	\
-	modemlights-advpref.png  modemlights-prefs.png  modemlights.png
-
-
-# automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = modemlights-applet.sgml modemlights.sgml topic.dat	\
-	modemlights-advpref.png  modemlights-prefs.png  modemlights.png
-
-# this is taken from gnome-core/gnome-terminal/C/Makefile.am
-all: index.html
-
-index.html: modemlights-applet/index.html
-	-cp modemlights-applet/index.html .
-
-modemlights-applet/index.html: $(srcdir)/modemlights-applet.sgml
-	-srcdir=`cd $(srcdir) && pwd`; \
-	db2html $$srcdir/modemlights-applet.sgml
-
-dist-hook: index.html
-	mkdir $(distdir)/modemlights-applet
-	-cp $(srcdir)/modemlights-applet/*.html $(distdir)/modemlights-applet
-	-cp $(srcdir)/modemlights-applet/*.css $(distcidr)/modemlights-applet
-
-install-data-local: index.html
-	-$(mkinstalldirs) $(DESTDIR)$(docdir)/fig
-	-for file in modemlights-applet/*.html modemlights-applet/*.css; do \
-	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
-	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
-	done
-	-for file in $(srcdir)/fig/*.png; do \
-	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
-	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/fig/$$basefile; \
-	done
-
-gnome-terminal.ps: gnome-terminal.sgml
-	-db2ps $<
-
-gnome-terminal.rtf: gnome-terminal.sgml
-	-db2rtf $<

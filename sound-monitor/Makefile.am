@@ -28,4 +28,4 @@ sys_DATA = sound-monitor_applet.desktop
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = sound-monitor_applet.gnorba
 
-SUBDIRS = def_theme themes pvd
+SUBDIRS = def_theme themes pvd docs

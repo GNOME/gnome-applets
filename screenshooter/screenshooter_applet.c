@@ -1686,7 +1686,7 @@ create_slider_option (gchar * label, GtkWidget * target, int *option,
 void
 showHelp (AppletWidget * applet, gpointer data)
 {
-  static GnomeHelpMenuEntry help_entry = { NULL, "screenshooter.html" };
+  static GnomeHelpMenuEntry help_entry = { NULL, "index.html" };
 
   help_entry.name = gnome_app_id;
 
