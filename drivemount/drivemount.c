@@ -24,7 +24,6 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
-#include <egg-screen-exec.h>
 
 #include "drivemount.h"
 #include "properties.h"

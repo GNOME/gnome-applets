@@ -592,7 +592,7 @@ help_cb (GtkDialog *dialog)
      						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 			applet_program, "drivemount", "drivemount", "drivemountapplet-prefs",
 			gtk_widget_get_screen (GTK_WIDGET (dialog)),
 			&error);
