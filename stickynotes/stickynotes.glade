@@ -341,6 +341,7 @@
 		      <child>
 			<widget class="GnomeFontPicker" id="default_font">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Choose a font to use for all sticky notes</property>
 			  <property name="can_focus">True</property>
 			  <property name="title" translatable="yes">Pick a default sticky note font</property>
 			  <property name="mode">GNOME_FONT_PICKER_MODE_FONT_INFO</property>
@@ -471,7 +472,7 @@
 			<widget class="GtkOptionMenu" id="click_behavior_menu">
 			  <property name="visible">True</property>
 			  <property name="can_focus">True</property>
-			  <property name="history">0</property>
+			  <property name="history">2</property>
 
 			  <child>
 			    <widget class="GtkMenu" id="menu2">
@@ -479,7 +480,7 @@
 			      <child>
 				<widget class="GtkImageMenuItem" id="new_note">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">creates a _new note</property>
+				  <property name="label" translatable="yes">create a _new note</property>
 				  <property name="use_underline">True</property>
 
 				  <child internal-child="image">
@@ -499,7 +500,7 @@
 			      <child>
 				<widget class="GtkMenuItem" id="show_hide_all_notes">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">_shows/hides notes</property>
+				  <property name="label" translatable="yes">_show/hide all notes</property>
 				  <property name="use_underline">True</property>
 				</widget>
 			      </child>
@@ -507,9 +508,8 @@
 			      <child>
 				<widget class="GtkMenuItem" id="lock_unlock_all_notes">
 				  <property name="visible">True</property>
-				  <property name="label" translatable="yes">_locks/unlocks notes</property>
+				  <property name="label" translatable="yes">_lock/unlock all notes</property>
 				  <property name="use_underline">True</property>
-				  <signal name="activate" handler="on_lock_unlock_all_notes_activate" last_modification_time="Wed, 21 May 2003 00:01:38 GMT"/>
 				</widget>
 			      </child>
 			    </widget>
@@ -548,6 +548,7 @@
 		      <child>
 			<widget class="GtkCheckButton" id="force_default_check">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Choose if the default style is forced on all notes</property>
 			  <property name="can_focus">True</property>
 			  <property name="label" translatable="yes">Force _default color &amp; font on all notes</property>
 			  <property name="use_underline">True</property>
@@ -735,6 +736,7 @@
 		      <child>
 			<widget class="GtkEntry" id="title_entry">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Specify a title for the note</property>
 			  <property name="can_focus">True</property>
 			  <property name="editable">True</property>
 			  <property name="visibility">True</property>
@@ -781,6 +783,7 @@
 		      <child>
 			<widget class="GnomeColorPicker" id="note_color">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Choose a color for the note</property>
 			  <property name="can_focus">True</property>
 			  <property name="dither">True</property>
 			  <property name="use_alpha">False</property>
@@ -865,6 +868,7 @@
 		      <child>
 			<widget class="GnomeFontPicker" id="note_font">
 			  <property name="visible">True</property>
+			  <property name="tooltip" translatable="yes">Choose a font for the note</property>
 			  <property name="can_focus">True</property>
 			  <property name="title" translatable="yes">Pick a font for the sticky note</property>
 			  <property name="mode">GNOME_FONT_PICKER_MODE_FONT_INFO</property>
@@ -1374,7 +1378,7 @@ Changes will be saved instantly.</property>
       <property name="use_underline">True</property>
 
       <child internal-child="image">
-	<widget class="GtkImage" id="image9">
+	<widget class="GtkImage" id="image10">
 	  <property name="visible">True</property>
 	  <property name="stock">gtk-new</property>
 	  <property name="icon_size">1</property>
@@ -1394,7 +1398,7 @@ Changes will be saved instantly.</property>
       <property name="use_underline">True</property>
 
       <child internal-child="image">
-	<widget class="GtkImage" id="image10">
+	<widget class="GtkImage" id="image11">
 	  <property name="visible">True</property>
 	  <property name="stock">gtk-delete</property>
 	  <property name="icon_size">1</property>
