@@ -37,6 +37,8 @@ life_draw(void)
 				gdk_gc_set_foreground(gc,&darea->style->white);
 			gdk_draw_point(darea->window,gc,i,j);
 		}
+	       
+	gdk_gc_destroy(gc);
 }
 
 static int
