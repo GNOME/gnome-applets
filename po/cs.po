@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-24 11:39+0100\n"
-"PO-Revision-Date: 2004-11-24 12:54+0100\n"
+"POT-Creation-Date: 2004-11-26 11:42+0100\n"
+"PO-Revision-Date: 2004-11-26 15:32+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:601
 #: cpufreq/src/cpufreq-applet.c:145 drivemount/drivemount.c:132
-#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
+#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:574
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
@@ -965,6 +965,79 @@ msgstr "Připojování lokálních disků a zařízení"
 #: drivemount/drivemount.c:129
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
+
+#: drivemount/drive-button.c:305 drivemount/drive-button.c:313
+#, c-format
+msgid ""
+"%s\n"
+"(mounted)"
+msgstr ""
+"%s\n"
+"(připojen)"
+
+#: drivemount/drive-button.c:307 drivemount/drive-button.c:315
+#, c-format
+msgid ""
+"%s\n"
+"(not mounted)"
+msgstr ""
+"%s\n"
+"(nepřipojen)"
+
+# Oops, mount vs. connect
+#: drivemount/drive-button.c:309
+#, c-format
+msgid ""
+"%s\n"
+"(not connected)"
+msgstr ""
+"%s\n"
+"(nepřipojen)"
+
+#: drivemount/drive-button.c:481
+#, c-format
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
+"%s"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Nemohu spustit '%s'</span>\n"
+"%s"
+
+#: drivemount/drive-button.c:504
+msgid "Mount Error"
+msgstr "Chyba při připojování"
+
+#: drivemount/drive-button.c:507
+msgid "Unmount Error"
+msgstr "Chyba při odpojování"
+
+#: drivemount/drive-button.c:510
+msgid "Eject Error"
+msgstr "Chyb apři vysouvání"
+
+#: drivemount/drive-button.c:513
+msgid "Error"
+msgstr "Chyba"
+
+#: drivemount/drive-button.c:658
+#, c-format
+msgid "_Open %s"
+msgstr "_Otevřít %s"
+
+#: drivemount/drive-button.c:667
+#, c-format
+msgid "_Mount %s"
+msgstr "_Připojit %s"
+
+#: drivemount/drive-button.c:674
+#, c-format
+msgid "Un_mount %s"
+msgstr "Od_pojit %s"
+
+#: drivemount/drive-button.c:681
+#, c-format
+msgid "_Eject %s"
+msgstr "_Vysunout %s"
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -3003,7 +3076,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME indikátor rozložení klávesnice"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:604
+#: gswitchit/gswitchit-applet.c:579
 msgid "Keyboard Indicator"
 msgstr "Indikátor klávesnice"
 
@@ -3011,24 +3084,24 @@ msgstr "Indikátor klávesnice"
 msgid "Keyboard applet factory"
 msgstr "Generátor apletu klávesnice"
 
-#: gswitchit/gswitchit-applet.c:110
+#: gswitchit/gswitchit-applet.c:106
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indikátor klávesnice (%s)"
 
-#: gswitchit/gswitchit-applet.c:607
+#: gswitchit/gswitchit-applet.c:582
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:609
+#: gswitchit/gswitchit-applet.c:584
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
-#: gswitchit/gswitchit-applet.c:763
+#: gswitchit/gswitchit-applet.c:738
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: gswitchit/gswitchit-applet.c:771
+#: gswitchit/gswitchit-applet.c:746
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
@@ -4659,10 +4732,12 @@ msgid "List of GConfValue entries containing strings for history entries."
 msgstr "Seznam položek GConfValue obsahující řetězce pro položky historie."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
+#: mini-commander/src/mini-commander-global.schemas.in.h:3
 msgid "Macro command list"
 msgstr "Seznam příkazů maker"
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
+#: mini-commander/src/mini-commander-global.schemas.in.h:4
 msgid "Macro pattern list"
 msgstr "Seznam vzorů maker"
 
@@ -4729,6 +4804,14 @@ msgstr "Používat barvy tématu místo vlastních."
 #: mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Width"
 msgstr "Šířka"
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:1
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "Seznam položek GConfValue obsahující řetězce pro příkazy maker."
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:2
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "Seznam položek GConfValue obsahující řetězce pro vzory maker."
 
 #: mini-commander/src/mini-commander_applet.c:236
 #: mini-commander/src/mini-commander_applet.c:240
@@ -5480,6 +5563,40 @@ msgstr "Nastavení Sledování systému"
 msgid "Swap Load"
 msgstr "Zatížení odkládacího prostoru"
 
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Upozornit, když přijde nová pošta"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
+msgid "Factory for deprecating applets"
+msgstr "Generátor pro zastarávání apletů"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:3
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Sledování příchozí pošty (zastaralé)"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:4
+msgid "Null Applet Factory"
+msgstr "Generátor pro prázdný aplet"
+
+#: null_applet/null_applet.c:147
+msgid "Some panel items are no longer available"
+msgstr "Některé položky panelu již nejsou k dispozici"
+
+#: null_applet/null_applet.c:148
+msgid ""
+"One or more panel items (also referred to as applets) are no longer "
+"available in the GNOME desktop."
+msgstr "Jedna nebo více položek panelu (také označovaných jako aplety) už není k dispozici v prostředí pracovní plochy GNOME."
+
+#: null_applet/null_applet.c:150
+msgid "These items will now be removed from your configuration:"
+msgstr "Tyto položky budou nyní odstraněny z vašeho nastavení:"
+
+#: null_applet/null_applet.c:153
+msgid "You will not receive this message again."
+msgstr "Tuto zprávu už víckrát nedostanete."
+
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytvořit, zobrazit a spravovat lepící poznámky na pracovní ploše"
@@ -5511,11 +5628,11 @@ msgstr "_Nová poznámka"
 msgid "_Show Notes"
 msgstr "_Zobrazovat poznámky"
 
-#: stickynotes/stickynotes.c:336
+#: stickynotes/stickynotes.c:342
 msgid "This note is locked."
 msgstr "Tato poznámka je zamčena."
 
-#: stickynotes/stickynotes.c:341
+#: stickynotes/stickynotes.c:347
 msgid "This note is unlocked."
 msgstr "Tato poznámka je odemčena."
 
