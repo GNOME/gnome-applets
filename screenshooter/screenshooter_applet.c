@@ -21,168 +21,18 @@
 
 /* If you think this code is a mess, you should see my flat ;) */
 
-#include <gnome.h>
-#include <gdk/gdkx.h>
-#include <gdk/gdkprivate.h>
-#include <applet-widget.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
-#include <limits.h>
-#include <wordexp.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include "window_icon.xpm"
-#include "root_icon.xpm"
+#include "screenshooter_applet.h"
 
-#define VERSION "0.9.7"
-
-/* TODO Use an array of pointers to strings, and execv, or popen instead
+/* TODO For the application launches...
+ * Use an array of pointers to strings, and execv, or popen instead
  * of all these system() calls. At least with popen I could get some
  * feedback from the app, and then be able to report errors... */
-
-typedef struct
-{
-  /* The property window widgets */
-  GtkWidget *propwindow;
-  GtkWidget *quality_entry;
-  GtkWidget *directory_entry;
-  GtkWidget *filename_entry;
-  GtkWidget *delay_entry;
-  GtkWidget *app_entry;
-  GtkWidget *thumb_filename_entry;
-  GtkWidget *script_entry;
-  GtkWidget *spurious_pref_vbox;
-  GtkWidget *spurious_pref_vbox2;
-  GtkWidget *spurious_pref_vbox3;
-
-  int quality;
-  int thumb_quality;
-  int thumb_size;
-  int delay;
-  int beep;
-  int frame_size;
-  int rotate_degrees;
-  int blur_factor;
-  int charcoal_factor;
-  int edge_factor;
-  int implode_factor;
-  int paint_radius;
-  int sharpen_factor;
-  int solarize_factor;
-  int spread_radius;
-  int swirl_degrees;
-  float gamma_factor;
-  gboolean monochrome;
-  gboolean negate;
-  gboolean decoration;
-  gboolean view;
-  gboolean post_process;
-  gboolean thumb;
-  gboolean thumbnail_intermediate;
-  gboolean frame;
-  gboolean equalize;
-  gboolean normalize;
-  gboolean gamma;
-  gboolean flip;
-  gboolean flop;
-  gboolean emboss;
-  gboolean enhance;
-  gboolean despeckle;
-  gboolean use_script;
-  gboolean blur;
-  gboolean charcoal;
-  gboolean edge;
-  gboolean implode;
-  gboolean paint;
-  gboolean solarize;
-  gboolean spread;
-  gboolean swirl;
-  gboolean spurious;
-  gchar *directory;
-  gchar *filename;
-  gchar *app;
-  gchar *thumb_filename;
-  gchar *script_filename;
-}
-user_preferences;
-
-void cb_about (AppletWidget * widget, gpointer data);
-void cb_properties_dialog (AppletWidget * widget, gpointer data);
-void quality_cb (GtkWidget * w, gpointer data);
-void frame_size_cb (GtkWidget * w, gpointer data);
-void thumb_quality_cb (GtkWidget * w, gpointer data);
-void gamma_factor_cb (GtkWidget * w, gpointer data);
-void thumb_size_cb (GtkWidget * w, gpointer data);
-void rotate_degrees_cb (GtkWidget * w, gpointer data);
-void blur_factor_cb (GtkWidget * w, gpointer data);
-void charcoal_factor_cb (GtkWidget * w, gpointer data);
-void edge_factor_cb (GtkWidget * w, gpointer data);
-void implode_factor_cb (GtkWidget * w, gpointer data);
-void paint_radius_cb (GtkWidget * w, gpointer data);
-void sharpen_factor_cb (GtkWidget * w, gpointer data);
-void solarize_factor_cb (GtkWidget * w, gpointer data);
-void spread_radius_cb (GtkWidget * w, gpointer data);
-void swirl_degrees_cb (GtkWidget * w, gpointer data);
-void blur_cb (GtkWidget * w, gpointer data);
-void spurious_cb (GtkWidget * w, gpointer data);
-void charcoal_cb (GtkWidget * w, gpointer data);
-void edge_cb (GtkWidget * w, gpointer data);
-void implode_cb (GtkWidget * w, gpointer data);
-void paint_cb (GtkWidget * w, gpointer data);
-void solarize_cb (GtkWidget * w, gpointer data);
-void swirl_cb (GtkWidget * w, gpointer data);
-void spread_cb (GtkWidget * w, gpointer data);
-void delay_cb (GtkWidget * w, gpointer data);
-void directory_button_pressed (GtkWidget * w, gpointer data);
-void property_apply_cb (GtkWidget * w, gpointer data);
-void decoration_cb (GtkWidget * w, gpointer data);
-void emboss_cb (GtkWidget * w, gpointer data);
-void enhance_cb (GtkWidget * w, gpointer data);
-void despeckle_cb (GtkWidget * w, gpointer data);
-void flip_cb (GtkWidget * w, gpointer data);
-void flop_cb (GtkWidget * w, gpointer data);
-void gamma_cb (GtkWidget * w, gpointer data);
-void frame_cb (GtkWidget * w, gpointer data);
-void thumbnail_intermediate_cb (GtkWidget * w, gpointer data);
-void thumb_cb (GtkWidget * w, gpointer data);
-void use_script_cb (GtkWidget * w, gpointer data);
-void beep_cb (GtkWidget * w, gpointer data);
-void view_cb (GtkWidget * w, gpointer data);
-void equalize_cb (GtkWidget * w, gpointer data);
-void normalize_cb (GtkWidget * w, gpointer data);
-void monochrome_cb (GtkWidget * w, gpointer data);
-void negate_cb (GtkWidget * w, gpointer data);
-gint property_destroy_cb (GtkWidget * w, gpointer data);
-void cb_applet_change_orient (GtkWidget * w, PanelOrientType o,
-			      gpointer data);
-void window_button_press (GtkWidget * button, user_preferences * options);
-void desktop_button_press (GtkWidget * button, user_preferences * options);
-static void properties_save (gchar * path, gpointer data);
-void grab_shot (user_preferences * opt, gboolean root);
-void change_orientation (PanelOrientType o, gboolean size_is_tiny);
-gboolean need_to_change_orientation (PanelOrientType o,
-				     gboolean size_is_tiny);
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size (GtkWidget * w, PanelSizeType s,
-				gpointer data);
-#endif
-
-GtkWidget *applet;
-GtkWidget *hbox;
-GtkWidget *vbox;
-GtkWidget *mainbox;
-GtkWidget *hframe, *vframe;
-GtkWidget *hwindow_button, *hroot_button;
-GtkWidget *vwindow_button, *vroot_button;
-gchar *lastimage = NULL;
-user_preferences options;
-user_preferences old_options;
 
 void
 cb_about (AppletWidget * widget, gpointer data)
 {
   GtkWidget *about;
+  GtkWidget *my_url;
   static const char *authors[] =
     { "Tom Gilbert <gilbertt@tomgilbert.freeserve.co.uk>",
     "The Sirius Cybernetics Corporation (Ursa-minor)", NULL
@@ -198,6 +48,12 @@ cb_about (AppletWidget * widget, gpointer data)
 		 "or an area (click and drag to select a rectangle.)\n"
 		 "The right/bottom button will grab the entire desktop.\n"
 		 "Share and Enjoy ;)"), NULL);
+
+  my_url = gnome_href_new ("http://www.tomgilbert.freeserve.co.uk",
+			   "Visit the author's Website");
+  gtk_widget_show (my_url);
+  gtk_box_pack_start (GTK_BOX ((GNOME_DIALOG(about))->vbox), my_url, FALSE, FALSE, 0);
+
   gtk_widget_show (about);
   data = NULL;
   widget = NULL;
@@ -614,15 +470,10 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      0);
   gtk_widget_show (button);
 
-  /* --------- */
-
   label = gtk_label_new (_ ("General"));
   gtk_widget_show (pref_vbox);
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (ad->propwindow),
 				  pref_vbox, label);
-
-  /* Directories, files and apps */
-
 
   pref_vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
@@ -868,9 +719,10 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (pref_hbox);
   label =
     gtk_label_new (_
-		   ("All post-processing options will chug more cpu than a simple screenshot,\n"
-		    "due to the creation and then conversion of an intermediate image.\n"
-		    "Intensive operations may take some time on less spiffy cpus."));
+		   ("All post-processing, frill and spurious options "
+		    "will chug more cpu than a\nsimple screenshot, "
+		    "due to the creation and then conversion of an intermediate\n"
+		    "image. Intensive operations may take some time on less spiffy cpus."));
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
 
@@ -993,25 +845,6 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   pref_vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
-
-  frame = gtk_frame_new (NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_vbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), pref_hbox, FALSE, FALSE, 0);
-  gtk_widget_show (pref_hbox);
-  label =
-    gtk_label_new (_
-		   ("The same rules apply as to post-processing, these options may chug."));
-  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-  gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
 
   button = gtk_check_button_new_with_label (_ ("Create Frame around image?"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->frame);
@@ -1272,7 +1105,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
   gtk_widget_show (pref_vbox_2);
 
-  adj = gtk_adjustment_new (ad->paint_radius, 0.0, 100.0, 10.0, 1.0, 0.0);
+  adj = gtk_adjustment_new (ad->paint_radius, 0.0, 20.0, 1.0, 1.0, 0.0);
   hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
   gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
   gtk_scale_set_digits (GTK_SCALE (hscale), 0);
@@ -1328,7 +1161,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
   gtk_widget_show (pref_vbox_2);
 
-  adj = gtk_adjustment_new (ad->spread_radius, 0.0, 100.0, 10.0, 1.0, 0.0);
+  adj = gtk_adjustment_new (ad->spread_radius, 0.0, 20.0, 1.0, 1.0, 0.0);
   hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
   gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
   gtk_scale_set_digits (GTK_SCALE (hscale), 0);
@@ -1337,7 +1170,8 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
   gtk_widget_show (hscale);
 
-  button = gtk_check_button_new_with_label (_ ("Swirl Pixels?"));
+  button =
+    gtk_check_button_new_with_label (_ ("Swirl Pixels? My favorite :-)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->swirl);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) swirl_cb, NULL);
@@ -1369,7 +1203,6 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (ad->propwindow),
 				  ad->spurious_pref_vbox2, label);
 
-
   gtk_signal_connect (GTK_OBJECT (ad->propwindow), "apply",
 		      GTK_SIGNAL_FUNC (property_apply_cb), ad);
   gtk_signal_connect (GTK_OBJECT (ad->propwindow), "destroy",
@@ -1383,7 +1216,6 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
     }
 
   gtk_widget_show (ad->propwindow);
-
   data = NULL;
   widget = NULL;
 }
@@ -1399,6 +1231,11 @@ applet_save_session (GtkWidget * widget, gchar * privcfgpath,
 int
 main (int argc, char *argv[])
 {
+  GtkWidget *hbox;
+  GtkWidget *vbox;
+  GtkWidget *mainbox;
+  GtkWidget *hwindow_button, *hroot_button;
+  GtkWidget *vwindow_button, *vroot_button;
   GtkWidget *hwindowpixmap;
   GtkWidget *hrootpixmap;
   GtkWidget *vwindowpixmap;
@@ -1428,11 +1265,11 @@ main (int argc, char *argv[])
   vbox = gtk_vbox_new (FALSE, 1);
 
   vframe = gtk_frame_new (NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (vframe), 1);
+  gtk_container_set_border_width (GTK_CONTAINER (vframe), 0);
   gtk_frame_set_shadow_type (GTK_FRAME (vframe), GTK_SHADOW_IN);
 
   hframe = gtk_frame_new (NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (hframe), 1);
+  gtk_container_set_border_width (GTK_CONTAINER (hframe), 0);
   gtk_frame_set_shadow_type (GTK_FRAME (hframe), GTK_SHADOW_IN);
 
   gtk_container_add (GTK_CONTAINER (hframe), hbox);
@@ -1444,10 +1281,10 @@ main (int argc, char *argv[])
   vwindow_button = gtk_button_new ();
   hroot_button = gtk_button_new ();
   vroot_button = gtk_button_new ();
-  gtk_widget_set_usize (hwindow_button, 20, 20);
-  gtk_widget_set_usize (vwindow_button, 20, 20);
-  gtk_widget_set_usize (hroot_button, 20, 20);
-  gtk_widget_set_usize (vroot_button, 20, 20);
+  gtk_widget_set_usize (hwindow_button, 18, 18);
+  gtk_widget_set_usize (vwindow_button, 18, 18);
+  gtk_widget_set_usize (hroot_button, 18, 18);
+  gtk_widget_set_usize (vroot_button, 18, 18);
   gtk_box_pack_start (GTK_BOX (hbox), hwindow_button, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (vbox), vwindow_button, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (hbox), hroot_button, TRUE, TRUE, 0);
@@ -1556,18 +1393,18 @@ desktop_button_press (GtkWidget * button, user_preferences * opt)
 void
 grab_shot (user_preferences * opt, gboolean root)
 {
-  gchar *sys;
+  gchar *sys=NULL;
   gchar qual_buf[10];
   gchar thumb_qual_buf[10];
-  gchar *dir_buf;
-  gchar *file_buf;
-  gchar *temp_dir_file_buf;
+  gchar *dir_buf=NULL;
+  gchar *file_buf=NULL;
+  gchar *temp_dir_file_buf=NULL;
   gchar dec_buf[10];
   gchar mono_buf[25];
   gchar neg_buf[15];
   gchar beep_buf[10];
   gchar delay_buf[15];
-  gchar *thumb_image;
+  gchar *thumb_image=NULL;
   wordexp_t mywordexp;
   int wordexpret = 0;
 
@@ -1721,7 +1558,7 @@ grab_shot (user_preferences * opt, gboolean root)
 		       "-window", "root", "-quality", qual_buf, lastimage,
 		       NULL);
     }
-  system (sys);
+  system(sys);
 
   if (opt->post_process)
     {

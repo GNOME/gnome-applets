@@ -6,27 +6,26 @@ INCLUDES = -I. -I$(srcdir) 				\
 bin_PROGRAMS = screenshooter_applet
 
 screenshooter_applet_SOURCES = \
-	screenshooter_applet.c
+	screenshooter_applet.c		\
+	screenshooter_applet.h		\
+	root_icon.xpm  \
+	window_icon.xpm 
 
 screenshooter_applet_LDADD = \
-	$(GNOME_LIBDIR) \
-	$(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) \
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+
+EXTRA_DIST = screenshooter_applet.desktop screenshooter_applet.gnorba \
+	update_scrshot_page INSTALL
+
+scrshotdir = $(bindir)
+scrshot_SCRIPTS = update_scrshot_page
+
+pngdir = $(datadir)/pixmaps
+png_DATA = screenshooter_applet.png
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = screenshooter_applet.desktop
 
-pixmapdir = $(datadir)/pixmaps
-pixmap_DATA = screenshooter_applet.png
-
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = screenshooter_applet.gnorba
-
-#scriptdir = $(datadir)/screenshooter_applet
-script = update_scrshot_page
-
-extra_icons = root_icon.xpm window_icon.xpm
-
-EXTRA_DIST = \
-	$(sys_DATA) $(pixmap_DATA) $(gnorba_DATA) $(script_DATA) $(extra_icons)
-
-
