@@ -1,5 +1,6 @@
 
-INCLUDES = $(GNOME_INCLUDEDIR)
+INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+		 -I$(includedir)  $(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = gtik_applet
 
