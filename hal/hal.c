@@ -16,10 +16,10 @@
 /* Note: _MUST_ be NULL-terminated. */
 static char *fortunes[] =
 {
-	("I'm sorry, Dave, I can't let you do that."),
-	("Dave, what are you doing?"),
-	("I can feel my mind going, Dave...I can feel it."),
-	("Daisy, daisy..."),
+	N_("I'm sorry, Dave, I can't let you do that."),
+	N_("Dave, what are you doing?"),
+	N_("I can feel my mind going, Dave...I can feel it."),
+	N_("Daisy, daisy..."),
 	NULL
 };
 
@@ -100,7 +100,7 @@ static void hal_draw(GtkWidget * darea, Hal * fish)
 }
 
 static const char *
- hal_quote_new()
+hal_quote_new()
 {
 	int i = 0, j;
 
@@ -156,7 +156,7 @@ static void update_fortune_dialog(Hal * fish)
 		load_properties(fish);
 	}
 	gnome_less_show_string(GNOME_LESS(fish->fortune_less),
-			       hal_quote_new());
+			       _(hal_quote_new()));
 	if (!GTK_WIDGET_VISIBLE(fish->fortune_dialog))
 		gtk_widget_show(fish->fortune_dialog);
 }
