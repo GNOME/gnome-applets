@@ -369,7 +369,10 @@ cpufreq_monitor_set_cpu (CPUFreqMonitor *monitor, guint cpu)
 
 	   private = CPUFREQ_MONITOR_GET_PROTECTED (monitor);
 
-	   private->cpu = cpu;
+	   if (private->cpu != cpu) {
+			 private->cpu = cpu;
+			 g_signal_emit (monitor, CPUFREQ_MONITOR_GET_CLASS (monitor)->signals[CHANGED], 0);
+	   }
 }
 
 	   
