@@ -55,12 +55,9 @@ applet_destroy_signal(GtkWidget *widget, gpointer data)
     MCData *mcdata = data;
     PanelApplet *applet = mcdata->applet;
     
-    /* applet will be destroyed; save settings now */
+    /* applet will be destroyed; save history */
     save_session();
 
-   
-    if (mcdata->label_timeout > 0)
-    	gtk_timeout_remove (GPOINTER_TO_INT (mcdata->label_timeout));
 #if 0 /* Freeing these prevents the applet from restarting - not sure what's up */
   
     g_free (mcdata->prop);
@@ -141,18 +138,14 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
     prop->normal_size_y = size;
     if(size <= GNOME_Vertigo_PANEL_X_SMALL)
 	{
-	    prop->show_frame = FALSE;
 	    prop->flat_layout = TRUE;
 	} 
     else if(size <= GNOME_Vertigo_PANEL_SMALL)
 	{
-
-	    prop->show_frame = TRUE;
 	    prop->flat_layout = TRUE;
 	} 
     else
 	{
-	    prop->show_frame = TRUE;
 	    prop->flat_layout = FALSE;
 	}
 
@@ -160,6 +153,20 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
     return;
     widget = NULL;
     data = NULL;
+}
+
+static gboolean
+button_press_hack (GtkWidget *widget, GdkEventButton *event, gpointer data)
+{
+	PanelApplet *applet = PANEL_APPLET (data);
+
+	if (event->button == 1) {
+		return FALSE;
+	} else {
+		GTK_WIDGET_CLASS (PANEL_APPLET_GET_CLASS (applet))->
+			button_press_event (data, event);
+	}
+	return TRUE;
 }
 
 void
@@ -248,6 +255,8 @@ redraw_applet(MCData *mcdata)
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(show_file_browser_signal),
 		       applet);
+    g_signal_connect (G_OBJECT (button), "button_press_event",
+		      G_CALLBACK (button_press_hack), applet);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
@@ -260,6 +269,8 @@ redraw_applet(MCData *mcdata)
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(show_history_signal),
 		       applet);
+    g_signal_connect (G_OBJECT (button), "button_press_event",
+		      G_CALLBACK (button_press_hack), applet);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
@@ -367,6 +378,8 @@ mini_commander_applet_fill(PanelApplet *applet)
 {
     MCData *mcdata;
     
+    panel_applet_add_preferences (applet, "/schemas/apps/mini-commander/prefs", NULL);
+    
     mcdata = g_new0 (MCData, 1);
     mcdata->applet = applet;
   
@@ -386,7 +399,7 @@ mini_commander_applet_fill(PanelApplet *applet)
 		     G_CALLBACK(applet_pixel_size_changed_cb),
 		     mcdata);
     
-    mcdata->prop = load_session();
+    mcdata->prop = load_session(mcdata);
     g_object_set_data (G_OBJECT (applet), "prop", mcdata->prop);
     
     g_signal_connect(G_OBJECT(applet), "destroy",

@@ -126,7 +126,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    /* printf("%s\n", command); */
 	    exec_command(command, applet);
 
-	    append_history_entry((char *) command);
+	    append_history_entry(mcdata, (char *) command, FALSE);
 	    history_position = LENGTH_HISTORY_LIST;		   
 	    free(command);
 

@@ -41,7 +41,7 @@ struct struct_properties
 
 extern GtkWidget *applet;
 
-properties * load_session(void);
+properties * load_session(MCData *mcdata);
 
 gint save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath);
 

@@ -14,6 +14,7 @@ struct _MCData
     properties *prop;
     GtkWidget *applet_vbox;
     GtkWidget *applet_inner_vbox;
+    GtkWidget *properties_box;
     gint label_timeout;
 };
 

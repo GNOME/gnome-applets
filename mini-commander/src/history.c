@@ -25,6 +25,8 @@
 #include <config.h>
 #include <string.h>
 #include <gnome.h>
+#include <gconf/gconf.h>
+#include <panel-applet.h>
 
 #include "history.h"
 #include "preferences.h"
@@ -55,10 +57,17 @@ set_history_entry(int pos, char * entry)
     strcpy(history_command[pos], entry);
 }
 
+/* load_history indicates whether the history list is being loaded at startup.
+** If true then don't save the new entries with gconf (since they are being read
+** using gconf
+*/
 void
-append_history_entry(char * entry)
+append_history_entry(MCData *mcdata, char * entry, gboolean load_history)
 {
-    int pos;
+    PanelApplet *applet = mcdata->applet;
+    GConfValue *history;
+    GSList *list = NULL;
+    int pos, i;
 
     /* remove older dupes */
     for(pos = 0; pos <= LENGTH_HISTORY_LIST - 1; pos++)
@@ -82,6 +91,40 @@ append_history_entry(char * entry)
     /* append entry */
     history_command[LENGTH_HISTORY_LIST - 1] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
     strcpy(history_command[LENGTH_HISTORY_LIST - 1], entry);
+    
+    if (load_history)
+    	return;
+    	
+    /* Save history - this seems like a waste to do it every time it's updated 
+    ** but it doesn't seem to work when called on the destroy signal of the applet 
+    */
+    for(i = 0; i < LENGTH_HISTORY_LIST; i++)
+	{
+	    GConfValue *entry;
+	    
+	    entry = gconf_value_new (GCONF_VALUE_STRING);
+	    if(exists_history_entry(i)) {
+	    	gconf_value_set_string (entry, (gchar *) get_history_entry(i));
+	    	list = g_slist_append (list, entry);
+	    }        
+	    
+	}
+
+    history = gconf_value_new (GCONF_VALUE_LIST);
+    if (list) {
+    	gconf_value_set_list_type (history, GCONF_VALUE_STRING);
+        gconf_value_set_list (history, list);
+        panel_applet_gconf_set_value (applet, "history", history, NULL);
+    }
+   
+    while (list) {
+    	GConfValue *value = list->data;
+    	gconf_value_free (value);
+    	list = g_slist_next (list);
+    }
+   
+    gconf_value_free (history);
+    
 }
 
 void
