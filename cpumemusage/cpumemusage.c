@@ -270,6 +270,11 @@ help_cb (AppletWidget *applet, gpointer data)
 int
 main(int argc, char **argv)
 {
+
+	/* Initialize gettext support */
+	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
+	
         applet_widget_init("cpumemusage_applet", VERSION, argc, argv,
 			   NULL, 0, NULL);
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-cpu-mem.png");
