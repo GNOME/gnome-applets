@@ -274,16 +274,23 @@
   </sect2>
 
   <sect2 id="drivemountapplet-configuring">
-   <title>Configuring Your System</title>  
+   <title>Configuring Your System</title>
+
+   <warning>
+    <title>For Advanced Users</title>
+    <para>
+     This section is intended for system administrators and advanced
+     users.
+    </para>
+   </warning>
+  
    <para>
     In order for <application>Drive Mount Applet</application> to work
-    properly, the system must be properly configured by somebody with
-    root access.  ...
+    properly, the system may need to be configured by the system
+    administrator, using root priveleges.  This section provides a
+    very basic introduction.
    </para>
 
-
-  <note>
-   <title>Note For Advanced Users: Drive Mounting Configuration</title>
    <para>
     Information describing the mount point and filesystem type of each
     drive is kept in <filename>/etc/fstab</filename>.  This can be
@@ -291,28 +298,57 @@
     <application>linuxconf</application> application. For drives which
     do not always have a single filesystem type (such as a floppy
     drive which may have msdos or ext2 filesystems), you should use
-    "auto" for the filesystem type.
+    "auto" for the filesystem type.  Each device has a single line in
+    /etc/fstab of the following form:
+    <programlisting>
+    /dev/fd0        /mnt/floppy      auto    noauto,rw,user  0 0
+    </programlisting>
+    This entry describes the first floppy device (/dev/fd0) as having
+    a mount point of <filename>/mnt/floppy</filename>, a variable
+    filesystem type which should be automatically detected, and the
+    following configurations: "noauto"&mdash; Do not automatically
+    mount the drive when the computer is booted, "rw"&mdash; The drive
+    is readable and writable, and "user"&mdash; Users have permission
+    to mount the drive.  These, along with the last two fields which
+    we do not describe here, are discussed in detail in the fstab man
+    pages, available by typing <command>man fstab</command> or through
+    the <application>GNOME Help Browser</application>.
    </para>
-  </note>
-
+   <para>
+    The <application>linuxconf</application> application provides a
+    graphical interface to controlling these filesystems.  To start
+    <application>linuxconf</application>, just type
+    <command>linuxconf</command> in a shell window (you must log in as
+    root). Select 
+    <menuchoice>
+     <guimenu>Config</guimenu>
+     <guisubmenu>File systems</guisubmenu>
+     <guimenuitem>Access local drive</guimenuitem>
+    </menuchoice>. 
+    To edit an entry, just select
+    it. <application>linuxconf</application> is meant to be easy
+    to use, and has its own internal help system to guide you
+    through the process. You may also add new entries by selecting the
+    <guibutton>Add</guibutton> button.
+   </para>
   </sect2>
 
-
-
-  <sect2 id="drivemountapplet-errors">
-   <title>Error Messages</title>  
+  <sect2 id="drivemountapplet-troubleshooting">
+   <title>Troubleshooting and Understanding Error Messages</title>
    <para>
     If you do not have your system configured properly, you may
     encounter certain error messages when trying to mount or access
     certain drives. Here are some of the more common error messages
     and their causes: 
-    <itemizedlist> 
+    <itemizedlist>
      <listitem>
       <para>
-       <quote>mount: the kernel does not recognize /dev/sda4 as a
-       block device(maybe 'insmod driver'?)</quote>&mdash; blah blah
+       <quote>mount: /dev/fd0 is not a valid block
+       device</quote>&mdash; The most common cause for this error is
+       that the drive (in this example, /dev/fd0, corresponding to the
+       floppy drive) is empty. 
       </para>
-     </listitem>
+     </listitem> 
      <listitem>
       <para>
        <quote>mount: only root can mount /dev/fda on
@@ -342,31 +378,58 @@
      </listitem>
      <listitem>
       <para>
-       <quote>mount: /dev/fd0 is not a valid block
-       device</quote>&mdash; blah blah  (no floppy in drive)
+       <quote>mount: wrong fs type, bad option, bad superblock on
+       /dev/cdrom, or too many mounted file systems</quote>&mdash;
+       This error can be caused by several problems.  It is most
+       commonly caused by having the write filesystem type, such as
+       trying to mount a music CDROM as if it held data, or trying to
+       mount an msdos formatted floppy as ext2.
       </para>
      </listitem>
      <listitem>
       <para>
-       <quote>mount: wrong fs type, bad option, bad superblock on
-       /dev/cdrom, or too many mounted file systems</quote>&mdash;
-       blah blah (could be a music cd instead of a data cd)  (could be
-       the wrong format of disk or drive)
+       <quote>umount: can't find /mnt/floppy in /etc/fstab or /etc/mtab
+       </quote>&mdash;
+       This indicates that the system has not been configured to mount
+       the mount point you are trying to use.  In many cases, you may
+       have put the wrong mount point in the <guilabel>Mount
+       point</guilabel> entry in the <interface>Properties
+       Dialog</interface> (see <xref
+       linkend="drivemountapplet-prefs">). To find out which mount
+       point you should be using, contact your system administrator.
       </para>
+      <note>
+       <title>Note for Advanced Users</title>
+       <para>
+        Each device (filesystem or drive) which can be mounted should
+        be listed in the <filename>/etc/fstab</filename> configuration
+        file. Reading this file will tell you what devices are
+        configured for your system.  To add or modify entries, you can
+        edit this file by hand or by using the
+        <application>linuxconf</application> application.
+       </para>
+      </note>
      </listitem>
      <listitem>
       <para>
        <quote>mount: /dev/fd0 already mounted or /mnt/floppy busy
        mount: according to mtab, /dev/fd0 is mounted on /mnt/floppy_ext2
        </quote>&mdash;
-       blah blah (two mount points for one device)
+       This error occurs if you have a single device (in this case
+       /dev/fd0) configured for multiple mount points and you try to
+       mount one mount point while another one is already mounted.
+       Having multiple mount points for a single device typically is
+       not necessary.
       </para>
      </listitem>
      <listitem>
       <para>
-       <quote>umount: /mnt/floppy is not mounted (according to mtab)
-       </quote>&mdash;
-       blah blah (could be that the mount point does not exist)
+       <quote>mount: the kernel does not recognize /dev/sda4 as a
+       block device(maybe 'insmod driver'?)</quote>&mdash; Contact
+       your system administrator. (This error
+       occurs if your kernel is not properly configured to
+       automatically mount the necessary kernel modules to read the
+       device.)
       </para>
      </listitem>
     </itemizedlist>
@@ -376,8 +439,9 @@
   <sect2 id="drivemountapplet-bugs">
    <title> Known bugs and limitations</title>
    <para>
-    <guimenuitem>Eject</guimenuitem> may not work.  Can't eject when
-    mounted (it should give error message or else unmount in this case).
+    <guimenuitem>Eject</guimenuitem> does not always work.  Trying to
+    Eject with the drive mounted does not give a warning, explaining
+    why the drive does not eject.
    </para>
   </sect2>
 
