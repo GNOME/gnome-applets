@@ -53,16 +53,16 @@ static const MCDefaultMacro mc_default_macros [] = {
 	{ "^n$",                 "netscape" },
 
 	/* altavista search */
-	{ "^av: *(.*)$",         "gnome-moz-remote --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
+	{ "^av: *(.*)$",         "mozilla --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
 
 	/* yahoo search */
-	{ "^yahoo: *(.*)$",      "gnome-moz-remote --newwin http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
+	{ "^yahoo: *(.*)$",      "mozilla --newwin http://ink.yahoo.com/bin/query?p=$(echo '\\1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')" },
 
 	/* freshmeat search */
-	{ "^fm: *(.*)$",         "gnome-moz-remote --newwin http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)" },
+	{ "^fm: *(.*)$",         "mozilla --newwin http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)" },
 
 	/* dictionary search */
-	{ "^dictionary: *(.*)$", "gnome-moz-remote --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=\\1" },
+	{ "^dictionary: *(.*)$", "mozilla --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=\\1" },
 };
 
 G_END_DECLS

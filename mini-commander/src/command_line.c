@@ -32,6 +32,7 @@
 #include "cmd_completion.h"
 #include "history.h"
 
+static gint file_browser_cancel_signal(GtkWidget *widget, gpointer mc_data);
 static gint file_browser_ok_signal(GtkWidget *widget, gpointer file_select);
 static gint history_popup_clicked_cb(GtkWidget *widget, gpointer data);
 static gint history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data);
@@ -398,20 +399,29 @@ mc_show_history (GtkWidget *widget,
 }
 
 static gint 
-file_browser_ok_signal(GtkWidget *widget, gpointer file_select)
+file_browser_cancel_signal(GtkWidget *widget, gpointer mc_data)
 {
-    GtkWidget *fs = file_select;
-    MCData *mc = g_object_get_data (G_OBJECT (fs), "applet");
+    MCData *mc = mc_data;
+    gtk_widget_destroy (mc->file_select);
+    mc->file_select = NULL;
+    return FALSE;
+}
+
+static gint 
+file_browser_ok_signal(GtkWidget *widget, gpointer mc_data)
+{
+    MCData *mc = mc_data;
     /* get selected file name */
-    strcpy(browsed_filename, (char *) gtk_file_selection_get_filename(GTK_FILE_SELECTION(file_select)));
+    strcpy(browsed_filename, (char *) gtk_file_selection_get_filename(GTK_FILE_SELECTION(mc->file_select)));
 
     /* destroy file select dialog */
-    gtk_widget_destroy(GTK_WIDGET(file_select));
+    gtk_widget_destroy(GTK_WIDGET(mc->file_select));
     
     /* printf("Filename: %s\n", (char *)  browsed_filename); */
 
     /* execute command */
     mc_exec_command(mc, browsed_filename);
+    mc->file_select = NULL;
 
     /* go on */
     return FALSE;  
@@ -432,11 +442,11 @@ mc_show_file_browser (GtkWidget *widget,
     gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(mc->file_select)->ok_button),
 		       "clicked",
 		       GTK_SIGNAL_FUNC(file_browser_ok_signal),
-		       GTK_OBJECT(mc->file_select));
-    gtk_signal_connect_object(GTK_OBJECT(GTK_FILE_SELECTION(mc->file_select)->cancel_button),
+		               mc);
+    gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(mc->file_select)->cancel_button),
 			      "clicked",
-			      GTK_SIGNAL_FUNC(gtk_widget_destroy),
-			      GTK_OBJECT (mc->file_select));
+			      GTK_SIGNAL_FUNC(file_browser_cancel_signal),
+			      mc);
 
     /* set path to last selected path */
     gtk_file_selection_set_filename(GTK_FILE_SELECTION(mc->file_select),

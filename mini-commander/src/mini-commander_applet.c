@@ -299,6 +299,9 @@ mc_destroyed (GtkWidget *widget,
 
     if (mc->prefs_dialog.dialog)
         g_object_unref (mc->prefs_dialog.macros_store);
+
+    if (mc->file_select)
+        gtk_widget_destroy (mc->file_select);
     
     g_free (mc);
 }
