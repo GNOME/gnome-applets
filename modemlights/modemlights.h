@@ -59,14 +59,11 @@ extern gint use_ISDN;
 extern gint show_extra_info;
 extern gint status_wait_blink;
 
-extern GtkWidget *applet;
-
 void start_callback_update(void);
 void reset_orientation(void);
 void reset_colors(void);
 
-void property_load(const char *path);
-void property_save(const char *path, gint to_default);
+void property_load(PanelApplet *applet);
 void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 
 

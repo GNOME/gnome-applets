@@ -1414,6 +1414,8 @@ modemlights_applet_fill (PanelApplet *applet)
 	gint i;
 
 	global_applet = GTK_WIDGET (applet);
+	
+	panel_applet_add_preferences (applet, "/schemas/apps/modemlights/prefs", NULL);
 
 	for (i=0;i<119;i++)
 		load_hist[i] = 0;
@@ -1453,7 +1455,7 @@ modemlights_applet_fill (PanelApplet *applet)
 		}
 
 
-	property_load(NULL);
+	property_load(applet);
 
 	/* frame for all widgets */
 	frame = gtk_fixed_new();
@@ -1499,7 +1501,7 @@ modemlights_applet_fill (PanelApplet *applet)
 	panel_applet_setup_menu (PANEL_APPLET (applet),
 				 modem_applet_menu_xml,
 				 modem_applet_menu_verbs,
-				 NULL);
+				 applet);
 				 
 	/* by now we know the geometry */
 	setup_done = TRUE;
