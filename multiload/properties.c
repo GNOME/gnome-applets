@@ -188,6 +188,8 @@ color_picker_set_cb(GnomeColorPicker *color_picker, guint arg1, guint arg2, guin
 		prop_type = PROP_NET;
 	else if (strstr(gconf_path, "swapload"))
 		prop_type = PROP_SWAP;
+	else if (strstr(gconf_path, "loadavg"))
+		prop_type = PROP_AVG;
 	else
 		g_assert_not_reached();
 		
