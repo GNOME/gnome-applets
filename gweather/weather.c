@@ -1081,12 +1081,6 @@ gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, Weath
     g_return_val_if_fail(((info == NULL) && (location != NULL)) || \
                          ((info != NULL) && (location == NULL)), FALSE);
 
-    /* FIX */
-    if (!requests_init(cb, info)) {
-        g_warning(_("Another update already in progress!\n"));
-        return FALSE;
-    }
-
     if (!info) {
         info = g_new(WeatherInfo, 1);
         info->location = weather_location_clone(location);
@@ -1094,6 +1088,12 @@ gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, Weath
         location = info->location;
         g_free(info->forecast);
         gdk_imlib_free_pixmap(info->radar);
+    }
+
+    /* FIX */
+    if (!requests_init(cb, info)) {
+        g_warning(_("Another update already in progress!\n"));
+        return FALSE;
     }
 
     /* Defaults (just in case...) */
