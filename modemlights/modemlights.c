@@ -1,11 +1,11 @@
-/*###################################################################*/
-/*##                         modemlights applet 0.1.0 alpha        ##*/
-/*##                                          by John Ellis        ##*/
-/*###################################################################*/
+/*#####################################################*/
+/*##           modemlights applet 0.2.0 alpha        ##*/
+/*#####################################################*/
 
 #include "modemlights.h"
 
 #include "backgrnd.xpm"
+#include "backgrnd_s.xpm"
 #include "lights.xpm"
 
 /* how many times per second to update the lights (1 - 20) */
@@ -19,10 +19,13 @@ static GtkWidget *frame;
 static GtkWidget *display_area;
 static GdkPixmap *display;
 static GdkPixmap *display_back;
+static GdkPixmap *display_back_s;
 static GdkPixmap *lights;
 
 static int update_timeout_id = FALSE;
 static int ip_socket;
+
+static PanelOrientType orient;
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -30,7 +33,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	gchar *authors[2];
 	gchar version[32];
 
-	sprintf(version,"%d.%d.%d           ",MODEMLIGHTS_APPLET_VERSION_MAJ,
+	sprintf(version,"%d.%d.%d",MODEMLIGHTS_APPLET_VERSION_MAJ,
 		MODEMLIGHTS_APPLET_VERSION_MIN, MODEMLIGHTS_APPLET_VERSION_REV);
 
 	authors[0] = "John Ellis (gqview@geocities.com)";
@@ -39,9 +42,9 @@ static void about_cb (AppletWidget *widget, gpointer data)
         about = gnome_about_new ( _("Modem Lights Applet"), version,
 			"(C) 1998",
 			authors,
-			_("http://www.geocities.com/SiliconValley/Haven/5235\n"
-			"Released under the GNU general public license.\n"
-			"A modem status indicator. "),
+			_("Released under the GNU general public license.\n"
+			"A modem status indicator. "
+			"Lights in order from the top or left are RX, TX, and CD."),
 			NULL);
 	gtk_widget_show (about);
 }
@@ -66,6 +69,16 @@ static void redraw_display()
 
 static void draw_light(int lit,int x,int y)
 {
+	/* if the orientation is sideways (left or right panel), we swap x and y */
+	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+		{
+		int t;
+		t = y;
+		y = x;
+		x = t;
+		}
+
+	/* draw the light */
 	if (lit)
 		gdk_draw_pixmap (display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)], lights, 0, 10, x, y, 10, 10);
 	else
@@ -139,6 +152,7 @@ static gint update_display()
 	return TRUE;
 }
 
+/* start or change the update callback timeout interval */
 void start_callback_update()
 {
 	gint delay;
@@ -156,6 +170,8 @@ static void create_pixmaps()
 
 	display_back = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
 		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_xpm);
+	display_back_s = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
+		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_s_xpm);
 	lights = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
 		&style->bg[GTK_STATE_NORMAL], (gchar **)lights_xpm);
 
@@ -163,7 +179,29 @@ static void create_pixmaps()
 
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
-	/* fixme: must change drawing_area and applet dimensions for left/right */
+	/* resize the applet and set the proper background pixmap */
+	orient = o;
+
+	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+		{
+		display = gdk_pixmap_new(display_area->window,40,10,-1);
+		gtk_widget_set_usize(frame, 44, 14);
+		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),40,10);
+		gdk_draw_pixmap(display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+			display_back_s, 0, 0, 0, 0, 40, 10);
+		}
+	else
+		{
+		display = gdk_pixmap_new(display_area->window,10,40,-1);
+		gtk_widget_set_usize(frame, 14, 44);
+		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),10,40);
+		gdk_draw_pixmap(display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+			display_back, 0, 0, 0, 0, 10, 40);
+		}
+	/* we set the lights to off so they will be correct on the next update */
+	update_lights(FALSE, FALSE, FALSE);
+
+
 }
 
 static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath)
@@ -184,6 +222,7 @@ int main (int argc, char *argv[])
 	gnome_init("modemlights_applet", NULL, argc, argv, 0, NULL);
 
 	strcpy(lock_file,"/var/lock/LCK..modem");
+	orient = ORIENT_UP;
 
 	/* open ip socket */
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
@@ -227,7 +266,6 @@ int main (int argc, char *argv[])
 	create_pixmaps();
 
 	gtk_widget_show(frame);
-
 	gtk_widget_show(applet);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
