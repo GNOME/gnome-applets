@@ -254,16 +254,6 @@ prop_apply (GtkWidget *w, int page, gpointer data)
    */
   bat->setup = FALSE;
 
-  height = GTK_ADJUSTMENT (bat->height_adj)->value;
-  width = GTK_ADJUSTMENT (bat->width_adj)->value;
-
-  if ((height != bat->height) || (width != bat->width))
-    {
-      size_changed = TRUE;
-      bat->height = height;
-      bat->width = width;
-    }
-
   bat->graph_interval = GTK_ADJUSTMENT (bat->graph_speed_adj)->value;
   gtk_timeout_remove (bat->graph_timeout_id);
   bat->graph_timeout_id = gtk_timeout_add (1000 * bat->graph_interval,
@@ -292,6 +282,19 @@ prop_apply (GtkWidget *w, int page, gpointer data)
       g_free (new_graph);
 
       bat->graph_direction = new_direction;
+    }
+
+  /*
+   * Update the size
+   */
+  height = GTK_ADJUSTMENT (bat->height_adj)->value;
+  width = GTK_ADJUSTMENT (bat->width_adj)->value;
+
+  if ((height != bat->height) || (width != bat->width))
+    {
+      size_changed = TRUE;
+      bat->height = height;
+      bat->width = width;
     }
 
   gnome_color_picker_get_i8 (bat->graph_ac_on_color_sel,
