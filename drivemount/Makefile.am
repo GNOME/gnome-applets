@@ -17,8 +17,11 @@ properties.h
 
 drivemount_applet2_LDADD = $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-serverdir  = $(libdir)/bonobo/servers
-server_DATA = GNOME_DriveMountApplet.server
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_DriveMountApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+@XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = \
 cdrom_h_in.xpm \
@@ -41,4 +44,4 @@ jazdrive_h_in.xpm \
 jazdrive_h_out.xpm \
 jazdrive_v_in.xpm \
 jazdrive_v_out.xpm \
-$(server_DATA)
+$(server_in_files)

@@ -27,8 +27,11 @@ $(CDROM_LIBS)
 icondir   = $(datadir)/pixmaps
 icon_DATA = gnome-cdplayer-icon.png
 
-serverdir   = $(libdir)/bonobo/servers
-server_DATA = GNOME_CDPlayerApplet.server
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_CDPlayerApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+@XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = \
 images/cdplayer-backward.xpm \
@@ -42,4 +45,4 @@ images/led.xpm \
 cdrom-linux.c \
 cdrom-solaris.c \
 $(icon_DATA) \
-$(server_DATA)
+$(server_in_files)
