@@ -176,32 +176,44 @@ multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 }
 
 void
-multiload_change_background_cb(PanelApplet *a, PanelAppletBackgroundType type,
-				GdkColor *color, GdkPixmap *pixmap,
+multiload_change_background_cb (PanelApplet *a,
+				PanelAppletBackgroundType type,
+				GdkColor *color,
+				GdkPixmap *pixmap,
 				gpointer *data)
 {
-	MultiloadApplet *ma = (MultiloadApplet *)data;
-	GtkRcStyle *rc_style = gtk_rc_style_new ();
+	/* Taken from Trash Applet */
+	MultiloadApplet *ma = (MultiloadApplet *) data;
+	GtkRcStyle *rc_style;
+	GtkStyle *style;
+	
+	/* reset style */
+	gtk_widget_set_style (GTK_WIDGET (ma->applet), NULL);
+	rc_style = gtk_rc_style_new ();
+	gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
+	g_object_unref (rc_style);
 
 	switch (type) {
-		case PANEL_PIXMAP_BACKGROUND:
-			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (ma->applet),
+					GTK_STATE_NORMAL, color);
 			break;
 
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (ma->applet), GTK_STATE_NORMAL, color);
+		case PANEL_PIXMAP_BACKGROUND:
+			style = gtk_style_copy (GTK_WIDGET (ma->applet)->style);
+			if (style->bg_pixmap[GTK_STATE_NORMAL])
+				g_object_unref
+					(style->bg_pixmap[GTK_STATE_NORMAL]);
+			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
+				(pixmap);
+			gtk_widget_set_style (GTK_WIDGET (ma->applet), style);
 			break;
 
 		case PANEL_NO_BACKGROUND:
-			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
-			break;
-
 		default:
 			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
 			break;
 	}
-
-	gtk_rc_style_unref (rc_style);
 }
 
 void
