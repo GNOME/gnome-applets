@@ -1,0 +1,26 @@
+Dr Mike <msf@redhat.com>
+-------------------------
+
+April 21, 1998
+
+I started to work on this but I'm getting dragged into some other
+problems, so I wanted to get this out so others could work on it...
+
+The idea is as follows:
+
+run the panel first
+run fvwm
+have fvwm load the winlist_applet
+
+The winlist_applet will use a pipe from fvwm to listen to messages
+fvwm creates when it does window ops. The idea is to have buttons
+on the panel which correspond to top level windows (ala win95 taskbar).
+
+If you build the testwinlist.c and run it as a module from fvwm,
+it will list these messages. I couldn't get the winlist_applet to
+work - it seems I would setup the gdk_input_add() and never would
+get anything back from fvwm.
+
+Email me if you want to work on this and need more info. This would
+be VERY USEFUL for the panel.
+
