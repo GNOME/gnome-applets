@@ -48,7 +48,7 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_in_files = Locations.xml.in
 gweatherlocations_DATA = $(gweatherlocations_in_files:.xml.in=.xml)
-@INTLTOOL_XML_RULE@
+%.xml:       %.xml.in       $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po-locations/*.po) ; LC_ALL=C $(INTLTOOL_MERGE) -x -u -c $(top_builddir)/po-locations/.intltool-merge-cache $(top_srcdir)/po-locations $< $@
 
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in.in \
