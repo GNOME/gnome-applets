@@ -39,6 +39,7 @@
 #include <libbonobo.h>
 #include <libgnomeui/libgnomeui.h>
 #include <libgnome/libgnome.h>
+#include <panel-applet-gconf.h>
 
 #include "gkb.h"
 
@@ -672,13 +673,11 @@ about_cb (BonoboUIComponent *uic,
   GdkPixbuf *pixbuf;
 
   static const gchar *authors[] = {
-		" "," ",
 		"Chema Celorio <chema@celorio.com>",
 	        "Szabolcs Ban <shooby@gnome.hu>",
 		NULL
 	};
   static const gchar *docauthors[] = {
-		" "," "," "," ",
 	        "Szabolcs Ban <shooby@gnome.hu>\n",
 		"Emese Kovacs <emese@gnome.hu>",
 		"David Mason <dcm@redhat.com>",
