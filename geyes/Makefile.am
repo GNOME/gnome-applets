@@ -20,11 +20,6 @@ EXTRA_DIST =  \
 	     geyes.h \
 	     gnome-eyes.png
 
-sysdir = $(datadir)/applets/Amusements
-sys_predata = geyes_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
-
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GeyesApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -37,5 +32,5 @@ pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-eyes.png
 
 EXTRA_DIST = README.themes $(pixmap_DATA)	\
-	 $(server_in_files) $(sys_DATA) $(sys_predata)
+	 $(server_in_files) 
 
