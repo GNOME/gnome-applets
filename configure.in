@@ -19,6 +19,8 @@ AC_PATH_XTRA
 X_LIBS="$X_LIBS $X_PRE_LIBS -lX11 $X_EXTRA_LIBS"
 AC_SUBST(X_LIBS)
 
+GNOME_COMPILE_WARNINGS(yes)
+
 dnl Stuff we might need, not quite sure yet
 
 GTK_REQUIRED=2.0.0
@@ -164,18 +166,19 @@ dnl ** cdplayer applet check                **
 dnl ******************************************
 dnl FIXME: What's the default device for irix? and is this correct for Netbsd
 dnl AC_CANONICAL_HOST
+cdplayer_type_sun=false
 case "$host" in
 *irix*) CDROM_HOST=irix; CDROM_LIBS="-lcdaudio -lmediad -lds";cd_device_path="/dev/cdrom";;
 *linux*) CDROM_HOST=linux;cd_device_path="/dev/cdrom";;
 *netbsd*) CDROM_HOST=netbsd;cd_device_path="/dev/rcd0";;
-*solaris*) CDROM_HOST=solaris;cd_device_path="/vol/dev/aliases/cdrom0";;
+*solaris*) CDROM_HOST=solaris;cd_device_path="/vol/dev/aliases/cdrom0";cdplayer_type_sun=true;;
 esac
 case "$host" in
 sparc-*-solaris*)	gkb_type_sun=true;;
 *)			gkb_type_sun=false;;
 esac
 AM_CONDITIONAL(GKB_SUN, $gkb_type_sun)
-AM_CONDITIONAL(CDDA_SOLARIS, $gkb_type_sun)
+AM_CONDITIONAL(CDDA_SOLARIS, $cdplayer_type_sun)
 
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
