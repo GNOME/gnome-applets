@@ -39,9 +39,6 @@ $(GNOME_APPLETS_LIBS) \
 $(CDROM_LIBS) \
 $(top_builddir)/screen-exec/libscreen-exec.la
 
-icondir   = $(datadir)/pixmaps
-icon_DATA = gnome-cdplayer-icon.png
-
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CDPlayerApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -91,7 +88,6 @@ cdrom-linux.c \
 cdrom-solaris.c \
 reader-solaris.c \
 writer-solaris.c \
-$(icon_DATA) \
 GNOME_CDPlayerApplet.server.in.in \
 $(schemas_in_files)	\
 $(ui_DATA) \

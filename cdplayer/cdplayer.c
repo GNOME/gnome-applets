@@ -145,8 +145,13 @@ applet_fill (PanelApplet *applet)
     BonoboUIComponent *component;
     GtkTooltips *tooltips;
     int err;
+    GtkIconInfo *icon_info;
 
-    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-cdplayer-icon.png");
+    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "gnome-cdplayer-icon", 48, 0);
+    if (icon_info) {
+        gnome_window_icon_set_default_from_file (gtk_icon_info_get_filename (icon_info));
+        gtk_icon_info_free (icon_info);
+    }
     panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
     cdplayer_init_stock_icons ();
       
@@ -573,7 +578,6 @@ about_cb (BonoboUIComponent *component,
     static GtkWidget   *about     = NULL;
     GdkPixbuf	       *pixbuf;
     GError	       *error     = NULL;
-    gchar	       *file;
 
     static const gchar *authors[] =
     {
@@ -597,12 +601,10 @@ about_cb (BonoboUIComponent *component,
         return;
     }
     
-    file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-cdplayer-icon.png", FALSE, NULL);
-    pixbuf = gdk_pixbuf_new_from_file (file, &error);
-    g_free (file);
+    pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (), "gnome-cdplayer-icon", 48, 0, &error);
     
     if (error) {
-    	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+    	g_warning (G_STRLOC ": cannot open icon %s: %s", "gnome-cdplayer-icon", error->message);
 	g_error_free (error);
     }
     
