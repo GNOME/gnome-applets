@@ -144,6 +144,9 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
     gtk_selection_owner_set (curr_data->event_box,
 	  		     GDK_SELECTION_PRIMARY,
                              GDK_CURRENT_TIME); 
+    gtk_selection_owner_set (curr_data->event_box,
+	  		     GDK_SELECTION_CLIPBOARD,
+                             GDK_CURRENT_TIME); 
     curr_data->last_index = button_index;
   }	
 	     
@@ -448,6 +451,10 @@ charpicker_applet_fill (PanelApplet *applet)
   /* selection handling for selected character */
   gtk_selection_add_target (curr_data->event_box, 
 			    GDK_SELECTION_PRIMARY,
+                            GDK_SELECTION_TYPE_STRING,
+			    0);
+  gtk_selection_add_target (curr_data->event_box, 
+			    GDK_SELECTION_CLIPBOARD,
                             GDK_SELECTION_TYPE_STRING,
 			    0);
   gtk_signal_connect (GTK_OBJECT (curr_data->event_box), "selection_get",
