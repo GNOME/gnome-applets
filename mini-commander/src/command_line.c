@@ -402,9 +402,9 @@ show_history_signal(GtkWidget *widget, gpointer data)
      	     if(exists_history_entry(i))
 	     	 {
      		      command_list[0] = get_history_entry(i);
-                  gtk_list_store_append (store, &iter);
-                  gtk_list_store_set (store, &iter,0,command_list[0],-1);
-		     }
+                      gtk_list_store_prepend (store, &iter);
+                      gtk_list_store_set (store, &iter,0,command_list[0],-1);
+		 }
 	      }
      } 
      model = GTK_TREE_MODEL(store);
