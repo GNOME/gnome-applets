@@ -109,6 +109,8 @@ static gint property_destroy_cb( GtkWidget *w, DriveData *dd)
 
 void property_show(AppletWidget *applet, gpointer data)
 {
+        static GnomeHelpMenuEntry help_entry = { "drivemount_applet",
+						 "properties" };
 	DriveData *dd = data;
 	GtkWidget *frame;
 	GtkWidget *hbox;
@@ -205,8 +207,15 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_widget_show(frame);
         gnome_property_box_append_page( GNOME_PROPERTY_BOX(dd->propwindow),frame ,label);
 
-	gtk_signal_connect( GTK_OBJECT(dd->propwindow),"apply", GTK_SIGNAL_FUNC(property_apply_cb), dd );
-	gtk_signal_connect( GTK_OBJECT(dd->propwindow),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), dd );
+	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "apply",
+			    GTK_SIGNAL_FUNC(property_apply_cb), dd );
+
+	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "destroy",
+			    GTK_SIGNAL_FUNC(property_destroy_cb), dd );
+
+	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "help",
+			    GTK_SIGNAL_FUNC(property_destroy_cb),
+			    &help_entry );
 
         gtk_widget_show_all(dd->propwindow);
 } 
