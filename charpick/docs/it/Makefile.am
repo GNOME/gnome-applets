@@ -1,8 +1,11 @@
 figs = \
-	charpick_applet.png     charpick_applet_settings.png	\
-	charpick_characters.png
-applet = charpick
+	figures/charpick_applet.png		\
+	figures/charpick_characters.png		\
+	figures/charpick_applet_settings.png
+docname = charpick_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = charpick_applet-it.omf
+sgml_ents = charpick.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

@@ -1,6 +1,9 @@
-figs = whereami_applet.png
-applet = whereami
+figs = \
+	figures/whereami_applet.png
+docname = whereami_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = whereami_applet-it.omf
+sgml_ents = whereami.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
