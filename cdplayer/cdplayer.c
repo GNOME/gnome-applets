@@ -58,12 +58,20 @@ static void cdplayer_destroy(GtkWidget * widget, gpointer data);
 static void cdplayer_realize(GtkWidget *cdplayer, CDPlayerData *cd);
 static int cdplayer_timeout_callback(gpointer data);
 
-static void start_gtcd_cb(GtkWidget *w, gpointer data);
-static void properties_cb (GtkWidget *w, gpointer data);
-static void help_cb (GtkWidget *w, gpointer data);
-static void phelp_cb (GtkWidget *w, gpointer data);
-static void about_cb(GtkWidget *w, gpointer data);
+static void start_gtcd_cb  (BonoboUIComponent *component,
+			    CDPlayerData      *cd,
+			    const char        *verb);
+static void preferences_cb (BonoboUIComponent *component,
+			    CDPlayerData      *cd,
+			    const char        *verb);
+static void help_cb        (BonoboUIComponent *component,
+			    CDPlayerData      *cd,
+			    const char        *verb);
+static void about_cb       (BonoboUIComponent *component,
+			    CDPlayerData      *cd,
+			    const char        *verb);
 
+static void phelp_cb (GtkWidget *w, gpointer data);
 static void applet_change_size(GtkWidget *w, int size, gpointer data);
 static void applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data);
 static void ui_component_event (BonoboUIComponent *comp, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state_string, CDPlayerData *data);
@@ -92,7 +100,7 @@ static void make_applet_accessible(CDPlayerData *cd);
 /* Bonobo Verbs for our popup menu */
 static const BonoboUIVerb applet_menu_verbs [] = {
     BONOBO_UI_UNSAFE_VERB ("RunGTCD", start_gtcd_cb),
-    BONOBO_UI_UNSAFE_VERB ("Preferences", properties_cb),
+    BONOBO_UI_UNSAFE_VERB ("Preferences", preferences_cb),
     BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
     BONOBO_UI_UNSAFE_VERB ("About", about_cb),
     BONOBO_UI_VERB_END
@@ -255,14 +263,33 @@ cdplayer_timeout_callback(gpointer data)
 
 /* Signal handlers for the cdplayer popup menu*/
 static void
-start_gtcd_cb(GtkWidget *w, gpointer data)
+start_gtcd_cb (BonoboUIComponent *component,
+	       CDPlayerData      *cd,
+	       const char        *verb)
 {
-    GError *err = NULL;
-    g_spawn_command_line_async ("gnome-cd", &err);
-    if (err) {
-      g_print ("%s\n", err->message);
-      g_error_free (err);
-    }
+    GError *error = NULL;
+
+    g_spawn_command_line_async ("gnome-cd", &error);
+    if (error) {
+	GtkWidget *dialog;
+
+	dialog = gtk_message_dialog_new (NULL,
+					 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_CLOSE,
+					 _("There was an error executing gnome-cd : %s"),
+					 error->message);
+
+	g_signal_connect (dialog, "response",
+			  G_CALLBACK (gtk_widget_destroy),
+			  NULL);
+
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+	gtk_widget_show (dialog);
+
+	g_error_free (error);
+   }
 }
 
 static void
@@ -276,9 +303,9 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 static void
-activate_cb (GtkEntry *entry, gpointer data)
+activate_cb (GtkEntry     *entry,
+	     CDPlayerData *cd)
 {
-    CDPlayerData *cd = data;
     gchar *newpath;
     
     newpath = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
@@ -307,10 +334,10 @@ activate_cb (GtkEntry *entry, gpointer data)
 }
 
 static gboolean
-focus_out_cb (GtkWidget *widget, GdkEventFocus *event, gpointer data)
+focus_out_cb (GtkWidget     *widget,
+	      GdkEventFocus *event,
+	      CDPlayerData  *cd)
 {
-    CDPlayerData *cd = data;
-   
     activate_cb (GTK_ENTRY (widget), cd);
     
     return FALSE;
@@ -334,11 +361,11 @@ set_default_device (GtkButton *button, gpointer data)
     cdplayer_save_config(cd);  
 }
     
-/* FIXME: change the fn name later to reflect Preferences */
 static void
-properties_cb (GtkWidget *w, gpointer data)
+preferences_cb (BonoboUIComponent *component,
+		CDPlayerData      *cd,
+		const char        *verb)
 {
-    CDPlayerData *cd;
     GtkWidget *dialog;
     GtkWidget *box;
     GtkWidget *button;
@@ -347,8 +374,6 @@ properties_cb (GtkWidget *w, gpointer data)
     GtkWidget *image;
     GtkWidget *entry;
     gint response;
-
-    cd = (CDPlayerData *) data;
 
     dialog = gtk_dialog_new_with_buttons(_("CD Player Preferences"),
                                          NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -396,11 +421,12 @@ properties_cb (GtkWidget *w, gpointer data)
     		      G_CALLBACK (response_cb), NULL);
 
     gtk_widget_show_all(dialog);
-    
 }
 
 static void
-help_cb (GtkWidget *w, gpointer data)
+help_cb (BonoboUIComponent *component,
+	 CDPlayerData      *cd,
+	 const char        *verb)
 {
     GError *error = NULL;
 
@@ -415,7 +441,9 @@ help_cb (GtkWidget *w, gpointer data)
 }
 
 static void
-about_cb(GtkWidget *w, gpointer data)
+about_cb (BonoboUIComponent *component,
+	  CDPlayerData      *cd,
+	  const char        *verb)
 {
     static GtkWidget   *about     = NULL;
     GdkPixbuf	       *pixbuf;
@@ -437,10 +465,8 @@ about_cb(GtkWidget *w, gpointer data)
 
     const gchar *translator_credits = _("translator_credits");
 
-    if (about != NULL)
-    {
-        gdk_window_show(about->window);
-        gdk_window_raise(about->window);
+    if (about) {
+	gtk_window_present (GTK_WINDOW (about));
         return;
     }
     
