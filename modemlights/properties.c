@@ -114,8 +114,7 @@ static gint property_destroy_cb( GtkWidget *widget, void *data )
 
 void property_show(AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { "modemlights_applet",
-						 "properties" };
+        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 	GtkWidget *frame;
 	GtkWidget *hbox;
 	GtkWidget *label;
@@ -123,6 +122,8 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkObject *delay_adj;
 	GtkWidget *checkbox;
 
+	help_entry.name = gnome_app_id;
+	
 	if(propwindow)
 		{
                 gdk_window_raise(propwindow->window);
