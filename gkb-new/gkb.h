@@ -37,6 +37,8 @@
 #include <libart_lgpl/art_pixbuf.h>
 #include <libart_lgpl/art_rgb_rgba_affine.h>
 #include <libart_lgpl/art_affine.h>
+
+#include <gconf/gconf-client.h>
  
 #include <sys/types.h>
 #include <dirent.h>		/* for opendir() et al. */
@@ -217,6 +219,35 @@ void grab_button_pressed (GtkButton *button, gpointer data);
 
 void gkb_xgrab(gint keycode, gint modifiers);
 void gkb_xungrab(gint keycode, gint modifiers);
+
+/* gconf.c */
+
+gboolean gconf_applet_set_string (PanelApplet *parent, 
+                                  const char *gconf_key,
+                                  gchar *value,
+                                  gchar *blah);
+
+gchar * gconf_applet_get_string  (PanelApplet *parent, 
+                                  const char *gconf_key,
+                                  gchar *blah);
+
+gboolean gconf_applet_set_int (PanelApplet *parent, 
+                                  const char *gconf_key,
+                                  gint value,
+                                  gchar *blah);
+
+gint gconf_applet_get_int  (PanelApplet *parent, 
+                                  const char *gconf_key,
+                                  gchar *blah);
+
+gboolean gconf_applet_set_bool (PanelApplet *parent, 
+                                  const char *gconf_key,
+                                  gboolean value,
+                                  gchar *blah);
+
+gboolean gconf_applet_get_bool  (PanelApplet *parent, 
+                                  const char *gconf_key,
+                                  gchar *blah);
 
 /* Globals */
 gchar * prefixdir;

@@ -165,7 +165,7 @@ gkb_prop_mode_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
 
-  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
+  gconf_applet_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
 
 }
 
@@ -200,7 +200,7 @@ gkb_prop_size_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
     
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
-  panel_applet_gconf_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
+  gconf_applet_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
 
 }
 

@@ -19,7 +19,9 @@ gkb_applet_2_SOURCES = \
 		preset.c	\
 		prop-add.c	\
 		system.c	\
-		util.c
+		util.c		\
+		gconf.c
+
 
 gkb_applet_2_LDADD = \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)

@@ -77,7 +77,7 @@ GkbMode gkb_util_get_mode_from_text (const gchar * text)
   if (strcmp (text, _("Flag and Label")) == 0)
     return GKB_FLAG_AND_LABEL;
 
-  g_warning ("Could not interpret size change [%s]\n", text);
+  g_warning ("Could not interpret mode change [%s]\n", text);
 
   return GKB_FLAG;
 }

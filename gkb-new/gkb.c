@@ -347,11 +347,11 @@ applet_save_session ()
   gchar str[100];
   int i = 0;
 
-  panel_applet_gconf_set_int (PANEL_APPLET (gkb->applet), "num", gkb->n, NULL);
-  panel_applet_gconf_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
-  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
+  gconf_applet_set_int (PANEL_APPLET (gkb->applet), "num", gkb->n, NULL);
+  gconf_applet_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
+  gconf_applet_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
   text = gkb_util_get_text_from_mode (gkb->mode);
-  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
+  gconf_applet_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
 
   while (list)
     {
@@ -359,17 +359,17 @@ applet_save_session ()
       if (actdata)
 	{
 	  g_snprintf (str, sizeof (str), "name_%d", i);
-	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->name, NULL);
+	  gconf_applet_set_string (PANEL_APPLET (gkb->applet), str, actdata->name, NULL);
 	  g_snprintf (str, sizeof (str), "country_%d", i);
-	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->country, NULL);
+	  gconf_applet_set_string (PANEL_APPLET (gkb->applet), str, actdata->country, NULL);
 	  g_snprintf (str, sizeof (str), "lang_%d", i);
-	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->lang, NULL);
+	  gconf_applet_set_string (PANEL_APPLET (gkb->applet), str, actdata->lang, NULL);
 	  g_snprintf (str, sizeof (str), "label_%d", i);
-	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->label, NULL);
+	  gconf_applet_set_string (PANEL_APPLET (gkb->applet), str, actdata->label, NULL);
 	  g_snprintf (str, sizeof (str), "flag_%d", i);
-	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->flag, NULL);
+	  gconf_applet_set_string (PANEL_APPLET (gkb->applet), str, actdata->flag, NULL);
 	  g_snprintf (str, sizeof (str), "command_%d", i);
-	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->command, NULL);
+	  gconf_applet_set_string (PANEL_APPLET (gkb->applet), str, actdata->command, NULL);
 	}
 
       list = list->next;
@@ -383,7 +383,7 @@ gkb_load_pref(const gchar * key, const gchar * defaultv)
 {
  gchar * value;
 
- value = panel_applet_gconf_get_string (PANEL_APPLET(gkb->applet), key, NULL);
+ value = gconf_applet_get_string (PANEL_APPLET(gkb->applet), key, NULL);
  
  if (value == NULL) {
   value = g_strdup (defaultv);
@@ -438,12 +438,12 @@ load_properties (GKB * gkb)
 
   gkb->maps = NULL;
 
-  gkb->n = panel_applet_gconf_get_int (PANEL_APPLET(gkb->applet), "num", NULL);
+  gkb->n = gconf_applet_get_int (PANEL_APPLET(gkb->applet), "num", NULL);
 
   gkb->key = gkb_load_pref ("key", "Mod1-Shift_L");
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
-  gkb->is_small = panel_applet_gconf_get_bool (PANEL_APPLET(gkb->applet), "small", NULL);
+  gkb->is_small = gconf_applet_get_bool (PANEL_APPLET(gkb->applet), "small", NULL);
 #ifdef THIS_IS_UNNECESSARY
   if (gkb->is_small == NULL) {
     gkb->is_small = TRUE;

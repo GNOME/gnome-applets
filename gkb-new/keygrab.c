@@ -257,7 +257,7 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 
   gkb_xgrab ( newkey, gkb->state);
   
-  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
+  gconf_applet_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
   
   return GDK_FILTER_REMOVE;
 }
