@@ -49,7 +49,6 @@ main (int argc, char **argv)
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-
 	applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0,
 			    NULL);
 
@@ -57,7 +56,9 @@ main (int argc, char **argv)
 			   (AppletFactoryActivator)make_new_applet);
 
 	goad_id = goad_server_activation_id();
-	if(goad_id && strcmp(goad_id, "multiload_applet"))
+	if(!goad_id)
+		make_new_applet("multiload_cpuload_applet");
+	else
 		make_new_applet(goad_id);
 
 	applet_widget_gtk_main ();
