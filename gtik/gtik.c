@@ -1146,6 +1146,7 @@ static gint updateOutput(gpointer data)
 		GtkWidget *label;
 		GtkWidget *entry;
 		static GtkWidget *button;
+		GtkSizeGroup *size_group;
 
 		model = gtk_list_store_new (1, G_TYPE_STRING);
 		list = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
@@ -1181,23 +1182,25 @@ static gint updateOutput(gpointer data)
 		
 		hbox = gtk_hbox_new (FALSE, 0);
 		gtk_box_pack_start (GTK_BOX (mainhbox), hbox, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("Current _Stocks"));
+		label = gtk_label_new_with_mnemonic (_("Current _stocks:"));
 		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), list);
 		
 		gtk_box_pack_start(GTK_BOX(mainhbox),swindow,TRUE,TRUE,0);
 		
-		hbox = gtk_hbox_new (FALSE, 6);
+		hbox = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (mainhbox), hbox, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic(_("_New Symbol:"));
+		label = gtk_label_new_with_mnemonic (_("_New symbol:"));
 		gtk_box_pack_start(GTK_BOX(hbox),label,TRUE,TRUE,0);
 		entry = gtk_entry_new();
 		g_object_set_data(G_OBJECT(entry),"list",(gpointer)list);
 		gtk_box_pack_start(GTK_BOX(hbox),entry,TRUE,TRUE,0);
 		g_signal_connect (G_OBJECT (entry), "activate",
 				  G_CALLBACK (add_symbol), stockdata);		
-		set_relation(entry, GTK_LABEL(label));		
+		set_relation (entry, GTK_LABEL (label));
+		size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);		
 		button = gtk_button_new_with_mnemonic(_("_Add"));
+		gtk_size_group_add_widget (size_group, button);
 		g_object_set_data (G_OBJECT (button), "entry", entry);
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
 		gtk_widget_set_sensitive (button, FALSE);
@@ -1206,6 +1209,7 @@ static gint updateOutput(gpointer data)
 		g_signal_connect (G_OBJECT (entry), "changed",
 					  G_CALLBACK (entry_changed), button);
 		button = gtk_button_new_with_mnemonic(_("_Remove"));
+		gtk_size_group_add_widget (size_group, button);
 		g_object_set_data (G_OBJECT (button), "list", list);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (remove_symbol), stockdata);
@@ -1316,6 +1320,9 @@ static gint updateOutput(gpointer data)
 						  	     NULL);
 		gtk_window_set_screen (GTK_WINDOW (stockdata->pb),
 				       gtk_widget_get_screen (stockdata->applet));
+		gtk_dialog_set_default_response (GTK_DIALOG (stockdata->pb), 
+		                                 GTK_RESPONSE_CLOSE);
+		gtk_dialog_set_has_separator (GTK_DIALOG (stockdata->pb), FALSE);
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);
@@ -1323,6 +1330,7 @@ static gint updateOutput(gpointer data)
 		hbox = symbolManager(stockdata);
 		label = gtk_label_new (_("Symbols"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
+		gtk_container_set_border_width (GTK_CONTAINER (notebook), 12);
 		
 		behav_vbox = gtk_vbox_new (FALSE, 18);
 		gtk_container_set_border_width (GTK_CONTAINER (behav_vbox), 12);
@@ -1331,9 +1339,9 @@ static gint updateOutput(gpointer data)
 		
 		vbox = create_hig_catagory (behav_vbox, _("Update"));
 		
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("Stock update Fre_quency in minutes:"));
+		label = gtk_label_new_with_mnemonic (_("Stock update fre_quency:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		spin = gtk_spin_button_new_with_range (1, 1000, 1);
@@ -1342,10 +1350,12 @@ static gint updateOutput(gpointer data)
 		g_signal_connect (G_OBJECT (spin), "focus_out_event",
 					   G_CALLBACK (timeout_cb), stockdata);
 		gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
+		label = gtk_label_new (_("minutes"));
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		
 		vbox = create_hig_catagory (behav_vbox, _("Scrolling"));
 		
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("_Scroll speed:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
@@ -1399,6 +1409,15 @@ static gint updateOutput(gpointer data)
 		
 		hbox2 = gtk_hbox_new (FALSE, 6);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		check = gtk_check_button_new_with_mnemonic (_("Displa_y only symbols and price"));
+		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
+		g_signal_connect (G_OBJECT (check), "toggled",
+				           G_CALLBACK (output_toggled), stockdata);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
+							   stockdata->props.output);
+
+		hbox2 = gtk_hbox_new (FALSE, 12);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("_Width:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
@@ -1409,19 +1428,12 @@ static gint updateOutput(gpointer data)
 		g_signal_connect (G_OBJECT (spin), "focus_out_event",
 					   G_CALLBACK (width_changed), stockdata);
 		gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
-		
-		hbox2 = gtk_hbox_new (FALSE, 6);
-		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		check = gtk_check_button_new_with_mnemonic(_("Displa_y only symbols and price"));
-		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
-		g_signal_connect (G_OBJECT (check), "toggled",
-				           G_CALLBACK (output_toggled), stockdata);
-		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
-							   stockdata->props.output);
+		label = gtk_label_new (_("pixels"));
+		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 							   
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("_Font"));
+		label = gtk_label_new_with_mnemonic (_("_Font:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
@@ -1438,9 +1450,9 @@ static gint updateOutput(gpointer data)
 		vbox = create_hig_catagory (appear_vbox, _("Colors"));
 		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 					   
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("Stock _raised"));
+		label = gtk_label_new_with_mnemonic (_("Stock _raised:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
@@ -1453,9 +1465,9 @@ static gint updateOutput(gpointer data)
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(ucolor_set_cb), stockdata);
 				
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("Stock _lowered"));
+		label = gtk_label_new_with_mnemonic (_("Stock _lowered:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
@@ -1468,9 +1480,9 @@ static gint updateOutput(gpointer data)
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(dcolor_set_cb), stockdata);
 				
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("Stock _unchanged"));
+		label = gtk_label_new_with_mnemonic (_("Stock _unchanged:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
@@ -1483,9 +1495,9 @@ static gint updateOutput(gpointer data)
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(fgcolor_set_cb), stockdata);
 				
-		hbox2 = gtk_hbox_new (FALSE, 6);
+		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("_Background"));
+		label = gtk_label_new_with_mnemonic (_("_Background:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
