@@ -47,7 +47,9 @@
 	
 	typedef struct {
 		char *price;
+		int pricelen;
 		char *change;
+		int changelen;
 		int color;
 	} StockQuote;
 	
@@ -108,9 +110,8 @@
 		gint drawTimeID, updateTimeID;
 		/* For fonts */
 		PangoFontDescription * my_font;
-		gchar * new_font;
-		PangoFontDescription * extra_font;
 		PangoFontDescription * small_font;
+		gchar * new_font;
 		PangoLayout *layout;
 		GtkTooltips * tooltips;
 		gint symbolfont;
@@ -162,31 +163,34 @@
 	/*-----------------------------------------------------------------*/
 	static void load_fonts(StockData *stockdata)
 	{
+		GArray *quotes = stockdata->quotes;
+		PangoRectangle rect;
+		int i;
+		
 		if (stockdata->my_font)
 			pango_font_description_free (stockdata->my_font);
 		stockdata->my_font = pango_font_description_from_string (stockdata->props.font);	
-
-		if (!stockdata->extra_font) {
-			stockdata->extra_font = pango_font_description_from_string ("Fixed 14");
-		}
-		
 		if (stockdata->small_font)
 			pango_font_description_free (stockdata->small_font);
 		stockdata->small_font = pango_font_description_from_string (stockdata->props.font2);
-
-		if ( !stockdata->extra_font  ){
-			
-			stockdata->extra_font = pango_font_description_from_string ("fixed 12");
-			stockdata->symbolfont = 0;
-		}
 		
-		if (!stockdata->my_font) {
+		if (!stockdata->my_font) 
 			stockdata->my_font = pango_font_description_from_string ("fixed 12");
-		}
-		if (!stockdata->small_font) {
+		if (!stockdata->small_font) 
 			stockdata->small_font = pango_font_description_from_string ("fixed 12");
+		/* make sure the cached strings widths are updated */
+		for (i=0; i< stockdata->setCounter; i++) {
+			pango_layout_set_font_description (stockdata->layout, stockdata->my_font);
+			pango_layout_set_text (stockdata->layout, 
+					       STOCK_QUOTE(quotes->data)[i].price, -1);
+			pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
+			STOCK_QUOTE(quotes->data)[i].pricelen = rect.width;
+			pango_layout_set_font_description (stockdata->layout, stockdata->small_font);
+			pango_layout_set_text (stockdata->layout, 
+					       STOCK_QUOTE(quotes->data)[i].change, -1);
+			pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
+			STOCK_QUOTE(quotes->data)[i].changelen = rect.width;
 		}
-
 	}
 
 /*-----------------------------------------------------------------*/
@@ -311,12 +315,13 @@ static gint updateOutput(gpointer data)
 								       NULL);
 		if (!stockdata->props.font)
 			stockdata->props.font = g_strdup ("fixed 12");
+		
 		stockdata->props.font2 = panel_applet_gconf_get_string (applet,
 									"font2",
 									NULL);
 		if (!stockdata->props.font2)
-			stockdata->props.font2 = g_strdup ("fixed 12");
-		
+			stockdata->props.font2 = g_strdup ("fixed 12");	
+				
 		stockdata->props.buttons = panel_applet_gconf_get_bool(applet,
 									  "buttons",
 									  NULL);
@@ -530,6 +535,18 @@ static gint updateOutput(gpointer data)
 
 		return TRUE;
 	}
+	
+	static gboolean is_visible (int start, int end, int width)
+	{
+		if (start >= 0 && start<= width)
+			return TRUE;
+		else if (end >= 0 && end <= width)
+			return TRUE;
+		else if (start <= 0 && end >= width)
+			return TRUE;
+		else	
+			return FALSE;
+	}
 
 	/*-----------------------------------------------------------------*/
 	static gint Repaint (gpointer data) {
@@ -538,16 +555,16 @@ static gint updateOutput(gpointer data)
 		GArray *quotes = stockdata->quotes;
 		PangoFontDescription *my_font = stockdata->my_font;
 		PangoFontDescription *small_font = stockdata->small_font;
-		PangoFontDescription *extra_font = stockdata->extra_font;
 		GdkGC *gc = stockdata->gc;
 		GdkGC *bg;
 		GdkRectangle update_rect;
 		PangoLayout *layout;
 		PangoRectangle logical_rect;
 		int	comp;
+		gint n = 0, totalLen2 = 0;
+		int start, end, width;
 
 		/* FOR COLOR */
-		char *tmpSym;
 		int totalLoc;
 		int totalLen;
 		int i;
@@ -563,35 +580,22 @@ static gint updateOutput(gpointer data)
 				    drawing_area->allocation.height);
 		g_object_unref (bg);
 
+
 		layout = stockdata->layout;
-		for(i=0;i<stockdata->setCounter;i++) {
-			pango_layout_set_font_description (layout, my_font);
-			pango_layout_set_text (layout,
-					       STOCK_QUOTE(quotes->data)[i].price,
-					       -1);			
-			pango_layout_get_pixel_extents (layout, NULL,
-							&logical_rect);
-			totalLen += logical_rect.width + 10;
+		
+		for (i=0; i< stockdata->setCounter; i++) {
+			totalLen += STOCK_QUOTE(quotes->data)[i].pricelen + 10;
+			
 			if (stockdata->props.output == FALSE) {
 				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
-					pango_layout_set_font_description (layout, extra_font);
-					if (g_utf8_validate (&STOCK_QUOTE(quotes->data)[i].change[0], 1, NULL)) {
-						pango_layout_set_text (layout, &STOCK_QUOTE(quotes->data)[i].change[0], 1);
-						pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
-						totalLen += logical_rect.width + 10;
-					}
+					totalLen += STOCK_QUOTE(quotes->data)[i].changelen 
+						+ 10;
+					
 				}
-				pango_layout_set_font_description (layout,
-								   small_font);
-				pango_layout_set_text (layout,
-						       &STOCK_QUOTE(quotes->data)[i].change[1],
-						       -1);		
-				pango_layout_get_pixel_extents (layout, NULL,
-								&logical_rect);
-				totalLen += logical_rect.width +10;
 			}
+			
 		}
-
+		
 		comp = 0 - totalLen;
 
 		if (stockdata->MOVE == 1) { stockdata->MOVE = 0; } 
@@ -636,44 +640,36 @@ static gint updateOutput(gpointer data)
 			else {
 				gdk_gc_set_foreground( gc, &stockdata->gdkFGcolor );
 			}
-
-			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
 			pango_layout_set_font_description (layout, my_font);
-			pango_layout_set_text (layout,
-					       STOCK_QUOTE(quotes->data)[i].price,
-					       -1);	
-			gdk_draw_layout (stockdata->pixmap, gc,
-					 stockdata->location + totalLoc , 3,
-					 layout);
-			pango_layout_get_pixel_extents (layout, NULL,
-							&logical_rect);
-			totalLoc += logical_rect.width + 10;
+			start = stockdata->location + totalLoc;
+			end = stockdata->location + totalLoc +
+			      STOCK_QUOTE(quotes->data)[i].pricelen + 10;
+			width = drawing_area->allocation.width;
+			if (is_visible (start, end, width)) {
+				pango_layout_set_text (layout,	
+					STOCK_QUOTE(quotes->data)[i].price,
+ 					       -1);
+				gdk_draw_layout (stockdata->pixmap, gc,
+					 start , 3,
+ 					 layout);
+			}
+			totalLoc += STOCK_QUOTE(quotes->data)[i].pricelen + 10;
 
 
 			if (stockdata->props.output == FALSE) {
-				tmpSym = STOCK_QUOTE(quotes->data)[i].change;
-				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
-					pango_layout_set_font_description (layout, extra_font);
-					if (g_utf8_validate (&STOCK_QUOTE(quotes->data)[i].change[0], 1, NULL)) {
-						pango_layout_set_text (layout, &STOCK_QUOTE(quotes->data)[i].change[0], 1);
-						gdk_draw_layout (stockdata->pixmap,
-					     		gc, stockdata->location + totalLoc,
-					     		3, layout);
-						pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
-						totalLoc += logical_rect.width + 5;
-					}
-				}
 				pango_layout_set_font_description (layout,
-								   small_font);	
-				pango_layout_set_text (layout,
-						       &STOCK_QUOTE(quotes->data)[i].change[1],
-						       -1);		
-				gdk_draw_layout (stockdata->pixmap,
-				     gc, stockdata->location + totalLoc,
-				     3, layout);
-				pango_layout_get_pixel_extents (layout, NULL,
-								&logical_rect);
-				totalLoc += logical_rect.width + 10;
+								   small_font);
+				start = stockdata->location + totalLoc;
+				end = stockdata->location + totalLoc +
+				      STOCK_QUOTE(quotes->data)[i].changelen + 10;
+				if (is_visible (start, end, width)) {
+					pango_layout_set_text (layout, 
+						STOCK_QUOTE(quotes->data)[i].change, -1);
+					gdk_draw_layout (stockdata->pixmap,
+ 					     		gc, stockdata->location + totalLoc,
+ 					     		3, layout);
+				}
+				totalLoc += STOCK_QUOTE(quotes->data)[i].changelen + 10;
 			}
 			
 		}
@@ -687,6 +683,7 @@ static gint updateOutput(gpointer data)
 					    update_rect.y,
 					    update_rect.width,
 					    update_rect.height);
+
 		return 1;
 	}
 
@@ -1032,7 +1029,7 @@ static gint updateOutput(gpointer data)
 		stockdata->props.font2 = g_strdup (font_name);
 		load_fonts (stockdata);
 		panel_applet_gconf_set_string (applet,"font2",
-					       stockdata->props.font2, NULL);
+					       stockdata->props.font2, NULL);	
 
 	}
 
@@ -1387,7 +1384,7 @@ static gint updateOutput(gpointer data)
                 		  G_CALLBACK (font_cb), stockdata);
 
 		set_relation(font_picker, GTK_LABEL(label5));
-                                
+		
 		hbox3 = gtk_hbox_new(FALSE, 0);
 		label5 = gtk_label_new_with_mnemonic(_("Stock C_hange:"));
                 font_picker = gnome_font_picker_new ();
@@ -1400,7 +1397,7 @@ static gint updateOutput(gpointer data)
                                   G_CALLBACK(font2_cb),stockdata);
                 
 		set_relation(font_picker, GTK_LABEL(label5));
-
+                                 
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
 
@@ -1546,7 +1543,7 @@ static gint updateOutput(gpointer data)
 				                   stockdata);
 
 		/* KEEPING TIMER ID FOR CLEANUP IN DESTROY */
-		stockdata->drawTimeID = gtk_timeout_add(40,Repaint,stockdata);
+		stockdata->drawTimeID = gtk_timeout_add(10,Repaint,stockdata);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
 				                          updateOutput,stockdata);
 
@@ -1605,10 +1602,9 @@ static gint updateOutput(gpointer data)
 			g_free (stockdata->configFileName);
 		if (stockdata->my_font)
 			pango_font_description_free (stockdata->my_font);
-		if (stockdata->extra_font)
-			pango_font_description_free (stockdata->extra_font);
 		if (stockdata->small_font)
 			pango_font_description_free (stockdata->small_font);
+		
 	}
 
 
@@ -1694,12 +1690,22 @@ static gint updateOutput(gpointer data)
 		StockQuote quote;
 		char *price;
 		char *change;
+		PangoRectangle rect;
 
 		price = splitPrice(param1);
 		change = splitChange(stockdata, param1, &quote);
 
 		quote.price = g_strdup(price);
+		pango_layout_set_font_description (stockdata->layout, stockdata->my_font);
+		pango_layout_set_text (stockdata->layout, price, -1);
+		pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
+		quote.pricelen = rect.width;
 		quote.change = g_strdup(change);
+		pango_layout_set_font_description (stockdata->layout, 
+						   stockdata->small_font);
+		pango_layout_set_text (stockdata->layout, change, -1);
+		pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
+		quote.changelen = rect.width;
 
 #if 0
 		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
