@@ -1,9 +1,9 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.1">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "September 2002">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "August 2003">
   <!ENTITY applet "Inbox Monitor">
 ]>
 
@@ -22,7 +22,8 @@
   <articleinfo>
 	 <title>&applet; 小程序手册 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year>
+		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright>
 	 <copyright> 
@@ -61,7 +62,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -99,28 +100,33 @@
 		  <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>	 
+			 <para role="author">Sun GNOME Documentation Team</para>	 
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>收件箱监视程序小程序手册 V2.1</revnumber> 
+		  <revnumber>收件箱监视器小程序手册 V2.2</revnumber> 
+		  <date>2002 年 9 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>收件箱监视器小程序手册 V2.1</revnumber> 
 		  <date>2002 年 8 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>收件箱监视程序小程序手册 V2.0</revnumber> 
+		  <revnumber>收件箱监视器小程序手册 V2.0</revnumber> 
 		  <date>2002 年 5 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">GNOME Documentation Project</para>
@@ -136,7 +142,7 @@
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>GNOME 1.2 的邮件检查小程序手册</revnumber> 
+		  <revnumber>GNOME 1.2 的 Mail Check 小程序手册</revnumber> 
 		  <date>2000 年 4 月</date> 
 		  <revdescription> 
 			 <para role="author">Telsa Gwynne
@@ -156,7 +162,7 @@
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>收件箱监视程序</primary> 
+	 <primary>Inbox Monitor</primary> 
   </indexterm> 
   
 <!-- ============= Document Body ============================= -->
@@ -180,58 +186,34 @@
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
 	 <para><application>&applet;</application> 小程序以指定的时间间隔检查您的邮件服务器，以确定邮箱中是否有新邮件。 该小程序会显示一条消息，通知您是否有新邮件。</para>
-	 <para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"Internet"</guisubmenu><guimenuitem>"收件箱监视程序"</guimenuitem></menuchoice>。</para>
+	 <para>要将 <application>&applet;</application> 添加到面板上，请右击该面板，然后选择<menuchoice><guimenu>&ldquo;添加到面板&rdquo;</guimenu><guisubmenu>&ldquo;Internet&rdquo;</guisubmenu><guimenuitem>&ldquo;收件箱监视器&rdquo;</guimenuitem></menuchoice>。</para>
   </sect1>
 <!-- ================ Usage ================================ -->
 
   <sect1 id="mailcheck-usage"> 
 	 <title>用法</title>
 	 
-		<para>要检查邮件服务器以确定是否有新邮件，可右击该小程序，然后选择<guimenuitem>"监视邮件"</guimenuitem>。 <application>&applet;</application> 会与邮件服务器联系，确定服务器上是否有新邮件。</para>
-		<para>您可以将 <application>&applet;</application> 配置为在单击该小程序时会运行一条命令。有关如何配置 <application>&applet;</application> 以运行命令的信息，请参阅 <xref linkend="mailcheck-mailcheck"/>。</para>
+		<para>要检查邮件服务器以确定是否有新邮件，可右击该小程序，然后选择<guimenuitem>&ldquo;更新&rdquo;</guimenuitem>。 <application>&applet;</application> 会与邮件服务器联系，确定服务器上是否有新邮件。</para>
+		<para>您可以将 <application>&applet;</application> 配置为在单击该小程序时会运行一条命令。如需有关如何配置 <application>&applet;</application> 以运行命令的信息，请参阅 <xref linkend="mailcheck-behavior"/>。</para>
 
   </sect1>
   
 <!-- ============= Preferences ============================= -->
 
-  <sect1 id="mailcheck-prefs">   
+  <sect1 id="mailcheck-prefs"> 
+  
 	 <title>首选项</title>
-	 <para>要配置 <application>&applet;</application>，请右击小程序，然后选择<guimenuitem>"首选项"</guimenuitem>。</para>
+	 <para>要配置 <application>&applet;</application>，请右击该小程序，然后选择<guimenuitem>&ldquo;首选项&rdquo;</guimenuitem>。</para>
 
-	 <sect2 id="mailcheck-mailcheck"> 
+	 <sect2 id="mailcheck-behavior"> 
 	 
-		<title>邮件检查</title>
+		<title>行为</title>
 			
 		<variablelist>
 		  <varlistentry> 
-			 <term><guilabel>每次更新之前</guilabel></term> 
-			 <listitem>
-			 <para>选择此选项会在 <application>&applet;</application> 检查新邮件之前运行一条命令。在提供的文本框中键入命令。例如，键入用于运行连接到互联网的拨号软件的命令。</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>有新邮件到达时</guilabel></term>
-			 <listitem>
-			 <para>选择此选项在 <application>&applet;</application> 检测到新邮件时运行一条命令。在提供的文本框中键入命令。例如，键入 <command>fetchmail</command>，以便运行 <application>fetchmail</application> 程序来检索远程邮件服务器的邮件。</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>单击时</guilabel></term> 
-			 <listitem>
-			 <para>选择此选项会在您单击 <application>&applet;</application> 小程序时运行一条命令。在提供的文本框中键入命令。
-			例如，要在您单击小程序时启动 <application>Netscape Messenger</application> 窗口，可在文本框中键入 <command>netscape -mail</command>。</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>将未读邮件数设置为零</guilabel></term> 
-			 <listitem>
-			 <para>选择此选项可以在单击该小程序时将未读邮件数设置为零。</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>检查邮件的时间间隔</guilabel></term> 
+			 <term><guilabel>检查邮件间隔</guilabel></term> 
 		 <listitem>
-			 <para>使用该旋转框可以指定 <application>&applet;</application> 多长时间检查一次邮件服务器以确定是否有新邮件。</para>
+			 <para>使用旋转框可以指定 <application>&applet;</application> 多长时间检查一次邮件服务器以确定是否有新邮件。</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
@@ -241,17 +223,42 @@
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
+			 <term><guilabel>双击时动画停止</guilabel></term> 
+			 <listitem>
+			 <para>若您从<guilabel>&ldquo;选择动画&rdquo;</guilabel>下拉菜单列表中选择动画图像，则选择此选项会在双击小程序时使动画停止。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
 			 <term><guilabel>选择动画</guilabel></term> 
 			 <listitem>
 			 <para>使用此下拉菜单列表框可以选择在小程序中使用的显示类型。您可以显示文本、图像或动画。</para>
 			 </listitem>
 		  </varlistentry>
-		</variablelist>
+		  <varlistentry> 
+			 <term><guilabel>在每次更新前</guilabel></term> 
+			 <listitem>
+			 <para>选择此选项会在 <application>&applet;</application> 检查新邮件之前运行一条命令。在提供的文本框中键入命令。例如，键入用于运行连接到互联网的拨号软件的命令。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>新邮件到达时</guilabel></term>
+			 <listitem>
+			 <para>选择此选项在 <application>&applet;</application> 检测到新邮件时运行一条命令。在提供的文本框中键入命令。例如，键入 <command>fetchmail</command>，以便运行 <application>fetchmail</application> 程序来检索远程邮件服务器的邮件。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>当双击鼠标时</guilabel></term> 
+			 <listitem>
+			 <para>选择此选项会在您双击 <application>&applet;</application> 小程序时运行一条命令。在提供的文本框中键入命令。
+			例如，要在您单击小程序时启动 <application>Netscape Messenger</application> 窗口，可在文本框中键入 <command>netscape -mail</command>。</para>
+			 </listitem>
+		  </varlistentry>
+  		</variablelist>
 	 </sect2>
 
-	 <sect2 id="mailcheck-mailbox"> 
+	 <sect2 id="mailcheck-inboxsettings"> 
 
-		<title>邮箱</title>
+		<title>收件箱设置</title>
 
 		<variablelist>
 		  <varlistentry> 
@@ -259,7 +266,7 @@
 			 <listitem>
 			 <para>从下拉菜单列表框中选择以下其中一种选项，指定邮箱所在的邮件服务器的类型：</para>
 			 <itemizedlist>
-			 	<listitem><para><guilabel>本地 mailspool</guilabel></para>
+			 	<listitem><para><guilabel>本地邮件缓冲池</guilabel>：</para>
 			 	<para>如果您的邮箱位于本地邮件服务器上的共享邮件缓冲池区域中，则选择此项。</para>
 			 	</listitem>
 			 	<listitem><para><guilabel>本地 maildir</guilabel></para>
@@ -275,39 +282,39 @@
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>邮件假脱机文件</guilabel></term> 
+			 <term><guilabel>邮件缓冲池文件</guilabel></term> 
 			 <listitem>
-			 <para>如果您选择<guilabel>"本地 mailspool"</guilabel>或<guilabel>"本地 maildir"</guilabel>作为邮箱位置，则使用此字段可以指定检查新邮件的位置。</para>
+			 <para>如果您选择<guilabel>&ldquo;本地邮件缓冲池&rdquo;</guilabel>或<guilabel>&ldquo;本地 maildir&rdquo;</guilabel>作为邮箱位置，则使用本字段可以指定检查新邮件的位置。</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>邮件服务器</guilabel></term> 
 			 <listitem>
-			 <para>如果选择<guilabel>"远程 POP3 服务器"</guilabel>或<guilabel>"远程 IMAP 服务器"</guilabel>作为邮箱位置，使用此文本框可以指定远程邮件服务器的名称。</para>
+			 <para>如果选择<guilabel>&ldquo;远程 POP3 服务器&rdquo;</guilabel>或<guilabel>&ldquo;远程 IMAP 服务器&rdquo;</guilabel>作为邮箱位置，使用此文本框可以指定远程邮件服务器的名称。</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>用户名</guilabel></term> 
 			 <listitem>
-			 <para>如果选择<guilabel>"远程 POP3 服务器"</guilabel>或<guilabel>"远程 IMAP 服务器"</guilabel>作为邮箱位置，使用此文本框可以指定访问远程邮件服务器的用户名。</para>
+			 <para>如果选择<guilabel>&ldquo;远程 POP3 服务器&rdquo;</guilabel>或<guilabel>&ldquo;远程 IMAP 服务器&rdquo;</guilabel>作为邮箱位置，使用此文本框可以指定访问远程邮件服务器的用户名。</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>口令</guilabel></term> 
+<term><guilabel>口令</guilabel></term> 
 			 <listitem>
-			 <para>如果选择<guilabel>"远程 POP3 服务器"</guilabel>或<guilabel>"远程 IMAP 服务器"</guilabel>作为邮箱位置，使用此文本框可以指定访问远程邮件服务器的口令。</para>
+			 <para>如果选择<guilabel>&ldquo;远程 POP3 服务器&rdquo;</guilabel>或<guilabel>&ldquo;远程 IMAP 服务器&rdquo;</guilabel>作为邮箱位置，使用此文本框可以指定访问远程邮件服务器的口令。</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>文件夹</guilabel></term> 
+			 <term><guilabel>将口令保存到磁盘</guilabel></term> 
 			 <listitem>
-			 <para>如果选择<guilabel>"远程 IMAP 服务器"</guilabel>作为邮箱位置，使用此文本框可以指定该服务器上包含您的邮箱的文件夹。</para>
+			 <para>选择此选项会将口令以加密格式保存在 <application>gconf</application> 数据库中。若选择此选项，则小程序将不会在每次您要访问邮件服务器时提示输入口令。</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>检查邮件之前运行的命令</guilabel></term> 
+<term><guilabel>文件夹</guilabel></term> 
 			 <listitem>
-			 <para>如果选择<guilabel>"远程 POP3 服务器"</guilabel>或<guilabel>"远程 IMAP 服务器"</guilabel>作为您的邮箱位置，使用此文本框可以指定在 <application>&applet;</application> 检查邮件服务器查看新邮件之前运行的命令。</para>
+			 <para>如果选择<guilabel>&ldquo;远程 IMAP 服务器&rdquo;</guilabel>作为邮箱位置，使用此文本框可以指定该服务器上包含您的邮箱的文件夹。</para>
 			 </listitem>
 		  </varlistentry>
 		</variablelist>

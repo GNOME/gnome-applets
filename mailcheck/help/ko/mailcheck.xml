@@ -2,8 +2,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.1">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "September 2002">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "August 2003">
   <!ENTITY applet "Inbox Monitor">
 ]>
 
@@ -22,7 +22,8 @@
   <articleinfo>
 	 <title>&applet; 애플릿 설명서 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year>
+		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright>
 	 <copyright> 
@@ -32,7 +33,7 @@
 		<holder>Eric Baudais</holder> 
 	 </copyright>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2000</year>  
 		<holder>Telsa Gwynne</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
@@ -62,7 +63,7 @@
 </surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -100,8 +101,15 @@
 		  <revnumber>&applet; 애플릿 설명서 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>	 
+			 <para role="author">Sun 그놈 문서 팀</para>	 
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>받은 편지함 모니터 애플릿 설명서 V2.2</revnumber> 
+		  <date>2002년 9월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -109,11 +117,9 @@
 		  <revnumber>받은 편지함 모니터 애플릿 설명서 V2.1</revnumber> 
 		  <date>2002년 8월</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="author">Eric Baudais
-				
-<email>baudais@okstate.edu</email></para>
+				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -121,8 +127,7 @@
 		  <revnumber>받은 편지함 모니터 애플릿 설명서 V2.0</revnumber> 
 		  <date>2002년 5월</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
@@ -142,11 +147,9 @@
 		  <date>2000년 4월</date> 
 		  <revdescription> 
 			 <para role="author">Telsa Gwynne
-				
-<email>telsa@linuxchix.org</email></para>
+				<email>telsa@linuxchix.org</email></para>
 			 <para role="author">Eric Baudais
-				
-<email>baudais@okstate.edu</email></para>	 
+				<email>baudais@okstate.edu</email></para>	 
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -155,9 +158,9 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>피드백</title>
-		<para>&applet; 애플릿 또는 이 설명서에 대한 버그를 보고하거나
+		<para>&applet; 애플릿이나 이 설명서에 대한 버그를 보고하거나
 		  의견을 제시하려면 
-		  <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. </para>
+		  <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>의 지시 사항을 따르십시오. </para>
 		
 	 </legalnotice>
   </articleinfo>
@@ -185,97 +188,92 @@
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
-	 <para><application>&applet;</application> 애플릿은 일정한 시간 간격마다 메일 서버를 확인하여 편지함에 새 메일이 있는지 점검합니다. 애플릿은 새 메일이 있는지 여부를 알려주는 메시지를 표시합니다. </para>
-	 <para>패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭한 다음
-	<menuchoice>
-	<guimenu>패널에 추가</guimenu>
-	<guisubmenu>인터넷</guisubmenu>
-	<guimenuitem>받은 편지함 모니터</guimenuitem>
-	</menuchoice>를 선택합니다.</para>
+	 <para><application>&applet;</application> 애플릿은 일정한 시간 간격마다 메일 서버를 확인하여 편지함에 새 메일이 있는지 점검합니다. 애플릿은 메시지를 표시하여 새 메일이 있는지 여부를 알려 줍니다. </para>
+	 <para><application>&applet;</application>을(를) 패널에 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭하고 
+		<menuchoice> 
+		<guimenu>패널에 추가</guimenu>
+		<guisubmenu>인터넷</guisubmenu> 
+		<guimenuitem>받은 편지함 모니터</guimenuitem></menuchoice>를 선택합니다.</para>
   </sect1>
 <!-- ================ Usage ================================ -->
 
   <sect1 id="mailcheck-usage"> 
-	 <title>사용</title>
+	 <title>사용법</title>
 	 
-		<para>메일 서버에 새 메시지가 있는지 확인하려면 애플릿을 마우스 오른쪽 버튼으로 
-		클릭하고 <guimenuitem>메일 확인</guimenuitem>을 선택합니다. <application>&applet;</application>은(는) 메일 서버에 접속하여 서버에 새 메일이
+		<para>새 메시지가 있는지 메일 서버를 확인하려면 애플릿을 마우스 오른쪽 버튼으로 
+		클릭하고 <guimenuitem>업데이트</guimenuitem>를 선택합니다. <application>&applet;</application>에서 메일 서버에 접속하여 새 메일이
 		있는지 확인합니다.</para>
 		<para>애플릿을 클릭할 때 명령이 실행되도록 <application>&applet;</application>을(를) 
-		구성할 수 있습니다. 명령이 실행되도록 <application>&applet;</application>을(를) 구성하는 방법에 
-		대한 내용은 <xref linkend="mailcheck-mailcheck"/>을(를) 참조하십시오.</para>
+		구성할 수 있습니다. 명령을 실행하도록 <application>&applet;</application>을(를) 구성하는 방법은 <xref linkend="mailcheck-behavior"/>을(를) 참조하십시오.</para>
 
   </sect1>
   
 <!-- ============= Preferences ============================= -->
 
   <sect1 id="mailcheck-prefs"> 
-	 <title>환경 설정</title>
-	 <para><application>&applet;</application>을(를) 구성하려면 애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.</para>
+   	 <title>환경 설정</title>
+	 <para><application>&applet;</application>을(를) 구성하려면 애플릿을 마우스 오른쪽 버튼으로 클릭하고 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.</para>
 
-	 <sect2 id="mailcheck-mailcheck"> 
+	 <sect2 id="mailcheck-behavior"> 
 	 
-		<title>메일 확인</title>
+		<title>동작</title>
 			
 		<variablelist>
 		  <varlistentry> 
-			 <term><guilabel>각 갱신 전에</guilabel></term> 
+			 <term><guilabel>메일 확인 간격</guilabel></term> 
 			 <listitem>
-			 <para>이 옵션을 선택하면 <application>&applet;</application>이(가) 새 메일을 확인하기 
-			 전에 명령이 실행됩니다. 제공된 텍스트 상자에 명령을 입력합니다. 예를 들어, 인터넷에 연결하기 위해 사용하는 전화 접속 소프트웨어를 실행하는 
+			 <para>이 스핀 상자로 <application>&applet;</application>에서 새 메일이 있는지 메일 서버를 확인하는 시간 간격을 지정할 수 있습니다. </para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>새 메일이 도착하면 소리 내기</guilabel></term> 
+			 <listitem>
+			 <para>이 옵션을 선택하면 애플릿이 메일 서버에서 새 매일을 발견할 때 기본 소리가 재생됩니다. 기본 사운드 파일은 <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>에 지정됩니다. </para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>두 번 클릭 시 애니메이션 중지</guilabel></term> 
+			 <listitem>
+			 <para><guilabel>애니메이션 선택</guilabel> 드롭다운 목록에서 애니메이션 이미지를 선택하는 경우 애플릿에서 두 번 클릭으로 애니메이션을 중지하려면 이 옵션을 선택합니다. </para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>애니메이션 선택</guilabel></term> 
+			 <listitem>
+			 <para>이 드롭다운 목록 상자를 사용하여 애플릿에서 사용할 표시 유형을 선택할 수 있습니다. 텍스트, 이미지 또는 애니메이션을 표시할 수 있습니다.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>각 업데이트 전에</guilabel></term> 
+			 <listitem>
+			 <para>이 옵션을 선택하면 <application>&applet;</application>에서 새 메일을 확인하기 
+			 전에 명령이 실행됩니다. 제공된 입력란에 명령을 입력합니다. 예를 들어 인터넷 연결을 위해 전화 접속 소프트웨어를 실행하는 
 			명령어를 입력합니다.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>새 메일이 도착할 때</guilabel></term>
 			 <listitem>
-			 <para>이 옵션을 선택하면 <application>&applet;</application>이(가) 새 메일을
-			 발견했을 때 명령이 실행됩니다. 제공된 텍스트 상자에 명령을 입력합니다. 예를 들어, 원격 메일 서버에서 메일을 가져오기 위해 
+			 <para>이 옵션을 선택하면 <application>&applet;</application>에서 새 메일을
+			 발견할 때 명령이 실행됩니다. 제공된 입력란에 명령을 입력합니다. 예를 들어 원격 메일 서버에서 메일을 가져오기 위해 
 			  <application>fetchmail</application> 프로그램을 실행하려면 <command>fetchmail</command>을 입력합니다.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>클릭할 때</guilabel></term> 
+			 <term><guilabel>두 번 클릭 시</guilabel></term> 
 			 <listitem>
-			 <para>이 옵션을 선택하면 <application>&applet;</application> 애플릿을 클릭할 때 명령이 
-			실행됩니다. 제공된 텍스트 상자에 명령을 입력합니다. 
-			예를 들어, 애플릿을 클릭할 때 <application>Netscape 메신저</application> 창을 
-			시작하려면 텍스트 상자에 <command>netscape -
+			 <para>이 옵션을 선택하면 <application>&applet;</application> 애플릿을 두 번 클릭할 때 명령이 실행됩니다. 제공된 입력란에 명령을 입력합니다. 
+			예를 들어 애플릿을 클릭할 때 <application>Netscape Messenger</application> 창이 시작되게 하려면 
+			입력란에 <command>netscape -
 mail</command>을 입력합니다.</para>
 			 </listitem>
 		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>읽지 않은 메일 수를 0으로 설정</guilabel></term> 
-			 <listitem>
-			 <para>이 옵션을 선택하면 애플릿을 클릭할 때 읽지 않은 메시지의 수가 0으로 설정됩니다.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>메일 확인 간격</guilabel></term> 
-			 <listitem>
-			 <para>이 스핀 상자를 사용하면 <application>&applet;</application>이(가) 메일 서버를 확인하여 새 메일이 있는지 점검하는 시간 간격을 지정할 수 있습니다. </para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>새 메일이 도착하면 소리 내기</guilabel></term> 
-			 <listitem>
-			 <para>이 옵션을 선택하면 애플릿이 메일 서버에서 새 매일을 발견했을 때 기본 소리가 재생됩니다. 기본 소리가 들어 있는 파일은
-			 <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>에서 지정됩니다. </para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>애니메이션 선택</guilabel></term> 
-			 <listitem>
-			 <para>이 드롭다운 목록 상자를 사용하면 애플릿에서 사용할 표시 유형을 선택할 수 
-			있습니다. 텍스트, 이미지 또는 애니메이션을 표시할 수 있습니다.</para>
-			 </listitem>
-		  </varlistentry>
-		</variablelist>
+  		</variablelist>
 	 </sect2>
 
-	 <sect2 id="mailcheck-mailbox"> 
+	 <sect2 id="mailcheck-inboxsettings"> 
 
-		<title>편지함</title>
+		<title>받은 편지함 설정</title>
 
 		<variablelist>
 		  <varlistentry> 
@@ -285,13 +283,13 @@ mail</command>을 입력합니다.</para>
 			유형을 지정할 수 있습니다.</para>
 			 <itemizedlist>
 			 	<listitem><para><guilabel>로컬 메일 스풀</guilabel></para>
-			 	<para> 편지함이 로컬 메일 서버의 공유 메일 스풀 영역에 있는 경우</para>
+			 	<para>편지함이 로컬 메일 서버의 공유 메일 스풀 영역에 있는 경우</para>
 			 	</listitem>
 			 	<listitem><para><guilabel>로컬 메일 디렉토리</guilabel></para>
-			 	<para> 편지함이 로컬 디렉토리 트리에 있는 <command>maildir</command> 편지함으로 설정되어 있는 경우</para>
+			 	<para>편지함이 로컬 디렉토리 트리에 있는 <command>maildir</command> 편지함으로 설정되어 있는 경우</para>
 			 	</listitem>
 			 	<listitem><para><guilabel>원격 POP3 서버</guilabel></para>
-			 	<para> 편지함이 원격 POP3(Post Office Protocol 3) 메일 서버에 있는 경우</para>
+			 	<para>편지함이 원격 POP3(Post Office Protocol 3) 메일 서버에 있는 경우</para>
 			 	</listitem>
 			 	<listitem><para><guilabel>원격 IMAP 서버</guilabel></para>
 			 	<para>편지함이 원격 IMAP(Internet Message Access Protocol) 서버에 있는 경우</para>
@@ -304,21 +302,22 @@ mail</command>을 입력합니다.</para>
 			 <listitem>
 			 <para><guilabel>로컬 메일 스풀</guilabel>이나                               
 			<guilabel>로컬 메일 디렉토리</guilabel>를 편지함 위치로 선택한 경우에는 
-			이 필드를 사용하여 새	메시지를 확인할 위치를 지정합니다.</para>
+			이 필드를 사용하여 새 메시지를 확인할 위치를 지정합니다.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>메일 서버</guilabel></term> 
 			 <listitem>
 			 <para><guilabel>원격 POP3 서버</guilabel>나 <guilabel>원격 IMAP 서버</guilabel>를 
-			 편지함 위치로 선택한 경우에는 이 텍스트 상자를 사용하여 
+			 편지함 위치로 선택한 경우에는 이 입력란을 사용하여 
 			 원격 메일 서버의 이름을 지정합니다.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-		 <term><guilabel>사용자 이름</guilabel></term> <listitem>
+			 <term><guilabel>사용자 이름</guilabel></term> 
+			 <listitem>
 			 <para><guilabel>원격 POP3 서버</guilabel>나 <guilabel>원격 IMAP 서버</guilabel>를 
-			 편지함 위치로 선택한 경우에는 이 텍스트 상자를 사용하여 
+			 편지함 위치로 선택한 경우에는 이 입력란을 사용하여 
 			 원격 메일 서버에 액세스하는 사용자 이름을 지정합니다.</para>
 			 </listitem>
 		  </varlistentry>
@@ -326,24 +325,22 @@ mail</command>을 입력합니다.</para>
 			 <term><guilabel>암호</guilabel></term> 
 			 <listitem>
 			 <para><guilabel>원격 POP3 서버</guilabel>나 <guilabel>원격 IMAP 서버</guilabel>를 
-			 편지함 위치로 선택한 경우에는 이 텍스트 상자를 사용하여 
+			 편지함 위치로 선택한 경우에는 이 입력란을 사용하여 
 			 원격 메일 서버에 액세스하는 암호를 지정합니다.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>디스크에 암호 저장</guilabel></term> 
+			 <listitem>
+			 <para><application>gconf</application> 데이터베이스에 부호화된 형식으로 암호를 저장하려면 이 옵션을 선택합니다. 이 옵션을 선택하면 
+			 메일 서버에 액세스할 때마다 암호를 입력하지 않아도 됩니다.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>폴더</guilabel></term> 
 			 <listitem>
-			 <para><guilabel>원격 IMAP 서버</guilabel>를 편지함 위치로 선택한 경우에는 이 텍스트 상자를  
+			 <para><guilabel>원격 IMAP 서버</guilabel>를 편지함 위치로 선택한 경우에는 이 입력란을  
 			 사용하여 편지함이 있는 서버의 폴더를 지정합니다.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>메일 확인 전에 실행할 명령</guilabel></term> 
-			 <listitem>
-			 <para><guilabel>원격 POP3 서버</guilabel>나 <guilabel>원격 IMAP 서버</guilabel>를 
-			편지함 위치로 선택한 경우에는 이 텍스트 상자를 사용하여
-			<application>&applet;</application>이(가) 메일 서버에서	
-			새 메일이 있는지 확인하기 전에 실행할 명령을 지정합니다.</para>
 			 </listitem>
 		  </varlistentry>
 		</variablelist>

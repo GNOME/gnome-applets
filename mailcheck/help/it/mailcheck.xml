@@ -2,9 +2,9 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.1">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "Settembre 2002">
-  <!ENTITY applet "Controllo posta">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "Agosto 2003">
+  <!ENTITY applet "Controllo della posta">
 ]>
 
 <!-- 
@@ -22,6 +22,7 @@
   <articleinfo>
 	 <title>Manuale dell'applet &applet; V&manrevision;</title>
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright>
@@ -61,7 +62,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -99,35 +100,40 @@
 		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>	 
+			 <para role="author">Sun GNOME Documentation Team</para>	 
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Controllo posta V2.1</revnumber> 
+		  <revnumber>Manuale dell'applet Controllo della posta V2.2</revnumber> 
+		  <date>Settembre 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Controllo della posta V2.1</revnumber> 
 		  <date>Agosto 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Controllo posta V2.0</revnumber> 
+		  <revnumber>Manuale dell'applet Controllo della posta V2.0</revnumber> 
 		  <date>Maggio 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Controllo posta, per GNOME 1.4</revnumber> 
+		  <revnumber>Manuale dell'applet Controllo della posta per GNOME 1.4</revnumber> 
 		  <date>Novembre 2001</date> 
 		  <revdescription> 
 			 <para role="author">Eric Baudais
@@ -136,7 +142,7 @@
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Controllo posta, per GNOME 1.2</revnumber> 
+		  <revnumber>Manuale dell'applet Controllo della posta per GNOME 1.2</revnumber> 
 		  <date>Aprile 2000</date> 
 		  <revdescription> 
 			 <para role="author">Telsa Gwynne
@@ -156,7 +162,7 @@
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>Controllo posta</primary> 
+	 <primary>Controllo della posta</primary> 
   </indexterm> 
   
 <!-- ============= Document Body ============================= -->
@@ -184,7 +190,7 @@
 	<menuchoice>
 	<guimenu>Aggiungi al pannello</guimenu> 
 	<guisubmenu>Internet</guisubmenu>
-	<guimenuitem>Controllo posta</guimenuitem>
+	<guimenuitem>Controllo della posta</guimenuitem>
 	</menuchoice>.</para>
   </sect1>
 <!-- ================ Usage ================================ -->
@@ -192,8 +198,8 @@
   <sect1 id="mailcheck-usage"> 
 	 <title>Utilizzo</title>
 	 
-		<para>Per controllare sul server di posta se sono arrivati nuovi messaggi, fare clic con il pulsante destro del mouse sull'applet e scegliere <guimenuitem>Controlla la posta</guimenuitem>. L'applet <application>&applet;</application> contatta il server di posta per determinare se vi sono messaggi nuovi sul server.</para>
-		<para>&Egrave; anche possibile configurare <application>&applet;</application> perch&eacute; esegua un comando facendo clic sull'applet. Per maggiori informazioni a riguardo, vedere <xref linkend="mailcheck-mailcheck"/>.</para>
+		<para>Per controllare sul server di posta se sono arrivati nuovi messaggi, fare clic con il pulsante destro del mouse sull'applet e scegliere <guimenuitem>Aggiorna</guimenuitem>. L'applet <application>&applet;</application> contatta il server di posta per determinare se vi sono messaggi nuovi sul server.</para>
+		<para>&Egrave; anche possibile configurare l'applet <application>&applet;</application> perch&eacute; esegua un comando facendovi clic. Per maggiori informazioni, vedere <xref linkend="mailcheck-behavior"/>.</para>
 
   </sect1>
   
@@ -201,42 +207,17 @@
 
   <sect1 id="mailcheck-prefs"> 
 	 <title>Preferenze</title>
-	 <para>Per configurare <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. </para>
+	 <para>Per configurare il <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. </para>
 
-	 <sect2 id="mailcheck-mailcheck"> 
+	 <sect2 id="mailcheck-behavior"> 
 	 
-		<title>Controllo della posta</title>
+		<title>Comportamento</title>
 			
 		<variablelist>
 		  <varlistentry> 
-			 <term><guilabel>Prima di ogni aggiornamento</guilabel></term> 
-			 <listitem>
-			 <para>Selezionare questa opzione per eseguire un comando prima di controllare l'arrivo di nuovi messaggi. Digitare il comando nella casella di testo. Ad esempio, &egrave; possibile digitare il comando usato per avviare il software di connessione a Internet.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>All'arrivo di nuovi messaggi</guilabel></term>
-			 <listitem>
-			 <para>Selezionare questa opzione per eseguire un comando quando sono presenti nuovi messaggi. Digitare il comando nella casella di testo. Ad esempio, digitare <command>fetchmail</command> per eseguire il programma <application>fetchmail</application> per richiamare la posta da un server remoto.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Al clic</guilabel></term> 
-			 <listitem>
-			 <para>Selezionare questa opzione per eseguire un comando quando si fa clic sull'applet <application>&applet;</application>. Digitare il comando nella casella di testo. 
-			 Ad esempio, per aprire una finestra di <application>Netscape Messenger</application> facendo clic sull'applet, digitare <command>netscape -mail</command> nella casella di testo.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Imposta il numero di messaggi non letti su zero</guilabel></term> 
-			 <listitem>
-			 <para>Selezionare questa opzione per azzerare il numero dei messaggi non letti facendo clic sull'applet.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
 			 <term><guilabel>Controlla la posta ogni</guilabel></term> 
 			 <listitem>
-			 <para>Usare questa casella di selezione per specificare la frequenza con cui l'applet <application>&applet;</application> deve controllare il server di posta per determinare se vi sono nuovi messaggi. </para>
+			 <para>Usare le caselle di selezione per specificare la frequenza con cui l'applet <application>&applet;</application> deve connettersi al server di posta per determinare se vi sono nuovi messaggi. </para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
@@ -247,29 +228,54 @@
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Seleziona animazione</guilabel></term> 
+			 <term><guilabel>Ferma l'animazione con un doppio clic</guilabel></term> 
 			 <listitem>
-			 <para>Usare questa casella di riepilogo per selezionare il tipo di visualizzazione da usare nell'applet. &Egrave; possibile visualizzare un testo, un'immagine o un'animazione.</para>
+			 <para>Se &egrave; stata selezionata un'immagine animata dalla casella di riepilogo <guilabel>Seleziona animazione</guilabel>, selezionare questa opzione per interrompere l'animazione facendo doppio clic sull'applet.</para>
 			 </listitem>
 		  </varlistentry>
-		</variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Seleziona animazione</guilabel></term> 
+			 <listitem>
+			 <para>Usare questa casella di riepilogo a discesa per selezionare il tipo di visualizzazione da usare nell'applet. &Egrave; possibile visualizzare un testo, un'immagine o un'animazione.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Prima di ogni aggiornamento</guilabel></term> 
+			 <listitem>
+			 <para>Selezionare questa opzione per eseguire un comando prima di controllare l'arrivo di nuovi messaggi. Digitare il comando nella casella di testo. Ad esempio, &egrave; possibile digitare il comando usato per avviare il software di connessione a Internet.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Quando arriva nuova posta</guilabel></term>
+			 <listitem>
+			 <para>Selezionare questa opzione per eseguire un comando quando sono presenti nuovi messaggi. Digitare il comando nella casella di testo. Ad esempio, digitare <command>fetchmail</command> per eseguire il programma <application>fetchmail</application> per richiamare la posta da un server remoto.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Al doppio clic</guilabel></term> 
+			 <listitem>
+			 <para>Selezionare questa opzione per eseguire un comando in risposta a un doppio clic sull'applet <application>&applet;</application>. Digitare il comando nella casella di testo. 
+			 Ad esempio, per aprire una finestra di <application>Netscape Messenger</application> facendo clic sull'applet, digitare <command>netscape -mail</command> nella casella di testo.</para>
+			 </listitem>
+		  </varlistentry>
+  		</variablelist>
 	 </sect2>
 
-	 <sect2 id="mailcheck-mailbox"> 
+	 <sect2 id="mailcheck-inboxsettings"> 
 
-		<title>Casella postale</title>
+		<title>Impostazioni Inbox</title>
 
 		<variablelist>
 		  <varlistentry> 
-			 <term><guilabel>La casella postale si trova in</guilabel></term> 
+			 <term><guilabel>Posizione della casella postale</guilabel></term> 
 			 <listitem>
-			 <para>Selezionare una delle opzioni seguenti dalla casella di riepilogo per specificare il tipo di server su cui risiede la casella postale:</para>
+			 <para>Selezionare una delle opzioni seguenti dalla casella di riepilogo a discesa per specificare il tipo di server su cui risiede la casella postale:</para>
 			 <itemizedlist>
 			 	<listitem><para><guilabel>Posta locale</guilabel></para>
 			 	<para> Se la casella postale risiede in un'area di spool condivisa su un server di posta locale.</para>
 			 	</listitem>
 			 	<listitem><para><guilabel>Cartella di posta locale</guilabel>:</para>
-			 	<para> Se la casella postale viene configurata come <command>maildir</command> residente nell'albero di directory locale.</para>
+			 	<para> Se la casella postale viene configurata come <command>maildir</command> nell'albero di directory locale.</para>
 			 	</listitem>
 			 	<listitem><para><guilabel>Server POP3 remoto</guilabel>:</para>
 			 	<para> Se la casella postale risiede su un server di posta remoto di tipo POP3 (Post Office Protocol 3).</para>
@@ -281,9 +287,9 @@
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>File di spool della posta</guilabel></term> 
+			 <term><guilabel>File di posta locale</guilabel></term> 
 			 <listitem>
-			 <para>Se viene selezionata l'opzione <guilabel>Posta locale</guilabel> o <guilabel>Cartella di posta locale</guilabel> come posizione per la casella postale, usare questo campo per specificare la posizione in cui controllare l'arrivo di nuovi messaggi.</para>
+			 <para>Se viene selezionata l'opzione <guilabel>File di posta locale</guilabel> o <guilabel>Cartella di posta locale</guilabel> come posizione per la casella postale, usare questo campo per specificare la posizione in cui controllare l'arrivo di nuovi messaggi.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
@@ -305,15 +311,15 @@
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Cartella</guilabel></term> 
+			 <term><guilabel>Salva la password sul disco</guilabel></term> 
 			 <listitem>
-			 <para>Se si seleziona <guilabel>Server IMAP remoto</guilabel> come posizione per la casella postale, usare questa casella di testo per specificare la cartella del server che contiene la casella postale.</para>
+			 <para>Selezionare questa opzione per salvare la password in formato cifrato nel database <application>gconf</application>. Selezionando questa opzione, l'applet non richiede di inserire la password ad ogni accesso al server di posta.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Comando da eseguire prima del controllo della posta</guilabel></term> 
+			 <term><guilabel>Cartella</guilabel></term> 
 			 <listitem>
-			 <para>Se si seleziona <guilabel>Server POP3 remoto</guilabel> o <guilabel>Server IMAP remoto</guilabel> come posizione per la casella postale, usare questa casella di testo per specificare il comando da eseguire prima che l'applet <application>&applet;</application> controlli sul server di posta l'arrivo di nuovi messaggi.</para>
+			 <para>Se si seleziona <guilabel>Server IMAP remoto</guilabel> come posizione per la casella postale, usare questa casella di testo per specificare la cartella del server che contiene la casella postale.</para>
 			 </listitem>
 		  </varlistentry>
 		</variablelist>

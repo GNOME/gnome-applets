@@ -2,8 +2,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.1">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "September 2002">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "August 2003">
   <!ENTITY applet "Inbox Monitor">
 ]>
 
@@ -22,6 +22,7 @@
   <articleinfo>
 	 <title>&applet; Manuel de l'applet V&manrevision;</title>
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright>
@@ -57,11 +58,11 @@
 
 	 <authorgroup>
 	    <author> 
-		  <firstname>Sun</firstname> 
-		  <surname>&Eacute;quipe de documentation GNOME</surname> 
+		  <firstname>&Eacute;quipe de documentation</firstname> 
+		  <surname>Sun GNOME</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -98,9 +99,16 @@
 		<revision> 
 		  <revnumber>Manuel de l'applet &applet; V&manrevision;</revnumber> 
 		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">Equipe de documentation Sun GNOME</para>	 
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Moniteur de bo&icirc;te aux lettres V2.2</revnumber> 
+		  <date>Septembre 2002</date> 
 		  <revdescription> 
-			 <para role="author">&Eacute;quipe de documentation Sun GNOME
-				<email>gdocteam@sun.com</email></para>	 
+			 <para role="author">Equipe de documentation Sun GNOME</para>
 			 <para role="publisher">Projet de documentation GNOME</para>
 		  </revdescription>
 		</revision>
@@ -108,8 +116,7 @@
 		  <revnumber>Manuel de l'applet Moniteur de bo&icirc;te aux lettres V2.1</revnumber> 
 		  <date>Ao&ucirc;t 2002</date> 
 		  <revdescription> 
-			 <para role="author">&Eacute;quipe de documentation Sun GNOME
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Equipe de documentation Sun GNOME</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">Projet de documentation GNOME</para>
@@ -119,15 +126,14 @@
 		  <revnumber>Manuel de l'applet Moniteur de bo&icirc;te aux lettres V2.0</revnumber> 
 		  <date>Mai 2002</date> 
 		  <revdescription> 
-			 <para role="author">&Eacute;quipe de documentation Sun GNOME
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Equipe de documentation Sun GNOME</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para>
 			 <para role="publisher">Projet de documentation GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuel de l'applet Mail Check, pour GNOME 1.4</revnumber> 
+		  <revnumber>Manuel de l'applet Moniteur de bo&icirc;te aux lettres, pour GNOME 1.4</revnumber> 
 		  <date>Novembre 2001</date> 
 		  <revdescription> 
 			 <para role="author">Eric Baudais
@@ -136,8 +142,8 @@
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuel de l'applet Mail Check, pour GNOME 1.2</revnumber> 
-		  <date>Avril 2001</date> 
+		  <revnumber>Manuel de l'applet Moniteur de bo&icirc;te aux lettres, pour GNOME 1.2</revnumber> 
+		  <date>Avril 2000</date> 
 		  <revdescription> 
 			 <para role="author">Telsa Gwynne
 				<email>telsa@linuxchix.org</email></para>
@@ -179,7 +185,7 @@
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
-	 <para>L'applet <application>&applet;</application> v&eacute;rifie votre serveur de courrier r&eacute;guli&egrave;rement pour d&eacute;terminer si de nouveaux messages vous attendent dans votre bo&icirc;te aux lettres. L'applet affiche un message pour vous informer des &eacute;ventuels nouveaux courriers. </para>
+	 <para>L'applet <application>&applet;</application> v&eacute;rifie r&eacute;guli&egrave;rement la pr&eacute;sence de nouveaux messages dans votre bo&icirc;te aux lettres. L'applet affiche un message vous informant de la pr&eacute;sence &eacute;ventuelle de nouveaux courriers. </para>
 	 <para>Pour ajouter <application>&applet;</application> &agrave; un tableau de bord, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez 
 		<menuchoice> 
 		  <guimenu>Ajouter au tableau de bord</guimenu> 
@@ -192,8 +198,8 @@
   <sect1 id="mailcheck-usage"> 
 	 <title>Utilisation</title>
 	 
-		<para>Pour rechercher les nouveaux messages sur le serveur de courrier, cliquez avec le bouton droit sur l'applet, puis s&eacute;lectionnez <guimenuitem>Rechercher le courrier</guimenuitem>. <application>&applet;</application> contacte le serveur de courrier pour savoir si de nouveaux messages sont arriv&eacute;s.</para>
-		<para>Vous pouvez configurer <application>&applet;</application> pour qu'il ex&eacute;cute une commande lorsque vous cliquez sur lui. Consultez <xref linkend="mailcheck-mailcheck"/> pour plus d'informations concernant la configuration de <application>&applet;</application> pour l'ex&eacute;cution de commandes.</para>
+		<para>Pour rechercher de nouveaux messages sur le serveur de courrier, cliquez avec le bouton droit sur l'applet, puis s&eacute;lectionnez <guimenuitem>Mettre &agrave; jour</guimenuitem>. <application>&applet;</application> contacte le serveur de courrier pour savoir si de nouveaux messages sont arriv&eacute;s.</para>
+		<para>Vous pouvez configurer <application>&applet;</application> de telle sorte qu'il ex&eacute;cute une commande lorsque vous cliquez sur l'applet. Consultez <xref linkend="mailcheck-behavior"/> pour de plus amples informations sur la configuration de <application>&applet;</application> pour l'ex&eacute;cution de commandes.</para>
 
   </sect1>
   
@@ -201,62 +207,62 @@
 
   <sect1 id="mailcheck-prefs"> 
 	 <title>Pr&eacute;f&eacute;rences</title>
-	 <para>Pour configurer <application>&applet;</application>, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>.</para>
+	 <para>Pour configurer <application>&applet;</application>, cliquez avec le bouton droit sur l'applet, puis s&eacute;lectionnez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>. </para>
 
-	 <sect2 id="mailcheck-mailcheck"> 
+	 <sect2 id="mailcheck-behavior"> 
 	 
-		<title>V&eacute;rification du courrier</title>
+		<title>Comportement</title>
 			
 		<variablelist>
 		  <varlistentry> 
-			 <term><guilabel>Avant chaque mise &agrave; jour</guilabel></term> 
+			 <term><guilabel>V&eacute;rifier le courrier toutes les</guilabel></term> 
 			 <listitem>
-			 <para>Cette option permet d'ex&eacute;cuter une commande avant que <application>&applet;</application> v&eacute;rifie les nouveaux messages. Entrez la commande dans la zone de texte pr&eacute;vue &agrave; cet effet. Par exemple, entrez la commande permettant d'ex&eacute;cuter le logiciel d'appel utilis&eacute; pour vous connecter &agrave; Internet.</para>
+			 <para>Ces zones de s&eacute;lection num&eacute;riques permettent d'indiquer &agrave; quelle fr&eacute;quence <application>&applet;</application> doit v&eacute;rifier la pr&eacute;sence de nouveaux messages sur le serveur de courrier. </para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>orsque du nouveau courrier arrive</guilabel></term>
+			 <term><guilabel>&Eacute;mettre un son lorsqu'un nouveau courrier arrive</guilabel></term> 
+			 <listitem>
+			 <para>Cette option permet l'&eacute;mission d'un son par d&eacute;faut quand l'applet trouve de nouveaux messages sur le serveur de courrier. Le fichier son par d&eacute;faut est sp&eacute;cifi&eacute; dans <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>. </para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Arr&ecirc;ter l'animation par un double-clic</guilabel></term> 
+			 <listitem>
+			 <para>Si vous s&eacute;lectionnez une image anim&eacute;e dans la liste d&eacute;roulante <guilabel>S&eacute;lectionnez l'animation</guilabel>, cette option permet d'arr&ecirc;ter l'animation en double-cliquant sur l'applet.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>S&eacute;lectionner l'animation</guilabel></term> 
+			 <listitem>
+			 <para>Cette zone de liste d&eacute;roulante permet de s&eacute;lectionner le type d'affichage &agrave; utiliser dans l'applet. Vous pouvez afficher du texte, une image ou une animation.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Avant chaque mise &agrave; jour</guilabel></term> 
+			 <listitem>
+			 <para>Cette option permet d'ex&eacute;cuter une commande avant que <application>&applet;</application> ne v&eacute;rifie les nouveaux courriers. Entrez la commande dans la zone de texte pr&eacute;vue &agrave; cet effet. Par exemple, entrez la commande permettant d'ex&eacute;cuter le logiciel d'appel que vous utilisez pour la connexion &agrave; l'internet.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Lorsqu'un nouveau courrier arrive</guilabel></term>
 			 <listitem>
 			 <para>Cette option permet d'ex&eacute;cuter une commande quand <application>&applet;</application> d&eacute;tecte de nouveaux messages. Entrez la commande dans la zone de texte pr&eacute;vue &agrave; cet effet. Par exemple, entrez <command>fetchmail</command> pour lancer le programme <application>fetchmail</application> permettant de r&eacute;cup&eacute;rer des messages sur un serveur de courrier distant.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>En cas de clic</guilabel></term> 
+			 <term><guilabel>Avec un double-clic</guilabel></term> 
 			 <listitem>
-			 <para>Cette option permet d'ex&eacute;cuter une commande lorsque vous cliquez sur l'applet <application>&applet;</application>. Entrez la commande dans la zone de texte pr&eacute;vue &agrave; cet effet. 
+			 <para>Cette option permet d'ex&eacute;cuter une commande lorsque vous double-cliquez sur l'applet <application>&applet;</application>. Entrez la commande dans la zone de texte pr&eacute;vue &agrave; cet effet. 
 			Par exemple, pour ouvrir une fen&ecirc;tre <application>Netscape Messenger</application> quand vous cliquez sur l'applet, entrez <command>netscape -mail</command> dans la zone de texte.</para>
 			 </listitem>
 		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>D&eacute;finir le nombre de courriers non lus &eacute; z&eacute;ro</guilabel></term> 
-			 <listitem>
-			 <para>Cette option permet de remettre &agrave; z&eacute;ro le nombre de messages non lus quand vous cliquez sur l'applet.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Rechercher le courrier toutes les</guilabel></term> 
-			 <listitem>
-			 <para>Cette zone de s&eacute;lection num&eacute;rique permet de sp&eacute;cifier &agrave; quelle fr&eacute;quence <application>&applet;</application> doit v&eacute;rifier la pr&eacute;sence de nouveaux messages sur le serveur de courrier. </para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Emettre un son lorsqu'un nouveau courrier arrive</guilabel></term> 
-			 <listitem>
-			 <para>Cette option permet d'&eacute;mettre un son par d&eacute;faut quand l'applet d&eacute;tecte de nouveaux messages sur le serveur de courrier. Le fichier son par d&eacute;faut est sp&eacute;cifi&eacute; dans <filename>$prefix/etc/sound/events/mailcheck.soundlist</filename>. </para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>S&eacute;lectionner une animation</guilabel></term> 
-			 <listitem>
-			 <para>Cette zone de liste d&eacute;roulante permet de s&eacute;lectionner le type d'affichage &agrave; utiliser dans l'applet. Vous pouvez afficher du texte, une image ou une animation.</para>
-			 </listitem>
-		  </varlistentry>
-		</variablelist>
+  		</variablelist>
 	 </sect2>
 
-	 <sect2 id="mailcheck-mailbox"> 
+	 <sect2 id="mailcheck-inboxsettings"> 
 
-		<title>Bo&icirc;te aux lettres</title>
+		<title>Param&egrave;tres de la bo&icirc;te de r&eacute;ception</title>
 
 		<variablelist>
 		  <varlistentry> 
@@ -264,16 +270,16 @@
 			 <listitem>
 			 <para>S&eacute;lectionnez l'une des options suivantes de la zone de liste d&eacute;roulante pour sp&eacute;cifier le type de serveur de courrier sur lequel votre bo&icirc;te aux lettres r&eacute;side.</para>
 			 <itemizedlist>
-			 	<listitem><para><guilabel>Spool de courrier local</guilabel></para>
+			 	<listitem><para><guilabel>Local mailspool</guilabel></para>
 			 	<para>Si votre bo&icirc;te aux lettres r&eacute;side sur une zone de spool de courrier partag&eacute;e dans un serveur de courrier local.</para>
 			 	</listitem>
-			 	<listitem><para><guilabel>Maildir local</guilabel></para>
-			 	<para>Si votre bo&icirc;te aux lettres est configur&eacute;e comme bo&icirc;te aux lettres <command>maildir</command> r&eacute;sidant dans votre structure de r&eacute;pertoires locale.</para>
+			 	<listitem><para><guilabel>Local maildir</guilabel></para>
+			 	<para>si votre bo&icirc;te aux lettres est configur&eacute;e comme bo&icirc;te aux lettres <command>maildir</command> r&eacute;sidant dans votre structure de r&eacute;pertoires locale.</para>
 			 	</listitem>
-			 	<listitem><para><guilabel>Serveur POP3 distant</guilabel></para>
+			 	<listitem><para><guilabel>Remote POP3-server</guilabel></para>
 			 	<para>Si votre bo&icirc;te aux lettres r&eacute;side sur un serveur de courrier POP3 (Post Office Protocol 3) distant.</para>
 			 	</listitem>
-			 	<listitem><para><guilabel>Serveur IMPA distant</guilabel></para>
+			 	<listitem><para><guilabel>Remote IMAP-server</guilabel></para>
 			 	<para>Si votre bo&icirc;te aux lettres r&eacute;side sur un serveur IMAP (Internet Message Access Protocol) distant.</para>
 			 	</listitem>
 			 </itemizedlist>
@@ -282,37 +288,37 @@
 		  <varlistentry> 
 			 <term><guilabel>Fichier d'arriv&eacute;e de courrier</guilabel></term> 
 			 <listitem>
-			 <para>Si vous s&eacute;lectionnez <guilabel>Spool de courrier local</guilabel> ou <guilabel>Maildir local</guilabel> comme emplacement de votre bo&icirc;te aux lettres, ce champ vous permet de sp&eacute;cifer l'emplacement o&ugrave; v&eacute;rifier la pr&eacute;sence de nouveaux messages.</para>
+			 <para>Si vous s&eacute;lectionnez <guilabel>Spool de courrier local</guilabel> ou <guilabel>Maildir local</guilabel> comme emplacement de bo&icirc;te aux lettres, ce champ vous permet d'indiquer l'emplacement o&ugrave; v&eacute;rifier la pr&eacute;sence de nouveaux messages.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>Serveur de courrier</guilabel></term> 
 			 <listitem>
-			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement pour votre bo&icirc;te aux lettres, cette zone de texte vous permet de sp&eacute;cifier le nom du serveur de courrier distant.</para>
+			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement de bo&icirc;te aux lettres, cette zone de texte vous permet de sp&eacute;cifier le nom du serveur de courrier distant.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>Nom d'utilisateur</guilabel></term> 
 			 <listitem>
-			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement pour votre bo&icirc;te aux lettres, cette zone de texte vous permet de sp&eacute;cifier le nom d'utilisateur permettant d'acc&eacute;der au serveur de courrier distant.</para>
+			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement de bo&icirc;te aux lettres, cette zone de texte vous permet d'indiquer le nom d'utilisateur permettant d'acc&eacute;der au serveur de courrier distant.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>Mot de passe</guilabel></term> 
 			 <listitem>
-			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement pour votre bo&icirc;te aux lettres, cette zone de texte vous permet de sp&eacute;cifier le mot de passe permettant d'acc&eacute;der au serveur de courrier distant.</para>
+			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement de bo&icirc;te aux lettres, cette zone de texte vous permet d'indiquer le mot de passe autorisant l'acc&egrave;s au serveur de courrier distant.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Enregistrer le mot de passe sur le disque</guilabel></term> 
+			 <listitem>
+			 <para>Cette option permet d'enregistrer le mot de passe en format chiffr&eacute; dans la base de donn&eacute;es <application>gconf</application>. Si vous s&eacute;lectionnez cette option, l'applet ne vous demande pas d'entrer le mot de passe &agrave; chaque fois que vous souhaitez acc&eacute;der au serveur de courrier.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
 			 <term><guilabel>Dossier</guilabel></term> 
 			 <listitem>
-			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur IMAP distant</guilabel> comme emplacement pour votre bo&icirc;te aux lettres, cette zone de texte vous permet de sp&eacute;cifier le dossier du serveur qui contient votre bo&icirc;te aux lettres.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Commande &agrave; ex&eacute;cuter avant de v&eacute;rifier le courrier</guilabel></term> 
-			 <listitem>
-			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur POP3 distant</guilabel> ou <guilabel>Serveur IMAP distant</guilabel> comme emplacement pour votre bo&icirc;te aux lettres, cette zone de texte vous permet de sp&eacute;cifier une commande &agrave; ex&eacute;cuter avant que <application>&applet;</application> v&eacute;rifie les messages sur le serveur de courrier.</para>
+			 <para>Si vous s&eacute;lectionnez <guilabel>Serveur IMAP distant</guilabel> comme emplacement de bo&icirc;te aux lettres, cette zone de texte vous permet d'indiquer le dossier du serveur qui contient votre bo&icirc;te aux lettres.</para>
 			 </listitem>
 		  </varlistentry>
 		</variablelist>
@@ -320,4 +326,3 @@
   </sect1>
 
 </article>
-
