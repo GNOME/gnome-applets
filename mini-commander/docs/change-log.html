@@ -86,6 +86,12 @@ WIDTH="100%"
 CLASS="SCREEN"
 >1999-01-05  Oliver Maruhn  &#60;om@linuxhq.com&#62;
 
+	* src/preferences.c (saveSession): save INTERNAL_VERSION instead
+ 	of VERSION of gnome-core
+
+	* src/command_line.c (commandKey_event): dupes are no longer
+ 	stored in command history
+
 	* src/exec.c (execCommand): better handling when /bin/sh can not
  	be started
 
