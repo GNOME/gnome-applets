@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "2.8">
-  <!ENTITY manrevision "2.8">
-  <!ENTITY date "September 2004">
+  <!ENTITY appversion "2.10">
+  <!ENTITY manrevision "2.10">
+  <!ENTITY date "March 2005">
   <!ENTITY app "<application>Disk Mounter</application>">
   <!ENTITY appname "Disk Mounter">
 ]>
@@ -20,7 +20,11 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-    <title>&appname; Manual</title>       
+    <title>&appname; Manual</title>
+    <copyright>
+      <year>2005</year>
+      <holder>Trent Lloyd</holder>
+    </copyright>
     <copyright>
       <year>2004</year>
       <holder>Sun Microsystems</holder>
@@ -51,6 +55,15 @@
 	any of this. -->
 
     <authorgroup> 
+      <author>
+        <firstname>Trent</firstname>
+        <surname>Lloyd</surname>
+        <affiliation>
+          <orgname>GNOME Documentation Project</orgname>
+          <address><email>lathiat@bur.st</email></address>
+        </affiliation>
+      </author>
+        
       <author>
         <firstname>Sun</firstname>
         <surname>GNOME Documentation Team</surname>
@@ -130,7 +143,7 @@
     </releaseinfo>
     <legalnotice> 
       <title>Feedback</title> 
-      <para>To report a bug or make a suggestion regarding the &app; applet or
+      <para>To report a bug or make a suggestion regarding the &app; or
 	this manual, follow the directions in the 
 	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
       </para>
@@ -139,7 +152,7 @@
   </articleinfo> 
 
   <indexterm zone="index"> 
-    <primary>Disk Mounter Applet</primary> 
+    <primary>Disk Mounter</primary> 
   </indexterm> 
   
 
@@ -148,24 +161,24 @@
     <title>Introduction</title>
 
     <figure id="drivemountapplet-fig"> 
-      <title>&appname; Applet</title> 
+      <title>&appname;</title> 
       <screenshot> 
         <mediaobject> 
           <imageobject><imagedata
-            fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+            fileref="figures/drivemount-applet_example.png" format="PNG"/> 
           </imageobject>
           <textobject> 
-            <phrase>The &appname; applet.</phrase> 
+            <phrase>The &appname;.</phrase> 
           </textobject> 
         </mediaobject> 
       </screenshot> 
     </figure>
 
     <para>
-      The &app; applet enables you to quickly mount and unmount various types of drives and file systems. 
+      The &app; enables you to quickly mount and unmount various types of drives and file systems. 
     </para>
     <para>
-      For the &app; applet to work properly, your system administrator must configure your system appropriately. For more information about the necessary system administration tasks, see <ulink url="man:fstab" type="man"><citerefentry><refentrytitle>fstab</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink>.
+      For the &app; to work properly, your system administrator must configure your system appropriately. For more information about the necessary system administration tasks, see <ulink url="man:fstab" type="man"><citerefentry><refentrytitle>fstab</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink>.
     </para>
 
     <sect2 id="drivemount-intro-add">
@@ -188,33 +201,11 @@
         You must unmount removable drives, such as floppy disks and Zip disks, before you remove the media, because Linux and UNIX systems do not always write the changes immediately. Such systems typically buffer the changes to the disk, to improve the speed of the system. 
       </para>
       <para>
-        Partitions on fixed drives, such as your hard drive, are typically mounted automatically when your computer boots, and unmounted when your computer shuts down. Removable media must be mounted and unmounted manually, for example by using the &app; applet.  
-      </para>
-    </sect2>
-
-    <sect2 id="drivemount-intro-mountpoint">
-      <title>Mount Points</title>
-      <para>
-        The root file system is the main file system on your computer. The root file system starts with the following character: <literal>/</literal> 
+        Partitions on fixed drives, such as your hard drive, are typically mounted automatically when your computer boots, and unmounted when your computer shuts down. Removable media must be mounted and unmounted manually, for example by using the &app;.  
       </para>
       <para>
-        Other file systems are associated with empty directories inside the root file system. These directories are called mount points. When a file system is mounted, the contents of the file system are accessible from the associated mount point. 
+        Some systems may also automatically mount some removable media (such as USB and IEEE1394 disks), these devices may also come up in the &app; so that you can unmount them when you are finished, and provide a visual indication that they are present.
       </para>
-      <para>
-        For example, most systems create a mount point called <literal>/mnt/floppy</literal>:
-      </para>
-      <itemizedlist>
-        <listitem>
-          <para>
-            If your floppy drive is not mounted, <literal>/mnt/floppy</literal> is an empty directory.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            If your floppy drive is mounted, <literal>/mnt/floppy</literal> provides access to the contents of your floppy disk.
-          </para>
-        </listitem>
-      </itemizedlist>
     </sect2>
 
   </sect1>
@@ -224,107 +215,34 @@
     <title>Usage</title>
 
     <sect2 id="drivemount-usage-tooltip">
-    <title>To Display the Mount Point and Mount Status of a Drive</title>
+    <title>To Display the Name and Mount Status of a Drive</title>
       <para>
-        To display the mount point and mount status of a drive, move the mouse pointer to the drive icon in the panel. A tooltip displays the mount point and mount status of the drive.
+        To display the name and mount status of a drive, move the mouse pointer to the drive icon in the panel. A tooltip displays the name and mount status of the drive.
       </para>
+      <imageobject><imagedata fileref="figures/drivemount-applet_status.png" FORMAT="png" /></imageobject>
     </sect2>
 
     <sect2 id="drivemount-usage-mount">
-    <title>To Mount or Unmount a Drive</title>
+    <title>To Mount, Unmount or Eject a Drive</title>
       <para>
-        To mount or unmount a drive, click on the drive icon in the panel.
+        To mount drive, click on the drive icon in the panel and then select the <guimenuitem>Mount Drive</guimenuitem> option.
       </para>
+      <para><imageobject><imagedata fileref="figures/drivemount-applet_mount.png" FORMAT="png" /></imageobject></para>
+      <para>
+        To unmount a drive, click on the drive icon in the panel and then select the <guimenuitem>Unmount Drive</guimenuitem> option, or if the device is a CD-ROM Drive, it may be labelled <guimenuitem>Eject Drive</guimenuitem>
+      </para>
+      <para><imageobject><imagedata fileref="figures/drivemount-applet_eject.png" FORMAT="png" /></imageobject></para>
     </sect2>
 
     <sect2 id="drivemount-usage-browse">
     <title>To Browse the Contents of a Drive</title>
       <para>
-        To use a file manager to browse the contents of a drive, right-click on the drive icon in the panel, then choose <guimenuitem>Browse</guimenuitem>.
+        To use a file manager to browse the contents of a drive, click on the drive icon in the panel, then choose <guimenuitem>Open Drive</guimenuitem>.
       </para>
+      <para><imageobject><imagedata fileref="figures/drivemount-applet_open.png" FORMAT="png" /></imageobject></para>
       <para>
         You can only browse the contents of a mounted drive.
       </para>
     </sect2>
-
-    <sect2 id="drivemount-usage-eject">
-    <title>To Eject a Disk From a Drive</title>
-      <para>
-        To eject a disk from a drive, right-click on the drive icon in the panel, then choose <guimenuitem>Eject</guimenuitem>.
-      </para>
-    </sect2>
-
   </sect1>
-
-  <!-- ============= Customization ============================= -->
-  <sect1 id="drivemountapplet-prefs">
-    <title>Preferences</title>
-    <para>
-      To configure the &app; applet, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Disk Mounter Preferences</guilabel> dialog is displayed.
-    </para>
-    <variablelist>
-      <varlistentry>
-        <term><guilabel>Mount directory</guilabel></term>
-        <listitem>
-          <para>
-            Enter the name of the mount point for this drive. Alternatively, use the <guibutton>Browse</guibutton> button to select the mount point.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><guilabel>Update interval ... seconds</guilabel></term>
-        <listitem>
-          <para>
-            Use this spin box to specify the interval at which you want &app; to check the status of the drive and update the icon if necessary.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><guilabel>Icon</guilabel></term>
-        <listitem>
-          <para>
-            Select a drive type from the drop-down list. &app; automatically provides icons for each defined drive type, to indicate whether the drive is mounted or unmounted.
-          </para>
-          <para>
-            Alternatively, select <guilabel>Custom</guilabel> from the drop-down list. Click on the <guilabel>Mounted icon</guilabel> and <guilabel>Unmounted icon</guilabel> buttons to choose icons that indicate whether the drive is mounted or unmounted.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><guilabel>Eject disk when unmounting</guilabel></term>
-        <listitem>
-          <para>
-            Select this option to eject the disk when you unmount the drive.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><guilabel>Use automount friendly status test</guilabel></term>
-        <listitem>
-          <para>
-            Select this option only if you use the automount facility.
-          </para>
-          <para>
-            If you do not use the automount facility, you do not need to select the <guilabel>Use automount friendly status test</guilabel> option. When you position the mouse pointer over a drive icon in the panel, &app; runs the <command>stat</command> command, which tests the mount status.
-          </para>
-          <para>
-            However, if you use the automount facility, &app; behaves differently, as follows:
-          </para>
-          <itemizedlist>
-            <listitem>
-              <para>
-                If you use the automount facility and you do not select the <guilabel>Use automount friendly status test</guilabel> option, &app; runs the <command>stat</command> command, which mounts the drive instead of testing the mount status. 
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                If you use the automount facility and you select the <guilabel>Use automount friendly status test</guilabel> option, &app; runs the <command>mount</command> command, which tests the mount status.
-              </para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
- </sect1>
 </article>
