@@ -194,7 +194,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void load_properties( char *path) {
+	void properties_load( char *path) {
 
 
 		gnome_config_push_prefix (path);
@@ -254,6 +254,23 @@
 		gnome_config_sync();
 		gnome_config_drop_all();
 	}	
+
+
+	/*-----------------------------------------------------------------*/
+	void properties_set() {
+		if (!strcmp(props.buttons,"yes")) {
+			gtk_widget_show(leftButton);
+			gtk_widget_show(rightButton);
+		}
+		else {
+			gtk_widget_hide(leftButton);
+			gtk_widget_hide(rightButton);
+		}
+
+		setup_colors();		
+		load_fonts();
+		updateOutput();
+	}
 
 
 	/*-----------------------------------------------------------------*/
@@ -792,18 +809,7 @@
 				props.font2 = g_strdup(new_font);
 
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
-		if (!strcmp(props.buttons,"yes")) {
-			gtk_widget_show(leftButton);
-			gtk_widget_show(rightButton);
-		}
-		else {
-			gtk_widget_hide(leftButton);
-			gtk_widget_hide(rightButton);
-		}
-
-		setup_colors();		
-		load_fonts();
-		updateOutput();
+		properties_set();
 	}
 
 
@@ -1376,11 +1382,8 @@ buttons:"));
 
 
 
-		load_properties(APPLET_WIDGET(applet)->privcfgpath);
-
-		setup_colors();
-		load_fonts();		
-		updateOutput();
+		properties_load(APPLET_WIDGET(applet)->privcfgpath);
+		properties_set();
 
 		gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), NULL);
