@@ -5,10 +5,10 @@
 # Changwoo Ryu <cwryu@debian.org>, 1998, 2002-2003
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.3.1\n"
+"Project-Id-Version: gnome-applets 2.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-19 13:05+0900\n"
-"PO-Revision-Date: 2003-07-19 13:03+0900\n"
+"POT-Creation-Date: 2003-07-27 02:53+0900\n"
+"PO-Revision-Date: 2003-07-27 03:25+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
@@ -76,13 +76,13 @@ msgid "Utility"
 msgstr "유틸리티"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2434
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:709
 msgid "translator_credits"
 msgstr ""
 "류창우 <cwryu@debian.org>, 1998, 2002-2003\n"
@@ -120,7 +120,7 @@ msgstr "a"
 
 #: accessx-status/applet.c:1183
 msgid "Displays current state of keyboard accessibility features"
-msgstr "키보드 접근성 기능의 현재 상태를 표시합니다"
+msgstr "키보드 접근성 기능의 현재 상태를 보여줍니다"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
@@ -155,24 +155,24 @@ msgid "_Suspend Computer..."
 msgstr "컴퓨터 일시 중단(_S)..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "삑소리?"
+msgid "Beep for warnings"
+msgstr "경고할 때 삑소리를 냅니다"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "경고를 보여줄 때 삑소리 내기"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "컴퓨터를 일시 정지할 때 보낼 명령"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "맨 위부터 줄이기"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "배터리 충전되면 알림"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "가로"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -187,12 +187,12 @@ msgid "Notify user when the battery is low"
 msgstr "배터리 충전량이 부족하면 알려 주기"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
-msgstr "오렌지색 값"
+msgid "Orange value level"
+msgstr "오렌지색 값 단계"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
-msgstr "빨간색 값"
+msgid "Red value level"
+msgstr "빨간색 값 단계"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -215,12 +215,20 @@ msgid "Suspend Command"
 msgstr "일시 중단 명령"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "도크 사용"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr "이보다 낮으면 그래프가 오렌지색으로 보여집니다."
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
-msgstr "노란색 값"
+msgid "The battery level below which the battery is displayed as red."
+msgstr "이보다 낮으면 그래프가 빨간색으로 보여집니다."
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr "이보다 낮으면 그래프가 노란색으로 보여집니다."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "노란색 값 단계"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -453,7 +461,7 @@ msgstr "<b>일시 중단</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>경고</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
 msgstr "모양"
 
@@ -461,9 +469,9 @@ msgstr "모양"
 msgid "Battery Charge Monitor Preferences"
 msgstr "배터리 충전 감시기 기본 설정"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:760 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "일반"
 
@@ -520,8 +528,8 @@ msgid "_Yellow:"
 msgstr "노랑(_Y):"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:473
-#: drivemount/properties.c:588 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2539 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -539,8 +547,8 @@ msgstr "배터리가 완전히 충전되었습니다!"
 msgid "Battery power low"
 msgstr "배터리 전력이 부족합니다"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "CD 연주기"
 
@@ -565,23 +573,23 @@ msgstr "오디오 CD를 재생하는 패널 애플릿"
 msgid "_Open CD Player"
 msgstr "CD 연주기 열기(_O)"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "정지"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "재생 / 일시 정지"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "꺼내기"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "이전 트랙"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "다음 트랙"
 
@@ -603,23 +611,23 @@ msgstr "%s은(는) CD 연주기가 아닌 것 같습니다"
 msgid "CD Player Preferences"
 msgstr "CD 연주기 기본 설정"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "장치 경로(_P):"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "장치 경로"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "장치 경로를 설정합니다"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "기본값 쓰기(_D)"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -627,39 +635,39 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD연주기 애플릿은 패널안에서 실행되는 간단한 음악 CD 연주기 입니다"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "경과된 시간"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "트랙 번호"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr "오디오 장치가 이미 사용중이거나, 다른 프로그램이 사용하고 있습니다"
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "씨디 재생을 멈추려면 이 단추를 클릭하십시오"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "씨디를 재생하거나 일시 정지하려면 이 단추를 클릭하십시오"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "씨디를 꺼내려면 이 단추를 클릭하십시오"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "씨디에서 이전 트랙을 재생하려면 이 단추를 클릭하십시오"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "씨디에서 다음 트랙을 재생하려면 이 단추를 클릭하십시오"
 
@@ -674,7 +682,7 @@ msgid ""
 msgstr "이 애플릿에서 CD를 연주할 때 쓸 장치의 완전한 경로명입니다"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:332
+#: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "문자 표"
 
@@ -686,7 +694,7 @@ msgstr "문자선택 애플릿 팩토리"
 msgid "Insert characters"
 msgstr "문자 삽입"
 
-#: charpick/charpick.c:322 charpick/properties.c:124
+#: charpick/charpick.c:322 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "팔레트 더하기"
 
@@ -732,59 +740,69 @@ msgstr "애플릿 시작할 때 보일 글자"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "DEPRECATED - 애플릿 시작할 때 보일 글자"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:259
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "사용 가능한 팔레트 목록"
 
-#: charpick/properties.c:87
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "사용 가능한 팔레트가 들어 있는 스트링 목록"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr "애플릿이 마지막으로 사용되었을 때 선택한 스트링. 애플릿을 시작할 때 이 스트링이 보여집니다."
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "팔레트(_P):"
 
-#: charpick/properties.c:94
+#: charpick/properties.c:95
 msgid "Palette entry"
 msgstr "팔레트 입력란"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
 msgstr "문자를 더하거나 지워서 팔레트를 수정합니다"
 
-#: charpick/properties.c:159
+#: charpick/properties.c:160
 msgid "Edit Palette"
 msgstr "팔레트 편집"
 
-#: charpick/properties.c:258
+#: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "팔레트 목록"
 
-#: charpick/properties.c:337
+#: charpick/properties.c:338
 msgid "Pal_ettes:"
 msgstr "팔레트(_E):"
 
-#: charpick/properties.c:353
+#: charpick/properties.c:354
 msgid "Add button"
 msgstr "더하기 단추"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:355
 msgid "Click to add a new palette"
 msgstr "새 팔레트를 더하려면 클릭하십시오"
 
-#: charpick/properties.c:361
+#: charpick/properties.c:362
 msgid "Edit button"
 msgstr "편집 단추"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:363
 msgid "Click to edit the selected palette"
 msgstr "선택한 팔레트를 편집하려면 클릭하십시오"
 
-#: charpick/properties.c:369
+#: charpick/properties.c:370
 msgid "Delete button"
 msgstr "지우기 단추"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:371
 msgid "Click to delete the selected palette"
 msgstr "선택한 팔레트를 지우려면 클릭하십시오"
 
-#: charpick/properties.c:422
+#: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "문자 표 기본 설정"
 
@@ -822,8 +840,8 @@ msgstr "'%s'(을)를 실행하는 중 오류가 생겼습니다: %s"
 msgid "Cannot browse device"
 msgstr "장치를 찾아 볼 수 없습니다"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:594
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2545
+#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "도움말을 보여주는 데 오류가 생겼습니다"
 
@@ -871,80 +889,80 @@ msgstr "상태를 업데이트할 간격 (초)"
 msgid "Disk Mounter Preferences"
 msgstr "디스크 마운트 애플릿 기본 설정"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "_Mount directory:"
 msgstr "마운트 디렉토리(_M):"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:361
 msgid "Select Mount Directory"
 msgstr "마운트 디렉토리 선택"
 
-#: drivemount/properties.c:382
+#: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "업데이트 간격(_U):"
 
-#: drivemount/properties.c:405 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "초"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:419
 msgid "_Icon:"
 msgstr "아이콘(_I):"
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:445
 msgid "Floppy"
 msgstr "플로피"
 
-#: drivemount/properties.c:447
+#: drivemount/properties.c:448
 msgid "Cdrom"
 msgstr "씨디롬"
 
-#: drivemount/properties.c:450
+#: drivemount/properties.c:451
 msgid "Cd Recorder"
 msgstr "CD 레코더"
 
-#: drivemount/properties.c:453
+#: drivemount/properties.c:454
 msgid "Zip Drive"
 msgstr "ZIP 드라이브"
 
-#: drivemount/properties.c:456
+#: drivemount/properties.c:457
 msgid "Hard Disk"
 msgstr "하드 디스크"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:460
 msgid "Jaz Drive"
 msgstr "Jaz 드라이브"
 
-#: drivemount/properties.c:462
+#: drivemount/properties.c:463
 msgid "Custom"
 msgstr "다른 저장장치"
 
-#: drivemount/properties.c:481
+#: drivemount/properties.c:482
 msgid "Select icon for mounted"
 msgstr "마운트되었을때 아이콘 선택"
 
-#: drivemount/properties.c:488
+#: drivemount/properties.c:489
 msgid "Moun_ted icon:"
 msgstr "마운트 아이콘(_T):"
 
-#: drivemount/properties.c:509
+#: drivemount/properties.c:510
 msgid "Select icon for unmounted"
 msgstr "마운트 해재했을 때 아이콘 선택"
 
-#: drivemount/properties.c:516
+#: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
 msgstr "마운트 해제 아이콘(_N):"
 
-#: drivemount/properties.c:532
+#: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "패널 크기에 맞추기(_S)"
 
-#: drivemount/properties.c:539
+#: drivemount/properties.c:540
 msgid "_Eject disk when unmounting"
 msgstr "마운트 해제할 때 디스크 꺼내기(_E)"
 
-#: drivemount/properties.c:549
+#: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
 msgstr "automount 호환 상태 테스트 쓰기(_A)"
 
@@ -985,11 +1003,11 @@ msgstr "테마가 들어 있는 디렉토리"
 msgid "Geyes Preferences"
 msgstr "눈동자 기본 설정"
 
-#: geyes/themes.c:288
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "테마"
 
-#: geyes/themes.c:309
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr "테마 선택(_S):"
 
@@ -1057,16 +1075,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "키보드 배치에 대한 깃발 이미지"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "애플릿 크기를 작게?"
-
-#: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
 msgstr "\"Flag and Label\", \"Label\" 그리고 \"Flag\"가 가능합니다"
 
+#: gkb-new/gkb.schemas.in.h:4
+msgid "Keybinding for switching layout"
+msgstr "배치를 전환할 때 쓸 키바인딩"
+
 #: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
-msgstr "키를 눌러서 전환할 때 쓸 키바인딩"
+msgid "No longer used"
+msgstr "더 이상 사용되지 않음"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1077,38 +1095,34 @@ msgid "The command that switches your keymap to this layout"
 msgstr "키맵을 이 배치로 바꾸는 명령"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "키맵을 이 배치로 바꾸는 명령"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "키보드 배치의 국가"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "키보드 배치의 레이블"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "키보드 배치의 언어"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "키보드 배치의 이름"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "이 깃발이 애플릿의 깃발 필드에 나타납니다"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "이 정보는 키보드 배치를 구별하는 데 씁니다"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr "키보드로 배치를 바꿀 때 쓰는 바인딩입니다"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1116,17 +1130,13 @@ msgstr ""
 "\"gkb_xmmap us\", \"setxkbmap us\" 혹은 \"xmodmap something.xmm\"처럼 써야 합"
 "니다"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "애플릿의 레이블 박스에 나타납니다"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "목록에서 키보드 배치를 구별합니다"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "참이면, 애플릿 크기를 절반으로 합니다"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1153,7 +1163,7 @@ msgstr "국가 %2$s에 대한 키맵 `%1$s'이(가) 벌써 있습니다"
 msgid "Select Keyboard"
 msgstr "키보드 선택"
 
-#: gkb-new/prop-add.c:352
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr "키보드 (선택하고 더하기를 누르세요)(_K):"
 
@@ -1169,19 +1179,19 @@ msgstr "?"
 msgid "Edit Keyboard"
 msgstr "키보드 편집"
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:297
 msgid "_Name:"
 msgstr "이름(_N):"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "_Label:"
 msgstr "꼬리표(_L):"
 
-#: gkb-new/prop-map.c:303 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "명령(_M):"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Flag:"
 msgstr "국기(_F):"
 
@@ -1197,8 +1207,8 @@ msgstr "꼬리표"
 msgid "Flag and Label"
 msgstr "국기와 꼬리표"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:745
-#: modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "보여주기"
 
@@ -1227,16 +1237,16 @@ msgstr "키보드 배치 바꾸기 기본 설정"
 msgid "Keyboard Layout Selector"
 msgstr "키보드 배치 선택 프로그램"
 
-#: gkb-new/prop.c:433
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr "키보드"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:437
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr "키보드(_K):"
 
-#: gkb-new/prop.c:456 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "설정"
 
@@ -1334,106 +1344,106 @@ msgstr "지우기(_R)"
 msgid "Stock Ticker Preferences"
 msgstr "증권 점검 기본 설정"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1432
 msgid "Symbols"
 msgstr "기호"
 
-#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2365
+#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "행동"
 
-#: gtik/gtik.c:1441 gweather/gweather-pref.c:704
+#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "업데이트"
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1446
 msgid "Stock update fre_quency:"
 msgstr "주식 업데이트 주기(_Q):"
 
-#: gtik/gtik.c:1457 gweather/gweather-pref.c:728 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "분"
 
-#: gtik/gtik.c:1463
+#: gtik/gtik.c:1464
 msgid "Scrolling"
 msgstr "스크롤"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1468
 msgid "_Scroll speed:"
 msgstr "스크롤 속도(_S):"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1472
 msgid "Slow"
 msgstr "느리게"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1474
 msgid "Medium"
 msgstr "중간"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1476
 msgid "Fast"
 msgstr "빠르게"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1496
 msgid "_Enable scroll buttons"
 msgstr "스크롤 단추 쓰기(_E)"
 
-#: gtik/gtik.c:1507
+#: gtik/gtik.c:1508
 msgid "Scroll _left to right"
 msgstr "왼쪽에서 오른쪽으로 스크롤(_L)"
 
-#: gtik/gtik.c:1533
+#: gtik/gtik.c:1534
 msgid "Displa_y only symbols and price"
 msgstr "기호와 가격만 보여주기(_Y)"
 
-#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "너비(_W):"
 
-#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "픽셀"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1570
 msgid "Font and Colors"
 msgstr "글꼴 및 색"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1576
 msgid "Use _default theme font and colors"
 msgstr "기본 테마 글꼴 및 색 쓰기(_D)"
 
-#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "글꼴(_F):"
 
-#: gtik/gtik.c:1614
+#: gtik/gtik.c:1615
 msgid "Stock _raised:"
 msgstr "오른 주식(_R):"
 
-#: gtik/gtik.c:1633
+#: gtik/gtik.c:1634
 msgid "Stock _lowered:"
 msgstr "내린 주식(_L):"
 
-#: gtik/gtik.c:1652
+#: gtik/gtik.c:1653
 msgid "Stock _unchanged:"
 msgstr "보합 주식(_U):"
 
-#: gtik/gtik.c:1671 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "바탕색(_B):"
 
-#: gtik/gtik.c:1804
+#: gtik/gtik.c:1805
 msgid "Skip forward"
 msgstr "앞으로 건너 뛰기"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip backward"
 msgstr "뒤로 건너 뛰기"
 
-#: gtik/gtik.c:1813
+#: gtik/gtik.c:1814
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1441,65 +1451,138 @@ msgstr ""
 "증권 시세기\n"
 "연속적으로 업데이트되는 증권 시세 얻어오기"
 
-#: gtik/gtik.c:2004
+#: gtik/gtik.c:2005
 msgid "(No"
 msgstr "(없음"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2006
 msgid "Change "
 msgstr "바꾸기 "
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr "애플릿에서 이 키가 참으로 설정되면 오른쪽에서 왼쪽으로 스크롤합니다."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "바탕 색"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr "주식 기호와 가격만을 보여줍니다. 가격 변동은 보여주지 않습니다."
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "기호와 가격만 보여주기"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "글꼴"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr "보여줄 주식이 들어 있는 목록. +로 구분한 주식 ID의 목록입니다"
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "내린 색"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "오른 색"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "오른쪽에서 왼쪽으로 스크롤"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "시간이 짧으면 주식 스크롤을 더 빠르게 합니다."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "화살표 단추 보이기"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr "가장자리에 화살표 단추를 보여줍니다. 이 단추를 눌러 앞뒤로 스크롤할 수 있습니다."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
 msgstr "감시할 주식 - 각각은 +로 구분합니다"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr "보여줄 바탕 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr "주식 가격이 내려갔을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr "주식 가격이 변화가 없을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr "주식 가격이 올랐을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr "보여줄 때 사용할 글꼴. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "애플릿에서 주식 정보를 업데이트하는 시간 간격."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "애플릿의 너비 (픽셀 단위)."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "보여주기 업데이트 간격 (천분의 일초)"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "보합 색"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "업데이트 간격"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "기본 테마 글꼴 및 색 쓰기"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr "지정한 글꼴이나 색이 아닌 기본 테마의 글꼴과 색을 사용합니다"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "애플릿의 너비"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "바탕색"
-
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "색"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "편집 못하는 텍스트의 색"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "글꼴"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "글꼴 2 - 더 이상 사용되지 않음"
-
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr "오른쪽에서 왼쪽으로 스크롤하려면 설정하십시오"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "단추 보여주기"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "보여주기 업데이트 간격 (천분의 일초)"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "시간 제한"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -1612,7 +1695,7 @@ msgstr "Weather.com에 들어가려면 클릭하세요"
 msgid "Radar Map"
 msgstr "기상도"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1622,7 +1705,7 @@ msgstr ""
 "상태 예보를 사용하십시오; IWIN 예보는 미국 도시에 대해서만 사용할 수 있습니"
 "다."
 
-#: gweather/gweather-dialog.c:411
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1661,65 +1744,88 @@ msgstr "URL 입력"
 msgid "Weather Preferences"
 msgstr "날씨 기본 설정"
 
-#: gweather/gweather-pref.c:643 gweather/gweather-pref.c:708
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
 msgid "_Automatically update every:"
 msgstr "자동 업데이트 간격(_A):"
 
-#: gweather/gweather-pref.c:651
+#: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
 msgstr "미터법 쓰기(_M)"
 
-#: gweather/gweather-pref.c:659
+#: gweather/gweather-pref.c:660
 msgid "Enable _radar map"
 msgstr "기상도 사용(_R)"
 
-#: gweather/gweather-pref.c:673
+#: gweather/gweather-pref.c:674
 msgid "Use cus_tom address for radar map"
 msgstr "기상도에 설정한 주소 사용(_T)"
 
-#: gweather/gweather-pref.c:690
+#: gweather/gweather-pref.c:691
 msgid "A_ddress:"
 msgstr "주소(_D):"
 
-#: gweather/gweather-pref.c:773
+#: gweather/gweather-pref.c:774
 msgid "_Select a location:"
 msgstr "위치 선택(_S):"
 
-#: gweather/gweather-pref.c:802
+#: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "위치"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "애플릿이 자동으로 날씨 통계를 업데이트할 지 여부를 결정합니다."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "업데이트할 때 상세 예보 가져오기."
+msgid "Display radar map"
+msgstr "기상도 보여주기"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
+msgid "Fetch a radar map on each update."
 msgstr "업데이트할 때마다 기상도 가져오기."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "자동 업데이트 시간 간격 (초)"
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr "참이면 \"radar\" 키에서 시정한 위치에서 기상도를 가져옵니다."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "기상도의 URL"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "더 이상 사용되지 않습니다"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "기상도에 직접 설정한 URL 사용"
+msgid "The custom url from where to retrieve a radar map."
+msgstr "기상도를 가져올 때 직접 설정한 URL을 사용합니다."
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
-msgstr "미터법 쓰기 (설정하지 않으면 미국식)"
+msgid "The interval, in seconds, between automatic updates."
+msgstr "자동 업데이트 시간 간격 (초)."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "데이타를 자동으로 업데이트합니다."
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "기상도의 URL"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "기상도에 직접 설정한 URL 사용"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "미터법 쓰기"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "미터법 쓰기 (설정하지 않으면 미국식)."
+
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "날씨 위치 정보."
 
@@ -2169,7 +2275,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "받은 편지함 감시를 만드는 팩토리."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2447
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "받은 편지함 감시"
 
@@ -2250,11 +2356,11 @@ msgid "No mail."
 msgstr "편지가 없습니다."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2804 mailcheck/mailcheck.c:2805
+#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
 msgid "Status not updated"
 msgstr "상태가 업데이트되지 않았습니다"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2369
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "받은 편지함 설정"
 
@@ -2371,19 +2477,19 @@ msgstr "클릭했을 때 실행할 명령어"
 msgid "Inbox Monitor Preferences"
 msgstr "받은 편지함 감시 기본 설정"
 
-#: mailcheck/mailcheck.c:2449
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "받은 편지함 검사에서 새 편지가 편지함에 도착했을 때 알려줍니다"
 
-#: mailcheck/mailcheck.c:2775
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "텍스트만"
 
-#: mailcheck/mailcheck.c:2806
+#: mailcheck/mailcheck.c:2807
 msgid "Mail check"
 msgstr "메일 검사"
 
-#: mailcheck/mailcheck.c:2807
+#: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "메일을 검사해서 새 편지가 편지함에 도착했을 때 알려줍니다"
 
@@ -2668,60 +2774,112 @@ msgid "_Use default theme colors"
 msgstr "기본 테마 색 쓰기(_U)"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "자동 완성 히스토리"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr "입력된 명령어의 히스토리를 바탕으로 명령어를 자동완성합니다."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "애플릿 높이"
+msgid "Color background blue component"
+msgstr "바탕 색의 파란색 정도"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "입력란 높이"
+msgid "Color background green component"
+msgstr "바탕 색의 녹색 정도"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr "애플릿 주위에 소중한 공간을 낭비하는 보기 싫은 프레임을 넣습니다"
+msgid "Color background red component"
+msgstr "바탕 색의 빨간색 정도"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr "명령어 부분을 떼어 낼 수 있는 핸들을 보여줍니다"
+msgid "Color foreground blue component"
+msgstr "글자 색의 파란색 정도"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr "입력란의 배경과 글자에 기본 테마 색 쓰기"
+msgid "Color foreground green component"
+msgstr "글자 색의 녹색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "글자 색의 빨간색 정도"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "바탕 파랑색"
+msgid "History list"
+msgstr "히스토리 목록"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "바탕 빨강색"
-
-#: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "글자 파랑색"
-
-#: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "글자 녹색"
-
-#: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "글자 빨강색"
-
-#: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
+msgid "List of GConfValue entries containing strings for history entries."
 msgstr "히스토리 항목들의 스트링을 담고 있는 GConfValue 항목들 리스트"
 
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "List of GConfValue entries containing strings for the macro commands."
 msgstr "매크로 명령의 스트링을 담고 있는 GConfValue 항목들 리스트"
 
-#: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr "매크로 패턴의 스트링을 담고 있는 GConfValue 항목들 리스트"
+
+#: mini-commander/src/mini-commander.schemas.in.h:12
+msgid "Macro command list"
+msgstr "매크로 명령 목록"
+
+#: mini-commander/src/mini-commander.schemas.in.h:13
+msgid "Macro pattern list"
+msgstr "매크로 패턴 목록"
+
+#: mini-commander/src/mini-commander.schemas.in.h:15
+msgid "Perform history autocompletion"
+msgstr "패턴 히스토리 자동 완성(_N)"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "애플릿 자리에 프레임을 보입니다."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "애플릿을 떼어 낼 수 있는 핸들을 보여줍니다."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "프레임 보이기"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "핸들 보이기"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "바탕 색의 파란색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "글자 색의 파란색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "바탕 색의 녹색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "글자 색의 녹색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "바탕 색의 빨간색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "글자 색의 빨간색 정도"
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "기본 테마 색을 씁니다"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr "지정한 색이 아닌 테마 색을 사용합니다"
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "너비"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -2928,15 +3086,15 @@ msgstr "볼륨 조절은 데스크탑의 볼륨 레벨을 설정하는 데 쓰�
 msgid "Volume Control Preferences"
 msgstr "볼륨 조절 기본 설정"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "오디오 채널"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "컨트롤할 채널 선택(_S):"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "볼륨 조절은 데스크탑의 볼륨 레벨을 설정하는 데 쓰입니다."
 
@@ -2997,82 +3155,147 @@ msgid "not connected"
 msgstr "연결되어 있지 않음"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "연결할 때 확인 질문하기"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "연결/해제할 때 확인 질문을 합니다"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "연결할 때 깜박입니다"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "연결할 때 실행할 명령어"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "연결을 끊을 때 실행할 명령어"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "지연 시간"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "모뎀 장치 이름"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "연결/해제할 때 확인 대화 상자를 보입니다."
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "깜박이게 합니다"
+msgid "Make the applet blink when the modem is connecting."
+msgstr "모뎀이 연결중일 때 애플릿을 깜박입니다."
 
 #: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "모뎀 장치 이름"
+
+#: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
 msgstr "모뎀 잠금 파일"
 
-#: modemlights/modemlights.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "받기 바탕 색"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "받기 글자 색"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "보내기 바탕 색"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "보내기 글자 색"
 
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "연결 시간과 처리량 보여주기"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr "연결 시간과 송수신한 데이타 양과 같은 정보를 보여줍니다."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
 msgstr "연결된 상태의 색"
 
-#: modemlights/modemlights.schemas.in.h:14
+#: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
 msgstr "연결 안 된 상태의 색"
 
-#: modemlights/modemlights.schemas.in.h:15
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "연결을 기다리는 상태의 색"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "텍스트 바탕 색"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "텍스트 글자 색"
 
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "텍스트 외곽선 색"
 
-#: modemlights/modemlights.schemas.in.h:19
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to indicate data received."
+msgstr "받은 데이타를 나타내는 데 쓸 단추의 바탕 색."
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to indicate data sent."
+msgstr "보낸 데이타를 나타내는 데 쓸 단추의 바탕 색."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr "모뎀이 연결되었을 때 상태 단추에 보여줄 색."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr "모뎀이 연결중일 때 상태 단추에 보여줄 색."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr "모뎀이 연결중이 아닐 때 상태 단추에 보여줄 색."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "데이타를 받았음을 알리는 데 사용할 색."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "데이타를 보냈음을 알리는 데 사용할 색."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "애플릿이 업데이트하는 간격 (초 단위)."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "모뎀 장치의 이름"
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "모뎀 잠금 파일의 이름"
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "ISDN 사용"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "모뎀에 연결하는 데 PPP가 아니라 ISDN을 사용합니다."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "모뎀에 연결할 때 이 명령어를 사용합니다."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "모뎀 연결을 끊을 때 이 명령어를 사용합니다."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "잠금 파일의 소유자 확인"
 
@@ -3080,114 +3303,114 @@ msgstr "잠금 파일의 소유자 확인"
 msgid "Modem Lights Preferences"
 msgstr "모뎀 깜박이 기본 설정"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "업데이트(_P): 매"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "연결 시간과 처리량 보여주기(_W)"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "연결할 때 연결 상태 깜박이기(_L)"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "연결"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "연결 명령어(_N):"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "연결 해제 명령어(_D):"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "연결 확인(_F)"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "데이터 받기"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "글자색(_F)"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "데이터 보내기"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "글자색(_D):"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "바탕색(_R)"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "연결 상태"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "연결됨(_N):"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "연결 끊김(_D):"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "연결중(_O):"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "텍스트"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "글자색(_E):"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "바탕색(_K):"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "외곽선(_U)"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "색"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "모뎀 옵션"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "장치(_D):"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "잠금 파일(_L):"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "잠금 파일의 소유자 확인(_V)"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "ISDN 쓰기(_S)"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "고급"
 
@@ -3258,86 +3481,112 @@ msgid "Memory Load"
 msgstr "메모리 사용량"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "네트워크 바탕색"
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr "가로 패널의 경우 그래프의 너비(픽셀수)이고, 세로 패널의 경우 그래프의 높이입니다."
 
 #: multiload/multiload.schemas.in.h:2
+msgid "Graph size"
+msgstr "그래프 크기"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Network graph background color"
+msgstr "네트워크 그래프 바탕 색"
+
+#: multiload/multiload.schemas.in.h:4
 msgid "Network other usage"
 msgstr "네트워크 그 외 사용"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:5
+msgid "The cpu graph background color."
+msgstr "CPU 그래프의 바탕 색."
+
+#: multiload/multiload.schemas.in.h:6
+msgid "The load graph background color."
+msgstr "로드 그래프의 바탕 색."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "The memory graph background color."
+msgstr "메모리 그래프의 바탕 색."
+
+#: multiload/multiload.schemas.in.h:8
+msgid "The swap graph background color."
+msgstr "스왑 그래프의 바탕 색."
+
+#: multiload/multiload.schemas.in.h:9
 msgid "enable the cpuload graph in multiload."
 msgstr "multiload에서 CPU사용량 그래프를 사용합니다."
 
-#: multiload/multiload.schemas.in.h:4
+#: multiload/multiload.schemas.in.h:10
 msgid "enable the loadavg graph in multiload."
 msgstr "multiload에서 평균사용량 그래프를 사용합니다."
 
-#: multiload/multiload.schemas.in.h:5
+#: multiload/multiload.schemas.in.h:11
 msgid "enable the memload graph in multiload."
 msgstr "multiload에서 메모리 사용량 그래프를 사용합니다."
 
-#: multiload/multiload.schemas.in.h:6
+#: multiload/multiload.schemas.in.h:12
 msgid "enable the netload graph in multiload."
 msgstr "multiload에서 네트워크 사용량 그래프를 사용합니다."
 
-#: multiload/multiload.schemas.in.h:7
+#: multiload/multiload.schemas.in.h:13
 msgid "enable the swapload graph in multiload."
 msgstr "multiload에서 스왑 사용량 그래프를 사용합니다."
 
-#: multiload/multiload.schemas.in.h:8
-msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
-msgstr ""
-"가로 패널의 경우 애플릿의 너비(픽셀수)이고, 세로 패널의 경우 애플릿의 높이입"
-"니다."
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for Ethernet network activity."
+msgstr "이더넷 네트워크 사용량에 대한 그래프의 색."
 
-#: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "애플릿의 바탕 색"
+#: multiload/multiload.schemas.in.h:15
+msgid "the graph color for PLIP network activity."
+msgstr "PLIP 네트워크 사용량에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "버퍼 메모리에 대한 그래프 색."
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for SLIP network activity."
+msgstr "SLIP 네트워크 사용량에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:11
+#: multiload/multiload.schemas.in.h:17
 msgid "the graph color for buffer memory."
 msgstr "버퍼 메모리에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "캐시 메모리에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:13
+#: multiload/multiload.schemas.in.h:18
 msgid "the graph color for cached memory."
 msgstr "캐시 메모리에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:14
+#: multiload/multiload.schemas.in.h:19
+msgid "the graph color for load average."
+msgstr "로드 평균에 대한 그래프의 색."
+
+#: multiload/multiload.schemas.in.h:20
 msgid "the graph color for nice-related cpu activity."
 msgstr "nice 관련 CPU 활동의 그래프 색."
 
-#: multiload/multiload.schemas.in.h:15
+#: multiload/multiload.schemas.in.h:21
 msgid "the graph color for shared memory."
 msgstr "공유 메모리에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:16
+#: multiload/multiload.schemas.in.h:22
 msgid "the graph color for system-related cpu activity."
 msgstr "시스템 관련 CPU 동작에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:17
+#: multiload/multiload.schemas.in.h:23
 msgid "the graph color for user-related cpu activity."
 msgstr "사용자 관련 CPU 동작에 대한 그래프 색."
 
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
-msgstr "사용자 관련 메모리 사용에 대한 그래프 색."
+#: multiload/multiload.schemas.in.h:24
+msgid "the graph color for user-related memory usage."
+msgstr "사용자 관련 메모리 사용에 대한 그래프의 색."
 
-#: multiload/multiload.schemas.in.h:19
+#: multiload/multiload.schemas.in.h:25
+msgid "the graph color for user-related swap usage."
+msgstr "사용자 관련 스왑 사용에 대한 그래프 색."
+
+#: multiload/multiload.schemas.in.h:26
 msgid "the refresh rate of the applets in milliseconds"
 msgstr "애플릿의 갱신 단위 (천분의 일초)"
 
-#: multiload/multiload.schemas.in.h:20
+#: multiload/multiload.schemas.in.h:27
 msgid "the refresh rate of the applets in milliseconds."
 msgstr "애플릿의 갱신 단위 (천분의 일초)."
 
@@ -3845,7 +4094,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "무선통신 장치의 감도를 감시합니다"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:724
 msgid "Wireless Link Monitor"
 msgstr "무선통신 장치 감시기"
 
@@ -3857,11 +4106,11 @@ msgstr ""
 "무선통신 감시기를 실행하는데 필요한 그림이 없습니다.\n"
 "설치가 올바르게 되었는지 확인하십시오."
 
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
 msgid "No Wireless Devices"
 msgstr "무선통신 장치 없음"
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:534
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3869,26 +4118,22 @@ msgstr ""
 "시스템에서 설정할 수 있는 무선장치가 없는 것 같습니다.\n"
 "잘못되었다고 생각되면 설정을 확인하십시오."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:726
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:727
 msgid "This utility shows the status of a wireless link."
 msgstr "무선통신 장치의 상태를 보여주는 도구입니다."
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "대화상자 보기(_D)"
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "신호 감도를 퍼센트로 보기(_P)"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "무선통신 감시기 기본 설정"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "감시할 장치(_M):"
