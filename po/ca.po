@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.4\n"
-"POT-Creation-Date: 2000-04-20 03:20-0400\n"
+"POT-Creation-Date: 2000-05-03 14:49+0200\n"
 "PO-Revision-Date: 1999-05-09 20:40+02:00\n"
 "Last-Translator: Ivan Vilata i Balaguer <al011097@alumail.uji.es>\n"
 "Language-Team: linux-ca@chanae.alphanet.ch\n"
@@ -100,7 +100,7 @@ msgstr "Propietats del Rellotge"
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:786
-#: modemlights/properties.c:297 odometer/properties.c:292
+#: modemlights/properties.c:297 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:433 slashapp/properties.c:351
 #: sound-monitor/properties.c:436 tickastat/properties.c:424
 msgid "General"
@@ -158,7 +158,7 @@ msgstr "Un rellotge analògic similar a aquest al panell CDE"
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
-#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:192
+#: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:189 gweather/gweather-applet.c:192
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
@@ -171,7 +171,7 @@ msgstr "Propietats..."
 #: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
 #: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
-#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:197
+#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:193 gweather/gweather-applet.c:197
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
@@ -185,8 +185,8 @@ msgstr "Ajuda"
 #: battery/battery.c:955 cdplayer/cdplayer.c:408 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
-#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
-#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:202
+#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb-new/gkb.c:450
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:202
 #: jbc/jbc-applet.c:201 life/life.c:288
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
@@ -550,12 +550,12 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:141 odometer/properties.c:150
+#: clockmail/properties.c:141 odometer/properties.c:151
 #: sound-monitor/properties.c:166
 msgid "None (default)"
 msgstr "Cap (per defecte)"
 
-#: clockmail/properties.c:278
+#: clockmail/properties.c:278 odometer/properties.c:228
 #, fuzzy
 msgid "Themes:"
 msgstr "Temes:"
@@ -604,7 +604,7 @@ msgstr "En fer clic, executa:"
 msgid "Theme file (directory):"
 msgstr "Fitxer de tema (directori):"
 
-#: clockmail/properties.c:469 odometer/properties.c:333
+#: clockmail/properties.c:469 odometer/properties.c:335
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Tema"
@@ -783,7 +783,7 @@ msgstr "Selecciona la icona de desmuntatge"
 msgid "Custom icon for not mounted:"
 msgstr "Personalitza la icona de desmuntatge"
 
-#: drivemount/properties.c:340 odometer/properties.c:284
+#: drivemount/properties.c:340 odometer/properties.c:285
 msgid "Scale size to panel"
 msgstr "Escala la mida del quadre"
 
@@ -851,61 +851,69 @@ msgstr "Paràmetres del gEyes"
 msgid "Themes"
 msgstr "Temes"
 
-#: gkb/gkb.c:91
+#: gkb-new/gkb.c:319
 #, fuzzy
-msgid "Browse"
-msgstr "Explorador"
-
-#: gkb/gkb.c:348
-#, fuzzy
-msgid "GKB Properties"
-msgstr "Propietats"
-
-#: gkb/gkb.c:360
-msgid "Flag One"
-msgstr "Bandera u"
-
-#: gkb/gkb.c:392
-msgid "Flag Two"
-msgstr "Bandera dos"
-
-#: gkb/gkb.c:420
-msgid "Program"
-msgstr "Programa"
-
-#: gkb/gkb.c:430
-msgid "Xkb"
-msgstr "Xkb"
-
-#: gkb/gkb.c:434
-msgid "Xmodmap"
-msgstr "Xmodmap"
-
-#: gkb/gkb.c:445
-msgid "Menu"
-msgstr "Menú"
-
-#: gkb/gkb.c:566
-msgid "The GNOME KeyBoard Applet"
+msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Applet del teclat de GNOME"
 
-#: gkb/gkb.c:568
-msgid "(C) 1998-99 LSC - Linux Supporting Center"
+#: gkb-new/gkb.c:321
+#, fuzzy
+msgid "(C) 1998-2000 LSC - Linux Support Center"
 msgstr "(C) 1998-99 LSC - Linux Supporting Center"
 
-#: gkb/gkb.c:570
+#: gkb-new/gkb.c:323
+#, fuzzy
 msgid ""
-"This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
-"xmodmap. The main site of this app moved temporarily to URL "
-"http://lsc.kva.hu/gkb.Mail me your flag, please (60x40 size),I will put it "
-"to CVS.So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
+"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
+"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
+"Kovacs <emese@eik.bme.hu> for her solidarity."
 msgstr ""
 "Aquest applet canvia entre mapes de teclat. Res més. Utilitza setxkbmap, o "
 "xmodmap. El lloc principal d'aquesta aplicació s'ha traslladat temporalment "
 "a la URL http://lsc.kva.hu/gkb. Envieu-me la vostra bandera, per favor (mida "
 "60x40), i la posaré al CVS. Fins aviat, i gràcies per tots els peixos.\n"
 "Gràcies a Balazs Nagy (Kevin)<julian7@kva.hu> per les ajudetes."
+
+#: gkb-new/gkb.c:334
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr ""
+
+#: gkb-new/prop.c:303
+msgid "Keymap name"
+msgstr ""
+
+#: gkb-new/prop.c:329
+msgid "Keymap control"
+msgstr ""
+
+#: gkb-new/prop.c:342
+msgid "New keymap"
+msgstr ""
+
+#: gkb-new/prop.c:355
+#, fuzzy
+msgid "Delete this keymap"
+msgstr "Suprimeix la nota"
+
+#: gkb-new/prop.c:380
+msgid "Keymap icon"
+msgstr ""
+
+#: gkb-new/prop.c:407
+#, fuzzy
+msgid "Iconpath"
+msgstr "Icona:"
+
+#: gkb-new/prop.c:429
+msgid "Full command"
+msgstr ""
+
+#: gkb-new/prop.c:486
+#, fuzzy
+msgid "GKB Properties"
+msgstr "Propietats"
 
 #: gnotes/gnote.c:225
 msgid "Raise Note"
@@ -944,19 +952,19 @@ msgstr "Crea una etiqueta adhesiva a la pantalla"
 msgid "Can't create GNotes applet!"
 msgstr "No es pot crear l'applet GNotes!"
 
-#: gnotes/gnotes_applet.c:190
+#: gnotes/gnotes_applet.c:180
 msgid "Raise Notes"
 msgstr "Notes amb relleu"
 
-#: gnotes/gnotes_applet.c:192
+#: gnotes/gnotes_applet.c:182
 msgid "Lower Notes"
 msgstr "Notes reduïdes"
 
-#: gnotes/gnotes_applet.c:194
+#: gnotes/gnotes_applet.c:184
 msgid "Hide Notes"
 msgstr "Amaga les notes"
 
-#: gnotes/gnotes_applet.c:196
+#: gnotes/gnotes_applet.c:186
 #, fuzzy
 msgid "Show Notes"
 msgstr "Mostra les notes"
@@ -2938,29 +2946,29 @@ msgid "Reset"
 msgstr "Reinicialitza"
 
 # odometer/properties.c:234										0000000
-#: odometer/properties.c:243
+#: odometer/properties.c:244
 #, fuzzy
 msgid "Odometer setting"
 msgstr "Paràmetres de l'Odometre"
 
-#: odometer/properties.c:254
+#: odometer/properties.c:255
 msgid "Use Metric"
 msgstr "Sistema mètric"
 
-#: odometer/properties.c:260
+#: odometer/properties.c:261
 msgid "auto_reset"
 msgstr "auto_reset"
 
-#: odometer/properties.c:266 tickastat/mod_news.c:1251
+#: odometer/properties.c:267 tickastat/mod_news.c:1251
 #, fuzzy
 msgid "enabled"
 msgstr "habilitat"
 
-#: odometer/properties.c:272
+#: odometer/properties.c:273
 msgid "Digits number"
 msgstr "Nombre de digits"
 
-#: odometer/properties.c:307
+#: odometer/properties.c:308
 #, fuzzy
 msgid "Theme file :"
 msgstr "Fitxer de tema :"
@@ -3994,6 +4002,28 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "whereami_applet"
+
+#, fuzzy
+#~ msgid "Browse"
+#~ msgstr "Explorador"
+
+#~ msgid "Flag One"
+#~ msgstr "Bandera u"
+
+#~ msgid "Flag Two"
+#~ msgstr "Bandera dos"
+
+#~ msgid "Program"
+#~ msgstr "Programa"
+
+#~ msgid "Xkb"
+#~ msgstr "Xkb"
+
+#~ msgid "Xmodmap"
+#~ msgstr "Xmodmap"
+
+#~ msgid "Menu"
+#~ msgstr "Menú"
 
 #~ msgid "Run gtcd..."
 #~ msgstr "Executa gtcd..."

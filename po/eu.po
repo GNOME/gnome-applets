@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.4\n"
-"POT-Creation-Date: 2000-04-20 03:20-0400\n"
+"POT-Creation-Date: 2000-05-03 14:49+0200\n"
 "PO-Revision-Date: 1999-04-01 17:11+0200\n"
 "Last-Translator: nobody yet\n"
 "Language-Team: euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -102,7 +102,7 @@ msgstr ""
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:786
-#: modemlights/properties.c:297 odometer/properties.c:292
+#: modemlights/properties.c:297 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:433 slashapp/properties.c:351
 #: sound-monitor/properties.c:436 tickastat/properties.c:424
 msgid "General"
@@ -157,7 +157,7 @@ msgstr ""
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
-#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:192
+#: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:189 gweather/gweather-applet.c:192
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
@@ -170,7 +170,7 @@ msgstr "Ezaugarriak..."
 #: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
 #: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
-#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:197
+#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:193 gweather/gweather-applet.c:197
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
@@ -184,8 +184,8 @@ msgstr "Laguntza"
 #: battery/battery.c:955 cdplayer/cdplayer.c:408 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
-#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
-#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:202
+#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb-new/gkb.c:450
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:202
 #: jbc/jbc-applet.c:201 life/life.c:288
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
@@ -520,12 +520,12 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:141 odometer/properties.c:150
+#: clockmail/properties.c:141 odometer/properties.c:151
 #: sound-monitor/properties.c:166
 msgid "None (default)"
 msgstr ""
 
-#: clockmail/properties.c:278
+#: clockmail/properties.c:278 odometer/properties.c:228
 msgid "Themes:"
 msgstr ""
 
@@ -569,7 +569,7 @@ msgstr ""
 msgid "Theme file (directory):"
 msgstr ""
 
-#: clockmail/properties.c:469 odometer/properties.c:333
+#: clockmail/properties.c:469 odometer/properties.c:335
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr ""
@@ -725,7 +725,7 @@ msgstr ""
 msgid "Custom icon for not mounted:"
 msgstr ""
 
-#: drivemount/properties.c:340 odometer/properties.c:284
+#: drivemount/properties.c:340 odometer/properties.c:285
 msgid "Scale size to panel"
 msgstr ""
 
@@ -788,56 +788,60 @@ msgstr ""
 msgid "Themes"
 msgstr ""
 
-#: gkb/gkb.c:91
-#, fuzzy
-msgid "Browse"
-msgstr "Ikusketari"
+#: gkb-new/gkb.c:319
+msgid "The GNOME KeyBoard Switcher Applet"
+msgstr ""
 
-#: gkb/gkb.c:348
+#: gkb-new/gkb.c:321
+#, fuzzy
+msgid "(C) 1998-2000 LSC - Linux Support Center"
+msgstr "© 1998-1999 LSC - Linux Supporting Center"
+
+#: gkb-new/gkb.c:323
+msgid ""
+"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
+"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
+"Kovacs <emese@eik.bme.hu> for her solidarity."
+msgstr ""
+
+#: gkb-new/gkb.c:334
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr ""
+
+#: gkb-new/prop.c:303
+msgid "Keymap name"
+msgstr ""
+
+#: gkb-new/prop.c:329
+msgid "Keymap control"
+msgstr ""
+
+#: gkb-new/prop.c:342
+msgid "New keymap"
+msgstr ""
+
+#: gkb-new/prop.c:355
+msgid "Delete this keymap"
+msgstr ""
+
+#: gkb-new/prop.c:380
+msgid "Keymap icon"
+msgstr ""
+
+#: gkb-new/prop.c:407
+msgid "Iconpath"
+msgstr ""
+
+#: gkb-new/prop.c:429
+msgid "Full command"
+msgstr ""
+
+#: gkb-new/prop.c:486
 #, fuzzy
 msgid "GKB Properties"
 msgstr "Ezaugarriak..."
-
-#: gkb/gkb.c:360
-msgid "Flag One"
-msgstr ""
-
-#: gkb/gkb.c:392
-msgid "Flag Two"
-msgstr ""
-
-#: gkb/gkb.c:420
-msgid "Program"
-msgstr "Programa"
-
-#: gkb/gkb.c:430
-msgid "Xkb"
-msgstr "Xkb"
-
-#: gkb/gkb.c:434
-msgid "Xmodmap"
-msgstr "Xmodmap"
-
-#: gkb/gkb.c:445
-msgid "Menu"
-msgstr "Menu"
-
-#: gkb/gkb.c:566
-msgid "The GNOME KeyBoard Applet"
-msgstr ""
-
-#: gkb/gkb.c:568
-msgid "(C) 1998-99 LSC - Linux Supporting Center"
-msgstr "© 1998-1999 LSC - Linux Supporting Center"
-
-#: gkb/gkb.c:570
-msgid ""
-"This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
-"xmodmap. The main site of this app moved temporarily to URL "
-"http://lsc.kva.hu/gkb.Mail me your flag, please (60x40 size),I will put it "
-"to CVS.So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
-msgstr ""
 
 #: gnotes/gnote.c:225
 msgid "Raise Note"
@@ -873,19 +877,19 @@ msgstr ""
 msgid "Can't create GNotes applet!"
 msgstr ""
 
-#: gnotes/gnotes_applet.c:190
+#: gnotes/gnotes_applet.c:180
 msgid "Raise Notes"
 msgstr ""
 
-#: gnotes/gnotes_applet.c:192
+#: gnotes/gnotes_applet.c:182
 msgid "Lower Notes"
 msgstr ""
 
-#: gnotes/gnotes_applet.c:194
+#: gnotes/gnotes_applet.c:184
 msgid "Hide Notes"
 msgstr ""
 
-#: gnotes/gnotes_applet.c:196
+#: gnotes/gnotes_applet.c:186
 msgid "Show Notes"
 msgstr ""
 
@@ -2775,27 +2779,27 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: odometer/properties.c:243
+#: odometer/properties.c:244
 msgid "Odometer setting"
 msgstr ""
 
-#: odometer/properties.c:254
+#: odometer/properties.c:255
 msgid "Use Metric"
 msgstr ""
 
-#: odometer/properties.c:260
+#: odometer/properties.c:261
 msgid "auto_reset"
 msgstr ""
 
-#: odometer/properties.c:266 tickastat/mod_news.c:1251
+#: odometer/properties.c:267 tickastat/mod_news.c:1251
 msgid "enabled"
 msgstr ""
 
-#: odometer/properties.c:272
+#: odometer/properties.c:273
 msgid "Digits number"
 msgstr ""
 
-#: odometer/properties.c:307
+#: odometer/properties.c:308
 msgid "Theme file :"
 msgstr ""
 
@@ -3735,6 +3739,22 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Browse"
+#~ msgstr "Ikusketari"
+
+#~ msgid "Program"
+#~ msgstr "Programa"
+
+#~ msgid "Xkb"
+#~ msgstr "Xkb"
+
+#~ msgid "Xmodmap"
+#~ msgstr "Xmodmap"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
 
 #~ msgid "gkb.xpm"
 #~ msgstr "gkb.xpm"
