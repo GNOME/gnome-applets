@@ -772,6 +772,7 @@ password_response_cb (GtkWidget  *dialog,
 	case GTK_RESPONSE_OK:
 		entry = g_object_get_data (G_OBJECT (dialog), "password_entry");
 		mc->real_password = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
+		remote_password_changed (GTK_ENTRY (entry), mc);
 		save_toggle_button = g_object_get_data (G_OBJECT (dialog), "save_password");
 		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (save_toggle_button)))
 			 remote_password_save_toggled (GTK_TOGGLE_BUTTON (save_toggle_button), mc);
