@@ -12,7 +12,7 @@ slash_applet_SOURCES =  slashapp.c	\
 slash_applet_LDADD = \
 		     $(GNOME_LIBDIR) -lXt \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)      \
-                     $(GHTTP_LIB) -lxml
+                     $(GHTTP_LIB) $(GNOME_XML_LIB)
 
 EXTRA_DIST = \
 	slash_applet.desktop slashsplash.xpm \
