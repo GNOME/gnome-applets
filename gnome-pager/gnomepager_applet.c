@@ -317,7 +317,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		       0, 1, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
       gtk_table_attach(GTK_TABLE(table), spin, 
 		       1, 2, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
-      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)task_rows_v, 20, 
+      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)task_rows_v, 1, 
 						4, 1, 1, 1 );
       gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
 			 GTK_SIGNAL_FUNC(cb_adj_rows_v), adj);
@@ -916,7 +916,11 @@ task_add(Window win)
   t->gdkwin = NULL;
   
   /* create dummy GTK widget to get events from */
-  t->gdkwin = gdk_window_foreign_new(win);
+  t->gdkwin = gdk_window_lookup(win);
+  if (t->gdkwin)
+    gdk_window_ref(t->gdkwin);
+  else
+    t->gdkwin = gdk_window_foreign_new(win);
   t->dummy = gtk_window_new(GTK_WINDOW_POPUP);
   /* realize that damn widget */
   gtk_widget_realize(t->dummy);
