@@ -1887,7 +1887,7 @@ void
 init_applet_gui(int horizontal)
 {
   GtkWidget *frame, *button, *arrow, *table;
-  GtkWidget *desk, *align, *box;
+  GtkWidget *desk, *align, *box, *button2;
   gint i, j, k;
   
   if (main_box)
@@ -1937,39 +1937,61 @@ init_applet_gui(int horizontal)
 
   if (config.show_arrow) 
     {
+      button2 = gtk_button_new_with_label(_("?"));
+      gtk_widget_show(button2);
+      button = gtk_button_new();
+      gtk_widget_show(button);
       switch(applet_orient)
         {
-	  case ORIENT_UP:
-	    arrow = gtk_arrow_new(GTK_ARROW_UP, GTK_SHADOW_OUT);
-	    break;
-	  case ORIENT_DOWN:
-	    arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_OUT);
-	    break;
-	  case ORIENT_LEFT:
-	    arrow = gtk_arrow_new(GTK_ARROW_LEFT, GTK_SHADOW_OUT);
-	    break;
-	  case ORIENT_RIGHT:
-	    arrow = gtk_arrow_new(GTK_ARROW_RIGHT, GTK_SHADOW_OUT);
-	    break;
-	  default:
-	    arrow = NULL; /*shut up warning*/
-	    g_assert_not_reached();
-	    break;
-      }
-    gtk_widget_show(arrow);
-  
-    button = gtk_button_new();
-    gtk_widget_show(button);
-    gtk_container_add(GTK_CONTAINER(button), arrow);
-    if (horizontal)
-      box = gtk_vbox_new(FALSE, 0);
-    else
-      box = gtk_hbox_new(FALSE, 0);
-    gtk_widget_show(box);
-    gtk_box_pack_start(GTK_BOX(main_box), box, FALSE, FALSE, 0);
-    gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
-    gtk_signal_connect(GTK_OBJECT(button), "clicked",
-  		     GTK_SIGNAL_FUNC(showpop_cb), NULL);
+	 case ORIENT_UP:
+	  arrow = gtk_arrow_new(GTK_ARROW_UP, GTK_SHADOW_OUT);
+	  gtk_widget_show(arrow);
+	  gtk_container_add(GTK_CONTAINER(button), arrow);
+	  box = gtk_vbox_new(FALSE, 0);
+	  gtk_widget_show(box);
+	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);	
+	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
+	  break;
+	 case ORIENT_DOWN:
+	  arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_OUT);
+	  gtk_widget_show(arrow);
+	  gtk_container_add(GTK_CONTAINER(button), arrow);
+	  box = gtk_vbox_new(FALSE, 0);
+	  gtk_widget_show(box);
+	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
+	  break;
+	 case ORIENT_LEFT:
+	  arrow = gtk_arrow_new(GTK_ARROW_LEFT, GTK_SHADOW_OUT);
+	  gtk_widget_show(arrow);
+	  gtk_container_add(GTK_CONTAINER(button), arrow);
+	  box = gtk_hbox_new(FALSE, 0);
+	  gtk_widget_show(box);
+	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
+	  break;
+	 case ORIENT_RIGHT:
+	  arrow = gtk_arrow_new(GTK_ARROW_RIGHT, GTK_SHADOW_OUT);
+	  gtk_widget_show(arrow);
+	  gtk_container_add(GTK_CONTAINER(button), arrow);
+	  box = gtk_hbox_new(FALSE, 0);
+	  gtk_widget_show(box);
+	  gtk_box_pack_start(GTK_BOX(box), button2, TRUE, TRUE, 0);
+	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
+	  break;
+	 default:
+	  arrow = NULL; /*shut up warning*/
+	  g_assert_not_reached();
+	  break;
+	}
+      if (arrow)
+	{
+	  gtk_box_pack_start(GTK_BOX(main_box), box, FALSE, FALSE, 0);
+	  gtk_signal_connect(GTK_OBJECT(button), "clicked",
+			     GTK_SIGNAL_FUNC(showpop_cb), NULL);
+	  gtk_signal_connect(GTK_OBJECT(button2), "clicked",
+			     GTK_SIGNAL_FUNC(cb_applet_properties), NULL);
+	}
     }
   
   frame = gtk_frame_new(NULL);
