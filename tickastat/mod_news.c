@@ -538,7 +538,7 @@ static gint script_update_cb(gpointer data)
 		g_string_prepend(str, "\" reported:\n");
 		g_string_prepend(str, sd->name);
 		g_string_prepend(str, _("script \""));
-		g_string_prepend(str, _("Tick-a-Stat script encountered and error:\n"));
+		g_string_prepend(str, _("Tick-a-Stat script encountered an error:\n"));
 		gnome_warning_dialog(str->str);
 		}
 
