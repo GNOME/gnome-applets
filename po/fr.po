@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.0\n"
-"POT-Creation-Date: 2001-03-19 15:18+0100\n"
+"POT-Creation-Date: 2001-04-19 16:15+0200\n"
 "PO-Revision-Date: 2001-03-19 15:11+0100\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@eikonex.org>\n"
 "Language-Team: GNOME French Team <gnomefr@gnomefr.traduc.org>\n"
@@ -22,7 +22,7 @@ msgstr "Paramètres de l'horloge"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: gnotes/properties.c:190 gweather/gweather-pref.c:516
 #: mini-commander/src/preferences.c:801 modemlights/properties.c:486
 #: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
 #: slashapp/properties.c:412 sound-monitor/properties.c:424
@@ -58,8 +58,8 @@ msgstr "Couleur de la trotteuse"
 msgid "Show seconds needle"
 msgstr "Afficher la trotteuse"
 
-#. languages which use font encodings that can't
-#. * display spanish 'ñ' should use 'n' instead
+#. if your encoding allows it, use ntilde (U00F1)
+#. * instead of the 'n' of 'Inigo'
 #: another_clock/another_clock.c:365
 msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
@@ -1525,7 +1525,7 @@ msgstr "Applet GNOME Météo"
 msgid "Location:"
 msgstr "Emplacement :"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:490
 msgid "Update:"
 msgstr "Mise à jour :"
 
@@ -1597,7 +1597,7 @@ msgstr ""
 "Essayez les prévisions détaillées; notez que les prévisions IWIN ne sont\n"
 "disponibles que pour les villes américaines."
 
-#: gweather/gweather-pref.c:133
+#: gweather/gweather-pref.c:134
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1605,7 +1605,7 @@ msgstr ""
 "Emplacement choisi non valide !\n"
 "Les propriétés restent inchangées."
 
-#: gweather/gweather-pref.c:138
+#: gweather/gweather-pref.c:140
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1613,65 +1613,65 @@ msgstr ""
 "L'URL du proxy n'est pas de la forme http://hôte:port/\n"
 "Les propriétés restent inchangées."
 
-#: gweather/gweather-pref.c:211
+#: gweather/gweather-pref.c:199
 msgid "Regions"
 msgstr "Régions"
 
-#: gweather/gweather-pref.c:329
+#: gweather/gweather-pref.c:313
 msgid "GNOME Weather Properties"
 msgstr "Propriétés GNOME Météo"
 
-#: gweather/gweather-pref.c:363
+#: gweather/gweather-pref.c:352
 msgid "Location"
 msgstr "Emplacement"
 
-#: gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:372
 msgid "Use proxy"
 msgstr "Utiliser un proxy"
 
-#: gweather/gweather-pref.c:387
+#: gweather/gweather-pref.c:376
 msgid "Proxy host:"
 msgstr "Hôte proxy :"
 
-#: gweather/gweather-pref.c:401
+#: gweather/gweather-pref.c:390
 msgid "Username:"
 msgstr "Utilisateur :"
 
-#: gweather/gweather-pref.c:415
+#: gweather/gweather-pref.c:404
 msgid "Password:"
 msgstr "Mot de passe :"
 
-#: gweather/gweather-pref.c:430
+#: gweather/gweather-pref.c:419
 msgid ""
-"Caveat warning: Even though your password will\n"
-"be saved in the private configuration file, it will\n"
-"be unencrypted!"
+"Warning: Your password will be saved as\n"
+"unencrypted text in a private configuration\n"
+"file."
 msgstr ""
-"Avertissement : Malgré le fait que votre mot de passe\n"
-"soit enregistré dans votre fichier de configuration\n"
-"personnel, il ne sera pas encrypté !"
+"Avertissement : votre mot de passe sera\n"
+"enregistré sous forme non crypté dans un\n"
+"fichier de configuration privé."
 
-#: gweather/gweather-pref.c:438
+#: gweather/gweather-pref.c:427
 msgid "Network"
 msgstr "Réseau"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:472
 msgid "Update enabled"
 msgstr "Mise à jour activée"
 
-#: gweather/gweather-pref.c:487
+#: gweather/gweather-pref.c:476
 msgid "Use metric"
 msgstr "Utiliser le système métrique"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:480
 msgid "Detailed forecast"
 msgstr "Prévisions détaillées"
 
-#: gweather/gweather-pref.c:496
+#: gweather/gweather-pref.c:485
 msgid "Enable radar maps"
 msgstr "Activer les cartes Radar"
 
-#: gweather/gweather-pref.c:523
+#: gweather/gweather-pref.c:512
 msgid "(sec)"
 msgstr "(sec)"
 
@@ -4650,7 +4650,7 @@ msgstr "Autre Horloge"
 
 #: gkb-new/gkb_applet.desktop.in.h:1
 msgid "GKB Keyboard Switcher"
-msgstr "GKB permets de changer de configuration clavier"
+msgstr "Sélecteur de clavier GKB"
 
 #: gkb-new/gkb_applet.desktop.in.h:2
 msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
