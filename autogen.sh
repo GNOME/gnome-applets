@@ -8,7 +8,7 @@ PKG_NAME="Gnome Applets"
 
 (test -f $srcdir/configure.in \
   && test -f $srcdir/HACKING \
-  && test -d $srcdir/sound-monitor) || {
+  && test -d $srcdir/gweather) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level gnome directory"
     exit 1

@@ -1,6 +1,6 @@
 AC_INIT(drivemount/drivemount.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 2.2.0)
+AM_INIT_AUTOMAKE(gnome-applets, 2.3.0)
 
 AM_MAINTAINER_MODE
 
@@ -230,23 +230,6 @@ if test "$P_MODEMLIGHTS" != "modemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
 fi
 
-dnl ***********************************************
-dnl ** PanelMenu applet                          **
-dnl ***********************************************
-
-AC_ARG_ENABLE(panelmenu, 
-  [  --enable-panelmenu=[no/yes]		Build panel-menu applet [ default=no ]],
-   enable_panelmenu="$enableval", enable_panelmenu=no)
-
-
-AM_CONDITIONAL(BUILD_PANEL_MENU, test "$enable_panelmenu" = yes)
-
-if test x$enable_panelmenu = xyes; then
-  PKG_CHECK_MODULES(PANEL_MENU, gtk+-2.0 >= $GTK_REQUIRED libwnck-1.0 >= $LIBWNCK_REQUIRED libpanelapplet-2.0 >= $LIBPANEL_REQUIRED gconf-2.0 >= $GCONF_REQUIRED gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED)
-  AC_SUBST(PANEL_MENU_CFLAGS)
-  AC_SUBST(PANEL_MENU_LIBS)
-fi
-
 # Honor aclocal flags
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
@@ -289,9 +272,6 @@ gkb-new/descs.sun/Makefile
 gkb-new/gkb_xmmap.in
 gkb-new/help/Makefile
 gkb-new/help/C/Makefile
-panel-menu/Makefile
-panel-menu/help/Makefile
-panel-menu/help/C/Makefile
 charpick/Makefile
 charpick/help/Makefile
 charpick/help/C/Makefile

@@ -34,10 +34,6 @@ if BUILD_BATTSTAT_APPLET
 battstat_SUBDIR = battstat
 endif
 
-if BUILD_PANEL_MENU
-panel_menu_SUBDIR = panel-menu
-endif
-
 always_built_SUBDIRS = \
 	drivemount	\
 	charpick	\
@@ -57,7 +53,6 @@ SUBDIRS = \
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
-	$(panel_menu_SUBDIR)	\
 	omf-install	
 
 DIST_SUBDIRS = \
@@ -67,7 +62,6 @@ DIST_SUBDIRS = \
 	modemlights	\
 	cdplayer	\
 	drivemount	\
-	panel-menu	\
 	charpick	\
 	geyes		\
 	mini-commander	\
@@ -91,6 +85,5 @@ EXTRA_DIST = \
 	intltool-update.in	\
 	intltool-extract.in	\
 	intltool-merge.in	\
-	message-of-doom		\
 	xmldocs.make
 
