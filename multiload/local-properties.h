@@ -3,13 +3,12 @@
 
 #include <properties.h>
 
-BEGIN_GNOME_DECLS
+G_BEGIN_DECLS
 
 typedef struct	_LocalPropData		LocalPropData;
 
 struct _LocalPropData {
-    AppletWidget *applet;
-    GnomePropertyObject *property_object;
+    PanelApplet *applet;
     GList *local_property_object_list;
     GtkWidget *win;
     gchar *help_path;
@@ -19,6 +18,6 @@ struct _LocalPropData {
 void
 multiload_local_properties_changed (LocalPropData *d);
 
-END_GNOME_DECLS
+G_END_DECLS
 
 #endif

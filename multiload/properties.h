@@ -1,9 +1,7 @@
 #ifndef __PROPERTIES_H__
 #define __PROPERTIES_H__
 
-#include <property-entries.h>
-
-BEGIN_GNOME_DECLS
+G_BEGIN_DECLS
 
 typedef enum {
     PROP_CPULOAD,
@@ -41,13 +39,13 @@ struct _MultiLoadProperties {
 extern GList *multiload_property_object_list;
 
 extern MultiLoadProperties multiload_properties;
-
+/*
 void multiload_properties_apply (void);
 void multiload_properties_close (void);
 void multiload_properties_changed (void);
 void multiload_show_properties (PropertyClass prop_class);
 void multiload_init_properties (void);
-
-END_GNOME_DECLS
+*/
+G_END_DECLS
 
 #endif

@@ -26,7 +26,7 @@
 #include <config.h>
 #include <gnome.h>
 
-BEGIN_GNOME_DECLS
+G_BEGIN_DECLS
 
 /* Adjustment block. */
 GtkWidget *
@@ -36,6 +36,6 @@ gnome_property_entry_adjustments (GnomePropertyObject *object,
 				  gint *table_pos, const gchar *texts [],
 				  glong *data_ptr, glong *values);
 
-END_GNOME_DECLS
+G_END_DECLS
 
 #endif

@@ -10,7 +10,7 @@ typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
 #define NCPUSTATES 4
 
 struct _LoadGraph {
-    AppletWidget *applet;
+    PanelApplet *applet;
 
     guint n;
     guint speed, size;
@@ -47,11 +47,11 @@ struct _LoadGraph {
 
 /* Create new load graph. */
 LoadGraph *
-load_graph_new (AppletWidget *applet, guint n, gchar *label,
+load_graph_new (PanelApplet *applet, guint n, gchar *label,
 		LoadGraphProperties *global_prop_data,
-		LoadGraphProperties *prop_data, guint speed,
-		guint size, LoadGraphDataFunc get_data,
-		gchar *help_path);
+		LoadGraphProperties *prop_data,
+		guint speed,
+		guint size, LoadGraphDataFunc get_data);
 
 /* Start load graph. */
 void

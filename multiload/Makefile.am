@@ -1,52 +1,53 @@
-SUBDIRS = docs
-
-INCLUDES = -I. -I$(srcdir) 				\
+INCLUDES =						\
+	-I$(srcdir)					\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(LIBGTOP_INCS)
+	$(GNOME_APPLETS_CFLAGS)                         \
+	$(GTOP_APPLETS_CFLAGS)				\
+	-I$(includedir)	
 
-bin_PROGRAMS = multiload_applet
+libmultiload_applet_2_la_SOURCES = \
+			global.h	\
+			linux-proc.h	\
+			load-graph.h	\
+			local-properties.h	\
+			properties.h	\
+			cpuload.c	\
+			linux-proc.c	\
+			load-graph.c	\
+			loadavg.c	\
+			main.c	\
+			memload.c	\
+			netload.c	\
+			properties.c	\
+			swapload.c
 
-multiload_applet_SOURCES = cpuload.c		\
-			   memload.c		\
-			   swapload.c		\
-			   netload.c		\
-			   loadavg.c		\
-			   main.c		\
-			   global.h		\
-			   properties.c		\
-			   properties.h		\
-			   local-properties.c	\
-			   local-properties.h	\
-			   property-entries.c	\
-			   property-entries.h	\
-			   linux-proc.h 	\
-			   linux-proc.c 	\
-			   load-graph.c		\
-			   load-graph.h
+libmultiload_applet_2_la_LIBADD = \
+				$(GNOME_APPLETS_LIBS) 	\
+				$(GTOP_APPLETS_LIBS)
 
-multiload_applet_LDADD = \
-		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
-		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
+appletdir = $(libdir)
+applet_LTLIBRARIES = libmultiload_applet_2.la
 
-appletdir	= $(datadir)/applets
-
-Monitorsdir	= $(appletdir)/Monitors
-
-Monitors_predata	= cpuload_applet.desktop.in	\
-		memload_applet.desktop.in swapload_applet.desktop.in	\
-		netload_applet.desktop.in loadavg_applet.desktop.in
-		
-Monitors_DATA = $(Monitors_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
-
+GNOME_MultiLoadApplet_Factory.server.in: GNOME_MultiLoadApplet_Factory.server.in.in
+	sed -e "s|\@APPLET_LIBDIR\@|$(appletdir)|" $< > $@
+	
 pixmaps = gnome-cpu.png gnome-mem.png
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = $(pixmaps)
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = multiload_applet.gnorba 
+schemadir   = $(sysconfdir)/gconf/schemas
+schema_DATA = multiload.schemas
 
+#install-data-local:
+#	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+	
 EXTRA_DIST =	\
-		$(Monitors_DATA) $(Monitors_predata)	\
-		$(gnorba_DATA) $(pixmaps)
+		GNOME_MultiLoadApplet_Factory.server.in.in \
+		multiload.schemas \
+		$(pixmaps)
+		
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_MultiLoadApplet_Factory.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
+@XML_I18N_MERGE_SERVER_RULE@

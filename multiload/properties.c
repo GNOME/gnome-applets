@@ -4,11 +4,11 @@
 GList *multiload_property_object_list = NULL;
 
 MultiLoadProperties multiload_properties;
-
+/*
 static GtkWidget *win = NULL;
 
 void
-multiload_properties_cb (AppletWidget *widget, gpointer data)
+multiload_properties_cb (PanelApplet *widget, gpointer data)
 {
     LoadGraph *g;
 
@@ -130,3 +130,4 @@ void
 multiload_init_properties (void)
 {
 }
+*/
