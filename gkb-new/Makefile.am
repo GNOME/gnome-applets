@@ -22,7 +22,7 @@ gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
 
 SUBDIRS= gkb xmodmap docs
 
-GKB_ICON = gkb.png
+GKB_ICON = gkb.png gkb-icon.png
 
 EXTRA_DIST = gkb_applet.desktop $(GKB_ICON) \
 	gkb_applet.gnorba 

@@ -357,7 +357,7 @@ about_cb (AppletWidget * widget, gpointer gkbx)
 			     "Thanks for Balazs Nagy (Kevin) "
 			     "<julian7@kva.hu> for his help "
 			     "and Emese Kovacs <emese@eik.bme.hu> for "
-			     "her solidarity."), "gkb.png");
+			     "her solidarity."), "gkb-icon.png");
 
   link = gnome_href_new ("http://projects.gnome.hu/gkb",
 			 _("GKB Home Page (http://projects.gnome.hu/gkb)"));
@@ -472,19 +472,20 @@ gkb_activator (PortableServer_POA poa,
 
  applet_widget_register_callback_dir( APPLET_WIDGET(gkb->applet),
                                       "size",
-                                      "Size" );
-
- applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "size/small",
-					 GNOME_STOCK_MENU_PROP,
-					 _("Small"),
-					 switch_small, gkb);
+                                      "Size"
+                                       );
 
  applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "size/normal",
-					 GNOME_STOCK_MENU_PROP,
+					 GNOME_STOCK_MENU_UP,
 					 _("Normal"),
 					 switch_normal, gkb);
+
+ applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
+					 "size/small",
+					 GNOME_STOCK_MENU_DOWN,
+					 _("Small"),
+					 switch_small, gkb);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "help",
