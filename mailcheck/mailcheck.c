@@ -1496,7 +1496,7 @@ mailbox_properties_page(MailCheck *mc)
 static GtkWidget *
 mailcheck_properties_page (MailCheck *mc)
 {
-	GtkWidget *vbox, *hbox, *l, *table, *check_box, *animation_option_menu;
+	GtkWidget *vbox, *hbox, *hbox2, *l, *table, *check_box, *animation_option_menu;
 	GtkWidget *label, *indent, *categories_vbox, *category_vbox, *control_vbox, *control_hbox;
 	GtkObject *freq_a;
 	gchar *title;
@@ -1548,11 +1548,15 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (control_hbox), l, FALSE, FALSE, 0);
 	gtk_widget_show(l);
 
+        hbox2 = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(control_hbox), hbox2, FALSE, FALSE, 0);
+	gtk_widget_show(hbox2);
+	
 	freq_a = gtk_adjustment_new((float)((mc->update_freq/1000)/60), 0, 1440, 1, 5, 5);
 	mc->min_spin = gtk_spin_button_new( GTK_ADJUSTMENT (freq_a), 1, 0);
 	g_signal_connect (G_OBJECT (mc->min_spin), "value_changed",
 			  G_CALLBACK (update_spin_changed), mc);			  
-	gtk_box_pack_start (GTK_BOX (control_hbox), mc->min_spin,  FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox2), mc->min_spin,  FALSE, FALSE, 0);
 	set_atk_name_description (mc->min_spin, _("minutes"), _("Choose time interval in minutes to check mail"));
 	set_atk_relation (mc->min_spin, check_box, ATK_RELATION_CONTROLLED_BY);
 	gtk_widget_show(mc->min_spin);
@@ -1560,13 +1564,17 @@ mailcheck_properties_page (MailCheck *mc)
 	l = gtk_label_new (_("minutes"));
 	set_atk_relation (mc->min_spin, l, ATK_RELATION_LABELLED_BY);
 	gtk_widget_show(l);
-	gtk_box_pack_start (GTK_BOX (control_hbox), l, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox2), l, FALSE, FALSE, 0);
 
+        hbox2 = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(control_hbox), hbox2, FALSE, FALSE, 0);
+	gtk_widget_show(hbox2);
+	
 	freq_a = gtk_adjustment_new((float)((mc->update_freq/1000)%60), 0, 59, 1, 5, 5);
 	mc->sec_spin = gtk_spin_button_new (GTK_ADJUSTMENT (freq_a), 1, 0);
 	g_signal_connect (G_OBJECT (mc->sec_spin), "value_changed",
 			  G_CALLBACK (update_spin_changed), mc);
-	gtk_box_pack_start (GTK_BOX (control_hbox), mc->sec_spin,  FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox2), mc->sec_spin,  FALSE, FALSE, 0);
 	set_atk_name_description (mc->sec_spin, _("seconds"), _("Choose time interval in seconds to check mail"));
 	set_atk_relation (mc->sec_spin, check_box, ATK_RELATION_CONTROLLED_BY);
 	gtk_widget_show(mc->sec_spin);
@@ -1575,7 +1583,7 @@ mailcheck_properties_page (MailCheck *mc)
 	set_atk_relation (mc->sec_spin, l,  ATK_RELATION_LABELLED_BY);
 	gtk_widget_show(l);
 	gtk_misc_set_alignment (GTK_MISC (l), 0.0f, 0.5f);
-	gtk_box_pack_start (GTK_BOX (control_hbox), l, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox2), l, TRUE, TRUE, 0);
 
 	set_atk_relation (check_box, mc->min_spin, ATK_RELATION_CONTROLLER_FOR);
 	set_atk_relation (check_box, mc->sec_spin, ATK_RELATION_CONTROLLER_FOR);
@@ -1792,13 +1800,14 @@ mailcheck_properties (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbna
 			       gtk_widget_get_screen (GTK_WIDGET (mc->property_window)));
 	gtk_dialog_set_default_response (GTK_DIALOG (mc->property_window), GTK_RESPONSE_CLOSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (mc->property_window), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (mc->property_window), 5);
 	gnome_window_icon_set_from_file (GTK_WINDOW (mc->property_window),
 					 GNOME_ICONDIR"/gnome-mailcheck.png");
 	gtk_window_set_screen (GTK_WINDOW (mc->property_window),
 			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
 	
 	notebook = gtk_notebook_new ();
-	gtk_container_set_border_width (GTK_CONTAINER (notebook), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
 	gtk_widget_show (notebook);
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mc->property_window)->vbox), notebook,
 			    TRUE, TRUE, 0);
