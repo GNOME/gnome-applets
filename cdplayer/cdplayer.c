@@ -45,11 +45,18 @@ static gboolean
 cd_try_open(CDPlayerData *cd)
 {
 	int err;
-	if(!cd->cdrom_device) {
+	if(cd->cdrom_device == NULL) {
 		cd->cdrom_device = cdrom_open(devpath, &err);
-		return cd->cdrom_device!=NULL;
+		return cd->cdrom_device != NULL;
 	}
 	return TRUE;
+}
+
+static void
+cd_close (CDPlayerData *cd)
+{
+	cdrom_close(cd->cdrom_device);
+	cd->cdrom_device = NULL;
 }
 
 static void 
@@ -58,35 +65,37 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 	cdrom_device_status_t stat;
 	/* int retval; */
 
-	if (cd_try_open(cd) &&
-	    cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
-		switch (stat.audio_status) {
-		case DISC_PLAY:
-			led_time(cd->panel.time,
-				 stat.relative_address.minute,
-				 stat.relative_address.second,
-				 cd->panel.track_control.display,
-				 stat.track);
-			break;
-		case DISC_PAUSED:
-			led_paused(cd->panel.time,
-				   stat.relative_address.minute,
-				   stat.relative_address.second,
-				   cd->panel.track_control.display,
-				   stat.track);
-			break;
-		case DISC_COMPLETED:
-			/* check for looping or ? */
-			break;
-		case DISC_STOP:
-		case DISC_ERROR:
-			led_stop(cd->panel.time, cd->panel.track_control.display);
-			break;
-		default:
-			break;
+	if (cd_try_open(cd)) {
+		if (cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
+			switch (stat.audio_status) {
+			case DISC_PLAY:
+				led_time(cd->panel.time,
+					 stat.relative_address.minute,
+					 stat.relative_address.second,
+					 cd->panel.track_control.display,
+					 stat.track);
+				break;
+			case DISC_PAUSED:
+				led_paused(cd->panel.time,
+					   stat.relative_address.minute,
+					   stat.relative_address.second,
+					   cd->panel.track_control.display,
+					   stat.track);
+				break;
+			case DISC_COMPLETED:
+				/* check for looping or ? */
+				break;
+			case DISC_STOP:
+			case DISC_ERROR:
+				led_stop(cd->panel.time, cd->panel.track_control.display);
+				break;
+			default:
+				break;
+			}
 		}
+		cd_close(cd);
 	} else
-	      led_nodisc(cd->panel.time, cd->panel.track_control.display);
+		led_nodisc(cd->panel.time, cd->panel.track_control.display);
 	return;
 	cdplayer = NULL;
 }
@@ -124,6 +133,8 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 		cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
 			   cd->cdrom_device->track1);
 	}
+
+	cd_close(cd);
 
 	return;
 	w = NULL;
@@ -178,6 +189,8 @@ cdplayer_stop(GtkWidget * w, gpointer data)
 	if(!cd_try_open(cd))
 		return;
 	cdrom_stop(cd->cdrom_device);
+
+	cd_close(cd);
 	return;
         w = NULL;
 }
@@ -189,6 +202,8 @@ cdplayer_prev(GtkWidget * w, gpointer data)
 	if(!cd_try_open(cd))
 		return;
 	cdrom_prev(cd->cdrom_device);
+
+	cd_close(cd);
 	return;
         w = NULL;
 }
@@ -200,6 +215,8 @@ cdplayer_next(GtkWidget * w, gpointer data)
 	if(!cd_try_open(cd))
 		return;
 	cdrom_next(cd->cdrom_device);
+
+	cd_close(cd);
 	return;
         w = NULL;
 }
@@ -223,6 +240,7 @@ cdplayer_eject(GtkWidget * w, gpointer data)
 		cdrom_eject(cd->cdrom_device);
 	else
 		cdrom_eject(cd->cdrom_device);
+	cd_close(cd);
 	return;
         w = NULL;
 }
