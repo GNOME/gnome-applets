@@ -428,6 +428,7 @@ static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 static DriveData * create_drive_widget(GtkWidget *applet)
 {
 	DriveData *dd;
+	gchar *tmp_path;
 
 	dd = g_new(DriveData, 1);
 
@@ -484,12 +485,15 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 					      about_cb, NULL);
 
 	/* add "eject" entry if eject program is found in PATH */
-	if (gnome_is_program_in_path("eject"))
+	tmp_path = gnome_is_program_in_path("eject");
+	if (tmp_path) {
 		applet_widget_register_callback(APPLET_WIDGET(applet),
 					      "eject",
 					      _("Eject"),
 					      eject_cb,
 					      dd);
+		g_free (tmp_path);
+	}
 
 	start_callback_update(dd);
 	return dd;
