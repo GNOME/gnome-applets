@@ -568,7 +568,7 @@ mixer_popup_show (MixerData *data)
 			gdk_pointer_ungrab (GDK_CURRENT_TIME);
 		}
 		
-		g_warning ("volume-control-applet: Could not grab X server.");
+		g_warning ("mixer_applet2: Could not grab X server.");
 		return;
 	}
 
@@ -643,6 +643,27 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 }
 
 static void
+applet_change_background_cb (PanelApplet               *applet,
+			     PanelAppletBackgroundType  type,
+			     GdkColor                  *color,
+			     const gchar               *pixmap,
+			     MixerData                 *data)
+{
+	if (type == PANEL_NO_BACKGROUND) {
+		GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+		gtk_widget_modify_style (data->event_box, rc_style);
+	}
+	else if (type == PANEL_COLOR_BACKGROUND) {
+		gtk_widget_modify_bg (data->event_box,
+				      GTK_STATE_NORMAL,
+				      color);
+	} else { /* pixmap */
+		/* FIXME: Handle this when the panel support works again */
+	}
+}
+
+static void
 applet_change_orient_cb (GtkWidget *w, PanelAppletOrient o, MixerData *data)
 {
 	gint vol;
@@ -656,7 +677,7 @@ static void
 applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
 {
 	gint vol;
-	
+
 	mixer_popup_hide (data, FALSE);
 
 	/* Really only needed to fit on the ultra small panel,
@@ -875,6 +896,11 @@ mixer_applet_fill (PanelApplet *applet)
 			  G_CALLBACK (applet_change_size_cb),
 			  data);
 
+	g_signal_connect (G_OBJECT (applet),
+			  "change_background",
+			  G_CALLBACK (applet_change_background_cb),
+			  data);
+	
 	panel_applet_setup_menu (PANEL_APPLET (applet),
 				 mixer_applet_menu_xml,
 				 mixer_applet_menu_verbs,
