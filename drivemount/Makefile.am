@@ -1,3 +1,4 @@
+SUBDIRS = help
 
 INCLUDES = \
 -I. -I$(srcdir) \
