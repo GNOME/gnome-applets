@@ -34,6 +34,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <gdk/gdkx.h>
+#include "customdrawingarea.h"
 
 #define STOCK_QUOTE(sq) ((StockQuote *)(sq))
 
@@ -111,6 +112,7 @@
 		gchar * new_font;
 		GdkFont * extra_font;
 		GdkFont * small_font;
+		GtkTooltips * tooltips;
 		gint symbolfont;
 		gint whichlabel;
 	} StockData;
@@ -143,6 +145,15 @@
         gint OkClicked( GtkWidget *widget, void *data ) ;
         gint QuitFontDialog( GtkWidget *widget, void *data ) ;
 	/* end font funcs and vars */
+
+	/* accessibility funcs and vars */
+	GtkWidget *access_drawing_area;
+	StockData *access_stock;
+
+	static void setup_refchild_nchildren(GtkWidget * vbox);
+	static gint gtik_vbox_accessible_get_n_children(AtkObject *obj);
+	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i);
+	/* end accessibility funcs and vars */
 
 	/*-----------------------------------------------------------------*/
 	static void load_fonts(StockData *stockdata)
@@ -1137,12 +1148,12 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start(GTK_BOX(hbox),label,TRUE,TRUE,0);
 
 		entry = gtk_entry_new();
-		gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
 		g_object_set_data(G_OBJECT(entry),"list",(gpointer)list);
 		gtk_box_pack_start(GTK_BOX(hbox),entry,TRUE,TRUE,0);
 		g_signal_connect (G_OBJECT (entry), "activate",
 				  G_CALLBACK (add_symbol), stockdata);
 		
+		set_relation(entry, GTK_LABEL(label));
 		
 		button = gtk_button_new_with_mnemonic(_("_Add"));
 		g_object_set_data (G_OBJECT (button), "entry", entry);
@@ -1218,13 +1229,13 @@ static gint updateOutput(gpointer data)
     			    FALSE, FALSE, 0);
     
     		stockdata->proxy_url_entry = gtk_entry_new ();
-    		gtk_label_set_mnemonic_widget (GTK_LABEL (label), 
-    					       stockdata->proxy_url_entry);
     		gtk_widget_show (stockdata->proxy_url_entry);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_url_entry, 
     			    FALSE, FALSE, 0);
     		g_signal_connect (G_OBJECT (stockdata->proxy_url_entry), "focus_out_event",
     		          G_CALLBACK (proxy_url_changed), stockdata);
+
+    		set_relation (stockdata->proxy_url_entry, GTK_LABEL (label));
 
     		hbox = gtk_hbox_new (FALSE, 2);
     		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
@@ -1235,13 +1246,12 @@ static gint updateOutput(gpointer data)
     			    FALSE, FALSE, 0);
     			
     		stockdata->proxy_port_entry = gtk_entry_new ();
-    		gtk_label_set_mnemonic_widget (GTK_LABEL (label), 
-    					       stockdata->proxy_port_entry);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_port_entry, 
     				    FALSE, FALSE, 0);
     		g_signal_connect (G_OBJECT (stockdata->proxy_port_entry), "focus_out_event",
     		          G_CALLBACK (proxy_port_changed), stockdata);
-    
+    		set_relation (stockdata->proxy_port_entry, GTK_LABEL (label));
+    		
     		stockdata->proxy_auth_button = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a uername and password"));
     		gtk_box_pack_start (GTK_BOX (vbox), stockdata->proxy_auth_button, 
     				    FALSE, FALSE, 0);
@@ -1258,12 +1268,12 @@ static gint updateOutput(gpointer data)
     			    FALSE, FALSE, 0);
     
     		stockdata->proxy_user_entry = gtk_entry_new ();
-    		gtk_label_set_mnemonic_widget (GTK_LABEL (label),
-    					       stockdata->proxy_user_entry);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_user_entry, 
     			    FALSE, FALSE, 0);
     		g_signal_connect (G_OBJECT (stockdata->proxy_user_entry), "focus_out_event",
     		          G_CALLBACK (proxy_user_changed), stockdata);
+
+    		set_relation (stockdata->proxy_user_entry, GTK_LABEL (label));
 
     		hbox = gtk_hbox_new (FALSE, 2);
     		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
@@ -1272,14 +1282,14 @@ static gint updateOutput(gpointer data)
     		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 
     		stockdata->proxy_passwd_entry = gtk_entry_new ();
-    		gtk_label_set_mnemonic_widget (GTK_LABEL (label),
-    					       stockdata->proxy_passwd_entry);
     		gtk_entry_set_visibility (GTK_ENTRY (stockdata->proxy_passwd_entry), FALSE);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_passwd_entry, 
     			    FALSE, FALSE, 0);
     		g_signal_connect (G_OBJECT (stockdata->proxy_passwd_entry), 
     			          "focus_out_event",
     		                  G_CALLBACK (proxy_password_changed), stockdata);
+
+    		set_relation (stockdata->proxy_passwd_entry, GTK_LABEL (label));
     		 	
     		gtk_entry_set_text(GTK_ENTRY(stockdata->proxy_url_entry), 
     		       proxy_url ? 
@@ -1364,8 +1374,9 @@ static gint updateOutput(gpointer data)
 		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 0.5, 128, 
 					       1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
-		gtk_label_set_mnemonic_widget (GTK_LABEL (timeout_label), timeout_c);
 		gtk_widget_set_usize(timeout_c,60,-1);
+
+		set_relation(timeout_c, GTK_LABEL(timeout_label));
 
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_label );
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
@@ -1424,7 +1435,8 @@ static gint updateOutput(gpointer data)
 		/* COLOR */
 		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor"));
 		upColor = gnome_color_picker_new();
-		gtk_label_set_mnemonic_widget (GTK_LABEL (upLabel), upColor);
+		
+		set_relation(upColor, GTK_LABEL(upLabel));
 	
 		sscanf( stockdata->props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
 	
@@ -1442,7 +1454,8 @@ static gint updateOutput(gpointer data)
 
 		downLabel = gtk_label_new_with_mnemonic(_("- Colo_r"));
 		downColor = gnome_color_picker_new();
-		gtk_label_set_mnemonic_widget (GTK_LABEL (downLabel), downColor);
+		
+		set_relation(downColor, GTK_LABEL(downLabel));
 
 		sscanf( stockdata->props.dcolor, "#%02x%02x%02x", &dr,&dg,&db );
 
@@ -1464,7 +1477,6 @@ static gint updateOutput(gpointer data)
 		label5 = gtk_label_new_with_mnemonic(_("Stock Sy_mbol:"));
 
 		font_picker = gnome_font_picker_new ();
-		gtk_label_set_mnemonic_widget (GTK_LABEL (label5), font_picker);
 		gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
 						 stockdata->props.font);
 		gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
@@ -1472,11 +1484,12 @@ static gint updateOutput(gpointer data)
                 gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
                 g_signal_connect (G_OBJECT (font_picker), "font_set",
                 		  G_CALLBACK (font_cb), stockdata);
+
+		set_relation(font_picker, GTK_LABEL(label5));
                                 
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		label5 = gtk_label_new_with_mnemonic(_("Stock C_hange:"));
                 font_picker = gnome_font_picker_new ();
-                gtk_label_set_mnemonic_widget (GTK_LABEL (label5), font_picker);
                 gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
 						 stockdata->props.font2);
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
@@ -1485,6 +1498,8 @@ static gint updateOutput(gpointer data)
                 g_signal_connect (G_OBJECT(font_picker),"font_set",
                                   G_CALLBACK(font2_cb),stockdata);
                 
+		set_relation(font_picker, GTK_LABEL(label5));
+
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
 
@@ -1532,7 +1547,7 @@ static gint updateOutput(gpointer data)
 		
 		panel_applet_add_preferences (applet, "/schemas/apps/gtik/prefs", NULL);
 		
-		stockdata = g_new0 (StockData, 1);
+		access_stock = stockdata = g_new0 (StockData, 1);
 		stockdata->applet = GTK_WIDGET (applet);
 		stockdata->timeout = 0;
 		stockdata->configFileName = g_strconcat (g_getenv ("HOME"), 
@@ -1550,12 +1565,14 @@ static gint updateOutput(gpointer data)
 					"clicked",
 					GTK_SIGNAL_FUNC(zipRight),stockdata);
 
+		stockdata->tooltips = gtk_tooltips_new ();
+		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->leftButton, _("Skip forward"), "");
+		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backword"), "");
 
 		frame = gtk_frame_new(NULL);
 		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 
-
-		stockdata->drawing_area = gtk_drawing_area_new();
+		access_drawing_area = stockdata->drawing_area = GTK_WIDGET (custom_drawing_area_new());
 		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),200,20);
 
 		gtk_widget_show(stockdata->drawing_area);
@@ -1609,6 +1626,8 @@ static gint updateOutput(gpointer data)
 			gtk_widget_show(stockdata->rightButton);
 		}
 
+		setup_refchild_nchildren(vbox);
+
 		updateOutput(stockdata);
 
 		return TRUE;
@@ -1620,6 +1639,8 @@ static gint updateOutput(gpointer data)
 			     gpointer     data)
 	{
 		gboolean retval = FALSE;
+    
+		setup_factory();
     
 		if (!strcmp (iid, "OAFIID:GNOME_GtikApplet"))
 			retval = gtik_applet_fill (applet); 
@@ -1641,6 +1662,9 @@ static gint updateOutput(gpointer data)
 	/*-----------------------------------------------------------------*/
 	static void destroy_applet(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
+
+		g_object_unref (G_OBJECT (stockdata->tooltips));
+
 		if (stockdata->drawTimeID > 0) { 
 			gtk_timeout_remove(stockdata->drawTimeID); }
 		if (stockdata->updateTimeID >0) { 
@@ -1850,5 +1874,47 @@ static gint updateOutput(gpointer data)
 		g_free (buff);
 	}
 
+	static void setup_refchild_nchildren(GtkWidget * vbox){
+		AtkObject *atk_vbox;
+		AtkObjectClass *atk_vbox_class;
 
+		atk_vbox = gtk_widget_get_accessible(vbox);
+		atk_vbox_class = ATK_OBJECT_GET_CLASS(atk_vbox);
+		atk_vbox_class->get_n_children = gtik_vbox_accessible_get_n_children;
+		atk_vbox_class->ref_child = gtik_vbox_accessible_ref_child;
+	}
 
+	static gint gtik_vbox_accessible_get_n_children(AtkObject *obj){
+		return 1;
+	}
+
+	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i){
+		return (gtk_widget_get_accessible(access_drawing_area));
+	}
+
+	gchar* gtik_get_text(void) {
+		GArray *quotes = access_stock->quotes;
+		gchar **strs = NULL;
+		gchar *buff;
+		gint i;
+
+		strs = g_new0 (gchar*, access_stock->setCounter + 1);
+		g_return_if_fail (strs != NULL);
+
+		for(i=0;i<access_stock->setCounter;i++) {
+			if (access_stock->props.output == FALSE) {
+				strs[i] = g_strdup_printf ("%s  %s",
+					STOCK_QUOTE (quotes->data)[i].price,
+					STOCK_QUOTE (quotes->data)[i].change);
+			}
+			else {
+				strs[i] = g_strdup_printf ("%s",
+					STOCK_QUOTE (quotes->data)[i].price);
+			}
+		}
+		buff = g_strjoinv ("  ", strs);
+
+		g_strfreev (strs);
+
+		return buff;
+	}

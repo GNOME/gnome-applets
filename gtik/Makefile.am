@@ -1,14 +1,20 @@
+SUBDIRS = access
 
 INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
 		 $(GNOME_APPLETS_CFLAGS) $(GNOME_VFS_APPLETS_CFLAGS) \
-		 -DGTIK_APPLET_NAME=\"gtik2_applet\"
+		 -DGTIK_APPLET_NAME=\"gtik2_applet\" \
+		 -I access/
 
 bin_PROGRAMS = gtik2_applet2
 
 gtik2_applet2_SOURCES = gtik.c 
 
+ACCESS_LT_LIB = $(top_builddir)/gtik/access/libgnomedrawareaaccess.la
+
 gtik2_applet2_LDADD = 	$(GNOME_APPLETS_LIBS) \
-			$(GNOME_VFS_APPLETS_LIBS)
+			$(GNOME_VFS_APPLETS_LIBS) \
+			$(ACCESS_LT_LIB) \
+			$(GAILUTIL_LIBS)
 			
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GtikApplet.server.in
