@@ -25,20 +25,21 @@ $Id$
 #include <config.h>
 #endif
 
-#include <sys/file.h>
-#include <sys/ioctl.h>
-#include <sys/types.h>
-#include <sys/sysctl.h>
 #include <stdio.h>
 
 #ifdef __FreeBSD__
 #include <machine/apm_bios.h>
-#elif __OpenBSD__
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
 #include <sys/param.h>
 #include <machine/apmvar.h>
 #elif __linux__
 #include <apm.h>
 #endif
+
+#include <sys/file.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 #include <err.h>
 #include <stdlib.h>
@@ -66,7 +67,7 @@ $Id$
 #define gettext_noop(String) (String)
 #endif
 
-#ifdef __OpenBSD__
+#if defined(__NetBSD__) || defined(__OpenBSD__)
 extern struct apm_power_info apminfo;
 #else
 extern struct apm_info apminfo;
@@ -344,7 +345,7 @@ prop_cb (BonoboUIComponent *uic,
 #ifdef __FreeBSD__
   percentage = apminfo.ai_batt_life;
   if(percentage == 255) percentage = 0;
-#elif __OpenBSD__
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
   percentage = apminfo.battery_life;
   if(percentage == 255) percentage = 0;
 #elif __linux__

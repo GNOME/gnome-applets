@@ -5,6 +5,7 @@ glade_DATA = battstat_applet.glade
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = battstat.png
 
+if NEED_LIBAPM
 if HAVE_LIBAPM
 APMLIB = -lapm
 APMDIR =
@@ -13,6 +14,11 @@ else
 APMLIB = apmlib/libapm.a
 APMDIR = apmlib
 APMINC = -I$(srcdir)/apmlib/
+endif
+else
+APMLIB =
+APMDIR =
+APMINC = 
 endif
 
 SUBDIRS = docs sounds $(APMDIR)

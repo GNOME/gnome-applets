@@ -25,20 +25,21 @@
 #include <config.h>
 #endif
 
-#include <sys/file.h>
-#include <sys/ioctl.h>
-#include <sys/types.h>
-#include <sys/sysctl.h>
 #include <stdio.h>
 
 #ifdef __FreeBSD__
 #include <machine/apm_bios.h>
-#elif __OpenBSD__
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
 #include <sys/param.h>
 #include <machine/apmvar.h>
 #elif __linux__
 #include <apm.h>
 #endif
+
+#include <sys/file.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 #include <err.h>
 #include <stdlib.h>
@@ -64,6 +65,10 @@
 
 #ifndef gettext_noop
 #define gettext_noop(String) (String)
+#endif
+
+#if defined(__NetBSD__)
+#define APMDEVICE "/dev/apm"
 #endif
 
 GtkObject *statusdock;
@@ -215,7 +220,7 @@ GdkColor darkred[] = {
   {-1,0x0000,0x0000,0x0000}
 };
 
-#ifdef __OpenBSD__
+#if defined(__NetBSD__) || defined(__OpenBSD__)
 struct apm_power_info apminfo;
 #else
 struct apm_info apminfo;
@@ -246,7 +251,7 @@ apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 
   close(fd);
 }
-#elif __OpenBSD__
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
 void
 apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 {
@@ -254,7 +259,11 @@ apm_readinfo (PanelApplet *applet, ProgressData * battstat)
      procedure as for FreeBSD.
   */
   int fd;
+#if defined(__NetBSD__)
+  if (DEBUG) g_print("apm_readinfo() (NetBSD)\n");
+#else /* __OpenBSD__ */
   if (DEBUG) g_print("apm_readinfo() (OpenBSD)\n");
+#endif
 
   fd = open(APMDEVICE, O_RDONLY);
   if (fd == -1) cleanup (applet, 1);
@@ -392,7 +401,7 @@ pixmap_timeout( gpointer data )
    batt_state = apminfo.ai_batt_stat;
    batt_life = apminfo.ai_batt_life;
    charging = (batt_state == 3) ? TRUE : FALSE;
-#elif __OpenBSD__
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
    acline_status = apminfo.ac_state ? 1 : 0;
    batt_state = apminfo.battery_state;
    batt_life = apminfo.battery_life;
@@ -960,7 +969,7 @@ change_orient (PanelApplet       *applet,
    acline_status = apminfo.ai_acline ? 1 : 0;
    batt_state = apminfo.ai_batt_stat;
    batt_life = apminfo.ai_batt_life;
-#elif __OpenBSD__
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
    acline_status = apminfo.ac_state ? 1 : 0;
    batt_state = apminfo.battery_state;
    batt_life = apminfo.battery_life;
