@@ -174,7 +174,7 @@ fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect)
     /* destroy file select dialog */
     gtk_widget_destroy(GTK_WIDGET(fileSelect));
     
-    printf("Filename: %s\n", (char *)  browsedFilename);
+    /* printf("Filename: %s\n", (char *)  browsedFilename); */
 
     /* execute command */
     execCommand(browsedFilename);
