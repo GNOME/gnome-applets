@@ -87,7 +87,7 @@ static const BonoboUIVerb applet_menu_verbs [] = {
 
 /* and the XML definition for the popup menu */
 static const char applet_menu_xml [] =
-"<popup name=\"cd-applet-menu\">\n"
+"<popup name=\"button3\">\n"
 "   <menuitem name=\"RunGTCD\" verb=\"RunGTCD\" _label=\"Run GTCD...\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-cdrom\"/>\n"
 "   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
