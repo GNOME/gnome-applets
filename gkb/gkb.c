@@ -10,14 +10,17 @@
 #include <gnome.h>
 #include <gdk_imlib.h>
 #include <applet-widget.h>
+#ifdef HAVE_LIBXKBFILE
 #include <gdk/gdkx.h>		/* for GDK_DISPLAY() */
 #include <X11/Xlib.h>		/* for XFree() */
+#include <X11/XKBlib.h>
 #include <X11/extensions/XKBrules.h>
 				/* for XkbRF_RulesPtr, XkbRF_VarDefsRec,
 				 * XkbRF_GetNamesProp(),XkbRF_Create(),
 				 * XkbRF_LoadDescriptionsByName(),
 				 * and XkbRF_Free().
 				 */
+#endif /* HAVE_LIBXKBFILE */
 #include <sys/types.h>
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
@@ -240,6 +243,7 @@ destroy_cb(GtkWidget *widget,
 static GList*
 append_xkb_items(GList *list)
 {
+#ifdef HAVE_LIBXKBFILE
 	int i;
 	char *rules_file;
 	XkbRF_RulesPtr rules;
@@ -248,7 +252,7 @@ append_xkb_items(GList *list)
 	if (XkbRF_GetNamesProp(GDK_DISPLAY(), &rules_file, &var_defs)) {
 	  if ((rules = XkbRF_Create(0,0))) {
 	    if (XkbRF_LoadDescriptionsByName(rules_file, NULL, rules)) {
-	      for (i=0; i < rules->layouts.num_desc, i++)
+	      for (i=0; i < rules->layouts.num_desc; i++)
 		/* Find a way to use desc in addition to name.  */
 		list = g_list_append(list, rules->layouts.desc[i].name);
 	    }
@@ -263,6 +267,7 @@ append_xkb_items(GList *list)
 	    XFree(var_defs.layout);
 	  }
 	}
+#endif /* HAVE_LIBXKBFILE */
 
 	return list;
 }
