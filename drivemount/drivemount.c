@@ -574,6 +574,7 @@ update_pixmap (DriveData *dd, gint t)
 	GdkPixbuf *scaled;
 	char **pmap_d_in;
 	char **pmap_d_out;
+	gint pixmap;
 
 	gint width;
 	gint height;
@@ -583,11 +584,12 @@ update_pixmap (DriveData *dd, gint t)
 
 	gint hint = dd->sizehint;
 
+	pixmap = dd->device_pixmap;
 	if (dd->device_pixmap > icon_list_count - 1)
-		dd->device_pixmap = 0;
+		pixmap = 0;
 	if (dd->device_pixmap < 0
 	    && (!dd->custom_icon_in || !dd->custom_icon_out))
-		dd->device_pixmap = 0;
+		pixmap = 0;
 
 	if (!dd->button_pixmap) {
 		dd->button_pixmap = gtk_image_new ();
@@ -596,7 +598,7 @@ update_pixmap (DriveData *dd, gint t)
 		gtk_widget_show (dd->button_pixmap);
 	}
 
-	if (dd->device_pixmap < 0) {
+	if (pixmap < 0) {
 		if (t) {
 			pixbuf = gdk_pixbuf_new_from_file (dd->custom_icon_in,
 							   NULL);
@@ -641,8 +643,8 @@ update_pixmap (DriveData *dd, gint t)
 
 		if (dd->orient == PANEL_APPLET_ORIENT_LEFT
 		    || dd->orient == PANEL_APPLET_ORIENT_RIGHT || hint <= 36) {
-			pmap_d_in = icon_list[dd->device_pixmap].pmap_h_in;
-			pmap_d_out = icon_list[dd->device_pixmap].pmap_h_out;
+			pmap_d_in = icon_list[pixmap].pmap_h_in;
+			pmap_d_out = icon_list[pixmap].pmap_h_out;
 		} else {
 			gint tmp;
 
@@ -650,8 +652,8 @@ update_pixmap (DriveData *dd, gint t)
 			width = height;
 			height = tmp;
 
-			pmap_d_in = icon_list[dd->device_pixmap].pmap_v_in;
-			pmap_d_out = icon_list[dd->device_pixmap].pmap_v_out;
+			pmap_d_in = icon_list[pixmap].pmap_v_in;
+			pmap_d_out = icon_list[pixmap].pmap_v_out;
 		}
 
 		if (t)

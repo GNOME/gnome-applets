@@ -83,7 +83,7 @@ properties_load(DriveData *dd)
 }
 
 static void
-cb_mount_activate (GtkEntry *entry, gpointer data)
+cb_mount_activate (GtkEditable *entry, gpointer data)
 {
 	DriveData *dd = data;
 	gchar *text;
@@ -119,18 +119,18 @@ cb_mount_focus_out (GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
 	DriveData *dd = data;
 	
-	cb_mount_activate (GTK_ENTRY (widget), dd);
+	cb_mount_activate (GTK_EDITABLE (widget), dd);
 	
 	return FALSE;
 	
 }
 
 static void
-spin_changed (GtkSpinButton *button, gpointer data)
+spin_changed (GtkWidget *button, GdkEventFocus *event, gpointer data)
 {
 	DriveData *dd = data;
 	
-	dd->interval = gtk_spin_button_get_value_as_int(button);
+	dd->interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON (button));
 	
 	start_callback_update(dd);
 	panel_applet_gconf_set_int(PANEL_APPLET(dd->applet), "interval", 
@@ -231,6 +231,36 @@ unmount_icon_changed (GnomeIconEntry *entry, gpointer data)
 			
 }
 
+static GtkWidget *
+create_hig_catagory (GtkWidget *main_box, gchar *title)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+		
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
+	
+	tmp = g_strdup_printf ("<b>%s</b>", title);
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;
+		
+}
+
 void
 properties_show (BonoboUIComponent *uic,
 		 DriveData         *dd,
@@ -240,12 +270,14 @@ properties_show (BonoboUIComponent *uic,
 	GtkWidget *box;
 	GtkWidget *frame;
 	GtkWidget *hbox;
-	GtkWidget *vbox;
+	GtkWidget *vbox, *vbox1;
 	GtkWidget *fbox;
 	GtkWidget *label;
 	GtkWidget *menu;
 	GtkWidget *item;
+	GtkWidget *entry;
 	ResponseWidgets *widgets;
+	GtkSizeGroup *size;
 	gint response;
 
 	widgets = g_new0(ResponseWidgets, 1);
@@ -257,56 +289,65 @@ properties_show (BonoboUIComponent *uic,
 			       gtk_widget_get_screen (dd->applet));
 
 	box = GTK_DIALOG(dialog)->vbox;
-	frame = gtk_frame_new(_("Settings"));
-	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(box), frame, TRUE, TRUE, 0);
-
-	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
-	gtk_container_add(GTK_CONTAINER(frame), vbox);
+	
+	size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+	
+	vbox = gtk_vbox_new(FALSE, 18);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), 12);
+	gtk_box_pack_start (GTK_BOX (box), vbox, FALSE, FALSE, 0);
 	gtk_widget_show(vbox);
-
-	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	
+	vbox1 = create_hig_catagory (vbox, _("General"));
+	
+	hbox = gtk_hbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new_with_mnemonic(_("_Mount point:"));
+	label = gtk_label_new_with_mnemonic(_("_Mount directory:"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_widget_show(label);
+	gtk_size_group_add_widget (size, label);
 
-	widgets->mount_entry = gtk_entry_new_with_max_length(255);
+	widgets->mount_entry = gnome_file_entry_new ("drivemountentry", _("Select Mount Directory"));
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->mount_entry);
-	gtk_entry_set_text(GTK_ENTRY(widgets->mount_entry), dd->mount_point);
+	gnome_file_entry_set_filename (GNOME_FILE_ENTRY  (widgets->mount_entry), 
+						       dd->mount_point);
+	gnome_file_entry_set_default_path (GNOME_FILE_ENTRY (widgets->mount_entry), "/mnt/");
+	gnome_file_entry_set_directory_entry(GNOME_FILE_ENTRY (widgets->mount_entry), TRUE);
+	entry = gnome_file_entry_gtk_entry (GNOME_FILE_ENTRY (widgets->mount_entry));
 	gtk_box_pack_start(GTK_BOX(hbox), widgets->mount_entry , TRUE, TRUE, 0);
 	gtk_widget_show(widgets->mount_entry);
-	g_signal_connect (G_OBJECT (widgets->mount_entry), "activate",
+	g_signal_connect (G_OBJECT (entry), "changed",
 			  G_CALLBACK (cb_mount_activate), dd);
-	g_signal_connect (G_OBJECT (widgets->mount_entry), "focus_out_event",
-			  G_CALLBACK (cb_mount_focus_out), dd);
 
-	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new_with_mnemonic(_("_Update interval (seconds):"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_widget_show(label);
+	gtk_size_group_add_widget (size, label);
 
-	widgets->update_spin = gtk_spin_button_new(GTK_ADJUSTMENT(gtk_adjustment_new(dd->interval, 1.0, 30.0, 1, 1, 1)), 1, 0);
+	widgets->update_spin = gtk_spin_button_new(GTK_ADJUSTMENT(gtk_adjustment_new(dd->interval, 1.0, 300.0, 5, 1, 1)), 1, 0);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->update_spin);
-	gtk_box_pack_start(GTK_BOX(hbox), widgets->update_spin, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), widgets->update_spin, TRUE, TRUE, 0);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(widgets->update_spin),GTK_UPDATE_ALWAYS);
 	gtk_widget_show(widgets->update_spin);
-	g_signal_connect (G_OBJECT (widgets->update_spin), "value_changed",
-			  G_CALLBACK (spin_changed), dd);
+	g_signal_connect (G_OBJECT (widgets->update_spin), "focus_out_event",
+				  G_CALLBACK (spin_changed), dd);
 	
-	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, 6);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new_with_mnemonic(_("_Icon :"));
+	label = gtk_label_new_with_mnemonic(_("_Icon:"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_widget_show(label);
+	gtk_size_group_add_widget (size, label);
 
 	widgets->omenu = gtk_option_menu_new ();
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->omenu);
@@ -319,7 +360,7 @@ properties_show (BonoboUIComponent *uic,
 	
 	/* This must be created before the menu items, so we can pass it to a callback */
 	fbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(vbox), fbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), fbox, FALSE, FALSE, 0);
 	gtk_widget_show(fbox);
 
 	item = gtk_menu_item_new_with_label(_("Floppy"));
@@ -349,9 +390,15 @@ properties_show (BonoboUIComponent *uic,
 	else
 		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), dd->device_pixmap);
 
-	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	hbox = gtk_hbox_new(FALSE, 6);
 	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
+	
+	label = gtk_label_new_with_mnemonic(NULL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_widget_show(label);
+	gtk_size_group_add_widget (size, label);
 
 	widgets->icon_entry_in = gnome_icon_entry_new("drivemount-applet-id-in", _("Select icon for mounted"));
 	gnome_icon_entry_set_filename(GNOME_ICON_ENTRY(widgets->icon_entry_in), dd->custom_icon_in);
@@ -360,14 +407,21 @@ properties_show (BonoboUIComponent *uic,
 	g_signal_connect (G_OBJECT (widgets->icon_entry_in), "changed",
 			  G_CALLBACK (mount_icon_changed), dd);
 
-	label = gtk_label_new_with_mnemonic(_("Custom icon for moun_ted:"));
+	label = gtk_label_new_with_mnemonic(_("Moun_ted icon:"));
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->icon_entry_in);
-	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	hbox = gtk_hbox_new(FALSE, 6);
 	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
+	
+	label = gtk_label_new_with_mnemonic(NULL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_widget_show(label);
+	gtk_size_group_add_widget (size, label);
 
 	widgets->icon_entry_out = gnome_icon_entry_new("drivemount-applet-id-out", _("Select icon for unmounted"));
 	gnome_icon_entry_set_filename(GNOME_ICON_ENTRY(widgets->icon_entry_out), dd->custom_icon_out);
@@ -376,37 +430,38 @@ properties_show (BonoboUIComponent *uic,
 	g_signal_connect (G_OBJECT (widgets->icon_entry_out), "changed",
 			  G_CALLBACK (unmount_icon_changed), dd);
 
-	label = gtk_label_new_with_mnemonic(_("Custom icon for not mou_nted:"));
+	label = gtk_label_new_with_mnemonic(_("Unmou_nted icon:"));
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), widgets->icon_entry_out);
-	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	if(dd->device_pixmap < 0)
 		gtk_widget_set_sensitive(fbox, TRUE);
 	else
 		gtk_widget_set_sensitive(fbox, FALSE);
-
+#if 0
 	widgets->scale_toggle = gtk_check_button_new_with_mnemonic (_("_Scale size to panel"));
-	gtk_box_pack_start(GTK_BOX(vbox), widgets->scale_toggle, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), widgets->scale_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->scale_toggle), dd->scale_applet);
 	gtk_widget_show(widgets->scale_toggle);
 	g_signal_connect (G_OBJECT (widgets->scale_toggle), "toggled",
 			  G_CALLBACK (scale_toggled), dd);
-
-	widgets->eject_toggle = gtk_check_button_new_with_mnemonic (_("_Eject on unmount"));
-	gtk_box_pack_start(GTK_BOX(vbox), widgets->eject_toggle, FALSE, FALSE, 0);
+#endif
+	widgets->eject_toggle = gtk_check_button_new_with_mnemonic (_("_Eject disk when unmounting"));
+	gtk_box_pack_start(GTK_BOX(vbox1), widgets->eject_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->eject_toggle), dd->auto_eject);
 	gtk_widget_show(widgets->eject_toggle);
 	g_signal_connect (G_OBJECT (widgets->eject_toggle), "toggled",
 			  G_CALLBACK (eject_toggled), dd);
 
 	widgets->automount_toggle = gtk_check_button_new_with_mnemonic (_("Use _automount friendly status test"));
-	gtk_box_pack_start(GTK_BOX(vbox), widgets->automount_toggle, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), widgets->automount_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->automount_toggle), dd->autofs_friendly);
 	gtk_widget_show(widgets->automount_toggle);
 	g_signal_connect (G_OBJECT (widgets->automount_toggle), "toggled",
 			  G_CALLBACK (automount_toggled), dd);
-	gtk_widget_show_all(frame);
+	gtk_widget_show_all(vbox);
 
 	widgets->dd = dd;
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(handle_response_cb), widgets);
