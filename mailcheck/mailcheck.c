@@ -2067,6 +2067,7 @@ mailcheck_properties_page (MailCheck *mc)
 	
 	freq_a = gtk_adjustment_new((float)((mc->update_freq/1000)/60), 0, 1440, 1, 5, 5);
 	mc->min_spin = gtk_spin_button_new( GTK_ADJUSTMENT (freq_a), 1, 0);
+	gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (mc->min_spin), TRUE);
 	g_signal_connect (G_OBJECT (mc->min_spin), "value_changed",
 			  G_CALLBACK (update_spin_changed), mc);			  
 	gtk_box_pack_start (GTK_BOX (hbox2), mc->min_spin,  FALSE, FALSE, 0);
@@ -2089,6 +2090,7 @@ mailcheck_properties_page (MailCheck *mc)
 	
 	freq_a = gtk_adjustment_new((float)((mc->update_freq/1000)%60), 0, 59, 1, 5, 5);
 	mc->sec_spin = gtk_spin_button_new (GTK_ADJUSTMENT (freq_a), 1, 0);
+	gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (mc->sec_spin), TRUE);
 	g_signal_connect (G_OBJECT (mc->sec_spin), "value_changed",
 			  G_CALLBACK (update_spin_changed), mc);
 	gtk_box_pack_start (GTK_BOX (hbox2), mc->sec_spin,  FALSE, FALSE, 0);
