@@ -100,17 +100,16 @@ static int get_current_headlines(gpointer data)
 {
   AppData *appdata = data;
   InfoData *id;
-  GtkWidget *icon;
+  GdkImlibImage *splash = NULL;
+  GtkWidget *splash_pixmap = NULL;
   ghttp_request *req = ghttp_request_new();	
  
-  gchar http_server[128] = "slashdot.org";
-  gchar http_filename[128] = "/ultramode.txt";
-  gint wrotebytes;
+  gchar http_server[128] = "mike911.clark.net";
+  gchar http_filename[128] = "/~acf/gticker/gticker.txt";
   gint http_port = 80;
-  gchar final_url[334];
   gchar buf[256];
   gchar headline[128];
-  gchar url[128];
+  gchar url[128], splashurl[128];
   gchar graphicurl[128];
   gchar author[16];
   gchar letterday[6];
@@ -119,8 +118,10 @@ static int get_current_headlines(gpointer data)
   gchar timezone[3];
   gchar free1[128];
   gchar free2[128];
-  FILE *gticker_file = NULL;
+  FILE *gticker_file = NULL, *splash_file = NULL;
   gchar *filename = g_strconcat(appdata->gticker_dir, "/", "headlines", NULL);
+  gchar *splashfilename = g_strconcat(appdata->gticker_dir, "/", "splashurl", 
+		  NULL);
   gint delay = appdata->article_delay / 10 * (1000 / UPDATE_DELAY);
  
   ghttp_set_uri(req, g_strconcat("http://", http_server, http_filename, NULL));
@@ -140,7 +141,64 @@ static int get_current_headlines(gpointer data)
   fclose(gticker_file);
   ghttp_close(req);
   ghttp_request_destroy(req);
-  fclose(gticker_file);
+
+  if ((gticker_file = fopen(filename, "r")) == NULL) {
+	fprintf(stderr, "Failed to open file \"%s\": %s\n", filename,
+			strerror(errno));
+	g_free(filename);
+	set_mouse_cursor(appdata, GDK_LEFT_PTR);
+	return TRUE;
+  }
+
+  remove_all_lines(appdata);
+  fgets(buf, sizeof(buf), gticker_file);
+  fgets(buf, sizeof(buf), gticker_file);
+  strncpy(splashurl, buf, 80);
+  g_print("about to set the uri to: %s\n", splashurl);
+  ghttp_set_uri(req, splashurl);
+  g_print("bork bork bork bork!\n");
+  /* the following line will crash me */
+  ghttp_set_header(req, http_hdr_Connection, "close");
+  g_print("i made it!\n");
+  ghttp_prepare(req); 
+  ghttp_process(req);
+  g_print("i made it here!\n");
+  if ((splash_file = fopen(splashfilename, "w")) == NULL) {
+	  fprintf(stderr, "Failed to open file \"%s\": %s\n", splashfilename,
+			  strerror(errno));
+	  g_free(splashfilename);
+	  set_mouse_cursor(appdata, GDK_LEFT_PTR);
+	  return TRUE;
+  }
+ 
+  g_print("About to fwrite()\n");
+  fwrite(ghttp_get_body(req), ghttp_get_body_len(req), 1, splash_file);
+  fclose(splash_file);
+  ghttp_close(req);
+  ghttp_request_destroy(req);
+  g_print("This suxxors\n");
+
+  if ((splash_file = fopen(splashfilename, "r")) == NULL) {
+	  fprintf(stderr, "Failed to open file \"%s\": %s\n", splashfilename,
+			  strerror(errno));
+	  g_free(splashfilename);
+	  set_mouse_cursor(appdata, GDK_LEFT_PTR);
+	  return TRUE;
+  }
+  
+  g_print("1\n");
+  splash = gdk_imlib_load_image(splashfilename);
+  g_print("2\n");
+  gdk_imlib_render(splash, splash->rgb_width, splash->rgb_height);
+  g_print("3\n");
+  splash_pixmap = gtk_pixmap_new(splash->pixmap, splash->shape_mask);
+  g_print("4\n");
+  id = add_info_line_with_pixmap(appdata, "", splash_pixmap, 0, FALSE, 1, 
+		  delay);
+  g_print("5\n");
+  fclose(splash_file); 
+  g_print("6\n");
+    
   return TRUE;
 }
 
