@@ -31,7 +31,7 @@ preset_data_predata = \
 		Sun_ES_Spanish_type4_x.keyprop.in Sun_GB_English_type4_x.keyprop.in \
 		Sun_IT_Italian_type4_x.keyprop.in Sun_JP_Japanese_type4_x.keyprop.in \
 		Sun_PT_Portuguese_type4_x.keyprop.in Sun_SE_Swedish_type4_x.keyprop.in \
-		Sun_US_type4.keyprop.in
+		Sun_US_type4.keyprop.in Sun_US_type6.keyprop.in
 
 
 presetdir = $(datadir)/gnome/gkb
