@@ -45,7 +45,6 @@ struct _PropWg
   GtkWidget *iconpathinput;
   GtkWidget *vbox1, *hbox1, *vbox2, *hbox2, *hbox3, *hboxmap;
   GtkWidget *frame1, *frame2, *frame3, *frame4, *frame6;
-  GtkWidget *preset_opt, *preset_opt_menu, *gkb_menuitem;
   GtkWidget *newkeymap, *delkeymap;
 };
 
@@ -134,28 +133,6 @@ cp_propwg (PropWg * data)
   return tempdata;
 }
 
-static GList *
-load_presets (GKB * gkb)
-{
-  int i,num_sets;  
-  char prefix[1024];
-  GList * list = g_list_alloc();
-  Prop * set;
-
-  g_snprintf (prefix, sizeof (prefix), "gkb.presets/gkb");
-
-  gnome_config_push_prefix (prefix);
-  num_sets = gnome_config_get_int ("sets=0");
-  gnome_config_pop_prefix ();
-
-  for (i = 0; i < num_sets; ++i)
-    {
-     set = g_new(Prop,1);
-     list = g_list_insert(list, set, i);
-    }
- return list;
-}
-
 static void
 tell_panel (void)
 {
@@ -174,7 +151,7 @@ tell_panel (void)
 }
 
 static void
-delmap_cb (GnomePropertyBox * pb, GKB * gkb)
+delmap_cb (GnomePropertyBox * pb,GKB * gkb)
 {
   gint page;
 
@@ -252,7 +229,9 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
     {
       if((actdata = list->data) != NULL) {
 
-      /* TODO: free! leak! */
+      if (actdata->name) g_free (actdata->name);
+      if (actdata->iconpath) g_free (actdata->iconpath);
+      if (actdata->command) g_free (actdata->command);
 
       actdata->name = (char *) strdup (gtk_entry_get_text (GTK_ENTRY (actdata->keymapname)));
 
@@ -335,7 +314,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_container_add (GTK_CONTAINER (actdata->frame4), actdata->keymapname);
 
   gtk_signal_connect (GTK_OBJECT (actdata->keymapname),
-		      "changed", (GtkSignalFunc) changed_cb, gkb);
+		      "changed", GTK_SIGNAL_FUNC (changed_cb), gkb);
 
   actdata->frame6 = gtk_frame_new (_("Keymap control"));
   gtk_widget_ref (actdata->frame6);
@@ -379,44 +358,6 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 
   gtk_widget_show (actdata->hboxmap);
 
-  actdata->frame3 = gtk_frame_new (_("Presets"));
-  gtk_widget_ref (actdata->frame3);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "frame3",
-			    actdata->frame3,
-			    (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (actdata->frame3);
-  gtk_box_pack_start (GTK_BOX (actdata->vbox1), actdata->frame3, FALSE, FALSE,
-		      0);
-  gtk_container_set_border_width (GTK_CONTAINER (actdata->frame3), 2);
-
-  actdata->preset_opt = gtk_option_menu_new ();
-  gtk_widget_ref (actdata->preset_opt);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "preset_opt",
-			    actdata->preset_opt,
-			    (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (actdata->preset_opt);
-  gtk_container_add (GTK_CONTAINER (actdata->frame3), actdata->preset_opt);
-  gtk_container_set_border_width (GTK_CONTAINER (actdata->preset_opt), 2);
-
-  actdata->preset_opt_menu = gtk_menu_new ();
-
-  actdata->gkb_menuitem = gtk_menu_item_new_with_label (_("US querty"));
-  gtk_widget_show (actdata->gkb_menuitem);
-  gtk_menu_append (GTK_MENU (actdata->preset_opt_menu),
-		   actdata->gkb_menuitem);
-  actdata->gkb_menuitem =
-    gtk_menu_item_new_with_label (_("Hungarian Latin 1 quertz"));
-  gtk_widget_show (actdata->gkb_menuitem);
-  gtk_menu_append (GTK_MENU (actdata->preset_opt_menu),
-		   actdata->gkb_menuitem);
-  actdata->gkb_menuitem =
-    gtk_menu_item_new_with_label (_("Hungarian Latin 2 quertz"));
-  gtk_widget_show (actdata->gkb_menuitem);
-  gtk_menu_append (GTK_MENU (actdata->preset_opt_menu),
-		   actdata->gkb_menuitem);
-  gtk_option_menu_set_menu (GTK_OPTION_MENU (actdata->preset_opt),
-			    actdata->preset_opt_menu);
-
   actdata->hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (actdata->hbox2);
   gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "hbox2",
@@ -433,7 +374,8 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 			    (GtkDestroyNotify) gtk_widget_unref);
   gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry),
                              actdata->iconpath);
-  gtk_signal_connect (GTK_OBJECT (actdata->iconentry), "changed",
+  gtk_signal_connect (GTK_OBJECT(gnome_icon_entry_gtk_entry(
+                   GNOME_ICON_ENTRY(actdata->iconentry))), "value_changed",
 		      GTK_SIGNAL_FUNC (icontopath_cb), actdata);
 
   gtk_widget_show (actdata->iconentry);

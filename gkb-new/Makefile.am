@@ -7,6 +7,8 @@ INCLUDES = -I. -I$(srcdir)                              \
 
 bin_PROGRAMS = gkb_applet
 
+bin_SCRIPTS = gkb_xmmap
+
 gkb_applet_SOURCES = gkb.c gkb.h prop.c
 
 #lib_LTLIBRARIES=libgkb_applet.la
@@ -23,7 +25,8 @@ SUBDIRS= gkb xmodmap docs
 GKB_ICON = gkb.png
 
 EXTRA_DIST = gkb_applet.desktop $(GKB_ICON) \
-	gkb_applet.gnorba
+	gkb_applet.gnorba \
+        gnome-wm
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gkb_applet.desktop
@@ -34,12 +37,7 @@ gkbicon_DATA = $(GKB_ICON)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gkb_applet.gnorba
 
-gkb.presets: gkb.presets.in ../config.status
-	sed -e "s,\${prefix},$(prefix),g" \
-	< gkb.presets.in > gkb.presets.tmp \ 
-	&& mv gkb.presets.tmp gkb.presets
-
 gkb_xmmap: gkb_xmmap.in ../config.status
-	sed "s,'${prefix}',$(prefix),g" \
+	sed "s,\$${prefix},$(prefix),g" \
         < gkb_xmmap.in >gkb_xmmap.tmp \
 	&& mv gkb_xmmap.tmp gkb_xmmap

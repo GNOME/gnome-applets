@@ -200,8 +200,6 @@ load_properties (GKB * gkb)
       gkb->maps->data = actdata;
       gkb->n++;
 
-      /* next one... TODO: remove this... or no? */
-
       actdata = loadprop (gkb, 1);
       gkb->maps = g_list_append (gkb->maps, actdata);
       gkb->n++;
