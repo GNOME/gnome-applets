@@ -629,7 +629,7 @@ show_error_dialog (MixerData *data)
 	data->error_dialog = gtk_message_dialog_new (NULL,
 					 GTK_DIALOG_DESTROY_WITH_PARENT,
 					 GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-					 ("Couldn't open mixer device %s\n"),
+					 _("Couldn't open mixer device %s\n"),
 					 data->device, NULL);
 
 	gtk_window_set_screen (GTK_WINDOW (data->error_dialog),
