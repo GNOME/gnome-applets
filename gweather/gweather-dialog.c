@@ -341,7 +341,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       ebox = gtk_event_box_new ();
       gtk_widget_show (ebox);
 
-      gtk_scrolled_window_add_with_viewport(imagescroll_window,ebox);
+      gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(imagescroll_window),ebox);
       gtk_box_pack_start (GTK_BOX (radar_vbox), imagescroll_window, TRUE, TRUE, 0);
       gtk_widget_show (gw_applet->radar_image);
       gtk_widget_show (imagescroll_window);

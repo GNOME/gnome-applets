@@ -28,7 +28,8 @@ G_BEGIN_DECLS
 #define WEATHER_LOCATION_CODE_LEN 4
 
 struct _WeatherLocation {
-    gchar *name;
+    gchar *untrans_name;
+    gchar *trans_name;
     gchar *code;
     gchar *zone;
     gchar *radar;
@@ -37,7 +38,7 @@ struct _WeatherLocation {
 
 
 
-extern WeatherLocation *weather_location_new (const gchar *name, const gchar *code, const gchar *zone, const gchar *radar);
+extern WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code, const gchar *zone, const gchar *radar);
 extern WeatherLocation *weather_location_clone (const WeatherLocation *location);
 extern void weather_location_free (WeatherLocation *location);
 extern gboolean weather_location_equal (const WeatherLocation *location1, const WeatherLocation *location2);

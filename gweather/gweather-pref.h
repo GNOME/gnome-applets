@@ -26,6 +26,13 @@ extern void gweather_pref_save (const gchar *path, GWeatherApplet *gw_applet);
 void add_atk_relation (GtkWidget *widget1, GtkWidget *widget2, AtkRelationType type);
 void set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
+enum
+{
+    GWEATHER_PREF_COL_LOC = 0,
+    GWEATHER_PREF_COL_POINTER,
+    GWEATHER_PREF_NUM_COLUMNS
+}; 
+
 
 
 G_END_DECLS

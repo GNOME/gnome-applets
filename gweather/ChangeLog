@@ -1,3 +1,49 @@
+2004-06-20  Gareth Owen  <gowen72@yahoo.com>
+
+	* Locations.xml.in: New xml formated locations file.
+
+	* gweather-xml.c, gweather-xml.h: New files containing xml processing
+	code.
+
+	* .cvsignore: Added Locations.xml
+
+	* Makefile.in: Added rules for Locations.xml.in, gweather-xml.c and 
+	gweather-xml.h
+
+	* gweather-pref.c: Moved column enum to header file.
+
+	(row_select_cb): Added saving of translated location name
+
+	(load_region): Deleted unused function
+
+	(load_locations): Now calls gweather_xml_load_locations to fill the
+	tree with location information
+
+	(free_data): remove un-needed calls to free
+
+	* gweather-pref.h: Moved column enum to header file.
+
+	* gweather.schemas.in: Added new location variable for storing
+	translated location name.
+
+	* weather.c (weather_location_new): Added setting of translated
+	location and handling of NULL initialisation.
+
+	(weather_location_config_read): Added reading/setting of translated
+	location
+
+	(weather_location_clone): Changed this so it called weather_location_new
+
+	(weather_location_free): Added freeing of structure members
+
+	(weather_location_equal): Added check for location name being the same
+	as some locations now have identical metar codes.
+
+	* weather.h: Added variable for storing translated location to the 
+	GWeatherLocation structure.
+	
+	Fixes bug: 89746
+
 2004-06-19  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-applet.c (gweather_create_applet): Added setting default

@@ -66,17 +66,36 @@ static gboolean weather_radar = FALSE;
 #define VISIBILITY_SM_TO_M(sm)   (VISIBILITY_SM_TO_KM(sm) * 1000)
 
 
-WeatherLocation *weather_location_new (const gchar *name, const gchar *code, const gchar *zone, const gchar *radar)
+WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code, const gchar *zone, const gchar *radar)
 {
     WeatherLocation *location;
 
     location = g_new(WeatherLocation, 1);
-    location->name = g_strdup(name);
+  
+    /* untransalted name and metar code must be set */
+    location->untrans_name = g_strdup(untrans_name);
     location->code = g_strdup(code);
-    location->zone = g_strdup(zone);
-    location->radar = g_strdup(radar);
 
-    if (zone[0] == '-') {
+    /* if there is no translated name, then use the untranslated version */
+    if (trans_name) {
+        location->trans_name = g_strdup(trans_name);    
+    } else {
+        location->trans_name = g_strdup(untrans_name);
+    }
+    
+    if (zone) {    
+        location->zone = g_strdup(zone);
+    } else {
+        location->zone = g_strdup("------");
+    }
+    
+    if (radar) {
+        location->radar = g_strdup(radar);
+    } else {
+        location->radar = g_strdup("---");
+    }
+
+    if (location->zone[0] == '-') {
         location->zone_valid = FALSE;
     } else {
         location->zone_valid = TRUE;
@@ -88,22 +107,27 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
 WeatherLocation *weather_location_config_read (PanelApplet *applet)
 {
     WeatherLocation *location;
-    gchar *name, *code, *zone, *radar;
+    gchar *untrans_name, *trans_name, *code, *zone, *radar;
     
-    name = panel_applet_gconf_get_string(applet, "location0", NULL);
-    if (!name) {
+    untrans_name = panel_applet_gconf_get_string(applet, "location0", NULL);
+    if (!untrans_name) {
         if ( g_strstr_len ("DEFAULT_LOCATION", 16, _("DEFAULT_LOCATION")) == NULL ) {
             /* TRANSLATOR: Change this to the default location name (1st parameter) in the */
             /* gweather/Locations file */
             /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
             /* so this should be translated as "New York-JFK Arpt" */
-            name = g_strdup ( _("DEFAULT_LOCATION") );
+            untrans_name = g_strdup ( _("DEFAULT_LOCATION") );
+            trans_name = g_strdup ( _( _("DEFAULT_LOCATION") ) );
 		} else {
-    	    name = g_strdup ("Pittsburgh");
+    	    untrans_name = g_strdup ("Pittsburgh");
         }
-    } else if ( g_strstr_len ("DEFAULT_LOCATION", 16, name) ) {
-        g_free ( name );
-		name = g_strdup ("Pittsburgh");
+    } else if ( g_strstr_len ("DEFAULT_LOCATION", 16, untrans_name) ) {
+        g_free ( untrans_name );
+		untrans_name = g_strdup ("Pittsburgh");
+        trans_name = g_strdup ( _("Pittsburgh") );
+    } else {
+        /* Use the stored value */
+        trans_name = panel_applet_gconf_get_string (applet, "location4", NULL);
     }
 
     code = panel_applet_gconf_get_string(applet, "location1", NULL);
@@ -153,8 +177,9 @@ WeatherLocation *weather_location_config_read (PanelApplet *applet)
         radar = g_strdup ("pit");
     }
 
-    location = weather_location_new(name, code, zone, radar);
-    g_free (name);
+    location = weather_location_new(untrans_name, trans_name, code, zone, radar);
+    g_free (untrans_name);
+    g_free (trans_name);
     g_free (code);
     g_free (zone);
     g_free (radar);
@@ -166,22 +191,30 @@ WeatherLocation *weather_location_clone (const WeatherLocation *location)
 {
     WeatherLocation *clone;
 
-    g_return_val_if_fail(location != NULL, NULL);
-    clone = g_new(WeatherLocation, 1);
-    g_memmove(clone, location, sizeof(WeatherLocation));
+    clone = weather_location_new (location->untrans_name, location->trans_name, 
+                                                   location->code, location->zone, location->radar);
     return clone;
 }
 
 void weather_location_free (WeatherLocation *location)
 {
-    g_free(location);
+    if (location) {
+        g_free (location->untrans_name);
+        g_free (location->trans_name);
+        g_free (location->code);
+        g_free (location->zone);
+        g_free (location->radar);
+    
+        g_free (location);
+    }
 }
 
 gboolean weather_location_equal (const WeatherLocation *location1, const WeatherLocation *location2)
 {
     if (!location1->code || !location2->code)
         return 1;
-    return (strcmp(location1->code, location2->code) == 0);
+    return ( (strcmp(location1->code, location2->code) == 0) &&
+             (strcmp(location1->untrans_name, location2->untrans_name) == 0) );    
 }
 
 static const gchar *wind_direction_str[] = {
@@ -1072,7 +1105,7 @@ static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
 
     g_return_val_if_fail(iwin != NULL, NULL);
     g_return_val_if_fail(loc != NULL, NULL);
-    if (loc->name[0] == '-')
+    if (loc->untrans_name[0] == '-')
         return NULL;
 	
     iwin_init_re();
@@ -2026,7 +2059,7 @@ const gchar *weather_info_get_location (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     g_return_val_if_fail(info->location != NULL, NULL);
-    return info->location->name;
+    return info->location->trans_name;
 }
 
 const gchar *weather_info_get_update (WeatherInfo *info)
