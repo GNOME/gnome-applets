@@ -251,7 +251,7 @@ static gint updateOutput(gpointer data)
 	gnome_vfs_uri_unref(source_uri);
 	gnome_vfs_uri_unref(dest_uri);
 	
-	return FALSE;
+	return TRUE;
 }
 
 
@@ -821,6 +821,7 @@ static gint updateOutput(gpointer data)
 		timeout=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
 		if (timeout < 1)
 			return;
+
 		stockdata->props.timeout = timeout;
 		panel_applet_gconf_set_int (applet, "timeout", 
 					    stockdata->props.timeout, NULL);
