@@ -134,9 +134,6 @@ static void props_ok (GtkWidget *wid, int page, gpointer *data)
     set_colors(clk.area);
     update_clock (NULL);
     return;
-    wid = NULL;
-    page = 0;
-    data = NULL;
 }
 
 
@@ -153,7 +150,6 @@ static void props_cancel (GtkWidget *widget, GtkWidget **win)
 
     *win = NULL;
     return;
-    widget = NULL;
 }
 
 
@@ -207,7 +203,6 @@ static void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
     gtk_widget_set_sensitive (GTK_WIDGET(sec), props_tmp.secneedle);
     gnome_property_box_changed (GNOME_PROPERTY_BOX(props_window));
     return;
-    widget = NULL;
 }
 
 static void
@@ -286,7 +281,7 @@ static void cb_properties (AppletWidget *applet, gpointer data)
 
     label = gtk_label_new (_("Clock color"));
     gtk_table_attach_defaults (GTK_TABLE(table), label, 0, 1, 0, 1);
-gtk_widget_set_sensitive (label, FALSE);
+    gtk_widget_set_sensitive (label, FALSE);
     gtk_widget_show (label);
     colorpicker = gnome_color_picker_new();
     sscanf( clk.props.bg, "#%02x%02x%02x", &r, &g, &b);
@@ -295,7 +290,7 @@ gtk_widget_set_sensitive (label, FALSE);
     gtk_table_attach_defaults (GTK_TABLE(table), colorpicker, 1, 2, 0, 1);
     gtk_signal_connect (GTK_OBJECT(colorpicker), "color_set",
 			GTK_SIGNAL_FUNC(bg_color_changed), NULL);
-gtk_widget_set_sensitive (colorpicker, FALSE);
+    gtk_widget_set_sensitive (colorpicker, FALSE);
     gtk_widget_show (colorpicker);
 
     label = gtk_label_new (_("Hour needle color"));
@@ -351,8 +346,6 @@ gtk_widget_set_sensitive (colorpicker, FALSE);
     gtk_widget_show (props_window);
 
     return;
-    applet = NULL;
-    data = NULL;
 }
 
 
@@ -392,8 +385,6 @@ static void cb_about (AppletWidget *applet, gpointer data)
     gtk_widget_show (about);
 
     return;
-    applet = NULL;
-    data = NULL;
 }
 
 
@@ -402,8 +393,6 @@ static gint save_session (GtkWidget *widget, char *privcfgpath,
 {
     properties_save (privcfgpath);
     return FALSE;
-    widget = NULL;
-    globcfgpath = NULL;
 }
 
 static void
@@ -439,8 +428,6 @@ change_pixel_size(GtkWidget *w, int size, gpointer data)
 
     update_clock (NULL);
     return;
-    w = NULL;
-    data = NULL;
 }
 
 
@@ -534,7 +521,6 @@ static void applet_back_change (GtkWidget *widget, PanelBackType type,
     else
 	applet_set_default_back (w);
     return;
-    widget = NULL;
 }
 
 
@@ -656,7 +642,6 @@ static gint update_clock (gpointer data)
     gdk_gc_destroy(gc);
 
     return TRUE;
-    data = NULL;
 }
 
 /*****************
