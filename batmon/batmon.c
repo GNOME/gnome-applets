@@ -59,6 +59,8 @@ enum {
 	NOEXIST_MASK = 128
 };
 
+/* forward declaration to make gcc happy */
+static void init_module(void);
 
 static gint
 batmon_timeout_callback (gpointer *data)
