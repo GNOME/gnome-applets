@@ -142,7 +142,6 @@ static void
 mute_cb (GtkWidget *widget, gpointer   data)
 {
 	static gint old_vol=-1;
-	gint nvol;
 	MixerData *p = data;
 	MixerWidget *mx;
 
