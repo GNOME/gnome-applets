@@ -1,0 +1,22 @@
+<oaf_info>
+	<oaf_server iid="OAFIID:GNOME_PanelMenuApplet_Factory" type="shlib" location="libpanel-menu.so">
+		<oaf_attribute name="repo_ids" type="stringv">
+			<item value="IDL:Bonobo/GenericFactory:1.0"/>
+			<item value="IDL:Bonobo/Unknown:1.0"/>
+		</oaf_attribute>
+		<oaf_attribute name="name" type="string" value="Panel Menu Applet Factory"/>
+		<oaf_attribute name="description" type="string" value="Factory for Panel Menu Applet"/>
+	</oaf_server>
+
+	<oaf_server iid="OAFIID:GNOME_PanelMenuApplet" type="factory" location="OAFIID:GNOME_PanelMenuApplet_Factory">
+		<oaf_attribute name="repo_ids" type="stringv">
+			<item value="IDL:GNOME/PanelAppletShell:1.0"/>
+			<item value="IDL:Bonobo/Control:1.0"/>
+			<item value="IDL:Bonobo/Unknown:1.0"/>
+		</oaf_attribute>
+		<oaf_attribute name="name" type="string" value="Panel Menu applet"/>
+		<oaf_attribute name="description" type="string" value="Panel applet for displaying menus"/>
+		<oaf_attribute name="panel:category" type="string" value="Utility"/>
+		<oaf_attribute name="panel:icon" type="string" value="panel-menu-icon.png"/>
+	</oaf_server>
+</oaf_info>
