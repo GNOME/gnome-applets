@@ -481,7 +481,7 @@ show_error_dialog (gchar *mesg,...)
 	va_start (ap,mesg);
 	tmp = g_strdup_vprintf (mesg,ap);
 	dialog = gtk_message_dialog_new (NULL,
-			0, GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+			0, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
@@ -499,7 +499,7 @@ show_warning_dialog (gchar *mesg,...)
 	va_start (ap,mesg);
 	tmp = g_strdup_vprintf (mesg,ap);
 	dialog = gtk_message_dialog_new (NULL,
-			0, GTK_MESSAGE_WARNING, GTK_BUTTONS_CLOSE,
+			0, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
@@ -518,7 +518,7 @@ show_message_dialog (char *mesg,...)
 	va_start (ap,mesg);
 	tmp = g_strdup_vprintf (mesg,ap);
 	dialog = gtk_message_dialog_new (NULL,
-			0, GTK_MESSAGE_INFO, GTK_BUTTONS_CLOSE,
+			0, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
 			mesg, NULL);
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
