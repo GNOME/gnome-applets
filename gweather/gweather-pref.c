@@ -319,12 +319,11 @@ static void gweather_pref_create (void)
   GtkWidget *apply_button;
   GtkWidget *cancel_button;
   GtkWidget *help_button;
-  GtkWidget *pref_loc_scroll;
-  GtkObject *pref_loc_adj;
+  GtkWidget *scrolled_window;
 
   g_return_if_fail(pref == NULL);
 
-  pref = gnome_dialog_new (_("Gweather Properties"), NULL);
+  pref = gnome_dialog_new (_("GNOME Weather Properties"), NULL);
   gtk_widget_set_usize (pref, -2, 280);
   gtk_window_set_policy (GTK_WINDOW (pref), FALSE, FALSE, FALSE);
   gnome_dialog_close_hides(GNOME_DIALOG(pref), TRUE);
@@ -497,20 +496,20 @@ static void gweather_pref_create (void)
   gtk_widget_show (pref_loc_hbox);
   gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
-  pref_loc_adj = gtk_adjustment_new(0, 0, 0, 0, 0, 0);
+  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+				  GTK_POLICY_AUTOMATIC,
+				  GTK_POLICY_AUTOMATIC);
 
   pref_loc_ctree = gtk_ctree_new (1, 0);
+  gtk_container_add (GTK_CONTAINER (scrolled_window), pref_loc_ctree);
   gtk_widget_show (pref_loc_ctree);
-  gtk_box_pack_start (GTK_BOX (pref_loc_hbox), pref_loc_ctree, TRUE, TRUE, 0);
+  gtk_widget_show (scrolled_window);
+  gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
   gtk_clist_set_column_width (GTK_CLIST (pref_loc_ctree), 0, 80);
   gtk_clist_set_selection_mode (GTK_CLIST (pref_loc_ctree), GTK_SELECTION_BROWSE);
   gtk_clist_column_titles_hide (GTK_CLIST (pref_loc_ctree));
-  gtk_clist_set_vadjustment (GTK_CLIST (pref_loc_ctree), GTK_ADJUSTMENT (pref_loc_adj));
   load_locations();
-
-  pref_loc_scroll = gtk_vscrollbar_new (GTK_ADJUSTMENT (pref_loc_adj));
-  gtk_widget_show (pref_loc_scroll);
-  gtk_box_pack_start (GTK_BOX (pref_loc_hbox), pref_loc_scroll, FALSE, FALSE, 0);
 
   pref_loc_note_lbl = gtk_label_new (_("Location"));
   gtk_widget_show (pref_loc_note_lbl);

@@ -85,12 +85,11 @@ void gweather_dialog_create (void)
   GtkWidget *radar_vbox;
   GtkWidget *radar_link_btn;
   GtkWidget *radar_link_alignment;
-  GtkWidget *forecast_scroll;
-  GtkObject *forecast_adj;
   GtkWidget *forecast_hbox;
   GtkWidget *weather_action_area;
   GtkWidget *close_button;
   GtkWidget *ebox;
+  GtkWidget *scrolled_window;
 
   g_return_if_fail(gweather_dialog == NULL);
 
@@ -300,15 +299,16 @@ void gweather_dialog_create (void)
   forecast_hbox = gtk_hbox_new(FALSE, 0);
   gtk_widget_show (forecast_hbox);
 
-  forecast_adj = gtk_adjustment_new(0, 0, 0, 0, 0, 0);
+  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+				  GTK_POLICY_AUTOMATIC,
+				  GTK_POLICY_AUTOMATIC);
 
-  forecast_text = gtk_text_new (NULL, GTK_ADJUSTMENT (forecast_adj));
+  forecast_text = gtk_text_new (NULL, NULL);
+  gtk_container_add (GTK_CONTAINER (scrolled_window), forecast_text);
   gtk_widget_show (forecast_text);
-  gtk_box_pack_start (GTK_BOX (forecast_hbox), forecast_text, TRUE, TRUE, 0);
-
-  forecast_scroll = gtk_vscrollbar_new (GTK_ADJUSTMENT (forecast_adj));
-  gtk_widget_show (forecast_scroll);
-  gtk_box_pack_start (GTK_BOX (forecast_hbox), forecast_scroll, FALSE, FALSE, 0);
+  gtk_widget_show (scrolled_window);
+  gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
 
   gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
 
