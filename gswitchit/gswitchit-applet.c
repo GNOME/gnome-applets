@@ -26,6 +26,7 @@
 
 #include "gswitchit-applet.h"
 
+#include "libgswitchit/gswitchit_util.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 
 #if 1
@@ -174,7 +175,6 @@ GSwitchItAppletFilterXEvt( GdkXEvent * xev,
                            GdkEvent * event, GSwitchItApplet * sia )
 {
   XEvent *xevent = ( XEvent * ) xev;
-  GdkWindow *win = event->any.window;
   Display *display = xevent->xany.display;
   int ignoredByXkl = XklFilterEvents( xevent );
 // WM_PROTOCOLS are handled in a special way - 
@@ -200,10 +200,10 @@ GSwitchItAppletFilterXEvt( GdkXEvent * xev,
       GdkWindow *w;
       w1 = gtk_widget_get_ancestor( sia->applet, GTK_TYPE_WINDOW );
       if( w1 == NULL )
-        return;
+        break;
       w = w1->window;
       if( w == NULL || GDK_WINDOW_XID( w ) != rne->window )
-        return;
+        break;
       XklSetTransparent( GDK_WINDOW_XID( w ), TRUE );
     }
       break;
@@ -217,7 +217,6 @@ GSwitchItAppletWmProtocolsFilter( GdkXEvent *
                                   xev, GdkEvent * event, gpointer data )
 {
   XEvent *xevent = ( XEvent * ) xev;
-  GdkWindow *win = event->any.window;
   Display *display = xevent->xany.display;
   if( ( Atom ) xevent->xclient.data.l[0] ==
       XInternAtom( display, "_NET_WM_PING", FALSE ) )
@@ -267,7 +266,7 @@ static GtkWidget *GSwitchItAppletPrepareDrawing( GSwitchItApplet * sia,
   if( sia->appletConfig.showFlags )
   {
     if( image == NULL )
-      return;
+      return NULL;
     orient = panel_applet_get_orient( PANEL_APPLET( sia->applet ) );
     psize = panel_applet_get_size( PANEL_APPLET( sia->applet ) ) - 4;
     XklDebug( 150, "Resizing the applet for size %d\n", psize );

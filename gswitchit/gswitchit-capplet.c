@@ -26,6 +26,8 @@
 #include <libxklavier/xklavier.h>
 #include <libxklavier/xklavier_config.h>
 
+#include <libgswitchit/gswitchit_util.h>
+
 #include "gswitchit-applet.h"
 
 #define GLADE_DATA_PROP "gladeData"
@@ -129,7 +131,7 @@ static void CappletResponse( GtkDialog * capplet, gint id, GSwitchItApplet * sia
 void GSwitchItAppletPropsCreate( GSwitchItApplet * sia )
 {
   GladeXML *data;
-  GtkWidget *widget, *capplet;
+  GtkWidget *capplet;
 
   GtkWidget *groupPerApp;
   GtkWidget *handleIndicators;

@@ -60,17 +60,12 @@ extern void CappletFillActivePluginList( GSwitchItPluginsCapplet * gswic )
   }
 }
 
-static void CappletClose( GtkWidget * btn, GSwitchItPluginsCapplet * si )
-{
-  bonobo_main_quit(  );
-}
-
 static char *CappletGetSelectedActivePluginPath( GSwitchItPluginsCapplet *
                                                  gswic )
 {
   GtkTreeView *pluginsList =
     GTK_TREE_VIEW( CappletGetGladeWidget( gswic, "activePlugins" ) );
-  CappletGetSelectedPluginPath( pluginsList, gswic );
+  return CappletGetSelectedPluginPath( pluginsList, gswic );
 }
 
 char *CappletGetSelectedPluginPath( GtkTreeView * pluginsList,
@@ -84,7 +79,6 @@ char *CappletGetSelectedPluginPath( GtkTreeView * pluginsList,
 
   if( gtk_tree_selection_get_selected( selection, NULL, &selectedIter ) )
   {
-    GtkTreePath *treePath = gtk_tree_model_get_path( model, &selectedIter );
     char *fullPath = NULL;
 
     gtk_tree_model_get( model, &selectedIter,

@@ -88,9 +88,6 @@ static void CappletAvailablePluginsSelectionChanged( GtkTreeSelection *
 {
   GtkWidget *availablePluginsList =
     GTK_WIDGET( gtk_tree_selection_get_tree_view( selection ) );
-  GtkTreeModel *availablePluginsModel =
-    gtk_tree_view_get_model( GTK_TREE_VIEW( availablePluginsList ) );
-  GtkTreeIter selectedIter;
   gboolean isAnythingSelected = FALSE;
   GtkWidget *lblDescription =
     GTK_WIDGET( g_object_get_data( G_OBJECT( gswic->capplet ),
