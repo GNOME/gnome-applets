@@ -1,5 +1,5 @@
 figs = \
-	figures/loadavg-applet-default.png		\	
+	figures/loadavg-applet-default.png		\
 	figures/loadavg-applet-properties.png		\
 	figures/loadavg-applet-greyed.png		\
 	figures/loadavg-applet.png
