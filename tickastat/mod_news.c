@@ -1267,7 +1267,7 @@ static GtkWidget *mod_news_config_show(gpointer data, AppData *ad)
 	gtk_entry_set_editable(GTK_ENTRY(nd->C_label), FALSE);
 	gtk_box_pack_start(GTK_BOX(hbox), nd->C_label, TRUE, TRUE, 0);
 	gtk_widget_show(nd->C_label);
-
+	/* This is the number of lines shown in the display. */
 	label = gtk_label_new(_("Line (s):"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
@@ -1281,7 +1281,7 @@ static GtkWidget *mod_news_config_show(gpointer data, AppData *ad)
 			GTK_SIGNAL_FUNC(line_delay_cb), nd);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(nd->C_line_spin), GTK_UPDATE_ALWAYS);
 	gtk_widget_show(nd->C_line_spin);
-
+	/* The update interval in minutes. */
 	label = gtk_label_new(_("Update (m):"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
