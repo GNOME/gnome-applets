@@ -1,5 +1,4 @@
-#SUBDIRS = themes docs
-SUBDIRS = themes
+SUBDIRS = themes docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
