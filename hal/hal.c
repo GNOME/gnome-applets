@@ -91,9 +91,8 @@ update_fortune_dialog(Hal *fish)
 		fish->fortune_less = gtk_label_new( hal_quote_new() );
 		fish->fortune_label = gtk_label_new("");
 
-		gnome_less_set_fixed_font(GNOME_LESS(fish->fortune_less),TRUE);
 		
-		{
+	/*	{
 			int i;
 			char buf[82];
 			GtkWidget *text = GTK_WIDGET(GNOME_LESS(fish->fortune_less)->text);
@@ -103,7 +102,7 @@ update_fortune_dialog(Hal *fish)
 			gtk_widget_set_usize(text,
 					     gdk_string_width(font,buf)+30,
 					     gdk_string_height(font,buf)*24+30);
-		}
+		}*/
 
 		gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(fish->fortune_dialog)->vbox), 
 				   fish->fortune_label,
