@@ -2720,6 +2720,7 @@ create_mail_widgets (MailCheck *mc)
 
 	/* The label */
 	mc->label = gtk_label_new (NULL);
+	gtk_label_set_justify (GTK_LABEL (mc->label), GTK_JUSTIFY_CENTER);
 	gtk_label_set_line_wrap (GTK_LABEL (mc->label), TRUE);
 	gtk_widget_show (mc->label);
 	gtk_widget_ref (mc->label);
