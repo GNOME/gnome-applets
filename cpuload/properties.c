@@ -56,7 +56,7 @@ void color_changed_cb( GnomeColorSelector *widget, gchar **color )
 	tmp = malloc(24);
         if( !tmp )
         {
-        	g_warning( "Can't allocate memory for color\n" );
+	        g_warning(_("Can't allocate memory for color\n"));
                 return;
         }
         gnome_color_selector_get_color_int(
@@ -112,23 +112,23 @@ GtkWidget *create_frame(void)
 	gnome_color_selector_set_color_int( scolor_gcs, sr, sg, sb, 255 );
                   
 
-	label = gtk_label_new("User Load");
+	label = gtk_label_new(_("User Load"));
 	gtk_box_pack_start_defaults( GTK_BOX(color), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color), 
 		gnome_color_selector_get_button(ucolor_gcs) );
 
-	label = gtk_label_new("System Load");
+	label = gtk_label_new(_("System Load"));
 	gtk_box_pack_start_defaults( GTK_BOX(color), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color), 
 		gnome_color_selector_get_button(scolor_gcs) );
 
-	label = gtk_label_new("Applet Height");
+	label = gtk_label_new(_("Applet Height"));
 	height_a = gtk_adjustment_new( temp_props.height, 0.5, 128, 1, 8, 8 );
 	height  = gtk_spin_button_new( GTK_ADJUSTMENT(height_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
 	gtk_box_pack_start_defaults( GTK_BOX(size), height );
 	
-	label = gtk_label_new("Width");
+	label = gtk_label_new(_("Width"));
 	width_a = gtk_adjustment_new( temp_props.width, 0.5, 128, 1, 8, 8 );
 	width  = gtk_spin_button_new( GTK_ADJUSTMENT(width_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
@@ -143,7 +143,7 @@ GtkWidget *create_frame(void)
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
         	GTK_UPDATE_ALWAYS );
 
-	label = gtk_label_new("Update Frequency");
+	label = gtk_label_new(_("Update Frequency"));
 	g_print( "%d %d\n", temp_props.speed, temp_props.speed/1000 );
 	freq_a = gtk_adjustment_new( (float)temp_props.speed/1000, 0.1, 60, 0.1, 5, 5 );
 	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 0.1, 1 );
@@ -194,10 +194,10 @@ void properties(AppletWidget *applet, gpointer data)
         propbox = gnome_property_box_new();
 	gtk_window_set_title( 
 		GTK_WINDOW(&GNOME_PROPERTY_BOX(propbox)->dialog.window), 
-		"CPULoad Settings" );
+		_("CPULoad Settings"));
 	
 	frame = create_frame();
-	label = gtk_label_new("General");
+	label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
 	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propbox),
 		frame, label );
