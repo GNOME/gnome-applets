@@ -397,6 +397,7 @@ charpicker_applet_fill (PanelApplet *applet)
 {
   charpick_data *curr_data;
   GtkWidget *event_box = NULL;
+  gchar *default_charlist_utf8;
   
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
    
@@ -406,10 +407,16 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data->event_box = event_box;
   curr_data->applet = GTK_WIDGET (applet);
   
-  curr_data->default_charlist = panel_applet_gconf_get_string (applet, 
-  							       "default_list", NULL);
-  if (!curr_data->default_charlist)
+  default_charlist_utf8 = panel_applet_gconf_get_string (applet, 
+  							 "default_list", NULL);
+  if (!default_charlist_utf8)
     curr_data->default_charlist = g_strdup (def_list);
+  else {
+    curr_data->default_charlist = g_convert (default_charlist_utf8, -1, 
+    					     "ISO-8859-1", "UTF-8", 
+  					      NULL, NULL, NULL);
+    g_free (default_charlist_utf8);
+  }
     
   curr_data->charlist = curr_data->default_charlist;
 
