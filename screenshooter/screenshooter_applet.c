@@ -1445,24 +1445,24 @@ grab_shot (user_preferences * opt, gboolean root)
     delay_buf[0] = '\0';
 
   if (opt->decoration)
-    snprintf (dec_buf, sizeof (dec_buf), "-frame");
+    g_snprintf (dec_buf, sizeof (dec_buf), "-frame");
   else
     dec_buf[0] = '\0';
 
   if (opt->monochrome)
-    snprintf (mono_buf, sizeof (mono_buf), "-monochrome -dither");
+    g_snprintf (mono_buf, sizeof (mono_buf), "-monochrome -dither");
   else
     mono_buf[0] = '\0';
 
   if (opt->negate)
-    snprintf (neg_buf, sizeof (neg_buf), "-negate");
+    g_snprintf (neg_buf, sizeof (neg_buf), "-negate");
   else
     neg_buf[0] = '\0';
 
   if (opt->beep)
-    snprintf (beep_buf, sizeof (beep_buf), " ");
-  else
     beep_buf[0] = '\0';
+  else
+    g_snprintf (beep_buf, sizeof (beep_buf), "-silent");
 
 /* Now perfom word expansion on the directory (in case user has used an
  * alias such as ~, as I do) */
