@@ -358,7 +358,7 @@ void parse_headlines(gpointer data)
 	stat(gnome_util_home_file("slashapp/headlines"), &s);
 	if (s.st_size == 0) {
 		g_warning(_("Unable to parse document\n"));
-		add_info_line(ad, "Can't parse XML. Net connection down?",
+		add_info_line(ad, _("Can't parse XML. Net connection down?"),
 			      NULL, 0, FALSE, FALSE, delay);
 		return;
 	}
@@ -367,7 +367,7 @@ void parse_headlines(gpointer data)
 
 	if (doc==NULL) {
 		g_warning(_("Unable to parse document\n"));
-		add_info_line(ad, "Can't parse XML. Net connection down?", 
+		add_info_line(ad, _("Can't parse XML. Net connection down?"), 
 				NULL, 0, FALSE, FALSE, delay);
 		return;
 	}
