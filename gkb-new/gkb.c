@@ -401,27 +401,27 @@ loadprop (int i)
   actdata = g_new0 (GkbKeymap, 1);
 
 
-  buf = g_strdup_printf (_("name_%d"),i);
+  buf = g_strdup_printf ("name_%d",i);
   actdata->name = gkb_load_pref (buf, (i?"US 105 key keyboard":"Gnome Keyboard default"));
   g_free (buf);
 
-  buf = g_strdup_printf (_("label_%d"), i);
+  buf = g_strdup_printf ("label_%d", i);
   actdata->label = gkb_load_pref (buf, (i?"us":"gkb"));
   g_free (buf);
   
-  buf = g_strdup_printf (_("country_%d"), i);
+  buf = g_strdup_printf ("country_%d", i);
   actdata->country = gkb_load_pref (buf, (i?"United States":"Gnome Keyboard"));
   g_free (buf);
   
-  buf = g_strdup_printf (_("lang_%d"), i);
+  buf = g_strdup_printf ("lang_%d", i);
   actdata->lang = gkb_load_pref (buf, (i?"English":"International"));
   g_free (buf);
   
-  buf = g_strdup_printf (("flag_%d"), i);
+  buf = g_strdup_printf ("flag_%d", i);
   actdata->flag = gkb_load_pref (buf, (i?"us.png":"gkb.png"));
   g_free (buf);
   
-  buf = g_strdup_printf (_("command_%d"), i);
+  buf = g_strdup_printf ("command_%d", i);
   default_cmd = g_strdup_printf ("xmodmap %s/.gkb_default.xmm", g_get_home_dir ()); 
   actdata->command = gkb_load_pref (buf, (i?"gkb_xmmap us":default_cmd));
   g_free (default_cmd);
