@@ -472,18 +472,14 @@ build_table(charpick_data *p_curr_data)
                         (GtkSignalFunc) button_press_hack, p_curr_data->applet);
   }
   
-  switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
-     	case PANEL_APPLET_ORIENT_DOWN:
-     	case PANEL_APPLET_ORIENT_UP:
-        	size_ratio = p_curr_data->panel_size / max_height;
-        	button_box = gtk_vbox_new (TRUE, 0);
-        	break;
-     	case PANEL_APPLET_ORIENT_LEFT:
-     	case PANEL_APPLET_ORIENT_RIGHT:
-     		size_ratio = p_curr_data->panel_size / max_width;
-     		button_box = gtk_hbox_new (TRUE, 0);
-		break;
+  if (p_curr_data->panel_vertical) {
+    size_ratio = p_curr_data->panel_size / max_width;
+    button_box = gtk_hbox_new (TRUE, 0);
+  } else {
+    size_ratio = p_curr_data->panel_size / max_height;
+    button_box = gtk_vbox_new (TRUE, 0);
   }
+
   gtk_box_pack_start (GTK_BOX (box), button_box, TRUE, TRUE, 0);
   
   size_ratio = MAX (size_ratio, 1);
@@ -495,10 +491,10 @@ build_table(charpick_data *p_curr_data)
   }
   
   for (i = 0; i <len; i++) {  	
-  	float delta = len/(float)size_ratio;
+  	int delta = len/size_ratio;
   	int index;
   	
-  	index = (int) floor (i / delta);  	
+  	index = i / delta;
 	index = CLAMP (index, 0, size_ratio-1);	
   	gtk_box_pack_start (GTK_BOX (row_box[index]), toggle_button[i], TRUE, TRUE, 0);
   }
@@ -511,10 +507,18 @@ build_table(charpick_data *p_curr_data)
   
 }
 
-static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
+static void applet_size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
 {
   charpick_data *curr_data = data;
-  curr_data->panel_size = size;
+  if (curr_data->panel_vertical) {
+    if (curr_data->panel_size == allocation->width)
+      return;
+    curr_data->panel_size = allocation->width;
+  } else {
+    if (curr_data->panel_size == allocation->height)
+      return;
+    curr_data->panel_size = allocation->height;
+  }
 
   build_table (curr_data);
   return;
@@ -803,8 +807,8 @@ charpicker_applet_fill (PanelApplet *applet)
   g_signal_connect (G_OBJECT (applet), "change_orient",
 		    G_CALLBACK (applet_change_orient), curr_data);
 
-  g_signal_connect (G_OBJECT (applet), "change_size",
-		    G_CALLBACK (applet_change_pixel_size), curr_data);
+  g_signal_connect (G_OBJECT (applet), "size_allocate",
+		    G_CALLBACK (applet_size_allocate), curr_data);
 		    
   g_signal_connect (G_OBJECT (applet), "destroy",
   		    G_CALLBACK (applet_destroy), curr_data);
