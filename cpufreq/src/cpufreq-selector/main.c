@@ -65,6 +65,7 @@ main (gint argc, gchar **argv)
 	if (! g_option_context_parse (context, &argc, &argv, &error)) {
 		if (error) {
 			g_printf ("%s\n", error->message);
+			g_error_free (error);
 		}
 	}
 	
