@@ -49,7 +49,6 @@ static const StickyNotesStockIcon stickynotes_icons[] =
 static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gchar *iid, gpointer data) 
 {
 	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
-		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
 		if (!stickynotes)
 			stickynotes_applet_init();
 
@@ -198,7 +197,10 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
 
-	/* Create the applet */
+	/* Expand the applet for Fitts' law complience. */
+	panel_applet_set_flags(panel_applet, PANEL_APPLET_EXPAND_MINOR);
+
+	/* Add the applet icon */
 	gtk_container_add(GTK_CONTAINER(panel_applet), applet->w_image);
 	stickynotes_applet_update_icon(applet);
 
@@ -289,14 +291,24 @@ void stickynotes_applet_update_menus()
 {
 	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
 	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
+	gboolean inconsistent = FALSE;
 
 	gint i;
+
+	for (i = 0; i < g_list_length(stickynotes->notes) && !inconsistent; i++) {
+		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+
+		if (note->locked != locked)
+			inconsistent = TRUE;
+	}
+
 	for (i = 0; i < g_list_length(stickynotes->applets); i++) {
 		StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
 		BonoboUIComponent *popup = panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet));
 		
 		bonobo_ui_component_set_prop(popup, "/commands/show", "state", visible ? "1" : "0", NULL);
 		bonobo_ui_component_set_prop(popup, "/commands/lock", "state", locked ? "1" : "0", NULL);
+		bonobo_ui_component_set_prop(popup, "/commands/lock", "inconsistent", inconsistent ? "1" : "0", NULL);
 	}
 }
 

@@ -316,6 +316,8 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 	}
 
 	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(glade_xml_get_widget(note->menu, "popup_toggle_lock")), locked);
+	
+	stickynotes_applet_update_menus();
 }
 
 /* Show/Hide a sticky note */
