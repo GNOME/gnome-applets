@@ -1,4 +1,4 @@
-/* fROM Wmload.c, v0.9.2, licensed under the GPL. */
+/* From wmload.c, v0.9.2, licensed under the GPL. */
 #include <sys/types.h>
 #include <math.h>
 #include <fcntl.h>
@@ -95,8 +95,6 @@ GetMemory (int Maximum, int data [4])
     shared  = rint (Maximum * (float)mem.shared / mem.total);
     buffer  = rint (Maximum * (float)mem.buffer / mem.total);
     free    = rint (Maximum * (float)mem.free / mem.total);
-	
-    printf("user: %d, shared: %d, buffer: %d, free %d\n", user, shared, buffer, free);
 
     data [0] = user;
     data [1] = shared;
