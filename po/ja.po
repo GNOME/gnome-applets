@@ -14,14 +14,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2003-08-23 17:58+0900\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-19 21:37+0900\n"
+"PO-Revision-Date: 2003-10-19 21:35+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -49,6 +49,7 @@ msgstr "情報(_A)..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
@@ -83,14 +84,14 @@ msgstr "キーボード操作性の設定値を表示します"
 msgid "Utility"
 msgstr "ユーティリティ"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:844
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: stickynotes/stickynotes_applet_callbacks.c:191
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr ""
 "Yukihiro Nakai <Nakai@abricot.co.jp>\n"
@@ -136,7 +137,7 @@ msgstr "キーボード操作性に関連する機能の現在のステータス
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:857
 msgid "Battery Charge Monitor"
 msgstr "バッテリ充電モニタ"
 
@@ -158,7 +159,7 @@ msgstr "ラップトップのバッテリの残量を監視します"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "設定(_P)..."
 
@@ -255,22 +256,22 @@ msgstr "このアプレットは正しく動作しません (あるいは全く�
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:888
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:890
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:892
 msgid "Critical"
 msgstr "要充電"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:894
 msgid "Charging"
 msgstr "充電中"
 
@@ -286,7 +287,7 @@ msgstr "充電が完了しました！"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1052
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -298,7 +299,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1060
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -309,15 +310,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1073
 msgid "System is running on battery power"
 msgstr "システムはバッテリで動いています"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:990
+#: battstat/battstat_applet.c:1079
 msgid "System is running on AC power"
 msgstr "システムは AC 電源で動いています"
 
@@ -327,14 +328,14 @@ msgstr "無し"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:964
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "システムはバッテリで動いています。充電率: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:971
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "システムは AC 電源で動いています。充電率: %d%% (%s)"
@@ -369,7 +370,7 @@ msgid "Battery: Not present"
 msgstr "バッテリ: 残量なし"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:727
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -382,7 +383,7 @@ msgstr ""
 "確認して下さい。"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:736
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -392,7 +393,7 @@ msgstr ""
 "\"apm -e 1\" (FreeBSD) を試してみて、\n"
 "そのヘルプを参照して下さい。\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:792
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -402,7 +403,7 @@ msgstr ""
 "エラーの修正を試みて下さい"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:795
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -412,7 +413,7 @@ msgstr ""
 "サスペンドコマンドの起動時にエラー発生。コマンドが \"%d\" を返しました\n"
 "このエラーの修正を試みて下さい"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:803
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -422,15 +423,15 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:834
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:859
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:860
 msgid "This utility shows the status of your laptop battery."
 msgstr "このユーティリティはラップトップのバッテリの状態を表示します"
 
@@ -472,7 +473,7 @@ msgstr "<b>サスペンド</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>警告</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "外観"
 
@@ -482,7 +483,7 @@ msgstr "バッテリ充電モニタ設定"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "全般"
 
@@ -541,7 +542,9 @@ msgstr "黄(_Y):"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "ヘルプを表示する際にエラーが発生しました: %s"
@@ -558,8 +561,8 @@ msgstr "充電が完了しました"
 msgid "Battery power low"
 msgstr "バッテリの残量少"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:598
+#: cdplayer/cdplayer.c:1046
 msgid "CD Player"
 msgstr "CD プレーヤー"
 
@@ -584,23 +587,23 @@ msgstr "オーディオ CD を演奏するパネル・アプレットです"
 msgid "_Open CD Player"
 msgstr "CD プレーヤーを開く(_O)"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1036
 msgid "Stop"
 msgstr "停止"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1038
 msgid "Play / Pause"
 msgstr "再生 / 停止"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1040
 msgid "Eject"
 msgstr "取り出し"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1042
 msgid "Previous Track"
 msgstr "前のトラック"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1044
 msgid "Next Track"
 msgstr "次のトラック"
 
@@ -608,37 +611,37 @@ msgstr "次のトラック"
 msgid "You do not have permission to use the CD player."
 msgstr "CD プレイヤーを使用する権限がありません。"
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:362 mixer/mixer.c:1026 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "'%s' を実行した際にエラーが発生しました: %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:413
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s は CD プレイヤーではないようです"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:479
 msgid "CD Player Preferences"
 msgstr "CD プレーヤー設定"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:500
 msgid "Device _path:"
 msgstr "デバイスのパス(_P):"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Device Path"
 msgstr "デバイスのパス"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Set the device path here"
 msgstr "ここにデバイスのパスを指定します"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:512
 msgid "Use _Default"
 msgstr "デフォルトを使用する(_D)"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:599
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -646,39 +649,39 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 移植)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:601 cdplayer/cdplayer.c:1047
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD プレーヤーアプレットはパネル用のシンプルな CD プレーヤーです"
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:876 cdplayer/cdplayer.c:887
 msgid "Elapsed time"
 msgstr "経過時間"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:879 cdplayer/cdplayer.c:889
 msgid "Track number"
 msgstr "トラック番号"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:945
 msgid "Audio device is busy, or being used by another application"
 msgstr "オーディオ・デバイスが使用中か、あるいは他のアプリが使用しています"
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1037
 msgid "Click this button to Stop playing the CD"
 msgstr "CD の再生を止めるにはこのボタンをクリックして下さい"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1039
 msgid "Click this button to Play or Pause the CD"
 msgstr "CD を再生したり一時停止したりするにはこのボタンをクリックして下さい"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1041
 msgid "Click this button to eject the CD"
 msgstr "CD をイジェクトするにはこのボタンをクリックして下さい"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1043
 msgid "Click this button to Play the previous track in the CD"
 msgstr "CD の前のトラックを再生するにはこのボタンをクリックして下さい"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1045
 msgid "Click this button to Play the next track in the CD"
 msgstr "CD の次のトラックを再生するにはこのボタンをクリックして下さい"
 
@@ -692,8 +695,8 @@ msgid ""
 "applet"
 msgstr "このアプレットから CD を演奏する際に使用するフルパスのデバイス名です"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "キャラクタ・パレット"
 
@@ -705,37 +708,37 @@ msgstr "キャラクタピッカー・アプレットのファクトリ"
 msgid "Insert characters"
 msgstr "いろいろな文字を挿入します"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "パレットの追加"
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
 msgstr "パレットの追加..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr "利用可能なパレットを表示します"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "特殊な文字を挿入します"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -915,7 +918,7 @@ msgid "_Update interval:"
 msgstr "更新間隔(_U):"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
 msgid "seconds"
 msgstr "秒"
 
@@ -2369,8 +2372,8 @@ msgstr "ラベル"
 msgid "Flag and Label"
 msgstr "国旗とラベル"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "表示"
 
@@ -2459,7 +2462,7 @@ msgstr "株価をリアルタイムに表示します"
 msgid "Gtik Applet Factory"
 msgstr "Gtik アプレットのファクトリ"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "株価表示器"
 
@@ -2476,7 +2479,7 @@ msgstr "株価データを取得できませんでした。"
 msgid "Updating..."
 msgstr "更新中..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2488,126 +2491,126 @@ msgstr ""
 "全に無保証です* GNOME ストック・ティッカーを投資判断に使わないようにして下さ"
 "い。これは、単に情報を表示する目的のためのものです。"
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr "現在の株(_S):"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr "新規のシンボル(_N):"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "追加(_A)"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "削除(_R)"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "株価表示器の設定"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "シンボル"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "動作"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "更新"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr "株価の更新周期(_Q):"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "分"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr "スクロール"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr "スクロールの速さ(_S):"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "低速"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "中速"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "高速"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "スクロール・ボタンを表示する(_E)"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "左から右へスクロールする(_L)"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "シンボルと株価のみ表示する(_Y)"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "幅(_W):"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "ピクセル"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
 msgstr "フォントと色"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
 msgstr "デフォルトのテーマ・フォントと色を使う(_D)"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "フォント(_F):"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr "株価の上昇(_R):"
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr "株価の低下(_L):"
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr "株価の不動(_U):"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "背景色(_B):"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "前へスキップします"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "後へスキップします"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2615,11 +2618,11 @@ msgstr ""
 "株価表示器\n"
 "株価をリアルタイムに表示します"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(変化"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "なし"
 
@@ -4234,6 +4237,11 @@ msgstr ""
 "注意: この gmix は、異なるバージョンの soundcard.h で\n"
 "コンパイルされています。\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "ミキサのデバイス %s を開けませんでした\n"
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "ボリューム・コントローラ"
@@ -4481,114 +4489,114 @@ msgstr "ロック・ファイルの所有者を確認するかどうか"
 msgid "Modem Lights Preferences"
 msgstr "モデム・モニタの設定"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:444
 msgid "U_pdate every:"
 msgstr "更新間隔(_P):"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:469
 msgid "Sho_w connect time and throughput"
 msgstr "接続時間とスループットを表示する(_W)"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:479
 msgid "B_link connection status when connecting"
 msgstr "接続したら接続ステータスを点滅させる(_L)"
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:489
 msgid "Connections"
 msgstr "接続"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:498
 msgid "Co_nnection command:"
 msgstr "接続時のコマンド(_N):"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:522
 msgid "_Disconnection command:"
 msgstr "切断時のコマンド(_D):"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:542
 msgid "Con_firm connection"
 msgstr "接続を確認する(_F)"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:561
 msgid "Receive Data"
 msgstr "データの受信"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:567
 msgid "_Foreground:"
 msgstr "前景色(_F):"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:572
 msgid "Send Data"
 msgstr "データの送信"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:577
 msgid "Foregroun_d:"
 msgstr "前景色(_D):"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:579
 msgid "Backg_round:"
 msgstr "背景色(_R):"
 
-#: modemlights/properties.c:583
+#: modemlights/properties.c:582
 msgid "Connection Status"
 msgstr "接続ステータス"
 
-#: modemlights/properties.c:591
+#: modemlights/properties.c:590
 msgid "Co_nnected:"
 msgstr "接続済み(_N):"
 
-#: modemlights/properties.c:593
+#: modemlights/properties.c:592
 msgid "Disconnec_ted:"
 msgstr "接続断(_T):"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:595
 msgid "C_onnecting:"
 msgstr "接続中(_O):"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:598
 msgid "Text"
 msgstr "文字"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:606
 msgid "For_eground:"
 msgstr "前景色(_E):"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:608
 msgid "Bac_kground:"
 msgstr "背景色(_K):"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:610
 msgid "O_utline"
 msgstr "アウトライン(_U)"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:613 multiload/properties.c:528
 msgid "Colors"
 msgstr "色"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:622
 msgid "Modem Options"
 msgstr "モデムのオプション"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:631
 msgid "_Device:"
 msgstr "デバイス(_D):"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:655
 msgid "_Lock file:"
 msgstr "ロック・ファイル(_L):"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:674
 msgid "_Verify owner of lock file"
 msgstr "ロック・ファイルの所有者を確認する(_V)"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:685
 msgid "U_se ISDN"
 msgstr "ISDN を使用する(_S)"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:702
 msgid "Advanced"
 msgstr "拡張"
 
@@ -4891,8 +4899,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "デスクトップ上に付箋紙の生成、表示、管理します"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "付箋紙"
 
@@ -5252,7 +5260,7 @@ msgstr "デフォルトのシステム色を適用するかどうか"
 msgid "Whether to use the default system font"
 msgstr "デフォルトのシステム・フォントを適用するかどうか"
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5267,11 +5275,11 @@ msgstr[1] ""
 "%s:\n"
 "%d 個の付箋紙"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "GNOME デスクトップ環境向けの付箋紙です"
 
@@ -5280,15 +5288,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "無線ネットワーク接続の品質を監視します"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "ワイヤレス接続モニタ"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "ワイヤレス・デバイスがありません"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5296,11 +5304,11 @@ msgstr ""
 "お使いのシステムには正しく設定されたワイヤレス・デバイスがないようです。\n"
 "このメッセージが正しくないとお考えなら設定を確認して下さい。"
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "このユーティリティはラップトップのワイヤレス接続の状態を表示します。"
 
