@@ -10,7 +10,8 @@ dummy.cc:
 
 bin_PROGRAMS = diskusage_applet
 
-diskusage_applet_SOURCES = diskusage.c diskusage_read.c ../cpumemusage/procbar.c
+diskusage_applet_SOURCES = diskusage.c diskusage_read.c ../cpumemusage/procbar.c \
+	fsusage.c fsusage.h mountlist.c mountlist.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
