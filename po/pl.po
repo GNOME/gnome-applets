@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-06-09 10:15+0200\n"
-"PO-Revision-Date: 2002-06-09 10:15+0200\n"
+"POT-Creation-Date: 2002-07-15 12:44+0200\n"
+"PO-Revision-Date: 2002-07-15 12:54+0200\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,7 @@ msgstr "Narzędzia"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Informacje o..."
 
@@ -72,6 +73,7 @@ msgstr "Pomo_c"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_Preferences..."
 msgstr "P_referencje..."
 
@@ -269,7 +271,7 @@ msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 #: gkb-new/gkb.c:1 gtik/gtik.c:1 gweather/gweather-about.c:1
 #: mini-commander/src/about.c:1 mixer/mixer.c:1
 #: modemlights/modemlights.c:1 multiload/main.c:1
-#: panel-menu/panel-menu.c:1
+#: panel-menu/panel-menu.c:1 wireless/wireless-applet.c:1
 msgid "translator_credits"
 msgstr "GNOME PL Team <translators@gnome.pl>"
 
@@ -286,8 +288,9 @@ msgstr "Narzędzie wyświetlające stan baterii laptopa"
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:1
-msgid "Apperance"
+#. appearance frame
+#: battstat/battstat_applet.glade.h:1 mini-commander/src/preferences.c:1
+msgid "Appearance"
 msgstr "Wygląd"
 
 #: battstat/battstat_applet.glade.h:1
@@ -424,6 +427,11 @@ msgstr "Poprzednia ścieżka"
 #: cdplayer/cdplayer.c:1 cdplayer/cdplayer.c:1
 msgid "Next Track"
 msgstr "Następna ścieżka"
+
+#: cdplayer/cdplayer.c:1
+#, c-format
+msgid "There was an error executing gnome-cd : %s"
+msgstr "Przy uruchamianiu programu gnome-cd wystąpił błąd : %s"
 
 #: cdplayer/cdplayer.c:1
 msgid "CD Player Preferences"
@@ -577,6 +585,11 @@ msgstr "_Przeglądaj..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:1
 msgid "_Eject"
 msgstr "_Wysuń"
+
+#: drivemount/drivemount.c:1
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr "Przy uruchamianiu \"%s\" wystąpił błąd: %s"
 
 #: drivemount/drivemount.c:1
 msgid "(C) 1999-2001 The GNOME Hackers\n"
@@ -761,7 +774,7 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Ten aplet przełącza mapy klawiatur, wykorzystując do teggo setxkbmap lub "
+"Ten aplet przełącza mapy klawiatur, wykorzystując do tego setxkbmap lub "
 "xmodmap.\n"
 "Jeśli chcesz dodać nowy układ klawiatury i flagę, prześlij je na adres "
 "autora (shooby@gnome.hu, w języku angielskim).\n"
@@ -1242,8 +1255,8 @@ msgstr "Generator wskaźnika giełdowego"
 msgid "Stock Ticker"
 msgstr "Wskaźnik giełdowy"
 
-#: gtik/GNOME_GtikApplet.xml.h:1
-msgid "_Refresh"
+#: gtik/GNOME_GtikApplet.xml.h:1 gweather/GNOME_GWeatherApplet.xml.h:1
+msgid "_Update"
 msgstr "_Odśwież"
 
 #: gtik/gtik.c:1
@@ -1356,10 +1369,6 @@ msgstr "Zmiana "
 #: gweather/GNOME_GWeatherApplet.xml.h:1 gweather/gweather-dialog.c:1
 msgid "_Forecast"
 msgstr "_Prognoza"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:1
-msgid "_Update"
-msgstr "_Odśwież"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
 msgid "Factory for creating the weather applet."
@@ -1819,7 +1828,7 @@ msgstr "Płytki śnieg"
 
 #: gweather/weather.c:1
 msgid "Patches of snow"
-msgstr "Płaty sniegu"
+msgstr "Płaty śniegu"
 
 #: gweather/weather.c:1
 msgid "Partial snowfall"
@@ -1831,7 +1840,7 @@ msgstr "Sztorm śnieżny"
 
 #: gweather/weather.c:1
 msgid "Blowing snowfall"
-msgstr "Silny sztorm snieżny"
+msgstr "Silny sztorm śnieżny"
 
 #: gweather/weather.c:1
 msgid "Snow showers"
@@ -1941,7 +1950,7 @@ msgstr "Zbliżające się kryształki lodu"
 
 #: gweather/weather.c:1
 msgid "Freezing ice crystals"
-msgstr "Utrzymujące się krzyształki lodu"
+msgstr "Utrzymujące się kryształki lodu"
 
 #. ICE_PELLETS
 #: gweather/weather.c:1
@@ -2309,7 +2318,7 @@ msgstr "Słaby popiół wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Patches of volcanic ash"
-msgstr "Łagodny popiół wulaniczny"
+msgstr "Łagodny popiół wulkaniczny"
 
 #: gweather/weather.c:1
 msgid "Partial volcanic ash"
@@ -2747,7 +2756,7 @@ msgstr "Przelotne tumany kurzu"
 
 #: gweather/weather.c:1 gweather/weather.c:1 gweather/weather.c:1
 msgid "Failed to get METAR data.\n"
-msgstr "Nieudana próva pobrania danych METAR.\n"
+msgstr "Nieudana próba pobrania danych METAR.\n"
 
 #: gweather/weather.c:1 gweather/weather.c:1 gweather/weather.c:1
 msgid "WeatherInfo missing location"
@@ -2847,7 +2856,7 @@ msgstr "zakończono"
 msgid "not found"
 msgstr "nie znaleziony"
 
-#: mini-commander/src/cmd_completion.c:1 mini-commander/src/exec.c:1
+#: mini-commander/src/cmd_completion.c:1
 msgid "no /bin/sh"
 msgstr "brak /bin/sh"
 
@@ -2856,7 +2865,7 @@ msgid "end of history list"
 msgstr "koniec listy historii"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:1 mini-commander/src/exec.c:1
+#: mini-commander/src/command_line.c:1
 msgid "starting..."
 msgstr "uruchamianie..."
 
@@ -2876,14 +2885,6 @@ msgstr "Wiersz poleceń"
 #: mini-commander/src/command_line.c:1
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Wpisz tutaj polecenie powłoki, które chcesz wykonać"
-
-#: mini-commander/src/exec.c:1
-msgid "fork error"
-msgstr "błąd funkcji fork"
-
-#: mini-commander/src/exec.c:1
-msgid "child exited"
-msgstr "proces potomny został zakończony"
 
 #: mini-commander/src/message.c:1
 msgid "%H:%M - %d. %b"
@@ -2952,11 +2953,6 @@ msgstr "Wyświetlanie czasu"
 #: mini-commander/src/preferences.c:1
 msgid "Show date"
 msgstr "Wyświetlanie daty"
-
-#. appearance frame
-#: mini-commander/src/preferences.c:1
-msgid "Appearance"
-msgstr "Wygląd"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:1
@@ -3086,6 +3082,11 @@ msgid "Use Up/Down arrow keys to change volume"
 msgstr "Aby zmienić głośność, użyj klawiszy strzałek w górę/dół"
 
 #: mixer/mixer.c:1
+#, c-format
+msgid "There was an error executing %s : %s"
+msgstr "Przy uruchamianiu \"%s\" wystąpił błąd: %s"
+
+#: mixer/mixer.c:1
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
@@ -3168,7 +3169,7 @@ msgstr "Liczba _odświeżeń na sekundę"
 #. extra info checkbox
 #: modemlights/properties.c:1
 msgid "Sho_w connect time and throughput"
-msgstr "_Wyświetlanie czasu i szybkośći połączenia"
+msgstr "_Wyświetlanie czasu i szybkości połączenia"
 
 #: modemlights/properties.c:1
 msgid "Receive data"
@@ -3294,6 +3295,11 @@ msgstr ""
 "\n"
 "Monitor obciążenia systemu wyświetlający wykresy dla procesora, pamięci, "
 "przestrzeni wymiany oraz sieci."
+
+#: multiload/main.c:1
+#, c-format
+msgid "There was an error executing 'gnome-system-monitor' : %s"
+msgstr "Przy uruchamianiu programu gnome-system-monitor wystąpił błąd : %s"
 
 #: multiload/main.c:1
 msgid "Processor"
@@ -3634,3 +3640,59 @@ msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr ""
 "Aplet paska menu pozwala na wyświetlanie na panelu dowolnie dopasowanych "
 "pasków menu."
+
+#: wireless/wireless-applet.c:1
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+"Nie można odnaleźć obrazów potrzebnych do działania monitora złącza "
+"bezprzewodowego.\n"
+"Upewnij się, że program został poprawnie zainstalowany."
+
+#: wireless/wireless-applet.c:1
+msgid "No Wireless Devices"
+msgstr "Brak urządzeń bezprzewodowych"
+
+#: wireless/wireless-applet.c:1
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"Nie można odnaleźć w systemie żadnych skonfigurowanych urządzeń "
+"bezprzewodowych.\n"
+"Jeśli uważasz, że konfiguracja jest niepoprawna, zweryfikuj ją przed "
+"uruchomieniem programu."
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.h:1
+#: wireless/wireless-applet.c:1
+msgid "Wireless Link Monitor"
+msgstr "Monitor złącza bezprzewodowego"
+
+#: wireless/wireless-applet.c:1
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 2001, 2002 Free Software Foundation"
+
+#: wireless/wireless-applet.c:1
+msgid "This utility shows the status of a wireless link."
+msgstr "Narzędzie wyświetlające stan złącza bezprzewodowego."
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr "Monitorowane urządzenie:"
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Show _dialog boxes"
+msgstr "Wyświetlanie okien _dialogowych"
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Show signal strength in _percentage"
+msgstr "Wyświetlanie siły sygnału w p_rocentach"
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Wireless Link Monitor Preferences"
+msgstr "Ustawienia monitora złącza bezprzewodowego"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Monitor jakości bezprzewodowego złącza sieciowego"
