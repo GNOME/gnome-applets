@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-29 03:09-0500\n"
-"PO-Revision-Date: 2004-12-29 16:42-0400\n"
+"POT-Creation-Date: 2005-01-03 18:35-0500\n"
+"PO-Revision-Date: 2005-01-03 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "See the status of keyboard accessibility features"
 #: gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
-#: trashapplet/src/trashapplet.c:681 wireless/wireless-applet.c:574
+#: trashapplet/src/trashapplet.c:681 wireless/wireless-applet.c:575
 msgid "translator_credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -483,9 +483,9 @@ msgstr "_Warn when battery charge is low"
 #: battstat/properties.c:262 drivemount/drivemount.c:156
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:259
-#: stickynotes/stickynotes_applet_callbacks.c:423
-#: trashapplet/src/trashapplet.c:648 wireless/wireless-applet.c:544
-#: wireless/wireless-applet.c:628
+#: stickynotes/stickynotes_applet_callbacks.c:434
+#: trashapplet/src/trashapplet.c:648 wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:629
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
@@ -877,7 +877,7 @@ msgstr "Text"
 msgid "Graphic and Text"
 msgstr "Graphic and Text"
 
-#: cpufreq/src/cpufreq-monitor-cpuinfo.c:183
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:182
 msgid "Frequency Scaling Unsupported"
 msgstr "Frequency Scaling Unsupported"
 
@@ -899,10 +899,10 @@ msgstr ""
 "scaling."
 
 #: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
-#: gweather/weather.c:277 gweather/weather.c:1081 gweather/weather.c:1095
-#: gweather/weather.c:1107 gweather/weather.c:1122 gweather/weather.c:1138
-#: gweather/weather.c:1169 gweather/weather.c:1181 gweather/weather.c:1200
-#: gweather/weather.c:1228 gweather/weather.c:1241 gweather/weather.c:1261
+#: gweather/weather.c:277 gweather/weather.c:1096 gweather/weather.c:1110
+#: gweather/weather.c:1122 gweather/weather.c:1137 gweather/weather.c:1153
+#: gweather/weather.c:1184 gweather/weather.c:1196 gweather/weather.c:1215
+#: gweather/weather.c:1243 gweather/weather.c:1256 gweather/weather.c:1276
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -1775,7 +1775,7 @@ msgstr "The list of active plugins"
 msgid "_Available plugins:"
 msgstr "_Available plugins:"
 
-#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
+#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:5
 msgid "<b>Behavior</b>"
 msgstr "<b>Behaviour</b>"
 
@@ -1953,7 +1953,7 @@ msgid "Displa_y only symbols and price"
 msgstr "Displa_y only symbols and price"
 
 #: gtik/gtik.c:1529 mini-commander/src/mini-commander.glade.h:20
-#: stickynotes/stickynotes.glade.h:51
+#: stickynotes/stickynotes.glade.h:50
 msgid "_Width:"
 msgstr "_Width:"
 
@@ -1970,7 +1970,7 @@ msgstr "Font and Colours"
 msgid "Use _default theme font and colors"
 msgstr "Use _default theme font and colours"
 
-#: gtik/gtik.c:1573 stickynotes/stickynotes.glade.h:45
+#: gtik/gtik.c:1573
 msgid "_Font:"
 msgstr "_Font:"
 
@@ -3017,147 +3017,150 @@ msgstr "Dust whirls"
 msgid "Dust whirls in the vicinity"
 msgstr "Dust whirls in the vicinity"
 
-#: gweather/weather.c:995
+#. TRANSLATOR: this is a format string for strftime
+#. *             see `man 3 strftime` for more details
+#.
+#: gweather/weather.c:999
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b / %H:%M"
 
-#: gweather/weather.c:999
+#: gweather/weather.c:1014
 msgid "Unknown observation time"
 msgstr "Unknown observation time"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1031 gweather/weather.c:1034
+#: gweather/weather.c:1046 gweather/weather.c:1049
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1039 gweather/weather.c:1042
+#: gweather/weather.c:1054 gweather/weather.c:1057
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1050 gweather/weather.c:1053
+#: gweather/weather.c:1065 gweather/weather.c:1068
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1058 gweather/weather.c:1061
+#: gweather/weather.c:1073 gweather/weather.c:1076
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:1070
+#: gweather/weather.c:1085
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:1073
+#: gweather/weather.c:1088
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:1125
+#: gweather/weather.c:1140
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:1150
+#: gweather/weather.c:1165
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f knots"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:1154
+#: gweather/weather.c:1169
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:1158
+#: gweather/weather.c:1173
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:1162
+#: gweather/weather.c:1177
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:1183
+#: gweather/weather.c:1198
 msgid "Calm"
 msgstr "Calm"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:1187
+#: gweather/weather.c:1202
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:1205
+#: gweather/weather.c:1220
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:1209
+#: gweather/weather.c:1224
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:1213
+#: gweather/weather.c:1228
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:1217
+#: gweather/weather.c:1232
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:1221
+#: gweather/weather.c:1236
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:1246
+#: gweather/weather.c:1261
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:1250
+#: gweather/weather.c:1265
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:1254
+#: gweather/weather.c:1269
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:1282 gweather/weather.c:1302
+#: gweather/weather.c:1297 gweather/weather.c:1317
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: gweather/weather.c:1335
+#: gweather/weather.c:1350
 msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
@@ -3263,7 +3266,6 @@ msgid "Macro pattern list"
 msgstr "Macro pattern list"
 
 #: mini-commander/src/mini-commander.glade.h:2
-#: stickynotes/stickynotes.glade.h:2
 msgid "*"
 msgstr "*"
 
@@ -4227,7 +4229,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Create, view, and manage sticky notes on the desktop"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: stickynotes/stickynotes_applet.c:332 stickynotes/stickynotes_applet.c:450
+#: stickynotes/stickynotes_applet.c:346 stickynotes/stickynotes_applet.c:501
 #: stickynotes/stickynotes_applet_callbacks.c:292
 msgid "Sticky Notes"
 msgstr "Sticky Notes"
@@ -4245,7 +4247,7 @@ msgid "_Lock Notes"
 msgstr "_Lock Notes"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:46
 msgid "_New Note"
 msgstr "_New Note"
 
@@ -4253,19 +4255,31 @@ msgstr "_New Note"
 msgid "_Show Notes"
 msgstr "_Show Notes"
 
-#: stickynotes/stickynotes.c:342
+#: stickynotes/stickynotes.c:366
 msgid "This note is locked."
 msgstr "This note is locked."
 
-#: stickynotes/stickynotes.c:347
+#: stickynotes/stickynotes.c:371
 msgid "This note is unlocked."
 msgstr "This note is unlocked."
 
+#: stickynotes/stickynotes.glade.h:2
+msgid "    C_olor:"
+msgstr "    C_olour:"
+
+#: stickynotes/stickynotes.glade.h:3
+msgid "    _Color:"
+msgstr "    _Colour:"
+
 #: stickynotes/stickynotes.glade.h:4
+msgid "    _Font:"
+msgstr "    _Font:"
+
+#: stickynotes/stickynotes.glade.h:6
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>Default Note Properties</b>"
 
-#: stickynotes/stickynotes.glade.h:5
+#: stickynotes/stickynotes.glade.h:7
 msgid ""
 "<b>Delete all sticky notes?</b>\n"
 "\n"
@@ -4275,7 +4289,7 @@ msgstr ""
 "\n"
 "This cannot be undone."
 
-#: stickynotes/stickynotes.glade.h:8
+#: stickynotes/stickynotes.glade.h:10
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
@@ -4285,133 +4299,125 @@ msgstr ""
 "\n"
 "This cannot be undone."
 
-#: stickynotes/stickynotes.glade.h:11
+#: stickynotes/stickynotes.glade.h:13
 msgid "<b>Properties</b>"
 msgstr "<b>Properties</b>"
 
-#: stickynotes/stickynotes.glade.h:12
-msgid "C_olor:"
-msgstr "C_olour:"
-
-#: stickynotes/stickynotes.glade.h:13
+#: stickynotes/stickynotes.glade.h:14
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Choose a base colour to use for all sticky notes"
 
-#: stickynotes/stickynotes.glade.h:14
+#: stickynotes/stickynotes.glade.h:15
 msgid "Choose a color for the note"
 msgstr "Choose a colour for the note"
 
-#: stickynotes/stickynotes.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font for the note"
 msgstr "Choose a font for the note"
 
-#: stickynotes/stickynotes.glade.h:16
+#: stickynotes/stickynotes.glade.h:17
 msgid "Choose a font to use for all sticky notes"
 msgstr "Choose a font to use for all sticky notes"
 
-#: stickynotes/stickynotes.glade.h:17
+#: stickynotes/stickynotes.glade.h:18
 msgid "Choose if notes are visible on all workspaces"
 msgstr "Choose if notes are visible on all workspaces"
 
-#: stickynotes/stickynotes.glade.h:18
+#: stickynotes/stickynotes.glade.h:19
 msgid "Choose if the default style is forced on all notes"
 msgstr "Choose if the default style is forced on all notes"
 
-#: stickynotes/stickynotes.glade.h:19
+#: stickynotes/stickynotes.glade.h:20
 msgid "Clic_k:"
 msgstr "Clic_k:"
 
-#: stickynotes/stickynotes.glade.h:20
+#: stickynotes/stickynotes.glade.h:21
 msgid "Close note"
 msgstr "Close note"
 
-#: stickynotes/stickynotes.glade.h:21
+#: stickynotes/stickynotes.glade.h:22
 msgid "Create a new note"
 msgstr "Create a new note"
 
-#: stickynotes/stickynotes.glade.h:22
+#: stickynotes/stickynotes.glade.h:23
 msgid "Force _default color and font on notes"
 msgstr "Force _default colour and font on notes"
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:24
 msgid "H_eight:"
 msgstr "H_eight:"
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:25
 msgid "Lock/Unlock all notes"
 msgstr "Lock/Unlock all notes"
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:26
 msgid "Lock/Unlock note"
 msgstr "Lock/Unlock note"
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a color for the sticky note"
 msgstr "Pick a colour for the sticky note"
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note color"
 msgstr "Pick a default sticky note colour"
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:29
 msgid "Pick a default sticky note font"
 msgstr "Pick a default sticky note font"
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:30
 msgid "Pick a font for the sticky note"
 msgstr "Pick a font for the sticky note"
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:31
 msgid "Resize note"
 msgstr "Resize note"
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:32
 msgid "Show/Hide all notes"
 msgstr "Show/Hide all notes"
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:33
 msgid "Specify a title for the note"
 msgstr "Specify a title for the note"
 
-#: stickynotes/stickynotes.glade.h:33
+#: stickynotes/stickynotes.glade.h:34
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Specify the default height (in pixels) of new notes"
 
-#: stickynotes/stickynotes.glade.h:34
+#: stickynotes/stickynotes.glade.h:35
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Specify the default width (in pixels) of new notes"
 
-#: stickynotes/stickynotes.glade.h:35
+#: stickynotes/stickynotes.glade.h:36
 msgid "Sticky Note"
 msgstr "Sticky Note"
 
-#: stickynotes/stickynotes.glade.h:36
+#: stickynotes/stickynotes.glade.h:37
 msgid "Sticky Note Properties"
 msgstr "Sticky Note Properties"
 
-#: stickynotes/stickynotes.glade.h:37
+#: stickynotes/stickynotes.glade.h:38
 msgid "Sticky Notes Preferences"
 msgstr "Sticky Notes Preferences"
 
-#: stickynotes/stickynotes.glade.h:38
+#: stickynotes/stickynotes.glade.h:39
 msgid "Use co_lor from the system theme"
 msgstr "Use co_lour from the system theme"
 
-#: stickynotes/stickynotes.glade.h:39
+#: stickynotes/stickynotes.glade.h:40
 msgid "Use default co_lor"
 msgstr "Use default co_lour"
 
-#: stickynotes/stickynotes.glade.h:40
+#: stickynotes/stickynotes.glade.h:41
 msgid "Use default fo_nt"
 msgstr "Use default fo_nt"
 
-#: stickynotes/stickynotes.glade.h:41
+#: stickynotes/stickynotes.glade.h:42
 msgid "Use fo_nt from the system theme"
 msgstr "Use fo_nt from the system theme"
-
-#: stickynotes/stickynotes.glade.h:42
-msgid "_Color:"
-msgstr "_Colour:"
 
 #: stickynotes/stickynotes.glade.h:43
 msgid "_Delete All"
@@ -4421,19 +4427,19 @@ msgstr "_Delete All"
 msgid "_Delete Note..."
 msgstr "_Delete Note..."
 
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:45
 msgid "_Lock Note"
 msgstr "_Lock Note"
 
-#: stickynotes/stickynotes.glade.h:48
+#: stickynotes/stickynotes.glade.h:47
 msgid "_Properties"
 msgstr "_Properties"
 
-#: stickynotes/stickynotes.glade.h:49
+#: stickynotes/stickynotes.glade.h:48
 msgid "_Put notes on all workspaces"
 msgstr "_Put notes on all workspaces"
 
-#: stickynotes/stickynotes.glade.h:50
+#: stickynotes/stickynotes.glade.h:49
 msgid "_Title:"
 msgstr "_Title:"
 
@@ -4589,7 +4595,7 @@ msgstr "Whether to use the default system colour"
 msgid "Whether to use the default system font"
 msgstr "Whether to use the default system font"
 
-#: stickynotes/stickynotes_applet.c:450
+#: stickynotes/stickynotes_applet.c:501
 #, c-format
 msgid ""
 "%s\n"
@@ -4707,7 +4713,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor the quality of a wireless network link"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
+#: wireless/wireless-applet.c:591 wireless/wireless-applet.c:843
 msgid "Wireless Link Monitor"
 msgstr "Wireless Link Monitor"
 
@@ -4716,7 +4722,7 @@ msgstr "Wireless Link Monitor"
 msgid "Link Strength: %2.0d%%"
 msgstr "Link Strength: %2.0d%%"
 
-#: wireless/wireless-applet.c:369
+#: wireless/wireless-applet.c:370
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4724,19 +4730,19 @@ msgstr ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 
-#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
+#: wireless/wireless-applet.c:505 wireless/wireless-applet.c:832
 msgid "No Wireless Devices"
 msgstr "No Wireless Devices"
 
-#: wireless/wireless-applet.c:592
+#: wireless/wireless-applet.c:593
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:593
+#: wireless/wireless-applet.c:594
 msgid "This utility shows the status of a wireless link."
 msgstr "This utility shows the status of a wireless link."
 
-#: wireless/wireless-applet.c:843
+#: wireless/wireless-applet.c:844
 msgid "This utility shows the status of a wireless link"
 msgstr "This utility shows the status of a wireless link"
 
