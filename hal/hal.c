@@ -45,6 +45,7 @@ load_properties(Hal *fish)
 
 	pix = gdk_imlib_load_image( 
 			gnome_unconditional_pixmap_file("hal/hal.png"));
+	g_assert(pix != NULL);
 	gdk_imlib_render (pix, pix->rgb_width, pix->rgb_height);
 	fish->w = pix->rgb_width;
 	fish->h = pix->rgb_height;
