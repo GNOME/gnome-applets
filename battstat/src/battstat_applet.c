@@ -786,40 +786,6 @@ about_cb (AppletWidget *widget, gpointer data)
    gtk_widget_show (about_box);
 }
 
-gint
-applet_save_session(GtkWidget *w,
-		      char *privcfgpath,
-		      char *globcfgpath,
-		      gpointer data)
-{
-   ProgressData *battstat = data;
-   
-   if (DEBUG) g_print("applet_save_session()\n");
-   
-   gnome_config_push_prefix (privcfgpath);
-   gnome_config_set_int ("batt/red_val", battstat->red_val);
-   gnome_config_set_int ("batt/orange_val", battstat->orange_val);
-   gnome_config_set_int ("batt/yellow_val", battstat->yellow_val);
-   gnome_config_set_string ("batt/fontname", battstat->fontname);
-   gnome_config_set_bool ("batt/lowbattnotification", battstat->lowbattnotification);
-   gnome_config_set_bool ("batt/fullbattnot", battstat->fullbattnot);
-   gnome_config_set_bool ("batt/beep", battstat->beep);
-   gnome_config_set_bool ("batt/draintop", battstat->draintop);
-   gnome_config_set_bool ("batt/horizont", battstat->horizont);
-   gnome_config_set_bool ("batt/showstatus", battstat->showstatus);
-   gnome_config_set_bool ("batt/showbattery", battstat->showbattery);
-   gnome_config_set_bool ("batt/showpercent", battstat->showpercent);
-   gnome_config_set_string ("batt/suspendcommand", battstat->suspend_cmd);
-   gnome_config_set_bool ("batt/usedock", battstat->usedock);
-   gnome_config_set_bool ("batt/own_font", battstat->own_font);
-   gnome_config_pop_prefix ();
-   
-   gnome_config_sync();
-   gnome_config_drop_all ();
-   
-   return FALSE;
-}
-
 void
 change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 {
@@ -1236,6 +1202,40 @@ void
    battstat->colors_changed=FALSE;
 }
 #endif
+
+gint
+applet_save_session(GtkWidget *w,
+		      char *privcfgpath,
+		      char *globcfgpath,
+		      gpointer data)
+{
+   ProgressData *battstat = data;
+   
+   if (DEBUG) g_print("applet_save_session()\n");
+   
+   gnome_config_push_prefix (privcfgpath);
+   gnome_config_set_int ("batt/red_val", battstat->red_val);
+   gnome_config_set_int ("batt/orange_val", battstat->orange_val);
+   gnome_config_set_int ("batt/yellow_val", battstat->yellow_val);
+   gnome_config_set_string ("batt/fontname", battstat->fontname);
+   gnome_config_set_bool ("batt/lowbattnotification", battstat->lowbattnotification);
+   gnome_config_set_bool ("batt/fullbattnot", battstat->fullbattnot);
+   gnome_config_set_bool ("batt/beep", battstat->beep);
+   gnome_config_set_bool ("batt/draintop", battstat->draintop);
+   gnome_config_set_bool ("batt/horizont", battstat->horizont);
+   gnome_config_set_bool ("batt/showstatus", battstat->showstatus);
+   gnome_config_set_bool ("batt/showbattery", battstat->showbattery);
+   gnome_config_set_bool ("batt/showpercent", battstat->showpercent);
+   gnome_config_set_string ("batt/suspendcommand", battstat->suspend_cmd);
+   gnome_config_set_bool ("batt/usedock", battstat->usedock);
+   gnome_config_set_bool ("batt/own_font", battstat->own_font);
+   gnome_config_pop_prefix ();
+   
+   gnome_config_sync();
+   gnome_config_drop_all ();
+   
+   return FALSE;
+}
 
 static gint
 load_preferences(gpointer data)

@@ -1,4 +1,4 @@
-# Makefile.in generated automatically by automake 1.4-p4 from Makefile.am
+# Makefile.in generated automatically by automake 1.4 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
@@ -73,6 +73,8 @@ CC = @CC@
 CPP = @CPP@
 DATADIRNAME = @DATADIRNAME@
 DLLTOOL = @DLLTOOL@
+ECHO = @ECHO@
+EXEEXT = @EXEEXT@
 GENCAT = @GENCAT@
 GLIBC21 = @GLIBC21@
 GMOFILES = @GMOFILES@
@@ -97,6 +99,7 @@ INTLBISON = @INTLBISON@
 INTLDEPS = @INTLDEPS@
 INTLLIBS = @INTLLIBS@
 INTLOBJS = @INTLOBJS@
+INTLTOOL_PERL = @INTLTOOL_PERL@
 INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
 LIBICONV = @LIBICONV@
 LIBTOOL = @LIBTOOL@
@@ -107,6 +110,7 @@ MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
 MSGFMT = @MSGFMT@
 OBJDUMP = @OBJDUMP@
+OBJEXT = @OBJEXT@
 ORBIT_CFLAGS = @ORBIT_CFLAGS@
 ORBIT_CONFIG = @ORBIT_CONFIG@
 ORBIT_IDL = @ORBIT_IDL@
@@ -117,13 +121,22 @@ POSUB = @POSUB@
 RANLIB = @RANLIB@
 SPEC_VERSION = @SPEC_VERSION@
 STATIC = @STATIC@
+STRIP = @STRIP@
 TAR_NAME = @TAR_NAME@
 USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 XML_I18N_EXTRACT = @XML_I18N_EXTRACT@
 XML_I18N_MERGE = @XML_I18N_MERGE@
-XML_I18N_TOOLS_PERL = @XML_I18N_TOOLS_PERL@
+XML_I18N_MERGE_DESKTOP_RULE = @XML_I18N_MERGE_DESKTOP_RULE@
+XML_I18N_MERGE_DIRECTORY_RULE = @XML_I18N_MERGE_DIRECTORY_RULE@
+XML_I18N_MERGE_KEYS_RULE = @XML_I18N_MERGE_KEYS_RULE@
+XML_I18N_MERGE_OAF_RULE = @XML_I18N_MERGE_OAF_RULE@
+XML_I18N_MERGE_PONG_RULE = @XML_I18N_MERGE_PONG_RULE@
+XML_I18N_MERGE_SERVER_RULE = @XML_I18N_MERGE_SERVER_RULE@
+XML_I18N_MERGE_SHEET_RULE = @XML_I18N_MERGE_SHEET_RULE@
+XML_I18N_MERGE_SOUNDLIST_RULE = @XML_I18N_MERGE_SOUNDLIST_RULE@
+XML_I18N_MERGE_XML_RULE = @XML_I18N_MERGE_XML_RULE@
 XML_I18N_UPDATE = @XML_I18N_UPDATE@
 ZVT_LIBS = @ZVT_LIBS@
 cflags_set = @cflags_set@
@@ -144,7 +157,7 @@ bin_PROGRAMS = battstat_applet
 
 battstat_applet_CFLAGS = -DAPPLET 
 
-battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c 
+battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c acpi-linux.c
 
 battstat_applet_LDADD =  			$(GNOME_LIBDIR) 				$(GNOME_APPLETS_LIBS)   	 		${GNOME_DOCKLETS_LIBS}				-lglade						-lglade-gnome
 
@@ -153,6 +166,7 @@ EXTRA_DIST = $(glade_DATA)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
+bin_PROGRAMS =  battstat_applet$(EXEEXT)
 PROGRAMS =  $(bin_PROGRAMS)
 
 
@@ -160,7 +174,8 @@ DEFS = @DEFS@ -I. -I$(srcdir) -I..
 CPPFLAGS = @CPPFLAGS@
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
-battstat_applet_OBJECTS =  properties.o battstat_applet.o
+battstat_applet_OBJECTS =  properties.$(OBJEXT) \
+battstat_applet.$(OBJEXT) acpi-linux.$(OBJEXT)
 battstat_applet_DEPENDENCIES = 
 battstat_applet_LDFLAGS = 
 CFLAGS = @CFLAGS@
@@ -177,13 +192,14 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP_ENV = --best
-DEP_FILES =  .deps/battstat_applet.P .deps/properties.P
+DEP_FILES =  .deps/acpi-linux.P .deps/battstat_applet.P \
+.deps/properties.P
 SOURCES = $(battstat_applet_SOURCES)
 OBJECTS = $(battstat_applet_OBJECTS)
 
 all: all-redirect
 .SUFFIXES:
-.SUFFIXES: .S .c .lo .o .s
+.SUFFIXES: .S .c .lo .o .obj .s
 $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) 
 	cd $(top_srcdir) && $(AUTOMAKE) --gnu src/Makefile
 
@@ -217,6 +233,11 @@ uninstall-binPROGRAMS:
 	  rm -f $(DESTDIR)$(bindir)/`echo $$p|sed 's/$(EXEEXT)$$//'|sed '$(transform)'|sed 's/$$/$(EXEEXT)/'`; \
 	done
 
+# FIXME: We should only use cygpath when building on Windows,
+# and only if it is available.
+.c.obj:
+	$(COMPILE) -c `cygpath -w $<`
+
 .s.o:
 	$(COMPILE) -c $<
 
@@ -225,6 +246,7 @@ uninstall-binPROGRAMS:
 
 mostlyclean-compile:
 	-rm -f *.o core *.core
+	-rm -f *.$(OBJEXT)
 
 clean-compile:
 
@@ -249,8 +271,8 @@ distclean-libtool:
 
 maintainer-clean-libtool:
 
-battstat_applet: $(battstat_applet_OBJECTS) $(battstat_applet_DEPENDENCIES)
-	@rm -f battstat_applet
+battstat_applet$(EXEEXT): $(battstat_applet_OBJECTS) $(battstat_applet_DEPENDENCIES)
+	@rm -f battstat_applet$(EXEEXT)
 	$(LINK) $(battstat_applet_LDFLAGS) $(battstat_applet_OBJECTS) $(battstat_applet_LDADD) $(LIBS)
 
 install-gladeDATA: $(glade_DATA)
