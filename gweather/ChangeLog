@@ -1,3 +1,11 @@
+2004-10-12  Mark McLoughlin  <mark@skynet.ie>
+
+	Fixes crash when opening preferences dialog - bug #153331
+
+	* gweather-pref.c: (load_locations): pass in a copy of the
+	current location since we re-compute the current location
+	when we select it in the treeview.
+
 2004-09-13  Shaun McCance  <shaunm@gnome.org>
 
 	* docs/C/gweather-C.omf:
