@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.*\n"
-"POT-Creation-Date: 2000-12-15 12:18+0300\n"
-"PO-Revision-Date: 2000-12-15 12:21+03:00\n"
+"POT-Creation-Date: 2000-12-21 14:04+0300\n"
+"PO-Revision-Date: 2000-12-21 14:07+03:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "Аналоговые часы наподобие используемых на панели CDE."
 #: another_clock/another_clock.c:726 asclock/asclock.c:615
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
-#: gkb-new/gkb.c:471 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
+#: gkb-new/gkb.c:910 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1465 multiload/cpuload.c:95
@@ -90,7 +90,7 @@ msgstr "Свойства..."
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:595
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
-#: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:494
+#: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:916
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:202 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
@@ -107,7 +107,7 @@ msgstr "Справка"
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:339
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
-#: gkb-new/gkb.c:499 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
+#: gkb-new/gkb.c:921 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1478 multiload/cpuload.c:115
@@ -759,19 +759,95 @@ msgstr "Настройки gEyes"
 msgid "Themes"
 msgstr "Темы"
 
-#: gkb-new/gkb.c:257
-msgid "The keymap switching command returned with error!"
-msgstr "Команда переключения раскладки вернула ошибку!"
+#: gkb-new/gkb.c:440
+#, c-format
+msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
+msgstr ""
 
-#: gkb-new/gkb.c:349
+#: gkb-new/gkb.c:444
+#, c-format
+msgid "keymap_%d/label=us"
+msgstr ""
+
+#: gkb-new/gkb.c:447
+#, c-format
+msgid "keymap_%d/country=United States"
+msgstr ""
+
+#: gkb-new/gkb.c:450
+#, c-format
+msgid "keymap_%d/lang=English"
+msgstr ""
+
+#: gkb-new/gkb.c:453
+#, c-format
+msgid "keymap_%d/flag=us.png"
+msgstr ""
+
+#: gkb-new/gkb.c:456
+#, c-format
+msgid "keymap_%d/command=gkb_xmmap us"
+msgstr ""
+
+#: gkb-new/gkb.c:461
+#, c-format
+msgid "keymap_%d/name=Hungarian 105 keys latin2"
+msgstr ""
+
+#: gkb-new/gkb.c:464
+#, c-format
+msgid "keymap_%d/label=hu"
+msgstr ""
+
+#: gkb-new/gkb.c:467
+#, c-format
+msgid "keymap_%d/country=Hungary"
+msgstr ""
+
+#: gkb-new/gkb.c:470
+#, c-format
+msgid "keymap_%d/lang=Hungarian"
+msgstr ""
+
+#: gkb-new/gkb.c:473
+#, c-format
+msgid "keymap_%d/image=hu.png"
+msgstr ""
+
+#: gkb-new/gkb.c:476
+#, c-format
+msgid "keymap_%d/command=gkb_xmmap hu"
+msgstr ""
+
+#: gkb-new/gkb.c:621 gkb-new/gkb.c:628
+msgid "GKB"
+msgstr ""
+
+#.
+#. if (about)
+#. {
+#. gtk_widget_show (about);
+#. gdk_window_raise (about->window);
+#. return;
+#. }
+#.
+#: gkb-new/gkb.c:660
+msgid "Szabolcs BAN <shooby@gnome.hu>"
+msgstr ""
+
+#: gkb-new/gkb.c:661
+msgid "Chema Celorio <chema@celorio.com>"
+msgstr ""
+
+#: gkb-new/gkb.c:664
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME Переключатель клавиатуры"
 
-#: gkb-new/gkb.c:351
-msgid "(C) 1998-2000 LSC - Linux Support Center"
-msgstr "(C) 1998-2000 LSC - Linux Support Center"
+#: gkb-new/gkb.c:667
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "(C) 1998-2000 Фонд Свободного Программного Обеспечения"
 
-#: gkb-new/gkb.c:353
+#: gkb-new/gkb.c:670
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it to CVS.\n"
@@ -786,49 +862,63 @@ msgstr ""
 "Спасибо Balazs Nagy (Kevin) <julian7@kva.hu> за эту справку и Emese Kovacs "
 "<emese@eik.bme.hu> за поддержку."
 
-#: gkb-new/gkb.c:364
+#: gkb-new/gkb.c:681
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Домашняя страница GKB (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/gkb.c:482
+#: gkb-new/prop.c:163 gkb-new/prop.c:232
 msgid "Normal"
 msgstr "Нормальный"
 
-#: gkb-new/gkb.c:488
-msgid "Small"
-msgstr "Маленький"
+#: gkb-new/prop.c:164 gkb-new/prop.c:234
+msgid "Big"
+msgstr ""
 
-#: gkb-new/prop.c:294
-msgid "Keymap name"
-msgstr "Название раскладки"
+#: gkb-new/prop.c:186
+msgid "Flag"
+msgstr ""
 
-#: gkb-new/prop.c:320
-msgid "Keymap control"
-msgstr "Переключатель раскладки"
+#: gkb-new/prop.c:187
+msgid "Label"
+msgstr ""
 
-#: gkb-new/prop.c:333
-msgid "New keymap"
-msgstr "Новая раскладка"
+#: gkb-new/prop.c:188
+msgid "Flag and Label"
+msgstr ""
 
-#: gkb-new/prop.c:346
-msgid "Delete this keymap"
-msgstr "Удалить эту раскладку"
+#: gkb-new/prop.c:308 modemlights/properties.c:452 slashapp/properties.c:487
+#: tickastat/properties.c:565
+msgid "Display"
+msgstr "Экран"
 
-#: gkb-new/prop.c:371
-msgid "Keymap icon"
-msgstr "Пиктограмма раскладки"
+#. Labels
+#: gkb-new/prop.c:328
+msgid "Appearance "
+msgstr "Наружность "
 
-#: gkb-new/prop.c:398
-msgid "Iconpath"
-msgstr "Путь к пиктограмме"
+#: gkb-new/prop.c:329
+msgid "Applet size "
+msgstr "Размер апплета "
 
-#: gkb-new/prop.c:420
-msgid "Full command"
-msgstr "Полная команда"
+#: gkb-new/prop.c:361
+msgid "Hotkey for switching between layouts"
+msgstr "Горячая клавиша для переключения между разметками"
 
-#: gkb-new/prop.c:487
+#: gkb-new/prop.c:373
+msgid "Grab hotkey"
+msgstr "Захватить клавишу"
+
+#: gkb-new/prop.c:416
 msgid "GKB Properties"
 msgstr "Свойства GKB"
+
+#: gkb-new/prop.c:427
+msgid "Keymaps"
+msgstr "Раскладки"
+
+#: gkb-new/prop.c:441
+msgid "Options"
+msgstr "Параметры"
 
 #: gnotes/gnote.c:224
 msgid "Raise Note"
@@ -2721,11 +2811,6 @@ msgstr "Команда разрыва соединения:"
 #: modemlights/properties.c:445
 msgid "Confirm connection"
 msgstr "Подтверждение соединения"
-
-#: modemlights/properties.c:452 slashapp/properties.c:487
-#: tickastat/properties.c:565
-msgid "Display"
-msgstr "Экран"
 
 #: modemlights/properties.c:466
 msgid "Updates per second"
