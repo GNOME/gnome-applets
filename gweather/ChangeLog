@@ -1,3 +1,11 @@
+2001-01-25  Alan Shutko  <ats@acm.org>
+
+	* weather.c (iwin_parse): Strip CR from CRLF input.
+
+	* gweather-applet.c (gweather_update): Removed check for
+	update_enabled.  This was preventing updates from happening when
+	you ask for them by menu.
+
 2000-12-08  Jason Leach  <jasonleach@usa.net>
 
 	* gweather-pref.c (gweather_pref_create): Changed window title for

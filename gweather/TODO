@@ -1,5 +1,21 @@
 Current:
 
+- The width isn't quite right for the font of the text.
+
+- ATS: I removed this code from gweather_update... seems to be used to
+  switch the display, probably when prefs changed but we're not
+  autoupdate?  Put it somewhere else.
+ 
+    } else {
+        if (gweather_info) {
+            if (gweather_pref.use_metric)
+                weather_info_to_metric(gweather_info);
+            else
+		  weather_info_to_imperial(gweather_info);
+	}
+        update_finish(gweather_info);
+    }
+
 - Bug hunting...
 - Code reorganization... at least break up weather.[ch] and gweather-dialog.[ch]
   according to "views" (or aspects) of the weather (ie. conditions, textual

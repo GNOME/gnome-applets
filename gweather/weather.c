@@ -957,6 +957,13 @@ static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
     iwin_init_re();
 
     p = iwin;
+
+    /* Strip CR from CRLF input */
+    while ((p = strchr(p, '\r')) != NULL)
+        *p = ' ';
+
+    p = iwin;
+    
     while ((ret = regexec(&iwin_re, p, 1, match, 0)) != REG_NOMATCH) {
         rangep = p + match[0].rm_so;
         p = strchr(rangep, '\n');
