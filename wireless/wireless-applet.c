@@ -734,6 +734,8 @@ static void change_orient_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
 static GtkWidget *
 wireless_applet_new (WirelessApplet *applet)
 {
+	AtkObject *atk_obj;
+
 	panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
 
 	/* this ensures that properties are loaded */
@@ -776,6 +778,14 @@ wireless_applet_new (WirelessApplet *applet)
 		(CFG_UPDATE_INTERVAL * 1000,
 		 (GtkFunction)wireless_applet_timeout_handler,
 		 applet);
+
+	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
+
+	if (GTK_IS_ACCESSIBLE (atk_obj)) {
+		atk_object_set_name (atk_obj, _("Wireless Link Monitor"));
+		atk_object_set_description (atk_obj, _("This utility shows the s
+tatus of a wireless link"));
+	}
 		 
 	g_signal_connect (G_OBJECT (applet), "change_size",
 				  G_CALLBACK (change_size_cb), applet);
