@@ -262,11 +262,11 @@ void tasklist_layout (void)
       p++;
     }
 
-  curheight = (CONFIG_ROWHEIGHT * config_rows-2) / num_rows;
-  curwidth = (CONFIG_WIDTH-2) / num_cols;
+  curheight = (CONFIG_ROWHEIGHT * config_rows-4) / num_rows;
+  curwidth = (CONFIG_WIDTH-4) / num_cols;
 
-  curx = 1;
-  cury = 1;
+  curx = 2;
+  cury = 2;
 
   while (temp_tasks)
     {
@@ -281,7 +281,7 @@ void tasklist_layout (void)
       if (curx >= CONFIG_WIDTH || curx + curwidth > CONFIG_WIDTH)
 	{
 	  cury += curheight;
-	  curx = 1;
+	  curx = 2;
 	}
       temp_tasks = temp_tasks->next;
     }
