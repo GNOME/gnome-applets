@@ -307,6 +307,9 @@ properties_show(PanelApplet *applet, gpointer data)
 	item = gtk_menu_item_new_with_label(_("Cdrom"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("Cd Recorder"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
 	item = gtk_menu_item_new_with_label(_("Zip Drive"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);

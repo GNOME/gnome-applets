@@ -36,6 +36,10 @@
 #include "cdrom_v_out.xpm"
 #include "cdrom_h_in.xpm"
 #include "cdrom_h_out.xpm"
+#include "cdburn_v_in.xpm"
+#include "cdburn_v_out.xpm"
+#include "cdburn_h_in.xpm"
+#include "cdburn_h_out.xpm"
 #include "zipdrive_v_in.xpm"
 #include "zipdrive_v_out.xpm"
 #include "zipdrive_h_in.xpm"
@@ -104,6 +108,11 @@ static IconData icon_list[] = {
 	 cdrom_h_out_xpm,
 	 cdrom_v_in_xpm,
 	 cdrom_v_out_xpm},
+	{
+	 cdburn_h_in_xpm,
+	 cdburn_h_out_xpm,
+	 cdburn_v_in_xpm,
+	 cdburn_v_out_xpm},
 	{
 	 zipdrive_h_in_xpm,
 	 zipdrive_h_out_xpm,
