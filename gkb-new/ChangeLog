@@ -1,3 +1,14 @@
+Thu Jul 10 11:54:12 2003  George Lebl <jirka@5z.com>
+
+	* gconf.c, gkb.[ch], prop.c: Respect key writability, even though
+	  it's a bit of an overkill in the way it works.  Basically for the
+	  list of keyboards, if any key is not writable, you can't change
+	  anything.  This is really because of the way it works, it should
+	  work more like the panel.  But oh well.
+
+	* prop-add.c: Fix memory leak, fix crash on window display, correctly
+	  sensitize the add button.
+
 2003-06-29  Kevin Vandersloot
 
 	* prop-add.c: Fix adding keymaps to the tree.

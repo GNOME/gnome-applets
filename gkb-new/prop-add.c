@@ -163,8 +163,15 @@ preadd_cb (GtkTreeSelection *selection,
 	if (! gtk_tree_selection_get_selected (selection, NULL, &iter))
 		return;
 
-	if (!pbi->keymap_for_add) g_free(pbi->keymap_for_add); 
-	/* TODO: free them all */
+	if (pbi->keymap_for_add != NULL) {
+		g_free(pbi->keymap_for_add->name); 
+		g_free(pbi->keymap_for_add->flag); 
+		g_free(pbi->keymap_for_add->command); 
+		g_free(pbi->keymap_for_add->country); 
+		g_free(pbi->keymap_for_add->label); 
+		g_free(pbi->keymap_for_add->lang); 
+		g_free(pbi->keymap_for_add); 
+	}
 
 	gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
 			    NAME_COL, &value, -1);
@@ -210,8 +217,8 @@ comparefunc (GkbKeymap *k1, GkbKeymap *k2)
 		? (k1->country == k2->name) : (strcmp (k1->name, k2->name) == 0));
 }
 
-static gint
-addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
+static void
+add_chosen_keymap (GkbPropertyBoxInfo * pbi)
 {
 	GKB *gkb = pbi->gkb;
 	/* Do not add Language and Country rows */
@@ -235,7 +242,7 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 
 			gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 			gtk_widget_show (dialog);
-			return FALSE;
+			return;
 		}
 
 		pbi->keymaps = g_list_append (pbi->keymaps,
@@ -245,8 +252,6 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 	gkb_prop_list_reload (pbi);
 	gkb_apply (pbi);
 	gkb_save_session (pbi->gkb);
-
-	return FALSE;
 }
 
 static gboolean
@@ -255,7 +260,7 @@ row_activated_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
 	GkbPropertyBoxInfo * pbi = data;
 
 	if (event->type == GDK_2BUTTON_PRESS) {
-		addwadd_cb (NULL, pbi);
+		add_chosen_keymap (pbi);
 		return TRUE;
 	}
 
@@ -268,9 +273,9 @@ addbutton_sensitive_cb (GtkTreeView * treeview, gpointer data)
 {
 	GkbPropertyBoxInfo * pbi = data;
 	GKB * gkb = pbi->gkb;
-	GtkWidget * addbutton = gtk_object_get_data (GTK_OBJECT (gkb->addwindow), "addbutton");
+	GtkWidget * addbutton = g_object_get_data (G_OBJECT (gkb->addwindow), "addbutton");
 
-	gtk_widget_set_sensitive (addbutton, pbi->keymap_for_add->command != NULL);
+	gtk_widget_set_sensitive (addbutton, pbi->keymap_for_add != NULL && pbi->keymap_for_add->command != NULL);
 }
 
 static void
@@ -282,7 +287,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 	switch (id) {
 	case 100:
 	/* Add response */
-	addwadd_cb (NULL, pbi);
+	add_chosen_keymap (pbi);
 	break;
 
 	case GTK_RESPONSE_HELP:
@@ -334,10 +339,10 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 	gtk_container_set_border_width (GTK_CONTAINER (gkb->addwindow), 5);
 	gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
 			       gtk_widget_get_screen (pbi->add_button));
-	gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
-			     gkb->addwindow);
-	gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addbutton",
-			     button);
+	g_object_set_data (G_OBJECT (gkb->addwindow), "addwindow",
+			   gkb->addwindow);
+	g_object_set_data (G_OBJECT (gkb->addwindow), "addbutton",
+			   button);
 
 	vbox1 = gtk_vbox_new (FALSE, 6); 
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gkb->addwindow)->vbox), vbox1, FALSE, FALSE, 0);
@@ -375,11 +380,12 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 
 	g_signal_connect (selection, "changed",
 			  G_CALLBACK (preadd_cb), pbi);
+	g_signal_connect (G_OBJECT (selection), "changed",
+			  G_CALLBACK (addbutton_sensitive_cb), pbi);
+
 	/* Signal for double clicks or user pressing space */
 	g_signal_connect (G_OBJECT (tree1), "button_press_event",
 			  G_CALLBACK (row_activated_cb), pbi);
-	g_signal_connect (G_OBJECT (tree1), "cursor_changed",
-			  G_CALLBACK (addbutton_sensitive_cb), pbi);
 
 	g_signal_connect (G_OBJECT (gkb->addwindow), "response",
 			  G_CALLBACK (response_cb), pbi);

@@ -165,7 +165,7 @@ gkb_prop_mode_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
  **/
 static void
 gkb_prop_option_menu_at (GtkWidget * table, gint row, gint col,
-			 GList * list_in, GtkSignalFunc function,
+			 GList * list_in, GCallback function,
 			 GkbPropertyBoxInfo * pbi, gint initval)
 {
   GtkWidget *option_menu;
@@ -270,10 +270,13 @@ gkb_prop_create_display_category (GkbPropertyBoxInfo * pbi)
   gkb_prop_label_at (table, 0, 0, _("_Appearance: "));
   mode = gkb_prop_get_mode ();
   gkb_prop_option_menu_at (table, 1, 0, mode,
-			   GTK_SIGNAL_FUNC (gkb_prop_mode_changed), pbi,
+			   G_CALLBACK (gkb_prop_mode_changed), pbi,
 			   gkb_util_get_int_from_mode (pbi->mode));
   g_list_free (mode);
   size = panel_applet_get_size (PANEL_APPLET (pbi->gkb->applet));
+
+  if ( ! gconf_applet_is_writable ("mode"))
+	  gtk_widget_set_sensitive (table, FALSE);
 
   return vbox;
 }
@@ -326,11 +329,15 @@ gkb_prop_create_hotkey_category (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
       add_atk_relation(GTK_WIDGET(pbi->hotkey_entry),
 			button, ATK_RELATION_CONTROLLED_BY);                                                                      
       add_atk_relation(button, GTK_WIDGET(pbi->hotkey_entry),
-			ATK_RELATION_CONTROLLER_FOR );                              }
+			ATK_RELATION_CONTROLLER_FOR );
+    }
                                                                            
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);                                                                         
   gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+
+  if ( ! gconf_applet_is_writable ("key"))
+	  gtk_widget_set_sensitive (hbox, FALSE);
 
 /*  g_signal_connect (pbi->hotkey_entry, "changed",
 		      G_CALLBACK (changed_cb), pb);
@@ -437,6 +444,9 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi,
   gtk_box_pack_start (GTK_BOX (hbox), scrolled_window, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), hbox, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (hbox), buttons_vbox, FALSE, TRUE, 0);
+
+  if ( ! gconf_applet_keyboard_list_is_writable ())
+	  gtk_widget_set_sensitive (hbox, FALSE);
 
   /* Add page 2 */
   if (include_applet_options) {

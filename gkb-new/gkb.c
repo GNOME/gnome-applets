@@ -311,6 +311,8 @@ gkb_save_session (GKB *gkb)
 
   gconf_client_commit_change_set (gconf_client_get_default (),
 				  cs, FALSE, NULL);
+
+  gconf_change_set_unref (cs);
 }
 
 static gchar *

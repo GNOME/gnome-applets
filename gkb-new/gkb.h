@@ -239,6 +239,8 @@ gboolean gconf_applet_set_int	 (char const *gconf_key, gint value);
 gint	 gconf_applet_get_int	 (char const *gconf_key);
 gboolean gconf_applet_set_bool	 (char const *gconf_key, gboolean value);
 gboolean gconf_applet_get_bool	 (char const *gconf_key);
+gboolean gconf_applet_is_writable(char const *gconf_key);
+gboolean gconf_applet_keyboard_list_is_writable (void);
 
 gchar  *gkb_default_map_file (void);
 
