@@ -38,7 +38,9 @@
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
 
-static WeatherUnits weather_units = UNITS_IMPERIAL;
+/* FIXME: these global variables will cause conflicts when multiple
+** instances of the applets update at the same time
+*/
 static WeatherForecastType weather_forecast = FORECAST_STATE;
 static gboolean weather_radar = FALSE;
 
@@ -245,9 +247,6 @@ static inline void requests_done_check (WeatherInfo *info)
     if (!info->metar_handle && !info->iwin_handle && 
         !info->wx_handle && !info->met_handle) {
         info->requests_pending = FALSE;
-        /* Next two lines temporarily here */
-        if (weather_units == UNITS_METRIC)
-            weather_info_to_metric(info);
         update_finish(info);
     }
 }
@@ -1642,17 +1641,6 @@ void weather_info_free (WeatherInfo *info)
 	g_free(info);
     }
     
-}
-
-
-void weather_units_set (WeatherUnits units)
-{
-    weather_units = units;
-}
-
-WeatherUnits weather_units_get (void)
-{
-    return weather_units;
 }
 
 void weather_forecast_set (WeatherForecastType forecast)

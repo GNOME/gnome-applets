@@ -339,15 +339,16 @@ proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
     gchar *text;
-	g_print("url_changed\n");    
+	
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
-   if (!text)
+    if (!text)
    	return;
    
-   panel_applet_gconf_set_string(gw_applet->applet, "proxy_url", text, NULL);
-   g_free(gw_applet->gweather_pref.proxy_url);
-   gw_applet->gweather_pref.proxy_url = text;   	
+    panel_applet_gconf_set_string(gw_applet->applet, "proxy_url", text, NULL);
+    if (gw_applet->gweather_pref.proxy_url)
+    	g_free(gw_applet->gweather_pref.proxy_url);
+    gw_applet->gweather_pref.proxy_url = text;   	
 }
 
 static void
@@ -358,12 +359,13 @@ proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
-   if (!text)
+    if (!text)
    	return;
    
-   panel_applet_gconf_set_string(gw_applet->applet, "proxy_user", text, NULL);
-   g_free(gw_applet->gweather_pref.proxy_user);
-   gw_applet->gweather_pref.proxy_user = text;   
+    panel_applet_gconf_set_string(gw_applet->applet, "proxy_user", text, NULL);
+    if (gw_applet->gweather_pref.proxy_user)
+   	g_free(gw_applet->gweather_pref.proxy_user);
+    gw_applet->gweather_pref.proxy_user = text;   
 }
 
 static void
@@ -374,12 +376,13 @@ proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
-   if (!text)
+    if (!text)
    	return;
 
-	panel_applet_gconf_set_string(gw_applet->applet, "proxy_passwd", text, NULL);
+    panel_applet_gconf_set_string(gw_applet->applet, "proxy_passwd", text, NULL);
+    if (gw_applet->gweather_pref.proxy_passwd)
 	g_free(gw_applet->gweather_pref.proxy_passwd);
-	gw_applet->gweather_pref.proxy_passwd = text;      	
+    gw_applet->gweather_pref.proxy_passwd = text;      	
 }
 
 static void
@@ -401,8 +404,24 @@ metric_toggled (GtkToggleButton *button, gpointer data)
     gboolean toggled;
     
     toggled = gtk_toggle_button_get_active(button);
+    if (gw_applet->gweather_pref.use_metric == toggled)
+        return;
+        
     gw_applet->gweather_pref.use_metric = toggled;
     panel_applet_gconf_set_bool(gw_applet->applet, "enable_metric", toggled, NULL);
+    
+    if (!gw_applet->gweather_info)
+        return;
+    
+    if (gw_applet->gweather_pref.use_metric) {
+        weather_info_to_metric (gw_applet->gweather_info);
+    }
+    else {    
+        weather_info_to_imperial (gw_applet->gweather_info); 
+    }
+    gtk_label_set_text(GTK_LABEL(gw_applet->label), 
+    		       weather_info_get_temp_summary(gw_applet->gweather_info));
+    gweather_dialog_update (gw_applet); 
 }
 
 static void
@@ -413,7 +432,8 @@ detailed_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.detailed = toggled;
-    panel_applet_gconf_set_bool(gw_applet->applet, "enable_detailed_forecast", toggled, NULL);    
+    panel_applet_gconf_set_bool(gw_applet->applet, "enable_detailed_forecast", 
+    				toggled, NULL);    
 }
 
 static void
@@ -433,8 +453,8 @@ update_interval_changed (GtkSpinButton *button, gpointer data)
     GWeatherApplet *gw_applet = data;
     
     gw_applet->gweather_pref.update_interval = gtk_spin_button_get_value_as_int(button)*60;
-    panel_applet_gconf_set_int(gw_applet->applet, "auto_update_intervarl", 
-    		gw_applet->gweather_pref.update_interval, NULL);
+    panel_applet_gconf_set_int(gw_applet->applet, "auto_update_interval", 
+    		               gw_applet->gweather_pref.update_interval, NULL);
 }
 
 static void

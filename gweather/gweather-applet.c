@@ -173,9 +173,9 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.proxy_user = NULL;
     gw_applet->gweather_pref.proxy_passwd = NULL;
     gw_applet->gweather_pref.use_proxy = FALSE;
-   
+#if 0   
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
-
+#endif
     /* PUSH */
     gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 
@@ -259,7 +259,7 @@ void gweather_info_load (const gchar *path, GWeatherApplet *gw_applet)
 
 static gint timeout_cb (gpointer data)
 {
-	GWeatherApplet *gw_applet = (GWeatherApplet *)data;
+    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
     gweather_update(gw_applet);
     return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
@@ -292,6 +292,9 @@ void update_finish (WeatherInfo *info)
     		   gw_applet->applet_pixmap, 
     		   gw_applet->applet_mask);
 
+    if (gw_applet->gweather_pref.use_metric)
+        weather_info_to_metric (gw_applet->gweather_info);
+        
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
     		       weather_info_get_temp_summary(gw_applet->gweather_info));
 
@@ -305,8 +308,9 @@ void update_finish (WeatherInfo *info)
     if (gw_applet->timeout_tag > 0)
         gtk_timeout_remove(gw_applet->timeout_tag);
     if (gw_applet->gweather_pref.update_enabled)
-        gw_applet->timeout_tag =  gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
-                                        timeout_cb, gw_applet);
+        gw_applet->timeout_tag =  
+        	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
+                                 timeout_cb, gw_applet);
 
     /* Update dialog -- if one is present */
     gweather_dialog_update(gw_applet);
@@ -318,31 +322,41 @@ void gweather_update (GWeatherApplet *gw_applet)
 
     /* Let user know we are updating */
 
-    weather_info_get_pixmap_mini(gw_applet->gweather_info, &(gw_applet->applet_pixmap), &(gw_applet->applet_mask));
+    weather_info_get_pixmap_mini(gw_applet->gweather_info, 
+    				 &(gw_applet->applet_pixmap), 
+    				 &(gw_applet->applet_mask));
 
-    gtk_pixmap_set(GTK_PIXMAP(gw_applet->pixmap), gw_applet->applet_pixmap, gw_applet->applet_mask);
-    gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), _("Updating..."), NULL);
-
-    /* Set preferred units */
-    weather_units_set(gw_applet->gweather_pref.use_metric ? UNITS_METRIC : UNITS_IMPERIAL);
+    gtk_pixmap_set(GTK_PIXMAP(gw_applet->pixmap), 
+    		   gw_applet->applet_pixmap, 
+    		   gw_applet->applet_mask);
+    gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), 
+    			 _("Updating..."), NULL);
 
     /* Set preferred forecast type */
-    weather_forecast_set(gw_applet->gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE);
+    weather_forecast_set(gw_applet->gweather_pref.detailed ? 
+    			 	FORECAST_ZONE : FORECAST_STATE);
 
     /* Set radar map retrieval option */
     weather_radar_set(gw_applet->gweather_pref.radar_enabled);
 
     /* Set proxy */
     if (gw_applet->gweather_pref.use_proxy)
-        weather_proxy_set(gw_applet->gweather_pref.proxy_url, gw_applet->gweather_pref.proxy_user, gw_applet->gweather_pref.proxy_passwd);
+        weather_proxy_set(gw_applet->gweather_pref.proxy_url, 
+        		  gw_applet->gweather_pref.proxy_user, 
+        		  gw_applet->gweather_pref.proxy_passwd);
 
     /* Update current conditions */
-    if (gw_applet->gweather_info && weather_location_equal(gw_applet->gweather_info->location, gw_applet->gweather_pref.location)) {
-        update_success = weather_info_update((gpointer)gw_applet, gw_applet->gweather_info, update_finish);
+    if (gw_applet->gweather_info && 
+    	weather_location_equal(gw_applet->gweather_info->location, 
+    			       gw_applet->gweather_pref.location)) {
+        update_success = weather_info_update((gpointer)gw_applet, 
+        				      gw_applet->gweather_info, 
+        				      update_finish);
     } else {
         weather_info_free(gw_applet->gweather_info);
         gw_applet->gweather_info = NULL;
-        update_success = weather_info_new((gpointer)gw_applet, gw_applet->gweather_pref.location, update_finish);
+        update_success = weather_info_new((gpointer)gw_applet, 
+        		 gw_applet->gweather_pref.location, update_finish);
     }
     
     return;

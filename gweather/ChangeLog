@@ -1,3 +1,16 @@
+2002-03-06  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-applet.c: don't call gnome_window_icon_ since
+	it can cause crashes with bonobo applets. Also convert
+	to metric here to fix bug #73600
+
+	* gweather-pref.c: explicitly change the labels when
+	metric units is toggled. Fix a typo in setting the update
+	interval
+
+	* weather.c: remove the metric gboolean global since it was
+	causing bug #73600.
+
 2002-03-05  Seth Nickell  <snickell@stanford.edu>
 
 	* GNOME_GWeatherApplet_Factory.server.in:
