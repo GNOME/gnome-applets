@@ -6,6 +6,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
+#define CLIPBOARD_VERSION "0.02"
 #define MAX_HISTORY 10 /* maximum number of items in history list
                           (once deleting old history is implemented. 
                           of course eventually, it should be configurable.) */
@@ -150,6 +151,25 @@ button_new_with_xpm(GtkWidget *parent, gchar **xpm)
   return button;
 }
 
+static void
+about (AppletWidget *applet, gpointer data)
+{
+  static const char *authors[] = {"Alexandre Muñiz (munizao@cyberhighway.net)",
+				  NULL };
+  GtkWidget *about_box;
+
+  about_box = gnome_about_new (_("Clipboard Applet"),
+			       CLIPBOARD_VERSION,
+			       _("Copyright (C) 1999"),
+			       authors,
+			       _("Gnome panel applet for copying and "
+			         "retrieving selections with a history list. "
+				 "Released under GNU General Public Licence."),
+			       NULL);
+  gtk_window_set_modal (GTK_WINDOW(about_box),TRUE);
+  gnome_dialog_run (GNOME_DIALOG (about_box));
+}
+
 int
 main(int argc, char **argv)
 {
@@ -199,6 +219,14 @@ main(int argc, char **argv)
 
   gtk_box_pack_start(GTK_BOX (vbox), set_selection_button, TRUE, TRUE, 0);
   gtk_widget_show_all(vbox);
+
+  /* connect up the about box */
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+				         "about",
+					 GNOME_STOCK_MENU_ABOUT,
+					 _("About..."),
+					 about,
+					 NULL);
 
   /* add the vbox to the applet_widget */
   applet_widget_add (APPLET_WIDGET (applet), vbox);
