@@ -1,0 +1,260 @@
+ <sect1 id="anotherclock">
+  <title>Erloju analogikoa</title>
+  <para>
+   <application>Erloju analogikoa</application>ren applet-a (<xref 
+   linkend="anotherclock-applet">) erloju analogiko soila da (CDE, 
+   Common Desktop Environment, panelekoaren antzekoa). Applet hau 
+   <interface>Panel</interface> bati gehitzeko, egin klik eskuineko 
+   botoiaz <interface>Panel</interface>ean eta aukeratu 
+   <menuchoice>
+    <guimenu>Panela</guimenu> 
+    <guisubmenu>Gehitu panelari</guisubmenu>
+    <guisubmenu>Applet-a</guisubmenu> 
+    <guisubmenu>Erlojuak</guisubmenu> 
+    <guimenuitem>Erloju analogikoa</guimenuitem>
+    </menuchoice>.
+  </para>
+
+  <figure id="anotherclock-applet">
+    <title>Erloju analogikoaren applet-a</title>
+    <screenshot>
+     <screeninfo>Erloju analogikoaren applet-a</screeninfo> 
+     <graphic format="png" fileref="figures/anotherclock-applet" 
+	     srccredit="Eric Baudais">
+     </graphic>
+    </screenshot>
+  </figure>
+  
+  <!-- ============= Usage  ================================ --> 
+  <sect2 id="anotherclock-usage">
+    <title>Erabilera</title>
+    <para>
+      Ez daukazu erloju honi ezer berezirik egin beharrik. Besterik 
+      gabe panelean egongo da eta zer ordu den adieraziko dizu.
+    </para>
+    
+    <itemizedlist>
+      
+      <listitem>
+      <para>
+        <guimenuitem>Propietateak&hellip;</guimenuitem> &mdash; 
+        <link linkend="anotherclock-prefs">
+        <guilabel>Propietateak</guilabel></link> elkarrizketa-koadroa 
+        irekitzen du.
+      </para>
+      </listitem>
+      
+      <listitem>
+      <para>
+      <guimenuitem>Laguntza</guimenuitem> &mdash; 
+      dokumentu hau bistaratzen du.
+      </para>
+      </listitem>
+      
+      <listitem>
+      <para>
+        <guimenuitem>Honi buruz&hellip;</guimenuitem>  &mdash;  
+        <application>Erloju analogikoaren applet</application>-ari 
+        buruzko informazioa ematen du, esaterako egilearen izena eta 
+        aplikazioaren bertsio-zenbakia.
+      </para>
+      </listitem>
+
+    </itemizedlist>
+
+   </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+   <sect2 id="anotherclock-prefs">
+    <title>Pertsonalizazioa</title>
+    <para>
+    <application>Erloju analogikoa</application> pertsonaliza dezakezu 
+    eskuineko botoiaz bertan klik eginez eta 
+    <guimenuitem>Propietateak&hellip;</guimenuitem> aukeratuz. 
+    <interface>Propietateen</interface> elkarrizketa-koadroa 
+    (<xref       linkend="anotherclock-settings-fig">) irekiko da, 
+    eta hala hainbat ezarpen aldatu ahal izango duzu.
+    </para>
+
+
+    <figure id="anotherclock-settings-fig">
+      <title>Propietateen elkarrizketa-koadroa</title>
+      <screenshot>
+       <screeninfo>Propietateen elkarrizketa-koadroa</screeninfo> 
+       <graphic format="png" fileref="figures/anotherclock-properties"
+	       srccredit="Eric Baudais">
+      </graphic>
+       </screenshot>
+    </figure> 
+<!-- ==============End of Figure=================================== -->
+
+    <para>
+    Hauek dira propietateak: 
+    <itemizedlist>
+
+      <listitem>
+      <para>
+       Erlojuaren kolorea &mdash; Oraingoz grisa da, baina gerora 
+       erlojuaren kolorea aldatu ahal izango da.
+      </para>
+    </listitem>
+
+      <listitem>
+     <para>
+      Ordu-orratzaren kolorea &mdash; Hemen ezar dezakezu erlojuaren 
+      ordu-orratzarentzat nahi duzun kolorea.
+    </para>
+    </listitem>
+
+      <listitem>
+       <para>
+       Minutu-orratzaren kolorea &mdash; Hemen ezar dezakezu erlojuaren
+       minutu-orratzarentzat nahi duzun kolorea.
+     </para>
+     </listitem>
+
+      <listitem>
+      <para>
+      Segundo-orratzaren kolorea &mdash; Hemen ezar dezakezu erlojuaren 
+      segundo-orratzarentzat nahi duzun kolorea.
+      </para>
+      </listitem>
+
+      <listitem>
+      <para>
+      Erakutsi segundo-orratza &mdash; Botoi honetan hautamarka jarriz 
+      gero, erlojuak segundo-orratza erakutsiko dizu.
+      </para>
+      </listitem>
+
+     </itemizedlist>
+      </para>
+
+
+    
+      <para>
+      Nahi dituzun aldaketa guztiak egin ondoren, egin klik 
+      <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta 
+      <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. 
+      Aldaketak bertan behera uzteko eta aurreko balioetara itzultzeko, 
+      egin klik <guibutton>Utzi</guibutton> botoian.
+      </para>
+    </sect2>
+
+
+  <!-- ============= Bugs ================================== --> 
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of --> 
+   <sect2 id="anotherclock-bugs">
+    <title>Ezagutzen diren akatsak eta mugak</title>
+    <orderedlist>
+<!--     <listitem>  Jacob says this should be fixed with GTK+1.2.7.
+      
+       <para>
+
+        Ezin duzu ordua aldatu erlojuaren propietateetatik. Hori 
+        ez da benetako akatsa; root izan behar duzu 
+        <command>date</command> komandoaren bidez sistema osoaren 
+        ordua aldatzeko. 
+       </para>
+
+     </listitem>--> 
+     <listitem>
+     <para>
+      Sistema-erlojua atzeratzen baduzu <command>date</command>
+      komandoaren bidez, erlojuak funtzionatzeari utziko dio harik eta 
+      sistema-ordua erlojuak erakusten duen ordura heltzen den arte. 
+      Orduan normal funtzionatzen hasiko da.
+      </para>
+      </listitem>
+    </orderedlist>
+   </sect2>
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Egileak</title>
+   <para>
+    <application>Erloju analogikoa</application> I&ntilde;igo Sernak 
+    idatzi du (<email>inigo@gazletan.bi.ehu.es</email>). Bidali zure 
+    iruzkin, iradokizun eta akatsen berri-emateak <ulink 
+    url="http://bugs.gnome.org" type="http">GNOMEren akatsen 
+    segimendurako datu-basera</ulink>. (Akatsei buruzko berriak 
+    bidaltzeko argibideak <ulink     
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    linean</ulink> aurkituko dituzu.) GNOMEren 1.1 bertsioa edo 
+    berriagoa baduzu, <application>Akatsen berri emateko 
+    tresna</application> (<command>bug-buddy</command>) ere erabil 
+    dezakezu akatsen berri emateko. Tresna hori <guimenu>Menu 
+    nagusi</guimenu>ko <guisubmenu>Utilitateak</guisubmenu> azpimenuan 
+    duzu eskuragarri.
+   </para>
+
+   
+   <para>
+   Eskuliburu hau Telsa Gwynne-k (<email>telsa@linuxchix.org</email>) 
+   eta Eric Baudais-ek (<email>baudais@okstate.edu</email>) idatzi 
+   dute. Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink 
+   type="http"     url="http://www.gnome.org/gdp">GNOMEren 
+   dokumentazio-proiektura</ulink> bidal ditzakezu: 
+   <email>docs@gnome.org</email>. Iruzkinak linean ere egin 
+    ditzakezu <ulink type="http"     
+    url="http://www.gnome.org/gdp/doctable/">GNOMEren 
+    dokumentazio-egoeraren taula</ulink> erabiliz.
+   </para>
+
+
+
+   
+<para>
+     Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak 
+     egin du (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko
+     oharrak eta iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+</para>
+
+
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+  <title>Lizentzia</title>
+  
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para> 
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren egokitasuna 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+   <para> 
+       <citetitle>GNU Lizentzia Publiko Orokorra</citetitle>ren kopia 
+       Free Software Foundation-en bidez lor dezakezu 
+      <ulink type="http" url="http://www.fsf.org"> haren web gunea</ulink> 
+      bisitatuz edo hona idatziz: 
+     <address> 
+      Free Software Foundation, Inc. 
+      <street>59 Temple Place</street> Suite 330 
+      <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+      <country>USA</country> 
+    </address> 
+   </para>
+  </sect2>
+
+  </sect1>
+
+
+

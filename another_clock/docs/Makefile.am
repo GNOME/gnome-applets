@@ -1,1 +1,1 @@
-SUBDIRS	= C es it uk
+SUBDIRS	= C es eu it uk

@@ -1,0 +1,389 @@
+  <!-- ###############   Battery Charge Monitor   ############### --> 
+<sect1 id="Battery-Charge-Monitor">
+   <title>Bateria-kargaren monitorearen applet-a</title> 
+
+   
+<para>
+<application>Bateria-kargaren monitorea</application>ren applet-ak, <link
+    linkend="Battery-Charge-Monitor-fig1">1. irudian erakusten denak</link>, ordenagailu eramangarriaren bateria-kargaren egoera erakusten dizu. Applet hau <interface>Panel</interface>ari nola gehitu ikusteko, egin klik eskuineko botoiaz <interface>Panel</interface>ean eta aukeratu <menuchoice><guimenu>Panela</guimenu> <guisubmenu>Gehitu panelari</guisubmenu> <guisubmenu>Applet-a</guisubmenu> <guisubmenu>Monitoreak</guisubmenu> <guimenuitem>Bateria-kargaren monitorea</guimenuitem></menuchoice>.
+</para>
+  
+   <note>
+
+<para>
+<application>Bateria-kargaren monitorea</application>k ondo funtziona dezan, zure ordenagailuak <systemitem>Energia-kudeaketa aurreratua</systemitem> onartzeko konfiguratuta egon behar du.
+</para>
+</note>
+
+   <figure id="Battery-Charge-Monitor-fig1">
+    <title>Bateria-kargaren monitorea</title>
+    <screenshot><screeninfo>Bateria-kargaren monitorea</screeninfo> 
+     <graphic format="png" fileref="figures/battery-applet-ac-offline-25-20"
+	      srccredit="James Cope"></graphic></screenshot></figure>
+
+   <sect2 id="Battery-Charge-Monitor-usage">
+    <title>Erabilera</title>
+    
+<para>
+
+<application>Bateria-kargaren monitorea</application> panelean agertzen da eta ordenagailuaren bateriaren egoera erakusten dizu. <mousebutton>Ezker</mousebutton>reko botoiaz applet-ean klik eginez, Irakurketa ikuspegia eta Grafiko ikuspegiaren artean aukera dezakezu. Ikuspegi horien azalpena 
+     <link linkend="Battery-Charge-Monitor-Readout-sec">Irakurketa ikuspegia</link> 
+     eta <link linkend="Battery-Charge-Monitor-Graph-sec">Grafiko ikuspegia</link> 
+     ataletan ematen da hurrenez hurren.
+</para>
+
+
+    <sect3 id="Battery-Charge-Monitor-Readout-sec">
+     <title>Irakurketa ikuspegia</title>
+     
+<para>
+
+Irakurketa ikuspegiak, lehenetsitako ikuspegiak, ikono- eta testu-formatuan erakusten du bateriaren uneko egoera. Modu honetan <application>Bateria-kargaren monitorea</application>k ondorengo informazioa bistaratzen du:
+</para>
+
+
+     <variablelist><varlistentry><term><emphasis>Bateria-ikonoa</emphasis></term> <listitem>
+
+<para>
+Applet-aren ezkerraldean agertzen den pila itxurako ikonoak adierazten dizu bateriak zenbat karga duen. Pilaren zati koloredunak bateriari geratzen zaion karga adierazten du, eta bateria erabat beteak &percnt; 100eko karga adierazten du.
+</para>
+
+	
+<para>
+
+Pilaren kolorea aldatu egiten da karga <guilabel>Karga baxuaren muga</guilabel>tik behera jaisten denean (ikus
+         <link linkend="Battery-Charge-Monitor-properties-general">Propietateak &mdash; Orokorra</link>). Pilaren kolore lehenetsia berdea da egoera normalerako eta gorria <guilabel>karga baxuaren muga</guilabel>tik behera dagoenerako.
+</para>
+
+
+	
+<para>
+
+Ordenagailua argindarrarekin konektatuta dagoenean, pilaren irudian tximista txiki bat agertzen da, eta horrela adierazten da bateria argindarrari konektatuta dagoela eta kargatzen ari dela. Horren adibide bat ikus dezakezu
+         <link linkend="Battery-Charge-Monitor-fig2">2. irudian</link>. Horrez gainera, pila konfigura dezakezu kolore desberdina izan dezan argindarrari konektatuta dagoenean edo ez dagoenean, ikus
+         <link linkend="Battery-Charge-Monitor-properties-readout">
+	 Propietateak &mdash; Irakurketa</link> eginbide honi buruzko xehetasun gehiago izateko.
+</para>
+
+      
+	<figure id="Battery-Charge-Monitor-fig2">
+         <title>Bateria-kargaren monitorea argindarrari konektatuta</title>
+         <screenshot><screeninfo>Bateria-kargaren monitorea</screeninfo> <graphic format="png"  		   fileref="figures/battery-applet-ac-online-25-20" 		   srccredit="James Cope"></graphic></screenshot></figure>
+
+       </listitem></varlistentry>
+
+      <varlistentry><term><emphasis>Geratzen den portzentajea</emphasis></term> <listitem>
+
+<para>
+
+Applet-aren eskuinean goialdean agertzen den ehunekoak adierazten dizu  ordenagailuaren bateriak zenbat karga duen.
+</para>
+</listitem></varlistentry>
+
+      <varlistentry><term><emphasis>Geratzen den denbora</emphasis></term> <listitem>
+
+<para>
+
+Applet-aren eskuineko behealdeko botoian agertzen da geratzen den denbora, eta horrek adierazten dizu bateriak zenbat denboran funtzionatzeko karga duen. Denbora ordu eta minutuetan adierazten da.
+</para>
+</listitem></varlistentry></variablelist></sect3>
+    
+    <sect3 id="Battery-Charge-Monitor-Graph-sec">
+     <title>Grafiko ikuspegia</title>
+     
+
+<para>
+
+Bateriari geratzen zaion kargaren portzentajea grafiko mugikor baten bidez erakusten dizu Grafiko ikuspegiak. Ardatz horizontalak denbora adierazten du eta bertikalak, berriz, karga-portzentajea. Grafikoaren goialdeak &percnt; 100eko karga adierazten du. Lehenespenez grafikoa berdea da ordenagailua argindarrari konektatuta daukazunean, eta urdina konektatua ez daukazunean. Gainera grafikoa kolorez aldatzen da karga <guilabel>Karga baxuaren muga</guilabel>tik behera jaisten denean (ikus <link linkend="Battery-Charge-Monitor-properties-general">
+      Propietateak &mdash; Orokorra</link>) kasu honetan lehenetsitako kolorea gorria da.
+</para>
+
+
+     <figure>
+      <title>Bateria-kargaren monitorearen Grafiko ikuspegia</title>
+       <screenshot><screeninfo>Bateria-kargaren monitorearen Grafiko ikuspegia</screeninfo> <graphic format="png"
+		 fileref="figures/battery-applet-graph"
+		 srccredit="James Cope"></graphic></screenshot></figure></sect3></sect2>
+
+   <sect2 id="Battery-Charge-Monitor-right-click">
+    <title>Eskuin-klikaz agertzen den laster-menuko elementuak</title>
+    
+<para>
+
+Menu-elementu estandarrez gain, eskuineko botoiaz klik eginda agertzen den laster-menuak ondoko elementua dauka: <itemizedlist><listitem>
+
+<para>
+
+<guimenuitem>Propietateak...</guimenuitem> &mdash; Menu-elementu honek <interface>Propietateen</interface> elkarrizketa-koadroa irekitzen du (ikus
+        <link linkend="Battery-Charge-Monitor-properties">Propietateak</link>) applet honen itxura eta portaera pertsonalizatu ahal izateko.
+</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+
+   <sect2 id="Battery-Charge-Monitor-properties">
+    <title>Propietateak</title>
+    
+<para>
+
+<application>Bateria-kargaren monitorea</application>ren applet-a konfigura dezakezu eskuineko botoiaz applet-ean klik eginez eta <guimenuitem>Propietateak...</guimenuitem> menu-elementua aukeratuz. <interface>Propietateen</interface> elkarrizketa-koadroa irekiko zaizu, eta elementu konfiguragarriz osatutako lau multzo agertuko zaizkizu ondorengo fitxetan antolatuta:
+     <link
+     linkend="Battery-Charge-Monitor-properties-general">Orokorra</link>,
+     <link
+     linkend="Battery-Charge-Monitor-properties-readout">Irakurketa</link>,
+     <link
+     linkend="Battery-Charge-Monitor-properties-graph">Grafikoa</link> eta 
+      <link linkend="Battery-Charge-Monitor-properties-messages">Bateria-kargaren mezuak</link>.
+</para>
+
+
+    <sect3 id="Battery-Charge-Monitor-properties-general">
+     <title>Propietateak &mdash; Orokorra</title>
+    
+     <figure id="Battery-Charge-Monitor-properties-fig1">
+      <title>Propietateen elkarrizketa-koadroa &mdash; Orokorra</title>
+      <screenshot><screeninfo>Propietateen elkarrizketa-koadroa &mdash; Orokorra</screeninfo> <graphic format="png" 
+		fileref="figures/battery-applet-properties-general"
+		srccredit="James Cope"></graphic></screenshot></figure>
+
+     <itemizedlist><listitem>
+<para>
+<guilabel>Jarraitu panel-tamainari</guilabel> &mdash; <application>Bateria-kargaren monitorea</application>ri agintzen dio panela tamainaz aldatzen denean bera ere tamainaz alda dadila. Lehenespenez hautatuta agertzen da. <guilabel>Applet-aren altuera</guilabel> eta <guilabel>Applet-aren zabalera</guilabel> ezarpenek eragina izan dezaten, hautatu gabe egon behar du.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Applet-aren altuera eta Applet-aren zabalera</guilabel> &mdash; bi botoi hauei esker <application>Bateria-kargaren monitorea</application>ren neurriak zehazki ezar ditzakezu pixeletan. Ezarpen hauek eragina izan dezaten, <guilabel>Jarraitu panel-tamainari</guilabel> hautatu gabe eduki behar da. Bi ezarpenen balio lehenetsia 48 da.
+</para>
+
+
+       <note>
+<para>
+Oso balio txikiak jarriz gero (28 pixeletik behera), bateriaren ikonoa ez da bistaratzen lekurik ez duelako.
+</para>
+</note></listitem>
+
+      <listitem>
+<para>
+<guilabel>Eguneratze-bitartea</guilabel> &mdash;  <application>Bateria-kargaren monitorea</application>k zenbatean behin eguneratu behar duen bateria-kargari buruzko informazioa adierazten du segundotan. Ezarpen lehenetsia bi segundokoa da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Karga baxuaren muga</guilabel> &mdash; bateria-kargaren ehuneko balio bat da, bateria gutxi geratzen denean <application>Bateria-kargaren monitorea</application>k abisua eman dezan erabil daitekeena. Informazio hori erabiltzen da, esaterako, Irakurketa ikuspegiko bateriaren kolorea noiz aldatu erabakitzeko. Balio lehenetsia 25 da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Applet-aren modua</guilabel> &mdash; <guibutton>Irakurketa</guibutton> eta <guibutton>Grafikoa</guibutton> kontrol-laukiak <link linkend="Battery-Charge-Monitor-Readout-sec">
+	Irakurketa ikuspegia</link> eta <link linkend="Battery-Charge-Monitor-Graph-sec">
+	Grafiko ikuspegia</link>ren artean aldatzako beste modu bat dira.
+</para>
+</listitem>
+</itemizedlist>
+</sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-readout">
+     <title>Propietateak &mdash; Irakurketa</title>
+     
+     
+<para>
+Fitxa honetako ezarpenek <application>Bateria-kargaren monitorea</application>n eragina izaten dute <link linkend="Battery-Charge-Monitor-Readout-sec">
+      Irakurketa ikuspegia</link>n dagoenean.
+</para>
+
+
+     
+<para>
+Fitxa honetako laukizuzen koloredun guztietan egin daiteke klik <mousebutton>ezker</mousebutton>reko botoiaz GNOMEren kolore-gurpila bistaratzeko. Honela lehenetsitako koloreak baino nahiago dituzun beste batzuk aukera ditzakezu.
+</para>
+
+
+     <figure id="Battery-Charge-Monitor-properties-fig2">
+      <title>Propietateen elkarrizketa-koadroa &mdash; Irakurketa</title>
+      <screenshot>
+<screeninfo>Propietateen elkarrizketa-koadroa &mdash; Irakurketa</screeninfo> <graphic format="png"
+		fileref="figures/battery-applet-properties-readout" srccredit="James
+		Cope"></graphic></screenshot>
+</figure>
+	
+     <itemizedlist><listitem>
+<para>
+<guilabel>AC-On Bateriaren kolorea</guilabel> &mdash;  ordenagailua entxufatuta daukazunean Irakurketa ikuspegian agertzen den pila-ikonoaren kolorea zehazten du. Kolore lehenetsia berdea da.
+</para>
+</listitem> 
+
+      <listitem>
+<para>
+<guilabel>AC-Off Bateriaren kolorea</guilabel> &mdash;  ordenagailua entxufatu gabe daukazunean Irakurketa ikuspegian agertzen den pila-ikonoaren kolorea zehazten du. Kolore lehenetsia berdea da.
+</para>
+</listitem>
+
+
+      <listitem>
+<para>
+<guilabel>Bateria baxuaren kolorea</guilabel> &mdash; kargaren portzentajea <guilabel>Karga baxuaren muga</guilabel>ren azpitik dagoenean Irakurketa ikuspegiko pila-ikonoak izango duen kolorea zehazten du (ikus <link
+ linkend="Battery-Charge-Monitor-properties-general">Propietateak &mdash; Orokorra</link>). Kolore lehenetsia gorria da.
+</para>
+</listitem></itemizedlist></sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-graph">
+     <title>Propietateak&mdash; Grafikoa</title>
+
+     
+<para>
+Fitxa honetako ezarpenek <application>Bateria-kargaren monitorea</application>n eragina izaten dute <link linkend="Battery-Charge-Monitor-Graph-sec">
+      Grafiko ikuspegia</link>n dagoenean
+</para>
+
+
+     
+<para>
+Fitxa honetako laukizuzen koloredun guztietan egin daiteke klik <mousebutton>ezker</mousebutton>reko botoiaz GNOMEren kolore-gurpila bistaratzeko. Honela lehenetsitako koloreak baino nahiago dituzun beste batzuk aukera ditzakezu.
+</para>
+
+
+     <figure id="Battery-Charge-Monitor-properties-fig3">
+      <title>Propietateen elkarrizketa-koadroa &mdash; Grafikoa</title>
+      <screenshot><screeninfo>Propietateen elkarrizketa-koadroa &mdash; Grafikoa</screeninfo> <graphic format="png" 		fileref="figures/battery-applet-properties-graph" srccredit="James 		Cope"></graphic></screenshot></figure>
+
+	
+     <itemizedlist><listitem>
+<para>
+<guilabel>AC-On Bateriaren kolorea</guilabel> &mdash;  ordenagailua entxufatuta daukazunean grafikoak izango duen kolorea zehazten du. Kolore lehenetsia berdea da.
+</para>
+</listitem>
+	 
+      <listitem>
+<para>
+<guilabel>AC-Off Bateriaren kolorea</guilabel> &amp;mdash: ordenagailua entxufatu gabe daukazunean grafikoak izango duen kolorea zehazten du. Kolore lehenetsia urdina da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Bateria baxuaren grafiko-kolorea</guilabel> &mdash; kargaren portzentajea <guilabel>Karga baxuaren muga</guilabel>tik beherakoa denean grafikoak izango duen kolorea zehazten du. Kolore lehenetsia gorria da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Grafiko-markatzailearen kolorea</guilabel> &mdash; &percnt; 25, &percnt; 50 eta &percnt; 75 karga-puntuak markatzen dituzten grafikoko banaketa-marren kolorea zehazten du. Kolore lehenetsia gris iluna da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Grafikoaren noranzkoa</guilabel> &mdash; grafikoa denboran zehar norantz mugituko den zehazten du. Noranzko lehenetsia <guilabel>Eskuinetik ezkerrera</guilabel> da.
+</para>
+</listitem></itemizedlist></sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-messages">
+     <title>Propietateak &mdash; Bateria-kargaren mezuak</title>
+
+     <figure id="Battery-Charge-Monitor-properties-fig4">
+      <title>Propietateen elkarrizketa-koadroa &mdash; Bateria-kargaren mezuak</title>
+      <screenshot><screeninfo>Propietateen elkarrizketa-koadroa &mdash; Bateria-kargaren mezuak</screeninfo> <graphic format="png"
+		fileref="figures/battery-applet-properties-messages" srccredit="James
+		Cope"></graphic></screenshot></figure>
+
+     <itemizedlist><listitem>
+<para>
+<guilabel>Abisatu bateriaren karga honaino jaisten bada</guilabel> &mdash; <application>Bateria-kargaren monitorea</application>k bateria gutxi dagoela abisatzeko elkarrizketa-koadroa zein portzentajetan erakutsi behar duen zehazten du. <guilabel>Gaitu bateria baxuaren abisua</guilabel> hautatuta dagoenean bakarrik bistaratzen da abisu hori. Ezarpen lehenetsia &percnt; 5 da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Gaitu bateria baxuaren abisua</guilabel> &mdash; <application>Bateria-kargaren monitorea</application>k  <guilabel>Abisatu bateriaren karga honaino jaisten bada</guilabel> ezarpenean zehaztutako karga-portzentajearen azpitik dagoela bateria-karga abisatzen duen elkarrizketa-koadroa bistaratu behar duen ala ez zehazten du. Balio lehenetsia hautatuta da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Gaitu karga betearen jakinarazpena</guilabel> &mdash; bateriak &percnt; 100eko karga duenean <application>Bateria-kargaren monitorea</application>k elkarrizketa-koadroa bistaratu behar duen ala ez zehazten du. Balio lehenetsia hautatu gabe da.
+</para>
+</listitem>
+</itemizedlist>
+</sect3> 
+<!-- Not needed in for 1.x applets
+    <sect3>
+     <title>Further Information</title>
+     
+<para>
+
+      For more information on the <interface>Properties</interface>
+      dialog, including descriptions of the <guibutton>OK</guibutton>,
+      <guibutton>Apply</guibutton>, <guibutton>Close</guibutton>, and
+      <guibutton>Help</guibutton> buttons, see <xref
+      linkend="applet-properties-dialog">.
+     
+</para>
+
+    </sect3>
+--></sect2>
+  
+   <sect2 id="Battery-Charge-Monitor-bugs">
+    <title> Ezagutzen diren akatsak eta mugak</title>
+    
+<para>
+Oso bitxia da <application>Bateria kargaren monitorea</application> abiaraztean Energia-kudeaketa Aurreratua onartzen ez duen ordenagailu batean gertatzen dena. <guilabel>Bateria baxuaren abisua</guilabel>ren elkarrizketa-koadroa bistaratzen da, eta nahasgarria izan daiteke.
+</para>
+</sect2>
+
+   <sect2 id="Battery-Charge-Monitor-authors">
+    <title>Egileak</title>
+    
+<para>
+Applet hau Nat Friedman-ek idatzia da <email>nat@nat.org</email>.   Bidali zure iruzkin, iradokizun eta akatsen berri-emateak <ulink url="http://bugs.gnome.org" type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei buruzko berriak bidaltzeko argibideak <ulink url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink> aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa baduzu, <application>Akatsen berri emateko tresna</application> (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko. Tresna hori <guimenu>Menu nagusi</guimenu>ko <guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri.
+</para>
+
+
+    
+<para>
+ Applet honi buruz irakurtzen ari zaren dokumentazioa James Cope-k idatzia da <email>jcope@bcs.org.uk</email>.. Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"       url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink> bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink type="http"       url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren taula</ulink> erabiliz.
+</para>
+</sect2>
+
+  <sect2 id="license">
+   <title>Lizentzia</title>
+   
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren egokitasuna 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+    </para>
+<para>
+      <citetitle>GNOME erabiltzailearen gida</citetitle>ren eranskinean 
+      daukazu. <citetitle>GNU Lizentzia Publiko Orokorra</citetitle>ren 
+      kopia Free Software Foundation-en bidez ere lor dezakezu 
+      <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address>
+      Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> 
+    </address> 
+   
+  </para>
+ </sect2>
+
+ </sect1>
+
+
+
+
+
