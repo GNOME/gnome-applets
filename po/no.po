@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.2.1\n"
-"POT-Creation-Date: 2000-08-04 10:34+0200\n"
-"PO-Revision-Date: 2000-05-22 02:15+02:00\n"
+"POT-Creation-Date: 2000-08-19 22:41+0200\n"
+"PO-Revision-Date: 2000-08-19 22:47+02:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -157,7 +157,8 @@ msgstr "En analog klokke lik den som finnes i CDE-panelet"
 #: another_clock/another_clock.c:725 asclock/asclock.c:610
 #: battery/battery.c:947 charpick/charpick.c:588 clockmail/clockmail.c:562
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:702 geyes/geyes.c:393
-#: gkb-new/gkb.c:437 gnotes/gnotes_applet.c:192 gweather/gweather-applet.c:194
+#: gkb-new/gkb.c:470 gnotes/gnotes_applet.c:192 gtik/gtik.c:1333
+#: gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1229 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
@@ -168,10 +169,10 @@ msgid "Properties..."
 msgstr "Egenskaper ..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:616
-#: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
+#: battery/battery.c:953 cdplayer/cdplayer.c:588 charpick/charpick.c:595
 #: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1096 drivemount/drivemount.c:708
-#: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:443
+#: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:493
 #: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
 #: jbc/jbc-applet.c:197 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
@@ -184,12 +185,12 @@ msgid "Help"
 msgstr "Hjelp"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:621
-#: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
+#: battery/battery.c:958 cdplayer/cdplayer.c:595 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1103
 #: drivemount/drivemount.c:713 fifteen/fifteen.c:367 geyes/geyes.c:404
-#: gkb-new/gkb.c:448 gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
-#: jbc/jbc-applet.c:202 life/life.c:290
+#: gkb-new/gkb.c:498 gnotes/gnotes_applet.c:199 gtik/gtik.c:1342
+#: gweather/gweather-applet.c:204 jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1242 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
@@ -410,21 +411,21 @@ msgstr "ioctl feilet på /dev/apm."
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM er slått av! Kan ikke lese informasjon om batterilading."
 
-#: cdplayer/cdplayer.c:164
+#: cdplayer/cdplayer.c:175
 msgid "CD Player Applet"
 msgstr "CD-spiller applet"
 
-#: cdplayer/cdplayer.c:165
+#: cdplayer/cdplayer.c:176
 msgid "(c) 1997 The Free Software Foundation"
 msgstr "(c) 1997 the Free Software Foundation"
 
-#: cdplayer/cdplayer.c:167
+#: cdplayer/cdplayer.c:178
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "CD-spiller appleten er et enkelt program for avspilling av lyd-CDer for "
 "panelet "
 
-#: cdplayer/cdplayer.c:563
+#: cdplayer/cdplayer.c:581
 msgid "Run CD Player..."
 msgstr "Kjør CD-spilleren..."
 
@@ -832,15 +833,15 @@ msgstr "Innstillinger for gEyes"
 msgid "Themes"
 msgstr "Tema"
 
-#: gkb-new/gkb.c:316
+#: gkb-new/gkb.c:348
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME tastatur-applet"
 
-#: gkb-new/gkb.c:318
+#: gkb-new/gkb.c:350
 msgid "(C) 1998-2000 LSC - Linux Support Center"
 msgstr "(C) 1998-2000 LSC - Linux Support Center"
 
-#: gkb-new/gkb.c:320
+#: gkb-new/gkb.c:352
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it to CVS.\n"
@@ -854,9 +855,17 @@ msgstr ""
 "Takk til Balazs Nagy (Kevin) <julian7@kva.hu> for hjelpen og Emese Kovacs "
 "<emese@eik.bme.hu> for hennes solidaritet."
 
-#: gkb-new/gkb.c:331
+#: gkb-new/gkb.c:363
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB hjemmeside (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/gkb.c:481
+msgid "Normal"
+msgstr "Normal"
+
+#: gkb-new/gkb.c:487
+msgid "Small"
+msgstr "Liten"
 
 #: gkb-new/prop.c:294
 msgid "Keymap name"
@@ -953,6 +962,100 @@ msgstr "Standard høyde"
 #: gnotes/properties.c:174
 msgid "Default Width"
 msgstr "Standard bredde"
+
+#: gtik/gtik.c:680
+msgid "The GNOME Stock Ticker"
+msgstr "GNOME Aksjeovervåker"
+
+#: gtik/gtik.c:683
+msgid ""
+"This program connects to a popular site and downloads current stock quotes.  "
+"The GNOME Stock Ticker is a free Internet-based application.  It comes with "
+"ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
+"investment decisions; it is for informational purposes only."
+msgstr "Dette programmet laster ned aksjekurser fra populære nettsteder. GNOME aksjeovervåker er en fri internett-basert applikasjon. Det følger IKKE MED NOEN GARANTIER. Ikke bruk GNOME aksjeovervåker til å gjøre investeringsavgjørelser; kun for informasjonsformål."
+
+#: gtik/gtik.c:1003
+msgid "New Symbol:"
+msgstr "Nytt symbol:"
+
+#: gtik/gtik.c:1018
+msgid "Remove Selected"
+msgstr "Fjern valgte"
+
+#: gtik/gtik.c:1067
+msgid "Gnome Stock Ticker Properties"
+msgstr "Egenskaper for GNOME stock ticker"
+
+#: gtik/gtik.c:1079
+msgid "Update Frequency in minutes:"
+msgstr "Oppdateringsfrekvens i minutter:"
+
+#: gtik/gtik.c:1098
+msgid "Enter symbols delimited with \"+\" in the box below."
+msgstr "Skriv inn symboler adskilt med \"+\" i boksen under."
+
+#: gtik/gtik.c:1106
+msgid "Display only symbols and price"
+msgstr "Vis kun symboler og pris"
+
+#: gtik/gtik.c:1107
+msgid "Scroll left to right"
+msgstr "Rull fra venstre mot høyre"
+
+#: gtik/gtik.c:1108
+msgid "Display arrows instead of -/+"
+msgstr "Vis piler i stedet for -/+"
+
+#: gtik/gtik.c:1109
+msgid "Enable scroll buttons"
+msgstr "Bruk rulleknapper"
+
+#. COLOR
+#: gtik/gtik.c:1153
+msgid "+ Color"
+msgstr "+ farge"
+
+#: gtik/gtik.c:1170
+msgid "- Color"
+msgstr "- farge"
+
+#: gtik/gtik.c:1190
+msgid "Stock Symbol:"
+msgstr "Aksjesymbol:"
+
+#: gtik/gtik.c:1191 gtik/gtik.c:1202
+msgid "Select Font"
+msgstr "Velg skrifttype"
+
+#: gtik/gtik.c:1201
+msgid "Stock Change:"
+msgstr "Aksjeendring:"
+
+#: gtik/gtik.c:1224
+msgid "Symbols"
+msgstr "Symboler"
+
+#: gtik/gtik.c:1226
+msgid "Behavior"
+msgstr "Oppførsel"
+
+#. appearance frame
+#: gtik/gtik.c:1228 mini-commander/src/preferences.c:557
+msgid "Appearance"
+msgstr "Utseende"
+
+#: gtik/gtik.c:1323 slashapp/slashapp.c:64
+msgid "Refresh"
+msgstr "Gjenles"
+
+#: gtik/gtik.c:1471
+msgid "(No"
+msgstr "(Nei"
+
+#: gtik/gtik.c:1472
+msgid "Change "
+msgstr "Endre "
 
 #: gweather/gweather-about.c:41
 msgid "Copyright (c)1999 by S. Papadimitriou"
@@ -2501,11 +2604,6 @@ msgstr "Vis tid"
 msgid "Show date"
 msgstr "Vis dato"
 
-#. appearance frame
-#: mini-commander/src/preferences.c:557
-msgid "Appearance"
-msgstr "Utseende"
-
 #. show handle check box
 #: mini-commander/src/preferences.c:565
 msgid "Show handle"
@@ -3419,10 +3517,6 @@ msgstr "Pause under tekstbryting:"
 #: slashapp/properties.c:412 tickastat/properties.c:486
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "Rullefart mellom linjer (jevn rulling):"
-
-#: slashapp/slashapp.c:64
-msgid "Refresh"
-msgstr "Gjenles"
 
 #: slashapp/slashapp.c:72
 msgid "Loading headlines..."
