@@ -15,6 +15,12 @@
 #include "applet-lib.h"
 #include "applet-widget.h"
 
+#ifdef __FreeBSD__
+#include <fcntl.h>
+#include <machine/apm_bios.h>
+#define APMDEV "/dev/apm"
+#endif
+
 #define TIMEOUT 5000  /* ms */
 
 #define PROC_APM "/proc/apm"
@@ -35,8 +41,11 @@ static GtkWidget *minlabel;
    APM BIOS version number */
 #ifdef	__linux__
 static GtkWidget *driverlabel;
-static GtkWidget *bioslabel;
 #endif	/* __linux__ */
+
+#if defined (__linux__) || defined (__FreeBSD__)
+static GtkWidget *bioslabel;
+#endif
 
 static gint batmon_timeout = -1;
 
@@ -59,6 +68,7 @@ batmon_timeout_callback (gpointer *data)
 	gint		batpct;
 	gint		batmin;
 	gchar		str[30];
+	gchar		tipstr[30];
 	gchar		*fname;
 	
 /* In an effort to be platform independent, the section of code below
@@ -133,10 +143,61 @@ batmon_timeout_callback (gpointer *data)
 	gtk_label_set (GTK_LABEL (bioslabel), string[1]);
 	
 	g_free (mempoint);
+#elif __FreeBSD__
+	struct apm_info aip;
+	int fd = open(APMDEV, O_RDWR);
+
+	if (fd == -1)
+	  {
+	    g_warning (_("Can't open /dev/apm; can't get data."));
+	    /* returning FALSE will remove our timout */
+	    return FALSE;
+	  }
+
+	if (ioctl(fd, APMIO_GETINFO, &aip) == -1) {
+	  g_warning(_("ioctl failed on /dev/apm."));
+	  return FALSE;
+	}
+
+	batmin = -1;
+
+	/* if APM is not turned on */
+	if (!aip.ai_status)
+	  {
+	    batflag = NOEXIST_MASK;
+	    batpct = 100;
+	    linestat = 1;
+	    return FALSE; /* remove our timeout */
+	  }
+
+	linestat = aip.ai_acline;
+	switch (aip.ai_batt_stat)
+	  {
+	  case 0:
+	    batflag = HIGH_MASK;
+	    break;
+	  case 1:
+	    batflag = LOW_MASK;
+	    break;
+	  case 2:
+	    batflag = CRIT_MASK;
+	    break;
+	  case 3:
+	    batflag = CHARGE_MASK;
+	    break;
+	  }
+
+	batpct = aip.ai_batt_life;
+
+	sprintf(str, "%d.%d", aip.ai_major, aip.ai_minor);
+
+	gtk_label_set (GTK_LABEL (bioslabel), str);
+
+	close(fd);
 #else
 	batflag = NOEXIST_MASK;
 	batpct = 100;
-	batmin = 99999999; /* some random number */
+	batmin = -1;
 	linestat = 1;
 #endif /* __linux__ */
 
@@ -171,15 +232,25 @@ batmon_timeout_callback (gpointer *data)
 	
 	gtk_progress_bar_update (GTK_PROGRESS_BAR (batcharge),
 		(gfloat) batpct / 100);
-	
-	if (batmin < 100000000)
+	if (batmin == -1)
+	  {
+		strcpy(str, _("unknown minutes of battery."));
+		sprintf(tipstr, _("unknown minutes of battery (%d%%)"),
+			batpct);
+	  }
+	else if (batmin < 100000000)
+	  {
 		sprintf (str, _("%d minutes of battery"), batmin);
+		sprintf(tipstr, _("%d minutes of battery (%d%%)"),
+			batmin, batpct);
+	  }
 	else {	/* would have to be an error */
 		g_warning (_("More than 100,000,000 minutes of battery life?!?"));
 		return FALSE;
 	}
 	gtk_label_set (GTK_LABEL (minlabel), str);
-	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (data), str, NULL);
+
+	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (data), tipstr, NULL);
 
 	if (linestat)
 		fname = ac_pixmap_filename;
@@ -219,10 +290,7 @@ create_batmon_widget (GtkWidget *window)
 	GtkWidget *button;
 	GtkWidget *pixmap;
 
-	/* drmike - the function init_module() below isnt getting called */
-	/*          lets at least be sure these get set                  */
-	ac_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-ac.xpm");
-	bat_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-bat.xpm");
+	init_module();
 
 	button = gtk_button_new ();
 
@@ -262,12 +330,14 @@ create_batmon_window (void)
 	gtk_container_add (GTK_CONTAINER (window), box1);
 	gtk_widget_show (box1);
 
-/* In Linux we show the APM driver version and APM BIOS version. */
-#ifdef	__linux__
+/* In Linux we show the APM driver version and APM BIOS version,
+   and in FreeBSD we just show the APM BIOS version. */
+#if defined (__linux__) || defined (__FreeBSD__)
 	box2 = gtk_hbox_new (FALSE, 5);
 	gtk_box_pack_start_defaults (GTK_BOX (box1), box2);
 	gtk_widget_show (box2);
 
+#ifdef	__linux__
 	widget1 = gtk_label_new (_("Linux APM Driver Version:"));
 	gtk_box_pack_start (GTK_BOX (box2), widget1, FALSE, FALSE, 0);
 	gtk_widget_show (widget1);
@@ -275,7 +345,7 @@ create_batmon_window (void)
 	driverlabel = gtk_label_new ("");
 	gtk_box_pack_start (GTK_BOX (box2), driverlabel, FALSE, FALSE, 0);
 	gtk_widget_show (driverlabel);
-
+#endif /* __linux__ */
 	box2 = gtk_hbox_new (FALSE, 5);
 	gtk_box_pack_start_defaults (GTK_BOX (box1), box2);
 	gtk_widget_show (box2);
@@ -291,7 +361,7 @@ create_batmon_window (void)
 	widget1 = gtk_hseparator_new();
 	gtk_box_pack_start_defaults (GTK_BOX (box1), widget1);
 	gtk_widget_show (widget1);
-#endif	/* __linux__ */
+#endif	/* __linux__ || __FreeBSD__ */
 
 	box2 = gtk_hbox_new (FALSE, 5);
 	gtk_box_pack_start_defaults (GTK_BOX (box1), box2);
@@ -376,14 +446,6 @@ main(int argc, char **argv)
 	gtk_widget_show(batmon);
 	applet_widget_add(APPLET_WIDGET(applet), batmon);
 	gtk_widget_show(applet);
-
-/*
-	gnome_panel_applet_register_callback(applet_id,
-					     "test",
-					     "TEST CALLBACK",
-					     test_callback,
-					     NULL);
-*/
 
 	applet_widget_gtk_main();
 
