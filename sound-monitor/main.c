@@ -215,10 +215,7 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 	switch (type)
 		{
 		case PANEL_BACK_NONE :
-			ns = gtk_rc_get_style(GTK_WIDGET(ad->display_area));
-			gtk_style_ref(ns);
-			gtk_widget_set_style(GTK_WIDGET(ad->applet), ns);
-			gtk_style_unref(ns);
+			gtk_widget_set_rc_style(GTK_WIDGET(ad->applet));
 			break;
 		case PANEL_BACK_COLOR :
 			ns = gtk_style_copy(GTK_WIDGET(ad->applet)->style);
