@@ -40,7 +40,10 @@ GtkWidget *applet;
 static gint appletDestroy_signal(GtkWidget *widget, gpointer data);
 static gint appletDetached_signal(GtkWidget *widget, gpointer data);
 static gint appletAttached_signal(GtkWidget *widget, gpointer data);
-static gint appletOrientChanged_cb(GtkWidget *widget, gpointer data);
+static gint applet_orient_changed_cb(GtkWidget *widget, gpointer data);
+#ifdef HAVE_PANEL_SIZE
+static void applet_size_changed_cb(GtkWidget *widget, PanelSizeType size_type, gpointer data);
+#endif
 
 static gint
 appletDestroy_signal(GtkWidget *widget, gpointer data)
@@ -78,7 +81,7 @@ appletAttached_signal(GtkWidget *widget, gpointer data)
 }
 
 static gint
-appletOrientChanged_cb(GtkWidget *widget, gpointer data)
+applet_orient_changed_cb(GtkWidget *widget, gpointer data)
 {
     static int counter = 0;
 
@@ -88,6 +91,28 @@ appletOrientChanged_cb(GtkWidget *widget, gpointer data)
     /* go on */
     return FALSE;  
 }
+
+#ifdef HAVE_PANEL_SIZE
+/*this is when the panel size changes*/
+static void
+applet_size_changed_cb(GtkWidget *widget, PanelSizeType size_type, gpointer data)
+{
+    static int counter = 0;
+
+    if(counter++ > 0)
+	showMessage((gchar *) _("size changed")); 
+
+    switch(size_type)
+	{
+	case SIZE_TINY: prop.normalSizeY = 24; prop.flatLayout = TRUE; prop.showFrame = FALSE; break;
+	case SIZE_STANDARD: prop.normalSizeY = 48; prop.flatLayout = FALSE; break;
+	case SIZE_LARGE: prop.normalSizeY = 64; prop.flatLayout = FALSE; break;
+	case SIZE_HUGE: prop.normalSizeY = 80; prop.flatLayout = FALSE; break;
+	}
+
+    redraw_applet();
+}
+#endif
 
 void
 redraw_applet(void)
@@ -99,10 +124,21 @@ redraw_applet(void)
     GtkWidget *handle;
     GtkWidget *icon;
     GtkWidget *vbox;
+    int size_frames = 0;
+    int size_status_line = 18;
 
     static GtkWidget *applet_inner_vbox;
     static GtkWidget *applet_vbox;
     static int first_time = TRUE;   
+
+    /* recalculate sizes */
+    if(prop.showHandle)
+	size_frames += 0;
+    if(prop.showFrame)
+	size_frames += 6;
+    if(prop.flatLayout) 
+	size_status_line = 0;
+    prop.cmdLineY = prop.normalSizeY - size_status_line - size_frames;   
 
     if(!applet_vbox)
 	{
@@ -125,7 +161,10 @@ redraw_applet(void)
       gtk_widget_push_style (style);
     */
     
-    vbox = gtk_vbox_new(FALSE, 0);
+    if(prop.flatLayout) 
+	vbox = gtk_hbox_new(FALSE, 0);
+    else
+	vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
     
     /* add command line; position: top */
@@ -141,7 +180,10 @@ redraw_applet(void)
     gtk_misc_set_alignment(GTK_MISC(labelMessage), 0.0, 1.0);
     gtk_box_pack_start(GTK_BOX(hbox), labelMessage, TRUE, TRUE, 0);
 
-    hboxButtons = gtk_hbox_new(TRUE, 0);
+    if(prop.flatLayout) 
+	hboxButtons = gtk_vbox_new(TRUE, 0);
+    else
+	hboxButtons = gtk_hbox_new(TRUE, 0);
 
     /* add file-browser button */
     button = gtk_button_new();
@@ -211,7 +253,7 @@ redraw_applet(void)
 		    gtk_container_add(GTK_CONTAINER(frame2), handle);
 		}
 	    
-	    /* there was trouble with thr tooltip */
+	    /* there was trouble with the tooltip */
 	    /* applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander")); */
 	    
 	    if (prop.showFrame)
@@ -285,8 +327,18 @@ main(int argc, char **argv)
 	}
     gtk_signal_connect(GTK_OBJECT(applet),
 		       "change_orient",
-		       GTK_SIGNAL_FUNC(appletOrientChanged_cb),
+		       GTK_SIGNAL_FUNC(applet_orient_changed_cb),
 		       NULL);
+
+#ifdef HAVE_PANEL_SIZE
+    /*we have to bind change_size before we do applet_widget_add 
+      since we need to get an initial change_size signal to set our
+      initial size, and we get that during the _add call*/
+    gtk_signal_connect(GTK_OBJECT(applet),
+		       "change_size",
+		       GTK_SIGNAL_FUNC(applet_size_changed_cb),
+		       NULL);
+#endif
     
     loadSession();
     

@@ -18,6 +18,7 @@ struct structProperties
     int reducedSizeX;
     int reducedSizeY;
     int cmdLineY;
+    int flatLayout;
     int cmdLineColorFgR;
     int cmdLineColorFgG;
     int cmdLineColorFgB;

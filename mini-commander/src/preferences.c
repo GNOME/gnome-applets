@@ -94,6 +94,7 @@ resetTemporaryPrefs(void)
     propTmp.reducedSizeY = -1;
     propTmp.autoCompleteHistory = -1;
     propTmp.cmdLineY = -1;
+    propTmp.flatLayout = -1;
     propTmp.cmdLineColorFgR = -1;
     propTmp.cmdLineColorFgG = -1;
     propTmp.cmdLineColorFgB = -1;
@@ -227,8 +228,8 @@ loadSession(void)
 
     prop.showTime = gnome_config_get_bool("mini_commander/show_time=true");
     prop.showDate = gnome_config_get_bool("mini_commander/show_date=false");
-    prop.showHandle = gnome_config_get_bool("mini_commander/show_handle=true");
-    prop.showFrame = gnome_config_get_bool("mini_commander/show_frame=true");
+    prop.showHandle = gnome_config_get_bool("mini_commander/show_handle=false");
+    prop.showFrame = gnome_config_get_bool("mini_commander/show_frame=false");
 
     prop.autoCompleteHistory = gnome_config_get_bool("mini_commander/autocomplete_history=true");
 

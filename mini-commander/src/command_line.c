@@ -462,7 +462,19 @@ command_entry_update_color(void)
 void
 command_entry_update_size(void)
 {
-    gtk_widget_set_usize(GTK_WIDGET(entryCommand), -1, prop.cmdLineY);
+    int size_y = -1;
+  
+    if(prop.flatLayout) 
+	if(prop.showHandle && !prop.showFrame)
+	    size_y = prop.normalSizeX - 17 - 10;
+	else if(!prop.showHandle && !prop.showFrame)
+	    size_y = prop.normalSizeX - 17;
+	if(prop.showHandle && prop.showFrame)
+	    size_y = prop.normalSizeX - 17 - 10 - 10;
+	else if(!prop.showHandle && prop.showFrame)
+	    size_y = prop.normalSizeX - 17 - 10;
+
+    gtk_widget_set_usize(GTK_WIDGET(entryCommand), size_y, prop.cmdLineY);
 }
 
 

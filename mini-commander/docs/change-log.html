@@ -83,7 +83,34 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-09-07  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
+>1999-09-09  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
+
+	* src/command_line.c (command_entry_update_size): applet size will
+ 	be automatically recalculated if panel size changes
+
+	* src/mini-commander_applet.c (applet_size_changed_cb): added
+
+	(redraw_applet): applet size/layout will be automatically modified
+ 	if panel size changes
+
+	(applet_size_changed_cb): applet size will be automatically
+ 	recalculated if panel size changes
+
+1999-09-08  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
+
+	* src/preferences.c (propertiesBox_apply_signal): use
+ 	redraw_applet() for modifying properties of the applet's widgets
+
+	(propertiesBox): hint 'Sometimes the applet has to be moved on the
+ 	panel\nto make a change of the size visible.' is no longer needed
+
+	(propertiesBox): Changing appearance is no longer 'experimental'.
+  	Changes are applied without needing to restart the whole applet.
+
+	* src/mini-commander_applet.c (redraw_applet): moved coded from
+ 	main() to this function
+
+1999-09-07  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
 
 	* src/cmd_completion.c (cmdc): Added this new command completion
  	routine by Travis Hume &#60;travishume@acm.org&#62;.  I guess it will be
