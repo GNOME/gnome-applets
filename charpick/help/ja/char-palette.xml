@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "0.05">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "2002年10月">
+  <!ENTITY applet "キャラクタパレット">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002 
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+  <!-- please do not change the id; for translations, change lang to -->
+  <!-- appropriate code -->
+  <articleinfo> 
+    <title>&applet; Applet Manual V&manrevision;</title>
+    <copyright> 
+      <year>2002</year>
+      <holder>Sun Microsystems</holder> </copyright>
+    <copyright> 
+      <year>2000</year>
+      <holder>Dan Mueth</holder> </copyright>
+    <copyright>
+      <year>2003</year>
+      <holder>鎌ヶ迫正俊 (日本語訳)</holder>
+    </copyright>
+
+    <publisher> 
+      <publishername>GNOMEドキュメンテーションプロジェクト </publishername>
+    </publisher>
+
+    &legal;
+
+    <!-- This file  contains link to license for the documentation (GNU FDL),
+    and other legal stuff such as "NO WARRANTY" statement. Please do not change
+    any of this. -->
+    <authorgroup> 
+      <author> 
+        <firstname>Sun</firstname>
+        <surname>GNOMEドキュメンテーションチーム</surname> 
+        <affiliation> 
+          <orgname>サン マイクロシステムズ</orgname>
+          <address> <email>gdocteam@sun.com</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Dan</firstname>
+        <surname>Mueth</surname> 
+        <affiliation> 
+          <orgname>GNOMEドキュメンテーションプロジェクト</orgname>
+          <address> <email>d-mueth@uchicago.edu</email> </address>
+        </affiliation>
+      </author> 
+      <othercredit role="translator">
+        <firstname>Masatoshi</firstname> 
+        <surname>KAMAGASAKO</surname> 
+        <affiliation> 
+          <orgname>日本GNOMEユーザ会 翻訳チーム</orgname> 
+          <address> <email>emerald@gnome.gr.jp</email> </address> 
+        </affiliation>
+        <contrib>日本語訳</contrib>
+      </othercredit>
+    </authorgroup>
+
+    <revhistory> 
+      <revision> 
+        <revnumber>&applet;アプレットマニュアル V&manrevision;</revnumber>
+        <date>&date;</date> 
+        <revdescription> 
+          <para role="author">サン マイクロシステムズ
+            <email>gdocteam@sun.com</email>
+          </para>
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+      <revision> 
+        <revnumber>キャラクタパレットアプレットマニュアル V2.2</revnumber>
+        <date>2002年8月</date> 
+        <revdescription> 
+          <para role="author">サン マイクロシステムズ
+            <email>gdocteam@sun.com</email>
+          </para>
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+      <revision> 
+        <revnumber>キャラクタパレットアプレットマニュアル V2.1</revnumber>
+        <date>2002年7月</date>
+        <revdescription> 
+          <para role="author">サン マイクロシステムズ
+            <email>gdocteam@sun.com</email>
+          </para>
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+      <revision> 
+        <revnumber>キャラクタパレットアプレットマニュアル V2.0</revnumber>
+        <date>2002年3月</date> 
+        <revdescription> 
+          <para role="author">サン マイクロシステムズ
+            <email>gdocteam@sun.com</email>
+          </para>
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+      <revision> 
+        <revnumber>キャラクタピッカ アプレット</revnumber>
+        <date>2000年</date> 
+        <revdescription> 
+          <para role="author">Dan Mueth <email>d-mueth@uchicago.edu</email>
+          </para>
+          <para role="publisher">GNOMEドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>
+      このマニュアルは&applet;アプレット第&appletversion;版について説明しています。
+    </releaseinfo>
+    <legalnotice>
+      <title>フィードバック</title>
+      <para>
+        この&applet;やマニュアルについてのバグレポートや提案は、<ulink url="ghelp:gnome-feedback" type="help">GNOMEフィードバックページ</ulink>を参照してください。
+      </para>
+      <!-- Translators may also add here feedback address for translations -->
+      <para>
+        このマニュアルの日本語訳についての指摘や提案は<email>emerald@gnome.gr.jp</email>までお願いします。
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm>
+    <primary>キャラクタパレット</primary>
+  </indexterm> 
+
+  <!-- ============= Document Body ============================= -->
+  <!-- ============= Introduction ============================== -->
+  <sect1 id="charpick-introduction"> 
+    <title>はじめに</title> 
+    <!-- ==== Figure ============================================= -->
+    <figure id="applet-fig"> 
+      <title>&applet;アプレット</title>
+      <screenshot> 
+        <mediaobject> 
+          <imageobject>
+            <imagedata fileref="figures/charpalette_applet.png" format="PNG"/>
+          </imageobject>
+          <textobject>
+            <phrase>キャラクタパレットアプレットを表示</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure> 
+    <!-- ==== End of Figure ======================================= -->
+    <para>
+      <application>&applet;</application>は、アクセント記号付きのアルファベットや数学のシンボル、特別なシンボル、句読点といった非標準的な文字にアクセスするための、便利な手段を提供します。テキストドキュメントやコマンドラインといったようなテキスト文字列に、アプレットから文字を挿入することができます。必要に応じて、アプレットの内容をカスタマイズすることも可能です。<application>&applet;</application>はISO-8859-1 (Latin 1)文字セットをサポートします。これはほとんどのヨーロッパ言語をカバーします。
+    </para>
+    <para>
+      <application>&applet;</application>をパネルに追加するには、パネルを右クリックし、
+      <menuchoice> 
+        <guimenu>パネルに追加</guimenu>
+        <guisubmenu>ユーティリティ</guisubmenu> 
+        <guimenuitem>キャラクタパレット</guimenuitem>
+      </menuchoice>
+      と選択します。
+    </para>
+  </sect1>
+
+  <!-- ================ Usage ================================ -->
+  <sect1 id="charpick-usage"> 
+    <title>使い方</title>
+    <para>
+      初めて<application>&applet;</application>をパネルに追加した時、アプレットはデフォルトの文字のリストを表示します。デフォルトのリストから文字を選択したり、定義済みの文字グループから文字を選択したりできます。定義済みの文字グループはそれぞれ、あなたのキーボードの標準的な文字に関係付けられています。
+    </para>
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="charpick-charselect"> 
+      <title>文字を選択する</title>
+      <para>
+	アプレットから文字を選択し、テキスト文字列に選択した文字を挿入するには、以下の手順を踏みます:
+      </para>
+      <orderedlist> 
+        <listitem> 
+          <para>
+	    アプレット上にある、必要な文字をクリックします。選択されたことを示すために、選択されたボタンは押下された状態になります。
+          </para>
+        </listitem>
+        <listitem> 
+          <para>
+	    選択した文字を挿入したいアプリケーション上の位置をマウスポインタで指定し、右クリックして挿入します。貼り付け機能が有効であれば、文字を貼り付けることもできます。アプレット上の別のボタンをクリックするまで選択された状態は保持されますので、連続して文字を挿入し続けることができます。
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+	完全なISO-8859-1文字セットをサポートしないアプリケーションもあります。アプリケーションでサポートされていない文字を挿入することはできません。
+      </para>
+    </sect2> 
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="charpick-display-chargroup"> 
+      <title>定義済みの文字グループを表示する</title>
+      <para>
+	アプレットに表示されている文字を、デフォルトのリストから定義済みの文字グループに変更することができます。
+      </para>
+      <para>
+	定義済みの文字グループを表示するには、以下の手順で操作します:
+      </para>
+      <orderedlist> 
+        <listitem> 
+          <para>
+	    アプレットにフォーカスを当てるために、デフォルトのリスト上の文字のいずれかをクリックします。
+          </para>
+        </listitem>
+        <listitem> 
+          <para>
+	    表示させた文字グループに結び付けられているキーボードのキーを押します。例えば、<keycap>A</keycap>キーを押すと、以下の図のような文字グループが表示されます。
+            <!-- ==== Figure ============================================= -->
+            <figure id="charpick-chargroup"> 
+              <title>Aキーに結び付けられた文字グループ</title>
+              <screenshot> 
+                <mediaobject> 
+                  <imageobject> 
+                    <imagedata fileref="figures/charpalette_chargroup.png"
+                               format="PNG"/>
+                  </imageobject>
+                  <textobject>
+	            <phrase>
+		      Aキーに結び付けられた文字グループを表示
+	            </phrase>
+	          </textobject>
+	        </mediaobject>
+	      </screenshot>
+	    </figure> 
+	    <!-- ==== End of Figure ======================================= -->
+	  </para>
+	</listitem>
+      </orderedlist>
+      <para>
+	必要な文字をアプレットの文字グループから選択し、テキスト文字列に挿入します。
+      </para>
+      <para>
+	次のチャートで、キーボードのキーとそれに結び付けられている文字グループを示します。キーボードのキーを最初のカラムに示しています。それぞれのキーに結び付けられている文字グループはもう一方のカラムに表示されています。
+      </para>
+      <!-- ==== Figure ============================================= -->
+      <figure id="charpick-characters"> 
+	<title>キーボードのキーに結び付けられた文字グループ</title>
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject> 
+	      <imagedata fileref="figures/charpick_characters.png"
+		         format="PNG"/>
+	    </imageobject>
+	    <textobject>
+	      <phrase>
+		キーボードのキーに結び付けられた文字グループを表示
+	      </phrase>
+	    </textobject>
+	  </mediaobject>
+	</screenshot>
+      </figure> 
+      <!-- ==== End of Figure ======================================= -->
+    </sect2> 
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="charpick-default-list"> 
+      <title>デフォルトのリストに戻る</title>
+      <para>
+	デフォルトのリストに戻るには、アプレット上のいずれかの文字をクリックし、<keycap>D</keycap>キーを押します。
+      </para>
+    </sect2>
+    <!-- ================ Usage Subsection ================================ -->
+    <sect2 id="charpick-default-new"> 
+      <title>新しいデフォルトのリストを設定する</title>
+      <para>
+	新しいデフォルトのリストを設定するために、<application>文字マップ</application>のような文字選択アプリケーションを利用することができます。例えば、<application>文字マップ</application>を利用して新しいデフォルトのリストを作成するには、以下の手順を実行します:
+      </para>
+      <orderedlist> 
+	<listitem> 
+	  <para>
+	    アプレットを右クリックし、<guimenuitem>設定</guimenuitem>を選択します。
+	  </para>
+	</listitem>
+	<listitem> 
+	  <para>
+	    <guilabel>キャラクタパレット設定</guilabel>ダイアログで、<guilabel>デフォルトのキャラクタリスト</guilabel>テキストボックスの内容を選択し、現在のデフォルトのリストを削除するために<keycap>Back Space</keycap>キーを押します。
+	  </para>
+	</listitem>
+	<listitem> 
+	  <para>
+	    <application>文字マップ</application>を起動し、デフォルトのリストに使いたい文字を選択します。最大で25個の文字を選択できます。
+	  </para>
+	</listitem>
+	<listitem> 
+	  <para>
+	    <application>文字マップ</application>から、<guilabel>コピーする文字列</guilabel>テキストボックスの内容を<guilabel>デフォルトのキャラクタリスト</guilabel>テキストボックスにコピーします。
+	  </para>
+	</listitem>
+	<listitem> 
+	  <para><guibutton>閉じる</guibutton>ボタンをクリックします。</para>
+	</listitem>
+      </orderedlist>
+    </sect2>
+  </sect1>
+
+  <!-- ============= Preferences ============================= -->
+  <!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="charpick-prefs"> 
+    <title>設定</title>
+    <para>
+      <application>&applet;</application>を設定するためには、アプレットを右クリックし、<guimenuitem>設定</guimenuitem>を選択します。<guilabel>デフォルトのキャラクタリスト</guilabel>テキストボックスを持つ<guilabel>キャラクタパレット設定</guilabel>ダイアログが表示されます。このテキストボックスでデフォルトのリストを設定します。詳細は <xref linkend="charpick-default-new"/>を参照してください。
+    </para>
+  </sect1>
+</article>
