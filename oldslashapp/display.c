@@ -6,10 +6,8 @@
 #include "back.xpm"
 #include "noimage.xpm"
 
-static	InfoData *create_info_line(gchar *text, gchar *icon_path, gint offset, gint center,
-		gint show_count, gint delay);
-static	InfoData *create_info_line_with_pixmap(gchar *text, GtkWidget *icon, gint offset, gint center,
-		gint show_count, gint delay);
+static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
+				gint offset, gint center, gint show_count, gint delay);
 static void free_info_line(InfoData *id);
 static gint check_info_for_removal(AppData *ad, InfoData *id);
 static GList *next_info_line(AppData *ad);
@@ -18,71 +16,26 @@ static void draw_pixmap(AppData *ad, GdkPixmap *smap, GdkPixmap *tmap, gint x, g
 static void scroll_display_up(AppData *ad, gint m);
 static void draw_display_line(AppData *ad);
 static gint update_display_cb(gpointer data);
+static void register_click_func(AppData *ad, InfoData *id);
+static void scroll_click_func(AppData *ad, gint m);
 
-static	InfoData *create_info_line(gchar *text, gchar *icon_path, gint offset, gint center,
-		gint show_count, gint delay)
+static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
+				gint offset, gint center, gint show_count, gint delay)
 {
 	InfoData *id;
 	if (!text) return NULL;
 	id = g_new0(InfoData, 1);
 
+	id->click_func = NULL;
+	id->data = NULL;
+
 	id->text = g_strdup(text);
+
 	if (icon_path)
-		{
-		gint width, height;
-
 		id->icon_path = g_strdup(icon_path);
-		id->icon = NULL;
-
-		if (g_file_exists(icon_path))
-			id->icon = gnome_pixmap_new_from_file(icon_path);
-
-		if (!id->icon)
-			id->icon = gnome_pixmap_new_from_xpm_d(noimage_xpm);
-
-		gdk_window_get_size (GNOME_PIXMAP(id->icon)->pixmap, &width, &height);
-		id->icon_w = width;
-		id->icon_h = height;
-		}
 	else
-		{
 		id->icon_path = NULL;
-		id->icon = NULL;
-		id->icon_w = 0;
-		id->icon_h = 0;
-		}
 
-	id->length = strlen(text);
-
-	if (id->icon_w == 0 || offset > id->icon_w + 4)
-		id->offset = offset;
-	else
-		{
-		if (id->icon_w > 0)
-			id->offset = id->icon_w + 4;
-		else
-			id->offset = 0;
-		}
-
-	id->center = center;
-
-	id->shown = FALSE;
-	id->show_count = show_count;
-
-	id->end_delay = delay;
-
-	return id;
-}
-
-static	InfoData *create_info_line_with_pixmap(gchar *text, GtkWidget *icon, gint offset, gint center,
-		gint show_count, gint delay)
-{
-	InfoData *id;
-	if (!text) return NULL;
-	id = g_new0(InfoData, 1);
-
-	id->text = g_strdup(text);
-	id->icon_path = NULL;
 	if (icon)
 		{
 		gint width, height;
@@ -129,6 +82,8 @@ static void free_info_line(InfoData *id)
 
 	if (id->icon) gtk_widget_destroy(id->icon);
 
+	if (id->data && id->free_func) id->free_func(id->data);
+
 	g_free(id);
 }
 
@@ -146,28 +101,42 @@ void free_all_info_lines(GList *list)
 	g_list_free(list);
 }
 
-void add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
+InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
 		   gint show_count, gint delay)
 {
 	InfoData *id;
-	id = create_info_line(text, icon_path, offset, center, show_count, delay);
+	GtkWidget *icon = NULL;
+
+	if (icon_path)
+		{
+		if (g_file_exists(icon_path))
+			id->icon = gnome_pixmap_new_from_file(icon_path);
+		if (!id->icon)
+			id->icon = gnome_pixmap_new_from_xpm_d(noimage_xpm);
+		}
+
+	id = create_info_line(text, icon_path, icon, offset, center, show_count, delay);
 	if (id)
 		{
 		ad->text = g_list_append(ad->text, id);
 		ad->text_lines++;
 		}
+
+	return id;
 }
 
-void add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
+InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
 		   gint show_count, gint delay)
 {
 	InfoData *id;
-	id = create_info_line_with_pixmap(text, icon, offset, center, show_count, delay);
+	id = create_info_line(text, NULL, icon, offset, center, show_count, delay);
 	if (id)
 		{
 		ad->text = g_list_append(ad->text, id);
 		ad->text_lines++;
 		}
+
+	return id;
 }
 
 void remove_info_line(AppData *ad, InfoData *id)
@@ -197,6 +166,15 @@ void remove_all_lines(AppData *ad)
 		list = list->next;
 		remove_info_line(ad, id);
 		}
+}
+
+void set_info_click_signal(InfoData *id, void (*click_func)(AppData *ad, gpointer data),
+		gpointer data, void (*free_func)(gpointer data))
+{
+	if (!id) return;
+	id->click_func = click_func;
+	id->data = data;
+	id->free_func = free_func;
 }
 
 static gint check_info_for_removal(AppData *ad, InfoData *id)
@@ -278,6 +256,7 @@ static void scroll_display_up(AppData *ad, gint m)
 			}
 		}
 	redraw_display(ad);
+	scroll_click_func(ad, m);
 }
 
 static void draw_display_line(AppData *ad)
@@ -346,6 +325,12 @@ static void draw_display_line(AppData *ad)
 			}
 		else
 			ad->x_pos = id->offset;
+
+		/* add the click check */
+		if (id->click_func && ad->current_line_pos == 0)
+			{
+			register_click_func(ad, id);
+			}
 		}
 
 	c = id->text[ad->text_pos];
@@ -452,6 +437,132 @@ static gint update_display_cb(gpointer data)
 	return TRUE;
 }
 
+static void set_mouse_cursor (AppData *ad, gint icon)
+{
+        GdkCursor *cursor = gdk_cursor_new (icon);
+        gdk_window_set_cursor (ad->draw_area->window, cursor);
+        gdk_cursor_destroy (cursor);
+}
+
+static void register_click_func(AppData *ad, InfoData *id)
+{
+	ClickData *cd;
+
+	if (!id || !id->click_func) return;
+
+	cd = g_new0(ClickData, 1);
+
+	cd->line_id = id;
+	cd->click_func = id->click_func;
+	cd->data = id->data;
+
+	cd->x = 0;
+	cd->y = ad->height - ad->scroll_height;
+	cd->w = ad->width;
+	cd->h = ad->scroll_height;
+
+	ad->click_list = g_list_append(ad->click_list, cd);
+
+	scroll_click_func(ad, 0);
+}
+
+static void scroll_click_func(AppData *ad, gint m)
+{
+	GList *list = ad->click_list;
+	gint proximity = FALSE;
+
+	while(list)
+		{
+		GList *w = list;
+		ClickData *cd = w->data;
+		list = list->next;
+
+		cd->y -= m;
+
+		if (ad->current_text)
+			{
+			InfoData *id = ad->current_text->data;
+			if (id == cd->line_id && ad->text_pos <= id->length) cd->h += m;
+			}
+
+		if (cd->y + cd->h < 1)
+			{
+			ad->click_list = g_list_remove(ad->click_list, cd);
+			g_free(cd);
+			}
+		else
+			{
+			GdkModifierType modmask;
+			gint x, y;
+			gdk_window_get_pointer (ad->draw_area->window, &x, &y, &modmask);
+			if (x >= cd->x && x < cd->x + cd->w && y >= cd->y && y < cd->y + cd->h)
+				{
+				proximity = TRUE;
+				}
+			}
+		}
+
+	if (proximity)
+		set_mouse_cursor (ad, GDK_HAND2);
+	else
+		set_mouse_cursor (ad, GDK_LEFT_PTR);
+}
+
+static int display_click(GtkWidget *w, GdkEventButton *event, gpointer data)
+{
+	AppData *ad = data;
+	GList *list;
+	gint x = (float)event->x;
+	gint y = (float)event->y;
+
+	if (event->button != 1)
+		{
+		return FALSE;
+		}
+
+	list = ad->click_list;
+	while(list)
+		{
+		ClickData *cd = list->data;
+
+		if (x >= cd->x && x < cd->x + cd->w && y >= cd->y && y < cd->y + cd->h)
+			{
+			if (cd->click_func) cd->click_func(ad, cd->data);
+			}
+
+		list = list->next;
+		}
+
+	return TRUE;
+}
+
+static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
+{
+	AppData *ad = data;
+	GList *list;
+	gint proximity = FALSE;
+	gint x = (float)event->x;
+	gint y = (float)event->y;
+
+	list = ad->click_list;
+	while(list)
+		{
+		ClickData *cd = list->data;
+
+		if (x >= cd->x && x < cd->x + cd->w && y >= cd->y && y < cd->y + cd->h)
+			{
+			proximity = TRUE;
+			}
+
+		list = list->next;
+		}
+
+	if (proximity)
+		set_mouse_cursor (ad, GDK_HAND2);
+	else
+		set_mouse_cursor (ad, GDK_LEFT_PTR);
+}
+
 void init_app_display(AppData *ad)
 {
 	gint w, h;
@@ -463,6 +574,10 @@ void init_app_display(AppData *ad)
 	ad->scroll_pos = 0;
 	ad->new_line = TRUE;
 	ad->text_pos = 0;
+
+	ad->text = NULL;
+	ad->current_text = NULL;
+	ad->click_list = NULL;
 
 	ad->display_w = gnome_pixmap_new_from_xpm_d(back_xpm);
 	ad->display = GNOME_PIXMAP(ad->display_w)->pixmap;
@@ -482,6 +597,11 @@ void init_app_display(AppData *ad)
 
 	ad->draw_area = gtk_drawing_area_new();
 	gtk_drawing_area_size(GTK_DRAWING_AREA(ad->draw_area), w, h);
+	gtk_widget_set_events (ad->draw_area, GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK);
+	gtk_signal_connect(GTK_OBJECT(ad->draw_area),"motion_notify_event",
+		(GtkSignalFunc) display_motion, ad);
+	gtk_signal_connect(GTK_OBJECT(ad->draw_area),"button_press_event",
+		(GtkSignalFunc) display_click, ad);
 	gtk_container_add(GTK_CONTAINER(ad->frame), ad->draw_area);
         gtk_widget_show(ad->draw_area);
 

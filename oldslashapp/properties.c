@@ -4,6 +4,7 @@
 
 #include "slashapp.h"
 
+static void browser_window_cb(GtkWidget *w, gpointer data);
 static void show_images_cb(GtkWidget *w, gpointer data);
 static void show_info_cb(GtkWidget *w, gpointer data);
 static void show_department_cb(GtkWidget *w, gpointer data);
@@ -26,6 +27,8 @@ void property_load(gchar *path, AppData *ad)
 	ad->show_info = gnome_config_get_int("display/show_info=1");
 	ad->show_department = gnome_config_get_int("display/show_department=0");
 
+	ad->new_browser_window = gnome_config_get_int("display/new_browser_window=1");
+
         gnome_config_pop_prefix ();
 }
 
@@ -41,8 +44,17 @@ void property_save(gchar *path, AppData *ad)
         gnome_config_set_int("slashapp/show_info", ad->show_info);
         gnome_config_set_int("slashapp/show_department", ad->show_department);
 
+        gnome_config_set_int("slashapp/new_browser_window", ad->new_browser_window);
+
 	gnome_config_sync();
         gnome_config_pop_prefix();
+}
+
+static void browser_window_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_new_browser_window = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
 static void show_images_cb(GtkWidget *w, gpointer data)
@@ -106,6 +118,8 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->show_info = ad->p_show_info;
 	ad->show_department = ad->p_show_department;
 
+	ad->new_browser_window = ad->p_new_browser_window;
+
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
 }
 
@@ -142,6 +156,8 @@ void property_show(AppletWidget *applet, gpointer data)
 	ad->p_show_images = ad->show_images;
 	ad->p_show_info = ad->show_info;
 	ad->p_show_department = ad->show_department;
+
+	ad->p_new_browser_window = ad->new_browser_window;
 
 	ad->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
@@ -182,6 +198,21 @@ void property_show(AppletWidget *applet, gpointer data)
         label = gtk_label_new(_("(These settings do not take effect until a refresh)"));
 	gtk_box_pack_start(GTK_BOX(vbox1), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
+
+	frame = gtk_frame_new(_("Browser"));
+	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(FALSE, 1);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
+
+	button = gtk_check_button_new_with_label (_("Open new window"));
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_new_browser_window);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) browser_window_cb, ad);
+	gtk_widget_show(button);
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);

@@ -16,6 +16,60 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_start_new_applet(const gchar *param, gpointer data);
 
+static void launch_url(AppData *ad, gchar *url)
+{
+	gchar *command;
+	char *argv[8];
+	int status;
+
+	if (ad->new_browser_window)
+		command = g_strconcat("openURL(", url, ",new-window)", NULL);
+	else
+		command = g_strconcat("openURL(", url, ")", NULL);
+
+	printf("running command: %s\n", command);
+
+	argv[0] = "netscape";
+	argv[1] = "-remote";
+	argv[2] = command;
+	argv[3] = NULL;
+
+	/* based on the web control applet */
+        if(fork() == 0)
+		{
+		/* child  */
+		execvp (argv[0], argv);
+		}
+	else
+		{
+                wait(&status);
+                if(WEXITSTATUS(status) != 0)
+			{
+			/* command didn't work */
+			argv[0] = "netscape";
+			argv[1] = url;
+			argv[2] = NULL;
+			if (gnome_execute_async (NULL, 2, argv) != 0)
+				{
+				printf("failed to start browser\n");
+				}
+			}
+		}
+
+	g_free(command);
+}
+
+static void click_headline_cb(AppData *ad, gpointer data)
+{
+	gchar *url = data;
+	if (url)
+		{
+		printf ("clicked on %s\n", url);
+		/* now launch the url */
+		launch_url(ad, url);
+		}
+}
+
 static int filesize(char *s)
 {
    struct stat st;
@@ -211,6 +265,7 @@ static int get_current_headlines(gpointer data)
 			{
 			if (fgets(buf, sizeof(buf), slash_file) != NULL)
 				{
+				InfoData *id;
 				gchar *text;
 				gchar *edate;
 				h = TRUE;
@@ -258,9 +313,10 @@ static int get_current_headlines(gpointer data)
 
 				/* add the headline */
 				if (icon)
-					add_info_line_with_pixmap(ad, text, icon, 0, FALSE, FALSE, 30);
+					id = add_info_line_with_pixmap(ad, text, icon, 0, FALSE, FALSE, 30);
 				else
-					add_info_line(ad, text, NULL, 0, FALSE, FALSE, 30);
+					id = add_info_line(ad, text, NULL, 0, FALSE, FALSE, 30);
+				set_info_click_signal(id, click_headline_cb, g_strdup(url), g_free);
 
 				/* a space separater, could include a graphic divider too */
 				add_info_line(ad, "", NULL, 0, FALSE, 0, 0);

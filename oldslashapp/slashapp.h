@@ -9,6 +9,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 
 #include <gnome.h>
 #include "applet-lib.h"
@@ -16,26 +17,9 @@
 
 #define APPLET_VERSION_MAJ 0
 #define APPLET_VERSION_MIN 3
-#define APPLET_VERSION_REV 1
+#define APPLET_VERSION_REV 2
 
 #define UPDATE_DELAY 70
-
-typedef struct _InfoData InfoData;
-struct _InfoData
-{
-	gchar *text;		/* any length, but be reasonable */
-	gint length;
-	gchar *icon_path;	/* location of icon */
-	GtkWidget *icon;	/* maximum 24 x 24 please (or be reasonable)*/
-	gint icon_w;
-	gint icon_h;
-	gint offset;		/* offset of text from left, set to line text up even with no icon */
-	gint center;		/* Center text, only has effect if text fits on one line */
-	gint shown;
-	gint show_count;	/* when 0 show forever, other wise times to show (1 or +) */
-	gint end_delay;		/* time to delay after displaying last character of text
-				   this number is calculated from tenths of a second */
-};
 
 typedef struct _AppData AppData;
 struct _AppData
@@ -79,6 +63,8 @@ struct _AppData
 
 	gint display_timeout_id;
 
+	GList *click_list;		/* GList of clickable target on display */
+
 	/* properties stuff */
 
 	GtkWidget *propwindow;
@@ -101,16 +87,57 @@ struct _AppData
 	gint p_show_images;
 	gint p_show_info;
 	gint p_show_department;
+
+	gint new_browser_window;
+	gint p_new_browser_window;
+};
+
+typedef struct _InfoData InfoData;
+struct _InfoData
+{
+	gchar *text;		/* any length, but be reasonable */
+	gint length;
+	gchar *icon_path;	/* location of icon */
+	GtkWidget *icon;	/* maximum 24 x 24 please (or be reasonable)*/
+	gint icon_w;
+	gint icon_h;
+	gint offset;		/* offset of text from left, set to line text up even with no icon */
+	gint center;		/* Center text, only has effect if text fits on one line */
+	gint shown;
+	gint show_count;	/* when 0 show forever, other wise times to show (1 or +) */
+	gint end_delay;		/* time to delay after displaying last character of text
+				   this number is calculated from tenths of a second */
+
+	/* click callback stuff */
+
+	void (*click_func)(AppData *ad, gpointer data);
+	gpointer data;
+	void (*free_func)(gpointer data);
+};
+
+typedef struct _ClickData ClickData;
+struct _ClickData
+{
+	InfoData *line_id;
+	gint x;
+	gint y;
+	gint w;
+	gint h;
+	void (*click_func)(AppData *ad, gpointer data);
+	gpointer data;
+	
 };
 
 	/* display.c */
 void free_all_info_lines(GList *list);
-void add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
+InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
 		   gint show_count, gint delay);
-void add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
+InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
 		   gint show_count, gint delay);
 void remove_info_line(AppData *ad, InfoData *id);
 void remove_all_lines(AppData *ad);
+void set_info_click_signal(InfoData *id, void (*click_func)(AppData *ad, gpointer data),
+		gpointer data, void (*free_func)(gpointer data));
 void init_app_display(AppData *ad);
 
 	/* properties.c */
