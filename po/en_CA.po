@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-30 02:31-0500\n"
-"PO-Revision-Date: 2005-03-30 16:42-0400\n"
+"POT-Creation-Date: 2005-03-31 16:42-0500\n"
+"PO-Revision-Date: 2005-03-31 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgstr "This utility shows the status of your laptop battery."
 #: ../gweather/gweather-about.c:54 ../mini-commander/src/about.c:55
 #: ../mixer/applet.c:1122 ../multiload/main.c:62
 #: ../stickynotes/stickynotes_applet_callbacks.c:444
-#: ../trashapplet/src/trashapplet.c:647
+#: ../trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
 msgstr "Adam Weinberger <adamw@gnome.org>"
 
@@ -441,7 +441,7 @@ msgstr "_Warn when battery charge is low"
 #: ../mini-commander/src/preferences.c:376
 #: ../stickynotes/stickynotes_applet_callbacks.c:408
 #: ../stickynotes/stickynotes_applet_callbacks.c:627
-#: ../trashapplet/src/trashapplet.c:614
+#: ../trashapplet/src/trashapplet.c:687
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "There was an error displaying help: %s"
@@ -2986,6 +2986,11 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
+#: ../libgswitchit/gswitchit_config.c:1016
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "There was an error loading an image: %s"
+
 #: ../mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: ../mini-commander/src/about.c:47
 msgid "Command Line"
@@ -4291,7 +4296,7 @@ msgid "Trash"
 msgstr "Trash"
 
 #: ../trashapplet/GNOME_Panel_TrashApplet.xml.h:2
-#: ../trashapplet/src/trashapplet.c:536
+#: ../trashapplet/src/trashapplet.c:583
 msgid "_Empty Trash"
 msgstr "_Empty Trash"
 
@@ -4299,27 +4304,37 @@ msgstr "_Empty Trash"
 msgid "_Open"
 msgstr "_Open"
 
-#: ../trashapplet/src/trashapplet.c:161
+#: ../trashapplet/src/trashapplet.c:163
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Unable to find the Trash directory: %s"
 
-#: ../trashapplet/src/trashapplet.c:393
+#: ../trashapplet/src/trashapplet.c:396
 msgid "No Items in Trash"
 msgstr "No Items in Trash"
 
-#: ../trashapplet/src/trashapplet.c:397
+#: ../trashapplet/src/trashapplet.c:400
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d Item in Trash"
 msgstr[1] "%d Items in Trash"
 
-#: ../trashapplet/src/trashapplet.c:513
+#: ../trashapplet/src/trashapplet.c:516
+#, c-format
+msgid "Removing item %s of %s"
+msgstr "Removing item %s of %s"
+
+#: ../trashapplet/src/trashapplet.c:523
+#, c-format
+msgid "<i>Removing: %s</i>"
+msgstr "<i>Removing: %s</i>"
+
+#: ../trashapplet/src/trashapplet.c:560
 msgid "Empty all of the items from the trash?"
 msgstr "Empty all of the items from the trash?"
 
-#: ../trashapplet/src/trashapplet.c:516
+#: ../trashapplet/src/trashapplet.c:563
 msgid ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them separately."
@@ -4327,7 +4342,7 @@ msgstr ""
 "If you choose to empty the trash, all items in it will be permanently lost. "
 "Please note that you can also delete them individually."
 
-#: ../trashapplet/src/trashapplet.c:592
+#: ../trashapplet/src/trashapplet.c:665
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4336,11 +4351,11 @@ msgstr ""
 "Error while spawning nautilus:\n"
 "%s"
 
-#: ../trashapplet/src/trashapplet.c:639
+#: ../trashapplet/src/trashapplet.c:712
 msgid "Trash Applet"
 msgstr "Trash Applet"
 
-#: ../trashapplet/src/trashapplet.c:642
+#: ../trashapplet/src/trashapplet.c:715
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4348,21 +4363,21 @@ msgstr ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
 
-#: ../trashapplet/src/trashapplet.c:667
+#: ../trashapplet/src/trashapplet.c:740
 msgid "Delete Immediately?"
 msgstr "Delete Immediately?"
 
-#: ../trashapplet/src/trashapplet.c:696
+#: ../trashapplet/src/trashapplet.c:769
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Cannot move items to trash. Do you want to delete them immediately?"
 
-#: ../trashapplet/src/trashapplet.c:699
+#: ../trashapplet/src/trashapplet.c:772
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Cannot move some items to trash. Do you want to delete these immediately?"
 
-#: ../trashapplet/src/trashapplet.c:800 ../trashapplet/src/trashapplet.c:817
+#: ../trashapplet/src/trashapplet.c:873 ../trashapplet/src/trashapplet.c:890
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4370,3 +4385,15 @@ msgid ""
 msgstr ""
 "Unable to move to trash:\n"
 "%s"
+
+#: ../trashapplet/trashapplet.glade.h:1
+msgid "<b>From:</b>"
+msgstr "<b>From:</b>"
+
+#: ../trashapplet/trashapplet.glade.h:2
+msgid "<big><b>Emptying the Trash</b></big>"
+msgstr "<big><b>Emptying the Trash</b></big>"
+
+#: ../trashapplet/trashapplet.glade.h:3
+msgid "Emptying the Trash"
+msgstr "Emptying the Trash"
