@@ -79,6 +79,7 @@ gboolean window_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNote 
 			stickynotes_save_all();
 	}
 	
+	/* Let other handlers receive this event. */
 	return FALSE;
 }
 
@@ -97,6 +98,7 @@ gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *no
 		stickynote_set_highlighted(note, FALSE);
 	}
 	
+	/* Let other handlers receive this event. */
 	return FALSE;
 }
 

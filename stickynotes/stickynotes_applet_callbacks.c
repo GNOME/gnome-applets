@@ -76,7 +76,8 @@ gboolean applet_resize_cb(GtkWidget *widget, gint size, PanelApplet *applet)
 
 	stickynotes_applet_set_highlighted(FALSE);
 
-	return TRUE;
+	/* Let other handlers receive this event. */
+	return FALSE;
 }
 
 /* Applet Callback : Cross (enter or leave) the applet. */
@@ -87,7 +88,8 @@ gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, PanelApplet
 	else /* (event->type == GDK_LEAVE_NOTIFY) */
 		stickynotes_applet_set_highlighted(FALSE);
 	
-	return TRUE;
+	/* Let other handlers receive this event. */
+	return FALSE;
 }
 
 /* Applet Callback : On focus (in or out) of the applet. */
@@ -98,7 +100,8 @@ gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, PanelApplet *a
 	else
 		stickynotes_applet_set_highlighted(FALSE);
 
-	return TRUE;
+	/* Let other handlers receive this event. */
+	return FALSE;
 }
 
 /* Applet Callback : Save all sticky notes. */
