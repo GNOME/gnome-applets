@@ -1278,9 +1278,22 @@ void reset_orientation(MLData *mldata)
 	if (mldata->sizehint >= GNOME_Vertigo_PANEL_MEDIUM)
 		{
 		if (mldata->show_extra_info)
-			{
-			mldata->layout = LAYOUT_SQUARE;
-			}
+		        {
+		        if (mldata->orient == PANEL_APPLET_ORIENT_LEFT || mldata->orient == PANEL_APPLET_ORIENT_RIGHT)
+		              {
+			      if (mldata->sizehint >= 74)
+			              mldata->layout = LAYOUT_HORIZONTAL_EXTENDED;
+			      else
+			              mldata->layout = LAYOUT_SQUARE;
+			      }
+		        else
+			      {
+			      if (mldata->sizehint >= 58)
+			              mldata->layout = LAYOUT_VERTICAL_EXTENDED;
+			      else
+			              mldata->layout = LAYOUT_SQUARE;
+			      }
+		        }
 		else if (mldata->orient == PANEL_APPLET_ORIENT_LEFT || mldata->orient == PANEL_APPLET_ORIENT_RIGHT)
 			{
 			mldata->layout = LAYOUT_HORIZONTAL;
