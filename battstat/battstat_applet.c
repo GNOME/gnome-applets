@@ -973,7 +973,7 @@ about_cb (BonoboUIComponent *uic,
 	"authors",	authors,
 	"documenters",	documenters,
 	"translator-credits",	_("translator-credits"),
-	"logo-icon-name",	"battstat",
+	"logo-icon-name",	"gnome-dev-battery",
 	NULL);
 }
 
@@ -1406,7 +1406,7 @@ battstat_applet_fill (PanelApplet *applet)
   if( (err = static_global_initialisation()) )
     battstat_error_dialog( GTK_WIDGET (applet), err );
 
-  gtk_window_set_default_icon_name ("battstat");
+  gtk_window_set_default_icon_name ("gnome-dev-battery");
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs",
                                 NULL);

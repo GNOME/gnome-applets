@@ -7,9 +7,6 @@ INCLUDES =			\
 
 libexec_PROGRAMS = drivemount_applet2
 
-desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
-desktop_icons_DATA = drivemount-applet.png
-
 drivemount_applet2_SOURCES =	\
 	drivemount.c		\
 	drive-list.c		\
@@ -41,10 +38,9 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 @INTLTOOL_SCHEMAS_RULE@
 
 EXTRA_DIST = \
-GNOME_DriveMountApplet.server.in.in \
-$(schemas_in_files)	\
-$(ui_DATA)	\
-drivemount-applet.png
+ GNOME_DriveMountApplet.server.in.in	\
+ $(schemas_in_files)			\
+ $(ui_DATA)
 
 if GCONF_SCHEMAS_INSTALL
 install-data-local:

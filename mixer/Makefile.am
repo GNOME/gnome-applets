@@ -1,8 +1,5 @@
 SUBDIRS = docs
 
-desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
-desktop_icons_DATA = gnome-mixer-applet.png
-
 INCLUDES = -I. -I$(srcdir) 		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGTK_DISABLE_DEPRECATED	\
@@ -50,7 +47,6 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 EXTRA_DIST = 						\
 	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
-	$(desktop_icons_DATA)				\
 	$(schemas_in_files)
 
 CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)

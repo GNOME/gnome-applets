@@ -233,6 +233,7 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->image = GTK_IMAGE (image);
   gtk_container_add (GTK_CONTAINER (applet), image);
   gtk_widget_show (image);
+  gtk_window_set_default_icon_name ("volume-knob");
 
   /* dock window (expanded UI) */
   applet->pop = FALSE;
@@ -1053,7 +1054,7 @@ cb_verb (BonoboUIComponent *uic,
 				  "applet"),
 		"authors",	authors,
 		"translator-credits",	_("translator-credits"),
-		"logo-icon-name",	"gnome-mixer-applet",
+		"logo-icon-name",	"volume-knob",
 		NULL);
 
   } else if (!strcmp (verbname, "Pref")) {
