@@ -472,15 +472,16 @@ historyAutoComplete(GtkWidget *widget, GdkEventKey *event)
     gchar currentCommand[MAX_COMMAND_LENGTH];
     gchar* completedCommand;
     int i;
-    sprintf(currentCommand, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string);
+
+    sprintf(currentCommand, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
+    for(i = HISTORY_DEPTH - 1; i >= 0; i--) 
+  	{
+	    if(!existsHistoryEntry(i))
+		break;
+  	    completedCommand = getHistoryEntry(i); 
+  	    if(!g_strncasecmp(completedCommand, currentCommand, strlen( currentCommand))) 
+		return completedCommand; 
+  	} 
     
-    for(i = 0; i < HISTORY_DEPTH; i++)
-	{
-	    completedCommand = getHistoryEntry(i);
-	    if(!g_strncasecmp(completedCommand, currentCommand, strlen( currentCommand)) )
-		{
-		    return completedCommand;
-		}
-	}
     return NULL;
 }
