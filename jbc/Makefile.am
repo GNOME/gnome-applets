@@ -21,3 +21,5 @@ sys_DATA = jbc_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = jbc_applet.gnorba
+
+SUBDIRS=pixmaps
