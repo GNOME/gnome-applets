@@ -375,8 +375,8 @@ static const char geyes_applet_menu_xml [] =
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
-static BonoboObject *
-geyes_applet_new (void)
+static gboolean
+geyes_applet_fill (PanelApplet *applet)
 {
 	
 	client = gconf_client_get_default ();
@@ -390,7 +390,9 @@ geyes_applet_new (void)
         properties_load ();
         
         eyes_applet.fixed = gtk_fixed_new ();
-        eyes_applet.applet = panel_applet_new (eyes_applet.fixed);        
+        eyes_applet.applet = GTK_WIDGET (applet);
+
+	gtk_container_add (GTK_CONTAINER (applet), eyes_applet.fixed);
 	
         create_eyes ();        
         
@@ -409,21 +411,21 @@ geyes_applet_new (void)
 	g_signal_connect (G_OBJECT (eyes_applet.applet), "destroy_event",
 			  G_CALLBACK (delete_cb), NULL);
 	  
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (eyes_applet.applet)));
+	return TRUE;
 	
 }
 
-static BonoboObject *
-geyes_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+geyes_applet_factory (PanelApplet *applet,
+		      const gchar *iid,
+		      gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
     
 	if (!strcmp (iid, "OAFIID:GNOME_GeyesApplet"))
-		applet = geyes_applet_new (); 
+		retval = geyes_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GeyesApplet_Factory",
@@ -431,7 +433,3 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GeyesApplet_Factory",
 			     "0",
 			     geyes_applet_factory,
 			     NULL)
-
-
-
-

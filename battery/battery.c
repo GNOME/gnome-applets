@@ -51,17 +51,17 @@
 
 /* Do the magic applet creation magic */
 
-static BonoboObject *
-battery_factory (BonoboGenericFactory *this,
-		      const gchar          *iid,
-		      gpointer              data)
+static gboolean
+battery_factory (PanelApplet *applet,
+		 const gchar *iid,
+		 gpointer     data)
 {
-  BonoboObject *applet = NULL;
+  gboolean retval = FALSE;
 
   if (!strcmp (iid, "OAFIID:GNOME_BatteryApplet"))
-    applet = battery_applet_new ();
+    retval = battery_applet_fill (applet);
 
-  return applet;
+  return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_BatteryApplet_Factory",
@@ -732,8 +732,8 @@ help_cb (AppletWidget *w, gpointer data)
 }
 
 /* This is the function that actually creates the display widgets */
-static Bonobo *
-battery_applet_new ()
+static gboolean
+battery_applet_fill (PanelApplet *applet)
 {
   BatteryData *bat;
   GtkWidget *root, *graph_box, *readout_box, *readout_ebox;
@@ -748,6 +748,7 @@ battery_applet_new ()
   textdomain (GETTEXT_PACKAGE);
 
   battery = g_new0 (BatteryData, 1);
+  battery->applet = applet;
   battery->graph_values = NULL;
   battery->setup = 0;
   battery->force_update = TRUE;
@@ -889,7 +890,7 @@ battery_applet_new ()
 		      GTK_SIGNAL_FUNC (battery_change_pixel_size),
 		      bat);
 
-  battery->applet = panel_applet_new(root);
+  gtk_container_add (GTK_WIDGET (battery->applet), root);
 
 #ifdef FIXME
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
@@ -952,7 +953,7 @@ battery_applet_new ()
   bat->force_update = TRUE;
   battery_update (bat);
 
-  return BONOBO_OBJECT(panel_applet_get_control(PANEL_APPLET(bat->applet)));
+  return TRUE;
 } 
 
 void

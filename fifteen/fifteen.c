@@ -358,10 +358,9 @@ static const char fifteen_applet_menu_xml [] =
 	"</popup>\n";
 
 
-static BonoboObject *
-fifteen_applet_new (void)
+static gboolean
+fifteen_applet_fill (PanelApplet *applet)
 {
-	GtkWidget *applet;
 	GtkWidget *fifteen;
 	GtkWidget *canvas = NULL;
 	int size;
@@ -369,12 +368,13 @@ fifteen_applet_new (void)
 	fifteen = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (fifteen), GTK_SHADOW_IN);
 	
-	applet = panel_applet_new (fifteen);
+	gtk_container_add (GTK_CONTAINER (applet), fifteen);
+
 	size = panel_applet_get_size(PANEL_APPLET(applet));
 	
 	create_fifteen (fifteen, size, &canvas);
 	
-	gtk_widget_show_all (applet);
+	gtk_widget_show_all (GTK_WIDGET (applet));
 	
 	panel_applet_setup_menu (PANEL_APPLET (applet),
 				 fifteen_applet_menu_xml,
@@ -387,20 +387,20 @@ fifteen_applet_new (void)
 			  canvas);
 
 		  
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+	return TRUE;
 }
 
-static BonoboObject *
-fifteen_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+fifteen_applet_factory (PanelApplet *applet,
+			const gchar *iid,
+			gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
     
 	if (!strcmp (iid, "OAFIID:GNOME_FifteenApplet"))
-		applet = fifteen_applet_new (); 
+		retval = fifteen_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_FifteenApplet_Factory",

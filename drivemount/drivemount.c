@@ -47,8 +47,8 @@
 #include "jazdrive_v_out.xpm"
 
 
-static BonoboObject *applet_factory (BonoboGenericFactory *this, const gchar *iid, gpointer data);
-static BonoboObject *applet_new (void);
+static gboolean applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
+static gboolean applet_fill (PanelApplet *applet);
 static DriveData *create_drive_widget(void);
 static void dnd_init(DriveData *dd);
 static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data);
@@ -169,20 +169,22 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_DriveMountApplet_Factory",
 							  applet_factory,
 							  NULL)
 
-static BonoboObject *
-applet_factory (BonoboGenericFactory *this, const gchar *iid, gpointer data)
+static gboolean
+applet_factory (PanelApplet *applet,
+		const gchar *iid,
+		gpointer data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
 
 	if (!strcmp (iid, "OAFIID:GNOME_DriveMountApplet"))
-		applet = applet_new ();
-	return(applet);
+		retval = applet_fill (applet);
+
+	return retval;
 }
 
-static BonoboObject *
-applet_new ()
+static gboolean
+applet_fill (PanelApplet *applet)
 {
-	GtkWidget *applet;
 	DriveData *dd;
 	BonoboUIComponent *component;
 	gchar *global_key;
@@ -191,9 +193,10 @@ applet_new ()
 	gchar *tmp_path;
 
 	dd = create_drive_widget();
-	applet = panel_applet_new (dd->button);
 
-	dd->applet = applet;
+	gtk_container_add (GTK_CONTAINER (applet), dd->button);
+
+	dd->applet = GTK_WIDGET (applet);
 	dd->orient = panel_applet_get_orient(PANEL_APPLET(applet));
 	dd->sizehint = panel_applet_get_size(PANEL_APPLET(applet));
 	g_signal_connect(G_OBJECT(dd->button),"button_press_event", G_CALLBACK(applet_button_press_cb), applet);
@@ -219,9 +222,9 @@ applet_new ()
 	else g_free (tmp_path);
 
 	redraw_pixmap(dd);
-	gtk_widget_show (applet);
+	gtk_widget_show (GTK_WIDGET (applet));
 	start_callback_update(dd);
-	return BONOBO_OBJECT(panel_applet_get_control(PANEL_APPLET(applet)));
+	return TRUE;
 }
 
 static DriveData *
@@ -352,13 +355,12 @@ static gint
 applet_save_session(PanelApplet *applet, gpointer data)
 {
 	DriveData *dd = data;
-	gchar *global_key;
-	gchar *private_key;
+	gchar *prefs_key;
 
-	/* FIXME: Save our prefs ? */
-    global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
-    private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
-	g_print("(save_yourself) global key is %s, and private key is %s\n", global_key, private_key);
+	/* FIXME: Save our prefs ? Patience my dear */
+	prefs_key = panel_applet_get_preferences_key (applet);
+	g_print("(save_yourself) preferences key is %s\n", prefs_key);
+	g_free (prefs_key);
 	return(FALSE);
 }
 

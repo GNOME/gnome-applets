@@ -150,7 +150,7 @@ static gint button_blinking = FALSE;
 static gint button_blink_on = 0;
 static gint button_blink_id = -1;
 
-GtkWidget *applet;
+GtkWidget *global_applet;
 static GtkWidget *frame;
 static GtkWidget *display_area = NULL;
 static GtkWidget *button;
@@ -575,7 +575,7 @@ static void update_tooltip(int connected, int rx, int tx)
 		text = g_strdup(_("not connected"));
 		}
 
-	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet), button, text);
+	applet_widget_set_widget_tooltip(APPLET_WIDGET(global_applet), button, text);
 	g_free(text);
 #endif
 }
@@ -1042,13 +1042,13 @@ static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
 
 	if (!etched_in)
 		{
-		gc1 = applet->style->light_gc[GTK_STATE_NORMAL];
-		gc2 = applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc1 = global_applet->style->light_gc[GTK_STATE_NORMAL];
+		gc2 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
 		}
 	else
 		{
-		gc1 = applet->style->dark_gc[GTK_STATE_NORMAL];
-		gc2 = applet->style->light_gc[GTK_STATE_NORMAL];
+		gc1 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc2 = global_applet->style->light_gc[GTK_STATE_NORMAL];
 		}
 
 	gdk_draw_line(window, gc1, x, y + h - 1, x, y);
@@ -1074,7 +1074,7 @@ static void create_background_pixmap(void)
 
 	/* main border */
 	draw_shadow_box(display, 0, 0, layout_current->display_w, layout_current->display_h,
-			FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
+			FALSE, global_applet->style->bg_gc[GTK_STATE_NORMAL]);
 
 	/* load border */
 	gdk_gc_set_foreground( gc, &display_color[COLOR_TEXT_BG] );
@@ -1106,13 +1106,13 @@ static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint et
 
 	if (etched_in)
 		{
-		gc1 = applet->style->dark_gc[GTK_STATE_NORMAL];
-		gc2 = applet->style->light_gc[GTK_STATE_NORMAL];
+		gc1 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc2 = global_applet->style->light_gc[GTK_STATE_NORMAL];
 		}
 	else
 		{
-		gc1 = applet->style->light_gc[GTK_STATE_NORMAL];
-		gc2 = applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc1 = global_applet->style->light_gc[GTK_STATE_NORMAL];
+		gc2 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
 		}
 
 	/* gdk_draw_arc was always off by one in my attempts (?) */
@@ -1183,7 +1183,7 @@ static void pixmap_set_colors(GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, Gdk
 static void update_pixmaps(void)
 {
 	GtkStyle *style;
-	style = gtk_widget_get_style(applet);
+	style = gtk_widget_get_style(global_applet);
 
 	if (!digits)
 		{
@@ -1225,7 +1225,7 @@ static void update_pixmaps(void)
 
 	if (!lights) lights = gdk_pixmap_new(display_area->window, 9, 36, -1);
 
-	gdk_draw_rectangle(lights, applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 36);
+	gdk_draw_rectangle(lights, global_applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 36);
 	draw_button_light(lights, 0, 0, 9, FALSE, COLOR_TX_BG);
 	draw_button_light(lights, 0, 9, 9, FALSE, COLOR_TX);
 	draw_button_light(lights, 0, 18, 9, FALSE, COLOR_RX_BG);
@@ -1408,10 +1408,12 @@ static const char modem_applet_menu_xml [] =
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
-static BonoboObject *
-modemlights_applet_new (void)
+static gboolean
+modemlights_applet_fill (PanelApplet *applet)
 {
 	gint i;
+
+	global_applet = GTK_WIDGET (applet);
 
 	for (i=0;i<119;i++)
 		load_hist[i] = 0;
@@ -1447,7 +1449,7 @@ modemlights_applet_new (void)
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
 		{
 		g_print("could not open an ip socket\n");
-		return NULL;
+		return FALSE;
 		}
 
 
@@ -1457,7 +1459,7 @@ modemlights_applet_new (void)
 	frame = gtk_fixed_new();
 	gtk_widget_show(frame);
 	
-	applet = panel_applet_new (frame);	
+	gtk_container_add (GTK_CONTAINER (applet), frame);
 
 	display_area = gtk_drawing_area_new();
 	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),5,5);
@@ -1470,7 +1472,7 @@ modemlights_applet_new (void)
 	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
 	gtk_widget_show(button);
 
-	gtk_widget_realize(applet);
+	gtk_widget_realize(GTK_WIDGET (applet));
 	gtk_widget_realize(display_area);
 	
 	setup_colors();
@@ -1506,23 +1508,23 @@ modemlights_applet_new (void)
 	
 	start_callback_update();
 
-	gtk_widget_show_all (applet);
+	gtk_widget_show_all (GTK_WIDGET (applet));
 	  
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+	return TRUE;
 }
 
 
-static BonoboObject *
-modemlights_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+modemlights_applet_factory (PanelApplet *applet,
+			    const gchar *iid,
+			    gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval;
     
 	if (!strcmp (iid, "OAFIID:GNOME_ModemLightsApplet"))
-		applet = modemlights_applet_new (); 
+		retval = modemlights_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemLightsApplet_Factory",
@@ -1530,7 +1532,3 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemLightsApplet_Factory",
 			     "0",
 			     modemlights_applet_factory,
 			     NULL)
-			     
-			     
-
-

@@ -581,8 +581,9 @@ create_odo(OdoApplet *oa)
    gtk_box_pack_start (GTK_BOX(oa->vbox),oa->darea1,FALSE,FALSE,1);
    gtk_box_pack_start (GTK_BOX(oa->vbox),oa->darea2,FALSE,FALSE,1);
    gtk_widget_show (oa->vbox);
+
+   gtk_container_add (GTK_CONTAINER (oa->applet), oa->vbox);
    
-   oa->applet = panel_applet_new (oa->vbox);
    oa->orient = panel_applet_get_orient (PANEL_APPLET(oa->applet));
    oa->size   = panel_applet_get_size (PANEL_APPLET(oa->applet));
 
@@ -661,8 +662,8 @@ static const char odo_applet_menu_xml [] =
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 	
-static BonoboObject *
-odometer_applet_new (void)
+static gboolean
+odometer_applet_fill (PanelApplet *applet)
 {
     OdoApplet *oa;
     
@@ -670,6 +671,8 @@ odometer_applet_new (void)
     
     oa = g_new0(OdoApplet,1);
     init_applet (oa);
+
+    oa->applet = GTK_WIDGET (applet);
 
     properties_load (NULL,oa);
     create_odo (oa);
@@ -693,21 +696,21 @@ odometer_applet_new (void)
 				 odo_applet_menu_xml,
 				 odo_applet_menu_verbs,
 				 oa);	
-    return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (oa->applet)));
+    return TRUE;
     
 }	
 
-static BonoboObject *
-odometer_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+odometer_applet_factory (PanelApplet *applet,
+			 const gchar *iid,
+			 gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
     
 	if (!strcmp (iid, "OAFIID:GNOME_OdometerApplet"))
-		applet = odometer_applet_new (); 
+		retval = odometer_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_OdometerApplet_Factory",

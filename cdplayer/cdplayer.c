@@ -57,8 +57,8 @@
 #define TIMEOUT_VALUE 500
 
 /* Function prototypes */
-static BonoboObject *applet_factory (BonoboGenericFactory *this, const gchar *iid, gpointer data);
-static BonoboObject *applet_new (void);
+static gboolean applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
+static gboolean applet_fill (PanelApplet *applet);
 
 static void cdplayer_destroy(GtkWidget * widget, gpointer data);
 static void cdplayer_realize(GtkWidget *cdplayer, CDPlayerData *cd);
@@ -129,21 +129,24 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CDPlayerApplet_Factory",
 							  applet_factory,
 							  NULL)
 
-static BonoboObject *
-applet_factory (BonoboGenericFactory *this, const gchar *iid, gpointer data)
+static gboolean
+applet_factory (PanelApplet *applet,
+		const gchar *iid,
+		gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
 
 	gconf_extensions_client_setup ();
+
 	if (!strcmp (iid, "OAFIID:GNOME_CDPlayerApplet"))
-		applet = applet_new ();
-	return(applet);
+		retval = applet_fill (applet);
+
+	return retval;
 }
 
-static BonoboObject *
-applet_new ()
+static gboolean
+applet_fill (PanelApplet *applet)
 {
-	GtkWidget *applet;
 	GtkWidget *cdplayer;
 	CDPlayerData *cd;
 	BonoboUIComponent *component;
@@ -170,7 +173,9 @@ applet_new ()
 	led_init();
 	led_create_widgets(&cd->panel.time, &cd->panel.track_control.display, (gpointer)cd);
 
-	applet = cd->panel.applet = panel_applet_new (cdplayer);
+	cd->panel.applet = GTK_WIDGET (applet);
+
+	gtk_container_add (GTK_CONTAINER (applet), cdplayer);
 
     cd->devpath = g_strdup(DEV_PATH);
 
@@ -191,7 +196,7 @@ applet_new ()
 
 	g_signal_connect (component, "ui-event", G_CALLBACK (ui_component_event), cd);
 	gtk_widget_show (applet);
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+	return TRUE;
 }
 
 static void
@@ -378,15 +383,12 @@ applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data)
 static gint
 applet_save_session(PanelApplet *applet, gpointer data)
 {
-	gchar *global_key;
-	gchar *private_key;
+	gchar *prefs_key;
 
-	/* FIXME: Save our prefs ? */
-	global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
-	private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
-	g_print("(cdplayer_save_yourself) global key is %s, and private key is %s\n", global_key, private_key);
-	g_free(global_key);
-	g_free(private_key);
+	/* FIXME: Save our prefs ? Soon, very soon */
+	prefs_key = panel_applet_get_preferences_key (PANEL_APPLET (applet));
+	g_print("(cdplayer_save_yourself) preferences key is %s\n", prefs_key);
+	g_free (prefs_key);
 	/* cd->devpath = gconf_extensions_get_string(current_key); */
 	return(FALSE);
 }

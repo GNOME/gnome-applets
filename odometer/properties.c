@@ -68,7 +68,7 @@ static void
 properties_apply_cb (GtkWidget *b, gint page_num, gpointer data)
 {
    OdoApplet *oa = data;
-   gchar *buf;
+   const gchar *buf;
 
    oa->use_metric = oa->p_use_metric;
    oa->auto_reset = oa->p_auto_reset;

@@ -327,7 +327,7 @@ static GtkWidget *color_frame_new(GtkWidget *vbox, const gchar *text)
 
 static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 {
-	gchar *new_text;
+	const gchar *new_text;
 	gint i;
 	gint c_changed;
 

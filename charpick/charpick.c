@@ -480,10 +480,9 @@ static const char charpick_applet_menu_xml [] =
 	"</popup>\n";
 
 
-static BonoboObject *
-charpicker_applet_new (void)
+static gboolean
+charpicker_applet_new (PanelApplet *applet)
 {
-  GtkWidget *applet = NULL;
   GtkWidget *frame = NULL;
   GtkWidget *event_box = NULL;
   GtkWidget *table = NULL;
@@ -577,8 +576,9 @@ charpicker_applet_new (void)
                      &default_properties);
 
 #endif
-  applet = panel_applet_new (frame);
   curr_data.applet = applet;
+
+  gtk_container_add (GTK_CONTAINER (applet), frame);
   
   /* session save signal */ 
   g_signal_connect (G_OBJECT (applet), "change_orient",
@@ -605,20 +605,20 @@ charpicker_applet_new (void)
 			  label);
 #endif		
 
-  return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+  return TRUE;
 }
 
-static BonoboObject *
-charpicker_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+charpicker_applet_factory (PanelApplet *applet,
+			   const gchar          *iid,
+			   gpointer              data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
     
 	if (!strcmp (iid, "OAFIID:GNOME_CharpickerApplet"))
-		applet = charpicker_applet_new (); 
+		retval = charpicker_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CharpickerApplet_Factory",

@@ -790,11 +790,10 @@ static const char mixer_applet_menu_xml [] =
 "             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 "</popup>\n";
 
-static BonoboObject *
-mixer_applet_new (void)
+static gboolean
+mixer_applet_fill (PanelApplet *applet)
 {
 	MixerData         *data;
-	GtkWidget         *applet;
 	gint               vol;
 	BonoboUIComponent *component;
 
@@ -848,9 +847,9 @@ mixer_applet_new (void)
 	vol = readMixer ();
 	data->vol = vol;
 
-	applet = panel_applet_new (data->event_box);
+	gtk_container_add (GTK_CONTAINER (applet), data->event_box);
 	
-	data->applet = applet;
+	data->applet = GTK_WIDGET (applet);
 	
 	/* Install timeout handler, that keeps the applet up-to-date if the
 	 * volume is changed somewhere else.
@@ -861,17 +860,17 @@ mixer_applet_new (void)
 
 	data->mute = FALSE;
 
-	g_signal_connect (applet,
+	g_signal_connect (G_OBJECT (applet),
 			  "destroy",
 			  (GCallback) destroy_mixer_cb,
 			  data);
 
-	g_signal_connect (applet,
+	g_signal_connect (G_OBJECT (applet),
 			  "change_orient",
 			  G_CALLBACK (applet_change_orient_cb),
 			  data);
 
-	g_signal_connect (applet,
+	g_signal_connect (G_OBJECT (applet),
 			  "change_size",
 			  G_CALLBACK (applet_change_size_cb),
 			  data);
@@ -888,32 +887,32 @@ mixer_applet_new (void)
 			  (GCallback) mixer_ui_component_event,
 			  data);
 	
-	applet_change_orient_cb (applet,
+	applet_change_orient_cb (GTK_WIDGET (applet),
 				 panel_applet_get_orient (PANEL_APPLET (applet)),
 				 data);
-	applet_change_size_cb (applet,
+	applet_change_size_cb (GTK_WIDGET (applet),
 			       panel_applet_get_size (PANEL_APPLET (applet)),
 			       data);
 	
 	mixer_update_slider (data);
 	mixer_update_image (data);
 
-	gtk_widget_show (applet);
+	gtk_widget_show (GTK_WIDGET (applet));
 
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+	return TRUE;
 }
 
-static BonoboObject *
-mixer_applet_factory (BonoboGenericFactory *this,
-		      const gchar          *iid,
-		      gpointer              data)
+static gboolean
+mixer_applet_factory (PanelApplet *applet,
+		      const gchar *iid,
+		      gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
 	
 	if (!strcmp (iid, "OAFIID:GNOME_MixerApplet"))
-		applet = mixer_applet_new ();
+		retval = mixer_applet_fill (applet);
 	
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",

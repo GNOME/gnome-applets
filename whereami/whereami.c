@@ -225,11 +225,9 @@ static const char whereami_applet_menu_xml [] =
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
-static BonoboObject *
-whereami_applet_new (void)
+static gboolean
+whereami_applet_fill (PanelApplet *applet)
 {
-  GtkWidget *applet;  
-  
   label = gtk_label_new("\n");
   msg = gtk_button_new();
   gtk_container_add (GTK_CONTAINER (msg), label);
@@ -243,11 +241,12 @@ whereami_applet_new (void)
   gtk_widget_show(label);
   gtk_widget_show(msg);
   
-  applet = panel_applet_new(msg);
+  gtk_container_add (GTK_CONTAINER (applet), msg);
+
   /* Get an idea of the panel size we're working with. */
-  panel_size = panel_applet_get_size(PANEL_APPLET(applet));
+  panel_size = panel_applet_get_size (applet);
   
-  panel_applet_setup_menu (PANEL_APPLET (applet),
+  panel_applet_setup_menu (applet,
 			   whereami_applet_menu_xml,
 			   whereami_applet_menu_verbs,
 			   NULL);
@@ -260,23 +259,23 @@ whereami_applet_new (void)
 		   NULL);
 		   
   gtk_timeout_add(100, (GtkFunction)timeout_handler, msg);
-  gtk_widget_show(applet);
+  gtk_widget_show(GTK_WIDGET (applet));
   
-  return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+  return TRUE;
   
 }
 
-static BonoboObject *
-whereami_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+whereami_applet_factory (PanelApplet  *applet,
+			 const gchar  *iid,
+			 gpointer      data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
     
 	if (!strcmp (iid, "OAFIID:GNOME_WhereamiApplet"))
-		applet = whereami_applet_new (); 
+		retval = whereami_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_WhereamiApplet_Factory",

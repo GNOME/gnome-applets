@@ -20,7 +20,7 @@
 
 /* If you think this code is a mess, you should see my flat ;) */
 
-#include "panel-applet.h"
+#include <panel-applet.h>
 #include "config.h"
 #include "screenshooter_applet.h"
 
@@ -1648,8 +1648,8 @@ static const char test_applet_menu_xml [] =
 	"</popup>\n";
 
 
-static BonoboObject *
-screenshooter_applet_new (void)
+static gboolean 
+screenshooter_applet_fill (PanelApplet *applet)
 {
   GtkWidget *hbox;
   GtkWidget *vbox;
@@ -1747,7 +1747,7 @@ screenshooter_applet_new (void)
   gtk_widget_show (hbox);
   gtk_widget_show (mainbox);
 	
-  applet = panel_applet_new (mainbox);
+  gtk_container_add (GTK_CONTAINER (applet), mainbox);
   
   panel_applet_setup_menu (PANEL_APPLET (applet),
 			   test_applet_menu_xml,
@@ -1755,7 +1755,7 @@ screenshooter_applet_new (void)
 			   NULL);
 
 
-  gtk_widget_show_all (applet);
+  gtk_widget_show_all (GTK_WIDGET (applet));
   
   g_signal_connect (G_OBJECT (applet), "change_size", 
   		    G_CALLBACK (applet_change_pixel_size), NULL);
@@ -1763,20 +1763,20 @@ screenshooter_applet_new (void)
   g_signal_connect (G_OBJECT (applet), "change_orient",
   		    G_CALLBACK (cb_applet_change_orient), NULL);
 		  
-  return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+  return TRUE;
 }
 
-static BonoboObject *
-screenshooter_applet_factory (BonoboGenericFactory *this,
-		     const gchar          *iid,
-		     gpointer              data)
+static gboolean
+screenshooter_applet_factory (PanelApplet *applet,
+			      const gchar *iid,
+			      gpointer     data)
 {
-	BonoboObject *applet = NULL;
+	gboolean retval = FALSE;
     
 	if (!strcmp (iid, "OAFIID:GNOME_ScreenshooterApplet"))
-		applet = screenshooter_applet_new (); 
+		retval = screenshooter_applet_fill (applet); 
     
-	return applet;
+	return retval;
 }
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ScreenshooterApplet_Factory",
