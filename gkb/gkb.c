@@ -19,6 +19,8 @@ struct _GKB {
 	gkb_properties temp_props;
         GtkWidget *entry_1;        
         GtkWidget *entry_2;       
+        GtkWidget *combo1;         
+        GtkWidget *combo2;         
 	GtkWidget *applet;
 	GtkWidget *frame;
 	GtkWidget *darea;
@@ -72,7 +74,7 @@ static void
 apply_cb(GnomePropertyBox * pb,
 	GKB * gkb)
 {
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
+    	gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
 static void
@@ -88,8 +90,14 @@ apply_callback(GtkWidget * pb,
 			gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(gkb->entry_2));
 	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
 	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
+
+        gkb->properties.dmap[0]= malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo1)->entry))) + 1));
+        strcpy(gkb->properties.dmap[0], gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo1)->entry)));
+        gkb->properties.dmap[1]= malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry))) + 1));
+        strcpy(gkb->properties.dmap[1], gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry)));
+	
         gdk_imlib_render (gkb->pix[0], 30, 26);
-        gdk_imlib_render (gkb->pix[1], 30, 26);
+	    gdk_imlib_render (gkb->pix[1], 30, 26);
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 	gkb->curpix=0;
 	do_that_command(gkb);
@@ -132,8 +140,6 @@ properties_dialog(AppletWidget *applet,
         GtkWidget *hbox5;          
         GtkWidget *hbox6;          
         GtkWidget *hbox8;          
-        GtkWidget *combo1;         
-        GtkWidget *combo2;         
         GList *combo1_items = NULL;
         GList *combo2_items = NULL;
         GtkWidget *g2_menuitem;    
@@ -187,9 +193,9 @@ static	char *basemaps[36]= {
         hbox8 = gtk_vbox_new (FALSE, 0);
         gtk_box_pack_start (GTK_BOX (hbox6), hbox8, TRUE, TRUE, 0);
    
-        combo1 = gtk_combo_new ();
-        gtk_box_pack_start (GTK_BOX (hbox8), combo1, FALSE, FALSE, 30);
-        gtk_container_set_border_width (GTK_CONTAINER (combo1), 2);
+        gkb->combo1 = gtk_combo_new ();
+        gtk_box_pack_start (GTK_BOX (hbox8), gkb->combo1, FALSE, FALSE, 30);
+        gtk_container_set_border_width (GTK_CONTAINER (gkb->combo1), 2);
 
 
 	combo1_items = g_list_append (combo1_items, gkb->temp_props.dmap[0]);
@@ -200,8 +206,8 @@ static	char *basemaps[36]= {
 	i++;
 	}
         
-	gtk_combo_set_popdown_strings (GTK_COMBO (combo1), combo1_items);
-        gtk_signal_connect (GTK_OBJECT (GTK_COMBO(combo1)->entry),
+	gtk_combo_set_popdown_strings (GTK_COMBO (gkb->combo1), combo1_items);
+        gtk_signal_connect (GTK_OBJECT (GTK_COMBO(gkb->combo1)->entry),
 	                            "changed",
 				    (GtkSignalFunc) apply_cb, gkb);
 								
@@ -217,10 +223,10 @@ static	char *basemaps[36]= {
         
         gtk_box_pack_start (GTK_BOX (hbox8), table2, TRUE, TRUE, 0);
    
-        combo2 = gtk_combo_new ();
-        gtk_box_pack_start (GTK_BOX (hbox8), combo2, FALSE, FALSE, 30);
-        gtk_container_set_border_width (GTK_CONTAINER (combo2), 2);
-        GTK_WIDGET_SET_FLAGS (combo2, GTK_CAN_FOCUS);
+        gkb->combo2 = gtk_combo_new ();
+        gtk_box_pack_start (GTK_BOX (hbox8), gkb->combo2, FALSE, FALSE, 30);
+        gtk_container_set_border_width (GTK_CONTAINER (gkb->combo2), 2);
+        GTK_WIDGET_SET_FLAGS (gkb->combo2, GTK_CAN_FOCUS);
    
 	combo2_items = g_list_append (combo2_items, gkb->temp_props.dmap[1]);
  	
@@ -230,8 +236,8 @@ static	char *basemaps[36]= {
 	i++;
 	}
    
-        gtk_combo_set_popdown_strings (GTK_COMBO (combo2), combo2_items);
-        gtk_signal_connect (GTK_OBJECT (GTK_COMBO(combo2)->entry),
+        gtk_combo_set_popdown_strings (GTK_COMBO(gkb->combo2), combo2_items);
+        gtk_signal_connect (GTK_OBJECT (GTK_COMBO(gkb->combo2)->entry),
 	                            "changed",
 	                        (GtkSignalFunc) apply_cb, gkb);
         
@@ -283,8 +289,7 @@ gkb_draw(GtkWidget *darea,
 {
 	if(!GTK_WIDGET_REALIZED(gkb->darea))
 		return;
-    	printf("--- %s,\n",gkb->properties.image[0]);fflush(stdout);
-	
+
 	gdk_draw_pixmap(gkb->darea->window,
 		gkb->darea->style->fg_gc[GTK_WIDGET_STATE(gkb->darea)],
 		gkb->pix[gkb->properties.curpix]->pixmap,
@@ -336,7 +341,6 @@ gkb_expose(GtkWidget *darea,
 	GdkEventExpose *event,
 	GKB *gkb)
 {
-    	printf("--- %s,\n",gkb->properties.image[0]);fflush(stdout);
 	gdk_draw_pixmap(gkb->darea->window,
 			gkb->darea->style->fg_gc[GTK_WIDGET_STATE(
 						 gkb->darea)],
@@ -404,7 +408,7 @@ about_cb (AppletWidget *widget,
 	}
 
 	gkb->aboutbox = gnome_about_new (_("The GNOME KB Applet"),
-			_("0.99.1"),
+			_("1.0pre1"),
                         _("(C) 1998 LSC - Linux Supporting Center"),
                         (const char **)authors,
                         _("This applet used to switch between "   
