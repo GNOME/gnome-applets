@@ -154,7 +154,32 @@ cpumemusage_widget (void)
 	return box;
 }
 
+static void
+cpumemusage_about (AppletWidget *applet, gpointer data)
+{
+        static GtkWidget   *about     = NULL;
+        static const gchar *authors[] =
+        {
+		"Radek Doulik <rodo@ucw.cz>",
+                NULL
+        };
 
+        if (about != NULL)
+        {
+                gdk_window_show(about->window);
+                gdk_window_raise(about->window);
+                return;
+        }
+        
+        about = gnome_about_new (_("CPU/Mem Usage Applet"), VERSION,
+                                 _("(c) 1997 the Free Software Foundation"),
+                                 authors,
+                                 _("The CPU/Mem usage applet displays your system resources with 3 colorful stacked bar graphs (processor, memory, swap)"),
+                                 NULL);
+        gtk_signal_connect (GTK_OBJECT(about), "destroy",
+                            GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+        gtk_widget_show (about);
+}
 
 static void
 applet_change_orient(GtkWidget *w, PanelOrientType o)
@@ -234,7 +259,8 @@ applet_change_pixel_size(GtkWidget *widget, int s)
 	widget = NULL;
 }
 
-int main(int argc, char **argv)
+int
+main(int argc, char **argv)
 {
         applet_widget_init("cpumemusage_applet", VERSION, argc, argv,
 			   NULL, 0, NULL);
@@ -252,10 +278,17 @@ int main(int argc, char **argv)
 
         cpumemusage = cpumemusage_widget();
         applet_widget_add( APPLET_WIDGET(applet), cpumemusage );
-        gtk_widget_show(applet);
 
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       cpumemusage_about,
+					       NULL);
 	/* Be nice */
 	nice (NICE_VALUE);
+
+        gtk_widget_show(applet);
 	applet_widget_gtk_main();
 
         return 0;

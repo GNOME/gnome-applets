@@ -592,6 +592,33 @@ create_mixer_widget(void)
 	return mixer;
 }
 
+static void
+mixer_about (AppletWidget *applet, gpointer data)
+{
+        static GtkWidget   *about     = NULL;
+        static const gchar *authors[] =
+        {
+		"Michael Fulbright <msf@redhat.com>",
+                NULL
+        };
+
+        if (about != NULL)
+        {
+                gdk_window_show(about->window);
+                gdk_window_raise(about->window);
+                return;
+        }
+        
+        about = gnome_about_new (_("Mixer Applet"), VERSION,
+                                 _("(c) 1998 the Free Software Foundation"),
+                                 authors,
+                                 _("The mixer applet gives you instant access to setting the master volume level on your soundcard device"),
+                                 NULL);
+        gtk_signal_connect (GTK_OBJECT(about), "destroy",
+                            GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+        gtk_widget_show (about);
+}
+
 /*these are commands sent over corba: */
 static void
 applet_change_orient(GtkWidget *w, PanelOrientType o)
@@ -711,11 +738,18 @@ main(int argc, char **argv)
 			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
 
-        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-                                                "run_gmix",
-                                                GNOME_STOCK_MENU_VOLUME,
-                                                _("Run gmix..."),
-                                                start_gmix_cb, NULL);
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       mixer_about,
+					       NULL);
+        applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "run_gmix",
+					       GNOME_STOCK_MENU_VOLUME,
+					       _("Run gmix..."),
+					       start_gmix_cb,
+					       NULL);
 
 	gtk_widget_show(applet);
 
