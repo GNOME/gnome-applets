@@ -2,11 +2,12 @@
 # Copyright (C) 2000,2001,2002 Free Software Foundation, Inc.
 # Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>, 2000,2001,2002.
 #
+#: cdplayer/cdplayer.c:680 cdplayer/cdplayer.c:682
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.0.2\n"
-"POT-Creation-Date: 2002-03-15 11:28+0100\n"
-"PO-Revision-Date: 2002-03-15 11:30+0100\n"
+"POT-Creation-Date: 2002-03-22 11:48+0100\n"
+"PO-Revision-Date: 2002-03-22 11:56+0100\n"
 "Last-Translator: Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -231,7 +232,7 @@ msgstr "Nastavenie Battstat"
 msgid "Beep when either of the above is true"
 msgstr "Pípnuť, ak je niektorá z možností platná"
 
-#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:820
+#: battstat/battstat_applet.glade.h:9
 msgid "General"
 msgstr "Všeobecné"
 
@@ -348,39 +349,61 @@ msgstr "Vlastnosti..."
 msgid "Suspend Computer..."
 msgstr "Suspendovať počítač..."
 
-#: cdplayer/cdplayer.c:149
+#: cdplayer/cdplayer.c:156 cdplayer/cdplayer.c:792
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:151
+#: cdplayer/cdplayer.c:158 cdplayer/cdplayer.c:794
 msgid "Play / Pause"
 msgstr "Hrať/Pauza"
 
-#: cdplayer/cdplayer.c:153 drivemount/GNOME_DriveMountApplet.xml.h:3
+#: cdplayer/cdplayer.c:160 cdplayer/cdplayer.c:796
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
 msgstr "Vysunúť"
 
-#: cdplayer/cdplayer.c:155
+#: cdplayer/cdplayer.c:162 cdplayer/cdplayer.c:798
 msgid "Previous Track"
 msgstr "Predchádzajúca stopa"
 
-#: cdplayer/cdplayer.c:157
+#: cdplayer/cdplayer.c:164 cdplayer/cdplayer.c:800
 msgid "Next Track"
 msgstr "Nasledujúca stopa"
 
-#: cdplayer/cdplayer.c:306
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:169
+#: cdplayer/cdplayer.c:802
+msgid "CD Player"
+msgstr "CD prehrávač"
+
+#: cdplayer/cdplayer.c:331
 msgid "CD Player Properties"
 msgstr "Vlastnosti Prehrávača CD"
 
-#: cdplayer/cdplayer.c:320
+#: cdplayer/cdplayer.c:344
+msgid "Disc Image"
+msgstr "Obrázok disku"
+
+#: cdplayer/cdplayer.c:344
+msgid "An image of a cd-rom disc"
+msgstr "Obrázok disku CD-ROM"
+
+#: cdplayer/cdplayer.c:346
 msgid "Device Path:"
 msgstr "Zariadenie:"
 
-#: cdplayer/cdplayer.c:367
+#: cdplayer/cdplayer.c:355
+msgid "Device Path"
+msgstr "Zariadenie"
+
+#: cdplayer/cdplayer.c:355
+msgid "Set the device path here"
+msgstr "Tu nastavte cestu k zariadeniu"
+
+#: cdplayer/cdplayer.c:395
 msgid "CD Player Applet"
 msgstr "Applet Prehrávač CD"
 
-#: cdplayer/cdplayer.c:368
+#: cdplayer/cdplayer.c:396
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -388,13 +411,37 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:370
+#: cdplayer/cdplayer.c:398 cdplayer/cdplayer.c:803
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Prehrávač CD je jednoduchý prehrávač hudobných CD pre Váš panel"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
-msgid "CD Player"
-msgstr "CD prehrávač"
+#: cdplayer/cdplayer.c:671 cdplayer/cdplayer.c:680
+msgid "Elapsed time"
+msgstr "Uplynutý čas"
+
+#: cdplayer/cdplayer.c:674 cdplayer/cdplayer.c:682
+msgid "Track number"
+msgstr "Číslo stopy"
+
+#: cdplayer/cdplayer.c:793
+msgid "Click this button to Stop playing the CD"
+msgstr "Stlačením tohto tlačidla zastavíte prehrávanie CD"
+
+#: cdplayer/cdplayer.c:795
+msgid "Click this button to Play or Pause the CD"
+msgstr "Týmto tlačidlo spustíte alebo pozastavíte prehrávanie CD"
+
+#: cdplayer/cdplayer.c:797
+msgid "Click this button to eject the CD"
+msgstr "Týmto tlačidlom vysuniete CD"
+
+#: cdplayer/cdplayer.c:799
+msgid "Click this button to Play the previous track in the CD"
+msgstr "Týmto tlačidlom spustíte prehrávanie predchádzajúcej stopy CD"
+
+#: cdplayer/cdplayer.c:801
+msgid "Click this button to Play the next track in the CD"
+msgstr "Týmto tlačidlom spustíte prehrávanie nasledujúcej stopy CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 msgid "CD Player Applet Factory"
@@ -453,15 +500,15 @@ msgstr "Vkladanie znakov"
 msgid "Default character list:"
 msgstr "Štandardný zoznam znakov:"
 
-#: charpick/properties.c:87
+#: charpick/properties.c:88
 msgid "Default list of characters"
 msgstr "Štandardný zoznam znakov"
 
-#: charpick/properties.c:88
+#: charpick/properties.c:89
 msgid "Set the default character list here"
 msgstr "Tu nastavte štandardný zoznam znakov"
 
-#: charpick/properties.c:90
+#: charpick/properties.c:91
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
@@ -525,7 +572,7 @@ msgstr "Vytváracie rozhranie pre applet Pripojenie diskov"
 msgid "Mount local disks and devices"
 msgstr "Pripojenie lokálnych diskov a zariadení"
 
-#: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
+#: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:734
 msgid "Browse..."
 msgstr "Prehliadať..."
 
@@ -646,8 +693,8 @@ msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
-"Stlačením klávesovej skratky prepnete rozloženie klávesnice. Skratku "
-"môžete nastaviť v dialógu Vlastnosti."
+"Stlačením klávesovej skratky prepnete rozloženie klávesnice. Skratku môžete "
+"nastaviť v dialógu Vlastnosti."
 
 #: gkb-new/gkb.c:404
 #, c-format
@@ -736,7 +783,7 @@ msgstr "Stlačte kláves alebo zrušte akciu stlačením Esc"
 msgid "Keymaps (select and press add)"
 msgstr "Rozloženia (vyberte a stlačte Pridať)"
 
-#: gkb-new/prop-add.c:362
+#: gkb-new/prop-add.c:367
 msgid "Select layout"
 msgstr "Vyberte rozloženie"
 
@@ -782,19 +829,19 @@ msgid "Grab hotkey"
 msgstr "Zachytiť kláves"
 
 #. Create property box
-#: gkb-new/prop.c:401
+#: gkb-new/prop.c:405
 msgid "GKB Properties"
 msgstr "Vlastnosti GKB"
 
-#: gkb-new/prop.c:415
+#: gkb-new/prop.c:419
 msgid "_Keymaps"
 msgstr "_Rozloženia"
 
-#: gkb-new/prop.c:427
+#: gkb-new/prop.c:431
 msgid "_Options"
 msgstr "_Možnosti"
 
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1036
+#: gkb-new/prop-list.c:389 gtik/gtik.c:1147
 msgid "_Add"
 msgstr "_Pridať"
 
@@ -1184,15 +1231,15 @@ msgstr "Sledovanie burzy"
 msgid "Refresh"
 msgstr "Aktualizovať"
 
-#: gtik/gtik.c:202 gtik/gtik.c:779
+#: gtik/gtik.c:208 gtik/gtik.c:785
 msgid "No data available or properties not set"
 msgstr "Žiadne dáta nie sú k dispozícii alebo nie sú nastavené vlastnosti"
 
-#: gtik/gtik.c:648
+#: gtik/gtik.c:654
 msgid "The GNOME Stock Ticker"
 msgstr "Sledovanie burzy pre GNOME"
 
-#: gtik/gtik.c:650
+#: gtik/gtik.c:656
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1204,76 +1251,104 @@ msgstr ""
 "Neobsahuje ABSOLÚTNE ŽIADNE ZÁRUKY. Nepoužívajte ju pre investičné "
 "rozhodnutia, slúži iba na informovanie."
 
-#: gtik/gtik.c:1026
+#: gtik/gtik.c:1137
 msgid "New Symbol:"
 msgstr "Nový symbol:"
 
-#: gtik/gtik.c:1047
+#: gtik/gtik.c:1158
 msgid "_Remove Selected"
 msgstr "_Odstrániť vybraný"
 
-#: gtik/gtik.c:1100
+#: gtik/gtik.c:1206 gweather/gweather-pref.c:665
+msgid "Use HTTP proxy"
+msgstr "Použiť HTTP proxy"
+
+#: gtik/gtik.c:1216 gweather/gweather-pref.c:676
+msgid "Location :"
+msgstr "Umiestnenie:"
+
+#: gtik/gtik.c:1230 gweather/gweather-pref.c:692
+msgid "Port :"
+msgstr "Port :"
+
+#: gtik/gtik.c:1241 gweather/gweather-pref.c:704
+msgid "Proxy requires a uername and password"
+msgstr "Proxy vyžaduje zadať používateľa a heslo"
+
+#: gtik/gtik.c:1252 gweather/gweather-pref.c:715
+msgid "Username:"
+msgstr "Používateľské meno:"
+
+#: gtik/gtik.c:1265 gweather/gweather-pref.c:731
+msgid "Password:"
+msgstr "Heslo:"
+
+#: gtik/gtik.c:1334
 msgid "Stock Ticker Properties"
 msgstr "Vlastnosti Sledovania burzy"
 
-#: gtik/gtik.c:1121
+#: gtik/gtik.c:1355
 msgid "Update Frequency in minutes:"
 msgstr "Aktualizácia (v minútach):"
 
-#: gtik/gtik.c:1137
+#: gtik/gtik.c:1371
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Zadajte symboly oddelené \"+\"."
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1381
 msgid "Display only symbols and price"
 msgstr "Zobraziť iba symboly a cenu"
 
-#: gtik/gtik.c:1150
+#: gtik/gtik.c:1384
 msgid "Scroll left to right"
 msgstr "Posúvať doprava"
 
-#: gtik/gtik.c:1153
+#: gtik/gtik.c:1387
 msgid "Display arrows instead of -/+"
 msgstr "Zobraziť šipky namiesto -/+"
 
-#: gtik/gtik.c:1156
+#: gtik/gtik.c:1390
 msgid "Enable scroll buttons"
 msgstr "Povoliť tlačidlá pre posun"
 
 #. COLOR
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1416
 msgid "+ Color"
 msgstr "Farba +"
 
-#: gtik/gtik.c:1199
+#: gtik/gtik.c:1433
 msgid "- Color"
 msgstr "Farba -"
 
-#: gtik/gtik.c:1219
+#: gtik/gtik.c:1453
 msgid "Stock Symbol:"
 msgstr "Burzový symbol:"
 
-#: gtik/gtik.c:1231
+#: gtik/gtik.c:1465
 msgid "Stock Change:"
 msgstr "Zmena kurzu:"
 
-#: gtik/gtik.c:1253
+#: gtik/gtik.c:1487
 msgid "_Symbols"
 msgstr "_Symboly"
 
-#: gtik/gtik.c:1255
+#: gtik/gtik.c:1489
 msgid "_Behavior"
 msgstr "_Chovanie"
 
-#: gtik/gtik.c:1257
+#: gtik/gtik.c:1491
 msgid "_Appearance"
 msgstr "_Vzhľad"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1493 gweather/gweather-pref.c:744
+msgid "_Proxy"
+msgstr "_Proxy"
+
+#: gtik/gtik.c:1712
 msgid "(No"
 msgstr "(Žiadna"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1713
 msgid "Change "
 msgstr "Zmena"
 
@@ -1396,85 +1471,59 @@ msgstr ""
 "Prosím, skúste detailnú predpoveď, uvedomte si, že IWIN predpovede sú k "
 "dispozícii len pre mestá USA."
 
-#: gweather/gweather-pref.c:560
+#: gweather/gweather-pref.c:608
 msgid "Weather Properties"
 msgstr "Vlastnosti Počasia"
 
-#: gweather/gweather-pref.c:605
-msgid "Location"
-msgstr "Miesto"
+#: gweather/gweather-pref.c:653
+msgid "_Location"
+msgstr "_Umiestnenie"
 
-#: gweather/gweather-pref.c:625
-msgid "Use proxy"
-msgstr "Použiť proxy"
-
-#: gweather/gweather-pref.c:631
-msgid "Proxy URL:"
-msgstr "Proxy URL:"
-
-#: gweather/gweather-pref.c:647
-msgid "Username:"
-msgstr "Používateľské meno:"
-
-#: gweather/gweather-pref.c:663
-msgid "Password:"
-msgstr "Heslo:"
-
-#: gweather/gweather-pref.c:680
-msgid ""
-"Warning: Your password will be saved as\n"
-"unencrypted text in a private configuration\n"
-"file."
-msgstr ""
-"Varovanie: Vaše heslo bude uložené\n"
-"v vašom osobnom konfiguračnom súbore\n"
-"nezašifrované ako text."
-
-#: gweather/gweather-pref.c:688 multiload/main.c:181
-#: multiload/properties.c:381
-msgid "Network"
-msgstr "Sieť"
-
-#: gweather/gweather-pref.c:717
+#: gweather/gweather-pref.c:773
 msgid "Automatically update every"
 msgstr "Automaticky aktualizovať každých"
 
-#: gweather/gweather-pref.c:723
+#: gweather/gweather-pref.c:779
 msgid "Use metric system units"
 msgstr "Použiť metrické jednotky"
 
-#: gweather/gweather-pref.c:729
+#: gweather/gweather-pref.c:785
 msgid "Enable detailed forecast"
 msgstr "Povoliť detailnú predpoveď"
 
-#: gweather/gweather-pref.c:736
+#: gweather/gweather-pref.c:792
 msgid "Enable radar map"
 msgstr "Povoliť radarové mapy"
 
-#: gweather/gweather-pref.c:742
+#: gweather/gweather-pref.c:798
 msgid "Use custom address for radar map"
 msgstr "Použiť vlastnú adresu pre radarovú mapu"
 
-#: gweather/gweather-pref.c:753
+#: gweather/gweather-pref.c:809
 msgid "Address :"
 msgstr "Adresa:"
 
-#: gweather/gweather-pref.c:765
+#: gweather/gweather-pref.c:821
 msgid "Updates"
 msgstr "Aktualizácia"
 
-#: gweather/gweather-pref.c:771
+#: gweather/gweather-pref.c:827
 msgid "Automatically update every "
 msgstr "Automaticky aktualizovať každých "
 
-#: gweather/gweather-pref.c:791
+#: gweather/gweather-pref.c:847
 msgid "minute(s)"
 msgstr "minút"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:802
+#: gweather/gweather-pref.c:858
 msgid "Miscellaneous"
 msgstr "Rôzne"
+
+#: gweather/gweather-pref.c:876 mini-commander/src/preferences.c:768
+#: modemlights/properties.c:405
+msgid "_General"
+msgstr "_Všeobecné"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2775,6 +2824,14 @@ msgstr "História príkazov"
 msgid "Start program"
 msgstr "Spustiť program"
 
+#: mini-commander/src/command_line.c:473
+msgid "Command line"
+msgstr "Príkazový riadok"
+
+#: mini-commander/src/command_line.c:474
+msgid "Type a command here and Gnome will execute it for you"
+msgstr "Sem zadajte príkaz a GNOME ho pre vás spustí"
+
 #: mini-commander/src/exec.c:61
 msgid "fork error"
 msgstr "Chyba pri volaní fork()"
@@ -2784,6 +2841,7 @@ msgid "child exited"
 msgstr "Detský proces ukončený"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Command Line"
 msgstr "Príkazový riadok"
 
@@ -2811,122 +2869,136 @@ msgstr "%H:%M"
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:118
+#: mini-commander/src/mini-commander_applet.c:125
 msgid "orient. changed"
 msgstr "zmena orient."
 
-#: mini-commander/src/mini-commander_applet.c:135
+#: mini-commander/src/mini-commander_applet.c:142
 msgid "size changed"
 msgstr "zmena veľk."
 
-#: mini-commander/src/mini-commander_applet.c:263
+#: mini-commander/src/mini-commander_applet.c:287
+#: mini-commander/src/mini-commander_applet.c:290
 msgid "Browser"
 msgstr "Prehliadač"
 
-#: mini-commander/src/mini-commander_applet.c:277
+#: mini-commander/src/mini-commander_applet.c:291
+msgid "Click this button to start the browser"
+msgstr "Stlačením tohto tlačidla spustíte prehliadač"
+
+#: mini-commander/src/mini-commander_applet.c:304
+#: mini-commander/src/mini-commander_applet.c:307
 msgid "History"
 msgstr "História"
 
-#: mini-commander/src/mini-commander_applet.c:411
+#: mini-commander/src/mini-commander_applet.c:308
+msgid "Click this button for the list of previous commands"
+msgstr "Stlačením tohto tlačidla zobrazíte zoznam predchádzajúcich príkazov"
+
+#: mini-commander/src/mini-commander_applet.c:309
+msgid "Mini-Commander applet"
+msgstr "Applet Mini-Commander"
+
+#: mini-commander/src/mini-commander_applet.c:310
+msgid "This applet adds a command line to the panel"
+msgstr "Tento applet pridá do panelu príkazový riadok"
+
+#: mini-commander/src/mini-commander_applet.c:442
 msgid "ready..."
 msgstr "pripravený..."
 
-#: mini-commander/src/preferences.c:492
+#: mini-commander/src/preferences.c:519
 msgid "Command Line Properties"
 msgstr "Vlastnosti príkazového riadku"
 
-#: mini-commander/src/preferences.c:507
+#: mini-commander/src/preferences.c:534
 msgid "Clock"
 msgstr "Hodiny"
 
 #. show time check box
-#: mini-commander/src/preferences.c:515
+#: mini-commander/src/preferences.c:542
 msgid "Show time"
 msgstr "Zobraziť čas"
 
 #. show date check box
-#: mini-commander/src/preferences.c:522
+#: mini-commander/src/preferences.c:549
 msgid "Show date"
 msgstr "Zobraziť dátum"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:530
+#: mini-commander/src/preferences.c:557
 msgid "Appearance"
 msgstr "Vzhľad"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:538
+#: mini-commander/src/preferences.c:565
 msgid "Show handle"
 msgstr "Zobraziť handle"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:545
+#: mini-commander/src/preferences.c:572
 msgid "Show frame"
 msgstr "Zobraziť rámec"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:554
+#: mini-commander/src/preferences.c:581
 msgid "Autocompletion"
 msgstr "Automatické dopĺňanie"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:562
+#: mini-commander/src/preferences.c:589
 msgid "Enable history based autocompletion"
 msgstr "Povoliť automatické dopĺňanie založené na histórii"
 
 #. Size
-#: mini-commander/src/preferences.c:569
+#: mini-commander/src/preferences.c:596
 msgid "Size"
 msgstr "Veľkosť"
 
 #. applet width
-#: mini-commander/src/preferences.c:581
+#: mini-commander/src/preferences.c:608
 msgid "Applet width:"
 msgstr "Šírka apletu:"
 
 #. applet height
-#: mini-commander/src/preferences.c:614
+#: mini-commander/src/preferences.c:642
 msgid "Applet height:"
 msgstr "Výška apletu:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:635
+#: mini-commander/src/preferences.c:664
 msgid "Command line height:"
 msgstr "Výška príkazového riadku:"
 
 #. Color
-#: mini-commander/src/preferences.c:669 modemlights/properties.c:445
+#: mini-commander/src/preferences.c:699 modemlights/properties.c:445
 #: multiload/properties.c:361
 msgid "Colors"
 msgstr "Farby"
 
 #. fg
-#: mini-commander/src/preferences.c:679
+#: mini-commander/src/preferences.c:709
 msgid "Command line foreground:"
 msgstr "Popredie príkazového riadku:"
 
 #. bg
-#: mini-commander/src/preferences.c:710
+#: mini-commander/src/preferences.c:740
 msgid "Command line background:"
 msgstr "Pozadie príkazového riadku:"
 
-#: mini-commander/src/preferences.c:738 modemlights/properties.c:405
-msgid "_General"
-msgstr "_Všeobecné"
-
 #. prefix
-#: mini-commander/src/preferences.c:763
+#: mini-commander/src/preferences.c:793
 #, c-format
 msgid "Regex %.2d:"
 msgstr "Regul. výraz %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:779
+#: mini-commander/src/preferences.c:811
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
-#: mini-commander/src/preferences.c:795
+#: mini-commander/src/preferences.c:829
 msgid "_Macros"
 msgstr "_Makrá"
 
@@ -2934,7 +3006,7 @@ msgstr "_Makrá"
 msgid "Adjust the sound volume"
 msgstr "Úprava hlasitosti zvuku"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:742
 msgid "Volume Control"
 msgstr "Nastavenie hlasitosti"
 
@@ -2946,13 +3018,17 @@ msgstr "Potichu"
 msgid "Run Audio Mixer..."
 msgstr "Spustiť mixér..."
 
+#: mixer/mixer.c:131
+msgid "Volume Control (muted)"
+msgstr "Nastavenie hlasitosti (potichu)"
+
 #. probably should die more gracefully
-#: mixer/mixer.c:168
+#: mixer/mixer.c:174
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Nepodarilo sa otvoriť mixér %s\n"
 
-#: mixer/mixer.c:182
+#: mixer/mixer.c:188
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2960,26 +3036,38 @@ msgstr ""
 "varovanie: táto verzia gmix bola preložená s inou verziou súboru\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:193
+#: mixer/mixer.c:199
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Zistenie dostupných kanálov zariadenia mixéru %s zlyhalo\n"
 
-#: mixer/mixer.c:200
+#: mixer/mixer.c:206
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "varovanie: mixér nemá kanál hlasitosti - použijem PCM.\n"
 
-#: mixer/mixer.c:203
+#: mixer/mixer.c:209
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Zariadenie mixéru %s nemá ani kanál pre hlasitosť, ani PCM.\n"
 
-#: mixer/mixer.c:724
+#: mixer/mixer.c:508
+msgid "Volume Controller"
+msgstr "Ovládanie hlasitosti"
+
+#: mixer/mixer.c:509
+msgid "Use Up/Down arrow keys to change volume"
+msgstr "Použite šipky hore a dolu pre zmenu hlasitosti"
+
+#: mixer/mixer.c:743
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:725
+#: mixer/mixer.c:744
 msgid "The volume control lets you set the volume level for your desktop."
+msgstr "Ovládanie hlasitosti umožňuje nastaviť hlasitosť pre vaše prostredie."
+
+#: mixer/mixer.c:897
+msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Ovládanie hlasitosti umožňuje nastaviť hlasitosť pre vaše prostredie."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
@@ -3174,6 +3262,10 @@ msgstr "Procesor"
 msgid "Memory"
 msgstr "Pamäť"
 
+#: multiload/main.c:181 multiload/properties.c:381
+msgid "Network"
+msgstr "Sieť"
+
 #: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
 msgstr "Odkladací súbor"
@@ -3317,24 +3409,28 @@ msgstr "Vytváracie rozhranie pre applet Menu panelu"
 msgid "Panel applet for displaying menus"
 msgstr "Applet pre zobrazenie menu"
 
-#: panel-menu/panel-menu-actions.c:96
+#: panel-menu/panel-menu-actions.c:97
 msgid "Actions"
 msgstr "Akcie"
+
+#: panel-menu/panel-menu-actions.c:98 panel-menu/panel-menu-properties.c:146
+msgid "Actions Menu"
+msgstr "Menu Akcie"
 
 #: panel-menu/panel-menu-add.c:76
 msgid "Add items to the Menu Bar"
 msgstr "Pridať položky do menu"
 
-#: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:401
 msgid "Shortcuts"
 msgstr "Skratky"
 
-#: panel-menu/panel-menu-add.c:240
+#: panel-menu/panel-menu-add.c:241
 msgid "My Documents"
 msgstr "Moje dokumenty"
 
-#: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr "Dokumenty"
@@ -3343,15 +3439,15 @@ msgstr "Dokumenty"
 msgid "Applications"
 msgstr "Aplikácie"
 
-#: panel-menu/panel-menu.c:681
+#: panel-menu/panel-menu.c:683
 msgid "PanelMenu Applet"
 msgstr "Applet Menu panelu"
 
-#: panel-menu/panel-menu.c:681
+#: panel-menu/panel-menu.c:683
 msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:681
+#: panel-menu/panel-menu.c:683
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
@@ -3375,7 +3471,7 @@ msgstr "Upraviť položku priečinku..."
 msgid "Name:"
 msgstr "Meno:"
 
-#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
+#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:723
 msgid "Path:"
 msgstr "Cesta:"
 
@@ -3391,12 +3487,12 @@ msgstr "Vytvoriť položku dokumentov..."
 msgid "Rename documents item..."
 msgstr "Premenovať položku dokumentov..."
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:575
 msgid "KDE Menus"
 msgstr "Menu KDE"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
-#: panel-menu/panel-menu-path.c:576
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:235
+#: panel-menu/panel-menu-path.c:578
 msgid "Programs"
 msgstr "Programy"
 
@@ -3408,15 +3504,15 @@ msgstr "Vytvoriť položku odkazov..."
 msgid "Rename links item..."
 msgstr "Premenovať položku odkazov..."
 
-#: panel-menu/panel-menu-path.c:224
+#: panel-menu/panel-menu-path.c:226
 msgid "KDE"
 msgstr "KDE"
 
-#: panel-menu/panel-menu-path.c:650
+#: panel-menu/panel-menu-path.c:652
 msgid "Create menu path item..."
 msgstr "Vytvoriť položku cesty menu..."
 
-#: panel-menu/panel-menu-path.c:682
+#: panel-menu/panel-menu-path.c:684
 msgid "Edit path item..."
 msgstr "Upraviť položku cesty..."
 
@@ -3444,10 +3540,6 @@ msgstr "Menu Aplikácie"
 msgid "Select an icon for the Applications menu"
 msgstr "Vyberte ikonu pre menu Aplikácie"
 
-#: panel-menu/panel-menu-properties.c:146
-msgid "Actions Menu"
-msgstr "Menu Akcie"
-
 #: panel-menu/panel-menu-properties.c:157
 msgid "Windows Menu"
 msgstr "Menu Okná"
@@ -3463,6 +3555,15 @@ msgstr "Okná"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "Pracovné plochy"
+
+#~ msgid ""
+#~ "Warning: Your password will be saved as\n"
+#~ "unencrypted text in a private configuration\n"
+#~ "file."
+#~ msgstr ""
+#~ "Varovanie: Vaše heslo bude uložené\n"
+#~ "v vašom osobnom konfiguračnom súbore\n"
+#~ "nezašifrované ako text."
 
 #~ msgid "Add"
 #~ msgstr "Pridať"
@@ -3791,9 +3892,6 @@ msgstr "Pracovné plochy"
 
 #~ msgid "Paint what radius around each pixel?"
 #~ msgstr "Aký polomer okolo každého bodu?"
-
-#~ msgid "Solarise Image"
-#~ msgstr "Oslniť obrázok"
 
 #~ msgid "Solarize factor?"
 #~ msgstr "Úroveň oslnenia?"
