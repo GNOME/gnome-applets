@@ -390,7 +390,7 @@ geyes_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GeyesApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "Big brother is watching you",
+			     "Geyes Applet",
 			     "0",
 			     geyes_applet_factory,
 			     NULL)

@@ -675,8 +675,12 @@ destroy_applet (GtkWidget *widget, gpointer data)
    gdk_bitmap_unref(pdata->mask);
    gdk_bitmap_unref(pdata->masky);
    gdk_bitmap_unref(pdata->pixmask);
-   g_free(pdata);
+
+   if (pdata->suspend_cmd)
+   	g_free (pdata->suspend_cmd);
    
+   g_free (pdata);
+
    return;
 }
 
@@ -1430,7 +1434,7 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->last_pixmap_index = 1000;
   battstat->last_charging = 1000;
   battstat->colors_changed = TRUE;
-  battstat->suspend_cmd = FALSE;
+  battstat->suspend_cmd = NULL;
   battstat->orienttype = panel_applet_get_orient (applet);
   battstat->panelsize = panel_applet_get_size (applet);
   

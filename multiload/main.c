@@ -98,8 +98,9 @@ multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 void
 multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
+	MultiloadApplet *ma = data;
 	multiload_applet_refresh((MultiloadApplet *)data);
-		
+	gtk_widget_show (GTK_WIDGET (ma->applet));		
 	return;
 }
 
