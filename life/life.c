@@ -10,12 +10,23 @@
 #include <config.h>
 #include <applet-widget.h>
 
-#define APPLET_SIZE 45
-
 #define LIFE_CYCLE 300
 
-int board[APPLET_SIZE][APPLET_SIZE];
+int board[77][77];
 GtkWidget *darea = NULL;
+int size = 45;
+
+static int
+get_pixel_size(PanelSizeType s)
+{
+	switch(s) {
+	case SIZE_TINY: return 22;
+	case SIZE_STANDARD: return 45;
+	case SIZE_LARGE: return 61;
+	case SIZE_HUGE: return 77;
+	default: return 45;
+	}
+}
 
 static void
 life_draw(void)
@@ -29,8 +40,8 @@ life_draw(void)
 	
 	gc = gdk_gc_new(darea->window);
 
-	for(i=0;i<APPLET_SIZE;i++)
-		for(j=0;j<APPLET_SIZE;j++) {
+	for(i=0;i<size;i++)
+		for(j=0;j<size;j++) {
 			if(board[i][j])
 				gdk_gc_set_foreground(gc,&darea->style->black);
 			else
@@ -49,14 +60,14 @@ life_expose(void)
 }
 
 #define IS_THERE(i,j,ofi,ofj) \
-(((board[(APPLET_SIZE+i+ofi)%APPLET_SIZE][(APPLET_SIZE+j+ofj)%APPLET_SIZE])&1)?1:0)
+(((board[(size+i+ofi)%size][(size+j+ofj)%size])&1)?1:0)
 
 static int
 cycle(gpointer data)
 {
 	int i,j;
-	for(i=0;i<APPLET_SIZE;i++)
-		for(j=0;j<APPLET_SIZE;j++) {
+	for(i=0;i<size;i++)
+		for(j=0;j<size;j++) {
 			int n = 0;
 			n += IS_THERE(i,j,-1,-1);
 			n += IS_THERE(i,j,0,-1);
@@ -73,8 +84,8 @@ cycle(gpointer data)
 				board[i][j] |= 2;
 		}
 	/*shift in the new generation*/
-	for(i=0;i<APPLET_SIZE;i++)
-		for(j=0;j<APPLET_SIZE;j++)
+	for(i=0;i<size;i++)
+		for(j=0;j<size;j++)
 			board[i][j] >>= 1;
 	life_draw();
 	return TRUE;
@@ -84,8 +95,9 @@ static void
 randomize (AppletWidget *applet, gpointer data)
 {
 	int i,j;
-	for(i=0;i<APPLET_SIZE;i++)
-		for(j=0;j<APPLET_SIZE;j++)
+	/*randomize the entire board*/
+	for(i=0;i<77;i++)
+		for(j=0;j<77;j++)
 			board[i][j]=(rand()&1);
 	life_draw();
 }
@@ -104,9 +116,8 @@ create_life (void)
 	darea = gtk_drawing_area_new();
 	gtk_widget_pop_colormap ();
 	gtk_widget_pop_visual ();
-
-	gtk_drawing_area_size(GTK_DRAWING_AREA(darea),
-			      APPLET_SIZE,APPLET_SIZE);
+	
+	gtk_drawing_area_size(GTK_DRAWING_AREA(darea), size,size);
 
 	gtk_container_add (GTK_CONTAINER (frame), darea);
 	gtk_widget_show (darea);
@@ -136,6 +147,15 @@ about (AppletWidget *applet, gpointer data)
 	gtk_widget_show(about_box);
 }
 
+static void
+applet_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
+{
+	size = get_pixel_size(o);
+	gtk_drawing_area_size(GTK_DRAWING_AREA(darea), size,size);
+	gtk_widget_set_usize(GTK_WIDGET(darea), size,size);
+	life_draw();
+}
+
 int
 main (int argc, char **argv)
 {
@@ -153,12 +173,18 @@ main (int argc, char **argv)
 		g_error (_("Can't create life applet!"));
 	
 	randomize(NULL,NULL);
+	
+	size = get_pixel_size(applet_widget_get_panel_size(APPLET_WIDGET(applet)));
 
 	life = create_life ();
 	applet_widget_add (APPLET_WIDGET (applet), life);
 	gtk_widget_show (life);
-	
+
 	gtk_widget_show (applet);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+			   GTK_SIGNAL_FUNC(applet_change_size),
+			   NULL);
 
 	applet_widget_register_callback (APPLET_WIDGET (applet),
 					 "randomize",
