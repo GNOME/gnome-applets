@@ -925,7 +925,7 @@ make_new_battery_applet (const gchar *goad_id)
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
 					 "properties",
 					 GNOME_STOCK_MENU_PROP,
-					 ("Properties..."),
+					 _("Properties..."),
 					 battery_properties_window,
 					 bat);
 
