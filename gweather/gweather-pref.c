@@ -21,6 +21,7 @@
 
 #include <gnome.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 #include <gconf/gconf-client.h>
 #include <egg-screen-help.h>
 
@@ -29,10 +30,49 @@
 #include "gweather-applet.h"
 #include "location.h"
 
+#define NEVER_SENSITIVE		"never_sensitive"
 
 static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet);
 static void help_cb (GtkDialog *dialog);
 
+/* set sensitive and setup NEVER_SENSITIVE appropriately */
+static void
+hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	gtk_widget_set_sensitive (w, sensitivity);
+	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
+			   GINT_TO_POINTER ( ! sensitivity));
+}
+
+
+/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
+static void
+soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
+		gtk_widget_set_sensitive (w, FALSE);
+	else
+		gtk_widget_set_sensitive (w, sensitivity);
+}
+
+
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
 
 GtkWidget *
 hig_category_new (GtkWidget *parent, gchar *title, gboolean expand, gboolean fill)
@@ -109,7 +149,7 @@ static void change_cb (GtkButton *button, gpointer user_data)
 {
     GWeatherApplet *gw_applet = user_data;
 
-    gtk_widget_set_sensitive(gw_applet->pref_basic_update_spin, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn)));
+    soft_set_sensitive(gw_applet->pref_basic_update_spin, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn)));
     
     return;
 }
@@ -123,7 +163,7 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
     
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.update_enabled = toggled;
-    gtk_widget_set_sensitive (gw_applet->pref_basic_update_spin, toggled);
+    soft_set_sensitive (gw_applet->pref_basic_update_spin, toggled);
     panel_applet_gconf_set_bool(gw_applet->applet, "auto_update", toggled, NULL);
     if (gw_applet->timeout_tag > 0)
         gtk_timeout_remove(gw_applet->timeout_tag);
@@ -251,17 +291,15 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
     gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->pref), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (gw_applet->pref), 5);
-    gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), 400,400);
+    gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), -1, 400);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
     gtk_window_set_screen (GTK_WINDOW (gw_applet->pref),
 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
 
     pref_vbox = GTK_DIALOG (gw_applet->pref)->vbox;
-    gtk_widget_show (pref_vbox);
 
 
     pref_notebook = gtk_notebook_new ();
-    gtk_widget_show (pref_notebook);
     gtk_container_set_border_width (GTK_CONTAINER (pref_notebook), 5);
     gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
@@ -282,17 +320,18 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
 
     gw_applet->pref_basic_update_btn = gtk_check_button_new_with_mnemonic (_("_Automatically update every:"));
-    gtk_widget_show (gw_applet->pref_basic_update_btn);
     gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_basic_update_btn, FALSE, FALSE, 0);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
     		      G_CALLBACK (auto_update_toggled), gw_applet);
+
+    if ( ! key_writable (gw_applet->applet, "auto_update"))
+	    hard_set_sensitive (gw_applet->pref_basic_update_btn, FALSE);
     
     hbox2 = gtk_hbox_new (FALSE, 6);
     gtk_box_pack_start (GTK_BOX (hbox), hbox2, FALSE, FALSE, 0);
 
     pref_basic_update_spin_adj = gtk_adjustment_new (30, 30, 3600, 5, 25, 1);
     gw_applet->pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
-    gtk_widget_show (gw_applet->pref_basic_update_spin);
     gtk_box_pack_start (GTK_BOX (hbox2), gw_applet->pref_basic_update_spin,
 					  FALSE, FALSE, 0);
     gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (gw_applet->pref_basic_update_spin), TRUE);
@@ -302,7 +341,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     		      		       G_CALLBACK (update_interval_changed), gw_applet);
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(gw_applet->pref_basic_update_spin), 
     			      gw_applet->gweather_pref.update_interval / 60);
-    gtk_widget_set_sensitive(gw_applet->pref_basic_update_spin, 
+    soft_set_sensitive(gw_applet->pref_basic_update_spin, 
     			     gw_applet->gweather_pref.update_enabled);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn), 
     				 gw_applet->gweather_pref.update_enabled);
@@ -316,29 +355,36 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 				      _("Spinbutton for updating"));
 
     pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
-    gtk_widget_show (pref_basic_update_sec_lbl);
     gtk_box_pack_start (GTK_BOX (hbox2), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
     add_atk_relation (gw_applet->pref_basic_update_spin, pref_basic_update_sec_lbl,
                                             ATK_RELATION_LABELLED_BY);
-    
+
+    if ( ! key_writable (gw_applet->applet, "auto_update_interval")) {
+	    hard_set_sensitive (gw_applet->pref_basic_update_spin, FALSE);
+	    hard_set_sensitive (pref_basic_update_sec_lbl, FALSE);
+    }
 
     vbox2 = hig_category_new (vbox, _("Display"), FALSE, FALSE);
 
     gw_applet->pref_basic_metric_btn = gtk_check_button_new_with_mnemonic (_("Use _metric system units"));
     gtk_box_pack_start (GTK_BOX (vbox2), gw_applet->pref_basic_metric_btn, FALSE, FALSE, 0);
-    gtk_widget_show (gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_metric_btn), "toggled",
     		      G_CALLBACK (metric_toggled), gw_applet);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_metric_btn), 
     				 gw_applet->gweather_pref.use_metric);
 
+    if ( ! key_writable (gw_applet->applet, "enable_metric"))
+	    hard_set_sensitive (gw_applet->pref_basic_metric_btn, FALSE);
+
     check = gtk_check_button_new_with_mnemonic (_("Display _temperatures"));
     gtk_box_pack_start (GTK_BOX (vbox2), check, FALSE, FALSE, 0);
-    gtk_widget_show (gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (check), "toggled",
     		      G_CALLBACK (show_labels_toggled), gw_applet);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), 
     				 gw_applet->gweather_pref.show_labels);
+
+    if ( ! key_writable (gw_applet->applet, "show_labels"))
+	    hard_set_sensitive (check, FALSE);
     
     hbox = gtk_hbox_new (FALSE, 12);
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
@@ -359,10 +405,19 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     set_access_namedesc (spin, 
 				      _("Number of days spin button"),
 				      _("Spinbutton for determining the number of days to show on the panel"));
+
+    if ( ! key_writable (gw_applet->applet, "num_forecasts")) {
+	    hard_set_sensitive (spin, FALSE);
+	    hard_set_sensitive (label, FALSE);
+    }
     
     label = gtk_label_new_with_mnemonic (_("days"));
     gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, TRUE, 0);
     add_atk_relation (spin, label, ATK_RELATION_LABELLED_BY);
+
+    if ( ! key_writable (gw_applet->applet, "num_forecasts")) {
+	    hard_set_sensitive (label, FALSE);
+    }
 
   /*
    * Location page.
@@ -383,36 +438,37 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_location_city_label, FALSE, FALSE, 0);
 
     table = gtk_table_new (2, 2, FALSE);
-    gtk_widget_show (table);
     gtk_box_pack_start (GTK_BOX (frame), table, TRUE, TRUE, 0);
     gtk_table_set_row_spacings (GTK_TABLE (table), 6);
     gtk_table_set_col_spacings (GTK_TABLE (table), 12);
  
     label = gtk_label_new_with_mnemonic (_("Available c_ountries:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
-    gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1,
                       (GtkAttachOptions) (GTK_FILL),
                       (GtkAttachOptions) (0), 0, 0);
     
     scrolled = create_countries_widget (gw_applet);
+    if ( ! key_writable (gw_applet->applet, "url") ||
+	 ! key_writable (gw_applet->applet, "city"))
+	    hard_set_sensitive (scrolled, FALSE);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->country_tree);
-    gtk_widget_show (scrolled);
     gtk_table_attach (GTK_TABLE (table), scrolled, 0, 1, 1, 2,
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
     add_atk_relation (scrolled, label, ATK_RELATION_LABELLED_BY);
 
     label = gtk_label_new_with_mnemonic (_("Available c_ities:"));    
-    gtk_widget_show (label);
     gtk_table_attach (GTK_TABLE (table), label, 1, 2, 0, 1,
                       (GtkAttachOptions) (GTK_FILL),
                       (GtkAttachOptions) (0), 0, 0);
     gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);    
     
     scrolled = create_cities_widget (gw_applet);
+    if ( ! key_writable (gw_applet->applet, "url") ||
+	 ! key_writable (gw_applet->applet, "city"))
+	    hard_set_sensitive (scrolled, FALSE);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->city_tree);
-    gtk_widget_show (scrolled);
     gtk_table_attach (GTK_TABLE (table), scrolled, 1, 2, 1, 2,
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                       (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
