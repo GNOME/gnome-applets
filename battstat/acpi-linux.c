@@ -345,6 +345,7 @@ gboolean acpi_process_event(struct acpi_info * acpiinfo)
 gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
 {
   guint32 remain;
+  guint32 rate;
   gboolean charging;
   GHashTable *hash;
   char batt_state[60];
@@ -365,6 +366,7 @@ gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
 
   charging = FALSE;
   remain = 0;
+  rate = 0;
 
   procdir=opendir("/proc/acpi/battery/");
   if (!procdir)
@@ -391,6 +393,7 @@ gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
           charging = s ? (strcmp (s, "charging") == 0) : 0;
          }
         remain += read_long (hash, "remaining capacity");
+	rate += read_long (hash, "present rate");
         g_hash_table_destroy (hash);
        }
      }
@@ -404,6 +407,12 @@ gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
   else
     apminfo->battery_percentage = (int) (remain/(float)acpiinfo->max_capacity*100);
   apminfo->battery_flags = charging ? 0x8 : 0;
+  if (rate && !charging)
+    apminfo->battery_time = (int) (remain/(float)rate * 60);
+  else if (rate && charging)
+    apminfo->battery_time = (int) ((acpiinfo->max_capacity-remain)/(float)rate * 60);
+  else
+    apminfo->battery_time = -1;
 
   return TRUE;
 }

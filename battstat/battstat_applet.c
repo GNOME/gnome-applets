@@ -347,6 +347,19 @@ apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 
 /* } */
 
+static char *get_remaining (int time)
+{
+	int hours = time / 60;
+	int mins  = time % 60;
+	
+	if (time == -1)
+		return g_strdup_printf(_("charged"));
+	else if (time < 0)
+		return g_strdup_printf(_("..."));
+	else
+		return g_strdup_printf(_("%d hours %d minutes remaining"), hours, mins);	
+}
+	
 gint
 pixmap_timeout( gpointer data )
 {
@@ -363,6 +376,8 @@ pixmap_timeout( gpointer data )
   gboolean batterypresent;
   gchar new_label[80];
   gchar new_string[80];
+  gchar *rem_time = NULL;
+  
   gchar *status[]={
     /* The following four messages will be displayed as tooltips over
      the battery meter.  
@@ -642,6 +657,11 @@ pixmap_timeout( gpointer data )
 	 }
       }
       
+      if (batt_state != 3)
+	      rem_time = get_remaining(apminfo.battery_time);
+      else
+	      rem_time = g_strdup(_(status[batt_state]));
+      
       if (battery->showstatus == 0) {
 	 if (batterypresent) {
 	    if(acline_status == 0) {
@@ -649,15 +669,13 @@ pixmap_timeout( gpointer data )
 			/* This string will display as a tooltip over the battery frame
 			 when the computer is using battery power.*/
 			_("System is running on battery power. Battery: %d%% (%s)"),
-			batt_life,
-			_(status[batt_state]));
+			batt_life, rem_time);
 	    } else {
 	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the battery frame
 			 when the computer is using AC power.*/
 			_("System is running on AC power. Battery: %d%% (%s)"),
-			batt_life,
-			_(status[batt_state]));
+			batt_life, rem_time);
 	    }
 	 } else {
 	    if(acline_status == 0) {
@@ -682,8 +700,7 @@ pixmap_timeout( gpointer data )
 		     a battery present. %d will hold the current charge and %s will
 		     hold the status of the battery, (High, Low, Critical, Charging. */
 		    (_("Battery: %d%% (%s)")),
-		    batt_life,
-		    _(status[batt_state]));
+		    batt_life, rem_time);
 	 } else {
 	    snprintf(new_string, sizeof(new_string), 
 		     /* Displayed as a tooltip over the battery meter when no
@@ -691,6 +708,8 @@ pixmap_timeout( gpointer data )
 		     (_("Battery: Not present")));
 	 }
       }
+      
+      g_free (rem_time);
       
       gtk_tooltips_set_tip(battery->progress_tip,
 			   battery->eventbattery,
