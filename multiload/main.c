@@ -41,7 +41,7 @@ about_cb (BonoboUIComponent *uic,
     {
 		"Martin Baulig <martin@home-of-linux.org>",
 		"Todd Kulesza <fflewddur@dropline.net>",
-		"Benoît Dejean <benoit.dejean@placenet.org>",
+		"Benoît Dejean <TazForEver@dlfp.org>",
 		"Davyd Madeley <davyd@madeley.id.au>",
 		NULL
     };
