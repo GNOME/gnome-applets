@@ -1,0 +1,163 @@
+<!DOCTYPE sect1 PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+]>
+
+
+
+
+<sect1 id="webcontrol-applet">
+  <title>Web Control Applet</title> 
+
+  <para> <application>Web Control Applet</application>, shown in <xref
+  linkend="webcontrol-applet-fig1">, allows you to launch your
+  <application>Netscape</application> browser with the URL you
+  indicate in the URL text box. To add this applet
+  to the panel, right-click on the panel and choose
+
+
+         <menuchoice>
+               <guimenu>Applets</guimenu>
+               <guisubmenu>Network</guisubmenu>
+	       <guimenuitem>WebControl</guimenuitem>
+	</menuchoice>
+  </para>
+  
+ 
+    <figure id="webcontrol-applet-fig1">
+     <title>Web Control Applet</title>
+     <screenshot>
+      <screeninfo>Web Control Applet</screeninfo>
+      <graphic format="png" fileref="fig/webcontrol-applet"
+	       srccredit="John Fleck">
+      </graphic>
+    </screenshot>
+   </figure>
+
+  <para>
+    This applet was written by Garrett Smith
+    <email>gsmith@serv.net</email>. Please send all suggestions and bug&lt;
+    reports to <ulink type="http" url="http://bugs.gnome.org">GNOME
+      Bug Tracking Database</ulink> or use command
+    <command>bug-buddy</command>.
+    </para>
+
+  <sect2 id="webcontrol-applet-usage">
+    <title> Usage</title>
+    <para> To use this applet, type the URL of the document you wish
+    to view in the text box. For an Internet URL, you must type in
+    <command>http://</command> followed by the web address, for
+    example, <command>http://www.gnome.org</command>. For a local
+    file, simply type the file's name. 
+    </para>
+
+    <para>If you would like to launch a new browser window instead of
+    using the currently active one, check the <guilabel>Launch new
+    window</guilabel> check box.</para>
+
+    <para> If you right-click on the applet, it brings up a
+    <guimenu>menu</guimenu>, containing the following commands: 
+      <itemizedlist> 
+	<listitem>
+	  <para>
+	    <guimenuitem>Remove from panel</guimenuitem> &mdash;
+	    self-explanatory 
+	    </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <guimenuitem>Move applet</guimenuitem> &mdash; allows you
+	    to move the applet to a different place on the panel. You
+	    can also move the applet by dragging it  with the
+	    middle  mouse button. 
+	    </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <guimenuitem>Properties</guimenuitem>&mdash; brings up
+	    <link linkend="webcontrol-applet-prefs">
+                <guilabel>Properties</guilabel>
+            </link> dialog
+	    </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>About</guimenuitem> &mdash; shows info about
+            the <application>Web Control Applet</application>, including
+            version and author's name. 
+	    </para>
+	</listitem>
+	
+	<listitem>
+	  <para>
+	    <guimenuitem>Help</guimenuitem> &mdash; brings up this
+            document. 
+	    </para>
+	</listitem>
+	
+
+      </itemizedlist>
+    </para>
+  </sect2>
+
+  <sect2 id="webcontrol-applet-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>Web Control Applet</application> by
+      right-clicking on it and choosing
+      <guimenuitem>Properties</guimenuitem>. This will launch
+      <interface>Properties</interface> dialog, which allows you to
+      change various settings.
+    </para>
+    <figure id="webcontrol-applet-fig2">
+     <title>WebControl Properties Dialog</title>
+     <screenshot>
+      <screeninfo>Preferences dialog</screeninfo>
+      <graphic format="png" fileref="fig/webcontrol-applet-prefs"
+	       srccredit="John Fleck">
+      </graphic>
+    </screenshot>
+   </figure>
+    
+    <para> 
+      Checking the <guilabel>Display URL label</guilabel> check box
+      displays the text <guilabel>Url:</guilabel> to the left of the
+      text entry window in the applet.</para>
+
+    <para> Checking the <guilabel>Display "launch new window"
+    option</guilabel> check box displays a check box on the applet
+    window allowing you to decide whether your document will be
+    displayed in a new browser window or the currently open
+      one.</para>
+
+    <para> After you made all the choices you want, click on
+      <guibutton>OK</guibutton> to make the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click on
+      <guibutton>Close</guibutton> button.
+    </para>
+  </sect2>
+  
+  <sect2 id="webcontro-applet-bugs">
+    <title> Known bugs and limitations</title>
+    <para>
+      <application>Web Control Applet</application> only starts
+      <application>Netscape</application>. If you don't have
+      <application>Netscape</application>, it won't work. If you have
+      a different browser set as your URL handler, <application>Web
+      Control Applet</application> will still start <application>Netscape</application>.
+    </para>
+    <para><application>Web Control Applet</application> does not
+    resize to match the size of the panel if the panel is smaller than
+    <application>Web Control Applet's</application> normal height and width. This
+    effects both small horizontal panels and all vertical panels.</para>
+  </sect2>
+
+</sect1>
+    
+
+
+
+
+
+
+
