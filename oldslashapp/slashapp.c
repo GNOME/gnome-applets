@@ -126,7 +126,7 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 
 	if (icon_file)
 		{
-		icon = gnome_pixmap_new_from_file_at_size(icon_file, 20, 20);
+		icon = gnome_pixmap_new_from_file_at_size(icon_file, 20, 24);
 		}
 	
 	g_free(gif_file);
