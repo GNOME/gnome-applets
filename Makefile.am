@@ -12,7 +12,8 @@ endif
 
 
 ghttp_applets = \
-	slashapp
+	slashapp	\
+	gweather
 ghttp_nb_applets = \
 	bussign		\
 	oldslashapp

@@ -96,6 +96,7 @@ dnl Check for ghttp library
 AM_CONDITIONAL(HAVE_LIBGHTTP, test -n "$GHTTP_LIB")
 AC_SUBST(GHTTP_LIB)
 if test -z "$GHTTP_LIB"; then
+   AC_MSG_WARN([*** \`gweather' applet will not be built ***])
    AC_MSG_WARN([*** \`slashapp' applet will not be built ***])
 fi
 
@@ -156,6 +157,8 @@ gkb/Makefile
 gkb/gkb/Makefile
 gkb/xmodmap/Makefile
 gnome-pager/Makefile
+gweather/Makefile
+gweather/pixmaps/Makefile
 jbc/Makefile
 jbc/pixmaps/Makefile
 hal/Makefile
