@@ -54,7 +54,7 @@ static const gchar *swap_color_defs [4] = {
 };
 
 static const gchar *net_color_defs [3] = {
-    "#64009500e0e0", "#d300d300d300", "#000000000000",
+    "#64009500e0e0", "#d300d300d300", "#ffffffff4fff",
 };
 
 
