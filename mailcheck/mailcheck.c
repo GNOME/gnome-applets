@@ -2801,6 +2801,17 @@ mailcheck_applet_fill (PanelApplet *applet)
 					   NULL, 
 			        	   mailcheck_menu_verbs,
 					   mc);
+
+	if (panel_applet_get_locked_down (applet)) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (applet);
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/Preferences",
+					      "hidden", "1",
+					      NULL);
+	}
 	
 	gtk_label_set_text (GTK_LABEL (mc->label), _("Status not updated"));
 	set_tooltip (GTK_WIDGET (mc->applet), _("Status not updated"));
