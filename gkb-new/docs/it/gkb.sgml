@@ -130,17 +130,27 @@
 	    Comando da usare &mdash; Questo è il comando con il quale
 	    <application>GNOME KeyBoard</application> cambia effettivamente la
 	    mappatura. Per default viene usato il comando
-	    <command>setxkbmap</command>. Per impostare una mappatura
-	    statunitense ad esempio si può usare il comando <command>setxkbmap
-	    us</command>. Si può usare anche il comando
-	    <command>gkb_xmmap</command> (ad esempio il comando
-	    <command>gkb_xmmap fr</command> imposta la tastiera francese) oppure
-	    il comando <command>Xmodmap</command>
-	    (<command>/usr/local/bin/Xmodmap ru</command> imposta una tastiera
-	    russa).
+	    <command>setxkbmap <replaceable>LC</replaceable></command>, dove a
+	    <replaceable>LC</replaceable> deve essere sostituito dalle due
+	    lettere del codice del linguaggio desiderato. Per impostare una
+	    mappatura statunitense ad esempio si può usare il comando
+	    <command>setxkbmap us</command>.
+	  </para>
+	  <para>
+	    Se questo non dovesse funzionare è possibile anche provare a
+	    impostare la tastiera usando il comando <command>gkb_xmmap
+	      <replaceable>LC</replaceable></command> (ad esempio
+	    <command>gkb_xmmap fr</command> per usare una tastiera
+	    francese). Infine, se volete usare un layout della tastiera
+	    personale in un file per xmodmap impostate il comando
+	    <command>xmodmap
+	      <replaceable>xmodmap-filename</replaceable></command> (ad esempio,
+	    <command>xmodmap ~/xrus/yawerty.koi8.xmm</command> per usare il
+	    layout della tastiera per la codifica dei caratteri cirillici in
+	    koi8). Visitate <xref  linkend="gkbappplet-technical"> per
+	      maggiori informazioni.
 	  </para>
 	</listitem>
-
       </itemizedlist>
     </para>
 
@@ -153,6 +163,42 @@
     </para>
   </sect2>
 
+  <sect2 id="gkbappplet-technical">
+    <title>Informazioni tecniche</title>
+    <para> 
+      Normalmente non è necessario conoscere questi dettagli, ma nel caso in cui
+      qualcosa non stesse funzionando oppure nel caso in cui siate semplicemente
+      curiosi, leggete pure.
+    </para>
+    <para>
+      <application>GNOME Keyboard</application> cambia la mappatura della
+      tastiera con un comando ad X Window System. X Window System ha due modi
+      per impostare la mappatura della tastiera: la più vecchia è quella
+      chiamata "xmodmap" e quella più nuova basata su "Xkb extension". Se avete
+      abilitato Xkb dovete usare questo e cambiare mappatura con il comando
+      <command>setxkbmap <replaceable>LC</replaceable></command>. Questo viene
+      fornito con molti file contenenti i layout per svariate tastiere che si
+      trovano normalmente nella directory
+      <filename>/usr/X11R6/lib/X11/xkb/symbols</filename>.
+    </para>
+    <para>
+      Se non avete abilitato l'estensione Xkb oppure se in questa non è compreso
+      il linguaggio che volete usare dovete usare il più vecchio meccanismo di
+      <command>xmodmap</command>. In questo caso dovete avere un file che
+      descrive il layout della tastiera in un formato speciale (vedi la pagina
+      del manuale di di <command>xmodmap</command> per i dettagli), e il comando
+      deve essere <command>xmodmap<replaceable>filename</replaceable>
+      </command>. <application>GNOME Keyboard</application> include una serie di
+      file di layout che vengono installati nella directory
+      <filename>/usr/share/xmodmap</filename> con nomi del tipo
+      <filename>xmodmap.de</filename>. Per usare uno di questi file potete usare
+      il comando <command>gkb_xmmap <replaceable>LC</replaceable></command> che
+      è equivalente al comando <command>xmodmap
+      /usr/share/xmodmap/xmodmap.<replaceable>LC</replaceable></command>: ad
+      esempio <command>gkb_xmmap hu</command> è lo stesso di <command>xmodmap
+      /usr/share/xmodmap/xmodmap.hu</command>.
+    </para>
+  </sect2>
 
   <!-- ============= Bugs ================================== -->
   <!-- This section should describe known bugs and limitations of
