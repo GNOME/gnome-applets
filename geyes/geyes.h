@@ -41,8 +41,8 @@ typedef struct
     GdkPixmap *pixmap[MAX_EYES];
 
     /* Theme */
-    GdkImlibImage *eye_image;
-    GdkImlibImage *pupil_image;
+    GdkPixbuf *eye_image;
+    GdkPixbuf *pupil_image;
     gchar *theme_dir;
     gchar *theme_name;
     gchar *eye_filename;

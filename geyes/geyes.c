@@ -36,6 +36,8 @@ guint timeout_handle = -1;
 static void 
 applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
+	/* Not ported */
+	/* Deprecated - now use gtk_widget_set_style (GtkWidget *widget, GtkStyle *style) */
 	gtk_widget_set_rc_style(dest);
         gtk_widget_queue_draw (dest);
 	return;
@@ -164,14 +166,25 @@ draw_eye (gint eye_num,
           gint pupil_x, 
           gint pupil_y)
 {
+	/* Currently porting */
         gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
                          eyes_applet.applet->style->black_gc,
-                         eyes_applet.eye_image->pixmap,
+                         gdk_pixbuf_get_pixels (eyes_applet.eye_image), /* Could work okay - not sure */
                          0, 0, 
                          0, 0,
                          eyes_applet.eye_width, 
                          eyes_applet.eye_height);
-        
+
+        gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
+                         eyes_applet.applet->style->black_gc,
+                         gdk_pixbuf_get_pixels (eyes_applet.pupil_image), /* Could work okay - not sure */
+                         0, 0, 
+                         pupil_x - eyes_applet.pupil_width / 2, 
+                         pupil_y - eyes_applet.pupil_height / 2,
+                         -1, -1);
+       
+	/* Needs to be converted */ 
+	
         if (eyes_applet.pupil_image->shape_mask) {
                 gdk_gc_set_clip_mask (eyes_applet.applet->style->black_gc, 
                                       eyes_applet.pupil_image->shape_mask);
@@ -179,13 +192,7 @@ draw_eye (gint eye_num,
                                         pupil_x - eyes_applet.pupil_width / 2, 
                                         pupil_y - eyes_applet.pupil_height / 2);
         }
-        gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
-                         eyes_applet.applet->style->black_gc,
-                         eyes_applet.pupil_image->pixmap,
-                         0, 0, 
-                         pupil_x - eyes_applet.pupil_width / 2, 
-                         pupil_y - eyes_applet.pupil_height / 2,
-                         -1, -1);
+
         if (eyes_applet.pupil_image->shape_mask) {
                 gdk_gc_set_clip_mask (eyes_applet.applet->style->black_gc, 
                                       NULL);
@@ -303,6 +310,7 @@ save_session_cb (GtkWidget *widget,
 void 
 create_eyes (void)
 {
+	/* Ported */
         gint i;
         gint color_depth; 
         
@@ -330,12 +338,11 @@ create_eyes (void)
                 gtk_widget_show (eyes_applet.eyes[i]);
 
                 color_depth = (gdk_window_get_visual (eyes_applet.applet->window))->depth;
-/* Fine until here */
-                eyes_applet.pixmap[i] = gdk_pixmap_new (eyes_applet.eyes[i]->window,
+                
+		eyes_applet.pixmap[i] = gdk_pixmap_new (eyes_applet.eyes[i]->window,
                                                         eyes_applet.eye_width,
                                                         eyes_applet.eye_height,
                                                         color_depth);
-                
                 draw_eye (i, eyes_applet.eye_width / 2,
                           eyes_applet.eye_height / 2);
                 
@@ -379,15 +386,16 @@ create_eyes_applet (void)
 	if (!eyes_applet.applet)
 		g_error ("Can't create applet!\n");
         
-        gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
+        g_object_connect (G_OBJECT (eyes_applet.applet),
                             "save_session",
-                            GTK_SIGNAL_FUNC (save_session_cb), 
+                            G_CALLBACK (save_session_cb), 
                             NULL);
-	gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
+	g_object_connect (G_OBJECT (eyes_applet.applet),
 			    "delete_event",
-			    GTK_SIGNAL_FUNC (delete_cb),
+			    G_CALLBACK (delete_cb),
 			    NULL);
 
+	/* I guess these could be changed for 2.0 ? */
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
                                                "properties",
                                                GNOME_STOCK_MENU_PROP,

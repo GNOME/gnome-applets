@@ -79,6 +79,10 @@ parse_theme_file (FILE *theme_file)
 void
 load_theme (gchar *theme_dir)
 {
+	/* Porting complete - well...mostly complete. Just need to figure 
+	   out the GdkImlib - GdkPixbuf mapping. I think I'm mostly happy
+	   with this func */
+
         FILE* theme_file;
         gchar *file_name;
         
@@ -97,20 +101,21 @@ load_theme (gchar *theme_dir)
         
         eyes_applet.theme_name = g_strdup (theme_dir);
         
-        eyes_applet.eye_image = 
-                gdk_imlib_load_image (eyes_applet.eye_filename);
+        eyes_applet.eye_image = gdk_pixbuf_new_from_file (eyes_applet.eye_filename);
+        eyes_applet.pupil_image = gdk_pixbuf_new_from_file (eyes_applet.pupil_filename);
+
+	/* We now have to replace these calls - actually I don't think we need them 
         gdk_imlib_render (eyes_applet.eye_image,            
                           eyes_applet.eye_image->rgb_width,
                           eyes_applet.eye_image->rgb_height);
-        eyes_applet.pupil_image = gdk_imlib_load_image (eyes_applet.pupil_filename);
         gdk_imlib_render (eyes_applet.pupil_image,            
                           eyes_applet.pupil_image->rgb_width,
                           eyes_applet.pupil_image->rgb_height);
-        
-        eyes_applet.eye_height = eyes_applet.eye_image->rgb_height;
-        eyes_applet.eye_width = eyes_applet.eye_image->rgb_width;
-        eyes_applet.pupil_height = eyes_applet.pupil_image->rgb_height;
-        eyes_applet.pupil_width = eyes_applet.pupil_image->rgb_width;
+        */
+        eyes_applet.eye_height = gdk_pixbuf_get_height (eyes_applet.eye_image);
+        eyes_applet.eye_width = gdk_pixbuf_get_width (eyes_applet.eye_image);
+        eyes_applet.pupil_height = gdk_pixbuf_get_height (eyes_applet.pupil_image);
+        eyes_applet.pupil_width = gdk_pixbuf_get_width (eyes_applet.pupil_image);
         
         g_free (file_name);
         
@@ -119,9 +124,10 @@ load_theme (gchar *theme_dir)
 static void
 destroy_theme ()
 {
-        gdk_imlib_kill_image (eyes_applet.eye_image);
-        gdk_imlib_kill_image (eyes_applet.pupil_image);
-        
+	/* Dunno about this - to unref or not to unref? */
+        gdk_pixbuf_unref (eyes_applet.eye_image); 
+        gdk_pixbuf_unref (eyes_applet.pupil_image); 
+
         g_free (eyes_applet.theme_dir);
         g_free (eyes_applet.theme_name);
 }
@@ -133,6 +139,7 @@ theme_selected_cb (GtkWidget *widget,
                    GdkEventButton *event,
                    gpointer data)
 {
+	/* Ported */
         eyes_applet.prop_box.selected_row = row;
         gnome_property_box_changed (GNOME_PROPERTY_BOX (eyes_applet.prop_box.pbox));
 	return;
@@ -141,6 +148,7 @@ theme_selected_cb (GtkWidget *widget,
 static void
 apply_cb (GtkWidget *prob_box, gint page_num, gpointer data)
 {
+	/* Not ported - ugly Clist conversions :( */
         gchar *clist_text;
         
         if (page_num == 0) {
@@ -159,6 +167,7 @@ apply_cb (GtkWidget *prob_box, gint page_num, gpointer data)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
+	/* Ported */
 	GnomeHelpMenuEntry help_entry = { "geyes_applet",
 					  "index.html#GEYES-PREFS" };
 	gnome_help_display(NULL, &help_entry);
@@ -167,6 +176,7 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 void
 properties_cb (AppletWidget *applet, gpointer data)
 {
+	/* Half ported - ugly etc, etc.. */
         GtkWidget *pbox;
         GtkWidget *clist;
         GtkWidget *label;
@@ -183,15 +193,22 @@ properties_cb (AppletWidget *applet, gpointer data)
 	}
 
         pbox = gnome_property_box_new ();
-        gtk_signal_connect (GTK_OBJECT (pbox),
-                            "apply",
-                            GTK_SIGNAL_FUNC (apply_cb),
-                            NULL);
-        gtk_signal_connect (GTK_OBJECT (pbox), "destroy",
-			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
-			    &eyes_applet.prop_box.pbox);
-	gtk_signal_connect (GTK_OBJECT (pbox), "help",
-			    GTK_SIGNAL_FUNC (phelp_cb), NULL);
+
+        g_signal_connect (G_OBJECT (pbox),
+                          "apply",
+                          G_CALLBACK (apply_cb),
+                          NULL);
+
+        g_signal_connect (G_OBJECT (pbox), 
+			  "destroy",
+			  G_CALLBACK (gtk_widget_destroyed),
+			  &eyes_applet.prop_box.pbox);
+
+	g_signal_connect (G_OBJECT (pbox), 
+			  "help",
+			  G_CALLBACK (phelp_cb), 
+			  NULL);
+
         gtk_window_set_title (GTK_WINDOW (pbox),
                               _("gEyes Settings"));
         
