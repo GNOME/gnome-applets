@@ -109,6 +109,8 @@
 		
 		GtkWidget *fontDialog;
 
+		GtkWidget *about_dialog;
+
 		GtkWidget * pb;
 		
 		gtik_properties props; 
@@ -757,7 +759,6 @@ static gint updateOutput(gpointer data)
 	static void about_cb (BonoboUIComponent *uic,
 			      StockData         *stockdata, 
 			      const gchar       *verbname) {
-		GtkWidget *about;
 		GdkPixbuf *pixbuf;
 		GError    *error = NULL;
 		gchar     *file;
@@ -773,8 +774,12 @@ static gint updateOutput(gpointer data)
 		};
 
 		const gchar *translator_credits = _("translator_credits");
-		
-		
+
+		if (stockdata->about_dialog) {
+			gtk_window_present (GTK_WINDOW (stockdata->about_dialog));
+			return;
+		}
+
 		file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
 			"gnome-money.png", FALSE, NULL);
 		
@@ -788,7 +793,7 @@ static gint updateOutput(gpointer data)
 			g_error_free (error);
 		}
 		
-		about = gnome_about_new (_("Stock Ticker"), VERSION,
+		stockdata->about_dialog = gnome_about_new (_("Stock Ticker"), VERSION,
 		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
 		_("This program connects to "
 		"a popular site and downloads current stock quotes.  "
@@ -804,9 +809,13 @@ static gint updateOutput(gpointer data)
 		if (pixbuf)
 			gdk_pixbuf_unref (pixbuf);
 
-		gtk_window_set_screen (GTK_WINDOW (about),
+		gtk_window_set_screen (GTK_WINDOW (stockdata->about_dialog),
 				       gtk_widget_get_screen (stockdata->applet));
-		gtk_widget_show (about);
+
+		g_signal_connect(G_OBJECT (stockdata->about_dialog), "destroy",
+				 G_CALLBACK (gtk_widget_destroyed), &stockdata->about_dialog);
+
+		gtk_widget_show (stockdata->about_dialog);
 
 		return;
 	}
@@ -1951,6 +1960,9 @@ static gint updateOutput(gpointer data)
 			g_free (stockdata->configFileName);
 		if (stockdata->my_font)
 			pango_font_description_free (stockdata->my_font);
+
+		if (stockdata->about_dialog)
+			 gtk_widget_destroy (stockdata->about_dialog); 
 		
 		if (stockdata->pb)
 			gtk_widget_destroy (stockdata->pb);
