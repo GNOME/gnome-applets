@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-core 1.1.3cvs\n"
-"POT-Creation-Date: 2000-05-04 22:00+0200\n"
+"Project-Id-Version: gnome-core 1.1.90cvs\n"
+"POT-Creation-Date: 2000-05-13 01:55+0200\n"
 "PO-Revision-Date: 2000-04-28 23:46+02:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
@@ -101,7 +101,7 @@ msgstr "Innstillinger for klokke"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:786
+#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
 #: modemlights/properties.c:297 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:351
 #: sound-monitor/properties.c:436 tickastat/properties.c:424
@@ -110,7 +110,7 @@ msgstr "Generelt"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:708 multiload/load-graph.c:588
+#: mini-commander/src/preferences.c:723 multiload/load-graph.c:588
 #: multiload/load-graph.c:780
 msgid "Colors"
 msgstr "Farger"
@@ -154,7 +154,7 @@ msgstr "(C) 1998 the Free Software Foundation"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "En analog klokke lik den som finnes i CDE-panelet"
 
-#: another_clock/another_clock.c:725 asclock/asclock.c:608
+#: another_clock/another_clock.c:725 asclock/asclock.c:610
 #: battery/battery.c:947 charpick/charpick.c:588 clockmail/clockmail.c:562
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:695 geyes/geyes.c:393
 #: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:192 gweather/gweather-applet.c:194
@@ -166,8 +166,8 @@ msgstr "En analog klokke lik den som finnes i CDE-panelet"
 msgid "Properties..."
 msgstr "Egenskaper ..."
 
-#: another_clock/another_clock.c:731 asclock/asclock.c:614
-#: battery/battery.c:953 cdplayer/cdplayer.c:403 charpick/charpick.c:595
+#: another_clock/another_clock.c:731 asclock/asclock.c:616
+#: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
 #: clockmail/clockmail.c:569 diskusage/diskusage.c:1096
 #: drivemount/drivemount.c:701 fifteen/fifteen.c:362 geyes/geyes.c:399
 #: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
@@ -180,8 +180,8 @@ msgstr "Egenskaper ..."
 msgid "Help"
 msgstr "Hjelp"
 
-#: another_clock/another_clock.c:735 asclock/asclock.c:619
-#: battery/battery.c:958 cdplayer/cdplayer.c:410 charpick/charpick.c:601
+#: another_clock/another_clock.c:735 asclock/asclock.c:621
+#: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
 #: diskusage/diskusage.c:1103 drivemount/drivemount.c:706
 #: fifteen/fifteen.c:367 geyes/geyes.c:404 gkb-new/gkb.c:450
@@ -255,7 +255,8 @@ msgstr "Batteriet er fullt oppladet."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Intern feil: ugyldig modus i battery_set_mode"
 
-#: battery/battery.c:784 jbc/jbc-applet.c:178
+#: battery/battery.c:784 jbc/jbc-applet.c:178 multiload/cpuload.c:69
+#: multiload/memload.c:72 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
 msgstr "Kan ikke opprette applet!\n"
@@ -419,7 +420,7 @@ msgstr ""
 "CD-spiller appleten er et enkelt program for avspilling av lyd-CDer for "
 "panelet "
 
-#: cdplayer/cdplayer.c:396
+#: cdplayer/cdplayer.c:563
 msgid "Run CD Player..."
 msgstr "Kjør CD-spilleren..."
 
@@ -473,7 +474,7 @@ msgstr "Antall kolonner med knapper:"
 
 #. Size
 #: charpick/properties.c:254 diskusage/properties.c:365
-#: mini-commander/src/preferences.c:596 tickastat/properties.c:500
+#: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
 msgstr "Størrelse"
 
@@ -494,7 +495,7 @@ msgstr ""
 msgid "Default List"
 msgstr "Standard liste"
 
-#: charpick/properties.c:330
+#: charpick/properties.c:329
 msgid "Character Picker Settings"
 msgstr "Innstillinger for tegnvelger"
 
@@ -550,7 +551,7 @@ msgstr "Tema:"
 msgid "ClockMail Settings"
 msgstr "Innstillinger for Clockmail"
 
-#: clockmail/properties.c:300 mini-commander/src/preferences.c:509
+#: clockmail/properties.c:300 mini-commander/src/preferences.c:524
 msgid "Clock"
 msgstr "Klokke"
 
@@ -2460,87 +2461,87 @@ msgstr "dato på"
 msgid "clock off"
 msgstr "klokke av"
 
-#: mini-commander/src/preferences.c:454
+#: mini-commander/src/preferences.c:456 mini-commander/src/preferences.c:458
 msgid "saving prefs..."
 msgstr "lagrer innstillinger..."
 
-#: mini-commander/src/preferences.c:499
+#: mini-commander/src/preferences.c:514
 msgid "Mini-Commander Properties"
 msgstr "Egenskaper for Mini-commander"
 
 #. show time check box
-#: mini-commander/src/preferences.c:517
+#: mini-commander/src/preferences.c:532
 msgid "Show time"
 msgstr "Vis tid"
 
 #. show date check box
-#: mini-commander/src/preferences.c:529
+#: mini-commander/src/preferences.c:544
 msgid "Show date"
 msgstr "Vis dato"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:542
+#: mini-commander/src/preferences.c:557
 msgid "Appearance"
 msgstr "Utseende"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:550
+#: mini-commander/src/preferences.c:565
 msgid "Show handle"
 msgstr "Vis håndtak"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:562
+#: mini-commander/src/preferences.c:577
 msgid "Show frame"
 msgstr "Vis ramme"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:576
+#: mini-commander/src/preferences.c:591
 msgid "Auto Completion"
 msgstr "Autoutfylling"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:584
+#: mini-commander/src/preferences.c:599
 msgid "Enable history based auto completion"
 msgstr "Slå på historikkbasert autoutfylling"
 
 #. applet width
-#: mini-commander/src/preferences.c:608
+#: mini-commander/src/preferences.c:623
 msgid "Applet width:"
 msgstr "Applet-bredde:"
 
 #. applet height
-#: mini-commander/src/preferences.c:637
+#: mini-commander/src/preferences.c:652
 msgid "Applet height:"
 msgstr "Applet-høyde:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:666
+#: mini-commander/src/preferences.c:681
 msgid "Command line height:"
 msgstr "Kommandolinjehøyde:"
 
 #. fg
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:733
 msgid "Command line foreground:"
 msgstr "Kommandolinjeforgrunn:"
 
 #. bg
-#: mini-commander/src/preferences.c:753
+#: mini-commander/src/preferences.c:768
 msgid "Command line background:"
 msgstr "Kommandolinjebakgrunn:"
 
 #. prefix
-#: mini-commander/src/preferences.c:813
+#: mini-commander/src/preferences.c:828
 #, c-format
 msgid "Regex %.2d:"
 msgstr "Regex %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:831
+#: mini-commander/src/preferences.c:846
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:865
 msgid "Macros"
 msgstr "Makroer"
 
@@ -2690,7 +2691,7 @@ msgstr ""
 "\n"
 "Applet for å vise CPU last."
 
-#: multiload/cpuload.c:74 multiload/main.c:214
+#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:214
 msgid "CPU Load"
 msgstr "Prosessorlast"
 
@@ -2770,11 +2771,11 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:218 multiload/memload.c:77
+#: multiload/main.c:218 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
 msgstr "Minnelast"
 
-#: multiload/main.c:222 multiload/swapload.c:77
+#: multiload/main.c:222 multiload/swapload.c:77 multiload/swapload.c:121
 msgid "Swap Load"
 msgstr "Belastning på swap"
 
