@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: battstat_applet\n"
-"POT-Creation-Date: 2001-04-25 00:18+0200\n"
+"POT-Creation-Date: 2001-04-25 20:59+0200\n"
 "PO-Revision-Date: 2001-04-21 03:15+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 #. on unsupported platform
 #: src/battstat_applet.c:263
 msgid "Your platform is not supported!\n"
-msgstr ""
+msgstr "Din plattform stöds inte!\n"
 
 #: src/battstat_applet.c:264
 msgid "The applet will not work properly (if at all).\n"
-msgstr ""
+msgstr "Panelprogrammet kommer inte att fungera ordentligt (om alls).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
@@ -52,41 +52,37 @@ msgstr "Laddar"
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
 #: src/battstat_applet.c:429 src/battstat_applet.c:1087
-#, fuzzy
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 msgstr ""
-"Systemet körs på %s\n"
+"Systemet körs på batteri\n"
 "Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
 #: src/battstat_applet.c:437 src/battstat_applet.c:1095
-#, fuzzy
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
 msgstr ""
-"Systemet körs på %s\n"
+"Systemet körs på nätspänning\n"
 "Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
 #: src/battstat_applet.c:446 src/battstat_applet.c:1027
 #: src/battstat_applet.c:1108
-#, fuzzy
 msgid "System is running on battery power"
-msgstr "Systemet körs på %s"
+msgstr "Systemet körs på batteri"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
 #: src/battstat_applet.c:452 src/battstat_applet.c:1033
 #: src/battstat_applet.c:1114
-#, fuzzy
 msgid "System is running on AC power"
-msgstr "Systemet körs på %s"
+msgstr "Systemet körs på nätspänning"
 
 #. Displayed in the percentage label at the side of the battery meter
 #. * if the applet discovers that you have removed the battery
@@ -94,56 +90,50 @@ msgstr "Systemet körs på %s"
 #.
 #: src/battstat_applet.c:472
 msgid "N/A"
-msgstr ""
+msgstr "--"
 
 #. This message will be displayed in a Gnome Warning dialog
 #. window when the laptop isn't connected to a power source
 #. and the battery charge is dropping below the value
 #. specified by the user.
 #: src/battstat_applet.c:611
-#, fuzzy
 msgid "Battery low (%d%%) and AC is offline"
-msgstr "Batterinivån är låg (%d%%) och nätspänningen är %s"
+msgstr "Batterinivån är låg (%d%%) och nätspänningen är frånkopplad"
 
 #. This message will be displayed in a Gnome Warning dialog
 #. window when the battery charge is dropping below the
 #. value specified by the user. Technically this shouldn't
 #. happen if the battery is working properly.
 #: src/battstat_applet.c:618
-#, fuzzy
 msgid "Battery low (%d%%) and AC is online"
-msgstr "Batterinivån är låg (%d%%) och nätspänningen är %s"
+msgstr "Batterinivån är låg (%d%%) och nätspänningen är inkopplad"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
 #: src/battstat_applet.c:638 src/battstat_applet.c:1007
-#, fuzzy
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "Systemet körs på %s. Batteri: %d%% (%s)"
+msgstr "Systemet körs på batteri. Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
 #: src/battstat_applet.c:645 src/battstat_applet.c:1014
-#, fuzzy
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "Systemet körs på %s. Batteri: %d%% (%s)"
+msgstr "Systemet körs på nätspänning. Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: src/battstat_applet.c:656
-#, fuzzy
 msgid "System is running on battery power. Battery: Not present"
-msgstr "Systemet körs på %s. Batteri: Inte tillgängligt"
+msgstr "Systemet körs på batteri. Batteri: Inte tillgängligt"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: src/battstat_applet.c:662
-#, fuzzy
 msgid "System is running on AC power. Battery: Not present"
-msgstr "Systemet körs på %s. Batteri: Inte tillgängligt"
+msgstr "Systemet körs på nätspänning. Batteri: Inte tillgängligt"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
@@ -194,9 +184,8 @@ msgid "Battery status utility"
 msgstr "Batteriövervakare"
 
 #: src/battstat_applet.c:827
-#, fuzzy
 msgid "(C) 2000 The Gnulix Society"
-msgstr " © 2000 The Gnulix Society"
+msgstr "© 2000 Gnulix Society"
 
 #. Longer description of the applet in the About dialog.
 #: src/battstat_applet.c:830
@@ -349,26 +338,9 @@ msgid "Hide"
 msgstr "Göm"
 
 #: battstat_applet.desktop.in.h:1
-#, fuzzy
 msgid "Battery Status Utility"
-msgstr "Batteriövervakare"
+msgstr "Batteristatusövervakare"
 
 #: battstat_applet.desktop.in.h:2
-#, fuzzy
 msgid "Shows the status of the battery"
-msgstr "Detta verktyg visar laddningsnivån på batteriet i din bärbara dator."
-
-#~ msgid "AC"
-#~ msgstr "nätspänning"
-
-#~ msgid "battery"
-#~ msgstr "batteri"
-
-#~ msgid "online"
-#~ msgstr "inkopplad"
-
-#~ msgid "offline"
-#~ msgstr "frånkopplad"
-
-#~ msgid "System is running on %s power."
-#~ msgstr "Systemet körs på %s."
+msgstr "Visar laddningsnivån på batteriet"
