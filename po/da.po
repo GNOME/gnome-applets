@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-09-21 17:06+0200\n"
-"PO-Revision-Date: 2003-09-21 17:09+0200\n"
+"POT-Creation-Date: 2003-10-20 19:02+0200\n"
+"PO-Revision-Date: 2003-10-20 18:56+0200\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,7 @@ msgstr "_Om..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Hjælp"
 
@@ -84,14 +85,14 @@ msgstr "Viser status for tastaturtilgængelighedsfaciliteter"
 msgid "Utility"
 msgstr "Værktøj"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:844
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:584 drivemount/drivemount.c:510
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:191
-#: wireless/wireless-applet.c:528
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr "Ole Laursen <olau@hardworking.dk>"
 
@@ -128,7 +129,7 @@ msgstr "Vis den aktuelle tilstand af tastaturtilgængelighedsfaciliteter"
 # overvåger bliver for langt og kan undværes
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:857
 msgid "Battery Charge Monitor"
 msgstr "Batteriladning"
 
@@ -150,7 +151,7 @@ msgstr "Overvåg en bærbars tilbageværende strøm"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "_Indstillinger..."
 
@@ -247,22 +248,22 @@ msgstr "Panelprogrammet vil ikke fungere rigtigt (hvis overhovedet).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:888
 msgid "High"
 msgstr "Høj"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:890
 msgid "Low"
 msgstr "Lav"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:892
 msgid "Critical"
 msgstr "Kritisk"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:894
 msgid "Charging"
 msgstr "Oplader"
 
@@ -278,7 +279,7 @@ msgstr "Batteriet er nu fuldt opladet!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1052
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -290,7 +291,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1060
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -301,15 +302,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1073
 msgid "System is running on battery power"
 msgstr "Systemet kører på batteriet"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:990
+#: battstat/battstat_applet.c:1079
 msgid "System is running on AC power"
 msgstr "Systemet kører på lysnettet"
 
@@ -319,14 +320,14 @@ msgstr "I/T"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:964
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systemet kører på batteriet. Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:971
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systemet kører på lysnettet. Batteri: %d%% (%s)"
@@ -361,7 +362,7 @@ msgid "Battery: Not present"
 msgstr "Batteri: Ikke til stede"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:727
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -374,7 +375,7 @@ msgstr ""
 "APM-enheden."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:736
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -384,7 +385,7 @@ msgstr ""
 "fra. Prøv at køre 'apm -e 1' (FreeBSD) og se om \n"
 "dette hjælper.\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:792
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -394,7 +395,7 @@ msgstr ""
 "Forsøg venligst at rette denne fejl"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:795
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -405,7 +406,7 @@ msgstr ""
 "\".\n"
 "Forsøg venligst at rette denne fejl"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:803
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -415,15 +416,15 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:834
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:859
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:860
 msgid "This utility shows the status of your laptop battery."
 msgstr "Dette værktøj viser status for batteriet på din bærbare."
 
@@ -475,7 +476,7 @@ msgstr "Indstillinger for batteriladning"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "Generelt"
 
@@ -536,6 +537,7 @@ msgstr "_Gul:"
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
 #: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Der opstod en fejl ved visning af hjælp: %s"
@@ -552,8 +554,8 @@ msgstr "Batteriet er fuldt opladet"
 msgid "Battery power low"
 msgstr "Batteriladning er lav"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:598
+#: cdplayer/cdplayer.c:1046
 msgid "CD Player"
 msgstr "Cd-afspiller"
 
@@ -578,23 +580,23 @@ msgstr "Panelprogram til afspilning af lyd-cd'er"
 msgid "_Open CD Player"
 msgstr "_Åbn cd-afspiller"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1036
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1038
 msgid "Play / Pause"
 msgstr "Afspil/pause"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1040
 msgid "Eject"
 msgstr "Skub ud"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1042
 msgid "Previous Track"
 msgstr "Foregående spor"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1044
 msgid "Next Track"
 msgstr "Næste spor"
 
@@ -602,37 +604,37 @@ msgstr "Næste spor"
 msgid "You do not have permission to use the CD player."
 msgstr "Du har ikke rettighed til at bruge cd-afspilleren."
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:362 mixer/mixer.c:1026 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Der opstod en fejl ved kørsel af '%s': %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:413
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s ser ikke ud til at være en cd-afspiller"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:479
 msgid "CD Player Preferences"
 msgstr "Indstillinger for cd-afspiller"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:500
 msgid "Device _path:"
 msgstr "St_i til enhed:"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Device Path"
 msgstr "Sti til enhed"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Set the device path here"
 msgstr "Angiv stien til enheden her"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:512
 msgid "Use _Default"
 msgstr "Benyt _standard"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:599
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -640,39 +642,39 @@ msgstr ""
 "© 1997 Free Software Foundation\n"
 "© 2001 Chris Phelps (Gnome 2-porten)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:601 cdplayer/cdplayer.c:1047
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Cd-afspillerpanelprogrammet er en simpel cd-afspiller til panelet"
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:876 cdplayer/cdplayer.c:887
 msgid "Elapsed time"
 msgstr "Forløbet tid"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:879 cdplayer/cdplayer.c:889
 msgid "Track number"
 msgstr "Spornummer"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:945
 msgid "Audio device is busy, or being used by another application"
 msgstr "Lydenheden er optaget eller bliver brugt af et andet program"
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1037
 msgid "Click this button to Stop playing the CD"
 msgstr "Stop afspilningen af cd'en"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1039
 msgid "Click this button to Play or Pause the CD"
 msgstr "Sæt afspilningen i gang eller på pause"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1041
 msgid "Click this button to eject the CD"
 msgstr "Skub cd-skuffen ud"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1043
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Afspil det foregående spor på cd'en"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1045
 msgid "Click this button to Play the next track in the CD"
 msgstr "Afspil det næste spor på cd'en"
 
@@ -911,7 +913,7 @@ msgid "_Update interval:"
 msgstr "_Opdateringsinterval:"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
 msgid "seconds"
 msgstr "sekunder"
 
@@ -2365,7 +2367,7 @@ msgid "Flag and Label"
 msgstr "Flag og etiket"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "Vis"
 
@@ -2590,7 +2592,7 @@ msgstr "Aktie _dalet:"
 msgid "Stock _unchanged:"
 msgstr "Aktie _uændret:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "_Baggrund:"
 
@@ -3517,7 +3519,7 @@ msgstr "Du har post."
 #: mailcheck/mailcheck.c:1089
 #, c-format
 msgid "%d unread/ %d messages"
-msgstr "%d ulæse/%d meddelelser"
+msgstr "%d ulæste/%d meddelelser"
 
 #: mailcheck/mailcheck.c:1091
 #, c-format
@@ -4488,115 +4490,115 @@ msgstr "Bekræft ejer af låsefil"
 msgid "Modem Lights Preferences"
 msgstr "Indstillinger for modemlys"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:444
 msgid "U_pdate every:"
 msgstr "_Opdatér hver:"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:469
 msgid "Sho_w connect time and throughput"
 msgstr "Vis forbindelsestid og _gennemstrømning"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:479
 msgid "B_link connection status when connecting"
 msgstr "_Blink forbindelsesstatus ved tilkobling"
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:489
 msgid "Connections"
 msgstr "Forbindelser"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:498
 msgid "Co_nnection command:"
 msgstr "_Tilkoblingskommando:"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:522
 msgid "_Disconnection command:"
 msgstr "_Frakoblingskommando:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:542
 msgid "Con_firm connection"
 msgstr "_Bekræft forbindelse"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:561
 msgid "Receive Data"
 msgstr "Modtag data"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:567
 msgid "_Foreground:"
 msgstr "_Forgrund:"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:572
 msgid "Send Data"
 msgstr "Send data"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:577
 msgid "Foregroun_d:"
 msgstr "Forgrun_d:"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:579
 msgid "Backg_round:"
 msgstr "Baggru_nd:"
 
-#: modemlights/properties.c:583
+#: modemlights/properties.c:582
 msgid "Connection Status"
 msgstr "Forbindelsesstatus"
 
-#: modemlights/properties.c:591
+#: modemlights/properties.c:590
 msgid "Co_nnected:"
 msgstr "_Tilkoblet:"
 
-#: modemlights/properties.c:593
+#: modemlights/properties.c:592
 msgid "Disconnec_ted:"
 msgstr "_Frakoblet:"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:595
 msgid "C_onnecting:"
 msgstr "Til_kobler:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:598
 msgid "Text"
 msgstr "Tekst"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:606
 msgid "For_eground:"
 msgstr "For_grund"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:608
 msgid "Bac_kground:"
 msgstr "Baggr_und"
 
 # tekstomrids
-#: modemlights/properties.c:611
+#: modemlights/properties.c:610
 msgid "O_utline"
 msgstr "_Omrids"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:613 multiload/properties.c:528
 msgid "Colors"
 msgstr "Farver"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:622
 msgid "Modem Options"
 msgstr "Modemindstillinger"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:631
 msgid "_Device:"
 msgstr "_Enhed:"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:655
 msgid "_Lock file:"
 msgstr "_Låsefil:"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:674
 msgid "_Verify owner of lock file"
 msgstr "_Bekræft ejer af låsefil"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:685
 msgid "U_se ISDN"
 msgstr "B_rug ISDN"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:702
 msgid "Advanced"
 msgstr "Avanceret"
 
@@ -5292,15 +5294,15 @@ msgstr "Overvåg kvaliteten af en trådløs netværksforbindelse"
 
 # 'monitor' bliver lidt langt
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "Trådløs forbindelse"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "Ingen trådløse enheder"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5309,11 +5311,11 @@ msgstr ""
 "system.\n"
 "Kontrollér din konfiguration hvis du mener at dette er forkert."
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "Dette værktøj viser status for en trådløs forbindelse."
 
