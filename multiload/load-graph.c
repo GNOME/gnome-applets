@@ -6,8 +6,10 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
-#include <gnome.h>
+#include <glib.h>
 #include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+#include <gnome.h>
 #include <panel-applet.h>
 
 #include "global.h"
@@ -135,6 +137,11 @@ load_graph_unalloc (LoadGraph *g)
 		g->pixmap = NULL;
     }
 
+    if (g->gc) {
+		g_object_unref (g->gc);
+		g->gc = NULL;
+    }
+
     g->allocated = FALSE;
 }
 
@@ -219,6 +226,11 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     LoadGraph *g = (LoadGraph *) data_ptr;
 	
     load_graph_stop (g);
+    if (g->tooltips) {
+    		g_object_unref (g->tooltips);
+		g->tooltips = NULL;
+    }
+
     gtk_widget_destroy(widget);
     object_list = g_list_remove (object_list, g);
     return;
@@ -316,7 +328,9 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
         gtk_widget_set_size_request (g->main_widget, g->size, -1);
 
     g->tooltips = gtk_tooltips_new();
-   	
+    g_object_ref (g->tooltips);
+    gtk_object_sink (GTK_OBJECT (g->tooltips));
+
     g->disp = gtk_drawing_area_new ();
     gtk_widget_set_events (g->disp, GDK_EXPOSURE_MASK | GDK_ENTER_NOTIFY_MASK 
     				    | GDK_LEAVE_NOTIFY_MASK);

@@ -271,6 +271,7 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
                        + g_ascii_xdigit_value(color_string[4])) * 256;
 	color.blue  = (g_ascii_xdigit_value(color_string[5]) * 16
                        + g_ascii_xdigit_value(color_string[6])) * 256;
+	g_free (color_string);
 		
 	vbox = gtk_vbox_new (FALSE, 6);
 	label = gtk_label_new_with_mnemonic(name);
