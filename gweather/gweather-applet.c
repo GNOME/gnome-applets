@@ -171,9 +171,9 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.detailed = FALSE;
     gw_applet->gweather_pref.radar_enabled = TRUE;
     
-#if 0   
+ 
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
-#endif
+
     /* PUSH */
     gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 
@@ -190,10 +190,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     gtk_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
                        GTK_SIGNAL_FUNC(clicked_cb), gw_applet);
-
-    g_signal_connect (G_OBJECT(gw_applet->applet), "destroy",
-                        G_CALLBACK(gtk_main_quit), NULL);
-                        
+                     
     tooltips = gtk_tooltips_new();
 
     gtk_tooltips_set_tip(tooltips, GTK_WIDGET(gw_applet->applet), _("GNOME Weather"), NULL);
