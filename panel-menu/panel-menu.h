@@ -85,6 +85,9 @@ gboolean panel_menu_construct_applet(PanelApplet *applet);
 
 gboolean panel_menu_accept_drop(PanelMenu *panel_menu, GnomeVFSURI *uri);
 
+void add_tooltip (GtkWidget *widget, gchar *description);
+void destroy_tooltip (GtkWidget *object);
+void set_relation (GtkWidget *widget, GtkLabel *label);
 G_END_DECLS
 
 #endif

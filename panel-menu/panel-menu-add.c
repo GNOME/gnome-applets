@@ -122,6 +122,7 @@ applet_add_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (button);
 
 	button = gtk_button_new_with_label ("Directory");
+
 	gtk_size_group_add_widget (group, button);
 	gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
 	g_object_set_data (G_OBJECT (button), "panel-menu-type-id",

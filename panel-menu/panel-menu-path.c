@@ -156,6 +156,7 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 	client = gconf_client_get_default ();
 	if (gconf_client_dir_exists (client, dir_key, NULL)) {
 		gchar *key;
+
 		key = g_strdup_printf ("%s/base-uri", base_key);
 		uri = panel_applet_gconf_get_string (parent->applet,
 						     key, NULL);
@@ -165,6 +166,7 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 		panel_menu_path_set_list (entry,
 			panel_applet_gconf_get_string_list (parent->applet, key));
 		g_free (key);
+		
 	} else {
 		uri = g_strdup ("applications:");
 		panel_menu_path_set_uri (entry, uri);
@@ -727,6 +729,8 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 	gtk_widget_show (*entry);
 	gtk_entry_set_text (GTK_ENTRY (*entry), value);
 
+	set_relation (*entry, GTK_LABEL(label));
+
 	browse = gtk_button_new_with_label (_("Browse..."));
 	gtk_box_pack_start (GTK_BOX (hbox), browse, FALSE, FALSE, 5);
 	gtk_widget_show (browse);
@@ -756,6 +760,7 @@ panel_menu_path_save_config (PanelMenuEntry *entry)
 	key = g_strdup_printf ("%s/paths-list", id);
 	panel_applet_gconf_set_string_list (applet, key, path->paths_list);
 	g_free (key);
+
 	return id;
 }
 

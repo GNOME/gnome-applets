@@ -776,6 +776,9 @@ panel_menu_common_single_entry_dialog_new (gchar *title, gchar *label,
 
 	*entry = gtk_entry_new_with_max_length (50);
 	gtk_box_pack_start (GTK_BOX (hbox), *entry, TRUE, TRUE, 5);
+
+	set_relation(*entry, GTK_LABEL(l));
+
 	gtk_widget_show (*entry);
 	gtk_entry_set_text (GTK_ENTRY (*entry), value);
 	return (dialog);

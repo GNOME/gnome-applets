@@ -1,3 +1,26 @@
+2002-03-12  Hema Seetharamaiah <hema.seetharamaiah@wipro.com>
+
+	* Set tooltips where required. Added new routine add_tooltip() 
+	  panel-menu.c
+	* Set up ATK Relations between Widget/Label pairs where the 
+          label described the widget. Added a new routine set_relation() 
+	  in panel-menu.c
+	* Affected Files :
+	  ----------------
+	- panel-menu.c - Added new routines add_tooltip(), destroy_tooltip() 
+                         & set_relation(). 
+	- panel-menu.h - prototypes for add_tooltip(), destroy_tooltip() 
+                         & set_relation(). 
+	The following have calls to the new routines to set up tooltip/ATK relation.
+	- panel-menu-actions.c 
+	- panel-menu-add.c 
+	- panel-menu-applications.c
+	- panel-menu-common.c 
+	- panel-menu-path.c
+	- panel-menu-properties.c
+	- panel-menu-windows.c
+	- panel-menu-workspaces.c
+
 2002-03-03  Bastien Nocera  <hadess@hadess.net>
 
 	* Makefile.am: don't do gconf fu if DESTDIR is set

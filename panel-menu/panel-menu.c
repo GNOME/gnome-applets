@@ -586,6 +586,8 @@ applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu)
 	PanelMenuEntry *entry;
 	GList *cur;
 
+	destroy_tooltip( widget );
+
 	g_free (panel_menu->profile_id);
 	g_free (panel_menu->applet_id);
 
@@ -689,4 +691,71 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	g_signal_connect (G_OBJECT (about), "destroy",
 			  G_CALLBACK (gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
+}
+
+void
+add_tooltip (GtkWidget *widget, gchar *description)
+{
+	GtkTooltips *tooltips;
+
+	tooltips = g_object_get_data (G_OBJECT (widget), "tooltips");
+
+	/* create if not already present */
+	if (!tooltips) {
+		tooltips = gtk_tooltips_new ();
+		g_return_if_fail (tooltips != NULL);
+		g_object_ref (tooltips);
+		gtk_object_sink (GTK_OBJECT (tooltips));
+		g_object_set_data (G_OBJECT (widget), "tooltips", tooltips);
+	}
+
+	gtk_tooltips_set_tip (tooltips, widget, description, NULL);
+}
+
+void
+destroy_tooltip (GtkWidget *object)
+{
+        GtkTooltips *tooltips;
+
+        tooltips = g_object_get_data (G_OBJECT (object), "tooltips");
+        if (tooltips) {
+                g_object_unref (tooltips);
+                g_object_set_data (G_OBJECT (object), "tooltips", NULL);
+        }
+}
+
+/**
+ * set_relation
+ * @widget : The Gtk widget which is labelled by @label
+ * @label : The label for the @widget.
+ * Description : This function establishes atk relation
+ * between a gtk widget and a label.
+ */
+void
+set_relation (GtkWidget *widget, GtkLabel *label)
+{
+	AtkObject *aobject;
+	AtkRelationSet *relation_set;
+	AtkRelation *relation;
+	AtkObject *targets[1];
+
+	g_return_if_fail (GTK_IS_WIDGET(widget));
+	g_return_if_fail (GTK_IS_LABEL(label));
+
+	aobject = gtk_widget_get_accessible (widget);
+
+	/* Return if GAIL is not loaded */
+	if (! GTK_IS_ACCESSIBLE (aobject))
+		return;
+
+	/* Set the ATK_RELATION_LABEL_FOR relation */
+	gtk_label_set_mnemonic_widget (label, widget);
+
+	targets[0] = gtk_widget_get_accessible (GTK_WIDGET (label));
+
+	relation_set = atk_object_ref_relation_set (aobject);
+
+	relation = atk_relation_new (targets, 1, ATK_RELATION_LABELLED_BY);
+	atk_relation_set_add (relation_set, relation);
+	g_object_unref (G_OBJECT (relation));
 }
