@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.7\n"
-"POT-Creation-Date: 2000-05-05 15:23+0000\n"
+"POT-Creation-Date: 2000-05-22 01:01-0400\n"
 "PO-Revision-Date: 2000-05-05 18:36+00:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -100,7 +100,7 @@ msgstr "Настройка часов"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:786
+#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
 #: modemlights/properties.c:297 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:351
 #: sound-monitor/properties.c:436 tickastat/properties.c:424
@@ -109,8 +109,8 @@ msgstr "Общие"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:708 multiload/load-graph.c:588
-#: multiload/load-graph.c:780
+#: mini-commander/src/preferences.c:723 multiload/load-graph.c:587
+#: multiload/load-graph.c:779
 msgid "Colors"
 msgstr "Цвета"
 
@@ -153,45 +153,49 @@ msgstr "(C) 1998 Фонд Свободного Программного Обеспечения"
 msgid "An analog clock similar to that in CDE panel."
 msgstr "Аналоговые часы наподобие используемых на панели CDE."
 
-#: another_clock/another_clock.c:725 asclock/asclock.c:608
+#: another_clock/another_clock.c:725 asclock/asclock.c:610
 #: battery/battery.c:947 charpick/charpick.c:588 clockmail/clockmail.c:562
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:695 geyes/geyes.c:393
 #: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:192 gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1229 multiload/cpuload.c:95
-#: multiload/memload.c:98 multiload/swapload.c:98 odometer/odo.c:661
+#: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
+#: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:55
 #: sound-monitor/main.c:369 tickastat/main.c:345 webcontrol/webcontrol.c:364
 msgid "Properties..."
 msgstr "Свойства..."
 
-#: another_clock/another_clock.c:731 asclock/asclock.c:614
-#: battery/battery.c:953 cdplayer/cdplayer.c:403 charpick/charpick.c:595
-#: clockmail/clockmail.c:569 diskusage/diskusage.c:1096
-#: drivemount/drivemount.c:701 fifteen/fifteen.c:362 geyes/geyes.c:399
-#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
+#: another_clock/another_clock.c:731 asclock/asclock.c:616
+#: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
+#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:299
+#: diskusage/diskusage.c:1096 drivemount/drivemount.c:701
+#: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:445
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
 #: jbc/jbc-applet.c:197 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
-#: multiload/cpuload.c:108 multiload/memload.c:111 multiload/swapload.c:111
-#: odometer/odo.c:664 quicklaunch/quicklaunch.c:510
-#: screenshooter/screenshooter_applet.c:1012 sound-monitor/main.c:376
-#: tickastat/main.c:351 webcontrol/webcontrol.c:371 whereami/whereami.c:236
+#: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
+#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
+#: quicklaunch/quicklaunch.c:510 screenshooter/screenshooter_applet.c:1012
+#: sound-monitor/main.c:376 tickastat/main.c:351 webcontrol/webcontrol.c:371
+#: whereami/whereami.c:236
 msgid "Help"
 msgstr "Справка"
 
-#: another_clock/another_clock.c:735 asclock/asclock.c:619
-#: battery/battery.c:958 cdplayer/cdplayer.c:410 charpick/charpick.c:601
+#: another_clock/another_clock.c:735 asclock/asclock.c:621
+#: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
-#: diskusage/diskusage.c:1103 drivemount/drivemount.c:706
-#: fifteen/fifteen.c:367 geyes/geyes.c:404 gkb-new/gkb.c:450
-#: gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
+#: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1103
+#: drivemount/drivemount.c:706 fifteen/fifteen.c:367 geyes/geyes.c:404
+#: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
 #: jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1242 multiload/cpuload.c:115
-#: multiload/memload.c:118 multiload/swapload.c:118 odometer/odo.c:667
-#: quicklaunch/quicklaunch.c:514 screenshooter/screenshooter_applet.c:1017
-#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:356
-#: webcontrol/webcontrol.c:378 whereami/whereami.c:238
+#: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
+#: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:514
+#: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:58
+#: sound-monitor/main.c:381 tickastat/main.c:356 webcontrol/webcontrol.c:378
+#: whereami/whereami.c:238
 msgid "About..."
 msgstr "О программе..."
 
@@ -254,7 +258,8 @@ msgstr "Батарея полностью заряжена."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Внутренняя ошибка: неправильный режим в battery_set_mode"
 
-#: battery/battery.c:784 jbc/jbc-applet.c:178
+#: battery/battery.c:784 jbc/jbc-applet.c:178 multiload/cpuload.c:69
+#: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
 msgstr "Невозможно создать апплет!\n"
@@ -417,25 +422,9 @@ msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "Апплет CD-проигрывателя - это простой аудио-CD проигрывателя для вашей панели"
 
-#: cdplayer/cdplayer.c:396
+#: cdplayer/cdplayer.c:563
 msgid "Run CD Player..."
 msgstr "Запуск CD-проигрывателя..."
-
-#: clipboard/clipboard.c:181
-msgid "Clipboard Applet"
-msgstr "Апплет буфера обмена"
-
-#: clipboard/clipboard.c:183
-msgid "Copyright (C) 1999"
-msgstr "Авторское право (С) 1999"
-
-#: clipboard/clipboard.c:185
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"Апплет для копирования и вызова выделений со списком. Выпущен под GNU "
-"General Public Licence."
 
 #: charpick/charpick.c:446
 msgid "Character Picker"
@@ -471,7 +460,7 @@ msgstr "Число колонок кнопок:"
 
 #. Size
 #: charpick/properties.c:254 diskusage/properties.c:365
-#: mini-commander/src/preferences.c:596 tickastat/properties.c:500
+#: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
 msgstr "Размер"
 
@@ -483,16 +472,34 @@ msgstr "Исходный список символов:"
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
-msgstr "Эти символы будут появляться на панели при старте. Чтобы вернуть этот список, нажмите <пробел> когда апплет имеет фокус."
+msgstr ""
+"Эти символы будут появляться на панели при старте. Чтобы вернуть этот "
+"список, нажмите <пробел> когда апплет имеет фокус."
 
 #. add tab to propwindow
 #: charpick/properties.c:293
 msgid "Default List"
 msgstr "Исходный список"
 
-#: charpick/properties.c:330
+#: charpick/properties.c:329
 msgid "Character Picker Settings"
 msgstr "Настройки наборщика"
+
+#: clipboard/clipboard.c:181
+msgid "Clipboard Applet"
+msgstr "Апплет буфера обмена"
+
+#: clipboard/clipboard.c:183
+msgid "Copyright (C) 1999"
+msgstr "Авторское право (С) 1999"
+
+#: clipboard/clipboard.c:185
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"Апплет для копирования и вызова выделений со списком. Выпущен под GNU "
+"General Public Licence."
 
 #: clockmail/clockmail.c:63 slashapp/slashapp.c:137 sound-monitor/main.c:41
 #: tickastat/main.c:191
@@ -545,7 +552,7 @@ msgstr "Темы:"
 msgid "ClockMail Settings"
 msgstr "Настройки почты и часов"
 
-#: clockmail/properties.c:300 mini-commander/src/preferences.c:509
+#: clockmail/properties.c:300 mini-commander/src/preferences.c:524
 msgid "Clock"
 msgstr "Часы"
 
@@ -585,6 +592,22 @@ msgstr "Файл темы (каталог):"
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Тема"
+
+#: cpumemusage/cpumemusage.c:175
+#, fuzzy
+msgid "CPU/Mem Usage Applet"
+msgstr "Апплет использования диска"
+
+#: cpumemusage/cpumemusage.c:176
+#, fuzzy
+msgid "(c) 1997 the Free Software Foundation"
+msgstr "(с) 1997 Фонд Свободного Программного Обеспечения"
+
+#: cpumemusage/cpumemusage.c:178
+msgid ""
+"The CPU/Mem usage applet displays your system resources with 3 colorful "
+"stacked bar graphs (processor, memory, swap)"
+msgstr ""
 
 #: diskusage/diskusage.c:767
 msgid "File Systems"
@@ -822,9 +845,12 @@ msgid ""
 "Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
 "Kovacs <emese@eik.bme.hu> for her solidarity."
 msgstr ""
-"Этот апплет переключает между раскладками клавиатуры. Он использует setxkbmap или xmodmap. Пришлите мне изображение вашего флага размером 60х40, я помещу его в CVS.\n"
+"Этот апплет переключает между раскладками клавиатуры. Он использует "
+"setxkbmap или xmodmap. Пришлите мне изображение вашего флага размером 60х40, "
+"я помещу его в CVS.\n"
 "Всего хорошего, и спасибо за рыбу.\n"
-"Спасибо Balazs Nagy (Kevin) <julian7@kva.hu> за эту справку и Emese Kovacs <emese@eik.bme.hu> за поддержку."
+"Спасибо Balazs Nagy (Kevin) <julian7@kva.hu> за эту справку и Emese Kovacs "
+"<emese@eik.bme.hu> за поддержку."
 
 #: gkb-new/gkb.c:334
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
@@ -925,6 +951,18 @@ msgstr "Высота по умолчанию"
 #: gnotes/properties.c:174
 msgid "Default Width"
 msgstr "Ширина по умолчанию"
+
+#: gweather/gweather-about.c:41
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "Авторское право (С) 1999 S. Papadimitriou"
+
+#: gweather/gweather-about.c:43
+msgid ""
+"GNOME weather monitor applet.\n"
+"Web: http://gweather.dhs.org/"
+msgstr ""
+"GNOME апплет отображения погоды.\n"
+"Web: http://gweather.dhs.org/"
 
 #: gweather/gweather-applet.c:181
 msgid "Cannot create applet!\n"
@@ -1092,18 +1130,6 @@ msgstr "Сеть"
 #: gweather/gweather-pref.c:515
 msgid "Location"
 msgstr "Расположение"
-
-#: gweather/gweather-about.c:41
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Авторское право (С) 1999 S. Papadimitriou"
-
-#: gweather/gweather-about.c:43
-msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
-msgstr ""
-"GNOME апплет отображения погоды.\n"
-"Web: http://gweather.dhs.org/"
 
 #: gweather/weather.c:137
 msgid "Variable"
@@ -2332,9 +2358,14 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Этот апплет Gnome добавляет командную строку к панели. Она поддерживает дополнение команд, историю, изменяемые макросы и дополнительно встроенные часы.\n"
+"Этот апплет Gnome добавляет командную строку к панели. Она поддерживает "
+"дополнение команд, историю, изменяемые макросы и дополнительно встроенные "
+"часы.\n"
 "\n"
-"Эта программа - свободное программное обеспечение; вы можете распространять и/или модифицировать ее в соответствии с GNU GPL опубликованной Free Software Foundation; лицензии версии 2 или (по вашему выбору) любой более поздней версии."
+"Эта программа - свободное программное обеспечение; вы можете распространять "
+"и/или модифицировать ее в соответствии с GNU GPL опубликованной Free "
+"Software Foundation; лицензии версии 2 или (по вашему выбору) любой более "
+"поздней версии."
 
 #: mini-commander/src/cmd_completion.c:70
 #: mini-commander/src/cmd_completion.c:116
@@ -2363,15 +2394,17 @@ msgid "no /bin/sh"
 msgstr "нет /bin/sh"
 
 #: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/terminal.c:83 mini-commander/src/terminal.c:103
 msgid "end of history list"
 msgstr "конец предыстории"
 
 #. enter pressed -> exec command
 #: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "запуск..."
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:146 mini-commander/src/terminal.c:142
 msgid "autocompleted"
 msgstr "автозавершение"
 
@@ -2445,87 +2478,87 @@ msgstr "вкл дату"
 msgid "clock off"
 msgstr "выкл часы"
 
-#: mini-commander/src/preferences.c:454
+#: mini-commander/src/preferences.c:456 mini-commander/src/preferences.c:458
 msgid "saving prefs..."
 msgstr "сохранение свойств..."
 
-#: mini-commander/src/preferences.c:499
+#: mini-commander/src/preferences.c:514
 msgid "Mini-Commander Properties"
 msgstr "Свойства Mini-Commander"
 
 #. show time check box
-#: mini-commander/src/preferences.c:517
+#: mini-commander/src/preferences.c:532
 msgid "Show time"
 msgstr "Показать время"
 
 #. show date check box
-#: mini-commander/src/preferences.c:529
+#: mini-commander/src/preferences.c:544
 msgid "Show date"
 msgstr "Показать дату"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:542
+#: mini-commander/src/preferences.c:557
 msgid "Appearance"
 msgstr "Наружность"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:550
+#: mini-commander/src/preferences.c:565
 msgid "Show handle"
 msgstr ""
 
 #. show frame check box
-#: mini-commander/src/preferences.c:562
+#: mini-commander/src/preferences.c:577
 msgid "Show frame"
 msgstr "Показывать рамку"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:576
+#: mini-commander/src/preferences.c:591
 msgid "Auto Completion"
 msgstr "Автодополнение"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:584
+#: mini-commander/src/preferences.c:599
 msgid "Enable history based auto completion"
 msgstr "Включить историю основываясь на автодополнении"
 
 #. applet width
-#: mini-commander/src/preferences.c:608
+#: mini-commander/src/preferences.c:623
 msgid "Applet width:"
 msgstr "Ширина апплета:"
 
 #. applet height
-#: mini-commander/src/preferences.c:637
+#: mini-commander/src/preferences.c:652
 msgid "Applet height:"
 msgstr "Высота апплета:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:666
+#: mini-commander/src/preferences.c:681
 msgid "Command line height:"
 msgstr "Высота командной строки:"
 
 #. fg
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:733
 msgid "Command line foreground:"
 msgstr "Печать командной строки:"
 
 #. bg
-#: mini-commander/src/preferences.c:753
+#: mini-commander/src/preferences.c:768
 msgid "Command line background:"
 msgstr "Фон командной строки:"
 
 #. prefix
-#: mini-commander/src/preferences.c:813
+#: mini-commander/src/preferences.c:828
 #, c-format
 msgid "Regex %.2d:"
 msgstr ""
 
 #. command
-#: mini-commander/src/preferences.c:831
+#: mini-commander/src/preferences.c:846
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Макрос %.2d:"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:865
 msgid "Macros"
 msgstr "Макросы"
 
@@ -2675,35 +2708,72 @@ msgstr ""
 "\n"
 "Апплет измеритель загрузки процессора."
 
-#: multiload/cpuload.c:74 multiload/main.c:214
+#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:220
 msgid "CPU Load"
 msgstr "Загрузка процессора"
 
-#: multiload/cpuload.c:88 multiload/memload.c:91 multiload/swapload.c:91
+#: multiload/cpuload.c:88 multiload/loadavg.c:163 multiload/memload.c:91
+#: multiload/netload.c:87 multiload/swapload.c:91
 msgid "Default Properties..."
 msgstr "Исходные свойства..."
 
-#: multiload/cpuload.c:102 multiload/memload.c:105 multiload/swapload.c:105
+#: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
+#: multiload/netload.c:101 multiload/swapload.c:105
 msgid "Run gtop..."
 msgstr "Запустить gtop..."
+
+#: multiload/loadavg.c:27
+#, fuzzy
+msgid "Load average over 1 minute"
+msgstr "Модуль средней загрузки"
+
+#: multiload/loadavg.c:28
+#, fuzzy
+msgid "Load average over 5 minutes"
+msgstr "Модуль средней загрузки"
+
+#: multiload/loadavg.c:29
+#, fuzzy
+msgid "Load average over 15 minutes"
+msgstr "Модуль средней загрузки"
+
+#: multiload/loadavg.c:103
+#, fuzzy
+msgid "Load Average Applet"
+msgstr "Модуль средней загрузки"
+
+#: multiload/loadavg.c:106
+#, fuzzy
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Load Average Meter Applet."
+msgstr ""
+"Released under the GNU general public license.\n"
+"\n"
+"Апплет измеритель загрузки процессора."
+
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
+msgid "Load Average"
+msgstr "Средняя загрузка"
 
 #: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
 msgstr "График загрузки"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Speed:"
 msgstr "Скорость:"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Size:"
 msgstr "Размер:"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Maximum:"
 msgstr "Максимум:"
 
-#: multiload/load-graph.c:806
+#: multiload/load-graph.c:805
 msgid "Use default properties"
 msgstr "Использовать исходные свойства"
 
@@ -2755,21 +2825,17 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "Eth"
 
-#: multiload/main.c:218 multiload/memload.c:77
+#: multiload/main.c:224 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
 msgstr "Загрузка памяти"
 
-#: multiload/main.c:222 multiload/swapload.c:77
+#: multiload/main.c:228 multiload/swapload.c:77 multiload/swapload.c:121
 msgid "Swap Load"
 msgstr "Загрузка подкачки"
 
-#: multiload/main.c:226
+#: multiload/main.c:232 multiload/netload.c:73
 msgid "Net Load"
 msgstr "Загрузка сети"
-
-#: multiload/main.c:230
-msgid "Load Average"
-msgstr "Средняя загрузка"
 
 #: multiload/memload.c:44
 msgid "Memory Load Applet"
@@ -2784,6 +2850,27 @@ msgstr ""
 "Released under the GNU general public license.\n"
 "\n"
 "Апплет загрузки памяти."
+
+#: multiload/netload.c:42
+#, fuzzy
+msgid "Network Load Applet"
+msgstr "Апплет загрузки памяти"
+
+#: multiload/netload.c:45
+#, fuzzy
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Network Load Meter Applet."
+msgstr ""
+"Released under the GNU general public license.\n"
+"\n"
+"Апплет измерения загрузки подкачки."
+
+#: multiload/netload.c:117
+#, fuzzy
+msgid "Network Load"
+msgstr "Загрузка сети"
 
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
@@ -2993,7 +3080,8 @@ msgstr ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "и несколько неизвестных. Испытайте вашу удачу с чем-нибудь интересным!\n"
-"Например .html для карты изображения на клиентской стороне. Вы получите .gif, .html, и .shtml\n"
+"Например .html для карты изображения на клиентской стороне. Вы получите "
+".gif, .html, и .shtml\n"
 "\n"
 "Рекомендации:\n"
 "маленький файл, достаточно хорошее качество: jpg, 75% качество\n"
@@ -3062,7 +3150,9 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:651
 msgid "Normalize image (Span full range of color values to enhance contrast)"
-msgstr "Нормализовать изображение (Использовать полный диапазон значений цветов для усиления контраста)"
+msgstr ""
+"Нормализовать изображение (Использовать полный диапазон значений цветов для "
+"усиления контраста)"
 
 #: screenshooter/screenshooter_applet.c:655
 msgid "Equalize image (Perform histogram equalization)"
@@ -3119,7 +3209,9 @@ msgstr "Рельефное преобразование"
 #: screenshooter/screenshooter_applet.c:727
 msgid ""
 "When finished, send image and thumbnail filenames to script/program below"
-msgstr "После окончания послать изображение и имена файлов миниатюр в указанную ниже программу"
+msgstr ""
+"После окончания послать изображение и имена файлов миниатюр в указанную ниже "
+"программу"
 
 #: screenshooter/screenshooter_applet.c:735
 msgid "Script or program to launch:"
@@ -3134,7 +3226,8 @@ msgid ""
 "Hint: I use a script to update my website screenshot page.\n"
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
-"Скрипт или программа, которые будут запускаться после создания изображения с именем файла изображения\n"
+"Скрипт или программа, которые будут запускаться после создания изображения с "
+"именем файла изображения\n"
 "указанным в командной строке следующим образом:\n"
 "{Название_скрипта} {Имя_файла_изображения} {Имя_файла_миниатюры_если_есть}\n"
 "Совет: я использую скрипт для обновления моей страницы со снимками экрана.\n"
@@ -3447,7 +3540,8 @@ msgid ""
 msgstr ""
 "Вы включили параметр \"Монитор входящего звука\".\n"
 "\n"
-"Если ваша звуковая карта не полнодуплексная (не может одновременно вводить и выводить звук),\n"
+"Если ваша звуковая карта не полнодуплексная (не может одновременно вводить и "
+"выводить звук),\n"
 "тогда это может вызвать ошибки в звуковом драйвере/esound и может подвесить\n"
 "вашу систему\n"
 "Вас предупредили!"
@@ -3490,7 +3584,9 @@ msgstr ""
 
 #: sound-monitor/properties.c:514
 msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-msgstr "Монитор входящего звука (используйте только с ПОЛНОДУПЛЕКСНЫМИ звуковыми картами)"
+msgstr ""
+"Монитор входящего звука (используйте только с ПОЛНОДУПЛЕКСНЫМИ звуковыми "
+"картами)"
 
 #: tickastat/main.c:46
 msgid "Tick-a-Stat event log"
@@ -3558,6 +3654,11 @@ msgstr ""
 msgid "Path to monitor:"
 msgstr ""
 
+#: tickastat/mod_coredump.c:621
+#, fuzzy
+msgid "Core dump catcher"
+msgstr "Модуль дампа ядра"
+
 #: tickastat/mod_coredump.c:622
 msgid ""
 "This module monitors a path for core dumps, if one is\n"
@@ -3609,6 +3710,11 @@ msgstr "Отображаемый текст:"
 #: tickastat/mod_loadavg.c:591
 msgid "Alert options"
 msgstr "Параметры тревоги"
+
+#: tickastat/mod_loadavg.c:780
+#, fuzzy
+msgid "Load average monitor"
+msgstr "Средняя загрузка"
 
 #: tickastat/mod_loadavg.c:781
 msgid ""
@@ -3690,6 +3796,11 @@ msgstr "дата"
 msgid "Show:"
 msgstr "Показать:"
 
+#: tickastat/mod_news.c:1497
+#, fuzzy
+msgid "News and information ticker"
+msgstr "Модуль новостей и информации"
+
 #: tickastat/mod_news.c:1498
 msgid "This module can display news and other information."
 msgstr "Этот модуль может показывать новости и другую информацию."
@@ -3726,6 +3837,11 @@ msgstr "Выберите файл для показа хвоста"
 msgid "Show pop up dialog for new lines."
 msgstr "Показывать всплывающий диалог для новых строк."
 
+#: tickastat/mod_tail.c:561
+#, fuzzy
+msgid "File tailer"
+msgstr "Хвост файла для "
+
 #: tickastat/mod_tail.c:562
 msgid ""
 "This module monitors a file for appended text,\n"
@@ -3734,7 +3850,7 @@ msgstr ""
 "Этот модуль отслеживает добавление текста к файлу,\n"
 "и печатает его. Полезно для регистрационных файлов."
 
-#: tickastat/mod_test.c:126
+#: tickastat/mod_test.c:126 tickastat/mod_test.c:218
 msgid "Test Module"
 msgstr "Тестовый модуль"
 

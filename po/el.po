@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.9cvs\n"
-"POT-Creation-Date: 2000-05-14 23:17+0200\n"
+"POT-Creation-Date: 2000-05-22 01:01-0400\n"
 "PO-Revision-Date: 2000-05-09 15:02+0000\n"
 "Last-Translator: Spiros Papadimitriou <spapadim+@cs.cmu.edu>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -114,8 +114,8 @@ msgstr "Γενικά"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:723 multiload/load-graph.c:588
-#: multiload/load-graph.c:780
+#: mini-commander/src/preferences.c:723 multiload/load-graph.c:587
+#: multiload/load-graph.c:779
 msgid "Colors"
 msgstr "Χρώματα"
 
@@ -164,7 +164,8 @@ msgstr "Αναλογικό ρολόι παρόμοιο με αυτό στο ταμπλώ του CDE."
 #: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:192 gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1229 multiload/cpuload.c:95
-#: multiload/memload.c:98 multiload/swapload.c:98 odometer/odo.c:661
+#: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
+#: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:55
 #: sound-monitor/main.c:369 tickastat/main.c:345 webcontrol/webcontrol.c:364
 msgid "Properties..."
@@ -172,31 +173,34 @@ msgstr "Ιδιότητες..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:616
 #: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
-#: clockmail/clockmail.c:569 diskusage/diskusage.c:1096
-#: drivemount/drivemount.c:701 fifteen/fifteen.c:362 geyes/geyes.c:399
-#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
+#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:299
+#: diskusage/diskusage.c:1096 drivemount/drivemount.c:701
+#: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:445
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
 #: jbc/jbc-applet.c:197 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
-#: multiload/cpuload.c:108 multiload/memload.c:111 multiload/swapload.c:111
-#: odometer/odo.c:664 quicklaunch/quicklaunch.c:510
-#: screenshooter/screenshooter_applet.c:1012 sound-monitor/main.c:376
-#: tickastat/main.c:351 webcontrol/webcontrol.c:371 whereami/whereami.c:236
+#: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
+#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
+#: quicklaunch/quicklaunch.c:510 screenshooter/screenshooter_applet.c:1012
+#: sound-monitor/main.c:376 tickastat/main.c:351 webcontrol/webcontrol.c:371
+#: whereami/whereami.c:236
 msgid "Help"
 msgstr "Βοήθεια"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:621
 #: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
-#: diskusage/diskusage.c:1103 drivemount/drivemount.c:706
-#: fifteen/fifteen.c:367 geyes/geyes.c:404 gkb-new/gkb.c:450
-#: gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
+#: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1103
+#: drivemount/drivemount.c:706 fifteen/fifteen.c:367 geyes/geyes.c:404
+#: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
 #: jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1242 multiload/cpuload.c:115
-#: multiload/memload.c:118 multiload/swapload.c:118 odometer/odo.c:667
-#: quicklaunch/quicklaunch.c:514 screenshooter/screenshooter_applet.c:1017
-#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:356
-#: webcontrol/webcontrol.c:378 whereami/whereami.c:238
+#: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
+#: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:514
+#: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:58
+#: sound-monitor/main.c:381 tickastat/main.c:356 webcontrol/webcontrol.c:378
+#: whereami/whereami.c:238
 msgid "About..."
 msgstr "Περί..."
 
@@ -262,7 +266,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Εσωτερικό σφάλμα: άκυρη κατάσταση (mode) στο battery_set_mode"
 
 #: battery/battery.c:784 jbc/jbc-applet.c:178 multiload/cpuload.c:69
-#: multiload/memload.c:72 multiload/swapload.c:72
+#: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
 msgstr "Δημιουργία εφαρμογιδίου αδύνατη!\n"
@@ -431,23 +435,6 @@ msgstr ""
 msgid "Run CD Player..."
 msgstr "Εκτέλεση CD Player..."
 
-#: clipboard/clipboard.c:181
-msgid "Clipboard Applet"
-msgstr "Εφαρμογίδιο Προχείρου"
-
-#: clipboard/clipboard.c:183
-msgid "Copyright (C) 1999"
-msgstr "Πνευματικά δικαιώματα (C) 1999"
-
-#: clipboard/clipboard.c:185
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"Εφαρμογίδιο του ταμπλώ του GNOME για αντιγραφή και ανάκτηση επιλογών με μια "
-"λίστα ιστορικού. Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU General Public "
-"Licence."
-
 #: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Επιλογέας χαρακτήρων"
@@ -508,6 +495,23 @@ msgstr "Εξ ορισμού Λίστα"
 #: charpick/properties.c:329
 msgid "Character Picker Settings"
 msgstr "Ρυθμίσεις επιλογέα χαρακτήρων"
+
+#: clipboard/clipboard.c:181
+msgid "Clipboard Applet"
+msgstr "Εφαρμογίδιο Προχείρου"
+
+#: clipboard/clipboard.c:183
+msgid "Copyright (C) 1999"
+msgstr "Πνευματικά δικαιώματα (C) 1999"
+
+#: clipboard/clipboard.c:185
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"Εφαρμογίδιο του ταμπλώ του GNOME για αντιγραφή και ανάκτηση επιλογών με μια "
+"λίστα ιστορικού. Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU General Public "
+"Licence."
 
 #: clockmail/clockmail.c:63 slashapp/slashapp.c:137 sound-monitor/main.c:41
 #: tickastat/main.c:191
@@ -601,6 +605,22 @@ msgstr "Αρχείο θεμάτων (κατάλογος):"
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Θέμα"
+
+#: cpumemusage/cpumemusage.c:175
+#, fuzzy
+msgid "CPU/Mem Usage Applet"
+msgstr "Εφαρμογίδιο Χρήσης Δίσκου"
+
+#: cpumemusage/cpumemusage.c:176
+#, fuzzy
+msgid "(c) 1997 the Free Software Foundation"
+msgstr "(c) 1997 To Free Software Foundation"
+
+#: cpumemusage/cpumemusage.c:178
+msgid ""
+"The CPU/Mem usage applet displays your system resources with 3 colorful "
+"stacked bar graphs (processor, memory, swap)"
+msgstr ""
 
 #: diskusage/diskusage.c:767
 msgid "File Systems"
@@ -945,6 +965,18 @@ msgstr "Εξ ορισμού Ύψος"
 msgid "Default Width"
 msgstr "Εξ ορισμού Πλάτος"
 
+#: gweather/gweather-about.c:41
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "Πνευματικά δικαιώματα (c)1999 Σ. Παπαδημητρίου"
+
+#: gweather/gweather-about.c:43
+msgid ""
+"GNOME weather monitor applet.\n"
+"Web: http://gweather.dhs.org/"
+msgstr ""
+"Εγαρμογίδιο παρακολούθησης καιρού για το GNOME.\n"
+"Web: http://gweather.dhs.org/"
+
 #: gweather/gweather-applet.c:181
 msgid "Cannot create applet!\n"
 msgstr "Δημιουργία εφαρμογιδίου αδύνατη!\n"
@@ -1113,18 +1145,6 @@ msgstr "Δίκτυο"
 #: gweather/gweather-pref.c:515
 msgid "Location"
 msgstr "Τοποθεσία"
-
-#: gweather/gweather-about.c:41
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Πνευματικά δικαιώματα (c)1999 Σ. Παπαδημητρίου"
-
-#: gweather/gweather-about.c:43
-msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
-msgstr ""
-"Εγαρμογίδιο παρακολούθησης καιρού για το GNOME.\n"
-"Web: http://gweather.dhs.org/"
 
 #: gweather/weather.c:137
 msgid "Variable"
@@ -2390,15 +2410,17 @@ msgid "no /bin/sh"
 msgstr "δεν υπάρχει /bin/sh"
 
 #: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/terminal.c:83 mini-commander/src/terminal.c:103
 msgid "end of history list"
 msgstr "τέλος ιστορικού"
 
 #. enter pressed -> exec command
 #: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "εκκίνηση..."
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:146 mini-commander/src/terminal.c:142
 msgid "autocompleted"
 msgstr "συμπλήρωθηκε αυτόματα"
 
@@ -2703,35 +2725,72 @@ msgstr ""
 "\n"
 "Εφαρμογίδιο Μέτρησης Φόρτου ΚΜΕ (Κεντρική Μονάδα Επεξεργασίας)."
 
-#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:214
+#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:220
 msgid "CPU Load"
 msgstr "Φόρτος επεξεργαστή"
 
-#: multiload/cpuload.c:88 multiload/memload.c:91 multiload/swapload.c:91
+#: multiload/cpuload.c:88 multiload/loadavg.c:163 multiload/memload.c:91
+#: multiload/netload.c:87 multiload/swapload.c:91
 msgid "Default Properties..."
 msgstr "Εξ ορισμού Ιδιότητες..."
 
-#: multiload/cpuload.c:102 multiload/memload.c:105 multiload/swapload.c:105
+#: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
+#: multiload/netload.c:101 multiload/swapload.c:105
 msgid "Run gtop..."
 msgstr "Εκτέλεση gtop..."
+
+#: multiload/loadavg.c:27
+#, fuzzy
+msgid "Load average over 1 minute"
+msgstr "Μονάδα Μέσου Φορτίου"
+
+#: multiload/loadavg.c:28
+#, fuzzy
+msgid "Load average over 5 minutes"
+msgstr "Μονάδα Μέσου Φορτίου"
+
+#: multiload/loadavg.c:29
+#, fuzzy
+msgid "Load average over 15 minutes"
+msgstr "Μονάδα Μέσου Φορτίου"
+
+#: multiload/loadavg.c:103
+#, fuzzy
+msgid "Load Average Applet"
+msgstr "Μονάδα Μέσου Φορτίου"
+
+#: multiload/loadavg.c:106
+#, fuzzy
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Load Average Meter Applet."
+msgstr ""
+"Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU (GNU general public license).\n"
+"\n"
+"Εφαρμογίδιο Μέτρησης Φόρτου ΚΜΕ (Κεντρική Μονάδα Επεξεργασίας)."
+
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
+msgid "Load Average"
+msgstr "Μέσο Φορτίο"
 
 #: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
 msgstr "Γράφημα φορτίου"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Speed:"
 msgstr "Ταχύτητα:"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Size:"
 msgstr "Μέγεθος:"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Maximum:"
 msgstr "Μέγιστο:"
 
-#: multiload/load-graph.c:806
+#: multiload/load-graph.c:805
 msgid "Use default properties"
 msgstr "Χρήση εξ ορισμού ιδιοτήτων"
 
@@ -2783,21 +2842,17 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:218 multiload/memload.c:77 multiload/memload.c:121
+#: multiload/main.c:224 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
 msgstr "Φόρτος μνήμης"
 
-#: multiload/main.c:222 multiload/swapload.c:77 multiload/swapload.c:121
+#: multiload/main.c:228 multiload/swapload.c:77 multiload/swapload.c:121
 msgid "Swap Load"
 msgstr "Φόρτος swap"
 
-#: multiload/main.c:226
+#: multiload/main.c:232 multiload/netload.c:73
 msgid "Net Load"
 msgstr "Φόρτος δικτύου"
-
-#: multiload/main.c:230
-msgid "Load Average"
-msgstr "Μέσο Φορτίο"
 
 #: multiload/memload.c:44
 msgid "Memory Load Applet"
@@ -2812,6 +2867,27 @@ msgstr ""
 "Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU (GNU general public license).\n"
 "\n"
 "Εφαρμογίδιο Φόρτου Μνήμης."
+
+#: multiload/netload.c:42
+#, fuzzy
+msgid "Network Load Applet"
+msgstr "Εφαρμογίδιο Φόρτου Μνήμης"
+
+#: multiload/netload.c:45
+#, fuzzy
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Network Load Meter Applet."
+msgstr ""
+"Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU (GNU general public license).\n"
+"\n"
+"Εφαρμογίδιο Μέτρησης του Φόρτου Εναλλαγής (swap)."
+
+#: multiload/netload.c:117
+#, fuzzy
+msgid "Network Load"
+msgstr "Φόρτος δικτύου"
 
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
@@ -3617,6 +3693,11 @@ msgstr ""
 msgid "Path to monitor:"
 msgstr "Μονοπάτι για παρακολούθηση:"
 
+#: tickastat/mod_coredump.c:621
+#, fuzzy
+msgid "Core dump catcher"
+msgstr "Μονάδα Αρχείων Μνήμης"
+
 #: tickastat/mod_coredump.c:622
 msgid ""
 "This module monitors a path for core dumps, if one is\n"
@@ -3671,6 +3752,11 @@ msgstr "Κείμενο προς εμφάνιση:"
 #: tickastat/mod_loadavg.c:591
 msgid "Alert options"
 msgstr "Επιλογές επαγρύπνησης"
+
+#: tickastat/mod_loadavg.c:780
+#, fuzzy
+msgid "Load average monitor"
+msgstr "Μέσο Φορτίο"
 
 #: tickastat/mod_loadavg.c:781
 msgid ""
@@ -3752,6 +3838,11 @@ msgstr "ημερομηνία"
 msgid "Show:"
 msgstr "Εμφάνιση:"
 
+#: tickastat/mod_news.c:1497
+#, fuzzy
+msgid "News and information ticker"
+msgstr "Μονάδα νέων και πληροφοριών"
+
 #: tickastat/mod_news.c:1498
 msgid "This module can display news and other information."
 msgstr "Αυτή η μονάδα μπορεί να εμφανίζει νέα και άλλες πληροφορίες."
@@ -3788,6 +3879,11 @@ msgstr "Επιλογή αρχείου για ουρά"
 msgid "Show pop up dialog for new lines."
 msgstr "Εμφάνιση διαλόγου για νέες γραμμές."
 
+#: tickastat/mod_tail.c:561
+#, fuzzy
+msgid "File tailer"
+msgstr "Ουρά αρχείου για "
+
 #: tickastat/mod_tail.c:562
 msgid ""
 "This module monitors a file for appended text,\n"
@@ -3796,7 +3892,7 @@ msgstr ""
 "Αυτή η μονάδα παρακολουθεί ένα αρχείο για προσαρτημένο κείμενο,\n"
 " και το τυπώνει. Χρήσιμη για αρχεία καταγραφής."
 
-#: tickastat/mod_test.c:126
+#: tickastat/mod_test.c:126 tickastat/mod_test.c:218
 msgid "Test Module"
 msgstr "Μονάδα τεστ"
 

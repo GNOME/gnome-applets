@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.90\n"
-"POT-Creation-Date: 2000-05-21 11:54+0200\n"
+"POT-Creation-Date: 2000-05-22 01:01-0400\n"
 "PO-Revision-Date: 2000-05-16 10:50+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <jba@pobox.com>\n"
 "Language-Team: Galician <gpul-traduccion@ceu.fi.udc.es>\n"
@@ -115,8 +115,8 @@ msgstr "Xeral"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:723 multiload/load-graph.c:588
-#: multiload/load-graph.c:780
+#: mini-commander/src/preferences.c:723 multiload/load-graph.c:587
+#: multiload/load-graph.c:779
 msgid "Colors"
 msgstr "Cores"
 
@@ -174,7 +174,7 @@ msgstr "Propiedades..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:616
 #: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
-#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:294
+#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1096 drivemount/drivemount.c:701
 #: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:445
 #: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
@@ -191,7 +191,7 @@ msgstr "Axuda"
 #: another_clock/another_clock.c:735 asclock/asclock.c:621
 #: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
-#: cpumemusage/cpumemusage.c:300 diskusage/diskusage.c:1103
+#: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1103
 #: drivemount/drivemount.c:706 fifteen/fifteen.c:367 geyes/geyes.c:404
 #: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
 #: jbc/jbc-applet.c:202 life/life.c:290
@@ -2717,7 +2717,7 @@ msgstr ""
 "\n"
 "Applet que mide a carga da CPU."
 
-#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:214
+#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:220
 msgid "CPU Load"
 msgstr "Carga de CPU"
 
@@ -2757,7 +2757,7 @@ msgstr ""
 "\n"
 "Applet que mide a carga media."
 
-#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:230
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:236
 msgid "Load Average"
 msgstr "Carga Media"
 
@@ -2765,19 +2765,19 @@ msgstr "Carga Media"
 msgid "Load Graph"
 msgstr "Gráfico de Carga"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Speed:"
 msgstr "Velocidade:"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Size:"
 msgstr "Tamaño:"
 
-#: multiload/load-graph.c:575 multiload/load-graph.c:767
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Maximum:"
 msgstr "Máximo:"
 
-#: multiload/load-graph.c:806
+#: multiload/load-graph.c:805
 msgid "Use default properties"
 msgstr "Usar propiedades por defecto"
 
@@ -2829,15 +2829,15 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:218 multiload/memload.c:77 multiload/memload.c:121
+#: multiload/main.c:224 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
 msgstr "Carga de Memoria"
 
-#: multiload/main.c:222 multiload/swapload.c:77 multiload/swapload.c:121
+#: multiload/main.c:228 multiload/swapload.c:77 multiload/swapload.c:121
 msgid "Swap Load"
 msgstr "Carga de Swap"
 
-#: multiload/main.c:226 multiload/netload.c:73
+#: multiload/main.c:232 multiload/netload.c:73
 msgid "Net Load"
 msgstr "Carga da Rede"
 
@@ -3664,6 +3664,11 @@ msgstr "Amosar diálogo coa traza para atrás nos novos ficheiros core"
 msgid "Path to monitor:"
 msgstr "Directorio a monitorizar:"
 
+#: tickastat/mod_coredump.c:621
+#, fuzzy
+msgid "Core dump catcher"
+msgstr "Módulo de Core-Dump"
+
 #: tickastat/mod_coredump.c:622
 msgid ""
 "This module monitors a path for core dumps, if one is\n"
@@ -3718,6 +3723,11 @@ msgstr "Texto a amosar:"
 #: tickastat/mod_loadavg.c:591
 msgid "Alert options"
 msgstr "Opcións de alerta"
+
+#: tickastat/mod_loadavg.c:780
+#, fuzzy
+msgid "Load average monitor"
+msgstr "Carga media no último minuto"
 
 #: tickastat/mod_loadavg.c:781
 msgid ""
@@ -3799,6 +3809,11 @@ msgstr "data"
 msgid "Show:"
 msgstr "Amosar:"
 
+#: tickastat/mod_news.c:1497
+#, fuzzy
+msgid "News and information ticker"
+msgstr "Módulo de Información e Novas"
+
 #: tickastat/mod_news.c:1498
 msgid "This module can display news and other information."
 msgstr "Este módulo pode amosar novas e outra información."
@@ -3835,6 +3850,11 @@ msgstr "Escolla un ficheiro a monitorizar"
 msgid "Show pop up dialog for new lines."
 msgstr "Amosar un diálogo para as novas liñas."
 
+#: tickastat/mod_tail.c:561
+#, fuzzy
+msgid "File tailer"
+msgstr "Fin de ficheiro de "
+
 #: tickastat/mod_tail.c:562
 msgid ""
 "This module monitors a file for appended text,\n"
@@ -3843,7 +3863,7 @@ msgstr ""
 "Este módulo monitoriza o texto engadido a un ficheiro,\n"
 " e o escribe. Útil para os ficheiros de log."
 
-#: tickastat/mod_test.c:126
+#: tickastat/mod_test.c:126 tickastat/mod_test.c:218
 msgid "Test Module"
 msgstr "Modo de Proba"
 
