@@ -609,10 +609,14 @@ static void
 gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 {
   BonoboUIComponent *component;
-  gboolean mute = (GST_MIXER_TRACK_HAS_FLAG (applet->track,
-			GST_MIXER_TRACK_MUTE));
+  gboolean mute = applet->state & 1;
+  GtkAdjustment *adj = gtk_range_get_adjustment (applet->dock->scale);
 
   gst_mixer_set_mute (applet->mixer, applet->track, !mute);
+  if (mute) {
+    /* sync back actual volume */
+    cb_volume (adj, applet);
+  }
 
   /* update component */
   component = panel_applet_get_popup_component (PANEL_APPLET (applet));
@@ -909,7 +913,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
 {
   BonoboUIComponent *component;
   GdkPixbuf *pixbuf;
-  gint n, *volumes, volume = 0;
+  gint n, *volumes, volume = 0, orig_vol;
   gboolean mute;
 
   /* build-up phase */
@@ -920,12 +924,13 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   gst_mixer_get_volume (applet->mixer, applet->track, volumes);
   for (n = 0; n < applet->track->num_channels; n++)
     volume += volumes[n];
-  volume /= applet->track->num_channels;
   g_free (volumes);
   mute = GST_MIXER_TRACK_HAS_FLAG (applet->track,
 				   GST_MIXER_TRACK_MUTE);
   if (volume == 0)
     mute = TRUE;
+  orig_vol = volume;
+  volume /= applet->track->num_channels;
 
   n = 4 * volume / (applet->track->max_volume -
       applet->track->min_volume) + 1;
@@ -946,7 +951,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
   }
 
   applet->lock = TRUE;
-  if (volume > 0)
+  if (orig_vol > 0)
     gtk_range_set_value (applet->dock->scale, volume);
   applet->lock = FALSE;
 
@@ -1150,8 +1155,7 @@ cb_ui_event (BonoboUIComponent *comp,
 
   if (!strcmp (verbname, "Mute")) {
     /* mute will have a value of 4 without the ? TRUE : FALSE bit... */
-    gboolean mute = (GST_MIXER_TRACK_HAS_FLAG (applet->track,
-                        GST_MIXER_TRACK_MUTE)) ? TRUE : FALSE,
+    gboolean mute = applet->state & 1,
              want_mute = !strcmp (state_string, "1") ? TRUE : FALSE;
 
     if (mute != want_mute)
