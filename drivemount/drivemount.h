@@ -44,6 +44,8 @@ struct _DriveData
 	gchar *custom_icon_in;
 	gchar *custom_icon_out;
 
+	GtkWidget *error_dialog;
+
 	/* the rest is for the properties window */
 	GtkWidget *propwindow;
 	GtkWidget *prop_spin;

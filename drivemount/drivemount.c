@@ -431,6 +431,14 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 	GString *str;
 	gint check = device_is_mounted(dd);
 
+	/* Stop the user from displaying zillions of error messages */
+	if (dd->error_dialog)
+	{
+		gdk_window_show(dd->error_dialog->window);
+		gdk_window_raise(dd->error_dialog->window);
+		return FALSE;
+	}
+
 	if (!check)
 		g_snprintf(command_line, sizeof(command_line),
 			   "mount %s 2>&1", dd->mount_point);
@@ -463,7 +471,9 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 		g_string_prepend(str, _("\" reported:\n"));
 		g_string_prepend(str, command_line);
 		g_string_prepend(str, _("Drivemount command failed.\n\""));
-		gnome_warning_dialog(str->str);
+		dd->error_dialog = gnome_warning_dialog(str->str);
+		gtk_signal_connect(GTK_OBJECT(dd->error_dialog), "destroy",
+				   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &dd->error_dialog);
 		}
 
 	g_string_free(str, TRUE);
@@ -614,6 +624,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	dd->autofs_friendly = FALSE;
 	dd->custom_icon_in = NULL;
 	dd->custom_icon_out = NULL;
+	dd->error_dialog = NULL; 
 
 	dd->orient = applet_widget_get_panel_orient(APPLET_WIDGET(applet));
 
