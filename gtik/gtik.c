@@ -733,7 +733,13 @@ static gint updateOutput(gpointer data)
 		return;
 	}
 
-
+	static void help_cb (BonoboUIComponent *uic, gpointer data, 
+			     const gchar *verbname) 
+	{
+		gnome_help_display ("gtik2_applet2", NULL, NULL);
+		
+	
+	}
 
 	/*-----------------------------------------------------------------*/
 	static void refresh_cb(BonoboUIComponent *uic, gpointer data, 
@@ -1362,6 +1368,7 @@ static gint updateOutput(gpointer data)
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
         	BONOBO_UI_VERB ("Props", properties_cb),
         	BONOBO_UI_VERB ("Refresh", refresh_cb),
+        	BONOBO_UI_VERB ("Help", help_cb),
         	BONOBO_UI_VERB ("About", about_cb),
 
         	BONOBO_UI_VERB_END
@@ -1487,7 +1494,7 @@ static gint updateOutput(gpointer data)
 
 	PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GtikApplet_Factory",
 				PANEL_TYPE_APPLET,
-			     	"Gtik applet",
+			     	"gtik2_applet2",
 			     	"0",
 			     	gtik_applet_factory,
 			     	NULL)
