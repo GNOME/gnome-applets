@@ -11,6 +11,7 @@
  *
  */
 
+#include <config.h>
 #include "webcontrol.h"
 #include "session.h"
 

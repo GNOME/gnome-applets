@@ -1,5 +1,6 @@
 /* Webcontrol properties dialog and actions */
 
+#include <config.h>
 #include "properties.h"
 #include "webcontrol.h"
 #include "session.h"
