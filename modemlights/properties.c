@@ -423,6 +423,7 @@ void property_show (BonoboUIComponent *uic,
 	gtk_dialog_set_default_response (GTK_DIALOG (mldata->propwindow), GTK_RESPONSE_CLOSE);
   	gtk_dialog_set_has_separator (GTK_DIALOG (mldata->propwindow), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (mldata->propwindow), 5);
+	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (mldata->propwindow)->vbox), 2);
 	gtk_window_set_resizable (GTK_WINDOW (mldata->propwindow), FALSE);
 
 	notebook = gtk_notebook_new ();
