@@ -135,14 +135,24 @@
         Full command &mdash; This is the command which
         <application>GNOME KeyBoard</application> will use to change
         the keymap.  The default is to use the
-        <command>setxkbmap</command> command. To set the keymap to a
+        <command>setxkbmap <replaceable>LC</replaceable></command>
+        command, where <replaceable>LC</replaceable> should be
+        replaced by the 2-letter language code.   To set the keymap to a
         US keyboard, for example, you would use <command>setxkbmap
-        us</command>. You may also use the
-        <command>gkb_xmmap</command> command, such as
-        <command>gkb_xmmap fr</command> (to use a French keyboard), or
-        the <command>Xmodmap</command> command, such as
-        <command>/usr/local/bin/Xmodmap ru</command> (to use a Russian
-        keyboard). 
+        us</command>. </para>
+       <para>
+	    If this doesn't work, you may also try setting the
+	    keyboard using command <command>gkb_xmmap
+	    <replaceable>LC</replaceable></command> (for example,
+	    <command>gkb_xmmap fr</command> to use a French
+	    keyboard). Finally, if you have your own keyboard layout
+	    (xmodmap) file, set the command to <command>xmodmap
+	    <replaceable>xmodmap-filename</replaceable></command> (for
+	    example, <command>xmodmap
+	    ~/xrus/yawerty.koi8.xmm</command> to use keyboard layout
+	    for Cyrillic letters in koi8 encoding).  Please see
+	    <xref  linkend="gkbappplet-technical"> for more
+	    information. 
        </para>
       </listitem>
 
@@ -157,6 +167,46 @@
       <guibutton>Close</guibutton> button.
     </para>
   </sect2>
+
+<sect2 id="gkbappplet-technical">
+    <title>Technical information</title>
+    <para> 
+      Normally you do not need these details - but if something is not
+    working, or you are just curious, read on.
+    </para>
+    <para>
+      <application>GNOME Keyboard</application>  switches the keyboard
+    map by issuing a command to X Window 
+    System. X Window System has two mechanisms for setting keyboard
+    mapping: older one called "xmodmap" and a newer one, based on the
+    so-called "Xkb extension". If you have Xkb enabled, you should use
+    it and switch keyboard layouts by issuing a command
+    <command>setxkbmap <replaceable>LC</replaceable></command>. It
+    comes with a number of various keyboard layout files, usually in
+    directory <filename>/usr/X11R6/lib/X11/xkb/symbols</filename>. 
+    </para>
+    <para> If you do not have Xkb extension enabled, or if it just
+    does not cover the language you need, you should use the older
+    <command>xmodmap</command> mechanism. In this case, you need to
+    have a file which describes keyboard layout in a special format
+    (see manual page for <command>xmodmap</command> for details), and
+    the command should be <command>xmodmap
+    <replaceable>filename</replaceable> </command>. <application>GNOME
+    Keyboard</application>  includes a
+    number of keyboard layout files, which are installed in the
+    directory <filename>/usr/share/xmodmap</filename>; these files
+    have names like <filename>xmodmap.de</filename>. To use one of
+    these files, you can use the command <command>gkb_xmmap
+    <replaceable>LC</replaceable></command> 
+    which is equivalent to <command>xmodmap
+    /usr/share/xmodmap/xmodmap.<replaceable>LC</replaceable></command>:
+    for example, 
+      <command>gkb_xmmap hu</command> is the same as <command>xmodmap
+    /usr/share/xmodmap/xmodmap.hu</command>. 
+    </para>
+  </sect2>
+
+
 
 
   <!-- ============= Bugs ================================== -->
@@ -183,8 +233,7 @@
     bug tracking database</ulink>. (Instructions for submitting bug
     reports can be found <ulink
     url="http://bugs.gnome.org/Reporting.html" type="http">
-    on-line</ulink>). If you are using
-    GNOME 1.1 or later, you can also use <application>Bug Report
+    on-line</ulink>). You can also use <application>Bug Report
     Tool</application> (<command>bug-buddy</command>), available in the
     <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
     Menu</guimenu>, for submitting bug reports.
@@ -193,13 +242,14 @@
    <para>
     This manual was written by Szabolcs (Shooby) Ban
     (<email>shooby@gnome.hu</email>) and Dan Mueth
-    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
-    suggestions regarding this manual to the <ulink type="http"
-    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
-    by sending an email to <email>docs@gnome.org</email>. You can also
-    submit comments online by using the <ulink type="http"
-    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
-    Table</ulink>.
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments
+    and suggestions regarding this manual to the <ulink type="http"
+    url="http://developer.gnome.org/projects/gdp/">GNOME Documentation
+    Project</ulink> by sending an email to
+    <email>docs@gnome.org</email>. You can also submit comments online
+    by using the <ulink type="http"
+    url="http://developer.gnome.org/projects/gdp/doctable/">GNOME
+    Documentation Status Table</ulink>.
    </para>
 
    <!-- For translations: uncomment this:
