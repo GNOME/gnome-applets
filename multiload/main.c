@@ -156,7 +156,7 @@ start_procman_cb (BonoboUIComponent *uic,
 	start_procman (ma);
 }
 
-void
+static void
 multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 {
 	MultiloadApplet *ma = (MultiloadApplet *)data;
@@ -166,7 +166,7 @@ multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 	return;
 }
 
-void
+static void
 multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
 	MultiloadApplet *ma = data;
@@ -175,7 +175,7 @@ multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 	return;
 }
 
-void
+static void
 multiload_change_background_cb (PanelApplet *a,
 				PanelAppletBackgroundType type,
 				GdkColor *color,
@@ -215,7 +215,7 @@ multiload_change_background_cb (PanelApplet *a,
 	}
 }
 
-void
+static void
 multiload_destroy_cb(GtkWidget *widget, gpointer data)
 {
 	gint i;
@@ -248,7 +248,7 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 	return;
 }
 
-gboolean
+static gboolean
 multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	MultiloadApplet *ma;
@@ -266,7 +266,8 @@ multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 	return TRUE;
 }
 
-gboolean
+#if 0
+static gboolean
 multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 {
 	MultiloadApplet *ma;
@@ -280,6 +281,7 @@ multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 		
 	return TRUE;
 }
+#endif /* 0 */
 
 static gboolean
 multiload_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MultiloadApplet *ma)
@@ -445,7 +447,7 @@ static const BonoboUIVerb multiload_menu_verbs [] = {
 };		
 
 /* create a box and stuff the load graphs inside of it */
-gboolean
+static gboolean
 multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	MultiloadApplet *ma;

@@ -238,6 +238,52 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
     data [1] = rint ((float) Maximum * free);
 }
 
+
+
+static int
+get_netmax(int current)
+{
+	static int max = 0;
+	static int count = 0;
+	static time_t last = 0;
+	static float sum = 0.0f;
+	static float last_average = 0.0f;
+
+	time_t now;
+
+	sum += current;
+	count++;
+	time(&now);
+
+	if(difftime(now, last) > 60.0f)
+	{
+	    float new_average = sum / count;
+	    float average;
+
+	    if(new_average < last_average)
+		average = ((last_average * 0.5f) + new_average) / 1.5f;
+	    else
+		average = new_average;
+
+	    max = average * 1.2f;
+
+	    sum = 0.0f;
+	    count = 0;
+	    last = now;
+	    last_average = average;
+	};
+
+	max = MAX(max, current);
+	max = MAX(max, 500);
+#if 0
+	printf("max = %d, current = %d, last_average = %f\n", max, current, last_average);
+#endif
+	return max;
+}
+
+
+
+
 void
 GetNet (int Maximum, int data [5], LoadGraph *g)
 {
@@ -248,7 +294,6 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 #define COUNT_TYPES	4
 
     static int ticks = 0;
-    static int max = 500;
     static gulong past[COUNT_TYPES] = {0};
 
     gulong present[COUNT_TYPES] = {0};
@@ -301,6 +346,7 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
     }
     else
     {
+	int max;
 	int total = 0;
 
 	for (i = 0; i < COUNT_TYPES; i++)
@@ -312,8 +358,9 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 		    delta[i] = 0;
 	    total += delta[i];
 	}
-	if (total > max)
-	    max = total;
+
+	max = get_netmax(total);
+
 	for (i = 0; i < COUNT_TYPES; i++)
 	    data[i]   = rint (Maximum * (float)delta[i]  / max);
 

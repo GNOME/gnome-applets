@@ -90,7 +90,7 @@ properties_set_insensitive(MultiloadApplet *ma)
 	return;
 }
 
-void
+static void
 properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 {
 	GError *error = NULL;
@@ -119,7 +119,7 @@ properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 	}
 }
 
-void
+static void
 property_toggled_cb(GtkWidget *widget, gpointer name)
 {
 	MultiloadApplet *ma;
@@ -155,7 +155,7 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	return;
 }
 
-void
+static void
 spin_button_changed_cb(GtkWidget *widget, gpointer name)
 {
 	MultiloadApplet *ma;
@@ -214,7 +214,7 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 }
 
 /* create a new page in the notebook widget, add it, and return a pointer to it */
-GtkWidget *
+static GtkWidget *
 add_page(GtkWidget *notebook, gchar *label)
 {
 	GtkWidget *page;
@@ -230,7 +230,7 @@ add_page(GtkWidget *notebook, gchar *label)
 }
 
 /* save the selected color to gconf and apply it on the applet */
-void
+static void
 color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 {
 	gchar color_string[8];
@@ -272,7 +272,7 @@ color_picker_set_cb(GtkColorButton *color_picker, gpointer data)
 }
 
 /* create a color selector */
-void
+static void
 add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApplet *ma)
 {
 	GtkWidget *vbox;
@@ -315,7 +315,7 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 }
 
 /* creates the properties dialog using up-to-the-minute info from gconf */
-void
+static void
 fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 {
 	GtkWidget *notebook, *page;

@@ -99,6 +99,10 @@ netload_applet_new(PanelApplet *applet, gpointer data);
 LoadGraph *
 loadavg_applet_new(PanelApplet *applet, gpointer data);
 
+/* start a new instance of the loadavg applet */
+LoadGraph *
+diskload_applet_new(PanelApplet *applet, gpointer data);
+
 /* show properties dialog */
 void
 multiload_properties_cb (BonoboUIComponent *uic,
