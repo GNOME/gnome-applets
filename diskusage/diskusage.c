@@ -38,6 +38,12 @@ GdkPixmap *pixmap;
 GdkGC *gc;
 GdkColor ucolor, fcolor, tcolor, bcolor;
 
+void update_mount_list_menu_items (void);
+
+GString **mpoints;
+GString **menuitem;
+guint num_mpoints;
+
 int timer_index=-1;
 
 int first_time=1;
@@ -376,8 +382,10 @@ static gint update_values ()
 #endif
 
 	diskusage_read (&summary_info);
-	draw();
+	update_mount_list_menu_items ();
 	
+	draw();
+
 	return TRUE;
 }
 
@@ -434,6 +442,136 @@ static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e,
 	update_values();
 	
 	return TRUE; 
+}
+
+void change_filesystem_cb (AppletWidget *applet, gpointer data) {
+
+  gchar *my_mpoint = (gchar *)data;
+
+  guint n_mpoints = summary_info.n_filesystems;
+  guint lim1;
+
+  for (lim1 = 0; lim1 < n_mpoints; lim1++)
+    if (!strcmp (my_mpoint, summary_info.filesystems [lim1].mount_dir))
+      break;
+
+  summary_info.selected_filesystem = lim1;
+  props.startfs = summary_info.selected_filesystem;
+
+  update_values ();
+
+}
+
+void add_mount_list_menu_items (void) {
+
+  guint n_mpoints = summary_info.n_filesystems;
+  guint lim1;
+
+  gchar digit1 = '0', digit2 = '0';
+
+  mpoints = g_new0 (GString *, n_mpoints);
+  menuitem = g_new0 (GString *, n_mpoints);
+
+  applet_widget_register_callback_dir (APPLET_WIDGET (my_applet),
+				       "filesystem",
+				       "File Systems");
+
+  for (lim1 = 0; lim1 < n_mpoints; lim1++) {
+
+    mpoints [lim1] = g_string_new (summary_info.filesystems [lim1].mount_dir);
+
+    menuitem [lim1] = g_string_new ("filesystem/fsitem");
+    g_string_append_c (menuitem [lim1], digit1);
+    g_string_append_c (menuitem [lim1], digit2);
+
+    if (digit2 == '9') {
+      digit1++;
+      digit2 = '0';
+    }
+    else
+      digit2++;
+
+    applet_widget_register_callback (APPLET_WIDGET (my_applet),
+				     menuitem [lim1]->str,
+				     mpoints [lim1]->str,
+				     change_filesystem_cb,
+				     mpoints [lim1]->str);
+
+  }
+
+  num_mpoints = n_mpoints;
+
+}
+
+void update_mount_list_menu_items () {
+
+  guint n_mpoints = summary_info.n_filesystems;
+  guint lim1;
+  int retval = TRUE;
+
+  gchar digit1 = '0', digit2 = '0';
+
+  if (num_mpoints != n_mpoints)
+    retval = FALSE;
+
+  for (lim1 = 0; (lim1 < n_mpoints) && retval; lim1++)
+    if (strcmp (mpoints [lim1]->str, summary_info.filesystems [lim1].mount_dir)) {
+      retval = FALSE;
+      break;
+    }
+
+  if (!retval) {
+
+    printf ("File System Changed!\n");
+
+    for (lim1 = 0; lim1 < num_mpoints; lim1++) {
+
+      /* This causes a sigsegv if the menu is actually open... dunno
+	 what to do about it :) */
+
+      applet_widget_unregister_callback (APPLET_WIDGET (my_applet), 
+					 menuitem [lim1]->str);
+
+      g_string_free (mpoints [lim1], TRUE);
+      g_string_free (menuitem [lim1], TRUE);
+
+    }
+
+    g_free (mpoints);
+    g_free (menuitem);
+
+    num_mpoints = n_mpoints;
+
+    mpoints = g_new0 (GString *, n_mpoints);
+    menuitem = g_new0 (GString *, n_mpoints);
+
+    for (lim1 = 0; lim1 < num_mpoints; lim1++) {
+
+      mpoints [lim1] = g_string_new (summary_info.filesystems [lim1].mount_dir);
+
+      menuitem [lim1] = g_string_new ("filesystem/fsitem");
+      g_string_append_c (menuitem [lim1], digit1);
+      g_string_append_c (menuitem [lim1], digit2);
+
+      if (digit2 == '9') {
+	digit1++;
+	digit2 = '0';
+      }
+      else
+	digit2++;
+
+      applet_widget_register_callback (APPLET_WIDGET (my_applet),
+				       menuitem [lim1]->str,
+				       mpoints [lim1]->str,
+				       change_filesystem_cb,
+				       mpoints [lim1]->str);
+
+    }
+
+  }
+
+
+
 }
 
 GtkWidget *diskusage_widget(void)
@@ -565,6 +703,8 @@ int main(int argc, char **argv)
 	create_gc();
 	setup_colors();
        	
+	add_mount_list_menu_items ();
+	
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "about",
 					      GNOME_STOCK_MENU_ABOUT,
@@ -583,8 +723,6 @@ int main(int argc, char **argv)
 					      properties,
 					      NULL);
 
-
-	
 	applet_widget_gtk_main();
 
 
