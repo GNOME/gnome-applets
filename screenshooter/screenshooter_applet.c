@@ -20,53 +20,14 @@
 
 /* If you think this code is a mess, you should see my flat ;) */
 
+#include "panel-applet.h"
 #include "config.h"
 #include "screenshooter_applet.h"
-#include <libgnomeui/gnome-window-icon.h>
 
+static void grab_shot (user_preferences * opt, gboolean root);
+
+#ifdef FIXME
 void showHelp (AppletWidget * applet, gpointer data);
-
-void
-cb_about (AppletWidget * widget, gpointer data)
-{
-  static GtkWidget *about = NULL;
-  GtkWidget *my_url;
-  static const char *authors[] =
-    { "Tom Gilbert <gilbertt@tomgilbert.freeserve.co.uk>",
-    "Telsa Gwynne <hobbit@aloss.ukuu.org.uk> (typo fixes, documentation)",
-    "The Sirius Cybernetics Corporation <Ursa-minor>", NULL
-  };
-
-  if (about != NULL)
-  {
-  	gdk_window_show(about->window);
-	gdk_window_raise(about->window);
-	return;	
-  }
-
-  about = gnome_about_new
-    (_ ("Screen-Shooter Applet"),
-     VERSION,
-     _ ("Copyright (C) 1999 Tom Gilbert"),
-     authors, _ ("A useful little screengrabber.\n"
-		 "The left/top button allows you to grab either:\n"
-		 "a window (click to select which one)\n"
-		 "or an area (click and drag to select a rectangle.)\n"
-		 "The right/bottom button will grab the entire desktop.\n"
-		 "Share and Enjoy ;)"), NULL);
-  gtk_signal_connect( GTK_OBJECT(about), "destroy",
-		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
-
-  my_url = gnome_href_new ("http://www.linuxbrit.co.uk/",
-			   _("Visit the author's Website"));
-  gtk_widget_show (my_url);
-  gtk_box_pack_start (GTK_BOX ((GNOME_DIALOG (about))->vbox), my_url, FALSE,
-		      FALSE, 0);
-
-  gtk_widget_show (about);
-  data = NULL;
-  widget = NULL;
-}
 
 static void
 properties_save (gchar * path, gpointer data)
@@ -133,9 +94,12 @@ properties_save (gchar * path, gpointer data)
   data = NULL;
 }
 
+#endif
+
 static void
 properties_load (gchar * path, gpointer data)
 {
+#ifdef FIXME
   gnome_config_push_prefix (path);
   options.propwindow = NULL;
   options.quality_entry = NULL;
@@ -218,6 +182,65 @@ properties_load (gchar * path, gpointer data)
   options.thumbnail_intermediate =
     gnome_config_get_bool ("screenshooter/thumbnail_intermediate=FALSE");
   gnome_config_pop_prefix ();
+#endif  
+  options.propwindow = NULL;
+  options.quality_entry = NULL;
+  options.directory_entry = NULL;
+  options.filename_entry = NULL;
+  options.delay_entry = NULL;
+  options.app_entry = NULL;
+  options.script_entry = NULL;
+  options.thumb_filename_entry = NULL;
+  options.spurious_pref_vbox = NULL;
+  options.spurious_pref_vbox2 = NULL;
+  options.spurious_pref_vbox3 = NULL;
+
+  options.quality = 75;
+  options.rotate_degrees =0;
+  options.blur_factor = 0;
+  options.charcoal_factor =0;
+  options.edge_factor = 0;
+  options.implode_factor =0;
+  options.paint_radius =0;
+  options.sharpen_factor =0;
+  options.solarize_factor =0;
+  options.spread_radius =0;
+  options.swirl_degrees =0;
+  options.frame_size = 6;
+  options.thumb_quality = 50;
+  options.thumb_size = 25;
+  options.gamma_factor = 1.6;
+  options.delay = 0;
+  options.directory = "~/";
+  options.filename ="`date +%Y_%m_%d_%H%M%S`_shot.jpg";
+  options.thumb_filename = g_strdup ("thumb-");
+  options.script_filename = g_strdup ("update_scrshot_page");
+  options.app =  g_strdup ("display");
+  options.decoration =TRUE;
+  options.monochrome = FALSE;
+  options.negate = FALSE;
+  options.view = FALSE;
+  options.beep = TRUE;
+  options.thumb = FALSE;
+  options.frame = FALSE;
+  options.equalize = FALSE;
+  options.normalize = FALSE;
+  options.flip = FALSE;
+  options.flop = FALSE;
+  options.enhance = FALSE;
+  options.emboss = FALSE;
+  options.blur =  FALSE;
+  options.spurious = FALSE;
+  options.charcoal = FALSE;
+  options.edge =  FALSE;
+  options.implode = FALSE;
+  options.paint = FALSE;
+  options.solarize = FALSE;
+  options.spread = FALSE;
+  options.swirl =  FALSE;
+  options.despeckle = FALSE;
+  options.use_script =FALSE;
+  options.thumbnail_intermediate =FALSE;
   return;
   data = NULL;
 }
@@ -229,13 +252,15 @@ set_tooltip (GtkWidget * w, const gchar * tip)
   gtk_tooltips_set_tip (t, w, tip, NULL);
 }
 
-gboolean need_to_change_orientation (PanelOrientType o, gboolean size_tiny)
+
+static gboolean 
+need_to_change_orientation (PanelAppletOrient o, gboolean size_tiny)
 {
   gboolean need_to = FALSE;
   switch (o)
     {
-    case ORIENT_UP:
-    case ORIENT_DOWN:
+    case PANEL_APPLET_ORIENT_UP:
+    case PANEL_APPLET_ORIENT_DOWN:
       {
 	if ((size_tiny)
 	    && ((GTK_WIDGET_VISIBLE (vframe))
@@ -247,8 +272,8 @@ gboolean need_to_change_orientation (PanelOrientType o, gboolean size_tiny)
 	  need_to = TRUE;
 	break;
       }
-    case ORIENT_LEFT:
-    case ORIENT_RIGHT:
+    case PANEL_APPLET_ORIENT_LEFT:
+    case PANEL_APPLET_ORIENT_RIGHT:
       {
 	if ((size_tiny)
 	    && ((GTK_WIDGET_VISIBLE (hframe))
@@ -269,16 +294,16 @@ gboolean need_to_change_orientation (PanelOrientType o, gboolean size_tiny)
   return need_to;
 }
 
-void
-change_orientation (PanelOrientType o, gboolean panel_size_tiny)
+static void
+change_orientation (PanelAppletOrient o, gboolean panel_size_tiny)
 {
   if (need_to_change_orientation (o, panel_size_tiny))
     {
       gtk_widget_hide (applet);
       switch (o)
 	{
-	case ORIENT_UP:
-	case ORIENT_DOWN:
+	case PANEL_APPLET_ORIENT_UP:
+	case PANEL_APPLET_ORIENT_DOWN:
 	  {
 	    if (panel_size_tiny)
 	      {
@@ -292,8 +317,8 @@ change_orientation (PanelOrientType o, gboolean panel_size_tiny)
 	      }
 	    break;
 	  }
-	case ORIENT_LEFT:
-	case ORIENT_RIGHT:
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
 	  {
 	    if (panel_size_tiny)
 	      {
@@ -317,46 +342,45 @@ change_orientation (PanelOrientType o, gboolean panel_size_tiny)
     }
 }
 
-void
-cb_applet_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
+static void
+cb_applet_change_orient (PanelApplet *applet, PanelAppletOrient  o, gpointer data)
 {
   gboolean size_tiny = FALSE;
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  int panelsize = applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
+ 
+  int panelsize = panel_applet_get_size (applet);
   /* Switch stuff so it lies flat on a tiny panel */
-  if (panelsize < PIXEL_SIZE_STANDARD)
+  if (panelsize < GNOME_PANEL_MEDIUM)
     size_tiny = TRUE;
   else
     size_tiny = FALSE;
-#endif
+
 
   change_orientation (o, size_tiny);
 
-  w = NULL;
   data = NULL;
 }
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
+
 static void
-applet_change_pixel_size (GtkWidget * w, int s, gpointer data)
+applet_change_pixel_size (PanelApplet *applet, gint s, gpointer data)
 {
   gboolean size_tiny = FALSE;
-  PanelOrientType orient =
-    applet_widget_get_panel_orient (APPLET_WIDGET (applet));
+  PanelAppletOrient orient =
+    panel_applet_get_orient (applet);
 
   /* Switch stuff so it lies flat on a tiny panel */
-  if (s < PIXEL_SIZE_STANDARD)
+  if (s < GNOME_PANEL_MEDIUM)
     size_tiny = TRUE;
   else
     size_tiny = FALSE;
 
   change_orientation (orient, size_tiny);
 
-  w = NULL;
   data = NULL;
 }
-#endif
 
+
+#ifdef FIXME
 void
 cb_properties_dialog (AppletWidget * widget, gpointer data)
 {
@@ -876,164 +900,9 @@ applet_save_session (GtkWidget * widget, gchar * privcfgpath,
   globcfgpath = NULL;
   data = NULL;
 }
-
-int
-main (int argc, char *argv[])
-{
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *mainbox;
-  GtkWidget *hwindow_button, *hroot_button;
-  GtkWidget *vwindow_button, *vroot_button;
-  GtkWidget *hwindowpixmap;
-  GtkWidget *hrootpixmap;
-  GtkWidget *vwindowpixmap;
-  GtkWidget *vrootpixmap;
-  PanelOrientType orient;
-  gboolean init_size_tiny = FALSE;
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  int init_size;
 #endif
 
-  /* Initialize the i18n stuff */
-  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-  textdomain (PACKAGE);
-
-  applet_widget_init ("screenshooter_applet", VERSION, argc, argv, NULL, 0,
-		      NULL);
-  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/screenshooter_applet.png");
-
-  applet = applet_widget_new ("screenshooter_applet");
-  if (!applet)
-    g_error (_ ("Can't create applet!\n"));
-
-  gtk_widget_realize (applet);
-
-  properties_load (APPLET_WIDGET (applet)->privcfgpath, NULL);
-
-  mainbox = gtk_vbox_new (FALSE, 0);
-  hbox = gtk_hbox_new (FALSE, 1);
-  vbox = gtk_vbox_new (FALSE, 1);
-
-  vframe = gtk_frame_new (NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (vframe), 0);
-  gtk_frame_set_shadow_type (GTK_FRAME (vframe), GTK_SHADOW_IN);
-
-  hframe = gtk_frame_new (NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (hframe), 0);
-  gtk_frame_set_shadow_type (GTK_FRAME (hframe), GTK_SHADOW_IN);
-
-  gtk_container_add (GTK_CONTAINER (hframe), hbox);
-  gtk_container_add (GTK_CONTAINER (vframe), vbox);
-  gtk_box_pack_start (GTK_BOX (mainbox), hframe, FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (mainbox), vframe, FALSE, FALSE, 0);
-
-  hwindow_button = gtk_button_new ();
-  vwindow_button = gtk_button_new ();
-  hroot_button = gtk_button_new ();
-  vroot_button = gtk_button_new ();
-  gtk_widget_set_usize (hwindow_button, 18, 18);
-  gtk_widget_set_usize (vwindow_button, 18, 18);
-  gtk_widget_set_usize (hroot_button, 18, 18);
-  gtk_widget_set_usize (vroot_button, 18, 18);
-  gtk_box_pack_start (GTK_BOX (hbox), hwindow_button, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), vwindow_button, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (hbox), hroot_button, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (vbox), vroot_button, TRUE, TRUE, 0);
-  gtk_signal_connect (GTK_OBJECT
-		      (hwindow_button), "clicked",
-		      GTK_SIGNAL_FUNC (window_button_press), &options);
-  gtk_signal_connect (GTK_OBJECT
-		      (hroot_button), "clicked",
-		      GTK_SIGNAL_FUNC (desktop_button_press), &options);
-  gtk_signal_connect (GTK_OBJECT
-		      (vwindow_button), "clicked",
-		      GTK_SIGNAL_FUNC (window_button_press), &options);
-  gtk_signal_connect (GTK_OBJECT
-		      (vroot_button), "clicked",
-		      GTK_SIGNAL_FUNC (desktop_button_press), &options);
-  GTK_WIDGET_UNSET_FLAGS (hwindow_button, GTK_CAN_DEFAULT);
-  GTK_WIDGET_UNSET_FLAGS (hroot_button, GTK_CAN_DEFAULT);
-  GTK_WIDGET_UNSET_FLAGS (hwindow_button, GTK_CAN_FOCUS);
-  GTK_WIDGET_UNSET_FLAGS (hroot_button, GTK_CAN_FOCUS);
-  GTK_WIDGET_UNSET_FLAGS (vwindow_button, GTK_CAN_DEFAULT);
-  GTK_WIDGET_UNSET_FLAGS (vroot_button, GTK_CAN_DEFAULT);
-  GTK_WIDGET_UNSET_FLAGS (vwindow_button, GTK_CAN_FOCUS);
-  GTK_WIDGET_UNSET_FLAGS (vroot_button, GTK_CAN_FOCUS);
-
-  set_tooltip (hwindow_button,
-	       (_ ("Grab a shot of a specific window or area")));
-  set_tooltip (hroot_button, (_ ("Grab a shot of your entire desktop")));
-  set_tooltip (vwindow_button,
-	       (_ ("Grab a shot of a specific window or area")));
-  set_tooltip (vroot_button, (_ ("Grab a shot of your entire desktop")));
-
-  vwindowpixmap = gnome_pixmap_new_from_xpm_d (window_icon_xpm);
-  vrootpixmap = gnome_pixmap_new_from_xpm_d (root_icon_xpm);
-  gtk_container_add (GTK_CONTAINER (vwindow_button), vwindowpixmap);
-  gtk_container_add (GTK_CONTAINER (vroot_button), vrootpixmap);
-
-  hwindowpixmap = gnome_pixmap_new_from_xpm_d (window_icon_xpm);
-  hrootpixmap = gnome_pixmap_new_from_xpm_d (root_icon_xpm);
-  gtk_container_add (GTK_CONTAINER (hwindow_button), hwindowpixmap);
-  gtk_container_add (GTK_CONTAINER (hroot_button), hrootpixmap);
-
-  gtk_widget_show (hwindowpixmap);
-  gtk_widget_show (vwindow_button);
-  gtk_widget_show (vroot_button);
-  gtk_widget_show (hwindow_button);
-  gtk_widget_show (hroot_button);
-  gtk_widget_show (hrootpixmap);
-  gtk_widget_show (vwindowpixmap);
-  gtk_widget_show (vrootpixmap);
-  gtk_widget_show (vbox);
-  gtk_widget_show (hbox);
-  gtk_widget_show (mainbox);
-
-  gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
-		      GTK_SIGNAL_FUNC (cb_applet_change_orient), NULL);
-
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  gtk_signal_connect (GTK_OBJECT (applet), "change_pixel_size",
-		      GTK_SIGNAL_FUNC (applet_change_pixel_size), NULL);
-#endif
-
-  gtk_signal_connect (GTK_OBJECT (applet), "save_session",
-		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
-
-  applet_widget_add (APPLET_WIDGET (applet), mainbox);
-
-  orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  init_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
-  if (init_size < PIXEL_SIZE_STANDARD)
-    init_size_tiny = TRUE;
-#endif
-  change_orientation (orient, init_size_tiny);
-
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					 "properties",
-					 GNOME_STOCK_MENU_PROP,
-					 _ ("Properties..."),
-					 (AppletCallbackFunc)
-					 cb_properties_dialog, NULL);
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					 "help",
-					 GNOME_STOCK_PIXMAP_HELP,
-					 _ ("Help"),
-					 (AppletCallbackFunc) showHelp, NULL);
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					 "about",
-					 GNOME_STOCK_MENU_ABOUT,
-					 _ ("About..."),
-					 (AppletCallbackFunc) cb_about, NULL);
-
-  gtk_widget_show (applet);
-  applet_widget_gtk_main ();
-  return 0;
-}
-
-void
+static void
 window_button_press (GtkWidget * button, user_preferences * opt)
 {
   grab_shot (opt, FALSE);
@@ -1041,7 +910,7 @@ window_button_press (GtkWidget * button, user_preferences * opt)
   button = NULL;
 }
 
-void
+static void
 desktop_button_press (GtkWidget * button, user_preferences * opt)
 {
   grab_shot (opt, TRUE);
@@ -1049,7 +918,8 @@ desktop_button_press (GtkWidget * button, user_preferences * opt)
   button = NULL;
 }
 
-void
+
+static void
 grab_shot (user_preferences * opt, gboolean root)
 {
   gchar *sys = NULL;
@@ -1512,6 +1382,7 @@ expand_cb (GtkWidget * w, gpointer data)
   w = NULL;
 }
 
+#ifdef FIXME
 void
 property_apply_cb (GtkWidget * w, gpointer data)
 {
@@ -1695,3 +1566,256 @@ showHelp (AppletWidget * applet, gpointer data)
   applet = NULL;
   data = NULL;
 }
+#endif
+
+static void
+cb_props_dialog (BonoboUIComponent *uic,
+		 gpointer           user_data,
+		 const gchar       *verbname)
+{
+        g_message ("%s called\n", verbname);
+}
+
+static void
+cb_help (BonoboUIComponent *uic,
+	 gpointer           user_data,
+	 const gchar       *verbname)
+{
+        g_message ("%s called\n", verbname);
+}
+
+static void
+cb_about (BonoboUIComponent *uic,
+	  gpointer           user_data,
+	  const gchar       *verbname)
+{
+  static GtkWidget *about = NULL;
+  GtkWidget *my_url;
+  static const char *authors[] =
+    { "Tom Gilbert <gilbertt@tomgilbert.freeserve.co.uk>",
+    "Telsa Gwynne <hobbit@aloss.ukuu.org.uk> (typo fixes, documentation)",
+    "The Sirius Cybernetics Corporation <Ursa-minor>", NULL
+  };
+
+  if (about != NULL)
+  {
+  	gdk_window_show(about->window);
+	gdk_window_raise(about->window);
+	return;	
+  }
+
+  about = gnome_about_new
+    (_ ("Screen-Shooter Applet"),
+     VERSION,
+     _ ("Copyright (C) 1999 Tom Gilbert"),
+     _ ("A useful little screengrabber.\n"
+	"The left/top button allows you to grab either:\n"
+	"a window (click to select which one)\n"
+	"or an area (click and drag to select a rectangle.)\n"
+	"The right/bottom button will grab the entire desktop.\n"
+	 "Share and Enjoy ;)"), 
+     authors, 
+     NULL,
+     NULL,
+     NULL);
+
+#ifdef FIXME  
+  my_url = gnome_href_new ("http://www.linuxbrit.co.uk/",
+			   _("Visit the author's Website"));
+  gtk_widget_show (my_url);
+  gtk_box_pack_start (GTK_BOX ((GNOME_DIALOG (about))->vbox), my_url, FALSE,
+		      FALSE, 0);
+#endif
+
+  gtk_widget_show (about);
+  
+}
+
+static const BonoboUIVerb test_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Props", cb_props_dialog),
+        BONOBO_UI_VERB ("Help", cb_help),
+        BONOBO_UI_VERB ("About", cb_about),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char test_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"</popup>\n";
+
+
+static BonoboObject *
+screenshooter_applet_new (void)
+{
+  GtkWidget *applet;
+  GtkWidget *hbox;
+  GtkWidget *vbox;
+  GtkWidget *mainbox;
+  GtkWidget *hwindow_button, *hroot_button;
+  GtkWidget *vwindow_button, *vroot_button;
+  GtkWidget *hwindowpixmap;
+  GtkWidget *hrootpixmap;
+  GtkWidget *vwindowpixmap;
+  GtkWidget *vrootpixmap;
+  
+	
+  properties_load (NULL, NULL);
+
+  mainbox = gtk_vbox_new (FALSE, 0);
+  hbox = gtk_hbox_new (FALSE, 1);
+  vbox = gtk_vbox_new (FALSE, 1);
+
+  vframe = gtk_frame_new (NULL);
+  gtk_container_set_border_width (GTK_CONTAINER (vframe), 0);
+  gtk_frame_set_shadow_type (GTK_FRAME (vframe), GTK_SHADOW_IN);
+
+  hframe = gtk_frame_new (NULL);
+  gtk_container_set_border_width (GTK_CONTAINER (hframe), 0);
+  gtk_frame_set_shadow_type (GTK_FRAME (hframe), GTK_SHADOW_IN);
+
+  gtk_container_add (GTK_CONTAINER (hframe), hbox);
+  gtk_container_add (GTK_CONTAINER (vframe), vbox);
+  gtk_box_pack_start (GTK_BOX (mainbox), hframe, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (mainbox), vframe, FALSE, FALSE, 0);
+
+  hwindow_button = gtk_button_new ();
+  vwindow_button = gtk_button_new ();
+  hroot_button = gtk_button_new ();
+  vroot_button = gtk_button_new ();
+  gtk_widget_set_usize (hwindow_button, 18, 18);
+  gtk_widget_set_usize (vwindow_button, 18, 18);
+  gtk_widget_set_usize (hroot_button, 18, 18);
+  gtk_widget_set_usize (vroot_button, 18, 18);
+  gtk_box_pack_start (GTK_BOX (hbox), hwindow_button, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox), vwindow_button, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), hroot_button, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox), vroot_button, TRUE, TRUE, 0);
+
+  gtk_signal_connect (GTK_OBJECT
+		      (hwindow_button), "clicked",
+		      GTK_SIGNAL_FUNC (window_button_press), &options);
+  gtk_signal_connect (GTK_OBJECT
+		      (hroot_button), "clicked",
+		      GTK_SIGNAL_FUNC (desktop_button_press), &options);
+  gtk_signal_connect (GTK_OBJECT
+		      (vwindow_button), "clicked",
+		      GTK_SIGNAL_FUNC (window_button_press), &options);
+  gtk_signal_connect (GTK_OBJECT
+		      (vroot_button), "clicked",
+		      GTK_SIGNAL_FUNC (desktop_button_press), &options);
+
+#ifdef FIXME
+  GTK_WIDGET_UNSET_FLAGS (hwindow_button, GTK_CAN_DEFAULT);
+  GTK_WIDGET_UNSET_FLAGS (hroot_button, GTK_CAN_DEFAULT);
+  GTK_WIDGET_UNSET_FLAGS (hwindow_button, GTK_CAN_FOCUS);
+  GTK_WIDGET_UNSET_FLAGS (hroot_button, GTK_CAN_FOCUS);
+  GTK_WIDGET_UNSET_FLAGS (vwindow_button, GTK_CAN_DEFAULT);
+  GTK_WIDGET_UNSET_FLAGS (vroot_button, GTK_CAN_DEFAULT);
+  GTK_WIDGET_UNSET_FLAGS (vwindow_button, GTK_CAN_FOCUS);
+  GTK_WIDGET_UNSET_FLAGS (vroot_button, GTK_CAN_FOCUS);
+#endif
+
+  set_tooltip (hwindow_button,
+	       (_ ("Grab a shot of a specific window or area")));
+  set_tooltip (hroot_button, (_ ("Grab a shot of your entire desktop")));
+  set_tooltip (vwindow_button,
+	       (_ ("Grab a shot of a specific window or area")));
+  set_tooltip (vroot_button, (_ ("Grab a shot of your entire desktop")));
+
+  vwindowpixmap = gnome_pixmap_new_from_xpm_d (window_icon_xpm);
+  vrootpixmap = gnome_pixmap_new_from_xpm_d (root_icon_xpm);
+  gtk_container_add (GTK_CONTAINER (vwindow_button), vwindowpixmap);
+  gtk_container_add (GTK_CONTAINER (vroot_button), vrootpixmap);
+
+  hwindowpixmap = gnome_pixmap_new_from_xpm_d (window_icon_xpm);
+  hrootpixmap = gnome_pixmap_new_from_xpm_d (root_icon_xpm);
+  gtk_container_add (GTK_CONTAINER (hwindow_button), hwindowpixmap);
+  gtk_container_add (GTK_CONTAINER (hroot_button), hrootpixmap);
+
+  gtk_widget_show (hwindowpixmap);
+  gtk_widget_show (vwindow_button);
+  gtk_widget_show (vroot_button);
+  gtk_widget_show (hwindow_button);
+  gtk_widget_show (hroot_button);
+  gtk_widget_show (hrootpixmap);
+  gtk_widget_show (vwindowpixmap);
+  gtk_widget_show (vrootpixmap);
+  gtk_widget_show (vbox);
+  gtk_widget_show (hbox);
+  gtk_widget_show (mainbox);
+
+#ifdef FIXME
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+					 "properties",
+					 GNOME_STOCK_MENU_PROP,
+					 _ ("Properties..."),
+					 (AppletCallbackFunc)
+					 cb_properties_dialog, NULL);
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+					 "help",
+					 GNOME_STOCK_PIXMAP_HELP,
+					 _ ("Help"),
+					 (AppletCallbackFunc) showHelp, NULL);
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+					 "about",
+					 GNOME_STOCK_MENU_ABOUT,
+					 _ ("About..."),
+					 (AppletCallbackFunc) cb_about, NULL);
+#endif
+	
+  applet = panel_applet_new (mainbox);
+  
+  panel_applet_setup_menu (PANEL_APPLET (applet),
+			   test_applet_menu_xml,
+			   test_applet_menu_verbs,
+			   NULL);
+
+
+  gtk_widget_show_all (applet);
+  
+  g_signal_connect (G_OBJECT (applet), "change_size", 
+  		    G_CALLBACK (applet_change_pixel_size), NULL);
+  		 
+  g_signal_connect (G_OBJECT (applet), "change_orient",
+  		    G_CALLBACK (cb_applet_change_orient), NULL);
+
+#if 0
+
+	
+	test_applet_setup_tooltips (GTK_WIDGET (applet));
+
+	g_signal_connect (G_OBJECT (applet),
+			  "change_background",
+			  G_CALLBACK (test_applet_handle_background_change),
+			  label);
+
+	g_signal_connect (G_OBJECT (applet),
+			  "save_yourself",
+			  G_CALLBACK (test_applet_handle_save_yourself),
+			  label);
+#endif			  
+	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+}
+
+static BonoboObject *
+screenshooter_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_ScreenshooterApplet"))
+		applet = screenshooter_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ScreenshooterApplet_Factory",
+			     "Screenshooter applet",
+			     "0",
+			     screenshooter_applet_factory,
+			     NULL)
+

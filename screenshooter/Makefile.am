@@ -1,9 +1,9 @@
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	$(GNOME_APPLETS_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) 
 
-bin_PROGRAMS = screenshooter_applet
+bin_PROGRAMS = screenshooter-applet
 
 screenshooter_applet_SOURCES = \
 	screenshooter_applet.c		\
@@ -25,10 +25,13 @@ sys_predata = screenshooter_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
 @XML_I18N_MERGE_DESKTOP_RULE@
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = screenshooter_applet.gnorba
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_ScreenshooterApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+@XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = $(png_DATA) $(scrshot_SCRIPTS)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(server_in_files) $(sys_DATA) $(sys_predata)
 
 SUBDIRS = docs
