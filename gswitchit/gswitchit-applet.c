@@ -125,6 +125,16 @@ GSwitchItAppletReinitUi (GSwitchItApplet * sia)
 }
 
 static void
+GSwitchItConfigChanged (GConfClient * client,
+			guint cnxn_id,
+			GConfEntry * entry, GSwitchItApplet * sia)
+{
+	GSwitchItConfigLoad (&sia->config);
+	GSwitchItConfigActivate (&sia->config);
+	GSwitchItAppletReinitUi (sia);
+}
+
+static void
 GSwitchItAppletConfigChanged (GConfClient * client,
 			      guint cnxn_id,
 			      GConfEntry * entry, GSwitchItApplet * sia)
@@ -756,6 +766,8 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GSwitchItKbdConfigInit (&sia->kbdConfig, confClient);
 	GSwitchItAppletConfigInit (&sia->appletConfig, confClient);
 	GSwitchItPluginManagerInit (&sia->pluginManager);
+	GSwitchItConfigLoad (&sia->config);
+	GSwitchItConfigActivate (&sia->config);
 	GSwitchItKbdConfigLoadCurrent (&sia->kbdConfig);
 	GSwitchItAppletConfigLoad (&sia->appletConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
@@ -770,6 +782,10 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 					  (GConfClientNotifyFunc)
 					  GSwitchItAppletConfigChanged,
 					  sia);
+	GSwitchItConfigStartListen (&sia->config,
+				    (GConfClientNotifyFunc)
+				    GSwitchItConfigChanged,
+				    sia);
 	GSwitchItAppletFillNotebook (sia);
 	GSwitchItAppletRevalidate (sia);
 	g_signal_connect (G_OBJECT (sia->applet), "change_size",
@@ -800,6 +816,7 @@ GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 	terminatedOnce = TRUE;
 	XklDebug (100, "Starting the applet shutdown process\n");
 	GSwitchItAppletStopListen (sia);
+	GSwitchItConfigStopListen (&sia->config);
 	GSwitchItAppletConfigStopListen (&sia->appletConfig);
 	XklRegisterStateCallback (NULL, NULL);
 	XklRegisterConfigCallback (NULL, NULL);
