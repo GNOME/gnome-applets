@@ -68,7 +68,7 @@ install_default_macros_list (GConfClient *client,
 	error = NULL;
 	schema = gconf_client_get_schema (client, key, &error);
 	if (error) {
-		g_warning (_("Cannot get schema for %s : %s"), key, error->message);
+		g_warning (_("Cannot get schema for %s: %s"), key, error->message);
 		g_error_free (error);
 		return;
 	}
@@ -96,7 +96,7 @@ install_default_macros_list (GConfClient *client,
 	error = NULL;
 	gconf_client_set_schema (client, key, schema, &error);
 	if (error) {
-		g_warning (_("Cannot set schema for %s : %s"), key, error->message);
+		g_warning (_("Cannot set schema for %s: %s"), key, error->message);
 		g_error_free (error);
 	}
 
