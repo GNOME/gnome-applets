@@ -40,7 +40,7 @@ static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
 static void
-makepix (Prop * actdata, char *fname, int w, int h)
+makepix (GkbKeymap *actdata, char *fname, int w, int h)
 {
   GdkPixbuf *pix;
   int width, height;
@@ -79,9 +79,9 @@ makepix (Prop * actdata, char *fname, int w, int h)
       actdata->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
 
       gc = gdk_gc_new (actdata->pix);
-
       gdk_draw_rgb_image (actdata->pix, gc,
 			  0, 0, w, h, GDK_RGB_DITHER_NORMAL, rgb, w * 3);
+      gdk_gc_destroy (gc);
 
       g_free (rgb);
     }
@@ -170,14 +170,13 @@ gkb_set_system_keymap (GKB * gkb)
 static void
 gkb_sized_render (GKB * gkb)
 {
-  Prop *actdata;
+  GkbKeymap *actdata;
   int i = 0;
 
   debug (FALSE, "");
 
   if (gkb->small)
-    gkb->size =
-      applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+    gkb->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
 
   if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
     {
@@ -194,7 +193,6 @@ gkb_sized_render (GKB * gkb)
   gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
   gtk_widget_set_usize (GTK_WIDGET (gkb->frame), gkb->w, gkb->h);
   gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
-
 
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
@@ -233,7 +231,7 @@ gkb_update (GKB * gkb, gboolean set_command)
   debug (FALSE, "");
 
   gkb_draw (gkb);
-
+  
   /* When the size is changed, we don't need to change the actual
    * keymap, so when the set_commadn is false, it means that we
    * have changed size. In other words, we can't change size &
@@ -305,17 +303,17 @@ gkb_switch_small (AppletWidget * applet, gpointer gkbx)
 #endif
 
 
-Prop *
+GkbKeymap *
 loadprop (int i)
 {
-  Prop *actdata;
+  GkbKeymap *actdata;
   char buf[256];
   char *pixmapname;
   struct stat tempbuf;
 
   debug (FALSE, "");
 
-  actdata = g_new0 (Prop, 1);
+  actdata = g_new0 (GkbKeymap, 1);
 
   if (i == 0)
     {
@@ -402,7 +400,7 @@ loadprop (int i)
 static void
 load_properties ()
 {
-  Prop *actdata;
+  GkbKeymap *actdata;
   int i;
 
   debug (FALSE, "");
@@ -464,7 +462,7 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
 static int
 gkb_expose (GtkWidget * darea, GdkEventExpose * event)
 {
-  Prop *d = gkb->dact;
+  GkbKeymap *d = gkb->dact;
 
   debug (FALSE, "");
 
@@ -574,7 +572,7 @@ static gboolean
 applet_save_session (GtkWidget * w,
 		     const char *privcfgpath, const char *globcfgpath)
 {
-  Prop *actdata;
+  GkbKeymap *actdata;
   int i = 0;
   char str[100];
   GList *list = gkb->maps;
@@ -729,7 +727,6 @@ gkb_activator (CORBA_Object poa_in,
 
   create_gkb_widget ();
 
-
   gkb->n = 0;
   gkb->cur = 0;
 
@@ -760,7 +757,7 @@ gkb_activator (CORBA_Object poa_in,
 
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
-
+  
   return applet_widget_corba_activate (gkb->applet, poa, goad_id,
 				       params, impl_ptr, ev);
 }

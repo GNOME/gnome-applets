@@ -42,12 +42,12 @@
 
 #define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str); 
 
-typedef struct _Prop Prop;
+typedef struct _GkbKeymap GkbKeymap;
 typedef struct _GKB GKB;
 
 GKB * gkb;
 
-struct _Prop
+struct _GkbKeymap
 {
   gint i;
   GdkPixmap *pix;
@@ -74,7 +74,13 @@ struct _GKB
   GtkWidget *addwindow;
   GtkWidget *list1;
 
-  gint n, tn, cur, size, tempsize, w, h;
+  gint n;
+	gint tn;
+	gint cur;
+	gint size;
+	gint tempsize;
+	gint w;
+	gint h;
 
   gint small, tempsmall;
 
@@ -85,7 +91,7 @@ struct _GKB
 
   GList *maps;
   GList *tempmaps;
-  Prop *dact;
+  GkbKeymap *dact;
   PanelOrientType orient;
 
 };
@@ -93,7 +99,7 @@ struct _GKB
 void gkb_update (GKB *gkb, gboolean set_command);
 
 void properties_dialog (AppletWidget * applet);
-Prop * loadprop (int i);
+GkbKeymap * loadprop (int i);
 gboolean convert_string_to_keysym_state(const char *string,
 								guint *keysym,
 								guint *state);

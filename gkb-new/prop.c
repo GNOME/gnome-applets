@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: f; c-basic-offset: 2 -*- */
 /* File: prop.c
  * Purpose: GNOME Keyboard switcher property box
  *
@@ -34,8 +35,10 @@
 #include <dirent.h>
 #include "gkb.h"
 
-typedef struct _PropWg PropWg;
-struct _PropWg
+typedef struct _GkbKeymapWg GkbKeymapWg;
+typedef struct _GKBpreset GKBpreset;
+
+struct _GkbKeymapWg
 {
   GdkPixmap *pix;
 
@@ -61,7 +64,6 @@ struct _PropWg
   GtkWidget *newkeymap, *delkeymap;
 };
 
-typedef struct _GKBpreset GKBpreset;
 struct _GKBpreset
 {
   gchar *name, *lang, *country; /* Names for items */
@@ -447,7 +449,7 @@ static void
 list_init()
 {
  GList * maps;
- Prop * data;
+ GkbKeymap * data;
  GKBpreset * tdata;
  
  maps = gkb->maps;
@@ -489,13 +491,13 @@ apply_cb (GtkWidget * pb, gint page)
 {
   GList * list;
   GKBpreset * tdata;
-  Prop * data;
+  GkbKeymap * data;
 
   if (page != -1)
     return;
 
   for(list = gkb->maps; list != NULL; list = list->next) {
-	  PropWg *p = list->data;
+	  GkbKeymapWg *p = list->data;
 	  if(p) {
 		  g_free(p->name);
 		  g_free(p->command);
@@ -511,7 +513,7 @@ apply_cb (GtkWidget * pb, gint page)
    {
 
     tdata = list->data;   
-    data = g_new0 (Prop,1);
+    data = g_new0 (GkbKeymap,1);
     data->name = g_strdup (tdata->name);
     data->flag = g_strdup (tdata->flag);
     data->command = g_strdup (tdata->command);
@@ -782,23 +784,14 @@ mapedit_cb ()
   gtk_window_set_title (GTK_WINDOW (gkb->mapedit), _("Edit keymap"));
 
   vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox2);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "vbox2", vbox2,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (vbox2);
   gtk_container_add (GTK_CONTAINER (gkb->mapedit), vbox2);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "hbox1", hbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox2), hbox1, TRUE, TRUE, 0);
 
   table7 = gtk_table_new (5, 2, FALSE);
-  gtk_widget_ref (table7);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "table7", table7,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (table7);
   gtk_box_pack_start (GTK_BOX (hbox1), table7, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (table7), 5);
@@ -806,9 +799,6 @@ mapedit_cb ()
   gtk_table_set_col_spacings (GTK_TABLE (table7), 5);
 
   label55 = gtk_label_new (_("Name"));
-  gtk_widget_ref (label55);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label55", label55,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label55);
   gtk_table_attach (GTK_TABLE (table7), label55, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -817,9 +807,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label55), 1, 0.5);
 
   label56 = gtk_label_new (_("Label"));
-  gtk_widget_ref (label56);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label56", label56,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label56);
   gtk_table_attach (GTK_TABLE (table7), label56, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -827,9 +814,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label56), 1, 0.5);
 
   label57 = gtk_label_new (_("Language"));
-  gtk_widget_ref (label57);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label57", label57,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label57);
   gtk_table_attach (GTK_TABLE (table7), label57, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -837,9 +821,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label57), 1, 0.5);
 
   label58 = gtk_label_new (_("Country"));
-  gtk_widget_ref (label58);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label58", label58,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label58);
   gtk_table_attach (GTK_TABLE (table7), label58, 0, 1, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
@@ -847,9 +828,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label58), 1, 0.5);
 
   label59 = gtk_label_new (_("Flag\nPixmap"));
-  gtk_widget_ref (label59);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label59", label59,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label59);
   gtk_table_attach (GTK_TABLE (table7), label59, 0, 1, 4, 5,
                     (GtkAttachOptions) (GTK_FILL),
@@ -858,9 +836,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label59), 1, 0.5);
 
   entry41 = gtk_entry_new ();
-  gtk_widget_ref (entry41);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry41", entry41,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_entry_set_text(GTK_ENTRY(entry41), strdup(data->name));
 
   gtk_widget_show (entry41);
@@ -869,9 +844,6 @@ mapedit_cb ()
                     (GtkAttachOptions) (0), 0, 0);
 
   entry42 = gtk_entry_new ();
-  gtk_widget_ref (entry42);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry42", entry42,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_entry_set_text(GTK_ENTRY(entry42), strdup(data->label));
   gtk_widget_show (entry42);
   gtk_table_attach (GTK_TABLE (table7), entry42, 1, 2, 1, 2,
@@ -879,9 +851,6 @@ mapedit_cb ()
                     (GtkAttachOptions) (0), 0, 0);
 
   combo37 = gtk_combo_new ();
-  gtk_widget_ref (combo37);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "combo37", combo37,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (combo37);
   gtk_table_attach (GTK_TABLE (table7), combo37, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -911,16 +880,10 @@ mapedit_cb ()
   g_list_free (combo37_items);
 
   entry43 = GTK_COMBO (combo37)->entry;
-  gtk_widget_ref (entry43);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry43", entry43,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (entry43);
   gtk_entry_set_text (GTK_ENTRY (entry43), data->lang);
 
   combo28 = gtk_combo_new ();
-  gtk_widget_ref (combo28);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "combo28", combo28,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (combo28);
   gtk_table_attach (GTK_TABLE (table7), combo28, 1, 2, 3, 4,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -958,16 +921,10 @@ mapedit_cb ()
   g_list_free (combo28_items);
 
   entry26 = GTK_COMBO (combo28)->entry;
-  gtk_widget_ref (entry26);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry26", entry26,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (entry26);
   gtk_entry_set_text (GTK_ENTRY (entry26), data->country);
 
   iconentry5 = gnome_icon_entry_new (NULL, NULL);
-  gtk_widget_ref (iconentry5);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "iconentry5", iconentry5,
-                            (GtkDestroyNotify) gtk_widget_unref);
 
   gnome_icon_entry_set_pixmap_subdir (GNOME_ICON_ENTRY(iconentry5),"gkb");
 
@@ -980,23 +937,14 @@ mapedit_cb ()
   		    data->flag);
 
   vseparator1 = gtk_vseparator_new ();
-  gtk_widget_ref (vseparator1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "vseparator1", vseparator1,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (vseparator1);
   gtk_box_pack_start (GTK_BOX (hbox1), vseparator1, TRUE, TRUE, 0);
 
   vbox3 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox3);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "vbox3", vbox3,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (vbox3);
   gtk_box_pack_start (GTK_BOX (hbox1), vbox3, TRUE, TRUE, 0);
 
   table6 = gtk_table_new (4, 2, FALSE);
-  gtk_widget_ref (table6);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "table6", table6,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (table6);
   gtk_box_pack_start (GTK_BOX (vbox3), table6, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (table6), 5);
@@ -1004,9 +952,6 @@ mapedit_cb ()
   gtk_table_set_col_spacings (GTK_TABLE (table6), 5);
 
   label51 = gtk_label_new (_("Architecture"));
-  gtk_widget_ref (label51);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label51", label51,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label51);
   gtk_table_attach (GTK_TABLE (table6), label51, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -1014,9 +959,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label51), 1, 0.5);
 
   label52 = gtk_label_new (_("Type"));
-  gtk_widget_ref (label52);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label52", label52,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label52);
   gtk_table_attach (GTK_TABLE (table6), label52, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -1024,9 +966,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label52), 1, 0.5);
 
   label53 = gtk_label_new (_("Codepage"));
-  gtk_widget_ref (label53);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label53", label53,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label53);
   gtk_table_attach (GTK_TABLE (table6), label53, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -1034,9 +973,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label53), 1, 0.5);
 
   label54 = gtk_label_new (_("Command"));
-  gtk_widget_ref (label54);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label54", label54,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label54);
   gtk_table_attach (GTK_TABLE (table6), label54, 0, 1, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
@@ -1044,9 +980,6 @@ mapedit_cb ()
   gtk_misc_set_alignment (GTK_MISC (label54), 1, 0.5);
 
   combo34 = gtk_combo_new ();
-  gtk_widget_ref (combo34);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "combo34", combo34,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (combo34);
   gtk_table_attach (GTK_TABLE (table6), combo34, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -1061,16 +994,10 @@ mapedit_cb ()
   g_list_free (combo34_items);
 
   entry37 = GTK_COMBO (combo34)->entry;
-  gtk_widget_ref (entry37);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry37", entry37,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (entry37);
   gtk_entry_set_text (GTK_ENTRY (entry37), data->arch);
 
   combo35 = gtk_combo_new ();
-  gtk_widget_ref (combo35);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "combo35", combo35,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (combo35);
   gtk_table_attach (GTK_TABLE (table6), combo35, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -1086,16 +1013,10 @@ mapedit_cb ()
   g_list_free (combo35_items);
 
   entry38 = GTK_COMBO (combo35)->entry;
-  gtk_widget_ref (entry38);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry38", entry38,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (entry38);
   gtk_entry_set_text (GTK_ENTRY (entry38), data->type);
 
   combo36 = gtk_combo_new ();
-  gtk_widget_ref (combo36);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "combo36", combo36,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (combo36);
   gtk_table_attach (GTK_TABLE (table6), combo36, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -1113,16 +1034,10 @@ mapedit_cb ()
   g_list_free (combo36_items);
 
   entry39 = GTK_COMBO (combo36)->entry;
-  gtk_widget_ref (entry39);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry39", entry39,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (entry39);
   gtk_entry_set_text (GTK_ENTRY (entry39), data->codepage);
 
   entry40 = gtk_entry_new ();
-  gtk_widget_ref (entry40);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "entry40", entry40,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_entry_set_text (GTK_ENTRY (entry40), data->command);
   gtk_widget_show (entry40);
   gtk_table_attach (GTK_TABLE (table6), entry40, 1, 2, 3, 4,
@@ -1135,32 +1050,19 @@ mapedit_cb ()
                          "* xmodmap /full/path/xmodmap.hu\n"
                          "* gkb__xmmap hu\n"
                          "* setxkbmap hu"));
-  gtk_widget_ref (label46);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "label46", label46,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (label46);
   gtk_box_pack_start (GTK_BOX (vbox3), label46, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label46), GTK_JUSTIFY_LEFT);
 
   hseparator1 = gtk_hseparator_new ();
-  gtk_widget_ref (hseparator1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "hseparator1", hseparator1,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (hseparator1);
   gtk_box_pack_start (GTK_BOX (vbox2), hseparator1, TRUE, TRUE, 0);
 
   hbuttonbox1 = gtk_hbutton_box_new ();
-  gtk_widget_ref (hbuttonbox1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "hbuttonbox1", hbuttonbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (hbuttonbox1);
   gtk_box_pack_start (GTK_BOX (vbox2), hbuttonbox1, TRUE, TRUE, 0);
 
   button4 = gnome_stock_button (GNOME_STOCK_BUTTON_OK);
-  gtk_widget_ref (button4);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "button4", button4,
-                            (GtkDestroyNotify) gtk_widget_unref);
-
   gtk_signal_connect (GTK_OBJECT (button4), "clicked",
   		      GTK_SIGNAL_FUNC(ok_edited_cb),
   		      GINT_TO_POINTER(pos));
@@ -1170,10 +1072,6 @@ mapedit_cb ()
   GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
 
   button5 = gnome_stock_button (GNOME_STOCK_BUTTON_APPLY);
-  gtk_widget_ref (button5);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "button5", button5,
-                            (GtkDestroyNotify) gtk_widget_unref);
-
   gtk_signal_connect (GTK_OBJECT (button5), "clicked",
   		      GTK_SIGNAL_FUNC (apply_edited_cb), 
   		      GINT_TO_POINTER(pos));
@@ -1183,10 +1081,6 @@ mapedit_cb ()
   GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
 
   button6 = gnome_stock_button (GNOME_STOCK_BUTTON_CLOSE);
-  gtk_widget_ref (button6);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "button6", button6,
-                            (GtkDestroyNotify) gtk_widget_unref);
-
   gtk_signal_connect (GTK_OBJECT(button6), "clicked",
                       GTK_SIGNAL_FUNC(wdestroy_cb),
                       GTK_OBJECT(gkb->mapedit));
@@ -1196,10 +1090,6 @@ mapedit_cb ()
   GTK_WIDGET_SET_FLAGS (button6, GTK_CAN_DEFAULT);
 
   button7 = gnome_stock_button (GNOME_STOCK_BUTTON_HELP);
-  gtk_widget_ref (button7);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->mapedit), "button7", button7,
-                            (GtkDestroyNotify) gtk_widget_unref);
-
   gtk_signal_connect (GTK_OBJECT (button7), "clicked",
   		      GTK_SIGNAL_FUNC (edithelp_cb), 
   		      NULL);
@@ -1365,9 +1255,6 @@ addwindow_cb (GtkWidget *addbutton)
   gtk_window_set_title (GTK_WINDOW (gkb->addwindow), _("Select layout"));
 
   vbox1 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->addwindow), "vbox1", vbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (gkb->addwindow), vbox1);
 
@@ -1380,9 +1267,6 @@ addwindow_cb (GtkWidget *addbutton)
   gtk_widget_show (scrolled1);
 
   tree1 = gtk_tree_new ();
-  gtk_widget_ref (tree1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->addwindow), "tree1", tree1,
-                            (GtkDestroyNotify) gtk_widget_unref);
 
   gtk_widget_show (tree1);
 
@@ -1392,17 +1276,11 @@ addwindow_cb (GtkWidget *addbutton)
                                          tree1);
 
   hbuttonbox1 = gtk_hbutton_box_new ();
-  gtk_widget_ref (hbuttonbox1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->addwindow), "hbuttonbox1", hbuttonbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (hbuttonbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbuttonbox1, FALSE, TRUE, 0);
   gtk_button_box_set_layout (GTK_BUTTON_BOX (hbuttonbox1), GTK_BUTTONBOX_SPREAD);
 
   button4 = gtk_button_new_with_label (_("Add"));
-  gtk_widget_ref (button4);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->addwindow), "button4", button4,
-                            (GtkDestroyNotify) gtk_widget_unref);
 
   gtk_widget_show (button4);
   gtk_container_add (GTK_CONTAINER (hbuttonbox1), button4);
@@ -1410,17 +1288,11 @@ addwindow_cb (GtkWidget *addbutton)
   gtk_widget_set_sensitive (button4, FALSE);
 
   button5 = gnome_stock_button (GNOME_STOCK_BUTTON_CLOSE);
-  gtk_widget_ref (button5);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->addwindow), "button5", button5,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (button5);
   gtk_container_add (GTK_CONTAINER (hbuttonbox1), button5);
   GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
 
   button6 = gnome_stock_button (GNOME_STOCK_BUTTON_HELP);
-  gtk_widget_ref (button6);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->addwindow), "button6", button6,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (button6);
   gtk_container_add (GTK_CONTAINER (hbuttonbox1), button6);
   GTK_WIDGET_SET_FLAGS (button6, GTK_CAN_DEFAULT);
@@ -1606,157 +1478,74 @@ move_select_cb (GtkWidget * button)
  return;
 }
 
-void
-properties_dialog (AppletWidget * applet)
+
+static GtkWidget *
+gkb_prop_create_display_frame ()
 {
+  GtkWidget *frame;
   gchar *pixmap1_filename;
-  GtkWidget *button1, *button2, *button3, *button11;
-  GtkWidget *button4, *button5, *button6;
-  GtkWidget *entry1;
-  GtkWidget *frame1, *frame2;
   GtkWidget *prop_menuitem;
-  GtkWidget *hbox10, *hbox11, *hbox8;
-  GtkWidget *label16, *label17;
+  GtkWidget *hbox11;
   GtkWidget *label23, *label24;
   GtkWidget *optionmenu1, *optionmenu1_menu;
   GtkWidget *optionmenu2, *optionmenu2_menu;
   GtkWidget *pixmap1;
-  GtkWidget *propnotebook;
-  GtkWidget *scrolledwindow3;
   GtkWidget *table1;
-  GtkWidget *vbox2, *vbox3;
-  GtkWidget *vbuttonbox4;
-  GList * list;
-
-  if (gkb->propbox)
-    {
-	gtk_widget_destroy (gkb->propbox);
-	gkb->propbox= NULL;
-    }
-
-  for (list = gkb->tempmaps; list != NULL; list = list->next)
-    {
-      PropWg *actdata = list->data;
-      if (actdata)
-	{
-	  g_free (actdata->name);
-	  g_free (actdata->flag);
-	  g_free (actdata->command);
-	  g_free (actdata);
-	}
-    }
-  g_list_free (gkb->tempmaps);
-
-  gkb->tn = gkb->n;
-
-  gkb->propbox = gnome_property_box_new ();
-
-  gtk_object_set_data (GTK_OBJECT (gkb->propbox), "propbox", gkb->propbox);
-  gtk_window_set_title (GTK_WINDOW (gkb->propbox), _("GKB Properties"));
-  gtk_window_set_position (GTK_WINDOW (gkb->propbox), GTK_WIN_POS_CENTER);
-  gtk_window_set_policy (GTK_WINDOW (gkb->propbox), FALSE, FALSE, FALSE);
-
-  propnotebook = GNOME_PROPERTY_BOX (gkb->propbox)->notebook;
-  gtk_object_set_data (GTK_OBJECT (gkb->propbox), "propnotebook", propnotebook);
-  gtk_widget_show (propnotebook);
-
-  vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox2);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "vbox2", vbox2,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (vbox2);
-  gtk_container_add (GTK_CONTAINER (propnotebook), vbox2);
-
-  vbox3 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox3);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "vbox3", vbox3,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (vbox3);
-  gtk_box_pack_start (GTK_BOX (vbox2), vbox3, TRUE, FALSE, 0);
-
-  frame2 = gtk_frame_new (_("Display"));
-  gtk_widget_ref (frame2);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "frame2", frame2,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (frame2);
-  gtk_box_pack_start (GTK_BOX (vbox3), frame2, TRUE, TRUE, 0);
+  
+  frame = gtk_frame_new (_("Display"));
 
   hbox11 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox11);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "hbox11", hbox11,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (hbox11);
-  gtk_container_add (GTK_CONTAINER (frame2), hbox11);
+  gtk_container_add (GTK_CONTAINER (frame), hbox11);
 
   pixmap1 = gtk_type_new (gnome_pixmap_get_type ());
   pixmap1_filename = gnome_pixmap_file ("gkb.png");
   if (pixmap1_filename)
     gnome_pixmap_load_file (GNOME_PIXMAP (pixmap1), pixmap1_filename);
   g_free (pixmap1_filename);
-  gtk_widget_ref (pixmap1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "pixmap1", pixmap1,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (pixmap1);
   gtk_box_pack_start (GTK_BOX (hbox11), pixmap1, FALSE, FALSE, 23);
 
   table1 = gtk_table_new (2, 2, TRUE);
-  gtk_widget_ref (table1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "table1", table1,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (hbox11), table1, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (table1), 5);
   gtk_table_set_row_spacings (GTK_TABLE (table1), 15);
 
   optionmenu1 = gtk_option_menu_new ();
-  gtk_widget_ref (optionmenu1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "optionmenu1", optionmenu1,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (optionmenu1);
   gtk_table_attach (GTK_TABLE (table1), optionmenu1, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
   optionmenu1_menu = gtk_menu_new ();
   prop_menuitem = gtk_menu_item_new_with_label (_("Normal"));
+  gtk_widget_show (prop_menuitem);  
   gtk_signal_connect (GTK_OBJECT (prop_menuitem), "activate",
                         (GtkSignalFunc) switch_normal_cb, NULL);
-  gtk_widget_show (prop_menuitem);
   gtk_menu_append (GTK_MENU (optionmenu1_menu), prop_menuitem);
   prop_menuitem = gtk_menu_item_new_with_label (_("Small"));
+  gtk_widget_show (prop_menuitem);
   gtk_signal_connect (GTK_OBJECT (prop_menuitem), "activate",
                         (GtkSignalFunc) switch_small_cb, NULL);
-  gtk_widget_show (prop_menuitem);
 
   gtk_menu_append (GTK_MENU (optionmenu1_menu), prop_menuitem);
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu1), optionmenu1_menu);
   gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu1), 0);
 
   optionmenu2 = gtk_option_menu_new ();
-  gtk_widget_ref (optionmenu2);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "optionmenu2", optionmenu2,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (optionmenu2);
   gtk_table_attach (GTK_TABLE (table1), optionmenu2, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (GTK_EXPAND), 0, 0);
   optionmenu2_menu = gtk_menu_new ();
   prop_menuitem = gtk_menu_item_new_with_label (_("Label"));
-  gtk_widget_show (prop_menuitem);
+  gtk_widget_show (prop_menuitem);  
   gtk_menu_append (GTK_MENU (optionmenu2_menu), prop_menuitem);
   prop_menuitem = gtk_menu_item_new_with_label (_("Flag"));
-  gtk_widget_show (prop_menuitem);
+  gtk_widget_show (prop_menuitem);  
   gtk_menu_append (GTK_MENU (optionmenu2_menu), prop_menuitem);
   prop_menuitem = gtk_menu_item_new_with_label (_("Flag and label"));
-  gtk_widget_show (prop_menuitem);
+  gtk_widget_show (prop_menuitem);  
   gtk_menu_append (GTK_MENU (optionmenu2_menu), prop_menuitem);
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu2), optionmenu2_menu);
   gtk_option_menu_set_history (GTK_OPTION_MENU (optionmenu2), 1);
 
   label23 = gtk_label_new (_("Appearance"));
-  gtk_widget_ref (label23);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "label23", label23,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (label23);
   gtk_table_attach (GTK_TABLE (table1), label23, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 10, 0);
@@ -1764,35 +1553,31 @@ properties_dialog (AppletWidget * applet)
   gtk_misc_set_alignment (GTK_MISC (label23), 1, 0.5);
 
   label24 = gtk_label_new (_("Applet size"));
-  gtk_widget_ref (label24);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "label24", label24,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (label24);
   gtk_table_attach (GTK_TABLE (table1), label24, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 10, 0);
   gtk_label_set_justify (GTK_LABEL (label24), GTK_JUSTIFY_RIGHT);
   gtk_misc_set_alignment (GTK_MISC (label24), 1, 0.5);
 
-  frame1 = gtk_frame_new (_("Hotkey for switching between layouts"));
-  gtk_widget_ref (frame1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "frame1", frame1,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (frame1);
-  gtk_box_pack_start (GTK_BOX (vbox2), frame1, TRUE, FALSE, 2);
+  return frame;
+}
+
+
+static GtkWidget *
+gkb_prop_create_hotkey_frame ()
+{
+  GtkWidget *frame;
+  GtkWidget *button6;
+  GtkWidget *entry1;
+  GtkWidget *hbox10;
+
+  frame = gtk_frame_new (_("Hotkey for switching between layouts"));
 
   hbox10 = gtk_hbox_new (TRUE, 0);
-  gtk_widget_ref (hbox10);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "hbox10", hbox10,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (hbox10);
-  gtk_container_add (GTK_CONTAINER (frame1), hbox10);
+  gtk_container_add (GTK_CONTAINER (frame), hbox10);
   gtk_container_set_border_width (GTK_CONTAINER (hbox10), 10);
 
   entry1 = gtk_entry_new ();
-  gtk_widget_ref (entry1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "entry1", entry1,
-                            (GtkDestroyNotify) gtk_widget_unref);
 
   gtk_signal_connect (GTK_OBJECT(entry1), "changed", 
                       GTK_SIGNAL_FUNC (changed_cb),
@@ -1800,39 +1585,142 @@ properties_dialog (AppletWidget * applet)
 
   gtk_entry_set_text (GTK_ENTRY(entry1), gkb->key);
 
-  gtk_widget_show (entry1);
   gtk_box_pack_start (GTK_BOX (hbox10), entry1, FALSE, TRUE, 0);
 
   button6 = gtk_button_new_with_label (_("Grab hotkey"));
-  gtk_widget_ref (button6);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "button6", button6,
-                            (GtkDestroyNotify) gtk_widget_unref);
   gtk_signal_connect (GTK_OBJECT(button6), "clicked", 
                       GTK_SIGNAL_FUNC (grab_button_pressed),
 		      entry1);
 
-  gtk_widget_show (button6);
   gtk_box_pack_start (GTK_BOX (hbox10), button6, TRUE, FALSE, 0);
 
-  label16 = gtk_label_new (_("General"));
-  gtk_widget_ref (label16);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "label16", label16,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (label16);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 0), label16);
+  return frame;
+}
+
+
+
+static GtkWidget *
+gkb_prop_create_buttons_vbox (void)
+{
+  GtkWidget *vbox;
+
+  GtkWidget *button1, *button2, *button3, *button11;
+  GtkWidget *button4, *button5;
+  
+  vbox = gtk_vbutton_box_new ();
+  gtk_button_box_set_spacing (GTK_BUTTON_BOX (vbox), 0);
+  gtk_button_box_set_child_size (GTK_BUTTON_BOX (vbox), 75, 25);
+  gtk_button_box_set_child_ipadding (GTK_BUTTON_BOX (vbox), 2, 0);
+
+  button1 = gtk_button_new_with_label (_("Add"));
+  gtk_signal_connect (GTK_OBJECT(button1), "clicked", 
+                      GTK_SIGNAL_FUNC (addwindow_cb),
+                      NULL);
+
+  gtk_container_add (GTK_CONTAINER (vbox), button1);
+  GTK_WIDGET_SET_FLAGS (button1, GTK_CAN_DEFAULT);
+
+  button11 = gtk_button_new_with_label (_("New"));
+
+  gtk_object_set_data (GTK_OBJECT (button11),"wlabel","New");
+
+  gtk_signal_connect (GTK_OBJECT(button11), "clicked", 
+                      GTK_SIGNAL_FUNC (mapedit_cb),
+                      NULL);
+
+  gtk_container_add (GTK_CONTAINER (vbox), button11);
+  GTK_WIDGET_SET_FLAGS (button11, GTK_CAN_DEFAULT);
+
+  button2 = gtk_button_new_with_label (_("Edit"));
+  gtk_widget_set_sensitive (button2, FALSE);
+
+  gtk_object_set_data (GTK_OBJECT (button2),"wlabel","Edit");
+
+  gtk_signal_connect (GTK_OBJECT(button2), "clicked", 
+                      GTK_SIGNAL_FUNC (mapedit_cb),
+                      NULL);
+
+  gtk_container_add (GTK_CONTAINER (vbox), button2);
+  GTK_WIDGET_SET_FLAGS (button2, GTK_CAN_DEFAULT);
+
+  button3 = gtk_button_new_with_label (_("Up"));
+  gtk_widget_set_sensitive (button3, FALSE);
+
+  gtk_signal_connect (GTK_OBJECT(button3), "clicked", 
+                      GTK_SIGNAL_FUNC (move_select_cb),
+                      NULL);
+
+  gtk_container_add (GTK_CONTAINER (vbox), button3);
+  GTK_WIDGET_SET_FLAGS (button3, GTK_CAN_DEFAULT);
+
+  button4 = gtk_button_new_with_label (_("Down"));
+  gtk_widget_set_sensitive (button4, FALSE);
+
+  gtk_signal_connect (GTK_OBJECT(button4), "clicked", 
+                      GTK_SIGNAL_FUNC (move_select_cb),
+                      NULL);
+
+  gtk_container_add (GTK_CONTAINER (vbox), button4);
+  GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
+
+  button5 = gtk_button_new_with_label (_("Delete"));
+  gtk_widget_set_sensitive (button5, FALSE);
+
+  gtk_signal_connect (GTK_OBJECT(button5), "clicked", 
+                      GTK_SIGNAL_FUNC (del_select_cb),
+                      NULL);
+
+  gtk_container_add (GTK_CONTAINER (vbox), button5);
+  GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
+
+  return vbox;
+}
+
+
+static GtkWidget *
+gkb_prop_create_property_box ()
+{
+  GtkWidget *frame_temp;
+  GtkWidget *vbox_temp;
+  GtkWidget *label17;
+  GtkWidget *hbox8;
+  GtkWidget *scrolledwindow3;
+  GtkWidget *vbox2;
+  GtkWidget *propbox;
+  GtkWidget *label16;
+  GtkWidget *propnotebook;
+
+  propbox = gnome_property_box_new ();
+  gkb->propbox = propbox;
+
+  gtk_object_set_data (GTK_OBJECT (propbox), "propbox", propbox);
+  gtk_window_set_title (GTK_WINDOW (propbox), _("GKB Properties"));
+  gtk_window_set_position (GTK_WINDOW (propbox), GTK_WIN_POS_CENTER);
+  gtk_window_set_policy (GTK_WINDOW (propbox), FALSE, FALSE, FALSE);
+
+  propnotebook = GNOME_PROPERTY_BOX (propbox)->notebook;
+  gtk_widget_show (propnotebook);
+  
+  vbox2 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (vbox2);
+  gtk_container_add (GTK_CONTAINER (propnotebook), vbox2);
+
+  /* Display frame */
+  frame_temp = gkb_prop_create_display_frame ();
+  gtk_box_pack_start (GTK_BOX (vbox2), frame_temp, TRUE, TRUE, 0);
+  
+  /* Hotkey frame */
+  frame_temp = gkb_prop_create_hotkey_frame ();
+  gtk_box_pack_start (GTK_BOX (vbox2), frame_temp, TRUE, FALSE, 2);
+  
 
   hbox8 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox8);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "hbox8", hbox8,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (hbox8);
   gtk_container_add (GTK_CONTAINER (propnotebook), hbox8);
 
+  label16 = gtk_label_new (_("General"));
+  gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 0), label16);
+
   scrolledwindow3 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_widget_ref (scrolledwindow3);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "scrolledwindow3", scrolledwindow3,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (scrolledwindow3);
   gtk_box_pack_start (GTK_BOX (hbox8), scrolledwindow3, TRUE, TRUE, 0);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow3), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
 
@@ -1847,118 +1735,53 @@ properties_dialog (AppletWidget * applet)
                        GTK_SIGNAL_FUNC(list_select_cb),
                        NULL);
 
-  vbuttonbox4 = gtk_vbutton_box_new ();
-  gtk_widget_ref (vbuttonbox4);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "vbuttonbox4", vbuttonbox4,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (vbuttonbox4);
-  gtk_box_pack_start (GTK_BOX (hbox8), vbuttonbox4, FALSE, TRUE, 0);
-  gtk_button_box_set_spacing (GTK_BUTTON_BOX (vbuttonbox4), 0);
-  gtk_button_box_set_child_size (GTK_BUTTON_BOX (vbuttonbox4), 75, 25);
-  gtk_button_box_set_child_ipadding (GTK_BUTTON_BOX (vbuttonbox4), 2, 0);
-
-  button1 = gtk_button_new_with_label (_("Add"));
-  gtk_widget_ref (button1);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "button1", button1,
-                            (GtkDestroyNotify) gtk_widget_unref);
-
-  gtk_signal_connect (GTK_OBJECT(button1), "clicked", 
-                      GTK_SIGNAL_FUNC (addwindow_cb),
-                      NULL);
-
-  gtk_widget_show (button1);
-  gtk_container_add (GTK_CONTAINER (vbuttonbox4), button1);
-  GTK_WIDGET_SET_FLAGS (button1, GTK_CAN_DEFAULT);
-
-  button11 = gtk_button_new_with_label (_("New"));
-  gtk_widget_ref (button11);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "newbutton", button11,
-                            (GtkDestroyNotify) gtk_widget_unref);
-
-  gtk_object_set_data (GTK_OBJECT (button11),"wlabel","New");
-
-  gtk_signal_connect (GTK_OBJECT(button11), "clicked", 
-                      GTK_SIGNAL_FUNC (mapedit_cb),
-                      NULL);
-
-  gtk_widget_show (button11);
-  gtk_container_add (GTK_CONTAINER (vbuttonbox4), button11);
-  GTK_WIDGET_SET_FLAGS (button11, GTK_CAN_DEFAULT);
-
-  button2 = gtk_button_new_with_label (_("Edit"));
-  gtk_widget_ref (button2);
-
-  gtk_widget_set_sensitive (button2, FALSE);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "editbutton", button2,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (button2);
-
-  gtk_object_set_data (GTK_OBJECT (button2),"wlabel","Edit");
-
-  gtk_signal_connect (GTK_OBJECT(button2), "clicked", 
-                      GTK_SIGNAL_FUNC (mapedit_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbuttonbox4), button2);
-  GTK_WIDGET_SET_FLAGS (button2, GTK_CAN_DEFAULT);
-
-  button3 = gtk_button_new_with_label (_("Up"));
-  gtk_widget_ref (button3);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "upbutton", button3,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_set_sensitive (button3, FALSE);
-
-  gtk_signal_connect (GTK_OBJECT(button3), "clicked", 
-                      GTK_SIGNAL_FUNC (move_select_cb),
-                      NULL);
-
-  gtk_widget_show (button3);
-  gtk_container_add (GTK_CONTAINER (vbuttonbox4), button3);
-  GTK_WIDGET_SET_FLAGS (button3, GTK_CAN_DEFAULT);
-
-  button4 = gtk_button_new_with_label (_("Down"));
-  gtk_widget_ref (button4);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "downbutton", button4,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_set_sensitive (button4, FALSE);
-
-  gtk_signal_connect (GTK_OBJECT(button4), "clicked", 
-                      GTK_SIGNAL_FUNC (move_select_cb),
-                      NULL);
-
-  gtk_widget_show (button4);
-  gtk_container_add (GTK_CONTAINER (vbuttonbox4), button4);
-  GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
-
-  button5 = gtk_button_new_with_label (_("Delete"));
-  gtk_widget_ref (button5);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "deletebutton", button5,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_set_sensitive (button5, FALSE);
-
-  gtk_signal_connect (GTK_OBJECT(button5), "clicked", 
-                      GTK_SIGNAL_FUNC (del_select_cb),
-                      NULL);
-
-  gtk_widget_show (button5);
-  gtk_container_add (GTK_CONTAINER (vbuttonbox4), button5);
-  GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
+  /* Buttons Vbox */
+  vbox_temp = gkb_prop_create_buttons_vbox ();
+  gtk_box_pack_start (GTK_BOX (hbox8), vbox_temp, FALSE, TRUE, 0);
 
   label17 = gtk_label_new (_("Keymaps"));
-  gtk_widget_ref (label17);
-  gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "label17", label17,
-                            (GtkDestroyNotify) gtk_widget_unref);
-  gtk_widget_show (label17);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 1), label17);
 
-  gtk_signal_connect (GTK_OBJECT (gkb->propbox),
+  gtk_signal_connect (GTK_OBJECT (propbox),
 		      "apply", GTK_SIGNAL_FUNC (apply_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (gkb->propbox),
+  gtk_signal_connect (GTK_OBJECT (propbox),
 		      "destroy", GTK_SIGNAL_FUNC (gtk_widget_destroyed),&gkb->propbox);
-  gtk_signal_connect (GTK_OBJECT (gkb->propbox),
+  gtk_signal_connect (GTK_OBJECT (propbox),
 		      "help", GTK_SIGNAL_FUNC (prophelp_cb), NULL);
   
-  gtk_widget_show_now (gkb->propbox);
+  return propbox;
+}
+
+void
+properties_dialog (AppletWidget * applet)
+{
+  GList * list;
+
+  if (gkb->propbox)
+    {
+	gtk_widget_destroy (gkb->propbox);
+	gkb->propbox= NULL;
+    }
+
+  for (list = gkb->tempmaps; list != NULL; list = list->next)
+    {
+      GkbKeymapWg *actdata = list->data;
+      if (actdata)
+	{
+	  g_free (actdata->name);
+	  g_free (actdata->flag);
+	  g_free (actdata->command);
+	  g_free (actdata);
+	}
+    }
+  g_list_free (gkb->tempmaps);
+  gkb->tempmaps = NULL;
+
+  gkb->tn = gkb->n;
+
+  gkb->propbox = gkb_prop_create_property_box ();
+
+  gtk_widget_show_all (gkb->propbox);
   gdk_window_raise (gkb->propbox->window);
 
   return;
