@@ -22,34 +22,34 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
 
   /* Global configurable parameters */
   bat->mode_string = gnome_config_get_string_with_default
-    ("mode=" BATTERY_DEFAULT_MODE_STRING, NULL);
+    ("battery/mode=" BATTERY_DEFAULT_MODE_STRING, NULL);
 
   bat->width = gnome_config_get_int_with_default
-    ("width=" BATTERY_DEFAULT_WIDTH, NULL);
+    ("battery/width=" BATTERY_DEFAULT_WIDTH, NULL);
   bat->height = gnome_config_get_int_with_default
-    ("height=" BATTERY_DEFAULT_HEIGHT, NULL);
+    ("battery/height=" BATTERY_DEFAULT_HEIGHT, NULL);
 
   /* The graph */
   bat->graph_interval = gnome_config_get_int_with_default
-    ("graph_interval=" BATTERY_DEFAULT_GRAPH_INTERVAL, NULL);
+    ("graph/interval=" BATTERY_DEFAULT_GRAPH_INTERVAL, NULL);
   bat->graph_direction = gnome_config_get_int_with_default
-    ("graph_direction=" BATTERY_DEFAULT_GRAPH_DIRECTION, NULL);
+    ("graph/direction=" BATTERY_DEFAULT_GRAPH_DIRECTION, NULL);
   bat->graph_color_ac_on_s =
     gnome_config_get_string_with_default
-    ("graph_ac_on_color=" BATTERY_DEFAULT_GRAPH_ACON_COLOR, NULL);
+    ("graph/ac_on_color=" BATTERY_DEFAULT_GRAPH_ACON_COLOR, NULL);
 
   printf("bat->graph_color_ac_on_s: %s\n", bat->graph_color_ac_on_s);
   bat->graph_color_ac_off_s =
     gnome_config_get_string_with_default
-    ("graph_ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR, NULL);
+    ("graph/ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR, NULL);
 
   /* The readout */
   bat->readout_color_ac_on_s =
     gnome_config_get_string_with_default
-    ("readout_ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR, NULL);
+    ("readout/ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR, NULL);
   bat->readout_color_ac_off_s =
     gnome_config_get_string_with_default
-    ("readout_ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL);
+    ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL);
 
   gnome_config_pop_prefix ();
 } /* battery_session_load */
@@ -67,24 +67,24 @@ battery_session_save(GtkWidget * w,
   gnome_config_push_prefix (privcfgpath);
 
   /* Global configurable parameters */
-  gnome_config_set_string("mode", bat->mode_string);
-  gnome_config_set_int("width", bat->width);
-  gnome_config_set_int("height", bat->height);
+  gnome_config_set_string("battery/mode", bat->mode_string);
+  gnome_config_set_int("battery/width", bat->width);
+  gnome_config_set_int("battery/height", bat->height);
 
   /* The graph */
-  gnome_config_set_int("graph_interval", bat->graph_interval);
-  gnome_config_set_int("graph_direction", bat->graph_direction);
+  gnome_config_set_int("graph/interval", bat->graph_interval);
+  gnome_config_set_int("graph/direction", bat->graph_direction);
 
-  gnome_config_set_string("graph_ac_off_color",
+  gnome_config_set_string("graph/ac_off_color",
 			  bat->graph_color_ac_off_s);
-  gnome_config_set_string("graph_ac_on_color",
+  gnome_config_set_string("graph/ac_on_color",
 			  bat->graph_color_ac_on_s);
   
 
   /* The readout */
-  gnome_config_set_string("readout_ac_on_color",
+  gnome_config_set_string("readout/ac_on_color",
 			  bat->readout_color_ac_on_s);
-  gnome_config_set_string("readout_ac_off_color",
+  gnome_config_set_string("readout/ac_off_color",
 			  bat->readout_color_ac_off_s);
 
   gnome_config_pop_prefix ();
