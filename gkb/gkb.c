@@ -1,3 +1,9 @@
+/* File: gkb.c
+ * Purpose: GNOME Keyboard switcher
+ * Written by Shooby Ban <bansz@szif.hu>, 1998-1999
+ * with the aid of Balazs Nagy <julian7@kva.hu>
+ */
+
 #include <config.h>
 #include <string.h>
 #include <gnome.h>
@@ -5,6 +11,7 @@
 #include <applet-widget.h>
 
 #define FWIDTH 60
+
 #define FHEIGHT 40
 
 typedef struct _gkb_properties gkb_properties;
@@ -14,7 +21,6 @@ struct _gkb_properties {
         char *dmap[2];
 	int  curpix;
 };
-
 
 typedef struct _GKB GKB;
 struct _GKB {
@@ -32,6 +38,9 @@ struct _GKB {
 	GtkWidget *propbox;                                               
 	int curpix;
 };
+
+static void gkb_draw(GtkWidget *, GKB *);
+static void do_that_command(GKB *);
 
 static void
 load_properties(GKB *gkb)
@@ -85,7 +94,8 @@ apply_callback(GtkWidget * pb,
 	gint page,
 	GKB * gkb)
 {
-
+	if (page != -1)
+	    	return;	/* Thanks Havoc -- Julian7 */
 	memcpy( &gkb->properties, &gkb->temp_props, sizeof(gkb_properties) );
 	gkb->properties.image[0] =
 			gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(gkb->entry_1));
@@ -104,7 +114,6 @@ apply_callback(GtkWidget * pb,
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 	gkb->curpix=0;
 	do_that_command(gkb);
-
 }
 
 static void
@@ -136,10 +145,11 @@ destroy_cb(GtkWidget *widget,
 
 void
 properties_dialog(AppletWidget *applet,
-	GKB * gkb)
+	gpointer gkbx)
 {
         static GnomeHelpMenuEntry help_entry = { "gkb", "properties" };
-        GtkWidget *vbox3;
+	GKB * gkb = (GKB*) gkbx;
+	GtkWidget *vbox3;
         GtkWidget *hbox5;          
         GtkWidget *hbox6;          
         GtkWidget *hbox8;          
@@ -155,7 +165,7 @@ properties_dialog(AppletWidget *applet,
         GtkWidget *frame2;
 	int i;
 
-static	char *basemaps[36]= {
+static	char *basemaps[]= {
 	"be", "bg", "ch", "cz", "de", "dk", "dvorak",
 	"es", "fi", "fr", "gr", "hu", "il", "is", 
 	"it", "la", "nl", "no", "pl", "pt", "qc", 
@@ -267,10 +277,11 @@ static	char *basemaps[36]= {
         gtk_menu_append (GTK_MENU (option1_menu), g2_menuitem);
         gtk_signal_connect (GTK_OBJECT (g2_menuitem), "activate",
 				(GtkSignalFunc) ch_xmodmap_cb, gkb);
+	gtk_menu_set_active(GTK_MENU (option1_menu),
+		! strcmp(gkb->temp_props.command,"xmodmap"));
         gtk_option_menu_set_menu (GTK_OPTION_MENU (option1),
 				 option1_menu);
-        gtk_option_menu_set_history (GTK_OPTION_MENU (option1), 1);                                                                                                                                              
-   
+
         gtk_notebook_append_page (GTK_NOTEBOOK(
 		    		  GNOME_PROPERTY_BOX(gkb->propbox)->notebook),
                          	  vbox3, gtk_label_new (
@@ -305,14 +316,14 @@ do_that_command(GKB *gkb)
        char comm[100];
        int len; 
 
-       len=(strlen(gkb->properties.command)+(strcmp(gkb->properties.command,"xmodmap")?11:                                    
+	len=(strlen(gkb->properties.command)+(strcmp(gkb->properties.command,"xmodmap")?11:                                    
            strlen(gnome_datadir_file(g_strconcat ("xmodmap/",
            "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)) )+7));
-       g_snprintf(comm, len, "%s %s%c", gkb->properties.command,
-       (strcmp(gkb->properties.command,"xmodmap")?gkb->properties.dmap[gkb->properties.curpix]:
-       gnome_datadir_file(g_strconcat ("xmodmap/",
+	g_snprintf(comm, len, "%s %s%c", gkb->properties.command,
+	(strcmp(gkb->properties.command,"xmodmap")?gkb->properties.dmap[gkb->properties.curpix]:
+	gnome_datadir_file(g_strconcat ("xmodmap/",
            "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)) ),0);
-       system(comm);
+	system(comm);
 }
 
 static void 
@@ -399,10 +410,12 @@ destroy_about(GtkWidget *widget,
 
 void
 about_cb (AppletWidget *widget,
-	GKB * gkb)
+	gpointer gkbx)
 {
-        static const char *authors[] = 
-			{ "Szabolcs Ban (Shooby) <bansz@szif.hu>", NULL };
+	GKB *gkb = (GKB*)gkbx;
+	static const char *authors[] = 
+			{ "Szabolcs Ban (Shooby) <bansz@szif.hu>",
+			  "Balazs Nagy (Julian) <julian7@kva.hu>", NULL };
 
         if(gkb->aboutbox) {
 		gtk_widget_show(gkb->aboutbox);
@@ -411,14 +424,14 @@ about_cb (AppletWidget *widget,
 	}
 
 	gkb->aboutbox = gnome_about_new (_("The GNOME KB Applet"),
-			_("1.0pre1"),
-                        _("(C) 1998 LSC - Linux Supporting Center"),
+			_("1.0.0"),
+                        _("(C) 1998-99 LSC - Linux Supporting Center"),
                         (const char **)authors,
-                        _("This applet used to switch between "   
-                          "keyboard maps. No more. It uses "
+                        _("This applet switches between "   
+                          "keyboard maps. Not more. It uses "
                           "setxkbmap, or xmodmap. "
                           "The main site of this app moved "
-                          "tempolary to URL http://lsc.kva.hu/gkb."
+                          "temporarily to URL http://lsc.kva.hu/gkb."
                           "Mail me your flag, please (60x40 size),"
                           "I will put it to CVS."
                           "So long, and thanks for all the fish."
@@ -476,8 +489,8 @@ gkb_activator(PortableServer_POA poa,
         gtk_signal_connect(GTK_OBJECT(gkb->applet),"save_session",
                                	     GTK_SIGNAL_FUNC(applet_save_session),
                              	     gkb);
-      
-        applet_widget_register_stock_callback(APPLET_WIDGET(gkb->applet),
+        do_that_command(gkb);
+	applet_widget_register_stock_callback(APPLET_WIDGET(gkb->applet),
                       				"about",
                     				GNOME_STOCK_MENU_ABOUT,
                      				_("About..."),
