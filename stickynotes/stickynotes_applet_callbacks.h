@@ -23,32 +23,30 @@
 #define __STICKYNOTES_APPLET_CALLBACKS_H__
 
 /* Callbacks for the sticky notes applet */
-gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *stickynotes);
-gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *stickynotes);
-gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *stickynotes);
-gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *stickynotes);
-gboolean applet_save_cb(StickyNotesApplet *stickynotes);
-gboolean applet_change_size_cb(GtkWidget *widget, gint size, StickyNotesApplet *stickynotes);
-gboolean applet_change_bg_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, StickyNotesApplet *stickynotes);
+gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *applet);
+gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *applet);
+gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *applet);
+gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *applet);
+gboolean applet_save_cb(StickyNotesApplet *applet);
+gboolean applet_change_size_cb(GtkWidget *widget, gint size, StickyNotesApplet *applet);
+gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap,
+			     StickyNotesApplet *applet);
 
 /* Callbacks for sticky notes applet menu */
-void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_hide_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_show_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_lock_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_unlock_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
-void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
+void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
+void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
+void menu_event_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet);
+void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
+void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
+void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 
 /* Callbacks for sticky notes preferences dialog */
-void preferences_save_cb(StickyNotesApplet *stickynotes);
-void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNotesApplet *stickynotes);
-void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, StickyNotesApplet *stickynotes);
-void preferences_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes);
+void preferences_save_cb(gpointer data);
+void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, gpointer data);
+void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer data);
+void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data);
 
 /* Callbacks for sticky notes about dialog */
-void about_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes);
+void about_response_cb(GtkDialog *dialog, gint response, gpointer data);
 
 #endif /* __STICKYNOTES_APPLET_CALLBACKS_H__ */

@@ -1,4 +1,4 @@
-/* Post-It
+/* Sticky Notes
  * Copyright (C) 2002-2003 Loban A Rahman
  *
  * This program is free software; you can redistribute it and/or modify
@@ -25,16 +25,11 @@
  * looks like this: "Nov 30, '78" */
 gchar * get_current_date(const gchar *format)
 {
-  	time_t clock;
-  	struct tm *current;	
-	gint date_length;
-	gchar *date;
-	
-  	clock = time(NULL);
-  	current = localtime(&clock);
+  	time_t clock = time(NULL);
+  	struct tm *current = localtime(&clock);
 
-	date_length = 10;
-  	date = g_new(gchar, date_length);
+	gint date_length = 10;
+  	gchar *date = g_new(gchar, date_length);
   	
 	do
 	{

@@ -31,23 +31,41 @@
 
 typedef struct
 {
-	GtkWidget *applet;		/* The applet */
 	GladeXML *about;		/* About dialog GladeXML*/
 	GladeXML *prefs;		/* Preferences dialog GladeXML */
+
+	GtkWidget *w_about;		/* The about dialog */
 	
-	gboolean pressed;		/* Whether applet is pressed */
+	GtkWidget *w_prefs;		/* The prefs dialog */
+	GtkAdjustment *w_prefs_width;
+	GtkAdjustment *w_prefs_height;
+	GtkWidget *w_prefs_color;
+	GtkWidget *w_prefs_system;
+	GtkWidget *w_prefs_click;
+	GtkWidget *w_prefs_sticky;
+	GtkWidget *w_prefs_force;
 
 	GList *notes;			/* Linked-List of all the sticky notes */
+	GList *applets;			/* Linked-List of all the applets */
 	
-	GdkPixbuf *pixbuf_normal;	/* Pixbuf for normal applet */
-	GdkPixbuf *pixbuf_prelight;	/* Pixbuf for prelighted applet */
-	GtkWidget *image;		/* Generated Image for applet */
+	GdkPixbuf *icon_normal;		/* Normal applet icon */
+	GdkPixbuf *icon_prelight;	/* Prelighted applet icon */
 	
-	GConfClient *gconf_client;	/* GConf Client */
+	GConfClient *gconf;		/* GConf Client */
 	GtkTooltips *tooltips;		/* Tooltips */
 
-} StickyNotesApplet;
+} StickyNotes;
 
+typedef struct
+{
+	GtkWidget *w_applet;		/* The applet */
+	GtkWidget *w_image;		/* The applet icon */
+
+	gboolean prelighted;		/* Whether applet is prelighted */
+	gboolean pressed;		/* Whether applet is pressed */
+	
+} StickyNotesApplet;
+	
 typedef enum
 {
 	STICKYNOTES_NEW = 0,
@@ -56,13 +74,18 @@ typedef enum
 
 } StickyNotesDefaultAction;
 
-/* Modify the applet */
-void stickynotes_applet_update_icon(StickyNotesApplet *stickynotes, gboolean highlighted);
-void stickynotes_applet_update_tooltips(StickyNotesApplet *stickynotes);
+extern StickyNotes *stickynotes;
 
-void stickynotes_applet_do_default_action(StickyNotesApplet *stickynotes);
+void stickynotes_applet_init();
+void stickynotes_applet_init_about();
+void stickynotes_applet_init_prefs();
 
-void stickynotes_applet_create_preferences(StickyNotesApplet *stickynotes);
-void stickynotes_applet_create_about(StickyNotesApplet *stickynotes);
+StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet);
+
+void stickynotes_applet_update_icon(StickyNotesApplet *applet);
+void stickynotes_applet_update_prefs();
+void stickynotes_applet_update_tooltips();
+
+void stickynotes_applet_do_default_action();
 
 #endif /* __STICKYNOTES_APPLET_H__ */

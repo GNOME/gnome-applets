@@ -22,109 +22,108 @@
 #include <stickynotes.h>
 
 /* Applet Callback : Mouse button press on the applet. */
-gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *stickynotes)
+gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *applet)
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
-		stickynotes->pressed = TRUE;
+		applet->pressed = TRUE;
 	
 	else if (event->type == GDK_BUTTON_RELEASE && event->button == 1) {
-		stickynotes_applet_do_default_action(stickynotes);	
-		stickynotes->pressed = FALSE;
+		stickynotes_applet_do_default_action();	
+		applet->pressed = FALSE;
 	}
 	
 	else
 		return FALSE;
 
-	stickynotes_applet_update_icon(stickynotes, TRUE);
+	stickynotes_applet_update_icon(applet);
 	
-	/* Let other handlers receive this event. */
 	return FALSE;
 }
 
 /* Applet Callback : Keypress on the applet. */
-gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *stickynotes)
+gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *applet)
 {
 	if (event->type == GDK_KEY_PRESS && event->keyval == GDK_Return)
-		stickynotes->pressed = TRUE;
+		applet->pressed = TRUE;
 	
 	else if (event->type == GDK_KEY_RELEASE && event->keyval == GDK_Return) {
-		stickynotes_applet_do_default_action(stickynotes);	
-		stickynotes->pressed = FALSE;
+		stickynotes_applet_do_default_action();	
+		applet->pressed = FALSE;
 	}
 	
 	else
 		return FALSE;
 	
-	stickynotes_applet_update_icon(stickynotes, TRUE);
+	stickynotes_applet_update_icon(applet);
 	
-	/* Let other handlers receive this event. */
 	return FALSE;
 }
 
 /* Applet Callback : Cross (enter or leave) the applet. */
-gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *stickynotes)
+gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *applet)
 {
-	stickynotes_applet_update_icon(stickynotes, event->type == GDK_ENTER_NOTIFY || GTK_WIDGET_HAS_FOCUS(widget));
+	applet->prelighted = event->type == GDK_ENTER_NOTIFY || GTK_WIDGET_HAS_FOCUS(widget);
+
+	stickynotes_applet_update_icon(applet);
 	
-	/* Let other handlers receive this event. */
 	return FALSE;
 }
 
 /* Applet Callback : On focus (in or out) of the applet. */
-gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *stickynotes)
+gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *applet)
 {
-	stickynotes_applet_update_icon(stickynotes, event->in);
+	applet->prelighted = event->in;
 
-	/* Let other handlers receive this event. */
+	stickynotes_applet_update_icon(applet);
+
 	return FALSE;
 }
 
 /* Applet Callback : Save all sticky notes. */
-gboolean applet_save_cb(StickyNotesApplet *stickynotes)
+gboolean applet_save_cb(StickyNotesApplet *applet)
 {
-	stickynotes_save(stickynotes);
+	stickynotes_save();
 
 	return TRUE;
 }
 
 /* Applet Callback : Resize the applet. */
-gboolean applet_change_size_cb(GtkWidget *widget, gint size, StickyNotesApplet *stickynotes)
+gboolean applet_change_size_cb(GtkWidget *widget, gint size, StickyNotesApplet *applet)
 {
-	stickynotes_applet_update_icon(stickynotes, FALSE);
+	stickynotes_applet_update_icon(applet);
 
-	/* Let other handlers receive this event. */
 	return FALSE;
 }
 
 /* Applet Callback : Change the applet background. */
-gboolean applet_change_bg_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, StickyNotesApplet *stickynotes)
+gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap,
+			     StickyNotesApplet *applet)
 {
 	if (type == PANEL_NO_BACKGROUND) {
 		GtkRcStyle *rc_style = gtk_rc_style_new();
-		gtk_widget_modify_style(GTK_WIDGET(applet), rc_style);
+		gtk_widget_modify_style(applet->w_applet, rc_style);
 		gtk_rc_style_unref(rc_style);
 	}
 
 	else if (type == PANEL_COLOR_BACKGROUND) {
-		gtk_widget_modify_bg(GTK_WIDGET(applet), GTK_STATE_NORMAL, color);
+		gtk_widget_modify_bg(applet->w_applet, GTK_STATE_NORMAL, color);
 	}
 
 	else /* if (type == PANEL_PIXMAP_BACKGROUND) */ {
-		gdk_window_set_back_pixmap(GTK_WIDGET(applet)->window, pixmap, FALSE); /* FIXME : Does not work */
+		gdk_window_set_back_pixmap(applet->w_applet->window, pixmap, FALSE); /* FIXME : Does not work */
 	}
 	
-	/* Let other handlers receive this event. */
 	return FALSE;
 }
 
 /* Menu Callback : Create a new sticky note */
-void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
+void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
-	stickynotes_add(stickynotes);
+	stickynotes_add();
 }
 
 /* Menu Callback : Destroy all sticky notes */
-void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
+void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
 	GladeXML *glade = glade_xml_new(GLADE_PATH, "delete_all_dialog", NULL);
 	GtkWidget *dialog = glade_xml_get_widget(glade, "delete_all_dialog");
@@ -137,143 +136,123 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes,
 		}
 	}
 		
-	stickynotes_applet_update_tooltips(stickynotes);
-	stickynotes_save(stickynotes);
+	stickynotes_applet_update_tooltips();
+	stickynotes_save();
 
 	gtk_widget_destroy(dialog);
 	g_object_unref(glade);
 }
 
-/* Menu Callback : Hide all Sticky notes */
-void menu_hide_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
+/* Menu Component Event Callback:  Show/Hide and Lock/Unlock sticky notes */
+void menu_event_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet)
 {
-	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/visible", FALSE, NULL);
-}
-
-/* Menu Callback : Reveal all Sticky notes */
-void menu_show_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
-{
-	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/visible", TRUE, NULL);
-}
-
-/* Menu Callback : Lock all Sticky notes from editing */
-void menu_lock_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
-{
-	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", TRUE, NULL);
-}
-
-/* Menu Callback : Unlock all Sticky notes for editiing */
-void menu_unlock_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
-{
-	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
+	if (strcmp(path, "show") == 0)
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", strcmp(state, "0") != 0, NULL);
+	else if (strcmp(path, "lock") == 0)
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", strcmp(state, "0") != 0, NULL);
 }
 
 /* Menu Callback : Configure preferences */
-void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
+void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
-	if (stickynotes->prefs == NULL)
-		stickynotes_applet_create_preferences(stickynotes);
-	else
-		gdk_window_raise(glade_xml_get_widget(stickynotes->prefs, "preferences_dialog")->window);
-	
+	stickynotes_applet_update_prefs();
+	gtk_window_present(GTK_WINDOW(stickynotes->w_prefs));
 }
 
 /* Menu Callback : Show help */
-void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
+void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
     	gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 }
 
 /* Menu Callback : Display About window */
-void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname)
+void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
-	if (stickynotes->about == NULL)
-		stickynotes_applet_create_about(stickynotes);
-	else
-		gdk_window_raise(glade_xml_get_widget(stickynotes->about, "about_dialog")->window);
+	gtk_window_present(GTK_WINDOW(stickynotes->w_about));
 }
 
 /* Preferences Callback : Save. */
-void preferences_save_cb(StickyNotesApplet *stickynotes)
+void preferences_save_cb(gpointer data)
 {
-	GtkAdjustment *width_adjust = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "width_spin")));
-	GtkAdjustment *height_adjust = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "height_spin")));
-	GtkWidget *sticky_check = glade_xml_get_widget(stickynotes->prefs, "sticky_check");
-	GtkWidget *click_behavior_menu = glade_xml_get_widget(stickynotes->prefs, "click_behavior_menu");
+	gint width = gtk_adjustment_get_value(stickynotes->w_prefs_width);
+	gint height = gtk_adjustment_get_value(stickynotes->w_prefs_height);
+	gboolean use_system = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_system));
+	gint click_behavior = gtk_option_menu_get_history(GTK_OPTION_MENU(stickynotes->w_prefs_click));
+	gboolean sticky = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky));
+	gboolean force_default = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force));
 
-	gint width = gtk_adjustment_get_value(width_adjust);
-	gint height = gtk_adjustment_get_value(height_adjust);
-	gint stickyness = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(sticky_check));
-	gint click_behavior = gtk_option_menu_get_history(GTK_OPTION_MENU(click_behavior_menu));
-
-	gconf_client_set_int(stickynotes->gconf_client, GCONF_PATH "/defaults/width", width, NULL);
-	gconf_client_set_int(stickynotes->gconf_client, GCONF_PATH "/defaults/height", height, NULL);
-	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/sticky", stickyness, NULL);
-	gconf_client_set_int(stickynotes->gconf_client, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
+	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/width", width, NULL);
+	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/height", height, NULL);
+	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", use_system, NULL);
+	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
+	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
+	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", force_default, NULL);
 }
 
 /* Preferences Callback : Change color. */
-void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNotesApplet *stickynotes)
+void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, gpointer data)
 {
 	/* Reduce RGB from 16-bit to 8-bit values and calculate HTML-style hex specification for the color */
 	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
-	gconf_client_set_string(stickynotes->gconf_client, GCONF_PATH "/defaults/color", color_str, NULL);
+	gconf_client_set_string(stickynotes->gconf, GCONF_PATH "/defaults/color", color_str, NULL);
 	g_free(color_str);
 }
 
 /* Preferences Callback : Apply to existing notes. */
-void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, StickyNotesApplet *stickynotes)
+void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer data)
 {
 	gint i;
 
-	if (strcmp(entry->key, GCONF_PATH "/defaults/color") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_color(note, gconf_value_get_string(entry->value), FALSE);
-		}
-	}
-
-	else if (strcmp(entry->key, GCONF_PATH "/settings/sticky") == 0) {
+	if (strcmp(entry->key, GCONF_PATH "/settings/sticky") == 0) {
 		if (gconf_value_get_bool(entry->value))
 			for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 				StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-				gtk_window_stick(GTK_WINDOW(note->window));
+				gtk_window_stick(GTK_WINDOW(note->w_window));
 			}
 		else
 			for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 				StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-				gtk_window_unstick(GTK_WINDOW(note->window));
+				gtk_window_unstick(GTK_WINDOW(note->w_window));
 			}
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/visible") == 0) {
-		stickynotes_set_visible(stickynotes, gconf_value_get_bool(entry->value));
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_visible(note, gconf_value_get_bool(entry->value));
+		}
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
-		stickynotes_set_locked(stickynotes, gconf_value_get_bool(entry->value));
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_locked(note, gconf_value_get_bool(entry->value));
+		}
+	}
+
+	if (strcmp(entry->key, GCONF_PATH "/settings/force_default_color") == 0 ||
+	    strcmp(entry->key, GCONF_PATH "/settings/use_system_color") == 0 ||
+	    strcmp(entry->key, GCONF_PATH "/defaults/color") == 0) {
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_color(note, note->color);
+		}
 	}
 }
 
 /* Preferences Callback : Response. */
-void preferences_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes)
+void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
 {
 	if (response == GTK_RESPONSE_HELP)
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 	
-	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) || GTK_RESPONSE_DELETE_EVENT */ {
-		gtk_widget_destroy(GTK_WIDGET(dialog));
-		g_object_unref(stickynotes->prefs);
-		stickynotes->prefs = NULL;
-	}
+	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) || GTK_RESPONSE_DELETE_EVENT */
+		gtk_widget_hide(GTK_WIDGET(dialog));
 }
 
 /* About Callback : Response. */
-void about_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes)
+void about_response_cb(GtkDialog *dialog, gint response, gpointer data)
 {
-	if (response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_OK || response == GTK_RESPONSE_CLOSE) {
-		gtk_widget_destroy(GTK_WIDGET(dialog));
-		g_object_unref(stickynotes->about);
-		stickynotes->about = NULL;
-	}
+	if (response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_OK || response == GTK_RESPONSE_CLOSE)
+		gtk_widget_hide(GTK_WIDGET(dialog));
 }

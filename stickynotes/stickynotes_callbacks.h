@@ -23,19 +23,22 @@
 #include <stickynotes.h>
 
 /* Callbacks for the sticky notes windows */
-gboolean window_close_cb(GtkWidget *widget, StickyNote *note);
-gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
-gboolean window_move_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
-gboolean window_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note);
-gboolean window_configure_cb(GtkWidget *widget, GdkEventConfigure *event, StickyNote *note);
-gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note);
-gboolean window_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNote *note);
-gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *note);
+gboolean stickynote_toggle_lock_cb(GtkWidget *widget, StickyNote *note);
+gboolean stickynote_close_cb(GtkWidget *widget, StickyNote *note);
+gboolean stickynote_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
+gboolean stickynote_move_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
+gboolean stickynote_expose_cb(GtkWidget *widget, GdkEventExpose *event, StickyNote *note);
+gboolean stickynote_configure_cb(GtkWidget *widget, GdkEventConfigure *event, StickyNote *note);
+gboolean stickynote_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note);
+gboolean stickynote_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNote *note);
+gboolean stickynote_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *note);
 
 /* Callbacks for the sticky notes popup menu */
 void popup_create_cb(GtkWidget *widget, StickyNote *note);
 void popup_destroy_cb(GtkWidget *widget, StickyNote *note);
-void popup_edit_cb(GtkWidget *widget, StickyNote *note);
+void popup_toggle_lock_cb(GtkWidget *widget, StickyNote *note);
+void popup_change_title_cb(GtkWidget *widget, StickyNote *note);
+void popup_change_color_cb(GtkWidget *widget, StickyNote *note);
 
 /* Callbacks for dialogs */
 void dialog_apply_cb(GtkWidget *widget, GtkDialog *dialog);

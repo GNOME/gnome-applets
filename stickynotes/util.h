@@ -1,4 +1,4 @@
-/* Post-It
+/* Sticky Notes
  * Copyright (C) 2002-2003 Loban A Rahman
  *
  * This program is free software; you can redistribute it and/or modify

@@ -26,37 +26,40 @@ typedef struct
 {
 	GladeXML *glade;		/* Glade object */
 
-	GtkWidget *window;		/* Sticky Note window */
-	GtkWidget *title;		/* Note title */
-	GtkWidget *body;		/* Note text body */
+	GtkWidget *w_window;		/* Sticky Note window */
+	GtkWidget *w_title;		/* Sticky Note title */
+	GtkWidget *w_body;		/* Sticky Note text body */
+	GtkWidget *w_lock;		/* Sticky Note lock button */
+	GtkWidget *w_close;		/* Sticky Note close button */
+	GtkWidget *w_resize_se;		/* Sticky Note resize button (south east) */
+	GtkWidget *w_resize_sw;		/* Sticky Note resize button (south west) */
 
-	GdkColor color[4];		/* Note colors */
-	
+	gchar *color;			/* Note color */
+	gboolean locked;		/* Note locked state */
+
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
 	gint w;				/* Note width */
 	gint h;				/* Note height */
 
-	StickyNotesApplet *stickynotes;	/* The sticky notes applet */
-
 } StickyNote;
 
-StickyNote * stickynote_new(StickyNotesApplet *stickynotes);
+StickyNote * stickynote_new();
 void stickynote_free(StickyNote *note);
-
-void stickynote_edit_title(StickyNote *note);
 
 gboolean stickynote_get_empty(const StickyNote *note);
 
-void stickynote_set_color(StickyNote *note, const gchar* color_str, gboolean highlighted);
+void stickynote_set_color(StickyNote *note, const gchar* color_str);
 void stickynote_set_title(StickyNote *note, const gchar* title);
+void stickynote_set_locked(StickyNote *note, gboolean locked);
+void stickynote_set_visible(StickyNote *note, gboolean visible);
 
-void stickynotes_add(StickyNotesApplet *stickynotes);
-void stickynotes_remove(StickyNotesApplet *stickynotes, StickyNote *note);
+void stickynote_change_title(StickyNote *note);
+void stickynote_change_color(StickyNote *note);
 
-void stickynotes_set_visible(StickyNotesApplet *stickynotes, gboolean visible);
-void stickynotes_set_locked(StickyNotesApplet *stickynotes, gboolean locked);
-void stickynotes_save(StickyNotesApplet *stickynotes);
-void stickynotes_load(StickyNotesApplet *stickynotes);
+void stickynotes_add();
+void stickynotes_remove(StickyNote *note);
+void stickynotes_save();
+void stickynotes_load();
 
 #endif /* __STICKYNOTES_H__ */
