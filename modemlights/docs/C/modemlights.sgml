@@ -1,0 +1,204 @@
+<!DOCTYPE sect1 PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+]>
+
+
+
+
+<sect1 id="modemlights">
+  <title>Modem Lights Applet</title> 
+
+  <para> <application>Modem Lights Applet</application>, shown in <xref
+  linkend="modemlights-fig1">, monitors your modem while it is
+  working. To add this applet to the panel, right-click on the panel
+  and choose
+         <menuchoice>
+               <guimenu>Panel</guimenu>
+               <guisubmenu>Add to panel</guisubmenu>
+               <guisubmenu>Applet</guisubmenu>
+               <guisubmenu>Network</guisubmenu>
+	       <guimenuitem>Modem Lights</guimenuitem>
+	</menuchoice>
+  </para>
+  
+ 
+    <figure id="modemlights-fig1">
+     <title>Modem Lights Applet</title>
+     <screenshot>
+      <screeninfo>Modem Lights Applet</screeninfo>
+      <graphic format="png" fileref="fig/modemlights" srccredit="John Fleck">
+      </graphic>
+    </screenshot>
+   </figure>
+
+  <para>
+    This applet was written by John Ellis
+    <email>johne@bellatlantic.net</email> and Martin
+    Baulig<email>martin@home-of-linux.org</email>. Please send all suggestions and bug
+    reports to <ulink type="http" url="http://bugs.gnome.org">GNOME
+      Bug Tracking Database</ulink> or use command
+    <command>bug-buddy</command>.
+    </para>
+
+  <sect2 id="modemlights-usage">
+    <title> Usage</title>
+    <para>This applet can be used to tell if your modem is working,
+    and to track its behavior and performance.
+    </para>
+    <para> If you right-click on the applet, it brings up a
+    <guimenu>menu</guimenu>, containing the following commands: 
+      <itemizedlist> 
+	<listitem>
+	  <para>
+	    <guimenuitem>Remove from panel</guimenuitem> &mdash;
+	    self-explanatory 
+	    </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <guimenuitem>Move applet</guimenuitem> &mdash; allows you
+	    to move the applet to a different place on the panel. You
+	    can also move the applet by dragging it  with the
+	    middle  mouse button. 
+	    </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <guimenuitem>Properties</guimenuitem>&mdash; brings up
+	    <link linkend="modemlights-prefs">
+                <guilabel>Properties</guilabel>
+            </link> dialog
+	    </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>About</guimenuitem> &mdash; shows info about
+            the <application>Modem Lights Applet</application>, including
+            version and author's name. 
+	    </para>
+	</listitem>
+	
+	<listitem>
+	  <para>
+	    <guimenuitem>Help</guimenuitem> &mdash; brings up this
+            document. 
+	    </para>
+	</listitem>
+	
+
+      </itemizedlist>
+    </para>
+  </sect2>
+
+  <sect2 id="modemlights-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>Modem Lights Applet</application> by
+      right-clicking on it and choosing
+      <guimenuitem>Properties</guimenuitem>. This will launch the
+      <interface>Modem Lights Settings</interface> dialog, which allows you to
+      change various settings.
+    </para>
+    <figure id="modemlights-fig2">
+     <title>Preferences dialog</title>
+     <screenshot>
+      <screeninfo>Preferences dialog</screeninfo>
+      <graphic format="png" fileref="fig/modemlights-prefs"
+	       srccredit="John Fleck">
+      </graphic>
+    </screenshot>
+   </figure>
+    <para>By checking the <guilabel>Show connect time and
+    throughput</guilabel> box, you cause <application>Modem
+    Lights Applet's</application> graphic display to expand to include
+    two small text boxes showing the current data transfer rate (top) and connect
+    time (bottom).</para>
+
+    <para><application>Modem Lights Applet</application> can either be
+    used to monitor a modem connection made by another piece of
+    software, or to initiate a connection itself. To use
+    <application>Modem Lights Applet</application> to initiate a
+    connection, place the name of the startup command in the
+    <guilabel>Connect command</guilabel> text box, and the disconnect
+    command in the box beneath it labeled <guilabel>Disconnect
+    command</guilabel>. When you click on the single button on the
+    applet, it will connect or disconnect your modem.</para>
+
+    <figure id="modemlights-fig3">
+     <title>Advanced preferences dialog</title>
+     <screenshot>
+      <screeninfo>Advanced preferences dialog</screeninfo>
+      <graphic format="png" fileref="fig/modemlights-advpref"
+	       srccredit="John Fleck">
+      </graphic>
+    </screenshot>
+   </figure>
+    <para><application>Modem Lights Applet's</application>
+    <interface>Advanced preferences window</interface> allows you to
+    control advanced features of the applet.</para>
+   
+    <para><guilabel>Modem lock file</guilabel> specifies the file
+    created by the computer when the modem is working, allowing other
+    programs to know it's in
+    operation. <filename>/var/lock/LCK..modem</filename>, the default
+    setting, is the most common, if your computer uses a symbolic link
+    from <filename>/dev/modem</filename> to the actual modem
+    device. Check with your system administrator to see if a different
+    device name and therefore lock file is in use. <application>Modem
+    Lights Applet</application> needs this information to find and
+    monitor your modem.</para>
+
+    <para><guilabel>Device</guilabel>, typically
+    <filename>ppp0</filename> on a Linux machine, is the name of the network interface
+    being used by the modem. If <filename>ppp0</filename> is not
+    correct for your machine, check your system documentation for the
+    correct designation.</para>
+
+    <para>Other possible network interface names commonly used include:</para>
+
+    <itemizedlist>
+      <listitem>
+	<para><filename>ippp0</filename>: Linux ISDN</para>
+      </listitem>
+
+      <listitem>
+	<para><filename>isp0</filename>: NetBSD ISDN</para>
+      </listitem>
+     <listitem>
+	<para><filename>ipdptp0</filename>: Solaris PPP</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>The <guilabel>Verify owner of lock file</guilabel> check box
+    verifies that the lockfile really belongs to the currently running
+    PPP daemon and is not left over from an older one. This is checked
+    by default and shouldn't be changed.</para>
+
+    <para>If you use an ISDN modem, check the <guilabel>Use
+    ISDN</guilabel> checkbox. <application>Modem Lights Applet</application> will
+    then ignore all the settings above related to standard modems.</para>
+
+    <para> After you made all the choices you want, click on
+      <guibutton>OK</guibutton> to make the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click on
+      <guibutton>Cancel</guibutton> button.
+    </para>
+  </sect2>
+  
+  <sect2 id="modemlights-bugs">
+    <title> Known bugs and limitations</title>
+    <para>
+    The <guilabel>Verify lock file</guilabel> check box on the
+    advanced preferences window should always be left true. It is
+    likely to be removed from future versions of <application>Modem
+    Lights Applet.</application>
+    </para>
+  </sect2>
+
+</sect1>
+    
+
+
+
+
