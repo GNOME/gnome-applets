@@ -23,8 +23,12 @@ radar_green_stuff = \
 bluedir = $(datadir)/sound-monitor/blue
 blue_DATA =
 blue_stuff = \
-	blue/back_h.png	\
-	blue/back_v.png	\
+	blue/back_h.png		\
+	blue/back_v.png		\
+	blue/back_tiny.png	\
+	blue/led_h.png		\
+	blue/led_v.png		\
+	blue/led_tiny.png	\
 	blue/themedata
 
 metersdir = $(datadir)/sound-monitor/meters

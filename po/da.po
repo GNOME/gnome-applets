@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.30\n"
-"POT-Creation-Date: 2000-04-16 14:58+0200\n"
+"POT-Creation-Date: 2000-04-20 03:20-0400\n"
 "PO-Revision-Date: 2000-04-19 17:50+02:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -105,17 +105,17 @@ msgstr "Egenskaber for ur"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
-#: mini-commander/src/preferences.c:786 modemlights/properties.c:297
-#: odometer/properties.c:292 screenshooter/screenshooter_applet.c:433
-#: slashapp/properties.c:351 sound-monitor/properties.c:436
-#: tickastat/properties.c:424
+#: gnotes/properties.c:190 mini-commander/src/preferences.c:786
+#: modemlights/properties.c:297 odometer/properties.c:292
+#: screenshooter/screenshooter_applet.c:433 slashapp/properties.c:351
+#: sound-monitor/properties.c:436 tickastat/properties.c:424
 msgid "General"
 msgstr "Generelt"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:708 multiload/load-graph.c:586
-#: multiload/load-graph.c:778
+#: mini-commander/src/preferences.c:708 multiload/load-graph.c:588
+#: multiload/load-graph.c:780
 msgid "Colors"
 msgstr "Farver"
 
@@ -161,7 +161,7 @@ msgstr "Et analogt ur magen til det fra CDE panelet"
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
-#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:193
+#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:192
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
@@ -174,7 +174,7 @@ msgstr "Egenskaber..."
 #: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
 #: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
-#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:198
+#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:197
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
@@ -189,7 +189,7 @@ msgstr "Hjælp"
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
 #: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
-#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:202
 #: jbc/jbc-applet.c:201 life/life.c:288
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
@@ -920,11 +920,26 @@ msgstr "Skjul noter"
 msgid "Show Notes"
 msgstr "Vis noter"
 
-#: gweather/gweather-applet.c:180
+#: gnotes/properties.c:145
+#, fuzzy
+msgid "GNotes Settings"
+msgstr "gØjne indstillinger"
+
+#: gnotes/properties.c:154
+#, fuzzy
+msgid "Default Height"
+msgstr "Standard-liste"
+
+#: gnotes/properties.c:174
+#, fuzzy
+msgid "Default Width"
+msgstr "Standard-liste"
+
+#: gweather/gweather-applet.c:179
 msgid "Cannot create applet!\n"
 msgstr "Kan ikke oprette applet!\n"
 
-#: gweather/gweather-applet.c:188
+#: gweather/gweather-applet.c:187
 msgid "Update"
 msgstr "Opdatér"
 
@@ -936,7 +951,7 @@ msgstr "Gnome vejret"
 msgid "Location:"
 msgstr "Placering:"
 
-#: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:400
+#: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:394
 msgid "Update:"
 msgstr "Updatering:"
 
@@ -1008,7 +1023,7 @@ msgstr ""
 "Prøv venligst den detaljerede vejrudsigt; notér at IWIN vejrudsigter kun er "
 "tilgængelige for byer i USA."
 
-#: gweather/gweather-pref.c:129
+#: gweather/gweather-pref.c:130
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1016,7 +1031,7 @@ msgstr ""
 "Ugyldig placering valgt!\n"
 "Egenskaber forbliver uændrede."
 
-#: gweather/gweather-pref.c:134
+#: gweather/gweather-pref.c:135
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1024,55 +1039,55 @@ msgstr ""
 "Proxyadresse er ikke udformet som http://host:port/\n"
 "Egenskaber forbliver uændrede."
 
-#: gweather/gweather-pref.c:215
+#: gweather/gweather-pref.c:208
 msgid "Regions"
 msgstr "Regioner"
 
-#: gweather/gweather-pref.c:333
+#: gweather/gweather-pref.c:327
 msgid "Gweather Properties"
 msgstr "Egenskaber for G-vejret"
 
-#: gweather/gweather-pref.c:382
+#: gweather/gweather-pref.c:376
 msgid "Update enabled"
 msgstr "Opdatering brugt"
 
-#: gweather/gweather-pref.c:386
+#: gweather/gweather-pref.c:380
 msgid "Use metric"
 msgstr "Brug metermål"
 
-#: gweather/gweather-pref.c:390
+#: gweather/gweather-pref.c:384
 msgid "Detailed forecast"
 msgstr "Detaljeret prognose"
 
-#: gweather/gweather-pref.c:395
+#: gweather/gweather-pref.c:389
 msgid "Enable radar maps"
 msgstr "Brug radarkort"
 
-#: gweather/gweather-pref.c:422
+#: gweather/gweather-pref.c:416
 msgid "(sec)"
 msgstr "(sek)"
 
-#: gweather/gweather-pref.c:426
+#: gweather/gweather-pref.c:420
 msgid "Basic"
 msgstr "Basis"
 
-#: gweather/gweather-pref.c:443
+#: gweather/gweather-pref.c:437
 msgid "Use proxy"
 msgstr "Brug proxy"
 
-#: gweather/gweather-pref.c:447
+#: gweather/gweather-pref.c:441
 msgid "Proxy host:"
 msgstr "Proxy vært:"
 
-#: gweather/gweather-pref.c:461
+#: gweather/gweather-pref.c:455
 msgid "Username:"
 msgstr "Brugernavn"
 
-#: gweather/gweather-pref.c:475
+#: gweather/gweather-pref.c:469
 msgid "Password:"
 msgstr "Adgangskode:"
 
-#: gweather/gweather-pref.c:490
+#: gweather/gweather-pref.c:484
 msgid ""
 "Caveat warning: Even though your password will\n"
 "be saved in the private configuration file, it will\n"
@@ -1082,11 +1097,11 @@ msgstr ""
 "den private konfigurationsfil vil den ikke blive\n"
 "krypteret!"
 
-#: gweather/gweather-pref.c:498
+#: gweather/gweather-pref.c:492
 msgid "Network"
 msgstr "Netværk"
 
-#: gweather/gweather-pref.c:521
+#: gweather/gweather-pref.c:515
 msgid "Location"
 msgstr "Placering"
 
@@ -2696,19 +2711,19 @@ msgstr "Kør gtop..."
 msgid "Load Graph"
 msgstr "Hent graf"
 
-#: multiload/load-graph.c:573 multiload/load-graph.c:765
+#: multiload/load-graph.c:575 multiload/load-graph.c:767
 msgid "Speed:"
 msgstr "Hastighed:"
 
-#: multiload/load-graph.c:573 multiload/load-graph.c:765
+#: multiload/load-graph.c:575 multiload/load-graph.c:767
 msgid "Size:"
 msgstr "Størrelse:"
 
-#: multiload/load-graph.c:573 multiload/load-graph.c:765
+#: multiload/load-graph.c:575 multiload/load-graph.c:767
 msgid "Maximum:"
 msgstr "Maksimum:"
 
-#: multiload/load-graph.c:804
+#: multiload/load-graph.c:806
 msgid "Use default properties"
 msgstr "Brug standard egenskaber"
 
