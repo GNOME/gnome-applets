@@ -102,7 +102,6 @@ SUBDIRS = \
 DIST_SUBDIRS = \
 	intl po macros 		\
 	$(always_built_SUBDIRS)	\
-	clipboard		\
 	$(gtop_applets)		\
 	$(ghttp_applets)	\
 	$(ghttp_vfs_applets)	\
