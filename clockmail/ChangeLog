@@ -1,3 +1,10 @@
+Sun Dec 13 07:49:18 1998  John Ellis  <johne@bellatlantic.net>
+
+	* properties.c: Fix the badwindow errors created  when someone thought
+	it would be a good idea to set the same signal callback function on
+	two different object types. Now the callback function checks which type
+	of object it is before accessing any structures.
+
 1998-11-23  Christopher Blizzard  <blizzard@appliedtheory.com>
 
 	* properties.c (property_show): Comment out

@@ -71,7 +71,14 @@ static void use_gmt_cb(GtkWidget *w, gpointer data)
 static void gmt_offset_cb(GtkObject *adj, gpointer data)
 {
 	AppData *ad = data;
-	ad->p_gmt_offset = (gint)GTK_ADJUSTMENT(adj)->value;
+	if (GTK_IS_ADJUSTMENT(adj))
+		{
+		ad->p_gmt_offset = (gint)GTK_ADJUSTMENT(adj)->value;
+		}
+	else
+		{
+		ad->p_gmt_offset = (gint)GTK_ADJUSTMENT(GTK_SPIN_BUTTON(adj)->adjustment)->value;
+		}
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 } 
 
@@ -85,7 +92,14 @@ static void always_blink_cb(GtkWidget *w, gpointer data)
 static void mail_max_cb(GtkObject *adj, gpointer data)
 {
 	AppData *ad = data;
-	ad->p_mail_max = (gint)GTK_ADJUSTMENT(adj)->value;
+	if (GTK_IS_ADJUSTMENT(adj))
+		{
+		ad->p_mail_max = (gint)GTK_ADJUSTMENT(adj)->value;
+		}
+	else
+		{
+		ad->p_mail_max = (gint)GTK_ADJUSTMENT(GTK_SPIN_BUTTON(adj)->adjustment)->value;
+		}
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
