@@ -35,10 +35,17 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   float yloc;
   char cmd[1024];
 
-  fname = tempnam(NULL, "asclock_globe");
+  do {
+	  int fd;
+	  
+	  fname = tempnam(NULL, "asclock_globe");
+	  fd = open (fname, O_CREAT | O_EXCL, 0777);
+  } while (fd == -1);
 
+  close (fd);
+  
   snprintf(cmd, 1024, 
-          "xearth -ppm -night 15 -size '320 320' -mag 0.95 -pos 'fixed 0 %.4f' -nostars > %s",
+          "xearth -ppm -night 15 -size '320 320' -mag 0.95 -pos 'fixed 0 %.4f' -nostars >> %s",
           lon, fname);
 
   system(cmd);
