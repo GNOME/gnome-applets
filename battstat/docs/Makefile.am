@@ -1,1 +1,1 @@
-SUBDIRS = C pl
+SUBDIRS = C

@@ -1,18 +1,10 @@
-applet = battstat
-sgml_ents = $(applet).sgml
-figs =  \
-	menu.gif \
-	general.gif \
-	appear.gif \
-	square.gif \
-	appear-hidden.gif \
-	square-hidden.gif \
-	top.gif \
-	bottom.gif \
-        screen-ac.gif \
-	screen-batt.gif \
-	screen-charge.gif \
-	dock.gif
+figs = \
+        figures/battstat-apperance.png  \
+        figures/battstat-applet.png \
+        figures/battstat-general.png
+docname = battstat
 lang = C
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = battstat-C.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
+dist-hook: app-dist-hook
