@@ -76,10 +76,10 @@ struct _DisplayData {
 	gint load_y;
 	gint load_w;	/* this must always be 18 (hard coded) */
 	gint load_h;
-	gint rx_x;	/* RX light */
-	gint rx_y;
 	gint tx_x;	/* TX light */
 	gint tx_y;
+	gint rx_x;	/* RX light */
+	gint rx_y;
 	gint bytes_x;	/* bytes throughput , -1 to disable */
 	gint bytes_y;
 	gint time_x;	/* time connected, -1 to disable */
