@@ -1,6 +1,10 @@
-applet = asclock
+figs = \
+	figures/asclock_applet.png	\
+	figures/asclock_settings.png
+docname = asclock_applet
 lang = it
 omffile = asclock_applet-it.omf
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+sgml_ents = asclock.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

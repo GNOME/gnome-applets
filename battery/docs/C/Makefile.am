@@ -1,14 +1,15 @@
-applet = battery
 figs = \
-	battery-applet-ac-offline-25-20.png	\
-	battery-applet-properties-messages.png	\
-	battery-applet-ac-online-25-20.png	\
-	battery-applet-properties-readout.png	\
-	battery-applet-graph.png		\
-	battery-applet-properties-general.png	\
-	battery-applet-properties-graph.png
-sgml_ents = $(applet).sgml
-omffile = battery_applet-C.omf
+	figures/battery-applet-ac-offline-25-20.png	\
+	figures/battery-applet-ac-online-25-20.png	\
+	figures/battery-applet-graph.png		\
+	figures/battery-applet-properties-general.png	\
+	figures/battery-applet-properties-graph.png	\
+	figures/battery-applet-properties-messages.png	\
+	figures/battery-applet-properties-readout.png
+docname = battery_applet
 lang = C
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = battery_applet-C.omf
+sgml_ents = battery.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
