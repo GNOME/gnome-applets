@@ -8,6 +8,7 @@
 
 #include <config.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
@@ -253,6 +254,7 @@ main (int argc, char **argv)
 
 	applet_widget_init ("life_applet", VERSION, argc,
 			    argv, NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-life.png");
 
 	applet = applet_widget_new ("life_applet");
 	if (!applet)

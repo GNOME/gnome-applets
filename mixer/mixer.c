@@ -33,6 +33,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "vslider.h"
 #include "hslider.h"
@@ -718,6 +719,7 @@ main(int argc, char **argv)
 
 	applet_widget_init("mixer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-mixer.png");
 
 #ifdef OSS_API
 	openMixer("/dev/mixer");

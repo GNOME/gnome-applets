@@ -36,6 +36,7 @@
 #include <time.h>
 #include <config.h>
 #include <gnome.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <gdk/gdkx.h>
 
 #include <applet-widget.h>
@@ -65,7 +66,7 @@ main (int argc, char ** argv)
   goad_id = goad_server_activation_id ();
   if (! goad_id)
     return 1;
-
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-battery.png");
   /* Create the battery applet widget */
   applet = make_new_battery_applet (goad_id);
 
@@ -507,12 +508,14 @@ battery_update (gpointer data)
 	  (minutes_remaining == 0 && hours_remaining == 0))
 	{
 	  gtk_label_set_text (GTK_LABEL (bat->readout_label_time), "");
+	  applet_widget_set_tooltip (APPLET_WIDGET (bat->applet), NULL);
 	}
       else
 	{
 	  g_snprintf (labelstr, sizeof (labelstr), "%d:%02d", hours_remaining,
 		      minutes_remaining);
 	  gtk_label_set_text (GTK_LABEL (bat->readout_label_time), labelstr);
+	  applet_widget_set_tooltip (APPLET_WIDGET (bat->applet), labelstr);
 	}
     }
 

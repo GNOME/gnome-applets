@@ -20,6 +20,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "global.h"
 
@@ -46,6 +47,8 @@ about_cb (AppletWidget *widget, gpointer data)
 	 _("Released under the GNU general public license.\n\n"
 	   "Swap Load Meter Applet."),
 	 NULL);
+    gnome_window_icon_set_from_file (GTK_WINDOW (about),
+				     GNOME_ICONDIR"/gnome-mem.png");
 
     gtk_signal_connect (GTK_OBJECT (about), "destroy",
 			GTK_SIGNAL_FUNC (gtk_widget_destroyed), &about);

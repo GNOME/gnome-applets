@@ -13,6 +13,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
@@ -334,6 +335,7 @@ main(int argc, char **argv)
 	   call gnome_init */
 	applet_widget_init("webcontrol_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-mnemonic.png");
 
 	/* create a new applet_widget */
 	WC.applet = applet_widget_new("webcontrol_applet");

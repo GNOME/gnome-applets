@@ -1,4 +1,5 @@
 #include "global.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 GList *multiload_property_object_list = NULL;
 
@@ -98,6 +99,9 @@ multiload_show_properties (PropertyClass prop_class)
     }
 	
     win = gnome_property_box_new ();
+    if (prop_class == PROP_MEMLOAD || prop_class == PROP_SWAPLOAD)
+	    gnome_window_icon_set_from_file (GTK_WINDOW (win),
+					     GNOME_ICONDIR"/gnome-mem.png");
 
     for (c = multiload_property_object_list; c; c = c->next) {
 	GnomePropertyObject *object = c->data;

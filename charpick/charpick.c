@@ -4,6 +4,7 @@
 
 #include <config.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include "charpick.h"
 
 
@@ -526,7 +527,7 @@ main (int argc, char *argv[])
   /* initialize applet */
   applet_widget_init("charpick_applet", CHARPICK_VERSION, argc, argv,
 			      NULL, 0, NULL);
-
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/charpick.png");
   /* create a new applet_widget*/
   applet = applet_widget_new("charpick_applet");
   curr_data.applet = applet; 

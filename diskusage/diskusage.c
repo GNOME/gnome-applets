@@ -29,6 +29,7 @@
 
 #include <config.h>
 #include <gnome.h>
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "diskusage.h"
 #include "properties.h"
@@ -1036,6 +1037,7 @@ main (int argc, char **argv)
 
         applet_widget_init ("diskusage_applet", VERSION, argc, argv,
 			    NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-diskfree.png");
 
 	applet = applet_widget_new("diskusage_applet");
 	if (!applet)

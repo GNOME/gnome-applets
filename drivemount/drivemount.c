@@ -21,6 +21,7 @@
  */
 
 #include "drivemount.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "floppy_v_in.xpm"
 #include "floppy_v_out.xpm"
@@ -742,6 +743,8 @@ int main (int argc, char *argv[])
 
 	applet_widget_init("drivemount_applet", VERSION, argc, argv,
 			   NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/mc/i-floppy.png");
+
 	applet_factory_new("drivemount_applet_factory", NULL, applet_start_new_applet);
 
 	goad_id = (char *)goad_server_activation_id();

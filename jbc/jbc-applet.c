@@ -17,6 +17,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include "jbc-applet.h"
 
 #define CANVAS_WIDTH 82
@@ -170,7 +171,7 @@ main (int argc, char **argv)
   textdomain (PACKAGE);
 
   applet_widget_init ("jbc_applet", VERSION, argc, argv, NULL, 0, NULL);
-
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-jbc.png");
 
   applet = applet_widget_new ("jbc_applet");
   if (!applet)

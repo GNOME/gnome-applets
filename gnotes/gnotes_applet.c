@@ -25,6 +25,7 @@
 #include <sys/stat.h>
 #include <gnome.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <signal.h>
 
 #include "gnotes_applet.h"
@@ -156,6 +157,8 @@ int main(int argc, char **argv)
     gnotes_init();
 
     applet_widget_init("gnotes_applet", VERSION, argc, argv, NULL, 0, NULL);
+    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-gnotes.png");
+
 
     smClient = newGnomeClient();        /* initialize session management */
 

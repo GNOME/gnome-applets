@@ -8,6 +8,7 @@
 #include <gnome.h>
 #include <gdk_imlib.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <time.h>
 #include <stdlib.h>
 
@@ -291,6 +292,7 @@ int main(int argc, char *argv[])
 	textdomain(PACKAGE);
 
 	applet_widget_init("hal_applet", VERSION, argc, argv, NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/hal.png");
 
 	APPLET_ACTIVATE(wanda_activator, "hal_applet", &wanda_impl);
 

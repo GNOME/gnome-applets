@@ -25,6 +25,7 @@
 #include <config.h>
 
 #include <gnome.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <gdk_imlib.h>
 #include <dirent.h>
 #include <applet-widget.h>
@@ -542,6 +543,8 @@ main (int argc, char *argv[])
 
 	applet_widget_init ("quicklaunch_applet", VERSION,
 			    argc, argv, NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-quicklaunch.png");
+
 	init_quicklaunch ();
 	applet_widget_gtk_main ();
 	return 0;

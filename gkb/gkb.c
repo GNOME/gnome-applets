@@ -10,6 +10,7 @@
 #include <gnome.h>
 #include <gdk_imlib.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 
 #ifdef HAVE_LIBXKBFILE
 #include <gdk/gdkx.h>		/* for GDK_DISPLAY() */
@@ -704,6 +705,7 @@ main (int argc, char *argv[])
        textdomain (PACKAGE);
 
        applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
+       gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gkb.xpm");
 
        APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
 	

@@ -20,6 +20,7 @@
 
 #include <gnome.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "weather.h"
 #include "gweather-about.h"
@@ -174,6 +175,7 @@ void gweather_applet_create (int argc, char *argv[])
 
     applet_widget_init("gweather", VERSION, argc, argv,
                        NULL, 0, NULL);
+    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
 
     if ((gweather_applet = applet_widget_new("gweather")) == NULL)
         g_error(_("Cannot create applet!\n"));

@@ -1,4 +1,5 @@
 #include "global.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 static void multiload_show_local_properties (LocalPropData *);
 static void multiload_local_properties_apply (GtkWidget *, gint, LocalPropData *);
@@ -81,6 +82,9 @@ multiload_show_local_properties (LocalPropData *d)
     }
 	
     d->win = gnome_property_box_new ();
+    if (d->type == PROP_MEMLOAD || d->type == PROP_SWAPLOAD)
+	    gnome_window_icon_set_from_file (GTK_WINDOW (d->win),
+					     GNOME_ICONDIR"/gnome-mem.png");
 
     for (c = d->local_property_object_list; c; c = c->next) {
 	GnomePropertyObject *object = c->data;

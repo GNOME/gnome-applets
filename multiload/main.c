@@ -20,6 +20,7 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "global.h"
 
@@ -123,6 +124,7 @@ main (int argc, char **argv)
     textdomain (PACKAGE);
 
     applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0, NULL);
+    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-cpu.png");
 
     goad_id = goad_server_activation_id();
     if(!goad_id)

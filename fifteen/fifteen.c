@@ -9,7 +9,7 @@
 
 #include <config.h>
 #include <applet-widget.h>
-
+#include <libgnomeui/gnome-window-icon.h>
 
 /* the piece size is for 48 and will be scaled to the proper size */
 #define PIECE_SIZE 11
@@ -333,6 +333,7 @@ main (int argc, char **argv)
 
 	applet_widget_init ("fifteen_applet", VERSION, argc,
 			    argv, NULL, 0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-fifteen.png");
 
 	applet = applet_widget_new ("fifteen_applet");
 	if (!applet)

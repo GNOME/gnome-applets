@@ -21,6 +21,7 @@
  */
 
 #include "clockmail.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 static void about_cb (AppletWidget *widget, gpointer data);
 static void set_tooltip(struct tm *time_data, AppData *ad);
@@ -651,7 +652,7 @@ int main (int argc, char *argv[])
 
 	applet_widget_init("clockmail_applet", VERSION, argc, argv, NULL, 0,
 			   NULL);
-
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-clockmail.png");
 	applet_factory_new("clockmail_applet_factory", NULL,
 			   applet_start_new_applet);
 

@@ -22,6 +22,7 @@
 
 #include "config.h"
 #include "screenshooter_applet.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 void showHelp (AppletWidget * applet, gpointer data);
 
@@ -900,6 +901,8 @@ main (int argc, char *argv[])
 
   applet_widget_init ("screenshooter_applet", VERSION, argc, argv, NULL, 0,
 		      NULL);
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/screenshooter_applet.png");
+
   applet = applet_widget_new ("screenshooter_applet");
   if (!applet)
     g_error (_ ("Can't create applet!\n"));

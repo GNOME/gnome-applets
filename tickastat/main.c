@@ -6,6 +6,7 @@
  */
 
 #include "tickastat.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 static void event_log_cb(AppletWidget *widget, gpointer data);
 static gint close_log_cb(gpointer data);
@@ -402,6 +403,8 @@ int main (int argc, char *argv[])
 	ver_string = g_strdup_printf("%d.%d.%d", APPLET_VERSION_MAJ, APPLET_VERSION_MIN, APPLET_VERSION_REV);
 	applet_widget_init("tickastat_applet", ver_string, argc, argv, NULL,
 			   0, NULL);
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-ticker.png");
+
 	applet_factory_new("tickastat_applet_factory", NULL,
                            applet_start_new_applet);
 

@@ -21,6 +21,18 @@ GNOME_COMPILE_WARNINGS
 
 GNOME_X_CHECKS
 
+dnl Check for new enough gnome-libs
+CPPFLAGS_save=$CPPFLAGS
+LDFLAGS_save=$LDFLAGS
+CPPFLAGS=`gnome-config --cflags gnomeui`
+LDFLAGS=`gnome-config --libs gnomeui`
+
+AC_CHECK_LIB(gnomeui, gnome_window_icon_set_default_from_file, ,[
+AC_MSG_ERROR(gnome-libs 1.0.59 or higher is required.)])
+
+CPPFLAGS=$CPPFLAGS_save
+LDFLAGS=$LDFLAGS_save
+
 dnl utility conditional
 AM_CONDITIONAL(FALSE, test "x" = "y")
 
@@ -171,6 +183,8 @@ AC_SUBST(gnomelocaledir)
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
+
+AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/${DATADIRNAME}/pixmaps")
 
 AC_OUTPUT([
 gnome-applets.spec

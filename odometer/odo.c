@@ -105,6 +105,7 @@
 #include <math.h>
 #include <config.h>
 #include "odo.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 static conversionEntry conversion_table[MAX_UNIT] = {
 { INCH, "inch", "inches", 12.0,   2.54,     "cm",     "cm",     100.0,  2 },
@@ -634,6 +635,8 @@ main (int argc, char *argv[])
 
    applet_widget_init ("odometer_applet", VERSION, argc, argv,
    	NULL,0,NULL);
+   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-odometer.png");
+
    oa->applet=applet_widget_new ("odometer_applet");
    if (!oa->applet)
 	g_error (_("Can't create odometer applet!"));

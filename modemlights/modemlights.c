@@ -22,6 +22,7 @@
  */
 
 #include "modemlights.h"
+#include <libgnomeui/gnome-window-icon.h>
 
 #include "digits.xpm"
 
@@ -1140,6 +1141,8 @@ int main (int argc, char *argv[])
 
 	applet_widget_init("modemlights_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
+
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-modem.png");
 
 	if (g_file_exists("/dev/modem"))
 		{

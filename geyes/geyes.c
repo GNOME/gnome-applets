@@ -20,6 +20,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <math.h>
 
 #include "geyes.h"
@@ -415,7 +416,7 @@ main (int argc, char *argv[])
         textdomain (PACKAGE);
         
         applet_widget_init ("geyes_applet", VERSION, argc, argv, NULL, 0, NULL);
-        
+        gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-eyes.png");
         create_eyes_applet ();
         properties_load (APPLET_WIDGET (eyes_applet.applet)->privcfgpath);
         create_eyes ();
