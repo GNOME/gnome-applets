@@ -78,10 +78,11 @@ typedef struct
 	GtkWidget *w_image;		/* The applet icon */
 
 	GtkWidget *about_dialog;	/* The applet it's about dialog */
-
+	GtkWidget *destroy_all_dialog;	/* The applet it's destroy all dialog */
+	
 	gboolean prelighted;		/* Whether applet is prelighted */
 	gboolean pressed;		/* Whether applet is pressed */
-	
+
 } StickyNotesApplet;
 	
 typedef enum

@@ -113,6 +113,9 @@ gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundTyp
 /* Applet Callback : Deletes the applet. */
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 {
+	if (applet->destroy_all_dialog != NULL)
+		gtk_widget_destroy (applet->destroy_all_dialog);
+
 	if (applet->about_dialog != NULL)
 		gtk_widget_destroy (applet->about_dialog);
 	
@@ -126,25 +129,50 @@ void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gch
 	stickynotes_add(gtk_widget_get_screen(applet->w_applet));
 }
 
-/* Menu Callback : Destroy all sticky notes */
-void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+/* Destroy all response Callback: Callback for the destroy all dialog */
+static void
+destroy_all_response_cb (GtkDialog *dialog, gint id, StickyNotesApplet *applet)
 {
-	GladeXML *glade = glade_xml_new(GLADE_PATH, "delete_all_dialog", NULL);
-	GtkWidget *dialog = glade_xml_get_widget(glade, "delete_all_dialog");
-
-	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
+	if (id == GTK_RESPONSE_OK) {
 		while (g_list_length(stickynotes->notes) > 0) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, 0);
 			stickynote_free(note);
 			stickynotes->notes = g_list_remove(stickynotes->notes, note);
-		}
+		}							       
 	}
-		
+
 	stickynotes_applet_update_tooltips();
 	stickynotes_save();
 
-	gtk_widget_destroy(dialog);
-	g_object_unref(glade);
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+	applet->destroy_all_dialog = NULL;
+}
+
+/* Menu Callback : Destroy all sticky notes */
+void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+{
+	GladeXML *glade = glade_xml_new(GLADE_PATH, "delete_all_dialog", NULL);
+
+	if (applet->destroy_all_dialog != NULL) {
+		gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
+
+		gtk_window_present (GTK_WINDOW (applet->destroy_all_dialog));
+		return;
+	}
+	
+	applet->destroy_all_dialog = glade_xml_get_widget(glade, "delete_all_dialog");
+
+	g_object_unref (glade);
+
+	g_signal_connect (applet->destroy_all_dialog, "response",
+			  G_CALLBACK (destroy_all_response_cb),
+			  applet);
+
+	gtk_window_set_screen (GTK_WINDOW (applet->destroy_all_dialog),
+			gtk_widget_get_screen (applet->w_applet));
+
+	gtk_widget_show_all (applet->destroy_all_dialog);
 }
 
 /* Menu Callback : Show/Hide sticky notes */

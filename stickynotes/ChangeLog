@@ -1,3 +1,22 @@
+2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* stickynotes_applet_callback.c (menu_destroy_all_cb):
+	Made event driven so it doesn't block different instances
+	and made multihead aware. Also have only one dialog
+	per instance.
+
+	(destroy_all_response_cb):
+	Added callback function for the menu_destroy_all_cb dialog.
+
+	* stickynotes_applet.h:
+	Added the dialog_destroy_all entry.
+
+	* sticyknotes_applet.c (stickynotes_applet_new):
+	Set the dialog_destroy_all NULL.
+
+	* stickynotes_applet_callbacks.c (applet_destroy_cb):
+	Destroy the dialog_destroy_all at instance destroy.
+
 2004-02-19  Kevin Vandersloot
 
 	* stickynotes_applet.c, stickynotes.c: Put in some sanity checks for gconf settings.
