@@ -340,7 +340,7 @@ apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 	  _("Your platform is not supported!\n"));
   g_print(_("The applet will not work properly (if at all).\n"));
 }
-#endif 
+#endif
 
 
 /* void */
@@ -421,7 +421,14 @@ static char *get_remaining (apm_info apminfo)
 						mins, ngettext ("minute", "minutes", mins),
 						batt_life);
 }
-	
+
+static void
+on_lowbatt_notification_response (GtkWidget *widget, gint arg, GtkWidget **self)
+{
+	   gtk_widget_destroy (GTK_WIDGET (*self));
+	   *self = NULL;
+}
+
 gint
 pixmap_timeout( gpointer data )
 {
@@ -535,8 +542,8 @@ pixmap_timeout( gpointer data )
 			 GTK_STOCK_OK,
 			 GTK_RESPONSE_ACCEPT,
 			 NULL);
-	 g_signal_connect_swapped (GTK_OBJECT (battery->lowbattnotificationdialog), "response",
-			 G_CALLBACK (gtk_widget_destroy), GTK_OBJECT (battery->lowbattnotificationdialog));
+	 g_signal_connect (G_OBJECT (battery->lowbattnotificationdialog), "response",
+			 G_CALLBACK (on_lowbatt_notification_response), &battery->lowbattnotificationdialog);
 	 gtk_container_set_border_width (GTK_CONTAINER (battery->lowbattnotificationdialog), 6);
 	 gtk_dialog_set_has_separator (GTK_DIALOG (battery->lowbattnotificationdialog), FALSE);
 	 hbox = gtk_hbox_new (FALSE, 6);
@@ -588,7 +595,7 @@ pixmap_timeout( gpointer data )
 			 GTK_STOCK_OK,
 			 GTK_RESPONSE_ACCEPT,
 			 NULL);
-	 g_signal_connect_swapped (GTK_OBJECT (dialog), "reponse",
+	 g_signal_connect_swapped (GTK_OBJECT (dialog), "response",
 			 G_CALLBACK (gtk_widget_destroy), GTK_OBJECT (dialog));
 	 gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
 	 gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
