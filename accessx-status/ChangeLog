@@ -1,3 +1,14 @@
+2003-10-15  Jody Goldberg <jody@gnome.org>
+
+	* applet.c (timer_reset_slowkeys_image) : gtk_image_set_from_pixbuf
+	adds a ref, it does not assume it.  We need to unref to avoid a leak.
+	(timer_reset_bouncekeys_image) : ditto.
+	(accessx_status_applet_update) : put down the crack pipe, step away
+	from the keyboard and _RTFM_.  The image takes care of it's own ref
+	counting we don't need to free that, what we do need to free are the
+	newly created images from the accessx_status_applet_*_image routines
+	that gtk_image_set_from_pixbuf has just added a reference to.
+
 Mon Sep 15 14:22:30 2003  George Lebl <jirka@5z.com>
 
 	* applet.c: cast properly to get rid of warning
