@@ -287,6 +287,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 				  GTK_POLICY_AUTOMATIC);
 
   gw_applet->forecast_text = gtk_text_view_new ();
+  set_access_namedesc (gw_applet->forecast_text, _("ForeCast Report"),                                                             _("See the ForeCast Details"));
   gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->forecast_text);
   gtk_text_view_set_editable (GTK_TEXT_VIEW (gw_applet->forecast_text), FALSE);
   gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), GNOME_PAD);
@@ -329,6 +330,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_box_pack_start (GTK_BOX (radar_vbox), radar_link_alignment, FALSE, FALSE, 0);
 
       radar_link_btn = gtk_button_new_with_label (_("Visit Weather.com"));
+      set_access_namedesc (radar_link_btn, _("URL link Button"),                                                            _("Click to Enter Weather.com"));
       gtk_widget_set_usize(radar_link_btn, 450, -2);
       gtk_widget_show (radar_link_btn);
       gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);

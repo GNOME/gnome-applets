@@ -38,6 +38,101 @@ enum
 }; 
 
 
+static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet);
+
+
+/* sets up ATK Relation between the widgets */
+
+void
+add_atk_relation (GtkWidget *widget1, GtkWidget *widget2, AtkRelationType type)
+{
+    AtkObject *atk_obj1, *atk_obj2;
+    AtkRelationSet *relation_set;
+    AtkRelation *relation;
+   
+    /* If the relation is LABELLED_BY set LABEL_FOR also */
+
+    if (type == ATK_RELATION_LABELLED_BY)
+       gtk_label_set_mnemonic_widget (GTK_LABEL (widget2), widget1);
+
+    atk_obj1 = gtk_widget_get_accessible (widget1);
+    if (! GTK_IS_ACCESSIBLE (atk_obj1))
+       return;
+    atk_obj2 = gtk_widget_get_accessible (widget2);
+
+    relation_set = atk_object_ref_relation_set (atk_obj1);
+    relation = atk_relation_new (&atk_obj2, 1, type);
+    atk_relation_set_add (relation_set, relation);
+    g_object_unref (G_OBJECT (relation));
+}
+
+/* sets accessible name and description */
+
+void
+set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc)
+{
+    AtkObject *obj;
+
+    obj = gtk_widget_get_accessible (widget);
+    if (! GTK_IS_ACCESSIBLE (obj))
+       return;
+
+    if ( desc )
+       atk_object_set_description (obj, desc);
+    if ( name )
+       atk_object_set_name (obj, name);
+}
+
+/* sets accessible name, description, CONTROLLED_BY 
+ * and CONTROLLER_FOR relations for the components
+ * in gweather preference dialog.
+ */
+
+static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet)
+{
+
+    /* Relation between components in Network page */
+
+    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_url_entry,                                              ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_port_entry,                                              ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_user_entry,                                             ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_passwd_entry                                           , ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_net_proxy_btn, gw_applet->pref_net_proxy_auth_btn,                                              ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_net_proxy_auth_btn, gw_applet->pref_net_proxy_user_entry                                        , ATK_RELATION_CONTROLLER_FOR); 
+    add_atk_relation (gw_applet->pref_net_proxy_auth_btn,                                                            gw_applet->pref_net_proxy_passwd_entry, ATK_RELATION_CONTROLLER_FOR);
+
+
+    add_atk_relation (gw_applet->pref_net_proxy_url_entry, gw_applet->pref_net_proxy_btn,                                              ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_port_entry, gw_applet->pref_net_proxy_btn,                                              ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_user_entry, gw_applet->pref_net_proxy_btn,                                             ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_passwd_entry, gw_applet->pref_net_proxy_btn                                            , ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_auth_btn, gw_applet->pref_net_proxy_btn,                                               ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_user_entry, gw_applet->pref_net_proxy_auth_btn                                         , ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_passwd_entry,                                                        gw_applet->pref_net_proxy_auth_btn, ATK_RELATION_CONTROLLED_BY);
+   
+    /* Relation between components in General page */
+
+    add_atk_relation (gw_applet->pref_basic_update_btn, gw_applet->pref_basic_update_spin,                                             ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_basic_radar_btn, gw_applet->pref_basic_radar_url_btn,                                            ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_basic_radar_btn, gw_applet->pref_basic_radar_url_entry                                            , ATK_RELATION_CONTROLLER_FOR);
+
+    add_atk_relation (gw_applet->pref_basic_update_spin, gw_applet->pref_basic_update_btn,                                             ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_basic_radar_url_btn, gw_applet->pref_basic_radar_btn,                                            ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_basic_radar_url_entry, gw_applet->pref_basic_radar_btn                                            , ATK_RELATION_CONTROLLED_BY);
+
+    /* Accessible Name and Description for the components in Preference Dialog */
+   
+    set_access_namedesc (gw_applet->pref_tree, _("Location view"),                                                       _("Select Location from the list"));
+    set_access_namedesc (gw_applet->pref_net_proxy_url_entry, _("URL Entry"),                                            _("Enter the Location"));
+    set_access_namedesc (gw_applet->pref_net_proxy_port_entry, _("Port Entry"),                                          _("Enter the Port number"));
+    set_access_namedesc (gw_applet->pref_net_proxy_user_entry, _("User Entry"),                                           _("Enter the user name"));
+    set_access_namedesc (gw_applet->pref_net_proxy_passwd_entry, _("Password Entry"),                                     _("Enter the Password"));
+
+    set_access_namedesc (gw_applet->pref_basic_update_spin, _("Update spin button"),                                      _("Spinbutton for updating"));
+    set_access_namedesc (gw_applet->pref_basic_radar_url_entry, _("Address Entry"),                                        _("Enter the URL"));
+
+}
+
 static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
 {
     return (l1 && l2 && weather_location_equal(l1, l2)) ? 0 : 1;
@@ -345,6 +440,7 @@ proxy_toggled (GtkToggleButton *button, gpointer data)
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_port_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
+    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_auth_btn, toggled);
 
     gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy", 
     			   toggled, NULL);
@@ -379,6 +475,8 @@ proxy_auth_toggled (GtkToggleButton *button, gpointer data)
     gboolean toggled;
 	
     toggled = gtk_toggle_button_get_active(button);
+    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
+    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
     gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy-authorization", 
     			   toggled, NULL);
 }
@@ -593,6 +691,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *proxy_box;
     GtkWidget *pref_net_note_lbl;
     GtkWidget *pref_net_proxy_url_lbl;
+    GtkWidget *pref_net_proxy_port_lbl;
     GtkWidget *pref_net_proxy_user_lbl;
     GtkWidget *pref_net_proxy_passwd_lbl;
     GtkWidget *pref_loc_hbox;
@@ -689,9 +788,9 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
     
-    label = gtk_label_new (_("Port :"));
-    gtk_widget_show (label);
-    gtk_box_pack_start (GTK_BOX (hbox), label, 
+    pref_net_proxy_port_lbl = gtk_label_new (_("Port :"));
+    gtk_widget_show (pref_net_proxy_port_lbl);
+    gtk_box_pack_start (GTK_BOX (hbox),  pref_net_proxy_port_lbl, 
     			FALSE, FALSE, 0);
     			
     gw_applet->pref_net_proxy_port_entry = gtk_entry_new ();
@@ -882,6 +981,22 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
     		      G_CALLBACK (response_cb), gw_applet);
+   
+    gweather_pref_set_accessibility (gw_applet); 
+    add_atk_relation (gw_applet->pref_net_proxy_url_entry, pref_net_proxy_url_lbl,      
+                                            ATK_RELATION_LABELLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_port_entry,  pref_net_proxy_port_lbl,      
+                                             ATK_RELATION_LABELLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_passwd_entry, pref_net_proxy_passwd_lbl,   
+                                            ATK_RELATION_LABELLED_BY);
+    add_atk_relation (gw_applet->pref_net_proxy_user_entry, pref_net_proxy_user_lbl,       
+                                            ATK_RELATION_LABELLED_BY);
+    add_atk_relation (gw_applet->pref_basic_update_spin, pref_basic_update_sec_lbl,        
+                                            ATK_RELATION_LABELLED_BY);
+    add_atk_relation (gw_applet->pref_basic_radar_url_entry, label, ATK_RELATION_LABELLED_BY
+);
+ 
+
 
     gtk_widget_show_all (gw_applet->pref);
 }
