@@ -401,7 +401,9 @@ void gweather_dialog_update (void)
 {
     const gchar *forecast;
 
-    g_return_if_fail(gweather_info != NULL);
+    /* Check for parallel network update in progress */
+    if(gweather_info == NULL)
+    	return;
 
     if (!gweather_dialog)
         return;
