@@ -386,10 +386,8 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 
   gtk_widget_show (tree1);
 
-  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled1),
-					 tree1);
+  gtk_container_add (GTK_CONTAINER (scrolled1), tree1);
 
-  
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree1));
 
   gtk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
