@@ -93,10 +93,13 @@ load_graph_update (LoadGraph *g)
 {
     guint i, j;
 
-	if (g->tooltip_update)
-		multiload_applet_tooltip_update(g);
-	else		
-	    g->get_data (g->draw_height, g->data [0], g);
+    if (g->data == NULL)
+	return TRUE;
+    
+    if (g->tooltip_update)
+	multiload_applet_tooltip_update(g);
+    else		
+	g->get_data (g->draw_height, g->data [0], g);
 
     for (i=0; i < g->draw_width-1; i++)
 		for (j=0; j < g->n; j++)
