@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-12-09 05:50+0100\n"
-"PO-Revision-Date: 2002-12-09 20:41+0200\n"
-"Last-Translator: Artis Trops <hornet@navigator.lv>\n"
+"POT-Creation-Date: 2002-12-20 05:49+0100\n"
+"PO-Revision-Date: 2002-12-22 12:07+0200\n"
+"Last-Translator: Artis Trops <hornet@navigators.lv>\n"
 "Language-Team: Latvian <ll10nt@os.lv>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:842
+#: battstat/battstat_applet.c:848
 msgid "Battery Charge Monitor"
 msgstr "Baterijas Uzlādes Pārraugs"
 
@@ -49,6 +49,7 @@ msgstr "Utilīta"
 #: mixer/GNOME_MixerApplet.xml.h:1
 #: modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Par..."
 
@@ -77,6 +78,7 @@ msgstr "_Palīdzība"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "P_references..."
 
@@ -86,103 +88,115 @@ msgstr "_Iemidzināt Datoru..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:284
-msgid "Your platform is not supported!\n"
-msgstr "Jūsu platforma nav atbalstīta!\n"
+#: battstat/battstat_applet.c:286
+msgid ""
+"Your platform is not supported!\n"
+""
+msgstr ""
+"Jūsu platforma nav atbalstīta!\n"
+""
 
-#: battstat/battstat_applet.c:285
-msgid "The applet will not work properly (if at all).\n"
-msgstr "Sīkprogramma nestrādās kā nākas (ja vispār strādās).\n"
+#: battstat/battstat_applet.c:287
+msgid ""
+"The applet will not work properly (if at all).\n"
+""
+msgstr ""
+"Paneļprogramma nestrādās kā nākas (ja vispār strādās).\n"
+""
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316
-#: battstat/battstat_applet.c:871
+#: battstat/battstat_applet.c:318
+#: battstat/battstat_applet.c:879
 msgid "High"
 msgstr "Augsts"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318
-#: battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:320
+#: battstat/battstat_applet.c:881
 msgid "Low"
 msgstr "Zems"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320
-#: battstat/battstat_applet.c:875
+#: battstat/battstat_applet.c:322
+#: battstat/battstat_applet.c:883
 msgid "Critical"
 msgstr "Kritisks"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322
-#: battstat/battstat_applet.c:877
+#: battstat/battstat_applet.c:324
+#: battstat/battstat_applet.c:885
 msgid "Charging"
 msgstr "Lādējas"
 
-#: battstat/battstat_applet.c:403
+#: battstat/battstat_applet.c:405
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Baterijas līmenis ir zems (%d%%) un Maiņstrāva (AC) ir atslēgta."
 
-#: battstat/battstat_applet.c:427
+#: battstat/battstat_applet.c:429
 msgid "Battery is now fully re-charged!"
 msgstr "Baterija ir pilnībā uzlādēta!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:446
-#: battstat/battstat_applet.c:1035
+#: battstat/battstat_applet.c:448
+#: battstat/battstat_applet.c:1043
 #, c-format
-msgid "System is running on battery power\n"
+msgid ""
+"System is running on battery power\n"
 "Battery: %d%% (%s)"
-msgstr "Sistēma izmanto baterijas enerģiju\n"
+msgstr ""
+"Sistēma izmanto baterijas enerģiju\n"
 "Baterija: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:450
-#: battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:452
+#: battstat/battstat_applet.c:1051
 #, c-format
-msgid "System is running on AC power\n"
+msgid ""
+"System is running on AC power\n"
 "Battery: %d%% (%s)"
-msgstr "Sistēma izmanto (AC) maiņstrāvu\n"
+msgstr ""
+"Sistēma izmanto (AC) maiņstrāvu\n"
 "Baterija: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:456
-#: battstat/battstat_applet.c:967
-#: battstat/battstat_applet.c:1056
+#: battstat/battstat_applet.c:458
+#: battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:1064
 msgid "System is running on battery power"
 msgstr "Sistēma izmanto bateriju enerģiju"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:459
-#: battstat/battstat_applet.c:973
-#: battstat/battstat_applet.c:1062
+#: battstat/battstat_applet.c:461
+#: battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:1070
 msgid "System is running on AC power"
 msgstr "Sistēma izmanto maiņstrāvu (AC)"
 
-#: battstat/battstat_applet.c:473
+#: battstat/battstat_applet.c:475
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:597
-#: battstat/battstat_applet.c:947
+#: battstat/battstat_applet.c:599
+#: battstat/battstat_applet.c:955
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Sistēma izmanto baterijas enerģiju. Baterija: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:604
-#: battstat/battstat_applet.c:954
+#: battstat/battstat_applet.c:606
+#: battstat/battstat_applet.c:962
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Sistēma izmanto maiņstrāvas enerģiju. Baterija: %d%% (%s)"
@@ -191,33 +205,33 @@ msgstr "Sistēma izmanto maiņstrāvas enerģiju. Baterija: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:615
+#: battstat/battstat_applet.c:617
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Sistēma izmanto baterijas enerģiju. Baterija: Nav"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:621
+#: battstat/battstat_applet.c:623
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Sistēma izmanto (AC) maiņstrāvas enerģiju. Baterija: Nav"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:630
+#: battstat/battstat_applet.c:632
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Baterija: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:637
+#: battstat/battstat_applet.c:639
 msgid "Battery: Not present"
 msgstr "Baterija: Nav"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:715
+#: battstat/battstat_applet.c:719
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -230,65 +244,75 @@ msgstr ""
 "APM iekārtu."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:724
+#: battstat/battstat_applet.c:728
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
+""
 msgstr ""
 "APM Pārvaldīšanas apakšsistēma izskatās deaktivizēta.\n"
 "Mēģiniet palaist \"apm -e 1\" (FreeBSD) un skatīties vai \n"
 "tas palīdz.\n"
+""
 
-#: battstat/battstat_applet.c:777
+#: battstat/battstat_applet.c:783
 #, c-format
-msgid "An error occured while launching the Suspend command: %s\n"
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
 "Please try to correct this error"
-msgstr "Atgadījās kļūda, palaižot Iemidzināšanas komandu: %s\n"
+msgstr ""
+"Atgadījās kļūda, palaižot Iemidzināšanas komandu: %s\n"
 "Lūdzu mēģiniet izlabot šo kļūdu"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:780
+#: battstat/battstat_applet.c:786
 #, c-format
-msgid "An error occured while launching the Suspend command, the command returned \"%d\"\n"
+msgid ""
+"An error occured while launching the Suspend command, the command returned \"%d\"\n"
 "Please try to correct this error"
-msgstr "Atgadījās kļūda, palaižot Iemidzināšanas komandu, komanda atgrieza \"%d\"\n"
+msgstr ""
+"Atgadījās kļūda, palaižot Iemidzināšanas komandu, komanda atgrieza \"%d\"\n"
 "Lūdzu mēģiniet izlabot šo kļūdu"
 
-#: battstat/battstat_applet.c:788
-msgid "Suspend command wasn't setup correctly in the preferences.\n"
+#: battstat/battstat_applet.c:794
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
-msgstr "Iemidzināšanas komanda netika pareizi uzstādīta preferencēs.\n"
+msgstr ""
+"Iemidzināšanas komanda netika pareizi uzstādīta preferencēs.\n"
 "Lūdzu izmainiet preferences un mēģiniet vēlreiz."
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:819
+#: battstat/battstat_applet.c:825
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:829
-#: cdplayer/cdplayer.c:467
-#: charpick/charpick.c:373
-#: drivemount/drivemount.c:449
-#: geyes/geyes.c:216
-#: gkb-new/gkb.c:593
-#: gtik/gtik.c:708
+#: battstat/battstat_applet.c:835
+#: cdplayer/cdplayer.c:502
+#: charpick/charpick.c:374
+#: drivemount/drivemount.c:453
+#: geyes/geyes.c:217
+#: gkb-new/gkb.c:594
+#: gtik/gtik.c:704
 #: gweather/gweather-about.c:43
-#: mini-commander/src/about.c:46
-#: mixer/mixer.c:808
-#: modemlights/modemlights.c:208
-#: multiload/main.c:56
+#: mini-commander/src/about.c:48
+#: mixer/mixer.c:814
+#: modemlights/modemlights.c:209
+#: multiload/main.c:57
 #: panel-menu/panel-menu.c:674
+#: wireless/wireless-applet.c:703
 msgid "translator_credits"
-msgstr "Pēteris Krišjānis <peteris.krisjanis@os.lv>\n"
+msgstr ""
+"Pēteris Krišjānis <peteris.krisjanis@os.lv>\n"
 "Artis Trops <hornet@navigator.lv>"
 
-#: battstat/battstat_applet.c:844
+#: battstat/battstat_applet.c:850
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 The Gnulix Society, (C) 2002 Brīvās Programmatūras Fonds"
+msgstr "© 2000 The Gnulix Society, © 2002 Brīvās Programmatūras Fonds"
 
-#: battstat/battstat_applet.c:845
+#: battstat/battstat_applet.c:851
 msgid "This utility show the status of your laptop battery."
 msgstr "Utilīta, kas parāda jūsu portatīvā datora bateriju statusu."
 
@@ -297,15 +321,15 @@ msgstr "Utilīta, kas parāda jūsu portatīvā datora bateriju statusu."
 msgid "100%"
 msgstr "100%"
 
-#. appearance frame
 #: battstat/battstat_applet.glade.h:3
-#: mini-commander/src/preferences.c:743
+#: gtik/gtik.c:1456
+#: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Izskats"
 
 #: battstat/battstat_applet.glade.h:4
 msgid "Applet layout"
-msgstr "Sīkprogrammas izkārtojums"
+msgstr "Paneļprogrammas izkārtojums"
 
 #: battstat/battstat_applet.glade.h:5
 msgid "Battery Charge Monitor Preferences"
@@ -321,6 +345,9 @@ msgid "Beep when either of the above is true"
 msgstr "Pīkstēt, kad viens no augšējiem ir patiess"
 
 #: battstat/battstat_applet.glade.h:9
+#: gweather/gweather-pref.c:707
+#: mini-commander/src/mini-commander.glade.h:12
+#: modemlights/properties.c:428
 msgid "General"
 msgstr "Vispārēji"
 
@@ -393,19 +420,19 @@ msgid "Battery power low"
 msgstr "Baterija gandrīz tukša"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1
-#: cdplayer/cdplayer.c:169
-#: cdplayer/cdplayer.c:483
-#: cdplayer/cdplayer.c:896
+#: cdplayer/cdplayer.c:189
+#: cdplayer/cdplayer.c:520
+#: cdplayer/cdplayer.c:911
 msgid "CD Player"
 msgstr "CD Atskaņotājs"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
 msgid "CD Player Applet Factory"
-msgstr "CD Atskaņotāja Sīkprogrammas Ražotne"
+msgstr "CD Atskaņotāja Paneļprogrammas Ražotne"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
 msgid "Factory for CD player applet"
-msgstr "CD atskaņotāja sīkprogrammas ražotne"
+msgstr "CD atskaņotāja paneļprogrammas ražotne"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
 #: mixer/GNOME_MixerApplet.server.in.in.h:2
@@ -414,123 +441,125 @@ msgstr "Multimedija"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
 msgid "Panel applet for playing audio CDs"
-msgstr "Paneļa sīkprogramma audio CD atskaņošanai"
+msgstr "Paneļprogramma audio CD atskaņošanai"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
 msgid "_Run External CD Player"
 msgstr "_Palaist Ārējo CD Atskaņotāju"
 
-#: cdplayer/cdplayer.c:157
-#: cdplayer/cdplayer.c:886
+#: cdplayer/cdplayer.c:169
+#: cdplayer/cdplayer.c:901
 msgid "Stop"
 msgstr "Apturēt"
 
-#: cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:888
+#: cdplayer/cdplayer.c:173
+#: cdplayer/cdplayer.c:903
 msgid "Play / Pause"
 msgstr "Atskaņot / Pauze"
 
-#: cdplayer/cdplayer.c:161
-#: cdplayer/cdplayer.c:890
+#: cdplayer/cdplayer.c:177
+#: cdplayer/cdplayer.c:905
 msgid "Eject"
 msgstr "Izbīdīt"
 
-#: cdplayer/cdplayer.c:163
-#: cdplayer/cdplayer.c:892
+#: cdplayer/cdplayer.c:181
+#: cdplayer/cdplayer.c:907
 msgid "Previous Track"
 msgstr "Iepriekšējais Celiņš"
 
-#: cdplayer/cdplayer.c:165
-#: cdplayer/cdplayer.c:894
+#: cdplayer/cdplayer.c:185
+#: cdplayer/cdplayer.c:909
 msgid "Next Track"
 msgstr "Nākošais Celiņš"
 
-#: cdplayer/cdplayer.c:280
-#: drivemount/drivemount.c:397
-#: mixer/mixer.c:775
-#: multiload/main.c:111
+#: cdplayer/cdplayer.c:304
+#: drivemount/drivemount.c:399
+#: mixer/mixer.c:780
+#: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "Kļūda izpildot '%s': %s"
 
-#: cdplayer/cdplayer.c:379
+#: cdplayer/cdplayer.c:409
 msgid "CD Player Preferences"
 msgstr "CD Atskaņotāja Preferences"
 
-#: cdplayer/cdplayer.c:395
+#: cdplayer/cdplayer.c:427
 msgid "Disc Image"
 msgstr "Diska Atēls"
 
-#: cdplayer/cdplayer.c:395
+#: cdplayer/cdplayer.c:427
 msgid "An image of a cd-rom disc"
 msgstr "cd-rom diska attēls"
 
-#: cdplayer/cdplayer.c:397
+#: cdplayer/cdplayer.c:429
 msgid "Device _Path:"
 msgstr "_Ceļš Uz Iekārtu:"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:438
 msgid "Device Path"
 msgstr "Ceļš Uz Iekārtu"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:438
 msgid "Set the device path here"
 msgstr "Šeit uzstādīt ceļu uz iekārtu"
 
-#: cdplayer/cdplayer.c:409
+#: cdplayer/cdplayer.c:441
 msgid "Use _Default"
 msgstr "Lietot _Noklusēto"
 
-#: cdplayer/cdplayer.c:484
-msgid "(C) 1997 The Free Software Foundation\n"
+#: cdplayer/cdplayer.c:521
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr "(C) 1997 Brīvās Programmatūras Fonds\n"
-"(C) 2001 Chris Phelps (GNOME 2 Ports)"
+msgstr ""
+"© 1997 Brīvās Programmatūras Fonds\n"
+"© 2001 Chris Phelps (GNOME 2 Ports)"
 
-#: cdplayer/cdplayer.c:486
-#: cdplayer/cdplayer.c:897
+#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:912
 msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "CD Atskaņotāja sīkprogramma ir vienkāršs audio CD atskaņotājs jūsu panelim"
+msgstr "CD Atskaņotāja paneļprogramma ir vienkāršs audio CD atskaņotājs jūsu panelim"
 
-#: cdplayer/cdplayer.c:767
-#: cdplayer/cdplayer.c:778
+#: cdplayer/cdplayer.c:780
+#: cdplayer/cdplayer.c:791
 msgid "Elapsed time"
 msgstr "Aizritējušais laiks"
 
-#: cdplayer/cdplayer.c:770
-#: cdplayer/cdplayer.c:780
+#: cdplayer/cdplayer.c:783
+#: cdplayer/cdplayer.c:793
 msgid "Track number"
 msgstr "Celiņa numurs"
 
-#: cdplayer/cdplayer.c:887
+#: cdplayer/cdplayer.c:902
 msgid "Click this button to Stop playing the CD"
 msgstr "Klikšķiniet šo pogu, lai Apturētu CD spēlēšanu"
 
-#: cdplayer/cdplayer.c:889
+#: cdplayer/cdplayer.c:904
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klikšķiniet šo pogu, lai Atkaņotu vai Pauzētu CD"
 
-#: cdplayer/cdplayer.c:891
+#: cdplayer/cdplayer.c:906
 msgid "Click this button to eject the CD"
 msgstr "Klikšķiniet šo pogu, lai izbīdītu CD"
 
-#: cdplayer/cdplayer.c:893
+#: cdplayer/cdplayer.c:908
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klikšķiniet šo pogu, lai Atskaņotu iepriekšējo celiņu no CD"
 
-#: cdplayer/cdplayer.c:895
+#: cdplayer/cdplayer.c:910
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klikšķiniet šo pogu, lai Atskaņotu nākošo celiņu no CD"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1
-#: charpick/charpick.c:389
-#: charpick/charpick.c:482
+#: charpick/charpick.c:392
+#: charpick/charpick.c:490
 msgid "Character Palette"
 msgstr "Rakstzīmju Palete"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr "Charpicker Sīkprogrammas Ražotne"
+msgstr "Charpicker Paneļprogrammas Ražotne"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:3
 msgid "Insert characters"
@@ -538,54 +567,54 @@ msgstr "Ievietot rakstzīmes"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:365
+#: charpick/charpick.c:366
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:391
+#: charpick/charpick.c:394
 msgid "Copyright (C) 1998"
-msgstr "Autortiesības (C) 1998"
+msgstr "Autortiesības © 1998"
 
-#: charpick/charpick.c:392
+#: charpick/charpick.c:395
 msgid "Gnome Panel applet for selecting strange characters that are not on my keyboard. Released under GNU General Public Licence."
-msgstr "Gnome Paneļa sīkprogramma, lai izvēlētos dīvainas rakstzīmes, kas nav uz jūsu klaviatūras. Izlaista zem GNU General Public License."
+msgstr "Gnome Paneļa paneļprogramma, lai izvēlētos dīvainas rakstzīmes, kas nav uz jūsu tastatūras. Izlaista saskaņā ar GNU General Public License."
 
-#: charpick/charpick.c:481
+#: charpick/charpick.c:489
 msgid "Insert special characters"
 msgstr "Ievietot speciālas rakstzīmes"
 
-#: charpick/properties.c:79
+#: charpick/properties.c:80
 msgid "_Default character list:"
 msgstr "_Noklusētais rakstzīmju saraksts:"
 
-#: charpick/properties.c:88
+#: charpick/properties.c:89
 msgid "Default list of characters"
 msgstr "Noklusētais rakstzīmju saraksts"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Set the default character list here"
 msgstr "Šeit uzstādīt noklusēto rakstzīmju sarakstu"
 
-#: charpick/properties.c:91
+#: charpick/properties.c:92
 msgid "These characters will appear when the panel is started. To return to this list, hit <d> while the applet has focus."
-msgstr "Šīs rakstzīmes parādīsies, kad panelis startēsies. Lai atgrieztos pie šī saraksta, spiežiet <d> kamēr sīkprogrammai ir fokuss."
+msgstr "Šīs rakstzīmes parādīsies, kad panelis startēsies. Lai atgrieztos pie šī saraksta, spiežiet <d> kamēr paneļprogrammai ir fokuss."
 
-#: charpick/properties.c:150
+#: charpick/properties.c:156
 msgid "Character Palette Preferences"
 msgstr "Rakstzīmju Paletes Preferences"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:465
+#: drivemount/drivemount.c:471
 msgid "Disk Mounter"
 msgstr "Disku Montieris"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
 msgid "Drive Mount Applet Factory"
-msgstr "Iekārtu Montēšanas Sīkprogrammas Ražotne"
+msgstr "Iekārtu Montēšanas Paneļprogrammas Ražotne"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
 msgid "Factory for drive mount applet"
-msgstr "Iekārtu montēšanas sīkprogrammas ražotne"
+msgstr "Iekārtu montēšanas paneļprogrammas ražotne"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
 msgid "Mount local disks and devices"
@@ -599,110 +628,116 @@ msgstr "_Lūkoties..."
 msgid "_Eject"
 msgstr "_Izbīdīt"
 
-#: drivemount/drivemount.c:466
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 The GNOME Hakeri\n"
+#: drivemount/drivemount.c:472
+msgid ""
+"(C) 1999-2001 The GNOME Hackers\n"
+""
+msgstr ""
+"© 1999-2001 The GNOME Hakeri\n"
+""
 
-#: drivemount/drivemount.c:468
+#: drivemount/drivemount.c:474
 msgid "Applet for mounting and unmounting block volumes."
-msgstr "Sīkprogramma iekārtu partīciju montēšanai un nomontēšanai."
+msgstr "Paneļprogramma iekārtu partīciju montēšanai un nomontēšanai."
 
-#: drivemount/drivemount.c:664
+#: drivemount/drivemount.c:672
 msgid " mounted"
 msgstr " montēts"
 
-#: drivemount/drivemount.c:666
+#: drivemount/drivemount.c:674
 msgid " not mounted"
 msgstr " nav montēts"
 
-#: drivemount/drivemount.c:776
-msgid "Drive Mount Applet Warning"
-msgstr "Iekārtu Montēšanas Sīkprogrammas Brīdinājums"
-
-#: drivemount/drivemount.c:784
-msgid "\" reported:\n"
-msgstr "\" ziņots:\n"
-
 #: drivemount/drivemount.c:786
-msgid "Drivemount command failed.\n"
+msgid "Drive Mount Applet Warning"
+msgstr "Iekārtu Montēšanas Paneļprogrammas Brīdinājums"
+
+#: drivemount/drivemount.c:796
+msgid ""
+"\" reported:\n"
+""
+msgstr ""
+"\" ziņots:\n"
+""
+
+#: drivemount/drivemount.c:798
+msgid ""
+"Drivemount command failed.\n"
 "\""
-msgstr "Drivemount komanda neizdevās.\n"
+msgstr ""
+"Drivemount komanda neizdevās.\n"
 "\""
 
 #: drivemount/properties.c:252
 msgid "Disk Mounter Preferences"
 msgstr "Disku Montiera Preferences"
 
-#: drivemount/properties.c:258
-msgid "Settings"
-msgstr "Uzstādījumi"
-
-#: drivemount/properties.c:271
+#: drivemount/properties.c:273
 msgid "_Mount point:"
 msgstr "_Montēšanas punkts:"
 
-#: drivemount/properties.c:289
+#: drivemount/properties.c:291
 msgid "_Update interval (seconds):"
 msgstr "_Atjaunināšanas intervāls (sekundes):"
 
-#: drivemount/properties.c:305
-#: panel-menu/panel-menu-properties.c:109
+#: drivemount/properties.c:307
+#: panel-menu/panel-menu-properties.c:111
 msgid "_Icon :"
 msgstr "_Ikona :"
 
-#: drivemount/properties.c:323
+#: drivemount/properties.c:325
 msgid "Floppy"
 msgstr "Diskete"
 
-#: drivemount/properties.c:326
+#: drivemount/properties.c:328
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:329
+#: drivemount/properties.c:331
 msgid "Cd Recorder"
 msgstr "Cd Rakstītājs"
 
-#: drivemount/properties.c:332
+#: drivemount/properties.c:334
 msgid "Zip Drive"
 msgstr "Zip Iekārta"
 
-#: drivemount/properties.c:335
+#: drivemount/properties.c:337
 msgid "Hard Disk"
 msgstr "Cietais Disks"
 
-#: drivemount/properties.c:338
+#: drivemount/properties.c:340
 msgid "Jaz Drive"
 msgstr "Jaz Iekārta"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:343
 msgid "Custom"
 msgstr "Pielāgots"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:356
 msgid "Select icon for mounted"
 msgstr "Izvēlies ikonu piemontētam"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:363
 msgid "Custom icon for moun_ted:"
 msgstr "Pielāgota ikona piemon_tētam:"
 
-#: drivemount/properties.c:370
+#: drivemount/properties.c:372
 msgid "Select icon for unmounted"
 msgstr "Izvēlies ikonu nomontētam"
 
-#: drivemount/properties.c:377
+#: drivemount/properties.c:379
 msgid "Custom icon for not mou_nted:"
 msgstr "Pielāgota ikona nom_ontētam:"
 
-#: drivemount/properties.c:387
+#: drivemount/properties.c:389
 msgid "_Scale size to panel"
 msgstr "_Mērogot izmēru panelī"
 
-#: drivemount/properties.c:394
+#: drivemount/properties.c:396
 msgid "_Eject on unmount"
 msgstr "_Izbīdīt vai nomontēt"
 
-#: drivemount/properties.c:401
+#: drivemount/properties.c:403
 msgid "Use _automount friendly status test"
 msgstr "Lietot _automont draudzīgā statusa testu"
 
@@ -715,35 +750,35 @@ msgid "Amusements"
 msgstr "Izklaides"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:3
-#: geyes/geyes.c:233
-#: geyes/geyes.c:420
-#: geyes/geyes.c:422
+#: geyes/geyes.c:237
+#: geyes/geyes.c:429
+#: geyes/geyes.c:431
 msgid "Geyes"
 msgstr "Geyes"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
-msgstr "Geyes Sīkprogrammas Ražotne"
+msgstr "Geyes Paneļprogrammas Ražotne"
 
-#: geyes/geyes.c:234
+#: geyes/geyes.c:238
 msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Autortiesības (C) 1999 Dave Camp"
+msgstr "Autortiesības © 1999 Dave Camp"
 
-#: geyes/geyes.c:235
+#: geyes/geyes.c:239
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Kičīgi mazs xeyes klons GNOME panelim."
 
-#: geyes/geyes.c:423
+#: geyes/geyes.c:432
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Acis skatās peles kursora virzienā."
 
-#: geyes/themes.c:215
+#: geyes/themes.c:223
 msgid "Geyes Preferences"
 msgstr "Geyes Preferences"
 
-#: geyes/themes.c:229
-msgid "T_heme Name"
-msgstr "Tē_mas Nosaukums"
+#: geyes/themes.c:239
+msgid "_Theme Name:"
+msgstr "Tē_mas Nosaukums:"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
@@ -754,28 +789,28 @@ msgid "GKB Factory"
 msgstr "GKB Ražotne"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
-#: gkb-new/gkb.c:604
+#: gkb-new/gkb.c:605
 msgid "Keyboard Layout Switcher"
-msgstr "Tastatūras Izkārtojuma Pārslēdzējs"
+msgstr "Tastatūras Izkārtojuma Pārslēgs"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
-msgstr "Veido tastatūras izkārtojuma pārslēdzēja sīkprogrammas."
+msgstr "Veido tastatūras izkārtojuma pārslēdzēja paneļprogrammas."
 
-#: gkb-new/gkb.c:112
+#: gkb-new/gkb.c:113
 msgid "Press the hotkey to switch between layouts. The hotkey can be set through Properties dialog"
 msgstr "Spiežiet karsto taustiņu, lai pārslēgtos starp izkārtojumiem. Karstais taustiņš var tikt uzstādīts Rekvizītu dialogā"
 
-#: gkb-new/gkb.c:551
-#: gkb-new/gkb.c:558
+#: gkb-new/gkb.c:552
+#: gkb-new/gkb.c:559
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:606
-msgid "(C) 1998-2000 Free Software Foundation"
-msgstr "(C) 1998-2000 Brīvās Programmatūras Fonds"
-
 #: gkb-new/gkb.c:607
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "© 1998-2000 Brīvās Programmatūras Fonds"
+
+#: gkb-new/gkb.c:608
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale (my email address is shooby@gnome.hu).\n"
@@ -783,361 +818,39 @@ msgid ""
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Šī sīkprogramma pārslēdzas starp tastatūras kartēm, izmantojot setxkbmap vai xmodmap.\n"
+"Šī paneļprogramma pārslēdzas starp tastatūras kartēm, izmantojot setxkbmap vai xmodmap.\n"
 "Sūtiet man jūs savu karogu un klaviatūras izkārtojumu, ja jūs gribat, lai jūsu lokāle tiktu atbalstīta (mana epasta adrese shooby@gnome.hu).\n"
 "Visu gaišu, un paldies visiem par zivi.\n"
 "Paldies par palīdzību Balazs Nagy (Kevin) <julian7@iksz.hu> un Emese Kovacs <emese@gnome.hu> par viņas solidaritāti, kā arī paldies tādiem pušiem kā KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:624
+#: gkb-new/gkb.c:625
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Mājas Lapa (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/keygrab.c:69
-#: gkb-new/keygrab.c:144
+#: gkb-new/keygrab.c:148
 msgid "Disabled"
 msgstr "Deaktivizēts"
 
-#: gkb-new/keygrab.c:301
+#: gkb-new/keygrab.c:313
 msgid "Press a key or press Esc to cancel"
 msgstr "Spied taustiņu vai Esc, lai atsauktu"
 
-#: gkb-new/prop-add.c:86
+#: gkb-new/prop-add.c:88
 msgid "Keyboards (select and press add)"
 msgstr "Tastatūras (izvēlieties un nospiediet Pievienot)"
 
-#: gkb-new/prop-add.c:372
+#: gkb-new/prop-add.c:392
 msgid "Select Keyboard"
 msgstr "Izvēlieties Tastatūru"
 
-#: gkb-new/prop-list.c:398
-#: gtik/gtik.c:1125
-msgid "_Add"
-msgstr "_Pievienot"
-
-#: gkb-new/prop-list.c:399
-msgid "_Edit"
-msgstr "_Rediģēt"
-
-#: gkb-new/prop-list.c:400
-msgid "_Up"
-msgstr "Uz _Augšu"
-
-#: gkb-new/prop-list.c:401
-msgid "Dow_n"
-msgstr "Uz _Leju"
-
-#: gkb-new/prop-list.c:402
-msgid "_Delete"
-msgstr "_Dzēst"
-
-#: gkb-new/prop-map.c:199
-msgid "Armenia"
-msgstr "Armēnija"
-
-#: gkb-new/prop-map.c:200
-msgid "Australia"
-msgstr "Austrālija"
-
-#: gkb-new/prop-map.c:201
-msgid "Austria"
-msgstr "Austrija"
-
-#: gkb-new/prop-map.c:202
-msgid "Belgium"
-msgstr "Belģija"
-
-#: gkb-new/prop-map.c:203
-msgid "Brazil"
-msgstr "Brazīlija"
-
-#: gkb-new/prop-map.c:204
-msgid "Bulgaria"
-msgstr "Bulgārija"
-
-#: gkb-new/prop-map.c:205
-msgid "Canada"
-msgstr "Kanāda"
-
-#: gkb-new/prop-map.c:206
-msgid "Caribic"
-msgstr "Karību"
-
-#: gkb-new/prop-map.c:207
-msgid "France"
-msgstr "Francija"
-
-#: gkb-new/prop-map.c:208
-msgid "Georgia"
-msgstr "Gruzija"
-
-#: gkb-new/prop-map.c:209
-msgid "Germany"
-msgstr "Vācija"
-
-#: gkb-new/prop-map.c:210
-msgid "Great Britain"
-msgstr "Lielbritānija"
-
-#: gkb-new/prop-map.c:211
-msgid "Greece"
-msgstr "Grieķija"
-
-#: gkb-new/prop-map.c:212
-msgid "Hungary"
-msgstr "Ungārija"
-
 #: gkb-new/prop-map.c:213
-msgid "Jamaica"
-msgstr "Jamaika"
-
-#: gkb-new/prop-map.c:214
-msgid "New Zealand"
-msgstr "Jaunzelande"
-
-#: gkb-new/prop-map.c:215
-msgid "Norway"
-msgstr "Norvēģija"
-
-#: gkb-new/prop-map.c:216
-msgid "Poland"
-msgstr "Polija"
-
-#: gkb-new/prop-map.c:217
-msgid "Portugal"
-msgstr "Portugāle"
-
-#: gkb-new/prop-map.c:218
-msgid "Russia"
-msgstr "Krievija"
-
-#: gkb-new/prop-map.c:219
-msgid "Slovak Republic"
-msgstr "Slovaku Republika"
-
-#: gkb-new/prop-map.c:220
-msgid "Slovenia"
-msgstr "Slovēnija"
-
-#: gkb-new/prop-map.c:221
-msgid "South Africa"
-msgstr "Dienvidāfrika"
-
-#: gkb-new/prop-map.c:222
-msgid "Spain"
-msgstr "Spānija"
-
-#: gkb-new/prop-map.c:223
-msgid "Sweden"
-msgstr "Zviedrija"
-
-#: gkb-new/prop-map.c:224
-msgid "Switzerland"
-msgstr "Šveice"
-
-#: gkb-new/prop-map.c:225
-msgid "Thailand"
-msgstr "Taizeme"
-
-#: gkb-new/prop-map.c:226
-msgid "Turkey"
-msgstr "Turcija"
-
-#: gkb-new/prop-map.c:227
-msgid "United Kingdom"
-msgstr "Apvienotā Karaliste"
-
-#: gkb-new/prop-map.c:228
-msgid "United States"
-msgstr "Savienotās Valstis"
-
-#: gkb-new/prop-map.c:229
-msgid "Yugoslavia"
-msgstr "Diendivslāvija"
-
-#: gkb-new/prop-map.c:249
-msgid "Armenian"
-msgstr "Armēnija"
-
-#: gkb-new/prop-map.c:250
-msgid "Basque"
-msgstr "Basku"
-
-#: gkb-new/prop-map.c:251
-msgid "Bulgarian"
-msgstr "Bulgāru"
-
-#: gkb-new/prop-map.c:252
-msgid "Dutch"
-msgstr "Holandiešu"
-
-#: gkb-new/prop-map.c:253
-msgid "English"
-msgstr "Angļu"
-
-#: gkb-new/prop-map.c:254
-msgid "French"
-msgstr "Franču"
-
-#: gkb-new/prop-map.c:255
-msgid "Georgian"
-msgstr "Gruzīnu"
-
-#: gkb-new/prop-map.c:256
-msgid "German"
-msgstr "Vācu"
-
-#: gkb-new/prop-map.c:257
-msgid "Greek"
-msgstr "Grieķu"
-
-#: gkb-new/prop-map.c:258
-msgid "Hungarian"
-msgstr "Ungāru"
-
-#: gkb-new/prop-map.c:259
-msgid "Norwegian"
-msgstr "Norvēģu"
-
-#: gkb-new/prop-map.c:260
-msgid "Polish"
-msgstr "Poļu"
-
-#: gkb-new/prop-map.c:261
-msgid "Portuguese"
-msgstr "Portugāliešu"
-
-#: gkb-new/prop-map.c:262
-msgid "Russian"
-msgstr "Krievu"
-
-#: gkb-new/prop-map.c:263
-msgid "Slovak"
-msgstr "Slovāku"
-
-#: gkb-new/prop-map.c:264
-msgid "Slovenian"
-msgstr "Slovēņu"
-
-#: gkb-new/prop-map.c:265
-msgid "Swedish"
-msgstr "Zviedru"
-
-#: gkb-new/prop-map.c:266
-msgid "Thai"
-msgstr "Taizemiešu"
-
-#: gkb-new/prop-map.c:267
-msgid "Turkish"
-msgstr "Turku"
-
-#: gkb-new/prop-map.c:268
-msgid "Wallon"
-msgstr "Valloņu"
-
-#: gkb-new/prop-map.c:269
-msgid "Yugoslavian"
-msgstr "Dienvidslāvu"
-
-#: gkb-new/prop-map.c:287
-msgid "105"
-msgstr "105"
-
-#: gkb-new/prop-map.c:288
-msgid "101"
-msgstr "101"
-
-#: gkb-new/prop-map.c:289
-msgid "102"
-msgstr "102"
-
-#: gkb-new/prop-map.c:290
-msgid "450"
-msgstr "450"
-
-#: gkb-new/prop-map.c:291
-msgid "84"
-msgstr "84"
-
-#: gkb-new/prop-map.c:292
-msgid "mklinux"
-msgstr "mklinux"
-
-#: gkb-new/prop-map.c:293
-msgid "type5"
-msgstr "type5"
-
-#: gkb-new/prop-map.c:313
-msgid "iso-8859-1"
-msgstr "iso-8859-1"
-
-#: gkb-new/prop-map.c:314
-msgid "iso-8859-2"
-msgstr "iso-8859-2"
-
-#: gkb-new/prop-map.c:315
-msgid "iso-8859-7"
-msgstr "iso-8859-7"
-
-#: gkb-new/prop-map.c:316
-msgid "iso-8859-9"
-msgstr "iso-8859-9"
-
-#: gkb-new/prop-map.c:317
-msgid "am-armscii8"
-msgstr "am-armscii8"
-
-#: gkb-new/prop-map.c:318
-msgid "be-latin1"
-msgstr "be-latin1"
-
-#: gkb-new/prop-map.c:319
-msgid "cp1251"
-msgstr "cp1251"
-
-#: gkb-new/prop-map.c:320
-msgid "georgian-academy"
-msgstr "džordžijas-akadēmija"
-
-#: gkb-new/prop-map.c:321
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: gkb-new/prop-map.c:322
-msgid "tis620"
-msgstr "tis620"
-
-#: gkb-new/prop-map.c:340
-msgid "ix86"
-msgstr "ix86"
-
-#: gkb-new/prop-map.c:341
-msgid "Sun"
-msgstr "Sun"
-
-#: gkb-new/prop-map.c:342
-msgid "mac"
-msgstr "mac"
-
-#: gkb-new/prop-map.c:343
-msgid "sgi"
-msgstr "sgi"
-
-#: gkb-new/prop-map.c:344
-msgid "dec"
-msgstr "dec"
-
-#: gkb-new/prop-map.c:345
-msgid "ibm"
-msgstr "ibm"
-
-#: gkb-new/prop-map.c:582
 msgid "Edit Keyboard"
 msgstr "Rediģēt Tastatūru"
 
-#. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:610
-#: panel-menu/panel-menu-directory.c:672
+#: gkb-new/prop-map.c:232
+#: panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398
 #: panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404
@@ -1145,119 +858,130 @@ msgstr "Rediģēt Tastatūru"
 msgid "_Name:"
 msgstr "_Nosaukums:"
 
-#: gkb-new/prop-map.c:614
+#: gkb-new/prop-map.c:235
 msgid "_Label:"
 msgstr "_Etiķete:"
 
-#: gkb-new/prop-map.c:618
-msgid "Lan_guage:"
-msgstr "_Valoda:"
-
-#: gkb-new/prop-map.c:624
-msgid "Count_ry:"
-msgstr "Va_lsts:"
-
-#: gkb-new/prop-map.c:631
-msgid "_Flag\n"
-"Pixmap:"
-msgstr "_Karogs\n"
-"Pikseļkarte:"
-
-#: gkb-new/prop-map.c:635
-msgid "Arc_hitecture:"
-msgstr "Ar_hitektūra:"
-
-#: gkb-new/prop-map.c:641
-msgid "_Type:"
-msgstr "_Tips:"
-
-#: gkb-new/prop-map.c:647
-msgid "Code_page:"
-msgstr "Kodu _lappuse:"
-
-#: gkb-new/prop-map.c:654
+#: gkb-new/prop-map.c:238
 msgid "Co_mmand:"
 msgstr "Ko_anda:"
 
-#: gkb-new/prop-map.c:661
+#: gkb-new/prop-map.c:246
 msgid ""
 "Where command can be:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
+" * xmodmap /full/path/xmodmap.hu\n"
+" * gkb_xmmap hu\n"
+" * setxkbmap hu"
 msgstr ""
-"Komanda varētu būt šāda:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
+"Kur komanda varētu būt:\n"
+"* xmodmap /ceļš/līdz/xmodmap.lv\n"
+"* gkb__xmmap lv\n"
+"* setxkbmap lv"
 
-#: gkb-new/prop.c:131
-#: gkb-new/prop.c:201
+#: gkb-new/prop-map.c:279
+msgid "_Flag"
+msgstr "_Karogs"
+
+#: gkb-new/prop.c:132
+#: gkb-new/prop.c:202
 msgid "Normal"
 msgstr "Normāls"
 
-#: gkb-new/prop.c:132
-#: gkb-new/prop.c:205
+#: gkb-new/prop.c:133
+#: gkb-new/prop.c:206
 msgid "Big"
 msgstr "Liels"
 
-#: gkb-new/prop.c:150
+#: gkb-new/prop.c:151
 #: gkb-new/util.c:41
 #: gkb-new/util.c:48
 #: gkb-new/util.c:74
 msgid "Flag"
 msgstr "Karogs"
 
-#: gkb-new/prop.c:151
+#: gkb-new/prop.c:152
 #: gkb-new/util.c:38
 #: gkb-new/util.c:71
 msgid "Label"
 msgstr "Etiķete"
 
-#: gkb-new/prop.c:152
+#: gkb-new/prop.c:153
 #: gkb-new/util.c:44
 #: gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Karogs un Etiķete"
 
-#: gkb-new/prop.c:290
-#: modemlights/properties.c:389
+#: gkb-new/prop.c:291
+#: modemlights/properties.c:393
 msgid "Display"
 msgstr "Attēlot"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:310
+#: gkb-new/prop.c:311
 msgid "_Appearance: "
-msgstr "_Izskats:"
+msgstr "_Izskats: "
 
-#: gkb-new/prop.c:317
+#: gkb-new/prop.c:318
 msgid "Applet _size: "
-msgstr "Sīkprogrammas _izmērs:"
+msgstr "Paneļprogrammas _izmērs: "
 
-#: gkb-new/prop.c:344
+#: gkb-new/prop.c:345
 msgid "Hotkey for switching between layouts"
 msgstr "Karstais taustiņš, lai pārslēgtos starp izkārtojumiem"
 
-#: gkb-new/prop.c:356
+#: gkb-new/prop.c:357
 msgid "_Grab hotkey"
 msgstr "_Paķert karsto taustiņu"
 
 #. Create property box
-#: gkb-new/prop.c:417
+#: gkb-new/prop.c:423
 msgid "Keyboard Layout Switcher Preferences"
-msgstr "Tastatūras Izkārtojumu Pārslēdzēja Preferences"
+msgstr "Tastatūras Izkārtojumu Pārslēga Preferences"
 
-#: gkb-new/prop.c:432
-msgid "_Keymaps"
-msgstr "_Taustiņkartes"
+#: gkb-new/prop.c:440
+msgid "Keymaps"
+msgstr "Taustiņkartes"
 
-#: gkb-new/prop.c:444
-msgid "_Options"
-msgstr "_Opcijas"
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:452
+#: multiload/properties.c:313
+msgid "Options"
+msgstr "Opcijas"
 
-#: gkb-new/system.c:45
-msgid "The keymap switching command returned with error!"
-msgstr "Taustiņkartes pārslēgšanas komanda atgriezta ar kļūdu!"
+#: gkb-new/system.c:46
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Keymap `%s' is not supported on this system. Please choose another keymap.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"Atgadījās kļūda.\n"
+"\n"
+"Taustiņkarte `%s' netiek atbalstīta šajā sistēmā. Lūdzu izvēlieties citu taustiņkarti.\n"
+"\n"
+"Komanda bija: %s"
+
+#: gkb-new/system.c:51
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be located in your PATH.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"Atgadījās kļūda.\n"
+"\n"
+"Nespēju ielādēt taustiņkarti `%s', iespējams tāpēc, ka komanda `xmodmap' nav atrodama jūsu PATH.\n"
+"\n"
+"Komanda bija: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -1270,10 +994,10 @@ msgstr "Esi informēts par jaunākajām akciju cenām"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
-msgstr "Gtik Sīkprogrammas Ražotne"
+msgstr "Gtik Paneļprogrammas Ražotne"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:4
-#: gtik/gtik.c:724
+#: gtik/gtik.c:720
 msgid "Stock Ticker"
 msgstr "Akciju Ziņotājs"
 
@@ -1282,143 +1006,146 @@ msgstr "Akciju Ziņotājs"
 msgid "_Update"
 msgstr "_Atjaunināt"
 
-#: gtik/gtik.c:206
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr "Nav pieejami dati, vai arī rekvizīti nav uzstādīti"
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:722
 msgid "This program connects to a popular site and downloads current stock quotes.  The GNOME Stock Ticker is a free Internet-based application.  It comes with ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making investment decisions; it is for informational purposes only."
 msgstr "Šī programma savienojas ar populāru lapu un lejupielādē pašreizējās akciju cenas. GNOME Akciju Ziņotājs ir brīva, Internet bāzēta aplikācija. Tai nav galīgi NEKĀDAS GARANTIJAS. Nelietojiet GNOME Akciju Ziņotāju, lai lemtu par investīcijām, tas ir tikai informācijas nolūkos."
 
-#: gtik/gtik.c:1114
+#: gtik/gtik.c:1147
 msgid "_New Symbol:"
 msgstr "_Jauns Simbols:"
 
-#: gtik/gtik.c:1136
+#: gtik/gtik.c:1158
+msgid "_Add"
+msgstr "_Pievienot"
+
+#: gtik/gtik.c:1169
 msgid "_Remove Selected"
 msgstr "_Izņemt Izvēlēto"
 
-#: gtik/gtik.c:1212
+#: gtik/gtik.c:1251
 msgid "Stock Ticker Preferences"
 msgstr "Akciju Ziņotāja Preferences"
 
-#: gtik/gtik.c:1235
-msgid "Update Fre_quency in minutes:"
-msgstr "Atjaunināšanas _Biežums minutēs:"
+#: gtik/gtik.c:1275
+msgid "Stock update Fre_quency in minutes:"
+msgstr "Akciju atjaunināšanas _Biežums minutēs:"
 
-#: gtik/gtik.c:1253
-msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr "Ievediet simbolus, atdalītus ar \"+\" kastītē zemāk."
+#: gtik/gtik.c:1294
+msgid "Scroll Speed :"
+msgstr "Ritināšanas Ātrums :"
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1314
+msgid "_Width :"
+msgstr "_Platums :"
+
+#: gtik/gtik.c:1326
 msgid "Displa_y only symbols and price"
 msgstr "Pa_rādīt tikai simbolus un cenu"
 
-#: gtik/gtik.c:1263
+#: gtik/gtik.c:1329
 msgid "Scroll _left to right"
 msgstr "Ritināt no _kreisās puses uz labo"
 
-#: gtik/gtik.c:1266
+#: gtik/gtik.c:1332
 msgid "_Enable scroll buttons"
 msgstr "_Ieslēgt ritināšanas pogas"
 
-#: gtik/gtik.c:1290
-msgid "+ C_olor"
-msgstr "+ _Krāsa"
+#: gtik/gtik.c:1356
+msgid "+ C_olor:"
+msgstr "+ _Krāsa:"
 
-#: gtik/gtik.c:1310
-msgid "- Colo_r"
-msgstr "- K_rāsa"
+#: gtik/gtik.c:1376
+msgid "- Colo_r:"
+msgstr "- K_rāsa:"
 
-#: gtik/gtik.c:1327
-msgid "_Unchanged Color"
-msgstr "_Nemainīta Krāsa"
+#: gtik/gtik.c:1393
+msgid "_Unchanged Color:"
+msgstr "_Nemainīta Krāsa:"
 
-#: gtik/gtik.c:1344
-msgid "Back_ground Color"
-msgstr "_Fona Krāsa"
+#: gtik/gtik.c:1410
+msgid "Back_ground Color:"
+msgstr "_Fona Krāsa:"
 
-#: gtik/gtik.c:1366
-msgid "Stock Sy_mbol:"
-msgstr "Akcijas Si_mbols:"
+#: gtik/gtik.c:1432
+msgid "_Font:"
+msgstr "_Fonts:"
 
-#: gtik/gtik.c:1380
-msgid "Stock C_hange:"
-msgstr "Akciju Iz_maiņas:"
+#: gtik/gtik.c:1452
+msgid "Symbols"
+msgstr "Simboli"
 
-#: gtik/gtik.c:1404
-msgid "_Symbols"
-msgstr "_Simboli"
+#: gtik/gtik.c:1454
+msgid "Behavior"
+msgstr "Uzvedība"
 
-#: gtik/gtik.c:1406
-msgid "_Behavior"
-msgstr "_Uzvedība"
-
-#: gtik/gtik.c:1408
-msgid "_Appearance"
-msgstr "_Izskats"
-
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1541
 msgid "Skip forward"
 msgstr "Palaist uz priekšu"
 
-#: gtik/gtik.c:1483
+#: gtik/gtik.c:1542
 msgid "Skip backward"
 msgstr "Palaist atpakaļ"
 
-#: gtik/gtik.c:1484
-msgid "Stock Ticker\n"
+#: gtik/gtik.c:1543
+msgid ""
+"Stock Ticker\n"
 "Get continuously updated stock quotes"
-msgstr "Akciju Ziņotājs\n"
+msgstr ""
+"Akciju Ziņotājs\n"
 "Esi informēts par jaunāko akciju tirgū"
 
-#: gtik/gtik.c:1671
+#: gtik/gtik.c:1731
 msgid "(No"
 msgstr "(Nē"
 
-#: gtik/gtik.c:1672
+#: gtik/gtik.c:1732
 msgid "Change "
 msgstr "Izmainīt "
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
-#: gweather/gweather-dialog.c:302
+#: gweather/gweather-dialog.c:304
 msgid "_Forecast"
 msgstr "_Prognoze"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Factory for creating the weather applet."
-msgstr "Ražotne laika ziņu sīkprogrammas veidošanai."
+msgstr "Ražotne laika ziņu paneļprogrammas veidošanai."
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
-msgstr "Gweather Sīkprogrammas Ražotne"
+msgstr "Gweather Paneļprogrammas Ražotne"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Novēro un ziņo par pašreizējiem laikam apstākļiem un prognozēm"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:61
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr "Laika Ziņas"
 
-#: gweather/gweather-about.c:62
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Autortiesības (c)1999 S. Papadimitriou"
+msgstr "Autortiesības © 1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:65
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
-msgstr "Izlaista zem GNU General Public License.\n"
-"Sīkprogramma laika apstākļu ziņošanai."
+msgstr ""
+"Izlaista saskaņā ar GNU General Public License.\n"
+"Paneļprogramma laika apstākļu ziņošanai."
 
-#: gweather/gweather-applet.c:194
+#: gweather/gweather-applet.c:198
 msgid "GNOME Weather"
 msgstr "GNOME Laiks"
 
-#: gweather/gweather-applet.c:319
+#: gweather/gweather-applet.c:323
 msgid "Updating..."
 msgstr "Atjauninu..."
 
@@ -1426,165 +1153,163 @@ msgstr "Atjauninu..."
 msgid "Forecast"
 msgstr "Prognoze"
 
-#: gweather/gweather-dialog.c:108
+#: gweather/gweather-dialog.c:110
 msgid "Location:"
 msgstr "Lokācija:"
 
-#: gweather/gweather-dialog.c:116
+#: gweather/gweather-dialog.c:118
 msgid "Update:"
 msgstr "Atjauninājums:"
 
-#: gweather/gweather-dialog.c:124
+#: gweather/gweather-dialog.c:126
 msgid "Conditions:"
 msgstr "Apstākļi:"
 
-#: gweather/gweather-dialog.c:132
+#: gweather/gweather-dialog.c:134
 msgid "Sky:"
 msgstr "Debesis:"
 
-#: gweather/gweather-dialog.c:140
+#: gweather/gweather-dialog.c:142
 msgid "Temperature:"
 msgstr "Temperatūra:"
 
-#: gweather/gweather-dialog.c:148
+#: gweather/gweather-dialog.c:150
 msgid "Dew point:"
 msgstr "Rasas punkts:"
 
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:158
 msgid "Humidity:"
 msgstr "Mitrums:"
 
-#: gweather/gweather-dialog.c:164
+#: gweather/gweather-dialog.c:166
 msgid "Wind:"
 msgstr "Vējš:"
 
-#: gweather/gweather-dialog.c:172
+#: gweather/gweather-dialog.c:174
 msgid "Pressure:"
 msgstr "Spiediens:"
 
-#: gweather/gweather-dialog.c:180
+#: gweather/gweather-dialog.c:182
 msgid "Visibility:"
 msgstr "Redzamība:"
 
-#: gweather/gweather-dialog.c:279
+#: gweather/gweather-dialog.c:281
 msgid "C_urrent conditions"
 msgstr "P_ašreizējie apstākļi"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:294
 msgid "ForeCast Report"
 msgstr "Prognozes Atskaite"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:294
 msgid "See the ForeCast Details"
 msgstr "Apskatīt Prorgnozes Detaļas"
 
-#: gweather/gweather-dialog.c:327
+#: gweather/gweather-dialog.c:329
 msgid "_Visit Weather.com"
 msgstr "_Apmeklēt Weather.com"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:330
 msgid "URL link Button"
 msgstr "URL saites Poga"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:330
 msgid "Click to Enter Weather.com"
 msgstr "Klikšķiniet, lai ieietu Weather.com"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:338
 msgid "_Radar map"
 msgstr "_Radara karte"
 
-#: gweather/gweather-dialog.c:408
-msgid "Detailed forecast not available for this location.\n"
+#: gweather/gweather-dialog.c:410
+msgid ""
+"Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only for US cities."
-msgstr "Detalizēta laika prognoze nav pieejama šai lokācijai.\n"
+msgstr ""
+"Detalizēta laika prognoze nav pieejama šai lokācijai.\n"
 "Lūdzu mēģiniet parasto prognozi; ņemiet vērā ka IWIN prognozes ir pieejamas tikai ASV pilsētām."
 
-#: gweather/gweather-dialog.c:410
-msgid "State forecast not available for this location.\n"
+#: gweather/gweather-dialog.c:412
+msgid ""
+"State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available only for US cities."
-msgstr "Laika prognoze nav pieejama šai lokācijai.\n"
+msgstr ""
+"Laika prognoze nav pieejama šai lokācijai.\n"
 "Lūdzu pamēģiniet detalizēto prognozi; atcerieties, ka IWIN prognozes ir pieejamas tikai Savienoto Valstu pilsētām."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:107
+#: gweather/gweather-pref.c:108
 msgid "Location view"
 msgstr "Lokācijas skats"
 
-#: gweather/gweather-pref.c:107
+#: gweather/gweather-pref.c:108
 msgid "Select Location from the list"
 msgstr "Izvēlies Lokāciju no saraksta"
 
-#: gweather/gweather-pref.c:109
+#: gweather/gweather-pref.c:110
 msgid "Update spin button"
 msgstr "Atjaunināšanas vērpjpoga"
 
-#: gweather/gweather-pref.c:109
+#: gweather/gweather-pref.c:110
 msgid "Spinbutton for updating"
 msgstr "Vērpjpoga atjaunināšanai"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:111
 msgid "Address Entry"
 msgstr "Adreses Ieraksts"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:111
 msgid "Enter the URL"
 msgstr "Ievadiet URL"
 
-#: gweather/gweather-pref.c:560
+#: gweather/gweather-pref.c:561
 msgid "Weather Preferences"
 msgstr "Laika Preferences"
 
-#: gweather/gweather-pref.c:607
-msgid "_Location"
-msgstr "_Lokācija"
-
-#: gweather/gweather-pref.c:638
+#: gweather/gweather-pref.c:604
 msgid "_Automatically update every"
 msgstr "_Automātiski atjaunināt katras"
 
-#: gweather/gweather-pref.c:644
+#: gweather/gweather-pref.c:610
 msgid "Use _metric system units"
 msgstr "Lietot _metriskās sistēmas vienības"
 
-#: gweather/gweather-pref.c:650
+#: gweather/gweather-pref.c:616
 msgid "Enable _detailed forecast"
 msgstr "Aktivizēt _detalizētu prognozi"
 
-#: gweather/gweather-pref.c:657
+#: gweather/gweather-pref.c:623
 msgid "Enable _radar map"
 msgstr "Aktivizēt _radara karti"
 
-#: gweather/gweather-pref.c:663
+#: gweather/gweather-pref.c:629
 msgid "Use cus_tom address for radar map"
 msgstr "Lietot pie_lāgotu adresi radara kartei"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:640
 msgid "A_ddress :"
 msgstr "A_drese :"
 
-#: gweather/gweather-pref.c:686
+#: gweather/gweather-pref.c:652
 msgid "Updates"
 msgstr "Atjaunināšanas"
 
-#: gweather/gweather-pref.c:692
+#: gweather/gweather-pref.c:658
 msgid "_Automatically update every "
 msgstr "_Automātiski atjaunināt katras "
 
-#: gweather/gweather-pref.c:712
+#: gweather/gweather-pref.c:678
 msgid "minute(s)"
 msgstr "minūte(s)"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:723
+#: gweather/gweather-pref.c:689
 msgid "Miscellaneous"
 msgstr "Dažādi"
 
-#: gweather/gweather-pref.c:741
-#: mini-commander/src/preferences.c:972
-#: modemlights/properties.c:424
-msgid "_General"
-msgstr "_Vispārēji"
+#: gweather/gweather-pref.c:743
+msgid "Location"
+msgstr "Lokācija"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2768,8 +2493,12 @@ msgstr "Mainīgi putekļu virpuļi"
 #: gweather/weather.c:824
 #: gweather/weather.c:864
 #: gweather/weather.c:1437
-msgid "Failed to get METAR data.\n"
-msgstr "Neizdevās dabūt METAR datus.\n"
+msgid ""
+"Failed to get METAR data.\n"
+""
+msgstr ""
+"Neizdevās dabūt METAR datus.\n"
+""
 
 #: gweather/weather.c:856
 #: gweather/weather.c:884
@@ -2778,25 +2507,45 @@ msgid "WeatherInfo missing location"
 msgstr "WeatherInfo iztrūkst lokācija"
 
 #: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Neizdevās dabūt IWIN datus.\n"
+msgid ""
+"Failed to get IWIN data.\n"
+""
+msgstr ""
+"Neizdevās dabūt IWIN datus.\n"
+""
 
 #. forecast data is not really interesting anyway ;)
 #: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Neizdevās dabūt IWIN prognožu datus.\n"
+msgid ""
+"Failed to get IWIN forecast data.\n"
+""
+msgstr ""
+"Neizdevās dabūt IWIN prognožu datus.\n"
+""
 
 #: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Neizdevās dabūt Met Office datus.\n"
+msgid ""
+"Failed to get Met Office data.\n"
+""
+msgstr ""
+"Neizdevās dabūt Met Office datus.\n"
+""
 
 #: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Neizdevās dabūt Met Office prognozes datus.\n"
+msgid ""
+"Failed to get Met Office forecast data.\n"
+""
+msgstr ""
+"Neizdevās dabūt Met Office prognozes datus.\n"
+""
 
 #: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Neizdevās dabūt radara kartes attēlu.\n"
+msgid ""
+"Failed to get radar map image.\n"
+""
+msgstr ""
+"Neizdevās dabūt radara kartes attēlu.\n"
+""
 
 #: gweather/weather.c:1771
 msgid "%a, %b %d / %H:%M"
@@ -2819,8 +2568,8 @@ msgid "Retrieval failed"
 msgstr "Ieguve neizdevās"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:62
-#: mini-commander/src/mini-commander_applet.c:317
+#: mini-commander/src/about.c:66
+#: mini-commander/src/mini-commander_applet.c:353
 msgid "Command Line"
 msgstr "Komandrinda"
 
@@ -2830,223 +2579,207 @@ msgstr "Mini-Commander"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
-msgstr "MiniCommander Sīkprogrammas Ražotne"
+msgstr "MiniCommander Paneļprogrammas Ražotne"
 
-#: mini-commander/src/about.c:65
+#: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n"
 "\n"
 "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 msgstr ""
-"Šī GNOME sīkprogramma pievieno komandrindu panelim. Tā satur komandu pabeigšanu, komandu vēsturi, maināmus makrosus un opcionālu iebūvētu pulksteni.\n"
+"Šī GNOME paneļprogramma pievieno komandrindu panelim. Tā satur komandu pabeigšanu, komandu vēsturi, maināmus makrosus un opcionālu iebūvētu pulksteni.\n"
 "\n"
 "Šī programma ir brīvā programmatūra; jūs varat to pārizplatīt un/vai mainīt to pēc GNU General Public License noteikumiem, kuru publicējis ir Brīvas Programmatūras Fonds (licenses 2. versija vai (pēc jūsu izvēles) jebkura vēlāka versija)"
 
-#: mini-commander/src/cmd_completion.c:69
-#: mini-commander/src/cmd_completion.c:115
-#: mini-commander/src/cmd_completion.c:151
-#: mini-commander/src/cmd_completion.c:202
-msgid "not unique"
-msgstr "nav unikāls"
-
-#: mini-commander/src/cmd_completion.c:73
-#: mini-commander/src/cmd_completion.c:155
-msgid "completing..."
-msgstr "pabeidzu..."
-
-#: mini-commander/src/cmd_completion.c:113
-#: mini-commander/src/cmd_completion.c:200
-msgid "completed"
-msgstr "pabeigts"
-
-#: mini-commander/src/cmd_completion.c:118
-#: mini-commander/src/cmd_completion.c:205
-msgid "not found"
-msgstr "nav atrasts"
-
-#: mini-commander/src/cmd_completion.c:167
-msgid "no /bin/sh"
-msgstr "nav /bin/sh"
-
-#: mini-commander/src/command_line.c:98
-#: mini-commander/src/command_line.c:118
-msgid "end of history list"
-msgstr "vēstures saraksta beigas"
-
-#. enter pressed -> exec command
-#: mini-commander/src/command_line.c:128
-msgid "starting..."
-msgstr "startēju..."
-
-#: mini-commander/src/command_line.c:157
-msgid "autocompleted"
-msgstr "autopabeigts"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:430
 msgid "Start program"
 msgstr "Sākt programmu"
 
-#: mini-commander/src/command_line.c:538
+#: mini-commander/src/command_line.c:473
 msgid "Command line"
 msgstr "Komandrinda"
 
-#: mini-commander/src/command_line.c:539
+#: mini-commander/src/command_line.c:474
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ievadiet komandu šeit, un Gnome to jums izpildīs"
 
-#: mini-commander/src/message.c:149
-msgid "%H:%M - %d. %b"
-msgstr "%H:%M - %d. %b"
+#: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
+msgid "Cannot get schema for %s : %s"
+msgstr "Nevaru dabūt shēmu priekš %s : %s"
 
-#: mini-commander/src/message.c:151
-msgid "%H:%M"
-msgstr "%H:%M"
+#: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
+msgid "Cannot set schema for %s : %s"
+msgstr "Nevaru iestatīt shēmu priekš %s : %s"
 
-#: mini-commander/src/message.c:153
-msgid "%d. %b"
-msgstr "%d. %b"
+#: mini-commander/src/mc-install-default-macros.c:105
+#, c-format
+msgid ""
+"Set default list value for %s\n"
+""
+msgstr ""
+"Iestati noklusēto saraksta vērtību priekš %s\n"
+""
 
-#: mini-commander/src/mini-commander_applet.c:123
-msgid "orient. changed"
-msgstr "noviet. izmainīts"
+#: mini-commander/src/mc-install-default-macros.c:117
+msgid ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+""
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL ir iestatīts, neinstalēju shēmas\n"
+""
 
-#: mini-commander/src/mini-commander_applet.c:140
-msgid "size changed"
-msgstr "izmērs izmainīts"
+#: mini-commander/src/mc-install-default-macros.c:125
+msgid ""
+"Must set the GCONF_CONFIG_SOURCE environment variable\n"
+""
+msgstr ""
+"Jāiestata GCONF_CONFIG_SOURCE vides mainīgais\n"
+""
 
-#: mini-commander/src/mini-commander_applet.c:290
-#: mini-commander/src/mini-commander_applet.c:293
-msgid "Browser"
-msgstr "Pārlūks"
+#: mini-commander/src/mc-install-default-macros.c:142
+#, c-format
+msgid ""
+"Failed to access configuration source(s): %s\n"
+""
+msgstr ""
+"Neizdevās piekļūt konfigurācijas avotam(iem): %s\n"
+""
 
-#: mini-commander/src/mini-commander_applet.c:294
-msgid "Click this button to start the browser"
-msgstr "Klikšķināt šo pogu, lai palaistu pārluku"
+#: mini-commander/src/mc-install-default-macros.c:154
+#, c-format
+msgid "Error syncing config data: %s"
+msgstr "Kļūda sinhronizējot konfigurācijas datus: %s"
 
-#: mini-commander/src/mini-commander_applet.c:309
-#: mini-commander/src/mini-commander_applet.c:312
-msgid "History"
-msgstr "Vēsture"
+#: mini-commander/src/mini-commander.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: mini-commander/src/mini-commander_applet.c:313
-msgid "Click this button for the list of previous commands"
-msgstr "Klikšķiniet šo pogu, lai iegūtu sarakstu ar iepriekšējām komandām"
+#: mini-commander/src/mini-commander.glade.h:2
+msgid "Add New Macro"
+msgstr "Pievienot Jaunu Makro"
 
-#: mini-commander/src/mini-commander_applet.c:314
-msgid "Mini-Commander applet"
-msgstr "Mini-Commander sīkprogramma"
+#: mini-commander/src/mini-commander.glade.h:4
+msgid "Applet _width:"
+msgstr "Paneļprogrammas _platums:"
 
-#: mini-commander/src/mini-commander_applet.c:315
-msgid "This applet adds a command line to the panel"
-msgstr "Šī sīkprogramma panelim pievieno komandrindu"
-
-#: mini-commander/src/mini-commander_applet.c:448
-msgid "ready..."
-msgstr "kārtībā..."
-
-#: mini-commander/src/preferences.c:703
-msgid "Command Line Preferences"
-msgstr "Komandrindas Preferences"
-
-#: mini-commander/src/preferences.c:720
-msgid "Clock"
-msgstr "Pulkstenis"
-
-#. show time check box
-#: mini-commander/src/preferences.c:728
-msgid "Show time"
-msgstr "Parādīt laiku"
-
-#. show date check box
-#: mini-commander/src/preferences.c:735
-msgid "Show date"
-msgstr "Parādīt datumu"
-
-#. show handle check box
-#: mini-commander/src/preferences.c:751
-msgid "Show han_dle"
-msgstr "Parādīt ro_kturi"
-
-#. show frame check box
-#: mini-commander/src/preferences.c:758
-msgid "Show fram_e"
-msgstr "Parādīt ietva_ru"
-
-#. auto complete frame
-#: mini-commander/src/preferences.c:767
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "Autocompletion"
 msgstr "Autopabeigšana"
 
-#. show history autocomplete
-#: mini-commander/src/preferences.c:775
-msgid "Enable _history based autocompletion"
-msgstr "Aktivizēt uz _vēsturi bāzētu autopabeigšanos"
-
-#. Size
-#: mini-commander/src/preferences.c:782
-msgid "Size"
-msgstr "Izmērs"
-
-#. applet width
-#: mini-commander/src/preferences.c:794
-msgid "Applet _width:"
-msgstr "Sīkprogrammas _platums:"
-
-#. applet height
-#: mini-commander/src/preferences.c:828
-msgid "Applet height:"
-msgstr "Sīkprogrammas augstums:"
-
-#. cmd line height
-#: mini-commander/src/preferences.c:850
-msgid "Command line height:"
-msgstr "Komandrindas augstums:"
-
-#. Color
-#: mini-commander/src/preferences.c:885
+#: mini-commander/src/mini-commander.glade.h:6
+#: modemlights/properties.c:468
 #: multiload/properties.c:365
 msgid "Colors"
 msgstr "Krāsas"
 
-#. default bg and fg theme
-#: mini-commander/src/preferences.c:895
-msgid "_Use default theme colors"
-msgstr "_Lietot noklusētās tēmas krāsas"
+#: mini-commander/src/mini-commander.glade.h:7
+msgid "Command Line Preferences"
+msgstr "Komandrindas Preferences"
 
-#. fg
-#: mini-commander/src/preferences.c:907
-msgid "Command line _foreground:"
-msgstr "Komandrindas _priekšplāns:"
-
-#. bg
-#: mini-commander/src/preferences.c:941
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command line _background:"
 msgstr "Komandrindas _fons:"
 
-#. prefix
-#: mini-commander/src/preferences.c:1001
-#, c-format
-msgid "Regex _%.2d:"
-msgstr "Regex _%.2d:"
+#: mini-commander/src/mini-commander.glade.h:9
+msgid "Command line _foreground:"
+msgstr "Komandrindas _priekšplāns:"
 
-#. command
-#: mini-commander/src/preferences.c:1021
-#, c-format
-msgid "   Macro _%.2d:"
-msgstr "   Makro _%.2d:"
+#: mini-commander/src/mini-commander.glade.h:10
+msgid "Command:"
+msgstr "Komanda:"
 
-#: mini-commander/src/preferences.c:1041
-msgid "_Macros"
-msgstr "_Makrosi"
+#: mini-commander/src/mini-commander.glade.h:11
+msgid "E_nable history based autocompletion"
+msgstr "Aktivizēt uz _vēsturi bāzētu autopabeigšanu"
+
+#: mini-commander/src/mini-commander.glade.h:13
+msgid "Macros"
+msgstr "Makross"
+
+#: mini-commander/src/mini-commander.glade.h:14
+msgid "Pattern:"
+msgstr "Raksts:"
+
+#: mini-commander/src/mini-commander.glade.h:15
+msgid "Pick a color"
+msgstr "Izvēlies krāsu"
+
+#: mini-commander/src/mini-commander.glade.h:16
+msgid "Show fram_e"
+msgstr "Parādīt ietva_ru"
+
+#: mini-commander/src/mini-commander.glade.h:17
+msgid "Show han_dle"
+msgstr "Parādīt ro_kturi"
+
+#: mini-commander/src/mini-commander.glade.h:18
+msgid "Size"
+msgstr "Izmērs"
+
+#: mini-commander/src/mini-commander.glade.h:19
+msgid "_Add new macro..."
+msgstr "_Pievienot jaunu makro..."
+
+#: mini-commander/src/mini-commander.glade.h:20
+msgid "_Delete Macro"
+msgstr "_Dzēst Makro"
+
+#: mini-commander/src/mini-commander.glade.h:21
+msgid "_Use default theme colors"
+msgstr "_Lietot noklusētās tēmas krāsas"
+
+#: mini-commander/src/mini-commander_applet.c:189
+#: mini-commander/src/mini-commander_applet.c:193
+msgid "Browser"
+msgstr "Pārlūks"
+
+#: mini-commander/src/mini-commander_applet.c:194
+msgid "Click this button to start the browser"
+msgstr "Klikšķināt šo pogu, lai palaistu pārluku"
+
+#: mini-commander/src/mini-commander_applet.c:208
+#: mini-commander/src/mini-commander_applet.c:212
+msgid "History"
+msgstr "Vēsture"
+
+#: mini-commander/src/mini-commander_applet.c:213
+msgid "Click this button for the list of previous commands"
+msgstr "Klikšķiniet šo pogu, lai iegūtu sarakstu ar iepriekšējām komandām"
+
+#: mini-commander/src/mini-commander_applet.c:351
+msgid "Mini-Commander applet"
+msgstr "Mini-Commander paneļprogramma"
+
+#: mini-commander/src/mini-commander_applet.c:352
+msgid "This applet adds a command line to the panel"
+msgstr "Šī paneļprogramma panelim pievieno komandrindu"
+
+#: mini-commander/src/preferences.c:343
+msgid "You must specify a pattern"
+msgstr "Jums jānorāda raksts"
+
+#: mini-commander/src/preferences.c:347
+msgid "You must specify a pattern and a command"
+msgstr "Jums jānorāda raksts un komanda"
+
+#: mini-commander/src/preferences.c:348
+msgid "You must specify a command"
+msgstr "Jums jānorāda komanda"
+
+#: mini-commander/src/preferences.c:351
+msgid "You may not specify duplicate patterns"
+msgstr "Jūs nevarat noteikt dubultus rakstus"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Noregulēt skaņas līmeni"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3
-#: mixer/mixer.c:141
-#: mixer/mixer.c:819
+#: mixer/mixer.c:143
+#: mixer/mixer.c:827
 msgid "Volume Control"
 msgstr "Skaļuma Kontrole"
 
@@ -3058,47 +2791,63 @@ msgstr "_Kluss"
 msgid "_Run Volume Control..."
 msgstr "_Palaist Skaļuma Kontroli..."
 
-#: mixer/mixer.c:142
+#: mixer/mixer.c:144
 msgid "Volume Control (muted)"
 msgstr "Skaļuma Kontrole (noklusēta)"
 
-#: mixer/mixer.c:194
-msgid "warning: this version of gmix was compiled with a different version of\n"
+#: mixer/mixer.c:196
+msgid ""
+"warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
-msgstr "brīdinājums: šī gmix versija ir kompilēta ar citu soundcard.h\n"
+""
+msgstr ""
+"brīdinājums: šī gmix versija ir kompilēta ar citu soundcard.h\n"
 "versiju.\n"
+""
 
-#: mixer/mixer.c:205
+#: mixer/mixer.c:207
 #, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "Mikseriekārtas %s pieprasījums pieejamajos kanālos neizdevās\n"
+msgid ""
+"Querying available channels of mixer device %s failed\n"
+""
+msgstr ""
+"Mikseriekārtas %s pieprasījums pieejamajos kanālos neizdevās\n"
+""
 
-#: mixer/mixer.c:212
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "brīdinājums: mikserim nav skaļuma kanāla - lietoju tā vietā PCM.\n"
+#: mixer/mixer.c:214
+msgid ""
+"warning: mixer has no volume channel - using PCM instead.\n"
+""
+msgstr ""
+"brīdinājums: mikserim nav skaļuma kanāla - lietoju tā vietā PCM.\n"
+""
 
-#: mixer/mixer.c:215
+#: mixer/mixer.c:217
 #, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "Miksera iekārtai %s nav ne skaļuma, ne PCM kanāli.\n"
+msgid ""
+"Mixer device %s has neither volume nor PCM channels.\n"
+""
+msgstr ""
+"Miksera iekārtai %s nav ne skaļuma, ne PCM kanāli.\n"
+""
 
-#: mixer/mixer.c:568
+#: mixer/mixer.c:572
 msgid "Volume Controller"
 msgstr "Skaļuma Kontrolētājs"
 
-#: mixer/mixer.c:569
+#: mixer/mixer.c:573
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Lietojiet Uz Leju/Uz Augšu bultas, lai regulētu skaļumu"
 
-#: mixer/mixer.c:820
+#: mixer/mixer.c:828
 msgid "(C) 2001 Richard Hult"
-msgstr "(C) 2001 Richard Hult"
+msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:821
+#: mixer/mixer.c:829
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Skaļuma kontrole ļauj jums regulēt jūsu datora skaļumu."
 
-#: mixer/mixer.c:1059
+#: mixer/mixer.c:1074
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Skaļuma kontrole ļauj jums regulēt jūsu datora skaļumu"
 
@@ -3107,11 +2856,11 @@ msgid "Internet"
 msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:224
+#: modemlights/modemlights.c:227
 msgid "Modem Lights"
 msgstr "Modema Gaismas"
 
-#: modemlights/modemlights.c:226
+#: modemlights/modemlights.c:229
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3121,154 +2870,152 @@ msgstr ""
 "Modema statusa indikātors un zvanītājs.\n"
 "Gaismas secībā no augšas vai no kreisās puses ir Sūtīt datus un Saņemt datus."
 
-#: modemlights/modemlights.c:553
-msgid "You are currently connected.\n"
+#: modemlights/modemlights.c:558
+msgid ""
+"You are currently connected.\n"
 "Do you want to disconnect?"
-msgstr "Jūs esat šobrīd savienojies.\n"
+msgstr ""
+"Jūs esat šobrīd savienojies.\n"
 "Vai vēlaties atvienoties?"
 
-#: modemlights/modemlights.c:568
+#: modemlights/modemlights.c:573
 msgid "Do you want to connect?"
 msgstr "Vai jūs vēlaties savienoties?"
 
-#: modemlights/modemlights.c:596
+#: modemlights/modemlights.c:601
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb saņemts / %#.1fMb nosūtīts / laiks: %.1d:%.2d"
 
-#: modemlights/modemlights.c:601
+#: modemlights/modemlights.c:606
 msgid "not connected"
 msgstr "nav savienots"
 
-#: modemlights/properties.c:326
+#: modemlights/properties.c:328
 msgid "Modem Lights Preferences"
 msgstr "Modema Gaismu Preferences"
 
-#: modemlights/properties.c:338
+#: modemlights/properties.c:342
 msgid "Connecting"
 msgstr "Savienošanās"
 
-#: modemlights/properties.c:352
+#: modemlights/properties.c:356
 msgid "Co_nnect command:"
 msgstr "Savie_nojuma komanda:"
 
-#: modemlights/properties.c:369
+#: modemlights/properties.c:373
 msgid "_Disconnect command:"
 msgstr "_Atvienošanas komanda:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:382
+#: modemlights/properties.c:386
 msgid "Con_firm connection"
 msgstr "A_pstiprināt savienojumu"
 
-#: modemlights/properties.c:403
+#: modemlights/properties.c:407
 msgid "U_pdates per second"
 msgstr "A_tjauninājumi sekundē"
 
 #. extra info checkbox
-#: modemlights/properties.c:417
+#: modemlights/properties.c:421
 msgid "Sho_w connect time and throughput"
 msgstr "Parā_dīt savienojuma laiku un caurlaidi"
 
-#: modemlights/properties.c:434
+#: modemlights/properties.c:438
 msgid "Receive data"
 msgstr "Saņemt datus"
 
-#: modemlights/properties.c:436
+#: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "_Priekšplāns"
 
-#: modemlights/properties.c:437
+#: modemlights/properties.c:441
 msgid "_Background"
 msgstr "_Fons"
 
-#: modemlights/properties.c:439
+#: modemlights/properties.c:443
 msgid "Send data"
 msgstr "Sūtīt datus"
 
-#: modemlights/properties.c:441
+#: modemlights/properties.c:445
 msgid "Foregroun_d"
 msgstr "Priekšplā_ns"
 
-#: modemlights/properties.c:442
+#: modemlights/properties.c:446
 msgid "Backg_round"
 msgstr "Fo_ns"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:448
 msgid "Connection status"
 msgstr "Savienojuma statuss"
 
-#: modemlights/properties.c:446
+#: modemlights/properties.c:450
 msgid "Co_nnected"
 msgstr "Savie_nots"
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:451
 msgid "No_t connected"
 msgstr "Nav savieno_ts"
 
-#: modemlights/properties.c:448
+#: modemlights/properties.c:452
 msgid "A_waiting connection"
 msgstr "_Gaidu savienojumu"
 
-#: modemlights/properties.c:451
+#: modemlights/properties.c:455
 msgid "B_link"
 msgstr "_Mirgot"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:462
 msgid "Text"
 msgstr "Teksts"
 
-#: modemlights/properties.c:460
+#: modemlights/properties.c:464
 msgid "For_eground"
 msgstr "Prie_kšplāns"
 
-#: modemlights/properties.c:461
+#: modemlights/properties.c:465
 msgid "Bac_kground"
 msgstr "F_ons"
 
-#: modemlights/properties.c:462
+#: modemlights/properties.c:466
 msgid "O_utline"
 msgstr "Apri_se"
 
-#: modemlights/properties.c:464
-msgid "C_olors"
-msgstr "K_rāsas"
-
-#: modemlights/properties.c:473
+#: modemlights/properties.c:477
 msgid "Modem options"
 msgstr "Modema opcijas"
 
-#: modemlights/properties.c:487
+#: modemlights/properties.c:491
 msgid "_Modem lock file:"
 msgstr "_Modema lock fails:"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:503
 msgid "_Verify owner of lock file"
 msgstr "_Pārbaudīt lock faila īpašnieku"
 
-#: modemlights/properties.c:511
+#: modemlights/properties.c:515
 msgid "_Device:"
 msgstr "Ie_kārta:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:524
+#: modemlights/properties.c:528
 msgid "U_se ISDN"
 msgstr "Lie_tot ISDN"
 
-#: modemlights/properties.c:544
+#: modemlights/properties.c:548
 msgid "Set options as default"
 msgstr "Uzstādīt opcijas kā noklusējumos"
 
-#: modemlights/properties.c:550
-msgid "_Advanced"
-msgstr "_Plašāk"
+#: modemlights/properties.c:554
+msgid "Advanced"
+msgstr "Plašāk"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Sistēmas noslodzes indikātors"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:75
+#: multiload/main.c:78
 msgid "System Monitor"
 msgstr "Sistēmas Pārraugs"
 
@@ -3284,7 +3031,7 @@ msgstr "CPU Noslodze"
 msgid "Load Average"
 msgstr "Vidējā Noslodze"
 
-#: multiload/main.c:77
+#: multiload/main.c:80
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3294,31 +3041,37 @@ msgstr ""
 "\n"
 "Sistēmas noslodzes pārraugs spēj attēlot grafikus CPU, atmiņai un maiņatmiņas failam, kā arī tīkla noslodzei."
 
-#: multiload/main.c:227
+#: multiload/main.c:236
+#: multiload/properties.c:373
 msgid "Processor"
 msgstr "Procesors"
 
-#: multiload/main.c:229
+#: multiload/main.c:238
+#: multiload/properties.c:379
 msgid "Memory"
 msgstr "Atmiņa"
 
-#: multiload/main.c:231
+#: multiload/main.c:240
+#: multiload/properties.c:385
 msgid "Network"
 msgstr "Tīkls"
 
-#: multiload/main.c:233
+#: multiload/main.c:242
+#: multiload/properties.c:391
 msgid "Swap File"
 msgstr "Maiņatmiņas Fails"
 
-#: multiload/main.c:235
+#: multiload/main.c:244
 msgid "Resource"
 msgstr "Resurss"
 
-#: multiload/main.c:247
+#: multiload/main.c:256
 #, c-format
-msgid "%s:\n"
+msgid ""
+"%s:\n"
 "%d%% in use"
-msgstr "%s:\n"
+msgstr ""
+"%s:\n"
 "%d%% izmantoti"
 
 #: multiload/memload.c:50
@@ -3349,16 +3102,6 @@ msgstr "_Tīkls"
 msgid "_Swap File"
 msgstr "_Maiņatmiņas Fails"
 
-#.
-#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-#.
-#: multiload/properties.c:313
-msgid "Options"
-msgstr "Opcijas"
-
 #: multiload/properties.c:326
 msgid "System m_onitor width: "
 msgstr "Sistēmas pār_rauga platums: "
@@ -3379,10 +3122,6 @@ msgstr "Sis_tēmas pārrauga atjaunināšanas intervāls: "
 msgid "milliseconds"
 msgstr "milisekundes"
 
-#: multiload/properties.c:373
-msgid "P_rocessor"
-msgstr "P_rocesors"
-
 #: multiload/properties.c:374
 msgid "_User"
 msgstr "_Lietotājs"
@@ -3398,10 +3137,6 @@ msgstr "J_auks"
 #: multiload/properties.c:377
 msgid "I_dle"
 msgstr "Dī_kstāvē"
-
-#: multiload/properties.c:379
-msgid "M_emory"
-msgstr "At_miņa"
 
 #: multiload/properties.c:380
 msgid "Ot_her"
@@ -3419,10 +3154,6 @@ msgstr "_Buferi"
 msgid "F_ree"
 msgstr "B_rīvi"
 
-#: multiload/properties.c:385
-msgid "Net_work"
-msgstr "_Tīkls"
-
 #: multiload/properties.c:386
 msgid "S_LIP"
 msgstr "S_LIP"
@@ -3439,10 +3170,6 @@ msgstr "Et_hernet"
 msgid "_Other"
 msgstr "_Citi"
 
-#: multiload/properties.c:391
-msgid "Swap _File"
-msgstr "Maiņatmiņas _Fails"
-
 #: multiload/properties.c:392
 msgid "_Used"
 msgstr "_Izmantoti"
@@ -3451,7 +3178,7 @@ msgstr "_Izmantoti"
 msgid "_Free"
 msgstr "_Brīvi"
 
-#: multiload/properties.c:411
+#: multiload/properties.c:413
 msgid "System Monitor Preferences"
 msgstr "Sistēmas Pārrauga Preferences"
 
@@ -3461,15 +3188,15 @@ msgstr "Maiņatmiņas Noslodze"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
 msgid "Factory for Panel Menu Applet"
-msgstr "Paneļa Izvēļņu Sīkprogrammas Ražotne"
+msgstr "Ražotne Paneļa Izvēļņu Paneļprogrammai"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
 msgid "Panel Menu Applet Factory"
-msgstr "Paneļa Izvēļņu Sīkprogrammas Ražotne"
+msgstr "Paneļa Izvēļņu Paneļprogrammas Ražotne"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
 msgid "Panel applet for displaying menus"
-msgstr "Izvēļņu parādīšanas paneļa sīkprogramma"
+msgstr "Izvēļņu parādīšanas paneļprogramma"
 
 #: panel-menu/panel-menu-actions.c:99
 msgid "Actions"
@@ -3483,17 +3210,17 @@ msgstr "Darbību Izvēlne"
 msgid "Add items to the Menu Bar"
 msgstr "Pievienot priekšmetus Izvēlnes Joslai"
 
-#: panel-menu/panel-menu-add.c:240
+#: panel-menu/panel-menu-add.c:244
 #: panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr "Saīsnes"
 
-#: panel-menu/panel-menu-add.c:246
+#: panel-menu/panel-menu-add.c:250
 msgid "My Documents"
 msgstr "Mani Dokumenti"
 
-#: panel-menu/panel-menu-add.c:252
+#: panel-menu/panel-menu-add.c:256
 #: panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
@@ -3503,9 +3230,9 @@ msgstr "Dokumenti"
 msgid "Applications"
 msgstr "Aplikācijas"
 
-#: panel-menu/panel-menu-common.c:735
+#: panel-menu/panel-menu-common.c:738
 msgid "Removing this entry is not allowed as this will cause the Menu Bar applet to be removed from GNOME Panel"
-msgstr "Šī ieraksta izņemšana nav atļauta, jo tas novedīs pie Izvēlnes Joslas sīkprogrammas izņemšanas no GNOME Paneļa"
+msgstr "Šī ieraksta izņemšana nav atļauta, jo tas novedīs pie Izvēlnes Joslas paneļprogrammas izņemšanas no GNOME Paneļa"
 
 #: panel-menu/panel-menu-directory.c:516
 msgid "Create directory item..."
@@ -3519,20 +3246,20 @@ msgstr "Mājas"
 msgid "Edit directory item..."
 msgstr "Rediģēt direktorijas priekšmetu..."
 
-#: panel-menu/panel-menu-directory.c:684
-#: panel-menu/panel-menu-path.c:734
+#: panel-menu/panel-menu-directory.c:686
+#: panel-menu/panel-menu-path.c:736
 msgid "_Path:"
 msgstr "_Ceļš:"
 
-#: panel-menu/panel-menu-directory.c:692
+#: panel-menu/panel-menu-directory.c:694
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:702
+#: panel-menu/panel-menu-directory.c:704
 msgid "_Depth level:"
 msgstr "_Dziļuma līmenis:"
 
-#: panel-menu/panel-menu-directory.c:799
+#: panel-menu/panel-menu-directory.c:801
 msgid "Path specified is currently not a valid directory."
 msgstr "Norādītais ceļš nav pašlaik derīga direktorija."
 
@@ -3583,31 +3310,31 @@ msgstr "Preferences"
 msgid "Menu Bar Preferences"
 msgstr "Izvēlnes Joslas Preferences"
 
-#: panel-menu/panel-menu-properties.c:76
+#: panel-menu/panel-menu-properties.c:78
 msgid "Layout"
 msgstr "Izkārtojums"
 
-#: panel-menu/panel-menu-properties.c:91
+#: panel-menu/panel-menu-properties.c:93
 msgid "_Applications Menu"
 msgstr "_Aplikāciju Izvēlne"
 
-#: panel-menu/panel-menu-properties.c:115
+#: panel-menu/panel-menu-properties.c:117
 msgid "Select an icon for the Applications menu"
 msgstr "Izvēlieties ikonu Aplikāciju izvēlnei"
 
-#: panel-menu/panel-menu-properties.c:132
+#: panel-menu/panel-menu-properties.c:134
 msgid "_Preferences Menu"
 msgstr "_Preferenču Izvēlne"
 
-#: panel-menu/panel-menu-properties.c:143
+#: panel-menu/panel-menu-properties.c:145
 msgid "Ac_tions Menu"
 msgstr "_Darbību Izvēlne"
 
-#: panel-menu/panel-menu-properties.c:154
+#: panel-menu/panel-menu-properties.c:156
 msgid "_Windows Menu"
 msgstr "_Logu Izvēlne"
 
-#: panel-menu/panel-menu-properties.c:165
+#: panel-menu/panel-menu-properties.c:167
 msgid "W_orkspaces Menu"
 msgstr "_Darba vietu Izvēlne"
 
@@ -3619,15 +3346,98 @@ msgstr "Logi"
 msgid "Workspaces"
 msgstr "Darba vietas"
 
-#: panel-menu/panel-menu.c:691
+#: panel-menu/panel-menu.c:693
 msgid "Menu Bar"
 msgstr "Izvēlnes Josla"
 
-#: panel-menu/panel-menu.c:692
+#: panel-menu/panel-menu.c:694
 msgid "(c) 2001 Chris Phelps"
-msgstr "(c) 2001 Chris Phelps"
+msgstr "© 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:693
+#: panel-menu/panel-menu.c:695
 msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr "Izvēļņu Josla ļauj jums parādīt pielāgotas izvēļņjoslas jūsu paneļos."
+
+#: screen-exec/egg-screen-help.c:174
+msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+msgstr "Nespēju atrast GNOME_FILE_DOMAIN_APP_HELP domēnu"
+
+#: screen-exec/egg-screen-help.c:187
+msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+msgstr "Nespēju atrast GNOME_FILE_DOMAIN_HELP domēnu."
+
+#: screen-exec/egg-screen-help.c:200
+#: screen-exec/egg-screen-help.c:215
+#, c-format
+msgid "Unable to show help as %s is not a directory.  Please check your installation."
+msgstr "Nespēju parādīt palīdzību, jo %s nav direkorija.  Lūdzu pārbaudiet savu instalāciju."
+
+#: screen-exec/egg-screen-help.c:224
+#: screen-exec/egg-screen-help.c:240
+#, c-format
+msgid "Unable to find the help files in either %s or %s.  Please check your installation"
+msgstr "Nevarēju atrast palīdzības failus ne %s, ne %s.  Lūdzu pārbaudiet savu instalāciju"
+
+#: screen-exec/egg-screen-help.c:315
+#, c-format
+msgid "Unable to find doc_id %s in the help path"
+msgstr "Nevarēju atrast doc_id %s palīdzības ceļā"
+
+#: screen-exec/egg-screen-help.c:336
+#, c-format
+msgid "Help document %s/%s not found"
+msgstr "Palīdzības dokuments %s/%s nav atrasts"
+
+#: wireless/wireless-applet.c:343
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+"Attļi, kas nepieciešami, lai palaistu bezvadu novērotāju, iztrūkst.\n"
+"Lūdzu pārbaudiet, vai tas ir pareizi uzinstalēts."
+
+#: wireless/wireless-applet.c:524
+msgid "No Wireless Devices"
+msgstr "Nav Bezvadu Iekārtu"
+
+#: wireless/wireless-applet.c:526
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"Neizskatās, ka jūsu sistēmā būtu nokonfigurētas kādas bezvadu iekārtas.\n"
+"Lūdzu pārbaudiet savu konfigurāciju, ja domājat, ka šis nav pareizi."
+
+#: wireless/wireless-applet.c:718
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "Bezvadu Saites Novērotājs"
+
+#: wireless/wireless-applet.c:720
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "© 2002, 2002 Brīvās Programmatūras Fonds"
+
+#: wireless/wireless-applet.c:721
+msgid "This utility shows the status of a wireless link."
+msgstr "Šī utilīta parāda bezvadu saites statusu."
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr "Uzraudzītā Iekārta:"
+
+#: wireless/wireless-applet.glade.h:2
+msgid "Show _dialog boxes"
+msgstr "Parādīt _dialogu lodziņus"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Show signal strength in _percentage"
+msgstr "Parādīt signāla pretestību _procentuāli"
+
+#: wireless/wireless-applet.glade.h:4
+msgid "Wireless Link Monitor Preferences"
+msgstr "Bezvadu Saites Uzrauga Preferences"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Novērot bezvadu tīkla saites kvalitāti"
 
