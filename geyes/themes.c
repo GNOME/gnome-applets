@@ -187,14 +187,14 @@ presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 void
 properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
-	GtkWidget *pbox;
+	GtkWidget *pbox, *hbox;
         GtkWidget *tree;
+        GtkWidget *label;
         GtkListStore *model;
         GtkTreeViewColumn *column;
         GtkCellRenderer *cell;
         GtkTreeSelection *selection;
         GtkTreeIter iter;
-        gchar *title [] = { N_("Theme Name"), NULL };
         DIR *dfd;
         struct dirent *dp;
         int i;
@@ -207,7 +207,7 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
 		return;
 	}
 
-        pbox = gtk_dialog_new_with_buttons (_("Properties"), NULL,
+        pbox = gtk_dialog_new_with_buttons (_("Geyes Preferences"), NULL,
         				     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     NULL);
@@ -215,13 +215,22 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         g_signal_connect (pbox, "response",
 			  G_CALLBACK (presponse_cb),
 			  eyes_applet);
+	
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), hbox, FALSE, FALSE, 2);
+	
+	label = gtk_label_new_with_mnemonic (_("T_heme Name"));
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 
 	model = gtk_list_store_new (1, G_TYPE_STRING);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
 	g_object_unref (model);
 	
 	cell = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (title[0], cell,
+	column = gtk_tree_view_column_new_with_attributes ("not used", cell,
                                                            "text", 0, NULL);
         gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
                                                            
@@ -260,7 +269,7 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
                 }
         }
         
-        gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), tree, TRUE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), tree, TRUE, TRUE, 2);
         
         gtk_widget_show_all (pbox);
         
