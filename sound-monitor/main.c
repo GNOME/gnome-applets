@@ -46,7 +46,7 @@ static void esd_control_cb (AppletWidget *widget, gpointer data)
 		{
 		if (esd_control(Control_Start, ad->esd_host));
 		sound_free(ad->sound);
-		ad->sound = sound_init(ad->esd_host, FALSE);
+		ad->sound = sound_init(ad->esd_host, ad->monitor_input);
 		}
 	else if (ad->esd_status == Status_Standby)
 		{
@@ -284,7 +284,7 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	update_display(ad);
 
-	ad->sound = sound_init(ad->esd_host, FALSE);
+	ad->sound = sound_init(ad->esd_host, ad->monitor_input);
 
 	ad->update_timeout_id = gtk_timeout_add(1000 / ad->refresh_fps, (GtkFunction)update_display, ad);
 	
@@ -336,4 +336,5 @@ int main (int argc, char *argv[])
 	applet_widget_gtk_main();
 	return 0;
 }
+
 

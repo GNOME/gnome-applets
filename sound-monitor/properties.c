@@ -122,7 +122,6 @@ static void scope_segment_cb(GtkWidget *w, gpointer data)
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
-#ifdef HAVE_ADVANCED
 static void monitor_input_cb(GtkWidget *w, gpointer data)
 {
 	AppData *ad = data;
@@ -135,7 +134,6 @@ static void monitor_input_cb(GtkWidget *w, gpointer data)
 		gnome_warning_dialog(_("You have enabled the \"Monitor sound input\" option.\n\nIf your sound card is not fully 100% FULL DUPLEX (can do input and output simultaneously),\nthen this may touch bugs in sound drivers/esound that may hang the system.\n\nYou have been warned!"));
 		}
 }
-#endif
 
 static void theme_selected_cb(GtkWidget *clist, gint row, gint column,
 		GdkEventButton *bevent, gpointer data)
@@ -275,7 +273,7 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 	if (info_changed)
 		{
 		sound_free(ad->sound);
-		ad->sound = sound_init(ad->esd_host, FALSE);
+		ad->sound = sound_init(ad->esd_host, ad->monitor_input);
 		}
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
@@ -500,13 +498,11 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(hbox), ad->host_entry, TRUE, TRUE, 0);
 	gtk_widget_show(ad->host_entry);
 
-#ifdef HAVE_ADVANCED
 	button = gtk_check_button_new_with_label (_("Monitor sound input (only use if sound card is FULL DUPLEX)"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_monitor_input);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) monitor_input_cb, ad);
 	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
 	gtk_widget_show(button);
-#endif
 
         label = gtk_label_new(_("Advanced"));
         gtk_widget_show(frame);
@@ -519,3 +515,4 @@ void property_show(AppletWidget *applet, gpointer data)
 	return;
 	applet = NULL;
 } 
+
