@@ -283,7 +283,24 @@ load_graph_properties_update (GnomePropertyObject *object)
 	LoadGraph *g = (LoadGraph *) c->data;
 
 	/* Remember not to use `object->prop_data' here,
-	 * `g->prop_data' is what you want ! */
+	 * `g->prop_data' is what you want !
+	 *
+	 * To make this clear:
+	 *
+	 * This function is called for each GnomePropertyObject
+	 * (currently cpuload, memload, swapload), but this
+	 * block loops over each real applet.
+	 *
+	 * So if you have for instance only a cpuload applet running
+	 * this function is called three times (for cpuload, memload
+	 * and swapload properties), but `g' will always point to
+	 * the running cpuload applet and thus `g->prop_data' will
+	 * always point to the cpuload properties while `prop_data'
+	 * will point to the cpuload, memload and swapload properties
+	 * in each invocation of this function.
+	 *
+	 * Feb 22, Martin Baulig
+	 */
 
 	if (g->colors_allocated) {
 		GdkColormap *colormap;
