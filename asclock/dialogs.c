@@ -273,15 +273,17 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   for (cpp= themes_directories; *cpp; cpp++)
     {
 
-      if((dfd = opendir(*cpp)) != NULL)
-        while((dp = readdir(dfd)) != NULL)
+      if((dfd = opendir(*cpp)) != NULL){
+        while((dp = readdir(dfd)) != NULL){
           if ( dp->d_name[0]!='.' ) {
 	    gchar *elems[2] = { filename, NULL };
 	    strcpy(filename, *cpp);
 	    strcat(filename, dp->d_name);
             gtk_clist_append(GTK_CLIST(list), elems );
+	  }
+	}
+	closedir(dfd);
       }
-      closedir(dfd);
     }
 
   /* show ampm toggle button */
