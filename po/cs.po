@@ -11,16 +11,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-29 19:31+0200\n"
-"PO-Revision-Date: 2004-07-29 21:36+0200\n"
+"PO-Revision-Date: 2004-08-08 23:21+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -85,14 +82,14 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 msgid "Utility"
 msgstr "Nástroj"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:996
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
-#: mini-commander/src/about.c:50 mixer/mixer.c:1348
+#: mini-commander/src/about.c:50 mixer/mixer.c:1350
 #: modemlights/modemlights.c:118 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
-#: wireless/wireless-applet.c:570
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -153,7 +150,7 @@ msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1017 battstat/battstat_applet.c:1758
+#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -162,7 +159,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1759
+#: battstat/battstat_applet.c:1841
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -271,155 +268,180 @@ msgstr "Vaše platforma není podporovaná!\n"
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Tento aplet nebude fungovat správně (pokud vůbec).\n"
 
-#: battstat/battstat_applet.c:358
-msgid "charged"
-msgstr "nabita"
-
 #: battstat/battstat_applet.c:360
-msgid "..."
-msgstr "..."
-
-#: battstat/battstat_applet.c:362
 #, c-format
-msgid "%d hours %d minutes remaining"
-msgstr "zbývá %d hodin a %d minut"
+msgid "%i minute"
+msgid_plural "%i minutes"
+msgstr[0] "%i minuta"
+msgstr[1] "%i minuty"
+msgstr[2] "%i minut"
+
+#: battstat/battstat_applet.c:361
+#, c-format
+msgid "%i hour"
+msgid_plural "%i hours"
+msgstr[0] "%i hodina"
+msgstr[1] "%i hodiny"
+msgstr[2] "%i hodin"
+
+# FIXME: This doesn't work
+#. Translation Note: as in "No time remaining" or "No time till charged"
+#: battstat/battstat_applet.c:365
+msgid "No time"
+msgstr "Žádný čas"
+
+#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
+#. Translation Note: as in "Unknown time remaining"
+#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
+msgid "Unknown time"
+msgstr "Neznámý čas"
+
+#. Translation note:
+#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
+#. * Swap the order with "%2$s %1$s" if needed.
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "%s %s"
+msgstr "%s %s"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1056
+#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
 msgid "Low"
 msgstr "Nízké"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1060
+#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
 msgid "Charging"
 msgstr "Nabíjení"
 
-#: battstat/battstat_applet.c:482
+#: battstat/battstat_applet.c:515
 #, c-format
 msgid ""
-"Your battery is running low (%d%%, %s). You should recharge your battery to "
-"avoid losing your work."
-msgstr ""
-"Vaše baterie se vybíjí (%d%%, %s). Abyste nepřišli o svou práci, měli byste "
-"baterii dobít."
+"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
+"your laptop in."
+msgstr "%s (%d%%) zbývá. Abyste nepřišli práci, svůj notebook prosím vypněte, uspěte nebo připojte do el. sítě."
 
-#: battstat/battstat_applet.c:485 battstat/battstat_applet.c:532
+#: battstat/battstat_applet.c:519
+msgid "Your battery is running low"
+msgstr "Vaše baterie se vybíjí"
+
+#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
 msgid "Battery Notice"
 msgstr "Upozornění o baterii"
 
-#: battstat/battstat_applet.c:551
-msgid "Your battery is now fully recharged."
-msgstr "Vaše baterie jsou nyní zcela dobité."
+#: battstat/battstat_applet.c:597
+msgid "Your battery is now fully recharged"
+msgstr "Vaše baterie je nyní zcela dobita"
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:595 battstat/battstat_applet.c:1211
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:651
 #, c-format
 msgid ""
 "System is running on battery power\n"
-"Battery: %d%% (%s)"
+"%s (%d%%) remaining"
 msgstr ""
-"Systém je napájen bateriemi.\n"
-"Baterie: %d%% (%s)"
+"Systém je napájen bateriemi\n"
+"%s (%d%%) zbývá"
 
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1218
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:655
 #, c-format
 msgid ""
 "System is running on AC power\n"
-"Battery: %d%% (%s)"
+"%s (%d%%) till charged"
 msgstr ""
 "Systém je napájen el. sítí.\n"
-"Baterie: %d%% (%s)"
+"%s (%d%%) do nabití"
 
 #. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1231
+#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
+#: battstat/battstat_applet.c:1300
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
 #. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:605 battstat/battstat_applet.c:1149
-#: battstat/battstat_applet.c:1236
+#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
+#: battstat/battstat_applet.c:1305
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: battstat/battstat_applet.c:620 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
+#: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:753 battstat/battstat_applet.c:1125
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
 #, c-format
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
+msgid "System is running on battery power. %s (%d%%) remaining."
+msgstr "Systém je napájen bateriemi. %s (%d%%) zbývá."
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:758 battstat/battstat_applet.c:1131
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
 #, c-format
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
+msgid "System is running on AC power. %s (%d%%) till charged."
+msgstr "Systém je napájen el. sítí. %s (%d%%) do nabití."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:767
-msgid "System is running on battery power. Battery: Not present"
-msgstr "Systém je napájen bateriemi. Baterie: Není přítomná"
+#: battstat/battstat_applet.c:827
+msgid "System is running on battery power. Battery status unknown."
+msgstr "Systém je napájen bateriemi. Stav baterie není znám."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:772
-msgid "System is running on AC power. Battery: Not present"
-msgstr "Systém je napájen el. sítí. Baterie: Není přítomná"
+#: battstat/battstat_applet.c:832
+msgid "System is running on AC power. No battery present."
+msgstr "Systém je napájen el. sítí. Baterie není přítomna."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. contains a string of the time remaining
-#: battstat/battstat_applet.c:780
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:841
 #, c-format
-msgid "Battery: %d%% (%s)"
-msgstr "Baterie: %d%% (%s)"
+msgid "%s (%d%%) remaining"
+msgstr "%s (%d%%) zbývá"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:785
-msgid "Battery: Not present"
-msgstr "Baterie: Není přítomná"
+#: battstat/battstat_applet.c:846
+msgid "No battery present"
+msgstr "Baterie není přítomna"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:948
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -432,7 +454,7 @@ msgstr ""
 "zařízení APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:896
+#: battstat/battstat_applet.c:957
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -442,7 +464,7 @@ msgstr ""
 "Zkuste spustit \"apm -e 1\" (FreeBSD) a možná to\n"
 "pomůže.\n"
 
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:1013
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -451,16 +473,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:1017
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:1019
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:1027
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -470,19 +492,47 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1045
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1019
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
+#: battstat/battstat_applet.c:1081
+msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
+msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1020
+#: battstat/battstat_applet.c:1082
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1684
+#. 0 = Battery power
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1279
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"%s (%d%%) remaining."
+msgstr ""
+"Systém je napájen bateriemi\n"
+"%s (%d%%) zbývá."
+
+#. 1 = AC power. I should really test it explicitly here.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1287
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"%s (%d%%) till charged."
+msgstr ""
+"Systém je napájen el. sítí.\n"
+"%s (%d%%) do nabití."
+
+#: battstat/battstat_applet.c:1766
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -594,21 +644,21 @@ msgstr "_Varovat, když je nabití baterie nízké"
 msgid "_Yellow:"
 msgstr "_Žlutá:"
 
-#: battstat/properties.c:297 drivemount/drivemount.c:510
+#: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
-#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1461 stickynotes/stickynotes_applet_callbacks.c:220
+#: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
+#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
-#: wireless/wireless-applet.c:540 wireless/wireless-applet.c:624
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
 
-#: battstat/properties.c:500
+#: battstat/properties.c:494
 msgid "Progress Bar Direction Moves towards top"
 msgstr "Směr ukazatele postupu Pohybuje se směrem nahoru"
 
-#: battstat/properties.c:510
+#: battstat/properties.c:504
 msgid "Progress Bar Direction Moves towards bottom"
 msgstr "Směr ukazatele postupu Pohybuje se směrem dolů"
 
@@ -674,7 +724,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:380 mixer/mixer.c:1315 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1317 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -767,7 +817,7 @@ msgstr ""
 "apletu"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:583
-#: charpick/charpick.c:734 charpick/properties.c:449
+#: charpick/charpick.c:737 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -775,7 +825,7 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:734
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:737
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
@@ -933,7 +983,7 @@ msgid "Cannot browse device"
 msgstr "Nemohu procházet zařízení"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2620
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2623
 msgid "Error displaying help"
 msgstr "Chyba při zobrazování nápovědy"
 
@@ -2742,7 +2792,7 @@ msgstr "Rozložení"
 msgid "_Keyboards:"
 msgstr "_Rozložení:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:426
+#: gkb-new/prop.c:457 multiload/properties.c:427
 msgid "Options"
 msgstr "Volby"
 
@@ -3109,7 +3159,7 @@ msgid "_Width:"
 msgstr "_Šířka:"
 
 #: gtik/gtik.c:1553 mini-commander/src/mini-commander.glade.h:21
-#: multiload/properties.c:489
+#: multiload/properties.c:490
 msgid "pixels"
 msgstr "bodů"
 
@@ -4350,7 +4400,7 @@ msgid "No mail."
 msgstr "Žádná pošta."
 
 #: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
-#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
+#: mailcheck/mailcheck.c:2903 mailcheck/mailcheck.c:2904
 msgid "Status not updated"
 msgstr "Stav neaktualizován"
 
@@ -4477,15 +4527,15 @@ msgstr ""
 "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
 "nová pošta"
 
-#: mailcheck/mailcheck.c:2853
+#: mailcheck/mailcheck.c:2856
 msgid "Text only"
 msgstr "Jen text"
 
-#: mailcheck/mailcheck.c:2902
+#: mailcheck/mailcheck.c:2905
 msgid "Mail check"
 msgstr "Kontrola pošty"
 
-#: mailcheck/mailcheck.c:2903
+#: mailcheck/mailcheck.c:2906
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Kontrola pošty vás upozorňuje, když do vaší schránky přijde nová pošta"
 
@@ -4935,7 +4985,7 @@ msgid "Adjust the sound volume"
 msgstr "Upravit hlasitost zvuku"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:200
-#: mixer/mixer.c:1362
+#: mixer/mixer.c:1364
 msgid "Volume Control"
 msgstr "Ovládání hlasitosti"
 
@@ -5086,28 +5136,28 @@ msgstr "+"
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1363
+#: mixer/mixer.c:1365
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:1364
+#: mixer/mixer.c:1366
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače."
 
-#: mixer/mixer.c:1511
+#: mixer/mixer.c:1513
 msgid "Volume Control Preferences"
 msgstr "Nastavení ovládání hlasitosti"
 
-#: mixer/mixer.c:1535
+#: mixer/mixer.c:1537
 msgid "Audio Channels"
 msgstr "Zvukové kanály"
 
-#: mixer/mixer.c:1551
+#: mixer/mixer.c:1553
 msgid "_Select channel to control:"
 msgstr "_Vyberte kanál, který ovládat:"
 
-#: mixer/mixer.c:1887
+#: mixer/mixer.c:1889
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
@@ -5125,7 +5175,7 @@ msgid "Saved volume to restore on startup"
 msgstr "Uložená hlasitost, kterou obnovit při startu"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:138 modemlights/modemlights.c:1596
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1599
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
 
@@ -5404,7 +5454,7 @@ msgstr "Pozad_í:"
 msgid "O_utline:"
 msgstr "_Obrysy:"
 
-#: modemlights/properties.c:624 multiload/properties.c:534
+#: modemlights/properties.c:624 multiload/properties.c:535
 msgid "Colors"
 msgstr "Barvy"
 
@@ -5466,19 +5516,19 @@ msgstr ""
 "Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
 "paměť, využití odkládacího prostoru a zatížení sítě."
 
-#: multiload/main.c:337 multiload/properties.c:559
+#: multiload/main.c:337 multiload/properties.c:560
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:339 multiload/properties.c:566
+#: multiload/main.c:339 multiload/properties.c:567
 msgid "Memory"
 msgstr "Paměť"
 
-#: multiload/main.c:341 multiload/properties.c:574
+#: multiload/main.c:341 multiload/properties.c:575
 msgid "Network"
 msgstr "Síť"
 
-#: multiload/main.c:343 multiload/properties.c:582
+#: multiload/main.c:343 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
@@ -5622,115 +5672,115 @@ msgstr "Barva pozadí grafu odkládacího prostoru"
 msgid "Net Load"
 msgstr "Zatížení sítě"
 
-#: multiload/properties.c:332
+#: multiload/properties.c:333
 msgid "Monitored Resources"
 msgstr "Sledované zdroje"
 
-#: multiload/properties.c:357
+#: multiload/properties.c:358
 msgid "_Processor"
 msgstr "_Procesor"
 
-#: multiload/properties.c:370
+#: multiload/properties.c:371
 msgid "_Memory"
 msgstr "Pa_měť"
 
-#: multiload/properties.c:383
+#: multiload/properties.c:384
 msgid "_Network"
 msgstr "_Síť"
 
-#: multiload/properties.c:396
+#: multiload/properties.c:397
 msgid "S_wap Space"
 msgstr "_Odkládací soubor"
 
-#: multiload/properties.c:409
+#: multiload/properties.c:410
 msgid "_Load"
 msgstr "_Zátěž"
 
-#: multiload/properties.c:456
+#: multiload/properties.c:457
 msgid "System m_onitor width: "
 msgstr "Šířka sledování systé_mu"
 
-#: multiload/properties.c:458
+#: multiload/properties.c:459
 msgid "System m_onitor height: "
 msgstr "Výška sledování systé_mu"
 
-#: multiload/properties.c:497
+#: multiload/properties.c:498
 msgid "Sys_tem monitor update interval: "
 msgstr "Frekvence _aktualizace sledování systému: "
 
-#: multiload/properties.c:523
+#: multiload/properties.c:524
 msgid "milliseconds"
 msgstr "milisekund"
 
-#: multiload/properties.c:561 multiload/properties.c:568
+#: multiload/properties.c:562 multiload/properties.c:569
 msgid "_User"
 msgstr "_Uživatel"
 
-#: multiload/properties.c:562
+#: multiload/properties.c:563
 msgid "S_ystem"
 msgstr "S_ystém"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:564
 msgid "N_ice"
 msgstr "N_ice"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:565
 msgid "I_dle"
 msgstr "Neč_innost"
 
-#: multiload/properties.c:569
+#: multiload/properties.c:570
 msgid "Sh_ared"
 msgstr "Sdíl_eno"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:571
 msgid "_Buffers"
 msgstr "Bu_ffery"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:572
 msgid "Cach_ed"
 msgstr "_Kešováno"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:573
 msgid "F_ree"
 msgstr "_Volno"
 
-#: multiload/properties.c:576
+#: multiload/properties.c:577
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:577
+#: multiload/properties.c:578
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:579
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:580
 msgid "Othe_r"
 msgstr "_Jiné"
 
-#: multiload/properties.c:580 multiload/properties.c:590
+#: multiload/properties.c:581 multiload/properties.c:591
 msgid "_Background"
 msgstr "Po_zadí"
 
-#: multiload/properties.c:584
+#: multiload/properties.c:585
 msgid "_Used"
 msgstr "Po_užito"
 
-#: multiload/properties.c:585
+#: multiload/properties.c:586
 msgid "_Free"
 msgstr "_Volno"
 
-#: multiload/properties.c:587
+#: multiload/properties.c:588
 msgid "Load"
 msgstr "Zátěž"
 
-#: multiload/properties.c:589
+#: multiload/properties.c:590
 msgid "_Average"
 msgstr "_Průměr"
 
-#: multiload/properties.c:613
+#: multiload/properties.c:614
 msgid "System Monitor Preferences"
 msgstr "Nastavení Sledování systému"
 
@@ -6136,16 +6186,16 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Sledování kvality bezdrátového síťového spojení"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:586 wireless/wireless-applet.c:838
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
 msgid "Wireless Link Monitor"
 msgstr "Sledování bezdrátového spojení"
 
-#: wireless/wireless-applet.c:144
+#: wireless/wireless-applet.c:146
 #, c-format
 msgid "Link Strength: %2.0d%%"
 msgstr "Síla signálu: %2.0d%%"
 
-#: wireless/wireless-applet.c:365
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -6153,19 +6203,19 @@ msgstr ""
 "Zdá se, že na vašem systému nejsou nastavena žádná bezdrátová zařízení.\n"
 "Zkontrolujte prosím vaše nastavení, pokud si myslíte, že to není správně."
 
-#: wireless/wireless-applet.c:500 wireless/wireless-applet.c:827
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
 msgid "No Wireless Devices"
 msgstr "Žádná bezdrátová zařízení"
 
-#: wireless/wireless-applet.c:588
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:589
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení."
 
-#: wireless/wireless-applet.c:839
+#: wireless/wireless-applet.c:843
 msgid "This utility shows the status of a wireless link"
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení"
 
@@ -6198,6 +6248,3 @@ msgstr "_Sledované zařízení:"
 
 #~ msgid "Serbo-Croatian"
 #~ msgstr "Srbochorvatská"
-
-#~ msgid "Yugoslavia"
-#~ msgstr "Jugoslávie"
