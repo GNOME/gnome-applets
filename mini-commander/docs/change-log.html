@@ -84,7 +84,25 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-04-21  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+>1999-05-21  Jacob Berkman  &#60;jberk+@cmu.edu&#62;
+
+	* src/mini-commander_applet.c (main): This looks much better when
+	there is no handlebox
+
+1999-05-17  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/preferences.c (loadSession): Included macro updates from
+ 	Chad Powell &#60;pxpx@usa.net&#62;.
+
+Fri Apr 30 12:46:35 1999  George Lebl  &#60;jirka@5z.com&#62;
+
+	* src/exec.c: based on a patch from "Brandon S. Allbery"
+	  &#60;allbery@ece.cmu.edu&#62;, I added a SA_NOMASK define if it's
+	  not defined (set it to SA_NODEFER in that case) and initialize
+	  the whole sigaction structure to 0 instead of setting the
+	  sa_restorer
+
+1999-04-21  Oliver Maruhn  &#60;om@linuxhq.com&#62;
 
 	* src/preferences.c (propertiesBox): Added a patch from Nick Lamb
  	&#60;njl98r@ecs.soton.ac.uk&#62; which make the handle box optional.  When

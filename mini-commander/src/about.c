@@ -1,8 +1,8 @@
 /*
  * Mini-Commander Applet
- * Copyright (C) 1998 Oliver Maruhn <om@linuxhq.com>
+ * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
- * Author: Oliver Maruhn <om@linuxhq.com>
+ * Author: Oliver Maruhn <oliver@maruhn.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@
 void aboutBox(AppletWidget *applet, gpointer data)
 {
         GtkWidget *aboutBox;
-	const gchar *authors[] = {(gchar *) "Oliver Maruhn <om@linuxhq.com>", (gchar *) NULL};
+	const gchar *authors[] = {(gchar *) "Oliver Maruhn <oliver@maruhn.com>", (gchar *) NULL};
 
         aboutBox = gnome_about_new (_("Mini-Commander Applet"), INTERNAL_VERSION,
 				    "(C) 1998 Oliver Maruhn",

@@ -1,8 +1,8 @@
 /*
  * Mini-Commander Applet
- * Copyright (C) 1998 Oliver Maruhn <om@linuxhq.com>
+ * Copyright (C) 1998 Oliver Maruhn <oliver@maruhn.com>
  *
- * Author: Oliver Maruhn <om@linuxhq.com>
+ * Author: Oliver Maruhn <oliver@maruhn.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
