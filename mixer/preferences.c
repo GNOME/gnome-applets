@@ -1,0 +1,367 @@
+/* GNOME Volume Applet
+ * Copyright (C) 2004 Ronald Bultje <rbultje@ronald.bitfreak.net>
+ *
+ * preferences.c: preferences screen
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+#include <string.h>
+
+#include <gnome.h>
+#include <gtk/gtk.h>
+#include <gst/mixer/mixer.h>
+
+#include "preferences.h"
+#include "keys.h"
+
+enum {
+  COL_LABEL,
+  COL_TRACK,
+  NUM_COLS
+};
+
+static void	gnome_volume_applet_preferences_class_init	(GnomeVolumeAppletPreferencesClass *klass);
+static void	gnome_volume_applet_preferences_init	(GnomeVolumeAppletPreferences *prefs);
+static void	gnome_volume_applet_preferences_dispose (GObject *object);
+static void	gnome_volume_applet_preferences_response (GtkDialog *dialog,
+							  gint       response_id);
+
+static void	cb_dev_selected				(GtkComboBox *box,
+							 gpointer    data);
+
+static gboolean cb_track_select				(GtkTreeSelection *selection,
+							 GtkTreeModel     *model,
+							 GtkTreePath      *path,
+							 gboolean          path_selected,
+							 gpointer          data);
+
+static GtkDialogClass *parent_class = NULL;
+
+GType
+gnome_volume_applet_preferences_get_type (void)
+{
+  static GType gnome_volume_applet_preferences_type = 0;
+
+  if (!gnome_volume_applet_preferences_type) {
+    static const GTypeInfo gnome_volume_applet_preferences_info = {
+      sizeof (GnomeVolumeAppletPreferencesClass),
+      NULL,
+      NULL,
+      (GClassInitFunc) gnome_volume_applet_preferences_class_init,
+      NULL,
+      NULL,
+      sizeof (GnomeVolumeAppletPreferences),
+      0,
+      (GInstanceInitFunc) gnome_volume_applet_preferences_init,
+      NULL
+    };
+
+    gnome_volume_applet_preferences_type =
+	g_type_register_static (GTK_TYPE_DIALOG, 
+				"GnomeVolumeAppletPreferences",
+				&gnome_volume_applet_preferences_info, 0);
+  }
+
+  return gnome_volume_applet_preferences_type;
+}
+
+static void
+gnome_volume_applet_preferences_class_init (GnomeVolumeAppletPreferencesClass *klass)
+{
+  GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+  GtkDialogClass *gtkdialog_class = (GtkDialogClass *) klass;
+
+  parent_class = g_type_class_ref (GTK_TYPE_DIALOG);
+
+  gobject_class->dispose = gnome_volume_applet_preferences_dispose;
+  gtkdialog_class->response = gnome_volume_applet_preferences_response;
+}
+
+static void
+gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
+{
+  GtkWidget *box, *label, *view, *viewport;
+  GtkAdjustment *hadjustment, *vadjustment;
+  GtkListStore *store;
+  GtkTreeSelection *sel;
+  GtkTreeViewColumn *col;
+  GtkCellRenderer *render;
+
+  prefs->client = NULL;
+  prefs->mixer = NULL;
+
+  /* make window look cute */
+  gtk_window_set_title (GTK_WINDOW (prefs), _("Volume Applet: Preferences"));
+  gtk_dialog_add_buttons (GTK_DIALOG (prefs),
+			  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+			  /* help goes here (future) */
+			  NULL);
+
+  /* add a treeview for all the properties */
+  box = gtk_vbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 6);
+
+  label = gtk_label_new (_("Select the device and track that you wish to be\n"
+			   "controlled by the applet."));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
+  gtk_widget_show (label);
+
+  /* optionmenu */
+  prefs->optionmenu = gtk_combo_box_new_text ();
+  gtk_box_pack_start (GTK_BOX (box), prefs->optionmenu, FALSE, FALSE, 0);
+  gtk_widget_show (prefs->optionmenu);
+  g_signal_connect (prefs->optionmenu, "changed",
+		    G_CALLBACK (cb_dev_selected), prefs);
+
+  store = gtk_list_store_new (NUM_COLS,
+			      G_TYPE_STRING, G_TYPE_POINTER);
+  prefs->treeview = gtk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (prefs->treeview), FALSE);
+
+  /* viewport for lots of tracks */
+  view = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
+				  GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+
+  hadjustment = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (view));
+  vadjustment = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (view));
+  viewport = gtk_viewport_new (hadjustment, vadjustment);
+  gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_NONE);
+
+  gtk_container_add (GTK_CONTAINER (viewport), prefs->treeview);
+  gtk_container_add (GTK_CONTAINER (view), viewport);
+  gtk_box_pack_start (GTK_BOX (box), view, TRUE, TRUE, 0);
+
+  gtk_widget_show (prefs->treeview);
+  gtk_widget_show (viewport);
+  gtk_widget_show (view);
+
+  /* treeview internals */
+  sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
+  gtk_tree_selection_set_mode (sel, GTK_SELECTION_SINGLE);
+  gtk_tree_selection_set_select_function (sel, cb_track_select, prefs, NULL);
+
+  render = gtk_cell_renderer_text_new ();
+  col = gtk_tree_view_column_new_with_attributes ("Track name", render,
+						  "text", COL_LABEL,
+						  NULL);
+  gtk_tree_view_column_set_clickable (col, TRUE);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (prefs->treeview), col);
+
+  /* and show */
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (prefs)->vbox), box,
+		      TRUE, TRUE, 0);
+  gtk_widget_show (box);
+}
+
+GtkWidget *
+gnome_volume_applet_preferences_new (GConfClient *client,
+				     GList       *elements,
+				     GstMixer    *mixer,
+				     GstMixerTrack *track)
+{
+  GnomeVolumeAppletPreferences *prefs;
+
+  /* element */
+  prefs = g_object_new (GNOME_VOLUME_APPLET_TYPE_PREFERENCES, NULL);
+  prefs->client = g_object_ref (G_OBJECT (client));
+
+  /* show devices */
+  for ( ; elements != NULL; elements = elements->next) {
+    gchar *name = g_object_get_data (G_OBJECT (elements->data),
+				     "gnome-volume-applet-name");
+    gtk_combo_box_append_text (GTK_COMBO_BOX (prefs->optionmenu), name);
+  }
+
+  gnome_volume_applet_preferences_change (prefs, mixer, track);
+
+  return GTK_WIDGET (prefs);
+}
+
+static void
+gnome_volume_applet_preferences_dispose (GObject *object)
+{
+  GnomeVolumeAppletPreferences *prefs = GNOME_VOLUME_APPLET_PREFERENCES (object);
+
+  if (prefs->client) {
+    g_object_unref (G_OBJECT (prefs->client));
+    prefs->client = NULL;
+  }
+
+  if (prefs->mixer) {
+    gst_object_unref (GST_OBJECT (prefs->mixer));
+    prefs->mixer = NULL;
+  }
+
+  G_OBJECT_CLASS (parent_class)->dispose (object);
+}
+
+static void
+gnome_volume_applet_preferences_response (GtkDialog *dialog,
+					  gint       response_id)
+{
+  switch (response_id) {
+    case GTK_RESPONSE_CLOSE:
+      gtk_widget_destroy (GTK_WIDGET (dialog));
+      break;
+
+    default:
+      break;
+  }
+
+  if (((GtkDialogClass *) parent_class)->response)
+    ((GtkDialogClass *) parent_class)->response (dialog, response_id);
+}
+
+/*
+ * Change the element. Basically recreates this object internally.
+ */
+
+void
+gnome_volume_applet_preferences_change (GnomeVolumeAppletPreferences *prefs,
+					GstMixer *mixer,
+					GstMixerTrack *active_track)
+{
+  GtkTreeIter iter;
+  GtkTreeSelection *sel;
+  GtkListStore *store;
+  GtkTreeModel *model;
+  const GList *item;
+  const gchar *label;
+  gboolean change = (mixer != prefs->mixer), res;
+
+  if (change) {
+    /* remove old */
+    model = gtk_tree_view_get_model (GTK_TREE_VIEW (prefs->treeview));
+    store = GTK_LIST_STORE (model);
+    while (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter)) {
+      gtk_list_store_remove (store, &iter);
+    }
+
+    /* take/put reference */
+    gst_object_replace ((GstObject **) &prefs->mixer, GST_OBJECT (mixer));
+
+    /* select active element */
+    model = gtk_combo_box_get_model (GTK_COMBO_BOX (prefs->optionmenu));
+    for (res = gtk_tree_model_get_iter_first (model, &iter);
+         res == TRUE; res = gtk_tree_model_iter_next (model, &iter)) {
+      gtk_tree_model_get (model, &iter, 0, &label, -1);
+      if (!strcmp (label, g_object_get_data (G_OBJECT (mixer),
+					     "gnome-volume-applet-name"))) {
+        gtk_combo_box_set_active_iter (GTK_COMBO_BOX (prefs->optionmenu),
+				       &iter);
+      }
+    }
+
+    /* now over to the tracks */
+    model = gtk_tree_view_get_model (GTK_TREE_VIEW (prefs->treeview));
+    store = GTK_LIST_STORE (model);
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
+
+    /* add all tracks */
+    for (item = gst_mixer_list_tracks (mixer);
+         item != NULL; item = item->next) {
+      GstMixerTrack *track = item->data;
+
+      if (track->num_channels <= 0)
+        continue;
+
+      gtk_list_store_append (store, &iter);
+      gtk_list_store_set (store, &iter,
+			  COL_LABEL, track->label,
+			  COL_TRACK, track,
+			  -1);
+
+      /* select active track */
+      if (active_track == track) {
+        gtk_tree_selection_select_iter (sel, &iter);
+      }
+    }
+  } else {
+    model = gtk_tree_view_get_model (GTK_TREE_VIEW (prefs->treeview));
+    sel = gtk_tree_view_get_selection (GTK_TREE_VIEW (prefs->treeview));
+
+    /* select active track */
+    for (res = gtk_tree_model_get_iter_first (model, &iter);
+         res == TRUE; res = gtk_tree_model_iter_next (model, &iter)) {
+      gtk_tree_model_get (model, &iter, COL_LABEL, &label, -1);
+      if (!strcmp (label, active_track->label)) {
+        gtk_tree_selection_select_iter (sel, &iter);
+      }
+    }
+  }
+}
+
+/*
+ * Select callback (menu/tree).
+ */
+
+static void
+cb_dev_selected (GtkComboBox *box,
+		 gpointer    data)
+{
+  GnomeVolumeAppletPreferences *prefs = data;
+  GtkTreeIter iter;
+  const gchar *label;
+
+  if (gtk_combo_box_get_active_iter (box, &iter)) {
+    GConfValue *value;
+
+    gtk_tree_model_get (gtk_combo_box_get_model (box),
+			&iter, COL_LABEL, &label, -1);
+
+    /* write to gconf */
+    value = gconf_value_new (GCONF_VALUE_STRING);
+    gconf_value_set_string (value, label);
+    gconf_client_set (prefs->client,
+		      GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
+		      value, NULL);
+    gconf_value_free (value);
+  }
+}
+
+static gboolean
+cb_track_select (GtkTreeSelection *selection,
+		 GtkTreeModel     *model,
+		 GtkTreePath      *path,
+		 gboolean          path_selected,
+		 gpointer          data)
+{
+  GnomeVolumeAppletPreferences *prefs = data;
+  GtkTreeIter iter;
+  const gchar *label;
+  GConfValue *value;
+
+  /* get value */
+  gtk_tree_model_get_iter (model, &iter, path);
+  gtk_tree_model_get (model, &iter, COL_LABEL, &label, -1);
+
+  /* write to gconf */
+  value = gconf_value_new (GCONF_VALUE_STRING);
+  gconf_value_set_string (value, label);
+  gconf_client_set (prefs->client,
+		    GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
+		    value, NULL);
+  gconf_value_free (value);
+
+  return TRUE;
+}

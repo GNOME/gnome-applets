@@ -14,12 +14,22 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
 	-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
 	-DGNOME_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \
-	$(MIXER_CFLAGS) $(GNOME_APPLETS_CFLAGS)				
+	$(MIXER_CFLAGS) $(GNOME_APPLETS_CFLAGS)	\
+	-DPIXDIR=\""$(pixmapsdir)"\"
 
 libexec_PROGRAMS = mixer_applet2
 
-mixer_applet2_SOURCES = 				\
-	mixer.c
+mixer_applet2_SOURCES = \
+	applet.c \
+	dock.c \
+	load.c \
+	preferences.c
+
+noinst_HEADERS = \
+	applet.h \
+	dock.h \
+	keys.h \
+	preferences.h
 
 mixer_applet2_LDADD = 					\
 	$(MIXER_LIBS) 					\
