@@ -2,8 +2,8 @@
 gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
 
-pixmapsdir = $(datadir)/icons/hicolor/48x48/apps
-pixmaps_DATA = battstat.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = battstat.png
 
 if NEED_LIBAPM
 if HAVE_LIBAPM
@@ -74,7 +74,7 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_BattstatApplet.xml
 
 EXTRA_DIST = 			\
-	$(pixmaps_DATA)		\
+	$(desktop_icons_DATA)	\
 	$(glade_DATA)		\
 	$(ui_DATA)		\
 	GNOME_BattstatApplet.server.in.in	\
