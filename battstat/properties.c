@@ -167,15 +167,23 @@ show_text_toggled (GtkToggleButton *button, gpointer data)
   ProgressData   *battstat = data;
   PanelApplet *applet = PANEL_APPLET (battstat->applet);
   
-  if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (battstat->radio_text_2)))
+  if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (battstat->radio_text_2))
+   && gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (battstat->check_text)))
 	  battstat->showtext = APPLET_SHOW_PERCENT;
   else if (gtk_toggle_button_get_active (
-			  GTK_TOGGLE_BUTTON (battstat->radio_text_3)))
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_1)) &&
+	   gtk_toggle_button_get_active (
+		   	  GTK_TOGGLE_BUTTON (battstat->check_text)))
 	  battstat->showtext = APPLET_SHOW_TIME;
   else
 	  battstat->showtext = APPLET_SHOW_NONE;
   
   change_orient(applet, battstat->orienttype, battstat);
+
+  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_1),
+		  battstat->showtext);
+  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_2),
+		  battstat->showtext);
 	
   panel_applet_gconf_set_int   (applet, "show_text", 
   				 battstat->showtext, NULL);
@@ -389,43 +397,58 @@ prop_cb (BonoboUIComponent *uic,
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
   }
 
-  battstat->radio_text_1 = glade_xml_get_widget (glade_xml, "show_text_toggle");
+  battstat->radio_text_1 = glade_xml_get_widget (glade_xml, "show_text_radio");
   battstat->radio_text_2 = glade_xml_get_widget (glade_xml,
-		  "show_text_toggle_2");
-  battstat->radio_text_3 = glade_xml_get_widget (glade_xml,
-		  "show_text_toggle_3");
+		  "show_text_radio_2");
+  battstat->check_text = glade_xml_get_widget (glade_xml,
+		  "show_text_remaining");
   
   g_signal_connect (G_OBJECT (battstat->radio_text_1), "toggled",
 		  G_CALLBACK (show_text_toggled), battstat);
   g_signal_connect (G_OBJECT (battstat->radio_text_2), "toggled",
 		  G_CALLBACK (show_text_toggled), battstat);
-  g_signal_connect (G_OBJECT (battstat->radio_text_3), "toggled",
+  g_signal_connect (G_OBJECT (battstat->check_text), "toggled",
 		  G_CALLBACK (show_text_toggled), battstat);
   
   if ( ! key_writable (PANEL_APPLET (battstat->applet), "show_text"))
   {
+	  hard_set_sensitive (battstat->check_text, FALSE);
 	  hard_set_sensitive (battstat->radio_text_1, FALSE);
 	  hard_set_sensitive (battstat->radio_text_2, FALSE);
-	  hard_set_sensitive (battstat->radio_text_3, FALSE);
   }
 
   if (battstat->showtext == APPLET_SHOW_PERCENT)
   {
 	  gtk_toggle_button_set_active (
-			  GTK_TOGGLE_BUTTON (battstat->radio_text_2),
+			  GTK_TOGGLE_BUTTON (battstat->check_text), TRUE);
+	  gtk_toggle_button_set_active (
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_2), TRUE);
+	  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_1),
+			  TRUE);
+	  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_2),
 			  TRUE);
   }
   else if (battstat->showtext == APPLET_SHOW_TIME)
   {
 	  gtk_toggle_button_set_active (
-			  GTK_TOGGLE_BUTTON (battstat->radio_text_3),
+			  GTK_TOGGLE_BUTTON (battstat->check_text),
+			  TRUE);
+	  gtk_toggle_button_set_active (
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_1),
+			  TRUE);
+	  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_1),
+			  TRUE);
+	  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_2),
 			  TRUE);
   }
   else /* APPLET_SHOW_NONE */
   {
 	  gtk_toggle_button_set_active (
-			  GTK_TOGGLE_BUTTON (battstat->radio_text_1),
-			  TRUE);
+			  GTK_TOGGLE_BUTTON (battstat->check_text), FALSE);
+	  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_1),
+			  FALSE);
+	  gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_2),
+			  FALSE);
   }
 
    gtk_dialog_set_default_response (GTK_DIALOG (battstat->prop_win), GTK_RESPONSE_CLOSE);

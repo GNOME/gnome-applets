@@ -60,7 +60,7 @@ typedef struct _ProgressData {
   GtkWidget *radio_lay_status_on;
   GtkWidget *radio_text_1;
   GtkWidget *radio_text_2;
-  GtkWidget *radio_text_3;
+  GtkWidget *check_text;
   GdkPixmap *pixbuffer;
   GdkBitmap *pixmask;
   GdkPixmap *pixbuffery;
