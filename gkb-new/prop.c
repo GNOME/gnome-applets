@@ -45,6 +45,8 @@
 
 extern gboolean gail_loaded;
 
+static GtkWidget *propwindow = NULL;
+
 typedef struct _KeymapData KeymapData;
 struct _KeymapData
 {
@@ -379,10 +381,13 @@ window_response (GtkWidget *w, int response, gpointer data)
   if (response == GTK_RESPONSE_HELP)
     prophelp_cb (gkb->applet, data);
   else {
+#if 0
     gtk_list_store_clear (GTK_LIST_STORE (gtk_tree_view_get_model 
                           (GTK_TREE_VIEW (pbi->list))));
     g_free (pbi);
     gtk_widget_destroy (w);
+#endif
+    gtk_widget_hide (propwindow);
   }
        
 }
@@ -391,7 +396,6 @@ window_response (GtkWidget *w, int response, gpointer data)
 static GtkWidget *
 gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
 {
-  GtkWidget *propwindow;
   GtkWidget *propnotebook;
   GtkWidget *display_frame;
   GtkWidget *hotkey_frame;
@@ -474,7 +478,12 @@ properties_dialog (BonoboUIComponent *uic,
 	           const gchar	  *verbname)
 {
   GkbPropertyBoxInfo *pbi;
-
+  
+  if (propwindow != NULL) {
+  	gtk_window_present (GTK_WINDOW (propwindow));
+  	return;
+  }
+  
   pbi = g_new0 (GkbPropertyBoxInfo, 1);
   pbi->gkb = gkb;
   pbi->mode = gkb->mode;
