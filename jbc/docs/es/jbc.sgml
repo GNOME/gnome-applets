@@ -1,0 +1,167 @@
+ <sect1 id="jbc">
+  <title>El Applet de Reloj Binario de Jon</title>
+
+  <para>
+   <application>El Reloj Binario de Jon</application> que se muestra aqui <xref
+   linkend="jbcapplet-fig">, muestra la hora de una manera especial: decimal
+   codificado en binario. Tiene veinticuatro LEDs que representan las horas,
+   minutos y segundos según se iluminan.  Para añadir este applet a un 
+   <interface>Panel</interface>, pulse con el botón derecho en el 
+   <interface>Panel</interface> y escoja
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Añadir al panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Relojes</guisubmenu>
+    <guimenuitem>JBC Binary Clock</guimenuitem>
+   </menuchoice>.
+  </para>
+
+  <figure id="jbcapplet-fig">
+   <title>Applet del Reloj Binario de Jon</title>
+   <screenshot>
+    <screeninfo>Applet del Reloj binario de Jon</screeninfo>
+    <graphic format="png" fileref="figures/jbc_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="APPLET-usage">
+   <title>Uso</title>
+   <para>
+   No hay que hacer nada con este reloj.  Tan sólo se pone ahí y
+   te parpadea las lucecitas. 
+   </para>
+
+   <para>
+    Si se pulsa con el botón derecho en el applet aparece un menú
+    que contiene los siguientes elementos:
+    <itemizedlist>
+
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+         Muestra este documento.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+        Muestra una breve descripción acerca del <application>Reloj 
+        Binario de Jon</application>, incluyendo la versión del applet
+        y el nombre del autor.
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+  </sect2>
+
+
+  <!-- ============= Deciphering the Lights =========================== -->
+  <sect2 id="jbc-deciphering">
+   <title>Descripción de las luces</title>
+    <para>
+      BCD significa "binary-coded-decimal", que es una manera de representar
+      los números decimales (0,1,2,3,4,5,6,7,8,9) como lo que los programadores
+      denominan &quot;un conjunto de números binarios de 4 bits, de forma que se eliminan los números de la A  la F&quot;.  Si esto no tiene ningún sentido, tenga en cuenta que 
+      este reloj es un pasatiempo para los programadores y realmente
+      no tiene ningún propósito útil.
+    </para>
+    <para>
+      ¡Es más fácil leer el reloj al revés!  Empiece en el fondo y lea hasta
+      la parte de arriba.
+    </para>
+    <para>
+      El par de columnas de la derecha muestra los dos dígitos de los 
+      segundos: las unidades en la columna más a la derecha y las decenas
+      en la más a la izquierda. El par de columnas centrales muestra los
+      dos dígitos de los minutos, mientras que el par izquierdo de columnas
+      muestra los dos dígitos de las horas.
+    </para>
+    <para>
+      Se suman los valores de los LEDs iluminados de cada columna. 
+      Debería salir un número entre cero y nueve para cada uno. Esa es la hora.
+    </para>
+    <orderedlist>
+     <listitem>
+      <para>
+         El LED del fondo representa un 1 cuando está iluminado.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+         El siguiente LED representa un 2 cuando está iluminado.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+         El siguiente LED representa un 4 cuando está iluminado.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+         El siguiente LED representa un 8 cuando está iluminado.
+      </para>
+     </listitem>
+    </orderedlist>
+
+    <para>
+      Probablemente le resulte más fácil descifrar las horas y minutos
+      antes que intentar seguir los segundos, que siempre están cambiando.
+    </para>
+
+    <para>
+     Como ejemplo, podemos leer la hora en <xref
+     linkend="jbcapplet-fig">. Empecemos con las horas. La primera columna
+     sólo tiene 1 LED encendido, en la segunda posición más baja, así que
+     esto da <quote>2</quote> para el primer dígito de lahora.  La segunda
+     columan no tiene LEDs encendidos, así que tenemos un <quote>0</quote> 
+     para el segundo dígito de la hora. Así que la hora es las <quote>20</quote>,
+     o las 8PM para los que les guste la notación AM/PM.  Fijándonos en los
+     minutos, tenemos un <quote>0</quote> para el primer dígito, y 
+     <quote>1</quote> para el segundo dígitos dado que sólo el LED del fondo
+     está encendido.   Esto nos dá las "20:01" de momento. Por último, 
+     tenemos los segundos. Para el primer dígito, tenemos los dos LEDs del
+     fondo encendidos.  Éstos tienen los valores 1 (para el de más abajo)
+     y 2 (para el otro) para sumar un total de <quote>3</quote>.  Y la segunda
+     columna de los segundos tiene el LED de más arriba encendido, que vale
+     <quote>8</quote>. Así, son las  <quote>20:01:38</quote>, o
+     <quote>8:01:38PM</quote>.
+    </para>
+
+  </sect2>
+
+  <!-- ============= Bugs ================================== --> <!--
+  This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of -->
+  <sect2 id="jbc-bugs">
+   <title>Fallos conocidos y limitaciones</title>
+   <para>
+    Si se le añade a un panel vertical, se ajusta bien a su tamaño. 
+    Si luego se mueve a un panel horizontal, cambia de tamaño en el panel 
+    horizontal.  Pero si se mueve de nuevo a un panel vertical no cambia
+    de tamaño y obliga al panel a ensancharse.
+   </para>
+  </sect2>
+
+
+
+</sect1>
+<sect1> 
+<title></title>
+
+&authors;
+&license;
+&license-es;
+
+
+</sect1>
+
