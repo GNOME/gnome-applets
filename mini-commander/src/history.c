@@ -94,6 +94,10 @@ append_history_entry(MCData *mcdata, const char * entry, gboolean load_history)
     
     if (load_history)
     	return;
+
+    /* If not writable, just keeps the history around for this session */
+    if ( ! mc_key_writable (mcdata, "history"))
+        return;
     	
     /* Save history - this seems like a waste to do it every time it's updated 
     ** but it doesn't seem to work when called on the destroy signal of the applet 

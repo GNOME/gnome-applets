@@ -45,7 +45,48 @@ enum {
 	COLUMN_COMMAND
 };
 
+#define NEVER_SENSITIVE		"never_sensitive"
+
 static GSList *mc_load_macros (MCData *mc);
+
+/* set sensitive and setup NEVER_SENSITIVE appropriately */
+static void
+hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	gtk_widget_set_sensitive (w, sensitivity);
+	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
+			   GINT_TO_POINTER ( ! sensitivity));
+}
+
+
+/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
+static void
+soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
+		gtk_widget_set_sensitive (w, FALSE);
+	else
+		gtk_widget_set_sensitive (w, sensitivity);
+}
+
+gboolean
+mc_key_writable (MCData *mc, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (mc->applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
+
 
 /* GConf notfication handlers
  */
@@ -642,8 +683,8 @@ use_default_theme_toggled (GtkToggleButton *toggle,
     if (use_default_theme == mc->preferences.show_default_theme) 
         return;
         
-    gtk_widget_set_sensitive (mc->prefs_dialog.fg_color_picker, !use_default_theme);
-    gtk_widget_set_sensitive (mc->prefs_dialog.bg_color_picker, !use_default_theme);
+    soft_set_sensitive (mc->prefs_dialog.fg_color_picker, !use_default_theme);
+    soft_set_sensitive (mc->prefs_dialog.bg_color_picker, !use_default_theme);
 
     panel_applet_gconf_set_bool (mc->applet, "show_default_theme", use_default_theme, NULL);
 }
@@ -712,29 +753,42 @@ mc_preferences_setup_dialog (GladeXML *xml,
 		      G_CALLBACK (show_handle_toggled), mc);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->show_handle_toggle),
 				  mc->preferences.show_handle);
+    if ( ! mc_key_writable (mc, "show_handle"))
+	    hard_set_sensitive (dialog->show_handle_toggle, FALSE);
 
     /* Show frame */
     g_signal_connect (dialog->show_frame_toggle, "toggled",
 		      G_CALLBACK (show_frame_toggled), mc);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->show_frame_toggle),
 				  mc->preferences.show_frame);
+    if ( ! mc_key_writable (mc, "show_frame"))
+	    hard_set_sensitive (dialog->show_frame_toggle, FALSE);
 
     /* History based autocompletion */
     g_signal_connect (dialog->auto_complete_history_toggle, "toggled",
 		      G_CALLBACK (auto_complete_history_toggled), mc);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->auto_complete_history_toggle),
 				  mc->preferences.auto_complete_history);
+    if ( ! mc_key_writable (mc, "autocomplete_history"))
+	    hard_set_sensitive (dialog->auto_complete_history_toggle, FALSE);
 
     /* Width */
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (dialog->size_spinner), mc->preferences.normal_size_x);
     g_signal_connect (dialog->size_spinner, "value_changed",
 		      G_CALLBACK (size_value_changed), mc); 
+    if ( ! mc_key_writable (mc, "normal_size_x")) {
+	    hard_set_sensitive (dialog->size_spinner, FALSE);
+	    hard_set_sensitive (glade_xml_get_widget (xml, "size_label"), FALSE);
+	    hard_set_sensitive (glade_xml_get_widget (xml, "size_post_label"), FALSE);
+    }
 
     /* Use default theme */
     g_signal_connect (dialog->use_default_theme_toggle, "toggled",
 		      G_CALLBACK (use_default_theme_toggled), mc);
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->use_default_theme_toggle),
 				  mc->preferences.show_default_theme);
+    if ( ! mc_key_writable (mc, "show_default_theme"))
+	    hard_set_sensitive (dialog->use_default_theme_toggle, FALSE);
 
     /* Foreground color */
     g_signal_connect (dialog->fg_color_picker, "color_set",
@@ -744,7 +798,14 @@ mc_preferences_setup_dialog (GladeXML *xml,
 				mc->preferences.cmd_line_color_fg_g,
 				mc->preferences.cmd_line_color_fg_b,
 				0);
-    gtk_widget_set_sensitive (dialog->fg_color_picker, !mc->preferences.show_default_theme);
+    soft_set_sensitive (dialog->fg_color_picker, !mc->preferences.show_default_theme);
+
+    if ( ! mc_key_writable (mc, "cmd_line_color_fg_r") ||
+	 ! mc_key_writable (mc, "cmd_line_color_fg_g") ||
+	 ! mc_key_writable (mc, "cmd_line_color_fg_b")) {
+	    hard_set_sensitive (dialog->fg_color_picker, FALSE);
+	    hard_set_sensitive (glade_xml_get_widget (xml, "fg_color_label"), FALSE);
+    }
 
     /* Background color */
     g_signal_connect (dialog->bg_color_picker, "color_set",
@@ -754,12 +815,26 @@ mc_preferences_setup_dialog (GladeXML *xml,
 				mc->preferences.cmd_line_color_bg_g,
 				mc->preferences.cmd_line_color_bg_b,
 				0);
-    gtk_widget_set_sensitive (dialog->bg_color_picker, !mc->preferences.show_default_theme);
+    soft_set_sensitive (dialog->bg_color_picker, !mc->preferences.show_default_theme);
+
+    if ( ! mc_key_writable (mc, "cmd_line_color_bg_r") ||
+	 ! mc_key_writable (mc, "cmd_line_color_bg_g") ||
+	 ! mc_key_writable (mc, "cmd_line_color_bg_b")) {
+	    hard_set_sensitive (dialog->bg_color_picker, FALSE);
+	    hard_set_sensitive (glade_xml_get_widget (xml, "bg_color_label"), FALSE);
+    }
 
 
     /* Macros Delete and Add buttons */
     g_signal_connect (dialog->delete_button, "clicked", G_CALLBACK (macro_delete), mc);
     g_signal_connect (dialog->add_button, "clicked", G_CALLBACK (macro_add), mc);
+
+    if ( ! mc_key_writable (mc, "macro_patterns") ||
+	 ! mc_key_writable (mc, "macro_commands")) {
+	    hard_set_sensitive (dialog->add_button, FALSE);
+	    hard_set_sensitive (dialog->delete_button, FALSE);
+	    hard_set_sensitive (dialog->macros_tree, FALSE);
+    }
 
     /* Macros tree view */
     dialog->macros_store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING, NULL);

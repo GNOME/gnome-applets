@@ -106,6 +106,9 @@ void       mc_show_preferences (BonoboUIComponent *uic,
 				const char        *verbname);
 void       mc_macros_free      (GSList            *macros);
 
+gboolean   mc_key_writable     (MCData            *mc,
+				const char        *key);
+
 G_END_DECLS
 
 #endif
