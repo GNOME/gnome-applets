@@ -359,8 +359,15 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
 void gweather_dialog_open (GWeatherApplet *gw_applet)
 {
-    if (!gw_applet->gweather_dialog)
+    if (gw_applet->gweather_dialog == NULL)
         gweather_dialog_create(gw_applet);
+    else {
+	gtk_window_set_screen (GTK_WINDOW (gw_applet->gweather_dialog),
+		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
+	
+	gtk_window_present (GTK_WINDOW (gw_applet->gweather_dialog));
+    }
+    
     gweather_dialog_update(gw_applet);
     gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->gweather_dialog), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (gw_applet->gweather_dialog), 5);
