@@ -140,9 +140,13 @@ GtkWidget *create_general_frame(void)
 
         gtk_signal_connect( GTK_OBJECT(height_a),"value_changed",
 		GTK_SIGNAL_FUNC(height_cb), height );
+        gtk_signal_connect( GTK_OBJECT(height),"changed",
+		GTK_SIGNAL_FUNC(height_cb), height );
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(height),
         	GTK_UPDATE_ALWAYS );
         gtk_signal_connect( GTK_OBJECT(width_a),"value_changed",
+       		GTK_SIGNAL_FUNC(width_cb), width );
+        gtk_signal_connect( GTK_OBJECT(width),"changed",
        		GTK_SIGNAL_FUNC(width_cb), width );
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
         	GTK_UPDATE_ALWAYS );
@@ -156,6 +160,8 @@ GtkWidget *create_general_frame(void)
 	gtk_box_pack_start( GTK_BOX(speed), freq, TRUE, TRUE, 0 );
 
         gtk_signal_connect( GTK_OBJECT(freq_a),"value_changed",
+		GTK_SIGNAL_FUNC(freq_cb), freq );
+        gtk_signal_connect( GTK_OBJECT(freq),"changed",
 		GTK_SIGNAL_FUNC(freq_cb), freq );
 
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(freq),
@@ -205,6 +211,8 @@ GtkWidget *create_device_frame(void)
 	gtk_box_pack_start_defaults( GTK_BOX(line_box), line);
 
         gtk_signal_connect( GTK_OBJECT(line_a),"value_changed",
+       		GTK_SIGNAL_FUNC(line_cb), line );
+        gtk_signal_connect( GTK_OBJECT(line),"changed",
        		GTK_SIGNAL_FUNC(line_cb), line );
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(line),
         	GTK_UPDATE_ALWAYS );

@@ -295,6 +295,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	spin = gtk_spin_button_new( GTK_ADJUSTMENT(adj), 1, 0 );
 	gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 5);
 	gtk_signal_connect( GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(gmt_offset_cb), ad);
+	gtk_signal_connect( GTK_OBJECT(spin),"changed",GTK_SIGNAL_FUNC(gmt_offset_cb), ad);
 	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(spin);
 
@@ -363,6 +364,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_set_usize(spin, 100, -1);
 	gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 5);
 	gtk_signal_connect( GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(mail_max_cb), ad);
+	gtk_signal_connect( GTK_OBJECT(spin),"changed",GTK_SIGNAL_FUNC(mail_max_cb), ad);
 	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(spin);
 

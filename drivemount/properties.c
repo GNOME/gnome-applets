@@ -147,6 +147,7 @@ void property_show(AppletWidget *applet, gpointer data)
         dd->prop_spin = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
         gtk_box_pack_start( GTK_BOX(hbox), dd->prop_spin, FALSE, FALSE, 5);
 	gtk_signal_connect( GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
+	gtk_signal_connect( GTK_OBJECT(dd->prop_spin),"changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(dd->prop_spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(dd->prop_spin);
 
