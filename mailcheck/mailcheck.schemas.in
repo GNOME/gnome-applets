@@ -143,6 +143,26 @@
             </locale>
         </schema>
         <schema>
+            <key>/schemas/apps/mailcheck_applet/prefs/save_password</key>
+            <owner>mailcheck-applet</owner>
+            <type>bool</type>
+            <default>false</default>
+            <locale name="C">
+                <short>Do we want to save the password to disk</short>
+                <long>If this is enabled, we save the password in gconf</long>
+            </locale>
+        </schema>
+        <schema>
+            <key>/schemas/apps/mailcheck_applet/prefs/remote_encrypted_password</key>
+            <owner>mailcheck-applet</owner>
+            <type>string</type>
+            <default></default>
+            <locale name="C">
+                <short>Encrypted password</short>
+                <long>The encrypted user's password for the remote server</long>
+            </locale>
+        </schema>
+        <schema>
             <key>/schemas/apps/mailcheck_applet/prefs/remote_folder</key>
             <owner>mailcheck-applet</owner>
             <type>string</type>

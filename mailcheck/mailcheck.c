@@ -23,6 +23,8 @@
 #include <panel-applet-gconf.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libgnomeui/gnome-window-icon.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 #include "popcheck.h"
 #include "remote-helper.h"
@@ -30,12 +32,27 @@
 #include "egg-screen-help.h"
 #include "egg-screen-exec.h"
 
+#define ENCODE 1  
+#define DECODE 0
+
+static const char *to_b64 =
+ "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+/* encode 72 characters per line */
+#define CHARS_PER_LINE 72 
+
 typedef enum {
 	MAILBOX_LOCAL,
 	MAILBOX_LOCALDIR,
 	MAILBOX_POP3,
 	MAILBOX_IMAP
 } MailboxType;
+
+typedef struct
+{
+        int     size;
+        char    *data;
+} memchunk;
 
 typedef struct _MailCheck MailCheck;
 struct _MailCheck {
@@ -135,13 +152,18 @@ struct _MailCheck {
 	GtkWidget *remote_server_entry, *remote_username_entry, *remote_password_entry, *remote_folder_entry;
 	GtkWidget *remote_server_label, *remote_username_label, *remote_password_label, *remote_folder_label;
 	GtkWidget *remote_option_menu;
+	GtkWidget *remote_password_checkbox;
 	GtkWidget *play_sound_check;
         
 	char *remote_server, *remote_username, *remote_password, *real_password, *remote_folder;
+	char *remote_encrypted_password;
+
 	MailboxType mailbox_type; /* local = 0; maildir = 1; pop3 = 2; imap = 3 */
         MailboxType mailbox_type_temp;
 
 	gboolean play_sound;
+
+	gboolean save_remote_password;
 
 	int type; /*mailcheck = 0; mailbox = 1 */
 	
@@ -154,6 +176,15 @@ struct _MailCheck {
 	/* see remote-helper.h */
 	gpointer remote_handle;
 };
+
+static char*           b64enc (const memchunk *chunk);
+static memchunk*       b64dec (const char *string);
+static memchunk*       memchunkAlloc (int size);
+static char*           util_base64 (char *data, int flag);
+static void            remote_password_save_toggled (GtkToggleButton *button, 
+				gpointer data);
+static void            remote_password_changed (GtkEntry *entry, gpointer data);
+static gboolean        focus_out_cb (GtkWidget *entry, GdkEventFocus *event, gpointer data);
 
 static int mail_check_timeout (gpointer data);
 static void after_mail_check (MailCheck *mc);
@@ -169,6 +200,280 @@ static void null_remote_handle (gpointer data);
 
 #define WANT_BITMAPS(x) (x == REPORT_MAIL_USE_ANIMATION || x == REPORT_MAIL_USE_BITMAP)
 #define HIG_IDENTATION  "    "
+
+static memchunk* 
+memchunkAlloc(int size)
+{
+	memchunk *tmp = (memchunk*) calloc(1, sizeof(memchunk));
+
+	if (tmp) {
+		tmp->size = size;
+		tmp->data = (char *) malloc(size);
+
+		if (tmp->data == (char *) 0) {
+			free(tmp);
+			tmp = 0;
+		}
+	}
+
+	return tmp;
+}
+
+/*
+ * b64enc:
+ * @chunk: A structure which contains the data to be encrypted.
+ * 
+ * This routine encrypts the data using base64 encryption technique
+ *
+ * Returns the encrypted data in a character array.
+ */
+
+
+static char* 
+b64enc(const memchunk *chunk)
+{
+	int div = chunk->size / 3;
+	int rem = chunk->size % 3;
+	int chars = div*4 + rem + 1;
+	int newlines = (chars + CHARS_PER_LINE - 1) / CHARS_PER_LINE;
+
+	const char *data = chunk->data;
+	char *string = (char *) malloc(chars + newlines + 1);
+
+	if (string) {
+		register char* buf = string;
+
+		chars = 0;
+
+		/*@+charindex@*/
+		while (div > 0) {
+			buf[0] = to_b64[ (data[0] >> 2) & 0x3f];
+			buf[1] = to_b64[((data[0] << 4) & 0x30) +
+				 ((data[1] >> 4) & 0xf)];
+			buf[2] = to_b64[((data[1] << 2) & 0x3c) +
+				 ((data[2] >> 6) & 0x3)];
+			buf[3] = to_b64[  data[2] & 0x3f];
+			data += 3;
+			buf += 4;
+			div--;
+			chars += 4;
+			if (chars == CHARS_PER_LINE) {
+				chars = 0;
+				*(buf++) = '\n';
+			}
+		}
+
+		switch (rem) {
+			case 2:
+				buf[0] = to_b64[ (data[0] >> 2) & 0x3f];
+				buf[1] = to_b64[((data[0] << 4) & 0x30) +
+					 ((data[1] >> 4) & 0xf)];
+				buf[2] = to_b64[ (data[1] << 2) & 0x3c];
+				buf[3] = '=';
+				buf += 4;
+				chars += 4;
+				break;
+			case 1:
+				buf[0] = to_b64[ (data[0] >> 2) & 0x3f];
+				buf[1] = to_b64[ (data[0] << 4) & 0x30];
+				buf[2] = '=';
+				buf[3] = '=';
+				buf += 4;
+				chars += 4;
+				break;
+		}
+		/*@=charindex@*/
+
+	 /*      *(buf++) = '\n'; This would result in a buffer overrun */
+		*buf = '\0';
+	 }
+
+	return string;
+}
+
+/*
+ * b64dec:
+ * @string: A character array which contains the data to be decoded.
+ *
+ * This routine decrypts the data using base64 decryption technique
+ *
+ * Returns the decrypted data.
+ */
+
+static memchunk* 
+b64dec(const char *string)
+{
+
+/* return a decoded memchunk, or a null pointer in case of failure */
+
+	memchunk *rc = 0;
+
+	if (string) {
+	register int length = strlen(string);
+
+	/* do a format verification first */
+		if (length > 0) {
+			register int count = 0, rem = 0;
+			register const char* tmp = string;
+
+			while (length > 0) {
+				register int skip = strspn(tmp, to_b64);
+				count += skip;
+				length -= skip;
+				tmp += skip;
+				if (length > 0) {
+					register int i, vrfy =
+						 strcspn(tmp, to_b64);
+
+					for (i = 0; i < vrfy; i++) {
+						if (isspace(tmp[i]))
+							continue;
+
+						if (tmp[i] == '=') {
+							/* we should check if
+							 * we're close to the
+							 * end of the string */
+							rem = count % 4;
+
+							/* rem must be either
+							 * 2 or 3, otherwise
+							 * no '=' should be
+							 * here */
+							if (rem < 2)
+								return 0;
+
+							/* end-of-message
+							 * recognized */
+							break;
+						} else {
+							/* Transmission error */
+
+							return 0;
+						}
+					}
+
+					length -= vrfy;
+					tmp += vrfy;
+				}
+			}
+
+			rc = memchunkAlloc((count / 4) * 3 + (rem ? (rem - 1) : 0));
+
+			if (rc) {
+				if (count > 0) {
+					register int i, qw = 0, tw = 0;
+					register char * data = rc->data;
+
+					length = strlen(tmp = string);
+
+					for (i = 0; i < length; i++) {
+						register char ch = string[i];
+						register char bits;
+
+						if (isspace(ch))
+							continue;
+
+						bits = 0;
+						if ((ch >= 'A') && (ch <= 'Z')) {
+							bits = (char)
+							       (ch - 'A');
+						}
+						else if ((ch >= 'a') &&
+							 (ch <= 'z')) {
+							bits = (char)
+							       (ch - 'a' + 26);
+						}
+						else if ((ch >= '0') &&
+							 (ch <= '9')) {
+							bits = (char)
+							       (ch - '0' + 52);
+						}
+						else if (ch == '=')
+							break;
+
+						switch (qw++) {
+							case 0:
+								data[tw+0] =
+									 (bits << 2) & 0xfc;
+								break;
+							case 1:
+								data[tw+0] |=
+									 (bits >> 4) & 0x03;
+								data[tw+1] =
+									 (bits << 4) & 0xf0;
+								break;
+							case 2:
+								data[tw+1] |=
+									 (bits >> 2) & 0x0f;
+								data[tw+2] =
+									 (bits << 6) & 0xc0;
+								break;
+							case 3:
+								data[tw+2] |=
+									 bits & 0x3f;
+								break;
+						}
+
+						if (qw == 4) {
+							qw = 0;
+							tw += 3;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return rc;
+}
+
+
+/*
+ * util_base64:
+ * @data: A character array which contains the data.
+ * @flag: Indicates the action to be performed ENCODE/DECODE
+ *
+ * This is the interface called by other routines for encoding or decoding using
+ * base64 encryption/decryption technique. The action is performed based on the flag.
+ *
+ * Returns either the encrypted data or the decrypted data based on the flag.
+ */
+
+static char* 
+util_base64(char* data, int flag)
+{
+	char *enc_data;
+	memchunk chunk;
+	memchunk *ret_data;
+	char *dec_data;
+
+	switch (flag) {
+		case ENCODE :
+
+			chunk.data = data;
+			chunk.size = strlen(data);
+			enc_data = b64enc(&chunk);
+
+			return enc_data;
+
+		case DECODE :
+
+			ret_data = (memchunk *) b64dec((char *)data);
+			if(ret_data) {
+				dec_data = g_strndup(ret_data->data,
+						     ret_data->size);
+				free (ret_data);
+			}
+			else
+				dec_data = NULL;
+
+			return dec_data;
+
+		default :
+			return NULL;
+
+	}
+}
 
 static void
 set_tooltip (GtkWidget  *applet,
@@ -318,6 +623,7 @@ get_remote_password (MailCheck *mc)
 	GtkWidget *hbox;
 	GtkWidget *label;
 	GtkWidget *entry;
+	GtkWidget *save_password_checkbox;
 
 	if (mc->password_dialog) {
 		gtk_window_set_screen (GTK_WINDOW (mc->password_dialog),
@@ -353,6 +659,29 @@ get_remote_password (MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (hbox), entry, FALSE, FALSE, 0);
 	gtk_widget_show_all (hbox);
 	gtk_widget_grab_focus (GTK_WIDGET (entry));
+
+	g_signal_connect (G_OBJECT(entry), "focus_out_event",
+			 G_CALLBACK(focus_out_cb), mc);
+
+	g_signal_connect (G_OBJECT(entry), "activate",
+			  G_CALLBACK(remote_password_changed), mc);
+
+	hbox = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, 
+			    FALSE, FALSE, GNOME_PAD_SMALL);
+
+	gtk_widget_show (hbox);  
+	
+	save_password_checkbox = gtk_check_button_new_with_mnemonic (
+						_("_Save password to disk"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (save_password_checkbox), 
+				      mc->save_remote_password);
+
+	gtk_widget_show (save_password_checkbox);
+	gtk_box_pack_start (GTK_BOX (hbox), save_password_checkbox, FALSE, FALSE, 0);
+	
+	g_signal_connect (G_OBJECT (save_password_checkbox), "toggled", 
+			  G_CALLBACK(remote_password_save_toggled), mc);
 
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
@@ -756,6 +1085,7 @@ mailcheck_destroy (GtkWidget *widget, gpointer data)
 	g_free (mc->remote_server);
 	g_free (mc->remote_username);
 	g_free (mc->remote_password);
+	g_free (mc->remote_encrypted_password);
 	g_free (mc->remote_folder);
 	g_free (mc->real_password);
 
@@ -992,6 +1322,7 @@ make_remote_widgets_sensitive(MailCheck *mc)
 	
 	gtk_widget_set_sensitive (mc->remote_server_entry, b);
 	gtk_widget_set_sensitive (mc->remote_password_entry, b);
+	gtk_widget_set_sensitive (mc->remote_password_checkbox, b);
 	gtk_widget_set_sensitive (mc->remote_username_entry, b);
         gtk_widget_set_sensitive (mc->remote_folder_entry, f);
 	gtk_widget_set_sensitive (mc->remote_server_label, b);
@@ -1058,18 +1389,35 @@ remote_password_changed (GtkEntry *entry, gpointer data)
 {
 	MailCheck *mc = data;
 	gchar *text;
-	
+
 	text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
 	if (!text)
 		return;
 		
-	if (mc->remote_password);
-		g_free (mc->remote_password);
-		
-	mc->remote_password = text;
-	panel_applet_gconf_set_string(mc->applet, "remote_password", 
-				      mc->remote_password, NULL);
+	if (mc->remote_password)
+		g_free (mc->remote_password); 
+	mc->remote_password = text; 
+
+	if (mc->remote_encrypted_password)
+		g_free (mc->remote_encrypted_password);
+	mc->remote_encrypted_password = util_base64 (text, ENCODE);  
+
+	if (mc->save_remote_password)
+		panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password", 
+				      mc->remote_encrypted_password, NULL);
+	else
+		panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
+				      "", NULL);
 }
+
+static gboolean
+focus_out_cb (GtkWidget *entry, GdkEventFocus *event, gpointer data)
+{
+	remote_password_changed (GTK_ENTRY (entry), data);
+
+	return FALSE;
+
+} 
 
 static void
 remote_folder_changed (GtkEntry *entry, gpointer data)
@@ -1118,6 +1466,23 @@ pre_check_toggled (GtkToggleButton *button, gpointer data)
 				    mc->pre_check_enabled, NULL);
 	gtk_widget_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
 
+}
+
+static void
+remote_password_save_toggled (GtkToggleButton *button, gpointer data)
+{
+	MailCheck *mc = data;
+
+	mc->save_remote_password = gtk_toggle_button_get_active (button);
+	panel_applet_gconf_set_bool (mc->applet, "save_password",
+				     mc->save_remote_password, NULL);
+
+	if (mc->save_remote_password)
+                panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
+                                      mc->remote_encrypted_password, NULL);
+        else
+                panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
+                                      "", NULL);
 }
 
 static void
@@ -1453,8 +1818,24 @@ mailbox_properties_page(MailCheck *mc)
 	gtk_widget_show(l);
 	gtk_box_pack_start (GTK_BOX (control_hbox), l, TRUE, TRUE, 0);      
 	
-	g_signal_connect(G_OBJECT(l), "changed",
-                     G_CALLBACK(remote_password_changed), mc);
+	g_signal_connect(G_OBJECT(l), "focus_out_event",
+                     G_CALLBACK(focus_out_cb), mc);
+
+	g_signal_connect(G_OBJECT(l), "activate",
+                     G_CALLBACK(remote_password_changed), mc);  
+
+	hbox = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	gtk_widget_show (hbox);  
+
+	mc->remote_password_checkbox = l = gtk_check_button_new_with_mnemonic (
+					_("_Save password to disk"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(l), mc->save_remote_password);
+	gtk_widget_show (l);
+	gtk_box_pack_start (GTK_BOX (hbox), l, FALSE, FALSE, 0);
+	
+	g_signal_connect (G_OBJECT (l), "toggled", 
+			  G_CALLBACK(remote_password_save_toggled), mc);
 
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
@@ -1828,6 +2209,8 @@ check_callback (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 static void
 applet_load_prefs(MailCheck *mc)
 {
+	panel_applet_gconf_set_string(mc->applet, "remote_password", "", NULL);
+
 	mc->animation_file = panel_applet_gconf_get_string(mc->applet, "animation_file", NULL);
 	
 	mc->auto_update = panel_applet_gconf_get_bool(mc->applet, "auto_update", NULL);
@@ -1845,7 +2228,10 @@ applet_load_prefs(MailCheck *mc)
 		g_free(mc->remote_username);
 		mc->remote_username = g_strdup(g_getenv("USER"));
 	}
-	mc->remote_password = panel_applet_gconf_get_string(mc->applet, "remote_password", NULL);
+	mc->remote_encrypted_password = panel_applet_gconf_get_string (mc->applet, 
+					"remote_encrypted_password", NULL); 
+	mc->remote_password = util_base64 (mc->remote_encrypted_password, DECODE);
+	mc->save_remote_password = panel_applet_gconf_get_bool (mc->applet, "save_password", NULL);
 	mc->remote_folder = panel_applet_gconf_get_string(mc->applet, "remote_folder", NULL);
 	mc->mailbox_type = panel_applet_gconf_get_int(mc->applet, "mailbox_type", NULL);
 	mc->mail_file = panel_applet_gconf_get_string (mc->applet, "mail_file", NULL);

@@ -1,3 +1,13 @@
+2003-05-26 Rajkumar Sivasamy  <rajkumar.siva@wipro.com>
+
+	Patch by: Deepa Natarajan  <deepa.natarajan@wipro.com>
+
+        * mailcheck.c, mailcheck.schemas.in: Do a base64 encode
+        of the remote_password and store it in a new gconf key
+        "remote_encrypted_password", if store password checkbox
+        is enabled. So that we dont store the password in plain
+        text! Fixes Bug #99801
+
 2003-05-25  Kevin Vandersloot <kfv101@psu.edu>
 
 	* mailcheck.c: change behavior and pref so that when applet is clicked just
