@@ -1,4 +1,4 @@
-SUBDIRS = docs
+#SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
@@ -24,6 +24,6 @@ server_DATA     = $(server_in_files:.server.in=.server)
 @XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = \
-	$(server_in_files) $(pixmap_DATA)	\
+	$(server_in_files) $(pixmap_DATA)	
 	
 	

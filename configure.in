@@ -379,8 +379,11 @@ gnome-applets.spec
 Makefile
 po/Makefile.in
 omf-install/Makefile
-battery/Makefile
 mixer/Makefile
+screenshooter/Makefile
+modemlights/Makefile
+fifteen/Makefile
+whereami/Makefile
 ])
 
 dnl Mostly Ported Applets
@@ -390,113 +393,46 @@ dnl geyes/docs/C/Makefile
 dnl geyes/docs/it/Makefile
 dnl geyes/docs/es/Makefile
 dnl geyes/themes/Makefile
+dnl fifteen/docs/Makefile
+dnl fifteen/docs/C/Makefile
+dnl fifteen/docs/it/Makefile
+dnl mixer/docs/Makefile
+dnl mixer/docs/C/Makefile
+dnl mixer/docs/es/Makefile
+dnl mixer/docs/it/Makefile
+dnl modemlights/docs/Makefile
+dnl modemlights/docs/C/Makefile
+dnl modemlights/docs/es/Makefile
+dnl modemlights/docs/it/Makefile
+dnl screenshooter/docs/Makefile
+dnl screenshooter/docs/C/Makefile
+dnl screenshooter/docs/it/Makefile
+
 
 dnl Not Ported Applets
-dnl another_clock/Makefile
-dnl another_clock/docs/Makefile
-dnl another_clock/docs/C/Makefile
-dnl another_clock/docs/es/Makefile
-dnl another_clock/docs/it/Makefile
-dnl another_clock/docs/uk/Makefile
-dnl asclock/Makefile
-dnl asclock/default_theme/Makefile
-dnl asclock/docs/Makefile
-dnl asclock/docs/C/Makefile
-dnl asclock/docs/it/Makefile
-dnl asclock/docs/ja/Makefile
-dnl asclock/themes/Makefile
 dnl battery/Makefile
 dnl battery/docs/Makefile
 dnl battery/docs/C/Makefile
 dnl battery/docs/es/Makefile
 dnl battery/docs/it/Makefile
 dnl battery/docs/ja/Makefile
-dnl cdplayer/Makefile
-dnl cdplayer/docs/Makefile
-dnl cdplayer/docs/C/Makefile
-dnl cdplayer/docs/es/Makefile
-dnl cdplayer/docs/it/Makefile
-dnl cdplayer/docs/ja/Makefile
-dnl clipboard/Makefile
-dnl clockmail/Makefile
-dnl clockmail/docs/Makefile
-dnl clockmail/docs/C/Makefile
-dnl clockmail/docs/it/Makefile
-dnl clockmail/docs/ja/Makefile
-dnl clockmail/themes/Makefile
 dnl charpick/Makefile
 dnl charpick/docs/Makefile
 dnl charpick/docs/C/Makefile
 dnl charpick/docs/es/Makefile
 dnl charpick/docs/it/Makefile
 dnl charpick/docs/ja/Makefile
-dnl cpumemusage/Makefile
-dnl cpumemusage/docs/Makefile
-dnl cpumemusage/docs/C/Makefile
-dnl cpumemusage/docs/it/Makefile
-dnl cpumemusage/docs/ja/Makefile
-dnl cpumemusage/docs/es/Makefile
-dnl cpumemusage/docs/ru/Makefile
-dnl diskusage/Makefile
-dnl diskusage/docs/Makefile
-dnl diskusage/docs/C/Makefile
-dnl diskusage/docs/it/Makefile
-dnl diskusage/docs/ja/Makefile
-dnl diskusage/docs/es/Makefile
-dnl drivemount/Makefile
-dnl drivemount/docs/Makefile
-dnl drivemount/docs/C/Makefile
-dnl drivemount/docs/es/Makefile
-dnl drivemount/docs/it/Makefile
-dnl drivemount/docs/ja/Makefile
-dnl fifteen/Makefile
-dnl fifteen/docs/Makefile
-dnl fifteen/docs/C/Makefile
-dnl fifteen/docs/it/Makefile
-dnl gkb-new/Makefile
-dnl gkb-new/gkb/Makefile
-dnl gkb-new/xmodmap/Makefile
-dnl gkb-new/descs/Makefile
-dnl gkb-new/docs/Makefile
-dnl gkb-new/docs/C/Makefile
-dnl gkb-new/docs/hu/Makefile
-dnl gkb-new/docs/it/Makefile
-dnl gkb-new/gkb_xmmap.in
-dnl gnotes/Makefile
-dnl gnotes/docs/Makefile
-dnl gnotes/docs/C/Makefile
-dnl gnotes/docs/it/Makefile
 dnl gweather/Makefile
 dnl gweather/pixmaps/Makefile
 dnl gweather/docs/Makefile
 dnl gweather/docs/C/Makefile
 dnl gweather/docs/it/Makefile
-dnl jbc/Makefile
-dnl jbc/docs/Makefile
-dnl jbc/docs/C/Makefile
-dnl jbc/docs/es/Makefile
-dnl jbc/docs/it/Makefile
-dnl jbc/pixmaps/Makefile
-dnl life/Makefile
-dnl life/docs/Makefile
-dnl life/docs/C/Makefile
-dnl life/docs/es/Makefile
-dnl life/docs/it/Makefile
 dnl mini-commander/Makefile
 dnl mini-commander/docs/Makefile
 dnl mini-commander/docs/C/Makefile
 dnl mini-commander/docs/it/Makefile
 dnl mini-commander/docs/es/Makefile
 dnl mini-commander/src/Makefile
-dnl mixer/docs/Makefile
-dnl mixer/docs/C/Makefile
-dnl mixer/docs/es/Makefile
-dnl mixer/docs/it/Makefile
-dnl modemlights/Makefile
-dnl modemlights/docs/Makefile
-dnl modemlights/docs/C/Makefile
-dnl modemlights/docs/es/Makefile
-dnl modemlights/docs/it/Makefile
 dnl multiload/Makefile
 dnl multiload/docs/Makefile
 dnl multiload/docs/C/Makefile
@@ -522,21 +458,27 @@ dnl multiload/docs/es/cpuload/Makefile
 dnl multiload/docs/es/memload/Makefile
 dnl multiload/docs/es/netload/Makefile
 dnl multiload/docs/es/swapload/Makefile
+dnl slashapp/Makefile
+dnl webcontrol/Makefile
+dnl webcontrol/docs/Makefile
+dnl webcontrol/docs/C/Makefile
+dnl webcontrol/docs/it/Makefile
+dnl whereami/docs/Makefile
+dnl whereami/docs/C/Makefile
+dnl whereami/docs/it/Makefile
+dnl whereami/docs/es/Makefile
 dnl odometer/Makefile
 dnl odometer/docs/Makefile
 dnl odometer/docs/C/Makefile
 dnl odometer/docs/fr/Makefile
 dnl odometer/docs/it/Makefile
 dnl odometer/themes/Makefile
-dnl quicklaunch/Makefile
-dnl quicklaunch/docs/Makefile
-dnl quicklaunch/docs/C/Makefile
-dnl quicklaunch/docs/it/Makefile
-dnl screenshooter/Makefile
-dnl screenshooter/docs/Makefile
-dnl screenshooter/docs/C/Makefile
-dnl screenshooter/docs/it/Makefile
-dnl slashapp/Makefile
+dnl cdplayer/Makefile
+dnl cdplayer/docs/Makefile
+dnl cdplayer/docs/C/Makefile
+dnl cdplayer/docs/es/Makefile
+dnl cdplayer/docs/it/Makefile
+dnl cdplayer/docs/ja/Makefile
 dnl sound-monitor/Makefile
 dnl sound-monitor/def_theme/Makefile
 dnl sound-monitor/docs/Makefile
@@ -544,26 +486,90 @@ dnl sound-monitor/docs/C/Makefile
 dnl sound-monitor/docs/it/Makefile
 dnl sound-monitor/pvd/Makefile
 dnl sound-monitor/themes/Makefile
-dnl tickastat/Makefile
-dnl tickastat/docs/Makefile
-dnl tickastat/docs/C/Makefile
-dnl tickastat/docs/it/Makefile
-dnl tickastat/news_scripts/Makefile
-dnl webcontrol/Makefile
-dnl webcontrol/docs/Makefile
-dnl webcontrol/docs/C/Makefile
-dnl webcontrol/docs/it/Makefile
-dnl whereami/Makefile
-dnl whereami/docs/Makefile
-dnl whereami/docs/C/Makefile
-dnl whereami/docs/it/Makefile
-dnl whereami/docs/es/Makefile
-dnl gtik/Makefile
 
 
 dnl don't do these 2 for now
 dnl docs/Makefile
 dnl docs/C/Makefile
+
+dnl GnomeAppletsExtra?
+dnl gkb-new/Makefile
+dnl gkb-new/gkb/Makefile
+dnl gkb-new/xmodmap/Makefile
+dnl gkb-new/descs/Makefile
+dnl gkb-new/docs/Makefile
+dnl gkb-new/docs/C/Makefile
+dnl gkb-new/docs/hu/Makefile
+dnl gkb-new/docs/it/Makefile
+dnl gkb-new/gkb_xmmap.in
+dnl gnotes/Makefile
+dnl gnotes/docs/Makefile
+dnl gnotes/docs/C/Makefile
+dnl gnotes/docs/it/Makefile
+dnl clipboard/Makefile
+dnl diskusage/Makefile
+dnl diskusage/docs/Makefile
+dnl diskusage/docs/C/Makefile
+dnl diskusage/docs/it/Makefile
+dnl diskusage/docs/ja/Makefile
+dnl diskusage/docs/es/Makefile
+dnl drivemount/Makefile
+dnl drivemount/docs/Makefile
+dnl drivemount/docs/C/Makefile
+dnl drivemount/docs/es/Makefile
+dnl drivemount/docs/it/Makefile
+dnl drivemount/docs/ja/Makefile
+dnl tickastat/Makefile
+dnl tickastat/docs/Makefile
+dnl tickastat/docs/C/Makefile
+dnl tickastat/docs/it/Makefile
+dnl tickastat/news_scripts/Makefile
+dnl gtik/Makefile
+dnl life/Makefile
+dnl life/docs/Makefile
+dnl life/docs/C/Makefile
+dnl life/docs/es/Makefile
+dnl life/docs/it/Makefile
+
+
+dnl These should die a horrible death
+dnl another_clock/Makefile
+dnl another_clock/docs/Makefile
+dnl another_clock/docs/C/Makefile
+dnl another_clock/docs/es/Makefile
+dnl another_clock/docs/it/Makefile
+dnl another_clock/docs/uk/Makefile
+dnl asclock/Makefile
+dnl asclock/default_theme/Makefile
+dnl asclock/docs/Makefile
+dnl asclock/docs/C/Makefile
+dnl asclock/docs/it/Makefile
+dnl asclock/docs/ja/Makefile
+dnl asclock/themes/Makefile
+dnl clockmail/Makefile
+dnl clockmail/docs/Makefile
+dnl clockmail/docs/C/Makefile
+dnl clockmail/docs/it/Makefile
+dnl clockmail/docs/ja/Makefile
+dnl clockmail/themes/Makefile
+dnl cpumemusage/Makefile
+dnl cpumemusage/docs/Makefile
+dnl cpumemusage/docs/C/Makefile
+dnl cpumemusage/docs/it/Makefile
+dnl cpumemusage/docs/ja/Makefile
+dnl cpumemusage/docs/es/Makefile
+dnl cpumemusage/docs/ru/Makefile
+dnl jbc/Makefile
+dnl jbc/docs/Makefile
+dnl jbc/docs/C/Makefile
+dnl jbc/docs/es/Makefile
+dnl jbc/docs/it/Makefile
+dnl jbc/pixmaps/Makefile
+dnl quicklaunch/Makefile
+dnl quicklaunch/docs/Makefile
+dnl quicklaunch/docs/C/Makefile
+dnl quicklaunch/docs/it/Makefile
+
 
 
 dnl extunct applets

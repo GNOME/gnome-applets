@@ -41,22 +41,24 @@ if APPLET_MIXER
 mixer_SUBDIRS = $(mixer_applets)
 endif
 
-## 
-## modemlights_applets = \
-## 	modemlights
-## if APPLET_MODEMLIGHTS
-## modemlights_SUBDIRS = $(modemlights_applets)
-## endif
-## 
+ 
+modemlights_applets = \
+	modemlights
+if APPLET_MODEMLIGHTS
+modemlights_SUBDIRS = $(modemlights_applets)
+endif
+
 
 always_built_SUBDIRS = \
-	battery
+##	battery		\
+ 	fifteen		\
+ 	whereami	\
+ 	screenshooter
 ## 	another_clock	\
 ## 	asclock		\
 ## 	charpick	\
 ## 	clockmail	\
 ## 	drivemount	\
-## 	fifteen		\
 ##  	geyes		\
 ## 	gnotes		\
 ## 	gkb-new		\
@@ -67,17 +69,16 @@ always_built_SUBDIRS = \
 ## 	quicklaunch	\
 ## 	tickastat	\
 ## 	webcontrol	\
-## 	whereami	
 ## 
 ## 
 SUBDIRS = \
 	po			\
 	$(mixer_SUBDIRS)	\
+ 	$(modemlights_SUBDIRS)	\
 	$(always_built_SUBDIRS)	
 ## 	$(gtop_SUBDIRS)		\
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(cdplayer_SUBDIRS)	\
-## 	$(modemlights_SUBDIRS)	\
 ## 	$(esd_SUBDIRS)		\
 ## 	$(wordexp_SUBDIRS)      \
 ## 	omf-install

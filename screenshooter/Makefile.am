@@ -3,15 +3,15 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) 
 
-bin_PROGRAMS = screenshooter-applet
+bin_PROGRAMS = screenshooter-applet2
 
-screenshooter_applet_SOURCES = \
+screenshooter_applet2_SOURCES = \
 	screenshooter_applet.c		\
 	screenshooter_applet.h		\
 	root_icon.xpm  \
 	window_icon.xpm 
 
-screenshooter_applet_LDADD = \
+screenshooter_applet2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 scrshotdir = $(bindir)
@@ -34,4 +34,4 @@ server_DATA     = $(server_in_files:.server.in=.server)
 EXTRA_DIST = $(png_DATA) $(scrshot_SCRIPTS)	\
 	$(server_in_files) $(sys_DATA) $(sys_predata)
 
-SUBDIRS = docs
+#SUBDIRS = docs
