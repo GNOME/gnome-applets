@@ -42,14 +42,6 @@ mini_commander_applet_LDADD =				\
 bitmapsdir = $(datadir)/pixmaps/mini-commander
 bitmaps_DATA = browser-mini.xpm history-mini.xpm
 
-sysdir = $(datadir)/applets/Utility
-sys_predata = mini-commander_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
-
-#gnorbadir  = $(sysconfdir)/CORBA/servers
-#gnorba_DATA = mini-commander_applet.gnorba
-
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-mini-commander.png
 
@@ -62,4 +54,8 @@ ui_DATA = GNOME_MiniCommanderApplet.xml
 
 @INTLTOOL_SERVER_RULE@
 
-EXTRA_DIST = $(server_in_files) $(pixmap_DATA) $(sys_DATA) $(sys_predata) $(bitmaps_DATA) $(ui_DATA)
+EXTRA_DIST =			\
+	$(server_in_files)	\
+	$(pixmap_DATA)		\
+	$(bitmaps_DATA)		\
+	$(ui_DATA)
