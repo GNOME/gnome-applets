@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-17 04:04+0200\n"
-"PO-Revision-Date: 2004-05-17 14:58+0200\n"
+"POT-Creation-Date: 2004-05-27 03:49+0200\n"
+"PO-Revision-Date: 2004-05-27 14:03+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Generátor pro stavový aplet AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1260
 msgid "Keyboard Accessibility Status"
 msgstr "Stav zpřístupnění klávesnice"
 
@@ -86,7 +86,7 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 msgid "Utility"
 msgstr "Nástroj"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:917
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:990
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:601
 #: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
@@ -104,7 +104,7 @@ msgstr ""
 "Miloslav Trmač <mitr@volny.cz>"
 
 #: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:1068 accessx-status/applet.c:1263
 msgid "AccessX Status"
 msgstr "Stav AccessX"
 
@@ -131,17 +131,17 @@ msgstr "Při spouštění capletu klávesnice došlo k chybě: %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:984 accessx-status/applet.c:1069
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Zobrazuje stav klávesnice, když se používají funkce zpřístupnění."
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1265
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:938 battstat/battstat_applet.c:1690
+#: battstat/battstat_applet.c:1011 battstat/battstat_applet.c:1760
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -150,7 +150,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1691
+#: battstat/battstat_applet.c:1761
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -251,23 +251,23 @@ msgstr "Úroveň žluté"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:338
+#: battstat/battstat_applet.c:340
 msgid "Your platform is not supported!\n"
 msgstr "Vaše platforma není podporovaná!\n"
 
-#: battstat/battstat_applet.c:339
+#: battstat/battstat_applet.c:341
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Tento aplet nebude fungovat správně (pokud vůbec).\n"
 
-#: battstat/battstat_applet.c:356
+#: battstat/battstat_applet.c:358
 msgid "charged"
 msgstr "nabita"
 
-#: battstat/battstat_applet.c:358
+#: battstat/battstat_applet.c:360
 msgid "..."
 msgstr "..."
 
-#: battstat/battstat_applet.c:360
+#: battstat/battstat_applet.c:362
 #, c-format
 msgid "%d hours %d minutes remaining"
 msgstr "zbývá %d hodin a %d minut"
@@ -275,39 +275,43 @@ msgstr "zbývá %d hodin a %d minut"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:385 battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1048
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:387 battstat/battstat_applet.c:977
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1050
 msgid "Low"
 msgstr "Nízké"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1052
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1054
 msgid "Charging"
 msgstr "Nabíjení"
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:477
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr ""
 "Baterie není příliš nabitá (%d%%) a připojení k el. síti není k dispozici"
 
-#: battstat/battstat_applet.c:496
+#: battstat/battstat_applet.c:480 battstat/battstat_applet.c:525
+msgid "Battery Notice"
+msgstr "Upozornění o baterii"
+
+#: battstat/battstat_applet.c:544
 msgid "Battery is now fully re-charged!"
 msgstr "Baterie jsou nyní zcela dobité!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:515 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:588 battstat/battstat_applet.c:1212
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -319,7 +323,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:519 battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:592 battstat/battstat_applet.c:1220
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -330,21 +334,21 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:525 battstat/battstat_applet.c:1071
-#: battstat/battstat_applet.c:1160
+#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1233
 #, c-format
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:528 battstat/battstat_applet.c:1077
-#: battstat/battstat_applet.c:1166
+#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1150
+#: battstat/battstat_applet.c:1239
 #, c-format
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: battstat/battstat_applet.c:542 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:615 wireless/wireless-applet.c:146
 #, c-format
 msgid "N/A"
 msgstr "N/A"
@@ -354,7 +358,7 @@ msgstr "N/A"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:671 battstat/battstat_applet.c:1051
+#: battstat/battstat_applet.c:744 battstat/battstat_applet.c:1124
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
@@ -364,7 +368,7 @@ msgstr "Systém je napájen bateriemi. Baterie: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:677 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1131
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
@@ -373,7 +377,7 @@ msgstr "Systém je napájen el. sítí. Baterie: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:687
+#: battstat/battstat_applet.c:760
 #, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systém je napájen bateriemi. Baterie: Není přítomná"
@@ -381,7 +385,7 @@ msgstr "Systém je napájen bateriemi. Baterie: Není přítomná"
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:693
+#: battstat/battstat_applet.c:766
 #, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systém je napájen el. sítí. Baterie: Není přítomná"
@@ -389,20 +393,20 @@ msgstr "Systém je napájen el. sítí. Baterie: Není přítomná"
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:702
+#: battstat/battstat_applet.c:775
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Baterie: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:708
+#: battstat/battstat_applet.c:781
 #, c-format
 msgid "Battery: Not present"
 msgstr "Baterie: Není přítomná"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:808
+#: battstat/battstat_applet.c:881
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -415,7 +419,7 @@ msgstr ""
 "zařízení APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:817
+#: battstat/battstat_applet.c:890
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -425,7 +429,7 @@ msgstr ""
 "Zkuste spustit \"apm -e 1\" (FreeBSD) a možná to\n"
 "pomůže.\n"
 
-#: battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:946
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -434,16 +438,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: battstat/battstat_applet.c:877
+#: battstat/battstat_applet.c:950
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: battstat/battstat_applet.c:879
+#: battstat/battstat_applet.c:952
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:960
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -453,19 +457,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:905
+#: battstat/battstat_applet.c:978
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:940
+#: battstat/battstat_applet.c:1013
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:941
+#: battstat/battstat_applet.c:1014
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1616
+#: battstat/battstat_applet.c:1686
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -521,7 +525,7 @@ msgstr "Nastavení Sledování stavu baterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
 #: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Obecné"
 
@@ -579,7 +583,7 @@ msgstr "_Žlutá:"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
@@ -2403,7 +2407,7 @@ msgstr "_Název:"
 msgid "_Label:"
 msgstr "_Popis:"
 
-#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:7
 msgid "Co_mmand:"
 msgstr "Pří_kaz:"
 
@@ -2729,7 +2733,7 @@ msgstr "_Aktualizovat"
 msgid "Could not retrieve the stock data."
 msgstr "Nemohu získat předdefinovaná data."
 
-#: gtik/gtik.c:309 gweather/gweather-applet.c:456
+#: gtik/gtik.c:309 gweather/gweather-applet.c:455
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
@@ -2819,12 +2823,12 @@ msgstr "Posunovat z_leva doprava"
 msgid "Displa_y only symbols and price"
 msgstr "Zobrazovat pouze s_ymboly a ceny"
 
-#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:20
 #: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "_Šířka:"
 
-#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "bodů"
@@ -3395,9 +3399,9 @@ msgstr "Severozápad"
 msgid "North - Northwest"
 msgstr "Sever - Severozápad"
 
-#: gweather/weather.c:193 gweather/weather.c:2025 gweather/weather.c:2037
-#: gweather/weather.c:2049 gweather/weather.c:2061 gweather/weather.c:2079
-#: gweather/weather.c:2091
+#: gweather/weather.c:193 gweather/weather.c:2097 gweather/weather.c:2109
+#: gweather/weather.c:2121 gweather/weather.c:2133 gweather/weather.c:2151
+#: gweather/weather.c:2163
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -3716,27 +3720,27 @@ msgstr "Prachová smršť"
 msgid "Dust whirls in the vicinity"
 msgstr "Prachová smršť v blízkosti"
 
-#: gweather/weather.c:894 gweather/weather.c:934 gweather/weather.c:1651
+#: gweather/weather.c:907 gweather/weather.c:949 gweather/weather.c:1701
 msgid "Failed to get METAR data.\n"
 msgstr "Nemohu získat data METAR.\n"
 
-#: gweather/weather.c:926 gweather/weather.c:954 gweather/weather.c:1192
+#: gweather/weather.c:941 gweather/weather.c:969 gweather/weather.c:1216
 msgid "WeatherInfo missing location"
 msgstr "Chybí umístění WeatherInfo"
 
-#: gweather/weather.c:1989
+#: gweather/weather.c:2061
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d. %b, %H:%M"
 
-#: gweather/weather.c:1993
+#: gweather/weather.c:2065
 msgid "Unknown observation time"
 msgstr "Neznámý čas pozorování"
 
-#: gweather/weather.c:2063
+#: gweather/weather.c:2135
 msgid "Calm"
 msgstr "Bezvětří"
 
-#: gweather/weather.c:2136
+#: gweather/weather.c:2208
 msgid "Retrieval failed"
 msgstr "Stahování selhalo"
 
@@ -4201,74 +4205,62 @@ msgid "Error syncing config data: %s"
 msgstr "Chyba při synchronizaci dat: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Appearance</b>"
-msgstr "<b>Vzhled</b>"
-
-#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
 msgstr "<b>Automatické doplňování</b>"
 
-#: mini-commander/src/mini-commander.glade.h:5
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Colors</b>"
 msgstr "<b>Barvy</b>"
 
-#: mini-commander/src/mini-commander.glade.h:6
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Size</b>"
 msgstr "<b>Velikost</b>"
 
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:6
 msgid "Add New Macro"
 msgstr "Přidat nové makro"
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command Line Preferences"
 msgstr "Nastavení apletu Mini-Commander"
 
-#: mini-commander/src/mini-commander.glade.h:10
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
 msgstr "Po_zadí příkazové řádky:"
 
-#: mini-commander/src/mini-commander.glade.h:11
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
 msgstr "Po_předí příkazové řádky:"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
 msgstr "Povolit automatické doplňování z _historie"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
 msgstr "Makra"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pick a color"
 msgstr "Vyberte barvu"
 
-#: mini-commander/src/mini-commander.glade.h:16
-msgid "Show fram_e"
-msgstr "Zobrazovat _rámec"
-
-#: mini-commander/src/mini-commander.glade.h:17
-msgid "Show han_dle"
-msgstr "Zobrazovat _držátko"
-
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
 msgstr "_Přidat makro..."
 
-#: mini-commander/src/mini-commander.glade.h:19
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
 msgstr "_Odstranit makro"
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
 msgstr "_Makra:"
 
-#: mini-commander/src/mini-commander.glade.h:21
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "_Pattern:"
 msgstr "_Vzor:"
 
-#: mini-commander/src/mini-commander.glade.h:22
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
 msgstr "Používat _implicitní barvy tématu"
 
@@ -4380,57 +4372,57 @@ msgstr "Používat barvy tématu místo vlastních."
 msgid "Width"
 msgstr "Šířka"
 
-#: mini-commander/src/mini-commander_applet.c:228
-#: mini-commander/src/mini-commander_applet.c:232
+#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:230
 msgid "Browser"
 msgstr "Prohlížeč"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Click this button to start the browser"
 msgstr "Klepnutím na toto tlačítko spustíte prohlížeč"
 
-#: mini-commander/src/mini-commander_applet.c:246
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:248
 msgid "History"
 msgstr "Historie"
 
-#: mini-commander/src/mini-commander_applet.c:251
+#: mini-commander/src/mini-commander_applet.c:249
 msgid "Click this button for the list of previous commands"
 msgstr "Klepnutím na toto tlačítko necháte vypsat předchozí příkazy"
 
-#: mini-commander/src/mini-commander_applet.c:363
+#: mini-commander/src/mini-commander_applet.c:319
 msgid "Command line has been disabled by your system administrator"
 msgstr "Příkazový řádek byl zakázán vaším správcem systému"
 
-#: mini-commander/src/mini-commander_applet.c:426
+#: mini-commander/src/mini-commander_applet.c:382
 msgid "Mini-Commander applet"
 msgstr "Aplet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:427
+#: mini-commander/src/mini-commander_applet.c:383
 msgid "This applet adds a command line to the panel"
 msgstr "Tento aplet přidá na panel příkazový řádek"
 
-#: mini-commander/src/preferences.c:428
+#: mini-commander/src/preferences.c:400
 msgid "You must specify a pattern"
 msgstr "Musíte zadat vzor"
 
-#: mini-commander/src/preferences.c:432
+#: mini-commander/src/preferences.c:404
 msgid "You must specify a pattern and a command"
 msgstr "Musíte zadat vzor a příkaz"
 
-#: mini-commander/src/preferences.c:433
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a command"
 msgstr "Musíte zadat příkaz"
 
-#: mini-commander/src/preferences.c:436
+#: mini-commander/src/preferences.c:408
 msgid "You may not specify duplicate patterns"
 msgstr "Nesmíte zadávat duplikátní vzory"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:778
 msgid "Pattern"
 msgstr "Vzor"
 
-#: mini-commander/src/preferences.c:860
+#: mini-commander/src/preferences.c:788
 msgid "Command"
 msgstr "Příkaz"
 
@@ -5668,6 +5660,15 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
+
+#~ msgid "<b>Appearance</b>"
+#~ msgstr "<b>Vzhled</b>"
+
+#~ msgid "Show fram_e"
+#~ msgstr "Zobrazovat _rámec"
+
+#~ msgid "Show han_dle"
+#~ msgstr "Zobrazovat _držátko"
 
 #~ msgid "La_youts..."
 #~ msgstr "_Rozložení..."
