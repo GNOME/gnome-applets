@@ -17,7 +17,7 @@ DIST_SUBDIRS = sounds apmlib
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
-	$(APMDIR) \
+	-I$(APMDIR) \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
