@@ -855,18 +855,18 @@ gkb_prop_list_create_item (GkbKeymap *keymap)
 
   hbox = gtk_hbox_new (FALSE, 0);
 
-  /* Label */
-  label = gtk_label_new (keymap->name);
-  gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
-  gtk_misc_set_padding   (GTK_MISC (label), 3, 0);
-
   /* Pixmap */
   pixmap = gtk_type_new (gnome_pixmap_get_type ());
   pixmap_name = gkb_util_get_pixmap_name (keymap);
   gnome_pixmap_load_file_at_size (GNOME_PIXMAP (pixmap), pixmap_name, 28, 20);
   g_free (pixmap_name);
   gtk_box_pack_start (GTK_BOX (hbox), pixmap, FALSE, TRUE, 0);
+  
+  /* Label */
+  label = gtk_label_new (keymap->name);
+  gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+  gtk_misc_set_padding   (GTK_MISC (label), 3, 0);
 
   /* List item */
   list_item = gtk_list_item_new ();
