@@ -22,7 +22,7 @@
 #include <gnome.h>
 #include <panel-applet.h>
 
-#define MAX_EYES 100
+#define MAX_EYES 1000
 typedef struct
 {
 	GtkWidget *pbox;
