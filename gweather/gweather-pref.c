@@ -439,7 +439,9 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     GWeatherApplet *gw_applet = data;
     gtk_widget_destroy (GTK_WIDGET (dialog));
     gw_applet->pref = NULL;
-     
+
+    /* refresh the applet incase the location has changed */
+    gweather_update(gw_applet);
 }
 
 static void gweather_pref_create (GWeatherApplet *gw_applet)

@@ -224,11 +224,10 @@ static WeatherInfo *request_info = NULL;
 
 static inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
 {
-    if (info->requests_pending)
+    if (info->requests_pending || request_info || request_cb)
         return FALSE;
 
     /*g_assert(!metar_handle && !iwin_handle && !wx_handle && !met_handle);*/
-    g_assert(!request_info && !request_cb);
 
     info->requests_pending = TRUE;
     request_cb = cb;
@@ -1626,6 +1625,7 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->visibility = 0;
     info->forecast = "None";
     info->radar = NULL;  /* FIX */
+    info->requests_pending = FALSE;
 
     return info;
 }

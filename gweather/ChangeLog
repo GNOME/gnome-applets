@@ -1,3 +1,12 @@
+2002-02-20  Todd Kulesza  <fflewddur@dropline.net>
+
+	* weather.c: initalize WeatherInfo's request_pending
+	member to NULL and fix requests_init() to prevent
+	multiple http requests.
+	
+	* gweather-pref.c: add a call to gweather_update()
+	after the property dialog has been closed.
+	
 2002-02-19  Kevin Vandersloot <kfv101@psu.edu>
 
 	* weather.c, gweather-pref.c: change __inline to inline
