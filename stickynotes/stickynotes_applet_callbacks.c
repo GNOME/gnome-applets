@@ -259,7 +259,7 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 /* About Callback : Response. */
 void about_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 {
-	if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) {
+	if (response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_OK || response == GTK_RESPONSE_CLOSE) {
 		gtk_widget_destroy(GTK_WIDGET(dialog));
 		g_object_unref(glade);
 		stickynotes->about = NULL;
