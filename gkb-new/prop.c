@@ -47,7 +47,7 @@ struct _KeymapData
 };
 
 static void
-changed_cb (GnomePropertyBox * pb)
+changed_cb (GtkEntry * entry, GnomePropertyBox * pb)
 {
  gnome_property_box_changed (GNOME_PROPERTY_BOX (pb));
 }
@@ -333,7 +333,7 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo *pbi)
  * Return Value: the hotkey frame widget
  **/
 static GtkWidget *
-gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi)
+gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GnomePropertyBox * pb)
 {
   GtkWidget *frame;
   GtkWidget *button;
@@ -358,7 +358,7 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi)
 
   gtk_signal_connect (GTK_OBJECT (pbi->hotkey_entry), "changed", 
                       GTK_SIGNAL_FUNC (changed_cb),
-		      NULL);
+		      pb);
   gtk_signal_connect (GTK_OBJECT (button), "clicked", 
                       GTK_SIGNAL_FUNC (grab_button_pressed),
 		      pbi->hotkey_entry);
@@ -411,7 +411,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
 
   /* Page 1 Frames */
   display_frame = gkb_prop_create_display_frame (pbi);
-  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi);
+  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi, propbox);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), display_frame, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), hotkey_frame, TRUE, FALSE, 2);
 
