@@ -91,6 +91,12 @@ main (int argc, char **argv)
 
     multiload_properties.cpuload.n = 4;
     multiload_properties.cpuload.name = "cpuload";
+#ifdef ENABLE_NLS
+    {
+	int i;
+	for (i=0;i<4;i++) cpu_texts[i]=_(cpu_texts[i]);
+    }
+#endif
     multiload_properties.cpuload.texts = cpu_texts;
     multiload_properties.cpuload.color_defs = cpu_color_defs;
     multiload_properties.cpuload.adj_data [0] = 500;
@@ -99,6 +105,12 @@ main (int argc, char **argv)
 
     multiload_properties.memload.n = 4;
     multiload_properties.memload.name = "memload";
+#ifdef ENABLE_NLS
+    {
+        int i;
+        for (i=0;i<4;i++) mem_texts[i]=_(mem_texts[i]);
+    }
+#endif
     multiload_properties.memload.texts = mem_texts;
     multiload_properties.memload.color_defs = mem_color_defs;
     multiload_properties.memload.adj_data [0] = 500;
@@ -107,6 +119,12 @@ main (int argc, char **argv)
 
     multiload_properties.swapload.n = 2;
     multiload_properties.swapload.name = "swapload";
+#ifdef ENABLE_NLS
+    {
+        int i;
+        for (i=0;i<2;i++) swap_texts[i]=_(swap_texts[i]);
+    }
+#endif
     multiload_properties.swapload.texts = swap_texts;
     multiload_properties.swapload.color_defs = swap_color_defs;
     multiload_properties.swapload.adj_data [0] = 500;
