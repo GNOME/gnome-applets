@@ -58,10 +58,10 @@ static gchar *weather_proxy_passwd = NULL;
 #define WINDSPEED_KPH_TO_KNOTS(kph)    ((kph) * 0.539967)
 #define WINDSPEED_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("knots") : _("kph"))
 
-#define PRESSURE_INCH_TO_MM(inch)   ((inch) * 25.4)
-#define PRESSURE_MM_TO_INCH(mm)     ((mm) * 0.03937)
+#define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)
+#define PRESSURE_HPA_TO_INCH(mm)     ((mm) / 33.86)
 #define PRESSURE_MBAR_TO_INCH(mbar) ((mbar) * 0.02963742)
-#define PRESSURE_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("inHg") : _("mmHg"))
+#define PRESSURE_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("inHg") : _("hPa"))
 
 #define VISIBILITY_SM_TO_KM(sm)  ((sm) * 1.609344)
 #define VISIBILITY_KM_TO_SM(km)  ((km) * 0.621371)
@@ -1721,7 +1721,7 @@ void weather_info_to_metric (WeatherInfo *info)
     info->temp = TEMP_F_TO_C(info->temp);
     info->dew = TEMP_F_TO_C(info->dew);
     info->windspeed = WINDSPEED_KNOTS_TO_KPH(info->windspeed);
-    info->pressure = PRESSURE_INCH_TO_MM(info->pressure);
+    info->pressure = PRESSURE_INCH_TO_HPA(info->pressure);
     info->visibility = VISIBILITY_SM_TO_KM(info->visibility);
 
     /* Change units flag */
@@ -1739,7 +1739,7 @@ void weather_info_to_imperial (WeatherInfo *info)
     info->temp = TEMP_C_TO_F(info->temp);
     info->dew = TEMP_C_TO_F(info->dew);
     info->windspeed = WINDSPEED_KPH_TO_KNOTS(info->windspeed);
-    info->pressure = PRESSURE_MM_TO_INCH(info->pressure);
+    info->pressure = PRESSURE_HPA_TO_INCH(info->pressure);
     info->visibility = VISIBILITY_KM_TO_SM(info->visibility);
 
     /* Change units flag */
