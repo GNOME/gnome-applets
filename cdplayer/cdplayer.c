@@ -45,12 +45,12 @@
 #include "inlinepixbufs.h"
 
 #define TIMEOUT_VALUE 500
-#define CDPLAYER_STOP           "cdplayer-stop"
-#define CDPLAYER_PLAY           "cdplayer-play"
-#define CDPLAYER_PAUSE          "cdplayer-pause"
-#define CDPLAYER_PREV           "cdplayer-prev"
-#define CDPLAYER_NEXT           "cdplayer-next"
-#define CDPLAYER_EJECT          "cdplayer-eject"
+#define CDPLAYER_STOP           "media-stop"
+#define CDPLAYER_PLAY           "media-play"
+#define CDPLAYER_PAUSE          "media-pause"
+#define CDPLAYER_PREV           "media-prev"
+#define CDPLAYER_NEXT           "media-next"
+#define CDPLAYER_EJECT          "media-eject"
 
 /* Function prototypes */
 static gboolean applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
