@@ -137,8 +137,10 @@ struct _GKB
   gint n;
   gint cur;
 
-  gchar *key;
+  gchar *key, *old_key;
   guint keysym, state;
+  gint keycode;
+  guint old_keysym, old_state;
 
 };
 

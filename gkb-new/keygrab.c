@@ -231,27 +231,50 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   GdkWindow *root_window;
   GkbPropertyBoxInfo *pbi = (GkbPropertyBoxInfo *)data;
   GKB *gkb = pbi->gkb;
+  static gboolean key_was_pressed = FALSE;
   
-  if ((xevent->type != KeyPress) && (xevent->type != KeyRelease))
-    return GDK_FILTER_CONTINUE;
-
   entry = GTK_ENTRY (pbi->hotkey_entry);
 
   root_window = gdk_get_default_root_window ();
+
+  if (xevent->type != KeyPress && xevent->type != KeyRelease)
+    {
+      gdk_display_pointer_ungrab (gdk_drawable_get_display (root_window),
+                                  GDK_CURRENT_TIME);
+      gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+      gtk_widget_destroy (grab_dialog);
+      gdk_window_remove_filter (root_window, grab_key_filter, data);
+      key_was_pressed = FALSE;
+      return GDK_FILTER_REMOVE;
+    }
 
   state = xevent->xkey.state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK);
 
   XLookupString (&xevent->xkey, buf, 0, &keysym, NULL);
 
   if (xevent->type == KeyRelease) {
+
+    if (!key_was_pressed)
+      return GDK_FILTER_CONTINUE;
+
+   /* grabbing went thro fine, update the old_* variables */
+   g_free (gkb->old_key);
+   gkb->old_key = g_strdup (gkb->key);
+   gkb->old_keysym = gkb->keysym;
+   gkb->old_state = gkb->state;
+   gdk_display_pointer_ungrab (gdk_drawable_get_display (root_window),
+                             GDK_CURRENT_TIME);
    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
    gtk_widget_destroy (grab_dialog);
    gdk_window_remove_filter (root_window, grab_key_filter, data);
+   key_was_pressed = FALSE;
    return GDK_FILTER_REMOVE;
   }
-  
-  /* Esc cancels */
-  if (event->key.keyval == GDK_Escape) 
+ 
+   key_was_pressed = TRUE;
+ 
+  /* Esc cancels . We have got the keysym by XLookupString() */
+  if (keysym == GDK_Escape) 
     return GDK_FILTER_REMOVE;
   
   key = convert_keysym_state_to_string (XKeycodeToKeysym(GDK_DISPLAY(),
@@ -260,17 +283,48 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   
   newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  gkb_xungrab (*key, gkb->state, root_window);
-
   gkb->key = g_strdup (key);
   g_free (key);
-  
+
+  gdk_error_trap_push ();
+  gkb_xungrab (gkb->keycode, gkb->state, root_window);
+  gdk_flush ();
+  gdk_error_trap_pop ();
+ 
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
+  gdk_error_trap_push ();
   gkb_xgrab ( newkey, gkb->state, root_window);
-  
+ 
+  /* In case we are unable to grab revert to the the previous hot key*/
+  gdk_flush ();
+  if (gdk_error_trap_pop () != 0) {
+
+    g_free (gkb->key);
+    gkb->key = g_strdup (gkb->old_key);
+    gtk_entry_set_text (GTK_ENTRY (entry), gkb->key ? gkb->key : "");
+    gkb->keysym = gkb->old_keysym;
+    gkb->state = gkb->old_state;
+
+    /* Grab the key which was used just before popping the window */
+    /* Hopefully we are still able to grab the old key back */
+    gdk_error_trap_push ();
+    gkb_xgrab ( gkb->keycode, gkb->state, root_window);
+    gdk_flush ();
+    gdk_error_trap_pop ();
+
+    /* No point in continuing further. Close the popup window */
+    gdk_display_pointer_ungrab (gdk_drawable_get_display (root_window),
+                                GDK_CURRENT_TIME);
+    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+    gtk_widget_destroy (grab_dialog);
+    gdk_window_remove_filter (root_window, grab_key_filter, data);
+    return GDK_FILTER_REMOVE;
+  }
+
+  gkb->keycode = newkey; 
   gconf_applet_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
   
   return GDK_FILTER_REMOVE;
@@ -284,11 +338,27 @@ grab_button_pressed (GtkButton *button,
   GtkWidget *box;
   GtkWidget *label;
   GdkWindow *root_window;
+  GkbPropertyBoxInfo *pbi = (GkbPropertyBoxInfo *)data;
+
+  g_return_if_fail (pbi != NULL);
 
   root_window = gdk_screen_get_root_window (
 			gtk_widget_get_screen (GTK_WIDGET (button)));
 
-  gdk_keyboard_grab (root_window, FALSE, GDK_CURRENT_TIME);
+  if ((gdk_pointer_grab (root_window, FALSE,
+                        GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK,
+                        NULL, NULL, GDK_CURRENT_TIME) == 0))
+    {
+      if (gdk_keyboard_grab (root_window, FALSE, GDK_CURRENT_TIME) != 0)
+        {
+          gdk_display_pointer_ungrab (gdk_drawable_get_display (root_window),
+                                      GDK_CURRENT_TIME);
+          return;
+        }
+    }
+    else
+     return;
+
   gdk_window_add_filter (root_window, grab_key_filter, data);
 
   grab_dialog = gtk_window_new (GTK_WINDOW_POPUP);
@@ -300,6 +370,7 @@ grab_button_pressed (GtkButton *button,
                 "resizable", FALSE,
                 NULL);
 
+  gtk_window_set_transient_for (GTK_WINDOW (grab_dialog), GTK_WINDOW (pbi->box));
   gtk_window_set_position (GTK_WINDOW (grab_dialog), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (grab_dialog), TRUE);
 

@@ -466,9 +466,12 @@ load_properties (GKB * gkb)
 
   gkb->n = gconf_applet_get_int (PANEL_APPLET(gkb->applet), "num", NULL);
 
-  gkb->key = gkb_load_pref (gkb, "key", "Mod1-Shift_L");
+  gkb->key = gkb_load_pref (gkb, "key", "Alt-Shift_L");
+  gkb->old_key = g_strdup (gkb->key);
 
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
+  gkb->old_keysym = gkb->keysym;
+  gkb->old_state = gkb->state;
 
   gkb->is_small = gconf_applet_get_bool (PANEL_APPLET(gkb->applet), "small", NULL);
 #ifdef THIS_IS_UNNECESSARY
@@ -661,7 +664,7 @@ global_key_filter (GKB *gkb, GdkXEvent * gdk_xevent, GdkEvent * event)
   XKeyEvent * xkevent = (XKeyEvent *) gdk_xevent;
   gint keysym = XKeycodeToKeysym(GDK_DISPLAY(), xkevent->keycode,0);
 
-  if (keysym == gkb->keysym && xkevent->state == gkb->state)
+ if (strcmp (gkb->key, convert_keysym_state_to_string (XKeycodeToKeysym(GDK_DISPLAY (), xkevent->keycode, 0), xkevent->state)) == 0)
     {
       if (gkb->cur + 1 < gkb->n)
 	gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
@@ -810,7 +813,12 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   root_window = gdk_get_default_root_window ();
 
+  gkb->keycode = keycode; 
+  /* Incase the key is already grabbed by another application */ 
+  gdk_error_trap_push ();
   gkb_xgrab (keycode, modifiers, root_window);
+  gdk_flush ();
+  gdk_error_trap_pop ();
   gdk_window_add_filter (root_window, event_filter, gkb);
 
   g_signal_connect (G_OBJECT(gkb->applet),
