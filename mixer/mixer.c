@@ -97,6 +97,7 @@
 #define VOLUME_DEFAULT_ICON_SIZE 48
 static GtkIconSize volume_icon_size = 0;
 static gboolean icons_initialized = FALSE;
+static gboolean device_present = TRUE;
 
 #define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
@@ -128,6 +129,7 @@ typedef struct {
 	gint		    channel;
 	int 		    mixerchannel;
 	GList		    *channels;
+	gchar		    *device;
 
 	GtkAdjustment     *adj;
 
@@ -139,6 +141,8 @@ typedef struct {
 	/* The popup window and scale. */
 	GtkWidget         *popup;
 	GtkWidget         *scale;
+	
+	GtkWidget 		*error_dialog;
 
 	GdkPixbuf	  *zero;
 	GdkPixbuf	  *min;
@@ -165,6 +169,7 @@ static gchar *run_mixer_cmd = NULL;
 
 static const gchar *access_name = N_("Volume Control");     
 static const gchar *access_name_mute = N_("Volume Control (muted)");
+static const gchar *access_name_nodevice = N_("No audio device");
 gboolean gail_loaded = FALSE;  
 
 
@@ -373,6 +378,22 @@ mixer_timeout_cb (MixerData *data)
 	gint               vol;
 	gboolean state;
 
+	if (!device_present) {
+		data->mute = TRUE;
+		mixer_update_image (data);
+
+		gtk_tooltips_set_tip (data->tooltips,
+				      data->applet,
+				      _(access_name_nodevice),
+				      NULL);
+		if (gail_loaded) {
+			add_atk_namedesc (data->applet,
+					  _(access_name_nodevice),
+					  NULL);
+		}
+		return TRUE;
+	}
+
 #ifdef SUN_API
 	state = get_mute_status ();
 
@@ -560,6 +581,36 @@ scale_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data
 
 	return FALSE;
 }
+
+static void
+error_response (GtkDialog *dialog, gint id, MixerData *data)
+{
+	gtk_widget_destroy (data->error_dialog);
+	data->error_dialog = NULL;
+}
+
+static void
+show_error_dialog (MixerData *data)
+{	
+	if (data->error_dialog) {
+		gtk_window_present (GTK_WINDOW (data->error_dialog));
+		return;
+	}
+	data->error_dialog = gtk_message_dialog_new (NULL,
+					 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+					 ("Couldn't open mixer device %s\n"),
+					 data->device, NULL);
+
+	gtk_window_set_screen (GTK_WINDOW (data->error_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (data->applet)));
+	g_signal_connect (GTK_OBJECT (data->error_dialog), 
+                             "response", 
+                             G_CALLBACK (error_response),
+                             data);
+        gtk_widget_show_all (data->error_dialog);
+}
+
 static gboolean
 scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
@@ -576,10 +627,11 @@ static gboolean
 applet_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
 	if (event->button == 1) {
-		if (data->popup == NULL) {
+		if (data->popup == NULL && device_present) {
 			mixer_popup_show (data);
 			return TRUE;
-		}
+		} else if (!device_present)
+			show_error_dialog (data);
 	}
 
 	return FALSE;
@@ -603,8 +655,10 @@ applet_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *dat
 		/* Apply. */
 		if (data->popup != NULL)
 			mixer_popup_hide (data, FALSE);
-		else
+		else if(device_present)
 			mixer_popup_show (data);
+		else
+			show_error_dialog (data);
 		return TRUE;
 
 	default:
@@ -829,7 +883,8 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 		gtk_timeout_remove (data->timeout);
 		data->timeout = 0;
 	}
-	
+	if (data->error_dialog)
+		gtk_widget_destroy (data->error_dialog);
 	g_free (data);
 }
 
@@ -1351,15 +1406,7 @@ mixer_applet_create (PanelApplet *applet)
 #endif
 	mixer_init_stock_icons ();
 	if (!retval) {
-		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
-						 ("Couldn't open mixer device %s\n"),
-						 device, NULL);
-		gtk_window_set_screen (GTK_WINDOW (dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (applet)));
-		gtk_dialog_run (GTK_DIALOG (dialog));
-		gtk_widget_destroy (dialog);
+		device_present = FALSE;
 	}
 
  	if (GTK_IS_ACCESSIBLE (gtk_widget_get_accessible(GTK_WIDGET(applet)))) {
@@ -1375,6 +1422,7 @@ mixer_applet_create (PanelApplet *applet)
 	if (run_mixer_cmd == NULL) 
 		run_mixer_cmd = g_find_program_in_path ("sdtaudiocontrol");
 	
+	data->device = g_strdup (device);
 	data->frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
 	gtk_container_add (GTK_CONTAINER (applet), data->frame);
