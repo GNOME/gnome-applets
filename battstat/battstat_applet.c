@@ -278,10 +278,15 @@ load_font (gpointer data)
     battstat->percentstyle=gtk_style_copy (GTK_WIDGET (battstat->percent)->style);
     if (battstat->fontname)
       (battstat->percentstyle)->font=gdk_font_load(battstat->fontname);
-    else
+    
+    if (!(battstat->percentstyle)->font) 
       (battstat->percentstyle)->font=gdk_font_load ("fixed");
-    gtk_widget_set_style (battstat->percent, battstat->percentstyle);
-    gtk_widget_set_style (battstat->statuspercent, battstat->percentstyle);
+
+    if ((battstat->percentstyle)->font) {
+      gtk_widget_set_style (battstat->percent, battstat->percentstyle);
+      gtk_widget_set_style (battstat->statuspercent, battstat->percentstyle);
+    }
+    
   }
 }
 
