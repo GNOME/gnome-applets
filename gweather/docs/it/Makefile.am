@@ -1,5 +1,5 @@
 figdir = figures
-docname = gweather_applet
+docname = gweather
 lang = it
 omffile = gweather_applet-it.omf
 entities = legal.xml
