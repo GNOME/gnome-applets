@@ -188,7 +188,7 @@ static void
 cdplayer_load_config(CDPlayerData *cd)
 {
     g_free(cd->devpath);
-    cd->devpath = panel_applet_gconf_get_string(PANEL_APPLET(cd->panel.applet), "device-path", NULL);
+    cd->devpath = panel_applet_gconf_get_string(PANEL_APPLET(cd->panel.applet), "device_path", NULL);
     if (!cd->devpath || !strcmp(cd->devpath, "none"))
     {
         g_free(cd->devpath);
@@ -199,7 +199,7 @@ cdplayer_load_config(CDPlayerData *cd)
 static void
 cdplayer_save_config(CDPlayerData *cd)
 {
-    panel_applet_gconf_set_string(PANEL_APPLET(cd->panel.applet), "device-path", cd->devpath, NULL);
+    panel_applet_gconf_set_string(PANEL_APPLET(cd->panel.applet), "device_path", cd->devpath, NULL);
 }
 
 static void
