@@ -1,4 +1,4 @@
-SUBDIRS = Default Bizarre Bloodshot Horrid
+SUBDIRS = Default Default-tiny Bizarre Bloodshot Horrid
 
 Defaultdir = $(datadir)/geyes/Default
 Bizarredir = $(datadir)/geyes/Bizarre
