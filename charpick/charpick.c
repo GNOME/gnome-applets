@@ -137,14 +137,14 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
     				      FALSE);
     				      
     curr_data->last_toggle_button = button; 
-    gtk_widget_grab_focus(curr_data->event_box);
+    gtk_widget_grab_focus(curr_data->applet);
     /* set selected_char */
     curr_data->selected_char = curr_data->charlist[button_index];
     /* set this? widget as the selection owner */
-    gtk_selection_owner_set (curr_data->event_box,
+    gtk_selection_owner_set (curr_data->applet,
 	  		     GDK_SELECTION_PRIMARY,
                              GDK_CURRENT_TIME); 
-    gtk_selection_owner_set (curr_data->event_box,
+    gtk_selection_owner_set (curr_data->applet,
 	  		     GDK_SELECTION_CLIPBOARD,
                              GDK_CURRENT_TIME); 
     curr_data->last_index = button_index;
@@ -253,8 +253,8 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case '3' : p_curr_data->charlist = three_list;
                break;
-    case ' ' : p_curr_data->charlist = 
-	         p_curr_data->default_charlist;
+    case 'd' : p_curr_data->charlist = 
+               p_curr_data->default_charlist;
                break;
     default :
     		return FALSE;
@@ -306,8 +306,8 @@ build_table(charpick_data *p_curr_data)
                         (GtkSignalFunc) button_press_cb, p_curr_data);
   }
 
-  gtk_container_add (GTK_CONTAINER(p_curr_data->event_box), box);
-  gtk_widget_show_all (p_curr_data->event_box);
+  gtk_container_add (GTK_CONTAINER(p_curr_data->frame), box);
+  gtk_widget_show_all (p_curr_data->frame);
   
   /* a fudge factor is applied to make less space wasted.
      this is needed now that we have capital letters and the new 
@@ -449,7 +449,6 @@ static gboolean
 charpicker_applet_fill (PanelApplet *applet)
 {
   charpick_data *curr_data;
-  GtkWidget *event_box = NULL;
   gchar *default_charlist_utf8;
   
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
@@ -457,7 +456,6 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data = g_new0 (charpick_data, 1);
   curr_data->selected_char = ' ';
   curr_data->last_index = NO_LAST_INDEX;
-  curr_data->event_box = event_box;
   curr_data->applet = GTK_WIDGET (applet);
   
   default_charlist_utf8 = panel_applet_gconf_get_string (applet, 
@@ -473,49 +471,32 @@ charpicker_applet_fill (PanelApplet *applet)
     
   curr_data->charlist = curr_data->default_charlist;
 
-  /* Create the event_box (needed to catch keypress and focus change events) */
-
-  event_box = gtk_event_box_new ();
-  curr_data->event_box = event_box; 
-  GTK_WIDGET_SET_FLAGS (event_box, GTK_CAN_FOCUS);
-  gtk_widget_set_events (curr_data->event_box, GDK_FOCUS_CHANGE_MASK|GDK_KEY_PRESS_MASK);
-
   /* Create table */
   curr_data->frame = gtk_frame_new (NULL);
-  gtk_container_add (GTK_CONTAINER (curr_data->frame), event_box);
+  gtk_container_add (GTK_CONTAINER (curr_data->applet), curr_data->frame);
   build_table (curr_data);
   
   gtk_frame_set_shadow_type (GTK_FRAME(curr_data->frame), GTK_SHADOW_IN);
 
-  /* Event signals */
+  
   gtk_signal_connect (GTK_OBJECT (curr_data->applet), "key_press_event",
 		      (GtkSignalFunc) key_press_event, curr_data);
-  /*
-  gtk_signal_connect (GTK_OBJECT (applet), "focus_in_event",
-		      (GtkSignalFunc) focus_in_event, NULL);
 
-  gtk_signal_connect (GTK_OBJECT (applet), "focus_out_event",
-		      (GtkSignalFunc) focus_out_event, NULL);
-  */
-
-  /* selection handling for selected character */
-  gtk_selection_add_target (curr_data->event_box, 
+  gtk_selection_add_target (curr_data->applet, 
 			    GDK_SELECTION_PRIMARY,
                             GDK_SELECTION_TYPE_STRING,
 			    0);
-  gtk_selection_add_target (curr_data->event_box, 
+  gtk_selection_add_target (curr_data->applet, 
 			    GDK_SELECTION_CLIPBOARD,
                             GDK_SELECTION_TYPE_STRING,
 			    0);
-  gtk_signal_connect (GTK_OBJECT (curr_data->event_box), "selection_get",
+  gtk_signal_connect (GTK_OBJECT (curr_data->applet), "selection_get",
 		      GTK_SIGNAL_FUNC (charpick_selection_handler),
 		      curr_data);
-  gtk_signal_connect (GTK_OBJECT (curr_data->event_box), "selection_clear_event",
+  gtk_signal_connect (GTK_OBJECT (curr_data->applet), "selection_clear_event",
 		      GTK_SIGNAL_FUNC (selection_clear_cb),
 		      curr_data);
  
-
-  gtk_container_add (GTK_CONTAINER (applet), curr_data->frame);
   make_applet_accessible (GTK_WIDGET (applet));
   
   /* session save signal */ 

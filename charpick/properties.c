@@ -90,7 +90,7 @@ static void default_chars_frame_create(charpick_data *curr_data)
 
   explain_label = gtk_label_new(_("These characters will appear when the panel"
                                   " is started. To return to this list, hit"
-                                  " <space> while the applet has focus."));
+                                  " <d> while the applet has focus."));
   gtk_label_set_line_wrap(GTK_LABEL(explain_label), TRUE);
   /* pack the main vbox */
   gtk_box_pack_start (GTK_BOX(frame), default_list_hbox, FALSE, FALSE, 5);

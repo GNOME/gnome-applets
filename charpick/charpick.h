@@ -21,7 +21,6 @@ struct _charpick_data {
   gchar selected_char;
   gint last_index;
   GtkWidget *box;
-  GtkWidget *event_box;
   GtkWidget *frame;
   GtkWidget *applet;
   GtkToggleButton *last_toggle_button;
