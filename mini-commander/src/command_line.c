@@ -421,32 +421,35 @@ int
 mc_show_file_browser (GtkWidget *widget,
 		      MCData    *mc)
 {
-    GtkWidget *file_select;
+    if(mc->file_select && GTK_WIDGET_VISIBLE(mc->file_select)) {
+        gtk_window_present (GTK_WINDOW (mc->file_select));
+        return TRUE;
+    }
 
     /* build file select dialog */
-    file_select = gtk_file_selection_new((gchar *) _("Start program"));
-    g_object_set_data (G_OBJECT (file_select), "applet", mc);
-    gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(file_select)->ok_button),
+    mc->file_select = gtk_file_selection_new((gchar *) _("Start program"));
+    g_object_set_data (G_OBJECT (mc->file_select), "applet", mc);
+    gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(mc->file_select)->ok_button),
 		       "clicked",
 		       GTK_SIGNAL_FUNC(file_browser_ok_signal),
-		       GTK_OBJECT(file_select));
-    gtk_signal_connect_object(GTK_OBJECT(GTK_FILE_SELECTION(file_select)->cancel_button),
+		       GTK_OBJECT(mc->file_select));
+    gtk_signal_connect_object(GTK_OBJECT(GTK_FILE_SELECTION(mc->file_select)->cancel_button),
 			      "clicked",
 			      GTK_SIGNAL_FUNC(gtk_widget_destroy),
-			      GTK_OBJECT (file_select));
+			      GTK_OBJECT (mc->file_select));
 
     /* set path to last selected path */
-    gtk_file_selection_set_filename(GTK_FILE_SELECTION(file_select),
+    gtk_file_selection_set_filename(GTK_FILE_SELECTION(mc->file_select),
 				    (gchar *) browsed_filename);
 
     /* Set as modal */
-    gtk_window_set_modal(GTK_WINDOW(file_select),TRUE);
+    gtk_window_set_modal(GTK_WINDOW(mc->file_select),TRUE);
 
-    gtk_window_set_screen (GTK_WINDOW (file_select), 
+    gtk_window_set_screen (GTK_WINDOW (mc->file_select), 
 			   gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
-    gtk_window_set_position (GTK_WINDOW (file_select), GTK_WIN_POS_MOUSE);
+    gtk_window_set_position (GTK_WINDOW (mc->file_select), GTK_WIN_POS_MOUSE);
 
-    gtk_widget_show(file_select);
+    gtk_widget_show(mc->file_select);
 
     return FALSE;
 }

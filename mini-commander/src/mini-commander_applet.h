@@ -51,6 +51,7 @@ struct _MCData {
     GtkWidget     *applet_inner_vbox;
 
     GtkWidget     *entry;
+    GtkWidget     *file_select;
 
     int            label_timeout;
     int            cmd_line_size_y;
