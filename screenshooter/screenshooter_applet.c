@@ -89,6 +89,7 @@ properties_save (gchar * path, gpointer data)
 			   options.script_filename);
   gnome_config_set_string ("screenshooter/thumb_filename",
 			   options.thumb_filename);
+  gnome_config_set_string ("screenshooter/app", options.app);
   gnome_config_set_bool ("screenshoter/decoration", options.decoration);
   gnome_config_set_bool ("screenshoter/monochrome", options.monochrome);
   gnome_config_set_bool ("screenshoter/negate", options.negate);
