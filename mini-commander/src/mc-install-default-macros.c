@@ -34,7 +34,20 @@
 #include <stdio.h>
 
 #include <libgnome/gnome-i18n.h>
+#include <gconf/gconf.h>
 #include <gconf/gconf-client.h>
+#include <gconf/gconf-engine.h>
+
+/* Okay, I'm VERY bold. I deserve to be spanked.
+ *
+ * But this isn't installed, its only used at build time,
+ * so I don't feel too bad. If these disappear from the
+ * ABI or their signature changes, the build will break
+ * and someone will have to figure out how to fix it.
+ * Too bad, whoever you are :/
+ */
+GConfEngine *gconf_engine_get_local (const gchar* address, GError** err);
+void         gconf_shutdown_daemon  (GError **err);
 
 #include "mc-default-macros.h"
 
@@ -96,10 +109,38 @@ int
 main (int argc, char **argv)
 {
 	GConfClient *client;
+	GConfEngine *conf;
+	GError      *error = NULL;
+	const char  *config_source;
 
 	g_type_init ();
 
-	client = gconf_client_get_default ();
+	config_source = g_getenv ("GCONF_CONFIG_SOURCE");
+	if (!config_source) {
+		fprintf (stderr, _("Must set the GCONF_CONFIG_SOURCE environment variable\n"));
+		return -1;
+	}
+
+	if (*config_source == '\0')
+		config_source = NULL;
+
+	/* shut down daemon, this is a race condition, but will usually work. */
+	gconf_shutdown_daemon (NULL);
+
+	if (!config_source)
+		conf = gconf_engine_get_default ();
+	else
+		conf = gconf_engine_get_local (config_source, &error);
+
+	if (!conf) {
+		g_assert (error != NULL);
+		fprintf (stderr, _("Failed to access configuration source(s): %s\n"), error->message);
+		g_error_free (error);
+		return -1;
+	}
+
+	client = gconf_client_get_for_engine (conf);
+	gconf_engine_unref (conf);
 
 	install_default_macros_list (client, MC_PATTERNS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, pattern));
 	install_default_macros_list (client, MC_COMMANDS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, command));

@@ -74,7 +74,7 @@ ui_DATA = GNOME_MiniCommanderApplet.xml
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
-	$(top_builddir)/mini-commander/src/mc-install-default-macros
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(top_builddir)/mini-commander/src/mc-install-default-macros
 
 @INTLTOOL_SERVER_RULE@
 
