@@ -114,8 +114,6 @@ gkb_draw (GKB * gkb)
 
 }
 
-
-#define GKB_SMALL_PANEL_SIZE 25	/* less than */
 /**
  * count_sizes:
  * @gkb:

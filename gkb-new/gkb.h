@@ -171,6 +171,8 @@ struct _GkbKeymapWg
   GtkWidget *newkeymap, *delkeymap;
 };
 
+#define GKB_SMALL_PANEL_SIZE 25 /* less than */
+
 /* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
 void alert (const gchar * str);
