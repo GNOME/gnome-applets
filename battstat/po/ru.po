@@ -1,0 +1,333 @@
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Valek Filippov <frob@df.ru>, 2001.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: battstat\n"
+"POT-Creation-Date: 2001-04-29 15:53+0200\n"
+"PO-Revision-Date: 2001-10-14 20:11+0400\n"
+"Last-Translator: Valek Filippov <frob@df.ru>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: src/battstat_applet.c:263
+msgid "Your platform is not supported!\n"
+msgstr "Ваша платформа не поддерживается!\n"
+
+#: src/battstat_applet.c:264
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Апплет не будет работать правильно (если вообще будет).\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: src/battstat_applet.c:317 src/battstat_applet.c:890
+msgid "High"
+msgstr "Высокий"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: src/battstat_applet.c:319 src/battstat_applet.c:892
+msgid "Low"
+msgstr "Низкий"
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: src/battstat_applet.c:321 src/battstat_applet.c:894
+msgid "Critical"
+msgstr "Критический"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: src/battstat_applet.c:323 src/battstat_applet.c:896
+msgid "Charging"
+msgstr "Заряжается"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: src/battstat_applet.c:429 src/battstat_applet.c:1087
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Система работает от батарей\n"
+"Батарея: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: src/battstat_applet.c:437 src/battstat_applet.c:1095
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Система работает от сети переменного тока\n"
+"Батарея: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: src/battstat_applet.c:446 src/battstat_applet.c:1027
+#: src/battstat_applet.c:1108
+msgid "System is running on battery power"
+msgstr "Система работает от батарей"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: src/battstat_applet.c:452 src/battstat_applet.c:1033
+#: src/battstat_applet.c:1114
+msgid "System is running on AC power"
+msgstr "Система работает от сети переменного тока"
+
+#. Displayed in the percentage label at the side of the battery meter
+#. * if the applet discovers that you have removed the battery
+#. * from the system and it only runs on AC power.
+#.
+#: src/battstat_applet.c:472
+msgid "N/A"
+msgstr "Н/Д"
+
+#. This message will be displayed in a Gnome Warning dialog
+#. window when the laptop isn't connected to a power source
+#. and the battery charge is dropping below the value
+#. specified by the user.
+#: src/battstat_applet.c:611
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Низкий заряд батарей (%d%%) и сеть переменного тока отключена"
+
+#. This message will be displayed in a Gnome Warning dialog
+#. window when the battery charge is dropping below the
+#. value specified by the user. Technically this shouldn't
+#. happen if the battery is working properly.
+#: src/battstat_applet.c:618
+msgid "Battery low (%d%%) and AC is online"
+msgstr ""
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: src/battstat_applet.c:638 src/battstat_applet.c:1007
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: src/battstat_applet.c:645 src/battstat_applet.c:1014
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: src/battstat_applet.c:656
+msgid "System is running on battery power. Battery: Not present"
+msgstr ""
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: src/battstat_applet.c:662
+msgid "System is running on AC power. Battery: Not present"
+msgstr ""
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: src/battstat_applet.c:671
+msgid "Battery: %d%% (%s)"
+msgstr "Батарея: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: src/battstat_applet.c:678
+msgid "Battery: Not present"
+msgstr "Батарея: отсутствует"
+
+#. Displayed in a Gnome OK dialog window when the battery is
+#. fully recharged.
+#: src/battstat_applet.c:702
+msgid "Battery is now fully re-charged!"
+msgstr "Батарея полностью перезаряжена!"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: src/battstat_applet.c:743
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: src/battstat_applet.c:751
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+
+#. The long name of the applet in the About dialog.
+#: src/battstat_applet.c:826
+msgid "Battery status utility"
+msgstr ""
+
+#: src/battstat_applet.c:827
+msgid "(C) 2000 The Gnulix Society"
+msgstr "(C) 2000 The Gnulix Society"
+
+#. Longer description of the applet in the About dialog.
+#: src/battstat_applet.c:830
+msgid "This utility show the status of your laptop battery."
+msgstr "Эта программа показывает состояние батареи вашего компьютера."
+
+#. Displayed when the user tries to hide all
+#. parts of the applet in the preferences
+#. window.
+#: src/battstat_applet.c:972
+msgid "You can't hide all elements of the applet!"
+msgstr "Вы не можете скрыть все элементы апплета!"
+
+#. Message will be displayed if the applet couldn't be
+#. created at all.
+#: src/battstat_applet.c:1375
+msgid "Can't create applet!\n"
+msgstr "Невозможно создать апплет!\n"
+
+#. Applet menu, Properties
+#: src/battstat_applet.c:1528
+msgid "Properties..."
+msgstr "Свойства..."
+
+#. Applet menu, About
+#: src/battstat_applet.c:1535
+msgid "About..."
+msgstr "О программе..."
+
+#. Applet menu, Help
+#: src/battstat_applet.c:1542
+msgid "Help"
+msgstr "Справка"
+
+#. Applet menu, Suspend laptop
+#: src/battstat_applet.c:1548
+msgid "Suspend laptop"
+msgstr ""
+
+#. Message in a Gnome warning dialog window
+#. when the user enables the suspend
+#. function.
+#: src/properties.c:121
+msgid ""
+"You have chosen to enable the Suspend function. This can potentionally be a "
+"security risc."
+msgstr ""
+
+#. This is the title of the properties window
+#: src/properties.c:186
+msgid "Battstat Settings"
+msgstr "Установки Battstat"
+
+#: src/properties.c:191
+msgid "General"
+msgstr "Общие"
+
+#: src/properties.c:197
+msgid "Battery color levels (%)"
+msgstr "Уровни цвета батареи (%)"
+
+#: src/properties.c:207
+msgid "Yellow:"
+msgstr "Жёлтый:"
+
+#: src/properties.c:222
+msgid "Orange:"
+msgstr "Оранжевый:"
+
+#: src/properties.c:236
+msgid "Red:"
+msgstr "Красный:"
+
+#: src/properties.c:251
+msgid "Preview"
+msgstr "Просмотр"
+
+#: src/properties.c:307
+msgid "Warnings"
+msgstr "Предупреждения"
+
+#: src/properties.c:312
+msgid "Notify me when battery charge is low"
+msgstr ""
+
+#: src/properties.c:313
+msgid "Notify me when battery is fully re-charged"
+msgstr ""
+
+#: src/properties.c:314
+msgid "Beep when either of the above is true"
+msgstr ""
+
+#: src/properties.c:339
+msgid "Fonts"
+msgstr "Шрифты"
+
+#: src/properties.c:347
+msgid "Use my own font instead of the default GNOME font"
+msgstr ""
+
+#: src/properties.c:349
+msgid "Percentage text:"
+msgstr ""
+
+#: src/properties.c:378
+msgid "Suspend"
+msgstr ""
+
+#: src/properties.c:383
+msgid "Suspend command:"
+msgstr ""
+
+#: src/properties.c:395
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: src/properties.c:404
+msgid "Progress bar direction"
+msgstr "Направление индикатора"
+
+#: src/properties.c:410
+msgid "Move towards top"
+msgstr ""
+
+#: src/properties.c:412
+msgid "Move towards bottom"
+msgstr ""
+
+#: src/properties.c:422
+msgid "Status dock"
+msgstr ""
+
+#: src/properties.c:425
+msgid "Use the status dock"
+msgstr ""
+
+#: src/properties.c:431
+msgid "Applet layout"
+msgstr ""
+
+#: src/properties.c:487
+msgid "Show"
+msgstr "Показать"
+
+#: src/properties.c:491
+msgid "Hide"
+msgstr "Скрыть"
+
+#: battstat_applet.desktop.in.h:1
+msgid "Battery Status Utility"
+msgstr ""
+
+#: battstat_applet.desktop.in.h:2
+msgid "Shows the status of the battery"
+msgstr "Показывает состояние батареи"
