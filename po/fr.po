@@ -10,11 +10,11 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.7.3\n"
+"Project-Id-Version: gnome-applets 2.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-12 18:55+0200\n"
-"PO-Revision-Date: 2004-09-12 18:06+0200\n"
-"Last-Translator: Sébastien Bacher <seb128@debian.org>\n"
+"POT-Creation-Date: 2004-09-25 12:34+0200\n"
+"PO-Revision-Date: 2004-09-25 11:27+0200\n"
+"Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,6 +50,7 @@ msgstr "À _propos"
 #: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
 msgstr "_Aide"
 
@@ -78,17 +79,17 @@ msgstr "Affiche l'état des fonctionnalités d'accessibilité du clavier"
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:564 drivemount/drivemount.c:552
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2467
-#: mini-commander/src/about.c:50 mixer/mixer.c:1349
-#: modemlights/modemlights.c:118 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:572
+#: mini-commander/src/about.c:50 modemlights/modemlights.c:118
+#: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
+#: wireless/wireless-applet.c:572 trashapplet/src/trashapplet.c:522
 msgid "translator_credits"
 msgstr ""
 "Mainteneur :\n"
 "Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "\n"
-"Contributeur :\n"
-"Christophe Fergeau <teuf@users.sourceforge.net>"
+"Contributeurs :\n"
+"Christophe Fergeau <teuf@users.sourceforge.net>\n"
+"Sébastien Bacher <seb128@debian.org>"
 
 #: accessx-status/applet.c:157 accessx-status/applet.c:992
 #: accessx-status/applet.c:1132 accessx-status/applet.c:1335
@@ -553,9 +554,10 @@ msgstr "_Jaune :"
 #: battstat/properties.c:291 drivemount/drivemount.c:509
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2320
 #: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:364
-#: mixer/mixer.c:1462 stickynotes/stickynotes_applet_callbacks.c:238
+#: stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: trashapplet/src/trashapplet.c:510
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Il y a eu une erreur lors de l'affichage de l'aide : %s"
@@ -625,7 +627,7 @@ msgstr "Morceau suivant"
 msgid "You do not have permission to use the CD player."
 msgstr "Vous n'avez pas les permissions requises pour utiliser le lecteur CD."
 
-#: cdplayer/cdplayer.c:378 mixer/mixer.c:1316 multiload/main.c:142
+#: cdplayer/cdplayer.c:378 multiload/main.c:142
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Il y a eu une erreur à l'exécution de « %s » : %s"
@@ -3879,8 +3881,9 @@ msgid "Fetch a radar map on each update."
 msgstr "Récupère une carte radar à chaque mise à jour."
 
 #: gweather/gweather.schemas.in.h:9
+#, fuzzy
 msgid ""
-"If true, then retreive a radar map from a location specified by the \"radar"
+"If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
 "Si vrai, alors récupère une carte radar depuis un emplacement spécifié par "
@@ -3912,11 +3915,12 @@ msgid "The interval, in seconds, between automatic updates."
 msgstr "L'intervalle en secondes entre les mises à jour automatique."
 
 #: gweather/gweather.schemas.in.h:16
-msgid "The temperature units to use."
-msgstr "L'unité de température à untiliser."
+msgid "The unit to use for pressure."
+msgstr "L'unité de pression à utiliser."
 
 #: gweather/gweather.schemas.in.h:17
-msgid "The unit to use for pressure."
+#, fuzzy
+msgid "The unit to use for temperature."
 msgstr "L'unité de pression à utiliser."
 
 #: gweather/gweather.schemas.in.h:18
@@ -5193,8 +5197,7 @@ msgstr "Commande"
 msgid "Adjust the sound volume"
 msgstr "Régler le volume sonore"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:199
-#: mixer/mixer.c:1363
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:168
 msgid "Volume Control"
 msgstr "Contrôleur de volume"
 
@@ -5206,172 +5209,56 @@ msgstr "_Silence"
 msgid "_Open Volume Control"
 msgstr "_Ouvrir le contrôleur de volume"
 
-#: mixer/mixer.c:124
-msgid "Main Volume"
-msgstr "Volume principal"
+#: mixer/applet.c:455
+#, fuzzy, c-format
+msgid "Failed to start Volume Control: %s"
+msgstr "Erreur lors de l'initialisation de GConf : %s\n"
 
-#: mixer/mixer.c:124
-msgid "Bass"
-msgstr "Grave"
+#: mixer/applet.c:866
+#, fuzzy, c-format
+msgid "Failed to display help: %s"
+msgstr "Erreur lors de l'initialisation de GConf : %s\n"
 
-#: mixer/mixer.c:124
-msgid "Treble"
-msgstr "Aigü"
-
-#: mixer/mixer.c:124
-msgid "Synth"
-msgstr "Synth"
-
-#: mixer/mixer.c:125
-msgid "Pcm"
-msgstr "Pcm"
-
-#: mixer/mixer.c:125
-msgid "Speaker"
-msgstr "H.P."
-
-#: mixer/mixer.c:125
-msgid "Line"
-msgstr "Ligne"
-
-#: mixer/mixer.c:126
-msgid "Microphone"
-msgstr "Microphone"
-
-#: mixer/mixer.c:126
-msgid "CD"
-msgstr "CD"
-
-#: mixer/mixer.c:126
-msgid "Mix"
-msgstr "Mix"
-
-#: mixer/mixer.c:126
-msgid "Pcm2"
-msgstr "Pcm2"
-
-#: mixer/mixer.c:127
-msgid "Recording Level"
-msgstr "Niveau d'enregistrement"
-
-#: mixer/mixer.c:127
-msgid "Input Gain"
-msgstr "Gain en entrée"
-
-#: mixer/mixer.c:127
-msgid "Output Gain"
-msgstr "Gain en sortie"
-
-#: mixer/mixer.c:128
-msgid "Line1"
-msgstr "Ligne1"
-
-#: mixer/mixer.c:128
-msgid "Line2"
-msgstr "Ligne2"
-
-#: mixer/mixer.c:128
-msgid "Line3"
-msgstr "Ligne3"
-
-#: mixer/mixer.c:128
-msgid "Digital1"
-msgstr "Numérique1"
-
-#: mixer/mixer.c:129
-msgid "Digital2"
-msgstr "Numérique2"
-
-#: mixer/mixer.c:129
-msgid "Digital3"
-msgstr "Numérique3"
-
-#: mixer/mixer.c:130
-msgid "Phone Input"
-msgstr "Entrée phone"
-
-#: mixer/mixer.c:130
-msgid "Phone Output"
-msgstr "Sortie phone"
-
-#: mixer/mixer.c:130
-msgid "Video"
-msgstr "Vidéo"
-
-#: mixer/mixer.c:130
-msgid "Radio"
-msgstr "Radio"
-
-#: mixer/mixer.c:130
-msgid "Monitor"
-msgstr "Moniteur"
-
-#: mixer/mixer.c:200
-msgid "Volume Control (muted)"
-msgstr "Contrôle du volume (silencieux)"
-
-#: mixer/mixer.c:201
-msgid "No audio device"
-msgstr "Aucun périphérique audio"
-
-#: mixer/mixer.c:518
-msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
-"soundcard.h.\n"
+#: mixer/applet.c:878
+msgid "Volume Applet"
 msgstr ""
-"attention : cette version de gmix a été compilée avec une autre version de "
-"soundcard.h\n"
 
-#: mixer/mixer.c:893
-#, c-format
-msgid "Couldn't open mixer device %s\n"
-msgstr "Impossible d'ouvrir le périphérique de mixage %s\n"
+#: mixer/applet.c:881
+msgid "A GNOME/GStreamer-based volume control applet"
+msgstr ""
 
-#: mixer/mixer.c:1062
-msgid "Volume Controller"
-msgstr "Contrôleur de volume"
-
-#: mixer/mixer.c:1063
-msgid "Use Up/Down arrow keys to change volume"
-msgstr "Utilisez les touches fléchées Haut/Bas pour changer le volume"
-
-#. Translators - The + and - refer to increasing and decreasing the volume.
-#. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1087
+#: mixer/dock.c:116
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1088
+#: mixer/dock.c:144
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1364
-msgid "(C) 2001 Richard Hult"
-msgstr "© 2001 Richard Hult"
+#. FIXME:
+#. * - maybe we want to rename the element to its actual name
+#. *     if we've found that?
+#.
+#. create element
+#. and recreate this object, since we give it to the mixer
+#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:125
+#, fuzzy, c-format
+msgid "Unknown Volume Control %d"
+msgstr "Contrôleur de volume"
 
-#: mixer/mixer.c:1365
-msgid "The volume control lets you set the volume level for your desktop."
+#: mixer/load.c:159
+msgid "No volume control elements and/or devices found."
 msgstr ""
-"Le contrôleur de volume vous permet de régler le volume sonore de votre "
-"bureau."
 
-#: mixer/mixer.c:1512
+#. make window look cute
+#: mixer/preferences.c:112
 msgid "Volume Control Preferences"
 msgstr "Préférences du contrôleur de volume"
 
-#: mixer/mixer.c:1536
-msgid "Audio Channels"
-msgstr "Canaux audio"
-
-#: mixer/mixer.c:1552
-msgid "_Select channel to control:"
+#: mixer/preferences.c:125
+#, fuzzy
+msgid "Select the device and track to control."
 msgstr "_Sélectionnez le canal à contrôler :"
-
-#: mixer/mixer.c:1888
-msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"Le contrôleur de volume vous permet de régler le volume sonore de votre "
-"bureau"
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -5386,6 +5273,10 @@ msgid "Saved volume to restore on startup"
 msgstr "Volume enregistré à restaurer au démarrage"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr ""
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "Lumières du modem"
@@ -6451,30 +6342,203 @@ msgstr "Préférences pour le moniteur de réseau sans fil"
 msgid "_Monitored device:"
 msgstr "Périphérique _surveillé :"
 
-#~ msgid "Path to the device"
-#~ msgstr "Chemin vers le périphérique"
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
+#, fuzzy
+msgid "_About..."
+msgstr "À _propos"
+
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+msgid "_Empty Trash"
+msgstr ""
+
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
+#, fuzzy
+msgid "_Open Trash folder"
+msgstr "_Ouvrir le lecteur de CDs audio"
+
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
+msgid "Put Trash on the panel"
+msgstr ""
+
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
+msgid "Trash Applet"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:122
+#, c-format
+msgid "Unable to find the Trash directory: %s"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:145
+#, fuzzy, c-format
+msgid "GNOME VFS Error: %s"
+msgstr "Erreur : %s"
+
+#: trashapplet/src/trashapplet.c:276
+#, fuzzy
+msgid "No Items in Trash"
+msgstr "Aucun élément dans l'historique"
+
+#: trashapplet/src/trashapplet.c:279
+msgid "1 Item in Trash"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:282
+#, c-format
+msgid "%d Items in Trash"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:362
+msgid "Are you sure you want to empty all of the items from the trash?"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:376
+msgid "If you empty the trash, items will be permanently deleted."
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:388
+msgid "_Empty"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:489
+#, c-format
+msgid ""
+"Error while spawing nautilus:\n"
+"%s"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:537
+#, fuzzy
+msgid "Copyright (c) 2004 Michiel Sikkes"
+msgstr "Copyright © 2003 Sun Microsystems"
+
+#: trashapplet/src/trashapplet.c:538
+msgid "The GNOME Trash Applet"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:623
+#, c-format
+msgid ""
+"Unable to move to trash:\n"
+"%s"
+msgstr ""
+
+#: trashapplet/src/trashapplet.c:799
+msgid "Unable to acquire monitor of the Trash directory"
+msgstr ""
+
+#~ msgid "The temperature units to use."
+#~ msgstr "L'unité de température à untiliser."
+
+#~ msgid "Main Volume"
+#~ msgstr "Volume principal"
+
+#~ msgid "Bass"
+#~ msgstr "Grave"
+
+#~ msgid "Treble"
+#~ msgstr "Aigü"
+
+#~ msgid "Synth"
+#~ msgstr "Synth"
+
+#~ msgid "Pcm"
+#~ msgstr "Pcm"
+
+#~ msgid "Speaker"
+#~ msgstr "H.P."
+
+#~ msgid "Line"
+#~ msgstr "Ligne"
+
+#~ msgid "Microphone"
+#~ msgstr "Microphone"
+
+#~ msgid "CD"
+#~ msgstr "CD"
+
+#~ msgid "Mix"
+#~ msgstr "Mix"
+
+#~ msgid "Pcm2"
+#~ msgstr "Pcm2"
+
+#~ msgid "Recording Level"
+#~ msgstr "Niveau d'enregistrement"
+
+#~ msgid "Input Gain"
+#~ msgstr "Gain en entrée"
+
+#~ msgid "Output Gain"
+#~ msgstr "Gain en sortie"
+
+#~ msgid "Line1"
+#~ msgstr "Ligne1"
+
+#~ msgid "Line2"
+#~ msgstr "Ligne2"
+
+#~ msgid "Line3"
+#~ msgstr "Ligne3"
+
+#~ msgid "Digital1"
+#~ msgstr "Numérique1"
+
+#~ msgid "Digital2"
+#~ msgstr "Numérique2"
+
+#~ msgid "Digital3"
+#~ msgstr "Numérique3"
+
+#~ msgid "Phone Input"
+#~ msgstr "Entrée phone"
+
+#~ msgid "Phone Output"
+#~ msgstr "Sortie phone"
+
+#~ msgid "Video"
+#~ msgstr "Vidéo"
+
+#~ msgid "Radio"
+#~ msgstr "Radio"
+
+#~ msgid "Monitor"
+#~ msgstr "Moniteur"
+
+#~ msgid "Volume Control (muted)"
+#~ msgstr "Contrôle du volume (silencieux)"
+
+#~ msgid "No audio device"
+#~ msgstr "Aucun périphérique audio"
 
 #~ msgid ""
-#~ "This is the full path of the device that will be used to play cd's from "
-#~ "this applet"
+#~ "warning: this version of gmix was compiled with a different version of\n"
+#~ "soundcard.h.\n"
 #~ msgstr ""
-#~ "C'est le chemin complet du périphérique qui sera utilisé pour jouer les "
-#~ "CD à partir de cette applet"
+#~ "attention : cette version de gmix a été compilée avec une autre version "
+#~ "de soundcard.h\n"
 
-#, fuzzy
-#~ msgid "Spanish PC/AT 101 keyboard "
-#~ msgstr "Clavier PC/AT 101 espagnol"
+#~ msgid "Couldn't open mixer device %s\n"
+#~ msgstr "Impossible d'ouvrir le périphérique de mixage %s\n"
 
-#, fuzzy
-#~ msgid "Hungarian PC/AT 101 keyboard "
-#~ msgstr "Clavier PC/AT 101 hongrois"
+#~ msgid "Volume Controller"
+#~ msgstr "Contrôleur de volume"
 
-#, fuzzy
-#~ msgid "UK PC/AT keyboard "
-#~ msgstr "Clavier PC/AT anglais"
+#~ msgid "Use Up/Down arrow keys to change volume"
+#~ msgstr "Utilisez les touches fléchées Haut/Bas pour changer le volume"
 
-#~ msgid "_Forecast"
-#~ msgstr "P_révisions"
+#~ msgid "(C) 2001 Richard Hult"
+#~ msgstr "© 2001 Richard Hult"
 
-#~ msgid "Humidity:"
-#~ msgstr "Humidité :"
+#~ msgid "The volume control lets you set the volume level for your desktop."
+#~ msgstr ""
+#~ "Le contrôleur de volume vous permet de régler le volume sonore de votre "
+#~ "bureau."
+
+#~ msgid "Audio Channels"
+#~ msgstr "Canaux audio"
+
+#~ msgid "The volume control lets you set the volume level for your desktop"
+#~ msgstr ""
+#~ "Le contrôleur de volume vous permet de régler le volume sonore de votre "
+#~ "bureau"
