@@ -1403,7 +1403,7 @@ static void init_pixbufs (void)
       "stock_weather-cloudy",
       "stock_weather-showers",
       "stock_weather-storm",
-      "stock_weahter-snow",
+      "stock_weather-snow",
       "stock_weather-fog",
       "stock_weather-night-clear",
       "stock_weather-night-few-clouds"
