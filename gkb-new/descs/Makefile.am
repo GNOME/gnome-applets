@@ -1,5 +1,5 @@
 %.keyprop: %.keyprop.in 
-		$(top_srcdir)/intltool-merge -d -p $(top_srcdir)/po $< $(srcdir)/$*.keyprop
+		$(top_builddir)/intltool-merge -d -p $(top_srcdir)/po $< $(srcdir)/$*.keyprop
 
 preset_data_predata = \
 		AM_Armenian.keyprop.in AR_Arabic.keyprop.in \
