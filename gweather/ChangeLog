@@ -1,5 +1,10 @@
 2004-12-20  Davyd Madeley  <davyd@madeley.id.au>
 
+	* Locations.xml.in: Fix bugs inadvertantly committed last time. XML
+	  now parses.
+
+2004-12-20  Davyd Madeley  <davyd@madeley.id.au>
+
 	* Locations.xml.in: Locations Love-in
 	  Closes bugs:
 		#159899: ralph@mail.pangea.at
@@ -13,6 +18,16 @@
 2004-12-18  Christian Rose  <menthos@menthos.com>
 
 	* Locations.xml.in: Updated Swedish airports.
+
+2004-12-12  Frank Solensky  <frank@solensky.org>
+
+	reviewed by: <delete if not using a buddy>
+
+	* weather-metar.c: (metar_tok_time), (metar_tok_wind),
+	(metar_tok_vis), (metar_tok_cloud), (metar_tok_pres),
+	(metar_tok_temp), (metar_tok_cond), (metar_parse):
+	returns next "state" of regexp parsing for metar_parse;
+	"CAVOK" sets both visibility and cloud fields (#160475)
 
 2004-12-12  Frank Solensky  <frank@solensky.org>
 
