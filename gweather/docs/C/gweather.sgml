@@ -1,187 +1,176 @@
-<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN"[
-<!ENTITY gweather "<application>GNOME Weather</application>">
-<!ENTITY gnome "<application>GNOME</application>">
-<!ENTITY gnome-applets "<application>gnome-applets</application>">
-<!ENTITY gnome-vfs "<application>gnome-vfs</application>">
-]>
+ <sect1 id="gweather">
+  <title>GNOME Weather Applet</title>
 
-<book id="index" revision="$Revision$">
+  <para>
+   <application>GNOME Weather</application> applet, shown in <xref
+   linkend="gweatherapplet-fig">, retrieves and displays various
+   weather information. To add this applet to a <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Utility</guisubmenu>
+    <guimenuitem>GNOME Weather</guimenuitem>
+   </menuchoice>.
+  </para>
 
+  <figure id="gweatherapplet-fig">
+   <title>GNOME Weather Applet</title>
+   <screenshot>
+    <screeninfo>GNOME Weather Applet</screeninfo>
+    <graphic format="png" fileref="gweather_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
 
-  <!-- Title information -->
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="gweather-usage">
+   <title>Usage</title>
+   <para>
+    <application>GNOME Weather</application> displays the current
+    temperature and weather conditions in numeric and iconified form
+    inside the applet.  For further information, double-click on the
+    applet. This will open up the <interface>Weather Information
+    Window</interface>, shown in <xref
+    linkend="gweather-weather-fig">. This displays the current weather
+    information and either a one-day or five-day forecast.
+   </para>
 
-  <bookinfo>
-    <title>&gweather;</title>
-    <subtitle>A Weather Information Applet for GNOME</subtitle>
-    
-    <authorgroup>
-      <author>
-	<firstname>Spiros</firstname>
-	<surname>Papadimitriou</surname>
-	<affiliation>
-	  <address>
-             <email>spapadim+@cs.cmu.edu</email>
-           </address> 
-	</affiliation>
-      </author>
-    </authorgroup>
+  <figure id="gweather-weather-fig">
+   <title>Weather Information Window</title>
+   <screenshot>
+    <screeninfo>Weather Information Window</screeninfo>
+    <graphic format="png" fileref="gweather_weather" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
 
-    <copyright id="copyright">
-      <year>1999</year>
-      <holder>Spiros Papadimitriou</holder>
-    </copyright>
+   <para>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
 
-    <date>$Date$</date>
-    
-    <abstract id="abstract">
-      <para>This is the user's guide for &gweather; panel applet.
-      &gweather; is a small utility that can display various weather
-      information.</para>
+     <listitem>
+      <para>
+       <guimenuitem>Update</guimenuitem> &mdash;
+       refreshes the weather information and display.
+      </para>
+     </listitem>
 
-      <para>This is $Revision$ from $Date$.</para>
-    </abstract>
-  </bookinfo>
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="gweather-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
 
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
 
-  <!-- Table of contents -->
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>GNOME Weather
+       Applet</application>, inluding the applet's version and the
+       author's name.
+      </para>
+     </listitem>
 
-  <toc></toc>
-
-  
-  <!-- Begin the document -->
-
-  <chapter id="introduction">
-    <title>Introduction</title>
-
-    
-    <sect1 id="intro">
-      <title>What is &gweather;?</title>
-      
-      <para>&gweather; is a &gnome; panel applet that retrieves and
-      displays various weather information.</para>
-    </sect1>
-
-
-    <sect1 id="updates">
-      <title>Where can I get updates?</title>
-
-      <para>&gweather; is now part of the &gnome-applets; package and
-      newer versions are no longer distributed separately.  Therefore,
-      your best bet is to download and install the
-      <application>gnome-applets</application> package.</para>
-
-      <para>However, you can still find its own homepage at <ulink
-      url="http://gweather.dhs.org/">http://gweather.dhs.org/</ulink>.
-      You can still visit it if you want the latest <ulink
-      url="http://gweather.dhs.org/Locations">Locations</ulink> file,
-      which is periodically updated with new cities, as sent in by
-      users.  If your city is not included in the distribution, please
-      <ulink url="mailto:spapadim+gweather@cs.cmu.edu">drop me a
-      line</ulink> with the necessary information and I will add it
-      into the next release.</para>
-
-      <para>You may also want to visit the homepage if you are curious
-      to see <ulink url="http://gweather.dhs.org/news.html">what's
-      new</ulink>.</para>
-    </sect1>
-
-
-    <sect1 id="legal-notice">
-      <title>Legal Notice</title>
-      <para>This documentation is free software; you can redistribute
-      it and/or modify it under the terms of the GNU General Public
-      License as published by the Free Software Foundation; either
-      version 2 of the License, or (at your option) any later
-      version.</para>
-
-      <para>This program is free software; you can redistribute it
-      and/or modify it under the terms of the GNU General Public
-      License as published by the Free Software Foundation; either
-      version 2 of the License, or (at your option) any later
-      version.</para>
-
-      <para>This program is distributed in the hope that it will be
-      useful, but WITHOUT ANY WARRANTY; without even the implied
-      warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-      See the GNU General Public License for more details.</para>
-    </sect1>
-  </chapter>
+    </itemizedlist>
+   </para>
+  </sect2>
 
 
-  <chapter id="features">
-    <title>Features</title>
-
-
-    <sect1 id="current-weather">
-      <title>Current Weather Conditions</title> 
-
-      <para>TODO</para>
-    </sect1>
-
-
-    <sect1 id="weather-forecast">
-      <title>Weather Forecasts</title> 
-
-      <para>TODO</para>
-    </sect1>
-
-
-    <sect1 id="radar-map">
-      <title>Radar Maps</title> 
-
-      <para>TODO</para>
-    </sect1>
-  </chapter>
-
-
-  <chapter id="properties">
-    <title>Properties</title>
-
-    <para>This section describes the user settings of &gweather;.  To
-    bring up the dialog for these settings, right-click on the applet
-    and select <quote>Properties</quote>.  There are three categories of
-    options, which are described below.  Note that each running copy
-    of &gweather; has its own set of settings.
+  <!-- ============= Customization ============================= -->
+  <sect2 id="gweather-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>GNOME Weather</application>
+      applet by right-clicking on it and choosing
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="gweather-settings-fig">), which allows you to
+      change various settings.
     </para>
 
-    <sect1 id="basic">
-      <title>Basic</title> 
+    <figure id="gweather-settings-fig">
+     <title>Properties dialog</title>
+     <screenshot>
+      <screeninfo>Properties dialog</screeninfo>
+      <graphic format="png" fileref="gweather_settings"
+      srccredit="mueth">
+      </graphic>
+     </screenshot>
+    </figure>
 
-      <para>This section describes options related to the basic
-      functionality of &gweather;.</para>
+    <para>
+     The properties in the <guilabel>Basic</guilabel> tab are:
+     <itemizedlist>
 
-      <sect2 id="update-int">
-        <title>Update Interval</title>
-
-        <para>This option determines how often &gweather; will connect
-        to the server(s) and retrieve weather information.  Current
+      <listitem>
+       <para>
+        Update Interval &mdash; This option determines how often
+        <application>GNOME Weather</application> will connect 
+        to the server(s) and retrieve weather information. Current
         conditions, forecast and radar map (if enabled) will be
-        fetched.</para>
+        downloaded
+       </para>
+       <note>
+        <title>Note About Server Updates</title>
+        <para>
+         Note that the <guilabel>Update Interval</guilabel> only
+         determines how often your computer downloads information from
+         the server(s).  The update time shown in the
+         <interface>Current Conditions</interface> tab (viewed by
+         double-clicking on the applet) indicates when those
+         measurements were  renewed on the server, rather than when
+         they were last retrieved.
+        </para>
+       </note>
+       <note>
+        <title>Disabling Automatic Updates and Using Manual Updates</title>
+        <para>
+         You can disable automatic updates by unchecking the
+         <guilabel>Update enabled</guilabel> box.  On the other hand, you can
+         also force <application>GNOME Weather</application> to
+         perform an update by choosing the corresponding option in the
+         popup menu.  These two options are very useful if you have an
+         intermitant internet connection, such as a laptop or modem
+         provides.  
+        </para>
+       </note>
+      </listitem>
 
-        <para>Note that this is independent of when the server(s)
-        update the actual information.  The update time shown in the
-        current conditions box refers to when those measurements were
-        renewed on the server, rather than when they were last
-        retrieved.</para>
+      <listitem>
+       <para>
+        Update enabled &mdash; Select this if you would like
+        <application>GNOME Weather</application> to automatically
+        download the latest weather information at the time interval
+        specified by <guilabel>Update</guilabel>.  Deselect this if
+        you would only like weather updates to be done manually, by
+        right-clicking on the applet and selecting
+        <guimenuitem>Update</guimenuitem>.
+       </para>
+      </listitem>
 
-        <para>You can disable automatic updates, by unchecking the
-        <quote>Update enabled</quote> box.  On the other hand, you man
-        also force &gweather; to perform an update by choosing the
-        corresponding option in the popup menu.  These two options are
-        provided mostly for people who use a modem.</para>
-      </sect2>
-
-
-      <sect2 id="use-metric">
-        <title>Measurement Units</title>
- 
-        <para>By default, &gweather; uses the imperial system of
-        units.  If you prefer metric units, then you should check the
-        <quote>Use metric</quote> box.  The units used are shown in
+      <listitem>
+       <para>
+        Use metric &mdash; By default <application>GNOME
+        Weather</application> uses the imperial system of
+        units. Select this box to use metric units. The units used are shown in
         <xref linkend="tab-units">.
+       </para>
 
-        <table id="tab-units">
-            <title>Measurement Units</title>
+       <table id="tab-units">
+         <title>Measurement Units</title>
             <tgroup cols="3">
               <thead>
                 <row>
@@ -214,211 +203,380 @@
               </tbody>
             </tgroup>
           </table>
+      </listitem>
+
+      <listitem>
+       <para>
+        Detailed Forecast &mdash; Select this if you would like
+        <application>GNOME Weather</application> to retrieve the
+        full five day forecast for your particular area. Note that
+        these forecasts often take longer to download and may not be
+        available for some locations. The forecast retrieved when this
+        button is not selected is (this is the default) is a brief
+        forecast for the broader area where your location belongs
+        (usually the entire state). 
+       </para>
+       <note>
+        <title>Forecast Availability</title>
+        <para>
+         Note that the detailed forecasts downloaded from IWIN are
+         available only for US cities. 
         </para>
-      </sect2>
+       </note>
+      </listitem>
 
-
-      <sect2 id="detailed-forecast">
-        <title>Detailed Forecast</title>
-
-        <para>The IWIN service provides two types of weather
-        forecasts.  The first is a brief forecast for the broader area
-        where your location belongs (usually the entire state).  The
-        second is a full five day forecast for your particular area.
-        If you prefer the latter, more specific forecast, then you
-        need to check the <quote>Detailed forecast</quote> box.
-        However, these forecasts often take longer to download and
-        may not be available for some locations.</para>
-
-        <para>Note that forecasts from IWIN are available only for US
-        cities.</para>
-      </sect2>
-
-
-      <sect2 id="show-maps">
-        <title>Radar Map Display</title>
-
-        <para>&gweather; allows you to retrieve radar maps, if these
-        are available.  These may be retrieved from the Web, as long
-        as a valid URL pointing to the image (in practically any
-        format) is provided.  Check the <quote>Enable radar
-        maps</quote> if you want to enable this option.  If a radar
-        image URL is not provided in the
+<!--
+      <listitem>
+       <para>
+        Enable radar maps &mdash; this allows you to retrieve radar
+        maps, if these are available.  These may be retrieved from the
+        Web, as long  as a valid URL pointing to the image (in
+        practically any format) is provided.  Check the <quote>Enable
+        radar maps</quote> if you want to enable this option.  If a
+        radar image URL is not provided in the
         <filename>Locations</filename> file of the standard
         distribution, you can always add one using the location editor
-        (see <xref linkend="location-editor">).</para>
-      </sect2>
-    </sect1>
-
-
-    <sect1 id="network">
-      <title>Network</title> 
-
-      <para>This allows you to define some basic network settings.
-      You will probably need this if your computer is located behind a
-      firewall.</para>
-
-      <para>Check the <quote>Use proxy</quote> box if you want to use
-      an HTTP proxy to access the Web.  Then, simply enter in the
-      corresponding fields the proxy server hostname and, if
-      necessary, your username and password on that proxy
-      server.</para>
-    </sect1>
-
-
-    <sect1 id="location">
-      <title>Location</title> 
-
-      <para>You need to use this only whenever you want to set/change
-      your location.  A file with numerous default locations around
-      the world is provided as part of the &gweather;
-      distribution.</para>
-
-      <para>Locations are organized in a three-level hierarchy.  The
-      top level contains broader geographical areas, the second
-      contains sub-regions of these areas and the last contains the
-      particular locations.  This hierarchy is essentially based on
-      the way information is organized in the US NWS (National Weather
-      Service), and that is the reason that the US and Canada appear
-      on the topmost level.</para>
-
-      <sect2 id="location-editor">
-        <title>Locations Editor</title>
-
-        <para>Not yet implemented.</para>
-      </sect2>
-    </sect1>
-  </chapter>
-
-  <chapter id="problems-faq">
-    <title>Questions and Known Problems</title>
-
-    <sect1 id="known-problems">
-      <title>Known Problems</title>
-
-      <sect2 id="blocking-io">
-        <title>Blocking Input/Output</title>
-
-        <para>Even though &gweather; now uses non-blocking I/O to
-        retrieve data from the network, there are still some steps
-        that block execution.  Most notably, establishing a TCP
-        connection to remote hosts is a blocking operation.  Because
-        the NWS and IWIN web servers are often heavily loaded, this
-        step may take a significant amount of time.  While that
-        happens, the application is unable to respond to CORBA
-        requests from the panel.  In its current implementation, the
-        panel iterates through all applications and sends frequent
-        CORBA requests (eg. for saving state).  If an applet cannot
-        respond for any reason, then the panel will block waiting for
-        a response.</para>
-
-        <para>While the panel is blocked, it will not respond to any
-        user (or application) requests.  For instance, panel movement
-        and panel menus (the ones that appear upon a right click) will
-        not work.  However, other applets in the panel should work
-        (unless they have made a CORBA request to the panel, eg. for
-        querying panel size).  As soon as the blocking operation in
-        &gweather; completes, things should return to normal (and user
-        interface requests that were buffered will be
-        executed).</para>
-
-        <para>There is an experimental version of &gweather; that uses
-        a separate thread for HTTP processing, which may be incorporated
-        (temporarily) in the next release.  However, the final solution
-        is &gnome-vfs; (which will be part of &gnome; 2.0) offers
-        cross-platform support for fully asynchronous I/O.</para>
-      </sect2>
-      
-<!--
-      <sect2 id="problem2">
-        <title>Problem2</title>
-        <para>TODO?</para>
-      </sect2>
+        (see <xref linkend="location-editor">).
+       </para>
+      </listitem>
 -->
-    </sect1>
 
-    <sect1 id="faq">
-      <title>Frequently Asked Questions</title>
+     </itemizedlist>
+    </para>
 
-      <para>This is a list of frequently asked questions about
-      &gweather;.  For further information and updates, please visit
-      the <ulink url="http://gweather.dhs.org/">&gweather;
-      homepage</ulink>.  If your question is still unresolved, you can
-      contact the <ulink
-      url="mailto:spapadim+gweather@cs.cmu.edu">author</ulink>.</para>
+    <para>
+     The properties in the <guilabel>Network</guilabel> tab should be
+     used if your computer is located behind a firewall.  These
+     properties are:
+     <itemizedlist>
 
-      <sect2>
-        <title>&gweather; freezes my panel!</title> <para>This is due
-        to the blocking nature of certain network operations (see also
-        <xref linkend="blocking-io">) and due to the way the panel
-        currently works.</para>
-      </sect2>
+      <listitem>
+       <para>
+        Use proxy &mdash; Select this button if your computer is
+        behind a firewall and you must use an HTTP proxy to access the
+        Web.
+       </para>
+      </listitem>
 
-      <sect2>
-        <title>The location list appears empty!</title>
+      <listitem>
+       <para>
+        Proxy host &mdash; Enter your proxy host IP address here (if
+        you are using a HTTP proxy).
+       </para>
+      </listitem>
 
-        <para>This is probably because the
-        <filename>Locations</filename> file was not installed in the
-        proper place.  This is usually because &gweather; and &gnome;
-        were not configured in the same way.  The file containing the
-        locations must be installed in the
-        <filename>gweather</filename> subdirectory, under the gnome
-        data directory.  You can find out the latter with the
-        <userinput>gnome-config --datadir</userinput> command.</para>
+      <listitem>
+       <para>
+        Username &mdash; Enter your username here.
+       </para>
+      </listitem>
 
-        <para>If you have compiled &gnome-applets; yourself, make sure
-        that you have used <userinput>configure --prefix=`gnome-config
-        --prefix` --sysconfdir=`gnome-config
-        --sysconfdir`</userinput>.  Binary RPMs assume a that the
-        prefix and sysconfdir are <filename>/usr</filename> and
-        <filename>/etc</filename>, respectively.  If you have compiled
-        &gnome; yourself with different options, you need to download
-        and compile &gnome-applets; yourself.</para>
-      </sect2>
+      <listitem>
+       <para>
+        Password &mdash; Enter your password here. (Note that this
+        password will be saved in a private configuration file but
+        will not be encrypted.)
+       </para>
+      </listitem>
 
-      <sect2>
-        <title>Why does &gweather; display a question mark and dashes
-        for current conditions?</title>
+     </itemizedlist>
+    </para>
 
-        <para>This will happen if &gweather; cannot access the NWS
-        server for any reason.  This may be because your network
-        connection is down, or the NWS server is down, or maybe the
-        NWS server does not currently have any information about your
-        location.</para>
-      </sect2>
+    <para>
+     The <guilabel>Location</guilabel> tab allows you to specify the
+     geographic location that you would like <application>GNOME
+     Weather</application> applet to display the weather information
+     for. Click on any plus (+) symbol to expand the tree or any minus
+     (-) symbol to collapse a tree branch.  Select the city or region
+     by clicking with the first mouse button.
+    </para>
 
-      <sect2>
-        <title>Why does &gweather; say that a forecast is not
-          available?</title>
+    <para>
+     Locations are organized in a three-level hierarchy.  The top
+     level contains broader geographical areas, the second contains
+     sub-regions of these areas and the last contains the particular
+     locations.  This hierarchy is essentially based on the way
+     information is organized in the US NWS (National Weather
+     Service), and that is the reason that the US and Canada appear on
+     the topmost level.
+    </para>
 
-        <para>If you have enabled detailed forecasts (see <xref
-        linkend="detailed-forecast">), then it is possible that one
-        may not be available for your location.  In this case, try
-        disabling detailed forecasts.</para>
+    <para>  After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click the
+      <guibutton>Cancel</guibutton> button.
+    </para>
+  </sect2>
 
-        <para>Another possible reason is that the IWIN server is down
-        and &gweather; cannot retrieve forecast information.  The
-        problem should go away as soon as the IWIN server is up
-        again.</para>
-      </sect2>
+  <!-- ============= Further Information  ==================== -->
+  <!-- This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of -->
+  <sect2 id="gweather-furtherinfo">
+   <title>Further Information</title>
+   <para>
+    <application>GNOME Weather</application> has a homepage at <ulink
+    url="http://gweather.dhs.org/">http://gweather.dhs.org/</ulink>.
+    Here you can find the latest <ulink
+    url="http://gweather.dhs.org/Locations">Locations</ulink> file,
+    which is periodically updated with new cities, as sent in by
+    users.  If your city is not included in the distribution, please
+    send an email to Spiros Papadimitriou
+    (<email>spapadim+@cs.cmu.edu</email>)  with the necessary
+    information and it will be included in the next release.
+   </para>
 
-      <sect2>
-        <title>Why is the radar map not displayed?</title>
-
-        <para>The most common reason is that the webserver containing
-        the radar image is down.  You may also want to use the
-        location editor (see <xref linkend="location-editor">) to make
-        sure that the radar image URL for your location is
-        valid.</para>
-
-        <para>Also, if the image is in an uncommon format, &gweather;
-        may not be able to display it.  Images are displayed using the
-        &gnome; libraries, which supports practically all available
-        formats, so this problem should be very rare. </para>
-      </sect2>
-    </sect1>
-
-  </chapter>
+   <para>
+    You may also want to visit the homepage if you are curious to see
+    <ulink url="http://gweather.dhs.org/news.html">what's new</ulink>.
+   </para>
+  </sect2>
 
 
-</book>
+  <!-- ============= Bugs ================================== --> <!--
+  This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of -->
+  <sect2 id="gweather-bugs">
+   <title>Known Bugs and Limitations</title>
+   <sect3 id="blocking-io">
+    <title>Blocking Input/Output</title>
+    <para>
+     Even though <application>GNOME Weather</application> now uses
+     non-blocking I/O to retrieve data from the network, there are
+     still some steps that block execution.  Most notably,
+     establishing a TCP connection to remote hosts is a blocking
+     operation.  Because the NWS and IWIN web servers are often
+     heavily loaded, this step may take a significant amount of time.
+     While that happens, the application is unable to respond to CORBA
+     requests from the <interface>Panel</interface>.  In its current
+     implementation, the <interface>Panel</interface> iterates through
+     all applications and sends frequent CORBA requests (eg. for
+     saving state).  If an applet cannot respond for any reason, then
+     the <interface>Panel</interface> will block waiting for a
+     response.
+    </para>
+
+    <para>
+     While the <interface>Panel</interface> is blocked, it will not
+     respond to any user (or application) requests.  For instance,
+     <interface>Panel</interface> movement and
+     <interface>Panel</interface> menus (the ones that appear upon a
+     right click) will not work.  However, other applets in the
+     <interface>Panel</interface> should work (unless they have made a
+     CORBA request to the <interface>Panel</interface>, eg. for
+     querying <interface>Panel</interface> size).  As soon as the
+     blocking operation in <application>GNOME Weather</application>
+     completes, things should return to normal (and user interface
+     requests that were buffered will be executed).
+    </para>
+
+    <para>
+     There is an experimental version of <application>GNOME
+     Weather</application> that uses a separate thread for HTTP
+     processing, which may be incorporated  (temporarily) in the next
+     release.  However, the final solution is
+     <application>gnome-vfs</application> which will  be part of GNOME
+     2.0 and will offer cross-platform support for fully asynchronous
+     I/O.
+    </para>
+
+   </sect3>
+  </sect2>
+
+
+  <!-- ============= FAQ ================================== --> <!--
+  This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of -->
+  <sect2 id="gweather-faq">
+   <title>Frequently Asked Questions</title>
+
+   <para>
+    This is a list of frequently asked questions about
+    <application>GNOME Weather</application>.  For further information
+    and updates, please visit the <ulink
+    url="http://gweather.dhs.org/">GNOME Weather homepage</ulink>.  If
+    your question is still unresolved, you can email the author at
+    <email>spapadim+gweather@cs.cmu.edu</email>.
+   </para>
+
+   <sect3>
+    <title>Why does GNOME Weather freezes my Panel?</title>
+    <para>
+     This is due to the blocking nature of certain network operations
+     (see also <xref linkend="blocking-io">) and due to the way the
+     <interface>Panel</interface> currently works.
+    </para>
+   </sect3>
+
+   <sect3>
+    <title>Why does location list appears empty?</title>
+
+    <para>
+     This is probably because the <filename>Locations</filename> file
+     was not installed in the proper place.  This is usually because
+     <application>GNOME Weather</application> and GNOME were not
+     configured in the same way.  The file containing the locations
+     must be installed in the <filename>gweather</filename>
+     subdirectory, under the gnome data directory.  You can find out
+     the latter with the <userinput>gnome-config --datadir</userinput>
+     command.
+    </para>
+
+    <para>
+     If you have compiled gnome-applets yourself, make sure that you
+     have used <userinput>configure --prefix=`gnome-config --prefix`
+     --sysconfdir=`gnome-config --sysconfdir`</userinput>.  Binary
+     RPMs assume a that the prefix and sysconfdir are
+     <filename>/usr</filename> and <filename>/etc</filename>,
+     respectively.  If you have compiled GNOME yourself with different
+     options, you need to download and compile gnome-applets yourself.
+    </para>
+   </sect3>
+
+   <sect3>
+    <title>Why does GNOME Weather display a question mark and dashes
+     for current conditions?</title>
+
+    <para>
+     This will happen if <application>GNOME Weather</application>
+     cannot access the NWS server for  any reason.  This may be
+     because your network  connection is down, or the NWS server is
+     down, or maybe the NWS server does not currently have any
+     information about your location.
+    </para>
+   </sect3>
+
+   <sect3>
+    <title>Why does GNOME Weather say that a forecast is not
+     available?</title>
+
+    <para>
+     If you have enabled detailed forecasts, then it is possible that
+     one may not be available for your location.  In this case, try
+     disabling detailed forecasts.
+    </para>
+
+    <para>
+     Another possible reason is that the IWIN server is down and
+     <application>GNOME Weather</application> cannot retrieve forecast
+     information.  The problem should go away as soon as the IWIN
+     server is up  again.
+    </para>
+   </sect3>
+
+<!--
+   <sect3>
+    <title>Why is the radar map not displayed?</title>
+
+    <para>
+     The most common reason is that the webserver containing the radar
+     image is down.  You may also want to use the location editor (see
+     <xref linkend="location-editor">) to make sure that the radar
+     image URL for your location is valid.
+    </para>
+
+    <para>
+     Also, if the image is in an uncommon format, <application>GNOME
+     Weather</application>  may not be able to display it.  Images are
+     displayed using the GNOME libraries, which supports practically
+     all available formats, so this problem should be very
+     rare. </para>
+   </sect3>
+-->
+
+   <sect3 id="gweather-">
+    <title>Blocking Input/Output</title>
+    <para>
+     Even though <application>GNOME Weather</application> now uses
+     non-blocking I/O to retrieve data from the network, there are
+     still some steps that block execution.  Most notably,
+    </para>
+   </sect3>
+  </sect2>
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="gweather-authors">
+   <title>Authors</title>
+   <para>
+    <application>GNOME Weather</application> was written by Spiros
+    Papadimitriou 
+    (<email>spapadim+@cs.cmu.edu</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by >Spiros Papadimitriou
+    (<email>spapadim+@cs.cmu.edu</email>) and Dan Mueth
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+
+ </sect1>
+
+
+
+

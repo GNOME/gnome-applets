@@ -147,9 +147,8 @@ static void about_cb (AppletWidget *widget, gpointer data)
 
 static void help_cb (AppletWidget *applet, gpointer data)
 {
-    static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
+    static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html"};
 
-    help_entry.name = gnome_app_id;
     gnome_help_display(NULL, &help_entry);
 }
 
