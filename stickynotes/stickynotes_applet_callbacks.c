@@ -44,17 +44,9 @@ gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesA
 gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *applet)
 {
 	if (event->type == GDK_KEY_PRESS && event->keyval == GDK_Return)
-		applet->pressed = TRUE;
-	
-	else if (event->type == GDK_KEY_RELEASE && event->keyval == GDK_Return) {
 		stickynotes_applet_do_default_action();	
-		applet->pressed = FALSE;
-	}
-	
 	else
 		return FALSE;
-	
-	stickynotes_applet_update_icon(applet);
 	
 	return TRUE;
 }

@@ -212,13 +212,10 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "show", (BonoboUIListenerFn) menu_toggle_show_cb, applet);
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
 
-	gtk_widget_add_events(applet->w_applet, GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK); /* FIXME : Doesn't work */
-
 	/* Connect all signals for applet management */
 	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event", G_CALLBACK(applet_button_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "button-release-event", G_CALLBACK(applet_button_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "key-press-event", G_CALLBACK(applet_key_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "key-release-event", G_CALLBACK(applet_key_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "focus-in-event", G_CALLBACK(applet_focus_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "focus-out-event", G_CALLBACK(applet_focus_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "enter-notify-event", G_CALLBACK(applet_cross_cb), applet);
