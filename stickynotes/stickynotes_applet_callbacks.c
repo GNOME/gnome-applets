@@ -329,7 +329,7 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 		    || strcmp(entry->key, GCONF_PATH "/settings/body_color_prelight") == 0) {
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_highlighteded(note, FALSE);
+			stickynote_set_highlighted(note, FALSE);
 		}
 	}
 }

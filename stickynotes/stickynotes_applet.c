@@ -113,7 +113,7 @@ static gboolean stickynotes_applet_factory(PanelApplet *applet, const gchar *iid
 PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, PACKAGE, VERSION, stickynotes_applet_factory, NULL);
 
 /* Highlight the Sticky Notes Applet */
-void stickynotes_applet_set_highlight(gboolean highlight)
+void stickynotes_applet_set_highlighted(gboolean highlight)
 {
 	GdkPixbuf *pixbuf1, *pixbuf2;
 	
