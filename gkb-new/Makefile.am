@@ -30,7 +30,7 @@ gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
                        $(GNOMEGNORBA_LIBS) $(INTLLIBS) \
                        @PIXBUF_LIBS@
 
-SUBDIRS= gkb 
+SUBDIRS= gkb xmodmap descs
 
 GKB_ICON = gkb.png gkb-icon.png
 
