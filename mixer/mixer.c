@@ -59,6 +59,9 @@
 #elif HAVE_SUN_AUDIOIO_H
 #include <sun/audioio.h>
 #define SUN_API
+#elif HAVE_DMEDIA_AUDIO_H
+#define IRIX_API
+#include <dmedia/audio.h>
 #else
 #error No soundcard defenition!
 #endif /* SOUNDCARD_H */
@@ -67,6 +70,9 @@
 #define VOLUME_MAX 100
 #endif
 #ifdef SUN_API
+#define VOLUME_MAX 255
+#endif
+#ifdef IRIX_API
 #define VOLUME_MAX 255
 #endif
 
@@ -112,6 +118,17 @@ MixerData *md = NULL;
 
 gint mixerfd = -1;
 
+#ifdef IRIX_API
+/*
+ * Note: we are using the obsolete API to increase portability.
+ * /usr/sbin/audiopanel provides many more options...
+ */
+#define MAX_PV_BUF	4
+long pv_buf[MAX_PV_BUF] = { 
+  AL_LEFT_SPEAKER_GAIN, 0L, AL_RIGHT_SPEAKER_GAIN, 0L 
+};
+#endif
+
 /********************** Mixer related Code *******************/
 /*  Mostly based on the gmix code                            */
 /*************************************************************/
@@ -124,6 +141,14 @@ openMixer( gchar *device_name )
 #endif
 #ifdef SUN_API
 	mixerfd = open(device_name, AUDIO_GETINFO, O_WRONLY);
+#endif
+#ifdef IRIX_API
+	/* 
+	 * This is a result code, not a file descriptor, and we ignore
+	 * the values read.  But the call is useful to see if we can
+	 * access the default output port.
+	 */
+	mixerfd = ALgetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
 #endif
 	if (mixerfd < 0) {
 		/* probably should die more gracefully */
@@ -170,6 +195,14 @@ readMixer(void)
  	ioctl (mixerfd, AUDIO_GETINFO, &ainfo);
  	return (ainfo.play.gain);
 #endif
+#ifdef IRIX_API
+	/*
+	 * Average the current gain settings.  If we can't read the
+	 * current levels use the values from the previous read.
+	 */
+	(void) ALgetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
+	return (pv_buf[1] + pv_buf[3]) / 2;
+#endif
 }
 
 static void
@@ -189,6 +222,17 @@ setMixer(gint vol)
 	AUDIO_INITINFO (&ainfo);
  	ainfo.play.gain = vol;
  	ioctl (mixerfd, AUDIO_SETINFO, &ainfo);
+#endif
+#ifdef IRIX_API
+	if (vol < 0) 
+	  tvol = 0;
+	else if (vol > VOLUME_MAX)
+	  tvol = VOLUME_MAX;
+	else
+	  tvol = vol;
+
+	pv_buf[1] = pv_buf[3] = tvol;
+	(void) ALsetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
 #endif
 }
 
