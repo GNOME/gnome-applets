@@ -216,10 +216,7 @@ redraw_applet(void)
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
     
     /* add command line; position: top */
-    if(1)
-	init_command_entry();
-    else
-	terminal_init();
+    init_command_entry();
 
 /*     gtk_box_pack_start(GTK_BOX(vbox), entry_command, FALSE, FALSE, 0); */
 
