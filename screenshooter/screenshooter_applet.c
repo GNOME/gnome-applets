@@ -1640,17 +1640,6 @@ static const BonoboUIVerb test_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char test_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"	
-	"</popup>\n";
-
-
 static gboolean 
 screenshooter_applet_fill (PanelApplet *applet)
 {
@@ -1752,10 +1741,12 @@ screenshooter_applet_fill (PanelApplet *applet)
 	
   gtk_container_add (GTK_CONTAINER (applet), mainbox);
   
-  panel_applet_setup_menu (PANEL_APPLET (applet),
-			   test_applet_menu_xml,
-			   test_applet_menu_verbs,
-			   NULL);
+  panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+				     NULL,
+				     "GNOME_ScreenshooterApplet.xml",
+				     NULL,
+				     test_applet_menu_verbs,
+				     applet);
 
 
   gtk_widget_show_all (GTK_WIDGET (applet));
