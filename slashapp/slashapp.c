@@ -503,7 +503,7 @@ void tree_walk(xmlNodePtr root, gpointer data)
 	gint delay = ad->article_delay / 10 * (1000 / UPDATE_DELAY);
 
 	while(walk!=NULL) {
-		if(strcasecmp(walk->name, "item")==0 && items<16) {
+		if(g_strcasecmp(walk->name, "item")==0 && items<16) {
 			item[i++] = walk;
 			itemcount++;
 		}
