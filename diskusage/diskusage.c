@@ -20,7 +20,6 @@
 
 #include "diskusage.h"
 #include "properties.h"
-#include "mountlist.h"
 
 /*#define DU_DEBUG*/
 

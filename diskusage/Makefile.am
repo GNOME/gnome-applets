@@ -7,10 +7,8 @@ dummy.cc:
 endif
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 
 bin_PROGRAMS = diskusage_applet
 
@@ -18,17 +16,14 @@ diskusage_applet_SOURCES = \
 	diskusage.c		\
 	diskusage.h		\
 	diskusage_read.c	\
-	fsusage.c		\
-	fsusage.h		\
-	mountlist.c		\
-	mountlist.h		\
 	properties.c		\
 	properties.h
 
 
-diskusage_applet_LDADD = ../../panel/libpanel_applet.la \
+diskusage_applet_LDADD = -lpanel_applet \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)
+		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
 diskusage_applet_LINK = $(CXXLINK)
 
