@@ -269,6 +269,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 				      		   NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
     gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->pref), FALSE);
+    gtk_container_set_border_width (GTK_CONTAINER (gw_applet->pref), 5);
     gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), 400,400);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
     gtk_window_set_screen (GTK_WINDOW (gw_applet->pref),
@@ -280,7 +281,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     pref_notebook = gtk_notebook_new ();
     gtk_widget_show (pref_notebook);
-    gtk_container_set_border_width (GTK_CONTAINER (pref_notebook), 12);
+    gtk_container_set_border_width (GTK_CONTAINER (pref_notebook), 5);
     gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
 
@@ -305,10 +306,13 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
     		      G_CALLBACK (auto_update_toggled), gw_applet);
     
+    hbox2 = gtk_hbox_new (FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox), hbox2, FALSE, FALSE, 0);
+
     pref_basic_update_spin_adj = gtk_adjustment_new (30, 30, 3600, 5, 25, 1);
     gw_applet->pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
     gtk_widget_show (gw_applet->pref_basic_update_spin);
-    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_basic_update_spin,
+    gtk_box_pack_start (GTK_BOX (hbox2), gw_applet->pref_basic_update_spin,
 					  FALSE, FALSE, 0);
     gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (gw_applet->pref_basic_update_spin), TRUE);
     gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (gw_applet->pref_basic_update_spin), GTK_UPDATE_IF_VALID);
@@ -324,7 +328,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
-    gtk_box_pack_start (GTK_BOX (hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox2), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
     vbox2 = create_hig_category (vbox, _("Display"));
 
@@ -350,15 +354,18 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     label = gtk_label_new_with_mnemonic (_("Number of _days to display:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
     
+    hbox2 = gtk_hbox_new (FALSE, 6);
+    gtk_box_pack_start (GTK_BOX (hbox), hbox2, FALSE, FALSE, 0);
+    
     spin = gtk_spin_button_new_with_range (1, 6, 1);
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), gw_applet->gweather_info->numforecasts);
     g_signal_connect (G_OBJECT (spin), "value_changed",
     		      G_CALLBACK (num_forecasts_changed), gw_applet);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
-    gtk_box_pack_start (GTK_BOX (hbox), spin, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
     
     label = gtk_label_new_with_mnemonic (_("days"));
-    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, TRUE, 0);
 
   /*
    * Location page.
