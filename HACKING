@@ -1,26 +1,42 @@
-If you maintain one of these applets, feel free to commit.  Unless we're very
-close to a release, so if you're not sure, contact us.
+f you are the maintainer of an applet, feel free to commit - unless we're 
+very close to a release. In that case, contact us.
 
-If you just want to hack, tell us about it.  Most of these applets are
-unmaintained, but you should try to contact the maintainer (or past maintainer)
-before doing much work on them to avoid stepping on anyones toes.  If unsure,
-ask me.
+If you just want to hack, let us know. Most of the applets are unmaintained, 
+but you should try to contact the maintainer (or past maintainer) before 
+working on them, to avoid duplicate work and stepping on any toes. If unsure,
+ask us about it.
 
-Please send patches to bugzilla.gnome.org and file new bugs or attach
-the patch to old bugs.
+Please attach your patches to a bug in bugzilla.gnome.org, either by filing
+new bugs or attaching it to an old one.
 
-Applet hacking tips:
-1) There's some documentation in gnome-panel/doc/reference/panel-applet.
-It's a bit outdated, but it covers the basic ideas. See the fish applet
-in gnome-panel for a simple implementation
+Some tips for hacking/debugging the applets:
+1) The Panel Applet Writer's Reference Manual, including the PanelApplet
+library documentation, can be found at 
+http://developer.gnome.org/doc/API/2.0/panel-applet/libpanel-applet.html,
+or in gnome-panel/doc/reference/panel-applet (source). It is not
+completely up to date, but it covers the basics of writing an applet.
 
-2) Be weary of static, global variables if you plan to allow the user
+2) Look at the other applet implementations. One of the simpler applets is
+the fish applet, which lives in gnome-panel/applets/fish.
+
+3) Read the article about debugging GNOME Applets at 
+http://www.davyd.id.au/articles/debugging-gnome-applets.shtml.
+
+4) Be weary of static, global variables if you plan to allow the user
 to be able to add multiple instances of the applet. Each instance will
-share the static varible.
+share the static varible. This is described in the debugging article, under
+"Other considerations".
 
-3) Here's the best way to debug applets! You can run the binary from
-the command line and then add the applet to the panel with the right
-click menu. This way, it's easy to get debug printf output and you don't
-have to do a make install every time you compile.
+5) You'd probably want to run the applets from CVS, without nescessarily doing
+the same with all of GNOME. To do this, install the applets from CVS to a
+different prefix than the rest of GNOME, and change your bonobo servers 
+directory to $prefix/lib/bonobo/servers. You'll find the config file by
+running "bonobo-activation-sysconf --config-file-path". Add the directory to
+as an <item> at the top of <searchpath>. Log out, run bonobo-slay and make
+sure no bonobo processes are running. When you log in again, your applets
+should be running from the new prefix.
+Running single applets from CVS is described in the debugging article.
 
 Kevin Vandersloot <kfv101 at psu dot edu>
+Christoffer Olsen <co at deworks dot net>
+
