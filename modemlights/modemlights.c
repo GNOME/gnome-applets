@@ -115,6 +115,9 @@ static void about_cb (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (mldata->about_dialog) {
+		gtk_window_set_screen (GTK_WINDOW (mldata->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (applet)));
+		
 		gtk_window_present (GTK_WINDOW (mldata->about_dialog));
 		return;
 	}
@@ -144,10 +147,13 @@ static void about_cb (BonoboUIComponent *uic,
 
 	gtk_window_set_screen (GTK_WINDOW (mldata->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (applet)));
+
 	gtk_window_set_wmclass (GTK_WINDOW (mldata->about_dialog),
 				"modem lights", "Modem Lights");
+
 	g_signal_connect (G_OBJECT (mldata->about_dialog), "destroy",
 			  G_CALLBACK (gtk_widget_destroyed), &mldata->about_dialog);
+
 	gtk_widget_show (mldata->about_dialog);
 }
 
