@@ -31,6 +31,7 @@ EXTRA_DIST = \
 	button_tiny_v.xpm		\
 	clockmaildata			\
 	THEME-SPEC			\
+	gnome-clockmail.png		\
 	clockmail_applet.gnorba
 
 clocksdir = $(datadir)/applets/Clocks
@@ -41,5 +42,8 @@ net_DATA = clockmail_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = clockmail_applet.gnorba
+
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = gnome-clockmail.png
 
 SUBDIRS = themes
