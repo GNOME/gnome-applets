@@ -450,7 +450,7 @@ radar_toggled (GtkToggleButton *button, gpointer data)
     gw_applet->gweather_pref.radar_enabled = toggled;
     panel_applet_gconf_set_bool(gw_applet->applet, "enable_radar_map", toggled, NULL);
     soft_set_sensitive (gw_applet->pref_basic_radar_url_btn, toggled);
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (gw_applet->pref_basic_radar_url_btn)) == TRUE)
+    if (toggled == FALSE || gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON (gw_applet->pref_basic_radar_url_btn)) == TRUE)
             soft_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
 }
 
