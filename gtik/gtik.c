@@ -825,7 +825,7 @@ static gint updateOutput(gpointer data)
     			   toggled, NULL);		
 	}	
 
-	static void
+	static gboolean
 	proxy_port_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 	{
     		GConfClient *client = gconf_client_get_default ();
@@ -835,12 +835,14 @@ static gint updateOutput(gpointer data)
     		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     		if (!text) 
-    			return;
+    			return FALSE;
     		port = atoi (text);
     		g_free (text);
     
     		gconf_client_set_int (client, "/system/gnome-vfs/http-proxy-port", 
     			  port, NULL);
+    		
+    		return FALSE;
 
 	}
 
@@ -855,7 +857,7 @@ static gint updateOutput(gpointer data)
     			   toggled, NULL);
 	}
 
-	static void
+	static gboolean
 	proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 	{
     		GConfClient *client = gconf_client_get_default ();
@@ -864,14 +866,16 @@ static gint updateOutput(gpointer data)
     		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     		if (!text) 
-    			return;
+    			return FALSE;
     
     		gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-host", 
     			     text, NULL);
     		g_free (text);
+    		
+    		return FALSE;	
 	}
 
-	static void
+	static gboolean
 	proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 	{
     		GConfClient *client = gconf_client_get_default ();
@@ -880,15 +884,17 @@ static gint updateOutput(gpointer data)
     		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     		if (!text)
-   			return;
+   			return FALSE;
 
     		gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-user", 
     			     text, NULL); 
     		g_free (text);
+    		
+    		return FALSE;
 
 	}
 	
-	static void
+	static gboolean
 	proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 	{
     		GConfClient *client = gconf_client_get_default ();
@@ -897,11 +903,13 @@ static gint updateOutput(gpointer data)
     		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     		if (!text)
-   			return;
+   			return FALSE;
 
     		gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-password", 
     			     text, NULL);
     		g_free (text);
+    		
+    		return FALSE;
 	}
 	
 	static void
