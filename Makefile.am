@@ -47,7 +47,6 @@ always_built_SUBDIRS = \
 	geyes		\
 	mini-commander	\
 	gkb-new		\
-	wireless	\
 	stickynotes	\
 	null_applet
 
@@ -77,7 +76,6 @@ DIST_SUBDIRS = \
 	gtik		\
 	gweather 	\
 	man		\
-	wireless	\
 	accessx-status	\
 	stickynotes	\
 	libgswitchit	\
