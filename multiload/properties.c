@@ -9,7 +9,18 @@ static GtkWidget *win = NULL;
 void
 multiload_properties_cb (AppletWidget *widget, gpointer data)
 {
-    multiload_show_properties ();
+    LoadGraph *g;
+
+    g = data;
+
+    if (g->prop_data == &multiload_properties.cpuload)
+	multiload_show_properties (PROP_CPULOAD);
+    else if (g->prop_data == &multiload_properties.memload)
+	multiload_show_properties (PROP_MEMLOAD);
+    else if (g->prop_data == &multiload_properties.swapload)
+	multiload_show_properties (PROP_SWAPLOAD);
+    else
+	g_assert_not_reached();
 }
 
 void
@@ -47,7 +58,7 @@ multiload_properties_changed (void)
 }
 
 void
-multiload_show_properties (void)
+multiload_show_properties (PropertyClass prop_class)
 {
     static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
     GList *c;
@@ -83,6 +94,7 @@ multiload_show_properties (void)
 			&help_entry);
 
     gtk_widget_show_all (win);
+    gtk_notebook_set_page (GTK_NOTEBOOK (GNOME_PROPERTY_BOX (win)->notebook), prop_class);
 }
 
 void

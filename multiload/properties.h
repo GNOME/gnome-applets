@@ -5,6 +5,12 @@
 
 BEGIN_GNOME_DECLS
 
+typedef enum {
+    PROP_CPULOAD,
+    PROP_MEMLOAD,
+    PROP_SWAPLOAD
+} PropertyClass;
+
 typedef struct	_MultiLoadProperties		MultiLoadProperties;
 
 typedef struct	_LoadGraphProperties		LoadGraphProperties;
@@ -29,7 +35,7 @@ extern MultiLoadProperties multiload_properties;
 void multiload_properties_apply (void);
 void multiload_properties_close (void);
 void multiload_properties_changed (void);
-void multiload_show_properties (void);
+void multiload_show_properties (PropertyClass prop_class);
 void multiload_init_properties (void);
 
 END_GNOME_DECLS
