@@ -35,6 +35,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <locale.h>
 #include <gdk/gdkx.h>
 #include "customdrawingarea.h"
 
