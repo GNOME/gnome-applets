@@ -208,6 +208,7 @@ gkb_prop_map_get_countries (GkbPropertyBoxInfo * pbi)
   list = g_list_prepend (list, _("Georgia"));
   list = g_list_prepend (list, _("Germany"));
   list = g_list_prepend (list, _("Great Britain"));
+  list = g_list_prepend (list, _("Greece"));
   list = g_list_prepend (list, _("Hungary"));
   list = g_list_prepend (list, _("Jamaica"));
   list = g_list_prepend (list, _("New Zealand"));
@@ -253,6 +254,7 @@ gkb_prop_map_get_languages (GkbPropertyBoxInfo * pbi)
   list = g_list_prepend (list, _("French"));
   list = g_list_prepend (list, _("Georgian"));
   list = g_list_prepend (list, _("German"));
+  list = g_list_prepend (list, _("Greek"));
   list = g_list_prepend (list, _("Hungarian"));
   list = g_list_prepend (list, _("Norwegian"));
   list = g_list_prepend (list, _("Polish"));
@@ -310,6 +312,7 @@ gkb_prop_map_get_codepages (GkbPropertyBoxInfo * pbi)
 
   list = g_list_prepend (list, _("iso-8859-1"));
   list = g_list_prepend (list, _("iso-8859-2"));
+  list = g_list_prepend (list, _("iso-8859-7"));
   list = g_list_prepend (list, _("iso-8859-9"));
   list = g_list_prepend (list, _("am-armscii8"));
   list = g_list_prepend (list, _("be-latin1"));

@@ -15,192 +15,21 @@
 # simos: 1074 messages, 26Mar2001, unfuzzied 1 (beargsgppl).
 # simos: 1077 messages, 4Jun2001, (micumple).
 # simos: 1092 messages, 2Aug2001, (conbea).
+# simos: 487 messages, 14May2002, (GNOME2 update, UTF-8 encoding.)
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.4.0\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
-"PO-Revision-Date: 2001-06-04 16:53:49+0900\n"
+"Project-Id-Version: gnome-applets 1.102.0\n"
+"POT-Creation-Date: 2002-05-14 20:48+0100\n"
+"PO-Revision-Date: 2002-05-14 10:36+0100\n"
 "Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-7\n"
+"Content-Type: text/plain; charset=ISO-8859-7\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:284
-msgid "Your platform is not supported!\n"
-msgstr ""
-
-#: battstat/battstat_applet.c:285
-msgid "The applet will not work properly (if at all).\n"
-msgstr ""
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
-#, fuzzy
-msgid "High"
-msgstr "Ύψος:"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
-msgid "Low"
-msgstr ""
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
-#, fuzzy
-msgid "Critical"
-msgstr "Καραϊβική"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
-#, fuzzy
-msgid "Charging"
-msgstr "Αλλαγή "
-
-#: battstat/battstat_applet.c:403
-msgid "Battery low (%d%%) and AC is offline"
-msgstr ""
-
-#: battstat/battstat_applet.c:426
-#, fuzzy
-msgid "Battery is now fully re-charged!"
-msgstr "Η μπαταρία είναι πλήρως φορτισμένη."
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
-msgid ""
-"System is running on battery power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
-msgid ""
-"System is running on AC power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
-msgid "System is running on battery power"
-msgstr ""
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
-msgid "System is running on AC power"
-msgstr ""
-
-#: battstat/battstat_applet.c:472
-msgid "N/A"
-msgstr ""
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
-msgid "System is running on battery power. Battery: Not present"
-msgstr ""
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
-msgid "System is running on AC power. Battery: Not present"
-msgstr ""
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
-msgid "Battery: %d%% (%s)"
-msgstr ""
-
-#. Displayed as a tooltip over the battery meter when no
-#. battery is present.
-#: battstat/battstat_applet.c:636
-msgid "Battery: Not present"
-msgstr ""
-
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
-msgid ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
-msgstr ""
-
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
-msgid ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
-msgstr ""
-
-#: battstat/battstat_applet.c:767
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command: %s\n"
-"Please try to correct this error"
-msgstr ""
-
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
-msgstr ""
-
-#: battstat/battstat_applet.c:778
-msgid ""
-"Suspend command wasn't setup correctly in the preferences.\n"
-"Please change the preferences and try again."
-msgstr ""
-
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-msgid "Battery status utility"
-msgstr ""
-
-#: battstat/battstat_applet.c:809
-#, fuzzy
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 το Free Software Foundation"
-
-#: battstat/battstat_applet.c:810
-msgid "This utility show the status of your laptop battery."
-msgstr ""
-
-#: battstat/GNOME_BattstatApplet.server.in.h:1
+#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:831
 msgid "Battery Charge Monitor"
 msgstr "Παρακολούθηση Φορτίου Μπαταρίας"
 
@@ -220,7 +49,7 @@ msgstr ""
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
-msgstr ""
+msgstr "Εργαλείο"
 
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
@@ -230,32 +59,320 @@ msgstr ""
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "Περί..."
+msgid "_About..."
+msgstr "_Περί..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Βοήθεια"
+msgid "_Help"
+msgstr "_Βοήθεια"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
 #: charpick/GNOME_CharpickerApplet.xml.h:3
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
-#, fuzzy
-msgid "Preferences..."
-msgstr "Ιδιότητες..."
+msgid "_Preferences..."
+msgstr "_Προτιμήσεις..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
+msgid "_Suspend Computer..."
+msgstr ""
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:284
+msgid "Your platform is not supported!\n"
+msgstr ""
+
+#: battstat/battstat_applet.c:285
+msgid "The applet will not work properly (if at all).\n"
+msgstr ""
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:860
+#, fuzzy
+msgid "High"
+msgstr "Ύψος:"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:862
+msgid "Low"
+msgstr ""
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:864
+#, fuzzy
+msgid "Critical"
+msgstr "Καραϊβική"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:866
+#, fuzzy
+msgid "Charging"
+msgstr "Αλλαγή "
+
+#: battstat/battstat_applet.c:403
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr ""
+
+#: battstat/battstat_applet.c:427
+#, fuzzy
+msgid "Battery is now fully re-charged!"
+msgstr "Η μπαταρία είναι πλήρως φορτισμένη."
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1023
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1031
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:1044
+msgid "System is running on battery power"
+msgstr ""
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:1050
+msgid "System is running on AC power"
+msgstr ""
+
+#: battstat/battstat_applet.c:473
+msgid "N/A"
+msgstr ""
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:935
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:942
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr ""
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:615
+msgid "System is running on battery power. Battery: Not present"
+msgstr ""
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:621
+msgid "System is running on AC power. Battery: Not present"
+msgstr ""
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:630
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr ""
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:637
+msgid "Battery: Not present"
+msgstr ""
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:712
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:720
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+
+#: battstat/battstat_applet.c:768
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:771
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+
+#: battstat/battstat_applet.c:779
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:808
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr ""
+
+#: battstat/battstat_applet.c:818 cdplayer/cdplayer.c:428
+#: charpick/charpick.c:370 drivemount/drivemount.c:420 geyes/geyes.c:213
+#: gkb-new/gkb.c:583 gtik/gtik.c:696 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:44 mixer/mixer.c:766
+#: modemlights/modemlights.c:206 multiload/main.c:54
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr "Συμεών (σίμος) Ξενιτέλλης (simos@hellug.gr)"
+
+#: battstat/battstat_applet.c:833
+#, fuzzy
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "(C) 2000 το Free Software Foundation"
+
+#: battstat/battstat_applet.c:834
+msgid "This utility show the status of your laptop battery."
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:3
+#, fuzzy
+msgid "Apperance"
+msgstr "Εμφάνιση"
+
+#: battstat/battstat_applet.glade.h:4
+#, fuzzy
+msgid "Applet layout"
+msgstr "Κατάσταση λειτουργίας εφαρμογιδίου"
+
+#: battstat/battstat_applet.glade.h:5
+#, fuzzy
+msgid "Battery Charge Monitor Preferences"
+msgstr "Παρακολούθηση Φορτίου Μπαταρίας"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Γενικά"
+
+#: battstat/battstat_applet.glade.h:10
+#, fuzzy
+msgid "Hide"
+msgstr "Απόκρυψη σημειώματος"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:13
+#, fuzzy
+msgid "Notify me when battery charge is low"
+msgstr "Προειδοποίηση όταν το φορτίο μπαταρίας πέσει κάτω από:"
+
+#: battstat/battstat_applet.glade.h:14
+#, fuzzy
+msgid "Notify me when battery is fully re-charged"
+msgstr "Η μπαταρία είναι πλήρως φορτισμένη."
+
+#: battstat/battstat_applet.glade.h:15
+#, fuzzy
+msgid "Orange:"
+msgstr "Γαλλία"
+
+#: battstat/battstat_applet.glade.h:16
+#, fuzzy
+msgid "Preview:"
+msgstr "Συσκευή:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:18
+#, fuzzy
+msgid "Red:"
+msgstr "Ταχύτητα:"
+
+#: battstat/battstat_applet.glade.h:19
+#, fuzzy
+msgid "Show"
+msgstr "Εμφάνιση:"
+
+#: battstat/battstat_applet.glade.h:20
+#, fuzzy
+msgid "Suspend"
+msgstr "Ταχύτητα"
+
+#: battstat/battstat_applet.glade.h:21
+#, fuzzy
+msgid "Suspend command:"
+msgstr "Εντολή Φυλλομετρητή:"
+
+#: battstat/battstat_applet.glade.h:22
+#, fuzzy
+msgid "Warnings"
+msgstr "Επιλογές προειδοποίησης"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
 msgstr ""
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
@@ -272,110 +389,10 @@ msgstr "Η μπαταρία είναι πλήρως φορτισμένη."
 msgid "Battery power low"
 msgstr "Χρώμα αδύναμης μπαταρίας στο γράφημα:"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
-#, fuzzy
-msgid "Stop"
-msgstr "θέμα"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
-msgid "Play / Pause"
-msgstr ""
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Εξαγωγή"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
-msgid "Previous Track"
-msgstr ""
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
-msgid "Next Track"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:158
+#: cdplayer/cdplayer.c:446 cdplayer/cdplayer.c:861
 msgid "CD Player"
 msgstr "Αναπαραγωγή CD"
-
-#: cdplayer/cdplayer.c:346
-#, fuzzy
-msgid "CD Player Preferences"
-msgstr "Εφαρμογίδιο Αναπαραγωγής CD"
-
-#: cdplayer/cdplayer.c:361
-#, fuzzy
-msgid "Disc Image"
-msgstr "Χρήση Δίσκου"
-
-#: cdplayer/cdplayer.c:361
-msgid "An image of a cd-rom disc"
-msgstr ""
-
-#: cdplayer/cdplayer.c:363
-#, fuzzy
-msgid "Device _Path:"
-msgstr "Συσκευή:"
-
-#: cdplayer/cdplayer.c:372
-#, fuzzy
-msgid "Device Path"
-msgstr "Συσκευή:"
-
-#: cdplayer/cdplayer.c:372
-msgid "Set the device path here"
-msgstr ""
-
-#: cdplayer/cdplayer.c:375
-#, fuzzy
-msgid "Use _Default"
-msgstr "Κανένα (εξ' ορισμού)"
-
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "Εφαρμογίδιο Αναπαραγωγής CD"
-
-#: cdplayer/cdplayer.c:421
-#, fuzzy
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr "(c) 1997 To Free Software Foundation"
-
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
-msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr ""
-"Το εφαρμογίδιο CD Player είναι ένα απλό πρόγραμμα εκτέλεσης μουσικών CD για "
-"το ταμπλώ"
-
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
-msgid "Elapsed time"
-msgstr ""
-
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
-msgid "Track number"
-msgstr ""
-
-#: cdplayer/cdplayer.c:819
-msgid "Click this button to Stop playing the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:821
-msgid "Click this button to Play or Pause the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:823
-msgid "Click this button to eject the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:825
-msgid "Click this button to Play the previous track in the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:827
-msgid "Click this button to Play the next track in the CD"
-msgstr ""
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 #, fuzzy
@@ -398,32 +415,106 @@ msgstr ""
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #, fuzzy
-msgid "Run External CD Player"
+msgid "_Run External CD Player"
 msgstr "Εκτέλεση CD Player..."
 
-#: charpick/charpick.c:363
-msgid "Character Picker"
-msgstr "Επιλογέας χαρακτήρων"
-
-#: charpick/charpick.c:365
-msgid "Copyright (C) 1998"
-msgstr "Πνευματικά δικαιώματα (C) 1998"
-
-#: charpick/charpick.c:366
-msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
-msgstr ""
-"Εφαρμογίδιο για επιλογή περίεργων χαρακτήρων που δεν υπάρχουν στο "
-"πληκτρολόγιo μου.  Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU General Public "
-"Licence."
-
-#: charpick/charpick.c:444
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:851
 #, fuzzy
-msgid "Insert special characters"
-msgstr "Εξ' ορισμού λίστα χαρακτήρων:"
+msgid "Stop"
+msgstr "θέμα"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:853
+msgid "Play / Pause"
+msgstr ""
+
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:855
+msgid "Eject"
+msgstr "Εξαγωγή"
+
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:857
+msgid "Previous Track"
+msgstr ""
+
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:859
+msgid "Next Track"
+msgstr ""
+
+#: cdplayer/cdplayer.c:345
+#, fuzzy
+msgid "CD Player Preferences"
+msgstr "Εφαρμογίδιο Αναπαραγωγής CD"
+
+#: cdplayer/cdplayer.c:360
+#, fuzzy
+msgid "Disc Image"
+msgstr "Χρήση Δίσκου"
+
+#: cdplayer/cdplayer.c:360
+msgid "An image of a cd-rom disc"
+msgstr ""
+
+#: cdplayer/cdplayer.c:362
+#, fuzzy
+msgid "Device _Path:"
+msgstr "Συσκευή:"
+
+#: cdplayer/cdplayer.c:371
+#, fuzzy
+msgid "Device Path"
+msgstr "Συσκευή:"
+
+#: cdplayer/cdplayer.c:371
+msgid "Set the device path here"
+msgstr ""
+
+#: cdplayer/cdplayer.c:374
+#, fuzzy
+msgid "Use _Default"
+msgstr "Κανένα (εξ' ορισμού)"
+
+#: cdplayer/cdplayer.c:447
+#, fuzzy
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr "(c) 1997 To Free Software Foundation"
+
+#: cdplayer/cdplayer.c:449 cdplayer/cdplayer.c:862
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr ""
+"Το εφαρμογίδιο CD Player είναι ένα απλό πρόγραμμα εκτέλεσης μουσικών CD για "
+"το ταμπλώ"
+
+#: cdplayer/cdplayer.c:730 cdplayer/cdplayer.c:739
+msgid "Elapsed time"
+msgstr ""
+
+#: cdplayer/cdplayer.c:733 cdplayer/cdplayer.c:741
+msgid "Track number"
+msgstr ""
+
+#: cdplayer/cdplayer.c:852
+msgid "Click this button to Stop playing the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:854
+msgid "Click this button to Play or Pause the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:856
+msgid "Click this button to eject the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:858
+msgid "Click this button to Play the previous track in the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:860
+msgid "Click this button to Play the next track in the CD"
+msgstr ""
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:388
+#: charpick/charpick.c:473
 #, fuzzy
 msgid "Character Palette"
 msgstr "Επιλογέας χαρακτήρων"
@@ -435,6 +526,30 @@ msgstr ""
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 #, fuzzy
 msgid "Insert characters"
+msgstr "Εξ' ορισμού λίστα χαρακτήρων:"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:362
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr ""
+
+#: charpick/charpick.c:390
+msgid "Copyright (C) 1998"
+msgstr "Πνευματικά δικαιώματα (C) 1998"
+
+#: charpick/charpick.c:391
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"Εφαρμογίδιο για επιλογή περίεργων χαρακτήρων που δεν υπάρχουν στο "
+"πληκτρολόγιo μου.  Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU General Public "
+"Licence."
+
+#: charpick/charpick.c:472
+#, fuzzy
+msgid "Insert special characters"
 msgstr "Εξ' ορισμού λίστα χαρακτήρων:"
 
 #: charpick/properties.c:79
@@ -462,49 +577,12 @@ msgstr ""
 "επιστρέψετε σε αυτή τη λίστα, πατήστε <ΔΙΑΣΤΗΜΑ> όταν το εφαρμογίδιο είναι "
 "ενεργό"
 
-#: charpick/properties.c:144
+#: charpick/properties.c:141
 #, fuzzy
 msgid "Character Palette Preferences"
 msgstr "Ρυθμίσεις επιλογέα χαρακτήρων"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
-msgstr "Εφαρμογίδιο προσάρτησης δίσκων"
-
-#: drivemount/drivemount.c:420
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr ""
-
-#: drivemount/drivemount.c:422
-msgid "Applet for mounting and unmounting block volumes."
-msgstr ""
-
-#: drivemount/drivemount.c:612
-msgid " mounted"
-msgstr " προσαρτημένο"
-
-#: drivemount/drivemount.c:614
-msgid " not mounted"
-msgstr " μη προσαρτημένο"
-
-#: drivemount/drivemount.c:725
-#, fuzzy
-msgid "Drive Mount Applet Warning"
-msgstr "Εφαρμογίδιο προσάρτησης δίσκων"
-
-#: drivemount/drivemount.c:733
-msgid "\" reported:\n"
-msgstr "\" αναφέρθηκε:\n"
-
-#: drivemount/drivemount.c:735
-msgid ""
-"Drivemount command failed.\n"
-"\""
-msgstr ""
-"Εντολή προσάρτησης δίσκου απέτυχε.\n"
-"\""
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:437
 #, fuzzy
 msgid "Disk Mounter"
 msgstr "Προσάρτηση Δίσκων"
@@ -524,105 +602,128 @@ msgid "Mount local disks and devices"
 msgstr ""
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
+#, fuzzy
+msgid "_Browse..."
 msgstr "Εξερεύνηση..."
 
-#: drivemount/properties.c:239
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+#, fuzzy
+msgid "_Eject"
+msgstr "Εξαγωγή"
+
+#: drivemount/drivemount.c:438
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr ""
+
+#: drivemount/drivemount.c:440
+msgid "Applet for mounting and unmounting block volumes."
+msgstr ""
+
+#: drivemount/drivemount.c:637
+msgid " mounted"
+msgstr " προσαρτημένο"
+
+#: drivemount/drivemount.c:639
+msgid " not mounted"
+msgstr " μη προσαρτημένο"
+
+#: drivemount/drivemount.c:750
+#, fuzzy
+msgid "Drive Mount Applet Warning"
+msgstr "Εφαρμογίδιο προσάρτησης δίσκων"
+
+#: drivemount/drivemount.c:758
+msgid "\" reported:\n"
+msgstr "\" αναφέρθηκε:\n"
+
+#: drivemount/drivemount.c:760
+msgid ""
+"Drivemount command failed.\n"
+"\""
+msgstr ""
+"Εντολή προσάρτησης δίσκου απέτυχε.\n"
+"\""
+
+#: drivemount/properties.c:241
 #, fuzzy
 msgid "Disk Mounter Preferences"
 msgstr "Ρυθμίσεις Εφαρμογιδίου Προσάρτησης Δίσκων"
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:260
 #, fuzzy
 msgid "_Mount point:"
 msgstr "Σημείο προσάρτησης:"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:278
 #, fuzzy
 msgid "_Update interval (seconds):"
 msgstr "Διάστημα ανανέωσης (δευτερόλεπτα):"
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:294 panel-menu/panel-menu-properties.c:108
 #, fuzzy
 msgid "_Icon :"
 msgstr "Εικονίδιο:"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:312
 msgid "Floppy"
 msgstr "Δισκέττα"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:315
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:318
 msgid "Cd Recorder"
 msgstr ""
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:321
 msgid "Zip Drive"
 msgstr "Συσκευή Zip"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:324
 msgid "Hard Disk"
 msgstr "Σκληρός δίσκος"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:327
 msgid "Jaz Drive"
 msgstr "Συσκευή Jaz"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:330
 msgid "Custom"
 msgstr "Εξατομικευμένο"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:343
 msgid "Select icon for mounted"
 msgstr "Επιλογή εικονιδίου για προσαρτημένο"
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:350
 #, fuzzy
 msgid "Custom icon for moun_ted:"
 msgstr "Εξατομικευμένο εικονίδιο για προσαρτημένο"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:359
 msgid "Select icon for unmounted"
 msgstr "Επιλογή εικονιδίου για αποπροσαρτημένο"
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:366
 #, fuzzy
 msgid "Custom icon for not mou_nted:"
 msgstr "Επιλογή εικονιδίου για μη προσαρτημένο"
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:376
 #, fuzzy
 msgid "_Scale size to panel"
 msgstr "Κλιμάκωση μεγέθους στο ταμπλώ"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:383
 #, fuzzy
 msgid "_Eject on unmount"
 msgstr "Εξαγωγή στην αποπροσάρτηση"
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:390
 #, fuzzy
 msgid "Use _automount friendly status test"
 msgstr "Χρήση δοκιμής φιλικής προς αυτόματη προσάρτηση (automount)"
-
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Πνευματικά δικαιώματα (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Ένας χαζός κλώνος του xeyes για το ταμπλώ του GNOME."
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 #, fuzzy
@@ -633,7 +734,8 @@ msgstr "Χρήση όλου του χώρου στο ταμπλώ"
 msgid "Amusements"
 msgstr ""
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:231 geyes/geyes.c:410
+#: geyes/geyes.c:412
 #, fuzzy
 msgid "Geyes"
 msgstr "gEyes"
@@ -642,62 +744,87 @@ msgstr "gEyes"
 msgid "Geyes Applet Factory"
 msgstr ""
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:232
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Πνευματικά δικαιώματα (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:233
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "Ένας χαζός κλώνος του xeyes για το ταμπλώ του GNOME."
+
+#: geyes/geyes.c:413
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr ""
+
+#: geyes/themes.c:207
 msgid "Geyes Preferences"
 msgstr ""
 
-#: geyes/themes.c:222
+#: geyes/themes.c:220
 #, fuzzy
 msgid "T_heme Name"
 msgstr "Όνομα θέματος"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Change the keyboard layout"
+msgstr "Αλλαγή διάταξης πληκτρολογίου"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+msgid "GKB Factory"
+msgstr "Εργοστάσιο GKB"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:594
+msgid "Keyboard Layout Switcher"
+msgstr "Εναλλάκτης Διάταξης Πληκτρολογίου"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+#, fuzzy
+msgid "Produces keyboard layout switcher applets."
+msgstr "GKB, το Εφαρμογίδιο Εναλλαγής Διάταξης Πληκτρολογίου του Gnome"
+
+#: gkb-new/gkb.c:112
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
 
-#: gkb-new/gkb.c:404
+#: gkb-new/gkb.c:403
 #, c-format
 msgid "name_%d"
 msgstr ""
 
-#: gkb-new/gkb.c:408
+#: gkb-new/gkb.c:407
 #, fuzzy, c-format
 msgid "label_%d"
 msgstr "Ετικέτα"
 
-#: gkb-new/gkb.c:412
+#: gkb-new/gkb.c:411
 #, fuzzy, c-format
 msgid "country_%d"
 msgstr "Χώρα"
 
-#: gkb-new/gkb.c:416
+#: gkb-new/gkb.c:415
 #, fuzzy, c-format
 msgid "lang_%d"
 msgstr "Πολωνία"
 
-#: gkb-new/gkb.c:424
+#: gkb-new/gkb.c:423
 #, fuzzy, c-format
 msgid "command_%d"
 msgstr "Εντολή"
 
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:541 gkb-new/gkb.c:548
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "Εφαρμογίδιο Εναλλαγής Πληκτρολογίου του GNOME"
-
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:596
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 το Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:597
 #, fuzzy
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -712,27 +839,9 @@ msgstr ""
 "Ευχαριστώ τον Balazs Nagy (Kevin) <julian7@kva.hu> για τη βοήθεια\n"
 "και την Emese Kovacs <emese@eik.bme.hu> για την αλληλεγγύη της."
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:614
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Αρχική Σελίδα του GKB (http://projects.gnome.hu/gkb)"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#, fuzzy
-msgid "Keyboard Layout Switcher"
-msgstr "Εναλλάκτης Πληκτρολογίου του GNOME"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-#, fuzzy
-msgid "Produces keyboard layout switcher applets."
-msgstr "GKB, το Εφαρμογίδιο Εναλλαγής Διάταξης Πληκτρολογίου του Gnome"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -746,412 +855,363 @@ msgstr ""
 msgid "Keyboards (select and press add)"
 msgstr ""
 
-#: gkb-new/prop-add.c:367
+#: gkb-new/prop-add.c:371
 #, fuzzy
 msgid "Select Keyboard"
 msgstr "Επιλογή διάταξης"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "Κανονικό"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "Μεγάλο"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "Σημαία"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "Ετικέτα"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "Σημαία και Ετικέτ"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr "Εμφάνιση"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-#, fuzzy
-msgid "_Appearance: "
-msgstr "Εμφάνιση "
-
-#: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
-msgstr "Μέγεθος εφαρμογιδίου "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "Ενεργό πλήκτρο για εναλλαγή μεταξύ διατάξεων"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "Άδραγμα ενεργού πλήκτρου"
-
-#. Create property box
-#: gkb-new/prop.c:405
-#, fuzzy
-msgid "Keyboard Layout Switcher Preferences"
-msgstr "Εναλλάκτης Πληκτρολογίου του GNOME"
-
-#: gkb-new/prop.c:419
-#, fuzzy
-msgid "_Keymaps"
-msgstr "Χάρτες πλήκτρων"
-
-#: gkb-new/prop.c:431
-#, fuzzy
-msgid "_Options"
-msgstr "Επιλογές"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
-#, fuzzy
+#: gkb-new/prop-list.c:380 gtik/gtik.c:1118
 msgid "_Add"
-msgstr "Προσθήκη"
+msgstr "_Προσθήκη"
 
-#: gkb-new/prop-list.c:390
-#, fuzzy
+#: gkb-new/prop-list.c:381
 msgid "_Edit"
-msgstr "Επεξεργασία"
+msgstr "_Επεξεργασία"
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:382
 #, fuzzy
 msgid "_Up"
 msgstr "Επάνω"
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:383
 #, fuzzy
 msgid "Dow_n"
 msgstr "Κάτω"
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:384
 #, fuzzy
 msgid "_Delete"
 msgstr "Διαγραφή"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:199
 msgid "Armenia"
 msgstr "Αρμενία"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:200
 msgid "Australia"
 msgstr "Αυστραλία"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:201
 msgid "Austria"
 msgstr "Αυστρία"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:202
 msgid "Belgium"
 msgstr "Βέλγιο"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:203
 msgid "Brazil"
 msgstr "Βραζιλία"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:204
 msgid "Bulgaria"
 msgstr "Βουλγαρία"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:205
 msgid "Canada"
 msgstr "Καναδάς"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:206
 msgid "Caribic"
 msgstr "Καραϊβική"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:207
 msgid "France"
 msgstr "Γαλλία"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:208
 msgid "Georgia"
 msgstr "Γεωργία"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:209
 msgid "Germany"
 msgstr "Γερμανία"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:210
 msgid "Great Britain"
 msgstr "Μεγάλη Βρετανία"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:211
+msgid "Greece"
+msgstr "Ελλάδα"
+
+#: gkb-new/prop-map.c:212
 msgid "Hungary"
 msgstr "Ουγγαρία"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:213
 msgid "Jamaica"
 msgstr "Τζαμάικα"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:214
 msgid "New Zealand"
 msgstr "Νέα Ζηλανδία"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:215
 msgid "Norway"
 msgstr "Νορβηγία"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:216
 msgid "Poland"
 msgstr "Πολωνία"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:217
 msgid "Portugal"
 msgstr "Πορτογαλία"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:218
 msgid "Russia"
 msgstr "Ρωσία"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:219
 msgid "Slovak Republic"
 msgstr "Σλοβακική Δημοκρατία"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:220
 msgid "Slovenia"
 msgstr "Σλοβενία"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:221
 msgid "South Africa"
 msgstr "Νότια Αφρική"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:222
 msgid "Spain"
 msgstr "Ισπανία"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:223
 msgid "Sweden"
 msgstr "Σουηδία"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:224
 msgid "Switzerland"
 msgstr "Ελβετία"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:225
 msgid "Thailand"
 msgstr "Ταϊλάνδη"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:226
 msgid "Turkey"
 msgstr "Τουρκία"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:227
 msgid "United Kingdom"
 msgstr "Ηνωμένο Βασίλειο"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:228
 msgid "United States"
 msgstr "Ηνωμένες Πολιτείες"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:229
 msgid "Yugoslavia"
 msgstr "Γιουγκοσλαβία"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:249
 msgid "Armenian"
 msgstr "Αρμενική"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:250
 msgid "Basque"
 msgstr "Βασκική"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:251
 msgid "Bulgarian"
 msgstr "Βουλγαρική"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:252
 msgid "Dutch"
 msgstr "Ολλανδική"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:253
 msgid "English"
 msgstr "Αγγλική"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:254
 msgid "French"
 msgstr "Γαλλική"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:255
 msgid "Georgian"
 msgstr "Γεωργιανή"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:256
 msgid "German"
 msgstr "Γερμανική"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:257
+msgid "Greek"
+msgstr "Ελληνικά"
+
+#: gkb-new/prop-map.c:258
 msgid "Hungarian"
 msgstr "Ουγγρική"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:259
 msgid "Norwegian"
 msgstr "Νορβηγική"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:260
 msgid "Polish"
 msgstr "Πολωνική"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:261
 msgid "Portuguese"
 msgstr "Πορτογαλλική"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:262
 msgid "Russian"
 msgstr "Ρωσική"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:263
 msgid "Slovak"
 msgstr "Σλοβακική"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:264
 msgid "Slovenian"
 msgstr "Σλοβενική"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:265
 msgid "Swedish"
 msgstr "Σουηδική"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:266
 msgid "Thai"
 msgstr "Ταϊλανδέζικη"
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:267
 msgid "Turkish"
 msgstr "Τουρκική"
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:268
 msgid "Wallon"
 msgstr "Wallon"
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:269
 msgid "Yugoslavian"
 msgstr "Γιουγκοσλαβική"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:287
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:288
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:289
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:290
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:291
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:292
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:293
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:313
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:314
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
+msgid "iso-8859-7"
+msgstr "iso-8859-7"
+
+#: gkb-new/prop-map.c:316
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:317
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:318
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:319
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:320
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:321
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:322
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:340
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
+#: gkb-new/prop-map.c:341
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:342
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:343
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:344
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:345
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
+#: gkb-new/prop-map.c:582
 #, fuzzy
 msgid "Edit Keyboard"
 msgstr "Επεξεργασία χάρτη πλήκτρων"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
+#: gkb-new/prop-map.c:610 panel-menu/panel-menu-directory.c:668
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 #, fuzzy
 msgid "_Name:"
 msgstr "Όνομα"
 
-#: gkb-new/prop-map.c:605
+#: gkb-new/prop-map.c:614
 #, fuzzy
 msgid "_Label:"
 msgstr "Ετικέτα"
 
-#: gkb-new/prop-map.c:609
+#: gkb-new/prop-map.c:618
 #, fuzzy
 msgid "Lan_guage:"
 msgstr "Γλώσσα"
 
-#: gkb-new/prop-map.c:615
+#: gkb-new/prop-map.c:624
 #, fuzzy
 msgid "Count_ry:"
 msgstr "Χώρα"
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:631
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1159,27 +1219,27 @@ msgstr ""
 "Σημαία\n"
 "Εικόνα"
 
-#: gkb-new/prop-map.c:626
+#: gkb-new/prop-map.c:635
 #, fuzzy
 msgid "Arc_hitecture:"
 msgstr "Αρχιτεκτονική"
 
-#: gkb-new/prop-map.c:632
+#: gkb-new/prop-map.c:641
 #, fuzzy
 msgid "_Type:"
 msgstr "Είδος"
 
-#: gkb-new/prop-map.c:638
+#: gkb-new/prop-map.c:647
 #, fuzzy
 msgid "Code_page:"
 msgstr "Κωδικοσελίδα"
 
-#: gkb-new/prop-map.c:645
+#: gkb-new/prop-map.c:654
 #, fuzzy
 msgid "Co_mmand:"
 msgstr "Εντολή"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:661
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1190,6 +1250,65 @@ msgstr ""
 "* xmodmap /full/path/xmodmap.hu\n"
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
+
+#: gkb-new/prop.c:127 gkb-new/prop.c:195
+msgid "Normal"
+msgstr "Κανονικό"
+
+#: gkb-new/prop.c:128 gkb-new/prop.c:199
+msgid "Big"
+msgstr "Μεγάλο"
+
+#: gkb-new/prop.c:146 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "Σημαία"
+
+#: gkb-new/prop.c:147 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: gkb-new/prop.c:148 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Σημαία και Ετικέτ"
+
+#: gkb-new/prop.c:284 modemlights/properties.c:374
+msgid "Display"
+msgstr "Εμφάνιση"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:304
+#, fuzzy
+msgid "_Appearance: "
+msgstr "Εμφάνιση "
+
+#: gkb-new/prop.c:311
+#, fuzzy
+msgid "Applet _size: "
+msgstr "Μέγεθος εφαρμογιδίου "
+
+#: gkb-new/prop.c:337
+msgid "Hotkey for switching between layouts"
+msgstr "Ενεργό πλήκτρο για εναλλαγή μεταξύ διατάξεων"
+
+#: gkb-new/prop.c:349
+msgid "Grab hotkey"
+msgstr "Άδραγμα ενεργού πλήκτρου"
+
+#. Create property box
+#: gkb-new/prop.c:410
+#, fuzzy
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "Εναλλάκτης Πληκτρολογίου του GNOME"
+
+#: gkb-new/prop.c:425
+#, fuzzy
+msgid "_Keymaps"
+msgstr "Χάρτες πλήκτρων"
+
+#: gkb-new/prop.c:437
+#, fuzzy
+msgid "_Options"
+msgstr "Επιλογές"
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
@@ -1209,24 +1328,21 @@ msgstr ""
 msgid "Gtik Applet Factory"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:712
 #, fuzzy
 msgid "Stock Ticker"
 msgstr "Τηλέτυπο Χρηματιστιριακών Τίτλων του GNOME"
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
+#: gtik/GNOME_GtikApplet.xml.h:4
+#, fuzzy
+msgid "_Refresh"
 msgstr "Ανανέωση"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:198
 msgid "No data available or properties not set"
 msgstr "Δεν υπάρχουν διαθέσιμα δεδομένα ή οι ιδιότητες δεν έχουν ρυθμιστεί"
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr "Ο Ελεκτής Χρηματιστιριακών Τίτλων του GNOME"
-
-#: gtik/gtik.c:670
+#: gtik/gtik.c:714
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1240,134 +1356,117 @@ msgstr ""
 "επαναδιανείμετε κάτω από τις συνθήκες της Δημόσιας  Γενικής Άδειας "
 "Λογισμικού GNU. Το εικονίδιο του λογοτύπου είναι προσφορά του "
 
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1107
 #, fuzzy
 msgid "_New Symbol:"
 msgstr "Νέο Σύμβολο:"
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1129
 #, fuzzy
 msgid "_Remove Selected"
 msgstr "Διαγραφή Επιλεγμένου"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-#, fuzzy
-msgid "_Use HTTP proxy"
-msgstr "Χρήση proxy"
-
-#: gtik/gtik.c:1232
-#, fuzzy
-msgid "_Location :"
-msgstr "Τοποθεσία:"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr ""
-
-#: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr ""
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-#, fuzzy
-msgid "Us_ername:"
-msgstr "Όνομα χρήστη:"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-#, fuzzy
-msgid "Pass_word:"
-msgstr "Κωδικός:"
-
-#: gtik/gtik.c:1357
+#: gtik/gtik.c:1183
 #, fuzzy
 msgid "Stock Ticker Preferences"
 msgstr "Ιδιότητες του Stock Ticker του Gnome"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1204
 #, fuzzy
 msgid "Update Fre_quency in minutes:"
 msgstr "Συχνότητα Ανανέωσης σε λεπτά:"
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1222
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Εισαγάγετε σύμβολα διαχωρισμένα με \"+\" στο παρακάτω κουτί."
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1229
 #, fuzzy
 msgid "Displa_y only symbols and price"
 msgstr "Εμφάνιση μόνο των συμβόλων και των τιμών"
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1232
 #, fuzzy
 msgid "Scroll _left to right"
 msgstr "Κύλιση από αριστερά προς δεξιά"
 
-#: gtik/gtik.c:1412
-#, fuzzy
-msgid "Display a_rrows instead of -/+"
-msgstr "Εμφάνιση τόξων αντί των -/+"
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1235
 #, fuzzy
 msgid "_Enable scroll buttons"
 msgstr "Ενεργοποίηση κουμπιών κύλισης"
 
 #. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1257
 #, fuzzy
 msgid "+ C_olor"
 msgstr "+ Χρώμα"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1276
 #, fuzzy
 msgid "- Colo_r"
 msgstr "- Χρώμα"
 
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1294
+#, fuzzy
+msgid "Back_ground Color"
+msgstr "Παρασκήνιο"
+
+#: gtik/gtik.c:1316
 #, fuzzy
 msgid "Stock Sy_mbol:"
 msgstr "Σύμβολο Τίτλου:"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1330
 #, fuzzy
 msgid "Stock C_hange:"
 msgstr "Αλλαγή Τίτλου:"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1354
 #, fuzzy
 msgid "_Symbols"
 msgstr "Σύμβολα"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1356
 #, fuzzy
 msgid "_Behavior"
 msgstr "Συμπεριφορά"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1358
 #, fuzzy
 msgid "_Appearance"
 msgstr "Εμφάνιση"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-#, fuzzy
-msgid "_Proxy"
-msgstr "Χρήση Proxy"
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1408
 msgid "Skip forward"
 msgstr ""
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1409
 msgid "Skip backword"
 msgstr ""
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1410
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+
+#: gtik/gtik.c:1597
 msgid "(No"
 msgstr "(Όχι"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1598
 msgid "Change "
 msgstr "Αλλαγή "
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+#, fuzzy
+msgid "_Forecast"
+msgstr "Πρόγνωση καιρού"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:5
+#, fuzzy
+msgid "_Update"
+msgstr "Ενημέρωση"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 #, fuzzy
@@ -1383,26 +1482,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr ""
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "Πρόγνωση καιρού"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "Ενημέρωση"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "O καιρός του GNOME"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Πνευματικά δικαιώματα (c)1999 Σ. Παπαδημητρίου"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 #, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
@@ -1413,89 +1501,92 @@ msgstr ""
 "\n"
 "Εφαρμογίδιο Μέτρησης Φόρτου Δικτύου."
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:193
+msgid "GNOME Weather"
+msgstr "O καιρός του GNOME"
+
+#: gweather/gweather-applet.c:321
 msgid "Updating..."
 msgstr "Ενημέρωση..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "Πρόγνωση καιρού"
+
+#: gweather/gweather-dialog.c:108
 msgid "Location:"
 msgstr "Τοποθεσία:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:116
 msgid "Update:"
 msgstr "Ενημέρωση:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:124
 msgid "Conditions:"
 msgstr "Συνθήκες:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:132
 msgid "Sky:"
 msgstr "Ουρανός:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "Θερμοκρασία:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:148
 msgid "Dew point:"
 msgstr "Επίπεδο πάχνης:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Humidity:"
 msgstr "Υγρασία:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:164
 msgid "Wind:"
 msgstr "Άνεμος:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:172
 msgid "Pressure:"
 msgstr "Βαρομετρική πίεση:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:180
 msgid "Visibility:"
 msgstr "Ορατότητα"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:279
 #, fuzzy
 msgid "C_urrent conditions"
 msgstr "Παρούσες συνθήκες"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 #, fuzzy
 msgid "ForeCast Report"
 msgstr "Πρόγνωση καιρού"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr ""
 
-#: gweather/gweather-dialog.c:300
-#, fuzzy
-msgid "_Forecast"
-msgstr "Πρόγνωση καιρού"
-
-#: gweather/gweather-dialog.c:332
+#: gweather/gweather-dialog.c:327
 #, fuzzy
 msgid "_Visit Weather.com"
 msgstr "Επισκεφθείτε το Weather.com"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr ""
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 #, fuzzy
 msgid "Click to Enter Weather.com"
 msgstr "Επισκεφθείτε το Weather.com"
 
-#: gweather/gweather-dialog.c:341
+#: gweather/gweather-dialog.c:336
 #, fuzzy
 msgid "_Radar map"
 msgstr "Χάρτης ραντάρ"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:408
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1505,7 +1596,7 @@ msgstr ""
 "Παρακαλώ δοκιμάστε την πρόγνωση πολιτείας· υπενθύμιση: προγνώσεις\n"
 "από το IWIN είναι διαθέσιμες μόνο για πόλεις των ΗΠΑ."
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:410
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1516,139 +1607,118 @@ msgstr ""
 "είναι διαθέσιμες μόνο για πόλεις των ΗΠΑ."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:106
 #, fuzzy
 msgid "Location view"
 msgstr "Τοποθεσία"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:106
 #, fuzzy
 msgid "Select Location from the list"
 msgstr "Επιλογή εικονιδίου για προσαρτημένο"
 
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "URL Entry"
-msgstr " Ιστορικό URL "
-
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "Enter the Location"
-msgstr "Τοποθεσία"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr ""
-
-#: gweather/gweather-pref.c:128
-#, fuzzy
-msgid "User Entry"
-msgstr "Χρήση proxy"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr ""
-
-#: gweather/gweather-pref.c:129
-#, fuzzy
-msgid "Password Entry"
-msgstr "Κωδικός:"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr ""
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:108
 #, fuzzy
 msgid "Update spin button"
 msgstr "Συχνότητα ενημέρωσης (δευτερόλεπτα):"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:108
 msgid "Spinbutton for updating"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:109
 msgid "Address Entry"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:109
 msgid "Enter the URL"
 msgstr ""
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:521
 #, fuzzy
 msgid "Weather Preferences"
 msgstr "Ιδιότητες Καιρού του GNOME"
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:567
 #, fuzzy
 msgid "_Location"
 msgstr "Τοποθεσία"
 
-#: gweather/gweather-pref.c:775
-#, fuzzy
-msgid "Locat_ion :"
-msgstr "Τοποθεσία:"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr ""
-
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:598
 #, fuzzy
 msgid "_Automatically update every"
 msgstr "Αυτόματη ανανέωση κάθε"
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:604
 #, fuzzy
 msgid "Use _metric system units"
 msgstr "Χρήση μετρικού συστήματος"
 
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:610
 #, fuzzy
 msgid "Enable _detailed forecast"
 msgstr "Ενεργοποίηση λεπτομερούς πρόγνωσης"
 
-#: gweather/gweather-pref.c:891
+#: gweather/gweather-pref.c:617
 #, fuzzy
 msgid "Enable _radar map"
 msgstr "Ενεργοποίηση χάρτη ραντάρ"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:623
 msgid "Use cus_tom address for radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:634
 msgid "A_ddress :"
 msgstr ""
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:646
 msgid "Updates"
 msgstr "Ενημερώσεις"
 
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:652
 #, fuzzy
 msgid "_Automatically update every "
 msgstr "Αυτόματη ενημέρωση κάθε "
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:672
 msgid "minute(s)"
 msgstr "λεπτό(ά)"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:683
 msgid "Miscellaneous"
 msgstr "Διάφορα"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
+#: gweather/gweather-pref.c:701 mini-commander/src/preferences.c:953
 #: modemlights/properties.c:409
 #, fuzzy
 msgid "_General"
 msgstr "Γενικά"
+
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "Gnotices"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr ""
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "Άρθρα"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "Οδόμετρο"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -2851,11 +2921,23 @@ msgstr "Άγνωστη"
 msgid "Retrieval failed"
 msgstr "Η ανάκτηση απέτυχε"
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/about.c:62
+#: mini-commander/src/mini-commander_applet.c:313
+#, fuzzy
+msgid "Command Line"
+msgstr "Εντολή"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Mini-Commander"
+msgstr "Μίνι-Δοιηκητής"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+#, fuzzy
+msgid "MiniCommander Applet Factory"
 msgstr "Εφαρμογίδιο Mini-Commander"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/about.c:65
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2915,26 +2997,17 @@ msgstr "εκκίνηση..."
 msgid "autocompleted"
 msgstr "συμπλήρωθηκε αυτόματα"
 
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr "άδειο ιστορικό"
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "Ιστορικό εντολών"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:514
 msgid "Start program"
 msgstr "Εκκίνηση προγράμματος"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:553
 #, fuzzy
 msgid "Command line"
 msgstr "Εντολή"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:554
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
@@ -2945,21 +3018,6 @@ msgstr "σφάλμα fork"
 #: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "τερματισμός παιδιού"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-#, fuzzy
-msgid "Command Line"
-msgstr "Εντολή"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
-msgstr "Μίνι-Δοιηκητής"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
-msgid "MiniCommander Applet Factory"
-msgstr "Εφαρμογίδιο Mini-Commander"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -3119,25 +3177,27 @@ msgstr "Μακροεντολές"
 msgid "Adjust the sound volume"
 msgstr ""
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:777
 #, fuzzy
 msgid "Volume Control"
 msgstr "Έλεγχος WWW"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
-msgstr ""
+#, fuzzy
+msgid "_Mute"
+msgstr "Περίγραμμα"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "Εκτέλεση Μίκτη Ήχου..."
+#, fuzzy
+msgid "_Run Volume Control..."
+msgstr "Έλεγχος WWW"
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:132
 #, fuzzy
 msgid "Volume Control (muted)"
 msgstr "Έλεγχος WWW"
 
-#: mixer/mixer.c:183
+#: mixer/mixer.c:184
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3145,38 +3205,38 @@ msgstr ""
 "προειδοποίηση: αυτή η έκδοση του gmix μεταγλωττίστηκε με διαφορετική έκδοση\n"
 "του soundcard.h.\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:195
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr ""
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr ""
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:205
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr ""
 
-#: mixer/mixer.c:516
+#: mixer/mixer.c:531
 #, fuzzy
 msgid "Volume Controller"
 msgstr "Έλεγχος WWW"
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:532
 msgid "Use Up/Down arrow keys to change volume"
 msgstr ""
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:778
 msgid "(C) 2001 Richard Hult"
 msgstr ""
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:779
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:953
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 
@@ -3186,14 +3246,11 @@ msgid "Internet"
 msgstr "Άλλο"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "Ενδείξεις μόντεμ"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Εφαρμογίδιο ενδείξεων modem"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:226
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3204,7 +3261,7 @@ msgstr ""
 "Οι ενδεικτικές λυχνίες ξεκινώντας από πάνω ή αριστερά είναι TX (αποστολή)\n"
 "and RX (λήψη)"
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:556
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3212,16 +3269,16 @@ msgstr ""
 "Είστε συνδεδεμένοι.\n"
 "Επιθυμείτε να αποσυνδεθείτε;"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:571
 msgid "Do you want to connect?"
 msgstr "Επιθυμείτε να συνδεθείτε;"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:599
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "Ελήφθησαν %#.1fMb / απεστάλησαν %#.1fMb / χρόνος: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:604
 msgid "not connected"
 msgstr "χωρίς σύνδεση"
 
@@ -3371,35 +3428,30 @@ msgstr "Ορισμός των επιλογών ως εξ' ορισμού"
 msgid "_Advanced"
 msgstr "Για προχωρημένους"
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Φόρτος επεξεργαστή"
-
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 #, fuzzy
 msgid "A system load indicator"
 msgstr "Ενδείκτης κορυφής"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
 #, fuzzy
 msgid "System Monitor"
 msgstr "Έλεγχος Ήχου"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #, fuzzy
-msgid "Run detailed system monitor"
+msgid "_Run detailed system monitor"
 msgstr "Χρήση μετρικού συστήματος"
+
+#: multiload/cpuload.c:39
+msgid "CPU Load"
+msgstr "Φόρτος επεξεργαστή"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "Μέσος Φόρτος"
 
-#: multiload/main.c:53
-#, fuzzy
-msgid "System Monitor Applet"
-msgstr "Εφαρμογίδιο Ελέγχου Ήχου"
-
-#: multiload/main.c:55
+#: multiload/main.c:77
 #, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
@@ -3410,31 +3462,32 @@ msgstr ""
 "Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU (GNU general public license).\n"
 "Παρακολουθεί τον ελεύθερο και κατειλλημένο χώρο στους σκληρούς σας δίσκους."
 
-#: multiload/main.c:177
+#: multiload/main.c:205
 #, fuzzy
 msgid "Processor"
 msgstr "Βαρομετρική πίεση:"
 
-#: multiload/main.c:179
+#: multiload/main.c:207
 #, fuzzy
 msgid "Memory"
 msgstr "Φόρτος μνήμης"
 
-#: multiload/main.c:181
+#: multiload/main.c:209
 msgid "Network"
 msgstr "Δίκτυο"
 
-#: multiload/main.c:183
+#: multiload/main.c:211
 #, fuzzy
 msgid "Swap File"
 msgstr "Δείγματα"
 
-#: multiload/main.c:185
+#: multiload/main.c:213
 #, fuzzy
 msgid "Resource"
 msgstr "Επαναφορά"
 
-#: multiload/main.c:197
+#: multiload/main.c:225
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3650,46 +3703,40 @@ msgstr ""
 msgid "Applications"
 msgstr "Επιλογές"
 
-#: panel-menu/panel-menu.c:684
-#, fuzzy
-msgid "PanelMenu Applet"
-msgstr "Εφαρμογίδιο Μίκτη"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr ""
-
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu-common.c:727
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:515
 #, fuzzy
 msgid "Create directory item..."
 msgstr "Δημιουργία καταλόγου χρήστη: %s\n"
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:523
 #, fuzzy
 msgid "Home"
 msgstr "Ένταση"
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:594
 msgid "Edit directory item..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:680 panel-menu/panel-menu-path.c:728
 msgid "_Path:"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:644
-#, fuzzy
+#: panel-menu/panel-menu-directory.c:688
 msgid "..."
-msgstr "Βοήθεια..."
+msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:698
 msgid "_Depth level:"
+msgstr ""
+
+#: panel-menu/panel-menu-directory.c:795
+msgid "Path specified is currently not a valid directory."
 msgstr ""
 
 #: panel-menu/panel-menu-documents.c:397
@@ -3748,26 +3795,26 @@ msgstr "Μέτρηση"
 msgid "_Applications Menu"
 msgstr "Επιλογές"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:114
 #, fuzzy
 msgid "Select an icon for the Applications menu"
 msgstr "Επιλογή εικονιδίου για προσαρτημένο"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:131
 msgid "_Preferences Menu"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:142
 #, fuzzy
 msgid "Ac_tions Menu"
 msgstr "Επιλογές"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:153
 #, fuzzy
 msgid "_Windows Menu"
 msgstr "Άνεμος:"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:164
 msgid "W_orkspaces Menu"
 msgstr ""
 
@@ -3779,6 +3826,106 @@ msgstr "Άνεμος:"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr ""
+
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr ""
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr ""
+
+#: panel-menu/panel-menu.c:692
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr ""
+
+#~ msgid "CD Player Applet"
+#~ msgstr "Εφαρμογίδιο Αναπαραγωγής CD"
+
+#~ msgid "Character Picker"
+#~ msgstr "Επιλογέας χαρακτήρων"
+
+#~ msgid "Drive Mount Applet"
+#~ msgstr "Εφαρμογίδιο προσάρτησης δίσκων"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "gEyes"
+#~ msgstr "gEyes"
+
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "Εφαρμογίδιο Εναλλαγής Πληκτρολογίου του GNOME"
+
+#~ msgid "The GNOME Stock Ticker"
+#~ msgstr "Ο Ελεκτής Χρηματιστιριακών Τίτλων του GNOME"
+
+#, fuzzy
+#~ msgid "_Use HTTP proxy"
+#~ msgstr "Χρήση proxy"
+
+#, fuzzy
+#~ msgid "_Location :"
+#~ msgstr "Τοποθεσία:"
+
+#, fuzzy
+#~ msgid "Us_ername:"
+#~ msgstr "Όνομα χρήστη:"
+
+#, fuzzy
+#~ msgid "Pass_word:"
+#~ msgstr "Κωδικός:"
+
+#, fuzzy
+#~ msgid "Display a_rrows instead of -/+"
+#~ msgstr "Εμφάνιση τόξων αντί των -/+"
+
+#, fuzzy
+#~ msgid "_Proxy"
+#~ msgstr "Χρήση Proxy"
+
+#, fuzzy
+#~ msgid "URL Entry"
+#~ msgstr " Ιστορικό URL "
+
+#, fuzzy
+#~ msgid "Enter the Location"
+#~ msgstr "Τοποθεσία"
+
+#, fuzzy
+#~ msgid "User Entry"
+#~ msgstr "Χρήση proxy"
+
+#, fuzzy
+#~ msgid "Password Entry"
+#~ msgstr "Κωδικός:"
+
+#, fuzzy
+#~ msgid "Locat_ion :"
+#~ msgstr "Τοποθεσία:"
+
+#~ msgid "Mini-Commander Applet"
+#~ msgstr "Εφαρμογίδιο Mini-Commander"
+
+#~ msgid "history list empty"
+#~ msgstr "άδειο ιστορικό"
+
+#~ msgid "Command history"
+#~ msgstr "Ιστορικό εντολών"
+
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "Εκτέλεση Μίκτη Ήχου..."
+
+#~ msgid "Modem Lights Applet"
+#~ msgstr "Εφαρμογίδιο ενδείξεων modem"
+
+#, fuzzy
+#~ msgid "System Monitor Applet"
+#~ msgstr "Εφαρμογίδιο Ελέγχου Ήχου"
+
+#, fuzzy
+#~ msgid "PanelMenu Applet"
+#~ msgstr "Εφαρμογίδιο Μίκτη"
 
 #, fuzzy
 #~ msgid "Laptop battery monitor applet"
@@ -3855,9 +4002,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Προειδοποίηση: Ο κωδικός σας θα αποθηκευτεί ως\n"
 #~ "μη-κρυπτογραφημένο κείμενο σε προσωπικό αρχείο ρυθμίσεων."
-
-#~ msgid "General"
-#~ msgstr "Γενικά"
 
 #~ msgid "Another update already in progress!\n"
 #~ msgstr "Μια άλλη ενημέρωση βρίσκεται ήδη σε εξέλιξη!\n"
@@ -3953,8 +4097,8 @@ msgstr ""
 #~ msgid ""
 #~ "Since you are root, would you like to set the system's default timezone?"
 #~ msgstr ""
-#~ "Καθότι είστε υπερχρήστης (root), θέλετε να καθορίσετε την εξ' ορισμού ζώνη "
-#~ "ώρας του συστήματος;"
+#~ "Καθότι είστε υπερχρήστης (root), θέλετε να καθορίσετε την εξ' ορισμού "
+#~ "ζώνη ώρας του συστήματος;"
 
 #~ msgid "My Title"
 #~ msgstr "Ο τίτλος μου"
@@ -4026,9 +4170,6 @@ msgstr ""
 #~ msgid "Low Charge Threshold:"
 #~ msgstr "Όριο χαμηλού φορτίου:"
 
-#~ msgid "Applet Mode:"
-#~ msgstr "Κατάσταση λειτουργίας εφαρμογιδίου"
-
 #~ msgid "Graph"
 #~ msgstr "Γράφημα"
 
@@ -4058,9 +4199,6 @@ msgstr ""
 
 #~ msgid "Enable Low Battery Warning"
 #~ msgstr "Ενεργοποίηση προειδοποίησης αδύναμης μπαταρίας"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "Προειδοποίηση όταν το φορτίο μπαταρίας πέσει κάτω από:"
 
 #~ msgid "Enable Full-Charge Notification"
 #~ msgstr "Ενεργοποίηση ειδοποίησης πλήρους φόρτισης"
@@ -4110,9 +4248,9 @@ msgstr ""
 #~ "Gnome panel applet for copying and retrieving selections with a history "
 #~ "list. Released under GNU General Public Licence."
 #~ msgstr ""
-#~ "Εφαρμογίδιο του ταμπλώ του GNOME για αντιγραφή και ανάκτηση επιλογών με μια "
-#~ "λίστα ιστορικού. Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU General Public "
-#~ "Licence."
+#~ "Εφαρμογίδιο του ταμπλώ του GNOME για αντιγραφή και ανάκτηση επιλογών με "
+#~ "μια λίστα ιστορικού. Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU General "
+#~ "Public Licence."
 
 #~ msgid "John Ellis <johne@bellatlantic.net>"
 #~ msgstr "John Ellis <johne@bellatlantic.net>"
@@ -4130,9 +4268,9 @@ msgstr ""
 #~ "arrives."
 #~ msgstr ""
 #~ "Κυκλοφορεί σύμφωνα με την άδεια χρήσης GNU general public license.\n"
-#~ "Στοιχειώδες ψηφιακό ρολόι με την ημερομηνία σε βοήθημα.  Επιλογη απεικόνισης "
-#~ "12/24 ωρών. Το αναβόσβημα για αλληλογραφία μπορεί να είναι για αδιάβαστη "
-#~ "αλληλογραφία, ή μόνο όταν φτάσει νέα αλληλογραφία."
+#~ "Στοιχειώδες ψηφιακό ρολόι με την ημερομηνία σε βοήθημα.  Επιλογη "
+#~ "απεικόνισης 12/24 ωρών. Το αναβόσβημα για αλληλογραφία μπορεί να είναι "
+#~ "για αδιάβαστη αλληλογραφία, ή μόνο όταν φτάσει νέα αλληλογραφία."
 
 #~ msgid "%a, %b %d"
 #~ msgstr "%a, %b %d"
@@ -4252,11 +4390,11 @@ msgstr ""
 #~ msgstr "Πνευματικά δικαιώματα (C) To Free Software Foundation"
 
 #~ msgid ""
-#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
-#~ "Guaranteed to be a productivity buster."
+#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome "
+#~ "Panel. Guaranteed to be a productivity buster."
 #~ msgstr ""
-#~ "Το αγαπημένο παιχνίδι του Sam Lloyd, τώρα για την απόλαυσή σας, στο ταμπλώ "
-#~ "του Gnome. Εγγυημένη υπόσκαψη της παραγωγικότητάς σας."
+#~ "Το αγαπημένο παιχνίδι του Sam Lloyd, τώρα για την απόλαυσή σας, στο "
+#~ "ταμπλώ του Gnome. Εγγυημένη υπόσκαψη της παραγωγικότητάς σας."
 
 #~ msgid "Can't create fifteen applet!"
 #~ msgstr "Δημιουργία εφαρμογιδίου fifteen αδύνατη!"
@@ -4318,9 +4456,6 @@ msgstr ""
 #~ msgid "Lower Note"
 #~ msgstr "Χαμήλωμα σημειώματος"
 
-#~ msgid "Hide Note"
-#~ msgstr "Απόκρυψη σημειώματος"
-
 #~ msgid "Delete Note"
 #~ msgstr "Διαγραφή σημειώματος"
 
@@ -4380,15 +4515,6 @@ msgstr ""
 #~ msgid "Regions"
 #~ msgstr "Περιοχές"
 
-#~ msgid "knots"
-#~ msgstr "Gnotices"
-
-#~ msgid "miles"
-#~ msgstr "Άρθρα"
-
-#~ msgid "kilometers"
-#~ msgstr "Οδόμετρο"
-
 #~ msgid "Location vector needs to be 4 elements long"
 #~ msgstr "Το διάνυσμα τοποθεσίας απαιτεί να είναι 4 στοιχεία μακρύ"
 
@@ -4429,8 +4555,8 @@ msgstr ""
 #~ msgstr "(c) 1998 το Free Software Foundation"
 
 #~ msgid ""
-#~ "The mixer applet gives you instant access to setting the master volume level "
-#~ "on your soundcard device"
+#~ "The mixer applet gives you instant access to setting the master volume "
+#~ "level on your soundcard device"
 #~ msgstr ""
 #~ "Το εφαρμογίδιο μείκτη σας δίνει άμεση πρόσβαση στη ρύθμιση της κυρίως "
 #~ "έντασης της κάρτας ήχου"
@@ -4483,9 +4609,6 @@ msgstr ""
 #~ msgid "Maximum:"
 #~ msgstr "Μέγιστο:"
 
-#~ msgid "Speed:"
-#~ msgstr "Ταχύτητα:"
-
 #~ msgid "Use default properties"
 #~ msgstr "Χρήση εξ' ορισμού ιδιοτήτων"
 
@@ -4532,11 +4655,11 @@ msgstr ""
 #~ msgstr "(C) 1999 To Free Software Foundation"
 
 #~ msgid ""
-#~ "a GNOME applet that tracks and measures the movements of your mouse pointer "
-#~ "across the desktop."
+#~ "a GNOME applet that tracks and measures the movements of your mouse "
+#~ "pointer across the desktop."
 #~ msgstr ""
-#~ "Ένα εφαρμογίδιο GNOME που ανιχνεύει και μετράει τις κινήσεις του δείκτη του "
-#~ "ποντικιού σας κατά μήκος της επιφάνειας εργασίας."
+#~ "Ένα εφαρμογίδιο GNOME που ανιχνεύει και μετράει τις κινήσεις του δείκτη "
+#~ "του ποντικιού σας κατά μήκος της επιφάνειας εργασίας."
 
 #~ msgid "Odometer setting"
 #~ msgstr "Ρυθμίσεις οδόμετρου"
@@ -4560,9 +4683,9 @@ msgstr ""
 #~ msgstr "Το Εφαρμογίδιο ΓρήγορηΕκκίνηση"
 
 #~ msgid ""
-#~ "This applet adds some pretty small icons for your launchers to your panel, "
-#~ "like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
-#~ "launchers."
+#~ "This applet adds some pretty small icons for your launchers to your "
+#~ "panel, like the windowish QuickLaunch toolbar, avoiding that annoying "
+#~ "huge GNOME launchers."
 #~ msgstr ""
 #~ "Αυτό το εφαρμογίδιο προσθέτει μερικά πολύ όμορφα εικονίδια για τους "
 #~ "εκκινητές στο ταμπλώ σας, όπως η παραθυρική μπάρα ΓρήγορηΕκκίνηση, "
@@ -4666,8 +4789,8 @@ msgstr ""
 #~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 #~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 #~ "and several obscure ones. Try your luck with something interesting!\n"
-#~ "Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-#~ ".shtml\n"
+#~ "Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+#~ "shtml\n"
 #~ "\n"
 #~ "Recommendations:\n"
 #~ "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -4675,20 +4798,22 @@ msgstr ""
 #~ "- compressing pngs takes longer at higher ratios, but is still lossless"
 #~ msgstr ""
 #~ "Το είδος αρχείου ορίζεται από την κατάληξή του.\n"
-#~ "Εξ' ορισμού είδος αρχείου (αν δε δίνετε κατάληξη ή είναι άγνωστη) είναι το "
-#~ "miff.\n"
+#~ "Εξ' ορισμού είδος αρχείου (αν δε δίνετε κατάληξη ή είναι άγνωστη) είναι "
+#~ "το miff.\n"
 #~ "Αναγνωριζόμενες καταλήξεις είναι:\n"
 #~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 #~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 #~ "και μερικές παράξενες. Δοκιμάστε τη τύχη σας με κάτι ενδιαφέρον!\n"
-#~ "Για παράδειγμα, .html για χάρτη εικόνας (πελάτη). Θα πάρετε .gif, .html και\n"
+#~ "Για παράδειγμα, .html για χάρτη εικόνας (πελάτη). Θα πάρετε .gif, .html "
+#~ "και\n"
 #~ ".shtml\n"
 #~ "\n"
 #~ "Υποδείξεις:\n"
 #~ "Μικρό αρχείο, αρκετά καλή ποιότητα:   jpg, 75% ποιότητα\n"
 #~ "Κάπως μεγαλύτερο αρχείο αλλά χωρίς απώλειες: png, όσο πιο πολύ συμπίεση "
 #~ "θέλετε.\n"
-#~ "- η συμπίεση εικόνων PNG απαιτεί περισσότερο χρόνο σε μεγάλους συντελεστές,\n"
+#~ "- η συμπίεση εικόνων PNG απαιτεί περισσότερο χρόνο σε μεγάλους "
+#~ "συντελεστές,\n"
 #~ "όμως δεν υπεισέρχονται απώλειες ποιότητας"
 
 #~ msgid "View screenshot after saving it"
@@ -4717,39 +4842,44 @@ msgstr ""
 #~ "Χρήση υψηλής ποιότητας ενδιάμεσου στη παραγωγή εικόνας γρήγορης προβολής"
 
 #~ msgid ""
-#~ "(This'll chug loads of CPU, but will prevent compressing the image twice if "
-#~ "a\n"
+#~ "(This'll chug loads of CPU, but will prevent compressing the image twice "
+#~ "if a\n"
 #~ "lossy file format is used)\n"
 #~ "Don't use this if you're using a lossless compression format, or if you "
 #~ "cherish\n"
 #~ "speed and don't mind imperfection in your thumbnails."
 #~ msgstr ""
-#~ "(Αυτή η διαδικασία είναι περιορισμένη σε CPU, αλλά θα αποτρέψει τη συμπίεση\n"
+#~ "(Αυτή η διαδικασία είναι περιορισμένη σε CPU, αλλά θα αποτρέψει τη "
+#~ "συμπίεση\n"
 #~ "της εικόνας δύο φορές, στην περίπτωση που γίνει χρήση μορφής εικόνας με "
 #~ "απώλειες)\n"
 #~ "Μη το χρησιμοποιείσετε αν κάνετε χρήση μορφής συμπίεσης χωρίς απώλειες ή\n"
-#~ "προσέχετε την επεξεργαστική ισχύ και δε σας πειράζουν ατέλειες στις εικόνες\n"
+#~ "προσέχετε την επεξεργαστική ισχύ και δε σας πειράζουν ατέλειες στις "
+#~ "εικόνες\n"
 #~ "γρήγορης προβολής."
 
 #~ msgid "Thumbnails"
 #~ msgstr "Εικόνες Γρήγορης Προβολής"
 
 #~ msgid ""
-#~ "All post-processing, frill and spurious options will chug more CPU than a\n"
+#~ "All post-processing, frill and spurious options will chug more CPU than "
+#~ "a\n"
 #~ "simple screenshot, due to the creation and then conversion of an "
 #~ "intermediate\n"
 #~ "image. Intensive operations may take some time on less spiffy CPUs."
 #~ msgstr ""
-#~ "Όλη η μετα-επεξεργασία, επιλογές και ρυθμίσεις, θα καταναλώσουν περισσότερη\n"
+#~ "Όλη η μετα-επεξεργασία, επιλογές και ρυθμίσεις, θα καταναλώσουν "
+#~ "περισσότερη\n"
 #~ "επεξεργαστική ισχύ από μια απλή εικόνα γρήγορης προβολής, εξαιτίας της\n"
 #~ "δημιουργίας και έπειτα μετατροπής μιας ενδιάμεσης εικόνας.\n"
-#~ "Βαριές λειτουργίες θα πάρουν περισσότερο σε όχι τόσο γρήγορους επεξεργαστές."
+#~ "Βαριές λειτουργίες θα πάρουν περισσότερο σε όχι τόσο γρήγορους "
+#~ "επεξεργαστές."
 
 #~ msgid ""
 #~ "Normalize image (Span full range of color values to enhance contrast)"
 #~ msgstr ""
-#~ "Κανονικοποίηση εικόνας (Χρήση όλης της περιοχής χρωμάτων για να ενισχυθεί η "
-#~ "αντίθεση)"
+#~ "Κανονικοποίηση εικόνας (Χρήση όλης της περιοχής χρωμάτων για να ενισχυθεί "
+#~ "η αντίθεση)"
 
 #~ msgid "Equalize image (Perform histogram equalization)"
 #~ msgstr "Αντιστάθμιση εικόνας (Εκτέλεση αντιστάθμισης ιστογράμματος)"
@@ -4793,8 +4923,8 @@ msgstr ""
 #~ msgid ""
 #~ "When finished, send image and thumbnail filenames to script/program below"
 #~ msgstr ""
-#~ "Στο τερματισμό, αποστολή αρχείων εικόνας και αυτό της γρήγορης προβολής στο "
-#~ "παρακάτω πρόγραμμα"
+#~ "Στο τερματισμό, αποστολή αρχείων εικόνας και αυτό της γρήγορης προβολής "
+#~ "στο παρακάτω πρόγραμμα"
 
 #~ msgid "Script or program to launch:"
 #~ msgstr "Πρόγραμμα εντολών ή εκτελέσιμο για εκκίνηση:"
@@ -4805,7 +4935,8 @@ msgstr ""
 #~ "specified on the commandline as follows:\n"
 #~ "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
 #~ "Hint: I use a script to update my website screenshot page.\n"
-#~ "An example script should've been included in the tarball, or at my website."
+#~ "An example script should've been included in the tarball, or at my "
+#~ "website."
 #~ msgstr ""
 #~ "Το πρόγραμμα εντολών ή εκτελέσιμο θα εκκινηθεί μετά τη δημιουργία των "
 #~ "εικόνων\n"
@@ -4815,8 +4946,8 @@ msgstr ""
 #~ "Υπόδειξη: Χρησιμοποιώ ένα πρόγραμμα εντολών για να ενημερώνω τη σελίδα "
 #~ "αρπαγής\n"
 #~ "εικόνων του δικτυακού μου τόπου.\n"
-#~ "Ένα παράδειγμα προγράμματος εντολών μπορείτε να βρείτε στο πηγαίο κώδικα ή "
-#~ "στο δικτυακό μου τόπο."
+#~ "Ένα παράδειγμα προγράμματος εντολών μπορείτε να βρείτε στο πηγαίο κώδικα "
+#~ "ή στο δικτυακό μου τόπο."
 
 #~ msgid "Frills"
 #~ msgstr "Διακόσμηση και Εξαγωγή"
@@ -4952,9 +5083,6 @@ msgstr ""
 #~ msgid "Smooth type"
 #~ msgstr "Ομαλή εκτύπωση"
 
-#~ msgid "Speed"
-#~ msgstr "Ταχύτητα"
-
 #~ msgid "Delay when wrapping text:"
 #~ msgstr "Καθυστέρηση κατά την αλλαγή γραμμής:"
 
@@ -5081,14 +5209,15 @@ msgstr ""
 #~ "\n"
 #~ "If your sound card is not fully 100% FULL DUPLEX (can do input and output "
 #~ "simultaneously),\n"
-#~ "then this may touch bugs in sound drivers/esound that may hang the system.\n"
+#~ "then this may touch bugs in sound drivers/esound that may hang the "
+#~ "system.\n"
 #~ "\n"
 #~ "You have been warned!"
 #~ msgstr ""
 #~ "Έχετε ενεργοποιήσει την επιλογή \"Είσοδος ήχου οθόνης\".\n"
 #~ "\n"
-#~ "Αν η κάρτα ήχου σας δεν είναι πλήρως 100% διπλής κατεύθυνσης (να μπορεί να "
-#~ "χειρίζεται είσοδο και έξοδο ταυτόχρονα), \n"
+#~ "Αν η κάρτα ήχου σας δεν είναι πλήρως 100% διπλής κατεύθυνσης (να μπορεί "
+#~ "να χειρίζεται είσοδο και έξοδο ταυτόχρονα), \n"
 #~ "αυτό μπορεί να ενεργοποιεί λάθη  σε οδηγούς ήχου/esound που μπορεί να "
 #~ "κρεμάσουν το σύστημα.\n"
 #~ "\n"
@@ -5187,9 +5316,10 @@ msgstr ""
 #~ "This module monitors a path for core dumps, if one is\n"
 #~ " found it is time stamped and a backtrace logged (using gdb)."
 #~ msgstr ""
-#~ "Αυτή η μονάδα παρακολουθεί ένα μονοπάτι για αρχεία μνήμης (core), άν κάποιος "
-#~ "\n"
-#~ "βρεθεί μαρκάρεται χρονικά και η αντίστροφη ιχνηλάτηση καταγράφεται (με gdb)."
+#~ "Αυτή η μονάδα παρακολουθεί ένα μονοπάτι για αρχεία μνήμης (core), άν "
+#~ "κάποιος \n"
+#~ "βρεθεί μαρκάρεται χρονικά και η αντίστροφη ιχνηλάτηση καταγράφεται (με "
+#~ "gdb)."
 
 #~ msgid "Load Average information (Tick-a-Stat)"
 #~ msgstr "Πληροφορίες Μέσου Φορτίου (Tick-a-Stat)"
@@ -5205,9 +5335,6 @@ msgstr ""
 
 #~ msgid "Check every:"
 #~ msgstr "Έλεγχος κάθε:"
-
-#~ msgid "Warning options"
-#~ msgstr "Επιλογές προειδοποίησης"
 
 #~ msgid "Show pop-up dialog for this event"
 #~ msgstr "Εμφάνιση διαλόγου για αυτό το γεγονός"
@@ -5275,9 +5402,6 @@ msgstr ""
 
 #~ msgid "date"
 #~ msgstr "ημερομηνία"
-
-#~ msgid "Show:"
-#~ msgstr "Εμφάνιση:"
 
 #~ msgid "News and information ticker"
 #~ msgstr "Τηλέτυπο νέων και πληροφοριών"
@@ -5501,9 +5625,6 @@ msgstr ""
 #~ msgid "Browser Name:"
 #~ msgstr "Όνομα Φυλλομετρητή:"
 
-#~ msgid "Browser Command:"
-#~ msgstr "Εντολή Φυλλομετρητή:"
-
 #~ msgid "New Window Option:"
 #~ msgstr "Νέα Επιλογή Παραθύρου:"
 
@@ -5583,12 +5704,3 @@ msgstr ""
 
 #~ msgid "Basic"
 #~ msgstr "Βασικές"
-
-#~ msgid "Greece"
-#~ msgstr "Ελλάδα"
-
-#~ msgid "Greek"
-#~ msgstr "Ελληνικά"
-
-#~ msgid "iso-8859-7"
-#~ msgstr "iso-8859-7"
