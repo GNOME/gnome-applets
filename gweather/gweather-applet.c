@@ -188,14 +188,11 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     /* PUSH */
     gtk_widget_push_visual (gdk_rgb_get_visual ());
     gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-/*
-    if ((gweather_applet = applet_widget_new("gweather")) == NULL)
-        g_error(_("Cannot create applet!\n"));
-*/
-	gtk_widget_realize(GTK_WIDGET(gw_applet->applet));
+
+    /*gtk_widget_realize(GTK_WIDGET(gw_applet->applet));
 
     gtk_widget_set_events(GTK_WIDGET(gw_applet->applet), gtk_widget_get_events(GTK_WIDGET(gw_applet->applet)) | \
-                          GDK_BUTTON_PRESS_MASK);
+                          GDK_BUTTON_PRESS_MASK);*/
 /*
     applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
 					   "forecast",
@@ -354,15 +351,18 @@ static void update_finish (WeatherInfo *info)
     gtk_pixmap_set(GTK_PIXMAP(gw_applet->pixmap), gw_applet->applet_pixmap, gw_applet->applet_mask);
 
     /* Update temperature text */
+   
     gtk_label_set_text(GTK_LABEL(gw_applet->label), weather_info_get_temp_summary(gw_applet->gweather_info));
-
+ 
     /* Resize as necessary */
     place_widgets(gw_applet);
 
     /* Update tooltip */
+
     s = weather_info_get_weather_summary(gw_applet->gweather_info);
     gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), s, NULL);
     g_free (s);
+
 
     /* Update timer */
     if (gw_applet->timeout_tag > 0)
