@@ -492,6 +492,7 @@ command_entry_update_color(void)
     
     /* change widget style */
     /* style = malloc(sizeof(Gtk_style)); */
+    gtk_widget_ensure_style(entry_command);
     style = gtk_style_copy(gtk_widget_get_style(entry_command));
     
     style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_fg_r;
