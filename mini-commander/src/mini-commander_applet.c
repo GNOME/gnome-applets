@@ -43,6 +43,7 @@
  
 #define COMMANDLINE_DEFAULT_ICON_SIZE 6
 
+static gboolean icons_initialized = FALSE;
 static GtkIconSize button_icon_size = 0;
 
 static const BonoboUIVerb mini_commander_menu_verbs [] = {
@@ -89,6 +90,9 @@ command_line_init_stock_icons ()
 
     GtkIconFactory *factory;
 
+    if (icons_initialized)
+	    return;
+
     factory = gtk_icon_factory_new ();
     gtk_icon_factory_add_default (factory);
 
@@ -97,6 +101,8 @@ command_line_init_stock_icons ()
     button_icon_size = gtk_icon_size_register ("mini-commander-icon",
                                                  COMMANDLINE_DEFAULT_ICON_SIZE,
                                                  COMMANDLINE_DEFAULT_ICON_SIZE);
+
+    icons_initialized = TRUE;
     g_object_unref (factory);
 
 }
