@@ -245,7 +245,7 @@ cdplayer_timeout_callback(gpointer data)
 static void
 start_gtcd_cb(GtkWidget *w, gpointer data)
 {
-    gnome_execute_shell(NULL, "gtcd");
+    gnome_execute_shell(NULL, "gnome-cd");
 }
 
 static void
