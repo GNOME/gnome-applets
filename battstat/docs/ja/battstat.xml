@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.0">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "2002年5月">
-  <!ENTITY applet "電池充電モニタ">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "2003 年 12 月">
+  <!ENTITY applet "バッテリー充電モニター">
 ]>
 
 <!-- 
@@ -20,310 +19,572 @@
 <article id="index" lang="ja">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
-  <articleinfo> 
-    <title>&applet;アプレットマニュアル V&manrevision;</title>
-    <copyright> 
-      <year>1999</year> 
-      <year>2000</year> 
-      <holder>Jorgen Pehrson</holder> 
+  <articleinfo>
+ <title>&applet; アプレットのマニュアル V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
     </copyright>
     <copyright>
       <year>2002</year>
       <holder>Trevor Curtis</holder>
     </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
     <copyright>
-      <year>2003</year>
-      <holder>鎌ヶ迫正俊 (日本語訳)</holder>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
     </copyright>
 
-    <publisher>
-      <publishername> GNOMEドキュメンテーションプロジェクト </publishername> 
-    </publisher> 
+   -->
 
+    <publisher> 
+      <publishername> GNOME ドキュメンテーションプロジェクト </publishername> 
+    </publisher> 
+  
     &legal;
-    <!-- This file  contains link to license for the documentation (GNU FDL),
-    and other legal stuff such as "NO WARRANTY" statement. Please do not change
-    any of this. -->
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
 
     <authorgroup> 
-      <author> 
-        <firstname>Jorgen </firstname> 
-        <surname> Pehrson</surname> 
-        <affiliation> 
-          <orgname>GNOMEドキュメンテーションプロジェクト</orgname> 
-          <address> <email>jp@spektr.eu.org</email> </address> 
-        </affiliation> 
-      </author> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME ドキュメンテーションチーム</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
       <author>
         <firstname>Trevor</firstname>
         <surname>Curtis</surname>
         <affiliation>
-          <orgname>GNOMEドキュメンテーションプロジェクト</orgname>
+          <orgname>GNOME ドキュメンテーションプロジェクト</orgname>
           <address> <email>tcurtis@somaradio.ca</email> </address>
         </affiliation>
       </author>
-      <othercredit role="translator">
-        <firstname>Masatoshi</firstname> 
-        <surname>KAMAGASAKO</surname> 
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
         <affiliation> 
-          <orgname>日本GNOMEユーザ会 翻訳チーム</orgname> 
-          <address> <email>emerald@gnome.gr.jp</email> </address> 
+          <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address>
         </affiliation>
-        <contrib>日本語訳</contrib>
-      </othercredit>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
     </authorgroup>
 
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
-    <legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>バッテリー充電モニタアプレットのマニュアル V&manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+          <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>バッテリー充電モニタアプレットのマニュアル V2.0</revnumber>
+        <date>2002 年 5 月</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo>このマニュアルは &applet; のバージョン &appletversion; について説明します。
+    </releaseinfo>
+                                                                                                  
+    <legalnotice> 
       <title>フィードバック</title>
-      <para>
-        この&applet;やマニュアルについてのバグレポートや提案は、<ulink url="ghelp:gnome-feedback" type="help">GNOMEフィードバックページ</ulink>を参照してください。
+      <para>&applet; アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、『<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>』を参照してください。
       </para>
-      <!-- Translators may also add here feedback address for translations -->
-      <para>
-        このマニュアルの日本語訳についての指摘や提案は<email>emerald@gnome.gr.jp</email>までお願いします。
-      </para>
-    </legalnotice> 
-  </articleinfo> 
+    </legalnotice>
+  </articleinfo>
 
   <indexterm zone="index"> 
-    <primary>バッテリ充電モニタ アプレット</primary>
+	 <primary>バッテリー充電モニタアプレット</primary> 
+  </indexterm> 
+
+  <indexterm zone="index"> 
+	 <primary>Battstat アプレット</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
-  <sect1 id="battsatt-introduction"> 
-    <title>はじめに</title> 
-    <para>
-      Figure 1のような外観を持つ<application>&applet;</application>は、あなたのラップトップパソコンの電源システムの状態を表示します。このアプレットをパネルに追加するには、パネルを右クリックし、<guimenuitem>パネルに追加 -> ユーティリティ -> 電池充電モニタ</guimenuitem>と選択します。
-    </para>
+  <sect1 id="battstat-introduction"><title>概要</title>
 
-    <figure id="mainwindow-fig"> 
-      <title>&applet; アプレット</title> 
-      <screenshot> 
-        <mediaobject> 
-          <imageobject>
-            <imagedata fileref="figures/battstat-applet.png" format="PNG"/> 
+    <figure id="battstat-applet-fig"> 
+        <title>&applet;アプレット</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
           </imageobject>
-          <!-- EPS versions of the figures are not required at the moment. -->
-          <!-- 
-          <imageobject>
-	    <imagedata fileref="figures/image.eps" format="EPS"/>
-          </imageobject>
-	  -->
-	  <textobject> 
-	    <phrase>&applet;アプレット</phrase>
-	  </textobject> 
-	</mediaobject> 
-      </screenshot> 
+          <textobject>
+            <phrase>&applet; アプレット。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
     </figure>
+
+    <para>
+      <application>&applet;</application> アプレットは、お使いのラップトップの電源サブシステムの状態を表示します。アプレットを構成してパネル内に次のコンポーネントを表示できます。
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          電源の接続状態 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          バッテリの状態
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          バッテリの充電率
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add">
+      <title>パネルへの &applet; の追加</title>
+      <para>
+        パネルに <application>&applet;</application> を追加する手順は次のとおりです。
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            パネル上で右クリックします。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            
+            <menuchoice>
+              <guimenu>「パネルに追加」</guimenu>
+              <guisubmenu>「ユーティリティ」</guisubmenu>
+              <guimenuitem>「&applet;」</guimenuitem>
+            </menuchoice>の順に選択します。
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        <application>&applet;</application> アプレットのレイアウトは、アプレットがあるパネルのサイズとタイプによって異なります。
+      </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"><title>使用方法</title>
+
+    <sect2 id="battstat-usage-power">
+      <title>電源の接続状況を判断する</title>
+      <para>
+        電源の接続状況は、ラップトップの電源の現在の状況を表示します。
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>アイコン</para></entry>
+              <entry colname="COLSPEC1">
+                <para>電源状況</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>AC 電源のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  ラップトップは電源に接続されています。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>バッテリ充電中のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  ラップトップのバッテリは充電中です。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>バッテリ電源のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  ラップトップはバッテリ電源を使用中です。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>電力不足のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  ラップトップの電源が非常に少なくなっています。
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress">
+      <title>バッテリの状態を判断する</title>
+      <para>
+        バッテリ状態アイコンは、バッテリの画像の中に進捗バーが入っているものです。
+進捗バーのサイズと色で、バッテリの残量が示されます。
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>アイコン</para></entry>
+              <entry colname="COLSPEC1">
+                <para>バッテリの充電レベル</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>バッテリ充電レベルが高い場合のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  高
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>バッテリ充電レベルが中の場合のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  中
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>バッテリ充電レベルが低い場合のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  低
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>バッテリ充電レベルが非常に低い場合のアイコン。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  非常に低い                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        バッテリの色のレベルの設定方法については、<xref linkend="battstat-prefs-general"/>を参照してください。
+      </para>
+      <para>
+        現在のバッテリ残量をパーセントで表示する方法については、<xref linkend="battstat-prefs-appearance"/>を参照してください。
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend">
+      <title>コンピュータを中断する</title>
+      <para>
+        コンピュータを中断するには、アプレットを右クリックし、<guimenuitem>「コンピュータのサスペンド」</guimenuitem>を選択します。
+        <guimenuitem>「コンピュータのサスペンド」</guimenuitem>を選択した時に実行するコマンドの指定方法については、<xref linkend="battstatt-prefs"/>を参照してください。
+      </para>
+    </sect2>
+
   </sect1>
 
-  <!-- ================ Usage ================================ -->
-  <sect1 id="battstat-usage">
-    <title>使い方</title>
-    <para>
-      &applet;アプレットはユーザからの入力を必要としません。もしお望みであれば、下で説明するように、いくつかの項目を設定することができます。
-    </para>
-    <para>
-      上で示した画像は、ラップトップのバッテリがフル充電されていることを示しています。
-      (訳者注: 実際には、この図はAC電源に接続されている場合の表示である)
-    </para>
-    <para>
-      電源コードの点滅は、バッテリが充電中であることを示します。バッテリの充電が完了するまで点滅は続きます。
-    </para>
-    <para>
-      バッテリでラップトップを稼働させている場合、このように表示されます。
-    </para>
-    <para>
-      アプレットを右クリックすると、以下の項目を含んだメニューが表示されます:
-      <variablelist>
-        <varlistentry>
-          <term><guimenuitem>設定</guimenuitem></term>
-          <listitem>
-            <para>
-	      設定ダイアログウィンドウを開きます。
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guimenuitem>ヘルプ</guimenuitem></term>
-          <listitem>
-            <para>
-	      このドキュメントを開きます。
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guimenuitem>情報</guimenuitem></term>
-          <listitem>
-            <para>
-	      このアプレットについての基本的な情報を表示します。
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guimenuitem>コンピュータをサスペンド</guimenuitem></term>
-          <listitem>
-            <para>
-	      設定ダイアログで指定されたコマンドを実行します。
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </para>
-  </sect1>
-  
   <!-- ============= Customization ============================= -->
-  <sect1 id="battstatt-prefs">
-    <title>カスタマイズ</title>
+
+  <sect1 id="battstatt-prefs"> 
+    <title>設定</title>
     <para>
-      このアプレットをカスタマイズするには、アプレットを右クリックして設定を選択します。この操作で、以下のような設定ダイアログウィンドウが表示されます。
+         <application>&applet;</application> アプレットを設定するには、アプレットを右クリックし、<guimenuitem>「設定」</guimenuitem>を選択します。 
+          <guilabel>「設定」</guilabel>ダイアログには、次のタブセクションがあります。
     </para>
-    <figure id="general-fig"> 
-      <title>&applet;の一般的な設定</title> 
-      <screenshot> 
-	<mediaobject> 
-	  <imageobject>
-	    <imagedata fileref="figures/battstat-general.png" format="PNG"/> 
-	  </imageobject>
-	  <!-- EPS versions of the figures are not required at the moment. -->
-	  <!-- 
-	  <imageobject>
-	    <imagedata fileref="figures/image.eps" format="EPS"/>
-          </imageobject>
-	  -->
-	  <textobject> 
-	    <phrase>&applet;アプレットの一般的な設定</phrase>
-	  </textobject> 
-	</mediaobject> 
-      </screenshot> 
-    </figure>
-
-    <para>
-      以下の設定項目があります:
-      <itemizedlist>
-        <listitem>
-          <para>
-	    黄: バッテリの残容量を示すプログレスバーが緑から黄色に変わるバッテリ残容量レベルを指定します。デフォルトは40%です。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-	    オレンジ: プログレスバーが黄色からオレンジに変わるバッテリ残容量レベルを指定します。デフォルトは25%です。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-	    赤: プログレスバーがオレンジから赤に変わるバッテリ残容量レベルを指定します。デフォルトは15%です。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-	    プレビュー枠にはバッテリプログレスバーとドラッグ可能なスライドバーが表示されます。スライドバーをドラッグして、バッテリレベルが実際に変化すると外観がどのように変化するのか確認できます。この操作はバッテリには何の影響も及ぼしません。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-	    電池の充電が少なくなってきた場合に通知: バッテリの残量が赤い領域にまで低下した場合に警告ダイアログが表示されるようになります。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            電池がフルに充電した場合に通知: バッテリの充電が完了した時にダイアログが表示されるようになります。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-	    上記のどちらかが真の場合にビープ: 上記項目のいずれかが真になった場合にビープ音を鳴らします。
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-	    サスペンドコマンド: アプレットメニュの "コンピュータをサスペンド" をクリックしたときに実行されるコマンドを指定します。例えば、FreeBSDを利用しているなら "apm -z" や "zzz" などを入力します。しかしながら、何かを入力する前にまず、シェルからコマンドをテストしてみて、安全にサスペンドできるか確認してください。
-          </para>
-        </listitem>
-      </itemizedlist>
-    </para>
-
-    <figure id="apperance-fig"> 
-      <title>&applet;外観の設定</title>
-      <screenshot> 
-	<mediaobject> 
-	  <imageobject>
-	    <imagedata fileref="figures/battstat-apperance.png" format="PNG"/> 
-	  </imageobject>
-	  <!-- EPS versions of the figures are not required at the moment. -->
-	  <!-- 
-	  <imageobject>
-	    <imagedata fileref="figures/image.eps" format="EPS"/>
-	  </imageobject>
-	  -->
-	  <textobject> 
-	    <phrase>&applet;アプレットの外観の設定</phrase>
-	  </textobject> 
-	</mediaobject> 
-      </screenshot> 
-    </figure>
-
-    <para>
-      このページにある設定項目は以下の通りです:
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general">
+         <title>一般</title>
       <variablelist>
-	<varlistentry>
-	  <term>上に向かって移動:</term>
-	  <listitem>
-	    <para>
-	      この項目を選択すると、バッテリの充電レベルメータは右から左へ減っていきます。
-	    </para>
-	  </listitem>
-	</varlistentry>
-	<varlistentry>
-	  <term>下に向かって移動:</term>
-	  <listitem>
-	    <para>
-	      この項目を選択すると、バッテリの充電レベルメータは左から右へ減っていきます。
-	    </para>
-	  </listitem>
-	</varlistentry>
-	<varlistentry>
-	  <term>アプレットのレイアウト</term>
-	  <listitem>
-	    <para>
-	      表示したいアプレットの部品を選択できます。
-	    </para>
-	  </listitem>
-	</varlistentry>
+        <varlistentry>
+          <term><guilabel>「バッテリの色レベル %」</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>「黄色」</guilabel>
+                </para>
+                <para>
+                  進捗バーが緑から黄色に変わるバッテリの充電レベルを設定する場合は、このスピンボックスを使用します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「オレンジ」</guilabel>
+                </para>
+                <para>
+                  進捗バーが黄色からオレンジに変わるバッテリの充電レベルを設定する場合は、このスピンボックスを使用します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「赤」</guilabel>
+                </para>
+                <para>
+                  進捗バーがオレンジから赤に変わるバッテリの充電レベルを設定する場合は、このスピンボックスを使用します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「プレビュー」</guilabel>
+                </para>
+                <para>
+                  バッテリ充電レベルが変わったときの進捗バーの変化を表示するには、スライダを移動します。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>「警告」</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>「充電率が低くなってきたときに通知する」</guilabel>
+                </para>
+                <para>
+                  バッテリ充電レベルが、<guilabel>「赤」</guilabel>スピンボックスに指定された値以下になった時に情報警告を表示する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「完全に再充電した際に通知する」</guilabel>
+                </para>
+                <para>
+                 バッテリが完全に再充電されたときに情報警告を表示する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「警告メッセージを表示する際にビープ音を鳴らす」</guilabel>
+                </para>
+                <para>
+                  情報警告が表示された時にビープ音を鳴らす場合は、このオプションを選択します。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>「中断」</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>「サスペンドコマンド」</guilabel>
+                </para>
+                <para>
+                  アプレットを右クリックすると表示されるポップアップメニューで<guimenuitem>「コンピュータのサスペンド」</guimenuitem>を
+選択した時に実行されるコマンドを指定する場合は、このテキストボックスを使用します。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
       </variablelist>
-    </para>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance">
+      <title>外観</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>「レイアウト」</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>「バッテリの状態を表示」</guilabel>
+                </para>
+                <para>
+                バッテリの状態を表示する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「電源の接続状態を表示する」</guilabel>
+                </para>
+                <para>
+                電源の接続状態を表示する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「バッテリの充電率を表示する」</guilabel>
+                </para>
+                <para>
+                  現在のバッテリ残量をパーセンテージで表示する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>「プログレスバーの方向」</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>「上へ移動する」</guilabel>
+                </para>
+                <para>
+                  進捗バーが右から左へ減っていくように指定する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>「下へ移動する」</guilabel>
+                </para>
+                <para>
+                  進捗バーが左から右へ減っていくように指定する場合は、このオプションを選択します。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
   </sect1>
-  
-  <!-- This section contains info about the program (not docs), such as
-  author's name(s), web page, license, feedback address. This
-  section is optional: primary place for this info is "About.." box of
-  the program. However, if you do wish to include this info in the
-  manual, this is the place to put it. Alternatively, you can put this 
-  information in the title page.-->
 
-  <sect1 id="battstat-about">
-    <title>&applet;について</title>
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
-
-    <para>
-      この&applet;やマニュアルについてのバグレポートや提案は、<ulink url="ghelp:gnome-feedback" type="help">GNOMEフィードバックページ</ulink>を参照してください。
-    </para>
-
-    <para>
-      日本語訳は鎌ヶ迫正俊 (<email>emerald@gnome.gr.jp</email>) によるものです。この翻訳に関するコメントや提案は全て <email>emerald@gnome.gr.jp</email> もしくは <email>gnome-translation@gnome.gr.jp</email> までお願いします
-    </para>
-
-    <para>
-      このプログラムはフリーソフトウェア財団によって配布されているGNU一般公衆使用許諾契約書第2版もしくは(あなたの選択で)以降の版の元で配布することができます。このライセンスはこちらの<ulink type="help" url="ghelp:gpl">リンク</ulink>を辿るか、このプログラムのソースコードに同梱されているCOPYINGファイルから参照することができます。
-    </para>
-  </sect1> 
-</article> 
+</article>
