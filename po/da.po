@@ -108,7 +108,7 @@ msgstr "Egenskaber for ur"
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:801
 #: modemlights/properties.c:322 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:352
-#: sound-monitor/properties.c:436 tickastat/properties.c:424
+#: sound-monitor/properties.c:425 tickastat/properties.c:424
 msgid "General"
 msgstr "Generelt"
 
@@ -159,7 +159,7 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Et analogt ur magen til det fra CDE panelet"
 
 #: another_clock/another_clock.c:725 asclock/asclock.c:615
-#: battery/battery.c:947 charpick/charpick.c:588 clockmail/clockmail.c:562
+#: battery/battery.c:947 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:702 geyes/geyes.c:393
 #: gkb-new/gkb.c:470 gnotes/gnotes_applet.c:192 gtik/gtik.c:1353
 #: gweather/gweather-applet.c:194
@@ -168,13 +168,13 @@ msgstr "Et analogt ur magen til det fra CDE panelet"
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:77
-#: sound-monitor/main.c:369 tickastat/main.c:345 webcontrol/webcontrol.c:364
+#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:364
 msgid "Properties..."
 msgstr "Egenskaber..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:621
 #: battery/battery.c:953 cdplayer/cdplayer.c:592 charpick/charpick.c:595
-#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:299
+#: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1096 drivemount/drivemount.c:708
 #: fifteen/fifteen.c:378 geyes/geyes.c:399 gkb-new/gkb.c:493
 #: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
@@ -183,14 +183,14 @@ msgstr "Egenskaber..."
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
 #: quicklaunch/quicklaunch.c:516 screenshooter/screenshooter_applet.c:1012
-#: sound-monitor/main.c:376 tickastat/main.c:351 webcontrol/webcontrol.c:371
+#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:371
 #: whereami/whereami.c:236
 msgid "Help"
 msgstr "Hjælp"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:626
 #: battery/battery.c:958 cdplayer/cdplayer.c:599 charpick/charpick.c:601
-#: clipboard/clipboard.c:339 clockmail/clockmail.c:574
+#: clipboard/clipboard.c:339 clockmail/clockmail.c:339
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1103
 #: drivemount/drivemount.c:713 fifteen/fifteen.c:383 geyes/geyes.c:404
 #: gkb-new/gkb.c:498 gnotes/gnotes_applet.c:199 gtik/gtik.c:1362
@@ -200,7 +200,7 @@ msgstr "Hjælp"
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:520
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:80
-#: sound-monitor/main.c:381 tickastat/main.c:356 webcontrol/webcontrol.c:378
+#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:378
 #: whereami/whereami.c:238
 msgid "About..."
 msgstr "Om..."
@@ -507,20 +507,20 @@ msgstr ""
 "Gnome panelapplet til at kopiere og hente markeringer med en historieliste. "
 "Udgivet under GNU General Public Licence."
 
-#: clockmail/clockmail.c:63 slashapp/slashapp.c:186 sound-monitor/main.c:41
+#: clockmail/clockmail.c:40 slashapp/slashapp.c:186 sound-monitor/main.c:26
 #: tickastat/main.c:191
 msgid "John Ellis <johne@bellatlantic.net>"
 msgstr "John Ellis <johne@bellatlantic.net>"
 
-#: clockmail/clockmail.c:66
+#: clockmail/clockmail.c:43
 msgid "Clock and Mail Notify Applet"
 msgstr "Ur- og postnotificeringsapplet"
 
-#: clockmail/clockmail.c:67 jbc/jbc-applet.c:57
-msgid "(C) 1999"
-msgstr "(C) 1999"
+#: clockmail/clockmail.c:44
+msgid "(C) 2000"
+msgstr "(C) 2000"
 
-#: clockmail/clockmail.c:69
+#: clockmail/clockmail.c:46
 msgid ""
 "Released under the GNU general public license.\n"
 "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
@@ -532,22 +532,22 @@ msgstr ""
 "Epost blink kan være for enhver ulæst melding, eller bare kort når ny epost "
 "ankommer."
 
-#: clockmail/clockmail.c:144
+#: clockmail/clockmail.c:127
 msgid "%a, %b %d"
 msgstr "%a, %b %d"
 
-#: clockmail/clockmail.c:151
+#: clockmail/clockmail.c:134
 msgid " (GMT)"
 msgstr " (GMT)"
 
-#: clockmail/clockmail.c:157
+#: clockmail/clockmail.c:140
 #, c-format
 msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
 #: clockmail/properties.c:141 odometer/properties.c:151
-#: sound-monitor/properties.c:166
+#: sound-monitor/properties.c:168
 msgid "None (default)"
 msgstr "Ingen (standard)"
 
@@ -591,12 +591,12 @@ msgstr "Antal breve før brevkassen betragtes som fuld:"
 msgid "When clicked, run:"
 msgstr "Når klikket på, kør:"
 
-#: clockmail/properties.c:438 sound-monitor/properties.c:454
+#: clockmail/properties.c:438 sound-monitor/properties.c:443
 msgid "Theme file (directory):"
 msgstr "Temafil (mappe):"
 
 #: clockmail/properties.c:469 odometer/properties.c:335
-#: sound-monitor/properties.c:482
+#: sound-monitor/properties.c:471
 msgid "Theme"
 msgstr "Tema"
 
@@ -784,9 +784,7 @@ msgstr "Brug automount 'venlig' statustest"
 msgid ""
 "You win!\n"
 "Moves"
-msgstr
-"Du vinder!"
-"Træk"
+msgstr "Du vinder!Træk"
 
 #: fifteen/fifteen.c:299
 msgid "Fifteen sliding pieces"
@@ -2440,6 +2438,10 @@ msgstr "Hentning fejlede"
 msgid "Jon's Binary Clock"
 msgstr "Jon's binære ur"
 
+#: jbc/jbc-applet.c:57
+msgid "(C) 1999"
+msgstr "(C) 1999"
+
 #: jbc/jbc-applet.c:59
 msgid ""
 "Released under the GNU general public license.\n"
@@ -2812,7 +2814,7 @@ msgstr "Brug ISDN"
 msgid "Set options as default"
 msgstr "Sæt valg til standard"
 
-#: modemlights/properties.c:408 sound-monitor/properties.c:521
+#: modemlights/properties.c:408 sound-monitor/properties.c:510
 msgid "Advanced"
 msgstr "Avanceret"
 
@@ -3574,35 +3576,35 @@ msgstr "Fjernskriverapplet\n"
 msgid "SlashApp Article List"
 msgstr "SlashApp-artikelliste"
 
-#: slashapp/slashapp.c:303
+#: slashapp/slashapp.c:304
 msgid "No articles"
 msgstr "Ingen artikler"
 
-#: slashapp/slashapp.c:359 slashapp/slashapp.c:368
+#: slashapp/slashapp.c:360 slashapp/slashapp.c:369
 msgid "Unable to parse document\n"
 msgstr "Kan ikke analysere dokument\n"
 
-#: slashapp/slashapp.c:390
+#: slashapp/slashapp.c:391
 msgid "Unable to initialize request. Shouldn't happen\n"
 msgstr "Kan ikke starte forespørgsel. Burde ikke ske\n"
 
-#: slashapp/slashapp.c:414
+#: slashapp/slashapp.c:415
 msgid "Unable to prepare request.\n"
 msgstr "Kan ikke forberede forespørgsel.\n"
 
-#: slashapp/slashapp.c:418
+#: slashapp/slashapp.c:419
 msgid "Unable to process request.\n"
 msgstr "Kan ikke behandle forespørgsel.\n"
 
-#: sound-monitor/main.c:44
+#: sound-monitor/main.c:29
 msgid "Sound Monitor Applet"
 msgstr "Lydovervågningsapplet"
 
-#: sound-monitor/main.c:45 tickastat/main.c:195
-msgid "(C) 1999 John Ellis"
-msgstr "(C) 1999 John Ellis"
+#: sound-monitor/main.c:30
+msgid "(C) 2000 John Ellis"
+msgstr "(C) 2000 John Ellis"
 
-#: sound-monitor/main.c:47
+#: sound-monitor/main.c:32
 msgid ""
 "Sound monitor interface to Esound\n"
 "\n"
@@ -3612,31 +3614,31 @@ msgstr ""
 "\n"
 "Udgivet under GNU general public license."
 
-#: sound-monitor/main.c:92
+#: sound-monitor/main.c:77
 msgid "Place Esound in standby"
 msgstr "Sæt Esound i dvaletilstand"
 
-#: sound-monitor/main.c:97
+#: sound-monitor/main.c:81
 msgid "Resume Esound"
 msgstr "Genoptag Esound"
 
-#: sound-monitor/main.c:102 sound-monitor/main.c:363
+#: sound-monitor/main.c:85 sound-monitor/main.c:262
 msgid "Start Esound"
 msgstr "Start Esound"
 
-#: sound-monitor/main.c:356
+#: sound-monitor/main.c:255
 msgid "Manager..."
 msgstr "Håndtering..."
 
-#: sound-monitor/manager.c:1274 sound-monitor/manager.c:1362
+#: sound-monitor/manager.c:1275 sound-monitor/manager.c:1363
 msgid "Volume"
 msgstr "Lydstyrke"
 
-#: sound-monitor/manager.c:1290 sound-monitor/manager.c:1378
+#: sound-monitor/manager.c:1291 sound-monitor/manager.c:1379
 msgid "Balance"
 msgstr "Balance"
 
-#: sound-monitor/properties.c:133
+#: sound-monitor/properties.c:135
 msgid ""
 "You have enabled the \"Monitor sound input\" option.\n"
 "\n"
@@ -3655,43 +3657,43 @@ msgstr ""
 "\n"
 "Du er hermed advaret!"
 
-#: sound-monitor/properties.c:349
+#: sound-monitor/properties.c:338
 msgid "Peak indicator"
 msgstr "Spidsværdi-indikator"
 
-#: sound-monitor/properties.c:358
+#: sound-monitor/properties.c:347
 msgid "off"
 msgstr "fra"
 
-#: sound-monitor/properties.c:365
+#: sound-monitor/properties.c:354
 msgid "active"
 msgstr "aktiv"
 
-#: sound-monitor/properties.c:372
+#: sound-monitor/properties.c:361
 msgid "smooth"
 msgstr "blødgør"
 
-#: sound-monitor/properties.c:379
+#: sound-monitor/properties.c:368
 msgid "Peak indicator falloff speed"
 msgstr "Højeste hastighed før indikatoren går tilbage"
 
-#: sound-monitor/properties.c:396
+#: sound-monitor/properties.c:385
 msgid "Scope (scale 1:X, where X = ? )"
 msgstr "Område (skala 1:X, hvor X = ? )"
 
-#: sound-monitor/properties.c:413
+#: sound-monitor/properties.c:402
 msgid "Connect points in scope"
 msgstr "Forbindelsespunkter i området"
 
-#: sound-monitor/properties.c:419
+#: sound-monitor/properties.c:408
 msgid "Screen refresh (frames per second)"
 msgstr "Skærmopfriskning (rammer pr. sekund)"
 
-#: sound-monitor/properties.c:500
+#: sound-monitor/properties.c:489
 msgid "ESD host to monitor:"
 msgstr "ESD-vært at overvåge:"
 
-#: sound-monitor/properties.c:514
+#: sound-monitor/properties.c:503
 msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
 msgstr "Overvåg inddata (brug kun hvis lydkortet er FULL DUPLEX)"
 
@@ -3710,6 +3712,10 @@ msgstr "%d-%m-%Y %H:%M:%S"
 #: tickastat/main.c:194
 msgid "Tick-a-Stat"
 msgstr "Tick-a-Stat"
+
+#: tickastat/main.c:195
+msgid "(C) 1999 John Ellis"
+msgstr "(C) 1999 John Ellis"
 
 #: tickastat/main.c:197
 msgid "A ticker to display various information and statistics.\n"
