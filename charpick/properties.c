@@ -18,16 +18,13 @@ update_default_list_cb (GtkEditable *editable, gpointer data)
   text = gtk_editable_get_chars (editable, 0, -1);
   if (!text)
   	return;
-  	
-  if (g_utf8_strlen (text, -1) == 0) {
-    gchar *old_text = g_convert(curr_data->default_charlist, -1, "UTF-8", 
-  		                "ISO-8859-1", NULL, NULL, NULL);
-    gint pos;
-    gtk_editable_insert_text (editable, old_text, -1, &pos);
-    g_free (old_text);
-    return;
+  g_strstrip (text);	
+  if (g_utf8_strlen (text, -1) == 0){
+  	g_free (text);
+  	g_print ("zero length \n");
+  	return;
   }
-  
+  	
   if (curr_data->default_charlist)
     g_free (curr_data->default_charlist	);
   curr_data->default_charlist = g_convert (text, -1, "ISO-8859-1", "UTF-8", 
