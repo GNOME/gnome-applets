@@ -635,7 +635,7 @@ trash_applet_do_empty (BonoboUIComponent *component,
 	trash_monitor_empty_trash (applet->monitor,
 				   &hnd, update_transfer_callback, applet);
 
-	/* gtk_widget_hide (dialog); */
+	gtk_widget_hide (dialog);
 }
 
 
