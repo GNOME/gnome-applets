@@ -11,7 +11,7 @@
   <para>
     Per aggiungere l'applet al <interface>Pannello</interface> cliccate con il
     tasto destro del mouse in una zona libera da applet e menù sul
-    <Interface>Pannello</interface> e selezionate
+    <interface>Pannello</interface> e selezionate
     <menuchoice>
       <guimenu>Applet</guimenu>
       <guisubmenu>Utilità</guisubmenu>
@@ -26,9 +26,9 @@
 	<para>
 	  Per catturare l'immagine di tutto il <interface>desktop</interface>
 	  cliccate con il tasto sinistro sull'<guibutton>immagine del
-	  monitor</guibutton>. In un normale <Interface>Pannello</interface>
+	  monitor</guibutton>. In un normale <interface>Pannello</interface>
 	  orizzontale questo è il bottone che si trova più in basso, mentre in
-	  un <Interface>Pannello</interface> orizzontale laterale o in uno
+	  un <interface>Pannello</interface> orizzontale laterale o in uno
 	  verticale è il bottone a destra.
 	</para>
       </listitem>
@@ -36,8 +36,8 @@
 	<para>
 	  Per catturare l'immagine di solo una <interface>finestra</interface>
 	  cliccate sull'<guibutton>immagine di una finestra</guibutton>. In un
-	  normale <Interface>Pannello</interface> orizzontale questo bottone si
-	  trova in alto mentre in un <Interface>Pannello</interface> orizzontale
+	  normale <interface>Pannello</interface> orizzontale questo bottone si
+	  trova in alto mentre in un <interface>Pannello</interface> orizzontale
 	  laterale o in uno verticale si trova a sinistra. Il bottone rimarrà
 	  premuto e il cursore diventerà una croce; potete così muovere il
 	  cursore sulla finestra di cui volete l'immagine e cliccare per
@@ -114,8 +114,8 @@
 	      di default è di nasconderle (cioè di non renderle
 	      disponibili). Nel caso vengano le rendiate visibili appariranno
 	      due finestre di dialogo mostrate in <link
-	      linkend="screenshooter-preferences-5">Spurious 1</link> e <link
-	      linkend="screenshooter-preferences-6">Spurious 2</link>.
+       linkend="screenshooter-preferences-5">Spurious 1</link> e <link
+       linkend="screenshooter-preferences-6">Spurious 2</link>.
 	    </para>
 	  </listitem>
       </varlistentry>
@@ -148,7 +148,7 @@
 	    nell'immagine risultante dalla compressione. Più alta è la qualità
 	    della compressione maggiori dettagli rimangono ma più grande è la
 	    dimensione del file risultante. Serve solo per immagini JPEG, MIFF o
-	    PNG. La qualità impostata di default è del 75%.
+	    PNG. La qualità impostata di default è del 75&percnt;.
 	  </para>
 	</listitem>
       </varlistentry>
@@ -218,7 +218,7 @@
 	    <application>Screen-Shooter</application> crea un nome ottenuto
 	    sull'ora e sulla data nella quale l'immagine è stata catturata e
 	    questo dovrebbe essere sempre unico, ovviamente. Il nome usato di
-	    default è <filename>`date +%Y_%m_%d_%H%M%S`_shot.jpg</filename>,
+	    default è <filename>`date +&percnt;Y_&percnt;m_&percnt;d_&percnt;H&percnt;M&percnt;S`_shot.jpg</filename>,
 	    usando l'output del comando <application>date</application> nel
 	    momento in cui viene catturata l'immagine creando così un file con
 	    nome basato sul giorno e l'ora ricavati dai simboli di percentuale e
@@ -229,37 +229,37 @@
 	  </para>
 	  <variablelist>
 	    <varlistentry>
-	      <term>%H</term>
+	      <term>&percnt;H</term>
 	      <listitem>
 		<para>L'ora del giorno (dalle 00 alle 23)</para>
 	      </listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term>%M</term>
+	      <term>&percnt;M</term>
 	      <listitem>
 		<para>Il minuto dell'ora (da 00 a 59)</para>
 	      </listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term>%S</term>
+	      <term>&percnt;S</term>
 	      <listitem>
 		<para>Il secondo del minuto (da 00 a 59)</para>
 	      </listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term>%d</term>
+	      <term>&percnt;d</term>
 	      <listitem>
 		<para>Il giorno del mese (da 01 a 31)</para>
 	      </listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term>%m</term>
+	      <term>&percnt;m</term>
 	      <listitem>
 		<para>Il mese dell'anno (da 01 a 12)</para>
 	      </listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term>%y</term>
+	      <term>&percnt;y</term>
 	      <listitem>
 		<para>Le ultime due cifre dell'anno</para>
 	      </listitem>
@@ -272,12 +272,12 @@
 	  <itemizedlist>
 	    <listitem>
 	      <para>
-		<filename>screenshot-`date +%Y%m%d-%H%M%S`.jpg</filename>
+		<filename>screenshot-`date +&percnt;Y&percnt;m&percnt;d-&percnt;H&percnt;M&percnt;S`.jpg</filename>
 	      </para>
 	    </listitem>
 	    <listitem>
          <para>
-		<filename>pic-`date +%H%M%S`.png</filename>
+		<filename>pic-`date +&percnt;H&percnt;M&percnt;S`.png</filename>
 	      </para>
 	    </listitem>
 	    <listitem>
@@ -352,7 +352,7 @@
 	<listitem>
 	  <para>
 	    Questa è la percentuale della dimensione originale che verrà data
-	    all'anteprima il cui default è il 25%.
+	    all'anteprima il cui default è il 25&percnt;.
 	  </para>
 	</listitem>
       </varlistentry>
@@ -366,7 +366,7 @@
 	    Questa è la qualità delle compressione da usare; così come nelle
 	    preferenze generali, migliore è la qualità della compressione
 	    maggiori dettagli saranno salvati e maggiore sarà la dimensione del
-	    file dell'anteprima. Il valore di default è il 50%.
+	    file dell'anteprima. Il valore di default è il 50&percnt;.
 	  </para>
 	</listitem>
       </varlistentry>
@@ -480,7 +480,7 @@
 	<listitem>
 	  <para>
 	    Sharpening the image sharpens the image. The default is a factor
-	    of zero, but it can be raised to 100%.
+	    of zero, but it can be raised to 100&percnt;.
 	  </para>
 	</listitem>
       </varlistentry>
@@ -778,7 +778,7 @@
 	  visualizzare queste immagini usando altri programmi di
 	  visualizzazione, oppure provare a modificare il livello di
 	  compressione nella finestra di dialogo <link
-	  linkend="screenshooter-preferences-0">Preferenze</link>, cosa che
+   linkend="screenshooter-preferences-0">Preferenze</link>, cosa che
 	  spesso può aiutare a risolvere il problema.
 	</para>
       </listitem>
