@@ -27,7 +27,9 @@ typedef struct {
 	gint                pager_rows;
 	gint                pager_size; /*bool*/
 	gint                tasks_all; /*bool*/
+	gint                minimized_tasks; /*bool*/
 	gint                minimized_tasks_all; /*bool*/
+	gint                minimized_tasks_only; /*bool*/
 	gint                task_rows_h;
 	gint                task_rows_v;
 	gint                max_task_width;
@@ -147,6 +149,13 @@ cb_check(GtkWidget *widget, gint * the_data)
 }
 
 static void 
+cb_check_enable(GtkWidget *tb, GtkWidget *thewid)
+{
+	gtk_widget_set_sensitive(thewid,
+				 GTK_TOGGLE_BUTTON(tb)->active);
+}
+
+static void 
 cb_adj(GtkAdjustment *adj, gint *the_data)
 {
   GtkWidget *prop;
@@ -179,7 +188,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 {
   static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   static GtkWidget *prop = NULL;
-  GtkWidget *table, *label, *spin, *check;
+  GtkWidget *hbox,*hbox1,*vbox,*vbox1,*frame,*label, *spin, *check, *rb1, *sh;
   GtkAdjustment *adj;
   
   if(prop)
@@ -202,91 +211,152 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		      GTK_SIGNAL_FUNC(gnome_help_pbox_display),
 		      &help_entry);
   gtk_window_set_title(GTK_WINDOW(prop), _("Gnome Pager Settings"));
-  table = gtk_table_new(1, 1, FALSE);
-  gtk_widget_show(table);
-  gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), table,
-				 gtk_label_new (_("Display")));
+  
+
+  /* Pager properties page */
+  vbox = gtk_vbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_container_set_border_width(GTK_CONTAINER(vbox),GNOME_PAD_SMALL);
+  gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), vbox,
+				 gtk_label_new (_("Pager")));
+  
+  sh = check = gtk_check_button_new_with_label(_("Show pager"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_pager);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_pager);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox),check,FALSE,FALSE,0);
+  
+  check = gtk_check_button_new_with_label(_("Use small pagers"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.pager_size);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.pager_size);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox),check,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(sh), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check_enable), check);
+  cb_check_enable(sh,check);
+
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_rows, 1, 
+					    8, 1, 1, 1 );
+  label = gtk_label_new(_("Rows of pagers"));
+  spin = gtk_spin_button_new(adj, 1, 0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),spin,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+  gtk_signal_connect(GTK_OBJECT(sh), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check_enable), hbox);
+  cb_check_enable(sh,hbox);
+
+
+  /* Tasklist properties page */
+  vbox = gtk_vbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_container_set_border_width(GTK_CONTAINER(vbox),GNOME_PAD_SMALL);
+  gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), vbox,
+				 gtk_label_new (_("Tasklist")));
+  
+  check = gtk_check_button_new_with_label(_("Show task list button"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.show_arrow);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_arrow);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox),check,FALSE,FALSE,0);
+
+  sh = check = gtk_check_button_new_with_label(_("Show task list"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_tasks);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_tasks);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox),check,FALSE,FALSE,0);
+
+  check = gtk_check_button_new_with_label(_("Show button icons"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_icons);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_icons);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox),check,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(sh), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check_enable), check);
+  cb_check_enable(sh,check);
+
+  hbox1 = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox),hbox1,FALSE,FALSE,0);
+  
+  frame = gtk_frame_new(_("Which tasks to show"));
+  gtk_box_pack_start(GTK_BOX(hbox1),frame,FALSE,FALSE,0);
+  vbox1 = gtk_vbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_container_set_border_width(GTK_CONTAINER(vbox1),GNOME_PAD_SMALL);
+  gtk_container_add(GTK_CONTAINER(frame),vbox1);
+  gtk_signal_connect(GTK_OBJECT(sh), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check_enable), frame);
+  cb_check_enable(sh,frame);
+
+  rb1 = check = gtk_radio_button_new_with_label(NULL,_("Show all tasks"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.minimized_tasks);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
+
+  check = gtk_radio_button_new_with_label(
+			  gtk_radio_button_group (GTK_RADIO_BUTTON (rb1)),
+			  _("Show normal tasks only"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check),
+				!config.minimized_tasks && !config.minimized_tasks_only);
+  gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
+  
+  check = gtk_radio_button_new_with_label(
+			  gtk_radio_button_group (GTK_RADIO_BUTTON (rb1)),
+			  _("Show minimized tasks only"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.minimized_tasks_only);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks_only);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
 
   check = gtk_check_button_new_with_label(_("Show all tasks on all desktops"));
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.tasks_all);
   gtk_signal_connect(GTK_OBJECT(check), "toggled",
 		     GTK_SIGNAL_FUNC(cb_check), &o_config.tasks_all);
   gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check, 
-		   2, 4, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
 
   check = gtk_check_button_new_with_label(_("Show minimized tasks on all desktops"));
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.minimized_tasks_all);
   gtk_signal_connect(GTK_OBJECT(check), "toggled",
 		     GTK_SIGNAL_FUNC(cb_check), &o_config.minimized_tasks_all);
   gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check, 
-		   2, 4, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
 
-  check = gtk_check_button_new_with_label(_("Show tasks"));
-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_tasks);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_tasks);
-  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check, 
-		   2, 4, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
-  check = gtk_check_button_new_with_label(_("Show pager"));
-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_pager);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_pager);
-  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check, 
-		   2, 4, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
-  check = gtk_check_button_new_with_label(_("Use small pagers"));
-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.pager_size);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.pager_size);
-  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check, 
-		   2, 4, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
-  check = gtk_check_button_new_with_label(_("Show icons in tasks"));
-  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_icons);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_icons);
-  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check, 
-		   2, 4, 5, 6, GTK_FILL|GTK_EXPAND,0,0,0);
-  check = gtk_check_button_new_with_label(_("Show task list button"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.show_arrow);
-  gtk_signal_connect(GTK_OBJECT(check), "toggled",
-		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_arrow);
-  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check,
-		   2, 4, 6, 7, GTK_FILL|GTK_EXPAND,0,0,0);
+  frame = gtk_frame_new(_("Geometry"));
+  gtk_box_pack_start(GTK_BOX(hbox1),frame,FALSE,FALSE,0);
+  vbox1 = gtk_vbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_container_set_border_width(GTK_CONTAINER(vbox1),GNOME_PAD_SMALL);
+  gtk_container_add(GTK_CONTAINER(frame),vbox1);
+  gtk_signal_connect(GTK_OBJECT(sh), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check_enable), frame);
+  cb_check_enable(sh,frame);
 
   check = gtk_check_button_new_with_label(_("Tasklist always maximum size"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.fixed_tasklist);
   gtk_signal_connect(GTK_OBJECT(check), "toggled",
 		     GTK_SIGNAL_FUNC(cb_check), &o_config.fixed_tasklist);
   gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-  gtk_widget_show(check);
-  gtk_table_attach(GTK_TABLE(table), check,
-		   2, 4, 7, 8, GTK_FILL|GTK_EXPAND,0,0,0);
-
+  gtk_box_pack_start(GTK_BOX(vbox1),check,FALSE,FALSE,0);
+  
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.max_task_width,
 					    20, 
 					    (gfloat)gdk_screen_width(), 
 					    16, 16, 16 );
   label = gtk_label_new(_("Maximum width of horizontal task list"));
-  gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
-  gtk_widget_show(spin);
-  gtk_table_attach(GTK_TABLE(table), label, 
-		   0, 1, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
-  gtk_table_attach(GTK_TABLE(table), spin, 
-		   1, 2, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox1),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_end(GTK_BOX(hbox),spin,FALSE,FALSE,0);
   gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
 		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_width);
   gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
@@ -296,13 +366,11 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 					    (gfloat)gdk_screen_width(), 
 					    4, 4, 4 );
   label = gtk_label_new(_("Maximum width of vertical task list"));
-  gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
-  gtk_widget_show(spin);
-  gtk_table_attach(GTK_TABLE(table), label, 
-		   0, 1, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
-  gtk_table_attach(GTK_TABLE(table), spin, 
-		   1, 2, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox1),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_end(GTK_BOX(hbox),spin,FALSE,FALSE,0);
   gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
 		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_vwidth);
   gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
@@ -310,13 +378,11 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_h, 1, 
 					    8, 1, 1, 1 );
   label = gtk_label_new(_("Number of rows of horizontal tasks"));
-  gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
-  gtk_widget_show(spin);
-  gtk_table_attach(GTK_TABLE(table), label, 
-		   0, 1, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
-  gtk_table_attach(GTK_TABLE(table), spin, 
-		   1, 2, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox1),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_end(GTK_BOX(hbox),spin,FALSE,FALSE,0);
   gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
 		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_h);
   gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
@@ -324,32 +390,16 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_v, 1, 
 					    4, 1, 1, 1 );
   label = gtk_label_new(_("Number of vertical columns of tasks"));
-  gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
-  gtk_widget_show(spin);
-  gtk_table_attach(GTK_TABLE(table), label, 
-		   0, 1, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
-  gtk_table_attach(GTK_TABLE(table), spin, 
-		   1, 2, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox1),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_end(GTK_BOX(hbox),spin,FALSE,FALSE,0);
   gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
 		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_v);
   gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
 
-  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_rows, 1, 
-					    8, 1, 1, 1 );
-  label = gtk_label_new(_("Number rows of pagers"));
-  gtk_widget_show(label);
-  spin = gtk_spin_button_new(adj, 1, 0);
-  gtk_widget_show(spin);
-  gtk_table_attach(GTK_TABLE(table), label, 
-		   0, 1, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
-  gtk_table_attach(GTK_TABLE(table), spin, 
-		   1, 2, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
-  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
-  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
-
-  gtk_widget_show(prop);
+  gtk_widget_show_all(prop);
 }
 
 
@@ -702,9 +752,11 @@ cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
 {
   gint i, tdesk;
   gchar tsticky;
+  gchar iconified;
 
   tsticky = t->sticky;
   tdesk = t->desktop;
+  iconified = t->iconified;
   task_get_info(t);
 
   if (tsticky)
@@ -729,6 +781,10 @@ cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
       else
 	desktop_draw(t->desktop);
     }
+
+  if (iconified != t->iconified)
+      	populate_tasks(FALSE);
+
   set_task_info_to_button(t);
   widget = NULL;
 }
@@ -1285,7 +1341,9 @@ cb_applet_save_session(GtkWidget *w,
   gnome_config_set_int("stuff/pager_rows", config.pager_rows);
   gnome_config_set_int("stuff/pager_size", config.pager_size);
   gnome_config_set_int("stuff/tasks_all", config.tasks_all);
+  gnome_config_set_int("stuff/minimized_tasks", config.minimized_tasks);
   gnome_config_set_int("stuff/minimized_tasks_all", config.minimized_tasks_all);
+  gnome_config_set_int("stuff/minimized_tasks_only", config.minimized_tasks_only);
   gnome_config_set_int("stuff/task_rows_h", config.task_rows_h);
   gnome_config_set_int("stuff/task_rows_v", config.task_rows_v);
   gnome_config_set_int("stuff/max_task_width", config.max_task_width);
@@ -1439,7 +1497,9 @@ main(int argc, char *argv[])
   config.pager_rows = gnome_config_get_int("stuff/pager_rows=2");
   config.pager_size = gnome_config_get_int("stuff/pager_size=1");
   config.tasks_all = gnome_config_get_int("stuff/tasks_all=0");
+  config.minimized_tasks = gnome_config_get_int("stuff/minimized_tasks=1");
   config.minimized_tasks_all = gnome_config_get_int("stuff/minimized_tasks_all=0");
+  config.minimized_tasks_only = gnome_config_get_int("stuff/minimized_tasks_only=0");
   config.task_rows_h = gnome_config_get_int("stuff/task_rows_h=2");
   config.task_rows_v = gnome_config_get_int("stuff/task_rows_v=1");
   config.max_task_width = gnome_config_get_int("stuff/max_task_width=400");
@@ -2253,7 +2313,7 @@ set_task_info_to_button(Task *t)
   while (p)
     {
       Task *t = p->data;
-      if ((config.tasks_all) || 
+      if ((config.tasks_all || 
 	  (t->sticky) || 
 	  (config.minimized_tasks_all && t->iconified) ||
 	  (
@@ -2261,7 +2321,9 @@ set_task_info_to_button(Task *t)
 	  && (t->ax == area_x)
 	  && (t->ay == area_y)
 	   )
-	  )	
+	  ) && ((config.minimized_tasks_only && t->iconified) ||
+	      	(!config.minimized_tasks_only)
+	  ) && (!t->iconified || config.minimized_tasks || config.minimized_tasks_only))
 	num++;
       p = p->next;
     }
@@ -2414,7 +2476,7 @@ populate_tasks(int just_popbox)
   while (p)
     {
       t = p->data;
-      if ((config.tasks_all) || 
+      if (((config.tasks_all) || 
 	  (t->sticky) || 
 	  (config.minimized_tasks_all && t->iconified) ||
 	  (
@@ -2422,7 +2484,9 @@ populate_tasks(int just_popbox)
 	  && (t->ax == area_x)
 	  && (t->ay == area_y)
 	   )
-	  )
+	  ) && ((config.minimized_tasks_only && t->iconified) ||
+	                     (!config.minimized_tasks_only)
+	  ) && (!t->iconified || config.minimized_tasks || config.minimized_tasks_only))
 	num++;
       if (popbox)
         {
@@ -2460,6 +2524,7 @@ populate_tasks(int just_popbox)
     {
       t = (Task *)p->data;
       
+
       if ( (((t->desktop == current_desk)
 	     && (t->ax == area_x)
 	     && (t->ay == area_y)
@@ -2467,9 +2532,13 @@ populate_tasks(int just_popbox)
 	    (config.tasks_all) ||
 	    (t->sticky) ||
 	    (config.minimized_tasks_all && t->iconified)
-	   ) &&
-	   !just_popbox)
+	   ) && 
+	      ((config.minimized_tasks_only && t->iconified) || 
+	       (!config.minimized_tasks_only)
+	   ) && (!t->iconified || config.minimized_tasks || config.minimized_tasks_only
+	   ) && !just_popbox)
 	{
+
 	  hbox = gtk_hbox_new(0, FALSE);
 	  gtk_widget_show(hbox);
 	  
