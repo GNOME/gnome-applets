@@ -378,10 +378,13 @@ chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 {
 	if (GTK_WIDGET_VISIBLE (curr_data->menu))
 		gtk_menu_popdown (GTK_MENU (curr_data->menu));
-	else
+	else {
+		gtk_menu_set_screen (GTK_MENU (curr_data->menu),
+				gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)));
+		
 		gtk_menu_popup (GTK_MENU (curr_data->menu), NULL, NULL, get_menu_pos, curr_data,
-					    0, gtk_get_current_event_time());
-					    
+				0, gtk_get_current_event_time());
+	}				    
 }
 
 /* creates table of buttons, sets up their callbacks, and packs the table in
