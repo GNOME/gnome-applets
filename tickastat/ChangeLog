@@ -1,3 +1,11 @@
+Tue Aug 10 07:58:43 1999  John Ellis  <johne@bellatlantic.net>
+
+        * mod_news.c(script_data_free): free sd->data_file only once, change
+        second to sd->data_file_temp.
+        (mod_news_destroy): Manipulate the GList *'s in a way that does not
+        start pointing to already freed memory. This fixes the crash when
+        exiting the app. (closes bug #1861)
+
 Tue Jul 13 14:12:43 1999  John Ellis  <johne@bellatlantic.net>
 
 	* tickastat.h (AppData): Added free_current flag.

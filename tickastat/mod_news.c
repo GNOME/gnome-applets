@@ -152,7 +152,7 @@ static void script_data_free(ScriptData *sd)
 	g_free(sd->binary);
 	g_free(sd->data_path);
 	g_free(sd->data_file);
-	g_free(sd->data_file);
+	g_free(sd->data_file_temp);
 
 	g_free(sd->path);
 	g_free(sd->config_id);
@@ -976,7 +976,7 @@ static void populate_script_clist(GtkCList *clist, NewsData *nd)
  *-------------------------------------------------------------------
  */
 
-static void append_script_list(NewsData *nd, gchar *dir_path, GList **list, GList **old)
+static void append_script_list(NewsData *nd, gchar *dir_path, GList **old)
 {
 	DIR *dp;
 	struct dirent *dir;
@@ -1016,7 +1016,7 @@ static void append_script_list(NewsData *nd, gchar *dir_path, GList **list, GLis
 					work = work->next;
 					if (strcmp(path, sd->path) == 0)
 						{
-						*list = g_list_append(*list, sd);
+						nd->list = g_list_append(nd->list, sd);
 						*old = g_list_remove(*old, sd);
 						found = TRUE;
 						}
@@ -1026,7 +1026,7 @@ static void append_script_list(NewsData *nd, gchar *dir_path, GList **list, GLis
 					ScriptData *sd = script_data_new(nd, path, data_path);
 					if (sd)
 						{
-						*list = g_list_append(*list, sd);
+						nd->list = g_list_append(nd->list, sd);
 						}
 					}
 				}
@@ -1048,12 +1048,12 @@ static void update_script_list(NewsData *nd)
 
 	/* the system scripts */
 	buf = gnome_unconditional_datadir_file("tickastat/news");
-	append_script_list(nd, buf, &nd->list, &old);
+	append_script_list(nd, buf, &old);
 	g_free(buf);
 
 	/* the user scripts */
 	buf = gnome_util_home_file("tickastat/news");
-	append_script_list(nd, buf, &nd->list, &old);
+	append_script_list(nd, buf, &old);
 	g_free(buf);
 
 	/* clean up old ones that are gone */
@@ -1444,17 +1444,14 @@ static void mod_news_start(gpointer data, AppData *ad)
 static void mod_news_destroy(gpointer data, AppData *ad)
 {
 	NewsData *nd = data;
-	GList *work;
 
 	news_stop(nd);
 
-	work = nd->list;
-	while(work)
+	while(nd->list)
 		{
-		ScriptData *sd = work->data;
+		ScriptData *sd = nd->list->data;
 		nd->list = g_list_remove(nd->list, sd);
 		script_data_free(sd);
-		work = work->next;
 		}
 
 	g_free(nd);
