@@ -58,7 +58,7 @@ typedef struct {
 	/* a glist of char*, pointing to the broken-XX images (if any) */
 	GList *broken_images;
 	/* contains pointers into the images GList.
-	 * 0-100 are for link, 101-201 are for AC */
+	 * 0-100 are for link */
 	char *pixmaps[101];
 	/* pointer to the current used file name */
 	char *current_pixmap;
@@ -150,17 +150,16 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 	g_free (tmp);
 
 	/* Update the image */
-	if (percent >= 0 && percent <= 100)
+	percent = CLAMP (percent, 0, 100);
+
+	if (applet->pixmaps[percent] != applet->current_pixmap)
 	{
-		if (applet->pixmaps[percent] != applet->current_pixmap)
+		applet->current_pixmap = applet->pixmaps[percent];
+		if ( !applet->flashing)
 		{
-			applet->current_pixmap = applet->pixmaps[percent];
-			if ( !applet->flashing)
-			{
-				gtk_image_set_from_file
-					(GTK_IMAGE (applet->pixmap),
-					 applet->current_pixmap);
-			}
+			gtk_image_set_from_file
+				(GTK_IMAGE (applet->pixmap),
+				 applet->current_pixmap);
 		}
 	}
 }
