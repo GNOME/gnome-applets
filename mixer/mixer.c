@@ -146,7 +146,7 @@ openMixer( gchar *device_name )
 	mixerfd = open(device_name, O_RDWR, 0);
 #endif
 #ifdef SUN_API
-	mixerfd = open(device_name, AUDIO_GETINFO, O_WRONLY);
+	mixerfd = open(device_name, O_RDWR);
 #endif
 #ifdef IRIX_API
 	/* 
