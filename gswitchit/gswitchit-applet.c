@@ -685,14 +685,13 @@ GSwitchItAppletStartListen (GSwitchItApplet * sia)
 	gdk_window_add_filter (gdk_get_default_root_window (),
 			       (GdkFilterFunc) GSwitchItAppletFilterXEvt,
 			       sia);
-	XklStartListen (XKLL_MANAGE_WINDOW_STATES);
+	XklStartListen (XKLL_TRACK_KEYBOARD_STATE);
 }
 
 static void
 GSwitchItAppletStopListen (GSwitchItApplet * sia)
 {
 	XklStopListen ();
-/* !! no client message filter removal in gnome 2.2 */
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  GSwitchItAppletFilterXEvt, sia);
 	gdk_window_remove_filter
@@ -778,14 +777,14 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 						  &sia->pluginContainer,
 						  sia->appletConfig.
 						  enabledPlugins);
-	GSwitchItAppletConfigStartListen (&sia->appletConfig,
-					  (GConfClientNotifyFunc)
-					  GSwitchItAppletConfigChanged,
-					  sia);
 	GSwitchItConfigStartListen (&sia->config,
 				    (GConfClientNotifyFunc)
 				    GSwitchItConfigChanged,
 				    sia);
+	GSwitchItAppletConfigStartListen (&sia->appletConfig,
+					  (GConfClientNotifyFunc)
+					  GSwitchItAppletConfigChanged,
+					  sia);
 	GSwitchItAppletFillNotebook (sia);
 	GSwitchItAppletRevalidate (sia);
 	g_signal_connect (G_OBJECT (sia->applet), "change_size",
