@@ -91,13 +91,32 @@ properties_set_insensitive(MultiloadApplet *ma)
 }
 
 void
-properties_close_cb(GtkWidget *widget, gint arg, MultiloadApplet *ma)
+properties_close_cb (GtkWidget *widget, gint arg, MultiloadApplet *ma)
 {
-	gtk_widget_destroy(widget);
+	GError *error = NULL;
 
-	ma->prop_dialog = NULL;
+	switch (arg)
+	{
+		case GTK_RESPONSE_HELP:
 
-	return;
+		        gnome_help_display_on_screen (
+					"multiload", NULL,
+					gtk_widget_get_screen (GTK_WIDGET (
+							ma->applet)),
+					&error);
+
+			if (error) { /* FIXME: the user needs to see this */
+				g_warning ("help error: %s\n", error->message);
+				g_error_free (error);
+				error = NULL;
+			}
+			break;
+			
+		case GTK_RESPONSE_CLOSE:
+		default:
+			gtk_widget_destroy (widget);
+			ma->prop_dialog = NULL;
+	}
 }
 
 void
@@ -613,7 +632,8 @@ multiload_properties_cb (BonoboUIComponent *uic,
 	
 	dialog = gtk_dialog_new_with_buttons (_("System Monitor Preferences"),
 					      NULL, 0,
-					      GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					   GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+					   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					      NULL);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
