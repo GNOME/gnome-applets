@@ -37,7 +37,6 @@ void about_dialog(AppletWidget *applet, gpointer data)
         return;
 }
 
-#if 0
 static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, float lat, float lon)
 {
   GdkPixmap *pmap;
@@ -90,7 +89,6 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   free(fname);
   return NULL;
 }
-#endif
 
 static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
 {
@@ -108,7 +106,6 @@ static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButto
   return;
 }
 
-#if 0
 static void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
 {
   location *my;
@@ -125,9 +122,9 @@ static void location_selected(GtkWidget *list, gint row, gint column, GdkEventBu
   my_asclock->selected_timezone[MAX_PATH_LEN-1] = '\0';
 
   properties_timezone_render(my_asclock, list, my->lat, my->lon);
+  gnome_property_box_changed(GNOME_PROPERTY_BOX(my_asclock->pwin));
   return;
 }
-#endif
 
 static asclock *static_my_asclock;
 static void dialog_clicked_cb(GnomeDialog * dialog, gint button_number, 
@@ -264,7 +261,7 @@ property_help_cb (GtkWidget *w, gint tab, gpointer data)
 
 void properties_dialog(AppletWidget *applet, gpointer data)
 {
-/*  gchar *timezone_titles[2] = { N_("Continent/City") , NULL}; */
+  gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
   gchar *themes_titles[2] = { N_("Clock Theme"), NULL};
   GtkWidget *label;
   GtkWidget *frame;
@@ -381,22 +378,22 @@ void properties_dialog(AppletWidget *applet, gpointer data)
 
   frame =  gtk_vbox_new(TRUE, 5);
 
-/*  label = gtk_label_new(_("Timezone"));
- *
- *  properties_timezone_render(my_asclock, frame, 0, 0);
- *
- */
+  label = gtk_label_new(_("Timezone"));
+
+  properties_timezone_render(my_asclock, frame, 0, 0);
+
+
   hbox = gtk_hbox_new(FALSE, 5);
   gtk_box_pack_start(GTK_BOX(hbox), my_asclock->pic, FALSE, FALSE, 5);
 
-/*  gtk_widget_show(my_asclock->pic); */
+  gtk_widget_show(my_asclock->pic);
 
 
-/*#ifdef ENABLE_NLS
- * timezone_titles[0]=_(timezone_titles[0]);
- *#endif
- * list = gtk_clist_new_with_titles(1, timezone_titles);
- */
+#ifdef ENABLE_NLS
+  timezone_titles[0]=_(timezone_titles[0]);
+#endif
+  list = gtk_clist_new_with_titles(1, timezone_titles);
+
  
   gtk_clist_set_column_width(GTK_CLIST(list), 0, 200);
   gtk_widget_set_usize(list, 260, 320);
@@ -418,20 +415,20 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_widget_show(hbox);
   
   gtk_widget_show(frame);
-/*  gnome_property_box_append_page( GNOME_PROPERTY_BOX(my_asclock->pwin),frame ,label); */
+  gnome_property_box_append_page( GNOME_PROPERTY_BOX(my_asclock->pwin),frame ,label);
   
-/*  gtk_signal_connect( GTK_OBJECT(list), "select_row", GTK_SIGNAL_FUNC(location_selected), my_asclock); */
+  gtk_signal_connect( GTK_OBJECT(list), "select_row", GTK_SIGNAL_FUNC(location_selected), my_asclock);
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin), "delete_event", GTK_SIGNAL_FUNC(property_close_cb), my_asclock);
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin), "close", GTK_SIGNAL_FUNC(property_close_cb), my_asclock);
 
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"apply", GTK_SIGNAL_FUNC(property_apply_cb), my_asclock );
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"help", GTK_SIGNAL_FUNC(property_help_cb), NULL);
 
-/*
+#if 0
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), my_asclock );
-
+#endif
   enum_timezones(my_asclock, list);
-*/
+  
   gtk_widget_show_all(my_asclock->pwin);
   return;
 } 
