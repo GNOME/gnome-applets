@@ -463,6 +463,9 @@ applet_cmd_func(AppletCommand *cmd)
 		case APPLET_CMD_GET_INSTANCE_PARAMS:
 			return g_strdup(gtk_object_get_user_data(GTK_OBJECT(cmd->applet)));
 
+		case APPLET_CMD_ORIENTATION_CHANGE_NOTIFY:
+			break;
+
 		case APPLET_CMD_PROPERTIES:
 			properties(cmd->applet);
 			break;

@@ -222,6 +222,9 @@ applet_cmd_func(AppletCommand *cmd)
 		case APPLET_CMD_GET_INSTANCE_PARAMS:
 			return g_strdup("");
 
+		case APPLET_CMD_ORIENTATION_CHANGE_NOTIFY:
+			break;
+
 		case APPLET_CMD_PROPERTIES:
 			fprintf(stderr, "Clock properties not yet implemented\n"); /* FIXME */
 			break;
