@@ -95,6 +95,7 @@
 
 #define VOLUME_DEFAULT_ICON_SIZE 48
 static GtkIconSize volume_icon_size = 0;
+static gboolean icons_initialized = FALSE;
 
 #define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
@@ -965,6 +966,9 @@ static void
 mixer_init_stock_icons ()
 {
 	GtkIconFactory *factory;
+	
+	if (icons_initialized)
+		return;
 
 	volume_icon_size = gtk_icon_size_register ("panel-menu", 
 						   VOLUME_DEFAULT_ICON_SIZE,
@@ -976,6 +980,8 @@ mixer_init_stock_icons ()
 	register_mixer_stock_icons (factory);
 
 	g_object_unref (factory);
+
+	icons_initialized = TRUE;
 }
 
 const BonoboUIVerb mixer_applet_menu_verbs [] = {
@@ -988,8 +994,8 @@ const BonoboUIVerb mixer_applet_menu_verbs [] = {
 };
 
 static void
-applet_style_event_cb (GtkWidget *w, GtkStyle *prev_style, gpointer *user_data)
-{
+applet_style_event_cb (GtkWidget *w, GtkStyle *prev_style, MixerData *user_data)
+{	
 	mixer_load_volume_images (user_data);
 	mixer_update_image (user_data);
 }
