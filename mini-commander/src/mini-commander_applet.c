@@ -35,6 +35,8 @@
 GtkWidget *applet;
 
 static int appletDestroy_signal(GtkWidget *widget, gpointer data);
+static int appletDetached_signal(GtkWidget *widget, gpointer data);
+static int appletAttached_signal(GtkWidget *widget, gpointer data);
 
 
 int 
@@ -42,6 +44,32 @@ appletDestroy_signal(GtkWidget *widget, gpointer data)
 {
     /* applet will be destroyed; save settings now */
     saveSession();
+    /* go on */
+    return FALSE;  
+}
+
+int 
+appletDetached_signal(GtkWidget *widget, gpointer data)
+{
+    /* applet has been detached; make it smaller */
+
+    gtk_widget_set_usize(GTK_WIDGET(applet),
+			 20,
+			 prop.normalSizeY);
+  
+    /* go on */
+    return FALSE;  
+}
+
+int 
+appletAttached_signal(GtkWidget *widget, gpointer data)
+{
+    /* applet has been detached; restore original size */
+
+    gtk_widget_set_usize(GTK_WIDGET(applet),
+			 prop.normalSizeX,
+			 prop.normalSizeY);
+  
     /* go on */
     return FALSE;  
 }
@@ -124,7 +152,15 @@ main(int argc, char **argv)
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
 
+    /* add a handle box to allow moving away this appplet from the
+       panel */
     handle = gtk_handle_box_new();
+    gtk_signal_connect(GTK_OBJECT(handle), "child_detached",
+		       GTK_SIGNAL_FUNC(appletDetached_signal),
+		       NULL);
+    gtk_signal_connect(GTK_OBJECT(handle), "child_attached",
+		       GTK_SIGNAL_FUNC(appletAttached_signal),
+		       NULL);
     gtk_container_add(GTK_CONTAINER(handle), frame);
     
     frame2 = gtk_frame_new(NULL);
