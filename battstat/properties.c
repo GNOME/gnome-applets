@@ -236,17 +236,18 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 }
 
 void
-prop_cb (PanelApplet *applet, gpointer data)
+prop_cb (BonoboUIComponent *uic,
+	 ProgressData      *battstat,
+	 const char        *verb)
 {
-  ProgressData   *battstat = data;
-  GladeXML       *glade_xml;
-  GtkWidget      *layout_table;
-  GtkWidget      *preview_hbox;
-  GtkWidget      *widget;
-  GtkWidget      *batterypixwid, *statuspixwid;
-  guint           percentage;
+  GladeXML  *glade_xml;
+  GtkWidget *layout_table;
+  GtkWidget *preview_hbox;
+  GtkWidget *widget;
+  GtkWidget *batterypixwid, *statuspixwid;
+  guint      percentage;
 
-  apm_readinfo();
+  apm_readinfo (PANEL_APPLET (battstat->applet));
 
 #ifdef __FreeBSD__
   percentage = apminfo.ai_batt_life;

@@ -1,3 +1,15 @@
+2002-07-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* battstat.h: get method signatures for verb callbacks
+	correct, add PanelApplet arg to some other methods.
+
+	* battstat_applet.c: (apm_readinfo), (pixmap_timeout),
+	(battstat_error_dialog), (cleanup): add PanelApplet arg.
+	(help_cb), (suspend_cb), (about_cb):  get verb callback
+	signature correct.
+
+	* properties.c: (prop_cb): ditto.
+
 2002-06-15 Trevor Curtis <tcurtis@somaradio.ca>
 	* docs/C/battstat-C.omf: fixed it so that it validates
 
