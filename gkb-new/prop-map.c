@@ -72,24 +72,33 @@ gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
   keymap = mdi->keymap;
                                                                                 
   name = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->name_entry)));
-  if (name) {
-  	 if  (keymap->name)
-  		g_free (keymap->name);
-  	keymap->name = name;
-  }
+  if (keymap->name)
+	g_free (keymap->name);
+  if (name && name[0])
+	keymap->name = g_strdup (name);
+  else
+	keymap->name = g_strdup (_("Unknown Keyboard"));
+  if (name)
+	g_free (name);
+
   label =
     g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->label_entry)));
-  if (label) {
-  	 if  (keymap->label)
-  		g_free (keymap->label);
-  	keymap->label = label;
-  }
+  if (keymap->label)
+	g_free (keymap->label);
+  if (label && label[0])
+	keymap->label = g_strdup (label);
+  else  
+	keymap->label = g_strdup (_("?"));
+  if (label)
+	g_free (label);
+
   command =
     g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->command_entry)));
   if (command) {
   	 if  (keymap->command)
   		g_free (keymap->command);
-  	keymap->command = command;
+  	keymap->command = g_strdup (command);
+	g_free (command);
   }
   flag =
     g_strdup (g_basename
@@ -98,7 +107,8 @@ gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
   if (flag) {
   	 if  (keymap->flag)
   		g_free (keymap->flag);
-  	keymap->flag = flag;
+  	keymap->flag = g_strdup (flag);
+	g_free (flag);
   }
                                                                               
   mdi->pbi->selected_keymap = keymap;
