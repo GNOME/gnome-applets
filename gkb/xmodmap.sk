@@ -1,26 +1,22 @@
 ! Converted keytable file to xmodmap file
-! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:12:04 CET 1998
+! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:12:11 CET 1998
 clear Mod1
 clear Mod2
-! 
-!  Hungarian keytable by DOS standards (iso8859-2)
-! 
-!  Levardy Zoltan (h0894118@witch.pmmf.hu)
-! 
+!  Slovak keyboard
 !charset "iso-8859-2"
-keycode   9 = Escape
-keycode  10 = 1 apostrophe asciitilde
-keycode  11 = 2 quotedbl dead_caron
-keycode  12 = 3 plus dead_circumflex
-keycode  13 = 4 exclam dead_breve
-keycode  14 = 5 percent degree
-keycode  15 = 6 slash dead_ogonek
-keycode  16 = 7 equal dead_grave
-keycode  17 = 8 parenleft abovedot
-keycode  18 = 9 parenright dead_acute
-keycode  19 = odiaeresis Odiaeresis dead_doubleacute
-keycode  20 = udiaeresis Udiaeresis dead_diaeresis
-keycode  21 = oacute Oacute dead_cedilla
+keycode   9 = Escape Escape
+keycode  10 = plus 1 asciitilde
+keycode  11 = lcaron 2 dead_caron
+keycode  12 = scaron 3 asciicircum
+keycode  13 = ccaron 4 dead_breve
+keycode  14 = tcaron 5 degree
+keycode  15 = zcaron 6 dead_ogonek
+keycode  16 = yacute 7 dead_grave
+keycode  17 = aacute 8 abovedot
+keycode  18 = iacute 9 dead_acute
+keycode  19 = eacute 0 dead_doubleacute
+keycode  20 = equal percent dead_diaeresis
+keycode  21 = dead_acute caron dead_cedilla
 keycode  22 = BackSpace Delete
 keycode  23 = Tab Tab
 keycode  24 = q Q backslash
@@ -33,8 +29,8 @@ keycode  30 = u
 keycode  31 = i
 keycode  32 = o
 keycode  33 = p
-keycode  34 = odoubleacute Odoubleacute division
-keycode  35 = uacute Uacute
+keycode  34 = uacute slash division
+keycode  35 = adiaeresis parenleft
 keycode  36 = Return
 keycode  37 = Control_L
 keycode  38 = a
@@ -46,21 +42,21 @@ keycode  43 = h
 keycode  44 = j
 keycode  45 = k K lstroke
 keycode  46 = l L Lstroke
-keycode  47 = eacute Eacute dollar
-keycode  48 = aacute Aacute ssharp
-keycode  49 = 0 section
+keycode  47 = ocircumflex dead_diaeresis dollar
+keycode  48 = section exclam ssharp
+keycode  49 = semicolon degree
 keycode  50 = Shift_L
-keycode  51 = udoubleacute Udoubleacute currency
+keycode  51 = ncaron parenright currency
 keycode  52 = y Y greater
 keycode  53 = x X numbersign
-keycode  54 = c C ampersand
+keycode  54 = c
 keycode  55 = v V at
 keycode  56 = b B braceleft
 keycode  57 = n N braceright
 keycode  58 = m
-keycode  59 = comma question semicolon
+keycode  59 = comma question
 keycode  60 = period colon Multi_key
-keycode  61 = minus underscore asterisk
+keycode  61 = minus underscore
 keycode  62 = Shift_R
 keycode  63 = KP_Multiply
 keycode  64 = Alt_L Meta_L
@@ -90,8 +86,7 @@ keycode  87 = KP_1
 keycode  88 = KP_2
 keycode  89 = KP_3
 keycode  90 = KP_0
-keycode  91 = KP_Decimal
-keycode  94 = iacute Iacute less
+keycode  94 = ampersand asterisk less
 keycode  95 = F11 F11
 keycode  96 = F12 F12
 keycode 108 = KP_Enter
@@ -108,9 +103,11 @@ keycode 115 = Select
 keycode 104 = Down
 keycode 105 = Next
 keycode 106 = Insert
-keycode 107 = Delete
-!  as dead_ogonek, dead_caron, dead_breve and dead_doubleacute doesn't exist
-!  (yet), I put also compose lines for use with respectively dead_cedilla,
-!  dead_circumflex, dead_tilde and dead_tilde
+! right windows-logo key
+! in "windows" keyboards the postion of the key is annoying, is where AltGr
+! usually resides, so go definie it as AltGr
+keycode 116 = Mode_switch
+! right windows-menu key, redefined as Compose key
+keycode 117 = Multi_key
 add Mod1 = Alt_L
 add Mod2 = Mode_switch

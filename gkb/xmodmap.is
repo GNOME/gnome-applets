@@ -1,26 +1,38 @@
 ! Converted keytable file to xmodmap file
-! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:24:27 CET 1998
+! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:12:05 CET 1998
 clear Mod1
 clear Mod2
-!  us.map
-!  with some additions from quinlan@spectrum.cs.bucknell.edu (Daniel Quinlan)
-!  14 Mar 1994
+!  This mainly follows
+!   is-latin1.map: Icelandic keyboard for Latin 1 character set
+!   Kristjan Jonsson (kj@raunvis.hi.is)
+!  but also has some features of "ice-latin1.map' as submitted
+!  by Einar Indridason (einari@rhi.hi.is)
+! 
+!  Where the two maps differed, the version of the latter map
+!  is given as comment - the main difference is that the latter
+!  map tends to make Alt and Altgr synonyms.
+! 
+!  Note that this map uses the right control key as Alt
+!  will not be able to produce < and > using this keymap.
+!  - aeb, 950825
+!charset "iso-8859-1"
+keymaps 0-2,4-6,8,12
 keycode   9 = Escape Escape
-keycode  10 = 1 exclam
-keycode  11 = 2 at at
-keycode  12 = 3 numbersign
-keycode  13 = 4 dollar dollar
-keycode  14 = 5 percent
-keycode  15 = 6 asciicircum
-keycode  16 = 7 ampersand braceleft
-keycode  17 = 8 asterisk bracketleft
-keycode  18 = 9 parenleft bracketright
-keycode  19 = 0 parenright braceright
-keycode  20 = minus underscore backslash
-keycode  21 = equal plus
+keycode  10 = 1 exclam onesuperior
+keycode  11 = 2 quotedbl twosuperior
+keycode  12 = 3 numbersign threesuperior
+keycode  13 = 4 dollar onequarter
+keycode  14 = 5 percent onehalf
+keycode  15 = 6 ampersand threequarters
+keycode  16 = 7 slash braceleft
+keycode  17 = 8 parenleft bracketleft
+keycode  18 = 9 parenright bracketright
+keycode  19 = 0 equal braceright
+keycode  20 = odiaeresis Odiaeresis backslash
+keycode  21 = minus underscore hyphen
 keycode  22 = BackSpace Delete
 keycode  23 = Tab Tab
-keycode  24 = q
+keycode  24 = q Q at
 keycode  25 = w
 keycode  26 = e E currency
 keycode  27 = r
@@ -30,8 +42,8 @@ keycode  30 = u
 keycode  31 = i
 keycode  32 = o
 keycode  33 = p
-keycode  34 = bracketleft braceleft
-keycode  35 = bracketright braceright asciitilde
+keycode  34 = eth ETH
+keycode  35 = apostrophe question asciitilde
 keycode  36 = Return
 keycode  37 = Control_L
 keycode  38 = a
@@ -43,11 +55,13 @@ keycode  43 = h
 keycode  44 = j
 keycode  45 = k
 keycode  46 = l
-keycode  47 = semicolon colon
-keycode  48 = apostrophe quotedbl
-keycode  49 = grave asciitilde
+keycode  47 = ae AE
+keycode  48 = dead_acute asciicircum
+! keycode  40 = dead_acute       dead_acute       asciicircum     
+keycode  49 = degree dead_diaeresis bar
+! keycode  41 = apostrophe            asciitilde      
 keycode  50 = Shift_L
-keycode  51 = backslash bar
+keycode  51 = plus asterisk grave
 keycode  52 = z
 keycode  53 = x
 keycode  54 = c
@@ -55,13 +69,13 @@ keycode  55 = v
 keycode  56 = b
 keycode  57 = n
 keycode  58 = m
-keycode  59 = comma less
-keycode  60 = period greater Multi_key
-keycode  61 = slash question
+keycode  59 = comma semicolon guillemotleft
+keycode  60 = period colon guillemotright
+keycode  61 = thorn THORN
 keycode  62 = Shift_R
 keycode  63 = KP_Multiply
 keycode  64 = Alt_L Meta_L
-keycode  65 = space space
+keycode  65 = space space space
 keycode  66 = Caps_Lock
 keycode  67 = F1 F11
 keycode  68 = F2 F12

@@ -1,23 +1,29 @@
 ! Converted keytable file to xmodmap file
-! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:24:27 CET 1998
+! with mk_modmap by root@chanae.alphanet.ch mié jul 29 13:46:38 CEST 1998
 clear Mod1
 clear Mod2
-!  us.map
-!  with some additions from quinlan@spectrum.cs.bucknell.edu (Daniel Quinlan)
-!  14 Mar 1994
+! Spanish keymap, note the spanish IBM keyboard lacks an ascitilde (~), I
+! have used ALT-Gr 4 as per IBM/AIX and some sun keyboards. ascitilde is also
+! on ALT-Gr-exclamdown for compatibility with Julio Sanchez' Spanish keymap.
+! 
+! Jon Tombs <jon@gtex02.us.es> with corrections from 
+! Julio Sanchez <jsanchez@gmv.es>
+! otros toquecitos por mi <srtxg@f2219.n293.z2.fidonet.org>
+!
+keycode   8 =
 keycode   9 = Escape Escape
-keycode  10 = 1 exclam
-keycode  11 = 2 at at
-keycode  12 = 3 numbersign
-keycode  13 = 4 dollar dollar
+keycode  10 = 1 exclam bar
+keycode  11 = 2 quotedbl at
+keycode  12 = 3 periodcentered numbersign
+keycode  13 = 4 dollar asciitilde
 keycode  14 = 5 percent
-keycode  15 = 6 asciicircum
-keycode  16 = 7 ampersand braceleft
-keycode  17 = 8 asterisk bracketleft
-keycode  18 = 9 parenleft bracketright
-keycode  19 = 0 parenright braceright
-keycode  20 = minus underscore backslash
-keycode  21 = equal plus
+keycode  15 = 6 ampersand notsign
+keycode  16 = 7 slash braceleft
+keycode  17 = 8 parenleft bracketleft
+keycode  18 = 9 parenright bracketright
+keycode  19 = 0 equal braceright
+keycode  20 = apostrophe question backslash
+keycode  21 = exclamdown questiondown asciitilde
 keycode  22 = BackSpace Delete
 keycode  23 = Tab Tab
 keycode  24 = q
@@ -30,8 +36,9 @@ keycode  30 = u
 keycode  31 = i
 keycode  32 = o
 keycode  33 = p
-keycode  34 = bracketleft braceleft
-keycode  35 = bracketright braceright asciitilde
+!keycode  34 =   dead_grave    asciicircum      bracketleft
+keycode  34 = dead_grave dead_circumflex bracketleft
+keycode  35 = plus asterisk bracketright
 keycode  36 = Return
 keycode  37 = Control_L
 keycode  38 = a
@@ -43,11 +50,11 @@ keycode  43 = h
 keycode  44 = j
 keycode  45 = k
 keycode  46 = l
-keycode  47 = semicolon colon
-keycode  48 = apostrophe quotedbl
-keycode  49 = grave asciitilde
+keycode  47 = ntilde Ntilde
+keycode  48 = dead_acute dead_diaeresis braceleft
+keycode  49 = masculine ordfeminine backslash
 keycode  50 = Shift_L
-keycode  51 = backslash bar
+keycode  51 = ccedilla Ccedilla braceright
 keycode  52 = z
 keycode  53 = x
 keycode  54 = c
@@ -55,9 +62,9 @@ keycode  55 = v
 keycode  56 = b
 keycode  57 = n
 keycode  58 = m
-keycode  59 = comma less
-keycode  60 = period greater Multi_key
-keycode  61 = slash question
+keycode  59 = comma semicolon
+keycode  60 = period colon Multi_key
+keycode  61 = minus underscore
 keycode  62 = Shift_R
 keycode  63 = KP_Multiply
 keycode  64 = Alt_L Meta_L
@@ -87,28 +94,28 @@ keycode  87 = KP_1
 keycode  88 = KP_2
 keycode  89 = KP_3
 keycode  90 = KP_0
-keycode  94 = less greater bar
+keycode  94 = less greater
 keycode  95 = F11 F11
 keycode  96 = F12 F12
-keycode 108 = KP_Enter
-keycode 109 = Control_R
-keycode 112 = KP_Divide
-keycode 113 = Mode_switch
-keycode 114 = Break
-keycode 110 = Find
 keycode  98 = Up
 keycode  99 = Prior
 keycode 100 = Left
 keycode 102 = Right
-keycode 115 = Select
 keycode 104 = Down
 keycode 105 = Next
 keycode 106 = Insert
+keycode 108 = KP_Enter
+keycode 109 = Control_R
+keycode 110 = Find
+keycode 112 = KP_Divide
+keycode 113 = Mode_switch
+keycode 114 = Break
+keycode 115 = Select
 ! right windows-logo key
 ! in "windows" keyboards the postion of the key is annoying, is where AltGr
 ! usually resides, so go definie it as AltGr
 keycode 116 = Mode_switch
-! right windows-menu key, redefined as Compose key
+! right windows-menu key
 keycode 117 = Multi_key
 add Mod1 = Alt_L
 add Mod2 = Mode_switch

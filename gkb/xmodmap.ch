@@ -1,23 +1,22 @@
 ! Converted keytable file to xmodmap file
-! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:24:27 CET 1998
+! with mk_modmap by root@chanae.alphanet.ch vie nov 27 02:11:59 CET 1998
 clear Mod1
 clear Mod2
-!  us.map
-!  with some additions from quinlan@spectrum.cs.bucknell.edu (Daniel Quinlan)
-!  14 Mar 1994
+!  Swiss keyboard
+!charset "iso-8859-1"
 keycode   9 = Escape Escape
-keycode  10 = 1 exclam
-keycode  11 = 2 at at
-keycode  12 = 3 numbersign
-keycode  13 = 4 dollar dollar
+keycode  10 = 1 plus bar
+keycode  11 = 2 quotedbl at
+keycode  12 = 3 asterisk numbersign
+keycode  13 = 4 ccedilla
 keycode  14 = 5 percent
-keycode  15 = 6 asciicircum
-keycode  16 = 7 ampersand braceleft
-keycode  17 = 8 asterisk bracketleft
-keycode  18 = 9 parenleft bracketright
-keycode  19 = 0 parenright braceright
-keycode  20 = minus underscore backslash
-keycode  21 = equal plus
+keycode  15 = 6 ampersand notsign
+keycode  16 = 7 slash bar
+keycode  17 = 8 parenleft cent
+keycode  18 = 9 parenright
+keycode  19 = 0 equal
+keycode  20 = apostrophe question dead_acute
+keycode  21 = dead_circumflex dead_grave dead_tilde
 keycode  22 = BackSpace Delete
 keycode  23 = Tab Tab
 keycode  24 = q
@@ -25,13 +24,13 @@ keycode  25 = w
 keycode  26 = e E currency
 keycode  27 = r
 keycode  28 = t
-keycode  29 = y
+keycode  29 = z
 keycode  30 = u
 keycode  31 = i
 keycode  32 = o
 keycode  33 = p
-keycode  34 = bracketleft braceleft
-keycode  35 = bracketright braceright asciitilde
+keycode  34 = udiaeresis egrave bracketleft
+keycode  35 = dead_diaeresis exclam bracketright
 keycode  36 = Return
 keycode  37 = Control_L
 keycode  38 = a
@@ -43,21 +42,21 @@ keycode  43 = h
 keycode  44 = j
 keycode  45 = k
 keycode  46 = l
-keycode  47 = semicolon colon
-keycode  48 = apostrophe quotedbl
-keycode  49 = grave asciitilde
+keycode  47 = odiaeresis eacute
+keycode  48 = adiaeresis agrave braceleft
+keycode  49 = section degree
 keycode  50 = Shift_L
-keycode  51 = backslash bar
-keycode  52 = z
+keycode  51 = dollar sterling braceright
+keycode  52 = y
 keycode  53 = x
 keycode  54 = c
 keycode  55 = v
 keycode  56 = b
 keycode  57 = n
 keycode  58 = m
-keycode  59 = comma less
-keycode  60 = period greater Multi_key
-keycode  61 = slash question
+keycode  59 = comma semicolon
+keycode  60 = period colon Multi_key
+keycode  61 = minus underscore
 keycode  62 = Shift_R
 keycode  63 = KP_Multiply
 keycode  64 = Alt_L Meta_L
@@ -87,7 +86,7 @@ keycode  87 = KP_1
 keycode  88 = KP_2
 keycode  89 = KP_3
 keycode  90 = KP_0
-keycode  94 = less greater bar
+keycode  94 = less greater backslash
 keycode  95 = F11 F11
 keycode  96 = F12 F12
 keycode 108 = KP_Enter
@@ -108,7 +107,8 @@ keycode 106 = Insert
 ! in "windows" keyboards the postion of the key is annoying, is where AltGr
 ! usually resides, so go definie it as AltGr
 keycode 116 = Mode_switch
-! right windows-menu key, redefined as Compose key
+! right windows-menu key
 keycode 117 = Multi_key
+!
 add Mod1 = Alt_L
 add Mod2 = Mode_switch
