@@ -905,6 +905,10 @@ int main (int argc, char *argv[])
 	GdkColor button_color2 = { 0, 0x8A8A, 0x8A8A, 0x8A8A };
 	int i;
 
+        /* Initialize the i18n stuff */
+        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+        textdomain (PACKAGE);
+
 	for (i=0;i<119;i++)
 		load_hist[i] = 0;
 
