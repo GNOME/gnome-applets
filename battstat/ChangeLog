@@ -1,3 +1,9 @@
+2002-11-22  Kevin Vandersloot <kfv101@psu.edu>
+
+	* acpi-linux.c: don't hardcode battery directory names and allow for multiple
+	batteries. Patch from Hanno BÃ¶ck <hanno@gmx.de>. Fixes bugs 89681 and
+	90122.
+
 2002-10-25  Kevin Vandersloot <kfv101@psu.edu>
 
         * battstat_applet.c: realize the applet widget on startup
@@ -341,7 +347,7 @@
 	*configure.in: Added Malay (ms) in ALL_LINGUAS.
 	*po/ms.po: Added Malay Translation.
 
-2001-12-28  Jörgen Pehrson  <jp@spektr.eu.org>
+2001-12-28  JÃ¶rgen Pehrson  <jp@spektr.eu.org>
 
 	* configure.in: Changed the version numbering for
 	GNOME 2.x to 2.1.x
@@ -551,7 +557,7 @@
 	it said EXTRADIST. That meant that the libglade file wasn't included
 	in the distribution when doing a "make dist". 
 
-2001-12-10 Jörgen Pehrson <jpehrson@cvs.gnome.org>
+2001-12-10 JÃ¶rgen Pehrson <jpehrson@cvs.gnome.org>
 	To celebrate the fact that Battstat moved into the GNOME CVS the
 	format of this changelog has changed. A lot of changes (by others)
 	took place between the previous entry in the ChangeLog and this

@@ -39,6 +39,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
+#include <dirent.h>
 #include "acpi-linux.h"
 
 static GHashTable *
@@ -146,7 +147,10 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
   gulong acpi_ver;
   char buf[BUFSIZ];
   GHashTable *hash;
-  const char *batt_info, *batt_state, *ac_state, *ac_state_state, *charging_state;
+  const char *ac_state_state, *charging_state;
+  char batt_info[60], batt_state[60], ac_state[60];
+  DIR * procdir;
+  struct dirent * procdirentry;
 
   /*
    * apminfo.ac_line_status must be one when on ac power
@@ -160,6 +164,9 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
   max_capacity = 0;
   low_capacity = 0;
   critical_capacity = 0;
+  charging = FALSE;
+  remain = 0;
+  ac_online = FALSE;
 
   hash = read_file ("/proc/acpi/info", buf, sizeof (buf));
   if (!hash)
@@ -169,54 +176,71 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
   g_hash_table_destroy (hash);
 
   if (acpi_ver < (gulong)20020208) {
-    batt_info  = "/proc/acpi/battery/1/info";
-    batt_state = "/proc/acpi/battery/1/status";
-    ac_state   = "/proc/acpi/ac_adapter/0/status";
     ac_state_state = "status";
     charging_state = "state";
   } else {
-    batt_info  = "/proc/acpi/battery/BAT1/info";
-    batt_state = "/proc/acpi/battery/BAT1/state";
-    ac_state   = "/proc/acpi/ac_adapter/ACAD/state";
     ac_state_state = "state";
     charging_state = "charging state";
   }
 
-  hash = read_file (batt_info, buf, sizeof (buf));
-  if (hash)
-    {
-      max_capacity = read_long (hash, "design capacity");
-      low_capacity = read_long (hash, "design capacity warning");
-      critical_capacity = read_long (hash, "design capacity low");
-      g_hash_table_destroy (hash);
-    }
-  
+  procdir=opendir("/proc/acpi/battery/");
+  while ((procdirentry=readdir(procdir)))
+   {
+    if (procdirentry->d_name[0]!='.')
+     {
+      strcpy(batt_info,"/proc/acpi/battery/");
+      strcat(batt_info,procdirentry->d_name);
+      strcat(batt_info,"/info");
+      hash = read_file (batt_info, buf, sizeof (buf));
+      if (hash)
+       {
+        max_capacity += read_long (hash, "last full capacity");
+        low_capacity += read_long (hash, "design capacity warning");
+        critical_capacity += read_long (hash, "design capacity low");
+        g_hash_table_destroy (hash);
+       }
+      strcpy(batt_state,"/proc/acpi/battery/");
+      strcat(batt_state,procdirentry->d_name);
+      strcat(batt_state,"/state");
+      hash = read_file (batt_state, buf, sizeof (buf));
+      if (hash)
+       {
+        const char *s;
+        if (!charging)
+         {
+          s = read_string (hash, charging_state);
+          charging = s ? (strcmp (s, "charging") == 0) : 0;
+         }
+        remain += read_long (hash, "remaining capacity");
+        g_hash_table_destroy (hash);
+       }
+     }
+   }
+  closedir(procdir);
+
   if (!max_capacity)
     return FALSE;
-  
-  charging = FALSE;
-  remain = 0;
 
-  hash = read_file (batt_state, buf, sizeof (buf));
-  if (hash)
-    {
-      const char *s;
-      s = read_string (hash, charging_state);
-      charging = s ? (strcmp (s, "charging") == 0) : 0;
-      remain = read_long (hash, "remaining capacity");
-      g_hash_table_destroy (hash);
-    }
-
-  ac_online = FALSE;
-  
-  hash = read_file (ac_state, buf, sizeof (buf));
-  if (hash)
-    {
-      const char *s;
-      s = read_string (hash, ac_state_state);
-      ac_online = s ? (strcmp (s, "on-line") == 0) : 0;
-      g_hash_table_destroy (hash);
-    }
+  procdir=opendir("/proc/acpi/ac_adapter/");
+  while ((procdirentry=readdir(procdir)))
+   {
+    if (procdirentry->d_name[0]!='.')
+     {
+      strcpy(ac_state,"/proc/acpi/ac_adapter/");
+      strcat(ac_state,procdirentry->d_name);
+      strcat(ac_state,"/");
+      strcat(ac_state,ac_state_state);
+      hash = read_file (ac_state, buf, sizeof (buf));
+      if (hash && !ac_online)
+       {
+        const char *s;
+        s = read_string (hash, ac_state_state);
+        ac_online = s ? (strcmp (s, "on-line") == 0) : 0;
+        g_hash_table_destroy (hash);
+       }
+     }
+   }
+  closedir(procdir);
 
   apminfo->ac_line_status = ac_online ? 1 : 0;
   apminfo->battery_status = remain < low_capacity ? 1 : remain < critical_capacity ? 2 : 0;
