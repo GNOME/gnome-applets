@@ -494,6 +494,8 @@ charpicker_applet_fill (PanelApplet *applet)
   charpick_data *curr_data;
   GtkWidget *event_box = NULL;
   GtkWidget *table = NULL;
+  
+  panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
    
   curr_data = g_new0 (charpick_data, 1);
   curr_data->properties = g_new0 (charpick_persistant_properties, 1);
@@ -504,9 +506,12 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data->labels = g_new0 (GtkWidget *, MAX_BUTTONS_WITH_BUFFER);
   curr_data->table = table;
   curr_data->event_box = event_box;
+  curr_data->applet = GTK_WIDGET (applet);
   
 /* FIXME: hook up to gconf */
   property_load(curr_data);
+  if (!curr_data->properties->default_charlist)
+    curr_data->properties->default_charlist = g_strdup (def_list);
 
   /* Create the event_box (needed to catch keypress and focus change events) */
 
@@ -546,8 +551,6 @@ charpicker_applet_fill (PanelApplet *applet)
 		      GTK_SIGNAL_FUNC (selection_clear_cb),
 		      curr_data);
  
-
-  curr_data->applet = GTK_WIDGET (applet);
 
   gtk_container_add (GTK_CONTAINER (applet), curr_data->frame);
   

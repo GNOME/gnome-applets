@@ -4,7 +4,6 @@ INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
-CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
 
 bin_PROGRAMS = charpick_applet2
 
@@ -24,7 +23,14 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
+schemadir 	= @GCONF_SCHEMA_FILE_DIR@
+schema_DATA	= charpick.schemas
+
 EXTRA_DIST = \
-	charpick.png $(server_in_files)	
+	charpick.png $(server_in_files)	\
+	$(schema_DATA)
+	
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
 	
 

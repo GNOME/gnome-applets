@@ -3,6 +3,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #define CHARPICK_VERSION "0.05"
 #define NO_LAST_INDEX -1
