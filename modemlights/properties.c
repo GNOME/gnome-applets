@@ -380,11 +380,12 @@ void property_show (BonoboUIComponent *uic,
 			       gtk_widget_get_screen (GTK_WIDGET (applet)));
 	gtk_dialog_set_default_response (GTK_DIALOG (mldata->propwindow), GTK_RESPONSE_CLOSE);
   	gtk_dialog_set_has_separator (GTK_DIALOG (mldata->propwindow), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (mldata->propwindow), 5);
 	gtk_window_set_resizable (GTK_WINDOW (mldata->propwindow), FALSE);
 
 	notebook = gtk_notebook_new ();
 	vbox = gtk_vbox_new (FALSE, 6);
-	gtk_container_set_border_width (GTK_CONTAINER (notebook), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mldata->propwindow)->vbox), notebook,
 			    TRUE, TRUE, 0);
 	
@@ -402,17 +403,21 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
+	hbox2 = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), hbox2, FALSE, FALSE, 0);
+	gtk_widget_show (hbox2);
+
 	delay_adj = gtk_adjustment_new( mldata->UPDATE_DELAY, 1.0, 20.0, 1, 1, 1 );
         delay_w  = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), delay_w);
-	gtk_box_pack_start (GTK_BOX (hbox), delay_w, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (hbox2), delay_w, FALSE, FALSE, 0);
 	g_signal_connect (G_OBJECT (delay_w), "focus-out-event",
 			  G_CALLBACK (update_delay_cb), mldata);
 	gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (delay_w),GTK_UPDATE_ALWAYS );
 	gtk_widget_show (delay_w);
 
 	label = gtk_label_new_with_mnemonic (_("seconds"));
-        gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
 	/* extra info checkbox */
