@@ -210,6 +210,7 @@ gkb_prop_map_get_countries (GkbPropertyBoxInfo * pbi)
   list = g_list_prepend (list, _("Switzerland"));
   list = g_list_prepend (list, _("Thailand"));
   list = g_list_prepend (list, _("Turkey"));
+  list = g_list_prepend (list, _("United Kingdom"));
   list = g_list_prepend (list, _("United States"));
   list = g_list_prepend (list, _("Yugoslavia"));
 

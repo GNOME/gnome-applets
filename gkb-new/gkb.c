@@ -471,7 +471,7 @@ loadprop (int i)
       g_snprintf (buf, 256, _("keymap_%d/lang=Hungarian"), i);
       actdata->lang = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/image=hu.png"), i);
+      g_snprintf (buf, 256, _("keymap_%d/flag=hu.png"), i);
       actdata->flag = gnome_config_get_string (buf);
 
       g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap hu"), i);

@@ -8,9 +8,9 @@ preset_data_DATA = \
 	Hungarian101.keyprop Norwegian.keyprop Polish.keyprop \
 	PolishDeadkeys.keyprop Portugal.keyprop PortugalDeadkeys.keyprop \
 	RussianCyril.keyprop Slovak.keyprop Slovene.keyprop Swedish.keyprop \
-	TR-f.keyprop TR-q.keyprop Thai.keyprop Thai2.keyprop US-101.keyprop \
-	US-84.keyprop US-dec.keyprop US-ibm.keyprop US-int.keyprop \
-	US-mac.keyprop US-sgi-101.keyprop US-sun.keyprop US.keyprop \
-	Yugoslav.keyprop
+	TR-f.keyprop TR-q.keyprop Thai.keyprop Thai2.keyprop UK.keyprop \
+	US-101.keyprop US-84.keyprop US-dec.keyprop US-ibm.keyprop \
+	US-int.keyprop US-mac.keyprop US-sgi-101.keyprop US-sun.keyprop \
+	US.keyprop Yugoslav.keyprop
 
 EXTRA_DIST = $(preset_data_DATA)
