@@ -93,7 +93,7 @@ tree_create (GtkTreeStore *model)
 	/* TODO: Error checking... */
 	sets = gkb_preset_load (find_presets ());
 	for (ptr = sets ; ptr != NULL ; ptr = ptr->next) {
-		GkbKeymap *item = sets->data;
+		GkbKeymap *item = ptr->data;
 
 		/* Create lang if necessary */
 		if ((lang = g_hash_table_lookup (langs, item->lang)) == NULL) {
