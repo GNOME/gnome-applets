@@ -155,18 +155,29 @@ create_properties_dialog (GnomeDesktopEntry *dentry)
 static void
 cb_launcher_properties (GtkWidget *widget, gpointer data)
 {
-	GtkWidget *dialog;
+	static GtkWidget *dialog;
 	GtkWidget *button = data;
+	GnomeDesktopEntry *dentry;
+
+	if (dialog) {
+		gtk_widget_show (dialog);
+		if (dialog->window)
+			gdk_window_raise (dialog->window);
+		return;
+	}
 
 	dialog = gtk_object_get_data (GTK_OBJECT (button), "properties-box");
-	if(!dialog) {
-		GnomeDesktopEntry *dentry;
-		dentry = gtk_object_get_data (GTK_OBJECT (button), "dentry");
+	dentry = gtk_object_get_data (GTK_OBJECT (button), "dentry");
+	
+	dialog = create_properties_dialog (dentry);
+	gtk_object_set_data (GTK_OBJECT (button),
+			     "properties-box", dialog);
 
-		dialog = create_properties_dialog (dentry);
-		gtk_object_set_data (GTK_OBJECT (button),
-				     "properties-box", dialog);
-	}
+	gtk_signal_connect (GTK_OBJECT (dialog),
+			    "destroy",
+			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
+			    &dialog);
+			    
 	gtk_widget_show_all (dialog);
 }
 
