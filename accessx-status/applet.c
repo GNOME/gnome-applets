@@ -484,13 +484,13 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 	GdkColor   fg, bg;
 	GdkPixbuf *icon_base;
 	gchar     *glyphstring = N_("a");
+	gchar *stock_id = ACCESSX_BASE_ICON;
 
 	g_assert (sapplet->applet);
 	style = gtk_widget_get_style (GTK_WIDGET (sapplet->applet));
 	fg = style->text[GTK_WIDGET_STATE (GTK_WIDGET (sapplet->applet))];
 	bg = style->base[GTK_STATE_NORMAL];
 
-	gchar *stock_id = ACCESSX_BASE_ICON;
 	if (event != NULL) {
 		switch (event->detail) {
 		case XkbAXN_BKReject:
@@ -871,8 +871,8 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
         program = gnome_program_get ();
 
         while (i <  G_N_ELEMENTS (stock_icons)) {
-                icon_set = gtk_icon_set_new ();
 		gchar *set_name = stock_icons[i].stock_id;
+                icon_set = gtk_icon_set_new ();
 		do {
 			char *filename;
 			GtkIconSource *source = gtk_icon_source_new ();
