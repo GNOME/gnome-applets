@@ -156,11 +156,12 @@ int main(int argc, char **argv)
 	gtk_widget_show (applet);
 	
 	
-	applet_widget_register_callback(APPLET_WIDGET(applet),
-					"about",
-					_("About..."),
-					about_cb,
-					NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb,
+					      NULL);
 
 	
 	applet_widget_gtk_main();
