@@ -14,7 +14,7 @@ jbc_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(GNORBA_LIBS)\
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba
+EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba README AUTHORS ChangeLog
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = jbc_applet.desktop
