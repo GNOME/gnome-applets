@@ -1867,6 +1867,17 @@ static gint updateOutput(gpointer data)
 				                   gtik_applet_menu_verbs,
 				                   stockdata);
 
+		if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
+			BonoboUIComponent *popup_component;
+
+			popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+
+			bonobo_ui_component_set_prop (popup_component,
+						      "/commands/Props",
+						      "hidden", "1",
+						      NULL);
+		}
+
 		/* KEEPING TIMER ID FOR CLEANUP IN DESTROY */
 		stockdata->drawTimeID = gtk_timeout_add(stockdata->props.scroll_speed,
 						        Repaint,stockdata);
