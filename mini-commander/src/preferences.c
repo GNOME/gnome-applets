@@ -847,7 +847,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 
     gtk_tree_view_insert_column_with_attributes (
 			GTK_TREE_VIEW (dialog->macros_tree), -1,
-			"Pattern", renderer,
+			_("Pattern"), renderer,
 			"text", COLUMN_PATTERN,
 			NULL);
 
@@ -857,7 +857,7 @@ mc_preferences_setup_dialog (GladeXML *xml,
 
     gtk_tree_view_insert_column_with_attributes (
 			GTK_TREE_VIEW (dialog->macros_tree), -1,
-			"Command", renderer,
+			_("Command"), renderer,
 			"text", COLUMN_COMMAND,
 			NULL);
 
