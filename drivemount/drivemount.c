@@ -708,6 +708,9 @@ mount_cb(GtkWidget *widget, gpointer data)
 	FILE *fp;
 	GString *str;
 	gint check = device_is_mounted(dd);
+	GtkWidget *hbox;
+	GtkWidget *label;
+	GtkWidget *image;
 
 	/* Stop the user from displaying zillions of error messages */
 	if (dd->error_dialog)
@@ -760,13 +763,16 @@ mount_cb(GtkWidget *widget, gpointer data)
 	}
 	else
 	{
-		/* the mount status is the same, print
-		   the returned output from (u)mount, we are assuming an error */
+		dd->error_dialog = gtk_dialog_new_with_buttons(_("Drive Mount Applet Warning"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
+		hbox = gtk_hbox_new(FALSE, 0);
+		gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dd->error_dialog)->vbox), hbox, FALSE, FALSE, 10);
 		g_string_prepend(str, _("\" reported:\n"));
 		g_string_prepend(str, command_line);
 		g_string_prepend(str, _("Drivemount command failed.\n\""));
-		dd->error_dialog = gtk_dialog_new_with_buttons(_("Drive Mount Applet Warning"), NULL, GTK_DIALOG_MODAL, GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
-		gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dd->error_dialog)->vbox), gtk_label_new(str->str), FALSE, FALSE, 10);
+		image = gtk_image_new_from_stock(GTK_STOCK_DIALOG_ERROR, GTK_ICON_SIZE_DIALOG);
+		gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 10);
+		label = gtk_label_new(str->str);
+		gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 10);
 		gtk_widget_show_all(dd->error_dialog);
         gtk_dialog_run(GTK_DIALOG(dd->error_dialog));
 		gtk_widget_destroy(dd->error_dialog);

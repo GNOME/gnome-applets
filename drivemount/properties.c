@@ -98,7 +98,6 @@ property_save(const gchar *path, DriveData *dd)
 void
 property_show(PanelApplet *applet, gpointer data)
 {
-/*
 	DriveData *dd = data;
 	GtkWidget *frame;
 	GtkWidget *hbox;
@@ -109,8 +108,6 @@ property_show(PanelApplet *applet, gpointer data)
 	GtkWidget *item;
 	GtkObject *delay_adj;
 	GtkWidget *button;
-
-	help_entry.name = gnome_app_id;
 
 	if(dd->propwindow)
 	{
@@ -137,39 +134,39 @@ property_show(PanelApplet *applet, gpointer data)
 	gtk_widget_show(vbox);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-        gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Mount point:"));
-        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	label = gtk_label_new(_("Mount point:"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	dd->mount_point_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(dd->mount_point_entry), dd->mount_point);
 	gtk_signal_connect_object(GTK_OBJECT(dd->mount_point_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(dd->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox),dd->mount_point_entry , TRUE, TRUE, 0);
+			    GTK_SIGNAL_FUNC(gnome_property_box_changed),
+			    GTK_OBJECT(dd->propwindow));
+	gtk_box_pack_start(GTK_BOX(hbox),dd->mount_point_entry , TRUE, TRUE, 0);
 	gtk_widget_show(dd->mount_point_entry);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-        gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-        label = gtk_label_new(_("Update in seconds:"));
-        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	label = gtk_label_new(_("Update in seconds:"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	delay_adj = gtk_adjustment_new( dd->prop_interval, 1.0, 30.0, 1, 1, 1 );
-        dd->prop_spin = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
-        gtk_box_pack_start(GTK_BOX(hbox), dd->prop_spin, FALSE, FALSE, 0);
+	dd->prop_spin = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
+	gtk_box_pack_start(GTK_BOX(hbox), dd->prop_spin, FALSE, FALSE, 0);
 	gtk_signal_connect(GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
 	gtk_signal_connect(GTK_OBJECT(dd->prop_spin),"changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
-        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(dd->prop_spin),GTK_UPDATE_ALWAYS );
+	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(dd->prop_spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(dd->prop_spin);
 
-        label = gtk_label_new(_("Icon:"));
-        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	label = gtk_label_new(_("Icon:"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	omenu = gtk_option_menu_new ();
@@ -206,11 +203,11 @@ property_show(PanelApplet *applet, gpointer data)
 	else
 		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->prop_device_pixmap);
 
-        gtk_box_pack_start(GTK_BOX(hbox), omenu, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), omenu, TRUE, TRUE, 0);
 	gtk_widget_show (omenu);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-        gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	dd->icon_entry_in = gnome_icon_entry_new("icon_in", _("Select icon for mounted"));
@@ -226,7 +223,7 @@ property_show(PanelApplet *applet, gpointer data)
 	gtk_widget_show(label);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-        gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	dd->icon_entry_out = gnome_icon_entry_new("icon_in", _("Select icon for unmounted"));
@@ -244,10 +241,10 @@ property_show(PanelApplet *applet, gpointer data)
 	set_icon_entry_sensitivity(dd, ( dd->prop_device_pixmap < 0 ) );
 
 	button = gtk_check_button_new_with_label (_("Scale size to panel"));
-        gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->scale_applet);
-        gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) scale_applet_cb, dd);
-        gtk_widget_show(button);
+	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->scale_applet);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) scale_applet_cb, dd);
+	gtk_widget_show(button);
 
 	button = gtk_check_button_new_with_label (_("Eject on unmount"));
 	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
@@ -256,14 +253,14 @@ property_show(PanelApplet *applet, gpointer data)
 	gtk_widget_show(button);
 
 	button = gtk_check_button_new_with_label (_("Use automount friendly status test"));
-        gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
-        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
-        gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) autofs_friendly_cb, dd);
-        gtk_widget_show(button);
+	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) autofs_friendly_cb, dd);
+	gtk_widget_show(button);
 
-        label = gtk_label_new(_("General"));
-        gtk_widget_show(frame);
-        gnome_property_box_append_page(GNOME_PROPERTY_BOX(dd->propwindow), frame, label);
+	label = gtk_label_new(_("General"));
+	gtk_widget_show(frame);
+	gnome_property_box_append_page(GNOME_PROPERTY_BOX(dd->propwindow), frame, label);
 
 	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "apply",
 			    GTK_SIGNAL_FUNC(property_apply_cb), dd );
@@ -275,7 +272,6 @@ property_show(PanelApplet *applet, gpointer data)
 			    GTK_SIGNAL_FUNC(phelp_cb), NULL);
 
 	gtk_widget_show_all(dd->propwindow);
-*/
 }
 
 static gint
@@ -414,7 +410,6 @@ property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd)
 	start_callback_update(dd);
 
 	/* FIXME: make the panel save our config*/
-	/* applet_widget_sync_config(APPLET_WIDGET(dd->applet));*/
 }
 
 static gchar *
