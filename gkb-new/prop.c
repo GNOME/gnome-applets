@@ -230,7 +230,7 @@ changed_cb (GnomePropertyBox * pb)
 
 /* --- keygrab --- */
 
-gboolean
+static gboolean
 string_empty (const char *string)  
 {
         if (string == NULL ||
@@ -306,7 +306,7 @@ convert_string_to_keysym_state(const char *string,
 
 char *
 convert_keysym_state_to_string(guint keysym,
-			       guint state)
+						 guint state)
 {
 	GString *gs;
 	char *sep = "";
@@ -490,7 +490,6 @@ apply_cb (GtkWidget * pb, gint page)
   GList * list;
   GKBpreset * tdata;
   Prop * data;
-  GtkWidget * entry1;
 
   if (page != -1)
     return;
@@ -557,12 +556,9 @@ apply_cb (GtkWidget * pb, gint page)
                                 &gkb->state);
                                                                                                                
 */
- 
-  sized_render ();
-  gkb_draw ();
 
-  if (system(gkb->dact->command))
-     gnome_error_dialog(_("The keymap switching command returned with error!"));
+  gkb_update (gkb, FALSE);
+  gkb_update (gkb, TRUE);
 
   applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
 }

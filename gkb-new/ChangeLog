@@ -1,3 +1,50 @@
+2000-12-06  Chema Celorio  <chema@celorio.com>
+
+	* prop.c (apply_cb): remove entry_1 as it was not beeing
+	used.
+
+	* gkb.h: add convert_string_to_keysum_state prototype
+	this kills a couple of compile warnings.
+
+	* prop.c (apply_cb): use gkb_update here
+	(string_empty): make static to avoid compile warning
+
+	* gkb.h: add the gkb_update prototype
+
+	* gkb.c: use the debug macro
+	(gkb_activator_connect_signals): implement.
+	(gkb_activator): use g_a_connect_signals here
+	[This fixes a bug in which the applet will apear as a
+	small sqare without really working, this also makes another
+	bug evident that crashes the applet. We need to coonect the
+	signals before calling applet_widget_add ]
+	(sized_render): make static to kill compile warning.
+	(load_properties): remove unused variable to kill compile warning
+	(gkb_draw): make static to kill compile warning, remove from .h file
+	(gkb_draw): move upwards so that it is above it's first reference
+	(gkb_activator): change header and add a cast to remove compile
+	warning about type mismatch for parameter #1 of ACTIVATE_APPLET
+	(gkb_deactivator): same here
+	(gkb_activator): add applet_widget after registering the callbacks,
+	this avoids the crash at startup.
+	(event_filter): make static to avoid a compile warning
+	(gkb_update): implement.
+	(gkb_change_orient): move, clean & use gkb_update
+	(gkb_change_pixel_size): ditto
+	(gkb_switch_normal): ditto
+	(gkb_switch_small): ditto
+	(gkb_change_orient): ditto
+	(gkb_switch_normal): add the gkb_ prefix
+	(gkb_switch_small): ditto
+	(gkb_button_press_event_cb): use gkb update v.s. using gkb_draw and
+	system
+	(global_key_filter): use gkb_update here too. Don't use gkb_draw
+	and system in the code, we need to abstract this fucntionality into
+	gkb_update & gkb_set_system_keymap
+	(gbk_sized_render): move here and add the gkb_ prefix
+
+	* gkb.h (debug): add a debug macro.
+
 2000-12-02  Szabolcs BAN <shooby@gnome.hu>
 
 	* Administration wax: gkb.c, prop.c, gkb.h:
