@@ -1840,24 +1840,42 @@ WeatherInfo *weather_info_clone (const WeatherInfo *info)
 
 void weather_info_free (WeatherInfo *info)
 {
-    if (info) {
-        g_free(info->location);
-        info->location = NULL;
-        g_free(info->forecast);
-        info->forecast = NULL;
-	if (info->radar != NULL) {
-		gdk_pixmap_unref (info->radar);
-		info->radar = NULL;
-	}
-	if (info->radar)
-	    g_free (info->radar);
-	if (info->iwin_buffer)
-	    g_free (info->iwin_buffer);
-	if (info->metar_buffer)
-	    g_free (info->metar_buffer);
-	g_free(info);
+    if (!info)
+        return;
+                                                                                
+    weather_location_free(info->location);
+    info->location = NULL;
+                                                                                
+    g_free(info->forecast);
+    info->forecast = NULL;
+                                                                                
+    if (info->radar != NULL) {
+        gdk_pixmap_unref (info->radar);
+        info->radar = NULL;
     }
-    
+                                                                                
+    if (info->iwin_buffer)
+        g_free (info->iwin_buffer);
+                                                                                
+    if (info->metar_buffer)
+        g_free (info->metar_buffer);
+
+    if (info->metar_handle)
+        gnome_vfs_async_cancel (info->metar_handle);
+                                                                                
+    if (info->iwin_handle)
+        gnome_vfs_async_cancel (info->iwin_handle);
+                                                                                
+    if (info->wx_handle)
+        gnome_vfs_async_cancel (info->wx_handle);
+                                                                                
+    if (info->met_handle)
+        gnome_vfs_async_cancel (info->met_handle);
+                                                                                
+    if (info->bom_handle)
+        gnome_vfs_async_cancel (info->bom_handle);
+                                                                                
+    g_free(info);
 }
 
 void weather_forecast_set (WeatherForecastType forecast)
