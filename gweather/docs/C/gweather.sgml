@@ -1,5 +1,7 @@
 <!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN"[
 <!ENTITY gweather "<application>GNOME Weather</application>">
+<!ENTITY gnome "<application>GNOME</application>">
+<!ENTITY gnome-applets "<application>gnome-applets</application>">
 ]>
 
 <book id="index" revision="$Revision$">
@@ -13,7 +15,7 @@
     
     <authorgroup>
       <author>
-	<firstname>Spirosr</firstname>
+	<firstname>Spiros</firstname>
 	<surname>Papadimitriou</surname>
 	<affiliation>
 	  <address>
@@ -54,14 +56,32 @@
     <sect1 id="intro">
       <title>What is &gweather;?</title>
       
-      <para>TODO</para>
+      <para>&gweather; is a &gnome; panel applet that retrieves and
+      displays various weather information.</para>
     </sect1>
 
 
     <sect1 id="updates">
       <title>Where cat get updates?</title>
 
-      <para>TODO <ulink url="http://gweather.dhs.org/">http://gweather.dhs.org/</ulink></para>
+      <para>&gweather; is now part of the &gnome-applets; package and
+      newer versions are no longer distributed separately.  Therefore,
+      your best bet is to download and install the
+      <application>gnome-applets</application> package.</para>
+
+      <para>However, you can still find its own homepage at <ulink
+      url="http://gweather.dhs.org/">http://gweather.dhs.org/</ulink>.
+      You can still visit it if you want the latest <ulink
+      url="http://gweather.dhs.org/Locations">Locations</ulink> file,
+      which is periodically updated with new cities, as sent in by
+      users.  If your city is not included in the distribution, please
+      <ulink url="mailto:spapadim+gweather@cs.cmu.edu">drop me a
+      line</ulink> with the necessary information and I will add it
+      into the next release.</para>
+
+      <para>You may also want to visit the homepage if you are curious
+      to see <ulink url="http://gweather.dhs.org/news.html">what's
+      new</ulink>.</para>
     </sect1>
 
 
@@ -116,38 +136,284 @@
   <chapter id="properties">
     <title>Properties</title>
 
+    <para>This section describes the user settings of &gweather;.  To
+    bring up the dialog for these settings, right-click on the applet
+    and select <quote>Properties</quote>.  There are three categories of
+    options, which are described below.  Note that each running copy
+    of &gweather; has its own set of settings.
+    </para>
+
     <sect1 id="basic">
       <title>Basic</title> 
 
-      <para>TODO</para>
+      <para>This section describes options related to the basic
+      functionality of &gweather;.</para>
+
+      <sect2 id="update-int">
+        <title>Update Interval</title>
+
+        <para>This option determines how often &gweather; will connect
+        to the server(s) and retrieve weather information.  Current
+        conditions, forecast and radar map (if enabled) will be
+        fetched.</para>
+
+        <para>Note that this is independent of when the server(s)
+        update the actual information.  The update time shown in the
+        current conditions box refers to when those measurements were
+        renewed on the server, rather than when they were last
+        retrieved.</para>
+
+        <para>You can disable automatic updates, by unchecking the
+        <quote>Update enabled</quote> box.  On the other hand, you man
+        also force &gweather; to perform an update by choosing the
+        corresponding option in the popup menu.  These two options are
+        provided mostly for people who use a modem.</para>
+      </sect2>
+
+
+      <sect2 id="use-metric">
+        <title>Measurement Units</title>
+ 
+        <para>By default, &gweather; uses the imperial system of
+        units.  If you prefer metric units, then you should check the
+        <quote>Use metric</quote> box.  The units used are shown in
+        table <xref linkend="tab-units">.
+
+        <table id="tab-units">
+            <title>Measurement Units</title>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Quantity</entry>
+                  <entry>Metric</entry>
+                  <entry>Imperial</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Temperature</entry>
+                  <entry>deg Celsius</entry>
+                  <entry>deg Farenheit</entry>
+                </row>
+                <row>
+                  <entry>Windspeed</entry>
+                  <entry>km/h</entry>
+                  <entry>mph</entry>
+                </row>
+                <row>
+                  <entry>Pressure</entry>
+                  <entry>mmHg</entry>
+                  <entry>inHg</entry>
+                </row>
+                <row>
+                  <entry>Visibility</entry>
+                  <entry>km</entry>
+                  <entry>miles</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </para>
+      </sect2>
+
+
+      <sect2 id="detailed-forecast">
+        <title>Detailed Forecast</title>
+
+        <para>The IWIN service provides two types of weather
+        forecasts.  The first is a brief forecast for the broader area
+        where your location belongs (usually the entire state).  The
+        second is a full five day forecast for your particular area.
+        If you prefer the latter, more specific forecast, then you
+        need to check the <quote>Detailed forecast</quote> box.
+        However, these forecasts often take longer to download and
+        may not be available for some locations.</para>
+
+        <para>Note that forecasts from IWIN are available only for US
+        cities.</para>
+      </sect2>
+
+
+      <sect2 id="show-maps">
+        <title>Radar Map Display</title>
+
+        <para>&gweather; allows you to retrieve radar maps, if these
+        are available.  These may be retrieved from the Web, as long
+        as a valid URL pointing to the image (in practically any
+        format) is provided.  Check the <quote>Enable radar
+        maps</quote> if you want to enable this option.  If a radar
+        image URL is not provided in the
+        <filename>Locations</filename> file of the standard
+        distribution, you can always add one using the location editor
+        (see section <xref linkend="location-editor">).</para>
+      </sect2>
     </sect1>
 
 
     <sect1 id="network">
       <title>Network</title> 
 
-      <para>TODO</para>
+      <para>This allows you to define some basic network settings.
+      You will probably need this if your computer is located behind a
+      firewall.</para>
+
+      <para>Check the <quote>Use proxy</quote> box if you want to use
+      an HTTP proxy to access the Web.  Then, simply enter in the
+      corresponding fields the proxy server hostname and, if
+      necessary, your username and password on that proxy
+      server.</para>
     </sect1>
 
 
     <sect1 id="location">
       <title>Location</title> 
 
-      <para>TODO</para>
+      <para>You need to use this only whenever you want to set/change
+      your location.  A file with numerous default locations around
+      the world is provided as part of the &gweather;
+      distribution.</para>
 
+      <para>Locations are organized in a three-level hierarchy.  The
+      top level contains broader geographical areas, the second
+      contains sub-regions of these areas and the last contains the
+      particular locations.  This hierarchy is essentially based on
+      the way information is organized in the US NWS (National Weather
+      Service), and that is the reason that the US and Canada appear
+      on the topmost level.</para>
 
       <sect2 id="location-editor">
         <title>Locations Editor</title>
 
-        <para>TODO</para>
+        <para>Not yet implemented.</para>
       </sect2>
     </sect1>
   </chapter>
 
-  <chapter id="known-problems">
-    <title>Known Problems</title>
+  <chapter id="problems-faq">
+    <title>Questions and Known Problems</title>
 
-    <para>TODO</para>
+    <sect1 id="known-problems">
+      <title>Known Problems</title>
+
+      <sect2 id="blocking-io">
+        <title>Blocking Input/Output</title>
+
+        <para>Even though &gweather; now uses non-blocking I/O to
+        retrieve data from the network, there are still some steps
+        that block execution.  Most notably, establishing a TCP
+        connection to remote hosts is a blocking operation.  Because
+        the NWS and IWIN web servers are often heavily loaded, this
+        step may take a significant amount of time.  While that
+        happens, the application is unable to respond to CORBA
+        requests from the panel.  In its current implementation, the
+        panel iterates through all applications and sends frequent
+        CORBA requests (eg. for saving state).  If an applet cannot
+        respond for any reason, then the panel will block waiting for
+        a response.</para>
+
+        <para>While the panel is blocked, it will not respond to any
+        user (or application) requests.  For instance, panel movement
+        and panel menus (the ones that appear upon a right click) will
+        not work.  However, other applets in the panel should work
+        (unless they have made a CORBA request to the panel, eg. for
+        querying panel size).  As soon as the blocking operation in
+        &gweather; completes, things should return to normal (and user
+        interface requests that were buffered will be
+        executed).</para>
+
+        <para>Unfortunately, as far as I can tell, there is not much
+        that can be done about this in &gweather;.  Hopefully, future
+        versions of the panel will resolve this issue.</para>
+      </sect2>
+      
+<!--
+      <sect2 id="problem2">
+        <title>Problem2</title>
+        <para>TODO?</para>
+      </sect2>
+-->
+    </sect1>
+
+    <sect1 id="faq">
+      <title>Frequently Asked Questions</title>
+
+      <para>This is a list of frequently asked questions about
+      &gweather;.  For further information and updates, please visit
+      the <ulink url="http://gweather.dhs.org/">&gweather;
+      homepage</ulink>.  If your question is still unresolved, you can
+      contact the <ulink
+      url="mailto:spapadim+gweather@cs.cmu.edu">author</ulink>.</para>
+
+      <sect2>
+        <title>&gweather; freezes my panel!</title>
+        <para>This is due to the blocking nature of certain network
+        operations (see also section <xref linkend="blocking-io">) and
+        due to the way the panel currently works.</para>
+      </sect2>
+
+      <sect2>
+        <title>The location list appears empty!</title>
+
+        <para>This is probably because the
+        <filename>Locations</filename> file was not installed in the
+        proper place.  This is usually because &gweather; and &gnome;
+        were not configured in the same way.  The file containing the
+        locations must be installed in the
+        <filename>gweather</filename> subdirectory, under the gnome
+        data directory.  You can find out the latter with the
+        <userinput>gnome-config --datadir</userinput> command.</para>
+
+        <para>If you have compiled &gnome-applets; yourself, make sure
+        that you have used <userinput>configure --prefix=`gnome-config
+        --prefix` --sysconfdir=`gnome-config
+        --sysconfdir`</userinput>.  Binary RPMs assume a that the
+        prefix and sysconfdir are <filename>/usr</filename> and
+        <filename>/etc</filename>, respectively.  If you have compiled
+        &gnome; yourself with different options, you need to download
+        and compile &gnome-applets; yourself.</para>
+      </sect2>
+
+      <sect2>
+        <title>Why does &gweather; display a question mark and dashes
+        for current conditions?</title>
+
+        <para>This will happen if &gweather; cannot access the NWS
+        server for any reason.  This may be because your network
+        connection is down, or the NWS server is down, or maybe the
+        NWS server does not currently have any information about your
+        location.</para>
+      </sect2>
+
+      <sect2>
+        <title>Why does &gweather; say that a forecast is not
+          available?</title>
+
+        <para>If you have enabled detailed forecasts (see section
+        <xref linkend="detailed-forecast">), then it is possible that
+        one may not be available for your location.  In this case, try
+        disabling detailed forecasts.</para>
+
+        <para>Another possible reason is that the IWIN server is down
+        and &gweather; cannot retrieve forecast information.  The
+        problem should go away as soon as the IWIN server is up
+        again.</para>
+      </sect2>
+
+      <sect2>
+        <title>Why is the radar map not displayed?</title>
+
+        <para>The most common reason is that the webserver containing
+        the radar image is down.  You may also want to use the
+        location editor (see section <xref linkend="location-editor">)
+        to make sure that the radar image URL for your location is
+        valid.</para>
+
+        <para>Also, if the image is in an uncommon format, &gweather;
+        may not be able to display it.  Images are displayed using the
+        &gnome; libraries, which supports practically all available
+        formats, so this problem should be very rare. </para>
+      </sect2>
+    </sect1>
 
   </chapter>
 
