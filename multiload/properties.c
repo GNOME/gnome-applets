@@ -25,6 +25,7 @@
 #define PROP_AVG		4
 #define PROP_SPEED		5
 #define PROP_SIZE		6
+#define HIG_IDENTATION		"    "
 
 void
 properties_set_insensitive(MultiloadApplet *ma)
@@ -75,7 +76,7 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	
 	if (active)
 	{
-		for (i = 0; i < 4; i++)
+		for (i = 0; i < NGRAPHS; i++)
 			gtk_widget_set_sensitive(ma->check_boxes[i], TRUE);	
 		gtk_widget_show_all (ma->graphs[prop_type]->main_widget);
 		ma->graphs[prop_type]->visible = TRUE;
@@ -222,13 +223,13 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 	blue = g_ascii_xdigit_value(color_string[5]) * 16 + g_ascii_xdigit_value(color_string[6]);
 		
 	object = gtk_label_new("I will never be seen"); /* this is used instead of a structure */
-	vbox = gtk_vbox_new(FALSE, 0);
+	vbox = gtk_vbox_new (FALSE, 6);
 	label = gtk_label_new_with_mnemonic(name);
 	color_picker = gnome_color_picker_new();
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), color_picker);
 		
 	gtk_box_pack_start(GTK_BOX(vbox), color_picker, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
 	
 	gtk_box_pack_start(GTK_BOX(page), vbox, FALSE, FALSE, 0);	
 	
@@ -248,20 +249,58 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 {
 	GtkWidget *notebook, *page;
 	GtkWidget *hbox, *vbox;
+	GtkWidget *categories_vbox;
+	GtkWidget *category_vbox;
+	GtkWidget *control_vbox;
+	GtkWidget *control_hbox;
 	GtkWidget *check_box;
-	GtkWidget *frame;
+	GtkWidget *indent;
+	GtkWidget *table;
 	GtkWidget *spin_button;
 	GtkWidget *label;
 	PanelAppletOrient orient;
 	gchar *label_text;
+	gchar *title;
+
+	vbox = gtk_vbox_new (FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	gtk_widget_show (vbox);
 	
-	frame = gtk_frame_new(_("Monitored Resources"));
-	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox,
+			    TRUE, TRUE, 0);
+
+	categories_vbox = gtk_vbox_new (FALSE, 18);
+	gtk_box_pack_start (GTK_BOX (vbox), categories_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (categories_vbox);
+
+	category_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (category_vbox);
 	
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_container_set_border_width(GTK_CONTAINER(hbox), 3);
-	gtk_container_add(GTK_CONTAINER(frame), hbox);
+	title = g_strconcat ("<span weight=\"bold\">", _("Monitored Resources"), "</span>", NULL);
+	label = gtk_label_new_with_mnemonic (_(title));
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
+	g_free (title);
+	
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
+	gtk_widget_show (hbox);
+	
+	indent = gtk_label_new (HIG_IDENTATION);
+	gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
+	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
+	gtk_widget_show (indent);
+	
+	control_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_vbox);
+	
+	control_hbox = gtk_hbox_new(FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_hbox);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Processor"));
 	ma->check_boxes[0] = check_box;
@@ -271,7 +310,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_CPU));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_cpuload");
-	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Memory"));
 	ma->check_boxes[1] = check_box;
@@ -281,7 +320,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_MEM));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_memload");
-	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 	
 	check_box = gtk_check_button_new_with_mnemonic(_("_Network"));
 	ma->check_boxes[2] = check_box;
@@ -291,9 +330,9 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_NET));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_netload");
-	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
-	
-	check_box = gtk_check_button_new_with_mnemonic(_("_Swap Space"));
+	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
+
+	check_box = gtk_check_button_new_with_mnemonic (_("S_wap Space"));
 	ma->check_boxes[3] = check_box;
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_swapload", NULL));
@@ -301,9 +340,8 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_SWAP));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_swapload");
-	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
+	gtk_box_pack_start (GTK_BOX (control_hbox), check_box, FALSE, FALSE, 0);
 
-		
 	check_box = gtk_check_button_new_with_mnemonic(_("_Load"));
 	ma->check_boxes[4] = check_box;	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
@@ -312,20 +350,40 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_AVG));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_loadavg");
-	
-	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-	
+	gtk_box_pack_start(GTK_BOX(control_hbox), check_box, FALSE, FALSE, 0);
 
-	frame = gtk_frame_new(_("Options"));
-	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
+	category_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (category_vbox);
 
-	vbox = gtk_vbox_new(FALSE, 0);
-	gtk_container_set_border_width(GTK_CONTAINER(vbox), 5);
-	gtk_container_add(GTK_CONTAINER(frame), vbox);
+	title = g_strconcat ("<span weight=\"bold\">", _("Options"), "</span>", NULL);
+	label = gtk_label_new (title);
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
+	gtk_widget_show (label);
+	g_free (title);
 	
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 1);
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
+	gtk_widget_show (hbox);
+
+	indent = gtk_label_new (HIG_IDENTATION);
+	gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
+	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
+	gtk_widget_show (indent);
+
+	control_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_vbox);
+	
+	table = gtk_table_new (2, 3, FALSE);
+	gtk_table_set_col_spacings (GTK_TABLE (table), 6);
+	gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+	gtk_container_set_border_width (GTK_CONTAINER (table), 0);
+	gtk_widget_show (table);
+	gtk_container_add (GTK_CONTAINER (control_vbox), table);
 	
 	orient = panel_applet_get_orient(ma->applet);
 	if ( (orient == PANEL_APPLET_ORIENT_UP) || (orient == PANEL_APPLET_ORIENT_DOWN) )
@@ -334,7 +392,10 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 		label_text = g_strdup(_("System m_onitor height: "));
 	
 	label = gtk_label_new_with_mnemonic(label_text);
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
+	gtk_table_attach (GTK_TABLE (table), label, 
+			  0, 1, 0, 1, GTK_FILL, 0, 0, 0);
+			  
 	spin_button = gtk_spin_button_new_with_range(10, 1000, 5);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
@@ -344,15 +405,15 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 				(gdouble)panel_applet_gconf_get_int(ma->applet, "size", NULL));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "size");
-	gtk_box_pack_start(GTK_BOX(hbox), spin_button, FALSE, FALSE, 3);
-	label = gtk_label_new(_("pixels"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 1);
+	gtk_table_attach (GTK_TABLE (table), spin_button, 1, 2, 0, 1, GTK_FILL, 0, 0, 0);
+	label = gtk_label_new (_("pixels"));
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
+	gtk_table_attach (GTK_TABLE (table), label, 2, 3, 0, 1, GTK_FILL, 0, 0, 0);
 	
 	label = gtk_label_new_with_mnemonic(_("Sys_tem monitor update interval: "));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
+	gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
 	spin_button = gtk_spin_button_new_with_range(50, 10000, 50);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
@@ -362,45 +423,73 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 				(gdouble)panel_applet_gconf_get_int(ma->applet, "speed", NULL));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "speed");
-	gtk_box_pack_start(GTK_BOX(hbox), spin_button, FALSE, FALSE, 3);
+	gtk_table_attach (GTK_TABLE (table), spin_button, 1, 2, 1, 2, GTK_FILL, 0, 0, 0);
 	label = gtk_label_new(_("milliseconds"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0f, 0.5f);
+	gtk_table_attach (GTK_TABLE (table), label, 2, 3, 1, 2, GTK_FILL, 0, 0, 0);
 	
 	g_free(label_text);
 	
-	frame = gtk_frame_new(_("Colors"));
-	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
-	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
 	
+	category_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (category_vbox);
+
+	title = g_strconcat ("<span weight=\"bold\">", _("Colors"), "</span>", NULL);
+	label = gtk_label_new (title);
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
+	gtk_widget_show (label);
+	g_free (title);
+	
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
+	gtk_widget_show (hbox);
+
+	indent = gtk_label_new (HIG_IDENTATION);
+	gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
+	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
+	gtk_widget_show (indent);
+
+	control_vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_vbox);
+
 	notebook = gtk_notebook_new();
-	gtk_container_set_border_width(GTK_CONTAINER(notebook), 5);
-	gtk_container_add(GTK_CONTAINER(frame), notebook);
+	gtk_container_add (GTK_CONTAINER (control_vbox), notebook);
 	
 	page = add_page(notebook,  _("Processor"));
+	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_User"), "cpuload_color0", ma);
 	add_color_selector(page, _("S_ystem"), "cpuload_color1", ma);
 	add_color_selector(page, _("N_ice"), "cpuload_color2", ma);
 	add_color_selector(page, _("I_dle"), "cpuload_color3", ma);
 	
 	page = add_page(notebook,  _("Memory"));
+	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_User"), "memload_color0", ma);
 	add_color_selector(page, _("Sh_ared"), "memload_color1", ma);
 	add_color_selector(page, _("_Buffers"), "memload_color2", ma);
-	add_color_selector(page, _("Cac_hed"), "memload_color3", ma);
+	add_color_selector (page, _("Cach_ed"), "memload_color3", ma);
 	add_color_selector(page, _("F_ree"), "memload_color4", ma);
 	
 	page = add_page(notebook,  _("Network"));
-	add_color_selector(page, _("S_LIP"), "netload_color0", ma);
+	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
+	add_color_selector (page, _("_SLIP"), "netload_color0", ma);
 	add_color_selector(page, _("PL_IP"), "netload_color1", ma);
-	add_color_selector(page, _("Et_hernet"), "netload_color2", ma);
-	add_color_selector(page, _("_Other"), "netload_color3", ma);
+	add_color_selector (page, _("_Ethernet"), "netload_color2", ma);
+	add_color_selector (page, _("Othe_r"), "netload_color3", ma);
 	add_color_selector(page, _("_Background"), "netload_color4", ma);
 	
 	page = add_page(notebook,  _("Swap Space"));
+	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_Used"), "swapload_color0", ma);
 	add_color_selector(page, _("_Free"), "swapload_color1", ma);
 	
 	page = add_page(notebook,  _("Load"));
+	gtk_container_set_border_width (GTK_CONTAINER (page), 12);
 	add_color_selector(page, _("_Average"), "loadavg_color0", ma);
 	add_color_selector(page, _("_Background"), "loadavg_color1", ma);
 	
@@ -428,6 +517,9 @@ multiload_properties_cb (BonoboUIComponent *uic,
 					      NULL);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	fill_properties(dialog, ma);
 
