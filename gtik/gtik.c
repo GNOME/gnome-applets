@@ -1656,8 +1656,10 @@ static gint updateOutput(gpointer data)
 					GTK_SIGNAL_FUNC(zipRight),stockdata);
 
 		stockdata->tooltips = gtk_tooltips_new ();
-		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->leftButton, _("Skip forward"), "");
-		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backword"), "");
+		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->leftButton, _("Skip forward"), NULL);
+		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backword"), NULL);
+		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->applet, _("Stock Ticker\nGet continuously updated stock quotes"), NULL);
+
 
 		frame = gtk_frame_new(NULL);
 		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
@@ -1757,8 +1759,7 @@ static gint updateOutput(gpointer data)
 		StockData *stockdata = data;
 
 		g_object_unref (G_OBJECT (stockdata->layout));
-		g_object_unref (G_OBJECT (stockdata->tooltips));
-
+		
 		if (stockdata->drawTimeID > 0) { 
 			gtk_timeout_remove(stockdata->drawTimeID); }
 		if (stockdata->updateTimeID >0) { 
