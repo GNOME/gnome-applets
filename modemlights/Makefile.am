@@ -1,8 +1,9 @@
 SUBDIRS = docs
 
-INCLUDES = -I. -I$(srcdir) 				\
-	$(GNOME_APPLETS_CFLAGS)				\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
+INCLUDES =				\
+	-I.				\
+	-I$(srcdir)			\
+	$(GNOME_APPLETS_CFLAGS)		\
 	-DVERSION=\""$(VERSION)"\"
 
 libexec_PROGRAMS = modemlights_applet2

@@ -1,3 +1,37 @@
+2004-12-28  Davyd Madeley  <davyd@madeley.id.au>
+
+	* Makefile.am: Scrollkeeper fix for distcheck (patch from Mariano
+	  Suárez-Alvarez <mariano@gnome.org>
+	* configure.in: Bump post release version to 2.9.3.2
+
+2004-12-27  Tomasz Kłoczko <kloczek@pld.org.pl>
+
+	* configure.in: add AC_DEFINE_UNQUOTED(GNOMELOCALEDIR,
+				"${datadir}/locale", [locale directory])
+	* accessx-status/Makefile.am:
+	* battstat/Makefile.am:
+	* battstat/apmlib/Makefile.am:
+	* cdplayer/Makefile.am:
+	* charpick/Makefile.am:
+	* cpufreq/src/Makefile.am:
+	* drivemount/Makefile.am:
+	* geyes/Makefile.am:
+	* gswitchit/Makefile.am:
+	* gtik/Makefile.am:
+	* gtik/access/Makefile.am:
+	* gweather/Makefile.am:
+	* libgswitchit/Makefile.am:
+	* mini-commander/src/Makefile.am:
+	* mixer/Makefile.am:
+	* modemlights/Makefile.am:
+	* modemlights/Makefile.am:
+	* multiload/Makefile.am:
+	* null_applet/Makefile.am:
+	* stickynotes/Makefile.am:
+	* wireless/Makefile.am: remove all all -DGNOMELOCALEDIR.
+	  Now GNOMELOCALEDIR is declared in single point. Adjustments in
+	  INCLUDES.
+
 2004-12-27  Davyd Madeley  <davyd@madeley.id.au>
 
 	* NEWS:

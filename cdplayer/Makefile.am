@@ -1,9 +1,9 @@
 SUBDIRS = docs
-INCLUDES = -I. \
-$(GNOME_APPLETS_CFLAGS) \
--I$(srcdir) \
--DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
-$(CDROM_CFLAGS)
+INCLUDES =			\
+	-I$(srcdir)		\
+	-I.			\
+	$(GNOME_APPLETS_CFLAGS)	\
+	$(CDROM_CFLAGS)
 
 if CDDA_SOLARIS
 CDROM_CDDA_SRCS = \

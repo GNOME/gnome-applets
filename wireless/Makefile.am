@@ -3,14 +3,14 @@
 NULL=
 SUBDIRS = docs
 
-INCLUDES = 							\
-	-I$(top_srcdir)/intl 					\
-	$(GNOME_APPLETS_CFLAGS)					\
-	$(LIBGLADE_CFLAGS)					\
-	-DICONDIR=\""$(datadir)/pixmaps"\"			\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
-	-DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED		\
-	-DGNOME_DISABLE_DEPRECATED	\
+INCLUDES = 					\
+	-DICONDIR=\""$(datadir)/pixmaps"\"	\
+	-DG_DISABLE_DEPRECATED			\
+	-DGDK_DISABLE_DEPRECATED		\
+	-DGNOME_DISABLE_DEPRECATED		\
+	-I$(top_srcdir)/intl 			\
+	$(GNOME_APPLETS_CFLAGS)			\
+	$(LIBGLADE_CFLAGS)			\
 	$(NULL)
 
 libexec_PROGRAMS = wireless-applet

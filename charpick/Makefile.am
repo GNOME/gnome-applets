@@ -1,9 +1,10 @@
 SUBDIRS = help
 
-INCLUDES = -I. -I$(srcdir) 				\
-	$(GNOME_APPLETS_CFLAGS)	$(GUCHARMAP_CFLAGS)	\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
-
+INCLUDES =			\
+	-I.			\
+	-I$(srcdir)		\
+	$(GNOME_APPLETS_CFLAGS)	\
+	$(GUCHARMAP_CFLAGS)
 
 libexec_PROGRAMS = charpick_applet2
 

@@ -20,13 +20,16 @@ if ENABLE_FLAGS
   flags_CFLAGS = -DENABLE_FLAGS=1
 endif
 
-COMMON_CFLAGS = -Wall -Werror -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
-           -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-           -DG_LOG_DOMAIN=\"GSwitchIt\" \
-           -DGLADE_DIR=\""$(gladedir)"\" \
-           $(LIBXKLAVIER_CFLAGS) \
-           $(flags_CFLAGS) \
-           $(LIBGLADE_CFLAGS)
+COMMON_CFLAGS =				\
+	-Wall -Werror			\
+	-I$(top_srcdir)			\
+	-I.				\
+	-I$(top_srcdir)/intl		\
+	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
+	-DGLADE_DIR=\""$(gladedir)"\"	\
+	$(LIBXKLAVIER_CFLAGS)		\
+	$(flags_CFLAGS)			\
+	$(LIBGLADE_CFLAGS)
 
 COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
               $(LIBGLADE_LIBS)	\

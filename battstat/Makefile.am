@@ -25,15 +25,13 @@ SUBDIRS = docs sounds $(APMDIR)
 
 DIST_SUBDIRS = docs sounds apmlib
 
-INCLUDES = \
-	$(GNOME_APPLETS_CFLAGS) \
-	$(LIBGLADE_CFLAGS) \
-	$(APMINC) \
-	-DDATA_DIR=\"$(datadir)\" \
-	-DGLADE_DIR=\"$(gladedir)\" \
-	-DG_LOG_DOMAIN=\"battstat_applet\" \
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
-
+INCLUDES =					\
+	$(GNOME_APPLETS_CFLAGS)			\
+	$(LIBGLADE_CFLAGS)			\
+	$(APMINC)				\
+	-DDATA_DIR=\"$(datadir)\"		\
+	-DGLADE_DIR=\"$(gladedir)\"		\
+	-DG_LOG_DOMAIN=\"battstat_applet\"
 
 
 libexec_PROGRAMS = battstat-applet-2

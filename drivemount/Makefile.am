@@ -1,9 +1,9 @@
 SUBDIRS = help
 
-INCLUDES = \
--I. -I$(srcdir) \
--DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-$(GNOME_APPLETS_CFLAGS) 
+INCLUDES =			\
+	-I.			\
+	-I$(srcdir)		\
+	$(GNOME_APPLETS_CFLAGS) 
 
 libexec_PROGRAMS = drivemount_applet2
 

@@ -1,8 +1,10 @@
-INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-		$(GNOME_APPLETS_CFLAGS) $(GNOME_VFS_APPLETS_CFLAGS) \
-		-I$(top_srcdir) \
-		-I$(includedir) \
-		$(GAILUTIL_CFLAGS)
+INCLUDES =				\
+	-I$(srcdir)			\
+	-I$(top_srcdir)			\
+	-I$(includedir)			\
+	$(GNOME_APPLETS_CFLAGS)		\
+	$(GNOME_VFS_APPLETS_CFLAGS)	\
+	$(GAILUTIL_CFLAGS)
 
 noinst_LTLIBRARIES = libgnomedrawareaaccess.la
 

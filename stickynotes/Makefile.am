@@ -2,13 +2,12 @@
 
 SUBDIRS = pixmaps docs
 
-INCLUDES = \
-	-I. \
-	-I$(srcdir) \
-	$(GNOME_APPLETS_CFLAGS) \
-	$(LIBGLADE_CFLAGS) \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-DSTICKYNOTES_GLADEDIR=\"$(gladedir)\" \
+INCLUDES =					\
+	-I.					\
+	-I$(srcdir)				\
+	$(GNOME_APPLETS_CFLAGS)			\
+	$(LIBGLADE_CFLAGS)			\
+	-DSTICKYNOTES_GLADEDIR=\"$(gladedir)\"	\
 	-DSTICKYNOTES_ICONDIR=\"$(icondir)\"
 
 libexec_PROGRAMS = stickynotes_applet

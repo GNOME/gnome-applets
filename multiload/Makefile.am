@@ -1,10 +1,9 @@
 SUBDIRS = docs
 
-INCLUDES =						\
-	-I$(srcdir)					\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
-	$(GNOME_APPLETS_CFLAGS)                         \
-	$(GTOP_APPLETS_CFLAGS)				\
+INCLUDES =			\
+	-I$(srcdir)		\
+	$(GNOME_APPLETS_CFLAGS)	\
+	$(GTOP_APPLETS_CFLAGS)	\
 	-Wall
 
 libexec_PROGRAMS = multiload-applet-2

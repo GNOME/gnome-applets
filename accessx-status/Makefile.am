@@ -22,10 +22,9 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_AccessxApplet.xml
 
-INCLUDES   = $(GNOME_APPLETS_CFLAGS)     \
-	     -DGLADEDIR=\""$(gladedir)"\" \
-	     -DPIXMAPDIR=\""$(datadir)/pixmaps/"\"\
-	     -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
+INCLUDES   = $(GNOME_APPLETS_CFLAGS)			\
+	     -DGLADEDIR=\""$(gladedir)"\"		\
+	     -DPIXMAPDIR=\""$(datadir)/pixmaps/"\"
 
 CLEANFILES = $(server_in_files) $(server_DATA) $(ACCESSX_STATUS_APPLET_CLEANFILES)
 

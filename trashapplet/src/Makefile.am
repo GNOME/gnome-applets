@@ -1,7 +1,6 @@
-INCLUDES = -I$(top_srcdir)						\
-	   $(GNOME_APPLETS_CFLAGS) \
-	   $(GNOME_VFS_APPLETS_CFLAGS) \
-	   -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
+INCLUDES = -I$(top_srcdir)		\
+	   $(GNOME_APPLETS_CFLAGS)	\
+	   $(GNOME_VFS_APPLETS_CFLAGS)
 
 libexec_PROGRAMS = trashapplet
 

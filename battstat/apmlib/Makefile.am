@@ -4,12 +4,11 @@
 # Created: Thu Jun 15 23:08:41 CEST 2000
 #
 
-INCLUDES = \
-	-I$(top_srcdir) \
-	-I$(top_srcdir)/apmlib \
-	$(GNOME_APPLETS_CFLAGS)	 \
-	-DG_LOG_DOMAIN=\"battstat_applet\" \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+INCLUDES =					\
+	-I$(top_srcdir)				\
+	-I$(top_srcdir)/apmlib			\
+	$(GNOME_APPLETS_CFLAGS)			\
+	-DG_LOG_DOMAIN=\"battstat_applet\"
 
 noinst_LIBRARIES = libapm.a
 

@@ -1,8 +1,9 @@
 SUBDIRS = themes docs
 
-INCLUDES = -I. -I$(srcdir) 				\
+INCLUDES =						\
+	-I.						\
+	-I$(srcdir) 					\
 	$(GNOME_APPLETS_CFLAGS)				\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-I$(includedir) 				\
 	-DGEYES_THEMES_DIR=\""$(datadir)/geyes/"\"
 

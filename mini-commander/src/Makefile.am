@@ -1,13 +1,12 @@
 ## Process this file with automake to produce Makefile.in
 
-INCLUDES = 						\
-	 $(GNOME_APPLETS_CFLAGS)			\
-	 $(LIBGLADE_CFLAGS)				\
-	$(WARN_CFLAGS)					\
-	-I.						\
-	-I$(srcdir)					\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
-	-DMC_GLADEDIR=\""$(gladedir)"\"			\
+INCLUDES = 				\
+	-I.				\
+	-I$(srcdir)			\
+	$(GNOME_APPLETS_CFLAGS)		\
+	$(LIBGLADE_CFLAGS)		\
+	$(WARN_CFLAGS)			\
+	-DMC_GLADEDIR=\""$(gladedir)"\"	\
 	$(GNOME_INCLUDEDIR)
 
 libexec_PROGRAMS = mini_commander_applet

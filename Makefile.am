@@ -84,7 +84,6 @@ DIST_SUBDIRS = \
 	multiload	\
 	gtik		\
 	gweather 	\
-	mini-commander	\
 	man		\
 	wireless	\
 	accessx-status	\
@@ -105,3 +104,7 @@ EXTRA_DIST = \
 	xmldocs.make		\
 	omf.make
 
+# hack from sound-juicer to get around scrollkeeper's leaving a big
+# mess behind.
+distuninstallcheck_listfiles = 	\
+        find -regex '.*/var/scrollkeeper/.*' -prune -or -type f -print

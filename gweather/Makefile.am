@@ -2,11 +2,10 @@
 
 SUBDIRS = docs
 
-INCLUDES = \
-	-I$(srcdir)	\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	-DGTK_ENABLE_BROKEN	\
-	$(GNOME_APPLETS_CFLAGS)	\
+INCLUDES =				\
+	-I$(srcdir)			\
+	-DGTK_ENABLE_BROKEN		\
+	$(GNOME_APPLETS_CFLAGS)		\
 	$(GNOME_VFS_APPLETS_CFLAGS)
 
 libexec_PROGRAMS = gweather-applet-2
