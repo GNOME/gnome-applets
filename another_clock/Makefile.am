@@ -17,7 +17,8 @@ another_clock_applet_LDADD = \
 EXTRA_DIST = 					\
 	    another_clock.xpm			\
 	    another_clock_applet.desktop	\
-	    another_clock_applet.gnorba
+	    another_clock_applet.gnorba \
+		gnome-another-clock.png
 
 
 another_clockbitmapsdir = $(datadir)/pixmaps
@@ -28,3 +29,6 @@ sys_DATA = another_clock_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = another_clock_applet.gnorba
+
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-another-clock.png
