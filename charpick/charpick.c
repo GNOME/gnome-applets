@@ -831,6 +831,18 @@ charpicker_applet_fill (PanelApplet *applet)
                                      NULL,
 			             charpick_applet_menu_verbs,
 			             curr_data);
+
+  if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
+	  BonoboUIComponent *popup_component;
+
+	  popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+
+	  bonobo_ui_component_set_prop (popup_component,
+					"/commands/Preferences",
+					"hidden", "1",
+					NULL);
+  }
+
 			             
   populate_menu (curr_data);
   
