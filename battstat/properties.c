@@ -29,6 +29,7 @@ $Id$
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/sysctl.h>
+#include <stdio.h>
 
 #ifdef __FreeBSD__
 #include <machine/apm_bios.h>
@@ -40,7 +41,6 @@ $Id$
 #endif
 
 #include <err.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/file.h>
