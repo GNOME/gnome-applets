@@ -404,6 +404,7 @@ scale_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data
 static gboolean
 scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
+
 	if (data->popup != NULL) {
 		mixer_popup_hide (data, FALSE);
 		return TRUE;
@@ -415,31 +416,45 @@ scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerDa
 static gboolean
 applet_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
-	if (data->popup != NULL) {
-		mixer_popup_hide (data, FALSE);
-		return TRUE;
-	}
-
 	if (event->button == 1) {
-		gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_IN);
-		return TRUE;
+		if (data->popup == NULL) {
+			mixer_popup_show (data);
+			return TRUE;
+		}
+		else {
+			mixer_popup_hide (data, FALSE);
+			return TRUE;
+		}
 	}
 
 	return FALSE;
 }
 
 static gboolean
-applet_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+applet_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data)
 {
-	if (event->button == 1) {
-		mixer_popup_show (data);
+	switch (event->keyval) {
+	case GDK_Escape:
+		/* Revert. */
+		mixer_popup_hide (data, TRUE);
 		return TRUE;
-	}
 
-	/* Make sure we don't leave the frame sunken in if button 1 is pressed
-	 * and then another button is released.
-	 */
-	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		/* Apply. */
+		if (data->popup != NULL)
+			mixer_popup_hide (data, FALSE);
+		else
+			mixer_popup_show (data);
+		return TRUE;
+
+	default:
+		break;
+	}
 
 	return FALSE;
 }
@@ -818,8 +833,8 @@ mixer_applet_create (PanelApplet *applet)
 			  data);
 	
 	g_signal_connect (data->applet,
-			  "button-release-event",
-			  (GCallback) applet_button_release_event_cb,
+			  "key-press-event",
+			  (GCallback) applet_key_press_event_cb,
 			  data);
 	
         data->adj = GTK_ADJUSTMENT (
