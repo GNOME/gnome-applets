@@ -13,6 +13,10 @@
 #include <errno.h>
 #include <ctype.h>
 
+#ifdef __OpenBSD__
+#include <net/if_ppp.h>
+#endif
+
 #ifdef __linux__
 #include <linux/isdn.h>
 #include <sys/ioctl.h>
@@ -226,22 +230,22 @@ static int get_modem_stats(int *in, int *out)
 	struct 	ppp_stats stats;
 
 	memset(&ifreq, 0, sizeof(ifreq));
-#ifndef __FreeBSD__
-	strncpy(ifreq.ifr_ifrn.ifrn_name, device_name, IFNAMSIZ);
-#else
+#if defined(__FreeBSD__) || defined(__OpenBSD__)
 	strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
-#endif /* __FreeBSD__ */
+#else
+	strncpy(ifreq.ifr_ifrn.ifrn_name, device_name, IFNAMSIZ);
+#endif /* FreeBSD or OpenBSD */
 	ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
-#ifndef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__OpenBSD__)
+		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
+#else
 #ifdef SIOCDEVPRIVATE
 	if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
 #else
 	*in = *out = 0;
 	return FALSE;
 #endif
-#else
-		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
-#endif /* __FreeBSD__ */
+#endif /* FreeBSD or OpenBSD */
 			{
 				/* failure means ppp is not up */
 				*in = *out = 0;
