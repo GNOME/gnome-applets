@@ -173,6 +173,11 @@ void
 change_orient(int id, int orient)
 {
 	PanelOrientType o = (PanelOrientType) orient;
+	
+	/*if(o == ORIENT_LEFT || o == ORIENT_RIGHT)
+		gtk_widget_set_usize(GTK_WIDGET(plug),48,100);
+	else
+		gtk_widget_set_usize(GTK_WIDGET(plug),100,48);*/
 }
 
 void
