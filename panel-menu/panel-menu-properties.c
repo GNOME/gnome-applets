@@ -87,7 +87,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (hbox);
 
 	has_applications =
-		gtk_check_button_new_with_label (_("Applications Menu ?"));
+		gtk_check_button_new_with_label (_("Applications Menu"));
 	gtk_box_pack_start (GTK_BOX (hbox), has_applications, FALSE,
 			    FALSE, 0);
 	gtk_widget_show (has_applications);
@@ -123,7 +123,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (applications_icon);
 
 	has_actions =
-		gtk_check_button_new_with_label (_("Actions Menu ?"));
+		gtk_check_button_new_with_label (_("Actions Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_actions, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
@@ -134,7 +134,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (has_actions);
 
 	has_windows =
-		gtk_check_button_new_with_label (_("Windows Menu ?"));
+		gtk_check_button_new_with_label (_("Windows Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_windows, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
@@ -145,7 +145,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	gtk_widget_show (has_windows);
 
 	has_workspaces =
-		gtk_check_button_new_with_label (_("Workspaces Menu ?"));
+		gtk_check_button_new_with_label (_("Workspaces Menu"));
 	gtk_box_pack_start (GTK_BOX (vbox), has_workspaces, FALSE,
 			    FALSE, 0);
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON

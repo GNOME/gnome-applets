@@ -167,9 +167,11 @@ panel_menu_construct_applet (PanelApplet *applet)
 				      NULL);
 	panel_menu_config_load_prefs (panel_menu);
 
-	gtk_rc_parse_string ("style \"no_shadow\"\n{\nGtkMenuBar::shadow_type = GTK_SHADOW_NONE\n}\nclass \"GtkMenuBar\" style \"no_shadow\"\n");
+	gtk_rc_parse_string ("style \"no_shadow\"\n{\nGtkMenuBar::shadow_type = GTK_SHADOW_NONE\n}\nwidget \"*.PanelMenubarApplet\" style \"no_shadow\"\n");
 
 	panel_menu->menubar = gtk_menu_bar_new ();
+	gtk_widget_set_name (panel_menu->menubar, "PanelMenubarApplet");
+
 	panel_menu_config_load_layout (panel_menu);
 
 	gtk_drag_dest_set (panel_menu->menubar, GTK_DEST_DEFAULT_ALL,
