@@ -1,3 +1,10 @@
+2005-04-01  Ryan Lortie  <desrt@desrt.ca>
+
+	* gweather-pref.c: Remove _() around a message introduced in the last
+	commit.  This message will never be seen by an end user (except in
+	the event of developer error) and was causing problems with the
+	i18n project translated message counts on the stable branch.
+
 2005-03-30  Ryan Lortie  <desrt@desrt.ca>
 
 	** MERGE CHANGES FROM HEAD **

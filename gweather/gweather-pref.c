@@ -358,9 +358,9 @@ static void load_locations (GWeatherApplet *gw_applet)
         GtkWidget *d;
 
         d = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
-                                    _("Failed to load the Locations XML "
-                                      "database.  Please report this as "
-                                      "a bug."));
+                                    "Failed to load the Locations XML "
+                                    "database.  Please report this as "
+                                    "a bug.");
         gtk_dialog_run (GTK_DIALOG (d));
 	gtk_widget_destroy (d);
     }
