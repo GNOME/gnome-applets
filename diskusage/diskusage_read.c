@@ -42,17 +42,20 @@ diskusage_read (DiskusageInfo *ps)
 		if (fsu.fsu_blocks == 0)
 			continue;
 
-
-
+		/*
+		 * copy dev_name and mount_dir strings
+		 */
+		if ((ps->filesystems + i)->dev_name)
+			free ((ps->filesystems + i)->dev_name);
 		(ps->filesystems + i)->dev_name = 
 			g_new(gchar, strlen (me->me_devname));
-		
 		strcpy ((ps->filesystems + i)->dev_name, 
 				me->me_devname);
 
+		if ((ps->filesystems + i)->mount_dir)
+			free ((ps->filesystems + i)->mount_dir);
 		(ps->filesystems + i)->mount_dir = 
 			g_new(gchar, strlen (me->me_mountdir));
-
 		strcpy ((ps->filesystems + i)->mount_dir, 
 				me->me_mountdir);
 
