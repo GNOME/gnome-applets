@@ -4,7 +4,7 @@
  * This file contains the code which generates the
  * applet properties configuration window.
  *
- * Author: Nat Friedman <ndf@mit.edu>
+ * Author: Nat Friedman <nat@nat.org>
  */
 
 #include <stdio.h>
@@ -79,7 +79,8 @@ battery_properties_window(AppletWidget * applet, gpointer data)
     (GTK_RADIO_BUTTON (bat->mode_radio_graph), _("Readout"));
 
   if (!strcmp(bat->mode_string, BATTERY_MODE_GRAPH))
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->mode_radio_graph), 1);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->mode_radio_graph),
+				  1);
   else
     gtk_toggle_button_set_active
       (GTK_TOGGLE_BUTTON (bat->mode_radio_readout), 1);
@@ -152,6 +153,11 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   bat->dir_radio = gtk_radio_button_new_with_label(NULL, _("Left to Right"));
   r2 = gtk_radio_button_new_with_label_from_widget 
 		    (GTK_RADIO_BUTTON(bat->dir_radio), _("Right to Left"));
+
+  if (bat->graph_direction == BATTERY_GRAPH_LEFT_TO_RIGHT)
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->dir_radio), 1);
+  else
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (r2), 1);
 
   gtk_signal_connect (GTK_OBJECT (bat->dir_radio), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
@@ -232,32 +238,64 @@ static void
 prop_apply (GtkWidget *w, int page, gpointer data)
 {
   BatteryData * bat = data;
-  int width, height, size_changed = 0;
+  int width, height, size_changed = FALSE;
   guint8 r, g, b;
+  gint new_direction;
 
   /*
    * Update the running session from the properties.  The session
    * state will be saved when the applet exits and the panel tells it
    * to save state.
    */
-  height = GTK_ADJUSTMENT(bat->height_adj)->value;
-  width = GTK_ADJUSTMENT(bat->width_adj)->value;
+
+  /*
+   * Don't let the update function run while we're changing these
+   * values.
+   */
+  bat->setup = FALSE;
+
+  height = GTK_ADJUSTMENT (bat->height_adj)->value;
+  width = GTK_ADJUSTMENT (bat->width_adj)->value;
 
   if ((height != bat->height) || (width != bat->width))
     {
-      size_changed = 1;
+      size_changed = TRUE;
       bat->height = height;
       bat->width = width;
     }
 
-  bat->graph_interval = GTK_ADJUSTMENT(bat->graph_speed_adj)->value;
+  bat->graph_interval = GTK_ADJUSTMENT (bat->graph_speed_adj)->value;
   gtk_timeout_remove (bat->graph_timeout_id);
-  bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
-					  (GtkFunction) battery_update, bat);
-  /* FIXME: set the direction! */
+  bat->graph_timeout_id = gtk_timeout_add (1000 * bat->graph_interval,
+					   (GtkFunction) battery_update, bat);
 
-  gnome_color_picker_get_i8 ( bat->graph_ac_on_color_sel,
-				       &r, &g, &b, NULL);
+  new_direction = (GTK_TOGGLE_BUTTON (bat->dir_radio)->active) ?
+    BATTERY_GRAPH_LEFT_TO_RIGHT : BATTERY_GRAPH_RIGHT_TO_LEFT;
+
+  /*
+   * If the direction changed, reverse the graph.
+   */
+  if (bat->graph_direction != new_direction)
+    {
+      unsigned char *new_graph;
+      int i;
+
+      new_graph = (unsigned char *)
+	g_malloc (sizeof (unsigned char) * bat->width);
+
+      for (i = 0; i < bat->width; i ++)
+	new_graph [i] = bat->graph_values [(bat->width - 1) - i];
+
+      memcpy (bat->graph_values, new_graph,
+	      sizeof (unsigned char) * bat->width);
+
+      g_free (new_graph);
+
+      bat->graph_direction = new_direction;
+    }
+
+  gnome_color_picker_get_i8 (bat->graph_ac_on_color_sel,
+			     &r, &g, &b, NULL);
   snprintf(bat->graph_color_ac_on_s, sizeof(bat->graph_color_ac_on_s),
 	   "#%02x%02x%02x", r, g, b);
 
@@ -276,22 +314,23 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   snprintf(bat->readout_color_ac_on_s, sizeof(bat->readout_color_ac_on_s),
 	  "#%02x%02x%02x", r, g, b);
 
+  bat->mode_string = GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
+      BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT;
+
+  bat->setup = TRUE;
+
   battery_setup_colors(bat);
 
   if (size_changed)
-    battery_set_size(bat);
+    battery_set_size (bat);
 
-  bat->mode_string = GTK_TOGGLE_BUTTON(bat->mode_radio_graph)->active ?
-      BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT;
-      
-  battery_set_mode(bat);
+  battery_set_mode (bat);
 
   bat->force_update = TRUE;
-  battery_update((gpointer) bat);
+  battery_update ((gpointer) bat);
   
-  /*make the panel save our config*/
-  applet_widget_sync_config(APPLET_WIDGET(bat->applet));
-
+  /* Make the panel save our config */
+  applet_widget_sync_config (APPLET_WIDGET (bat->applet));
 } /* prop_apply */
 
 /*

@@ -93,8 +93,8 @@ battery_session_save(GtkWidget * w,
 
   gnome_config_pop_prefix ();
 
-  gnome_config_sync();
-  gnome_config_drop_all();
+  gnome_config_sync ();
+  gnome_config_drop_all ();
 
   return FALSE;
 } /* battery_session_save */

@@ -3,7 +3,7 @@
  *
  * A GNOME panel applet to display the status of a laptop battery.
  *
- * Author: Nat Friedman <ndf@mit.edu>
+ * Author: Nat Friedman <nat@nat.org>
  *
  */
 #include <stdio.h>
@@ -77,8 +77,8 @@ battery_update(gpointer data)
 
   /* The battery change information that we grab here will be used by
      both readout mode and graph mode. */
-  battery_read_charge(&percentage, &ac_online, &hours_remaining,
-		      &minutes_remaining);
+  battery_read_charge (&percentage, &ac_online, &hours_remaining,
+		       &minutes_remaining);
 
 /* seems to always get displayed, no idea who is defining DEBUG
 #ifdef DEBUG
@@ -87,6 +87,7 @@ battery_update(gpointer data)
 	  minutes_remaining);
 #endif
 */
+
   /*
    *
    * Graph Mode 
@@ -94,7 +95,7 @@ battery_update(gpointer data)
    */
 
   /* First check that it is time to update the graph. */
-  time(&curr_time);
+  time (&curr_time);
   if (curr_time > (bat->last_graph_update + bat->graph_interval) ||
       bat->force_update)
     {
@@ -104,7 +105,7 @@ battery_update(gpointer data)
 	{
 	  /* Shift the graph samples down */
 	  for (i = 0 ; i < (bat->width - 1) ; i++)
-	    bat->graph_values[i] = bat->graph_values[i+1];
+	    bat->graph_values[i] = bat->graph_values[i + 1];
 
 	  /* Add in the new value */
 	  bat->graph_values[bat->width - 1] = percentage;
@@ -113,14 +114,14 @@ battery_update(gpointer data)
 	{
 	  /* Shift the graph samples up */
 	  for (i = bat->width - 1; i > 0; i--)
-	    bat->graph_values[i] = bat->graph_values[i-1];
+	    bat->graph_values[i] = bat->graph_values[i - 1];
 
 	  /* Add in the new value */
 	  bat->graph_values[0] = percentage;
 	}
 
       /* Clear the graph pixmap */
-      gdk_draw_rectangle(bat->graph_pixmap,
+      gdk_draw_rectangle (bat->graph_pixmap,
 			 bat->graph_area->style->black_gc,
 			 TRUE, 0, 0, bat->width, bat->height);
 
@@ -129,7 +130,6 @@ battery_update(gpointer data)
 	gdk_gc_set_foreground ( bat->gc, &(bat->graph_color_ac_on) );
       else
 	gdk_gc_set_foreground ( bat->gc, &(bat->graph_color_ac_off) );
-
 
       for (i = 0 ; i < bat->width ; i++)
 	gdk_draw_line(bat->graph_pixmap, bat->gc, i,
@@ -164,9 +164,11 @@ battery_update(gpointer data)
 		     bat->readout_batt_points, 9);
 
   
-      /* Now fill in the main battery chamber.  If the battery charge is
-	 at 100%, fill in the little nipple (positive terminal) at the
-	 top.  99% is everything but. */
+      /*
+       * Now fill in the main battery chamber.  If the battery charge is
+       * at 100%, fill in the little nipple (positive terminal) at the
+       * top.  99% is everything but.
+       */
       if (percentage < 100)
 	body_perc = percentage;
       else
@@ -495,7 +497,7 @@ make_new_battery_applet(void)
 
   applet_widget_add(APPLET_WIDGET(bat->applet), root);
 
-  gtk_signal_connect(GTK_OBJECT(bat->applet),"save_session",
+  gtk_signal_connect(GTK_OBJECT(bat->applet), "save_session",
 		     GTK_SIGNAL_FUNC(battery_session_save),
 		     bat);
 
