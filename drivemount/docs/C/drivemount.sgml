@@ -44,6 +44,17 @@
     unmounted by hand, such as by using <application>Drive
     Mount</application> applet.  
    </para>
+   <para>
+    The "root
+    filesystem" is the main filesystem on your computer starting with
+    "/" (root).  Other filesystems are associated with directories inside
+    the root filesystem.  These are called "mount points", which are
+    just empty directories.  When a filesystem is mounted, their
+    contents appear inside this directory.  As an example, most
+    systems create a mount point "/mnt/floppy" which is just an empty
+    directory if your floppy drive is not mounted, and which contains
+    the contents of your floppy if the floppy drive is mounted.
+   </para>
   </note>
 
 
@@ -107,7 +118,7 @@
     </para>
 
     <para>
-     The mount status and mount point of a drive is shown in a tooltip
+     The mount point and mount status of a drive is shown in a tooltip
      if the cursor is left over the applet for a short time, as shown
      in <xref linkend="drivemountapplettooltips-fig">.
 
@@ -305,8 +316,29 @@
      <listitem>
       <para>
        <quote>mount: only root can mount /dev/fda on
-       /mnt/floppy</quote>&mdash; blah blah 
+       /mnt/floppy</quote>&mdash; You do not have permission to mount
+       this drive.  Contact the system administrator, who can give you
+       permission. 
       </para>
+      <note>
+       <title>Note for System Administrators</title>
+       <para>
+       You can set a drive to be mountable and unmountable by users by
+        adding "users" to the mount options (fourth column) in
+        <filename>/etc/fstab</filename>.  This may be done by hand or
+        by using <application>linuxconf</application>, using the
+        <guilabel>Local volume</guilabel> tab in  
+       <menuchoice>
+        <guimenu>Config</guimenu>
+        <guisubmenu>File systems</guisubmenu>
+        <guimenuitem>Access local drive</guimenuitem>
+       </menuchoice>. After you select the correct drive from the list,
+        it will show you the <guilabel>Volume
+        specifications</guilabel>.  Click on the
+        <guilabel>Options</guilabel> tab, and select the
+        <guibutton>User mountable</guibutton> button. 
+       </para>
+      </note>
      </listitem>
      <listitem>
       <para>
@@ -344,10 +376,8 @@
   <sect2 id="drivemountapplet-bugs">
    <title> Known bugs and limitations</title>
    <para>
-    <guimenuitem>Eject</guimenuitem> doesn't do anything (Add section
-    for error messages) (add tooltips discussion) (can't eject while mounted)
-    (this is bug - give error when one tries to eject while mounted)
-    (ejecting doesn't work for me)
+    <guimenuitem>Eject</guimenuitem> may not work.  Can't eject when
+    mounted (it should give error message or else unmount in this case).
    </para>
   </sect2>
 
