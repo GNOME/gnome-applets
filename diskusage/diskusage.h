@@ -1,18 +1,20 @@
 #ifndef __DISKUSAGE_H__
 #define __DISKUSAGE_H__
 
-#include <applet-widget.h>
+//#include <applet-widget.h>
 
-#include <config.h>
+//#include <config.h>
 #include <glibtop.h>
 #include <glibtop/xmalloc.h>
 #include <glibtop/fsusage.h>
 #include <glibtop/mountlist.h>
-#include <stdio.h>
-#include <unistd.h>
+//#include <stdio.h>
+//#include <unistd.h>
 
-#include <assert.h>
+//#include <assert.h>
 
+#include "properties.h"
+#include <applet-widget.h>
 
 #define DU_PIE_GAP 4		/* gap between pie and border */
 #define DU_TEXT_GAP 4		/* gap between text and border (on the right) */
@@ -33,7 +35,6 @@
 
 
 typedef struct _DiskusageInfo DiskusageInfo;
-
 struct _DiskusageInfo {
 	unsigned n_filesystems;    /* no. of filesystems with >0 total blocks (/proc has 0) */
 	PanelOrientType orient;
@@ -41,5 +42,12 @@ struct _DiskusageInfo {
 	unsigned pixel_size;
 };
 
+extern GtkWidget *disp;
+extern diskusage_properties props;
+
+void setup_colors (void);
+void start_timer (void);
+void diskusage_resize (void);
+void load_my_font (void);
 
 #endif

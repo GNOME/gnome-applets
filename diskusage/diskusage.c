@@ -27,61 +27,52 @@
  *
  */
 
-#include <stdio.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <dirent.h>
-#include <string.h>
-#include <time.h>
 #include <config.h>
 #include <gnome.h>
-#include <gdk/gdkx.h>
-#include <applet-widget.h>
 
 #include "diskusage.h"
 #include "properties.h"
 
 
-/* Many systems reserve some space on each filesystem that only the superuser
- * can use. Set this to true if you want count this space towards the among of
- * free space. This would be the opposite of what 'df' does. */
+/* Many systems reserve some space on each filesystem that only the
+ * superuser can use. Set this to true if you want count this space
+ * towards the among of free space. This would be the opposite of what
+ * 'df' does. */
 #undef ADD_RESERVED_SPACE
 
 diskusage_properties props;
 
-static gint update_values (void);
-
 DiskusageInfo   summary_info;
 	
-glibtop_fsusage fsu;
-glibtop_mountlist mountlist;
+glibtop_fsusage     fsu;
+glibtop_mountlist   mountlist;
 glibtop_mountentry *mount_list;
 
 static gboolean is_realized = FALSE;
-static GtkWidget *diskusage;
+//static GtkWidget *diskusage;
 static GtkWidget *my_applet;
+
 GtkWidget *disp;
 GdkPixmap *pixmap;
 GdkGC *gc;
 GdkColor ucolor, fcolor, tcolor, bcolor;
 
 void update_mount_list_menu_items (void);
-void diskusage_resize (void);
-void diskusage_read (void);
-int draw_h(void);
-int draw_v(void);
-void draw(void);
-void setup_colors(void);
-void create_gc(void);
-void start_timer(void);
-void change_filesystem_cb (AppletWidget *applet, gpointer data);
-void add_mount_list_menu_items (void);
+void draw (void);
+
+
+//void add_mount_list_menu_items (void);
 #if 0
 static void browse_cb (AppletWidget *widget, gpointer data);
 #endif
+
+static void change_filesystem_cb (AppletWidget *applet, gpointer data);
+static void diskusage_read (void);
+static int draw_h (void);
+static int draw_v (void);
+static void create_gc (void);
 static void update_cb (AppletWidget *widget, gpointer data);
-int diskusage_get_best_size_v (void);
-int diskusage_get_best_size_h (void);
+static gint update_values (void);
 
 GtkWidget *diskusage_widget(void);
 
@@ -89,11 +80,28 @@ GString **mpoints;
 GString **menuitem;
 guint num_mpoints;
 
-int timer_index=-1;
+int timer_index = -1;
 
-int diskusage_get_best_size_v ()
+static GdkFont *my_font = NULL;
+
+void
+load_my_font (void)
 {
-	GdkFont* my_font;
+	if (!my_font)
+		my_font = gdk_font_load ("fixed");
+	else if (font_changed)
+	{
+		if (props.font)
+			my_font = gdk_font_load (g_strdup (props.font));
+		else
+			my_font = gdk_font_load ("fixed");
+	}
+}
+
+static int
+diskusage_get_best_size_v (void)
+{
+//	GdkFont* my_font;
 	int string_height;
 	int du_pie_gap;
 	int du_mountpoint_x;
@@ -102,13 +110,13 @@ int diskusage_get_best_size_v ()
 	int pie_width;		/* width+height of piechart */
 
 
-	my_font = gdk_font_load      ("fixed");
+	load_my_font ();
 
-	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY)
 		du_pie_gap = du_mountpoint_x = du_freespace_x = 0;
-	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+	else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL)
 		du_pie_gap = du_mountpoint_x = du_freespace_x = 1;
-	} else {
+	else {
 		du_pie_gap = DU_PIE_GAP;
 		du_mountpoint_x = DU_MOUNTPOINT_X;
 		du_freespace_x = DU_FREESPACE_X;
@@ -118,15 +126,17 @@ int diskusage_get_best_size_v ()
 
 	string_height = gdk_string_height (my_font, "MP: ");
 
-	total_height = DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap +
-		string_height * 4;
+	total_height = DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap
+		       + string_height * 4;
 
+//	gdk_font_unref (my_font);
 	return total_height;
 }
 
-int diskusage_get_best_size_h ()
+static int
+diskusage_get_best_size_h (void)
 {
-	GdkFont* my_font;
+//	GdkFont* my_font;
 	int string_width;
 	int cur_width;
 	int du_pie_gap;
@@ -139,29 +149,26 @@ int diskusage_get_best_size_h ()
 	glibtop_mountlist my_mountlist;
 	glibtop_mountentry *my_mount_list;
 
+	load_my_font ();
 
-	my_font = gdk_font_load      ("fixed");
-
-	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY)
 		du_pie_gap = 0;
-	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+	else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL)
 		du_pie_gap = 1;
-	} else {
+	else
 		du_pie_gap = DU_PIE_GAP;
-	}
 	
 	pie_width = summary_info.pixel_size - du_pie_gap;
 
 	string_width = 0;
-
 
 	memset (&my_mountlist, 0, sizeof (glibtop_mountlist));
 	my_mount_list = glibtop_get_mountlist (&my_mountlist, 1);
 	
 	for (i = 0; i < mountlist.number; i++) {
 	    text = my_mount_list [i].mountdir;
-	    strcpy(avail_buf, "MP: ");
-	    strcat(avail_buf, text);
+	    strcpy (avail_buf, "MP: ");
+	    strcat (avail_buf, text);
 
 	    cur_width = gdk_string_width (my_font, avail_buf);
 
@@ -172,17 +179,20 @@ int diskusage_get_best_size_h ()
 	glibtop_free (my_mount_list);
 
 	cur_width = gdk_string_width (my_font, "av: 9999.999 MB");
+
 	if (cur_width > string_width)
 	    string_width = cur_width;
 
 	total_width = pie_width + du_pie_gap + DU_FREESPACE_HOR_X * 2 +
 		string_width + du_pie_gap;
 
+//	gdk_font_unref (my_font);
+
 	return total_width;
 }
 
-
-void diskusage_resize ()
+void
+diskusage_resize (void)
 {
 	if ((summary_info.orient == ORIENT_LEFT) ||
 	    (summary_info.orient == ORIENT_RIGHT))
@@ -201,12 +211,12 @@ void diskusage_resize ()
 			gtk_widget_set_usize (my_applet, props.size,
 					      summary_info.pixel_size);
 
-	if (is_realized)
-		update_values ();
+	update_values ();
 }
 
 /* Get list of currently mounted filesystems. */
-void diskusage_read ()
+static void
+diskusage_read (void)
 {
 	unsigned int i;
 
@@ -214,7 +224,7 @@ void diskusage_read ()
 		glibtop_free (mount_list);
 	mount_list = glibtop_get_mountlist (&mountlist, 0);
 	
-	assert (mount_list != NULL);
+	g_assert (mount_list != NULL);
 
 	summary_info.n_filesystems = 0;
 	for (i=0; i<mountlist.number; i++) {
@@ -224,13 +234,11 @@ void diskusage_read ()
 	}
 }
 
-/*
- * for horizontal panel
- */
-int draw_h(void)
+/* Draw applet for horizontal panels */
+static int
+draw_h (void)
 {
-
-	GdkFont* my_font;
+//	GdkFont* my_font;
 	char *text;
 	unsigned free_space;
 	int du_pie_gap;
@@ -245,16 +253,15 @@ int draw_h(void)
 	gchar avail_buf1[100];  /* used for mountpoint text */
 	gchar avail_buf2[100];  /* used for free-space text */
 	
-	my_font = gdk_font_load      ("fixed");
+	load_my_font ();
 
-	
 	sel_fs = summary_info.selected_filesystem;
 
-	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY)
 		du_pie_gap = du_mountpoint_y = du_freespace_y = 0;
-	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+	else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL)
 		du_pie_gap = du_mountpoint_y = du_freespace_y = 1;
-	} else {
+	else {
 		du_pie_gap = DU_PIE_GAP;
 		du_mountpoint_y = DU_MOUNTPOINT_Y;
 		du_freespace_y = DU_FREESPACE_Y;
@@ -273,8 +280,8 @@ int draw_h(void)
 	/* Mountpoint text */
 	text = mount_list [sel_fs].mountdir;
 
-	strcpy(avail_buf1, "MP: ");
-	strcat(avail_buf1, text);
+	strcpy (avail_buf1, "MP: ");
+	strcat (avail_buf1, text);
 
 
 	/* Free Space text */		        
@@ -290,47 +297,49 @@ int draw_h(void)
 	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
 #endif
 
-	if (free_space > 1048471142) /* 9999 MB */
-	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %.3f GB",
-			(float)free_space / 1073741824.0);
-	else if (free_space > 10238976) /* 9999 kB */
-	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %.3f MB",
-			(float)free_space / 1048576.0);
-	else if (free_space > 9999) /* 9999 Bytes */
-	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %.3f kB",
-			free_space / 1024.0);
-	else
-	    g_snprintf (avail_buf2,sizeof(avail_buf2),"av: %u",
-			free_space);
+	/* Is 1024 correct for the "block size" ? */
+	free_space *= 1024;
 
-	/* g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %u", free_space); */
+	if (free_space >= 1073741824) /* bigger than a GB */
+		g_snprintf (avail_buf2, sizeof (avail_buf2), "av: %.3f GB",
+			    free_space / 1073741824.0);
+	else if (free_space >= 1048576) /* bigger than a MB */
+		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %.3f MB",
+			    free_space / 1048576.0);
+	else if (free_space >= 1024) /* bigger than a kB */
+		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %.3f kB",
+			    free_space / 1024.0);
+	else /* less than 1 kB */
+		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %u",
+			    free_space);
 
+	free_space /= 1024;
 
-	gdk_gc_set_foreground( gc, &bcolor );
+	gdk_gc_set_foreground (gc, &bcolor);
 	
 	/* Erase Rectangle */
-	gdk_draw_rectangle( pixmap,
-		gc,
-		TRUE, 0,0,
-		disp->allocation.width,
-		disp->allocation.height );
+	gdk_draw_rectangle (pixmap,
+			    gc,
+			    TRUE, 0,0,
+			    disp->allocation.width,
+			    disp->allocation.height);
 
 
 	gdk_gc_set_foreground( gc, &tcolor );
 	
 	/* draw text strings */
-	gdk_draw_string(pixmap, my_font, gc,
-			DU_MOUNTPOINT_HOR_X + pie_width + du_pie_gap, 
-			string_height + vert_spacing,
-			avail_buf1);
+	gdk_draw_string (pixmap, my_font, gc,
+			 DU_MOUNTPOINT_HOR_X + pie_width + du_pie_gap, 
+			 string_height + vert_spacing,
+			 avail_buf1);
 	
-	gdk_draw_string(pixmap, my_font, gc,
-			DU_FREESPACE_HOR_X + pie_width + du_pie_gap, 
-			2 * (string_height + vert_spacing),
-			avail_buf2);
+	gdk_draw_string (pixmap, my_font, gc,
+			 DU_FREESPACE_HOR_X + pie_width + du_pie_gap, 
+			 2 * (string_height + vert_spacing),
+			 avail_buf2);
 	
 	/* Draw % usage Pie */
-	gdk_gc_set_foreground( gc, &ucolor );
+	gdk_gc_set_foreground (gc, &ucolor);
 	
 	/* fsu.blocks 	Total blocks */	
 	ratio = ((double) (fsu.blocks - free_space) / (double) fsu.blocks);
@@ -341,43 +350,38 @@ int draw_h(void)
 	 */
 
 	gdk_draw_arc (pixmap,
-			gc,
-			1,		/* filled = true */
-			pie_spacing, pie_spacing, pie_width, pie_width,
-			90 * 64,
+		      gc,
+		      1,		/* filled = true */
+		      pie_spacing, pie_spacing, pie_width, pie_width,
+		      90 * 64,
 			- (360 * ratio) * 64);
 
-	gdk_gc_set_foreground( gc, &fcolor );
+	gdk_gc_set_foreground (gc, &fcolor);
 	gdk_draw_arc (pixmap,
-			gc,
-			1,		/* filled = true */
-			pie_spacing, pie_spacing, pie_width, pie_width,
-			(90 + 360 * (1 - ratio)) * 64,
-			- (360 * (1 -ratio)) * 64);
+		      gc,
+		      1,		/* filled = true */
+		      pie_spacing, pie_spacing, pie_width, pie_width,
+		      (90 + 360 * (1 - ratio)) * 64,
+		      - (360 * (1 -ratio)) * 64);
 
-	
-	
-	gdk_draw_pixmap(disp->window,
-		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
-	        pixmap,
-	        0, 0,
-	        0, 0,
-	        disp->allocation.width,
-	        disp->allocation.height);
+	gdk_draw_pixmap (disp->window,
+			 disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
+			 pixmap,
+			 0, 0,
+			 0, 0,
+			 disp->allocation.width,
+			 disp->allocation.height);
 
-
-	gdk_font_unref(my_font);
+//	gdk_font_unref (my_font);
 
 	return TRUE;
 }
 
-/*
- * for vertical panel
- */
-int draw_v(void)
+/* Draw applet in a vertical panel */
+static int
+draw_v (void)
 {
-
-	GdkFont* my_font;
+//	GdkFont* my_font;
 	char *text;
 	unsigned free_space;
 	double ratio;		/* % of space used */
@@ -390,17 +394,16 @@ int draw_v(void)
 	int sel_fs;		/* # of selected filesystem */
 	gchar avail_buf1[100];  /* used for mountpoint text */
 	gchar avail_buf2[100];  /* used for free-space text */
-	
-	my_font = gdk_font_load      ("fixed");
 
+	load_my_font ();
 	
 	sel_fs = summary_info.selected_filesystem;
 
-	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY)
 		du_pie_gap = du_mountpoint_x = du_freespace_x = 0;
-	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+	else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL)
 		du_pie_gap = du_mountpoint_x = du_freespace_x = 1;
-	} else {
+	else {
 		du_pie_gap = DU_PIE_GAP;
 		du_mountpoint_x = DU_MOUNTPOINT_X;
 		du_freespace_x = DU_FREESPACE_X;
@@ -414,40 +417,36 @@ int draw_v(void)
 	if (vert_spacing < 0) vert_spacing = 0;
 	vert_spacing /= 2;
 
-	/* Mountpoint text, part 1*/
+	/* Mountpoint text, part 1 */
+	strcpy (avail_buf1, "MP: ");
 
-	strcpy(avail_buf1, "MP: ");
+	/* Free Space text, part1 */		        
+	g_snprintf (avail_buf2, sizeof(avail_buf2), "av: ");
 
-
-	/* Free Space text, part1*/		        
-	g_snprintf (avail_buf2,sizeof(avail_buf2),"av: ");
-
-
-	
-	gdk_gc_set_foreground( gc, &bcolor );
+	gdk_gc_set_foreground (gc, &bcolor);
 
 	/* Erase Rectangle */
-	gdk_draw_rectangle( pixmap,
-		gc,
-		TRUE, 0,0,
-		disp->allocation.width,
-		disp->allocation.height );
+	gdk_draw_rectangle (pixmap,
+			    gc,
+			    TRUE, 0,0,
+			    disp->allocation.width,
+			    disp->allocation.height);
 
 
-	gdk_gc_set_foreground( gc, &tcolor );
+	gdk_gc_set_foreground (gc, &tcolor);
 	
 	/* draw text strings */
-	gdk_draw_string(pixmap, my_font, gc,
-			du_mountpoint_x, 
-			DU_MOUNTPOINT_Y_VERT + pie_width + du_pie_gap +
-			vert_spacing,
-			avail_buf1);
+	gdk_draw_string (pixmap, my_font, gc,
+			 du_mountpoint_x, 
+			 DU_MOUNTPOINT_Y_VERT + pie_width + du_pie_gap +
+			 vert_spacing,
+			 avail_buf1);
 	
-	gdk_draw_string(pixmap, my_font, gc,
-			du_freespace_x, 
-			DU_FREESPACE_Y_VERT + pie_width + du_pie_gap +
-			vert_spacing,
-			avail_buf2);
+	gdk_draw_string (pixmap, my_font, gc,
+			 du_freespace_x, 
+			 DU_FREESPACE_Y_VERT + pie_width + du_pie_gap +
+			 vert_spacing,
+			 avail_buf2);
 	
 	/* Mountpoint text, part 2*/
 	text = mount_list [sel_fs].mountdir;
@@ -466,63 +465,71 @@ int draw_v(void)
 #else
 	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
 #endif
+
+
+	free_space *= 1024;
+
 	if (summary_info.pixel_size <= PIXEL_SIZE_STANDARD) {
-		if (free_space > 1048471142) /* 9999 MB */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%uG",
-				    free_space >> 30);
-		else if (free_space > 10238976) /* 9999 kB */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%uM",
-				    free_space >> 20);
-		else if (free_space > 9999) /* 9999 Bytes */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%uk",
-				    free_space >> 10);
+		if (free_space >= 1073741824) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uG",
+				    free_space / 1073741824);
+		else if (free_space >= 1048576) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uM",
+				    free_space / 1048576);
+		else if (free_space >= 1024) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uk",
+				    free_space / 1024);
 		else
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%u",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u",
 				    free_space);
 
-	} else if (summary_info.pixel_size <= PIXEL_SIZE_LARGE) {
-		if (free_space > 1048471142) /* 9999 MB */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.1f GB",
-				    (float)free_space / 1073741824.0);
-		else if (free_space > 10238976) /* 9999 kB */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.1f MB",
-				    (float)free_space / 1048576.0);
-		else if (free_space > 9999) /* 9999 Bytes */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.1f kB",
+	}
+	else if (summary_info.pixel_size <= PIXEL_SIZE_LARGE) {
+		if (free_space >= 1073741824) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f GB",
+				    free_space / 1073741824.0);
+		else if (free_space >= 1048576) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f MB",
+				    free_space / 1048576.0);
+		else if (free_space >= 1024) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f kB",
 				    free_space / 1024.0);
 		else
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%u",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u",
 				    free_space);
-	} else {
-		if (free_space > 1048471142) /* 9999 MB */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.3f GB",
-				    (float)free_space / 1073741824.0);
-		else if (free_space > 10238976) /* 9999 kB */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.3f MB",
-				    (float)free_space / 1048576.0);
-		else if (free_space > 9999) /* 9999 Bytes */
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.3f kB",
+	}
+	else {
+		if (free_space >= 1073741824)
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f GB",
+				    free_space / 1073741824.0);
+		else if (free_space >= 1048576) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f MB",
+				    free_space / 1048576.0);
+		else if (free_space >= 1024) 
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f kB",
 				    free_space / 1024.0);
 		else
-			g_snprintf (avail_buf2,sizeof(avail_buf2),"%u",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u",
 				    free_space);
 	}
 
+	free_space /= 1024;
+
 	/* draw text strings 2nd part*/
-	gdk_draw_string(pixmap, my_font, gc,
-			du_mountpoint_x, 
-			DU_MOUNTPOINT2_Y_VERT + pie_width + du_pie_gap +
-			vert_spacing,
-			avail_buf1);
+	gdk_draw_string (pixmap, my_font, gc,
+			 du_mountpoint_x, 
+			 DU_MOUNTPOINT2_Y_VERT + pie_width + du_pie_gap +
+			 vert_spacing,
+			 avail_buf1);
 	
-	gdk_draw_string(pixmap, my_font, gc,
-			du_freespace_x, 
-			DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap +
-			vert_spacing,
-			avail_buf2);
+	gdk_draw_string (pixmap, my_font, gc,
+			 du_freespace_x, 
+			 DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap +
+			 vert_spacing,
+			 avail_buf2);
 	
 	/* Draw % usage Pie */
-	gdk_gc_set_foreground( gc, &ucolor );
+	gdk_gc_set_foreground (gc, &ucolor);
 	
 	
 	/* fsu.blocks 	Total blocks */	
@@ -534,87 +541,83 @@ int draw_v(void)
 	 */
 
 	gdk_draw_arc (pixmap,
-			gc,
-			1,		/* filled = true */
-			pie_spacing, pie_spacing + (vert_spacing / 2),
-		        pie_width, pie_width,
-			90 * 64,
-			- (360 * ratio) * 64);
+		      gc,
+		      1,		/* filled = true */
+		      pie_spacing, pie_spacing + (vert_spacing / 2),
+		      pie_width, pie_width,
+		      90 * 64,
+		      - (360 * ratio) * 64);
 
-	gdk_gc_set_foreground( gc, &fcolor );
+	gdk_gc_set_foreground (gc, &fcolor);
 	gdk_draw_arc (pixmap,
-			gc,
-			1,		/* filled = true */
-			pie_spacing, pie_spacing + (vert_spacing / 2),
-		        pie_width, pie_width,
-			(90 + 360 * (1 - ratio)) * 64,
-			- (360 * (1 -ratio)) * 64);
+		      gc,
+		      1,		/* filled = true */
+		      pie_spacing, pie_spacing + (vert_spacing / 2),
+		      pie_width, pie_width,
+		      (90 + 360 * (1 - ratio)) * 64,
+		      - (360 * (1 -ratio)) * 64);
 
-	gdk_draw_pixmap(disp->window,
-		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
-	        pixmap,
-	        0, 0,
-	        0, 0,
-	        disp->allocation.width,
-	        disp->allocation.height);
+	gdk_draw_pixmap (disp->window,
+			 disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
+			 pixmap,
+			 0, 0,
+			 0, 0,
+			 disp->allocation.width,
+			 disp->allocation.height);
 
-	gdk_font_unref(my_font);
+//	gdk_font_unref (my_font);
+
 	return TRUE;
 }
 
-
-
-void draw(void)
+void
+draw (void)
 {
-	if (summary_info.orient == ORIENT_LEFT ||
-	    summary_info.orient == ORIENT_RIGHT)
-		draw_v();
+	if (summary_info.orient == ORIENT_LEFT
+	    || summary_info.orient == ORIENT_RIGHT)
+		draw_v ();
 	else
-		draw_h();
+		draw_h ();
 }
 
-
-void setup_colors(void)
+void
+setup_colors (void)
 {
 	GdkColormap *colormap;
 
-	colormap = gtk_widget_get_colormap(disp);
+	colormap = gtk_widget_get_colormap (disp);
                 
-        gdk_color_parse(props.ucolor, &ucolor);
-        gdk_color_alloc(colormap, &ucolor);
+        gdk_color_parse (props.ucolor, &ucolor);
+        gdk_color_alloc (colormap, &ucolor);
 
-        gdk_color_parse(props.fcolor, &fcolor);
-        gdk_color_alloc(colormap, &fcolor);
+        gdk_color_parse (props.fcolor, &fcolor);
+        gdk_color_alloc (colormap, &fcolor);
         
-	gdk_color_parse(props.tcolor, &tcolor);
-        gdk_color_alloc(colormap, &tcolor);
+	gdk_color_parse (props.tcolor, &tcolor);
+        gdk_color_alloc (colormap, &tcolor);
 	
-	gdk_color_parse(props.bcolor, &bcolor);
-        gdk_color_alloc(colormap, &bcolor);
+	gdk_color_parse (props.bcolor, &bcolor);
+        gdk_color_alloc (colormap, &bcolor);
 }
 	        
-void create_gc(void)
+static void
+create_gc (void)
 {
-        gc = gdk_gc_new( disp->window );
-        gdk_gc_copy( gc, disp->style->white_gc );
+        gc = gdk_gc_new (disp->window);
+        gdk_gc_copy (gc, disp->style->white_gc);
 }
 
-
-
-void start_timer( void )
+void
+start_timer (void)
 {
-	if( timer_index != -1 )
+	if (timer_index != -1)
 		gtk_timeout_remove(timer_index);
 
 	timer_index = gtk_timeout_add(props.speed, (GtkFunction)update_values, NULL);
 }
 
-
-
-
-
 static void
-applet_change_orient(AppletWidget *w, PanelOrientType o, gpointer data)
+applet_change_orient (AppletWidget *w, PanelOrientType o, gpointer data)
 {
 	summary_info.orient = applet_widget_get_panel_orient (w);
 
@@ -622,19 +625,16 @@ applet_change_orient(AppletWidget *w, PanelOrientType o, gpointer data)
 }
 
 static void
-applet_change_pixel_size(AppletWidget *w, int size, gpointer data)
+applet_change_pixel_size (AppletWidget *w, int size, gpointer data)
 {
 	summary_info.pixel_size = applet_widget_get_panel_pixel_size (w);
 
 	diskusage_resize();
 }
 
-
-
-/*
- * read new filesystem-info, and call draw
- */
-static gint update_values (void)
+/* Read new filesystem info, then redraw */
+static gint
+update_values (void)
 {
 	if (!is_realized)
 		return FALSE;
@@ -649,29 +649,30 @@ static gint update_values (void)
 
 	update_mount_list_menu_items ();
 	
-	draw();
+	draw ();
 
 	return TRUE;
 }
 
-static gint diskusage_configure(GtkWidget *widget, GdkEventConfigure *event)
+static gint
+diskusage_configure (GtkWidget *widget, GdkEventConfigure *event)
 {
-        pixmap = gdk_pixmap_new( widget->window,
+        pixmap = gdk_pixmap_new (widget->window,
                                  widget->allocation.width,
                                  widget->allocation.height,
-                                 gtk_widget_get_visual(disp)->depth );
-        gdk_draw_rectangle( pixmap,
+                                 gtk_widget_get_visual(disp)->depth);
+        gdk_draw_rectangle (pixmap,
                             widget->style->black_gc,
                             TRUE, 0,0,
                             widget->allocation.width,
-                            widget->allocation.height );
-        gdk_draw_pixmap(widget->window,
-                disp->style->fg_gc[GTK_WIDGET_STATE(widget)],
-                pixmap,
-                0, 0,
-                0, 0,
-                disp->allocation.width,
-                disp->allocation.height);
+                            widget->allocation.height);
+        gdk_draw_pixmap (widget->window,
+			 disp->style->fg_gc[GTK_WIDGET_STATE(widget)],
+			 pixmap,
+			 0, 0,
+			 0, 0,
+			 disp->allocation.width,
+			 disp->allocation.height);
 
 	update_values ();
 
@@ -679,27 +680,29 @@ static gint diskusage_configure(GtkWidget *widget, GdkEventConfigure *event)
 	event = NULL;
 } 
 
-static gint diskusage_expose(GtkWidget *widget, GdkEventExpose *event)
+static gint
+diskusage_expose (GtkWidget *widget, GdkEventExpose *event)
 {
-        gdk_draw_pixmap(widget->window,
-                widget->style->fg_gc[GTK_WIDGET_STATE(widget)],
-                pixmap,
-                event->area.x, event->area.y,
-                event->area.x, event->area.y,
-                event->area.width, event->area.height);
+        gdk_draw_pixmap (widget->window,
+			 widget->style->fg_gc[GTK_WIDGET_STATE(widget)],
+			 pixmap,
+			 event->area.x, event->area.y,
+			 event->area.x, event->area.y,
+			 event->area.width, event->area.height);
         return FALSE;
 }
 
 /* Left click on the applet switches to next filesystem */
-static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e, 
-				gpointer data) {
+static gint
+diskusage_clicked_cb (GtkWidget *widget, GdkEventButton *event,
+		      gpointer data)
+{
 	unsigned int n;
 
-	if (e->button != 1) {
+	if (event->button != 1) {
 		/* Ignore buttons 2 and 3 */
 		return FALSE; 
 	}
-
 
 	n = 0;
 
@@ -719,154 +722,157 @@ static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e,
 	
 	
 	/* call draw when user left-clicks applet, to avoid delay */
-	update_values();
+	update_values ();
 	
 	return TRUE; 
 	widget = NULL;
 	data = NULL;
 }
 
-void change_filesystem_cb (AppletWidget *applet, gpointer data) {
+static void
+change_filesystem_cb (AppletWidget *applet, gpointer data)
+{
+	gchar *my_mpoint = (gchar *)data;
 
-  gchar *my_mpoint = (gchar *)data;
+	guint n_mpoints = mountlist.number;
+	guint lim1;
 
-  guint n_mpoints = mountlist.number;
-  guint lim1;
+	for (lim1 = 0; lim1 < n_mpoints; lim1++)
+		if (!strcmp (my_mpoint, mount_list [lim1].mountdir))
+			break;
 
-  for (lim1 = 0; lim1 < n_mpoints; lim1++)
-    if (!strcmp (my_mpoint, mount_list [lim1].mountdir))
-      break;
+	summary_info.selected_filesystem = lim1;
+	props.startfs = summary_info.selected_filesystem;
 
-  summary_info.selected_filesystem = lim1;
-  props.startfs = summary_info.selected_filesystem;
+	update_values ();
 
-  update_values ();
-  return;
-  applet = NULL;
+	return;
+	applet = NULL;
 }
 
-void add_mount_list_menu_items (void) {
+static void
+add_mount_list_menu_items (void)
+{
+	guint n_mpoints = mountlist.number;
+	guint lim1;
 
-  guint n_mpoints = mountlist.number;
-  guint lim1;
+	gchar digit1 = '0', digit2 = '0';
 
-  gchar digit1 = '0', digit2 = '0';
+	mpoints = g_new0 (GString *, n_mpoints);
+	menuitem = g_new0 (GString *, n_mpoints);
 
-  mpoints = g_new0 (GString *, n_mpoints);
-  menuitem = g_new0 (GString *, n_mpoints);
+	applet_widget_register_callback_dir (APPLET_WIDGET (my_applet),
+					     "filesystem",
+					     _("File Systems"));
 
-  applet_widget_register_callback_dir (APPLET_WIDGET (my_applet),
-				       "filesystem",
-				       _("File Systems"));
-
-  for (lim1 = 0; lim1 < n_mpoints; lim1++) {
+	for (lim1 = 0; lim1 < n_mpoints; lim1++) {
     
-    mpoints [lim1] = g_string_new (mount_list [lim1].mountdir);
+		mpoints [lim1] = g_string_new (mount_list [lim1].mountdir);
 
-    menuitem [lim1] = g_string_new ("filesystem/fsitem");
-    g_string_append_c (menuitem [lim1], digit1);
-    g_string_append_c (menuitem [lim1], digit2);
+		menuitem [lim1] = g_string_new ("filesystem/fsitem");
+		g_string_append_c (menuitem [lim1], digit1);
+		g_string_append_c (menuitem [lim1], digit2);
 
-    if (digit2 == '9') {
-      digit1++;
-      digit2 = '0';
-    }
-    else
-      digit2++;
+		if (digit2 == '9') {
+			digit1++;
+			digit2 = '0';
+		}
+		else
+			digit2++;
     
-    /* don't register entrys with total blocks=0, like /proc */
-    glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
-    if (fsu.blocks == 0)
-	    continue;
+		/* don't register entrys with total blocks=0, like /proc */
+		glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
+		if (fsu.blocks == 0)
+			continue;
 
-    applet_widget_register_callback (APPLET_WIDGET (my_applet),
-				     menuitem [lim1]->str,
-				     mpoints [lim1]->str,
-				     change_filesystem_cb,
-				     mpoints [lim1]->str);
+		applet_widget_register_callback (APPLET_WIDGET (my_applet),
+						 menuitem [lim1]->str,
+						 mpoints [lim1]->str,
+						 change_filesystem_cb,
+						 mpoints [lim1]->str);
 
-  }
+	}
 
-  num_mpoints = n_mpoints;
-
+	num_mpoints = n_mpoints;
 }
 
-void update_mount_list_menu_items () {
+void
+update_mount_list_menu_items (void)
+{
+	guint n_mpoints = mountlist.number;
+	guint lim1;
+	int retval = TRUE;
 
-  guint n_mpoints = mountlist.number;
-  guint lim1;
-  int retval = TRUE;
+	gchar digit1 = '0';
+	gchar digit2 = '0';
 
-  gchar digit1 = '0', digit2 = '0';
+	if (num_mpoints != n_mpoints)
+		retval = FALSE;
 
-  if (num_mpoints != n_mpoints)
-    retval = FALSE;
+	for (lim1 = 0; (lim1 < n_mpoints) && retval; lim1++)
+		if (strcmp (mpoints [lim1]->str, mount_list [lim1].mountdir)) {
+			retval = FALSE;
+			break;
+		}
 
-  for (lim1 = 0; (lim1 < n_mpoints) && retval; lim1++)
-    if (strcmp (mpoints [lim1]->str, mount_list [lim1].mountdir)) {
-      retval = FALSE;
-      break;
-    }
+	if (!retval) {
 
-  if (!retval) {
+		printf (_("File System Changed!\n"));
 
-    printf (_("File System Changed!\n"));
+		for (lim1 = 0; lim1 < num_mpoints; lim1++) {
 
-    for (lim1 = 0; lim1 < num_mpoints; lim1++) {
-
-      /* This causes a sigsegv if the menu is actually open... dunno
-	 what to do about it :) */
+			/* This causes a sigsegv if the menu is actually open... dunno
+			   what to do about it :) */
     
-      /* don't unregister entrys with total blocks=0, like /proc */
-      glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
-      if (fsu.blocks > 0)
-      	applet_widget_unregister_callback (APPLET_WIDGET (my_applet), 
-					 menuitem [lim1]->str);
+			/* don't unregister entrys with total blocks=0, like /proc */
+			glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
+			if (fsu.blocks > 0)
+				applet_widget_unregister_callback (APPLET_WIDGET (my_applet), 
+								   menuitem [lim1]->str);
 
-      g_string_free (mpoints [lim1], TRUE);
-      g_string_free (menuitem [lim1], TRUE);
+			g_string_free (mpoints [lim1], TRUE);
+			g_string_free (menuitem [lim1], TRUE);
 
-    }
+		}
 
-    g_free (mpoints);
-    g_free (menuitem);
+		g_free (mpoints);
+		g_free (menuitem);
 
-    num_mpoints = n_mpoints;
+		num_mpoints = n_mpoints;
 
-    mpoints = g_new0 (GString *, n_mpoints);
-    menuitem = g_new0 (GString *, n_mpoints);
+		mpoints = g_new0 (GString *, n_mpoints);
+		menuitem = g_new0 (GString *, n_mpoints);
 
-    for (lim1 = 0; lim1 < num_mpoints; lim1++) {
+		for (lim1 = 0; lim1 < num_mpoints; lim1++) {
 
-      mpoints [lim1] = g_string_new (mount_list [lim1].mountdir);
+			mpoints [lim1] = g_string_new (mount_list [lim1].mountdir);
 
-      menuitem [lim1] = g_string_new ("filesystem/fsitem");
-      g_string_append_c (menuitem [lim1], digit1);
-      g_string_append_c (menuitem [lim1], digit2);
+			menuitem [lim1] = g_string_new ("filesystem/fsitem");
+			g_string_append_c (menuitem [lim1], digit1);
+			g_string_append_c (menuitem [lim1], digit2);
 
-      if (digit2 == '9') {
-	digit1++;
-	digit2 = '0';
-      }
-      else
-	digit2++;
+			if (digit2 == '9') {
+				digit1++;
+				digit2 = '0';
+			}
+			else
+				digit2++;
    
 
-      /* don't register entrys with total blocks=0, like /proc */
-      glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
-      if (fsu.blocks == 0)
-	    continue;
+			/* don't register entrys with total blocks=0, like /proc */
+			glibtop_get_fsusage (&fsu, mount_list [lim1].mountdir);
+			if (fsu.blocks == 0)
+				continue;
 
-      applet_widget_register_callback (APPLET_WIDGET (my_applet),
-				       menuitem [lim1]->str,
-				       mpoints [lim1]->str,
-				       change_filesystem_cb,
-				       mpoints [lim1]->str);
+			applet_widget_register_callback (APPLET_WIDGET (my_applet),
+							 menuitem [lim1]->str,
+							 mpoints [lim1]->str,
+							 change_filesystem_cb,
+							 mpoints [lim1]->str);
 
-    }
+		}
 
-  }
-
+	}
 }
 
 #if 0
@@ -897,17 +903,19 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 
 #endif
 
-static void update_cb (AppletWidget *widget, gpointer data)
+static void
+update_cb (AppletWidget *widget, gpointer data)
 {
 	diskusage_resize ();
 }
 
-GtkWidget *diskusage_widget(void)
+GtkWidget *
+diskusage_widget (void)
 {
 	
-	GtkWidget *frame, *box;
+	GtkWidget *frame;
+	GtkWidget *box;
 	GtkWidget *event_box;
-
 
 	summary_info.selected_filesystem = 0;
 	
@@ -922,51 +930,53 @@ GtkWidget *diskusage_widget(void)
 
 	props.startfs = summary_info.selected_filesystem;
 	
-	box = gtk_vbox_new(FALSE, FALSE);
-	gtk_widget_show(box);
+	box = gtk_vbox_new (FALSE, FALSE);
+	gtk_widget_show (box);
 
-	frame = gtk_frame_new(NULL);
-	gtk_frame_set_shadow_type( GTK_FRAME(frame), props.look?GTK_SHADOW_OUT:GTK_SHADOW_IN );
+	frame = gtk_frame_new (NULL);
+	gtk_frame_set_shadow_type (GTK_FRAME(frame),
+				   props.look ? GTK_SHADOW_OUT:GTK_SHADOW_IN);
 
-	disp = gtk_drawing_area_new();
-	gtk_signal_connect( GTK_OBJECT(disp), "expose_event",
-                (GtkSignalFunc)diskusage_expose, NULL);
-        gtk_signal_connect( GTK_OBJECT(disp),"configure_event",
-                (GtkSignalFunc)diskusage_configure, NULL);
-        gtk_widget_set_events( disp, GDK_EXPOSURE_MASK );
+	disp = gtk_drawing_area_new ();
+	gtk_signal_connect (GTK_OBJECT(disp), "expose_event",
+			    GTK_SIGNAL_FUNC (diskusage_expose), NULL);
+        gtk_signal_connect (GTK_OBJECT(disp), "configure_event",
+			    GTK_SIGNAL_FUNC (diskusage_configure), NULL);
+        gtk_widget_set_events (disp, GDK_EXPOSURE_MASK);
 
-	gtk_box_pack_start_defaults( GTK_BOX(box), disp );
+	gtk_box_pack_start_defaults (GTK_BOX(box), disp);
 
-	event_box = gtk_event_box_new();
-	gtk_widget_show(event_box);
-	gtk_widget_set_events(event_box, GDK_BUTTON_PRESS_MASK);
-	gtk_signal_connect(GTK_OBJECT(event_box), "button_press_event",
-			   GTK_SIGNAL_FUNC(diskusage_clicked_cb), NULL);
+	event_box = gtk_event_box_new ();
+	gtk_widget_show (event_box);
+	gtk_widget_set_events (event_box, GDK_BUTTON_PRESS_MASK);
+	gtk_signal_connect (GTK_OBJECT (event_box), "button_press_event",
+			    GTK_SIGNAL_FUNC (diskusage_clicked_cb), NULL);
 
-	gtk_container_add( GTK_CONTAINER(event_box), box );
-	gtk_container_add( GTK_CONTAINER(frame), event_box);
+	gtk_container_add (GTK_CONTAINER (event_box), box);
+	gtk_container_add (GTK_CONTAINER (frame), event_box);
 	
 	summary_info.orient = applet_widget_get_panel_orient (APPLET_WIDGET (my_applet));
 	summary_info.pixel_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (my_applet));
 
-	is_realized = TRUE;
-        
-	diskusage_resize();
+	start_timer ();
+	diskusage_resize ();
 
-	start_timer();
-
-        gtk_widget_show_all(frame);
-	
+        gtk_widget_show_all (frame);
 
 	return frame;
-	
 }
 
-
-static void about_cb (AppletWidget *widget, gpointer data)
+static void
+about_cb (AppletWidget *widget, gpointer data)
 {
 	static GtkWidget *about = NULL;
-	const gchar *authors[8];
+	const gchar *authors[] = {
+		"Bruno Widmann <bwidmann@tks.fh-sbg.ac.at>",
+		"Martin Baulig <martin@home-of-linux.org>",
+		"Dave Finton <dfinton@d.umn.edu>",
+		"Jason Leach <leach@wam.umd.edu>",
+		NULL
+	};
 
 	if (about != NULL)
 	{
@@ -975,20 +985,13 @@ static void about_cb (AppletWidget *widget, gpointer data)
 		return;
 	}
 
-	authors[0] = "Bruno Widmann <bwidmann@tks.fh-sbg.ac.at>";
-	authors[1] = "Martin Baulig <martin@home-of-linux.org>";
-	authors[2] = "Dave Finton <dfinton@d.umn.edu>";
-	authors[3] = NULL;
-
-
-        about = gnome_about_new
-		(_("Disk Usage Applet"), VERSION,
-		 "(C) 1999",
-		 authors,
-		 _("Released under the GNU general public license.\n"
-		   "Monitors the amount of space in use and available on your "
-		   "disk drives."),
-		 NULL);
+        about = gnome_about_new (_("Disk Usage Applet"), VERSION,
+				 "(C) 1999",
+				 authors,
+				 _("Released under the GNU general public license.\n"
+				   "Monitors the amount of space in use and available on your "
+				   "disk drives."),
+				 NULL);
 	gtk_signal_connect (GTK_OBJECT (about), "destroy",
 			    GTK_SIGNAL_FUNC (gtk_widget_destroyed), &about);
 
@@ -1005,9 +1008,13 @@ show_help_cb (AppletWidget *applet, gpointer data)
 	gnome_help_display (NULL, &help_entry);
 }
 
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
+static gint
+applet_save_session (GtkWidget *widget,
+		     char      *privcfgpath,
+		     char      *globcfgpath,
+		     gpointer   data)
 {
-	save_properties(privcfgpath,&props);
+	save_properties (privcfgpath, &props);
 
 	gnome_config_sync();
 	/* you need to use the drop_all here since we're all writing to
@@ -1017,49 +1024,47 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 	return FALSE;
 }
 
-int main(int argc, char **argv)
+int
+main (int argc, char **argv)
 {
 	GtkWidget *applet;
+	GtkWidget *diskusage_wid;
 	
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-        applet_widget_init("diskusage_applet", VERSION, argc, argv,
-				    NULL, 0, NULL);
+        applet_widget_init ("diskusage_applet", VERSION, argc, argv,
+			    NULL, 0, NULL);
 
 	applet = applet_widget_new("diskusage_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 
 	my_applet = applet;
-        
-	load_properties(APPLET_WIDGET(applet)->privcfgpath, &props);
 
-        diskusage = diskusage_widget();
+	load_properties (APPLET_WIDGET(applet)->privcfgpath, &props);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-			   GTK_SIGNAL_FUNC(applet_change_orient),
-			   NULL);
+        diskusage_wid = diskusage_widget ();
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
-			   NULL);
+        applet_widget_add (APPLET_WIDGET(applet), diskusage_wid);
 
-        applet_widget_add( APPLET_WIDGET(applet), diskusage );
+	/* connect signals */
+	gtk_signal_connect (GTK_OBJECT(applet),"change_orient",
+			    GTK_SIGNAL_FUNC(applet_change_orient),
+			    NULL);
+	gtk_signal_connect (GTK_OBJECT(applet),"change_pixel_size",
+			    GTK_SIGNAL_FUNC(applet_change_pixel_size),
+			    NULL);
+
+	gtk_signal_connect (GTK_OBJECT(applet),"save_session",
+			    GTK_SIGNAL_FUNC(applet_save_session),
+			    NULL);
 
 
-        gtk_widget_show(applet);
-	
-	create_gc();
-	setup_colors();
-       	
+	/* add applets right click menu */
 	add_mount_list_menu_items ();
-        
-	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
-                           GTK_SIGNAL_FUNC(applet_save_session),
-                           NULL);
-       	
+
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "properties",
 					      GNOME_STOCK_MENU_PROP,
@@ -1095,8 +1100,15 @@ int main(int argc, char **argv)
 					      GNOME_STOCK_MENU_ABOUT,
 					      _("About..."),
 					      about_cb, NULL);
-	applet_widget_gtk_main();
 
+        gtk_widget_show_all (applet);
+
+	is_realized = TRUE;
+
+	create_gc ();
+	setup_colors ();
+       	
+	applet_widget_gtk_main();
 
         return 0;
 }

@@ -368,7 +368,7 @@ mixer_update_func(GtkWidget *mixer, gint mvol)
 
 static void
 create_computer_mixer_widget(GtkWidget ** mixer, 
-		MixerUpdateFunc * update_func)
+			     MixerUpdateFunc * update_func)
 {
 	MixerWidget* mx;
 	GtkWidget *vbox, *align, *hbox, *vbutton, *hbutton, *vscale, *hscale; 
@@ -545,7 +545,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 }
 
 static void
-start_gmix_cb()
+start_gmix_cb(void)
 {
 	gnome_execute_shell(NULL, "gmix");
 }
@@ -610,7 +610,7 @@ mixer_about (AppletWidget *applet, gpointer data)
         }
         
         about = gnome_about_new (_("Mixer Applet"), VERSION,
-                                 _("(c) 1998 the Free Software Foundation"),
+                                 _("(c) 1998 The Free Software Foundation"),
                                  authors,
                                  _("The mixer applet gives you instant access to setting the master volume level on your soundcard device"),
                                  NULL);

@@ -1,4 +1,31 @@
+2000-03-15  Jason Leach  <leach@wam.umd.edu>
+
+	* cdplayer/cdplayer.c (main): renamed "run gtcd..." to "Run CD
+	Player...", bug #6946
+	
+	* cdplayer/cdplayer.c (about_cb): Added About dialog, bug #6844
+
 2000-03-14  Jason Leach  <leach@wam.umd.edu>
+
+	* diskusage/properties.c (create_frame): re-designed preferences
+	for aesthetic purposes.
+
+	* diskusage/properties.c: Added the ability to configure the font
+	used in the applet display
+
+	* diskusage/diskusage.c (draw_v): corrected the calculations for
+	displaying free space, bug #7162
+	(draw_h): fixed that here too
+
+	* diskusage/properties.c:
+	* diskusage/diskusage.c: removed a bunch of unecessary #include's
+	
+	* diskusage/properties.c (create_frame): fixed a bug where each
+	time you opened the properties it would give a Gtk-warning to
+	console about gnome_property_box_changed() and page_num
+
+	* diskusage/diskusage.c (main): fixed a bug where on each run you
+	would see 15-20 Gtk-warnings about "gc != NULL".
 
 	* cpumemusage/cpumemusage.c (cpumemusage_about): Added About
 	dialog, bug #7292
@@ -1599,9 +1626,9 @@ Sun Sep 20 10:28:29 1998  John Ellis  <johne@bellatlantic.net>
 
 1998-08-26  Havoc Pennington  <hp@pobox.com>
 
-	* multiload/Makefile.am: Add ../../panel to the include path,
-	link to the applet lib in ../../panel. This makes it consistent
-	with the other applets (and makes gnome-core compile)
+	* multiload/Makefile.am: Add ../../panel to the include path, link
+	to the applet lib in ../../panel. This makes it consistent with
+	the other applets (and makes gnome-core compile)
 
 Sun Aug 23 23:24:30 1998  George Lebl  <jirka@5z.com>
 
@@ -2043,18 +2070,16 @@ Thu Apr 16 20:59:35 1998  George Lebl  <jirka@5z.com>
 
 Thu Apr 16 19:44:40 1998  George Lebl  <jirka@5z.com>
 
-	* cdplayer/cdplayer.c: recover gracefully from errors
-	  when creating widget, if you can't open the cdrom
-	  don't give up, but try again when something is about
-	  to happen. this pervents it from dieing when there was
-	  no disc sometimes.
+	* cdplayer/cdplayer.c: recover gracefully from errors when
+	  creating widget, if you can't open the cdrom don't give up, but
+	  try again when something is about to happen. this pervents it
+	  from dieing when there was no disc sometimes.
 
 Wed Apr 15 20:13:24 1998  George Lebl  <jirka@5z.com>
 
 	* batmon/batmon.c,cdplayer/cdplayer.c,clock/clock.c,
-	  mailcheck/mailcheck.c,winlist/winlist.c: removed
-	  shutdown corba call and added handler for destroy
-	  signal on the plug
+	  mailcheck/mailcheck.c,winlist/winlist.c: removed shutdown corba
+	  call and added handler for destroy signal on the plug
 
 Sun Apr 12 21:25:06 1998  George Lebl  <jirka@5z.com>
 

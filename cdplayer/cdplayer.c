@@ -128,11 +128,39 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 	w = NULL;
 }
 
-static void start_gtcd_cb()
+static void
+start_gtcd_cb(void)
 {
 	gnome_execute_shell(NULL, "gtcd");
 }
-                
+
+static void
+about_cb(void)
+{
+        static GtkWidget   *about     = NULL;
+        static const gchar *authors[] =
+        {
+                "Miguel de Icaza <miguel@kernel.org>",
+                "Federico Mena <quartic@gimp.org>",
+                NULL
+        };
+
+        if (about != NULL)
+        {
+                gdk_window_show(about->window);
+                gdk_window_raise(about->window);
+                return;
+        }
+        
+        about = gnome_about_new (_("CD Player Applet"), VERSION,
+                                 _("(c) 1997 The Free Software Foundation"),
+                                 authors,
+                                 _("The CD Player applet is a simple audio CD player for your panel"),
+                                 NULL);
+        gtk_signal_connect (GTK_OBJECT(about), "destroy",
+                            GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+        gtk_widget_show (about);
+}
 
 static int 
 cdplayer_stop(GtkWidget * w, gpointer data)
@@ -318,12 +346,12 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 	cd->timeout = gtk_timeout_add(TIMEOUT_VALUE, cdplayer_timeout_callback,
 				      cdpanel);
 
-	gtk_object_set_user_data(GTK_OBJECT(cdpanel), cd);
-	gtk_signal_connect(GTK_OBJECT(cdpanel), "destroy",
-			   GTK_SIGNAL_FUNC (destroy_cdplayer),
-			   NULL);
-	gtk_signal_connect(GTK_OBJECT (cdpanel), "realize",
-			   GTK_SIGNAL_FUNC (cdpanel_realized), cd);
+	gtk_object_set_user_data (GTK_OBJECT(cdpanel), cd);
+	gtk_signal_connect (GTK_OBJECT(cdpanel), "destroy",
+			    GTK_SIGNAL_FUNC (destroy_cdplayer),
+			    NULL);
+	gtk_signal_connect (GTK_OBJECT (cdpanel), "realize",
+			    GTK_SIGNAL_FUNC (cdpanel_realized), cd);
 
 	return cdpanel;
 }
@@ -336,8 +364,8 @@ main(int argc, char **argv)
 	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
 	textdomain(PACKAGE);
 
-	applet_widget_init("cdplayer_applet", VERSION, argc, argv,
-				    NULL, 0, NULL);
+	applet_widget_init ("cdplayer_applet", VERSION, argc, argv,
+			    NULL, 0, NULL);
 
 	applet = applet_widget_new("cdplayer_applet");
 	if (!applet)
@@ -347,14 +375,24 @@ main(int argc, char **argv)
 	cdplayer = create_cdplayer_widget (applet,
 					   APPLET_WIDGET(applet)->globcfgpath);
 
-	if(cdplayer == NULL) {
+	if (cdplayer == NULL) {
 		applet_widget_abort_load(APPLET_WIDGET(applet));
 		return 1;
 	}
 
-        applet_widget_register_stock_callback(APPLET_WIDGET(applet), "run_gtcd",         
-					      GNOME_STOCK_MENU_CDROM, _("Run gtcd..."),
-					      start_gtcd_cb, NULL);
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       about_cb,
+					       NULL);
+
+        applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "run_gtcd",         
+					       GNOME_STOCK_MENU_CDROM,
+					       _("Run CD Player..."),
+					       start_gtcd_cb,
+					       NULL);
 
 	gtk_widget_show(cdplayer);
 	applet_widget_add (APPLET_WIDGET (applet), cdplayer);
