@@ -19,10 +19,6 @@
 
 #include "gkb.h"
 
-#include <libintl.h>
-
-#define _(x) gettext (x)
-
 gboolean gconf_applet_set_string (PanelApplet *parent, 
                                   const char *gconf_key,
                                   gchar *value,
