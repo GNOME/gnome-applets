@@ -1,3 +1,13 @@
+2004-01-16  Archana Shah <archana.shah@wipro.com>
+
+	* cdplayer.h: Added a member in the structure CDPlayerData for
+	about dialog.
+	* cdplayer.c: (applet_fill): Initialized about_dialog with NULL.
+	(about_cb): Changed to use about_dialog member of the structure
+	instead of static variable.
+	(cdplayer_destroy): Destroy about dialog when applet is removed.
+	Fixes bug #131691
+
 2003-12-13  Michael Terry <mterry@fastmail.fm>
 
 	* GNOME_CDPlayerApplet.server.in.in, Makefile.am, cdplayer.c: Use

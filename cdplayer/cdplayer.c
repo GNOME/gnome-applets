@@ -157,6 +157,8 @@ applet_fill (PanelApplet *applet)
       
     cd = g_new0(CDPlayerData, 1);
     cd->panel.applet = GTK_WIDGET (applet);
+
+    cd->about_dialog = NULL;
     
     /* the rest of the widgets go in here */
     cdplayer = cd->panel.frame = gtk_hbox_new(FALSE, 0);
@@ -330,6 +332,9 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
         g_free(cd->track_description);
 
     g_free (cd->devpath);
+
+    if (cd->about_dialog)
+      gtk_widget_destroy (cd->about_dialog);
  
     if (cd->prefs_dialog)
       gtk_widget_destroy (cd->prefs_dialog);
@@ -575,7 +580,6 @@ about_cb (BonoboUIComponent *component,
 	  CDPlayerData      *cd,
 	  const char        *verb)
 {
-    static GtkWidget   *about     = NULL;
     GdkPixbuf	       *pixbuf;
     GError	       *error     = NULL;
 
@@ -594,10 +598,8 @@ about_cb (BonoboUIComponent *component,
 
     const gchar *translator_credits = _("translator_credits");
 
-    if (about) {
-	gtk_window_set_screen (GTK_WINDOW (about),
-			       gtk_widget_get_screen (cd->panel.applet));
-	gtk_window_present (GTK_WINDOW (about));
+    if (cd->about_dialog) {
+	gtk_window_present (GTK_WINDOW (cd->about_dialog));
         return;
     }
     
@@ -608,23 +610,21 @@ about_cb (BonoboUIComponent *component,
 	g_error_free (error);
     }
     
-    about = gnome_about_new (_("CD Player"), VERSION,
-                             _("(C) 1997 The Free Software Foundation\n" \
-                               "(C) 2001 Chris Phelps (GNOME 2 Port)"),
-                             _("The CD Player applet is a simple audio CD player for your panel"),
-                             authors,
-			     documenters,
-			     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-			     pixbuf);
+    cd->about_dialog = gnome_about_new (_("CD Player"), VERSION,
+                                        _("(C) 1997 The Free Software Foundation\n" \
+                                          "(C) 2001 Chris Phelps (GNOME 2 Port)"),
+                                        _("The CD Player applet is a simple audio CD player for your panel"),
+                                        authors,
+                                        documenters,
+                                        strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+                                        pixbuf);
     if (pixbuf)
     	gdk_pixbuf_unref (pixbuf);
 
-    gtk_window_set_wmclass (GTK_WINDOW (about), "cd player", "CD Player");
-    gtk_window_set_screen (GTK_WINDOW (about),
-			   gtk_widget_get_screen (cd->panel.applet));
-    g_signal_connect (G_OBJECT(about), "destroy",
-                      G_CALLBACK(gtk_widget_destroyed), &about);
-    gtk_widget_show (about);
+    gtk_window_set_wmclass (GTK_WINDOW (cd->about_dialog), "cd player", "CD Player");
+    g_signal_connect (G_OBJECT(cd->about_dialog), "destroy",
+                      G_CALLBACK(gtk_widget_destroyed), &cd->about_dialog);
+    gtk_widget_show (cd->about_dialog);
 }
 
 static void
