@@ -305,10 +305,8 @@ panel_menu_directory_destroy (PanelMenuEntry *entry)
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
 
 	directory = (PanelMenuDirectory *) entry->data;
-	g_print ("beginning directory item removall\n");
 	if (directory->monitor)
 		gnome_vfs_monitor_cancel (directory->monitor);
-	g_print ("removed vfs-monitor\n");
 	if (directory->name)
 		g_free (directory->name);
 	if (directory->path)

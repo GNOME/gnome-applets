@@ -76,7 +76,7 @@ static guint nautilus_connection = 0;
 static guint icon_connection = 0;
 static gint icon_size = 0;
 
-static void
+void
 panel_menu_pixbuf_init (void)
 {
 	if (pixbuf_cache == NULL) {
@@ -98,17 +98,19 @@ panel_menu_pixbuf_init (void)
 		register_gconf_notifications ();
 		setup_default_icons ();
 		panel_menu_pixbuf_setup_nautilus_icons ();
-		g_atexit (panel_menu_pixbuf_exit);
 	}
 }
 
-static void
+void
 panel_menu_pixbuf_exit (void)
 {
 	if (pixbuf_cache) {
-		g_hash_table_foreach_remove (pixbuf_cache,
-					     (GHRFunc)pixbuf_cache_remove,
-					     NULL);
+		/*
+		   Don't bother killing the pixmaps
+		   They should die on their own as menu items
+		   unreference them, or it wont matter because
+		   we've been killed explicitly.
+		*/
 		g_hash_table_destroy (pixbuf_cache);
 		pixbuf_cache = NULL;
 	}
@@ -120,8 +122,10 @@ panel_menu_pixbuf_exit (void)
 		gconf_client_notify_remove (gconf_client,
 					    icon_connection);
 	}
-	g_object_unref (G_OBJECT (gconf_client));
-	gconf_client = NULL;
+	if (gconf_client) {
+		g_object_unref (G_OBJECT (gconf_client));
+		gconf_client = NULL;
+	}
 }
 
 static void
@@ -143,13 +147,6 @@ register_gconf_notifications (void)
 		ICON_SIZE_KEY,
 		(GConfClientNotifyFunc) icon_size_changed, NULL,
 		(GFreeFunc) NULL, NULL);
-}
-
-static gboolean
-pixbuf_cache_remove (gpointer key, gpointer value, gpointer user_data)
-{
-	panel_menu_pixbuf_entry_remove ((PixbufEntry *)value);
-	return TRUE;
 }
 
 gint

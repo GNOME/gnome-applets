@@ -1,3 +1,12 @@
+Sat Mar 30 03:19:51 PM PST 2002 chicane <chicane@cox.net>
+	* panel-menu-pixbuf.[c/h], panel-menu.c:
+	  kill the pixbuf g_atexit() callback, and just call
+	  the function from applet_destroy() so we dont have massive
+	  console output when you kill X or the like.
+	  Basically the at_exit function just cleared the cache (which
+	  should happen anyway when all menuitems are removed), and killed
+	  some gconf connections.
+
 Sat Mar 30 02:47:54 PM PST 2002 chicane <chicane@cox.net>
 	* removed the "Browse..." button from "Path" items and
 	  added it to "Directory" items, because Path items want

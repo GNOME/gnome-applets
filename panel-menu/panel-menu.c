@@ -600,8 +600,10 @@ applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu)
 		entry = (PanelMenuEntry *) cur->data;
 		panel_menu_common_call_entry_destroy (entry);
 	}
-	if (panel_menu->entries)
+	if (panel_menu->entries) {
 		g_list_free (panel_menu->entries);
+	}
+	panel_menu_pixbuf_exit ();
 	g_free (panel_menu);
 }
 
@@ -679,7 +681,10 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 		pixbuf = gdk_pixbuf_new_from_file (file, NULL);
 	}
 
-	about = gnome_about_new (_("PanelMenu Applet"), "0.0.1", _("(c) 2001 Chris Phelps"), _("The Panel Menu Applet allows you to display customized menubars on your panels."), authors, NULL,	/* documenters */
+	about = gnome_about_new (_("PanelMenu Applet"), "0.0.1",
+				 _("(c) 2001 Chris Phelps"),
+				 _("The Panel Menu Applet allows you to display customized menubars on your panels."),
+				 authors, NULL,	/* documenters */
 				 NULL,	/* translator_credits */
 				 pixbuf);
 
