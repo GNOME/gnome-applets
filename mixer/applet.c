@@ -70,6 +70,12 @@ static void	cb_verb				(BonoboUIComponent *uic,
 						 gpointer   data,
 						 const gchar *verbname);
 
+static void	cb_ui_event			(BonoboUIComponent *comp,
+						 const gchar       *path,
+						 Bonobo_UIComponent_EventType type,
+						 const gchar       *state_string,
+						 gpointer           data);
+
 static PanelAppletClass *parent_class = NULL;
 static struct {
   gchar *filename;
@@ -185,6 +191,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   GstMixerTrack *active_track;
   const GList *item;
   gint page;
+  BonoboUIComponent *component;
   static const BonoboUIVerb verbs[] = {
     BONOBO_UI_UNSAFE_VERB ("RunMixer", cb_verb),
     BONOBO_UI_UNSAFE_VERB ("Mute",     cb_verb),
@@ -278,6 +285,8 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 				     NULL,
 				     "GNOME_MixerApplet.xml",
 				     NULL, verbs, applet);
+  component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+  g_signal_connect (component, "ui-event", G_CALLBACK (cb_ui_event), applet);
 
   /* gconf */
   gconf_client_add_dir (applet->client, GNOME_VOLUME_APPLET_KEY_DIR,
@@ -385,6 +394,9 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
 		    NULL, NULL, GDK_CURRENT_TIME);
   gdk_keyboard_grab (widget->window, TRUE, GDK_CURRENT_TIME);
 
+  /* set menu item as active */
+  gtk_widget_set_state (GTK_WIDGET (applet), GTK_STATE_SELECTED);
+
   /* keep state */
   applet->pop = TRUE;
 }
@@ -404,6 +416,9 @@ gnome_volume_applet_popdown_dock (GnomeVolumeApplet *applet)
 
   /* hide */
   gtk_widget_hide (GTK_WIDGET (applet->dock));
+
+  /* set menu item as active */
+  gtk_widget_set_state (GTK_WIDGET (applet), GTK_STATE_NORMAL);
 
   /* keep state */
   applet->pop = FALSE;
@@ -426,12 +441,17 @@ gnome_volume_applet_pop_dock (GnomeVolumeApplet *applet)
 static void
 gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 {
-  if (GST_MIXER_TRACK_HAS_FLAG (applet->track,
-				GST_MIXER_TRACK_MUTE)) {
-    gst_mixer_set_mute (applet->mixer, applet->track, FALSE);
-  } else {
-    gst_mixer_set_mute (applet->mixer, applet->track, TRUE);
-  }
+  BonoboUIComponent *component;
+  gboolean mute = (GST_MIXER_TRACK_HAS_FLAG (applet->track,
+			GST_MIXER_TRACK_MUTE));
+
+  gst_mixer_set_mute (applet->mixer, applet->track, !mute);
+
+  /* update component */
+  component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+  bonobo_ui_component_set_prop (component,
+			        "/commands/Mute",
+			        "state", mute ? "1" : "0", NULL);
 }
 
 /*
@@ -614,10 +634,16 @@ gnome_volume_applet_orientation	(PanelApplet *_applet,
   if (applet->dock) {
     adj = gtk_range_get_adjustment (applet->dock->scale);
     g_object_ref (G_OBJECT (adj));
+    /* FIXME:
+     * - we need to unset the parent in some way, because else Gtk+
+     *    thinks that the child of the applet (image) is us (dock),
+     *    which is not the case.
+     */
     gtk_widget_destroy (GTK_WIDGET (applet->dock));
   }
   dock = gnome_volume_applet_dock_new (IS_PANEL_HORIZONTAL (orientation) ?
       GTK_ORIENTATION_VERTICAL : GTK_ORIENTATION_HORIZONTAL);
+  /* parent, for signal forwarding */
   gtk_widget_set_parent (dock, GTK_WIDGET (applet));
   applet->dock = GNOME_VOLUME_APPLET_DOCK (dock);
   gnome_volume_applet_dock_change (applet->dock, adj);
@@ -849,8 +875,6 @@ cb_verb (BonoboUIComponent *uic,
 
   if (!strcmp (verbname, "RunMixer")) {
     gnome_volume_applet_run_mixer (applet);
-  } else if (!strcmp (verbname, "Mute")) {
-    gnome_volume_applet_toggle_mute (applet);
   } else if (!strcmp (verbname, "Help")) {
     GError *error = NULL;
 
@@ -901,6 +925,28 @@ cb_verb (BonoboUIComponent *uic,
     g_signal_connect (applet->prefs, "destroy",
 		      G_CALLBACK (cb_prefs_destroy), applet);
     gtk_widget_show (applet->prefs);
+  } else {
+    g_warning ("Unknown bonobo command '%s'", verbname);
+  }
+}
+
+static void
+cb_ui_event (BonoboUIComponent *comp,
+	     const gchar       *verbname,
+	     Bonobo_UIComponent_EventType type,
+	     const gchar       *state_string,
+	     gpointer           data)
+{
+  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (data);
+
+  if (!strcmp (verbname, "Mute")) {
+    /* mute will have a value of 4 without the ? TRUE : FALSE bit... */
+    gboolean mute = (GST_MIXER_TRACK_HAS_FLAG (applet->track,
+                        GST_MIXER_TRACK_MUTE)) ? TRUE : FALSE,
+             want_mute = !strcmp (state_string, "1") ? TRUE : FALSE;
+
+    if (mute != want_mute)
+      gnome_volume_applet_toggle_mute (applet);
   } else {
     g_warning ("Unknown bonobo command '%s'", verbname);
   }
