@@ -39,7 +39,7 @@ stickynote_new (GdkScreen *screen)
 	GladeXML *menu;
 	GladeXML *properties;
 	GtkIconSize size;
-	
+
 	note = g_new (StickyNote, 1);
 
 	/* Load glade file */
@@ -67,6 +67,10 @@ stickynote_new (GdkScreen *screen)
 	                "resize_se_img"));
 	note->img_resize_sw = GTK_IMAGE (glade_xml_get_widget (window,
 	                "resize_sw_img"));
+
+	/* deal with RTL environments */
+	gtk_widget_set_direction (glade_xml_get_widget (window, "resize_bar"),
+			GTK_TEXT_DIR_LTR);
 	
 	note->w_menu = glade_xml_get_widget(menu, "stickynote_menu");
 	note->w_lock_toggle_item = glade_xml_get_widget(menu,
