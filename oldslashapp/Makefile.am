@@ -23,3 +23,5 @@ EXTRA_DIST = \
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = slash_applet.desktop
 
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = slash_applet.gnorba
