@@ -29,6 +29,7 @@ gint                max_task_width = 400;
 gchar               show_tasks = 1;
 gchar               show_pager = 1;
 gchar               show_icons = 1;
+gchar		     show_arrow = 1;
 gint                area_w = 1;
 gint                area_h = 1;
 gint                area_x = 0;
@@ -123,6 +124,20 @@ cb_check_show_icons(GtkWidget *widget, gpointer data)
     show_icons = 1;
   else
     show_icons = 0;
+}
+
+void
+cb_check_show_arrow(GtkWidget *widget, gpointer data)
+{
+  GtkWidget *prop;
+  
+  prop = gtk_object_get_data(GTK_OBJECT(widget), "prop");
+  if (prop)
+    gnome_property_box_changed(GNOME_PROPERTY_BOX(prop));
+  if (GTK_TOGGLE_BUTTON(widget)->active)
+    show_arrow = 1;
+  else
+    show_arrow = 0;
 }
 
 void 
@@ -287,6 +302,7 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
   gnome_config_set_int("gnome_pager/stuff/show_tasks", show_tasks);
   gnome_config_set_int("gnome_pager/stuff/show_pager", show_pager);
   gnome_config_set_int("gnome_pager/stuff/show_icons", show_icons);
+  gnome_config_set_int("gnome_pager/stuff/show_arrow", show_arrow);
   gnome_config_sync();
   widget = NULL;
   data = NULL;
@@ -352,6 +368,15 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_widget_show(check);
       gtk_table_attach(GTK_TABLE(table), check, 
 		       2, 4, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
+      check = gtk_check_button_new_with_label(_("Show task list button"));
+      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), show_arrow);
+      gtk_signal_connect(GTK_OBJECT(check), "clicked",
+			 GTK_SIGNAL_FUNC(cb_check_show_arrow), NULL);
+      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+      gtk_widget_show(check);
+      gtk_table_attach(GTK_TABLE(table), check,
+		       2, 4, 5, 6, GTK_FILL|GTK_EXPAND,0,0,0);
+
       adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)max_task_width, 20, 
 						(gfloat)gdk_screen_width(), 
 						16, 16, 16 );
@@ -1359,7 +1384,8 @@ main(int argc, char *argv[])
   show_tasks = gnome_config_get_int("gnome_pager/stuff/show_tasks=1");
   show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
   show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
-  
+  show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
+
   gdk_error_warnings = 0;  
   get_desktop_names();
   current_desk = gnome_win_hints_get_current_workspace();
@@ -1728,24 +1754,26 @@ init_applet_gui_horiz(void)
 	  k ++;
 	}
     }
-  
-  if (applet_orient == ORIENT_UP)
-    arrow = gtk_arrow_new(GTK_ARROW_UP, GTK_SHADOW_OUT);
-  else
-    arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_OUT);
-  gtk_widget_show(arrow);
-  
-  button = gtk_button_new();
-  gtk_widget_show(button);
-  gtk_container_add(GTK_CONTAINER(button), arrow);
-  vbox = gtk_vbox_new(FALSE, 0);
-  gtk_widget_show(vbox);
-  gtk_box_pack_start(GTK_BOX(hbox), vbox, FALSE, FALSE, 0);
-  gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
-  gtk_signal_connect(GTK_OBJECT(button), "clicked",
-		     GTK_SIGNAL_FUNC(showpop_cb), NULL);
 
-
+  if (show_arrow) 
+    {
+      if (applet_orient == ORIENT_UP)
+      arrow = gtk_arrow_new(GTK_ARROW_UP, GTK_SHADOW_OUT);
+    else
+      arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_OUT);
+    gtk_widget_show(arrow);
+  
+    button = gtk_button_new();
+    gtk_widget_show(button);
+    gtk_container_add(GTK_CONTAINER(button), arrow);
+    vbox = gtk_vbox_new(FALSE, 0);
+    gtk_widget_show(vbox);
+    gtk_box_pack_start(GTK_BOX(hbox), vbox, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+    gtk_signal_connect(GTK_OBJECT(button), "clicked",
+  		     GTK_SIGNAL_FUNC(showpop_cb), NULL);
+    }
+  
   frame = gtk_frame_new(NULL);
   gtk_box_pack_start(GTK_BOX(hbox), frame, FALSE, FALSE, 0);
   gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
