@@ -1,4 +1,4 @@
-figs =
+figs = geyes_applet.png geyes_settings.png
 applet = geyes
 lang = C
 sgml_ents = $(applet).sgml
