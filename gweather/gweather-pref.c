@@ -353,7 +353,8 @@ static void load_locations (GWeatherApplet *gw_applet)
     gtk_tree_view_set_expander_column (GTK_TREE_VIEW (tree), column);
     
     /* load locations from xml file */
-    if (gweather_xml_load_locations (tree, gw_applet->gweather_pref.location))
+    current_location = weather_location_clone (gw_applet->gweather_pref.location);
+    if (gweather_xml_load_locations (tree, current_location))
     {
         GtkWidget *d;
 
@@ -364,6 +365,8 @@ static void load_locations (GWeatherApplet *gw_applet)
         gtk_dialog_run (GTK_DIALOG (d));
 	gtk_widget_destroy (d);
     }
+
+    weather_location_free (current_location);
 }
 
 static void

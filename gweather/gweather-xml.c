@@ -306,7 +306,7 @@ gweather_xml_parse_node (GtkTreeView *view, GtkTreeIter *parent,
   /* absorb the end tag.  in the case of processing a <gweather> then 'self'
      is NULL.  In this case, we let this fail since we might be at EOF */
   if( xmlTextReaderRead( xml ) != 1 && self )
-    return -1;
+    goto error_out;
 
   /* if this is an actual location, setup the WeatherLocation for it */
   if( is_location )
