@@ -743,14 +743,16 @@ set_atk_name_description (GtkWidget *widget, const gchar *name,
   /* return if gail is not loaded */
   if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
      return;
-  atk_object_set_name (aobj, name);
-  atk_object_set_description (aobj, description);
+  if (name)
+     atk_object_set_name (aobj, name);
+  if (description)
+     atk_object_set_description (aobj, description);
 }
 
 static void
 make_applet_accessible (GtkWidget *applet)
 {
-  set_atk_name_description (applet, _("Character Palette"), NULL);
+  set_atk_name_description (applet, _("Character Palette"), _("Insert characters"));
 }
 
 static gboolean
