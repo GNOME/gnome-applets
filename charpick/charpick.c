@@ -323,6 +323,16 @@ add_palette (GtkMenuItem *menuitem, charpick_data *curr_data)
 		return;
 		
 	list = g_list_append (list, new);
+	if (curr_data->chartable == NULL) {
+		curr_data->chartable = list;
+		curr_data->charlist = curr_data->chartable->data;
+		build_table (curr_data);
+		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
+			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet),
+						      "current_list", 
+					  	       curr_data->charlist, NULL);
+	}
+	
 	save_chartable (curr_data);
   	populate_menu (curr_data);
 }
@@ -427,7 +437,7 @@ build_table(charpick_data *p_curr_data)
   GtkWidget *toggle_button[len];
   gchar *charlist;
   gint width, height;
-  gint max_width=0, max_height=0;
+  gint max_width=1, max_height=1;
   gint size_ratio;
   
   if (p_curr_data->box)
