@@ -7,6 +7,7 @@ dummy.cc:
 endif
 
 INCLUDES = -I. -I$(srcdir) 				\
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
@@ -18,8 +19,7 @@ cdplayer_applet_SOURCES =	\
 	cdplayer.h		\
 	cdrom-interface.h	\
 	led.c			\
-	led.h			\
-	cdrom-$(CDROM_HOST).c 
+	led.h
 
 
 cdplayer_applet_LDADD = ../../panel/libpanel_applet.la		\

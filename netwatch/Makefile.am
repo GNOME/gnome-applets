@@ -9,6 +9,7 @@ endif
 pixmapdir = $(datadir)/panel/
 
 INCLUDES = 			\
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-I. -I$(srcdir)		\
 	-I$(srcdir)/../../panel	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
