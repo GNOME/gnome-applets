@@ -15,9 +15,6 @@ bin_PROGRAMS = slash_applet
 
 slash_applet_SOURCES = slashapp.c
 
-MICO_VERS = 2.0.5
-MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
-
 slash_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 

@@ -157,7 +157,7 @@ while ((fgets(buf, sizeof(buf), slash_file) != NULL) && (topiccounter < 12))
       strncpy(&headlinestring[topiccounter], buf, 80);
       g_print("%d long: %s", strlen(headlinestring[topiccounter]), headlinestring[topiccounter]);
       fgets(buf, sizeof(buf), slash_file);
-      strncpy(&tauthorstring[topiccounter], buf, 8);
+      strncpy(&authorstring[topiccounter], buf, 8);
       topiccounter++;
     }
   }
