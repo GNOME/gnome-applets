@@ -1219,6 +1219,8 @@ static gint updateOutput(gpointer data)
 		label5 = gtk_label_new(_("Stock Symbol:"));
 
 		font_picker = gnome_font_picker_new ();
+		gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
+						 stockdata->props.font);
 		gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),font_picker);
                 gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
@@ -1228,6 +1230,8 @@ static gint updateOutput(gpointer data)
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		label5 = gtk_label_new(_("Stock Change:"));
                 font_picker = gnome_font_picker_new ();
+                gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
+						 stockdata->props.font2);
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),font_picker);
                 gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
