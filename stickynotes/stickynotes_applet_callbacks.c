@@ -218,6 +218,9 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 					       strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 					       stickynotes->icon_normal);
 
+	gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
+
 	g_signal_connect (applet->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &applet->about_dialog);
