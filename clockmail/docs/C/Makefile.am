@@ -1,7 +1,11 @@
-figs = clockmail-prefs-general.png clockmail-prefs-theme.png \
-	clockmail_applet.png
-applet = clockmail
+figs = \
+	figures/clockmail-prefs-general.png		\
+	figures/clockmail_applet.png			\
+	figures/clockmail-prefs-theme.png
+docname = clockmail_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = clockmail_applet-C.omf
+sgml_ents = clockmail.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

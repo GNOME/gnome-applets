@@ -1,5 +1,8 @@
-applet = clockmail
+figs =
+docname = clockmail_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = clockmail_applet-it.omf
+sgml_ents = clockmail.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

@@ -1,6 +1,10 @@
-figs = webcontrol-applet-prefs.png  webcontrol-applet.png
-applet = webcontrol
+figs = \
+	figures/webcontrol-applet-prefs.png		\
+	figures/webcontrol-applet.png
+docname = webcontrol_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = webcontrol_applet-C.omf
+sgml_ents = webcontrol.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

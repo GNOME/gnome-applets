@@ -1,8 +1,12 @@
 figs = \
-	tickastat_applet.png     tickastat_loadaverage.png	\
-	tickastat_coredump.png  tickastat_settings.png
-applet = tickastat
-lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+	figures/tickastat_applet.png			\
+	figures/tickastat_loadaverage.png		\
+	figures/tickastat_coredump.png			\
+	figures/tickastat_settings.png
+docname = tickastat_applet
+lang = C
+omffile = tickastat_applet-C.omf
+sgml_ents = tickastat.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

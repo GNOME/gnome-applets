@@ -1,6 +1,9 @@
-applet = fifteen
-figs = fifteen_applet.png
+figs = \
+	figures/fifteen_applet.png
+docname = fifteen_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = fifteen_applet-C.omf
+sgml_ents = fifteen.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
