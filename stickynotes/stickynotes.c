@@ -24,9 +24,9 @@
 #define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
 #include <libwnck/libwnck.h>
 
-#include <stickynotes.h>
-#include <stickynotes_callbacks.h>
-#include <util.h>
+#include "stickynotes.h"
+#include "stickynotes_callbacks.h"
+#include "util.h"
 
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
 

@@ -20,7 +20,12 @@
 #ifndef __STICKYNOTES_APPLET_H__
 #define __STICKYNOTES_APPLET_H__
 
-#include <gnome.h>
+#include <gdk/gdkscreen.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <gtk/gtkadjustment.h>
+#include <gtk/gtktooltips.h>
+#include <gtk/gtkwidget.h>
+#include <glade/glade-xml.h>
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
 #include <glade/glade.h>

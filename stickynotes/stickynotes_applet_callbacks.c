@@ -18,9 +18,10 @@
  */
 
 #include <config.h>
-#include <stickynotes_applet_callbacks.h>
-#include <stickynotes.h>
+#include "stickynotes_applet_callbacks.h"
+#include "stickynotes.h"
 
+#include <gdk/gdkkeysyms.h>
 #include <libgnome/gnome-help.h>
 
 static void
