@@ -31,28 +31,28 @@ guint timeout_handle = -1;
 GConfClient *client;
 
 
-#ifdef THIS_IS_NOT_NEEDED_I_THINK /* gdk_pixbuf now handles the transparency */
+
 /* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
  * printer applet (thanks to Inigo Serna who pointed this code out to me)
  * But that code was wrong - George */
 static void 
 applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
-
+#ifdef FIXME
 	/* Not ported */
 	/* Deprecated - now use gtk_widget_set_style (GtkWidget *widget, GtkStyle *style) */
 	gtk_widget_set_rc_style(dest);
         gtk_widget_queue_draw (dest);
 	return;
 	src = NULL;
-
+#endif
 }
 
 static void
 applet_set_back_color (GtkWidget *widget, GdkColor *color)
 {
         GtkStyle *new_style;
-
+#ifdef FIXME
         new_style = gtk_style_copy (widget->style);
         gtk_style_ref (new_style);
         new_style->bg[GTK_STATE_NORMAL] = *color;
@@ -60,7 +60,7 @@ applet_set_back_color (GtkWidget *widget, GdkColor *color)
         
         if (new_style->bg_pixmap [GTK_STATE_NORMAL]) {
 
-                gdk_imlib_free_pixmap (new_style->bg_pixmap [GTK_STATE_NORMAL]);
+                /*gdk_imlib_free_pixmap (new_style->bg_pixmap [GTK_STATE_NORMAL]);*/
 
                 new_style->bg_pixmap [GTK_STATE_NORMAL] = NULL;
         }
@@ -68,7 +68,7 @@ applet_set_back_color (GtkWidget *widget, GdkColor *color)
         gtk_widget_set_style (widget, new_style);
         gtk_style_unref (new_style);
         gtk_widget_queue_draw (widget);
-
+#endif
 }
 
 static void
@@ -77,7 +77,7 @@ applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
         GdkPixbuf *pixbuf;
         GdkPixmap *pm;
         GtkStyle *new_style;
-     
+#ifdef FIXME    
         if (!pixmap || strcmp (pixmap, "") == 0) {
                 new_style = gtk_style_copy (widget->style);
                 gtk_style_ref (new_style);
@@ -95,14 +95,14 @@ applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
                 return;
         
         pixbuf = gdk_pixbuf_new_from_file (pixmap, NULL);
-        //imlib_image = gdk_imlib_load_image (pixmap);
+        /*imlib_image = gdk_imlib_load_image (pixmap);*/
         if (!pixbuf)
                 return;
         
         /*gdk_imlib_render (imlib_image, 
                           imlib_image->rgb_width,
                           imlib_image->rgb_height);*/
-        //pm = gdk_imlib_move_image (imlib_image);
+        /*pm = gdk_imlib_move_image (imlib_image);*/
         gdk_pixbuf_render_pixmap_and_mask (pixbuf,&pm,NULL,0);
         new_style = gtk_style_copy (widget->style);
         gtk_style_ref (new_style);
@@ -114,7 +114,7 @@ applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
         gtk_widget_set_style (widget, new_style);
         gtk_style_unref (new_style);
         gdk_pixbuf_unref (pixbuf);
-
+#endif
 }
 
 static void
@@ -129,7 +129,7 @@ applet_back_change (PanelApplet *a,
                 applet_set_back_pixmap (applet->fixed, pixmap);
 		break;
         case PANEL_COLOR_BACKGROUND:
-                applet_set_back_color(applet->fixed, color);
+                applet_set_back_color(applet->hbox, color);
 		break;
 	default:
                 applet_set_default_back (applet->fixed, applet->hbox);
@@ -137,7 +137,7 @@ applet_back_change (PanelApplet *a,
 	}
 	return;
 }
-#endif
+
 
 /* TODO - Optimize this a bit */
 static void 
@@ -404,10 +404,10 @@ geyes_applet_new (void)
 	
 	gtk_widget_show_all (eyes_applet.applet);
 
-	g_signal_connect (G_OBJECT (eyes_applet.applet),
-			    "destroy_event",
-			    G_CALLBACK (delete_cb),
-			    NULL);
+	g_signal_connect (G_OBJECT (eyes_applet.applet), "change_background",
+			  G_CALLBACK (applet_back_change), &eyes_applet);
+	g_signal_connect (G_OBJECT (eyes_applet.applet), "destroy_event",
+			  G_CALLBACK (delete_cb), NULL);
 	  
 	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (eyes_applet.applet)));
 	
