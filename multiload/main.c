@@ -86,7 +86,7 @@ about_cb (BonoboUIComponent *uic,
 	 pixbuf);
 
     if (pixbuf) 
-   	gdk_pixbuf_unref (pixbuf);
+   	g_object_unref (pixbuf);
   
     gtk_window_set_screen (GTK_WINDOW (about),
    			   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));

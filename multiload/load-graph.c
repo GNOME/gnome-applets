@@ -41,10 +41,11 @@ load_graph_draw (LoadGraph *g)
     {
 		GdkColormap *colormap;
 
-		colormap = gdk_window_get_colormap (g->disp->window);
+		colormap = gdk_drawable_get_colormap (g->disp->window);
 		
 		for (i = 0; i < g->n; i++)
-	 	   gdk_color_alloc (colormap, &(g->colors [i]));
+	 	   gdk_colormap_alloc_color (colormap, &(g->colors [i]),
+					     FALSE, TRUE);
 
 		g->colors_allocated = 1;
     }
@@ -72,13 +73,13 @@ load_graph_draw (LoadGraph *g)
 		}
     }
 	
-    gdk_draw_pixmap (g->disp->window,
-		     g->disp->style->fg_gc [GTK_WIDGET_STATE(g->disp)],
-		     g->pixmap,
-		     0, 0,
-		     0, 0,
-		     g->draw_width,
-		     g->draw_height);
+    gdk_draw_drawable (g->disp->window,
+		       g->disp->style->fg_gc [GTK_WIDGET_STATE(g->disp)],
+		       g->pixmap,
+		       0, 0,
+		       0, 0,
+		       g->draw_width,
+		       g->draw_height);
 	
     for (i = 0; i < g->draw_width; i++)
 		memcpy (g->odata [i], g->data [i], g->data_size);
@@ -132,7 +133,7 @@ load_graph_unalloc (LoadGraph *g)
     g->size = MAX (g->size, 10);
 
     if (g->pixmap) {
-		gdk_pixmap_unref (g->pixmap);
+		g_object_unref (g->pixmap);
 		g->pixmap = NULL;
     }
 
@@ -187,13 +188,13 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 			TRUE, 0,0,
 			c->draw_width,
 			c->draw_height);
-    gdk_draw_pixmap (widget->window,
-		     c->disp->style->fg_gc [GTK_WIDGET_STATE(widget)],
-		     c->pixmap,
-		     0, 0,
-		     0, 0,
-		     c->draw_width,
-		     c->draw_height);
+    gdk_draw_drawable (widget->window,
+		       c->disp->style->fg_gc [GTK_WIDGET_STATE(widget)],
+		       c->pixmap,
+		       0, 0,
+		       0, 0,
+		       c->draw_width,
+		       c->draw_height);
 
     return TRUE;
 }
@@ -204,12 +205,12 @@ load_graph_expose (GtkWidget *widget, GdkEventExpose *event,
 {
     LoadGraph *g = (LoadGraph *) data_ptr;
 
-    gdk_draw_pixmap (widget->window,
-		     widget->style->fg_gc [GTK_WIDGET_STATE(widget)],
-		     g->pixmap,
-		     event->area.x, event->area.y,
-		     event->area.x, event->area.y,
-		     event->area.width, event->area.height);
+    gdk_draw_drawable (widget->window,
+		       widget->style->fg_gc [GTK_WIDGET_STATE(widget)],
+		       g->pixmap,
+		       event->area.x, event->area.y,
+		       event->area.x, event->area.y,
+		       event->area.width, event->area.height);
 
     return FALSE;
 }
