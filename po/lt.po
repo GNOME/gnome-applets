@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-13 01:11+0200\n"
-"PO-Revision-Date: 2005-01-13 01:13+0200\n"
+"POT-Creation-Date: 2005-01-20 18:36+0200\n"
+"PO-Revision-Date: 2005-01-20 18:37+0200\n"
 "Last-Translator: Žygimantas Beručka <uid0@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,8 @@ msgstr ""
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 multiload/GNOME_MultiloadApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemLights.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
@@ -38,7 +39,8 @@ msgstr "_Apie"
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 multiload/GNOME_MultiloadApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemLights.xml.h:4
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
@@ -53,7 +55,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX būklės įtaiso gamykla"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1335
+#: accessx-status/applet.c:1352
 msgid "Keyboard Accessibility Status"
 msgstr "Klaviatūros prieinamumo būklė"
 
@@ -65,9 +67,11 @@ msgstr "Klaviatūros prieinamumo būklės įtaiso gamykla"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Rodo klaviatūros pagalbinių ypatybių būklę"
 
+#. "documenters",        documenters,
 #: accessx-status/applet.c:136 charpick/charpick.c:607
-#: drivemount/drivemount.c:132 geyes/geyes.c:200
-#: gswitchit/gswitchit-applet.c:591 trashapplet/src/trashapplet.c:681
+#: drivemount/drivemount.c:132 geyes/geyes.c:192
+#: gswitchit/gswitchit-applet.c:592 modemlights/modem-applet.c:995
+#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "Paskutinis vertėjas:\n"
@@ -77,8 +81,8 @@ msgstr ""
 "Vaidotas Zemlys <mpiktas@delfi.lt>\n"
 "Gediminas Paulauskas <menesis@delfi.lt>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:995
-#: accessx-status/applet.c:1135 accessx-status/applet.c:1338
+#: accessx-status/applet.c:157 accessx-status/applet.c:998
+#: accessx-status/applet.c:1138 accessx-status/applet.c:1355
 msgid "AccessX Status"
 msgstr "AccessX būklė"
 
@@ -105,29 +109,29 @@ msgstr "Įvyko klaida paleidžiant klaviatūros įtaisą: %s"
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:996 accessx-status/applet.c:1136
+#: accessx-status/applet.c:999 accessx-status/applet.c:1139
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Rodo klaviatūros buklę kai naudojamos prieinamumo funkcijos."
 
-#: accessx-status/applet.c:1030
+#: accessx-status/applet.c:1033
 msgid "XKB Extension is not enabled"
 msgstr "XKB plėtinys neįjungtas"
 
-#: accessx-status/applet.c:1035
+#: accessx-status/applet.c:1038
 msgid "Unknown error"
 msgstr "Nežinoma klaida"
 
-#: accessx-status/applet.c:1043
+#: accessx-status/applet.c:1046
 #, c-format
 msgid "Error: %s"
 msgstr "Klaida: %s"
 
-#: accessx-status/applet.c:1340
+#: accessx-status/applet.c:1357
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Rodo dabartinę klaviatūros pagalbinių savybių būseną"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:836 battstat/battstat_applet.c:1262
+#: battstat/battstat_applet.c:966 battstat/battstat_applet.c:1461
 msgid "Battery Charge Monitor"
 msgstr "Baterijos pakrovimo stebėtuvas"
 
@@ -136,7 +140,7 @@ msgid "Battstat Factory"
 msgstr "Battstat gamykla"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1263
+#: battstat/battstat_applet.c:1462
 msgid "Monitor a laptop's remaining power"
 msgstr "Stebėti likusią nešiojamojo kompiuterio energiją"
 
@@ -230,30 +234,30 @@ msgstr "Baterijos lygis žemiau kurio baterija yra geltonos spalvos."
 msgid "Yellow value level"
 msgstr "Geltonos reikšmės lygis"
 
-#: battstat/battstat_applet.c:59
+#: battstat/battstat_applet.c:63
 msgid "System is running on AC power"
 msgstr "Sistema naudoja kintamą srovę"
 
-#: battstat/battstat_applet.c:60
+#: battstat/battstat_applet.c:64
 msgid "System is running on battery power"
 msgstr "Sistema naudoja baterijos energiją"
 
-#: battstat/battstat_applet.c:291
+#: battstat/battstat_applet.c:358
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterija įkrauta (%d%%)"
 
-#: battstat/battstat_applet.c:293
+#: battstat/battstat_applet.c:360
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Nežinoma kiek liko laiko (%d%%)"
 
-#: battstat/battstat_applet.c:295
+#: battstat/battstat_applet.c:362
 #, c-format
 msgid "Unknown time (%d%%) until charged"
 msgstr "Nežinoma kiek liko laiko iki įkrovimo (%d%%)"
 
-#: battstat/battstat_applet.c:300
+#: battstat/battstat_applet.c:367
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -261,7 +265,7 @@ msgstr[0] "liko %d minutė (%d%%)"
 msgstr[1] "liko %d minutės (%d%%)"
 msgstr[2] "liko %d minučių (%d%%)"
 
-#: battstat/battstat_applet.c:305
+#: battstat/battstat_applet.c:372
 #, c-format
 msgid "%d minute until charged (%d%%)"
 msgid_plural "%d minutes until charged (%d%%)"
@@ -269,7 +273,7 @@ msgstr[0] "%d minutė iki įkrovimo (%d%%)"
 msgstr[1] "%d minutės iki įkrovimo (%d%%)"
 msgstr[2] "%d minučių iki įkrovimo (%d%%)"
 
-#: battstat/battstat_applet.c:311
+#: battstat/battstat_applet.c:378
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -277,29 +281,29 @@ msgstr[0] "liko %d valanda (%d%%)"
 msgstr[1] "liko %d valandos (%d%%)"
 msgstr[2] "liko %d valandų (%d%%)"
 
-#: battstat/battstat_applet.c:316
+#: battstat/battstat_applet.c:383
 #, c-format
-msgid "%d hour (%d%%) until charged (%d%%)"
-msgid_plural "%d hours (%d%%) until charged (%d%%)"
-msgstr[0] "%d valanda (%d%%) iki įkrovimo (%d%%)"
-msgstr[1] "%d valandos (%d%%) iki įkrovimo (%d%%)"
-msgstr[2] "%d valandų (%d%%) iki įkrovimo"
+msgid "%d hour until charged (%d%%)"
+msgid_plural "%d hours until charged (%d%%)"
+msgstr[0] "%d valanda iki įkrovimo (%d%%)"
+msgstr[1] "%d valandos iki įkrovimo (%d%%)"
+msgstr[2] "%d valandų iki įkrovimo"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:323
+#: battstat/battstat_applet.c:390
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "liko %d %s %d %s (%d%%)"
 
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:331
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:398
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "valanda"
 msgstr[1] "valandos"
 msgstr[2] "valandų"
 
-#: battstat/battstat_applet.c:325 battstat/battstat_applet.c:332
+#: battstat/battstat_applet.c:392 battstat/battstat_applet.c:399
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minutė"
@@ -308,42 +312,42 @@ msgstr[2] "minučių"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:330
+#: battstat/battstat_applet.c:397
 #, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "%d %s %d %s iki įkrovimo (%d%%)"
 
-#: battstat/battstat_applet.c:351 battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:413 battstat/battstat_applet.c:477
 msgid "Battery Notice"
 msgstr "Baterijos perspėjimas"
 
-#: battstat/battstat_applet.c:375
+#: battstat/battstat_applet.c:437
 msgid "Your battery is now fully recharged"
 msgstr "Baterija dabar yra pilnai įkrauta"
 
-#: battstat/battstat_applet.c:395
+#: battstat/battstat_applet.c:472
 msgid "Your battery is running low"
 msgstr "Jūsų baterija išsikrauna"
 
-#: battstat/battstat_applet.c:397
+#: battstat/battstat_applet.c:474
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
 msgstr ""
 "Tam, kad neprarastumėte darbo prašom išjungti, sulaikyti arba įjungti Jūsų "
 "nešiojamą kompiuterį maitinimo lizdą."
 
-#: battstat/battstat_applet.c:458
+#: battstat/battstat_applet.c:541
 msgid "No battery present"
 msgstr "Baterijos nėra"
 
-#: battstat/battstat_applet.c:461
+#: battstat/battstat_applet.c:544
 msgid "Battery status unknown"
 msgstr "Baterijos būsena nežinoma"
 
-#: battstat/battstat_applet.c:582
+#: battstat/battstat_applet.c:693
 msgid "N/A"
 msgstr "N/A"
 
-#: battstat/battstat_applet.c:793
+#: battstat/battstat_applet.c:921
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -352,16 +356,16 @@ msgstr ""
 "Beleidžiant sulaikymo komandą įvyko klaida: %s\n"
 "Pabandykite ištaisyti šią klaidą"
 
-#: battstat/battstat_applet.c:797
+#: battstat/battstat_applet.c:925
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Sulaikymo komanda '%s' buvo nesėkminga."
 
-#: battstat/battstat_applet.c:799
+#: battstat/battstat_applet.c:927
 msgid "The Suspend command was unsuccessful."
 msgstr "Sulaikymo komanda buvo nesėkminga."
 
-#: battstat/battstat_applet.c:807
+#: battstat/battstat_applet.c:935
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -371,19 +375,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:821
+#: battstat/battstat_applet.c:951
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:841
+#: battstat/battstat_applet.c:971
 msgid "This utility shows the status of your laptop battery."
 msgstr ""
 "Ši pagalbinė programa parodo jūsų nešiojamo kompiuterio baterijos būseną."
 
-#: battstat/battstat_applet.c:845 charpick/charpick.c:619
+#: battstat/battstat_applet.c:975 charpick/charpick.c:619
 #: cpufreq/src/cpufreq-applet.c:222 gtik/gtik.c:738
-#: gweather/gweather-about.c:56 mini-commander/src/about.c:54
-#: mixer/applet.c:1019 multiload/main.c:66
+#: gweather/gweather-about.c:53 mini-commander/src/about.c:54
+#: mixer/applet.c:1034 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
 msgid "translator-credits"
 msgstr ""
@@ -449,7 +453,7 @@ msgstr "_Rodyti likusį laiką/procentus:"
 msgid "_Warn when battery charge is low"
 msgstr "_Pranešti, kai baterija yra beveik išsikrovusi"
 
-#: battstat/properties.c:258 drivemount/drivemount.c:156
+#: battstat/properties.c:262 drivemount/drivemount.c:156
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
@@ -731,10 +735,11 @@ msgstr ""
 "gali būti neteisingai sukonfigūruotas arba neturi galimybės keisti dažnį."
 
 #: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
-#: gweather/weather.c:277 gweather/weather.c:1096 gweather/weather.c:1110
-#: gweather/weather.c:1122 gweather/weather.c:1137 gweather/weather.c:1153
-#: gweather/weather.c:1184 gweather/weather.c:1196 gweather/weather.c:1215
-#: gweather/weather.c:1243 gweather/weather.c:1256 gweather/weather.c:1276
+#: gweather/weather.c:278 gweather/weather.c:1028 gweather/weather.c:1097
+#: gweather/weather.c:1111 gweather/weather.c:1123 gweather/weather.c:1138
+#: gweather/weather.c:1154 gweather/weather.c:1185 gweather/weather.c:1197
+#: gweather/weather.c:1216 gweather/weather.c:1244 gweather/weather.c:1257
+#: gweather/weather.c:1277
 msgid "Unknown"
 msgstr "Nežinomas"
 
@@ -843,8 +848,8 @@ msgstr "Laiko tarpas sekundėmis tarp būklės atnaujinimų"
 msgid "A set of eyeballs for your panel"
 msgstr "Keletas akių Jūsų skydeliui"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:220
-#: geyes/geyes.c:458 geyes/geyes.c:460
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:212
+#: geyes/geyes.c:450 geyes/geyes.c:452
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -852,15 +857,15 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes įtaiso gamykla"
 
-#: geyes/geyes.c:221
+#: geyes/geyes.c:213
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:222
+#: geyes/geyes.c:214
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Persekiojančios akys GNOME skydelyje. xeyes klonas."
 
-#: geyes/geyes.c:461
+#: geyes/geyes.c:453
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Akys žiūri pelės žymeklio kryptimis"
 
@@ -1525,7 +1530,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME klaviatūros išdėstymo indikatorius"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:596
+#: gswitchit/gswitchit-applet.c:597
 msgid "Keyboard Indicator"
 msgstr "Klaviatūros indikatorius"
 
@@ -1538,19 +1543,19 @@ msgstr "Klaviatūros įtaiso gamykla"
 msgid "Keyboard Indicator (%s)"
 msgstr "Klaviatūros indikatorius (%s)"
 
-#: gswitchit/gswitchit-applet.c:599
+#: gswitchit/gswitchit-applet.c:600
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Autorinės teisės (c) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:601
+#: gswitchit/gswitchit-applet.c:602
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Klaviatūros išdėstymo indikatoriaus įtaisas skirtas GNOME"
 
-#: gswitchit/gswitchit-applet.c:764
+#: gswitchit/gswitchit-applet.c:762
 msgid "XKB initialization error"
 msgstr "XKB inicializacijos klaida"
 
-#: gswitchit/gswitchit-applet.c:773
+#: gswitchit/gswitchit-applet.c:771
 msgid "Error loading XKB configuration registry"
 msgstr "Klaida įkeliant XKB konfigūracijos registrą"
 
@@ -1676,7 +1681,7 @@ msgid "Stock Ticker"
 msgstr "Akcijų kurso pranešėjas"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:190
 msgid "_Update"
 msgstr "_Atnaujinti"
 
@@ -1688,7 +1693,7 @@ msgstr "Nepavyko gauti akcijų duomenų."
 msgid "No stock list"
 msgstr "Nėra akcijų sąrašo"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:509
+#: gtik/gtik.c:313 gweather/gweather-applet.c:507
 msgid "Updating..."
 msgstr "Atnaujinu..."
 
@@ -1731,7 +1736,7 @@ msgstr "Simboliai"
 msgid "Behavior"
 msgstr "Elgesys"
 
-#: gtik/gtik.c:1401 gweather/gweather-pref.c:1007
+#: gtik/gtik.c:1401 gweather/gweather-pref.c:1005
 msgid "Update"
 msgstr "Atnaujinti"
 
@@ -1739,7 +1744,7 @@ msgstr "Atnaujinti"
 msgid "Stock update fre_quency:"
 msgstr "Akcijų atnaujinimo _dažnis:"
 
-#: gtik/gtik.c:1417 gweather/gweather-pref.c:1031
+#: gtik/gtik.c:1417 gweather/gweather-pref.c:1029
 msgid "minutes"
 msgstr "minutę(čių)"
 
@@ -1775,7 +1780,7 @@ msgstr "Slinkti iš _kairės į dešinę"
 msgid "Appearance"
 msgstr "Išvaizda"
 
-#: gtik/gtik.c:1488 gweather/gweather-pref.c:1047
+#: gtik/gtik.c:1488 gweather/gweather-pref.c:1045
 msgid "Display"
 msgstr "Rodymas"
 
@@ -2005,149 +2010,149 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Stebėkite esamas oro sąlygas ir prognozes"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
-#: gweather/gweather-about.c:49
+#: gweather/gweather-about.c:46
 msgid "Weather Report"
 msgstr "Orų prognozė"
 
-#: gweather/gweather-about.c:51
+#: gweather/gweather-about.c:48
 msgid "© 1999-2005 by S. Papadimitriou and others"
 msgstr "© 1999-2005 S. Papadimitriou ir kiti"
 
-#: gweather/gweather-about.c:52
+#: gweather/gweather-about.c:49
 msgid "A panel application for monitoring local weather conditions."
 msgstr "Skydelio įtaisas skirtas stebėti vietinėms oro sąlygoms."
 
-#: gweather/gweather-applet.c:373 gweather/gweather-applet.c:377
+#: gweather/gweather-applet.c:371 gweather/gweather-applet.c:375
 msgid "GNOME Weather"
 msgstr "GNOME oras"
 
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:188
 msgid "Details"
 msgstr "Detalės"
 
-#: gweather/gweather-dialog.c:197
+#: gweather/gweather-dialog.c:229
 msgid "City:"
 msgstr "Miestas:"
 
-#: gweather/gweather-dialog.c:205
+#: gweather/gweather-dialog.c:237
 msgid "Last update:"
 msgstr "Paskutinis atnaujinimas:"
 
-#: gweather/gweather-dialog.c:213
+#: gweather/gweather-dialog.c:245
 msgid "Conditions:"
 msgstr "Sąlygos:"
 
-#: gweather/gweather-dialog.c:221
+#: gweather/gweather-dialog.c:253
 msgid "Sky:"
 msgstr "Dangus:"
 
-#: gweather/gweather-dialog.c:229
+#: gweather/gweather-dialog.c:261
 msgid "Temperature:"
 msgstr "Temperatūra:"
 
-#: gweather/gweather-dialog.c:237
+#: gweather/gweather-dialog.c:269
 msgid "Feels like:"
 msgstr "Panašu į:"
 
-#: gweather/gweather-dialog.c:245
+#: gweather/gweather-dialog.c:277
 msgid "Dew point:"
 msgstr "Rasos taškas:"
 
-#: gweather/gweather-dialog.c:253
+#: gweather/gweather-dialog.c:285
 msgid "Relative humidity:"
 msgstr "Santykinis drėgnumas:"
 
-#: gweather/gweather-dialog.c:261
+#: gweather/gweather-dialog.c:293
 msgid "Wind:"
 msgstr "Vėjas:"
 
-#: gweather/gweather-dialog.c:269
+#: gweather/gweather-dialog.c:301
 msgid "Pressure:"
 msgstr "Slėgis:"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:309
 msgid "Visibility:"
 msgstr "Matomumas:"
 
-#: gweather/gweather-dialog.c:285
+#: gweather/gweather-dialog.c:317
 msgid "Sunrise:"
 msgstr "Saulėtekis:"
 
-#: gweather/gweather-dialog.c:293
+#: gweather/gweather-dialog.c:325
 msgid "Sunset:"
 msgstr "Saulėlydis:"
 
-#: gweather/gweather-dialog.c:428
+#: gweather/gweather-dialog.c:460
 msgid "Current Conditions"
 msgstr "Esamos sąlygos"
 
-#: gweather/gweather-dialog.c:445
+#: gweather/gweather-dialog.c:477
 msgid "Forecast Report"
 msgstr "Prognozės ataskaita"
 
-#: gweather/gweather-dialog.c:445
+#: gweather/gweather-dialog.c:477
 msgid "See the ForeCast Details"
 msgstr "Žiūrėti išsamesnę prognozę"
 
-#: gweather/gweather-dialog.c:455
+#: gweather/gweather-dialog.c:487
 msgid "Forecast"
 msgstr "Prognozė"
 
-#: gweather/gweather-dialog.c:463
+#: gweather/gweather-dialog.c:495
 msgid "Radar Map"
 msgstr "Radarinis žemėlapis"
 
-#: gweather/gweather-dialog.c:494
+#: gweather/gweather-dialog.c:526
 msgid "_Visit Weather.com"
 msgstr "_Aplankykite Weather.com"
 
-#: gweather/gweather-dialog.c:495
+#: gweather/gweather-dialog.c:527
 msgid "Visit Weather.com"
 msgstr "Aplankykite Weather.com"
 
-#: gweather/gweather-dialog.c:495
+#: gweather/gweather-dialog.c:527
 msgid "Click to Enter Weather.com"
 msgstr "Spauskite, jei norite aplankyti Weather.com"
 
-#: gweather/gweather-dialog.c:589
+#: gweather/gweather-dialog.c:645
 msgid "Forecast not currently available for this location."
 msgstr "Šiuo metu prognozė šiai vietovei yra neprieinama."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Location view"
 msgstr "Vietovės vaizdas"
 
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Select Location from the list"
 msgstr "Pasirinkit vietovę iš sąrašo"
 
-#: gweather/gweather-pref.c:192
+#: gweather/gweather-pref.c:193
 msgid "Update spin button"
 msgstr "Atnaujinimo mygtukas"
 
-#: gweather/gweather-pref.c:192
+#: gweather/gweather-pref.c:193
 msgid "Spinbutton for updating"
 msgstr "Mygtukas atnaujinimui"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Address Entry"
 msgstr "Adreso įvesties elementas"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Enter the URL"
 msgstr "Įveskite URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:404 gweather/gweather-pref.c:413
+#: gweather/gweather-pref.c:403 gweather/gweather-pref.c:412
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:439 gweather/gweather-pref.c:449
+#: gweather/gweather-pref.c:438 gweather/gweather-pref.c:448
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
@@ -2155,153 +2160,153 @@ msgstr "m/s"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:477 gweather/gweather-pref.c:488
+#: gweather/gweather-pref.c:476 gweather/gweather-pref.c:487
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:514 gweather/gweather-pref.c:523
+#: gweather/gweather-pref.c:513 gweather/gweather-pref.c:522
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:801
+#: gweather/gweather-pref.c:799
 msgid "Weather Preferences"
 msgstr "Oro nustatymai"
 
-#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1011
+#: gweather/gweather-pref.c:832 gweather/gweather-pref.c:1009
 msgid "_Automatically update every:"
 msgstr "_Automatiškai atnaujinti kas:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:843
+#: gweather/gweather-pref.c:841
 msgid "_Temperature unit:"
 msgstr "_Temperatūros vienetas:"
 
-#: gweather/gweather-pref.c:852 gweather/gweather-pref.c:872
-#: gweather/gweather-pref.c:896 gweather/gweather-pref.c:922
+#: gweather/gweather-pref.c:850 gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:894 gweather/gweather-pref.c:920
 msgid "Default"
 msgstr "Įprasti"
 
-#: gweather/gweather-pref.c:853
+#: gweather/gweather-pref.c:851
 msgid "Kelvin"
 msgstr "Kelvino"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:855
+#: gweather/gweather-pref.c:853
 msgid "Celsius"
 msgstr "Celsijaus"
 
-#: gweather/gweather-pref.c:856
+#: gweather/gweather-pref.c:854
 msgid "Fahrenheit"
 msgstr "Farenheito"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:863
+#: gweather/gweather-pref.c:861
 msgid "_Wind speed unit:"
 msgstr "_Vėjo greičio vieneta:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:872
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:876
+#: gweather/gweather-pref.c:874
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:876
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:880
+#: gweather/gweather-pref.c:878
 msgid "knots"
 msgstr "mazgai"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:887
+#: gweather/gweather-pref.c:885
 msgid "_Pressure unit:"
 msgstr "_Slėgio vienetas:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:896
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:900
+#: gweather/gweather-pref.c:898
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:902
+#: gweather/gweather-pref.c:900
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:904
+#: gweather/gweather-pref.c:902
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:906
+#: gweather/gweather-pref.c:904
 msgid "inHg"
 msgstr "colHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:913
+#: gweather/gweather-pref.c:911
 msgid "_Visibility unit:"
 msgstr "_Matomumo vienetas:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:924
+#: gweather/gweather-pref.c:922
 msgid "meters"
 msgstr "metrai"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:924
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:928
+#: gweather/gweather-pref.c:926
 msgid "miles"
 msgstr "mylios"
 
-#: gweather/gweather-pref.c:962
+#: gweather/gweather-pref.c:960
 msgid "Enable _radar map"
 msgstr "Įjungti _radarinius žemėlapius"
 
-#: gweather/gweather-pref.c:976
+#: gweather/gweather-pref.c:974
 msgid "Use _custom address for radar map"
 msgstr "Naudoti nau_dotojo parinktą adresą radaro žemėlapiui"
 
-#: gweather/gweather-pref.c:993
+#: gweather/gweather-pref.c:991
 msgid "A_ddress:"
 msgstr "A_dresas:"
 
-#: gweather/gweather-pref.c:1062 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1060 mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Pagrindinės"
 
-#: gweather/gweather-pref.c:1075
+#: gweather/gweather-pref.c:1073
 msgid "_Select a location:"
 msgstr "_Pasirinkite vietovę:"
 
-#: gweather/gweather-pref.c:1105
+#: gweather/gweather-pref.c:1103
 msgid "Location"
 msgstr "Vietovė"
 
-#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
-#: gweather/weather-metar.c:556
+#: gweather/weather-iwin.c:242 gweather/weather-metar.c:526
+#: gweather/weather-metar.c:554
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo trūksta vietos"
 
-#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
-#: gweather/weather-wx.c:53
+#: gweather/weather-metar.c:495 gweather/weather-metar.c:534
+#: gweather/weather-wx.c:52
 msgid "Failed to get METAR data.\n"
 msgstr "Nepavyko gauti METAR duomenų.\n"
 
@@ -2309,8 +2314,8 @@ msgstr "Nepavyko gauti METAR duomenų.\n"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:167
-#: gweather/weather.c:172
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:168
+#: gweather/weather.c:173
 msgid "DEFAULT_CODE"
 msgstr "EYVI"
 
@@ -2322,8 +2327,8 @@ msgstr ""
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:146
-#: gweather/weather.c:151 gweather/weather.c:152
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:147
+#: gweather/weather.c:152 gweather/weather.c:153
 msgid "DEFAULT_LOCATION"
 msgstr "Vilnius"
 
@@ -2331,8 +2336,8 @@ msgstr "Vilnius"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:199
-#: gweather/weather.c:204
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:200
+#: gweather/weather.c:205
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -2340,8 +2345,8 @@ msgstr "---"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:5 gweather/weather.c:183
-#: gweather/weather.c:188
+#: gweather/gweather.schemas.in.h:5 gweather/weather.c:184
+#: gweather/weather.c:189
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
@@ -2449,99 +2454,99 @@ msgstr "vietovės koordinatės"
 msgid "weather location information."
 msgstr "vietovės oro sąlygų informacija."
 
-#: gweather/weather.c:159
+#: gweather/weather.c:160
 msgid "Pittsburgh"
 msgstr "Pitsburgas"
 
-#: gweather/weather.c:267
+#: gweather/weather.c:268
 msgid "Variable"
 msgstr "Nepastovus"
 
-#: gweather/weather.c:268
+#: gweather/weather.c:269
 msgid "North"
 msgstr "Šiaurės"
 
-#: gweather/weather.c:268
+#: gweather/weather.c:269
 msgid "North - NorthEast"
 msgstr "Šiaurės - Šiaurės Rytų"
 
-#: gweather/weather.c:268
+#: gweather/weather.c:269
 msgid "Northeast"
 msgstr "Šiaurės Rytų"
 
-#: gweather/weather.c:268
+#: gweather/weather.c:269
 msgid "East - NorthEast"
 msgstr "Rytų - Šiaurės Rytų"
 
-#: gweather/weather.c:269
+#: gweather/weather.c:270
 msgid "East"
 msgstr "Rytų"
 
-#: gweather/weather.c:269
+#: gweather/weather.c:270
 msgid "East - Southeast"
 msgstr "Rytų - Pietryčių"
 
-#: gweather/weather.c:269
+#: gweather/weather.c:270
 msgid "Southeast"
 msgstr "Pietryčių"
 
-#: gweather/weather.c:269
+#: gweather/weather.c:270
 msgid "South - Southeast"
 msgstr "Pietų - Pietryčių"
 
-#: gweather/weather.c:270
+#: gweather/weather.c:271
 msgid "South"
 msgstr "Pietų"
 
-#: gweather/weather.c:270
+#: gweather/weather.c:271
 msgid "South - Southwest"
 msgstr "Pietų - Pietvakarių"
 
-#: gweather/weather.c:270
+#: gweather/weather.c:271
 msgid "Southwest"
 msgstr "Pietvakarių"
 
-#: gweather/weather.c:270
+#: gweather/weather.c:271
 msgid "West - Southwest"
 msgstr "Vakarų - Pietvakarių"
 
-#: gweather/weather.c:271
+#: gweather/weather.c:272
 msgid "West"
 msgstr "Vakarų"
 
-#: gweather/weather.c:271
+#: gweather/weather.c:272
 msgid "West - Northwest"
 msgstr "Vakarų - Šiaurės Vakarų"
 
-#: gweather/weather.c:271
+#: gweather/weather.c:272
 msgid "Northwest"
 msgstr "Šiaurės Vakarų"
 
-#: gweather/weather.c:271
+#: gweather/weather.c:272
 msgid "North - Northwest"
 msgstr "Šiaurės - Šiaurės Vakarų"
 
-#: gweather/weather.c:279 gweather/weather.c:296 gweather/weather.c:367
+#: gweather/weather.c:280 gweather/weather.c:297 gweather/weather.c:368
 msgid "Invalid"
 msgstr "Klaidingas"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Clear Sky"
 msgstr "Giedras dangus"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Broken clouds"
 msgstr "Su pragiedruliais"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:288
 msgid "Scattered clouds"
 msgstr "Išsisklaidę debesys"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Few clouds"
 msgstr "Mažai debesuotas"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Overcast"
 msgstr "Debesuotas"
 
@@ -2549,437 +2554,437 @@ msgstr "Debesuotas"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:328 gweather/weather.c:330
+#: gweather/weather.c:329 gweather/weather.c:331
 msgid "Thunderstorm"
 msgstr "Perkūnija"
 
 #. DRIZZLE
-#: gweather/weather.c:329
+#: gweather/weather.c:330
 msgid "Drizzle"
 msgstr "Dulksna"
 
-#: gweather/weather.c:329
+#: gweather/weather.c:330
 msgid "Light drizzle"
 msgstr "Lengva dulksna"
 
-#: gweather/weather.c:329
+#: gweather/weather.c:330
 msgid "Moderate drizzle"
 msgstr "Vidutiniška dulksna"
 
-#: gweather/weather.c:329
+#: gweather/weather.c:330
 msgid "Heavy drizzle"
 msgstr "Stipri dulksna"
 
-#: gweather/weather.c:329
+#: gweather/weather.c:330
 msgid "Freezing drizzle"
 msgstr "Šalanti dulksna"
 
 #. RAIN
-#: gweather/weather.c:330
+#: gweather/weather.c:331
 msgid "Rain"
 msgstr "Lietus"
 
-#: gweather/weather.c:330
+#: gweather/weather.c:331
 msgid "Light rain"
 msgstr "Silpnas lietus"
 
-#: gweather/weather.c:330
+#: gweather/weather.c:331
 msgid "Moderate rain"
 msgstr "Vidutinis lietus"
 
-#: gweather/weather.c:330
+#: gweather/weather.c:331
 msgid "Heavy rain"
 msgstr "Stiprus lietus"
 
-#: gweather/weather.c:330
+#: gweather/weather.c:331
 msgid "Rain showers"
 msgstr "Labai stiprus lietus"
 
-#: gweather/weather.c:330
+#: gweather/weather.c:331
 msgid "Freezing rain"
 msgstr "Šalantis lietus"
 
 #. SNOW
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Snow"
 msgstr "Sniegas"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Light snow"
 msgstr "Silpnai sninga"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Moderate snow"
 msgstr "Sninga"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Heavy snow"
 msgstr "Stipriai sninga"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Snowstorm"
 msgstr "Sniego audra"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Blowing snowfall"
 msgstr "Pūga"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Snow showers"
 msgstr "L. stipriai sninga"
 
-#: gweather/weather.c:331
+#: gweather/weather.c:332
 msgid "Drifting snow"
 msgstr "Pusto"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:332
+#: gweather/weather.c:333
 msgid "Snow grains"
 msgstr "Labai stipriai sninga"
 
-#: gweather/weather.c:332
+#: gweather/weather.c:333
 msgid "Light snow grains"
 msgstr "Silpnai sninga"
 
-#: gweather/weather.c:332
+#: gweather/weather.c:333
 msgid "Moderate snow grains"
 msgstr "Vidutiniškai sninga"
 
-#: gweather/weather.c:332
+#: gweather/weather.c:333
 msgid "Heavy snow grains"
 msgstr "Stipriai sninga"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:333
+#: gweather/weather.c:334
 msgid "Ice crystals"
 msgstr "Ledo kristalai"
 
 #. ICE_PELLETS
-#: gweather/weather.c:334
+#: gweather/weather.c:335
 msgid "Ice pellets"
 msgstr "Ledo gabalėliai"
 
-#: gweather/weather.c:334
+#: gweather/weather.c:335
 msgid "Few ice pellets"
 msgstr "Maži ledo gabalėliai"
 
-#: gweather/weather.c:334
+#: gweather/weather.c:335
 msgid "Moderate ice pellets"
 msgstr "Vidutiniai ledo gabalėliai"
 
-#: gweather/weather.c:334
+#: gweather/weather.c:335
 msgid "Heavy ice pellets"
 msgstr "Sunkūs ledo gabalėliai"
 
-#: gweather/weather.c:334
+#: gweather/weather.c:335
 msgid "Ice pellet storm"
 msgstr "Audra su ledais"
 
-#: gweather/weather.c:334
+#: gweather/weather.c:335
 msgid "Showers of ice pellets"
 msgstr "Liūtis su ledais"
 
 #. HAIL
-#: gweather/weather.c:335
+#: gweather/weather.c:336
 msgid "Hail"
 msgstr "Kruša"
 
-#: gweather/weather.c:335
+#: gweather/weather.c:336
 msgid "Hailstorm"
 msgstr "Krušos audra"
 
-#: gweather/weather.c:335
+#: gweather/weather.c:336
 msgid "Hail showers"
 msgstr "Krušos dušai"
 
 #. SMALL_HAIL
-#: gweather/weather.c:336
+#: gweather/weather.c:337
 msgid "Small hail"
 msgstr "Maža kruša"
 
-#: gweather/weather.c:336
+#: gweather/weather.c:337
 msgid "Small hailstorm"
 msgstr "Nedidelė kruša"
 
-#: gweather/weather.c:336
+#: gweather/weather.c:337
 msgid "Showers of small hail"
 msgstr "Stipri kruša"
 
 #. PRECIPITATION
-#: gweather/weather.c:337
+#: gweather/weather.c:338
 msgid "Unknown precipitation"
 msgstr "Nežinomi krituliai"
 
 #. MIST
-#: gweather/weather.c:338
+#: gweather/weather.c:339
 msgid "Mist"
 msgstr "Migla"
 
 #. FOG
-#: gweather/weather.c:339
+#: gweather/weather.c:340
 msgid "Fog"
 msgstr "Rūkas"
 
-#: gweather/weather.c:339
+#: gweather/weather.c:340
 msgid "Fog in the vicinity"
 msgstr "Rūkas kaimynystėje"
 
-#: gweather/weather.c:339
+#: gweather/weather.c:340
 msgid "Shallow fog"
 msgstr "Paviršinis rūkas"
 
-#: gweather/weather.c:339
+#: gweather/weather.c:340
 msgid "Patches of fog"
 msgstr "Rūkas lopais"
 
-#: gweather/weather.c:339
+#: gweather/weather.c:340
 msgid "Partial fog"
 msgstr "Dalinis rūkas"
 
-#: gweather/weather.c:339
+#: gweather/weather.c:340
 msgid "Freezing fog"
 msgstr "Šalantis rūkas"
 
 #. SMOKE
-#: gweather/weather.c:340
+#: gweather/weather.c:341
 msgid "Smoke"
 msgstr "Dūmai"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:341
+#: gweather/weather.c:342
 msgid "Volcanic ash"
 msgstr "Vulkaniniai pelenai"
 
 #. SAND
-#: gweather/weather.c:342
+#: gweather/weather.c:343
 msgid "Sand"
 msgstr "Smėlis"
 
-#: gweather/weather.c:342
+#: gweather/weather.c:343
 msgid "Blowing sand"
 msgstr "Pučiamas smėlis"
 
-#: gweather/weather.c:342
+#: gweather/weather.c:343
 msgid "Drifting sand"
 msgstr "Pustomas smėlis"
 
 #. HAZE
-#: gweather/weather.c:343
+#: gweather/weather.c:344
 msgid "Haze"
 msgstr "Migla"
 
 #. SPRAY
-#: gweather/weather.c:344
+#: gweather/weather.c:345
 msgid "Blowing sprays"
 msgstr "Pučiami purslai"
 
 #. DUST
-#: gweather/weather.c:345
+#: gweather/weather.c:346
 msgid "Dust"
 msgstr "Dulkės"
 
-#: gweather/weather.c:345
+#: gweather/weather.c:346
 msgid "Blowing dust"
 msgstr "Pučiamos dulkės"
 
-#: gweather/weather.c:345
+#: gweather/weather.c:346
 msgid "Drifting dust"
 msgstr "Pustomos dulkės"
 
 #. SQUALL
-#: gweather/weather.c:346
+#: gweather/weather.c:347
 msgid "Squall"
 msgstr "Škvalas"
 
 #. SANDSTORM
-#: gweather/weather.c:347
+#: gweather/weather.c:348
 msgid "Sandstorm"
 msgstr "Smėlio audra"
 
-#: gweather/weather.c:347
+#: gweather/weather.c:348
 msgid "Sandstorm in the vicinity"
 msgstr "Kaimynystėje smėlio audra"
 
-#: gweather/weather.c:347
+#: gweather/weather.c:348
 msgid "Heavy sandstorm"
 msgstr "Stipri smėlio audra"
 
 #. DUSTSTORM
-#: gweather/weather.c:348
+#: gweather/weather.c:349
 msgid "Duststorm"
 msgstr "Dulkių audra"
 
-#: gweather/weather.c:348
+#: gweather/weather.c:349
 msgid "Duststorm in the vicinity"
 msgstr "Kaimynystėje dulkių audra"
 
-#: gweather/weather.c:348
+#: gweather/weather.c:349
 msgid "Heavy duststorm"
 msgstr "Stipri dulkių audra"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:349
+#: gweather/weather.c:350
 msgid "Funnel cloud"
 msgstr "Lietingi debesys"
 
 #. TORNADO
-#: gweather/weather.c:350
+#: gweather/weather.c:351
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:351
+#: gweather/weather.c:352
 msgid "Dust whirls"
 msgstr "Dulkių sūkuriai"
 
-#: gweather/weather.c:351
+#: gweather/weather.c:352
 msgid "Dust whirls in the vicinity"
 msgstr "Kaimynystėje dulkių sūkuriai"
 
 #. TRANSLATOR: this is a format string for strftime
 #. *             see `man 3 strftime` for more details
 #.
-#: gweather/weather.c:999
+#: gweather/weather.c:1000
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1014
+#: gweather/weather.c:1015
 msgid "Unknown observation time"
 msgstr "Nežinomas stebėjimo laikas"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1046 gweather/weather.c:1049
+#: gweather/weather.c:1047 gweather/weather.c:1050
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f°F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1054 gweather/weather.c:1057
+#: gweather/weather.c:1055 gweather/weather.c:1058
 #, c-format
 msgid "%dF"
 msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1065 gweather/weather.c:1068
+#: gweather/weather.c:1066 gweather/weather.c:1069
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f°C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:1073 gweather/weather.c:1076
+#: gweather/weather.c:1074 gweather/weather.c:1077
 #, c-format
 msgid "%dC"
 msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:1085
+#: gweather/weather.c:1086
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:1088
+#: gweather/weather.c:1089
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:1140
+#: gweather/weather.c:1141
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:1165
+#: gweather/weather.c:1166
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f mazgų"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:1169
+#: gweather/weather.c:1170
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:1173
+#: gweather/weather.c:1174
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:1177
+#: gweather/weather.c:1178
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:1198
+#: gweather/weather.c:1199
 msgid "Calm"
 msgstr "Ramuma"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:1202
+#: gweather/weather.c:1203
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:1220
+#: gweather/weather.c:1221
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f colHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:1224
+#: gweather/weather.c:1225
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:1228
+#: gweather/weather.c:1229
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:1232
+#: gweather/weather.c:1233
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:1236
+#: gweather/weather.c:1237
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:1261
+#: gweather/weather.c:1262
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f mylios"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:1265
+#: gweather/weather.c:1266
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:1269
+#: gweather/weather.c:1270
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:1297 gweather/weather.c:1317
+#: gweather/weather.c:1298 gweather/weather.c:1318
 msgid "%H:%M"
 msgstr "%H:%H"
 
-#: gweather/weather.c:1350
+#: gweather/weather.c:1351
 msgid "Retrieval failed"
 msgstr "Parsiųsti nepavyko"
 
@@ -3302,7 +3307,7 @@ msgstr "Komanda"
 msgid "Adjust the sound volume"
 msgstr "Reguliuoti garsumą"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:223
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:243
 msgid "Volume Control"
 msgstr "Garso valdymas"
 
@@ -3314,21 +3319,21 @@ msgstr "_Nutildyti"
 msgid "_Open Volume Control"
 msgstr "_Atidaryti garso valdymą"
 
-#: mixer/applet.c:545
+#: mixer/applet.c:570
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Nepavyko paleisti Garso valdymo: %s"
 
-#: mixer/applet.c:1000
+#: mixer/applet.c:1015
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Nepavyko parodyti pagalbos: %s"
 
-#: mixer/applet.c:1013
+#: mixer/applet.c:1028
 msgid "Volume Applet"
 msgstr "Garso įtaisas"
 
-#: mixer/applet.c:1016
+#: mixer/applet.c:1031
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "GNOME/GStreamer paremtas garso valdymo įtaisas"
 
@@ -3376,22 +3381,143 @@ msgstr "Garso valdymo nustatymai"
 msgid "Select the device and track to control."
 msgstr "Pasirinkit valdomą įrenginį ir takelį."
 
+#: modemlights/GNOME_ModemLights.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Aktyvuoti ir stebėti telefoninio ryšio prisijungimą"
+
+#: modemlights/GNOME_ModemLights.server.in.in.h:2
+msgid "Modem Monitor"
+msgstr "Sistemos stebėtuvas"
+
+#: modemlights/GNOME_ModemLights.xml.h:2
+msgid "_Activate"
+msgstr "_Aktyvuoti"
+
+#: modemlights/GNOME_ModemLights.xml.h:3
+msgid "_Deactivate"
+msgstr "_Deaktyvuoti"
+
+#: modemlights/GNOME_ModemLights.xml.h:5 stickynotes/stickynotes.glade.h:45
+msgid "_Properties"
+msgstr "_Nustatymai"
+
+#: modemlights/modem-applet.c:699
+msgid "Connection active, but could not get connection time"
+msgstr "Prisijungimas aktyvus, bet nepavyko gauti prisijungimo laiko"
+
+#: modemlights/modem-applet.c:715
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Prisijungimo laikas: %.1d:%.2d"
+
+#: modemlights/modem-applet.c:719
+msgid "Not connected"
+msgstr "Neprijungta"
+
+#: modemlights/modem-applet.c:765
+msgid "The entered password is invalid"
+msgstr "Įvestas slaptažodis yra netinkamas"
+
+#: modemlights/modem-applet.c:767
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr ""
+"Patikrinkite ar įvedėte teisingai, ir ar neaktyvavote „caps lock“ klavišo"
+
+#: modemlights/modem-applet.c:865
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Norint prisijungti prie Jūsų Interneto paslaugų tiekėjo, Jums reikalingos "
+"administratoriaus privilegijos"
+
+#: modemlights/modem-applet.c:866
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr ""
+"Norint atsijungti nuo Jūsų Interneto paslaugų tiekėjo, Jums reikalingos "
+"administratoriaus privilegijos"
+
+#: modemlights/modem-applet.c:900
+msgid "Do you want to connect?"
+msgstr "Norite prisijungti?"
+
+#: modemlights/modem-applet.c:901
+msgid "Do you want to disconnect?"
+msgstr "Norite atsijungti?"
+
+#: modemlights/modem-applet.c:910
+msgid "C_onnect"
+msgstr "P_risijungti"
+
+#: modemlights/modem-applet.c:910
+msgid "_Disconnect"
+msgstr "_Atsijungti"
+
+#: modemlights/modem-applet.c:965
+msgid "Could not launch network configuration tool"
+msgstr "Nepavyko paleisti tinklo konfigūravimo įrankio"
+
+#: modemlights/modem-applet.c:967
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr ""
+"Patikrinkite ar jis įdiegtas teisingame kelyje, ir ar Jūs turite teises jį "
+"paleisti"
+
+#: modemlights/modem-applet.c:989
+msgid "Modem monitor"
+msgstr "Modemo stebėtuvas"
+
+#: modemlights/modem-applet.c:992
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr "Įtaisas skirtas aktyvuoti ir stebėti telefoninio ryšio prijungimą."
+
+#: modemlights/modemlights.glade.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Jungiamasi prie Interneto "
+"paslaugųtiekėjo</span>"
+
+#: modemlights/modemlights.glade.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Reikalingas root slaptažodis</span>"
+
+#: modemlights/modemlights.glade.h:3
+msgid "Enter password"
+msgstr "Įveskite slaptažodį"
+
+#: modemlights/modemlights.glade.h:4
+msgid "Password:"
+msgstr "Slaptažodis:"
+
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
-msgstr "Sistemos apkrovimo indikatorius"
+msgstr "Sistemos apkrovos indikatorius"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
 #: multiload/main.c:57
 msgid "System Monitor"
-msgstr "Sistemos stebėtojas"
+msgstr "Sistemos stebėtuvas"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
-msgstr "_Atidaryti sistemos stebėtoją"
+msgstr "_Atidaryti sistemos stebėtuvą"
 
 #: multiload/cpuload.c:50
 msgid "CPU Load"
-msgstr "CPU apkrovimas"
+msgstr "CPU apkrova"
+
+#: multiload/diskload.c:48
+msgid "Disk Load"
+msgstr "Disko apkrova"
 
 #: multiload/loadavg.c:107 multiload/main.c:327
 msgid "Load Average"
@@ -3408,7 +3534,7 @@ msgstr ""
 #: multiload/main.c:113
 #, c-format
 msgid "There was an error executing '%s': %s"
-msgstr "Įvyko klaida vykdant '%s': %s"
+msgstr "Įvyko klaida vykdant „%s“: %s"
 
 #: multiload/main.c:319 multiload/properties.c:595
 msgid "Processor"
@@ -3735,6 +3861,22 @@ msgstr "Sistemos stebėtuvo nustatymai"
 msgid "Swap Load"
 msgstr "Swap apkrova"
 
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player (Deprecated)"
+msgstr "CD grotuvas (pasenęs)"
+
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:2
+msgid "Panel applet for playing audio CDs"
+msgstr "Skydelio įtaisas CD grojimui"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Perspėti, kai gaunamas naujas paštas"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Inbox stebyklė (nenaudojama)"
+
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
 msgstr "Įtaisų sendinimo gamykla"
@@ -3742,6 +3884,14 @@ msgstr "Įtaisų sendinimo gamykla"
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
 msgid "Null Applet Factory"
 msgstr "Null įtaiso gamykla"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Stebėti bevielio tinklo ryšio kokybei"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "Bevielio ryšio stebėtuvas"
 
 #: null_applet/null_applet.c:155
 msgid "Some panel items are no longer available"
@@ -3960,10 +4110,6 @@ msgstr "_Užrakinti raštelį"
 #: stickynotes/stickynotes_applet_callbacks.c:136
 msgid "_New Note"
 msgstr "_Naujas raštelis"
-
-#: stickynotes/stickynotes.glade.h:45
-msgid "_Properties"
-msgstr "_Nustatymai"
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
