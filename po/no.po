@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.7\n"
-"POT-Creation-Date: 1999-09-15 00:53+0200\n"
-"PO-Revision-Date: 1999-09-15 00:55+02:00\n"
+"POT-Creation-Date: 1999-10-23 10:04-0400\n"
+"PO-Revision-Date: 1999-10-23 10:15-04:00\n"
 "Last-Translator: Kjartan Maraas <kmaraas@online.no>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -104,7 +104,8 @@ msgstr "Innstillinger for klokke"
 #: drivemount/properties.c:229 fvwm-pager/properties.c:247
 #: gnotes/gnotes_applet.c:236 mini-commander/src/preferences.c:744
 #: modemlights/properties.c:275 netload/properties.c:280
-#: slashapp/properties.c:347
+#: odometer/properties.c:253 slashapp/properties.c:347
+#: sound-monitor/properties.c:419 tickastat/properties.c:408
 msgid "General"
 msgstr "Generelt"
 
@@ -154,27 +155,29 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "En analog klokke lik den som finnes i CDE-panelet"
 
 #: another_clock/another_clock.c:615 asclock/asclock.c:595
-#: battery/battery.c:783 charpick/charpick.c:475 clockmail/clockmail.c:539
-#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:80
-#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
-#: gkb/gkb.c:675 gnome-pager/gnomepager_applet.c:2552
-#: gnotes/gnotes_applet.c:300 gweather/gweather-applet.c:172 hal/hal.c:285
-#: jbc/jbc-applet.c:136 life/life.c:197
-#: mini-commander/src/mini-commander_applet.c:375
-#: modemlights/modemlights.c:1155 netload/netload.c:339 slashapp/slashapp.c:58
-#: webcontrol/webcontrol.c:308
+#: battery/battery.c:783 charpick/charpick.c:475 clipboard/clipboard.c:227
+#: clockmail/clockmail.c:546 drivemount/drivemount.c:564
+#: esd-manager/esdmanager_applet.c:80 fifteen/fifteen.c:309
+#: fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350 gkb/gkb.c:675
+#: gnotes/gnotes_applet.c:300 gumma/gumma.c:574 gweather/gweather-applet.c:172
+#: hal/hal.c:285 jbc/jbc-applet.c:136 life/life.c:197
+#: mini-commander/src/mini-commander_applet.c:388
+#: modemlights/modemlights.c:1174 netload/netload.c:339 odometer/odo.c:562
+#: slashapp/slashapp.c:58 sound-monitor/main.c:336 tickastat/main.c:317
+#: webcontrol/webcontrol.c:308 whereami/whereami.c:119
 msgid "About..."
 msgstr "Om..."
 
 #: another_clock/another_clock.c:621 asclock/asclock.c:601
-#: charpick/charpick.c:482 clockmail/clockmail.c:532 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:546 esd-manager/esdmanager_applet.c:87
+#: charpick/charpick.c:482 clockmail/clockmail.c:539 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:87
 #: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:683
-#: gnome-pager/gnomepager_applet.c:2558 gweather/gweather-applet.c:175
-#: mini-commander/src/mini-commander_applet.c:362
-#: modemlights/modemlights.c:1149 multiload/cpuload.c:64
+#: gweather/gweather-applet.c:175
+#: mini-commander/src/mini-commander_applet.c:375
+#: modemlights/modemlights.c:1168 multiload/cpuload.c:64
 #: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
-#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:316
+#: odometer/odo.c:559 slashapp/slashapp.c:55 sound-monitor/main.c:329
+#: tickastat/main.c:311 webcontrol/webcontrol.c:316
 msgid "Properties..."
 msgstr "Egenskaper ..."
 
@@ -394,6 +397,20 @@ msgstr "APM er slått av! Kan ikke lese informasjon om batterilading."
 msgid "Run gtcd..."
 msgstr "Kjør gtcd..."
 
+#: clipboard/clipboard.c:161
+msgid "Clipboard Applet"
+msgstr ""
+
+#: clipboard/clipboard.c:163
+msgid "Copyright (C) 1999"
+msgstr "Copyright (C) 1999"
+
+#: clipboard/clipboard.c:165
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr "Gnome Panel applet for å kopiere og hente tilbake utvalg med en historikk. Utgitt under GNU General Puclic License."
+
 #: charpick/charpick.c:352
 msgid "Character Picker"
 msgstr "Tegnvelger"
@@ -426,19 +443,20 @@ msgstr "Antall rader med knapper:"
 msgid "Number of columns of buttons:"
 msgstr "Antall kolonner med knapper:"
 
-#: clockmail/clockmail.c:52 slashapp/slashapp.c:127
+#: clockmail/clockmail.c:56 slashapp/slashapp.c:127 sound-monitor/main.c:35
+#: tickastat/main.c:183
 msgid "John Ellis <johne@bellatlantic.net>"
 msgstr "John Ellis <johne@bellatlantic.net>"
 
-#: clockmail/clockmail.c:55
+#: clockmail/clockmail.c:59
 msgid "Clock and Mail Notify Applet"
 msgstr "Klokke- og postnotifiseringsapplet"
 
-#: clockmail/clockmail.c:56 jbc/jbc-applet.c:47
+#: clockmail/clockmail.c:60 jbc/jbc-applet.c:47
 msgid "(C) 1999"
 msgstr "(C) 1999"
 
-#: clockmail/clockmail.c:58
+#: clockmail/clockmail.c:62
 msgid ""
 "Released under the GNU general public license.\n"
 "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
@@ -450,21 +468,22 @@ msgstr ""
 "Blinking for post kan være for enhver ulest melding, eller bare kort når ny "
 "post ankommer."
 
-#: clockmail/clockmail.c:128
+#: clockmail/clockmail.c:132
 msgid "%a, %b %d"
 msgstr "%a, %b %d"
 
-#: clockmail/clockmail.c:135
+#: clockmail/clockmail.c:139
 msgid " (GMT)"
 msgstr " (GMT)"
 
-#: clockmail/clockmail.c:141
+#: clockmail/clockmail.c:145
 #, c-format
 msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:138
+#: clockmail/properties.c:138 odometer/properties.c:128
+#: sound-monitor/properties.c:163
 msgid "None (default)"
 msgstr "Ingen (forvalgt)"
 
@@ -508,11 +527,12 @@ msgstr "Antall meldinger før postboksen anses for å være full:"
 msgid "When clicked, run:"
 msgstr "Når klikket på, kjør:"
 
-#: clockmail/properties.c:422
+#: clockmail/properties.c:422 sound-monitor/properties.c:437
 msgid "Theme file (directory):"
 msgstr "Temafil (katalog):"
 
-#: clockmail/properties.c:453
+#: clockmail/properties.c:453 odometer/properties.c:294
+#: sound-monitor/properties.c:465
 msgid "Theme"
 msgstr "Tema"
 
@@ -524,7 +544,7 @@ msgstr "Filsystemer"
 msgid "File System Changed!\n"
 msgstr "Filsystemet er endret!\n"
 
-#: diskusage/diskusage.c:806 drivemount/drivemount.c:570
+#: diskusage/diskusage.c:806 drivemount/drivemount.c:582
 msgid "Browse..."
 msgstr "Se på..."
 
@@ -594,7 +614,7 @@ msgstr ""
 "Diskmonteringskommandoen feilet.\n"
 "\""
 
-#: drivemount/drivemount.c:561
+#: drivemount/drivemount.c:573
 msgid "Eject"
 msgstr "Løs ut"
 
@@ -793,184 +813,6 @@ msgstr ""
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
 
-#: gnome-pager/gnomepager_applet.c:197
-msgid "Desktop Pager Applet"
-msgstr "Applet for valg av viruelt skjermområde"
-
-#: gnome-pager/gnomepager_applet.c:198
-msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-msgstr "Copyright (C)1998,1999 Red Hat Software, The Free Software Foundation"
-
-#: gnome-pager/gnomepager_applet.c:200
-msgid "Pager for a GNOME compliant Window Manager"
-msgstr "Skjermvalg for en vindusbehandler som følger GNOMEs retningslinjer"
-
-#: gnome-pager/gnomepager_applet.c:327
-msgid "Gnome Pager Settings"
-msgstr "Innstillinger for valg av virtuelt skjermområde"
-
-#: gnome-pager/gnomepager_applet.c:333
-msgid "Pager"
-msgstr "Velger for virtuell skjerm"
-
-#: gnome-pager/gnomepager_applet.c:340
-msgid "Show pager"
-msgstr "Vis skjermvelger"
-
-#: gnome-pager/gnomepager_applet.c:343
-msgid "Place pagers after tasklist"
-msgstr "Plasser skjermvelgere etter oppgavelisten"
-
-#: gnome-pager/gnomepager_applet.c:349
-msgid "Use small pagers"
-msgstr "Bruk små skjermoversikter"
-
-#: gnome-pager/gnomepager_applet.c:355
-msgid "Enable pager tooltips"
-msgstr "Bruk verktøytips for skjermvelgere"
-
-#: gnome-pager/gnomepager_applet.c:361
-msgid "Rows of pagers"
-msgstr "Rader med skjermvelgere"
-
-#: gnome-pager/gnomepager_applet.c:364
-msgid "Width of small pagers"
-msgstr "Bredden på små skjermoversikter"
-
-#: gnome-pager/gnomepager_applet.c:367
-msgid "Height of small pagers"
-msgstr "Bruk små skjermoversikter"
-
-#: gnome-pager/gnomepager_applet.c:370
-msgid "Width of large pagers"
-msgstr "Bredden på store skjermoversikter"
-
-#: gnome-pager/gnomepager_applet.c:373
-msgid "Height of large pagers"
-msgstr "Høyden på store skjermoversikter"
-
-#: gnome-pager/gnomepager_applet.c:386
-msgid "Tasklist"
-msgstr "Oppgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:388
-msgid "Show task list button"
-msgstr "Vis oppgaveliste knappen"
-
-#: gnome-pager/gnomepager_applet.c:391
-msgid "Show task list"
-msgstr "Vis oppgavelisten"
-
-#: gnome-pager/gnomepager_applet.c:394
-msgid "Show button icons"
-msgstr "Vis knappeikoner"
-
-#. Radio buttons for which tasks to show
-#: gnome-pager/gnomepager_applet.c:406
-msgid "Which tasks to show"
-msgstr "Hvilke oppgaver som skal vises"
-
-#: gnome-pager/gnomepager_applet.c:415
-msgid "Show all tasks"
-msgstr "Vis alle oppgaver"
-
-#: gnome-pager/gnomepager_applet.c:421
-msgid "Show normal tasks only"
-msgstr "Vis kun normale oppgaver"
-
-#: gnome-pager/gnomepager_applet.c:427
-msgid "Show minimized tasks only"
-msgstr "Vis kun minimerte oppgaver"
-
-#: gnome-pager/gnomepager_applet.c:440
-msgid "Show all tasks on all desktops"
-msgstr "Vis alle oppgaver på alle skrivebord"
-
-#: gnome-pager/gnomepager_applet.c:443
-msgid "Show minimized tasks on all desktops"
-msgstr "Vis minimerte oppgaver på alle skrivebord"
-
-#: gnome-pager/gnomepager_applet.c:447
-msgid "Enable task list tooltips"
-msgstr "Bruk verktøytips for oppgavelisten"
-
-#: gnome-pager/gnomepager_applet.c:450
-msgid "Geometry"
-msgstr "Geometri"
-
-#: gnome-pager/gnomepager_applet.c:459
-msgid "Tasklist always maximum size"
-msgstr "Oppgavelisten alltid i maksimal størrelse"
-
-#: gnome-pager/gnomepager_applet.c:462
-msgid "Don't push other applets out of the way"
-msgstr "Ikke skyv andre appleter ut av veien"
-
-#: gnome-pager/gnomepager_applet.c:466
-msgid "Maximum width of horizontal task list"
-msgstr "Maks bredde av horisontal oppgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:471
-msgid "Maximum width of vertical task list"
-msgstr "Maks bredde av vertikal oppgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:476
-msgid "Number of rows of horizontal tasks"
-msgstr "Antall rader av horisontale oppgaver"
-
-#: gnome-pager/gnomepager_applet.c:481
-msgid "Number of vertical columns of tasks"
-msgstr "Antall vertikale kolonner med oppgaver"
-
-#: gnome-pager/gnomepager_applet.c:1762
-msgid "Sticky"
-msgstr "Klebrig"
-
-#: gnome-pager/gnomepager_applet.c:2213
-msgid "Show / Hide"
-msgstr "Vis / gjem"
-
-#: gnome-pager/gnomepager_applet.c:2219
-msgid "Shade / Unshade"
-msgstr "Skygge / Ikke skygge"
-
-#: gnome-pager/gnomepager_applet.c:2225
-msgid "Stick / Unstick"
-msgstr "Fest / Løsne"
-
-#: gnome-pager/gnomepager_applet.c:2231
-msgid "Close"
-msgstr "Lukk"
-
-#: gnome-pager/gnomepager_applet.c:2237
-msgid "Nuke"
-msgstr "Fjern"
-
-#: gnome-pager/gnomepager_applet.c:2500
-msgid "Gnome Pager Error"
-msgstr "Feil i GNOME skjermvelger"
-
-#: gnome-pager/gnomepager_applet.c:2501
-msgid ""
-"You are not running a GNOME Compliant Window Manager.\n"
-"Please run a GNOME Compliant Window Manager.\n"
-"For Example:\n"
-"Enlightenment (DR-0.15)\n"
-"Then start this applet again.\n"
-msgstr ""
-"Du kjører ikke en vindusbehandler som følger GNOMEs\n"
-"retningslinjer. Vær snill å bruk en vindusbehandler som\n"
-"gjør dette. F.eks:\n"
-"Enlightenment (DR-0.15)\n"
-"Start så denne appleten igjen.\n"
-
-#. XXX: a hackish way to bind events on these buttons so that
-#. we will recieve the right click and such events over them to
-#. display menus and allow dragging over them
-#: gnome-pager/gnomepager_applet.c:2532
-msgid "?"
-msgstr "?"
-
 #: gnotes/gnote.c:246
 msgid "Raise Notes"
 msgstr "Hev notiser"
@@ -1018,6 +860,27 @@ msgstr "Standard bredde"
 #: gnotes/gnotes_applet.c:288
 msgid "Can't create GNotes applet!"
 msgstr "Kan ikke opprette GNotes appleten!"
+
+#: gumma/gumma.c:309
+#, c-format
+msgid "Loading plugin %s..."
+msgstr "Laster tillegg %s..."
+
+#: gumma/gumma.c:483
+msgid "Select a plugin"
+msgstr "Velg et tillegg"
+
+#: gumma/gumma.c:497
+msgid "Plugins"
+msgstr "Tillegg"
+
+#: gumma/gumma.c:579
+msgid "About Plugin..."
+msgstr "Om tillegg..."
+
+#: gumma/gumma.c:583
+msgid "Plugins..."
+msgstr "Tillegg..."
 
 #: gweather/gweather-applet.c:167
 msgid "Cannot create applet!\n"
@@ -2492,30 +2355,30 @@ msgstr "ikke funnet"
 msgid "no /bin/sh"
 msgstr "ingen /bin/sh"
 
-#: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/command_line.c:88 mini-commander/src/command_line.c:108
 msgid "end of history list"
 msgstr "slutten på historikken"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:118 mini-commander/src/exec.c:63
 msgid "starting..."
 msgstr "starter..."
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:147
 msgid "autocompleted"
 msgstr "autoutfylt"
 
-#: mini-commander/src/command_line.c:256
+#: mini-commander/src/command_line.c:257
 msgid "history list empty"
 msgstr "Historikken er tom"
 
 #. title
-#: mini-commander/src/command_line.c:274
+#: mini-commander/src/command_line.c:275
 msgid "Command history"
 msgstr "Kommandohistorikk"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:391
+#: mini-commander/src/command_line.c:392
 msgid "Start program"
 msgstr "Start program"
 
@@ -2540,27 +2403,27 @@ msgstr "%H:%M"
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:89
+#: mini-commander/src/mini-commander_applet.c:90
 msgid "orient. changed"
 msgstr "orientering endret"
 
-#: mini-commander/src/mini-commander_applet.c:103
+#: mini-commander/src/mini-commander_applet.c:104
 msgid "size changed"
 msgstr "størrelse endret"
 
-#: mini-commander/src/mini-commander_applet.c:199 slashapp/properties.c:249
+#: mini-commander/src/mini-commander_applet.c:204 slashapp/properties.c:249
 msgid "Browser"
 msgstr "Leser"
 
-#: mini-commander/src/mini-commander_applet.c:212
+#: mini-commander/src/mini-commander_applet.c:217
 msgid "History"
 msgstr "Historikk"
 
-#: mini-commander/src/mini-commander_applet.c:368
+#: mini-commander/src/mini-commander_applet.c:381
 msgid "Help"
 msgstr "Hjelp"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:392
 msgid "ready..."
 msgstr "klar..."
 
@@ -2624,7 +2487,7 @@ msgid "Enable history based auto completion"
 msgstr "Slå på historikkbasert autoutfylling"
 
 #. Size
-#: mini-commander/src/preferences.c:554
+#: mini-commander/src/preferences.c:554 tickastat/properties.c:484
 msgid "Size"
 msgstr "Størrelse"
 
@@ -2691,11 +2554,11 @@ msgstr "Hovedvolum, og demping"
 msgid "Run gmix..."
 msgstr "Kjør gmix..."
 
-#: modemlights/modemlights.c:128
+#: modemlights/modemlights.c:136
 msgid "Modem Lights Applet"
 msgstr "Modemlys applet"
 
-#: modemlights/modemlights.c:131
+#: modemlights/modemlights.c:139
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.Lights in order from the top or left are "
@@ -2705,7 +2568,7 @@ msgstr ""
 "En modem status indikator og nummersender. Lysene fra øverst eller venstre "
 "er RX og TX"
 
-#: modemlights/modemlights.c:406
+#: modemlights/modemlights.c:414
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -2713,11 +2576,11 @@ msgstr ""
 "Du er nå tilkoblet.\n"
 "Vil du koble fra?"
 
-#: modemlights/modemlights.c:417
+#: modemlights/modemlights.c:425
 msgid "Do you want to connect?"
 msgstr "Vil du koble til?"
 
-#: modemlights/modemlights.c:436
+#: modemlights/modemlights.c:444
 msgid "not connected"
 msgstr "ikke tilkoblet"
 
@@ -2743,6 +2606,7 @@ msgid "Confirm connection"
 msgstr "Bekreft tilkobling"
 
 #: modemlights/properties.c:241 slashapp/properties.c:422
+#: tickastat/properties.c:549
 msgid "Display"
 msgstr "Vis"
 
@@ -2776,11 +2640,11 @@ msgstr "Enhet:"
 msgid "Use ISDN"
 msgstr "Bruk ISDN"
 
-#: modemlights/properties.c:349
+#: modemlights/properties.c:349 sound-monitor/properties.c:504
 msgid "Advanced"
 msgstr "Avansert"
 
-#: multiload/cpuload.c:47 multiload/main.c:177
+#: multiload/cpuload.c:47 multiload/main.c:176
 msgid "CPU Load"
 msgstr "Prosessorlast"
 
@@ -2796,11 +2660,11 @@ msgstr "Graf for belastning"
 msgid "Speed:"
 msgstr "Fart:"
 
-#: multiload/load-graph.c:180
+#: multiload/load-graph.c:180 tickastat/properties.c:497
 msgid "Width:"
 msgstr "Bredde:"
 
-#: multiload/load-graph.c:180
+#: multiload/load-graph.c:180 tickastat/properties.c:525
 msgid "Height:"
 msgstr "Høyde:"
 
@@ -2848,15 +2712,15 @@ msgstr "SLIP"
 msgid "PPP"
 msgstr "PPP"
 
-#: multiload/main.c:181 multiload/memload.c:47
+#: multiload/main.c:180 multiload/memload.c:47
 msgid "Memory Load"
 msgstr "Minnelast"
 
-#: multiload/main.c:185 multiload/swapload.c:47
+#: multiload/main.c:184 multiload/swapload.c:47
 msgid "Swap Load"
 msgstr "Belastning på swap"
 
-#: multiload/main.c:189
+#: multiload/main.c:188
 msgid "Net Load"
 msgstr "Nettbelastning"
 
@@ -2912,6 +2776,53 @@ msgstr "Innstillinger for nettlast"
 msgid "Device"
 msgstr "Enhet"
 
+#: odometer/odo.c:131
+msgid "Odometer"
+msgstr "Odometer"
+
+#: odometer/odo.c:133
+msgid "(C) 1999 The Free Software Foundation"
+msgstr "(C) 1999 the Free Software Foundation"
+
+#: odometer/odo.c:135
+msgid ""
+"a GNOME applet that tracks and measures the movements of your mouse pointer "
+"across the desktop."
+msgstr "en GNOME applet som følger og måler bevegelsen til muspekeren over skrivebordet."
+
+#: odometer/odo.c:546
+msgid "Can't create odometer applet!"
+msgstr "Kan ikke opprette odometer appleten!"
+
+#: odometer/odo.c:556
+msgid "Reset"
+msgstr "Nullstill"
+
+#: odometer/properties.c:210
+msgid "Odometer setting"
+msgstr "Odometer innstilling"
+
+#: odometer/properties.c:221
+#, fuzzy
+msgid "Use Metric"
+msgstr "Bruk utgangsverdi"
+
+#: odometer/properties.c:227
+msgid "auto_reset"
+msgstr "auto_reset"
+
+#: odometer/properties.c:233 tickastat/mod_news.c:1234
+msgid "enabled"
+msgstr "aktiv"
+
+#: odometer/properties.c:239
+msgid "Digits number"
+msgstr ""
+
+#: odometer/properties.c:268
+msgid "Theme file :"
+msgstr "Temafil :"
+
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
 msgstr "Artikler"
@@ -2940,27 +2851,27 @@ msgstr "(Disse innstillingene trer ikke i kraft uten en gjenoppfrisking)"
 msgid "Open new window"
 msgstr "Åpne nytt vindu"
 
-#: slashapp/properties.c:356
+#: slashapp/properties.c:356 tickastat/properties.c:418
 msgid "Scrolling"
 msgstr "Rulling"
 
-#: slashapp/properties.c:365
+#: slashapp/properties.c:365 tickastat/properties.c:427
 msgid "Smooth scroll"
 msgstr "Jevn rulling"
 
-#: slashapp/properties.c:371
+#: slashapp/properties.c:371 tickastat/properties.c:433
 msgid "Smooth type"
 msgstr "Jevn skriving"
 
-#: slashapp/properties.c:377
+#: slashapp/properties.c:377 tickastat/properties.c:439
 msgid "Speed"
 msgstr "Fart"
 
-#: slashapp/properties.c:390
+#: slashapp/properties.c:390 tickastat/properties.c:452
 msgid "Delay when wrapping text:"
 msgstr "Pause under tekstbryting:"
 
-#: slashapp/properties.c:408
+#: slashapp/properties.c:408 tickastat/properties.c:470
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "Rullefart mellom linjer (jevn rulling):"
 
@@ -2982,7 +2893,7 @@ msgstr "Oppretter brukerkatalog: %s\n"
 msgid "Unable to create user directory: %s\n"
 msgstr "Kunne ikke opprette brukerkatalog: %s\n"
 
-#: slashapp/slashapp.c:124
+#: slashapp/slashapp.c:124 tickastat/main.c:180
 #, c-format
 msgid "%d.%d.%d"
 msgstr "%d.%d.%d"
@@ -3035,6 +2946,374 @@ msgstr "Kunne ikke forberede forespørsel.\n"
 msgid "Unable to process request.\n"
 msgstr "Kunne ikke behandle forespørsel.\n"
 
+#: sound-monitor/main.c:38
+msgid "Sound Monitor Applet"
+msgstr "Lydmonitor applet"
+
+#: sound-monitor/main.c:39 tickastat/main.c:187
+msgid "(C) 1999 John Ellis"
+msgstr "(C) 1999 John Ellis"
+
+#: sound-monitor/main.c:41
+msgid ""
+"Sound monitor interface to Esound\n"
+"\n"
+"Released under the GNU general public license."
+msgstr ""
+
+#: sound-monitor/main.c:77
+msgid "Place Esound in standby"
+msgstr "Sett Esound i ventemodus"
+
+#: sound-monitor/main.c:82
+msgid "Resume Esound"
+msgstr "Start Esound igjen"
+
+#: sound-monitor/main.c:87 sound-monitor/main.c:350
+msgid "Start Esound"
+msgstr "Start Esound"
+
+#: sound-monitor/main.c:343
+msgid "Manager..."
+msgstr "Håndterer..."
+
+#: sound-monitor/manager.c:1261 sound-monitor/manager.c:1349
+msgid "Volume"
+msgstr "Volum"
+
+#: sound-monitor/manager.c:1277 sound-monitor/manager.c:1365
+msgid "Balance"
+msgstr "Balanse"
+
+#: sound-monitor/properties.c:133
+msgid ""
+"You have enabled the \"Monitor sound input\" option.\n"
+"\n"
+"If your sound card is not fully 100% FULL DUPLEX (can do input and output "
+"simultaneously),\n"
+"then this may touch bugs in sound drivers/esound that may hang the system.\n"
+"\n"
+"You have been warned!"
+msgstr ""
+
+#: sound-monitor/properties.c:332
+msgid "Peak indicator"
+msgstr ""
+
+#: sound-monitor/properties.c:341
+msgid "off"
+msgstr ""
+
+#: sound-monitor/properties.c:348
+msgid "active"
+msgstr ""
+
+#: sound-monitor/properties.c:355
+msgid "smooth"
+msgstr ""
+
+#: sound-monitor/properties.c:362
+msgid "Peak indicator falloff speed"
+msgstr ""
+
+#: sound-monitor/properties.c:379
+msgid "Scope (scale 1:X, where X = ? )"
+msgstr ""
+
+#: sound-monitor/properties.c:396
+msgid "Connect points in scope"
+msgstr ""
+
+#: sound-monitor/properties.c:402
+msgid "Screen refresh (frames per second)"
+msgstr ""
+
+#: sound-monitor/properties.c:483
+msgid "ESD host to monitor:"
+msgstr ""
+
+#: sound-monitor/properties.c:497
+msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
+msgstr ""
+
+#: tickastat/main.c:39
+msgid "Tick-a-Stat event log"
+msgstr ""
+
+#: tickastat/main.c:118
+msgid "%Y%m%d-%H-%M-%S"
+msgstr ""
+
+#: tickastat/main.c:120
+msgid "%m-%d-%Y %H:%M:%S"
+msgstr ""
+
+#: tickastat/main.c:186
+msgid "Tick-a-Stat"
+msgstr ""
+
+#: tickastat/main.c:189
+msgid "A ticker to display various information and statistics.\n"
+msgstr ""
+
+#: tickastat/main.c:260
+#, c-format
+msgid "unable to create user directory: %s\n"
+msgstr "kunne ikke opprette brukerkatalog: %s\n"
+
+#: tickastat/main.c:300
+msgid "The unique information and status ticker."
+msgstr ""
+
+#: tickastat/main.c:322
+msgid "Event log..."
+msgstr "Hendelseslogg..."
+
+#: tickastat/mod_coredump.c:91
+msgid "Core dump information (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_coredump.c:234
+msgid "Core dump module (Tick-A-Stat)"
+msgstr ""
+
+#: tickastat/mod_coredump.c:235
+msgid ""
+"The core dump module is\n"
+"processing a core file..."
+msgstr ""
+
+#: tickastat/mod_coredump.c:457
+msgid "Core Dump Module"
+msgstr ""
+
+#: tickastat/mod_coredump.c:464 tickastat/mod_loadavg.c:507
+#: tickastat/mod_news.c:1198 tickastat/mod_tail.c:409 tickastat/mod_test.c:120
+msgid "Enable this module"
+msgstr "Aktiver denne modulen"
+
+#: tickastat/mod_coredump.c:470
+msgid "Show backtrace dialog on new core files"
+msgstr ""
+
+#: tickastat/mod_coredump.c:480
+msgid "Path to monitor:"
+msgstr "Sti til monitor:"
+
+#: tickastat/mod_coredump.c:597
+msgid ""
+"This module monitors a path for core dumps, if one is\n"
+" found it is time stamped and a backtrace logged (using gdb)."
+msgstr ""
+
+#: tickastat/mod_loadavg.c:108
+msgid "Load Average information (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:320
+msgid "The Load average is very high."
+msgstr ""
+
+#: tickastat/mod_loadavg.c:321
+msgid "Load average is at a critical point, help me!"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:500
+msgid "Load Average Module"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:517
+msgid "Check every:"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:529
+msgid "Seconds"
+msgstr "Sekunder"
+
+#. Warning dialog
+#: tickastat/mod_loadavg.c:535
+msgid "Warning options"
+msgstr "Alternativer for advarsler"
+
+#: tickastat/mod_loadavg.c:544 tickastat/mod_loadavg.c:589
+msgid "Show pop-up dialog for this event"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:554 tickastat/mod_loadavg.c:599
+#, fuzzy
+msgid "Load average threshhold:"
+msgstr "Terskel for lavnivå på strøm:"
+
+#: tickastat/mod_loadavg.c:566 tickastat/mod_loadavg.c:611
+msgid "Text to display:"
+msgstr "Tekst som skal vises:"
+
+#. Danger dialog
+#: tickastat/mod_loadavg.c:580
+#, fuzzy
+msgid "Alert options"
+msgstr "Modemalternativer"
+
+#: tickastat/mod_loadavg.c:757
+msgid ""
+"This module monitors the system load average,\n"
+" and displays warning when it rises above certain points."
+msgstr ""
+
+#: tickastat/mod_news.c:540
+msgid "script \""
+msgstr "skript \""
+
+#: tickastat/mod_news.c:541
+msgid "Tick-a-Stat script encountered and error:\n"
+msgstr ""
+
+#: tickastat/mod_news.c:1186
+msgid "Enabled"
+msgstr "Aktivert"
+
+#: tickastat/mod_news.c:1186
+msgid "Name"
+msgstr "Navn"
+
+#: tickastat/mod_news.c:1186
+msgid "Line delay"
+msgstr "Linjepause"
+
+#: tickastat/mod_news.c:1186
+msgid "Update interval"
+msgstr "Oppdateringsintervall"
+
+#: tickastat/mod_news.c:1187
+msgid "D"
+msgstr "D"
+
+#: tickastat/mod_news.c:1187
+msgid "T"
+msgstr "T"
+
+#: tickastat/mod_news.c:1187
+msgid "I"
+msgstr "I"
+
+#: tickastat/mod_news.c:1187
+msgid "B"
+msgstr "B"
+
+#: tickastat/mod_news.c:1191
+msgid "News and Information Module"
+msgstr ""
+
+#: tickastat/mod_news.c:1245
+msgid "Line (s):"
+msgstr "Linje(r):"
+
+#: tickastat/mod_news.c:1259
+msgid "Update (m):"
+msgstr "Oppdater (m):"
+
+#: tickastat/mod_news.c:1277
+msgid "body"
+msgstr "kropp"
+
+#: tickastat/mod_news.c:1282
+msgid "image"
+msgstr "bilde"
+
+#: tickastat/mod_news.c:1287
+msgid "topic"
+msgstr "emne"
+
+#: tickastat/mod_news.c:1292
+msgid "date"
+msgstr "dato"
+
+#: tickastat/mod_news.c:1297
+msgid "Show:"
+msgstr "Vis:"
+
+#: tickastat/mod_news.c:1468
+msgid "This module can display news and other information."
+msgstr ""
+
+#: tickastat/mod_tail.c:77
+msgid "File tail view file (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_tail.c:87
+msgid "no file dpecified"
+msgstr ""
+
+#: tickastat/mod_tail.c:130
+msgid "File tail information (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_tail.c:139
+msgid "File tail for "
+msgstr ""
+
+#: tickastat/mod_tail.c:402
+msgid "File Tail Module"
+msgstr ""
+
+#: tickastat/mod_tail.c:419
+#, fuzzy
+msgid "Path to tail:"
+msgstr "Områder med hagl"
+
+#: tickastat/mod_tail.c:424
+msgid "Choose a file to tail"
+msgstr ""
+
+#: tickastat/mod_tail.c:433
+msgid "Show pop up dialog for new lines."
+msgstr ""
+
+#: tickastat/mod_tail.c:539
+msgid ""
+"This module monitors a file for appended text,\n"
+" and prints it. Useful for log files."
+msgstr ""
+
+#: tickastat/mod_test.c:113
+#, fuzzy
+msgid "Test Module"
+msgstr "Applet-modus:"
+
+#: tickastat/mod_test.c:192
+msgid "This is the test module's description line."
+msgstr ""
+
+#. left pane will be filled in select cb
+#: tickastat/properties.c:365
+msgid "Modules"
+msgstr ""
+
+#: tickastat/properties.c:374
+msgid "Event Log"
+msgstr ""
+
+#: tickastat/properties.c:383
+msgid "Enable logging of events"
+msgstr ""
+
+#: tickastat/properties.c:393
+msgid "Log path:"
+msgstr ""
+
+#: tickastat/properties.c:398
+#, fuzzy
+msgid "Choose a log file"
+msgstr "Modem låsfil:"
+
+#: tickastat/properties.c:512
+msgid "Use all room on panel"
+msgstr ""
+
+#: tickastat/properties.c:540
+msgid "Use panel size hint"
+msgstr ""
+
 #: webcontrol/webcontrol.c:56
 msgid "The Web Browser Controller"
 msgstr "Kontroll av WWW-leser"
@@ -3075,3 +3354,148 @@ msgstr "Vis \"Åpne nytt vindu\"-valg"
 #: webcontrol/webcontrol.c:232
 msgid "Look"
 msgstr "Se"
+
+#: whereami/whereami.c:30
+msgid ""
+"Where\n"
+"Am I?"
+msgstr ""
+
+#: whereami/whereami.c:39
+msgid "Where Am I?"
+msgstr ""
+
+#: whereami/whereami.c:40
+#, fuzzy
+msgid "Copyright 1999 John Kodis"
+msgstr "Copyright (C) 1998"
+
+#: whereami/whereami.c:41
+msgid "A cursor position reporting applet."
+msgstr ""
+
+#: whereami/whereami.c:100
+msgid "whereami_applet"
+msgstr ""
+
+#~ msgid "Desktop Pager Applet"
+#~ msgstr "Applet for valg av viruelt skjermområde"
+
+#~ msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+#~ msgstr ""
+#~ "Copyright (C)1998,1999 Red Hat Software, The Free Software Foundation"
+
+#~ msgid "Pager for a GNOME compliant Window Manager"
+#~ msgstr "Skjermvalg for en vindusbehandler som følger GNOMEs retningslinjer"
+
+#~ msgid "Show pager"
+#~ msgstr "Vis skjermvelger"
+
+#~ msgid "Place pagers after tasklist"
+#~ msgstr "Plasser skjermvelgere etter oppgavelisten"
+
+#~ msgid "Use small pagers"
+#~ msgstr "Bruk små skjermoversikter"
+
+#~ msgid "Enable pager tooltips"
+#~ msgstr "Bruk verktøytips for skjermvelgere"
+
+#~ msgid "Rows of pagers"
+#~ msgstr "Rader med skjermvelgere"
+
+#~ msgid "Width of small pagers"
+#~ msgstr "Bredden på små skjermoversikter"
+
+#~ msgid "Height of small pagers"
+#~ msgstr "Bruk små skjermoversikter"
+
+#~ msgid "Width of large pagers"
+#~ msgstr "Bredden på store skjermoversikter"
+
+#~ msgid "Height of large pagers"
+#~ msgstr "Høyden på store skjermoversikter"
+
+#~ msgid "Tasklist"
+#~ msgstr "Oppgaveliste"
+
+#~ msgid "Show task list button"
+#~ msgstr "Vis oppgaveliste knappen"
+
+#~ msgid "Show task list"
+#~ msgstr "Vis oppgavelisten"
+
+#~ msgid "Show button icons"
+#~ msgstr "Vis knappeikoner"
+
+#~ msgid "Which tasks to show"
+#~ msgstr "Hvilke oppgaver som skal vises"
+
+#~ msgid "Show all tasks"
+#~ msgstr "Vis alle oppgaver"
+
+#~ msgid "Show normal tasks only"
+#~ msgstr "Vis kun normale oppgaver"
+
+#~ msgid "Show minimized tasks only"
+#~ msgstr "Vis kun minimerte oppgaver"
+
+#~ msgid "Show all tasks on all desktops"
+#~ msgstr "Vis alle oppgaver på alle skrivebord"
+
+#~ msgid "Show minimized tasks on all desktops"
+#~ msgstr "Vis minimerte oppgaver på alle skrivebord"
+
+#~ msgid "Tasklist always maximum size"
+#~ msgstr "Oppgavelisten alltid i maksimal størrelse"
+
+#~ msgid "Don't push other applets out of the way"
+#~ msgstr "Ikke skyv andre appleter ut av veien"
+
+#~ msgid "Maximum width of horizontal task list"
+#~ msgstr "Maks bredde av horisontal oppgaveliste"
+
+#~ msgid "Maximum width of vertical task list"
+#~ msgstr "Maks bredde av vertikal oppgaveliste"
+
+#~ msgid "Number of rows of horizontal tasks"
+#~ msgstr "Antall rader av horisontale oppgaver"
+
+#~ msgid "Number of vertical columns of tasks"
+#~ msgstr "Antall vertikale kolonner med oppgaver"
+
+#~ msgid "Sticky"
+#~ msgstr "Klebrig"
+
+#~ msgid "Show / Hide"
+#~ msgstr "Vis / gjem"
+
+#~ msgid "Shade / Unshade"
+#~ msgstr "Skygge / Ikke skygge"
+
+#~ msgid "Stick / Unstick"
+#~ msgstr "Fest / Løsne"
+
+#~ msgid "Close"
+#~ msgstr "Lukk"
+
+#~ msgid "Nuke"
+#~ msgstr "Fjern"
+
+#~ msgid "Gnome Pager Error"
+#~ msgstr "Feil i GNOME skjermvelger"
+
+#~ msgid ""
+#~ "You are not running a GNOME Compliant Window Manager.\n"
+#~ "Please run a GNOME Compliant Window Manager.\n"
+#~ "For Example:\n"
+#~ "Enlightenment (DR-0.15)\n"
+#~ "Then start this applet again.\n"
+#~ msgstr ""
+#~ "Du kjører ikke en vindusbehandler som følger GNOMEs\n"
+#~ "retningslinjer. Vær snill å bruk en vindusbehandler som\n"
+#~ "gjør dette. F.eks:\n"
+#~ "Enlightenment (DR-0.15)\n"
+#~ "Start så denne appleten igjen.\n"
+
+#~ msgid "?"
+#~ msgstr "?"
