@@ -42,9 +42,17 @@ dist-hook: index.html
 	-cp gnome-applets/*.css $(distdir)/gnome-applets
 
 install-data-local: index.html
+	$(mkinstalldirs) $(DESTDIR)$(gnome_applets_helpdir)/fig
 	-for file in $(srcdir)/gnome-applets/*.html $(srcdir)/gnome-applets/*.css; do \
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(gnome_applets_helpdir)/$$basefile; \
+	done
+	-for file in \
+		$(top_srcdir)/modemlights/docs/C/fig/*.png \
+		$(top_srcdir)/webcontrol/docs/C/fig/*.png \
+	; do \
+	    basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	    $(INSTALL_DATA) $$file $(DESTDIR)$(gnome_applets_helpdir)/fig/$$basefile; \
 	done
 
 gnome-applets.ps: gnome-applets.sgml
