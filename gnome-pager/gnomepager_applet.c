@@ -10,10 +10,12 @@ gint                num_desk = 0;
 gchar              *desk_name[32];
 GtkWidget          *desk_widget[32];
 GList              *task_widgets = NULL;
+GList              *task_dest = NULL;
 GtkWidget          *hold_box = NULL;
 GtkWidget          *main_box = NULL;
 GtkWidget          *task_table = NULL;
-
+GdkPixmap          *p_1 = NULL, *p_2 = NULL, *p_3 = NULL;
+GdkPixmap          *m_1 = NULL, *m_2 = NULL, *m_3 = NULL;
 gint                pager_rows = 2;
 gchar               pager_size = 1;
 gchar               tasks_all = 0;
@@ -1179,8 +1181,9 @@ main(int argc, char *argv[])
   /*  panel_corba_register_arguments();*/
   applet_widget_init("gnomepager_applet","0.1", argc, argv, NULL, 
 		     0, NULL, TRUE, FALSE, NULL, NULL);
-
-  gnome_win_hints_init();  
+  gtk_widget_push_visual(gdk_imlib_get_visual());
+  gtk_widget_push_colormap(gdk_imlib_get_colormap());
+  gnome_win_hints_init();
   if (!gnome_win_hints_wm_exists())
     {
       GtkWidget *d, *l;
@@ -1219,7 +1222,10 @@ main(int argc, char *argv[])
   num_desk = gnome_win_hints_get_workspace_count();
   tasks_update();
   select_root_properties();
-  
+
+  gdk_imlib_data_to_pixmap(icon1_xpm, &p_1, &m_1);
+  gdk_imlib_data_to_pixmap(icon2_xpm, &p_2, &m_2);
+  gdk_imlib_data_to_pixmap(icon3_xpm, &p_3, &m_3);
   applet = applet_widget_new();
   if (!applet)
     {
@@ -1355,7 +1361,8 @@ make_desktop_pane(gint desktop, gint width, gint height)
   gtk_object_set_data(GTK_OBJECT(area), "desktop", (gpointer)desktop);
   gtk_object_set_data(GTK_OBJECT(area), "select", (gpointer)0);
   gtk_widget_set_events(area, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-			GDK_EXPOSURE_MASK);
+			GDK_EXPOSURE_MASK | GDK_ENTER_NOTIFY_MASK |
+			GDK_LEAVE_NOTIFY_MASK);
   gtk_signal_connect(GTK_OBJECT(area), "button_press_event",
 		     GTK_SIGNAL_FUNC(desktop_cb_button_down), NULL);
   gtk_signal_connect(GTK_OBJECT(area), "button_release_event",
@@ -1365,9 +1372,9 @@ make_desktop_pane(gint desktop, gint width, gint height)
   s = desk_name[desktop];
   if (s) 
     {
-      tip = (GtkWidget *)gtk_tooltips_new();
+/*      tip = (GtkWidget *)gtk_tooltips_new();
       gtk_tooltips_set_tip(GTK_TOOLTIPS(tip), area, s, NULL);
-      gtk_tooltips_enable(GTK_TOOLTIPS(tip));
+      gtk_tooltips_enable(GTK_TOOLTIPS(tip));*/
     }
   return area;
 }
@@ -1607,6 +1614,9 @@ emtpy_task_widgets(void)
   if (task_widgets)
     g_list_free(task_widgets);
   task_widgets = NULL;
+  if (task_dest)
+    g_list_free(task_dest);
+  task_dest = NULL;
 }
 
 void
@@ -1624,6 +1634,14 @@ desktroy_task_widgets(void)
       gnome_animator_stop(GNOME_ANIMATOR(icon2));
 #endif     
       gtk_widget_destroy(GTK_WIDGET(p->data));
+      p = p->next;
+    }
+  p = task_dest;
+  while (p)
+    {
+      printf("nuking %p\n", p->data);
+      gtk_widget_destroy((GtkWidget *)(p->data));
+      printf("nuked %p\n", p->data);
       p = p->next;
     }
   emtpy_task_widgets();
@@ -1782,7 +1800,7 @@ populate_tasks(void)
    gchar           *str;
    GnomeUIInfo     uinfo[5] = {GNOMEUIINFO_END, GNOMEUIINFO_END, 
       GNOMEUIINFO_END, GNOMEUIINFO_END};
-   
+
   if (!task_table)
     return;
   desktroy_task_widgets();
@@ -1814,9 +1832,10 @@ populate_tasks(void)
 	  
 	  label = gtk_label_new(t->name);
 	  gtk_widget_show(label);
-	  
-	  icon1 = gnome_pixmap_new_from_xpm_d(icon1_xpm);
-	  icon3 = gnome_pixmap_new_from_xpm_d(icon3_xpm);
+
+	  icon1 = icon2 = icon3 = NULL;
+	  icon1 = gtk_pixmap_new(p_1, m_1);
+	  icon3 = gtk_pixmap_new(p_3, m_3);
 #ifdef ANIMATION
 	  f1 = gnome_pixmap_new_from_xpm_d(f1_xpm);
 	  f2 = gnome_pixmap_new_from_xpm_d(f2_xpm);
@@ -1839,7 +1858,7 @@ populate_tasks(void)
 				       GNOME_ANIMATOR_LOOP_RESTART);
 	  gnome_animator_start(GNOME_ANIMATOR(icon2));
 #else	  
-	  icon2 = gnome_pixmap_new_from_xpm_d(icon2_xpm);
+	  icon2 = gtk_pixmap_new(p_2, m_2);
 #endif	  
 
 	  if (show_icons)
@@ -1860,18 +1879,18 @@ populate_tasks(void)
 			     GTK_SIGNAL_FUNC(task_cb_button_enter), t);
 	  gtk_signal_connect(GTK_OBJECT(button), "leave",
 			     GTK_SIGNAL_FUNC(task_cb_button_leave), t);
-	  
+/*	  
 	  tip = (GtkWidget *)gtk_tooltips_new();
 	  gtk_tooltips_set_tip(GTK_TOOLTIPS(tip), button, t->name, NULL);
 	  gtk_tooltips_enable(GTK_TOOLTIPS(tip));
-	  
+*/	  
 	   uinfo[0].type            = GNOME_APP_UI_ITEM;
 	   uinfo[0].label           = N_("Show / Hide");
 	   uinfo[0].hint            = NULL;
 	   uinfo[0].moreinfo        = cb_showhide;
 	   uinfo[0].user_data       = t;
 	   uinfo[0].unused_data     = NULL;
-	   uinfo[0].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[0].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 	   uinfo[0].pixmap_info     = GNOME_STOCK_MENU_OPEN;
 	   uinfo[0].accelerator_key = 0;
 	   uinfo[0].ac_mods         = (GdkModifierType) 0;
@@ -1883,7 +1902,7 @@ populate_tasks(void)
 	   uinfo[1].moreinfo        = cb_shade;
 	   uinfo[1].user_data       = t;
 	   uinfo[1].unused_data     = NULL;
-	   uinfo[1].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[1].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 	   uinfo[1].pixmap_info     = GNOME_STOCK_MENU_OPEN;
 	   uinfo[1].accelerator_key = 0;
 	   uinfo[1].ac_mods         = (GdkModifierType) 0;
@@ -1895,7 +1914,7 @@ populate_tasks(void)
 	   uinfo[2].moreinfo        = cb_kill;
 	   uinfo[2].user_data       = t;
 	   uinfo[2].unused_data     = NULL;
-	   uinfo[2].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[2].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 	   uinfo[2].pixmap_info     = GNOME_STOCK_MENU_OPEN;
 	   uinfo[2].accelerator_key = 0;
 	   uinfo[2].ac_mods         = (GdkModifierType) 0;
@@ -1907,15 +1926,16 @@ populate_tasks(void)
 	   uinfo[3].moreinfo        = cb_nuke;
 	   uinfo[3].user_data       = t;
 	   uinfo[3].unused_data     = NULL;
-	   uinfo[3].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[3].pixmap_type     = GNOME_APP_PIXMAP_NONE/*GNOME_APP_PIXMAP_STOCK*/;
 	   uinfo[3].pixmap_info     = GNOME_STOCK_MENU_OPEN;
 	   uinfo[3].accelerator_key = 0;
 	   uinfo[3].ac_mods         = (GdkModifierType) 0;
 	   uinfo[3].widget          = NULL;
-	   
-	   menu = gnome_popup_menu_new(uinfo);
-	   gnome_popup_menu_attach(menu, button, t);
-	   
+
+/*	  menu = gnome_popup_menu_new(uinfo);
+	  gnome_popup_menu_attach(menu, button, t);*/
+/*	  task_dest = g_list_append(task_dest, menu);*/
+
 	  gtk_object_set_data(GTK_OBJECT(button), "icon1", icon1);
 	  gtk_object_set_data(GTK_OBJECT(button), "icon2", icon2);
 	  gtk_object_set_data(GTK_OBJECT(button), "icon3", icon3);
