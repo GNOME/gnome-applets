@@ -39,11 +39,8 @@
 /* Global Sticky Notes instance */
 typedef struct
 {
-	GladeXML *about;		/* About dialog GladeXML*/
 	GladeXML *prefs;		/* Preferences dialog GladeXML */
 
-	GtkWidget *w_about;		/* The about dialog */
-	
 	GtkWidget *w_prefs;		/* The prefs dialog */
 	GtkAdjustment *w_prefs_width;
 	GtkAdjustment *w_prefs_height;
@@ -97,7 +94,6 @@ extern StickyNotes *stickynotes;
 
 void stickynotes_applet_init();
 void stickynotes_applet_init_icons();
-void stickynotes_applet_init_about();
 void stickynotes_applet_init_prefs();
 
 StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet);

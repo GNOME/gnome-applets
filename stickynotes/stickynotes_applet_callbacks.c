@@ -165,7 +165,28 @@ void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar
 /* Menu Callback : Display About window */
 void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
-	gtk_window_present(GTK_WINDOW(stickynotes->w_about));
+	static const gchar *authors[] = {
+		"Loban A Rahman <loban@earthling.net>",
+		NULL
+	};
+
+	static const gchar *documenters[] = {
+		"Loban A Rahman <loban@earthling.net>",
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
+
+	GtkWidget *w_about = gnome_about_new(_("Sticky Notes"),
+					     VERSION,
+					     _("(c) 2002-2003 Loban A Rahman"),
+					     _("Sticky Notes for the Gnome Desktop Environment"),
+					     authors,
+					     documenters,
+					     strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+					     stickynotes->icon_normal);
+
+	gtk_widget_show(w_about);
 }
 
 /* Preferences Callback : Save. */
@@ -290,4 +311,12 @@ void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 	else
 		gtk_widget_hide(GTK_WIDGET(dialog));
+}
+
+/* Preferences Callback : Delete */
+gboolean preferences_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+	gtk_widget_hide(widget);
+
+	return TRUE;
 }

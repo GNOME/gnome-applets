@@ -84,7 +84,6 @@ void stickynotes_applet_init()
 	stickynotes->tooltips = gtk_tooltips_new();
 
 	stickynotes_applet_init_icons();
-	stickynotes_applet_init_about();
 	stickynotes_applet_init_prefs();
 
 	/* Set default icon for all sticky note windows */
@@ -125,25 +124,6 @@ void stickynotes_applet_init_icons()
 	gtk_icon_factory_add_default(icon_factory);
 
 	g_object_unref(G_OBJECT(icon_factory));
-}
-
-void stickynotes_applet_init_about()
-{
-	stickynotes->about = glade_xml_new(GLADE_PATH, "about_dialog", NULL);
-
-	stickynotes->w_about = glade_xml_get_widget(stickynotes->about, "about_dialog");
-
-	/* FIXME : Hack because libglade does not properly set these */
-	g_object_set(G_OBJECT(stickynotes->w_about), "name", _("Sticky Notes"));
-	g_object_set(G_OBJECT(stickynotes->w_about), "version", VERSION);
-	
-	{
-		GdkPixbuf *logo = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
-		g_object_set(G_OBJECT(stickynotes->w_about), "logo", logo);
-		g_object_unref(logo);
-	}
-	if (strcmp(_("translator_credits"), "translator_credits") == 0)
-		g_object_set(G_OBJECT(stickynotes->w_about), "translator_credits", NULL);
 }
 
 static void
@@ -188,6 +168,7 @@ void stickynotes_applet_init_prefs()
 	stickynotes->w_prefs_force = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "force_default_check"))->toggle_button);
 
 	g_signal_connect(G_OBJECT(stickynotes->w_prefs), "response", G_CALLBACK(preferences_response_cb), NULL);
+	g_signal_connect(G_OBJECT(stickynotes->w_prefs), "delete-event", G_CALLBACK(preferences_delete_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_width), "value-changed", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_height), "value-changed", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sys_color), "toggled", G_CALLBACK(preferences_save_cb), NULL);
