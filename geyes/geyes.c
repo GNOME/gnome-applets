@@ -75,8 +75,6 @@ applet_back_change (PanelApplet			*a,
 	}
 
 	gtk_rc_style_unref (rc_style);
-
-	return;
 }
 
 /* TODO - Optimize this a bit */

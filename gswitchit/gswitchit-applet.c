@@ -406,8 +406,6 @@ GSwitchItAppletChangeBackground (PanelApplet *
 	}
 
 	gtk_rc_style_unref (rc_style);
-
-	return;
 }
 
 static gboolean

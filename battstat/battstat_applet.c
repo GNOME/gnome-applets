@@ -1307,8 +1307,6 @@ change_background(PanelApplet *a, PanelAppletBackgroundType type, GdkColor *colo
 	}
 
 	gtk_rc_style_unref (rc_style);
-
-	return;
 }
 
 static gboolean

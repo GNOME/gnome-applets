@@ -141,8 +141,6 @@ static void change_background_cb (
 	}
 
 	gtk_rc_style_unref (rc_style);
-
-	return;
 }
 
 

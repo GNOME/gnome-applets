@@ -1155,8 +1155,6 @@ accessx_status_applet_background (PanelApplet *a, PanelAppletBackgroundType type
 	}
 
 	gtk_rc_style_unref (rc_style);
-
-	return;
 }
 
 static gboolean
