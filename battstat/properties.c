@@ -122,7 +122,7 @@ show_bat_toggled (GtkToggleButton *button, gpointer data)
   
   toggled = gtk_toggle_button_get_active (button);
  
-  if (!( toggled || battstat->showpercent || battstat->showstatus)) {
+  if (!( toggled || battstat->showtext || battstat->showstatus)) {
     gtk_toggle_button_set_active (button, !toggled);
     return;
   }
@@ -148,7 +148,7 @@ show_status_toggled (GtkToggleButton *button, gpointer data)
   
   toggled = gtk_toggle_button_get_active (button);
   
-  if (!( toggled || battstat->showpercent || battstat->showbattery)) {
+  if (!( toggled || battstat->showtext || battstat->showbattery)) {
     gtk_toggle_button_set_active (button, !toggled);
     return;
   }
@@ -162,25 +162,23 @@ show_status_toggled (GtkToggleButton *button, gpointer data)
 }
 
 static void
-show_percent_toggled (GtkToggleButton *button, gpointer data)
+show_text_toggled (GtkToggleButton *button, gpointer data)
 {
   ProgressData   *battstat = data;
   PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  gboolean toggled;
   
-  toggled = gtk_toggle_button_get_active (button);
+  if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (battstat->radio_text_2)))
+	  battstat->showtext = APPLET_SHOW_PERCENT;
+  else if (gtk_toggle_button_get_active (
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_3)))
+	  battstat->showtext = APPLET_SHOW_TIME;
+  else
+	  battstat->showtext = APPLET_SHOW_NONE;
   
-  if (!( toggled || battstat->showstatus || battstat->showbattery)) {
-    gtk_toggle_button_set_active (button, !toggled);
-    return;
-  }
-  
-  battstat->showpercent = toggled;
-	change_orient(applet, battstat->orienttype, battstat);
+  change_orient(applet, battstat->orienttype, battstat);
 	
-  panel_applet_gconf_set_bool   (applet, "show_percent", 
-  				 battstat->showpercent, NULL);
-  				 
+  panel_applet_gconf_set_int   (applet, "show_text", 
+  				 battstat->showtext, NULL);
 }
 
 static void
@@ -213,10 +211,6 @@ lowbatt_toggled (GtkToggleButton *button, gpointer data)
   battstat->lowbattnotification = gtk_toggle_button_get_active (button);
   panel_applet_gconf_set_bool   (applet,"low_battery_notification", 
   				 battstat->lowbattnotification, NULL);  
-  if(battstat->lowbattnotification || battstat->fullbattnot)
-     soft_set_sensitive(GTK_WIDGET (battstat->beep_toggle), TRUE);
-  else
-     soft_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
 }
 
 static void
@@ -228,37 +222,6 @@ full_toggled (GtkToggleButton *button, gpointer data)
   battstat->fullbattnot = gtk_toggle_button_get_active (button);
   panel_applet_gconf_set_bool   (applet,"full_battery_notification", 
   				 battstat->fullbattnot, NULL);  
-  			
-  if(battstat->lowbattnotification || battstat->fullbattnot)
-     soft_set_sensitive(GTK_WIDGET (battstat->beep_toggle), TRUE);
-  else
-     soft_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
-}
-
-static void
-beep_toggled (GtkToggleButton *button, gpointer data)
-{
-  ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  
-  battstat->beep = gtk_toggle_button_get_active (button);
-  panel_applet_gconf_set_bool   (applet,"beep", 
-  				 battstat->beep, NULL);  
-}  
-
-static void
-progdir_toggled (GtkToggleButton *button, gpointer data)
-{
-  ProgressData   *battstat = data;
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-  
-  battstat->draintop = gtk_toggle_button_get_active (button); 
-  panel_applet_gconf_set_bool (applet,"drain_from_top", 
-  			       battstat->draintop, NULL); 
-
-  battstat->colors_changed = TRUE;			       
-  pixmap_timeout(battstat); 
-  battstat->colors_changed = FALSE;				 
 }
 
 static void
@@ -327,7 +290,6 @@ prop_cb (BonoboUIComponent *uic,
   GtkWidget *preview_hbox;
   GtkWidget *widget;
   guint      percentage;
-  gboolean   writable;
   GConfClient *client;
   gboolean   inhibit_command_line;
   AtkObject *atk_widget;
@@ -367,75 +329,9 @@ prop_cb (BonoboUIComponent *uic,
   gtk_window_set_screen (GTK_WINDOW (battstat->prop_win),
 			 gtk_widget_get_screen (battstat->applet));
 
-  writable = key_writable (PANEL_APPLET (battstat->applet), "red_value");
-  writable = writable && key_writable (PANEL_APPLET (battstat->applet), "orange_value");
-  writable = writable && key_writable (PANEL_APPLET (battstat->applet), "yellow_value");
-	
-  widget = glade_xml_get_widget (glade_xml, "yellow_spin");
-  if ( ! writable) {
-	  hard_set_sensitive (widget, FALSE);
-	  hard_set_sensitive (glade_xml_get_widget (glade_xml, "yellow_label"), FALSE);
-  }
+  g_signal_connect (G_OBJECT (battstat->prop_win), "delete_event",
+		  G_CALLBACK (gtk_true), NULL);
   
-  battstat->eyellow_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
-
-  g_signal_connect (G_OBJECT (battstat->prop_win), "delete_event", G_CALLBACK (gtk_true), NULL);
-
-  g_signal_connect (G_OBJECT (battstat->eyellow_adj), "value_changed",
-										G_CALLBACK (adj_value_changed_cb), battstat);
-
-  widget = glade_xml_get_widget (glade_xml, "orange_spin");
-  if ( ! writable) {
-	  hard_set_sensitive (widget, FALSE);
-	  hard_set_sensitive (glade_xml_get_widget (glade_xml, "orange_label"), FALSE);
-  }
-  
-  battstat->eorange_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
-	
-  g_signal_connect (G_OBJECT (battstat->eorange_adj), "value_changed",
-										G_CALLBACK (adj_value_changed_cb), battstat);
-
-  widget = glade_xml_get_widget (glade_xml, "red_spin");
-  if ( ! writable) {
-	  hard_set_sensitive (widget, FALSE);
-	  hard_set_sensitive (glade_xml_get_widget (glade_xml, "red_label"), FALSE);
-  }
-  
-  battstat->ered_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
-	
-  g_signal_connect (G_OBJECT (battstat->ered_adj), "value_changed",
-										G_CALLBACK (adj_value_changed_cb), battstat);
-
-  preview_hbox = glade_xml_get_widget (glade_xml, "preview_hbox");
-
-  battstat->testpixmap = gdk_pixmap_create_from_xpm_d (battstat->applet->window,
-						       &battstat->testmask,
-						       NULL,
-						       battery_gray_xpm); 
-
-  battstat->testpixbuffer = gdk_pixmap_create_from_xpm_d (battstat->applet->window,
-							  &battstat->testpixmask,
-							  NULL,
-							  battery_gray_xpm); 
-
-  battstat->testpixgc = gdk_gc_new (battstat->testpixmap);
-
-  battstat->testpixmapwid = gtk_image_new_from_pixmap (battstat->testpixmap, 
-																											 battstat->testmask);
-
-  gtk_box_pack_start (GTK_BOX (preview_hbox), 
-		      GTK_WIDGET (battstat->testpixmapwid),
-		      FALSE, TRUE, 0);
-	
-  battstat->testpercent = glade_xml_get_widget (glade_xml, "preview_label");
-  
-  widget = glade_xml_get_widget (glade_xml, "preview_hscale");
-
-  battstat->testadj = GTK_OBJECT (gtk_range_get_adjustment (GTK_RANGE (widget)));
-  
-  g_signal_connect (G_OBJECT(battstat->testadj), "value_changed",
-										G_CALLBACK(simul_cb), battstat);
-	
   battstat->lowbatt_toggle = glade_xml_get_widget (glade_xml, "lowbatt_toggle");
   g_signal_connect (G_OBJECT (battstat->lowbatt_toggle), "toggled",
   		    G_CALLBACK (lowbatt_toggled), battstat);
@@ -451,27 +347,11 @@ prop_cb (BonoboUIComponent *uic,
   if ( ! key_writable (PANEL_APPLET (battstat->applet), "full_battery_notification")) {
 	  hard_set_sensitive (battstat->full_toggle, FALSE);
   }
-  		    
-  battstat->beep_toggle = glade_xml_get_widget (glade_xml, "beep_toggle");
-  g_signal_connect (G_OBJECT (battstat->beep_toggle), "toggled",
-  		    G_CALLBACK (beep_toggled), battstat);
-
-  if ( ! key_writable (PANEL_APPLET (battstat->applet), "beep")) {
-	  hard_set_sensitive (battstat->beep_toggle, FALSE);
-  }
-  
-  if(battstat->beep) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->beep_toggle), TRUE);
-  }
-   
   if(battstat->fullbattnot) {
      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->full_toggle), TRUE);
   }
   if(battstat->lowbattnotification) {
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle), TRUE);
-  }
-  if(battstat->lowbattnotification == 0 && battstat->fullbattnot == 0) {
-    soft_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
   }
 
   battstat->suspend_entry = glade_xml_get_widget (glade_xml, "suspend_entry");
@@ -485,38 +365,6 @@ prop_cb (BonoboUIComponent *uic,
 	  hard_set_sensitive (battstat->suspend_entry, FALSE);
 	  hard_set_sensitive (glade_xml_get_widget (glade_xml, "suspend_label"), FALSE);
   }
-
-  battstat->progdir_radio = glade_xml_get_widget (glade_xml, "dir_radio_top");
-  
-  atk_widget = gtk_widget_get_accessible (battstat->progdir_radio);
-  if (GTK_IS_ACCESSIBLE (atk_widget)) {
-	  atk_object_set_name (atk_widget,
-			  _("Progress Bar Direction Moves towards top"));
-  }
-  
-  g_signal_connect (G_OBJECT (battstat->progdir_radio), "toggled",
-  		    G_CALLBACK (progdir_toggled), battstat);
-  widget = glade_xml_get_widget (glade_xml, "dir_radio_bottom");
-  
-  atk_widget = gtk_widget_get_accessible (widget);
-  if (GTK_IS_ACCESSIBLE (atk_widget)) {
-	  atk_object_set_name (atk_widget,
-			  _("Progress Bar Direction Moves towards bottom"));
-  }
-
-  if ( ! key_writable (PANEL_APPLET (battstat->applet), "drain_from_top")) {
-	  hard_set_sensitive (battstat->progdir_radio, FALSE);
-	  hard_set_sensitive (widget, FALSE);
-  }
-	
-  if(battstat->draintop) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->progdir_radio), 1);
-  } else {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);
-  }
-#if 0 
-  battstat->dock_toggle = glade_xml_get_widget (glade_xml, "dock_toggle");
-#endif
   layout_table = glade_xml_get_widget (glade_xml, "layout_table");
 
   battstat->radio_lay_batt_on = glade_xml_get_widget (glade_xml, "show_batt_toggle");
@@ -541,14 +389,43 @@ prop_cb (BonoboUIComponent *uic,
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
   }
 
-  battstat->radio_lay_percent_on = glade_xml_get_widget (glade_xml, "show_percent_toggle");
-  g_signal_connect (G_OBJECT (battstat->radio_lay_percent_on), "toggled",
-  		    G_CALLBACK (show_percent_toggled), battstat);
-  if ( ! key_writable (PANEL_APPLET (battstat->applet), "show_percent"))
-	  hard_set_sensitive (battstat->radio_lay_percent_on, FALSE);
+  battstat->radio_text_1 = glade_xml_get_widget (glade_xml, "show_text_toggle");
+  battstat->radio_text_2 = glade_xml_get_widget (glade_xml,
+		  "show_text_toggle_2");
+  battstat->radio_text_3 = glade_xml_get_widget (glade_xml,
+		  "show_text_toggle_3");
+  
+  g_signal_connect (G_OBJECT (battstat->radio_text_1), "toggled",
+		  G_CALLBACK (show_text_toggled), battstat);
+  g_signal_connect (G_OBJECT (battstat->radio_text_2), "toggled",
+		  G_CALLBACK (show_text_toggled), battstat);
+  g_signal_connect (G_OBJECT (battstat->radio_text_3), "toggled",
+		  G_CALLBACK (show_text_toggled), battstat);
+  
+  if ( ! key_writable (PANEL_APPLET (battstat->applet), "show_text"))
+  {
+	  hard_set_sensitive (battstat->radio_text_1, FALSE);
+	  hard_set_sensitive (battstat->radio_text_2, FALSE);
+	  hard_set_sensitive (battstat->radio_text_3, FALSE);
+  }
 
-  if(battstat->showpercent) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
+  if (battstat->showtext == APPLET_SHOW_PERCENT)
+  {
+	  gtk_toggle_button_set_active (
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_2),
+			  TRUE);
+  }
+  else if (battstat->showtext == APPLET_SHOW_TIME)
+  {
+	  gtk_toggle_button_set_active (
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_3),
+			  TRUE);
+  }
+  else /* APPLET_SHOW_NONE */
+  {
+	  gtk_toggle_button_set_active (
+			  GTK_TOGGLE_BUTTON (battstat->radio_text_1),
+			  TRUE);
   }
 
    gtk_dialog_set_default_response (GTK_DIALOG (battstat->prop_win), GTK_RESPONSE_CLOSE);
@@ -558,6 +435,4 @@ prop_cb (BonoboUIComponent *uic,
    g_signal_connect (G_OBJECT (battstat->prop_win), "response",
    		     G_CALLBACK (response_cb), battstat);
    gtk_widget_show_all (GTK_WIDGET (battstat->prop_win));
-   
-   gtk_adjustment_value_changed(GTK_ADJUSTMENT (battstat->testadj));
 }

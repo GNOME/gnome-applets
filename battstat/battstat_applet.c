@@ -656,7 +656,7 @@ pixmap_timeout( gpointer data )
 
       /* Update the tooltip */
 
-      if(!battery->showbattery && !battery->showpercent) {
+      if(!battery->showbattery && !battery->showtext) {
 	 gchar *new_string;
 	 new_string = get_remaining (apminfo);
 
@@ -685,13 +685,22 @@ pixmap_timeout( gpointer data )
       g_free (new_label);
    
       /* Update the battery meter, tooltip and label */
-      /* FIXME: 2.9 feature, add optional time here */
       
-      if (batterypresent) {
-	 new_label = g_strdup_printf ("%d%%", batt_life);
-      } else {
-	 new_label = g_strdup (_("N/A"));
+      if (batterypresent && battery->showtext == APPLET_SHOW_PERCENT)
+	      new_label = g_strdup_printf ("%d%%", batt_life);
+      else if (batterypresent && battery->showtext == APPLET_SHOW_TIME)
+      {
+	      if (acline_status && batt_life == 100)
+		      new_label = g_strdup ("-:--");
+	      else
+	      {
+		      int time;
+		      time = apminfo.battery_time;
+		      new_label = g_strdup_printf ("%d:%02d", time/60, time%60);
+	      }
       }
+      else
+	      new_label = g_strdup (_("N/A"));
 
       gtk_label_set_text (GTK_LABEL (battery->percent), new_label);
       gtk_label_set_text (GTK_LABEL (battery->statuspercent), new_label);
@@ -894,7 +903,6 @@ destroy_applet (GtkWidget *widget, gpointer data)
    gtk_timeout_remove (pdata->pixtimer);
    pdata->pixtimer = 0;
    pdata->applet = NULL;
-   g_object_unref(G_OBJECT (pdata->testpixgc));
    g_object_unref(G_OBJECT (pdata->pixgc));
    g_object_unref(pdata->ac_tip);
    g_object_unref(pdata->progress_tip);
@@ -1042,8 +1050,6 @@ about_cb (BonoboUIComponent *uic,
 	  const char        *verb)
 {
    GdkPixbuf   *pixbuf;
-   GError      *error = NULL;
-   gchar       *file;
    
    const gchar *authors[] = {
 	/* if your charset supports it, please replace the "o" in
@@ -1051,7 +1057,7 @@ about_cb (BonoboUIComponent *uic,
 	_("Jorgen Pehrson <jp@spektr.eu.org>"), 
 	"Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
 	"Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
-	"Davyd Madeley <davyd@ucc.asn.au>",
+	"Davyd Madeley <davyd@madeley.id.au>",
 	NULL
    };
 
@@ -1071,14 +1077,8 @@ about_cb (BonoboUIComponent *uic,
 	return;
    }
    
-   file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "battstat.png", FALSE, NULL);
-   pixbuf = gdk_pixbuf_new_from_file (file, &error);
-   g_free (file);
-   
-   if (error) {
-   	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-	g_error_free (error);
-   }
+   pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+		   "battstat", 48, 0, NULL);
    
    battstat->about_dialog = gnome_about_new (
 				/* The long name of the applet in the About dialog.*/
@@ -1153,7 +1153,7 @@ change_orient (PanelApplet       *applet,
       break;
     case PANEL_APPLET_ORIENT_LEFT:
     case PANEL_APPLET_ORIENT_RIGHT:
-      if ( (!battstat->showpercent && battstat->panelsize>=60) || (battstat->showpercent && battstat->panelsize>=90) )
+      if ( (!battstat->showtext && battstat->panelsize>=60) || (battstat->showtext && battstat->panelsize>=90) )
 	  battstat->horizont=TRUE;
       else 
 	battstat->horizont=FALSE;
@@ -1169,14 +1169,14 @@ change_orient (PanelApplet       *applet,
       battstat->showstatus ?
 	gtk_widget_show (battstat->statuspixmapwid):
 	gtk_widget_hide (battstat->statuspixmapwid);
-      battstat->showpercent ?
+      battstat->showtext ?
 	gtk_widget_show (battstat->percent):gtk_widget_hide (battstat->percent);
       battstat->showbattery ?
 	gtk_widget_show (battstat->pixmapwid):gtk_widget_hide (battstat->pixmapwid);
-      (battstat->showbattery || battstat->showpercent) ?
+      (battstat->showbattery || battstat->showtext) ?
 	gtk_widget_show (battstat->framebattery):gtk_widget_hide (battstat->framebattery);
       
-      if (battstat->showbattery == 0 && battstat->showpercent == 0) {
+      if (battstat->showbattery == 0 && battstat->showtext == 0) {
 	 if(acline_status == 0) {
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power and the battery meter
@@ -1235,7 +1235,7 @@ change_orient (PanelApplet       *applet,
       battstat->showstatus ?
 	gtk_widget_show (battstat->statuspixmapwid):
 	gtk_widget_hide (battstat->statuspixmapwid);
-      battstat->showpercent ?
+      battstat->showtext ?
 	gtk_widget_show (battstat->statuspercent):gtk_widget_hide (battstat->statuspercent);
       battstat->showbattery ?
 	gtk_widget_show (battstat->frameybattery):gtk_widget_hide (battstat->frameybattery);
@@ -1244,7 +1244,7 @@ change_orient (PanelApplet       *applet,
 	gtk_widget_set_usize(battstat->framestatus,width,24):
       gtk_widget_set_usize(battstat->framestatus, 20, 24);
 #endif      
-      if(battstat->showstatus == 0 && battstat->showpercent == 1) {
+      if(battstat->showstatus == 0 && battstat->showtext == 1) {
 	 gtk_widget_show (battstat->framestatus);
 	 gtk_widget_hide (battstat->statuspixmapwid);
 #ifdef FIXME
@@ -1262,7 +1262,7 @@ change_orient (PanelApplet       *applet,
 	 gtk_widget_show (battstat->statuspixmapwid);      
       }
 #endif
-      if(battstat->showbattery == 0 && battstat->showpercent == 0) {
+      if(battstat->showbattery == 0 && battstat->showtext == 0) {
 	 if(acline_status == 0) {
 	    /* 0 = Battery power */
 		     /* This string will display as a tooltip over the status frame
@@ -1306,113 +1306,6 @@ change_orient (PanelApplet       *applet,
    
    return;
 }
-
-void
-simul_cb (GtkWidget *ignored, gpointer data)
-{
-   ProgressData *battery = data;
-   gchar *new_label;
-   GdkColor *color, *darkcolor;
-   gint slidervalue;
-   gint prefred, preforange, prefyellow, progress_value, i, x;
-
-   slidervalue=(int)GTK_ADJUSTMENT (battery->testadj)->value;
-   prefyellow = (int) GTK_ADJUSTMENT (battery->eyellow_adj)->value;
-   preforange =(int) GTK_ADJUSTMENT (battery->eorange_adj)->value;
-   prefred =(int) GTK_ADJUSTMENT (battery->ered_adj)->value;
-   
-   new_label = g_strdup_printf (
-	    "%d%%",
-	    slidervalue);
-   gtk_label_set_text ( GTK_LABEL (battery->testpercent), new_label);
-   g_free (new_label);
-   
-   if (slidervalue <= prefred) {
-      color=red;
-      darkcolor=darkred;
-   } else if (slidervalue <= preforange) {
-      color=orange;
-      darkcolor=darkorange;
-   } else if (slidervalue<= prefyellow) {
-      color=yellow;
-      darkcolor=darkyellow;
-   } else {
-      color=green;
-      darkcolor=darkgreen;
-   }
-   
-   gdk_draw_drawable(battery->testpixmap,
-		     battery->testpixgc,
-		     battery->testpixbuffer,
-		     0,0,
-		     0,0,
-		     -1,-1);
-   if(battery->draintop) {
-      progress_value = PROGLEN*slidervalue/100.0;
-      
-      for(i=0; color[i].pixel!=-1; i++) {
-	 gdk_gc_set_foreground(battery->testpixgc, &color[i]);
-	 gdk_draw_line (battery->testpixmap,
-			battery->testpixgc,
-			pixel_offset_top[i], i+2,
-			pixel_offset_top[i]+progress_value, i+2);
-      }
-   } else {
-      progress_value = PROGLEN*slidervalue/100.0;
-      
-      for(i=0; color[i].pixel!=-1; i++) {
-	 gdk_gc_set_foreground(battery->testpixgc, &color[i]);
-	 gdk_draw_line (battery->testpixmap,
-			battery->testpixgc,
-			pixel_offset_bottom[i], i+2,
-			pixel_offset_bottom[i]-progress_value, i+2);
-      }
-      
-      
-      for(i=0; darkcolor[i].pixel!=-1; i++) {
-	 x=(pixel_offset_bottom[i]-progress_value)-pixel_top_length[i];
-	 if(x < pixel_offset_top[i]) {
-	    x = pixel_offset_top[i];
-	 }
-	 if(progress_value < 33) {
-	    gdk_gc_set_foreground(battery->testpixgc, &darkcolor[i]);
-	    
-	    gdk_draw_line (battery->testpixmap,
-			   battery->testpixgc,
-			   (pixel_offset_bottom[i]-progress_value)-1, i+2,
-			   x, i+2);
-	 }
-      }
-   }
-   gtk_widget_queue_draw (GTK_WIDGET (battery->testpixmapwid));
-}
-
-void
-adj_value_changed_cb (GtkAdjustment *ignored, gpointer data)
-{
-   ProgressData *battstat = data;
-   PanelApplet *applet = PANEL_APPLET (battstat->applet);
-   
-   GTK_ADJUSTMENT (battstat->ered_adj)->upper=(int)GTK_ADJUSTMENT (battstat->eorange_adj)->value-1;
-   GTK_ADJUSTMENT (battstat->eorange_adj)->lower=(int)GTK_ADJUSTMENT (battstat->ered_adj)->value+1;
-   GTK_ADJUSTMENT (battstat->eorange_adj)->upper=(int)GTK_ADJUSTMENT (battstat->eyellow_adj)->value-1;
-   GTK_ADJUSTMENT (battstat->eyellow_adj)->lower=(int)GTK_ADJUSTMENT (battstat->eorange_adj)->value+1;
-   
-   battstat->yellow_val = GTK_ADJUSTMENT (battstat->eyellow_adj)->value;
-   battstat->orange_val = GTK_ADJUSTMENT (battstat->eorange_adj)->value;
-   battstat->red_val = GTK_ADJUSTMENT (battstat->ered_adj)->value;
-   panel_applet_gconf_set_int (applet, "red_value", 
-   			       battstat->red_val, NULL);
-   panel_applet_gconf_set_int (applet, "orange_value",
-   			       battstat->orange_val,  NULL);
-   panel_applet_gconf_set_int (applet, "yellow_value", 
-   			       battstat->yellow_val, NULL);
-   battstat->colors_changed = TRUE;
-   simul_cb(NULL, battstat);
-   pixmap_timeout (battstat);
-   battstat->colors_changed = FALSE;
-}
-
 
 void
 size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
@@ -1517,7 +1410,7 @@ load_preferences(ProgressData *battstat)
   
   battstat->showstatus = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_status", NULL);
   battstat->showbattery = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_battery", NULL);
-  battstat->showpercent = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_percent", NULL);
+  battstat->showtext = panel_applet_gconf_get_int (applet, GCONF_PATH "show_text", NULL);
   battstat->suspend_cmd = panel_applet_gconf_get_string (applet, GCONF_PATH "suspend_command", NULL);
   
 }

@@ -32,6 +32,12 @@ $Id$
 
 #define PROGLEN 33.0
 
+enum {
+	APPLET_SHOW_NONE,
+	APPLET_SHOW_PERCENT,
+	APPLET_SHOW_TIME
+};
+
 /*
  * Not used yet... 
  */
@@ -52,7 +58,9 @@ typedef struct _ProgressData {
   GtkWidget *radio_orient_horizont;
   GtkWidget *radio_lay_batt_on;
   GtkWidget *radio_lay_status_on;
-  GtkWidget *radio_lay_percent_on;
+  GtkWidget *radio_text_1;
+  GtkWidget *radio_text_2;
+  GtkWidget *radio_text_3;
   GdkPixmap *pixbuffer;
   GdkBitmap *pixmask;
   GdkPixmap *pixbuffery;
@@ -88,7 +96,7 @@ typedef struct _ProgressData {
   gboolean horizont;
   gboolean showstatus;
   gboolean showbattery;
-  gboolean showpercent;
+  int showtext;
 
   GtkWidget *suspend_entry;
   char *suspend_cmd;
@@ -98,23 +106,11 @@ typedef struct _ProgressData {
   guint yellow_val;
   int panelsize;
   PanelAppletOrient orienttype;
-  GtkObject *ered_adj;
-  GtkObject *eorange_adj;
-  GtkObject *eyellow_adj;
   int pixtimer;
   int acpiwatch;
 
   GtkWidget *lowbatt_toggle;
   GtkWidget *full_toggle;
-  GtkWidget *testpercent;
-  GdkPixmap *testpixmap;
-  GdkBitmap *testmask;
-  GdkPixmap *testpixbuffer;
-  GdkBitmap *testpixmask;
-  GdkGC *testpixgc;
-  GtkWidget *testpixmapwid;
-  GtkObject *testadj;
-  GtkWidget *beep_toggle;
   GtkWidget *lowbattnotificationdialog;
 
   /* last_* for the benefit of the timeout functions */
