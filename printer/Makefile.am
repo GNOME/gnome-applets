@@ -25,5 +25,5 @@ BITMAPS = print.xpm
 
 EXTRA_DIST = printer.desktop $BITMAPS
 
-sysdir = $(datadir)/applets/Network
+sysdir = $(datadir)/applets/Utility
 sys_DATA = printer.desktop

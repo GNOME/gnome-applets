@@ -26,5 +26,5 @@ cpuload_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = cpuload_applet.desktop
 
-sysdir = $(datadir)/applets/Utility
+sysdir = $(datadir)/applets/Monitors
 sys_DATA = cpuload_applet.desktop
