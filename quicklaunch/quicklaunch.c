@@ -47,6 +47,7 @@ gint rows=2;
 gint cols=2;
 gint appcount=0;
 gint orientation=0;
+gint panel_size=48;
 
 char *directory = NULL;
 
@@ -201,6 +202,7 @@ launcher_table_update ()
 	gint x=0;
 	gint y=0;
 	gint c,i;
+	gint rows;
 	GtkWidget *button;
 	GtkWidget *pixmap;
 	GtkWidget *menu;
@@ -213,14 +215,17 @@ launcher_table_update ()
 		GNOMEUIINFO_END,
 	};
 
+	rows = panel_size/24;
+	if(rows<1) rows = 1;
+
 	destroy_launcher_widgets ();
 	c = g_list_length (launchers);
 	if (orientation) {
-		gtk_table_resize (GTK_TABLE (launcher_table), c/2, 1);
+		gtk_table_resize (GTK_TABLE (launcher_table), c/rows, 1);
 		gtk_handle_box_set_handle_position (GTK_HANDLE_BOX (handlebox),
 						    GTK_POS_TOP);
 	} else {
-		gtk_table_resize (GTK_TABLE (launcher_table), 1, c/2);
+		gtk_table_resize (GTK_TABLE (launcher_table), 1, c/rows);
 		gtk_handle_box_set_handle_position (GTK_HANDLE_BOX(handlebox),
 						    GTK_POS_LEFT);
 					 
@@ -268,7 +273,7 @@ launcher_table_update ()
 		uinfo[0].label           = _("Launcher properties...");
 		uinfo[0].hint            = NULL;
 		uinfo[0].moreinfo        = cb_launcher_properties;
-		uinfo[0].user_data       = (gint *)i;
+		uinfo[0].user_data       = GINT_TO_POINTER(i);
 		uinfo[0].unused_data     = NULL;
 		uinfo[0].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 		uinfo[0].pixmap_info     = GNOME_STOCK_MENU_OPEN;
@@ -280,7 +285,7 @@ launcher_table_update ()
 		uinfo[1].label           = _("Delete launcher");
 		uinfo[1].hint            = NULL;
 		uinfo[1].moreinfo        = cb_launcher_delete;
-		uinfo[1].user_data       = (gint *)i;
+		uinfo[1].user_data       = GINT_TO_POINTER(i);
 		uinfo[1].unused_data     = NULL;
 		uinfo[1].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 		uinfo[1].pixmap_info     = GNOME_STOCK_MENU_OPEN;
@@ -291,7 +296,7 @@ launcher_table_update ()
 		menu = gnome_popup_menu_new (uinfo);
 		gnome_popup_menu_attach (menu, button, GINT_TO_POINTER(i));
 
-		if (y == 1) {
+		if (y == rows-1) {
 			y=0;
 			x++;
 		} else
@@ -406,7 +411,32 @@ cb_change_orient (GtkWidget *widget, PanelOrientType orient, gpointer data)
 }
 
 static void
-init_quicklaunch ()
+cb_change_pixel_size (GtkWidget *widget, int size, gpointer data)
+{
+	panel_size = size;
+	launcher_table_update ();
+}
+
+/* ignore first button click and translate it into a second button slick */
+static int
+ignore_1st_click(GtkWidget *widget, GdkEvent *event)
+{
+	GdkEventButton *buttonevent = (GdkEventButton *)event;
+
+	if((event->type == GDK_BUTTON_PRESS &&
+	    buttonevent->button == 1) ||
+	   (event->type == GDK_BUTTON_RELEASE &&
+	    buttonevent->button == 1)) {
+		buttonevent->button = 2;
+	}
+	 
+	return FALSE;
+}
+
+
+
+static void
+init_quicklaunch (void)
 {
 
 	GtkWidget *frame;
@@ -437,12 +467,16 @@ init_quicklaunch ()
 			    GTK_SIGNAL_FUNC (cb_applet_destroy), NULL);
 	gtk_signal_connect (GTK_OBJECT (wnd), "change_orient",
 			    GTK_SIGNAL_FUNC (cb_change_orient), NULL);
+	gtk_signal_connect (GTK_OBJECT (wnd), "change_pixel_size",
+			    GTK_SIGNAL_FUNC (cb_change_pixel_size), NULL);
 	launcher_table=gtk_table_new (rows, cols, FALSE);
 	gtk_container_set_resize_mode (GTK_CONTAINER (launcher_table),
 				       GTK_RESIZE_QUEUE);
 	frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
 	handlebox = gtk_handle_box_new ();
+	gtk_signal_connect(GTK_OBJECT(handlebox),"event",
+			   GTK_SIGNAL_FUNC(ignore_1st_click),NULL);
 	gtk_container_add (GTK_CONTAINER (handlebox), launcher_table);
 	gtk_container_add (GTK_CONTAINER (frame), handlebox);
 	applet_widget_add (APPLET_WIDGET (wnd), frame);

@@ -11,7 +11,7 @@ quicklaunch_applet_LDADD = \
 	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-sysdir = $(datadir)/applets/Multimedia
+sysdir = $(datadir)/applets/Utility
 sys_DATA = quicklaunch_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
