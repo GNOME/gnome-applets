@@ -850,7 +850,7 @@ static gboolean gnote_load_xml(const gchar *filename)
                 
                 tmp_string1 = xmlGetProp(doc->root, gnotes_version_property_name);
                 
-                if(strcmp(gnotes_file_format, tmp_string1) == 0)
+                if(gnotes_file_format && tmp_string1 && strcmp(gnotes_file_format, tmp_string1) == 0)
                 {
                     ret_val = gnote_load_xml_v10(doc, filename);
                 }
@@ -901,7 +901,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
 
     if(ret_val)
     {
-        if(strcmp(filename, tmp_string) != 0)
+        if(filename && strcmp(filename, tmp_string) != 0)
         {
             g_warning("Gnotes: gnote_load_xml_v10(): filename doesn't match "
                       "id property.  Resetting id to filename");
@@ -921,7 +921,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
         {
             ret_val = FALSE;
         }
-        else if((strcmp(tmp_node->name, gnotes_title_node_name) == 0) &&
+        else if((tmp_node->name && strcmp(tmp_node->name, gnotes_title_node_name) == 0) &&
                 (tmp_node->childs != 0))
         {
             title = tmp_node->childs->content;
@@ -938,7 +938,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
         /* location */
         tmp_node = tmp_node->next;
         
-        if((tmp_node != 0) && (strcmp(tmp_node->name, gnotes_loc_node_name) == 0))
+        if((tmp_node != 0) && (tmp_node->name && strcmp(tmp_node->name, gnotes_loc_node_name) == 0))
         {
             xmlNodePtr start_node = tmp_node->childs;
             xmlNodePtr intmp_node = tmp_node->childs;
@@ -949,7 +949,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                 {
                     /* ok. */
                 }
-                else if(strcmp(intmp_node->name, gnotes_x_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_x_node_name) == 0)
                 {
                     if((intmp_node->childs == 0) ||
                        sscanf(intmp_node->childs->content, "%d", &x) != 1)
@@ -958,7 +958,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                         ret_val = FALSE;
                     }
                 }
-                else if(strcmp(intmp_node->name, gnotes_y_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_y_node_name) == 0)
                 {
                     if((intmp_node->childs == 0) ||
                        sscanf(intmp_node->childs->content, "%d", &y) != 1)
@@ -967,7 +967,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                         ret_val = FALSE;
                     }
                 }
-                else if(strcmp(intmp_node->name, gnotes_height_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_height_node_name) == 0)
                 {
                     if((intmp_node->childs == 0) ||
                        sscanf(intmp_node->childs->content, "%d", &height) != 1)
@@ -976,7 +976,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                         ret_val = FALSE;
                     }
                 }
-                else if(strcmp(intmp_node->name, gnotes_width_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_width_node_name) == 0)
                 {
                     if((intmp_node->childs == 0) ||
                        sscanf(intmp_node->childs->content, "%d", &width) != 1)
@@ -1004,7 +1004,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
         /* state (including hidden) */
         tmp_node = tmp_node->next;
         
-        if((tmp_node != 0) && (strcmp(tmp_node->name, gnotes_state_node_name) == 0))
+        if((tmp_node != 0) && (tmp_node->name && strcmp(tmp_node->name, gnotes_state_node_name) == 0))
         {
             xmlNodePtr start_node = tmp_node->childs;
             xmlNodePtr intmp_node = tmp_node->childs;
@@ -1015,7 +1015,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                 {
                     /* ignore this.  It's OK (I think) */
                 }
-                else if(strcmp(intmp_node->name, gnotes_hidden_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_hidden_node_name) == 0)
                 {
                     if((intmp_node->childs == 0) ||
                        sscanf(intmp_node->childs->content, "%d", &hidden) != 1)
@@ -1044,7 +1044,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
         /* contents (including type and data */
         tmp_node = tmp_node->next;
 
-        if((tmp_node != 0) && (strcmp(tmp_node->name, gnotes_contents_node_name) == 0))
+        if((tmp_node != 0) && (tmp_node->name && strcmp(tmp_node->name, gnotes_contents_node_name) == 0))
         {
             xmlNodePtr start_node = tmp_node->childs;
             xmlNodePtr intmp_node = tmp_node->childs;
@@ -1055,7 +1055,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                 {
                     /* this is an ok situation.  Empty data is normal */
                 }
-                else if(strcmp(intmp_node->name, gnotes_data_type_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_data_type_node_name) == 0)
                 {
                     if(intmp_node->childs != 0)
                     {
@@ -1066,7 +1066,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
                         type = 0;
                     }
                 }
-                else if(strcmp(intmp_node->name, gnotes_data_node_name) == 0)
+                else if(intmp_node->name && strcmp(intmp_node->name, gnotes_data_node_name) == 0)
                 {
                     if(intmp_node->childs != 0)
                     {
