@@ -298,6 +298,7 @@ static gint timeout_cb (gpointer data)
 
 static void update_finish (WeatherInfo *info)
 {
+    char *s;
     /* Save weather info */
     gweather_info = info;
 
@@ -315,7 +316,9 @@ static void update_finish (WeatherInfo *info)
     place_widgets();
 
     /* Update tooltip */
-    gtk_tooltips_set_tip(tooltips, gweather_applet, weather_info_get_weather_summary(gweather_info), NULL);
+    s = weather_info_get_weather_summary(gweather_info);
+    gtk_tooltips_set_tip(tooltips, gweather_applet, s, NULL);
+    g_free (s);
 
     /* Update timer */
     if (timeout_tag > 0)

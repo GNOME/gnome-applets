@@ -1411,14 +1411,14 @@ gchar *weather_info_get_temp_summary (WeatherInfo *info)
 
 gchar *weather_info_get_weather_summary (WeatherInfo *info)
 {
-    static gchar buf[200];
+    gchar *buf;
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
-        return _("Retrieval failed");
-    strcpy(buf, weather_info_get_conditions(info));
+      return g_strdup (_("Retrieval failed"));
+    buf = weather_info_get_conditions(info);
     if (!strcmp(buf, "-"))
-        strcpy(buf, weather_info_get_sky(info));
-    return buf;
+        buf = weather_info_get_sky(info);
+    return g_strdup_printf ("%s: %s", weather_info_get_location (info), buf);
 }
 
 
