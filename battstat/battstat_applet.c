@@ -492,6 +492,7 @@ pixmap_timeout( gpointer data )
       ) {
 	   /* we can remove the battery warning dialog */
 	   gtk_widget_destroy (battery->lowbattnotificationdialog);
+	   battery->lowbattnotificationdialog = NULL;
    }
 
    if(
