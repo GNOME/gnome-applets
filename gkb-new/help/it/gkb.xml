@@ -1,10 +1,10 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.101.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "Agosto 2002">
-  <!ENTITY applet "Cambia tastiera">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "Settembre 2003">
+  <!ENTITY applet "Selettore disposizione tastiera">
 ]>
 
 <!-- 
@@ -22,12 +22,22 @@
   <articleinfo>
 	 <title>Manuale dell'applet &applet; V&manrevision;</title>
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
+		<year>2000</year>
+		<year>2002</year>  
+		<holder>Emese Kovacs</holder> 
+	 </copyright>
+	 <copyright> 
 		<year>2000</year>  
-		<holder>Szabolcs (Shooby) BAN and Dan Mueth</holder> 
+		<holder>Szabolcs (Shooby) BAN</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Dan Mueth</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
 
@@ -53,7 +63,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -99,22 +109,36 @@
 		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Cambia tastiera V2.0</revnumber> 
+		  <revnumber>Manuale dell'applet Selettore disposizione tastiera V2.2</revnumber> 
+		  <date>Gennaio 2003</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Selettore disposizione tastiera V2.1</revnumber> 
+		  <date>Agosto 2002</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Selettore disposizione tastiera V2.0</revnumber> 
 		  <date>Maggio 2002</date> 
 		<revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Applet GNOME Keyboard </revnumber> 
+		  <revnumber>Applet Tastiera di GNOME</revnumber> 
 		  <date>Gennaio 2002</date>
 		  <revdescription> 
 			 <para role="author">Emese Kovacs
@@ -123,7 +147,7 @@
 		  </revdescription>		  
 		</revision>
 		<revision> 
-		  <revnumber>Applet GNOME Keyboard </revnumber> 
+		  <revnumber>Applet Tastiera di GNOME</revnumber> 
 		  <date>2000</date>
 		  <revdescription> 
 			 <para role="author">Szabolcs (Shooby) BAN
@@ -145,13 +169,13 @@
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>Cambia tastiera</primary> 
+	 <primary>Selettore disposizione tastiera</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
 
-  <sect1 id="gkb-introduction">  
+  <sect1 id="gkb-introduction"> 
 	 <title>Introduzione</title>
 
 	 <figure id="gkb-fig"> 
@@ -161,14 +185,14 @@
 			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>Mostra l'applet &applet;. Contiene la bandiera e l'etichetta del layout corrente della tastiera.
+				<phrase>Mostra l'applet &applet;. Contiene la bandiera e l'etichetta della disposizione attuale della tastiera.
 				</phrase>
 			 </textobject>
 		  </mediaobject>
 		</screenshot>
 	 </figure>
 
-	 <para>L'applet <application>&applet;</application> permette di assegnare differenti layout alla tastiera per utilizzare lingue diverse. L'applet visualizza la bandiera e l'etichetta associati al layout corrente della tastiera.</para>
+	 <para>Il <application>&applet;</application> permette di assegnare differenti disposizioni alla tastiera per utilizzare lingue diverse. L'applet visualizza la bandiera e l'etichetta associati alla disposizione attuale della tastiera.</para>
 	 <para>Per aggiungere <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere 
 	<menuchoice>
 	<guimenu>Aggiungi al pannello</guimenu> 
@@ -182,45 +206,45 @@
    
 	 <title>Utilizzo</title>
 
-	 <para>Per cambiare il layout della tastiera, fare clic ripetutamente sull'applet finch&eacute; non compare il layout desiderato. Se l'applet non contiene il layout richiesto per la tastiera, vedere <xref linkend="gkb-keymaps"/> per informazioni su come aggiungere un nuovo layout all'applet.</para>
+	 <para>Per cambiare la disposizione della tastiera, fare clic ripetutamente sull'applet finch&eacute; non compare la disposizione desiderata. Se l'applet non contiene la disposizione richiesta, vedere <xref linkend="gkb-keymaps"/> per informazioni su come aggiungere una nuova disposizione.</para>
 
   </sect1>
 
 
   <sect1 id="gkb-prefs"> 
 	 <title>Preferenze</title>
-	 <para>Per configurare <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. </para>
+	 <para>Per configurare il <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. </para>
 
 	 <sect2 id="gkb-keymaps"> 
 		
-		<title>Mappature</title>
+		<title>Tastiere</title>
 		
-		<para>La scheda <guilabel>Mappature</guilabel> elenca i layout correntemente configurati per l'applet. </para>
+		<para>La scheda <guilabel>Tastiere</guilabel> elenca le disposizioni attualmente configurate per l'applet. </para>
 		
 		<sect3 id="gkb-modify-list">
 		
-		<title>Modificare l'elenco dei layout della tastiera</title>
+		<title>Modificare l'elenco delle disposizioni di tastiera</title>
 		
-		<para>Per aggiungere un layout all'elenco <guilabel>Mappature</guilabel>, procedere come segue:</para>
+		<para>Per aggiungere una disposizione all'elenco <guilabel>Tastiere</guilabel>, procedere come segue:</para>
 		<orderedlist>
-			<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> nella scheda <guilabel>Mappature</guilabel>. Viene aperta la finestra di dialogo <guilabel>Seleziona la mappatura</guilabel>.</para></listitem>
-			<listitem><para>Fare clic sulla freccia posta accanto al paese per il quale si desidera aggiungere il layout e selezionare il layout della tastiera. </para></listitem>
-			<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> per aggiungere il layout della tastiera all'elenco <guilabel>Mappature</guilabel>.</para></listitem>
+			<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> nella scheda <guilabel>Tastiere</guilabel>. Viene aperta la finestra di dialogo <guilabel>Seleziona la mappatura</guilabel>.</para></listitem>
+			<listitem><para>Fare clic sulla freccia posta accanto al paese corrispondente alla disposizione da aggiungere e selezionare la disposizione della tastiera. </para></listitem>
+			<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> per aggiungere la nuova disposizione all'elenco <guilabel>Tastiere</guilabel>.</para></listitem>
 		</orderedlist>
 		
-		<para>Per eliminare un layout di tastiera dall'elenco <guilabel>Mappature</guilabel>, selezionarlo e fare clic su <guibutton>Cancella</guibutton>.</para>
+		<para>Per eliminare una disposizione della tastiera dall'elenco <guilabel>Tastiere</guilabel>, selezionarla e fare clic su <guibutton>Elimina</guibutton>.</para>
 		
-		<para>Per spostare un layout verso l'alto nell'elenco <guilabel>Mappature</guilabel>, selezionarlo e fare clic su <guibutton>Su</guibutton>. Per spostare un layout verso il basso nell'elenco <guilabel>Mappature</guilabel>, selezionarlo e fare clic su <guibutton>Gi&ugrave;</guibutton>. </para>
+		<para>Per spostare una disposizione verso l'alto nell'elenco <guilabel>Tastiere</guilabel>, selezionarla e fare clic su <guibutton>Su</guibutton>. Per spostare una disposizione verso il basso nell'elenco <guilabel>Tastiere</guilabel>, selezionarla e fare clic su <guibutton>Gi&ugrave;</guibutton>. </para>
 		
 		</sect3>
 		
 		<sect3 id="gkb-edit-layout">
 		
-		<title>Modificare un layout della tastiera</title>
-		<para>Per modificare un layout della tastiera, selezionarlo e fare clic su <guibutton>Modifica</guibutton>. La finestra di dialogo <guilabel>Modifica la mappatura</guilabel> contiene i seguenti elementi:</para>
+		<title>Modificare una disposizione della tastiera</title>
+		<para>Per modificare una disposizione della tastiera, selezionarla e fare clic su <guibutton>Modifica</guibutton>. La finestra di dialogo <guilabel>Modifica tastiera</guilabel> contiene i seguenti elementi:</para>
 		
 		<table frame="topbot" id="tbl-edit-layout">
-    		<title>Elementi della finestra Modifica la mappatura</title>
+    		<title>Elementi della finestra Modifica tastiera</title>
 		<tgroup cols="2" colsep="1" rowsep="1">
 		<colspec colname="COLSPEC0" colwidth="33*"/>
 		<colspec colname="COLSPEC1" colwidth="33*"/>
@@ -237,63 +261,73 @@
 		  <entry>
 		  <para><guilabel>Nome</guilabel></para></entry>
 		  <entry>
-		  <para>Nome del layout della tastiera. Questo nome viene visualizzato nella scheda <guilabel>Mappature</guilabel> della finestra di dialogo <guilabel>Preferenze</guilabel>.</para></entry>
+		  <para>Nome della disposizione della tastiera. Questo nome viene visualizzato nella scheda <guilabel>Tastiere</guilabel> della finestra di dialogo <guilabel>Preferenze</guilabel>.</para></entry>
 		 </row>
 		 <row valign="top">
 		  <entry>
 		  <para><guilabel>Etichetta</guilabel></para></entry>
 		  <entry>
-		  <para>Etichetta abbreviata che rappresenta il layout della tastiera. Ad esempio, l'etichetta del layout della tastiera per l'inglese americano &egrave; <guilabel>us</guilabel>. Nella configurazione predefinita, l'applet visualizza la bandiera e l'etichetta del layout corrente della tastiera. </para></entry>
+		  <para>Etichetta abbreviata che rappresenta la disposizione della tastiera. Ad esempio, l'etichetta della disposizione della tastiera per l'inglese americano &egrave; <guilabel>us</guilabel>. Nella configurazione predefinita, l'applet visualizza la bandiera e l'etichetta della disposizione attuale della tastiera. </para></entry>
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Lingua</guilabel></para></entry>
-		  <entry>
-		  <para>Lingua a cui si adatta il layout della tastiera.</para></entry>
+		 
+		 <!--
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Language</guilabel></para></entry> 
+		  <entry> 
+		  <para>The language for which the keyboard layout is adapted.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Paese</guilabel></para></entry>
-		  <entry>
-		  <para>Paese in cui viene usato il layout della tastiera.</para></entry>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Country</guilabel></para></entry> 
+		  <entry> 
+		  <para>The country where the keyboard layout is used.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Bandiera Immagine</guilabel></para></entry>
-		  <entry>
-		  <para>Bandiera del paese in cui &egrave; usato il layout della tastiera. Nella configurazione predefinita, l'applet visualizza la bandiera e l'etichetta del layout corrente della tastiera. Facendo clic sulla bandiera viene visualizzata una finestra di selezione. </para></entry>
+		 -->
+
+		 <!--
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Architecture</guilabel></para></entry> 
+		  <entry> 
+		  <para>The type of hardware system.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Architettura</guilabel></para></entry>
-		  <entry>
-		  <para>Tipo di sistema hardware.</para></entry>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Type</guilabel></para></entry> 
+		  <entry> 
+		  <para>The type of keyboard for example, 101 keys, 105 keys, and so on.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Tipo</guilabel></para></entry>
-		  <entry>
-		  <para>Tipo di tastiera, ad esempio a 101 tasti, 105 tasti, ecc.</para></entry>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Codepage</guilabel></para></entry> 
+		  <entry> 
+		  <para>The codeset that the language of the keyboard uses. For example, by default United States English uses the 
+		  Western European ISO-8859-1 codeset.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Codepage</guilabel></para></entry>
-		  <entry>
-		  <para>Set di codici utilizzato dalla lingua della tastiera. Ad esempio, l'inglese americano utilizza il set di codici Western European ISO-8859-1.</para></entry>
-		 </row>
+		 -->
+		 
 		 <row valign="top">
 		  <entry>
 		  <para><guilabel>Comando</guilabel></para></entry>
 		  <entry>
-		  <para>Comando usato dall'applet per cambiare il layout della tastiera. Per cambiare il layout della tastiera si possono usare i comandi seguenti:</para>
+		  <para>Comando usato dall'applet per cambiare la disposizione della tastiera. Per cambiare la disposizione della tastiera si possono usare i comandi seguenti:</para>
 		  <para><command>gkb_xmmap <replaceable>us</replaceable></command> dove <replaceable>us</replaceable>
-		  &egrave; l'estensione del file <filename>xmodmap</filename> associato al layout della tastiera.</para>
+		  &egrave; l'estensione del file <filename>xmodmap</filename> associato alla disposizione della tastiera.</para>
 		  <para><command>xmodmap <replaceable>/percorso/xmodmap.us</replaceable></command> dove 
-		  <replaceable>/percorso/xmodmap.us</replaceable> &egrave; il file <filename>xmodmap</filename> per il layout della tastiera.</para>
+		  <replaceable>/percorso/xmodmap.us</replaceable> &egrave; il file <filename>xmodmap</filename> per la disposizione della tastiera.</para>
 		  <para><command>setxkbmap <replaceable>us</replaceable></command> dove <replaceable>us</replaceable>
-		  &egrave; l'estensione del file <filename>xmodmap</filename> per il layout della tastiera.</para>
+		  &egrave; l'estensione del file <filename>xmodmap</filename> per la disposizione della tastiera.</para>
 		  </entry>
 		 </row>
+		 
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Bandiera</guilabel></para></entry>
+		  <entry>
+		  <para>Bandiera del paese in cui &egrave; usata la disposizione della tastiera. Nella configurazione predefinita, l'applet visualizza la bandiera e l'etichetta della disposizione attuale della tastiera. Facendo clic sulla bandiera viene visualizzata una finestra di selezione. </para></entry>
+		 </row>
+
 	 	</tbody>
 		</tgroup>
 		</table>
@@ -308,36 +342,22 @@
 		  <varlistentry> 
 			 <term><guilabel>Aspetto</guilabel></term> 
 			 <listitem>
-			 <para>Selezionare una delle seguenti opzioni dalla casella di riepilogo per specificare il tipo di visualizzazione dell'applet nel pannello:</para>
+			 <para>Selezionare una delle seguenti opzioni dalla casella di riepilogo a discesa per specificare gli elementi dell'applet da visualizzare nel pannello:</para>
 			 <itemizedlist>
 			 	<listitem><para><guilabel>Bandiera</guilabel></para>
 			 	<para>Viene visualizzata solo una bandiera.</para></listitem>
 			 	<listitem><para><guilabel>Etichetta</guilabel></para>
 			 	<para>Viene visualizzata solo un'etichetta.</para></listitem>
-			 	<listitem><para><guilabel>Bandiera ed etichetta</guilabel></para>
+			 	<listitem><para><guilabel>Etichetta e bandiera</guilabel></para>
 			 	<para>Vengono visualizzati una bandiera e un'etichetta.</para></listitem>
 			 </itemizedlist>
 			 <para>Perch&eacute; le modifiche a questa impostazione abbiano effetto &egrave; necessario riavviare il sistema. </para>
-			 <para>Impostazione predefinita:  <guilabel>Bandiera ed etichetta</guilabel>.</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Dimensione applet</guilabel></term> 
+			 <term><guilabel>Cambia disposizione</guilabel></term> 
 			 <listitem>
-			 <para>Selezionare una delle seguenti opzioni dalla casella di riepilogo per specificare la dimensione dell'applet nel pannello:</para>
-			 <itemizedlist>
-			 	<listitem><para><guilabel>Normale</guilabel></para></listitem>
-			 	<listitem><para><guilabel>Grande</guilabel></para></listitem>
-			 </itemizedlist>
-			 <para>Perch&eacute; le modifiche a questa impostazione abbiano effetto &egrave; necessario riavviare il sistema. </para>
-			 <para>Impostazione predefinita:  <guilabel>Grande</guilabel>.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry> 
-			 <term><guilabel>Scorciatoie per cambiare tastiera</guilabel></term> 
-			 <listitem>
-			 <para>Per cambiare il layout della tastiera &egrave; possibile usare una combinazione di scelta rapida. Per personalizzare la combinazione di scelta rapida, fare clic su <guibutton>Definisce le scorciatoie</guibutton> e premere i tasti che si desidera usare. L'applet visualizza la combinazione selezionata nella casella di testo. La combinazione di scelta rapida predefinita &egrave; <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo>, visualizzata nella casella di testo come Mod1-Shift_L.</para>
-			 <para>Impostazione predefinita:  Mod1-Shift_L.</para>
+			 <para>Per cambiare la disposizione della tastiera &egrave; possibile usare una sequenza di tasti di scelta rapida. Per personalizzare i tasti di scelta rapida, fare clic su <guibutton>Cattura tasti</guibutton> e premere i tasti che si desidera usare. L'applet visualizza la combinazione selezionata nella casella di testo. </para>
 			 </listitem>
 		  </varlistentry>
 		</variablelist>

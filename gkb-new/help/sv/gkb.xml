@@ -1,10 +1,10 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.101.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "Keyboard Layout Switcher">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4">
+  <!ENTITY date "September 2003">
+  <!ENTITY applet "Tangentsbordsbytare">
 ]>
 
 <!-- 
@@ -22,12 +22,22 @@
   <articleinfo>
 	 <title>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</title>
 	 <copyright> 
+		<year>2002</year>
 		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
+		<year>2000</year>
+		<year>2002</year>  
+		<holder>Emese Kovacs</holder> 
+	 </copyright>
+	 <copyright> 
 		<year>2000</year>  
-		<holder>Szabolcs (Shooby) BAN och Dan Mueth</holder> 
+		<holder>Szabolcs (Shooby) BAN</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Dan Mueth</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
 
@@ -49,11 +59,11 @@
 
 	 <authorgroup>
 		<author> 
-		  <firstname>Sun</firstname> 
-		  <surname>GNOMEs dokumentationsteam</surname> 
+		  <firstname>Suns</firstname> 
+		  <surname>GNOME-dokumentationsteam</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -96,20 +106,34 @@
 	  
 	 <revhistory>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet &applet;, version &manrevision;</revnumber> 
+		  <revnumber>Manual f&ouml;r panelprgrammet &applet;, V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		<revdescription> 
-			 <para role="author">Sun GNOMEs dokumentationsteam
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manual f&ouml;r panelprogrammet GKB-tangentbordsbytare version 2.0</revnumber> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Tangentsbordsbytare, V2.2</revnumber> 
+		  <date>Januari 2003</date> 
+		<revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Tangentsbordsbytare, V2.1</revnumber> 
+		  <date>Augusti 2002</date> 
+		<revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Tangentsbordsbytare, V2.0</revnumber> 
 		  <date>Maj 2002</date> 
 		<revdescription> 
-			 <para role="author">Sun GNOMEs dokumentationsteam
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Suns GNOME-dokumentationsteam</para>
 			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
 		  </revdescription>
 		</revision>
@@ -124,7 +148,7 @@
 		</revision>
 		<revision> 
 		  <revnumber>GNOME-panelprogrammet f&ouml;r tangentbordsbyte</revnumber> 
-		  <date>2002</date>
+		  <date>2000</date>
 		  <revdescription> 
 			 <para role="author">Szabolcs (Shooby) BAN
 				<email>shooby@gnome.hu</email></para>
@@ -138,26 +162,23 @@
 	 </revhistory>
 	 <releaseinfo> I den h&auml;r manualen beskrivs version &appletversion; av &applet;.
 		</releaseinfo>
-	 <legalnotice> 
-		<title>Feedback</title>
-		<para> Om du vill rapportera ett fel eller ge f&ouml;rslag om panelprogrammet &applet; eller den h&auml;r manualen f&ouml;ljer du instruktionerna p&aring; 
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink>. </para>
+	 <legalnotice><title>Feedback</title>
+		<para>F&ouml;lj instruktionerna p&aring; <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink> om du vill rapportera ett fel eller ge f&ouml;rslag betr&auml;ffande det h&auml;r programmet eller den h&auml;r manualen. </para>
 		
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>GKB-tangentbordsbytare</primary> 
+	 <primary>Tangentbordsbytare</primary> 
   </indexterm> 
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
 
-  <sect1 id="gkb-introduction"> 
+  <sect1 id="gkb-introduction">
 
-	 <title>Introduktion</title>
+<title>Introduktion</title>
 
-	 <figure id="gkb-fig"> 
-		<title>Panelprogrammet &applet;</title>
+	 <figure id="gkb-fig"><title>Panelprogrammet &applet;</title>
 		<screenshot>
 		  <mediaobject>
 			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
@@ -170,11 +191,10 @@
 		</screenshot>
 	 </figure>
 
-	 <para>Med hj&auml;lp av panelprogrammet <application>&applet;</application> kan du ange
-	 tangentbordslayouter f&ouml;r olika spr&aring;komr&aring;den till ditt tangentbord. Panelprogrammet visar den flagga och etikett som h&ouml;r till
+	 <para>Med hj&auml;lp av panelprogrammet <application>&applet;</application> kan du ange olika tangentbordslayouter f&ouml;r olika spr&aring;komr&aring;den till ditt tangentbord. Panelprogrammet visar den flagga och etikett som h&ouml;r till
 	 den aktuella tangentbordslayouten.</para>
 	 <para>Om du vill l&auml;gga till <application>&applet;</application> p&aring; en panel h&ouml;gerklickar du p&aring; panelen och v&auml;ljer <menuchoice> 
-		  <guimenu>L&auml;gg till p&aring; panelen</guimenu> 
+		  <guimenu>L&auml;gg till i panelen</guimenu> 
 		  <guisubmenu>Verktyg</guisubmenu> 
 		  <guimenuitem>&applet;</guimenuitem> 
 		</menuchoice>.</para>
@@ -185,20 +205,19 @@
    
 	 <title>Anv&auml;ndning</title>
 
-	 <para>Om du vill v&auml;xla till en annan tangentbordslayout klickar du p&aring; panelprogrammet tills den
+	 <para>Om du vill v&auml;xla till en annan tangentbordslayout klickar du upprepade g&aring;nger p&aring; panelprogrammet tills den
 	 tangentbordslayout som du vill anv&auml;nda visas. Om panelprogrammet inte inneh&aring;ller den tangentbordslayout som du beh&ouml;ver, 
 	 finns det mer information om hur du l&auml;gger till fler tangentbordslayouter i <xref linkend="gkb-keymaps"/>.</para>
 
   </sect1>
 
 
-  <sect1 id="gkb-prefs"> 
-	 <title>Inst&auml;llningar</title>
-	 <para>Om du vill konfigurera <application>&applet;</application> h&ouml;gerklickar du p&aring; panelprogrammet och v&auml;ljer  <guimenuitem>Inst&auml;llningar</guimenuitem>. </para>
+  <sect1 id="gkb-prefs"> <title>Inst&auml;llningar</title>
+	 <para>H&ouml;gerklicka p&aring; panelprogrammet <application>&applet;</application> och v&auml;lj sedan  <guimenuitem>Inst&auml;llningar</guimenuitem> om du vill &auml;ndra inst&auml;llningarna.</para>
 
 	 <sect2 id="gkb-keymaps"> 
 		
-		<title>Teckentabeller</title>
+		<title>Tangentbord</title>
 		
 		<para>P&aring; fliken <guilabel>Tangentbordstabeller</guilabel> finns en lista &ouml;ver de tangenbordslayouter som
 		har konfigurerats f&ouml;r panelprogrammet. </para>
@@ -230,7 +249,7 @@
 		
 		<sect3 id="gkb-edit-layout">
 		
-		<title>S&aring; h&auml;r redigerar du en tangentbordslayout</title>
+	<title>S&aring; h&auml;r redigerar du en tangentbordslayout</title>
 		<para>Om du vill redigera en tangentbordslayout, markerar du den och klickar d&auml;refter p&aring; 
 		<guibutton>Redigera</guibutton>. Dialogrutan <guilabel>Redigera tangentbordstabell</guilabel>
 		inneh&aring;ller f&ouml;ljande element:</para>
@@ -243,7 +262,7 @@
 		<thead>
 		 <row valign="top">
 		  <entry>
-		  <para>Dialogruteelement</para></entry>
+		  <para>Dialogf&ouml;nsterelement</para></entry>
 		  <entry>
 		  <para>Beskrivning</para></entry>
 		 </row>
@@ -253,56 +272,54 @@
 		  <entry>
 		  <para><guilabel>Namn</guilabel></para></entry>
 		  <entry>
-		  <para>Tangentbordslayoutens namn. Det h&auml;r &auml;r det namn som visas p&aring; fliken <guilabel>Tangentbordstabeller</guilabel>
-		  i dialogrutan <guilabel>Inst&auml;llningar</guilabel>.</para></entry>
+		  <para>Tangentbordslayoutens namn. Namnet visas under fliken <guilabel>Tangentbordstabeller</guilabel> i dialogf&ouml;nstret <guilabel>Inst&auml;llningar</guilabel>.</para></entry>
 		 </row>
 		 <row valign="top">
 		  <entry>
 		  <para><guilabel>Etikett</guilabel></para></entry>
 		  <entry>
-		  <para>Ett kortnamn f&ouml;r tangentbordslayouten. Etiketten f&ouml;r en amerikanskt engelsk tangentbordslayout 
-		  &auml;r till exempel <guilabel>us</guilabel>. Som standard visas den aktuella tangentbordslayoutens
+		  <para>Ett kortnamn f&ouml;r tangentbordslayouten. Etiketten f&ouml;r en svensk tangentbordslayout 
+		  &auml;r till exempel <guilabel>se</guilabel>. Som standard visas den aktuella tangentbordslayoutens
 		  flagga och etikett i panelprogrammet. </para></entry>
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Spr&aring;k</guilabel></para></entry>
-		  <entry>
-		  <para>Det spr&aring;k som tangentbordslayouten har anpassats f&ouml;r.</para></entry>
+		 
+		 <!--
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Language</guilabel></para></entry> 
+		  <entry> 
+		  <para>The language for which the keyboard layout is adapted.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Land</guilabel></para></entry>
-		  <entry>
-		  <para>Det land d&auml;r tangentbordslayouten anv&auml;nds.</para></entry>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Country</guilabel></para></entry> 
+		  <entry> 
+		  <para>The country where the keyboard layout is used.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Flagga Bild</guilabel></para></entry>
-		  <entry>
-		  <para>Den flagga som representerar det land d&auml;r tangentbordslayouten anv&auml;nds. Som standard visas 
-		  den aktuella tangentbordslayoutens flagga och etikett i panelprogrammet. Klicka p&aring; flaggan
-		  om du vill visa en dialogruta d&auml;r du kan v&auml;lja flagga. </para></entry>
+		 -->
+
+		 <!--
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Architecture</guilabel></para></entry> 
+		  <entry> 
+		  <para>The type of hardware system.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Arkitektur</guilabel></para></entry>
-		  <entry>
-		  <para>Typ av maskinvarusystem.</para></entry>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Type</guilabel></para></entry> 
+		  <entry> 
+		  <para>The type of keyboard for example, 101 keys, 105 keys, and so on.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Typ</guilabel></para></entry>
-		  <entry>
-		  <para>Tangentbordstypen, till exempel 101 tangenter, 105 tangenter och s&aring; vidare.</para></entry>
+		 <row valign="top"> 
+		  <entry> 
+		  <para><guilabel>Codepage</guilabel></para></entry> 
+		  <entry> 
+		  <para>The codeset that the language of the keyboard uses. For example, by default United States English uses the 
+		  Western European ISO-8859-1 codeset.</para></entry>  
 		 </row>
-		 <row valign="top">
-		  <entry>
-		  <para><guilabel>Kodsida</guilabel></para></entry>
-		  <entry>
-		  <para>Den kodupps&auml;ttning som anv&auml;nds av tangentbordslayoutens spr&aring;k. Som standard anv&auml;nder till exempel amerikansk engelska 
-		  kodupps&auml;ttningen V&auml;steuropeisk (ISO-8859-1).</para></entry>
-		 </row>
+		 -->
+		 
 		 <row valign="top">
 		  <entry>
 		  <para><guilabel>Kommando</guilabel></para></entry>
@@ -318,6 +335,16 @@
 		  &auml;r filtill&auml;gget f&ouml;r tangentbordslayoutens <filename>xmodmap</filename>-fil.</para>
 		  </entry>
 		 </row>
+		 
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Flagga</guilabel></para></entry>
+		  <entry>
+		  <para>Den flagga som representerar det land d&auml;r tangentbordslayouten anv&auml;nds. Som standard visas 
+		  den aktuella tangentbordslayoutens flagga och etikett i panelprogrammet. Klicka p&aring; flaggan
+		  om du vill visa en dialogruta d&auml;r du kan v&auml;lja flagga. </para></entry>
+		 </row>
+
 	 	</tbody>
 		</tgroup>
 		</table>
@@ -343,30 +370,14 @@
 			 	<para>Visa b&aring;de flagga och etikett.</para></listitem>
 			 </itemizedlist>
 			 <para>F&ouml;r att den h&auml;r inst&auml;llningen ska verkst&auml;llas m&aring;ste datorn startas om.</para>
-			 <para>Standard: <guilabel>Flagga och etikett</guilabel>:</para>
 			 </listitem>
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Panelprogrammets storlek</guilabel></term> 
-			 <listitem>
-			 <para>Om du vill ange hur stort panelprogrammet ska vara, v&auml;ljer du n&aring;got
-			 av alternativen i listrutan:</para>
-			 <itemizedlist>
-			 	<listitem><para><guilabel>Normal</guilabel></para></listitem>
-			 	<listitem><para><guilabel>Stor</guilabel></para></listitem>
-			 </itemizedlist>
-			 <para>F&ouml;r att den h&auml;r inst&auml;llningen ska verkst&auml;llas m&aring;ste datorn startas om.</para>
-			 <para>Standard: <guilabel>Stor</guilabel>.</para>
-			 </listitem>
-		  </varlistentry>
-		  <varlistentry>			 <term><guilabel>Snabbtangent f&ouml;r att byta mellan layouter</guilabel></term> 
+			 <term><guilabel>Byt layout</guilabel></term> 
 			 <listitem>
 			 <para>F&ouml;r att byta tangentbordslayout kan du anv&auml;nda snabbtangenter. Om du vill anpassa
 			 snabbtangenten klickar du p&aring; <guibutton>H&auml;mta snabbtangent</guibutton> och trycker d&auml;refter p&aring; de tangenter som du
-			 vill anv&auml;nda. Snabbtangenten visas i textrutan. Standardtangenten
-			 &auml;r <keycombo><keycap>Alt</keycap><keycap>Skift</keycap></keycombo> vilket visas i panelprogrammets
-			 textruta som V&auml;nster - Alt + V&auml;nster - Skift.</para>
-			 <para>Standard: V&auml;nster - Alt + V&auml;nster - Skift.</para>
+			 vill anv&auml;nda. Snabbtangenten visas i textrutan. </para>
 			 </listitem>
 		  </varlistentry>
 		</variablelist>
