@@ -714,7 +714,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
    * Location page.
    */
     pref_loc_hbox = gtk_hbox_new (FALSE, 2);
-    gtk_widget_show (pref_loc_hbox);
     gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
     scrolled_window = gtk_scrolled_window_new (NULL, NULL);
