@@ -1,5 +1,4 @@
-figs = \
-	figures/command-line.png
+figdir = figures
 docname = command-line
 lang = ko
 omffile = command-line-ko.omf

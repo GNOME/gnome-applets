@@ -1,5 +1,4 @@
-figs = \
-	figures/gtik_applet.png
+figdir = figures
 docname = gtik2_applet2
 lang = C
 omffile = gtik2_applet2-C.omf

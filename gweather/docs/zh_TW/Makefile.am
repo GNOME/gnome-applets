@@ -1,5 +1,4 @@
-figs = \
-	figures/gweather_applet.png
+figdir = figures
 docname = gweather
 lang = zh_TW
 omffile = gweather-zh_TW.omf

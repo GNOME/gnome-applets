@@ -1,8 +1,4 @@
-#figdir = figures
-figs = figures/mailcheck-applet.png \
-       figures/mailcheck-properties-mailbox.png \
-       figures/mailcheck-properties-mailcheck.png \
-       figures/mailcheck_applet.png
+figdir = figures
 docname = mailcheck
 lang = it
 omffile = mailcheck-it.omf

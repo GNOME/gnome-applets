@@ -1,8 +1,4 @@
-figs = \
-	figures/drivemount_applet_all.png	\
-	figures/drivemount_applet_settings.png	\
-	figures/drivemount_applet_floppy.png	\
-	figures/drivemount_applet_tooltip.png
+figdir = figures
 docname = drivemount_applet
 lang = es
 omffile = drivemount_applet-es.omf

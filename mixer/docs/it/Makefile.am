@@ -1,5 +1,4 @@
-figs = \
-	figures/mixer_applet.png
+figdir = figures
 docname = mixer_applet
 lang = it
 omffile = mixer_applet-it.omf

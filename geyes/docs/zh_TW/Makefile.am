@@ -1,5 +1,4 @@
-figs = \
-	figures/geyes_applet.png
+figdir = figures
 docname = geyes
 lang = zh_TW
 omffile = geyes-zh_TW.omf

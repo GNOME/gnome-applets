@@ -1,5 +1,4 @@
-figs = \
-	figures/command-line.png
+figdir = figures
 docname = command-line
 lang = zh_TW
 omffile = command-line-zh_TW.omf

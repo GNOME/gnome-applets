@@ -1,5 +1,4 @@
-figs = \
-	figures/gkb_applet.png
+figdir = figures
 docname = gkb
 lang = zh_CN
 omffile = gkb-zh_CN.omf

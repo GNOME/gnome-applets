@@ -1,7 +1,4 @@
-figs = \
-	figures/charpick_applet.png  \
-	figures/charpick_characters.png  \
-	figures/charpick_chargroup.png
+figdir = figures
 docname = char-palette
 lang = sv
 omffile = char-palette-sv.omf

@@ -1,5 +1,4 @@
-figs = \
-	figures/volumecontrol_applet.png
+figdir = figures
 docname = mixer_applet2
 lang = ja
 omffile = mixer_applet2-ja.omf

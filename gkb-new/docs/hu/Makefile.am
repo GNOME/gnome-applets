@@ -1,6 +1,4 @@
-figs = \
-	figures/gkb_applet.png				\
-	figures/gkb_applet_settings.png
+figdir = figures
 docname = gkb_applet
 lang = hu
 omffile = gkb_applet-hu.omf
