@@ -1064,6 +1064,42 @@ exec_clicked_cmd (GtkWidget *widget, GdkEventButton *event, gpointer data)
 	return(retval);
 }
 
+static gboolean
+key_press_cb (GtkWidget *widget, GdkEventKey *event, MailCheck *mc)
+{
+	switch (event->keyval) {	
+	case GDK_u:
+		if (event->state == GDK_CONTROL_MASK) {
+			mail_check_timeout(mc);
+			return TRUE;
+		}
+		break;
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		if (mc->clicked_enabled && mc->clicked_cmd && (strlen(mc->clicked_cmd) > 0))
+			mailcheck_execute_shell (mc, mc->clicked_cmd);
+
+		if (mc->reset_on_clicked) {
+	
+			mc->show_animation = FALSE;
+			if (mc->animation_tag != 0){
+				gtk_timeout_remove (mc->animation_tag);
+				mc->animation_tag = 0;
+			}
+		}
+		return TRUE;
+		break;
+	default:
+		break;
+	}
+
+	return FALSE;
+}
+
 static void
 mailcheck_destroy (GtkWidget *widget, gpointer data)
 {
@@ -2460,7 +2496,8 @@ mailcheck_applet_fill (PanelApplet *applet)
 
 	g_signal_connect(G_OBJECT(mc->ebox), "button_press_event",
 			 G_CALLBACK(exec_clicked_cmd), mc);
-
+	g_signal_connect(G_OBJECT(applet), "key_press_event",
+			 G_CALLBACK(key_press_cb), mc);
 
 	panel_applet_setup_menu_from_file (applet,
 					   NULL,
