@@ -1,6 +1,6 @@
 #SUBDIRS = 57chevy A bbldotg o smplst
 
-Chevydir = $(datadir)/odometer/57Chevy
+Chevydir = $(datadir)/odometer/57chevy
 Chevy_DATA =
 chevy_stuff = \
 	57chevy/themedata		\
