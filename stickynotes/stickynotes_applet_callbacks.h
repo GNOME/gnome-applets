@@ -48,7 +48,4 @@ void preferences_font_cb(GnomeFontPicker *fp, gchar *font_str, gpointer data);
 void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer data);
 void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data);
 
-/* Callbacks for sticky notes about dialog */
-void about_response_cb(GtkDialog *dialog, gint response, gpointer data);
-
 #endif /* __STICKYNOTES_APPLET_CALLBACKS_H__ */

@@ -144,8 +144,6 @@ void stickynotes_applet_init_about()
 	}
 	if (strcmp(_("translator_credits"), "translator_credits") == 0)
 		g_object_set(G_OBJECT(stickynotes->w_about), "translator_credits", NULL);
-	
-	g_signal_connect(G_OBJECT(stickynotes->w_about), "response", G_CALLBACK(about_response_cb), NULL);
 }
 
 static void
