@@ -1808,8 +1808,16 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->forecast = g_strdup ("None");
     info->radar = NULL;  /* FIX */
     info->requests_pending = FALSE;
+
     info->metar_buffer = NULL;
-    info->iwin_buffer = NULL; 
+    info->iwin_buffer = NULL;
+    info->met_buffer = NULL;
+    info->bom_buffer = NULL;
+
+    info->met_handle = NULL;
+    info->iwin_handle = NULL;
+    info->met_handle = NULL;
+    info->bom_handle = NULL;
 
     return info;
 }
