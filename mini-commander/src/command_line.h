@@ -5,11 +5,14 @@
 #include <preferences.h>
 #include "mini-commander_applet.h"
 
-GtkWidget * init_command_entry(MCData *mcdata);
-gint show_history_signal(GtkWidget *widget, gpointer data);
-gint show_file_browser_signal(GtkWidget *widget, gpointer data);
-void command_entry_update_color(GtkWidget *entry_command, properties *prop);
-void command_entry_update_size(GtkWidget *entry_command, properties *prop);
+GtkWidget *init_command_entry         (MCData      *mcdata);
+int        show_history_signal        (GtkWidget   *widget,
+				       PanelApplet *applet);
+int        show_file_browser_signal   (GtkWidget   *widget,
+				       PanelApplet *applet);
+void       command_entry_update_color (GtkWidget   *entry_command,
+				       properties  *prop);
+void       command_entry_update_size  (GtkWidget   *entry_command,
+				       properties  *prop);
  
 #endif
-

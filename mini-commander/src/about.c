@@ -20,13 +20,15 @@
  */
 
 #include <config.h>
+
+#include <libgnomeui/gnome-about.h>
+
 #include "about.h"
-#include "mini-commander_applet.h"
 
-
-/* void about_box(AppletWidget *applet, gpointer data) */
-
-void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
+void about_box (BonoboUIComponent *uic,
+		MCData            *mcdata,
+		const char        *verbname)
+{
         static GtkWidget *about_box = NULL;
 	GdkPixbuf   	 *pixbuf;
   	GError      	 *error     = NULL;
@@ -43,10 +45,8 @@ void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about_box != NULL)
-	{
-		gdk_window_show(about_box->window);
-		gdk_window_raise(about_box->window);
+	if (about_box) {
+		gtk_window_present (GTK_WINDOW (about_box));
 		return;
 	}
 	
@@ -72,8 +72,8 @@ This program is free software; you can redistribute it and/or modify it under th
    		gdk_pixbuf_unref (pixbuf);
    
    	gtk_window_set_wmclass (GTK_WINDOW (about_box), "command line", "Command Line");
-   	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
-			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
+   	g_signal_connect (about_box, "destroy",
+			  G_CALLBACK (gtk_widget_destroyed),
+			  &about_box);
         gtk_widget_show (about_box);
-	return;
 }

@@ -40,10 +40,10 @@ static gint applet_attached_signal(GtkHandleBox *hb, GtkWidget *widget, gpointer
 static gint applet_orient_changed_cb(GtkWidget *widget, gpointer data);
 static void applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data);
 
-static const BonoboUIVerb mini_commander_menu_verbs[] = {
-        BONOBO_UI_VERB("Props", properties_box),
-        BONOBO_UI_VERB("Help", show_help),
-        BONOBO_UI_VERB("About", about_box),
+static const BonoboUIVerb mini_commander_menu_verbs [] = {
+        BONOBO_UI_UNSAFE_VERB ("Props", properties_box),
+        BONOBO_UI_UNSAFE_VERB ("Help",  show_help),
+        BONOBO_UI_UNSAFE_VERB ("About", about_box),
 
         BONOBO_UI_VERB_END
 };
@@ -413,9 +413,6 @@ mini_commander_applet_fill(PanelApplet *applet)
     mcdata = g_new0 (MCData, 1);
     mcdata->applet = applet;
   
-    /* install signal handler */
-    init_exec_signal_handler();
-
     g_signal_connect(GTK_OBJECT(applet),
 		     "change_orient",
 		     G_CALLBACK(applet_orient_changed_cb),
