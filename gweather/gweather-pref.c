@@ -44,6 +44,7 @@ static GtkWidget *pref_net_proxy_passwd_entry;
 static GtkWidget *pref_loc_ctree;
 static GtkCTreeNode *pref_loc_root;
 static GtkCTreeNode *pref_loc_sel_node = NULL;
+static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html"};
 
 
 static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
@@ -160,8 +161,6 @@ static void ok_cb (GtkButton *button, gpointer user_data)
 {
     update_pref();
     return;
-    button = NULL;
-    user_data = NULL;
 }
 
 static void apply_cb (GtkButton *button, gpointer user_data)
@@ -170,8 +169,6 @@ static void apply_cb (GtkButton *button, gpointer user_data)
     gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 1, FALSE);
     update_pref();
     return;
-    button = NULL;
-    user_data = NULL;
 }
 
 static void change_cb (GtkButton *button, gpointer user_data)
@@ -183,8 +180,6 @@ static void change_cb (GtkButton *button, gpointer user_data)
     gtk_widget_set_sensitive(pref_net_proxy_user_entry, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn)));
     gtk_widget_set_sensitive(pref_net_proxy_passwd_entry, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn)));
     return;
-    button = NULL;
-    user_data = NULL;
 }
 
 static void tree_select_row_cb (GtkCTree     *ctree,
@@ -195,8 +190,6 @@ static void tree_select_row_cb (GtkCTree     *ctree,
     if (gtk_ctree_node_get_row_data(GTK_CTREE(pref_loc_ctree), GTK_CTREE_NODE(pref_loc_sel_node)) != NULL)
         change_cb(NULL, NULL);
     return;
-    ctree = NULL;
-    column = 0;
 }
 
 static void load_locations (void)
@@ -325,6 +318,7 @@ static void gweather_pref_create (void)
   GtkWidget *ok_button;
   GtkWidget *apply_button;
   GtkWidget *cancel_button;
+  GtkWidget *help_button;
   GtkWidget *pref_loc_scroll;
   GtkObject *pref_loc_adj;
 
@@ -542,6 +536,11 @@ static void gweather_pref_create (void)
   gtk_widget_show (cancel_button);
   GTK_WIDGET_SET_FLAGS (cancel_button, GTK_CAN_DEFAULT);
 
+  gnome_dialog_append_button (GNOME_DIALOG (pref), GNOME_STOCK_BUTTON_HELP);
+  help_button = g_list_last (GNOME_DIALOG (pref)->buttons)->data;
+  gtk_widget_show (help_button);
+  GTK_WIDGET_SET_FLAGS (help_button, GTK_CAN_DEFAULT);
+
   gtk_signal_connect (GTK_OBJECT (pref_loc_ctree), "tree_select_row",
                       GTK_SIGNAL_FUNC (tree_select_row_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (ok_button), "clicked",
@@ -639,8 +638,10 @@ void gweather_pref_run (void)
         if (btn == 1) {  /* Apply */
             applet_widget_sync_config(APPLET_WIDGET(gweather_applet));
             gweather_update();
-        }
-    } while (btn == 1);
+        } else if (btn == 3) { /* help */
+	    gnome_help_display(NULL, &help_entry);
+	}
+    } while (btn == 1 || btn == 3);
 
     gtk_widget_hide(pref);
 
