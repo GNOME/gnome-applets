@@ -517,7 +517,7 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 }
 
 /* stolen from gsearchtool */
-GtkWidget*
+static GtkWidget*
 hig_dialog_new (GtkWindow      *parent,
 		GtkDialogFlags flags,
 		GtkMessageType type,
