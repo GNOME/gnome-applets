@@ -465,12 +465,10 @@ gwm_desktop_button_press (GtkWidget      *widget,
 	  height -= ythick * 2;
 	  x = x / (width / desk->n_hareas);
 	  y = y / (height / desk->n_vareas);
-	  gwmh_desk_set_current_area (desktop->index, x, y);
+	  if (!(event->state & GDK_CONTROL_MASK) ||
+	      desktop->index != desk->current_desktop)
+	    gwmh_desk_set_current_area (desktop->index, x, y);
 	}
-#if 0  /* this is confusing */
-      else
-	gwmh_desk_set_current_desktop (desktop->index);
-#endif
       
       handled = TRUE;
     }
