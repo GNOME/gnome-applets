@@ -29,9 +29,9 @@
   <note>
    <title>Background Information for Beginners</title>
    <para>
-    Many filesystems on Linux and Unix systems must be manually
-    mounted and unmounted.  After a filesystem is mounted, you can
-    read and write to it.  When you are finished with a filesystem,
+    Many file systems on Linux and Unix systems must be manually
+    mounted and unmounted.  After a file system is mounted, you can
+    read and write to it.  When you are finished with a file system,
     you should unmount it.  It is important to unmount removable
     drives, such as floppy disks and Zip disks,
     before removing the media, because Linux and Unix systems do not
@@ -40,18 +40,18 @@
     system. Partitions on fixed drives, such as your hard drive, are
     typically mounted automatically when your computer boots and
     unmounted when it shuts down.  Removable media must be mounted and
-    unmounted by hand, such as by using <application>Drive
+    unmounted by hand, such as by using the <application>Drive
     Mount</application> applet.  
    </para>
    <para>
     The "root
-    filesystem" is the main filesystem on your computer starting with
-    "/" (root).  Other filesystems are associated with directories inside
-    the root filesystem.  These are called "mount points", which are
-    just empty directories.  When a filesystem is mounted, their
+    file system" is the main file system on your computer starting with
+    "/" (root).  Other file systems are associated with directories inside
+    the root file system.  These are called "mount points", which are
+    just empty directories.  When a file system is mounted, its
     contents appear inside this directory.  As an example, most
     systems create a mount point "/mnt/floppy" which is just an empty
-    directory if your floppy drive is not mounted, and which contains
+    directory if your floppy drive is not mounted.  It contains
     the contents of your floppy if the floppy drive is mounted.
    </para>
   </note>
@@ -66,7 +66,7 @@
     most CDROM's and JAZ drives, you can eject the drive by clicking on the
     icon with the right mouse button and selecting
     <guimenuitem>Eject</guimenuitem>. To browse the contents of the
-    drive with the GNOME File Manager, select
+    drive with the <application>GNOME File Manager</application>, select
     <guimenuitem>Browse&hellip;</guimenuitem>. 
    </para>
 
@@ -78,7 +78,8 @@
      <listitem>
       <para>
        <guimenuitem>Browse&hellip;</guimenuitem> &mdash; shows
-       the contents of the drive using the GNOME File Manager.
+       the contents of the drive using the <application>GNOME File
+       Manager</application>.
        The drive must be mounted for this to work.
       </para>
      </listitem>
@@ -164,11 +165,11 @@
 
       <listitem>
        <para>
-        Mount Point &mdash; This is the mount point used when mounting
-        the drive.  If you are unfamiliar with mount points, this is
+        <guilabel>Mount Point</guilabel> &mdash; This is the mount
+        point used when mounting the drive.  This is
         an empty directory which will hold the contents of the drive
         whenever the drive is mounted.  Mount points can occur
-        anywhere in your filesystem, but the convention is to put all
+        anywhere in your file system, but the convention is to put all
         mount points for removable drives in the  <filename
         class="directory">/mnt</filename>
         directory.
@@ -177,21 +178,23 @@
 
       <listitem>
        <para>
-        Update in seconds &mdash; This is the interval in seconds at
+        <guilabel>Update in seconds</guilabel> &mdash; This is the
+        interval in seconds at
         which <application>Drive Mount</application> refreshes its
-        icon by checking with the mount status.  This is only
+        icon by checking the mount status.  This is only
         important if you sometimes mount or unmount a drive using a
-        command or application besides <application>Drive
-        Mount</application> sometimes.
+        command or application other than <application>Drive
+        Mount</application>.
        </para>
       </listitem>
 
       <listitem>
        <para>
-        Icon &mdash; This determines the icons (one for unmounted and
+        <guilabel>Icon</guilabel> &mdash; This determines the icons
+        (one for unmounted and
         one for mounted) displayed for the
         drive.  There are icon sets for most of the commonly used
-        drives(floppy, CDROM, Zip, hard disk, and JAZ).
+        drives (floppy, CDROM, Zip, hard disk, and JAZ).
         They are shown in <xref
         linkend="drivemountappletall-fig">. You may also select
         <guimenuitem>Custom</guimenuitem>; this allows you to specify
@@ -216,7 +219,8 @@
 
       <listitem>
        <para>
-        Custom icon for mounted  &mdash; A custom icon which is
+        <guilabel>Custom icon for mounted</guilabel>  &mdash; A custom
+        icon which is
         displayed when the drive is mounted.  This option is only
         available if the <guimenu>Icon:</guimenu> selection is set to
         "Custom". 
@@ -225,7 +229,8 @@
 
       <listitem>
        <para>
-        Custom icon for not mounted  &mdash; A custom icon which is
+        <guilabel>Custom icon for not mounted</guilabel>  &mdash; A
+        custom icon which is
         displayed when the drive is not mounted.  This option is only
         available if the <guimenu>Icon:</guimenu> selection is set to
         "Custom". 
@@ -234,10 +239,11 @@
 
       <listitem>
        <para>
-        Scale size to panel &mdash; Selecting this option scales
+        <guibutton>Scale size to panel</guibutton> &mdash; Selecting
+        this option scales
         the size of the mounted and unmounted icons with the
         <interface>Panel</interface>'s size.  If this option is not
-        set the icon sizes are fixed, independent of the size of
+        set, the icon sizes are fixed, independent of the size of
         the <interface>Panel</interface>. Selecting this option
         typically makes for a nicer appearance.  For very small
         <interface>Panel</interface> sizes, unselecting this option
@@ -248,7 +254,8 @@
 
       <listitem>
        <para>
-        Use automount friendly status test &mdash; Select this option
+        <guibutton>Use automount friendly status test</guibutton>
+        &mdash;  Select this option
         if you use automount, otherwise leave it unselected.
        </para>
        <note>
@@ -271,12 +278,13 @@
      </itemizedlist>
     </para>
 
-    <para> 
-      After you have made all the changes you want, click on
+    <para>After you have made all the changes you want, click on
       <guibutton>OK</guibutton> to apply the changes and close the
-      <interface>Properties</interface> dialog. To cancel the changes
-      and return to previous values, click the
-      <guibutton>Close</guibutton> button.
+      <interface>Properties</interface> dialog. Click
+      <guibutton>Apply</guibutton> to apply changes without closing.
+      <guibutton>Close</guibutton> closes
+      <interface>Properties</interface> without saving changes which
+      have not been applied.  Applied changes cannot be cancelled.
     </para>
   </sect2>
 
@@ -295,25 +303,25 @@
    <para>
     In order for <application>Drive Mount Applet</application> to work
     properly, the system may need to be configured by the system
-    administrator, using root priveleges.  This section provides a
+    administrator, using root privileges.  This section provides a
     very basic introduction.
    </para>
 
    <para>
-    Information describing the mount point and filesystem type of each
+    Information describing the mount point and file system type of each
     drive is kept in <filename>/etc/fstab</filename>.  This can be
     configured by hand or by using the
     <application>linuxconf</application> application. For drives which
-    do not always have a single filesystem type (such as a floppy
-    drive which may have msdos or ext2 filesystems), you should use
-    "auto" for the filesystem type.  Each device has a single line in
+    do not always have a single file system type (such as a floppy
+    drive which may have msdos or ext2 file systems), you should use
+    "auto" for the file system type.  Each device has a single line in
     /etc/fstab of the following form:
     <programlisting>
     /dev/fd0        /mnt/floppy      auto    noauto,rw,user  0 0
     </programlisting>
     This entry describes the first floppy device (/dev/fd0) as having
     a mount point of <filename>/mnt/floppy</filename>, a variable
-    filesystem type which should be automatically detected, and the
+    file system type which should be automatically detected, and the
     following configurations: "noauto"&mdash; Do not automatically
     mount the drive when the computer is booted, "rw"&mdash; The drive
     is readable and writable, and "user"&mdash; Users have permission
@@ -324,7 +332,7 @@
    </para>
    <para>
     The <application>linuxconf</application> application provides a
-    graphical interface to controlling these filesystems.  To start
+    graphical interface for controlling these filesystems.  To start
     <application>linuxconf</application>, just type
     <command>linuxconf</command> in a shell window (you must log in as
     root). Select 
@@ -335,7 +343,7 @@
     </menuchoice>. 
     To edit an entry, just select
     it. <application>linuxconf</application> is meant to be easy
-    to use, and has its own internal help system to guide you
+    to use and has its own internal help system to guide you
     through the process. You may also add new entries by selecting the
     <guibutton>Add</guibutton> button.
    </para>
@@ -391,7 +399,7 @@
        <quote>mount: wrong fs type, bad option, bad superblock on
        /dev/cdrom, or too many mounted file systems</quote>&mdash;
        This error can be caused by several problems.  It is most
-       commonly caused by having the write filesystem type, such as
+       commonly caused by not having the right file system type, such as
        trying to mount a music CDROM as if it held data, or trying to
        mount an msdos formatted floppy as ext2.
       </para>
@@ -429,7 +437,7 @@
       <note>
        <title>Note for Advanced Users</title>
        <para>
-        Each device (filesystem or drive) which can be mounted should
+        Each device (file system or drive) which can be mounted should
         be listed in the <filename>/etc/fstab</filename> configuration
         file. Reading this file will tell you which devices are
         configured for your system.  To add or modify entries, you can
@@ -473,7 +481,7 @@
    <title>Known Bugs and Limitations</title>
    <para>
     <guimenuitem>Eject</guimenuitem> does not always work.  Trying to
-    Eject with the drive mounted does not give a warning, explaining
+    eject with the drive mounted does not give a warning, explaining
     why the drive does not eject.
    </para>
   </sect2>
@@ -556,3 +564,6 @@
   </sect2>
 
  </sect1>
+
+
+
