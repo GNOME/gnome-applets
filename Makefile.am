@@ -25,12 +25,6 @@ if APPLET_MIXER
 mixer_SUBDIRS = $(mixer_applets)
 endif
 
-charpick_applets = \
-	charpick
-if APPLET_CHARPICK
-charpick_SUBDIRS = $(charpick_applets)
-endif
-
 modemlights_applets = \
 	modemlights
 if APPLET_MODEMLIGHTS
@@ -54,6 +48,7 @@ cpufreq_SUBDIR = cpufreq
 endif
 
 always_built_SUBDIRS = \
+	charpick	\
 	drivemount	\
 	geyes		\
 	mini-commander	\
@@ -73,7 +68,6 @@ SUBDIRS = \
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
 	$(gswitchit_SUBDIRS)	\
-	$(charpick_SUBDIRS)	\
 	$(cpufreq_SUBDIR)
 
 DIST_SUBDIRS = \

@@ -1,3 +1,16 @@
+2004-11-27  Davyd Madeley  <davyd@madeley.id.au>
+
+	* Makefile.am:
+	* configure.in:
+	* charpick/charpick.c: Make the usage of gucharmap optional so that
+	people with gucharmap will still be able to build the applet (they
+	just won't get the names of the characters, ie. the old behaviour).
+	People with gucharmap will get the new feature.
+	
+	* configure.in:
+	* acconfig.h (removed): Remove deprecated acconfig.h and change
+	all AC_DEFINE()s to have have description fields.
+
 2004-11-25  Carlos Garcia Campos <carlosgc@gnome.org>
 
 	* cpufreq/GNOME_CPUFreqApplet.server.in.in: Add bugzilla information

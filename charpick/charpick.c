@@ -5,7 +5,9 @@
 #include <config.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-help.h>
-#include <gucharmap/gucharmap.h>
+#ifdef HAVE_GUCHARMAP
+#	include <gucharmap/gucharmap.h>
+#endif
 #include "charpick.h"
 
 
@@ -479,12 +481,16 @@ build_table(charpick_data *p_curr_data)
     g_utf8_strncpy (label, charlist, 1);
     charlist = g_utf8_next_char (charlist);
 
+#ifdef HAVE_GUCHARMAP
     /* TRANSLATOR: This sentance reads something like 'Insert "PILCROW SIGN"'
      *             hopefully, the name of the unicode character has already
      *             been translated.
      */
     name = g_strdup_printf (_("Insert \"%s\""),
 		    gucharmap_get_unicode_name (g_utf8_get_char (label)));
+#else
+    name = g_strdup (_("Insert special character"));
+#endif
    
     toggle_button[i] = gtk_toggle_button_new_with_label (label);
     sprintf(atk_desc, _("insert special character %s"), label);

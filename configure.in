@@ -131,7 +131,7 @@ ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi f
 
 GETTEXT_PACKAGE=gnome-applets-2.0
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE")
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
 
 AM_GLIB_GNU_GETTEXT
 
@@ -188,7 +188,7 @@ AM_CONDITIONAL(CDDA_SOLARIS, $cdplayer_type_sun)
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
 AC_SUBST(CDROM_LIBS)
-AC_DEFINE_UNQUOTED(DEV_PATH, "$cd_device_path")
+AC_DEFINE_UNQUOTED(DEV_PATH, "$cd_device_path", [CD Device Path])
 if test -z "$CDROM_HOST"; then
 dnl  
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
@@ -264,22 +264,18 @@ if test x"$P_MIXER" != x"mixer"; then
   AC_MSG_WARN([*** 'mixer' applet will not be built ***])
 fi
 
-P_GUCHARMAP=
 GUCHARMAP_CFLAGS=
 GUCHARMAP_LIBS=
 PKG_CHECK_MODULES(GUCHARMAP, gucharmap >= 1.4.0,
 		  HAVE_GUCHARMAP="yes", HAVE_GUCHARMAP="no")
 
 if test "x$HAVE_GUCHARMAP" = "xyes"; then
-	P_GUCHARMAP=gucharmap
+	AC_DEFINE(HAVE_GUCHARMAP, 1, [Gucharmap Available])
+else
+  AC_MSG_WARN([*** 'charpick' applet will not be built with gucharmap support ***])
 fi
 AC_SUBST(GUCHARMAP_CFLAGS)
 AC_SUBST(GUCHARMAP_LIBS)
-
-AM_CONDITIONAL(APPLET_CHARPICK, test "$P_GUCHARMAP" = "gucharmap")
-if test x"$P_GUCHARMAP" != x"gucharmap"; then
-  AC_MSG_WARN([*** 'charpick' applet will not be built ***])
-fi
 
 dnl ******************************************
 dnl ** keyboard accessibility status applet check
@@ -378,7 +374,7 @@ if test $enable_ipv6 = yes; then
   )
   AC_MSG_RESULT($have_ipv6)
   if test $have_ipv6 = yes; then
-      AC_DEFINE(ENABLE_IPV6)
+      AC_DEFINE(ENABLE_IPV6, 1, [Define if system is IPv6 enabled])
   fi
 fi
 
@@ -394,7 +390,7 @@ if test $have_getaddrinfo != yes; then
   done
 fi
 if test $have_getaddrinfo = yes; then
-  AC_DEFINE(HAVE_GETADDRINFO)
+  AC_DEFINE(HAVE_GETADDRINFO, 1, [Define if getaddrinfo() exists on the system])
 fi
 
 dnl =================================================================
@@ -404,14 +400,14 @@ dnl =================================================================
 # Honor aclocal flags
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
-AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
+AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps", [Icon Directory])
 
 #defined the below to enable help to work for applets 
 
-AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share")
-AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc")
-AC_DEFINE_UNQUOTED(LIBDIR, "${prefix}/lib")
-AC_DEFINE_UNQUOTED(PREFIX, "$prefix")
+AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share", [datadir])
+AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc", [sysconfdir])
+AC_DEFINE_UNQUOTED(LIBDIR, "${prefix}/lib", [libdir])
+AC_DEFINE_UNQUOTED(PREFIX, "$prefix", [install prefix])
 
 AC_OUTPUT([
 gnome-applets.spec
