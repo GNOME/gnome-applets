@@ -72,17 +72,26 @@ static gboolean button_press_hack (GtkWidget      *widget,
 				   GdkEventButton *event,
 				   GtkWidget      *applet);
 static void destroy_drive_widget (GtkWidget *widget, gpointer data);
-static void browse_cb (PanelApplet *widget, gpointer data);
-static void eject_cb (PanelApplet *applet, gpointer data);
-static void help_cb (PanelApplet *widget, gpointer data);
-static void about_cb (PanelApplet *widget, gpointer data);
 static gint device_is_in_mountlist (DriveData *dd);
 static gint get_device (const gchar *file);
 static gint device_is_mounted (DriveData *dd);
 static void update_pixmap (DriveData *dd, gint t);
 static gint drive_update_cb (gpointer data);
-static gint mount_cb (GtkWidget *widget, gpointer data);
+static void mount_cb (GtkWidget *widget, DriveData *dd);
 static void eject (DriveData *dd);
+
+static void browse_cb (BonoboUIComponent *uic,
+		       DriveData         *drivemount,
+		       const char        *verb);
+static void eject_cb  (BonoboUIComponent *uic,
+		       DriveData         *drivemount,
+		       const char        *verb);
+static void help_cb   (BonoboUIComponent *uic,
+		       DriveData         *drivemount,
+		       const char        *verb);
+static void about_cb  (BonoboUIComponent *uic,
+		       DriveData         *drivemount,
+		       const char        *verb);
 
 /*
  *-------------------------------------------------------------------------
@@ -139,7 +148,7 @@ static IconData icon_list[] = {
 static gint icon_list_count = 6;
 
 /* Bonobo Verbs for our popup menu */
-static const BonoboUIVerb applet_menu_verbs[] = {
+static const BonoboUIVerb applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("Browse", browse_cb),
 	BONOBO_UI_UNSAFE_VERB ("Eject", eject_cb),
 	BONOBO_UI_UNSAFE_VERB ("Properties", properties_show),
@@ -362,50 +371,65 @@ destroy_drive_widget (GtkWidget *widget, gpointer data)
 }
 
 static void
-browse_cb (PanelApplet *widget, gpointer data)
+browse_cb (BonoboUIComponent *uic,
+	   DriveData         *drivemount,
+	   const char        *verb)
 {
-	DriveData *dd = data;
-	char *str;
-	char *argv[4];
+	GError *error = NULL;
+	char   *command;
 
-	/* attempt to mount first, otherwise, what is the point? */
-	if (!dd->mounted) {
-		mount_cb (NULL, dd);
-		if (!dd->mounted)
-			return;	/* failed to mount, so abort */
+	if (!drivemount->mounted)
+		mount_cb (NULL, drivemount);
+
+	if (!drivemount->mounted)
+		return;
+
+	command = g_strdup_printf ("nautilus %s", drivemount->mount_point);
+	g_spawn_command_line_async (command, &error);
+	g_free (command);
+	if (error) {
+		GtkWidget *dialog;
+
+		dialog = gtk_message_dialog_new (NULL,
+						 GTK_DIALOG_DESTROY_WITH_PARENT,
+						 GTK_MESSAGE_ERROR,
+						 GTK_BUTTONS_CLOSE,
+						 _("There was an error executing '%s' : %s"),
+						 command,
+						 error->message);
+
+		g_signal_connect (dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+		gtk_widget_show (dialog);
+
+		g_error_free (error);
 	}
-
-	/* Do we have nautilus */
-	str = gnome_is_program_in_path ("nautilus");
-	if (str != NULL) {
-		argv[0] = "nautilus";
-		argv[1] = dd->mount_point;
-		argv[2] = NULL;
-		gnome_execute_async (NULL, 2, argv);
-	} else {
-		argv[0] = "gmc-client";
-		argv[1] = "--create-window";
-		argv[2] = dd->mount_point;
-		argv[3] = NULL;
-		gnome_execute_async (NULL, 3, argv);
-	}
 }
 
 static void
-eject_cb (PanelApplet *applet, gpointer data)
+eject_cb (BonoboUIComponent *uic,
+	  DriveData         *drivemount,
+	  const char        *verb)
 {
-	DriveData *dd = data;
-
-	eject (dd);
+	eject (drivemount);
 }
 
 static void
-help_cb (PanelApplet *widget, gpointer data)
+help_cb (BonoboUIComponent *uic,
+	 DriveData         *drivemount,
+	 const char        *verb)
+
 {
 }
 
 static void
-about_cb (PanelApplet *widget, gpointer data)
+about_cb (BonoboUIComponent *uic,
+	  DriveData         *drivemount,
+	  const char        *verb)
 {
 	static GtkWidget *about = NULL;
    	GdkPixbuf        *pixbuf;
@@ -424,9 +448,8 @@ about_cb (PanelApplet *widget, gpointer data)
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about != NULL) {
-		gdk_window_show (about->window);
-		gdk_window_raise (about->window);
+	if (about) {
+		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}
 
@@ -692,10 +715,10 @@ drive_update_cb (gpointer data)
  *-------------------------------------------------------------------------
  */
 
-static gint
-mount_cb (GtkWidget *widget, gpointer data)
+static void
+mount_cb (GtkWidget *widget,
+	  DriveData *dd)
 {
-	DriveData *dd = data;
 	gchar *command_line;
 	gchar buf[512];
 	FILE *fp;
@@ -707,9 +730,8 @@ mount_cb (GtkWidget *widget, gpointer data)
 
 	/* Stop the user from displaying zillions of error messages */
 	if (dd->error_dialog) {
-		gdk_window_show (dd->error_dialog->window);
-		gdk_window_raise (dd->error_dialog->window);
-		return FALSE;
+		gtk_window_present (GTK_WINDOW (dd->error_dialog));
+		return;
 	}
 
 	if (!check) {
@@ -725,7 +747,7 @@ mount_cb (GtkWidget *widget, gpointer data)
 	if (!fp) {
 		printf ("unable to run command: %s\n", command_line);
 		g_free (command_line);
-		return FALSE;
+		return;
 	}
 
 	str = g_string_new (NULL);
@@ -774,7 +796,7 @@ mount_cb (GtkWidget *widget, gpointer data)
 	}
 	g_string_free (str, TRUE);
 	g_free (command_line);
-	return FALSE;
+	return;
 }
 
 static void

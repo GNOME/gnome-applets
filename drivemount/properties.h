@@ -14,17 +14,21 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#include <glib.h>
-#include <libgnome/libgnome.h>
+#include <glib/gmacros.h>
 #include <panel-applet.h>
+
+#include "drivemount.h"
 
 #ifndef _DRIVEMOUNT_PROPERTIES_H_
 #define _DRIVEMOUNT_PROPERTIES_H_
 
 G_BEGIN_DECLS
 
-void properties_load(DriveData *dd);
-void properties_show(PanelApplet *applet, gpointer data);
+void properties_load (DriveData         *dd);
+void properties_show (BonoboUIComponent *uic,
+		      DriveData         *dd,
+		      const char        *verb);
 
 G_END_DECLS
+
 #endif
