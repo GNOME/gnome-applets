@@ -57,12 +57,28 @@ drive_button_class_init (DriveButtonClass *class)
     GTK_OBJECT_CLASS(class)->destroy = drive_button_destroy;
     GTK_WIDGET_CLASS(class)->button_press_event = drive_button_button_press;
     GTK_WIDGET_CLASS(class)->key_press_event = drive_button_key_press;
+
+    gtk_rc_parse_string ("\n"
+			 "   style \"drive-button-style\"\n"
+			 "   {\n"
+			 "      GtkWidget::focus-line-width=0\n"
+			 "      GtkWidget::focus-padding=0\n"
+			 "      bg_pixmap[NORMAL] = \"<parent>\"\n"
+			 "      bg_pixmap[ACTIVE] = \"<parent>\"\n"
+			 "      bg_pixmap[PRELIGHT] = \"<parent>\"\n"
+			 "      bg_pixmap[INSENSITIVE] = \"<parent>\"\n"
+			 "   }\n"
+			 "\n"
+			 "    class \"DriveButton\" style \"drive-button-style\"\n"
+			 "\n");
 }
 
 static void
 drive_button_init (DriveButton *self)
 {
     GtkWidget *image;
+    GtkRcStyle *rc;
+    int i;
 
     image = gtk_image_new ();
     gtk_container_add (GTK_CONTAINER (self), image);
@@ -651,7 +667,7 @@ drive_button_ensure_popup (DriveButton *self)
     self->popup_menu = gtk_menu_new ();
 
     /* make sure the display name doesn't look like a mnemonic */
-    tmp = escape_underscores (display_name);
+    tmp = escape_underscores (display_name ? display_name : "(none)");
     g_free (display_name);
     display_name = tmp;
 
