@@ -38,6 +38,10 @@ if APPLET_ACCESSX
 accessx_status_SUBDIR = accessx-status
 endif
 
+if APPLET_GSWITCHIT
+gswitchit_SUBDIRS = libgswitchit gswitchit
+endif
+
 always_built_SUBDIRS = \
 	drivemount	\
 	charpick	\
@@ -58,7 +62,8 @@ SUBDIRS = \
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
-	$(accessx_status_SUBDIR)
+	$(accessx_status_SUBDIR)\
+	$(gswitchit_SUBDIRS)
 
 DIST_SUBDIRS = \
 	po		\
