@@ -5,19 +5,20 @@
 # Updated by Vladimir Petkov <vpetkov@i-space.org>, 2004
 # Updated by Peter Slavov <pslavov@i-space.org>, 2004
 # Rostislav Raykov <zbrox@i-space.org>, 2004, updates
-# 
+# Alexander Shopov <ash@contact.bg>, 2004, updates, corrections
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets gnome 2.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-07 11:42+0200\n"
-"PO-Revision-Date: 2004-09-08 08:31+0300\n"
+"POT-Creation-Date: 2004-11-14 16:59+0200\n"
+"PO-Revision-Date: 2004-11-12 20:36+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -53,20 +54,20 @@ msgstr "_Помощ"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:3
 msgid "_Keyboard Accessibility Preferences"
-msgstr "Настройки на _Kлавиатурата за Достъпността"
+msgstr "Настройки на достъпността на _клавиатурата"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:1
 msgid "AccessX Status Applet Factory"
-msgstr "Фабрика на Аплета за Състоянието на Достъпа до Графичната Среда"
+msgstr "Фабрика на аплета за състоянието на достъпа до графичната среда"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
 #: accessx-status/applet.c:1332
 msgid "Keyboard Accessibility Status"
-msgstr "Състояние на Достъпноста на Клавиатурата"
+msgstr "Състояние на достъпноста на клавиатурата"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:3
 msgid "Keyboard Accessibility Status Applet Factory"
-msgstr "Фабрика за Аплета на Състоянието·на·Достъпноста·на·Клавиатурата"
+msgstr "Фабрика за аплета на състоянието на достъпноста на клавиатурата"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:4
 msgid "Shows the status of keyboard accessibility features"
@@ -74,12 +75,12 @@ msgstr "Показване на състоянието на достъпност
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:564 drivemount/drivemount.c:552
-#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2467
-#: mini-commander/src/about.c:50 mixer/mixer.c:1349
+#: mini-commander/src/about.c:50 mixer/mixer.c:1392
 #: modemlights/modemlights.c:118 multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:572
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "Петър Славов <pslavov@i-space.org>\n"
@@ -144,7 +145,7 @@ msgstr "Датчик за заряда на батерията"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
-msgstr "Фабрика на Батстат"
+msgstr "Фабрика на Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
 #: battstat/battstat_applet.c:1832
@@ -168,7 +169,7 @@ msgstr "_Настройки"
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
-msgstr "_Приспиване на Компютъра..."
+msgstr "_Приспиване на компютъра..."
 
 #: battstat/battstat.schemas.in.h:1
 msgid "Beep for warnings"
@@ -188,11 +189,11 @@ msgstr "Изпразване отгоре"
 
 #: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
-msgstr "Известяване За Пълна Батерия"
+msgstr "Известяване за пълна батерия"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
-msgstr "Известяване При Ниско Ниво на·Батерията"
+msgstr "Известяване при нисък заряд на батерията"
 
 #: battstat/battstat.schemas.in.h:7
 msgid "Notify user when the battery is full"
@@ -280,40 +281,51 @@ msgid "Unknown time (%d%%) till charged"
 msgstr "Времето до зареждането е неизвестно (%d%%)"
 
 #: battstat/battstat_applet.c:391
-#, fuzzy, c-format
+#, c-format
 msgid "%d minute (%d%%) remaining"
-msgstr "оставащи %d часа и %d минути"
+msgid_plural "%d minutes (%d%%) remaining"
+msgstr[0] "остава %d минута (%d%%)"
+msgstr[1] "остават %d минути (%d%%)"
 
 #: battstat/battstat_applet.c:396
 #, c-format
 msgid "%d minute till charged (%d%%)"
-msgstr "%d минута до зареждането (%d%%)"
+msgid_plural "%d minutes till charged (%d%%)"
+msgstr[0] "%d минута до зареждането (%d%%)"
+msgstr[1] "%d минути до зареждането (%d%%)"
 
 #: battstat/battstat_applet.c:402
-#, fuzzy, c-format
+#, c-format
 msgid "%d hour (%d%%) remaining"
-msgstr "оставащи %d часа и %d минути"
+msgid_plural "%d hours (%d%%) remaining"
+msgstr[0] "остава %d час (%d%%)"
+msgstr[1] "остават %d часа (%d%%)"
 
 #: battstat/battstat_applet.c:407
 #, c-format
 msgid "%d hour (%d%%) till charged (%d%%)"
-msgstr "%d час (%d%%) до зареждането (%d%%)"
+msgid_plural "%d hours (%d%%) till charged (%d%%)"
+msgstr[0] "%d час (%d%%) до зареждането (%d%%)"
+msgstr[1] "%d часа (%d%%) до зареждането (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
 #: battstat/battstat_applet.c:414
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
-msgstr "%d %s %d %s (%d%%) оставащи"
+msgstr "Остават %d %s %d %s (%d%%)"
 
 #: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
 msgid "hour"
-msgstr "час"
+msgid_plural "hours"
+msgstr[0] "час"
+msgstr[1] "часа"
 
 #: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
-#, fuzzy
 msgid "minute"
-msgstr "минути"
+msgid_plural "minutes"
+msgstr[0] "минута"
+msgstr[1] "минути"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
@@ -328,11 +340,13 @@ msgstr "Батерията Ви скоро ще свърши"
 
 #: battstat/battstat_applet.c:538
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
-msgstr "За да избегнете загуба на информация, моля, изключете, приспете или включете в ел. мрежа вашия компютър."
+msgstr ""
+"За да избегнете загуба на информация, изключете, приспете или включете в ел. "
+"мрежа вашия компютър."
 
 #: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
 msgid "Battery Notice"
-msgstr "Съобщение за Батерията"
+msgstr "Съобщение за батерията"
 
 #: battstat/battstat_applet.c:614
 msgid "Your battery is now fully recharged"
@@ -361,7 +375,7 @@ msgid ""
 "Make sure you have read permission to the\n"
 "APM device."
 msgstr ""
-"Не можах да отворя устройството\n"
+"Не може да се отвори устройството\n"
 "за управление на захранването!\n"
 "Проверете дали имате права за\n"
 "четене на APM устройството."
@@ -389,11 +403,11 @@ msgstr ""
 #: battstat/battstat_applet.c:1023
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
-msgstr "Командата за спиране '%s'· беше успешна."
+msgstr "Командата за спиране \"%s\" беше успешна."
 
 #: battstat/battstat_applet.c:1025
 msgid "The Suspend command was unsuccessful."
-msgstr "Командата за Спиране беше успешна."
+msgstr "Командата за спиране беше успешна."
 
 #: battstat/battstat_applet.c:1033
 msgid ""
@@ -469,10 +483,10 @@ msgstr "Външен вид"
 
 #: battstat/battstat_applet.glade.h:12
 msgid "Battery Charge Monitor Preferences"
-msgstr "Настройки на Датчика за Заряда на Батерията"
+msgstr "Настройки на датчика за заряда на батерията"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1049 mailcheck/mailcheck.c:2053
+#: gweather/gweather-pref.c:1052 mailcheck/mailcheck.c:2053
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Общи"
@@ -532,9 +546,9 @@ msgstr "Ж_ълт:"
 #: battstat/properties.c:291 drivemount/drivemount.c:509
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2320
 #: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:364
-#: mixer/mixer.c:1462 stickynotes/stickynotes_applet_callbacks.c:238
+#: mixer/mixer.c:1505 stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Грешка при изобразяването на помощта: %s"
@@ -549,7 +563,7 @@ msgstr "Посоката на движение на лената на прогр
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
-msgstr "Инструмент за Състоянието на Батерията"
+msgstr "Инструмент за състоянието на батерията"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:2
 msgid "Battery fully re-charged"
@@ -578,7 +592,7 @@ msgstr "Аплет за панела за слушане на музикални
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:3
 msgid "_Open CD Player"
-msgstr "_Отваряне на Програмата за изпълнение на музикални компактдискове"
+msgstr "_Отваряне на програмата за изпълнение на музикални компактдискове"
 
 #: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:1105
 msgid "Stop"
@@ -605,10 +619,10 @@ msgid "You do not have permission to use the CD player."
 msgstr ""
 "Нямате право за да използвате програмата за изпълнение на музикални дискове."
 
-#: cdplayer/cdplayer.c:378 mixer/mixer.c:1316 multiload/main.c:142
+#: cdplayer/cdplayer.c:378 mixer/mixer.c:1359 multiload/main.c:142
 #, c-format
 msgid "There was an error executing '%s': %s"
-msgstr "Грешка при изпълнението на '%s': %s"
+msgstr "Грешка при изпълнението на \"%s\": %s"
 
 #: cdplayer/cdplayer.c:429
 #, c-format
@@ -633,7 +647,7 @@ msgstr "Укажете пътя до устройството тук"
 
 #: cdplayer/cdplayer.c:528
 msgid "Use _Default"
-msgstr "По _Подразбиране"
+msgstr "По _подразбиране"
 
 #: cdplayer/cdplayer.c:614
 msgid ""
@@ -773,15 +787,15 @@ msgstr "Променяне на палитрата чрез добавяне и�
 
 #: charpick/properties.c:236
 msgid "Add Palette"
-msgstr "Добавяне на Палитра"
+msgstr "Добавяне на палитра"
 
 #: charpick/properties.c:273
 msgid "Edit Palette"
-msgstr "Редактиране на Палитрата"
+msgstr "Редактиране на палитрата"
 
 #: charpick/properties.c:375
 msgid "Palettes list"
-msgstr "Списък с Палитри"
+msgstr "Списък с палитри"
 
 #: charpick/properties.c:454
 msgid "_Palettes:"
@@ -896,7 +910,7 @@ msgstr "Време в секунди, между подновяването на
 
 #: drivemount/properties.c:336
 msgid "Disk Mounter Preferences"
-msgstr "Настройки на Програмата за Монтиране на Дискове"
+msgstr "Настройки на програмата за монтиране на дискове"
 
 #: drivemount/properties.c:364
 msgid "_Mount directory:"
@@ -904,7 +918,7 @@ msgstr "Папка за _монтиране:"
 
 #: drivemount/properties.c:370
 msgid "Select Mount Directory"
-msgstr "Задаване на Папка за Монтиране"
+msgstr "Задаване на папка за монтиране"
 
 #: drivemount/properties.c:392
 msgid "_Update interval:"
@@ -925,27 +939,27 @@ msgstr "Дискета"
 
 #: drivemount/properties.c:457
 msgid "CD-ROM"
-msgstr "Компакт Диск"
+msgstr "Компакт диск"
 
 #: drivemount/properties.c:460
 msgid "CD Recorder"
-msgstr "CD Записвачка"
+msgstr "CD записвачка"
 
 #: drivemount/properties.c:463
 msgid "Zip Drive"
-msgstr "Зип Диск"
+msgstr "Зип диск"
 
 #: drivemount/properties.c:466
 msgid "Hard Disk"
-msgstr "Твърд Диск"
+msgstr "Твърд диск"
 
 #: drivemount/properties.c:469
 msgid "Jaz Drive"
-msgstr "Джаз Диск"
+msgstr "Джаз диск"
 
 #: drivemount/properties.c:472
 msgid "USB Stick"
-msgstr "USB Устройство"
+msgstr "USB устройство"
 
 #: drivemount/properties.c:475
 msgid "Custom"
@@ -1018,7 +1032,7 @@ msgstr "Имаше фатална грешка при зареждането н�
 
 #: geyes/themes.c:295
 msgid "Geyes Preferences"
-msgstr "Настройки на Очичките"
+msgstr "Настройки на очичките"
 
 #: geyes/themes.c:330
 msgid "Themes"
@@ -1210,11 +1224,11 @@ msgstr "Азербейджан"
 
 #: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:2
 msgid "Azerbaidjani Turkic"
-msgstr "Азербейджански Турски"
+msgstr "Азербейджански турски"
 
 #: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:3
 msgid "Azerbaidjani Turkic xkb keymap"
-msgstr "Азербейджанска Турска клавиатура xkb"
+msgstr "Азербейджанска турска клавиатура xkb"
 
 #: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
 #: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
@@ -1334,7 +1348,7 @@ msgstr "валонски"
 #: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:24
 msgid "Bulgarian Cyrillic"
-msgstr "Българска Кирилица"
+msgstr "Българска кирилица"
 
 #: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
 #: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
@@ -1479,11 +1493,11 @@ msgstr "Дания"
 msgid "Danish keymap"
 msgstr "Датска клавиатура"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:848
-#: gweather/gweather-pref.c:868 gweather/gweather-pref.c:892
-#: gweather/gweather-pref.c:918
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:851
+#: gweather/gweather-pref.c:871 gweather/gweather-pref.c:895
+#: gweather/gweather-pref.c:921
 msgid "Default"
-msgstr "По Подразбиране"
+msgstr "Стандартна"
 
 #: gkb-new/descs/Default.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:80 gkb-new/descs.sun/presets.xml.in.h:48
@@ -1600,7 +1614,7 @@ msgstr "Френски клавиатура"
 #: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:67
 msgid "French-Canadian 105-key"
-msgstr "Френска Канадска клавиатура 105-key"
+msgstr "Френска канадска клавиатура 105-key"
 
 #: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:63
@@ -1610,7 +1624,7 @@ msgstr "Френски в Швейцария"
 #: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:64
 msgid "French Swiss keymap"
-msgstr "Френска Швейцарска клавиатура"
+msgstr "Френска швейцарска клавиатура"
 
 #: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:1
@@ -1646,7 +1660,7 @@ msgstr "Гръцки"
 #: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:84
 msgid "Greek xkb keymap"
-msgstr "Гръцка·клавиатура xkb"
+msgstr "Гръцка клавиатура xkb"
 
 #: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:83
@@ -1656,12 +1670,12 @@ msgstr "Гръцка клавиатура"
 #: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:72
 msgid "Georgian Latin"
-msgstr "Грузинска Латиница"
+msgstr "Грузинска латиница"
 
 #: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:73
 msgid "Georgian Russian layout"
-msgstr "Грузински Руска подредба"
+msgstr "Грузински руска подредба"
 
 #: gkb-new/descs/German.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:8
@@ -1720,7 +1734,7 @@ msgstr "Унгария"
 #: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:94
 msgid "Hungarian latin1"
-msgstr "Унгарска Латиница"
+msgstr "Унгарска латиница"
 
 #: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:91
@@ -1772,7 +1786,7 @@ msgstr "Израел"
 #: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:86
 msgid "Hebrew keymap"
-msgstr "Иврит клавиатура"
+msgstr "Израелска клавиатура"
 
 #: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
 #: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
@@ -1855,12 +1869,12 @@ msgstr "Южна Кореа"
 #: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:114
 msgid "Lao"
-msgstr "Лао"
+msgstr "Лаоски"
 
 #: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:115
 msgid "Lao keymap"
-msgstr "Клавиатура на Лао"
+msgstr "Лаоска клавиатура"
 
 #: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:116
@@ -1947,11 +1961,11 @@ msgstr "Монголска клавиатура"
 
 #: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:3
 msgid "Plain Mongolian keymap"
-msgstr "Обикновена Монголска клавиатура"
+msgstr "Обикновена монголска клавиатура"
 
 #: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:3
 msgid "Unicode Mongolian Keymap"
-msgstr "Монголска уникод клавиатура"
+msgstr "Монголска клавиатура по уникод"
 
 #: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:44
@@ -2071,12 +2085,12 @@ msgstr "Руска клавиатура"
 #: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:141
 msgid "Plain Russian keymap"
-msgstr "Проста Руска клавиатура"
+msgstr "Обикновена руска клавиатура"
 
 #: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:157
 msgid "Russian Cyrillic"
-msgstr "Руска Кирилица"
+msgstr "Руска кирилица"
 
 #: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
 #: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
@@ -2177,7 +2191,7 @@ msgstr "Тайландски"
 #: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
-msgstr "Тайванска·клавиатура xkb"
+msgstr "Тайванска·клавиатура"
 
 #: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
 #: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
@@ -2251,7 +2265,7 @@ msgstr "Украинска клавиатура xkb"
 #: gkb-new/descs/UK-102.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:68
 msgid "GB 102-key"
-msgstr "Обединено Кралство·102-key"
+msgstr "Великобританска 102-key"
 
 #: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
 #: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
@@ -2285,7 +2299,7 @@ msgstr "Английска клавиатура"
 #: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:69
 msgid "GB 105-key"
-msgstr "Обединено Кралство·105-key"
+msgstr "Обединено Кралство 105-key"
 
 #: gkb-new/descs/US-101.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:204
@@ -2332,7 +2346,7 @@ msgstr "Американска IBM RS/6000"
 #: gkb-new/descs/US-int.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:209
 msgid "US International"
-msgstr "Американска Международна"
+msgstr "Американска международна"
 
 #: gkb-new/descs/US-mac.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:211
@@ -2361,7 +2375,7 @@ msgstr "Американска клавиатура xkb"
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:210
 msgid "US International xkb keymap"
-msgstr "Американска·Международна клавиатура xkb"
+msgstr "Американска·международна клавиатура"
 
 #: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:223 gkb-new/descs.sun/presets.xml.in.h:128
@@ -2390,11 +2404,11 @@ msgstr "Азербейджан"
 
 #: gkb-new/descs/presets.xml.in.h:10 gkb-new/descs.sun/presets.xml.in.h:5
 msgid "Azerbaijani Turkish"
-msgstr "Азербейджански Турски"
+msgstr "Азербейджански турски"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaijani Turkish xkb keymap"
-msgstr "Азербейджанска Турска клавиатура xkb"
+msgstr "Азербейджанска турска клавиатура xkb"
 
 #: gkb-new/descs/presets.xml.in.h:59
 msgid "Former Czechoslovakia"
@@ -2410,7 +2424,7 @@ msgstr "Монголска фонетична клавиатура"
 
 #: gkb-new/descs/presets.xml.in.h:134
 msgid "Morocco"
-msgstr "Мароко"
+msgstr "Марокански"
 
 #: gkb-new/descs/presets.xml.in.h:162
 msgid "Serb standard xkb keymap"
@@ -2438,7 +2452,7 @@ msgstr "Арменска клавиатура на Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
 msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Азербейджанска·Турска клавиатура·на·Sun"
+msgstr "Азербейджанска·турска клавиатура·на·Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:9
 msgid "Belarusian Sun keymap"
@@ -2446,7 +2460,7 @@ msgstr "Белоруска клавиатура на Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:12
 msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Бразилска Португалска·USB клавиатура·на·SUN"
+msgstr "Бразилска португалска·USB клавиатура·на·Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:13
 msgid "Brazil Portuguese Sun keymap"
@@ -2510,7 +2524,7 @@ msgstr "Френска клавиатура на SUN"
 
 #: gkb-new/descs.sun/presets.xml.in.h:44
 msgid "German Sun Type-4 keymap"
-msgstr "Немска клавиатура·на·SUN от тип 4"
+msgstr "Немска клавиатура·на·Sun от тип 4"
 
 #: gkb-new/descs.sun/presets.xml.in.h:45
 msgid "German Sun USB keymap"
@@ -2776,7 +2790,7 @@ msgstr "Етикета на подредбата на клавиатурата"
 
 #: gkb-new/gkb.schemas.in.h:12
 msgid "The language of the keyboard layout"
-msgstr "Езика на подредбата на клавиатурата"
+msgstr "Езикът на подредбата на клавиатурата"
 
 #: gkb-new/gkb.schemas.in.h:13
 msgid "The name of the keyboard layout"
@@ -2843,7 +2857,7 @@ msgstr "Подредби (изберете и натиснете \"Добавя�
 
 #: gkb-new/prop-map.c:80
 msgid "Unknown Keyboard"
-msgstr "Непозната Клавиатурна Подредба"
+msgstr "Непозната клавиатурна подредба"
 
 #: gkb-new/prop-map.c:91
 msgid "?"
@@ -2879,9 +2893,9 @@ msgstr "Етикет"
 
 #: gkb-new/prop.c:128 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
-msgstr "Знаме и Име"
+msgstr "Знаме и име"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1034
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1037
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Външен вид"
@@ -2893,7 +2907,7 @@ msgstr "_Външен вид:"
 
 #: gkb-new/prop.c:307
 msgid "Keyboard Shortcuts"
-msgstr "Бързи Клавиши"
+msgstr "Бързи клавиши"
 
 #: gkb-new/prop.c:313
 msgid "S_witch layout:"
@@ -2901,11 +2915,11 @@ msgstr "Превключване на подредбата:"
 
 #: gkb-new/prop.c:326
 msgid "_Grab keys"
-msgstr "Бърз клавиш за Прихващане:"
+msgstr "Бърз клавиш за прихващане:"
 
 #: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
-msgstr "Настройки на Превключвателя за клавиатурни подредби"
+msgstr "Настройки на превключвателя за клавиатурни подредби"
 
 #: gkb-new/prop.c:407
 msgid "Keyboard Layout Selector"
@@ -2959,7 +2973,7 @@ msgstr ""
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "Pl_ugins"
-msgstr "Пл_ъгини"
+msgstr "Мо_дули"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
@@ -2967,7 +2981,7 @@ msgstr "_Групи"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Open Keyboard Preferences"
-msgstr "_Зареждане на Настройките на Клавиатурата"
+msgstr "_Зареждане на настройките на клавиатурата"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
 msgid "GNOME keyboard applet factory"
@@ -2978,9 +2992,9 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME превключвател на клавиатурни подредби"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:613
+#: gswitchit/gswitchit-applet.c:604
 msgid "Keyboard Indicator"
-msgstr "Датчик за Клавиатурата"
+msgstr "Датчик за клавиатурата"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
 msgid "Keyboard applet factory"
@@ -2989,21 +3003,21 @@ msgstr "Фабрика на аплета за клавиатурата"
 #: gswitchit/gswitchit-applet.c:110
 #, c-format
 msgid "Keyboard Indicator (%s)"
-msgstr "Клавиатурен Датчик·(%s)"
+msgstr "Клавиатурен датчик (%s)"
 
-#: gswitchit/gswitchit-applet.c:616
+#: gswitchit/gswitchit-applet.c:607
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Запазени права (c) Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:618
+#: gswitchit/gswitchit-applet.c:609
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Превключвател за клавиатурни подредби за GNOME"
 
-#: gswitchit/gswitchit-applet.c:772
+#: gswitchit/gswitchit-applet.c:763
 msgid "XKB initialization error"
 msgstr "Грешка при инициализацията на XKB"
 
-#: gswitchit/gswitchit-applet.c:780
+#: gswitchit/gswitchit-applet.c:771
 msgid "Error loading XKB configuration registry"
 msgstr "Грешка при зареждането на конфигурационния регистър на XKB"
 
@@ -3015,11 +3029,11 @@ msgstr ""
 "Подредбата да бъде направена достъпна само за изскачащото меню на аплета.\n"
 "Няма начин да бъде превключена чрез клавиатурата."
 
-#: gswitchit/gswitchit-capplet.c:265
+#: gswitchit/gswitchit-capplet.c:262
 msgid "_Exclude from keyboard switching"
 msgstr "_Не разрешава превключване с клавиатура"
 
-#: gswitchit/gswitchit-capplet.c:296
+#: gswitchit/gswitchit-capplet.c:293
 msgid "Not used"
 msgstr "Не е в употреба"
 
@@ -3034,15 +3048,15 @@ msgstr "Грешка при инициализация на GConf:·%s\n"
 
 #: gswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr "Активиране не още плъгини"
+msgstr "Активиране не още модули"
 
 #: gswitchit/gswitchit-plugins.glade.h:2
 msgid "Active _plugins:"
-msgstr "Активни _плъгини:"
+msgstr "Активни _модули:"
 
 #: gswitchit/gswitchit-plugins.glade.h:3
 msgid "Add Plugin"
-msgstr "Добавяне на Плъгин"
+msgstr "Добавяне на модул"
 
 #: gswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
@@ -3050,31 +3064,31 @@ msgstr "Затваряне на диалоговия прозорец"
 
 #: gswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
-msgstr "Настройване на избрания плъгин"
+msgstr "Настройване на избрания модул"
 
 #: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr "Деактивиране на избрания плъгин"
+msgstr "Деактивиране на избрания модул"
 
 #: gswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr "Намаляване приоритета на плъгина"
+msgstr "Намаляване приоритета на модула"
 
 #: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr "Увеличаване приоритета на плъгина"
+msgstr "Увеличаване приоритета на модула"
 
 #: gswitchit/gswitchit-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
-msgstr "Плъгини за Индикатора на Клавиатурата"
+msgstr "Модули за индикатора на клавиатурата"
 
 #: gswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
-msgstr "Списъкът на активните плъгини"
+msgstr "Списъкът на активните модули"
 
 #: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
-msgstr "_Налични плъгини:"
+msgstr "_Налични модули:"
 
 #: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
 msgid "<b>Behavior</b>"
@@ -3094,7 +3108,7 @@ msgstr "Задържане на състоянието на индикатори
 
 #: gswitchit/gswitchit-properties.glade.h:6
 msgid "Keyboard Indicator Preferences"
-msgstr "Настройки на Превключвателя за клавиатурни подредби"
+msgstr "Настройки на превключвателя за клавиатурни подредби"
 
 #: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
@@ -3235,7 +3249,7 @@ msgstr "Символи"
 msgid "Behavior"
 msgstr "Поведение"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:994
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:997
 msgid "Update"
 msgstr "Обновяване"
 
@@ -3243,7 +3257,7 @@ msgstr "Обновяване"
 msgid "Stock update fre_quency:"
 msgstr "Честота на обнов_яване на котировките в минути:"
 
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1018 mailcheck/mailcheck.c:2101
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1021 mailcheck/mailcheck.c:2101
 #: mailcheck/mailcheck.c:2107
 msgid "minutes"
 msgstr "минути"
@@ -3292,7 +3306,7 @@ msgstr "пиксели"
 
 #: gtik/gtik.c:1562
 msgid "Font and Colors"
-msgstr "Шрифтове и Цветове"
+msgstr "Шрифтове и цветове"
 
 #: gtik/gtik.c:1568
 msgid "Use _default theme font and colors"
@@ -3343,7 +3357,7 @@ msgstr "(Без Промяна"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Аплета плъзга от дясно наляво, когато тази настройка е истина."
+msgstr "Аплетът плъзга отдясно наляво, когато тази настройка е истина."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -3399,7 +3413,7 @@ msgid ""
 "forward or backward."
 msgstr ""
 "Показване на бутоните със стрелки в страничния панел на екрана, така че "
-"потребителя да може да плъзга напред и назад."
+"потребителят да може да плъзга напред и назад."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
@@ -3410,7 +3424,7 @@ msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
 msgstr ""
-"Цвят за фон при изобразяване. Няма ефект когато потребителя избере да "
+"Цвят за фон при изобразяване. Няма ефект, когато потребителят избере да "
 "използва шрифтовете и цветовете по подразбиране от темата."
 
 #: gtik/gtik.schemas.in.h:15
@@ -3418,17 +3432,17 @@ msgid ""
 "The color used when the stock's values has lowered. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
 msgstr ""
-"Цвета използван когато стойноста на котировката е понижена. Няма ефект "
-"когато потребителя избере да използва "
-"шрифтовете·и·цветовете·по·подразбиране·от·темата."
+"Цветът използван, когато стойността на котировката се е понижила. Няма "
+"ефект, когато потребителят избере да използва шрифтовете и цветовете от "
+"подразбиращата се тема."
 
 #: gtik/gtik.schemas.in.h:16
 msgid ""
 "The color used when the stock's values has not changed. Has no effect when "
 "the user chooses to use the default theme fonts and colors."
 msgstr ""
-"Цвета използван когато стойноста на котировката не е променена. "
-"Няма·ефект·когато·потребителя·избере·да·използва·шрифтовете и цветовете по "
+"Цветът използван, когато стойността на котировката не е променена. Няма "
+"ефект, когато потребителят избере да използва шрифтовете и цветовете по "
 "подразбиране от темата."
 
 #: gtik/gtik.schemas.in.h:17
@@ -3436,8 +3450,8 @@ msgid ""
 "The color used when the stock's values has raised. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
 msgstr ""
-"Цвета използван когато стойноста на котировката се е покачила. "
-"Няма·ефект·когато·потребителя·избере·да·използва·шрифтовете и цветовете по "
+"Цветът използван, когато стойността на котировката се е покачила. Няма "
+"ефект, когато потребителят избере да използва шрифтовете и цветовете по "
 "подразбиране от темата."
 
 #: gtik/gtik.schemas.in.h:18
@@ -3445,13 +3459,12 @@ msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
 msgstr ""
-"Шрифта използван за изобразяване. "
-"Няма·ефект·когато·потребителя·избере·да·използва·шрифтовете и цветовете по "
-"подразбиране от темата."
+"Шрифтът използван за изобразяване. Няма ефект, когато потребителят избере да "
+"използва шрифтовете и цветовете по подразбиране от темата."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
-msgstr "Времевия интервал докато аплета обнови стоковите данни."
+msgstr "Времевият интервал докато аплета обнови данните."
 
 #: gtik/gtik.schemas.in.h:20
 msgid "The width in pixels of the applet."
@@ -3519,13 +3532,13 @@ msgid ""
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
-"Лицензното споразумение е Общия публичен лиценз на ГНУ.\n"
+"Разпространява се според условията на Общия публичен лиценз на ГНУ.\n"
 "\n"
 "Аплет за местното метеорологично време."
 
 #: gweather/gweather-applet.c:356 gweather/gweather-applet.c:360
 msgid "GNOME Weather"
-msgstr "GNOME Синоптик"
+msgstr "Прогноза на времето"
 
 #: gweather/gweather-dialog.c:83
 msgid "Details"
@@ -3537,7 +3550,7 @@ msgstr "Град:"
 
 #: gweather/gweather-dialog.c:131
 msgid "Last update:"
-msgstr "Последно Обновяване:"
+msgstr "Последно обновяване:"
 
 #: gweather/gweather-dialog.c:139
 msgid "Conditions:"
@@ -3577,11 +3590,11 @@ msgstr "Видимост:"
 
 #: gweather/gweather-dialog.c:309
 msgid "Current Conditions"
-msgstr "Текущи Условия"
+msgstr "Текущи условия"
 
 #: gweather/gweather-dialog.c:326
 msgid "Forecast Report"
-msgstr "Метеорологична Прогноза"
+msgstr "Метеорологична прогноза"
 
 #: gweather/gweather-dialog.c:326
 msgid "See the ForeCast Details"
@@ -3593,7 +3606,7 @@ msgstr "Прогноза"
 
 #: gweather/gweather-dialog.c:344
 msgid "Radar Map"
-msgstr "Радарна Карта"
+msgstr "Радарна карта"
 
 #: gweather/gweather-dialog.c:375
 msgid "_Visit Weather.com"
@@ -3605,7 +3618,7 @@ msgstr "Посещаване на Weather.com"
 
 #: gweather/gweather-dialog.c:376
 msgid "Click to Enter Weather.com"
-msgstr "Натиснете тук за да Посетите Weather.com"
+msgstr "Натиснете тук за да посетите Weather.com"
 
 #: gweather/gweather-dialog.c:465
 msgid "Forecast not currently available for this location."
@@ -3626,11 +3639,11 @@ msgstr "Осъвременяване на спин бутона"
 
 #: gweather/gweather-pref.c:193
 msgid "Spinbutton for updating"
-msgstr "Спинбутон за осъвременяване"
+msgstr "Бутон за осъвременяване"
 
 #: gweather/gweather-pref.c:194
 msgid "Address Entry"
-msgstr "Запис за Адрес"
+msgstr "Запис за адрес"
 
 #: gweather/gweather-pref.c:194
 msgid "Enter the URL"
@@ -3638,14 +3651,14 @@ msgstr "Въведете URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:400 gweather/gweather-pref.c:409
+#: gweather/gweather-pref.c:403 gweather/gweather-pref.c:412
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:438 gweather/gweather-pref.c:448
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "km/h"
 
@@ -3653,134 +3666,134 @@ msgstr "km/h"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:484
+#: gweather/gweather-pref.c:476 gweather/gweather-pref.c:487
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:510 gweather/gweather-pref.c:519
+#: gweather/gweather-pref.c:513 gweather/gweather-pref.c:522
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: gweather/gweather-pref.c:797
+#: gweather/gweather-pref.c:800
 msgid "Weather Preferences"
-msgstr "Настройки на Синоптика"
+msgstr "Настройки на прогнозата за времето"
 
-#: gweather/gweather-pref.c:830 gweather/gweather-pref.c:998
+#: gweather/gweather-pref.c:833 gweather/gweather-pref.c:1001
 msgid "_Automatically update every:"
-msgstr "_Автоматично обновяване всеки:"
+msgstr "_Автоматично обновяване на всеки:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:839
+#: gweather/gweather-pref.c:842
 msgid "_Temperature Unit:"
-msgstr "_Температурна Единица:"
+msgstr "_Температурна единица:"
 
-#: gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:852
 msgid "Kelvin"
 msgstr "Келвин"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:851
+#: gweather/gweather-pref.c:854
 msgid "Celsius"
 msgstr "Целзий"
 
-#: gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:855
 msgid "Fahrenheit"
 msgstr "Фаренхайт"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:859
+#: gweather/gweather-pref.c:862
 msgid "_Wind Speed Unit:"
-msgstr "Единица за Силата на _Вятъра:"
+msgstr "Единица за скоростта на _вятъра:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:873
 msgid "m/s"
 msgstr "метри в секунда"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:875
 msgid "km/h"
 msgstr "километра в час"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:877
 msgid "mph"
 msgstr "мили в секунда"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:876
+#: gweather/gweather-pref.c:879
 msgid "knots"
 msgstr "възли"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:883
+#: gweather/gweather-pref.c:886
 msgid "_Pressure Unit:"
-msgstr "Единиза за _Налягане:"
+msgstr "Единица за _налягане:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:894
+#: gweather/gweather-pref.c:897
 msgid "kPa"
-msgstr "килоПаскала"
+msgstr "килопаскала"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:899
 msgid "hPa"
-msgstr "хектоПаскала"
+msgstr "хектопаскала"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:901
 msgid "mb"
 msgstr "милибара"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:900
+#: gweather/gweather-pref.c:903
 msgid "mmHg"
-msgstr "милибара живак"
+msgstr "милиметри живачен стълб"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:902
+#: gweather/gweather-pref.c:905
 msgid "inHg"
-msgstr "инчове живак"
+msgstr "инчове живачен стълб"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:909
+#: gweather/gweather-pref.c:912
 msgid "_Visibility Unit:"
-msgstr "Единица за _Видимост:"
+msgstr "Единица за _видимост:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:923
 msgid "meters"
 msgstr "метри"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:922
+#: gweather/gweather-pref.c:925
 msgid "km"
 msgstr "километри"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:924
+#: gweather/gweather-pref.c:927
 msgid "miles"
 msgstr "мили"
 
-#: gweather/gweather-pref.c:949
+#: gweather/gweather-pref.c:952
 msgid "Enable _radar map"
 msgstr "Включиване на _радарната карта"
 
-#: gweather/gweather-pref.c:963
+#: gweather/gweather-pref.c:966
 msgid "Use _custom address for radar map"
 msgstr "Използване на _друг адрес за радарната карта"
 
-#: gweather/gweather-pref.c:980
+#: gweather/gweather-pref.c:983
 msgid "A_ddress:"
 msgstr "_Адрес:"
 
-#: gweather/gweather-pref.c:1062
+#: gweather/gweather-pref.c:1065
 msgid "_Select a location:"
 msgstr "Избиране на ме_стоположение:"
 
-#: gweather/gweather-pref.c:1092
+#: gweather/gweather-pref.c:1095
 msgid "Location"
 msgstr "Местоположение"
 
@@ -3834,7 +3847,7 @@ msgstr "Включване на _радарната карта"
 
 #: gweather/gweather.schemas.in.h:7
 msgid "Distance units"
-msgstr "Единици за Разстояние"
+msgstr "Единици за разстояние"
 
 #: gweather/gweather.schemas.in.h:8
 msgid "Fetch a radar map on each update."
@@ -3845,7 +3858,7 @@ msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
-"Ако е истина намира информация за радарната карта от местоположението "
+"Ако е истина, намира информация за радарната карта от местоположението "
 "определено от настройката \"radar\"."
 
 #: gweather/gweather.schemas.in.h:10
@@ -3855,15 +3868,15 @@ msgstr "Не се използва вече"
 
 #: gweather/gweather.schemas.in.h:11
 msgid "Pressure units"
-msgstr "Единици за Налягане"
+msgstr "Единици за налягане"
 
 #: gweather/gweather.schemas.in.h:12
 msgid "Speed units"
-msgstr "Единици за Скорост"
+msgstr "Единици за скорост"
 
 #: gweather/gweather.schemas.in.h:13
 msgid "Temperature units"
-msgstr "Единици за Температура"
+msgstr "Единици за температура"
 
 #: gweather/gweather.schemas.in.h:14
 msgid "The custom url from where to retrieve a radar map."
@@ -3875,7 +3888,7 @@ msgstr "Интервал в секунди между автоматичното
 
 #: gweather/gweather.schemas.in.h:16
 msgid "The temperature units to use."
-msgstr "Единиците за температура в употреба."
+msgstr "Единицата за температура в употреба."
 
 #: gweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
@@ -3927,7 +3940,7 @@ msgstr "север"
 
 #: gweather/weather.c:223
 msgid "North - NorthEast"
-msgstr "север-североизток"
+msgstr "север - североизток"
 
 #: gweather/weather.c:223
 msgid "Northeast"
@@ -3935,7 +3948,7 @@ msgstr "североизток"
 
 #: gweather/weather.c:223
 msgid "East - NorthEast"
-msgstr "изток-североизток"
+msgstr "изток - североизток"
 
 #: gweather/weather.c:224
 msgid "East"
@@ -3943,7 +3956,7 @@ msgstr "изток"
 
 #: gweather/weather.c:224
 msgid "East - Southeast"
-msgstr "изток-югоизток"
+msgstr "изток - югоизток"
 
 #: gweather/weather.c:224
 msgid "Southeast"
@@ -3951,7 +3964,7 @@ msgstr "югоизток"
 
 #: gweather/weather.c:224
 msgid "South - Southeast"
-msgstr "юг-югоизток"
+msgstr "юг - югоизток"
 
 #: gweather/weather.c:225
 msgid "South"
@@ -3959,7 +3972,7 @@ msgstr "юг"
 
 #: gweather/weather.c:225
 msgid "South - Southwest"
-msgstr "юг-югозапад"
+msgstr "юг - югозапад"
 
 #: gweather/weather.c:225
 msgid "Southwest"
@@ -3967,7 +3980,7 @@ msgstr "югозапад"
 
 #: gweather/weather.c:225
 msgid "West - Southwest"
-msgstr "запад-югозапад"
+msgstr "запад - югозапад"
 
 #: gweather/weather.c:226
 msgid "West"
@@ -3975,7 +3988,7 @@ msgstr "запад"
 
 #: gweather/weather.c:226
 msgid "West - Northwest"
-msgstr "запад-северозапад"
+msgstr "запад - северозапад"
 
 #: gweather/weather.c:226
 msgid "Northwest"
@@ -3983,7 +3996,7 @@ msgstr "северозапад"
 
 #: gweather/weather.c:226
 msgid "North - Northwest"
-msgstr "север-северозапад"
+msgstr "север - северозапад"
 
 #: gweather/weather.c:232 gweather/weather.c:2200 gweather/weather.c:2214
 #: gweather/weather.c:2226 gweather/weather.c:2241 gweather/weather.c:2257
@@ -4031,7 +4044,7 @@ msgstr "Ръмене"
 
 #: gweather/weather.c:284
 msgid "Light drizzle"
-msgstr "Лек Дъжд"
+msgstr "Лек дъжд"
 
 #: gweather/weather.c:284
 msgid "Moderate drizzle"
@@ -4328,40 +4341,40 @@ msgstr "Неизвестно време на наблюдение"
 #: gweather/weather.c:2150 gweather/weather.c:2153
 #, c-format
 msgid "%.1f F"
-msgstr "%.1f F00B0"
+msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
 #: gweather/weather.c:2158 gweather/weather.c:2161
 #, c-format
 msgid "%dF"
-msgstr "%dF00B0"
+msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
 #: gweather/weather.c:2169 gweather/weather.c:2172
 #, c-format
 msgid "%.1f C"
-msgstr "%.1f C00B0"
+msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
 #: gweather/weather.c:2177 gweather/weather.c:2180
 #, c-format
 msgid "%dC"
-msgstr "%dC00B0"
+msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
 #: gweather/weather.c:2189
 #, c-format
 msgid "%.1f K"
-msgstr "%.1f K00B0"
+msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
 #: gweather/weather.c:2192
 #, c-format
 msgid "%dK"
-msgstr "%dK00B0"
+msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
 #: gweather/weather.c:2244
@@ -4401,7 +4414,7 @@ msgstr "Спокойно"
 #: gweather/weather.c:2306
 #, c-format
 msgid "%s / %s"
-msgstr "%s·/·%s"
+msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
 #: gweather/weather.c:2324
@@ -4470,7 +4483,7 @@ msgstr "Следене на пощенската кутия"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
 msgid "Inbox Monitor Factory"
-msgstr "Фабрика за следене·на·пощенската·кутия"
+msgstr "Фабрика за следене на пощенската кутия"
 
 #: mailcheck/mailcheck.c:666
 msgid "Error checking mail"
@@ -4498,7 +4511,7 @@ msgstr "Запазване на паролата на диска"
 
 #: mailcheck/mailcheck.c:893
 msgid "Could not connect to the Internet."
-msgstr "Не мога да се свържа с Интернет."
+msgstr "Връзката с интернет не може да бъде установена."
 
 #: mailcheck/mailcheck.c:897
 msgid "The username or password is incorrect."
@@ -4527,12 +4540,16 @@ msgstr "Имате поща."
 #: mailcheck/mailcheck.c:1091
 #, c-format
 msgid "%d unread"
-msgstr "%d непрочетени"
+msgid_plural "%d unread"
+msgstr[0] "%d непрочетено"
+msgstr[1] "%d непрочетени"
 
 #: mailcheck/mailcheck.c:1092 mailcheck/mailcheck.c:1101
 #, c-format
 msgid "%d message"
-msgstr "%d съобщения"
+msgid_plural "%d messages"
+msgstr[0] "%d съобщение"
+msgstr[1] "%d съобщения"
 
 #. translators: this is of the form "%d unread/%d messages"
 #: mailcheck/mailcheck.c:1095
@@ -4587,7 +4604,7 @@ msgstr "Сървър за пощата:"
 
 #: mailcheck/mailcheck.c:1895
 msgid "Mail Server Entry box"
-msgstr "Кутия за Въвеждане на Пощенския Сървър"
+msgstr "Кутия за въвеждане на пощенския сървър"
 
 #: mailcheck/mailcheck.c:1914
 msgid "_Username:"
@@ -4595,7 +4612,7 @@ msgstr "_Потребител:"
 
 #: mailcheck/mailcheck.c:1925
 msgid "Username Entry box"
-msgstr "Кутия за Въвеждане на Потребителското Име"
+msgstr "Кутия за въвеждане на потребителското име"
 
 #: mailcheck/mailcheck.c:1943
 msgid "_Password:"
@@ -4607,7 +4624,7 @@ msgstr "Папка:"
 
 #: mailcheck/mailcheck.c:2007
 msgid "Folder Entry box"
-msgstr "Кутия за Въвеждане на Папката"
+msgstr "Кутия за въвеждане на папката"
 
 #: mailcheck/mailcheck.c:2079
 msgid "Check for mail _every:"
@@ -4664,7 +4681,7 @@ msgstr "Команда, която да се изпълни при натиск�
 
 #: mailcheck/mailcheck.c:2368
 msgid "Inbox Monitor Preferences"
-msgstr "Настройки на Наблюдението на Пощенската Кутия"
+msgstr "Настройки на наблюдението на пощенската кутия"
 
 #: mailcheck/mailcheck.c:2483
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
@@ -4677,7 +4694,7 @@ msgstr "Само текст"
 
 #: mailcheck/mailcheck.c:2902
 msgid "Mail check"
-msgstr "Проверка на Пощата"
+msgstr "Проверка за поща"
 
 #: mailcheck/mailcheck.c:2903
 msgid "Mail check notifies you when new mail arrives in your mailbox"
@@ -4812,7 +4829,7 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
-msgstr "Имате Поща!"
+msgstr "Имате поща!"
 
 #: mailcheck/mailcheck.soundlist.in.h:1
 msgid "Mailcheck"
@@ -4820,7 +4837,7 @@ msgstr "Проверка на пощата"
 
 #: mailcheck/mailcheck.soundlist.in.h:2
 msgid "New Mail"
-msgstr "Нова Поща"
+msgstr "Нова поща"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:69
@@ -4949,11 +4966,11 @@ msgstr "Избиране на цвят"
 
 #: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
-msgstr "_Добавяне на Макрос..."
+msgstr "_Добавяне на макрос..."
 
 #: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
-msgstr "_Изтриване на Макрос"
+msgstr "_Изтриване на макрос"
 
 #: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
@@ -5139,8 +5156,8 @@ msgstr "Команда"
 msgid "Adjust the sound volume"
 msgstr "Аплет за промяна силата на звука"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:199
-#: mixer/mixer.c:1363
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:210
+#: mixer/mixer.c:1406
 msgid "Volume Control"
 msgstr "Сила на звука"
 
@@ -5150,117 +5167,117 @@ msgstr "_Заглушаване"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "_Open Volume Control"
-msgstr "Отваряне на Прозореца за Сила на Звука"
+msgstr "_Отваряне на програмата за силата на звука"
 
-#: mixer/mixer.c:124
+#: mixer/mixer.c:130
 msgid "Main Volume"
-msgstr "Основно Ниво на Звука"
+msgstr "Основно ниво на звука"
 
-#: mixer/mixer.c:124
+#: mixer/mixer.c:130
 msgid "Bass"
 msgstr "Бас"
 
-#: mixer/mixer.c:124
+#: mixer/mixer.c:130
 msgid "Treble"
-msgstr "Трикратен"
+msgstr "Високи"
 
-#: mixer/mixer.c:124
+#: mixer/mixer.c:130
 msgid "Synth"
 msgstr "Синтезатор"
 
-#: mixer/mixer.c:125
+#: mixer/mixer.c:131
 msgid "Pcm"
 msgstr "Pcm"
 
-#: mixer/mixer.c:125
+#: mixer/mixer.c:131
 msgid "Speaker"
 msgstr "Говорител"
 
-#: mixer/mixer.c:125
+#: mixer/mixer.c:131
 msgid "Line"
 msgstr "Линия"
 
-#: mixer/mixer.c:126
+#: mixer/mixer.c:132
 msgid "Microphone"
 msgstr "Микрофон"
 
-#: mixer/mixer.c:126
+#: mixer/mixer.c:132
 msgid "CD"
 msgstr "CD"
 
-#: mixer/mixer.c:126
+#: mixer/mixer.c:132
 msgid "Mix"
 msgstr "Миксер"
 
-#: mixer/mixer.c:126
+#: mixer/mixer.c:132
 msgid "Pcm2"
 msgstr "PCM2"
 
-#: mixer/mixer.c:127
+#: mixer/mixer.c:133
 msgid "Recording Level"
 msgstr "Ниво на записване"
 
-#: mixer/mixer.c:127
+#: mixer/mixer.c:133
 msgid "Input Gain"
-msgstr "Входно Усилване"
+msgstr "Входно усилване"
 
-#: mixer/mixer.c:127
+#: mixer/mixer.c:133
 msgid "Output Gain"
-msgstr "Изходно Усилване"
+msgstr "Изходно усилване"
 
-#: mixer/mixer.c:128
+#: mixer/mixer.c:134
 msgid "Line1"
 msgstr "Линия1"
 
-#: mixer/mixer.c:128
+#: mixer/mixer.c:134
 msgid "Line2"
 msgstr "Линия3"
 
-#: mixer/mixer.c:128
+#: mixer/mixer.c:134
 msgid "Line3"
 msgstr "Линия3"
 
-#: mixer/mixer.c:128
+#: mixer/mixer.c:134
 msgid "Digital1"
 msgstr "Цифров1"
 
-#: mixer/mixer.c:129
+#: mixer/mixer.c:135
 msgid "Digital2"
 msgstr "Цифров2"
 
-#: mixer/mixer.c:129
+#: mixer/mixer.c:135
 msgid "Digital3"
 msgstr "Цифров3"
 
-#: mixer/mixer.c:130
+#: mixer/mixer.c:136
 msgid "Phone Input"
-msgstr "Телефонен Вход"
+msgstr "Телефонен вход"
 
-#: mixer/mixer.c:130
+#: mixer/mixer.c:136
 msgid "Phone Output"
-msgstr "Телефонен Изход"
+msgstr "Телефонен изход"
 
-#: mixer/mixer.c:130
+#: mixer/mixer.c:136
 msgid "Video"
 msgstr "Видео"
 
-#: mixer/mixer.c:130
+#: mixer/mixer.c:136
 msgid "Radio"
 msgstr "Радио"
 
-#: mixer/mixer.c:130
+#: mixer/mixer.c:136
 msgid "Monitor"
 msgstr "Системен датчик"
 
-#: mixer/mixer.c:200
+#: mixer/mixer.c:211
 msgid "Volume Control (muted)"
 msgstr "Сила на звука (заглушен)"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:212
 msgid "No audio device"
 msgstr "Няма звуково устройство"
 
-#: mixer/mixer.c:518
+#: mixer/mixer.c:546
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -5268,52 +5285,52 @@ msgstr ""
 "предупреждение: тази версия на gmix е била\n"
 "компилирана с различна версия на звуковата карта.h\n"
 
-#: mixer/mixer.c:893
+#: mixer/mixer.c:936
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Не мога да отворя устройството за миксера %s\n"
 
-#: mixer/mixer.c:1062
+#: mixer/mixer.c:1105
 msgid "Volume Controller"
 msgstr "Сила на звука"
 
-#: mixer/mixer.c:1063
+#: mixer/mixer.c:1106
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Използвайте стрелките нагоре/надолу за промяна на силата на звука"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1087
+#: mixer/mixer.c:1130
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1088
+#: mixer/mixer.c:1131
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1364
+#: mixer/mixer.c:1407
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1365
+#: mixer/mixer.c:1408
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Контролът за силата на звука позволява да нагласяте звуковите нива на "
 "компютъра."
 
-#: mixer/mixer.c:1512
+#: mixer/mixer.c:1555
 msgid "Volume Control Preferences"
-msgstr "Настройки за Силата на звука"
+msgstr "Настройки за силата на звука"
 
-#: mixer/mixer.c:1536
+#: mixer/mixer.c:1579
 msgid "Audio Channels"
-msgstr "Аудио Канали"
+msgstr "Аудио канали"
 
-#: mixer/mixer.c:1552
+#: mixer/mixer.c:1595
 msgid "_Select channel to control:"
 msgstr "Задаване на канал за контролиране:"
 
-#: mixer/mixer.c:1888
+#: mixer/mixer.c:1936
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Контролът на силата за звука позволява да нагласяте звуковите нива на "
@@ -5321,7 +5338,7 @@ msgstr ""
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
-msgstr "Канала е контролиран от аплет. Само за настройка на OSS"
+msgstr "Каналът е контролиран от аплет. Само за настройка на OSS"
 
 #: mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
@@ -5343,7 +5360,7 @@ msgid ""
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 "Разпространява се съгласно Общия публичен лиценз на ГНУ.\n"
-"Датчик за състоянието и нумератор за модеми.\n"
+"Датчик за състоянието на модеми.\n"
 "Светлините са \"получени данни\" (отгоре/отляво) и \"изпратени данни"
 "\" (отдолу/отдясно)"
 
@@ -5399,7 +5416,7 @@ msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr "Аплета да премигва когато модема се свързва."
+msgstr "Аплетът да премигва когато модема се свързва."
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
@@ -5473,7 +5490,7 @@ msgstr "Цвят, за фона на бутона, използван за ин�
 msgid ""
 "The color used to display the status button when the modem is connected."
 msgstr ""
-"Цвета, използван за изобразяване на бутона за състоянието, когато модема е "
+"Цветът, използван за изобразяване на бутона за състоянието, когато модема е "
 "свързан."
 
 #: modemlights/modemlights.schemas.in.h:24
@@ -5487,16 +5504,16 @@ msgstr ""
 msgid ""
 "The color used to display the status button when the modem is not connected."
 msgstr ""
-"Цвета, използван за изобразяване на бутона за състоянието когато модема не е "
-"свързан."
+"Цветът, използван за изобразяване на бутона за състоянието когато модема не "
+"е свързан."
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
-msgstr "Цвета, използван за индикация, че се получават данни."
+msgstr "Цветът, използван за индикация, че се получават данни."
 
 #: modemlights/modemlights.schemas.in.h:27
 msgid "The color used to indicate that data has been sent."
-msgstr "Цвета, използван за индикация, че се изпращат данни."
+msgstr "Цветът, използван за индикация, че се изпращат данни."
 
 #: modemlights/modemlights.schemas.in.h:28
 msgid "The fraction of a second until the applet updates."
@@ -5532,7 +5549,7 @@ msgstr "Проверка на собственика на заключващ ф�
 
 #: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
-msgstr "Настройки на Светлините на модема"
+msgstr "Настройки на светлините на модема"
 
 #: modemlights/properties.c:451
 msgid "U_pdate every:"
@@ -5566,19 +5583,19 @@ msgstr "_Потвърждаване на връзката"
 
 #: modemlights/properties.c:572
 msgid "Receive Data"
-msgstr "Получаване на Данни"
+msgstr "Получаване на данни"
 
 #: modemlights/properties.c:578
 msgid "_Foreground:"
-msgstr "Преден План:"
+msgstr "Преден план:"
 
 #: modemlights/properties.c:583
 msgid "Send Data"
-msgstr "Изпращане на Данни"
+msgstr "Изпращане на данни"
 
 #: modemlights/properties.c:588
 msgid "Foregroun_d:"
-msgstr "Преден План:"
+msgstr "Преден план:"
 
 #: modemlights/properties.c:590
 msgid "Backg_round:"
@@ -5586,7 +5603,7 @@ msgstr "Фон:"
 
 #: modemlights/properties.c:593
 msgid "Connection Status"
-msgstr "Състояние на Връзката"
+msgstr "Състояние на връзката"
 
 #: modemlights/properties.c:601
 msgid "Co_nnected:"
@@ -5598,7 +5615,7 @@ msgstr "Изключен:"
 
 #: modemlights/properties.c:606
 msgid "C_onnecting:"
-msgstr "Свързвам се:"
+msgstr "Свързване:"
 
 #: modemlights/properties.c:609
 msgid "Text"
@@ -5606,7 +5623,7 @@ msgstr "Текст"
 
 #: modemlights/properties.c:617
 msgid "For_eground:"
-msgstr "Преден План:"
+msgstr "Преден план:"
 
 #: modemlights/properties.c:619
 msgid "Bac_kground:"
@@ -5622,7 +5639,7 @@ msgstr "Цветове"
 
 #: modemlights/properties.c:633
 msgid "Modem Options"
-msgstr "Настройки на Модема"
+msgstr "Настройки на модема"
 
 #: modemlights/properties.c:642
 msgid "_Device:"
@@ -5692,7 +5709,7 @@ msgstr "Мрежа"
 
 #: multiload/main.c:341 multiload/properties.c:583
 msgid "Swap Space"
-msgstr "Големина на Виртуалната Памет"
+msgstr "Размер на виртуалната памет"
 
 #: multiload/main.c:345
 msgid "Resource"
@@ -5916,7 +5933,7 @@ msgstr "_PLIP"
 
 #: multiload/properties.c:579
 msgid "_Ethernet"
-msgstr "Локална Мр_ежа"
+msgstr "Локална мр_ежа"
 
 #: multiload/properties.c:580
 msgid "Othe_r"
@@ -5958,19 +5975,19 @@ msgstr "Създава, преглежда и управлява лепкави�
 #: stickynotes/stickynotes_applet.c:321 stickynotes/stickynotes_applet.c:439
 #: stickynotes/stickynotes_applet_callbacks.c:271
 msgid "Sticky Notes"
-msgstr "Лепкави Бележки"
+msgstr "Лепкави бележки"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 msgid "Sticky Notes Applet Factory"
-msgstr "Фабрика на аплета Лепкави Бележки"
+msgstr "Фабрика на аплета за лепкавите бележки"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
 msgid "_Delete Notes"
-msgstr "_Изтриване на Бележките"
+msgstr "_Изтриване на бележките"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
-msgstr "Зак_лючване Бележките"
+msgstr "Зак_лючване бележките"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
 #: stickynotes/stickynotes.glade.h:47
@@ -5979,7 +5996,7 @@ msgstr "Нова бележка"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Show Notes"
-msgstr "_Показване на Бележките"
+msgstr "_Показване на бележките"
 
 #: stickynotes/stickynotes.c:336
 msgid "Locked note"
@@ -5991,7 +6008,7 @@ msgstr "Отключена бележка"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
-msgstr "<b>Настройки за Бележката по Подразбиране</b>"
+msgstr "<b>Стандартни настройки на бележките</b>"
 
 #: stickynotes/stickynotes.glade.h:5
 msgid ""
@@ -6011,7 +6028,7 @@ msgid ""
 msgstr ""
 "<b>Изтриване на тази лепкава·бележка?</b>\n"
 "\n"
-"Промените·ще·се·запазят·веднага."
+"Промените ще се запазят веднага."
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
@@ -6109,19 +6126,19 @@ msgstr "Задаване на височина по подразбиране (в
 
 #: stickynotes/stickynotes.glade.h:34
 msgid "Specify the default width (in pixels) of new notes"
-msgstr "Задаване на ширина по подразбиране (в·пиксели) на новата бележка"
+msgstr "Задаване на ширина по подразбиране (в пиксели) на новата бележка"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note"
-msgstr "Лепкава Бележка"
+msgstr "Лепкава бележка"
 
 #: stickynotes/stickynotes.glade.h:36
 msgid "Sticky Note Properties"
-msgstr "Настройки на Лепкавата Бележка"
+msgstr "Настройки на лепкавата бележка"
 
 #: stickynotes/stickynotes.glade.h:37
 msgid "Sticky Notes Preferences"
-msgstr "Настройки·на·Лепкавите·Бележки"
+msgstr "Настройки на лепкавите бележки"
 
 #: stickynotes/stickynotes.glade.h:38
 msgid "Use co_lor from the system theme"
@@ -6145,15 +6162,15 @@ msgstr "_Цвят:"
 
 #: stickynotes/stickynotes.glade.h:43
 msgid "_Delete All"
-msgstr "Изтриване на _Всичко"
+msgstr "Изтриване на _всичко"
 
 #: stickynotes/stickynotes.glade.h:44
 msgid "_Delete Note..."
-msgstr "Изтриване на Бележка..."
+msgstr "Изтриване на бележка..."
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Lock Note"
-msgstr "_Заключване на Бележка"
+msgstr "_Заключване на бележка"
 
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Properties"
@@ -6179,7 +6196,7 @@ msgid ""
 msgstr ""
 "По подразбиране, на лепкавите бележки се дава текущата дата като заглавие "
 "когато те се създават. Използва се този формат; всичко което се изписва от "
-"strftime()· е валидно."
+"strftime() е валидно."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -6211,7 +6228,7 @@ msgid ""
 "example \"Sans Italic 10\""
 msgstr ""
 "Шрифт по подразбиране за нова лепкава бележка. Това трябва да е името и "
-"размера на шрифта, за пример \"Sans·Italic·10\""
+"размера на шрифта, за пример \"Sans Italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -6272,9 +6289,9 @@ msgid ""
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
 "Случва се когато аплета е или натиснат с лчвото копче на мишката или е "
-"натиснат клавиша \"enter\". Опциите са ·\"0\" за \"Нова Бележка\", \"1\" за·"
-"\"Показване/Скриване на Всички Бележки\", и \"2\" за \"Заключване/Отключване "
-"на Всички Бележки\"."
+"натиснат клавиша \"enter\". Опциите са \"0\" за \"Нова бележка\", \"1\" за "
+"\"Показване/Скриване на всички бележки\", и \"2\" за \"Заключване/Отключване "
+"на всички бележки\"."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
@@ -6326,11 +6343,13 @@ msgstr "Дали да се използва системния шрифт по �
 msgid ""
 "%s\n"
 "%d note"
+msgid_plural ""
 "%s\n"
 "%d notes"
-msgstr ""
+msgstr[0] ""
 "%s\n"
 "%d бележка"
+msgstr[1] ""
 "%s\n"
 "%d бележки"
 
@@ -6347,16 +6366,16 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Наблюдаване на качеството на безжичната мрежова връзка"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:840
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
 msgid "Wireless Link Monitor"
 msgstr "Датчик за безжични връзки"
 
 #: wireless/wireless-applet.c:144
 #, c-format
 msgid "Link Strength: %2.0d%%"
-msgstr "Сила на Връзката %2.0d%%"
+msgstr "Сила на връзката %2.0d%%"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -6364,19 +6383,19 @@ msgstr ""
 "Изглежда няма конфигурирани безжични устройства на Вашата система.\n"
 "Проверете настройките си, ако мислите че това не вярно."
 
-#: wireless/wireless-applet.c:502 wireless/wireless-applet.c:829
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
 msgid "No Wireless Devices"
 msgstr "Няма безжични устройства."
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Тази програма показва състоянието на безжична връзка."
 
-#: wireless/wireless-applet.c:841
+#: wireless/wireless-applet.c:843
 msgid "This utility shows the status of a wireless link"
 msgstr "Тази програма показва състоянието на безжична връзка"
 
