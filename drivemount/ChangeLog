@@ -1,3 +1,31 @@
+2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* properties.c (properties_show):
+	Keep track of the dialog within 
+	the DriveData structure so we can
+	destroy it on instance destroy.
+
+	Only allow one prop_dialog per instance
+	and present user the dialog when he
+	is re-requesting it.
+
+	(handle_response_cb):
+	Set prop_dialog to NULL
+	if it's being destroyed.
+
+	* drivemount.c (destroy_drive_widget):
+	Destroy the prop window if it isn't NULL.
+	Also remove the update_cb timeout timer
+	this fixes a race crash on exit especially
+	with multiple applets open.
+
+	(create_drive_widget):
+	Set prop_dialog to NULL.
+
+	* drivemount.h:
+	Added a GtkWidget *prop_dialog entry to the
+	DriveData structure.
+
 2004-02-22  Dennis Smit  <ds@nerds-incorporated.org>
 	
 	* drivemount.c, drivemount.h, properties.c:

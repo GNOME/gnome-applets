@@ -40,7 +40,7 @@ typedef struct _ResponseWidgets
 	GtkWidget *scale_toggle;
 	GtkWidget *eject_toggle;
 	GtkWidget *automount_toggle;
-}ResponseWidgets;
+} ResponseWidgets;
 
 static void handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets);
 static void set_widget_sensitivity_false_cb(GtkWidget *widget, GtkWidget *target);
@@ -323,6 +323,15 @@ properties_show (BonoboUIComponent *uic,
 	GtkSizeGroup *size;
 	gint response;
 
+	if (dd->prop_dialog != NULL) {
+		gtk_window_set_screen (GTK_WINDOW (dd->prop_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (dd->applet)));
+
+		gtk_window_present (GTK_WINDOW (dd->prop_dialog));
+
+		return;
+	}
+
 	widgets = g_new0(ResponseWidgets, 1);
 	dialog = gtk_dialog_new_with_buttons(_("Disk Mounter Preferences"), NULL, 
 					     GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -563,6 +572,9 @@ properties_show (BonoboUIComponent *uic,
 
 	widgets->dd = dd;
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(handle_response_cb), widgets);
+
+	dd->prop_dialog = dialog;
+
 	gtk_widget_show_all(dialog);
 }
 
@@ -620,6 +632,9 @@ handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 	}
 
 	gtk_widget_destroy(GTK_WIDGET(dialog));
+	
+	widgets->dd->prop_dialog = NULL;
+
 	g_free(widgets);
 }
 

@@ -281,6 +281,7 @@ create_drive_widget (PanelApplet *applet)
 	dd->applet = GTK_WIDGET (applet);
 
 	dd->about_dialog = NULL;
+	dd->prop_dialog = NULL;
 
 	properties_load (dd);
 
@@ -403,13 +404,16 @@ destroy_drive_widget (GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 
-	if (dd->error_dialog != NULL) {
+	gtk_timeout_remove (dd->timeout_id);
+
+	if (dd->error_dialog != NULL)
 		gtk_widget_destroy (dd->error_dialog);
-		dd->error_dialog = NULL;
-	}
 
 	if (dd->about_dialog != NULL)
 		gtk_widget_destroy (dd->about_dialog);
+
+	if (dd->prop_dialog != NULL)
+		gtk_widget_destroy (dd->prop_dialog);
 
 	g_free (dd->custom_icon_in);
 	g_free (dd->custom_icon_out);

@@ -60,6 +60,7 @@ struct _DriveData
 
 	GtkWidget *error_dialog;
 	GtkWidget *about_dialog;
+	GtkWidget *prop_dialog;
 };
 
 void redraw_pixmap(DriveData *dd);
