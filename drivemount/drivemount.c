@@ -45,14 +45,19 @@ static dev_t get_device(gchar *file);
 static gint device_is_mounted(DriveData *dd);
 static void update_pixmap(DriveData *dd, gint t);
 static gint drive_update_cb(gpointer data);
-static int mount_cb(GtkWidget *widget, gpointer data);
+static gint mount_cb(GtkWidget *widget, gpointer data);
 static void eject_cb(AppletWidget *applet, gpointer data);
 static void free_pixmaps(DriveData *dd);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data);
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *globcfgpath, gpointer data);
 static void destroy_drive_widget(GtkWidget *widget, gpointer data);
 static DriveData * create_drive_widget(GtkWidget *applet);
-static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams);
+static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **params, gint nparams);
+
+static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
+			    GtkSelectionData *selection_data, guint info,
+			    guint time, gpointer data);
+static void dnd_init(DriveData *dd);
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -183,7 +188,7 @@ static gint drive_update_cb(gpointer data)
 	return TRUE;
 }
 
-static int mount_cb(GtkWidget *widget, gpointer data)
+static gint mount_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	gchar command_line[300];
@@ -235,10 +240,10 @@ static int mount_cb(GtkWidget *widget, gpointer data)
 static void eject_cb(AppletWidget *applet, gpointer data)
 {
 	DriveData *dd = data;
-	char command_line[300];
-	char buffer[200];
-	char dn[100];	/* Devicename */
-	char mp[100];	/* Mountpoint */
+	gchar command_line[300];
+	gchar buffer[200];
+	gchar dn[100];	/* Devicename */
+	gchar mp[100];	/* Mountpoint */
 	FILE *ml;	/* Mountlist */
 
 
@@ -409,7 +414,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	redraw_pixmap(dd);
 }
 
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *globcfgpath, gpointer data)
 {
 	DriveData *dd = data;
 	property_save(privcfgpath, dd);
@@ -449,6 +454,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(dd->button),"clicked",
 				GTK_SIGNAL_FUNC(mount_cb),
 				dd);
+	dnd_init(dd);
 	gtk_widget_show(dd->button);
 
 	dd->tooltip=gtk_tooltips_new();
@@ -499,7 +505,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	return dd;
 }
 
-static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams)
+static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **params, gint nparams)
 {
 	DriveData *dd;
 	GtkWidget *applet;
@@ -548,3 +554,59 @@ int main (int argc, char *argv[])
 	applet_widget_gtk_main();
 	return 0;
 }
+
+/*
+ *---------------------------------------------------------------------------
+ * drag and drop functions (should eventually be broken into separate file)
+ *---------------------------------------------------------------------------
+ */
+
+enum {
+	TARGET_URI_LIST,
+	TARGET_TEXT_PLAIN
+};
+
+static GtkTargetEntry button_drag_types[] = {
+	{ "text/uri-list", 0, TARGET_URI_LIST },
+	{ "text/plain", 0, TARGET_TEXT_PLAIN }
+};
+static gint n_button_drag_types = 2;
+
+static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
+			    GtkSelectionData *selection_data, guint info,
+			    guint time, gpointer data)
+{
+        DriveData *dd = data;
+
+	if (dd && dd->mount_point)
+		{
+		gchar *text = NULL;
+		switch (info)
+			{
+			case TARGET_URI_LIST:
+				text = g_strconcat("file:", dd->mount_point, "\r\n", NULL);
+				break;
+			case TARGET_TEXT_PLAIN:
+				text = g_strdup(dd->mount_point);
+				break;
+			}
+		gtk_selection_data_set (selection_data, selection_data->target,
+					8, text, strlen(text));
+		g_free(text);
+		}
+	else
+		{
+		gtk_selection_data_set (selection_data, selection_data->target,
+					8, NULL, 0);
+		}
+}
+
+static void dnd_init(DriveData *dd)
+{
+	gtk_drag_source_set(dd->button, GDK_BUTTON1_MASK,
+			button_drag_types, n_button_drag_types,
+			GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK);
+	gtk_signal_connect(GTK_OBJECT(dd->button), "drag_data_get",
+			dnd_set_data_cb, dd);
+}
+

@@ -15,9 +15,9 @@ static void update_delay_cb( GtkWidget *widget, gpointer data );
 static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd);
 static gint property_destroy_cb( GtkWidget *w, DriveData *dd);
 
-void property_load(char *path, DriveData *dd)
+void property_load(gchar *path, DriveData *dd)
 {
-	char *mount_text = NULL;
+	gchar *mount_text = NULL;
 
         gnome_config_push_prefix (path);
         dd->interval = gnome_config_get_int("mount/interval=10");
@@ -26,11 +26,11 @@ void property_load(char *path, DriveData *dd)
 	dd->autofs_friendly = gnome_config_get_int("mount/autofs_friendly=0");
 	gnome_config_pop_prefix ();
 
-	if (dd->mount_point) free(dd->mount_point);
+	if (dd->mount_point) g_free(dd->mount_point);
 	dd->mount_point = strdup(mount_text);
 }
 
-void property_save(char *path, DriveData *dd)
+void property_save(gchar *path, DriveData *dd)
 {
         gnome_config_push_prefix(path);
         gnome_config_set_int("mount/interval", dd->interval);
@@ -89,7 +89,7 @@ static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 	gchar *new_file;
 	dd->autofs_friendly = dd->prop_autofs_friendly;
 	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
-	if (dd->mount_point) free(dd->mount_point);
+	if (dd->mount_point) g_free(dd->mount_point);
 	dd->mount_point = strdup(new_file);
         dd->interval = dd->prop_interval;
 	if (dd->device_pixmap != dd->prop_device_pixmap)
