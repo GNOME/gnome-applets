@@ -30,49 +30,14 @@
 #include "gnotes_applet.h"
 #include "gnotes.xpm"
 #include "gnotes_session.h"
-
+#include "gnote.h"
 
 GNotes gnotes;
-
-#define DEFAULT_HEIGHT (1)
-#define DEFAULT_WIDTH (1)
 
 GNotes *gnotes_get_main_info(void)
 {
     return &gnotes;
 }
-
-/*----------------------------------------------------------------------*/
-static void gnotes_preferences_load(const char *path)
-{
-    gboolean is_default;
-
-    gnome_config_push_prefix(path);
-
-    gnotes.default_height =
-        gnome_config_get_int_with_default("height=", &is_default);
-    if (is_default)
-        gnotes.default_height = DEFAULT_HEIGHT;
-
-    gnotes.default_width =
-        gnome_config_get_int_with_default("width=", &is_default);
-    if (is_default)
-        gnotes.default_width = DEFAULT_WIDTH;
-
-    gnome_config_pop_prefix();
-};
-
-static void gnotes_preferences_save(const char *path)
-{
-    gnome_config_push_prefix(path);
-
-    gnome_config_set_int("height", gnotes.default_height); 
-    gnome_config_set_int("width", gnotes.default_width); 
-    gnome_config_sync();
-    gnome_config_drop_all();
-    gnome_config_pop_prefix();
-};
-
 
 /* what happens when a button is pressed */
 static gint applet_button_press_cb(GtkWidget *widget, GdkEventButton *event,
@@ -81,7 +46,7 @@ static gint applet_button_press_cb(GtkWidget *widget, GdkEventButton *event,
     switch(event->button)
     {
     case 1:
-        gnote_new_cb(APPLET_WIDGET(gnotes.applet), "1x1");
+        gnote_new_cb(APPLET_WIDGET(gnotes.applet), 0);
         break;
     default:
         return(FALSE);
@@ -138,7 +103,7 @@ static gint applet_save_session(GtkWidget *widget, char *privcfpath,
                                 char *globcfpath)
 {
     g_debug("Saving session\n");
-    gnotes_preferences_save(privcfpath);
+    gnotes_preferences_save(privcfpath, &gnotes);
     gnotes_save(0, 0);
     return FALSE;
 }
@@ -167,7 +132,7 @@ int main(int argc, char **argv)
 
     gnotes.applet = applet_widget_new("gnotes_applet");
 
-    gnotes.onbottom = FALSE;
+    gnotes.defaults.onbottom = FALSE;
     
     if (!gnotes.applet)
     {
@@ -184,10 +149,10 @@ int main(int argc, char **argv)
     applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
                                           "about", GNOME_STOCK_MENU_ABOUT,
                                           _("About..."), about, NULL);
-/*     applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet), */
-/*                                           "properties", GNOME_STOCK_MENU_PROP, */
-/*                                           _("Properties..."), properties_show, */
-/*                                           NULL); */
+    applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
+                                          "properties", GNOME_STOCK_MENU_PROP,
+                                          _("Properties..."), properties_show,
+                                          &gnotes);
 
     applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), GNOTES_RAISE,
                                     _(GNOTES_RAISE), gnotes_raise, 0);
@@ -207,10 +172,15 @@ int main(int argc, char **argv)
     gnotes_load(0, 0);
 
     /* load up the preferences */
-    gnotes_preferences_load(APPLET_WIDGET(gnotes.applet)->privcfgpath);
+    gnotes_preferences_load(APPLET_WIDGET(gnotes.applet)->privcfgpath,
+                            &gnotes);
     
     gtk_signal_connect(GTK_OBJECT(gnotes.applet), "save_session",
-                       GTK_SIGNAL_FUNC(applet_save_session), NULL);
+                       GTK_SIGNAL_FUNC(applet_save_session),
+                       APPLET_WIDGET(gnotes.applet)->privcfgpath);
+    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "destroy",
+                       GTK_SIGNAL_FUNC(applet_save_session),
+                       APPLET_WIDGET(gnotes.applet)->privcfgpath);
 
     applet_widget_gtk_main ();
 
