@@ -38,6 +38,35 @@
                                   GLADE_DATA_PROP ) ), \
     name )
 
+static GtkWidget *
+create_hig_catagory (GtkWidget *main_box, const char *title)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+	
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
+
+	tmp = g_strdup_printf ("<b>%s</b>", title);
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+	
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;		
+}
+
 static void
 CappletUI2Config (GSwitchItApplet * sia)
 {
@@ -204,7 +233,7 @@ GSwitchItAppletPropsCreate (GSwitchItApplet * sia)
 			  "toggled", G_CALLBACK (CappletCommitConfig),
 			  sia);
 
-	vboxFlags = glade_xml_get_widget (data, "vboxFlags");
+	vboxFlags = glade_xml_get_widget (data, "gswitchit_capplet_vbox");
 
 	GSwitchItAppletConfigLoadGroupDescriptionsUtf8 (&sia->appletConfig,
 							groupNames);
@@ -216,14 +245,11 @@ GSwitchItAppletPropsCreate (GSwitchItApplet * sia)
 		GtkWidget *frameFlag;
 		GtkWidget *vboxPerGroup;
 
-		frameFlag = gtk_frame_new (groupName);
+		frameFlag = create_hig_catagory (vboxFlags, groupName);
 		g_snprintf (sz, sizeof (sz), "frameFlag.%d", i);
 		gtk_widget_set_name (frameFlag, sz);
 		gtk_object_set_data (GTK_OBJECT (capplet), sz, frameFlag);
 		//gtk_widget_show( frameFlag );
-
-		gtk_box_pack_start (GTK_BOX (vboxFlags), frameFlag, FALSE,
-				    FALSE, 0);
 
 		gtk_frame_set_shadow_type (GTK_FRAME (frameFlag),
 					   GTK_SHADOW_ETCHED_OUT);
@@ -235,8 +261,8 @@ GSwitchItAppletPropsCreate (GSwitchItApplet * sia)
 				     vboxPerGroup);
 
 		secondary =
-		    gtk_check_button_new_with_label (_
-						     ("Exclude from keyboard switching"));
+		    gtk_check_button_new_with_mnemonic (_
+						     ("_Exclude from keyboard switching"));
 		g_snprintf (sz, sizeof (sz), "secondary.%d", i);
 		gtk_widget_set_name (secondary, sz);
 		gtk_object_set_data (GTK_OBJECT (capplet), sz, secondary);
@@ -267,7 +293,7 @@ GSwitchItAppletPropsCreate (GSwitchItApplet * sia)
 	gtk_object_set_data (GTK_OBJECT (capplet), "defaultGroupsMenu",
 			     defaultGroupsMenu);
 
-	menuItem = gtk_menu_item_new_with_label (_("not used"));
+	menuItem = gtk_menu_item_new_with_label (_("Not used"));
 	gtk_object_set_data (GTK_OBJECT (menuItem), "group",
 			     GINT_TO_POINTER (-1));
 	g_signal_connect (GTK_OBJECT (menuItem), "activate",
