@@ -537,7 +537,7 @@ static void eject(DriveData *dd)
 		ml = popen("mount", "r");
 		while (fgets(buffer, sizeof(buffer), ml)) {
 			if (sscanf(buffer, "%255s %*s %255s", dn, mp) == 2 &&
-			    strcmp(mp, dd->mount_point) == 0) {
+			    (mp && strcmp(mp, dd->mount_point) == 0)) {
 				found = TRUE;
 				break;
 			}
