@@ -658,7 +658,7 @@ about_cb (BonoboUIComponent *uic,
 		NULL
 	};
   static const gchar *docauthors[] = {
-	        "Szabolcs Ban <shooby@gnome.hu>\n",
+	        "Szabolcs Ban <shooby@gnome.hu>",
 		"Emese Kovacs <emese@gnome.hu>",
 		"David Mason <dcm@redhat.com>",
 		"Alexander Kirillov <kirillov@math.sunysb.edu>",
@@ -858,9 +858,10 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   gkb->cur = 0;
   gkb->applet = GTK_WIDGET (applet);
 
+  panel_applet_add_preferences (gkb->applet, "/schemas/apps/gkb-applet/prefs", NULL);
+
   gtk_widget_push_visual (gdk_rgb_get_visual ());
   gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-
 
   bah_window = gtk_window_new (GTK_WINDOW_POPUP);
 
