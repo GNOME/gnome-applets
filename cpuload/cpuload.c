@@ -189,12 +189,16 @@ int main(int argc, char **argv)
 {
 	GtkWidget *applet;
 
+	/* Initialize the i18n stuff */
+        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
+
         applet_widget_init_defaults("cpuload_applet", NULL, argc, argv, 0, NULL,
 			   	    argv[0]);
 
 	applet = applet_widget_new();
 	if (!applet)
-		g_error("Can't create applet!\n");
+		g_error(_("Can't create applet!\n"));
 
         load_properties(APPLET_WIDGET(applet)->cfgpath, &props);
 
