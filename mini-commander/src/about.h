@@ -1,5 +1,5 @@
-#include <gnome.h>
-/* include <libgnomeui/gnome-about.h> */
-#include <panel-applet.h>
+#include "mini-commander_applet.h"
 
-void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
+void about_box (BonoboUIComponent *uic,
+		MCData            *mcdata,
+		const char        *verbname);

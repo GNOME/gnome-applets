@@ -671,7 +671,9 @@ response_cb (GtkDialog *dialog, gint it, gpointer data)
 }
 
 void
-properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+properties_box (BonoboUIComponent *uic,
+		MCData            *data,
+		const char        *verbname)
 {
    #if 0 /* FIXME */
     static GnomeHelpMenuEntry help_entry = { NULL,  "properties" };
@@ -693,8 +695,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     char text_label[50], buffer[50];
     int i;
 
-    if (mcdata->properties_box != NULL)
-    {
+    if (mcdata->properties_box) {
         gtk_window_present (GTK_WINDOW (mcdata->properties_box));
 	return;
     }

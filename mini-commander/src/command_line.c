@@ -331,10 +331,10 @@ history_list_button_press_cb (GtkWidget *widget, GdkEventButton *event, gpointer
     return FALSE;
 }
 
-gint 
-show_history_signal(GtkWidget *widget, gpointer data)
+int 
+show_history_signal (GtkWidget   *widget,
+		     PanelApplet *applet)
 {
-     PanelApplet *applet = data;
      properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
      GtkWidget *window;
      GtkWidget *frame;
@@ -476,10 +476,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
      gtk_grab_add(window);
      gtk_widget_grab_focus (treeview);
  
-     /* go on */
      return FALSE;
-     widget = NULL;
-     data = NULL;
 }
 
 static gint 
@@ -503,11 +500,10 @@ file_browser_ok_signal(GtkWidget *widget, gpointer file_select)
     widget = NULL;
 }
 
-gint 
-show_file_browser_signal(GtkWidget *widget, gpointer data)
+int 
+show_file_browser_signal (GtkWidget   *widget,
+			  PanelApplet *applet)
 {
-    /* FIXME: write this routine */
-    PanelApplet *applet = data;
     GtkWidget *file_select;
 
     /* build file select dialog */
@@ -533,10 +529,7 @@ show_file_browser_signal(GtkWidget *widget, gpointer data)
 
     gtk_widget_show(file_select);
 
-    /* go on */
     return FALSE;
-    widget = NULL;
-    data = NULL;
 }
 
 GtkWidget *

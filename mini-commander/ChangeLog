@@ -1,3 +1,19 @@
+2002-07-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/about.c: (about_box): use gtk_window_present.
+
+	* src/command_line.c: (show_history_signal),
+	(show_file_browser_signal): remove assignments after
+	return.
+
+	* src/exec.c: (exec_command): rip out how brew execing
+	and use gnome_execute_shell.
+
+	* src/mini-commander_applet.c: use unsafe verbs to
+	minimise casting.
+	(mini_commander_applet_fill): no need to init signal handler
+	anymore.
+
 2002-06-08  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* src/preferences.c: Mark a string for translation.

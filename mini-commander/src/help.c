@@ -20,10 +20,15 @@
  */
 
 #include <config.h>
+
+#include <libgnome/gnome-help.h>
+
 #include "help.h"
 
 void 
-show_help(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+show_help (BonoboUIComponent *uic,
+	   MCData            *mcdata,
+	   const char        *verbname)
 {
     GError *error = NULL;
     
@@ -33,6 +38,4 @@ show_help(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	g_error_free (error);
 	error = NULL;
     }
-
-    return;
 }
