@@ -158,7 +158,7 @@ load_graph_properties_init (GnomePropertyObject *object)
     };
 
     vb = gtk_vbox_new (FALSE, 0);
-    gtk_container_border_width (GTK_CONTAINER (vb), GNOME_PAD_SMALL);
+    gtk_container_set_border_width (GTK_CONTAINER (vb), GNOME_PAD_SMALL);
 
     frame = gnome_property_entry_colors (object, _("Colors"), prop_data->n,
 					 prop_data->n, NULL, prop_data->colors,

@@ -433,13 +433,13 @@ propertiesBox(AppletWidget *applet, gpointer data)
     
     /* time & date */
     vbox = gtk_vbox_new(FALSE, GNOME_PAD_BIG);
-    gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 
     frame = gtk_frame_new(_("Clock"));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 
     vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
-    gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show time check box */
@@ -476,7 +476,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     /*    gtk_table_set_row_spacing(GTK_TABLE(table), 1, GNOME_PAD_SMALL); 
 	  gtk_table_set_row_spacing(GTK_TABLE(table), 2, 20);  */ /* no effect? */
     gtk_table_set_col_spacings(GTK_TABLE(table), GNOME_PAD_SMALL);
-    gtk_container_border_width(GTK_CONTAINER(table), GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(table), GNOME_PAD_SMALL);
     gtk_container_add(GTK_CONTAINER(frame), table);
 
     /* applet width */    
@@ -584,7 +584,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     table = gtk_table_new(2, 2, FALSE);
     gtk_table_set_row_spacings(GTK_TABLE(table), GNOME_PAD_SMALL);
     gtk_table_set_col_spacings(GTK_TABLE(table), GNOME_PAD_SMALL);
-    gtk_container_border_width(GTK_CONTAINER(table), GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(table), GNOME_PAD_SMALL);
     gtk_container_add(GTK_CONTAINER(frame), table);
 
     /* fg */
@@ -663,17 +663,17 @@ propertiesBox(AppletWidget *applet, gpointer data)
     /* Macros */   
     frame = gtk_frame_new((gchar *) NULL);
 
-    gtk_container_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL); 
+    gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL); 
     
     scrolledWindow = gtk_scrolled_window_new(NULL, NULL);
     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledWindow),
 				   GTK_POLICY_AUTOMATIC,
 				   GTK_POLICY_AUTOMATIC);
-    gtk_container_border_width(GTK_CONTAINER(scrolledWindow), GNOME_PAD_SMALL); 
+    gtk_container_set_border_width(GTK_CONTAINER(scrolledWindow), GNOME_PAD_SMALL); 
     gtk_container_add(GTK_CONTAINER(frame), scrolledWindow); 
 
     vbox1 = gtk_vbox_new(TRUE, GNOME_PAD_SMALL);
-    gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
     /* gtk_container_add(GTK_CONTAINER(scrolledWindow), vbox1); does not work */
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolledWindow), vbox1);
 

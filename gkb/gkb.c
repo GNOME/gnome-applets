@@ -178,7 +178,7 @@ properties_dialog(AppletWidget *applet,
    
         combo1 = gtk_combo_new ();
         gtk_box_pack_start (GTK_BOX (hbox8), combo1, FALSE, FALSE, 30);
-        gtk_container_border_width (GTK_CONTAINER (combo1), 2);
+        gtk_container_set_border_width (GTK_CONTAINER (combo1), 2);
 
 
 	combo1_items = g_list_append (combo1_items, temp_props.dmap[0]);
@@ -208,7 +208,7 @@ properties_dialog(AppletWidget *applet,
    
         combo2 = gtk_combo_new ();
         gtk_box_pack_start (GTK_BOX (hbox8), combo2, FALSE, FALSE, 30);
-        gtk_container_border_width (GTK_CONTAINER (combo2), 2);
+        gtk_container_set_border_width (GTK_CONTAINER (combo2), 2);
         GTK_WIDGET_SET_FLAGS (combo2, GTK_CAN_FOCUS);
    
 	combo2_items = g_list_append (combo2_items, temp_props.dmap[1]);
@@ -229,7 +229,7 @@ properties_dialog(AppletWidget *applet,
    
         frame2 = gtk_frame_new ("Program");
         gtk_box_pack_start (GTK_BOX (hbox5), frame2, FALSE, FALSE, 0);
-        gtk_container_border_width (GTK_CONTAINER (frame2), 8);
+        gtk_container_set_border_width (GTK_CONTAINER (frame2), 8);
    
         option1 = gtk_option_menu_new ();
         gtk_container_add (GTK_CONTAINER (frame2), option1);

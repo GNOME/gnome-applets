@@ -154,7 +154,7 @@ main(int argc, char **argv)
 		       NULL);
     
     vbox = gtk_vbox_new(FALSE, 0);
-    gtk_container_border_width(GTK_CONTAINER(vbox), 0);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
     
     /* add command line; position: top */
     initCommandEntry();
@@ -199,7 +199,7 @@ main(int argc, char **argv)
 
     /* add buttons into frame */
     frame = gtk_frame_new(NULL);
-    gtk_container_border_width(GTK_CONTAINER(frame), 1);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), 1);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
     gtk_container_add(GTK_CONTAINER(frame), hboxButtons);
     gtk_box_pack_start(GTK_BOX(hbox), frame, FALSE, FALSE, 0);

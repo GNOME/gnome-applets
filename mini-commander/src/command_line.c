@@ -247,7 +247,7 @@ showHistory_signal(GtkWidget *widget, gpointer data)
 			      GTK_SIGNAL_FUNC(historyPopupClicked_cb),
 			      NULL);
      /* position */
-     gtk_window_position(GTK_WINDOW (window), GTK_WIN_POS_MOUSE);
+     gtk_window_set_position (GTK_WINDOW (window), GTK_WIN_POS_MOUSE);
      /* size */
      gtk_widget_set_usize(GTK_WIDGET(window), 200, 350);
      /* title */
@@ -271,7 +271,7 @@ showHistory_signal(GtkWidget *widget, gpointer data)
 			GTK_SIGNAL_FUNC(historyPopupClickedInside_cb),
 			NULL);
      gtk_container_add(GTK_CONTAINER(frame), scrolled_window);
-     gtk_container_border_width(GTK_CONTAINER(scrolled_window), 2);
+     gtk_container_set_border_width (GTK_CONTAINER(scrolled_window), 2);
      gtk_widget_show(scrolled_window);
      
 
@@ -385,7 +385,7 @@ showFileBrowser_signal(GtkWidget *widget, gpointer data)
     /* Set as modal */
     gtk_window_set_modal(GTK_WINDOW(fileSelect),TRUE);
 
-    gtk_window_position(GTK_WINDOW (fileSelect), GTK_WIN_POS_MOUSE);
+    gtk_window_set_position (GTK_WINDOW (fileSelect), GTK_WIN_POS_MOUSE);
 
     gtk_widget_show(fileSelect);
 

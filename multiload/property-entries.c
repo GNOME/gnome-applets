@@ -67,7 +67,7 @@ gnome_property_entry_adjustments (GnomePropertyObject *object,
 
 	table = gtk_table_new (rows, columns * internal_columns, TRUE);
 	gtk_table_set_col_spacings (GTK_TABLE (table), GNOME_PAD << 2);
-	gtk_container_border_width (GTK_CONTAINER (table), GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER (table), GNOME_PAD_SMALL);
 
 	for (i = 0; i < num_items; i++) {
 		glong *data = &(data_ptr [i*8]);

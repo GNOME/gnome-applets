@@ -216,7 +216,7 @@ battery_update(gpointer data)
     {
       /* Now update the labels in readout mode. */
       snprintf(labelstr, sizeof(labelstr), "%d%%", percentage);
-      gtk_label_set(GTK_LABEL(bat->readout_label_percentage), labelstr);
+      gtk_label_set_text (GTK_LABEL(bat->readout_label_percentage), labelstr);
     }
 
   if (last_minutes_remaining != minutes_remaining ||
@@ -224,12 +224,12 @@ battery_update(gpointer data)
     {
       /* If we cannot update the time-remaining label, then make it blank */
       if (minutes_remaining == -1 || hours_remaining == -1)
-	gtk_label_set(GTK_LABEL(bat->readout_label_time), "");
+	gtk_label_set_text (GTK_LABEL(bat->readout_label_time), "");
       else
 	{
 	  snprintf(labelstr, sizeof(labelstr), "%d:%02d", hours_remaining,
 		   minutes_remaining);
-	  gtk_label_set(GTK_LABEL(bat->readout_label_time), labelstr);
+	  gtk_label_set_text (GTK_LABEL(bat->readout_label_time), labelstr);
 	}
     }
 

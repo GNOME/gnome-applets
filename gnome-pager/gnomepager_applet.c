@@ -375,7 +375,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_table_attach(GTK_TABLE(table), check, 
 		       2, 4, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
       check = gtk_check_button_new_with_label(_("Show task list button"));
-      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), show_arrow);
+      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), show_arrow);
       gtk_signal_connect(GTK_OBJECT(check), "clicked",
 			 GTK_SIGNAL_FUNC(cb_check_show_arrow), NULL);
       gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
@@ -1374,7 +1374,7 @@ main(int argc, char *argv[])
       gtk_widget_show(l);
       gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(d)->vbox), l, TRUE, TRUE, 5);
       gtk_window_set_modal(GTK_WINDOW(d),TRUE);
-      gtk_window_position(GTK_WINDOW(d), GTK_WIN_POS_CENTER);
+      gtk_window_set_position (GTK_WINDOW(d), GTK_WIN_POS_CENTER);
       gnome_dialog_run(GNOME_DIALOG(d));
       gtk_widget_destroy(d);
       
@@ -1488,7 +1488,7 @@ desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event)
   gint x, y, w, h;
   
   button = event->button;  
-  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
   
   if (button == 1)
     gnome_win_hints_set_current_workspace(desk);
@@ -1513,7 +1513,7 @@ desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event)
   gint desk, selm, button;
   
   button = event->button;  
-  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
 }
 
 void
@@ -1555,8 +1555,11 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
     return;
   if (!(show_pager))
     return;
-  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
-  sel = (gint)gtk_object_get_data(GTK_OBJECT(widget), "select");
+  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
+
+  /* FIXME: sel is currently always zero */
+  sel = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "select"));
+
   w = widget->allocation.width - 4;
   h = widget->allocation.height - 4;
   s = widget->style;
@@ -1630,8 +1633,8 @@ make_desktop_pane(gint desktop, gint width, gint height)
   else
     height = (height * area_h) / area_w;
   gtk_drawing_area_size(GTK_DRAWING_AREA(area), width, height);
-  gtk_object_set_data(GTK_OBJECT(area), "desktop", (gpointer)desktop);
-  gtk_object_set_data(GTK_OBJECT(area), "select", (gpointer)0);
+  gtk_object_set_data(GTK_OBJECT(area), "desktop", GINT_TO_POINTER (desktop));
+  gtk_object_set_data(GTK_OBJECT(area), "select", GINT_TO_POINTER (0));
   gtk_widget_set_events(area, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
 			GDK_EXPOSURE_MASK | GDK_ENTER_NOTIFY_MASK |
 			GDK_LEAVE_NOTIFY_MASK);
@@ -1703,7 +1706,7 @@ create_popbox(void)
       gtk_widget_show(widg);
       gtk_frame_set_label_align(GTK_FRAME(widg), 0.5, 0.5);
       gtk_box_pack_start(GTK_BOX(hbox), widg, FALSE, FALSE, 0);
-      gtk_container_border_width(GTK_CONTAINER(widg), 4);
+      gtk_container_set_border_width (GTK_CONTAINER(widg), 4);
       widg2 = gtk_alignment_new(0.5, 0.0, 0.0, 0.0);
       gtk_widget_show(widg2);
       gtk_container_add(GTK_CONTAINER(widg), widg2);
@@ -2098,9 +2101,9 @@ set_task_info_to_button(Task *t)
     }
 
   if ((label) && (t->name))
-    gtk_label_set(GTK_LABEL(label), t->name);
+    gtk_label_set_text (GTK_LABEL(label), t->name);
   else if (label)
-    gtk_label_set(GTK_LABEL(label), "???");
+    gtk_label_set_text (GTK_LABEL(label), "???");
   gtk_widget_size_request(button, &req);
   if ((applet_orient == ORIENT_UP) || (applet_orient == ORIENT_DOWN))
     {
@@ -2119,12 +2122,12 @@ set_task_info_to_button(Task *t)
 	  else
 	    str = util_reduce_chars("???", len);
 	  if (label)
-	    gtk_label_set(GTK_LABEL(label), str);
+	    gtk_label_set_text (GTK_LABEL(label), str);
 	  g_free(str);
 	  gtk_widget_size_request(button, &req);
 	}
       if ((len <=0) && (label))
-	gtk_label_set(GTK_LABEL(label), "");
+	gtk_label_set_text (GTK_LABEL(label), "");
     }
   else
     {
@@ -2144,12 +2147,12 @@ set_task_info_to_button(Task *t)
 	  else
 	    str = util_reduce_chars("???", len);
 	  if (label)
-	    gtk_label_set(GTK_LABEL(label), str);
+	    gtk_label_set_text (GTK_LABEL(label), str);
 	  g_free(str);
 	  gtk_widget_size_request(button, &req);
 	}
       if ((len <=0) && (label))
-	gtk_label_set(GTK_LABEL(label), "");
+	gtk_label_set_text (GTK_LABEL(label), "");
     }
 }
 

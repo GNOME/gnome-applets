@@ -49,7 +49,7 @@ void showMessage(gchar *message)
        label update doesn't work the way it should */
 
     /* gtk_widget_hide (applet); */
-    gtk_label_set(GTK_LABEL(labelMessage), message);
+    gtk_label_set_text(GTK_LABEL(labelMessage), message);
     /* refresh frame; otherwise it is covered by the label;
        a bug in gtk? */
     /*    gtk_widget_hide (frame);
@@ -72,7 +72,7 @@ hideMessage(gpointer data)
 	    /* this is the message which has to be removed;
 	       otherwise don't hide this message */
 	    /* gtk_widget_hide (applet); */
-	    gtk_label_set(GTK_LABEL(labelMessage), " "); 
+	    gtk_label_set_text(GTK_LABEL(labelMessage), " "); 
 	    /* gtk_widget_show (applet); */
 	    messageLocked = FALSE;
 	}
@@ -113,7 +113,7 @@ showInterestingInformation(gpointer data)
 		    gtk_label_get(GTK_LABEL(labelMessage), &currentMessage);
 		    if(strcmp(message, currentMessage) != 0)
 			{
-			    gtk_label_set(GTK_LABEL(labelMessage), message); 
+			    gtk_label_set_text(GTK_LABEL(labelMessage), message); 
 			    /* refresh frame; otherwise it is covered by the label;
 			       a bug in gtk? */
 			    /*			    gtk_widget_hide (frame);

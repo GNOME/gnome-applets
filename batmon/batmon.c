@@ -142,8 +142,8 @@ batmon_timeout_callback (gpointer *data)
 		batmin /= 60;
 	
 	/* As stated above, we show the APM Driver and APM BIOS versions. */
-	gtk_label_set (GTK_LABEL (driverlabel), string[0]);
-	gtk_label_set (GTK_LABEL (bioslabel), string[1]);
+	gtk_label_set_text (GTK_LABEL (driverlabel), string[0]);
+	gtk_label_set_text (GTK_LABEL (bioslabel), string[1]);
 	
 	g_free (mempoint);
 #elif __FreeBSD__
@@ -194,7 +194,7 @@ batmon_timeout_callback (gpointer *data)
 
 	g_snprintf(str, sizeof(str), "%d.%d", aip.ai_major, aip.ai_minor);
 
-	gtk_label_set (GTK_LABEL (bioslabel), str);
+	gtk_label_set_text (GTK_LABEL (bioslabel), str);
 
 	close(fd);
 #else
@@ -208,28 +208,28 @@ batmon_timeout_callback (gpointer *data)
 	   check which flags are set? */
 	switch (batflag) {
 		case NOEXIST_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("There is no battery?!?"));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("There is no battery?!?"));
 			break;
 		case HIGH_MASK | CHARGE_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("High and charging."));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("High and charging."));
 			break;
 		case HIGH_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("High."));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("High."));
 			break;
 		case LOW_MASK | CHARGE_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("Low and charging."));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("Low and charging."));
 			break;
 		case LOW_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("Low."));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("Low."));
 			break;
 		case CRIT_MASK | CHARGE_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("Critical and charging."));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("Critical and charging."));
 			break;
 		case CRIT_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("Critical!!"));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("Critical!!"));
 			break;
 		case CHARGE_MASK:
-			gtk_label_set (GTK_LABEL (statlabel), _("Charging."));
+			gtk_label_set_text (GTK_LABEL (statlabel), _("Charging."));
 			break;
 	}
 	
@@ -255,7 +255,7 @@ batmon_timeout_callback (gpointer *data)
 		g_warning (_("More than 100,000,000 minutes of battery life?!?"));
 		return FALSE;
 	}
-	gtk_label_set (GTK_LABEL (minlabel), str);
+	gtk_label_set_text (GTK_LABEL (minlabel), str);
 
 	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (data), tipstr, NULL);
 
