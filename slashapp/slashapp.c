@@ -507,12 +507,12 @@ void tree_walk(xmlNodePtr root, gpointer data)
 
 	remove_all_lines(ad);
 	for(i=0;i<itemcount;i++) {
-		char *title = layer_find(item[i]->childs, "title", "No title");
-		char *url = layer_find(item[i]->childs, "link", "No url");
-/*		char *time = layer_find(item[i]->childs, "time", "No time");
+		char *title = layer_find(item[i]->childs, "title", _("No title"));
+		char *url = layer_find(item[i]->childs, "link", _("No url"));
+/*		char *time = layer_find(item[i]->childs, "time", _("No time"));
 		char *author = layer_find(item[i]->childs, "author", 
-				"No author");
-		char *image = layer_find(item[i]->childs, "iamge", "No image");
+				_("No author"));
+		char *image = layer_find(item[i]->childs, "iamge", _("No image"));
 */
 		char *temp = g_strconcat(title, NULL);
                 id = add_info_line(ad, temp, NULL, 0, FALSE, FALSE, delay); 
