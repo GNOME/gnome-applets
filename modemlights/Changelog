@@ -4,4 +4,10 @@
 	* backgrnd_s.xpm: Added image for left/right panel orientation.
 	* modemlights.c: Added orientation code.
 
+1998-05-19  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.c: (main) The orientation callback was being called
+	before the widgets were created, causing a warning at startup.
+	signal_connect for "orient" relocated to after widget creation.
+
 

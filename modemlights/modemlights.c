@@ -242,11 +242,6 @@ int main (int argc, char *argv[])
 				GTK_SIGNAL_FUNC(destroy_applet),
 				NULL);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-				GTK_SIGNAL_FUNC(applet_change_orient),
-				NULL);
-
-
 	/* frame for all widgets */
 	frame = gtk_frame_new(NULL);
 	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
@@ -283,6 +278,10 @@ int main (int argc, char *argv[])
 
 	gdk_draw_pixmap     (display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
 		display_back, 0, 0, 0, 0, 10, 40);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+				GTK_SIGNAL_FUNC(applet_change_orient),
+				NULL);
 
 	redraw_display();
 
