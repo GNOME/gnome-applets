@@ -406,13 +406,14 @@ file_browser_response_signal(GtkWidget *widget, gint response, gpointer mc_data)
     if (response == GTK_RESPONSE_OK) {
         /* get selected file name */
         filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(mc->file_select));
-        strcpy(browsed_filename, (char *) filename);
-	g_free(filename);
+        if (filename != NULL) {
+            strcpy(browsed_filename, (char *) filename);
+            g_free(filename);
+            /* printf("Filename: %s\n", (char *) browsed_filename); */
 
-        /* printf("Filename: %s\n", (char *)  browsed_filename); */
-
-        /* execute command */
-        mc_exec_command(mc, browsed_filename);
+            /* execute command */
+            mc_exec_command(mc, browsed_filename);
+       }
     }
 
     /* destroy file select dialog */
