@@ -1,3 +1,16 @@
+# trick Automake into defining $(CXXLINK)
+if FALSE
+BUILT_SOURCES = dummy.cc
+
+dummy.cc:
+	@touch dummy.cc
+endif
+
+gkbpath.h:
+	@echo -e '#define D_PATH "$(datadir)"' > gkbpath.h
+
+P_HEADER_1 = gkbpath.h
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
@@ -5,11 +18,15 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = gkb_applet
 
-gkb_applet_SOURCES = gkb.c properties.c properties.h
+gkb_applet_SOURCES = gkb.c properties.c properties.h gkbpath.h
 
 gkb_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS) \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+
+gkb_applet_DEPENDENCIES = $(P_HEADER_1)
+
+gkb_applet_LINK = $(CXXLINK)
 
 GKB_BITMAPS = hu.xpm us.xpm gb.xpm fr.xpm de.xpm
 
