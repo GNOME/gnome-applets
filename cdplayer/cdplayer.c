@@ -202,7 +202,7 @@ create_cdpanel_widget(GtkWidget *window, CDPlayerData * cd)
 	GtkWidget *hbox;
 
 	frame = gtk_frame_new(NULL);
-	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_ETCHED_IN);
+	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 	gtk_widget_show(frame);
 
 	vbox = gtk_vbox_new(FALSE, FALSE);
