@@ -1539,6 +1539,7 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
                         idx = PIX_RAIN;
                     break;
                 case PHENOMENON_SNOW:
+		case PHENOMENON_SNOW_GRAINS:
                 case PHENOMENON_ICE_PELLETS:
                     idx = PIX_SNOW;
                     break;
