@@ -30,7 +30,7 @@
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #include <sys/stat.h>
 #include <dirent.h>

@@ -22,9 +22,9 @@
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 #include <gdk/gdkkeysyms.h>
-#include <zvt/zvtterm.h>
+/* include <zvt/zvtterm.h> */
 
 #include "command_line.h"
 #include "preferences.h"
@@ -141,7 +141,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 		    if(completed_command != NULL)
 			{
 			    gtk_entry_set_text(GTK_ENTRY(widget), completed_command);
-			    gtk_editable_set_position(GTK_EDITABLE(widget), current_position );
+			    gtk_editable_set_position(GTK_EDITABLE(widget), current_position + 1);
 			    propagate_event = FALSE;
 			    show_message((gchar *) _("autocompleted"));
 			}
@@ -419,9 +419,6 @@ show_file_browser_signal(GtkWidget *widget, gpointer data)
     
     GtkWidget *file_select;
 
-    
-
-
     /* build file select dialog */
     file_select = gtk_file_selection_new((gchar *) _("Start program"));
     gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(file_select)->ok_button),
@@ -495,10 +492,14 @@ command_entry_update_color(void)
     gtk_widget_ensure_style(entry_command);
     style = gtk_style_copy(gtk_widget_get_style(entry_command));
     
-    style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_fg_r;
-    style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_fg_g;
-    style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_fg_b;
-    
+    /* set text color */
+    style->text[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_fg_r;
+    style->text[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_fg_g;
+    style->text[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_fg_b;
+
+    /* does someone know how to set the color of the cursor? */
+
+    /* set background color */
     style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_bg_r;
     style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_bg_g;
     style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_bg_b;

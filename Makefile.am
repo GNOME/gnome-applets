@@ -52,6 +52,7 @@ always_built_SUBDIRS = \
 	fifteen		\
 	odometer	\
 	geyes		\
+	mini-commander	\
 	whereami	
 ## 	another_clock	\
 ## 	asclock		\
@@ -62,7 +63,6 @@ always_built_SUBDIRS = \
 ## 	gkb-new		\
 ## 	jbc		\
 ## 	life		\
-## 	mini-commander	\
 ## 	quicklaunch	\
 ## 	tickastat	\
 ## 	webcontrol	\

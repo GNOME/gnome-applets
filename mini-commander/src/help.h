@@ -1,4 +1,5 @@
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 
-void show_help(AppletWidget *applet, gpointer data);
+void show_help(BonoboUIComponent *uic, gpointer *data, const gchar *verbname);
+

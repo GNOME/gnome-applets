@@ -19,11 +19,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+/* these defines are needed (but missing in GNOME2) */
+#define PIXEL_SIZE_TINY 24
+#define PIXEL_SIZE_SMALL 32
+
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
-
+#include <panel-applet.h>
 #include "mini-commander_applet.h"
 #include "preferences.h"
 #include "command_line.h"
@@ -42,15 +45,33 @@ static gint applet_destroy_signal(GtkWidget *widget, gpointer data);
 static gint applet_detached_signal(GtkWidget *widget, gpointer data);
 static gint applet_attached_signal(GtkWidget *widget, gpointer data);
 static gint applet_orient_changed_cb(GtkWidget *widget, gpointer data);
-#ifdef HAVE_PANEL_PIXEL_SIZE
 static void applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data);
-#endif
+
+static const BonoboUIVerb mini_commander_menu_verbs[] = {
+        BONOBO_UI_VERB("Props", properties_box),
+        BONOBO_UI_VERB("Help", show_help),
+        BONOBO_UI_VERB("About", about_box),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char mini_commander_menu_xml[] =
+        "<popup name=\"button3\">\n"
+        "   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
+        "             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+        "   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+        "             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+        "   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+        "             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+        "</popup>\n";
+
 
 static gint
 applet_destroy_signal(GtkWidget *widget, gpointer data)
 {
     /* applet will be destroyed; save settings now */
     save_session();
+
     /* go on */
     return FALSE;  
     widget = NULL;
@@ -101,8 +122,7 @@ applet_orient_changed_cb(GtkWidget *widget, gpointer data)
     data = NULL;
 }
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
-/*this is when the panel size changes*/
+/*this is called when the panel size changes*/
 static void
 applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
 {
@@ -136,7 +156,6 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
     widget = NULL;
     data = NULL;
 }
-#endif
 
 void
 redraw_applet(void)
@@ -151,8 +170,8 @@ redraw_applet(void)
     int size_frames = 0;
     int size_status_line = 18;
 
-    static GtkWidget *applet_inner_vbox = NULL;
     static GtkWidget *applet_vbox = NULL;
+    static GtkWidget *applet_inner_vbox = NULL;
     static int first_time = TRUE;   
 
     /* recalculate sizes */
@@ -171,7 +190,8 @@ redraw_applet(void)
 	}
 
     if(applet_inner_vbox)
-	gtk_widget_destroy(GTK_WIDGET(applet_inner_vbox)); 
+      /* clean up */
+      gtk_widget_destroy(GTK_WIDGET(applet_inner_vbox)); 
 
     applet_inner_vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(applet_inner_vbox), 0);
@@ -226,9 +246,11 @@ redraw_applet(void)
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
+#if 0 /* FIXME */
     applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),
 				     GTK_WIDGET(button),
 				     _("Browser"));
+#endif
     gtk_box_pack_start(GTK_BOX(hbox_buttons), button, TRUE, TRUE, 0);
 
     /* add history button */
@@ -239,9 +261,11 @@ redraw_applet(void)
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
+#if 0 /* FIXME */
     applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),
 				     GTK_WIDGET(button),
 				     _("History"));
+#endif
     gtk_box_pack_end(GTK_BOX(hbox_buttons), button, TRUE, TRUE, 0);
 
     /* add buttons into frame */
@@ -317,7 +341,10 @@ redraw_applet(void)
     gtk_box_pack_start(GTK_BOX(applet_vbox), applet_inner_vbox, TRUE, TRUE, 0);
 
     if(first_time)
+#if 0
 	applet_widget_add (APPLET_WIDGET (applet), applet_vbox);
+#endif
+        gtk_container_add(GTK_CONTAINER(applet), applet_vbox);
     first_time = FALSE;
 
     gtk_widget_set_usize(GTK_WIDGET(applet), prop.normal_size_x, prop.normal_size_y);
@@ -341,85 +368,72 @@ redraw_applet(void)
     
 }
 
-int 
-main(int argc, char **argv)
+/* int main_(int argc, char **argv) */
+static gboolean
+mini_commander_applet_fill(PanelApplet *applet_)
 {
     /* install signal handler */
     init_exec_signal_handler();
-    
-    /* initialize the i18n stuff */
+
+    /* initialize the i18n stuff (still needed in GNOME2?) */
     bindtextdomain (PACKAGE, GNOMELOCALEDIR);
     textdomain (PACKAGE);
     
-    /* intialize, this will basically set up the applet, corba and
-       call gnome_init */
-    applet_widget_init("mini-commander_applet", VERSION, argc, argv, NULL, 0,
-		       NULL);
+    g_signal_connect(GTK_OBJECT(applet),
+		     "change_orient",
+		     G_CALLBACK(applet_orient_changed_cb),
+		     NULL);
 
-    /* create a new applet_widget */
-    applet = applet_widget_new("mini-commander_applet");   
-    /* in the rare case that the communication with the panel
-       failed, error out */
-    if (!applet)
-	{
-	    g_error("Can't create applet!\n");
-	    exit(1);
-	}
-    gtk_signal_connect(GTK_OBJECT(applet),
-		       "change_orient",
-		       GTK_SIGNAL_FUNC(applet_orient_changed_cb),
-		       NULL);
+    applet = GTK_WIDGET(applet_);    
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
     /*we have to bind change_pixel_size before we do applet_widget_add 
       since we need to get an initial change_pixel_size signal to set our
       initial size, and we get that during the _add call*/
-    gtk_signal_connect(GTK_OBJECT(applet),
-		       "change_pixel_size",
-		       GTK_SIGNAL_FUNC(applet_pixel_size_changed_cb),
-		       NULL);
-#endif
+    g_signal_connect(G_OBJECT(applet),
+		     "change_pixel_size",
+		     G_CALLBACK(applet_pixel_size_changed_cb),
+		     NULL);
     
     load_session();
     
-    gtk_signal_connect(GTK_OBJECT(applet), "destroy",
-		       (GtkSignalFunc) applet_destroy_signal,
-		       NULL); 
+    g_signal_connect(G_OBJECT(applet), "destroy",
+		     G_CALLBACK(applet_destroy_signal),
+		     NULL); 
     
     /* bind the session save signal */
-    gtk_signal_connect(GTK_OBJECT(applet),
-		       "save_session",
-		       GTK_SIGNAL_FUNC(save_session_signal),
-		       NULL);
+    g_signal_connect(G_OBJECT(applet),
+		     "save_session",
+		     G_CALLBACK(save_session_signal),
+		     NULL);
 
     redraw_applet();
 
-    /* add items to applet menu */
-    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					  "properties",
-					  GNOME_STOCK_MENU_PROP,
-					  _("Properties..."),
-					  properties_box,
-					  NULL);
-    
-    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					  "help",
-					  GNOME_STOCK_PIXMAP_HELP,
-					  _("Help"),
-					  show_help,
-					  NULL);
-
-    applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					  "about",
-					  GNOME_STOCK_MENU_ABOUT,
-					  _("About..."),
-					  about_box,
-					  NULL);
+    panel_applet_setup_menu(PANEL_APPLET(applet),
+			    mini_commander_menu_xml,
+			    mini_commander_menu_verbs,
+			    NULL);
       
     show_message((gchar *) _("ready...")); 
  
-    /* special corba main loop */
-    applet_widget_gtk_main ();
-    
-    return 0;
+    return TRUE;
 }
+
+
+static gboolean
+mini_commander_applet_factory(PanelApplet *applet,
+			      const gchar *iid,
+			      gpointer     data)
+{
+        gboolean retval = FALSE;
+
+        if (!strcmp (iid, "OAFIID:GNOME_MiniCommanderApplet"))
+                retval = mini_commander_applet_fill(applet); 
+    
+        return retval;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MiniCommanderApplet_Factory",
+                             "Mini-Commander",
+                             "0",
+                             mini_commander_applet_factory,
+                             NULL)

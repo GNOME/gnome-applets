@@ -22,9 +22,9 @@
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 #include <gdk/gdkkeysyms.h>
-#include <zvt/zvtterm.h>
+/* include <zvt/zvtterm.h> */
 
 #include "command_line.h"
 #include "preferences.h"
@@ -34,6 +34,8 @@
 #include "message.h"
 
 #include "terminal.h"
+
+/* This is just an idea to place the text entry with a zvt terminal */
 
 GtkWidget *terminal_zvt = NULL;
 #if 0
@@ -189,7 +191,7 @@ history_auto_complete(GtkWidget *widget, GdkEventKey *event)
 }
 #endif
 
-
+#if 0
 static gint
 term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
@@ -290,3 +292,4 @@ terminal_init(void)
 
     /*     command_entry_update_size(); */
 }
+#endif

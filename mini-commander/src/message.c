@@ -22,7 +22,7 @@
 #include <string.h>
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #include "message.h"
 #include "command_line.h"

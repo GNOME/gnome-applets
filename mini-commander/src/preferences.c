@@ -21,7 +21,7 @@
 
 #include <config.h>
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 #include <string.h>
 
 #include "preferences.h"
@@ -227,6 +227,7 @@ properties_box_apply_signal(GnomePropertyBox *property_box_widget, gint page, gp
     data = NULL;
 }
 
+/* FIXME: port to gconf */
 void
 load_session(void)
 {
@@ -380,6 +381,7 @@ load_session(void)
 }
 
 
+/* FIXME: port to gconf */
 void
 save_session(void)
 {
@@ -451,12 +453,8 @@ save_session(void)
 gint
 save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath)
 {       
-#ifdef HAVE_PANEL_PIXEL_SIZE
     if(!prop.flat_layout)
-	show_message((gchar *) _("saving prefs...")); 	    
-#else
-    show_message((gchar *) _("saving prefs...")); 	    
-#endif
+      show_message((gchar *) _("saving prefs...")); 	    
 
     save_session();
 
@@ -476,16 +474,20 @@ save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *glob
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
+   #if 0 /* FIXME */
         GnomeHelpMenuEntry help_entry = { "mini-commander_applet",
                                           "index.html#MINI-COMMANDER-PREFS" };
         gnome_help_display(NULL, &help_entry);
+   #endif
 }
 
 
 void
-properties_box(AppletWidget *applet, gpointer data)
+properties_box(BonoboUIComponent *uic, gpointer *data, const gchar *verbname)
 {
+   #if 0 /* FIXME */
     static GnomeHelpMenuEntry help_entry = { NULL,  "properties" };
+   #endif
     static GtkWidget *properties_box = NULL;
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox;
@@ -505,7 +507,9 @@ properties_box(AppletWidget *applet, gpointer data)
 	gdk_window_raise(GTK_WIDGET(properties_box)->window);
 	return;
     }
+   #if 0 /* FIXME */
     help_entry.name = gnome_app_id;
+   #endif
 
     reset_temporary_prefs();
 
@@ -869,14 +873,14 @@ properties_box(AppletWidget *applet, gpointer data)
 		       GTK_SIGNAL_FUNC(properties_box_apply_signal),
 		       NULL);
 
+   #if 0 /* FIXME */
     gtk_signal_connect(GTK_OBJECT(properties_box),
 		       "help",
 		       GTK_SIGNAL_FUNC(phelp_cb),
 		       &help_entry);
+   #endif
     
     gtk_widget_show_all(properties_box);
     return;
-    applet = NULL;
-    data = NULL;
 }
 

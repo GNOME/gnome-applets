@@ -23,14 +23,17 @@
 #include "help.h"
 
 void 
-show_help(AppletWidget *applet, gpointer data)
+show_help(BonoboUIComponent *uic, gpointer *data, const gchar *verbname)
 {
+    #if 0 /* FIXME */
     static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
 
     help_entry.name = gnome_app_id;
     
     gnome_help_display(NULL, &help_entry);
+    #endif
+
+    show_message((gchar *) _("still not ported")); 
+
     return;
-    applet = NULL;
-    data = NULL;
 }

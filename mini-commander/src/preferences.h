@@ -1,6 +1,6 @@
 #include <sys/types.h>
 #include <regex.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #define LENGTH_HISTORY_LIST       50
 #define MAX_COMMAND_LENGTH        500
@@ -45,4 +45,5 @@ void save_session(void);
 
 gint save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath);
 
-void properties_box(AppletWidget *applet, gpointer data);
+void properties_box(BonoboUIComponent *uic, gpointer *data, const gchar *verbname);
+

@@ -1,4 +1,5 @@
 #include <gnome.h>
-#include <applet-widget.h>
+/* include <libgnomeui/gnome-about.h> */
+#include <panel-applet.h>
 
-void about_box(AppletWidget *applet, gpointer data);
+void about_box(BonoboUIComponent *uic, gpointer *data, const gchar *verbname);

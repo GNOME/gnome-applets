@@ -5,7 +5,7 @@ INCLUDES = 						\
 	-I$(srcdir)					\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_APPLETS_CFLAGS) $(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = mini_commander_applet
 
@@ -35,8 +35,9 @@ mini_commander_applet_SOURCES =			\
 
 mini_commander_applet_LDADD =				\
 	$(GNOME_APPLETS_LIBS)				\
-	$(ZVT_LIBS)					\
 	$(INTLLIBS) 
+
+#	(ZVT_LIBS)					\
 
 # currently the installation of these bitmaps wouldn't be necessary
 bitmapsdir = $(datadir)/pixmaps/mini-commander
@@ -47,7 +48,14 @@ sys_predata = mini-commander_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
 @XML_I18N_MERGE_DESKTOP_RULE@
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = mini-commander_applet.gnorba
+#gnorbadir  = $(sysconfdir)/CORBA/servers
+#gnorba_DATA = mini-commander_applet.gnorba
 
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata) $(bitmaps_DATA)
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = gnome-mini-commander.png
+
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_MiniCommanderApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+EXTRA_DIST = $(server_in_files) $(pixmap_DATA) $(sys_DATA) $(sys_predata) $(bitmaps_DATA)
