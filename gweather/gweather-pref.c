@@ -325,7 +325,7 @@ static void gweather_pref_create (void)
 
   pref = gnome_dialog_new (_("GNOME Weather Properties"), NULL);
   gtk_widget_set_usize (pref, -2, 280);
-  gtk_window_set_policy (GTK_WINDOW (pref), FALSE, FALSE, FALSE);
+  gtk_window_set_policy (GTK_WINDOW (pref), TRUE, TRUE, FALSE);
   gnome_dialog_close_hides(GNOME_DIALOG(pref), TRUE);
 
   pref_vbox = GNOME_DIALOG (pref)->vbox;
