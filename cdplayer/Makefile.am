@@ -10,7 +10,7 @@ if CDDA_SOLARIS
 CDROM_CDDA_SRCS = \
 	reader-solaris.c \
 	writer-solaris.c 
-	
+
 CDROM_CDDA_DEPS = \
 	reader-solaris.c \
 	writer-solaris.c
@@ -24,7 +24,6 @@ cdplayer.h \
 cdrom-interface.h \
 led.c \
 led.h \
-$(EGGFILES) \
 reader-solaris.h \
 writer-solaris.h \
 cdda-solaris.h \
