@@ -3,25 +3,25 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
 	$(LIBGLADE_CFLAGS)           			\
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
 	-DVERSION=\""$(VERSION)"\"			\
-	-DICONDIR=\""$(datadir)/pixmaps"\"
+	-DICONDIR=\""$(pixmapsdir)"\"
 
 libexec_PROGRAMS = modem_applet
 
 modem_applet_SOURCES = \
-	modem-applet.c		modem-applet.h
+	modem-applet.c \
+	modem-applet.h
 
 modem_applet_LDADD = 		\
-     $(GNOME_APPLETS_LIBS)	\
-	$(LIBGLADE_LIBS)		\
+	$(GNOME_APPLETS_LIBS)	\
+	$(LIBGLADE_LIBS)	\
 	$(MODEMLIGHTS_LIBS)
 
-uidir		= $(datadir)/gnome-2.0/ui
-ui_DATA		= GNOME_ModemLights.xml
+uidir	= $(datadir)/gnome-2.0/ui
+ui_DATA	= GNOME_ModemLights.xml
 
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gnome-modem.png
+desktop_iconsdir   = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = gnome-modem.png
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_ModemLights.server.in
@@ -39,6 +39,6 @@ glade_DATA = modemlights.glade
 
 EXTRA_DIST =					\
 	GNOME_ModemLights.server.in.in		\
-	$(pixmap_DATA)				\
+	$(desktop_icons_DATA)			\
 	$(glade_DATA)				\
 	$(ui_DATA)
