@@ -33,14 +33,16 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     }
     else if (result == GNOME_VFS_ERROR_EOF)
     {
-        GdkPixbuf *pixbuf;
+        GdkPixbufAnimation *animation;
     	
         gdk_pixbuf_loader_close (info->radar_loader, NULL);
-        pixbuf = gdk_pixbuf_loader_get_pixbuf (info->radar_loader);
-	if (pixbuf != NULL) {
+        animation = gdk_pixbuf_loader_get_animation (info->radar_loader);
+	if (animation != NULL)
+	{
             if (info->radar)
                 g_object_unref (info->radar);
-	    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &info->radar, &info->radar_mask, 127);
+	    info->radar = animation;
+	    g_object_ref (info->radar);
         }
 	g_object_unref (G_OBJECT (info->radar_loader));
         

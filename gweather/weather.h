@@ -189,8 +189,7 @@ struct _WeatherInfo {
     gchar *radar_buffer;
     gchar *radar_url;
     GdkPixbufLoader *radar_loader;
-    GdkPixmap *radar;
-    GdkBitmap *radar_mask;
+    GdkPixbufAnimation *radar;
     GnomeVFSAsyncHandle *metar_handle;
     GnomeVFSAsyncHandle *iwin_handle;
     GnomeVFSAsyncHandle *wx_handle;
@@ -230,7 +229,7 @@ extern const gchar *weather_info_get_apparent (WeatherInfo *info);
 extern const gchar *weather_info_get_sunrise(WeatherInfo *info);
 extern const gchar *weather_info_get_sunset(WeatherInfo *info);
 extern const gchar *weather_info_get_forecast (WeatherInfo *info);
-extern GdkPixmap *weather_info_get_radar (WeatherInfo *info);
+extern GdkPixbufAnimation *weather_info_get_radar (WeatherInfo *info);
 
 extern const gchar *weather_info_get_temp_summary (WeatherInfo *info);
 extern gchar *weather_info_get_weather_summary (WeatherInfo *info);

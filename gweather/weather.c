@@ -753,7 +753,7 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
 
 	info->forecast = NULL;
 	if (info->radar != NULL) {
-	    gdk_pixmap_unref (info->radar);
+	    g_object_unref (info->radar);
 	    info->radar = NULL;
 	}
     }
@@ -901,7 +901,7 @@ WeatherInfo *weather_info_clone (const WeatherInfo *info)
 
     clone->radar = info->radar;
     if (clone->radar != NULL)
-	    gdk_pixmap_ref (clone->radar);
+	    g_object_ref (clone->radar);
 
     return clone;
 }
@@ -918,7 +918,7 @@ void weather_info_free (WeatherInfo *info)
     info->forecast = NULL;
 
     if (info->radar != NULL) {
-        gdk_pixmap_unref (info->radar);
+        g_object_unref (info->radar);
         info->radar = NULL;
     }
 	
@@ -1325,7 +1325,7 @@ const gchar *weather_info_get_forecast (WeatherInfo *info)
     return info->forecast;
 }
 
-GdkPixmap *weather_info_get_radar (WeatherInfo *info)
+GdkPixbufAnimation *weather_info_get_radar (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     return info->radar;

@@ -591,11 +591,15 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     }
 
     /* Update radar map */
-    if (gw_applet->gweather_pref.radar_enabled) {
-        GdkPixmap *radar = weather_info_get_radar(gw_applet->gweather_info);
-        if (radar) {
-            gtk_image_set_from_pixmap (GTK_IMAGE (gw_applet->radar_image), 
-                                       radar, gw_applet->gweather_info->radar_mask);
+    if (gw_applet->gweather_pref.radar_enabled)
+    {
+        GdkPixbufAnimation *radar;
+	
+	radar = weather_info_get_radar (gw_applet->gweather_info);
+        if (radar)
+	{
+            gtk_image_set_from_animation (GTK_IMAGE (gw_applet->radar_image), 
+                                       radar);
         }
     }
 }
