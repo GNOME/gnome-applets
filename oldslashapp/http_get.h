@@ -2,6 +2,7 @@
 #define HTTP_GET_H
 
 #include <stdio.h>
+#include <unistd.h>
 #include <gtk/gtk.h>
 
 int

@@ -1,201 +1,236 @@
-/*****************************************************
-The table is too big on purpose. I will later implement the ability to have 
-the topical icon show up.
+/*###################################################################*/
+/*##                                                               ##*/
+/*###################################################################*/
 
-Had trouble making headlines respond to mouse clicks - could do it, but 
-i don't know how do it and make it stil respond to right-mouse clicks. all 
-i know is that it involves setting up an event box, attaching a signal handler 
-to it, and playing around with a GdkEvent (something about eventbox->button3 
-needing to return false.
+#include "slashapp.h"
+#include "http_get.h"
 
-i'd be grateful if someone could hack it in. should be trivial for anyone who 
-knows anything about GdkEvents.
-
-Also, any way to make the text less bland.
-Any way to center it? Make it bigger?
-
-June 29, 1998
-Justin Maurer
-mike911@clark.net
-http://slashdot.org/
-***************************************************/
-#undef DEBUG
-
-#include <config.h>
-#include <gnome.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
-
-GtkWidget *applet;
-GtkWidget *Table;
-GtkWidget *Headline;
-GtkWidget *Author;
-GtkWidget *HeadlineEventBox;
-
-int firsttime = 0;
-int topiccounter = 0;
-int headlinecounter = 0;
-int authorcounter = 0;
-
-FILE *slash_file = NULL;
-
-GtkWidget *SlashPixmap;
-GdkImlibImage *SlashGif;
-
-GtkWidget *create_slash_widget(GtkWidget *window);
-static int slashapp_refresh(gpointer data);
-static int set_current_headline(gpointer data);
-static int getarticle(gpointer data);
+static void flush_newline_chars(gchar *text, gint max);
 static int get_current_headlines(gpointer data);
-void aboutwindow(void);
+static int startup_delay_cb(gpointer data);
+static void about_cb (AppletWidget *widget, gpointer data);
+static void destroy_applet(GtkWidget *widget, gpointer data);
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
+					gchar *globcfgpath, gpointer data);
+static AppData *create_new_app(GtkWidget *applet);
+static void applet_start_new_applet(const gchar *param, gpointer data);
 
-int main(int argc, char *argv[])
+static void flush_newline_chars(gchar *text, gint max)
 {
-GtkWidget *slash;
-
-bindtextdomain(PACKAGE, GNOMELOCALEDIR);
-textdomain(PACKAGE);
-
-applet_widget_init_defaults("slash_applet", NULL, argc, argv, 0, NULL, 
-			    argv[0]);
-
-applet = applet_widget_new();
-if (!applet)
-    g_error(_("Can't create applet!\n"));
-gtk_widget_realize(applet);
-
-slash = create_slash_widget(applet);
-gtk_widget_show(slash);
-
-applet_widget_add(APPLET_WIDGET(applet), slash);
-gtk_widget_show(applet);
-
-applet_widget_gtk_main();
-return 0;
-}
-
-GtkWidget *create_slash_widget(GtkWidget *window)
-{
-char *slashappdir;
-char *pixfname;
-
-Table = gtk_table_new(2, 2, FALSE);
-pixfname = g_strdup(gnome_unconditional_pixmap_file("slashsplash.gif"));
-if (g_file_exists(pixfname)) {
-  SlashGif = gdk_imlib_load_image(pixfname);
-  gdk_imlib_render(SlashGif, SlashGif->rgb_width, SlashGif->rgb_height);
-  SlashPixmap = gtk_pixmap_new(SlashGif->pixmap, SlashGif->shape_mask);
-  gtk_widget_show(SlashPixmap);
-  g_free(pixfname);
-} else {
-  g_warning("Unable to find %s", pixfname);
-}
-gtk_timeout_add(1800000, get_current_headlines, NULL);
-gtk_timeout_add(3000, set_current_headline, NULL);
-
-gtk_table_attach_defaults(GTK_TABLE(Table), SlashPixmap, 0, 2, 0, 2);
-return Table;
-}
-
-static int set_current_headline(gpointer data)
-{
-char buf[80]; /* Is that ok? */
-char headlinestring[12][80];
-char authorstring[12][8];
-char currentheadline[80];
-
-if (firsttime == 0)
-  {
-get_current_headlines(NULL);
-gtk_widget_destroy(SlashPixmap);
-
-Headline = gtk_text_new(NULL, NULL);
-Author = gtk_text_new(NULL, NULL);
-
-gtk_text_set_editable(GTK_TEXT(Headline), FALSE);
-gtk_text_set_editable(GTK_TEXT(Author), FALSE);
-
-gtk_text_set_word_wrap(GTK_TEXT(Headline), TRUE);
-gtk_text_set_word_wrap(GTK_TEXT(Author), TRUE);
-
-gtk_table_attach_defaults(GTK_TABLE(Table), Headline, 1, 2, 0, 1);
-gtk_table_attach_defaults(GTK_TABLE(Table), Author, 1, 2, 1, 2);
-
-gtk_widget_show(Author);
-gtk_widget_show(Headline);
-firsttime = 1;
-  }
-
-
-if (topiccounter == 12)
-{
-    topiccounter = 0;
-}
-
-if (headlinecounter == 12)
-{
-    headlinecounter = 0;
-}
-
-if (authorcounter == 12)
-{
-    authorcounter = 0;
-}
-
-if ((slash_file = fopen("slashnews", "r")) == NULL)
-  {
-fprintf(stderr, "Failed to open file \"%s\": %s\n", slash_file,
-        strerror(errno));
-  }
-topiccounter = 0;
-while ((fgets(buf, sizeof(buf), slash_file) != NULL) && (topiccounter < 12))
-{
-  if (strcmp(buf, "%%\n") == 0) 
-  {
-    if (fgets(buf, sizeof(buf), slash_file) != NULL)
-    {
-      strncpy(&headlinestring[topiccounter], buf, 80);
-      g_print("%d long: %s", strlen(headlinestring[topiccounter]), headlinestring[topiccounter]);
-      fgets(buf, sizeof(buf), slash_file);
-      strncpy(&authorstring[topiccounter], buf, 8);
-      topiccounter++;
-    }
-  }
-}
-
-if (headlinestring[headlinecounter][0] == '\0')
-  headlinecounter = 0;
-gtk_text_freeze(GTK_TEXT(Headline));
-gtk_text_backward_delete(GTK_TEXT(Headline), 
-			 gtk_text_get_length(GTK_TEXT(Headline)));
-gtk_text_insert(GTK_TEXT(Headline), NULL, NULL, NULL, 
-		headlinestring[headlinecounter], 
-		strlen(headlinestring[headlinecounter]));
-gtk_text_thaw(GTK_TEXT(Headline));
-
-if (authorstring[headlinecounter][0] == '\0')
-     authorcounter = 0;
-gtk_text_freeze(GTK_TEXT(Author));
-gtk_text_backward_delete(GTK_TEXT(Author), 
-			 gtk_text_get_length(GTK_TEXT(Author)));
-gtk_text_insert(GTK_TEXT(Author), NULL, NULL, NULL, 
-		authorstring[headlinecounter], 
-		strlen(headlinestring[headlinecounter]));
-gtk_text_thaw(GTK_TEXT(Author));
-headlinecounter++;
-
-fclose(slash_file);
-return TRUE;
+	gchar *p = text;
+	gint c = 0;
+	while (p[0] != '\0' && c <= max)
+		{
+		if (p[0] == '\n')
+			p[0] = '\0';
+		else
+			{
+			p++;
+			c++;
+			if (c >= max) p[0] = '\0';
+			}
+		}
 }
 
 static int get_current_headlines(gpointer data)
 {
-if ((slash_file = fopen("slashnews", "w")) == NULL)
-  {
-fprintf(stderr, "Failed to open file \"%s\": %s\n", slash_file,
-        strerror(errno));
-  }
-http_get_to_file("slashdot.org", 80, "/ultramode.txt", slash_file);
-fclose(slash_file);
-return TRUE;
+	AppData *ad = data;
+	gchar buf[256];
+	gchar headline[128];
+	gchar url[128];
+	gchar entrydate[64];
+	gchar author[32];
+	gchar department[128];
+	gchar category[32];
+	FILE *slash_file = NULL;
+
+	if ((slash_file = fopen("slashnews", "w")) == NULL)
+		{
+		fprintf(stderr, "Failed to open file \"%s\": %s\n",
+				"slashnews", strerror(errno));
+		return TRUE;
+		}
+	http_get_to_file("slashdot.org", 80, "/ultramode.txt", slash_file);
+	fclose(slash_file);
+
+	/* refresh the headlines in the display */
+	if ((slash_file = fopen("slashnews", "r")) == NULL)
+		{
+		fprintf(stderr, "Failed to open file \"%s\": %s\n",
+				"slashnews", strerror(errno));
+		return TRUE;
+		}
+
+	/* clear the current headlines from display list */
+	remove_all_lines(ad);
+
+	while (fgets(buf, sizeof(buf), slash_file) != NULL)
+		{
+		if (strcmp(buf, "%%\n") == 0) 
+			{
+			if (fgets(buf, sizeof(buf), slash_file) != NULL)
+				{
+				gchar *text;
+				strncpy(headline, buf, 80);
+				flush_newline_chars(headline, 80);
+				g_print("%d long: %s\n", strlen(headline), headline);
+				fgets(buf, sizeof(buf), slash_file);
+				strncpy(url, buf, 120);
+				flush_newline_chars(url, 120);
+				fgets(buf, sizeof(buf), slash_file);
+				strncpy(entrydate, buf, 64);
+				flush_newline_chars(entrydate, 23);
+				fgets(buf, sizeof(buf), slash_file);
+				strncpy(author, buf, 10);
+				flush_newline_chars(author, 8);
+				fgets(buf, sizeof(buf), slash_file);
+				strncpy(department, buf, 80);
+				flush_newline_chars(department, 80);
+				fgets(buf, sizeof(buf), slash_file);
+				strncpy(category, buf, 20);
+				flush_newline_chars(category, 16);
+
+				/* add the headline */
+				text = g_strconcat(headline, "\n  [", entrydate, " - ", author, "]", NULL);
+				add_info_line(ad, text, NULL, 0, FALSE, FALSE, 30);
+				/* a space separater, could include a graphic divider too */
+				add_info_line(ad, "  ", NULL, 0, FALSE, FALSE, 0);
+				g_free(text);
+				}
+			}
+		}
+
+	fclose(slash_file);
+
+	return TRUE;
+}
+
+static int startup_delay_cb(gpointer data)
+{
+	AppData *ad = data;
+	get_current_headlines(ad);
+	ad->startup_timeout_id = 0;
+	return FALSE;	/* return false to stop this timeout callback, needed only once */
+}
+
+static void about_cb (AppletWidget *widget, gpointer data)
+{
+	GtkWidget *about;
+	const gchar *authors[8];
+	gchar version[32];
+
+	sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ,
+		APPLET_VERSION_MIN, APPLET_VERSION_REV);
+
+	authors[0] = _("Justin Maurer <mike911@clark.net>");
+	authors[1] = _("Craig Small <csmall@small.dropbear.co.uk>");
+	authors[2] = _("John Ellis <johne@bellatlantic.net> - Display engine");
+	authors[3] = NULL;
+
+        about = gnome_about_new ( _("Slash Applet"), version,
+			_("(C) 1998"),
+			authors,
+			_("Released under the GNU general public license.\n"
+			"Display scroller for slashapp. "),
+			NULL);
+	gtk_widget_show (about);
+}
+
+
+static void destroy_applet(GtkWidget *widget, gpointer data)
+{
+	AppData *ad = data;
+
+	gtk_timeout_remove(ad->display_timeout_id);
+	gtk_timeout_remove(ad->headline_timeout_id);
+	if (ad->startup_timeout_id > 0) gtk_timeout_remove(ad->startup_timeout_id);
+
+	free_all_info_lines(ad->text);
+	gtk_widget_destroy(ad->display_w);
+	gtk_widget_destroy(ad->disp_buf_w);
+	gtk_widget_destroy(ad->background_w);
+	g_free(ad);
+}
+
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
+					gchar *globcfgpath, gpointer data)
+{
+	AppData *ad = data;
+	property_save(privcfgpath, ad);
+        return FALSE;
+}
+
+static AppData *create_new_app(GtkWidget *applet)
+{
+	AppData *ad;
+	ad = g_new0(AppData, 1);
+
+	ad->applet = applet;
+
+	init_app_display(ad);
+        gtk_signal_connect(GTK_OBJECT(ad->applet), "destroy",
+                GTK_SIGNAL_FUNC(destroy_applet), ad);
+
+	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
+
+	add_info_line(ad, "Slashdot.org Applet\n", NULL, 0, TRUE, 1, 0);
+	add_info_line(ad, "Loading headlines........\n", NULL, 0, FALSE, 1, 20);
+
+
+/* applet signals */
+        gtk_signal_connect(GTK_OBJECT(applet),"save_session",
+                                GTK_SIGNAL_FUNC(applet_save_session),
+                                ad);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "properties",
+                                              GNOME_STOCK_MENU_PROP,
+                                              _("Properties..."),
+                                              property_show,
+                                              ad);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "about",
+                                              GNOME_STOCK_MENU_ABOUT,
+                                              _("About..."),
+                                              about_cb, NULL);
+
+	ad->headline_timeout_id = gtk_timeout_add(1800000, get_current_headlines, ad);
+
+        gtk_widget_show(ad->applet);
+
+	/* this is so the app is displayed first before calling the download command */
+	ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
+
+	return ad;
+}
+
+static void applet_start_new_applet(const gchar *param, gpointer data)
+{
+	GtkWidget *applet;
+
+	applet = applet_widget_new_with_param(param);
+		if (!applet)
+			g_error("Can't create applet!\n");
+
+	create_new_app(applet);
+}
+
+int main (int argc, char *argv[])
+{
+	GtkWidget *applet;
+
+	/* Initialize the i18n stuff */
+	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
+
+	applet_widget_init("scroll_applet", NULL, argc, argv, 0, NULL,
+			argv[0], TRUE, TRUE, applet_start_new_applet, NULL);
+
+	applet = applet_widget_new();
+	if (!applet)
+		g_error("Can't create applet!\n");
+
+	create_new_app(applet);
+
+	applet_widget_gtk_main();
+	return 0;
 }
