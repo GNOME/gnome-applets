@@ -1117,6 +1117,7 @@ static GtkWidget *
 create_mail_widgets (MailCheck *mc)
 {
 	const char *fname;
+	GtkWidget *alignment;
 
 	fname = mail_animation_filename (mc);
 
@@ -1125,6 +1126,10 @@ create_mail_widgets (MailCheck *mc)
                               gtk_widget_get_events(mc->ebox) |
                               GDK_BUTTON_PRESS_MASK);
 	gtk_widget_show (mc->ebox);
+	
+	alignment = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
+	gtk_container_add (GTK_CONTAINER (mc->ebox), alignment);
+	gtk_widget_show (alignment);
 	
 	/*
 	 * This is so that the properties dialog is destroyed if the
@@ -1136,7 +1141,7 @@ create_mail_widgets (MailCheck *mc)
 			    mc);
 
 	mc->bin = gtk_hbox_new (0, 0);
-	gtk_container_add(GTK_CONTAINER(mc->ebox), mc->bin);
+	gtk_container_add(GTK_CONTAINER(alignment), mc->bin);
 
 	gtk_widget_show (mc->bin);
 	
@@ -2306,7 +2311,7 @@ applet_change_pixel_size(PanelApplet * w, gint size, gpointer data)
 	mc->size = size;
 	fname = mail_animation_filename (mc);
 
-	gtk_widget_set_size_request (GTK_WIDGET(mc->da), size, size);
+	gtk_widget_set_size_request (GTK_WIDGET(mc->da), mc->size, mc->size);
 	
 	if (!fname)
 		return;
@@ -2427,6 +2432,7 @@ mailcheck_applet_fill (PanelApplet *applet)
 	mc->mail_file = NULL;	
 
 	panel_applet_add_preferences (applet, "/schemas/apps/mailcheck_applet/prefs", NULL);
+	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	applet_load_prefs(mc);
 	if (mc->mail_file == NULL || strlen(mc->mail_file)==0) {
 		const char *mail_file = g_getenv ("MAIL");
