@@ -15,6 +15,9 @@ led.c \
 led.h \
 cdrom-$(CDROM_HOST).c 
 
+cdplayer_applet2_DEPENDS = \
+cdrom-$(CDROM_HOST).c 
+
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
 $(GCONF_APPLETS_LIBS) \
