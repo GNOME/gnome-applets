@@ -239,7 +239,6 @@ gkb_prop_map_get_languages (GkbPropertyBoxInfo *pbi)
   list = g_list_prepend (list, _("Hungarian"));
   list = g_list_prepend (list, _("Norwegian"));
   list = g_list_prepend (list, _("Polish"));
-  list = g_list_prepend (list, _("Portuglese"));
   list = g_list_prepend (list, _("Portuguese"));
   list = g_list_prepend (list, _("Russian"));
   list = g_list_prepend (list, _("Slovak"));
