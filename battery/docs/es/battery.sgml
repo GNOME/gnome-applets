@@ -22,7 +22,7 @@
     <para>
      Para que el <application>Monitor de la Carga de la Batería</application>
      funcione adecuadamente, su ordenador debe estar configurado para
-     admitir la <systemitem>Gestión Avanzada de Energía</systemitem>.
+     admitir la <sytemitem>Gestión Avanzada de Energía</systemitem>.
     </para>
    </note>
 
@@ -42,7 +42,7 @@
      El <application>Monitor de la Carga de la Batería</application> sencillamente
      se localiza en su panel siguiendo el estado de la batería de su ordenador. Pulsando
      el botón <mousebutton>izquierdo</mousebutton> sobre el aplique podrá conmutar entre
-     las vistas lectura y gráfica, tal y como se explican en las secciones respectivas
+     las vistas lectura y gráfica, tal y como se explica en las secciones respectivas
      <link linkend="Battery-Charge-Monitor-Readout-sec">Vista Lectura</link> 
      y <link linkend="Battery-Charge-Monitor-Graph-sec">Vista Gráfica</link> .
 
@@ -64,8 +64,8 @@
 	<para>
 	 La representación iconográfica de la batería en la parte izquierda del aplique, 
 	 muestra cuánto de llena está actualmente su batería. La superficie coloreada de
-	 la batería representa la cantidad de carga restante en su batería, siendo que 
-	 el límite superior representa una carga del 100%.
+	 la batería representa la cantidad de carga restante en su batería,  
+	 el límite superior representa la carga del 100&percent; .
 	</para>
 	
 	<para>
@@ -106,7 +106,7 @@
        <term><emphasis>Porcentaje Restante</emphasis></term>
        <listitem>
 	<para>
-	 El porcentaje leído en la parte superior del aplique representa cual es la 
+	 El porcentaje que se lee en la parte superior del aplique representa cual es la 
 	 carga actual de la batería de su ordenador.
         </para>
        </listitem>
@@ -119,11 +119,16 @@
        El tiempo restante de batería aparece en la esquina inferior derecha del aplique.
        Este tiempo está indicado en horas y minutos.
 
+
 <!-- 
+            La lectura del tiempo restante en la parte inferior derecha del aplique
+        muestra cuanto tiempo le queda a la batería. El tiempo se representa en 
+        horas y minutos.
                The time remaining readout on the bottom right of the applet
         shows how much running time the battery has left. The time is
         shown in hours and minutes.
--->
+//--!>
+
        </para>
        </listitem>
       </varlistentry>
@@ -148,7 +153,7 @@
      <figure>
       <title>Monitor de Carga de Batería en el Modo Gráfico </title>
        <screenshot>
-        <screeninfo> Monitor de Carga de Batería en el Modo Gráfico </screeninfo>
+        <screeninfow> Monitor de Carga de Batería en el Modo Gráfico </screeninfo>
         <graphic format="png"
 		 fileref="battery-applet-graph"
 		 srccredit="James Cope">
@@ -169,7 +174,7 @@
         <guimenuitem>Propiedades...</guimenuitem> &mdash; Este menú abre el diálogo
         <interface>Propiedades</interface>  (véase
         <link linkend="Battery-Charge-Monitor-properties">Propiedades</link>) 
-	lo cual le permite personalizar la apariencia y comportamiento de este aplique.
+	 le permite personalizar la apariencia y comportamiento de este aplique.
        </para>
       </listitem>
      </itemizedlist>
@@ -178,10 +183,10 @@
 
    <sect2 id="Battery-Charge-Monitor-properties">
     <title>Propiedades</title>
-    <para>
+    <para>	
      Puede configurar el aplique <application>Monitor de la Carga de la Batería</application>
      pulsando sobre el botón derecho del aplique y eligiendo el elemento de menú <guimenuitem>Propiedades...
-     </guimenuitem>. Le abrirá el diálogo <interface>Propiedades</interface>, con cuatro grupos de
+     </guimenuitem>. Se abrirá el diálogo <interface>Propiedades</interface>, con cuatro grupos de
      elementos configurables dispuestos en las siguientes páginas:
 
    
@@ -197,6 +202,10 @@
 
     <sect3 id="Battery-Charge-Monitor-properties-general">
      <title>Propiedades &mdash; Generales</title>
+<???
+???
+??
+ 
      <figure id="Battery-Charge-Monitor-properties-fig1">
       <title>Propiedades del Diálogo &mdash; General</title>
       <screenshot>
@@ -213,10 +222,10 @@
        <para>
         <guilabel>Seguir el Tamaño del Panel</guilabel> &mdash; le indica al
 	<application>Monitor de la Carga del Batería</application> que cambie su tamaño
-	cuando lo haga el panel. Está seleccionado por omisión.  Para que los elementos
-	 <guilabel>Algo de Aplique </guilabel> y
-	<guilabel>Ancho de Aplique </guilabel> tengan efecto, debe estar sin 
-	seleccionar.
+	cuando lo haga el panel. Por omisión aparece seleccionado. Para que los elementos
+	 <guilabel>Alto de Aplique </guilabel> y
+	<guilabel>Ancho de Aplique </guilabel> tengan efecto, la opción anterior
+        no debe estar seleccionada. 
        </para>
       </listitem>
 
@@ -225,15 +234,15 @@
 	<guilabel>Alto de Aplique  &amp; Ancho de Aplique</guilabel> &mdash;
 	Estos dos botones "spin" le permiten indicar exactamente las dimensiones del
 	<application>Monitor de la Carga de la Batería</application> en pixels. Para que
-	estos tengan efecto <guilabel>Seguir el Tamaño del Panel</guilabel> no debe estar 
-	seleccionado. Los valores por omisión son ambos 48.
+	éstos tengan efecto <guilabel>Seguir el Tamaño del Panel</guilabel> no debe estar 
+	seleccionado. Los valores por omisión son, para ambos, 48.
 
        </para>
 
        <note>
 	<para>
 	 Fijando estos valores muy pequeños (por debajo de 28 pixels) hará que
-	 no se muestre el icono batería debido a la falta de espacio.      
+	 no se muestre el icono batería por la falta de espacio.      
         </para>
        </note>
       </listitem>
@@ -254,7 +263,6 @@
         en ese caso considera que le queda poca energía a la batería. Esta información se 
 	utiliza, por ejemplo, para decidir cuando se ha de cambiar el color del icono batería de 
 	la Vista Lectura. El valor por omisión es 25.
-       </para>
 
       </listitem>
 
@@ -275,7 +283,7 @@
      <title>Propiedades &mdash; Lectura </title>
      
      <para>
-      Los elementos de esta pestaña solo actúan sobre el <application>Monitor de Carga de
+      Los elementos de esta pestaña sólo actúan sobre el <application>Monitor de Carga de
       la Batería </application> cuando está en modo 
       <link linkend="Battery-Charge-Monitor-Readout-sec"> Vista Lectura</link>.
      </para>
@@ -331,15 +339,15 @@
     <sect3 id="Battery-Charge-Monitor-properties-graph">
      <title>Propiedades &mdash; Gráfica</title>
      <para>
-      Los elementos de esta pestaña sólo afecta al <application>Monitor de la Carga
+      Los elementos de esta pestaña sólo afectan al <application>Monitor de la Carga
       de la Batería</application> cuando está en modo <link linkend="Battery-Charge-Monitor-Graph-sec">
       Vista Gráfica</link>.
 
        </para>
 
-     <para> Todos los  rectángulos coloreados en esta pestaña pueden ser pulsados con el 
-      botón <mousebutton>izquierdo</mousebutton> de esa forma aparecerá la rueda de selección 
-      de color de GNOME. Esto le permite seleccionar los colores que prefiera además de los
+     <para> Todos los  rectángulos coloreados en esta pestaña se pueden pulsador con el 
+      botón <mousebutton>izquierdo</mousebutton> así aparecerá la rueda de selección 
+      de color de GNOME. De esa forma podrá seleccionar los colores que prefiera además de los
       predeterminados.
 
      </para>
@@ -406,7 +414,7 @@
      <figure id="Battery-Charge-Monitor-properties-fig4">
       <title>Diálogo Propiedades  &mdash; Mensajes de la Carga de la Batería</title>
       <screenshot>
-       <screeninfo> Diálogo Propiedades  &mdash; Mensajes de la Carga de la Batería</screeninfo>
+       <screeninfo>Diálogo Propiedades &mdash; Mensajes de la Carga de la Batería</screeninfo>
   
        <graphic format="png"
 		fileref="battery-applet-properties-messages" srccredit="James
@@ -418,9 +426,9 @@
       <listitem>
        <para>
 	<guilabel>Alerta si la carga de la batería cae </guilabel>
-	&mdash; indica el porcentaje de carga en el cual el
+	&mdash; indica el porcentaje de carga para el cual el
 	<application>Monitor de Carga de la Batería </application> mostrará una
-        caja de diálogo cuando la batería está baja. Esta alerta se mostrará únicamente
+        caja de diálogo cuando la batería estea baja. Esta alerta se mostrará únicamente
         si se selecciona <guilabel>Habilitar Alterna de Batería Baja </guilabel>. 
 	El valor por omisión es 5&percnt;. 
 
@@ -431,7 +439,7 @@
        <para>
 	<guilabel>Habilitar Alerta de Batería Baja </guilabel> &mdash;
 	indica si el <application>Monitor de Carga de la Batería </application>
-        debería mostrar una  caja de diálogo  que la carga de la batería ha caído por 
+        debería mostrar una caja de diálogo cuando la carga de la batería ha caído por 
         debajo del porcentaje de carga indicado en el elemento  <guilabel>Alerta si 
 	la carga de la batería cae</guilabel>. El valor por omisión es seleccionado.
 
@@ -442,9 +450,9 @@
       <listitem>
        <para>
 	<guilabel>Habilitar la Notificación de Carga-Completa </guilabel> &mdash;
-	indica si el  <application>Monitor de la Carga de la Batería </application> 
+	indica si el <application>Monitor de la Carga de la Batería </application> 
 	mostrará una caja de  diálogo cuando la batería ha alcanzado el porcentaje
-        de 100&percnt; de carga. El valor por defecto es no seleccionado.
+        del 100&percnt; de carga. El valor por defecto es no seleccionado.
 	
        </para>
       </listitem>
@@ -465,11 +473,11 @@
    </sect2>
   
    <sect2 id="Battery-Charge-Monitor-bugs">
-    <title> Errores y Limitaciones Conocidos </title>
+    <title> Errores y Limitaciones Conocidas </title>
     <para>
      Un problema es si arranca <application>Monitor de la Carga de la Batería</application>
      en un ordenador que no tiene soporte de Gestión de Energía Avanzado.
-     Esto hará que la caja  diálogo <guilabel>Alerta de Batería Baja</guilabel> 
+     De esa forma la caja  diálogo <guilabel>Alerta de Batería Baja</guilabel> 
      mostrada esté equivocada.
 
 <!-- Traducción errónea de:
@@ -478,90 +486,14 @@
      Management support. This causes the <guilabel>Low Battery
      Warning</guilabel> dialogue box to be displayed which may be
      mis-leading.
--->
+--->
     </para>
    </sect2>
 
-   <sect2 id="Battery-Charge-Monitor-authors">
-    <title>Autores</title>
-       <para>
-       Nat Friedman <email>nat@nat.org</email> es el autor de este aplique. 
-       Por favor envíe todos los comentarios, sugerencias, e informes de errores a la 
-       <ulink url="http://bugzilla.gnome.org" type="http"> Base de Datos de Seguimiento de
-       Errores de Gnome </ulink>. Encontrará información sobre la forma de enviar informes 
-       de errores en linea en <ulink      url="http://bugs.gnome.org/Reporting.html" type="http">
-       http://bugs.gnome.org/Reporting.html</ulink>.  Si esta usando Gnome 1.1 o posterior,
-       puede usar también el comando <command>bug-buddy</command> para enviar informes de errores.
-       disponible en el submenú <guisubmenu>Utilidades</guisubmenu> de <guimenu>Menú
-       Principal</guimenu>.
-       </para>
+&authors;
+&license;
+&license-es;
 
-       <para>
-        James Cope <email>jcope@bcs.org.uk</email> es el autor de este manual. 
-	Por favor envíe todos los comentarios y sugerencias acerca de este manual 
-	al proyecto de documentación de Gnome en  <email>docs@gnome.org</email>.
-	También puede incluir sus comentarios en directo usando
-	<ulink type="http" url="http://developer.gnome.org/projects/gdp/doctable/">la tabla de estado 
-	de la documentación GNOME</ulink>.  
-	</para>
-
-	<para>José Antonio Salgueiro (<email>joseantsa@retemail.es</email>)
-	es el traductor de este manual al Castellano. 
-	Por favor envíe todos los comentarios y sugerencias acerca de este traducción 
-	al proyecto de traducción de gnome-es en  <email>traductores@es.gnome.org</email>.
-	</para>
-
-<para>Puede encontrar mas documentación de Gnome en Castellano en las páginas
- del grupo de traducción al Castellano
-<ulink type="http" url="http://www.croftj.net/~barreiro/spanish/gnome-es">
-gnome-es</ulink>,
-o en las de
-<ulink type="http" url="http://www.es.gnome.org">Gnome España</ulink>.
-</para>
-
-
-   </sect2>
-
-  <sect2 id="license">
-   <title>Licencia</title>
-
-<para>
-    Este programa es software libre; Vd puede redistribuirlo y/o 
-    modificarlo bajo las condiciones de la  <ulink type="help"
-    url="gnome-help:gpl"><citetitle>Licencia Pública General 
-    GNU</citetitle></ulink>  tal y como publicó la Fundación del Software Libre; 
-    en su versión 2 de la licencia, o (según su elección) cualquier otra
-    versión posterior.
-
-   </para>
-   <para>
-    Este programa se distribuye con el ánimo que sea útil pero,
-    SIN GARANTÍA DE NINGÚN TIPO; incluso sin la garantía implícita
-    de USO MERCANTIL o ADECUACIÓN PARA UN PROPÓSITO DETERMINADO. Véase
-    la   <ulink type="help" url="gnome-help:gpl"><citetitle>Licencia
-    Pública General GNU</citetitle></ulink> para más detalles.
-   </para>
-   <para>
-    Se incluye una copia de la <ulink type="help"
-    url="gnome-help:gpl"><citetitle>Licencia
-    Pública General GNU</citetitle></ulink> con la documentación de GNOME.  Puede también
-    obtener una copia de la  <ulink type="help" url="gnome-help:gpl"><citetitle>Licencia
-    Pública General GNU</citetitle></ulink> de la Fundación del Software Libre
-    visitando  <ulink type="http" url="http://www.fsf.org/">su sitio Web </ulink> o escribiendo a 
-    <address>
-     Free Software Foundation, Inc.
-     <street>59 Temple Place</street> - Suite 330
-     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
-     <country>Estados Unidos de América</country>
-    </address>
-   </para>
-
-
-
-
-
-
-  </sect2>
 </sect1>
 
 
