@@ -186,6 +186,7 @@ struct _WeatherInfo {
     gchar *iwin_buffer;
     gchar *met_buffer;
     gchar *radar_buffer;
+    GdkPixbufLoader *radar_loader;
     GdkPixmap *radar;
     GnomeVFSAsyncHandle *metar_handle;
     GnomeVFSAsyncHandle *iwin_handle;

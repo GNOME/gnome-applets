@@ -1,3 +1,31 @@
+2002-02-28  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-applet.c: remove dumb error dialog when an
+	update is in progress. Fixes bug #72843
+
+	* weather.c: silently return if an update is in progress.
+	Fix big memory leaks. Also clean up some indenting mess.
+	Fix radar map retrieving. Test out new url for radars
+	that actually displays recent maps - doesn't work
+	for most cities though - see bug #53871
+
+	* gweather-pref.c: fix memleaks. Hide the dialog when
+	closed
+
+	* gweather-dialog.c: don't hardcode font
+
+2002-02-26  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-applet.c: use boxes instead of GtkFixed 
+	so that labels don't get cut off and code is much
+	simplified. Fixes bug #52369
+
+	* weather.c: dont' spew error if info is NULL since
+	we now check on startup
+
+	* gweather-pref.c: #ifdef out the update on pref dialog
+	closing because I think it is annoying
+
 2002-02-27  Jamin P. Gray <jgray@writeme.com> 
 
 	* Locations: Fixed some alphabetical disorder with the US states 

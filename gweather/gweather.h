@@ -33,7 +33,7 @@ struct _GWeatherPrefs {
     gboolean radar_enabled;
     gchar *proxy_url;
     gchar *proxy_user;
-    gchar *proxy_passwd;
+    gchar *proxy_passwd;    
     gboolean use_proxy;
 };
 
@@ -42,8 +42,7 @@ struct _GWeatherApplet
 	PanelApplet *applet;
 	WeatherInfo *gweather_info;
 	
-	GtkWidget *frame;
-	GtkWidget *fixed;
+	GtkWidget *box;	
 	GtkWidget *label;
 	GtkWidget *pixmap;
 	GtkTooltips *tooltips;

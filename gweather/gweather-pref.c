@@ -215,12 +215,16 @@ static void load_locations (GWeatherApplet *gw_applet)
     gchar *pp[1], *path;
     gint nregions, iregions;
     gchar **regions;
+    gchar *file;
     
     model = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
 
-    path = g_strdup_printf("=%s=/", gnome_datadir_file("gweather/Locations"));
+    file = gnome_datadir_file("gweather/Locations");
+    g_return_if_fail (file);
+    path = g_strdup_printf("=%s=/", file);
     gnome_config_push_prefix(path);
     g_free(path);
+    g_free (file);
     
     cell_renderer = gtk_cell_renderer_text_new ();
     column = gtk_tree_view_column_new_with_attributes ("not used", cell_renderer,
@@ -437,11 +441,11 @@ static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-    gtk_widget_destroy (GTK_WIDGET (dialog));
-    gw_applet->pref = NULL;
-
+    gtk_widget_hide (GTK_WIDGET (dialog));
+#if 0
     /* refresh the applet incase the location has changed */
     gweather_update(gw_applet);
+#endif
 }
 
 static void gweather_pref_create (GWeatherApplet *gw_applet)
