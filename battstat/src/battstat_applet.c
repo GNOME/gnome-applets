@@ -285,6 +285,12 @@ load_font (gpointer data)
   }
 }
 
+void
+draw_meter ( gpointer data ) 
+{
+
+}
+
 gint
 pixmap_timeout( gpointer data )
 {
@@ -835,7 +841,6 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
   batterypresent = TRUE;
 #endif
 
-
   switch(battstat->orienttype) {
   case ORIENT_UP:
     if(battstat->panelsize<40)
@@ -869,7 +874,6 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
     gtk_widget_show (battstat->percent);
     gtk_widget_hide (battstat->statuspercent);
     gtk_widget_hide (battstat->frameybattery);
-    /*    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_orient_horizont), TRUE);*/
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
