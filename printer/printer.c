@@ -129,12 +129,10 @@ destroy_applet(GtkWidget *widget, gpointer data)
 static gint
 applet_session_save(GtkWidget *w, const char *cfgpath, const char *globcfgpath)
 {
-	char *query;
-
-	query = g_copy_strings (cfgpath, "print_command", NULL);
-	gnome_config_set_string (query, print_command ? print_command : "");
-	g_free (query);
-
+	gnome_config_push_prefix (cfgpath);
+	gnome_config_set_string ("print_command", print_command ? print_command : "");
+	gnome_config_set_string ("title", print_title ? print_title : "");
+	gnome_config_pop_prefix ();
 	gnome_config_sync ();
 	gnome_config_drop_all ();
 
@@ -256,6 +254,7 @@ main(int argc, char **argv)
 		gnome_config_push_prefix (APPLET_WIDGET(applet)->cfgpath);
 		print_command = gnome_config_get_string ("print_command=lpr");
 		print_title   = gnome_config_get_string ("title=Print");
+		gnome_config_pop_prefix ();
 	} else {
 		print_title   = g_strdup ("Print");
 		print_command = g_strdup ("lpr");
