@@ -135,7 +135,7 @@ load_graph_update (LoadGraph *g)
 {
     guint i, j;
 
-    g->get_data (g->draw_height, g->data [0]);
+    g->get_data (g->draw_height, g->data [0], g);
 
     for (i=0; i < g->draw_width-1; i++)
 	for (j=0; j < g->n; j++)
@@ -318,9 +318,6 @@ applet_save_session_cb (GtkWidget *w, const char *privcfgpath,
     gchar name [BUFSIZ], temp [BUFSIZ];
     guint i;
 
-    fprintf (stderr, "save_session_cb: |%s| - |%s|\n",
-	     privcfgpath, globcfgpath);
-
     gnome_config_push_prefix (privcfgpath);
 
     for (i=0; i < g->prop_data->n; i++) {
@@ -338,6 +335,9 @@ applet_save_session_cb (GtkWidget *w, const char *privcfgpath,
 
     sprintf (name, "%s/size", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->adj_data [1]);
+
+    sprintf (name, "%s/maximum", g->prop_data->name);
+    gnome_config_set_int (name, g->prop_data->adj_data [2]);
 
     sprintf (name, "%s/use_default", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->use_default);
@@ -366,8 +366,6 @@ applet_load_config (LoadGraph *g)
     gchar name [BUFSIZ], *temp;
     guint i;
 
-    fprintf (stderr, "Loading from |%s|\n", g->applet->privcfgpath);
-
     gnome_config_push_prefix (g->applet->privcfgpath);
 
     if (!g->prop_data->colors)
@@ -391,6 +389,10 @@ applet_load_config (LoadGraph *g)
     sprintf (name, "%s/size=%ld",
 	     g->prop_data->name, g->prop_data->adj_data [1]);
     g->prop_data->adj_data [1] = gnome_config_get_int (name);
+
+    sprintf (name, "%s/maximum=%ld",
+	     g->prop_data->name, g->prop_data->adj_data [2]);
+    g->prop_data->adj_data [2] = gnome_config_get_int (name);
 
     sprintf (name, "%s/use_default=1", g->prop_data->name);
     g->prop_data->use_default = gnome_config_get_int (name);
@@ -433,6 +435,19 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 
     g->local_prop_data->local_property_object_list = g_list_append
 	(NULL, g->local_prop_data->property_object);
+
+    if (g->global_prop_data == &multiload_properties.cpuload)
+	g->prop_data->type = PROP_CPULOAD;
+    else if (g->global_prop_data == &multiload_properties.memload)
+	g->prop_data->type = PROP_MEMLOAD;
+    else if (g->global_prop_data == &multiload_properties.swapload)
+	g->prop_data->type = PROP_SWAPLOAD;
+    else if (g->global_prop_data == &multiload_properties.netload)
+	g->prop_data->type = PROP_NETLOAD;
+    else if (g->global_prop_data == &multiload_properties.loadavg)
+	g->prop_data->type = PROP_LOADAVG;
+    else
+	g_assert_not_reached();
 
     g->speed  = speed;
     g->size   = size;
@@ -514,11 +529,12 @@ load_graph_properties_init (GnomePropertyObject *object)
     LoadGraphProperties *prop_data = object->prop_data;
     /* guint i; */
 
-    static const gchar *adj_data_texts [2] = {
-	N_("Speed:"), N_("Size:")
+    static const gchar *adj_data_texts [3] = {
+	N_("Speed:"), N_("Size:"), N_("Maximum:")
     };
 
-    static glong adj_data_descr [2*8] = {
+    static glong adj_data_descr [3*8] = {
+	1, 0, 0, 1, INT_MAX, 1, 256, 256,
 	1, 0, 0, 1, INT_MAX, 1, 256, 256,
 	1, 0, 0, 1, INT_MAX, 1, 256, 256
     };
@@ -533,9 +549,14 @@ load_graph_properties_init (GnomePropertyObject *object)
 
     gtk_container_add (GTK_CONTAINER (vb), frame);
 
-    frame = gnome_property_entry_adjustments
-	(object, NULL, 2, 2, 2, NULL, adj_data_texts,
-	 adj_data_descr, prop_data->adj_data);
+    if (object->prop_data == &multiload_properties.loadavg)
+	frame = gnome_property_entry_adjustments
+	    (object, NULL, 3, 3, 2, NULL, adj_data_texts,
+	     adj_data_descr, prop_data->adj_data);
+    else
+	frame = gnome_property_entry_adjustments
+	    (object, NULL, 2, 2, 2, NULL, adj_data_texts,
+	     adj_data_descr, prop_data->adj_data);
 
     gtk_container_add (GTK_CONTAINER (vb), frame);
 
@@ -570,6 +591,10 @@ load_graph_properties_load (GnomePropertyObject *object)
     sprintf (name, "multiload/%s/size=%ld",
 	     prop_data->name, prop_data->adj_data [1]);
     prop_data->adj_data [1] = gnome_config_get_int (name);
+
+    sprintf (name, "multiload/%s/maximum=%ld",
+	     prop_data->name, prop_data->adj_data [2]);
+    prop_data->adj_data [2] = gnome_config_get_int (name);
 }
 
 static void
@@ -594,6 +619,9 @@ load_graph_properties_save (GnomePropertyObject *object)
 
     sprintf (name, "multiload/%s/size", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [1]);
+
+    sprintf (name, "multiload/%s/maximum", prop_data->name);
+    gnome_config_set_int (name, prop_data->adj_data [2]);
 }
 
 static void
@@ -651,17 +679,13 @@ load_graph_properties_update (GnomePropertyObject *object)
 	    load_graph_start (g);
 	}
 
-	if (g->size != g->prop_data_ptr->adj_data [1]) {
-	    /* User changed size. */
+	load_graph_unalloc (g);
+	load_graph_alloc (g);
 
-	    load_graph_unalloc (g);
-	    load_graph_alloc (g);
-
-	    if (g->orient)
-		gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
-	    else
-		gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
-	}
+	if (g->orient)
+	    gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	else
+	    gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
 
 	load_graph_draw (g);
     }
@@ -690,11 +714,12 @@ load_graph_local_properties_init (GnomePropertyObject *object)
     LoadGraphProperties *prop_data = object->prop_data;
     RadioButtonCbData *cb_data;
 
-    static const gchar *adj_data_texts [2] = {
-	N_("Speed:"), N_("Size:")
+    static const gchar *adj_data_texts [3] = {
+	N_("Speed:"), N_("Size:"), N_("Maximum:")
     };
 
-    static glong adj_data_descr [2*8] = {
+    static glong adj_data_descr [3*8] = {
+	1, 0, 0, 1, INT_MAX, 1, 256, 256,
 	1, 0, 0, 1, INT_MAX, 1, 256, 256,
 	1, 0, 0, 1, INT_MAX, 1, 256, 256
     };
@@ -711,9 +736,14 @@ load_graph_local_properties_init (GnomePropertyObject *object)
 
     gtk_container_add (GTK_CONTAINER (vb), color_frame);
 
-    data_frame = gnome_property_entry_adjustments
-	(object, NULL, 2, 2, 2, NULL, adj_data_texts,
-	 adj_data_descr, prop_data->adj_data);
+    if (prop_data->type == PROP_LOADAVG)
+	data_frame = gnome_property_entry_adjustments
+	    (object, NULL, 3, 3, 2, NULL, adj_data_texts,
+	     adj_data_descr, prop_data->adj_data);
+    else
+	data_frame = gnome_property_entry_adjustments
+	    (object, NULL, 2, 2, 2, NULL, adj_data_texts,
+	     adj_data_descr, prop_data->adj_data);
 
     gtk_widget_set_sensitive (data_frame, !prop_data->use_default);
 
@@ -806,17 +836,13 @@ load_graph_local_properties_update (GnomePropertyObject *object)
 	    load_graph_start (g);
 	}
 
-	if (g->size != g->prop_data_ptr->adj_data [1]) {
-	    /* User changed size. */
+	load_graph_unalloc (g);
+	load_graph_alloc (g);
 
-	    load_graph_unalloc (g);
-	    load_graph_alloc (g);
-
-	    if (g->orient)
-		gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
-	    else
-		gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
-	}
+	if (g->orient)
+	    gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	else
+	    gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
 
 	load_graph_draw (g);
     }

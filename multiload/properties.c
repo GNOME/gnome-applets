@@ -21,6 +21,8 @@ multiload_properties_cb (AppletWidget *widget, gpointer data)
 	multiload_show_properties (PROP_SWAPLOAD);
     else if (g->global_prop_data == &multiload_properties.netload)
 	multiload_show_properties (PROP_NETLOAD);
+    else if (g->global_prop_data == &multiload_properties.loadavg)
+	multiload_show_properties (PROP_LOADAVG);
     else
 	g_assert_not_reached();
     return;

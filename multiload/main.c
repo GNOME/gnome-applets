@@ -39,6 +39,10 @@ static const gchar *net_texts [4] = {
     N_("SLIP"), N_("PPP"), N_("ETH"), N_("Other"),
 };
 
+static const gchar *loadavg_texts [2] = {
+    N_("Used"), N_("Free")
+};
+
 static const gchar *cpu_color_defs [4] = {
     "#ffffffff4fff", "#dfffdfffdfff",
     "#afffafffafff", "#000000000000"
@@ -58,6 +62,9 @@ static const gchar *net_color_defs [4] = {
     "#00008fff0000", "#ffffffff4fff"
 };
 
+static const gchar *loadavg_color_defs [2] = {
+    "#cfff5fff5fff", "#00008fff0000"
+};
 
 #define ADD_PROPERTIES(x,y) multiload_property_object_list = g_list_append (multiload_property_object_list, gnome_property_object_new (& ## x ## Property_Descriptor, &multiload_properties. ## y ##))
         
@@ -70,6 +77,8 @@ make_new_applet (const gchar *goad_id)
 	return make_swapload_applet (goad_id);
     else if (strstr (goad_id, "multiload_netload_applet"))
 	return make_netload_applet (goad_id);
+    else if (strstr (goad_id, "multiload_loadavg_applet"))
+	return make_loadavg_applet (goad_id);
     else
 	return make_cpuload_applet (goad_id);
 }
@@ -164,12 +173,28 @@ main (int argc, char **argv)
     multiload_properties.netload.adj_data [0] = 500;
     multiload_properties.netload.adj_data [1] = 40;
 
+    multiload_properties.loadavg.n = 2;
+    multiload_properties.loadavg.name = "loadavg";
+#ifdef ENABLE_NLS
+    {
+        int i;
+        for (i=0;i<2;i++) swap_texts[i]=_(swap_texts[i]);
+    }
+#endif
+    multiload_properties.loadavg.texts = loadavg_texts;
+    multiload_properties.loadavg.color_defs = loadavg_color_defs;
+    multiload_properties.loadavg.adj_data [0] = 500;
+    multiload_properties.loadavg.adj_data [1] = 40;
+    multiload_properties.loadavg.adj_data [2] = 10;
+
+
     /* Add property objects. */
 
     ADD_PROPERTIES (LoadGraph, cpuload);
     ADD_PROPERTIES (LoadGraph, memload);
     ADD_PROPERTIES (LoadGraph, swapload);
     ADD_PROPERTIES (LoadGraph, netload);
+    ADD_PROPERTIES (LoadGraph, loadavg);
 
     /* This looks really ugly, but libgnomeui is already freezed so I can't
      * add new function there ... */
@@ -188,6 +213,10 @@ main (int argc, char **argv)
 
     c = g_list_nth (multiload_property_object_list, 3);
     ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Net Load"));
+    gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
+
+    c = g_list_nth (multiload_property_object_list, 4);
+    ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Load Average"));
     gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
 
     /* Read properties. */

@@ -5,7 +5,7 @@
 
 typedef struct _LoadGraph LoadGraph;
 
-typedef void (*LoadGraphDataFunc) (int, int []);
+typedef void (*LoadGraphDataFunc) (int, int [], LoadGraph *);
 
 struct _LoadGraph {
     AppletWidget *applet;

@@ -5,9 +5,10 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#include <linux-proc.h>
 #include <local-properties.h>
 #include <load-graph.h>
+
+#include <linux-proc.h>
 
 BEGIN_GNOME_DECLS
 
@@ -26,6 +27,10 @@ make_swapload_applet (const gchar *goad_id);
 /* start a new instance of the netload applet */
 GtkWidget *
 make_netload_applet (const gchar *goad_id);
+
+/* start a new instance of the loadavg applet */
+GtkWidget *
+make_loadavg_applet (const gchar *goad_id);
 
 /* show default properties dialog. */
 void

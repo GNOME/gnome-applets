@@ -12,6 +12,7 @@
 #include <glibtop/cpu.h>
 #include <glibtop/mem.h>
 #include <glibtop/swap.h>
+#include <glibtop/loadavg.h>
 
 #include "linux-proc.h"
 
@@ -30,8 +31,11 @@ static unsigned needed_mem_flags =
 
 static unsigned needed_swap_flags = 0;
 
+static unsigned needed_loadavg_flags =
+(1 << GLIBTOP_LOADAVG_LOADAVG);
+
 void
-GetLoad (int Maximum, int data [4])
+GetLoad (int Maximum, int data [4], LoadGraph *g)
 {
     static int init = 0;
     int usr, nice, sys, free;
@@ -79,7 +83,7 @@ GetLoad (int Maximum, int data [4])
 }
 
 void
-GetMemory (int Maximum, int data [4])
+GetMemory (int Maximum, int data [4], LoadGraph *g)
 {
     int user, shared, buffer, free;
 
@@ -103,7 +107,7 @@ GetMemory (int Maximum, int data [4])
 }
 
 void
-GetSwap (int Maximum, int data [2])
+GetSwap (int Maximum, int data [2], LoadGraph *g)
 {
     int used, free;
 
@@ -128,7 +132,32 @@ GetSwap (int Maximum, int data [2])
 }
 
 void
-GetNet (int Maximum, int data [4])
+GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
+{
+    float used, free;
+    float max_loadavg = 10.0;
+
+    glibtop_loadavg loadavg;
+	
+    glibtop_get_loadavg (&loadavg);
+	
+    assert ((loadavg.flags & needed_loadavg_flags) == needed_loadavg_flags);
+
+    if (g->prop_data_ptr->adj_data [2])
+	max_loadavg = (float) g->prop_data_ptr->adj_data [2];
+
+    if (loadavg.loadavg [0] > max_loadavg)
+	loadavg.loadavg [0] = max_loadavg;
+
+    used    = (loadavg.loadavg [0]) / max_loadavg;
+    free    = (max_loadavg - loadavg.loadavg [0]) / max_loadavg;
+
+    data [0] = rint ((float) Maximum * used);
+    data [1] = rint ((float) Maximum * free);
+}
+
+void
+GetNet (int Maximum, int data [4], LoadGraph *g)
 {
 #define SLIP_COUNT	0
 #define PPP_COUNT	1

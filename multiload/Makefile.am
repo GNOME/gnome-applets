@@ -8,6 +8,7 @@ multiload_applet_SOURCES = cpuload.c		\
 			   memload.c		\
 			   swapload.c		\
 			   netload.c		\
+			   loadavg.c		\
 			   main.c		\
 			   global.h		\
 			   properties.c		\
@@ -31,7 +32,8 @@ appletdir	= $(datadir)/applets
 Monitorsdir	= $(appletdir)/Monitors
 
 Monitors_DATA	= cpuload_applet.desktop memload_applet.desktop \
-		  swapload_applet.desktop netload_applet.desktop
+		  swapload_applet.desktop netload_applet.desktop \
+		  loadavg_applet.desktop
 
 pixmaps = gnome-cpu.png gnome-mem.png
 pixmapdir = $(datadir)/pixmaps

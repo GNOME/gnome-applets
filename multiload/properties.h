@@ -10,6 +10,7 @@ typedef enum {
     PROP_MEMLOAD,
     PROP_SWAPLOAD,
     PROP_NETLOAD,
+    PROP_LOADAVG
 } PropertyClass;
 
 typedef struct	_MultiLoadProperties		MultiLoadProperties;
@@ -17,17 +18,17 @@ typedef struct	_MultiLoadProperties		MultiLoadProperties;
 typedef struct	_LoadGraphProperties		LoadGraphProperties;
 
 struct _LoadGraphProperties {
-    guint n;
+    guint type, n;
     const gchar *name;
     const gchar **texts;
     const gchar **color_defs;
     GdkColor *colors;
-    gulong adj_data [2];
+    gulong adj_data [3];
     gint use_default;
 };
 
 struct _MultiLoadProperties {
-    LoadGraphProperties cpuload, memload, swapload, netload;
+    LoadGraphProperties cpuload, memload, swapload, netload, loadavg;
 };
 
 extern GList *multiload_property_object_list;
