@@ -167,6 +167,9 @@ void properties(int id, gpointer data)
 {
 	GtkWidget *frame, *label;
 
+	if( propbox )
+		return;
+
 	load_properties(&props);
 	
         propbox = gnome_property_box_new();
