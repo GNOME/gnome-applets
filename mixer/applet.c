@@ -513,6 +513,10 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
   bonobo_ui_component_set_prop (component,
 			        "/commands/Mute",
 			        "state", mute ? "1" : "0", NULL);
+
+  /* update graphic - this should happen automagically after the next
+   * idle call, but apparently doesn't for some people... */
+  gnome_volume_applet_refresh (applet);
 }
 
 /*
