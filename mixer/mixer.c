@@ -108,12 +108,6 @@ typedef struct {
 	/* The popup window and scale. */
 	GtkWidget         *popup;
 	GtkWidget         *scale;
-
-	GdkPixbuf         *zero_pixbuf;
-	GdkPixbuf         *min_pixbuf;
-	GdkPixbuf         *medium_pixbuf;
-	GdkPixbuf         *max_pixbuf;
-	GdkPixbuf         *mute_pixbuf;
 } MixerData;
 
 static void mixer_update_slider (MixerData *data);
@@ -122,10 +116,14 @@ static void mixer_popup_show    (MixerData *data);
 static void mixer_popup_hide    (MixerData *data, gboolean revert);
 
 static void mixer_start_gmix_cb (BonoboUIComponent *uic,
-				 MixerData         *data,
+				 gpointer           data,
 				 const gchar       *verbname);
 
-static gint       mixerfd = -1;
+
+static gint mixerfd = -1;
+static gint num_applets = 0;
+static GdkPixbuf *zero_pixbuf, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
+
 
 #ifdef OSS_API
 static int mixerchannel;
@@ -344,16 +342,16 @@ mixer_update_image (MixerData *data)
 	vol = data->vol;
 	
 	if (vol <= 0) {
-		pixbuf = data->zero_pixbuf;
+		pixbuf = zero_pixbuf;
 	}
 	else if (vol <= VOLUME_MAX / 3) {
-		pixbuf = data->min_pixbuf;
+		pixbuf = min_pixbuf;
 	}
 	else if (vol <= 2 * VOLUME_MAX / 3) {
-		pixbuf = data->medium_pixbuf;
+		pixbuf = medium_pixbuf;
 	}
 	else {
-		pixbuf = data->max_pixbuf;
+		pixbuf = max_pixbuf;
 	}
 
 	if (!data->mute) {
@@ -361,12 +359,12 @@ mixer_update_image (MixerData *data)
 	} else {
 		GdkPixbuf *copy = gdk_pixbuf_copy (pixbuf);
 
-		gdk_pixbuf_composite (data->mute_pixbuf,
+		gdk_pixbuf_composite (mute_pixbuf,
 				      copy,
 				      0,
 				      0,
-				      gdk_pixbuf_get_width (data->mute_pixbuf),
-				      gdk_pixbuf_get_height (data->mute_pixbuf),
+				      gdk_pixbuf_get_width (mute_pixbuf),
+				      gdk_pixbuf_get_height (mute_pixbuf),
 				      0,
 				      0,
 				      1.0,
@@ -617,28 +615,13 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 		data->timeout = 0;
 	}
 
-	if (data->zero_pixbuf) {
-		g_object_unref (data->zero_pixbuf);
-		data->zero_pixbuf = NULL;
-	}
-	if (data->min_pixbuf) {
-		g_object_unref (data->min_pixbuf);
-		data->min_pixbuf = NULL;
-	}
-	if (data->medium_pixbuf) {
-		g_object_unref (data->medium_pixbuf);
-		data->medium_pixbuf = NULL;
-	}
-	if (data->max_pixbuf) {
-		g_object_unref (data->max_pixbuf);
-		data->max_pixbuf = NULL;
-	}
-	if (data->mute_pixbuf) {
-		g_object_unref (data->mute_pixbuf);
-		data->mute_pixbuf = NULL;
-	}
-	
 	g_free (data);
+
+	num_applets--;
+	g_print ("num left %d\n", num_applets);
+	if (num_applets == 0) {
+		bonobo_main_quit ();
+	}
 }
 
 static void
@@ -693,7 +676,7 @@ applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
 
 static void
 mixer_start_gmix_cb (BonoboUIComponent *uic,
-		     MixerData         *data,
+		     gpointer           data,
 		     const gchar       *verbname)
 {
 	gnome_execute_shell (NULL, "gnome-volume-control");
@@ -701,7 +684,7 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 
 static void
 mixer_about_cb (BonoboUIComponent *uic,
-		MixerData         *data,
+		gpointer           data,
 		const gchar       *verbname)
 {
         static GtkWidget   *about     = NULL;
@@ -732,7 +715,7 @@ mixer_about_cb (BonoboUIComponent *uic,
 
 static void
 mixer_help_cb (BonoboUIComponent *uic,
-	       MixerData         *data,
+	       gpointer           data,
 	       const gchar       *verbname)
 {
 #if 0
@@ -748,7 +731,7 @@ mixer_help_cb (BonoboUIComponent *uic,
 /* Dummy callback to get rid of a warning, for now. */
 static void
 mixer_mute_cb (BonoboUIComponent *uic,
-	       MixerData         *data,
+	       gpointer           data,
 	       const gchar       *verbname)
 {
 }
@@ -786,27 +769,28 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 	}
 }
 
-static const BonoboUIVerb mixer_applet_menu_verbs [] = {
-	BONOBO_UI_UNSAFE_VERB ("RunMixer", mixer_start_gmix_cb),
-	BONOBO_UI_UNSAFE_VERB ("Mute",     mixer_mute_cb),
-	BONOBO_UI_UNSAFE_VERB ("Help",     mixer_help_cb),
-	BONOBO_UI_UNSAFE_VERB ("About",    mixer_about_cb),
-
+const BonoboUIVerb mixer_applet_menu_verbs [] = {
+	BONOBO_UI_VERB ("RunMixer", mixer_start_gmix_cb),
+	BONOBO_UI_VERB ("Mute",     mixer_mute_cb),
+	BONOBO_UI_VERB ("Help",     mixer_help_cb),
+	BONOBO_UI_VERB ("About",    mixer_about_cb),
+	
         BONOBO_UI_VERB_END
 };
 
-static const char mixer_applet_menu_xml [] =
+const gchar mixer_applet_menu_xml [] =
 "<popup name=\"button3\">\n"
-"   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"\n/>"
-"   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"\n/>"
+"   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"/>"
+"   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"/>"
 "   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
 "   <menuitem name=\"About\" verb=\"About\" _label=\"About...\"\n"
 "             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 "</popup>\n";
 
+
 static void
-mixer_applet_fill (PanelApplet *applet)
+mixer_applet_create (PanelApplet *applet)
 {
 	MixerData         *data;
 	BonoboUIComponent *component;
@@ -820,11 +804,13 @@ mixer_applet_fill (PanelApplet *applet)
 
 	data = g_new0 (MixerData, 1);
 
-	data->zero_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_zero_xpm);
-	data->min_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_min_xpm);
-	data->medium_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_medium_xpm);
-	data->max_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_max_xpm);
-	data->mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
+	if (zero_pixbuf == NULL) {
+		zero_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_zero_xpm);
+		min_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_min_xpm);
+		medium_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_medium_xpm);
+		max_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_max_xpm);
+		mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
+	}
 	
 	data->frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
@@ -848,7 +834,7 @@ mixer_applet_fill (PanelApplet *applet)
 				    VOLUME_MAX/10,
 				    0.0));
 
-	g_signal_connect (GTK_OBJECT (data->adj),
+	g_signal_connect (data->adj,
 			  "value-changed",
 			  (GCallback) mixer_value_changed_cb,
 			  data);
@@ -865,45 +851,44 @@ mixer_applet_fill (PanelApplet *applet)
 
 	data->mute = FALSE;
 
-	g_signal_connect (G_OBJECT (applet),
+	g_signal_connect (applet,
 			  "destroy",
 			  (GCallback) destroy_mixer_cb,
 			  data);
 
-	g_signal_connect (G_OBJECT (applet),
+	g_signal_connect (applet,
 			  "change_orient",
 			  G_CALLBACK (applet_change_orient_cb),
 			  data);
 
-	g_signal_connect (G_OBJECT (applet),
+	g_signal_connect (applet,
 			  "change_size",
 			  G_CALLBACK (applet_change_size_cb),
 			  data);
 
-	g_signal_connect (G_OBJECT (applet),
+	g_signal_connect (applet,
 			  "change_background",
 			  G_CALLBACK (applet_change_background_cb),
 			  data);
-	
-	component = panel_applet_get_popup_component (PANEL_APPLET (applet));
 
+	panel_applet_setup_menu (PANEL_APPLET (data->applet),
+				 mixer_applet_menu_xml,
+				 mixer_applet_menu_verbs,
+				 data);
+
+	component = panel_applet_get_popup_component (PANEL_APPLET (data->applet));
 	g_signal_connect (component,
 			  "ui-event",
 			  (GCallback) mixer_ui_component_event,
 			  data);
 
-	panel_applet_setup_menu (PANEL_APPLET (applet),
-				 mixer_applet_menu_xml,
-				 mixer_applet_menu_verbs,
-				 data);
-
 	applet_change_orient_cb (GTK_WIDGET (applet),
-				 panel_applet_get_orient (PANEL_APPLET (applet)),
+				 panel_applet_get_orient (applet),
 				 data);
 	applet_change_size_cb (GTK_WIDGET (applet),
-			       panel_applet_get_size (PANEL_APPLET (applet)),
+			       panel_applet_get_size (applet),
 			       data);
-	
+
 	mixer_update_slider (data);
 	mixer_update_image (data);
 
@@ -915,9 +900,21 @@ mixer_applet_factory (PanelApplet *applet,
 		      const gchar *iid,
 		      gpointer     data)
 {
-	if (!strcmp (iid, "OAFIID:GNOME_MixerApplet"))
-		mixer_applet_fill (applet);
-	
+#ifdef ENABLE_NLS
+	static inited = FALSE;
+
+	if (!inited) {
+		bindtextdomain(GETTEXT_PACKAGE, GNOMELOCALEDIR);
+		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+		textdomain(GETTEXT_PACKAGE);
+
+		inited = TRUE;
+	}
+#endif	
+
+	mixer_applet_create (applet);
+	num_applets++;
+
 	return TRUE;
 }
 
