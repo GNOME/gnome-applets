@@ -250,6 +250,7 @@ wireless_applet_read_device_state (WirelessApplet *applet)
 	double link;
 	char device[256];
 	char line[256];
+	gboolean found = FALSE;
 
 	/* resest list of available wireless devices */
 	g_list_foreach (applet->devices, (GFunc)g_free, NULL);
@@ -288,6 +289,7 @@ wireless_applet_read_device_state (WirelessApplet *applet)
 				ptr++;
 
 				wireless_applet_update_state (applet, device, link, level, noise);
+				found = TRUE;
 			}
 		}
 	} while (1);
@@ -295,7 +297,7 @@ wireless_applet_read_device_state (WirelessApplet *applet)
 	if (g_list_length (applet->devices)==1) {
 		wireless_applet_set_device (applet,
 				(char*)applet->devices->data);
-	} else {
+	} else if (found == FALSE) {
 		wireless_applet_update_state (applet,
 				applet->device, -1, -1, -1);
 	}
