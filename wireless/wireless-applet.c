@@ -677,6 +677,20 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 			}
 			idx++;
 		}
+		if (applet->devices == NULL) {
+			char *markup;
+			GtkWidget *label;
+			
+			label = gtk_label_new (NULL);
+			markup = g_strdup_printf ("<i>%s</i>",
+					_("No Wireless Devices"));
+			gtk_label_set_markup (GTK_LABEL (label), markup);
+			g_free (markup);
+
+			item = gtk_menu_item_new ();
+			gtk_container_add (GTK_CONTAINER (item), label);
+			gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+		}
 		gtk_option_menu_set_menu (GTK_OPTION_MENU (device), menu);
 		gtk_option_menu_set_history (GTK_OPTION_MENU (device), choice);
 	}
