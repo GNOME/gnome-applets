@@ -17,12 +17,13 @@ GtkWidget *propbox;
 cpuload_properties props;
 
 void setup_colors(void);
+void start_timer( void );
 
 void load_properties( cpuload_properties *prop )
 {
 	prop->ucolor	= gnome_config_get_string ("/cpuload_applet/all/ucolor=#20b2aa");
 	prop->scolor	= gnome_config_get_string ("/cpuload_applet/all/scolor=#188982");
-	prop->speed	= gnome_config_get_int    ("/cpuload_applet/all/speed=1000");
+	prop->speed	= gnome_config_get_int    ("/cpuload_applet/all/speed=2000");
 	prop->height 	= gnome_config_get_int	  ("/cpuload_applet/all/height=40");
 	prop->width 	= gnome_config_get_int	  ("/cpuload_applet/all/width=40");
 	prop->look	= gnome_config_get_bool   ("/cpuload_applet/all/look=1");
@@ -43,7 +44,8 @@ void color_changed_cb( GnomeColorSelector *widget, gchar **color )
 {
         char *tmp;
  	int r,g,b;
-        
+
+	/* FIXME ugh, mem leak..anyone have a better way of doing this? */        
 	tmp = malloc(24);
         if( !tmp )
         {
@@ -68,13 +70,18 @@ void width_cb( GtkWidget *widget, GtkWidget *spin )
 	props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
-	
+void freq_cb( GtkWidget *widget, GtkWidget *spin )
+{
+	props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}	
+
 GtkWidget *create_frame(void)
 {
 	GtkWidget *label;
-	GtkWidget *box, *color, *size;
-	GtkWidget *height, *width;
-	GtkObject *height_a, *width_a;
+	GtkWidget *box, *color, *size, *speed;
+	GtkWidget *height, *width, *freq;
+	GtkObject *height_a, *width_a, *freq_a;
 	        
 	GnomeColorSelector *ucolor_gcs, *scolor_gcs;
         int ur,ug,ub, sr,sg,sb;
@@ -84,7 +91,8 @@ GtkWidget *create_frame(void)
         
 	box = gtk_vbox_new( 5, TRUE );
 	color=gtk_hbox_new( 5, TRUE );
-	size =gtk_hbox_new( 5, FALSE );
+	size =gtk_hbox_new( 5, TRUE );
+	speed=gtk_hbox_new( 5, TRUE );
 	gtk_container_border_width( GTK_CONTAINER(box), 5 );
 	        
 	
@@ -127,9 +135,22 @@ GtkWidget *create_frame(void)
        		GTK_SIGNAL_FUNC(width_cb), width );
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
         	GTK_UPDATE_ALWAYS );
+
+	label = gtk_label_new("Update Frequency");
+	g_print( "%d %d\n", props.speed, props.speed/1000 );
+	freq_a = gtk_adjustment_new( (float)props.speed/1000, 0.1, 60, 0.1, 5, 5 );
+	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 0.1, 1 );
+	gtk_box_pack_start( GTK_BOX(speed), label,TRUE, FALSE, 0 );
+	gtk_box_pack_start( GTK_BOX(speed), freq, TRUE, TRUE, 0 );
+	
+        gtk_signal_connect( GTK_OBJECT(freq_a),"value_changed",
+		GTK_SIGNAL_FUNC(freq_cb), freq );
+        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(freq),
+        	GTK_UPDATE_ALWAYS );
         
         gtk_box_pack_start_defaults( GTK_BOX(box), color );
 	gtk_box_pack_start_defaults( GTK_BOX(box), size );
+	gtk_box_pack_start_defaults( GTK_BOX(box), speed );
 	
 	gtk_widget_show_all(box);
 	return box;
@@ -137,13 +158,14 @@ GtkWidget *create_frame(void)
 
 void apply_cb( GtkWidget *widget, void *data )
 {
-        setup_colors();
 	save_properties(&props);
+        setup_colors();
+	start_timer();
 }
 
 void properties(int id, gpointer data)
 {
-	GtkWidget *frame;
+	GtkWidget *frame, *label;
 
 	load_properties(&props);
 	
@@ -153,9 +175,10 @@ void properties(int id, gpointer data)
 		"CPULoad Settings" );
 	
 	frame = create_frame();
+	label = gtk_label_new("General");
         gtk_widget_show(frame);
 	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propbox),
-		frame, NULL );
+		frame, label );
 
         gtk_signal_connect( GTK_OBJECT(propbox),
 		"apply", GTK_SIGNAL_FUNC(apply_cb), NULL );

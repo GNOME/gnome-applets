@@ -24,13 +24,15 @@
 #include "linux-proc.h"
 #include "properties.h"
 
+void start_timer( void );
+
 GtkWidget *cpuload;
 GdkPixmap *pixmap;
 GtkWidget *disp;
 GdkGC *gc;
 GdkColor ucolor, scolor;
 cpuload_properties props;
-int applet_id = -1, height, width;
+int applet_id = -1, height, width, timer_index=-1;
 
 guchar udata[128];
 guchar oudata[128];
@@ -147,10 +149,18 @@ GtkWidget *cpuload_new( void )
 
 	gtk_widget_set_usize(disp, width, height);
 
-        gtk_timeout_add(props.speed, (GtkFunction)draw, NULL);
+	start_timer();
         
         gtk_widget_show_all(frame);
 	return frame;
+}
+
+void start_timer( void )
+{
+	if( timer_index != -1 )
+		gtk_timeout_remove(timer_index);
+
+	timer_index = gtk_timeout_add(props.speed, (GtkFunction)draw, NULL);
 }
 
 void setup_colors(void)
