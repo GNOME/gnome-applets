@@ -41,14 +41,11 @@ struct _charpick_button_cb_data {
 
 void start_callback_update();
 
-void build_table(charpick_data *curr_data);
-void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
-void set_atk_name_description(GtkWidget *widget, const gchar *name,
-                              const gchar *description);
-
-
-
-
-
-
+void build_table              (charpick_data     *curr_data);
+void show_preferences_dialog  (BonoboUIComponent *uic,
+			       charpick_data     *curr_data,
+			       const char        *verbname);
+void set_atk_name_description (GtkWidget         *widget,
+			       const char        *name,
+			       const char        *description);
 
