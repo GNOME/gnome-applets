@@ -258,7 +258,7 @@ static void size_frame_create()
   return;
 }
 
-static void default_chars_frame_create(void)
+static void default_chars_frame_create(charpick_data *curr_data)
 {
   GtkWidget *tab_label;
   GtkWidget *frame;
@@ -266,16 +266,19 @@ static void default_chars_frame_create(void)
   GtkWidget *default_list_label;
   GtkWidget *default_list_entry;
   GtkWidget *explain_label;
+  gchar *text_utf8;
 
   /* init widgets */
   frame = gtk_vbox_new(FALSE, 5);
   default_list_hbox = gtk_hbox_new(FALSE, 5);
   default_list_label = gtk_label_new(_("Default character list:"));
   default_list_entry = gtk_entry_new_with_max_length (MAX_BUTTONS);
-#ifdef FIXME
+  text_utf8 = g_locale_to_utf8 (curr_data->properties->default_charlist, -1,
+  				NULL, NULL, NULL);
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
-		     curr_data.properties->default_charlist);
-#endif
+		     text_utf8);
+  g_free (text_utf8);
+
   explain_label = gtk_label_new(_("These characters will appear when the panel"
                                   " is started. To return to this list, hit"
                                   " <space> while the applet has focus."));
@@ -295,9 +298,8 @@ static void default_chars_frame_create(void)
   /* add tab to propwindow */
   tab_label = gtk_label_new(_("Default List"));
   gtk_widget_show_all(frame);
-  gnome_property_box_append_page (GNOME_PROPERTY_BOX(propwindow), 
-                                  frame, tab_label);
-
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), frame, TRUE, TRUE, 0);
+  
   return;
 }
 
@@ -309,6 +311,14 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
                                           "index.html#CHARPICKAPPLET-PREFS" };
 	gnome_help_display(NULL, &help_entry);
 #endif
+}
+
+static void
+response_cb (GtkDialog *dialog, gint id, gpointer data)
+{
+  gtk_widget_destroy (propwindow);
+  propwindow = NULL;
+  
 }
 
 void
@@ -323,18 +333,15 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     return;
   }
   propwindow = gnome_property_box_new();
-  gtk_window_set_title
-    (GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
-       _("Character Picker Settings"));
-
-  size_frame_create();
-  default_chars_frame_create();
-  gtk_signal_connect (GTK_OBJECT(propwindow), "apply",
-		      GTK_SIGNAL_FUNC(property_apply_cb), curr_data);
-  gtk_signal_connect (GTK_OBJECT(propwindow), "destroy",
-		      GTK_SIGNAL_FUNC(property_destroy_cb), NULL);
-  gtk_signal_connect( GTK_OBJECT(propwindow), "help",
-		      GTK_SIGNAL_FUNC(phelp_cb), NULL);
+  propwindow = gtk_dialog_new_with_buttons (_("Character Palette Properties"), NULL,
+					    GTK_DIALOG_DESTROY_WITH_PARENT,
+					    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					    NULL);
+  /*size_frame_create();*/
+  default_chars_frame_create(curr_data);
+  g_signal_connect (G_OBJECT (propwindow), "response",
+  		    G_CALLBACK (response_cb), curr_data);
+  		    
   gtk_widget_show_all(propwindow);
 
   return;
