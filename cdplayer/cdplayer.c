@@ -91,7 +91,7 @@ static void make_applet_accessible(CDPlayerData *cd);
 /* Bonobo Verbs for our popup menu */
 static const BonoboUIVerb applet_menu_verbs [] = {
     BONOBO_UI_UNSAFE_VERB ("RunGTCD", start_gtcd_cb),
-    BONOBO_UI_UNSAFE_VERB ("Properties", properties_cb),
+    BONOBO_UI_UNSAFE_VERB ("Preferences", properties_cb),
     BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
     BONOBO_UI_UNSAFE_VERB ("About", about_cb),
     BONOBO_UI_VERB_END
@@ -327,7 +327,7 @@ set_default_device (GtkButton *button, gpointer data)
     cdplayer_save_config(cd);  
 }
     
-
+/* FIXME: change the fn name later to reflect Preferences */
 static void
 properties_cb (GtkWidget *w, gpointer data)
 {
@@ -343,7 +343,7 @@ properties_cb (GtkWidget *w, gpointer data)
 
     cd = (CDPlayerData *) data;
 
-    dialog = gtk_dialog_new_with_buttons(_("CD Player Properties"),
+    dialog = gtk_dialog_new_with_buttons(_("CD Player Preferences"),
                                          NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                          NULL);
