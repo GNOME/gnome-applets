@@ -1330,35 +1330,57 @@ size_allocate(PanelApplet *applet, GtkAllocation *allocation, gpointer data)
    battstat->colors_changed=FALSE;
 }
 
-void
-change_background(PanelApplet *a, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, ProgressData *battstat)
+static void
+change_background (PanelApplet *a,
+		   PanelAppletBackgroundType type,
+		   GdkColor *color,
+		   GdkPixmap *pixmap,
+		   ProgressData *battstat)
 {
-	GtkRcStyle *rc_style = gtk_rc_style_new ();
+	/* taken from the Trash Applet */
+	GtkRcStyle *rc_style;
+	GtkStyle *style;
+
+	/* reset style */
+	gtk_widget_set_style (GTK_WIDGET (battstat->applet), NULL);
+	rc_style = gtk_rc_style_new ();
+	gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
+	g_object_unref (rc_style);
 
 	switch (type) {
-		case PANEL_PIXMAP_BACKGROUND:
-			/* FIXME use pixmap here */
-			gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
-			gtk_widget_modify_style (GTK_WIDGET (battstat->hbox), rc_style);
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (battstat->applet),
+					GTK_STATE_NORMAL, color);
+			gtk_widget_modify_bg (
+					GTK_WIDGET (battstat->eventstatus),
+					GTK_STATE_NORMAL, color);
+			gtk_widget_modify_bg (
+					GTK_WIDGET (battstat->eventbattery),
+					GTK_STATE_NORMAL, color);
 			break;
 
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (battstat->applet), GTK_STATE_NORMAL, color);
-			gtk_widget_modify_bg (GTK_WIDGET (battstat->hbox), GTK_STATE_NORMAL, color);
+		case PANEL_PIXMAP_BACKGROUND:
+			style = gtk_style_copy
+				(GTK_WIDGET (battstat->applet)->style);
+			if (style->bg_pixmap[GTK_STATE_NORMAL])
+				g_object_unref
+					(style->bg_pixmap[GTK_STATE_NORMAL]);
+			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
+				(pixmap);
+			gtk_widget_set_style (GTK_WIDGET (battstat->applet),
+					style);
+			gtk_widget_set_style (
+					GTK_WIDGET (battstat->eventstatus),
+					style);
+			gtk_widget_set_style (
+					GTK_WIDGET (battstat->eventbattery),
+					style);
 			break;
 
 		case PANEL_NO_BACKGROUND:
-			gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
-			gtk_widget_modify_style (GTK_WIDGET (battstat->hbox), rc_style);
-			break;
-
 		default:
-			gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
-			gtk_widget_modify_style (GTK_WIDGET (battstat->hbox), rc_style);
 			break;
 	}
-
-	gtk_rc_style_unref (rc_style);
 }
 
 static gboolean
