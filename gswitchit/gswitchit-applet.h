@@ -23,21 +23,22 @@
 #include "libgswitchit/gswitchit_plugin_manager.h"
 
 typedef struct _GSwitchItApplet {
-	GSwitchItPluginContainer pluginContainer;
-
-	GSwitchItConfig config;
-	GSwitchItAppletConfig appletConfig;
-	GSwitchItKbdConfig kbdConfig;
-	GSwitchItPluginManager pluginManager;
-
 	GtkWidget *applet;
 	GtkWidget *appletAncestor;
 	GtkWidget *notebook;
 	GtkWidget *ebox;
 	GtkWidget *aboutDialog;
-
-	GSList *groupNames;
 } GSwitchItApplet;
+
+typedef struct _GSwitchItAppletGlobals {
+        GSwitchItPluginContainer pluginContainer;
+        GSwitchItPluginManager pluginManager;
+        GSwitchItConfig config;
+        GSwitchItAppletConfig appletConfig;
+        GSwitchItKbdConfig kbdConfig;
+        GSList *groupNames;
+        GSList *appletInstances;
+} GSwitchItAppletGlobals;
 
 extern void GSwitchItAppletRevalidate (GSwitchItApplet * sia);
 extern void GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia,
