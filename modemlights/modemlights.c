@@ -562,6 +562,9 @@ static void dial_cb(GtkWidget *widget, MLData *mldata)
 				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 				       _("C_onnect"), GTK_RESPONSE_OK,
 				       NULL);
+	
+		gtk_dialog_set_default_response(GTK_DIALOG(mldata->connect_dialog),
+						GTK_RESPONSE_OK);
 
 		g_signal_connect(GTK_DIALOG(mldata->connect_dialog), "response",
 				 G_CALLBACK(connect_dialog_response), mldata);
