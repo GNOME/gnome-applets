@@ -18,6 +18,8 @@
  *
  */
 
+#define GTIK_APPLET_NAME	"gtik2_applet"
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -1258,11 +1260,11 @@
 
 		/* intialize, this will basically set up the applet, corba and
 		call gnome_init */
-		applet_widget_init("gtik_applet", VERSION, argc, argv,
+		applet_widget_init(GTIK_APPLET_NAME, VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 		/* create a new applet_widget */
-		applet = applet_widget_new("gtik_applet");
+		applet = applet_widget_new(GTIK_APPLET_NAME);
 		/* in the rare case that the communication with the panel
 		failed, error out */
 		if (!applet)
