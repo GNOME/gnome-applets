@@ -2,7 +2,7 @@
  * The whereami applet simply displays the position of the cursor.  By
  * moving the cursor with button 1 held down, the size of an area on
  * the screen will be displayed.  This applet is a part of the Gnome
- * project.  See http://www.gnome.org/ for more information.
+ * project.  See htt p://www.gnome.org/ for more information.
  *
  * Copyright (C) 1999 John Kodis <kodis@jagunet.com>
  *
@@ -22,7 +22,8 @@
  */
 
 #include <config.h>
-#include <applet-widget.h>
+#include <gnome.h>
+#include <panel-applet.h>
 
 static enum { IDLE, POSITION, SIZE } state;
 
@@ -30,9 +31,10 @@ static int panel_size = 48;
 static gboolean panel_vertical = FALSE;
 
 static GtkWidget *msg;
+static GtkWidget *label;
  
 static void
-about(AppletWidget *applet, gpointer data)
+about(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
   static GtkWidget *about_box = NULL;
   static const char *authors[] = { "John Kodis <kodis@jagunet.com>", NULL };
@@ -45,18 +47,18 @@ about(AppletWidget *applet, gpointer data)
   }
   about_box = gnome_about_new(
     _("Where Am I?"), VERSION,
-    _("Copyright 1999 John Kodis"), authors,
+    _("Copyright 1999 John Kodis"), 
     _("A cursor position reporting applet.\n"
       "= Clicking mouse button 1 grabs the cursor.\n"
       "= Dragging with mouse button 1 held down "
       "shows the size of the region."),
-    NULL);
-  gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
-		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
-
+   authors,
+   NULL,
+   NULL,
+   NULL);
+ 
   gtk_widget_show(about_box);
   return;
-  applet = NULL;
   data = NULL;
 }
 
@@ -103,7 +105,7 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
       break;
     }
   
-  gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), where);
+  gtk_label_set_text(GTK_LABEL(label), where);
   return;
   data = NULL;
 }
@@ -111,6 +113,8 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
 static void
 button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 {
+  /* FIXME: this seems to not get called when the pointer is grabbed
+  ** and the pointer is outside the button */
   if (button->button == 1)
     {
       if (state == IDLE && button->type == GDK_BUTTON_RELEASE)
@@ -143,6 +147,7 @@ button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 static int
 timeout_handler(GtkWidget *button)
 {
+
   if (state == IDLE)
     {
       static int x, last_x, y, last_y;
@@ -157,7 +162,7 @@ timeout_handler(GtkWidget *button)
 			  g_snprintf(where, sizeof(where), "x:%d y:%d", x, y);
 	  } else
 		  g_snprintf(where, sizeof(where), "x:%d\ny:%d", x, y);
-	  gtk_label_set_text(GTK_LABEL(GTK_BIN(button)->child), where);
+	  gtk_label_set_text(GTK_LABEL(label), where);
 	  last_x = x;
 	  last_y = y;
 	}
@@ -166,10 +171,11 @@ timeout_handler(GtkWidget *button)
 }
 
 static void
-change_pixel_size (GtkWidget *applet, int size)
+change_pixel_size (PanelApplet *applet, gint size, gpointer data)
 {
 	int x,y;
 	GdkEventMotion m;
+
 	gdk_window_get_pointer(NULL, &x, &y, NULL);
 	m.x_root = x;
 	m.y_root = y;
@@ -180,7 +186,7 @@ change_pixel_size (GtkWidget *applet, int size)
 }
 
 static void
-change_orient (GtkWidget *applet, PanelOrientType o)
+change_orient (PanelApplet *applet, PanelAppletOrient o, gpointer data)
 {
 	int x,y;
 	GdkEventMotion m;
@@ -188,7 +194,7 @@ change_orient (GtkWidget *applet, PanelOrientType o)
 	m.x_root = x;
 	m.y_root = y;
 
-	if(o==ORIENT_UP || o==ORIENT_DOWN)
+	if(o==PANEL_APPLET_ORIENT_UP || o==PANEL_APPLET_ORIENT_DOWN)
 		panel_vertical = FALSE;
 	else
 		panel_vertical = TRUE;
@@ -197,54 +203,82 @@ change_orient (GtkWidget *applet, PanelOrientType o)
 }
 
 static void
-help_cb (AppletWidget *applet, gpointer data)
+help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
     GnomeHelpMenuEntry help_entry = { "whereami_applet", "index.html"};
     gnome_help_display(NULL, &help_entry);
+#endif
 }
 
-int
-main(int argc, char **argv)
+static const BonoboUIVerb whereami_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about),
+        BONOBO_UI_VERB_END
+};
+
+static const char whereami_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"About\" _label=\"About\"/>\n"
+	"</popup>\n";
+
+static BonoboObject *
+whereami_applet_new (void)
 {
-  GtkWidget *applet;
-  char *applet_name = _("whereami_applet");
-
-  bindtextdomain(PACKAGE, GNOMELOCALEDIR);
-  textdomain(PACKAGE);
-  applet_widget_init(applet_name, VERSION, argc, argv, NULL, 0, NULL);
-
-  applet = applet_widget_new(applet_name);
+  GtkWidget *applet;  
   
-  /* Get an idea of the panel size we're working with. */
-  panel_size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
-  
-  msg = gtk_button_new_with_label("\n");
-  gtk_signal_connect(GTK_OBJECT(msg),
-    "motion_notify_event", motion_handler, NULL);
-  gtk_signal_connect(GTK_OBJECT(msg),
-    "button_press_event", button_handler, NULL);
-  gtk_signal_connect(GTK_OBJECT(msg),
-    "button_release_event", button_handler, NULL);
-  gtk_label_set_text(GTK_LABEL(GTK_BIN(msg)->child), "");
+  label = gtk_label_new("\n");
+  msg = gtk_button_new();
+  gtk_container_add (GTK_CONTAINER (msg), label);
+  g_signal_connect(G_OBJECT(msg),
+    "motion_notify_event", G_CALLBACK (motion_handler), NULL);
+  g_signal_connect(G_OBJECT(msg),
+    "button_press_event", G_CALLBACK (button_handler), NULL);
+  g_signal_connect(G_OBJECT(msg),
+    "button_release_event", G_CALLBACK (button_handler), NULL);
+  gtk_label_set_text(GTK_LABEL(label), "");
+  gtk_widget_show(label);
   gtk_widget_show(msg);
-
-  gtk_signal_connect(GTK_OBJECT(applet), "change_pixel_size",
-		     GTK_SIGNAL_FUNC(change_pixel_size),
-		     NULL);
-  gtk_signal_connect(GTK_OBJECT(applet), "change_orient",
-		     GTK_SIGNAL_FUNC(change_orient),
-		     NULL);
-  applet_widget_add(APPLET_WIDGET(applet), msg);
-  applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					"help",
-					GNOME_STOCK_PIXMAP_HELP,
-					_("Help"), help_cb, NULL);
-  applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-    "about", GNOME_STOCK_MENU_ABOUT, _("About..."), about, NULL);
-
+  
+  applet = panel_applet_new(msg);
+  /* Get an idea of the panel size we're working with. */
+  panel_size = panel_applet_get_size(PANEL_APPLET(applet));
+  
+  panel_applet_setup_menu (PANEL_APPLET (applet),
+			   whereami_applet_menu_xml,
+			   whereami_applet_menu_verbs,
+			   NULL);
+			   
+  g_signal_connect(G_OBJECT(applet), "change_size",
+		   G_CALLBACK(change_pixel_size),
+		   NULL);
+  g_signal_connect(G_OBJECT(applet), "change_orient",
+		   G_CALLBACK(change_orient),
+		   NULL);
+		   
   gtk_timeout_add(100, (GtkFunction)timeout_handler, msg);
   gtk_widget_show(applet);
-
-  applet_widget_gtk_main();
-  return EXIT_SUCCESS;
+  
+  return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+  
 }
+
+static BonoboObject *
+whereami_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_WhereamiApplet"))
+		applet = whereami_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_WhereamiApplet_Factory",
+			     "Whereami Applet",
+			     "0",
+			     whereami_applet_factory,
+			     NULL)

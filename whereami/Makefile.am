@@ -1,20 +1,18 @@
 SUBDIRS = docs
 
-INCLUDES = -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+INCLUDES = $(GNOME_APPLETS_CFLAGS) -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
-bin_PROGRAMS = whereami_applet
+bin_PROGRAMS = whereami_applet2
 
-whereami_applet_SOURCES = whereami.c
+whereami_applet2_SOURCES = whereami.c
 
-whereami_applet_LDADD = $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+whereami_applet2_LDADD = $(GNOME_APPLETS_LIBS) 
 
-sysdir = $(datadir)/applets/Utility
-sys_predata = whereami_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_WheramiApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = whereami_applet.gnorba
+@XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = AUTHORS README TODO	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(server_in_files)
