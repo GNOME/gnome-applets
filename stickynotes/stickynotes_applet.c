@@ -27,7 +27,6 @@ StickyNotes *stickynotes = NULL;
 /* Popup menu on the applet */
 static const BonoboUIVerb stickynotes_applet_menu_verbs[] = 
 {
-        BONOBO_UI_UNSAFE_VERB ("create", menu_create_cb),
         BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
         BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
         BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
@@ -194,18 +193,33 @@ void stickynotes_applet_init_icons(void)
 
 void stickynotes_applet_init_prefs(void)
 {
-	stickynotes->prefs = glade_xml_new(GLADE_PATH, "preferences_dialog", NULL);
+	stickynotes->prefs = glade_xml_new (GLADE_PATH, "preferences_dialog",
+			NULL);
 
-	stickynotes->w_prefs = glade_xml_get_widget(stickynotes->prefs, "preferences_dialog");
-	stickynotes->w_prefs_width = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "width_spin")));
-	stickynotes->w_prefs_height= gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "height_spin")));
-	stickynotes->w_prefs_color = glade_xml_get_widget(stickynotes->prefs, "default_color");
-	stickynotes->w_prefs_sys_color = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sys_color_check"))->toggle_button);
-	stickynotes->w_prefs_font = glade_xml_get_widget(stickynotes->prefs, "default_font");
-	stickynotes->w_prefs_sys_font = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sys_font_check"))->toggle_button);
-	stickynotes->w_prefs_click = glade_xml_get_widget(stickynotes->prefs, "click_behavior_menu");
-	stickynotes->w_prefs_sticky = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sticky_check"))->toggle_button);
-	stickynotes->w_prefs_force = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "force_default_check"))->toggle_button);
+	stickynotes->w_prefs = glade_xml_get_widget (stickynotes->prefs,
+			"preferences_dialog");
+	stickynotes->w_prefs_width = gtk_spin_button_get_adjustment (
+			GTK_SPIN_BUTTON (glade_xml_get_widget (
+					stickynotes->prefs, "width_spin")));
+	stickynotes->w_prefs_height = gtk_spin_button_get_adjustment (
+			GTK_SPIN_BUTTON (glade_xml_get_widget (
+					stickynotes->prefs, "height_spin")));
+	stickynotes->w_prefs_color = glade_xml_get_widget (stickynotes->prefs,
+			"default_color");
+	stickynotes->w_prefs_sys_color = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				glade_xml_get_widget (stickynotes->prefs,
+					"sys_color_check"))->toggle_button);
+	stickynotes->w_prefs_font = glade_xml_get_widget (stickynotes->prefs,
+			"default_font");
+	stickynotes->w_prefs_sys_font = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				glade_xml_get_widget (stickynotes->prefs,
+					"sys_font_check"))->toggle_button);
+	stickynotes->w_prefs_sticky = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				glade_xml_get_widget (stickynotes->prefs,
+					"sticky_check"))->toggle_button);
+	stickynotes->w_prefs_force = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				glade_xml_get_widget (stickynotes->prefs,
+					"force_default_check"))->toggle_button);
 
 	g_signal_connect (G_OBJECT (stickynotes->w_prefs), "response",
 			G_CALLBACK (preferences_response_cb), NULL);
@@ -226,8 +240,6 @@ void stickynotes_applet_init_prefs(void)
 			"color-set", G_CALLBACK (preferences_color_cb), NULL);
 	g_signal_connect (G_OBJECT (stickynotes->w_prefs_font),
 			"font-set", G_CALLBACK (preferences_font_cb), NULL);
-	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_click),
-			"changed", G_CALLBACK (preferences_save_cb), NULL);
 	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_sticky),
 			"toggled", G_CALLBACK (preferences_save_cb), NULL);
 	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_force),
@@ -239,39 +251,60 @@ void stickynotes_applet_init_prefs(void)
 		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "width_label"));
 		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "height_label"));
 		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "color_label"));
-		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "click_label"));
 
 		g_object_unref(group);
 	}
 			
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/width", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "width_label"), FALSE);
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "width_spin"), FALSE);
+	if (!gconf_client_key_is_writable(stickynotes->gconf,
+				GCONF_PATH "/defaults/width", NULL))
+	{
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+					stickynotes->prefs, "width_label"),
+				FALSE);
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+					stickynotes->prefs, "width_spin"),
+				FALSE);
 	}
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "height_label"), FALSE);
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "height_spin"), FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/height", NULL))
+	{
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+					stickynotes->prefs, "height_label"),
+				FALSE);
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+					stickynotes->prefs, "height_spin"),
+				FALSE);
 	}
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), FALSE);
-		gtk_widget_set_sensitive(stickynotes->w_prefs_color, FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/color", NULL))
+	{
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+					stickynotes->prefs, "color_label"),
+				FALSE);
+		gtk_widget_set_sensitive (stickynotes->w_prefs_color, FALSE);
 	}
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL))
-		gtk_widget_set_sensitive(stickynotes->w_prefs_sys_color, FALSE);
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "font_label"), FALSE);
-		gtk_widget_set_sensitive(stickynotes->w_prefs_font, FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/use_system_color", NULL))
+		gtk_widget_set_sensitive (stickynotes->w_prefs_sys_color,
+				FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/font", NULL))
+	{
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+					stickynotes->prefs, "font_label"),
+				FALSE);
+		gtk_widget_set_sensitive (stickynotes->w_prefs_font, FALSE);
 	}
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL))
-		gtk_widget_set_sensitive(stickynotes->w_prefs_sys_font, FALSE);
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "click_label"), FALSE);
-		gtk_widget_set_sensitive(stickynotes->w_prefs_click, FALSE);
-	}
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
-		gtk_widget_set_sensitive(stickynotes->w_prefs_sticky, FALSE);
-	if (!gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL))
-		gtk_widget_set_sensitive(stickynotes->w_prefs_force, FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/use_system_font", NULL))
+		gtk_widget_set_sensitive (stickynotes->w_prefs_sys_font,
+				FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/sticky", NULL))
+		gtk_widget_set_sensitive (stickynotes->w_prefs_sticky, FALSE);
+	if (!gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/force_default", NULL))
+		gtk_widget_set_sensitive (stickynotes->w_prefs_force, FALSE);
 
 	stickynotes_applet_update_prefs();
 }
@@ -291,6 +324,10 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	applet->destroy_all_dialog = NULL;
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
+
+	applet->popup_menu = NULL;
+	applet->menu_tip = NULL;
+	applet->menu_show = NULL;
 
 	/* Expand the applet for Fitts' law complience. */
 	panel_applet_set_flags(panel_applet, PANEL_APPLET_EXPAND_MINOR);
@@ -428,9 +465,6 @@ void stickynotes_applet_update_prefs(void)
 	gtk_toggle_button_set_active (
 			GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font),
 			sys_font);
-	gtk_option_menu_set_history (
-			GTK_OPTION_MENU (stickynotes->w_prefs_click),
-			click_behavior);
 	gtk_toggle_button_set_active (
 			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sticky),
 			sticky);
@@ -495,40 +529,34 @@ void stickynotes_applet_update_menus(void)
 	}
 }
 
-void stickynotes_applet_update_tooltips(void)
+void
+stickynotes_applet_update_tooltips (void)
 {
-	gint num = g_list_length(stickynotes->notes);
-	gchar *tooltip = g_strdup_printf(ngettext("%s\n%d note", "%s\n%d notes", num), _("Sticky Notes"), num);
+	int i;
+	int num;
+	char *tooltip, *no_notes;
+	StickyNotesApplet *applet;
+	GList *l;
+	
+	num = g_list_length (stickynotes->notes);
+	
+	no_notes = g_strdup_printf (ngettext ("%d note", "%d notes", num), num);
+	tooltip = g_strdup_printf ("%s\n%s", _("Sticky Notes"), no_notes);
 
-	gint i;	
-	for (i = 0; i < g_list_length(stickynotes->applets); i++) {
-		StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
-		gtk_tooltips_set_tip(stickynotes->tooltips, applet->w_applet, tooltip, NULL);
+	for (l = stickynotes->applets; l; l = l->next)
+	{
+		applet = l->data;
+		gtk_tooltips_set_tip (stickynotes->tooltips,
+				applet->w_applet, tooltip, NULL);
+	
+		if (applet->menu_tip)
+			gtk_label_set_text (GTK_LABEL (gtk_bin_get_child (
+						GTK_BIN (applet->menu_tip))),
+				no_notes);
+		if (applet->menu_show)
+			gtk_widget_set_sensitive (applet->menu_show, num);
 	}
 
-	g_free(tooltip);
-}
-
-void stickynotes_applet_do_default_action(GdkScreen *screen)
-{
-	StickyNotesDefaultAction click_behavior = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL);
-
-	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
-	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
-
-	switch (click_behavior) {
-		case STICKYNOTES_NEW:
-			stickynotes_add(screen);
-			break;
-
-		case STICKYNOTES_SET_VISIBLE:
-			if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
-				gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", !visible, NULL);
-			break;
-
-		case STICKYNOTES_SET_LOCKED:
-			if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL))
-				gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", !locked, NULL);
-			break;
-	}
+	g_free (tooltip);
+	g_free (no_notes);
 }

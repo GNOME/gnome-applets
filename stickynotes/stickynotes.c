@@ -172,6 +172,7 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
 	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
+	gtk_window_set_keep_above (GTK_WINDOW (note->w_window), TRUE);
 	
 	gtk_widget_show_all (note->w_window);
 	
@@ -525,9 +526,13 @@ void stickynotes_save(void)
 
 		xid = GDK_WINDOW_XID (note->w_window->window);
 		wnck_win = wnck_window_get (xid);
-		if (wnck_win)
+		if (!gconf_client_get_bool (stickynotes->gconf,
+					GCONF_PATH "/settings/sticky", NULL)
+				&& wnck_win)
 			workspace = 1 + wnck_workspace_get_number (
 					wnck_window_get_workspace (wnck_win));
+		else
+			workspace = 0;
 		
 		/* Retreive the title of the note */
 		const gchar *title = gtk_label_get_text(GTK_LABEL(note->w_title));
@@ -693,6 +698,7 @@ void stickynotes_load(GdkScreen *screen)
 	tmp2 = new_nodes;
 	wnck_screen = wnck_screen_get_default ();
 	wnck_screen_force_update (wnck_screen);
+
 	while (tmp1) {
 		StickyNote *note = tmp1->data;
 		node = tmp2->data;
@@ -705,13 +711,14 @@ void stickynotes_load(GdkScreen *screen)
 				workspace_str = xmlGetProp (node, "workspace");
 				if (workspace_str)
 				{
-					WnckWindow *wnck_win;
-					gulong xid;
-					WnckWorkspace *wnck_ws;
 					
 			workspace = atoi (workspace_str);
 			if (workspace > 0)
 			{
+				WnckWorkspace *wnck_ws;
+				gulong xid;
+				WnckWindow *wnck_win;
+
 				wnck_ws = wnck_screen_get_workspace (
 						wnck_screen,
 						workspace - 1);

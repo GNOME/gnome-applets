@@ -48,7 +48,6 @@ typedef struct
 	GtkWidget *w_prefs_sys_color;
 	GtkWidget *w_prefs_font;
 	GtkWidget *w_prefs_sys_font;
-	GtkWidget *w_prefs_click;
 	GtkWidget *w_prefs_sticky;
 	GtkWidget *w_prefs_force;
 
@@ -60,7 +59,6 @@ typedef struct
 
 	GConfClient *gconf;		/* GConf Client */
 	GtkTooltips *tooltips;		/* Tooltips */
-
 } StickyNotes;
 
 /* Sticky Notes Icons */
@@ -85,7 +83,10 @@ typedef struct
 
 	gint panel_size;
 	PanelAppletOrient panel_orient;
-
+	
+	GtkWidget *popup_menu;			/* Popup Menu */
+	GtkWidget *menu_tip;
+	GtkWidget *menu_show;
 } StickyNotesApplet;
 	
 typedef enum

@@ -23,34 +23,173 @@
 
 #include <libgnome/gnome-help.h>
 
-/* Applet Callback : Mouse button press on the applet. */
-gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *applet)
+static void
+position_menu (GtkMenu *menu, gint *x, gint *y,
+	       gboolean *push_in, gpointer user_data)
 {
-	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
-		applet->pressed = TRUE;
+	GtkWidget *widget = GTK_WIDGET (user_data);
+	GdkScreen *screen;
+	gint twidth, theight, tx, ty;
+	GtkTextDirection direction;
+	GdkRectangle monitor;
+	gint monitor_num;
 	
-	else if (event->type == GDK_BUTTON_RELEASE && event->button == 1) {
-		stickynotes_applet_do_default_action(gtk_widget_get_screen(applet->w_applet));	
-		applet->pressed = FALSE;
+	g_return_if_fail (menu != NULL);
+	g_return_if_fail (x != NULL);
+	g_return_if_fail (y != NULL);
+	
+	if (push_in) *push_in = FALSE;
+	
+	direction = gtk_widget_get_direction (widget);
+	
+	twidth = GTK_WIDGET (menu)->requisition.width;
+	theight = GTK_WIDGET (menu)->requisition.height;
+	
+	screen = gtk_widget_get_screen (GTK_WIDGET (menu));
+	monitor_num = gdk_screen_get_monitor_at_window (screen, widget->window);
+	if (monitor_num < 0) monitor_num = 0;
+	gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor);
+	
+	if (!gdk_window_get_origin (widget->window, &tx, &ty)) {
+	    g_warning ("Menu not on screen");
+	    return;
 	}
 	
-	else
-		return FALSE;
-
-	stickynotes_applet_update_icon(applet);
+	tx += widget->allocation.x;
+	ty += widget->allocation.y;
 	
-	return TRUE;
+	if (direction == GTK_TEXT_DIR_RTL)
+	    tx += widget->allocation.width - twidth;
+	
+	if ((ty + widget->allocation.height + theight) <=
+			monitor.y + monitor.height)
+	     ty += widget->allocation.height;
+	else if ((ty - theight) >= monitor.y)
+	    ty -= theight;
+	else if (monitor.y + monitor.height -
+			(ty + widget->allocation.height) > ty)
+		ty += widget->allocation.height;
+	else
+	    ty -= theight;
+	
+	*x = CLAMP (tx, monitor.x,
+			MAX (monitor.x, monitor.x + monitor.width - twidth));
+	*y = ty;
+	gtk_menu_set_monitor (menu, monitor_num);
+}
+
+static void
+popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
+{
+	g_print ("popup_add_note()\n");
+	stickynotes_add (gtk_widget_get_screen (applet->w_applet));
+}
+
+static void
+popup_toggle_show_notes (StickyNotesApplet *applet, GtkWidget *item)
+{
+	gboolean visible;
+	
+	g_print ("popup_toggle_show_notes()\n");
+	
+	visible = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/visible", NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/visible", NULL))
+		gconf_client_set_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/visible", !visible, NULL);
+}
+
+static void
+stickynote_applet_ensure_popup (StickyNotesApplet *applet)
+{
+	GtkWidget *item;
+	GtkWidget *image;
+
+	if (applet->popup_menu)
+		return;
+
+	applet->popup_menu = gtk_menu_new ();
+
+	/* menu item - no# notes */
+	item = gtk_menu_item_new_with_label ("???");
+	applet->menu_tip = item;
+	gtk_widget_set_sensitive (item, FALSE);
+	gtk_widget_show (item);
+	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
+
+	/* separator */
+	item = gtk_separator_menu_item_new ();
+	gtk_widget_show (item);
+	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
+	
+	/* menu item - New Note */
+	item = gtk_image_menu_item_new_with_mnemonic (_("_New Note"));
+	image = gtk_image_new_from_stock (GTK_STOCK_NEW, GTK_ICON_SIZE_MENU);
+	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
+	g_signal_connect_swapped (item, "activate",
+			G_CALLBACK (popup_add_note), applet);
+	gtk_widget_show (image);
+	gtk_widget_show (item);
+	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
+
+	/* menu item - Show Notes */
+	item = gtk_check_menu_item_new_with_mnemonic (_("_Show Notes"));
+	applet->menu_show = item;
+	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
+			gconf_client_get_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/visible", NULL));
+	g_signal_connect_swapped (item, "toggled",
+			G_CALLBACK (popup_toggle_show_notes), applet);
+	gtk_widget_show (item);
+	gtk_container_add (GTK_CONTAINER (applet->popup_menu), item);
+	
+	stickynotes_applet_update_tooltips ();
+}
+
+/* Applet Callback : Mouse button press on the applet. */
+gboolean
+applet_button_cb (GtkWidget         *widget,
+		  GdkEventButton    *event,
+		  StickyNotesApplet *applet)
+{
+	if (event->button == 1)
+	{
+		stickynote_applet_ensure_popup (applet);
+		if (applet->popup_menu)
+		{
+			gtk_menu_popup (GTK_MENU (applet->popup_menu),
+					NULL, NULL,
+					position_menu, applet->w_applet,
+					event->button, event->time);
+		}
+		return TRUE;
+	}
+	return FALSE;
 }
 
 /* Applet Callback : Keypress on the applet. */
-gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *applet)
+gboolean
+applet_key_cb (GtkWidget         *widget,
+	       GdkEventKey       *event,
+	       StickyNotesApplet *applet)
 {
-	if (event->type == GDK_KEY_PRESS && event->keyval == GDK_Return)
-		stickynotes_applet_do_default_action(gtk_widget_get_screen(applet->w_applet));	
-	else
-		return FALSE;
-	
-	return TRUE;
+	switch (event->keyval)
+	{
+		case GDK_KP_Space:
+		case GDK_space:
+		case GDK_KP_Enter:
+		case GDK_Return:
+			stickynote_applet_ensure_popup (applet);
+			if (applet->popup_menu) {
+				gtk_menu_popup (GTK_MENU (applet->popup_menu),
+						NULL, NULL,
+						position_menu, applet->w_applet,
+						0, event->time);
+			}
+			return TRUE;
+	}
+	return FALSE;
 }
 
 /* Applet Callback : Cross (enter or leave) the applet. */
@@ -315,7 +454,6 @@ void preferences_save_cb(gpointer data)
 	gint height = gtk_adjustment_get_value(stickynotes->w_prefs_height);
 	gboolean sys_color = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_color));
 	gboolean sys_font = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font));
-	gint click_behavior = gtk_option_menu_get_history(GTK_OPTION_MENU(stickynotes->w_prefs_click));
 	gboolean sticky = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky));
 	gboolean force_default = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force));
 
@@ -327,8 +465,6 @@ void preferences_save_cb(gpointer data)
 		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", sys_color, NULL);
 	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL))
 		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", sys_font, NULL);
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL))
-		gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
 	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
 		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
 	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL))
