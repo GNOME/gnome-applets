@@ -129,6 +129,7 @@ applet_fill (PanelApplet *applet)
     GtkWidget *cdplayer;
     CDPlayerData *cd;
     BonoboUIComponent *component;
+    GtkTooltips *tooltips;
     int err;
 
     cd = g_new0(CDPlayerData, 1);
@@ -141,13 +142,20 @@ applet_fill (PanelApplet *applet)
     g_signal_connect (G_OBJECT(cdplayer), "destroy", G_CALLBACK (cdplayer_destroy), NULL);
     g_signal_connect_after (G_OBJECT (cdplayer), "realize", G_CALLBACK (cdplayer_realize), cd);
     gtk_widget_show(cdplayer);
+    
+    tooltips = gtk_tooltips_new ();
 
     cd->panel.box = NULL;
     cd->panel.play_control.stop = control_button_factory(stop_xpm, G_CALLBACK(cdplayer_stop), cd);
+    gtk_tooltips_set_tip (tooltips, cd->panel.play_control.stop, _("Stop"), NULL);
     cd->panel.play_control.play_pause = control_button_factory(play_pause_xpm, G_CALLBACK(cdplayer_play_pause), cd);
+    gtk_tooltips_set_tip (tooltips, cd->panel.play_control.play_pause, _("Play / Pause"), NULL);
     cd->panel.play_control.eject = control_button_factory(eject_xpm, G_CALLBACK(cdplayer_eject), cd);
+    gtk_tooltips_set_tip (tooltips, cd->panel.play_control.eject, _("Eject"), NULL);
     cd->panel.track_control.prev = control_button_factory(prev_xpm, G_CALLBACK(cdplayer_prev), cd);
+    gtk_tooltips_set_tip (tooltips, cd->panel.track_control.prev, _("Previous Track"), NULL);
     cd->panel.track_control.next = control_button_factory(next_xpm, G_CALLBACK(cdplayer_next), cd);
+    gtk_tooltips_set_tip (tooltips, cd->panel.track_control.next, _("Next Track"), NULL);
     led_init();
     led_create_widgets(&cd->panel.time, &cd->panel.track_control.display, (gpointer)cd);
 
