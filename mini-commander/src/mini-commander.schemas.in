@@ -154,5 +154,40 @@
         </locale>        
       </schema>
 
+      <!--
+          Keep these deprecated keys around in order to keep older configurations
+          working correctly. See bug #91194
+        -->
+
+      <schema>
+        <key>/schemas/apps/mini-commander/prefs/macro_patterns</key>
+        <owner>mini-commander-applet</owner>
+        <type>list</type>
+        <list_type>string</list_type>
+        <default>[blah]</default> <!-- The default list is set by mc-install-default-macros -->
+        <locale name="C">
+          <short>Macro pattern list</short>
+          <long>
+            This per-applet key is deprecated in favour of the global key,
+            /schemas/apps/mini-commander-global/macro_patterns.
+          </long>
+        </locale>        
+      </schema>
+
+      <schema>
+        <key>/schemas/apps/mini-commander/prefs/macro_commands</key>
+        <owner>mini-commander-applet</owner>
+        <type>list</type>
+        <list_type>string</list_type>
+        <default>[blah]</default> <!-- The default list is set by mc-install-default-macros -->
+        <locale name="C">
+          <short>Macro command list</short>
+          <long>
+            This per-applet key is deprecated in favour of the global key,
+            /schemas/apps/mini-commander-global/macro_patterns.
+          </long>
+        </locale>        
+      </schema>
+
     </schemalist> 
 </gconfschemafile>

@@ -54,6 +54,13 @@ void         gconf_shutdown_daemon  (GError **err);
 #define MC_PATTERNS_SHEMA_KEY "/schemas/apps/mini-commander-global/macro_patterns"
 #define MC_COMMANDS_SHEMA_KEY "/schemas/apps/mini-commander-global/macro_commands"
 
+/*
+ * Keep these old schemas around in order to keep
+ * old configurations from breaking. See bug #91194
+ */
+#define MC_DEPRECATED_PATTERNS_SHEMA_KEY "/schemas/apps/mini-commander/prefs/macro_patterns"
+#define MC_DEPRECATED_COMMANDS_SHEMA_KEY "/schemas/apps/mini-commander/prefs/macro_commands"
+
 static void
 install_default_macros_list (GConfClient *client,
 			     const char  *key,
@@ -148,6 +155,9 @@ main (int argc, char **argv)
 
 	install_default_macros_list (client, MC_PATTERNS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, pattern));
 	install_default_macros_list (client, MC_COMMANDS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, command));
+
+	install_default_macros_list (client, MC_DEPRECATED_PATTERNS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, pattern));
+	install_default_macros_list (client, MC_DEPRECATED_COMMANDS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, command));
 
 	gconf_client_suggest_sync (client, &error);
 	if (error) {
