@@ -25,6 +25,7 @@
 #include <panel-applet.h>
 #include <gnome.h>
 #include <libgnomevfs/gnome-vfs.h>
+#include "trash-monitor.h"
 
 #define TRASH_ICON_EMPTY	"gnome-fs-trash-empty"
 #define TRASH_ICON_EMPTY_ACCEPT "gnome-fs-trash-empty-accept"
@@ -54,7 +55,8 @@ struct _TrashApplet
 	gboolean is_empty;
 	gboolean drag_hover;
 
-	GnomeVFSMonitorHandle *trash_monitor;
+	TrashMonitor *monitor;
+	guint monitor_signal_id;
 };
 
 #endif /* __TRASH_APPLET_H__ */

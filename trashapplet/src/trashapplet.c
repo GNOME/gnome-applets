@@ -37,6 +37,7 @@
 
 #include "eel-extension.h"
 #include "trashapplet.h"
+#include "trash-monitor.h"
 
 static void	trash_applet_do_empty 	(BonoboUIComponent *component,
 					 TrashApplet *ta,
@@ -127,59 +128,14 @@ trash_applet_get_main_trash_directory_uri (void)
 	return retval;
 }
 
-static guint
-get_dir_count (const GnomeVFSURI *path_uri)
-{
-	GnomeVFSResult res;
-	GList *dirlist, *tmp;
-	gchar *path;
-	guint retval = 0;
-
-	g_return_val_if_fail (path_uri != NULL, 0);
-
-	path = gnome_vfs_uri_to_string (path_uri, GNOME_VFS_URI_HIDE_NONE);
-
-	res = gnome_vfs_directory_list_load (&dirlist, path,
-			GNOME_VFS_FILE_INFO_FOLLOW_LINKS);
-	if (res != GNOME_VFS_OK) {
-		g_warning (_("GNOME VFS Error: %s"), gnome_vfs_result_to_string (res));
-		g_free(path);
-		return 0;
-	}
-
-	for (tmp = g_list_first (dirlist); tmp != NULL; tmp = g_list_next (tmp)) {
-		GnomeVFSFileInfo *info = (GnomeVFSFileInfo *) tmp->data;
-		
-		/* FIXME - I don't know how to make this portable; this should
-		 * be portable enought on each system on which GNOME runs,
-		 * though.
-		 */
-		if ((0 == strcmp (info->name, ".")) ||
-		    (0 == strcmp (info->name, "..")))
-			continue;
-
-		retval++;
-	}
-
-	gnome_vfs_file_info_list_free (dirlist);
-
-	g_free (path);
-
-	return retval;
-}
-
 static void
 trash_applet_update_item_count (TrashApplet *trash_applet)
 {
-	GnomeVFSURI *trash_dir;
 	BonoboUIComponent *popup_component;
 
 	g_return_if_fail (trash_applet != NULL);
 	
-	trash_dir = trash_applet_get_main_trash_directory_uri ();
-	trash_applet->item_count = get_dir_count (trash_dir);
-
-	gnome_vfs_uri_unref (trash_dir);
+	trash_applet->item_count = trash_monitor_get_item_count (trash_applet->monitor);
 
 	trash_applet->is_empty = (trash_applet->item_count == 0);
 
@@ -408,11 +364,7 @@ trash_applet_do_empty (BonoboUIComponent *component,
 		    TrashApplet *ta,
 		    const gchar *cname)
 {
-       GnomeVFSURI *trash_dir, *file_uri;
        GnomeVFSAsyncHandle *hnd;
-       GnomeVFSResult res;
-       GList *dir_list, *uri_list, *l;
-       gchar *path;
 
        g_return_if_fail (PANEL_IS_APPLET (ta->applet));
 
@@ -422,48 +374,8 @@ trash_applet_do_empty (BonoboUIComponent *component,
        if (!confirm_empty_trash (GTK_WIDGET (ta->applet)))
 	       return;
 
-       trash_dir = trash_applet_get_main_trash_directory_uri ();
-       path = gnome_vfs_uri_to_string (trash_dir, GNOME_VFS_URI_HIDE_NONE);
-
-       res = gnome_vfs_directory_list_load (&dir_list, path,
-                       GNOME_VFS_FILE_INFO_FOLLOW_LINKS);
-       if (res != GNOME_VFS_OK) {
-               g_warning ("GNOME VFS Error: %s", gnome_vfs_result_to_string (res));
-               g_free (path);
-               return;
-       }
-
-       /* First pass: we build the URI list... */
-       uri_list = NULL;
-       for (l = g_list_first (dir_list); l; l = g_list_next (l)) {
-               GnomeVFSFileInfo *file_info = (GnomeVFSFileInfo *) l->data;
-
-               if ((0 == strcmp (file_info->name, ".")) ||
-                   (0 == strcmp (file_info->name, "..")))
-                       continue;
-
-               file_uri = gnome_vfs_uri_append_file_name (trash_dir, file_info->name);
-
-               uri_list = g_list_prepend (uri_list, file_uri);
-       }
-
-       /* ... Then we feed it to the xfer function; we use an async method,
-        * since the trash might be arbitrarly big, and we don't want the
-        * emptying to block; the callback is used to update a progress
-        * window a-la-Nautilus.
-        */
-       gnome_vfs_async_xfer (&hnd, uri_list, NULL,
-                               GNOME_VFS_XFER_DELETE_ITEMS | GNOME_VFS_XFER_RECURSIVE,
-                               GNOME_VFS_XFER_ERROR_MODE_ABORT,
-                               GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
-                               GNOME_VFS_PRIORITY_DEFAULT,
-                               update_transfer_callback, ta,
-                               NULL, NULL);
-
-       /* cleanup */
-       gnome_vfs_file_info_list_free (dir_list);
-       gnome_vfs_uri_list_free (uri_list);
-       gnome_vfs_uri_unref (trash_dir);
+       trash_monitor_empty_trash (ta->monitor,
+				  &hnd, update_transfer_callback, ta);
 }
 
 static void
@@ -569,7 +481,8 @@ destroy_cb (GtkWidget *applet, gpointer data)
 	TrashApplet *trash_applet = (TrashApplet *) data;
 	
 	if (trash_applet) {
-               gnome_vfs_monitor_cancel (trash_applet->trash_monitor);
+	       g_signal_handler_disconnect (trash_applet->monitor,
+					    trash_applet->monitor_signal_id);
 
                g_object_unref (trash_applet->icon);
                g_object_unref (trash_applet->tooltips);
@@ -578,58 +491,172 @@ destroy_cb (GtkWidget *applet, gpointer data)
 	}
 }
 
+static gboolean
+confirm_delete_immediately (GtkWidget *parent_view,
+			    gint num_files,
+			    gboolean all)
+{
+	GdkScreen *screen;
+	GtkWidget *dialog, *hbox, *vbox, *image, *label, *button;
+	gchar *str, *prompt, *detail;
+	int response;
+
+	screen = gtk_widget_get_screen (parent_view);
+	
+	dialog = gtk_dialog_new ();
+	gtk_window_set_screen (GTK_WINDOW (dialog), screen);
+	atk_object_set_role (gtk_widget_get_accessible (dialog), ATK_ROLE_ALERT);
+	gtk_window_set_title (GTK_WINDOW (dialog), _("Delete Immediately?"));
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+	gtk_widget_realize (dialog);
+	gdk_window_set_transient_for (GTK_WIDGET (dialog)->window,
+				      gdk_screen_get_root_window (screen));
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+
+	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 14);
+
+	hbox = gtk_hbox_new (FALSE, 12);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	gtk_widget_show (hbox);
+	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox,
+			    FALSE, FALSE, 0);
+
+	image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_QUESTION,
+					  GTK_ICON_SIZE_DIALOG);
+	gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
+	gtk_widget_show (image);
+	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+
+        vbox = gtk_vbox_new (FALSE, 12);
+        gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+        gtk_widget_show (vbox);
+
+	if (all) {
+		prompt = _("Cannot move items to trash, do you want to delete them immediately?");
+		detail = g_strdup_printf ("None of the %d selected items can be moved to the Trash", num_files);
+	} else {
+		prompt = _("Cannot move some items to trash, do you want to delete these immediately?");
+		detail = g_strdup_printf ("%d of the selected items cannot be moved to the Trash", num_files);
+	}
+
+	str = g_strconcat ("<span weight=\"bold\" size=\"larger\">",
+			   prompt, "</span>", NULL);
+	label = gtk_label_new (str);
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+	gtk_widget_show (label);
+	g_free (str);
+
+	label = gtk_label_new (detail);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+	gtk_widget_show (label);
+	g_free (detail);
+
+	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
+			       GTK_RESPONSE_CANCEL);
+	gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_DELETE,
+			       GTK_RESPONSE_YES);
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog),
+					 GTK_RESPONSE_YES);
+
+	response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+	gtk_object_destroy (GTK_OBJECT (dialog));
+
+	return response == GTK_RESPONSE_YES;
+}
+
 static void
 drag_data_received_cb (GtkWidget *applet, GdkDragContext *context,
 		       gint x, gint y,
 		       GtkSelectionData *selection_data,
 		       guint info, guint time, gpointer data)
 {
-  	GList	*list, *scan;
-	GnomeVFSResult trash_check;
-	GnomeVFSURI *trash_uri;
+  	GList *list, *scan;
+	GList *source_uri_list, *target_uri_list, *unmovable_uri_list;
+	GnomeVFSResult result;
 	TrashApplet *trash_applet = (TrashApplet *) data;
-
-	trash_uri = trash_applet_get_main_trash_directory_uri ();
-	if (trash_uri == NULL)
-		return;
 
 	list = gnome_vfs_uri_list_parse (selection_data->data);
 
+	source_uri_list = NULL;
+	target_uri_list = NULL;
+	unmovable_uri_list = NULL;
 	for (scan = g_list_first (list); scan; scan = g_list_next (scan)) {
-		const GnomeVFSURI *source_uri = scan->data;
-		const GnomeVFSURI *target_uri;
+		GnomeVFSURI *source_uri = scan->data;
+		GnomeVFSURI *trash_uri, *target_uri;
 		gboolean is_local;
 		gchar *source_basename;
-		GnomeVFSResult result;
 
-		is_local = gnome_vfs_uri_is_local (source_uri);
-		if (! is_local) {
+		/* find the trash directory for this file */
+		result = gnome_vfs_find_directory (source_uri,
+						   GNOME_VFS_DIRECTORY_KIND_TRASH,
+						   &trash_uri, TRUE, FALSE, 0);
+		if (result != GNOME_VFS_OK) {
+			unmovable_uri_list = g_list_prepend (unmovable_uri_list,
+							     gnome_vfs_uri_ref (source_uri));
 			continue;
-		} 
+		}
 
 		source_basename = gnome_vfs_uri_extract_short_name
 			(source_uri);
 
 		target_uri = gnome_vfs_uri_append_file_name(trash_uri,
-				source_basename);
-
-		result = gnome_vfs_xfer_uri (source_uri, target_uri,
-				GNOME_VFS_XFER_REMOVESOURCE | GNOME_VFS_XFER_RECURSIVE,
-				GNOME_VFS_XFER_ERROR_MODE_ABORT,
-				GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
-				NULL, data);
-
-		if (result != GNOME_VFS_OK) {
-                       error_dialog (trash_applet, _("Unable to move to trash:\n%s"),
-                                       gnome_vfs_result_to_string (result));
-
-		}
-		
+							    source_basename);
 		g_free (source_basename);
+		gnome_vfs_uri_unref (trash_uri);
 
+		source_uri_list = g_list_prepend (source_uri_list,
+						  gnome_vfs_uri_ref (source_uri));
+		target_uri_list = g_list_prepend (target_uri_list,
+						  target_uri);
 	}
 
 	gnome_vfs_uri_list_free(list);
+
+	/* we might have added a trash dir, so recheck */
+	trash_monitor_recheck_trash_dirs (trash_applet->monitor);
+
+	if (source_uri_list) {
+		result = gnome_vfs_xfer_uri_list (source_uri_list, target_uri_list,
+						  GNOME_VFS_XFER_REMOVESOURCE |
+						  GNOME_VFS_XFER_RECURSIVE,
+						  GNOME_VFS_XFER_ERROR_MODE_ABORT,
+						  GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
+						  NULL, NULL);
+		gnome_vfs_uri_list_free (source_uri_list);
+		gnome_vfs_uri_list_free (target_uri_list);
+		if (result != GNOME_VFS_OK) {
+			error_dialog (trash_applet, _("Unable to move to trash:\n%s"),
+				      gnome_vfs_result_to_string (result));
+		}
+	}
+	if (unmovable_uri_list) {
+		if (confirm_delete_immediately (trash_applet->applet,
+						g_list_length (unmovable_uri_list),
+						source_uri_list == NULL)) {
+			result = gnome_vfs_xfer_delete_list (unmovable_uri_list,
+							     GNOME_VFS_XFER_ERROR_MODE_ABORT,
+							     GNOME_VFS_XFER_RECURSIVE,
+							     NULL, NULL);
+		} else {
+			result = GNOME_VFS_OK;
+		}
+		gnome_vfs_uri_list_free (unmovable_uri_list);
+		if (result != GNOME_VFS_OK) {
+			error_dialog (trash_applet, _("Unable to move to trash:\n%s"),
+				      gnome_vfs_result_to_string (result));
+		}
+	}
 }
 
 static gboolean
@@ -737,11 +764,8 @@ size_allocate_cb (PanelApplet *applet,
 }
 
 static void
-trash_monitor_cb (GnomeVFSMonitorHandle    *handle,
-                 const gchar              *monitor_uri,
-                 const gchar              *info_uri,
-                 GnomeVFSMonitorEventType  type,
-                 TrashApplet              *trash_applet)
+item_count_changed_cb (TrashMonitor *monitor,
+		       TrashApplet *trash_applet)
 {
        trash_applet_update_item_count (trash_applet);
 
@@ -800,19 +824,10 @@ trash_applet_fill (PanelApplet *applet)
 	if (trash_dir_uri != NULL)
 	  trash_dir = gnome_vfs_uri_to_string (trash_dir_uri, GNOME_VFS_URI_HIDE_NONE);
 
-        /* VFS monitor for directory changes */
-        res = gnome_vfs_monitor_add (&hnd,
-                                     trash_dir, GNOME_VFS_MONITOR_DIRECTORY,
-                                     (GnomeVFSMonitorCallback) trash_monitor_cb,                                     ta);
-        if (res != GNOME_VFS_OK) {
-                error_dialog (ta, _("Unable to acquire monitor of the Trash directory"));
-                return FALSE;
-        }
-
-        gnome_vfs_uri_unref (trash_dir_uri);
-        g_free (trash_dir);
-
-        ta->trash_monitor = hnd;
+	ta->monitor = trash_monitor_get ();
+	ta->monitor_signal_id =
+		g_signal_connect (ta->monitor, "item_count_changed",
+				  G_CALLBACK (item_count_changed_cb), ta);
 
         /* fetch the icon theme */
         ta->icon_theme = gtk_icon_theme_get_default ();
