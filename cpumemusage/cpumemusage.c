@@ -58,6 +58,8 @@ static GtkWidget *applet;
 static gint size;
 static gint spacing;
 
+static void applet_change_size(GtkWidget *widget, PanelSizeType o);
+
 static gint
 update_cpu_values (void)
 {
@@ -86,12 +88,13 @@ static GtkWidget *
 pack_procbars(gboolean vertical)
 {
 	GtkWidget *box;
+	PanelSizeType s;
 	
 	if (vertical) {
-		box = gtk_hbox_new (TRUE, GNOME_PAD_SMALL >> 1);
+		box = gtk_hbox_new (TRUE, 0);
 		//gtk_widget_set_usize (box, 40, 80);
 	} else {
-		box = gtk_vbox_new (TRUE, GNOME_PAD_SMALL >> 1);
+		box = gtk_vbox_new (TRUE, 0);
 		//gtk_widget_set_usize (box, 80, 40);
 	}
 
@@ -104,6 +107,24 @@ pack_procbars(gboolean vertical)
 		gnome_proc_bar_set_orient (GNOME_PROC_BAR (swap), vertical);
 		gtk_box_pack_start_defaults (GTK_BOX (box), swap);
 	}
+
+	switch (applet_widget_get_panel_size (APPLET_WIDGET (applet))) {
+	case GNOME_Panel_SIZE_TINY:
+		s = SIZE_TINY;
+		break;
+	case GNOME_Panel_SIZE_STANDARD:
+		s = SIZE_STANDARD;
+		break;
+	case GNOME_Panel_SIZE_LARGE:
+		s = SIZE_LARGE;
+		break;
+	case GNOME_Panel_SIZE_HUGE:
+		s = SIZE_HUGE;
+		break;
+	default:
+		s = SIZE_STANDARD;
+	}
+	applet_change_size (NULL, s);
 
 	gtk_widget_show_all (box);
 
@@ -150,7 +171,8 @@ cpumemusage_widget ()
 
 
 
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+static void
+applet_change_orient(GtkWidget *w, PanelOrientType o)
 {
 	GtkWidget *box;
 	gboolean vertical;
@@ -192,11 +214,12 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 		gtk_widget_set_usize (cpumemusage, WIDTH, size);
 }
 
-static void applet_change_size(GtkWidget *widget, PanelSizeType o)
+static void
+applet_change_size(GtkWidget *widget, PanelSizeType s)
 {
 	GNOME_Panel_OrientType orient;
 
-	switch (o) {
+	switch (s) {
 	case SIZE_TINY:
 		size = 24;
 		spacing = 0;
@@ -215,7 +238,6 @@ static void applet_change_size(GtkWidget *widget, PanelSizeType o)
 		break;
 	}
 
-		
 	orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
 
 	gtk_box_set_spacing (GTK_BOX (cpumemusage), spacing);
