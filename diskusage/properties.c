@@ -157,7 +157,7 @@ GtkWidget *create_frame(void)
 	color=gtk_vbox_new( 5, TRUE );
 	size =gtk_hbox_new( 5, TRUE );
 	speed=gtk_hbox_new( 5, TRUE );
-	gtk_container_border_width( GTK_CONTAINER(box), 5 );
+	gtk_container_set_border_width( GTK_CONTAINER(box), 5 );
 	        
 	color1=gtk_hbox_new( 5, TRUE );
 	color2=gtk_hbox_new( 5, TRUE );

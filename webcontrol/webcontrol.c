@@ -203,7 +203,7 @@ properties_cb (AppletWidget *widget, gpointer data)
 	gtk_window_set_title(GTK_WINDOW(pb), _("WebControl Properties"));
 
 	vbox = gtk_vbox_new(GNOME_PAD, FALSE);
-	gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
 
 	urlcheck = gtk_check_button_new_with_label (_("Display URL label"));
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(urlcheck), WC.properties.showurl);

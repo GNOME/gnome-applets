@@ -267,7 +267,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	vbox = gtk_vbox_new(0, TRUE);
 
 	frame = gtk_frame_new(_("Clock"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
@@ -300,7 +300,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(spin);
 
 	frame = gtk_frame_new(_("Mail"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
@@ -375,10 +375,10 @@ void property_show(AppletWidget *applet, gpointer data)
 	/* theme tab */
 
 	frame = gtk_frame_new(NULL);
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 
 	vbox = gtk_vbox_new(0, TRUE);
-	gtk_container_border_width (GTK_CONTAINER (vbox), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 

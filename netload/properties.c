@@ -120,7 +120,7 @@ GtkWidget *create_general_frame(void)
 	color=gtk_hbox_new( 5, TRUE );
 	size =gtk_hbox_new( 5, TRUE );
 	speed=gtk_hbox_new( 5, TRUE );
-	gtk_container_border_width( GTK_CONTAINER(box), 5 );
+	gtk_container_set_border_width( GTK_CONTAINER(box), 5 );
 	        
 	gcolor_gcs = gnome_color_picker_new();
 	bcolor_gcs = gnome_color_picker_new();

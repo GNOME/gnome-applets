@@ -182,7 +182,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(vbox);
 
 	frame = gtk_frame_new(_("Articles"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
@@ -229,7 +229,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(label);
 
 	frame = gtk_frame_new(_("Browser"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
@@ -246,7 +246,7 @@ void property_show(AppletWidget *applet, gpointer data)
 /* -- not implemented yet -- */
 
 	frame = gtk_frame_new(_("Ticker Information (unimplemented)"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
@@ -335,7 +335,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(vbox);
 
 	frame = gtk_frame_new(_("Scrolling"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
@@ -356,7 +356,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(button);
 
 	frame = gtk_frame_new(_("Speed"));
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 

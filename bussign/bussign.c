@@ -86,7 +86,7 @@ int main(int argc, char **argv)
   sg_post_box = gtk_hbox_new(FALSE, 0);
   sg_post_button = gtk_button_new_with_label("Post Message");
   sg_post_text = gtk_entry_new_with_max_length(128);
-  gtk_container_border_width(GTK_CONTAINER(sg_post_dialog), 4);
+  gtk_container_set_border_width(GTK_CONTAINER(sg_post_dialog), 4);
   gtk_container_add(GTK_CONTAINER(sg_post_dialog), sg_post_box);
   gtk_box_pack_start(GTK_BOX(sg_post_box), sg_post_text, TRUE, TRUE, 0);
   gtk_box_pack_start(GTK_BOX(sg_post_box), sg_post_button, TRUE, TRUE, 0);

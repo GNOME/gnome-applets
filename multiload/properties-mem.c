@@ -147,7 +147,7 @@ create_frame (void)
 	color_b = gtk_hbox_new (5, TRUE);
 	size    = gtk_hbox_new (5, TRUE);
 	speed   = gtk_hbox_new (5, TRUE);
-	gtk_container_border_width (GTK_CONTAINER(box), 5);
+	gtk_container_set_border_width (GTK_CONTAINER(box), 5);
 	        
 	ucolor_gcs  = gnome_color_picker_new ();
 	scolor_gcs  = gnome_color_picker_new ();

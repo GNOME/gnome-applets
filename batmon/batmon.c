@@ -333,7 +333,7 @@ create_batmon_window (void)
 	/* Begin definition of window */
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 	gtk_window_set_title (GTK_WINDOW (window), _("APM Stats"));
-	gtk_container_border_width (GTK_CONTAINER (window), 10);
+	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 	gtk_signal_connect (GTK_OBJECT (window), "delete_event",
 			    (GtkSignalFunc) hide_batmon_window,
 			    NULL);

@@ -2179,12 +2179,12 @@ setup(void)
   widg = gtk_frame_new(_("More"));
   gtk_widget_show(widg);
   gtk_box_pack_start(GTK_BOX(vbox), widg, FALSE, FALSE, 0);
-  gtk_container_border_width(GTK_CONTAINER(widg), 4);
+  gtk_container_set_border_width(GTK_CONTAINER(widg), 4);
 
   more = gtk_button_new();
   gtk_widget_show(more);
   gtk_container_add(GTK_CONTAINER(widg), more);
-  gtk_container_border_width(GTK_CONTAINER(more), 4);
+  gtk_container_set_border_width(GTK_CONTAINER(more), 4);
   gtk_signal_connect(GTK_OBJECT(more), "clicked",
 		     GTK_SIGNAL_FUNC(showpop_cb), NULL);
 
@@ -2292,7 +2292,7 @@ setup(void)
       gtk_widget_show(widg);
       gtk_frame_set_label_align(GTK_FRAME(widg), 0.5, 0.5);
       gtk_box_pack_start(GTK_BOX(hbox), widg, FALSE, FALSE, 0);
-      gtk_container_border_width(GTK_CONTAINER(widg), 4);
+      gtk_container_set_border_width(GTK_CONTAINER(widg), 4);
       more = gtk_alignment_new(0.5, 0.0, 0.0, 0.0);
       gtk_widget_show(more);
       gtk_container_add(GTK_CONTAINER(widg), more);

@@ -219,7 +219,7 @@ properties(AppletWidget *applet, gpointer data)
 	gtk_window_set_title(GTK_WINDOW(propbox), _("GKB settings"));
 	gtk_window_set_policy(GTK_WINDOW(propbox), FALSE, FALSE, TRUE);
 
-	gtk_container_border_width( GTK_CONTAINER(nbox), 1 );
+	gtk_container_set_border_width( GTK_CONTAINER(nbox), 1 );
 
         ent1 = gtk_entry_new_with_max_length (5);
         gtk_object_set_data(GTK_OBJECT(propbox),"e1",ent1);
