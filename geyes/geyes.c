@@ -28,15 +28,12 @@
 EyesApplet eyes_applet = {0};
 
 /* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
- * printer applet (thanks to Inigo Serna who pointed this code out to me) */
+ * printer applet (thanks to Inigo Serna who pointed this code out to me)
+ * But that code was wrong - George */
 static void 
 applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
-        GtkStyle *new_style;
-        new_style = gtk_rc_get_style (src);
-        gtk_style_ref (new_style);
-        gtk_widget_set_style (dest, new_style);
-        gtk_style_unref (new_style);
+	gtk_widget_set_rc_style(dest);
         gtk_widget_queue_draw (dest);
 }
 

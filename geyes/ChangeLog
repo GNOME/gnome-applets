@@ -1,3 +1,10 @@
+Fri Aug 20 18:27:05 1999  George Lebl  <jirka@5z.com>
+
+	* geyes.c: fixup the style setting, since get_rc_style can
+          return NULL, we use gtk_widget_set_rc_style
+
+	* themes.c: add #include <ctype.h> for isdigit
+
 1999-08-04  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* geyes.c (create_eyes): pass a pointer to the eyes_applet

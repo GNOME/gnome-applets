@@ -22,6 +22,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <limits.h>
+#include <ctype.h>
 #include "geyes.h"
 
 extern EyesApplet eyes_applet;
