@@ -1,9 +1,20 @@
-/* GNOME drivemount applet
- * (C) 1999 John Ellis
+/*
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
- * Author: John Ellis
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
+
+#include <glib.h>
 
 #include <config.h>
 #include <stdio.h>
@@ -11,19 +22,20 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include <gnome.h>
-#include <applet-widget.h>
+#include <libgnome/libgnome.h>
+#include <libgnomeui/libgnomeui.h>
+#include <panel-applet.h>
+
+#ifndef _DRIVEMOUNT_APPLET_H_
+#define _DRIVEMOUNT_APPLET_H_
+
+G_BEGIN_DECLS
 
 #define ICON_HEIGHT 10
 #define ICON_WIDTH  40
 
-#define SIZEHINT_DEFAULT 46
-#define SIZEHINT_MAX 86		/* Set this to 46 to disable scaling larger
-				 * than the default size, but still allow
-				 * scaling smaller.
-				 */
-
 typedef struct _DriveData DriveData;
+
 struct _DriveData
 {
 	GtkWidget *applet;
@@ -36,7 +48,7 @@ struct _DriveData
 	gint autofs_friendly;
 	gchar *mount_base;
 	gchar *mount_point;
-	PanelOrientType orient;
+	PanelAppletOrient orient;
 	gint sizehint;
 	gint scale_applet;
 	gint auto_eject;
@@ -62,8 +74,5 @@ struct _DriveData
 void redraw_pixmap(DriveData *dd);
 void start_callback_update(DriveData *dd);
 
-void property_load(const gchar *path, DriveData *dd);
-void property_save(const gchar *path, DriveData *dd);
-void property_show(AppletWidget *applet, gpointer data);
-
-
+G_END_DECLS
+#endif

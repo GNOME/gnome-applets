@@ -1,42 +1,46 @@
-/* GNOME drivemount applet
- * (C) 1999 John Ellis
+/*
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
- * Author: John Ellis
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include "drivemount.h"
+#include "properties.h"
 
-static gchar *remove_level_from_path(const gchar *path)
+static gint property_destroy_cb( GtkWidget *w, DriveData *dd);
+static void phelp_cb (GtkWidget *w, gint tab, gpointer data);
+static void set_icon_entry_sensitivity(DriveData *dd, gint val);
+static void autofs_friendly_cb(GtkWidget *w, gpointer data);
+static void scale_applet_cb(GtkWidget *w, gpointer data);
+static void auto_eject_applet_cb(GtkWidget *w, gpointer data);
+static void pixmap_floppy_cb(GtkWidget *widget, gpointer data);
+static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data);
+static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data);
+static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data);
+static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data);
+static void pixmap_custom_cb(GtkWidget *widget, gpointer data);
+static void update_delay_cb(GtkWidget *widget, gpointer data);
+static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd);
+static gchar *remove_level_from_path(const gchar *path);
+static void sync_mount_base(DriveData *dd);
+
+
+void
+property_load(const gchar *path, DriveData *dd)
 {
-	gchar *new_path;
-	const gchar *ptr;
-	gint p;
-
-	if (!path) return NULL;
-
-	p = strlen(path) - 1;
-	if (p < 0) return NULL;
-
-	ptr = path;
-	while(ptr[p] != '/' && p > 0) p--;
-
-	if (p == 0 && ptr[p] == '/') p++;
-	new_path = g_strndup(path, (guint)p);
-	return new_path;
-}
-
-static void sync_mount_base(DriveData *dd)
-{
-	g_free(dd->mount_base);
-	dd->mount_base = remove_level_from_path(dd->mount_point);
-}
-
-void property_load(const gchar *path, DriveData *dd)
-{
-        gnome_config_push_prefix (path);
-
-        dd->interval = gnome_config_get_int("mount/interval=10");
+/*
+	gnome_config_push_prefix (path);
+	dd->interval = gnome_config_get_int("mount/interval=10");
 	dd->device_pixmap = gnome_config_get_int("mount/pixmap=0");
 	dd->scale_applet = gnome_config_get_int("mount/scale=0");
 
@@ -50,182 +54,51 @@ void property_load(const gchar *path, DriveData *dd)
 	g_free(dd->custom_icon_in);
 	dd->custom_icon_in = gnome_config_get_string("mount/custom_icon_mounted=");
 	if (dd->custom_icon_in && strlen(dd->custom_icon_in) < 1)
-		{
+	{
 		g_free(dd->custom_icon_in);
 		dd->custom_icon_in = NULL;
-		}
+	}
 
 	g_free(dd->custom_icon_out);
 	dd->custom_icon_out = gnome_config_get_string("mount/custom_icon_unmounted=");
 	if (dd->custom_icon_out && strlen(dd->custom_icon_out) < 1)
-		{
+	{
 		g_free(dd->custom_icon_out);
 		dd->custom_icon_out = NULL;
-		}
+	}
 
 	gnome_config_pop_prefix ();
+*/
 }
 
-void property_save(const gchar *path, DriveData *dd)
+void
+property_save(const gchar *path, DriveData *dd)
 {
-        gnome_config_push_prefix(path);
+/*
+	gnome_config_push_prefix(path);
 
-        gnome_config_set_int("mount/interval", dd->interval);
-        gnome_config_set_int("mount/pixmap", dd->device_pixmap);
-        gnome_config_set_int("mount/scale", dd->scale_applet);
+	gnome_config_set_int("mount/interval", dd->interval);
+	gnome_config_set_int("mount/pixmap", dd->device_pixmap);
+	gnome_config_set_int("mount/scale", dd->scale_applet);
 
 	gnome_config_set_int("mount/auto_eject", dd->auto_eject);
 
-        gnome_config_set_string("mount/mountpoint", dd->mount_point);
-        gnome_config_set_int("mount/autofs_friendly", dd->autofs_friendly);
+	gnome_config_set_string("mount/mountpoint", dd->mount_point);
+	gnome_config_set_int("mount/autofs_friendly", dd->autofs_friendly);
 
 	gnome_config_set_string("mount/custom_icon_mounted", dd->custom_icon_in);
 	gnome_config_set_string("mount/custom_icon_unmounted", dd->custom_icon_out);
 
-        gnome_config_pop_prefix();
+	gnome_config_pop_prefix();
 	gnome_config_sync();
 	gnome_config_drop_all();
+*/
 }
 
-static void set_icon_entry_sensitivity(DriveData *dd, gint val)
+void
+property_show(PanelApplet *applet, gpointer data)
 {
-	gtk_widget_set_sensitive(dd->icon_entry_in, val);
-	gtk_widget_set_sensitive(dd->icon_entry_out, val);
-}
-
-static void autofs_friendly_cb(GtkWidget *w, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_autofs_friendly = GTK_TOGGLE_BUTTON (w)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void scale_applet_cb(GtkWidget *w, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_scale_applet = GTK_TOGGLE_BUTTON (w)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void auto_eject_applet_cb(GtkWidget *w, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_auto_eject = GTK_TOGGLE_BUTTON (w)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 0;
-	set_icon_entry_sensitivity(dd, FALSE);
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-	return;
-}
-
-static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 1;
-	set_icon_entry_sensitivity(dd, FALSE);
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-        return;
-}
-
-static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 2;
-	set_icon_entry_sensitivity(dd, FALSE);
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-        return;
-}
-
-static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 4;
-	set_icon_entry_sensitivity(dd, FALSE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-        return;
-}
-
-static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 3;
-	set_icon_entry_sensitivity(dd, FALSE);
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-        return;
-}
-
-static void pixmap_custom_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = -1;
-	set_icon_entry_sensitivity(dd, TRUE);
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-        return;
-}
-
-static void update_delay_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-        dd->prop_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dd->prop_spin));
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-        return;
-}
-
-static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd)
-{
-	gchar *new_file;
-
-	if(page_num != -1) return;	/* only do this once, on global signal */
-
-	dd->auto_eject = dd->prop_auto_eject;
-
-	dd->scale_applet = dd->prop_scale_applet;
-	dd->autofs_friendly = dd->prop_autofs_friendly;
-	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
-	if (dd->mount_point) g_free(dd->mount_point);
-	dd->mount_point = g_strdup(new_file);
-	sync_mount_base(dd);
-        dd->interval = dd->prop_interval;
-	if (dd->device_pixmap != dd->prop_device_pixmap)
-		{
-		dd->device_pixmap = dd->prop_device_pixmap;
-		}
-
-	g_free(dd->custom_icon_in);
-	g_free(dd->custom_icon_out);
-	dd->custom_icon_in = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(dd->icon_entry_in));
-	dd->custom_icon_out = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(dd->icon_entry_out));
-
-	redraw_pixmap(dd);
-	start_callback_update(dd);
-
-	/*make the panel save our config*/
-	applet_widget_sync_config(APPLET_WIDGET(dd->applet));
-        return;
-}
-
-static gint property_destroy_cb( GtkWidget *w, DriveData *dd)
-{
-        dd->propwindow = NULL;
-	return FALSE;
-}
-
-static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
-{
-	GnomeHelpMenuEntry help_entry = { "drivemount_applet",
-					  "index.html#DRIVEMOUNTAPPLET-PREFS" };
-	gnome_help_display(NULL, &help_entry);
-}
-
-void property_show(AppletWidget *applet, gpointer data)
-{
-        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
+/*
 	DriveData *dd = data;
 	GtkWidget *frame;
 	GtkWidget *hbox;
@@ -240,12 +113,12 @@ void property_show(AppletWidget *applet, gpointer data)
 	help_entry.name = gnome_app_id;
 
 	if(dd->propwindow)
-		{
-                gdk_window_raise(dd->propwindow->window);
-                return;
-		}
+	{
+		gdk_window_raise(dd->propwindow->window);
+		return;
+	}
 
-        dd->prop_interval = dd->interval;
+	dd->prop_interval = dd->interval;
 	dd->prop_device_pixmap = dd->device_pixmap;
 	dd->prop_autofs_friendly = dd->autofs_friendly;
 	dd->prop_scale_applet = dd->scale_applet;
@@ -328,7 +201,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
 
-	if (dd->prop_device_pixmap == -1 /* custom */)
+	if (dd->prop_device_pixmap == -1)
 		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), 5);
 	else
 		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->prop_device_pixmap);
@@ -402,7 +275,171 @@ void property_show(AppletWidget *applet, gpointer data)
 			    GTK_SIGNAL_FUNC(phelp_cb), NULL);
 
 	gtk_widget_show_all(dd->propwindow);
-	return;
+*/
 }
 
+static gint
+property_destroy_cb( GtkWidget *w, DriveData *dd)
+{
+	dd->propwindow = NULL;
+	return FALSE;
+}
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+
+}
+
+static void
+set_icon_entry_sensitivity(DriveData *dd, gint val)
+{
+	gtk_widget_set_sensitive(dd->icon_entry_in, val);
+	gtk_widget_set_sensitive(dd->icon_entry_out, val);
+}
+
+static void
+autofs_friendly_cb(GtkWidget *w, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_autofs_friendly = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+scale_applet_cb(GtkWidget *w, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_scale_applet = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+auto_eject_applet_cb(GtkWidget *w, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_auto_eject = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+pixmap_floppy_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = 0;
+	set_icon_entry_sensitivity(dd, FALSE);
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = 1;
+	set_icon_entry_sensitivity(dd, FALSE);
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = 2;
+	set_icon_entry_sensitivity(dd, FALSE);
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+pixmap_jazdrive_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = 4;
+	set_icon_entry_sensitivity(dd, FALSE);
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = 3;
+	set_icon_entry_sensitivity(dd, FALSE);
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+pixmap_custom_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = -1;
+	set_icon_entry_sensitivity(dd, TRUE);
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+update_delay_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dd->prop_spin));
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void
+property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd)
+{
+	gchar *new_file;
+
+	if(page_num != -1) return;	/* only do this once, on global signal */
+
+	dd->auto_eject = dd->prop_auto_eject;
+
+	dd->scale_applet = dd->prop_scale_applet;
+	dd->autofs_friendly = dd->prop_autofs_friendly;
+	new_file = (gchar *)gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
+	if (dd->mount_point) g_free(dd->mount_point);
+	dd->mount_point = g_strdup(new_file);
+	sync_mount_base(dd);
+	dd->interval = dd->prop_interval;
+	if (dd->device_pixmap != dd->prop_device_pixmap)
+	{
+		dd->device_pixmap = dd->prop_device_pixmap;
+	}
+
+	g_free(dd->custom_icon_in);
+	g_free(dd->custom_icon_out);
+	dd->custom_icon_in = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(dd->icon_entry_in));
+	dd->custom_icon_out = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(dd->icon_entry_out));
+
+	redraw_pixmap(dd);
+	start_callback_update(dd);
+
+	/* FIXME: make the panel save our config*/
+	/* applet_widget_sync_config(APPLET_WIDGET(dd->applet));*/
+}
+
+static gchar *
+remove_level_from_path(const gchar *path)
+{
+	gchar *new_path;
+	const gchar *ptr;
+	gint p;
+
+	if (!path) return NULL;
+
+	p = strlen(path) - 1;
+	if (p < 0) return NULL;
+
+	ptr = path;
+	while(ptr[p] != '/' && p > 0) p--;
+
+	if (p == 0 && ptr[p] == '/') p++;
+	new_path = g_strndup(path, (guint)p);
+	return new_path;
+}
+
+static void
+sync_mount_base(DriveData *dd)
+{
+	g_free(dd->mount_base);
+	dd->mount_base = remove_level_from_path(dd->mount_point);
+}
