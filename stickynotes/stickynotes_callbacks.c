@@ -132,10 +132,15 @@ void properties_apply_color_cb(StickyNote *note)
 {
 	gchar *color_str = NULL;
 	
-	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_def_color))) {
+	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_def_color)))
+	{
 		GdkColor color;
-		gnome_color_picker_get_i16(GNOME_COLOR_PICKER(note->w_color), &color.red, &color.green, &color.blue, NULL);
-		color_str = g_strdup_printf("#%.2x%.2x%.2x", color.red / 256, color.green / 256, color.blue / 256);
+		gtk_color_button_get_color (GTK_COLOR_BUTTON (note->w_color),
+				&color);
+		color_str = g_strdup_printf("#%.2x%.2x%.2x",
+				color.red / 256,
+				color.green / 256,
+				color.blue / 256);
 	}
 	
 	stickynote_set_color(note, color_str, TRUE);
@@ -148,26 +153,43 @@ void properties_apply_font_cb(StickyNote *note)
 {
 	const gchar *font_str = NULL;
 	
-	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_def_font))) {
-		font_str = gnome_font_picker_get_font_name(GNOME_FONT_PICKER(note->w_font));
+	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_def_font)))
+	{
+		font_str = gtk_font_button_get_font_name (
+				GTK_FONT_BUTTON (note->w_font));
 	}
 
 	stickynote_set_font(note, font_str, TRUE);
 }
 
 /* Properties Dialog Callback : Color */
-void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNote *note)
+void
+properties_color_cb (GtkWidget *button, StickyNote *note)
 {
-	/* Reduce RGB from 16-bit to 8-bit values and calculate HTML-style hex specification for the color */
-	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
+	GdkColor color;
+
+        gtk_color_button_get_color (GTK_COLOR_BUTTON (button), &color);
+
+        gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x",
+                        color.red / 256,
+                        color.green / 256,
+                        color.blue / 256);
+
 	stickynote_set_color(note, color_str, TRUE);
-	g_free(color_str);
+
+        g_free(color_str);
 }
 
 /* Properties Dialog Callback : Font */
-void properties_font_cb(GnomeFontPicker *fp, gchar *font_str, StickyNote *note)
+void properties_font_cb (GtkWidget *button, StickyNote *note)
 {
+        char *font_str;
+
+        font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
+
 	stickynote_set_font(note, font_str, TRUE);
+
+        g_free (font_str);
 }
 
 /* Properties Dialog Callback : Activate */

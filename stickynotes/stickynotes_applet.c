@@ -207,17 +207,31 @@ void stickynotes_applet_init_prefs(void)
 	stickynotes->w_prefs_sticky = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sticky_check"))->toggle_button);
 	stickynotes->w_prefs_force = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "force_default_check"))->toggle_button);
 
-	g_signal_connect(G_OBJECT(stickynotes->w_prefs), "response", G_CALLBACK(preferences_response_cb), NULL);
-	g_signal_connect(G_OBJECT(stickynotes->w_prefs), "delete-event", G_CALLBACK(preferences_delete_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_width), "value-changed", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_height), "value-changed", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sys_color), "toggled", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sys_font), "toggled", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect(G_OBJECT(stickynotes->w_prefs_color), "color_set", G_CALLBACK(preferences_color_cb), NULL);
-	g_signal_connect(G_OBJECT(stickynotes->w_prefs_font), "font_set", G_CALLBACK(preferences_font_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_click), "changed", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sticky), "toggled", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_force), "toggled", G_CALLBACK(preferences_save_cb), NULL);
+	g_signal_connect (G_OBJECT (stickynotes->w_prefs), "response",
+			G_CALLBACK (preferences_response_cb), NULL);
+	g_signal_connect (G_OBJECT (stickynotes->w_prefs), "delete-event",
+			G_CALLBACK (preferences_delete_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_width),
+			"value-changed",
+			G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_height),
+			"value-changed",
+			G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_sys_color),
+			"toggled",
+			G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT(stickynotes->w_prefs_sys_font),
+			"toggled", G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect (G_OBJECT (stickynotes->w_prefs_color),
+			"color-set", G_CALLBACK (preferences_color_cb), NULL);
+	g_signal_connect (G_OBJECT (stickynotes->w_prefs_font),
+			"font-set", G_CALLBACK (preferences_font_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_click),
+			"changed", G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_sticky),
+			"toggled", G_CALLBACK (preferences_save_cb), NULL);
+	g_signal_connect_swapped (G_OBJECT (stickynotes->w_prefs_force),
+			"toggled", G_CALLBACK (preferences_save_cb), NULL);
 
 	{
 		GtkSizeGroup *group = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
@@ -363,52 +377,89 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 
 void stickynotes_applet_update_prefs(void)
 {
-	gint height, click_behavior;
+	int height, click_behavior;
 	gboolean sys_color, sys_font, sticky, force_default;
-	gchar *font_str;
+	char *font_str;
+	char *color_str;
 	GdkColor color;
-	gint width = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/width", NULL);
+	
+	gint width = gconf_client_get_int(stickynotes->gconf,
+			GCONF_PATH "/defaults/width", NULL);
 
 	width = MAX (width, 1);
-	height = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL);
+	height = gconf_client_get_int (stickynotes->gconf,
+			GCONF_PATH "/defaults/height", NULL);
 	height = MAX (height, 1);
 
-	sys_color = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL);
-	sys_font = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL);
-	click_behavior = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL);
-	sticky = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL);
-	force_default = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL);
-	font_str = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL);
+	sys_color = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/use_system_color", NULL);
+	sys_font = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/use_system_font", NULL);
+	click_behavior = gconf_client_get_int (stickynotes->gconf,
+			GCONF_PATH "/settings/click_behavior", NULL);
+	sticky = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/sticky", NULL);
+	force_default = gconf_client_get_bool (stickynotes->gconf,
+			GCONF_PATH "/settings/force_default", NULL);
+	font_str = gconf_client_get_string (stickynotes->gconf,
+			GCONF_PATH "/defaults/font", NULL);
 
 	if (!font_str)
-		font_str = g_strdup ("Sans 10");
-	
 	{
-		gchar *color_str = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL);
-		if (!color_str)
-			color_str = g_strdup ("#FFFF00");
-		gdk_color_parse(color_str, &color);
-		g_free(color_str);
+		g_free (font_str);
+		font_str = g_strdup ("Sans 10");
 	}
 
-	gtk_adjustment_set_value(stickynotes->w_prefs_width, width);
-	gtk_adjustment_set_value(stickynotes->w_prefs_height, height);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_color), sys_color);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font), sys_font);
-	gtk_option_menu_set_history(GTK_OPTION_MENU(stickynotes->w_prefs_click), click_behavior);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky), sticky);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force), force_default);
-
-	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(stickynotes->w_prefs_color), color.red, color.green, color.blue, 65535);
-	gnome_font_picker_set_font_name(GNOME_FONT_PICKER(stickynotes->w_prefs_font), font_str);
-
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), !sys_color);
-		gtk_widget_set_sensitive(stickynotes->w_prefs_color, !sys_color);
+	color_str = gconf_client_get_string (stickynotes->gconf,
+			GCONF_PATH "/defaults/color", NULL);
+	if (!color_str)
+	{
+		g_free (color_str);
+		color_str = g_strdup ("#FFFF00");
 	}
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL)) {
-		gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "font_label"), !sys_font);
-		gtk_widget_set_sensitive(stickynotes->w_prefs_font, !sys_font);
+	gdk_color_parse(color_str, &color);
+	g_free (color_str);
+
+	gtk_adjustment_set_value (stickynotes->w_prefs_width, width);
+	gtk_adjustment_set_value (stickynotes->w_prefs_height, height);
+	gtk_toggle_button_set_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sys_color),
+			sys_color);
+	gtk_toggle_button_set_active (
+			GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font),
+			sys_font);
+	gtk_option_menu_set_history (
+			GTK_OPTION_MENU (stickynotes->w_prefs_click),
+			click_behavior);
+	gtk_toggle_button_set_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sticky),
+			sticky);
+	gtk_toggle_button_set_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_force),
+			force_default);
+
+	gtk_color_button_set_color (
+			GTK_COLOR_BUTTON (stickynotes->w_prefs_color), &color);
+	gtk_font_button_set_font_name (
+			GTK_FONT_BUTTON (stickynotes->w_prefs_font), font_str);
+	g_free (font_str);
+
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/color", NULL)) {
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+				stickynotes->prefs, "color_label"),
+				!sys_color);
+		gtk_widget_set_sensitive (stickynotes->w_prefs_color,
+				!sys_color);
+	}
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/font", NULL))
+	{
+		gtk_widget_set_sensitive (glade_xml_get_widget (
+				stickynotes->prefs, "font_label"),
+				!sys_font);
+		gtk_widget_set_sensitive (stickynotes->w_prefs_font,
+				!sys_font);
 	}
 }
 

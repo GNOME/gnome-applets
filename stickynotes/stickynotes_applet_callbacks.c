@@ -336,18 +336,29 @@ void preferences_save_cb(gpointer data)
 }
 
 /* Preferences Callback : Change color. */
-void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, gpointer data)
+void
+preferences_color_cb (GtkWidget *button, gpointer data)
 {
-	/* Reduce RGB from 16-bit to 8-bit values and calculate HTML-style hex specification for the color */
-	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
-	gconf_client_set_string(stickynotes->gconf, GCONF_PATH "/defaults/color", color_str, NULL);
-	g_free(color_str);
+	GdkColor color;
+
+	gtk_color_button_get_color (GTK_COLOR_BUTTON (button), &color);
+	
+	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x",
+			color.red / 256,
+			color.green / 256,
+			color.blue / 256);
+	gconf_client_set_string(stickynotes->gconf,
+			GCONF_PATH "/defaults/color", color_str, NULL);
 }
 
 /* Preferences Callback : Change font. */
-void preferences_font_cb(GnomeFontPicker *fp, gchar *font_str, gpointer data)
+void preferences_font_cb (GtkWidget *button, gpointer data)
 {
-	gconf_client_set_string(stickynotes->gconf, GCONF_PATH "/defaults/font", font_str, NULL);
+	char *font_str;
+
+	font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
+	gconf_client_set_string(stickynotes->gconf,
+			GCONF_PATH "/defaults/font", font_str, NULL);
 }
 
 /* Preferences Callback : Apply to existing notes. */

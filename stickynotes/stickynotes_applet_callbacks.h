@@ -48,8 +48,8 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 
 /* Callbacks for sticky notes preferences dialog */
 void preferences_save_cb(gpointer data);
-void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, gpointer data);
-void preferences_font_cb(GnomeFontPicker *fp, gchar *font_str, gpointer data);
+void preferences_color_cb (GtkWidget *button, gpointer data);
+void preferences_font_cb (GtkWidget *button, gpointer data);
 void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer data);
 void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data);
 gboolean preferences_delete_cb(GtkWidget *widget, GdkEvent *event, gpointer data);

@@ -117,16 +117,22 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_toggle_lock")), "toggled", G_CALLBACK(popup_toggle_lock_cb), note);
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_properties")), "activate", G_CALLBACK(popup_properties_cb), note);
 
-	g_signal_connect_swapped(G_OBJECT(note->w_entry), "changed", G_CALLBACK(properties_apply_title_cb), note);
-	g_signal_connect(G_OBJECT(note->w_color), "color_set", G_CALLBACK(properties_color_cb), note);
-	g_signal_connect_swapped(G_OBJECT(note->w_def_color), "toggled", G_CALLBACK(properties_apply_color_cb), note);
-	g_signal_connect(G_OBJECT(note->w_font), "font_set", G_CALLBACK(properties_font_cb), note);
-	g_signal_connect_swapped(G_OBJECT(note->w_def_font), "toggled", G_CALLBACK(properties_apply_font_cb), note);
-	g_signal_connect(G_OBJECT(note->w_entry), "activate", G_CALLBACK(properties_activate_cb), note);
+	g_signal_connect_swapped (G_OBJECT (note->w_entry), "changed",
+			G_CALLBACK (properties_apply_title_cb), note);
+	g_signal_connect (G_OBJECT (note->w_color), "color-set",
+			G_CALLBACK (properties_color_cb), note);
+	g_signal_connect_swapped (G_OBJECT (note->w_def_color), "toggled",
+			G_CALLBACK (properties_apply_color_cb), note);
+	g_signal_connect (G_OBJECT (note->w_font), "font-set",
+			G_CALLBACK (properties_font_cb), note);
+	g_signal_connect_swapped (G_OBJECT (note->w_def_font), "toggled",
+			G_CALLBACK (properties_apply_font_cb), note);
+	g_signal_connect (G_OBJECT (note->w_entry), "activate",
+			G_CALLBACK (properties_activate_cb), note);
 	
+	gtk_window_set_skip_taskbar_hint (GTK_WINDOW(note->w_window), TRUE);
+	gtk_window_set_skip_pager_hint (GTK_WINDOW(note->w_window), TRUE);
 	gtk_widget_show_all (note->w_window);
-	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->w_window), TRUE);
-	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->w_window), TRUE);
 	
 	return note;
 }
@@ -149,20 +155,26 @@ void stickynote_free(StickyNote *note)
 }
 
 /* Change the sticky note title and color */
-void stickynote_change_properties(StickyNote *note)
+void stickynote_change_properties (StickyNote *note)
 {
-	gtk_entry_set_text(GTK_ENTRY(note->w_entry), gtk_label_get_text(GTK_LABEL(note->w_title)));
+	gtk_entry_set_text(GTK_ENTRY(note->w_entry),
+			gtk_label_get_text (GTK_LABEL (note->w_title)));
 
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_color), note->color == NULL);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_color),
+			note->color == NULL);
+	
 	if (note->color) {
 		GdkColor color;
 		gdk_color_parse(note->color, &color);
-		gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note->w_color), color.red, color.green, color.blue, 65535);
+		gtk_color_button_set_color (GTK_COLOR_BUTTON (note->w_color),
+				&color);
 	}
 
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_font), note->font == NULL);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_def_font),
+			note->font == NULL);
 	if (note->font)
-		gnome_font_picker_set_font_name(GNOME_FONT_PICKER(note->w_font), note->font);
+		gtk_font_button_set_font_name (GTK_FONT_BUTTON (note->w_font),
+				note->font);
 
 	gtk_widget_show (note->w_properties);
 
@@ -208,7 +220,8 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 }
 
 /* Set the sticky note color */
-void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean save)
+void
+stickynote_set_color (StickyNote *note, const gchar *color_str, gboolean save)
 {
 	GtkRcStyle *rc_style = gtk_widget_get_modifier_style(note->w_window);
 	gchar *color_str_actual;
@@ -273,7 +286,8 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 
 	/* Apply the style to the widgets */
 	gtk_widget_modify_style(note->w_window, rc_style);
-	gtk_widget_modify_style(note->w_title, rc_style);
+	/* We shouldn't change the title font
+	 * gtk_widget_modify_style(note->w_title, rc_style); */
 	gtk_widget_modify_style(note->w_body, rc_style);
 	gtk_widget_modify_style(note->w_lock, rc_style);
 	gtk_widget_modify_style(note->w_close, rc_style);
@@ -285,42 +299,52 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 }
 
 /* Set the sticky note font */
-void stickynote_set_font(StickyNote *note, const gchar *font_str, gboolean save)
+void
+stickynote_set_font (StickyNote *note, const gchar *font_str, gboolean save)
 {
 	GtkRcStyle *rc_style = gtk_widget_get_modifier_style(note->w_window);
 	gchar *font_str_actual;
 
 	if (save) {
-		g_free(note->font);
-		note->font = font_str ? g_strdup(font_str) : NULL;
+		g_free (note->font);
+		note->font = font_str ? g_strdup (font_str) : NULL;
 
-		gtk_widget_set_sensitive(glade_xml_get_widget(note->properties, "font_label"), note->font != NULL);
+		gtk_widget_set_sensitive (
+				glade_xml_get_widget (note->properties,
+					"font_label"),
+				note->font != NULL);
 		gtk_widget_set_sensitive(note->w_font, note->font != NULL);
 	}
 	
-	/* If "force_default" is enabled or font_str is NULL, then we use the default font instead of font_str. */
-	if (!font_str || gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL)) {
-		if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL))
+	/* If "force_default" is enabled or font_str is NULL,
+	 * then we use the default font instead of font_str. */
+	if (!font_str || gconf_client_get_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/force_default", NULL))
+	{
+		if (gconf_client_get_bool (stickynotes->gconf,
+					GCONF_PATH "/settings/use_system_font",
+					NULL))
 			font_str_actual = NULL;
 		else
-			font_str_actual = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL);
+			font_str_actual = gconf_client_get_string (
+					stickynotes->gconf,
+					GCONF_PATH "/defaults/font", NULL);
 	}
 	else
-		font_str_actual = g_strdup(font_str);
+		font_str_actual = g_strdup (font_str);
 
 	/* Do not use custom fonts if "use_system_font" is enabled */
 	g_free(rc_style->font_desc);
-	rc_style->font_desc = font_str_actual ? pango_font_description_from_string(font_str_actual): NULL;
+	rc_style->font_desc = font_str_actual ?
+		pango_font_description_from_string (font_str_actual): NULL;
 
-	g_object_ref(G_OBJECT(rc_style));
-			
+	g_object_ref (G_OBJECT (rc_style));
 	/* Apply the style to the widgets */
 	gtk_widget_modify_style(note->w_window, rc_style);
-	gtk_widget_modify_style(note->w_title, rc_style);
 	gtk_widget_modify_style(note->w_body, rc_style);
 
-	g_free(font_str_actual);
-	g_object_unref(G_OBJECT(rc_style));
+	g_free (font_str_actual);
+	g_object_unref (G_OBJECT(rc_style));
 }
 
 /* Lock/Unlock a sticky note from editing */
@@ -554,7 +578,8 @@ void stickynotes_load(GdkScreen *screen)
 			{
 				gchar *font_str = xmlGetProp(node, "font");
 				if (font_str)
-					stickynote_set_font(note, font_str, TRUE);
+					stickynote_set_font (note, font_str,
+							TRUE);
 				g_free(font_str);
 			}
 
