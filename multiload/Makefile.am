@@ -33,7 +33,7 @@ appletdir	= $(datadir)/applets
 
 Monitorsdir	= $(appletdir)/Monitors
 
-Monitors_predata	= cpuload_applet.desktop.in
+Monitors_predata	= cpuload_applet.desktop.in	\
 		memload_applet.desktop.in swapload_applet.desktop.in	\
 		netload_applet.desktop.in loadavg_applet.desktop.in
 Monitors_DATA = $(Monitors_predata:.desktop.in=.desktop)
