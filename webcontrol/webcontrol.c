@@ -32,11 +32,13 @@ struct _WebControl {
 	GtkWidget *applet;
 	GtkWidget *label;
 	GtkWidget *check;
+	GtkWidget *clear;
 };
 
 static WebControl WC = {
 	{FALSE, TRUE, TRUE},
 	{-1, -1, -1},
+	NULL,
 	NULL,
 	NULL,
 	NULL
@@ -67,9 +69,15 @@ about_cb (AppletWidget *widget, gpointer data)
 	return;
 }
 
+
 void check_box_toggled(GtkWidget *check, int *data)
 {
 	*data = GTK_TOGGLE_BUTTON(check)->active;
+}
+
+void clear_callback(GtkWidget *button, GtkWidget *input)
+{
+  gtk_entry_set_text(GTK_ENTRY(input), "");
 }
 
 void goto_callback(GtkWidget *entry, GtkWidget *check)
@@ -105,12 +113,14 @@ void goto_callback(GtkWidget *entry, GtkWidget *check)
 
 void create_widget() {
 	GtkWidget *input;
-	GtkWidget *hbox, *vbox;
+	GtkWidget *topbox, *bottombox, *vbox;
 	
 	/* create the widget we are going to put on the applet */
 	WC.label = gtk_label_new(_("Url:"));
 	if(WC.properties.showurl)
 		gtk_widget_show(WC.label);
+	WC.clear = gtk_button_new_with_label(_("Clear"));
+	gtk_widget_show(WC.clear);
 	
 	input = gtk_entry_new();
 	gtk_widget_show(input);
@@ -118,26 +128,34 @@ void create_widget() {
 	vbox = gtk_vbox_new(FALSE, 0);
 	gtk_widget_show(vbox);
 	
-	hbox = gtk_hbox_new(FALSE, 0);
-	gtk_widget_show(hbox);
+	topbox = gtk_hbox_new(FALSE, 0);
+	gtk_widget_show(topbox);
+	bottombox = gtk_hbox_new(FALSE, 0);
+	gtk_widget_show(bottombox);
 	
-	gtk_box_pack_start(GTK_BOX(hbox), WC.label, FALSE, FALSE, 3);
+	gtk_box_pack_start(GTK_BOX(topbox), WC.label, FALSE, FALSE, 3);
 	
 	WC.check = gtk_check_button_new_with_label (_("Launch new window"));
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(WC.check), WC.properties.newwindow);
 	if(WC.properties.showcheck)
 		gtk_widget_show(WC.check);
 	
+	gtk_box_pack_start(GTK_BOX(bottombox), WC.check, FALSE, FALSE, 3);
+	gtk_box_pack_start(GTK_BOX(bottombox), WC.clear, FALSE, FALSE, 3);
 	gtk_signal_connect(GTK_OBJECT(WC.check),"toggled",
 			   GTK_SIGNAL_FUNC(check_box_toggled),
 			   &WC.properties.newwindow);
 	
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox), WC.check, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), topbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox), bottombox, FALSE, FALSE, 0);
 	
 	gtk_signal_connect(GTK_OBJECT(input), "activate",
                            GTK_SIGNAL_FUNC(goto_callback),
                            WC.check);
+
+	gtk_signal_connect(GTK_OBJECT(WC.clear), "clicked",
+                           GTK_SIGNAL_FUNC(clear_callback),
+                           input);
 	
 	/* add the widget to the applet-widget, and thereby actually
 	   putting it "onto" the panel */
@@ -145,7 +163,7 @@ void create_widget() {
 
 	/*we want to allow pasting into the input box so we pack it after
 	  applet_widdget_add has bound the middle button*/
-	gtk_box_pack_start(GTK_BOX(hbox), input, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(topbox), input, FALSE, FALSE, 0);
 }
 
 static void
