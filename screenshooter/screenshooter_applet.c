@@ -20,8 +20,11 @@
 
 /* If you think this code is a mess, you should see my flat ;) */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <panel-applet.h>
-#include "config.h"
 #include "screenshooter_applet.h"
 
 static void grab_shot (user_preferences * opt, gboolean root);
