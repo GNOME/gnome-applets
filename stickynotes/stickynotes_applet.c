@@ -206,6 +206,7 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	/* Initialize Sticky Notes Applet */
 	applet->w_applet = GTK_WIDGET(panel_applet);
 	applet->w_image = gtk_image_new();
+	applet->about_dialog = NULL;
 	applet->prelighted = FALSE;
 	applet->pressed = FALSE;
 

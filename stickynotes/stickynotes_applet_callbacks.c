@@ -113,6 +113,9 @@ gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundTyp
 /* Applet Callback : Deletes the applet. */
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 {
+	if (applet->about_dialog != NULL)
+		gtk_widget_destroy (applet->about_dialog);
+	
 	if (stickynotes->applets != NULL)
 		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
 }		
@@ -197,16 +200,29 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 
 	const gchar *translator_credits = _("translator_credits");
 
-	GtkWidget *w_about = gnome_about_new(_("Sticky Notes"),
-					     VERSION,
-					     _("(c) 2002-2003 Loban A Rahman"),
-					     _("Sticky Notes for the Gnome Desktop Environment"),
-					     authors,
-					     documenters,
-					     strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-					     stickynotes->icon_normal);
+	if (applet->about_dialog)
+	{
+		gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
 
-	gtk_widget_show(w_about);
+		gtk_window_present (GTK_WINDOW (applet->about_dialog));
+		return;
+	}
+	
+	applet->about_dialog = gnome_about_new(_("Sticky Notes"),
+					       VERSION,
+					       _("(c) 2002-2003 Loban A Rahman"),
+					       _("Sticky Notes for the Gnome Desktop Environment"),
+					       authors,
+					       documenters,
+					       strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+					       stickynotes->icon_normal);
+
+	g_signal_connect (applet->about_dialog, "destroy",
+			  G_CALLBACK (gtk_widget_destroyed),
+			  &applet->about_dialog);
+	
+	gtk_widget_show(applet->about_dialog);
 }
 
 /* Preferences Callback : Save. */
