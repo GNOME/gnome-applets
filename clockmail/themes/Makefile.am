@@ -81,7 +81,7 @@ mailflap_stuff = \
 	mail-flap/mail.png		\
 	mail-flap/clockmaildata
 
-fuelgaugedir = $(datadir)/clockmail/mail-fuel-guage
+fuelgaugedir = $(datadir)/clockmail/mail-fuel-gauge
 fuelgauge_DATA =
 fuelgauge_stuff = \
 	mail-fuel-gauge/background.png	\
