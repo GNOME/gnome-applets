@@ -135,7 +135,7 @@ static IconData icon_list[] = {
 	 NULL}
 };
 
-static gint icon_list_count = 5;
+static gint icon_list_count = 6;
 
 /* Bonobo Verbs for our popup menu */
 static const BonoboUIVerb applet_menu_verbs[] = {

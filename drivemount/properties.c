@@ -58,11 +58,11 @@ properties_load(DriveData *dd)
 		dd->interval = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "interval", NULL);
 		dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
 		dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
-		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto-eject", NULL);
-		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount-point", NULL);
-		dd->autofs_friendly = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "autofs-friendly", NULL);
-		dd->custom_icon_in = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-mounted", NULL);
-		dd->custom_icon_out = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted", NULL);
+		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto_eject", NULL);
+		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount_point", NULL);
+		dd->autofs_friendly = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "autofs_friendly", NULL);
+		dd->custom_icon_in = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom_icon_mounted", NULL);
+		dd->custom_icon_out = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom_icon_unmounted", NULL);
 	} else {
 		dd->mount_point = g_strdup("/mnt/floppy");
 		dd->interval = 10;
@@ -98,7 +98,7 @@ cb_mount_activate (GtkEntry *entry, gpointer data)
 	
 	sync_mount_base (dd);
 	redraw_pixmap (dd);	
-	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "mount-point", 
+	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "mount_point", 
 				      dd->mount_point, NULL);
 	g_free (text);
 	
@@ -145,7 +145,7 @@ eject_toggled (GtkToggleButton *button, gpointer data)
 	DriveData *dd = data;
 	
 	dd->auto_eject = gtk_toggle_button_get_active (button);
-	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "auto-eject", 
+	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "auto_eject", 
 				    dd->auto_eject, NULL);
 	
 }
@@ -156,7 +156,7 @@ automount_toggled (GtkToggleButton *button, gpointer data)
 	DriveData *dd = data;
 	
 	dd->autofs_friendly = gtk_toggle_button_get_active (button);
-	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "autofs-friendly", 
+	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "autofs_friendly", 
 				    dd->autofs_friendly, NULL);
 	
 }
@@ -168,7 +168,7 @@ omenu_changed (GtkOptionMenu *menu, gpointer data)
 	gint num;
 	
 	num = gtk_option_menu_get_history (menu);
-	dd->device_pixmap = num < 5 ? num : -1;
+	dd->device_pixmap = num < 6 ? num : -1;
 
 	redraw_pixmap(dd);
 	panel_applet_gconf_set_int(PANEL_APPLET(dd->applet), "pixmap", 
@@ -192,10 +192,9 @@ mount_icon_changed (GnomeIconEntry *entry, gpointer data)
 	
 	dd->device_pixmap = -1;		
 	redraw_pixmap(dd);
-	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-mounted",
+	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom_icon_mounted",
 				      dd->custom_icon_in, NULL);	
-				      
-	g_free (temp);	
+		
 }
 
 static void
@@ -215,10 +214,9 @@ unmount_icon_changed (GnomeIconEntry *entry, gpointer data)
 	
 	dd->device_pixmap = -1;		
 	redraw_pixmap(dd);
-	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted",
+	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom_icon_unmounted",
 				      dd->custom_icon_out, NULL);
-	
-	g_free (temp);		
+			
 }
 
 void
@@ -332,7 +330,7 @@ properties_show(PanelApplet *applet, gpointer data)
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_true_cb), fbox);
 
 	if (dd->device_pixmap == -1)
-		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), 5);
+		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), 6);
 	else
 		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), dd->device_pixmap);
 
