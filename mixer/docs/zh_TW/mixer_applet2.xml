@@ -1,0 +1,163 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.99.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Volume Control">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="zh_tw">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet 手冊 V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Dan Mueth</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME 文件專案</publishername> 
+	 </publisher> 
+
+&legal;
+
+
+	 <authorgroup>
+		<author>  
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME 文件小組</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME 文件專案</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME 文件小組 <email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>音量控制 Applet 手冊 V2.0</revnumber> 
+		  <date>2002 年 4 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME 文件小組
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>混音器 Applet</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo> 本手冊的內容是說明 &appletversion; 版的 &applet;。
+		</releaseinfo>
+	 <legalnotice> 
+		<title>回饋</title>
+		<para> 關於 &applet; applet 或本手冊，如果要報告錯誤或是提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。 </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>音量控制</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="volumecontrol-introduction">
+<title>介紹</title>
+<!-- ==== Figure ============================================= -->
+	 <figure id="volumecontrol-fig"> 
+		<title>&applet; Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>顯示音量控制 applet。 含有揚聲器影像。</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+<para><application>&applet;</application> applet 可以讓您控制系統的音量。applet 圖示會隨著所選取的音量等級而變更。 例如，如果您選取了較低的音量等級，applet 圖示中，便會顯示一道由揚聲器發出的聲波。如果您將音量調大，圖示就會隨之變更，顯示更多的聲波。</para>
+<para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇 <menuchoice><guimenu>加入面板</guimenu><guisubmenu>多媒體</guisubmenu>
+<guimenuitem>音量控制</guimenuitem></menuchoice>。</para>
+</sect1>
+
+<sect1 id="volumecontrol-usage">
+<title>使用</title>
+
+	<sect2 id="volumecontrol-adjust">
+	<title>調整音量</title>
+	<para>請在 applet 上按一下，顯示調整器控制。 如果要調高音量，請將調整器向上移動。 如果要降低音量，請將調整器向下移動。</para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-off">
+	<title>關閉音量</title>
+	<para>如果要關閉音量，請在 applet 上按滑鼠右鍵，然後選擇<guimenuitem>靜音</guimenuitem>。 </para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-add">
+	<title>使用其他功能</title>
+	<para>如果要存取其他關於音量控制的功能，請在 applet 上按滑鼠右鍵，然後選擇 <guimenuitem>執行聲訊混音器</guimenuitem>。聲訊混音器 (Audio Mixer) 便會啟動，您可以使用它控制播放及錄製音訊時，音量和平衡的等級。</para>
+	</sect2>
+
+
+</sect1>
+
+</article>
