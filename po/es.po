@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-14 20:26+0200\n"
-"PO-Revision-Date: 2003-07-14 17:58-0300\n"
+"POT-Creation-Date: 2003-07-25 11:59+0200\n"
+"PO-Revision-Date: 2003-07-25 10:36-0300\n"
 "Last-Translator: Pablo G. del Campo <pablodc@bigfoot.com>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,13 +81,13 @@ msgid "Utility"
 msgstr "Utilidades"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2432
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:709
 msgid "translator_credits"
 msgstr ""
 "Pablo Gonzalo del Campo <pablodc@bigfoot.com>\n"
@@ -162,24 +162,24 @@ msgid "_Suspend Computer..."
 msgstr "_Suspender computadora..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "¿Pitido?"
+msgid "Beep for warnings"
+msgstr "Sonido para las advertencias"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "Hacer un bip al mostrar una advertencia"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "Comando a enviar para suspender la computadora"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "Reducir desde arriba"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "Notificación de batería cargada completamente"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "Horizontal"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -194,12 +194,12 @@ msgid "Notify user when the battery is low"
 msgstr "Avisar al usuario cuando la batería este baja"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
-msgstr "Valor naranja"
+msgid "Orange value level"
+msgstr "Nivel de valor naranja"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
-msgstr "Valor rojo"
+msgid "Red value level"
+msgstr "Nivel de valor rojo"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -224,12 +224,20 @@ msgid "Suspend Command"
 msgstr "Comando de suspensión"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "Usar una base"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr "El nivel de la batería por debajo del cual la batería es mostrada de color naranja."
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
-msgstr "Valor amarillo"
+msgid "The battery level below which the battery is displayed as red."
+msgstr "El nivel de la batería por debajo del cual la batería es mostrada de color rojo."
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr "El nivel de la batería por debajo del cual la batería es mostrada de color amarillo."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "Nivel de valor amarillo"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -462,7 +470,7 @@ msgstr "<b>Suspender</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Advertencias</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
 msgstr "Apariencia"
 
@@ -470,9 +478,9 @@ msgstr "Apariencia"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencias del monitor de carga batería"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:766 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "General"
 
@@ -529,8 +537,8 @@ msgid "_Yellow:"
 msgstr "A_marillo:"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:473
-#: drivemount/properties.c:588 mailcheck/mailcheck.c:2289
-#: mailcheck/mailcheck.c:2537 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -548,8 +556,8 @@ msgstr "Batería re-cargada completamente"
 msgid "Battery power low"
 msgstr "Batería con carga baja"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "Reproductor de CD"
 
@@ -574,23 +582,23 @@ msgstr "Aplique de panel para reproducir CDs de audio"
 msgid "_Open CD Player"
 msgstr "Abrir el repr_oductor de CDs"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "Detener"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "Reproducir / Pausa"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "Expulsar"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "Pista anterior"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "Pista siguiente"
 
@@ -612,23 +620,23 @@ msgstr "%s no parece ser un reproductor de CD"
 msgid "CD Player Preferences"
 msgstr "Preferencias del reproductor de CD"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "Ruta del _dispositivo:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "Ruta del dispositivo"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "Configure la ruta del dispositivo aquí"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "Usar _predeterminado"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -636,41 +644,41 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "El aplique reproductor de CD, es un reproductor sencillo de CD para su panel"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "Tiempo transcurrido"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "Número de pista"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr ""
 "El dispositivo de audio se encuentra ocupado o está siendo usado por otra "
 "aplicación"
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "Haga clic sobre este botón para detener la reproducción del CD"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "Haga clic sobre este botón para reproducir o pausar el CD"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "Haga clic sobre este botón para expulsar el CD"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Haga clic sobre este botón para reproducir la pista anterior en el CD"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "Haga clic en este botón para reproducir la siguiente pista en el CD"
 
@@ -687,7 +695,7 @@ msgstr ""
 "desde este aplique"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:332
+#: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Tabla de caracteres"
 
@@ -699,7 +707,7 @@ msgstr "Origen para aplique selector de caracteres"
 msgid "Insert characters"
 msgstr "Insertar caracteres"
 
-#: charpick/charpick.c:322 charpick/properties.c:124
+#: charpick/charpick.c:322 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Agregar una paleta"
 
@@ -746,59 +754,71 @@ msgstr "Caracteres mostrado en el inicio del aplique"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "OBSOLETO - Caracteres mostrados en el inicio del aplique"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:259
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "Lista de paletas disponibles"
 
-#: charpick/properties.c:87
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "Lista de cadenas que contienen las paletas disponibles"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"La cadena que el usuario ha seleccionado cuando el aplique fué utilizado por última vez. "
+"Esta cadena será mostrada cuando el usuario ejecute el aplique."
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: charpick/properties.c:94
+#: charpick/properties.c:95
 msgid "Palette entry"
 msgstr "Entrada de paleta"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
 msgstr "Modificar una paleta agregando o quitando caracteres"
 
-#: charpick/properties.c:159
+#: charpick/properties.c:160
 msgid "Edit Palette"
 msgstr "Editar la paleta"
 
-#: charpick/properties.c:258
+#: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "Lista de paletas"
 
-#: charpick/properties.c:337
+#: charpick/properties.c:338
 msgid "Pal_ettes:"
 msgstr "Pal_etas:"
 
-#: charpick/properties.c:353
+#: charpick/properties.c:354
 msgid "Add button"
 msgstr "Agregar un botón"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:355
 msgid "Click to add a new palette"
 msgstr "Haga clic para agregar una paleta nueva"
 
-#: charpick/properties.c:361
+#: charpick/properties.c:362
 msgid "Edit button"
 msgstr "Editar el botón"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:363
 msgid "Click to edit the selected palette"
 msgstr "Haga clic para editar la paleta seleccionada"
 
-#: charpick/properties.c:369
+#: charpick/properties.c:370
 msgid "Delete button"
 msgstr "Borrar el botón"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:371
 msgid "Click to delete the selected palette"
 msgstr "Haga clic para borrar la paleta seleccionada"
 
-#: charpick/properties.c:422
+#: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "Preferencias de la tabla de caracteres"
 
@@ -836,8 +856,8 @@ msgstr "Ha ocurrido un error al ejecutar %s: %s"
 msgid "Cannot browse device"
 msgstr "No se puede examinar el dispositivo"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:594
-#: mailcheck/mailcheck.c:2295 mailcheck/mailcheck.c:2543
+#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "Ha ocurrido un error al mostrar la ayuda"
 
@@ -887,80 +907,80 @@ msgstr "Tiempo en segundos entre las actualizaciones del estado"
 msgid "Disk Mounter Preferences"
 msgstr "Preferencias del montador de discos"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "_Mount directory:"
 msgstr "Directorio de _montaje:"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:361
 msgid "Select Mount Directory"
 msgstr "Seleccione el directorio de montaje"
 
-#: drivemount/properties.c:382
+#: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "Intervalo de act_ualización"
 
-#: drivemount/properties.c:405 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101 modemlights/properties.c:461
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "segundos"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:419
 msgid "_Icon:"
 msgstr "_Icono:"
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:445
 msgid "Floppy"
 msgstr "Disquete"
 
-#: drivemount/properties.c:447
+#: drivemount/properties.c:448
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:450
+#: drivemount/properties.c:451
 msgid "Cd Recorder"
 msgstr "Grabadora de CD"
 
-#: drivemount/properties.c:453
+#: drivemount/properties.c:454
 msgid "Zip Drive"
 msgstr "Disco Zip"
 
-#: drivemount/properties.c:456
+#: drivemount/properties.c:457
 msgid "Hard Disk"
 msgstr "Disco duro"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:460
 msgid "Jaz Drive"
 msgstr "Disco Jaz"
 
-#: drivemount/properties.c:462
+#: drivemount/properties.c:463
 msgid "Custom"
 msgstr "Personalizado"
 
-#: drivemount/properties.c:481
+#: drivemount/properties.c:482
 msgid "Select icon for mounted"
 msgstr "Elija un icono para el estado montado"
 
-#: drivemount/properties.c:488
+#: drivemount/properties.c:489
 msgid "Moun_ted icon:"
 msgstr "Icono de mon_tado:"
 
-#: drivemount/properties.c:509
+#: drivemount/properties.c:510
 msgid "Select icon for unmounted"
 msgstr "Elija un icono para el estado desmontado"
 
-#: drivemount/properties.c:516
+#: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
 msgstr "Ico_no de desmontado:"
 
-#: drivemount/properties.c:532
+#: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "_Ajustar al tamaño del panel"
 
-#: drivemount/properties.c:539
+#: drivemount/properties.c:540
 msgid "_Eject disk when unmounting"
 msgstr "_Expulsar el disco al desmontar"
 
-#: drivemount/properties.c:549
+#: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
 msgstr "Usar la prueba de estado amigable de _automount"
 
@@ -1001,11 +1021,11 @@ msgstr "Directorio en el cual se encuentra localizado el tema"
 msgid "Geyes Preferences"
 msgstr "Preferencias de Geyes"
 
-#: geyes/themes.c:288
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "Temas"
 
-#: geyes/themes.c:309
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr "_Seleccione un tema:"
 
@@ -1074,16 +1094,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "Imagen de la bandera para la distribución del teclado"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "¿Es demasiado pequeño el tamaño del aplique?"
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr "Esto puede ser «Flag and Label», «Label» o «Flag»"
 
 #: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
-msgstr "Esto puede ser «Flag and Label», «Label» y «Flag»"
+msgid "Keybinding for switching layout"
+msgstr "Combinación de teclas para cambiar la distribución"
 
 #: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
-msgstr "Combinación para cambiar al presionar las teclas"
+msgid "No longer used"
+msgstr "Ya no es utilizado"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1094,40 +1114,36 @@ msgid "The command that switches your keymap to this layout"
 msgstr "El comando que cambia su mapa de teclas a esta distribución"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "El comando que cambia su mapa de teclas a esta distribución"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "El país de la distribución del teclado"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "La etiqueta de la distribución del teclado"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "El lenguaje de la distribución del teclado"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "El nombre de la distribución del teclado"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "Esta bandera aparecerá en el campo de bandera del aplique"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Esta información le ayuda a identificar la distribución de su teclado"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr ""
 "Esta es la combinación de teclas el cambio de distribución basado en la "
 "pulsación de teclas"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1135,17 +1151,13 @@ msgstr ""
 "Esto debería contener algo como «gkb_xmmap us», «setxkbmap us» o «xmodmap "
 "algo.xmm»"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "Esto aparecerá en la etiqueta de la caja para el aplique"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "Esto identificará la distribución en la lista"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "Cuando esto es verdadero (true) el aplique será de la mitad del tamaño"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1172,7 +1184,7 @@ msgstr "El mapa de teclas «%s» para el país %s ya existe"
 msgid "Select Keyboard"
 msgstr "Seleccionar teclado"
 
-#: gkb-new/prop-add.c:352
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr "_Teclados (seleccione y presione agregar):"
 
@@ -1188,19 +1200,19 @@ msgstr "?"
 msgid "Edit Keyboard"
 msgstr "Editar teclado"
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:297
 msgid "_Name:"
 msgstr "_Nombre:"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "_Label:"
 msgstr "_Etiqueta:"
 
-#: gkb-new/prop-map.c:303 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "Co_mando:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Flag:"
 msgstr "_Bandera:"
 
@@ -1216,7 +1228,8 @@ msgstr "Etiqueta"
 msgid "Flag and Label"
 msgstr "Bandera y etiqueta"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "Mostrar"
 
@@ -1245,16 +1258,16 @@ msgstr "Preferencias del cambiador de disposiciones del teclado"
 msgid "Keyboard Layout Selector"
 msgstr "Selector de disposición del teclado"
 
-#: gkb-new/prop.c:433
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr "Teclados"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:437
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr "_Teclados:"
 
-#: gkb-new/prop.c:456 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "Opciones"
 
@@ -1318,7 +1331,7 @@ msgstr "_Actualizar"
 msgid "Could not retrieve the stock data."
 msgstr "No se ha podido recuperar la información de las acciones."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:357
+#: gtik/gtik.c:289 gweather/gweather-applet.c:346
 msgid "Updating..."
 msgstr "Actualizando..."
 
@@ -1355,105 +1368,106 @@ msgstr "_Quitar"
 msgid "Stock Ticker Preferences"
 msgstr "Preferencias del marcador de acciones de GNOME"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1432
 msgid "Symbols"
 msgstr "Símbolos"
 
-#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2363
+#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Comportamiento"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Actualizar"
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1446
 msgid "Stock update fre_quency:"
 msgstr "Fre_cuencia de actualización de las acciones:"
 
-#: gtik/gtik.c:1457 mailcheck/mailcheck.c:2073 mailcheck/mailcheck.c:2079
+#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minutos"
 
-#: gtik/gtik.c:1463
+#: gtik/gtik.c:1464
 msgid "Scrolling"
 msgstr "Desfile"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1468
 msgid "_Scroll speed:"
 msgstr "Velocidad de de_splazamiento:"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1472
 msgid "Slow"
 msgstr "Lenta"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1474
 msgid "Medium"
 msgstr "Intermedia"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1476
 msgid "Fast"
 msgstr "Rápida"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1496
 msgid "_Enable scroll buttons"
 msgstr "_Activa botones para desplazamiento"
 
-#: gtik/gtik.c:1507
+#: gtik/gtik.c:1508
 msgid "Scroll _left to right"
 msgstr "Desplazamiento de _izquierda a derecha"
 
-#: gtik/gtik.c:1533
+#: gtik/gtik.c:1534
 msgid "Displa_y only symbols and price"
 msgstr "_Muestra sólo los símbolos y precios"
 
-#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "A_ncho:"
 
-#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1570
 msgid "Font and Colors"
 msgstr "Tipografías y colores"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1576
 msgid "Use _default theme font and colors"
 msgstr "Usar la tipografía, el tema y los colores pre_determinados"
 
-#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "T_ipografía:"
 
-#: gtik/gtik.c:1614
+#: gtik/gtik.c:1615
 msgid "Stock _raised:"
 msgstr "Acción en _suba:"
 
-#: gtik/gtik.c:1633
+#: gtik/gtik.c:1634
 msgid "Stock _lowered:"
 msgstr "Acción en ba_ja:"
 
-#: gtik/gtik.c:1652
+#: gtik/gtik.c:1653
 msgid "Stock _unchanged:"
 msgstr "Acción sin ca_mbios:"
 
-#: gtik/gtik.c:1671 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Fondo:"
 
-#: gtik/gtik.c:1804
+#: gtik/gtik.c:1805
 msgid "Skip forward"
 msgstr "Adelantar"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip backward"
 msgstr "Retroceder"
 
-#: gtik/gtik.c:1813
+#: gtik/gtik.c:1814
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1461,72 +1475,158 @@ msgstr ""
 "Marcador de acciones\n"
 "Obtiene valores actualizados de acciones continuamente"
 
-#: gtik/gtik.c:2004
+#: gtik/gtik.c:2005
 msgid "(No"
 msgstr "(No"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2006
 msgid "Change "
 msgstr "Cambio"
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr "El aplique se desplaza de derecha a izquierda cuando esta clave está definida como «true» (verdadera)."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "Color de fondo"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+"Mostrar sólo los símbolos de las acciones junto con su valor. No mostrar los cambios en los "
+"valores."
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "Mostrar sólo los símbolos y el precio"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "Tipografía"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"Lista que contiene las acciones a ser mostradas. Consiste del ID de la acción separado por "
+"un «+»"
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "Color reducido"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "Color elevado"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "Desplazamiento de derecha a izquierda"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "Un tiempo mas corto significa que las acciones se desplazarán mas rápido."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "Mostrar los botones de flecha"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"Mostrar los botones de flecha al lado de la pantalla para que el usuario puede desplazarse "
+"hacia adelante y hacia atrás."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
 msgstr "Acciones a monitorizar - deben estar separadas por un +"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"El color del fondo de la pantalla. No tiene efecto cuando el usuario elige utilizar las"
+"tipografías y los colores predeterminados del tema."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"El color utilizado cuando los valores de las acciones han bajado. No tiene efecto cuando el "
+"usuario elige utilizar los colores y las tipografías predeterminadas del tema."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"El color usado cuando los valores de las acciones no han cambiado. No tiene efecto cuando "
+"el usuario elige utilizar los colores y las tipografías predeterminados del tema."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"El color usado cuando los valores de las acciones han aumentado. No tiene efecto cuando "
+"el usuario elige utilizar los colores y las tipografías predeterminados del tema."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"La tipografía utilizada en la pantalla. No tiene efecto cuando el usuario elige utilizar "
+"las tipografías y los colores predeterminados del tema."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "El intervalo de tiempo hasta que el aplique actualiza los valores de las acciones."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "El ancho en píxeles del aplique."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "Tiempo en milisegundos para mostrar la actualización"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "Color sin cambios"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "Intervalo de actualización"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "Usar la tipografía, el tema y los colores predeterminados"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr ""
 "Usar el tema, las tipografías y los colores predeterminados en lugar de los "
 "personalizados"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "Anchura del aplique"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "Color de fondo"
-
-# gnome-terminal/gnome-terminal.c:801
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "color"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "color para texto que no cambia"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "tipografía"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "tipografía 2 -No se utiliza mas"
 
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr ""
-"Configurar como verdadero (true) para el desplazamiento de derecha a "
-"izquierda"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "mostrar los botones"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "tiempo en milisegundos para mostrar la actualización"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "tiempo de espera"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Pronóstico"
 
@@ -1561,83 +1661,83 @@ msgstr ""
 "\n"
 "Un aplique para monitorizar la condiciones locales del clima."
 
-#: gweather/gweather-applet.c:246
+#: gweather/gweather-applet.c:237
 msgid "GNOME Weather"
 msgstr "GNOME Clima"
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
 msgid "Forecast"
 msgstr "Pronóstico"
 
-#: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Ubicación:"
+#: gweather/gweather-dialog.c:109
+msgid "City:"
+msgstr "Ciudad:"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
-msgstr "Actualizar:"
+#: gweather/gweather-dialog.c:117
+msgid "Last update:"
+msgstr "Última actualización:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:125
 msgid "Conditions:"
 msgstr "Condiciones:"
 
-#: gweather/gweather-dialog.c:134
+#: gweather/gweather-dialog.c:133
 msgid "Sky:"
 msgstr "Cielo:"
 
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:141
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:150
+#: gweather/gweather-dialog.c:149
 msgid "Dew point:"
 msgstr "Temperatura de condensación"
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:157
 msgid "Humidity:"
 msgstr "Humedad:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:165
 msgid "Wind:"
 msgstr "Viento:"
 
-#: gweather/gweather-dialog.c:174
+#: gweather/gweather-dialog.c:173
 msgid "Pressure:"
 msgstr "Presión atmosférica:"
 
-#: gweather/gweather-dialog.c:182
+#: gweather/gweather-dialog.c:181
 msgid "Visibility:"
 msgstr "Visibilidad:"
 
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "Condiciones act_uales"
+#: gweather/gweather-dialog.c:276
+msgid "Current Conditions"
+msgstr "Condiciones actuales"
 
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
+#: gweather/gweather-dialog.c:290
+msgid "Forecast Report"
 msgstr "Reporte del pronóstico"
 
-#: gweather/gweather-dialog.c:294
+#: gweather/gweather-dialog.c:290
 msgid "See the ForeCast Details"
 msgstr "Ver los detalles del pronóstico"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:325
 msgid "_Visit Weather.com"
 msgstr "_Visitar weather.com"
 
-#: gweather/gweather-dialog.c:330
+#: gweather/gweather-dialog.c:326
 msgid "URL link Button"
 msgstr "Botón el enlace URL"
 
-#: gweather/gweather-dialog.c:330
+#: gweather/gweather-dialog.c:326
 msgid "Click to Enter Weather.com"
 msgstr "Clic para ingresar en Weather.com"
 
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "Mapa _radar"
+#: gweather/gweather-dialog.c:334
+msgid "Radar Map"
+msgstr "Mapa de radar"
 
-#: gweather/gweather-dialog.c:411
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1647,7 +1747,7 @@ msgstr ""
 "Por favor intente pronóstico por estado; note que pronósticos IWIN están "
 "disponibles sólo para ciudades de EUA."
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1682,126 +1782,98 @@ msgstr "Dirección"
 msgid "Enter the URL"
 msgstr "Ingrese la URL"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:611
 msgid "Weather Preferences"
 msgstr "Preferencias de GNOME clima"
 
-#: gweather/gweather-pref.c:647
-msgid "_Automatically update every"
-msgstr "_Actualizar automáticamente cada"
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
+msgid "_Automatically update every:"
+msgstr "_Actualizar automáticamente cada:"
 
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
 msgstr "Usar sistema _métrico de unidades"
 
-#: gweather/gweather-pref.c:663
-msgid "Enable _detailed forecast"
-msgstr "Activar pronóstico _detallado"
-
-#: gweather/gweather-pref.c:672
+#: gweather/gweather-pref.c:660
 msgid "Enable _radar map"
 msgstr "Activar el mapa de _radar"
 
-#: gweather/gweather-pref.c:680
+#: gweather/gweather-pref.c:674
 msgid "Use cus_tom address for radar map"
 msgstr "U_sar direcciones personalizadas para el mapa de radar"
 
-#: gweather/gweather-pref.c:693
-msgid "A_ddress :"
-msgstr "Di_recciones :"
+#: gweather/gweather-pref.c:691
+msgid "A_ddress:"
+msgstr "Di_recciones:"
 
-#: gweather/gweather-pref.c:707
-msgid "Updates"
-msgstr "Actualizaciones"
+#: gweather/gweather-pref.c:774
+msgid "_Select a location:"
+msgstr "_Seleccione una localización:"
 
-#: gweather/gweather-pref.c:713
-msgid "_Automatically update every "
-msgstr "_Actualizar automáticamente cada "
-
-#: gweather/gweather-pref.c:733
-msgid "minute(s)"
-msgstr "minuto(s)"
-
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:748
-msgid "Miscellaneous"
-msgstr "Varios"
-
-#: gweather/gweather-pref.c:806 gweather/location.c:360
+#: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "Ubicación"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
 "Determina si el aplique actualiza automáticamente sus estadísticas del clima "
 "o no."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "traer un pronóstico detallado en cada actualización."
+msgid "Display radar map"
+msgstr "Mostrar el mapa de radar"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
-msgstr "traer un mapa de radar con cada actualización."
+msgid "Fetch a radar map on each update."
+msgstr "Traer un mapa de radar con cada actualización."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "el intervalo en segundos entre las actualizaciones automáticas."
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Si es «true» (verdadero) entonces recupera un mapa de radar desde la dirección especificada "
+"por la clave «radar»."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "url para el mapa del radar"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "Ya no es utilizada"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "usar una url personalizada para el mapa del radar"
+msgid "The custom url from where to retrieve a radar map."
+msgstr "La url personalizada desde donde recuperar un mapa de radar."
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
-msgstr "usar las unidades métricas en vez de las unidades inglesas"
+msgid "The interval, in seconds, between automatic updates."
+msgstr "El intervalo en segundos entre las actualizaciones automáticas."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "Actualizar los datos automáticamente"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "Url para el mapa del radar"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "Usar una url personalizada para el mapa del radar"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "Usar unidades métricas"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "Usar unidades métricas en vez de las unidades inglesas."
+
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "información de la localización del clima."
-
-#: gweather/location.c:184
-msgid "Could not download countries"
-msgstr "No se han podido descargar los países"
-
-#: gweather/location.c:186
-msgid "Could not download cities"
-msgstr "No se han podido descargar las ciudades"
-
-#: gweather/location.c:243
-msgid "Downloading Cities..."
-msgstr "Descargando las ciudades..."
-
-#: gweather/location.c:304
-msgid "Countries list"
-msgstr "Lista de países"
-
-#: gweather/location.c:305
-msgid "Select the country from the list"
-msgstr "Seleccione el país desde la lista"
-
-#: gweather/location.c:308
-msgid "Country"
-msgstr "País"
-
-#: gweather/location.c:356
-msgid "Cities list"
-msgstr "Lista de ciudades"
-
-#: gweather/location.c:357
-msgid "Select the city from the list"
-msgstr "Seleccione la ciudad desde la lista"
-
-#: gweather/location.c:394
-msgid "Downloading Countries..."
-msgstr "Descargando las ciudades..."
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -1895,7 +1967,7 @@ msgstr "Noroeste"
 msgid "North - Northwest"
 msgstr "Norte - Noroeste"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
 msgid "Invalid"
 msgstr "Invalido"
 
@@ -1919,1110 +1991,322 @@ msgstr "Poca nubosidad"
 msgid "Overcast"
 msgstr "Pronóstico adelantado"
 
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#. * etc means, you can go to http://www.weather.com/glossary/ and
+#. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Llovizna ligera"
-
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Llovizna en los alrededores"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Llovizna ligera"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Llovizna moderada"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Llovizna abundante "
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Llovizna muy abundante"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Lugares de llovizna"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Llovizna parcial"
-
-#: gweather/weather.c:186 gweather/weather.c:187
+#: gweather/weather.c:192 gweather/weather.c:194
 msgid "Thunderstorm"
 msgstr "Tormentas de truenos"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Llovizna con vientos"
+#. DRIZZLE
+#: gweather/weather.c:193
+msgid "Drizzle"
+msgstr "Llovizna ligera"
 
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Aguacero"
+#: gweather/weather.c:193
+msgid "Light drizzle"
+msgstr "Llovizna ligera"
 
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Llovizna cambiando"
+#: gweather/weather.c:193
+msgid "Moderate drizzle"
+msgstr "Llovizna moderada"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:193
+msgid "Heavy drizzle"
+msgstr "Llovizna abundante "
+
+#: gweather/weather.c:193
 msgid "Freezing drizzle"
 msgstr "Helada"
 
 #. RAIN
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Rain"
 msgstr "Lluvia "
 
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Lluvia en el vecindario"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Light rain"
 msgstr "Lluvia ligera"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Moderate rain"
 msgstr "Lluvia moderada"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Heavy rain"
 msgstr "Lluvia fuerte"
 
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Aguacero"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Lugares de lluvia"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Cortina parcial de lluvia"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Aguacero"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Rain showers"
 msgstr "Aguaceros"
 
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Lluvia cambiando"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Freezing rain"
 msgstr "Lluvia helada"
 
 #. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Snow"
 msgstr "Nieve"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Nieve en los alrededores"
-
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Light snow"
 msgstr "Nieve ligera"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Moderate snow"
 msgstr "Nieve moderada"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Heavy snow"
 msgstr "Nieve en abundancia"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Nevada torrencial"
-
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Lugares con nieve"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Cascada parcial de nieve"
-
-#: gweather/weather.c:188 gweather/weather.c:189
+#: gweather/weather.c:195
 msgid "Snowstorm"
 msgstr "Tormenta de Nieve"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Blowing snowfall"
 msgstr "Cascada de nieve"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Snow showers"
 msgstr "Aguanieve"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Drifting snow"
 msgstr "Nevada cambiando"
 
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Heladas"
-
 #. SNOW_GRAINS
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Snow grains"
 msgstr "Granizada"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Granizo en los alrededores"
-
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Light snow grains"
 msgstr "Granizada ligera"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Moderate snow grains"
 msgstr "Granizada moderada"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Heavy snow grains"
 msgstr "Granizada abundante"
 
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Granizada muy intensa"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Lugares con granizo"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Granizada parcial"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Granizo abundante"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Granizada"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Granizada cambiando"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Granizo con heladas"
-
 #. ICE_CRYSTALS
-#: gweather/weather.c:190
+#: gweather/weather.c:197
 msgid "Ice crystals"
 msgstr "Cristales de hielo"
 
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Cristales de hielo en los alrededores"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Pocos cristales de hielo"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Cristales de hielo moderados"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Cristales de hielo abundantes"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Lugares con cristales de hielo"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Cristales de hielo parciales"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Tormenta de cristales de hielo"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Abundantes cristales de hielo"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Tormenta de cristales de hielo"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Cristales de hielo cambiando"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Cristales de hielo congelados"
-
 #. ICE_PELLETS
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Ice pellets"
 msgstr "Bolas de hielo"
 
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Granizo en los alrededores"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Few ice pellets"
 msgstr "Poco granizo"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Moderate ice pellets"
 msgstr "Granizo moderado"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Heavy ice pellets"
 msgstr "Granizo abundante"
 
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Granizo muy abundante"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Lugares con granizo"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Granizo parcial"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Ice pellet storm"
 msgstr "Tormenta de granizo"
 
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Tormenta de granizo"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Showers of ice pellets"
 msgstr "Granizo con lluvia"
 
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Granizada cambiando"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Granizada con hielo"
-
 #. HAIL
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hail"
 msgstr "Granizo"
 
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Granizo en los alrededores"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Granizo ligero"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Granizo moderado"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Granizo abundante"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Granizo muy abundante"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Lugares con granizo"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Granizada parcial"
-
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hailstorm"
 msgstr "Granizada"
 
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Granizada abundante"
-
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hail showers"
 msgstr "Granizada con lluvia"
 
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Granizada cambiando"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Granizada con hielo"
-
 #. SMALL_HAIL
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Small hail"
 msgstr "Granizo pequeño"
 
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Granizo en los alrededores"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Granizo moderado"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Granizo abundante"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Granizo muy abundante"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Lugares con granizo"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Granizada parcial"
-
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Small hailstorm"
 msgstr "Pequeña granizada"
 
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Granizada muy abundante"
-
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Showers of small hail"
 msgstr "Granizo con lluvia"
 
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Granizada cambiando"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Granizo con hielo"
-
 #. PRECIPITATION
-#: gweather/weather.c:194
+#: gweather/weather.c:201
 msgid "Unknown precipitation"
 msgstr "Precipitación desconocida"
 
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Precipitación en los alrededores"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Precipitación ligera"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Precipitación moderada"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Precipitación abundante"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Precipitación torrencial"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Lugares con precipitación"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Precipitación parcial"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Tormenta desconocida"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Precipitación torrencial"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Lluvia, de tipo desconocido"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Precipitación cambiando"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Precipitación con hielo"
-
 #. MIST
-#: gweather/weather.c:195
+#: gweather/weather.c:202
 msgid "Mist"
 msgstr "Neblina"
 
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Neblina en los alrededores"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Neblina ligera"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Neblina moderada"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Neblina gruesa"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Cortina de neblina"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Lugares con neblina"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Neblina parcial"
-
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Neblina con viento"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Neblina cambiando"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Neblina con hielo"
-
 #. FOG
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Fog"
 msgstr "Niebla"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Fog in the vicinity"
 msgstr "Niebla en los alrededores"
 
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Niebla ligera"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Niebla moderada"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Niebla gruesa"
-
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Shallow fog"
 msgstr "Niebla muy gruesa"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Patches of fog"
 msgstr "Lugares con niebla"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Partial fog"
 msgstr "Niebla parcial"
 
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Niebla con viento"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Niebla cambiando"
-
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Freezing fog"
 msgstr "Niebla con hielo"
 
 #. SMOKE
-#: gweather/weather.c:197
+#: gweather/weather.c:204
 msgid "Smoke"
 msgstr "Humo"
 
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Humo en los alrededores"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Humo ligero"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Humo moderado"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Humo grueso"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Cortina de humo"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Lugares con humo"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Humo parcial"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Humo con truenos"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Humo con viento"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Humo cambiando"
-
 #. VOLCANIC_ASH
-#: gweather/weather.c:198
+#: gweather/weather.c:205
 msgid "Volcanic ash"
 msgstr "Cenizas volcánicas"
 
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Cenizas volcánicas en los alrededores"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Cenizas volcánicas moderadas"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Cenizas volcánicas gruesas"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Cortina de cenizas volcánicas"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Lugares con cenizas volcánicas"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Cenizas volcánicas parciales"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Cenizas volcánicas con truenos"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Cenizas volcánicas abundantes"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Lluvia de cenizas volcánicas"
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Cambiando cenizas volcánicas"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Cenizas volcánicas con hielo"
-
 #. SAND
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Sand"
 msgstr "Arena"
 
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Arena en los alrededores"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Arena ligera"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Arena moderada"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Arena abundante"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Lugares con arena"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Arena parcial"
-
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Blowing sand"
 msgstr "Arena muy abundante"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Drifting sand"
 msgstr "Arena cambiando"
 
 #. HAZE
-#: gweather/weather.c:200
+#: gweather/weather.c:207
 msgid "Haze"
 msgstr "Bruma"
 
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Bruma en los alrededores"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Bruma ligera"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Bruma moderada"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Bruma gruesa"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Cortina de bruma"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Lugares con bruma"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Bruma parcial"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Bruma con vientos"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Cambiando la bruma"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Bruma con hielo"
-
 #. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Lloviznas"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Rocío en los alrededores"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Rocío ligero"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Rocío moderado"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Rocío abundante"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Rocío muy abundante"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "Lugares con rocío"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Rocío parcial"
-
-#: gweather/weather.c:201
+#: gweather/weather.c:208
 msgid "Blowing sprays"
 msgstr "Cortina de rocío"
 
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Rocío cambiando"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Rocío con hielo"
-
 #. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Dust"
 msgstr "Polvo"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Polvo en los alrededores"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Neblina ligera"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Polvo moderado"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Polvo abundante"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Lugares con polvo"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Polvo parcial"
-
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Blowing dust"
 msgstr "Cortina de polvo"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Drifting dust"
 msgstr "Cambiando el polvo"
 
 #. SQUALL
-#: gweather/weather.c:203
+#: gweather/weather.c:210
 msgid "Squall"
 msgstr "Chubasco"
 
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Chubasco en los alrededores"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Chubascos ligeros"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Chubascos moderados"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Chubascos abundantes"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Chubascos parciales"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Chubascos con truenos"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Chubascos muy abundantes"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Cambiando chubascos"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Chubascos con heladas"
-
 #. SANDSTORM
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Sandstorm"
 msgstr "Tormenta de arena"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Sandstorm in the vicinity"
 msgstr "Tormenta de arena en los alrededores"
 
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Tormenta de arena ligera"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Tormenta de arena moderada"
-
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Heavy sandstorm"
 msgstr "Tormenta de arena abundante"
 
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Tormenta de arena muy abundante"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Tormenta de arena parcial"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Tormenta de arena con truenos"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Tormenta de arena muy intensa"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Cambiando la tormenta de arena"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Tormenta de arena helada"
-
 #. DUSTSTORM
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Duststorm"
 msgstr "Tormenta de polvo"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Duststorm in the vicinity"
 msgstr "Tormenta de polvo en los alrededores"
 
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Tormenta de polvo ligera"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Tormenta de polvo moderada"
-
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Heavy duststorm"
 msgstr "Tormenta de polvo abundante"
 
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Tormenta de polvo muy abundante"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Tormenta de polvo parcial"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Tormenta de polvo con truenos"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Tormenta de polvo muy intensa"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Tormenta de polvo cambiando"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Tormenta de polvo helada"
-
 #. FUNNEL_CLOUD
-#: gweather/weather.c:206
+#: gweather/weather.c:213
 msgid "Funnel cloud"
 msgstr "Nublado"
 
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Nublado en los alrededores"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Nublado ligero"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Nublado moderado"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Nublado abundante"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Nublado muy abundante"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Lugares con nublado"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Nublado parcial"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Nublado con vientos"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Nublado cambiando"
-
 #. TORNADO
-#: gweather/weather.c:207
+#: gweather/weather.c:214
 msgid "Tornado"
 msgstr "Tornado"
 
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornado en los alrededores"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Tornado moderado"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Tornado violento"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Tornado parcial"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Tornado con truenos"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Cambiando el tornado"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Tornado helado"
-
 #. DUST_WHIRLS
-#: gweather/weather.c:208
+#: gweather/weather.c:215
 msgid "Dust whirls"
 msgstr "Remolino de polvo"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:215
 msgid "Dust whirls in the vicinity"
 msgstr "Remolino de polvo en los alrededores"
 
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Remolino de polvo ligero"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Remolino de polvo moderado"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Remolino de polvo abundante"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Remolino de polvo intenso"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Lugares con remolino de polvo"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Remolinos de polvo parciales"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Remolinos de polvo muy intensos"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Remolinos de polvo cambiando"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
+#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
 msgid "Failed to get METAR data.\n"
 msgstr "Ha fallado la obtención de los datos METAR.\n"
 
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
+#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
 msgid "WeatherInfo missing location"
 msgstr "dirección perdida para WeatherInfo"
 
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Ha ocurrido una falla al obtener los datos IWIN.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Ha ocurrido una falla al obtener el pronóstico IWIN.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Ha ocurrido una falla al obtener el pronóstico de Met Office.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Ha ocurrido una falla al obtener el pronóstico de Met Office.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Ha ocurrido una falla al obtener los mapas radar.\n"
-
-#: gweather/weather.c:1771
+#: gweather/weather.c:1778
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d de %b / %H:%M"
 
-#: gweather/weather.c:1775
+#: gweather/weather.c:1782
 msgid "Unknown observation time"
 msgstr "Hora de observación desconocida"
 
-#: gweather/weather.c:1835
+#: gweather/weather.c:1842
 msgid "Calm"
 msgstr "Calmo"
 
-#: gweather/weather.c:1861
+#: gweather/weather.c:1868
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: gweather/weather.c:1905
+#: gweather/weather.c:1912
 msgid "Retrieval failed"
 msgstr "Ha ocurrido una falla de recuperación"
 
@@ -3035,7 +2319,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Origen para crear los monitores de entrada."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2445
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "Monitor de bandeja de entrada"
 
@@ -3117,11 +2401,11 @@ msgid "No mail."
 msgstr "No hay correo."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2802 mailcheck/mailcheck.c:2803
+#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
 msgid "Status not updated"
 msgstr "Estado no actualizado"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2367
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "Configuración de la bandeja de entrada"
 
@@ -3185,74 +2469,74 @@ msgstr "Caja de entrada de la carpeta"
 msgid "Check for mail _every:"
 msgstr "Comprobar el corr_eo cada:"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2074
 msgid "Choose time interval in minutes to check mail"
 msgstr "Seleccione el intervalo de tiempo en minutos para comprobar el correo"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2097
 msgid "Choose time interval in seconds to check mail"
 msgstr "Seleccione el intervalo de tiempo en segundos para comprobar el correo"
 
-#: mailcheck/mailcheck.c:2112
+#: mailcheck/mailcheck.c:2114
 msgid "Play a _sound when new mail arrives"
 msgstr "Reproducir un _sonido cuando llegue correo nuevo"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2122
+#: mailcheck/mailcheck.c:2124
 msgid "Sto_p animation when double clicked"
 msgstr "De_tener la animación cuando se haga un doble clic"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2137
 msgid "Select a_nimation:"
 msgstr "Seleccione una a_nimación:"
 
-#: mailcheck/mailcheck.c:2152
+#: mailcheck/mailcheck.c:2154
 msgid "Commands"
 msgstr "Comandos"
 
-#: mailcheck/mailcheck.c:2181
+#: mailcheck/mailcheck.c:2183
 msgid "Before each _update:"
 msgstr "Antes de cada act_ualización:"
 
-#: mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:2200
 msgid "Command to execute before each update"
 msgstr "Comando a ejecutar antes de cada actualización"
 
-#: mailcheck/mailcheck.c:2210
+#: mailcheck/mailcheck.c:2212
 msgid "When new mail _arrives:"
 msgstr "Cuando lleg_a correo nuevo:"
 
-#: mailcheck/mailcheck.c:2225 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Comando a ejecutar cuando llegue correo nuevo"
 
-#: mailcheck/mailcheck.c:2237
+#: mailcheck/mailcheck.c:2239
 msgid "When double clicke_d:"
 msgstr "Cuan_do sea pulsado dos veces:"
 
-#: mailcheck/mailcheck.c:2252
+#: mailcheck/mailcheck.c:2254
 msgid "Command to execute when clicked"
 msgstr "Comando a ejecutar cuando se haga clic"
 
-#: mailcheck/mailcheck.c:2337
+#: mailcheck/mailcheck.c:2339
 msgid "Inbox Monitor Preferences"
 msgstr "Preferencias del monitor de la bandeja de entrada"
 
-#: mailcheck/mailcheck.c:2447
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 "El monitor de bandeja de entrada le avisa cuando llega correo nuevo en su "
 "casilla"
 
-#: mailcheck/mailcheck.c:2773
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "Sólo texto"
 
-#: mailcheck/mailcheck.c:2804
+#: mailcheck/mailcheck.c:2807
 msgid "Mail check"
 msgstr "Comprobación de correo"
 
-#: mailcheck/mailcheck.c:2805
+#: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "La comprobación de correo le avisa cuando llega correo nuevo a su casilla"
 
@@ -3547,70 +2831,112 @@ msgid "_Use default theme colors"
 msgstr "_Usar los colores predeterminados del tema"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "Histórico de autocompletar"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr "Intenta autocompletar un comando desde el historial de comandos ingresados."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "Altura del aplique"
+msgid "Color background blue component"
+msgstr "Componente azul del color de fondo"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "Altura de la entrada"
+msgid "Color background green component"
+msgstr "Componente verde del color de fondo"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr ""
-"Mostrar un marco feo alrededor de todo el aplique desperdiciando un espacio "
-"valioso"
+msgid "Color background red component"
+msgstr "Componente rojo del color de fondo"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr "Mostrar el manejador thingy para que pueda separar el comando thingy"
+msgid "Color foreground blue component"
+msgstr "Componente azul del color de frente"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr ""
-"Usar los colores predeterminados del tema para el fondo y frente de la "
-"entrada"
+msgid "Color foreground green component"
+msgstr "Componente verder del color de frente"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "Componente rojo del color de frente"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "fondo azul"
+msgid "History list"
+msgstr "Lista del historial"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "fondo rojo"
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr "lista de entradas de GConfValueGConfValu que contienen cadenas para las entradas históricas."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "frente azul"
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "lista de entradas de GConfValue que contienen cadenas para los comandos de macros."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "frente verde"
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "lista de entradas de GConfValue que contienen cadenas para los patrones de macros."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "frente rojo"
+msgid "Macro command list"
+msgstr "Lista de comandos de macro"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
-msgstr ""
-"lista de entradas de GConfValueGConfValu que contienen cadenas para "
-"históricos de entradas"
-
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
-msgstr ""
-"lista de entradas de GConfValue que contienen cadenas para los comandos de "
-"macros"
+msgid "Macro pattern list"
+msgstr "Lista de patrones de macro"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
-msgstr ""
-"lista de entradas de GConfValue que contienen cadenas para los patrones de "
-"macros"
+msgid "Perform history autocompletion"
+msgstr "Activar el histórico de autocompletar"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "Mostrar un marco alrededor del aplique."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Mostrar un manejador para que el aplique pueda ser desprendido del panel."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "Mostrar el  cuadro"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "Mostrar el manejador"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "El componente azul del color de fondo."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "El componente azul del color de frente."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "El componente verde del color de fondo."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "El componente verde del color de frente."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "El componente rojo del color de fondo."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "El componente rojo del color de frente."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "Usar los colores del tema predeterminado"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr "Usar los colores del tema en lugar de los personalizados."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "Ancho"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -3817,15 +3143,15 @@ msgstr "El control de volumen le deja ajustar el nivel de volumen de su escritor
 msgid "Volume Control Preferences"
 msgstr "Preferencias del control de volumen"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "Canales de audio"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "_Seleccione el canal a controlar:"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "El control de volumen le dejar configurar el nivel de volumen de su "
@@ -3889,82 +3215,146 @@ msgid "not connected"
 msgstr "desconectado"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "Solicitar una confirmación al conectarse"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "Solicitar una confirmación al conectarse y desconectarse"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "Parpadear al conectarse"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "Comando ejecutado al conectarse"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "Comando ejecutado al desconectarse"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "Retardo"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "Nombre del dispositivo del modem"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "Mostrar un diálogo de confirmación al conectarse o desconectarse."
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "Hacer que parpadee"
+msgid "Make the applet blink when the modem is connecting."
+msgstr "Hacer que el aplique parpadee cuando el MODEM se esté conectando."
 
 #: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "Nombre del dispositivo del MODEM"
+
+#: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
 msgstr "Archivo de bloqueo del modem"
 
-#: modemlights/modemlights.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "Color de fondo de recepción"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "Color de fondo de la recepción"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "Color de fondo de envío"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "Color de frente de envío"
 
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "Mostrar el tiempo y rendimiento de la conexión"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
-msgstr "Color de estado de la conexión"
-
 #: modemlights/modemlights.schemas.in.h:14
-msgid "Status not connected color"
-msgstr "Color de estado no conectado"
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"Mostrar información adicional acerca del tiempo y la cantidad de datos transmitidos y "
+"recibidos."
 
 #: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
+msgstr "Color del estado al estar conectado"
+
+#: modemlights/modemlights.schemas.in.h:16
+msgid "Status not connected color"
+msgstr "Color del estado al no estar conectado"
+
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "Color del estado de espera de conexión"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "Color de fondo del texto"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "Color de frente del texto"
 
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "Color del borde del texto"
 
-#: modemlights/modemlights.schemas.in.h:19
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to inidcate data received."
+msgstr "El color de fondo del botón utilizado para indicar la recepción de datos."
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to inidcate data sent."
+msgstr "El color de fondo del botón utilizado para indicar el envío de datos."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid "The color used to display the status button when the modem is connected."
+msgstr "El color utilizado para mostrar el botón de estado cuando el MODEM está conectado."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid "The color used to display the status button when the modem is connecting."
+msgstr "El color usado para mostrar el botón de estado cuando el MODEM está conectándose."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid "The color used to display the status button when the modem is not connected."
+msgstr "El color utilizado para mostrar el botón de estado cuando el MODEM no está conectado."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "El color utilizado para indicar que se han enviado y recibido datos."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "El color utilizado para indicar que se han enviado datos."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "La fracción de un segundo hasta que el aplique se actualiza."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "El nombre del dispositivo correspondiente al MODEM."
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "El nombre del archivo de bloqueo del MODEM."
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "Usar isdn"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "Utilizar isdn en lugar de ppp para conectar el MODEM."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "Utilizar este comando para conectar el MODEM."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "Utilizar este comando para desconectar el MODEM."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "Comprobar el dueño del archivo de bloqueo"
 
@@ -3972,115 +3362,115 @@ msgstr "Comprobar el dueño del archivo de bloqueo"
 msgid "Modem Lights Preferences"
 msgstr "Preferencias de Luces del Módem"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "Ac_tualizar cada:"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "Mostra_r tiempo de conexión y caudal"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "E_l estado de conexión parpadea al conectarse"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "Conexiones"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "Comando de co_nexión:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "Comando de _desconexión:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "Con_firmar conexión"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "Datos recibidos"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "_Frente:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "Datos enviados"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "F_rente:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "Fo_ndo:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "Estado de la conexión"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "Co_nectado:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "Desconec_tado:"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "C_onectando"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "Texto"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "Fr_ente:"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "Fon_do:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "B_orde"
 
 # gnome-terminal/gnome-terminal.c:801
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "Colores"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "Opciones del módem"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "_Dispositivo:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "Archivo de b_loqueo:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "_Verificar el dueño del archivo de bloqueo"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "U_sar ISDN"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "Avanzado"
 
@@ -4151,88 +3541,116 @@ msgid "Memory Load"
 msgstr "Carga de memoria"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "Fondo de la red"
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Para los paneles horizontales, el ancho de los gráficos en píxeles, para los "
+"paneles verticales, esto es la altura de los gráficos."
 
 #: multiload/multiload.schemas.in.h:2
+msgid "Graph size"
+msgstr "Tamaño del gráfico"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Network graph background color"
+msgstr "Color de fondo del gráfico de red"
+
+#: multiload/multiload.schemas.in.h:4
 msgid "Network other usage"
 msgstr "Otro uso de la red"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:5
+msgid "The cpu graph background color."
+msgstr "Color de fondo del gráfico de la CPU."
+
+#: multiload/multiload.schemas.in.h:6
+msgid "The load graph background color."
+msgstr "Color de fondo del gráfico de carga del sistema."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "The memory graph background color."
+msgstr "Color de fondo del gráfico de uso de memoria."
+
+#: multiload/multiload.schemas.in.h:8
+msgid "The swap graph background color."
+msgstr "Color de fondo del gráfico del uso de intercambio."
+
+#: multiload/multiload.schemas.in.h:9
 msgid "enable the cpuload graph in multiload."
 msgstr "habilitar el gráfico de carga de la CPU en la multicarga"
 
-#: multiload/multiload.schemas.in.h:4
+#: multiload/multiload.schemas.in.h:10
 msgid "enable the loadavg graph in multiload."
 msgstr "habilitar el gráfico de carga promedio en la multicarga"
 
-#: multiload/multiload.schemas.in.h:5
+#: multiload/multiload.schemas.in.h:11
 msgid "enable the memload graph in multiload."
 msgstr "habilitar el gráfico de carga de memoria en la multicarga"
 
-#: multiload/multiload.schemas.in.h:6
+#: multiload/multiload.schemas.in.h:12
 msgid "enable the netload graph in multiload."
 msgstr "habilitar el gráfico de carga de red en la multicarga."
 
-#: multiload/multiload.schemas.in.h:7
+#: multiload/multiload.schemas.in.h:13
 msgid "enable the swapload graph in multiload."
 msgstr "habilitar el gráfico de carga de intercambio en la multicarga."
 
-#: multiload/multiload.schemas.in.h:8
-msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
-msgstr ""
-"para los paneles horizontales, el ancho de los apliques en píxeles, para los "
-"paneles verticales, esto es la altura de los apliques."
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for Ethernet network activity."
+msgstr "El color del gráfico para mostrar la actividad de la red Ethernet."
 
-#: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "el color de fondo del aplique"
+#: multiload/multiload.schemas.in.h:15
+msgid "the graph color for PLIP network activity."
+msgstr "El color del gráfico para la actividad de la red PLIP."
 
-#: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "El color del gráfico para la memoria del buffer."
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for SLIP network activity."
+msgstr "El color del gráfico para la actividad de la red SLIP."
 
-#: multiload/multiload.schemas.in.h:11
+#: multiload/multiload.schemas.in.h:17
 msgid "the graph color for buffer memory."
 msgstr "el color del gráfico para la memoria del buffer."
 
-#: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "El color del gráfico para la memoria caché."
-
-#: multiload/multiload.schemas.in.h:13
+#: multiload/multiload.schemas.in.h:18
 msgid "the graph color for cached memory."
 msgstr "El color del gráfico para la memoria caché."
 
-#: multiload/multiload.schemas.in.h:14
+#: multiload/multiload.schemas.in.h:19
+msgid "the graph color for load average."
+msgstr "El color del gráfico para el promedio de carga."
+
+#: multiload/multiload.schemas.in.h:20
 msgid "the graph color for nice-related cpu activity."
 msgstr ""
 "El color del gráfico para la actividad de la CPU relacionada con la "
 "prioridad."
 
-#: multiload/multiload.schemas.in.h:15
+#: multiload/multiload.schemas.in.h:21
 msgid "the graph color for shared memory."
 msgstr "El color del gráfico para la memoria compartida."
 
-#: multiload/multiload.schemas.in.h:16
+#: multiload/multiload.schemas.in.h:22
 msgid "the graph color for system-related cpu activity."
 msgstr "El color del gráfico para la actividad de la CPU relacionada con el sistema."
 
-#: multiload/multiload.schemas.in.h:17
+#: multiload/multiload.schemas.in.h:23
 msgid "the graph color for user-related cpu activity."
-msgstr "el color del gráfico para la actividad de la CPU relacionada con el usuario."
+msgstr "El color del gráfico para la actividad de la CPU relacionada con el usuario."
 
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
-msgstr "el color del gráfico para el uso de memoria relacionado con el usuario."
+#: multiload/multiload.schemas.in.h:24
+msgid "the graph color for user-related memory usage."
+msgstr "El color del gráfico para el uso de memoria relacionado con el usuario."
 
-#: multiload/multiload.schemas.in.h:19
+#: multiload/multiload.schemas.in.h:25
+msgid "the graph color for user-related swap usage."
+msgstr "El color del gráfico para el uso de intercambio relacionado con el usuario."
+
+#: multiload/multiload.schemas.in.h:26
 msgid "the refresh rate of the applets in milliseconds"
 msgstr "la velocidad de refresco para los apliques en milisegundos"
 
-#: multiload/multiload.schemas.in.h:20
+#: multiload/multiload.schemas.in.h:27
 msgid "the refresh rate of the applets in milliseconds."
 msgstr "la velocidad de refresco de los apliques en milisegundos."
 
@@ -4361,7 +3779,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crea, muestra y administra notas pegadizas en el escritorio"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
 msgstr "Notas pegadizas"
@@ -4735,7 +4153,7 @@ msgstr "Define si se debe utilizar el color predeterminado del sistema"
 msgid "Whether to use the default system font"
 msgstr "Define si se debe utilizar la tipografía predeterminada del sistema"
 
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #, c-format
 msgid ""
 "%s\n"
@@ -4763,7 +4181,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitorizar la calidad del enlace de red inalámbrico"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:724
 msgid "Wireless Link Monitor"
 msgstr "Monitor de enlace inalámbrico"
 
@@ -4776,11 +4194,11 @@ msgstr ""
 "inalámbrico.\n"
 "Por favor asegúrese de que esta instalado correctamente."
 
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
 msgid "No Wireless Devices"
 msgstr "No hay dispositivos inalámbricos"
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:534
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4788,29 +4206,755 @@ msgstr ""
 "Parece no haber ningún dispositivo inalámbrico configurado en su sistema.\n"
 "Por favor verifique su configuración si piensa que esto es incorrecto."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:726
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:727
 msgid "This utility shows the status of a wireless link."
 msgstr "Este utilitario muestra el estado del enlace inalámbrico."
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "Mostrar cajas de _dialogo"
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "Mostrar la fuerza de la señal en _porcentaje"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "Preferencias del monitor de enlace inalámbrico"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorizado:"
+
+#~ msgid "Beep?"
+#~ msgstr "¿Pitido?"
+
+#~ msgid "Horizontal"
+#~ msgstr "Horizontal"
+
+#~ msgid "Use dock"
+#~ msgstr "Usar una base"
+
+#~ msgid "Is the applet size small?"
+#~ msgstr "¿Es demasiado pequeño el tamaño del aplique?"
+
+#~ msgid "The command what switch your keymap tho this layout"
+#~ msgstr "El comando que cambia su mapa de teclas a esta distribución"
+
+#~ msgid "When this is true, the applet will be half size"
+#~ msgstr ""
+#~ "Cuando esto es verdadero (true) el aplique será de la mitad del tamaño"
+
+# gnome-terminal/gnome-terminal.c:801
+#~ msgid "color"
+#~ msgstr "color"
+
+#~ msgid "color for no change text"
+#~ msgstr "color para texto que no cambia"
+
+#~ msgid "font"
+#~ msgstr "tipografía"
+
+#~ msgid "timeout"
+#~ msgstr "tiempo de espera"
+
+#~ msgid "Location:"
+#~ msgstr "Ubicación:"
+
+#~ msgid "Update:"
+#~ msgstr "Actualizar:"
+
+#~ msgid "_Automatically update every"
+#~ msgstr "_Actualizar automáticamente cada"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Activar pronóstico _detallado"
+
+#~ msgid "Updates"
+#~ msgstr "Actualizaciones"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "_Actualizar automáticamente cada "
+
+#~ msgid "minute(s)"
+#~ msgstr "minuto(s)"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Varios"
+
+#~ msgid "fetch a detailed forecast on each update."
+#~ msgstr "traer un pronóstico detallado en cada actualización."
+
+#~ msgid "Could not download countries"
+#~ msgstr "No se han podido descargar los países"
+
+#~ msgid "Could not download cities"
+#~ msgstr "No se han podido descargar las ciudades"
+
+#~ msgid "Downloading Cities..."
+#~ msgstr "Descargando las ciudades..."
+
+#~ msgid "Countries list"
+#~ msgstr "Lista de países"
+
+#~ msgid "Select the country from the list"
+#~ msgstr "Seleccione el país desde la lista"
+
+#~ msgid "Country"
+#~ msgstr "País"
+
+#~ msgid "Cities list"
+#~ msgstr "Lista de ciudades"
+
+#~ msgid "Select the city from the list"
+#~ msgstr "Seleccione la ciudad desde la lista"
+
+#~ msgid "Downloading Countries..."
+#~ msgstr "Descargando las ciudades..."
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Llovizna en los alrededores"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Llovizna muy abundante"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Lugares de llovizna"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Llovizna parcial"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Llovizna con vientos"
+
+#~ msgid "Showers"
+#~ msgstr "Aguacero"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Llovizna cambiando"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Lluvia en el vecindario"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Aguacero"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Lugares de lluvia"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Cortina parcial de lluvia"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Aguacero"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Lluvia cambiando"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Nieve en los alrededores"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Nevada torrencial"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Lugares con nieve"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Cascada parcial de nieve"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Heladas"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Granizo en los alrededores"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Granizada muy intensa"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Lugares con granizo"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Granizada parcial"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Granizo abundante"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Granizada"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Granizada cambiando"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Granizo con heladas"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Cristales de hielo en los alrededores"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Pocos cristales de hielo"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Cristales de hielo moderados"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Cristales de hielo abundantes"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Lugares con cristales de hielo"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Cristales de hielo parciales"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Tormenta de cristales de hielo"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Abundantes cristales de hielo"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Tormenta de cristales de hielo"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Cristales de hielo cambiando"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Cristales de hielo congelados"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Granizo en los alrededores"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Granizo muy abundante"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Lugares con granizo"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Granizo parcial"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Tormenta de granizo"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Granizada cambiando"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Granizada con hielo"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Granizo en los alrededores"
+
+#~ msgid "Light hail"
+#~ msgstr "Granizo ligero"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Granizo moderado"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Granizo abundante"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Granizo muy abundante"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Lugares con granizo"
+
+#~ msgid "Partial hail"
+#~ msgstr "Granizada parcial"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Granizada abundante"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Granizada cambiando"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Granizada con hielo"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Granizo en los alrededores"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Granizo moderado"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Granizo abundante"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Granizo muy abundante"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Lugares con granizo"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Granizada parcial"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Granizada muy abundante"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Granizada cambiando"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Granizo con hielo"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Precipitación en los alrededores"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Precipitación ligera"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Precipitación moderada"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Precipitación abundante"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Precipitación torrencial"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Lugares con precipitación"
+
+#~ msgid "Partial precipitation"
+#~ msgstr "Precipitación parcial"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Tormenta desconocida"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Precipitación torrencial"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Lluvia, de tipo desconocido"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Precipitación cambiando"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Precipitación con hielo"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Neblina en los alrededores"
+
+#~ msgid "Light mist"
+#~ msgstr "Neblina ligera"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Neblina moderada"
+
+#~ msgid "Thick mist"
+#~ msgstr "Neblina gruesa"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Cortina de neblina"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Lugares con neblina"
+
+#~ msgid "Partial mist"
+#~ msgstr "Neblina parcial"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Neblina con viento"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Neblina cambiando"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Neblina con hielo"
+
+#~ msgid "Light fog"
+#~ msgstr "Niebla ligera"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Niebla moderada"
+
+#~ msgid "Thick fog"
+#~ msgstr "Niebla gruesa"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Niebla con viento"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Niebla cambiando"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Humo en los alrededores"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Humo ligero"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Humo moderado"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Humo grueso"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Cortina de humo"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Lugares con humo"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Humo parcial"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Humo con truenos"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Humo con viento"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Humo cambiando"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Cenizas volcánicas en los alrededores"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Cenizas volcánicas moderadas"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Cenizas volcánicas gruesas"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Cortina de cenizas volcánicas"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Lugares con cenizas volcánicas"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Cenizas volcánicas parciales"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Cenizas volcánicas con truenos"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Cenizas volcánicas abundantes"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Lluvia de cenizas volcánicas"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Cambiando cenizas volcánicas"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Cenizas volcánicas con hielo"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Arena en los alrededores"
+
+#~ msgid "Light sand"
+#~ msgstr "Arena ligera"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Arena moderada"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Arena abundante"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Lugares con arena"
+
+#~ msgid "Partial sand"
+#~ msgstr "Arena parcial"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Bruma en los alrededores"
+
+#~ msgid "Light haze"
+#~ msgstr "Bruma ligera"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Bruma moderada"
+
+#~ msgid "Thick haze"
+#~ msgstr "Bruma gruesa"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Cortina de bruma"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Lugares con bruma"
+
+#~ msgid "Partial haze"
+#~ msgstr "Bruma parcial"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Bruma con vientos"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Cambiando la bruma"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Bruma con hielo"
+
+#~ msgid "Sprays"
+#~ msgstr "Lloviznas"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Rocío en los alrededores"
+
+#~ msgid "Light sprays"
+#~ msgstr "Rocío ligero"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Rocío moderado"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Rocío abundante"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Rocío muy abundante"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Lugares con rocío"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Rocío parcial"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Rocío cambiando"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Rocío con hielo"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Polvo en los alrededores"
+
+#~ msgid "Light dust"
+#~ msgstr "Neblina ligera"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Polvo moderado"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Polvo abundante"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Lugares con polvo"
+
+#~ msgid "Partial dust"
+#~ msgstr "Polvo parcial"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Chubasco en los alrededores"
+
+#~ msgid "Light squall"
+#~ msgstr "Chubascos ligeros"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Chubascos moderados"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Chubascos abundantes"
+
+#~ msgid "Partial squall"
+#~ msgstr "Chubascos parciales"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Chubascos con truenos"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Chubascos muy abundantes"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Cambiando chubascos"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Chubascos con heladas"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Tormenta de arena ligera"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Tormenta de arena moderada"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Tormenta de arena muy abundante"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Tormenta de arena parcial"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Tormenta de arena con truenos"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Tormenta de arena muy intensa"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Cambiando la tormenta de arena"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Tormenta de arena helada"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Tormenta de polvo ligera"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Tormenta de polvo moderada"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Tormenta de polvo muy abundante"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Tormenta de polvo parcial"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Tormenta de polvo con truenos"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Tormenta de polvo muy intensa"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Tormenta de polvo cambiando"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Tormenta de polvo helada"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Nublado en los alrededores"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Nublado ligero"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Nublado moderado"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Nublado abundante"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Nublado muy abundante"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Lugares con nublado"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Nublado parcial"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Nublado con vientos"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Nublado cambiando"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado en los alrededores"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Tornado moderado"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Tornado violento"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Tornado parcial"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Tornado con truenos"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Cambiando el tornado"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Tornado helado"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Remolino de polvo ligero"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Remolino de polvo moderado"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Remolino de polvo abundante"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Remolino de polvo intenso"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Lugares con remolino de polvo"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Remolinos de polvo parciales"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Remolinos de polvo muy intensos"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Remolinos de polvo cambiando"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Ha ocurrido una falla al obtener los datos IWIN.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Ha ocurrido una falla al obtener el pronóstico IWIN.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Ha ocurrido una falla al obtener el pronóstico de Met Office.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Ha ocurrido una falla al obtener el pronóstico de Met Office.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Ha ocurrido una falla al obtener los mapas radar.\n"
+
+#~ msgid "Autocomplete history"
+#~ msgstr "Histórico de autocompletar"
+
+#~ msgid "Height of the applet"
+#~ msgstr "Altura del aplique"
+
+#~ msgid "Height of the entry"
+#~ msgstr "Altura de la entrada"
+
+#~ msgid "Show an ugly frame around the whole applet wasting useful space"
+#~ msgstr ""
+#~ "Mostrar un marco feo alrededor de todo el aplique desperdiciando un "
+#~ "espacio valioso"
+
+#~ msgid "Show the handle thingy so you can detach the command thingy"
+#~ msgstr ""
+#~ "Mostrar el manejador thingy para que pueda separar el comando thingy"
+
+#~ msgid "Use the default theme colors for entry fg and bg"
+#~ msgstr ""
+#~ "Usar los colores predeterminados del tema para el fondo y frente de la "
+#~ "entrada"
+
+#~ msgid "bg blue"
+#~ msgstr "fondo azul"
+
+#~ msgid "bg red"
+#~ msgstr "fondo rojo"
+
+#~ msgid "fg blue"
+#~ msgstr "frente azul"
+
+#~ msgid "fg green"
+#~ msgstr "frente verde"
+
+#~ msgid "fg red"
+#~ msgstr "frente rojo"
+
+#~ msgid "Delay"
+#~ msgstr "Retardo"
+
+#~ msgid "Device name of modem"
+#~ msgstr "Nombre del dispositivo del modem"
+
+#~ msgid "Make it blink baby"
+#~ msgstr "Hacer que parpadee"
+
+#~ msgid "the graph color for buffer memor."
+#~ msgstr "El color del gráfico para la memoria del buffer."
+
+#~ msgid "Show _dialog boxes"
+#~ msgstr "Mostrar cajas de _dialogo"
 
 #~ msgid "_Launch Preferences Dialog"
 #~ msgstr "Ejecutar el diá_logo de preferencias"
@@ -4851,12 +4995,6 @@ msgstr "Dispositivo _monitorizado:"
 #~ msgid "Condition"
 #~ msgstr "Condición"
 
-#~ msgid "City:"
-#~ msgstr "Ciudad:"
-
-#~ msgid "Last update:"
-#~ msgstr "Última actualización:"
-
 #~ msgid "Feels like:"
 #~ msgstr "Sensación térmica:"
 
@@ -4868,9 +5006,6 @@ msgstr "Dispositivo _monitorizado:"
 
 #~ msgid "%s / %.1f %s"
 #~ msgstr "%s / %.1f %s"
-
-#~ msgid "_Automatically update every:"
-#~ msgstr "_Actualizar automáticamente cada:"
 
 #~ msgid "Display _temperatures"
 #~ msgstr "Mostrar las _temperaturas"
@@ -5721,9 +5856,6 @@ msgstr "Dispositivo _monitorizado:"
 #~ msgid "history list empty"
 #~ msgstr "La lista con el histórico está vacía."
 
-#~ msgid "Command history"
-#~ msgstr "Historia de la línea de comando"
-
 #~ msgid "Run Audio Mixer..."
 #~ msgstr "Lanzar el mezclador de audio..."
 
@@ -5850,9 +5982,6 @@ msgstr "Dispositivo _monitorizado:"
 #~ msgid "SwapLoad"
 #~ msgstr "Carga swap"
 
-#~ msgid "Hour needle color"
-#~ msgstr "Color de la aguja de las horas"
-
 #~ msgid "Minute needle color"
 #~ msgstr "Color de la aguja de los minutos"
 
@@ -5947,9 +6076,6 @@ msgstr "Dispositivo _monitorizado:"
 
 #~ msgid "Low Charge Threshold:"
 #~ msgstr "Límite de Carga Baja:"
-
-#~ msgid "Graph"
-#~ msgstr "Grafo"
 
 #~ msgid "AC-On Battery Color:"
 #~ msgstr "Color para la Batería AC-On"
@@ -6202,9 +6328,6 @@ msgstr "Dispositivo _monitorizado:"
 
 #~ msgid "Can't create GNotes applet!"
 #~ msgstr "¡No puedo crear el aplique de GNotes!"
-
-#~ msgid "Raise Notes"
-#~ msgstr "Traér notas"
 
 #~ msgid "Default Width"
 #~ msgstr "Ancho por omisión"
