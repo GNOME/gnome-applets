@@ -6,6 +6,8 @@
 
 #include <assert.h>
 
+#include <config.h>
+
 #include <glibtop.h>
 #include <glibtop/cpu.h>
 #include <glibtop/mem.h>
