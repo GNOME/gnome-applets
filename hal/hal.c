@@ -25,7 +25,6 @@ NULL
 struct _Hal {
 	GtkWidget *applet;
 	GtkWidget *darea;
-	GtkWidget *frame;
 	GdkPixmap *pix;
 	int w,h;
 	GtkWidget * fortune_dialog;
@@ -171,10 +170,6 @@ create_hal_widget(Hal *fish)
 			   GTK_SIGNAL_FUNC(hal_expose), fish);
         gtk_widget_show(fish->darea);
 
-        fish->frame = gtk_frame_new(NULL);
-        gtk_frame_set_shadow_type(GTK_FRAME(fish->frame),GTK_SHADOW_IN);
-        gtk_container_add(GTK_CONTAINER(fish->frame),fish->darea);
-
 	gtk_widget_pop_colormap ();
 	gtk_widget_pop_visual ();
 }
@@ -242,8 +237,7 @@ wanda_activator(PortableServer_POA poa,
 
   /*gtk_widget_realize(applet);*/
   create_hal_widget(fish);
-  gtk_widget_show(fish->frame);
-  applet_widget_add(APPLET_WIDGET(fish->applet), fish->frame);
+  applet_widget_add(APPLET_WIDGET(fish->applet), fish->darea);
   gtk_widget_show(fish->applet);
 
   gtk_signal_connect(GTK_OBJECT(fish->applet),"destroy",
