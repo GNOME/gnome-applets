@@ -1,3 +1,10 @@
+2001-03-10  Timur Bakeyev  <mc@bat.ru>
+
+	* src/exec.c: On some OS's none of the used signal flags do exist. Use
+	zero as a default value. Also changed strcpy() to strncpy() in command
+	duplication. Still, all the buffer allocation code should be verified
+	agains possible overruns.
+	
 2000-05-14  Andreas Hyden  <a.hyden@cyberpoint.se>
 
 	* src/mini-commander_applet.desktop: Added Swedish translation.

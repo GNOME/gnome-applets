@@ -51,8 +51,6 @@ static gint      g_list_str_cmp( gconstpointer, gconstpointer );
  */
 static GList *path_elements = NULL;
 
-
-
 void
 cmd_completion(char *cmd)
 {

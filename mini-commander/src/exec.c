@@ -32,18 +32,11 @@
 #include "macro.h"
 #include "message.h"
 
-/*in case SA_NOMASK doesn't exist, use SA_NODEFER*/
-#ifndef SA_NOMASK
-#define SA_NOMASK SA_NODEFER
-#endif
-
 /* 
    These routines will only work on UNIX-alike system because fork()
    is needed. Perhaps I will add an alternative for non UNIX system in
    future (by using gnome-lib functions) 
 */
-
-
 
 void
 exec_command(char *cmd)
@@ -55,7 +48,9 @@ exec_command(char *cmd)
 	    
     /* make local copy of cmd; now we can minipulate command without
        changing cmd (important for history) */
-    strcpy(command, cmd);
+    strncpy(command, cmd, sizeof(command));
+    /* Add terminating \0 to the end */
+    command[sizeof(command)-1] = '\0';
 
     expand_command(command);
 
@@ -136,20 +131,28 @@ void sighandle_sigalrm(int sig)
 void
 init_exec_signal_handler(void)
 {
+    int sa_flags = 0;		  /* Default flags */
     struct sigaction act = {{0}}; /*this sets all fields to 0, no
 				  matter how many fields there are*/
 
-    act.sa_handler= &sighandle_sigchld;
+    /* Try to set appropriate signal options */
+#if defined(SA_NOMASK)
+    sa_flags = SA_NOMASK;
+#elif defined(SA_NODEFER)
+    sa_flags = SA_NODEFER;
+#endif
+
+    act.sa_handler = &sighandle_sigchld;
     /* act.sa_mask =  */
-    act.sa_flags = SA_NOMASK;
+    act.sa_flags = sa_flags;
     /* act.sa_restorer = NULL; */
 
     /* install signal handler */
     sigaction(SIGCHLD, &act, NULL); 
 
-    act.sa_handler= &sighandle_sigalrm;
+    act.sa_handler = &sighandle_sigalrm;
     /* act.sa_mask =  */
-    act.sa_flags = SA_NOMASK;
+    act.sa_flags = sa_flags;
     /* act.sa_restorer = NULL; */
 
     /* install signal handler */
