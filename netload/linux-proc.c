@@ -45,8 +45,8 @@ Device_Info *ReadProc()
 
 		/* Skip over the network thing. */		
 		p = skip_token(buffer) + 1;
-		strncpy(retval[devs - 1].name, p, 4);
-		retval[devs - 1].name[4] = 0;
+		strncpy(retval[devs - 1].name, p, 5);
+		retval[devs - 1].name[5] = 0;
 		retval[devs - 1].bytes = strtoul(buffer + 64, &p, 10);
 #if 0
 		printf("%d: %s - %ld\n", devs, retval[devs - 1].name, retval[devs - 1].bytes);

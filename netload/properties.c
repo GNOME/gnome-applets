@@ -192,7 +192,7 @@ GtkWidget *create_device_frame(void)
 	device_box = gtk_hbox_new(5, FALSE);
 	label = gtk_label_new(_("Device name (like ppp0 or eth0)"));
 	gtk_box_pack_start_defaults( GTK_BOX(device_box), label);
-	device = gtk_entry_new_with_max_length(4);
+	device = gtk_entry_new_with_max_length(5);
 	gtk_entry_set_text(GTK_ENTRY(device), props.device);
 	gtk_signal_connect( GTK_OBJECT(device), "changed", GTK_SIGNAL_FUNC(device_cb), device);
 	gtk_box_pack_start_defaults( GTK_BOX(device_box), device);
