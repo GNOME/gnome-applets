@@ -1915,7 +1915,7 @@ const gchar *weather_info_get_temp_summary (WeatherInfo *info)
       degree = "F";
       
    g_snprintf(buf, sizeof (buf), "%d\302\260%s",
-	      (int)lrint(info->temp), degree);
+	      (int)floor(info->temp + 0.5), degree);
     
     return buf;
 }
