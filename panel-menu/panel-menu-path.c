@@ -61,10 +61,16 @@ typedef struct _PanelMenuPath {
 
 static void panel_menu_path_set_list (PanelMenuEntry *entry, GList *list);
 static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry);
-static void panel_menu_path_load (const gchar *uri, GtkMenuShell *parent);
 static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 			       GnomeVFSResult result, GList *list,
 			       guint entries_read, GtkMenuShell *parent);
+
+static void panel_menu_path_process (GnomeVFSFileInfo *finfo,
+				     GtkMenuShell *parent,
+				     const gchar *subpath);
+static void panel_menu_path_modify_parent (GtkMenuShell *parent,
+					   PanelMenuDesktopItem *item);
+
 static gint panel_menu_path_remove_cb (GtkWidget *widget, GdkEventKey *event,
 				       PanelMenuPath *path);
 static void change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb);
@@ -134,6 +140,8 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 	gtk_menu_shell_append (GTK_MENU_SHELL (path->menu), sep);
 	gtk_widget_show (sep);
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (path->path), path->menu);
+	g_object_set_data (G_OBJECT (path->menu), "immortal",
+			   GINT_TO_POINTER(TRUE));
 	GTK_MENU (path->menu)->parent_menu_item = path->path;
 	g_signal_connect (G_OBJECT (path->menu), "key_press_event",
 			  G_CALLBACK (panel_menu_path_remove_cb), path);
@@ -146,6 +154,7 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 		key = g_strdup_printf ("%s/base-uri", base_key);
 		uri = panel_applet_gconf_get_string (parent->applet,
 						     key, NULL);
+		panel_menu_path_set_uri (entry, uri);
 		g_free (key);
 		key = g_strdup_printf ("%s/paths-list", base_key);
 		panel_menu_path_set_list (entry,
@@ -153,11 +162,11 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 		g_free (key);
 	} else {
 		uri = g_strdup ("applications:");
+		panel_menu_path_set_uri (entry, uri);
 	}
 	g_object_unref (G_OBJECT (client));
 	g_free (base_key);
 	g_free (dir_key);
-	panel_menu_path_set_uri (entry, uri);
 	g_free (uri);
 	object_counter++;
 	return entry;
@@ -193,8 +202,8 @@ panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri)
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
-	if (path->base_path)
-		g_free (path->base_path);
+	g_free (path->base_path);
+	path->base_path = NULL;
 	full_path = panel_menu_common_build_full_path (uri, ".directory");
 	item = panel_menu_desktop_item_load_uri ((const char *) full_path,
 						 "Directory", TRUE);
@@ -204,9 +213,19 @@ panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri)
 		label = g_strdup (item->name);
 		panel_menu_desktop_item_destroy (item);
 	} else {
-		path->base_path = g_strdup ("applications:");
-		label = g_strdup ("Programs");
+		gchar *last;
+		last = g_path_get_basename (uri);
+		if (last && !strcmp (last, "applnk"))
+			label = g_strdup (_("KDE"));
+		else if (last) {
+			label = g_strdup (last);
+			g_ascii_toupper (label[0]);
+		}
+		path->base_path = g_strdup (uri);
+		g_free (last);
 	}
+	if (!label)
+		label = g_strdup (_("Programs"));
 	gtk_label_set_text (GTK_LABEL (GTK_BIN (path->path)->child), label);
 	g_free (label);
 	regenerate_menus_cb (NULL, entry);
@@ -237,7 +256,8 @@ regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry)
 	panel_menu_path_load ((const gchar *) path->base_path,
 			      GTK_MENU_SHELL (path->menu));
 	if (path->paths_list) {
-		/* Here we copy the old list, and create a new list while iterating over the old list, and then killing it */
+		/* Here we copy the old list, and create a new list while iterating
+		  over the old list, and then killing it */
 		list = g_list_copy (path->paths_list);
 		g_list_free (path->paths_list);
 		path->paths_list = NULL;
@@ -318,7 +338,6 @@ panel_menu_path_accept_drop (PanelMenuEntry *entry, GnomeVFSURI *uri)
 	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_PATH, FALSE);
 
 	fileuri = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
-	g_print ("(panel-menu-path) uri is %s\n", fileuri);
 	retval = panel_menu_path_append_item (entry, fileuri);
 	if (retval)
 		panel_menu_path_save_config (entry);
@@ -326,7 +345,7 @@ panel_menu_path_accept_drop (PanelMenuEntry *entry, GnomeVFSURI *uri)
 	return retval;
 }
 
-static void
+void
 panel_menu_path_load (const gchar *uri, GtkMenuShell *parent)
 {
 	GnomeVFSResult result;
@@ -351,11 +370,7 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 {
 	GList *iter = NULL;
 	GnomeVFSFileInfo *finfo = NULL;
-	GtkWidget *menuitem = NULL;
-	GtkWidget *submenu = NULL;
-	PanelMenuDesktopItem *item;
-	gchar *icon = NULL;
-	gchar *path = NULL;
+	gchar *path;
 	gchar *subpath = NULL;
 	gint count = 0;
 
@@ -363,82 +378,87 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	for (iter = list, count = 0; iter && count < entries_read;
 	     iter = iter->next, count++) {
 		finfo = (GnomeVFSFileInfo *) iter->data;
-		subpath = panel_menu_common_build_full_path (path, finfo->name);
-		if (!subpath)
-			continue;
-		if (finfo->type == GNOME_VFS_FILE_TYPE_DIRECTORY) {
-			submenu =
-				panel_menu_common_menu_from_path (finfo->name,
-								  subpath,
-								  parent,
-								  FALSE);
-			panel_menu_path_load ((const gchar *) subpath,
-					      GTK_MENU_SHELL (submenu));
-		} else {
-			if (!strcmp (".directory", finfo->name)) {
-				item = panel_menu_desktop_item_load_uri ((const
-									  char
-									  *)
-									 subpath,
-									 "Directory",
-									 TRUE);
-				if (item) {
-					/* Set the localized label of the parent menu item, and an icon if there is one */
-					/* Dont bother trying to set an icon if the parent wont take one anyway */
-					gtk_label_set_text (GTK_LABEL
-							    (GTK_BIN
-							     (GTK_MENU
-							      (parent)->
-							      parent_menu_item)->
-							     child),
-							    item->name);
-					if (GTK_IS_IMAGE_MENU_ITEM
-					    (GTK_MENU (parent)->
-					     parent_menu_item)) {
-						icon = panel_menu_desktop_item_find_icon (item->icon);
-						if (icon) {
-							panel_menu_common_set_icon_scaled_from_file
-								(GTK_MENU_ITEM
-								 (GTK_MENU
-								  (parent)->
-								  parent_menu_item),
-								 icon);
-							g_free (icon);
-						} else {	/* Try and fall back to a default here if someone has jacked their GNOME Core install */
-
-							icon = panel_menu_desktop_item_find_icon ("gnome-directory.png");
-							if (icon) {
-								panel_menu_common_set_icon_scaled_from_file
-									(GTK_MENU_ITEM
-									 (GTK_MENU
-									  (parent)->
-									  parent_menu_item),
-									 icon);
-								g_free (icon);
-							}
-						}
-					}
-					panel_menu_desktop_item_destroy (item);
-				}
-			} else if (strcmp (".order", finfo->name)) {	/* We want to skip these items */
-				menuitem =
-					panel_menu_common_menuitem_from_path
-					(subpath, parent, FALSE);
+		if (finfo->name[0] != '.' || strlen (finfo->name) > 2) {
+			subpath = panel_menu_common_build_full_path (path, finfo->name);
+			if (subpath) {
+				panel_menu_path_process (finfo, parent, subpath);
+				g_free (subpath);
 			}
 		}
-		g_free (subpath);
 	}
 	if (result != GNOME_VFS_OK) {
 		if (parent) {
 			subpath =
 				(gchar *) g_object_get_data (G_OBJECT (parent),
 							     "uri-path");
-			g_free (subpath);
 			g_object_set_data (G_OBJECT (parent), "uri-path", NULL);
-			if (GTK_MENU (parent)->parent_menu_item
-			    && g_list_length (parent->children) < 2) {
+			if (GTK_MENU (parent)->parent_menu_item &&
+			    g_list_length (parent->children) < 2 &&
+			   !g_object_get_data (G_OBJECT (parent), "immortal")) {
 				gtk_widget_destroy (GTK_MENU (parent)->
 						    parent_menu_item);
+			}
+			g_free (subpath);
+		}
+	}
+}
+
+static void
+panel_menu_path_process (GnomeVFSFileInfo *finfo, GtkMenuShell *parent,
+			 const gchar *subpath)
+{
+	GtkWidget *menuitem = NULL;
+	GtkWidget *submenu = NULL;
+	PanelMenuDesktopItem *item;
+	gchar *path = NULL;
+
+	if (finfo->type == GNOME_VFS_FILE_TYPE_DIRECTORY) {
+		submenu = panel_menu_common_menu_from_path (finfo->name,
+							   (gchar *)subpath,
+							    parent,
+							    FALSE);
+		panel_menu_path_load ((const gchar *) subpath,
+				      GTK_MENU_SHELL (submenu));
+	} else {
+		if (!strcmp (".directory", finfo->name)) {
+			item = panel_menu_desktop_item_load_uri (subpath,
+								"Directory",
+								 TRUE);
+			if (item) {
+				panel_menu_path_modify_parent (parent, item);
+				panel_menu_desktop_item_destroy (item);
+			}
+		} else if (strcmp (".order", finfo->name)) {
+			/* We want to skip these items */
+			menuitem = panel_menu_common_menuitem_from_path ((gchar *)
+									 subpath,
+									 parent,
+									 FALSE);
+		}
+	}
+}
+
+static void
+panel_menu_path_modify_parent (GtkMenuShell *parent, PanelMenuDesktopItem *item)
+{
+	gchar *icon = NULL;
+	/* Set the localized label of the parent menu item, and an icon if there is one */
+	/* Dont bother trying to set an icon if the parent wont take one anyway */
+	gtk_label_set_text (GTK_LABEL (GTK_BIN
+		(GTK_MENU (parent)->parent_menu_item)->child), item->name);
+	if (GTK_IS_IMAGE_MENU_ITEM (GTK_MENU (parent)->parent_menu_item)) {
+		icon = panel_menu_desktop_item_find_icon (item->icon);
+		if (icon) {
+			panel_menu_common_set_icon_scaled_from_file (
+				GTK_MENU_ITEM (GTK_MENU(parent)->parent_menu_item), icon);
+			g_free (icon);
+		} else {
+			/* Try and fall back to a default here if someone has jacked their GNOME Core install */
+			icon = panel_menu_desktop_item_find_icon ("gnome-directory.png");
+			if (icon) {
+				panel_menu_common_set_icon_scaled_from_file(GTK_MENU_ITEM
+					 (GTK_MENU (parent)->parent_menu_item), icon);
+				g_free (icon);
 			}
 		}
 	}
@@ -458,8 +478,7 @@ panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri)
 	path = (PanelMenuPath *) entry->data;
 
 	if (!strncmp (uri, "applications:", strlen ("applications:"))
-	    || (!strncmp (uri, "file:", strlen ("file:"))
-		&& strstr (uri, ".desktop"))) {
+	    || (!strncmp (uri, "file:", strlen ("file:")))) {
 		if (strstr (uri, ".desktop")) {
 			if ((menuitem =
 			     panel_menu_common_menuitem_from_path (uri,
@@ -468,12 +487,24 @@ panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri)
 								   TRUE)))
 				retval = TRUE;
 		} else {
+			gchar *name;
+			name = g_path_get_basename (uri);
+			if (name && !strcmp (name, "applnk")) {
+				g_free (name);
+				name = g_strdup (_("KDE Menus"));
+			} else if (name == NULL) {
+				g_free (name);
+				name = g_strdup (_("Programs"));
+			}
 			submenu =
-				panel_menu_common_menu_from_path (_("Programs"),
+				panel_menu_common_menu_from_path (name,
 								  uri,
 								  GTK_MENU_SHELL
 								  (path->menu),
 								  TRUE);
+			g_free (name);
+			g_object_set_data (G_OBJECT (submenu), "immortal",
+					   GINT_TO_POINTER(TRUE));
 			menuitem = GTK_MENU (submenu)->parent_menu_item;
 			panel_menu_path_load ((const gchar *) uri,
 					      GTK_MENU_SHELL (submenu));

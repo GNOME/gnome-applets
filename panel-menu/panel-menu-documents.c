@@ -261,15 +261,13 @@ panel_menu_documents_append_item (PanelMenuEntry *entry, gchar *uri)
 
 	documents = (PanelMenuDocuments *) entry->data;
 	if (!strncmp (uri, "file:", strlen ("file:"))) {
-		if (gnome_vfs_get_file_info
-		    (uri, &finfo,
-		     GNOME_VFS_FILE_INFO_FOLLOW_LINKS) == GNOME_VFS_OK) {
+		if (gnome_vfs_get_file_info (
+		    uri, &finfo, GNOME_VFS_FILE_INFO_FOLLOW_LINKS) == GNOME_VFS_OK) {
 			if (finfo.type == GNOME_VFS_FILE_TYPE_REGULAR) {
 				menuitem =
 					gtk_image_menu_item_new_with_label
 					(finfo.name);
-				panel_menu_common_apps_menuitem_dnd_init
-					(menuitem);
+				panel_menu_common_apps_menuitem_dnd_init (menuitem);
 				icon = (gchar *)
 					gnome_vfs_mime_get_value ((gchar *)
 								  gnome_vfs_mime_type_from_name
@@ -294,9 +292,9 @@ panel_menu_documents_append_item (PanelMenuEntry *entry, gchar *uri)
 				g_object_set_data (G_OBJECT (menuitem),
 						   "uri-path", g_strdup (uri));
 				g_signal_connect (G_OBJECT (menuitem),
-						  "destroy",
+						 "destroy",
 						  G_CALLBACK
-						  (panel_menu_common_destroy_apps_menuitem),
+						 (panel_menu_common_destroy_apps_menuitem),
 						  NULL);
 				gtk_widget_show (menuitem);
 				documents->items_list =
@@ -305,6 +303,35 @@ panel_menu_documents_append_item (PanelMenuEntry *entry, gchar *uri)
 				documents->docs_list =
 					g_list_append (documents->docs_list,
 						       g_strdup (uri));
+				retval = TRUE;
+			} else if (finfo.type == GNOME_VFS_FILE_TYPE_DIRECTORY) {
+				menuitem =
+					gtk_image_menu_item_new_with_label
+					(finfo.name);
+				panel_menu_common_apps_menuitem_dnd_init
+					(menuitem);
+				panel_menu_common_set_icon_scaled_from_file
+					(GTK_MENU_ITEM (menuitem),
+					 DATADIR "/pixmaps/gnome-folder.png");
+				gtk_menu_shell_append (GTK_MENU_SHELL
+						       (documents->menu), menuitem);
+				g_object_set_data (G_OBJECT (menuitem),
+						   "exec-string",
+						   g_strdup_printf
+						   ("nautilus %s", uri));
+				g_object_set_data (G_OBJECT (menuitem),
+						   "uri-path", g_strdup (uri));
+				g_signal_connect (G_OBJECT (menuitem),
+						  "activate",
+						  G_CALLBACK
+						  (panel_menu_common_activate_apps_menuitem),
+						  NULL);
+				g_signal_connect (G_OBJECT (menuitem),
+						  "destroy",
+						  G_CALLBACK
+						  (panel_menu_common_destroy_apps_menuitem),
+						  NULL);
+				gtk_widget_show (menuitem);
 				retval = TRUE;
 			}
 		}

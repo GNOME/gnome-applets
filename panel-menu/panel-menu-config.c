@@ -190,10 +190,8 @@ panel_applet_gconf_set_string_list (PanelApplet *applet,
 
 	client = gconf_client_get_default ();
 	g_return_if_fail (client != NULL);
-	g_print ("(set-string-list) key: %s\n", key);
 	for (iter = strings; iter; iter = iter->next) {
 		list = g_slist_append (list, iter->data);
-		g_print ("item: %s\n", iter->data);
 	}
 
 	full = panel_applet_gconf_get_full_key (applet, key);
@@ -222,11 +220,9 @@ panel_applet_gconf_get_string_list (PanelApplet *applet,
 	list = gconf_client_get_list (client, full, GCONF_VALUE_STRING, NULL);
 	g_free (full);
 
-	g_print ("(get-string-list) key: %s\n", key);
 	for (iter = list; iter; iter = iter->next) {
 		if (iter->data && strlen ((char *)iter->data) > 1) {
 			result = g_list_append (result, iter->data);
-			g_print ("item: %s\n", iter->data);
 		}
 	}
 	g_slist_free (list);

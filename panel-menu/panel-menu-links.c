@@ -36,6 +36,8 @@
 #include "panel-menu.h"
 #include "panel-menu-desktop-item.h"
 #include "panel-menu-common.h"
+#include "panel-menu-config.h"
+#include "panel-menu-path.h"
 #include "panel-menu-links.h"
 
 static const gchar *links_menu_xml =
@@ -250,6 +252,7 @@ panel_menu_links_append_item (PanelMenuEntry *entry, gchar *uri)
 	GnomeVFSFileInfo finfo;
 	gchar *icon;
 	GtkWidget *menuitem;
+	GtkWidget *submenu;
 	gboolean retval = FALSE;
 
 	g_return_val_if_fail (entry != NULL, FALSE);
@@ -257,49 +260,37 @@ panel_menu_links_append_item (PanelMenuEntry *entry, gchar *uri)
 
 	links = (PanelMenuLinks *) entry->data;
 
-	if ((!strncmp (uri, "applications:", strlen ("applications:"))
-	     || !strncmp (uri, "file:", strlen ("file:")))
-	    && strstr (uri, ".desktop")) {
-		if ((menuitem =
-		     panel_menu_common_menuitem_from_path (uri,
-							   GTK_MENU_SHELL
-							   (links->menu),
-							   FALSE)))
-			retval = TRUE;
-	} else if (!strncmp (uri, "file:", strlen ("file:"))) {
-		if (gnome_vfs_get_file_info
-		    (uri, &finfo,
-		     GNOME_VFS_FILE_INFO_FOLLOW_LINKS) == GNOME_VFS_OK) {
-			if (finfo.type == GNOME_VFS_FILE_TYPE_DIRECTORY) {
-				menuitem =
-					gtk_image_menu_item_new_with_label
-					(finfo.name);
-				panel_menu_common_apps_menuitem_dnd_init
-					(menuitem);
-				panel_menu_common_set_icon_scaled_from_file
-					(GTK_MENU_ITEM (menuitem),
-					 DATADIR "/pixmaps/gnome-folder.png");
-				gtk_menu_shell_append (GTK_MENU_SHELL
-						       (links->menu), menuitem);
-				g_object_set_data (G_OBJECT (menuitem),
-						   "exec-string",
-						   g_strdup_printf
-						   ("nautilus %s", uri));
-				g_object_set_data (G_OBJECT (menuitem),
-						   "uri-path", g_strdup (uri));
-				g_signal_connect (G_OBJECT (menuitem),
-						  "activate",
-						  G_CALLBACK
-						  (panel_menu_common_activate_apps_menuitem),
-						  NULL);
-				g_signal_connect (G_OBJECT (menuitem),
-						  "destroy",
-						  G_CALLBACK
-						  (panel_menu_common_destroy_apps_menuitem),
-						  NULL);
-				gtk_widget_show (menuitem);
+	if ((!strncmp (uri, "applications:", strlen ("applications:")) || 
+	     !strncmp (uri, "file:", strlen ("file:")))) {
+		if (strstr (uri, ".desktop")) {
+			if ((menuitem = panel_menu_common_menuitem_from_path (
+			     uri, GTK_MENU_SHELL (links->menu), FALSE)))
 				retval = TRUE;
+		} else {
+			gchar *name;
+			name = g_path_get_basename (uri);
+			if (name && !strcmp (name, "applnk")) {
+				g_free (name);
+				name = g_strdup (_("KDE Menus"));
+			} else {
+				g_free (name);
+				name = g_strdup (_("Programs"));
 			}
+			submenu =
+				panel_menu_common_menu_from_path (name,
+								  uri,
+								  GTK_MENU_SHELL
+								  (links->menu),
+								  TRUE);
+			g_print ("creating new item '%s' for path %s\n", name, uri);
+			g_free (name);
+			/* Dont kill this item if it doesnt have any children */
+			g_object_set_data (G_OBJECT (submenu), "immortal",
+					   GINT_TO_POINTER(TRUE));
+			menuitem = GTK_MENU (submenu)->parent_menu_item;
+			panel_menu_path_load ((const gchar *) uri,
+					      GTK_MENU_SHELL (submenu));
+			retval = TRUE;
 		}
 	}
 	if (retval) {

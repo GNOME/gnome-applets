@@ -20,6 +20,7 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"

@@ -21,6 +21,8 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <panel-applet.h>
+#include <libgnomevfs/gnome-vfs-file-info.h>
+
 #include "panel-menu.h"
 
 G_BEGIN_DECLS
@@ -36,6 +38,7 @@ gboolean panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri);
 void panel_menu_path_new_with_dialog (PanelMenu *panel_menu);
 gchar *panel_menu_path_save_config (PanelMenuEntry *entry);
 void panel_menu_path_remove_config (PanelMenuEntry *entry);
+void panel_menu_path_load (const gchar *uri, GtkMenuShell *parent);
 
 G_END_DECLS
 

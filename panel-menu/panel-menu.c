@@ -424,7 +424,8 @@ panel_menu_accept_drop (PanelMenu *panel_menu, GnomeVFSURI *uri)
 	g_return_val_if_fail (uri != NULL, FALSE);
 
 	fileuri = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
-	if (!strncmp (fileuri, "applications:", strlen ("applications:"))) {
+	if (!strncmp (fileuri, "applications:", strlen ("applications:")) ||
+	    !strncmp (fileuri, "file:", strlen ("file:"))) {
 		if (strstr (fileuri, ".desktop")) {
 			g_free (fileuri);
 			pathuri = gnome_vfs_uri_get_parent (uri);
