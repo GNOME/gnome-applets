@@ -530,8 +530,8 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       if (!panel_applet_gconf_get_bool (gw_applet->applet, "use_custom_radar_url", NULL))
       gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
 
-      gtk_signal_connect (GTK_OBJECT (radar_link_btn), "clicked",
-                          GTK_SIGNAL_FUNC (link_cb), NULL);
+      g_signal_connect (G_OBJECT (radar_link_btn), "clicked",
+                        G_CALLBACK (link_cb), NULL);
 
   }
 

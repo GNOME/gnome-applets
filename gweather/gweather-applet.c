@@ -300,27 +300,27 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 	
     if (gw_applet->gweather_info->metar_handle) {
        gnome_vfs_async_cancel(gw_applet->gweather_info->metar_handle);
-       gw_applet->gweather_info->metar_handle = 0;
+       gw_applet->gweather_info->metar_handle = NULL;
     }
 
     if (gw_applet->gweather_info->iwin_handle) {
        gnome_vfs_async_cancel(gw_applet->gweather_info->iwin_handle);
-       gw_applet->gweather_info->iwin_handle = 0;
+       gw_applet->gweather_info->iwin_handle = NULL;
     }
 
     if (gw_applet->gweather_info->wx_handle) {
        gnome_vfs_async_cancel(gw_applet->gweather_info->wx_handle);
-       gw_applet->gweather_info->wx_handle = 0;
+       gw_applet->gweather_info->wx_handle = NULL;
     }
 
     if (gw_applet->gweather_info->met_handle) {
        gnome_vfs_async_cancel(gw_applet->gweather_info->met_handle);
-       gw_applet->gweather_info->met_handle = 0;
+       gw_applet->gweather_info->met_handle = NULL;
     }
 
     if (gw_applet->gweather_info->bom_handle) {
        gnome_vfs_async_cancel(gw_applet->gweather_info->bom_handle);
-       gw_applet->gweather_info->bom_handle = 0;
+       gw_applet->gweather_info->bom_handle = NULL;
     }
 }
 

@@ -1,3 +1,9 @@
+2005-02-02  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* gweather-applet.c: (applet_destroy): NULL vs. 0
+	* gweather-dialog.c: (gweather_dialog_create): Don't
+	use gtk_signal_connect, use g_signal_connect.
+
 2005-02-07  Jordi Mallach  <jordi@sindominio.net>
 
 	* Locations.xml.in: Further Catalan and Basque corrections.
