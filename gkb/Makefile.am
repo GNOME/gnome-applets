@@ -34,7 +34,16 @@ GKB_BITMAPS = be.xpm bg.xpm ca.xpm ch.xpm cz.xpm de.xpm dk.xpm es.xpm fi.xpm \
 	no.xpm pl.xpm pt.xpm qc.xpm ru.xpm se.xpm si.xpm th.xpm tr.xpm \
 	us.xpm yu.xpm
 
-GKB_MAPS = xmodmap.hu xmodmap.us
+GKB_MAPS = xmodmap.be xmodmap.bg xmodmap.ch xmodmap.cz \
+xmodmap.de xmodmap.dk xmodmap.dvorak xmodmap.es \
+xmodmap.fi xmodmap.fr xmodmap.gr xmodmap.hu \
+xmodmap.hu.old xmodmap.il xmodmap.is xmodmap.it \
+xmodmap.la xmodmap.nl xmodmap.no xmodmap.pl \
+xmodmap.pt xmodmap.qc xmodmap.ru xmodmap.ru_koi8 \
+xmodmap.se xmodmap.sf xmodmap.sg xmodmap.si \
+xmodmap.sk xmodmap.th xmodmap.tr_f xmodmap.tr_q \
+xmodmap.uk xmodmap.us xmodmap.us.old xmodmap.yu
+
 
 GKB_ICON = gkb.xpm
 
