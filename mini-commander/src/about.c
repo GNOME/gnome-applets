@@ -71,6 +71,8 @@ void about_box (BonoboUIComponent *uic,
         if (pixbuf) 
    		gdk_pixbuf_unref (pixbuf);
 
+	gtk_window_set_screen (GTK_WINDOW (mcdata->about_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
    	gtk_window_set_wmclass (GTK_WINDOW (mcdata->about_dialog), "command line", "Command Line");
    	g_signal_connect (mcdata->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
