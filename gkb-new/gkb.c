@@ -4,10 +4,9 @@
  * Copyright (C) 1999 Free Software Foundation
  * Author: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
  *
- * Thanks for aid of Balazs Nagy <julian7@kva.hu>,
- * Charles Levert <charles@comm.polymtl.ca>,
- * George Lebl <jirka@5z.com> and solidarity
- * Emese Kovacs <emese@eik.bme.hu>.
+ * Thanks for aid of George Lebl <jirka@5z.com> and solidarity
+ * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>
+ * and Emese Kovacs <emese@gnome.hu> for her docs and ideas.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -354,7 +353,6 @@ create_gkb_widget ()
   gtk_widget_pop_colormap ();
   gtk_widget_pop_visual ();
 
-  gdk_window_add_filter (GDK_ROOT_PARENT(), event_filter, NULL);
 
 }
 
@@ -519,6 +517,7 @@ gkb_activator (PortableServer_POA poa,
 
   load_properties ();
 
+  gdk_window_add_filter (GDK_ROOT_PARENT(), event_filter, NULL);
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
@@ -531,7 +530,8 @@ gkb_activator (PortableServer_POA poa,
 
   gkb->dact = g_list_nth_data (gkb->maps, 0);
 
-  system (gkb->dact->command);
+  if (system (gkb->dact->command))
+   gnome_error_dialog(_("The keymap switching command returned with error!"));
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "properties",
@@ -558,8 +558,8 @@ gkb_deactivator (PortableServer_POA poa,
 		 const char *goad_id,
 		 gpointer impl_ptr, CORBA_Environment * ev)
 {
-  gdk_window_remove_filter(GDK_ROOT_PARENT(), event_filter, NULL);
-
+/*  gdk_window_remove_filter(GDK_ROOT_PARENT(), event_filter, NULL);
+*/
   applet_widget_corba_deactivate (poa, goad_id, impl_ptr, ev);
 }
 
@@ -589,7 +589,6 @@ main (int argc, char *argv[])
   applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
-
 
   applet_widget_gtk_main ();
 

@@ -4,10 +4,9 @@
  * Copyright (C) 1999 Free Software Foundation
  * Author: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
  *
- * Thanks for aid of Balazs Nagy <julian7@kva.hu>,
- * Charles Levert <charles@comm.polymtl.ca>,
- * George Lebl <jirka@5z.com> and solidarity
- * Emese Kovacs <emese@eik.bme.hu>.
+ * Thanks for aid of George Lebl <jirka@5z.com> and solidarity
+ * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>
+ * and Emese Kovacs <emese@gnome.hu> for her docs and ideas.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -53,6 +52,9 @@ struct _Prop
   gchar *country;
   gchar *lang;
   gchar *label;
+  gchar *codepage;
+  gchar *arch;
+  gchar *type;
 
 };
 

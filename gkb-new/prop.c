@@ -4,10 +4,13 @@
  * Copyright (C) 1999 Free Software Foundation
  * Author: Szabolcs BAN <shooby@gnome.hu>, 1998-2000
  *
- * Thanks for aid of Balazs Nagy <julian7@kva.hu>,
- * Charles Levert <charles@comm.polymtl.ca>,
- * George Lebl <jirka@5z.com> and solidarity
- * Emese Kovacs <emese@eik.bme.hu>.
+ * Some of functions came from Helixcode's keyboard grabbing sections.
+ * Other functions, ideas stolen from other applets, for example
+ * from the fish applet, Wanda.
+ *
+ * Thanks for aid of George Lebl <jirka@5z.com> and solidarity
+ * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>
+ * and Emese Kovacs <emese@gnome.hu> for her docs and ideas.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -98,7 +101,7 @@ gint addwadd_cb (GtkWidget * addbutton, GtkWidget * ctree);
 gint wdestroy_cb (GtkWidget *closebutton, GtkWidget *window);
 static void list_select_cb ();
 static void apply_edited_cb (GtkWidget * button, gint pos);
-void list_show ();
+void list_show (gint pos);
 
 /* Phew.. Globals... */
 static gchar *prefixdir;
@@ -471,7 +474,7 @@ list_init()
 
   maps = g_list_next (maps);
  } 
- list_show();
+ list_show(0);
 }
 
 static void
@@ -490,9 +493,8 @@ apply_cb (GtkWidget * pb, gint page)
   GtkWidget * entry1;
 
   if (page != -1)
-    return;			/* Thanks Havoc -- Julian7 */
+    return;
 
-/* Free all maps before copy */
   for(list = gkb->maps; list != NULL; list = list->next) {
 	  PropWg *p = list->data;
 	  if(p) {
@@ -511,17 +513,33 @@ apply_cb (GtkWidget * pb, gint page)
 
     tdata = list->data;   
     data = g_new0 (Prop,1);
-    
     data->name = g_strdup (tdata->name);
     data->flag = g_strdup (tdata->flag);
     data->command = g_strdup (tdata->command);
+    data->type = g_strdup (tdata->type);
+    data->arch = g_strdup (tdata->arch);
+    data->codepage = g_strdup (tdata->codepage);
     data->lang = g_strdup (tdata->lang);
     data->label = g_strdup (tdata->label);
     data->country = g_strdup (tdata->country);
 
     gkb->maps = g_list_append(gkb->maps, data);
 
-   }
+    g_free(tdata->name);
+    g_free(tdata->command);
+    g_free(tdata->flag);
+    g_free(tdata->lang);
+    g_free(tdata->label);
+    g_free(tdata->codepage);
+    g_free(tdata->country);
+    g_free(tdata->type);
+    g_free(tdata->arch);
+    g_free(tdata);
+
+  }
+
+  if (gkb->tempmaps)
+   g_list_free (gkb->tempmaps);
 
   gkb->n = g_list_length(gkb->maps);
 
@@ -532,29 +550,21 @@ apply_cb (GtkWidget * pb, gint page)
   gkb->small = gkb->tempsmall;
   gkb->size = gkb->tempsize;
 
-  entry1 = gtk_object_get_data (GTK_OBJECT(gkb->propbox), "entry1");
+/*  entry1 = gtk_object_get_data (GTK_OBJECT(gkb->propbox), "entry1");
   gkb->key = g_strdup (gtk_entry_get_text(GTK_ENTRY(entry1)));
   convert_string_to_keysym_state(gkb->key,
                                 &gkb->keysym,
                                 &gkb->state);
                                                                                                                
+*/
+ 
   sized_render ();
   gkb_draw ();
-
-  /* execute in a shell but don't wait for the thing to end is bad idea,
-   * I think... */
 
   if (system(gkb->dact->command))
      gnome_error_dialog(_("The keymap switching command returned with error!"));
 
-  /* tell the panel to save our configuration data */
   applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
-}
-
-static void
-destroy_cb (GtkWidget * widget)
-{
-  gkb->propbox = NULL;
 }
 
 static void
@@ -726,7 +736,7 @@ apply_edited_cb (GtkWidget * button, gint pos)
  commandentry = gtk_object_get_data (GTK_OBJECT(gkb->mapedit), "entry40");
  data->command = g_strdup (gtk_entry_get_text(GTK_ENTRY(commandentry)));
 
- list_show();
+ list_show(pos);
 
 }
 
@@ -1220,23 +1230,24 @@ wdestroy_cb (GtkWidget * closebutton, GtkWidget * window)
 }
 
 void
-list_show()
+list_show(gint pos)
 {
  GtkWidget * hbox1;
  GtkWidget * label3, * pixmap1, * list_item;
  GKBpreset * tdata;
  gchar *pixmap1_filename;
+ gint counter;
  GList * list;
  
  gtk_list_clear_items (GTK_LIST (gkb->list1), 0, -1);
+ 
+ counter=0;
  
  for (list=gkb->tempmaps;list!=NULL;list = g_list_next (list))
   {
   char buf[30];
 
   tdata = list->data;
-
-  printf("Showing N: %s\n", tdata->name);fflush(stdout);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox1);
@@ -1273,6 +1284,11 @@ list_show()
   gtk_container_add(GTK_CONTAINER(gkb->list1), list_item);
   gtk_widget_show(list_item);
   }
+
+/* TODO:
+  if (counter == pos)
+   gtk_real_list_select_child (GTK_LIST(gkb->list1), list_item);
+*/
  
  gtk_widget_show(gkb->list1);
 
@@ -1297,7 +1313,7 @@ addwadd_cb (GtkWidget * addbutton, GtkWidget * ctree)
   gkb->tempmaps = g_list_append (gkb->tempmaps, tdata);
  }
 
- list_show();
+ list_show(g_list_length(gkb->tempmaps) - 1);
  
  if ( g_list_length(gkb->tempmaps) > 1 )
   gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
@@ -1493,15 +1509,13 @@ del_select_cb (GtkWidget * button)
   hbox = gtk_object_get_data (GTK_OBJECT(list_item),"hbox");
   pos = gtk_list_child_position (GTK_LIST(gkb->list1), GTK_WIDGET(mlist->data));
 
-  printf("POS:%d\n",pos);fflush(stdout);
-
   gkb->tempmaps = g_list_remove (gkb->tempmaps,g_list_nth_data(gkb->tempmaps, pos));
 
   deletebutton = gtk_object_get_data(GTK_OBJECT(gkb->propbox),"deletebutton");
   gtk_widget_set_sensitive (deletebutton, FALSE); 
  }
 
- list_show();
+ list_show(-1);
 
  if ( g_list_length(gkb->tempmaps) > 1 )
   gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
@@ -1574,8 +1588,7 @@ move_select_cb (GtkWidget * button)
     pos++;
    }
 
-  list_show();
-  printf("POS:%d",pos);fflush(stdout);
+  list_show(pos);
 
   if (pos == 0) 
     {
@@ -1591,6 +1604,7 @@ move_select_cb (GtkWidget * button)
       }
     }
   }
+
  if ( g_list_length(gkb->tempmaps) > 1 )
   gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
  return;
@@ -1620,9 +1634,8 @@ properties_dialog (AppletWidget * applet)
 
   if (gkb->propbox)
     {
-      gtk_widget_show_now (gkb->propbox);
-      gdk_window_raise (gkb->propbox->window);
-      return;
+	gtk_widget_destroy (gkb->propbox);
+	gkb->propbox= NULL;
     }
 
   for (list = gkb->tempmaps; list != NULL; list = list->next)
@@ -1945,7 +1958,7 @@ properties_dialog (AppletWidget * applet)
   gtk_signal_connect (GTK_OBJECT (gkb->propbox),
 		      "apply", GTK_SIGNAL_FUNC (apply_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (gkb->propbox),
-		      "destroy", GTK_SIGNAL_FUNC (destroy_cb), NULL);
+		      "destroy", GTK_SIGNAL_FUNC (gtk_widget_destroyed),&gkb->propbox);
   gtk_signal_connect (GTK_OBJECT (gkb->propbox),
 		      "help", GTK_SIGNAL_FUNC (prophelp_cb), NULL);
   
