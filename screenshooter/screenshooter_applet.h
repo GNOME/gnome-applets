@@ -157,9 +157,9 @@ void change_orientation (PanelOrientType o, gboolean size_is_tiny);
 gboolean need_to_change_orientation (PanelOrientType o,
                                      gboolean size_is_tiny);
 void set_tooltip (GtkWidget * w, const gchar * tip);
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size (GtkWidget * w, PanelSizeType s,
-                                gpointer data);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size (GtkWidget * w, int s,
+				      gpointer data);
 #endif
 
 /* Global variables */

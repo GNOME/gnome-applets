@@ -308,11 +308,11 @@ void
 cb_applet_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
 {
   gboolean size_tiny = FALSE;
-#ifdef HAVE_PANEL_SIZE
-  PanelSizeType panelsize =
-    applet_widget_get_panel_size (APPLET_WIDGET (applet));
+#ifdef HAVE_PANEL_PIXEL_SIZE
+  int panelsize =
+    applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
   /* Switch stuff so it lies flat on a tiny panel */
-  if (panelsize == SIZE_TINY)
+  if (panelsize < PIXEL_SIZE_STANDARD)
     size_tiny = TRUE;
   else
     size_tiny = FALSE;
@@ -324,16 +324,16 @@ cb_applet_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
   data = NULL;
 }
 
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 static void
-applet_change_size (GtkWidget * w, PanelSizeType s, gpointer data)
+applet_change_pixel_size (GtkWidget * w, int s, gpointer data)
 {
   gboolean size_tiny = FALSE;
   PanelOrientType orient =
     applet_widget_get_panel_orient (APPLET_WIDGET (applet));
 
   /* Switch stuff so it lies flat on a tiny panel */
-  if (s == SIZE_TINY)
+  if (s < PIXEL_SIZE_STANDARD)
     size_tiny = TRUE;
   else
     size_tiny = FALSE;
@@ -1242,8 +1242,8 @@ main (int argc, char *argv[])
   GtkWidget *vrootpixmap;
   PanelOrientType orient;
   gboolean init_size_tiny = FALSE;
-#ifdef HAVE_PANEL_SIZE
-  PanelSizeType init_size;
+#ifdef HAVE_PANEL_PIXEL_SIZE
+  int init_size;
 #endif
 
   /* Initialize the i18n stuff 
@@ -1342,9 +1342,9 @@ main (int argc, char *argv[])
   applet_widget_add (APPLET_WIDGET (applet), mainbox);
 
   orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
-#ifdef HAVE_PANEL_SIZE
-  init_size = applet_widget_get_panel_size (APPLET_WIDGET (applet));
-  if (init_size == SIZE_TINY)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+  init_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
+  if (init_size < PIXEL_SIZE_STANDARD)
     init_size_tiny = TRUE;
 #endif
   change_orientation (orient, init_size_tiny);
@@ -1365,9 +1365,9 @@ main (int argc, char *argv[])
   gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
 		      GTK_SIGNAL_FUNC (cb_applet_change_orient), NULL);
 
-#ifdef HAVE_PANEL_SIZE
-  gtk_signal_connect (GTK_OBJECT (applet), "change_size",
-		      GTK_SIGNAL_FUNC (applet_change_size), NULL);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+  gtk_signal_connect (GTK_OBJECT (applet), "change_pixel_size",
+		      GTK_SIGNAL_FUNC (applet_change_pixel_size), NULL);
 #endif
 
   gtk_signal_connect (GTK_OBJECT (applet), "save_session",
