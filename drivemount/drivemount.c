@@ -180,7 +180,9 @@ applet_fill (PanelApplet *applet)
 	DriveData *dd;
 	BonoboUIComponent *component;
 	gchar *tmp_path;
-
+	
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/drivemount-applet.png");
+	
 	panel_applet_add_preferences (applet,
 				      "/schemas/apps/drivemount-applet/prefs",
 				      NULL);
@@ -446,8 +448,7 @@ about_cb (PanelApplet *widget, gpointer data)
    		gdk_pixbuf_unref (pixbuf);
    
    	gtk_window_set_wmclass (GTK_WINDOW (about), "disk mounter", "Disk Mounter");
-   	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/drivemount-applet.png");
-	g_signal_connect (G_OBJECT (about), "destroy",
+   	g_signal_connect (G_OBJECT (about), "destroy",
 			  G_CALLBACK (gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
 }
