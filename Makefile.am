@@ -44,7 +44,8 @@ always_built_SUBDIRS = \
 	geyes		\
 	mini-commander	\
 	gkb-new		\
-	wireless
+	wireless		\
+	stickynotes
 
 SUBDIRS = \
 	po			\
@@ -78,7 +79,8 @@ DIST_SUBDIRS = \
 	mini-commander	\
 	man		\
 	omf-install	\
-	wireless
+	wireless		\
+	stickynotes
 
 EXTRA_DIST = \
 	COPYING-DOCS		\

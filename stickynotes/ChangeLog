@@ -1,0 +1,190 @@
+2003-01-26  Kevin Vandersloot <kfv101@psu.edu>
+    * import into gnome-applets
+
+2003-01-25  Loban A Rahman <loban@earthling.net>
+    * src/stickynotes.c: Applied patch by Christophe Fergeau to allow
+      compilation on gcc 2.95 (and make proper ANSI C).
+    
+2003-01-23  Loban A Rahman <loban@earthling.net>
+    * many files: Now the default click-behaivour of the applet is
+      configurable. It can either be "create a new note" or show/hide all
+      sticky notes. Thanks to Mike Sowka for the patch!
+    * configure.in: release 1.0.6
+
+2003-01-16  Loban A Rahman <loban@earthling.net>
+    * Makefile.am: Fixed packaging error.
+    * configure.in: release 1.0.5
+    * src/stickynotes.c: When changing sticky note title, the old title
+      appears in the entry box for the new title.
+
+2003-01-15  Loban A Rahman <loban@earthling.net>
+    * src/stickynotes_applet_callbacks.c: Fixed some stupid typos
+      preventing GConf keys from getting written properly.
+    * src/stickynotes_applet_callbacks.c: Color selection in the preferences
+      dialog now works.
+    * doc/C/stickynotes_applet.xml: Added documentation for the new "Color"
+      option in the preferences dialog.
+    * stickynotes_applet.schemes.in: Clarified documentation for the
+      settings/sticky key.
+    * stickynotes_applet.xml.in: Improved applet popup menu.
+    * stickynotes_applet.glade: Added HIG-compliant tooltips.
+    * src/stickynotes_applet_callbacks.c: Added a hack so that the About
+      displays the program name and version properly. For some reason libglade
+      does not set these properties properly.
+    * configure.in: release 1.0.4
+
+2003-01-14  Loban A Rahman <loban@earthling.net>
+    * src/*.c: Tweaked and documented some code.
+    * Makefile.am, po/POTFILES.in: Properly utilized intltool.
+    * Made many changes here and there to fix everything to make intltool work
+      properly.
+    * configure.in: release 1.0.3
+
+2003-01-13  Loban A Rahman <loban@earthling.net>
+    * configure.in: More tweaking to remove deprecated/obsolete macros.
+    * configure.in: Renamed to configure.ac, recommended by latest Autoconf.
+    * configure.in: Renamed back to configure.in, apparently the Gnome 2
+      autoconf macros assume it is configure.in. So I must leave it be. :-)
+    * stickynotes_applet.glade, stickynotes_applet.gladep:
+      Created glade files for all dialogs, complying to the HIG.
+    * stickynotes_applet.spec.in, Makefile.am: Added glade file.
+    * configure.in: Added check for libglade-2.0.
+    * src/stickynotes.c, src/stickynotes_applet_callbacks.c,
+      src/stickynotes_applet.c, src/stickynotes_applet.h, 
+      src/stickynotes_applet_callbacks.h:
+      Modified to use glade file for all dialogs.
+    * src/stickynotes.c: Now uses glade to create sticky notes.
+    * pixmaps/Makefile.am: Placed glade files and pixmaps in one location so
+      that libglade can find the pixmaps.
+    * src/stickynotes.c: Fixed some memory leaks in stickynotes_save() and
+      stickynotes_load().
+    * src/stickynotes_applet_callbacks.c, src/stickynotes_applet_callbacks.h:
+      Finished user-interface to choose color of sticky notes.
+    * configure.in: release version 1.0.2
+
+2003-01-12  Loban A Rahman <loban@earthling.net>
+    * Imported source tree into Gnome CVS.
+    * doc/C/stickynotes_applet.xml: Slight clarification and correction
+      in wording.
+    * configure.in: Tweaked.
+    * src/stickynotes_applet.c: Corrected arguments for
+      PANEL_APPLET_BONOBO_FACTORY.
+    * src/stickynotes_applet_callbacks.c: Specified linkid when launching help.
+    * src/Makefile.am: Defined missing -D macros that was causing the "Unable
+      to find the GNOME_FILE_DOMAIN_APP_HELP domain" error.
+    * configure.in: release version 1.0.1.
+
+2003-01-10  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 1.0.0 ]
+    * Finished documentation.
+    * I think I'm done!
+
+2003-01-07  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.7.0 ]
+    * Reorganized files and cleaned up everything a little.
+    * Fixed warnings in autogen.sh.
+    * Added auto-saving after moving/resizing notes.
+    * Fixed a bug in auto-saving.
+    * Implemented preferences dialog.
+    * All GConf values are now watched. Changes automagically reflect.
+
+2003-01-06  Loban A Rahman <loban@earthling.net>
+    * To change the title of a sticky note (besides using the right-click
+      menu), you can double click the title. This replaces middle-clicking it.
+    * Fixed a small memory leak.
+
+2003-01-05  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.6.1 ]
+    * Sticky notes now close on button-release of the close button, rather
+      than button-press. Similar in editing note title.
+    * Fixed a bug in pixbuf size changing while prelighting (thanks to Mark
+      Finlay for spotting this one).
+    * Fixed a bug in sticky note prelighting (now prelighting changes only on
+      focus change, not mouse-over change).
+    * Fixed a bug in applet prelighting (now changes properly on both focus
+      change and mouse-over change).
+    * Cleaned up code a little.
+
+2003-01-04  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.6 ]
+    * Deleting empty notes does not require confirmation.
+    * Through GConf, sticky notes can now be either workspace "sticky"
+      or not (ie. on all workspaces or not).
+    * Thanks to Mark Finlay and Alan Horkan for the above suggestions.
+    * Fixed all internationalization issues.
+    * Improved auto-saving. Now, auto saving occurs :
+	- when a sticky note is created
+	- when a sticky note is destroyed
+	- when the mouse/focus leaves a modified sticky note
+	- every 5 minutes (default, use GConf to configure)
+    * Sticky notes now prelight when on mouse and keyboard focus.
+    * Applet now prelights on both mouth and keyboard focus.
+    * Finished documentation.
+
+2002-12-28  Loban A Rahman <loban@earthling.net>
+    * When choosing "Show all", it now not only unhides the notes, but
+      raises their windows as well. Thanks Paul Coates for the suggeston.
+
+2002-12-27  Loban A Rahman <loban@earthling.net>
+    * Removed overused PACKAGE macro in a few places.
+    * Incorporated Chris Chabot's improved specfile, thanks!
+    * Removed remaining remants of the word Post-It.
+
+2002-12-25  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.5 ]
+    * Date format in the title is now configurable through GConf.
+    * Title is now editable. Right or middle click it.
+    * Applet now lights up on mouseover.
+    * Applet now visibly depresses on mouse press.
+    * Auto-save time is now configurable through GConf.
+    * Note sizes are now saved/loaded (previously only position was).
+    * Various other cleanups.
+    * Hmmm, using the functions in panel-applet-gconf.h crashes the panel.
+    * WARNING: The XML file format has changed, and is thus incompatible
+      with previous versions.
+    * I believe it is now FEATURE COMPLETE. It must remain simple and
+      not explode with features. I shall release v1.0 soon.
+
+2002-12-24  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.4 ]
+    * Applet now resizes on panel resize.
+    * Partially fixed translation issues.
+    * Properly corrected window moving.
+    * Added icons on each sticky note to close or resize it,
+      I stole them from "Goats" by Martin Craig.
+    * Fixed a few packaging issues.
+    * Sticky notes are now resizable.
+    * The user is now asked to confirm when deleting notes.
+    * Added help.
+    * Initial size and color of sticky notes are now configurable
+      through GConf.
+    * Added tooltip for the applet, displays number of notes.
+
+2002-12-02  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.3 ]
+    * More autoconf/automake/packaging cleanup.
+    * Renamed to StickyNotes because Post-It is trademarked.
+    * Corrected window moving (still a bug in Gtk 2.0 though).
+	CORRECTION: It was a bug in my code.
+    * Skipped windows from pager and tasklist.
+    * Changed various menu wording.
+    * Removed save menu item, now auto-saved.
+    * Made XML loading more robust.
+    * Thanks to Havoc Pennington for his suggestions.
+
+2002-11-30  Loban A Rahman <loban@earthling.net>
+    * Polished here and there.
+
+2002-11-27  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.2 ]
+    * Commented all my code.
+    * Filled in NEWS and README.
+    * Added auto-saving every five minutes.
+    * Converted to panel applet.
+
+2002-11-26  Loban A Rahman <loban@earthling.net>
+    * [ VERSION 0.1 ]
+    * Initial writing.
+    * Most of the features completed.
+    * Preferences and Docs remain.
+    * Converting to a Panel Applet remain.

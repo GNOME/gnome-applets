@@ -1,0 +1,22 @@
+<oaf_info>
+	<oaf_server iid="OAFIID:StickyNotesApplet_Factory" type="exe" location="@LIBEXECDIR@/stickynotes_applet">
+	    <oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:Bonobo/GenericFactory:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	    </oaf_attribute>
+	    <oaf_attribute name="name" type="string" _value="Sticky Notes Applet Factory"/>
+	    <oaf_attribute name="description" type="string" _value="Sticky Notes Applet Factory"/>
+	</oaf_server>
+	<oaf_server iid="OAFIID:StickyNotesApplet" type="factory" location="OAFIID:StickyNotesApplet_Factory">
+	    <oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:GNOME/Vertigo/PanelAppletShell:1.0"/>
+		<item value="IDL:Bonobo/Control:1.0"/>
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+	    </oaf_attribute>
+	    <oaf_attribute name="name" type="string" _value="Sticky Notes"/>
+	    <oaf_attribute name="description" type="string" _value="Create, view, and manage sticky notes on the desktop"/>
+	    <oaf_attribute name="panel:category" type="string" _value="Accessories"/>
+	    <oaf_attribute name="panel:icon" type="string" value="stickynotes_applet/stickynotes.png"/>
+	</oaf_server>
+</oaf_info>
+
