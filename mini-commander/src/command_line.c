@@ -62,18 +62,27 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
-    if((key == GDK_Tab
+    if(key == GDK_Tab
        || key == GDK_KP_Tab
        || key == GDK_ISO_Left_Tab)
-       && event->state != GDK_SHIFT_MASK
-       && event->state != GDK_CONTROL_MASK)
-	{	
-	    /* tab key pressed */
-	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
-	    cmd_completion(buffer, applet);
-	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
+        {
+            if(event->state == GDK_CONTROL_MASK)
+                {
+                    /*
+                     * Move focus to the next widget (browser) button.
+                     */
+                    gtk_widget_child_focus (GTK_WIDGET (applet), GTK_DIR_TAB_FORWARD);
+	            propagate_event = FALSE;
+                }
+            else if(event->state != GDK_SHIFT_MASK)
+	        {	
+	                    /* tab key pressed */
+	            strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
+	            cmd_completion(buffer, applet);
+	            gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
 
-	    propagate_event = FALSE;
+	            propagate_event = FALSE;
+	        }
 	}
     else if(key == GDK_Up
 	    || key == GDK_KP_Up
@@ -155,17 +164,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 		}	    
 	}
     
-
-    if(propagate_event == FALSE)
-	{
-	    /* I have to do this to stop gtk from propagating this event;
-	       error in gtk? */
-	    event->keyval = GDK_Right;
-	    event->state = 0;
-	    event->length = 0;  
-	}
     return (propagate_event == FALSE);
-    data = NULL;
 }
 
 #if 0
@@ -208,9 +207,6 @@ command_line_activate_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
 #endif
     /* go on */
     return (FALSE);
-    widget = NULL;
-    event = NULL;
-    data = NULL;
 }
 
 #if 0
@@ -247,7 +243,6 @@ history_popup_clicked_cb(GtkWidget *widget, gpointer data)
      
     /* go on */
     return (FALSE);
-    data = NULL;
 }
 
 static gint
@@ -255,8 +250,6 @@ history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data)
 {
     /* eat signal (prevent that popup will be destroyed) */
     return(TRUE);
-    widget = NULL;
-    data = NULL;
 }
 
 static gboolean
@@ -497,7 +490,6 @@ file_browser_ok_signal(GtkWidget *widget, gpointer file_select)
 
     /* go on */
     return FALSE;  
-    widget = NULL;
 }
 
 int 
