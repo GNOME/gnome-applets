@@ -387,6 +387,30 @@ chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
 	}				    
 }
 
+/* Force the button not to have any focus padding and let the focus
+   indication be drawn on the label itself when space is tight. Taken from the clock applet.
+   FIXME : This is an Evil Hack and should be fixed when the focus padding can be overridden at the gtk+ level */
+
+static inline void force_no_focus_padding (GtkWidget *widget)
+{
+  gboolean first_time=TRUE;
+
+  if (first_time) {
+    gtk_rc_parse_string ("\n"
+			 "   style \"charpick-applet-button-style\"\n"
+			 "   {\n"
+			 "      GtkWidget::focus-line-width=0\n"
+			 "      GtkWidget::focus-padding=0\n"
+			 "   }\n"
+			 "\n"
+			 "    widget \"*.charpick-applet-button\" style \"charpick-applet-button-style\"\n"
+			 "\n");
+    first_time = FALSE;
+  }
+
+  gtk_widget_set_name (widget, "charpick-applet-button");
+}
+
 /* creates table of buttons, sets up their callbacks, and packs the table in
    the event box */
 
@@ -435,6 +459,8 @@ build_table(charpick_data *p_curr_data)
   }
   gtk_container_add (GTK_CONTAINER (button), arrow);
   gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
+  /* FIXME : evil hack (see force_no_focus_padding) */
+  force_no_focus_padding (button);
   gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
                             G_CALLBACK (chooser_button_clicked), p_curr_data);
@@ -456,6 +482,8 @@ build_table(charpick_data *p_curr_data)
     set_atk_name_description (toggle_button[i], NULL, atk_desc);
     gtk_widget_show (toggle_button[i]);
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
+    /* FIXME : evil hack (see force_no_focus_padding) */
+    force_no_focus_padding (toggle_button[i]);
     gtk_tooltips_set_tip (tooltips, toggle_button[i], 
                       _("Insert special characters"), NULL);
                       

@@ -1,3 +1,12 @@
+2004-09-28  Vincent Noel  <vnoel@cox.net>
+
+	* charpick.c (force_no_focus_padding): force the button
+	not to have any focus padding and let the focus
+	indication be drawn on the label itself when space
+	is tight. Taken from a patch to the clock applet in bug 147999.
+	This is an Evil Hack and should be replaced when the focus
+	padding can be accessed through gtk+.
+
 2004-09-27  Mark McLoughlin  <mark@skynet.ie>
 
 	* charpick.png: new icon from Jakub Steiner.
