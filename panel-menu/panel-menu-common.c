@@ -699,6 +699,12 @@ panel_menu_common_merge_entry_ui (PanelMenuEntry *entry)
 	}
 }
 
+static void
+handle_response (GtkWidget *widget, gint response, gpointer data)
+{
+        gtk_widget_destroy (widget);
+}
+
 /* Called from right-click context menu */
 void
 panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
@@ -707,6 +713,24 @@ panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const 
 
 	panel_menu = entry->parent;
 	g_return_if_fail (panel_menu != NULL);
+
+	if(g_list_length (panel_menu->entries) == 1) {
+
+		GtkWidget *message_dlg;
+
+		message_dlg = gtk_message_dialog_new (
+				NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_INFO,
+				GTK_BUTTONS_OK,
+				_("Removing this entry is not allowed as this will cause the Menu Bar applet to be removed from GNOME Panel"));
+		gtk_dialog_set_default_response (GTK_DIALOG (message_dlg), GTK_RESPONSE_OK);
+		gtk_window_set_resizable (GTK_WINDOW (message_dlg), FALSE);
+		g_signal_connect (G_OBJECT (message_dlg), "response",
+			G_CALLBACK (handle_response), NULL);
+		gtk_widget_show_all (message_dlg);
+		return;
+	}
 
 	switch (entry->type) {
 	case PANEL_MENU_TYPE_APPLICATIONS:

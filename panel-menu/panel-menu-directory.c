@@ -87,6 +87,7 @@ static GtkWidget *panel_menu_directory_edit_dialog_new (gchar *title,
 							GtkWidget **nentry,
 							GtkWidget **pentry,
 							GtkWidget **spin);
+static gboolean panel_menu_directory_warn_about_path (char *path);
 
 static gint object_counter = 0;
 
@@ -464,34 +465,29 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	}
 }
 
-void
-panel_menu_directory_new_with_dialog (PanelMenu *panel_menu)
+static void
+handle_create_dir_response (GtkDialog *dialog, gint response, PanelMenu *panel_menu)
 {
-	GtkWidget *dialog;
-	GtkWidget *name_entry;
-	GtkWidget *path_entry;
-	GtkWidget *level_spin;
-	gint response;
-	gchar *name;
-	gchar *path;
-	gint level;
-
-	PanelMenuEntry *entry;
-
-	dialog = panel_menu_directory_edit_dialog_new (_
-						       ("Create directory item..."),
-						       &name_entry, &path_entry,
-						       &level_spin);
-	gtk_entry_set_text (GTK_ENTRY (name_entry), _("Home"));
-	gtk_entry_set_text (GTK_ENTRY (path_entry), g_get_home_dir ());
-	gtk_spin_button_set_value (GTK_SPIN_BUTTON (level_spin), 1.0);
-	gtk_widget_show (dialog);
-	gtk_widget_grab_focus (path_entry);
-
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
 	if (response == GTK_RESPONSE_OK) {
+
+		GtkWidget *name_entry;
+		GtkWidget *path_entry;
+		GtkWidget *level_spin;
+		PanelMenuEntry *entry;
+		gchar *name;
+		gchar *path;
+		gint level;
+
+		name_entry = GTK_WIDGET(g_object_get_data (G_OBJECT (dialog), "uri-name"));
 		name = (gchar *) gtk_entry_get_text (GTK_ENTRY (name_entry));
+
+		path_entry = GTK_WIDGET(g_object_get_data (G_OBJECT (dialog), "uri-path"));
 		path = (gchar *) gtk_entry_get_text (GTK_ENTRY (path_entry));
+		
+		if (!panel_menu_directory_warn_about_path(path))
+			return;
+
+		level_spin = GTK_WIDGET(g_object_get_data (G_OBJECT (dialog), "depth-level"));
 		level = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON
 							  (level_spin));
 		entry = panel_menu_directory_new (panel_menu, name, path,
@@ -503,44 +499,59 @@ panel_menu_directory_new_with_dialog (PanelMenu *panel_menu)
 		panel_menu_config_save_layout (panel_menu);
 		panel_menu_directory_save_config (entry);
 	}
-	gtk_widget_destroy (dialog);
+
+	gtk_widget_destroy (GTK_WIDGET(dialog));
 }
 
-static void
-change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb)
+void
+panel_menu_directory_new_with_dialog (PanelMenu *panel_menu)
 {
-	PanelMenuDirectory *directory;
 	GtkWidget *dialog;
 	GtkWidget *name_entry;
 	GtkWidget *path_entry;
 	GtkWidget *level_spin;
-	gint response;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
-
-	directory = (PanelMenuDirectory *) entry->data;
 	dialog = panel_menu_directory_edit_dialog_new (_
-						       ("Edit directory item..."),
+						       ("Create directory item..."),
 						       &name_entry, &path_entry,
 						       &level_spin);
-	gtk_entry_set_text (GTK_ENTRY (name_entry), directory->name);
-	gtk_entry_set_text (GTK_ENTRY (path_entry), directory->path);
-	gtk_spin_button_set_value (GTK_SPIN_BUTTON (level_spin),
-				   (gfloat) directory->level);
 
+        g_signal_connect (G_OBJECT (dialog), "response",
+                          G_CALLBACK (handle_create_dir_response),
+                          panel_menu);
+
+	gtk_entry_set_text (GTK_ENTRY (name_entry), _("Home"));
+	gtk_entry_set_text (GTK_ENTRY (path_entry), g_get_home_dir ());
+	gtk_spin_button_set_value (GTK_SPIN_BUTTON (level_spin), 1.0);
 	gtk_widget_show (dialog);
-	gtk_widget_grab_focus (name_entry);
+	gtk_widget_grab_focus (path_entry);
+}
 
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
+static void
+handle_edit_dir_response (GtkDialog *dialog, gint response, PanelMenuEntry *entry)
+{
 	if (response == GTK_RESPONSE_OK) {
+
+		PanelMenuDirectory *directory;
+		GtkWidget *name_entry;
+		GtkWidget *path_entry;
+		GtkWidget *level_spin;
+
 		const gchar *new_name;
 		const gchar *new_path;
 		gint new_level;
+
 		gboolean changed = FALSE;
 
+        	directory = (PanelMenuDirectory *) entry->data;
+
+		name_entry = GTK_WIDGET(g_object_get_data (G_OBJECT (dialog), "uri-name"));
 		new_name = gtk_entry_get_text (GTK_ENTRY (name_entry));
+
+		path_entry = GTK_WIDGET(g_object_get_data (G_OBJECT (dialog), "uri-path"));
 		new_path = gtk_entry_get_text (GTK_ENTRY (path_entry));
+
+		level_spin = GTK_WIDGET(g_object_get_data (G_OBJECT (dialog), "depth-level"));
 		new_level =
 			gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON
 							  (level_spin));
@@ -550,6 +561,7 @@ change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb
 		}
 		if (strcmp (directory->path, new_path)) {
 			directory->level = new_level;
+			panel_menu_directory_warn_about_path((gchar *)new_path);
 			panel_menu_directory_set_path (entry, (gchar *)new_path);
 			changed = TRUE;
 		} else if (directory->level != new_level) {
@@ -561,8 +573,40 @@ change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb
 			panel_menu_directory_save_config (entry);
 		}
 	}
-	gtk_widget_destroy (dialog);
+
+	gtk_widget_destroy (GTK_WIDGET(dialog));
 }
+
+static void
+change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb)
+{
+	PanelMenuDirectory *directory;
+	GtkWidget *dialog;
+	GtkWidget *name_entry;
+	GtkWidget *path_entry;
+	GtkWidget *level_spin;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
+
+	directory = (PanelMenuDirectory *) entry->data;
+	dialog = panel_menu_directory_edit_dialog_new (_
+						       ("Edit directory item..."),
+						       &name_entry, &path_entry,
+						       &level_spin);
+        g_signal_connect (G_OBJECT (dialog), "response",
+                          G_CALLBACK (handle_edit_dir_response),
+                          entry);
+
+	gtk_entry_set_text (GTK_ENTRY (name_entry), directory->name);
+	gtk_entry_set_text (GTK_ENTRY (path_entry), directory->path);
+	gtk_spin_button_set_value (GTK_SPIN_BUTTON (level_spin),
+				   (gfloat) directory->level);
+
+	gtk_widget_show (dialog);
+	gtk_widget_grab_focus (name_entry);
+}
+
 
 static void
 handle_browse_response (GtkDialog *dialog, gint response, GtkFileSelection *fsel)
@@ -610,7 +654,7 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	GtkWidget *browse;
 
 	dialog = gtk_dialog_new_with_buttons (title,
-					      NULL, GTK_DIALOG_MODAL,
+					      NULL, 0,
 					      GTK_STOCK_CLOSE,
 					      GTK_RESPONSE_CLOSE, GTK_STOCK_OK,
 					      GTK_RESPONSE_OK, NULL);
@@ -663,6 +707,11 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 	gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (*spin),
 					   GTK_UPDATE_ALWAYS);
 	gtk_widget_show (*spin);
+
+        g_object_set_data (G_OBJECT (dialog), "uri-name", *nentry);
+        g_object_set_data (G_OBJECT (dialog), "uri-path", *pentry);
+        g_object_set_data (G_OBJECT (dialog), "depth-level", *spin);
+
 	return dialog;
 }
 
@@ -721,4 +770,39 @@ panel_menu_directory_remove_config (PanelMenuEntry *entry)
 	g_free (base_key);
 	g_free (key);
 	g_object_unref (G_OBJECT (client));
+}
+
+static void
+message_dlg_response (GtkDialog *dialog, gint response, gpointer data)
+{
+	gtk_widget_destroy (GTK_WIDGET(dialog));
+}
+
+static gboolean
+panel_menu_directory_warn_about_path (char *path)
+{
+	struct stat sbuf;
+	GtkWidget *message_dlg;
+
+	stat(path, &sbuf);
+
+	if (S_ISDIR (sbuf.st_mode) == FALSE ){
+
+		message_dlg = gtk_message_dialog_new (NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_WARNING,
+				GTK_BUTTONS_OK,
+				_("Path specified is currently not a valid directory."));
+		gtk_dialog_set_default_response (GTK_DIALOG (message_dlg), GTK_RESPONSE_OK);
+		gtk_window_set_resizable (GTK_WINDOW (message_dlg), FALSE);
+
+        	g_signal_connect (G_OBJECT (message_dlg), "response",
+                          G_CALLBACK (message_dlg_response),
+                          NULL);
+		gtk_widget_show_all (message_dlg);
+		
+		return FALSE;
+	}
+	
+	return TRUE;
 }

@@ -105,11 +105,16 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	g_signal_connect (G_OBJECT (has_applications), "toggled",
 			  G_CALLBACK (handle_has_applications), panel_menu);
 
+	label = gtk_label_new_with_mnemonic (_("_Icon :"));
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_box_pack_start (GTK_BOX (fbox), label, FALSE, FALSE, 0);
+	
 	applications_icon =
 		gnome_icon_entry_new ("panel-menu-applet-id",
 				    _("Select an icon for the Applications menu"));
-	gtk_box_pack_end (GTK_BOX (fbox), applications_icon, FALSE,
-			  FALSE, 0);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), applications_icon);
+	gtk_box_pack_start (GTK_BOX (fbox), applications_icon, FALSE, FALSE, 0);
+
 	icon = panel_applet_gconf_get_string (panel_menu->applet,
 					     "applications-image",
 					      NULL);
