@@ -17,8 +17,8 @@
  *  
  */
 
-#include <gnome.h>
 #include <config.h>
+#include <gnome.h>
 #include <string.h>
 #include <dirent.h>
 #include <limits.h>

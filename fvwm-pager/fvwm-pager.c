@@ -403,13 +403,13 @@ main(int argc, char* argv[])
       applet_widget_register_stock_callback(APPLET_WIDGET(window),
 					    "about",
 					    GNOME_STOCK_MENU_ABOUT,
-					    _("About	"),
+					    _("About..."),
 					    about_cb,
 					    NULL);
       applet_widget_register_stock_callback(APPLET_WIDGET(window),
 					    "properties",
 					    GNOME_STOCK_MENU_PROP,
-					    _("Properties"),
+					    _("Properties..."),
 					    pager_properties_dialog,
 					    pager);
     }

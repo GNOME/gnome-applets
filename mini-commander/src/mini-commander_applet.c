@@ -262,7 +262,7 @@ main(int argc, char **argv)
     applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					  "about",
 					  GNOME_STOCK_MENU_ABOUT,
-					  _("About"),
+					  _("About..."),
 					  aboutBox,
 					  NULL);
     

@@ -609,16 +609,16 @@ int main (int argc, char *argv[])
     gtk_signal_connect (GTK_OBJECT(applet), "back_change",
 	                GTK_SIGNAL_FUNC(applet_back_change), clk.area);
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					   "properties",
-					   GNOME_STOCK_MENU_PROP,
-					   _("Properties..."),
-					   cb_properties,
-					   NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",
 					   GNOME_STOCK_MENU_ABOUT,
 					   _("About..."),
 					   cb_about,
+					   NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "properties",
+					   GNOME_STOCK_MENU_PROP,
+					   _("Properties..."),
+					   cb_properties,
 					   NULL);
 
     /* applet main loop */

@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+#include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
 #include <math.h>
-#include <config.h>
 
 #include "geyes.h"
 
@@ -364,6 +364,9 @@ int
 main (int argc, char *argv[])
 {
     
+    bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+    textdomain (PACKAGE);
+
     applet_widget_init ("geyes_applet", VERSION, argc, argv, NULL, 0, NULL);
        
     create_eyes_applet ();

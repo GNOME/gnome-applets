@@ -51,10 +51,10 @@ about_jbc ()
   authors[0] = "Jon Anhold <jon@snoopy.net>";
   authors[1] = NULL;
 
-  about = gnome_about_new (_ ("Jon's Binary Clock"), version,
+  about = gnome_about_new (_("Jon's Binary Clock"), version,
 			   _("(C) 1999"),
 			   authors,
-		       _ ("Released under the GNU general public license.\n"
+		        _("Released under the GNU general public license.\n"
 			  "Displays time in Binary Coded Decimal\n"
 			  "http://snoopy.net/~jon/jbc/."),
 			   NULL);
@@ -118,6 +118,9 @@ main (int argc, char **argv)
   int ytmp;
   float xtmp;
 
+  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+  textdomain (PACKAGE);
+
   applet_widget_init ("jbc_applet", "1.0", argc, argv, NULL, 0, NULL);
 
 
@@ -138,7 +141,7 @@ main (int argc, char **argv)
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					 "about",
 					 GNOME_STOCK_MENU_ABOUT,
-					 _ ("About..."),
+					 _("About..."),
 					 (AppletCallbackFunc)about_jbc, NULL);
 
 

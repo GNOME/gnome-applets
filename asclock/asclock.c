@@ -589,18 +589,19 @@ int main( int argc, char *argv[] )
 
     cmap = gdk_window_get_colormap(my->window->window);
 #ifdef ASCLOCK_GNOME
-    applet_widget_register_callback(APPLET_WIDGET(my->window),
-                                    "hello",
-                                    _("About"),
-                                    about_dialog,
-                                    NULL);
- 
- 
-    applet_widget_register_callback(APPLET_WIDGET(my->window),
-                                    "properties",
-                                    _("Properties..."),
-                                    properties_dialog,
-                                    my);
+    applet_widget_register_stock_callback (APPLET_WIDGET (my->window),
+                                           "about",
+                                           GNOME_STOCK_MENU_ABOUT,
+                                           _("About..."),
+                                           (AppletCallbackFunc)about_dialog,
+                                           NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET (my->window),
+                                           "properties",
+                                           GNOME_STOCK_MENU_PROP,
+                                           _("Properties..."),
+                                           (AppletCallbackFunc)properties_dialog,
+                                           NULL);
+
     gtk_signal_connect(GTK_OBJECT(my->window),"save_session",
                        GTK_SIGNAL_FUNC(save_session_cb),
                        my);

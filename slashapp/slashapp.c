@@ -55,7 +55,7 @@ static AppData *create_new_app(GtkWidget *applet)
 			_("Properties..."), property_show, ad);
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet), 
 			"about", GNOME_STOCK_MENU_ABOUT, 
-			_("About"), about_cb, NULL);
+			_("About..."), about_cb, NULL);
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet), 
 			"articles", GNOME_STOCK_MENU_BOOK_OPEN, 
 			_("Articles"), show_article_window, ad);
