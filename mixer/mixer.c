@@ -737,6 +737,8 @@ mixer_about_cb (BonoboUIComponent *uic,
 		const gchar       *verbname)
 {
         static GtkWidget   *about     = NULL;
+        GdkPixbuf *pixbuf             = NULL;
+        gchar *file;
         static const gchar *authors[] = {
 		"Richard Hult <rhult@codefactory.se>",
                 NULL
@@ -752,6 +754,10 @@ mixer_about_cb (BonoboUIComponent *uic,
                 gtk_window_present (GTK_WINDOW (about));
                 return;
         }
+        
+        file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mixer-applet.png", TRUE, NULL);
+        pixbuf = gdk_pixbuf_new_from_file (file, NULL);
+        g_free (file);
 
         about = gnome_about_new (_("Volume Control"), VERSION,
                                  _("(C) 2001 Richard Hult"),
@@ -759,7 +765,7 @@ mixer_about_cb (BonoboUIComponent *uic,
 				 authors,
 				 documenters,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-                                 NULL);
+                                 pixbuf);
 
         g_signal_connect (G_OBJECT (about), "destroy",
                           G_CALLBACK (gtk_widget_destroyed),
