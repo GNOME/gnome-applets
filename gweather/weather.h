@@ -263,7 +263,7 @@ extern void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbu
 #define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)
 #define PRESSURE_INCH_TO_MM(inch)    ((inch) * 25.40005)
 #define PRESSURE_INCH_TO_MB(inch)    (PRESSURE_INCH_TO_HPA(inch))
-#define PRESSURE_MBAR_TO_INCH(mbar) ((mbar) * 0.02963742)
+#define PRESSURE_MBAR_TO_INCH(mbar) ((mbar) * 0.029533373)
 
 #define VISIBILITY_SM_TO_KM(sm)  ((sm) * 1.609344)
 #define VISIBILITY_SM_TO_M(sm)   (VISIBILITY_SM_TO_KM(sm) * 1000)
