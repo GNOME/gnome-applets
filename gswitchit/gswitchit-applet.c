@@ -428,15 +428,12 @@ GSwitchItAppletSetBackground(PanelAppletBackgroundType type,
 	switch (type)
 	{
 	case PANEL_NO_BACKGROUND:
-/* printf ("PANEL_NO_BACKGROUND for %p\n", w); */
 	        break;
 	case PANEL_COLOR_BACKGROUND:
-/* printf ("PANEL_COLOR_BACKGROUND for %p\n", w); */
 	        gtk_widget_modify_bg (GTK_WIDGET (w),
 	                              GTK_STATE_NORMAL, color);
 		break;
 	case PANEL_PIXMAP_BACKGROUND:
-/* printf ("PANEL_PIXMAP_BACKGROUND for %p\n", w); */
 		style = gtk_style_copy (w->style);
 		if (style->bg_pixmap[GTK_STATE_NORMAL])
 			g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
@@ -447,7 +444,7 @@ GSwitchItAppletSetBackground(PanelAppletBackgroundType type,
 	/* go down */
 	if (GTK_IS_CONTAINER (w))
 	{
-		GList * child = gtk_container_get_children(GTK_CONTAINER (w));
+		GList * child = gtk_container_get_children (GTK_CONTAINER (w));
 		while (child != NULL)
 		{
 			GSwitchItAppletSetBackground (type, rc_style,
@@ -463,10 +460,7 @@ GSwitchItAppletChangeBackground (PanelApplet * widget,
 				 GdkColor * color, GdkPixmap * pixmap,
 				 GSwitchItApplet * sia)
 {
-	GtkRcStyle *rc_style;
-
-	rc_style = gtk_rc_style_new ();
-
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
 	GSwitchItAppletSetBackground(type, rc_style, sia->applet, color, pixmap);
 	g_object_unref (rc_style);
 }
