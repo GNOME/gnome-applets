@@ -1631,6 +1631,21 @@ static gint updateOutput(gpointer data)
     			load_fonts (stockdata);
     	}
 
+	static gboolean 
+	key_press_cb (GtkWidget *widget, GdkEventKey *event, StockData *stockdata)
+	{
+		switch (event->keyval) {	
+		case GDK_u:
+			if (event->state == GDK_CONTROL_MASK)
+				updateOutput(stockdata);
+			return TRUE;
+		default:
+			break;
+		}
+
+		return FALSE;
+
+	}
     
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
         	BONOBO_UI_UNSAFE_VERB ("Props", properties_cb),
@@ -1728,6 +1743,9 @@ static gint updateOutput(gpointer data)
 				  
 		g_signal_connect (G_OBJECT (applet), "style_set",
 					   G_CALLBACK (style_set_cb), stockdata);
+					   
+		g_signal_connect (applet, "key_press_event",
+					  G_CALLBACK (key_press_cb), stockdata);
 
 		gtk_widget_show (GTK_WIDGET (applet));
 		
