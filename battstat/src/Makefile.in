@@ -1,4 +1,4 @@
-# Makefile.in generated automatically by automake 1.4 from Makefile.am
+# Makefile.in generated automatically by automake 1.4-p4 from Makefile.am
 
 # Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
@@ -100,7 +100,6 @@ INTLBISON = @INTLBISON@
 INTLDEPS = @INTLDEPS@
 INTLLIBS = @INTLLIBS@
 INTLOBJS = @INTLOBJS@
-INTLTOOL_PERL = @INTLTOOL_PERL@
 INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
 LIBICONV = @LIBICONV@
 LIBTOOL = @LIBTOOL@
@@ -129,19 +128,12 @@ USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 XML_I18N_EXTRACT = @XML_I18N_EXTRACT@
 XML_I18N_MERGE = @XML_I18N_MERGE@
-XML_I18N_MERGE_DESKTOP_RULE = @XML_I18N_MERGE_DESKTOP_RULE@
-XML_I18N_MERGE_DIRECTORY_RULE = @XML_I18N_MERGE_DIRECTORY_RULE@
-XML_I18N_MERGE_KEYS_RULE = @XML_I18N_MERGE_KEYS_RULE@
-XML_I18N_MERGE_OAF_RULE = @XML_I18N_MERGE_OAF_RULE@
-XML_I18N_MERGE_PONG_RULE = @XML_I18N_MERGE_PONG_RULE@
-XML_I18N_MERGE_SERVER_RULE = @XML_I18N_MERGE_SERVER_RULE@
-XML_I18N_MERGE_SHEET_RULE = @XML_I18N_MERGE_SHEET_RULE@
-XML_I18N_MERGE_SOUNDLIST_RULE = @XML_I18N_MERGE_SOUNDLIST_RULE@
-XML_I18N_MERGE_XML_RULE = @XML_I18N_MERGE_XML_RULE@
+XML_I18N_TOOLS_PERL = @XML_I18N_TOOLS_PERL@
 XML_I18N_UPDATE = @XML_I18N_UPDATE@
 ZVT_LIBS = @ZVT_LIBS@
 cflags_set = @cflags_set@
 cxxflags_set = @cxxflags_set@
+gladeincludedir = @gladeincludedir@
 gnomebindir = @gnomebindir@
 gnomeconfdir = @gnomeconfdir@
 gnomedatadir = @gnomedatadir@
@@ -155,7 +147,7 @@ glade_DATA = battstat_applet.glade
 @HAVE_LIBAPM_TRUE@APMDIR = 
 @HAVE_LIBAPM_FALSE@APMDIR = -I$(top_srcdir)/apmlib
 
-INCLUDES =  	-I$(top_srcdir)/intl 	-I$(top_srcdir) 	-I$(includedir) 	$(GNOME_INCLUDEDIR) 	-DDATA_DIR=\"$(datadir)\" 	-DGLADE_DIR=\"$(gladedir)\" 	-DG_LOG_DOMAIN=\"battstat_applet\" 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" 	$(APMDIR) $(NULL)
+INCLUDES =  	-I$(top_srcdir)/intl 	-I$(top_srcdir) 	-I$(includedir) 	$(GNOME_INCLUDEDIR) 	$(gladeincludedir) 	-DDATA_DIR=\"$(datadir)\" 	-DGLADE_DIR=\"$(gladedir)\" 	-DG_LOG_DOMAIN=\"battstat_applet\" 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" 	$(APMDIR) $(NULL)
 
 
 bin_PROGRAMS = battstat_applet

@@ -20,6 +20,7 @@ INCLUDES = \
 	-I$(top_srcdir) \
 	-I$(includedir) \
 	$(GNOME_INCLUDEDIR) \
+	$(gladeincludedir) \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \

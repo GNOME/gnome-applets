@@ -194,3 +194,18 @@
 	- Fixed a spelling error in src/Makefile.am. Instead of EXTRA_DIST
 	it said EXTRADIST. That meant that the libglade file wasn't included
 	in the distribution when doing a "make dist". 
+
+2001-12-10 Jörgen Pehrson <jpehrson@cvs.gnome.org>
+	To celebrate the fact that Battstat moved into the GNOME CVS the
+	format of this changelog has changed. A lot of changes (by others)
+	took place between the previous entry in the ChangeLog and this
+	entry. For example, ACPI support for Linux was added by Lennart
+	Poettering <lennart@poettering.de>, PPC support was added by
+	Bastien Nocera <hadess@hadess.net> and a new icon created by Jakub
+	"Jimmac" Steiner, <jimmac@linux.com.nospam> was added.  The reason
+	for the lack of updated to this file was that I didn't have any
+	access to the CVS for a month.
+
+	* configure.in: Added "gnome-config --cflags libglade" so that the
+	  build will find the new location for libglade headers.
+	* src/Makefile.am Added $(gladeincludedir) to the INCLUDES.
