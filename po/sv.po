@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-06-10 20:28+0200\n"
-"PO-Revision-Date: 2003-06-10 20:29+0200\n"
+"POT-Creation-Date: 2003-06-20 22:49+0200\n"
+"PO-Revision-Date: 2003-06-20 22:54+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -77,12 +77,12 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Visar statusen för funktionerna för tangentbordstillgänglighet"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:548 charpick/charpick.c:561 drivemount/drivemount.c:491
-#: geyes/geyes.c:228 gkb-new/gkb.c:631 gtik/gtik.c:708
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2268
-#: mini-commander/src/about.c:48 mixer/mixer.c:1012
+#: cdplayer/cdplayer.c:548 charpick/charpick.c:561 drivemount/drivemount.c:495
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:733
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2304
+#: mini-commander/src/about.c:48 mixer/mixer.c:1036
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes.glade.h:53 stickynotes/stickynotes_applet.c:143
+#: stickynotes/stickynotes.glade.h:54 stickynotes/stickynotes_applet.c:144
 #: wireless/wireless-applet.c:735
 msgid "translator_credits"
 msgstr ""
@@ -397,7 +397,7 @@ msgstr "<b>Paus</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Varningar</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1409
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1464
 msgid "Appearance"
 msgstr "Utseende"
 
@@ -406,7 +406,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för batteriladdningsövervakare"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:295 mailcheck/mailcheck.c:1900
+#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1936
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
 msgid "General"
 msgstr "Allmänt"
@@ -463,10 +463,10 @@ msgstr "_Varna när batteriladdningen är låg"
 msgid "_Yellow:"
 msgstr "_Gul:"
 
-#: battstat/properties.c:256 drivemount/drivemount.c:456
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2132
-#: mailcheck/mailcheck.c:2346 mini-commander/src/preferences.c:352
-#: mixer/mixer.c:1119
+#: battstat/properties.c:256 drivemount/drivemount.c:460
+#: drivemount/properties.c:513 mailcheck/mailcheck.c:2168
+#: mailcheck/mailcheck.c:2382 mini-commander/src/preferences.c:352
+#: mixer/mixer.c:1143
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ett fel uppstod vid visning av hjälp: %s"
@@ -533,7 +533,7 @@ msgstr "Nästa spår"
 msgid "You do not have permission to use the CD player."
 msgstr "Du har inte rättigheter att använda cd-spelaren."
 
-#: cdplayer/cdplayer.c:337 drivemount/drivemount.c:400 mixer/mixer.c:978
+#: cdplayer/cdplayer.c:337 drivemount/drivemount.c:404 mixer/mixer.c:1002
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
@@ -609,7 +609,7 @@ msgid "Click this button to Play the next track in the CD"
 msgstr "Klicka på denna knapp för att spela nästa spår på cd-skivan"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
-#: charpick/charpick.c:722 charpick/properties.c:287
+#: charpick/charpick.c:722 charpick/properties.c:328
 msgid "Character Palette"
 msgstr "Teckenpalett"
 
@@ -621,7 +621,7 @@ msgstr "Fabrik för teckenväljarpanelprogram"
 msgid "Insert characters"
 msgstr "Infoga tecken"
 
-#: charpick/charpick.c:303 charpick/properties.c:105
+#: charpick/charpick.c:303 charpick/properties.c:124
 msgid "Add Palette"
 msgstr "Lägg till palett"
 
@@ -659,24 +659,64 @@ msgstr ""
 "Gnome-panelprogram för att välja underliga tecken som inte finns på mitt "
 "tangentbord. Släppt under GNU General Public License."
 
-#: charpick/properties.c:70
+#: charpick/properties.c:87
 msgid "_Palette:"
 msgstr "_Palett:"
 
-#: charpick/properties.c:140
+#: charpick/properties.c:94
+msgid "Palette entry"
+msgstr "Palettpost"
+
+#: charpick/properties.c:95
+msgid "Modify a palette by adding or removing chacters"
+msgstr "Ändra en palett genom att lägga till eller ta bort tecken"
+
+#: charpick/properties.c:159
 msgid "Edit Palette"
 msgstr "Redigera palett"
 
-#: charpick/properties.c:292
+#: charpick/properties.c:254
+msgid "Palettes list"
+msgstr "Palettlista"
+
+#: charpick/properties.c:255
+msgid "List of available palettes"
+msgstr "Lista med tillgängliga paletter"
+
+#: charpick/properties.c:333
 msgid "Pal_ettes:"
 msgstr "Pal_etter:"
 
-#: charpick/properties.c:364
+#: charpick/properties.c:349
+msgid "Add button"
+msgstr "Lägg till-knapp"
+
+#: charpick/properties.c:350
+msgid "Click to add a new palette"
+msgstr "Klicka för att lägga till en ny palett"
+
+#: charpick/properties.c:357
+msgid "Edit button"
+msgstr "Redigera-knapp"
+
+#: charpick/properties.c:358
+msgid "Click to edit the selected palette"
+msgstr "Klicka för att redigera den valda paletten"
+
+#: charpick/properties.c:365
+msgid "Delete button"
+msgstr "Ta bort-knapp"
+
+#: charpick/properties.c:366
+msgid "Click to delete the selected palette"
+msgstr "Klicka för att ta bort den valda paletten"
+
+#: charpick/properties.c:415
 msgid "Character Palette Preferences"
 msgstr "Inställningar för teckenpalett"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:509
+#: drivemount/drivemount.c:513
 msgid "Disk Mounter"
 msgstr "Diskmonterare"
 
@@ -700,31 +740,31 @@ msgstr "_Bläddra..."
 msgid "_Eject"
 msgstr "_Mata ut"
 
-#: drivemount/drivemount.c:510
+#: drivemount/drivemount.c:514
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999-2001 GNOME-hackarna\n"
 
-#: drivemount/drivemount.c:512
+#: drivemount/drivemount.c:516
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Panelprogram för montering och avmontering av blockvolymer."
 
-#: drivemount/drivemount.c:712
+#: drivemount/drivemount.c:716
 msgid " mounted"
 msgstr " monterad"
 
-#: drivemount/drivemount.c:714
+#: drivemount/drivemount.c:718
 msgid " not mounted"
 msgstr " inte monterad"
 
-#: drivemount/drivemount.c:831
+#: drivemount/drivemount.c:835
 msgid "Drive Mount Applet Warning"
 msgstr "Varning för panelprogram för enhetsmontering"
 
-#: drivemount/drivemount.c:841
+#: drivemount/drivemount.c:845
 msgid "\" reported:\n"
 msgstr "\" rapporterad:\n"
 
-#: drivemount/drivemount.c:843
+#: drivemount/drivemount.c:847
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -748,8 +788,8 @@ msgstr "Välj monteringskatalog"
 msgid "_Update interval:"
 msgstr "_Uppdateringsintervall:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1960
-#: mailcheck/mailcheck.c:1964 modemlights/properties.c:419
+#: drivemount/properties.c:352 mailcheck/mailcheck.c:1996
+#: mailcheck/mailcheck.c:2000 modemlights/properties.c:419
 msgid "seconds"
 msgstr "sekunder"
 
@@ -862,7 +902,8 @@ msgstr "Ändra tangentbordslayouten"
 msgid "GKB Factory"
 msgstr "GKB-fabrik"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:642
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
+#: gkb-new/gkb-applet.c:95
 msgid "Keyboard Layout Switcher"
 msgstr "Tangentbordsbytare"
 
@@ -870,7 +911,7 @@ msgstr "Tangentbordsbytare"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Producerar panelprogram för byte av tangentbordslayout."
 
-#: gkb-new/gkb.c:113
+#: gkb-new/gkb.c:275
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -878,15 +919,11 @@ msgstr ""
 "Klicka på snabbtangenten för att byta mellan layouter. Snabbtangenten kan "
 "konfigureras i egenskapsdialogen"
 
-#: gkb-new/gkb.c:589 gkb-new/gkb.c:596
-msgid "GKB"
-msgstr "GKB"
-
-#: gkb-new/gkb.c:644
+#: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:645
+#: gkb-new/gkb-applet.c:98
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -906,9 +943,13 @@ msgstr ""
 "KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:662
+#: gkb-new/gkb-applet.c:115
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB-hemsidan (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/gkb-applet.c:203 gkb-new/gkb-applet.c:210
+msgid "GKB"
+msgstr "GKB"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -918,108 +959,103 @@ msgstr "Inaktiverad"
 msgid "Press a key or press Esc to cancel"
 msgstr "Tryck en tangent eller tryck Esc för att avbryta"
 
-#: gkb-new/preset.c:153 gkb-new/preset.c:156
+#: gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr "Odefinierad"
 
-#: gkb-new/prop-add.c:88
+#: gkb-new/prop-add.c:87
 msgid "Keyboards (select and press add)"
 msgstr "Tangentbord (välj och tryck Lägg till)"
 
-#: gkb-new/prop-add.c:315
+#: gkb-new/prop-add.c:222
 #, c-format
 msgid "Keymap `%s' for the country %s already exists"
 msgstr "Tangentbordstabellen \"%s\" för landet %s finns redan"
 
-#: gkb-new/prop-add.c:426
+#: gkb-new/prop-add.c:323
 msgid "Select Keyboard"
 msgstr "Välj tangentbord"
 
-#: gkb-new/prop-add.c:450
+#: gkb-new/prop-add.c:347
 msgid "_Keyboards (select and press add):"
 msgstr "_Tangentbord (välj och tryck Lägg till):"
 
-#: gkb-new/prop-map.c:267
+#: gkb-new/prop-map.c:262
 msgid "Edit Keyboard"
 msgstr "Redigera tangentbord"
 
-#: gkb-new/prop-map.c:291
+#: gkb-new/prop-map.c:286
 msgid "_Name:"
 msgstr "_Namn:"
 
-#: gkb-new/prop-map.c:295
+#: gkb-new/prop-map.c:290
 msgid "_Label:"
 msgstr "_Etikett:"
 
-#: gkb-new/prop-map.c:298 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:293 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "Ko_mmando:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:296
 msgid "_Flag:"
 msgstr "_Flagga:"
 
-#: gkb-new/prop.c:129 gkb-new/prop.c:199
-msgid "Normal"
-msgstr "Normal"
-
-#: gkb-new/prop.c:130 gkb-new/prop.c:203
-msgid "Big"
-msgstr "Stor"
-
-#: gkb-new/prop.c:148 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:126 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Flagga"
 
-#: gkb-new/prop.c:149 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:127 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Etikett"
 
-#: gkb-new/prop.c:150 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:128 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Flagga och etikett"
 
-#: gkb-new/prop.c:323 gtik/gtik.c:1414 gweather/gweather-pref.c:334
+#: gkb-new/prop.c:257 gtik/gtik.c:1471 gweather/gweather-pref.c:325
 #: modemlights/properties.c:395
 msgid "Display"
 msgstr "Visa"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:336
+#: gkb-new/prop.c:270
 msgid "_Appearance: "
 msgstr "_Utseende: "
 
-#: gkb-new/prop.c:370
+#: gkb-new/prop.c:304
 msgid "Keyboard Shortcuts"
 msgstr "Tangentbordsgenvägar"
 
-#: gkb-new/prop.c:376
+#: gkb-new/prop.c:310
 msgid "S_witch layout:"
 msgstr "_Byt layout:"
 
-#: gkb-new/prop.c:389
+#: gkb-new/prop.c:323
 msgid "_Grab keys"
 msgstr "_Hämta tangenter"
 
-#. Create property box
-#: gkb-new/prop.c:460
+#: gkb-new/prop.c:399
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Inställningar för tangentbordsbytare"
 
-#: gkb-new/prop.c:482
+#: gkb-new/prop.c:400
+msgid "Keyboard Layout Selector"
+msgstr "Tangentbordslayoutbytare"
+
+#: gkb-new/prop.c:426
 msgid "Keyboards"
 msgstr "Tangentbord"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:486
+#: gkb-new/prop.c:430
 msgid "_Keyboards:"
 msgstr "_Tangentbord:"
 
-#: gkb-new/prop.c:501 multiload/properties.c:362
+#: gkb-new/prop.c:446 multiload/properties.c:362
 msgid "Options"
 msgstr "Alternativ"
 
-#: gkb-new/system.c:46
+#: gkb-new/system.c:44
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -1035,7 +1071,7 @@ msgstr ""
 "\n"
 "Kommandot var: %s"
 
-#: gkb-new/system.c:51
+#: gkb-new/system.c:49
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -1060,7 +1096,7 @@ msgstr "Få kontinuerligt uppdaterade aktiekurser"
 msgid "Gtik Applet Factory"
 msgstr "Fabrik för panelprogrammet gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:749
 msgid "Stock Ticker"
 msgstr "Aktieövervakare"
 
@@ -1069,15 +1105,15 @@ msgstr "Aktieövervakare"
 msgid "_Update"
 msgstr "_Uppdatera"
 
-#: gtik/gtik.c:202
+#: gtik/gtik.c:214
 msgid "Could not retrieve the stock data."
 msgstr "Kunde inte hämta aktiedata."
 
-#: gtik/gtik.c:236 gweather/gweather-applet.c:351
+#: gtik/gtik.c:248 gweather/gweather-applet.c:386
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:751
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1090,123 +1126,127 @@ msgstr ""
 "aktieövervakare för att göra beslut om investeringar; det är endast till för "
 "att informera."
 
-#: gtik/gtik.c:1187
+#: gtik/gtik.c:1237
 msgid "Current _stocks:"
 msgstr "Nuvarande _aktier:"
 
-#: gtik/gtik.c:1195
+#: gtik/gtik.c:1245
 msgid "_New symbol:"
 msgstr "_Ny symbol:"
 
-#: gtik/gtik.c:1204
+#: gtik/gtik.c:1254
 msgid "_Add"
 msgstr "_Lägg till"
 
-#: gtik/gtik.c:1213
+#: gtik/gtik.c:1263
 msgid "_Remove"
 msgstr "_Ta bort"
 
-#: gtik/gtik.c:1315
+#: gtik/gtik.c:1365
 msgid "Stock Ticker Preferences"
 msgstr "Inställningar för aktieövervakare"
 
-#: gtik/gtik.c:1334
+#: gtik/gtik.c:1386
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1340 mailcheck/mailcheck.c:2199
+#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2235
 msgid "Behavior"
 msgstr "Beteende"
 
-#: gtik/gtik.c:1343 gweather/gweather-pref.c:300
+#: gtik/gtik.c:1396 gweather/gweather-pref.c:280
 msgid "Update"
 msgstr "Uppdatera"
 
-#: gtik/gtik.c:1347
+#: gtik/gtik.c:1400
 msgid "Stock update fre_quency:"
 msgstr "Aktieuppdateringsfre_kvens:"
 
-#: gtik/gtik.c:1359 gweather/gweather-pref.c:330 mailcheck/mailcheck.c:1942
-#: mailcheck/mailcheck.c:1946
+#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1978
+#: mailcheck/mailcheck.c:1982
 msgid "minutes"
 msgstr "minuter"
 
-#: gtik/gtik.c:1362
+#: gtik/gtik.c:1415
 msgid "Scrolling"
 msgstr "Rullning"
 
-#: gtik/gtik.c:1366
+#: gtik/gtik.c:1419
 msgid "_Scroll speed:"
 msgstr "_Rullningshastighet:"
 
-#: gtik/gtik.c:1370
+#: gtik/gtik.c:1423
 msgid "Slow"
 msgstr "Långsam"
 
-#: gtik/gtik.c:1372
+#: gtik/gtik.c:1425
 msgid "Medium"
 msgstr "Mellan"
 
-#: gtik/gtik.c:1374
+#: gtik/gtik.c:1427
 msgid "Fast"
 msgstr "Snabb"
 
-#: gtik/gtik.c:1391
+#: gtik/gtik.c:1444
 msgid "_Enable scroll buttons"
 msgstr "_Aktivera rullningsknappar"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1453
 msgid "Scroll _left to right"
 msgstr "Rulla från _vänster till höger"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1476
 msgid "Displa_y only symbols and price"
 msgstr "Visa endast s_ymboler och pris"
 
-#: gtik/gtik.c:1427 mini-commander/src/mini-commander.glade.h:23
-#: stickynotes/stickynotes.glade.h:49
+#: gtik/gtik.c:1486 mini-commander/src/mini-commander.glade.h:23
+#: stickynotes/stickynotes.glade.h:50
 msgid "_Width:"
 msgstr "_Bredd:"
 
-#: gtik/gtik.c:1440 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1500 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:420
 msgid "pixels"
 msgstr "bildpunkter"
 
-#: gtik/gtik.c:1445 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1506
+msgid "Font and Colors"
+msgstr "Typsnitt och färger"
+
+#: gtik/gtik.c:1512
+msgid "Use _default theme font and colors"
+msgstr "Använd _standardtematypsnitt och standardtemafärger"
+
+#: gtik/gtik.c:1524 stickynotes/stickynotes.glade.h:44
 msgid "_Font:"
 msgstr "_Typsnitt:"
 
-#: gtik/gtik.c:1459 modemlights/properties.c:549 multiload/properties.c:460
-msgid "Colors"
-msgstr "Färger"
-
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1545
 msgid "Stock _raised:"
 msgstr "Aktier som gått _upp:"
 
-#: gtik/gtik.c:1479
+#: gtik/gtik.c:1561
 msgid "Stock _lowered:"
 msgstr "Aktier som gått _ned:"
 
-#: gtik/gtik.c:1494
+#: gtik/gtik.c:1577
 msgid "Stock _unchanged:"
 msgstr "_Oförändrade aktier:"
 
-#: gtik/gtik.c:1509 modemlights/properties.c:505
+#: gtik/gtik.c:1593 modemlights/properties.c:505
 msgid "_Background:"
 msgstr "_Bakgrund:"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1606
+#: gtik/gtik.c:1723
 msgid "Skip forward"
 msgstr "Hoppa framåt"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1724
 msgid "Skip backward"
 msgstr "Hoppa bakåt"
 
-#: gtik/gtik.c:1608
+#: gtik/gtik.c:1732
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1214,11 +1254,11 @@ msgstr ""
 "Aktieövervakare\n"
 "Få kontinuerligt uppdaterade aktiekurser"
 
-#: gtik/gtik.c:1797
+#: gtik/gtik.c:1923
 msgid "(No"
 msgstr "(Inga"
 
-#: gtik/gtik.c:1798
+#: gtik/gtik.c:1924
 msgid "Change "
 msgstr "Ändra "
 
@@ -1339,58 +1379,73 @@ msgstr "Sikt:"
 msgid "Pressure:"
 msgstr "Tryck:"
 
-#: gweather/gweather-dialog.c:293
+#: gweather/gweather-dialog.c:203
+msgid "Forecast list"
+msgstr "Prognoslista"
+
+#: gweather/gweather-dialog.c:204
+msgid "Shows forecast details for each day"
+msgstr "Visar prognosdetaljer för varje dag"
+
+#: gweather/gweather-dialog.c:296
 #, c-format
 msgid "%s / %.1f %s"
 msgstr "%s / %.1f %s"
 
-#. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:124
-msgid "Update spin button"
-msgstr "Uppdatera spinnknapp"
-
-#: gweather/gweather-pref.c:124
-msgid "Spinbutton for updating"
-msgstr "Spinnknapp för uppdatering"
-
-#: gweather/gweather-pref.c:266
+#: gweather/gweather-pref.c:246
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: gweather/gweather-pref.c:304
+#: gweather/gweather-pref.c:284
 msgid "_Automatically update every:"
 msgstr "_Uppdatera automatiskt var:"
 
-#: gweather/gweather-pref.c:336
+#: gweather/gweather-pref.c:315
+msgid "Update spin button"
+msgstr "Uppdatera spinnknapp"
+
+#: gweather/gweather-pref.c:316
+msgid "Spinbutton for updating"
+msgstr "Spinnknapp för uppdatering"
+
+#: gweather/gweather-pref.c:327
 msgid "Use _metric system units"
 msgstr "Använd _metriska enheter"
 
-#: gweather/gweather-pref.c:344
+#: gweather/gweather-pref.c:335
 msgid "Display _temperatures"
 msgstr "Visa _temperaturer"
 
-#: gweather/gweather-pref.c:355
+#: gweather/gweather-pref.c:346
 msgid "Number of _days to display:"
 msgstr "Antalet _dagar att visa:"
 
-#: gweather/gweather-pref.c:368
+#: gweather/gweather-pref.c:360
+msgid "Number of days spin button"
+msgstr "Spinnknapp för antal dagar"
+
+#: gweather/gweather-pref.c:361
+msgid "Spinbutton for determining the number of days to show on the panel"
+msgstr "Spinnknapp för avgörande av antalet dagar som ska visas på panelen"
+
+#: gweather/gweather-pref.c:363
 msgid "days"
 msgstr "dagar"
 
-#: gweather/gweather-pref.c:375 gweather/gweather-pref.c:380
-#: gweather/location.c:354
+#: gweather/gweather-pref.c:371 gweather/gweather-pref.c:376
+#: gweather/location.c:360
 msgid "Location"
 msgstr "Plats"
 
-#: gweather/gweather-pref.c:384
+#: gweather/gweather-pref.c:380
 msgid "Current city:"
 msgstr "Aktuell ort:"
 
-#: gweather/gweather-pref.c:395
+#: gweather/gweather-pref.c:391
 msgid "Available c_ountries:"
 msgstr "Tillgängliga l_änder:"
 
-#: gweather/gweather-pref.c:409
+#: gweather/gweather-pref.c:406
 msgid "Available c_ities:"
 msgstr "Tillgängliga _orter:"
 
@@ -1406,11 +1461,27 @@ msgstr "Kunde inte hämta städer"
 msgid "Downloading Cities..."
 msgstr "Hämtar städer..."
 
+#: gweather/location.c:304
+msgid "Countries list"
+msgstr "Landlista"
+
 #: gweather/location.c:305
+msgid "Select the country from the list"
+msgstr "Välj landet från listan"
+
+#: gweather/location.c:308
 msgid "Country"
 msgstr "Land"
 
-#: gweather/location.c:388
+#: gweather/location.c:356
+msgid "Cities list"
+msgstr "Stadlista"
+
+#: gweather/location.c:357
+msgid "Select the city from the list"
+msgstr "Välj staden från listan"
+
+#: gweather/location.c:394
 msgid "Downloading Countries..."
 msgstr "Hämtar länder..."
 
@@ -1631,7 +1702,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabrik för skapande av inkorgsövervakare."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2281
+#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2317
 msgid "Inbox Monitor"
 msgstr "Inkorgsövervakare"
 
@@ -1662,11 +1733,11 @@ msgstr ""
 msgid "Please enter your mailserver's _password:"
 msgstr "Ange din e-postservers _lösenord:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1820
+#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1856
 msgid "Password Entry box"
 msgstr "Lösenordsfält"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1842
+#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1878
 msgid "_Save password to disk"
 msgstr "_Spara lösenord till disk"
 
@@ -1712,141 +1783,141 @@ msgstr "%d meddelanden"
 msgid "No mail."
 msgstr "Ingen e-post."
 
-#: mailcheck/mailcheck.c:1460 mailcheck/mailcheck.c:1461
-#: mailcheck/mailcheck.c:2472 mailcheck/mailcheck.c:2473
+#: mailcheck/mailcheck.c:1496 mailcheck/mailcheck.c:1497
+#: mailcheck/mailcheck.c:2509 mailcheck/mailcheck.c:2510
 msgid "Status not updated"
 msgstr "Statusen inte uppdaterad"
 
-#: mailcheck/mailcheck.c:1659 mailcheck/mailcheck.c:2203
+#: mailcheck/mailcheck.c:1695 mailcheck/mailcheck.c:2239
 msgid "Inbox Settings"
 msgstr "Inkorgsinställningar"
 
-#: mailcheck/mailcheck.c:1685
+#: mailcheck/mailcheck.c:1721
 msgid "Mailbox _resides on:"
 msgstr "Brevlådan _finns på:"
 
-#: mailcheck/mailcheck.c:1696
+#: mailcheck/mailcheck.c:1732
 msgid "Local mailspool"
 msgstr "Lokal e-postspool"
 
-#: mailcheck/mailcheck.c:1704
+#: mailcheck/mailcheck.c:1740
 msgid "Local maildir"
 msgstr "Lokal e-postkatalog"
 
-#: mailcheck/mailcheck.c:1712
+#: mailcheck/mailcheck.c:1748
 msgid "Remote POP3-server"
 msgstr "POP3-fjärrserver"
 
-#: mailcheck/mailcheck.c:1720
+#: mailcheck/mailcheck.c:1756
 msgid "Remote IMAP-server"
 msgstr "IMAP-fjärrserver"
 
-#: mailcheck/mailcheck.c:1740
+#: mailcheck/mailcheck.c:1776
 msgid "Mail _spool file:"
 msgstr "Fil för e-post_spool:"
 
-#: mailcheck/mailcheck.c:1747
+#: mailcheck/mailcheck.c:1783
 msgid "Browse"
 msgstr "Bläddra"
 
-#: mailcheck/mailcheck.c:1762
+#: mailcheck/mailcheck.c:1798
 msgid "Mail s_erver:"
 msgstr "E-posts_erver:"
 
-#: mailcheck/mailcheck.c:1771
+#: mailcheck/mailcheck.c:1807
 msgid "Mail Server Entry box"
 msgstr "E-postserverfält"
 
-#: mailcheck/mailcheck.c:1785
+#: mailcheck/mailcheck.c:1821
 msgid "_Username:"
 msgstr "_Användarnamn:"
 
-#: mailcheck/mailcheck.c:1796
+#: mailcheck/mailcheck.c:1832
 msgid "Username Entry box"
 msgstr "Användarnamnsfält"
 
-#: mailcheck/mailcheck.c:1809
+#: mailcheck/mailcheck.c:1845
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: mailcheck/mailcheck.c:1854
+#: mailcheck/mailcheck.c:1890
 msgid "_Folder:"
 msgstr "_Mapp:"
 
-#: mailcheck/mailcheck.c:1865
+#: mailcheck/mailcheck.c:1901
 msgid "Folder Entry box"
 msgstr "Mappfält"
 
-#: mailcheck/mailcheck.c:1926
+#: mailcheck/mailcheck.c:1962
 msgid "Check for mail _every:"
 msgstr "Kontrollera e-post _var:"
 
-#: mailcheck/mailcheck.c:1942
+#: mailcheck/mailcheck.c:1978
 msgid "Choose time interval in minutes to check mail"
 msgstr "Välj tidsintervall i minuter för kontroll av post"
 
-#: mailcheck/mailcheck.c:1960
+#: mailcheck/mailcheck.c:1996
 msgid "Choose time interval in seconds to check mail"
 msgstr "Välj tidsintervall i sekunder för kontroll av post"
 
-#: mailcheck/mailcheck.c:1973
+#: mailcheck/mailcheck.c:2009
 msgid "Play a _sound when new mail arrives"
 msgstr "Spela ett _ljud då ny e-post anländer"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:1981
+#: mailcheck/mailcheck.c:2017
 msgid "Sto_p animation when double clicked"
 msgstr "Sto_ppa animation vid dubbelklick"
 
-#: mailcheck/mailcheck.c:1992
+#: mailcheck/mailcheck.c:2028
 msgid "Select a_nimation:"
 msgstr "Välj ani_mation:"
 
-#: mailcheck/mailcheck.c:2005
+#: mailcheck/mailcheck.c:2041
 msgid "Commands"
 msgstr "Kommandon"
 
-#: mailcheck/mailcheck.c:2034
+#: mailcheck/mailcheck.c:2070
 msgid "Before each _update:"
 msgstr "Innan varje _uppdatering:"
 
-#: mailcheck/mailcheck.c:2049
+#: mailcheck/mailcheck.c:2085
 msgid "Command to execute before each update"
 msgstr "Kommando att köra före varje uppdatering"
 
-#: mailcheck/mailcheck.c:2059
+#: mailcheck/mailcheck.c:2095
 msgid "When new mail _arrives:"
 msgstr "När ny e-post _anländer:"
 
-#: mailcheck/mailcheck.c:2072 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2108 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Kommando att köra då ny e-post anländer"
 
-#: mailcheck/mailcheck.c:2082
+#: mailcheck/mailcheck.c:2118
 msgid "When double clicke_d:"
 msgstr "Vid _dubbelklick:"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2131
 msgid "Command to execute when clicked"
 msgstr "Kommando att köra vid klick"
 
-#: mailcheck/mailcheck.c:2173
+#: mailcheck/mailcheck.c:2209
 msgid "Inbox Monitor Preferences"
 msgstr "Inställningar för inkorgsövervakare"
 
-#: mailcheck/mailcheck.c:2283
+#: mailcheck/mailcheck.c:2319
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Inkorgsövervakaren signalerar när ny e-post anländer i din brevlåda"
 
-#: mailcheck/mailcheck.c:2448
+#: mailcheck/mailcheck.c:2484
 msgid "Text only"
 msgstr "Endast text"
 
-#: mailcheck/mailcheck.c:2474
+#: mailcheck/mailcheck.c:2511
 msgid "Mail check"
 msgstr "E-postkontroll"
 
-#: mailcheck/mailcheck.c:2475
+#: mailcheck/mailcheck.c:2512
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "E-postkontrollen signalerar när ny e-post anländer i din brevlåda"
 
@@ -1997,7 +2068,6 @@ msgstr "Ny e-post"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:328
 msgid "Command Line"
 msgstr "Kommandorad"
 
@@ -2031,11 +2101,11 @@ msgstr ""
 msgid "Start program"
 msgstr "Starta program"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Kommandorad"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Ange ett kommando här och Gnome kommer att utföra det åt dig"
 
@@ -2146,29 +2216,29 @@ msgstr "_Mönster:"
 msgid "_Use default theme colors"
 msgstr "_Använd standardtemafärger"
 
-#: mini-commander/src/mini-commander_applet.c:174
-#: mini-commander/src/mini-commander_applet.c:178
+#: mini-commander/src/mini-commander_applet.c:222
+#: mini-commander/src/mini-commander_applet.c:226
 msgid "Browser"
 msgstr "Bläddrare"
 
-#: mini-commander/src/mini-commander_applet.c:179
+#: mini-commander/src/mini-commander_applet.c:227
 msgid "Click this button to start the browser"
 msgstr "Klicka på denna knapp för att starta webbläsaren"
 
-#: mini-commander/src/mini-commander_applet.c:192
-#: mini-commander/src/mini-commander_applet.c:196
+#: mini-commander/src/mini-commander_applet.c:240
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "Historik"
 
-#: mini-commander/src/mini-commander_applet.c:197
+#: mini-commander/src/mini-commander_applet.c:245
 msgid "Click this button for the list of previous commands"
 msgstr "Klicka på denna knapp för listan med tidigare kommandon"
 
-#: mini-commander/src/mini-commander_applet.c:326
+#: mini-commander/src/mini-commander_applet.c:379
 msgid "Mini-Commander applet"
 msgstr "Panelprogrammet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:327
+#: mini-commander/src/mini-commander_applet.c:380
 msgid "This applet adds a command line to the panel"
 msgstr "Detta panelprogran lägger till en kommandorad på panelen"
 
@@ -2192,8 +2262,8 @@ msgstr "Du får inte ange dublettmönster"
 msgid "Adjust the sound volume"
 msgstr "Justera ljudvolymen"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:170
-#: mixer/mixer.c:1025
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:174
+#: mixer/mixer.c:1049
 msgid "Volume Control"
 msgstr "Volymkontroll"
 
@@ -2305,15 +2375,15 @@ msgstr "Radio"
 msgid "Monitor"
 msgstr "Monitor"
 
-#: mixer/mixer.c:171
+#: mixer/mixer.c:175
 msgid "Volume Control (muted)"
 msgstr "Volymkontroll (tystad)"
 
-#: mixer/mixer.c:172
+#: mixer/mixer.c:176
 msgid "No audio device"
 msgstr "Ingen ljudenhet"
 
-#: mixer/mixer.c:254
+#: mixer/mixer.c:258
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2321,45 +2391,45 @@ msgstr ""
 "varning: denna version av gmix kompilerades med en annan version av\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:753
+#: mixer/mixer.c:777
 msgid "Volume Controller"
 msgstr "Volymkontroll"
 
-#: mixer/mixer.c:754
+#: mixer/mixer.c:778
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Använd upp-/nertangenterna för att ändra volymen"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:778
+#: mixer/mixer.c:802
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:779
+#: mixer/mixer.c:803
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1026
+#: mixer/mixer.c:1050
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:1027
+#: mixer/mixer.c:1051
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord."
 
-#: mixer/mixer.c:1169
+#: mixer/mixer.c:1193
 msgid "Volume Control Preferences"
 msgstr "Inställningar för volymkontroll"
 
-#: mixer/mixer.c:1192
+#: mixer/mixer.c:1216
 msgid "Audio Channels"
 msgstr "Ljudkanaler"
 
-#: mixer/mixer.c:1208
+#: mixer/mixer.c:1232
 msgid "_Select channel to control:"
 msgstr "_Välj kanal att styra:"
 
-#: mixer/mixer.c:1476
+#: mixer/mixer.c:1557
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord"
 
@@ -2493,6 +2563,10 @@ msgstr "Ba_kgrund:"
 msgid "O_utline"
 msgstr "_Ram"
 
+#: modemlights/properties.c:549 multiload/properties.c:460
+msgid "Colors"
+msgstr "Färger"
+
 #: modemlights/properties.c:558
 msgid "Modem Options"
 msgstr "Modemalternativ"
@@ -2571,7 +2645,7 @@ msgstr "Växlingsutrymme"
 msgid "Resource"
 msgstr "Resurs"
 
-#: multiload/main.c:292
+#: multiload/main.c:293
 #, c-format
 msgid ""
 "%s:\n"
@@ -2710,7 +2784,7 @@ msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:135 stickynotes/stickynotes_applet.c:306
+#: stickynotes/stickynotes_applet.c:136 stickynotes/stickynotes_applet.c:320
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
@@ -2727,7 +2801,7 @@ msgid "_Lock Notes"
 msgstr "_Lås lappar"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:46
 msgid "_New Note"
 msgstr "_Ny lapp"
 
@@ -2780,150 +2854,154 @@ msgid "<b>Properties</b>"
 msgstr "<b>Egenskaper</b>"
 
 #: stickynotes/stickynotes.glade.h:13
+msgid "C_olor:"
+msgstr "F_ärg:"
+
+#: stickynotes/stickynotes.glade.h:14
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Välj en basfärg för användning på alla klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:14
+#: stickynotes/stickynotes.glade.h:15
 msgid "Choose a color for the note"
 msgstr "Välj en färg för lappen"
 
-#: stickynotes/stickynotes.glade.h:15
+#: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font for the note"
 msgstr "Välj ett typsnitt för lappen"
 
-#: stickynotes/stickynotes.glade.h:16
+#: stickynotes/stickynotes.glade.h:17
 msgid "Choose a font to use for all sticky notes"
 msgstr "Välj ett typsnitt för användning på alla klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:17
+#: stickynotes/stickynotes.glade.h:18
 msgid "Choose if notes are visible on ALL workspaces"
 msgstr "Välj om lappar är synliga på ALLA arbetsytor"
 
-#: stickynotes/stickynotes.glade.h:18
+#: stickynotes/stickynotes.glade.h:19
 msgid "Choose if the default style is forced on all notes"
 msgstr "Välj om standardstilen tvingas på alla lappar"
 
-#: stickynotes/stickynotes.glade.h:19
+#: stickynotes/stickynotes.glade.h:20
 msgid "Clic_k:"
 msgstr "Klic:k:"
 
-#: stickynotes/stickynotes.glade.h:20
+#: stickynotes/stickynotes.glade.h:21
 msgid "Close note"
 msgstr "Stäng lapp"
 
-#: stickynotes/stickynotes.glade.h:21
-msgid "Force _default color & font on all notes"
-msgstr "Tvinga _standardhöjd och standardtypsnitt på alla lappar"
-
 #: stickynotes/stickynotes.glade.h:22
+msgid "Force _default color and font on notes"
+msgstr "Tvinga _standardfärg och standardtypsnitt på lappar"
+
+#: stickynotes/stickynotes.glade.h:23
+msgid "H_eight:"
+msgstr "H_öjd:"
+
+#: stickynotes/stickynotes.glade.h:24
 msgid "Lock/Unlock note"
 msgstr "Lås/Lås upp lapp"
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:25
 msgid "Pick a color for the sticky note"
 msgstr "Välj en färg för klisterlappen"
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note color"
 msgstr "Välj en standardfärg för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note font"
 msgstr "Välj ett standardtypsnitt för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:28
 msgid "Pick a font for the sticky note"
 msgstr "Välj ett typsnitt för klisterlappen"
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:29
 msgid "Resize note"
 msgstr "Ändra storlek på lapp"
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:30
 msgid "Specify a title for the note"
 msgstr "Ange en titel för lappen"
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Ange standardhöjden (i bildpunkter) för nya lappar"
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:32
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Ange standardbredden (i bildpunkter) för nya lappar"
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:33
 msgid "Sticky Note"
 msgstr "Klisterlapp"
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:34
 msgid "Sticky Note Properties"
 msgstr "Egenskaper för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:33
+#: stickynotes/stickynotes.glade.h:35
 msgid "Sticky Notes Preferences"
 msgstr "Inställningar för klisterlappar"
 
-#: stickynotes/stickynotes.glade.h:34
+#: stickynotes/stickynotes.glade.h:36
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Klisterlappar för skrivbordsmiljön Gnome"
 
-#: stickynotes/stickynotes.glade.h:35
+#: stickynotes/stickynotes.glade.h:37
 msgid "Use co_lor from the system theme"
 msgstr "Använd fä_rg från systemtemat"
 
-#: stickynotes/stickynotes.glade.h:36
+#: stickynotes/stickynotes.glade.h:38
 msgid "Use default co_lor"
 msgstr "Använd standardfä_rg"
 
-#: stickynotes/stickynotes.glade.h:37
+#: stickynotes/stickynotes.glade.h:39
 msgid "Use default fo_nt"
 msgstr "Använd standardtyps_nitt"
 
-#: stickynotes/stickynotes.glade.h:38
+#: stickynotes/stickynotes.glade.h:40
 msgid "Use fo_nt from the system theme"
 msgstr "Använd typs_nitt från systemtemat"
 
-#: stickynotes/stickynotes.glade.h:39
+#: stickynotes/stickynotes.glade.h:41
 msgid "_Color:"
 msgstr "_Färg:"
 
-#: stickynotes/stickynotes.glade.h:40
+#: stickynotes/stickynotes.glade.h:42
 msgid "_Delete ALL"
 msgstr "_Ta bort ALLA"
 
-#: stickynotes/stickynotes.glade.h:41
+#: stickynotes/stickynotes.glade.h:43
 msgid "_Delete Note..."
 msgstr "_Ta bort lapp..."
 
-#: stickynotes/stickynotes.glade.h:43
-msgid "_Height:"
-msgstr "_Höjd:"
-
-#: stickynotes/stickynotes.glade.h:44
+#: stickynotes/stickynotes.glade.h:45
 msgid "_Lock Note"
 msgstr "_Lås lapp"
 
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:47
 msgid "_Properties..."
 msgstr "_Egenskaper..."
 
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:48
 msgid "_Put notes on all workspaces"
 msgstr "_Placera lappar på alla arbetsytor"
 
-#: stickynotes/stickynotes.glade.h:48
+#: stickynotes/stickynotes.glade.h:49
 msgid "_Title:"
 msgstr "_Titel:"
 
-#: stickynotes/stickynotes.glade.h:50
+#: stickynotes/stickynotes.glade.h:51
 msgid "_lock/unlock all notes"
 msgstr "_lås/_lås upp alla lappar"
 
-#: stickynotes/stickynotes.glade.h:51
+#: stickynotes/stickynotes.glade.h:52
 msgid "_show/hide all notes"
 msgstr "_visa/dölj alla lappar"
 
-#: stickynotes/stickynotes.glade.h:52
+#: stickynotes/stickynotes.glade.h:53
 msgid "create a _new note"
 msgstr "skapa en _ny lapp"
 
@@ -3055,8 +3133,8 @@ msgid "Sticky notes' locked state"
 msgstr "Låst tillstånd för klisterlappar"
 
 #: stickynotes/stickynotes.schemas.in.h:23
-msgid "Sticky notes' visiblity"
-msgstr "Synlighet för klisterlappar"
+msgid "Sticky notes' visibility"
+msgstr "Synlighet för klisterlapparna"
 
 #: stickynotes/stickynotes.schemas.in.h:24
 msgid "Sticky notes' workspace stickyness"
@@ -3079,7 +3157,7 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: stickynotes/stickynotes_applet.c:306
+#: stickynotes/stickynotes_applet.c:320
 #, c-format
 msgid ""
 "%s\n"
@@ -3147,6 +3225,27 @@ msgstr "Inställningar för övervakare av trådlös länk"
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
 
+#~ msgid "Palette"
+#~ msgstr "Palett"
+
+#~ msgid "Palette list"
+#~ msgstr "Palettlista"
+
+#~ msgid "Fonts and Colors"
+#~ msgstr "Typsnitt och färger"
+
+#~ msgid "Font and Color"
+#~ msgstr "Typsnitt och färg"
+
+#~ msgid "Normal"
+#~ msgstr "Normal"
+
+#~ msgid "Big"
+#~ msgstr "Stor"
+
+#~ msgid "Force _default color & font on all notes"
+#~ msgstr "Tvinga _standardhöjd och standardtypsnitt på alla lappar"
+
 #~ msgid ""
 #~ "%s\n"
 #~ "Today: %s\n"
@@ -3180,9 +3279,6 @@ msgstr "_Övervakad enhet:"
 #~ "%s: %s\n"
 #~ "Lägsta %d, högsta %d"
 
-#~ msgid "Add a palette"
-#~ msgstr "Lägg till en palett"
-
 #~ msgid "Add palette"
 #~ msgstr "Lägg till palett"
 
@@ -3192,9 +3288,6 @@ msgstr "_Övervakad enhet:"
 # SIC
 #~ msgid "The encrypted user's password for the remote server"
 #~ msgstr "Den krypterade användarens lösenord för fjärrservern"
-
-#~ msgid "Force _default color and font on all notes"
-#~ msgstr "Tvinga _standardhöjd och standardtypsnitt på alla lappar"
 
 #~ msgid "Sto_p animation when clicked"
 #~ msgstr "Sto_ppa animation vid klick"
@@ -3349,14 +3442,8 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Delete all sticky notes"
 #~ msgstr "Ta bort alla klisterlappar"
 
-#~ msgid "Delete note"
-#~ msgstr "Ta bort lapp"
-
 #~ msgid "_Delete note"
 #~ msgstr "_Ta bort lapp"
-
-#~ msgid "Edit title"
-#~ msgstr "Redigera titel"
 
 #~ msgid "_Hides/_Shows All Notes"
 #~ msgstr "_Döljer/_Visar alla lappar"
@@ -3427,9 +3514,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "_Palette"
 #~ msgstr "_Palett"
-
-#~ msgid "Palette"
-#~ msgstr "Palett"
 
 #~ msgid "Update interval:"
 #~ msgstr "Uppdateringsintervall:"
@@ -3623,9 +3707,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "- Colo_r:"
 #~ msgstr "- Fä_rg:"
 
-#~ msgid "_Unchanged Color:"
-#~ msgstr "_Oförändrad färg:"
-
 #~ msgid "GNOME Weather"
 #~ msgstr "GNOME Weather"
 
@@ -3676,9 +3757,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Location view"
 #~ msgstr "Platsvy"
-
-#~ msgid "Select Location from the list"
-#~ msgstr "Välj plats från listan"
 
 #~ msgid "Address Entry"
 #~ msgstr "Adressfält"
@@ -5559,9 +5637,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Size of button: (pixels)"
 #~ msgstr "Storlek på knapp: (bildpunkter)"
-
-#~ msgid "Number of rows of buttons:"
-#~ msgstr "Antal rader med knappar:"
 
 #~ msgid "Number of columns of buttons:"
 #~ msgstr "Antal kolumner med knappar:"
