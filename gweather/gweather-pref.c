@@ -570,7 +570,7 @@ void gweather_pref_load (const gchar *path)
 
     gweather_pref.update_interval = gnome_config_get_int("update_interval=1800");
     gweather_pref.update_enabled = gnome_config_get_bool("update_enabled=TRUE");
-    gweather_pref.use_metric = gnome_config_get_bool("use_metric=FALSE");
+    gweather_pref.use_metric = gnome_config_get_bool("use_metric=TRUE");
     gweather_pref.detailed = gnome_config_get_bool("detailed=FALSE");
     gweather_pref.radar_enabled = gnome_config_get_bool("radar_enabled=TRUE");
     gweather_pref.location = weather_location_config_read("location");
