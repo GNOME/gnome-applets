@@ -1,11 +1,11 @@
 #SUBDIRS = themes docs
 SUBDIRS = themes
 
-INCLUDES = -I. -I$(srcdir) 					\
-	$(GNOME_APPLETS_CFLAGS)					\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
-	-I$(includedir)						\ 
-	-DODOMETER_THEMES_DIR=\""$(datadir)/odometer/"\"
+INCLUDES = -I. -I$(srcdir)                              \
+        $(GNOME_APPLETS_CFLAGS)                         \
+        -DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
+        -I$(includedir)                                 \
+        -DODOMETER_THEMES_DIR=\""$(datadir)/odometer/"\"
 
 bin_PROGRAMS = odometer_applet2
 
