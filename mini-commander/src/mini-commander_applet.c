@@ -122,30 +122,26 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
 {
     PanelApplet *applet = data;
     properties *prop;
-    static int counter = 0;
 
     prop = g_object_get_data (G_OBJECT (applet), "prop");
    
-    if(counter++ > 0)
 	show_message((gchar *) _("size changed")); 
 
     prop->normal_size_y = size;
     if(size <= GNOME_Vertigo_PANEL_X_SMALL)
 	{
-	  if(counter > 1) /* ignore size-changed-signal at startup */
-	      prop->show_frame = FALSE;
+	    prop->show_frame = FALSE;
 	    prop->flat_layout = TRUE;
 	} 
     else if(size <= GNOME_Vertigo_PANEL_SMALL)
 	{
-	    if(counter > 1) /* ignore size-changed-signal at startup */
-	      prop->show_frame = TRUE;
+
+	    prop->show_frame = TRUE;
 	    prop->flat_layout = TRUE;
 	} 
     else
 	{
-	    if(counter > 1) /* ignore size-changed-signal at startup */
-	      prop->show_frame = TRUE;
+	    prop->show_frame = TRUE;
 	    prop->flat_layout = FALSE;
 	}
 
@@ -383,7 +379,7 @@ mini_commander_applet_fill(PanelApplet *applet)
     /*we have to bind change_pixel_size before we do applet_widget_add 
       since we need to get an initial change_pixel_size signal to set our
       initial size, and we get that during the _add call*/
-    g_signal_connect(G_OBJECT(applet),
+	g_signal_connect(G_OBJECT(applet),
 		     "change_size",
 		     G_CALLBACK(applet_pixel_size_changed_cb),
 		     applet);
@@ -394,8 +390,8 @@ mini_commander_applet_fill(PanelApplet *applet)
     g_signal_connect(G_OBJECT(applet), "destroy",
 		     G_CALLBACK(applet_destroy_signal),
 		     applet); 
-    
-    redraw_applet(applet);
+
+    applet_pixel_size_changed_cb(NULL, panel_applet_get_size (applet), applet);
 
     panel_applet_setup_menu_from_file (applet,
 			    NULL, /* opt. datadir */
