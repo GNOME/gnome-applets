@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-03-12 16:19+0100\n"
-"PO-Revision-Date: 2002-03-12 16:20+0100\n"
+"POT-Creation-Date: 2002-03-20 20:46+0100\n"
+"PO-Revision-Date: 2002-03-20 20:49+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -238,7 +238,7 @@ msgstr "Ustawienia apletu Battstat"
 msgid "Beep when either of the above is true"
 msgstr "Sygnał dźwiękowy przy spełnieniu któregoś z warunków"
 
-#: battstat/battstat_applet.glade.h:1 gweather/gweather-pref.c:1
+#: battstat/battstat_applet.glade.h:1
 msgid "General"
 msgstr "Ogólne"
 
@@ -442,7 +442,11 @@ msgstr ""
 "Aplet Panelu Gnome, pozwalający wybierać nietypowe znaki, których nie ma na "
 "klawiaturze. Rozpowszechniany na licencji GNU GPL."
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/charpick.c:1
+msgid "Insert special characters"
+msgstr "Narzędzie do wstawiania znaków specjalnych"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:1
 msgid "Character Palette"
 msgstr "Paleta znaków"
 
@@ -457,6 +461,14 @@ msgstr "Narzędzie do wstawiania znaków"
 #: charpick/properties.c:1
 msgid "Default character list:"
 msgstr "Domyślna lista znaków:"
+
+#: charpick/properties.c:1
+msgid "Default list of characters"
+msgstr "Domyślna lista znaków"
+
+#: charpick/properties.c:1
+msgid "Set the default character list here"
+msgstr "Ustaw domyślną listę znaków"
 
 #: charpick/properties.c:1
 msgid ""
@@ -639,6 +651,14 @@ msgid "Properties"
 msgstr "Właściwości"
 
 #: gkb-new/gkb.c:1
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"Aby przełączyć się pomiędzy układami, użyj kombinacji klawiszy, którą możesz "
+"ustawić w oknie preferencji"
+
+#: gkb-new/gkb.c:1
 #, c-format
 msgid "name_%d"
 msgstr "nazwa_%d"
@@ -740,8 +760,7 @@ msgstr "Duży"
 msgid "Flag"
 msgstr "Flaga"
 
-#: gkb-new/prop-map.c:1 gkb-new/prop.c:1 gkb-new/util.c:1
-#: gkb-new/util.c:1
+#: gkb-new/prop.c:1 gkb-new/util.c:1 gkb-new/util.c:1
 msgid "Label"
 msgstr "Etykieta"
 
@@ -753,14 +772,14 @@ msgstr "Flaga i etykieta"
 msgid "Display"
 msgstr "Wyświetl"
 
-#. Labels
+#. Labels and option Menus
 #: gkb-new/prop.c:1
-msgid "Appearance "
-msgstr "Wygląd "
+msgid "_Appearance "
+msgstr "_Wygląd "
 
 #: gkb-new/prop.c:1
-msgid "Applet size "
-msgstr "Rozmiar apletu "
+msgid "Applet _size "
+msgstr "_Rozmiar apletu "
 
 #: gkb-new/prop.c:1
 msgid "Hotkey for switching between layouts"
@@ -783,25 +802,25 @@ msgstr "_Mapy klawiatury"
 msgid "_Options"
 msgstr "_Opcje"
 
-#: gkb-new/prop-list.c:1
-msgid "Add"
-msgstr "Dodaj"
+#: gkb-new/prop-list.c:1 gtik/gtik.c:1
+msgid "_Add"
+msgstr "_Dodaj"
 
 #: gkb-new/prop-list.c:1
-msgid "Edit"
-msgstr "Edycja"
+msgid "_Edit"
+msgstr "_Edycja"
 
 #: gkb-new/prop-list.c:1
-msgid "Up"
-msgstr "Góra"
+msgid "_Up"
+msgstr "_Góra"
 
 #: gkb-new/prop-list.c:1
-msgid "Down"
-msgstr "Dół"
+msgid "Dow_n"
+msgstr "_Dół"
 
 #: gkb-new/prop-list.c:1
-msgid "Delete"
-msgstr "Usuń"
+msgid "_Delete"
+msgstr "_Usuń"
 
 #: gkb-new/prop-map.c:1
 msgid "Armenia"
@@ -1095,18 +1114,22 @@ msgstr "ibm"
 msgid "Edit keymap"
 msgstr "Edycja układu klawiatury"
 
-#. Add the labels
+#. Add the labels  and entries/combos/icon_entry
 #: gkb-new/prop-map.c:1
-msgid "Name"
-msgstr "Nazwa"
+msgid "_Name"
+msgstr "_Nazwa"
 
 #: gkb-new/prop-map.c:1
-msgid "Language"
-msgstr "Język"
+msgid "_Label"
+msgstr "_Etykieta"
 
 #: gkb-new/prop-map.c:1
-msgid "Country"
-msgstr "Kraj"
+msgid "Lan_guage"
+msgstr "_Język"
+
+#: gkb-new/prop-map.c:1
+msgid "Count_ry"
+msgstr "_Kraj"
 
 #: gkb-new/prop-map.c:1
 msgid ""
@@ -1117,20 +1140,20 @@ msgstr ""
 "Piksmapa"
 
 #: gkb-new/prop-map.c:1
-msgid "Architecture"
-msgstr "Architektura"
+msgid "Arc_hitecture"
+msgstr "_Architektura"
 
 #: gkb-new/prop-map.c:1
-msgid "Type"
-msgstr "Typ"
+msgid "_Type"
+msgstr "_Typ"
 
 #: gkb-new/prop-map.c:1
-msgid "Codepage"
-msgstr "Strona kodowa"
+msgid "Code_page"
+msgstr "_Strona kodowa"
 
 #: gkb-new/prop-map.c:1
-msgid "Command"
-msgstr "Polecenie"
+msgid "Co_mmand"
+msgstr "_Polecenie"
 
 #: gkb-new/prop-map.c:1
 msgid ""
@@ -1195,12 +1218,32 @@ msgid "New Symbol:"
 msgstr "Nowy symbol:"
 
 #: gtik/gtik.c:1
-msgid "_Add"
-msgstr "_Dodaj"
-
-#: gtik/gtik.c:1
 msgid "_Remove Selected"
 msgstr "_Usuń zaznaczone"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Use HTTP proxy"
+msgstr "Wykorzystanie pośrednika HTTP"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Location :"
+msgstr "Położenie :"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Port :"
+msgstr "Port :"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Proxy requires a uername and password"
+msgstr "Pośrednik wymaga nazwy użytkownika i hasła"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Username:"
+msgstr "Nazwa użytkownika:"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Password:"
+msgstr "Hasło:"
 
 #: gtik/gtik.c:1
 msgid "Stock Ticker Properties"
@@ -1258,6 +1301,10 @@ msgstr "_Zachowanie"
 #: gtik/gtik.c:1
 msgid "_Appearance"
 msgstr "_Wygląd"
+
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "_Proxy"
+msgstr "_Pośrednik"
 
 #: gtik/gtik.c:1
 msgid "(No"
@@ -1391,40 +1438,8 @@ msgid "Weather Properties"
 msgstr "Ustawienia panelu pogodowego"
 
 #: gweather/gweather-pref.c:1
-msgid "Location"
-msgstr "Położenie"
-
-#: gweather/gweather-pref.c:1
-msgid "Use proxy"
-msgstr "Wykorzystanie pośrednika"
-
-#: gweather/gweather-pref.c:1
-msgid "Proxy URL:"
-msgstr "URL pośrednika:"
-
-#: gweather/gweather-pref.c:1
-msgid "Username:"
-msgstr "Nazwa użytkownika:"
-
-#: gweather/gweather-pref.c:1
-msgid "Password:"
-msgstr "Hasło:"
-
-#: gweather/gweather-pref.c:1
-msgid ""
-"Warning: Your password will be saved as\n"
-"unencrypted text in a private configuration\n"
-"file."
-msgstr ""
-"Ostrzeżenie: Twoje hasło zostanie zapisane\n"
-"nie zaszyfrowanym tekstem w prywatnym pliku\n"
-"konfiguracyjnym."
-
-#: gweather/gweather-pref.c:1
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1 multiload/main.c:1
-#: multiload/properties.c:1
-msgid "Network"
-msgstr "Sieć"
+msgid "_Location"
+msgstr "P_ołożenie"
 
 #: gweather/gweather-pref.c:1
 msgid "Automatically update every"
@@ -1466,6 +1481,11 @@ msgstr "minut"
 #: gweather/gweather-pref.c:1
 msgid "Miscellaneous"
 msgstr "Różne"
+
+#: gweather/gweather-pref.c:1 mini-commander/src/preferences.c:1
+#: modemlights/properties.c:1
+msgid "_General"
+msgstr "_Ogólne"
 
 #: gweather/weather.c:1
 msgid "knots"
@@ -2899,10 +2919,6 @@ msgstr "Kolor tekstu wiersza poleceń:"
 msgid "Command line background:"
 msgstr "Kolor tła wiersza poleceń:"
 
-#: mini-commander/src/preferences.c:1 modemlights/properties.c:1
-msgid "_General"
-msgstr "_Ogólne"
-
 #. prefix
 #: mini-commander/src/preferences.c:1
 #, c-format
@@ -2973,6 +2989,10 @@ msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Sterownik głośności pozwala ci na ustawienie poziomu głośności twojego "
 "pulpitu."
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+msgid "Internet"
+msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
 msgid "Modem Lights"
@@ -3162,6 +3182,10 @@ msgstr "Procesor"
 #: multiload/main.c:1 multiload/properties.c:1
 msgid "Memory"
 msgstr "Pamięć"
+
+#: multiload/main.c:1 multiload/properties.c:1
+msgid "Network"
+msgstr "Sieć"
 
 #: multiload/main.c:1 multiload/properties.c:1
 msgid "Swap File"
