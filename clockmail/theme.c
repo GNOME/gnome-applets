@@ -25,6 +25,15 @@ static ItemData *new_item_from_file(gchar *file, gint sections, gint x, gint y);
 static void free_item(ItemData *item);
 static SkinData *new_skin();
 static void draw_digit(DigitData *digit, gint n, gint x, gint y, AppData *ad);
+
+static ButtonData *new_button(SkinData *skin, ItemData *item,
+			      void (*click_func)(gpointer), void (*redraw_func)(gpointer));
+static void free_button(ButtonData *button);
+static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data);
+static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data);
+static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data);
+static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data);
+
 static SkinData *load_default_skin();
 static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical);
 static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vertical);
@@ -185,20 +194,23 @@ void sync_window_to_skin(AppData *ad)
 	gtk_drawing_area_size(GTK_DRAWING_AREA(ad->display_area), ad->skin->width, ad->skin->height);
 	gtk_widget_set_usize(ad->display_area, ad->skin->width, ad->skin->height);
 	gtk_widget_set_usize(ad->applet, ad->skin->width, ad->skin->height);
-	redraw_skin(ad);
-	/* attempt to set the applets shape, to no avail */
-/*	gdk_window_shape_combine_mask (ad->applet->window, ad->skin->mask, 0, 0);*/
-	gdk_window_shape_combine_mask (ad->display_area->window, ad->skin->mask, 0, 0);
 
 	if (ad->skin->mail)
 		ad->mail_sections = ad->skin->mail->sections;
 	else
 		ad->mail_sections = 1;
 
-	/* we are forcing some redraws here */
+	draw_button(ad->skin->button, FALSE, FALSE, TRUE, ad);
+	redraw_skin(ad);
+
+	/* attempt to set the applets shape */
+	gdk_window_shape_combine_mask (ad->display_area->window, ad->skin->mask, 0, 0);
+
+/* with the addition of a button, no longer needed? (the button forces redraws for us)
 	ad->old_week = -1;
 	ad->old_n = -1;
 	ad->old_amount = -1;
+*/
 }
 
 void free_skin(SkinData *s)
@@ -218,6 +230,8 @@ void free_skin(SkinData *s)
 	free_item(s->month_txt);
 	free_item(s->week_txt);
 	free_item(s->mail_amount);
+	free_item(s->button_pix);
+	free_button(s->button);
 	g_free(s);
 }
 
@@ -274,6 +288,190 @@ void draw_item(ItemData *item, gint section, AppData *ad)
 	
 }
 
+/*
+ *--------------------------------------------------------------------
+ * button functions
+ *--------------------------------------------------------------------
+ */
+
+static ButtonData *new_button(SkinData *skin, ItemData *item,
+			      void (*click_func)(gpointer), void (*redraw_func)(gpointer))
+{
+	ButtonData *button;
+
+	button = g_new0(ButtonData, 1);
+
+	button->item = item;
+	if (button->item)
+		{
+		if (item->sections == 3)
+			button->has_prelight = TRUE;
+		else
+			button->has_prelight = FALSE;
+
+		button->width = item->width;
+		button->height = item->height;
+		button->x = item->x;
+		button->y = item->y;
+		}
+	else
+		{
+		/* we create this widget anyway so that all themes
+		 * support clicking, some just will not have visual feedback.
+		 */
+		button->has_prelight = FALSE;
+		button->width = skin->width;
+		button->height = skin->height;
+		button->x = 0;
+		button->y = 0;
+		}
+
+	button->pushed = FALSE;
+	button->prelit = FALSE;
+
+	button->click_func = click_func;
+	button->redraw_func = redraw_func;
+
+	return button;
+}
+
+static void free_button(ButtonData *button)
+{
+	if (!button) return;
+
+	g_free(button);
+}
+
+void draw_button(ButtonData *button, gint prelight, gint pressed, gint force, AppData *ad)
+{
+	gint redraw = FALSE;
+	if (!button) return;
+
+	if (force)
+		{
+		redraw = TRUE;
+		}
+	else
+		{
+		if (button->has_prelight && prelight != button->prelit)
+			{
+			if (prelight)
+				button->prelit = !pressed;
+			else
+				button->prelit = FALSE;
+			redraw = TRUE;
+			}
+		if (button->pushed != pressed)
+			{
+			button->pushed = pressed;
+			redraw = TRUE;
+			}
+		}
+	if (button->item && redraw)
+		{
+		draw_item(button->item, button->pushed + (button->prelit * 2), ad);
+
+		/* bah, now everything else needs redrawn because they may be within
+		 * the button.
+		 */
+		if (button->redraw_func)
+			button->redraw_func(ad);
+
+		redraw_skin(ad);
+		}
+}
+
+static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
+{
+	AppData *ad = data;
+	ButtonData *button;
+	gint x = (float)event->x;
+	gint y = (float)event->y;
+
+	button = ad->skin->button;
+	if (!button) return;
+
+	if (x >= button->x && x < button->x + button->width &&
+				y >= button->y && y < button->y + button->height)
+		{
+		if (ad->active == button)
+			draw_button(button, FALSE, TRUE, FALSE, ad);
+		else
+			draw_button(button, TRUE, FALSE, FALSE, ad);
+		}
+	else
+		{
+		draw_button(button, FALSE, FALSE, FALSE, ad);
+		}
+}
+
+static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data)
+{
+	AppData *ad = data;
+	ButtonData *button;
+	gint x = (float)event->x;
+	gint y = (float)event->y;
+
+	button = ad->skin->button;
+	if (!button) return;
+
+	if (x >= button->x && x < button->x + button->width &&
+				y >= button->y && y < button->y + button->height)
+		{
+		ad->active = button;
+		draw_button(button, FALSE, TRUE, FALSE, ad);
+		}
+}
+
+static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data)
+{
+	AppData *ad = data;
+	ButtonData *button;
+	gint x = (float)event->x;
+	gint y = (float)event->y;
+
+
+	if (!ad->active) return;
+	button = ad->active;
+	ad->active = NULL;
+
+	if (button->pushed && x >= button->x && x < button->x + button->width &&
+				y >= button->y && y < button->y + button->height)
+		{
+		draw_button(button, FALSE, FALSE, FALSE, ad);
+		if (button->click_func)
+			button->click_func(ad);
+		}
+}
+
+static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data)
+{
+	AppData *ad = data;
+	ButtonData *button;
+
+	button = ad->skin->button;
+	if (!button) return;
+
+	draw_button(button, FALSE, FALSE, FALSE, ad);
+}
+
+void skin_event_init(AppData *ad)
+{
+	gtk_widget_set_events (ad->display_area, GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK |
+			GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+	gtk_signal_connect(GTK_OBJECT(ad->display_area),"motion_notify_event",(GtkSignalFunc) display_motion, ad);
+	gtk_signal_connect(GTK_OBJECT(ad->display_area),"button_press_event",(GtkSignalFunc) display_pressed, ad);
+	gtk_signal_connect(GTK_OBJECT(ad->display_area),"button_release_event",(GtkSignalFunc) display_released, ad);
+	gtk_signal_connect(GTK_OBJECT(ad->display_area),"leave_notify_event",(GtkSignalFunc) display_leave, ad);
+}
+
+
+/*
+ *--------------------------------------------------------------------
+ * skin loaders
+ *--------------------------------------------------------------------
+ */
+
 static SkinData *load_default_skin()
 {
 	SkinData *s;
@@ -296,6 +494,10 @@ static SkinData *load_default_skin()
 	s->min = new_number(s->dig_large, 2, TRUE, 26, 4);
 
 	s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 3, 23);
+
+	s->button_pix = NULL;
+	s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
+
 	return s;
 }
 
@@ -555,6 +757,9 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 	s->month_txt = get_item(skin_path, datafile, "Item_Month_Text=", 12, vertical);
 	s->week_txt = get_item(skin_path, datafile, "Item_Week_text=", 7, vertical);
 	s->mail_count = get_number(skin_path, datafile, "Number_Mail=", 4, FALSE, vertical, s);
+	s->button_pix = get_item(skin_path, datafile, "Item_Button=", 0, vertical);
+
+	s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
 
 	g_free(datafile);
 	return s;
@@ -566,8 +771,6 @@ gint change_to_skin(gchar *path, AppData *ad)
 	SkinData *nsv = NULL;
 	SkinData *osh = ad->skin_h;
 	SkinData *osv = ad->skin_v;
-
-	printf("changed\n");
 
 	if (!path)
 		{
@@ -591,6 +794,7 @@ gint change_to_skin(gchar *path, AppData *ad)
 		}
 
 	sync_window_to_skin(ad);
+	ad->active = NULL;
 
 	free_skin(osh);
 	free_skin(osv);

@@ -18,12 +18,15 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
 void property_load(gchar *path, AppData *ad)
 {
-        if (ad->mail_file) g_free(ad->mail_file);
-	if (ad->theme_file) g_free(ad->theme_file);
+	g_free(ad->mail_file);
+	g_free(ad->theme_file);
+	g_free(ad->newmail_exec_cmd);
+	g_free(ad->reader_exec_cmd);
 	gnome_config_push_prefix (path);
         ad->am_pm_enable = gnome_config_get_int("clockmail/12hour=0");
 	ad->always_blink = gnome_config_get_int("clockmail/blink=0");
 	ad->mail_file = gnome_config_get_string("clockmail/mailfile=default");
+	ad->reader_exec_cmd = gnome_config_get_string("clockmail/reader_command=balsa");
 	ad->newmail_exec_cmd = gnome_config_get_string("clockmail/newmail_command=");
 	ad->exec_cmd_on_newmail = gnome_config_get_int("clockmail/newmail_command_enable=0");
 	ad->theme_file = gnome_config_get_string("clockmail/theme=");
@@ -39,6 +42,7 @@ void property_save(gchar *path, AppData *ad)
         gnome_config_set_int("clockmail/12hour", ad->am_pm_enable);
         gnome_config_set_int("clockmail/blink", ad->always_blink);
 	gnome_config_set_string("clockmail/mailfile", ad->mail_file);
+	gnome_config_set_string("clockmail/reader_command", ad->reader_exec_cmd);
 	gnome_config_set_string("clockmail/newmail_command", ad->newmail_exec_cmd);
         gnome_config_set_int("clockmail/newmail_command_enable",
 			     ad->exec_cmd_on_newmail);
@@ -201,6 +205,10 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 		check_mail_file_status (TRUE, ad);
 		}
 
+	buf = gtk_entry_get_text(GTK_ENTRY(ad->reader_exec_cmd_entry));
+	g_free (ad->reader_exec_cmd);
+	ad->reader_exec_cmd = g_strdup(buf);
+
 	buf = gtk_entry_get_text(GTK_ENTRY(ad->newmail_exec_cmd_entry));
 	if (ad->newmail_exec_cmd) g_free (ad->newmail_exec_cmd);
 	ad->newmail_exec_cmd = g_strdup(buf);
@@ -324,6 +332,24 @@ void property_show(AppletWidget *applet, gpointer data)
 	vbox1 = gtk_vbox_new(0,TRUE);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
+
+	/* reader exec command */
+	hbox = gtk_hbox_new(FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+	label= gtk_label_new (_("When clicked, run:"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_widget_show(label);
+
+	ad->reader_exec_cmd_entry = gtk_entry_new_with_max_length(255);
+	if (ad->reader_exec_cmd)
+		gtk_entry_set_text(GTK_ENTRY(ad->reader_exec_cmd_entry), ad->reader_exec_cmd);
+	gtk_signal_connect_object(GTK_OBJECT(ad->reader_exec_cmd_entry), "changed",
+				GTK_SIGNAL_FUNC(gnome_property_box_changed),
+				GTK_OBJECT(ad->propwindow));
+	gtk_box_pack_start( GTK_BOX(hbox),ad->reader_exec_cmd_entry , TRUE, TRUE, 5);
+	gtk_widget_show(ad->reader_exec_cmd_entry);
 
 	button = gtk_check_button_new_with_label (_("Blink when any mail is waiting. (Not just when mail arrives)"));
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);

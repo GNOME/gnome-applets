@@ -19,8 +19,8 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#define CLOCKMAIL_APPLET_VERSION_MAJ 0
-#define CLOCKMAIL_APPLET_VERSION_MIN 99
+#define CLOCKMAIL_APPLET_VERSION_MAJ 1
+#define CLOCKMAIL_APPLET_VERSION_MIN 0
 #define CLOCKMAIL_APPLET_VERSION_REV 0
 
 typedef struct _ItemData ItemData;
@@ -52,6 +52,21 @@ struct _NumberData
 	gint zeros;
 };
 
+typedef struct _ButtonData ButtonData;
+struct _ButtonData
+{
+	ItemData *item;
+	gint has_prelight;
+	gint pushed;
+	gint prelit;
+	gint width;
+	gint height;
+	gint x;
+	gint y;
+	void (*click_func)(gpointer);
+	void (*redraw_func)(gpointer);
+};
+
 typedef struct _SkinData SkinData;
 struct _SkinData
 {
@@ -73,6 +88,8 @@ struct _SkinData
 	NumberData *day;
 	NumberData *year;
 	NumberData *mail_count;
+	ItemData *button_pix;
+	ButtonData *button;
 };
 
 typedef struct _AppData AppData;
@@ -83,6 +100,7 @@ struct _AppData
 	gint am_pm_enable;
 	gint always_blink;
 	gchar *mail_file;
+	gchar *reader_exec_cmd;
 	gchar *newmail_exec_cmd;
 	gint exec_cmd_on_newmail;
 	gchar *theme_file;
@@ -108,6 +126,7 @@ struct _AppData
 	/* the properties window widgets */
 	GtkWidget *propwindow;
 	GtkWidget *mail_file_entry;
+	GtkWidget *reader_exec_cmd_entry;
 	GtkWidget *newmail_exec_cmd_entry;
 	gint p_am_pm_enable;
 	gint p_always_blink;
@@ -129,9 +148,13 @@ struct _AppData
 	SkinData *skin;
 	SkinData *skin_v;
 	SkinData *skin_h;
+
+	ButtonData *active;
 };
 
+void launch_mail_reader(gpointer data);
 void check_mail_file_status (int reset, AppData *ad);
+void redraw_all(gpointer data);
 
 void property_load(gchar *path, AppData *ad);
 void property_save(gchar *path, AppData *ad);
@@ -142,5 +165,7 @@ void free_skin(SkinData *s);
 void redraw_skin(AppData *ad);
 void draw_number(NumberData *number, gint n, AppData *ad);
 void draw_item(ItemData *item, gint section, AppData *ad);
+void draw_button(ButtonData *button, gint prelight, gint pressed, gint force, AppData *ad);
+void skin_event_init(AppData *ad);
 gint change_to_skin(gchar *path, AppData *ad);
 

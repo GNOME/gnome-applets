@@ -25,9 +25,13 @@
 static void about_cb (AppletWidget *widget, gpointer data);
 static void set_tooltip(struct tm *time_data, AppData *ad);
 static void redraw_display(AppData *ad);
-static void update_mail_display(int n, AppData *ad);
+static void update_mail_display(int n, AppData *ad, gint force);
+static void update_mail_amount_display(AppData *ad, gint force);
 static void update_time_count(gint h, gint m, gint s, AppData *ad);
+static void update_date_displays(gint year, gint month, gint day, gint weekday, AppData *ad, gint force);
+static void update_time_and_date(AppData *ad, gint force);
 static gint blink_callback(gpointer data);
+static void update_mail_status(AppData *ad, gint force);
 static gint update_display(gpointer data);
 static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixmap,
 				GdkColor *color, gpointer data);
@@ -62,6 +66,14 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			NULL);
 	gtk_widget_show (about);
 }
+
+void launch_mail_reader(gpointer data)
+{
+	AppData *ad = data;
+	if (ad->reader_exec_cmd && strlen(ad->reader_exec_cmd) > 0)
+		gnome_execute_shell(NULL, ad->reader_exec_cmd);
+}
+
 
 /*
  * Get file modification time, based upon the code
@@ -104,7 +116,7 @@ void check_mail_file_status (int reset, AppData *ad)
 	ad->unreadmail = (s.st_mtime >= s.st_atime && newsize > 0);
 
 	checktime = (newtime > ad->oldtime);
-	if (newsize >= ad->mailsize && ad->unreadmail && checktime){
+	if (newsize > ad->mailsize && ad->unreadmail && checktime){
 		ad->newmail = 1;
 		ad->mailcleared = 0;
 	} else
@@ -148,8 +160,13 @@ static void redraw_display(AppData *ad)
 	redraw_skin(ad);
 }
 
-static void update_mail_display(int n, AppData *ad)
+static void update_mail_display(int n, AppData *ad, gint force)
 {
+	if (force)
+		{
+		draw_item(ad->skin->mail, ad->old_n, ad);
+		return;
+		}
 	if (n != ad->old_n)
 		{
 		draw_item(ad->skin->mail, n, ad);
@@ -157,9 +174,9 @@ static void update_mail_display(int n, AppData *ad)
 		}
 }
 
-static void update_mail_amount_display(AppData *ad)
+static void update_mail_amount_display(AppData *ad, gint force)
 {
-	if (ad->mailsize != ad->old_amount)
+	if (ad->mailsize != ad->old_amount || force)
 		{
 		if (ad->skin->mail_amount)
 			{
@@ -188,10 +205,10 @@ static void update_time_count(gint h, gint m, gint s, AppData *ad)
 	draw_number(ad->skin->sec, s, ad);
 }
 
-static void update_date_displays(gint year, gint month, gint day, gint weekday, AppData *ad)
+static void update_date_displays(gint year, gint month, gint day, gint weekday, AppData *ad, gint force)
 {
 	/* no point in drawing things again if they don't change */
-	if (ad->old_week == weekday) return;
+	if (ad->old_week == weekday && !force) return;
 
 	draw_number(ad->skin->year, year, ad);
 	draw_number(ad->skin->month, month, ad);
@@ -202,46 +219,8 @@ static void update_date_displays(gint year, gint month, gint day, gint weekday, 
 	ad->old_week = weekday;
 }
 
-static gint blink_callback(gpointer data)
+static void update_time_and_date(AppData *ad, gint force)
 {
-	AppData *ad = data;
-	ad->blink_lit++;
-
-	if (ad->blink_lit >= ad->mail_sections - 1)
-		{
-		ad->blink_lit = 0;
-		ad->blink_count++;
-		}
-	update_mail_display(ad->blink_lit, ad);
-	redraw_display(ad);
-
-	if (ad->blink_count >= ad->blink_times || !ad->anymail)
-		{
-		if (ad->always_blink && ad->anymail)
-			{
-			if (ad->blink_count >= ad->blink_times) ad->blink_count = 1;
-			}
-		else
-			{
-			/* reset counters for next time */
-			ad->blink_count = 0;
-			ad->blink_lit = 0;
-			if (ad->anymail)
-				update_mail_display(ad->mail_sections - 1, ad);
-			else
-				update_mail_display(0, ad);
-			redraw_display(ad);
-			ad->blinking = FALSE;
-			return FALSE;
-			}
-		}
-
-	return TRUE;
-}
-
-static gint update_display(gpointer data)
-{
-	AppData *ad = data;
 	time_t current_time;
 	struct tm *time_data;
 
@@ -261,12 +240,57 @@ static gint update_display(gpointer data)
 
 	/* update date */
 	update_date_displays(time_data->tm_year, time_data->tm_mon, time_data->tm_mday,
-				time_data->tm_wday, ad);
+				time_data->tm_wday, ad, force);
 
 	/* set tooltip to the date */
 	set_tooltip(time_data, ad);
+}
 
-	/* now check mail */
+static gint blink_callback(gpointer data)
+{
+	AppData *ad = data;
+	ad->blink_lit++;
+
+	if (ad->blink_lit >= ad->mail_sections - 1)
+		{
+		ad->blink_lit = 0;
+		ad->blink_count++;
+		}
+	update_mail_display(ad->blink_lit, ad, FALSE);
+	redraw_display(ad);
+
+	if (ad->blink_count >= ad->blink_times || !ad->anymail)
+		{
+		if (ad->always_blink && ad->anymail)
+			{
+			if (ad->blink_count >= ad->blink_times) ad->blink_count = 1;
+			}
+		else
+			{
+			/* reset counters for next time */
+			ad->blink_count = 0;
+			ad->blink_lit = 0;
+			if (ad->anymail)
+				update_mail_display(ad->mail_sections - 1, ad, FALSE);
+			else
+				update_mail_display(0, ad, FALSE);
+			redraw_display(ad);
+			ad->blinking = FALSE;
+			return FALSE;
+			}
+		}
+
+	return TRUE;
+}
+
+static void update_mail_status(AppData *ad, gint force)
+{
+	if (force)
+		{
+		update_mail_amount_display(ad, TRUE);
+		update_mail_display(0, ad, TRUE);
+		return;
+		}
 	check_mail_file_status (FALSE, ad);
 
 	if (!ad->blinking)
@@ -285,16 +309,30 @@ static gint update_display(gpointer data)
 				}
 			else
 				{
-				update_mail_display(ad->mail_sections - 1, ad);
+				update_mail_display(ad->mail_sections - 1, ad, FALSE);
 				}
 		else
 			{
-			update_mail_display(0, ad);
+			update_mail_display(0, ad, FALSE);
 			}
 		}
 
-	update_mail_amount_display(ad);
+	update_mail_amount_display(ad, FALSE);
+}
 
+void redraw_all(gpointer data)
+{
+	AppData *ad = data;
+	update_time_and_date(ad, TRUE);
+	update_mail_status(ad, TRUE);
+}
+
+static gint update_display(gpointer data)
+{
+	AppData *ad = data;
+
+	update_time_and_date(ad, FALSE);
+	update_mail_status(ad, FALSE);
 	redraw_display(ad);
 
 	return TRUE;
@@ -306,7 +344,6 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 	AppData *ad = data;
 	GtkStyle *ns;
 
-	printf("back changes\n");
 	switch (type)
 		{
 		case PANEL_BACK_NONE :
@@ -390,6 +427,9 @@ static AppData *create_new_app(GtkWidget *applet)
 	/* mail file location */
 	ad->mail_file = NULL;
 
+	/* execute a command on button press */
+	ad->reader_exec_cmd = NULL;
+
 	/* execute a command on new mail */
 	ad->newmail_exec_cmd = NULL;
 	ad->exec_cmd_on_newmail = FALSE;
@@ -424,6 +464,7 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display_area);
 
+	skin_event_init(ad);
 	gtk_widget_realize(ad->display_area);
 
 	if (ad->theme_file && strlen(ad->theme_file) == 0)
