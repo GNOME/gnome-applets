@@ -1,3 +1,27 @@
+1999-04-30  Alexandre Owen Muniz  <munizao@cyberhighway.net>
+
+
+	* Makefile.am (charpick_applet_SOURCES): added charpick.h, properties.c
+	
+	* charpick.c: changed order of acute and grave accents to match 
+	French alphabetical order. Added character lists for capital characters
+	and some non-alphabet-related characters. Changed default size and 
+	arrangement of buttons so that capital characters fit, and the applet
+	does not violate the 48 pixel limit so egregiously. Split 
+	build_table() out of main() so that the table can be rebuilt after 
+	properties are changed. Fixed a number of spots in build_table() where
+	"rows" and "cols: had been interchanged, which worked when rows==cols,
+	but not now. Incremented version in about box to 0.03.
+
+	* properties.c: adapted this file from modemlights/properties.c.
+	It adds a properties dialog that allows one to change the size and 
+	arrangement of buttons, and session management to store and load that 
+	info. (some of this is in charpick.c as well.) The big remaining bug 
+	is that the context menu does not appear when right-clicking a button 
+	after rebuilding the table when changing the properties.
+
+	* charpick.h: Split header like stuff off of charpick.c.
+
 1998-12-16  Federico Mena Quintero  <federico@nuclecu.unam.mx>
 
 	* Makefile.am (gnorba_DATA): Remove a spurious .gnorba file.
