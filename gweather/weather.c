@@ -675,6 +675,13 @@ static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
     if (isnan(rise1) || isnan(rise2))
         return FALSE;
 
+    if (rise2 < rise1) {
+        rise2 += 24.;
+    }
+    if (set2 < set1) {
+        set2 += 24.;
+    }    
+
     gdouble tt = t0(lcl_midn);
     gdouble t00 = tt - (gm_hoff + RADIANS_TO_HOURS(obsLon)) * 1.002737909;
 
