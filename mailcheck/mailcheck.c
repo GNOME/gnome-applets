@@ -280,15 +280,15 @@ check_remote_mailbox (MailCheck *mc)
 						       mc->remote_username,
 						       mc->real_password);
 	else if (mc->mailbox_type == MAILBOX_IMAP)
-		helper_imap_check (got_remote_answer,
-			           error_handler,
-				   mc,
-				   null_remote_handle,
-				   NULL,
-				   mc->remote_server,
-				   mc->remote_username,
-				   mc->real_password,
-				   mc->remote_folder);
+		mc->remote_handle = helper_imap_check (got_remote_answer,
+						       error_handler,
+						       mc,
+						       null_remote_handle,
+						       NULL,
+						       mc->remote_server,
+						       mc->remote_username,
+						       mc->real_password,
+						       mc->remote_folder);
 }
 
 static void
