@@ -32,16 +32,22 @@
 
 static void place_widgets (GWeatherApplet *gw_applet)
 {
-    PangoLayout *panlay;
-    int size = gw_applet->size;
+    GtkRequisition req;
+    int total_size = 0;
+    gboolean horizontal = FALSE;
+    int panel_size = gw_applet->size;
     const gchar *temp;   
-    int textheight, textwidth;
-    int picheight = 0, picwidth = 0;
-
-    if (gw_applet->box)
-	gtk_widget_destroy (gw_applet->box);
-    
-    gw_applet->label = gtk_label_new("0\302\260F");
+	
+    switch (gw_applet->orient) {
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
+	    horizontal = FALSE;
+	    break;
+	case PANEL_APPLET_ORIENT_UP:
+	case PANEL_APPLET_ORIENT_DOWN:
+	    horizontal = TRUE;
+	    break;
+    }
 
     /* Create the weather icon */
     weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
@@ -50,47 +56,47 @@ static void place_widgets (GWeatherApplet *gw_applet)
     gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
     			       gw_applet->applet_pixbuf);
 
-    /* We check against the weather indication icon sizes for box reordering */
+    /* Check the weather icon sizes to determine box layout */
     if (gw_applet->applet_pixbuf != NULL) {
-	picwidth = gdk_pixbuf_get_width(gw_applet->applet_pixbuf);
-	picheight = gdk_pixbuf_get_height(gw_applet->applet_pixbuf);
-    }
-    
-    /* We check against text sizes for box reordering */
-    panlay = gtk_label_get_layout(GTK_LABEL (gw_applet->label));
-    pango_layout_get_pixel_size(panlay, &textwidth, &textheight);
-
-    /* Set the right box for the dimension and panel type */
-    if (gw_applet->orient == PANEL_APPLET_ORIENT_UP || gw_applet->orient == PANEL_APPLET_ORIENT_DOWN) {
-	size = gw_applet->container->allocation.height;
-
-	if (size < picheight + textheight + 9)
-		gw_applet->box = gtk_hbox_new (FALSE, 2);
-	else
-		gw_applet->box = gtk_vbox_new (FALSE, 2);
-	
-    } else if (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT || gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) {
-	size = gw_applet->container->allocation.width;
-
-	if (size > picwidth + textwidth + 18)
-		gw_applet->box = gtk_hbox_new (FALSE, 2);
-	else
-		gw_applet->box = gtk_vbox_new (FALSE, 2);
-    
-    } else {
-	gw_applet->box = gtk_vbox_new (FALSE, 2);
+        gtk_widget_size_request(gw_applet->image, &req);
+        if (horizontal)
+            total_size += req.height;
+        else
+            total_size += req.width;
     }
 
-    /* Rebuild the applet it's visual area */
-    gtk_container_add (GTK_CONTAINER (gw_applet->container), gw_applet->box);
-
-    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, FALSE, FALSE, 0);
-
+    /* Create the temperature label */
+    gw_applet->label = gtk_label_new("0\302\260F");
+    
     /* Update temperature text */
     temp = weather_info_get_temp_summary(gw_applet->gweather_info);
     if (temp) 
-    	gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
+        gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
+
+    /* Check the label size to determine box layout */
+    gtk_widget_size_request(gw_applet->label, &req);
+    if (horizontal)
+        total_size += req.height;
+    else
+        total_size += req.width;
+
+    /* Pack the box */
+    if (gw_applet->box)
+        gtk_widget_destroy (gw_applet->box);
+    
+    if (horizontal && (total_size <= panel_size))
+        gw_applet->box = gtk_vbox_new(FALSE, 0);
+    else if (horizontal && (total_size > panel_size))
+        gw_applet->box = gtk_hbox_new(FALSE, 2);
+    else if (!horizontal && (total_size <= panel_size))
+        gw_applet->box = gtk_hbox_new(FALSE, 2);
+    else 
+        gw_applet->box = gtk_vbox_new(FALSE, 0);
+
+    /* Rebuild the applet it's visual area */
+    gtk_container_add (GTK_CONTAINER (gw_applet->container), gw_applet->box);
+    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, TRUE, TRUE, 0);
 
     gtk_widget_show_all (GTK_WIDGET (gw_applet->applet));
 }
