@@ -540,14 +540,18 @@ static void parse_distance_string (const gchar *gconf_str, GWeatherPrefs *prefs)
 static void temp_combo_changed_cb (GtkComboBox *combo, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-    TempUnit       new_unit, *old_unit;
-	
-	g_return_if_fail(gw_applet != NULL);
-    
-	old_unit = &gw_applet->gweather_pref.temperature_unit;	
-	new_unit = gtk_combo_box_get_active(combo) + 1;
+    TempUnit       new_unit, old_unit;
 
-	if (new_unit == *old_unit)
+    g_return_if_fail(gw_applet != NULL);
+
+    new_unit = gtk_combo_box_get_active(combo) + 1;
+
+    if (gw_applet->gweather_pref.use_temperature_default)
+        old_unit = TEMP_UNIT_DEFAULT;
+    else
+        old_unit = gw_applet->gweather_pref.temperature_unit;	
+
+    if (new_unit == old_unit)
         return;
 
     parse_temp_string (gconf_enum_to_string (temp_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
@@ -555,23 +559,27 @@ static void temp_combo_changed_cb (GtkComboBox *combo, gpointer data)
     panel_applet_gconf_set_string(gw_applet->applet, GCONF_TEMP_UNIT,
                                   gconf_enum_to_string (temp_unit_enum_map, new_unit),
                                   NULL);
-	
+
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
-	                   weather_info_get_temp_summary(gw_applet->gweather_info));
+                       weather_info_get_temp_summary(gw_applet->gweather_info));
     gweather_dialog_update (gw_applet);
 }
 
 static void speed_combo_changed_cb (GtkComboBox *combo, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-    SpeedUnit      new_unit, *old_unit;
-	
-	g_return_if_fail(gw_applet != NULL);
-    
-	old_unit = &gw_applet->gweather_pref.speed_unit;	
-	new_unit = gtk_combo_box_get_active(combo) + 1;
+    SpeedUnit      new_unit, old_unit;
 
-	if (new_unit == *old_unit)
+	g_return_if_fail(gw_applet != NULL);
+
+    new_unit = gtk_combo_box_get_active(combo) + 1;
+
+    if (gw_applet->gweather_pref.use_speed_default)
+        old_unit = SPEED_UNIT_DEFAULT;
+    else
+        old_unit = gw_applet->gweather_pref.speed_unit;	
+
+    if (new_unit == old_unit)
         return;
 
     parse_speed_string (gconf_enum_to_string (speed_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
@@ -579,21 +587,25 @@ static void speed_combo_changed_cb (GtkComboBox *combo, gpointer data)
     panel_applet_gconf_set_string(gw_applet->applet, GCONF_SPEED_UNIT,
                                   gconf_enum_to_string (speed_unit_enum_map, new_unit),
                                   NULL);
-	
+
     gweather_dialog_update (gw_applet);
 }
 
 static void pres_combo_changed_cb (GtkComboBox *combo, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-    PressureUnit   new_unit, *old_unit;
-	
-	g_return_if_fail(gw_applet != NULL);
-    
-	old_unit = &gw_applet->gweather_pref.pressure_unit;	
-	new_unit = gtk_combo_box_get_active(combo) + 1;
+    PressureUnit   new_unit, old_unit;
 
-	if (new_unit == *old_unit)
+    g_return_if_fail(gw_applet != NULL);
+
+    new_unit = gtk_combo_box_get_active(combo) + 1;
+
+    if (gw_applet->gweather_pref.use_pressure_default)
+        old_unit = PRESSURE_UNIT_DEFAULT;
+    else
+        old_unit = gw_applet->gweather_pref.pressure_unit;	
+
+    if (new_unit == old_unit)
         return;
 
     parse_pressure_string (gconf_enum_to_string (pressure_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
@@ -601,21 +613,25 @@ static void pres_combo_changed_cb (GtkComboBox *combo, gpointer data)
     panel_applet_gconf_set_string(gw_applet->applet, GCONF_PRESSURE_UNIT,
                                   gconf_enum_to_string (pressure_unit_enum_map, new_unit),
                                   NULL);
-	
+
     gweather_dialog_update (gw_applet);
 }
 
 static void dist_combo_changed_cb (GtkComboBox *combo, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
-    DistanceUnit   new_unit, *old_unit;
-	
-	g_return_if_fail(gw_applet != NULL);
-    
-	old_unit = &gw_applet->gweather_pref.distance_unit;	
-	new_unit = gtk_combo_box_get_active(combo) + 1;
+    DistanceUnit   new_unit, old_unit;
 
-	if (new_unit == *old_unit)
+    g_return_if_fail(gw_applet != NULL);
+
+    new_unit = gtk_combo_box_get_active(combo) + 1;
+
+    if (gw_applet->gweather_pref.use_distance_default)
+        old_unit = DISTANCE_UNIT_DEFAULT;
+    else
+        old_unit = gw_applet->gweather_pref.distance_unit;	
+
+    if (new_unit == old_unit)
         return;
 
     parse_distance_string (gconf_enum_to_string (distance_unit_enum_map, new_unit), &(gw_applet->gweather_pref));
@@ -623,7 +639,7 @@ static void dist_combo_changed_cb (GtkComboBox *combo, gpointer data)
     panel_applet_gconf_set_string(gw_applet->applet, GCONF_DISTANCE_UNIT,
                                   gconf_enum_to_string (distance_unit_enum_map, new_unit),
                                   NULL);
-	
+
     gweather_dialog_update (gw_applet);
 }
 

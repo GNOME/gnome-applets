@@ -1,3 +1,10 @@
+2005-03-28  Ryan Lortie  <desrt@desrt.ca>
+
+	* gweather-pref.c: Fix the check to ensure that spurious gconf
+	updates are not performed to consider the 'use_default' flags
+	for each of the 4 unit types (temperature, pressure, wind speed,
+	visibility distance).  Fixes bug #171812.
+
 2005-03-26  Christian Rose  <menthos@menthos.com>
 
 	* Locations.xml.in: Added some more translator
