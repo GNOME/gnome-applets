@@ -1202,35 +1202,6 @@ adj_value_changed_cb (GtkAdjustment *ignored, gpointer data)
    battstat->colors_changed = FALSE;
 }
 
-#if 0
-static void
-build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
-{
-   ProgressData *battstat = data;
-   
-   battstat->eventdock = gtk_event_box_new ();
-   gtk_widget_show (battstat->eventdock);
-   gtk_container_add (GTK_CONTAINER(plug), battstat->eventdock);
-   
-   battstat->pixmapdockwid = gtk_pixmap_new ( statusimage[BATTERY], statusmask[BATTERY] );
-   
-   if(battstat->usedock) {
-      gtk_widget_show(battstat->eventdock);
-      gtk_widget_show(battstat->pixmapdockwid);
-   } else {
-      gtk_widget_hide(battstat->pixmapdockwid);    
-      gtk_widget_hide(battstat->eventdock);    
-   }
-   
-   gtk_container_add(GTK_CONTAINER(battstat->eventdock), battstat->pixmapdockwid);
-   
-   battstat->st_tip = gtk_tooltips_new ();
-   gtk_tooltips_set_tip (battstat->st_tip,
-			 battstat->eventdock,
-			 "Add code here",
-			 NULL);
-}
-#endif
 
 void
 change_size(PanelApplet *applet, gint size, gpointer data)
@@ -1296,14 +1267,12 @@ load_preferences(ProgressData *battstat)
   battstat->fullbattnot = panel_applet_gconf_get_bool (applet, GCONF_PATH "full_battery_notification", NULL);
   battstat->beep = panel_applet_gconf_get_bool (applet, GCONF_PATH "beep", NULL);
   battstat->draintop = panel_applet_gconf_get_bool (applet, GCONF_PATH "drain_from_top", NULL);
-  battstat->horizont = panel_applet_gconf_get_bool (applet, GCONF_PATH "horizontal", NULL);
-
+  
   battstat->showstatus = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_status", NULL);
   battstat->showbattery = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_battery", NULL);
   battstat->showpercent = panel_applet_gconf_get_bool (applet, GCONF_PATH "show_percent", NULL);
   battstat->suspend_cmd = panel_applet_gconf_get_string (applet, GCONF_PATH "suspend_command", NULL);
-  battstat->usedock = panel_applet_gconf_get_bool (applet, GCONF_PATH "use_dock", NULL);
-
+  
 }
 
 gint
@@ -1469,14 +1438,6 @@ create_layout(ProgressData *battstat)
 			 battstat->eventybattery,
 			 "",
 			 NULL);
-#if 0
-   statusdock = status_docklet_new();
-   
-   gtk_signal_connect(GTK_OBJECT(statusdock), "build_plug",
-		      GTK_SIGNAL_FUNC(build_our_plug),
-		      battstat);
-   status_docklet_run(STATUS_DOCKLET(statusdock));
-#endif
 
    gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_orient",
 		      GTK_SIGNAL_FUNC(change_orient),
@@ -1528,6 +1489,7 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->suspend_cmd = NULL;
   battstat->orienttype = panel_applet_get_orient (applet);
   battstat->panelsize = panel_applet_get_size (applet);
+  battstat->horizont = TRUE;
   
   glade_gnome_init ();
   

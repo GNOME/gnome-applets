@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
+ * Copyright (C) 2000 by JÃ¶rgen Pehrson <jp@spektr.eu.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -103,7 +103,6 @@ typedef struct _ProgressData {
   gboolean showbattery;
   gboolean showpercent;
   gboolean suspend;
-  gboolean usedock;
   GtkWidget *suspend_entry;
   gchar *suspend_cmd;
   gchar *fontname;

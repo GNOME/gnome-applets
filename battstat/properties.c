@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 2; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 /* battstat        A GNOME battery meter for laptops. 
- * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
+ * Copyright (C) 2000 by JÃ¶rgen Pehrson <jp@spektr.eu.org>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -532,15 +532,6 @@ prop_cb (BonoboUIComponent *uic,
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
   }
 
-#if 0
-  if(battstat->usedock) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->dock_toggle), TRUE);
-  }
-
-   gtk_signal_connect (GTK_OBJECT (battstat->dock_toggle), "toggled",
-		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-#endif
-   
    gtk_dialog_set_default_response (GTK_DIALOG (battstat->prop_win), GTK_RESPONSE_CLOSE);
    gtk_window_set_resizable (GTK_WINDOW (battstat->prop_win), FALSE);
    gtk_dialog_set_has_separator (GTK_DIALOG (battstat->prop_win), FALSE);

@@ -7,7 +7,8 @@
         <type>int</type>
         <default>15</default>
         <locale name="C">
-          <short>Red Value</short>
+          <short>Red value level</short>
+          <long>The battery level below which the battery is displayed as red.
         </locale>
       </schema>
 
@@ -17,7 +18,8 @@
         <type>int</type>
         <default>25</default>
         <locale name="C">
-          <short>Orange Value</short>
+          <short>Orange value level</short>
+          <long>The battery level below which the battery is displayed as orange.
         </locale>
       </schema>
 
@@ -27,7 +29,8 @@
         <type>int</type>
         <default>40</default>
         <locale name="C">
-          <short>Yellow Value</short>
+          <short>Yellow value level</short>
+          <long>The battery level below which the battery is displayed as yellow.
         </locale>
       </schema>
 
@@ -59,8 +62,8 @@
         <type>bool</type>
         <default>false</default>
         <locale name="C">
-	  <short>Beep?</short>
-          <long>Beep?</long>
+	  <short>Beep for warnings</short>
+          <long>Beep when displaying a warning</long>
         </locale>
       </schema>      
                       
@@ -72,17 +75,6 @@
         <locale name="C">
 	  <short>Drain from top</short>
           <long>Show the battery meter draining from the top of the battery</long>
-        </locale>
-      </schema>      
-
-      <schema>
-        <key>/schemas/apps/battstat-applet/prefs/horizontal</key>
-        <owner>battstat-applet</owner>
-        <type>bool</type>
-        <default>true</default>
-        <locale name="C">
-	  <short>Horizontal</short>
-          <long>Horizontal</long>
         </locale>
       </schema>      
 
@@ -129,17 +121,7 @@
           <long>Command to send to suspend the computer</long>
         </locale>
       </schema>      
-
-      <schema>
-        <key>/schemas/apps/battstat-applet/prefs/use_dock</key>
-        <owner>battstat-applet</owner>
-        <type>bool</type>
-        <default>false</default>
-        <locale name="C">
-	  <short>Use dock</short>
-          <long>Use dock</long>
-        </locale>
-      </schema>      
+    
            
   </schemalist>
   
