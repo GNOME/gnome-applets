@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-static AppData *create_new_app(GtkWidget *applet)
+AppData *create_new_app(GtkWidget *applet)
 {
 	AppData *ad;
 	GtkWidget *icon;
@@ -77,7 +77,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	return ad;
 }
 
-static gchar *check_for_dir(char *d)
+gchar *check_for_dir(char *d)
 {
 	if(!g_file_exists(d)) {
 		g_print(_("Creating user directory: %s\n"), d);
@@ -90,7 +90,7 @@ static gchar *check_for_dir(char *d)
 	return d;
 }
 
-static void destroy_applet(GtkWidget *widget, gpointer data)
+void destroy_applet(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 
@@ -107,7 +107,7 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	g_free(ad);
 }
 
-static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
+gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
 		gpointer data)
 {
 	AppData *ad = data;
@@ -115,7 +115,7 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 	return FALSE;
 }
 
-static void about_cb(AppletWidget *widget, gpointer data)
+void about_cb(AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 	const gchar *authors[5];
@@ -137,7 +137,7 @@ static void about_cb(AppletWidget *widget, gpointer data)
 	gtk_widget_show(about);
 }
 
-static void show_article_window(AppletWidget *applet, gpointer data)
+void show_article_window(AppletWidget *applet, gpointer data)
 {
 	AppData *ad = data;
 
@@ -165,7 +165,7 @@ static void show_article_window(AppletWidget *applet, gpointer data)
 	gtk_widget_show(ad->article_window);
 }
 
-static void populate_article_window(AppData *ad)
+void populate_article_window(AppData *ad)
 {
 	GtkWidget *vbox, *hbox;
 	GtkWidget *label, *button;
@@ -239,7 +239,7 @@ static void populate_article_window(AppData *ad)
 	}
 }
 
-static void refresh_cb(AppletWidget *widget, gpointer data)
+void refresh_cb(AppletWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 	GtkWidget *icon;
@@ -253,7 +253,7 @@ static void refresh_cb(AppletWidget *widget, gpointer data)
 	ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
 }
 
-static int startup_delay_cb(gpointer data)
+int startup_delay_cb(gpointer data)
 {
 	AppData *ad = data;
 	get_current_headlines(ad); 
@@ -261,13 +261,11 @@ static int startup_delay_cb(gpointer data)
 	return FALSE;
 }
 
-static int get_current_headlines(gpointer data)
+int get_current_headlines(gpointer data)
 {
 	AppData *ad = data;
 	FILE *file;
-	GtkWidget *icon;
 	gchar *filename;
-	gint delay = ad->article_delay / 10 * (1000 / UPDATE_DELAY);
 
 	filename = g_strconcat(ad->slashapp_dir, "/", "headlines", NULL);
 	file = fopen(filename, "w");
@@ -280,7 +278,7 @@ static int get_current_headlines(gpointer data)
 	return TRUE;
 }
 
-static void parse_headlines(gpointer data)
+void parse_headlines(gpointer data)
 {
 	AppData *ad = data;
 	xmlDocPtr doc;
@@ -307,7 +305,7 @@ static void parse_headlines(gpointer data)
 	tree_walk(doc->root, data); /* the bulk of the work) */
 }
 
-static int http_get_to_file(gchar *host, gint port, gchar *proxy, 
+int http_get_to_file(gchar *host, gint port, gchar *proxy, 
 		gchar *resource, FILE *file, gpointer data)
 {
 	int length = -1;
@@ -338,7 +336,7 @@ static int http_get_to_file(gchar *host, gint port, gchar *proxy,
 		return length;
 	} */
 	
-	ghttp_set_uri(request, "http://slashdot.org:80/slashdot.xml");
+	ghttp_set_uri(request, "http://www.gnome.org/news/gnome-news.txt");
 	ghttp_set_header(request, http_hdr_Connection, "close");
 	
 	if(ghttp_prepare(request) != 0) {
@@ -363,7 +361,7 @@ static int http_get_to_file(gchar *host, gint port, gchar *proxy,
 	return length;
 }
 
-static void tree_walk(xmlNodePtr root, gpointer data)
+void tree_walk(xmlNodePtr root, gpointer data)
 {
 	AppData *ad = data;
 	InfoData *id; 
@@ -375,7 +373,7 @@ static void tree_walk(xmlNodePtr root, gpointer data)
 	gint delay = ad->article_delay / 10 * (1000 / UPDATE_DELAY);
 
 	while(walk!=NULL) {
-		if(strcasecmp(walk->name, "story")==0 && items<16) {
+		if(strcasecmp(walk->name, "item")==0 && items<16) {
 			item[i++] = walk;
 			itemcount++;
 		}
@@ -385,7 +383,7 @@ static void tree_walk(xmlNodePtr root, gpointer data)
 	remove_all_lines(ad);
 	for(i=0;i<itemcount;i++) {
 		char *title = layer_find(item[i]->childs, "title", "No title");
-		char *url = layer_find(item[i]->childs, "url", "No url");
+		char *url = layer_find(item[i]->childs, "link", "No url");
 /*		char *time = layer_find(item[i]->childs, "time", "No time");
 		char *author = layer_find(item[i]->childs, "author", 
 				"No author");
@@ -399,20 +397,20 @@ static void tree_walk(xmlNodePtr root, gpointer data)
 	}
 }
 
-static void destroy_article_window(GtkWidget *widget, gpointer data)
+void destroy_article_window(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 	ad->article_window = NULL;
 }
 
-static void article_button_cb(GtkWidget *widget, gpointer data)
+void article_button_cb(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 	gchar *url = gtk_object_get_user_data(GTK_OBJECT(widget));
 	gnome_url_show(url);
 }
 			
-static char *layer_find(xmlNodePtr node, char *match, char *fail)
+char *layer_find(xmlNodePtr node, char *match, char *fail)
 {
 	while(node!=NULL) {
 		if(strcasecmp(node->name, match)==0) {
@@ -427,7 +425,7 @@ static char *layer_find(xmlNodePtr node, char *match, char *fail)
 	return fail;
 }
 
-static void click_headline_cb(AppData *ad, gpointer data)
+void click_headline_cb(AppData *ad, gpointer data)
 {
 	gchar *url = data;
 	if(url)

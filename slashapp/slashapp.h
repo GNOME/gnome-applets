@@ -152,22 +152,22 @@ void property_save(gchar *path, AppData *ad);
 void property_show(AppletWidget *applet, gpointer data);
 
 /* slashapp.c */
-static AppData *create_new_app(GtkWidget *applet);
-static gchar *check_for_dir(char *d);
-static void destroy_applet(GtkWidget *widget, gpointer data);
-static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
+AppData *create_new_app(GtkWidget *applet);
+gchar *check_for_dir(char *d);
+void destroy_applet(GtkWidget *widget, gpointer data);
+gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
 		                gpointer data);
-static void about_cb(AppletWidget *widget, gpointer data);
-static void show_article_window(AppletWidget *applet, gpointer data);
-static void populate_article_window(AppData *ad);
-static void refresh_cb(AppletWidget *widget, gpointer data);
-static int startup_delay_cb(gpointer data);
-static int get_current_headlines(gpointer data);
-static void parse_headlines(gpointer data);
-static int http_get_to_file(gchar *host, gint port, gchar *proxy, 
+void about_cb(AppletWidget *widget, gpointer data);
+void show_article_window(AppletWidget *applet, gpointer data);
+void populate_article_window(AppData *ad);
+void refresh_cb(AppletWidget *widget, gpointer data);
+int startup_delay_cb(gpointer data);
+int get_current_headlines(gpointer data);
+void parse_headlines(gpointer data);
+int http_get_to_file(gchar *host, gint port, gchar *proxy, 
 		            gchar *resource, FILE *file, gpointer data);
-static void tree_walk(xmlNodePtr root, gpointer data);
-static void destroy_article_window(GtkWidget *widget, gpointer data);
-static void article_button_cb(GtkWidget *widget, gpointer data);
-static char *layer_find(xmlNodePtr node, char *match, char *fail);
-static void click_headline_cb(AppData *ad, gpointer data);
+void tree_walk(xmlNodePtr root, gpointer data);
+void destroy_article_window(GtkWidget *widget, gpointer data);
+void article_button_cb(GtkWidget *widget, gpointer data);
+char *layer_find(xmlNodePtr node, char *match, char *fail);
+void click_headline_cb(AppData *ad, gpointer data);
