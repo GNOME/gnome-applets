@@ -364,7 +364,7 @@ gkb_prop_list_create_button (const gchar * name, GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *button;
 
-  button = gtk_button_new_with_mnemonic (name);
+  button = gtk_button_new_from_stock (name);
   g_signal_connect (button, "clicked",
 		      G_CALLBACK (gkb_prop_list_button_clicked_cb), pbi);
   gtk_container_add (GTK_CONTAINER (pbi->buttons_vbox), button);
@@ -395,11 +395,11 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo * pbi)
   gtk_button_box_set_child_ipadding (GTK_BUTTON_BOX (vbox), 2, 0);
 
   pbi->buttons_vbox = vbox;
-  pbi->add_button = gkb_prop_list_create_button (_("_Add"), pbi);
-  pbi->edit_button = gkb_prop_list_create_button (_("_Edit"), pbi);
-  pbi->up_button = gkb_prop_list_create_button (_("_Up"), pbi);
-  pbi->down_button = gkb_prop_list_create_button (_("Dow_n"), pbi);
-  pbi->delete_button = gkb_prop_list_create_button (_("_Delete"), pbi);
+  pbi->add_button = gkb_prop_list_create_button ("gtk-add", pbi);
+  pbi->edit_button = gkb_prop_list_create_button ("gtk-properties", pbi);
+  pbi->up_button = gkb_prop_list_create_button ("gtk-go-up", pbi);
+  pbi->down_button = gkb_prop_list_create_button ("gtk-go-down", pbi);
+  pbi->delete_button = gkb_prop_list_create_button ("gtk-delete", pbi);
 
   gkb_prop_list_update_sensitivity (pbi);
 
