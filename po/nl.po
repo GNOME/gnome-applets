@@ -3,12 +3,14 @@
 # Dirk-Jan C. Binnema <djcb@dds.nl>, 1998, 1999.
 # Dennis Smit <synap@area101.penguin.nl>, 2000, 2001.
 # Huib Kleinhout <huib@stack.nl>, 2002.
+# Ronald Hummelink <ronald@hummelink.xs4all.nl>, 2002.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets cvs\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
-"PO-Revision-Date: 2002-04-08 15:34-0000\n"
-"Last-Translator: Huib Kleinhout <huib@stack.nl>\n"
+"POT-Creation-Date: 2002-04-14 19:46-0400\n"
+"PO-Revision-Date: 2002-04-17 16:34+0100\n"
+"Last-Translator: Ronald Hummelink <ronald@hummelink.xs4all.nl>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-15\n"
@@ -27,26 +29,31 @@ msgstr "Het applet zal niet goed werken (als het al iets doet.)\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316
+#: battstat/battstat_applet.c:834
 msgid "High"
 msgstr "Vol"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318
+#: battstat/battstat_applet.c:836
 msgid "Low"
 msgstr "Leeg"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320
+#: battstat/battstat_applet.c:838
 msgid "Critical"
 msgstr "Kritiek"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322
+#: battstat/battstat_applet.c:840
 msgid "Charging"
 msgstr "Laden"
 
 #: battstat/battstat_applet.c:403
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Batterij is bijna leeg (%d%%) en netvoeding is niet aanwezig"
 
@@ -57,35 +64,37 @@ msgstr "Batterij is nu volledig opgeladen!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
-msgid ""
-"System is running on battery power\n"
+#: battstat/battstat_applet.c:445
+#: battstat/battstat_applet.c:997
+#, c-format
+msgid "System is running on battery power\n"
 "Battery: %d%% (%s)"
-msgstr ""
-"Het systeem werkt op batterijvoeding\n"
+msgstr "Het systeem werkt op batterijvoeding\n"
 "Battery: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
-msgid ""
-"System is running on AC power\n"
+#: battstat/battstat_applet.c:449
+#: battstat/battstat_applet.c:1005
+#, c-format
+msgid "System is running on AC power\n"
 "Battery: %d%% (%s)"
-msgstr ""
-"Het systeem werkt op netvoeding\n"
+msgstr "Het systeem werkt op netvoeding\n"
 "Batterij: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
+#: battstat/battstat_applet.c:455
+#: battstat/battstat_applet.c:929
 #: battstat/battstat_applet.c:1018
 msgid "System is running on battery power"
 msgstr "Het systeem werkt op batterijvoeding"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
+#: battstat/battstat_applet.c:458
+#: battstat/battstat_applet.c:935
 #: battstat/battstat_applet.c:1024
 msgid "System is running on AC power"
 msgstr "Het systeem werkt op netvoeding"
@@ -96,13 +105,17 @@ msgstr "N/B"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:596
+#: battstat/battstat_applet.c:909
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Het systeem werkt op batterijvoeding. Batterij: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:603
+#: battstat/battstat_applet.c:916
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Het systeem werkt op netvoeding. Batterij: %d%% (%s)"
 
@@ -125,6 +138,7 @@ msgstr "Het systeem werkt op netvoeding. Batterij: Niet aanwezig"
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
 #: battstat/battstat_applet.c:629
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batterij: %d%% (%s)"
 
@@ -160,33 +174,23 @@ msgstr ""
 
 #: battstat/battstat_applet.c:767
 #, c-format
-msgid ""
-"An error occured while launching the Suspend command: %s\n"
+msgid "An error occured while launching the Suspend command: %s\n"
 "Please try to correct this error"
-msgstr ""
-"Er is een fout opgetreden tijdens het uitvoeren van het Suspend(ruststand) "
-"commando: %s\n"
+msgstr "Er is een fout opgetreden tijdens het uitvoeren van het Suspend(ruststand) commando: %s\n"
 "Probeer a.u.b. deze fout te corrigeren"
 
 #. Probably because the shell_ret is != 0
 #: battstat/battstat_applet.c:770
 #, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
+msgid "An error occured while launching the Suspend command, the command returned \"%d\"\n"
 "Please try to correct this error"
-msgstr ""
-"Er is een fout opgetreden tijdens het uitvoeren van het Suspend(ruststand) "
-"commando, het commando gaaf de volgende melding \"%d\"\n"
+msgstr "Er is een fout opgetreden tijdens het uitvoeren van het Suspend(ruststand) commando, het commando gaaf de volgende melding \"%d\"\n"
 "Probeer a.u.b. deze fout te corrigeren"
 
 #: battstat/battstat_applet.c:778
-msgid ""
-"Suspend command wasn't setup correctly in the preferences.\n"
+msgid "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
-msgstr ""
-"Het suspend(ruststand) commando is niet juist geconfigureerd in de "
-"voorkeuren.\n"
+msgstr "Het suspend(ruststand) commando is niet juist geconfigureerd in de voorkeuren.\n"
 "Verander dit in de voorkeuren en probeer opnieuw."
 
 #. The long name of the applet in the About dialog.
@@ -201,6 +205,92 @@ msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 #: battstat/battstat_applet.c:810
 msgid "This utility show the status of your laptop battery."
 msgstr "Dit programma laat de status van de laptop batterij zien."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "Uiterlijk"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "Applet layout"
+
+#: battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Batterij Lading Meter Voorkeuren"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "Batterij kleur niveaus (%s)"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "Genereer een pieptoon wanneer een van de twee hierboven waar is"
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Algemeen"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Verbergen"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "Naar beneden"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "Naar boven"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is _low"
+msgstr "Geef aan wanneer de batterij bijna _leeg is"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "Geef aan wanneer de batterij volledig is opgeladen!"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Oranje:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Voorbeeld:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "Staafdiagram richting"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "Rood:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "Toon"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "Ruststand"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "Opdracht Ruststand:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "Waarschuwingen"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Geel:"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
@@ -224,30 +314,40 @@ msgstr "Controleer overgebleven laptop energie"
 msgid "Utility"
 msgstr "Gereedschap"
 
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: battstat/GNOME_BattstatApplet.xml.h:1
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1
+#: geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1
+#: modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 msgid "About..."
 msgstr "Info..."
 
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: battstat/GNOME_BattstatApplet.xml.h:2
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4
+#: geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2
+#: modemlights/GNOME_ModemlightsApplet.xml.h:2
 msgid "Help"
 msgstr "Hulp"
 
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: battstat/GNOME_BattstatApplet.xml.h:3
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:3
 #: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:5
+#: geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
@@ -259,43 +359,35 @@ msgstr "Voorkeuren..."
 msgid "Suspend Computer..."
 msgstr "Zet computer in ruststand..."
 
-#: battstat/sounds/battstat_applet.soundlist.in.h:1
-#, fuzzy
-msgid "Battery Status Utility"
-msgstr "Batterij status programma"
-
-#: battstat/sounds/battstat_applet.soundlist.in.h:2
-#, fuzzy
-msgid "Battery fully re-charged"
-msgstr "Batterij is nu volledig opgeladen!"
-
-#: battstat/sounds/battstat_applet.soundlist.in.h:3
-msgid "Battery power low"
-msgstr ""
-
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
+#: cdplayer/cdplayer.c:146
+#: cdplayer/cdplayer.c:819
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
+#: cdplayer/cdplayer.c:148
+#: cdplayer/cdplayer.c:821
 msgid "Play / Pause"
 msgstr "Afspelen/Pauze"
 
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
+#: cdplayer/cdplayer.c:150
+#: cdplayer/cdplayer.c:823
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
 msgstr "Uitwerpen"
 
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
+#: cdplayer/cdplayer.c:152
+#: cdplayer/cdplayer.c:825
 msgid "Previous Track"
 msgstr "Vorige nummer"
 
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
+#: cdplayer/cdplayer.c:154
+#: cdplayer/cdplayer.c:827
 msgid "Next Track"
 msgstr "Volgende nummer"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/cdplayer.c:159
+#: cdplayer/cdplayer.c:829
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
 msgid "CD Player"
 msgstr "CD Speler"
 
@@ -332,42 +424,43 @@ msgid "CD Player Applet"
 msgstr "CD Speler Applet"
 
 #: cdplayer/cdplayer.c:421
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
+msgid "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr ""
-"(C) 1997 The Free Software Foundation\n"
+msgstr "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
+#: cdplayer/cdplayer.c:423
+#: cdplayer/cdplayer.c:830
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Het CD Speler Applet is een eenvoudige CD speler voor het Paneel"
 
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
+#: cdplayer/cdplayer.c:698
+#: cdplayer/cdplayer.c:707
 msgid "Elapsed time"
 msgstr "Verstreken tijd"
 
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
+#: cdplayer/cdplayer.c:701
+#: cdplayer/cdplayer.c:709
 msgid "Track number"
 msgstr "Track nummer"
 
-#: cdplayer/cdplayer.c:819
+#: cdplayer/cdplayer.c:820
 msgid "Click this button to Stop playing the CD"
 msgstr "Klik op deze knop om het afspelen van de CD te stoppen"
 
-#: cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:822
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klik op deze knop om de CD af te spelen of te pauzeren"
 
-#: cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:824
 msgid "Click this button to eject the CD"
 msgstr "Klik op deze knop om de CD uit te werpen"
 
-#: cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:826
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klik op deze knop om het vorige nummer op de CD af te spelen"
 
-#: cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:828
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klik op deze knop om het volgende nummer op de CD af te spelen"
 
@@ -401,18 +494,15 @@ msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
 #: charpick/charpick.c:366
-msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
-msgstr ""
-"Gnome Paneel applet voor het kiezen van vreemde lettertekens die niet op het "
-"toetsenbord zitten. Uitgegeven onder de GNU General Public Licence."
+msgid "Gnome Panel applet for selecting strange characters that are not on my keyboard. Released under GNU General Public Licence."
+msgstr "Gnome Paneel applet voor het kiezen van vreemde lettertekens die niet op het toetsenbord zitten. Uitgegeven onder de GNU General Public Licence."
 
 #: charpick/charpick.c:444
 msgid "Insert special characters"
 msgstr "Speciale karakters invoegen"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
+#: charpick/charpick.c:445
+#: charpick/GNOME_CharpickerApplet.server.in.h:1
 msgid "Character Palette"
 msgstr "Karakter Palet"
 
@@ -437,10 +527,7 @@ msgid "Set the default character list here"
 msgstr "Stel hier de standaard karakterlijst hier in"
 
 #: charpick/properties.c:91
-#, fuzzy
-msgid ""
-"These characters will appear when the panel is started. To return to this "
-"list, hit <d> while the applet has focus."
+msgid "These characters will appear when the panel is started. To return to this list, hit <space> while the applet has focus."
 msgstr ""
 "Deze tekens verschijnen als het panel wordt gestart. \n"
 "Om deze lijst terug te krijgen, \n"
@@ -479,11 +566,9 @@ msgid "\" reported:\n"
 msgstr "\" doorgegeven:\n"
 
 #: drivemount/drivemount.c:735
-msgid ""
-"Drivemount command failed.\n"
+msgid "Drivemount command failed.\n"
 "\""
-msgstr ""
-"Aanmeld opdracht mislukt.\n"
+msgstr "Aanmeld opdracht mislukt.\n"
 "\""
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
@@ -619,12 +704,8 @@ msgid "T_heme Name"
 msgstr "T_hemanaam"
 
 #: gkb-new/gkb.c:114
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
-msgstr ""
-"Druk de sneltoets in om te wisselen tussen layouts. De sneltoets kan "
-"ingesteld worden in de Eigenschappen dialoog"
+msgid "Press the hotkey to switch between layouts. The hotkey can be set through Properties dialog"
+msgstr "Druk de sneltoets in om te wisselen tussen layouts. De sneltoets kan ingesteld worden in de Eigenschappen dialoog"
 
 #: gkb-new/gkb.c:404
 #, c-format
@@ -651,7 +732,8 @@ msgstr "taal_%d"
 msgid "command_%d"
 msgstr "opdracht_%d"
 
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:527
+#: gkb-new/gkb.c:534
 msgid "GKB"
 msgstr "GKB"
 
@@ -666,21 +748,15 @@ msgstr "(C) 1998-2000 Free Software Foundation"
 #: gkb-new/gkb.c:579
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
-"Mail me your flag and keyboard layout if you want support for your locale "
-"(my email address is shooby@gnome.hu).\n"
+"Mail me your flag and keyboard layout if you want support for your locale (my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Dit applet schakelt tussen toetsenbord-mappen. het gebruikt setxkbmap, of, "
-"xmodmap.\n"
-"Mail me uw vlag en toetsenbord layout als u wilt dat uw taal ondersteund "
-"wordt (mijn email adres is shooby@gnome.hu [engels]).\n"
+"Dit applet schakelt tussen toetsenbord-mappen. het gebruikt setxkbmap, of, xmodmap.\n"
+"Mail me uw vlag en toetsenbord layout als u wilt dat uw taal ondersteund wordt (mijn email adres is shooby@gnome.hu [engels]).\n"
 "De groeten, en bedankt voor alle vis.\n"
-"Met dank aan Balazs Nagy (Kevin) <julian7@kva.hu> voor zijn hulp en Emese "
-"Kovacs <emese@eik.bme.hu> voor haar solidariteit, hulp van gasten als "
-"KevinV.\n"
+"Met dank aan Balazs Nagy (Kevin) <julian7@kva.hu> voor zijn hulp en Emese Kovacs <emese@eik.bme.hu> voor haar solidariteit, hulp van gasten als KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
 #: gkb-new/gkb.c:596
@@ -703,7 +779,8 @@ msgstr "Toetsenbord Layout Wisselaar"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Maakt toetsenbordlayout-wisselaar applets aan"
 
-#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
+#: gkb-new/keygrab.c:69
+#: gkb-new/keygrab.c:144
 msgid "Disabled"
 msgstr "Uitgeschakeld"
 
@@ -719,39 +796,47 @@ msgstr "Toetsenmappen (selecteer en klik op toevoegen)"
 msgid "Select Keyboard"
 msgstr "Selecteer Toetsenbord"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
+#: gkb-new/prop.c:121
+#: gkb-new/prop.c:189
 msgid "Normal"
 msgstr "Normaal"
 
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
+#: gkb-new/prop.c:122
+#: gkb-new/prop.c:193
 msgid "Big"
 msgstr "Groot"
 
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:140
+#: gkb-new/util.c:41
+#: gkb-new/util.c:48
+#: gkb-new/util.c:74
 msgid "Flag"
 msgstr "Vlag"
 
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:141
+#: gkb-new/util.c:38
+#: gkb-new/util.c:71
 msgid "Label"
 msgstr "Label"
 
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:142
+#: gkb-new/util.c:44
+#: gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Vlag en Label"
 
-#: gkb-new/prop.c:278 modemlights/properties.c:374
+#: gkb-new/prop.c:278
+#: modemlights/properties.c:374
 msgid "Display"
 msgstr "Afbeelden"
 
 #. Labels and option Menus
 #: gkb-new/prop.c:298
-#, fuzzy
-msgid "_Appearance: "
+msgid "_Appearance "
 msgstr "_Uiterlijk"
 
 #: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
+msgid "Applet _size "
 msgstr "Applet _grootte "
 
 #: gkb-new/prop.c:331
@@ -775,7 +860,8 @@ msgstr "_Toetsen mappen"
 msgid "_Options"
 msgstr "_Opties"
 
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:389
+#: gtik/gtik.c:1163
 msgid "_Add"
 msgstr "_Toevoegen"
 
@@ -1088,54 +1174,42 @@ msgid "Edit Keyboard"
 msgstr "Wijzig Toetsenbord"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
-#, fuzzy
-msgid "_Name:"
+#: gkb-new/prop-map.c:601
+msgid "_Name"
 msgstr "_Naam"
 
 #: gkb-new/prop-map.c:605
-#, fuzzy
-msgid "_Label:"
+msgid "_Label"
 msgstr "La_bel"
 
 #: gkb-new/prop-map.c:609
-#, fuzzy
-msgid "Lan_guage:"
+msgid "Lan_guage"
 msgstr "_Taal"
 
 #: gkb-new/prop-map.c:615
-#, fuzzy
-msgid "Count_ry:"
+msgid "Count_ry"
 msgstr "_Land"
 
 #: gkb-new/prop-map.c:622
-msgid ""
-"Flag\n"
+msgid "Flag\n"
 "Pixmap"
-msgstr ""
-"Vlag\n"
+msgstr "Vlag\n"
 "Plaatje"
 
 #: gkb-new/prop-map.c:626
-#, fuzzy
-msgid "Arc_hitecture:"
+msgid "Arc_hitecture"
 msgstr "Arc_hitectuur"
 
 #: gkb-new/prop-map.c:632
-#, fuzzy
-msgid "_Type:"
+msgid "_Type"
 msgstr "T_ype"
 
 #: gkb-new/prop-map.c:638
-#, fuzzy
-msgid "Code_page:"
+msgid "Code_page"
 msgstr "Code_pagina"
 
 #: gkb-new/prop-map.c:645
-#, fuzzy
-msgid "Co_mmand:"
+msgid "Co_mmand"
 msgstr "Co_mmando"
 
 #: gkb-new/prop-map.c:652
@@ -1175,7 +1249,8 @@ msgstr "Aandelen Ticker"
 msgid "Refresh"
 msgstr "Ververs"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:217
+#: gtik/gtik.c:799
 msgid "No data available or properties not set"
 msgstr "Eigenschappen of informatie niet beschikbaar"
 
@@ -1184,17 +1259,8 @@ msgid "The GNOME Stock Ticker"
 msgstr "Gnome Aandelen Ticker"
 
 #: gtik/gtik.c:670
-msgid ""
-"This program connects to a popular site and downloads current stock quotes.  "
-"The GNOME Stock Ticker is a free Internet-based application.  It comes with "
-"ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
-"investment decisions; it is for informational purposes only."
-msgstr ""
-"Dit programma haal informatie van populaire internetpagina's en download de "
-"huidige aandeel noteringen. De Gnome Aandelen Ticker is een vrij op internet "
-"gebaseerd programma.  Het komt met GEEN GERANTY.  Gebruik de Gnome Aandelen "
-"Ticker niet om investerings keuzes te maken; het is alleen voor informatieve "
-"doel einden."
+msgid "This program connects to a popular site and downloads current stock quotes.  The GNOME Stock Ticker is a free Internet-based application.  It comes with ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making investment decisions; it is for informational purposes only."
+msgstr "Dit programma haal informatie van populaire internetpagina's en download de huidige aandeel noteringen. De Gnome Aandelen Ticker is een vrij op internet gebaseerd programma.  Het komt met GEEN GERANTY.  Gebruik de Gnome Aandelen Ticker niet om investerings keuzes te maken; het is alleen voor informatieve doel einden."
 
 #: gtik/gtik.c:1152
 msgid "_New Symbol:"
@@ -1204,7 +1270,8 @@ msgstr "_Nieuw Symbool:"
 msgid "_Remove Selected"
 msgstr "_Verwijder Geselecteerde"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
+#: gtik/gtik.c:1222
+#: gweather/gweather-pref.c:764
 msgid "_Use HTTP proxy"
 msgstr "Ge_bruik HTTP proxy"
 
@@ -1212,7 +1279,8 @@ msgstr "Ge_bruik HTTP proxy"
 msgid "_Location :"
 msgstr "_Lokatie :"
 
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
+#: gtik/gtik.c:1248
+#: gweather/gweather-pref.c:791
 msgid "P_ort :"
 msgstr "P_oort :"
 
@@ -1220,11 +1288,13 @@ msgstr "P_oort :"
 msgid "Pro_xy requires a uername and password"
 msgstr "Pro_xy vereist een gebruikersnaam en wachtwoord"
 
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
+#: gtik/gtik.c:1271
+#: gweather/gweather-pref.c:814
 msgid "Us_ername:"
 msgstr "Gebruik_ersnaam:"
 
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
+#: gtik/gtik.c:1286
+#: gweather/gweather-pref.c:830
 msgid "Pass_word:"
 msgstr "Wacht_woord:"
 
@@ -1285,7 +1355,8 @@ msgstr "_Gedrag"
 msgid "_Appearance"
 msgstr "_Uiterlijk"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
+#: gtik/gtik.c:1526
+#: gweather/gweather-pref.c:843
 msgid "_Proxy"
 msgstr "_Proxy"
 
@@ -1321,7 +1392,8 @@ msgstr "Bekijk het huidige weer, en vooruitzichten"
 msgid "Weather Report"
 msgstr "Weerbericht"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
+#: gweather/GNOME_GWeatherApplet.xml.h:2
+#: gweather/gweather-dialog.c:75
 msgid "Forecast"
 msgstr "Voorspelling"
 
@@ -1329,7 +1401,8 @@ msgstr "Voorspelling"
 msgid "Update"
 msgstr "Verversen"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
+#: gweather/gweather-about.c:42
+#: gweather/gweather-applet.c:196
 msgid "GNOME Weather"
 msgstr "GNOME Weerbericht"
 
@@ -1424,20 +1497,16 @@ msgid "_Radar map"
 msgstr "_Radarkaart"
 
 #: gweather/gweather-dialog.c:413
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
+msgid "Detailed forecast not available for this location.\n"
+"Please try the state forecast; note that IWIN forecasts are available only for US cities."
 msgstr ""
 "Precieze voorspelling niet beschikbaar voor deze locatie.\n"
 "Probeer de voorspelling voor de staat; de IWIN voorspellingen zijn\n"
 "alleen beschikbaar voor Amerikaanse steden."
 
 #: gweather/gweather-dialog.c:415
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
+msgid "State forecast not available for this location.\n"
+"Please try the detailed forecast; note that IWIN forecasts are available only for US cities."
 msgstr ""
 "Nationale voorspelling niet beschikbaar voor deze locatie.\n"
 "Probeer de gedetailleerde voorspelling; de IWIN voorspellingen zijn\n"
@@ -1513,7 +1582,6 @@ msgid "Locat_ion :"
 msgstr "Lokat_ie :"
 
 #: gweather/gweather-pref.c:803
-#, fuzzy
 msgid "Pro_xy requires a username and password"
 msgstr "Pro_xy vereist een gebruikersnaam en wachtwoord"
 
@@ -1558,10 +1626,35 @@ msgstr "Minu(u)t(en)"
 msgid "Miscellaneous"
 msgstr "Diversen"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
+#: gweather/gweather-pref.c:975
+#: mini-commander/src/preferences.c:953
 #: modemlights/properties.c:409
 msgid "_General"
 msgstr "_Algemeen"
+
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "knopen"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr "k/u"
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr "inHg"
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "mijlen"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "kilometers"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -1631,7 +1724,9 @@ msgstr "Noordwest"
 msgid "North - Northwest"
 msgstr "Noord - Noordwest"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+#: gweather/weather.c:143
+#: gweather/weather.c:160
+#: gweather/weather.c:224
 msgid "Invalid"
 msgstr "Niet Geldig"
 
@@ -1691,7 +1786,8 @@ msgstr "Af en toe motregen"
 msgid "Partial drizzle"
 msgstr "Af en toe motregen"
 
-#: gweather/weather.c:186 gweather/weather.c:187
+#: gweather/weather.c:186
+#: gweather/weather.c:187
 msgid "Thunderstorm"
 msgstr "Onweer"
 
@@ -1793,7 +1889,8 @@ msgstr "Af en toe sneeuw"
 msgid "Partial snowfall"
 msgstr "Gedeeltelijke sneeuwbuien"
 
-#: gweather/weather.c:188 gweather/weather.c:189
+#: gweather/weather.c:188
+#: gweather/weather.c:189
 msgid "Snowstorm"
 msgstr "Sneeuwstorm"
 
@@ -1973,7 +2070,8 @@ msgstr "Hagel"
 msgid "Hail in the vicinity"
 msgstr "Hagel in de nabijheid"
 
-#: gweather/weather.c:192 gweather/weather.c:193
+#: gweather/weather.c:192
+#: gweather/weather.c:193
 msgid "Light hail"
 msgstr "Lichte hagel"
 
@@ -2713,11 +2811,15 @@ msgstr "Winderige stofwolken"
 msgid "Drifting dust whirls"
 msgstr "Drijvende stofwolken"
 
-#: gweather/weather.c:824 gweather/weather.c:862 gweather/weather.c:1431
+#: gweather/weather.c:824
+#: gweather/weather.c:862
+#: gweather/weather.c:1431
 msgid "Failed to get METAR data.\n"
 msgstr "METAR gegevens ophalen mislukt.\n"
 
-#: gweather/weather.c:854 gweather/weather.c:882 gweather/weather.c:1077
+#: gweather/weather.c:854
+#: gweather/weather.c:882
+#: gweather/weather.c:1077
 msgid "WeatherInfo missing location"
 msgstr "Vermiste WeerInfo locatie"
 
@@ -2768,23 +2870,13 @@ msgstr "Mini-Commander Applet"
 
 #: mini-commander/src/about.c:42
 msgid ""
-"This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, changeable macros and an optional built-in "
-"clock.\n"
+"This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
+"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 msgstr ""
-"Dit GNOME applet voegt een opdrachtregel toe aan het paneel. Het bevat "
-"opdrachtaanvulling, opdrachthistorie, macro's en optioneel een ingebouwde "
-"klok.\n"
+"Dit GNOME applet voegt een opdrachtregel toe aan het paneel. Het bevat opdrachtaanvulling, opdrachthistorie, macro's en optioneel een ingebouwde klok.\n"
 "\n"
-"Dit programma is vrije software, u kan het verspreiden en/of wijzigen onder "
-"de voorwaarden van de GNU General Public License zoals deze gepubliceerd is "
-"door de Free Software Foundation; versie 2 of de Licentie, of (zoals u wilt) "
-"iedere latere versie."
+"Dit programma is vrije software, u kan het verspreiden en/of wijzigen onder de voorwaarden van de GNU General Public License zoals deze gepubliceerd is door de Free Software Foundation; versie 2 of de Licentie, of (zoals u wilt) iedere latere versie."
 
 #: mini-commander/src/cmd_completion.c:69
 #: mini-commander/src/cmd_completion.c:115
@@ -2808,42 +2900,45 @@ msgstr "voltooid"
 msgid "not found"
 msgstr "niet gevonden"
 
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
+#: mini-commander/src/cmd_completion.c:167
+#: mini-commander/src/exec.c:117
 msgid "no /bin/sh"
 msgstr "geen '/bin/sh'"
 
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
+#: mini-commander/src/command_line.c:93
+#: mini-commander/src/command_line.c:113
 msgid "end of history list"
 msgstr "einde van geschiedenis"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:123
+#: mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "aan het starten..."
 
-#: mini-commander/src/command_line.c:153
+#: mini-commander/src/command_line.c:152
 msgid "autocompleted"
 msgstr "automatisch aangevuld"
 
-#: mini-commander/src/command_line.c:313
+#: mini-commander/src/command_line.c:312
 msgid "history list empty"
 msgstr "Historie is leeg"
 
 #. title
-#: mini-commander/src/command_line.c:331
+#: mini-commander/src/command_line.c:330
 msgid "Command history"
 msgstr "Opdrachthistorie"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:461
 msgid "Start program"
 msgstr "Voer programma uit"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:500
 msgid "Command line"
 msgstr "Commando regel"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:501
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Type hier een commando en Gnome zal dit voor u uitvoeren"
 
@@ -2982,7 +3077,8 @@ msgid "Command line height:"
 msgstr "Hoogte opdrachtregel:"
 
 #. Color
-#: mini-commander/src/preferences.c:866 multiload/properties.c:363
+#: mini-commander/src/preferences.c:866
+#: multiload/properties.c:363
 msgid "Colors"
 msgstr "Kleuren"
 
@@ -3016,7 +3112,9 @@ msgstr "_Macro's"
 msgid "Adjust the sound volume"
 msgstr "Verander het geluisdniveau"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.h:3
+#: mixer/mixer.c:130
+#: mixer/mixer.c:750
 msgid "Volume Control"
 msgstr "Volumeregeling"
 
@@ -3033,11 +3131,9 @@ msgid "Volume Control (muted)"
 msgstr "Volumeregeling (gedempt)"
 
 #: mixer/mixer.c:183
-msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
+msgid "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
-msgstr ""
-"waarschuwing: deze versie van gmix is gecompileerd met een ander versie\n"
+msgstr "waarschuwing: deze versie van gmix is gecompileerd met een ander versie\n"
 " van 'soundcard.h'\n"
 
 #: mixer/mixer.c:194
@@ -3068,13 +3164,11 @@ msgstr "(C) 2001 Richard Hult"
 
 #: mixer/mixer.c:752
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"Met de volumeregeling kunt u het volume niveau voor uw desktop instellen."
+msgstr "Met de volumeregeling kunt u het volume niveau voor uw desktop instellen."
 
 #: mixer/mixer.c:924
 msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"Met de volumeregeling kunt u het volume niveau voor uw desktop instellen."
+msgstr "Met de volumeregeling kunt u het volume niveau voor uw desktop instellen."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
 msgid "Internet"
@@ -3096,15 +3190,12 @@ msgid ""
 msgstr ""
 "Uitgebracht onder de GNU general public license.\n"
 "Een modemstatus indicator en opbeller.\n"
-"De lichtjes boven of aan de zijkant betekenen data Ontvangen en data "
-"Versturen."
+"De lichtjes boven of aan de zijkant betekenen data Ontvangen en data Versturen."
 
 #: modemlights/modemlights.c:531
-msgid ""
-"You are currently connected.\n"
+msgid "You are currently connected.\n"
 "Do you want to disconnect?"
-msgstr ""
-"U heeft momenteel verbinding.\n"
+msgstr "U heeft momenteel verbinding.\n"
 "Wilt u de verbinding verbreken?"
 
 #: modemlights/modemlights.c:546
@@ -3271,13 +3362,11 @@ msgstr "Systeembelasting Meter Applet"
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
-"A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
+"A system load monitor capable of displaying graphs for CPU, ram, and swap file use, plus network traffic."
 msgstr ""
 "Uitgebracht onder de GNU General Public License.\n"
 "\n"
-"Een applet om de systeembelasting te bekijken. Dit programma kan grafieken "
-"maken van het netwerkverkeer, CPU-, RAM- en wisselbestandgebruik."
+"Een applet om de systeembelasting te bekijken. Dit programma kan grafieken maken van het netwerkverkeer, CPU-, RAM- en wisselbestandgebruik."
 
 #: multiload/main.c:177
 msgid "Processor"
@@ -3300,11 +3389,10 @@ msgid "Resource"
 msgstr "Bron"
 
 #: multiload/main.c:197
-msgid ""
-"%s:\n"
+#, c-format
+msgid "%s:\n"
 "%d%% in use"
-msgstr ""
-"%s:\n"
+msgstr "%s:\n"
 "%d%% in gebruik"
 
 #: multiload/memload.c:39
@@ -3469,7 +3557,8 @@ msgstr "Acties Menu"
 msgid "Add items to the Menu Bar"
 msgstr "Voeg items toe aan de Menu Balk"
 
-#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:235
+#: panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr "Snelkoppelingen"
@@ -3478,7 +3567,8 @@ msgstr "Snelkoppelingen"
 msgid "My Documents"
 msgstr "Mijn Documenten"
 
-#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:247
+#: panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr "Documenten"
@@ -3496,12 +3586,8 @@ msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
 #: panel-menu/panel-menu.c:686
-msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
-msgstr ""
-"Met het Paneel Menu Applet kunt u zelf ingestelde menubalken op uw panelen "
-"maken."
+msgid "The Panel Menu Applet allows you to display customized menubars on your panels."
+msgstr "Met het Paneel Menu Applet kunt u zelf ingestelde menubalken op uw panelen maken."
 
 #: panel-menu/panel-menu-directory.c:482
 msgid "Create directory item..."
@@ -3515,18 +3601,25 @@ msgstr "Thuis"
 msgid "Edit directory item..."
 msgstr "Bewerk map item..."
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
-#, fuzzy
-msgid "_Path:"
+#: panel-menu/panel-menu-directory.c:624
+#: panel-menu/panel-menu-documents.c:398
+#: panel-menu/panel-menu-documents.c:434
+#: panel-menu/panel-menu-links.c:404
+#: panel-menu/panel-menu-links.c:440
+msgid "Name:"
+msgstr "Naam:"
+
+#: panel-menu/panel-menu-directory.c:634
+#: panel-menu/panel-menu-path.c:728
+msgid "Path:"
 msgstr "Pad:"
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:640
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:654
-#, fuzzy
-msgid "_Depth level:"
+#: panel-menu/panel-menu-directory.c:649
+msgid "Depth level:"
 msgstr "Diepte niveau:"
 
 #: panel-menu/panel-menu-documents.c:397
@@ -3537,11 +3630,13 @@ msgstr "Documenten item aanmaken..."
 msgid "Rename documents item..."
 msgstr "Hernoem documenten item..."
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
+#: panel-menu/panel-menu-links.c:323
+#: panel-menu/panel-menu-path.c:554
 msgid "KDE Menus"
 msgstr "KDE-menu's"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
+#: panel-menu/panel-menu-links.c:326
+#: panel-menu/panel-menu-path.c:237
 #: panel-menu/panel-menu-path.c:557
 msgid "Programs"
 msgstr "Programma's"
@@ -3610,86 +3705,3 @@ msgstr "Vensters"
 msgid "Workspaces"
 msgstr "Werkruimtes"
 
-#~ msgid "100%"
-#~ msgstr "100%"
-
-#~ msgid "Apperance"
-#~ msgstr "Uiterlijk"
-
-#~ msgid "Applet layout"
-#~ msgstr "Applet layout"
-
-#~ msgid "Battery Charge Monitor Preferences"
-#~ msgstr "Batterij Lading Meter Voorkeuren"
-
-#~ msgid "Battery color levels (%)"
-#~ msgstr "Batterij kleur niveaus (%s)"
-
-#~ msgid "Beep when either of the above is true"
-#~ msgstr "Genereer een pieptoon wanneer een van de twee hierboven waar is"
-
-#~ msgid "General"
-#~ msgstr "Algemeen"
-
-#~ msgid "Hide"
-#~ msgstr "Verbergen"
-
-#~ msgid "Move towards bottom"
-#~ msgstr "Naar beneden"
-
-#~ msgid "Move towards top"
-#~ msgstr "Naar boven"
-
-#~ msgid "Notify me when battery charge is _low"
-#~ msgstr "Geef aan wanneer de batterij bijna _leeg is"
-
-#~ msgid "Notify me when battery is fully re-charged"
-#~ msgstr "Geef aan wanneer de batterij volledig is opgeladen!"
-
-#~ msgid "Orange:"
-#~ msgstr "Oranje:"
-
-#~ msgid "Preview:"
-#~ msgstr "Voorbeeld:"
-
-#~ msgid "Progress bar direction"
-#~ msgstr "Staafdiagram richting"
-
-#~ msgid "Red:"
-#~ msgstr "Rood:"
-
-#~ msgid "Show"
-#~ msgstr "Toon"
-
-#~ msgid "Suspend"
-#~ msgstr "Ruststand"
-
-#~ msgid "Suspend command:"
-#~ msgstr "Opdracht Ruststand:"
-
-#~ msgid "Warnings"
-#~ msgstr "Waarschuwingen"
-
-#~ msgid "Yellow:"
-#~ msgstr "Geel:"
-
-#~ msgid "knots"
-#~ msgstr "knopen"
-
-#~ msgid "kph"
-#~ msgstr "k/u"
-
-#~ msgid "inHg"
-#~ msgstr "inHg"
-
-#~ msgid "hPa"
-#~ msgstr "hPa"
-
-#~ msgid "miles"
-#~ msgstr "mijlen"
-
-#~ msgid "kilometers"
-#~ msgstr "kilometers"
-
-#~ msgid "Name:"
-#~ msgstr "Naam:"
