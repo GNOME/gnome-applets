@@ -1,4 +1,4 @@
-figs =
+figs = life-applet.png
 applet = life
 lang = C
 sgml_ents = $(applet).sgml
