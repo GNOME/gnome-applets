@@ -617,17 +617,22 @@ void
 stickynotes_save (void)
 {
 	WnckScreen *wnck_screen;
+	const gchar *title;
+	GtkTextBuffer *buffer;
+	GtkTextIter start, end;
+	gchar *body;
+	
 	gint i;
 	
-	wnck_screen = wnck_screen_get_default ();
-	wnck_screen_force_update (wnck_screen);
-
 	/* Create a new XML document */
 	xmlDocPtr doc = xmlNewDoc("1.0");
 	xmlNodePtr root = xmlNewDocNode(doc, NULL, "stickynotes", NULL);
 
 	xmlDocSetRootElement(doc, root);
 	xmlNewProp(root, "version", VERSION);
+
+	wnck_screen = wnck_screen_get_default ();
+	wnck_screen_force_update (wnck_screen);
 	
 	/* For all sticky notes */
 	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
@@ -661,13 +666,10 @@ stickynotes_save (void)
 		}
 		
 		/* Retreive the title of the note */
-		const gchar *title = gtk_label_get_text(GTK_LABEL(note->w_title));
+		title = gtk_label_get_text(GTK_LABEL(note->w_title));
 
 		/* Retrieve body contents of the note */
-		GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body));
-		
-		GtkTextIter start, end;
-		gchar *body;
+		buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body));
 		
 		gtk_text_buffer_get_bounds(buffer, &start, &end);
 		body = gtk_text_iter_get_text(&start, &end);
