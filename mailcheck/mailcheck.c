@@ -1824,15 +1824,20 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "activate",
                      G_CALLBACK(remote_password_changed), mc);  
 
-	hbox = gtk_hbox_new (FALSE, 6);
-	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-	gtk_widget_show (hbox);  
+	control_hbox = gtk_hbox_new (FALSE, 12);
+	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
+	gtk_widget_show (control_hbox);
+
+	l = gtk_label_new ("");
+	gtk_size_group_add_widget (size_group, l);
+	gtk_widget_show (l);
+	gtk_box_pack_start (GTK_BOX (control_hbox), l, FALSE, FALSE, 0);
 
 	mc->remote_password_checkbox = l = gtk_check_button_new_with_mnemonic (
 					_("_Save password to disk"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(l), mc->save_remote_password);
 	gtk_widget_show (l);
-	gtk_box_pack_start (GTK_BOX (hbox), l, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (control_hbox), l, TRUE, TRUE, 0);
 	
 	g_signal_connect (G_OBJECT (l), "toggled", 
 			  G_CALLBACK(remote_password_save_toggled), mc);
@@ -1967,6 +1972,14 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_widget_show(mc->play_sound_check);
 	gtk_box_pack_start(GTK_BOX (control_vbox), mc->play_sound_check, TRUE, TRUE, 0);
 
+	/*l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));*/
+	l = gtk_check_button_new_with_mnemonic (_("Sto_p animation when clicked"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->reset_on_clicked);
+	g_signal_connect(G_OBJECT(l), "toggled",
+			   G_CALLBACK(reset_on_clicked_toggled), mc);
+	gtk_widget_show(l);
+	gtk_box_pack_start(GTK_BOX (control_vbox), l, TRUE, TRUE, 0);
+
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
@@ -1980,14 +1993,6 @@ mailcheck_properties_page (MailCheck *mc)
 	set_atk_relation (animation_option_menu, l, ATK_RELATION_LABELLED_BY);
 	make_check_widgets_sensitive(mc);
 	
-	/*l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));*/
-	l = gtk_check_button_new_with_mnemonic (_("Sto_p animation when clicked"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->reset_on_clicked);
-	g_signal_connect(G_OBJECT(l), "toggled",
-			   G_CALLBACK(reset_on_clicked_toggled), mc);
-	gtk_widget_show(l);
-	gtk_box_pack_start(GTK_BOX (control_vbox), l, TRUE, TRUE, 0);
-
 	category_vbox = gtk_vbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
