@@ -1,1 +1,1 @@
-SUBDIRS = cpuload netload
+SUBDIRS = cpuload memload netload
