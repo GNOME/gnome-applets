@@ -460,14 +460,15 @@ preferences_cb (BonoboUIComponent *component,
     gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
     gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+    gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
     box = GTK_DIALOG(dialog)->vbox;
     
     hbox = gtk_hbox_new (FALSE, 12);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox), 12);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
     gtk_box_pack_start(GTK_BOX(box), hbox, TRUE, TRUE, 0);
     gtk_widget_show(hbox);
 
-    label = gtk_label_new_with_mnemonic(_("Device _Path:"));
+    label = gtk_label_new_with_mnemonic(_("Device _path:"));
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     gtk_widget_show(label);
 
