@@ -99,6 +99,11 @@ The latest release is available from http://prdownloads.sourceforge.net/gswitchi
 AC_SUBST(LIBXKLAVIER_CFLAGS)
 AC_SUBST(LIBXKLAVIER_LIBS)
 
+AC_ARG_ENABLE(flags,
+[  --enable-flags       Enable flags usage in the keyboard indicators],
+, enable_flags=no)
+AM_CONDITIONAL(ENABLE_FLAGS, test x$enable_flags != xno)
+
 dnl ==============
 dnl gswitchit
 dnl ==============

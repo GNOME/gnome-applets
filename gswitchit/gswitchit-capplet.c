@@ -182,7 +182,6 @@ void GSwitchItAppletPropsCreate( GSwitchItApplet * sia )
   showFlags = glade_xml_get_widget( data, "showFlags" );
   gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( showFlags ),
                                 sia->appletConfig.showFlags );
-
   g_signal_connect( G_OBJECT( showFlags ),
                     "toggled", G_CALLBACK( CappletShowFlagsChanged ), sia );
 
@@ -288,4 +287,8 @@ void GSwitchItAppletPropsCreate( GSwitchItApplet * sia )
   CappletShowFlagsChanged( showFlags, sia );
 
   gtk_widget_show_all( capplet );
+#ifndef ENABLE_FLAGS
+  gtk_widget_hide( showFlags );
+#endif
+
 }

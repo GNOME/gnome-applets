@@ -18,6 +18,10 @@ COMMON_CFLAGS = -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
            $(LIBXKLAVIER_CFLAGS) \
            $(LIBGLADE_CFLAGS)
 
+if ENABLE_FLAGS
+  COMMON_CFLAGS += -DENABLE_FLAGS=1
+endif
+
 COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
               $(LIBGLADE_LIBS) \
               ../libgswitchit/libgswitchit.a 
