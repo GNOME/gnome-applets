@@ -21,7 +21,6 @@ SHELL = /bin/sh
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
-top_builddir = ..
 VPATH = @srcdir@
 
 prefix = @prefix@
@@ -41,10 +40,7 @@ GENCAT = @GENCAT@
 GMSGFMT = PATH=../src:$$PATH @GMSGFMT@
 MSGFMT = @MSGFMT@
 XGETTEXT = PATH=../src:$$PATH @XGETTEXT@
-INTLTOOL_UPDATE = @INTLTOOL_UPDATE@
-INTLTOOL_EXTRACT = @INTLTOOL_EXTRACT@
-MSGMERGE = INTLTOOL_EXTRACT=$(INTLTOOL_EXTRACT) $(INTLTOOL_UPDATE) --gettext-package $(GETTEXT_PACKAGE) --dist
-GENPOT   = INTLTOOL_EXTRACT=$(INTLTOOL_EXTRACT) $(INTLTOOL_UPDATE) --gettext-package $(GETTEXT_PACKAGE) --pot
+MSGMERGE = PATH=../src:$$PATH msgmerge
 
 DEFS = @DEFS@
 CFLAGS = @CFLAGS@
@@ -54,11 +50,11 @@ INCLUDES = -I.. -I$(top_srcdir)/intl
 
 COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS) $(XCFLAGS)
 
-SOURCES = cat-id-tbl.c
+SOURCES = 
 POFILES = @POFILES@
 GMOFILES = @GMOFILES@
 DISTFILES = ChangeLog Makefile.in.in POTFILES.in $(GETTEXT_PACKAGE).pot \
-stamp-cat-id $(POFILES) $(GMOFILES) $(SOURCES)
+$(POFILES) $(GMOFILES) $(SOURCES)
 
 POTFILES = \
 
@@ -90,26 +86,16 @@ INSTOBJEXT = @INSTOBJEXT@
 
 all: all-@USE_NLS@
 
-all-yes: cat-id-tbl.c $(CATALOGS)
+all-yes: $(CATALOGS)
 all-no:
 
 $(srcdir)/$(GETTEXT_PACKAGE).pot: $(POTFILES)
-	$(GENPOT)
-
-$(srcdir)/cat-id-tbl.c: stamp-cat-id; @:
-$(srcdir)/stamp-cat-id: $(GETTEXT_PACKAGE).pot
-	rm -f cat-id-tbl.tmp
-	sed -f ./po2tbl.sed $(srcdir)/$(GETTEXT_PACKAGE).pot \
-		| sed -e "s/@GETTEXT_PACKAGE NAME@/$(GETTEXT_PACKAGE)/" > cat-id-tbl.tmp
-	if cmp -s cat-id-tbl.tmp $(srcdir)/cat-id-tbl.c; then \
-	  rm cat-id-tbl.tmp; \
-	else \
-	  echo cat-id-tbl.c changed; \
-	  rm -f $(srcdir)/cat-id-tbl.c; \
-	  mv cat-id-tbl.tmp $(srcdir)/cat-id-tbl.c; \
-	fi
-	cd $(srcdir) && rm -f stamp-cat-id && echo timestamp > stamp-cat-id
-
+	$(XGETTEXT) --default-domain=$(GETTEXT_PACKAGE) --directory=$(top_srcdir) \
+	  --add-comments --keyword=_ --keyword=N_ \
+	  --files-from=$(srcdir)/POTFILES.in \
+	&& test ! -f $(GETTEXT_PACKAGE).po \
+	   || ( rm -f $(srcdir)/$(GETTEXT_PACKAGE).pot \
+		&& mv $(GETTEXT_PACKAGE).po $(srcdir)/$(GETTEXT_PACKAGE).pot )
 
 install: install-exec install-data
 install-exec:
@@ -165,8 +151,6 @@ install-data-yes: all
 	  fi; \
 	  $(INSTALL_DATA) $(srcdir)/Makefile.in.in \
 			  $(DESTDIR)$(gettextsrcdir)/Makefile.in.in; \
-	  $(INSTALL_DATA) $(srcdir)/po2tbl.sed.in \
-			  $(DESTDIR)$(gettextsrcdir)/po2tbl.sed.in; \
 	else \
 	  : ; \
 	fi
@@ -188,8 +172,6 @@ uninstall:
 
 check: all
 
-cat-id-tbl.o: ../intl/libgettext.h
-
 dvi info tags TAGS ID:
 
 mostlyclean:
@@ -199,7 +181,7 @@ mostlyclean:
 clean: mostlyclean
 
 distclean: clean
-	rm -f Makefile Makefile.in POTFILES *.mo *.msg *.cat *.cat.m po2tbl.sed
+	rm -f Makefile Makefile.in POTFILES *.mo *.msg *.cat *.cat.m
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
@@ -222,9 +204,9 @@ update-po: Makefile
 	for cat in $$catalogs; do \
 	  cat=`basename $$cat`; \
 	  lang=`echo $$cat | sed 's/\$(CATOBJEXT)$$//'`; \
-	  cp $$lang.po $$lang.old.po; \
+	  mv $$lang.po $$lang.old.po; \
 	  echo "$$lang:"; \
-	  if $(MSGMERGE) $$lang; then \
+	  if $(MSGMERGE) $$lang.old.po $(GETTEXT_PACKAGE).pot -o $$lang.po; then \
 	    rm -f $$lang.old.po; \
 	  else \
 	    echo "msgmerge for $$cat failed!"; \
@@ -233,19 +215,9 @@ update-po: Makefile
 	  fi; \
 	done
 
-.po: Makefile
-	$(MAKE)  $(PACKAGE).pot;
-	PATH=`pwd`/../src:$$PATH; \
-	echo; printf "$*: "; \
-	if $(MSGMERGE) $*; then \
-	  rm -f $*.old.po; \
-	  else \
-	    echo "msgmerge for * failed!"; \
-	    mv $*.old.po $*.po; \
-	fi; \
-	msgfmt --statistics $*.po; echo;
-
-
+# POTFILES is created from POTFILES.in by stripping comments, empty lines
+# and Intltool tags (enclosed in square brackets), and appending a full
+# relative path to them
 POTFILES: POTFILES.in
 	( if test 'x$(srcdir)' != 'x.'; then \
 	    posrcprefix='$(top_srcdir)/'; \
@@ -253,8 +225,10 @@ POTFILES: POTFILES.in
 	    posrcprefix="../"; \
 	  fi; \
 	  rm -f $@-t $@ \
-	    && (sed -e '/^#/d' -e '/^[ 	]*$$/d' \
-		    -e "s@.*@	$$posrcprefix& \\\\@" < $(srcdir)/$@.in \
+	    && (sed -e '/^#/d' 						\
+		    -e "s/^\[.*\] +//" 					\
+		    -e '/^[ 	]*$$/d' 				\
+		    -e "s@.*@	$$posrcprefix& \\\\@" < $(srcdir)/$@.in	\
 		| sed -e '$$s/\\$$//') > $@-t \
 	    && chmod a-w $@-t \
 	    && mv $@-t $@ )
