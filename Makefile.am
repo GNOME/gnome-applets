@@ -93,7 +93,6 @@ EXTRA_DIST = \
 	COPYING-DOCS		\
 	gnome-applets.spec.in	\
 	gnome-applets.spec	\
-	applet-docs.make	\
 	intltool-update.in	\
 	intltool-extract.in	\
 	intltool-merge.in	\
