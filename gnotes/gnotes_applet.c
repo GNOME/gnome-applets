@@ -124,7 +124,8 @@ static void about(AppletWidget *applet, gpointer data)
     GtkWidget *about_box;
 
     about_box = gnome_about_new(_("GNotes!"), VERSION,
-                                _("Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com>, Copyright (C) 1999 dres <dres@debian.org>"),
+                                _("Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com>, "
+                                  "Copyright (C) 1999 dres <dres@debian.org>"),
                                 authors,
                                 _("Create sticky notes on your screen."), NULL);
 
@@ -268,6 +269,7 @@ int main(int argc, char **argv)
     umask(0077);
     mkdir(get_gnotes_dir(), 0700);
     chmod(get_gnotes_dir(), 0700);
+    chdir(get_gnotes_dir());
     
     bindtextdomain(PACKAGE, GNOMELOCALEDIR);
     textdomain(PACKAGE);
