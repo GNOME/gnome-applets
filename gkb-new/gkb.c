@@ -712,13 +712,10 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
   XEvent *xevent;
 
-  printf(".");fflush(stdout);
-
   xevent = (XEvent *) gdk_xevent;
 
   if (xevent->type == KeyRelease)
     {
-      printf("k");fflush(stdout);
       return global_key_filter (gdk_xevent, event);
     }
   return GDK_FILTER_CONTINUE;
