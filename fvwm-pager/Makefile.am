@@ -1,0 +1,27 @@
+Utilitiesdir = $(datadir)/apps/Utilities
+
+INCLUDES =                                              \
+	-I. -I$(srcdir)                                 \
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	-I$(srcdir)/../../../panel				\
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-I$(includedir) $(GNOME_INCLUDEDIR)             \
+	@FVWM2INCLUDE@
+
+
+bin_PROGRAMS = fvwm-pager
+
+fvwm_pager_SOURCES = fvwm-pager.c \
+                     gtkpager.c \
+                     gtkpager.h
+
+fvwm_pager_LDADD = \
+	$(srcdir)/../../panel/libpanel_applet.la \
+	@FVWM2LIBS@                    \
+	$(GNOME_LIBDIR) $(ORB_LIBS)    \
+	$(GNOMEUI_LIBS)                \
+	$(INTLLIBS)
+
+EXTRA_DIST = TODO README NEWS
+
+

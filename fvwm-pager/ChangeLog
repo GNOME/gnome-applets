@@ -1,0 +1,25 @@
+1998-07-16  Michael Lausch  <mla@loki.gams.co.at>
+
+	* Released: 0.4
+	
+	* GnomePager: Now draws Icons in the pager window.
+	
+
+1998-07-09  Michael Lausch  <mla@loki.gams.co.at>
+
+	* Makefile.am (GnomePager_SOURCES): Added gtkpager.h to source
+	list. Otherwise it isn't distributed.
+
+	* gnomepager.c (main): Corrected name of WIN_WORKSPACE Atom to
+	_WIN_WORKSPACE 
+	(switch_to_desktop): Send Client message on switching desktops.
+	(process_message): Set _XA_WIN_WORKSPACE property to a initial
+	value, so that XSendEvent messages are handled.
+
+	* GnomePager: Now cooperates with ice-wmpager.
+
+1998-07-08  Michael Lausch  <mla@loki.gams.co.at>
+
+	* gnomepager.c (main): Added WM_WORKSPACE_NAMES Proerty
+	
+

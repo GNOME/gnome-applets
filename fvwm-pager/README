@@ -1,0 +1,33 @@
+This is a rewrite of the FvwmPager Module, so that it can be used by
+the panel as an applet. It uses Gtk and Gdk functions instead of the
+raw Xlib functions of the original FvwmPager Module.
+
+To install it you have to have:
+1) the fvwm2 sources on your system.
+2) compile fvwm2. I know this is clumsy, but as long as i don't have
+   ported the fvwm2 module lib and headers files, this is the only way 
+   to access them.
+3) go to the root directory of the gnome-core package and call
+   autogen.sh with the
+   `--with-fvwm2=<directory where the fvwm2 sources are>. In my setup
+   this is:
+   ./autgen.sh --prefix=/usr/local/gnome-cvs --with-fvwm2=/disk/compiles/fvwm-2.0.46 --with-included-gettext --with-window-manager=fvwm2
+4) after installation of the gnome-core package you can either
+   a) make a symlink from the <prefix>/bin/fvwm-pager to your fvwm2
+      module directory
+   b) add the <prefix>/bin directory to the module path of fvwm2 in
+      your fvwm2 setup file (usually ~/.fvwm2rc).
+5) I made an entry in one of the fvwm2 menus i'm using to start the
+   pager. I added the line
+   `+          "FvwmGnome"         Module fvwm-pager 0 4'
+   to give me 4 virtual desktops to my .fvwm2rc file.
+6) After starting the panel, you may add the pager to the panel by
+   activating this menu entry.
+
+They look and feel is not pretty now, and you can't change the colors
+or anything else, but i'm working on it. Perhaps i'll also switch to
+gnome-canvas instead of the drawing area.
+
+
+
+
