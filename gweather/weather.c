@@ -244,15 +244,17 @@ static WeatherInfoFunc request_cb = NULL;
 static WeatherInfo *request_info = NULL;
 static ghttp_request *metar_request = NULL,
                      *iwin_request = NULL,
-                     *wx_request = NULL;
+                     *wx_request = NULL,
+                     *met_request = NULL;
+                     
 static gboolean requests_pending = FALSE;
 
-static inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
+static __inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
 {
     if (requests_pending)
         return FALSE;
 
-    g_assert(!metar_request && !iwin_request && !wx_request);
+    g_assert(!metar_request && !iwin_request && !wx_request && !met_request);
     g_assert(!request_info && !request_cb);
 
     requests_pending = TRUE;
@@ -274,7 +276,7 @@ static inline void requests_done_check (void)
 {
     g_return_if_fail(requests_pending);
 
-    if (!metar_request && !iwin_request && !wx_request) {
+    if (!metar_request && !iwin_request && !wx_request && !met_request) {
         requests_pending = FALSE;
         /* Next two lines temporarily here */
         if (weather_units == UNITS_METRIC)
@@ -794,6 +796,8 @@ static void metar_get_finish (ghttp_request *req, ghttp_status status, gpointer 
     loc = info->location;
     if (loc == NULL) {
 	    g_warning (_("WeatherInfo missing location"));
+	    request_done(&metar_request);
+	    requests_done_check();
 	    return;
     }
 
@@ -828,7 +832,6 @@ static void metar_get_finish (ghttp_request *req, ghttp_status status, gpointer 
 
         info->valid = success;
     }
-
     request_done(&metar_request);
     requests_done_check();
 }
@@ -989,6 +992,8 @@ static void iwin_get_finish (ghttp_request *req, ghttp_status status, gpointer d
     loc = info->location;
     if (loc == NULL) {
 	    g_warning (_("WeatherInfo missing location"));
+	    request_done(&iwin_request);
+	    requests_done_check();
 	    return;
     }
 
@@ -1014,6 +1019,218 @@ static void iwin_get_finish (ghttp_request *req, ghttp_status status, gpointer d
     requests_done_check();
 }
 
+static char *met_reprocess(char *x, int len)
+{
+	char *p = x;
+	char *o;
+	int spacing = 0;
+	static gchar *buf;
+	static gint buflen = 0;
+	gchar *lastspace = NULL;
+	int count = 0;
+	int lastcount = 0;
+	
+	if(buflen < len)
+	{
+		if(buf)
+			g_free(buf);
+		buf=g_malloc(len);
+		buflen=len;
+	}
+	memcpy(buf, x, len);
+		
+	o=buf;
+
+	while(*p)
+	{
+		if(isspace(*p))
+		{
+			spacing=1;
+			p++;
+			continue;
+		}
+		if(spacing)
+		{
+			if(count>75)
+			{
+				if(lastspace)
+					*lastspace = '\n';
+				count -= lastcount;
+			}
+			lastspace = o;
+			lastcount = count;
+			*o++=' ';
+			spacing=0;
+		}
+
+		if(*p=='&')
+		{
+			if(strncasecmp(p, "&amp;", 5)==0)
+			{
+				*o++='&';
+				count++;
+				p+=5;
+				continue;
+			}
+			if(strncasecmp(p, "&lt;", 4)==0)
+			{
+				*o++='<';
+				count++;
+				p+=4;
+				continue;
+			}
+			if(strncasecmp(p, "&gt;", 4)==0)
+			{
+				*o++='>';
+				count++;
+				p+=4;
+				continue;
+			}
+		}
+		if(*p=='<')
+		{
+			if(strncasecmp(p, "<BR>", 4)==0)
+			{
+				*o++='\n';
+				count=0;
+				lastspace = NULL;
+				p+=4;
+				continue;
+			}
+			break;
+		}
+		*o++=*p++;
+		count++;
+	}
+	*o=0;
+	return buf;
+}
+
+
+/*
+ * Parse the metoffice forecast info.
+ * For gnome 2.0 we want to just embed an HTML bonobo component and 
+ * be done with this ;) 
+ */
+
+static gchar *met_parse (gchar *meto, WeatherLocation *loc)
+{ 
+    gchar *p;
+    gchar *rp;
+    gchar *r = g_strdup("Met Office Forecast\n");
+    gchar *t;    
+    gint i=0;
+
+    static char *key[]=
+    {
+    	"<!-- <!TODAY_START> -->",
+    	"<!-- <!TONIGHT_START> -->",
+    	"<!-- <!TOMORROW_START> -->",
+    	"<!-- <!OUTLOOK_START> -->",
+    	NULL
+    };
+    static char *keyend[]=
+    {
+    	"<!-- <!TODAY_END> -->",
+    	"<!-- <!TONIGHT_END> -->",
+    	"<!-- <!TOMORROW_END> -->",
+    	"<!-- <!OUTLOOK_END> -->",
+    	NULL
+    };
+    static char *name[4]=
+    {
+    	"Today:",
+    	"Tonight:",
+    	"Tomorrow:",
+    	"Outlook:"
+    };
+    
+    
+    while(key[i]!=NULL)
+    {
+    	p=strstr(meto, key[i]);
+    	if(p==NULL)
+    	{
+    		printf("No %s\n", key[i]);
+    		i++;
+    		continue;
+    	}
+    	p+=strlen(key[i]);
+
+    	rp = strstr(p, keyend[i]);
+	if(rp==NULL)
+	{
+    		printf("No %s\n", keyend[i]);
+		i++;
+		continue;
+	}
+	
+	/* p to rp is the text block we want but in HTML malformat */    	
+
+    	t = g_strconcat(r, name[i], "\n", met_reprocess(p, rp-p), "\n", NULL);
+    	
+    	g_free(r);
+    	r = t;
+    	i++;
+    }
+    return r;
+}
+
+static void met_get_finish (ghttp_request *req, ghttp_status status, gpointer data)
+{
+    WeatherInfo *info = (WeatherInfo *)data;
+    WeatherLocation *loc;
+    gchar *body;
+    gint body_len;
+    gchar *forecast;
+
+    g_return_if_fail(req == met_request);
+
+    g_return_if_fail(info != NULL);
+    info->forecast = NULL;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
+
+    if (status == ghttp_error) {
+        g_warning(_("Failed to get Met Office forecast data.\n"));
+    } else {
+        body = ghttp_get_body(met_request);
+        body_len = ghttp_get_body_len(met_request);
+        if(body==NULL || body_len == 0)
+        {
+	    request_done(&iwin_request);
+	    requests_done_check();
+	    return;
+	}
+        
+        body[body_len-1] = 0;  /* quick hack */
+
+        forecast = met_parse(body, loc);
+        info->forecast = forecast;
+    }
+
+    request_done(&met_request);
+    requests_done_check();
+}
+
+static void metoffice_get_start (WeatherInfo *info)
+{
+    gchar *url;
+    WeatherLocation *loc;
+    loc = info->location;
+
+    met_request = ghttp_request_new();
+    
+    url = g_strdup_printf("http://www.metoffice.gov.uk/datafiles/%s.html", loc->zone+1);
+    ghttp_set_uri(met_request, url);
+    g_free(url);
+    ghttp_set_proxy(met_request, weather_proxy_url);
+    ghttp_set_proxy_authinfo(met_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(met_request, http_hdr_Connection, "close");
+
+    http_process_bg(met_request, met_get_finish, info);
+}	
+
 /* Get forecast into newly alloc'ed string */
 static void iwin_get_start (WeatherInfo *info)
 {
@@ -1028,6 +1245,12 @@ static void iwin_get_start (WeatherInfo *info)
 
     if (loc->zone[0] == '-')
         return;
+        
+    if (loc->zone[0] == ':')	/* Met Office Region Names */
+    {
+    	metoffice_get_start (info);
+    	return;
+    }
 
     strncpy(state, loc->zone, 2);
     state[2] = 0;
