@@ -32,6 +32,7 @@ gchar               show_tasks = 1;
 gchar               show_pager = 1;
 gchar               show_icons = 1;
 gchar		    show_arrow = 1;
+gchar               fixed_tasklist = 0;
 
 gint                o_pager_rows = 1;
 gchar               o_pager_size = 0;
@@ -44,6 +45,7 @@ gchar               o_show_tasks = 1;
 gchar               o_show_pager = 1;
 gchar               o_show_icons = 1;
 gchar		    o_show_arrow = 1;
+gchar               o_fixed_tasklist = 0;
 
 gint                area_w = 1;
 gint                area_h = 1;
@@ -140,6 +142,20 @@ cb_check_show_icons(GtkWidget *widget, gpointer data)
     o_show_icons = 1;
   else
     o_show_icons = 0;
+}
+
+void
+cb_check_fixed_tasklist(GtkWidget *widget, gpointer data)
+{
+  GtkWidget *prop;
+  
+  prop = gtk_object_get_data(GTK_OBJECT(widget), "prop");
+  if (prop)
+    gnome_property_box_changed(GNOME_PROPERTY_BOX(prop));
+  if (GTK_TOGGLE_BUTTON(widget)->active)
+    o_fixed_tasklist = 1;
+  else
+    o_fixed_tasklist = 0;
 }
 
 void
@@ -282,7 +298,8 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
   show_tasks = o_show_tasks;
   show_pager = o_show_pager;
   show_icons = o_show_icons;
-  show_arrow = o_show_arrow;;
+  show_arrow = o_show_arrow;
+  fixed_tasklist = o_fixed_tasklist;
   
   switch (applet_orient) 
     {
@@ -413,6 +430,15 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_widget_show(check);
       gtk_table_attach(GTK_TABLE(table), check,
 		       2, 4, 5, 6, GTK_FILL|GTK_EXPAND,0,0,0);
+
+      check = gtk_check_button_new_with_label(_("Tasklist always maximum size"));
+      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), fixed_tasklist);
+      gtk_signal_connect(GTK_OBJECT(check), "clicked",
+			 GTK_SIGNAL_FUNC(cb_check_fixed_tasklist), NULL);
+      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+      gtk_widget_show(check);
+      gtk_table_attach(GTK_TABLE(table), check,
+		       2, 4, 6, 7, GTK_FILL|GTK_EXPAND,0,0,0);
 
       adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)max_task_width, 20, 
 						(gfloat)gdk_screen_width(), 
@@ -1463,6 +1489,7 @@ cb_applet_save_session(GtkWidget *w,
   gnome_config_set_int("stuff/show_pager", show_pager);
   gnome_config_set_int("stuff/show_icons", show_icons);
   gnome_config_set_int("stuff/show_arrow", show_arrow);
+  gnome_config_set_int("stuff/fixed_tasklist", fixed_tasklist);
   gnome_config_pop_prefix();
   gnome_config_sync();
   gnome_config_drop_all();
@@ -1591,6 +1618,7 @@ main(int argc, char *argv[])
   show_pager = gnome_config_get_int("stuff/show_pager=1");
   show_icons = gnome_config_get_int("stuff/show_icons=1");
   show_arrow = gnome_config_get_int("stuff/show_arrow=1");
+  fixed_tasklist = gnome_config_get_int("stuff/fixed_tasklist=1");
 
   gdk_error_warnings = 0;  
   get_desktop_names();
@@ -2120,7 +2148,16 @@ init_applet_gui_horiz(void)
 
   table = gtk_table_new(1, 1, TRUE);
   gtk_widget_show(table);
-  gtk_container_add(GTK_CONTAINER(frame), table);
+  if(fixed_tasklist)
+    {
+      GtkWidget *box = gtk_hbox_new(0,0);
+      gtk_widget_show(box);
+      gtk_widget_set_usize(box,max_task_width,-1);
+      gtk_container_add(GTK_CONTAINER(frame), box);
+      gtk_box_pack_start(GTK_BOX(box),table,FALSE,FALSE,0);
+    }
+  else
+    gtk_container_add(GTK_CONTAINER(frame), table);
   task_table = table;
   
   create_popbox();
@@ -2201,10 +2238,20 @@ init_applet_gui_vert(void)
   gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
   if (show_tasks)
     gtk_widget_show(frame);
+  
 
   table = gtk_table_new(1, 1, TRUE);
   gtk_widget_show(table);
-  gtk_container_add(GTK_CONTAINER(frame), table);
+  if(fixed_tasklist)
+    {
+      GtkWidget *box = gtk_vbox_new(0,0);
+      gtk_widget_show(box);
+      gtk_widget_set_usize(box,-1,max_task_width);
+      gtk_container_add(GTK_CONTAINER(frame), box);
+      gtk_box_pack_start(GTK_BOX(box),table,FALSE,FALSE,0);
+    }
+  else
+    gtk_container_add(GTK_CONTAINER(frame), table);
   task_table = table;
   
   create_popbox();

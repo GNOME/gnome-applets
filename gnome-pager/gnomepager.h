@@ -42,6 +42,7 @@ int main(int argc, char **argv);
 void cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data);
 void cb_applet_about(AppletWidget * widget, gpointer data);
 void cb_check_show_icons(GtkWidget *widget, gpointer data);
+void cb_check_fixed_tasklist(GtkWidget *widget, gpointer data);
 void cb_check_show_arrow(GtkWidget *widget, gpointer data);
 void cb_check_pager_size(GtkWidget *widget, gpointer data);
 void cb_check_all_tasks(GtkWidget *widget, gpointer data);
