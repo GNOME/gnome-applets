@@ -15,6 +15,11 @@ charpick_data curr_data;
  */
 
 /* The comment for each char list has the html entity names of the chars */
+
+/* This is the default list used when starting charpick the first time */
+/* aacute, agrave, eacute, iacute, oacute, frac12, copy*/
+static const gchar *def_list = "áàéíñó½©";
+
 /* aacute, agrave, acirc, atilde, auml. aring, aelig, ordf */
 static const gchar *a_list = "áàâãäåæª";
 static const gchar *cap_a_list = "ÁÀÂÃÄÅÆª";
@@ -479,7 +484,7 @@ main (int argc, char *argv[])
 
   charpick_persistant_properties default_properties = 
   {
-    NULL, /* a_list */
+    NULL, /* will use def_list */
     TRUE,
     8,
     2,
@@ -502,7 +507,7 @@ main (int argc, char *argv[])
   };
   */
 
-  default_properties.default_charlist = a_list;
+  default_properties.default_charlist = def_list;
   curr_data.charlist = default_properties.default_charlist;
   curr_data.selected_char = ' ';
   curr_data.last_index = NO_LAST_INDEX;

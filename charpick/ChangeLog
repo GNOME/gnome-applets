@@ -1,3 +1,15 @@
+2000-04-13  Alexandre Owen Muniz  <munizao@xprt.net>
+
+	* properties.c: Some code was not properly moved to property_show() 
+	from size_frame_create() leading to incorrect behavior when opening 
+	properties when it was already open.
+
+2000-04-13  Alexandre Owen Muniz  <munizao@xprt.net>
+
+	* charpick.c, properties.c: changed the default default list, and
+	added a label to the default list property tab to explain it. This 
+	is done in light of bug 8260.
+
 2000-04-11  Dan Mueth <d-mueth@uchicago.edu>
 
 	* docs/C/charpick-applet.sgml: Fixed FSF's address.

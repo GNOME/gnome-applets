@@ -26,7 +26,7 @@ void property_load (char *path, gpointer data)
   curr_data.properties->cols = gnome_config_get_int("charpick/cols=4");
   curr_data.properties->size = gnome_config_get_int("charpick/buttonsize=22");
   curr_data.properties->default_charlist = 
-    gnome_config_get_string("charpick/deflist=бавгдежЄ");
+    gnome_config_get_string("charpick/deflist=байнсуЅ©");
 
   /* sanity check the properties read from config */
   if (curr_data.properties->rows < 1)
@@ -133,9 +133,7 @@ static void check_button_enable_cb (GtkWidget *cb, GtkWidget *todisable)
 
 static void size_frame_create()
 {
-  /* the property box consists of three hboxen in a vbox, each with a 
-   *label, an adjustment entry, and a spin-button.
-   */
+
   GtkWidget *frame;
   GtkWidget *min_cells_hbox;
   GtkWidget *size_hbox;
@@ -155,17 +153,6 @@ static void size_frame_create()
   GtkWidget *rows_sb;
   GtkWidget *cols_sb;
   GtkWidget *follow_cb;
-
-  /*if the properties dialog is already open, just raise it.*/
-  if(propwindow)
-  {
-    gdk_window_raise(propwindow->window);
-    return;
-  }
-  propwindow = gnome_property_box_new();
-  gtk_window_set_title
-    (GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
-       _("Character Picker Settings"));
 
   /* make some widgets */
   frame = gtk_vbox_new(FALSE, 5);
@@ -278,6 +265,7 @@ static void default_chars_frame_create()
   GtkWidget *default_list_hbox;
   GtkWidget *default_list_label;
   GtkWidget *default_list_entry;
+  GtkWidget *explain_label;
   
   /* init widgets */
   frame = gtk_vbox_new(FALSE, 5);
@@ -286,8 +274,13 @@ static void default_chars_frame_create()
   default_list_entry = gtk_entry_new_with_max_length (MAX_BUTTONS);
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
 		     curr_data.properties->default_charlist);
+  explain_label = gtk_label_new(_("These characters will appear when the panel"
+                                  " is started. To return to this list, hit"
+                                  " <space> while the applet has focus."));
+  gtk_label_set_line_wrap(GTK_LABEL(explain_label), TRUE);
   /* pack the main vbox */
   gtk_box_pack_start (GTK_BOX(frame), default_list_hbox, FALSE, FALSE, 5);
+  gtk_box_pack_start (GTK_BOX(frame), explain_label, FALSE, FALSE, 5);
   /* default_list hbox */
   gtk_box_pack_start(GTK_BOX(default_list_hbox), default_list_label, FALSE, FALSE, 5);
   gtk_box_pack_start( GTK_BOX(default_list_hbox), default_list_entry, 
@@ -316,6 +309,7 @@ void property_show(AppletWidget *applet, gpointer data)
 {
   static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 
+
   temp_properties.default_charlist = 
     g_strdup(curr_data.properties->default_charlist);
   temp_properties.follow_panel_size = curr_data.properties->follow_panel_size;
@@ -323,6 +317,17 @@ void property_show(AppletWidget *applet, gpointer data)
   temp_properties.size = curr_data.properties->size;
   temp_properties.rows = curr_data.properties->rows;
   temp_properties.cols = curr_data.properties->cols;
+
+  /*if the properties dialog is already open, just raise it.*/
+  if(propwindow)
+  {
+    gdk_window_raise(propwindow->window);
+    return;
+  }
+  propwindow = gnome_property_box_new();
+  gtk_window_set_title
+    (GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
+       _("Character Picker Settings"));
 
   size_frame_create();
   default_chars_frame_create();
