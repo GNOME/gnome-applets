@@ -191,9 +191,11 @@ int loadTheme(char *themesdir)
 
 void parseArgs(asclock *my, int argc, char **argv)
 {
+#ifdef ASCLOCK_GTK
   int i;
   char themesdir[MAX_PATH_LEN];
   char *ProgName = argv[0];
+#endif
 
   my->itblinks=TRUE;
   itdocks=FALSE;

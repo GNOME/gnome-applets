@@ -18,7 +18,8 @@ asclock_applet_SOURCES = \
 	gnome_config.c	\
 	rot.c		\
 	symbols.c	\
-	parser.c
+	parser.c	\
+	version.h
 
 
 asclock_applet_LDADD = ../../panel/libpanel_applet.la \
