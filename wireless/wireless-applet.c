@@ -59,9 +59,9 @@ typedef struct {
 	GList *broken_images;
 	/* contains pointers into the images GList.
 	 * 0-100 are for link */
-	char *pixmaps[101];
+	GdkPixbuf*pixmaps[101];
 	/* pointer to the current used file name */
-	char *current_pixmap;
+	GdkPixbuf *current_pixbuf;
 	/* set to true when the applet is display animated connection loss */
 	gboolean flashing;
 
@@ -152,14 +152,14 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 	/* Update the image */
 	percent = CLAMP (percent, 0, 100);
 
-	if (applet->pixmaps[percent] != applet->current_pixmap)
+	if (applet->pixmaps[percent] != applet->current_pixbuf)
 	{
-		applet->current_pixmap = applet->pixmaps[percent];
+		applet->current_pixbuf = (GdkPixbuf *)applet->pixmaps[percent];
 		if ( !applet->flashing)
 		{
-			gtk_image_set_from_file
+			gtk_image_set_from_pixbuf
 				(GTK_IMAGE (applet->pixmap),
-				 applet->current_pixmap);
+				 applet->current_pixbuf);
 		}
 	}
 }
@@ -191,8 +191,8 @@ wireless_applet_animate_timeout (WirelessApplet *applet)
 	}
 
 	image = g_list_nth (animation_list, num);
-	gtk_image_set_from_file (GTK_IMAGE (applet->pixmap),
-			(char*)image->data);
+	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap),
+			(GdkPixbuf*)image->data);
 	num++;
 
 	return TRUE;
@@ -211,8 +211,8 @@ wireless_applet_stop_animation (WirelessApplet *applet)
 {
 	if (applet->animate_timer > 0)
 		gtk_timeout_remove (applet->animate_timer);
-	gtk_image_set_from_file (GTK_IMAGE (applet->pixmap),
-			applet->current_pixmap);	
+	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap),
+			applet->current_pixbuf);	
 }
 
 static void
@@ -266,6 +266,7 @@ wireless_applet_load_theme_image (WirelessApplet *applet,
 {
 	int j;
 	char *dot_pos = strrchr (filename, '.') + 1; /* only called if a previous strrchr worked */
+	char *file = g_strdup_printf ("%s/%s", themedir, filename);
 
 	/* Check the allowed extensions */
 	for (j = 0; pixmap_extensions[j]; j++) {
@@ -281,33 +282,39 @@ wireless_applet_load_theme_image (WirelessApplet *applet,
 					&pixmap_offset_begin, &pixmap_offset_end);
 				check_range = TRUE;
 			} else if (strncmp (filename, "no-link-", 8) == 0) {
-				applet->no_link_images = g_list_prepend (applet->no_link_images,
-									     g_strdup_printf ("%s/%s", 
-											      themedir, 
-											      filename));
+				GdkPixbuf *pixbuf = NULL;
+				pixbuf = gdk_pixbuf_new_from_file (file, NULL);
+				if (pixbuf)
+					applet->no_link_images = g_list_prepend (applet->no_link_images,
+												      pixbuf);
 			} else if (strncmp (filename, "broken-", 7) == 0) {
-				applet->broken_images = g_list_prepend (applet->broken_images,
-									    g_strdup_printf ("%s/%s", 
-											     themedir, 
-											     filename));
+				GdkPixbuf *pixbuf = NULL;
+				pixbuf = gdk_pixbuf_new_from_file (file, NULL);
+				if (pixbuf)
+					applet->broken_images = g_list_prepend (applet->broken_images,
+												      pixbuf);
 			}
 
 			if (check_range) {
-				dupe = g_strdup_printf ("%s/%s", themedir, filename);
-				applet->images = g_list_prepend (applet->images,
-								     dupe);
+				GdkPixbuf *pixbuf = NULL;
+				pixbuf = gdk_pixbuf_new_from_file (file, NULL);
+				if (pixbuf)
+					applet->images = g_list_prepend (applet->images,
+												      pixbuf);
 				for (i = pixmap_offset_begin; i <= pixmap_offset_end; i++) {
 					if (applet->pixmaps[i] != NULL) {
 						show_warning_dialog ("Probable image overlap in\n"
 								"%s.", filename);
 
 					} else {
-						applet->pixmaps[i] = dupe;
+						applet->pixmaps[i] = pixbuf;
 					}
 				}
 			}
 		}
 	}
+	
+	g_free (file);
 }
 
 static void
@@ -323,15 +330,15 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 	/* blank out */
 	if (applet->images) {
 		int j;
-		g_list_foreach (applet->no_link_images, (GFunc)g_free, NULL);
+		g_list_foreach (applet->no_link_images, (GFunc)g_object_unref, NULL);
 		g_list_free (applet->no_link_images);
 		applet->no_link_images = NULL;
 
-		g_list_foreach (applet->broken_images, (GFunc)g_free, NULL);
+		g_list_foreach (applet->broken_images, (GFunc)g_object_unref, NULL);
 		g_list_free (applet->broken_images);
 		applet->broken_images = NULL;
 
-		g_list_foreach (applet->images, (GFunc)g_free, NULL);
+		g_list_foreach (applet->images, (GFunc)g_object_unref, NULL);
 		g_list_free (applet->images);
 		applet->images = NULL;
 		for (j=0; j < 101; j++) {
@@ -351,7 +358,7 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 				}
 			}
 		}
-
+#if 0
 	if (applet->no_link_images && g_list_length (applet->no_link_images) > 1) {
 		applet->no_link_images = g_list_sort (applet->no_link_images,
 							  (GCompareFunc)g_ascii_strncasecmp);
@@ -361,7 +368,7 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 		applet->broken_images = g_list_sort (applet->broken_images,
 							 (GCompareFunc)g_ascii_strncasecmp);
 	}
-
+#endif
 	g_free (pixmapdir);
 }
 
@@ -762,13 +769,13 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 {
 	g_free (applet->device);
 
-	g_list_foreach (applet->no_link_images, (GFunc)g_free, NULL);
+	g_list_foreach (applet->no_link_images, (GFunc)g_object_unref, NULL);
 	g_list_free (applet->no_link_images);
 
-	g_list_foreach (applet->broken_images, (GFunc)g_free, NULL);
+	g_list_foreach (applet->broken_images, (GFunc)g_object_unref, NULL);
 	g_list_free (applet->broken_images);
 
-	g_list_foreach (applet->images, (GFunc)g_free, NULL);
+	g_list_foreach (applet->images, (GFunc)g_object_unref, NULL);
 	g_list_free (applet->images);
 
 	g_list_foreach (applet->devices, (GFunc)g_free, NULL);
@@ -803,7 +810,7 @@ wireless_applet_new (WirelessApplet *applet)
 	wireless_applet_load_theme (applet);
 
 	/* construct pixmap widget */
-	applet->pixmap = gtk_image_new_from_file (applet->pixmaps[0]);
+	applet->pixmap = gtk_image_new_from_pixbuf (applet->pixmaps[0]);
 	gtk_widget_show (applet->pixmap);
 
 	/* construct pct widget */
