@@ -148,7 +148,7 @@ panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri)
 		panel_menu_desktop_item_destroy (item);
 	} else {
 		path->base_path = g_strdup ("applications:");
-		label = g_strdup ("Programs");
+		label = g_strdup ("Applications");
 	}
 	gtk_label_set_text (GTK_LABEL (GTK_BIN (path->path)->child), label);
 	show_label = g_strdup_printf ("Show %s", label);
@@ -461,7 +461,7 @@ panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri)
 				retval = TRUE;
 		} else {
 			submenu =
-				panel_menu_common_menu_from_path (_("Programs"),
+				panel_menu_common_menu_from_path (_("Applications"),
 								  uri,
 								  GTK_MENU_SHELL
 								  (path->menu),
