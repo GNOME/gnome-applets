@@ -88,6 +88,7 @@ struct _SkinData
 	NumberData *day;
 	NumberData *year;
 	NumberData *mail_count;
+	NumberData *messages;
 	ItemData *button_pix;
 	ButtonData *button;
 };
@@ -122,6 +123,8 @@ struct _AppData
 
 	off_t mailsize;
 	gint mail_max;
+
+	gint message_count;
 
 	/* the properties window widgets */
 	GtkWidget *propwindow;

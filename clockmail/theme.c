@@ -224,6 +224,7 @@ void free_skin(SkinData *s)
 	free_number(s->day);
 	free_number(s->year);
 	free_number(s->mail_count);
+	free_number(s->messages);
 	free_digit(s->dig_small);
 	free_digit(s->dig_large);
 	free_item(s->mail);
@@ -757,6 +758,7 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 	s->month_txt = get_item(skin_path, datafile, "Item_Month_Text=", 12, vertical);
 	s->week_txt = get_item(skin_path, datafile, "Item_Week_text=", 7, vertical);
 	s->mail_count = get_number(skin_path, datafile, "Number_Mail=", 4, FALSE, vertical, s);
+	s->messages = get_number(skin_path, datafile, "Number_Messages=", 3, FALSE, vertical, s);
 	s->button_pix = get_item(skin_path, datafile, "Item_Button=", 0, vertical);
 
 	s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);

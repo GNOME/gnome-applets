@@ -26,6 +26,7 @@ static void about_cb (AppletWidget *widget, gpointer data);
 static void set_tooltip(struct tm *time_data, AppData *ad);
 static void redraw_display(AppData *ad);
 static void update_mail_display(int n, AppData *ad, gint force);
+static void update_mail_count(AppData *ad, gint force);
 static void update_mail_amount_display(AppData *ad, gint force);
 static void update_time_count(gint h, gint m, gint s, AppData *ad);
 static void update_date_displays(gint year, gint month, gint day, gint weekday, AppData *ad, gint force);
@@ -73,7 +74,6 @@ void launch_mail_reader(gpointer data)
 	if (ad->reader_exec_cmd && strlen(ad->reader_exec_cmd) > 0)
 		gnome_execute_shell(NULL, ad->reader_exec_cmd);
 }
-
 
 /*
  * Get file modification time, based upon the code
@@ -174,6 +174,41 @@ static void update_mail_display(int n, AppData *ad, gint force)
 		}
 }
 
+static void update_mail_count(AppData *ad, gint force)
+{
+	if (!ad->skin->messages) return;
+
+	if (force)
+		{
+		draw_number(ad->skin->messages, ad->message_count, ad);
+		return;
+		}
+
+	if (ad->mail_file)
+		{
+		FILE *f = 0;
+		gchar buf[1024];
+
+		f = fopen(ad->mail_file, "r");
+
+		if (f)
+			{
+			gint c = 0;
+			while (fgets(buf, sizeof(buf), f) != NULL)
+				{
+				if (buf[0] == 'F' && !strncmp(buf, "From:", 5)) c++;
+				}
+                        fclose(f);
+			ad->message_count = c;
+                        }
+		else
+			{
+			ad->message_count = 0;
+			}
+		}
+	draw_number(ad->skin->messages, ad->message_count, ad);
+}
+
 static void update_mail_amount_display(AppData *ad, gint force)
 {
 	if (ad->mailsize != ad->old_amount || force)
@@ -190,6 +225,7 @@ static void update_mail_amount_display(AppData *ad, gint force)
 			}
 		draw_number(ad->skin->mail_count, ad->mailsize / 1024, ad);
 		ad->old_amount = ad->mailsize;
+		update_mail_count(ad, force);
 		}
 }
 
@@ -416,6 +452,8 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->use_gmt = FALSE;
 	ad->gmt_offset = 0;
 	ad->mail_max = 150;
+
+	ad->message_count = 0;
 
 	/* (duration = BLINK_DELAY / 1000 * BLINK_TIMES) */
 	ad->blink_delay = 166;

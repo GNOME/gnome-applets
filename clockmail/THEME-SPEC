@@ -47,6 +47,10 @@ Number_Mail=Large/Small x y
   Same as above, except this is a number for the amount of mail in
   the mailbox (in Kbytes). It requires space for 4 digits long.
 
+Number_Messages=Large/Small x y
+  Same as above, except this is the number of messages in the file
+  monitored for mail. It requires space for 3 digits long.
+
 Item_Week_Text=filename x y
   filename: Image file, contains vertically the days of the week
             from Sunday through Saturday (7).
@@ -62,5 +66,15 @@ Item_Mail_Percent=filename sections x y
             number of images.
             (for instance 6 images for 20% increments: 0,20,40,60,80,100)
   sections: Total number of images within the image file.
+  x, y: Coordinates to place the image within the window.
+
+Item_Button=filename sections x y
+    This widget represents a button to press to launch the mail reader. If
+    absent, clicking anywhere on the applet launches the mail reader, but
+    there is no visual feedback.
+  filename: Image file, contains vertically 2 or 3 images representing the
+            button state:
+            normal, pushed, and (if sectiones = 3) prelit (mouse over).
+  sections: 2 or 3, indicates 2 or 3 images vertically.
   x, y: Coordinates to place the image within the window.
 
