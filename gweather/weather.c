@@ -138,8 +138,9 @@ static const gchar *wind_direction_str[] = {
 
 const gchar *weather_wind_direction_string (WeatherWindDirection wind)
 {
-	if (wind < 0 ||
-	    wind >= (sizeof (wind_direction_str) / sizeof (char *)))
+        if (wind < 0)
+	        return _("Unknown");
+	if (wind >= (sizeof (wind_direction_str) / sizeof (char *)))
 		return _("Invalid");
 
 	return _(wind_direction_str[(int)wind]);
@@ -1545,18 +1546,20 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     }
 
     /* Defaults (just in case...) */
+    /* Well, no just in case anymore.  We may actually fail to fetch some
+     * fields. */
     info->units = UNITS_IMPERIAL;
     info->update = 0;
-    info->sky = SKY_CLEAR;
+    info->sky = -1;
     info->cond.significant = FALSE;
     info->cond.phenomenon = PHENOMENON_NONE;
     info->cond.qualifier = QUALIFIER_NONE;
-    info->temp = 0;
-    info->dew = 0;
-    info->humidity = 0;
-    info->wind = WIND_VARIABLE;
-    info->windspeed = 0;
-    info->pressure = 0.0;
+    info->temp = -1000.0;
+    info->dew = -1000.0;
+    info->humidity = -1;
+    info->wind = -1;
+    info->windspeed = -1;
+    info->pressure = -1.0;
     info->visibility = -1.0;
     info->forecast = NULL;
     info->radar = NULL;
@@ -1631,17 +1634,17 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->location = weather_location_config_read(applet);
     info->units = (WeatherUnits)0;
     info->update = (WeatherUpdate)0;
-    info->sky = (WeatherSky)0;
+    info->sky = -1;
     info->cond.significant = FALSE;
     info->cond.phenomenon = (WeatherConditionPhenomenon)0;
     info->cond.qualifier = (WeatherConditionQualifier)0;
-    info->temp = 0;
-    info->dew = 0;
-    info->humidity = 0;
-    info->wind = (WeatherWindDirection)0;
-    info->windspeed = 0;
-    info->pressure = 0;
-    info->visibility = 0;
+    info->temp = -1000.0;
+    info->dew = -1000.0;
+    info->humidity = -1;
+    info->wind = -1;
+    info->windspeed = -1;
+    info->pressure = -1.0;
+    info->visibility = -1.0;
     info->forecast = g_strdup ("None");
     info->radar = NULL;  /* FIX */
     info->requests_pending = FALSE;
@@ -1791,6 +1794,8 @@ const gchar *weather_info_get_sky (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->sky < 0)
+	return "Unknown";
     return weather_sky_string(info->sky);
 }
 
@@ -1808,6 +1813,8 @@ const gchar *weather_info_get_temp (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->temp < -500.0)
+        return _("Unknown");
     g_snprintf(buf, sizeof (buf), "%.1f%s", info->temp, TEMP_UNIT_STR(info->units));
     return buf;
 }
@@ -1818,6 +1825,8 @@ const gchar *weather_info_get_dew (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->dew < -500.0)
+        return _("Unknown");
     g_snprintf(buf, sizeof (buf), "%.1f%s", info->dew, TEMP_UNIT_STR(info->units));
     return buf;
 }
@@ -1828,6 +1837,8 @@ const gchar *weather_info_get_humidity (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->humidity < 0.0)
+        return _("Unknown");
     g_snprintf(buf, sizeof (buf), "%d%%", info->humidity);
     return buf;
 }
@@ -1838,6 +1849,8 @@ const gchar *weather_info_get_wind (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->windspeed < 0.0 || info->wind < 0)
+        return _("Unknown");
     if (info->windspeed == 0.00) {
         strncpy(buf, _("Calm"), sizeof(buf));
 	buf[sizeof(buf)-1] = '\0';
@@ -1854,6 +1867,8 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
+    if (info->pressure < 0.0)
+        return _("Unknown");
     g_snprintf(buf, sizeof (buf), "%.2f %s", info->pressure, PRESSURE_UNIT_STR(info->units));
     return buf;
 }
@@ -1889,7 +1904,7 @@ const gchar *weather_info_get_temp_summary (WeatherInfo *info)
     
     if (!info)
         return NULL;
-    if (!info->valid)
+    if (!info->valid || info->temp < -500.0)
         return "--";
     
     if (!info->applet)
@@ -1899,7 +1914,8 @@ const gchar *weather_info_get_temp_summary (WeatherInfo *info)
     else                                                                    
       degree = "F";
       
-   g_snprintf(buf, sizeof (buf), "%d\302\260%s", (int)(info->temp + 0.5), degree);
+   g_snprintf(buf, sizeof (buf), "%d\302\260%s",
+	      (int)(info->temp + (info->temp > 0 ? 0.5 : -0.5)), degree);
     
     return buf;
 }
@@ -2077,7 +2093,7 @@ void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pix
                     idx = PIX_FOG;
                     break;
                 default:
-                    g_assert_not_reached();
+	            idx = PIX_UNKNOWN;
                 }
         } else {
             switch (sky) {
@@ -2093,7 +2109,7 @@ void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pix
                 idx = PIX_CLOUD;
                 break;
             default:
-                g_assert_not_reached();
+	        idx = PIX_UNKNOWN;
             }
         }
     }
