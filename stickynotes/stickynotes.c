@@ -59,8 +59,8 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	note->font = NULL;
 	note->locked = FALSE;
 	note->visible = FALSE;
-	note->x = 0;
-	note->y = 0;
+	note->x = -1;
+	note->y = -1;
 	note->w = 0;
 	note->h = 0;
 
@@ -350,7 +350,8 @@ void stickynote_set_visible(StickyNote *note, gboolean visible)
 	if (visible) {
 		/* Show & raise sticky note, then move to the corrected location on screen. */
 		gtk_window_present(GTK_WINDOW(note->w_window));
-		gtk_window_move(GTK_WINDOW(note->w_window), note->x, note->y);
+		if (note->x != -1 || note->y != -1)
+			gtk_window_move(GTK_WINDOW(note->w_window), note->x, note->y);
 	}
 	else {
 		/* Hide sticky note */
@@ -558,11 +559,14 @@ void stickynotes_load(GdkScreen *screen)
 			{
 				gchar *x_str = xmlGetProp(node, "x");
 				gchar *y_str = xmlGetProp(node, "y");
-				if (x_str && y_str)
-					gtk_window_move(GTK_WINDOW(note->w_window), atoi(x_str), atoi(y_str));
-				gtk_window_get_position(GTK_WINDOW(note->w_window), &note->x, &note->y);
-				g_free(x_str);
-				g_free(y_str);
+				if (x_str && y_str) {
+					if (atoi(x_str) != -1 || atoi(y_str) !=-1) {
+					    gtk_window_move(GTK_WINDOW(note->w_window), atoi(x_str), atoi(y_str));
+					}
+					gtk_window_get_position(GTK_WINDOW(note->w_window), &note->x, &note->y);
+					g_free(x_str);
+					g_free(y_str);
+				}
 			}
 
 			/* Retrieve and set (if any) the body contents of the note */
