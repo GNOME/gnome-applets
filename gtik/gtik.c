@@ -67,6 +67,7 @@
 		gchar *fgcolor;
 		gchar *font;
 		gboolean buttons;
+		gboolean use_default_theme;
 		gint width;
 
 	} gtik_properties;
@@ -166,16 +167,23 @@
 	{
 		GArray *quotes = stockdata->quotes;
 		PangoRectangle rect;
+		PangoContext *context;
 		int i;
 		
 		if (stockdata->my_font)
 			pango_font_description_free (stockdata->my_font);
-		stockdata->my_font = pango_font_description_from_string (stockdata->props.font);	
-		
-		if (!stockdata->my_font) {
-			stockdata->my_font = pango_font_description_from_string ("fixed 12");
+		stockdata->my_font = NULL;
+		if (stockdata->props.font ) {
+			stockdata->my_font = pango_font_description_from_string (stockdata->props.font);
+		}
+	
+		if (stockdata->props.use_default_theme || !stockdata->my_font) {
+			context = gtk_widget_get_pango_context (stockdata->applet);
+			stockdata->my_font = pango_font_description_copy (
+								pango_context_get_font_description (context));
 		}
 		pango_layout_set_font_description (stockdata->layout, stockdata->my_font);
+
 		/* make sure the cached strings widths are updated */
 		for (i=0; i< stockdata->setCounter; i++) {
 			pango_layout_set_text (stockdata->layout, 
@@ -311,11 +319,13 @@ static gint updateOutput(gpointer data)
 									 NULL);
 		if (!stockdata->props.ucolor)
 			stockdata->props.ucolor = g_strdup ("#00ff00");
+			
+		stockdata->props.use_default_theme = panel_applet_gconf_get_bool(applet,
+									  "use_default_theme",
+									  NULL);
 		stockdata->props.font = panel_applet_gconf_get_string (applet,
 								       "font",
 								       NULL);
-		if (!stockdata->props.font)
-			stockdata->props.font = g_strdup ("fixed 12");
 				
 		stockdata->props.buttons = panel_applet_gconf_get_bool(applet,
 									  "buttons",
@@ -916,6 +926,28 @@ static gint updateOutput(gpointer data)
 	}	
 	
 	static void
+	def_font_toggled (GtkToggleButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		GtkWidget *fonts_widget;
+		gboolean toggle;
+		
+		toggle = gtk_toggle_button_get_active (button);
+		if (toggle != stockdata->props.use_default_theme)
+			stockdata->props.use_default_theme = toggle;
+		else
+			return;
+		panel_applet_gconf_set_bool (applet,"use_default_theme",
+					     stockdata->props.use_default_theme, NULL);
+					     
+		fonts_widget = g_object_get_data (G_OBJECT (button), "fonts_hbox");
+		gtk_widget_set_sensitive (GTK_WIDGET (fonts_widget), 
+					             !stockdata->props.use_default_theme);
+		load_fonts(stockdata);
+	}
+	
+	static void
 	add_symbol (GtkEntry *entry, gpointer data)
 	{
 		StockData *stockdata = data;
@@ -1296,7 +1328,7 @@ static gint updateOutput(gpointer data)
 		GtkWidget * notebook;
 		GtkWidget * vbox, *behav_vbox, *appear_vbox;
 		GtkWidget * vbox2;
-		GtkWidget *hbox, *hbox2, *hbox3;
+		GtkWidget *hbox, *hbox2, *hbox3, *font_hbox;
 		GtkWidget * label, *spin, *check;
 		GtkWidget *color;
 		GtkWidget *font;
@@ -1326,14 +1358,17 @@ static gint updateOutput(gpointer data)
 		                                 GTK_RESPONSE_CLOSE);
 		gtk_dialog_set_has_separator (GTK_DIALOG (stockdata->pb), FALSE);
 		gtk_container_set_border_width (GTK_CONTAINER (stockdata->pb), 5);
+		gtk_widget_show (GTK_DIALOG (stockdata->pb)->vbox);
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);
+		gtk_widget_show (notebook);
 
 		hbox = symbolManager(stockdata);
 		label = gtk_label_new (_("Symbols"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
 		gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
+		gtk_widget_show_all (hbox);
 		
 		behav_vbox = gtk_vbox_new (FALSE, 18);
 		gtk_container_set_border_width (GTK_CONTAINER (behav_vbox), 12);
@@ -1404,14 +1439,19 @@ static gint updateOutput(gpointer data)
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
 							   !stockdata->props.scroll);
 							   
+		gtk_widget_show_all (behav_vbox);
+							   
 		appear_vbox = gtk_vbox_new (FALSE, 18);
 		gtk_container_set_border_width (GTK_CONTAINER (appear_vbox), 12);
 		label = gtk_label_new (_("Appearance"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), appear_vbox, label);
+		gtk_widget_show_all(appear_vbox);
+		gtk_widget_show_all (notebook);
 		
 		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 		
 		vbox = create_hig_catagory (appear_vbox, _("Display"));
+		gtk_widget_show_all (vbox);
 		
 		hbox2 = gtk_hbox_new (FALSE, 6);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
@@ -1421,6 +1461,7 @@ static gint updateOutput(gpointer data)
 				           G_CALLBACK (output_toggled), stockdata);
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
 							   stockdata->props.output);
+		gtk_widget_show_all (hbox2);
 
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
@@ -1428,6 +1469,7 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
+		gtk_widget_show_all (hbox2);
 		
 		hbox3 = gtk_hbox_new (FALSE, 6);
 		gtk_box_pack_start (GTK_BOX (hbox2), hbox3, FALSE, FALSE, 0);
@@ -1439,8 +1481,21 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start (GTK_BOX (hbox3), spin, FALSE, FALSE, 0);
 		label = gtk_label_new (_("pixels"));
 		gtk_box_pack_start (GTK_BOX (hbox3), label, FALSE, FALSE, 0);
-							   
+		gtk_widget_show_all (hbox2);
+		
+		hbox2 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		check = gtk_check_button_new_with_mnemonic (_("Use _default theme font"));
+		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
+		g_signal_connect (G_OBJECT (check), "toggled",
+				           G_CALLBACK (def_font_toggled), stockdata);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
+							   stockdata->props.use_default_theme);
+		gtk_widget_show_all (hbox2);
+					   
 		hbox2 = gtk_hbox_new (FALSE, 12);
+		font_hbox = hbox2;
+		g_object_set_data (G_OBJECT (check), "fonts_hbox", hbox2);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("_Font:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
@@ -1448,12 +1503,14 @@ static gint updateOutput(gpointer data)
 		gtk_size_group_add_widget (size, label);
 		font = gnome_font_picker_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), font);
-		gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font),
+		if (stockdata->props.font)
+			gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font),
 						 stockdata->props.font);
 		gtk_box_pack_start (GTK_BOX (hbox2), font, FALSE, FALSE, 0);
 		g_signal_connect (G_OBJECT (font), "font_set",
-                		  G_CALLBACK (font_cb), stockdata);
-                		  
+                		  G_CALLBACK (font_cb), stockdata);                
+		gtk_widget_show_all (hbox2);
+				  
                 g_object_unref (size);
 		
 		vbox = create_hig_catagory (appear_vbox, _("Colors"));
@@ -1519,9 +1576,13 @@ static gint updateOutput(gpointer data)
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(bgcolor_set_cb), stockdata);
 				
+		gtk_widget_show_all (vbox);
+				
 		g_object_unref (G_OBJECT (size));
 	
 		gtk_widget_show_all(stockdata->pb);
+		
+		gtk_widget_set_sensitive (font_hbox, !stockdata->props.use_default_theme);
 		
 		g_signal_connect (G_OBJECT (stockdata->pb), "response",
 				  G_CALLBACK (response_cb), stockdata);
@@ -1554,6 +1615,16 @@ static gint updateOutput(gpointer data)
 				      stockdata->props.width,size-4);
     	
     	}
+    	
+    	static void
+    	style_set_cb (GtkWidget *widget, GtkStyle *previous_style, gpointer data)
+    	{
+    		StockData *stockdata = data;
+    		
+    		if (stockdata->props.use_default_theme);
+    			load_fonts (stockdata);
+    	}
+
     
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
         	BONOBO_UI_UNSAFE_VERB ("Props", properties_cb),
@@ -1569,6 +1640,7 @@ static gint updateOutput(gpointer data)
 		StockData *stockdata;
 		GtkWidget * vbox;
 		GtkWidget * frame;
+		GtkWidget *event;
 
 		gnome_vfs_init();
 		
@@ -1605,11 +1677,14 @@ static gint updateOutput(gpointer data)
 		stockdata->tooltips = gtk_tooltips_new ();
 		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->leftButton, _("Skip forward"), NULL);
 		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backward"), NULL);
-		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->applet, _("Stock Ticker\nGet continuously updated stock quotes"), NULL);
-
-
+		
 		frame = gtk_frame_new(NULL);
 		gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+		
+		event = gtk_event_box_new ();
+		gtk_widget_show (event);
+		gtk_container_add (GTK_CONTAINER(frame), event);
+		gtk_tooltips_set_tip(stockdata->tooltips, event, _("Stock Ticker\nGet continuously updated stock quotes"), NULL);
 
 		access_drawing_area = stockdata->drawing_area = GTK_WIDGET (custom_drawing_area_new());
 		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
@@ -1619,7 +1694,7 @@ static gint updateOutput(gpointer data)
 
 		stockdata->layout = gtk_widget_create_pango_layout (stockdata->drawing_area, "");
 
-		gtk_container_add(GTK_CONTAINER(frame),stockdata->drawing_area);
+		gtk_container_add(GTK_CONTAINER(event),stockdata->drawing_area);
 		
 		gtk_widget_show(frame);
 
@@ -1644,6 +1719,9 @@ static gint updateOutput(gpointer data)
 
 		g_signal_connect (G_OBJECT (applet), "change_size",
 				  G_CALLBACK (applet_change_size), stockdata);
+				  
+		g_signal_connect (G_OBJECT (applet), "style_set",
+					   G_CALLBACK (style_set_cb), stockdata);
 
 		gtk_widget_show (GTK_WIDGET (applet));
 		
