@@ -19,7 +19,11 @@
 
 #ifndef __ACCESSX_APPLET_H__
 #define __ACCESSX_APPLET_H__
-#include <gnome.h>
+
+#include <gtk/gtkiconfactory.h>
+#include <gtk/gtktooltips.h>
+#include <gtk/gtkwidget.h>
+
 #include <panel-applet.h>
 
 #define ACCESSX_APPLET          "ax-applet"

@@ -18,12 +18,16 @@
  */
 
 #include <config.h>
-#include <panel-applet-gconf.h>
 
-#include <libgnomeui/gnome-help.h>
+#include <stdlib.h>
+
 #include <glib-object.h>
-#include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
+#include <gtk/gtk.h>
+#include <gtk/gtkaboutdialog.h>
+#include <libgnomeui/gnome-help.h>
+#include <panel-applet-gconf.h>
 #include <X11/XKBlib.h>
 #define XK_MISCELLANY
 #define XK_XKB_KEYS
@@ -117,7 +121,6 @@ about_cb (BonoboUIComponent          *uic,
 	  AccessxStatusApplet        *sapplet,
 	  const gchar                *verbname)
 {
-	GdkPixbuf	 *pixbuf;
 	GError		 *error = NULL;
 	gchar		 *file;
         
@@ -142,29 +145,24 @@ about_cb (BonoboUIComponent          *uic,
 		gtk_window_present (GTK_WINDOW (sapplet->about_dialog));
 		return;
 	}
-        
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, 
-					  "accessx-status-applet/ax-applet.png", 
-					  FALSE, NULL);
-	pixbuf = gdk_pixbuf_new_from_file (file, &error);
-	g_free (file);
-	
+
 	if (error) {
 		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
 		g_error_free (error);
 	}
 	
-        sapplet->about_dialog = gnome_about_new (_("AccessX Status"), VERSION,
-						 _("Copyright (C) 2003 Sun Microsystems"),
-						 _("Shows the state of AccessX features such as latched modifiers"),
-						 authors,
-						 documenters,
-						 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-						 pixbuf);
-		
-	if (pixbuf)
-		gdk_pixbuf_unref (pixbuf);
-			
+	sapplet->about_dialog = gtk_about_dialog_new();
+	g_object_set (sapplet->about_dialog,
+		      "name", _("AccessX Status"),
+		      "version", VERSION,
+		      "comments", _("Shows the state of AccessX features such as latched modifiers"),
+		      "copyright", _("Copyright (C) 2003 Sun Microsystems"),
+		      "authors", authors,
+		      "documenters", documenters,
+		      "translator-credits", (strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL),
+		      "logo-icon-name", "ax-applet",
+		      NULL);
+		      
 	gtk_window_set_wmclass (GTK_WINDOW (sapplet->about_dialog), "accessx status", "AccessX Status");
 	gtk_window_set_screen (GTK_WINDOW (sapplet->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
