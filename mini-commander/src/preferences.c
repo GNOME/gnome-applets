@@ -298,25 +298,29 @@ loadSession(void)
 		    break;
 		case 11:
 		    strcpy(defaultPrefix, "av:");
-		    strcpy(defaultCommand, "set altavista search by Chad Powell; netscape -remote openURL\\(http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q'),new-window\\) || netscape http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    strcpy(defaultCommand, "set altavista search by Chad Powell; gnome-moz-remote --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 12:
 		    strcpy(defaultPrefix, "yahoo:");
-		    strcpy(defaultCommand, "set yahoo search by Chad Powell; netscape -remote openURL\\(http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q'),new-window\\) || netscape http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    strcpy(defaultCommand, "set yahoo search by Chad Powell; gnome-moz-remote --newwin http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 13:
 		    strcpy(defaultPrefix, "fm:");
-		    strcpy(defaultCommand, "set freshmeat search by Chad Powell; netscape -remote openURL\\(http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +),new-window\\) || netscape http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +)");
+		    strcpy(defaultCommand, "set freshmeat search by Chad Powell; gnome-moz-remote --newwin http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +)");
 		    break;
 		case 14:
+		    strcpy(defaultPrefix, "dictionary:");
+		    strcpy(defaultCommand, "set dictionary search by Chad Powell; gnome-moz-remote --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=$1");
+		    break;
+		case 15:
 		    strcpy(defaultPrefix, "t");
 		    strcpy(defaultCommand, "gnome-terminal");
 		    break;
-		case 15:
+		case 16:
 		    strcpy(defaultPrefix, "nx");
 		    strcpy(defaultCommand, "nxterm");
 		    break;
-		case 16:
+		case 17:
 		    strcpy(defaultPrefix, "n");
 		    strcpy(defaultCommand, "netscape");
 		    break;
