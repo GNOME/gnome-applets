@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 INCLUDES = 						\
 	-I.						\
 	-I$(srcdir)					\
@@ -22,6 +24,8 @@ mini_commander_applet_SOURCES =			\
 	message.h				\
 	mini-commander_applet.c			\
 	mini-commander_applet.h			\
+	help.c					\
+	help.h					\
 	preferences.c				\
 	preferences.h
 
