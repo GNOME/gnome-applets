@@ -154,10 +154,14 @@ cdplayer_next(GtkWidget * w, gpointer data)
 static int 
 cdplayer_eject(GtkWidget * w, gpointer data)
 {
+	cdrom_device_status_t stat;
 	CDPlayerData *cd = data;
 	if(!cd_try_open(cd))
 		return 0;
-	cdrom_eject(cd->cdrom_device);
+	if(cdrom_get_status(cd->cdrom_device, &stat))
+		cdrom_load(cd->cdrom_device);
+	else
+		cdrom_eject(cd->cdrom_device);
 	return 0;
 }
 

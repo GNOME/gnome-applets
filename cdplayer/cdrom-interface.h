@@ -54,6 +54,7 @@ typedef struct cdrom_device {
 cdrom_device_t cdrom_open(char *path, /* out */ int *errcode);
 void cdrom_close(cdrom_device_t cdp);
 
+int cdrom_load(cdrom_device_t cdp);
 int cdrom_eject(cdrom_device_t cdp);
 int cdrom_read_track_info(cdrom_device_t cdp);
 int cdrom_play(cdrom_device_t cdp, int start, int stop);

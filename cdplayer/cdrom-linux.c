@@ -199,6 +199,16 @@ cdrom_close(cdrom_device_t cdp)
 }
 
 int
+cdrom_load(cdrom_device_t cdp)
+{
+	if (ioctl(cdp->device, CDROMCLOSETRAY, 0) == -1) {
+		cdp->my_errno = errno;
+		return DISC_IO_ERROR;
+	};
+	return DISC_NO_ERROR;
+}
+
+int
 cdrom_eject(cdrom_device_t cdp)
 {
 	if (ioctl(cdp->device, CDROMEJECT, 0) == -1) {
