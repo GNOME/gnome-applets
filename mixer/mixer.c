@@ -414,15 +414,11 @@ scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerDa
 }
 
 static gboolean
-applet_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+applet_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
 	if (event->button == 1) {
 		if (data->popup == NULL) {
 			mixer_popup_show (data);
-			return TRUE;
-		}
-		else {
-			mixer_popup_hide (data, FALSE);
 			return TRUE;
 		}
 	}
@@ -828,8 +824,8 @@ mixer_applet_create (PanelApplet *applet)
 	data->applet = GTK_WIDGET (applet);
 	
 	g_signal_connect (data->applet,
-			  "button-press-event",
-			  (GCallback) applet_button_press_event_cb,
+			  "button-release-event",
+			  (GCallback) applet_button_release_event_cb,
 			  data);
 	
 	g_signal_connect (data->applet,
@@ -841,7 +837,7 @@ mixer_applet_create (PanelApplet *applet)
 		gtk_adjustment_new (-50,
 				    -VOLUME_MAX,
 				    0.0, 
-				    VOLUME_MAX/100,
+				    VOLUME_MAX/20,
 				    VOLUME_MAX/10,
 				    0.0));
 
