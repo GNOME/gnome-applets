@@ -1,0 +1,417 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "Novembre 2003">
+  <!ENTITY applet "Controllo del sistema">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="it">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+ <title>Manuale dell'applet &applet; V&manrevision;</title>
+
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!-- translators: uncomment this:
+    <copyright>
+    <year>2002</year>
+    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+-->
+
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Documentation Team</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>GNOME Documentation Project</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address>
+	</affiliation>
+      </author>
+
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+
+      <revision> 
+	<revnumber>Manuale dell'applet Controllo del sistema V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME Documentation Team</para>
+          <para role="publisher">GNOME Documentation Project</para>
+	</revdescription>
+      </revision>
+
+      <revision> 
+	<revnumber>Manuale dell'applet Controllo del sistema V2.0</revnumber> 
+	<date>Luglio 2003</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para>
+	  <para role="publisher">GNOME Documentation Project</para>
+	</revdescription>
+      </revision>
+
+    </revhistory>
+
+    <releaseinfo> Questo manuale descrive la versione &appletversion; di &applet;.
+    </releaseinfo>
+    <legalnotice>  
+        <title>Commenti</title>
+      <para>  Per segnalare un problema o inviare suggerimenti sull'applet &applet; o su questo manuale, seguire le istruzioni presenti alla <ulink url="ghelp:gnome-feedback" type="help">Pagina di commenti su GNOME</ulink>. 
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>Applet &applet;</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="multiload-introduction">      <title>Introduzione</title>
+
+      <!-- ==== Figure ============================================= -->
+      <figure id="system-monitor-applet-fig"> 
+        <title>Applet &applet;</title>
+        <screenshot>
+        <mediaobject>
+          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"  			format="PNG"/> 
+          </imageobject>
+ 	  <textobject>
+ 	    <phrase>Mostra l'applet &applet;. Visualizza un grafico indicante il carico della CPU del sistema.
+            </phrase>
+          </textobject>
+        </mediaobject>
+	</screenshot>
+      </figure>
+      <!-- ==== End of Figure ======================================= -->
+
+      <para>
+        L'applet <application>&applet;</application> visualizza una serie di informazioni relative al carico del sistema, che vengono presentate in forma grafica in un pannello.
+        &Egrave; possibile configurare l'applet <application>&applet;</application> in modo da visualizzare le seguenti informazioni sul sistema:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Utilizzo del tempo della CPU (unit&agrave; di elaborazione centrale)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Utilizzo della memoria
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Traffico di rete 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Utilizzo dello spazio di swap 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Carico medio del sistema 
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <sect2 id="multiload-introduction-add">
+      <title>Aggiungere l'applet &applet; a un pannello</title>
+        <para>
+        Per aggiungere l'applet <application>&applet;</application> a un pannello, procedere come segue:
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>
+            Fare clic con il pulsante destro del mouse sul pannello.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+            Scegliere <menuchoice>
+              <guimenu>Aggiungi al pannello</guimenu>
+              <guisubmenu>Utilit&agrave;</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>. 
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>L'aspetto dell'applet <application>&applet;</application> varia in base alla dimensione e al tipo di pannello in cui si trova.
+        </para>
+      </sect2>
+
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. -->
+  <sect1 id="multiload-usage">
+ 
+     <title>Utilizzo</title>
+
+    <sect2 id="multiload-usage-graphs"> 
+      <title>Visualizzare grafici aggiuntivi</title>
+      <para>
+        Per informazioni su come visualizzare grafici aggiuntivi per le varie risorse controllate, vedere <xref linkend="multiload-prefs"/>.
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-current"> 
+      <title>Visualizzare l'utilizzo attuale di una risorsa del sistema</title>
+      <para>
+        Per visualizzare l'utilizzo attuale di una determinata risorsa del sistema, posizionare il puntatore del mouse sul grafico corrispondente all'interno dell'applet.
+        Un suggerimento mostrer&agrave; il livello di utilizzo di quella risorsa in forma di percentuale.
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-colors"> 
+      <title>Modificare i colori di un grafico</title>
+      <para>
+        Per modificare i colori di un grafico, procedere come segue:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Fare clic sull'applet con il pulsante destro del mouse e scegliere <guimenuitem>Preferenze</guimenuitem>.
+            Viene aperta la finestra di dialogo <guilabel>Propriet&agrave; del Controllo del sistema</guilabel>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Selezionare la scheda di interesse nell'area <guilabel>Colori</guilabel> della finestra di dialogo.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Fare clic sul pulsante del colore da modificare nella scheda selezionata.
+            Viene aperta la finestra di dialogo <guilabel>Selezione di un colore</guilabel>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Scegliere un colore dalla <guilabel>Tavolozza</guilabel>, oppure usare la ruota dei colori o le caselle di selezione per definire un colore personalizzato.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Fare clic su <guibutton>OK</guibutton> per chiudere la finestra di dialogo <guilabel>Selezione di un colore</guilabel>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="multiload-usage-extra"> 
+      <title>Visualizzare informazioni aggiuntive per il controllo del sistema</title>
+      <para>
+        Per visualizzare ulteriori informazioni di controllo del sistema, fare clic sull'applet con il pulsante destro del mouse e scegliere <guimenuitem>Apri Controllo del sistema</guimenuitem> per avviare l'applicazione <application>Controllo del sistema</application>. 
+      </para>
+      <para>
+        L'applicazione <application>Controllo del sistema</application> permette di monitorare i processi in esecuzione e l'utilizzo delle risorse del sistema.
+        Pu&ograve; inoltre essere utilizzata per modificare il comportamento del sistema.
+      </para>
+    </sect2>
+
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs"> 
+    <title>Preferenze</title>
+    <para>Per configurare l'applet <application>&applet;</application>, farvi clic con il pulsante destro del mouse e scegliere <guimenuitem>Preferenze</guimenuitem>. 
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Risorse controllate</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Processore</guilabel>
+              </para>
+              <para>
+                  Selezionare questa opzione per visualizzare il grafico relativo all'utilizzo della CPU.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Memoria</guilabel>
+              </para>
+              <para>
+                  Selezionare questa opzione per visualizzare il grafico relativo all'utilizzo della memoria.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Rete</guilabel>
+              </para>
+              <para>
+                  Selezionare questa opzione per visualizzare il grafico relativo al traffico di rete.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Spazio di swap</guilabel>
+              </para>
+              <para>
+                  Selezionare questa opzione per visualizzare il grafico relativo all'utilizzo dello spazio di swap.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Carico</guilabel>
+              </para>
+              <para>
+                  Selezionare questa opzione per visualizzare il grafico relativo al carico medio del sistema.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Opzioni</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Larghezza controllo sistema</guilabel>
+              </para>
+              <para>
+                Usare questa casella di selezione per specificare la larghezza di ciascun grafico del <application>&applet;</application>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Intervallo di controllo del sistema</guilabel>
+              </para>
+              <para>
+                Usare questa casella di selezione per specificare l'intervallo con cui i grafici devono essere aggiornati.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Colori</term>
+        <listitem>
+          <para>
+            I pulsanti di selezione disponibili in questa scheda permettono di modificare i colori dei parametri per ogni risorsa.
+            Per maggiori informazioni sull'uso dei pulsanti di selezione dei colori, vedere <xref linkend="multiload-usage-colors"/>.
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Processore</guilabel>
+              </para>
+              <para>
+                Selezionare questa scheda per visualizzare i pulsanti <guilabel>Utente</guilabel>, 
+                <guilabel>Sistema</guilabel>, 
+                <guilabel>Nice</guilabel> e <guilabel>Inattivit&agrave;</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Memoria</guilabel>
+              </para>
+              <para>
+                Selezionare questa scheda per visualizzate i pulsanti <guilabel>Utente</guilabel>, 
+                <guilabel>Condivisa</guilabel>, 
+                <guilabel>Buffer</guilabel>, 
+                <guilabel>In cache</guilabel> e
+                <guilabel>Libera</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Rete</guilabel>
+              </para>
+              <para>
+                Selezionare questa scheda per visualizzare i pulsanti 
+                <guilabel>SLIP</guilabel>, 
+                <guilabel>PLIP</guilabel>, 
+                <guilabel>Ethernet</guilabel>, 
+                <guilabel>Altro</guilabel> e
+                <guilabel>Sfondo</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Spazio di swap</guilabel>
+              </para>
+              <para>
+                Selezionare questa scheda per visualizzare i pulsanti
+                <guilabel>Usato</guilabel> e
+                <guilabel>Libero</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Carico</guilabel>
+              </para>
+              <para>
+                Selezionare questa scheda per visualizzare i pulsanti 
+                <guilabel>Media</guilabel> e
+                <guilabel>Sfondo</guilabel>.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect1>
+
+</article>

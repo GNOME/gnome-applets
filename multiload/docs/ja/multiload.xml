@@ -1,0 +1,411 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "2003 年 11 月">
+  <!ENTITY applet "システムモニター">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+ <title>&applet; アプレットのマニュアル V&manrevision;</title>
+
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!-- translators: uncomment this:
+    <copyright>
+    <year>2002 年</year>
+    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+-->
+
+    <publisher> 
+      <publishername> GNOME ドキュメンテーションプロジェクト </publishername> 
+    </publisher> 
+
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME ドキュメンテーションチーム</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address>
+	</affiliation>
+      </author>
+
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+
+      <revision> 
+	<revnumber>System Monitor アプレットのマニュアル V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+          <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+	</revdescription>
+      </revision>
+
+      <revision> 
+	<revnumber>System Monitor アプレットのマニュアル V2.0</revnumber> 
+	<date>2003 年 7 月</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para>
+	  <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+	</revdescription>
+      </revision>
+
+    </revhistory>
+
+    <releaseinfo>このマニュアルは &applet; のバージョン &appletversion; について説明します。
+    </releaseinfo>
+    <legalnotice> 
+      <title>フィードバック</title>
+      <para>&applet; アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、『<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>』を参照してください。
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>&applet; アプレット</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="multiload-introduction"> 
+    <title>概要</title>
+
+      <!-- ==== Figure ============================================= -->
+      <figure id="system-monitor-applet-fig"> 
+        <title>&applet; アプレット</title>
+        <screenshot>
+        <mediaobject>
+          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"  			format="PNG"/> 
+          </imageobject>
+ 	  <textobject>
+ 	    <phrase>&applet;アプレットを表示。システムの CPU 負荷のグラフを表示。
+            </phrase>
+          </textobject>
+        </mediaobject>
+	</screenshot>
+      </figure>
+      <!-- ==== End of Figure ======================================= -->
+
+      <para>
+        <application>&applet;</application> アプレットは、パネルにシステムの負荷情報をグラフ形式で表示します。
+        <application>&applet;</application> を構成して、システムの次の情報を表示させることができます。
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+                CPU (中央演算処理装置) 時間の使用状況
+              </para>
+        </listitem>
+        <listitem>
+          <para>
+            メモリの使用状況
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            ネットワークのトラフィック量         </para>
+        </listitem>
+        <listitem>
+          <para>
+            スワップ領域の使用状況        </para>
+        </listitem>
+        <listitem>
+          <para>
+            平均システム負荷       </para>
+        </listitem>
+      </itemizedlist>
+
+      <sect2 id="multiload-introduction-add">
+      <title>パネルへの &applet; の追加</title>
+        <para>
+        パネルに <application>&applet;</application> を追加する手順は次のとおりです。
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>
+            パネル上で右クリックします。
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+            
+            <menuchoice>
+              <guimenu>「パネルに追加」</guimenu><guisubmenu>「ユーティリティ」</guisubmenu><guimenuitem>「&applet;」</guimenuitem>
+            </menuchoice>の順に選択します。
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+        <application>&applet;</application> アプレットのレイアウトは、アプレットがあるパネルのサイズとタイプによって異なります。
+        </para>
+      </sect2>
+
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. -->
+  <sect1 id="multiload-usage"> 
+     <title>使用方法</title>
+
+    <sect2 id="multiload-usage-graphs"> 
+      <title>追加のグラフを表示する</title>
+      <para>
+        各種監視対象のリソースのグラフの追加方法については、<xref linkend="multiload-prefs"/>を参照してください。
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-current"> 
+      <title>システムリソースの現在の使用状況を表示する</title>
+      <para>
+        システムリソースの現在の使用状況を表示するには、アプレットの対応するグラフ上にマウスポインタを配置します。
+ツールチップが、現在の使用状況をパーセントで表示します。
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-colors"> 
+      <title>グラフの色を変更する</title>
+      <para>
+       グラフの色を変更する手順は次のとおりです。
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            アプレットを右クリックし、<guimenuitem>「設定」</guimenuitem>を選択します。
+            <guilabel>「システムモニタの設定」</guilabel>ダイアログが表示されます。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <guilabel>「システムモニタの設定」</guilabel>ダイアログの<guilabel>「色」</guilabel>区画で必要なタブを選択します。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            選択されたタブセクションで必要な色ボタンをクリックします。
+              <guilabel>「色の選択」</guilabel>ダイアログが表示されます。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+              <guilabel>「パレット」</guilabel>から色を選ぶか、カラーホイールまたはスピンボックスを使用して色をカスタマイズします。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+              <guibutton>「了解」</guibutton>をクリックして、<guilabel>「色の選択」</guilabel>ダイアログを閉じます。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="multiload-usage-extra"> 
+      <title>追加のシステムモニタ情報を表示する</title>
+      <para>
+        追加のシステムモニタ情報を表示するには、アプレットを右クリックし、<guimenuitem>「システムモニタを開く」</guimenuitem>を選択して<application>システムモニタ</application>アプリケーションを起動します。
+      </para>
+      <para><application>System Monitor</application> アプリケーションを使用すると、システムプロセスとシステムリソースの使用状況を監視できます。
+        また<application>System Monitor</application> アプリケーションを使用して、システムの動作を変更することも可能です。
+      </para>
+    </sect2>
+
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs"> 
+    <title>設定</title>
+    <para>
+         <application>&applet;</application> を構成するには、アプレットを右クリックし、<guimenuitem>「設定」</guimenuitem>を選択します。 
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>監視対象リソース</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>「プロセッサ」</guilabel>
+              </para>
+              <para>
+                CPU使用状況のグラフを表示する場合は、このオプションを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「メモリ」</guilabel>
+              </para>
+              <para>
+                メモリ使用状況のグラフを表示する場合は、このオプションを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「ネットワーク」</guilabel>
+              </para>
+              <para>
+                ネットワークトラフィック量のグラフを表示する場合は、このオプションを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「スワップ領域」</guilabel>
+              </para>
+              <para>
+                スワップ領域の使用状況のグラフを表示する場合は、このオプションを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「負荷」</guilabel>
+              </para>
+              <para>
+                平均システム負荷のグラフを表示する場合は、このオプションを選択します。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>オプション</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>「システムモニタの幅」</guilabel>
+              </para>
+              <para>
+                各 <application>&applet;</application> グラフの幅を指定する場合は、このスピンボックスを使用します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「システムモニタの更新間隔」</guilabel>
+              </para>
+              <para>
+                グラフの更新間隔を指定する場合は、このスピンボックスを使用します。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>色</term>
+        <listitem>
+          <para>
+            各リソースのタブセクションには、各リソースのパラメータの色を変更するために使用できる色選択ボタンがあります。
+            色選択ボタンの使用方法については、<xref linkend="multiload-usage-colors"/>を参照してください。
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>「プロセッサ」</guilabel>
+              </para>
+              <para>
+                
+                <guilabel>「ユーザ」</guilabel>、<guilabel>「システム」</guilabel>、<guilabel>「Nice 値」</guilabel>、<guilabel>「待機」</guilabel>色ボタンを表示する場合は、このタブを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「メモリ」</guilabel>
+              </para>
+              <para>
+                
+                <guilabel>「ユーザ」</guilabel>、
+                <guilabel>「共有」</guilabel>、
+                <guilabel>「バッファ」</guilabel>、
+                <guilabel>「キャッシュ」</guilabel>、<guilabel>「未使用」</guilabel>色ボタンを表示する場合は、このタブを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「ネットワーク」</guilabel>
+              </para>
+              <para>
+                
+                <guilabel>「SLIP」</guilabel>、
+                <guilabel>「PLIP」</guilabel>、
+                <guilabel>「Ethernet」</guilabel>、
+                <guilabel>「その他」</guilabel>、
+                <guilabel>「背景色」</guilabel>色ボタンを表示する場合は、このタブを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「スワップ領域」</guilabel>
+              </para>
+              <para>
+               <guilabel>「使用中」</guilabel>と
+                <guilabel>「未使用」</guilabel>色ボタンを表示するには、このタブを選択します。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>「負荷」</guilabel>
+              </para>
+              <para>
+               <guilabel>「平均」</guilabel>と
+                <guilabel>「背景色」</guilabel>色ボタンを表示するには、このタブを選択します。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect1>
+
+</article>

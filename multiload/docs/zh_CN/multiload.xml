@@ -1,0 +1,342 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "November 2003">
+  <!ENTITY applet "System Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_cn">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&applet; 小程序手册 V&manrevision;</title>
+
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!-- translators: uncomment this:
+    <copyright>
+    <year>2002</year>
+    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+-->
+
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Documentation Team</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>GNOME Documentation Project</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address>
+	</affiliation>
+      </author>
+
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+
+      <revision><revnumber>系统监视器小程序手册 V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME Documentation Team</para>
+          <para role="publisher">GNOME Documentation Project</para>
+	</revdescription>
+      </revision>
+
+      <revision> 
+	<revnumber>系统监视器小程序手册 V2.0</revnumber> 
+	<date>2003 年 7 月</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para>
+	  <para role="publisher">GNOME Documentation Project</para>
+	</revdescription>
+      </revision>
+
+    </revhistory>
+
+    <releaseinfo> 本手册介绍 &applet; &appletversion; 版。
+    </releaseinfo>
+    <legalnotice> <title>反馈</title>
+      <para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。
+     </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>&applet; 小程序</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="multiload-introduction"><title>简介</title>
+
+      <!-- ==== Figure ============================================= -->
+      <figure id="system-monitor-applet-fig"><title>&applet; 小程序</title>
+        <screenshot>
+        <mediaobject>
+          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"  			format="PNG"/> 
+          </imageobject>
+ 	  <textobject>
+ 	    <phrase>显示 &applet; 小程序。显示系统 CPU 负载图。
+            </phrase>
+          </textobject>
+        </mediaobject>
+	</screenshot>
+      </figure>
+      <!-- ==== End of Figure ======================================= -->
+
+      <para><application>&applet;</application> 小程序在面板中以图形方式显示系统负载信息。
+您可以配置 <application>&applet;</application> 显示以下系统信息：
+     </para>
+      <itemizedlist>
+        <listitem>
+          <para>CPU（中央处理器）时间的使用情况
+          </para>
+        </listitem>
+        <listitem>
+          <para>内存使用情况
+          </para>
+        </listitem>
+        <listitem>
+          <para>网络负载
+          </para>
+        </listitem>
+        <listitem>
+          <para>交换空间的使用情况
+          </para>
+        </listitem>
+        <listitem>
+          <para>平均系统负载
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <sect2 id="multiload-introduction-add"><title>向面板中添加 &applet;</title>
+        <para>要向面板中添加 <application>&applet;</application>，请执行以下步骤：
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>右击面板。
+            </para>
+          </listitem>
+          <listitem>
+            <para>选择<menuchoice><guimenu>添加到面板</guimenu><guisubmenu>公用程序</guisubmenu> <guimenuitem>&applet;</guimenuitem></menuchoice>。
+            </para>
+          </listitem>
+        </orderedlist>
+        <para><application>&applet;</application> 小程序的布局根据小程序所在的面板的大小和类型而变化。
+        </para>
+      </sect2>
+
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. -->
+  <sect1 id="multiload-usage"><title>用法</title>
+
+    <sect2 id="multiload-usage-graphs"><title>显示其他图形</title>
+      <para>有关如何添加监视的各种资源的图形的信息，请参阅 <xref linkend="multiload-prefs"/>。
+     </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-current"> <title>显示系统资源的当前使用情况</title>
+      <para>要显示系统资源的当前使用情况，请将鼠标指针放置在小程序中相应的图形上。
+工具提示会以百分比的形式显示当前使用情况。
+     </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-colors"> <title>更改图形中的颜色</title>
+      <para>要更改图形中的颜色，请执行以下步骤：
+     </para>
+      <orderedlist>
+        <listitem>
+          <para>右击该小程序，然后选择<guimenuitem>首选项</guimenuitem>。
+此时，会显示<guilabel>系统监视器首选项</guilabel>对话框。
+          </para>
+        </listitem>
+        <listitem>
+          <para>选择<guilabel>系统监视器首选项</guilabel>对话框的<guilabel>颜色</guilabel>区域中的相关选项卡。
+          </para>
+        </listitem>
+        <listitem>
+          <para>单击所选选项卡部分中的相关颜色按钮。
+此时，会显示<guilabel>选取颜色</guilabel>对话框。
+          </para>
+        </listitem>
+        <listitem>
+          <para>从<guilabel>调色板</guilabel>选择一种颜色，或者使用颜色轮或旋转框定制颜色。
+          </para>
+        </listitem>
+        <listitem>
+          <para>单击<guibutton>确定</guibutton>关闭<guilabel>选取颜色</guilabel>对话框。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="multiload-usage-extra"> <title>显示其他系统监视器信息</title>
+      <para>要显示其他系统监视器信息，请右击该小程序，然后选择<guimenuitem>打开系统监视器</guimenuitem>以启动<application>系统监视器</application>应用程序。
+     </para>
+      <para><application>系统监视器</application>应用程序使您可以监视系统进程和系统资源的使用情况。
+您可以使用<application>系统监视器</application>应用程序修改系统的行为。
+     </para>
+    </sect2>
+
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs"><title>首选项</title>
+    <para>要配置 <application>&applet;</application> 小程序，请右击该小程序，然后选择<guimenuitem>首选项</guimenuitem>。 
+    </para>
+    <variablelist>
+      <varlistentry><term>监视的资源</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para><guilabel>处理器</guilabel>
+              </para>
+              <para>选择此选项可以显示 CPU 使用情况的图形。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>内存</guilabel>
+              </para>
+              <para>选择此选项可以显示内存使用情况的图形。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>网络</guilabel>
+              </para>
+              <para>选择此选项可以显示网络负载的图形。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>交换空间</guilabel>
+              </para>
+              <para> 选择此选项可以显示交换空间使用情况的图形。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>负载</guilabel>
+              </para>
+              <para> 选择此选项可以显示平均系统负载的图形。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>选项</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para><guilabel>系统监视器宽度</guilabel>
+              </para>
+              <para>使用此旋转框可以指定每个
+ <application>&applet;</application> 图形的宽度。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>系统监视器更新间隔</guilabel>
+              </para>
+              <para>使用此旋转框可以指定更新图形的时间间隔。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>颜色</term>
+        <listitem>
+          <para>每个资源的选项卡式部分都提供颜色选择按钮，您可以使用这些按钮更改每个资源的参数颜色。
+有关如何使用颜色部分按钮的详细信息，请参阅 <xref linkend="multiload-usage-colors"/>。
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para><guilabel>处理器</guilabel>
+              </para>
+              <para>选择此选项卡可以显示<guilabel>用户</guilabel>、<guilabel>系统</guilabel>、<guilabel>Nice</guilabel> 和
+<guilabel>空闲</guilabel>颜色按钮。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>内存</guilabel>
+              </para>
+              <para>选择此选项卡可以显示<guilabel>用户</guilabel>、<guilabel>共享</guilabel>、<guilabel>缓冲区</guilabel>、<guilabel>高速缓存</guilabel>和<guilabel>空闲</guilabel>颜色按钮。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>网络</guilabel>
+              </para>
+              <para>选择此选项卡可以显示 <guilabel>SLIP</guilabel>、<guilabel>PLIP</guilabel>、<guilabel>以太网</guilabel>、<guilabel>其他</guilabel>和<guilabel>背景</guilabel>颜色按钮。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>交换空间</guilabel>
+              </para>
+              <para>选择此选项卡可以显示<guilabel>使用</guilabel>和<guilabel>空闲</guilabel>颜色按钮。
+              </para>
+            </listitem>
+            <listitem>
+              <para><guilabel>负载</guilabel>
+              </para>
+              <para>选择此选项卡可以显示<guilabel>平均</guilabel>和<guilabel>背景</guilabel>颜色按钮。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect1>
+
+</article>

@@ -1,0 +1,417 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "Dezember 2003">
+  <!ENTITY applet "System-Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+ <title>&applet; Applet-Handbuch V&manrevision;</title>
+
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!-- translators: uncomment this:
+    <copyright>
+    <year>2002</year>
+    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+-->
+
+    <publisher> 
+      <publishername> GNOME Dokumentationsprojekt </publishername> 
+    </publisher> 
+
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Dokumentationsteam</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>GNOME Dokumentationsprojekt</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address>
+	</affiliation>
+      </author>
+
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+
+      <revision> 
+	<revnumber>System-Monitor-Applet Handbuch V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME Dokumentationsteam</para>
+          <para role="publisher">GNOME-Dokumentationsprojekt</para>
+	</revdescription>
+      </revision>
+
+      <revision> 
+	<revnumber>System-Monitor-Applet Handbuch V2.0</revnumber> 
+	<date>Juli 2003</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para>
+	  <para role="publisher">GNOME-Dokumentationsprojekt</para>
+	</revdescription>
+      </revision>
+
+    </revhistory>
+
+    <releaseinfo> In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+    </releaseinfo>
+    <legalnotice> 
+      <title>Feedback</title>
+      <para>Wenn Sie Fehler finden oder Vorschl&auml;ge zum Applet &applet; oder zu diesem Handbuch haben, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>&applet;-Applet</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="multiload-introduction"> 
+     <title>Einf&uuml;hrung</title>
+
+      <!-- ==== Figure ============================================= -->
+      <figure id="system-monitor-applet-fig"> 
+        <title>&applet;-Applet</title>
+        <screenshot>
+        <mediaobject>
+          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"  			format="PNG"/> 
+          </imageobject>
+ 	  <textobject>
+ 	    <phrase>&Ouml;ffnet das Applet &applet;. Zeigt eine Verlaufskurve f&uuml;r die CPU-Last.
+            </phrase>
+          </textobject>
+        </mediaobject>
+	</screenshot>
+      </figure>
+      <!-- ==== End of Figure ======================================= -->
+
+      <para>
+        Das Applet <application>&applet;</application> zeigt Informationen zur Systembelastung in grafischer Form in einem Panel an.
+        Je nach Konfiguration kann das Applet  <application>&applet;</application> folgende Systeminformationen anzeigen:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+                Belegung der CPU-Zeit
+              </para>
+        </listitem>
+        <listitem>
+          <para>
+            Speicherbelegung </para>
+        </listitem>
+        <listitem>
+          <para>
+            Netzwerkverkehr </para>
+        </listitem>
+        <listitem>
+          <para>
+            Belegung des Auslagerungsspeichers </para>
+        </listitem>
+        <listitem>
+          <para>
+            Durchschnittliche Systemlast </para>
+        </listitem>
+      </itemizedlist>
+
+      <sect2 id="multiload-introduction-add">
+      <title>So f&uuml;gen Sie das Applet &applet; einem Panel hinzu</title>
+        <para>
+        Wenn Sie das Applet <application>&applet;</application> in ein Panel einf&uuml;gen m&ouml;chten, gehen Sie folgenderma&szlig;en vor:
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>
+            Rechtsklicken Sie auf das Panel.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+            W&auml;hlen Sie <menuchoice>
+              <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
+              <guisubmenu>Dienstprogramm</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>. 
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+        Die Darstellung des Applets <application>&applet;</application> richtet sich nach Gr&ouml;&szlig;e und Art des enthaltenden Panels.
+        </para>
+      </sect2>
+
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. -->
+  <sect1 id="multiload-usage"> 
+    <title>Verwendung</title>
+
+    <sect2 id="multiload-usage-graphs"> 
+      <title>So zeigen Sie zus&auml;tzliche Graphen an</title>
+      <para>
+        Wie Sie Graphen f&uuml;r die verschiedenen &uuml;berwachten Systemressourcen hinzuf&uuml;gen, erfahren Sie im Abschnitt <xref linkend="multiload-prefs"/>.
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-current"> 
+      <title>So zeigen Sie die aktuelle Nutzung einer Systemressource an</title>
+      <para>
+        Um die aktuelle Nutzung einer bestimmten Systemressource anzuzeigen, bewegen Sie den Mauszeiger &uuml;ber den dazugeh&ouml;rigen Graphen im Applet.
+        Der aktuelle Nutzungsgrad in Prozent erscheint daraufhin in einer Minihilfe.
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-colors">
+        <title>So &auml;ndern Sie die Farbe der Graphen</title>
+      <para>
+        Um die in den Graphen verwendeten Farben zu &auml;ndern, gehen Sie folgenderma&szlig;en vor:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Rechtsklicken Sie auf das Applet und w&auml;hlen Sie <guimenuitem>Einstellungen</guimenuitem>.
+            Das Dialogfeld <guilabel>Einstellungen des Systemmonitors</guilabel> erscheint.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            W&auml;hlen Sie im Dialogfeld <guilabel>Einstellungen des Systemmonitors</guilabel> das gew&uuml;nschte Register im Bereich <guilabel>Farben</guilabel>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Klicken Sie im ausgew&auml;hlten Registerbereich auf die Schaltfl&auml;che f&uuml;r die gew&uuml;nschte Farbeinstellung.
+            Das Dialogfeld <guilabel>Farbe w&auml;hlen</guilabel> erscheint. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+              W&auml;hlen Sie eine Farbe aus der <guilabel>Palette</guilabel> aus oder erstellen Sie eine individuelle Farbe &uuml;ber den Farbkreis bzw. die Drehfelder. 
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+              Schlie&szlig;en Sie das Dialogfeld <guilabel>Farbe w&auml;hlen</guilabel> mit <guibutton>OK</guibutton>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="multiload-usage-extra">
+      <title>So zeigen Sie zus&auml;tzliche System-Monitor-Informationen an</title>
+      <para>
+        Wenn Sie zus&auml;tzliche Informationen aus dem System-Monitor ben&ouml;tigen, rechtsklicken Sie auf das Applet und w&auml;hlen <guimenuitem>Systemmonitor &ouml;ffnen</guimenuitem>. Die Anwendung <application>System-Monitor</application> wird nun gestartet. 
+      </para>
+      <para>
+      Mit der Anwendung <application>System-Monitor</application> k&ouml;nnen Sie Systemprozesse sowie die Verwendung der Systemressourcen &uuml;berwachen.
+        Dar&uuml;ber hinaus k&ouml;nnen Sie mit der Anwendung <application>System-Monitor</application> einige Aspekte des Systemverhaltens steuern.
+      </para>
+    </sect2>
+
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs"> 
+    <title>Einstellungen</title>
+    <para>Zur Konfiguration des Applets <application>&applet;</application> klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen  <guimenuitem>Einstellungen</guimenuitem>. 
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>&Uuml;berwachte Ressourcen</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Prozessor</guilabel>
+              </para>
+              <para>
+                Aktivieren Sie diese Option, damit ein Graph f&uuml;r die CPU-Nutzung angezeigt wird. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Speicher</guilabel>
+              </para>
+              <para>
+                Aktivieren Sie diese Option, damit ein Graph f&uuml;r die Speicherbelegung angezeigt wird. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Netzwerk</guilabel>
+              </para>
+              <para>
+                Aktivieren Sie diese Option, damit ein Graph f&uuml;r den Netzwerkverkehr angezeigt wird. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Auslagerungsspeicher</guilabel>
+              </para>
+              <para>
+                Aktivieren Sie diese Option, damit ein Graph f&uuml;r die Belegung des Auslagerungsspeichers angezeigt wird. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Last</guilabel>
+              </para>
+              <para>
+                Aktivieren Sie diese Option, damit ein Graph f&uuml;r die durchschnittliche Systemlast angezeigt wird. 
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Optionen</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Breite des Systemmonitors</guilabel>
+              </para>
+              <para>
+                Mit diesem Drehfeld legen Sie die Breite der einzelnen Graphen im Applet <application>&applet;</application> fest.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Aktualisierungsintervall des Systemmonitors</guilabel>
+              </para>
+              <para>
+                Mit diesem Drehfeld legen Sie fest, in welchen Abst&auml;nden die Graphen aktualisiert werden sollen. 
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Farben</term>
+        <listitem>
+          <para>
+            Auf den Registerabschnitten der einzelnen Ressourcen finden Sie Schaltfl&auml;chen zur Farbauswahl, mit denen Sie die Farbparameter f&uuml;r die Darstellung der jeweiligen Ressource anpassen k&ouml;nnen.
+            N&auml;here Informationen zur Farbeinstellung finden Sie im Abschnitt <xref linkend="multiload-usage-colors"/>.
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>Prozessor</guilabel>
+              </para>
+              <para>
+                Dieser Registerabschnitt enth&auml;lt die Farbschaltfl&auml;chen 
+                <guilabel>Benutzer</guilabel>, 
+                <guilabel>System</guilabel>, 
+                <guilabel>Priorit&auml;t</guilabel> und 
+                <guilabel>Leerlauf</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Speicher</guilabel>
+              </para>
+              <para>
+                Dieser Registerabschnitt enth&auml;lt die Farbschaltfl&auml;chen 
+                <guilabel>Benutzer</guilabel>, 
+                <guilabel>Gemeinsam</guilabel>, 
+<guilabel>Puffer</guilabel>,
+                <guilabel>Zwischengespeichert</guilabel> und 
+                <guilabel>Frei</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Netzwerk</guilabel>
+              </para>
+              <para>
+                Dieser Registerabschnitt enth&auml;lt die Farbschaltfl&auml;chen 
+                <guilabel>SLIP</guilabel>, 
+                <guilabel>PLIP</guilabel>, 
+<guilabel>Ethernet</guilabel>,
+                <guilabel>Sonstige</guilabel> und 
+                <guilabel>Hintergrund</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Auslagerungsspeicher</guilabel>
+              </para>
+              <para>
+                Dieser Registerabschnitt enth&auml;lt die Farbschaltfl&auml;chen
+                <guilabel>Belegt</guilabel> und 
+                <guilabel>Frei</guilabel>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>Last</guilabel>
+              </para>
+              <para>
+                Dieser Registerabschnitt enth&auml;lt die Farbschaltfl&auml;chen
+                <guilabel>Lastmittel</guilabel> und 
+                <guilabel>Hintergrund</guilabel>.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect1>
+
+</article>

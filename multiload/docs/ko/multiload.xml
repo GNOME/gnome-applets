@@ -1,0 +1,440 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "November 2003">
+  <!ENTITY applet "System Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ko">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&applet; 애플릿 설명서 V&manrevision;</title>
+
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!-- translators: uncomment this:
+    <copyright>
+    <year>2002</year>
+    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+-->
+
+    <publisher> 
+      <publishername> 그놈 문서 프로젝트</publishername> 
+    </publisher> 
+
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+
+      <author>
+        <firstname>Sun</firstname>
+        <surname>그놈 문서 팀</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>그놈 문서 프로젝트</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address>
+	</affiliation>
+      </author>
+
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+    <revhistory>
+
+      <revision> 
+	<revnumber>시스템 감시기 애플릿 설명서 V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun 그놈 문서 팀</para>
+          <para role="publisher">그놈 문서 프로젝트</para>
+	</revdescription>
+      </revision>
+
+      <revision> 
+	<revnumber>시스템 감시기 애플릿 설명서 V2.0</revnumber> 
+	<date>2003년 7월</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para>
+	  <para role="publisher">그놈 문서 프로젝트</para>
+	</revdescription>
+      </revision>
+
+    </revhistory>
+
+    <releaseinfo> 이 설명서에서는 &applet;의 버전 &appletversion;에 대해 설명합니다.
+    </releaseinfo>
+    <legalnotice> 
+      <title>피드백</title>
+      <para> &applet; 애플릿 또는 이 설명서에 대한 버그를 보고하거나 의견을 제시하려면
+	     <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. 
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>&applet; 애플릿</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="multiload-introduction"> 
+    <title>소개</title>
+
+      <!-- ==== Figure ============================================= -->
+      <figure id="system-monitor-applet-fig"> 
+        <title>&applet; 애플릿</title>
+        <screenshot>
+        <mediaobject>
+          <imageobject><imagedata fileref="figures/system-monitor-applet_window.png"  			format="PNG"/> 
+          </imageobject>
+ 	  <textobject>
+ 	    <phrase>&applet; 애플릿을 표시합니다. 시스템 CPU 사용량에 대한 그래프를 표시합니다.
+            </phrase>
+          </textobject>
+        </mediaobject>
+	</screenshot>
+      </figure>
+      <!-- ==== End of Figure ======================================= -->
+
+      <para>
+        <application>&applet;</application> 애플릿은 시스템 사용량 정보를
+        패널에 그래픽 형식으로 표시합니다.
+        <application>&applet;</application>을(를) 구성하여
+        다음과 같은 시스템 정보를 표시할 수 있습니다.
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            CPU(중앙 처리 장치) 시간 사용량         </para>
+        </listitem>
+        <listitem>
+          <para>
+            메모리 사용량
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            네트워크 사용량
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            스왑 공간 사용량
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            평균 시스템 사용량
+          </para>
+        </listitem>
+      </itemizedlist>
+
+      <sect2 id="multiload-introduction-add">
+        <title>&applet;을(를) 패널에 추가하려면</title>
+        <para>
+          <application>&applet;</application>을(를) 패널에 추가하려면 다음 단계를 수행합니다.
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>
+              패널을 마우스 오른쪽 버튼으로 클릭합니다.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+             <menuchoice>
+               <guimenu>패널에 추가</guimenu>
+               <guisubmenu>유틸리티</guisubmenu>
+               <guimenuitem>&applet;</guimenuitem>
+             </menuchoice>을(를) 선택합니다. 
+            </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          <application>&applet;</application> 애플릿의 레이아웃은
+          애플릿이 위치한 패널의 크기와 종류에 따라 다릅니다.
+        </para>
+      </sect2>
+
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+<!-- Use this section to describe how to use the applet to perform the tasks for 
+     which the applet is designed. -->
+  <sect1 id="multiload-usage"> 
+    <title>사용</title>
+
+    <sect2 id="multiload-usage-graphs"> 
+      <title>추가 그래프를 표시하려면</title>
+      <para>
+        감시한 다양한 자원에 대한 그래프를 추가하는 방법에 대한 내용은
+        <xref linkend="multiload-prefs"/>을(를) 참조하십시오.
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-current"> 
+      <title>시스템 자원의 현재 사용량을 표시하려면</title>
+      <para>
+        시스템 자원의 현재 사용량을 표시하려면
+        애플릿에 있는 해당 그래프에 마우스 포인터를 놓습니다.
+        툴팁에 현재 사용량이 퍼센트로 표시됩니다.
+      </para>
+    </sect2>
+
+    <sect2 id="multiload-usage-colors"> 
+      <title>그래프에서 색상을 변경하려면</title>
+      <para>
+        그래프에서 색상을 변경하려면 다음 단계를 수행합니다.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 
+            <guimenuitem>환경 설정</guimenuitem>을 선택합니다.
+            <guilabel>시스템 감시기 환경 설정</guilabel> 대화 상자가 표시됩니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <guilabel>시스템 감시기 환경 설정</guilabel> 대화 상자의
+            <guilabel>색상</guilabel> 영역에서 관련 탭을 선택합니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            선택한 탭 섹션에서 관련 색상 버튼을 클릭합니다.
+            <guilabel>색상 선택</guilabel> 대화 상자가 표시됩니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <guilabel>팔레트</guilabel>에서 색상을 선택하거나
+            색상환이나 스핀 상자를 사용하여 색상을 사용자 정의합니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <guibutton>확인</guibutton>을 클릭하여
+            <guilabel>색상 선택</guilabel> 대화 상자를 닫습니다.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="multiload-usage-extra"> 
+      <title>추가 시스템 감시기 정보를 표시하려면</title>
+      <para>
+        추가 시스템 감시기 정보를 표시하려면 애플릿을 마우스 오른쪽 버튼으로
+        클릭한 다음 <guimenuitem>시스템 감시기 열기</guimenuitem>를 선택하여
+        <application>시스템 감시기</application> 응용프로그램을 시작합니다. 
+      </para>
+      <para>
+        <application>시스템 감시기</application> 응용프로그램을 통해
+        시스템 프로세스와 시스템 자원 사용량을 감시할 수 있습니다.
+        <application>시스템 감시기</application> 응용프로그램을 사용하여
+        시스템의 동작을 수정할 수 있습니다.
+      </para>
+    </sect2>
+
+  </sect1>
+
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs"> 
+    <title>환경 설정</title>
+    <para>
+      <application>&applet;</application>을(를) 구성하려면 애플릿을
+      마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다. 
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>감시한 자원</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>프로세서</guilabel>
+              </para>
+              <para>
+                이 옵션을 선택하면 CPU 사용량에 대한 그래프가 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>메모리</guilabel>
+              </para>
+              <para>
+                이 옵션을 선택하면 메모리 사용량에 대한 그래프가 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>네트워크</guilabel>
+              </para>
+              <para>
+                이 옵션을 선택하면 네트워크 사용량에 대한 그래프가 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>스왑 공간</guilabel>
+              </para>
+              <para>
+                이 옵션을 선택하면 스왑 공간 사용량에 대한 그래프가 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>사용량</guilabel>
+              </para>
+              <para>
+                이 옵션을 선택하면 평균 시스템 사용량에 대한 그래프가 표시됩니다.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>옵션</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>시스템 감시기 너비</guilabel>
+              </para>
+              <para>
+                이 스핀 상자를 사용하여 각 <application>&applet;</application>
+                그래프의 너비를 지정할 수 있습니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>시스템 감시기 갱신 간격</guilabel>
+              </para>
+              <para>
+                이 스핀 상자를 사용하여 그래프를 갱신할 간격을 지정할 수 있습니다.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>색상</term>
+        <listitem>
+          <para>
+            각 자원의 탭 섹션에는 각 자원의 매개변수 색상을 변경하는 데
+           사용할 수 있는 색상 선택 버튼이 있습니다.
+            색상 선택 버튼의 사용법에 대한 자세한 내용은
+            <xref linkend="multiload-usage-colors"/>을(를) 참조하십시오.
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <guilabel>프로세서</guilabel>
+              </para>
+              <para>
+                이 탭을 선택하면
+                <guilabel>사용자</guilabel>, 
+                <guilabel>시스템</guilabel>, 
+                <guilabel>우선순위</guilabel> 및
+                <guilabel>유휴</guilabel> 색상 버튼이 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>메모리</guilabel>
+              </para>
+              <para>
+                이 탭을 선택하면
+                <guilabel>사용자</guilabel>, 
+                <guilabel>공유</guilabel>, 
+                <guilabel>버퍼</guilabel>, 
+                <guilabel>캐시</guilabel> 및
+                <guilabel>여유</guilabel> 색상 버튼이 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>네트워크</guilabel>
+              </para>
+              <para>
+                이 탭을 선택하면
+                <guilabel>SLIP</guilabel>, 
+                <guilabel>PLIP</guilabel>, 
+                <guilabel>이더넷</guilabel>, 
+                <guilabel>그 외</guilabel> 및
+                <guilabel>배경</guilabel> 색상 버튼이 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>스왑 공간</guilabel>
+              </para>
+              <para>
+                이 탭을 선택하면
+                <guilabel>사용중</guilabel> 및 
+                <guilabel>여유</guilabel> 색상 버튼이 표시됩니다.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <guilabel>사용량</guilabel>
+              </para>
+              <para>
+                이 탭을 선택하면
+                <guilabel>평균 사용량</guilabel> 및 
+                <guilabel>배경</guilabel> 색상 버튼이 표시됩니다.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </sect1>
+
+</article>
