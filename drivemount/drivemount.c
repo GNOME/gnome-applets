@@ -193,6 +193,7 @@ applet_fill (PanelApplet *applet)
 	gchar *tmp_path;
 	
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/drivemount-applet.png");
+	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	
 	panel_applet_add_preferences (applet,
 				      "/schemas/apps/drivemount-applet/prefs",
@@ -713,7 +714,7 @@ update_pixmap (DriveData *dd, gint t)
 		text = _(" not mounted");
 	}
 	tiptext = g_strconcat (dd->mount_point, text, NULL);
-	gtk_tooltips_set_tip (dd->tooltips, dd->applet, tiptext, NULL);
+	gtk_tooltips_set_tip (dd->tooltips, dd->button, tiptext, NULL);
 	g_free (tiptext);
 }
 
