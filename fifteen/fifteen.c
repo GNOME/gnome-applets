@@ -17,6 +17,8 @@
 #define PIECE_FONT "5x8"
 #define SCRAMBLE_MOVES 256
 
+gboolean scrambled = FALSE; /* whether or not the board has been
+                               scrambled since the last win */
 unsigned moves = 0; /* player's moves so far */
 
 static void
@@ -35,6 +37,9 @@ test_win (GnomeCanvasItem **board)
 	int i;
 	gchar *buf;
 
+	if (!scrambled)
+		return;
+
 	for (i = 0; i < 15; i++)
 		if (!board[i] || (GPOINTER_TO_INT (gtk_object_get_data (GTK_OBJECT (board[i]), "piece_num")) != i))
 			return;
@@ -45,6 +50,7 @@ test_win (GnomeCanvasItem **board)
 	gnome_dialog_run (GNOME_DIALOG (dlg));
 	g_free(buf);
 	moves = 0;
+	scrambled = FALSE;
 }
 
 static char *
@@ -280,6 +286,8 @@ scramble (AppletWidget *applet, gpointer data)
 		pos = oldpos;
 	}
 	moves = 0;
+	scrambled = TRUE;
+
 	return;
 	applet = NULL;
 }
