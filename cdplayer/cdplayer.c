@@ -17,9 +17,10 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
-#include "gnome.h"
-#include "../panel_cmds.h"
-#include "../applet_cmds.h"
+#include <gnome.h>
+#include <gdk/gdkx.h>
+#include <applet-lib.h>
+#include <applet-widget.h>
 #include "../panel.h"
 
 #include "led.h"
@@ -35,9 +36,7 @@
 #define APPLET_ID "Cdplayer"
 #define TIMEOUT_VALUE 500
 
-static PanelCmdFunc panel_cmd_func;
-
-gpointer applet_cmd_func(AppletCommand *cmd);
+int applet_id=-1; /*this is our id we use to comunicate with the panel*/
 
 static void
 cd_panel_update(GtkWidget *cdplayer, CDPlayerData *cd)
@@ -231,8 +230,39 @@ destroy_cdplayer (GtkWidget *widget, void *data)
   g_free(cd);
 }
 
+/*these are commands sent over corba:*/
+void
+change_orient(int id, int orient)
+{
+	PanelOrientType o = (PanelOrientType)orient;
+	puts("CHANGE_ORIENT");
+}
+
+void
+session_save(int id, int panel, int pos)
+{
+	/*FIXME: save the position*/
+	puts("SESSION_SAVE");
+}
+
+static gint
+applet_die(gpointer data)
+{
+	exit(0);
+}
+
+void
+shutdown_applet(int id)
+{
+	puts("SHUTDOWN_APPLET");
+	/*kill our window*/
+	gtk_widget_unref(aw);
+	gtk_timeout_add(100,applet_die,NULL);
+	led_done();
+}
+
 static GtkWidget *
-create_cdplayer_widget (GtkWidget *window, char *params)
+create_cdplayer_widget (GtkWidget *window)
 {
   gchar *devpath;
   CDPlayerData    *cd;
@@ -268,67 +298,38 @@ create_cdplayer_widget (GtkWidget *window, char *params)
   return cdpanel;
 }
 
-static void
-create_instance (PanelWidget *panel, char *params, int pos)
+int
+main(int argc, char **argv)
 {
-  PanelCommand cmd;
-  GtkWidget *cdplayer;
+	GtkWidget *cdplayer;
+	char *result;
+	
+	gnome_init("cdplayer_applet", &argc, &argv);
 
-  cdplayer = create_cdplayer_widget (GTK_WIDGET(panel), params);
-  if (cdplayer == NULL)
-    return;
-  cmd.cmd = PANEL_CMD_REGISTER_TOY;
-  cmd.params.register_toy.applet = cdplayer;
-  cmd.params.register_toy.id     = APPLET_ID;
-  cmd.params.register_toy.pos   = pos;
-  cmd.params.register_toy.flags  = APPLET_HAS_PROPERTIES;
+	if (!gnome_panel_applet_init_corba (&argc, &argv)){
+		fprintf (stderr, "Could not comunicate with the panel\n");
+		exit (1);
+	}
 
-  (*panel_cmd_func) (&cmd);
-}
+	led_init();
 
-gpointer
-applet_cmd_func(AppletCommand *cmd)
-{
-  g_assert(cmd != NULL);
+	aw = applet_widget_new ();
 
-  switch (cmd->cmd) {
-  case APPLET_CMD_QUERY:
-    return APPLET_ID;
+	cdplayer = create_cdplayer_widget (GTK_WIDGET(panel));
+	gtk_widget_show(cdplayer);
+	applet_widget_add (APPLET_WIDGET (aw), cdplayer);
+	gtk_widget_show (aw);
 
-  case APPLET_CMD_INIT_MODULE:
-    panel_cmd_func = cmd->params.init_module.cmd_func;
-    led_init(GTK_WIDGET(cmd->panel));
-    break;
+	/*FIXME: do session saving, find out panel and pos from the panel
+		 so we can restore them on the next startup*/
+	result = gnome_panel_prepare_and_transfer(aw,argv[0],&applet_id,0,0);
+	printf ("Done\n");
+	if (result){
+		printf ("Could not talk to the Panel: %s\n", result);
+		exit (1);
+	}
 
-  case APPLET_CMD_DESTROY_MODULE:
-    led_done();
-    break;
+	applet_corba_gtk_main ("IDL:GNOME/Applet:1.0");
 
-  case APPLET_CMD_GET_DEFAULT_PARAMS:
-    return g_strdup("");
-
-  case APPLET_CMD_CREATE_INSTANCE:
-    create_instance(cmd->panel,
-		    cmd->params.create_instance.params,
-		    cmd->params.create_instance.pos);
-    break;
-
-  case APPLET_CMD_GET_INSTANCE_PARAMS:
-    return g_strdup("");
-
-  case APPLET_CMD_ORIENTATION_CHANGE_NOTIFY:
-    break;
-
-  case APPLET_CMD_PROPERTIES:
-    fprintf(stderr, "Clock properties not yet implemented\n"); /* FIXME */
-    break;
-
-  default:
-    fprintf(stderr,
-	    APPLET_ID " applet_cmd_func: Oops, unknown command type %d\n",
-	    (int) cmd->cmd);
-    break;
-  }
-
-  return NULL;
+	return 0;
 }

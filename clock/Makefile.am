@@ -3,7 +3,15 @@ INCLUDES =	 			\
 	-I$(srcdir)/../../..	 	\
 	-I$(includedir)
 
-lib_LTLIBRARIES = libpanel_clock.la
+bin_PROGRAMS = clock_applet
 
-libpanel_clock_la_SOURCES = 	\
-	clock.c
+clock_applet_SOURCES = \
+        clock.c         \
+        ../applet-lib.cc   \
+        ../applet-lib.h    \
+        ../applet-widget.c \
+        ../applet-widget.h \
+        ../$(CORBA_SOURCES)
+
+clock_applet_LDADD = $(GNOME_LIBDIR) $(MICO_LIBS) -lXt $(GNOMEUI_LIBS) $(INTLLIBS)
+

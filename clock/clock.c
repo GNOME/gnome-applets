@@ -17,23 +17,19 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
-#include "gnome.h"
-#include "../panel_cmds.h"
-#include "../applet_cmds.h"
+#include <gnome.h>
+#include <gdk/gdkx.h>
+#include <applet-lib.h>
+#include <applet-widget.h>
 #include "../panel.h"
-
-
-#define APPLET_ID "Clock"
 
 #define CLOCK_DATA "clock_data"
 
-
-static PanelCmdFunc panel_cmd_func;
-
-gpointer applet_cmd_func(AppletCommand *cmd);
-
-
 typedef void (*ClockUpdateFunc) (GtkWidget *clock, time_t current_time);
+
+GtkWidget *aw;
+
+int applet_id=-1; /*this is our id we use to comunicate with the panel*/
 
 
 typedef struct {
@@ -143,7 +139,7 @@ destroy_clock (GtkWidget *widget, void *data)
 }
 
 static GtkWidget *
-create_clock_widget (GtkWidget *window, char *params)
+create_clock_widget (GtkWidget *window)
 {
 	ClockData       *cd;
 	GtkWidget       *clock;
@@ -151,10 +147,7 @@ create_clock_widget (GtkWidget *window, char *params)
 
 	cd = g_new(ClockData, 1);
 
-	/* FIXME: for now we ignore the params (which maybe specify
-	 * the clock type) and just create a simple computer clock
-	 */
-
+	/*FIXME: different clock types here*/
 	create_computer_clock_widget(&clock, &cd->update_func);
 
 	/* Install timeout handler */
@@ -166,7 +159,6 @@ create_clock_widget (GtkWidget *window, char *params)
 	gtk_signal_connect(GTK_OBJECT(clock), "destroy",
 			   (GtkSignalFunc) destroy_clock,
 			   NULL);
-
 	/* Call the clock's update function so that it paints its first state */
 
 	time(&current_time);
@@ -176,63 +168,67 @@ create_clock_widget (GtkWidget *window, char *params)
 	return clock;
 }
 
-static void
-create_instance (PanelWidget *panel, char *params, int pos)
+/*these are commands sent over corba:*/
+void
+change_orient(int id, int orient)
 {
-	PanelCommand cmd;
-	GtkWidget *clock;
-
-	clock = create_clock_widget (GTK_WIDGET(panel), params);
-	cmd.cmd = PANEL_CMD_REGISTER_TOY;
-	cmd.params.register_toy.applet = clock;
-	cmd.params.register_toy.id     = APPLET_ID;
-	cmd.params.register_toy.pos    = pos;
-	cmd.params.register_toy.flags  = APPLET_HAS_PROPERTIES;
-
-	(*panel_cmd_func) (&cmd);
+	PanelOrientType o = (PanelOrientType)orient;
+	puts("CHANGE_ORIENT");
 }
 
-gpointer
-applet_cmd_func(AppletCommand *cmd)
+void
+session_save(int id, int panel, int pos)
 {
-	g_assert(cmd != NULL);
+	/*FIXME: save the position*/
+	puts("SESSION_SAVE");
+}
 
-	switch (cmd->cmd) {
-		case APPLET_CMD_QUERY:
-			return APPLET_ID;
+static gint
+applet_die(gpointer data)
+{
+	exit(0);
+}
 
-		case APPLET_CMD_INIT_MODULE:
-			panel_cmd_func = cmd->params.init_module.cmd_func;
-			break;
+void
+shutdown_applet(int id)
+{
+	puts("SHUTDOWN_APPLET");
+	/*kill our window*/
+	gtk_widget_unref(aw);
+	gtk_timeout_add(100,applet_die,NULL);
+}
 
-		case APPLET_CMD_DESTROY_MODULE:
-			break;
 
-		case APPLET_CMD_GET_DEFAULT_PARAMS:
-			return g_strdup("");
+int
+main(int argc, char **argv)
+{
+	GtkWidget *clock;
+	char *result;
+	
+	gnome_init("clock_applet", &argc, &argv);
 
-		case APPLET_CMD_CREATE_INSTANCE:
-			create_instance(cmd->panel,
-					cmd->params.create_instance.params,
-					cmd->params.create_instance.pos);
-			break;
-
-		case APPLET_CMD_GET_INSTANCE_PARAMS:
-			return g_strdup("");
-
-		case APPLET_CMD_ORIENTATION_CHANGE_NOTIFY:
-			break;
-
-		case APPLET_CMD_PROPERTIES:
-			fprintf(stderr, "Clock properties not yet implemented\n"); /* FIXME */
-			break;
-
-		default:
-			fprintf(stderr,
-				APPLET_ID " applet_cmd_func: Oops, unknown command type %d\n",
-				(int) cmd->cmd);
-			break;
+	if (!gnome_panel_applet_init_corba (&argc, &argv)){
+		fprintf (stderr, "Could not comunicate with the panel\n");
+		exit (1);
 	}
 
-	return NULL;
+	aw = applet_widget_new ();
+
+	clock = create_clock_widget (GTK_WIDGET(aw));
+	gtk_widget_show(clock);
+	applet_widget_add (APPLET_WIDGET (aw), clock);
+	gtk_widget_show (aw);
+
+	/*FIXME: do session saving, find out panel and pos from the panel
+		 so we can restore them on the next startup*/
+	result = gnome_panel_prepare_and_transfer(aw,argv[0],&applet_id,0,0);
+	printf ("Done\n");
+	if (result){
+		printf ("Could not talk to the Panel: %s\n", result);
+		exit (1);
+	}
+
+	applet_corba_gtk_main ("IDL:GNOME/Applet:1.0");
+
+	return 0;
 }
