@@ -1,3 +1,26 @@
+2003-10-20  Jody Goldberg <jody@gnome.org>
+
+	* applet.c : gdk_pixbuf_composite fixing.
+	1) The dest_{width, height} correspond to the amount of src you want
+	   to draw onto the dest.
+	2) a negative offset moves you outside the source pixbuf.  Not sure
+	   what you were trying to do here.
+	3) PangoLayouts are GObjects you can just unref them
+	(dialog_cb) : PanelApplet is not a GtkWindow.
+
+2003-10-15  Jody Goldberg <jody@gnome.org>
+
+	* applet.c (timer_reset_slowkeys_image) : gtk_image_set_from_pixbuf
+	  adds a ref, it does not assume it.  We need to unref to avoid a leak.
+	(timer_reset_bouncekeys_image) : ditto.
+	(accessx_status_applet_update) : put down the crack pipe, step away
+	  from the keyboard and _RTFM_.  The image takes care of it's own ref
+	  counting we don't need to free that, what we do need to free are the
+	  newly created images from the accessx_status_applet_*_image routines
+	  that gtk_image_set_from_pixbuf has just added a reference to.
+	(create_applet) : gtk_image_new_from_pixbuf _adds_ a reference we
+	  still need to unref.
+
 Mon Sep 15 15:15:08 2003  George Lebl <jirka@5z.com>
 
 	* applet.c: when started in lockdown mode, hide the access x

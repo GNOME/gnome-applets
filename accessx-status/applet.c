@@ -214,7 +214,7 @@ dialog_cb (BonoboUIComponent *component,
 	GError *err = NULL;
 	if (!g_spawn_command_line_async ("gnome-accessibility-keyboard-properties", &err)) {
 		GtkWidget *dialog = 
-			gtk_message_dialog_new (GTK_WINDOW (sapplet->applet),
+			gtk_message_dialog_new (NULL,
 						GTK_DIALOG_DESTROY_WITH_PARENT,
 						GTK_MESSAGE_ERROR,
 						GTK_BUTTONS_CLOSE,
@@ -340,6 +340,7 @@ timer_reset_slowkeys_image (gpointer user_data)
 						    NULL);
 	
 	gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf); 
+	g_object_unref (pixbuf);
 
 	return FALSE;
 }
@@ -353,6 +354,7 @@ timer_reset_bouncekeys_image (gpointer user_data)
 						    NULL);
 	
 	gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf); 
+	g_object_unref (pixbuf);
 
 	return FALSE;
 }
@@ -401,7 +403,7 @@ accessx_status_applet_get_glyph_pixbuf (AccessxStatusApplet *sapplet,
 			 (w - ink.x - ink.width)/2, 
 			 (h - ink.y - ink.height)/2,
 			 layout);
-	/* pango_layout_free (layout); Q: how do you free a PangoLayout? */
+	g_object_unref (layout);
 	glyph_pixbuf = gdk_pixbuf_get_from_drawable (NULL, pixmap, 
 						     cmap, 0, 0, 0, 0, w, h);
 	gdk_pixmap_unref (pixmap);
@@ -455,7 +457,6 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 					    stock_id,
 					    icon_size_spec,
 					    NULL);
-	/* Q: did rendering the icon increment a ref count? */
 	if (!is_idle) {
 		GdkPixbuf *glyph_pixbuf;
 		GdkColor  fg;
@@ -471,7 +472,6 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 				glyphstring = "";
 		}
 		fg = style->fg[GTK_WIDGET_STATE (sapplet->applet)];
-		icon_base = gdk_pixbuf_copy (icon_base);
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
 								       GTK_WIDGET (sapplet->applet),
 								       icon_base, 
@@ -479,9 +479,9 @@ accessx_status_applet_slowkeys_image (AccessxStatusApplet *sapplet,
 								       &bg,
 								       glyphstring);
 		gdk_pixbuf_composite (glyph_pixbuf, icon_base, 0, 0, 
-				      gdk_pixbuf_get_width (icon_base),
-				      gdk_pixbuf_get_height (icon_base), 
-				      0.0, -1.0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+				      gdk_pixbuf_get_width (glyph_pixbuf),
+				      gdk_pixbuf_get_height (glyph_pixbuf), 
+				      0., 0., 1.0, 1.0, GDK_INTERP_NEAREST, 255);
 		gdk_pixbuf_unref (glyph_pixbuf);
 	}
 	return icon_base;
@@ -521,7 +521,6 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 					    NULL);
 	if (icon_base) {
 		GdkPixbuf   *glyph_pixbuf;
-		icon_base = gdk_pixbuf_copy (icon_base);
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
 								       GTK_WIDGET (sapplet->applet),
 								       icon_base, 
@@ -529,13 +528,9 @@ accessx_status_applet_bouncekeys_image (AccessxStatusApplet *sapplet, XkbAccessX
 								       &bg,
 								       glyphstring);
 		gdk_pixbuf_composite (glyph_pixbuf, icon_base, 0, 0, 
-				      gdk_pixbuf_get_width (icon_base),
-				      gdk_pixbuf_get_height (icon_base), 
-				      -1.0, -3.0, 1.0, 1.0, GDK_INTERP_NEAREST, 63);
-		gdk_pixbuf_composite (glyph_pixbuf, icon_base, 0, 0, 
-				      gdk_pixbuf_get_width (icon_base),
-				      gdk_pixbuf_get_height (icon_base), 
-				      1.0, -1.0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
+				      gdk_pixbuf_get_width (glyph_pixbuf),
+				      gdk_pixbuf_get_height (glyph_pixbuf), 
+				      0., 0., 1.0, 1.0, GDK_INTERP_NEAREST, 255);
 		gdk_pixbuf_unref (glyph_pixbuf);
 	}
 	return icon_base;
@@ -550,8 +545,6 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 					       MOUSEKEYS_BASE_ICON,
 					       icon_size_spec, 
 					       NULL);
-	/* Q: does rendering the icon increment a refcount? */
-	mouse_pixbuf = gdk_pixbuf_copy (mouse_pixbuf);
 	/* composite in the buttons */
 	if (mouse_pixbuf && event && event->ptr_buttons) {
 		gint i;
@@ -563,8 +556,8 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 									NULL);
 				/* Q: does rendering the icon increment a ref count ? */
 				gdk_pixbuf_composite (button_pixbuf, mouse_pixbuf, 0, 0, 
-						      gdk_pixbuf_get_width (mouse_pixbuf),
-						      gdk_pixbuf_get_height (mouse_pixbuf), 
+						      gdk_pixbuf_get_width (button_pixbuf),
+						      gdk_pixbuf_get_height (button_pixbuf), 
 						      0.0, 0.0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
 			}
 		}
@@ -589,8 +582,8 @@ accessx_status_applet_mousekeys_image (AccessxStatusApplet *sapplet, XkbStateNot
 					     NULL);
 	/* Q: does rendering the icon increment a ref count ? */
 	gdk_pixbuf_composite (dot_pixbuf, mouse_pixbuf, 0, 0, 
-			      gdk_pixbuf_get_width (mouse_pixbuf),
-			      gdk_pixbuf_get_height (mouse_pixbuf), 
+			      gdk_pixbuf_get_width (dot_pixbuf),
+			      gdk_pixbuf_get_height (dot_pixbuf), 
 			      0.0, 0.0, 1.0, 1.0, GDK_INTERP_NEAREST, 255);
 	return mouse_pixbuf;
 }
@@ -633,29 +626,22 @@ accessx_status_applet_update (AccessxStatusApplet *sapplet,
 		}
 	}
 	if ((notify_type & ACCESSX_STATUS_SLOWKEYS) && (event != NULL)) {
-		GdkPixbuf *pixbuf =
-			gtk_image_get_pixbuf (GTK_IMAGE (sapplet->slowfoo));
-		if (pixbuf)
-			gdk_pixbuf_unref (pixbuf);
-		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->slowfoo), 
-					   accessx_status_applet_slowkeys_image (
-						   sapplet, &event->accessx));
+		GdkPixbuf *pixbuf = accessx_status_applet_slowkeys_image (
+			sapplet, &event->accessx);
+		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->slowfoo), pixbuf);
+		g_object_unref (pixbuf);
 	}
 	if ((notify_type & ACCESSX_STATUS_BOUNCEKEYS) && (event != NULL)) {
-		GdkPixbuf *pixbuf =
-			gtk_image_get_pixbuf (GTK_IMAGE (sapplet->bouncefoo));
-		if (pixbuf)
-			gdk_pixbuf_unref (pixbuf);
-		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->bouncefoo), 
-					   accessx_status_applet_bouncekeys_image (sapplet, &event->accessx));
+		GdkPixbuf *pixbuf = accessx_status_applet_bouncekeys_image (
+			sapplet, &event->accessx);
+		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->bouncefoo), pixbuf);
+		g_object_unref (pixbuf);
 	}
 	if (notify_type & ACCESSX_STATUS_MOUSEKEYS) {
-		GdkPixbuf *pixbuf =
-			gtk_image_get_pixbuf (GTK_IMAGE (sapplet->mousefoo));
-		if (pixbuf)
-			gdk_pixbuf_unref (pixbuf);
-		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->mousefoo), 
-					   accessx_status_applet_mousekeys_image (sapplet, &event->state));
+		GdkPixbuf *pixbuf = accessx_status_applet_mousekeys_image (
+			sapplet, &event->state);
+		gtk_image_set_from_pixbuf (GTK_IMAGE (sapplet->mousefoo),  pixbuf);
+		gdk_pixbuf_unref (pixbuf);
 	}
 
 	if (notify_type & ACCESSX_STATUS_ENABLED) {
@@ -806,7 +792,6 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 	gint         i;
 	GtkStateType states[3] = {GTK_STATE_NORMAL, GTK_STATE_INSENSITIVE, GTK_STATE_SELECTED};
 	GtkStyle    *style = gtk_widget_get_style (widget);
-	GdkPixbuf   *icon_base;
 
 	for (i = 0; i < 3; ++i) {
 		int alpha;
@@ -838,13 +823,8 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 			gtk_widget_set_sensitive (widget, FALSE);
 			break;
 		}
-		icon_base = 
-			gtk_widget_render_icon (widget,
-						ACCESSX_BASE_ICON,
-						icon_size_spec,
-						NULL);
-		pixbuf = gdk_pixbuf_copy (icon_base);
-		gdk_pixbuf_unref (icon_base);
+		pixbuf = gtk_widget_render_icon (widget,
+			ACCESSX_BASE_ICON, icon_size_spec, NULL);
 		glyph_pixbuf = accessx_status_applet_get_glyph_pixbuf (sapplet, 
 								       widget,
 								       pixbuf, 
@@ -856,9 +836,9 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 					*/
 								       ("æ"));
 		gdk_pixbuf_composite (glyph_pixbuf, pixbuf, 0, 0, 
-				      gdk_pixbuf_get_width (pixbuf),
-				      gdk_pixbuf_get_height (pixbuf),
-				      0.0, -1.0, 1.0, 1.0, GDK_INTERP_NEAREST, alpha);
+				      gdk_pixbuf_get_width (glyph_pixbuf),
+				      gdk_pixbuf_get_height (glyph_pixbuf),
+				      0., 0., 1.0, 1.0, GDK_INTERP_NEAREST, alpha);
 		gdk_pixbuf_unref (glyph_pixbuf);
 		gtk_icon_source_set_pixbuf (source, pixbuf);
 		gtk_icon_source_set_state (source, states[i]);
@@ -997,6 +977,7 @@ create_applet (PanelApplet *applet)
 	AccessxStatusApplet *sapplet = g_new0 (AccessxStatusApplet, 1);
 	GtkWidget           *box, *stickyfoo;
 	AtkObject           *atko;
+	GdkPixbuf	    *pixbuf;
         gint                 large_toolbar_pixels;
 		
 	sapplet->xkb = NULL;
@@ -1022,9 +1003,11 @@ create_applet (PanelApplet *applet)
 		icon_size_spec = GTK_ICON_SIZE_SMALL_TOOLBAR;
   
 	accessx_applet_add_stock_icons (sapplet, box);
-	sapplet->mousefoo = gtk_image_new_from_pixbuf (
-		accessx_status_applet_mousekeys_image (sapplet, NULL));
+	pixbuf = accessx_status_applet_mousekeys_image (sapplet, NULL);
+	sapplet->mousefoo = gtk_image_new_from_pixbuf (pixbuf);
+	g_object_unref (pixbuf);
 	gtk_widget_hide (sapplet->mousefoo);
+
 	sapplet->shift_indicator = 
 		gtk_image_new_from_stock (SHIFT_KEY_ICON, icon_size_spec); 
 	gtk_widget_hide (sapplet->mousefoo);
@@ -1047,12 +1030,17 @@ create_applet (PanelApplet *applet)
 	sapplet->alt_graph_indicator =
 		gtk_image_new_from_stock (ALTGRAPH_KEY_ICON, icon_size_spec);
 	gtk_widget_set_sensitive (sapplet->alt_graph_indicator, FALSE);
-	sapplet->slowfoo = gtk_image_new_from_pixbuf (
-		accessx_status_applet_slowkeys_image (sapplet, NULL));
+
+	pixbuf = accessx_status_applet_slowkeys_image (sapplet, NULL);
+	sapplet->slowfoo = gtk_image_new_from_pixbuf (pixbuf);
+	g_object_unref (pixbuf);
 	gtk_widget_hide (sapplet->slowfoo);
-	sapplet->bouncefoo = gtk_image_new_from_pixbuf (
-		accessx_status_applet_bouncekeys_image (sapplet, NULL));
+
+	pixbuf = accessx_status_applet_bouncekeys_image (sapplet, NULL);
+	sapplet->bouncefoo = gtk_image_new_from_pixbuf (pixbuf);
+	g_object_unref (pixbuf);
 	gtk_widget_hide (sapplet->bouncefoo);
+
 	sapplet->idlefoo = gtk_image_new_from_stock (ACCESSX_APPLET, icon_size_spec);
 	gtk_widget_show (sapplet->slowfoo);
 
@@ -1195,6 +1183,8 @@ accessx_status_applet_fill (PanelApplet *applet)
 	gtk_widget_show_all (GTK_WIDGET (sapplet->applet));
 	/* hack for race insurance */
 	g_timeout_add (1000, accessx_status_applet_reset, sapplet);
+
+	return TRUE;
 }
 
 static gboolean
