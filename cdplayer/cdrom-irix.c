@@ -1,14 +1,14 @@
-/* Time-stamp: "Wed  6 Oct 1999, 12:05:30 EDT by drk@sgi.com (David Kaelbling)"
+/* Time-stamp: "Thu 15 Mar 2001, 18:45:10 EST by drk@sgi.com (David Kaelbling)"
  *
  * SGI IRIX 6.x cdrom player guts.
  *
  * Known bugs:
  * - Output is through the CD headphone jack only.  Output via libaudio
- *     isn't hard (see "man cdintro" for an example), but that's not
- *     how this program behaves on other systems.
+ *	isn't hard (see "man cdintro" for an example), but that's not
+ *	how this program behaves on other systems.
  * - You'll need the Development Libraries (dev.sw.lib) to link.
  * - The CD device must be deprotected in /etc/ioperms with ioconfig.
- *     Making cdplayer_applet suid causes problems in ~/.gnome_private.
+ *	Making cdplayer_applet suid causes problems in ~/.gnome_private.
  */
 
 #include <stdlib.h>
@@ -175,7 +175,7 @@ cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat)
 
   /* Translate the audio status. */
   switch (drive_status.state) {
-  case CD_CDROM:               /* This is not an audio disc. */
+  case CD_CDROM:		/* This is not an audio disc. */
   case CD_ERROR:
     stat->audio_status = DISC_ERROR;
     return DISC_IO_ERROR;

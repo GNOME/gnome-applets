@@ -33,6 +33,6 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 
 man_MANS = cdplayer_applet.1
 
-EXTRA_DIST = cdrom-linux.c cdrom-solaris.c 	\
+EXTRA_DIST = cdrom-linux.c cdrom-solaris.c cdrom-irix.c	\
 	     $(gnorba_DATA) $(sys_DATA)		\
 	     $(sys_predata) $(man_MANS)
