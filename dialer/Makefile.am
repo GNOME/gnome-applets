@@ -31,6 +31,6 @@ EXTRA_DIST = dialer_applet.desktop
 sysdir = $(datadir)/applets/Network
 sys_DATA = dialer_applet.desktop
 
-#dist-hook:
-#	mkdir $(distdir)/images
-#	cp $(srcdir)/images/*.xpm $(distdir)/images
+dist-hook:
+	mkdir $(distdir)/images
+	cp $(srcdir)/images/*.xpm $(distdir)/images
