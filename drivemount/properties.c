@@ -109,8 +109,7 @@ static gint property_destroy_cb( GtkWidget *w, DriveData *dd)
 
 void property_show(AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { "drivemount_applet",
-						 "properties" };
+        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 	DriveData *dd = data;
 	GtkWidget *frame;
 	GtkWidget *hbox;
@@ -120,6 +119,8 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *item;
 	GtkObject *delay_adj;
 	GtkWidget *button;
+
+	help_entry.name = gnome_app_id;
 
 	if(dd->propwindow)
 		{
@@ -214,7 +215,7 @@ void property_show(AppletWidget *applet, gpointer data)
 			    GTK_SIGNAL_FUNC(property_destroy_cb), dd );
 
 	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "help",
-			    GTK_SIGNAL_FUNC(property_destroy_cb),
+			    GTK_SIGNAL_FUNC(gnome_help_pbox_display),
 			    &help_entry );
 
         gtk_widget_show_all(dd->propwindow);
