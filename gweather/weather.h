@@ -32,6 +32,7 @@ struct _WeatherLocation {
     gchar *code;
     gchar *zone;
     gchar *radar;
+    gboolean zone_valid;
 };
 
 

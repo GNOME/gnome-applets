@@ -289,39 +289,44 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_widget_show (current_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 0), current_note_lbl);
 
-  forecast_hbox = gtk_hbox_new(FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (forecast_hbox), 12);
-  gtk_widget_show (forecast_hbox);
+  if (gw_applet->gweather_pref.location->zone_valid) {
 
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-				  GTK_POLICY_AUTOMATIC,
-				  GTK_POLICY_AUTOMATIC);
-  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window),
-		  		       GTK_SHADOW_ETCHED_IN);
+      forecast_hbox = gtk_hbox_new(FALSE, 0);
+      gtk_container_set_border_width (GTK_CONTAINER (forecast_hbox), 12);
+      gtk_widget_show (forecast_hbox);
 
-  gw_applet->forecast_text = gtk_text_view_new ();
-  set_access_namedesc (gw_applet->forecast_text, _("Forecast Report"),                                                             _("See the ForeCast Details"));
-  gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->forecast_text);
-  gtk_text_view_set_editable (GTK_TEXT_VIEW (gw_applet->forecast_text), FALSE);
-  gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), 6);
-  gtk_widget_show (gw_applet->forecast_text);
-  gtk_widget_show (scrolled_window);
-  gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
+      scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+                                      GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+      gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window),
+                                           GTK_SHADOW_ETCHED_IN);
 
-  gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
+      gw_applet->forecast_text = gtk_text_view_new ();
+      set_access_namedesc (gw_applet->forecast_text, _("Forecast Report"), _("See the ForeCast Details"));
+      gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->forecast_text);
+      gtk_text_view_set_editable (GTK_TEXT_VIEW (gw_applet->forecast_text), FALSE);
+      gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), 6);
+      gtk_widget_show (gw_applet->forecast_text);
+      gtk_widget_show (scrolled_window);
+      gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
 
-  forecast_note_lbl = gtk_label_new (_("Forecast"));
-  gtk_widget_show (forecast_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
+      gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
+
+      forecast_note_lbl = gtk_label_new (_("Forecast"));
+      gtk_widget_show (forecast_note_lbl);
+      gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
+
+  }
 
   if (gw_applet->gweather_pref.radar_enabled) {
 
+      radar_note_lbl = gtk_label_new_with_mnemonic (_("Radar Map"));
+      gtk_widget_show (radar_note_lbl);
+
       radar_vbox = gtk_vbox_new (FALSE, 6);
       gtk_widget_show (radar_vbox);
-      gtk_container_add (GTK_CONTAINER (weather_notebook), radar_vbox);
+      gtk_notebook_append_page (GTK_NOTEBOOK (weather_notebook), radar_vbox, radar_note_lbl);
       gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
-
 
       ebox = gtk_event_box_new ();
       gtk_widget_show (ebox);
@@ -337,7 +342,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_box_pack_start (GTK_BOX (radar_vbox), radar_link_alignment, FALSE, FALSE, 0);
 
       radar_link_btn = gtk_button_new_with_mnemonic (_("_Visit Weather.com"));
-      set_access_namedesc (radar_link_btn, _("URL link Button"),                                                            _("Click to Enter Weather.com"));
+      set_access_namedesc (radar_link_btn, _("URL link Button"), _("Click to Enter Weather.com"));
       gtk_widget_set_usize(radar_link_btn, 450, -2);
       gtk_widget_show (radar_link_btn);
       gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
@@ -345,9 +350,6 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_signal_connect (GTK_OBJECT (radar_link_btn), "clicked",
                           GTK_SIGNAL_FUNC (link_cb), NULL);
 
-      radar_note_lbl = gtk_label_new_with_mnemonic (_("Radar Map"));
-      gtk_widget_show (radar_note_lbl);
-      gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 2), radar_note_lbl);
   }
 
   g_signal_connect (G_OBJECT (gw_applet->gweather_dialog), "response",
@@ -415,15 +417,14 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_vis), weather_info_get_visibility(gw_applet->gweather_info));
 
     /* Update forecast */
-    buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (gw_applet->forecast_text));
-    forecast = weather_info_get_forecast(gw_applet->gweather_info);
-    if (forecast) {
-        gtk_text_buffer_set_text(buffer, forecast, -1);
-    } else {
-        if (gw_applet->gweather_pref.detailed)
-            gtk_text_buffer_set_text(buffer, _("Detailed forecast not available for this location.\nPlease try the state forecast; note that IWIN forecasts are available only for US cities."), -1);
-        else
-            gtk_text_buffer_set_text(buffer, _("State forecast not available for this location.\nPlease try the detailed forecast; note that IWIN forecasts are available only for US cities."), -1);
+    if (gw_applet->gweather_pref.location->zone_valid) {
+        buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (gw_applet->forecast_text));
+        forecast = weather_info_get_forecast(gw_applet->gweather_info);
+        if (forecast) {
+            gtk_text_buffer_set_text(buffer, forecast, -1);
+        } else {
+            gtk_text_buffer_set_text(buffer, _("Forecast not currently available for this location."), -1);
+        }
     }
 
     /* Update radar map */

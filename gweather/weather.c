@@ -77,6 +77,12 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
     location->zone = g_strdup(zone);
     location->radar = g_strdup(radar);
 
+    if (zone[0] == '-') {
+        location->zone_valid = FALSE;
+    } else {
+        location->zone_valid = TRUE;
+    }
+
     return location;
 }
 
