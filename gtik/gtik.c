@@ -18,8 +18,6 @@
  *
  */
 
-#define GTIK_APPLET_NAME	"gtik2_applet"
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

@@ -1,6 +1,7 @@
 
 INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-		 -I$(includedir)  $(GNOME_INCLUDEDIR)
+		 -I$(includedir)  $(GNOME_INCLUDEDIR) \
+		 -DGTIK_APPLET_NAME=\"gtik2_applet\"
 
 bin_PROGRAMS = gtik2_applet
 
