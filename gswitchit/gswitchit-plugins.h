@@ -22,15 +22,13 @@
 #include "libgswitchit/gswitchit_plugin_manager.h"
 #include "libgswitchit/gswitchit_util.h"
 
-typedef struct _GSwitchItPluginsCapplet
-{
-  GSwitchItPluginContainer pluginContainer;
-  GtkWidget *capplet;
-  GSwitchItAppletConfig appletConfig;
-  GSwitchItXkbConfig xkbConfig;
-  GSwitchItPluginManager pluginManager;
-}
-GSwitchItPluginsCapplet;
+typedef struct _GSwitchItPluginsCapplet {
+	GSwitchItPluginContainer pluginContainer;
+	GtkWidget *capplet;
+	GSwitchItAppletConfig appletConfig;
+	GSwitchItXkbConfig xkbConfig;
+	GSwitchItPluginManager pluginManager;
+} GSwitchItPluginsCapplet;
 
 #define NAME_COLUMN 0
 #define FULLPATH_COLUMN 1
@@ -41,12 +39,13 @@ GSwitchItPluginsCapplet;
                                   "gladeData" ) ), \
     name )
 
-extern void CappletFillActivePluginList( GSwitchItPluginsCapplet * gswic );
+extern void CappletFillActivePluginList (GSwitchItPluginsCapplet * gswic);
 
-extern char *CappletGetSelectedPluginPath( GtkTreeView * pluginsList,
-                                           GSwitchItPluginsCapplet * gswic );
+extern char *CappletGetSelectedPluginPath (GtkTreeView * pluginsList,
+					   GSwitchItPluginsCapplet *
+					   gswic);
 
-extern void CappletEnablePlugin( GtkWidget * btnAdd,
-                                 GSwitchItPluginsCapplet * gswic );
+extern void CappletEnablePlugin (GtkWidget * btnAdd,
+				 GSwitchItPluginsCapplet * gswic);
 
 #endif

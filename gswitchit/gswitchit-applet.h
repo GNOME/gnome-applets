@@ -20,31 +20,30 @@
 #include "libgswitchit/gswitchit_applet_config.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 
-typedef struct _GSwitchItApplet
-{
-  GSwitchItPluginContainer pluginContainer;
+typedef struct _GSwitchItApplet {
+	GSwitchItPluginContainer pluginContainer;
 
-  GSwitchItAppletConfig appletConfig;
-  GSwitchItXkbConfig xkbConfig;
-  GSwitchItPluginManager pluginManager;
+	GSwitchItAppletConfig appletConfig;
+	GSwitchItXkbConfig xkbConfig;
+	GSwitchItPluginManager pluginManager;
 
-  GtkWidget *applet;
-  GtkWidget *aboutDialog;
-  GtkWidget *propsDialog;
+	GtkWidget *applet;
+	GtkWidget *aboutDialog;
+	GtkWidget *propsDialog;
 
-  GroupDescriptionsBuffer groupNames;
+	GroupDescriptionsBuffer groupNames;
 } GSwitchItApplet;
 
-extern void GSwitchItAppletRevalidate( GSwitchItApplet * sia );
-extern void GSwitchItAppletRevalidateGroup( GSwitchItApplet * sia,
-                                            int group );
+extern void GSwitchItAppletRevalidate (GSwitchItApplet * sia);
+extern void GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia,
+					    int group);
 
-extern void GSwitchItAppletReinitUi( GSwitchItApplet * sia );
+extern void GSwitchItAppletReinitUi (GSwitchItApplet * sia);
 
-extern GdkFilterReturn GSwitchItAppletFilterXEvt( GdkXEvent * xevent,
-                                                  GdkEvent * event,
-                                                  GSwitchItApplet * sia );
+extern GdkFilterReturn GSwitchItAppletFilterXEvt (GdkXEvent * xevent,
+						  GdkEvent * event,
+						  GSwitchItApplet * sia);
 
-extern void GSwitchItAppletPropsCreate( GSwitchItApplet * sia );
+extern void GSwitchItAppletPropsCreate (GSwitchItApplet * sia);
 
 #endif

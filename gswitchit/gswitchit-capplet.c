@@ -38,257 +38,276 @@
                                   GLADE_DATA_PROP ) ), \
     name )
 
-static void CappletUI2Config( GSwitchItApplet * sia )
+static void
+CappletUI2Config (GSwitchItApplet * sia)
 {
-  int i = XklGetNumGroups(  );
-  int mask = 1 << ( i - 1 );
+	int i = XklGetNumGroups ();
+	int mask = 1 << (i - 1);
 
-  for( ; --i >= 0; mask >>= 1 )
-  {
-    char sz[30];
-    GtkWidget *sec;
+	for (; --i >= 0; mask >>= 1) {
+		char sz[30];
+		GtkWidget *sec;
 
-    g_snprintf( sz, sizeof( sz ), "secondary.%d", i );
-    sec = GTK_WIDGET( gtk_object_get_data
-                      ( GTK_OBJECT( sia->propsDialog ), sz ) );
+		g_snprintf (sz, sizeof (sz), "secondary.%d", i);
+		sec = GTK_WIDGET (gtk_object_get_data
+				  (GTK_OBJECT (sia->propsDialog), sz));
 
-    if( gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON( sec ) ) )
-      sia->appletConfig.secondaryGroupsMask |= mask;
-    else
-      sia->appletConfig.secondaryGroupsMask &= ~mask;
-  }
+		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (sec)))
+			sia->appletConfig.secondaryGroupsMask |= mask;
+		else
+			sia->appletConfig.secondaryGroupsMask &= ~mask;
+	}
 
-  sia->appletConfig.groupPerApp =
-    gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON
-                                  ( CappletGetGladeWidget( sia,
-                                                           "groupPerApp" ) ) );
+	sia->appletConfig.groupPerApp =
+	    gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+					  (CappletGetGladeWidget (sia,
+								  "groupPerApp")));
 
-  sia->appletConfig.handleIndicators =
-    gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON
-                                  ( CappletGetGladeWidget( sia,
-                                                           "handleIndicators" ) ) );
+	sia->appletConfig.handleIndicators =
+	    gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+					  (CappletGetGladeWidget (sia,
+								  "handleIndicators")));
 
-  sia->appletConfig.showFlags =
-    gtk_toggle_button_get_active( GTK_TOGGLE_BUTTON
-                                  ( CappletGetGladeWidget( sia,
-                                                           "showFlags" ) ) );
+	sia->appletConfig.showFlags =
+	    gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON
+					  (CappletGetGladeWidget (sia,
+								  "showFlags")));
 
-  sia->appletConfig.defaultGroup =
-    GPOINTER_TO_INT( gtk_object_get_data
-                     ( GTK_OBJECT
-                       ( gtk_menu_get_active
-                         ( GTK_MENU
-                           ( gtk_option_menu_get_menu
-                             ( GTK_OPTION_MENU
-                               ( CappletGetGladeWidget
-                                 ( sia, "defaultGroupsOMenu" ) ) ) ) ) ),
-                       "group" ) );
+	sia->appletConfig.defaultGroup =
+	    GPOINTER_TO_INT (gtk_object_get_data
+			     (GTK_OBJECT
+			      (gtk_menu_get_active
+			       (GTK_MENU
+				(gtk_option_menu_get_menu
+				 (GTK_OPTION_MENU
+				  (CappletGetGladeWidget
+				   (sia, "defaultGroupsOMenu")))))),
+			      "group"));
 
 }
 
-static void CappletCommitConfig( GtkWidget * w, GSwitchItApplet * sia )
+static void
+CappletCommitConfig (GtkWidget * w, GSwitchItApplet * sia)
 {
-  CappletUI2Config( sia );
-  GSwitchItAppletConfigSave( &sia->appletConfig, &sia->xkbConfig );
+	CappletUI2Config (sia);
+	GSwitchItAppletConfigSave (&sia->appletConfig, &sia->xkbConfig);
 }
 
-static void CappletGroupPerWindowChanged( GtkWidget * w,
-                                          GSwitchItApplet * sia )
+static void
+CappletGroupPerWindowChanged (GtkWidget * w, GSwitchItApplet * sia)
 {
-  GtkWidget *handleIndicators;
+	GtkWidget *handleIndicators;
 
-  CappletCommitConfig( w, sia );
+	CappletCommitConfig (w, sia);
 
-  handleIndicators = CappletGetGladeWidget( sia, "handleIndicators" );
-  gtk_widget_set_sensitive( handleIndicators,
-                            sia->appletConfig.groupPerApp );
+	handleIndicators = CappletGetGladeWidget (sia, "handleIndicators");
+	gtk_widget_set_sensitive (handleIndicators,
+				  sia->appletConfig.groupPerApp);
 }
 
-static void CappletShowFlagsChanged( GtkWidget * w, GSwitchItApplet * sia )
+static void
+CappletShowFlagsChanged (GtkWidget * w, GSwitchItApplet * sia)
 {
-  CappletCommitConfig( w, sia );
+	CappletCommitConfig (w, sia);
 }
 
-static void CappletSecChanged( GtkWidget * w, GSwitchItApplet * sia )
+static void
+CappletSecChanged (GtkWidget * w, GSwitchItApplet * sia)
 {
-  CappletCommitConfig( w, sia );
+	CappletCommitConfig (w, sia);
 
-  if( ( sia->appletConfig.secondaryGroupsMask + 1 ) == ( 1 << XklGetNumGroups(  ) ) ) // all secondaries?
-    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( w ), FALSE );
+	if ((sia->appletConfig.secondaryGroupsMask + 1) == (1 << XklGetNumGroups ()))	// all secondaries?
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (w),
+					      FALSE);
 }
 
-static void CappletResponse( GtkDialog * capplet, gint id, GSwitchItApplet * sia )
+static void
+CappletResponse (GtkDialog * capplet, gint id, GSwitchItApplet * sia)
 {
-  if(id == GTK_RESPONSE_HELP)
-  {
-    GSwitchItHelp( GTK_WINDOW( sia->propsDialog ), "gswitchitPropsCapplet" );
-    return;
-  }
-  gtk_widget_destroy (GTK_WIDGET (capplet));
-  sia->propsDialog = NULL;
+	if (id == GTK_RESPONSE_HELP) {
+		GSwitchItHelp (GTK_WINDOW (sia->propsDialog),
+			       "gswitchitPropsCapplet");
+		return;
+	}
+	gtk_widget_destroy (GTK_WIDGET (capplet));
+	sia->propsDialog = NULL;
 }
 
-void GSwitchItAppletPropsCreate( GSwitchItApplet * sia )
+void
+GSwitchItAppletPropsCreate (GSwitchItApplet * sia)
 {
-  GladeXML *data;
-  GtkWidget *capplet;
+	GladeXML *data;
+	GtkWidget *capplet;
 
-  GtkWidget *groupPerApp;
-  GtkWidget *handleIndicators;
-  GtkWidget *showFlags;
-  GtkWidget *menuItem;
-  GtkWidget *vboxFlags;
-  GtkWidget *defaultGroupsOMenu;
-  GtkWidget *defaultGroupsMenu;
-  int i;
-  GtkTooltips *tooltips;
-  const char *groupName, *iconFile;
-  GroupDescriptionsBuffer groupNames;
+	GtkWidget *groupPerApp;
+	GtkWidget *handleIndicators;
+	GtkWidget *showFlags;
+	GtkWidget *menuItem;
+	GtkWidget *vboxFlags;
+	GtkWidget *defaultGroupsOMenu;
+	GtkWidget *defaultGroupsMenu;
+	int i;
+	GtkTooltips *tooltips;
+	const char *groupName, *iconFile;
+	GroupDescriptionsBuffer groupNames;
 
-  const char *secondaryTooltip =
-    _( "Make the layout accessible from the applet popup menu ONLY.\n"
-       "No way to switch to this layout using the keyboard." );
+	const char *secondaryTooltip =
+	    _
+	    ("Make the layout accessible from the applet popup menu ONLY.\n"
+	     "No way to switch to this layout using the keyboard.");
 
-  data = glade_xml_new( GLADE_DIR "/gswitchit-properties.glade", "gswitchit_capplet", NULL );   // default domain!
-  XklDebug( 125, "data: %p\n", data );
+	data = glade_xml_new (GLADE_DIR "/gswitchit-properties.glade", "gswitchit_capplet", NULL);	// default domain!
+	XklDebug (125, "data: %p\n", data);
 
-  sia->propsDialog = capplet =
-    glade_xml_get_widget( data, "gswitchit_capplet" );
+	sia->propsDialog = capplet =
+	    glade_xml_get_widget (data, "gswitchit_capplet");
 
-  iconFile = gnome_program_locate_file( NULL,
-                                        GNOME_FILE_DOMAIN_PIXMAP,
-                                        "gswitchit-properties-capplet.png",
-                                        TRUE, NULL );
-  if( iconFile != NULL )
-    gtk_window_set_icon_from_file( GTK_WINDOW( capplet ), iconFile, NULL );
+	iconFile = gnome_program_locate_file (NULL,
+					      GNOME_FILE_DOMAIN_PIXMAP,
+					      "gswitchit-properties-capplet.png",
+					      TRUE, NULL);
+	if (iconFile != NULL)
+		gtk_window_set_icon_from_file (GTK_WINDOW (capplet),
+					       iconFile, NULL);
 
-  gtk_object_set_data( GTK_OBJECT( capplet ), GLADE_DATA_PROP, data );
- 
-  gtk_dialog_set_default_response (GTK_DIALOG (capplet), GTK_RESPONSE_CLOSE);
+	gtk_object_set_data (GTK_OBJECT (capplet), GLADE_DATA_PROP, data);
 
-  g_signal_connect_swapped( GTK_OBJECT( capplet ), "destroy",
-                            G_CALLBACK( g_object_unref ), data );
+	gtk_dialog_set_default_response (GTK_DIALOG (capplet),
+					 GTK_RESPONSE_CLOSE);
 
-  groupPerApp = glade_xml_get_widget( data, "groupPerApp" );
-  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( groupPerApp ),
-                                sia->appletConfig.groupPerApp );
+	g_signal_connect_swapped (GTK_OBJECT (capplet), "destroy",
+				  G_CALLBACK (g_object_unref), data);
 
-  tooltips = gtk_tooltips_data_get( groupPerApp )->tooltips;
+	groupPerApp = glade_xml_get_widget (data, "groupPerApp");
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (groupPerApp),
+				      sia->appletConfig.groupPerApp);
 
-  g_signal_connect( G_OBJECT( groupPerApp ),
-                    "toggled",
-                    G_CALLBACK( CappletGroupPerWindowChanged ), sia );
+	tooltips = gtk_tooltips_data_get (groupPerApp)->tooltips;
 
-  showFlags = glade_xml_get_widget( data, "showFlags" );
-  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( showFlags ),
-                                sia->appletConfig.showFlags );
-  g_signal_connect( G_OBJECT( showFlags ),
-                    "toggled", G_CALLBACK( CappletShowFlagsChanged ), sia );
+	g_signal_connect (G_OBJECT (groupPerApp),
+			  "toggled",
+			  G_CALLBACK (CappletGroupPerWindowChanged), sia);
 
-  handleIndicators = glade_xml_get_widget( data, "handleIndicators" );
+	showFlags = glade_xml_get_widget (data, "showFlags");
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (showFlags),
+				      sia->appletConfig.showFlags);
+	g_signal_connect (G_OBJECT (showFlags),
+			  "toggled", G_CALLBACK (CappletShowFlagsChanged),
+			  sia);
 
-  gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( handleIndicators ),
-                                sia->appletConfig.handleIndicators );
+	handleIndicators = glade_xml_get_widget (data, "handleIndicators");
 
-  g_signal_connect( GTK_OBJECT( handleIndicators ),
-                    "toggled", G_CALLBACK( CappletCommitConfig ), sia );
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (handleIndicators),
+				      sia->appletConfig.handleIndicators);
 
-  vboxFlags = glade_xml_get_widget( data, "vboxFlags" );
+	g_signal_connect (GTK_OBJECT (handleIndicators),
+			  "toggled", G_CALLBACK (CappletCommitConfig),
+			  sia);
 
-  GSwitchItAppletConfigLoadGroupDescriptionsUtf8( &sia->appletConfig,
-                                                  groupNames );
-  groupName = ( const char * ) groupNames;
-  for( i = 0; i < XklGetNumGroups(  );
-       i++, groupName += sizeof( groupNames[0] ) )
-  {
-    gchar sz[30];
-    GtkWidget *secondary;
-    GtkWidget *frameFlag;
-    GtkWidget *vboxPerGroup;
+	vboxFlags = glade_xml_get_widget (data, "vboxFlags");
 
-    frameFlag = gtk_frame_new( groupName );
-    g_snprintf( sz, sizeof( sz ), "frameFlag.%d", i );
-    gtk_widget_set_name( frameFlag, sz );
-    gtk_object_set_data( GTK_OBJECT( capplet ), sz, frameFlag );
-    //gtk_widget_show( frameFlag );
+	GSwitchItAppletConfigLoadGroupDescriptionsUtf8 (&sia->appletConfig,
+							groupNames);
+	groupName = (const char *) groupNames;
+	for (i = 0; i < XklGetNumGroups ();
+	     i++, groupName += sizeof (groupNames[0])) {
+		gchar sz[30];
+		GtkWidget *secondary;
+		GtkWidget *frameFlag;
+		GtkWidget *vboxPerGroup;
 
-    gtk_box_pack_start( GTK_BOX( vboxFlags ), frameFlag, FALSE, FALSE, 0 );
+		frameFlag = gtk_frame_new (groupName);
+		g_snprintf (sz, sizeof (sz), "frameFlag.%d", i);
+		gtk_widget_set_name (frameFlag, sz);
+		gtk_object_set_data (GTK_OBJECT (capplet), sz, frameFlag);
+		//gtk_widget_show( frameFlag );
 
-    gtk_frame_set_shadow_type( GTK_FRAME( frameFlag ),
-                               GTK_SHADOW_ETCHED_OUT );
+		gtk_box_pack_start (GTK_BOX (vboxFlags), frameFlag, FALSE,
+				    FALSE, 0);
 
-    vboxPerGroup = gtk_vbox_new( FALSE, 0 );
-    g_snprintf( sz, sizeof( sz ), "vboxPerGroup.%d", i );
-    gtk_widget_set_name( vboxPerGroup, sz );
-    gtk_object_set_data( GTK_OBJECT( capplet ), sz, vboxPerGroup );
+		gtk_frame_set_shadow_type (GTK_FRAME (frameFlag),
+					   GTK_SHADOW_ETCHED_OUT);
 
-    secondary =
-      gtk_check_button_new_with_label( _
-                                       ( "Exclude from keyboard switching" ) );
-    g_snprintf( sz, sizeof( sz ), "secondary.%d", i );
-    gtk_widget_set_name( secondary, sz );
-    gtk_object_set_data( GTK_OBJECT( capplet ), sz, secondary );
+		vboxPerGroup = gtk_vbox_new (FALSE, 0);
+		g_snprintf (sz, sizeof (sz), "vboxPerGroup.%d", i);
+		gtk_widget_set_name (vboxPerGroup, sz);
+		gtk_object_set_data (GTK_OBJECT (capplet), sz,
+				     vboxPerGroup);
 
-    gtk_object_set_data( GTK_OBJECT( secondary ),
-                         "idx", GINT_TO_POINTER( i ) );
+		secondary =
+		    gtk_check_button_new_with_label (_
+						     ("Exclude from keyboard switching"));
+		g_snprintf (sz, sizeof (sz), "secondary.%d", i);
+		gtk_widget_set_name (secondary, sz);
+		gtk_object_set_data (GTK_OBJECT (capplet), sz, secondary);
 
-    gtk_toggle_button_set_active( GTK_TOGGLE_BUTTON( secondary ),
-                                  ( sia->appletConfig.
-                                    secondaryGroupsMask & ( 1 << i ) ) != 0 );
-    gtk_tooltips_set_tip( tooltips, secondary,
-                          secondaryTooltip, secondaryTooltip );
+		gtk_object_set_data (GTK_OBJECT (secondary),
+				     "idx", GINT_TO_POINTER (i));
 
-    gtk_box_pack_start( GTK_BOX( vboxPerGroup ), secondary, FALSE, FALSE, 0 );
-    gtk_container_add( GTK_CONTAINER( frameFlag ), vboxPerGroup );
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
+					      (secondary),
+					      (sia->appletConfig.
+					       secondaryGroupsMask & (1 <<
+								      i))
+					      != 0);
+		gtk_tooltips_set_tip (tooltips, secondary,
+				      secondaryTooltip, secondaryTooltip);
 
-    g_signal_connect( GTK_OBJECT( secondary ), "toggled",
-                      G_CALLBACK( CappletSecChanged ), sia );
-  }
+		gtk_box_pack_start (GTK_BOX (vboxPerGroup), secondary,
+				    FALSE, FALSE, 0);
+		gtk_container_add (GTK_CONTAINER (frameFlag),
+				   vboxPerGroup);
 
-  defaultGroupsMenu = gtk_menu_new(  );
+		g_signal_connect (GTK_OBJECT (secondary), "toggled",
+				  G_CALLBACK (CappletSecChanged), sia);
+	}
 
-  gtk_object_set_data( GTK_OBJECT( capplet ), "defaultGroupsMenu",
-                       defaultGroupsMenu );
+	defaultGroupsMenu = gtk_menu_new ();
 
-  menuItem = gtk_menu_item_new_with_label( _( "not used" ) );
-  gtk_object_set_data( GTK_OBJECT( menuItem ), "group",
-                       GINT_TO_POINTER( -1 ) );
-  g_signal_connect( GTK_OBJECT( menuItem ), "activate",
-                    G_CALLBACK( CappletCommitConfig ), sia );
+	gtk_object_set_data (GTK_OBJECT (capplet), "defaultGroupsMenu",
+			     defaultGroupsMenu);
 
-  gtk_menu_shell_append( GTK_MENU_SHELL( defaultGroupsMenu ), menuItem );
-  gtk_widget_show( menuItem );
-  groupName = ( const char * ) groupNames;
-  for( i = 0; i < XklGetNumGroups(  );
-       i++, groupName += sizeof( groupNames[0] ) )
-  {
-    menuItem = gtk_menu_item_new_with_label( groupName );
-    gtk_object_set_data( GTK_OBJECT( menuItem ), "group",
-                         GINT_TO_POINTER( i ) );
-    g_signal_connect( GTK_OBJECT( menuItem ), "activate",
-                      G_CALLBACK( CappletCommitConfig ), sia );
-    gtk_menu_shell_append( GTK_MENU_SHELL( defaultGroupsMenu ), menuItem );
-    gtk_widget_show( menuItem );
-  }
+	menuItem = gtk_menu_item_new_with_label (_("not used"));
+	gtk_object_set_data (GTK_OBJECT (menuItem), "group",
+			     GINT_TO_POINTER (-1));
+	g_signal_connect (GTK_OBJECT (menuItem), "activate",
+			  G_CALLBACK (CappletCommitConfig), sia);
 
-  defaultGroupsOMenu = glade_xml_get_widget( data, "defaultGroupsOMenu" );
-  gtk_option_menu_set_menu( GTK_OPTION_MENU( defaultGroupsOMenu ),
-                            defaultGroupsMenu );
-  // initial value - ( group no + 1 )
-  gtk_option_menu_set_history( GTK_OPTION_MENU( defaultGroupsOMenu ),
-                               ( sia->appletConfig.defaultGroup <
-                                 XklGetNumGroups(  ) )? sia->appletConfig.
-                               defaultGroup + 1 : 0 );
+	gtk_menu_shell_append (GTK_MENU_SHELL (defaultGroupsMenu),
+			       menuItem);
+	gtk_widget_show (menuItem);
+	groupName = (const char *) groupNames;
+	for (i = 0; i < XklGetNumGroups ();
+	     i++, groupName += sizeof (groupNames[0])) {
+		menuItem = gtk_menu_item_new_with_label (groupName);
+		gtk_object_set_data (GTK_OBJECT (menuItem), "group",
+				     GINT_TO_POINTER (i));
+		g_signal_connect (GTK_OBJECT (menuItem), "activate",
+				  G_CALLBACK (CappletCommitConfig), sia);
+		gtk_menu_shell_append (GTK_MENU_SHELL (defaultGroupsMenu),
+				       menuItem);
+		gtk_widget_show (menuItem);
+	}
 
-  g_signal_connect (G_OBJECT (capplet), "response",
-                      G_CALLBACK (CappletResponse), sia);
+	defaultGroupsOMenu =
+	    glade_xml_get_widget (data, "defaultGroupsOMenu");
+	gtk_option_menu_set_menu (GTK_OPTION_MENU (defaultGroupsOMenu),
+				  defaultGroupsMenu);
+	// initial value - ( group no + 1 )
+	gtk_option_menu_set_history (GTK_OPTION_MENU (defaultGroupsOMenu),
+				     (sia->appletConfig.defaultGroup <
+				      XklGetNumGroups ())? sia->
+				     appletConfig.defaultGroup + 1 : 0);
 
-  CappletGroupPerWindowChanged( groupPerApp, sia );
-  CappletShowFlagsChanged( showFlags, sia );
+	g_signal_connect (G_OBJECT (capplet), "response",
+			  G_CALLBACK (CappletResponse), sia);
 
-  gtk_widget_show_all( capplet );
+	CappletGroupPerWindowChanged (groupPerApp, sia);
+	CappletShowFlagsChanged (showFlags, sia);
+
+	gtk_widget_show_all (capplet);
 #ifndef ENABLE_FLAGS
-  gtk_widget_hide( showFlags );
+	gtk_widget_hide (showFlags);
 #endif
 
 }
