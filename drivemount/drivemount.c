@@ -33,18 +33,22 @@
 #include "floppy_v_out.xpm"
 #include "floppy_h_in.xpm"
 #include "floppy_h_out.xpm"
+
 #include "cdrom_v_in.xpm"
 #include "cdrom_v_out.xpm"
 #include "cdrom_h_in.xpm"
 #include "cdrom_h_out.xpm"
+
 #include "cdburn_v_in.xpm"
 #include "cdburn_v_out.xpm"
 #include "cdburn_h_in.xpm"
 #include "cdburn_h_out.xpm"
+
 #include "zipdrive_v_in.xpm"
 #include "zipdrive_v_out.xpm"
 #include "zipdrive_h_in.xpm"
 #include "zipdrive_h_out.xpm"
+
 #include "harddisk_v_in.xpm"
 #include "harddisk_v_out.xpm"
 #include "harddisk_h_in.xpm"
@@ -54,6 +58,11 @@
 #include "jazdrive_h_out.xpm"
 #include "jazdrive_v_in.xpm"
 #include "jazdrive_v_out.xpm"
+
+#include "usbstick_v_in.xpm"
+#include "usbstick_v_out.xpm"
+#include "usbstick_h_in.xpm"
+#include "usbstick_h_out.xpm"
 
 
 static gboolean applet_factory (PanelApplet *applet, const gchar *iid,
@@ -141,13 +150,18 @@ static IconData icon_list[] = {
 	 jazdrive_v_in_xpm,
 	 jazdrive_v_out_xpm},
 	{
+	 usbstick_h_in_xpm,
+	 usbstick_h_out_xpm,
+	 usbstick_v_in_xpm,
+	 usbstick_v_out_xpm},
+	{
 	 NULL,
 	 NULL,
 	 NULL,
 	 NULL}
 };
 
-static gint icon_list_count = 6;
+static gint icon_list_count = 7;
 
 /* Bonobo Verbs for our popup menu */
 static const BonoboUIVerb applet_menu_verbs [] = {

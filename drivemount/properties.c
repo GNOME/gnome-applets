@@ -29,6 +29,9 @@
 
 #define NEVER_SENSITIVE "never_sensitive"
 
+/* same as in drivemount.c: number of icons to choose from */
+static gint icon_list_count = 7;
+
 typedef struct _ResponseWidgets
 {
 	DriveData *dd;
@@ -107,7 +110,7 @@ properties_load(DriveData *dd)
 		}
 		dd->interval = MAX (dd->interval, 1);
 		dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
-		dd->device_pixmap =MIN (dd->device_pixmap, 5);
+		dd->device_pixmap =MIN (dd->device_pixmap, icon_list_count-1);
 		dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
 		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto_eject", NULL);
 		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount_point", NULL);
@@ -223,7 +226,7 @@ omenu_changed (GtkOptionMenu *menu, gpointer data)
 	gint num;
 	
 	num = gtk_option_menu_get_history (menu);
-	dd->device_pixmap = num < 6 ? num : -1;
+	dd->device_pixmap = num < icon_list_count ? num : -1;
 	panel_applet_gconf_set_int(PANEL_APPLET(dd->applet), "pixmap", 
 				   dd->device_pixmap, NULL);
 	redraw_pixmap(dd);
@@ -460,12 +463,15 @@ properties_show (BonoboUIComponent *uic,
 	item = gtk_menu_item_new_with_label(_("Jaz Drive"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("USB Stick"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
 	item = gtk_menu_item_new_with_label(_("Custom"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_true_cb), fbox);
 
 	if (dd->device_pixmap == -1)
-		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), 6);
+		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), icon_list_count);
 	else
 		gtk_option_menu_set_history(GTK_OPTION_MENU(widgets->omenu), dd->device_pixmap);
 

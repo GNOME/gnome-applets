@@ -64,6 +64,10 @@ jazdrive_h_in.xpm \
 jazdrive_h_out.xpm \
 jazdrive_v_in.xpm \
 jazdrive_v_out.xpm \
+usbstick_h_in.xpm \
+usbstick_h_out.xpm \
+usbstick_v_in.xpm \
+usbstick_v_out.xpm \
 GNOME_DriveMountApplet.server.in.in \
 $(schemas_in_files)	\
 $(ui_DATA)	\
