@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-12-14 07:52+0700\n"
-"PO-Revision-Date: 2004-12-14 08:36+0700\n"
+"PO-Revision-Date: 2004-12-20 17:43+0700\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@users.sf.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -220,7 +220,7 @@ msgstr "แสดงมิเตอร์แบตเตอรี่ที่พ
 
 #: battstat/battstat.schemas.in.h:15
 msgid "Suspend Command"
-msgstr "คำสั่งพัก"
+msgstr "คำสั่งพักเครื่อง"
 
 #: battstat/battstat.schemas.in.h:16
 msgid "The battery level below which the battery is displayed as orange."
@@ -320,7 +320,7 @@ msgstr[0] "นาที"
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
 #: battstat/battstat_applet.c:421
-#, fuzzy, c-format
+#, c-format
 msgid "%d %s %d %s until charged (%d%%)"
 msgstr "อัดอีก %d %s %d %s จึงจะเต็ม (%d%%)"
 
@@ -449,28 +449,24 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "ปรับแต่งตัวติดตามสถานะแบตเตอรี่"
 
 #: battstat/battstat_applet.glade.h:6
-#, fuzzy
 msgid "S_uspend command:"
-msgstr "_คำสั่งพักเครื่อง"
+msgstr "คำสั่ง_พักเครื่อง"
 
 #: battstat/battstat_applet.glade.h:7
-#, fuzzy
 msgid "Show _battery status"
-msgstr "แสดงสถานะแบตเตอรี่"
+msgstr "แสดงสถานะแ_บตเตอรี่"
 
 #: battstat/battstat_applet.glade.h:8
 msgid "Show _percentage remaining"
-msgstr ""
+msgstr "แสดงเ_ปอร์เซนต์ประจุที่เหลือ"
 
 #: battstat/battstat_applet.glade.h:9
-#, fuzzy
 msgid "Show _time remaining"
-msgstr "ไม่ทราบเวลาที่เหลือ (%d%%)"
+msgstr "แสดงเ_วลาที่เหลือ"
 
 #: battstat/battstat_applet.glade.h:10
-#, fuzzy
 msgid "Show power _connection status"
-msgstr "แสดงว่าเ_สียบปลั๊กไฟอยู่ไหม"
+msgstr "แสดงสถานะของปลั๊กไ_ฟ"
 
 #: battstat/battstat_applet.glade.h:11
 msgid "War_n when battery is fully re-charged"
@@ -478,7 +474,7 @@ msgstr "เตือนเมื่อแบตเตอรี่อัดเ_�
 
 #: battstat/battstat_applet.glade.h:12
 msgid "_Show time/percentage remaining:"
-msgstr ""
+msgstr "แ_สดงเวลา/เปอร์เซ็นต์ประจุที่เหลือ:"
 
 #: battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
@@ -509,7 +505,7 @@ msgstr "แบตเตอรี่ใกล้หมด"
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:613
 #: cdplayer/cdplayer.c:1115
 msgid "CD Player"
-msgstr "ตัวเล่นซีดี"
+msgstr "เล่นซีดี"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
 msgid "CD Player Applet Factory"
@@ -632,11 +628,11 @@ msgstr "คลิกปุ่มนี้ถ้าต้องการเล่
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:620
 #: charpick/charpick.c:774 charpick/properties.c:449
 msgid "Character Palette"
-msgstr "ตารางอักขระ"
+msgstr "แท่นอักขระ"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr "โรงงานแอพเพล็ตตัวเลือกอักขระ"
+msgstr "โรงงานแอพเพล็ตแท่นอักขระ"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:774
 msgid "Insert characters"
@@ -644,7 +640,7 @@ msgstr "แทรกอักขระ"
 
 #: charpick/charpick.c:447
 msgid "Available palettes"
-msgstr "ตารางที่มี"
+msgstr "แท่นอักขระที่มี"
 
 #. TRANSLATOR: This sentance reads something like 'Insert "PILCROW SIGN"'
 #. *             hopefully, the name of the unicode character has already
@@ -653,10 +649,9 @@ msgstr "ตารางที่มี"
 #: charpick/charpick.c:489
 #, c-format
 msgid "Insert \"%s\""
-msgstr ""
+msgstr "แทรก \"%s\""
 
 #: charpick/charpick.c:492
-#, fuzzy
 msgid "Insert special character"
 msgstr "แทรกอักขระพิเศษ"
 
@@ -697,11 +692,11 @@ msgstr "โปรดเลิกใช้ - อักขระที่แสด
 
 #: charpick/charpick.schemas.in.h:3 charpick/properties.c:376
 msgid "List of available palettes"
-msgstr "รายชื่อตารางที่มี"
+msgstr "รายชื่อแท่นอักขระที่มี"
 
 #: charpick/charpick.schemas.in.h:4
 msgid "List of strings containing the available palettes"
-msgstr "รายการข้อความบอกอักขระสำหรับตารางที่มี"
+msgstr "รายการข้อความบรรยายแท่นอักขระที่มี"
 
 #: charpick/charpick.schemas.in.h:5
 msgid ""
@@ -715,31 +710,31 @@ msgstr "แ_ก้ไข"
 
 #: charpick/properties.c:113
 msgid "_Palette:"
-msgstr "_ตาราง:"
+msgstr "แ_ท่นอักขระ:"
 
 #: charpick/properties.c:121
 msgid "Palette entry"
-msgstr "รายการในตาราง"
+msgstr "รายการในแท่นอักขระ"
 
 #: charpick/properties.c:122
 msgid "Modify a palette by adding or removing characters"
-msgstr "แก้ไขตารางโดยเพิ่มหรือลบอักขระ"
+msgstr "แก้ไขแท่นอักขระโดยเพิ่มหรือลบอักขระ"
 
 #: charpick/properties.c:236
 msgid "Add Palette"
-msgstr "เพิ่มตาราง"
+msgstr "เพิ่มแท่นอักขระ"
 
 #: charpick/properties.c:273
 msgid "Edit Palette"
-msgstr "แก้ไขตาราง"
+msgstr "แก้ไขแท่นอักขระ"
 
 #: charpick/properties.c:375
 msgid "Palettes list"
-msgstr "รายชื่อตาราง"
+msgstr "รายการแท่นอักขระ"
 
 #: charpick/properties.c:454
 msgid "_Palettes:"
-msgstr "_ตาราง:"
+msgstr "แ_ท่นอักขระ:"
 
 #: charpick/properties.c:470
 msgid "Add button"
@@ -747,7 +742,7 @@ msgstr "ปุ่มเพิ่ม"
 
 #: charpick/properties.c:471
 msgid "Click to add a new palette"
-msgstr "คลิกถ้าจะเพิ่มตารางใหม่"
+msgstr "คลิกถ้าจะเพิ่มแท่นอักขระใหม่"
 
 #: charpick/properties.c:478
 msgid "Edit button"
@@ -755,7 +750,7 @@ msgstr "ปุ่มแก้ไข"
 
 #: charpick/properties.c:479
 msgid "Click to edit the selected palette"
-msgstr "คลิกถ้าจะแก้ไขตารางที่เลือก"
+msgstr "คลิกถ้าจะแก้ไขแท่นอักขระที่เลือก"
 
 #: charpick/properties.c:486
 msgid "Delete button"
@@ -763,20 +758,20 @@ msgstr "ปุ่มลบ"
 
 #: charpick/properties.c:487
 msgid "Click to delete the selected palette"
-msgstr "คลิกถ้าจะลบตารางที่เลือก"
+msgstr "คลิกถ้าจะลบแท่นอักขระที่เลือก"
 
 #: charpick/properties.c:539
 msgid "Character Palette Preferences"
-msgstr "ปรับแต่งตารางอักขระ"
+msgstr "ปรับแต่งแท่นอักขระ"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
 #: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
 msgid "CPU Frequency Scaling Monitor"
-msgstr ""
+msgstr "ติดตามการปรับความถี่ซีพียู"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:2
 msgid "Monitor the CPU Frequency Scaling"
-msgstr ""
+msgstr "ติดตามการปรับความถี่ของซีพียู"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:3
 msgid "Utility"
@@ -787,6 +782,8 @@ msgid ""
 "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
 "show percentage instead of frequency."
 msgstr ""
+"ค่า 0 หมายถึงแสดงความถี่ซีพียู, 1 จะแสดงความถี่พร้อมหน่วย"
+"และ 2 จะแสดงความถี่เป็นเปอร์เซ็นต์แทนค่าจริง"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:2
 msgid ""
@@ -794,83 +791,76 @@ msgid ""
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
+"ค่า 0 หมายถึงแสดงแอพเพล็ตในแบบรูปภาพเท่านั้น, 1 หมายถึงแสดง"
+"เฉพาะข้อความเท่านั้น (ไม่แสดงรูปภาพ) และ 2 หมายถึงแสดงทั้งรูปภาพและข้อความ"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:3
-#, fuzzy
 msgid "CPU to Monitor"
-msgstr "หน้าจอ"
+msgstr "ซีพียูที่จะติดตาม"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:4
 msgid "Mode to show cpu usage"
-msgstr ""
+msgstr "รูปแบบการแสดงความถี่ซีพียู"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:5
 msgid "Mode to show when show_mode is text or both"
-msgstr ""
+msgstr "รูปแบบการแสดงความถี่แบบข้อความ"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
 msgstr ""
+"ตั้งซีพียูที่จะติดตาม ถ้าระบบของคุณมีซีพียูตัวเดียว คุณก็ไม่ต้องตั้งอะไร"
 
 #: cpufreq/cpufreq-preferences.glade.h:2
-#, fuzzy
 msgid "<b>Display Settings</b>"
-msgstr "<b>การเตือน</b>"
+msgstr "<b>การแสดงผล</b>"
 
 #: cpufreq/cpufreq-preferences.glade.h:3
-#, fuzzy
 msgid "<b>Monitor Settings</b>"
-msgstr "<b>การเตือน</b>"
+msgstr "<b>การติดตาม</b>"
 
 #: cpufreq/cpufreq-preferences.glade.h:4
-#, fuzzy
 msgid "CPU Frequency Monitor Preferences"
-msgstr "ปรับแต่งตัวติดตามคุณภาพสัญญาณไร้สาย"
+msgstr "ปรับแต่งตัวติดตามการปรับความถี่ซีพียู"
 
 #: cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
-msgstr ""
+msgstr "แสดงความถี่ซีพียูด้วยค่าความ_ถี่"
 
 # It's "percentage or nothing", not "percentage or value"
 #: cpufreq/cpufreq-preferences.glade.h:6
-#, fuzzy
 msgid "Show CPU frequency as _percentage"
-msgstr "แ_สดงเปอร์เซ็นต์พลังสัญญาณ"
+msgstr "แสดงความถี่ซีพียูเป็นเ_ปอร์เซ็นต์"
 
 #: cpufreq/cpufreq-preferences.glade.h:7
 msgid "Show frequency _units"
-msgstr ""
+msgstr "แสดงห_น่วยความถี่"
 
 #: cpufreq/cpufreq-preferences.glade.h:8
-#, fuzzy
 msgid "_Monitored CPU:"
-msgstr "อุป_กรณ์ที่ติดตาม:"
+msgstr "_ซีพียูที่ติดตาม:"
 
 #: cpufreq/cpufreq-preferences.glade.h:9
-#, fuzzy
 msgid "_Show in mode:"
-msgstr "แสดงที่จับ"
+msgstr "แสดงในแ_บบ"
 
 #: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
 msgid "Could not open help document"
 msgstr "ไม่สามารถเปิดคู่มือการใช้งานได้"
 
 #: cpufreq/src/cpufreq-applet.c:138
-#, fuzzy
 msgid "Graphic Arts:"
-msgstr "ขนาดกราฟ"
+msgstr "ตกแต่งภาพ:"
 
 #: cpufreq/src/cpufreq-applet.c:164
-#, fuzzy
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
-msgstr "(C) 2001, 2002 Free Software Foundation "
+msgstr "สงวนลิขสิทธิ์ (C) 2004 Free Software Foundation. Inc. "
 
 #: cpufreq/src/cpufreq-applet.c:165
-#, fuzzy
 msgid "This utility shows the current CPU Frequency Scaling."
-msgstr "แอพเพล็ตแสดงสถานะสัญญาณเครือข่ายไร้สาย"
+msgstr "แอพเพล็ตแสดงสถานะการปรับความถี่ซีพียู"
 
 #. If there is no cpufreq support it shows only the cpu frequency,
 #. * I thi	nk is better than do nothing. I have to notify it to the user, because
@@ -878,13 +868,15 @@ msgstr "แอพเพล็ตแสดงสถานะสัญญาณเ
 #.
 #: cpufreq/src/cpufreq-applet.c:601
 msgid "CPU frequency scaling unsupported"
-msgstr ""
+msgstr "ระบบไม่สนับสนุนการปรับความถี่ซีพียู"
 
 #: cpufreq/src/cpufreq-applet.c:602
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
 msgstr ""
+"คุณจะไม่สามารถปรับเปลี่ยนความถี่ของเครื่องคุณได้ เพราะอาจตั้งค่าไว้ไม่ถูกต้อง "
+"หรือฮาร์ดแวร์ไม่สนับสนุนการปรับความถี่ซีพียู"
 
 #: cpufreq/src/cpufreq-applet.c:607
 #, c-format
@@ -892,20 +884,20 @@ msgid ""
 "CPU %d - Frequency Scaling Unsupported\n"
 "%s %s (%s)"
 msgstr ""
+"ซีพียู %d - ไม่สนับสนุนการปรับความถี่ซีพียู\n"
+"%s %s (%s)"
 
 #: cpufreq/src/cpufreq-applet.c:613
 msgid "Frequency Scaling Unsupported"
-msgstr ""
+msgstr "ระบบไม่สนับสนุนการปรับความถี่ซีพียู"
 
 #: cpufreq/src/cpufreq-applet.c:744
-#, fuzzy
 msgid "This utility shows the current CPU Frequency"
-msgstr "แอพเพล็ตแสดงสถานะสัญญาณเครือข่ายไร้สาย"
+msgstr "แอพเพล็ตนี้แสดงความถี่ปัจจุบันของซีพียู"
 
 #: cpufreq/src/cpufreq-prefs.c:280
-#, fuzzy
 msgid "Graphic"
-msgstr "ขนาดกราฟ"
+msgstr "รูปภาพ"
 
 #: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
 msgid "Text"
@@ -913,7 +905,7 @@ msgstr "ข้อความ"
 
 #: cpufreq/src/cpufreq-prefs.c:290
 msgid "Graphic and Text"
-msgstr ""
+msgstr "รูปภาพและข้อความ"
 
 #: cpufreq/src/cpufreq.c:231 gweather/weather.c:277 gweather/weather.c:1081
 #: gweather/weather.c:1095 gweather/weather.c:1107 gweather/weather.c:1122
@@ -926,7 +918,7 @@ msgstr "ไม่ทราบ"
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: drivemount/drivemount.c:126
 msgid "Disk Mounter"
-msgstr "ตัวเมานท์ดิสก์"
+msgstr "เมานท์ดิสก์"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
 msgid "Drive Mount Applet Factory"
@@ -2242,18 +2234,16 @@ msgid "Weather Report"
 msgstr "รายงานสภาพอากาศ"
 
 #: gweather/gweather-about.c:70
-#, fuzzy
 msgid "Copyright (c)1999-2004 by S. Papadimitriou and others"
-msgstr "สงวนลิขสิทธิ์ (c)1999 โดย S. Papadimitriou"
+msgstr "สงวนลิขสิทธิ์ (c)1999-2004 โดย S. Papadimitriou และคนอื่นๆ"
 
 #: gweather/gweather-about.c:71
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A panel application for monitoring local weather conditions."
 msgstr ""
-"ออกภายใต้ GNU General Public License.\n"
+"เผยแพร่ภายใต้ GNU General Public License.\n"
 "\n"
 "แอพเพล็ตสำหรับติดตามสภาพอากาศท้องถิ่น"
 
@@ -2423,7 +2413,6 @@ msgstr "หน่วย_อุณหภูมิ:"
 
 #: gweather/gweather-pref.c:852 gweather/gweather-pref.c:872
 #: gweather/gweather-pref.c:896 gweather/gweather-pref.c:922
-#, fuzzy
 msgid "Default"
 msgstr "ปริยาย"
 
@@ -2438,12 +2427,12 @@ msgstr "เซลเซียส"
 
 #: gweather/gweather-pref.c:856
 msgid "Fahrenheit"
-msgstr "ฟาเรนไฮต"
+msgstr "ฟาเรนไฮต์"
 
 #. Speed Unit
 #: gweather/gweather-pref.c:863
 msgid "_Wind Speed Unit:"
-msgstr "หน่วยความเ_ร็วลม:"
+msgstr "หน่วยความเร็ว_ลม:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
 #: gweather/gweather-pref.c:874
@@ -2597,11 +2586,10 @@ msgid "Fetch a radar map on each update."
 msgstr "เรียกอ่านแผนที่เรดาร์เวลาอ่านข้อมูลสภาพอากาศ"
 
 #: gweather/gweather.schemas.in.h:9
-#, fuzzy
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
-msgstr "ถ้าตั้ง เรียกอ่านแผนที่เรดาร์จากตำแหน่งที่ตั้งในคีย์ \"radar\""
+msgstr "ถ้าตั้ง จะเรียกอ่านแผนที่เรดาร์จากตำแหน่งที่ตั้งในคีย์ \"radar\""
 
 #: gweather/gweather.schemas.in.h:10
 #: mini-commander/src/mini-commander.schemas.in.h:12
@@ -2633,9 +2621,8 @@ msgid "The unit to use for pressure."
 msgstr "หน่วยความกดอากาศที่จะใช้"
 
 #: gweather/gweather.schemas.in.h:17
-#, fuzzy
 msgid "The unit to use for temperature."
-msgstr "หน่วยความกดอากาศที่จะใช้"
+msgstr "หน่วยอุณหภูมิที่จะใช้"
 
 #: gweather/gweather.schemas.in.h:18
 msgid "The unit to use for visibility."
@@ -3211,7 +3198,7 @@ msgstr "%.0f เมตร"
 
 #: gweather/weather.c:1282 gweather/weather.c:1302
 msgid "%H:%M"
-msgstr ""
+msgstr "%H.%M น."
 
 #: gweather/weather.c:1335
 msgid "Retrieval failed"
@@ -3546,7 +3533,7 @@ msgstr "ปรับระดับเสียง"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:223
 msgid "Volume Control"
-msgstr "ตัวปรับระดับเสียง"
+msgstr "ปรับระดับเสียง"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
 msgid "_Mute"
@@ -3557,23 +3544,22 @@ msgid "_Open Volume Control"
 msgstr "_เปิดตัวปรับระดับเสียง"
 
 #: mixer/applet.c:545
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to start Volume Control: %s"
-msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
+msgstr "เริ่มตัวปรับระดับเสียงไม่สำเร็จ: %s"
 
 #: mixer/applet.c:997
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to display help: %s"
-msgstr "ไม่สามารถเริ่มใช้ GConf: %s\n"
+msgstr "ไม่สามารถแสดงคู่มือการใช้งานได้: %s"
 
 #: mixer/applet.c:1013
-#, fuzzy
 msgid "Volume Applet"
-msgstr "ตัวปรับระดับเสียง"
+msgstr "ปรับระดับเสียง"
 
 #: mixer/applet.c:1016
 msgid "A GNOME/GStreamer-based volume control applet"
-msgstr ""
+msgstr "แอพเพล็ตปรับระดับเสียงสำหรับ GNOME/GStreamer"
 
 #: mixer/dock.c:117
 msgid "+"
@@ -3590,13 +3576,13 @@ msgstr "-"
 #. create element
 #. and recreate this object, since we give it to the mixer
 #: mixer/load.c:72 mixer/load.c:75 mixer/load.c:125
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown Volume Control %d"
-msgstr "ตัวปรับระดับเสียง"
+msgstr "ตัวปรับระดับเสียงไม่ทราบชนิด %d"
 
 #: mixer/load.c:159
 msgid "No volume control elements and/or devices found."
-msgstr ""
+msgstr "ไม่พบอุปกรณ์หรือองค์ประกอบสำหรับปรับระดับเสียงในระบบ"
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -3616,9 +3602,8 @@ msgid "Volume Control Preferences"
 msgstr "ปรับแต่งตัวปรับระดับเสียง"
 
 #: mixer/preferences.c:126
-#, fuzzy
 msgid "Select the device and track to control."
-msgstr "เ_ลือกช่องเสียงที่จะควบคุม:"
+msgstr "เลือกอุปกรณ์และช่องสัญญาณเสียงที่จะควบคุม"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
@@ -3940,7 +3925,7 @@ msgstr "แสดงการใช้งานทรัพยากรระบ
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
 #: multiload/main.c:69
 msgid "System Monitor"
-msgstr "ตัวติดตามทรัพยากรระบบ"
+msgstr "ติดตามทรัพยากรระบบ"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
