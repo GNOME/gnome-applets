@@ -51,7 +51,6 @@ always_built_SUBDIRS = \
 ##	geyes		\
 	mini-commander	\
 ##	life		\
- 	charpick	\
 	gkb-new		
 ##	whereami	
 ## 	another_clock	\
