@@ -32,6 +32,9 @@ pixmap_DATA = gnome-battery.png
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = battery_applet.gnorba
 
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata) \
-	     bolt.xpm bolt-horiz.xpm gnome-battery.png
+man_MANS = battery_applet.1
+
+EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata)	\
+	     bolt.xpm bolt-horiz.xpm gnome-battery.png	\
+	     $(man_MANS)
 

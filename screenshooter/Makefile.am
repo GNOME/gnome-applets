@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
@@ -29,7 +31,13 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = screenshooter_applet.gnorba
 
-EXTRA_DIST = $(png_DATA) $(scrshot_SCRIPTS)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+man_MANS = screenshooter_applet.1
 
-SUBDIRS = docs
+EXTRA_DIST = $(png_DATA)	\
+	$(scrshot_SCRIPTS)	\
+	$(gnorba_DATA)		\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)
+	
+

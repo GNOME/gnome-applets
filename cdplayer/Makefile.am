@@ -31,5 +31,8 @@ sys_predata = cdplayer_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
 @XML_I18N_MERGE_DESKTOP_RULE@
 
-EXTRA_DIST = cdrom-linux.c cdrom-solaris.c \
-	     $(gnorba_DATA) $(sys_DATA) $(sys_predata)
+man_MANS = cdplayer_applet.1
+
+EXTRA_DIST = cdrom-linux.c cdrom-solaris.c 	\
+	     $(gnorba_DATA) $(sys_DATA)		\
+	     $(sys_predata) $(man_MANS)

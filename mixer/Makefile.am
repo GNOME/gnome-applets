@@ -29,5 +29,10 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = mixer_applet.gnorba
 
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata)
+man_MANS = mixer_applet.1
+
+EXTRA_DIST = $(gnorba_DATA)	\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)
 

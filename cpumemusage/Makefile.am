@@ -29,6 +29,12 @@ pixmap_DATA = gnome-cpu-mem.png
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = cpumemusage_applet.gnorba 
 
+man_MANS = cpumemusage_applet.1
+
 EXTRA_DIST = \
-	$(pixmap_DATA)\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(pixmap_DATA)	\
+	$(gnorba_DATA)	\
+	$(sys_DATA)	\
+	$(sys_predata)	\
+	$(man_MANS)
+

@@ -51,4 +51,11 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = mini-commander_applet.gnorba
 
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata) $(bitmaps_DATA)
+man_MANS = mini-commander_applet.1
+
+EXTRA_DIST = $(gnorba_DATA)	\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(bitmaps_DATA)		\
+	$(man_MANS)
+

@@ -47,7 +47,11 @@ pixmap_DATA = $(pixmaps)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = multiload_applet.gnorba 
 
+man_MANS = multiload_applet.1
+
 EXTRA_DIST =	\
 		$(Monitors_DATA) $(Monitors_predata)	\
-		$(gnorba_DATA) $(pixmaps)
+		$(gnorba_DATA) $(pixmaps)		\
+		$(man_MANS)
+		
 

@@ -38,5 +38,12 @@ gnorba_DATA = tickastat_applet.gnorba
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-ticker.png
 
-EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) $(sys_predata) noimage.xpm gnome-ticker.png
+man_MANS = tickastat_applet.1
+
+EXTRA_DIST = $(sys_DATA)	\
+	$(gnorba_DATA)		\
+	$(sys_predata)		\
+	noimage.xpm		\
+	gnome-ticker.png	\
+	$(man_MANS)
 

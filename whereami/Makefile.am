@@ -13,8 +13,11 @@ sys_predata = whereami_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
 @XML_I18N_MERGE_DESKTOP_RULE@
 
+man_MANS = whereami_applet.1
+
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = whereami_applet.gnorba
 
 EXTRA_DIST = AUTHORS README TODO	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata) \
+	$(man_MANS)

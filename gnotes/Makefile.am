@@ -34,9 +34,15 @@ pixmaps_DATA = gnome-gnotes.png
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gnotes_applet.gnorba
 
+man_MANS = gnotes_applet.1
+
 EXTRA_DIST = \
-	gnotes_applet.h \
-	gnotes_session.h \
-	gnome-gnotes.png \
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	gnotes_applet.h 	\
+	gnotes_session.h 	\
+	gnome-gnotes.png	\
+	$(gnorba_DATA)		\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)
+
 

@@ -25,7 +25,12 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = modemlights_applet.gnorba
 
+man_MANS = modemlights_applet.1
+
 EXTRA_DIST = \
 	digits.xpm			\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA) $(sys_DATA)	\
+	$(sys_predata)			\
+	$(man_MANS)
+
 

@@ -27,6 +27,8 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = drivemount_applet.gnorba
 
+man_MANS = drivemount_applet.1
+
 EXTRA_DIST = \
 	cdrom_h_in.xpm			\
 	cdrom_h_out.xpm			\
@@ -48,4 +50,7 @@ EXTRA_DIST = \
 	jazdrive_h_out.xpm		\
 	jazdrive_v_in.xpm		\
 	jazdrive_v_out.xpm		\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA)			\
+	$(sys_DATA) $(sys_predata)	\
+	$(man_MANS)
+

@@ -30,8 +30,11 @@ gnorba_DATA = another_clock_applet.gnorba
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-another-clock.png
 
+man_MANS = another_clock_applet.1
+
 EXTRA_DIST = \
-	another_clock.xpm	\
-	gnome-another-clock.png	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	another_clock.xpm		\
+	gnome-another-clock.png		\
+	$(gnorba_DATA) $(sys_DATA)	\
+	$(sys_predata) $(man_MANS)
 

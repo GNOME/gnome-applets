@@ -45,8 +45,14 @@ gkbicon_DATA = $(GKB_ICON)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gkb_applet.gnorba
 
+man_MANS = gkb_applet.1
+
 EXTRA_DIST = $(GKB_ICON) \
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA)		\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)
+
 
 gkb_xmmap: gkb_xmmap.in ../config.status
 	sed "s,\$${prefix},$(prefix),g" \

@@ -36,5 +36,10 @@ gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = asclock_applet.gnorba
 
 themesdir    = $(datadir)/asclock/
+
+man_MANS = asclock_applet.1
  
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata)
+EXTRA_DIST = $(gnorba_DATA)	\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)

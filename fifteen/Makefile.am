@@ -24,7 +24,12 @@ pixmap_DATA = gnome-fifteen.png
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = fifteen_applet.gnorba
 
+man_MANS = fifteen_applet.1
+
 EXTRA_DIST = \
 	$(pixmap_DATA)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
-	
+	$(gnorba_DATA)	\
+	$(sys_DATA)	\
+	$(sys_predata)	\
+	$(man_MANS)
+

@@ -57,6 +57,8 @@ gnorba_DATA = clockmail_applet.gnorba
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-clockmail.png
 
+man_MANS = clockmail_applet.1
+
 EXTRA_DIST = \
 	backgrnd.xpm			\
 	backgrnd_tiny.xpm		\
@@ -70,5 +72,7 @@ EXTRA_DIST = \
 	clockmaildata			\
 	THEME-SPEC			\
 	gnome-clockmail.png		\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA) $(sys_DATA)	\
+	$(sys_predata) $(man_MANS)
+
 

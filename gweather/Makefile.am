@@ -40,7 +40,12 @@ gweatherapplet_DATA = $(gweatherapplet_predata:.desktop.in=.desktop)
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_DATA = Locations
 
+man_MANS = gweather_applet.1
+
 EXTRA_DIST = \
-	Locations		\
-	$(gweathergnorba_DATA)	\
-	$(gweatherapplet_DATA)	$(gweatherapplet_predata)
+	Locations			\
+	$(gweathergnorba_DATA)		\
+	$(gweatherapplet_DATA)		\
+	$(gweatherapplet_predata)	\
+	$(man_MANS)
+

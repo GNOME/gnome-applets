@@ -28,7 +28,13 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = charpick_applet.gnorba
 
+man_MANS = charpick_applet.1
+
 EXTRA_DIST = \
 	charpick.png	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA)	\
+	$(sys_DATA)	\
+	$(sys_predata)	\
+	$(man_MANS)
+
 

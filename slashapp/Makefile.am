@@ -25,9 +25,15 @@ pixmap_DATA = slashapp.png
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = slash_applet.gnorba
 
+man_MANS = slash_applet.1
+
 EXTRA_DIST = \
 	slashsplash.xpm gnotices.xpm \
 	noimage.xpm back.xpm \
 	slashapp.png	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA)	\
+	$(sys_DATA)	\
+	$(sys_predata)	\
+	$(man_MANS)
+	
 

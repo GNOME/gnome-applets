@@ -24,6 +24,12 @@ gnorba_DATA = quicklaunch_applet.gnorba
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-quicklaunch.png
 
+man_MANS = quicklaunch_applet.1
+
 EXTRA_DIST = $(pixmaps_DATA)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA)		\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)
+	
 

@@ -24,5 +24,11 @@ gnorba_DATA = life_applet.gnorba
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-life.png
 
+man_MANS = life_applet.1
+
 EXTRA_DIST = $(pixmap_DATA)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA)		\
+	$(sys_DATA)		\
+	$(sys_predata)		\
+	$(man_MANS)
+

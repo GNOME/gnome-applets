@@ -20,7 +20,12 @@ sys_DATA = $(sys_predata:.desktop.in=.desktop)
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gtik2_applet.gnorba
 
+man_MANS = gtik2_applet.1
+
 EXTRA_DIST = \
 	README AUTHORS ChangeLog	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(gnorba_DATA) $(sys_DATA)	\
+	$(sys_predata)			\
+	$(man_MANS)
+
 
