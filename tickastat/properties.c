@@ -392,14 +392,16 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
         gtk_widget_show(label);
 
-	ad->log_path_entry = gtk_entry_new();
+	label = gnome_file_entry_new ("tickastat log path",
+				      _("Choose a log file"));
+	ad->log_path_entry = gnome_file_entry_gtk_entry(GNOME_FILE_ENTRY(label));
 	if (ad->log_path)
 		gtk_entry_set_text(GTK_ENTRY(ad->log_path_entry), ad->log_path);
 	gtk_signal_connect_object(GTK_OBJECT(ad->log_path_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox), ad->log_path_entry, TRUE, TRUE, GNOME_PAD_SMALL);
-        gtk_widget_show(ad->log_path_entry);
+        gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, GNOME_PAD_SMALL);
+        gtk_widget_show(label);
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);

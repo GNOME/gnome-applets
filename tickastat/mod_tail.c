@@ -420,13 +420,15 @@ static GtkWidget *mod_tail_config_show(gpointer data, AppData *ad)
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
 	gtk_widget_show(label);
 
-	td->path_entry = gtk_entry_new();
+	label = gnome_file_entry_new ("tickastat tail file",
+				      _("Choose a file to tail"));
+	td->path_entry = gnome_file_entry_gtk_entry(GNOME_FILE_ENTRY(label));
 	if (td->C_path)
 		gtk_entry_set_text(GTK_ENTRY(td->path_entry), td->C_path);
 	gtk_signal_connect(GTK_OBJECT(td->path_entry), "changed",
 			   GTK_SIGNAL_FUNC(misc_entry_cb), td);
-	gtk_box_pack_start(GTK_BOX(hbox), td->path_entry, TRUE, TRUE, 0);
-	gtk_widget_show(td->path_entry);
+	gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
+	gtk_widget_show(label);
 
 	button = gtk_check_button_new_with_label (_("Show pop up dialog for new lines."));
 	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
