@@ -1042,6 +1042,28 @@ static gint updateOutput(gpointer data)
 		updateOutput(stockdata);
 		
 	}
+	
+	static void
+	selection_changed (GtkTreeSelection *selection, gpointer data) 
+	{
+		gtk_widget_set_sensitive (GTK_WIDGET (data), 
+						    gtk_tree_selection_get_selected (selection, NULL, NULL));
+						    
+	}
+	
+	static void
+	entry_changed (GtkEditable *editable, gpointer data)
+	{
+		gboolean str = TRUE;
+		gchar *string;
+		
+		string = gtk_editable_get_chars (editable, 0, -1);
+		if (!string || !g_utf8_strlen (string, -1))
+			str = FALSE;
+		gtk_widget_set_sensitive (GTK_WIDGET (data), str);
+		if (string) g_free (string);
+	}
+		
 
 	void font_cb(GnomeFontPicker *gfp, const gchar *font_name, gpointer data) {
 		StockData *stockdata = data;
@@ -1130,8 +1152,8 @@ static gint updateOutput(gpointer data)
 		/*gtk_widget_set_size_request (list, 70, -1);*/
 		g_object_unref (G_OBJECT (model));
 		
-		/*selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
-  		gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);*/
+		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (list));
+		/*gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);*/
   		
   		cell_renderer = gtk_cell_renderer_text_new ();
   		column = gtk_tree_view_column_new_with_attributes ("hello",
@@ -1178,13 +1200,19 @@ static gint updateOutput(gpointer data)
 		button = gtk_button_new_with_mnemonic(_("_Add"));
 		g_object_set_data (G_OBJECT (button), "entry", entry);
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
+		gtk_widget_set_sensitive (button, FALSE);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (add_button_clicked), stockdata);
+		g_signal_connect (G_OBJECT (entry), "changed",
+					  G_CALLBACK (entry_changed), button);
 		button = gtk_button_new_with_mnemonic(_("_Remove"));
 		g_object_set_data (G_OBJECT (button), "list", list);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (remove_symbol), stockdata);
 		gtk_box_pack_start(GTK_BOX(hbox),button,FALSE,FALSE,0);
+		gtk_widget_set_sensitive (button, FALSE);
+		g_signal_connect (G_OBJECT (selection), "changed",
+					   G_CALLBACK (selection_changed), button);
 
 		gtk_widget_show_all(mainhbox);
 		return(mainhbox);
