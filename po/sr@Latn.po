@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-07 21:28+0200\n"
-"PO-Revision-Date: 2004-08-07 21:43+0200\n"
+"POT-Creation-Date: 2004-08-09 12:37+0200\n"
+"PO-Revision-Date: 2004-08-09 12:42+0200\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -82,13 +82,13 @@ msgstr "Prikazuje stanje za mogućonosti u vezi sa upotrebljivošću tastature"
 msgid "Utility"
 msgstr "Pomoćni alati"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1057
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
 #: mini-commander/src/about.c:50 mixer/mixer.c:1350
 #: modemlights/modemlights.c:118 multiload/main.c:60
-#: stickynotes/stickynotes_applet_callbacks.c:243
+#: stickynotes/stickynotes_applet_callbacks.c:261
 #: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
@@ -153,7 +153,7 @@ msgstr "Prikazuje tekuće stanje mogućnosti u vezi sa upotrebljivošću tastatu
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
+#: battstat/battstat_applet.c:1078 battstat/battstat_applet.c:1824
 msgid "Battery Charge Monitor"
 msgstr "Praćenje stanja baterije"
 
@@ -162,7 +162,7 @@ msgid "Battstat Factory"
 msgstr "Fabrika apleta za praćenje stanja baterije"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1841
+#: battstat/battstat_applet.c:1825
 msgid "Monitor a laptop's remaining power"
 msgstr "Pratite preostalu struju prenosnog računara"
 
@@ -261,192 +261,132 @@ msgstr "Stanje baterije ispod kojeg se baterija prikazuje u žutoj boji."
 msgid "Yellow value level"
 msgstr "Vrednost za žuto"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:340
-msgid "Your platform is not supported!\n"
-msgstr "Vaša platforma nije podržana!\n"
-
-#: battstat/battstat_applet.c:341
-msgid "The applet will not work properly (if at all).\n"
-msgstr "Aplet neće ispravno raditi (ako uopšte radi).\n"
-
-#: battstat/battstat_applet.c:360
-#, c-format
-msgid "%i minute"
-msgid_plural "%i minutes"
-msgstr[0] "%i minut"
-msgstr[1] "%i minuta"
-msgstr[2] "%i minuta"
-
-#: battstat/battstat_applet.c:361
-#, c-format
-msgid "%i hour"
-msgid_plural "%i hours"
-msgstr[0] "%i čas"
-msgstr[1] "%i časa"
-msgstr[2] "%i časova"
-
-# bug: bad
-#. Translation Note: as in "No time remaining" or "No time till charged"
-#: battstat/battstat_applet.c:365
-msgid "No time"
-msgstr "Nema vremena"
-
-# bug: bad, very bad
-#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
-#. Translation Note: as in "Unknown time remaining"
-#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
-msgid "Unknown time"
-msgstr "Nepoznato vremena"
-
-#. Translation note:
-#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
-#. * Swap the order with "%2$s %1$s" if needed.
-#: battstat/battstat_applet.c:386
-#, c-format
-msgid "%s %s"
-msgstr "%s %s"
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
-msgid "High"
-msgstr "Puna"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
-msgid "Low"
-msgstr "Slaba"
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
-msgid "Critical"
-msgstr "Kritično"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
-msgid "Charging"
-msgstr "Punjenje"
-
-#: battstat/battstat_applet.c:515
-#, c-format
-msgid ""
-"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
-"your laptop in."
-msgstr "Preostalo %s (%d%%). Da izbegnete gubitak podataka isključite, suspendujte ili uključite u struju vaš računar."
-
-#: battstat/battstat_applet.c:519
-msgid "Your battery is running low"
-msgstr "Baterija je gotovo prazna"
-
-#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
-msgid "Battery Notice"
-msgstr "Obaveštenje o bateriji"
-
-#: battstat/battstat_applet.c:597
-msgid "Your battery is now fully recharged"
-msgstr "Baterija je sada u potpunosti napunjena"
-
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:651
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"%s (%d%%) remaining"
-msgstr ""
-"Sistem radi na baterije\n"
-"%s (%d%%) preostalo"
-
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:655
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"%s (%d%%) till charged"
-msgstr ""
-"Sistem se napaja iz električne mreže\n"
-"%s (%d%%) do pune baterije"
-
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
-#: battstat/battstat_applet.c:1300
-msgid "System is running on battery power"
-msgstr "Sistem radi na baterije"
-
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
-#: battstat/battstat_applet.c:1305
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "Sistem se napaja iz električne mreže"
 
-#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
+#: battstat/battstat_applet.c:87
+msgid "System is running on battery power"
+msgstr "Sistem radi na baterije"
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:342
+msgid "Your platform is not supported!\n"
+msgstr "Vaša platforma nije podržana!\n"
+
+#: battstat/battstat_applet.c:343
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Aplet neće ispravno raditi (ako uopšte radi).\n"
+
+#: battstat/battstat_applet.c:382
+#, c-format
+msgid "Battery charged (%d%%)"
+msgstr "Baterija je napunjena (%d%%)"
+
+#: battstat/battstat_applet.c:384
+#, c-format
+msgid "Unknown time (%d%%) remaining"
+msgstr "Preostalo je nepoznato vremena (%d%%)"
+
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "Unknown time (%d%%) till charged"
+msgstr "Nepoznato vremena (%d%%) do pune baterije"
+
+#: battstat/battstat_applet.c:391
+#, c-format
+msgid "%d minute (%d%%) remaining"
+msgid_plural "%d minutes (%d%%) remaining"
+msgstr[0] "Preostao je %d minut (%d%%)"
+msgstr[1] "Preostala su %d minuta (%d%%)"
+msgstr[2] "Preostalo je %d minuta (%d%%)"
+
+#: battstat/battstat_applet.c:396
+#, c-format
+msgid "%d minute till charged (%d%%)"
+msgid_plural "%d minutes till charged (%d%%)"
+msgstr[0] "%d minut do pune baterije (%d%%)"
+msgstr[1] "%d minuta do pune baterije (%d%%)"
+msgstr[2] "%d minuta do pune baterije (%d%%)"
+
+#: battstat/battstat_applet.c:402
+#, c-format
+msgid "%d hour (%d%%) remaining"
+msgid_plural "%d hours (%d%%) remaining"
+msgstr[0] "Preostao je %d čas (%d%%)"
+msgstr[1] "Preostala su %d časa (%d%%)"
+msgstr[2] "Preostalo je %d časova (%d%%)"
+
+#: battstat/battstat_applet.c:407
+#, c-format
+msgid "%d hour (%d%%) till charged (%d%%)"
+msgid_plural "%d hours (%d%%) till charged (%d%%)"
+msgstr[0] "%d čas do pune baterije (%d%%)"
+msgstr[1] "%d časa do pune baterije (%d%%)"
+msgstr[2] "%d časova do pune baterije (%d%%)"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:414
+#, c-format
+msgid "%d %s %d %s (%d%%) remaining"
+msgstr "Preostade %d %s i %d %s (%d%%)"
+
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "čas"
+msgstr[1] "časa"
+msgstr[2] "časova"
+
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "minut"
+msgstr[1] "minuta"
+msgstr[2] "minuta"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:421
+#, c-format
+msgid "%d %s %d %s till charged (%d%%)"
+msgstr "%d %s %d %s do pune baterije (%d%%)"
+
+#: battstat/battstat_applet.c:529
+msgid "Your battery is running low"
+msgstr "Baterija je gotovo prazna"
+
+#: battstat/battstat_applet.c:531
+msgid "To avoid losing work please power off, suspend or plug your laptop in."
+msgstr "Da izbegnete gubitak podataka isključite, suspendujte ili uključite vaš računar u struju."
+
+#: battstat/battstat_applet.c:534 battstat/battstat_applet.c:587
+msgid "Battery Notice"
+msgstr "Obaveštenje o bateriji"
+
+#: battstat/battstat_applet.c:607
+msgid "Your battery is now fully recharged"
+msgstr "Baterija je sada u potpunosti napunjena"
+
+#: battstat/battstat_applet.c:686 wireless/wireless-applet.c:148
 #: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "Nedostupno"
 
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#. Translation note: %s is time in words (translated elsewhere)
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
-#, c-format
-msgid "System is running on battery power. %s (%d%%) remaining."
-msgstr "Sistem radi na baterije. %s (%d%%) preostalo."
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#. Translation note: %s is time in words (translated elsewhere)
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
-#, c-format
-msgid "System is running on AC power. %s (%d%%) till charged."
-msgstr "Sistem se napaja iz električne mreže. %s (%d%%) dok se ne napuni."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:827
-msgid "System is running on battery power. Battery status unknown."
-msgstr "Sistem radi na baterije. Stanje baterije je nepoznato."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:832
-msgid "System is running on AC power. No battery present."
-msgstr "Sistem se napaja iz električne mreže. Baterija nije prisutna."
-
-# bug: plural-forms on both
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. contains a string of the time remaining
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:841
-#, c-format
-msgid "%s (%d%%) remaining"
-msgstr "preostalo je %s (%d%%)"
+#: battstat/battstat_applet.c:828
+msgid "Battery status unknown"
+msgstr "Nepoznato stanje baterije"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:846
+#: battstat/battstat_applet.c:835 battstat/battstat_applet.c:847
 msgid "No battery present"
 msgstr "Baterija nije prisutna"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:948
+#: battstat/battstat_applet.c:947
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -458,7 +398,7 @@ msgstr ""
 "Proverite da li imate dozvole za upotrebu APM uređaja."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:957
+#: battstat/battstat_applet.c:956
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -468,7 +408,7 @@ msgstr ""
 "Pokušajte sa pokretanjem „apm -e 1“ (FreeBSD) i \n"
 "proverite da li je to pomoglo.\n"
 
-#: battstat/battstat_applet.c:1013
+#: battstat/battstat_applet.c:1012
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -477,16 +417,16 @@ msgstr ""
 "Došlo je do greške pri pokretanju naredbe za suspenziju: %s\n"
 "Pokušajte da ispravite ovu grešku"
 
-#: battstat/battstat_applet.c:1017
+#: battstat/battstat_applet.c:1016
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Naredba za suspenziju „%s“ nije uspešno izvršena."
 
-#: battstat/battstat_applet.c:1019
+#: battstat/battstat_applet.c:1018
 msgid "The Suspend command was unsuccessful."
 msgstr "Naredba za suspenziju nije uspešno izvršena."
 
-#: battstat/battstat_applet.c:1027
+#: battstat/battstat_applet.c:1026
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -496,47 +436,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1045
+#: battstat/battstat_applet.c:1044
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jurgen Person <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1081
+#: battstat/battstat_applet.c:1080
 msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "©2000 Gnuliks Društvo, ©2002–2004 Zadužbina za Slobodni Softver"
 
-#: battstat/battstat_applet.c:1082
+#: battstat/battstat_applet.c:1081
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ova alatka prikazuje stanje baterije vašeg prenosnog računara."
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:1279
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"%s (%d%%) remaining."
-msgstr ""
-"Sistem radi na baterije\n"
-"preostalo %s (%d%%)."
-
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:1287
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"%s (%d%%) till charged."
-msgstr ""
-"Sistem se napaja iz električne mreže\n"
-"%s (%d%%) dok se ne napuni."
-
-#: battstat/battstat_applet.c:1766
+#: battstat/battstat_applet.c:1750
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -591,7 +503,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Postavke praćenja stanja baterije"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1045 mailcheck/mailcheck.c:2056
+#: gweather/gweather-pref.c:1049 mailcheck/mailcheck.c:2056
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Opšte"
@@ -651,8 +563,8 @@ msgstr "_Žuto:"
 #: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
 #: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
-#: stickynotes/stickynotes_applet_callbacks.c:384
+#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:238
+#: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -1489,7 +1401,7 @@ msgstr "Kanadski xkb raspored"
 #: gkb-new/descs/US.keyprop.desktop.in.h:1
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:1
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:364
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:365
 msgid "English"
 msgstr "Engleski"
 
@@ -1599,9 +1511,9 @@ msgstr "Danska"
 msgid "Danish keymap"
 msgstr "Danski raspored"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:847
-#: gweather/gweather-pref.c:866 gweather/gweather-pref.c:890
-#: gweather/gweather-pref.c:914
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:868 gweather/gweather-pref.c:892
+#: gweather/gweather-pref.c:918
 msgid "Default"
 msgstr "Predefinisano"
 
@@ -1612,7 +1524,7 @@ msgstr "Podrazumevana tastatura Gnoma"
 
 #: gkb-new/descs/Default.keyprop.desktop.in.h:3
 #: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:364
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:365
 msgid "International"
 msgstr "Međunarodna"
 
@@ -2420,7 +2332,7 @@ msgstr "Američka tastatura sa 101 tasterom"
 #: gkb-new/descs/US.keyprop.desktop.in.h:3
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:3
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:360
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:361
 msgid "United States"
 msgstr "Sjedinjene Države"
 
@@ -2594,7 +2506,7 @@ msgstr "Matična stranica GKB-a (http://projects.gnome.hu/gkb)"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:275
+#: gkb-new/gkb.c:276
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -2602,19 +2514,19 @@ msgstr ""
 "Pritisnite prečicu za izmenu rasporeda. Prečicu možete postaviti kroz "
 "prozorče za postavke."
 
-#: gkb-new/gkb.c:352
+#: gkb-new/gkb.c:353
 msgid "US 105 key keyboard"
 msgstr "Američka tastatura sa 105 tastera"
 
-#: gkb-new/gkb.c:352
+#: gkb-new/gkb.c:353
 msgid "Gnome Keyboard Default"
 msgstr "Podrazumevana tastatura Gnoma"
 
-#: gkb-new/gkb.c:356
+#: gkb-new/gkb.c:357
 msgid "default"
 msgstr "podrazumevano"
 
-#: gkb-new/gkb.c:360
+#: gkb-new/gkb.c:361
 msgid "Gnome Keyboard"
 msgstr "Tastatura Gnoma"
 
@@ -2651,30 +2563,38 @@ msgid "The country of the keyboard layout"
 msgstr "Država za raspored na tastaturi"
 
 #: gkb-new/gkb.schemas.in.h:9
+msgid "The default keymap"
+msgstr "Podrazumevani raspored"
+
+#: gkb-new/gkb.schemas.in.h:10
+msgid "The default keymap for the applet"
+msgstr "Podrazumevani raspored programčeta"
+
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The label of the keyboard layout"
 msgstr "Oznaka za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:12
 msgid "The language of the keyboard layout"
 msgstr "Jezik za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:13
 msgid "The name of the keyboard layout"
 msgstr "Ime za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This flag will appear in flag field of the applet"
 msgstr "Ova zastava će se pojaviti u polju programčeta za zastavu"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:15
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Ovi podaci pomažu pri raspoznavanju vašeg rasporeda na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This is the binding for keypress-based layout change"
 msgstr "Ovo je prečica za izmenu rasporeda pomoću tastature"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:17
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -2682,11 +2602,11 @@ msgstr ""
 "Ovo treba da bude nešto kao „gkb_xmmap sr“, „setxkbmap sr“ ili „xmodmap "
 "nešto.xmm“"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:18
 msgid "This will appear in the label box of the applet"
 msgstr "Ovo će se pojaviti u oznaci programčeta"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:19
 msgid "This will identify the layout in the list"
 msgstr "Ovo služi za raspoznavanje rasporeda u spisku"
 
@@ -2759,7 +2679,7 @@ msgstr "Oznaka"
 msgid "Flag and Label"
 msgstr "Zastava i oznaka"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1030
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1034
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Prikaz"
@@ -3112,7 +3032,7 @@ msgstr "Simboli"
 msgid "Behavior"
 msgstr "Ponašanje"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:990
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:994
 msgid "Update"
 msgstr "Osveži"
 
@@ -3121,7 +3041,7 @@ msgid "Stock update fre_quency:"
 msgstr "U_čestalost osvežavanja berze:"
 
 # bug:plural-forms
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1014 mailcheck/mailcheck.c:2104
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1018 mailcheck/mailcheck.c:2104
 #: mailcheck/mailcheck.c:2110
 msgid "minutes"
 msgstr "minuta"
@@ -3478,170 +3398,175 @@ msgid "Forecast not currently available for this location."
 msgstr "Prognoza nije trenutno dostupna za ovo mesto."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Location view"
 msgstr "Pregled prema mestu"
 
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Select Location from the list"
 msgstr "Izaberite grad iz spiska"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "Osveži vrteće dugme"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "Vrteće dugme za osvežavanje"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "Unos adrese"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "Unesite adresu"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Centigrade) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:400 gweather/gweather-pref.c:409
+#: gweather/gweather-pref.c:401 gweather/gweather-pref.c:410
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:436 gweather/gweather-pref.c:446
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
-#. Valid values are: "hPa" (hectoPascals), "mb" (millibars), "mmHg"
-#. (millimeters of mercury) and "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:483
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: gweather/gweather-pref.c:474 gweather/gweather-pref.c:485
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:509 gweather/gweather-pref.c:518
+#: gweather/gweather-pref.c:511 gweather/gweather-pref.c:520
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:796
+#: gweather/gweather-pref.c:798
 msgid "Weather Preferences"
 msgstr "Postavke vremena"
 
-#: gweather/gweather-pref.c:829 gweather/gweather-pref.c:994
+#: gweather/gweather-pref.c:831 gweather/gweather-pref.c:998
 msgid "_Automatically update every:"
 msgstr "_Automatsko osvežavanje svakih:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:838
+#: gweather/gweather-pref.c:840
 msgid "_Temperature Unit:"
 msgstr "_Jedinica temperature:"
 
-#: gweather/gweather-pref.c:848
+#: gweather/gweather-pref.c:850
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:851
 msgid "Centigrade"
 msgstr "Celzijus"
 
-#: gweather/gweather-pref.c:850
+#: gweather/gweather-pref.c:852
 msgid "Fahrenheit"
 msgstr "Faranhajt"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:857
+#: gweather/gweather-pref.c:859
 msgid "_Wind Speed Unit:"
 msgstr "Jedinica _brzine vetra:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:868
+#: gweather/gweather-pref.c:870
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:872
 msgid "km/h"
 msgstr "km/č"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:874
 msgid "mph"
 msgstr "milja/č"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:876
 msgid "knots"
 msgstr "čvorova"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:881
+#: gweather/gweather-pref.c:883
 msgid "_Pressure Unit:"
 msgstr "Jedinica _pritiska:"
 
-# Sta je ovo hPa? Pa za Pascal...
+#. TRANSLATOR: The pressure unit "kiloPascals"
+#: gweather/gweather-pref.c:894
+msgid "kPa"
+msgstr "kPa"
+
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:892
+#: gweather/gweather-pref.c:896
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:894
+#: gweather/gweather-pref.c:898
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:900
 msgid "mmHg"
 msgstr "mmHg"
 
 # Kod nas treba mmHg
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:902
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:909
 msgid "_Visibility Unit:"
 msgstr "Jedinica _vidljivosti:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:916
+#: gweather/gweather-pref.c:920
 msgid "meters"
 msgstr "metara"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:918
+#: gweather/gweather-pref.c:922
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:924
 msgid "miles"
 msgstr "milja"
 
-#: gweather/gweather-pref.c:945
+#: gweather/gweather-pref.c:949
 msgid "Enable _radar map"
 msgstr "Uključi _radarsku mapu"
 
-#: gweather/gweather-pref.c:959
+#: gweather/gweather-pref.c:963
 msgid "Use _custom address for radar map"
 msgstr "Koristi proizvoljnu _adresu za radarsku kartu"
 
-#: gweather/gweather-pref.c:976
+#: gweather/gweather-pref.c:980
 msgid "A_ddress:"
 msgstr "A_dresa:"
 
-#: gweather/gweather-pref.c:1058
+#: gweather/gweather-pref.c:1062
 msgid "_Select a location:"
 msgstr "Izaberite _mesto:"
 
-#: gweather/gweather-pref.c:1088
+#: gweather/gweather-pref.c:1092
 msgid "Location"
 msgstr "Mesto"
 
@@ -3649,8 +3574,8 @@ msgstr "Mesto"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:135
-#: gweather/weather.c:140
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
+#: gweather/weather.c:141
 msgid "DEFAULT_CODE"
 msgstr "LYBE"
 
@@ -3658,8 +3583,8 @@ msgstr "LYBE"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:114
-#: gweather/weather.c:119 gweather/weather.c:120
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
+#: gweather/weather.c:120 gweather/weather.c:121
 msgid "DEFAULT_LOCATION"
 msgstr "Beograd"
 
@@ -3667,8 +3592,8 @@ msgstr "Beograd"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:166
-#: gweather/weather.c:171
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
+#: gweather/weather.c:172
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -3676,8 +3601,8 @@ msgstr "---"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:151
-#: gweather/weather.c:156
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
+#: gweather/weather.c:157
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
@@ -3772,106 +3697,106 @@ msgstr "Koristi metrički sistem jedinica umesto engleskog sistema."
 msgid "weather location information."
 msgstr "podaci o mestu za prognozu."
 
-#: gweather/weather.c:127
+#: gweather/weather.c:128
 msgid "Pittsburgh"
 msgstr "Pitsburg"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:222
 msgid "Variable"
 msgstr "Promenljiv"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "North"
 msgstr "Severni"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "North - NorthEast"
 msgstr "Severni-Severoistočni"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "Northeast"
 msgstr "Severoistočni"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "East - NorthEast"
 msgstr "Istočni-Severoistočni"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "East"
 msgstr "Istočni"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "East - Southeast"
 msgstr "Istočni-Jugoistočni"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "Southeast"
 msgstr "Jugoistočni"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "South - Southeast"
 msgstr "Jugo-Jugoistočni"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "South"
 msgstr "Južni"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "South - Southwest"
 msgstr "Jugo-Jugozapadni"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "Southwest"
 msgstr "Jugozapadni"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "West - Southwest"
 msgstr "Zapadno-Južnozapadni"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "West"
 msgstr "Zapadni"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "West - Northwest"
 msgstr "Zapadni-Severozapadni"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "Northwest"
 msgstr "Severozapadni"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "North - Northwest"
 msgstr "Severno-Severozapadni"
 
-#: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
-#: gweather/weather.c:2259 gweather/weather.c:2274 gweather/weather.c:2290
-#: gweather/weather.c:2321 gweather/weather.c:2333 gweather/weather.c:2352
-#: gweather/weather.c:2376 gweather/weather.c:2389 gweather/weather.c:2409
+#: gweather/weather.c:232 gweather/weather.c:2234 gweather/weather.c:2248
+#: gweather/weather.c:2260 gweather/weather.c:2275 gweather/weather.c:2291
+#: gweather/weather.c:2322 gweather/weather.c:2334 gweather/weather.c:2353
+#: gweather/weather.c:2381 gweather/weather.c:2394 gweather/weather.c:2414
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: gweather/weather.c:233 gweather/weather.c:250 gweather/weather.c:321
+#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
 msgid "Invalid"
 msgstr "Neispravno"
 
-#: gweather/weather.c:239
+#: gweather/weather.c:240
 msgid "Clear Sky"
 msgstr "Vedro"
 
-#: gweather/weather.c:240
+#: gweather/weather.c:241
 msgid "Broken clouds"
 msgstr "Razbijeni oblaci"
 
-#: gweather/weather.c:241
+#: gweather/weather.c:242
 msgid "Scattered clouds"
 msgstr "Raspireni oblaci"
 
-#: gweather/weather.c:242
+#: gweather/weather.c:243
 msgid "Few clouds"
 msgstr "Mestimično oblačno"
 
-#: gweather/weather.c:243
+#: gweather/weather.c:244
 msgid "Overcast"
 msgstr "Oblačno"
 
@@ -3879,438 +3804,444 @@ msgstr "Oblačno"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:282 gweather/weather.c:284
+#: gweather/weather.c:283 gweather/weather.c:285
 msgid "Thunderstorm"
 msgstr "Pljusak sa grmljavinom"
 
 # Ovo kaze Morton-Benson :)
 #. DRIZZLE
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Drizzle"
 msgstr "Rominjanje"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Light drizzle"
 msgstr "Slabo rominjanje"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Moderate drizzle"
 msgstr "Umereno rominjanje"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Heavy drizzle"
 msgstr "Jako rominjanje"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Freezing drizzle"
 msgstr "Ledeno rominjanje"
 
 #. RAIN
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Rain"
 msgstr "Kiša"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Light rain"
 msgstr "Kišica"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Moderate rain"
 msgstr "Umerena kiša"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Heavy rain"
 msgstr "Jaka kiša"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Rain showers"
 msgstr "Pljusak"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Freezing rain"
 msgstr "Ledena kiša"
 
 #. SNOW
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snow"
 msgstr "Sneg"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Light snow"
 msgstr "Slab sneg"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Moderate snow"
 msgstr "Umeren sneg"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Heavy snow"
 msgstr "Jak sneg"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snowstorm"
 msgstr "Snežna oluja"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Blowing snowfall"
 msgstr "Razarajući sneg"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snow showers"
 msgstr "Snežni pljusak"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Drifting snow"
 msgstr "Sneg se lagano premešta"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Snow grains"
 msgstr "Trunke snega"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Light snow grains"
 msgstr "Slabe trunke snega"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Moderate snow grains"
 msgstr "Umerene trunke snega"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Heavy snow grains"
 msgstr "Jake trunke snega"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:287
+#: gweather/weather.c:288
 msgid "Ice crystals"
 msgstr "Ledenice"
 
 #. ICE_PELLETS
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Ice pellets"
 msgstr "Ledene kuglice"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Few ice pellets"
 msgstr "Ponešto ledenih kuglica"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Moderate ice pellets"
 msgstr "Umereno ledene kuglice"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Heavy ice pellets"
 msgstr "Mnogo ledenih kuglica"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Ice pellet storm"
 msgstr "Oluja ledenih kuglica"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Showers of ice pellets"
 msgstr "Pljusak ledenih kuglica"
 
 #. HAIL
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hail"
 msgstr "Grad"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hailstorm"
 msgstr "Olujni grad"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hail showers"
 msgstr "Pljusak grada"
 
 #. SMALL_HAIL
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Small hail"
 msgstr "Manji grad"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Small hailstorm"
 msgstr "Manja oluja grada"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Showers of small hail"
 msgstr "Pljusak manjeg grada"
 
 #. PRECIPITATION
-#: gweather/weather.c:291
+#: gweather/weather.c:292
 msgid "Unknown precipitation"
 msgstr "Nepoznate padavine"
 
 #. MIST
-#: gweather/weather.c:292
+#: gweather/weather.c:293
 msgid "Mist"
 msgstr "Izmaglica"
 
 #. FOG
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Fog"
 msgstr "Magla"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Fog in the vicinity"
 msgstr "Magla u blizini"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Shallow fog"
 msgstr "Slabašna magla"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Patches of fog"
 msgstr "Tragovi magle"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Partial fog"
 msgstr "Delimično magla"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Freezing fog"
 msgstr "Ledena magla"
 
 #. SMOKE
-#: gweather/weather.c:294
+#: gweather/weather.c:295
 msgid "Smoke"
 msgstr "Smog"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:295
+#: gweather/weather.c:296
 msgid "Volcanic ash"
 msgstr "Vulkanski pepeo"
 
 #. SAND
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Sand"
 msgstr "Pesak"
 
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Blowing sand"
 msgstr "Razarajući pesak"
 
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Drifting sand"
 msgstr "Pesak se lagano premešta"
 
 # I ovo je sumaglica, izmaglica kao i Mist, pa neka ovo bude sumaglica ;)
 #. HAZE
-#: gweather/weather.c:297
+#: gweather/weather.c:298
 msgid "Haze"
 msgstr "Sumaglica"
 
 #. SPRAY
-#: gweather/weather.c:298
+#: gweather/weather.c:299
 msgid "Blowing sprays"
 msgstr "Razarajuće zaprašeno"
 
 #. DUST
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Dust"
 msgstr "Prašina"
 
 # Da li mozda "Blowing" u svima ovima kao "Vetrovito"?
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Blowing dust"
 msgstr "Razarajuća prašina"
 
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Drifting dust"
 msgstr "Prašina se lagano premešta"
 
 #. SQUALL
-#: gweather/weather.c:300
+#: gweather/weather.c:301
 msgid "Squall"
 msgstr "Udar vetra"
 
 #. SANDSTORM
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Sandstorm"
 msgstr "Peščana oluja"
 
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Sandstorm in the vicinity"
 msgstr "Peščana oluja u blizini"
 
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Heavy sandstorm"
 msgstr "Jaka peščana oluja"
 
 # Zalite se Mortonu i Bensonu, ili Morton-Bensonu ;)
 #. DUSTSTORM
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Duststorm"
 msgstr "Vrtlog od prašine"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Duststorm in the vicinity"
 msgstr "Vrtlog od prašine u blizini"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Heavy duststorm"
 msgstr "Jak vrtlog od prašine"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:303
+#: gweather/weather.c:304
 msgid "Funnel cloud"
 msgstr "Oblak ki dimnjak"
 
 #. TORNADO
-#: gweather/weather.c:304
+#: gweather/weather.c:305
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:305
+#: gweather/weather.c:306
 msgid "Dust whirls"
 msgstr "Kovitlaci prašine"
 
-#: gweather/weather.c:305
+#: gweather/weather.c:306
 msgid "Dust whirls in the vicinity"
 msgstr "Kovitlaci prašine u blizini"
 
-#: gweather/weather.c:1021 gweather/weather.c:1063 gweather/weather.c:1815
+#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1816
 msgid "Failed to get METAR data.\n"
 msgstr "Neuspešno dobavljanje METAR podataka.\n"
 
-#: gweather/weather.c:1055 gweather/weather.c:1083 gweather/weather.c:1330
+#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
 msgid "WeatherInfo missing location"
 msgstr "Nedostaje mesto za podatke o vremenu"
 
-#: gweather/weather.c:2147
+#: gweather/weather.c:2148
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:2151
+#: gweather/weather.c:2152
 msgid "Unknown observation time"
 msgstr "Nepoznato vreme posmatranja"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2183 gweather/weather.c:2186
+#: gweather/weather.c:2184 gweather/weather.c:2187
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2191 gweather/weather.c:2194
+#: gweather/weather.c:2192 gweather/weather.c:2195
 #, c-format
 msgid "%dF"
 msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2202 gweather/weather.c:2205
+#: gweather/weather.c:2203 gweather/weather.c:2206
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2210 gweather/weather.c:2213
+#: gweather/weather.c:2211 gweather/weather.c:2214
 #, c-format
 msgid "%dC"
 msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2222
+#: gweather/weather.c:2223
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2225
+#: gweather/weather.c:2226
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2277
+#: gweather/weather.c:2278
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 # bug: plural-forms
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2302
+#: gweather/weather.c:2303
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f čvorova"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2306
+#: gweather/weather.c:2307
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2310
+#: gweather/weather.c:2311
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2314
+#: gweather/weather.c:2315
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2335
+#: gweather/weather.c:2336
 msgid "Calm"
 msgstr "Mirno"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2339
+#: gweather/weather.c:2340
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2357
+#: gweather/weather.c:2358
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2361
+#: gweather/weather.c:2362
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
+#. TRANSLATOR: This is pressure in kiloPascals
+#: gweather/weather.c:2366
+#, c-format
+msgid "%.2f kPa"
+msgstr "%.2f kPa"
+
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2365
+#: gweather/weather.c:2370
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2369
+#: gweather/weather.c:2374
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 # bug: plural-forms
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2394
+#: gweather/weather.c:2399
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f milja"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2398
+#: gweather/weather.c:2403
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2402
+#: gweather/weather.c:2407
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2443
+#: gweather/weather.c:2448
 msgid "Retrieval failed"
 msgstr "Neuspešno dobavljanje podataka"
 
@@ -5190,7 +5121,7 @@ msgid "Saved volume to restore on startup"
 msgstr "Sačuvana jačina koja se postavlja pri pokretanju"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:138 modemlights/modemlights.c:1599
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "Lampice modema"
 
@@ -5224,12 +5155,12 @@ msgstr "Želite da uspostavite vezu?"
 msgid "C_onnect"
 msgstr "P_oveži se"
 
-#: modemlights/modemlights.c:587
+#: modemlights/modemlights.c:591
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "Primljeno %#.1fMb / Poslato %#.1fMb  / vreme: %.1d:%.2d"
 
-#: modemlights/modemlights.c:592
+#: modemlights/modemlights.c:596
 msgid "not connected"
 msgstr "veza nije uspostavljena"
 
@@ -5808,8 +5739,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Napravite, gledajte i upravljajte kratkim beleškama na radnoj površini"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:318 stickynotes/stickynotes_applet.c:436
-#: stickynotes/stickynotes_applet_callbacks.c:253
+#: stickynotes/stickynotes_applet.c:321 stickynotes/stickynotes_applet.c:439
+#: stickynotes/stickynotes_applet_callbacks.c:271
 msgid "Sticky Notes"
 msgstr "Kratke beleške"
 
@@ -6169,7 +6100,7 @@ msgstr "Da li se koristi uobičajena boja na sistemu"
 msgid "Whether to use the default system font"
 msgstr "Da li se koristi uobičajeni font na sistemu"
 
-#: stickynotes/stickynotes_applet.c:436
+#: stickynotes/stickynotes_applet.c:439
 #, c-format
 msgid ""
 "%s\n"
@@ -6187,11 +6118,11 @@ msgstr[2] ""
 "%s\n"
 "%d beleški"
 
-#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes_applet_callbacks.c:273
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "©2002–2003 Loban A. Raman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:256
+#: stickynotes/stickynotes_applet_callbacks.c:274
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Kratke beleške za radno okruženje Gnom"
 
@@ -6245,6 +6176,68 @@ msgstr "Postavke praćenja bežične veze"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Praćeni uređaj:"
+
+#~ msgid "%i minute"
+#~ msgid_plural "%i minutes"
+#~ msgstr[0] "%i minut"
+#~ msgstr[1] "%i minuta"
+#~ msgstr[2] "%i minuta"
+
+# bug: bad
+#~ msgid "No time"
+#~ msgstr "Nema vremena"
+
+# bug: bad, very bad
+#~ msgid "Unknown time"
+#~ msgstr "Nepoznato vremena"
+
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "High"
+#~ msgstr "Puna"
+
+#~ msgid "Low"
+#~ msgstr "Slaba"
+
+#~ msgid "Critical"
+#~ msgstr "Kritično"
+
+#~ msgid "Charging"
+#~ msgstr "Punjenje"
+
+#~ msgid ""
+#~ "System is running on battery power\n"
+#~ "%s (%d%%) remaining"
+#~ msgstr ""
+#~ "Sistem radi na baterije\n"
+#~ "%s (%d%%) preostalo"
+
+#~ msgid "System is running on battery power. %s (%d%%) remaining."
+#~ msgstr "Sistem radi na baterije. %s (%d%%) preostalo."
+
+#~ msgid "System is running on AC power. %s (%d%%) till charged."
+#~ msgstr "Sistem se napaja iz električne mreže. %s (%d%%) dok se ne napuni."
+
+#~ msgid "System is running on battery power. Battery status unknown."
+#~ msgstr "Sistem radi na baterije. Stanje baterije je nepoznato."
+
+#~ msgid "System is running on AC power. No battery present."
+#~ msgstr "Sistem se napaja iz električne mreže. Baterija nije prisutna."
+
+#~ msgid ""
+#~ "System is running on battery power\n"
+#~ "%s (%d%%) remaining."
+#~ msgstr ""
+#~ "Sistem radi na baterije\n"
+#~ "preostalo %s (%d%%)."
+
+#~ msgid ""
+#~ "System is running on AC power\n"
+#~ "%s (%d%%) till charged."
+#~ msgstr ""
+#~ "Sistem se napaja iz električne mreže\n"
+#~ "%s (%d%%) dok se ne napuni."
 
 #~ msgid "charged"
 #~ msgstr "puna"
