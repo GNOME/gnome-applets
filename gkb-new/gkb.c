@@ -647,9 +647,10 @@ help_cb (BonoboUIComponent *uic,
 {
 	GError *error = NULL;
 
-	egg_screen_help_display (
+	egg_help_display_on_screen (
+			"gkb", NULL,
 			gtk_widget_get_screen (gkb->applet),
-			"gkb", NULL, &error);
+			&error);
 
 	/* FIXME: display error to the user */
 }

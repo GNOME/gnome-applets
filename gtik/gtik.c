@@ -744,9 +744,10 @@ static gint updateOutput(gpointer data)
 			     StockData         *stockdata, 
 			     const char        *verbname) 
 	{
-		egg_screen_help_display (
+		egg_help_display_on_screen (
+				"gtik2_applet2", NULL,
 				gtk_widget_get_screen (stockdata->applet),
-				"gtik2_applet2", NULL, NULL);
+				NULL);
 
 	/* FIXME: display error to the user */
 	}
@@ -1192,9 +1193,10 @@ static gint updateOutput(gpointer data)
 	{
   		GError *error = NULL;
 
-  		egg_screen_help_display (
+  		egg_help_display_on_screen (
+			"gtik2_applet2", "gtik-settings",
 			gtk_window_get_screen (GTK_WINDOW (dialog)),
-			"gtik2_applet2", "gtik-settings", &error);
+			&error);
 
   		if (error) {
      			g_warning ("help error: %s\n", error->message);

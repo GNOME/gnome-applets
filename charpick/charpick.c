@@ -422,9 +422,10 @@ help_cb (BonoboUIComponent *uic,
 {
   GError *error = NULL;
 
-  egg_screen_help_display (
+  egg_help_display_on_screen (
+		"char-palette", NULL,
 		gtk_widget_get_screen (curr_data->applet),
-		"char-palette", NULL, &error);
+		&error);
 
   if (error) { /* FIXME: the user needs to see this */
     g_warning ("help error: %s\n", error->message);

@@ -478,9 +478,10 @@ help_cb (BonoboUIComponent *component,
 {
     GError *error = NULL;
 
-    egg_screen_help_display (
+    egg_help_display_on_screen (
+		"cdplayer", NULL,
 		gtk_widget_get_screen (cd->panel.applet),
-		"cdplayer", NULL, &error);
+		&error);
 
     if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);
@@ -973,9 +974,10 @@ phelp_cb (GtkDialog *dialog, gpointer data)
 {
     GError *error = NULL;
 
-    egg_screen_help_display (
+    egg_help_display_on_screen (
+		"cdplayer", "cdplayer_applet_prefs",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
-		"cdplayer", "cdplayer_applet_prefs", &error);
+		&error);
     
     if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);

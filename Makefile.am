@@ -38,6 +38,7 @@ always_built_SUBDIRS = \
 	drivemount	\
 	charpick	\
 	geyes		\
+	mailcheck	\
 	mini-commander	\
 	gkb-new		\
 	wireless		\

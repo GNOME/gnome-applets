@@ -452,9 +452,10 @@ addhelp_cb (GtkDialog *dialog, gpointer data)
 {
         GError *error = NULL;
 
-        egg_screen_help_display (
+        egg_help_display_on_screen (
+		"gkb", "gkb-modify-list",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
-		"gkb", "gkb-modify-list", &error);
+		&error);
 
 	/* FIXME: display error to the user */
 }

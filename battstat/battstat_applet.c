@@ -743,9 +743,10 @@ help_cb (BonoboUIComponent *uic,
 {
     GError *error = NULL;
 
-    egg_screen_help_display (
+    egg_help_display_on_screen (
+		"battstat", NULL,
 		gtk_widget_get_screen (battstat->applet),
-		"battstat", NULL, &error);
+		&error);
 
     if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);

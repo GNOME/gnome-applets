@@ -1,4 +1,5 @@
-figdir = figures
+#figdir = figures
+figs = figures/mailcheck_applet.png
 docname = mailcheck
 lang = C
 omffile = mailcheck-C.omf

@@ -106,9 +106,10 @@ gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
 	GError *error = NULL;
 
-        egg_screen_help_display (
+        egg_help_display_on_screen (
+		"gkb", "gkb-edit-layout",
   		gtk_window_get_screen (GTK_WINDOW (mdi->dialog)),
-		"gkb", "gkb-edit-layout", &error);
+		&error);
 
 	/* FIXME: display error to the user */
 }

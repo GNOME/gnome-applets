@@ -115,9 +115,10 @@ phelp_cb (GtkDialog *dialog, gint tab, gpointer data)
 {
   GError *error = NULL;
 
-  egg_screen_help_display (
+  egg_help_display_on_screen (
+		"char-palette", "charpick-prefs",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
-		"char-palette", "charpick-prefs", &error);
+		&error);
 
   if (error) { /* FIXME: the user needs to see this */
     g_warning ("help error: %s\n", error->message);

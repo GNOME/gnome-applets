@@ -370,9 +370,10 @@ help_cb (BonoboUIComponent *uic,
 {
 	GError *error = NULL;
 
-	egg_screen_help_display (
+	egg_help_display_on_screen (
+		"geyes", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
-		"geyes", NULL, &error);
+		&error);
 
 	if (error) { /* FIXME: the user needs to see this */
 		g_warning ("help error: %s\n", error->message);

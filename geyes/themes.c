@@ -168,9 +168,10 @@ phelp_cb (GtkDialog *dialog)
 {
 	GError *error = NULL;
 
-	egg_screen_help_display (
+	egg_help_display_on_screen (
+		"geyes", "geyes-settings",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
-		"geyes", "geyes-settings", &error);
+		&error);
 
 	if (error) { /* FIXME: the user needs to see this */
 		g_warning ("help error: %s\n", error->message);

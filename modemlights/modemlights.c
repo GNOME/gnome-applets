@@ -1422,9 +1422,10 @@ static void show_help_cb (BonoboUIComponent *uic,
 			  PanelApplet       *applet,
 			  const char        *verbname)
 {
-	egg_screen_help_display (
+	egg_help_display_on_screen (
+		"modemlights_applet", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (applet)),
-		"modemlights_applet", NULL, NULL);
+		NULL);
 }
 
 static const BonoboUIVerb modem_applet_menu_verbs [] = {

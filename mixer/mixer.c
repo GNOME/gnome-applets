@@ -853,9 +853,10 @@ mixer_help_cb (BonoboUIComponent *uic,
 {
         GError *error = NULL;
 
-	egg_screen_help_display (
+	egg_help_display_on_screen (
+		"mixer_applet2", NULL,
 		gtk_widget_get_screen (data->applet),
-		"mixer_applet2", NULL, &error);
+		&error);
 
 	if (error) { /* FIXME: the user needs to see this error */
 		g_print ("%s \n", error->message);

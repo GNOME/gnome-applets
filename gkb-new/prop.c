@@ -380,9 +380,10 @@ prophelp_cb (GtkWidget *widget, gpointer data)
 {
 	GError *error = NULL;
 
-        egg_screen_help_display (
+        egg_help_display_on_screen (
+		"gkb", "gkb-prefs",
 		gtk_widget_get_screen (widget),
-		"gkb", "gkb-prefs", &error);
+		&error);
 
 	/* FIXME: display error to the user */
 }

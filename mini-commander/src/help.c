@@ -33,9 +33,10 @@ show_help (BonoboUIComponent *uic,
 {
     GError *error = NULL;
    
-    egg_screen_help_display (
+    egg_help_display_on_screen (
+		"command-line", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)),
-		"command-line", NULL, &error);
+		&error);
 
     if (error) { /* FIXME: this error needs to be seen by the user */
     	g_warning ("help error: %s\n", error->message);
