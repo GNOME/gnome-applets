@@ -20,6 +20,9 @@
 $Id$
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 #include <sys/file.h>
 #include <sys/ioctl.h>
@@ -48,7 +51,6 @@ $Id$
 #include <applet-widget.h>
 #include <status-docklet.h>
 
-#include "../config.h"
 #include "battstat.h"
 #include "pixmaps.h"
 
