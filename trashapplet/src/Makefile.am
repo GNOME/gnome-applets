@@ -11,6 +11,8 @@ trashapplet_SOURCES = \
 	eel-extension.h \
 	eel-extension.c \
 	trash-monitor.h \
-	trash-monitor.c
+	trash-monitor.c \
+	xstuff.c \
+	xstuff.h
 
 trashapplet_LDADD = $(GNOME_APPLETS_LIBS) $(GNOME_VFS_APPLETS_LIBS) $(LIBGLADE_CFLAGS)

@@ -24,6 +24,7 @@
 
 #include <panel-applet.h>
 #include <gnome.h>
+#include <glade/glade.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include "trash-monitor.h"
 
@@ -61,6 +62,8 @@ struct _TrashApplet
 	gint item_count;
 	gboolean is_empty;
 	gboolean drag_hover;
+
+	GladeXML *xml;
 
 	TrashMonitor *monitor;
 	guint monitor_signal_id;
