@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "POT-Creation-Date: 2002-02-17 23:07-0500\n"
-"PO-Revision-Date: 2001-07-02 06:08+02:00\n"
+"PO-Revision-Date: 2002-03-02 01:53+0100\n"
 "Last-Translator: Leandro Noferini <lnoferin@cybervalley.org>\n"
 "Language-Team: Italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,45 +17,41 @@ msgstr ""
 #. on unsupported platform
 #: battstat/battstat_applet.c:284
 msgid "Your platform is not supported!\n"
-msgstr ""
+msgstr "La tua piattaforma non è supportata.\n"
 
 #: battstat/battstat_applet.c:285
 msgid "The applet will not work properly (if at all).\n"
-msgstr ""
+msgstr "L'applet non funzionerà correttamente (oppure proprio non funzionerà).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
 #: battstat/battstat_applet.c:322 battstat/battstat_applet.c:798
-#, fuzzy
 msgid "High"
-msgstr "Altezza:"
+msgstr "Carica"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
 #: battstat/battstat_applet.c:324 battstat/battstat_applet.c:800
 msgid "Low"
-msgstr ""
+msgstr "Scarica"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
 #: battstat/battstat_applet.c:326 battstat/battstat_applet.c:802
-#, fuzzy
 msgid "Critical"
-msgstr "Caraibi"
+msgstr "Critico"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
 #: battstat/battstat_applet.c:328 battstat/battstat_applet.c:804
-#, fuzzy
 msgid "Charging"
-msgstr "Cambia "
+msgstr "Ricarica"
 
 #: battstat/battstat_applet.c:409
 msgid "Battery low (%d%%) and AC is offline"
-msgstr ""
+msgstr "Batteria scarica (%d%%) e alimentazione staccata"
 
 #: battstat/battstat_applet.c:432
-#, fuzzy
 msgid "Battery is now fully re-charged!"
-msgstr "La batteria è completamente carica."
+msgstr "La batteria è completamente carica!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
@@ -65,6 +61,8 @@ msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 msgstr ""
+"Il computer sta funzionando con la batteria\n"
+"Batteria: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
@@ -74,36 +72,38 @@ msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
 msgstr ""
+"Il computer sta funzionando con l'alimentazione\n"
+"Batteria: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:461 battstat/battstat_applet.c:893
 #: battstat/battstat_applet.c:982
 msgid "System is running on battery power"
-msgstr ""
+msgstr "Il computer sta funzionando con la batteria"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:464 battstat/battstat_applet.c:899
 #: battstat/battstat_applet.c:988
 msgid "System is running on AC power"
-msgstr ""
+msgstr "Il computer sta funzionando con l'alimentazione"
 
 #: battstat/battstat_applet.c:478
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:602 battstat/battstat_applet.c:873
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "Il computer sta funzionando con la batteria. Batteria: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:609 battstat/battstat_applet.c:880
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "Il computer sta funzionando con l'alimentazione. Batteria: %d%% (%s)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
@@ -111,27 +111,27 @@ msgstr ""
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:620
 msgid "System is running on battery power. Battery: Not present"
-msgstr ""
+msgstr "Il computer sta funzionando con la batteria. Batteria: Non presente"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:626
 msgid "System is running on AC power. Battery: Not present"
-msgstr ""
+msgstr "Il computer sta funzionando con l'alimentazione: Batteria: non presente"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
 #: battstat/battstat_applet.c:635
 msgid "Battery: %d%% (%s)"
-msgstr ""
+msgstr "Batteria: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:642
 msgid "Battery: Not present"
-msgstr ""
+msgstr "Batteria: non presente"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:698
@@ -141,6 +141,10 @@ msgid ""
 "Make sure you have read permission to the\n"
 "APM device."
 msgstr ""
+"Non posso leggere la periferica APM!\n"
+"\n"
+"Accertatevi di avere i permessi di lettura\n"
+"sullla periferica APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:706
@@ -149,33 +153,34 @@ msgid ""
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 msgstr ""
+"Il sottosistema APM sembra disabilitato.\n"
+"Provate ad eseguire \"apm -e 1\" (FreeBSD) e accertatevi\n"
+"che questo serva.\n"
 
 #. The long name of the applet in the About dialog.
 #: battstat/battstat_applet.c:771
 msgid "Battery status utility"
-msgstr ""
+msgstr "Utilità di controllo della batteria"
 
 #: battstat/battstat_applet.c:773
-#, fuzzy
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 the Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 the Free Software Foundation"
 
 #: battstat/battstat_applet.c:774
 msgid "This utility show the status of your laptop battery."
-msgstr ""
+msgstr "Questa utilità mostra lo stato della batteria del vostro portatile."
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
-msgstr "Controllo della carica della batteria"
+msgstr "Controllo di carica della batteria"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
 msgstr ""
 
 #: battstat/GNOME_BattstatApplet.server.in.h:3
-#, fuzzy
 msgid "Laptop battery monitor applet"
-msgstr "Applet GNOME per il Meteo"
+msgstr "Applet per il controllo della batteria"
 
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
@@ -210,15 +215,13 @@ msgstr "Proprietà..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "Suspend Computer..."
-msgstr ""
+msgstr "Sospendi il computer..."
 
 #: cdplayer/cdplayer.c:300
-#, fuzzy
 msgid "CD Player Properties"
-msgstr "Applet Lettore CD"
+msgstr "Proprietà Lettore CD"
 
 #: cdplayer/cdplayer.c:314
-#, fuzzy
 msgid "Device Path:"
 msgstr "Dispositivo:"
 
@@ -227,11 +230,12 @@ msgid "CD Player Applet"
 msgstr "Applet Lettore CD"
 
 #: cdplayer/cdplayer.c:362
-#, fuzzy
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr "(C) 1997 Free Software Foundation"
+msgstr ""
+"(C) 1997 Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
 
 #: cdplayer/cdplayer.c:364
 msgid "The CD Player applet is a simple audio CD player for your panel"
@@ -254,19 +258,17 @@ msgstr "Applet Lettore CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
 msgid "Panel applet for playing audio CDs"
-msgstr ""
+msgstr "Applet del pannello per suonare cd audio"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#, fuzzy
 msgid "Run External CD Player"
-msgstr "Avvia Lettore CD..."
+msgstr "Avvia un Lettore esterno"
 
 #: charpick/charpick.c:358 charpick/charpick_applet.desktop.in.h:1
 msgid "Character Picker"
 msgstr "Selettore Caratteri"
 
 #: charpick/charpick_applet.desktop.in.h:2
-#, fuzzy
 msgid "Character picker"
 msgstr "Selettore Caratteri"
 
@@ -283,18 +285,16 @@ msgstr ""
 "trovano sulla tastiera.  Rilasciato sotto la GNU General Public Licence."
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:1
-#, fuzzy
 msgid "Character Palette"
-msgstr "Selettore Caratteri"
+msgstr "Insieme Caratteri"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:2
 msgid "Charpicker Applet Factory"
 msgstr ""
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
-#, fuzzy
 msgid "Insert characters"
-msgstr "Lista predefinita di caratteri:"
+msgstr "Inserisci caratteri"
 
 #: charpick/properties.c:55
 msgid "Default character list:"
@@ -309,21 +309,20 @@ msgstr ""
 "lista premete lo <spazio> quando l'applet ha il focus."
 
 #: charpick/properties.c:116
-#, fuzzy
 msgid "Character Palette Properties"
-msgstr "Impostazioni Selettore Caratteri"
+msgstr "Impostazioni Insieme Caratteri"
 
 #: drivemount/drivemount.c:418
 msgid "Drive Mount Applet"
-msgstr "Applet per montaggio dischi"
+msgstr "Applet per montare dischi"
 
 #: drivemount/drivemount.c:419
 msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr ""
+msgstr "(C) 1999_2001 gli Hackers di GNOME\n"
 
 #: drivemount/drivemount.c:421
 msgid "Applet for mounting and unmounting block volumes."
-msgstr ""
+msgstr "Applet per montare e smontare volumi a blocchi."
 
 #: drivemount/drivemount.c:609
 msgid " mounted"
@@ -334,9 +333,8 @@ msgid " not mounted"
 msgstr " non montato"
 
 #: drivemount/drivemount.c:722
-#, fuzzy
 msgid "Drive Mount Applet Warning"
-msgstr "Applet per montaggio dischi"
+msgstr "Avviso dell'Applet per montare dischi"
 
 #: drivemount/drivemount.c:730
 msgid "\" reported:\n"
@@ -351,7 +349,6 @@ msgstr ""
 "\""
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
-#, fuzzy
 msgid "Disk Mounter"
 msgstr "Montadischi"
 
@@ -367,7 +364,7 @@ msgstr "Applet per montaggio dischi"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
 msgid "Panel applet for mounting block volumes"
-msgstr ""
+msgstr "Applet del pannello per montare volumi a blocchi"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
 msgid "Browse..."
@@ -378,23 +375,20 @@ msgid "Eject"
 msgstr "Espelli"
 
 #: drivemount/properties.c:236
-#, fuzzy
 msgid "Disk Mounter Properties"
-msgstr "Proprietà Applet per montaggio dischi"
+msgstr "Proprietà Applet per montare dischi"
 
 #: drivemount/properties.c:255
 msgid "Mount point:"
 msgstr "Punto di montaggio:"
 
 #: drivemount/properties.c:272
-#, fuzzy
 msgid "Update interval (seconds):"
 msgstr "Intervallo di aggiornamento (secondi):"
 
 #: drivemount/properties.c:287
-#, fuzzy
 msgid "Icon :"
-msgstr "Icona:"
+msgstr "Icona :"
 
 #: drivemount/properties.c:304
 msgid "Floppy"
@@ -406,7 +400,7 @@ msgstr "CD ROM"
 
 #: drivemount/properties.c:310
 msgid "Cd Recorder"
-msgstr ""
+msgstr "Masterizzatore"
 
 #: drivemount/properties.c:313
 msgid "Zip Drive"
@@ -473,14 +467,12 @@ msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Due piccoli buffi occhi, un clone di Xeyes per il pannello di Gnome"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
-#, fuzzy
 msgid "A set of eyeballs for your panel"
-msgstr "Usa tutto lo spazio sul pannello"
+msgstr "Un insieme di occhi per il tuo pannello"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:2
-#, fuzzy
 msgid "Geyes Applet"
-msgstr "Applet Mixer"
+msgstr "Applet Occhi"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:3
 msgid "Geyes Applet Factory"
@@ -491,9 +483,8 @@ msgid "Theme Name"
 msgstr "Nome del tema"
 
 #: geyes/themes.c:198
-#, fuzzy
 msgid "Properties"
-msgstr "Proprietà..."
+msgstr "Proprietà"
 
 #: gkb-new/gkb_applet.desktop.in.h:1
 msgid "GKB Keyboard Switcher"
@@ -506,27 +497,27 @@ msgstr "GKB, Applet per cambiare il layout della tastiera"
 #: gkb-new/gkb.c:405
 #, c-format
 msgid "name_%d"
-msgstr ""
+msgstr "name_%d"
 
 #: gkb-new/gkb.c:408
-#, fuzzy, c-format
+#, c-format
 msgid "label_%d"
-msgstr "Etichetta"
+msgstr "etichetta_%d"
 
 #: gkb-new/gkb.c:411
-#, fuzzy, c-format
+#, c-format
 msgid "country_%d"
-msgstr "Paese"
+msgstr "paese_%d"
 
 #: gkb-new/gkb.c:414
-#, fuzzy, c-format
+#, c-format
 msgid "lang_%d"
-msgstr "Polonia"
+msgstr "lingua_%d"
 
 #: gkb-new/gkb.c:420
-#, fuzzy, c-format
+#, c-format
 msgid "command_%d"
-msgstr "Comando"
+msgstr "comando_%d"
 
 #: gkb-new/gkb.c:524 gkb-new/gkb.c:531
 msgid "GKB"
@@ -541,7 +532,6 @@ msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
 #: gkb-new/gkb.c:574
-#, fuzzy
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it into CVS.\n"
@@ -564,14 +554,12 @@ msgid "GKB Factory"
 msgstr ""
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "Keyboard Layout Switcher"
-msgstr "Programma che permette di internazionalizzare la tastiera"
+msgstr "Cambia tastiera"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#, fuzzy
 msgid "Keyboard Layout Switcher Applet"
-msgstr "GKB, Applet per cambiare il layout della tastiera"
+msgstr "Applet per cambiare il layout della tastiera"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
 #, fuzzy
@@ -584,11 +572,11 @@ msgstr "Disabilitato"
 
 #: gkb-new/keygrab.c:292
 msgid "Press a key or press Esc to cancel"
-msgstr ""
+msgstr "Premete un tasto o premete ESC per uscire"
 
 #: gkb-new/prop-add.c:86
 msgid "Keymaps (select and press add)"
-msgstr ""
+msgstr "Mappatura (seleziona e premete aggiungi)"
 
 #: gkb-new/prop-add.c:357
 msgid "Select layout"
@@ -642,14 +630,12 @@ msgid "GKB Properties"
 msgstr "Proprietà GKB"
 
 #: gkb-new/prop.c:406
-#, fuzzy
 msgid "_Keymaps"
-msgstr "Mappature"
+msgstr "_Mappature"
 
 #: gkb-new/prop.c:418
-#, fuzzy
 msgid "_Options"
-msgstr "Opzioni"
+msgstr "_Opzioni"
 
 #: gkb-new/prop-list.c:383
 msgid "Add"
@@ -1021,9 +1007,8 @@ msgid "Gtik Applet Factory"
 msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
-#, fuzzy
 msgid "Stock Ticker"
-msgstr "Lo Stock Ticker di GNOME"
+msgstr "Stock Ticker"
 
 #: gtik/GNOME_GtikApplet.xml.h:3
 msgid "Refresh"
@@ -1039,7 +1024,7 @@ msgstr "Applet Stock Ticker di GNOME"
 
 #: gtik/gtik.c:199
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Nessun dato disponibile o proprietà non impostate"
 
 #: gtik/gtik.c:652
 msgid "The GNOME Stock Ticker"
@@ -1063,19 +1048,16 @@ msgid "New Symbol:"
 msgstr "Nuovo Simbolo:"
 
 #: gtik/gtik.c:1070
-#, fuzzy
 msgid "_Add"
-msgstr "Aggiungi"
+msgstr "_Aggiungi"
 
 #: gtik/gtik.c:1081
-#, fuzzy
 msgid "_Remove Selected"
-msgstr "Elimina la selezione"
+msgstr "_Elimina la selezione"
 
 #: gtik/gtik.c:1126
-#, fuzzy
 msgid "Stock Ticker Properties"
-msgstr "Proprietà di Gnome Stock Ticker"
+msgstr "Proprietà di Stock Ticker"
 
 #: gtik/gtik.c:1147
 msgid "Update Frequency in minutes:"
@@ -1123,19 +1105,16 @@ msgid "Stock Change:"
 msgstr "Cambio delle azioni:"
 
 #: gtik/gtik.c:1278
-#, fuzzy
 msgid "_Symbols"
-msgstr "Simboli"
+msgstr "_Simboli"
 
 #: gtik/gtik.c:1280
-#, fuzzy
 msgid "_Behavior"
-msgstr "Comportamento"
+msgstr "_Comportamento"
 
 #: gtik/gtik.c:1282
-#, fuzzy
 msgid "_Appearance"
-msgstr "Aspetto"
+msgstr "_Aspetto"
 
 #: gtik/gtik.c:1496
 msgid "(No"
@@ -1155,13 +1134,12 @@ msgid "Gweather Applet Factory"
 msgstr ""
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-#, fuzzy
 msgid "The GNOME weather monitor"
 msgstr "Applet GNOME per il Meteo"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
 msgid "Weather Report"
-msgstr ""
+msgstr "Previsioni del tempo"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
 #: gweather/gweather-dialog.c:297
@@ -1182,23 +1160,22 @@ msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (C) 1999 S. Papadimitriou"
 
 #: gweather/gweather-about.c:44
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
 "Rilasciata sotto la GNU General Public License.\n"
-"Applet Carico di rete."
+"\n"
+"Un'Applet per controllare le condizioni metereologiche locali."
 
 #: gweather/gweather-applet.c:361
 msgid "Updating..."
 msgstr "Sto Aggiornando..."
 
 #: gweather/gweather-applet.c:387
-#, fuzzy
 msgid "Update failed! Maybe another update was already in progress?"
-msgstr "È in atto un altro aggiornamento!\n"
+msgstr "Aggiornamento fallito! Forse un altro è in atto!"
 
 #: gweather/gweather.desktop.in.h:2
 msgid "GNOME weather monitor applet"
@@ -1285,7 +1262,6 @@ msgstr ""
 "Le opzioni rimangono invariate."
 
 #: gweather/gweather-pref.c:476
-#, fuzzy
 msgid "Weather Properties"
 msgstr "Proprietà GNOME Meteo"
 
@@ -1298,9 +1274,8 @@ msgid "Use proxy"
 msgstr "Usa server proxy"
 
 #: gweather/gweather-pref.c:547
-#, fuzzy
 msgid "Proxy URL:"
-msgstr "Server Proxy:"
+msgstr "URL Proxy:"
 
 #: gweather/gweather-pref.c:563
 msgid "Username:"
@@ -1346,9 +1321,8 @@ msgid "Updates"
 msgstr "Aggiornamenti"
 
 #: gweather/gweather-pref.c:661
-#, fuzzy
 msgid "Automatically update every "
-msgstr "Aggiorna automaticamente ogni"
+msgstr "Aggiorna automaticamente ogni "
 
 #: gweather/gweather-pref.c:681
 msgid "minute(s)"
@@ -2522,7 +2496,6 @@ msgid "WeatherInfo missing location"
 msgstr "Weather Info non trova la posizione"
 
 #: gweather/weather.c:1049
-#, fuzzy
 msgid "Failed to get IWIN data.\n"
 msgstr "Impossibile ottenere dati IWIN.\n"
 
@@ -2531,7 +2504,6 @@ msgid "Failed to get IWIN forecast data.\n"
 msgstr "Impossibile ottenere dati IWIN.\n"
 
 #: gweather/weather.c:1289
-#, fuzzy
 msgid "Failed to get Met Office data.\n"
 msgstr "Impossibile ottenere i dati dal Met Office.\n"
 
@@ -2655,9 +2627,8 @@ msgid "child exited"
 msgstr "Processo terminato."
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#, fuzzy
 msgid "Command Line"
-msgstr "Comando"
+msgstr "Linea di comando"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
 #: mini-commander/src/mini-commander_applet.desktop.in.h:1
@@ -2723,9 +2694,8 @@ msgid "clock off"
 msgstr "orologio disattivato"
 
 #: mini-commander/src/preferences.c:573
-#, fuzzy
 msgid "Command Line Properties"
-msgstr "Proprietà del Mini-Commander"
+msgstr "Proprietà della linea di comando"
 
 #: mini-commander/src/preferences.c:586
 msgid "Clock"
@@ -2758,15 +2728,13 @@ msgstr "Mostra cornice"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:633
-#, fuzzy
 msgid "Autocompletion"
-msgstr "Auto-completamento."
+msgstr "Autocompletamento"
 
 #. show history autocomplete
 #: mini-commander/src/preferences.c:641
-#, fuzzy
 msgid "Enable history based autocompletion"
-msgstr "Abilita auto-completamento in base alla lista"
+msgstr "Abilita autocompletamento in base alla lista"
 
 #. Size
 #: mini-commander/src/preferences.c:648
@@ -2805,9 +2773,8 @@ msgid "Command line background:"
 msgstr "Sfondo della riga di comando:"
 
 #: mini-commander/src/preferences.c:829 modemlights/properties.c:405
-#, fuzzy
 msgid "_General"
-msgstr "Generali"
+msgstr "_Generali"
 
 #. prefix
 #: mini-commander/src/preferences.c:854
@@ -2822,22 +2789,20 @@ msgid "   Macro %.2d:"
 msgstr "   Macro %.2d:"
 
 #: mini-commander/src/preferences.c:886
-#, fuzzy
 msgid "_Macros"
-msgstr "Macro"
+msgstr "_Macro"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
 msgid "Applet for adjusting the sound volume"
-msgstr ""
+msgstr "Applet per controllare il volume"
 
 #: mixer/GNOME_MixerApplet.server.in.h:2 mixer/mixer.c:694
-#, fuzzy
 msgid "Volume Control"
-msgstr "Telecomando Web"
+msgstr "Controllo Volume"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
 msgid "Mute"
-msgstr ""
+msgstr "Muto"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "Run Audio Mixer..."
@@ -2860,29 +2825,29 @@ msgstr ""
 #: mixer/mixer.c:192
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
+msgstr "La richiesta dei canali disponibili sul dispositivo del mixer %s è fallita\n"
 
 #: mixer/mixer.c:199
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
+msgstr "attenzione: il mixer non canale per il volume - userò il PCM.\n"
 
 #: mixer/mixer.c:202
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr ""
+msgstr "Il dispositivo %s del mixer non ha canali né per il volume né per il PCM.\n"
 
 #: mixer/mixer.c:695
 msgid "(C) 2001 Richard Hult"
-msgstr ""
+msgstr "(C) 2001 Richard Hult"
 
 #: mixer/mixer.c:696
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
+msgstr "Il controllo del volume permette di controllare il volume del vostro computer."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
 #: modemlights/modemlights_applet.desktop.in.h:1
 msgid "Modem Lights"
-msgstr "Modemlights"
+msgstr "Spie Modem"
 
 #: modemlights/modemlights_applet.desktop.in.h:2
 msgid "Show modem status"
@@ -2925,9 +2890,8 @@ msgid "not connected"
 msgstr "non connesso"
 
 #: modemlights/properties.c:310
-#, fuzzy
 msgid "Modem Lights Properties"
-msgstr "Impostazioni Modem Lights"
+msgstr "Impostazioni Spie Modem"
 
 #: modemlights/properties.c:322
 msgid "Connecting"
@@ -3032,8 +2996,7 @@ msgstr "Avanzate"
 
 #: multiload/cpuload_applet.desktop.in.h:1
 msgid "CPU Load Meter"
-msgstr ""
-"Mostra l'andamento del livello di utilizzazione della CPU in un grafico"
+msgstr "Controllo carico CPU"
 
 #: multiload/cpuload_applet.desktop.in.h:2
 msgid "CPULoad"
@@ -3044,19 +3007,16 @@ msgid "CPU Load"
 msgstr "Carico CPU"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
-#, fuzzy
 msgid "A system load indicator"
-msgstr "Indicatore di picco"
+msgstr "Un indicatore del carico del computer"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "System Monitor"
-msgstr "Controllo Audio"
+msgstr "Controllo del sistema"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-#, fuzzy
 msgid "Run detailed system monitor"
-msgstr "Usa il sistema metrico decimale"
+msgstr "Avvia il controllo del sistema dettagliato"
 
 #: multiload/loadavg.c:94 multiload/loadavg_applet.desktop.in.h:1
 msgid "Load Average"
@@ -3067,12 +3027,10 @@ msgid "Load Average Applet"
 msgstr "Applet Carico medio"
 
 #: multiload/main.c:53
-#, fuzzy
 msgid "System Monitor Applet"
-msgstr "Applet di Controllo di Esound"
+msgstr "Applet di Controllo del sistema"
 
 #: multiload/main.c:55
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3080,33 +3038,33 @@ msgid ""
 "file use, plus network traffic."
 msgstr ""
 "Rilasciato sotto la GNU General Public License.\n"
-"Controllo costante dello spazio utilizzato/disponibile sulle memorie di "
-"massa."
+"\n"
+"Controllo del carico che può visualizzare grafici per la CPU, la ram, e \n"
+"l'uso del file di swap, oltre che al traffico di rete."
 
 #: multiload/main.c:174 multiload/properties.c:404
-#, fuzzy
 msgid "Processor"
-msgstr "Pressione:"
+msgstr "Processore"
 
 #: multiload/main.c:176 multiload/properties.c:410
-#, fuzzy
 msgid "Memory"
-msgstr "Carico della memoria"
+msgstr "Memoria"
 
 #: multiload/main.c:180 multiload/properties.c:422
 msgid "Swap File"
-msgstr ""
+msgstr "File di swap"
 
 #: multiload/main.c:182
-#, fuzzy
 msgid "Resource"
-msgstr "Ripristina"
+msgstr "Risorse"
 
 #: multiload/main.c:194
 msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
+"%s:\n"
+"%d%% in uso"
 
 #: multiload/memload_applet.desktop.in.h:1
 msgid "MemLoad"
@@ -3114,8 +3072,7 @@ msgstr "Carico memoria"
 
 #: multiload/memload_applet.desktop.in.h:2
 msgid "Memory Load Meter"
-msgstr ""
-"Mostra l'andamento del livello di utilizzazione della memoria in un grafico"
+msgstr "Misura del carico della memoria"
 
 #: multiload/memload.c:39
 msgid "Memory Load"
@@ -3135,26 +3092,23 @@ msgstr "Carico di rete"
 
 #: multiload/properties.c:290
 msgid "Monitored Resources"
-msgstr ""
+msgstr "Risorse controllate"
 
 #: multiload/properties.c:298
-#, fuzzy
 msgid "_Processor"
-msgstr "Pressione:"
+msgstr "_Processore"
 
 #: multiload/properties.c:308
-#, fuzzy
 msgid "_Memory"
-msgstr "Carico della memoria"
+msgstr "_Memoria"
 
 #: multiload/properties.c:318
-#, fuzzy
 msgid "_Network"
-msgstr "Rete"
+msgstr "_Rete"
 
 #: multiload/properties.c:328
 msgid "_Swap File"
-msgstr ""
+msgstr "File di _swap"
 
 #.
 #. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
@@ -3168,24 +3122,23 @@ msgstr "Opzioni"
 
 #: multiload/properties.c:358
 msgid "System monitor width: "
-msgstr ""
+msgstr "Larghezza controllo sistema: "
 
 #: multiload/properties.c:360
 msgid "System monitor height: "
-msgstr ""
+msgstr "Altezza controllo sistema: "
 
 #: multiload/properties.c:373
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #: multiload/properties.c:379
 msgid "System monitor speed: "
-msgstr ""
+msgstr "Velocità del controllo sistema: "
 
 #: multiload/properties.c:390
-#, fuzzy
 msgid "milliseconds"
-msgstr "Secondi"
+msgstr "millisecondi"
 
 #: multiload/properties.c:405
 msgid "User"
@@ -3224,28 +3177,24 @@ msgid "SLIP"
 msgstr "SLIP"
 
 #: multiload/properties.c:418
-#, fuzzy
 msgid "PLIP"
-msgstr "SLIP"
+msgstr "PLIP"
 
 #: multiload/properties.c:419
-#, fuzzy
 msgid "Ethernet"
-msgstr "Altro"
+msgstr "Ethernet"
 
 #: multiload/properties.c:423
 msgid "Used"
 msgstr "Usata"
 
 #: multiload/properties.c:445
-#, fuzzy
 msgid "System Monitor Properties"
-msgstr "Proprietà del Telecomando Web"
+msgstr "Proprietà del Controllo Sistema"
 
 #: multiload/swapload_applet.desktop.in.h:1
 msgid "Swap Load Meter"
-msgstr ""
-"Mostra il livello di carico della memoria virtuale (swap) in un grafico"
+msgstr "Misura il carico del File di Swap"
 
 #: multiload/swapload_applet.desktop.in.h:2
 msgid "SwapLoad"
@@ -3264,1846 +3213,158 @@ msgid "Panel Menu Applet Factory"
 msgstr ""
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-#, fuzzy
 msgid "Panel applet for displaying menus"
-msgstr "Applicazione per la visualizzazione delle immagini:"
+msgstr "Applet del Pannello per visualizzare menù"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
-msgstr ""
+msgstr "Utilità"
 
 #: panel-menu/panel-menu-actions.c:96
-#, fuzzy
 msgid "Actions"
-msgstr "Opzioni"
+msgstr "Azioni"
 
 #: panel-menu/panel-menu-add.c:76
 msgid "Add items to the Menu Bar"
-msgstr ""
+msgstr "Aggiungi voci alla Barra dei Menù"
 
 #: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:401
-#, fuzzy
 msgid "Shortcuts"
-msgstr "Temporali"
+msgstr "Scorciatoie"
 
 #: panel-menu/panel-menu-add.c:240
 msgid "My Documents"
-msgstr ""
+msgstr "I miei Documenti"
 
 #: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
-msgstr ""
+msgstr "Documenti"
 
 #: panel-menu/panel-menu-applications.c:80
-#, fuzzy
 msgid "Applications"
-msgstr "Opzioni"
+msgstr "Programmi"
 
 #: panel-menu/panel-menu.c:681
-#, fuzzy
 msgid "PanelMenu Applet"
-msgstr "Applet Mixer"
+msgstr "Applet Menù"
 
 #: panel-menu/panel-menu.c:681
 msgid "(c) 2001 Chris Phelps"
-msgstr ""
+msgstr "(c) 2001 Chris Phelps"
 
 #: panel-menu/panel-menu.c:681
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
 msgstr ""
+"L'Applet del Pannello Menù vi permette di visualizzare barre menù\n"
+"personalizzate sui vostri pannelli."
 
 #: panel-menu/panel-menu-directory.c:496
-#, fuzzy
 msgid "Create directory item..."
-msgstr "Creazione directory utente: %s\n"
+msgstr "Crea una voce directory..."
 
 #: panel-menu/panel-menu-directory.c:499
-#, fuzzy
 msgid "Home"
-msgstr "Volume"
+msgstr "Home"
 
 #: panel-menu/panel-menu-directory.c:542
 msgid "Edit directory item..."
-msgstr ""
+msgstr "Modifica la voce directory..."
 
 #: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
 #: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
 #: panel-menu/panel-menu-links.c:436
-#, fuzzy
 msgid "Name:"
-msgstr "Nome"
+msgstr "Nome:"
 
 #: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
 msgid "Path:"
-msgstr ""
+msgstr "Indirizzo:"
 
 #: panel-menu/panel-menu-directory.c:621
 msgid "Depth level:"
-msgstr ""
+msgstr "Livello:"
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
-msgstr ""
+msgstr "Crea voce Documenti..."
 
 #: panel-menu/panel-menu-documents.c:433
 msgid "Rename documents item..."
-msgstr ""
+msgstr "Rinomina voce Documenti..."
 
 #: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
 msgid "KDE Menus"
-msgstr ""
+msgstr "Menù KDE"
 
 #: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
 #: panel-menu/panel-menu-path.c:576
 msgid "Programs"
-msgstr ""
+msgstr "Programmi"
 
 #: panel-menu/panel-menu-links.c:399
 msgid "Create links item..."
-msgstr ""
+msgstr "Crea voci links..."
 
 #: panel-menu/panel-menu-links.c:435
 msgid "Rename links item..."
-msgstr ""
+msgstr "Rinomina voci links..."
 
 #: panel-menu/panel-menu-path.c:224
 msgid "KDE"
-msgstr ""
+msgstr "KDE"
 
 #: panel-menu/panel-menu-path.c:650
 msgid "Create menu path item..."
-msgstr ""
+msgstr "Crea voce indirizzo menù..."
 
 #: panel-menu/panel-menu-path.c:682
 msgid "Edit path item..."
-msgstr ""
+msgstr "Modifica voce indirizzo..."
 
 #: panel-menu/panel-menu-preferences.c:78
 msgid "Preferences"
-msgstr ""
+msgstr "Preferenze"
 
 #: panel-menu/panel-menu-properties.c:71
-#, fuzzy
 msgid "Menu Bar Properties"
-msgstr "Proprietà GKB"
+msgstr "Proprietà Barra Menù"
 
 #: panel-menu/panel-menu-properties.c:75
-#, fuzzy
 msgid "Layout"
 msgstr "Stato"
 
 #: panel-menu/panel-menu-properties.c:90
 msgid "Preferences Menu"
-msgstr ""
+msgstr "Preferenze Menù"
 
 #: panel-menu/panel-menu-properties.c:110
 msgid "Applications Menu"
-msgstr ""
+msgstr "Menù Programmi"
 
 #: panel-menu/panel-menu-properties.c:130
-#, fuzzy
 msgid "Select an icon for the Applications menu"
-msgstr "Seleziona icona per il dispositivo montato"
+msgstr "Seleziona icona per il Menù Programmi"
 
 #: panel-menu/panel-menu-properties.c:146
 msgid "Actions Menu"
-msgstr ""
+msgstr "Menù Azioni"
 
 #: panel-menu/panel-menu-properties.c:157
 msgid "Windows Menu"
-msgstr ""
+msgstr "Menù Finestre"
 
 #: panel-menu/panel-menu-properties.c:168
 msgid "Workspaces Menu"
-msgstr ""
+msgstr "Menù Workspace"
 
 #: panel-menu/panel-menu-windows.c:99
-#, fuzzy
 msgid "Windows"
-msgstr "Vento:"
+msgstr "Finestre"
 
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
-msgstr ""
-
-#~ msgid "Clock Settings"
-#~ msgstr "Impostazioni dell'orologio"
-
-#~ msgid "Clock color"
-#~ msgstr "Colore dell'orologio"
-
-#~ msgid "Hour needle color"
-#~ msgstr "Colore della lancetta delle ore"
-
-#~ msgid "Minute needle color"
-#~ msgstr "Colore della lancetta dei minuti"
-
-#~ msgid "Second needle color"
-#~ msgstr "Colore della lancetta dei secondi"
-
-#~ msgid "Show seconds needle"
-#~ msgstr "Mostra lancetta dei secondi"
-
-#~ msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-#~ msgstr "Iñigo Serna <inigo@gatelan.bi.ehu.es>"
-
-#~ msgid "Another Clock Applet"
-#~ msgstr "L'ennesima applet Orologio"
-
-#~ msgid "(C) 1999 the Free Software Foundation"
-#~ msgstr "(C) 1999 dalla Free Software Foundation"
-
-#~ msgid "An analog clock similar to that in CDE panel."
-#~ msgstr "Orologio analogico simile a quello del pannello di CDE."
-
-#~ msgid "ASClock"
-#~ msgstr "ASClock"
-
-#~ msgid "(C) 1998 the Free Software Foundation"
-#~ msgstr "(C) 1998 the Free Software Foundation"
-
-#~ msgid "Who said NeXT is dead?"
-#~ msgstr "Chi ha detto che NeXT è morto?"
-
-#~ msgid ""
-#~ "Since you are root, would you like to set the system's default timezone?"
-#~ msgstr ""
-#~ "Dal momento che sei l'utente root, vuoi impostare il fuso orario di default "
-#~ "del sistema?"
-
-#~ msgid "My Title"
-#~ msgstr "Titolo"
-
-#~ msgid "Continent/City"
-#~ msgstr "Continente/Città"
-
-#~ msgid "Clock Theme"
-#~ msgstr "Tema Orologio"
-
-#~ msgid "ASClock Settings"
-#~ msgstr "Impostazioni ASClock"
-
-#~ msgid "Display time in 12 hour format (AM/PM)"
-#~ msgstr "Visualizza l'ora nel formato 12 ore (AM/PM)"
-
-#~ msgid "Blinking elements in clock"
-#~ msgstr "Elementi lampeggianti dell'orologio"
-
-#~ msgid "Timezone"
-#~ msgstr "Fuso orario"
-
-#~ msgid "The battery is low."
-#~ msgstr "La batteria è poco carica."
-
-#~ msgid "Internal error: invalid mode in battery_set_mode"
-#~ msgstr "Errore interno: modo non valido in battery_set_mode"
-
-#~ msgid "Can't create applet!\n"
-#~ msgstr "Impossibile creare l'applet!\n"
-
-#~ msgid ""
-#~ "Error querying battery charge.\n"
-#~ "\n"
-#~ "Make sure that your kernel was built with APM support."
-#~ msgstr ""
-#~ "Errore nella lettura dello stato di carica.\n"
-#~ "\n"
-#~ "Assicurarsi che il kernel sia stato compilato con il supporto APM."
-
-#~ msgid "The GNOME Battery Monitor Applet"
-#~ msgstr "Applet GNOME per il controllo della batteria"
-
-#~ msgid " (C) 1997-1998 The Free Software Foundation"
-#~ msgstr "(C) 1997-1998 The Free Software Foundation"
-
-#~ msgid ""
-#~ "This applet monitors the charge of your laptop's battery.  Click on it to "
-#~ "change display modes."
-#~ msgstr ""
-#~ "Questa applet controlla la carica della batteria del portatile.  Cliccare "
-#~ "per cambiare il modo di visualizzazione."
-
-#~ msgid "Could not allocate space for graph values"
-#~ msgstr "Impossibile allocare lo spazio per i valori del grafico"
-
-#~ msgid "Battery Monitor Settings"
-#~ msgstr "Impostazioni per il Controllo Batteria"
-
-#~ msgid "Follow panel size"
-#~ msgstr "Utilizza la dimensione del pannello"
-
-#~ msgid "Applet Height:"
-#~ msgstr "Altezza applet:"
-
-#~ msgid "Applet Width:"
-#~ msgstr "Larghezza applet:"
-
-#~ msgid "Low Charge Threshold:"
-#~ msgstr "Soglia di carica bassa:"
-
-#~ msgid "Applet Mode:"
-#~ msgstr "Modo di funzionamento:"
-
-#~ msgid "Graph"
-#~ msgstr "Grafico"
-
-#~ msgid "AC-On Battery Color:"
-#~ msgstr "Colore alimentazione da rete:"
-
-#~ msgid "AC-Off Battery Color:"
-#~ msgstr "Colore alimentazione a batteria:"
-
-#~ msgid "Low Battery Color:"
-#~ msgstr "Colore batteria scarica:"
-
-#~ msgid "Graph Battery Low Color:"
-#~ msgstr "Colore batteria scarica nel grafico:"
-
-#~ msgid "Graph Tick Color:"
-#~ msgstr "Colore delle tacche del grafico:"
-
-#~ msgid "Graph Direction:"
-#~ msgstr "Direzione del grafico:"
-
-#~ msgid "Left to Right"
-#~ msgstr "Da sinistra a destra"
-
-#~ msgid "Right to Left"
-#~ msgstr "Da destra a sinistra"
-
-#~ msgid "Battery Charge Messages"
-#~ msgstr "Messaggi di carica della batteria"
-
-#~ msgid "Enable Low Battery Warning"
-#~ msgstr "Abilita avviso di batteria scarica"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "Avverti se la carica è inferiore a:"
-
-#~ msgid "Enable Full-Charge Notification"
-#~ msgstr "Abilita notifica di carica completa"
-
-#~ msgid ""
-#~ "Cannot open /proc/apm!  Make sure that you built APM support into your "
-#~ "kernel.\n"
-#~ msgstr ""
-#~ "Impossibile leggere /proc/apm!  Assicurarsi che il supporto APM sia stato "
-#~ "compilato nel kernel.\n"
-
-#~ msgid "Could not dup() APM file descriptor: %s\n"
-#~ msgstr ""
-#~ "Impossibile effettuare una dup() sul descrittore del file di APM: %s\n"
-
-#~ msgid "Cannot open /dev/apm; can't get data."
-#~ msgstr "Impossibile aprire /proc/apm; impossibile leggere dati."
-
-#~ msgid "ioctl failed on /dev/apm."
-#~ msgstr "ioctl fallita su /dev/apm."
-
-#~ msgid "APM is disabled!  Cannot read battery charge information."
-#~ msgstr ""
-#~ "L'APM è disabilitato!  Impossibile ricevere informazioni sulla carica della "
-#~ "batteria."
-
-#~ msgid "Minimum number of cells: (for autosize)"
-#~ msgstr "Numero minimo di celle:"
-
-#~ msgid "Size of button: (pixels)"
-#~ msgstr "Dimensioni del pulsante (in pixels):"
-
-#~ msgid "Number of rows of buttons:"
-#~ msgstr "Numero di righe di pulsanti:"
-
-#~ msgid "Number of columns of buttons:"
-#~ msgstr "Numero di colonne di pulsanti:"
-
-#~ msgid "Default List"
-#~ msgstr "Lista predefinita"
-
-#~ msgid "Clipboard Applet"
-#~ msgstr "Applet blocco note"
-
-#~ msgid "Copyright (C) 1999"
-#~ msgstr "Copyright (C) 1999"
-
-#~ msgid ""
-#~ "Gnome panel applet for copying and retrieving selections with a history "
-#~ "list. Released under GNU General Public Licence."
-#~ msgstr ""
-#~ "Applet del Pannello di Gnome per copiare e gestire le selezioni tramite una "
-#~ "lista. Rilasciata sotto la Licenza Pubblica Generale GNU."
-
-#~ msgid "John Ellis <johne@bellatlantic.net>"
-#~ msgstr "John Ellis <johne@bellatlantic.net>"
-
-#~ msgid "Clock and Mail Notify Applet"
-#~ msgstr "Applet Orologio e Notifica della Posta"
-
-#~ msgid "(C) 2000"
-#~ msgstr "(C) 2000"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-#~ "Mail blinking can be for any unread mail, or only briefly when new mail "
-#~ "arrives."
-#~ msgstr ""
-#~ "Rilasciato sotto la GNU General Public License.\n"
-#~ "Semplice orologio digitale con la data visualizzata come suggerimento. "
-#~ "Visualizzazione in formato 12/24 opzionale. Il lampeggio delle lettera può "
-#~ "attivarsi in caso di presenza di posta non letta, o solo brevemente quando "
-#~ "arriva nuova posta."
-
-#~ msgid "%a, %b %d"
-#~ msgstr "%a, %b %d"
-
-#~ msgid " (GMT)"
-#~ msgstr " (GMT)"
-
-#~ msgid " (GMT %+d)"
-#~ msgstr " (GMT %+d)"
-
-#~ msgid "None (default)"
-#~ msgstr "Nessuno (predefinito) "
-
-#~ msgid "Themes:"
-#~ msgstr "Temi:"
-
-#~ msgid "ClockMail Settings"
-#~ msgstr "Impostazioni ClockMail"
-
-#~ msgid "Display time relative to GMT (Greenwich Mean Time):"
-#~ msgstr "Visualizza ora relativa a GMT (Greenwich Mean Time):"
-
-#~ msgid "Mail"
-#~ msgstr "Posta"
-
-#~ msgid "Mail file:"
-#~ msgstr "File della posta:"
-
-#~ msgid "When new mail is received run:"
-#~ msgstr "Quando arriva nuova posta esegui:"
-
-#~ msgid "Always blink when any mail is waiting."
-#~ msgstr "Lampeggia quando c'è posta in attesa."
-
-#~ msgid "Number of messages to consider mailbox full:"
-#~ msgstr "Numero di messaggi oltre i quali la mailbox va considerata piena:"
-
-#~ msgid "When clicked, run:"
-#~ msgstr "Dopo un click, esegui:"
-
-#~ msgid "Theme file (directory):"
-#~ msgstr "File del tema (directory):"
-
-#~ msgid "Theme"
-#~ msgstr "Tema"
-
-#~ msgid "CPU/Mem Usage Applet"
-#~ msgstr "Applet Utilizzo Memoria/CPU"
-
-#~ msgid "(c) 1997 the Free Software Foundation"
-#~ msgstr "(c) 1997 Free Software Foundation"
-
-#~ msgid ""
-#~ "The CPU/Mem usage applet displays your system resources with 3 colorful "
-#~ "stacked bar graphs (processor, memory, swap)"
-#~ msgstr ""
-#~ "L'applet Utilizzo Memoria/CPU mostra le risorse del vostro sistema in tre "
-#~ "barre colorate (processore, memoria e swap)."
-
-#~ msgid "File Systems"
-#~ msgstr "File system"
-
-#~ msgid "File System Changed!\n"
-#~ msgstr "Il file system è cambiato!\n"
-
-#~ msgid "Disk Usage Applet"
-#~ msgstr "Applet Utilizzo del disco"
-
-#~ msgid "Update..."
-#~ msgstr "Aggiorna..."
-
-#~ msgid "Used Diskspace:"
-#~ msgstr "Spazio su disco utilizzato:"
-
-#~ msgid "Text:"
-#~ msgstr "Testo:"
-
-#~ msgid "Free Diskspace:"
-#~ msgstr "Spazio libero su disco:"
-
-#~ msgid "Background:"
-#~ msgstr "Colore dello sfondo:"
-
-#~ msgid "Automatically pick best applet size"
-#~ msgstr "Scegli automaticamente la dimensione migliore per l'applet"
-
-#~ msgid "Update Frequency (seconds):"
-#~ msgstr "Frequenza di aggiornamento (secondi):"
-
-#~ msgid "Fonts"
-#~ msgstr "Font"
-
-#~ msgid "Font:"
-#~ msgstr "Carattere:"
-
-#~ msgid "Diskusage Settings"
-#~ msgstr "Impostazioni Utilizzo del disco"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Mounts and Unmounts drives."
-#~ msgstr ""
-#~ "Rilasciato sotto la GNU General Public License.\n"
-#~ "Monta e smonta le periferiche a disco."
-
-#~ msgid "Update in seconds:"
-#~ msgstr "Aggiornamento in secondi:"
-
-#~ msgid ""
-#~ "You win!\n"
-#~ "Moves"
-#~ msgstr ""
-#~ "Hai vinto!\n"
-#~ "Mosse"
-
-#~ msgid "Fifteen sliding pieces"
-#~ msgstr "Fifteen (quindici)"
-
-#~ msgid "Copyright (C) The Free Software Foundation"
-#~ msgstr "Copyright (C) The Free Software Foundation"
-
-#~ msgid ""
-#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
-#~ "Guaranteed to be a productivity buster."
-#~ msgstr ""
-#~ "Il gioco preferito da Sam Lloyd, in esclusiva nel Pannello Gnome per il tuo "
-#~ "divertimento.  Perdita di produttività garantita."
-
-#~ msgid "Can't create fifteen applet!"
-#~ msgstr "Impossibile creare l'applet Quindici!"
-
-#~ msgid "Scramble pieces"
-#~ msgstr "Mischia i pezzi"
-
-#~ msgid "gEyes Settings"
-#~ msgstr "Impostazioni di gEyes"
-
-#~ msgid "Themes"
-#~ msgstr "Temi"
-
-#~ msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
-#~ msgstr "keymap_%d/name=Tastiera US con 105 tasti (con tasti windows)"
-
-#~ msgid "keymap_%d/label=us"
-#~ msgstr "keymap_%d/etichetta=us"
-
-#~ msgid "keymap_%d/country=United States"
-#~ msgstr "keymap_%d/paese=Stati Uniti"
-
-#~ msgid "keymap_%d/lang=English"
-#~ msgstr "keymap_%d/lingua=Inglese"
-
-#~ msgid "keymap_%d/command=gkb_xmmap us"
-#~ msgstr "keymap_%d/comando=gkb_xmmap us"
-
-#~ msgid "keymap_%d/name=Hungarian 105 keys latin2"
-#~ msgstr "keymap_%d/nome=Ungherese latin2 con 105 tasti"
-
-#~ msgid "keymap_%d/label=hu"
-#~ msgstr "keymap_%d/etichetta=hu"
-
-#~ msgid "keymap_%d/country=Hungary"
-#~ msgstr "keymap_%d/paese=Ungheria"
-
-#~ msgid "keymap_%d/lang=Hungarian"
-#~ msgstr "keymap_%d/lingua=Ungherese"
-
-#~ msgid "keymap_%d/flag=hu.png"
-#~ msgstr "keymap_%d/bandiera=hu.png"
-
-#~ msgid "keymap_%d/command=gkb_xmmap hu"
-#~ msgstr "keymap_%d/comando=gkb_xmmap hu"
-
-#~ msgid "Szabolcs BAN <shooby@gnome.hu>"
-#~ msgstr "Szabolcs BAN <shooby@gnome.hu>"
-
-#~ msgid "Chema Celorio <chema@celorio.com>"
-#~ msgstr "Chema Celorio <chema@celorio.com>"
-
-#~ msgid "Press a key..."
-#~ msgstr "Premi un tasto..."
-
-#~ msgid "Raise Note"
-#~ msgstr "Nota in primo piano"
-
-#~ msgid "Lower Note"
-#~ msgstr "Nota in secondo piano"
-
-#~ msgid "Hide Note"
-#~ msgstr "Nascondi la nota"
-
-#~ msgid "Delete Note"
-#~ msgstr "Cancella la nota"
-
-#~ msgid "GNotes!"
-#~ msgstr "GNotes!"
-
-#, fuzzy
-#~ msgid "Copyright (C) 1998-1999"
-#~ msgstr "Copyright (C) 1999"
-
-#~ msgid "Create sticky notes on your screen."
-#~ msgstr "Crea delle note per appunti sullo schermo."
-
-#~ msgid "Can't create GNotes applet!"
-#~ msgstr "Impossibile creare l'applet GNotes!"
-
-#~ msgid "Raise Notes"
-#~ msgstr "Alza le note"
-
-#~ msgid "Lower Notes"
-#~ msgstr "Abbassa le note"
-
-#~ msgid "Hide Notes"
-#~ msgstr "Nascondi note"
-
-#~ msgid "Show Notes"
-#~ msgstr "Visualizza note"
-
-#~ msgid "GNotes Settings"
-#~ msgstr "Impostazioni di GNotes"
-
-#~ msgid "Default Height"
-#~ msgstr "Altezza predefinita"
-
-#~ msgid "Default Width"
-#~ msgstr "Larghezza predefinita"
-
-#~ msgid ""
-#~ "GNOME weather monitor applet.\n"
-#~ "Web: http://gweather.dhs.org/"
-#~ msgstr ""
-#~ "Applet Gnome per il meteo.\n"
-#~ "Web: http://gweather.dhs.org/"
-
-#~ msgid "Cannot create applet!\n"
-#~ msgstr "Impossibile creare l'applet!\n"
-
-#~ msgid "Detailed Forecast"
-#~ msgstr "Previsioni dettagliate"
-
-#~ msgid ""
-#~ "Invalid location chosen!\n"
-#~ "Properties remain unchanged."
-#~ msgstr ""
-#~ "Posizione selezionata non valida!\n"
-#~ "Le opzioni rimangono invariate."
-
-#~ msgid "Regions"
-#~ msgstr "Regioni"
-
-#, fuzzy
-#~ msgid "knots"
-#~ msgstr "GNotices"
-
-#, fuzzy
-#~ msgid "miles"
-#~ msgstr "Articoli"
-
-# (Traduzione libera, ma dovrebbe andare bene nel contesto.)
-#, fuzzy
-#~ msgid "kilometers"
-#~ msgstr "Contachilometri"
-
-#~ msgid "Location vector needs to be 4 elements long"
-#~ msgstr "Il vettore delle posizioni deve contenere 4 elementi"
-
-#~ msgid "Jon's Binary Clock"
-#~ msgstr "Orologio Binario di Jon"
-
-#~ msgid "(C) 1999"
-#~ msgstr "(C) 1999"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Displays time in Binary Coded Decimal\n"
-#~ "http://snoopy.net/~jon/jbc/."
-#~ msgstr ""
-#~ "Rilasciato sotto la GNU General Public License.\n"
-#~ "Visualizza l'ora in BCD.\n"
-#~ "http://snoopy.net/~jon/jbc."
-
-#~ msgid "The Game of Life"
-#~ msgstr "Il gioco della vita"
-
-#~ msgid "A complete waste of perfectly good CPU cycles."
-#~ msgstr "Un completo spreco di ottimi cicli macchina."
-
-#~ msgid "Can't create life applet!"
-#~ msgstr "Impossibile creare l'applet Life!"
-
-#~ msgid "Randomize"
-#~ msgstr "Casuale"
-
-#~ msgid "saving prefs..."
-#~ msgstr "Agg. impostazioni..."
-
-#~ msgid "Main Volume and Mute"
-#~ msgstr "Volume principale e muto"
-
-#~ msgid "(c) 1998 The Free Software Foundation"
-#~ msgstr "(C) 1998 the Free Software Foundation"
-
-#~ msgid ""
-#~ "The mixer applet gives you instant access to setting the master volume level "
-#~ "on your soundcard device"
-#~ msgstr ""
-#~ "L'applet Mixer permette di modificare rapidamente il volume principale della "
-#~ "vostra scheda audio"
-
-#~ msgid "Help..."
-#~ msgstr "Aiuto.."
-
-#~ msgid "CPU Load Applet"
-#~ msgstr "Applet carico della cpu"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "CPU Load Meter Applet."
-#~ msgstr ""
-#~ "Rilasciata sotto la GNU General Public License.\n"
-#~ "Applet carico della cpu."
-
-#~ msgid "Default Properties..."
-#~ msgstr "Proprietà..."
-
-#~ msgid "Run gtop..."
-#~ msgstr "Avvia gtop..."
-
-#~ msgid "Load average over 1 minute"
-#~ msgstr "Carico medio in 1 minuto"
-
-#~ msgid "Load average over 5 minutes"
-#~ msgstr "Carico medio in 5 minuti"
-
-#~ msgid "Load average over 15 minutes"
-#~ msgstr "Carico medio in 15 minuti"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Load Average Meter Applet."
-#~ msgstr ""
-#~ "Rilasciata sotto la GNU General Public License.\n"
-#~ "Applet misura Carico medio"
-
-#~ msgid "Load Graph"
-#~ msgstr "Grafico del carico"
-
-#, fuzzy
-#~ msgid "Interval:"
-#~ msgstr "Generali"
-
-#~ msgid "Size:"
-#~ msgstr "Dimensione:"
-
-#~ msgid "Maximum:"
-#~ msgstr "Massimo:"
-
-#~ msgid "Speed:"
-#~ msgstr "Velocità:"
-
-#~ msgid "Use default properties"
-#~ msgstr "Utilizza impostazioni predefinite"
-
-#~ msgid "PPP"
-#~ msgstr "PPP"
-
-#~ msgid "ETH"
-#~ msgstr "ETH"
-
-#~ msgid "Memory Load Applet"
-#~ msgstr "Applet Carico memoria"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Memory Load Applet."
-#~ msgstr ""
-#~ "Rilasciata sotto la GNU General Public License.\n"
-#~ "Applet Carico memoria"
-
-#~ msgid "Network Load Applet"
-#~ msgstr "Applet Carico di rete"
-
-#~ msgid "Network Load"
-#~ msgstr "Carico di rete"
-
-#~ msgid "Swap Load Applet"
-#~ msgstr "Applet Carico swap"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Swap Load Meter Applet."
-#~ msgstr ""
-#~ "Rilasciata sotto la GNU General Public License.\n"
-#~ "Applet Carico swap."
-
-# (Traduzione libera, ma dovrebbe andare bene nel contesto.)
-#~ msgid "Odometer"
-#~ msgstr "Contachilometri"
-
-#~ msgid "(C) 1999 The Free Software Foundation"
-#~ msgstr "(C) 1999 Free Software Foundation"
-
-#~ msgid ""
-#~ "a GNOME applet that tracks and measures the movements of your mouse pointer "
-#~ "across the desktop."
-#~ msgstr ""
-#~ "Un'applet per Gnome per tenere traccia e misurare lo spostamento del "
-#~ "puntatore del mouse sullo schermo."
-
-#~ msgid "Odometer setting"
-#~ msgstr "Opzioni Odometer"
-
-#~ msgid "Use Metric"
-#~ msgstr "Usa il sistema metrico"
-
-#~ msgid "auto_reset"
-#~ msgstr "auto_reset"
-
-#~ msgid "enabled"
-#~ msgstr "abilitato"
-
-#~ msgid "Digits number"
-#~ msgstr "Cifre visualizzate"
-
-#~ msgid "Theme file:"
-#~ msgstr "File del tema:"
-
-#~ msgid "The QuickLaunch Applet"
-#~ msgstr "Applet QuickLaunch"
-
-#~ msgid ""
-#~ "This applet adds some pretty small icons for your launchers to your panel, "
-#~ "like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
-#~ "launchers."
-#~ msgstr ""
-#~ "Questa applet aggiunge delle icone di avvio piccole e carine al pannello, \n"
-#~ "alla maniera delle toolbar tipo-windows evitando i pulsanti grandi e noiosi "
-#~ "\n"
-#~ "di GNOME."
-
-#~ msgid "Launcher Properties"
-#~ msgstr "Proprietà Launcher"
-
-#~ msgid ""
-#~ "drop launchers from\n"
-#~ "the menu here"
-#~ msgstr ""
-#~ "trascina i pulsanti \n"
-#~ "dal menu qui sopra"
-
-#~ msgid "Launcher properties..."
-#~ msgstr "Proprietà Launcher..."
-
-#~ msgid "Delete launcher"
-#~ msgstr "Elimina Launcher"
-
-#~ msgid "File '%s' does not exist"
-#~ msgstr "Il file '%s' non esiste"
-
-#~ msgid "Don't know how to make a launcher out of: '%s'"
-#~ msgstr "Non so come creare un launcher al di fuori di: '%s'"
-
-#~ msgid ""
-#~ "Cannot create directory:\n"
-#~ "~/.gnome/quicklaunch.\n"
-#~ "Aborting"
-#~ msgstr ""
-#~ "Impossibile creare la directory:\n"
-#~ "~/.gnome/quicklaunc.\n"
-#~ "Operazione annullata"
-
-#~ msgid "Screen-Shooter Applet"
-#~ msgstr "Applet per gli screen-shot"
-
-#~ msgid "Copyright (C) 1999 Tom Gilbert"
-#~ msgstr "Copyright (C) 1999 Tom Gilbert"
-
-#~ msgid ""
-#~ "A useful little screengrabber.\n"
-#~ "The left/top button allows you to grab either:\n"
-#~ "a window (click to select which one)\n"
-#~ "or an area (click and drag to select a rectangle.)\n"
-#~ "The right/bottom button will grab the entire desktop.\n"
-#~ "Share and Enjoy ;)"
-#~ msgstr ""
-#~ "Un piccolo e comodo screenshooter.\n"
-#~ "Il pulsante in alto a sinistra permette di catturare:\n"
-#~ "una finestra (cliccare sulla prescelta);\n"
-#~ "oppure un'area dello schermo (cliccare e trascinare per selezionare un "
-#~ "rettangolo).\n"
-#~ "Il pulsante in basso a destra cattura tutto il desktop.\n"
-#~ "Usatelo e godetene ;)"
-
-#~ msgid "Visit the author's Website"
-#~ msgstr "Visitate il sito Web dell'autore"
-
-#~ msgid "Screen-Shooter Settings"
-#~ msgstr "Impostazioni Screen-Shooter"
-
-#~ msgid "Capture WM decorations when grabbing a window"
-#~ msgstr "Cattura le decorazioni del gestore di finestre"
-
-#~ msgid "Give audio feedback using the keyboard bell"
-#~ msgstr "Effetto sonoro utilizzando l'altoparlante"
-
-#~ msgid "Display Spurious Options (I got carried away)"
-#~ msgstr "Mostra opzioni spurie"
-
-#~ msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
-#~ msgstr ""
-#~ "Ritardo (secondi) prima di catturare l'immagine (solo per l'intero schermo)"
-
-#~ msgid ""
-#~ "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-#~ msgstr ""
-#~ "Qualità della compressione (JPEG/MIFF/PNG) Alta: buona qualità/file grande"
-
-#~ msgid "Create monochrome image"
-#~ msgstr "Crea immagine monocromatica"
-
-#~ msgid "Invert colours in image"
-#~ msgstr "Inverti i colori nell'immagine"
-
-#~ msgid "Directory to save images in:"
-#~ msgstr "Directory in cui salvare i file delle immagini:"
-
-#~ msgid "Image filename:"
-#~ msgstr "Nome del file dell'immagine:"
-
-#~ msgid "Show expanded filename"
-#~ msgstr "Mostra i nomi completi dei file"
-
-#~ msgid ""
-#~ "Filetype is determined from filename suffix.\n"
-#~ "Default filetype (if no extension or unrecognised extension) is miff.\n"
-#~ "Recognised suffixes are:\n"
-#~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-#~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "and several obscure ones. Try your luck with something interesting!\n"
-#~ "Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-#~ ".shtml\n"
-#~ "\n"
-#~ "Recommendations:\n"
-#~ "Small file, pretty good quality:   jpg, 75% quality\n"
-#~ "Slightly larger file but lossless: png, as much compression as you like.\n"
-#~ "- compressing pngs takes longer at higher ratios, but is still lossless"
-#~ msgstr ""
-#~ "Il tipo di immagine usato è determinato dall'estensione usata.\n"
-#~ "Il tipo di file predefinito (se viene usata un'estensione sconosciuta o se "
-#~ "non ne viene usata alcuna) è il miff.\n"
-#~ "Estensioni riconosciute sono:\n"
-#~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-#~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "e molte altre oscure. Tentate la sorte con qualcosa di interessante!\n"
-#~ "Per esempio .html crea una mappa di immagini. Otterrete un file .gif, un "
-#~ ".html e un .shtml\n"
-#~ "\n"
-#~ "Consigli:\n"
-#~ "Per ottenere file piccoli e buona qualità:          jpg 75% di qualità\n"
-#~ "File leggermente più grandi ma non di tipo 'lossy': png con la compressione "
-#~ "desiderata.\n"
-#~ "Comprimere i file png occupa più tempo a valori più alti ma è sempre di tipo "
-#~ "non 'lossy'"
-
-#~ msgid "View screenshot after saving it"
-#~ msgstr "Visualizza immagine dopo la cattura"
-
-#~ msgid "Files, Apps"
-#~ msgstr "File, Applicazioni"
-
-#~ msgid "Create thumbnail of image too"
-#~ msgstr "Crea anche una piccola anteprima dell'immagine"
-
-#~ msgid "Thumbnail Size (percentage of original)"
-#~ msgstr "Dimensione anteprima (percentuale rispetto all'originale)"
-
-#~ msgid ""
-#~ "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-#~ msgstr ""
-#~ "Compressione dell'anteprima (JPEG/MIFF/PNG) Alta: buona qualita/file grande"
-
-#~ msgid "Prefix to attach to thumbnail filename:"
-#~ msgstr "Prefisso per i file di anteprima:"
-
-#~ msgid "Use high-quality intermediate for generating thumbnail"
-#~ msgstr "Usa immagini intermedie di alta qualità per generare le anteprime"
-
-#~ msgid ""
-#~ "(This'll chug loads of CPU, but will prevent compressing the image twice if "
-#~ "a\n"
-#~ "lossy file format is used)\n"
-#~ "Don't use this if you're using a lossless compression format, or if you "
-#~ "cherish\n"
-#~ "speed and don't mind imperfection in your thumbnails."
-#~ msgstr ""
-#~ "(Questa richiederà molto lavoro al processore, ma impedirà la doppia "
-#~ "compressione dell'immagine\n"
-#~ "se viene usato un formato 'lossy'\n"
-#~ "Non usatelo con i formati non 'lossy' o se preferite\n"
-#~ "operazioni veloci a prezzo di piccole imperfezioni nelle anteprime."
-
-#~ msgid "Thumbnails"
-#~ msgstr "Anteprime"
-
-#~ msgid ""
-#~ "All post-processing, frill and spurious options will chug more CPU than a\n"
-#~ "simple screenshot, due to the creation and then conversion of an "
-#~ "intermediate\n"
-#~ "image. Intensive operations may take some time on less spiffy CPUs."
-#~ msgstr ""
-#~ "Tutte le elaborazioni successive, varie e altre opzioni occuperanno la CPU "
-#~ "molto di più che\n"
-#~ "catturare semplicemente un'immagine a causa della creazione e della "
-#~ "conversione di un'immagine\n"
-#~ "intermedia. Operazioni pesanti possono necessitare di molto più tempo su CPU "
-#~ "poco potenti."
-
-#~ msgid ""
-#~ "Normalize image (Span full range of color values to enhance contrast)"
-#~ msgstr ""
-#~ "Normalizza l'immagine (occupa tutto l'intervallo dei colori per aumentare il "
-#~ "contrasto)"
-
-#~ msgid "Equalize image (Perform histogram equalization)"
-#~ msgstr ""
-#~ "Equalizza l'immagine (Esegue una equalizzazione basata su istogramma)"
-
-#~ msgid "Enhance image (reduce noise)"
-#~ msgstr "Esalta l'immagine (riduce il rumore)"
-
-#~ msgid "Despeckle Image (reduce spots)"
-#~ msgstr "Effetto Despeckle (riduce le macchie)"
-
-#~ msgid "Sharpen Image by what factor?"
-#~ msgstr "Di quanto deve essere aumentata la definizione dell'immagine?"
-
-#~ msgid "Rotate image clockwise by how many degrees?"
-#~ msgstr "Ruota l'immagine in senso orario di quanti gradi?"
-
-#~ msgid "Adjust gamma"
-#~ msgstr "Aggiusta la gamma"
-
-#~ msgid "Gamma value"
-#~ msgstr "Valore della gamma"
-
-#~ msgid "Post Processing"
-#~ msgstr "Altre elaborazioni"
-
-#~ msgid "Create frame around image"
-#~ msgstr "Crea una cornice intorno all'immagine"
-
-#~ msgid "Frame Width (pixels)"
-#~ msgstr "Dimensione della cornice (in pixel)"
-
-#~ msgid "Mirror image vertically"
-#~ msgstr "Rifletti verticalmente"
-
-#~ msgid "Mirror image horizontally"
-#~ msgstr "Imamgine speculare orizzontalmente"
-
-#~ msgid "Emboss image"
-#~ msgstr "Applica il filto Emboss"
-
-#~ msgid ""
-#~ "When finished, send image and thumbnail filenames to script/program below"
-#~ msgstr ""
-#~ "Quando finito invia il nome dei file dell'immagine/anteprima allo script o "
-#~ "al programma indicato sotto"
-
-#~ msgid "Script or program to launch:"
-#~ msgstr "Script o programma da usare:"
-
-#~ msgid ""
-#~ "Script/program will be launched after image creation with the image "
-#~ "filenames\n"
-#~ "specified on the commandline as follows:\n"
-#~ "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
-#~ "Hint: I use a script to update my website screenshot page.\n"
-#~ "An example script should've been included in the tarball, or at my website."
-#~ msgstr ""
-#~ "Script o programma da usare dopo la creazione dell'immagine con il nome del "
-#~ "file dell'immagine\n"
-#~ "specificato nella linea di comando in quest'ordine:\n"
-#~ "{Nome_Script} {Nome_Immagine} {Nome_Anteprima_Se_Specificata}\n"
-#~ "Consiglio: io utilizzo uno script per aggiornare la pagina web delle "
-#~ "schermate.\n"
-#~ "Uno script d'esempio viene incluso nella distribuzione oppure può essere "
-#~ "trovato nel mio sito web."
-
-#~ msgid "Frills"
-#~ msgstr "Frills"
-
-#~ msgid "Blur image"
-#~ msgstr "Sfuma l'immagine"
-
-#~ msgid "Blur image by what factor?"
-#~ msgstr "Valore di sfumatura dell'immagine?"
-
-#~ msgid "Create Charcoal Effect"
-#~ msgstr "Crea effetto Carboncino"
-
-#~ msgid "Charcoal by what factor?"
-#~ msgstr "Valore per l'effetto Carboncino?"
-
-#~ msgid "Find Edges in Image"
-#~ msgstr "Esalta i contorni dell'immagine"
-
-#~ msgid "Find edges by what factor?"
-#~ msgstr "Valore per esaltare i contorni dell'immagine?"
-
-#~ msgid "Implode Image"
-#~ msgstr "Implodi l'immagine"
-
-#~ msgid "Implode by what factor?"
-#~ msgstr "Valore d'implosione?"
-
-#~ msgid "Spurious"
-#~ msgstr "Spurie"
-
-#~ msgid "Create Painted Effect"
-#~ msgstr "Applica effetto impressionista"
-
-#~ msgid "Paint what radius around each pixel?"
-#~ msgstr "Raggio del cerchio da applicare intorno ad ogni pixel?"
-
-#~ msgid "Solarise Image"
-#~ msgstr "Solarizza l'immagine"
-
-#~ msgid "Solarize factor?"
-#~ msgstr "Valore di solarizzazione?"
-
-#~ msgid "Spread image pixels"
-#~ msgstr "Diffondi i pixel dell'immagine"
-
-#~ msgid "Radius to around each pixel to spread?"
-#~ msgstr "Raggio di dispersione di ogni pixel?"
-
-#~ msgid "Swirl pixels. My favorite :-)"
-#~ msgstr "Effetto spirale. Il mio preferito :-)"
-
-#~ msgid "Radius to swirl pixels around?)"
-#~ msgstr "Raggio della spirale?"
-
-#~ msgid "Spurious 2"
-#~ msgstr "Spurie 2"
-
-#~ msgid "Grab a shot of a specific window or area"
-#~ msgstr "Cattura l'immagine di una finestra o di un'area specifiche"
-
-#~ msgid "Grab a shot of your entire desktop"
-#~ msgstr "Cattura l'immagine di tutto il desktop"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the directory box\n"
-#~ "Screenshot aborted"
-#~ msgstr ""
-#~ "Si è verificato un errore di espansione delle parole\n"
-#~ "È probabile che sia stato immesso qualcosa di strano nel campo della "
-#~ "directory\n"
-#~ "Screenshot non eseguito"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the filename box\n"
-#~ "Screenshot aborted"
-#~ msgstr ""
-#~ "Si è verificato un errore di espansione delle parole\n"
-#~ "È probabile che sia stato immesso qualcosa di strano nel campo del nome del "
-#~ "file\n"
-#~ "Screenshot non eseguito"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the filename box"
-#~ msgstr ""
-#~ "Si è verificato un errore di espansione delle parole\n"
-#~ "È probabile che sia stato immesso qualcosa di strano nel campo del nome del "
-#~ "file"
-
-#~ msgid ""
-#~ "The specified filename:\n"
-#~ "%s\n"
-#~ "expands to:\n"
-#~ "%s\n"
-#~ "when passed to a shell"
-#~ msgstr ""
-#~ "Il nome file specificato:\n"
-#~ "%s\n"
-#~ "diventa:\n"
-#~ "%s\n"
-#~ "quando viene passato ad una shell"
-
-#~ msgid "Site"
-#~ msgstr "Sito"
-
-#~ msgid "Slashdot"
-#~ msgstr "Slashdot"
-
-#~ msgid "Gnotices"
-#~ msgstr "GNotices"
-
-#~ msgid "Articles"
-#~ msgstr "Articoli"
-
-#~ msgid "Delay between articles (10 = 1 sec):"
-#~ msgstr "Ritardo fra gli articoli (10 = 1 secondo):"
-
-#~ msgid "Use Proxy"
-#~ msgstr "Usa Proxy"
-
-#~ msgid "Proxy Host: "
-#~ msgstr "Server Proxy: "
-
-#~ msgid "Proxy Port: "
-#~ msgstr "Porta del Proxy: "
-
-#~ msgid "(These settings do not take effect until a refresh)"
-#~ msgstr ""
-#~ "(Queste impostazioni non avranno effetto fino al prossimo aggiornamento)"
-
-#~ msgid "Scrolling"
-#~ msgstr "Scrolling"
-
-#~ msgid "Smooth scroll"
-#~ msgstr "Scorrimento intelligente"
-
-#~ msgid "Smooth type"
-#~ msgstr "Tipo di scorrimento intelligente"
-
-#~ msgid "Speed"
-#~ msgstr "Velocità"
-
-#~ msgid "Delay when wrapping text:"
-#~ msgstr "Ritardo per ritorno a capo:"
-
-#~ msgid "Scroll speed between lines (Smooth scroll):"
-#~ msgstr "Frequenza di scorrimento fra le linee (scorrimento intelligente):"
-
-#~ msgid "Loading headlines..."
-#~ msgstr "Sto scaricando i titoli..."
-
-#~ msgid "Unable to create user directory: %s\n"
-#~ msgstr "Impossibile creare directory utente: %s\n"
-
-#~ msgid "%d.%d.%d"
-#~ msgstr "%d.%d.%d"
-
-#~ msgid "Justin Maurer <justin@helixcode.com>"
-#~ msgstr "Justin Maurer <justin@helixcode.com>"
-
-#~ msgid "Craig Small <csmall@eye-net.com.au>"
-#~ msgstr "Craig Small <csmall@eye-net.com.au>"
-
-#~ msgid "Frederic Devernay <devernay@istar.fr>"
-#~ msgstr "Frederic Devernay <devernay@istar.fr>"
-
-#~ msgid "SlashApp"
-#~ msgstr "SlashApp"
-
-#~ msgid "(C) 1998-2000"
-#~ msgstr "(C) 1998-2000"
-
-#~ msgid "A stock ticker-like applet\n"
-#~ msgstr "Un'applet tipo lo stock-ticker\n"
-
-#~ msgid "SlashApp Article List"
-#~ msgstr "Slashapp - articoli"
-
-#~ msgid "No articles"
-#~ msgstr "Nessun articolo."
-
-#~ msgid "Unable to parse document\n"
-#~ msgstr "Non riesco ad interpretare il documento.\n"
-
-#~ msgid "Can't parse XML. Net connection down?"
-#~ msgstr "Non posso leggere l'XML. Connessione di rete caduta?"
-
-#~ msgid "Unable to initialize request. Shouldn't happen\n"
-#~ msgstr "Non riesco ad avviare la richiesta. Non dovrebbe accadere\n"
-
-#~ msgid "Unable to prepare request.\n"
-#~ msgstr "Non riesco a preparare la rischiesta.\n"
-
-#~ msgid "Unable to process request.\n"
-#~ msgstr "Non riesco ad elaborare la richiesta.\n"
-
-#~ msgid "No title"
-#~ msgstr "Nessun titolo"
-
-#~ msgid "No url"
-#~ msgstr "Nessun url"
-
-#~ msgid "(C) 2000 John Ellis"
-#~ msgstr "(C) 2000 John Ellis"
-
-#~ msgid ""
-#~ "Sound monitor interface to Esound\n"
-#~ "\n"
-#~ "Released under the GNU general public license."
-#~ msgstr ""
-#~ "Sound Monitor: Interfaccia a Esound\n"
-#~ "\n"
-#~ "Rilasciato secondo la GNU general public license."
-
-#~ msgid "Place Esound in standby"
-#~ msgstr "Sospendi Esound"
-
-#~ msgid "Resume Esound"
-#~ msgstr "Riavvia Esound"
-
-#~ msgid "Start Esound"
-#~ msgstr "Avvia Esound"
-
-#~ msgid "Manager..."
-#~ msgstr "Gestore..."
-
-#, fuzzy
-#~ msgid "Time"
-#~ msgstr "immagine"
-
-#, fuzzy
-#~ msgid "Id"
-#~ msgstr "I"
-
-#, fuzzy
-#~ msgid "Rate"
-#~ msgstr "data"
-
-#, fuzzy
-#~ msgid "Format"
-#~ msgstr "Previsione"
-
-#, fuzzy
-#~ msgid "Sound Monitor - Manager"
-#~ msgstr "Controllo Audio"
-
-#, fuzzy
-#~ msgid "Connected streams:"
-#~ msgstr "Stato della connessione"
-
-#, fuzzy
-#~ msgid "Streams"
-#~ msgstr "Sud-Est"
-
-#~ msgid "Balance"
-#~ msgstr "Bilanciamento"
-
-#~ msgid ""
-#~ "You have enabled the \"Monitor sound input\" option.\n"
-#~ "\n"
-#~ "If your sound card is not fully 100% FULL DUPLEX (can do input and output "
-#~ "simultaneously),\n"
-#~ "then this may touch bugs in sound drivers/esound that may hang the system.\n"
-#~ "\n"
-#~ "You have been warned!"
-#~ msgstr ""
-#~ "È stata abilitata l'opzione \"Controllo dell'ingresso\"\n"
-#~ "\n"
-#~ "Se la vostra scheda audio non è al 100% FULL DUPLEX (in grado cioè di "
-#~ "elaborare contemporaneamente l'ingresso e l'uscita),\n"
-#~ "si possono trovare bug nei driver audio o in Esound che possono bloccare il "
-#~ "computer.\n"
-#~ "\n"
-#~ "Siete stati avvisati!"
-
-#, fuzzy
-#~ msgid "Sound Monitor Applet Settings"
-#~ msgstr "Applet di Controllo di Esound"
-
-#~ msgid "off"
-#~ msgstr "off"
-
-#~ msgid "active"
-#~ msgstr "attivo"
-
-#~ msgid "smooth"
-#~ msgstr "smooth"
-
-#~ msgid "Peak indicator falloff speed"
-#~ msgstr "Velocità di ritorno dell'indicatore di picco"
-
-#~ msgid "Scope (scale 1:X, where X = ? )"
-#~ msgstr "Spettro (scala 1:X dove X = ? )"
-
-#~ msgid "Connect points in scope"
-#~ msgstr "Unisci i punti nel grafico"
-
-#~ msgid "Screen refresh (frames per second)"
-#~ msgstr "Velocità di aggiornamento del grafico (frame per secondo)"
-
-#~ msgid "ESD host to monitor:"
-#~ msgstr "Host ESD da controllare:"
-
-#~ msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-#~ msgstr ""
-#~ "Controllo dell'ingresso (da usare solo con schede sonore FULL DUPLEX)"
-
-#~ msgid "Tick-a-Stat event log"
-#~ msgstr "Tick-a-Stat log degli eventi"
-
-#~ msgid "%Y%m%d-%H-%M-%S"
-#~ msgstr "%Y%m%d-%H-%M-%S"
-
-#~ msgid "%m-%d-%Y %H:%M:%S"
-#~ msgstr "%m-%d-%Y %H:%M:%S"
-
-#~ msgid "Tick-a-Stat"
-#~ msgstr "Tick-a-Stat"
-
-#~ msgid "(C) 1999 John Ellis"
-#~ msgstr "(C) 1999 John Ellis"
-
-#~ msgid "A ticker to display various information and statistics.\n"
-#~ msgstr "Un bigliettino che mostra alcune informazioni e statistiche.\n"
-
-#~ msgid "unable to create user directory: %s\n"
-#~ msgstr "impossibile creare la directory utente: %s\n"
-
-#~ msgid "The unique information and status ticker."
-#~ msgstr "La singola informazione e lo status ticker."
-
-#~ msgid "Event log..."
-#~ msgstr "Controlla eventi..."
-
-#~ msgid "Core dump information (Tick-a-Stat)"
-#~ msgstr "Informazioni sui core dump (Tick-a-Stat)"
-
-#~ msgid "Core dump module (Tick-A-Stat)"
-#~ msgstr "Modulo dei core dump (Tick-A-Stat)"
-
-#~ msgid ""
-#~ "The core dump module is\n"
-#~ "processing a core file..."
-#~ msgstr ""
-#~ "Il modulo dei core dump sta\n"
-#~ "controllando un file core..."
-
-#~ msgid "Core Dump Module"
-#~ msgstr "Modulo Core Dump"
-
-#~ msgid "Enable this module"
-#~ msgstr "Abilita questo modulo"
-
-#~ msgid "Show backtrace dialog on new core files"
-#~ msgstr ""
-#~ "Mostra la finestra di dialogo delle backtrace dei nuovi file di core"
-
-#~ msgid "Path to monitor:"
-#~ msgstr "Percorso da controllare:"
-
-#~ msgid "Core dump catcher"
-#~ msgstr "Controlla core dump"
-
-#~ msgid ""
-#~ "This module monitors a path for core dumps, if one is\n"
-#~ " found it is time stamped and a backtrace logged (using gdb)."
-#~ msgstr ""
-#~ "Questo modulo controlla un percorso in cerca di core dump e se ne vengono\n"
-#~ " trovati vengono datati e viene mostrata la backtrace (usando gdb)."
-
-#~ msgid "Load Average information (Tick-a-Stat)"
-#~ msgstr "Informazioni sul Carico Medio (Tick-a-Stat)"
-
-#~ msgid "The Load average is very high."
-#~ msgstr "Il Carico Medio è molto alto."
-
-#~ msgid "Load average is at a critical point, help me!"
-#~ msgstr "Il Carico Medio è ad un livello critico, aiutami!"
-
-#~ msgid "Load Average Module"
-#~ msgstr "Modulo Carico Medio"
-
-#~ msgid "Check every:"
-#~ msgstr "Controlla ogni:"
-
-#~ msgid "Warning options"
-#~ msgstr "Opzioni di avviso"
-
-#~ msgid "Show pop-up dialog for this event"
-#~ msgstr "Mostra finestra di dialogo per questo evento"
-
-#~ msgid "Load average threshhold:"
-#~ msgstr "Soglia di basso carico:"
-
-#~ msgid "Text to display:"
-#~ msgstr "Testo da mostrare"
-
-#~ msgid "Alert options"
-#~ msgstr "Opzioni di allarme"
-
-#~ msgid "Load average monitor"
-#~ msgstr "Controllo Carico medio"
-
-#~ msgid ""
-#~ "This module monitors the system load average,\n"
-#~ " and displays warning when it rises above certain points."
-#~ msgstr ""
-#~ "Questo modulo controlla il carico medio del computer,\n"
-#~ " e mostra degli avvisi quando si superano certi limiti."
-
-#~ msgid "script \""
-#~ msgstr "script \""
-
-#~ msgid "Tick-a-Stat script encountered an error:\n"
-#~ msgstr "Lo script di Tick-a-Stat ha trovato un errore:\n"
-
-#~ msgid "Enabled"
-#~ msgstr "Abilitato"
-
-#~ msgid "Line delay"
-#~ msgstr "Ritardo per la nuova riga"
-
-#~ msgid "Update interval"
-#~ msgstr "Intervallo di aggiornamento"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgid "T"
-#~ msgstr "T"
-
-#~ msgid "I"
-#~ msgstr "I"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "News and Information Module"
-#~ msgstr "Modulo News e Informazioni"
-
-#~ msgid "Line (s):"
-#~ msgstr "Linea (s):"
-
-#~ msgid "Update (m):"
-#~ msgstr "Aggiorna (m):"
-
-#~ msgid "body"
-#~ msgstr "corpo"
-
-#~ msgid "image"
-#~ msgstr "immagine"
-
-#~ msgid "topic"
-#~ msgstr "argomento"
-
-#~ msgid "date"
-#~ msgstr "data"
-
-#~ msgid "Show:"
-#~ msgstr "Mostra:"
-
-#~ msgid "News and information ticker"
-#~ msgstr "Ticker delle news e delle informazioni"
-
-#~ msgid "This module can display news and other information."
-#~ msgstr "Questo modulo può mostrare news e altre informazioni."
-
-#~ msgid "File tail view file (Tick-a-Stat)"
-#~ msgstr "Controlla un file (Tick-a-Stat)"
-
-#~ msgid "no file specified"
-#~ msgstr "nessun file specificato"
-
-#~ msgid "File tail information (Tick-a-Stat)"
-#~ msgstr "Informazioni sul file controllato (Tick-a-Stat)"
-
-#~ msgid "File tail for "
-#~ msgstr "Controlla il file per "
-
-#~ msgid "File Tail Module"
-#~ msgstr "Modulo Controlla File"
-
-#~ msgid "Path to tail:"
-#~ msgstr "Percorso da controllare:"
-
-#~ msgid "Choose a file to tail"
-#~ msgstr "Scegli un file da controllare"
-
-#~ msgid "Show pop up dialog for new lines."
-#~ msgstr "Mostra finestra di dialogo per nuove linee."
-
-#~ msgid "File tailer"
-#~ msgstr "Controlla file"
-
-#~ msgid ""
-#~ "This module monitors a file for appended text,\n"
-#~ " and prints it. Useful for log files."
-#~ msgstr ""
-#~ "Questo modulo controlla un file e ne stampa la parte finale man mano che\n"
-#~ "viene aggiunto del testo. Utile per i file di log."
-
-#~ msgid "Test Module"
-#~ msgstr "Modulo di prova"
-
-#~ msgid "This is the test module's description line."
-#~ msgstr "Questa è la descrizione del modulo di prova."
-
-#~ msgid "Modules"
-#~ msgstr "Moduli"
-
-#~ msgid "Event Log"
-#~ msgstr "Log degli eventi"
-
-#~ msgid "Enable logging of events"
-#~ msgstr "Abilita il log degli eventi"
-
-#~ msgid "Log path:"
-#~ msgstr "Percorso del log:"
-
-#~ msgid "Choose a log file"
-#~ msgstr "Scegliere il file di log"
-
-#~ msgid "Width:"
-#~ msgstr "Larghezza:"
-
-#~ msgid "Use panel size hint"
-#~ msgstr "Usa la dimensione del pannello"
-
-#~ msgid "The Web Browser Controller"
-#~ msgstr "Telecomando del Browser Web"
-
-#~ msgid ""
-#~ "An applet to launch URLs in a web browser, search using various web sites "
-#~ "and have a ton of fun!"
-#~ msgstr ""
-#~ "Un'applet per caricare URL in un browser web, per ricercare usando diversi "
-#~ "siti web e per divertirsi un sacco!"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"
-
-#~ msgid " GO "
-#~ msgstr " VAI "
-
-#~ msgid " Clear "
-#~ msgstr " Cancella "
-
-#~ msgid "Launch new window"
-#~ msgstr "Nuova finestra"
-
-#~ msgid "Where Am I?"
-#~ msgstr "Dove mi trovo?"
-
-#~ msgid "Copyright 1999 John Kodis"
-#~ msgstr "Copyright 1999 John Kodis"
-
-#~ msgid ""
-#~ "A cursor position reporting applet.\n"
-#~ "= Clicking mouse button 1 grabs the cursor.\n"
-#~ "= Dragging with mouse button 1 held down shows the size of the region."
-#~ msgstr ""
-#~ "Un'applet che riporta la posizione del cursore.\n"
-#~ "= Cliccando con il primo tasto del mouse si cattura il cursore.\n"
-#~ "= Muovendo il cursore con il primo tasto premuto viene calcolata l'area "
-#~ "della regione."
-
-#~ msgid "whereami_applet"
-#~ msgstr "Applet_DoveMiTrovo"
-
-#~ msgid "Info and status ticker"
-#~ msgstr "Informazioni e status ticker"
-
-#~ msgid "Clipboard"
-#~ msgstr "Blocco note"
-
-#~ msgid "Copy multiple selections into a persistant clipboard"
-#~ msgstr "Copia selezioni multiple in un blocco note persistente"
-
-#~ msgid "AfterStep Clock"
-#~ msgstr "Orologio AfterStep"
-
-#~ msgid "Just another clock"
-#~ msgstr "Orologio AfterStep"
-
-#~ msgid "Mounts and unmount drives"
-#~ msgstr "Applet che permette di montare e smontare unità a dischi"
-
-#~ msgid "CPU/MEM usage"
-#~ msgstr "Utilizzazione memoria/CPU"
-
-#~ msgid "CPU/MEM usage meter"
-#~ msgstr "Mostra il livello di utilizzazione di CPU e della memoria"
-
-#~ msgid "An analog clock similar to that in CDE panel"
-#~ msgstr "Un orologio analogico simile a quello di CDE"
-
-#~ msgid "Another Clock"
-#~ msgstr "Orologio analogico"
-
-#~ msgid "Clock and Mailcheck"
-#~ msgstr "Orologio e controllo posta"
-
-#~ msgid "Displays new mail and time"
-#~ msgstr "Mostra la nuova posta e l'ora"
-
-#~ msgid "Show last news from slashdot.org"
-#~ msgstr "Mostra le ultime news da slashdot.org"
-
-#~ msgid "Shows Cursor Position"
-#~ msgstr "Mostra la posizione del cursore"
-
-#~ msgid "Fifteen"
-#~ msgstr "Quindici"
-
-#~ msgid "Fifteen cells game"
-#~ msgstr "Gioco del Quindici"
-
-#~ msgid "character picker"
-#~ msgstr "selettore caratteri"
-
-#~ msgid "Sound Monitor for Esound"
-#~ msgstr "Applet di Controllo di Esound"
-
-#~ msgid "Audio Mixer"
-#~ msgstr "Applet di controllo del mixer"
-
-#~ msgid "Mixer"
-#~ msgstr "Mixer"
-
-#~ msgid "QuickLaunch"
-#~ msgstr "QuickLaunch"
-
-#~ msgid "Small Launchers "
-#~ msgstr "Pulsanti di avvio piccoli "
-
-#~ msgid "Mouse movements counter"
-#~ msgstr "Contatore dei movimenti del mouse"
-
-#~ msgid "Screen Shooter is a screenshot grabber"
-#~ msgstr "Screen Shooter cattura lo schermo"
-
-#~ msgid "ScreenShooter"
-#~ msgstr "Screen-shot"
-
-#~ msgid "Disk Usage"
-#~ msgstr "Utilizzo del disco"
-
-#~ msgid "Disk usage meter"
-#~ msgstr "Misuratore del livello di utilizzazione dello spazio su disco"
-
-#~ msgid "Game of Life"
-#~ msgstr "Il gioco della vita"
-
-#~ msgid "The Game of Life (to waste your time)"
-#~ msgstr "Il gioco della vita (per perdere tempo)"
-
-#~ msgid "Displays the time whith in binary representation"
-#~ msgstr "Rappresenta l'ora corrente in binario"
-
-#~ msgid "JBC Binary Clock"
-#~ msgstr "Orologio binario"
-
-#~ msgid "ESounD Persistent Volume Daemon version %s\n"
-#~ msgstr "ESounD Persistent Volume Daemon versione %s\n"
-
-#~ msgid "options:\n"
-#~ msgstr "opzioni:\n"
-
-#, fuzzy
-#~ msgid "  -n, --noX     Allow to run without X server\n"
-#~ msgstr "  -n, --noX     Permette di girare con il server X\n"
-
-#~ msgid "Configure Browser"
-#~ msgstr "Configurazione Browser"
-
-#~ msgid "Browser Name:"
-#~ msgstr "Nome Browser:"
-
-#~ msgid "Browser Command:"
-#~ msgstr "Comando browser:"
-
-#~ msgid "New Window Option:"
-#~ msgstr "Opzione nuova finestra:"
-
-#~ msgid "No New Window Option:"
-#~ msgstr "Opzione nessuna nuova finestra:"
-
-#~ msgid "URL bar width:"
-#~ msgstr "Larghezza della barra delle URL:"
-
-#~ msgid "Display GO Button"
-#~ msgstr "Mostra il bottone GO"
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Mostra l'opzione \"nuova finestra\""
-
-#~ msgid "Display \"Clear\" button"
-#~ msgstr "Mostra il bottone \"Cancella\""
-
-#~ msgid "\"Clear\" button on top?"
-#~ msgstr "Pulsante \"Cancella\" in alto?"
-
-#~ msgid " URL Activation "
-#~ msgstr " Attiva l'URL "
-
-#~ msgid "Use default MIME handler"
-#~ msgstr "Usa il gestore MIME predefinito"
-
-#~ msgid "Use custom browser:"
-#~ msgstr "Usa un altro browser:"
-
-#~ msgid "Remove"
-#~ msgstr "Elimina"
-
-#~ msgid " URL History "
-#~ msgstr "Cronologia degli URL"
-
-#~ msgid "Size of URL history: "
-#~ msgstr "Dimensione della cronologia degli URL: "
-
-#~ msgid "Clear"
-#~ msgstr "Cancella"
-
-#~ msgid "all entries in URL history"
-#~ msgstr "tutte le voci nella cronologia degli URL"
-
-#~ msgid "keymap_%d/flag=us.png"
-#~ msgstr "keymap_%d/bandiera=us.png"
-
-#, fuzzy
-#~ msgid "In"
-#~ msgstr "I"
-
-#, fuzzy
-#~ msgid "Out"
-#~ msgstr "Contornato"
-
-#, fuzzy
-#~ msgid "Page Load"
-#~ msgstr "Carico CPU"
-
-#, fuzzy
-#~ msgid "PAGE Load"
-#~ msgstr "Carico CPU"
-
-#~ msgid ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-#~ msgstr ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com>\n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-
-#~ msgid "Autmatically update every "
-#~ msgstr "Aggiorna automaticamente ogni "
+msgstr "Workspace"
