@@ -4,7 +4,7 @@
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "2.0">
   <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
+  <!ENTITY date "May 2002">
   <!ENTITY applet "Battstat">
 ]>
 
@@ -26,6 +26,10 @@
 		<year>1999</year> 
 		<year>2000</year> 
 		<holder>Jorgen Pehrson</holder> 
+	 </copyright>
+	 <copyright>
+	        <year>2002</year>
+		<holder>Trevor Curtis</holder>
 	 </copyright>
 <!-- translators: uncomment this:
 
@@ -54,6 +58,14 @@
 			 <address> <email>jp@spektr.eu.org</email> </address> 
 		  </affiliation> 
 		</author> 
+		<author>
+			<firstname>Trevor</firstname>
+			<surname>Curtis</surname>
+			<affiliation>
+				<orgname>GNOME Documentation Project</orgname>
+				<address> <email>tcurtis@somaradio.ca</email> </address>
+			</affiliation>
+		</author>
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
            <othercredit role="translator">
@@ -83,11 +95,8 @@
   </articleinfo> 
 
   <indexterm zone="index"> 
-	 <primary>MY-GNOME-APPLET</primary> 
+	 <primary>Battstat Applet</primary> 
   </indexterm> 
-  <indexterm zone="index"> 
-	 <primary>mygnomeapplet</primary> 
-  </indexterm>
 
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
@@ -100,6 +109,27 @@
       panel->Applet->Monitors->Battery Status Utility</guimenuitem>.
     </para>
 
+      <figure id="mainwindow-fig"> 
+	<title>&applet; Applet</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/battstat-applet.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    -->
+	    <textobject> 
+		<phrase>The &applet; Applet.</phrase>
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
+
 </sect1>
 
 <!-- ================ Usage ================================ -->
@@ -110,43 +140,27 @@
     desire, configure it to some degree as described below. 
     </para>
 
-<!-- SCREENSHOT -->
- 
     <para>  The figure above is shown when the laptop battery is fully
     charged. 
     </para>
-
-<!-- SCREENSHOT -->
 
     <para> The little flash over the power cord is shown when the laptop
     battery is recharging. It's flashing on and off until the battery is
     fully recharged. 
     </para>
 
-<!-- SCREENSHOT -->
-
     <para> When you are running your laptop on battery it will display
     this image. 
     </para>
-
-<!-- SCREENSHOT -->
 
     <para> Right-clicking on the applet brings up a menu containing the
     following items: 
       <variablelist>
 	<varlistentry>
-	  <term><guimenuitem>Properties</guimenuitem></term>
+	  <term><guimenuitem>Preferences</guimenuitem></term>
 	  <listitem>
 	    <para>
 	      Opens the Properties dialog window.
-	    </para>
-	  </listitem>
-	</varlistentry>
-	<varlistentry>
-	  <term><guimenuitem>About</guimenuitem></term>
-	  <listitem>
-	    <para>
-	      Shows basic information about this applet.
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -159,12 +173,19 @@
 	  </listitem>
 	</varlistentry>
 	<varlistentry>
-	  <term><guimenuitem>Suspend laptop</guimenuitem></term>
+	  <term><guimenuitem>About</guimenuitem></term>
+	  <listitem>
+	    <para>
+	      Shows basic information about this applet.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>Suspend Computer</guimenuitem></term>
 	  <listitem>
 	    <para>
 	      Executes the command specified in
-	      the Properties dialog. This entry will be ghosted out
-	      if you haven't specified what command to run. 
+	      the Preferences dialog. 
 	    </para>
 	  </listitem>
 	</varlistentry>
@@ -177,11 +198,30 @@
   <sect1 id="battstatt-prefs">
     <title>Customization</title>
     <para> You can customize the Battstat applet somewhat by
-    right-clicking on it and choose Properties.... This will bring up
+    right-clicking on it and choose Preferences.... This will bring up
     the preferences dialog window. 
     </para>
 
-<!-- SCREENSHOT -->
+      <figure id="general-fig"> 
+	<title>&applet; General Preferences</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/battstat-general.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    -->
+	    <textobject> 
+	      <phrase>General preferences for the &applet; applet.</phrase>
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
 
     <para>The properties are:
     
@@ -227,16 +267,9 @@
 	  </para>
 	</listitem>
 	<listitem>
-	  <para>Percentage text: If you click on this button, a font
-	  selection dialog window will appear. You can then select the
-	  font of your choice for the percentage text. 
-	  </para>
-	</listitem>
-	<listitem>
 	  <para>Suspend command: Whatever you enter here will be
-	  executed when you click on the Suspend laptop in the applet
-	  menu. If you clear this entry field, the Suspend laptop entry
-	  will be unselectable. For example, if you are using FreeBSD
+	  executed when you click on the Suspend Computer in the applet
+	  menu. For example, if you are using FreeBSD
 	  you could enter apm -z or zzz here. Before you enter anything
 	  though, first make sure that you can safely suspend your
 	  laptop by testing the command in a shell. 
@@ -245,7 +278,26 @@
       </itemizedlist>
     </para>
 
-<!-- SCREENSHOT -->
+      <figure id="apperance-fig"> 
+	<title>&applet; Apperance Preferences</title> 
+	<screenshot> 
+	  <mediaobject> 
+	    <imageobject><imagedata
+		fileref="figures/battstat-apperance.png" format="PNG"/> 
+	    </imageobject>
+	    <!-- EPS versions of the figures are not required at the moment. -->
+            <!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    -->
+	    <textobject> 
+	      <phrase>Apperance preferences for the &applet; applet.</phrase>
+	    </textobject> 
+	  </mediaobject> 
+	</screenshot> 
+      </figure>
+
 
       <para>The properties on this page are:
         <variablelist>
@@ -253,9 +305,7 @@
 	    <term>Move towards top:</term>
 	    <listitem>
 	      <para>If you select this radio button, the battery charge
-	      level meter will drain towards the positive terminal on
-	      the battery. 
-<!-- SCREENSHOT -->
+	      level meter will drain from right to left. 
 	      </para>
 	    </listitem>
 	  </varlistentry>
@@ -263,35 +313,7 @@
 	    <term>Move towards bottom:</term>
 	    <listitem>
 	      <para>If you select this radio button, the battery charge
-	      level meter will drain towards the negative terminal on
-	      the battery. 
-	      </para>
-<!-- SCREENSHOT -->
-	    </listitem>
-	  </varlistentry>
-	  <varlistentry>
-	    <term>Horizontal:</term>
-	    <listitem>
-	      <para>By selecting this mode the applet will have a
-	      horizontal layout. (This is the default mode). 
-	      </para>
-	    </listitem>
-	  </varlistentry>
-	  <varlistentry>
-	    <term>Square:</term>
-	    <listitem>
-	      <para>In square mode the applet will be layout in a square
-	      formed shape. 
-<!-- SCREENSHOT -->
-	      </para>
-	    </listitem>
-	  </varlistentry>
-	  <varlistentry>
-	    <term>Square:</term>
-	    <listitem>
-	      <para>In square mode the applet will be layout in a square
-	      formed shape. 
-<!-- SCREENSHOT -->
+	      level meter will drain from left to right 
 	      </para>
 	    </listitem>
 	  </varlistentry>
@@ -300,36 +322,12 @@
 	    <listitem>
 	      <para>Here you can select which parts of the applets you
 	      want to have visible. 
-<!-- SCREENSHOT -->
-<!-- SCREENSHOT -->
-	      </para>
-	    </listitem>
-	  </varlistentry>
-	  <varlistentry>
-	    <term>Use the status dock:</term>
-	    <listitem>
-	      <para> If you enable this toggle button the applet will
-	      use the status docklet if it is available.  
-<!-- SCREENSHOT -->
 	      </para>
 	    </listitem>
 	  </varlistentry>
 	</variablelist>
       </para>
     
-    <sect2 id="sound">
-      <title>Sound</title>
-
-      <para> To enable the sound support for this applet you need have
-      sound support enabled for GNOME. To select the samples that should
-      be played when the battery reach certain levels right-click on the
-      Panel and select: Programs->Settings->Multimedia->Sound. Make sure
-      you have both the Enable sound server startup and the Sounds for
-      events check buttons enabled. Next click on the Sound Events tab
-      and scroll down to the Battery Status Utility field. Here you can
-      assign samples to the different battery events. 
-      </para>
-    </sect2>
   </sect1>
   
 <!-- This section contains info about the program (not docs), such as
