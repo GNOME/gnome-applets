@@ -278,16 +278,12 @@ mixer_value_changed_cb (GtkAdjustment *adj, MixerData *data)
 {
 	gint vol;
 
-	if (IS_PANEL_HORIZONTAL (data->orientation)) {
-		vol = -GTK_ADJUSTMENT (adj)->value;
-	} else {
-		vol = -(-VOLUME_MAX - GTK_ADJUSTMENT (adj)->value);
-	}
-
+	vol = -adj->value;
+	
 	data->vol = vol;
 
 	mixer_update_image (data);
-	
+
 	if (!data->mute) {
 		setMixer (vol);
 	}
@@ -462,12 +458,13 @@ mixer_popup_show (MixerData *data)
 	
 	if (IS_PANEL_HORIZONTAL (data->orientation)) {
 		data->scale = gtk_vscale_new (data->adj);
-		gtk_widget_set_usize (data->scale, -1, 100);			
+		gtk_widget_set_size_request (data->scale, -1, 100);			
 	} else {
 		data->scale = gtk_hscale_new (data->adj);
-		gtk_widget_set_usize (data->scale, 100, -1);
+		gtk_widget_set_size_request (data->scale, 100, -1);
+		gtk_range_set_inverted (GTK_RANGE (data->scale), TRUE);
 	}
-	
+
 	g_signal_connect (data->scale,
 			  "button-release-event",
 			  (GCallback) scale_button_release_event_cb,
@@ -663,7 +660,7 @@ static void
 applet_change_orient_cb (GtkWidget *w, PanelAppletOrient o, MixerData *data)
 {
 	gint vol;
-	
+
 	mixer_popup_hide (data, FALSE);
 
 	data->orientation = o;
