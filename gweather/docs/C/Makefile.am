@@ -1,4 +1,5 @@
-figs =
+figs =	gweather_applet.png	gweather_settings.png \
+	gweather_weather.png
 applet = gweather
 lang = C
 sgml_ents = 
