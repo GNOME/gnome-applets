@@ -1,5 +1,10 @@
 2004-11-30  James Henstridge  <james@jamesh.id.au>
 
+	* gweather-xml.c (gweather_xml_load_locations): when starting to
+	read the locations file, fast forward to the first element node,
+	in order to skip doctypes, comments, PIs, etc at the start of the
+	document.
+
 	* Makefile.am (EXTRA_DIST): install locations.dtd.
 
 	* Locations.xml.in: add a DOCTYPE declaration to the top of the file.

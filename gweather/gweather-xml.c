@@ -542,8 +542,14 @@ void gweather_xml_load_locations (GtkTreeView *tree, WeatherLocation *loc)
     reader = xmlNewTextReaderFilename (file);
     g_return_if_fail (reader);
     
-    /* The first node that is read is <gweather> */
-    ret = xmlTextReaderRead (reader);
+    /* fast forward to the first element */
+    ret = 0;
+    while (ret >= 0) {
+      ret = xmlTextReaderRead (reader);
+      if (xmlTextReaderNodeType (reader) == XML_READER_TYPE_ELEMENT)
+	break;
+    }
+
     if ( ret == 1 ) {
         /* check the name and format */
         name = xmlTextReaderName(reader);
