@@ -19,10 +19,17 @@ xml_SUBDIRS = $(xml_applets)
 endif
 
 ghttp_applets = \
-	gweather \
-	gtik
+	gweather 
 if HAVE_LIBGHTTP
 ghttp_SUBDIRS = $(ghttp_applets)
+endif
+
+ghttp_vfs_applets = \
+	gtik
+if HAVE_LIBGHTTP
+if HAVE_GNOME_VFS
+ghttp_vfs_SUBDIRS = $(ghttp_vfs_applets)
+endif
 endif
 
 ghttp_xml_applets = \
@@ -82,6 +89,7 @@ SUBDIRS = \
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(ghttp_SUBDIRS)	\
+	$(ghttp_vfs_SUBDIRS)	\
 	$(ghttp_xml_SUBDIRS)	\
 	$(cdplayer_SUBDIRS)	\
 	$(mixer_SUBDIRS)	\

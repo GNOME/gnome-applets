@@ -1,6 +1,6 @@
 
 INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-		 -I$(includedir)  $(GNOME_INCLUDEDIR) \
+		 -I$(includedir)  $(GNOME_INCLUDEDIR) $(VFS_CFLAGS) \
 		 -DGTIK_APPLET_NAME=\"gtik2_applet\"
 
 bin_PROGRAMS = gtik2_applet
@@ -10,7 +10,8 @@ gtik2_applet_SOURCES = gtik.c
 gtik2_applet_LDADD = 	$(GNOME_LIBDIR) \
 			$(GNOMEUI_LIBS) \
 			$(GNOME_APPLETS_LIBS) \
-			$(GHTTP_LIB)
+			$(GHTTP_LIB) \
+			$(VFS_LIBS)
 
 sysdir = $(datadir)/applets/Network
 sys_predata = gtik2_applet.desktop.in
