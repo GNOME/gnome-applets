@@ -177,8 +177,8 @@ panel_menu_preferences_save_config (PanelMenuEntry *entry)
 {
 	PanelMenuPreferences *preferences;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PREFERENCES);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_PREFERENCES, NULL);
 
 	preferences = (PanelMenuPreferences *)entry->data;
 

@@ -230,8 +230,8 @@ panel_menu_documents_get_widget (PanelMenuEntry *entry)
 {
 	PanelMenuDocuments *documents;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DOCUMENTS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_DOCUMENTS, NULL);
 
 	documents = (PanelMenuDocuments *) entry->data;
 	return (documents->documents);
@@ -457,8 +457,8 @@ panel_menu_documents_save_config (PanelMenuEntry *entry)
 	gchar *id;
 	gchar *key;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DOCUMENTS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_DOCUMENTS, NULL);
 
 	panel_menu = entry->parent;
 	applet = panel_menu->applet;

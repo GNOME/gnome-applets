@@ -157,8 +157,8 @@ panel_menu_actions_get_widget (PanelMenuEntry *entry)
 {
 	PanelMenuActions *actions;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_ACTIONS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_ACTIONS, NULL);
 
 	actions = (PanelMenuActions *) entry->data;
 	return actions->actions;
@@ -239,8 +239,8 @@ show_desktop_cb (GtkWidget *widget, gpointer data)
 gchar *
 panel_menu_actions_save_config (PanelMenuEntry *entry)
 {
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_ACTIONS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_ACTIONS, NULL);
 
 	return g_strdup ("actions");
 }

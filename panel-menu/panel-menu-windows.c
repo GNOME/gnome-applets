@@ -450,8 +450,8 @@ set_icon_from_window (GtkImageMenuItem *menuitem, WnckWindow *window, gint icon_
 gchar *
 panel_menu_windows_save_config (PanelMenuEntry *entry)
 {
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_WINDOWS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_WINDOWS, NULL);
 
 	return g_strdup ("windows");
 }

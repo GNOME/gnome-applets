@@ -291,8 +291,8 @@ wnck_workspace_removed (WnckScreen *screen, WnckWorkspace *workspace,
 gchar *
 panel_menu_workspaces_save_config (PanelMenuEntry *entry)
 {
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_WORKSPACES);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_WORKSPACES, NULL);
 
 	return g_strdup ("workspaces");
 }

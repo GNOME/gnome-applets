@@ -37,6 +37,7 @@
 #include <libgnomevfs/gnome-vfs-result.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
 #include <libgnomevfs/gnome-vfs-monitor.h>
+#include <libgnomevfs/gnome-vfs-ops.h>
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"
@@ -321,8 +322,8 @@ panel_menu_directory_get_widget (PanelMenuEntry *entry)
 {
 	PanelMenuDirectory *directory;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY, NULL);
 
 	directory = (PanelMenuDirectory *) entry->data;
 	return directory->directory;
@@ -666,8 +667,8 @@ panel_menu_directory_save_config (PanelMenuEntry *entry)
 	gchar *id;
 	gchar *key;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY, NULL);
 
 	panel_menu = entry->parent;
 	applet = panel_menu->applet;

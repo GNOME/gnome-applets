@@ -90,7 +90,7 @@ static gboolean panel_menu_accept_entry_drop (PanelMenu *panel_menu,
 
 static gint applet_button_press_cb (GtkWidget *widget, GdkEventButton *event,
 				    PanelMenu *panel_menu);
-static gint applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu);
+static void applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu);
 static void applet_change_orientation_cb (PanelApplet *applet,
 					  PanelAppletOrient orient,
 					  PanelMenu *panel_menu);
@@ -579,7 +579,7 @@ applet_button_press_cb (GtkWidget *widget, GdkEventButton *event,
 	return TRUE;
 }
 
-static gint
+static void
 applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu)
 {
 	PanelMenuEntry *entry;

@@ -27,8 +27,6 @@
 
 G_BEGIN_DECLS
 
-/* Don't need to call this, we check later when a pixmap is asked for */
-void panel_menu_pixbuf_init (void);
 /* Please call this, it free's memory and stuff */
 void panel_menu_pixbuf_exit (void);
 

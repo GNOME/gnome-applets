@@ -38,6 +38,7 @@
 #include <libgnomevfs/gnome-vfs-result.h>
 #include <libgnomevfs/gnome-vfs-utils.h>
 #include <libgnomevfs/gnome-vfs-monitor.h>
+#include <libgnomevfs/gnome-vfs-ops.h>
 
 #include "panel-menu-desktop-item.h"
 

@@ -32,7 +32,6 @@ typedef struct _PixbufEntry {
 	GList *attachments;
 }PixbufEntry;
 
-static void panel_menu_pixbuf_init (void);
 static void register_gconf_notifications (void);
 static gboolean pixbuf_cache_remove (gpointer key, gpointer value,
 				     gpointer user_data);
@@ -75,7 +74,7 @@ static guint nautilus_connection = 0;
 static guint icon_connection = 0;
 static gint icon_size = 0;
 
-void
+static void
 panel_menu_pixbuf_init (void)
 {
 	if (pixbuf_cache == NULL) {
@@ -171,8 +170,8 @@ panel_menu_pixbuf_entry_add (const gchar *icon_filename, GdkPixbuf *pixbuf)
 {
 	PixbufEntry *entry;
 
-	g_return_if_fail (g_hash_table_lookup (
-		pixbuf_cache, icon_filename) == NULL);
+	g_return_val_if_fail ((g_hash_table_lookup (pixbuf_cache, icon_filename) == NULL), NULL);
+				      
 
 	entry = g_new0(PixbufEntry, 1);
 	entry->icon_filename = g_strdup (icon_filename);

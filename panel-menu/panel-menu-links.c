@@ -97,7 +97,7 @@ panel_menu_links_new_with_id (PanelMenu *parent, gint id)
 	gchar *base_key;
 	gchar *dir_key;
 	GConfClient *client;
-	gchar *name;
+	gchar *name = NULL;
 
 	if (id > object_counter)
 		object_counter = id;
@@ -268,8 +268,8 @@ panel_menu_links_get_widget (PanelMenuEntry *entry)
 {
 	PanelMenuLinks *links;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_LINKS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_LINKS, NULL);
 
 	links = (PanelMenuLinks *) entry->data;
 	return (links->links);
@@ -348,6 +348,8 @@ panel_menu_links_append_item (PanelMenuEntry *entry, gchar *uri)
 		links->links_list =
 			g_list_append (links->links_list, g_strdup (uri));
 	}
+
+	return retval;
 }
 
 static gint
@@ -461,8 +463,8 @@ panel_menu_links_save_config (PanelMenuEntry *entry)
 	gchar *id;
 	gchar *key;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_LINKS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_LINKS, NULL);
 
 	panel_menu = entry->parent;
 	applet = panel_menu->applet;

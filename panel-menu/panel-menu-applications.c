@@ -133,8 +133,8 @@ panel_menu_applications_get_icon (PanelMenuEntry *entry)
 {
 	PanelMenuApplications *applications;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_APPLICATIONS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_APPLICATIONS, NULL);
 
 	applications = (PanelMenuApplications *) entry->data;
 	return applications->icon;
@@ -221,8 +221,8 @@ panel_menu_applications_save_config (PanelMenuEntry *entry)
 {
 	PanelMenuApplications *applications;
 
-	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_APPLICATIONS);
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_APPLICATIONS, NULL);
 
 	applications = (PanelMenuApplications *)entry->data;
 

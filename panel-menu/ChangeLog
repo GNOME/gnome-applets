@@ -1,3 +1,14 @@
+2002-04-03  jacob berkman  <jacob@ximian.com>
+
+	* panel-menu-pixbuf.h: kill declaration of init func
+
+	* panel-menu-pixbuf.c (panel_menu_pixbuf_init): make static
+
+	this fixes build problems with forte.
+
+	* *.c: kill some obvious warnings (reaching end of non-void
+	function, return with no value on non-void function)
+
 2002-04-02  Kevin Vandersloot <kfv101@psu.edu>
 
 	* panel-menu-pixbuf.c: don't declare panel_menu_pixbuf_exit
