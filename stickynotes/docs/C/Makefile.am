@@ -4,8 +4,7 @@ figs = \
     figures/stickynotes_applet.png \
     figures/preferences_dialog.png \
     figures/applet_menu.png \
-    figures/note_menu.png \
-    figures/note_dialog.png
+    figures/note_menu.png 
 
 docname = stickynotes_applet
 lang = C
