@@ -319,16 +319,6 @@ static const BonoboUIVerb geyes_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char geyes_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-
 static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
@@ -341,10 +331,12 @@ geyes_applet_fill (PanelApplet *applet)
         eyes_applet->timeout_id = gtk_timeout_add (
 		UPDATE_TIMEOUT, (GtkFunction) timer_cb, eyes_applet);
 			
-	panel_applet_setup_menu (eyes_applet->applet,
-				 geyes_applet_menu_xml,
-				 geyes_applet_menu_verbs,
-				 eyes_applet);
+	panel_applet_setup_menu_from_file (eyes_applet->applet,
+                                           NULL,
+				           "GNOME_GeyesApplet.xml",
+                                           NULL,
+				           geyes_applet_menu_verbs,
+				           eyes_applet);
 	
 	gtk_widget_show_all (GTK_WIDGET (eyes_applet->applet));
 

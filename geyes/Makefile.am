@@ -22,6 +22,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GeyesApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_GeyesApplet.xml
+
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= geyes.schemas
 
