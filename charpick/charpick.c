@@ -83,6 +83,18 @@ charpick_selection_handler(GtkWidget *widget,
 			 1);
 }
 
+/* untoggles the active toggle_button when we lose the selection */
+static gint
+selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
+                 gint *have_selection)
+{
+  gint * last_index = &curr_data.last_index;
+  GtkWidget *toggle_button = curr_data.toggle_buttons[*last_index];
+  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(toggle_button), FALSE);
+  *last_index = NO_LAST_INDEX;
+  return TRUE;
+}
+
 /* displays a list of characters in labels on buttons*/
 static void
 display_charlist (charpick_data *data)
@@ -399,13 +411,16 @@ main (int argc, char *argv[])
   gtk_widget_set_events (event_box, /*GDK_EXPOSURE_MASK
 			 | */ GDK_FOCUS_CHANGE_MASK
 			 | GDK_KEY_PRESS_MASK);
-  /* selection handler for selected character */
+  /* selection handling for selected character */
   gtk_selection_add_target (event_box, 
 			    GDK_SELECTION_PRIMARY,
                             GDK_SELECTION_TYPE_STRING,
 			    0);
   gtk_signal_connect (GTK_OBJECT (event_box), "selection_get",
 		      GTK_SIGNAL_FUNC (charpick_selection_handler),
+		      &curr_data);
+  gtk_signal_connect (GTK_OBJECT (event_box), "selection_clear_event",
+		      GTK_SIGNAL_FUNC (selection_clear_cb),
 		      &curr_data);
   /* session save signal */ 
   gtk_signal_connect(GTK_OBJECT(applet),"save_session",
@@ -427,13 +442,7 @@ main (int argc, char *argv[])
 					 &curr_data);
 
   applet_widget_add (APPLET_WIDGET (applet), event_box);
-
   gtk_widget_show (event_box);
-  /*  gtk_widget_set_usize(table, 
-                       default_properties.width, 
-                       default_properties.height);*/
-  /*  gtk_widget_show (table);*/
-  /*display_charlist(&curr_data);*/
   gtk_widget_show (applet);
   applet_widget_gtk_main ();
 
