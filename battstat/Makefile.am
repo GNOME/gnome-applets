@@ -57,7 +57,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 @INTLTOOL_SCHEMAS_RULE@
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_BattstatApplet.server.in

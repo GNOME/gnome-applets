@@ -43,6 +43,6 @@ EXTRA_DIST =					\
 
 install-data-local:
 	for p in $(schemas_DATA); do \
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$$p ; \
+		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p ; \
 	done
 
