@@ -406,10 +406,8 @@ gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
 #endif
 }
 
-#ifdef FIXME /* Config options should be saved when they are changed by the user */
-static gboolean
-applet_save_session (GtkWidget * w,
-		     const char *privcfgpath, const char *globcfgpath)
+void
+applet_save_session()
 {
   const gchar *text;
   GkbKeymap *actdata;
@@ -454,7 +452,6 @@ applet_save_session (GtkWidget * w,
 
   return FALSE;
 }
-#endif
 
 GkbKeymap *
 loadprop (int i)
@@ -554,9 +551,7 @@ load_properties (GKB * gkb)
 
   gnome_config_pop_prefix ();
 
-  /* tell the panel to save our configuration data 
-  applet_widget_sync_config (APPLET_WIDGET (gkb->applet));
-  */
+  applet_save_session ();
 }
 
 

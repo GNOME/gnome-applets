@@ -99,8 +99,8 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   XGrabKey (GDK_DISPLAY (), key, gkb->state,
 	    GDK_ROOT_WINDOW (), True, GrabModeAsync, GrabModeAsync);
 
-/*  applet_widget_sync_config (APPLET_WIDGET (gkb->applet));
-*/
+  applet_save_session ();
+
   /* Render & update */
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);

@@ -365,7 +365,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_button_box_set_layout (GTK_BUTTON_BOX (hbuttonbox1),
 			     GTK_BUTTONBOX_SPREAD);
 
-  button4 = gtk_button_new_with_label (_("Add"));
+  button4 = gtk_button_new_from_stock (GTK_STOCK_ADD);
 
   gtk_widget_show (button4);
   GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
