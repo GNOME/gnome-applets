@@ -241,7 +241,7 @@ draw_h (void)
 {
 //	GdkFont* my_font;
 	char *text;
-	unsigned free_space;
+	gulong free_space;
 	int du_pie_gap;
 	int du_mountpoint_y;
 	int du_freespace_y;
@@ -380,7 +380,7 @@ draw_v (void)
 {
 //	GdkFont* my_font;
 	char *text;
-	unsigned free_space;
+	gulong free_space;
 	double ratio;		/* % of space used */
 	int du_pie_gap;
 	int du_mountpoint_x;
@@ -468,13 +468,13 @@ draw_v (void)
 
 	if (summary_info.pixel_size <= PIXEL_SIZE_STANDARD) {
 		if (free_space >= 1048576) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uG",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%luG",
 				    free_space / 1048576);
 		else if (free_space >= 1024) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uM",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%luM",
 				    free_space / 1024);
 		else
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uk",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%luk",
 				    free_space);
 
 	}
@@ -486,7 +486,7 @@ draw_v (void)
 			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f MB",
 				    free_space / 1024.0);
 		else
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u kB",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%lu kB",
 				    free_space);
 	}
 	else {
@@ -497,7 +497,7 @@ draw_v (void)
 			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f MB",
 				    free_space / 1024.0);
 		else
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u kB",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%lu kB",
 				    free_space);
 	}
 
