@@ -39,14 +39,12 @@ void cdpanel_realized(GtkWidget *cdpanel, CDPlayerData *cd);
     
 GtkWidget *applet = NULL;
 
-char *devpath = NULL;
-
 static gboolean
 cd_try_open(CDPlayerData *cd)
 {
 	int err;
 	if(cd->cdrom_device == NULL) {
-		cd->cdrom_device = cdrom_open(devpath, &err);
+		cd->cdrom_device = cdrom_open(cd->devpath, &err);
 		return cd->cdrom_device != NULL;
 	}
 	return TRUE;
@@ -55,8 +53,10 @@ cd_try_open(CDPlayerData *cd)
 static void
 cd_close (CDPlayerData *cd)
 {
-	cdrom_close(cd->cdrom_device);
-	cd->cdrom_device = NULL;
+	if (cd->cdrom_device != NULL) {
+		cdrom_close(cd->cdrom_device);
+		cd->cdrom_device = NULL;
+	}
 }
 
 static void 
@@ -94,8 +94,9 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 			}
 		}
 		cd_close(cd);
-	} else
+	} else {
 		led_nodisc(cd->panel.time, cd->panel.track_control.display);
+	}
 	return;
 	cdplayer = NULL;
 }
@@ -314,17 +315,20 @@ create_cdpanel_widget(GtkWidget *window, CDPlayerData * cd)
 	return cd->panel.frame;
 }
 
-	  
-
 static void 
-destroy_cdplayer(GtkWidget * widget, void *data)
+destroy_cdplayer(GtkWidget * widget, gpointer data)
 {
 	CDPlayerData *cd;
 
 	cd = gtk_object_get_user_data(GTK_OBJECT(widget));
-	gtk_timeout_remove(cd->timeout);
-	if(cd->cdrom_device)
-		cdrom_close(cd->cdrom_device);
+	if (cd->timeout != 0)
+		gtk_timeout_remove(cd->timeout);
+	cd->timeout = 0;
+	cd_close (cd);
+
+	g_free (cd->devpath);
+	cd->devpath = NULL;
+
 	g_free(cd);
 
 	return;
@@ -482,10 +486,10 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 	cd = g_new0(CDPlayerData, 1);
 
 	gnome_config_push_prefix(globcfgpath);
-	devpath = gnome_config_get_string("cdplayer/devpath=/dev/cdrom");
+	/* NOTE THAT devpath is GLOBAL!, EEK! */
+	cd->devpath = gnome_config_get_string("cdplayer/devpath=/dev/cdrom");
 	gnome_config_pop_prefix();
-	cd->cdrom_device = cdrom_open(devpath, &err);
-	g_free (devpath);
+	cd->cdrom_device = cdrom_open(cd->devpath, &err);
 	
 	cd->size = APPLET_WIDGET(window)->size;
 	cd->orient = APPLET_WIDGET(window)->orient;

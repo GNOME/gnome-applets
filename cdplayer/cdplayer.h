@@ -6,6 +6,7 @@ typedef struct {
 	cdrom_device_t cdrom_device;
 	int size;
 	PanelOrientType orient;
+	char *devpath;
 
 	struct {
 		GtkWidget *frame;
