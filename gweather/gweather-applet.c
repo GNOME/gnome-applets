@@ -184,7 +184,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
 
     /* PUSH */
-    gtk_widget_push_visual (gdk_rgb_get_visual ());
     gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 
     /*gtk_widget_realize(GTK_WIDGET(gw_applet->applet));
@@ -251,7 +250,6 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     place_widgets(gw_applet);
     /* POP */
     gtk_widget_pop_colormap ();
-    gtk_widget_pop_visual ();
     
 	return;
 }

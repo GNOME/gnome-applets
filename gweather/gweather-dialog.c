@@ -307,7 +307,6 @@ g_print ("draw radar \n");
 
 
       /* PUSH */
-      gtk_widget_push_visual (gdk_rgb_get_visual ());
       gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 
       ebox = gtk_event_box_new ();
@@ -321,7 +320,6 @@ g_print ("draw radar \n");
 
       /* POP */
       gtk_widget_pop_colormap ();
-      gtk_widget_pop_visual ();
 
 
       radar_link_alignment = gtk_alignment_new (0.5, 0.5, 0, 0);
