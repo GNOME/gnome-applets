@@ -741,7 +741,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (value_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
     gtk_container_add (GTK_CONTAINER (frame), pref_basic_update_hbox);
-    gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
 
     frame = create_hig_catagory (pref_basic_vbox, _("Display"));
 
@@ -756,7 +755,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 #endif /* RADARMAP */
 
     gtk_container_add (GTK_CONTAINER (frame), vbox);
-    gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
 
     pref_basic_note_lbl = gtk_label_new (_("General"));
     gtk_widget_show (pref_basic_note_lbl);
