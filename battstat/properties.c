@@ -336,6 +336,7 @@ prop_cb (BonoboUIComponent *uic,
   gboolean   writable;
   GConfClient *client;
   gboolean   inhibit_command_line;
+  AtkObject *atk_widget;
 
   client = gconf_client_get_default ();
   inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
@@ -492,9 +493,22 @@ prop_cb (BonoboUIComponent *uic,
   }
 
   battstat->progdir_radio = glade_xml_get_widget (glade_xml, "dir_radio_top");
+  
+  atk_widget = gtk_widget_get_accessible (battstat->progdir_radio);
+  if (GTK_IS_ACCESSIBLE (atk_widget)) {
+	  atk_object_set_name (atk_widget,
+			  _("Probress Bar Direction Moves towards top"));
+  }
+  
   g_signal_connect (G_OBJECT (battstat->progdir_radio), "toggled",
   		    G_CALLBACK (progdir_toggled), battstat);
   widget = glade_xml_get_widget (glade_xml, "dir_radio_bottom");
+  
+  atk_widget = gtk_widget_get_accessible (widget);
+  if (GTK_IS_ACCESSIBLE (atk_widget)) {
+	  atk_object_set_name (atk_widget,
+			  _("Probress Bar Direction Moves towards bottom"));
+  }
 
   if ( ! key_writable (PANEL_APPLET (battstat->applet), "drain_from_top")) {
 	  hard_set_sensitive (battstat->progdir_radio, FALSE);
