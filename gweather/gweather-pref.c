@@ -454,7 +454,7 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.city = panel_applet_gconf_get_string(gw_applet->applet, "city", NULL);
     g_print ("city %s name \n", gw_applet->gweather_pref.url);
     if (!gw_applet->gweather_pref.url || (strlen (gw_applet->gweather_pref.url)==0)) {
-	gw_applet->gweather_pref.url=g_strdup ("http://weather.interceptvector.com/weather.xml?&state=PA&city=Pittsburgh");
+	gw_applet->gweather_pref.url=g_strdup ("http://weather.interceptvector.com/weather.xml?id=VVNQQTEyOTA%3D");
 	gw_applet->gweather_pref.city = g_strdup ("Pittsburgh");
     }
     gw_applet->gweather_pref.show_labels =
