@@ -30,7 +30,7 @@ applet_LTLIBRARIES = libmultiload_applet_2.la
 
 GNOME_MultiLoadApplet_Factory.server.in: GNOME_MultiLoadApplet_Factory.server.in.in
 	sed -e "s|\@APPLET_LIBDIR\@|$(appletdir)|" $< > $@
-	
+
 pixmaps = gnome-cpu.png gnome-mem.png
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = $(pixmaps)
@@ -40,14 +40,14 @@ schema_DATA = multiload.schemas
 
 #install-data-local:
 #	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
-	
+
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in.in \
 		multiload.schemas \
 		$(pixmaps)
-		
+
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MultiLoadApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
-@XML_I18N_MERGE_SERVER_RULE@
+@INTLTOOL_SERVER_RULE@

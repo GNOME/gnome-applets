@@ -45,7 +45,7 @@ bitmaps_DATA = browser-mini.xpm history-mini.xpm
 sysdir = $(datadir)/applets/Utility
 sys_predata = mini-commander_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+@INTLTOOL_DESKTOP_RULE@
 
 #gnorbadir  = $(sysconfdir)/CORBA/servers
 #gnorba_DATA = mini-commander_applet.gnorba

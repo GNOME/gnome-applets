@@ -21,7 +21,7 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_ModemLightsApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
-@XML_I18N_MERGE_SERVER_RULE@
+@INTLTOOL_SERVER_RULE@
 
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= modemlights.schemas
@@ -29,7 +29,7 @@ schema_DATA	= modemlights.schemas
 EXTRA_DIST = \
 	digits.xpm $(server_in_files)	\
 	$(schema_DATA)
-	
+
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
 
