@@ -722,16 +722,6 @@ find_input_client (Display * display, Window xwindow, Atom state_atom)
   return xwindow;
 }
 
-static const char gkb_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"GKB Properties Item\" verb=\"GKBProperties\" _label=\"Properties ...\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"GKB Help Item\" verb=\"GKBHelp\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"GKB About Item\" verb=\"GKBAbout\" _label=\"About ...\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-
 static const BonoboUIVerb gkb_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("GKBProperties",   properties_dialog),
 	BONOBO_UI_UNSAFE_VERB ("GKBHelp",	  help_cb),
@@ -792,10 +782,12 @@ gboolean fill_gkb_applet(PanelApplet *applet)
                           G_CALLBACK (gkb_change_pixel_size),
                           gkb);
 
-  panel_applet_setup_menu (PANEL_APPLET (gkb->applet), 
-  				gkb_menu_xml, 
-  				gkb_menu_verbs, 
-  				gkb);
+  panel_applet_setup_menu_from_file (PANEL_APPLET (gkb->applet),
+                                     NULL,
+                                     "GNOME_KeyboardApplet.xml",
+  				     NULL,
+  				     gkb_menu_verbs, 
+  				     gkb);
 
   gtk_widget_show (GTK_WIDGET(gkb->applet));
   gkb_sized_render (gkb);

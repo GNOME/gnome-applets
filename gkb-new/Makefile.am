@@ -47,8 +47,11 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_KeyboardApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_KeyboardApplet.xml
+
 EXTRA_DIST = $(GKB_ICON) \
-	$(server_DATA) $(server_in_files) $(schema_DATA)
+	$(server_DATA) $(server_in_files) $(schema_DATA) $(ui_DATA)
 
 gkb_xmmap: gkb_xmmap.in
 	sed "s,\$${prefix},$(prefix),g" \
