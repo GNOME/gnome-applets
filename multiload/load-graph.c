@@ -34,16 +34,11 @@ GnomePropertyDescriptor LoadGraphProperty_Descriptor = {
     NULL
 };
 
-static int
+/* Redraws the backing pixmap for the load graph and updates the window */
+static void
 load_graph_draw (LoadGraph *g)
 {
     gint i, j;
-
-    g->get_data (g->width, g->data [0]);
-    
-    for (i=0; i < g->width-1; i++)
-	for (j=0; j < g->n; j++)
-	    g->data [i+1][j] = g->odata [i][j];
 
     /* Create GC if necessary. */
     if (!g->gc) {
@@ -96,7 +91,21 @@ load_graph_draw (LoadGraph *g)
 
     for (i = 0; i < g->width; i++)
 	memcpy (g->odata [i], g->data [i], g->data_size);
+}
 
+/* Updates the load graph when the timeout expires */
+static int
+load_graph_update (LoadGraph *g)
+{
+    gint i, j;
+
+    g->get_data (g->width, g->data [0]);
+
+    for (i=0; i < g->width-1; i++)
+	for (j=0; j < g->n; j++)
+	    g->data [i+1][j] = g->odata [i][j];
+
+    load_graph_draw (g);
     return TRUE;
 }
 
@@ -123,7 +132,7 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		     c->disp->allocation.width,
 		     c->disp->allocation.height);
     return TRUE;
-} 
+}
 
 static gint
 load_graph_expose (GtkWidget *widget, GdkEventExpose *event,
@@ -263,9 +272,10 @@ load_graph_properties_update (GnomePropertyObject *object)
 
 	if (g->timer_index != -1) {
 	    load_graph_stop (g);
-
 	    load_graph_start (g);
 	}
+
+	load_graph_draw (g);
     }
 }
 
@@ -335,7 +345,7 @@ load_graph_start (LoadGraph *g)
 	gtk_timeout_remove (g->timer_index);
 
     g->timer_index = gtk_timeout_add (g->prop_data->adj_data [0],
-				      (GtkFunction)load_graph_draw, g);
+				      (GtkFunction) load_graph_update, g);
 }
 
 void
