@@ -163,9 +163,9 @@ static int mount_cb(GtkWidget *widget, gpointer data)
 	   the returned output from (u)mount, we are assuming an error */
 	if (check == device_is_mounted(dd))
 		{
-		g_string_prepend(str, "\" reported:\n");
+		g_string_prepend(str, _("\" reported:\n"));
 		g_string_prepend(str, command_line);
-		g_string_prepend(str, "Drivemount command failed.\n\"");
+		g_string_prepend(str, _("Drivemount command failed.\n\""));
 		gnome_warning_dialog(str->str);
 		}
 
