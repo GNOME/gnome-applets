@@ -212,6 +212,17 @@ applet_fill (PanelApplet *applet)
                                        applet_menu_verbs,
                                        cd);
 
+    if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
+	    BonoboUIComponent *popup_component;
+
+	    popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+
+	    bonobo_ui_component_set_prop (popup_component,
+					  "/commands/Preferences",
+					  "hidden", "1",
+					  NULL);
+    }
+
     component = panel_applet_get_popup_component (PANEL_APPLET (applet));
 
     g_signal_connect (component, "ui-event", G_CALLBACK (ui_component_event), cd);
