@@ -83,18 +83,26 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-09-09  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
+>1999-09-25  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
 
-	* src/command_line.c (command_entry_update_size): applet size will
- 	be automatically recalculated if panel size changes
+	* src/Makefile.am (mini_commander_applet_SOURCES): terminal.[ch] added
+
+	* src/terminal.h: added
+
+	* src/terminal.c: added
+
+1999-09-09  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
+
+	* src/command_line.c (command_entry_update_size): size will be
+ 	recalculated automatically if panel size changes
 
 	* src/mini-commander_applet.c (applet_size_changed_cb): added
 
-	(redraw_applet): applet size/layout will be automatically modified
+	(redraw_applet): applet size/layout will be modified automatically
  	if panel size changes
 
-	(applet_size_changed_cb): applet size will be automatically
- 	recalculated if panel size changes
+	(applet_size_changed_cb): applet size will be recalculated
+ 	automatically if panel size changes
 
 1999-09-08  Oliver Maruhn  &#60;oliver@maruhn.com&#62;
 
