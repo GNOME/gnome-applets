@@ -32,5 +32,5 @@ EXTRA_DIST = $(doc_DATA) $(doc_SGML)
 	cat ../NEWS | sed 's/</\&lt;/g; s/>/\&gt;/g' > ./news.txt ;	\
 	cd sgml ;							\
 	db2html mini-commander.sgml ;					\
-        mv -fv mini-commander/*.html mini-commander/*.css .. ;		\
+        mv -f mini-commander/*.html mini-commander/*.css .. ;		\
         rm -rf mini-commander/
