@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.103.0">
+  <!ENTITY manrevision "2.0">
+  <!ENTITY date "May 2002">
+  <!ENTITY applet "Modem Lights">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>&applet; Applet Manual V&manrevision;</title> 
+	 <copyright> 
+		<year>2002</year> 
+		<holder>Trevor Curtis</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>
+		<holder>John Fleck</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+	 <publisher> 
+		<publishername> GNOME Documentation Project </publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Trevor </firstname> 
+		  <surname> Curtis</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>tcurtis@somaradio.ca</email> </address> 
+		  </affiliation> 
+		</author> 
+		<author> 
+		  <firstname>John </firstname> 
+		  <surname> Fleck</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>jfleck@inkstain.net</email> </address> 
+		  </affiliation> 
+		</author> 
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other-->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Trevor Curtis
+				<email>tcurtis@somaradio.ca</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>Modem Lights Applet Manual.</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author"> John Fleck
+				<email>jfleck@inkstain.net</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> This manual describes version &appletversion; of &applet;.
+		</releaseinfo> 
+
+    <!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether -->
+ 
+
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para> To report a bug or make a suggestion regarding
+	the &applet; applet or this manual, follow the directions in the 
+	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para> 
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+	 <primary>Modem Lights Applet</primary> 
+  </indexterm> 
+
+
+
+
+<sect1 id="modemlights">
+  <title>Modem Lights Applet</title> 
+
+  <para> <application>Modem Lights Applet</application>
+   monitors your modem while it is
+  working. To add this applet to a <interface>Panel</interface>,
+  right-click on the panel
+  and choose
+         <menuchoice>
+               <guimenu>Add to panel</guimenu>
+               <guisubmenu>Internet</guisubmenu>
+	       <guimenuitem>Modem Lights</guimenuitem>
+	</menuchoice>
+  </para>
+  
+ 
+<!-- screenshot --> 
+ 
+
+  <sect2 id="modemlights-usage">
+    <title>Usage</title>
+    <para>This applet can be used to tell if your modem is working,
+    and to track its behavior and performance. It can also be
+    configured to call a separate script or program to have your modem
+    connect and disconnect when you click on the <guibutton>button
+    with the single green light</guibutton>.
+    </para>
+    <para>Right-clicking on the applet brings up a menu containing the
+    following items:
+<itemizedlist>
+	<listitem>
+	  <para>
+	    <guimenuitem>Preferences</guimenuitem>&mdash; brings up the
+                <guilabel>preferences</guilabel>
+            dialog
+	    </para>
+	</listitem>
+
+        <listitem>
+	  <para>
+	    <guimenuitem>Help</guimenuitem> &mdash; brings up this
+            document. 
+	    </para>
+	</listitem>
+	
+	<listitem>
+	  <para>
+	    <guimenuitem>About</guimenuitem> &mdash; shows basic
+            information about the <application>Modem Lights
+            Applet</application>, including the applet's version and
+            author's name.
+         </para>
+	</listitem>
+	
+      </itemizedlist>
+    </para>
+  </sect2>
+  <!-- ============= Customization ============================= -->
+
+  <sect2 id="modemlights-prefs">
+    <title>Customization</title>
+    <para>
+      You can customize <application>Modem Lights Applet</application> by
+      right-clicking on it and choosing
+      <guimenuitem>Preferences</guimenuitem>. This will open the
+      <interface>Modem Lights Preferences</interface> dialog 
+      which allows you to
+      change various settings.
+    </para>
+
+<!-- figure  -->
+
+ <para>
+     The preferences are:
+     <itemizedlist>
+       <listitem>
+	    <para><guilabel>Connect command:</guilabel> and
+        <guilabel>Disconnect command: </guilabel> &mdash;  To use
+    <application>Modem Lights Applet</application> to initiate a
+    connection, place the name of the startup command in the
+    <guilabel>Connect command</guilabel> text box, and the disconnect
+    command in the box beneath it labeled <guilabel>Disconnect
+    command</guilabel>. When you click on the single button on the
+    applet, it will connect or disconnect your modem.</para>
+      </listitem>
+      <listitem>
+	    <para><guilabel>Confirm connection</guilabel> &mdash;
+        Display a dialog box confirming your connection.</para>
+      </listitem>
+
+      <listitem>
+       <para>
+        <guilabel>Updates per second</guilabel> &mdash; Set the update
+        rate of <application>Modem Lights
+        Applet's</application> display.</para>
+      </listitem>
+      <listitem>
+	    <para><guilabel>Show connect time and
+        throughput</guilabel> &mdash; add two text windows to the
+        applet showing the time you have been connected at the data
+        transfer rate. This is a good way to monitor your modem's
+        performance.</para>
+      </listitem>
+     </itemizedlist>
+  </para>
+
+
+<!-- figure --> 
+	
+   <para><application>Modem Lights Applet's</application>
+	<interface>Color preferences window</interface> allows you to 
+	select the colors to be used when displaying the applet.</para>
+
+   <para>
+       The preferences are:
+	<itemizedlist>
+	  
+	  <listitem>
+	    <para><guilabel>Receive data</guilabel> &mdash;
+	    specifies the colors to be used when the applet displays
+	    data being received. You can select both foreground and background
+            colors.</para>
+	  </listitem>
+
+	  <listitem>
+	    <para><guilabel>Send data</guilabel> &mdash;
+	    specifies the colors to be used when the applet displays
+	    data being sent. You can select both foreground and background
+            colors.</para>
+	  </listitem>
+
+	  <listitem>
+	    <para><guilabel>Connection status</guilabel> &mdash;
+	     specifies the colors relating to the wether the connection is
+	     connected, not connected, or awaiting connection. By selecting 
+	     <guilabel>Blink</guilabel>, you can enable blink for the connection
+	     status.</para>
+	  </listitem>
+
+	  <listitem>
+	    <para><guilabel>Text</guilabel> &mdash;
+	    specifies the colors used to display the text and text fields. You
+	    can select foreground, background, and outline colors.</para>
+	  </listitem>
+	</itemizedlist>
+    </para>
+
+<!--  screenshot --> 
+
+    <para><application>Modem Lights Applet's</application>
+    <interface>Advanced preferences window</interface> allows you to
+    control advanced features of the applet.</para>
+   
+    <para> 
+     The preferences are:
+
+     <itemizedlist>
+      <listitem>
+	    <para><guilabel>Modem lock file:</guilabel> &mdash;
+    specifies the file created by the computer when the modem is
+    working, allowing other programs to know it is in
+    operation. <filename>/var/lock/LCK..modem</filename>, the default
+    setting, is the most common, if your computer uses a symbolic link
+    from <filename>/dev/modem</filename> to the actual modem
+    device. Check with your system administrator to see if a different
+    device name and therefore lock file is in use. <application>Modem
+    Lights Applet</application> needs this information to find and
+    monitor your modem.
+	      <tip>
+		<para>You can determine the correct lock file name by
+		  establishing a PPP connection and then changing into the
+		  /var/lock directory. There should now be a new lock file. This
+		  is most likely the one you need for the applet.</para>
+	      </tip>
+            </para>
+	  
+      </listitem>
+
+      <listitem>
+	    <para><guilabel>Verify owner of lock file</guilabel>
+        &mdash;  verify that the lockfile really belongs to the
+        currently running PPP daemon and is not left over from an
+        older one. This is checked by default and shouldn't be changed.</para>
+
+
+
+      </listitem>
+
+      <listitem>
+	    <para><guilabel>Device</guilabel> &mdash; Device, typically
+    <filename>ppp0</filename> on a Linux machine, is the name of the
+    network interface being used by the modem. If
+    <filename>ppp0</filename> is not correct for your machine, check
+    your system documentation for the correct designation.</para>
+
+    <para>Other possible network interface names commonly used include
+    <filename>ippp0</filename> for Linux ISDN;
+    <filename>isp0</filename> for NetBSD ISDN and
+    <filename>ipdptp0</filename> for Solaris PPP.</para>
+
+
+
+  </listitem>
+   <listitem>
+	<para><guilabel>Use ISDN</guilabel> &mdash; If you use
+    an ISDN modem, check the <guilabel>Use ISDN</guilabel>
+    checkbox. <application>Modem Lights Applet</application> will then
+    ignore all the settings above related to standard modems.</para>
+      </listitem> 
+     </itemizedlist>
+    </para> 
+   </sect2> 
+</sect1>
+</article>
