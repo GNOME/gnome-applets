@@ -25,7 +25,13 @@ gkb_applet_2_LDADD = \
 
 @INTLTOOL_SERVER_RULE@
 
-SUBDIRS= gkb xmodmap descs
+if GKB_SUN
+  gkb_DDIRS= xmodmap.sun descs.sun
+else
+  gkb_DDIRS= xmodmap descs
+endif
+
+SUBDIRS= gkb $(gkb_DDIRS)
 
 GKB_ICON = gkb.png gkb-icon.png
 
