@@ -5,18 +5,21 @@
 ! by Ryszard Mikke with XKeyCaps 2.11;
 ! Copyright 1991-1994 Jamie Zawinski <jwz@lucid.com>.
 !
+! The file used wrongly latin1 keysysms instead of latin2 ones !!
+! I corrected on 1999-10-07  -- Pablo Saratxaga <pablo@mandrakesoft.com>
+!
 ! This file makes the following changes:
 !
 ! The "& 7" key generates 7, ampersand, and section
-! The "E" key generates e, E, ecircumflex, and Ecircumflex
+! The "E" key generates e, E, eogonek, and Eogonek
 ! The "O" key generates o, O, oacute, and Oacute
-! The "A" key generates a, A, plusminus, and exclamdown
-! The "S" key generates s, S, paragraph, and brokenbar
-! The "L" key generates l, L, threesuperior, and sterling
-! The "Z" key generates z, Z, questiondown, and macron
-! The "X" key generates x, X, onequarter, and notsign
-! The "C" key generates c, C, ae, and AE
-! The "N" key generates n, N, ntilde, and Ntilde
+! The "A" key generates a, A, aogonek, and Aogonek
+! The "S" key generates s, S, sacute, and Sacute
+! The "L" key generates l, L, lstroke, and Lstroke
+! The "Z" key generates z, Z, zabovedot, and Zabovedot
+! The "X" key generates x, X, zacute, and Zacute
+! The "C" key generates c, C, cacute, and Cacute
+! The "N" key generates n, N, nacute, and Nacute
 ! The "AltGr" key generates Mode_switch
 
 keycode 0x09 =	Escape
@@ -60,7 +63,7 @@ keycode 0x52 =	KP_Subtract
 keycode 0x17 =	Tab
 keycode 0x18 =	Q
 keycode 0x19 =	W
-keycode 0x1A =	e		E		ecircumflex	Ecircumflex
+keycode 0x1A =	e		E		eogonek		Eogonek
 keycode 0x1B =	R
 keycode 0x1C =	T
 keycode 0x1D =	Y
@@ -79,27 +82,27 @@ keycode 0x50 =	KP_8
 keycode 0x51 =	KP_9
 keycode 0x56 =	KP_Add
 keycode 0x42 =	Caps_Lock
-keycode 0x26 =	a		A		plusminus	exclamdown
-keycode 0x27 =	s		S		paragraph	brokenbar
+keycode 0x26 =	a		A		aogonek		Aogonek
+keycode 0x27 =	s		S		sacute		Sacute
 keycode 0x28 =	D
 keycode 0x29 =	F
 keycode 0x2A =	G
 keycode 0x2B =	H
 keycode 0x2C =	J
 keycode 0x2D =	K
-keycode 0x2E =	l		L		threesuperior	sterling
+keycode 0x2E =	l		L		lstroke		Lstroke
 keycode 0x2F =	semicolon	colon
 keycode 0x30 =	apostrophe	quotedbl
 keycode 0x53 =	KP_4
 keycode 0x54 =	KP_5
 keycode 0x55 =	KP_6
 keycode 0x32 =	Shift_L
-keycode 0x34 =	z		Z		questiondown	macron
-keycode 0x35 =	x		X		onequarter	notsign
-keycode 0x36 =	c		C		ae		AE
+keycode 0x34 =	z		Z		zabovedot	Zabovedot
+keycode 0x35 =	x		X		zacute		Zacute
+keycode 0x36 =	c		C		cacute		Cacute
 keycode 0x37 =	V
 keycode 0x38 =	B
-keycode 0x39 =	n		N		ntilde		Ntilde
+keycode 0x39 =	n		N		nacute		Nacute
 keycode 0x3A =	M
 keycode 0x3B =	comma		less
 keycode 0x3C =	period		greater		Multi_key 

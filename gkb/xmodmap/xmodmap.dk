@@ -4,39 +4,39 @@ clear Mod1
 clear Mod2
 !  danish keymap
 !  with dead accents
-! keymaps 0-15
+keymaps 0-15
 keycode   9 = Escape Escape
-keycode  10 = 1 exclam exclamdown onesuperior
-keycode  11 = 2 quotedbl at twosuperior
-keycode  12 = 3 numbersign sterling threesuperior
-keycode  13 = 4 currency dollar onequarter
-keycode  14 = 5 percent EuroSign cent
-keycode  15 = 6 ampersand yen
-keycode  16 = 7 slash braceleft division
-keycode  17 = 8 parenleft bracketleft guillemotleft
-keycode  18 = 9 parenright bracketright guillemotright
-keycode  19 = 0 equal braceright degree
-keycode  20 = plus question plusminus questiondown
-keycode  21 = dead_acute dead_grave bar brokenbar
+keycode  10 = 1 exclam
+keycode  11 = 2 quotedbl at
+keycode  12 = 3 numbersign sterling
+keycode  13 = 4 dollar dollar
+keycode  14 = 5 percent
+keycode  15 = 6 ampersand
+keycode  16 = 7 slash braceleft
+keycode  17 = 8 parenleft bracketleft
+keycode  18 = 9 parenright bracketright
+keycode  19 = 0 equal braceright
+keycode  20 = plus question
+keycode  21 = dead_acute dead_grave bar
 keycode  22 = BackSpace Delete
 keycode  23 = Tab Tab
 keycode  24 = q
 keycode  25 = w
-keycode  26 = e E NoSymbol cent
-keycode  27 = r R registered
-keycode  28 = t T thorn THORN
+keycode  26 = e E currency
+keycode  27 = r
+keycode  28 = t
 keycode  29 = y
 keycode  30 = u
 keycode  31 = i
-keycode  32 = o O oe OE
+keycode  32 = o
 keycode  33 = p
 keycode  34 = aring Aring
-keycode  35 = dead_diaeresis dead_circumflex dead_tilde dead_caron
+keycode  35 = dead_diaeresis dead_circumflex dead_tilde
 keycode  36 = Return
 keycode  37 = Control_L
-keycode  38 = a A ordfeminine masculine
+keycode  38 = a
 keycode  39 = s
-keycode  40 = d D eth ETH
+keycode  40 = d
 keycode  41 = f
 keycode  42 = g
 keycode  43 = h
@@ -44,24 +44,24 @@ keycode  44 = j
 keycode  45 = k
 keycode  46 = l
 keycode  47 = ae AE
-keycode  48 = oslash Ooblique
-keycode  49 = onehalf section threequarters paragraph
+keycode  48 = oslash
+keycode  49 = onehalf section
 keycode  50 = Shift_L
-keycode  51 = apostrophe asterisk dead_doubleacute multiply
+keycode  51 = apostrophe asterisk
 keycode  52 = z
 keycode  53 = x
-keycode  54 = c C copyright
+keycode  54 = c
 keycode  55 = v
 keycode  56 = b
 keycode  57 = n
-keycode  58 = m M mu
-keycode  59 = comma semicolon dead_cedilla dead_ogonek
+keycode  58 = m
+keycode  59 = comma semicolon
 keycode  60 = period colon Multi_key
-keycode  61 = minus underscore hyphen macron
+keycode  61 = minus underscore
 keycode  62 = Shift_R
 keycode  63 = KP_Multiply
 keycode  64 = Alt_L Meta_L
-keycode  65 = space space nobreakspace nobreakspace
+keycode  65 = space space
 keycode  66 = Caps_Lock
 keycode  67 = F1 F11
 keycode  68 = F2 F12
@@ -88,7 +88,7 @@ keycode  88 = KP_2
 keycode  89 = KP_3
 keycode  90 = KP_0
 keycode  91 = KP_Decimal
-keycode  94 = less greater backslash notsign
+keycode  94 = less greater backslash
 keycode  95 = F11 F11
 keycode  96 = F12 F12
 keycode 108 = KP_Enter
@@ -106,12 +106,11 @@ keycode 104 = Down
 keycode 105 = Next
 keycode 106 = Insert
 ! right windows-logo key
-! these could be modified to supply danish characters ae, aring and
-! oslash on a US keyboard if you want.
-keycode 115 = greater
-keycode 116 = slash
+! in "windows" keyboards the postion of the key is annoying, is where AltGr
+! usually resides, so go definie it as AltGr
+keycode 116 = Mode_switch
 ! right windows-menu key
-keycode 117 = ampersand
+keycode 117 = Multi_key
 !
 add Mod1 = Alt_L
 add Mod2 = Mode_switch

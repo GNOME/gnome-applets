@@ -347,13 +347,13 @@ properties_dialog(AppletWidget *applet,
 	int i;
 
 static	char *basemaps[]= {
-	"be", "bg", "ch", "cz", "de", "dk", "dvorak",
-	"ee", "es", "fi", "fr", "fr-2", "gr", "hu", "il", "is", 
-	"it", "la", "nl", "no", "pl", "pt", "pt-dead", "qc", 
-	"ru", "ru_koi8", "se", "sf", "sg", "si", "sk", 
-	"th", "tr_f", "tr_q", "uk", "us", "yu", 0 
+	"am", "be", "bg", "br", "be", "bg", "ch", "ch_de", "ch_fr",
+	 "cz", "de", "dk", "dvorak", "ee", "es", "fi", "fr", "fr-2",
+	"ge_la", "ge_ru", "gr", "hu", "hu_latin1", "il", "il_phonetic",
+	"is", "it", "la", "lt", "lt_b", "lt_p", "nl", "no", "pl", "pl2",
+	"pt", "pt-dead", "qc", "ru", "ru_yawerty", "se", "sf", "sg",
+	"si", "sk", "th", "tr_f", "tr_q", "uk", "us", "us_intl", "yu", 0 
 	};
-	
 
 
 	help_entry.name = gnome_app_id;
