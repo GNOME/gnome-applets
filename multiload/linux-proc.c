@@ -286,7 +286,6 @@ GetNet (int Maximum, int data [4], LoadGraph *g)
 	for (cp = buffer; *cp == ' '; cp++)
 	    continue;
 
-	resp = present + OTHER_COUNT;
 	switch (cp[0]) {
 	case 'l':		
 		if (cp[1] == 'o')
@@ -304,14 +303,15 @@ GetNet (int Maximum, int data [4], LoadGraph *g)
 		if (!strncmp (cp+1, "th", 2))
 			resp = present + ETH_COUNT;
 		break;
+   	default:
+      		resp = present + OTHER_COUNT;
+      		break;
 	}
 
 	if ((cp = strchr(buffer, ':')))
 	{
 	    cp++;
-	    if (sscanf(cp, netdevfmt,
-		       fields, fields+1, fields+2, 
-		       fields+3,&found)>4)
+	    if ( sscanf(cp, netdevfmt, fields, fields+1, fields+2, fields+3, &found ) > 4 )
 		*resp += fields[0] + fields[2];
 	}
     }
