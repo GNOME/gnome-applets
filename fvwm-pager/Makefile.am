@@ -20,7 +20,7 @@ fvwm_pager_SOURCES = fvwm-pager.c \
 		     properties.c
 
 fvwm_pager_LDADD = \
-	$(srcdir)/../../panel/libpanel_applet.la \
+	../../panel/libpanel_applet.la \
 	@FVWM2LIBS@                    \
 	$(GNOME_LIBDIR) $(ORB_LIBS)    \
 	$(GNOMEUI_LIBS)                \
