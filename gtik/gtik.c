@@ -588,8 +588,12 @@ static gint updateOutput(gpointer data)
 
 		totalLoc = 0;
 		totalLen = 0;
-	
-		gdk_gc_set_foreground( gc, &stockdata->gdkBGcolor );
+
+		if (stockdata->props.use_default_theme)
+			gdk_gc_set_foreground( gc, &stockdata->applet->style->base[GTK_WIDGET_STATE (stockdata->applet)] );
+		else
+			gdk_gc_set_foreground( gc, &stockdata->gdkBGcolor );
+		
 		gdk_draw_rectangle (stockdata->pixmap,
 				    gc, TRUE, 0,0,
 				    drawing_area->allocation.width,
@@ -644,16 +648,21 @@ static gint updateOutput(gpointer data)
 		}
 
 		for (i=0;i<stockdata->setCounter;i++) {
-
+			
+			
 			/* COLOR */
-			if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
-				gdk_gc_set_foreground( gc, &stockdata->gdkUcolor );
-			}
-			else if (STOCK_QUOTE(quotes->data)[i].color == RED) {
-				gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
-			}
+			if (stockdata->props.use_default_theme)
+				gdk_gc_set_foreground( gc, &stockdata->applet->style->fg[GTK_WIDGET_STATE (stockdata->applet)] );
 			else {
-				gdk_gc_set_foreground( gc, &stockdata->gdkFGcolor );
+				if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
+					gdk_gc_set_foreground( gc, &stockdata->gdkUcolor );
+				}
+				else if (STOCK_QUOTE(quotes->data)[i].color == RED) {
+					gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
+				}
+				else {
+					gdk_gc_set_foreground( gc, &stockdata->gdkFGcolor );
+				}
 			}
 
 			start = stockdata->location + totalLoc;
@@ -936,7 +945,7 @@ static gint updateOutput(gpointer data)
 	{
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
-		GtkWidget *fonts_widget;
+		GtkWidget *fonts_widget, *colors_widget;
 		gboolean toggle;
 		
 		toggle = gtk_toggle_button_get_active (button);
@@ -948,7 +957,10 @@ static gint updateOutput(gpointer data)
 					     stockdata->props.use_default_theme, NULL);
 					     
 		fonts_widget = g_object_get_data (G_OBJECT (button), "fonts_hbox");
+		colors_widget = g_object_get_data (G_OBJECT (button), "colors_hbox");
 		gtk_widget_set_sensitive (GTK_WIDGET (fonts_widget), 
+					             !stockdata->props.use_default_theme);
+		gtk_widget_set_sensitive (GTK_WIDGET (colors_widget), 
 					             !stockdata->props.use_default_theme);
 		load_fonts(stockdata);
 	}
@@ -1333,13 +1345,13 @@ static gint updateOutput(gpointer data)
 		StockData * stockdata = data;
 		GtkWidget * notebook;
 		GtkWidget * vbox, *behav_vbox, *appear_vbox;
-		GtkWidget * vbox2;
+		GtkWidget * vbox2, *color_vbox;
 		GtkWidget *hbox, *hbox2, *hbox3, *font_hbox;
 		GtkWidget * label, *spin, *check;
 		GtkWidget *color;
 		GtkWidget *font;
 		GtkWidget *option, *menu, *menuitem;
-		GtkSizeGroup *size;
+		GtkSizeGroup *size, *size2;
 
 		int ur,ug,ub, dr,dg,db; 
 				
@@ -1487,11 +1499,17 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start (GTK_BOX (hbox3), spin, FALSE, FALSE, 0);
 		label = gtk_label_new (_("pixels"));
 		gtk_box_pack_start (GTK_BOX (hbox3), label, FALSE, FALSE, 0);
-		gtk_widget_show_all (hbox2);
+		gtk_widget_show_all (hbox2);	
 		
+		 g_object_unref (size);
+		
+		vbox = create_hig_catagory (appear_vbox, _("Font and Colors"));
+		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+		size2= gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+				
 		hbox2 = gtk_hbox_new (FALSE, 6);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
-		check = gtk_check_button_new_with_mnemonic (_("Use _default theme font"));
+		check = gtk_check_button_new_with_mnemonic (_("Use _default theme font and colors"));
 		gtk_box_pack_start (GTK_BOX (hbox2), check, FALSE, FALSE, 0);
 		g_signal_connect (G_OBJECT (check), "toggled",
 				           G_CALLBACK (def_font_toggled), stockdata);
@@ -1514,16 +1532,16 @@ static gint updateOutput(gpointer data)
 						 stockdata->props.font);
 		gtk_box_pack_start (GTK_BOX (hbox2), font, FALSE, FALSE, 0);
 		g_signal_connect (G_OBJECT (font), "font_set",
-                		  G_CALLBACK (font_cb), stockdata);                
-		gtk_widget_show_all (hbox2);
-				  
-                g_object_unref (size);
-		
-		vbox = create_hig_catagory (appear_vbox, _("Colors"));
-		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
-					   
+                		  G_CALLBACK (font_cb), stockdata);
+                gtk_size_group_add_widget (size2, font);
+		gtk_widget_show_all (hbox2);				  
+               	
+		color_vbox = gtk_vbox_new (FALSE, 6);
+		g_object_set_data (G_OBJECT (check), "colors_hbox", color_vbox);
+		gtk_box_pack_start (GTK_BOX (vbox), color_vbox, TRUE, TRUE, 0);
+				   
 		hbox2 = gtk_hbox_new (FALSE, 12);
-		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("Stock _raised:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
@@ -1534,11 +1552,12 @@ static gint updateOutput(gpointer data)
 		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
 					  ur, ug, ub, 255);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(ucolor_set_cb), stockdata);
 				
 		hbox2 = gtk_hbox_new (FALSE, 12);
-		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("Stock _lowered:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
@@ -1549,11 +1568,12 @@ static gint updateOutput(gpointer data)
 		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
 					  ur, ug, ub, 255);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(dcolor_set_cb), stockdata);
 				
 		hbox2 = gtk_hbox_new (FALSE, 12);
-		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("Stock _unchanged:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
@@ -1564,11 +1584,12 @@ static gint updateOutput(gpointer data)
 		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
 					  ur, ug, ub, 255);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(fgcolor_set_cb), stockdata);
 				
 		hbox2 = gtk_hbox_new (FALSE, 12);
-		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("_Background:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
@@ -1579,16 +1600,19 @@ static gint updateOutput(gpointer data)
 		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (color), 
 					  ur, ug, ub, 255);
 		gtk_box_pack_start (GTK_BOX (hbox2), color, FALSE, FALSE, 0);
+		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(bgcolor_set_cb), stockdata);
 				
 		gtk_widget_show_all (vbox);
 				
 		g_object_unref (G_OBJECT (size));
+		g_object_unref (G_OBJECT (size2));
 	
 		gtk_widget_show_all(stockdata->pb);
 		
 		gtk_widget_set_sensitive (font_hbox, !stockdata->props.use_default_theme);
+		gtk_widget_set_sensitive (color_vbox, !stockdata->props.use_default_theme);
 		
 		g_signal_connect (G_OBJECT (stockdata->pb), "response",
 				  G_CALLBACK (response_cb), stockdata);
