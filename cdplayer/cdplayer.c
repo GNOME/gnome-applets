@@ -357,6 +357,7 @@ properties_cb (GtkWidget *w, gpointer data)
                                          NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                          NULL);
+    gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
     box = GTK_DIALOG(dialog)->vbox;
     
     hbox = gtk_hbox_new(FALSE, 0);
@@ -369,7 +370,7 @@ properties_cb (GtkWidget *w, gpointer data)
     gtk_widget_show(image);
     set_atk_name_description(image, _("Disc Image"), _("An image of a cd-rom disc"));
 
-    label = gtk_label_new(_("Device Path:"));
+    label = gtk_label_new_with_mnemonic(_("Device _Path:"));
     gtk_misc_set_padding (GTK_MISC (label), GNOME_PAD_SMALL, 0);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     gtk_widget_show(label);
@@ -697,11 +698,13 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
     }
     if (description)
     {
-        cd->time_description = g_strdup_printf("Time elapsed is %d minutes and
-            %d seconds", stat.relative_address.minute,
-            stat.relative_address.second);
-        cd->track_description = g_strdup_printf("Current track number is %d",
-            stat.track);
+        cd->time_description =
+            g_strdup_printf("Time elapsed is %d minutes and %d seconds",
+                stat.relative_address.minute,
+                stat.relative_address.second);
+        cd->track_description =
+            g_strdup_printf("Current track number is %d",
+                stat.track);
         set_atk_name_description(cd->panel.time, _("Elapsed time"),
             cd->time_description);
         set_atk_name_description(cd->panel.track_control.display,
@@ -863,12 +866,12 @@ set_atk_relation(GtkWidget *label, GtkWidget *widget)
     atk_widget = gtk_widget_get_accessible(widget);
     atk_label = gtk_widget_get_accessible(label);
 
+    /* Set the label-for relation */
+    gtk_label_set_mnemonic_widget(GTK_LABEL (label), widget);	
+
     /* Check if gail is loaded */
     if (GTK_IS_ACCESSIBLE (atk_widget) == FALSE)
         return;
-
-    /* Set the label-for relation */
-    gtk_label_set_mnemonic_widget(GTK_LABEL (label), widget);	
 
     /* Set the labelled-by relation */
     relation_set = atk_object_ref_relation_set(atk_widget);
