@@ -24,24 +24,24 @@ void start_timer( void );
 void load_properties( char *path, cpuload_properties *prop )
 {
 	gnome_config_push_prefix (path);
-	prop->ucolor	= gnome_config_get_string ("ucolor=#20b2aa");
-	prop->scolor	= gnome_config_get_string ("scolor=#188982");
-	prop->speed	= gnome_config_get_int    ("speed=2000");
-	prop->height 	= gnome_config_get_int	  ("height=40");
-	prop->width 	= gnome_config_get_int	  ("width=40");
-	prop->look	= gnome_config_get_bool   ("look=1");
+	prop->ucolor	= gnome_config_get_string ("cpu/ucolor=#20b2aa");
+	prop->scolor	= gnome_config_get_string ("cpu/scolor=#188982");
+	prop->speed	= gnome_config_get_int    ("cpu/speed=2000");
+	prop->height 	= gnome_config_get_int	  ("cpu/height=40");
+	prop->width 	= gnome_config_get_int	  ("cpu/width=40");
+	prop->look	= gnome_config_get_bool   ("cpu/look=1");
 	gnome_config_pop_prefix ();
 }
 
 void save_properties( char *path, cpuload_properties *prop )
 {
 	gnome_config_push_prefix (path);
-	gnome_config_set_string( "ucolor", prop->ucolor );
-	gnome_config_set_string( "scolor", prop->scolor );
-	gnome_config_set_int   ( "speed", prop->speed );
-	gnome_config_set_int   ( "height", prop->height );
-	gnome_config_set_int   ( "width", prop->width );
-	gnome_config_set_bool  ( "look", prop->look );
+	gnome_config_set_string( "cpu/ucolor", prop->ucolor );
+	gnome_config_set_string( "cpu/scolor", prop->scolor );
+	gnome_config_set_int   ( "cpu/speed", prop->speed );
+	gnome_config_set_int   ( "cpu/height", prop->height );
+	gnome_config_set_int   ( "cpu/width", prop->width );
+	gnome_config_set_bool  ( "cpu/look", prop->look );
 	gnome_config_pop_prefix ();
         gnome_config_sync();
 	gnome_config_drop_all();

@@ -521,9 +521,9 @@ about_cb (AppletWidget *widget, gpointer data)
 	return;
 }
 
-static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath, gpointer data)
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
 {
-	save_properties(cfgpath,&props);
+	save_properties(privcfgpath,&props);
 	return FALSE;
 }
 
@@ -544,7 +544,7 @@ int main(int argc, char **argv)
 
 	my_applet = applet;
         
-	load_properties(APPLET_WIDGET(applet)->cfgpath, &props);
+	load_properties(APPLET_WIDGET(applet)->privcfgpath, &props);
 
         diskusage = diskusage_widget();
 
@@ -566,8 +566,8 @@ int main(int argc, char **argv)
                                              about_cb,
                                              NULL);
         
-	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
-                           GTK_SIGNAL_FUNC(applet_session_save),
+	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
+                           GTK_SIGNAL_FUNC(applet_save_session),
                            NULL);
        	
 	applet_widget_register_callback(APPLET_WIDGET(applet),

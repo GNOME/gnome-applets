@@ -5,6 +5,8 @@
  * Author: Michael K. Johnson <johnsonm@redhat.com>
  */
 
+/*FIXME: port to corba!!!!*/
+
 
 /*
  * This program is currently quite specific to Linux.

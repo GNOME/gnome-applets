@@ -23,22 +23,22 @@ void property_load(char *path)
 	if (command_connect) g_free(command_connect);
 	if (command_disconnect) g_free(command_disconnect);
         gnome_config_push_prefix (path);
-        UPDATE_DELAY       = gnome_config_get_int("delay=10");
-	lock_file          = gnome_config_get_string("lockfile=/var/lock/LCK..modem");
-	command_connect    = gnome_config_get_string("connect=pppon");
-	command_disconnect = gnome_config_get_string("disconnect=pppoff");
-	ask_for_confirmation = gnome_config_get_int("confirmation=1");
+        UPDATE_DELAY       = gnome_config_get_int("modem/delay=10");
+	lock_file          = gnome_config_get_string("modem/lockfile=/var/lock/LCK..modem");
+	command_connect    = gnome_config_get_string("modem/connect=pppon");
+	command_disconnect = gnome_config_get_string("modem/disconnect=pppoff");
+	ask_for_confirmation = gnome_config_get_int("modem/confirmation=1");
 	gnome_config_pop_prefix ();
 }
 
 void property_save(char *path)
 {
         gnome_config_push_prefix(path);
-        gnome_config_set_int("delay", UPDATE_DELAY);
-        gnome_config_set_string("lockfile", lock_file);
-        gnome_config_set_string("connect", command_connect);
-        gnome_config_set_string("disconnect", command_disconnect);
-        gnome_config_set_int("confirmation", ask_for_confirmation);
+        gnome_config_set_int("modem/delay", UPDATE_DELAY);
+        gnome_config_set_string("modem/lockfile", lock_file);
+        gnome_config_set_string("modem/connect", command_connect);
+        gnome_config_set_string("modem/disconnect", command_disconnect);
+        gnome_config_set_int("modem/confirmation", ask_for_confirmation);
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();

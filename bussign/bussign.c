@@ -56,6 +56,17 @@ save_properties(char *a_path, bussign_properties_t *a_properties);
 static void
 bussign_apply_properties(GnomePropertyBox *a_property_box, gint a_page, gpointer a_data);
 
+static gint
+applet_save_session(GtkWidget * w,
+		    const char *privcfgpath,
+		    const char *globcfgpath,
+		    gpointer data)
+{
+	save_properties(privcfgpath,data);
+
+	return FALSE;
+}
+
 int main(int argc, char **argv)
 {
   GtkWidget *l_bussign = NULL;
@@ -68,7 +79,7 @@ int main(int argc, char **argv)
   if (!l_applet)
     g_error("Can't create applet!\n");
 
-  load_properties(APPLET_WIDGET(l_applet)->cfgpath, &sg_properties);
+  load_properties(APPLET_WIDGET(l_applet)->privcfgpath, &sg_properties);
 
   gtk_widget_realize(l_applet);
 
@@ -95,6 +106,10 @@ int main(int argc, char **argv)
 				  properties_window,
 				  NULL);
   */
+  gtk_signal_connect(GTK_OBJECT(l_applet), "save_session",
+		     GTK_SIGNAL_FUNC(applet_save_session),
+		     &sg_properties);
+  
 
   /* attach a refresh button */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
@@ -238,10 +253,10 @@ void
 load_properties(char *a_path, bussign_properties_t *a_properties)
 {
   gnome_config_push_prefix(a_path);
-  sg_properties.resource = gnome_config_get_string("resource=/fishcam/livefishcamsmall.cgi?livesigncamsmal");
-  sg_properties.host     = gnome_config_get_string("host=www1.netscape.com");
-  sg_properties.port     = gnome_config_get_int("port=80");
-  sg_properties.file     = gnome_config_get_string("file=.bussign_image");
+  sg_properties.resource = gnome_config_get_string("bussign/resource=/fishcam/livefishcamsmall.cgi?livesigncamsmal");
+  sg_properties.host     = gnome_config_get_string("bussign/host=www1.netscape.com");
+  sg_properties.port     = gnome_config_get_int("bussign/port=80");
+  sg_properties.file     = gnome_config_get_string("bussign/file=.bussign_image");
   gnome_config_pop_prefix();
 }
 
@@ -249,10 +264,10 @@ void
 save_properties(char *a_path, bussign_properties_t *a_properties)
 {
   gnome_config_push_prefix(a_path);
-  gnome_config_set_string("resource", sg_properties.resource);
-  gnome_config_set_string("host", sg_properties.host);
-  gnome_config_set_int("port", sg_properties.port);
-  gnome_config_set_string("file", sg_properties.file);
+  gnome_config_set_string("bussign/resource", sg_properties.resource);
+  gnome_config_set_string("bussign/host", sg_properties.host);
+  gnome_config_set_int("bussign/port", sg_properties.port);
+  gnome_config_set_string("bussign/file", sg_properties.file);
   gnome_config_pop_prefix();
   gnome_config_sync();
   gnome_config_drop_all();

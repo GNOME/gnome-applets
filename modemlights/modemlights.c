@@ -432,9 +432,9 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	redraw_display();
 }
 
-static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath)
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
 {
-	property_save(cfgpath);
+	property_save(privcfgpath);
         return FALSE;
 }
 
@@ -475,7 +475,7 @@ int main (int argc, char *argv[])
 	if (!applet)
 		g_error("Can't create applet!\n");
 
-	property_load(APPLET_WIDGET(applet)->cfgpath);
+	property_load(APPLET_WIDGET(applet)->privcfgpath);
 
 	/* frame for all widgets */
 	frame = gtk_fixed_new();
@@ -518,8 +518,8 @@ int main (int argc, char *argv[])
 	update_tooltip(FALSE,0,0);
 	gtk_widget_show(applet);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
-		GTK_SIGNAL_FUNC(applet_session_save), NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
+		GTK_SIGNAL_FUNC(applet_save_session), NULL);
 
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					"properties",

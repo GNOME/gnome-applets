@@ -219,14 +219,14 @@ properties_cb (AppletWidget *widget, gpointer data)
 
 /* sesion save signal handler*/
 static gint
-applet_session_save(GtkWidget *w,
-		    const char *cfgpath,
+applet_save_session(GtkWidget *w,
+		    const char *privcfgpath,
 		    const char *globcfgpath)
 {	
-	gnome_config_push_prefix(cfgpath);
-	gnome_config_set_bool("newwindow", WC.properties.newwindow);
-	gnome_config_set_bool("showurl", WC.properties.showurl);
-	gnome_config_set_bool("showcheck", WC.properties.showcheck);
+	gnome_config_push_prefix(privcfgpath);
+	gnome_config_set_bool("web/newwindow", WC.properties.newwindow);
+	gnome_config_set_bool("web/showurl", WC.properties.showurl);
+	gnome_config_set_bool("web/showcheck", WC.properties.showcheck);
 	gnome_config_pop_prefix();
 
 	gnome_config_sync();
@@ -268,17 +268,17 @@ main(int argc, char **argv)
 	if (!WC.applet)
 		g_error("Can't create applet!\n");
 	
-	gnome_config_push_prefix(APPLET_WIDGET(WC.applet)->cfgpath);
-	WC.properties.newwindow = gnome_config_get_bool("newwindow=false");
-	WC.properties.showurl = gnome_config_get_bool("showurl=true");
-	WC.properties.showcheck = gnome_config_get_bool("showcheck=true");
+	gnome_config_push_prefix(APPLET_WIDGET(WC.applet)->privcfgpath);
+	WC.properties.newwindow = gnome_config_get_bool("web/newwindow=false");
+	WC.properties.showurl = gnome_config_get_bool("web/showurl=true");
+	WC.properties.showcheck = gnome_config_get_bool("web/showcheck=true");
 	gnome_config_pop_prefix();
 	
 	create_widget();
 	
 	/* bind the session save signal */
-	gtk_signal_connect(GTK_OBJECT(WC.applet),"session_save",
-			   GTK_SIGNAL_FUNC(applet_session_save),
+	gtk_signal_connect(GTK_OBJECT(WC.applet),"save_session",
+			   GTK_SIGNAL_FUNC(applet_save_session),
 			   NULL);
 	
 	/* add an item to the applet menu */

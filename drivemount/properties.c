@@ -9,9 +9,9 @@ void property_load(char *path, DriveData *dd)
 	char *mount_text = NULL;
 
         gnome_config_push_prefix (path);
-        dd->interval = gnome_config_get_int("interval=10");
-	dd->device_pixmap = gnome_config_get_int("pixmap=0");
-	mount_text = gnome_config_get_string("mountpoint=/mnt/floppy");
+        dd->interval = gnome_config_get_int("mount/interval=10");
+	dd->device_pixmap = gnome_config_get_int("mount/pixmap=0");
+	mount_text = gnome_config_get_string("mount/mountpoint=/mnt/floppy");
 	gnome_config_pop_prefix ();
 
 	if (dd->mount_point) free(dd->mount_point);
@@ -21,9 +21,9 @@ void property_load(char *path, DriveData *dd)
 void property_save(char *path, DriveData *dd)
 {
         gnome_config_push_prefix(path);
-        gnome_config_set_int("interval", dd->interval);
-        gnome_config_set_int("pixmap", dd->device_pixmap);
-        gnome_config_set_string("mountpoint", dd->mount_point);
+        gnome_config_set_int("mount/interval", dd->interval);
+        gnome_config_set_int("mount/pixmap", dd->device_pixmap);
+        gnome_config_set_string("mount/mountpoint", dd->mount_point);
         gnome_config_pop_prefix();
 	gnome_config_sync();
 	gnome_config_drop_all();

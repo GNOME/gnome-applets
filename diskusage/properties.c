@@ -31,14 +31,14 @@ void start_timer( void );
 void load_properties( char *path, diskusage_properties *prop )
 {
 	gnome_config_push_prefix (path);
-	prop->ucolor	= gnome_config_get_string ("ucolor=#cf5f5f");
-	prop->fcolor	= gnome_config_get_string ("fcolor=#008f00");
-	prop->tcolor	= gnome_config_get_string ("tcolor=#bbbbbb");
-	prop->bcolor	= gnome_config_get_string ("bcolor=#000000");
-	prop->speed	= gnome_config_get_int    ("speed=2000");
-	prop->height 	= gnome_config_get_int	  ("height=40");
-	prop->width 	= gnome_config_get_int	  ("width=120");
-	prop->look	= gnome_config_get_bool   ("look=1");
+	prop->ucolor	= gnome_config_get_string ("disk/ucolor=#cf5f5f");
+	prop->fcolor	= gnome_config_get_string ("disk/fcolor=#008f00");
+	prop->tcolor	= gnome_config_get_string ("disk/tcolor=#bbbbbb");
+	prop->bcolor	= gnome_config_get_string ("disk/bcolor=#000000");
+	prop->speed	= gnome_config_get_int    ("disk/speed=2000");
+	prop->height 	= gnome_config_get_int	  ("disk/height=40");
+	prop->width 	= gnome_config_get_int	  ("disk/width=120");
+	prop->look	= gnome_config_get_bool   ("disk/look=1");
 	gnome_config_pop_prefix ();
 }
 
@@ -47,14 +47,14 @@ void load_properties( char *path, diskusage_properties *prop )
 void save_properties( char *path, diskusage_properties *prop )
 {
 	gnome_config_push_prefix (path);
-	gnome_config_set_string( "ucolor", prop->ucolor );
-	gnome_config_set_string( "fcolor", prop->fcolor );
-	gnome_config_set_string( "tcolor", prop->tcolor );
-	gnome_config_set_string( "bcolor", prop->bcolor );
-	gnome_config_set_int   ( "speed", prop->speed );
-	gnome_config_set_int   ( "height", prop->height );
-	gnome_config_set_int   ( "width", prop->width );
-	gnome_config_set_bool  ( "look", prop->look );
+	gnome_config_set_string( "disk/ucolor", prop->ucolor );
+	gnome_config_set_string( "disk/fcolor", prop->fcolor );
+	gnome_config_set_string( "disk/tcolor", prop->tcolor );
+	gnome_config_set_string( "disk/bcolor", prop->bcolor );
+	gnome_config_set_int   ( "disk/speed", prop->speed );
+	gnome_config_set_int   ( "disk/height", prop->height );
+	gnome_config_set_int   ( "disk/width", prop->width );
+	gnome_config_set_bool  ( "disk/look", prop->look );
 	gnome_config_pop_prefix ();
         gnome_config_sync();
 	gnome_config_drop_all();

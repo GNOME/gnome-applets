@@ -253,7 +253,7 @@ destroy_cdplayer(GtkWidget * widget, void *data)
 
 
 static GtkWidget *
-create_cdplayer_widget(GtkWidget *window)
+create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 {
 	gchar *devpath;
 	CDPlayerData *cd;
@@ -264,7 +264,9 @@ create_cdplayer_widget(GtkWidget *window)
 
 	cd = g_new(CDPlayerData, 1);
 
-	devpath = gnome_config_get_string("/panel/cdplayer/devpath=/dev/cdrom");
+	gnome_config_push_prefix(globcfgpath);
+	devpath = gnome_config_get_string("cdplayer/devpath=/dev/cdrom");
+	gnome_config_pop_prefix();
 	cd->cdrom_device = cdrom_open(devpath, &err);
 	cdpanel = create_cdpanel_widget(window,cd);
 
@@ -295,7 +297,8 @@ main(int argc, char **argv)
 		g_error("Can't create applet!\n");
 
 	gtk_widget_realize(applet);
-	cdplayer = create_cdplayer_widget (applet);
+	cdplayer = create_cdplayer_widget (applet,
+					   APPLET_WIDGET(applet)->globcfgpath);
 
 	if(cdplayer == NULL) {
 		gnome_panel_applet_abort_id(APPLET_WIDGET(applet)->applet_id);

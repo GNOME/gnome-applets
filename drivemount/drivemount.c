@@ -232,10 +232,10 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	redraw_pixmap(dd);
 }
 
-static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath, gpointer data)
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
 {
 	DriveData *dd = data;
-	property_save(cfgpath, dd);
+	property_save(privcfgpath, dd);
         return FALSE;
 }
 
@@ -252,7 +252,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	dd->propwindow = NULL;
 	dd->mount_base = strdup("/mnt");
 
-	property_load(APPLET_WIDGET(applet)->cfgpath, dd);
+	property_load(APPLET_WIDGET(applet)->privcfgpath, dd);
 
 	dd->button=gtk_button_new();
 	gtk_signal_connect(GTK_OBJECT(dd->button),"clicked",
@@ -275,8 +275,8 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				dd);
-	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
-				GTK_SIGNAL_FUNC(applet_session_save),
+	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
+				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					"properties",

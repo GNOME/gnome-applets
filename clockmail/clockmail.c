@@ -300,9 +300,9 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	/* orient change (nothing is done in this applet */
 }
 
-static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath)
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
 {
-        property_save(cfgpath);
+        property_save(privcfgpath);
         return FALSE;
 }
 
@@ -319,7 +319,7 @@ int main (int argc, char *argv[])
 	if (!applet)
 		g_error("Can't create applet!\n");
 
-	property_load(APPLET_WIDGET(applet)->cfgpath);
+	property_load(APPLET_WIDGET(applet)->privcfgpath);
 
 	/* get mail filename from environment if not specified in the session file */
 	if (!strcmp(mail_file,"default"))
@@ -360,8 +360,8 @@ int main (int argc, char *argv[])
 
 	gtk_widget_show(applet);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
-		GTK_SIGNAL_FUNC(applet_session_save), NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
+		GTK_SIGNAL_FUNC(applet_save_session), NULL);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 						"properties",

@@ -23,28 +23,28 @@ void start_timer( void );
 void load_properties(char *path, netload_properties *prop )
 {
 	gnome_config_push_prefix(path);
-	prop->gcolor	= gnome_config_get_string ("gcolor=#20b2aa");
-	prop->bcolor	= gnome_config_get_string ("bcolor=#188982");
-	prop->speed	= gnome_config_get_int    ("speed=2000");
-	prop->height 	= gnome_config_get_int	  ("height=40");
-	prop->width 	= gnome_config_get_int	  ("width=40");
-	prop->look	= gnome_config_get_bool   ("look=1");
-	prop->device	= gnome_config_get_string ("device=ppp0");
-	prop->line_spacing	= gnome_config_get_int	  ("line_spacing=1024");	
+	prop->gcolor	= gnome_config_get_string ("net/gcolor=#20b2aa");
+	prop->bcolor	= gnome_config_get_string ("net/bcolor=#188982");
+	prop->speed	= gnome_config_get_int    ("net/speed=2000");
+	prop->height 	= gnome_config_get_int	  ("net/height=40");
+	prop->width 	= gnome_config_get_int	  ("net/width=40");
+	prop->look	= gnome_config_get_bool   ("net/look=1");
+	prop->device	= gnome_config_get_string ("net/device=ppp0");
+	prop->line_spacing	= gnome_config_get_int	  ("net/line_spacing=1024");	
 	gnome_config_pop_prefix();
 }
 
 void save_properties(char *path, netload_properties *prop )
 {
 	gnome_config_push_prefix(path);
-	gnome_config_set_string( "gcolor", prop->gcolor );
-	gnome_config_set_string( "bcolor", prop->bcolor );
-	gnome_config_set_int   ( "speed", prop->speed );
-	gnome_config_set_int   ( "height", prop->height );
-	gnome_config_set_int   ( "width", prop->width );
-	gnome_config_set_bool  ( "look", prop->look );
-	gnome_config_set_string( "device", prop->device );
-	gnome_config_set_int   ( "line_spacing", prop->line_spacing );
+	gnome_config_set_string( "net/gcolor", prop->gcolor );
+	gnome_config_set_string( "net/bcolor", prop->bcolor );
+	gnome_config_set_int   ( "net/speed", prop->speed );
+	gnome_config_set_int   ( "net/height", prop->height );
+	gnome_config_set_int   ( "net/width", prop->width );
+	gnome_config_set_bool  ( "net/look", prop->look );
+	gnome_config_set_string( "net/device", prop->device );
+	gnome_config_set_int   ( "net/line_spacing", prop->line_spacing );
 	gnome_config_sync();
 	gnome_config_pop_prefix();
 }

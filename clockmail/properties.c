@@ -16,22 +16,23 @@ void property_load(char *path)
         if (mail_file) free(mail_file);
 
 	gnome_config_push_prefix (path);
-        AM_PM_ENABLE = gnome_config_get_int("12hour=0");
-	ALWAYS_BLINK = gnome_config_get_int("blink=0");
-	mail_file    = gnome_config_get_string("mailfile=default");
-	newmail_exec_cmd = gnome_config_get_string("newmail_command=");
-	EXEC_CMD_ON_NEWMAIL = gnome_config_get_int("newmail_command_enable=0");
+        AM_PM_ENABLE = gnome_config_get_int("clock/12hour=0");
+	ALWAYS_BLINK = gnome_config_get_int("mail/blink=0");
+	mail_file    = gnome_config_get_string("mail/mailfile=default");
+	newmail_exec_cmd = gnome_config_get_string("mail/newmail_command=");
+	EXEC_CMD_ON_NEWMAIL = gnome_config_get_int("mail/newmail_command_enable=0");
         gnome_config_pop_prefix ();
 }
 
 void property_save(char *path)
 {
         gnome_config_push_prefix(path);
-        gnome_config_set_int("12hour", AM_PM_ENABLE);
-        gnome_config_set_int("blink", ALWAYS_BLINK);
-	gnome_config_set_string("mailfile", mail_file);
-	gnome_config_set_string("newmail_command", newmail_exec_cmd);
-        gnome_config_set_int("newmail_command_enable", EXEC_CMD_ON_NEWMAIL);
+        gnome_config_set_int("clock/12hour", AM_PM_ENABLE);
+        gnome_config_set_int("mail/blink", ALWAYS_BLINK);
+	gnome_config_set_string("mail/mailfile", mail_file);
+	gnome_config_set_string("mail/newmail_command", newmail_exec_cmd);
+        gnome_config_set_int("mail/newmail_command_enable",
+			     EXEC_CMD_ON_NEWMAIL);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }

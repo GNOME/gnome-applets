@@ -232,9 +232,9 @@ void create_gc(void)
         gdk_gc_copy( gc, disp->style->white_gc );
 }
 
-static gint applet_session_save(GtkWidget *widget, char *cfgpath, char *globcfgpath, gpointer data)
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
 {
-	save_properties(cfgpath,&props);
+	save_properties(privcfgpath,&props);
 	return FALSE;
 }
 
@@ -319,7 +319,7 @@ int main(int argc, char **argv)
 	if (!applet)
 		g_error(_("Can't create applet!\n"));
 
-	load_properties(APPLET_WIDGET(applet)->cfgpath, &props);
+	load_properties(APPLET_WIDGET(applet)->privcfgpath, &props);
 	
 	netload = netload_new();
         applet_widget_add( APPLET_WIDGET(applet), netload );
@@ -328,8 +328,8 @@ int main(int argc, char **argv)
 	create_gc();
 	setup_colors();
  
-	gtk_signal_connect(GTK_OBJECT(applet),"session_save",
-                           GTK_SIGNAL_FUNC(applet_session_save),
+	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
+                           GTK_SIGNAL_FUNC(applet_save_session),
                            NULL);
 	
        	applet_widget_register_callback(APPLET_WIDGET(applet),
