@@ -39,6 +39,14 @@ clock_analog_stuff = \
 	clock-analog/hour_hand.png	\
 	clock-analog/minute_hand.png	\
 	clock-analog/second_hand.png	\
+	clock-analog/back_small.png		\
+	clock-analog/hour_hand_small.png	\
+	clock-analog/minute_hand_small.png	\
+	clock-analog/second_hand_small.png	\
+	clock-analog/back_tiny.png		\
+	clock-analog/hour_hand_tiny.png		\
+	clock-analog/minute_hand_tiny.png	\
+	clock-analog/second_hand_tiny.png	\
 	clock-analog/clockmaildata
 
 clock_odometerdir = $(datadir)/clockmail/clock-odometer

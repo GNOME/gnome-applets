@@ -104,9 +104,9 @@ static void update_date_displays(gint year, gint month, gint day, gint weekday, 
 	if (ad->old_week == weekday && !force) return;
 
 	number_draw(ad->skin->year, year, ad->skin->pixbuf);
-	number_draw(ad->skin->month, month, ad->skin->pixbuf);
+	number_draw(ad->skin->month, month + 1, ad->skin->pixbuf);	/* month is 0-31 */
 	number_draw(ad->skin->day, day, ad->skin->pixbuf);
-	item_draw(ad->skin->month_txt, month, ad->skin->pixbuf);
+	item_draw(ad->skin->month_txt, month, ad->skin->pixbuf);	/* but 0 is needed here */
 	item_draw(ad->skin->week_txt, weekday, ad->skin->pixbuf);
 
 	ad->old_week = weekday;
@@ -132,8 +132,8 @@ void update_time_and_date(AppData *ad, gint force)
 	update_time_count(time_data->tm_hour,time_data->tm_min, time_data->tm_sec, ad);
 
 	/* update date */
-	update_date_displays(time_data->tm_year, time_data->tm_mon, time_data->tm_mday,
-				time_data->tm_wday, ad, force);
+	update_date_displays(time_data->tm_year + 1900, time_data->tm_mon, time_data->tm_mday,
+			     time_data->tm_wday, ad, force);
 
 	/* set tooltip to the date */
 	set_tooltip(time_data, ad);

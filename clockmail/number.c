@@ -103,6 +103,7 @@ void number_draw(NumberData *number, gint n, GdkPixbuf *pb)
 	z = number->zeros;
 
 	for (i=0; i< number->length - 1; i++) t *= 10;
+	n = n % ( t*10 ) ; /* truncate to number->length */
 
 	if (number->centered && n < t)
 		{
