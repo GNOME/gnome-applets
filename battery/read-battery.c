@@ -1,3 +1,33 @@
+/*--------------------------------*-C-*---------------------------------*
+ *
+ *  Copyright 1999, Nat Friedman <nat@nat.org>.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
+ *
+ *
+ *----------------------------------------------------------------------*/
+
+/*
+ * File: applets/battery/read-battery.c
+ *
+ * This file contains the routines which read the battery data from
+ * the hardware.
+ *
+ * Author: Nat Friedman <nat@nat.org>
+ */
+
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
@@ -105,14 +135,14 @@ battery_read_charge(char * percentage,
       *minutes_remaining = i.battery_time / 60;
     }
   
-  if (i.battery_percentage > 100) i.battery_percentage = 0;
+  if (i.battery_percentage > 100)
+    i.battery_percentage = 0;
 
   /*
-   * If we cannot read the battery percentage (indicated by a
-   *  reading of -1), then just set it to zero.  It will sometimes
-   *  appear as -1 if, for example, the battery is unplugged, so this
-   *  might be a FIXME if we want to provide that kind of information
-   *  later
+   * If we cannot read the battery percentage (indicated by a reading
+   * of -1), then just set it to zero.  It will sometimes appear as -1
+   * if, for example, the battery is unplugged, so this might be a
+   * FIXME if we want to provide that kind of information later.
    */
   if (i.battery_percentage < 0) i.battery_percentage = 0;
 
@@ -120,7 +150,9 @@ battery_read_charge(char * percentage,
   *ac_online = i.ac_line_status;
   
   return TRUE;
+
 #elif __FreeBSD__  /* was #ifdef __linux__ */
+
   struct apm_info aip;
   int fd;
 
@@ -151,11 +183,15 @@ battery_read_charge(char * percentage,
 
   close(fd);
   return TRUE;
+
 #else /* ! ( __linux__ || __FreeBSD__) */
+
   /* Assume always connected to power.  */
   *ac_online = 1;
   *percentage = 100;
   *hours_remaining = -1;
   *minutes_remaining = 1;
+
 #endif /* __linux__ || __FreeBSD__ */
+
 } /* battery_read_charge */
