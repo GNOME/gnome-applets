@@ -273,6 +273,7 @@ panel_menu_background_restore (PanelMenu *panel_menu)
 
 	rc_style = gtk_rc_style_new ();
 	gtk_widget_modify_style (panel_menu->menubar, rc_style);
+	gtk_rc_style_unref (rc_style);
 }
 
 static gboolean
