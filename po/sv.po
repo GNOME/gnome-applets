@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-01-14 01:34+0100\n"
-"PO-Revision-Date: 2002-01-14 01:34+0100\n"
+"POT-Creation-Date: 2002-01-17 03:31+0100\n"
+"PO-Revision-Date: 2002-01-17 03:31+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -349,7 +349,7 @@ msgid "Enable history based auto completion"
 msgstr "Använd historikbaserad automatisk ifyllnad"
 
 #. Size
-#: mini-commander/src/preferences.c:615
+#: charpick/properties.c:258 mini-commander/src/preferences.c:615
 msgid "Size"
 msgstr "Storlek"
 
@@ -382,6 +382,7 @@ msgstr "Kommandoradshöjd:"
 #.
 #. Color
 #: mini-commander/src/preferences.c:727 modemlights/properties.c:445
+#: multiload/properties.c:210
 msgid "Colors"
 msgstr "Färger"
 
@@ -990,74 +991,44 @@ msgstr "Ta en bild av ett specifikt fönster eller yta"
 msgid "Grab a shot of your entire desktop"
 msgstr "Ta en bild av hela ditt skrivbord"
 
-#: gkb-new/gkb.c:466
-#, c-format
-msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
-msgstr "keymap_%d/name=US 105-tangenters tangentbord (med Windows-knappar)"
-
-#: gkb-new/gkb.c:469
-#, c-format
-msgid "keymap_%d/label=us"
-msgstr "keymap_%d/label=us"
-
 #: gkb-new/gkb.c:472
 #, c-format
-msgid "keymap_%d/country=United States"
-msgstr "keymap_%d/country=USA"
+msgid "name_%d"
+msgstr "namn_%d"
 
 #: gkb-new/gkb.c:475
 #, c-format
-msgid "keymap_%d/lang=English"
-msgstr "keymap_%d/lang=English"
+msgid "label_%d"
+msgstr "etikett_%d"
+
+#: gkb-new/gkb.c:478
+#, c-format
+msgid "country_%d"
+msgstr "land_%d"
 
 #: gkb-new/gkb.c:481
 #, c-format
-msgid "keymap_%d/command=gkb_xmmap us"
-msgstr "keymap_%d/command=gkb_xmmap us"
+msgid "lang_%d"
+msgstr "språk_%d"
 
 #: gkb-new/gkb.c:487
 #, c-format
-msgid "keymap_%d/name=Hungarian 105 keys latin2"
-msgstr "keymap_%d/name=Svenskt 105-tangenters tangentbord"
+msgid "command_%d"
+msgstr "kommando_%d"
 
-#: gkb-new/gkb.c:490
-#, c-format
-msgid "keymap_%d/label=hu"
-msgstr "keymap_%d/label=se"
-
-#: gkb-new/gkb.c:493
-#, c-format
-msgid "keymap_%d/country=Hungary"
-msgstr "keymap_%d/country=Sverige"
-
-#: gkb-new/gkb.c:496
-#, c-format
-msgid "keymap_%d/lang=Hungarian"
-msgstr "keymap_%d/lang=Svenska"
-
-#: gkb-new/gkb.c:499
-#, c-format
-msgid "keymap_%d/flag=hu.png"
-msgstr "keymap_%d/flag=se.png"
-
-#: gkb-new/gkb.c:502
-#, c-format
-msgid "keymap_%d/command=gkb_xmmap hu"
-msgstr "keymap_%d/command=gkb_xmmap sv"
-
-#: gkb-new/gkb.c:642 gkb-new/gkb.c:649
+#: gkb-new/gkb.c:623 gkb-new/gkb.c:630
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:697
+#: gkb-new/gkb.c:676
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME-panelprogrammet för tangentbordsbyte"
 
-#: gkb-new/gkb.c:699
+#: gkb-new/gkb.c:678
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:700
+#: gkb-new/gkb.c:679
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it into CVS.\n"
@@ -1073,7 +1044,7 @@ msgstr ""
 "Tack till Balazs Nagy (Kevin) <julian7@iksz.hu> för hans hjälp och Emese "
 "Kovacs <emese@gnome.hu> för hennes solidaritet."
 
-#: gkb-new/gkb.c:715
+#: gkb-new/gkb.c:694
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB-hemsidan (http://projects.gnome.hu/gkb)"
 
@@ -1097,7 +1068,7 @@ msgstr "Stor"
 msgid "Flag"
 msgstr "Flagga"
 
-#: gkb-new/prop-map.c:585 gkb-new/prop.c:175 gkb-new/util.c:34
+#: gkb-new/prop-map.c:583 gkb-new/prop.c:175 gkb-new/util.c:34
 #: gkb-new/util.c:67
 msgid "Label"
 msgstr "Etikett"
@@ -1131,7 +1102,13 @@ msgstr "Egenskaper för GKB"
 msgid "Keymaps"
 msgstr "Teckenkartor"
 
-#: gkb-new/prop.c:437 multiload/properties.c:121
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:437 multiload/properties.c:164
 msgid "Options"
 msgstr "Alternativ"
 
@@ -1443,24 +1420,24 @@ msgstr "dec"
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:556
+#: gkb-new/prop-map.c:554
 msgid "Edit keymap"
 msgstr "Redigera teckenkarta"
 
 #. Add the labels
-#: gkb-new/prop-map.c:584
+#: gkb-new/prop-map.c:582
 msgid "Name"
 msgstr "Namn"
 
-#: gkb-new/prop-map.c:586
+#: gkb-new/prop-map.c:584
 msgid "Language"
 msgstr "Språk"
 
-#: gkb-new/prop-map.c:587
+#: gkb-new/prop-map.c:585
 msgid "Country"
 msgstr "Land"
 
-#: gkb-new/prop-map.c:588
+#: gkb-new/prop-map.c:586
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1468,23 +1445,23 @@ msgstr ""
 "Flagga\n"
 "Bild"
 
-#: gkb-new/prop-map.c:590
+#: gkb-new/prop-map.c:588
 msgid "Architecture"
 msgstr "Arkitektur"
 
-#: gkb-new/prop-map.c:591
+#: gkb-new/prop-map.c:589
 msgid "Type"
 msgstr "Typ"
 
-#: gkb-new/prop-map.c:592
+#: gkb-new/prop-map.c:590
 msgid "Codepage"
 msgstr "Kodsida"
 
-#: gkb-new/prop-map.c:593
+#: gkb-new/prop-map.c:591
 msgid "Command"
 msgstr "Kommando"
 
-#: gkb-new/prop-map.c:638
+#: gkb-new/prop-map.c:636
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1500,19 +1477,19 @@ msgstr ""
 msgid "The keymap switching command returned with error!"
 msgstr "Kommandot för byte av teckentabell returnerade ett fel!"
 
-#: multiload/cpuload.c:35
+#: multiload/cpuload.c:35 multiload/properties.c:220
 msgid "User"
 msgstr "Användare"
 
-#: multiload/cpuload.c:35
+#: multiload/cpuload.c:35 multiload/properties.c:221
 msgid "System"
 msgstr "System"
 
-#: multiload/cpuload.c:35
+#: multiload/cpuload.c:35 multiload/properties.c:222
 msgid "Nice"
 msgstr "\"Nice\""
 
-#: multiload/cpuload.c:35
+#: multiload/cpuload.c:35 multiload/properties.c:223
 msgid "Idle"
 msgstr "Tomgång (idle)"
 
@@ -1532,11 +1509,12 @@ msgstr "Medelbelastning över 5 minuter"
 msgid "Load average over 15 minutes"
 msgstr "Medelbelastning över 15 minuter"
 
-#: multiload/loadavg.c:40 multiload/swapload.c:34
+#: multiload/loadavg.c:40 multiload/properties.c:238 multiload/swapload.c:34
 msgid "Used"
 msgstr "Utnyttjat"
 
-#: multiload/loadavg.c:40 multiload/memload.c:34 multiload/swapload.c:34
+#: multiload/loadavg.c:40 multiload/memload.c:34 multiload/properties.c:229
+#: multiload/properties.c:239 multiload/swapload.c:34
 msgid "Free"
 msgstr "Ledigt"
 
@@ -1560,15 +1538,16 @@ msgstr ""
 "En systemövervakare som kan visa grafer för processor-, minnes- och "
 "växlingsfilsanvändning, plus nätverkstrafik."
 
-#: multiload/memload.c:34 multiload/netload.c:33
+#: multiload/memload.c:34 multiload/netload.c:33 multiload/properties.c:226
+#: multiload/properties.c:235
 msgid "Other"
 msgstr "Annat"
 
-#: multiload/memload.c:34
+#: multiload/memload.c:34 multiload/properties.c:227
 msgid "Shared"
 msgstr "Delat"
 
-#: multiload/memload.c:34
+#: multiload/memload.c:34 multiload/properties.c:228
 msgid "Buffers"
 msgstr "Buffertar"
 
@@ -1576,7 +1555,7 @@ msgstr "Buffertar"
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
-#: multiload/netload.c:33
+#: multiload/netload.c:33 multiload/properties.c:232
 msgid "SLIP"
 msgstr "SLIP"
 
@@ -1592,45 +1571,180 @@ msgstr "ETH"
 msgid "Net Load"
 msgstr "Nätverksbelastning"
 
-#: multiload/properties.c:80
+#: multiload/properties.c:116
 msgid "Monitored Resources"
 msgstr "Övervakade resurser"
 
-#: multiload/properties.c:88
+#: multiload/properties.c:124
 msgid "_Processor"
 msgstr "_Processor"
 
-#: multiload/properties.c:97
+#: multiload/properties.c:133
 msgid "_Memory"
 msgstr "_Minne"
 
-#: multiload/properties.c:105
+#: multiload/properties.c:141
 msgid "_Network"
 msgstr "_Nätverk"
 
-#: multiload/properties.c:113
+#: multiload/properties.c:149
 msgid "_Swap File"
 msgstr "_Växlingsfil"
 
-#: multiload/properties.c:134
-msgid "Load monitor width"
-msgstr "Bredd på belastningsövervakare"
+#: multiload/properties.c:177
+msgid "System monitor width: "
+msgstr "Systemövervakarbredd: "
 
-#: multiload/properties.c:136
-msgid "Load monitor height"
-msgstr "Höjd på belastningsövervakare"
+#: multiload/properties.c:179
+msgid "System monitor height: "
+msgstr "Systemövervakarhöjd: "
 
-#: multiload/properties.c:151
-msgid "Load monitor speed"
-msgstr "Hastighet för belastningsövervakare"
+#: multiload/properties.c:190
+msgid "pixels"
+msgstr "bildpunkter"
 
-#: multiload/properties.c:188
+#: multiload/properties.c:196
+msgid "System monitor speed: "
+msgstr "Systemövervakarhastighet: "
+
+#: multiload/properties.c:205
+msgid "milliseconds"
+msgstr "millisekunder"
+
+#: multiload/properties.c:219
+msgid "Processor"
+msgstr "Processor"
+
+#: multiload/properties.c:225
+msgid "Memory"
+msgstr "Minne"
+
+#: multiload/properties.c:231
+msgid "Network"
+msgstr "Nätverk"
+
+#: multiload/properties.c:233
+msgid "PLIP"
+msgstr "PLIP"
+
+#: multiload/properties.c:234
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: multiload/properties.c:237
+msgid "Swap File"
+msgstr "Växlingsfil"
+
+#: multiload/properties.c:260
 msgid "System Monitor Properties"
 msgstr "Egenskaper för systemövervakare"
 
 #: multiload/swapload.c:43
 msgid "Swap Load"
 msgstr "Växlingsutrymmesbelastning"
+
+#: charpick/charpick.c:443
+msgid "Character Picker"
+msgstr "Teckenväljare"
+
+#: charpick/charpick.c:445
+msgid "Copyright (C) 1998"
+msgstr "Copyright © 1998"
+
+#: charpick/charpick.c:446
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"Gnome-panelprogram för att välja underliga tecken som inte finns på mitt "
+"tangentbord. Släppt under GNU General Public License."
+
+#: charpick/properties.c:165
+msgid "Minimum number of cells: (for autosize)"
+msgstr "Minsta antal celler: (för autostorlek)"
+
+#: charpick/properties.c:166
+msgid "Size of button: (pixels)"
+msgstr "Storlek på knapp: (bildpunkter)"
+
+#: charpick/properties.c:167
+msgid "Number of rows of buttons:"
+msgstr "Antal rader med knappar:"
+
+#: charpick/properties.c:168
+msgid "Number of columns of buttons:"
+msgstr "Antal kolumner med knappar:"
+
+#. the follow_panel_size check button
+#: charpick/properties.c:171
+msgid "Follow panel size"
+msgstr "Anpassa till panelens storlek"
+
+#: charpick/properties.c:278
+msgid "Default character list:"
+msgstr "Standardteckenlista:"
+
+#: charpick/properties.c:282
+msgid ""
+"These characters will appear when the panel is started. To return to this "
+"list, hit <space> while the applet has focus."
+msgstr ""
+"Dessa tecken kommer att visas när panelen startas. För att gå tillbaka till "
+"denna lista trycker du <mellanslag> när panelprogrammet har fokus."
+
+#. add tab to propwindow
+#: charpick/properties.c:298
+msgid "Default List"
+msgstr "Standardlista"
+
+#: charpick/properties.c:337
+msgid "Character Picker Settings"
+msgstr "Inställningar för teckenväljare"
+
+#~ msgid "(C) 1998-2002 Free Software Foundation"
+#~ msgstr "© 1998-2002 Free Software Foundation"
+
+#~ msgid "Copyright (C) 2002"
+#~ msgstr "Copyright © 2002"
+
+#~ msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
+#~ msgstr "keymap_%d/name=US 105-tangenters tangentbord (med Windows-knappar)"
+
+#~ msgid "keymap_%d/label=us"
+#~ msgstr "keymap_%d/label=us"
+
+#~ msgid "keymap_%d/country=United States"
+#~ msgstr "keymap_%d/country=USA"
+
+#~ msgid "keymap_%d/lang=English"
+#~ msgstr "keymap_%d/lang=English"
+
+#~ msgid "keymap_%d/command=gkb_xmmap us"
+#~ msgstr "keymap_%d/command=gkb_xmmap us"
+
+#~ msgid "keymap_%d/name=Hungarian 105 keys latin2"
+#~ msgstr "keymap_%d/name=Svenskt 105-tangenters tangentbord"
+
+#~ msgid "keymap_%d/label=hu"
+#~ msgstr "keymap_%d/label=se"
+
+#~ msgid "keymap_%d/country=Hungary"
+#~ msgstr "keymap_%d/country=Sverige"
+
+#~ msgid "keymap_%d/lang=Hungarian"
+#~ msgstr "keymap_%d/lang=Svenska"
+
+#~ msgid "keymap_%d/flag=hu.png"
+#~ msgstr "keymap_%d/flag=se.png"
+
+#~ msgid "keymap_%d/command=gkb_xmmap hu"
+#~ msgstr "keymap_%d/command=gkb_xmmap sv"
+
+#~ msgid "Load monitor height"
+#~ msgstr "Höjd på belastningsövervakare"
+
+#~ msgid "Load monitor speed"
+#~ msgstr "Hastighet för belastningsövervakare"
 
 #~ msgid ""
 #~ "You win!\n"
@@ -1826,9 +1940,6 @@ msgstr "Växlingsutrymmesbelastning"
 #~ msgid "Battery Monitor Settings"
 #~ msgstr "Inställnignar för batteriövervakning"
 
-#~ msgid "Follow panel size"
-#~ msgstr "Anpassa till panelens storlek"
-
 #~ msgid "Applet Height:"
 #~ msgstr "Panelprogramshöjd:"
 
@@ -1905,47 +2016,6 @@ msgstr "Växlingsutrymmesbelastning"
 
 #~ msgid "Run CD Player..."
 #~ msgstr "Kör CD-spelaren..."
-
-#~ msgid "Character Picker"
-#~ msgstr "Teckenväljare"
-
-#~ msgid "Copyright (C) 1998"
-#~ msgstr "Copyright © 1998"
-
-#~ msgid ""
-#~ "Gnome Panel applet for selecting strange characters that are not on my "
-#~ "keyboard. Released under GNU General Public Licence."
-#~ msgstr ""
-#~ "Gnome-panelprogram för att välja underliga tecken som inte finns på mitt "
-#~ "tangentbord. Släppt under GNU General Public License."
-
-#~ msgid "Minimum number of cells: (for autosize)"
-#~ msgstr "Minsta antal celler: (för autostorlek)"
-
-#~ msgid "Size of button: (pixels)"
-#~ msgstr "Storlek på knapp: (bildpunkter)"
-
-#~ msgid "Number of rows of buttons:"
-#~ msgstr "Antal rader med knappar:"
-
-#~ msgid "Number of columns of buttons:"
-#~ msgstr "Antal kolumner med knappar:"
-
-#~ msgid "Default character list:"
-#~ msgstr "Standardteckenlista:"
-
-#~ msgid ""
-#~ "These characters will appear when the panel is started. To return to this "
-#~ "list, hit <space> while the applet has focus."
-#~ msgstr ""
-#~ "Dessa tecken kommer att visas när panelen startas. För att gå tillbaka "
-#~ "till denna lista trycker du <mellanslag> när panelprogrammet har fokus."
-
-#~ msgid "Default List"
-#~ msgstr "Standardlista"
-
-#~ msgid "Character Picker Settings"
-#~ msgstr "Inställningar för teckenväljare"
 
 #~ msgid "Clipboard Applet"
 #~ msgstr "Urklippspanelprogram"
@@ -3764,9 +3834,6 @@ msgstr "Växlingsutrymmesbelastning"
 
 #~ msgid "Check every:"
 #~ msgstr "Kontrollera var:"
-
-#~ msgid "Seconds"
-#~ msgstr "sekund"
 
 #~ msgid "Warning options"
 #~ msgstr "Varningsalternativ"
