@@ -268,6 +268,7 @@ load_session(MCData *mcdata)
     GConfValue *macro_patterns, *macro_commands;
     GSList *pattern_list = NULL, *command_list = NULL;
     properties *prop;
+    GError *error = NULL;
     int i;
     char section[MAX_COMMAND_LENGTH + 100];
     char default_macro_pattern[MAX_MACRO_PATTERN_LENGTH];
@@ -279,7 +280,12 @@ load_session(MCData *mcdata)
     prop->show_date = FALSE;
     prop->show_default_theme = panel_applet_gconf_get_bool (applet, 
                                       			    "show_default_theme", 
-                                      		  	    NULL);
+                                      		  	    &error);
+    if (error) {
+	g_print ("%s \n", error->message);
+	g_error_free (error);
+	error = NULL;
+    }
     prop->show_handle = panel_applet_gconf_get_bool (applet, "show_handle", NULL);
     prop->show_frame = panel_applet_gconf_get_bool(applet, "show_frame", NULL);
 
@@ -289,7 +295,9 @@ load_session(MCData *mcdata)
 
     /* size */
     prop->normal_size_x = panel_applet_gconf_get_int(applet, "normal_size_x", NULL);
+    prop->normal_size_x = CLAMP (prop->normal_size_x, 50, 200);
     prop->normal_size_y = panel_applet_gconf_get_int(applet, "normal_size_y", NULL);
+    prop->normal_size_y = CLAMP (prop->normal_size_y, 5, 200);
     prop->reduced_size_x = 50;
     prop->reduced_size_y = 48;
     prop->cmd_line_size_y = 24;

@@ -173,18 +173,22 @@ const gchar *description)
     atk_object_set_description(aobj, description);
 }
 
+/* This is a hack around the fact that gtk+ doesn't
+ * propogate button presses on button2/3.
+ */
 static gboolean
 button_press_hack (GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
-	PanelApplet *applet = PANEL_APPLET (data);
+    GtkWidget *applet = GTK_WIDGET (data);
 
-	if (event->button == 1) {
-		return FALSE;
-	} else {
-		GTK_WIDGET_CLASS (PANEL_APPLET_GET_CLASS (applet))->
-			button_press_event (data, event);
-	}
+    if (event->button == 3 || event->button == 2) {
+	event->window = applet->window;
+	gtk_main_do_event ((GdkEvent *) event);
+
 	return TRUE;
+    }
+
+    return FALSE;
 }
 
 void
