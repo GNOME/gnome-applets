@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-05 11:40+0200\n"
-"PO-Revision-Date: 2004-09-05 15:53+0200\n"
+"POT-Creation-Date: 2004-10-02 19:22+0200\n"
+"PO-Revision-Date: 2004-10-03 02:04+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,6 +51,7 @@ msgstr "O _aplikaci"
 #: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
 msgstr "Nápo_věda"
 
@@ -75,14 +76,13 @@ msgstr "Generátor apletu Stav zpřístupnění klávesnice"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1062
-#: cdplayer/cdplayer.c:596 charpick/charpick.c:564 drivemount/drivemount.c:552
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
+#: cdplayer/cdplayer.c:596 charpick/charpick.c:592 drivemount/drivemount.c:552
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
-#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2467
-#: mini-commander/src/about.c:50 mixer/mixer.c:1349
-#: modemlights/modemlights.c:118 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:572
+#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2468
+#: mini-commander/src/about.c:50 modemlights/modemlights.c:118
+#: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
+#: wireless/wireless-applet.c:572 trashapplet/src/trashapplet.c:522
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -143,7 +143,7 @@ msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1083 battstat/battstat_applet.c:1829
+#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1831
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -152,7 +152,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1830
+#: battstat/battstat_applet.c:1832
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -251,40 +251,40 @@ msgstr "Úroveň baterie, pod kterou je baterie zobrazována žlutá."
 msgid "Yellow value level"
 msgstr "Úroveň žluté"
 
-#: battstat/battstat_applet.c:84
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: battstat/battstat_applet.c:85
+#: battstat/battstat_applet.c:87
 msgid "System is running on battery power"
 msgstr "Systém je napájen bateriemi."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:340
+#: battstat/battstat_applet.c:342
 msgid "Your platform is not supported!\n"
 msgstr "Vaše platforma není podporovaná!\n"
 
-#: battstat/battstat_applet.c:341
+#: battstat/battstat_applet.c:343
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Tento aplet nebude fungovat správně (pokud vůbec).\n"
 
-#: battstat/battstat_applet.c:380
+#: battstat/battstat_applet.c:382
 #, c-format
 msgid "Battery charged (%d%%)"
 msgstr "Baterie nabita (%d%%)"
 
-#: battstat/battstat_applet.c:382
+#: battstat/battstat_applet.c:384
 #, c-format
 msgid "Unknown time (%d%%) remaining"
 msgstr "Zbývá neznámý čas (%d%%)"
 
-#: battstat/battstat_applet.c:384
+#: battstat/battstat_applet.c:386
 #, c-format
-msgid "Unknown time (%d%%) till charged"
+msgid "Unknown time (%d%%) until charged"
 msgstr "Neznámý čas (%d%%) do dobití"
 
-#: battstat/battstat_applet.c:389
+#: battstat/battstat_applet.c:391
 #, c-format
 msgid "%d minute (%d%%) remaining"
 msgid_plural "%d minutes (%d%%) remaining"
@@ -292,15 +292,15 @@ msgstr[0] "zbývá %d minuta (%d%%)"
 msgstr[1] "zbývají %d minuty (%d%%)"
 msgstr[2] "zbývá %d minut (%d%%)"
 
-#: battstat/battstat_applet.c:394
+#: battstat/battstat_applet.c:396
 #, c-format
-msgid "%d minute till charged (%d%%)"
-msgid_plural "%d minutes till charged (%d%%)"
-msgstr[0] "%d minuta do nabití (%d%%)"
-msgstr[1] "%d minuty do nabití (%d%%)"
-msgstr[2] "%d minut do nabití (%d%%)"
+msgid "%d minute until charged (%d%%)"
+msgid_plural "%d minutes until charged (%d%%)"
+msgstr[0] "%d minuta do dobití (%d%%)"
+msgstr[1] "%d minuty do dobití (%d%%)"
+msgstr[2] "%d minut do dobití (%d%%)"
 
-#: battstat/battstat_applet.c:400
+#: battstat/battstat_applet.c:402
 #, c-format
 msgid "%d hour (%d%%) remaining"
 msgid_plural "%d hours (%d%%) remaining"
@@ -308,29 +308,29 @@ msgstr[0] "zbývá %d hodina (%d%%)"
 msgstr[1] "zbývají %d hodiny (%d%%)"
 msgstr[2] "zbývá %d hodin (%d%%)"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:407
 #, c-format
-msgid "%d hour (%d%%) till charged (%d%%)"
-msgid_plural "%d hours (%d%%) till charged (%d%%)"
-msgstr[0] "%d hodina (%d%%) do nabití (%d%%)"
-msgstr[1] "%d hodiny (%d%%) do nabití (%d%%)"
-msgstr[2] "%d hodin (%d%%) do nabití (%d%%)"
+msgid "%d hour (%d%%) until charged (%d%%)"
+msgid_plural "%d hours (%d%%) until charged (%d%%)"
+msgstr[0] "%d hodina (%d%%) do dobití (%d%%)"
+msgstr[1] "%d hodiny (%d%%) do dobití (%d%%)"
+msgstr[2] "%d hodin (%d%%) do dobití (%d%%)"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:412
+#: battstat/battstat_applet.c:414
 #, c-format
 msgid "%d %s %d %s (%d%%) remaining"
 msgstr "Zbývá %d %s %d %s (%d%%)"
 
-#: battstat/battstat_applet.c:413 battstat/battstat_applet.c:420
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hodina"
 msgstr[1] "hodiny"
 msgstr[2] "hodin"
 
-#: battstat/battstat_applet.c:414 battstat/battstat_applet.c:421
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuta"
@@ -339,46 +339,46 @@ msgstr[2] "minut"
 
 #. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 #. * Swap order with "%2$s %2$d %1$s %1$d if needed
-#: battstat/battstat_applet.c:419
+#: battstat/battstat_applet.c:421
 #, c-format
-msgid "%d %s %d %s till charged (%d%%)"
-msgstr "%d %s %d %s do nabití (%d%%)"
+msgid "%d %s %d %s until charged (%d%%)"
+msgstr "%d %s %d %s do dobití (%d%%)"
 
-#: battstat/battstat_applet.c:534
+#: battstat/battstat_applet.c:536
 msgid "Your battery is running low"
 msgstr "Vaše baterie se vybíjí"
 
-#: battstat/battstat_applet.c:536
+#: battstat/battstat_applet.c:538
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
 msgstr ""
 "Abyste nepřišli o práci, svůj notebook prosím vypněte, uspěte nebo připojte "
 "do el. sítě."
 
-#: battstat/battstat_applet.c:539 battstat/battstat_applet.c:592
+#: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
 msgid "Battery Notice"
 msgstr "Upozornění o baterii"
 
-#: battstat/battstat_applet.c:612
+#: battstat/battstat_applet.c:614
 msgid "Your battery is now fully recharged"
 msgstr "Vaše baterie je nyní zcela dobita"
 
-#: battstat/battstat_applet.c:691 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:693 wireless/wireless-applet.c:146
 #: wireless/wireless-applet.c:147
 msgid "N/A"
 msgstr "N/A"
 
-#: battstat/battstat_applet.c:833
+#: battstat/battstat_applet.c:835
 msgid "Battery status unknown"
 msgstr "Stav baterie není znám"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:840 battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:842 battstat/battstat_applet.c:854
 msgid "No battery present"
 msgstr "Baterie není přítomna"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:954
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -391,7 +391,7 @@ msgstr ""
 "zařízení APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:963
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -401,7 +401,7 @@ msgstr ""
 "Zkuste spustit \"apm -e 1\" (FreeBSD) a možná to\n"
 "pomůže.\n"
 
-#: battstat/battstat_applet.c:1017
+#: battstat/battstat_applet.c:1019
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -410,16 +410,16 @@ msgstr ""
 "Při volání příkazu Uspat došlo k chybě: %s\n"
 "Zkuste prosím tuto chybu napravit."
 
-#: battstat/battstat_applet.c:1021
+#: battstat/battstat_applet.c:1023
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Příkaz pro uspání '%s' nebyl úspěšný."
 
-#: battstat/battstat_applet.c:1023
+#: battstat/battstat_applet.c:1025
 msgid "The Suspend command was unsuccessful."
 msgstr "Příkaz pro uspání nebyl úspěšný."
 
-#: battstat/battstat_applet.c:1031
+#: battstat/battstat_applet.c:1033
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -429,19 +429,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1049
+#: battstat/battstat_applet.c:1051
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1085
+#: battstat/battstat_applet.c:1087
 msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1086
+#: battstat/battstat_applet.c:1088
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1755
+#: battstat/battstat_applet.c:1757
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -496,7 +496,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Nastavení Sledování stavu baterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1049 mailcheck/mailcheck.c:2053
+#: gweather/gweather-pref.c:1049 mailcheck/mailcheck.c:2054
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Obecné"
@@ -554,11 +554,12 @@ msgid "_Yellow:"
 msgstr "_Žlutá:"
 
 #: battstat/properties.c:291 drivemount/drivemount.c:509
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2320
-#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:364
-#: mixer/mixer.c:1462 stickynotes/stickynotes_applet_callbacks.c:238
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2321
+#: mailcheck/mailcheck.c:2615 mini-commander/src/preferences.c:364
+#: stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: trashapplet/src/trashapplet.c:510
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -628,7 +629,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:378 mixer/mixer.c:1316 multiload/main.c:142
+#: cdplayer/cdplayer.c:378 multiload/main.c:142
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -708,8 +709,8 @@ msgstr "Stisknutím tohoto tlačítka přejdete na předcházející skladbu CD"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na následující skladbu CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:584
-#: charpick/charpick.c:738 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:612
+#: charpick/charpick.c:766 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -717,38 +718,38 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:738
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:766
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
-#: charpick/charpick.c:420
+#: charpick/charpick.c:444
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
-#: charpick/charpick.c:455
+#: charpick/charpick.c:481
 #, c-format
 msgid "insert special character %s"
 msgstr "vložit speciální znak %s"
 
-#: charpick/charpick.c:460
+#: charpick/charpick.c:488
 msgid "Insert special characters"
 msgstr "Vkládání speciálních znaků"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:553
+#: charpick/charpick.c:581
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:554
+#: charpick/charpick.c:582
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:586
+#: charpick/charpick.c:614
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:587
+#: charpick/charpick.c:615
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -875,7 +876,7 @@ msgid "Cannot browse device"
 msgstr "Nemohu procházet zařízení"
 
 #: drivemount/drivemount.c:515 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2326 mailcheck/mailcheck.c:2620
+#: mailcheck/mailcheck.c:2327 mailcheck/mailcheck.c:2621
 msgid "Error displaying help"
 msgstr "Chyba při zobrazování nápovědy"
 
@@ -935,8 +936,8 @@ msgstr "Vybrat adresář připojení"
 msgid "_Update interval:"
 msgstr "Interval _aktualizace:"
 
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2124
-#: mailcheck/mailcheck.c:2130 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2125
+#: mailcheck/mailcheck.c:2131 modemlights/properties.c:468
 msgid "seconds"
 msgstr "sekund"
 
@@ -3251,7 +3252,7 @@ msgstr "Nastavení Sledování burzy"
 msgid "Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2395
+#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2396
 msgid "Behavior"
 msgstr "Chování"
 
@@ -3263,8 +3264,8 @@ msgstr "Aktualizace"
 msgid "Stock update fre_quency:"
 msgstr "_Frekvence aktualizace:"
 
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1018 mailcheck/mailcheck.c:2101
-#: mailcheck/mailcheck.c:2107
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1018 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108
 msgid "minutes"
 msgstr "minut"
 
@@ -3354,12 +3355,19 @@ msgstr ""
 "Sledování burzy\n"
 "Získává neustále aktualizované kurzy akcií"
 
-#. TRANSLATOR: This forms part of a sentance
-#. * "(No Change)". FIXME: string composition is bad.
-#.
-#: gtik/gtik.c:2029
-msgid "(No Change"
-msgstr "(Žádná změna"
+#: gtik/gtik.c:2005
+#, c-format
+msgid "+%s (%s)"
+msgstr "+%s (%s)"
+
+#: gtik/gtik.c:2009
+#, c-format
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#: gtik/gtik.c:2012
+msgid "(No Change)"
+msgstr "(Žádná změna)"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
@@ -3588,39 +3596,39 @@ msgstr "Tlak:"
 msgid "Visibility:"
 msgstr "Viditelnost:"
 
-#: gweather/gweather-dialog.c:309
+#: gweather/gweather-dialog.c:320
 msgid "Current Conditions"
 msgstr "Aktuální podmínky"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:337
 msgid "Forecast Report"
 msgstr "Předpověď počasí"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:337
 msgid "See the ForeCast Details"
 msgstr "Zobrazit detaily předpovědi"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:347
 msgid "Forecast"
 msgstr "Předpověď"
 
-#: gweather/gweather-dialog.c:344
+#: gweather/gweather-dialog.c:355
 msgid "Radar Map"
 msgstr "Mapa radaru"
 
-#: gweather/gweather-dialog.c:375
+#: gweather/gweather-dialog.c:386
 msgid "_Visit Weather.com"
 msgstr "_Navštívit weather.com"
 
-#: gweather/gweather-dialog.c:376
+#: gweather/gweather-dialog.c:387
 msgid "Visit Weather.com"
 msgstr "Navštívit weather.com"
 
-#: gweather/gweather-dialog.c:376
+#: gweather/gweather-dialog.c:387
 msgid "Click to Enter Weather.com"
 msgstr "Vstupte do weather.com kliknutím"
 
-#: gweather/gweather-dialog.c:465
+#: gweather/gweather-dialog.c:476
 msgid "Forecast not currently available for this location."
 msgstr "Pro toto umístění momentálně není předpověď k dispozici."
 
@@ -3853,7 +3861,7 @@ msgstr "Stáhnout při každé aktualizaci mapu radaru."
 
 #: gweather/gweather.schemas.in.h:9
 msgid ""
-"If true, then retreive a radar map from a location specified by the \"radar"
+"If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
 "Je-li true, získávat mapu radaru z umístění určeného v klíči \"radar\"."
@@ -3884,12 +3892,12 @@ msgid "The interval, in seconds, between automatic updates."
 msgstr "Interval ve vteřinách mezi automatickými aktualizacemi."
 
 #: gweather/gweather.schemas.in.h:16
-msgid "The temperature units to use."
-msgstr "Jednotky teploty, které používat."
-
-#: gweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
 msgstr "Jednotka, kterou používat pro tlak."
+
+#: gweather/gweather.schemas.in.h:17
+msgid "The unit to use for temperature."
+msgstr "Jednotka, kterou používat pro teplotu."
 
 #: gweather/gweather.schemas.in.h:18
 msgid "The unit to use for visibility."
@@ -4474,7 +4482,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Generátor pro vytváření sledování poštovní schránky."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:803 mailcheck/mailcheck.c:2481
+#: mailcheck/mailcheck.c:804 mailcheck/mailcheck.c:2482
 msgid "Inbox Monitor"
 msgstr "Sledování poštovní schránky"
 
@@ -4486,7 +4494,7 @@ msgstr "Generátor Sledování poštovní schránky"
 msgid "Error checking mail"
 msgstr "Chyba při kontrole pošty"
 
-#: mailcheck/mailcheck.c:809
+#: mailcheck/mailcheck.c:810
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -4494,47 +4502,47 @@ msgstr ""
 "Nenastavili jste v nastavení Sledování poštovní schránky heslo,\n"
 "takže je musíte zadat pokaždé, když se spouští."
 
-#: mailcheck/mailcheck.c:817
+#: mailcheck/mailcheck.c:818
 msgid "Please enter your mailserver's _password:"
 msgstr "Zadejte prosím _heslo svého poštovního serveru:"
 
-#: mailcheck/mailcheck.c:822 mailcheck/mailcheck.c:1954
+#: mailcheck/mailcheck.c:823 mailcheck/mailcheck.c:1955
 msgid "Password Entry box"
 msgstr "Pole pro zadání hesla"
 
-#: mailcheck/mailcheck.c:837 mailcheck/mailcheck.c:1981
+#: mailcheck/mailcheck.c:838 mailcheck/mailcheck.c:1982
 msgid "_Save password to disk"
 msgstr "Uložit heslo na _disk"
 
-#: mailcheck/mailcheck.c:893
+#: mailcheck/mailcheck.c:894
 msgid "Could not connect to the Internet."
 msgstr "Nemohu se připojit k síti Internet."
 
-#: mailcheck/mailcheck.c:897
+#: mailcheck/mailcheck.c:898
 msgid "The username or password is incorrect."
 msgstr "Jméno uživatele nebo heslo není správné."
 
-#: mailcheck/mailcheck.c:900
+#: mailcheck/mailcheck.c:901
 msgid "The server name is incorrect."
 msgstr "Název serveru není správný."
 
-#: mailcheck/mailcheck.c:904
+#: mailcheck/mailcheck.c:905
 msgid "Error connecting to mail server."
 msgstr "Chyba při připojování k poštovnímu serveru."
 
-#: mailcheck/mailcheck.c:909
+#: mailcheck/mailcheck.c:910
 msgid "Error"
 msgstr "Chyba"
 
-#: mailcheck/mailcheck.c:1085
+#: mailcheck/mailcheck.c:1086
 msgid "You have new mail."
 msgstr "Máte novou poštu."
 
-#: mailcheck/mailcheck.c:1087
+#: mailcheck/mailcheck.c:1088
 msgid "You have mail."
 msgstr "Máte poštu"
 
-#: mailcheck/mailcheck.c:1091
+#: mailcheck/mailcheck.c:1092
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
@@ -4542,7 +4550,7 @@ msgstr[0] "%d nepřečtená"
 msgstr[1] "%d nepřečtené"
 msgstr[2] "%d nepřečtených"
 
-#: mailcheck/mailcheck.c:1092 mailcheck/mailcheck.c:1101
+#: mailcheck/mailcheck.c:1093 mailcheck/mailcheck.c:1102
 #, c-format
 msgid "%d message"
 msgid_plural "%d messages"
@@ -4551,152 +4559,152 @@ msgstr[1] "%d zprávy"
 msgstr[2] "%d zpráv"
 
 #. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1095
+#: mailcheck/mailcheck.c:1096
 #, c-format
 msgid "%s/%s"
 msgstr "%s/%s"
 
-#: mailcheck/mailcheck.c:1108
+#: mailcheck/mailcheck.c:1109
 msgid "No mail."
 msgstr "Žádná pošta."
 
-#: mailcheck/mailcheck.c:1570 mailcheck/mailcheck.c:1571
-#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
+#: mailcheck/mailcheck.c:1571 mailcheck/mailcheck.c:1572
+#: mailcheck/mailcheck.c:2901 mailcheck/mailcheck.c:2902
 msgid "Status not updated"
 msgstr "Stav neaktualizován"
 
-#: mailcheck/mailcheck.c:1773 mailcheck/mailcheck.c:2399
+#: mailcheck/mailcheck.c:1774 mailcheck/mailcheck.c:2400
 msgid "Inbox Settings"
 msgstr "Nastavení poštovní schránky"
 
-#: mailcheck/mailcheck.c:1799
+#: mailcheck/mailcheck.c:1800
 msgid "Mailbox _resides on:"
 msgstr "Poštovní schránka je _umístěna na:"
 
-#: mailcheck/mailcheck.c:1810
+#: mailcheck/mailcheck.c:1811
 msgid "Local mailspool"
 msgstr "Místní mailspool"
 
-#: mailcheck/mailcheck.c:1818
+#: mailcheck/mailcheck.c:1819
 msgid "Local maildir"
 msgstr "Místní maildir"
 
-#: mailcheck/mailcheck.c:1826
+#: mailcheck/mailcheck.c:1827
 msgid "Remote POP3-server"
 msgstr "Vzdálený server POP3"
 
-#: mailcheck/mailcheck.c:1834
+#: mailcheck/mailcheck.c:1835
 msgid "Remote IMAP-server"
 msgstr "Vzdálený server IMAP"
 
-#: mailcheck/mailcheck.c:1859
+#: mailcheck/mailcheck.c:1860
 msgid "Mail _spool file:"
 msgstr "Soubor _úložiště pošty:"
 
-#: mailcheck/mailcheck.c:1866
+#: mailcheck/mailcheck.c:1867
 msgid "Browse"
 msgstr "Prohlížet"
 
-#: mailcheck/mailcheck.c:1886
+#: mailcheck/mailcheck.c:1887
 msgid "Mail s_erver:"
 msgstr "Poštovní _server:"
 
-#: mailcheck/mailcheck.c:1895
+#: mailcheck/mailcheck.c:1896
 msgid "Mail Server Entry box"
 msgstr "Pole pro zadání poštovního serveru"
 
-#: mailcheck/mailcheck.c:1914
+#: mailcheck/mailcheck.c:1915
 msgid "_Username:"
 msgstr "Jméno _uživatele:"
 
-#: mailcheck/mailcheck.c:1925
+#: mailcheck/mailcheck.c:1926
 msgid "Username Entry box"
 msgstr "Pole pro zadání jména uživatele"
 
-#: mailcheck/mailcheck.c:1943
+#: mailcheck/mailcheck.c:1944
 msgid "_Password:"
 msgstr "_Heslo:"
 
-#: mailcheck/mailcheck.c:1996
+#: mailcheck/mailcheck.c:1997
 msgid "_Folder:"
 msgstr "S_ložka:"
 
-#: mailcheck/mailcheck.c:2007
+#: mailcheck/mailcheck.c:2008
 msgid "Folder Entry box"
 msgstr "Pole pro zadání složky"
 
-#: mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2080
 msgid "Check for mail _every:"
 msgstr "_Kontrolovat poštu každých:"
 
-#: mailcheck/mailcheck.c:2101
+#: mailcheck/mailcheck.c:2102
 msgid "Choose time interval in minutes to check mail"
 msgstr "Zvolte interval pro kontrolu pošty v minutách"
 
-#: mailcheck/mailcheck.c:2124
+#: mailcheck/mailcheck.c:2125
 msgid "Choose time interval in seconds to check mail"
 msgstr "Zvolte interval pro kontrolu pošty v sekundách"
 
-#: mailcheck/mailcheck.c:2141
+#: mailcheck/mailcheck.c:2142
 msgid "Play a _sound when new mail arrives"
 msgstr "Pře_hrát zvuk, když přijde nová pošta"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2151
+#: mailcheck/mailcheck.c:2152
 msgid "Sto_p animation when clicked"
 msgstr "Zastavit animace po _kliknutí"
 
-#: mailcheck/mailcheck.c:2164
+#: mailcheck/mailcheck.c:2165
 msgid "Select a_nimation:"
 msgstr "Vyberte _animaci:"
 
-#: mailcheck/mailcheck.c:2182
+#: mailcheck/mailcheck.c:2183
 msgid "Commands"
 msgstr "Příkazy"
 
-#: mailcheck/mailcheck.c:2211
+#: mailcheck/mailcheck.c:2212
 msgid "Before each _update:"
 msgstr "Před každou _aktualizací:"
 
-#: mailcheck/mailcheck.c:2228
+#: mailcheck/mailcheck.c:2229
 msgid "Command to execute before each update"
 msgstr "Příkaz, který spustit před každou aktualizací"
 
-#: mailcheck/mailcheck.c:2240
+#: mailcheck/mailcheck.c:2241
 msgid "When new mail _arrives:"
 msgstr "Když _přijde nová pošta:"
 
-#: mailcheck/mailcheck.c:2255 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2256 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Příkaz, který spustit, když přijde nová pošta"
 
-#: mailcheck/mailcheck.c:2267
+#: mailcheck/mailcheck.c:2268
 msgid "When clicke_d:"
 msgstr "Při _kliknutí:"
 
-#: mailcheck/mailcheck.c:2282
+#: mailcheck/mailcheck.c:2283
 msgid "Command to execute when clicked"
 msgstr "Příkaz, který spustit při kliknutí"
 
-#: mailcheck/mailcheck.c:2368
+#: mailcheck/mailcheck.c:2369
 msgid "Inbox Monitor Preferences"
 msgstr "Nastavení Sledování poštovní schránky"
 
-#: mailcheck/mailcheck.c:2483
+#: mailcheck/mailcheck.c:2484
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
 "nová pošta"
 
-#: mailcheck/mailcheck.c:2853
+#: mailcheck/mailcheck.c:2854
 msgid "Text only"
 msgstr "Jen text"
 
-#: mailcheck/mailcheck.c:2902
+#: mailcheck/mailcheck.c:2903
 msgid "Mail check"
 msgstr "Kontrola pošty"
 
-#: mailcheck/mailcheck.c:2903
+#: mailcheck/mailcheck.c:2904
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Kontrola pošty vás upozorňuje, když do vaší schránky přijde nová pošta"
 
@@ -5145,8 +5153,7 @@ msgstr "Příkaz"
 msgid "Adjust the sound volume"
 msgstr "Upravit hlasitost zvuku"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:199
-#: mixer/mixer.c:1363
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:168
 msgid "Volume Control"
 msgstr "Ovládání hlasitosti"
 
@@ -5158,170 +5165,55 @@ msgstr "_Umlčet"
 msgid "_Open Volume Control"
 msgstr "_Otevřít ovládání hlasitosti"
 
-#: mixer/mixer.c:124
-msgid "Main Volume"
-msgstr "Hlavní hlasitost"
-
-#: mixer/mixer.c:124
-msgid "Bass"
-msgstr "Basy"
-
-#: mixer/mixer.c:124
-msgid "Treble"
-msgstr "Výšky"
-
-#: mixer/mixer.c:124
-msgid "Synth"
-msgstr "Syntetizér"
-
-#: mixer/mixer.c:125
-msgid "Pcm"
-msgstr "Pcm"
-
-#: mixer/mixer.c:125
-msgid "Speaker"
-msgstr "Reproduktor"
-
-#: mixer/mixer.c:125
-msgid "Line"
-msgstr "Line"
-
-#: mixer/mixer.c:126
-msgid "Microphone"
-msgstr "Mikrofon"
-
-#: mixer/mixer.c:126
-msgid "CD"
-msgstr "CD"
-
-#: mixer/mixer.c:126
-msgid "Mix"
-msgstr "Mix"
-
-#: mixer/mixer.c:126
-msgid "Pcm2"
-msgstr "Pcm2"
-
-#: mixer/mixer.c:127
-msgid "Recording Level"
-msgstr "Úroveň nahrávání"
-
-#: mixer/mixer.c:127
-msgid "Input Gain"
-msgstr "Vstupní zesílení"
-
-#: mixer/mixer.c:127
-msgid "Output Gain"
-msgstr "Výstupní zesílení"
-
-#: mixer/mixer.c:128
-msgid "Line1"
-msgstr "Line1"
-
-#: mixer/mixer.c:128
-msgid "Line2"
-msgstr "Line2"
-
-#: mixer/mixer.c:128
-msgid "Line3"
-msgstr "Line3"
-
-#: mixer/mixer.c:128
-msgid "Digital1"
-msgstr "Digital1"
-
-#: mixer/mixer.c:129
-msgid "Digital2"
-msgstr "Digital2"
-
-#: mixer/mixer.c:129
-msgid "Digital3"
-msgstr "Digital3"
-
-#: mixer/mixer.c:130
-msgid "Phone Input"
-msgstr "Vstup telefonu"
-
-#: mixer/mixer.c:130
-msgid "Phone Output"
-msgstr "Výstup telefonu"
-
-#: mixer/mixer.c:130
-msgid "Video"
-msgstr "Video"
-
-#: mixer/mixer.c:130
-msgid "Radio"
-msgstr "Rádio"
-
-#: mixer/mixer.c:130
-msgid "Monitor"
-msgstr "Monitor"
-
-#: mixer/mixer.c:200
-msgid "Volume Control (muted)"
-msgstr "Ovládání hlasitosti (umlčeno)"
-
-#: mixer/mixer.c:201
-msgid "No audio device"
-msgstr "Žádné zvukové zařízení"
-
-#: mixer/mixer.c:518
-msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
-"soundcard.h.\n"
-msgstr ""
-"varování: tato verze programu gmix byla přeložena s jinou verzí\n"
-"soundcard.h.\n"
-
-#: mixer/mixer.c:893
+#: mixer/applet.c:455
 #, c-format
-msgid "Couldn't open mixer device %s\n"
-msgstr "Nemohu otevřít zařízení mixéru %s\n"
+msgid "Failed to start Volume Control: %s"
+msgstr "Nemohu spustit ovládání hlasitosti: %s"
 
-#: mixer/mixer.c:1062
-msgid "Volume Controller"
-msgstr "Ovladač hlasitosti"
+#: mixer/applet.c:866
+#, c-format
+msgid "Failed to display help: %s"
+msgstr "Nemohu zobrazit nápovědu: %s"
 
-#: mixer/mixer.c:1063
-msgid "Use Up/Down arrow keys to change volume"
-msgstr "Hlasitost změníte pomocí kláves s šipkami Nahoru/Dolů"
+#: mixer/applet.c:878
+msgid "Volume Applet"
+msgstr "Aplet hlasitosti"
 
-#. Translators - The + and - refer to increasing and decreasing the volume.
-#. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1087
+#: mixer/applet.c:881
+msgid "A GNOME/GStreamer-based volume control applet"
+msgstr "Aplet pro ovládání hlasitosti založený na GNOME/GStreamer"
+
+#: mixer/dock.c:116
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1088
+#: mixer/dock.c:144
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1364
-msgid "(C) 2001 Richard Hult"
-msgstr "© 2001 Richard Hult"
+#. FIXME:
+#. * - maybe we want to rename the element to its actual name
+#. *     if we've found that?
+#.
+#. create element
+#. and recreate this object, since we give it to the mixer
+#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:125
+#, c-format
+msgid "Unknown Volume Control %d"
+msgstr "Neznámé ovládání hlasitosti %d"
 
-#: mixer/mixer.c:1365
-msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače."
+#: mixer/load.c:159
+msgid "No volume control elements and/or devices found."
+msgstr "Nenalezeny elementy nebo zařízení pro ovládání hlasitosti."
 
-#: mixer/mixer.c:1512
+#. make window look cute
+#: mixer/preferences.c:112
 msgid "Volume Control Preferences"
 msgstr "Nastavení ovládání hlasitosti"
 
-#: mixer/mixer.c:1536
-msgid "Audio Channels"
-msgstr "Zvukové kanály"
-
-#: mixer/mixer.c:1552
-msgid "_Select channel to control:"
-msgstr "_Vyberte kanál, který ovládat:"
-
-#: mixer/mixer.c:1888
-msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
+#: mixer/preferences.c:125
+msgid "Select the device and track to control."
+msgstr "Vyberte zařízení a stopu, kterou ovládat."
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -5336,6 +5228,10 @@ msgid "Saved volume to restore on startup"
 msgstr "Uložená hlasitost, kterou obnovit při startu"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Aktivovat a sledovat vytáčené připojení k síti"
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
@@ -6392,14 +6288,165 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
 
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
+msgid "_About..."
+msgstr "O _aplikaci..."
+
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+msgid "_Empty Trash"
+msgstr "_Vyprázdnit koš"
+
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
+msgid "_Open Trash folder"
+msgstr "_Otevřít adresář koše"
+
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
+msgid "Put Trash on the panel"
+msgstr "Umístit koč na panel"
+
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
+msgid "Trash Applet"
+msgstr "Aplet koše"
+
+#: trashapplet/src/trashapplet.c:122
+#, c-format
+msgid "Unable to find the Trash directory: %s"
+msgstr "Nemohu najít adresář koše: %s"
+
+#: trashapplet/src/trashapplet.c:145
+#, c-format
+msgid "GNOME VFS Error: %s"
+msgstr "Chyba GNOME VFS: %s"
+
+#: trashapplet/src/trashapplet.c:276
+msgid "No Items in Trash"
+msgstr "Žádná položka v koši"
+
+#: trashapplet/src/trashapplet.c:279
+msgid "1 Item in Trash"
+msgstr "1 položka v koši"
+
+#: trashapplet/src/trashapplet.c:282
+#, c-format
+msgid "%d Items in Trash"
+msgstr "%d položek v koši"
+
+#: trashapplet/src/trashapplet.c:362
+msgid "Are you sure you want to empty all of the items from the trash?"
+msgstr "Opravdu chcete odstranit všechny položky z koše?"
+
+#: trashapplet/src/trashapplet.c:376
+msgid "If you empty the trash, items will be permanently deleted."
+msgstr "Pokud vyprázdníte koš, položky budou natrvalo odstraněny."
+
+#: trashapplet/src/trashapplet.c:388
+msgid "_Empty"
+msgstr "_Vyprázdnit"
+
+#: trashapplet/src/trashapplet.c:489
+#, c-format
+msgid ""
+"Error while spawing nautilus:\n"
+"%s"
+msgstr ""
+"Chyba při spouštění nautilus:\n"
+"%s"
+
+#: trashapplet/src/trashapplet.c:537
+msgid "Copyright (c) 2004 Michiel Sikkes"
+msgstr "Copyright © 2004 Michiel Sikkes"
+
+#: trashapplet/src/trashapplet.c:538
+msgid "The GNOME Trash Applet"
+msgstr "GNOME aplet koše"
+
+#: trashapplet/src/trashapplet.c:623
+#, c-format
+msgid ""
+"Unable to move to trash:\n"
+"%s"
+msgstr ""
+"Nemohu přesunout do koše:\n"
+"%s"
+
+#: trashapplet/src/trashapplet.c:808
+msgid "Unable to acquire monitor of the Trash directory"
+msgstr "Nemohu získat sledování adresáře koše"
+
+#~ msgid "Main Volume"
+#~ msgstr "Hlavní hlasitost"
+
+#~ msgid "Bass"
+#~ msgstr "Basy"
+
+#~ msgid "Treble"
+#~ msgstr "Výšky"
+
+#~ msgid "Synth"
+#~ msgstr "Syntetizér"
+
+#~ msgid "Speaker"
+#~ msgstr "Reproduktor"
+
+#~ msgid "Microphone"
+#~ msgstr "Mikrofon"
+
+#~ msgid "Recording Level"
+#~ msgstr "Úroveň nahrávání"
+
+#~ msgid "Input Gain"
+#~ msgstr "Vstupní zesílení"
+
+#~ msgid "Output Gain"
+#~ msgstr "Výstupní zesílení"
+
+#~ msgid "Phone Input"
+#~ msgstr "Vstup telefonu"
+
+#~ msgid "Phone Output"
+#~ msgstr "Výstup telefonu"
+
+#~ msgid "Radio"
+#~ msgstr "Rádio"
+
+#~ msgid "Volume Control (muted)"
+#~ msgstr "Ovládání hlasitosti (umlčeno)"
+
+#~ msgid "No audio device"
+#~ msgstr "Žádné zvukové zařízení"
+
+#~ msgid ""
+#~ "warning: this version of gmix was compiled with a different version of\n"
+#~ "soundcard.h.\n"
+#~ msgstr ""
+#~ "varování: tato verze programu gmix byla přeložena s jinou verzí\n"
+#~ "soundcard.h.\n"
+
+#~ msgid "Couldn't open mixer device %s\n"
+#~ msgstr "Nemohu otevřít zařízení mixéru %s\n"
+
+#~ msgid "Use Up/Down arrow keys to change volume"
+#~ msgstr "Hlasitost změníte pomocí kláves s šipkami Nahoru/Dolů"
+
+#~ msgid "(C) 2001 Richard Hult"
+#~ msgstr "© 2001 Richard Hult"
+
+#~ msgid "The volume control lets you set the volume level for your desktop."
+#~ msgstr ""
+#~ "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače."
+
+#~ msgid "Audio Channels"
+#~ msgstr "Zvukové kanály"
+
+#~ msgid "The volume control lets you set the volume level for your desktop"
+#~ msgstr ""
+#~ "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
+
 #~ msgid "Spanish PC/AT 101 keyboard "
 #~ msgstr "Španělská klávesnice PC/AT 101"
 
 #~ msgid "Hungarian PC/AT 101 keyboard "
 #~ msgstr "Maďarská klávesnice PC/AT 101"
-
-#~ msgid "***FIXME***"
-#~ msgstr "***FIXME***"
 
 #~ msgid "UK PC/AT keyboard "
 #~ msgstr "VB klávesnice PC/AT"
