@@ -44,6 +44,8 @@ static GtkTooltips *tooltips = NULL;
 static PanelOrientType gweather_orient = ORIENT_DOWN;
 #ifdef HAVE_PANEL_PIXEL_SIZE
 static int gweather_size = PIXEL_SIZE_STANDARD;
+#else /* HAVE_PANEL_PIXEL_SIZE */
+static int gweather_size;
 #endif /* HAVE_PANEL_PIXEL_SIZE */
 
 /* FIX - This code is WAY too kludgy!... */
@@ -108,7 +110,7 @@ static void change_pixel_size_cb (AppletWidget *w, int s)
     gweather_size = s;
     place_widgets();
     return;
-    w = NULL;
+    w = NULL;  /* Hush warnings */
 }
 #endif /* HAVE_PANEL_PIXEL_SIZE */
 
