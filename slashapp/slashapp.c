@@ -282,12 +282,27 @@ static int get_current_headlines(gpointer data)
 
 static void parse_headlines(gpointer data)
 {
+	AppData *ad = data;
 	xmlDocPtr doc;
+	struct stat s;
+        gint delay = ad->article_delay / 10 * (1000 / UPDATE_DELAY);
 	
+	stat(gnome_util_home_file("slashapp/headlines"), &s);
+	if (s.st_size == 0) {
+		g_warning(_("Unable to parse document\n"));
+		add_info_line(ad, "Can't parse XML. Net connection down?",
+			      NULL, 0, FALSE, FALSE, delay);
+		return;
+	}
+						
 	doc=xmlParseFile(gnome_util_home_file("slashapp/headlines"));	
 
-	if(doc==NULL) 
-		g_error(_("Unable to parse document\n"));
+	if (doc==NULL) {
+		g_warning(_("Unable to parse document\n"));
+		add_info_line(ad, "Can't parse XML. Net connection down?", 
+				NULL, 0, FALSE, FALSE, delay);
+		return;
+	}
 
 	tree_walk(doc->root, data); /* the bulk of the work) */
 }
