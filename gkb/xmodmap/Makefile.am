@@ -1,6 +1,5 @@
 GKB_MAPS = xmodmap.be xmodmap.bg xmodmap.ch xmodmap.cz \
-	xmodmap.de xmodmap.dk xmodmap.dvorak xmodmap.ee \
-	xmodmap.es \
+	xmodmap.de xmodmap.dk xmodmap.dvorak xmodmap.es \
 	xmodmap.fi xmodmap.fr xmodmap.fr-2 xmodmap.gr xmodmap.hu \
 	xmodmap.hu.old xmodmap.il xmodmap.is xmodmap.it \
 	xmodmap.la xmodmap.nl xmodmap.no xmodmap.pl \
