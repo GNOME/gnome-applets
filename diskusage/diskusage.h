@@ -26,7 +26,7 @@
 
 #define FS_SIZE   3
 
-#define DU_MAX_FS 10
+#define DU_MAX_FS 50
 
 typedef struct _FilesystemInfo FilesystemInfo;
 
