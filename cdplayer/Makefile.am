@@ -15,7 +15,9 @@ MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 cdplayer_applet_LDADD = ../../panel/libpanel_applet.la		\
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt		\
-		     $(GNOMEUI_LIBS) $(INTLLIBS) -lstdc++
+		     $(GNOMEUI_LIBS) $(INTLLIBS)
+
+cdplayer_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = cdplayer_applet.desktop cdrom-linux.c cdrom-solaris.c
 

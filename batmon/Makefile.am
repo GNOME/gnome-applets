@@ -14,7 +14,10 @@ MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 batmon_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) -lstdc++
+		     $(GNOMEUI_LIBS) $(INTLLIBS)
+
+# some of the sources/libs use C++
+batmon_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = batmon_applet.desktop batmon-ac.xpm batmon-bat.xpm
 

@@ -12,7 +12,9 @@ MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 clock_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) -lstdc++
+		     $(GNOMEUI_LIBS) $(INTLLIBS)
+
+clock_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = clock_applet.desktop
 
