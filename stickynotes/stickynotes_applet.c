@@ -138,10 +138,12 @@ void stickynotes_applet_update_tooltips()
 {
 	gchar *tooltip;
 	
+	gint num = g_list_length(stickynotes->notes);
+	
 	if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
-		tooltip = g_strdup_printf(_("Sticky Notes\n%d locked note(s)"), g_list_length(stickynotes->notes));
+		tooltip = g_strdup_printf(ngettext("%s\n%d locked note", "%s\n%d locked notes", num), _("Sticky Notes"), num);
 	else
-		tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
+		tooltip = g_strdup_printf(ngettext("%s\n%d note", "%s\n%d notes", num), _("Sticky Notes"), num);
 
 	gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(stickynotes->applet), tooltip, NULL);
 
