@@ -166,7 +166,7 @@ historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
     execCommand(command);
 
     /* close history window */
-    gtk_widget_destroy(GTK_WIDGET(clist->parent->parent));
+    gtk_widget_destroy(GTK_WIDGET(clist->parent->parent->parent));
 }
 
 static gint
