@@ -122,6 +122,7 @@ static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 
 static gint mixerfd = -1;
 static GdkPixbuf *zero_pixbuf = NULL, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
+static gchar *run_mixer_cmd = NULL;
 
 
 #ifdef OSS_API
@@ -692,7 +693,15 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 		     gpointer           data,
 		     const gchar       *verbname)
 {
-	gnome_execute_shell (NULL, "gnome-volume-control");
+	GError *error = NULL;
+	
+	if (run_mixer_cmd)
+		g_spawn_command_line_async (run_mixer_cmd, &error);
+		
+	if (error) {
+		g_print ("%s \n", error->message);
+		g_error_free (error);
+	}
 }
 
 static void
@@ -814,6 +823,15 @@ mixer_applet_create (PanelApplet *applet)
 		mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
 	}
 	
+	/* Try to find some mixers - sdtaudiocontrol is on Solaris and is needed
+	** because gnome-volume-meter doesn't work */
+	if (run_mixer_cmd == NULL) 
+		run_mixer_cmd = g_find_program_in_path ("gnome-volume-meter");
+	if (run_mixer_cmd == NULL) 
+		run_mixer_cmd = g_find_program_in_path ("gmix");
+	if (run_mixer_cmd == NULL) 
+		run_mixer_cmd = g_find_program_in_path ("sdtaudiocontrol");
+	
 	data->frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
 	gtk_container_add (GTK_CONTAINER (applet), data->frame);
@@ -890,7 +908,10 @@ mixer_applet_create (PanelApplet *applet)
 			  "ui-event",
 			  (GCallback) mixer_ui_component_event,
 			  data);
-
+#ifdef FIXE /* How do you remove a menu item with bonobo? */
+	if (run_mixer_cmd == NULL)
+		/*bonobo_ui_component_remove_verb (component, "RunMixer");*/
+#endif
 	applet_change_orient_cb (GTK_WIDGET (applet),
 				 panel_applet_get_orient (applet),
 				 data);
