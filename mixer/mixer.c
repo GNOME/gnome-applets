@@ -381,7 +381,7 @@ mixer_timeout_cb (MixerData *data)
 	BonoboUIComponent *component;
 	gint               vol;
 	gboolean state;
-
+	
 	if (!device_present) {
 		data->mute = TRUE;
 		mixer_update_image (data);
@@ -476,6 +476,7 @@ mixer_timeout_cb (MixerData *data)
 		mixer_update_slider (data);
 	}
 	
+	
 	return TRUE;
 }
 
@@ -555,6 +556,10 @@ mixer_update_image (MixerData *data)
 	gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), scaled);
 	g_object_unref (scaled);	
 	g_object_unref (pixbuf);
+	
+	panel_applet_gconf_set_int (PANEL_APPLET (data->applet), "vol", data->vol);
+	panel_applet_gconf_set_bool (PANEL_APPLET (data->applet), "mute", data->mute);
+			
 }
 
 static gboolean
@@ -1281,7 +1286,7 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 			  MixerData                    *data)
 {
 	gboolean state;
-	
+
 	if (!strcmp (path, "Mute")) {
 		if (!strcmp (state_string, "1")) {
 			state = TRUE;
@@ -1337,15 +1342,71 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 }
 
 static void
-get_prefs (MixerData *data)
-{
+get_channel (MixerData *data)
+{	
+#ifdef OSS_API
 	PanelApplet *applet = PANEL_APPLET (data->applet);
 	gint num;
-#ifdef OSS_API
+	
 	num = panel_applet_gconf_get_int (applet, "channel", NULL);
 	num = CLAMP (num, 0,  SOUND_MIXER_NRDEVICES-1);	
 	data->mixerchannel = num;
 #endif
+
+}
+
+static void
+get_prefs (MixerData *data)
+{
+	PanelApplet *applet = PANEL_APPLET (data->applet);
+	BonoboUIComponent *component;
+	gboolean mute;
+	
+	data->vol = panel_applet_gconf_get_int (applet, "vol", NULL);
+	mute = panel_applet_gconf_get_bool (applet, "mute", NULL);
+	
+	if (data->vol < 0)
+		return;
+		
+	data->mute = mute;
+	if (data->mute) {
+#ifdef SUN_API
+		set_mute_status (TRUE);
+#else
+		setMixer (0, data);
+#endif
+		mixer_update_image (data);
+		
+				
+		gtk_tooltips_set_tip (data->tooltips,
+					      data->applet,
+					      _(access_name_mute),
+					      NULL); 
+		if (gail_loaded) {
+				add_atk_namedesc (data->applet,
+						  _(access_name_mute),
+						  NULL);
+		}
+	}
+	else {
+#ifdef SUN_API
+		set_mute_status (FALSE);
+#else
+		setMixer (data->vol, data);
+#endif
+		mixer_update_image (data);
+			
+		
+		gtk_tooltips_set_tip (data->tooltips,
+				      data->applet,
+				      _(access_name),
+				      NULL); 
+		if (gail_loaded) {
+			add_atk_namedesc (data->applet,
+					  _(access_name),
+					  NULL);
+		}
+	}
 }
 
 typedef struct
@@ -1438,8 +1499,9 @@ mixer_applet_create (PanelApplet *applet)
 
 	data = g_new0 (MixerData, 1);
 	data->applet = GTK_WIDGET (applet);
+	panel_applet_add_preferences (applet, "/schemas/apps/mixer_applet/prefs", NULL);
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-	get_prefs (data);
+	get_channel (data);
 
 #ifdef OSS_API
 	/* /dev/sound/mixer for devfs */
@@ -1529,7 +1591,10 @@ mixer_applet_create (PanelApplet *applet)
 			  data);
 
 	/* Get the initial volume. */
-	data->vol = readMixer (data);
+	get_prefs (data);
+	
+	if (!data->mute)
+		data->vol = readMixer (data);
 
 	/* Install timeout handler, that keeps the applet up-to-date if the
 	 * volume is changed somewhere else.
@@ -1537,8 +1602,6 @@ mixer_applet_create (PanelApplet *applet)
 	data->timeout = gtk_timeout_add (500,
 					 (GSourceFunc) mixer_timeout_cb,
 					 data);
-
-	data->mute = FALSE;
 
 	g_signal_connect (applet,
 			  "destroy",
@@ -1572,6 +1635,18 @@ mixer_applet_create (PanelApplet *applet)
 			  "ui-event",
 			  (GCallback) mixer_ui_component_event,
 			  data);
+	if (data->mute)
+		bonobo_ui_component_set_prop (component,
+						      "/commands/Mute",
+						      "state",
+						      "1",
+						      NULL);
+	else
+		bonobo_ui_component_set_prop (component,
+						      "/commands/Mute",
+						      "state",
+						      "0",
+						      NULL);
 
 	if (run_mixer_cmd == NULL)
 		bonobo_ui_component_rm (component, "/popups/popup/RunMixer", NULL);
