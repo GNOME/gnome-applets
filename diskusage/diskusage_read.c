@@ -1,64 +1,72 @@
 #include "diskusage.h"
+#include "mountlist.h"
+#include "fsusage.h"
 
 #include <stdio.h>
 #include <unistd.h>
 
-/*
-#define DU_DEBUG
-*/
+#include <assert.h>
+
+/* #define DU_DEBUG */
+
+/* Many systems reserve some space on each filesystem that only the superuser
+ * can use. Set this to true if you want count this space towards the among of
+ * free space. This would be the opposite of what 'df' does. */
+#undef ADD_RESERVED_SPACE
 
 void
 diskusage_read (DiskusageInfo *ps)
 {
-	char tmp_filename[200];
-	char df_cmdline[200];
-	char buffer[200];
-	unsigned i;
-	FILE *f;
+	unsigned i = 0;
+	struct mount_entry *mount_list, *me;
+	struct fs_usage fsu;
 	
-/*	sprintf(tmp_filename, "/tmp/df_%d", getpid());*/
-/*	sprintf(df_cmdline, "df > %s", tmp_filename); */
-/*
+	/* Get list of currently mounted filesystems. */
+	
+	mount_list = read_filesystem_list (0, 0);
+	
+	assert (mount_list != NULL);
+
+	for (me = mount_list; me; me = me->me_next) {
 #ifdef DU_DEBUG
-	printf("tmp_filename: %s \n", tmp_filename);
-	printf("df_cmdline: %s \n", df_cmdline);
+		printf("Filesystem: %p - %s - %s - %c\n",
+		       me->me_devname, me->me_mountdir, me->me_type);
 #endif
-*/
-/*	system(df_cmdline); */
+		
+		assert (get_fs_usage (me->me_mountdir, me->me_devname, &fsu) == 0);
+		
+		fsu.fsu_blocks /= 2;
+		fsu.fsu_bfree /= 2;
+		fsu.fsu_bavail /= 2;
+		
+		if (fsu.fsu_blocks == 0)
+			continue;
 
-/*	f = fopen(tmp_filename, "r");*/
-	
-	f = popen("df", "r");
-	
-	fgets(buffer, 200, f);
+		ps->filesystems[i].sizeinfo [DU_FS_TOTAL] =
+			fsu.fsu_blocks;
+#ifdef ADD_RESERVED_SPACE
+		ps->filesystems[i].sizeinfo [DU_FS_FREE] =
+			fsu.fsu_bfree;
+#else
+		ps->filesystems[i].sizeinfo [DU_FS_FREE] =
+			fsu.fsu_bavail;
+#endif
+		ps->filesystems[i].sizeinfo [DU_FS_USED] =
+			fsu.fsu_blocks - fsu.fsu_bfree;
 
-
-	
-	i=0; /* n_filesystems */
-
-	while (fgets(buffer, 200, f) && (i < DU_MAX_FS)) {
-/*
 #ifdef DU_DEBUG
-		printf("%u %s \n", i, buffer);
+		printf("Usage: %ld, %ld, %ld\n",
+		       ps->filesystems[i].sizeinfo [DU_FS_TOTAL],
+		       ps->filesystems[i].sizeinfo [DU_FS_FREE],
+		       ps->filesystems[i].sizeinfo [DU_FS_USED]);
 #endif
-*/
-		sscanf(buffer, "%*s %u %u %u",
-			&ps->filesystems[i].sizeinfo [DU_FS_TOTAL],
-			&ps->filesystems[i].sizeinfo [DU_FS_USED],
-			&ps->filesystems[i].sizeinfo [DU_FS_FREE]);
+		
 		i++;
 	}
 
-	
 	ps->n_filesystems = i;
+	
 #ifdef DU_DEBUG
-		printf("n_filesystems = %u \n", i);
+	printf("n_filesystems = %u \n", i);
 #endif
-
-	fclose (f);
-/*
-	if (remove(tmp_filename) != 0)
-		printf("Error removing file %s \n", tmp_filename);
-*/
-
 }
