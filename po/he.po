@@ -1,23 +1,24 @@
+# translation of gnome-applets.HEAD.he.po to Hebrew
 # translation of gnome-applets.gnome-2-0.po to Hebrew
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002
+# Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002,2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets.gnome-2-0\n"
-"POT-Creation-Date: 2002-11-30 05:39+0100\n"
-"PO-Revision-Date: 2002-10-22 16:02+0200\n"
+"Project-Id-Version: gnome-applets.HEAD.he\n"
+"POT-Creation-Date: 2003-01-07 05:58+0100\n"
+"PO-Revision-Date: 2003-01-07 16:06+0200\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0beta2\n"
+"X-Generator: KBabel 1.0\n"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:839
+#: battstat/battstat_applet.c:848
 msgid "Battery Charge Monitor"
 msgstr "צג טעינת סוללה"
 
@@ -47,6 +48,7 @@ msgstr "עזר"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_אודות..."
 
@@ -68,6 +70,7 @@ msgstr "_עזרה"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "_העדפות..."
 
@@ -77,49 +80,49 @@ msgstr "_השהה מחשב..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:284
+#: battstat/battstat_applet.c:286
 msgid "Your platform is not supported!\n"
 msgstr "הפלטפורמה שלך אינה נתמכת!\n"
 
-#: battstat/battstat_applet.c:285
+#: battstat/battstat_applet.c:287
 msgid "The applet will not work properly (if at all).\n"
 msgstr "היישומון לא יפעל כראוי (אם בכלל).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:868
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:879
 msgid "High"
 msgstr "גבוה"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:870
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:881
 msgid "Low"
 msgstr "נמוך"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:872
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:883
 msgid "Critical"
 msgstr "קריטי"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:874
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:885
 msgid "Charging"
 msgstr "בטעינה..."
 
-#: battstat/battstat_applet.c:403
+#: battstat/battstat_applet.c:405
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "הסוללה ריקה (%d%%) וחיבור החשמל מנותק"
 
-#: battstat/battstat_applet.c:427
+#: battstat/battstat_applet.c:429
 msgid "Battery is now fully re-charged!"
 msgstr "הסוללה נטענה מחדש לגמרי!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1032
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1043
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -131,7 +134,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1040
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1051
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -142,32 +145,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:964
-#: battstat/battstat_applet.c:1053
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:975
+#: battstat/battstat_applet.c:1064
 msgid "System is running on battery power"
 msgstr "המערכת פועלת על כח סוללה"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:970
-#: battstat/battstat_applet.c:1059
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:981
+#: battstat/battstat_applet.c:1070
 msgid "System is running on AC power"
 msgstr "המערכת פועלת על כח חשמל"
 
-#: battstat/battstat_applet.c:473
+#: battstat/battstat_applet.c:475
 msgid "N/A"
 msgstr "לא זמין"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:944
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:955
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "המערכת פועלת על כח סוללה. סוללה: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:951
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:962
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "המערכת פועלת על כח חשמל. סוללה: %d%% (%s)"
@@ -176,33 +179,33 @@ msgstr "המערכת פועלת על כח חשמל. סוללה: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:615
+#: battstat/battstat_applet.c:617
 msgid "System is running on battery power. Battery: Not present"
 msgstr "המערכת פועלת על כח סוללה. סוללה: לא נמצאה"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:621
+#: battstat/battstat_applet.c:623
 msgid "System is running on AC power. Battery: Not present"
 msgstr "המערכת פועלת על כח חשמל. סוללה: לא נמצאה"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:630
+#: battstat/battstat_applet.c:632
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "סוללה: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:637
+#: battstat/battstat_applet.c:639
 msgid "Battery: Not present"
 msgstr "סוללה: לא נמצאת"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:715
+#: battstat/battstat_applet.c:719
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -214,7 +217,7 @@ msgstr ""
 "ודא כי יש לך הראשות לקרוא מהתקן ה APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:724
+#: battstat/battstat_applet.c:728
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -224,7 +227,7 @@ msgstr ""
 "נסה להריץ \"apm -e 1\" (FreeBSD) ולראות האם\n"
 "זה עוזר.\n"
 
-#: battstat/battstat_applet.c:774
+#: battstat/battstat_applet.c:783
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -234,7 +237,7 @@ msgstr ""
 "אנא נסה לתקן שגיאה זו"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:777
+#: battstat/battstat_applet.c:786
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -244,7 +247,7 @@ msgstr ""
 "ארעה שגיאה בזמן הפעלת פקודת ההשהייה, הפקודה החזירה \"%d\"\n"
 "אנא נסה לתקן שגיאה זו"
 
-#: battstat/battstat_applet.c:785
+#: battstat/battstat_applet.c:794
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -254,16 +257,16 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:816
+#: battstat/battstat_applet.c:825
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:826 cdplayer/cdplayer.c:467
-#: charpick/charpick.c:373 drivemount/drivemount.c:449 geyes/geyes.c:216
-#: gkb-new/gkb.c:593 gtik/gtik.c:708 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:46 mixer/mixer.c:808
-#: modemlights/modemlights.c:208 multiload/main.c:56
-#: panel-menu/panel-menu.c:674
+#: battstat/battstat_applet.c:835 cdplayer/cdplayer.c:502
+#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
+#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:814
+#: modemlights/modemlights.c:209 multiload/main.c:57
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
 msgid "translator_credits"
 msgstr ""
 "גיל אשר\n"
@@ -272,11 +275,11 @@ msgstr ""
 "פרוייקט linBrew\n"
 "http://linbrew.sourceforge.net"
 
-#: battstat/battstat_applet.c:841
+#: battstat/battstat_applet.c:850
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 ארגון Gnulix, (C) 2002 ארגון התוכנה החופשית"
 
-#: battstat/battstat_applet.c:842
+#: battstat/battstat_applet.c:851
 msgid "This utility show the status of your laptop battery."
 msgstr "תוכנית שירות זו מציגה את מצב סוללת המחשב הנישא שלך."
 
@@ -285,8 +288,8 @@ msgstr "תוכנית שירות זו מציגה את מצב סוללת המחש�
 msgid "100%"
 msgstr "100%"
 
-#. appearance frame
-#: battstat/battstat_applet.glade.h:3 mini-commander/src/preferences.c:743
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "מראה"
 
@@ -307,7 +310,8 @@ msgstr "רמות צבעי הסוללה (%)"
 msgid "Beep when either of the above is true"
 msgstr "צפצף כאשר אחד מהם נכון"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "כללי"
 
@@ -379,8 +383,8 @@ msgstr "סוללה נטענה מחדש לגמרי"
 msgid "Battery power low"
 msgstr "עוצמת סוללה נמוכה"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:169
-#: cdplayer/cdplayer.c:483 cdplayer/cdplayer.c:896
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
+#: cdplayer/cdplayer.c:520 cdplayer/cdplayer.c:911
 msgid "CD Player"
 msgstr "נגן תקליטורים"
 
@@ -405,61 +409,61 @@ msgstr "יישומון לוח לניגון תקליטורי שמע"
 msgid "_Run External CD Player"
 msgstr "_הפעל נגן תקליטורים חיצוני"
 
-#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:886
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:901
 msgid "Stop"
 msgstr "עצור"
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:888
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:903
 msgid "Play / Pause"
 msgstr "נגן / הפסק"
 
-#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:890
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:905
 msgid "Eject"
 msgstr "הוצא"
 
-#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:892
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:907
 msgid "Previous Track"
 msgstr "מסילה קודמת"
 
-#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:894
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:909
 msgid "Next Track"
 msgstr "מסילה הבאה"
 
-#: cdplayer/cdplayer.c:280 drivemount/drivemount.c:397 mixer/mixer.c:775
-#: multiload/main.c:111
+#: cdplayer/cdplayer.c:304 drivemount/drivemount.c:399 mixer/mixer.c:780
+#: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "ארעה שגיאה בהפעלת '%s' : %s"
 
-#: cdplayer/cdplayer.c:379
+#: cdplayer/cdplayer.c:409
 msgid "CD Player Preferences"
 msgstr "העדפות נגן התקליטורים"
 
-#: cdplayer/cdplayer.c:395
+#: cdplayer/cdplayer.c:427
 msgid "Disc Image"
 msgstr "תמונת דיסק"
 
-#: cdplayer/cdplayer.c:395
+#: cdplayer/cdplayer.c:427
 msgid "An image of a cd-rom disc"
 msgstr "תמונת תקליטור"
 
-#: cdplayer/cdplayer.c:397
+#: cdplayer/cdplayer.c:429
 msgid "Device _Path:"
 msgstr "_נתיב התקן:"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:438
 msgid "Device Path"
 msgstr "נתיב התקן"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:438
 msgid "Set the device path here"
 msgstr "קבע את נתיב ההתקן כאן"
 
-#: cdplayer/cdplayer.c:409
+#: cdplayer/cdplayer.c:441
 msgid "Use _Default"
 msgstr "השתמש _בברירת מחדל"
 
-#: cdplayer/cdplayer.c:484
+#: cdplayer/cdplayer.c:521
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -467,40 +471,40 @@ msgstr ""
 "(C) 1997 ארגון התוכנה החופשית\n"
 "(C) 2001 Chris Phelps (הסבה ל GNOME 2)"
 
-#: cdplayer/cdplayer.c:486 cdplayer/cdplayer.c:897
+#: cdplayer/cdplayer.c:523 cdplayer/cdplayer.c:912
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "יישומון נגן התקליטורים הינו נגן תקליטורים פשוט ללוח שלך"
 
-#: cdplayer/cdplayer.c:767 cdplayer/cdplayer.c:778
+#: cdplayer/cdplayer.c:780 cdplayer/cdplayer.c:791
 msgid "Elapsed time"
 msgstr "זמן נותר"
 
-#: cdplayer/cdplayer.c:770 cdplayer/cdplayer.c:780
+#: cdplayer/cdplayer.c:783 cdplayer/cdplayer.c:793
 msgid "Track number"
 msgstr "מספר מסילה"
 
-#: cdplayer/cdplayer.c:887
+#: cdplayer/cdplayer.c:902
 msgid "Click this button to Stop playing the CD"
 msgstr "לחץ על כפתור זה כדי לעצור את נגינת התקליטור"
 
-#: cdplayer/cdplayer.c:889
+#: cdplayer/cdplayer.c:904
 msgid "Click this button to Play or Pause the CD"
 msgstr "לחץ על כפתור זה כדי לנגן או להפסיק את התקליטור"
 
-#: cdplayer/cdplayer.c:891
+#: cdplayer/cdplayer.c:906
 msgid "Click this button to eject the CD"
 msgstr "לחץ על כפתור זה כדי להוציא את התקליטור"
 
-#: cdplayer/cdplayer.c:893
+#: cdplayer/cdplayer.c:908
 msgid "Click this button to Play the previous track in the CD"
 msgstr "לחץ על כפתור זה כדי לנגן את המסילה הקודמת בתקליטור"
 
-#: cdplayer/cdplayer.c:895
+#: cdplayer/cdplayer.c:910
 msgid "Click this button to Play the next track in the CD"
 msgstr "לחץ על כפתור זה כדי לנגן את המסילה הבאה בתקליטור"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:389
-#: charpick/charpick.c:482
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
+#: charpick/charpick.c:490
 msgid "Character Palette"
 msgstr "פלטת תוים"
 
@@ -514,15 +518,15 @@ msgstr "הכנס תוים"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:365
+#: charpick/charpick.c:366
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:391
+#: charpick/charpick.c:394
 msgid "Copyright (C) 1998"
 msgstr "כל הזכויות שמורות (C) 1998"
 
-#: charpick/charpick.c:392
+#: charpick/charpick.c:395
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -530,23 +534,23 @@ msgstr ""
 "יישומון ללוח GNOME לבחירת תוים מוזרים שאינם על המקלדת שלי. מופץ תחת הרישיון "
 "הציבורי הכללי GNU."
 
-#: charpick/charpick.c:481
+#: charpick/charpick.c:489
 msgid "Insert special characters"
 msgstr "הכנס תוים מיוחדים"
 
-#: charpick/properties.c:79
+#: charpick/properties.c:80
 msgid "_Default character list:"
 msgstr "רשימת תוים _ברירת מחדל:"
 
-#: charpick/properties.c:88
+#: charpick/properties.c:89
 msgid "Default list of characters"
 msgstr "רשימת תוים ברירת מחדל"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Set the default character list here"
 msgstr "קבע את רשימת התוים ברירת המחדל כאן"
 
-#: charpick/properties.c:91
+#: charpick/properties.c:92
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
@@ -554,12 +558,12 @@ msgstr ""
 "התוים הללו יופיעו כשהלוח יתחיל. כדי לחזור לרשימה זו, לחץ <d> כשהמוקד הוא על "
 "היישומון."
 
-#: charpick/properties.c:150
+#: charpick/properties.c:156
 msgid "Character Palette Preferences"
 msgstr "העדפות פלטת התוים"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:465
+#: drivemount/drivemount.c:471
 msgid "Disk Mounter"
 msgstr "מחבר דיסקים"
 
@@ -583,31 +587,31 @@ msgstr "_דפדף..."
 msgid "_Eject"
 msgstr "_הוצא"
 
-#: drivemount/drivemount.c:466
+#: drivemount/drivemount.c:472
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:468
+#: drivemount/drivemount.c:474
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "יישומון לחיבור וניתוק כרכים."
 
-#: drivemount/drivemount.c:664
+#: drivemount/drivemount.c:672
 msgid " mounted"
 msgstr " מחובר"
 
-#: drivemount/drivemount.c:666
+#: drivemount/drivemount.c:674
 msgid " not mounted"
 msgstr " לא מחובר"
 
-#: drivemount/drivemount.c:776
+#: drivemount/drivemount.c:786
 msgid "Drive Mount Applet Warning"
 msgstr "אזהרת יישומון חיבור כוננים"
 
-#: drivemount/drivemount.c:784
+#: drivemount/drivemount.c:796
 msgid "\" reported:\n"
 msgstr "\" דווח:\n"
 
-#: drivemount/drivemount.c:786
+#: drivemount/drivemount.c:798
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -619,75 +623,71 @@ msgstr ""
 msgid "Disk Mounter Preferences"
 msgstr "העדפות מחבר דיסקים"
 
-#: drivemount/properties.c:258
-msgid "Settings"
-msgstr "הגדרות"
-
-#: drivemount/properties.c:271
+#: drivemount/properties.c:273
 msgid "_Mount point:"
 msgstr "נקודת הת_חברות:"
 
-#: drivemount/properties.c:289
+#: drivemount/properties.c:291
 msgid "_Update interval (seconds):"
 msgstr "השהיית _עדכון (שניות):"
 
-#: drivemount/properties.c:305 panel-menu/panel-menu-properties.c:109
+#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
 msgid "_Icon :"
 msgstr "_סמל :"
 
-#: drivemount/properties.c:323
+#: drivemount/properties.c:325
 msgid "Floppy"
 msgstr "תקליטון"
 
-#: drivemount/properties.c:326
+#: drivemount/properties.c:328
 msgid "Cdrom"
 msgstr "תקליטור"
 
-#: drivemount/properties.c:329
+#: drivemount/properties.c:331
 msgid "Cd Recorder"
 msgstr "צורב תקליטורים"
 
-#: drivemount/properties.c:332
+#: drivemount/properties.c:334
 msgid "Zip Drive"
 msgstr "כונן Zip"
 
-#: drivemount/properties.c:335
+#: drivemount/properties.c:337
 msgid "Hard Disk"
 msgstr "דיסק קשיח"
 
-#: drivemount/properties.c:338
+#: drivemount/properties.c:340
 msgid "Jaz Drive"
 msgstr "כונן Jaz"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:343
 msgid "Custom"
 msgstr "מותאם אישית"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:356
 msgid "Select icon for mounted"
 msgstr "בחר סמל למחובר"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:363
 msgid "Custom icon for moun_ted:"
 msgstr "סמל מותאם אישית ל_מחובר:"
 
-#: drivemount/properties.c:370
+#: drivemount/properties.c:372
 msgid "Select icon for unmounted"
 msgstr "בחר סמל למנותק"
 
-#: drivemount/properties.c:377
+#: drivemount/properties.c:379
 msgid "Custom icon for not mou_nted:"
 msgstr "סמל מותאם אישית ללא _מחובר:"
 
-#: drivemount/properties.c:387
+#: drivemount/properties.c:389
 msgid "_Scale size to panel"
 msgstr "_גלול גודל ללוח"
 
-#: drivemount/properties.c:394
+#: drivemount/properties.c:396
 msgid "_Eject on unmount"
 msgstr "_הוצא בניתוק"
 
-#: drivemount/properties.c:401
+#: drivemount/properties.c:403
 msgid "Use _automount friendly status test"
 msgstr "השתמש בבדיקת המצב הידידותית לחיבור ה_אוטמטי"
 
@@ -699,8 +699,8 @@ msgstr "ערכת עיניים ללוח שלך"
 msgid "Amusements"
 msgstr "שעשועים"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:233
-#: geyes/geyes.c:420 geyes/geyes.c:422
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
+#: geyes/geyes.c:429 geyes/geyes.c:431
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -708,25 +708,25 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr ""
 
-#: geyes/geyes.c:234
+#: geyes/geyes.c:238
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "כל הזכויות שמורות (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:235
+#: geyes/geyes.c:239
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "העתק xeyes קטן ונחמד ללוח GNOME."
 
-#: geyes/geyes.c:423
+#: geyes/geyes.c:432
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "העיניים מסתכלות על הכיוון של מצביע העכבר"
 
-#: geyes/themes.c:215
+#: geyes/themes.c:223
 msgid "Geyes Preferences"
 msgstr "העדפות Geyes"
 
-#: geyes/themes.c:229
-msgid "T_heme Name"
-msgstr "שם _ערכת נושא"
+#: geyes/themes.c:239
+msgid "_Theme Name:"
+msgstr "שם _ערכת הנושא:"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
@@ -736,7 +736,7 @@ msgstr "שנה את פריסת המקלדת"
 msgid "GKB Factory"
 msgstr ""
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:604
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
 msgid "Keyboard Layout Switcher"
 msgstr "מחליף פריסות מקלדת"
 
@@ -744,22 +744,21 @@ msgstr "מחליף פריסות מקלדת"
 msgid "Produces keyboard layout switcher applets."
 msgstr "מספק יישומוני מחליף פריסות לוח מקשים."
 
-#: gkb-new/gkb.c:112
+#: gkb-new/gkb.c:113
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
-msgstr ""
-"לחץ על המקש החם כדי להחליף בין פריסות. ניתן לקבוע את המקש החם בדו-שיח ההעדפות"
+msgstr "לחץ על המקש החם כדי להחליף בין פריסות. ניתן לקבוע את המקש החם בדו-שיח ההעדפות"
 
-#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
+#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:606
+#: gkb-new/gkb.c:607
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 ארגון התוכנה החופשית"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:608
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -777,462 +776,151 @@ msgstr ""
 "Kovacs <emese@gnome.hu> בעבור הסולידריות שלה, עזרה מבחורים כמו KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:624
+#: gkb-new/gkb.c:625
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "אתר הבית של GKB (http://projects.gnome.hu/gkb)"
 
-#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
+#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
 msgstr "כבוי"
 
-#: gkb-new/keygrab.c:301
+#: gkb-new/keygrab.c:313
 msgid "Press a key or press Esc to cancel"
 msgstr "לחץ על כל מקש או לחץ Esc לביטול"
 
-#: gkb-new/prop-add.c:86
+#: gkb-new/prop-add.c:88
 msgid "Keyboards (select and press add)"
 msgstr "מקלדות (בחר ולחץ הוסף)"
 
-#: gkb-new/prop-add.c:372
+#: gkb-new/prop-add.c:392
 msgid "Select Keyboard"
 msgstr "סחר מקלדת"
 
-#: gkb-new/prop-list.c:398 gtik/gtik.c:1125
-msgid "_Add"
-msgstr "_הוסף"
-
-#: gkb-new/prop-list.c:399
-msgid "_Edit"
-msgstr "ע_רוך"
-
-#: gkb-new/prop-list.c:400
-msgid "_Up"
-msgstr "מ_עלה"
-
-#: gkb-new/prop-list.c:401
-msgid "Dow_n"
-msgstr "מ_טה"
-
-#: gkb-new/prop-list.c:402
-msgid "_Delete"
-msgstr "_מחק"
-
-#: gkb-new/prop-map.c:199
-msgid "Armenia"
-msgstr "ארמניה"
-
-#: gkb-new/prop-map.c:200
-msgid "Australia"
-msgstr "אוסטרליה"
-
-#: gkb-new/prop-map.c:201
-msgid "Austria"
-msgstr "אוסטריה"
-
-#: gkb-new/prop-map.c:202
-msgid "Belgium"
-msgstr "בלגיה"
-
-#: gkb-new/prop-map.c:203
-msgid "Brazil"
-msgstr "ברזיל"
-
-#: gkb-new/prop-map.c:204
-msgid "Bulgaria"
-msgstr "בולגריה"
-
-#: gkb-new/prop-map.c:205
-msgid "Canada"
-msgstr "קנדה"
-
-#: gkb-new/prop-map.c:206
-msgid "Caribic"
-msgstr "קריביים"
-
-#: gkb-new/prop-map.c:207
-msgid "France"
-msgstr "צרפת"
-
-#: gkb-new/prop-map.c:208
-msgid "Georgia"
-msgstr "ג'ורג'יה"
-
-#: gkb-new/prop-map.c:209
-msgid "Germany"
-msgstr "גרמניה"
-
-#: gkb-new/prop-map.c:210
-msgid "Great Britain"
-msgstr "בריטניה הגדולה"
-
-#: gkb-new/prop-map.c:211
-msgid "Greece"
-msgstr "יוון"
-
-#: gkb-new/prop-map.c:212
-msgid "Hungary"
-msgstr "הונגריה"
-
 #: gkb-new/prop-map.c:213
-msgid "Jamaica"
-msgstr "ג'אמייקה"
-
-#: gkb-new/prop-map.c:214
-msgid "New Zealand"
-msgstr "ניו-זילנד"
-
-#: gkb-new/prop-map.c:215
-msgid "Norway"
-msgstr "נורווגיה"
-
-#: gkb-new/prop-map.c:216
-msgid "Poland"
-msgstr "פולין"
-
-#: gkb-new/prop-map.c:217
-msgid "Portugal"
-msgstr "פורטוגל"
-
-#: gkb-new/prop-map.c:218
-msgid "Russia"
-msgstr "רוסיה"
-
-#: gkb-new/prop-map.c:219
-msgid "Slovak Republic"
-msgstr "הרפובליקה הסלובקית"
-
-#: gkb-new/prop-map.c:220
-msgid "Slovenia"
-msgstr "סלובניה"
-
-#: gkb-new/prop-map.c:221
-msgid "South Africa"
-msgstr "דרום אפריקה"
-
-#: gkb-new/prop-map.c:222
-msgid "Spain"
-msgstr "ספרד"
-
-#: gkb-new/prop-map.c:223
-msgid "Sweden"
-msgstr "שוודיה"
-
-#: gkb-new/prop-map.c:224
-msgid "Switzerland"
-msgstr "שוויץ"
-
-#: gkb-new/prop-map.c:225
-msgid "Thailand"
-msgstr "תאילנד"
-
-#: gkb-new/prop-map.c:226
-msgid "Turkey"
-msgstr "טורקיה"
-
-#: gkb-new/prop-map.c:227
-msgid "United Kingdom"
-msgstr "הממלכה המאוחדת"
-
-#: gkb-new/prop-map.c:228
-msgid "United States"
-msgstr "ארצות הברית"
-
-#: gkb-new/prop-map.c:229
-msgid "Yugoslavia"
-msgstr "יגוסלביה"
-
-#: gkb-new/prop-map.c:249
-msgid "Armenian"
-msgstr "ארמנית"
-
-#: gkb-new/prop-map.c:250
-msgid "Basque"
-msgstr "בסקית"
-
-#: gkb-new/prop-map.c:251
-msgid "Bulgarian"
-msgstr "בולגרית"
-
-#: gkb-new/prop-map.c:252
-msgid "Dutch"
-msgstr "הולנדית"
-
-#: gkb-new/prop-map.c:253
-msgid "English"
-msgstr "אנגלית"
-
-#: gkb-new/prop-map.c:254
-msgid "French"
-msgstr "צרפתית"
-
-#: gkb-new/prop-map.c:255
-msgid "Georgian"
-msgstr "גרוזינית"
-
-#: gkb-new/prop-map.c:256
-msgid "German"
-msgstr "גרמנית"
-
-#: gkb-new/prop-map.c:257
-msgid "Greek"
-msgstr "יוונית"
-
-#: gkb-new/prop-map.c:258
-msgid "Hungarian"
-msgstr "הונגרית"
-
-#: gkb-new/prop-map.c:259
-msgid "Norwegian"
-msgstr "נורווגית"
-
-#: gkb-new/prop-map.c:260
-msgid "Polish"
-msgstr "פולנית"
-
-#: gkb-new/prop-map.c:261
-msgid "Portuguese"
-msgstr "פורטוגזית"
-
-#: gkb-new/prop-map.c:262
-msgid "Russian"
-msgstr "רוסית"
-
-#: gkb-new/prop-map.c:263
-msgid "Slovak"
-msgstr "סלובקית"
-
-#: gkb-new/prop-map.c:264
-msgid "Slovenian"
-msgstr "סולבנית"
-
-#: gkb-new/prop-map.c:265
-msgid "Swedish"
-msgstr "שוודית"
-
-#: gkb-new/prop-map.c:266
-msgid "Thai"
-msgstr "תאי"
-
-#: gkb-new/prop-map.c:267
-msgid "Turkish"
-msgstr "טורקית"
-
-#: gkb-new/prop-map.c:268
-msgid "Wallon"
-msgstr ""
-
-#: gkb-new/prop-map.c:269
-msgid "Yugoslavian"
-msgstr "יגוסלבית"
-
-#: gkb-new/prop-map.c:287
-msgid "105"
-msgstr "105"
-
-#: gkb-new/prop-map.c:288
-msgid "101"
-msgstr "101"
-
-#: gkb-new/prop-map.c:289
-msgid "102"
-msgstr "102"
-
-#: gkb-new/prop-map.c:290
-msgid "450"
-msgstr "450"
-
-#: gkb-new/prop-map.c:291
-msgid "84"
-msgstr "84"
-
-#: gkb-new/prop-map.c:292
-msgid "mklinux"
-msgstr "mklinux"
-
-#: gkb-new/prop-map.c:293
-msgid "type5"
-msgstr "type5"
-
-#: gkb-new/prop-map.c:313
-msgid "iso-8859-1"
-msgstr "iso-8859-1"
-
-#: gkb-new/prop-map.c:314
-msgid "iso-8859-2"
-msgstr "iso-8859-2"
-
-#: gkb-new/prop-map.c:315
-msgid "iso-8859-7"
-msgstr "iso-8859-7"
-
-#: gkb-new/prop-map.c:316
-msgid "iso-8859-9"
-msgstr "iso-8859-9"
-
-#: gkb-new/prop-map.c:317
-msgid "am-armscii8"
-msgstr "am-armscii8"
-
-#: gkb-new/prop-map.c:318
-msgid "be-latin1"
-msgstr "be-latin1"
-
-#: gkb-new/prop-map.c:319
-msgid "cp1251"
-msgstr "cp1251"
-
-#: gkb-new/prop-map.c:320
-msgid "georgian-academy"
-msgstr ""
-
-#: gkb-new/prop-map.c:321
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: gkb-new/prop-map.c:322
-msgid "tis620"
-msgstr "tis620"
-
-#: gkb-new/prop-map.c:340
-msgid "ix86"
-msgstr "ix86"
-
-#: gkb-new/prop-map.c:341
-msgid "Sun"
-msgstr "Sun"
-
-#: gkb-new/prop-map.c:342
-msgid "mac"
-msgstr "Mac"
-
-#: gkb-new/prop-map.c:343
-msgid "sgi"
-msgstr "SGI"
-
-#: gkb-new/prop-map.c:344
-msgid "dec"
-msgstr "DEC"
-
-#: gkb-new/prop-map.c:345
-msgid "ibm"
-msgstr "IBM"
-
-#: gkb-new/prop-map.c:582
 msgid "Edit Keyboard"
 msgstr "ערוך מקלדת"
 
-#. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:610 panel-menu/panel-menu-directory.c:672
+#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_שם:"
 
-#: gkb-new/prop-map.c:614
+#: gkb-new/prop-map.c:235
 msgid "_Label:"
 msgstr "_תוית:"
 
-#: gkb-new/prop-map.c:618
-msgid "Lan_guage:"
-msgstr "ש_פה:"
-
-#: gkb-new/prop-map.c:624
-msgid "Count_ry:"
-msgstr "_מדינה:"
-
-#: gkb-new/prop-map.c:631
-msgid ""
-"_Flag\n"
-"Pixmap:"
-msgstr ""
-"_דגל\n"
-"תמונה:"
-
-#: gkb-new/prop-map.c:635
-msgid "Arc_hitecture:"
-msgstr "_ארכיטקטורה:"
-
-#: gkb-new/prop-map.c:641
-msgid "_Type:"
-msgstr "_סוג:"
-
-#: gkb-new/prop-map.c:647
-msgid "Code_page:"
-msgstr ""
-
-#: gkb-new/prop-map.c:654
+#: gkb-new/prop-map.c:238
 msgid "Co_mmand:"
 msgstr "_פקודה:"
 
-#: gkb-new/prop-map.c:661
+#: gkb-new/prop-map.c:246
 msgid ""
 "Where command can be:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
+" * xmodmap /full/path/xmodmap.hu\n"
+" * gkb_xmmap hu\n"
+" * setxkbmap hu"
 msgstr ""
 "הפקודה יכולה להיות:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
+" * xmodmap /full/path/xmodmap.hu\n"
+" * gkb_xmmap hu\n"
+" * setxkbmap hu"
 
-#: gkb-new/prop.c:131 gkb-new/prop.c:201
+#: gkb-new/prop-map.c:279
+msgid "_Flag"
+msgstr "_דגל"
+
+#: gkb-new/prop.c:132 gkb-new/prop.c:202
 msgid "Normal"
 msgstr "רגיל"
 
-#: gkb-new/prop.c:132 gkb-new/prop.c:205
+#: gkb-new/prop.c:133 gkb-new/prop.c:206
 msgid "Big"
 msgstr "גדול"
 
-#: gkb-new/prop.c:150 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:151 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "דגל"
 
-#: gkb-new/prop.c:151 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:152 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "תוית"
 
-#: gkb-new/prop.c:152 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:153 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "דגל ותוית"
 
-#: gkb-new/prop.c:290 modemlights/properties.c:389
+#: gkb-new/prop.c:291 modemlights/properties.c:393
 msgid "Display"
 msgstr "תצוגה"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:310
+#: gkb-new/prop.c:311
 msgid "_Appearance: "
 msgstr "_מראה: "
 
-#: gkb-new/prop.c:317
+#: gkb-new/prop.c:318
 msgid "Applet _size: "
 msgstr "_גודל יישומון: "
 
-#: gkb-new/prop.c:344
+#: gkb-new/prop.c:345
 msgid "Hotkey for switching between layouts"
 msgstr "מקש חם להחלפה בין פריסות"
 
-#: gkb-new/prop.c:356
+#: gkb-new/prop.c:357
 msgid "_Grab hotkey"
 msgstr "_קבל מקש חם"
 
 #. Create property box
-#: gkb-new/prop.c:417
+#: gkb-new/prop.c:423
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "העדפות מחליף פריסות לוח-מקשים"
 
-#: gkb-new/prop.c:432
-msgid "_Keymaps"
-msgstr ""
+#: gkb-new/prop.c:440
+msgid "Keymaps"
+msgstr "מפות מקשים"
 
-#: gkb-new/prop.c:444
-msgid "_Options"
-msgstr "_אפשרויות"
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:452 multiload/properties.c:313
+msgid "Options"
+msgstr "אפשרויות"
 
-#: gkb-new/system.c:45
-msgid "The keymap switching command returned with error!"
+#: gkb-new/system.c:46
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Keymap `%s' is not supported on this system. Please choose another keymap.\n"
+"\n"
+"The command was: %s"
 msgstr ""
+"ארעה שגיאה.\n"
+"\n"
+"מפת המקשים `%s' לא נתמכת במערכת הזו. אנא בחר מפת מקשים אחרת.\n"
+"\n"
+"הפקודה הייתה: %s"
+
+#: gkb-new/system.c:51
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be "
+"located in your PATH.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"ארעה שגיאה.\n"
+"\n"
+"לא ניתן לטעון את מפת המקשים `%s', ייתכן ובגלל שהפקודה `xmodmap' לא נמצאה "
+"בנתיב שלך.\n"
+"\n"
+"הפקודה הייתה: %s"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -1247,7 +935,7 @@ msgstr "קבל עדכונים מתמשכים על מחירי מניות"
 msgid "Gtik Applet Factory"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:720
 msgid "Stock Ticker"
 msgstr "טיקר מניות"
 
@@ -1255,11 +943,11 @@ msgstr "טיקר מניות"
 msgid "_Update"
 msgstr "_עדכן"
 
-#: gtik/gtik.c:206
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr "אין מידע זמין או שהעדפות לא נקבעו"
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:722
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1270,83 +958,83 @@ msgstr ""
 "הינו יישום חופשי מבוסס אינטרנט.  הוא מגיע לחלוטין ללא אחריות. אל תשתמש בטיק "
 "המניות של GNOME לביצוע החלטות השקעה; הוא לצורכי מידע בלבד."
 
-#: gtik/gtik.c:1114
+#: gtik/gtik.c:1147
 msgid "_New Symbol:"
 msgstr "סמל _חדש:"
 
-#: gtik/gtik.c:1136
+#: gtik/gtik.c:1158
+msgid "_Add"
+msgstr "_הוסף"
+
+#: gtik/gtik.c:1169
 msgid "_Remove Selected"
 msgstr "_הסר בחירה"
 
-#: gtik/gtik.c:1212
+#: gtik/gtik.c:1251
 msgid "Stock Ticker Preferences"
 msgstr "העדפות טיקר מניות"
 
-#: gtik/gtik.c:1235
-msgid "Update Fre_quency in minutes:"
-msgstr "_תדירות עדכון בדקות:"
+#: gtik/gtik.c:1275
+msgid "Stock update Fre_quency in minutes:"
+msgstr "_תדירות עדכון המניות בדקות:"
 
-#: gtik/gtik.c:1253
-msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr "הכנס סמלים המוגבלים עם \"+\" בחלון מטה."
+#: gtik/gtik.c:1294
+msgid "Scroll Speed :"
+msgstr "מהירות גלילה :"
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1314
+msgid "_Width :"
+msgstr "_רוחב :"
+
+#: gtik/gtik.c:1326
 msgid "Displa_y only symbols and price"
 msgstr "ה_צג רק סמלים ומחירים"
 
-#: gtik/gtik.c:1263
+#: gtik/gtik.c:1329
 msgid "Scroll _left to right"
 msgstr "גלול מ_שמל לימין"
 
-#: gtik/gtik.c:1266
+#: gtik/gtik.c:1332
 msgid "_Enable scroll buttons"
 msgstr "_אפשר כפתורי גלילה"
 
-#: gtik/gtik.c:1290
-msgid "+ C_olor"
-msgstr "+ צ_בע"
+#: gtik/gtik.c:1356
+msgid "+ C_olor:"
+msgstr "+ צ_בע:"
 
-#: gtik/gtik.c:1310
-msgid "- Colo_r"
-msgstr "- _צבע"
+#: gtik/gtik.c:1376
+msgid "- Colo_r:"
+msgstr "- _צבע:"
 
-#: gtik/gtik.c:1327
-msgid "_Unchanged Color"
-msgstr "צבע _לא שונה:"
+#: gtik/gtik.c:1393
+msgid "_Unchanged Color:"
+msgstr "צבע _ללא שינוי:"
 
-#: gtik/gtik.c:1344
-msgid "Back_ground Color"
+#: gtik/gtik.c:1410
+msgid "Back_ground Color:"
 msgstr "צבע _רקע:"
 
-#: gtik/gtik.c:1366
-msgid "Stock Sy_mbol:"
-msgstr "_סמל מניה:"
+#: gtik/gtik.c:1432
+msgid "_Font:"
+msgstr "_גופן:"
 
-#: gtik/gtik.c:1380
-msgid "Stock C_hange:"
-msgstr "_שינוי מניה:"
+#: gtik/gtik.c:1452
+msgid "Symbols"
+msgstr "סמלים"
 
-#: gtik/gtik.c:1404
-msgid "_Symbols"
-msgstr "_סמלים"
+#: gtik/gtik.c:1454
+msgid "Behavior"
+msgstr "התנהגות"
 
-#: gtik/gtik.c:1406
-msgid "_Behavior"
-msgstr "_התנהגות"
-
-#: gtik/gtik.c:1408
-msgid "_Appearance"
-msgstr "_מראה"
-
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1541
 msgid "Skip forward"
 msgstr "דלג קדימה"
 
-#: gtik/gtik.c:1483
+#: gtik/gtik.c:1542
 msgid "Skip backward"
 msgstr "דלג אחורה"
 
-#: gtik/gtik.c:1484
+#: gtik/gtik.c:1543
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1354,15 +1042,15 @@ msgstr ""
 "טיקר מניות\n"
 "קבל עדכונים מתמשכיפ על מחירי מניות"
 
-#: gtik/gtik.c:1671
+#: gtik/gtik.c:1731
 msgid "(No"
 msgstr "(לא"
 
-#: gtik/gtik.c:1672
+#: gtik/gtik.c:1732
 msgid "Change "
 msgstr "שנה "
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
 msgid "_Forecast"
 msgstr "_תחזית"
 
@@ -1379,15 +1067,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "מציג את תנאי מזג-האויר הנוכחיים, ותחזיות"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:61
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr "דיווח מזג-אויר"
 
-#: gweather/gweather-about.c:62
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "כל הזכויות שמורות (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:63
+#: gweather/gweather-about.c:65
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1397,11 +1085,11 @@ msgstr ""
 "\n"
 "יישומון לתצוגת תנאי מזג-אויר מקומיים."
 
-#: gweather/gweather-applet.c:194
+#: gweather/gweather-applet.c:198
 msgid "GNOME Weather"
 msgstr "מזג-האויר GNOME"
 
-#: gweather/gweather-applet.c:319
+#: gweather/gweather-applet.c:323
 msgid "Updating..."
 msgstr "מעדכן..."
 
@@ -1409,75 +1097,75 @@ msgstr "מעדכן..."
 msgid "Forecast"
 msgstr "תחזית"
 
-#: gweather/gweather-dialog.c:108
+#: gweather/gweather-dialog.c:110
 msgid "Location:"
 msgstr "מיקום:"
 
-#: gweather/gweather-dialog.c:116
+#: gweather/gweather-dialog.c:118
 msgid "Update:"
 msgstr "עדכון:"
 
-#: gweather/gweather-dialog.c:124
+#: gweather/gweather-dialog.c:126
 msgid "Conditions:"
 msgstr "תנאים:"
 
-#: gweather/gweather-dialog.c:132
+#: gweather/gweather-dialog.c:134
 msgid "Sky:"
 msgstr "שמיים:"
 
-#: gweather/gweather-dialog.c:140
+#: gweather/gweather-dialog.c:142
 msgid "Temperature:"
 msgstr "טמפרטורה:"
 
-#: gweather/gweather-dialog.c:148
+#: gweather/gweather-dialog.c:150
 msgid "Dew point:"
 msgstr "נקודת העיבוי:"
 
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:158
 msgid "Humidity:"
 msgstr "לחות:"
 
-#: gweather/gweather-dialog.c:164
+#: gweather/gweather-dialog.c:166
 msgid "Wind:"
 msgstr "רוח:"
 
-#: gweather/gweather-dialog.c:172
+#: gweather/gweather-dialog.c:174
 msgid "Pressure:"
 msgstr "לחץ אויר:"
 
-#: gweather/gweather-dialog.c:180
+#: gweather/gweather-dialog.c:182
 msgid "Visibility:"
 msgstr "ראות:"
 
-#: gweather/gweather-dialog.c:279
+#: gweather/gweather-dialog.c:281
 msgid "C_urrent conditions"
 msgstr "תנאים _נוכחיים"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:294
 msgid "ForeCast Report"
 msgstr "דיווח תחזית"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:294
 msgid "See the ForeCast Details"
 msgstr "ראה את פרטי התחזית"
 
-#: gweather/gweather-dialog.c:327
+#: gweather/gweather-dialog.c:329
 msgid "_Visit Weather.com"
 msgstr "_בקר ב Weather.com"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:330
 msgid "URL link Button"
 msgstr "כפתור קישור לכתובת"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:330
 msgid "Click to Enter Weather.com"
 msgstr "לחץ כדי להכנס ל Weather.com"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:338
 msgid "_Radar map"
 msgstr "מפת _ראדר"
 
-#: gweather/gweather-dialog.c:408
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1486,7 +1174,7 @@ msgstr ""
 "תחזית מפורטת לאזור זה אינה זמינה.\n"
 "אנא נסה את התחזית המדינית; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1496,83 +1184,78 @@ msgstr ""
 "אנא נסה את התחזית המופרטת; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:107
+#: gweather/gweather-pref.c:108
 msgid "Location view"
 msgstr "תצוגת מיקום"
 
-#: gweather/gweather-pref.c:107
+#: gweather/gweather-pref.c:108
 msgid "Select Location from the list"
 msgstr "בחר מיקום מהרשימה"
 
-#: gweather/gweather-pref.c:109
+#: gweather/gweather-pref.c:110
 msgid "Update spin button"
-msgstr ""
+msgstr "עדכן כפתור טווח"
 
-#: gweather/gweather-pref.c:109
+#: gweather/gweather-pref.c:110
 msgid "Spinbutton for updating"
-msgstr ""
+msgstr "כפתור טווח לעדכון"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:111
 msgid "Address Entry"
-msgstr ""
+msgstr "ערך כתובת"
 
-#: gweather/gweather-pref.c:110
+#: gweather/gweather-pref.c:111
 msgid "Enter the URL"
 msgstr "הזן כתובת"
 
-#: gweather/gweather-pref.c:560
+#: gweather/gweather-pref.c:561
 msgid "Weather Preferences"
 msgstr "העדפות מזג-האויר"
 
-#: gweather/gweather-pref.c:607
-msgid "_Location"
-msgstr "_מיקום"
-
-#: gweather/gweather-pref.c:638
+#: gweather/gweather-pref.c:604
 msgid "_Automatically update every"
 msgstr "_עדכן אוטמטית כל"
 
-#: gweather/gweather-pref.c:644
+#: gweather/gweather-pref.c:610
 msgid "Use _metric system units"
 msgstr "השתמש ביחידות מידה _מטריות"
 
-#: gweather/gweather-pref.c:650
+#: gweather/gweather-pref.c:616
 msgid "Enable _detailed forecast"
 msgstr "אפשר תחזיות מ_פורטות"
 
-#: gweather/gweather-pref.c:657
+#: gweather/gweather-pref.c:623
 msgid "Enable _radar map"
 msgstr "אפשר מפות _ראדר"
 
-#: gweather/gweather-pref.c:663
+#: gweather/gweather-pref.c:629
 msgid "Use cus_tom address for radar map"
 msgstr "השתמש בכתובת _מותאמת אישית למפות ראדר"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:640
 msgid "A_ddress :"
 msgstr "_כתובת :"
 
-#: gweather/gweather-pref.c:686
+#: gweather/gweather-pref.c:652
 msgid "Updates"
 msgstr "עידכונים"
 
-#: gweather/gweather-pref.c:692
+#: gweather/gweather-pref.c:658
 msgid "_Automatically update every "
 msgstr "_עדכן אוטומטית כל "
 
-#: gweather/gweather-pref.c:712
+#: gweather/gweather-pref.c:678
 msgid "minute(s)"
 msgstr "דקות"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:723
+#: gweather/gweather-pref.c:689
 msgid "Miscellaneous"
 msgstr "שונות"
 
-#: gweather/gweather-pref.c:741 mini-commander/src/preferences.c:972
-#: modemlights/properties.c:424
-msgid "_General"
-msgstr "_כללי"
+#: gweather/gweather-pref.c:743
+msgid "Location"
+msgstr "מיקום"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -1777,11 +1460,11 @@ msgstr ""
 
 #: gweather/weather.c:187
 msgid "Partial rainfall"
-msgstr ""
+msgstr "גשם חלקי"
 
 #: gweather/weather.c:187
 msgid "Blowing rainfall"
-msgstr ""
+msgstr "משב גשמים"
 
 #: gweather/weather.c:187
 msgid "Rain showers"
@@ -1834,7 +1517,7 @@ msgstr "סופת שלגים"
 
 #: gweather/weather.c:188
 msgid "Blowing snowfall"
-msgstr ""
+msgstr "משב שלגים"
 
 #: gweather/weather.c:188
 msgid "Snow showers"
@@ -1883,7 +1566,7 @@ msgstr "פתיתי שלג חלקי"
 
 #: gweather/weather.c:189
 msgid "Blowing snow grains"
-msgstr ""
+msgstr "משב פתיתי שלג"
 
 #: gweather/weather.c:189
 msgid "Snow grain showers"
@@ -2038,7 +1721,7 @@ msgstr "סופת ברד"
 
 #: gweather/weather.c:192
 msgid "Blowing hail"
-msgstr ""
+msgstr "משב ברד"
 
 #: gweather/weather.c:192
 msgid "Hail showers"
@@ -2087,7 +1770,7 @@ msgstr "סופת ברד קטנה"
 
 #: gweather/weather.c:193
 msgid "Blowing small hail"
-msgstr ""
+msgstr "משב ברד קטן"
 
 #: gweather/weather.c:193
 msgid "Showers of small hail"
@@ -2140,7 +1823,7 @@ msgstr "סופת רעמים לא ידועה"
 
 #: gweather/weather.c:194
 msgid "Blowing precipitation"
-msgstr ""
+msgstr "משקע נושב"
 
 #: gweather/weather.c:194
 msgid "Showers, type unknown"
@@ -2324,7 +2007,7 @@ msgstr "אפר געשי עם רעמים"
 
 #: gweather/weather.c:198
 msgid "Blowing volcanic ash"
-msgstr ""
+msgstr "אבר געשי נושב"
 
 #: gweather/weather.c:198
 msgid "Showers of volcanic ash "
@@ -2369,7 +2052,7 @@ msgstr "חול חלקי"
 
 #: gweather/weather.c:199
 msgid "Blowing sand"
-msgstr ""
+msgstr "חול נושב"
 
 #: gweather/weather.c:199
 msgid "Drifting sand"
@@ -2496,7 +2179,7 @@ msgstr "אבק חלקי"
 
 #: gweather/weather.c:202
 msgid "Blowing dust"
-msgstr ""
+msgstr "אבק נושב"
 
 #: gweather/weather.c:202
 msgid "Drifting dust"
@@ -2533,7 +2216,7 @@ msgstr "סופת רעמים"
 
 #: gweather/weather.c:203
 msgid "Blowing squall"
-msgstr ""
+msgstr "סופה נושבת"
 
 #: gweather/weather.c:203
 msgid "Drifting squall"
@@ -2578,7 +2261,7 @@ msgstr "סופת חול רועמת"
 
 #: gweather/weather.c:204
 msgid "Blowing sandstorm"
-msgstr ""
+msgstr "סופת חול נושבת"
 
 #: gweather/weather.c:204
 msgid "Drifting sandstorm"
@@ -2591,47 +2274,47 @@ msgstr "סופת חול מקפיאה"
 #. DUSTSTORM
 #: gweather/weather.c:205
 msgid "Duststorm"
-msgstr ""
+msgstr "סופת אבק"
 
 #: gweather/weather.c:205
 msgid "Duststorm in the vicinity"
-msgstr ""
+msgstr "סופת אבק בסביבה"
 
 #: gweather/weather.c:205
 msgid "Light duststorm"
-msgstr ""
+msgstr "סופת אבק קלה"
 
 #: gweather/weather.c:205
 msgid "Moderate duststorm"
-msgstr ""
+msgstr "סופת אבק מתונה"
 
 #: gweather/weather.c:205
 msgid "Heavy duststorm"
-msgstr ""
+msgstr "סופת אבק כבדה"
 
 #: gweather/weather.c:205
 msgid "Shallow duststorm"
-msgstr ""
+msgstr "סופת אבק חלקית"
 
 #: gweather/weather.c:205
 msgid "Partial duststorm"
-msgstr ""
+msgstr "סופת אבק חלקית"
 
 #: gweather/weather.c:205
 msgid "Thunderous duststorm"
-msgstr ""
+msgstr "סופת אבק רועמת"
 
 #: gweather/weather.c:205
 msgid "Blowing duststorm"
-msgstr ""
+msgstr "סוםת אבק נושבת"
 
 #: gweather/weather.c:205
 msgid "Drifting duststorm"
-msgstr ""
+msgstr "סופת חול נסחפת"
 
 #: gweather/weather.c:205
 msgid "Freezing duststorm"
-msgstr ""
+msgstr "סופת חול מקפיאה"
 
 #. FUNNEL_CLOUD
 #: gweather/weather.c:206
@@ -2754,7 +2437,7 @@ msgstr "נכשל בקבלת נתונים מטריים.\n"
 
 #: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
-msgstr ""
+msgstr "ל WeatherInfo חסר מיקום"
 
 #: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
@@ -2798,20 +2481,20 @@ msgid "Retrieval failed"
 msgstr "קבלה נכשלה"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:62
-#: mini-commander/src/mini-commander_applet.c:317
+#: mini-commander/src/about.c:66
+#: mini-commander/src/mini-commander_applet.c:353
 msgid "Command Line"
 msgstr "שורת פקודה"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
-msgstr ""
+msgstr "שורת פקודה"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
 msgstr ""
 
-#: mini-commander/src/about.c:65
+#: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2829,208 +2512,177 @@ msgstr ""
 "של הרישיון הציבורי הכללי של GNU אשר פורסם על-ידי ארגון התוכנה החופשית, גם "
 "גירסה 2 של הרישיון, או (לבחירתך) כל גירסה מאוחרת יותר."
 
-#: mini-commander/src/cmd_completion.c:69
-#: mini-commander/src/cmd_completion.c:115
-#: mini-commander/src/cmd_completion.c:151
-#: mini-commander/src/cmd_completion.c:202
-msgid "not unique"
-msgstr "לא ייחודי"
-
-#: mini-commander/src/cmd_completion.c:73
-#: mini-commander/src/cmd_completion.c:155
-msgid "completing..."
-msgstr "משלים..."
-
-#: mini-commander/src/cmd_completion.c:113
-#: mini-commander/src/cmd_completion.c:200
-msgid "completed"
-msgstr "הושלם"
-
-#: mini-commander/src/cmd_completion.c:118
-#: mini-commander/src/cmd_completion.c:205
-msgid "not found"
-msgstr "לא נמצא"
-
-#: mini-commander/src/cmd_completion.c:167
-msgid "no /bin/sh"
-msgstr "אין /bin/sh"
-
-#: mini-commander/src/command_line.c:98 mini-commander/src/command_line.c:118
-msgid "end of history list"
-msgstr "סוף רשימת היסטוריה"
-
-#. enter pressed -> exec command
-#: mini-commander/src/command_line.c:128
-msgid "starting..."
-msgstr "מתחיל..."
-
-#: mini-commander/src/command_line.c:157
-msgid "autocompleted"
-msgstr "הושלם אוטמטית"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:430
 msgid "Start program"
 msgstr "התחל תוכנית"
 
-#: mini-commander/src/command_line.c:538
+#: mini-commander/src/command_line.c:473
 msgid "Command line"
 msgstr "שורת פקודה"
 
-#: mini-commander/src/command_line.c:539
+#: mini-commander/src/command_line.c:474
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "כתוב כאן פקודה ו Gnome יבצע אותה בשבילך"
 
-#: mini-commander/src/message.c:149
-msgid "%H:%M - %d. %b"
-msgstr "%H:%M - %d. %b"
+#: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
+msgid "Cannot get schema for %s : %s"
+msgstr "לא ניתן לקבל סכימה ל %s : %s"
 
-#: mini-commander/src/message.c:151
-msgid "%H:%M"
-msgstr "%H:%M"
+#: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
+msgid "Cannot set schema for %s : %s"
+msgstr "לא ניתן לקבוע סכימה ל %s : %s"
 
-#: mini-commander/src/message.c:153
-msgid "%d. %b"
-msgstr "%d. %b"
+#: mini-commander/src/mc-install-default-macros.c:105
+#, c-format
+msgid "Set default list value for %s\n"
+msgstr "קבע ערך רשימה ברירת מחדל ל %s\n"
 
-#: mini-commander/src/mini-commander_applet.c:123
-msgid "orient. changed"
-msgstr "כיוון שונה"
+#: mini-commander/src/mc-install-default-macros.c:117
+msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL נקבע, לא מתקין סכימות\n"
 
-#: mini-commander/src/mini-commander_applet.c:140
-msgid "size changed"
-msgstr "גודל שונה"
+#: mini-commander/src/mc-install-default-macros.c:125
+msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
+msgstr "חייב לקבוע את משתנה הסביבה GCONF_CONFIG_SOURCE\n"
 
-#: mini-commander/src/mini-commander_applet.c:290
-#: mini-commander/src/mini-commander_applet.c:293
-msgid "Browser"
-msgstr "דפדפן"
+#: mini-commander/src/mc-install-default-macros.c:142
+#, c-format
+msgid "Failed to access configuration source(s): %s\n"
+msgstr "נכשל בגישה למקור(ואת) ההגדרות: %s\n"
 
-#: mini-commander/src/mini-commander_applet.c:294
-msgid "Click this button to start the browser"
-msgstr "לחץ על כפתור זה כדי להפעיל את הדפדפן"
+#: mini-commander/src/mc-install-default-macros.c:154
+#, c-format
+msgid "Error syncing config data: %s"
+msgstr "שגיאה בסינכרון מידע ההגרות: %s"
 
-#: mini-commander/src/mini-commander_applet.c:309
-#: mini-commander/src/mini-commander_applet.c:312
-msgid "History"
-msgstr "היסטוריה"
+#: mini-commander/src/mini-commander.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: mini-commander/src/mini-commander_applet.c:313
-msgid "Click this button for the list of previous commands"
-msgstr "לחץ על כפתור זה לרשימה של פקודות קודמות"
+#: mini-commander/src/mini-commander.glade.h:2
+msgid "Add New Macro"
+msgstr "הוסף מאקרו חדש"
 
-#: mini-commander/src/mini-commander_applet.c:314
-msgid "Mini-Commander applet"
-msgstr "יישומון שורת הפקודה"
-
-#: mini-commander/src/mini-commander_applet.c:315
-msgid "This applet adds a command line to the panel"
-msgstr "יישומון זה מוסיף שורת פקודה ללוח שלך"
-
-#: mini-commander/src/mini-commander_applet.c:448
-msgid "ready..."
-msgstr "מוכן..."
-
-#: mini-commander/src/preferences.c:703
-msgid "Command Line Preferences"
-msgstr "העדפות שורת הפקודה"
-
-#: mini-commander/src/preferences.c:720
-msgid "Clock"
-msgstr "שעון"
-
-#. show time check box
-#: mini-commander/src/preferences.c:728
-msgid "Show time"
-msgstr "הצג _שעה"
-
-#. show date check box
-#: mini-commander/src/preferences.c:735
-msgid "Show date"
-msgstr "הצג _תאריך"
-
-#. show handle check box
-#: mini-commander/src/preferences.c:751
-msgid "Show han_dle"
-msgstr "הצג _ידית"
-
-#. show frame check box
-#: mini-commander/src/preferences.c:758
-msgid "Show fram_e"
-msgstr "הצג _מסגרת"
-
-#. auto complete frame
-#: mini-commander/src/preferences.c:767
-msgid "Autocompletion"
-msgstr "השלמה אוטומטית"
-
-#. show history autocomplete
-#: mini-commander/src/preferences.c:775
-msgid "Enable _history based autocompletion"
-msgstr "אפשר השלמה אוטמטית מבוססת _היסטוריה"
-
-#. Size
-#: mini-commander/src/preferences.c:782
-msgid "Size"
-msgstr "גודל"
-
-#. applet width
-#: mini-commander/src/preferences.c:794
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "Applet _width:"
 msgstr "_רוחב יישומון:"
 
-#. applet height
-#: mini-commander/src/preferences.c:828
-msgid "Applet height:"
-msgstr "גובה יישומון:"
+#: mini-commander/src/mini-commander.glade.h:5
+msgid "Autocompletion"
+msgstr "השלמה אוטומטית"
 
-#. cmd line height
-#: mini-commander/src/preferences.c:850
-msgid "Command line height:"
-msgstr "גובה שורת פקודה:"
-
-#. Color
-#: mini-commander/src/preferences.c:885 multiload/properties.c:365
+#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
+#: multiload/properties.c:365
 msgid "Colors"
 msgstr "צבעים"
 
-#. default bg and fg theme
-#: mini-commander/src/preferences.c:895
-msgid "_Use default theme colors"
-msgstr "_השתמש בצבעי ערכת נושא ברירת מחדל"
+#: mini-commander/src/mini-commander.glade.h:7
+msgid "Command Line Preferences"
+msgstr "העדפות שורת הפקודה"
 
-#. fg
-#: mini-commander/src/preferences.c:907
-msgid "Command line _foreground:"
-msgstr "_קדמת שורת הפקודה:"
-
-#. bg
-#: mini-commander/src/preferences.c:941
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command line _background:"
 msgstr "_רקע שורת הפקודה:"
 
-#. prefix
-#: mini-commander/src/preferences.c:1001
-#, c-format
-msgid "Regex _%.2d:"
-msgstr ""
+#: mini-commander/src/mini-commander.glade.h:9
+msgid "Command line _foreground:"
+msgstr "_קדמת שורת הפקודה:"
 
-#. command
-#: mini-commander/src/preferences.c:1021
-#, c-format
-msgid "   Macro _%.2d:"
-msgstr "   מאקרו _%.2d:"
+#: mini-commander/src/mini-commander.glade.h:10
+msgid "Command:"
+msgstr "פקודה:"
 
-#: mini-commander/src/preferences.c:1041
-msgid "_Macros"
-msgstr "_מאקרויים"
+#: mini-commander/src/mini-commander.glade.h:11
+msgid "E_nable history based autocompletion"
+msgstr "א_פשר השלמה אוטמטית מבוססת היסטוריה"
+
+#: mini-commander/src/mini-commander.glade.h:13
+msgid "Macros"
+msgstr "מאקרויים"
+
+#: mini-commander/src/mini-commander.glade.h:14
+msgid "Pattern:"
+msgstr "דפוס:"
+
+#: mini-commander/src/mini-commander.glade.h:15
+msgid "Pick a color"
+msgstr "בחר צבע"
+
+#: mini-commander/src/mini-commander.glade.h:16
+msgid "Show fram_e"
+msgstr "הצג _מסגרת"
+
+#: mini-commander/src/mini-commander.glade.h:17
+msgid "Show han_dle"
+msgstr "הצג _ידית"
+
+#: mini-commander/src/mini-commander.glade.h:18
+msgid "Size"
+msgstr "גודל"
+
+#: mini-commander/src/mini-commander.glade.h:19
+msgid "_Add new macro..."
+msgstr "_הוסף מאקרו חדש..."
+
+#: mini-commander/src/mini-commander.glade.h:20
+msgid "_Delete Macro"
+msgstr "_מחק מאקרו"
+
+#: mini-commander/src/mini-commander.glade.h:21
+msgid "_Use default theme colors"
+msgstr "_השתמש בצבעי ערכת נושא ברירת מחדל"
+
+#: mini-commander/src/mini-commander_applet.c:189
+#: mini-commander/src/mini-commander_applet.c:193
+msgid "Browser"
+msgstr "דפדפן"
+
+#: mini-commander/src/mini-commander_applet.c:194
+msgid "Click this button to start the browser"
+msgstr "לחץ על כפתור זה כדי להפעיל את הדפדפן"
+
+#: mini-commander/src/mini-commander_applet.c:208
+#: mini-commander/src/mini-commander_applet.c:212
+msgid "History"
+msgstr "היסטוריה"
+
+#: mini-commander/src/mini-commander_applet.c:213
+msgid "Click this button for the list of previous commands"
+msgstr "לחץ על כפתור זה לרשימה של פקודות קודמות"
+
+#: mini-commander/src/mini-commander_applet.c:351
+msgid "Mini-Commander applet"
+msgstr "יישומון שורת הפקודה"
+
+#: mini-commander/src/mini-commander_applet.c:352
+msgid "This applet adds a command line to the panel"
+msgstr "יישומון זה מוסיף שורת פקודה ללוח שלך"
+
+#: mini-commander/src/preferences.c:343
+msgid "You must specify a pattern"
+msgstr "אתה חייב לציין דפוס"
+
+#: mini-commander/src/preferences.c:347
+msgid "You must specify a pattern and a command"
+msgstr "אתה חייב לציין דפוס ופקודה"
+
+#: mini-commander/src/preferences.c:348
+msgid "You must specify a command"
+msgstr "אתה חייב לציין פקודה"
+
+#: mini-commander/src/preferences.c:351
+msgid "You may not specify duplicate patterns"
+msgstr "אתה לא יכול לציין דפוסים כפולים"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "כוון את עוצמת הקול"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:141
-#: mixer/mixer.c:819
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
+#: mixer/mixer.c:827
 msgid "Volume Control"
 msgstr "בקרת עוצמה"
 
@@ -3042,11 +2694,11 @@ msgstr "ה_שתק"
 msgid "_Run Volume Control..."
 msgstr "_הפעל בקרת עוצמה..."
 
-#: mixer/mixer.c:142
+#: mixer/mixer.c:144
 msgid "Volume Control (muted)"
 msgstr "בקרת עוצמה (מושתק)"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:196
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3054,37 +2706,37 @@ msgstr ""
 "אזהרה: גירסה זו של gmix הודרה עם גירסה אחרת של\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:205
+#: mixer/mixer.c:207
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "שאילתה לערוצים הזמינים של התקן המערבל %s נכשל\n"
 
-#: mixer/mixer.c:212
+#: mixer/mixer.c:214
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "אזהרה: למערבל אין ערוץ עוצמה - משתמש ב PCM במקום.\n"
 
-#: mixer/mixer.c:215
+#: mixer/mixer.c:217
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "להתקן המערבל %s אין ערוצי עוצמה ו/או PCM.\n"
 
-#: mixer/mixer.c:568
+#: mixer/mixer.c:572
 msgid "Volume Controller"
 msgstr "בקרת עוצמה"
 
-#: mixer/mixer.c:569
+#: mixer/mixer.c:573
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "השתמש בחצים מעלה/מטה כדי לשנות את העוצמה"
 
-#: mixer/mixer.c:820
+#: mixer/mixer.c:828
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:821
+#: mixer/mixer.c:829
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "בקרת העוצמה נותנת לך לשנות את רמת העוצמה בשולחן העבודה שלך."
 
-#: mixer/mixer.c:1059
+#: mixer/mixer.c:1074
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "בקרת העוצמה נותנת לך לקבוע את רמת העוצמה לשולחן העבודה שלך"
 
@@ -3093,11 +2745,11 @@ msgid "Internet"
 msgstr "אינטרנט"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:224
+#: modemlights/modemlights.c:227
 msgid "Modem Lights"
 msgstr "נוריות מודם"
 
-#: modemlights/modemlights.c:226
+#: modemlights/modemlights.c:229
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3107,7 +2759,7 @@ msgstr ""
 "מציג מצב מודם וחייגן.\n"
 "הנוריות בסדר מלמעלה או משמאל הן שליחת נתונים וקבלת נתונים."
 
-#: modemlights/modemlights.c:553
+#: modemlights/modemlights.c:558
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3115,148 +2767,144 @@ msgstr ""
 "אתה כרגע מחובר.\n"
 "האם ברצונך להתנתק?"
 
-#: modemlights/modemlights.c:568
+#: modemlights/modemlights.c:573
 msgid "Do you want to connect?"
 msgstr "האם ברצונך להתחבר?"
 
-#: modemlights/modemlights.c:596
+#: modemlights/modemlights.c:601
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb התקבלו / %#.1fMb נשלחו / זמן: %.1d:%.2d"
 
-#: modemlights/modemlights.c:601
+#: modemlights/modemlights.c:606
 msgid "not connected"
 msgstr "לא מחובר"
 
-#: modemlights/properties.c:326
+#: modemlights/properties.c:328
 msgid "Modem Lights Preferences"
 msgstr "העדפות נוריות מודם"
 
-#: modemlights/properties.c:338
+#: modemlights/properties.c:342
 msgid "Connecting"
 msgstr "מתחבר..."
 
-#: modemlights/properties.c:352
+#: modemlights/properties.c:356
 msgid "Co_nnect command:"
 msgstr "פקודת הת_חברות:"
 
-#: modemlights/properties.c:369
+#: modemlights/properties.c:373
 msgid "_Disconnect command:"
 msgstr "פקודת הת_נתקות:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:382
+#: modemlights/properties.c:386
 msgid "Con_firm connection"
 msgstr "א_שר התחברות"
 
-#: modemlights/properties.c:403
+#: modemlights/properties.c:407
 msgid "U_pdates per second"
 msgstr "_עדכונים לשניה"
 
 #. extra info checkbox
-#: modemlights/properties.c:417
+#: modemlights/properties.c:421
 msgid "Sho_w connect time and throughput"
 msgstr "הצ_ג זמן חיבור וקצב העברה"
 
-#: modemlights/properties.c:434
+#: modemlights/properties.c:438
 msgid "Receive data"
 msgstr "קבלת מידע"
 
-#: modemlights/properties.c:436
+#: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr "_קדמה"
 
-#: modemlights/properties.c:437
+#: modemlights/properties.c:441
 msgid "_Background"
 msgstr "_רקע"
 
-#: modemlights/properties.c:439
+#: modemlights/properties.c:443
 msgid "Send data"
 msgstr "שליחת מידע"
 
-#: modemlights/properties.c:441
+#: modemlights/properties.c:445
 msgid "Foregroun_d"
 msgstr "ק_דמה"
 
-#: modemlights/properties.c:442
+#: modemlights/properties.c:446
 msgid "Backg_round"
 msgstr "ר_קע"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:448
 msgid "Connection status"
 msgstr "מצב התחברות"
 
-#: modemlights/properties.c:446
+#: modemlights/properties.c:450
 msgid "Co_nnected"
 msgstr "_מחובר"
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:451
 msgid "No_t connected"
 msgstr "_לא מחובר"
 
-#: modemlights/properties.c:448
+#: modemlights/properties.c:452
 msgid "A_waiting connection"
 msgstr "_ממתין להתחברות"
 
-#: modemlights/properties.c:451
+#: modemlights/properties.c:455
 msgid "B_link"
 msgstr "ה_בהב"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:462
 msgid "Text"
 msgstr "מלל"
 
-#: modemlights/properties.c:460
+#: modemlights/properties.c:464
 msgid "For_eground"
 msgstr "_קדמה"
 
-#: modemlights/properties.c:461
+#: modemlights/properties.c:465
 msgid "Bac_kground"
 msgstr "_רקע"
 
-#: modemlights/properties.c:462
+#: modemlights/properties.c:466
 msgid "O_utline"
 msgstr "מ_תאר"
 
-#: modemlights/properties.c:464
-msgid "C_olors"
-msgstr "_צבעים"
-
-#: modemlights/properties.c:473
+#: modemlights/properties.c:477
 msgid "Modem options"
 msgstr "אפשרויות מודם"
 
-#: modemlights/properties.c:487
+#: modemlights/properties.c:491
 msgid "_Modem lock file:"
 msgstr "קובץ נעילת _מודם:"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:503
 msgid "_Verify owner of lock file"
 msgstr "_ודא בעלים של קובץ הנעילה"
 
-#: modemlights/properties.c:511
+#: modemlights/properties.c:515
 msgid "_Device:"
 msgstr "_התקן:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:524
+#: modemlights/properties.c:528
 msgid "U_se ISDN"
 msgstr "ה_שתמש ב ISDN"
 
-#: modemlights/properties.c:544
+#: modemlights/properties.c:548
 msgid "Set options as default"
 msgstr "קבע אפשרויות כברירת מחדל"
 
-#: modemlights/properties.c:550
-msgid "_Advanced"
-msgstr "_מתקדם"
+#: modemlights/properties.c:554
+msgid "Advanced"
+msgstr "מתקדם"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
-msgstr ""
+msgstr "מחוון עומס מערכת"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:75
+#: multiload/main.c:78
 msgid "System Monitor"
 msgstr "צג מערכת"
 
@@ -3272,7 +2920,7 @@ msgstr "הספק מעבד"
 msgid "Load Average"
 msgstr "ממוצע הספק"
 
-#: multiload/main.c:77
+#: multiload/main.c:80
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3283,27 +2931,27 @@ msgstr ""
 "\n"
 "צג הספק מערכת המאפשר להציג גרפים למעבד, RAM וקובץ תחלופה, וגם עומס רשת."
 
-#: multiload/main.c:227
+#: multiload/main.c:236 multiload/properties.c:373
 msgid "Processor"
 msgstr "מעבד"
 
-#: multiload/main.c:229
+#: multiload/main.c:238 multiload/properties.c:379
 msgid "Memory"
 msgstr "זכרון"
 
-#: multiload/main.c:231
+#: multiload/main.c:240 multiload/properties.c:385
 msgid "Network"
 msgstr "רשת"
 
-#: multiload/main.c:233
+#: multiload/main.c:242 multiload/properties.c:391
 msgid "Swap File"
 msgstr "קובץ תחלופה"
 
-#: multiload/main.c:235
+#: multiload/main.c:244
 msgid "Resource"
 msgstr "משאב"
 
-#: multiload/main.c:247
+#: multiload/main.c:256
 #, c-format
 msgid ""
 "%s:\n"
@@ -3340,16 +2988,6 @@ msgstr "_רשת"
 msgid "_Swap File"
 msgstr "קובץ _תחלופה"
 
-#.
-#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-#.
-#: multiload/properties.c:313
-msgid "Options"
-msgstr "אפשרויות"
-
 #: multiload/properties.c:326
 msgid "System m_onitor width: "
 msgstr "רוחב צ_ג המערכת: "
@@ -3370,10 +3008,6 @@ msgstr "השהיית עדכוני צג המע_רכת: "
 msgid "milliseconds"
 msgstr "מילי שניות"
 
-#: multiload/properties.c:373
-msgid "P_rocessor"
-msgstr "מע_בד"
-
 #: multiload/properties.c:374
 msgid "_User"
 msgstr "_משתמש"
@@ -3389,10 +3023,6 @@ msgstr "_טוב"
 #: multiload/properties.c:377
 msgid "I_dle"
 msgstr "_סרק"
-
-#: multiload/properties.c:379
-msgid "M_emory"
-msgstr "_זכרון"
 
 #: multiload/properties.c:380
 msgid "Ot_her"
@@ -3410,10 +3040,6 @@ msgstr "_מאגרים"
 msgid "F_ree"
 msgstr "פ_נוי"
 
-#: multiload/properties.c:385
-msgid "Net_work"
-msgstr "_רשת"
-
 #: multiload/properties.c:386
 msgid "S_LIP"
 msgstr "S_LIP"
@@ -3430,10 +3056,6 @@ msgstr "Et_hernet"
 msgid "_Other"
 msgstr "_אחר"
 
-#: multiload/properties.c:391
-msgid "Swap _File"
-msgstr "_קובץ תחלופה"
-
 #: multiload/properties.c:392
 msgid "_Used"
 msgstr "_בשימוש"
@@ -3442,7 +3064,7 @@ msgstr "_בשימוש"
 msgid "_Free"
 msgstr "_פנוי"
 
-#: multiload/properties.c:411
+#: multiload/properties.c:413
 msgid "System Monitor Preferences"
 msgstr "העדפות צג מערכת"
 
@@ -3474,16 +3096,16 @@ msgstr "תפריט פעולות"
 msgid "Add items to the Menu Bar"
 msgstr "הוסף פריטים לתפריט"
 
-#: panel-menu/panel-menu-add.c:240 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr "קיצורי דרך"
 
-#: panel-menu/panel-menu-add.c:246
+#: panel-menu/panel-menu-add.c:250
 msgid "My Documents"
 msgstr "המסמכים שלי"
 
-#: panel-menu/panel-menu-add.c:252 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr "מסמכים"
@@ -3492,11 +3114,11 @@ msgstr "מסמכים"
 msgid "Applications"
 msgstr "יישומים"
 
-#: panel-menu/panel-menu-common.c:735
+#: panel-menu/panel-menu-common.c:738
 msgid ""
 "Removing this entry is not allowed as this will cause the Menu Bar applet to "
 "be removed from GNOME Panel"
-msgstr ""
+msgstr "הסרת הערך הזה אינה מורשת כיוון שזה יגרום להסרת יישומון שורת התפריט מלוח GNOME."
 
 #: panel-menu/panel-menu-directory.c:516
 msgid "Create directory item..."
@@ -3510,19 +3132,19 @@ msgstr "בית"
 msgid "Edit directory item..."
 msgstr "ערוך פריט סיפרייה..."
 
-#: panel-menu/panel-menu-directory.c:684 panel-menu/panel-menu-path.c:734
+#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
 msgid "_Path:"
 msgstr "_נתיב:"
 
-#: panel-menu/panel-menu-directory.c:692
+#: panel-menu/panel-menu-directory.c:694
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:702
+#: panel-menu/panel-menu-directory.c:704
 msgid "_Depth level:"
 msgstr "רמת _עומק:"
 
-#: panel-menu/panel-menu-directory.c:799
+#: panel-menu/panel-menu-directory.c:801
 msgid "Path specified is currently not a valid directory."
 msgstr "הנתיב שסופק אינו תיקייה תקינה."
 
@@ -3571,31 +3193,31 @@ msgstr "העדפות"
 msgid "Menu Bar Preferences"
 msgstr "העדפות התפריט"
 
-#: panel-menu/panel-menu-properties.c:76
+#: panel-menu/panel-menu-properties.c:78
 msgid "Layout"
 msgstr "סידור"
 
-#: panel-menu/panel-menu-properties.c:91
+#: panel-menu/panel-menu-properties.c:93
 msgid "_Applications Menu"
 msgstr "תפריט _יישומים"
 
-#: panel-menu/panel-menu-properties.c:115
+#: panel-menu/panel-menu-properties.c:117
 msgid "Select an icon for the Applications menu"
 msgstr "בחר את הסמל לתפריט היישומים"
 
-#: panel-menu/panel-menu-properties.c:132
+#: panel-menu/panel-menu-properties.c:134
 msgid "_Preferences Menu"
 msgstr "תפריט ה_עדפות"
 
-#: panel-menu/panel-menu-properties.c:143
+#: panel-menu/panel-menu-properties.c:145
 msgid "Ac_tions Menu"
 msgstr "תפריט _פעולות"
 
-#: panel-menu/panel-menu-properties.c:154
+#: panel-menu/panel-menu-properties.c:156
 msgid "_Windows Menu"
 msgstr "תפריט _חלונות"
 
-#: panel-menu/panel-menu-properties.c:165
+#: panel-menu/panel-menu-properties.c:167
 msgid "W_orkspaces Menu"
 msgstr "תפריט _סביבות עבודה"
 
@@ -3607,14 +3229,447 @@ msgstr "חלונות"
 msgid "Workspaces"
 msgstr "סביבות עבודה"
 
-#: panel-menu/panel-menu.c:691
+#: panel-menu/panel-menu.c:693
 msgid "Menu Bar"
 msgstr "תפריט"
 
-#: panel-menu/panel-menu.c:692
+#: panel-menu/panel-menu.c:694
 msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:693
+#: panel-menu/panel-menu.c:695
 msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr "תפריט זה מאפשר לך להציג תפריטים מותאמים אישית בלוח שלך."
+
+#: screen-exec/egg-screen-help.c:174
+msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:187
+msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
+#, c-format
+msgid ""
+"Unable to show help as %s is not a directory.  Please check your "
+"installation."
+msgstr ""
+"לא ניתן להציג עזרה כיוון ש %s איננה סיפרייה.  אנא בדוק "
+"את ההתקנה שלך."
+
+#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
+#, c-format
+msgid ""
+"Unable to find the help files in either %s or %s.  Please check your "
+"installation"
+msgstr ""
+"לא ניתן למצוא את קבצי העזרה ב %s או ב %s.  אנא בדוק "
+"את ההתקנה שלך"
+
+#: screen-exec/egg-screen-help.c:315
+#, c-format
+msgid "Unable to find doc_id %s in the help path"
+msgstr "לא ניתן למצוא את doc_id %s בנתיב העזרה שלך"
+
+#: screen-exec/egg-screen-help.c:336
+#, c-format
+msgid "Help document %s/%s not found"
+msgstr "מסמך העזרה %s/%s לא נמצא"
+
+#: wireless/wireless-applet.c:343
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+"התמונות ההכרחיות להפעלת צג האל-חוט חסרות.\n"
+"אנא ודא כי זה מותקן נכון."
+
+#: wireless/wireless-applet.c:524
+msgid "No Wireless Devices"
+msgstr "אין התקנים אל-חוטיים"
+
+#: wireless/wireless-applet.c:526
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"לא נראה כי ישנם התקנים אל-חוטיים מוגדרים במערכת שלך.\n"
+"אנא ודא את ההגדרות שלך אם אתה חושב שזה לא נכון."
+
+#: wireless/wireless-applet.c:718
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "צג קישור אל-חוטי"
+
+#: wireless/wireless-applet.c:720
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 2001, 2002 ארגון התוכנה החופשית "
+
+#: wireless/wireless-applet.c:721
+msgid "This utility shows the status of a wireless link."
+msgstr "תוכנית שירות זו מציגה את מצב החיבור האל-חוטי."
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr "התקנים מוצגים:"
+
+#: wireless/wireless-applet.glade.h:2
+msgid "Show _dialog boxes"
+msgstr "הצג תיבות _דו-שיח"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Show signal strength in _percentage"
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:4
+msgid "Wireless Link Monitor Preferences"
+msgstr "העדפות צג קישור אל-חוטי"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "מציג את איכות חיבור הרשת האל-חוטית"
+
+#~ msgid "Settings"
+#~ msgstr "הגדרות"
+
+#~ msgid "_Edit"
+#~ msgstr "ע_רוך"
+
+#~ msgid "_Up"
+#~ msgstr "מ_עלה"
+
+#~ msgid "Dow_n"
+#~ msgstr "מ_טה"
+
+#~ msgid "Armenia"
+#~ msgstr "ארמניה"
+
+#~ msgid "Australia"
+#~ msgstr "אוסטרליה"
+
+#~ msgid "Austria"
+#~ msgstr "אוסטריה"
+
+#~ msgid "Belgium"
+#~ msgstr "בלגיה"
+
+#~ msgid "Brazil"
+#~ msgstr "ברזיל"
+
+#~ msgid "Bulgaria"
+#~ msgstr "בולגריה"
+
+#~ msgid "Canada"
+#~ msgstr "קנדה"
+
+#~ msgid "Caribic"
+#~ msgstr "קריביים"
+
+#~ msgid "France"
+#~ msgstr "צרפת"
+
+#~ msgid "Georgia"
+#~ msgstr "ג'ורג'יה"
+
+#~ msgid "Germany"
+#~ msgstr "גרמניה"
+
+#~ msgid "Great Britain"
+#~ msgstr "בריטניה הגדולה"
+
+#~ msgid "Greece"
+#~ msgstr "יוון"
+
+#~ msgid "Hungary"
+#~ msgstr "הונגריה"
+
+#~ msgid "Jamaica"
+#~ msgstr "ג'אמייקה"
+
+#~ msgid "New Zealand"
+#~ msgstr "ניו-זילנד"
+
+#~ msgid "Norway"
+#~ msgstr "נורווגיה"
+
+#~ msgid "Poland"
+#~ msgstr "פולין"
+
+#~ msgid "Portugal"
+#~ msgstr "פורטוגל"
+
+#~ msgid "Russia"
+#~ msgstr "רוסיה"
+
+#~ msgid "Slovak Republic"
+#~ msgstr "הרפובליקה הסלובקית"
+
+#~ msgid "Slovenia"
+#~ msgstr "סלובניה"
+
+#~ msgid "South Africa"
+#~ msgstr "דרום אפריקה"
+
+#~ msgid "Spain"
+#~ msgstr "ספרד"
+
+#~ msgid "Sweden"
+#~ msgstr "שוודיה"
+
+#~ msgid "Switzerland"
+#~ msgstr "שוויץ"
+
+#~ msgid "Thailand"
+#~ msgstr "תאילנד"
+
+#~ msgid "Turkey"
+#~ msgstr "טורקיה"
+
+#~ msgid "United Kingdom"
+#~ msgstr "הממלכה המאוחדת"
+
+#~ msgid "United States"
+#~ msgstr "ארצות הברית"
+
+#~ msgid "Yugoslavia"
+#~ msgstr "יגוסלביה"
+
+#~ msgid "Armenian"
+#~ msgstr "ארמנית"
+
+#~ msgid "Basque"
+#~ msgstr "בסקית"
+
+#~ msgid "Bulgarian"
+#~ msgstr "בולגרית"
+
+#~ msgid "Dutch"
+#~ msgstr "הולנדית"
+
+#~ msgid "English"
+#~ msgstr "אנגלית"
+
+#~ msgid "French"
+#~ msgstr "צרפתית"
+
+#~ msgid "Georgian"
+#~ msgstr "גרוזינית"
+
+#~ msgid "German"
+#~ msgstr "גרמנית"
+
+#~ msgid "Greek"
+#~ msgstr "יוונית"
+
+#~ msgid "Hungarian"
+#~ msgstr "הונגרית"
+
+#~ msgid "Norwegian"
+#~ msgstr "נורווגית"
+
+#~ msgid "Polish"
+#~ msgstr "פולנית"
+
+#~ msgid "Portuguese"
+#~ msgstr "פורטוגזית"
+
+#~ msgid "Russian"
+#~ msgstr "רוסית"
+
+#~ msgid "Slovak"
+#~ msgstr "סלובקית"
+
+#~ msgid "Slovenian"
+#~ msgstr "סולבנית"
+
+#~ msgid "Swedish"
+#~ msgstr "שוודית"
+
+#~ msgid "Thai"
+#~ msgstr "תאי"
+
+#~ msgid "Turkish"
+#~ msgstr "טורקית"
+
+#~ msgid "Yugoslavian"
+#~ msgstr "יגוסלבית"
+
+#~ msgid "105"
+#~ msgstr "105"
+
+#~ msgid "101"
+#~ msgstr "101"
+
+#~ msgid "102"
+#~ msgstr "102"
+
+#~ msgid "450"
+#~ msgstr "450"
+
+#~ msgid "84"
+#~ msgstr "84"
+
+#~ msgid "mklinux"
+#~ msgstr "mklinux"
+
+#~ msgid "type5"
+#~ msgstr "type5"
+
+#~ msgid "iso-8859-1"
+#~ msgstr "iso-8859-1"
+
+#~ msgid "iso-8859-2"
+#~ msgstr "iso-8859-2"
+
+#~ msgid "iso-8859-7"
+#~ msgstr "iso-8859-7"
+
+#~ msgid "iso-8859-9"
+#~ msgstr "iso-8859-9"
+
+#~ msgid "am-armscii8"
+#~ msgstr "am-armscii8"
+
+#~ msgid "be-latin1"
+#~ msgstr "be-latin1"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "tis620"
+#~ msgstr "tis620"
+
+#~ msgid "ix86"
+#~ msgstr "ix86"
+
+#~ msgid "Sun"
+#~ msgstr "Sun"
+
+#~ msgid "mac"
+#~ msgstr "Mac"
+
+#~ msgid "sgi"
+#~ msgstr "SGI"
+
+#~ msgid "dec"
+#~ msgstr "DEC"
+
+#~ msgid "ibm"
+#~ msgstr "IBM"
+
+#~ msgid "Lan_guage:"
+#~ msgstr "ש_פה:"
+
+#~ msgid "Count_ry:"
+#~ msgstr "_מדינה:"
+
+#~ msgid ""
+#~ "_Flag\n"
+#~ "Pixmap:"
+#~ msgstr ""
+#~ "_דגל\n"
+#~ "תמונה:"
+
+#~ msgid "Arc_hitecture:"
+#~ msgstr "_ארכיטקטורה:"
+
+#~ msgid "_Type:"
+#~ msgstr "_סוג:"
+
+#~ msgid "_Options"
+#~ msgstr "_אפשרויות"
+
+#~ msgid "Enter symbols delimited with \"+\" in the box below."
+#~ msgstr "הכנס סמלים המוגבלים עם \"+\" בחלון מטה."
+
+#~ msgid "Stock Sy_mbol:"
+#~ msgstr "_סמל מניה:"
+
+#~ msgid "Stock C_hange:"
+#~ msgstr "_שינוי מניה:"
+
+#~ msgid "_Appearance"
+#~ msgstr "_מראה"
+
+#~ msgid "_General"
+#~ msgstr "_כללי"
+
+#~ msgid "not unique"
+#~ msgstr "לא ייחודי"
+
+#~ msgid "completing..."
+#~ msgstr "משלים..."
+
+#~ msgid "completed"
+#~ msgstr "הושלם"
+
+#~ msgid "not found"
+#~ msgstr "לא נמצא"
+
+#~ msgid "no /bin/sh"
+#~ msgstr "אין /bin/sh"
+
+#~ msgid "end of history list"
+#~ msgstr "סוף רשימת היסטוריה"
+
+#~ msgid "starting..."
+#~ msgstr "מתחיל..."
+
+#~ msgid "autocompleted"
+#~ msgstr "הושלם אוטמטית"
+
+#~ msgid "%H:%M - %d. %b"
+#~ msgstr "%H:%M - %d. %b"
+
+#~ msgid "%H:%M"
+#~ msgstr "%H:%M"
+
+#~ msgid "%d. %b"
+#~ msgstr "%d. %b"
+
+#~ msgid "orient. changed"
+#~ msgstr "כיוון שונה"
+
+#~ msgid "size changed"
+#~ msgstr "גודל שונה"
+
+#~ msgid "ready..."
+#~ msgstr "מוכן..."
+
+#~ msgid "Clock"
+#~ msgstr "שעון"
+
+#~ msgid "Show time"
+#~ msgstr "הצג _שעה"
+
+#~ msgid "Show date"
+#~ msgstr "הצג _תאריך"
+
+#~ msgid "Applet height:"
+#~ msgstr "גובה יישומון:"
+
+#~ msgid "Command line height:"
+#~ msgstr "גובה שורת פקודה:"
+
+#~ msgid "   Macro _%.2d:"
+#~ msgstr "   מאקרו _%.2d:"
+
+#~ msgid "C_olors"
+#~ msgstr "_צבעים"
+
+#~ msgid "P_rocessor"
+#~ msgstr "מע_בד"
+
+#~ msgid "M_emory"
+#~ msgstr "_זכרון"
+
+#~ msgid "Net_work"
+#~ msgstr "_רשת"
+
+#~ msgid "Swap _File"
+#~ msgstr "_קובץ תחלופה"
+
