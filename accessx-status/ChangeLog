@@ -1,3 +1,28 @@
+2003-12-11  Bill Haneman <bill.haneman@sun.com>  
+
+	* accessx-status/applet.c:
+	(accessx_status_applet_init_modifiers): Reinstated the AltGr
+	support in case it's fixed on some platforms (harmless but may
+	not reflect latched state on some X versions, due to an XKB bug).
+	(accessx_status_applet_slowkeys_image): 
+	Do our composition into a copy of the 'icon base' image,
+	so that we don't write all over the shallow copy returned by
+	gtk_widget_render_icon.
+	(accessx_status_applet_bouncekeys_image):
+	Do compositing into a copy image.  Make sure we return the
+	correct, composited image.
+	Also adjust the dimensions of dest_x, dest_width, etc. in
+	gdk_pixbuf_composite, while reinstating the negative offsets.
+	This keeps us from writing into invalid areas of the dest image.
+	Reinstate the double-compositing, so that the bouncekeys image
+	contains a localized representation of a 'double strike' key.
+	(accessx_status_applet_mousekeys_image):
+	Composite into a pixbuf copy so that we don't overwrite the base
+	image when compositing in our buttons and dots.
+	Removed a couple of obsolete query comments.
+
+	This fixes bug #126201.
+	
 2003-12-7  Shakti Sen <shakti.sen@wipro.com>
 
 	* accessx-status/applet.c: accessx_status_applet_destroy ()
