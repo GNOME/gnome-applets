@@ -24,7 +24,11 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 
 #ifdef __FreeBSD__
 #define APMDEVICE	"/dev/apm"
-#endif
+#endif /* __FreeBSD__ */
+
+#ifdef __OpenBSD__
+#define APMDEVICE                "/dev/apm"
+#endif /* __OpenBSD__ */
 
 #define PROGLEN 33.0
 

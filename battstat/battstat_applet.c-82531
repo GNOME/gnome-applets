@@ -28,6 +28,9 @@ $Id$
 
 #ifdef __FreeBSD__
 #include <machine/apm_bios.h>
+#elif __OpenBSD__
+#include <sys/param.h>
+#include <machine/apmvar.h>
 #elif __linux__
 #include <apm.h>
 #endif
@@ -197,7 +200,11 @@ GdkColor darkred[] = {
 };
 
 int fd;
+#ifdef __OpenBSD__
+struct apm_power_info apminfo;
+#else
 struct apm_info apminfo;
+#endif
 
 #ifdef __FreeBSD__
 void
@@ -207,6 +214,15 @@ apm_readinfo(void)
 
   if (ioctl(fd, APMIO_GETINFO, &apminfo) == -1)
     err(1, "ioctl(APMIO_GETINFO)");
+}
+#elif __OpenBSD__
+void
+apm_readinfo(void)
+{
+  if (DEBUG) g_print("apm_readinfo() (OpenBSD)\n");
+
+  if (ioctl(fd, APM_IOC_GETPOWER, &apminfo) == -1)
+    err(1, "ioctl(APM_IOC_GETPOWER)");
 }
 #elif __linux__
 void
@@ -278,6 +294,18 @@ pixmap_timeout( gpointer data )
   if(pix_type_new < 0) pix_type_new = 0;
   if(batt_life > 100) batt_life = 0;
   if(ac_status == 255) {
+    ac_status = 0;
+    batterypresent = FALSE;
+  } else {
+    batterypresent = TRUE;
+  }
+#elif __OpenBSD__
+  pix_type_new = apminfo.ac_state;
+  batt_life = apminfo.battery_life;
+  ac_status = apminfo.battery_state;
+  if(pix_type_new < 0) pix_type_new = 0;
+  if(batt_life > 100) batt_life = 0;
+  if(ac_status == APM_AC_ON) {
     ac_status = 0;
     batterypresent = FALSE;
   } else {
@@ -384,10 +412,6 @@ pixmap_timeout( gpointer data )
 
     gtk_label_set_text ( GTK_LABEL (battery->percent), new_label);
     gtk_label_set_text ( GTK_LABEL (battery->statuspercent), new_label);
-    /*
-    gtk_label_set_text ( GTK_LABEL (battery->docklabel), new_label);
-    */
-    /* Draw the progress bar on the battery background */
 
     if (batt_life <= battery->red_val) {
       color=red;
@@ -577,6 +601,8 @@ destroy_applet( GtkWidget *widget, gpointer data )
   g_free(pdata);
 #ifdef __FreeBSD__
   close(fd);
+#elif __OpenBSD__
+  close(fd);
 #elif __Linux__
   apm_close(fd);
 #endif
@@ -599,7 +625,7 @@ cleanup(int status)
     break;
   case 2:
     g_error (_("The APM Managment subsystem seems to be disabled.\n"
-	       "Try executing \"apm -e 1\" (on FreeBSD) and see if \n"
+	       "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 	       "that helps.\n"));
     close(fd);
     gtk_main_quit();
@@ -750,6 +776,18 @@ change_orient (gpointer data)
   if(pix_type_new < 0) pix_type_new = 0;
   if(batt_life == 255) batt_life = 0;
   if(ac_status == 255) {
+    ac_status = 0;
+    batterypresent = FALSE;
+  } else {
+    batterypresent = TRUE;
+  }
+#elif __OpenBSD__
+  pix_type_new = apminfo.ac_state;
+  batt_life = apminfo.battery_life;
+  ac_status = apminfo.battery_state;
+  if(pix_type_new < 0) pix_type_new = 0;
+  if(batt_life > 100) batt_life = 0;
+  if(ac_status == APM_AC_ON) {
     ac_status = 0;
     batterypresent = FALSE;
   } else {
@@ -1072,6 +1110,9 @@ prop_cb (AppletWidget *applet, gpointer data)
 
 #ifdef __FreeBSD__
   percentage = apminfo.ai_batt_life;
+  if(percentage == 255) percentage = 0;
+#elif __OpenBSD__
+  percentage = apminfo.battery_life;
   if(percentage == 255) percentage = 0;
 #elif __linux__
   percentage = apminfo.battery_percentage;
@@ -1702,6 +1743,9 @@ main(int argc, char *argv[])
   ProgressData *battstat;
 
 #ifdef __FreeBSD__
+  fd = open(APMDEVICE, O_RDONLY);
+  if (fd == -1) cleanup(1);
+#elif __OpenBSD__
   fd = open(APMDEVICE, O_RDONLY);
   if (fd == -1) cleanup(1);
 #elif __linux__
