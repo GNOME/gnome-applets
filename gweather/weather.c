@@ -1878,11 +1878,21 @@ GdkPixmap *weather_info_get_radar (WeatherInfo *info)
 const gchar *weather_info_get_temp_summary (WeatherInfo *info)
 {
     static gchar buf[10];
+    const gchar *degree="h";
+    
     if (!info)
         return NULL;
     if (!info->valid)
         return "--";
-    g_snprintf(buf, sizeof (buf), "%d\302\260", (int)(info->temp + 0.5));
+    
+    if (!info->applet)
+      degree = "F";
+    else if (info->applet->gweather_pref.use_metric)                                   
+      degree = "C";                                               
+    else                                                                    
+      degree = "F";
+      
+   g_snprintf(buf, sizeof (buf), "%d\302\260%s", (int)(info->temp + 0.5), degree);
     
     return buf;
 }
