@@ -1,8 +1,9 @@
-2001-09-08  Jim Garrison  <garrison@users.sourceforge.net>
+2001-09-21  Jim Garrison  <garrison@users.sourceforge.net>
 
-	* Makefile.am:
-	* gtik.c: (xfer_callback), (updateOutput), (main): now uses
-	gnome-vfs async operations to get stock quote data
+	* gtik.c: (parseQuote), (Repaint), (remFromClist), (properties_cb),
+	(main), (reSetOutputArray), (setOutputArray): more strings are
+	dynamicly allocated (less segfaults); fixed bug when removing
+	multiple symbols at once
 
 2001-09-13  Jim Garrison  <garrison@users.sourceforge.net>
 
@@ -16,6 +17,16 @@
 	(apply_cb), (font_selector), (main): uses gnome-vfs for async
 	ops; applied patch from kjartan to only allow one fonts box
 	open at a time; fixed bug which made update interval useless
+
+2001-09-10  Maciej Stachowiak  <mjs@noisehavoc.org>
+
+	* Makefile.am: handle gnome-vfs LIBS and CFLAGS properly.
+
+2001-09-08  Jim Garrison  <garrison@users.sourceforge.net>
+
+	* Makefile.am:
+	* gtik.c: (xfer_callback), (updateOutput), (main): now uses
+	gnome-vfs async operations to get stock quote data
 
 2001-09-10  Maciej Stachowiak  <mjs@noisehavoc.org>
 

@@ -1,6 +1,6 @@
 
 INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-		 -I$(includedir) $(VFS_CFLAGS) \
+		 -I$(includedir)  $(GNOME_INCLUDEDIR) $(VFS_CFLAGS) \
 		 -DGTIK_APPLET_NAME=\"gtik2_applet\"
 
 bin_PROGRAMS = gtik2_applet
