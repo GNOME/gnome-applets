@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-25 01:52+0100\n"
-"PO-Revision-Date: 2003-12-26 17:41+0100\n"
+"POT-Creation-Date: 2003-12-28 17:38+0100\n"
+"PO-Revision-Date: 2003-12-28 21:50+0100\n"
 "Last-Translator: Åsmund Skjæveland <aasmunds@fys.uio.no>\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "_Om ..."
 
@@ -44,6 +45,7 @@ msgstr "_Om ..."
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "_Hjelp"
 
@@ -75,6 +77,7 @@ msgstr "Viser status for tilgjengefungsjonar for tastaturet"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Verktøy"
 
@@ -85,7 +88,7 @@ msgstr "Verktøy"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
 #: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:484
 msgid "translator_credits"
 msgstr ""
 "Åsmund Skjæveland <aasmunds@fys.uio.no>\n"
@@ -426,8 +429,8 @@ msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
 msgstr ""
-"Får ikkje tilgang til hendingar i «/var/run/acpid.socket». Kontroller "
-"at ACPI-systemet fungerer og at acpid-nissen køyrer."
+"Får ikkje tilgang til hendingar i «/var/run/acpid.socket». Kontroller at "
+"ACPI-systemet fungerer og at acpid-nissen køyrer."
 
 #: battstat/battstat_applet.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -740,8 +743,8 @@ msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"Panelprogram til å velja rare teikn som ikkje er på tastaturet ditt. "
-"Sluppen under GNU General Public License."
+"Panelprogram til å velja rare teikn som ikkje er på tastaturet ditt. Sluppen "
+"under GNU General Public License."
 
 #: charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
@@ -764,8 +767,8 @@ msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
-"Strengen som brukaren valde sist panelprogrammet vart brukt. Denne "
-"strengen vert vist når brukaren startar programmet."
+"Strengen som brukaren valde sist panelprogrammet vart brukt. Denne strengen "
+"vert vist når brukaren startar programmet."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -1588,15 +1591,15 @@ msgstr "Arabisk"
 
 #: gkb-new/descs/presets.xml.in.h:3
 msgid "Arabic keymap"
-msgstr ""
+msgstr "Arabisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:4
 msgid "Arabic xkb keymap"
-msgstr ""
+msgstr "Arabisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:7
 msgid "Armenian xkb keymap"
-msgstr ""
+msgstr "Armensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:8
 msgid "Austria"
@@ -1617,10 +1620,9 @@ msgstr "Baskisk"
 
 #: gkb-new/descs/presets.xml.in.h:16
 msgid "Belarussian xkb keymap"
-msgstr ""
+msgstr "Kviterussisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:17
-#, fuzzy
 msgid "Belgian"
 msgstr "Belgisk"
 
@@ -1633,23 +1635,20 @@ msgid "Brazil Portuguese xkb keymap"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:24
-#, fuzzy
 msgid "Bulgarian Cyrillic"
-msgstr "Bulgarsk"
+msgstr "Bulgarsk kyrillisk"
 
 #: gkb-new/descs/presets.xml.in.h:25
-#, fuzzy
 msgid "Bulgarian keymap"
-msgstr "Bulgarsk"
+msgstr "Bulgarsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:26
-#, fuzzy
 msgid "Bulgarian xkb keymap"
-msgstr "Bulgarsk"
+msgstr "Bulgarsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:28
 msgid "Canadian xkb keymap"
-msgstr ""
+msgstr "Kanadisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:29
 #, fuzzy
@@ -1657,38 +1656,36 @@ msgid "Comoros"
 msgstr "Komorane"
 
 #: gkb-new/descs/presets.xml.in.h:30
-#, fuzzy
 msgid "Croatia"
 msgstr "Kroatia"
 
 #: gkb-new/descs/presets.xml.in.h:31
-#, fuzzy
 msgid "Croatian"
 msgstr "Kroatisk"
 
 #: gkb-new/descs/presets.xml.in.h:32
 msgid "Croatian keymap"
-msgstr ""
+msgstr "Kroatisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:35
 msgid "Czech and Slovak xkb keymap"
-msgstr ""
+msgstr "Tsjekkisk og slovakisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:36
 msgid "Czech keymap"
-msgstr ""
+msgstr "Tsjekkisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:37
 msgid "Czech qwertz xkb keymap"
-msgstr ""
+msgstr "Tsjekkisk qwertz xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:39
 msgid "Danish keymap"
-msgstr ""
+msgstr "Dansk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:40
 msgid "Danish xkb keymap"
-msgstr ""
+msgstr "Dansk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:42
 #, fuzzy
@@ -1697,33 +1694,31 @@ msgstr "Djibouti"
 
 #: gkb-new/descs/presets.xml.in.h:44
 msgid "Dutch keymap"
-msgstr ""
+msgstr "Nederlandsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:45
 msgid "Dutch xkb keymap"
-msgstr ""
+msgstr "Nederlandsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:46
 msgid "Dvorak xkb keymap"
-msgstr ""
+msgstr "Dvorak xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:47
-#, fuzzy
 msgid "Egypt"
 msgstr "Egypt"
 
 #: gkb-new/descs/presets.xml.in.h:49
-#, fuzzy
 msgid "English keymap"
-msgstr "Engelsk"
+msgstr "Engelsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:52
 msgid "Estonian keymap"
-msgstr ""
+msgstr "Estisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:53
 msgid "Estonian xkb keymap"
-msgstr ""
+msgstr "Estisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:54
 msgid "Euskadi"
@@ -1731,49 +1726,47 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:57
 msgid "Finnish keymap"
-msgstr ""
+msgstr "Finsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:58
 msgid "Finnish xkb keymap"
-msgstr ""
+msgstr "Finsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:59
 msgid "Former Czechoslovakia"
-msgstr ""
+msgstr "Tidlegare Tsjekkoslovakia"
 
 #: gkb-new/descs/presets.xml.in.h:62
 msgid "French PC/AT 101 keyboard"
-msgstr ""
+msgstr "Fransk PC/AT 101-tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:63
-#, fuzzy
 msgid "French Swiss"
-msgstr "Fransk"
+msgstr "Fransk-sveitsisk"
 
 #: gkb-new/descs/presets.xml.in.h:64
 msgid "French Swiss keymap"
-msgstr ""
+msgstr "Fransk-sveitsisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:65
-#, fuzzy
 msgid "French keymap"
-msgstr "Fransk"
+msgstr "Fransk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:66
 msgid "French xkb keymap"
-msgstr ""
+msgstr "Fransk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:67
 msgid "French-Canadian 105-key"
-msgstr ""
+msgstr "Fransk-kanadisk 105-tastars"
 
 #: gkb-new/descs/presets.xml.in.h:68
 msgid "GB 102-key"
-msgstr ""
+msgstr "Britisk 102-tastars"
 
 #: gkb-new/descs/presets.xml.in.h:69
 msgid "GB 105-key"
-msgstr ""
+msgstr "Britisk 105-tastars"
 
 #: gkb-new/descs/presets.xml.in.h:70
 msgid "Georgia"
@@ -1784,57 +1777,52 @@ msgid "Georgian"
 msgstr "Georgisk"
 
 #: gkb-new/descs/presets.xml.in.h:72
-#, fuzzy
 msgid "Georgian Latin"
-msgstr "Georgisk"
+msgstr "Georgisk latinsk"
 
 #: gkb-new/descs/presets.xml.in.h:73
 msgid "Georgian Russian layout"
-msgstr ""
+msgstr "Georgisk-russisk utforming"
 
 #: gkb-new/descs/presets.xml.in.h:74
-#, fuzzy
 msgid "Georgian keymap"
-msgstr "Georgisk"
+msgstr "Georgisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:76
 msgid "German Swiss with Euro"
-msgstr ""
+msgstr "Tysk-sveitsisk med Euro"
 
 #: gkb-new/descs/presets.xml.in.h:77
-#, fuzzy
 msgid "German keymap"
-msgstr "Tyskland"
+msgstr "Tysk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:78
 msgid "German xkb keymap"
-msgstr ""
+msgstr "Tysk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:81
-#, fuzzy
 msgid "Greece"
 msgstr "Hellas"
 
 #: gkb-new/descs/presets.xml.in.h:82
-#, fuzzy
 msgid "Greek"
 msgstr "Gresk"
 
 #: gkb-new/descs/presets.xml.in.h:83
 msgid "Greek keymap"
-msgstr ""
+msgstr "Gresk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:84
 msgid "Greek xkb keymap"
-msgstr ""
+msgstr "Gresk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:86
 msgid "Hebrew keymap"
-msgstr ""
+msgstr "Hebraisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:87
 msgid "Hebrew xkb keymap"
-msgstr ""
+msgstr "Hebraisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:89
 msgid "Hungarian 101-key latin 1"
@@ -1854,24 +1842,23 @@ msgstr "Ungarsk 105-tastars latin-2"
 
 #: gkb-new/descs/presets.xml.in.h:93
 msgid "Hungarian PC/AT 101 keyboard"
-msgstr ""
+msgstr "Ungarsk PC/AT 101-tastars tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:94
-#, fuzzy
 msgid "Hungarian latin1"
-msgstr "Ungarsk"
+msgstr "Ungarsk latin-1"
 
 #: gkb-new/descs/presets.xml.in.h:95
 msgid "Hungarian latin2 xkb keymap"
-msgstr ""
+msgstr "Ungarsk latin-2-xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:99
 msgid "Icelandic keymap"
-msgstr ""
+msgstr "Islandsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:100
 msgid "Icelandic xkb keymap"
-msgstr ""
+msgstr "Islandsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:102
 msgid "Iraq"
@@ -1879,19 +1866,19 @@ msgstr "Irak"
 
 #: gkb-new/descs/presets.xml.in.h:105
 msgid "Italian keymap"
-msgstr ""
+msgstr "Italiensk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:106
 msgid "Italian xkb keymap"
-msgstr ""
+msgstr "Italiensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:110
 msgid "Japanese keymap"
-msgstr ""
+msgstr "Japansk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:111
 msgid "Japanese xkb keymap"
-msgstr ""
+msgstr "Japansk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:112
 msgid "Jordan"
@@ -1918,25 +1905,24 @@ msgid "Lebanon"
 msgstr "Libanon"
 
 #: gkb-new/descs/presets.xml.in.h:118
-#, fuzzy
 msgid "Libyan Arab Jamahiriya"
-msgstr "Libya"
+msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:121
 msgid "Lithuanian keymap"
-msgstr ""
+msgstr "Litauisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:122
 msgid "Lithuanian programmers xkb keymap"
-msgstr ""
+msgstr "Litauisk xkb-tastaturkart for programmerarar"
 
 #: gkb-new/descs/presets.xml.in.h:123
 msgid "Lithuanian qwerty xkb keymap"
-msgstr ""
+msgstr "Litauisk qwerty xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:124
 msgid "Lithuanian standard xkb keymap"
-msgstr ""
+msgstr "Litauisk standard xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:127
 msgid "Macedonian xkb keymap"
@@ -1956,15 +1942,15 @@ msgstr "Mongolsk"
 
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
-msgstr ""
+msgstr "Mongolsk alternativt tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:132
 msgid "Mongolian keymap"
-msgstr ""
+msgstr "Mongolsk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:133
 msgid "Mongolian phonetic keymap"
-msgstr ""
+msgstr "Mongolsk fonetisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:134
 msgid "Netherlands"
@@ -1984,15 +1970,15 @@ msgstr "Palestinske landområde"
 
 #: gkb-new/descs/presets.xml.in.h:140
 msgid "Plain Russian keymap"
-msgstr ""
+msgstr "Vanleg russisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:143
 msgid "Polish deadkeys"
-msgstr ""
+msgstr "Polsk med daude tastar"
 
 #: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish xkb keymap"
-msgstr ""
+msgstr "Polsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:146
 #, fuzzy
@@ -2004,14 +1990,12 @@ msgid "Portuglese"
 msgstr "Portugisisk"
 
 #: gkb-new/descs/presets.xml.in.h:149
-#, fuzzy
 msgid "Portuguese keymap"
-msgstr "Portugisisk"
+msgstr "Portugisisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:150
-#, fuzzy
 msgid "Portuguese xkb keymap"
-msgstr "Portugisisk"
+msgstr "Portugisisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:151
 msgid "Qatar"
@@ -2019,21 +2003,19 @@ msgstr "Qatar"
 
 #: gkb-new/descs/presets.xml.in.h:154
 msgid "Romanian xkb keymap"
-msgstr ""
+msgstr "Rumensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:157
-#, fuzzy
 msgid "Russian Cyrillic"
-msgstr "Russisk"
+msgstr "Russisk kyrillisk"
 
 #: gkb-new/descs/presets.xml.in.h:158
-#, fuzzy
 msgid "Russian keymap"
-msgstr "Russisk"
+msgstr "Russisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:159
 msgid "Russian xkb keymap"
-msgstr ""
+msgstr "Russisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:160
 msgid "Saudi Arabia"
@@ -2045,30 +2027,27 @@ msgstr "Serbisk"
 
 #: gkb-new/descs/presets.xml.in.h:162
 msgid "Serb keymap"
-msgstr ""
+msgstr "Serbisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
-msgstr ""
+msgstr "Serbisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:164
 msgid "Serbia and Montenegro"
 msgstr "Serbia og Montenegro"
 
 #: gkb-new/descs/presets.xml.in.h:167
-#, fuzzy
 msgid "Slovak keymap"
-msgstr "Slovakia"
+msgstr "Slovakisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:170
-#, fuzzy
 msgid "Slovenian keymap"
-msgstr "Slovensk"
+msgstr "Slovensk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:171
-#, fuzzy
 msgid "Slovenian xkb keymap"
-msgstr "Slovensk"
+msgstr "Slovensk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:172
 msgid "Somalia"
@@ -2095,9 +2074,8 @@ msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:182
-#, fuzzy
 msgid "Swedish keymap"
-msgstr "Svensk"
+msgstr "Svensk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:183
 msgid "Swedish xkb keymap"
@@ -2144,90 +2122,88 @@ msgid "Turkish \"Q\" keyboard"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:199
-#, fuzzy
 msgid "Turkish keymap"
-msgstr "Tyrkisk"
+msgstr "Tyrkisk tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:200
 msgid "Turkish xkb keymap"
-msgstr ""
+msgstr "Tyrkisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:201
 msgid "UK 105-key"
-msgstr ""
+msgstr "Britisk 105-tastars"
 
 #: gkb-new/descs/presets.xml.in.h:202
 msgid "UK PC/AT keyboard"
-msgstr ""
+msgstr "Britisk PC/AT-tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:203
 msgid "US 101-key keyboard"
-msgstr ""
+msgstr "USA 101-tastars tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:204
 msgid "US 105-key keyboard (with windows keys)"
-msgstr "US 105-tastars tastatur (med windows-tastar)"
+msgstr "USA 105-tastars tastatur (med windows-tastar)"
 
 #: gkb-new/descs/presets.xml.in.h:205
 msgid "US 84-key"
-msgstr ""
+msgstr "USA 84-tastars"
 
 #: gkb-new/descs/presets.xml.in.h:206
 msgid "US DEC 450"
-msgstr ""
+msgstr "USA DEC 450"
 
 #: gkb-new/descs/presets.xml.in.h:207
 msgid "US IBM RS/6000"
-msgstr ""
+msgstr "USA IBM RS/6000"
 
 #: gkb-new/descs/presets.xml.in.h:208
 msgid "US International"
-msgstr ""
+msgstr "USA internasjonalt"
 
 #: gkb-new/descs/presets.xml.in.h:209
 msgid "US International xkb keymap"
-msgstr ""
+msgstr "USA internasjonalt xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:210
 msgid "US Macintosh"
-msgstr ""
+msgstr "USA Macintosh"
 
 #: gkb-new/descs/presets.xml.in.h:211
 msgid "US PC/AT 101 keyboard"
-msgstr ""
+msgstr "USA PC/AT 101-tastars tastatur"
 
 #: gkb-new/descs/presets.xml.in.h:212
 msgid "US Silicon Graphics 101-key"
-msgstr ""
+msgstr "USA Silicon Graphics 101-tastars"
 
 #: gkb-new/descs/presets.xml.in.h:213
 msgid "US Sun type5"
-msgstr ""
+msgstr "USA Sun type5"
 
 #: gkb-new/descs/presets.xml.in.h:214
 msgid "US xkb keymap"
-msgstr ""
+msgstr "USA xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian xkb keymap"
-msgstr ""
+msgstr "Ukrainsk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:218
 msgid "United Arab Emirates"
 msgstr "Dei sameinte arabiske emirata"
 
 #: gkb-new/descs/presets.xml.in.h:220
-#, fuzzy
 msgid "United Kingdom xkb keymap"
-msgstr "Storbritannia"
+msgstr "Britisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:222
 msgid "Viet_namese"
-msgstr ""
+msgstr "Viet_namesisk"
 
 #: gkb-new/descs/presets.xml.in.h:223
 msgid "Viet_namese xkb keymap"
-msgstr ""
+msgstr "Viet_namesisk xkb-tastaturkart"
 
 #: gkb-new/descs/presets.xml.in.h:225
 msgid "Yemen"
@@ -2247,15 +2223,14 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Dette panelprogrammet skiftar mellom tastaturoppsett. "
-"Det brukar setxbmap eller xmodmap.\n"
-"Dersom du vil ha oppsettet ditt støtta, så send meg "
-"flagget og tastaturoppsettet ditt. E-post-adressa mi "
-"er «shooby@gnome.hu».\n"
+"Dette panelprogrammet skiftar mellom tastaturoppsett. Det brukar setxbmap "
+"eller xmodmap.\n"
+"Dersom du vil ha oppsettet ditt støtta, så send meg flagget og "
+"tastaturoppsettet ditt. E-post-adressa mi er «shooby@gnome.hu».\n"
 "Takk så lenge, og takk for all fisken.\n"
 "Takk til Balazs Nagy (Kevin) <julian7@iksz.hu> for hans hjelp og Emese "
-"Kovacs <emese@eik.bme.hu> for hennar solidaritet, og for hjelp frå "
-"karar som Kevin V.\n"
+"Kovacs <emese@eik.bme.hu> for hennar solidaritet, og for hjelp frå karar som "
+"Kevin V.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
 #: gkb-new/gkb-applet.c:115
@@ -2431,7 +2406,7 @@ msgstr "Snøggtastar"
 
 #: gkb-new/prop.c:313
 msgid "S_witch layout:"
-msgstr ""
+msgstr "B_yt utforming:"
 
 #: gkb-new/prop.c:326
 msgid "_Grab keys"
@@ -2439,11 +2414,11 @@ msgstr ""
 
 #: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
-msgstr ""
+msgstr "Brukarval for tastaturveljar"
 
 #: gkb-new/prop.c:407
 msgid "Keyboard Layout Selector"
-msgstr ""
+msgstr "Endra tastaturutforming"
 
 #: gkb-new/prop.c:434
 msgid "Keyboards"
@@ -2469,8 +2444,9 @@ msgid ""
 msgstr ""
 "Ein feil oppstod.\n"
 "\n"
-"Tastaturkartet «%s» er ikkje støtta på dette systemet. "
-"Vel eit anna tastaturkart.\n\n"
+"Tastaturkartet «%s» er ikkje støtta på dette systemet. Vel eit anna "
+"tastaturkart.\n"
+"\n"
 "\n"
 "Kommandorn var: %s"
 
@@ -2503,10 +2479,9 @@ msgstr "Hent kontinuerleg oppdaterte aksjekursar"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
-msgstr ""
+msgstr "Fabrikk for panelprogrammet gtik"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
-#, fuzzy
 msgid "Stock Ticker"
 msgstr "Aksjetelegraf"
 
@@ -2531,8 +2506,8 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 "Dette programmet knyttar seg til ein populært nettstad og lastar ned ferske "
-"aksjetal. GNOME Aksjetelegraf er eit fritt Internettprogram. Det kjem med"
-"ABSOLUTT INGEN GARANTI. Ikkje bruk GNOME Aksjetelegraf til å ta "
+"aksjetal. GNOME Aksjetelegraf er eit fritt Internettprogram. Det kjem "
+"medABSOLUTT INGEN GARANTI. Ikkje bruk GNOME Aksjetelegraf til å ta "
 "finansielle avgjerder. Han er berre meint å vera informerande."
 
 #: gtik/gtik.c:1279
@@ -2697,8 +2672,8 @@ msgid ""
 "List containing the stocks to be displayed. Consists of the stock id "
 "separated by \"+\""
 msgstr ""
-"Liste som inneheld aksjene som skal visast. Inneheld aksje-ID "
-"og skiljeteiknet «+»."
+"Liste som inneheld aksjene som skal visast. Inneheld aksje-ID og "
+"skiljeteiknet «+»."
 
 #: gtik/gtik.schemas.in.h:7
 msgid "Lowered color"
@@ -2751,8 +2726,8 @@ msgid ""
 "The color used when the stock's values has not changed. Has no effect when "
 "the user chooses to use the default theme fonts and colors."
 msgstr ""
-"Fargen som vert brukt når verdien på ei aksje er uendra. Har ikkje noko å seia "
-"dersom brukaren vel å bruka fargar og skrifter frå drakta."
+"Fargen som vert brukt når verdien på ei aksje er uendra. Har ikkje noko å "
+"seia dersom brukaren vel å bruka fargar og skrifter frå drakta."
 
 #: gtik/gtik.schemas.in.h:17
 msgid ""
@@ -2767,8 +2742,8 @@ msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
 msgstr ""
-"Skrifta som vert brukt i framvisinga. Har ikkje noko å seia  "
-"dersom brukaren vel å bruka fargar og skrifter frå drakta."
+"Skrifta som vert brukt i framvisinga. Har ikkje noko å seia  dersom brukaren "
+"vel å bruka fargar og skrifter frå drakta."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
@@ -2925,8 +2900,8 @@ msgid ""
 "for US cities."
 msgstr ""
 "Detaljert vermelding er ikkje tilgjengleg for dette området.\n"
-"Prøv meldinga for heile staten/distriktet. Merk at IWIN-meldingar "
-"er berre tilgjengelege for byar i USA."
+"Prøv meldinga for heile staten/distriktet. Merk at IWIN-meldingar er berre "
+"tilgjengelege for byar i USA."
 
 #: gweather/gweather-dialog.c:412
 msgid ""
@@ -3532,7 +3507,7 @@ msgstr "Skriv inn _passordet på e-post-tenaren:"
 
 #: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
 msgid "Password Entry box"
-msgstr ""
+msgstr "Passordboks"
 
 #: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
 msgid "_Save password to disk"
@@ -3623,7 +3598,7 @@ msgstr "_E-post-tenar:"
 
 #: mailcheck/mailcheck.c:1873
 msgid "Mail Server Entry box"
-msgstr ""
+msgstr "E-post-tenar-boks"
 
 #: mailcheck/mailcheck.c:1892
 msgid "_Username:"
@@ -3631,7 +3606,7 @@ msgstr "Br_ukarnamn:"
 
 #: mailcheck/mailcheck.c:1903
 msgid "Username Entry box"
-msgstr ""
+msgstr "Brukarnamn-boks"
 
 #: mailcheck/mailcheck.c:1921
 msgid "_Password:"
@@ -3643,7 +3618,7 @@ msgstr "_Mappe:"
 
 #: mailcheck/mailcheck.c:1985
 msgid "Folder Entry box"
-msgstr ""
+msgstr "Mappe-boks"
 
 # TRN: Dersom dette kan vera noko anna enn minutt, feilmeld.
 #: mailcheck/mailcheck.c:2057
@@ -3837,7 +3812,7 @@ msgstr "Køyr denne kommandoen når brukaren klikkar på innboksovervakaren"
 
 #: mailcheck/mailcheck.schemas.in.h:30
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr ""
+msgstr "Om e-post-status skal nullstillast når du klikkar på innboksovervakaren"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
@@ -3874,14 +3849,13 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Dette GNOME-panelprogrammet legg til ei kommandolinje i panelet. "
-"Programmet inneheld kommandofullføring, kommandologg og "
-"makroar som kan endrast \n"
+"Dette GNOME-panelprogrammet legg til ei kommandolinje i panelet. Programmet "
+"inneheld kommandofullføring, kommandologg og makroar som kan endrast \n"
 "\n"
-"Dette programmet er fri programvare. Du kan spreia programmet og/"
-"eller endra på det under føresetnadane i GNU General Public License "
-"frå the Free Software Foundation; anten "
-"versjon 2 av lisensen, eller (dersom du vil) ein seinare versjon."
+"Dette programmet er fri programvare. Du kan spreia programmet og/eller endra "
+"på det under føresetnadane i GNU General Public License frå the Free "
+"Software Foundation; anten versjon 2 av lisensen, eller (dersom du vil) ein "
+"seinare versjon."
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:436
@@ -3913,9 +3887,7 @@ msgstr "Sett standard listeverdi for %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr ""
-"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL er stilt. Installerer "
-"ikkje skjema\n"
+msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL er stilt. Installerer ikkje skjema\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -4220,7 +4192,7 @@ msgstr "PCM2"
 
 #: mixer/mixer.c:116
 msgid "Recording Level"
-msgstr ""
+msgstr "Opptaksnivå"
 
 #: mixer/mixer.c:116
 msgid "Input Gain"
@@ -4450,6 +4422,8 @@ msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
 msgstr ""
+"Vis ekstra informasjon om tilkoplingstida og kor mykje data som er overført "
+"og motteke."
 
 #: modemlights/modemlights.schemas.in.h:15
 msgid "Status connected color"
@@ -4749,8 +4723,8 @@ msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
-"På vassrette panel er dette breidda på grafane, målt i pikslar. "
-"På loddrette panel er det høgda på grafane."
+"På vassrette panel er dette breidda på grafane, målt i pikslar. På loddrette "
+"panel er det høgda på grafane."
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
@@ -4997,9 +4971,9 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
-"<b>Slett alle dei gule lappane?</b>\n"
+"<b>Slett alle notata?</b>\n"
 "\n"
-"Endringar vert lagra med ein gong."
+"Endringane vert lagra med ein gong."
 
 #: stickynotes/stickynotes.glade.h:8
 msgid ""
@@ -5007,179 +4981,161 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>Slett dette notatet?</b>\n"
+"\n"
+"Endringane vert lagra med ein gong."
 
 #: stickynotes/stickynotes.glade.h:11
-#, fuzzy
 msgid "<b>Properties</b>"
-msgstr "Eigenskapar"
+msgstr "<b>Eigenskapar</b>"
 
 #: stickynotes/stickynotes.glade.h:12
-#, fuzzy
 msgid "C_olor:"
-msgstr "Fargar"
+msgstr "F_argar:"
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
-msgstr ""
+msgstr "Vel ein grunnfarge til alle notata"
 
 #: stickynotes/stickynotes.glade.h:14
-#, fuzzy
 msgid "Choose a color for the note"
-msgstr "Vel ei loggfil"
+msgstr "Vel ein farge til notatet"
 
 #: stickynotes/stickynotes.glade.h:15
-#, fuzzy
 msgid "Choose a font for the note"
-msgstr "Vel ei loggfil"
+msgstr "Vel ein skrifttype til notatet"
 
 #: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font to use for all sticky notes"
-msgstr ""
+msgstr "Vel ein skrifttype til alle notata"
 
 #: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
-msgstr ""
+msgstr "Vel om notata skal vera synlege på alle arbeidsområda"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr ""
+msgstr "Vel om alle notata skal bruka standardstilen"
 
 #: stickynotes/stickynotes.glade.h:19
-#, fuzzy
 msgid "Clic_k:"
-msgstr "Klokke"
+msgstr "Kli_kk:"
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
-msgstr ""
+msgstr "Lukk notat"
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Force _default color and font on notes"
-msgstr ""
+msgstr "Tving alle notata til å bruka stan_dard farge og skrifttype"
 
 #: stickynotes/stickynotes.glade.h:22
-#, fuzzy
 msgid "H_eight:"
-msgstr "Høgd:"
+msgstr "H_øgde:"
 
 #: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
-msgstr ""
+msgstr "Lås/lås opp notat"
 
 #: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
-msgstr ""
+msgstr "Vel ein farge til notatet"
 
 #: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
-msgstr ""
+msgstr "Vel ein farge til notata"
 
 #: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
-msgstr ""
+msgstr "Vel ein skrifttype til notata"
 
 #: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
-msgstr ""
+msgstr "Vel ein skrifttype til notatet"
 
 #: stickynotes/stickynotes.glade.h:28
-#, fuzzy
 msgid "Resize note"
-msgstr "Hev notat"
+msgstr "Endra storleik på notatet"
 
 #: stickynotes/stickynotes.glade.h:29
-#, fuzzy
 msgid "Specify a title for the note"
-msgstr "Standard teiknliste:"
+msgstr "Oppgje ein tittel på notatet"
 
 #: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
-msgstr ""
+msgstr "Oppgje høgde (i pikslar) på nye notat"
 
 #: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
-msgstr ""
+msgstr "Oppgje breidde (i pikslar) på nye notat"
 
 #: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
-msgstr ""
+msgstr "Notat"
 
 #: stickynotes/stickynotes.glade.h:33
-#, fuzzy
 msgid "Sticky Note Properties"
-msgstr "Eigenskapar for diskmontering"
+msgstr "Eigenskapar til notat"
 
 #: stickynotes/stickynotes.glade.h:34
-#, fuzzy
 msgid "Sticky Notes Preferences"
-msgstr "Eigenskapar for diskmontering"
+msgstr "Brukarval for notat"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Use co_lor from the system theme"
-msgstr ""
+msgstr "Bruk _farge frå drakta"
 
 #: stickynotes/stickynotes.glade.h:36
-#, fuzzy
 msgid "Use default co_lor"
-msgstr "Bruk standard eigenskapar"
+msgstr "Bruk standard f_arge"
 
 #: stickynotes/stickynotes.glade.h:37
-#, fuzzy
 msgid "Use default fo_nt"
-msgstr "Ingen(standard)"
+msgstr "Bruk sta_ndard skrifttype"
 
 #: stickynotes/stickynotes.glade.h:38
 msgid "Use fo_nt from the system theme"
-msgstr ""
+msgstr "Bruk _skrifttype frå drakta"
 
 #: stickynotes/stickynotes.glade.h:39
-#, fuzzy
 msgid "_Color:"
-msgstr "Fargar"
+msgstr "_Farge:"
 
 #: stickynotes/stickynotes.glade.h:40
-#, fuzzy
 msgid "_Delete ALL"
-msgstr "Slett"
+msgstr "_Slett ALLE"
 
 #: stickynotes/stickynotes.glade.h:41
-#, fuzzy
 msgid "_Delete Note..."
-msgstr "Slett notat"
+msgstr "_Slett notat ..."
 
 #: stickynotes/stickynotes.glade.h:43
-#, fuzzy
 msgid "_Lock Note"
-msgstr "Senk notat"
+msgstr "_Lås notat"
 
-#: stickynotes/stickynotes.glade.h:45
-#, fuzzy
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
-msgstr "Eigenskapar"
+msgstr "_Eigenskapar ..."
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr ""
+msgstr "_Legg notata på alle arbeidsområda"
 
 #: stickynotes/stickynotes.glade.h:47
-#, fuzzy
 msgid "_Title:"
-msgstr "Min tittel"
+msgstr "_Tittel:"
 
 #: stickynotes/stickynotes.glade.h:49
-#, fuzzy
 msgid "_lock/unlock all notes"
-msgstr "Senk notat"
+msgstr "_lås/lås opp alle notata"
 
 #: stickynotes/stickynotes.glade.h:50
-#, fuzzy
 msgid "_show/hide all notes"
-msgstr "Gøym notat"
+msgstr "vi_s/gøym alle notata"
 
 #: stickynotes/stickynotes.glade.h:51
-#, fuzzy
 msgid "create a _new note"
-msgstr "Standard høgde"
+msgstr "lag eit _nytt notat"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
@@ -5194,38 +5150,39 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
-msgstr ""
+msgstr "Datoformatet på tittelen til notatet"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:5
-#, fuzzy
 msgid "Default color for new notes"
-msgstr "Standard teiknliste:"
+msgstr "Farge på nye notat"
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
+"Farge på nye notat. Dette skal vera ein HTML heksadesimal "
+"fargeverdi, t.d. «#30FF50»."
 
 #: stickynotes/stickynotes.schemas.in.h:7
-#, fuzzy
 msgid "Default font for new notes"
-msgstr "Standard teiknliste:"
+msgstr "Skrifttype i nye notat"
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"Skrifttype i nye notat. Dette skal vera eit Pango-skriftnamn, t.d. "
+"«Sans Italic 10»."
 
 #: stickynotes/stickynotes.schemas.in.h:9
-#, fuzzy
 msgid "Default height for new notes"
-msgstr "Standard høgde"
+msgstr "Høgde på nye notat"
 
 #: stickynotes/stickynotes.schemas.in.h:10
 #, fuzzy
@@ -5386,6 +5343,160 @@ msgstr "Eigenskapar for diskmontering"
 #, fuzzy
 msgid "_Monitored device:"
 msgstr "Overvaka ressurssar"
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
+msgid "GNOME XKB applet"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
+#, fuzzy
+msgid "GNOME XKB applet factory"
+msgstr "Fabrikk for Geyes-panelprogram"
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
+#, fuzzy
+msgid "GSwitchIt applet"
+msgstr "Breidda på panelprogrammet"
+
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
+#, fuzzy
+msgid "GSwitchIt applet factory"
+msgstr "Fabrikk som lagar vermeldingsprogrammet"
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
+msgid "_Groups"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
+msgid "_Plugins..."
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:97
+#, fuzzy, c-format
+msgid "Keyboard switcher (%s)"
+msgstr "GKB tastaturbyttar"
+
+#: gswitchit/gswitchit-applet.c:491
+#, fuzzy
+msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
+msgstr "Opphavsrett © 1999"
+
+#: gswitchit/gswitchit-applet.c:492
+msgid "XKB toolkit for GNOME"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:623
+msgid "XKB initialization error"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:632
+msgid "Error loading XKB configuration registry"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:147
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:226
+msgid "Exclude from keyboard switching"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:252
+#, fuzzy
+msgid "not used"
+msgstr "ikkje funne"
+
+#: gswitchit/gswitchit-plugins.c:288
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:2
+#, fuzzy
+msgid "Add plugin"
+msgstr "Legg til knapp"
+
+#: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Close the dialog"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:4
+#, fuzzy
+msgid "Configure the selected plugin"
+msgstr "Klikk for å redigera den valde knappen"
+
+#: gswitchit/gswitchit-plugins.glade.h:5
+msgid "Deactivate selected plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:6
+msgid "Decrease the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:7
+msgid "GSwitchIt Plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:9
+msgid "The list of active plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:10
+msgid "_Active plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:11
+#, fuzzy
+msgid "_Available plugins:"
+msgstr "Tilgjengelege palettar"
+
+#: gswitchit/gswitchit-properties.glade.h:1
+msgid "Choose the default group (for newly created windows)."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:2
+#, fuzzy
+msgid "GSwitchIt Properties"
+msgstr "Eigenskapar for diskmontering"
+
+#: gswitchit/gswitchit-properties.glade.h:3
+msgid "Keep separate group for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:4
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:5
+msgid "Save/restore _indicators with group"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:6
+msgid "Separate _group for each window"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:7
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:8
+#, fuzzy
+msgid "Use _flags as indicators"
+msgstr "Måler systemlast"
+
+#: gswitchit/gswitchit-properties.glade.h:9
+msgid "_Default group:"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Applet layout"
@@ -6663,9 +6774,6 @@ msgstr "Overvaka ressurssar"
 #~ msgid "completed"
 #~ msgstr "ferdig"
 
-#~ msgid "not found"
-#~ msgstr "ikkje funne"
-
 #~ msgid "no /bin/sh"
 #~ msgstr "ingen /bin/sh"
 
@@ -6751,9 +6859,6 @@ msgstr "Overvaka ressurssar"
 #, fuzzy
 #~ msgid "Geyes Applet"
 #~ msgstr "CD spelar programmodul"
-
-#~ msgid "GKB Keyboard Switcher"
-#~ msgstr "GKB tastaturbyttar"
 
 #~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
 #~ msgstr "GKB, GNOME appler for val av tastaturutforming"
@@ -7382,9 +7487,6 @@ msgstr "Overvaka ressurssar"
 
 #~ msgid "Clipboard Applet"
 #~ msgstr "Utklippstavle applet"
-
-#~ msgid "Copyright (C) 1999"
-#~ msgstr "Opphavsrett © 1999"
 
 #~ msgid ""
 #~ "Gnome panel applet for copying and retrieving selections with a history "
