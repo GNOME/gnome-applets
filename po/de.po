@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-15 16:06+0100\n"
-"PO-Revision-Date: 2005-01-15 16:09+0100\n"
+"POT-Creation-Date: 2005-01-16 13:12+0100\n"
+"PO-Revision-Date: 2005-01-16 13:25+0100\n"
 "Last-Translator: Hendrik Brandt <heb@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,8 @@ msgstr ""
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 multiload/GNOME_MultiloadApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemLights.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
@@ -42,7 +43,8 @@ msgstr "_Info"
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 multiload/GNOME_MultiloadApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemLights.xml.h:4
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
 msgid "_Help"
@@ -69,9 +71,11 @@ msgstr "Fabrik des Barrierefreiheitsstatus der Tastatur-Applets"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 
+#. "documenters",        documenters,
 #: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:200
-#: gswitchit/gswitchit-applet.c:591 trashapplet/src/trashapplet.c:681
+#: gswitchit/gswitchit-applet.c:591 modemlights/modem-applet.c:995
+#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -1579,11 +1583,11 @@ msgstr "Copyright (C) Sergey V. Udaltsov 1999-2004"
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Tastaturbelegungs-Indikator-Applet für GNOME"
 
-#: gswitchit/gswitchit-applet.c:764
+#: gswitchit/gswitchit-applet.c:761
 msgid "XKB initialization error"
 msgstr "XKB-Initialisierungsfehler"
 
-#: gswitchit/gswitchit-applet.c:773
+#: gswitchit/gswitchit-applet.c:770
 msgid "Error loading XKB configuration registry"
 msgstr "Fehler beim Laden der XKB-Konfigurations-Registry"
 
@@ -3434,6 +3438,116 @@ msgstr "Einstellungen des Lautstärkereglers"
 msgid "Select the device and track to control."
 msgstr "Bitte wählen Sie das zu regelnde Gerät und den zu regelnden Kanal."
 
+#: modemlights/GNOME_ModemLights.server.in.in.h:1
+msgid "Activate and monitor a dial-up network connection"
+msgstr "Eine Einwahlverbindung aktivieren und überwachen"
+
+#: modemlights/GNOME_ModemLights.server.in.in.h:2
+msgid "Modem Monitor"
+msgstr "Modem überwachen"
+
+#: modemlights/GNOME_ModemLights.xml.h:2
+msgid "_Activate"
+msgstr "_Aktivieren"
+
+#: modemlights/GNOME_ModemLights.xml.h:3
+msgid "_Deactivate"
+msgstr "_Deaktivieren"
+
+#: modemlights/GNOME_ModemLights.xml.h:5 stickynotes/stickynotes.glade.h:45
+msgid "_Properties"
+msgstr "Ei_genschaften"
+
+#: modemlights/modem-applet.c:699
+msgid "Connection active, but could not get connection time"
+msgstr "Die Verbindung ist aktiv, es konnte jedoch keine Verbindungsdauer ermittelt werden"
+
+#: modemlights/modem-applet.c:715
+#, c-format
+msgid "Time connected: %.1d:%.2d"
+msgstr "Verbindungsdauer: %.1d:%.2d"
+
+#: modemlights/modem-applet.c:719
+msgid "Not connected"
+msgstr "Nicht verbunden"
+
+#: modemlights/modem-applet.c:765
+msgid "The entered password is invalid"
+msgstr "Das eingegebene Passwort ist ungültig"
+
+#: modemlights/modem-applet.c:767
+msgid ""
+"Check that you have typed it correctly and that you haven't activated the "
+"\"caps lock\" key"
+msgstr "Bitte stellen Sie sicher, dass Sie das Passwort korrekt eingegeben haben und dass die "
+"»Feststelltaste« nicht aktiv ist"
+
+#: modemlights/modem-applet.c:865
+msgid ""
+"To connect to your Internet service provider, you need administrator "
+"privileges"
+msgstr "Um eine Internet-Verbindung herzustellen, benötigen Sie Administrationsrechte"
+
+#: modemlights/modem-applet.c:866
+msgid ""
+"To disconnect from your Internet service provider, you need administrator "
+"privileges"
+msgstr "Um eine Internet-Verbindung zu trennen, benötigen Sie Administrationsrechte"
+
+#: modemlights/modem-applet.c:900
+msgid "Do you want to connect?"
+msgstr "Möchten Sie verbinden?"
+
+#: modemlights/modem-applet.c:901
+msgid "Do you want to disconnect?"
+msgstr "Möchten Sie die Verbindung trennen?"
+
+#: modemlights/modem-applet.c:910
+msgid "C_onnect"
+msgstr "_Verbinden"
+
+#: modemlights/modem-applet.c:910
+msgid "_Disconnect"
+msgstr "_Trennen"
+
+#: modemlights/modem-applet.c:965
+msgid "Could not launch network configuration tool"
+msgstr "Das Programm zum Einstellen der Netzwerkverbindungen konnte nicht gestartet werden"
+
+#: modemlights/modem-applet.c:967
+msgid ""
+"Check that it's installed in the correct path and that it has the correct "
+"permissions"
+msgstr "Bitte überprüfen Sie, dass es im richtigen Pfad installiert ist und das es die notwendigen "
+"Zugriffsrechte besitzt"
+
+#: modemlights/modem-applet.c:989
+msgid "Modem monitor"
+msgstr "Modem überwachen"
+
+#: modemlights/modem-applet.c:992
+msgid "Applet for activating and monitoring a dial-up network connection."
+msgstr "Applet zum Aktivieren und Überwachen von Einwahlverbindung in ein Netzwerk."
+
+#: modemlights/modemlights.glade.h:1
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Connecting with Internet Service "
+"Provider</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Verbindung mit dem Internet wird hergestellt</span>"
+
+#: modemlights/modemlights.glade.h:2
+msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
+msgstr "<span weight=\"bold\" size=\"larger\">Das Administratorpasswort wird benötigt</span>"
+
+#: modemlights/modemlights.glade.h:3
+msgid "Enter password"
+msgstr "Passwort eingeben"
+
+#: modemlights/modemlights.glade.h:4
+msgid "Password:"
+msgstr "Passwort:"
+
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Eine Systemlastanzeige"
@@ -3450,6 +3564,10 @@ msgstr "Systemmonitor ö_ffnen"
 #: multiload/cpuload.c:50
 msgid "CPU Load"
 msgstr "Prozessorlast"
+
+#: multiload/diskload.c:48
+msgid "Disk Load"
+msgstr "Plattelast"
 
 #: multiload/loadavg.c:107 multiload/main.c:327
 msgid "Load Average"
@@ -3793,6 +3911,22 @@ msgstr "Einstellungen des Systemmonitors"
 msgid "Swap Load"
 msgstr "Auslagerungslast"
 
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player (Deprecated)"
+msgstr "CD Player (Veraltet)"
+
+#: null_applet/GNOME_CDPlayerApplet.server.in.h:2
+msgid "Panel applet for playing audio CDs"
+msgstr "Panel-Applet zur Wiedergabe von Audio-CDs"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Benachrichtigt Sie, wenn eine neue Nachricht eintrifft"
+
+#: null_applet/GNOME_MailcheckApplet_Factory.server.in.h:2
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Eingangsüberwachnung (Veraltet)"
+
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
 msgid "Factory for deprecating applets"
 msgstr "Fabrik für veraltete Applets"
@@ -3800,6 +3934,14 @@ msgstr "Fabrik für veraltete Applets"
 #: null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
 msgid "Null Applet Factory"
 msgstr "Null-Applet-Fabrik"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Überwacht die Empfangsstärke einer Funknetzwerkverbindung"
+
+#: null_applet/GNOME_Panel_WirelessApplet.server.in.h:2
+msgid "Wireless Link Monitor"
+msgstr "Empfangsstärke überwachen"
 
 #: null_applet/null_applet.c:155
 msgid "Some panel items are no longer available"
@@ -4016,10 +4158,6 @@ msgstr "Zettel _sperren"
 #: stickynotes/stickynotes_applet_callbacks.c:136
 msgid "_New Note"
 msgstr "Zettel a_nlegen"
-
-#: stickynotes/stickynotes.glade.h:45
-msgid "_Properties"
-msgstr "Ei_genschaften"
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
