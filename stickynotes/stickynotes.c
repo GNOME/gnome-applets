@@ -23,6 +23,8 @@
 #include <stickynotes_callbacks.h>
 #include <util.h>
 
+static void response_cb (GtkWidget *dialog, gint id, gpointer data);
+
 /* Create a new (empty) Sticky Note */
 StickyNote * stickynote_new()
 {
@@ -85,7 +87,8 @@ StickyNote * stickynote_new()
 	/* Connect a properties dialog to the note */
 	gtk_window_set_transient_for(GTK_WINDOW(note->w_properties), GTK_WINDOW(note->w_window));
 	gtk_dialog_set_default_response(GTK_DIALOG(note->w_properties), GTK_RESPONSE_CLOSE);
-	
+	g_signal_connect (G_OBJECT (note->w_properties), "response", G_CALLBACK (response_cb), note);
+
 	/* Connect signals to the sticky note */
 
 	g_signal_connect(G_OBJECT(note->w_lock), "clicked", G_CALLBACK(stickynote_toggle_lock_cb), note);
@@ -150,11 +153,18 @@ void stickynote_change_properties(StickyNote *note)
 	if (note->font)
 		gnome_font_picker_set_font_name(GNOME_FONT_PICKER(note->w_font), note->font);
 
-	while (gtk_dialog_run(GTK_DIALOG(note->w_properties)) == GTK_RESPONSE_HELP)
-		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
-	gtk_widget_hide(note->w_properties);
+	gtk_widget_show (note->w_properties);
 
 	stickynotes_save();
+}
+
+static void
+response_cb (GtkWidget *dialog, gint id, gpointer data)
+{
+        if (id == GTK_RESPONSE_HELP)
+                gnome_help_display ("stickynotes_applet", "stickynotes-introduction", NULL);
+        else
+                gtk_widget_hide (dialog);
 }
 
 /* Check if a sticky note is empty */
