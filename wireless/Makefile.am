@@ -4,7 +4,6 @@ NULL=
 SUBDIRS = docs
 
 INCLUDES = 					\
-	-DICONDIR=\""$(datadir)/pixmaps"\"	\
 	-DG_DISABLE_DEPRECATED			\
 	-DGDK_DISABLE_DEPRECATED		\
 	-DGNOME_DISABLE_DEPRECATED		\
@@ -38,25 +37,26 @@ $(server_in_files): $(server_in_in_files)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_WirelessApplet.xml
 
-pixmapdir = $(datadir)/pixmaps/wireless-applet/
-pixmap_DATA = no-link-0.png	\
-        broken-0.png		\
+wireless_applet_pixmapdir = $(pixmapsdir)/wireless-applet
+wireless_applet_pixmap_DATA =	\
+	broken-0.png		\
+	no-link-0.png		\
 	signal-1-40.png		\
 	signal-41-60.png	\
 	signal-61-80.png	\
 	signal-81-100.png	\
 	$(NULL)
 
-icondir = $(datadir)/icons/hicolor/48x48/apps
-icon_DATA = wireless-applet.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = wireless-applet.png
 
 CLEANFILES = $(server_in_files) $(server_DATA) *.bak *.gladep
 
 EXTRA_DIST = 				\
 	$(server_in_in_files)		\
 	$(glade_DATA)			\
-	$(pixmap_DATA)			\
-	$(icon_DATA)			\
+	$(wireless_applet_pixmap_DATA)	\
+	$(desktop_icons_DATA)		\
 	$(ui_DATA)			\
 	$(NULL)
 

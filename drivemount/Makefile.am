@@ -7,17 +7,17 @@ INCLUDES =			\
 
 libexec_PROGRAMS = drivemount_applet2
 
-desktop_iconsdir = $(datadir)/icons/hicolor/48x48/apps
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
 desktop_icons_DATA = drivemount-applet.png
 
-drivemount_applet2_SOURCES = \
-  drivemount.c \
-  drive-list.c \
-  drive-list.h \
-  drive-button.c \
-  drive-button.h
+drivemount_applet2_SOURCES =	\
+	drivemount.c		\
+	drive-list.c		\
+	drive-list.h		\
+	drive-button.c		\
+	drive-button.h
 
-drivemount_applet2_LDADD =				\
+drivemount_applet2_LDADD =	\
 	$(GNOME_APPLETS_LIBS) 
 
 serverdir       = $(libdir)/bonobo/servers

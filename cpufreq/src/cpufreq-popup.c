@@ -160,10 +160,10 @@ cpufreq_popup_menu_item_set_image (CPUFreqApplet *applet, GtkWidget *menu_item,
 {
 	   gint   perc, image;
 	   gchar *pixmaps[] = {
-			 ICONDIR"/cpufreq-applet/cpufreq-25.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-50.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-75.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-100.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-25.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-50.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-75.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-100.png",
 			 NULL };
 
 	   perc = (freq * 100) / max_freq;

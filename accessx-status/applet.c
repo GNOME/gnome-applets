@@ -911,7 +911,7 @@ accessx_applet_add_stock_icons (AccessxStatusApplet *sapplet, GtkWidget *widget)
 		do {
 			char *filename, *tmp;
 			GtkIconSource *source = gtk_icon_source_new ();
-			tmp = g_strdup_printf (PIXMAPDIR"accessx-status-applet/%s", stock_icons[i].name);
+			tmp = g_strdup_printf (GNOME_PIXMAPSDIR"accessx-status-applet/%s", stock_icons[i].name);
 			filename = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, 
 					  tmp, 
 					  FALSE, NULL);

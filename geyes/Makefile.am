@@ -40,14 +40,14 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 themesdir = $(datadir)/geyes
 
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gnome-eyes.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = gnome-eyes.png
 
 EXTRA_DIST = \
 	     geyes.h \
 	     gnome-eyes.png \
 	     README.themes \
-	     $(pixmap_DATA) \
+	     $(desktop_icons_DATA) \
 	     GNOME_GeyesApplet.server.in.in \
 	     $(schemas_in_files) \
 	     $(ui_DATA)

@@ -1,14 +1,15 @@
 SUBDIRS = docs
 
-iconsdir = $(datadir)/icons/hicolor/48x48/apps
-icons_DATA = gnome-mixer-applet.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = gnome-mixer-applet.png
 
-pixmapsdir = $(datadir)/pixmaps/mixer
-pixmaps_DATA = 	volume-max.png			\
-		volume-medium.png		\
-		volume-min.png			\
-		volume-mute.png			\
-		volume-zero.png
+mixer_pixmapsdir = $(pixmapsdir)/mixer
+mixer_pixmaps_DATA =		\
+	volume-max.png		\
+	volume-medium.png	\
+	volume-min.png		\
+	volume-mute.png		\
+	volume-zero.png
 
 INCLUDES = -I. -I$(srcdir) 		\
 	-DG_DISABLE_DEPRECATED		\
@@ -16,8 +17,7 @@ INCLUDES = -I. -I$(srcdir) 		\
 	-DGNOME_DISABLE_DEPRECATED	\
 	-DGDK_DISABLE_DEPRECATED	\
 	$(MIXER_CFLAGS)			\
-	$(GNOME_APPLETS_CFLAGS)		\
-	-DPIXDIR=\""$(pixmapsdir)"\"
+	$(GNOME_APPLETS_CFLAGS)
 
 libexec_PROGRAMS = mixer_applet2
 
@@ -58,8 +58,8 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 EXTRA_DIST = 						\
 	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
-	$(pixmaps_DATA)					\
-	$(icons_DATA)					\
+	$(desktop_icons_DATA)				\
+	$(mixer_pixmaps_DATA)				\
 	$(schemas_in_files)
 
 CLEANFILES = $(server_in_files) $(server_DATA)

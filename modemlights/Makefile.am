@@ -19,8 +19,8 @@ modemlights_applet2_LDADD = \
 uidir		= $(datadir)/gnome-2.0/ui
 ui_DATA		= GNOME_ModemlightsApplet.xml
 
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gnome-modem.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = gnome-modem.png
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_ModemLightsApplet.server.in
@@ -43,7 +43,7 @@ EXTRA_DIST =					\
 	GNOME_ModemLightsApplet.server.in.in	\
 	digits.xpm 				\
 	$(schemas_in_files)			\
-	$(pixmap_DATA)				\
+	$(desktop_icons_DATA)			\
 	$(ui_DATA)
 
 if GCONF_SCHEMAS_INSTALL

@@ -1,3 +1,47 @@
+2005-01-02  Tomasz Kłoczko <kloczek@pld.org.pl>
+
+	* configure.in:
+	  Add base infrastructure for icons and pixmaps.
+	* accessx-status/Makefile.am:
+	  Remove -DPIXMAPDIR from INCLUDES.
+	* accessx-status/applet.c:
+	  Use GNOME_PIXMAPDIR defined in configure.in istead PIXMAPDIR.
+	* accessx-status/pixmaps/Makefile.am:
+	  Rename icons{dir,_DATA} to accessx_status_pixmaps{dir,_DATA}.
+	  Define accessx_status_pixmapsdir as
+	  $(pixmapsdir)/accessx-status-applet.
+	* cdplayer/Makefile.am:
+	  Removed double listed IMAGES from EXTRA_DIST.
+	  Indentations in IMAGES, VARIABLES, EXTRA_DIST, *_SOURCES, *_DEPS.
+	* cpufreq/pixmaps/Makefile.am:
+	  Removed -DICONDIR from INCLUDES (unused).
+	* drivemount/Makefile.am:
+	  Rdefine desktop_iconsdir using $(iconsdir).
+	  Indentations in drivemount_applet2_{SOURCES,LDADD}.
+	* geyes/Makefile.am gtik/Makefile.am:
+	  Redefine pixmapdir to desktop_iconsdir using $(iconsdir).
+	* mini-commander/src/Makefile.am:
+	  Rename bitmaps_DATA to BITMAPS. This bitmaps are directly included in
+	  mini-commander_applet.c and must be not installed.
+	  Indentations in mini_commander_applet_LDADD.
+	  Redefine pixmapdir to desktop_iconsdir using $(iconsdir).
+	* mixer/Makefile.am:
+	  Redefine pixmapdir to desktop_iconsdir using $(iconsdir).
+	  Rename pixmapsdir to mixer_pixmapsdir abd define using $(pixmapsdir).
+	  Remove -DPIXDIR from INCLUDES.
+	* mixer/applet.c:
+	  Use GNOME_PIXMAPSDIR instead PIXDIR.
+	* modemlights/Makefile.am:
+	  Redefine pixmapdir to desktop_iconsdir using $(iconsdir).
+	* multiload/Makefile.am:
+	  Redefine pixmapdir to desktop_iconsdir using $(iconsdir).
+	  Indentations in EXTRA_DIST.
+	* wireless/Makefile.am:
+	  Remove -DICONDIR from INCLUDES.
+	  Redefine pixmapdir to wireless_applet_pixmapdir using $(pixmapsdir).
+	* wireless/wireless-applet.c:
+	  Use GNOME_PIXMAPSDIR instead pixmapsdir.
+
 2005-01-01  Tomasz Kłoczko <kloczek@pld.org.pl>
 
 	* gweather/pixmaps/*: removed (unused now).

@@ -400,10 +400,15 @@ dnl =================================================================
 # Honor aclocal flags
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
-AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps", [Icon Directory])
+iconsdir="${datadir}/icons"
+AC_SUBST(iconsdir)
+pixmapsdir="${datadir}/pixmaps"
+AC_SUBST(pixmapsdir)
 
 #defined the below to enable help to work for applets 
 
+AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${iconsdir}", [Gnome Icon Directory])
+AC_DEFINE_UNQUOTED(GNOME_PIXMAPSDIR, "${datadir}/pixmaps", [Gnome Pixmaps Directory])
 AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share", [datadir])
 AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc", [sysconfdir])
 AC_DEFINE_UNQUOTED(LIBDIR, "${prefix}/lib", [libdir])

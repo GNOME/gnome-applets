@@ -207,7 +207,7 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gc
 
 	   g_return_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)));
 	   
-	   pixbuf = gdk_pixbuf_new_from_file_at_size (ICONDIR"/cpufreq-applet/cpufreq-applet.png",
+	   pixbuf = gdk_pixbuf_new_from_file_at_size (GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-applet.png",
 										 48, 48, NULL);
 
 	   if (about != NULL) {
@@ -286,11 +286,11 @@ cpufreq_applet_pixmap_set_image (CPUFreqApplet *applet, const gchar *percentage)
 	   gint   perc, image;
 	   gchar *text_perc;
 	   gchar *pixmaps[] = {
-			 ICONDIR"/cpufreq-applet/cpufreq-25.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-50.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-75.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-100.png",
-			 ICONDIR"/cpufreq-applet/cpufreq-na.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-25.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-50.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-75.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-100.png",
+			 GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-na.png",
 			 NULL };
 
 	   if (!percentage) {
@@ -718,7 +718,7 @@ cpufreq_applet_setup (CPUFreqApplet *applet)
 
 	   glade_gnome_init ();
 
-	   gtk_window_set_default_icon_from_file (ICONDIR"/cpufreq-applet/cpufreq-applet.png", NULL);
+	   gtk_window_set_default_icon_from_file (GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-applet.png", NULL);
 
 	   panel_applet_add_preferences (PANEL_APPLET (applet),
 							   "/schemas/apps/cpufreq-applet/prefs", NULL);

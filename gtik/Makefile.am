@@ -29,8 +29,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GtikApplet.xml
 
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gnome-money.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = gnome-money.png
 
 @INTLTOOL_SERVER_RULE@
 
@@ -46,7 +46,7 @@ EXTRA_DIST = \
 	README AUTHORS ChangeLog	\
 	GNOME_GtikApplet.server.in.in	\
 	$(ui_DATA)			\
-	$(pixmap_DATA)			\
+	$(desktop_icons_DATA)		\
 	$(schemas_in_files)
 
 if GCONF_SCHEMAS_INSTALL

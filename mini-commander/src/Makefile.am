@@ -35,8 +35,8 @@ mini_commander_applet_SOURCES =			\
 	preferences.h				\
 	mc-default-macros.h
 
-mini_commander_applet_LDADD =				\
-	$(GNOME_APPLETS_LIBS)				\
+mini_commander_applet_LDADD =	\
+	$(GNOME_APPLETS_LIBS)	\
 	$(LIBGLADE_LIBS)
 
 mc_install_default_macros_SOURCES =	\
@@ -49,12 +49,12 @@ mc_install_default_macros_LDADD =	\
 gladedir   = $(datadir)/gen_util
 glade_DATA = mini-commander.glade
 
-# currently the installation of these bitmaps wouldn't be necessary
-bitmapsdir = $(datadir)/pixmaps/mini-commander
-bitmaps_DATA = browser-mini.xpm history-mini.xpm
+BITMAPS = 			\
+	browser-mini.xpm	\
+	history-mini.xpm
 
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gnome-mini-commander.png
+desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
+desktop_icons_DATA = gnome-mini-commander.png
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MiniCommanderApplet.server.in
@@ -84,8 +84,8 @@ endif
 
 EXTRA_DIST =					\
 	GNOME_MiniCommanderApplet.server.in.in	\
-	$(pixmap_DATA)				\
-	$(bitmaps_DATA)				\
+	$(desktop_icons_DATA)			\
+	$(BITMAPS)				\
 	$(ui_DATA)				\
 	$(glade_DATA)				\
 	$(schemas_in_files)

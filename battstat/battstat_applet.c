@@ -523,7 +523,7 @@ pixmap_timeout( gpointer data )
 
    if(
      !acline_status
-     && battery->last_batt_life != 1000
+     && battery->last_batt_life != 100
      && battery->last_batt_life > battery->red_val
      && batt_life <= battery->red_val
      && batterypresent

@@ -6,37 +6,37 @@ INCLUDES =			\
 	$(CDROM_CFLAGS)
 
 if CDDA_SOLARIS
-CDROM_CDDA_SRCS = \
-	reader-solaris.c \
+CDROM_CDDA_SRCS =		\
+	reader-solaris.c	\
 	writer-solaris.c 
 
-CDROM_CDDA_DEPS = \
-	reader-solaris.c \
+CDROM_CDDA_DEPS =		\
+	reader-solaris.c	\
 	writer-solaris.c
 endif
 
 libexec_PROGRAMS = cdplayer_applet2
 
-cdplayer_applet2_SOURCES = \
-cdplayer.c \
-cdplayer.h \
-cdrom-interface.h \
-led.c \
-led.h \
-reader-solaris.h \
-writer-solaris.h \
-cdda-solaris.h \
-inlinepixbufs.h \
-cdrom-@CDROM_HOST@.c \
-$(CDROM_CDDA_SRCS)
+cdplayer_applet2_SOURCES =	\
+	cdplayer.c		\
+	cdplayer.h		\
+	cdrom-interface.h	\
+	led.c			\
+	led.h			\
+	reader-solaris.h	\
+	writer-solaris.h	\
+	cdda-solaris.h		\
+	inlinepixbufs.h		\
+	cdrom-@CDROM_HOST@.c	\
+	$(CDROM_CDDA_SRCS)
 
-cdplayer_applet2_DEPENDS = \
-cdrom-@CDROM_HOST@.c \
+cdplayer_applet2_DEPENDS =	\
+	cdrom-@CDROM_HOST@.c	\
 $(CDROM_CDDA_DEPS)
 
-cdplayer_applet2_LDADD = \
-$(GNOME_APPLETS_LIBS) \
-$(CDROM_LIBS) 
+cdplayer_applet2_LDADD =	\
+	$(GNOME_APPLETS_LIBS)	\
+	$(CDROM_LIBS) 
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CDPlayerApplet.server.in
@@ -50,14 +50,24 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CDPlayerApplet.xml
 
-IMAGES = images/cdplayer-backward.png images/cdplayer-eject.png images/cdplayer-forward.png images/cdplayer-next.png images/cdplayer-play.png images/cdplayer-pause.png images/cdplayer-prev.png images/cdplayer-prev.png images/cdplayer-stop.png
+IMAGES =				\
+	images/cdplayer-backward.png	\
+	images/cdplayer-eject.png	\
+	images/cdplayer-forward.png	\
+	images/cdplayer-next.png	\
+	images/cdplayer-pause.png	\
+	images/cdplayer-play.png	\
+	images/cdplayer-prev.png	\
+	images/cdplayer-prev.png	\
+	images/cdplayer-stop.png
 
-VARIABLES=cdplayer_stop_data $(srcdir)/images/cdplayer-stop.png \
-	  cdplayer_play_data $(srcdir)/images/cdplayer-play.png \
-	  cdplayer_pause_data $(srcdir)/images/cdplayer-pause.png \
-	  cdplayer_prev_data $(srcdir)/images/cdplayer-prev.png \
-	  cdplayer_next_data $(srcdir)/images/cdplayer-next.png \
-	  cdplayer_eject_data $(srcdir)/images/cdplayer-eject.png
+VARIABLES=								\
+	cdplayer_stop_data $(srcdir)/images/cdplayer-stop.png		\
+	cdplayer_play_data $(srcdir)/images/cdplayer-play.png		\
+	cdplayer_pause_data $(srcdir)/images/cdplayer-pause.png		\
+	cdplayer_prev_data $(srcdir)/images/cdplayer-prev.png		\
+	cdplayer_next_data $(srcdir)/images/cdplayer-next.png		\
+	cdplayer_eject_data $(srcdir)/images/cdplayer-eject.png
 
 BUILT_SOURCES = inlinepixbufs.h
 CLEANFILES = inlinepixbufs.h $(server_in_files) $(server_DATA)
@@ -68,21 +78,12 @@ inlinepixbufs.h: $(IMAGES)
 $(OBJECTS): inlinepixbufs.h
 
 EXTRA_DIST = \
-images/cdplayer-backward.png \
-images/cdplayer-eject.png \
-images/cdplayer-forward.png \
-images/cdplayer-next.png \
-images/cdplayer-play.png \
-images/cdplayer-pause.png \
-images/cdplayer-prev.png \
-images/cdplayer-prev.png \
-images/cdplayer-stop.png \
-cdrom-irix.c \
-cdrom-linux.c \
-cdrom-netbsd.c \
-cdrom-solaris.c \
-reader-solaris.c \
-writer-solaris.c \
-GNOME_CDPlayerApplet.server.in.in \
-$(ui_DATA) \
-$(IMAGES)
+	cdrom-irix.c				\
+	cdrom-linux.c				\
+	cdrom-netbsd.c				\
+	cdrom-solaris.c				\
+	reader-solaris.c			\
+	writer-solaris.c			\
+	GNOME_CDPlayerApplet.server.in.in	\
+	$(ui_DATA)				\
+	$(IMAGES)
