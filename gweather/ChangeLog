@@ -1,3 +1,9 @@
+1999-07-25  Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
+    * Use Gtk idle timeouts to process HTTP requests in the
+      background, so the interface does not freeze during updates.
+    * Made the background transparent on most icons.
+
 1999-07-18  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* gweather-applet.c (gweather_applet_create): don't use
@@ -6,7 +12,7 @@
 
 1999-07-18 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
-- Sync gnome CVS version with my tree.
+    * Sync gnome CVS version with my tree.
 
 
 1999-07-18  Jacob Berkman  <jberkman@andrew.cmu.edu>
@@ -20,47 +26,49 @@
 
 1999-07-15 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
-- Display of radar maps is now a runtime option (now compile-time) and
-  windows are destoyed when not displayed, to free up X resources...
-- Properly respond to "change_size" and "save_session" applet signals.
-- Added proxy option.
+    * Display of radar maps is now a runtime option (now
+      compile-time) and windows are destoyed when not displayed,
+      to free up X resources...
+    * Properly respond to "change_size" and "save_session" applet
+      signals.
+    * Added proxy option.
 
 
 1999-07-13 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
-- Better support for users with a dialup connection.
+    * Better support for users with a dialup connection.
 
 
 1999-07-11 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
-- Fixed a stupid, but serious bug, that would cause coredumps upon
-  updates...
-- Added option for detailed zone forecasts, instead of the more general
-  state forecasts (takes more time to update, though, since the zone
-  forecast file is about 10-20 times that of the state forecast file).
-
+    * Fixed a stupid, but serious bug, that would cause coredumps
+      upon updates...
+    * Added option for detailed zone forecasts, instead of the more
+      general state forecasts (takes more time to update, though,
+      since the zone forecast file is about 10-20 times that of the
+      state forecast file).  
 
 1999-07-07 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
 
-- Fixed bug ocurring when METAR information is unavailable.
-- Replaced the gnome_less widget with a gtk_text + scrollbar, because
-  it did strange things, so I worked around it.
-- Removed all regexps but one (got an occasional coredump when calling
-  regcomp from metar_init_re that I couldn't figure out, so I worked
-  around it).  The current C code isn't as comprehensive as the regexps
-  were, but it should suffice (unless the METAR format contains any
-  unexpected tokens).
-- Fixed a bug in the UTC to localtime conversion function (near midnight,
-  would get time one hour early).  There should be a much simpler and
-  less stupid way to do this, though! :-)
-- Changed the humidity formula.
-- Fixed a bug in the IWIN parser to handle a more general form of inputs
-  (the old one would fail an assertion and dump core in forecasts where
-  SFPxx was not used as expected) -- now uses regexps.
-- Fixed the layout for horizontal orientation (still need to take care
-  of three digit temps).
+    * Fixed bug ocurring when METAR information is unavailable.
+    * Replaced the gnome_less widget with a gtk_text + scrollbar,
+      because it did strange things, so I worked around it.
+    * Removed all regexps but one (got an occasional coredump when
+      calling regcomp from metar_init_re that I couldn't figure out,
+      so I worked around it).  The current C code isn't as comprehensive
+      as the regexps were, but it should suffice (unless the METAR
+      format contains any unexpected tokens).
+    * Fixed a bug in the UTC to localtime conversion function (near
+      midnight, would get time one hour early).  There should be a
+      much simpler and less stupid way to do this, though! :-)
+    * Changed the humidity formula.
+    * Fixed a bug in the IWIN parser to handle a more general form of
+      inputs (the old one would fail an assertion and dump core in
+      forecasts where SFPxx was not used as expected) -- now uses regexps.
+    * Fixed the layout for horizontal orientation (still need to take
+      care of three digit temps).
 
-7/6/99
-------
-- Began ChangeLog
+1999-07-07 Spiros Papadimitriou <spapadim+@cs.cmu.edu>
+
+    * Began ChangeLog
 
