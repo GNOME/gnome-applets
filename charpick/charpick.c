@@ -77,9 +77,13 @@ static const gchar *y_list = "ýÿ";
 /* sets the picked character as the selection when it gets a request */
 static void
 charpick_selection_handler(GtkWidget *widget,
-			   GtkSelectionData *selection_data, 
+			   GtkSelectionData *selection_data,
+			   guint info,
+			   guint time,
 		           gpointer data)
 {
+  charpick_data *curr_data = data;
+
 #ifdef DEBUG
   g_print("Selection Retrieved\n");
 #endif
@@ -87,7 +91,7 @@ charpick_selection_handler(GtkWidget *widget,
   gtk_selection_data_set(selection_data,
 			 GDK_SELECTION_TYPE_STRING,
 			 8,
-			 data,
+			 &curr_data->selected_char,
 			 1);
 }
 
@@ -318,11 +322,13 @@ main (int argc, char *argv[])
 			 | */ GDK_FOCUS_CHANGE_MASK
 			 | GDK_KEY_PRESS_MASK);
   /* selection handler for selected character */
-  gtk_selection_add_handler(event_box, 
+  gtk_selection_add_target (event_box, 
 			    GDK_SELECTION_PRIMARY,
                             GDK_SELECTION_TYPE_STRING,
-                            charpick_selection_handler,
-			    &(curr_data.selected_char));
+			    0);
+  gtk_signal_connect (GTK_OBJECT (event_box), "selection_get",
+		      GTK_SIGNAL_FUNC (charpick_selection_handler),
+		      &curr_data);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 				         "about",
