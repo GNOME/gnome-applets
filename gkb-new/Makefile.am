@@ -26,9 +26,9 @@ gkb_applet_2_LDADD = \
 @INTLTOOL_SERVER_RULE@
 
 if GKB_SUN
-  gkb_DDIRS= xmodmap.sun descs.sun
+gkb_DDIRS= xmodmap.sun descs.sun
 else
-  gkb_DDIRS= xmodmap descs
+gkb_DDIRS= xmodmap descs
 endif
 
 SUBDIRS= gkb $(gkb_DDIRS)
