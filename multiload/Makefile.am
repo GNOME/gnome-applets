@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
