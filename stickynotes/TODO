@@ -1,9 +1,12 @@
 
 *** Sticky Notes for the Gnome Desktop Environment. ***
 
-* Fix BonoboUIComponent Listener unnecessarily triggering
-* Use inconsistent setting on applet "Lock Notes" menu
+* Fix BonoboUIComponent Listener unnecessarily triggering. It triggers
+  whenever one opens the applet menu, even if the state of the id
+  it's listening to hasn't changed.
+  	- is this a bug in bonobo?
 
-Possible library bugs:
-* gtk_check_menu_item_set_active() crashes
-* BonoboUICompoment Listeners trigger unnecessarily.
+* Use inconsistent setting on applet "Lock Notes" menu when all notes
+  are not locked/unlocked
+	- but how?
+
