@@ -89,8 +89,6 @@ make_new_applet (const gchar *goad_id)
 	return make_netload_applet (goad_id);
     else if (strstr (goad_id, "multiload_loadavg_applet"))
 	return make_loadavg_applet (goad_id);
-    else if (strstr (goad_id, "multiload_pageload_applet"))
-	return make_pageload_applet (goad_id);
     else
 	return make_cpuload_applet (goad_id);
 }
@@ -156,20 +154,6 @@ main (int argc, char **argv)
     multiload_properties.cpuload.adj_data [0] = 500;
     multiload_properties.cpuload.adj_data [1] = 40;
 
-    multiload_properties.pageload.n = 3;
-    multiload_properties.pageload.name = "pageload";
-#ifdef ENABLE_NLS
-    {
-	int i;
-	for (i=0;i<4;i++) page_texts[i]=_(page_texts[i]);
-    }
-#endif
-    multiload_properties.pageload.texts = page_texts;
-    multiload_properties.pageload.color_defs = page_color_defs;
-    multiload_properties.pageload.adj_data [0] = 500;
-    multiload_properties.pageload.adj_data [1] = 40;
-    multiload_properties.pageload.adj_data [2] = 40;
-
     multiload_properties.memload.n = 4;
     multiload_properties.memload.name = "memload";
 #ifdef ENABLE_NLS
@@ -233,7 +217,6 @@ main (int argc, char **argv)
     /* Add property objects. */
 
     ADD_PROPERTIES (LoadGraph, cpuload);
-    ADD_PROPERTIES (LoadGraph, pageload);
     ADD_PROPERTIES (LoadGraph, memload);
     ADD_PROPERTIES (LoadGraph, swapload);
     ADD_PROPERTIES (LoadGraph, netload);

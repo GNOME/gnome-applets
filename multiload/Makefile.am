@@ -7,7 +7,6 @@ INCLUDES = -I. -I$(srcdir) 				\
 bin_PROGRAMS = multiload_applet
 
 multiload_applet_SOURCES = cpuload.c		\
-			   pageload.c		\
 			   memload.c		\
 			   swapload.c		\
 			   netload.c		\
@@ -36,8 +35,7 @@ Monitorsdir	= $(appletdir)/Monitors
 
 Monitors_predata	= cpuload_applet.desktop.in	\
 		memload_applet.desktop.in swapload_applet.desktop.in	\
-		netload_applet.desktop.in loadavg_applet.desktop.in	\
-		pageload_applet.desktop.in
+		netload_applet.desktop.in loadavg_applet.desktop.in
 		
 Monitors_DATA = $(Monitors_predata:.desktop.in=.desktop)
 @XML_I18N_MERGE_DESKTOP_RULE@

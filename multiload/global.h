@@ -16,10 +16,6 @@ BEGIN_GNOME_DECLS
 GtkWidget *
 make_cpuload_applet (const gchar *goad_id);
 
-/* start a new instance of the pageload applet */
-GtkWidget *
-make_pageload_applet (const gchar *goad_id);
-
 /* start a new instance of the memload applet */
 GtkWidget *
 make_memload_applet (const gchar *goad_id);
