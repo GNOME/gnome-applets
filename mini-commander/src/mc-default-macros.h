@@ -54,7 +54,7 @@ static const MCDefaultMacro mc_default_macros [] = {
 	{ "^fm: *(.*)$",         "gnome-open http://core.freshmeat.net/search.php3?query=$(echo '\\1'|tr \" \" +)" },
 
 	/* dictionary search */
-	{ "^dictionary: *(.*)$", "gnome-open http://www.dictionary.com/cgi-bin/dict.pl?term=\\1" },
+	{ "^dictionary: *(.*)$", "gnome-dictionary \"\\1\"" },
 
 	/* google search */
 	{ "^google: *(.*)$",     "gnome-open http://www.google.com/search?q=\\1" },
