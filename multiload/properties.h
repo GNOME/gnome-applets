@@ -8,7 +8,8 @@ BEGIN_GNOME_DECLS
 typedef enum {
     PROP_CPULOAD,
     PROP_MEMLOAD,
-    PROP_SWAPLOAD
+    PROP_SWAPLOAD,
+    PROP_NETLOAD,
 } PropertyClass;
 
 typedef struct	_MultiLoadProperties		MultiLoadProperties;
@@ -25,7 +26,7 @@ struct _LoadGraphProperties {
 };
 
 struct _MultiLoadProperties {
-    LoadGraphProperties cpuload, memload, swapload;
+    LoadGraphProperties cpuload, memload, swapload, netload;
 };
 
 extern GList *multiload_property_object_list;

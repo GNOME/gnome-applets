@@ -8,6 +8,7 @@ bin_PROGRAMS = multiload_applet
 multiload_applet_SOURCES = cpuload.c		\
 			   memload.c		\
 			   swapload.c		\
+			   netload.c		\
 			   main.c		\
 			   global.h		\
 			   properties.c		\
@@ -29,7 +30,7 @@ appletdir	= $(datadir)/applets
 Monitorsdir	= $(appletdir)/Monitors
 
 Monitors_DATA	= cpuload_applet.desktop memload_applet.desktop \
-		  swapload_applet.desktop
+		  swapload_applet.desktop netload_applet.desktop
 
 EXTRA_DIST	= $(Monitors_DATA) multiload_applet.gnorba
 

@@ -4,5 +4,6 @@
 void GetLoad (int Maximum, int data [4]);
 void GetMemory (int Maximum, int data [4]);
 void GetSwap (int Maximum, int data [2]);
+void GetNet (int Maximum, int data [3]);
 
 #endif

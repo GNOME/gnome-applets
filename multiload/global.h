@@ -23,6 +23,10 @@ make_memload_applet (const gchar *goad_id);
 GtkWidget *
 make_swapload_applet (const gchar *goad_id);
 
+/* start a new instance of the netload applet */
+GtkWidget *
+make_netload_applet (const gchar *goad_id);
+
 /* show properties dialog. */
 void
 multiload_properties_cb (AppletWidget *widget, gpointer data);
