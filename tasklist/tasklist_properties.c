@@ -2,18 +2,19 @@
 #include "tasklist_applet.h"
 
 extern Config config;
-
+extern GtkWidget *applet;
+extern GtkWidget *area;
 GtkWidget *dialog;
 Config temp_config;
 
 /* Prototypes */
+GtkWidget* properties_add_spin_button (gint def, gint min, gint max, 
+				       gint step, gint page, gint *config_value);
 void properties_cb_apply (GtkWidget *widget, gint page, gpointer data);
 GtkWidget* properties_create_tasks_page (void);
 GtkWidget* properties_create_general_page (void);
 void properties_add_checkbutton (GtkWidget *box, gchar *name, gboolean config_value);
 GtkWidget* properties_create_geometry_page (void);
-GtkWidget* properties_add_spin_button (gint def, gint min, gint max, 
-				       gint step, gint page);
 gboolean properties_cb_checkbutton_disable (GtkWidget *widget, gboolean data);
 gboolean properties_cb_checkbutton (GtkWidget *widget, gboolean *data);
 
@@ -33,6 +34,15 @@ gboolean properties_cb_checkbutton_disable (GtkWidget *widget, gboolean data)
   return FALSE;
 }
 
+gboolean properties_cb_spin_button (GtkAdjustment *adj, gint *data)
+{
+  *data = (gint)(adj->value);
+ 
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (dialog));
+
+  return FALSE;
+}
+
 gboolean properties_cb_checkbutton (GtkWidget *widget, gboolean *data)
 {
   
@@ -49,8 +59,11 @@ gboolean properties_cb_checkbutton (GtkWidget *widget, gboolean *data)
 void properties_cb_apply (GtkWidget *widget, gint page, gpointer data)
 {
   config = temp_config;
-
+  applet_widget_sync_config (APPLET_WIDGET (applet));
+  
   tasklist_layout ();
+  gtk_drawing_area_size (GTK_DRAWING_AREA (area), config.tasklist_width, 
+			CONFIG_ROWHEIGHT * tasklist_get_num_rows (applet_widget_get_panel_size(APPLET_WIDGET (applet))));
 }
 
 void properties_add_checkbutton (GtkWidget *box, gchar *name, gboolean config_value)
@@ -67,13 +80,16 @@ void properties_add_checkbutton (GtkWidget *box, gchar *name, gboolean config_va
 
 
 GtkWidget* properties_add_spin_button (gint def, gint min, gint max, 
-				       gint step, gint page)
+				       gint step, gint page, gint *config_value)
 {
   GtkWidget *spinbutton;
   GtkAdjustment *adj;
   
   adj = gtk_adjustment_new (def, min, max, step, page, page);
   spinbutton = gtk_spin_button_new (adj, 1, 0);
+  gtk_spin_button_set_value (GTK_SPIN_BUTTON(spinbutton), (gfloat)*config_value);
+  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
+		      GTK_SIGNAL_FUNC (properties_cb_spin_button), config_value);
 
   return spinbutton;
 }
@@ -101,14 +117,14 @@ GtkWidget* properties_create_geometry_page (void)
 			     0, 1,
 			     0, 1);
   gtk_table_attach_defaults (GTK_TABLE (table),
-			     properties_add_spin_button (350, 20, 1024, 1, 1),
+			     properties_add_spin_button (350, 20, 1024, 1, 1, &temp_config.tasklist_width),
 			     1, 2,
 			     0, 1);
 
   checkbutton = gtk_check_button_new_with_label ("Number of rows follows panel height");
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton), config.numrows_follows_panel);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton), temp_config.numrows_follows_panel);
   gtk_signal_connect (GTK_OBJECT (checkbutton), "toggled",
-		      GTK_SIGNAL_FUNC (properties_cb_checkbutton), &config.numrows_follows_panel);
+		      GTK_SIGNAL_FUNC (properties_cb_checkbutton), &temp_config.numrows_follows_panel);
   gtk_table_attach_defaults (GTK_TABLE (table), checkbutton,
 			     0, 2,
 			     1, 2);
@@ -118,13 +134,13 @@ GtkWidget* properties_create_geometry_page (void)
 			     0, 1,
 			     2, 3);
   
-  spinbutton = properties_add_spin_button (2, 1, 8, 1, 1);
+  /*  spinbutton = properties_add_spin_button (2, 1, 8, 1, 1);
  
   gtk_table_attach_defaults (GTK_TABLE (table),
 			     spinbutton,
 			     1, 2,
 			     2, 3);
-  
+  */
   frame = gtk_frame_new ("Vertical");
   gtk_box_pack_start_defaults (GTK_BOX (hbox), frame);
  table = gtk_table_new (3, 2, FALSE);
@@ -134,11 +150,11 @@ GtkWidget* properties_create_geometry_page (void)
   gtk_table_attach_defaults (GTK_TABLE (table), label,
 			     0, 1,
 			     0, 1);
-  gtk_table_attach_defaults (GTK_TABLE (table),
+  /*  gtk_table_attach_defaults (GTK_TABLE (table),
 			     properties_add_spin_button (350, 20, 1024, 1, 1),
 			     1, 2,
 			     0, 1);
-
+  */
   checkbutton = gtk_check_button_new_with_label ("Number of columns follows panel width");
   
   gtk_table_attach_defaults (GTK_TABLE (table), checkbutton,
@@ -150,7 +166,7 @@ GtkWidget* properties_create_geometry_page (void)
 			     0, 1,
 			     2, 3);
   
-  spinbutton = properties_add_spin_button (2, 1, 8, 1, 1);
+  /*  spinbutton = properties_add_spin_button (2, 1, 8, 1, 1);
   gtk_signal_connect (GTK_OBJECT (checkbutton), "toggled",
 		      GTK_SIGNAL_FUNC (properties_cb_checkbutton_disable),
 		      spinbutton);
@@ -162,6 +178,7 @@ GtkWidget* properties_create_geometry_page (void)
 			     spinbutton,
 			     1, 2,
 			     2, 3);
+  */  
   gtk_widget_show_all (hbox);
   return hbox;
 }

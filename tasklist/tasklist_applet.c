@@ -91,7 +91,7 @@ static void tasklist_cb_change_size (GtkWidget *widget,
 				     PanelSizeType o, gpointer data)
 {
 
-  gtk_drawing_area_size (GTK_DRAWING_AREA (area), CONFIG_WIDTH, 
+  gtk_drawing_area_size (GTK_DRAWING_AREA (area), config.tasklist_width, 
 			 CONFIG_ROWHEIGHT * tasklist_get_num_rows (o));
   tasklist_layout();
 }
@@ -263,7 +263,7 @@ void tasklist_layout (void)
     }
 
   curheight = (CONFIG_ROWHEIGHT * config_rows-4) / num_rows;
-  curwidth = (CONFIG_WIDTH-4) / num_cols;
+  curwidth = (config.tasklist_width-4) / num_cols;
 
   curx = 2;
   cury = 2;
@@ -278,7 +278,7 @@ void tasklist_layout (void)
       temp_task->height = curheight;
 
       curx += curwidth;
-      if (curx >= CONFIG_WIDTH || curx + curwidth > CONFIG_WIDTH)
+      if (curx >= config.tasklist_width || curx + curwidth > config.tasklist_width)
 	{
 	  cury += curheight;
 	  curx = 2;
@@ -376,7 +376,7 @@ void tasklist_create_applet(void)
   gtk_widget_show (area);
   gtk_box_pack_start_defaults (GTK_BOX (hbox), area);
 
-  gtk_drawing_area_size (GTK_DRAWING_AREA (area), CONFIG_WIDTH, 
+  gtk_drawing_area_size (GTK_DRAWING_AREA (area), config.tasklist_width, 
 			 CONFIG_ROWHEIGHT * tasklist_get_num_rows (applet_widget_get_panel_size(APPLET_WIDGET (applet))));
   gtk_widget_set_events (area, GDK_EXPOSURE_MASK | GDK_BUTTON_RELEASE_MASK |
 			 GDK_BUTTON_PRESS_MASK);
