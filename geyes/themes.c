@@ -84,9 +84,7 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
 
         eyes_applet->theme_dir = g_strdup_printf ("%s/", theme_dir);
 
-        file_name = g_malloc (strlen (theme_dir) + strlen ("/config") + 1);
-        strcpy (file_name, theme_dir);
-        strcat (file_name, "/config");
+        file_name = g_strdup_printf("%s%s",theme_dir,"/config");
         theme_file = fopen (file_name, "r");
         if (theme_file == NULL) {
                 g_error ("Unable to open theme file.");
