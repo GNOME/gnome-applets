@@ -147,7 +147,7 @@ void popup_destroy_cb(GtkWidget *widget, StickyNote *note)
 /* Popup Menu Callback : Lock/Unlock selected sticky note */
 void popup_toggle_lock_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynote_set_locked(note, !note->locked);
+	stickynote_set_locked(note, gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)));
 }
 
 /* Popup Menu Callback : Change the title */

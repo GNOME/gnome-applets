@@ -226,7 +226,7 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlocked note"), NULL);
 	}
 
-	//gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(glade_xml_get_widget(note->menu, "popup_toggle_lock")), locked);
+	gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(glade_xml_get_widget(note->menu, "popup_toggle_lock")), locked);
 }
 
 /* Show/Hide a sticky note */
