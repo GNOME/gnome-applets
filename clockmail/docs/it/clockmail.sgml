@@ -1,0 +1,247 @@
+<sect1 id="clockmail">
+ <title>Orologio e Controllo Posta</title>
+ <para>
+  La applet di GNOME <application>Orologio e controllo posta</application>
+  (oppure <application>clockmail_applet</application>, in breve) è una
+  applet che mostra l'ora corrente e la quantità di posta si trova
+  nella vostra cartella. Quando nuova posta è in attesa, lampeggia.
+ </para>
+ <para>
+  Fino a GNOME di Ottobre si trovava in gnome-core, ma adesso viene
+  distribuita nel pachetto gnome-applets. Questa parte delle guida 
+  si riferisce alla applet distribuita nel pacchetto gnome-applets-.1.1.2.
+ </para>     
+ <para>
+  Per aggiungere la <application>clockmail_applet</application> al vostro
+  pannello, premete il <mousebutton>terzo pulsante del mouse</mousebutton> in
+  una zona vuota e seguite la sequenza:
+  <menuchoice>
+   <guimenu>Applet</guimenu>
+   <guisubmenu>Orologi</guisubmenu>
+   <guimenuitem>Orologio e controllo posta</guimenuitem>
+  </menuchoice>
+  oppure digitate nella linea di comando:
+  <command>clockmail_applet --activate-goad-server=clockmail_applet</command>
+ </para>
+ <para>
+  Questa applet è stata scritta da John Ellis
+  (<email>johne@bellatlantic.net</email>). Comunicate gli errori
+  tramite il <ulink type="http" url="http://bugs.gnome.org">Gnome Bug 
+   Tracking System</ulink>. È possibile eseguire questa operazione
+  seguendo le istruzioni presenti sul sito web oppure utilizzando
+  <application>bug-buddy</application> da linea di comando. Nella voce
+  "package" inserite gnome-applets.
+ </para>
+ 
+ <sect2 id="clockmail-usage">
+  <title>Uso</title>
+  <para>
+   Non farete niente di speciale con questa applet. Risiede nel vostro pannello
+   mostrando l'ora corrente e la quantità di posta in attesa. Sono disponibili
+   molte opzioni legate all'uso del mouse:
+  </para>
+
+  <orderedlist>
+   <listitem>
+    <para>
+     La pressione del <mousebutton>primo tasto del mouse</mousebutton> 
+     permette di visualizzare un <guilabel>suggerimento</guilabel> che
+     mostra la data corrente. Può inoltre avviare un altro programma 
+     (tipicamente Balsa, il programma di posta) se questa opzione è stata
+     selezionata nella finestra delle impostazioni generali.
+    </para>
+   </listitem>
+   <listitem>
+    <para>  
+     La pressione continuata del <mousebutton>secondo tasto del mouse
+     </mousebutton> permette di postare l'orologio all'interno del
+     pannello, come qualunque altro oggetto che risiede in quest'ultimo.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     La pressione del <mousebutton>terzo tasto del mouse</mousebutton>
+     mostra le opzioni standard disponibili per tutte le applet, incluso
+     un menu <guilabel>Proprietà...</guilabel>, spiegato 
+     <link linkend="clockmail-prefs">più avanti</link>.
+    </para>
+   </listitem>
+  </orderedlist>
+ </sect2>     
+ 
+ <sect2 id="clockmail-prefs">
+  <title>Proprietà</title>
+  <para>
+   La finestra di dialogo delle proprietà  (che si fa chiamare "Impostazioni
+   ClockMail" piuttosto che proprietà) è divisa in due sezioni, una per le
+   opzioni generali, e una per i temi.
+  </para>
+  
+  <variablelist>
+   <varlistentry>
+    <term>Proprietà Generali</term>
+    <listitem>
+     <para>
+      La sezione delle proprietà <guilabel>Generali</guilabel> permette
+      di selezionare molteplici opzioni:
+     </para>
+     <variablelist>
+      <varlistentry>
+       <term>Visualizza l'ora nel formato 12 ore (AM/PM)</term>
+       <listitem>
+	<para>
+	 Quando questa casella è selezionata, l'ora viene mostrata nel 
+	 formato 12 ore. La modalità predefinita vede questa opzione
+	 disattivata e l'ora mostrata nel formato 24 ore.
+	</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>Visualizza l'ora relativa a GMT (Greenwich Mean Time)</term>
+       <listitem>
+	<para>
+	 È possibile modificare il timezone che utilizzato dall'applet.
+	 È inoltre permesso di digitare direttamente nella casella di testo
+	 oppure utilizzando le piccole freccie per scorrere le opzioni. L'ora
+	 può essere qualunque cosa inclusa da 12 ore avanti e 12 ore indietro
+	 rispetto al GMT. Ricordatevi di selezionare la casella, altrimenti il
+	 nuovo timezone non verrà utilizzato. 
+	</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>File della posta</term>
+       <listitem>
+	<para>
+	 Questo è il file che viene controllato per la posta in arrivo.
+	 La versione predefinita cerca in
+	 <filename>/var/spool/mail/vostro_username</filename>
+	 o qualcosa di simile. Se filtrate e/o spostate la posta da qualche
+	 altra parta, modificate queste opzione. Non è possibile elencare
+	 più file. La applet ne può controllare uno soltanto.
+	</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>Quando arriva nuova posta esegui:</term>
+       <listitem>
+	<para>
+	 È possibile far accadere qualcosa quando arriva nuova posta.
+	 Ad esempio, è molto comune far emettere un suono quando questa
+	 arriva. È possibile inserire in questa casella di testo il comando
+	 da eseguire (assicurandosi di aver selezionato la casella apposita).
+	 Se desiderate inserire più di un comando, è possibile separarli
+	 trami un punto e virgola. Ad esempio:
+	</para>
+	<itemizedlist>
+	 <listitem>
+	  <para>
+	   <command>esdplay /full/path/to/file.wav</command>
+	  </para>
+	 </listitem>
+	 <listitem>
+	  <para>
+	   <command>cd /path/to/directory ; esdplay file.wav</command>
+	  </para>
+	 </listitem>
+	</itemizedlist>
+	<para>
+         Questi due comandi ottengono lo stesso effetto. È necessario
+	 inserire il percorso completo, senza utilizzare scorciatoie come
+	 <command>cd ~</command> .
+	</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>Lampeggia quando della posta è in attesa</term>
+       <listitem>
+	<para>
+	 If you select this <guibutton>checkbox</guibutton>, then the
+	 graphic will blink until you read your unread email. Normally,
+	 this is off, and the blinking lasts a few seconds only.
+	</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>Dimensione mailbox da considerare piena</term>
+       <listitem>
+	<para>
+	 Se la mailbox è piena, alcuni temi lo mostreranno.
+	 Questa impostazione vi permette di decidere a quanto
+	 corrisponde il "piena".
+	</para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>Dopo un click, esegui...</term>
+       <listitem>
+	<para>
+	 Quando attivata questa opzione, premendo il <mousebutton>primo
+	 pulsante</mousebutton> del mouse sulla applet verrà eseguito
+	 il comando prescelto. Nelle opzioni predefinite viene eseguito
+	 il programma di posta Balsa (se questo è installato. Se non è
+	 installato, non accadrà niente). Se non desiderate eseguire qualcosa,
+	 semplicamente cancellate il contenuto della casella di posta.
+	</para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Temi</term>
+    <listitem>
+     <para>
+      Questa applet fornisce una lunga lista di temi, tutti quelli che trova
+      in <filename>$PREFIX/clockmail/</filename>. L'impostazione predefinita
+      non usa nessuno di questi. Notare che non tutti questi temi mostrano
+      sia l'ora che lo stato della casella di posta. Alcuni di questi
+      ne mostrano uno soltanto. Selezionate un tema e premete il pulsante
+      <guilabel>Applica</guilabel> per effettuare le modifiche.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect2>
+ 
+ <sect2 id="clockmail-bugs">
+  <title>Bugs e limitazioni</title>
+  <orderedlist>
+   <listitem>
+    <para>
+     Non è possibile cambiare l'ora attraverso le proprietà 
+     dell'orologio. Questo non è propriamente un bug, visto che
+     è necessario essere utente <emphasis>root</emphasis> per alterare
+     l'ora di sistema, utilizzando il comando <command>date</command>.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Se modificate l'ora di sistema utilizzando il comando 
+     <command>date</command>, l'orologio smetterà di funzionare 
+     finchè il sistema non raggiungerà l'ora mostrata dalla applet.
+     Tutto ricomincierà a funzionare nel migliore dei modi.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Il tema mailcounter mostra il numero di messaggi di posta in attesa in
+     modo sbagliato.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Molti temi non si adattano alla dimensione di un pannello verticale
+     e forzano la larghezza del pannello.
+    </para>       
+   </listitem>
+   <listitem>
+    <para>
+     Non gestisce multiple caselle di posta.
+    </para>
+   </listitem>
+  </orderedlist>
+ </sect2>
+ 
+</sect1>
+ 
