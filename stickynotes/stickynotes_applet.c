@@ -80,6 +80,8 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 
 	/* Watch GConf values */
 	gconf_client_add_dir(stickynotes->gconf_client, GCONF_PATH, GCONF_CLIENT_PRELOAD_NONE, NULL);
+	gconf_client_notify_add(stickynotes->gconf_client, GCONF_PATH "/defaults", (GConfClientNotifyFunc) preferences_apply_cb,
+				stickynotes, NULL, NULL);
 	gconf_client_notify_add(stickynotes->gconf_client, GCONF_PATH "/settings", (GConfClientNotifyFunc) preferences_apply_cb,
 				stickynotes, NULL, NULL);
 	
@@ -212,17 +214,18 @@ void stickynotes_applet_create_preferences(StickyNotesApplet *stickynotes)
 		gboolean stickyness = gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/sticky", NULL);
 		gint click_behavior = gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/settings/click_behavior", NULL);
 
-		GdkColor color;
-		{
-			gchar *color_str = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/settings/body_color_prelight", NULL);
-			gdk_color_parse(color_str, &color);
-			g_free(color_str);
-		}
-
 		gtk_adjustment_set_value(width_adjust, width);
 		gtk_adjustment_set_value(height_adjust, height);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(sticky_check), stickyness);
 		gtk_option_menu_set_history(GTK_OPTION_MENU(click_behavior_menu), click_behavior);
+	}
+
+	{
+		GdkColor color;
+		
+		gchar *color_str = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/defaults/color", NULL);
+		gdk_color_parse(color_str, &color);
+		g_free(color_str);
 
 		gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note_color), color.red, color.green, color.blue, 65535);
 	}

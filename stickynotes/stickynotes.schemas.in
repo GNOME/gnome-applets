@@ -9,7 +9,7 @@
 	<default>100</default>
 	<locale name="C">
 		<short>Default width for new notes</short>
-		<long>Default width for new notes in pixels.</long>
+		<long>Default width for new sticky notes in pixels.</long>
 	</locale>
 </schema>
 
@@ -21,7 +21,23 @@
 	<default>100</default>
 	<locale name="C">
 		<short>Default height for new notes</short>
-		<long>Default height for new notes in pixels.</long>
+		<long>Default height for new sticky notes in pixels.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/stickynotes_applet/defaults/color</key>
+	<applyto>/apps/stickynotes_applet/defaults/color</applyto>
+	<owner>stickynotes_applet</owner>
+	<type>string</type>
+	<default>yellow1</default>
+	<locale name="C">
+		<short>Default base color for new notes</short>
+		<long>
+		    Default base color for new sticky notes. This can be any string found in
+		    rgb.txt (that comes with XFree86), for example "snow" or "yellow2".
+		    Or it can be an html hex specification, for example "#30FF50".
+		</long>
 	</locale>
 </schema>
 
@@ -34,78 +50,8 @@
 	<locale name="C">
 		<short>Autosave timeout in minutes.</short>
 		<long>
-		    Every time the specified number of minutes pass. The Sticky Notes
+		    Every time the specified number of minutes pass. The sticky notes
 		    are automatically saved.
-		</long>
-	</locale>
-</schema>
-
-<schema>
-	<key>/schemas/apps/stickynotes_applet/settings/title_color</key>
-	<applyto>/apps/stickynotes_applet/settings/title_color</applyto>
-	<owner>stickynotes_applet</owner>
-	<type>string</type>
-	<default>yellow3</default>
-	<locale name="C">
-		<short>Background color of title</short>
-		<long>
-		    Background color of the title of the sticky notes. This can be any
-		    string found in rgb.txt (that comes with XFree86), for example
-		    "snow" or "yellow2". Or it can be an html hex specification, for example
-		    "#30FF50".
-		</long>
-	</locale>
-</schema>
-
-<schema>
-	<key>/schemas/apps/stickynotes_applet/settings/title_color_prelight</key>
-	<applyto>/apps/stickynotes_applet/settings/title_color_prelight</applyto>
-	<owner>stickynotes_applet</owner>
-	<type>string</type>
-	<default>yellow2</default>
-	<locale name="C">
-		<short>Background prelighted color of title</short>
-		<long>
-		    Background color of the title of the sticky notes when the note is in
-		    focus of the keyboard and mouse. Like "body_color", this can be any
-		    string found in rgb.txt (that comes with XFree86), for example
-		    "snow" or "yellow2". Or it can be an html hex specification, for example
-		    "#30FF50".
-		</long>
-	</locale>
-</schema>
-
-<schema>
-	<key>/schemas/apps/stickynotes_applet/settings/body_color</key>
-	<applyto>/apps/stickynotes_applet/settings/body_color</applyto>
-	<owner>stickynotes_applet</owner>
-	<type>string</type>
-	<default>yellow2</default>
-	<locale name="C">
-		<short>Background color of body</short>
-		<long>
-		    Background color of the body of the sticky notes. This can be any
-		    string found in rgb.txt (that comes with XFree86), for example
-		    "snow" or "yellow2". Or it can be an html hex specification, for example
-		    "#30FF50".
-		</long>
-	</locale>
-</schema>
-
-<schema>
-	<key>/schemas/apps/stickynotes_applet/settings/body_color_prelight</key>
-	<applyto>/apps/stickynotes_applet/settings/body_color_prelight</applyto>
-	<owner>stickynotes_applet</owner>
-	<type>string</type>
-	<default>yellow1</default>
-	<locale name="C">
-		<short>Background prelighted color of body</short>
-		<long>
-		    Background color of the body of the sticky notes when the note is in
-		    focus of the keyboard and mouse. Like "body_color", this can be any
-		    string found in rgb.txt (that comes with XFree86), for example
-		    "snow" or "yellow2". Or it can be an html hex specification, for example
-		    "#30FF50".
 		</long>
 	</locale>
 </schema>

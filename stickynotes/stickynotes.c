@@ -65,7 +65,7 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	stickynote_set_title(note, NULL);
 	
 	/* Customize the colors */
-	stickynote_set_highlighted(note, FALSE);
+	stickynote_set_color(note, gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/defaults/color", NULL), FALSE);
 
 	/* Connect signals to the sticky note window */
 	g_signal_connect(G_OBJECT(note->window), "expose-event", G_CALLBACK(window_expose_cb), note);
@@ -76,9 +76,9 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
 	g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
 	
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "resize_button")), "pressed", G_CALLBACK(window_resize_cb), note);
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "close_button")), "clicked", G_CALLBACK(window_close_cb), note);
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "title_box")), "button-press-event", G_CALLBACK(window_move_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "resize_button")), "button-press-event", G_CALLBACK(window_resize_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "close_button")), "clicked", G_CALLBACK(window_close_cb), note);
 
 	/* Connect a popup menu to the buttons and title */
 	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), glade_xml_get_widget(note->glade, "resize_button"), note);
@@ -123,30 +123,36 @@ gboolean stickynote_get_empty(const StickyNote *note)
 }
 
 /* (Un)highlight a sticky note */
-void stickynote_set_highlighted(StickyNote *note, gboolean highlighted)
+void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean highlighted)
 {
-	GdkColor color;
-	gchar *color_str;
+	GtkStyle *style = gtk_style_new();
+	
+	if (color_str) {
+		gint i;
+		for (i = 0; i < 4; i++) {
+			gdk_color_parse(color_str, &note->color[i]);
 
-	if (highlighted) 
-		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/title_color_prelight", NULL);
-	else
-		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/title_color", NULL);
-	gdk_color_parse(color_str, &color);
-	g_free(color_str);
+			note->color[i].red = (note->color[i].red * (10 - i)) / 10;
+			note->color[i].green = (note->color[i].green * (10 - i)) / 10;
+			note->color[i].blue = (note->color[i].blue * (10 - i)) / 10;
 
-	gtk_widget_modify_fg(glade_xml_get_widget(note->glade, "resize_button"), GTK_STATE_NORMAL, &color);
-	gtk_widget_modify_fg(glade_xml_get_widget(note->glade, "close_button"), GTK_STATE_NORMAL, &color);
-	gtk_widget_modify_bg(glade_xml_get_widget(note->glade, "title_box"), GTK_STATE_NORMAL, &color);
-		
-	if (highlighted)
-		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/body_color_prelight", NULL);
-	else
-		color_str = gconf_client_get_string(note->stickynotes->gconf_client, GCONF_PATH "/settings/body_color", NULL);
-	gdk_color_parse(color_str, &color);
-	g_free(color_str);
-		
-	gtk_widget_modify_base(note->body, GTK_STATE_NORMAL, &color);
+			gdk_colormap_alloc_color(gtk_widget_get_colormap(note->window), &note->color[i], FALSE, TRUE);
+		}
+	}
+
+	style->base[GTK_STATE_NORMAL] = note->color[highlighted ? 0 : 1];
+
+	style->bg[GTK_STATE_NORMAL] = note->color[highlighted ? 2 : 3];
+	style->bg[GTK_STATE_ACTIVE] = note->color[3];
+	style->bg[GTK_STATE_PRELIGHT] = note->color[1];
+
+	gtk_widget_set_style(note->body, style);
+
+	gtk_widget_set_style(glade_xml_get_widget(note->glade, "title_box"), style);
+	gtk_widget_set_style(glade_xml_get_widget(note->glade, "resize_button"), style);
+	gtk_widget_set_style(glade_xml_get_widget(note->glade, "close_button"), style);
+
+	g_object_unref(G_OBJECT(style));
 }
 
 /* Set the sticky note title */
@@ -161,7 +167,7 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	gtk_window_set_title(GTK_WINDOW(note->window), title);
 
 	{
-		gchar *bold_title = g_strdup_printf("<b> %s </b>", title);
+		gchar *bold_title = g_strdup_printf("<b>%s</b>", title);
 		gtk_label_set_markup(GTK_LABEL(note->title), bold_title);
 		g_free(bold_title);
 	}

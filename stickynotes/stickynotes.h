@@ -30,6 +30,8 @@ typedef struct
 	GtkWidget *title;		/* Note title */
 	GtkWidget *body;		/* Note text body */
 
+	GdkColor color[4];		/* Note colors */
+	
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
 	gint w;				/* Note width */
@@ -46,7 +48,7 @@ void stickynote_edit_title(StickyNote *note);
 
 gboolean stickynote_get_empty(const StickyNote *note);
 
-void stickynote_set_highlighted(StickyNote *note, gboolean highlighted);
+void stickynote_set_color(StickyNote *note, const gchar* color_str, gboolean highlighted);
 void stickynote_set_title(StickyNote *note, const gchar* title);
 
 void stickynotes_add(StickyNotesApplet *stickynotes);

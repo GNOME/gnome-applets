@@ -20,18 +20,20 @@
 #include <config.h>
 #include <stickynotes_callbacks.h>
 
-/* Sticky Window Callback : Resize the window. */
-gboolean window_resize_cb(GtkWidget *widget, StickyNote *note)
-{
-//	gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST, event->button, event->x_root, event->y_root, event->time);
-	
-	return TRUE;
-}
-
 /* Sticky Window Callback : Close the window. */
 gboolean window_close_cb(GtkWidget *widget, StickyNote *note)
 {
 	stickynotes_remove(note->stickynotes, note);
+	
+	return TRUE;
+}
+
+/* Sticky Window Callback : Resize the window. */
+gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note)
+{
+	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
+		gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST,
+					     event->button, event->x_root, event->y_root, event->time);
 	
 	return TRUE;
 }
@@ -99,8 +101,9 @@ gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *no
 	if (!event->in && gtk_text_buffer_get_modified(buffer))
 		stickynotes_save(note->stickynotes);
 
-	stickynote_set_highlighted(note, event->in);
-	
+	/* Highlight the sticky note. */
+	stickynote_set_color(note, NULL, event->in);
+
 	/* Let other handlers receive this event. */
 	return FALSE;
 }

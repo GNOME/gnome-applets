@@ -215,29 +215,10 @@ void preferences_save_cb(StickyNotesApplet *stickynotes)
 /* Preferences Callback : Change color. */
 void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNotesApplet *stickynotes)
 {
-	gchar *title_color, *title_color_prelight, *body_color, *body_color_prelight;
-
-	/* Reduce RGB from 16-bit to 8-bit values */
-	r /= 256;
-	g /= 256;
-	b /= 256;
-
-	/* Calculate HTML-style hex specification for the 4 required colors */
-	title_color = g_strdup_printf("#%.2x%.2x%.2x", (r*8)/10, (g*8)/10, (b*8)/10);
-	title_color_prelight = g_strdup_printf("#%.2x%.2x%.2x", (r*9)/10, (g*9)/10, (b*9)/10);
-	body_color = g_strdup_printf("#%.2x%.2x%.2x", (r*9)/10, (g*9)/10, (b*9)/10);
-	body_color_prelight = g_strdup_printf("#%.2x%.2x%.2x", (r*10)/10, (g*10)/10, (b*10)/10);
-
-	/* Set the GConf values */
-	gconf_client_set_string(stickynotes->gconf_client, GCONF_PATH "/settings/title_color", title_color, NULL);
-	gconf_client_set_string(stickynotes->gconf_client, GCONF_PATH "/settings/title_color_prelight", title_color_prelight, NULL);
-	gconf_client_set_string(stickynotes->gconf_client, GCONF_PATH "/settings/body_color", body_color, NULL);
-	gconf_client_set_string(stickynotes->gconf_client, GCONF_PATH "/settings/body_color_prelight", body_color_prelight, NULL);
-
-	g_free(title_color);
-	g_free(title_color_prelight);
-	g_free(body_color);
-	g_free(body_color_prelight);
+	/* Reduce RGB from 16-bit to 8-bit values and calculate HTML-style hex specification for the color */
+	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
+	gconf_client_set_string(stickynotes->gconf_client, GCONF_PATH "/defaults/color", color_str, NULL);
+	g_free(color_str);
 }
 
 /* Preferences Callback : Apply to existing notes. */
@@ -245,7 +226,14 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 {
 	gint i;
 
-	if (strcmp(entry->key, GCONF_PATH "/settings/sticky") == 0) {
+	if (strcmp(entry->key, GCONF_PATH "/defaults/color") == 0) {
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_color(note, gconf_value_get_string(entry->value), FALSE);
+		}
+	}
+
+	else if (strcmp(entry->key, GCONF_PATH "/settings/sticky") == 0) {
 		if (gconf_value_get_bool(entry->value))
 			for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 				StickyNote *note = g_list_nth_data(stickynotes->notes, i);
@@ -264,16 +252,6 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
 		stickynotes_set_locked(stickynotes, gconf_value_get_bool(entry->value));
-	}
-
-	else if (strcmp(entry->key, GCONF_PATH "/settings/title_color") == 0
-		    || strcmp(entry->key, GCONF_PATH "/settings/title_color_prelight") == 0
-		    || strcmp(entry->key, GCONF_PATH "/settings/body_color") == 0
-		    || strcmp(entry->key, GCONF_PATH "/settings/body_color_prelight") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_highlighted(note, FALSE);
-		}
 	}
 }
 
