@@ -53,6 +53,7 @@ preset_data_predata = AM_Armenian.keyprop.in AR_Arabic.keyprop.in \
 		YU_Serbo-Croatian_x.keyprop.in Yugoslav.keyprop.in \
 		Macedonian.keyprop.in Basque.keyprop.in \
 		RU_Russian_x_rev.keyprop.in Dvorak.keyprop.in
+		Default.keyprop.in
 
 presetdir = $(datadir)/gnome/gkb
 preset_in_files = $(preset_data_predata)
