@@ -7,7 +7,8 @@ gtop_SUBDIRS = $(gtop_applets)
 endif
 
 xml_applets = \
-	gnotes
+	gnotes	\
+	bug-applet
 if HAVE_LIBXML
 xml_SUBDIRS = $(xml_applets)
 endif

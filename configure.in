@@ -16,9 +16,6 @@ AC_PROG_CC
 AC_STDC_HEADERS
 AC_ARG_PROGRAM
 AM_PROG_LIBTOOL
-AC_PROG_CXX
-AM_PROG_LEX
-AC_PROG_YACC
 
 GNOME_COMPILE_WARNINGS
 
@@ -40,10 +37,6 @@ dnl                        enable_old_applets=yes
 dnl                fi
 dnl        fi,
 dnl        enable_old_applets=yes)
-
-
-dnl for slashapp etc
-GNOME_GHTTP_CHECK
 
 dnl esd-manager
 have_libesd=no
@@ -101,11 +94,12 @@ if test "$P_MODEMLIGHTS" != "modemlights"; then
 fi
 
 dnl Check for xml
-GNOME_XML_CHECK
-
+GNOME_XML_HOOK
 AM_CONDITIONAL(HAVE_LIBXML, test -n "$GNOME_XML_LIB")
 if test -z "$GNOME_XML_LIB"; then
   AC_MSG_WARN([*** \`gnotes' applet will not be built ***])
+  AC_MSG_WARN([*** \`bug-applet' applet will not be built ***])
+  AC_MSG_WARN([*** \`slashapp' applet will not be build ***])
 fi
 
 dnl Check for libgtop
@@ -120,6 +114,7 @@ if test x$applets_libgtop != xyes; then
 fi
 
 dnl Check for ghttp library
+GNOME_GHTTP_CHECK
 AM_CONDITIONAL(HAVE_LIBGHTTP, test -n "$GHTTP_LIB")
 AC_SUBST(GHTTP_LIB)
 if test -z "$GHTTP_LIB"; then
@@ -149,6 +144,7 @@ asclock/Makefile
 asclock/default_theme/Makefile
 asclock/themes/Makefile
 battery/Makefile
+bug-applet/Makefile
 cdplayer/Makefile
 clipboard/Makefile
 clockmail/Makefile
