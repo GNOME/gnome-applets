@@ -1,4 +1,4 @@
-SUBDIRS = docs
+#SUBDIRS = docs
 
 INCLUDES = $(GNOME_APPLETS_CFLAGS) -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 

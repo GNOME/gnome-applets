@@ -27,12 +27,12 @@ endif
 ## esd_SUBDIRS = $(esd_applets)
 ## endif
 ## 
-## cdplayer_applets = \
-## 	cdplayer
-## if APPLET_CDPLAYER
-## cdplayer_SUBDIRS = $(cdplayer_applets)
-## endif
-## 
+
+cdplayer_applets = \
+	cdplayer
+if APPLET_CDPLAYER
+cdplayer_SUBDIRS = $(cdplayer_applets)
+endif
 
 mixer_applets = \
 	mixer
@@ -40,7 +40,6 @@ if APPLET_MIXER
 mixer_SUBDIRS = $(mixer_applets)
 endif
 
- 
 modemlights_applets = \
 	modemlights
 if APPLET_MODEMLIGHTS
@@ -52,8 +51,8 @@ always_built_SUBDIRS = \
 ##	battery		\
 	fifteen		\
 	odometer	\
-  	geyes		\
- 	whereami	
+	geyes		\
+	whereami	
 ## 	another_clock	\
 ## 	asclock		\
 ## 	charpick	\
@@ -72,12 +71,12 @@ always_built_SUBDIRS = \
 SUBDIRS = \
 	po			\
 	$(mixer_SUBDIRS)	\
- 	$(modemlights_SUBDIRS)	\
+	$(modemlights_SUBDIRS)	\
 	$(wordexp_SUBDIRS)      \
+	$(cdplayer_SUBDIRS)	\
 	$(always_built_SUBDIRS)	
 ## 	$(gtop_SUBDIRS)		\
 ## 	$(ghttp_SUBDIRS)	\
-## 	$(cdplayer_SUBDIRS)	\
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install
 ## 
