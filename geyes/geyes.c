@@ -99,6 +99,7 @@ applet_back_change (PanelApplet *a,
         	}
 		break;
 	}
+	gtk_rc_style_unref (rc_style);
 	return;
 }
 
