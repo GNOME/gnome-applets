@@ -130,6 +130,15 @@ void stickynote_free(StickyNote *note)
 /* Change the sticky note title and color */
 void stickynote_change_properties(StickyNote *note)
 {
+	gtk_entry_set_text(GTK_ENTRY(note->w_entry), gtk_label_get_text(GTK_LABEL(note->w_title)));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_default), note->color == NULL);
+
+	if (note->color) {
+		GdkColor color;
+		gdk_color_parse(note->color, &color);
+		gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note->w_color), color.red, color.green, color.blue, 65535);
+	}
+
 	gtk_dialog_run(GTK_DIALOG(note->w_properties));
 
 	stickynotes_save();
@@ -152,7 +161,6 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	}
 		
 	gtk_window_set_title(GTK_WINDOW(note->w_window), title);
-	gtk_entry_set_text(GTK_ENTRY(note->w_entry), gtk_label_get_text(GTK_LABEL(note->w_title)));
 
 	{
 		gchar *bold_title = g_strdup_printf("<b>%s</b>", title);
@@ -171,13 +179,6 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 		g_free(note->color);
 		note->color = color_str ? g_strdup(color_str) : NULL;
 
-		if (note->color) {
-			GdkColor color;
-			gdk_color_parse(note->color, &color);
-			gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note->w_color), color.red, color.green, color.blue, 65535);
-		}
-
-		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_default), note->color == NULL);
 		gtk_widget_set_sensitive(glade_xml_get_widget(note->properties, "color_label"), note->color != NULL);
 		gtk_widget_set_sensitive(note->w_color, note->color != NULL);
 	}
