@@ -29,8 +29,11 @@
 #include "message.h"
 #include "mini-commander_applet.h"
 
-properties prop = { TRUE, TRUE, 11, 12, 13, 14, 15, 0, 0, 0, 50000, 50000, 50000 };
-properties propTmp = { -1, -1, -1, -1, -1, -1, -1 -1, -1, -1, -1, -1, -1};
+/* properties prop = { TRUE, TRUE, 11, 12, 13, 14, 15, 0, 0, 0, 50000, 50000, 50000 }; */
+/* properties propTmp = { -1, -1, -1, -1, -1, -1, -1 -1, -1, -1, -1, -1, -1}; */
+
+properties prop;
+properties propTmp;
 
 static void
 checkBoxToggled_signal(GtkWidget *checkBoxWidget, int *data)
@@ -394,7 +397,22 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *colorPicker;
     char textLabel[50], buffer[50];
     int i, j;
-    
+
+    /* reset temporary prefereces */
+    propTmp.showTime = -1;
+    propTmp.showDate = -1;
+    propTmp.normalSizeX = -1;
+    propTmp.normalSizeY = -1;
+    propTmp.reducedSizeX = -1;
+    propTmp.reducedSizeY = -1;
+    propTmp.cmdLineY = -1;
+    propTmp.cmdLineColorFgR = -1;
+    propTmp.cmdLineColorFgG = -1;
+    propTmp.cmdLineColorFgB = -1;
+    propTmp.cmdLineColorBgR = -1;
+    propTmp.cmdLineColorBgG = -1;
+    propTmp.cmdLineColorBgB = -1;
+
     propertiesBox = gnome_property_box_new();
     
     gtk_window_set_title(GTK_WINDOW(propertiesBox), _("Mini-Commander Properties"));
