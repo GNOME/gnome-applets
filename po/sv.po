@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-06-22 15:01+0200\n"
-"PO-Revision-Date: 2003-06-22 15:01+0200\n"
+"POT-Creation-Date: 2003-06-29 10:00+0200\n"
+"PO-Revision-Date: 2003-06-29 10:01+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "Visar statusen för funktionerna för tangentbordstillgänglighet"
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
 #: cdplayer/cdplayer.c:548 charpick/charpick.c:561 drivemount/drivemount.c:495
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:733
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2304
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2190
 #: mini-commander/src/about.c:48 mixer/mixer.c:1036
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes.glade.h:54 stickynotes/stickynotes_applet.c:144
@@ -164,6 +164,74 @@ msgstr "_Inställningar..."
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
 msgstr "_Pausa datorn..."
+
+#: battstat/battstat.schemas.in.h:1
+msgid "Beep?"
+msgstr "Pip?"
+
+#: battstat/battstat.schemas.in.h:2
+msgid "Command to send to suspend the computer"
+msgstr "Kommando att använda för att pausa datorn"
+
+#: battstat/battstat.schemas.in.h:3
+msgid "Drain from top"
+msgstr "Minska från toppen"
+
+#: battstat/battstat.schemas.in.h:4
+msgid "Full Battery Notification"
+msgstr "Meddelande om full laddning"
+
+#: battstat/battstat.schemas.in.h:5
+msgid "Horizontal"
+msgstr "Horisontell"
+
+#: battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr "Meddelande om låg batteriladdning"
+
+#: battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full"
+msgstr "Informera användaren när batteriet är helt laddat"
+
+#: battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is low"
+msgstr "Informera användaren när laddningen på batteriet är låg"
+
+#: battstat/battstat.schemas.in.h:9
+msgid "Orange Value"
+msgstr "Orange värde"
+
+#: battstat/battstat.schemas.in.h:10
+msgid "Red Value"
+msgstr "Rött värde"
+
+#: battstat/battstat.schemas.in.h:11
+msgid "Show battery status"
+msgstr "Visa batteristatus"
+
+#: battstat/battstat.schemas.in.h:12
+msgid "Show percent full label"
+msgstr "Visa etikett med antal procent"
+
+#: battstat/battstat.schemas.in.h:13
+msgid "Show the battery"
+msgstr "Visa batteriet"
+
+#: battstat/battstat.schemas.in.h:14
+msgid "Show the battery meter draining from the top of the battery"
+msgstr "Visa batterimätaren minskandes från toppen av batteriet"
+
+#: battstat/battstat.schemas.in.h:15
+msgid "Suspend Command"
+msgstr "Pauskommando"
+
+#: battstat/battstat.schemas.in.h:16
+msgid "Use dock"
+msgstr "Använd docka"
+
+#: battstat/battstat.schemas.in.h:17
+msgid "Yellow Value"
+msgstr "Gult värde"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -406,7 +474,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för batteriladdningsövervakare"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1936
+#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1822
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
 msgid "General"
 msgstr "Allmänt"
@@ -464,8 +532,8 @@ msgid "_Yellow:"
 msgstr "_Gul:"
 
 #: battstat/properties.c:256 drivemount/drivemount.c:460
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2168
-#: mailcheck/mailcheck.c:2382 mini-commander/src/preferences.c:352
+#: drivemount/properties.c:513 mailcheck/mailcheck.c:2054
+#: mailcheck/mailcheck.c:2297 mini-commander/src/preferences.c:352
 #: mixer/mixer.c:1143
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -608,6 +676,18 @@ msgstr "Klicka på denna knapp för att spela föregående spår på cd-skivan"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klicka på denna knapp för att spela nästa spår på cd-skivan"
 
+#: cdplayer/cdplayer.schemas.in.h:1
+msgid "Path to the device"
+msgstr "Sökväg till enheten"
+
+#: cdplayer/cdplayer.schemas.in.h:2
+msgid ""
+"This is the full path of the device that will be used to play cd's from this "
+"applet"
+msgstr ""
+"Detta är den fullständiga sökvägen till enheten som kommer att användas för "
+"att spela cd-skivor från detta panelprogram"
+
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
 #: charpick/charpick.c:722 charpick/properties.c:328
 msgid "Character Palette"
@@ -658,6 +738,18 @@ msgid ""
 msgstr ""
 "Gnome-panelprogram för att välja underliga tecken som inte finns på mitt "
 "tangentbord. Släppt under GNU General Public License."
+
+#: charpick/charpick.schemas.in.h:1
+msgid "Characters shown on applet startup"
+msgstr ""
+
+#: charpick/charpick.schemas.in.h:2
+msgid "DEPRECATED - Characters shown on applet startup"
+msgstr ""
+
+#: charpick/charpick.schemas.in.h:3
+msgid "List ov available palettes"
+msgstr "Lista med tillgängliga paletter"
 
 #: charpick/properties.c:87
 msgid "_Palette:"
@@ -772,6 +864,14 @@ msgstr ""
 "Enhetsmonteringskommandot misslyckades.\n"
 "\""
 
+#: drivemount/drivemount.schemas.in.h:1
+msgid "Interval timeout to check mount point status"
+msgstr ""
+
+#: drivemount/drivemount.schemas.in.h:2
+msgid "Time in seconds between status updates"
+msgstr ""
+
 #: drivemount/properties.c:284
 msgid "Disk Mounter Preferences"
 msgstr "Inställningar för enhetsmontören"
@@ -788,8 +888,8 @@ msgstr "Välj monteringskatalog"
 msgid "_Update interval:"
 msgstr "_Uppdateringsintervall:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1996
-#: mailcheck/mailcheck.c:2000 modemlights/properties.c:419
+#: drivemount/properties.c:352 mailcheck/mailcheck.c:1882
+#: mailcheck/mailcheck.c:1886 modemlights/properties.c:419
 msgid "seconds"
 msgstr "sekunder"
 
@@ -882,6 +982,10 @@ msgstr "En knäpp liten xeyes-klon för GNOME-panelen."
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Ögonen tittar i muspekarens riktning"
 
+#: geyes/geyes.schemas.in.h:1
+msgid "Directory in which the theme is located"
+msgstr ""
+
 #: geyes/themes.c:237
 msgid "Geyes Preferences"
 msgstr "Inställningar för Geyes"
@@ -910,14 +1014,6 @@ msgstr "Tangentbordsbytare"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr "Producerar panelprogram för byte av tangentbordslayout."
-
-#: gkb-new/gkb.c:275
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
-msgstr ""
-"Klicka på snabbtangenten för att byta mellan layouter. Snabbtangenten kan "
-"konfigureras i egenskapsdialogen"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -950,6 +1046,93 @@ msgstr "GKB-hemsidan (http://projects.gnome.hu/gkb)"
 #: gkb-new/gkb-applet.c:203 gkb-new/gkb-applet.c:210
 msgid "GKB"
 msgstr "GKB"
+
+#: gkb-new/gkb.c:275
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"Klicka på snabbtangenten för att byta mellan layouter. Snabbtangenten kan "
+"konfigureras i egenskapsdialogen"
+
+#: gkb-new/gkb.schemas.in.h:1
+msgid "Appearance mode of the applet"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:2
+#, fuzzy
+msgid "Flag image for the keyboard layout"
+msgstr "Ändra tangentbordslayouten"
+
+#: gkb-new/gkb.schemas.in.h:3
+msgid "Is the applet size small?"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:4
+msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:5
+msgid "Keybinding for switch by keypress"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:6
+msgid "Number of configured keymaps"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:7
+msgid "The command what switch your keymap tho this layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:8
+#, fuzzy
+msgid "The country of the keyboard layout"
+msgstr "Ändra tangentbordslayouten"
+
+#: gkb-new/gkb.schemas.in.h:9
+#, fuzzy
+msgid "The label of the keyboard layout"
+msgstr "Ändra tangentbordslayouten"
+
+#: gkb-new/gkb.schemas.in.h:10
+#, fuzzy
+msgid "The language of the keyboard layout"
+msgstr "Ändra tangentbordslayouten"
+
+#: gkb-new/gkb.schemas.in.h:11
+#, fuzzy
+msgid "The name of the keyboard layout"
+msgstr "Ändra tangentbordslayouten"
+
+#: gkb-new/gkb.schemas.in.h:12
+msgid "This flag will appear in flag field of the applet"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:13
+msgid "This information helps you to identify your keyboard layout"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:14
+msgid "This is the binding for keypress-based layout change"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:15
+msgid ""
+"This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
+"something.xmm\""
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:16
+msgid "This will appear in the label box of the applet"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:17
+msgid "This will identify the layout in the list"
+msgstr ""
+
+#: gkb-new/gkb.schemas.in.h:18
+msgid "When this is true, the applet will be half size"
+msgstr ""
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1158,7 +1341,7 @@ msgstr "Inställningar för aktieövervakare"
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2235
+#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2121
 msgid "Behavior"
 msgstr "Beteende"
 
@@ -1170,8 +1353,8 @@ msgstr "Uppdatera"
 msgid "Stock update fre_quency:"
 msgstr "Aktieuppdateringsfre_kvens:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1978
-#: mailcheck/mailcheck.c:1982
+#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:1868
 msgid "minutes"
 msgstr "minuter"
 
@@ -1270,6 +1453,65 @@ msgstr "(Inga"
 msgid "Change "
 msgstr "Ändra "
 
+#: gtik/gtik.schemas.in.h:1
+#, fuzzy
+msgid "Display only symbols and price"
+msgstr "Visa endast s_ymboler och pris"
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Stocks to monitor - must be seperated by a +"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:3
+#, fuzzy
+msgid "Use default theme fonts and colors instead of custom ones"
+msgstr "Använd _standardtematypsnitt och standardtemafärger"
+
+#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Width of the applet"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:5
+#, fuzzy
+msgid "bg color"
+msgstr "Välj en färg"
+
+#: gtik/gtik.schemas.in.h:6
+#, fuzzy
+msgid "color"
+msgstr "Färger"
+
+#: gtik/gtik.schemas.in.h:7
+msgid "color for no change text"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:8
+#, fuzzy
+msgid "font"
+msgstr "Typsnitt"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "font 2 - No Longer used"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:10
+msgid "set to true for right to left scrolling"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:11
+#, fuzzy
+msgid "show buttons"
+msgstr "Lägg till-knapp"
+
+#: gtik/gtik.schemas.in.h:12
+msgid "time in miliseconds for display update"
+msgstr ""
+
+#: gtik/gtik.schemas.in.h:13
+#, fuzzy
+msgid "timeout"
+msgstr "tid på"
+
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Prognos"
@@ -1310,11 +1552,11 @@ msgstr ""
 msgid ""
 "%s\n"
 "Today: %s\n"
-"Current temperature %d%s%s"
+"Current temperature %d%s"
 msgstr ""
 "%s\n"
 "Idag: %s\n"
-"Aktuell temperatur %d%s%s"
+"Aktuell temperatur %d%s"
 
 #: gweather/gweather-applet.c:82
 #, c-format
@@ -1456,6 +1698,84 @@ msgstr "Tillgängliga l_änder:"
 #: gweather/gweather-pref.c:406
 msgid "Available c_ities:"
 msgstr "Tillgängliga _orter:"
+
+#: gweather/gweather.schemas.in.h:1
+msgid ""
+"If running the applet for the first time, prompt the user for the location"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:2
+msgid "Integer from 0 to 5. Determines how many days in advance are displayed"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:3
+#, fuzzy
+msgid "Name of city"
+msgstr "Game of Life"
+
+#: gweather/gweather.schemas.in.h:4
+msgid "Name of city to forecast weather"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:5
+#, fuzzy
+msgid "Number of days to forecast"
+msgstr "Antalet _dagar att visa:"
+
+#: gweather/gweather.schemas.in.h:6
+msgid "Show temperature label next to forecast icon"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:7
+msgid "Show temperature labels on panel"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:8
+msgid "True if running applet for the first time"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:9
+msgid "Url to download weather xml"
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:10
+msgid ""
+"determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:11
+#, fuzzy
+msgid "fetch a detailed forecast on each update."
+msgstr "Visar prognosdetaljer för varje dag"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "fetch a radar map on each update."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:13
+msgid "the interval, in seconds, between automatic updates."
+msgstr ""
+
+#: gweather/gweather.schemas.in.h:14
+#, fuzzy
+msgid "url for the radar map"
+msgstr "Använd _radarkarta"
+
+#: gweather/gweather.schemas.in.h:15
+#, fuzzy
+msgid "use custom url for the radar map"
+msgstr "Använd an_passad adress för radarkarta"
+
+#: gweather/gweather.schemas.in.h:16
+#, fuzzy
+msgid "use metric units instead of english units."
+msgstr "Använd _metriska enheter"
+
+#: gweather/gweather.schemas.in.h:17
+#, fuzzy
+msgid "weather location information."
+msgstr "Serverinformation:"
 
 #: gweather/location.c:184
 msgid "Could not download countries"
@@ -1697,7 +2017,7 @@ msgstr "Nord-nordväst"
 msgid "Calm"
 msgstr "Lugnt"
 
-#: gweather/weather.c:527
+#: gweather/weather.c:561
 msgid "Could not download forecast"
 msgstr "Kunde inte hämta prognos"
 
@@ -1710,7 +2030,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabrik för skapande av inkorgsövervakare."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2317
+#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2203
 msgid "Inbox Monitor"
 msgstr "Inkorgsövervakare"
 
@@ -1741,11 +2061,11 @@ msgstr ""
 msgid "Please enter your mailserver's _password:"
 msgstr "Ange din e-postservers _lösenord:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1856
+#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1742
 msgid "Password Entry box"
 msgstr "Lösenordsfält"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1878
+#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1764
 msgid "_Save password to disk"
 msgstr "_Spara lösenord till disk"
 
@@ -1791,141 +2111,141 @@ msgstr "%d meddelanden"
 msgid "No mail."
 msgstr "Ingen e-post."
 
-#: mailcheck/mailcheck.c:1496 mailcheck/mailcheck.c:1497
-#: mailcheck/mailcheck.c:2509 mailcheck/mailcheck.c:2510
+#: mailcheck/mailcheck.c:1382 mailcheck/mailcheck.c:1383
+#: mailcheck/mailcheck.c:2553 mailcheck/mailcheck.c:2554
 msgid "Status not updated"
 msgstr "Statusen inte uppdaterad"
 
-#: mailcheck/mailcheck.c:1695 mailcheck/mailcheck.c:2239
+#: mailcheck/mailcheck.c:1581 mailcheck/mailcheck.c:2125
 msgid "Inbox Settings"
 msgstr "Inkorgsinställningar"
 
-#: mailcheck/mailcheck.c:1721
+#: mailcheck/mailcheck.c:1607
 msgid "Mailbox _resides on:"
 msgstr "Brevlådan _finns på:"
 
-#: mailcheck/mailcheck.c:1732
+#: mailcheck/mailcheck.c:1618
 msgid "Local mailspool"
 msgstr "Lokal e-postspool"
 
-#: mailcheck/mailcheck.c:1740
+#: mailcheck/mailcheck.c:1626
 msgid "Local maildir"
 msgstr "Lokal e-postkatalog"
 
-#: mailcheck/mailcheck.c:1748
+#: mailcheck/mailcheck.c:1634
 msgid "Remote POP3-server"
 msgstr "POP3-fjärrserver"
 
-#: mailcheck/mailcheck.c:1756
+#: mailcheck/mailcheck.c:1642
 msgid "Remote IMAP-server"
 msgstr "IMAP-fjärrserver"
 
-#: mailcheck/mailcheck.c:1776
+#: mailcheck/mailcheck.c:1662
 msgid "Mail _spool file:"
 msgstr "Fil för e-post_spool:"
 
-#: mailcheck/mailcheck.c:1783
+#: mailcheck/mailcheck.c:1669
 msgid "Browse"
 msgstr "Bläddra"
 
-#: mailcheck/mailcheck.c:1798
+#: mailcheck/mailcheck.c:1684
 msgid "Mail s_erver:"
 msgstr "E-posts_erver:"
 
-#: mailcheck/mailcheck.c:1807
+#: mailcheck/mailcheck.c:1693
 msgid "Mail Server Entry box"
 msgstr "E-postserverfält"
 
-#: mailcheck/mailcheck.c:1821
+#: mailcheck/mailcheck.c:1707
 msgid "_Username:"
 msgstr "_Användarnamn:"
 
-#: mailcheck/mailcheck.c:1832
+#: mailcheck/mailcheck.c:1718
 msgid "Username Entry box"
 msgstr "Användarnamnsfält"
 
-#: mailcheck/mailcheck.c:1845
+#: mailcheck/mailcheck.c:1731
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: mailcheck/mailcheck.c:1890
+#: mailcheck/mailcheck.c:1776
 msgid "_Folder:"
 msgstr "_Mapp:"
 
-#: mailcheck/mailcheck.c:1901
+#: mailcheck/mailcheck.c:1787
 msgid "Folder Entry box"
 msgstr "Mappfält"
 
-#: mailcheck/mailcheck.c:1962
+#: mailcheck/mailcheck.c:1848
 msgid "Check for mail _every:"
 msgstr "Kontrollera e-post _var:"
 
-#: mailcheck/mailcheck.c:1978
+#: mailcheck/mailcheck.c:1864
 msgid "Choose time interval in minutes to check mail"
 msgstr "Välj tidsintervall i minuter för kontroll av post"
 
-#: mailcheck/mailcheck.c:1996
+#: mailcheck/mailcheck.c:1882
 msgid "Choose time interval in seconds to check mail"
 msgstr "Välj tidsintervall i sekunder för kontroll av post"
 
-#: mailcheck/mailcheck.c:2009
+#: mailcheck/mailcheck.c:1895
 msgid "Play a _sound when new mail arrives"
 msgstr "Spela ett _ljud då ny e-post anländer"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2017
+#: mailcheck/mailcheck.c:1903
 msgid "Sto_p animation when double clicked"
 msgstr "Sto_ppa animation vid dubbelklick"
 
-#: mailcheck/mailcheck.c:2028
+#: mailcheck/mailcheck.c:1914
 msgid "Select a_nimation:"
 msgstr "Välj ani_mation:"
 
-#: mailcheck/mailcheck.c:2041
+#: mailcheck/mailcheck.c:1927
 msgid "Commands"
 msgstr "Kommandon"
 
-#: mailcheck/mailcheck.c:2070
+#: mailcheck/mailcheck.c:1956
 msgid "Before each _update:"
 msgstr "Innan varje _uppdatering:"
 
-#: mailcheck/mailcheck.c:2085
+#: mailcheck/mailcheck.c:1971
 msgid "Command to execute before each update"
 msgstr "Kommando att köra före varje uppdatering"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:1981
 msgid "When new mail _arrives:"
 msgstr "När ny e-post _anländer:"
 
-#: mailcheck/mailcheck.c:2108 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:1994 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Kommando att köra då ny e-post anländer"
 
-#: mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2004
 msgid "When double clicke_d:"
 msgstr "Vid _dubbelklick:"
 
-#: mailcheck/mailcheck.c:2131
+#: mailcheck/mailcheck.c:2017
 msgid "Command to execute when clicked"
 msgstr "Kommando att köra vid klick"
 
-#: mailcheck/mailcheck.c:2209
+#: mailcheck/mailcheck.c:2095
 msgid "Inbox Monitor Preferences"
 msgstr "Inställningar för inkorgsövervakare"
 
-#: mailcheck/mailcheck.c:2319
+#: mailcheck/mailcheck.c:2205
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Inkorgsövervakaren signalerar när ny e-post anländer i din brevlåda"
 
-#: mailcheck/mailcheck.c:2484
+#: mailcheck/mailcheck.c:2524
 msgid "Text only"
 msgstr "Endast text"
 
-#: mailcheck/mailcheck.c:2511
+#: mailcheck/mailcheck.c:2555
 msgid "Mail check"
 msgstr "E-postkontroll"
 
-#: mailcheck/mailcheck.c:2512
+#: mailcheck/mailcheck.c:2556
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "E-postkontrollen signalerar när ny e-post anländer i din brevlåda"
 
@@ -2224,6 +2544,66 @@ msgstr "_Mönster:"
 msgid "_Use default theme colors"
 msgstr "_Använd standardtemafärger"
 
+#: mini-commander/src/mini-commander.schemas.in.h:1
+#, fuzzy
+msgid "Autcomplete history"
+msgstr "Automatisk ifyllnad"
+
+#: mini-commander/src/mini-commander.schemas.in.h:2
+#, fuzzy
+msgid "Height of the applet"
+msgstr "Standardklickbeteende för panelprogrammet"
+
+#: mini-commander/src/mini-commander.schemas.in.h:3
+#, fuzzy
+msgid "Height of the entry"
+msgstr "Palettpost"
+
+#: mini-commander/src/mini-commander.schemas.in.h:4
+msgid "Show an ugly frame around the whole applet wasting useful space"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:5
+msgid "Show the handle thingy so you can detach the command thingy"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:6
+#, fuzzy
+msgid "Use the default theme colors for entry fg and bg"
+msgstr "Använd _standardtematypsnitt och standardtemafärger"
+
+#: mini-commander/src/mini-commander.schemas.in.h:8
+msgid "bg blue"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:9
+msgid "bg red"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "fg blue"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "fg green"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:12
+msgid "fg red"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:13
+msgid "list of GConfValue entries containing strings for history entries"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "list of GConfValue entries containing strings for the macro commands"
+msgstr ""
+
+#: mini-commander/src/mini-commander.schemas.in.h:15
+msgid "list of GConfValue entries containing strings for the macro patterns"
+msgstr ""
+
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
 msgid "Browser"
@@ -2441,6 +2821,18 @@ msgstr "_Välj kanal att styra:"
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Volymkontrollen låter dig ställa in volymnivån för ditt skrivbord"
 
+#: mixer/mixer.schemas.in.h:1
+msgid "Channel controlled by applet. Only for OSS setups"
+msgstr ""
+
+#: mixer/mixer.schemas.in.h:2
+msgid "Saved mute state"
+msgstr ""
+
+#: mixer/mixer.schemas.in.h:3
+msgid "Saved volume to restore on startup"
+msgstr ""
+
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:133
 msgid "Modem Lights"
@@ -2484,6 +2876,101 @@ msgstr "%#.1fMB mottaget / %#.1fMB skickat / tid: %.1d.%.2d"
 #: modemlights/modemlights.c:541
 msgid "not connected"
 msgstr "inte ansluten"
+
+#: modemlights/modemlights.schemas.in.h:1
+#, fuzzy
+msgid "Ask for confirmation when connecting"
+msgstr "Huruvida det ska frågas efter bekräftelse vid borttagning av en lapp"
+
+#: modemlights/modemlights.schemas.in.h:2
+#, fuzzy
+msgid "Command executed when connecting"
+msgstr "Kommando att köra vid klick på brev"
+
+#: modemlights/modemlights.schemas.in.h:3
+#, fuzzy
+msgid "Command executed when disconnecting"
+msgstr "Kommando att köra vid klick på brev"
+
+#: modemlights/modemlights.schemas.in.h:4
+#, fuzzy
+msgid "Delay"
+msgstr "Dag"
+
+#: modemlights/modemlights.schemas.in.h:5
+msgid "Device name of modem"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:6
+msgid "Make it blink baby"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:7
+#, fuzzy
+msgid "Modem lock file"
+msgstr "Välj en loggfil"
+
+#: modemlights/modemlights.schemas.in.h:8
+#, fuzzy
+msgid "Receive background color"
+msgstr "Bakgrundsfärg för brödtext"
+
+#: modemlights/modemlights.schemas.in.h:9
+msgid "Receive foreground color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:10
+#, fuzzy
+msgid "Send background color"
+msgstr "Bakgrundsfärg för brödtext"
+
+#: modemlights/modemlights.schemas.in.h:11
+#, fuzzy
+msgid "Send foreground color"
+msgstr "Sekundvisarens färg"
+
+#: modemlights/modemlights.schemas.in.h:12
+#, fuzzy
+msgid "Show connect time and throughput"
+msgstr "_Visa anslutningstid och bandbredd"
+
+#: modemlights/modemlights.schemas.in.h:13
+#, fuzzy
+msgid "Status connect color"
+msgstr "Sekundvisarens färg"
+
+#: modemlights/modemlights.schemas.in.h:14
+#, fuzzy
+msgid "Status not connected color"
+msgstr "inte ansluten"
+
+#: modemlights/modemlights.schemas.in.h:15
+#, fuzzy
+msgid "Status wating connection color"
+msgstr "_Väntar på anslutning"
+
+#: modemlights/modemlights.schemas.in.h:16
+#, fuzzy
+msgid "Text background color"
+msgstr "Bakgrundsfärg för brödtext"
+
+#: modemlights/modemlights.schemas.in.h:17
+msgid "Text foreground color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:18
+msgid "Text outline color"
+msgstr ""
+
+#: modemlights/modemlights.schemas.in.h:19
+#, fuzzy
+msgid "Use isdn"
+msgstr "Anv_änt"
+
+#: modemlights/modemlights.schemas.in.h:20
+#, fuzzy
+msgid "Verify owner of lock file"
+msgstr "_Verifiera ägaren av låsfilen"
 
 #: modemlights/properties.c:374
 msgid "Modem Lights Preferences"
@@ -2666,6 +3153,94 @@ msgstr ""
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
+#: multiload/multiload.schemas.in.h:1
+#, fuzzy
+msgid "Network background"
+msgstr "Nätverksbelastning"
+
+#: multiload/multiload.schemas.in.h:2
+#, fuzzy
+msgid "Network other usage"
+msgstr "Nätverksbelastning"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "enable the cpuload graph in multiload."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:4
+msgid "enable the loadavg graph in multiload."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:5
+msgid "enable the memload graph in multiload."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:6
+msgid "enable the netload graph in multiload."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:7
+msgid "enable the swapload graph in multiload."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:8
+msgid ""
+"for horizontal panels, the width of the applets in pixels. for verticle "
+"panels, this is the height of the applets."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:9
+msgid "the applet's background color."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:10
+#, fuzzy
+msgid "the graph color for buffer memor."
+msgstr "Välj en färg för lappen"
+
+#: multiload/multiload.schemas.in.h:11
+msgid "the graph color for buffer memory."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:12
+#, fuzzy
+msgid "the graph color for cached memor."
+msgstr "Välj en färg för lappen"
+
+#: multiload/multiload.schemas.in.h:13
+#, fuzzy
+msgid "the graph color for cached memory."
+msgstr "Välj en färg för lappen"
+
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for nice-related cpu activity."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:15
+#, fuzzy
+msgid "the graph color for shared memory."
+msgstr "Välj en färg för lappen"
+
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for system-related cpu activity."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:17
+msgid "the graph color for user-related cpu activity."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:18
+msgid "the graph color for user-related mem usage."
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:19
+msgid "the refresh rate of the applets in milliseconds"
+msgstr ""
+
+#: multiload/multiload.schemas.in.h:20
+msgid "the refresh rate of the applets in milliseconds."
+msgstr ""
+
 #: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Nätverksbelastning"
@@ -2792,7 +3367,7 @@ msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:136 stickynotes/stickynotes_applet.c:320
+#: stickynotes/stickynotes_applet.c:136 stickynotes/stickynotes_applet.c:322
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
@@ -3165,7 +3740,7 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: stickynotes/stickynotes_applet.c:320
+#: stickynotes/stickynotes_applet.c:322
 #, c-format
 msgid ""
 "%s\n"
@@ -3233,6 +3808,24 @@ msgstr "Inställningar för övervakare av trådlös länk"
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
 
+#~ msgid "Use Beep"
+#~ msgstr "Använd pip"
+
+#~ msgid "Command to send to suspend the computer."
+#~ msgstr "Kommando att använda för att pausa datorn."
+
+#~ msgid "List of available palettes."
+#~ msgstr "Lista med tillgängliga paletter."
+
+#~ msgid ""
+#~ "%s\n"
+#~ "Today: %s\n"
+#~ "Current temperature %d%s%s"
+#~ msgstr ""
+#~ "%s\n"
+#~ "Idag: %s\n"
+#~ "Aktuell temperatur %d%s%s"
+
 #~ msgid "Palette"
 #~ msgstr "Palett"
 
@@ -3253,15 +3846,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Force _default color & font on all notes"
 #~ msgstr "Tvinga _standardhöjd och standardtypsnitt på alla lappar"
-
-#~ msgid ""
-#~ "%s\n"
-#~ "Today: %s\n"
-#~ "Current temperature %d%s"
-#~ msgstr ""
-#~ "%s\n"
-#~ "Idag: %s\n"
-#~ "Aktuell temperatur %d%s"
 
 #~ msgid "C"
 #~ msgstr "C"
@@ -3502,23 +4086,11 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Show battery charge percentages"
 #~ msgstr "Visa batteriladdningsandelar"
 
-#~ msgid "Orange:"
-#~ msgstr "Orange:"
-
 #~ msgid "Preview:"
 #~ msgstr "Förhandsgranskning:"
 
 #~ msgid "Red:"
 #~ msgstr "Röd:"
-
-#~ msgid "Show battery status"
-#~ msgstr "Visa batteristatus"
-
-#~ msgid "Suspend command:"
-#~ msgstr "Pauskommando:"
-
-#~ msgid "Yellow:"
-#~ msgstr "Gul:"
 
 #~ msgid "_Palette"
 #~ msgstr "_Palett"
@@ -3568,9 +4140,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "You have mail"
 #~ msgstr "Du har e-post"
 
-#~ msgid "Auto Completion"
-#~ msgstr "Automatisk ifyllnad"
-
 #~ msgid "_Macros"
 #~ msgstr "_Makron"
 
@@ -3591,9 +4160,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Hide"
 #~ msgstr "Dölj"
-
-#~ msgid "Notify me when battery charge is low"
-#~ msgstr "Informera mig när laddningen på batteriet är låg"
 
 #~ msgid "Show"
 #~ msgstr "Visa"
@@ -3685,9 +4251,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "No_t connected"
 #~ msgstr "In_te ansluten"
 
-#~ msgid "A_waiting connection"
-#~ msgstr "_Väntar på anslutning"
-
 #~ msgid "B_link"
 #~ msgstr "B_link"
 
@@ -3771,12 +4334,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Enable _detailed forecast"
 #~ msgstr "Använd _detaljerad prognos"
-
-#~ msgid "Enable _radar map"
-#~ msgstr "Använd _radarkarta"
-
-#~ msgid "Use cus_tom address for radar map"
-#~ msgstr "Använd an_passad adress för radarkarta"
 
 #~ msgid "A_ddress :"
 #~ msgstr "A_dress:"
@@ -5246,9 +5803,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "time & date on"
 #~ msgstr "tid och datum på"
 
-#~ msgid "time on"
-#~ msgstr "tid på"
-
 #~ msgid "date on"
 #~ msgstr "datum på"
 
@@ -5812,9 +6366,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Minute needle color"
 #~ msgstr "Minutvisarens färg"
 
-#~ msgid "Second needle color"
-#~ msgstr "Sekundvisarens färg"
-
 #~ msgid "Show seconds needle"
 #~ msgstr "Visa sekundvisaren"
 
@@ -5910,9 +6461,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "AC-Off Battery Color:"
 #~ msgstr "Färg för AC av:"
 
-#~ msgid "Low Battery Color:"
-#~ msgstr "Färg för låg batteriladdning:"
-
 #~ msgid "Graph Tick Color:"
 #~ msgstr "Färg för graftick:"
 
@@ -5927,9 +6475,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Enable Low Battery Warning"
 #~ msgstr "Använd varning för låg laddning"
-
-#~ msgid "Enable Full-Charge Notification"
-#~ msgstr "Använd meddelande om full laddning"
 
 #~ msgid ""
 #~ "Cannot open /proc/apm!  Make sure that you built APM support into your "
@@ -6047,9 +6592,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Update Frequency (seconds):"
 #~ msgstr "Uppdatera var (sekunder):"
-
-#~ msgid "Fonts"
-#~ msgstr "Typsnitt"
 
 #~ msgid "Diskusage Settings"
 #~ msgstr "Inställningar för Diskusage"
@@ -6194,9 +6736,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Network Load Applet"
 #~ msgstr "Panelprogram för nätverksbelastning"
-
-#~ msgid "Network Load"
-#~ msgstr "Nätverksbelastning"
 
 #~ msgid "Swap Load Applet"
 #~ msgstr "Panelprogram för växlingsutrymmesbelastning"
@@ -6388,9 +6927,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Sound Monitor - Manager"
 #~ msgstr "Ljudövervakare - Hanterare"
-
-#~ msgid "Server information:"
-#~ msgstr "Serverinformation:"
 
 #~ msgid "Server"
 #~ msgstr "Server"
@@ -6650,9 +7186,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Log path:"
 #~ msgstr "Loggsökväg"
 
-#~ msgid "Choose a log file"
-#~ msgstr "Välj en loggfil"
-
 #~ msgid "Use panel size hint"
 #~ msgstr "Använd panelens storlekstips"
 
@@ -6743,9 +7276,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Disk usage meter"
 #~ msgstr "Mätare för diskanvändning"
-
-#~ msgid "Game of Life"
-#~ msgstr "Game of Life"
 
 #~ msgid "The Game of Life (to waste your time)"
 #~ msgstr "Game of Life (tidsfördriv)"
@@ -6855,17 +7385,11 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Percentage text:"
 #~ msgstr "Procenttext:"
 
-#~ msgid "Status dock"
-#~ msgstr "Statusfält"
-
 #~ msgid "Use the status dock"
 #~ msgstr "Använd statusfältet"
 
 #~ msgid "Double-click or Right-click for more options"
 #~ msgstr "Dubbelklicka eller högerklicka för fler alternativ"
-
-#~ msgid "Background color of body"
-#~ msgstr "Bakgrundsfärg för brödtext"
 
 #~ msgid ""
 #~ "Background color of the body of the sticky notes when the note is in "
