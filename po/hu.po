@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-appets 1.2.0\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
+"POT-Creation-Date: 2002-05-13 09:59+0200\n"
 "PO-Revision-Date: 2001-08-08 17:40+0200\n"
 "Last-Translator: Szabolcs Ban <shooby@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -13,194 +13,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:284
-msgid "Your platform is not supported!\n"
-msgstr "Az általad használt platform nem támogatott!\n"
-
-#: battstat/battstat_applet.c:285
-msgid "The applet will not work properly (if at all).\n"
-msgstr "Az applet nem fog rendesen működni (akkor sem)\n"
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
-msgid "High"
-msgstr "Magas"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
-msgid "Low"
-msgstr "Alacsony"
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
-msgid "Critical"
-msgstr "Kritikus"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
-msgid "Charging"
-msgstr "Töltés alatt"
-
-#: battstat/battstat_applet.c:403
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Az akkumulátorok töltése alacsony (%d%%) és nincs töltés alatt"
-
-#: battstat/battstat_applet.c:426
-msgid "Battery is now fully re-charged!"
-msgstr "Az elem teljesen feltöltődött!"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
-msgid ""
-"System is running on battery power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-"A rendszer akkumulátorról üzemel\n"
-"Töltöttség: %d%% (%s)"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
-msgid ""
-"System is running on AC power\n"
-"Battery: %d%% (%s)"
-msgstr ""
-"A rendszer hálózati feszültségről üzemel\n"
-"Töltöttség: %d%% (%s)"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
-msgid "System is running on battery power"
-msgstr "A rendszer akkumulátorról üzemel"
-
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
-msgid "System is running on AC power"
-msgstr "A rendszer hálózati feszültségről üzemel"
-
-#: battstat/battstat_applet.c:472
-msgid "N/A"
-msgstr "Nincs"
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "A rendszer akkumulátorról üzemel. Töltöttség: %d%% (%s)"
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
-"A rendszer hálózati feszültségről üzemel. Töltöttség: %d%% (%s)"
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
-msgid "System is running on battery power. Battery: Not present"
-msgstr "A rendszer akkumulátorról üzemel. Nincs akkumulátor..."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
-msgid "System is running on AC power. Battery: Not present"
-msgstr "A rendszer hálózati feszültségről üzemel. Nincs akkumulátor."
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
-msgid "Battery: %d%% (%s)"
-msgstr "Töltöttség: %d%% (%s)"
-
-#. Displayed as a tooltip over the battery meter when no
-#. battery is present.
-#: battstat/battstat_applet.c:636
-msgid "Battery: Not present"
-msgstr "Nincs akkumulátor."
-
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
-msgid ""
-"Can't open the APM device!\n"
-"\n"
-"Make sure you have read permission to the\n"
-"APM device."
-msgstr ""
-"Nem tudom megnyitni az APM eszközt!\n"
-"\n"
-"Ellenőrizd, hogy van-e jogod az\n"
-"APM eszköz olvasására."
-
-#. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
-msgid ""
-"The APM Management subsystem seems to be disabled.\n"
-"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
-"that helps.\n"
-msgstr ""
-"Az APM Menedzselő alrendszer nincs engedélyezve.\n"
-"Próbáld az \"apm -e 1\" (FreeBSD) paranccsal \n"
-"hátha segít.\n"
-
-#: battstat/battstat_applet.c:767
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command: %s\n"
-"Please try to correct this error"
-msgstr ""
-"Hiba lépett fel az altatás parancs futtatásakor: %s\n"
-"Kérlek javítsd ki a hibát"
-
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
-#, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
-msgstr ""
-"Hiba lépett fel az altatás parancs futtatásakor, a parancs visszatérési "
-"értéke %d volt.\n"
-"Kérlek próbáld kijavítani ezt a hibát"
-
-#: battstat/battstat_applet.c:778
-msgid ""
-"Suspend command wasn't setup correctly in the preferences.\n"
-"Please change the preferences and try again."
-msgstr ""
-"Az altatás parancs nincs megfelelően beállítva a tulajdonságokban.\n"
-"Kérlek változtasd meg a beállításokat és próbáld újra."
-
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-msgid "Battery status utility"
-msgstr "Teleptöltöttség jelző"
-
-#: battstat/battstat_applet.c:809
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-
-#: battstat/battstat_applet.c:810
-msgid "This utility show the status of your laptop battery."
-msgstr "Az applet laptop akkumulátor töltöttségi állapotát jelzi."
-
-#: battstat/GNOME_BattstatApplet.server.in.h:1
+#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:831
 msgid "Battery Charge Monitor"
 msgstr "Teleptölöttség monitor"
 
@@ -230,149 +44,338 @@ msgstr "Segédeszköz"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "Névjegy..."
+msgid "_About..."
+msgstr "_Névjegy..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Súgó"
+msgid "_Help"
+msgstr "_Súgó"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
 #: charpick/GNOME_CharpickerApplet.xml.h:3
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
-#, fuzzy
-msgid "Preferences..."
-msgstr "Beállítások"
+msgid "_Preferences..."
+msgstr "_Beállítások..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
-msgstr "A számítógép elaltatása..."
+msgid "_Suspend Computer..."
+msgstr "_A számítógép elaltatása..."
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:284
+msgid "Your platform is not supported!\n"
+msgstr "Az általad használt platform nem támogatott!\n"
+
+#: battstat/battstat_applet.c:285
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Az applet nem fog rendesen működni (akkor sem)\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:860
+msgid "High"
+msgstr "Magas"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:862
+msgid "Low"
+msgstr "Alacsony"
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:864
+msgid "Critical"
+msgstr "Kritikus"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:866
+msgid "Charging"
+msgstr "Töltés alatt"
+
+#: battstat/battstat_applet.c:403
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Az akkumulátorok töltése alacsony (%d%%) és nincs töltés alatt"
+
+#: battstat/battstat_applet.c:427
+msgid "Battery is now fully re-charged!"
+msgstr "Az elem teljesen feltöltődött!"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1023
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"A rendszer akkumulátorról üzemel\n"
+"Töltöttség: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1031
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"A rendszer hálózati feszültségről üzemel\n"
+"Töltöttség: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:955
+#: battstat/battstat_applet.c:1044
+msgid "System is running on battery power"
+msgstr "A rendszer akkumulátorról üzemel"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:1050
+msgid "System is running on AC power"
+msgstr "A rendszer hálózati feszültségről üzemel"
+
+#: battstat/battstat_applet.c:473
+msgid "N/A"
+msgstr "Nincs"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:935
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "A rendszer akkumulátorról üzemel. Töltöttség: %d%% (%s)"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:942
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "A rendszer hálózati feszültségről üzemel. Töltöttség: %d%% (%s)"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:615
+msgid "System is running on battery power. Battery: Not present"
+msgstr "A rendszer akkumulátorról üzemel. Nincs akkumulátor..."
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:621
+msgid "System is running on AC power. Battery: Not present"
+msgstr "A rendszer hálózati feszültségről üzemel. Nincs akkumulátor."
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:630
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr "Töltöttség: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:637
+msgid "Battery: Not present"
+msgstr "Nincs akkumulátor."
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:712
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"Nem tudom megnyitni az APM eszközt!\n"
+"\n"
+"Ellenőrizd, hogy van-e jogod az\n"
+"APM eszköz olvasására."
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:720
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"Az APM Menedzselő alrendszer nincs engedélyezve.\n"
+"Próbáld az \"apm -e 1\" (FreeBSD) paranccsal \n"
+"hátha segít.\n"
+
+#: battstat/battstat_applet.c:768
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+"Hiba lépett fel az altatás parancs futtatásakor: %s\n"
+"Kérlek javítsd ki a hibát"
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:771
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+"Hiba lépett fel az altatás parancs futtatásakor, a parancs visszatérési "
+"értéke %d volt.\n"
+"Kérlek próbáld kijavítani ezt a hibát"
+
+#: battstat/battstat_applet.c:779
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+"Az altatás parancs nincs megfelelően beállítva a tulajdonságokban.\n"
+"Kérlek változtasd meg a beállításokat és próbáld újra."
+
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:808
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr ""
+
+#: battstat/battstat_applet.c:818 cdplayer/cdplayer.c:428
+#: charpick/charpick.c:370 drivemount/drivemount.c:420 geyes/geyes.c:213
+#: gkb-new/gkb.c:583 gtik/gtik.c:696 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:44 mixer/mixer.c:752
+#: modemlights/modemlights.c:206 multiload/main.c:54
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr "translator_credits"
+
+#: battstat/battstat_applet.c:833
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+
+#: battstat/battstat_applet.c:834
+msgid "This utility show the status of your laptop battery."
+msgstr "Az applet laptop akkumulátor töltöttségi állapotát jelzi."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "Megjelenés"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "Applet elosztás"
+
+#: battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Teleptölöttség monitor beállítások"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Alap"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Elrejtás"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "Lefelé nőjön"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "Felfelé nőjön"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "A telep teljes töltöttsége esetén figyelmeztess"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Narancs:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Előnézet:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "A folyamatjelző iránya"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "Vörös:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "Mutatás"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "Altatás"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "Altatás parancsa:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "Figyelmeztetések"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Sárga"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
-#, fuzzy
 msgid "Battery Status Utility"
 msgstr "Teleptöltöttség jelző"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:2
-#, fuzzy
 msgid "Battery fully re-charged"
-msgstr "Az elem teljesen feltöltődött!"
+msgstr "Az akkumulátor teljesen feltöltődött"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery power low"
-msgstr ""
+msgstr "Az akkumulátor töltöttsége alacsony"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
-msgid "Stop"
-msgstr "Állj"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
-msgid "Play / Pause"
-msgstr "Lejátszás / Pause"
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Lemezkiadás"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
-msgid "Previous Track"
-msgstr "Előző sáv"
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
-msgid "Next Track"
-msgstr "Következő sáv"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:158
+#: cdplayer/cdplayer.c:446 cdplayer/cdplayer.c:861
 msgid "CD Player"
 msgstr "CD-lejátszó"
-
-#: cdplayer/cdplayer.c:346
-#, fuzzy
-msgid "CD Player Preferences"
-msgstr "CD-lejátszó beállításai"
-
-#: cdplayer/cdplayer.c:361
-msgid "Disc Image"
-msgstr ""
-
-#: cdplayer/cdplayer.c:361
-msgid "An image of a cd-rom disc"
-msgstr ""
-
-#: cdplayer/cdplayer.c:363
-#, fuzzy
-msgid "Device _Path:"
-msgstr "Eszköz elérése:"
-
-#: cdplayer/cdplayer.c:372
-#, fuzzy
-msgid "Device Path"
-msgstr "Eszköz elérése:"
-
-#: cdplayer/cdplayer.c:372
-#, fuzzy
-msgid "Set the device path here"
-msgstr "Állítsd be az alapértelmezett karakterlistát"
-
-#: cdplayer/cdplayer.c:375
-msgid "Use _Default"
-msgstr ""
-
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "CD-lejátszó applet"
-
-#: cdplayer/cdplayer.c:421
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
-msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "A CD-lejátszó applet egy egyszerű CD-lejátszó a panelon"
-
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
-msgid "Elapsed time"
-msgstr ""
-
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
-msgid "Track number"
-msgstr ""
-
-#: cdplayer/cdplayer.c:819
-msgid "Click this button to Stop playing the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:821
-msgid "Click this button to Play or Pause the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:823
-msgid "Click this button to eject the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:825
-msgid "Click this button to Play the previous track in the CD"
-msgstr ""
-
-#: cdplayer/cdplayer.c:827
-msgid "Click this button to Play the next track in the CD"
-msgstr ""
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 msgid "CD Player Applet Factory"
@@ -392,30 +395,100 @@ msgid "Panel applet for playing audio CDs"
 msgstr "Applet audio CD-k lejátszásához"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-msgid "Run External CD Player"
-msgstr "Külső CD-lejátszó program futtatása"
+msgid "_Run External CD Player"
+msgstr "_Külső CD-lejátszó program futtatása"
 
-#: charpick/charpick.c:363
-msgid "Character Picker"
-msgstr "Karaktertábla"
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:851
+msgid "Stop"
+msgstr "Állj"
 
-#: charpick/charpick.c:365
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998"
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:853
+msgid "Play / Pause"
+msgstr "Lejátszás / Pause"
 
-#: charpick/charpick.c:366
-msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:855
+msgid "Eject"
+msgstr "Lemezkiadás"
+
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:857
+msgid "Previous Track"
+msgstr "Előző sáv"
+
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:859
+msgid "Next Track"
+msgstr "Következő sáv"
+
+#: cdplayer/cdplayer.c:345
+msgid "CD Player Preferences"
+msgstr "CD-lejátszó beállításai"
+
+#: cdplayer/cdplayer.c:360
+msgid "Disc Image"
 msgstr ""
-"Gnome Panel applet azon karakterek kiválasztására, amelyek nincsenek a "
-"billentyűzeteden. GNU GPL-es."
 
-#: charpick/charpick.c:444
-msgid "Insert special characters"
-msgstr "Speciális karakterek beszúrása"
+#: cdplayer/cdplayer.c:360
+msgid "An image of a cd-rom disc"
+msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
+#: cdplayer/cdplayer.c:362
+msgid "Device _Path:"
+msgstr "Eszköz _elérése:"
+
+#: cdplayer/cdplayer.c:371
+msgid "Device Path"
+msgstr "Eszköz elérése"
+
+#: cdplayer/cdplayer.c:371
+#, fuzzy
+msgid "Set the device path here"
+msgstr "Állítsd be az alapértelmezett karakterlistát"
+
+#: cdplayer/cdplayer.c:374
+msgid "Use _Default"
+msgstr ""
+
+#: cdplayer/cdplayer.c:447
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+
+#: cdplayer/cdplayer.c:449 cdplayer/cdplayer.c:862
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "A CD-lejátszó applet egy egyszerű CD-lejátszó a panelon"
+
+#: cdplayer/cdplayer.c:730 cdplayer/cdplayer.c:739
+msgid "Elapsed time"
+msgstr ""
+
+#: cdplayer/cdplayer.c:733 cdplayer/cdplayer.c:741
+msgid "Track number"
+msgstr ""
+
+#: cdplayer/cdplayer.c:852
+msgid "Click this button to Stop playing the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:854
+msgid "Click this button to Play or Pause the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:856
+msgid "Click this button to eject the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:858
+msgid "Click this button to Play the previous track in the CD"
+msgstr ""
+
+#: cdplayer/cdplayer.c:860
+msgid "Click this button to Play the next track in the CD"
+msgstr ""
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:388
+#: charpick/charpick.c:473
 msgid "Character Palette"
 msgstr "Karaktertábla beállítások"
 
@@ -426,6 +499,28 @@ msgstr "Karaktertábla applet factory"
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 msgid "Insert characters"
 msgstr "Karakterek beszúrása"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:362
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr ""
+
+#: charpick/charpick.c:390
+msgid "Copyright (C) 1998"
+msgstr "Copyright (C) 1998"
+
+#: charpick/charpick.c:391
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"Gnome Panel applet azon karakterek kiválasztására, amelyek nincsenek a "
+"billentyűzeteden. GNU GPL-es."
+
+#: charpick/charpick.c:472
+msgid "Insert special characters"
+msgstr "Speciális karakterek beszúrása"
 
 #: charpick/properties.c:79
 #, fuzzy
@@ -446,51 +541,15 @@ msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
 msgstr ""
-"Ezek a karakterek a panel újraindítása után jelennek meg. A listához "
-"való visszatéréshez üss <szóköz>-t, amikor az applet van a fókuszban."
+"Ezek a karakterek a panel újraindítása után jelennek meg. A listához való "
+"visszatéréshez üss <szóköz>-t, amikor az applet van a fókuszban."
 
-#: charpick/properties.c:144
+#: charpick/properties.c:141
 #, fuzzy
 msgid "Character Palette Preferences"
 msgstr "Karaktertábla beállítások"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
-msgstr "Lemezbeillesztő applet"
-
-#: drivemount/drivemount.c:420
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 The GNOME Hackers\n"
-
-#: drivemount/drivemount.c:422
-msgid "Applet for mounting and unmounting block volumes."
-msgstr "Kötetek beillesztésére/lecsatolására használható applet."
-
-#: drivemount/drivemount.c:612
-msgid " mounted"
-msgstr " beillesztve"
-
-#: drivemount/drivemount.c:614
-msgid " not mounted"
-msgstr " nincs beillesztve"
-
-#: drivemount/drivemount.c:725
-msgid "Drive Mount Applet Warning"
-msgstr "Lemezbeillesztő applet figyelmeztetés"
-
-#: drivemount/drivemount.c:733
-msgid "\" reported:\n"
-msgstr "\" jelenti:\n"
-
-#: drivemount/drivemount.c:735
-msgid ""
-"Drivemount command failed.\n"
-"\""
-msgstr ""
-"A beillesztés nem járt sikerrel.\n"
-"\""
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:437
 msgid "Disk Mounter"
 msgstr "Lemezbeillesztő"
 
@@ -507,105 +566,127 @@ msgid "Mount local disks and devices"
 msgstr "Helyi lemezeket vagy eszközöket illeszt be"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
+#, fuzzy
+msgid "_Browse..."
 msgstr "Keresés..."
 
-#: drivemount/properties.c:239
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+#, fuzzy
+msgid "_Eject"
+msgstr "Lemezkiadás"
+
+#: drivemount/drivemount.c:438
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "(C) 1999-2001 The GNOME Hackers\n"
+
+#: drivemount/drivemount.c:440
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "Kötetek beillesztésére/lecsatolására használható applet."
+
+#: drivemount/drivemount.c:637
+msgid " mounted"
+msgstr " beillesztve"
+
+#: drivemount/drivemount.c:639
+msgid " not mounted"
+msgstr " nincs beillesztve"
+
+#: drivemount/drivemount.c:750
+msgid "Drive Mount Applet Warning"
+msgstr "Lemezbeillesztő applet figyelmeztetés"
+
+#: drivemount/drivemount.c:758
+msgid "\" reported:\n"
+msgstr "\" jelenti:\n"
+
+#: drivemount/drivemount.c:760
+msgid ""
+"Drivemount command failed.\n"
+"\""
+msgstr ""
+"A beillesztés nem járt sikerrel.\n"
+"\""
+
+#: drivemount/properties.c:241
 #, fuzzy
 msgid "Disk Mounter Preferences"
 msgstr "Lemezbeillesztő applet beállítások"
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:260
 #, fuzzy
 msgid "_Mount point:"
 msgstr "Beillesztési pont"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:278
 #, fuzzy
 msgid "_Update interval (seconds):"
 msgstr "Kép frissítésének gyakorisága (mp):"
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:294 panel-menu/panel-menu-properties.c:108
 #, fuzzy
 msgid "_Icon :"
 msgstr "Ikon :"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:312
 msgid "Floppy"
 msgstr "Floppy"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:315
 msgid "Cdrom"
 msgstr "CDROM"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:318
 msgid "Cd Recorder"
 msgstr "CD felvevő"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:321
 msgid "Zip Drive"
 msgstr "Zip Drive"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:324
 msgid "Hard Disk"
 msgstr "Merevlemez"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:327
 msgid "Jaz Drive"
 msgstr "Jaz Drive"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:330
 msgid "Custom"
 msgstr "Beállított"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:343
 msgid "Select icon for mounted"
 msgstr "Beillesztett állapot ikonja"
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:350
 #, fuzzy
 msgid "Custom icon for moun_ted:"
 msgstr "Beállítható ikon beillesztett állapothoz"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:359
 msgid "Select icon for unmounted"
 msgstr "Nem beillesztett állapot ikonja"
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:366
 #, fuzzy
 msgid "Custom icon for not mou_nted:"
 msgstr "Beállítható ikon nem beillesztett állapothoz"
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:376
 #, fuzzy
 msgid "_Scale size to panel"
 msgstr "A panel méretéhez igazítsd"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:383
 #, fuzzy
 msgid "_Eject on unmount"
 msgstr "Kiadás lecsatolás után"
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:390
 #, fuzzy
 msgid "Use _automount friendly status test"
 msgstr "Automount-barát állapotellenőrzés"
-
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Kis bolondos, GNOME panelra tehető xeyes."
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -615,7 +696,8 @@ msgstr "Szemgolyók a panelre"
 msgid "Amusements"
 msgstr "Szórakoztatás"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:231 geyes/geyes.c:410
+#: geyes/geyes.c:412
 #, fuzzy
 msgid "Geyes"
 msgstr "gEyes"
@@ -624,64 +706,89 @@ msgstr "gEyes"
 msgid "Geyes Applet Factory"
 msgstr "Geyes Applet factory"
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:232
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:233
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "Kis bolondos, GNOME panelra tehető xeyes."
+
+#: geyes/geyes.c:413
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr ""
+
+#: geyes/themes.c:207
 #, fuzzy
 msgid "Geyes Preferences"
 msgstr "Beállítások"
 
-#: geyes/themes.c:222
+#: geyes/themes.c:220
 #, fuzzy
 msgid "T_heme Name"
 msgstr "Téma neve"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Change the keyboard layout"
+msgstr "A billentyűzet-kiosztást kapcsolja"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+msgid "GKB Factory"
+msgstr "GKB Factory"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:594
+msgid "Keyboard Layout Switcher"
+msgstr "GKB billentyűzet-kiosztás kapcsoló"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "GKB billentyűzet-kiosztás-kapcsoló appletet generál"
+
+#: gkb-new/gkb.c:112
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
-"Nyomd meg azt a billentyűkombinációt, amivel a billentyűzetkiosztások "
-"között váltassz. A beállítások dialógusdobozban tudod megváltoztatni"
+"Nyomd meg azt a billentyűkombinációt, amivel a billentyűzetkiosztások között "
+"váltassz. A beállítások dialógusdobozban tudod megváltoztatni"
 
-#: gkb-new/gkb.c:404
+#: gkb-new/gkb.c:403
 #, c-format
 msgid "name_%d"
 msgstr "name_%d"
 
-#: gkb-new/gkb.c:408
+#: gkb-new/gkb.c:407
 #, c-format
 msgid "label_%d"
 msgstr "label_%d"
 
-#: gkb-new/gkb.c:412
+#: gkb-new/gkb.c:411
 #, c-format
 msgid "country_%d"
 msgstr "country_%d"
 
-#: gkb-new/gkb.c:416
+#: gkb-new/gkb.c:415
 #, c-format
 msgid "lang_%d"
 msgstr "lang_%d"
 
-#: gkb-new/gkb.c:424
+#: gkb-new/gkb.c:423
 #, c-format
 msgid "command_%d"
 msgstr "command_%d"
 
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:541 gkb-new/gkb.c:548
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "GNOME billentyűzet-átkapcsoló applet"
-
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:596
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:597
+#, fuzzy
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -693,30 +800,14 @@ msgstr ""
 "xmodmap-ot használ.\n"
 "Küldhetsz még zászlókat a shooby@gnome.hu címre.\n"
 "Viszlát és kösz a halakat...\n"
-"Köszönöm Nagy Balázsnak (julian7@kva.hu) segítségét, Kovács "
-"Emesének (emese@gnome.hu) a szolidaritást, és a segítséget az olyan "
-"srácoknak, mint KevinV.\n"
+"Köszönöm Nagy Balázsnak (julian7@kva.hu) segítségét, Kovács Emesének "
+"(emese@gnome.hu) a szolidaritást, és a segítséget az olyan srácoknak, mint "
+"KevinV.\n"
 "Bán Szabolcs <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:614
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Honlap (http://projects.gnome.hu/gkb)"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr "A billentyűzet-kiosztást kapcsolja"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr "GKB Factory"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-msgid "Keyboard Layout Switcher"
-msgstr "GKB billentyűzet-kiosztás kapcsoló"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-msgid "Produces keyboard layout switcher applets."
-msgstr "GKB billentyűzet-kiosztás-kapcsoló appletet generál"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -725,413 +816,348 @@ msgstr "Tiltva"
 #: gkb-new/keygrab.c:292
 msgid "Press a key or press Esc to cancel"
 msgstr ""
-"Nyomj meg egy billentyűzet-kombinációt vagy Esc-et ha mégsem "
-"változtatod meg"
+"Nyomj meg egy billentyűzet-kombinációt vagy Esc-et ha mégsem változtatod meg"
 
 #: gkb-new/prop-add.c:86
-#, fuzzy
 msgid "Keyboards (select and press add)"
 msgstr "Billentyűzet kiosztások (válaszd ki majd nyomd meg a hozzáadást)"
 
-#: gkb-new/prop-add.c:367
-#, fuzzy
+#: gkb-new/prop-add.c:371
 msgid "Select Keyboard"
 msgstr "Válassz kiosztást"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "Normál"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "Nagy"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "Zászló"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "Címke"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "Zászló és cimke"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr "Képernyő"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-#, fuzzy
-msgid "_Appearance: "
-msgstr "_Megjelenés "
-
-#: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
-msgstr "Applet mé_rete "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "A kiosztások között kapcsoló forróbillentyű"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "Forróbillentyű megadása"
-
-#. Create property box
-#: gkb-new/prop.c:405
-#, fuzzy
-msgid "Keyboard Layout Switcher Preferences"
-msgstr "GKB billentyűzet-kiosztás kapcsoló"
-
-#: gkb-new/prop.c:419
-msgid "_Keymaps"
-msgstr "_Kiosztások"
-
-#: gkb-new/prop.c:431
-msgid "_Options"
-msgstr "_Beállítások"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:380 gtik/gtik.c:1118
 msgid "_Add"
 msgstr "_Hozzáadás"
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:381
 msgid "_Edit"
 msgstr "_Szerkesztés"
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:382
 msgid "_Up"
 msgstr "_Fel"
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:383
 msgid "Dow_n"
 msgstr "_Le"
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:384
 msgid "_Delete"
 msgstr "_Törlés"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:199
 msgid "Armenia"
 msgstr "Örményország"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:200
 msgid "Australia"
 msgstr "Ausztrália"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:201
 msgid "Austria"
 msgstr "Ausztria"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:202
 msgid "Belgium"
 msgstr "Belgium"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:203
 msgid "Brazil"
 msgstr "Brazília"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:204
 msgid "Bulgaria"
 msgstr "Bulgária"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:205
 msgid "Canada"
 msgstr "Kanada"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:206
 msgid "Caribic"
 msgstr "Karib-szigetek"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:207
 msgid "France"
 msgstr "Franciaország"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:208
 msgid "Georgia"
 msgstr "Grúzia"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:209
 msgid "Germany"
 msgstr "Németország"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:210
 msgid "Great Britain"
 msgstr "Nagy Britannia"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:211
 msgid "Hungary"
 msgstr "Magyarország"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:212
 msgid "Jamaica"
 msgstr "Jamaika"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:213
 msgid "New Zealand"
 msgstr "Új-Zéland"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:214
 msgid "Norway"
 msgstr "Norvégia"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:215
 msgid "Poland"
 msgstr "Lengyelország"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:216
 msgid "Portugal"
 msgstr "Portugália"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:217
 msgid "Russia"
 msgstr "Oroszország"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:218
 msgid "Slovak Republic"
 msgstr "Szlovákia"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:219
 msgid "Slovenia"
 msgstr "Szlovénia"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:220
 msgid "South Africa"
 msgstr "Dél-Afrika"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:221
 msgid "Spain"
 msgstr "Spanyolország"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:222
 msgid "Sweden"
 msgstr "Svédország"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:223
 msgid "Switzerland"
 msgstr "Svájc"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:224
 msgid "Thailand"
 msgstr "Thaiföld"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:225
 msgid "Turkey"
 msgstr "Törökország"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:226
 msgid "United Kingdom"
 msgstr "Egyesült Királyság"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:227
 msgid "United States"
 msgstr "Egyesült Államok"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:228
 msgid "Yugoslavia"
 msgstr "Jugoszlávia"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:248
 msgid "Armenian"
 msgstr "Örmény"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:249
 msgid "Basque"
 msgstr "Baszk"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:250
 msgid "Bulgarian"
 msgstr "Bolgár"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:251
 msgid "Dutch"
 msgstr "Holland"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:252
 msgid "English"
 msgstr "Angol"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:253
 msgid "French"
 msgstr "Francia"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:254
 msgid "Georgian"
 msgstr "Grúz"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:255
 msgid "German"
 msgstr "Német"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:256
 msgid "Hungarian"
 msgstr "Magyar"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:257
 msgid "Norwegian"
 msgstr "Norvég"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:258
 msgid "Polish"
 msgstr "Lengyel"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:259
 msgid "Portuguese"
 msgstr "Portugál"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:260
 msgid "Russian"
 msgstr "Orosz"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:261
 msgid "Slovak"
 msgstr "Szlovák"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:262
 msgid "Slovenian"
 msgstr "Szlovén"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:263
 msgid "Swedish"
 msgstr "Svéd"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:264
 msgid "Thai"
 msgstr "Thai"
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:265
 msgid "Turkish"
 msgstr "Török"
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:266
 msgid "Wallon"
 msgstr "Vallon"
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:267
 msgid "Yugoslavian"
 msgstr "Jugoszláv"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:285
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:286
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:287
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:288
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:289
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:290
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:291
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:311
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:312
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:313
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:314
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:315
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:316
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:317
 msgid "georgian-academy"
 msgstr "grúz-akadémiai"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:318
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:319
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:337
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
+#: gkb-new/prop-map.c:338
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:339
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:340
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:341
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:342
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
-#, fuzzy
+#: gkb-new/prop-map.c:579
 msgid "Edit Keyboard"
 msgstr "Kiosztás szerkesztése"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
+#: gkb-new/prop-map.c:607 panel-menu/panel-menu-directory.c:668
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
-#, fuzzy
 msgid "_Name:"
-msgstr "_Név"
+msgstr "_Név:"
 
-#: gkb-new/prop-map.c:605
-#, fuzzy
+#: gkb-new/prop-map.c:611
 msgid "_Label:"
-msgstr "_Címke"
-
-#: gkb-new/prop-map.c:609
-#, fuzzy
-msgid "Lan_guage:"
-msgstr "N_yelv"
+msgstr "_Címke:"
 
 #: gkb-new/prop-map.c:615
-#, fuzzy
-msgid "Count_ry:"
-msgstr "_Ország"
+msgid "Lan_guage:"
+msgstr "N_yelv:"
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:621
+msgid "Count_ry:"
+msgstr "_Ország:"
+
+#: gkb-new/prop-map.c:628
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1139,27 +1165,23 @@ msgstr ""
 "Zászló\n"
 "Pixmap"
 
-#: gkb-new/prop-map.c:626
-#, fuzzy
-msgid "Arc_hitecture:"
-msgstr "Arc_hitektúra"
-
 #: gkb-new/prop-map.c:632
-#, fuzzy
-msgid "_Type:"
-msgstr "_Típus"
+msgid "Arc_hitecture:"
+msgstr "Arc_hitektúra:"
 
 #: gkb-new/prop-map.c:638
-#, fuzzy
+msgid "_Type:"
+msgstr "_Típus:"
+
+#: gkb-new/prop-map.c:644
 msgid "Code_page:"
-msgstr "Kódla_p"
+msgstr "Kódla_p:"
 
-#: gkb-new/prop-map.c:645
-#, fuzzy
+#: gkb-new/prop-map.c:651
 msgid "Co_mmand:"
-msgstr "Paran_cs"
+msgstr "Paran_cs:"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:658
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1171,6 +1193,60 @@ msgstr ""
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 
+#: gkb-new/prop.c:127 gkb-new/prop.c:195
+msgid "Normal"
+msgstr "Normál"
+
+#: gkb-new/prop.c:128 gkb-new/prop.c:199
+msgid "Big"
+msgstr "Nagy"
+
+#: gkb-new/prop.c:146 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "Zászló"
+
+#: gkb-new/prop.c:147 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "Címke"
+
+#: gkb-new/prop.c:148 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Zászló és cimke"
+
+#: gkb-new/prop.c:284 modemlights/properties.c:374
+msgid "Display"
+msgstr "Képernyő"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:304
+msgid "_Appearance: "
+msgstr "_Megjelenés:"
+
+#: gkb-new/prop.c:311
+msgid "Applet _size: "
+msgstr "Applet mé_rete:"
+
+#: gkb-new/prop.c:337
+msgid "Hotkey for switching between layouts"
+msgstr "A kiosztások között kapcsoló forróbillentyű"
+
+#: gkb-new/prop.c:349
+msgid "Grab hotkey"
+msgstr "Forróbillentyű megadása"
+
+#. Create property box
+#: gkb-new/prop.c:410
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "Billentyűzet-kiosztás kapcsoló beállítások"
+
+#: gkb-new/prop.c:425
+msgid "_Keymaps"
+msgstr "_Kiosztások"
+
+#: gkb-new/prop.c:437
+msgid "_Options"
+msgstr "_Beállítások"
+
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
 msgstr "A billentyűzet-átkapcsoló parancs hibával tért vissza!"
@@ -1178,7 +1254,7 @@ msgstr "A billentyűzet-átkapcsoló parancs hibával tért vissza!"
 #: gtik/GNOME_GtikApplet.server.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
 msgid "Accessories"
-msgstr "Eszközök"
+msgstr "Tartozékok"
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
 msgid "Get continuously updated stock quotes"
@@ -1188,23 +1264,20 @@ msgstr "Folyamatosan frissülő részvényárfolyamok"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet factory"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:712
 msgid "Stock Ticker"
 msgstr "Részvényfigyelő"
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
+#: gtik/GNOME_GtikApplet.xml.h:4
+#, fuzzy
+msgid "_Refresh"
 msgstr "Frissítés"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:198
 msgid "No data available or properties not set"
 msgstr "Nincs elérhető adat, vagy a tulajdonságok nincsenek beállítva"
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr "A GNOME Stock Ticker"
-
-#: gtik/gtik.c:670
+#: gtik/gtik.c:714
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1212,135 +1285,119 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 "Ez a program ismert webkiszolgálókhoz csatlakozik és letölti onnan a "
-"részvényárfolyamokat. A GNOME Tőzsdekövető egy szabadon terjeszthető "
-"és ingyenes Internet-alapú alkalmazás. SEMMILYEN GARANCIÁT SEM "
-"VÁLLALUNK. Ne használd a GNOME Tőzsdekövetőt a pénzügyi döntések "
-"meghozatalához. A program csak információs célt szolgál."
+"részvényárfolyamokat. A GNOME Tőzsdekövető egy szabadon terjeszthető és "
+"ingyenes Internet-alapú alkalmazás. SEMMILYEN GARANCIÁT SEM VÁLLALUNK. Ne "
+"használd a GNOME Tőzsdekövetőt a pénzügyi döntések meghozatalához. A program "
+"csak információs célt szolgál."
 
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1107
 #, fuzzy
 msgid "_New Symbol:"
 msgstr "Új szimbólum:"
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1129
 msgid "_Remove Selected"
 msgstr "A kijelölt _törlése"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-#, fuzzy
-msgid "_Use HTTP proxy"
-msgstr "Proxy használata"
-
-#: gtik/gtik.c:1232
-#, fuzzy
-msgid "_Location :"
-msgstr "Hely:"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr ""
-
-#: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr ""
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-#, fuzzy
-msgid "Us_ername:"
-msgstr "Felhasználó:"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-#, fuzzy
-msgid "Pass_word:"
-msgstr "Jelszó:"
-
-#: gtik/gtik.c:1357
+#: gtik/gtik.c:1183
 #, fuzzy
 msgid "Stock Ticker Preferences"
 msgstr "Részvény Ticker Beállítások"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1204
 #, fuzzy
 msgid "Update Fre_quency in minutes:"
 msgstr "Frissítések gyakorisága percben:"
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1222
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "+-al elválasztott szimbólumokat írjál a mezőbe."
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1229
 #, fuzzy
 msgid "Displa_y only symbols and price"
 msgstr "Csak a szimbólumoket és az árakat"
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1232
 #, fuzzy
 msgid "Scroll _left to right"
 msgstr "Balról jobbra görgetés"
 
-#: gtik/gtik.c:1412
-#, fuzzy
-msgid "Display a_rrows instead of -/+"
-msgstr "Nyilakkal jelenítsd meg -/+ helyett"
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1235
 #, fuzzy
 msgid "_Enable scroll buttons"
 msgstr "A görgetőgombok engedélyezése"
 
 #. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1257
 #, fuzzy
 msgid "+ C_olor"
 msgstr "+ Szín"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1276
 #, fuzzy
 msgid "- Colo_r"
 msgstr "- Szín"
 
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1294
+#, fuzzy
+msgid "Back_ground Color"
+msgstr "Háttér"
+
+#: gtik/gtik.c:1316
 #, fuzzy
 msgid "Stock Sy_mbol:"
 msgstr "Részvényszimbólum:"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1330
 #, fuzzy
 msgid "Stock C_hange:"
 msgstr "Részvénycsere:"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1354
 msgid "_Symbols"
 msgstr "_Szimbólumok"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1356
 msgid "_Behavior"
 msgstr "_Viselkedés"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1358
 msgid "_Appearance"
 msgstr "_Megjelenés"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-#, fuzzy
-msgid "_Proxy"
-msgstr "Proxy URL:"
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1408
 msgid "Skip forward"
 msgstr ""
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1409
 msgid "Skip backword"
 msgstr ""
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1410
+#, fuzzy
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr "Folyamatosan frissülő részvényárfolyamok"
+
+#: gtik/gtik.c:1597
 msgid "(No"
 msgstr "(Nincs"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1598
 msgid "Change "
 msgstr "változás "
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+#, fuzzy
+msgid "_Forecast"
+msgstr "Előrejelzés"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:5
+#, fuzzy
+msgid "_Update"
+msgstr "Frissítés"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
@@ -1355,26 +1412,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Az időjárást figyeli és előrejelzést ad"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr "Időjárás kijelző"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "Előrejelzés"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "Frissítés"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "GNOME időjárás"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1384,243 +1430,226 @@ msgstr ""
 "\n"
 "A helyi időjárási viszonyok jelzésére szolgáló program."
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:193
+msgid "GNOME Weather"
+msgstr "GNOME időjárás"
+
+#: gweather/gweather-applet.c:321
 msgid "Updating..."
 msgstr "Frissítés..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "Előrejelzés"
+
+#: gweather/gweather-dialog.c:108
 msgid "Location:"
 msgstr "Hely:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:116
 msgid "Update:"
 msgstr "Frissítés:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:124
 msgid "Conditions:"
 msgstr "Helyzet:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:132
 msgid "Sky:"
 msgstr "Ég:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "Hőmérséklet:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:148
 msgid "Dew point:"
 msgstr "Harmatpont:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Humidity:"
 msgstr "Páratartalom:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:164
 msgid "Wind:"
 msgstr "Szél:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:172
 msgid "Pressure:"
 msgstr "Nyomás:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:180
 msgid "Visibility:"
 msgstr "Láthatóság:"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:279
 #, fuzzy
 msgid "C_urrent conditions"
 msgstr "Jelenlegi állapot"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 #, fuzzy
 msgid "ForeCast Report"
 msgstr "Időjárás kijelző"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr ""
 
-#: gweather/gweather-dialog.c:300
-#, fuzzy
-msgid "_Forecast"
-msgstr "Előrejelzés"
-
-#: gweather/gweather-dialog.c:332
+#: gweather/gweather-dialog.c:327
 #, fuzzy
 msgid "_Visit Weather.com"
 msgstr "A Weather.com meglátogatása"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr ""
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 #, fuzzy
 msgid "Click to Enter Weather.com"
 msgstr "A Weather.com meglátogatása"
 
-#: gweather/gweather-dialog.c:341
+#: gweather/gweather-dialog.c:336
 #, fuzzy
 msgid "_Radar map"
 msgstr "Műholdas térkép"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:408
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
 "Részletes időjárási információ nem érhető el erről a helyről.\n"
-"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN "
-"előrejelzés csak az Egyesült Államok városaira működik."
+"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN előrejelzés csak "
+"az Egyesült Államok városaira működik."
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:410
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
 "Helyi időjárási információ nem érhető el erről a helyről.\n"
-"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN "
-"előrejelzés csak az Egyesült Államok városaira működik."
+"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN előrejelzés csak "
+"az Egyesült Államok városaira működik."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:106
 #, fuzzy
 msgid "Location view"
 msgstr "Hely"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:106
 #, fuzzy
 msgid "Select Location from the list"
 msgstr "Válassz ikont az Alkalmazások menünek"
 
-#: gweather/gweather-pref.c:126
-msgid "URL Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "Enter the Location"
-msgstr "Hely"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr ""
-
-#: gweather/gweather-pref.c:128
-#, fuzzy
-msgid "User Entry"
-msgstr "Proxy használata"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr ""
-
-#: gweather/gweather-pref.c:129
-#, fuzzy
-msgid "Password Entry"
-msgstr "Jelszó:"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr ""
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:108
 #, fuzzy
 msgid "Update spin button"
 msgstr "Másodpercenkénti frissítések"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:108
 msgid "Spinbutton for updating"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:109
 #, fuzzy
 msgid "Address Entry"
 msgstr "Cím :"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:109
 msgid "Enter the URL"
 msgstr ""
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:521
 #, fuzzy
 msgid "Weather Preferences"
 msgstr "Időjárás beállításai"
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:567
 #, fuzzy
 msgid "_Location"
 msgstr "Hely"
 
-#: gweather/gweather-pref.c:775
-#, fuzzy
-msgid "Locat_ion :"
-msgstr "Hely:"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr ""
-
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:598
 #, fuzzy
 msgid "_Automatically update every"
 msgstr "Automatikus frissítés"
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:604
 #, fuzzy
 msgid "Use _metric system units"
 msgstr "Metrikus mértékegységrendszer használata"
 
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:610
 #, fuzzy
 msgid "Enable _detailed forecast"
 msgstr "Részletes előrejelzés engedélyezése"
 
-#: gweather/gweather-pref.c:891
+#: gweather/gweather-pref.c:617
 #, fuzzy
 msgid "Enable _radar map"
 msgstr "Műholdas térképek engedélyezése"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:623
 #, fuzzy
 msgid "Use cus_tom address for radar map"
 msgstr "A radar térkép helyének beállítása"
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:634
 #, fuzzy
 msgid "A_ddress :"
 msgstr "Cím :"
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:646
 msgid "Updates"
 msgstr "Frissítések"
 
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:652
 #, fuzzy
 msgid "_Automatically update every "
 msgstr "Automatikus frissítés "
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:672
 msgid "minute(s)"
 msgstr "másodpercenként"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:683
 msgid "Miscellaneous"
 msgstr "Egyéb"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
+#: gweather/gweather-pref.c:701 mini-commander/src/preferences.c:953
 #: modemlights/properties.c:409
 msgid "_General"
 msgstr "_Alap"
+
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "csomó"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr "km/h"
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr "inHg"
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "mérföld"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "kilométer"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -2821,11 +2850,21 @@ msgstr "Ismeretlen"
 msgid "Retrieval failed"
 msgstr "A lekérés nem sikerült"
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
-msgstr "Mini-Commander Applet"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/about.c:62
+#: mini-commander/src/mini-commander_applet.c:313
+msgid "Command Line"
+msgstr "Parancssor"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Mini-Commander"
+msgstr "Mini-Commander"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "Minicommander Applet factory"
+
+#: mini-commander/src/about.c:65
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2836,8 +2875,8 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Ez a GNOME applet egy parancssort ad a panelhoz. Parancskiegészítés, "
-"napló, makrók, más tulajdonságok, és óra is bele van építve.\n"
+"Ez a GNOME applet egy parancssort ad a panelhoz. Parancskiegészítés, napló, "
+"makrók, más tulajdonságok, és óra is bele van építve.\n"
 "\n"
 "Ez a program szabad termék, a GPL vonatkozik rá, és a Free Software "
 "Foundation által lett megjelentetve, a kettes, vagy bármely általad "
@@ -2882,26 +2921,17 @@ msgstr "töltődik..."
 msgid "autocompleted"
 msgstr "automatikusan kiegészítve"
 
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr "a történeti lista üres"
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "Régebbi parancsok"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:514
 msgid "Start program"
 msgstr "Program indítása"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:553
 #, fuzzy
 msgid "Command line"
 msgstr "Parancssor"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:554
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
@@ -2912,19 +2942,6 @@ msgstr "indítási hiba"
 #: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "gyermekfolyamat kilépett"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-msgid "Command Line"
-msgstr "Parancssor"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-msgid "MiniCommander Applet Factory"
-msgstr "Minicommander Applet factory"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -3082,24 +3099,26 @@ msgstr "_Makrók"
 msgid "Adjust the sound volume"
 msgstr "Hangerő állítása"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:763
 msgid "Volume Control"
 msgstr "Hangerőszabályzó"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
+#, fuzzy
+msgid "_Mute"
 msgstr "Némítás"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "Mixer futtatása..."
+#, fuzzy
+msgid "_Run Volume Control..."
+msgstr "Hangerőszabályzó"
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:132
 #, fuzzy
 msgid "Volume Control (muted)"
 msgstr "Hangerőszabályzó"
 
-#: mixer/mixer.c:183
+#: mixer/mixer.c:184
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3107,58 +3126,52 @@ msgstr ""
 "figyelmeztetés: ez a gmix verzió más soundcard.h-val volt\n"
 "fordítva.\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:195
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Keverőcsatornák lekérdezése a %s mixer eszközön sikertelen\n"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
-"figyelem: a mixernek nincs hangerő csatornája - a PCM-et használom.\n"
+msgstr "figyelem: a mixernek nincs hangerő csatornája - a PCM-et használom.\n"
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:205
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Nincs a %s eszköznek sem hangerő sem PCM csatornája.\n"
 
-#: mixer/mixer.c:516
+#: mixer/mixer.c:517
 #, fuzzy
 msgid "Volume Controller"
 msgstr "Hangerőszabályzó"
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:518
 msgid "Use Up/Down arrow keys to change volume"
 msgstr ""
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:764
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:765
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"A hangerőszabályzó a felület hangerejének szabályozására szolgál."
+msgstr "A hangerőszabályzó a felület hangerejének szabályozására szolgál."
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:939
 #, fuzzy
 msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"A hangerőszabályzó a felület hangerejének szabályozására szolgál."
+msgstr "A hangerőszabályzó a felület hangerejének szabályozására szolgál."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
 msgid "Internet"
 msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "Modem LED-ek"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Modem LED applet"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:226
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3168,7 +3181,7 @@ msgstr ""
 "A modem állapotát jelző applet.\n"
 "A lámpák jobbról vagy fölülről: RX (küldött) és TX (fogadott)"
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:556
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3176,16 +3189,16 @@ msgstr ""
 "Kapcsolódva vagy.\n"
 "Le akarsz bontani?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:571
 msgid "Do you want to connect?"
 msgstr "Kapcsolódni akarsz?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:599
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb vett / %#.1fMb küldött / idő: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:604
 msgid "not connected"
 msgstr "nincs kapcsolódva"
 
@@ -3335,31 +3348,28 @@ msgstr "A beállítások alapértelmezetté tétele"
 msgid "_Advanced"
 msgstr "Haladó"
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Processzor használat"
-
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 msgid "A system load indicator"
 msgstr "Rendszer load figyelő"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
 msgid "System Monitor"
 msgstr "Rendszerfigyelő"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-msgid "Run detailed system monitor"
+#, fuzzy
+msgid "_Run detailed system monitor"
 msgstr "Részletes rendszerfigyelő futtatása"
+
+#: multiload/cpuload.c:39
+msgid "CPU Load"
+msgstr "Processzor használat"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "Terheltségi átlag"
 
-#: multiload/main.c:53
-msgid "System Monitor Applet"
-msgstr "Rendszerfigyelő Applet"
-
-#: multiload/main.c:55
+#: multiload/main.c:77
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3368,30 +3378,31 @@ msgid ""
 msgstr ""
 "A GNU GPL alatt jelent meg a program.\n"
 "\n"
-"A rendszer terheltség figyelő a cpu, ram és swap fájl használat "
-"figyelésére használható"
+"A rendszer terheltség figyelő a cpu, ram és swap fájl használat figyelésére "
+"használható"
 
-#: multiload/main.c:177
+#: multiload/main.c:205
 msgid "Processor"
 msgstr "Processzor"
 
-#: multiload/main.c:179
+#: multiload/main.c:207
 msgid "Memory"
 msgstr "Memória"
 
-#: multiload/main.c:181
+#: multiload/main.c:209
 msgid "Network"
 msgstr "Hálózat"
 
-#: multiload/main.c:183
+#: multiload/main.c:211
 msgid "Swap File"
 msgstr "Swap fájl"
 
-#: multiload/main.c:185
+#: multiload/main.c:213
 msgid "Resource"
 msgstr "Erőforrás"
 
-#: multiload/main.c:197
+#: multiload/main.c:225
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3601,45 +3612,41 @@ msgstr "Dokumentumok"
 msgid "Applications"
 msgstr "Alkalmazások"
 
-#: panel-menu/panel-menu.c:684
-msgid "PanelMenu Applet"
-msgstr "PanelMenü Applet"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr "(c) 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu-common.c:727
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
-msgstr "A Panel Menü Applet egy beállítható menüsort ad a paneledhez."
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
+msgstr ""
 
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:515
 msgid "Create directory item..."
 msgstr "Könyvtárelem készítése..."
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:523
 msgid "Home"
 msgstr "Saját könyvtár"
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:594
 msgid "Edit directory item..."
 msgstr "Könyvtárelem szerkesztése..."
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:680 panel-menu/panel-menu-path.c:728
 #, fuzzy
 msgid "_Path:"
 msgstr "Útvonal:"
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:688
 msgid "..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:698
 #, fuzzy
 msgid "_Depth level:"
 msgstr "Mélység:"
+
+#: panel-menu/panel-menu-directory.c:795
+msgid "Path specified is currently not a valid directory."
+msgstr ""
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3696,26 +3703,26 @@ msgstr "Kiosztás"
 msgid "_Applications Menu"
 msgstr "Alkalmazások menü"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:114
 msgid "Select an icon for the Applications menu"
 msgstr "Válassz ikont az Alkalmazások menünek"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:131
 #, fuzzy
 msgid "_Preferences Menu"
 msgstr "Beállítások menü"
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:142
 #, fuzzy
 msgid "Ac_tions Menu"
 msgstr "Műveletek menü"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:153
 #, fuzzy
 msgid "_Windows Menu"
 msgstr "Ablakok menü"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:164
 #, fuzzy
 msgid "W_orkspaces Menu"
 msgstr "Munkaterületek menü"
@@ -3727,6 +3734,104 @@ msgstr "Ablakok"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "Munkaterületek"
+
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr ""
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr "(c) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:692
+#, fuzzy
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr "A Panel Menü Applet egy beállítható menüsort ad a paneledhez."
+
+#~ msgid "Battery status utility"
+#~ msgstr "Teleptöltöttség jelző"
+
+#~ msgid "CD Player Applet"
+#~ msgstr "CD-lejátszó applet"
+
+#~ msgid "Character Picker"
+#~ msgstr "Karaktertábla"
+
+#~ msgid "Drive Mount Applet"
+#~ msgstr "Lemezbeillesztő applet"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "gEyes"
+#~ msgstr "gEyes"
+
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "GNOME billentyűzet-átkapcsoló applet"
+
+#~ msgid "The GNOME Stock Ticker"
+#~ msgstr "A GNOME Stock Ticker"
+
+#, fuzzy
+#~ msgid "_Use HTTP proxy"
+#~ msgstr "Proxy használata"
+
+#, fuzzy
+#~ msgid "_Location :"
+#~ msgstr "Hely:"
+
+#, fuzzy
+#~ msgid "Us_ername:"
+#~ msgstr "Felhasználó:"
+
+#, fuzzy
+#~ msgid "Pass_word:"
+#~ msgstr "Jelszó:"
+
+#, fuzzy
+#~ msgid "Display a_rrows instead of -/+"
+#~ msgstr "Nyilakkal jelenítsd meg -/+ helyett"
+
+#, fuzzy
+#~ msgid "_Proxy"
+#~ msgstr "Proxy URL:"
+
+#, fuzzy
+#~ msgid "Enter the Location"
+#~ msgstr "Hely"
+
+#, fuzzy
+#~ msgid "User Entry"
+#~ msgstr "Proxy használata"
+
+#, fuzzy
+#~ msgid "Password Entry"
+#~ msgstr "Jelszó:"
+
+#, fuzzy
+#~ msgid "Locat_ion :"
+#~ msgstr "Hely:"
+
+#~ msgid "Mini-Commander Applet"
+#~ msgstr "Mini-Commander Applet"
+
+#~ msgid "history list empty"
+#~ msgstr "a történeti lista üres"
+
+#~ msgid "Command history"
+#~ msgstr "Régebbi parancsok"
+
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "Mixer futtatása..."
+
+#~ msgid "Modem Lights Applet"
+#~ msgstr "Modem LED applet"
+
+#~ msgid "System Monitor Applet"
+#~ msgstr "Rendszerfigyelő Applet"
+
+#~ msgid "PanelMenu Applet"
+#~ msgstr "PanelMenü Applet"
 
 #~ msgid "Properties..."
 #~ msgstr "Tulajdonságok..."
@@ -3748,27 +3853,6 @@ msgstr "Munkaterületek"
 #~ "Figyelmeztetés: A jelszavad kódolatlan \n"
 #~ "formában lesz mentve a saját konfigurációs \n"
 #~ "fájlba."
-
-#~ msgid "General"
-#~ msgstr "Alap"
-
-#~ msgid "knots"
-#~ msgstr "csomó"
-
-#~ msgid "kph"
-#~ msgstr "km/h"
-
-#~ msgid "inHg"
-#~ msgstr "inHg"
-
-#~ msgid "hPa"
-#~ msgstr "hPa"
-
-#~ msgid "miles"
-#~ msgstr "mérföld"
-
-#~ msgid "kilometers"
-#~ msgstr "kilométer"
 
 #~ msgid "still not ported"
 #~ msgstr "nincs beillesztve"
