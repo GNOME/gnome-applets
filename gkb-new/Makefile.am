@@ -4,9 +4,14 @@ INCLUDES = -I. -I$(srcdir)                              \
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	@PIXBUF_CFLAGS@
 
+
 bin_PROGRAMS = gkb_applet
 
-gkb_applet_SOURCES= gkb.c
+gkb_applet_SOURCES = gkb.c gkb.h prop.c
+
+#lib_LTLIBRARIES=libgkb_applet.la
+
+#libgkb_applet_la_SOURCES= gkb.c gkb.h prop.c	
 
 gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
                        $(GNOME_LIBDIR) \
@@ -30,11 +35,11 @@ gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gkb_applet.gnorba
 
 gkb.presets: gkb.presets.in ../config.status
-	sed -e 's,\$\{prefix\},$(prefix),g' \
-	< $(srcdir)/gkb.presets.in > gkb.presets.tmp \ 
+	sed -e "s,\${prefix},$(prefix),g" \
+	< gkb.presets.in > gkb.presets.tmp \ 
 	&& mv gkb.presets.tmp gkb.presets
 
 gkb_xmmap: gkb_xmmap.in ../config.status
-	sed -e 's,\$\{prefix\},$(prefix),g' \
-	< $(srcdir)/gkb_xmmap.in > gkb_xmmap.tmp \ 
+	sed "s,'${prefix}',$(prefix),g" \
+        < gkb_xmmap.in >gkb_xmmap.tmp \
 	&& mv gkb_xmmap.tmp gkb_xmmap
