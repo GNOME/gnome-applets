@@ -3,9 +3,22 @@
 #include "gticker.h"
 #include "gticker.xpm"
 
-static AppData *create_gticker(GtkWidget *applet);
-static void start_new_applet(const gchar *param, gpointer data);
+static AppData *create_new_app(GtkWidget *applet);
 static int get_current_headlines(gpointer data);
+static int startup_delay_cb(gpointer data);
+static void start_new_applet(const gchar *param, gpointer data);
+static void destroy_applet(GtkWidget *widget, gpointer data);
+static void about_cb (AppletWidget *widget, gpointer data);
+static void show_article_window(AppletWidget *widget, gpointer data);	
+static void refresh_cb(AppletWidget *widget, gpointer data);
+static void destroy_article_window(GtkWidget *w, gpointer data);
+static void populate_article_window(AppData *ad);
+static void article_button_cb(GtkWidget *button, gpointer data);
+static void launch_url(AppData *ad, gchar *url);
+static gchar *check_for_dir(char *d);
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
+                                gchar *globcfgpath, gpointer data);
+
 
 int main(int argc, char *argv[])
 {
@@ -18,19 +31,19 @@ int main(int argc, char *argv[])
      applet = applet_widget_new();
      if (!applet)
              g_error("Can't create applet!\n");
-     create_new_applet(applet);
+     create_new_app(applet);
      applet_widget_gtk_main();
      return 0;
 }
 
-static AppData *create_gticker(GtkWidget *applet)
+static AppData *create_new_app(GtkWidget *applet)
 {
   AppData *appdata;
   appdata = g_new0(AppData, 1);
 
   appdata->applet = applet;
-  appdata->applet_window = NULL;
-  appdata->gtkicker_dir = check_for_dir(gnome_util_home_file("gticker"));
+  appdata->article_window = NULL;
+  appdata->gticker_dir = check_for_dir(gnome_util_home_file("gticker"));
 
   init_app_display(appdata);
   gtk_signal_connect(GTK_OBJECT(appdata->applet), "destroy",
@@ -57,7 +70,7 @@ static AppData *create_gticker(GtkWidget *applet)
 					"articles",
 					GNOME_STOCK_MENU_BOOK_OPEN,
 					_("Show Article Listing"),
-					article_window, appdata);
+					show_article_window, appdata);
   applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					"refresh",
 					GNOME_STOCK_MENU_REFRESH,
@@ -87,15 +100,10 @@ static int get_current_headlines(gpointer data)
   GtkWidget *icon;
   ghttp_request *req = ghttp_request_new();	
  
-  gchar http_server[128] = "slashdot.org"; /* If your domain is longer this.. */
+  gchar http_server[128] = "slashdot.org";
   gchar http_filename[128] = "/ultramode.txt";
-  gint http_port = 80;	/* blizzard: make gnome-http support various ports */
-    					/* Actually, a bit later, this will 
-					   check preferences to get these 
-					   values upon declaration */
+  gint http_port = 80;
   gchar final_url[334];
-  ghttp_set_uri(req, g_strconcat("http://", http_server, http_filename, NULL));
-  
   gchar buf[256];
   gchar headline[128];
   gchar url[128];
@@ -111,6 +119,8 @@ static int get_current_headlines(gpointer data)
   gchar *filename = g_strconcat(appdata->gticker_dir, "/gticker", NULL);
   gint delay = appdata->article_delay / 10 * (1000 / UPDATE_DELAY);
   
+  ghttp_set_uri(req, g_strconcat("http://", http_server, http_filename, NULL));
+  
   set_mouse_cursor(appdata, GDK_WATCH);
   while(gtk_events_pending())
     gtk_main_iteration();
@@ -124,6 +134,226 @@ static int get_current_headlines(gpointer data)
       return TRUE;
     }
 
-  fclocse(gticker_file); 
-
+  fclose(gticker_file); 
+  return TRUE;
 }
+
+static void destroy_applet(GtkWidget *widget, gpointer data)
+{
+        AppData *ad = data;
+        gtk_timeout_remove(ad->display_timeout_id);
+        gtk_timeout_remove(ad->headline_timeout_id);
+        if (ad->startup_timeout_id > 0) 
+			gtk_timeout_remove(ad->startup_timeout_id);
+        free_all_info_lines(ad);
+        gtk_widget_destroy(ad->display_w);
+        gtk_widget_destroy(ad->disp_buf_w);
+        gtk_widget_destroy(ad->background_w);
+        g_free(ad);
+}
+
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
+                                        gchar *globcfgpath, gpointer data)
+{
+        AppData *ad = data;
+        property_save(privcfgpath, ad);
+        return FALSE;
+}
+
+static void about_cb (AppletWidget *widget, gpointer data)
+{
+        GtkWidget *about;
+        const gchar *authors[8];
+        gchar version[32];
+        sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ, APPLET_VERSION_MIN, 
+			APPLET_VERSION_REV);
+        authors[0] = _("Justin Maurer <justin@openprojects.net>");
+        authors[1] = _("John Ellis <johne@bellatlantic.net>");
+	about = gnome_about_new ( _("GTicker"), version,_("(C) 1998"), authors,
+_("Ticker for the GNOME Project\n"), NULL);
+	gtk_widget_show (about);
+}
+
+static void show_article_window(AppletWidget *widget, gpointer data)
+{
+        AppData *ad = data;
+        if (ad->article_window)
+                {
+	                gdk_window_raise(ad->article_window->window);
+	                return;
+	        }
+
+	ad->article_window = gnome_dialog_new(_("GTicker Article List"),
+				                  GNOME_STOCK_BUTTON_CLOSE, 
+						  NULL);
+        gtk_widget_set_usize(ad->article_window, 400, 350);
+        ad->article_list = gtk_scrolled_window_new(NULL, NULL);
+        gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (ad->article_list),
+	                                GTK_POLICY_AUTOMATIC, 
+					GTK_POLICY_AUTOMATIC);
+        gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(ad->article_window)->vbox),
+        ad->article_list,TRUE,TRUE,0);
+        gtk_widget_show(ad->article_list);
+        gtk_object_set_user_data(GTK_OBJECT(ad->article_list), NULL);
+        gnome_dialog_set_close (GNOME_DIALOG(ad->article_window), TRUE);
+        gtk_signal_connect(GTK_OBJECT(ad->article_window), "destroy",
+                          (GtkSignalFunc) destroy_article_window, ad);
+        populate_article_window(ad);
+        gtk_widget_show(ad->article_window);
+}
+
+static void refresh_cb(AppletWidget *widget, gpointer data)
+{
+        AppData *ad = data;
+        if (ad->startup_timeout_id > 0) return;
+        ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
+}
+
+static void destroy_article_window(GtkWidget *w, gpointer data)
+{
+       AppData *ad = data;
+       ad->article_window = NULL;
+}
+
+static int startup_delay_cb(gpointer data)
+{
+        AppData *ad = data;
+        get_current_headlines(ad);
+        ad->startup_timeout_id = 0;
+        return FALSE;
+	/* return false to stop this timeout callback, needed only once */
+}
+
+static void populate_article_window(AppData *ad)
+{
+        GtkWidget *vbox;
+        GtkWidget *hbox;
+        GtkWidget *label;
+        GtkWidget *button;
+        GtkWidget *pixmap;
+        GList *list;
+        gint added = FALSE;
+ 
+	if (!ad->article_window) return;
+
+	vbox = gtk_object_get_user_data(GTK_OBJECT(ad->article_list));
+        if (vbox) gtk_widget_destroy(vbox);
+        vbox = gtk_vbox_new(FALSE, 5);
+	gtk_container_add(GTK_CONTAINER(ad->article_list), vbox);
+	gtk_widget_show(vbox);
+											gtk_object_set_user_data(GTK_OBJECT(ad->article_list), vbox);
+        list = ad->text;
+
+        while(list)
+                {
+	              InfoData *id = list->data;
+	                if (id && id->data && id->show_count == 0)
+                          {
+                            if (added)
+                               {
+                                 GtkWidget *sep = gtk_hseparator_new();
+                                 gtk_box_pack_start(GTK_BOX(vbox), sep, FALSE, 
+						 FALSE, 0);
+				 gtk_widget_show(sep);
+				}
+	                    hbox = gtk_hbox_new(FALSE, 5);
+	                    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, 
+					    FALSE, 0);
+			    gtk_widget_show(hbox);
+                            label = gtk_label_new(id->text);
+                            gtk_label_set_justify (GTK_LABEL(label), 
+					    GTK_JUSTIFY_LEFT);
+			    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, 
+					    FALSE, 5);
+			    gtk_widget_show(label);
+                            button = gtk_button_new();
+                            gtk_object_set_user_data(GTK_OBJECT(button), 
+					    id->data);
+		            gtk_signal_connect(GTK_OBJECT(button), "clicked",
+		            (GtkSignalFunc) article_button_cb, ad);
+		            gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, 
+					    FALSE, 5);
+			    gtk_widget_show(button);
+                            pixmap = gnome_stock_pixmap_widget_new(ad->
+					    article_window, 
+					    GNOME_STOCK_PIXMAP_JUMP_TO);
+                            gtk_container_add(GTK_CONTAINER(button), pixmap);
+	                    gtk_widget_show(pixmap);
+                            added = TRUE;
+                          }
+                list = list->next;
+                }
+        if (!added)
+                {
+	               hbox = gtk_hbox_new(FALSE, 5);
+	               gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	               gtk_widget_show(hbox);
+	               label = gtk_label_new(_("No articles"));
+	               gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 
+				       0);
+	               gtk_widget_show(label);
+										                }
+}
+
+static void article_button_cb(GtkWidget *button, gpointer data)
+{
+        AppData *ad = data;
+        gchar *url;
+        url = gtk_object_get_user_data(GTK_OBJECT(button));
+        launch_url(ad, url);
+}
+
+static void launch_url(AppData *ad, gchar *url)
+{
+        gchar *command;
+        char *argv[8];
+        int status;
+        if (ad->new_browser_window)
+	        command = g_strconcat("openURL(", url, ",new-window)", NULL);
+	else
+	        command = g_strconcat("openURL(", url, ")", NULL);
+        argv[0] = "netscape";
+        argv[1] = "-remote";
+        argv[2] = command;
+        argv[3] = NULL;
+
+	/* based on the web control applet */
+        if(fork() == 0)
+		{
+	          /* child  */
+        	  execvp (argv[0], argv);
+		}
+        else
+                {
+	          wait(&status);
+	          if(WEXITSTATUS(status) != 0)
+	              {
+	                /* command didn't work */
+			argv[0] = "netscape";
+		        argv[1] = url;
+		        argv[2] = NULL;
+		        if (gnome_execute_async (NULL, 2, argv) != 0)
+		   	     {
+				     printf("failed to start browser\n");
+			     }
+			}
+		}
+	g_free(command);
+}
+
+static gchar *check_for_dir(char *d)
+{
+        if (!g_file_exists(d))
+ 	       {
+		       g_print(_("creating user directory: %s\n"), d);
+		       if (mkdir( d, 0755 ) < 0)
+		         {
+		            g_print(_("unable to create user directory: 
+					    %s\n"), d);
+			    g_free(d);
+			    d = NULL;
+			 }
+										                }
+	return d;
+}
+

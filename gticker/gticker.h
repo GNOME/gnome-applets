@@ -75,7 +75,7 @@ struct _AppData
 	gint headline_timeout_id;
 	gint startup_timeout_id;
 
-	gchar *slashapp_dir;
+	gchar *gticker_dir;
 
 	gint show_images;
 	gint show_info;
