@@ -5,9 +5,11 @@ glade_DATA = battstat_applet.glade
 if HAVE_LIBAPM
 APMLIB =
 APMDIR =
+APMINC = 
 else
 APMLIB = apmlib/libapm.a
-APMDIR = -Iapmlib/
+APMDIR = apmlib
+APMINC = -Iapmlib/
 endif
 
 SUBDIRS = sounds $(APMDIR)
@@ -17,7 +19,7 @@ DIST_SUBDIRS = sounds apmlib
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
-	$(APMDIR) \
+	$(APMINC) \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
