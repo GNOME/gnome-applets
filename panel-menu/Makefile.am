@@ -1,5 +1,7 @@
 EXTRA_DIST = panel-menu-icon.png GNOME_PanelMenuApplet.server.in panel-menu.schemas
 
+SUBDIRS = help
+
 icondir  = $(datadir)/pixmaps
 icon_DATA = panel-menu-icon.png
 
