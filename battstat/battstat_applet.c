@@ -74,18 +74,6 @@ static const BonoboUIVerb battstat_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char battstat_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Battstat Properties Item\" verb=\"BattstatProperties\" _label=\"Properties ...\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Battstat Help Item\" verb=\"BattstatHelp\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Battstat About Item\" verb=\"BattstatAbout\" _label=\"About ...\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"   <menuitem name=\"Battstat Suspend Item\" verb=\"BattstatSuspend\" _label=\"Suspend Computer ...\"\n"
-	"             />\n"
-	"</popup>\n";
-
 int pixel_offset_top[]={ 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5 };
 int pixel_top_length[]={ 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2 };
 int pixel_offset_bottom[]={ 38, 38, 39, 39, 39, 39, 39, 39, 39, 39, 38, 38 };
@@ -1420,8 +1408,12 @@ battstat_applet_fill (PanelApplet *applet)
 #endif  
   gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->hbox1);
 
-  panel_applet_setup_menu (PANEL_APPLET (battstat->applet), 
-  			   battstat_menu_xml, battstat_menu_verbs, battstat);
+  panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet), 
+  			             NULL,
+                                     "GNOME_BattstatApplet.xml",
+                                     NULL,
+                                     battstat_menu_verbs,
+                                     battstat);
 
   return TRUE;
 }

@@ -48,6 +48,7 @@ battstat_applet_2_LDADD = \
 EXTRA_DIST = 				\
 	$(glade_DATA)			\
 	GNOME_BattstatApplet.server.in  \
+	GNOME_BattstatApplet.xml	\
 	battstat.schemas		\
 	battstat.png
 
@@ -60,6 +61,9 @@ install-data-local:
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_BattstatApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
+
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_BattstatApplet.xml
 
 @INTLTOOL_SERVER_RULE@
 
