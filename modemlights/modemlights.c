@@ -1421,7 +1421,8 @@ destroy_cb (GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (mldata->connect_dialog);
 	if (mldata->run_dialog)
 		gtk_widget_destroy (mldata->run_dialog);
-
+	if (mldata->tooltips)
+		g_object_unref (tooltips);
 	g_free (data);
 }
 
@@ -1437,6 +1438,8 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->applet = GTK_WIDGET (applet);
 	mldata->layout = LAYOUT_HORIZONTAL;
 	mldata->tooltips = gtk_tooltips_new ();
+	g_object_ref (mldata->tooltips);
+	gtk_object_sink (GTK_OBJECT (mldata->tooltips));
 	mldata->button_blinking = FALSE;
 	mldata->button_blink_on = 0;
 	mldata->button_blink_id = -1;
