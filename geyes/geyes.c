@@ -30,14 +30,14 @@ EyesApplet eyes_applet = {0};
 /* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
  * printer applet (thanks to Inigo Serna who pointed this code out to me) */
 static void 
-applet_set_default_back (GtkWidget *widget)
+applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
         GtkStyle *new_style;
-        new_style = gtk_style_new ();
+        new_style = gtk_rc_get_style (src);
         gtk_style_ref (new_style);
-        gtk_widget_set_style (widget, new_style);
+        gtk_widget_set_style (dest, new_style);
         gtk_style_unref (new_style);
-        gtk_widget_queue_draw (widget);
+        gtk_widget_queue_draw (dest);
 }
 
 static void
@@ -103,14 +103,19 @@ applet_back_change (GtkWidget *w,
                     PanelBackType type,
                     gchar *pixmap,
                     GdkColor *color,
-                    GtkWidget *widget) 
+                    EyesApplet *applet) 
 {
-        if (type == PANEL_BACK_PIXMAP) 
-                applet_set_back_pixmap (widget, pixmap);
-        else if (type == PANEL_BACK_COLOR) 
-                applet_set_back_color(widget, color);
-        else
-                applet_set_default_back (widget);
+	switch (type) {
+	case PANEL_BACK_PIXMAP:
+                applet_set_back_pixmap (applet->fixed, pixmap);
+		break;
+        case PANEL_BACK_COLOR:
+                applet_set_back_color(applet->fixed, color);
+		break;
+	default:
+                applet_set_default_back (applet->fixed, applet->hbox);
+		break;
+	}
 }
 
 /* TODO - Optimize this a bit */
@@ -288,7 +293,7 @@ create_eyes (void)
         
         gtk_signal_connect (GTK_OBJECT (eyes_applet.applet), "back_change", 
                             GTK_SIGNAL_FUNC (applet_back_change), 
-                            eyes_applet.fixed);
+                            &eyes_applet);
         
         eyes_applet.hbox = gtk_hbox_new (FALSE, FALSE);
         
