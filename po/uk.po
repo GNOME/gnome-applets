@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.4.1\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2004-03-13 20:05+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-04 15:18+0300\n"
+"PO-Revision-Date: 2004-08-04 20:05+0200\n"
 "Last-Translator: Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -29,8 +29,8 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
-msgid "_About..."
-msgstr "_Про програму..."
+msgid "_About"
+msgstr "_Про програму"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
@@ -50,14 +50,14 @@ msgstr "_Довідка"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:3
 msgid "_Keyboard Accessibility Preferences"
-msgstr "Настройка спеціальних можливостей _клавіатури"
+msgstr "Параметри спеціальних можливостей _клавіатури"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:1
 msgid "AccessX Status Applet Factory"
 msgstr "Фабрика аплету стану AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1332
 msgid "Keyboard Accessibility Status"
 msgstr "Стан спеціальних можливостей клавіатури"
 
@@ -73,65 +73,77 @@ msgstr "Показує стан спеціальних можливостей м
 #: battstat/GNOME_BattstatApplet.server.in.in.h:4
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 msgid "Utility"
 msgstr "Утиліти"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
-#: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
-#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
-#: mini-commander/src/about.c:50 mixer/mixer.c:1332
-#: modemlights/modemlights.c:115 multiload/main.c:60
-#: stickynotes/stickynotes_applet_callbacks.c:230
-#: wireless/wireless-applet.c:572
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:996
+#: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
+#: mini-commander/src/about.c:50 mixer/mixer.c:1350
+#: modemlights/modemlights.c:118 multiload/main.c:60
+#: stickynotes/stickynotes_applet_callbacks.c:243
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "Юрій Сирота <yuri@beer.com>\n"
 "Максим Дзюманенко <mvd@mylinux.com.ua>"
 
-#: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:157 accessx-status/applet.c:992
+#: accessx-status/applet.c:1132 accessx-status/applet.c:1335
 msgid "AccessX Status"
 msgstr "Стан AccessX"
 
-#: accessx-status/applet.c:156
+#: accessx-status/applet.c:158
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Авторське право © 2003, Sun Microsystems"
 
-#: accessx-status/applet.c:157
+#: accessx-status/applet.c:159
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Показує стан особливостей AccessX, наприклад, увімкнутих модифікаторів"
 
-#: accessx-status/applet.c:193
+#: accessx-status/applet.c:195
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Помилка при запуску переглядача довідки: %s"
 
-#: accessx-status/applet.c:228
+#: accessx-status/applet.c:234
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Помилка при запуску каплета клавіатури: %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:474 accessx-status/applet.c:512
+#: accessx-status/applet.c:483 accessx-status/applet.c:521
 msgid "a"
 msgstr "а"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:993 accessx-status/applet.c:1133
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "Показує стан клавіатури при використанні спеціальних можливостей"
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1027
+msgid "XKB Extenstion is not enabled"
+msgstr "XKB розширення не ввімкнено"
+
+#: accessx-status/applet.c:1032
+msgid "Unknown error"
+msgstr "Невідома помилка"
+
+#: accessx-status/applet.c:1040
+#, c-format
+msgid "Error: %s"
+msgstr "Помилка: %s"
+
+#: accessx-status/applet.c:1337
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Відображає поточний стан спеціальних можливостей клавіатури"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
+#: battstat/battstat_applet.c:1017 battstat/battstat_applet.c:1770
 msgid "Battery Charge Monitor"
 msgstr "Монітор зарядження батареї"
 
@@ -140,7 +152,7 @@ msgid "Battstat Factory"
 msgstr "Фабрика стану батареї"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1672
+#: battstat/battstat_applet.c:1771
 msgid "Monitor a laptop's remaining power"
 msgstr "Слідкує за зарядом батареї портативного комп'ютера"
 
@@ -156,8 +168,8 @@ msgstr "Слідкує за зарядом батареї портативног
 #: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "Н_астройка..."
+msgid "_Preferences"
+msgstr "П_араметри"
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
@@ -241,49 +253,71 @@ msgstr "Рівень жовтого кольору"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:338
+#: battstat/battstat_applet.c:340
 msgid "Your platform is not supported!\n"
 msgstr "Ваша платформа не підтримується!\n"
 
-#: battstat/battstat_applet.c:339
+#: battstat/battstat_applet.c:341
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Аплет не працюватиме належним чином (якщо взагалі працюватиме).\n"
+
+#: battstat/battstat_applet.c:358
+msgid "charged"
+msgstr "заряджений"
+
+#: battstat/battstat_applet.c:360
+msgid "..."
+msgstr "..."
+
+#: battstat/battstat_applet.c:362
+#, c-format
+msgid "%d hours %d minutes remaining"
+msgstr "залишилось %d годин %d хвилин"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1054
 msgid "High"
-msgstr "Заряджено"
+msgstr "Заряджений"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1056
 msgid "Low"
-msgstr "Розряджено"
+msgstr "Розряджений"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1058
 msgid "Critical"
 msgstr "Критичний рівень"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1060
 msgid "Charging"
 msgstr "Заряджається"
 
-#: battstat/battstat_applet.c:457
+#: battstat/battstat_applet.c:482
 #, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Батарея розряджена (%d%%), та мережа змінного струму відімкнена"
+msgid ""
+"Your battery is running low (%d%%, %s). You should recharge your battery to "
+"avoid losing your work."
+msgstr ""
+"Ваша батарея має низький рівень зарядження (%d%%, %s). Необхідно перезарядити батарею, "
+"для запобігання втрати вашої роботи."
 
-#: battstat/battstat_applet.c:481
-msgid "Battery is now fully re-charged!"
-msgstr "Батарею повністю перезаряджено!"
+#: battstat/battstat_applet.c:485 battstat/battstat_applet.c:532
+msgid "Battery Notice"
+msgstr "Інформація про батарею"
 
+#: battstat/battstat_applet.c:551
+msgid "Your battery is now fully recharged."
+msgstr "Батарею повністю перезаряджено."
+
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
+#: battstat/battstat_applet.c:595 battstat/battstat_applet.c:1211
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -292,10 +326,11 @@ msgstr ""
 "Система працює від батареї\n"
 "Батарея: %d%% (%s)"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
+#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1218
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -304,34 +339,43 @@ msgstr ""
 "Система працює від мережі змінного струму\n"
 "Батарея: %d%% (%s)"
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
-#: battstat/battstat_applet.c:1141
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1231
 msgid "System is running on battery power"
 msgstr "Система працює від батареї"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
-#: battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:605 battstat/battstat_applet.c:1149
+#: battstat/battstat_applet.c:1236
 msgid "System is running on AC power"
 msgstr "Система працює від мережі змінного струму"
 
-#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:620 wireless/wireless-applet.c:148
+#: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "Н/Д"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:753 battstat/battstat_applet.c:1125
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Система працює від батареї. Батарея: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:758 battstat/battstat_applet.c:1131
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Система працює від мережі змінного струму. Батарея: %d%% (%s)"
@@ -340,33 +384,33 @@ msgstr "Система працює від мережі змінного стр�
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:669
+#: battstat/battstat_applet.c:767
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Система працює від батареї. Батарея: немає даних"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:675
+#: battstat/battstat_applet.c:772
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Система працює від мережі змінного струму. Батарея: відсутня"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:684
+#. contains a string of the time remaining
+#: battstat/battstat_applet.c:780
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Батарея: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:691
+#: battstat/battstat_applet.c:785
 msgid "Battery: Not present"
 msgstr "Батарея: відсутня"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:789
+#: battstat/battstat_applet.c:887
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -379,7 +423,7 @@ msgstr ""
 "зчитування з пристрою APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:896
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -389,7 +433,7 @@ msgstr ""
 "Спробуйте виконати \"apm -e 1\" (FreeBSD), це\n"
 "може допомогти.\n"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:952
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -398,39 +442,39 @@ msgstr ""
 "Помилка на виконанні команди призупинення: %s\n"
 "Спробуйте виправити цю помилку"
 
-#: battstat/battstat_applet.c:858
+#: battstat/battstat_applet.c:956
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Команда призупинення '%s' завершилась з помилкою."
 
-#: battstat/battstat_applet.c:860
+#: battstat/battstat_applet.c:958
 msgid "The Suspend command was unsuccessful."
 msgstr "Команда призупинення завершилась з помилкою."
 
-#: battstat/battstat_applet.c:868
+#: battstat/battstat_applet.c:966
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
 msgstr ""
-"Команду призупинення не було правильно визначено в настройках.\n"
+"Команду призупинення не було правильно визначено в параметрах.\n"
 "Змініть параметри і спробуйте знову."
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:886
+#: battstat/battstat_applet.c:984
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:921
+#: battstat/battstat_applet.c:1019
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr ""
 "© 2000 The Gnulix Society, © 2002 Фундація вільного програмного забезпечення"
 
-#: battstat/battstat_applet.c:922
+#: battstat/battstat_applet.c:1020
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ця утиліта показує стан батареї вашого комп'ютера."
 
-#: battstat/battstat_applet.c:1597
+#: battstat/battstat_applet.c:1696
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -476,17 +520,17 @@ msgstr "<b>Призупинення</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Попередження</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1514
 msgid "Appearance"
 msgstr "Вигляд"
 
 #: battstat/battstat_applet.glade.h:12
 msgid "Battery Charge Monitor Preferences"
-msgstr "Настройки монітора заряджання батареї"
+msgstr "Параметри монітора заряджання батареї"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
+#: gweather/gweather-pref.c:1045 mailcheck/mailcheck.c:2056
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Загальне"
 
@@ -542,15 +586,23 @@ msgstr "Сповіщати про _розрядження батареї"
 msgid "_Yellow:"
 msgstr "_Жовтий:"
 
-#: battstat/properties.c:297 drivemount/drivemount.c:510
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
-#: stickynotes/stickynotes_applet_callbacks.c:371
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: battstat/properties.c:291 drivemount/drivemount.c:510
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
+#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:365
+#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
+#: stickynotes/stickynotes_applet_callbacks.c:384
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Помилка при відображенні довідки: %s"
+
+#: battstat/properties.c:494
+msgid "Progress Bar Direction Moves towards top"
+msgstr "Напрямок перебігу направлений вгору"
+
+#: battstat/properties.c:504
+msgid "Progress Bar Direction Moves towards bottom"
+msgstr "Напрямок перебігу направлений вниз"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -564,8 +616,8 @@ msgstr "Батарею повністю перезаряджено"
 msgid "Battery power low"
 msgstr "Батарея розряджена"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:620
-#: cdplayer/cdplayer.c:1084
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:615
+#: cdplayer/cdplayer.c:1117
 msgid "CD Player"
 msgstr "Програвач компакт-дисків"
 
@@ -590,61 +642,61 @@ msgstr "Аплет для програвання музичних компакт
 msgid "_Open CD Player"
 msgstr "Від_крити програвач компакт-дисків"
 
-#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1074
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1107
 msgid "Stop"
 msgstr "Зупинити"
 
-#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1076
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1109
 msgid "Play / Pause"
 msgstr "Грати / пауза"
 
-#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1078
+#: cdplayer/cdplayer.c:191 cdplayer/cdplayer.c:1111
 msgid "Eject"
 msgstr "Витягнути"
 
-#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1080
+#: cdplayer/cdplayer.c:195 cdplayer/cdplayer.c:1113
 msgid "Previous Track"
 msgstr "Попередня доріжка"
 
-#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1082
+#: cdplayer/cdplayer.c:199 cdplayer/cdplayer.c:1115
 msgid "Next Track"
 msgstr "Наступна доріжка"
 
-#: cdplayer/cdplayer.c:253
+#: cdplayer/cdplayer.c:258
 msgid "You do not have permission to use the CD player."
 msgstr "Ви не маєте прав, для використання програвача компакт-дисків."
 
-#: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1317 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Помилка при виконанні \"%s\": %s"
 
-#: cdplayer/cdplayer.c:436
+#: cdplayer/cdplayer.c:431
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "Схоже, %s не є програвачем компакт-дисків"
 
-#: cdplayer/cdplayer.c:502
+#: cdplayer/cdplayer.c:497
 msgid "CD Player Preferences"
-msgstr "Настройки програвача компакт-дисків"
+msgstr "Параметри програвача компакт-дисків"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:518
 msgid "Device _path:"
 msgstr "_Шлях пристрою:"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:527
 msgid "Device Path"
 msgstr "Шлях пристрою"
 
-#: cdplayer/cdplayer.c:532
+#: cdplayer/cdplayer.c:527
 msgid "Set the device path here"
 msgstr "Вкажіть тут шлях до пристрою"
 
-#: cdplayer/cdplayer.c:535
+#: cdplayer/cdplayer.c:530
 msgid "Use _Default"
 msgstr "_Типовий"
 
-#: cdplayer/cdplayer.c:621
+#: cdplayer/cdplayer.c:616
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -652,42 +704,46 @@ msgstr ""
 "© 1997 Фундація Вільного Програмного Забезпечення\n"
 "© 2001 Chris Phelps (перенесення на GNOME 2)"
 
-#: cdplayer/cdplayer.c:623 cdplayer/cdplayer.c:1085
+#: cdplayer/cdplayer.c:618 cdplayer/cdplayer.c:1118
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "Аплет програвача компакт-дисків - це маленький програвач аудіо-дисків для "
 "вашої панелі"
 
-#: cdplayer/cdplayer.c:899 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:895 cdplayer/cdplayer.c:906
 msgid "Elapsed time"
 msgstr "Витрачений час"
 
-#: cdplayer/cdplayer.c:902 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:898 cdplayer/cdplayer.c:908
 msgid "Track number"
 msgstr "Номер доріжки"
 
-#: cdplayer/cdplayer.c:973
+#: cdplayer/cdplayer.c:977
 msgid "Audio device is busy, or being used by another application"
 msgstr "Звуковий пристрій зайнятий, або використовується іншою програмою"
 
-#: cdplayer/cdplayer.c:1075
+#: cdplayer/cdplayer.c:1004
+msgid "No Device Found or Illegal Format"
+msgstr "Пристрої відсутні або неправильний формат"
+
+#: cdplayer/cdplayer.c:1108
 msgid "Click this button to Stop playing the CD"
 msgstr "Натисніть цю кнопку, щоб зупинити програвання компакт-диска"
 
-#: cdplayer/cdplayer.c:1077
+#: cdplayer/cdplayer.c:1110
 msgid "Click this button to Play or Pause the CD"
 msgstr ""
 "Натисніть цю кнопку для програвання чи призупинення програвання компакт-диска"
 
-#: cdplayer/cdplayer.c:1079
+#: cdplayer/cdplayer.c:1112
 msgid "Click this button to eject the CD"
 msgstr "Натисніть цю кнопку, щоб витягнути компакт-диск"
 
-#: cdplayer/cdplayer.c:1081
+#: cdplayer/cdplayer.c:1114
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Натисніть цю кнопку для переходу на попередню доріжку"
 
-#: cdplayer/cdplayer.c:1083
+#: cdplayer/cdplayer.c:1116
 msgid "Click this button to Play the next track in the CD"
 msgstr "Натисніть цю кнопку для переходу на наступну доріжку"
 
@@ -703,8 +759,8 @@ msgstr ""
 "Це повний шлях до пристрою, який використовуватиметься для програвання "
 "компакт-дисків з цього аплету."
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:576
-#: charpick/charpick.c:727 charpick/properties.c:425
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:583
+#: charpick/charpick.c:737 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Палітра символів"
 
@@ -712,7 +768,7 @@ msgstr "Палітра символів"
 msgid "Charpicker Applet Factory"
 msgstr "Фабрика аплету вибору символів"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:727
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:737
 msgid "Insert characters"
 msgstr "Вставка символів"
 
@@ -720,25 +776,30 @@ msgstr "Вставка символів"
 msgid "Available palettes"
 msgstr "Наявні палітри"
 
-#: charpick/charpick.c:456
+#: charpick/charpick.c:454
+#, c-format
+msgid "insert special character %s"
+msgstr "вставити спеціальний символ %s"
+
+#: charpick/charpick.c:459
 msgid "Insert special characters"
 msgstr "Вставити спеціальні символи"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:545
+#: charpick/charpick.c:552
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:546
+#: charpick/charpick.c:553
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:578
+#: charpick/charpick.c:585
 msgid "Copyright (C) 1998"
 msgstr "Авторське право © 1998"
 
-#: charpick/charpick.c:579
+#: charpick/charpick.c:586
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -748,13 +809,13 @@ msgstr ""
 
 #: charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
-msgstr "Символи, що показуватимуться після запуску"
+msgstr "Символи, що відображаються після запуску"
 
 #: charpick/charpick.schemas.in.h:2
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "НЕ РЕКОМЕНДУЮТЬСЯ - Символи, що показуватимуться після запуску"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:352
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:376
 msgid "List of available palettes"
 msgstr "Список наявних палітр"
 
@@ -770,61 +831,65 @@ msgstr ""
 "Рядок, який вибрав користувач під час останнього використання аплету. Цей "
 "рядок відображатиметься після наступного запуску."
 
-#: charpick/properties.c:90
+#: charpick/properties.c:24
+msgid "_Edit"
+msgstr "_Правка"
+
+#: charpick/properties.c:113
 msgid "_Palette:"
 msgstr "_Палітра:"
 
-#: charpick/properties.c:98
+#: charpick/properties.c:121
 msgid "Palette entry"
 msgstr "Поле палітри"
 
-#: charpick/properties.c:99
+#: charpick/properties.c:122
 msgid "Modify a palette by adding or removing characters"
 msgstr "Змініть палітру додаючи чи забираючи символи"
 
-#: charpick/properties.c:213
+#: charpick/properties.c:236
 msgid "Add Palette"
 msgstr "Додавання палітри"
 
-#: charpick/properties.c:250
+#: charpick/properties.c:273
 msgid "Edit Palette"
-msgstr "Редагувати палітру"
+msgstr "Правка палітри"
 
-#: charpick/properties.c:351
+#: charpick/properties.c:375
 msgid "Palettes list"
 msgstr "Список палітр"
 
-#: charpick/properties.c:430
-msgid "Pal_ettes:"
+#: charpick/properties.c:454
+msgid "_Palettes:"
 msgstr "_Палітри:"
 
-#: charpick/properties.c:446
+#: charpick/properties.c:470
 msgid "Add button"
 msgstr "Додати"
 
-#: charpick/properties.c:447
+#: charpick/properties.c:471
 msgid "Click to add a new palette"
 msgstr "Натисніть кнопку для додавання нової палітри"
 
-#: charpick/properties.c:454
+#: charpick/properties.c:478
 msgid "Edit button"
 msgstr "Змінити"
 
-#: charpick/properties.c:455
+#: charpick/properties.c:479
 msgid "Click to edit the selected palette"
 msgstr "Клацніть для зміни вибраної палітри"
 
-#: charpick/properties.c:462
+#: charpick/properties.c:486
 msgid "Delete button"
 msgstr "Видалити"
 
-#: charpick/properties.c:463
+#: charpick/properties.c:487
 msgid "Click to delete the selected palette"
 msgstr "Клацніть для видалення вибраної палітри"
 
-#: charpick/properties.c:515
+#: charpick/properties.c:539
 msgid "Character Palette Preferences"
-msgstr "Настройки палітри символів"
+msgstr "Параметри палітри символів"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
 #: drivemount/drivemount.c:268 drivemount/drivemount.c:572
@@ -844,14 +909,14 @@ msgid "Mount local disks and devices"
 msgstr "Підключення локальних дисків і пристроїв"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "_Browse..."
-msgstr "Пере_глянути..."
+msgid "_Browse"
+msgstr "О_гляд"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
 msgstr "Ви_тягти"
 
-#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:661
+#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:662
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Помилка виконання \"%s\": %s"
@@ -861,7 +926,7 @@ msgid "Cannot browse device"
 msgstr "Не вдається переглянути пристрій"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2620
 msgid "Error displaying help"
 msgstr "Помилка відображення довідки"
 
@@ -873,19 +938,19 @@ msgstr "© 1999-2001, Хакери GNOME\n"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Аплет для підключення та відключення блочних томів."
 
-#: drivemount/drivemount.c:777
+#: drivemount/drivemount.c:781
 msgid " mounted"
 msgstr " підключено"
 
-#: drivemount/drivemount.c:779
+#: drivemount/drivemount.c:783
 msgid " not mounted"
 msgstr " відключено"
 
-#: drivemount/drivemount.c:891
+#: drivemount/drivemount.c:895
 msgid "\" reported:\n"
 msgstr "\" повідомлення:\n"
 
-#: drivemount/drivemount.c:893
+#: drivemount/drivemount.c:897
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -893,7 +958,7 @@ msgstr ""
 "Помилка при виконанні команди підключення тому.\n"
 "\""
 
-#: drivemount/drivemount.c:899
+#: drivemount/drivemount.c:903
 msgid "Cannot mount device"
 msgstr "Не вдається підключити пристрій"
 
@@ -907,7 +972,7 @@ msgstr "Час, в секундах, між оновленнями стану"
 
 #: drivemount/properties.c:336
 msgid "Disk Mounter Preferences"
-msgstr "Настройки підключення дисків"
+msgstr "Параметри підключення дисків"
 
 #: drivemount/properties.c:364
 msgid "_Mount directory:"
@@ -921,8 +986,8 @@ msgstr "Вибір каталогу підключення"
 msgid "_Update interval:"
 msgstr "Період _оновлення:"
 
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2118
-#: mailcheck/mailcheck.c:2124 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2127
+#: mailcheck/mailcheck.c:2133 modemlights/properties.c:468
 msgid "seconds"
 msgstr "с"
 
@@ -935,11 +1000,11 @@ msgid "Floppy"
 msgstr "Дискета"
 
 #: drivemount/properties.c:457
-msgid "Cdrom"
-msgstr "Пристрій CD"
+msgid "CD-ROM"
+msgstr "Компакт-диск"
 
 #: drivemount/properties.c:460
-msgid "Cd Recorder"
+msgid "CD Recorder"
 msgstr "Пристрій запису CD"
 
 #: drivemount/properties.c:463
@@ -983,11 +1048,11 @@ msgid "_Scale size to panel"
 msgstr "_Масштабувати розмір до розміру панелі"
 
 #: drivemount/properties.c:552
-msgid "_Eject disk when unmounting"
+msgid "_Eject disk when unmounted"
 msgstr "Ви_тягувати диск після відключення"
 
 #: drivemount/properties.c:562
-msgid "Use _automount friendly status test"
+msgid "Use _automount-friendly status test"
 msgstr "Сумісна з _automount перевірка стану"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:1
@@ -1031,922 +1096,1368 @@ msgstr "Не вдається запустити аплет \"Очі\"."
 msgid "There was a fatal error while trying to load the theme."
 msgstr "Фатальна помилка при спробі завантажити тему."
 
-#: geyes/themes.c:294
+#: geyes/themes.c:295
 msgid "Geyes Preferences"
-msgstr "Настройки аплету Очі"
+msgstr "Параметри аплету Очі"
 
-#: geyes/themes.c:326
+#: geyes/themes.c:330
 msgid "Themes"
 msgstr "Теми"
 
-#: geyes/themes.c:347
+#: geyes/themes.c:351
 msgid "_Select a theme:"
 msgstr "_Виберіть тему:"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
-msgid "Change the keyboard layout"
-msgstr "Зміна розкладки клавіатури"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
-msgid "GKB Factory"
-msgstr "Фабрика GKB"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
-#: gkb-new/gkb-applet.c:95
-msgid "Keyboard Layout Switcher"
-msgstr "Перемикач розкладок клавіатури"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
-msgid "Produces keyboard layout switcher applets."
-msgstr "Створює аплети перемикачів розкладок клавіатури."
-
-#: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Armenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
 msgstr "Вірменія"
 
-#: gkb-new/descs.sun/presets.xml.in.h:2 gkb-new/descs/presets.xml.in.h:6
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Armenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:6
 msgid "Armenian"
 msgstr "Вірменська"
 
-#: gkb-new/descs.sun/presets.xml.in.h:3
-msgid "Armenian Sun keymap"
-msgstr "Вірменська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaijan"
-msgstr "Азербайджан"
-
-#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaijani Turkish"
-msgstr "Азербайджанська турецька"
-
-#: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Азербайджанська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
-msgid "Belarus"
-msgstr "Білорусь"
-
-#: gkb-new/descs.sun/presets.xml.in.h:8 gkb-new/descs/presets.xml.in.h:15
-msgid "Belarussian"
-msgstr "Білоруська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarussian Sun keymap"
-msgstr "Білоруська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
-msgid "Belgium"
-msgstr "Бельгія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:11 gkb-new/descs/presets.xml.in.h:19
-msgid "Brazil"
-msgstr "Бразилія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:12
-msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Бразильська португальська від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:13
-msgid "Brazil Portuguese Sun keymap"
-msgstr "Бразильська португальська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
-msgid "Bulgaria"
-msgstr "Болгарія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:15 gkb-new/descs/presets.xml.in.h:23
-msgid "Bulgarian"
-msgstr "Болгарська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:16
-msgid "Bulgarian Sun keymap"
-msgstr "Болгарська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
-msgid "Canada"
-msgstr "Канада"
-
-#: gkb-new/descs.sun/presets.xml.in.h:18
-msgid "Canadian Sun keymap"
-msgstr "Канадська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
-msgid "Czech"
-msgstr "Чеська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:20 gkb-new/descs/presets.xml.in.h:34
-msgid "Czech Republic"
-msgstr "Чехія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:21
-msgid "Czech Sun keymap"
-msgstr "Чеська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
-msgid "Danish"
-msgstr "Датська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:23
-msgid "Danish Sun Type-4 keymap"
-msgstr "Датська Type-4 від Sun "
-
-#: gkb-new/descs.sun/presets.xml.in.h:24
-msgid "Danish Sun USB keymap"
-msgstr "Датська від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:25
-msgid "Danish Sun keymap"
-msgstr "Датська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
-msgid "Denmark"
-msgstr "Данія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:27 gkb-new/descs/presets.xml.in.h:43
-msgid "Dutch"
-msgstr "Голландська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:28
-msgid "Dutch Sun keymap"
-msgstr "Голландська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
-msgid "English"
-msgstr "Англійська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:30
-msgid "English Sun Type-4 keymap"
-msgstr "Англійська Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:31
-msgid "English Sun USB keymap"
-msgstr "Англійська від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:32
-msgid "English Sun keymap"
-msgstr "Англійська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
-msgid "Estonia"
-msgstr "Естонія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:34 gkb-new/descs/presets.xml.in.h:51
-msgid "Estonian"
-msgstr "Естонська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:35
-msgid "Estonian Sun keymap"
-msgstr "Естонська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
-msgid "Finland"
-msgstr "Фінляндія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
-msgid "Finnish"
-msgstr "Фінська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:38
-msgid "Finnish Sun keymap"
-msgstr "Фінська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
-msgid "France"
-msgstr "Франція"
-
-#: gkb-new/descs.sun/presets.xml.in.h:40 gkb-new/descs/presets.xml.in.h:61
-msgid "French"
-msgstr "Французька"
-
-#: gkb-new/descs.sun/presets.xml.in.h:41
-msgid "French Sun USB keymap"
-msgstr "Французька від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:42
-msgid "French Sun keymap"
-msgstr "Французька від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
-msgid "German"
-msgstr "Німецька"
-
-#: gkb-new/descs.sun/presets.xml.in.h:44
-msgid "German Sun Type-4 keymap"
-msgstr "Німецька Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:45
-msgid "German Sun USB keymap"
-msgstr "Німецька від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:46
-msgid "German Sun keymap"
-msgstr "Німецька від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
-msgid "Germany"
-msgstr "Німеччина"
-
-#: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
-msgid "Gnome Keyboard default"
-msgstr "Типова клавіатура GNOME"
-
-#: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
-msgid "Hebrew"
-msgstr "Єврейська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:50
-msgid "Hebrew Sun keymap"
-msgstr "Єврейська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
-msgid "Hungarian"
-msgstr "Угорська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:52
-msgid "Hungarian latin2 Sun keymap"
-msgstr "Угорська latin2 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:53
-msgid "Hungarian type5 latin 1 keymap"
-msgstr "Угорська type5 latin1"
-
-#: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
-msgid "Hungary"
-msgstr "Угорщина"
-
-#: gkb-new/descs.sun/presets.xml.in.h:55 gkb-new/descs/presets.xml.in.h:97
-msgid "Iceland"
-msgstr "Ісландія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:56 gkb-new/descs/presets.xml.in.h:98
-msgid "Icelandic"
-msgstr "Ісландська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:57
-msgid "Icelandic Sun keymap"
-msgstr "Ісландська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
-msgid "International"
-msgstr "Міжнародна"
-
-#: gkb-new/descs.sun/presets.xml.in.h:59 gkb-new/descs/presets.xml.in.h:103
-msgid "Israel"
-msgstr "Ізраїль"
-
-#: gkb-new/descs.sun/presets.xml.in.h:60 gkb-new/descs/presets.xml.in.h:104
-msgid "Italian"
-msgstr "Італійська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:61
-msgid "Italian Sun Type-4 keymap"
-msgstr "Італійська Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:62
-msgid "Italian Sun USB keymap"
-msgstr "Італійська від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:63
-msgid "Italian Sun keymap"
-msgstr "Італійська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
-msgid "Italy"
-msgstr "Італія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:65 gkb-new/descs/presets.xml.in.h:108
-msgid "Japan"
-msgstr "Японія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:66 gkb-new/descs/presets.xml.in.h:109
-msgid "Japanese"
-msgstr "Японська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:67
-msgid "Japanese Sun Type-4 keymap"
-msgstr "Японська Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:68
-msgid "Japanese Sun keymap"
-msgstr "Японська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:69
-msgid "Latvia"
-msgstr "Латвія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:70
-msgid "Latvian"
-msgstr "Латвійська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:71
-msgid "Latvian Sun keymap"
-msgstr "Латвійська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
-msgid "Lithuania"
-msgstr "Литва"
-
-#: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
-msgid "Lithuanian"
-msgstr "Литовська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:74
-msgid "Lithuanian Sun keymap"
-msgstr "Литовська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
-msgid "Macedonia"
-msgstr "Македонія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:76 gkb-new/descs/presets.xml.in.h:126
-msgid "Macedonian"
-msgstr "Македонська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:77
-msgid "Macedonian Sun keymap"
-msgstr "Македонська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
-msgid "Norway"
-msgstr "Норвегія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:137
-msgid "Norwegian"
-msgstr "Норвезька"
-
-#: gkb-new/descs.sun/presets.xml.in.h:80
-msgid "Norwegian Sun keymap"
-msgstr "Норвезька від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
-msgid "Poland"
-msgstr "Польща"
-
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:143
-msgid "Polish"
-msgstr "Польська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:83
-msgid "Polish Sun keymap"
-msgstr "Польська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
-msgid "Portugal"
-msgstr "Португалія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:85 gkb-new/descs/presets.xml.in.h:148
-msgid "Portuguese"
-msgstr "Португальська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:86
-msgid "Portuguese Sun Type-4 keymap"
-msgstr "Португальська Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:87
-msgid "Portuguese Sun keymap"
-msgstr "Португальська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
-msgid "Romania"
-msgstr "Румунія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:89 gkb-new/descs/presets.xml.in.h:153
-msgid "Romanian"
-msgstr "Румунська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:90
-msgid "Romanian Sun keymap"
-msgstr "Румунська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
-msgid "Russia"
-msgstr "Росія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:92 gkb-new/descs/presets.xml.in.h:156
-msgid "Russian"
-msgstr "Російська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:93
-msgid "Russian Sun keymap"
-msgstr "Російська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:94
-msgid "Serbian Sun standard keymap"
-msgstr "Сербська стандартна від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:95
-msgid "Serbo-Croatian"
-msgstr "Сербо-хорватська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:166
-msgid "Slovak"
-msgstr "Словацька"
-
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
-msgid "Slovak Republic"
-msgstr "Словакія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:98
-msgid "Slovak Sun keymap"
-msgstr "Словацька від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
-msgid "Slovenia"
-msgstr "Словенія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:170
-msgid "Slovenian"
-msgstr "Словенська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:101
-msgid "Slovenian Sun keymap"
-msgstr "Словенська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
-msgid "Spain"
-msgstr "Іспанія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:175
-msgid "Spanish"
-msgstr "Іспанська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:104
-msgid "Spanish Sun Type-4 keymap"
-msgstr "Іспанська Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:105
-msgid "Spanish Sun USB keymap"
-msgstr "Іспанська від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:106
-msgid "Spanish Sun keymap"
-msgstr "Іспанська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
-msgid "Sweden"
-msgstr "Швеція"
-
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:182
-msgid "Swedish"
-msgstr "Шведська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:109
-msgid "Swedish Sun Type-4 keymap"
-msgstr "Шведська Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:110
-msgid "Swedish Sun USB keymap"
-msgstr "Шведська від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:111
-msgid "Swedish Sun keymap"
-msgstr "Шведська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:112
-msgid "Swiss German Sun keymap"
-msgstr "Швейцарська німецька від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
-msgid "Switzerland"
-msgstr "Швейцарія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:190
-msgid "Thai"
-msgstr "Тайська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:115
-msgid "Thai Sun keymap"
-msgstr "Тайська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
-msgid "Thailand"
-msgstr "Таїланд"
-
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:196
-msgid "Turkey"
-msgstr "Туреччина"
-
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:197
-msgid "Turkish"
-msgstr "Турецька"
-
-#: gkb-new/descs.sun/presets.xml.in.h:119
-msgid "Turkish Sun keymap"
-msgstr "Турецька від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:120
-msgid "US Sun Type-4 keyboard"
-msgstr "США Type-4 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:121
-msgid "US Sun USB keyboard"
-msgstr "США від Sun для USB"
-
-#: gkb-new/descs.sun/presets.xml.in.h:122
-msgid "US Sun type5 keyboard"
-msgstr "США Type-5 від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
-msgid "Ukraine"
-msgstr "Україна"
-
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:217
-msgid "Ukrainian"
-msgstr "Українська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:125
-msgid "Ukrainian Sun keymap"
-msgstr "Українська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
-msgid "United Kingdom"
-msgstr "Велика Британія"
-
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:222
-msgid "United States"
-msgstr "США"
-
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
-msgid "Vietnam"
-msgstr "В'єтнам"
-
-#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
-msgid "Vietnamese"
-msgstr "В'єтнамська"
-
-#: gkb-new/descs.sun/presets.xml.in.h:130
-msgid "Vietnamese Sun keymap"
-msgstr "В'єтнамська від Sun"
-
-#: gkb-new/descs.sun/presets.xml.in.h:131
-msgid "Yugoslavia"
-msgstr "Югославія"
-
-#: gkb-new/descs/presets.xml.in.h:1
-msgid "Algeria"
-msgstr "Алжир"
-
-#: gkb-new/descs/presets.xml.in.h:2
-msgid "Arabic"
-msgstr "Арабська"
-
-#: gkb-new/descs/presets.xml.in.h:3
-msgid "Arabic keymap"
-msgstr "Арабська"
-
-#: gkb-new/descs/presets.xml.in.h:4
-msgid "Arabic xkb keymap"
-msgstr "Арабська для XKB"
-
+#: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:7
 msgid "Armenian xkb keymap"
 msgstr "Вірменська для XKB"
 
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:1
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:1
+msgid "Algeria"
+msgstr "Алжир"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:2
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:2
+msgid "Arabic"
+msgstr "Арабська"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:4
+msgid "Arabic xkb keymap"
+msgstr "Арабська для XKB"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:4
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:12
+msgid "Bahrain"
+msgstr "Бахрейн"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:5
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:5
+#: gkb-new/descs/presets.xml.in.h:29
+msgid "Comoros"
+msgstr "Коморос"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:6
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:6
+#: gkb-new/descs/presets.xml.in.h:42
+msgid "Djibouti"
+msgstr "Джібуті"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:7
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:7
+#: gkb-new/descs/presets.xml.in.h:47
+msgid "Egypt"
+msgstr "Єгипет"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:8
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:8
+#: gkb-new/descs/presets.xml.in.h:102
+msgid "Iraq"
+msgstr "Ірак"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:9
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:9
+#: gkb-new/descs/presets.xml.in.h:112
+msgid "Jordan"
+msgstr "Йорданія"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:10
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:10
+#: gkb-new/descs/presets.xml.in.h:113
+msgid "Kuwait"
+msgstr "Кувейт"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:11
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:11
+#: gkb-new/descs/presets.xml.in.h:117
+msgid "Lebanon"
+msgstr "Ліван"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:12
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:12
+#: gkb-new/descs/presets.xml.in.h:118
+msgid "Libyan Arab Jamahiriya"
+msgstr "Лівійська Арабська Джамахірія"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:13
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:13
+#: gkb-new/descs/presets.xml.in.h:128
+msgid "Marocco"
+msgstr "Марокко"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:14
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:14
+#: gkb-new/descs/presets.xml.in.h:139
+msgid "Oman"
+msgstr "Оман"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:15
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:15
+#: gkb-new/descs/presets.xml.in.h:140
+msgid "Palestinian Territory"
+msgstr "Палестина"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:16
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:16
+#: gkb-new/descs/presets.xml.in.h:151
+msgid "Qatar"
+msgstr "Катар"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:17
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:17
+#: gkb-new/descs/presets.xml.in.h:160
+msgid "Saudi Arabia"
+msgstr "Саудівська Аравія"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:18
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:18
+#: gkb-new/descs/presets.xml.in.h:173
+msgid "Somalia"
+msgstr "Сомалі"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:19
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:19
+#: gkb-new/descs/presets.xml.in.h:179
+msgid "Sudan"
+msgstr "Судан"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:20
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:20
+#: gkb-new/descs/presets.xml.in.h:187
+msgid "Syria"
+msgstr "Сирія"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:21
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:21
+#: gkb-new/descs/presets.xml.in.h:195
+msgid "Tunisia"
+msgstr "Туніс"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:22
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:22
+#: gkb-new/descs/presets.xml.in.h:219
+msgid "United Arab Emirates"
+msgstr "Об'єднані Арабська Емірати"
+
+#: gkb-new/descs/AR_Arabic.keyprop.desktop.in.h:23
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:23
+#: gkb-new/descs/presets.xml.in.h:226
+msgid "Yemen"
+msgstr "Ємен"
+
+#: gkb-new/descs/AR_Arabic_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:3
+msgid "Arabic keymap"
+msgstr "Арабська"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:1
+msgid "Azerbaidjan"
+msgstr "Азербайджан"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:2
+msgid "Azerbaidjani Turkic"
+msgstr "Азербайджанська турецька"
+
+#: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:3
+msgid "Azerbaidjani Turkic xkb keymap"
+msgstr "Азербайджанська турецька для XKB"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:18
+msgid "Belgium"
+msgstr "Бельгія"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:43
+msgid "Dutch"
+msgstr "Голландська"
+
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:45
+msgid "Dutch xkb keymap"
+msgstr "Голландська для XKB"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:22
+msgid "Bulgaria"
+msgstr "Болгарія"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:23
+msgid "Bulgarian"
+msgstr "Болгарська"
+
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:26
+msgid "Bulgarian xkb keymap"
+msgstr "Болгарська для XKB"
+
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:25
+msgid "Bulgarian keymap"
+msgstr "Болгарська"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:19
+msgid "Brazil"
+msgstr "Бразилія"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:21
+msgid "Brazil Portuguese xkb keymap"
+msgstr "Бразильська португальська для XKB"
+
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:148
+msgid "Portuguese"
+msgstr "Португальська"
+
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:20
+msgid "Brazil Portuguese keymap"
+msgstr "Бразильська португальська"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:14
+msgid "Belarus"
+msgstr "Білорусь"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:15
+msgid "Belarusian"
+msgstr "Білоруська"
+
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:16
+msgid "Belarusian xkb keymap"
+msgstr "Білоруська XKB"
+
+#: gkb-new/descs/Basque.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:13
+msgid "Basque"
+msgstr "Баскська"
+
+#: gkb-new/descs/Basque.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:54
+msgid "Euskadi"
+msgstr "Басконія"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:17
+msgid "Belgian"
+msgstr "Бельгійська"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:61
+msgid "French"
+msgstr "Французька"
+
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:5
+msgid "Wallon"
+msgstr "Валонська"
+
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:24
+msgid "Bulgarian Cyrillic"
+msgstr "Болгарська кирилиця"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:27
+msgid "Canada"
+msgstr "Канада"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:28
+msgid "Canadian xkb keymap"
+msgstr "Канадська для XKB"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/US.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:364
+msgid "English"
+msgstr "Англійська"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/German.keyprop.desktop.in.h:2
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:75
+msgid "German"
+msgstr "Німецька"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:185
+msgid "Swiss keymap"
+msgstr "Швейцарська"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:4
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:186
+msgid "Switzerland"
+msgstr "Швейцарія"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:33
+msgid "Czech"
+msgstr "Чеська"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:37
+msgid "Czech qwertz xkb keymap"
+msgstr "Чеська типу QWERTZ для XKB"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
+msgid "Former Czechoslovakia Czech Republic"
+msgstr "Колишня Чехословакія Чеська Республіка"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:34
+msgid "Czech Republic"
+msgstr "Чехія"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:35
+msgid "Czech and Slovak xkb keymap"
+msgstr "Чеська і словацька для XKB"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:166
+msgid "Slovak"
+msgstr "Словацька"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:167
+msgid "Slovak Republic"
+msgstr "Словакія"
+
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:36
+msgid "Czech keymap"
+msgstr "Чеська"
+
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:78
+msgid "German xkb keymap"
+msgstr "Німецька для XKB"
+
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:79
+msgid "Germany"
+msgstr "Німеччина"
+
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:77
+msgid "German keymap"
+msgstr "Німецька"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:38
+msgid "Danish"
+msgstr "Датська"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:40
+msgid "Danish xkb keymap"
+msgstr "Датська для XKB"
+
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:41
+msgid "Denmark"
+msgstr "Данія"
+
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:39
+msgid "Danish keymap"
+msgstr "Датська"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:847
+#: gweather/gweather-pref.c:866 gweather/gweather-pref.c:890
+#: gweather/gweather-pref.c:914
+msgid "Default"
+msgstr "Типово"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:80
+msgid "Gnome Keyboard default"
+msgstr "Типова клавіатура GNOME"
+
+#: gkb-new/descs/Default.keyprop.desktop.in.h:3
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:364
+msgid "International"
+msgstr "Міжнародна"
+
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:46
+msgid "Dvorak xkb keymap"
+msgstr "Дворак для XKB"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:50
+msgid "Estonia"
+msgstr "Естонія"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:51
+msgid "Estonian"
+msgstr "Естонська"
+
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:53
+msgid "Estonian xkb keymap"
+msgstr "Естонська для XKB"
+
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:52
+msgid "Estonian keymap"
+msgstr "Естонська"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:174
+msgid "Spain"
+msgstr "Іспанія"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:175
+msgid "Spanish"
+msgstr "Іспанська"
+
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
+msgid "Spanish PC/AT 101 keyboard "
+msgstr "Іспанська клавіатура PC/AT 101"
+
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:178
+msgid "Spanish xkb keymap"
+msgstr "Іспанська для XKB"
+
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:177
+msgid "Spanish keymap"
+msgstr "Іспанська"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:55
+msgid "Finland"
+msgstr "Фінляндія"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:56
+msgid "Finnish"
+msgstr "Фінська"
+
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:58
+msgid "Finnish xkb keymap"
+msgstr "Фінська для XKB"
+
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:57
+msgid "Finnish keymap"
+msgstr "Фінська"
+
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:60
+msgid "France"
+msgstr "Франція"
+
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:62
+msgid "French PC/AT 101 keyboard"
+msgstr "Французька клавіатура PC/AT 101"
+
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:66
+msgid "French xkb keymap"
+msgstr "Французька для XKB"
+
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:65
+msgid "French keymap"
+msgstr "Французька"
+
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:67
+msgid "French-Canadian 105-key"
+msgstr "Канадська французька (105 клавіш)"
+
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:63
+msgid "French Swiss"
+msgstr "Швейцарська французька"
+
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:64
+msgid "French Swiss keymap"
+msgstr "Швейцарська французька"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:1
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:70
+msgid "Georgia"
+msgstr "Грузія"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:2
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:71
+msgid "Georgian"
+msgstr "Грузинська"
+
+#: gkb-new/descs/GE_Georgian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:74
+msgid "Georgian keymap"
+msgstr "Грузинська"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:1
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:81
+msgid "Greece"
+msgstr "Греція"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:2
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:82
+msgid "Greek"
+msgstr "Грецька"
+
+#: gkb-new/descs/GR_Greek.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:84
+msgid "Greek xkb keymap"
+msgstr "Грецька для XKB"
+
+#: gkb-new/descs/GR_Greek_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:83
+msgid "Greek keymap"
+msgstr "Грецька"
+
+#: gkb-new/descs/GeorgianLatin.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:72
+msgid "Georgian Latin"
+msgstr "Грузинська латиниця"
+
+#: gkb-new/descs/GeorgianRussian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:73
+msgid "Georgian Russian layout"
+msgstr "Грузинська російська"
+
+#: gkb-new/descs/German.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:8
 msgid "Austria"
 msgstr "Австрія"
+
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:76
+msgid "German Swiss with Euro"
+msgstr "Швейцарська німецька з Євро"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:30
+msgid "Croatia"
+msgstr "Хорватія"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:31
+msgid "Croatian"
+msgstr "Хорватська"
+
+#: gkb-new/descs/HR_Croatian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:32
+msgid "Croatian keymap"
+msgstr "Хорватська"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:88
+msgid "Hungarian"
+msgstr "Угорська"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:95
+msgid "Hungarian latin2 xkb keymap"
+msgstr "Угорська Latin2 для XKB"
+
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:96
+msgid "Hungary"
+msgstr "Угорщина"
+
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:94
+msgid "Hungarian latin1"
+msgstr "Угорська Latin1"
+
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:91
+msgid "Hungarian 105-key latin 1"
+msgstr "Угорська Latin1 (105 клавіш)"
+
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:180
+msgid "Sun (!not PC!) type5 Hungarian latin 2"
+msgstr "Угорська Latin2 Type-5 від Sun (не PC)"
+
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:2
+msgid "Hungarian PC/AT 101 keyboard "
+msgstr "Угорська клавіатура PC/AT 101"
+
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:92
+msgid "Hungarian 105-key latin 2"
+msgstr "Угорська Latin2 (105 клавіш)"
+
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:89
+msgid "Hungarian 101-key latin 1"
+msgstr "Угорська Latin1 (101 клавіша)"
+
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:90
+msgid "Hungarian 101-key latin 2"
+msgstr "Угорська Latin2 (101 клавіша)"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:85
+msgid "Hebrew"
+msgstr "Єврейська"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:87
+msgid "Hebrew xkb keymap"
+msgstr "Єврейська для XKB"
+
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:103
+msgid "Israel"
+msgstr "Ізраїль"
+
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:86
+msgid "Hebrew keymap"
+msgstr "Єврейська"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:97
+msgid "Iceland"
+msgstr "Ісландія"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:98
+msgid "Icelandic"
+msgstr "Ісландська"
+
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:100
+msgid "Icelandic xkb keymap"
+msgstr "Ісландська для XKB"
+
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:99
+msgid "Icelandic keymap"
+msgstr "Ісландська"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:104
+msgid "Italian"
+msgstr "Італійська"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:106
+msgid "Italian xkb keymap"
+msgstr "Італійська для XKB"
+
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:107
+msgid "Italy"
+msgstr "Італія"
+
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:105
+msgid "Italian keymap"
+msgstr "Італійська"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:108
+msgid "Japan"
+msgstr "Японія"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:109
+msgid "Japanese"
+msgstr "Японська"
+
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:111
+msgid "Japanese xkb keymap"
+msgstr "Японська для XKB"
+
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:110
+msgid "Japanese keymap"
+msgstr "Японська"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:1
+msgid "Korean"
+msgstr "Корейська"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:2
+msgid "Korean 106 keyboard"
+msgstr "Корейська (106 клавіш)"
+
+#: gkb-new/descs/KR_Korean.keyprop.desktop.in.h:3
+msgid "South Korea"
+msgstr "Південна Корея"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:114
+msgid "Lao"
+msgstr "Лаоська"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:115
+msgid "Lao keymap"
+msgstr "Лаоська"
+
+#: gkb-new/descs/LA_Lao_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:116
+msgid "Laos"
+msgstr "Лаос"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:119
+msgid "Lithuania"
+msgstr "Литва"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:120
+msgid "Lithuanian"
+msgstr "Литовська"
+
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:123
+msgid "Lithuanian qwerty xkb keymap"
+msgstr "Литовська типу QWERTY для XKB"
+
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:121
+msgid "Lithuanian keymap"
+msgstr "Литовська"
+
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:122
+msgid "Lithuanian programmers xkb keymap"
+msgstr "Литовська програмістська для XKB"
+
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:124
+msgid "Lithuanian standard xkb keymap"
+msgstr "Литовська стандартна для XKB"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:125
+msgid "Macedonia"
+msgstr "Македонія"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:126
+msgid "Macedonian"
+msgstr "Македонська"
+
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:127
+msgid "Macedonian xkb keymap"
+msgstr "Македонська для XKB"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:1
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:129
+msgid "Mongolia"
+msgstr "Монголія"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:130
+msgid "Mongolian"
+msgstr "Монгольська"
+
+#: gkb-new/descs/MN_Mongolian.keyprop.desktop.in.h:3
+msgid "Mongolian keyboard"
+msgstr "Монгольська клавіатура"
+
+#: gkb-new/descs/MN_Mongolian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:132
+msgid "Mongolian keymap"
+msgstr "Монгольська"
+
+#: gkb-new/descs/MN_Mongolian_x_rev.keyprop.desktop.in.h:3
+msgid "Plain Mongolian keymap"
+msgstr "Проста Монгольська"
+
+#: gkb-new/descs/MN_Mongolian_x_uni.keyprop.desktop.in.h:3
+msgid "Unicode Mongolian Keymap"
+msgstr "Монгольська Юнікодова"
+
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:44
+msgid "Dutch keymap"
+msgstr "Голландська"
+
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:135
+msgid "Netherlands"
+msgstr "Голландська"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:136
+msgid "Norway"
+msgstr "Норвегія"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:137
+msgid "Norwegian"
+msgstr "Норвезька"
+
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:138
+msgid "Norwegian xkb keymap"
+msgstr "Норвезька для XKB"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:142
+msgid "Poland"
+msgstr "Польща"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:143
+msgid "Polish"
+msgstr "Польська"
+
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:145
+msgid "Polish xkb keymap"
+msgstr "Польська для XKB"
+
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:146
+msgid "Portugal"
+msgstr "Португалія"
+
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:150
+msgid "Portuguese xkb keymap"
+msgstr "Португальська для XKB"
+
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:149
+msgid "Portuguese keymap"
+msgstr "Португальська"
+
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:144
+msgid "Polish deadkeys"
+msgstr "Польська із спеціальними клавішами"
+
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:147
+msgid "Portugal Deadkeys"
+msgstr "Португальська із спеціальними клавішами"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:152
+msgid "Romania"
+msgstr "Румунія"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:153
+msgid "Romanian"
+msgstr "Румунська"
+
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:154
+msgid "Romanian xkb keymap"
+msgstr "Румунська для XKB"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:155
+msgid "Russia"
+msgstr "Росія"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:156
+msgid "Russian"
+msgstr "Російська"
+
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:159
+msgid "Russian xkb keymap"
+msgstr "Російська для XKB"
+
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:158
+msgid "Russian keymap"
+msgstr "Російська"
+
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:141
+msgid "Plain Russian keymap"
+msgstr "Російська проста"
+
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:157
+msgid "Russian Cyrillic"
+msgstr "Російська кирилиця"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:181
+msgid "Sweden"
+msgstr "Швеція"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:182
+msgid "Swedish"
+msgstr "Шведська"
+
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:184
+msgid "Swedish xkb keymap"
+msgstr "Шведська для XKB"
+
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:183
+msgid "Swedish keymap"
+msgstr "Шведська"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:169
+msgid "Slovenia"
+msgstr "Словенія"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:170
+msgid "Slovenian"
+msgstr "Словенська"
+
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:172
+msgid "Slovenian xkb keymap"
+msgstr "Словенська для XKB"
+
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:171
+msgid "Slovenian keymap"
+msgstr "Словенська"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:161
+msgid "Serb"
+msgstr "Сербська"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:163
+msgid "Serbia and Montenegro"
+msgstr "Сербія і Чорногорія"
+
+#: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:3
+msgid "Serbian standard xkb keymap"
+msgstr "Сербська стандартна для XKB"
+
+#: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
+#: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:188
+msgid "Syriac"
+msgstr "Сирійська"
+
+#: gkb-new/descs/Syriac.keyprop.desktop.in.h:2
+msgid "Syriac xkb keymap"
+msgstr "Сирійська для XKB"
+
+#: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:2
+msgid "Syriac Phonetic xkb keymap"
+msgstr "Сирійська фонетична для XKB"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:190
+msgid "Thai"
+msgstr "Тайська"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:193
+msgid "Thai xkb keymap"
+msgstr "Тайська для XKB"
+
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:194
+msgid "Thailand"
+msgstr "Таїланд"
+
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:192
+msgid "Thai keymap"
+msgstr "Тайська"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:196
+msgid "Turkey"
+msgstr "Туреччина"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:197
+msgid "Turkish"
+msgstr "Турецька"
+
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:198
+msgid "Turkish \"F\" keyboard"
+msgstr "Турецька клавіатура \"F\""
+
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:199
+msgid "Turkish \"Q\" keyboard"
+msgstr "Турецька клавіатура \"Q\""
+
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:201
+msgid "Turkish xkb keymap"
+msgstr "Турецька для XKB"
+
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:200
+msgid "Turkish keymap"
+msgstr "Турецька"
+
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:191
+msgid "Thai Kedmanee"
+msgstr "Тайська (Кедмані)"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:216
+msgid "Ukraine"
+msgstr "Україна"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:217
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:218
+msgid "Ukrainian xkb keymap"
+msgstr "Українська для XKB"
+
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:68
+msgid "GB 102-key"
+msgstr "Велика Британія (102 клавіші)"
+
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:220
+msgid "United Kingdom"
+msgstr "Велика Британія"
+
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
+msgid "UK PC/AT keyboard "
+msgstr "Велика Британія (PC/AT)"
+
+#: gkb-new/descs/UK.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:202
+msgid "UK 105-key"
+msgstr "Велика Британія (105 клавіш)"
+
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:221
+msgid "United Kingdom xkb keymap"
+msgstr "Велика Британія для XKB"
+
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:49
+msgid "English keymap"
+msgstr "Англійська"
+
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:69
+msgid "GB 105-key"
+msgstr "Велика Британія (105 клавіш)"
+
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:204
+msgid "US 101-key keyboard"
+msgstr "США (101 клавіша)"
+
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/US.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:360
+msgid "United States"
+msgstr "США"
+
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:212
+msgid "US PC/AT 101 keyboard"
+msgstr "США клавіатура PC/AT 101"
+
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:206
+msgid "US 84-key"
+msgstr "США (84 клавіші)"
+
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:207
+msgid "US DEC 450"
+msgstr "США для DEC 450"
+
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:208
+msgid "US IBM RS/6000"
+msgstr "США для IBM RS/6000"
+
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:209
+msgid "US International"
+msgstr "США міжнародна"
+
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:211
+msgid "US Macintosh"
+msgstr "США для Макінтош"
+
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:213
+msgid "US Silicon Graphics 101-key"
+msgstr "США для Silicon Graphics (101 клавіша)"
+
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:214
+msgid "US Sun type5"
+msgstr "США Type-5 від Sun"
+
+#: gkb-new/descs/US.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:205
+msgid "US 105-key keyboard (with windows keys)"
+msgstr "США (105 клавіш, без клавіш \"Windows\")"
+
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:215
+msgid "US xkb keymap"
+msgstr "США для XKB"
+
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:210
+msgid "US International xkb keymap"
+msgstr "США міжнародна для XKB"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:223
+msgid "Vietnam"
+msgstr "В'єтнам"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:224
+msgid "Vietnamese"
+msgstr "В'єтнамська"
+
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
+msgstr "В'єтнамська для XKB"
+
+#: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/YU_Serbo-Croatian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:2
+msgid "Serb keymap"
+msgstr "Сербська"
+
+#: gkb-new/descs/presets.xml.in.h:9
+msgid "Azerbaijan"
+msgstr "Азербайджан"
+
+#: gkb-new/descs/presets.xml.in.h:10
+msgid "Azerbaijani Turkish"
+msgstr "Азербайджанська турецька"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaijani Turkish xkb keymap"
 msgstr "Азербайджанська турецька для XKB"
 
-#: gkb-new/descs/presets.xml.in.h:12
-msgid "Bahrain"
-msgstr "Бахрейн"
-
-#: gkb-new/descs/presets.xml.in.h:13
-msgid "Basque"
-msgstr "Баскська"
-
-#: gkb-new/descs/presets.xml.in.h:16
-msgid "Belarussian xkb keymap"
-msgstr "Білоруська XKB"
-
-#: gkb-new/descs/presets.xml.in.h:17
-msgid "Belgian"
-msgstr "Бельгійська"
-
-#: gkb-new/descs/presets.xml.in.h:20
-msgid "Brazil Portuguese keymap"
-msgstr "Бразильська португальська"
-
-#: gkb-new/descs/presets.xml.in.h:21
-msgid "Brazil Portuguese xkb keymap"
-msgstr "Бразильська португальська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:24
-msgid "Bulgarian Cyrillic"
-msgstr "Болгарська кирилиця"
-
-#: gkb-new/descs/presets.xml.in.h:25
-msgid "Bulgarian keymap"
-msgstr "Болгарська"
-
-#: gkb-new/descs/presets.xml.in.h:26
-msgid "Bulgarian xkb keymap"
-msgstr "Болгарська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:28
-msgid "Canadian xkb keymap"
-msgstr "Канадська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:29
-msgid "Comoros"
-msgstr "Коморос"
-
-#: gkb-new/descs/presets.xml.in.h:30
-msgid "Croatia"
-msgstr "Хорватія"
-
-#: gkb-new/descs/presets.xml.in.h:31
-msgid "Croatian"
-msgstr "Хорватська"
-
-#: gkb-new/descs/presets.xml.in.h:32
-msgid "Croatian keymap"
-msgstr "Хорватська"
-
-#: gkb-new/descs/presets.xml.in.h:35
-msgid "Czech and Slovak xkb keymap"
-msgstr "Чеська і словацька для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:36
-msgid "Czech keymap"
-msgstr "Чеська"
-
-#: gkb-new/descs/presets.xml.in.h:37
-msgid "Czech qwertz xkb keymap"
-msgstr "Чеська типу QWERTZ для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:39
-msgid "Danish keymap"
-msgstr "Датська"
-
-#: gkb-new/descs/presets.xml.in.h:40
-msgid "Danish xkb keymap"
-msgstr "Датська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:42
-msgid "Djibouti"
-msgstr "Джібуті"
-
-#: gkb-new/descs/presets.xml.in.h:44
-msgid "Dutch keymap"
-msgstr "Голландська"
-
-#: gkb-new/descs/presets.xml.in.h:45
-msgid "Dutch xkb keymap"
-msgstr "Голландська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:46
-msgid "Dvorak xkb keymap"
-msgstr "Дворак для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:47
-msgid "Egypt"
-msgstr "Єгипет"
-
-#: gkb-new/descs/presets.xml.in.h:49
-msgid "English keymap"
-msgstr "Англійська"
-
-#: gkb-new/descs/presets.xml.in.h:52
-msgid "Estonian keymap"
-msgstr "Естонська"
-
-#: gkb-new/descs/presets.xml.in.h:53
-msgid "Estonian xkb keymap"
-msgstr "Естонська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:54
-msgid "Euskadi"
-msgstr "Басконія"
-
-#: gkb-new/descs/presets.xml.in.h:57
-msgid "Finnish keymap"
-msgstr "Фінська"
-
-#: gkb-new/descs/presets.xml.in.h:58
-msgid "Finnish xkb keymap"
-msgstr "Фінська для XKB"
-
 #: gkb-new/descs/presets.xml.in.h:59
 msgid "Former Czechoslovakia"
 msgstr "Колишня Чехословакія"
-
-#: gkb-new/descs/presets.xml.in.h:62
-msgid "French PC/AT 101 keyboard"
-msgstr "Французька клавіатура PC/AT 101"
-
-#: gkb-new/descs/presets.xml.in.h:63
-msgid "French Swiss"
-msgstr "Швейцарська французька"
-
-#: gkb-new/descs/presets.xml.in.h:64
-msgid "French Swiss keymap"
-msgstr "Швейцарська французька"
-
-#: gkb-new/descs/presets.xml.in.h:65
-msgid "French keymap"
-msgstr "Французька"
-
-#: gkb-new/descs/presets.xml.in.h:66
-msgid "French xkb keymap"
-msgstr "Французька для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:67
-msgid "French-Canadian 105-key"
-msgstr "Канадська французька (105 клавіш)"
-
-#: gkb-new/descs/presets.xml.in.h:68
-msgid "GB 102-key"
-msgstr "Велика Британія (102 клавіші)"
-
-#: gkb-new/descs/presets.xml.in.h:69
-msgid "GB 105-key"
-msgstr "Велика Британія (105 клавіш)"
-
-#: gkb-new/descs/presets.xml.in.h:70
-msgid "Georgia"
-msgstr "Грузія"
-
-#: gkb-new/descs/presets.xml.in.h:71
-msgid "Georgian"
-msgstr "Грузинська"
-
-#: gkb-new/descs/presets.xml.in.h:72
-msgid "Georgian Latin"
-msgstr "Грузинська латиниця"
-
-#: gkb-new/descs/presets.xml.in.h:73
-msgid "Georgian Russian layout"
-msgstr "Грузинська російська"
-
-#: gkb-new/descs/presets.xml.in.h:74
-msgid "Georgian keymap"
-msgstr "Грузинська"
-
-#: gkb-new/descs/presets.xml.in.h:76
-msgid "German Swiss with Euro"
-msgstr "Швейцарська німецька з Євро"
-
-#: gkb-new/descs/presets.xml.in.h:77
-msgid "German keymap"
-msgstr "Німецька"
-
-#: gkb-new/descs/presets.xml.in.h:78
-msgid "German xkb keymap"
-msgstr "Німецька для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:81
-msgid "Greece"
-msgstr "Греція"
-
-#: gkb-new/descs/presets.xml.in.h:82
-msgid "Greek"
-msgstr "Грецька"
-
-#: gkb-new/descs/presets.xml.in.h:83
-msgid "Greek keymap"
-msgstr "Грецька"
-
-#: gkb-new/descs/presets.xml.in.h:84
-msgid "Greek xkb keymap"
-msgstr "Грецька для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:86
-msgid "Hebrew keymap"
-msgstr "Єврейська"
-
-#: gkb-new/descs/presets.xml.in.h:87
-msgid "Hebrew xkb keymap"
-msgstr "Єврейська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:89
-msgid "Hungarian 101-key latin 1"
-msgstr "Угорська Latin1 (101 клавіша)"
-
-#: gkb-new/descs/presets.xml.in.h:90
-msgid "Hungarian 101-key latin 2"
-msgstr "Угорська Latin2 (101 клавіша)"
-
-#: gkb-new/descs/presets.xml.in.h:91
-msgid "Hungarian 105-key latin 1"
-msgstr "Угорська Latin1 (105 клавіш)"
-
-#: gkb-new/descs/presets.xml.in.h:92
-msgid "Hungarian 105-key latin 2"
-msgstr "Угорська Latin2 (105 клавіш)"
 
 #: gkb-new/descs/presets.xml.in.h:93
 msgid "Hungarian PC/AT 101 keyboard"
 msgstr "Угорська клавіатура PC/AT 101"
 
-#: gkb-new/descs/presets.xml.in.h:94
-msgid "Hungarian latin1"
-msgstr "Угорська Latin1"
-
-#: gkb-new/descs/presets.xml.in.h:95
-msgid "Hungarian latin2 xkb keymap"
-msgstr "Угорська Latin2 для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:99
-msgid "Icelandic keymap"
-msgstr "Ісландська"
-
-#: gkb-new/descs/presets.xml.in.h:100
-msgid "Icelandic xkb keymap"
-msgstr "Ісландська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:102
-msgid "Iraq"
-msgstr "Ірак"
-
-#: gkb-new/descs/presets.xml.in.h:105
-msgid "Italian keymap"
-msgstr "Італійська"
-
-#: gkb-new/descs/presets.xml.in.h:106
-msgid "Italian xkb keymap"
-msgstr "Італійська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:110
-msgid "Japanese keymap"
-msgstr "Японська"
-
-#: gkb-new/descs/presets.xml.in.h:111
-msgid "Japanese xkb keymap"
-msgstr "Японська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:112
-msgid "Jordan"
-msgstr "Йорданія"
-
-#: gkb-new/descs/presets.xml.in.h:113
-msgid "Kuwait"
-msgstr "Кувейт"
-
-#: gkb-new/descs/presets.xml.in.h:114
-msgid "Lao"
-msgstr "Лаоська"
-
-#: gkb-new/descs/presets.xml.in.h:115
-msgid "Lao keymap"
-msgstr "Лаоська"
-
-#: gkb-new/descs/presets.xml.in.h:116
-msgid "Laos"
-msgstr "Лаос"
-
-#: gkb-new/descs/presets.xml.in.h:117
-msgid "Lebanon"
-msgstr "Ліван"
-
-#: gkb-new/descs/presets.xml.in.h:118
-msgid "Libyan Arab Jamahiriya"
-msgstr "Лівійська Арабська Джамахірія"
-
-#: gkb-new/descs/presets.xml.in.h:121
-msgid "Lithuanian keymap"
-msgstr "Литовська"
-
-#: gkb-new/descs/presets.xml.in.h:122
-msgid "Lithuanian programmers xkb keymap"
-msgstr "Литовська програмістська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:123
-msgid "Lithuanian qwerty xkb keymap"
-msgstr "Литовська типу QWERTY для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:124
-msgid "Lithuanian standard xkb keymap"
-msgstr "Литовська стандартна для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:127
-msgid "Macedonian xkb keymap"
-msgstr "Македонська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:128
-msgid "Marocco"
-msgstr "Марокко"
-
-#: gkb-new/descs/presets.xml.in.h:129
-msgid "Mongolia"
-msgstr "Монголія"
-
-#: gkb-new/descs/presets.xml.in.h:130
-msgid "Mongolian"
-msgstr "Монгольська"
-
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
 msgstr "Монгольська альтернативна"
-
-#: gkb-new/descs/presets.xml.in.h:132
-msgid "Mongolian keymap"
-msgstr "Монгольська"
 
 #: gkb-new/descs/presets.xml.in.h:133
 msgid "Mongolian phonetic keymap"
@@ -1956,81 +2467,9 @@ msgstr "Монгольська фонетична"
 msgid "Morocco"
 msgstr "Марокко"
 
-#: gkb-new/descs/presets.xml.in.h:135
-msgid "Netherlands"
-msgstr "Голландська"
-
-#: gkb-new/descs/presets.xml.in.h:138
-msgid "Norwegian xkb keymap"
-msgstr "Норвезька для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:139
-msgid "Oman"
-msgstr "Оман"
-
-#: gkb-new/descs/presets.xml.in.h:140
-msgid "Palestinian Territory"
-msgstr "Палестина"
-
-#: gkb-new/descs/presets.xml.in.h:141
-msgid "Plain Russian keymap"
-msgstr "Російська проста"
-
-#: gkb-new/descs/presets.xml.in.h:144
-msgid "Polish deadkeys"
-msgstr "Польська із спеціальними клавішами"
-
-#: gkb-new/descs/presets.xml.in.h:145
-msgid "Polish xkb keymap"
-msgstr "Польська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:147
-msgid "Portugal Deadkeys"
-msgstr "Португальська із спеціальними клавішами"
-
-#: gkb-new/descs/presets.xml.in.h:149
-msgid "Portuguese keymap"
-msgstr "Португальська"
-
-#: gkb-new/descs/presets.xml.in.h:150
-msgid "Portuguese xkb keymap"
-msgstr "Португальська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:151
-msgid "Qatar"
-msgstr "Катар"
-
-#: gkb-new/descs/presets.xml.in.h:154
-msgid "Romanian xkb keymap"
-msgstr "Румунська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:157
-msgid "Russian Cyrillic"
-msgstr "Російська кирилиця"
-
-#: gkb-new/descs/presets.xml.in.h:158
-msgid "Russian keymap"
-msgstr "Російська"
-
-#: gkb-new/descs/presets.xml.in.h:159
-msgid "Russian xkb keymap"
-msgstr "Російська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:160
-msgid "Saudi Arabia"
-msgstr "Саудівська Аравія"
-
-#: gkb-new/descs/presets.xml.in.h:161
-msgid "Serb"
-msgstr "Сербська"
-
 #: gkb-new/descs/presets.xml.in.h:162
 msgid "Serb standard xkb keymap"
 msgstr "Сербська стандартна для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:163
-msgid "Serbia and Montenegro"
-msgstr "Сербія і Чорногорія"
 
 #: gkb-new/descs/presets.xml.in.h:164
 msgid "Serbian"
@@ -2044,169 +2483,21 @@ msgstr "Сербська"
 msgid "Slovak keymap"
 msgstr "Словацька"
 
-#: gkb-new/descs/presets.xml.in.h:171
-msgid "Slovenian keymap"
-msgstr "Словенська"
-
-#: gkb-new/descs/presets.xml.in.h:172
-msgid "Slovenian xkb keymap"
-msgstr "Словенська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:173
-msgid "Somalia"
-msgstr "Сомалі"
-
 #: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
 msgstr "Іспанська клавіатура PC/AT 101"
-
-#: gkb-new/descs/presets.xml.in.h:177
-msgid "Spanish keymap"
-msgstr "Іспанська"
-
-#: gkb-new/descs/presets.xml.in.h:178
-msgid "Spanish xkb keymap"
-msgstr "Іспанська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:179
-msgid "Sudan"
-msgstr "Судан"
-
-#: gkb-new/descs/presets.xml.in.h:180
-msgid "Sun (!not PC!) type5 Hungarian latin 2"
-msgstr "Угорська Latin2 Type-5 від Sun (не PC)"
-
-#: gkb-new/descs/presets.xml.in.h:183
-msgid "Swedish keymap"
-msgstr "Шведська"
-
-#: gkb-new/descs/presets.xml.in.h:184
-msgid "Swedish xkb keymap"
-msgstr "Шведська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:185
-msgid "Swiss keymap"
-msgstr "Швейцарська"
-
-#: gkb-new/descs/presets.xml.in.h:187
-msgid "Syria"
-msgstr "Сирія"
-
-#: gkb-new/descs/presets.xml.in.h:188
-msgid "Syriac"
-msgstr "Сирійська"
 
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Сирійська фонетична"
 
-#: gkb-new/descs/presets.xml.in.h:191
-msgid "Thai Kedmanee"
-msgstr "Тайська (Кедмані)"
-
-#: gkb-new/descs/presets.xml.in.h:192
-msgid "Thai keymap"
-msgstr "Тайська"
-
-#: gkb-new/descs/presets.xml.in.h:193
-msgid "Thai xkb keymap"
-msgstr "Тайська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:195
-msgid "Tunisia"
-msgstr "Туніс"
-
-#: gkb-new/descs/presets.xml.in.h:198
-msgid "Turkish \"F\" keyboard"
-msgstr "Турецька клавіатура \"F\""
-
-#: gkb-new/descs/presets.xml.in.h:199
-msgid "Turkish \"Q\" keyboard"
-msgstr "Турецька клавіатура \"Q\""
-
-#: gkb-new/descs/presets.xml.in.h:200
-msgid "Turkish keymap"
-msgstr "Турецька"
-
-#: gkb-new/descs/presets.xml.in.h:201
-msgid "Turkish xkb keymap"
-msgstr "Турецька для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:202
-msgid "UK 105-key"
-msgstr "Велика Британія (105 клавіш)"
-
 #: gkb-new/descs/presets.xml.in.h:203
 msgid "UK PC/AT keyboard"
 msgstr "Велика Британія (PC/AT)"
 
-#: gkb-new/descs/presets.xml.in.h:204
-msgid "US 101-key keyboard"
-msgstr "США (101 клавіша)"
-
-#: gkb-new/descs/presets.xml.in.h:205
-msgid "US 105-key keyboard (with windows keys)"
-msgstr "США (105 клавіш, без клавіш \"Windows\")"
-
-#: gkb-new/descs/presets.xml.in.h:206
-msgid "US 84-key"
-msgstr "США (84 клавіші)"
-
-#: gkb-new/descs/presets.xml.in.h:207
-msgid "US DEC 450"
-msgstr "США для DEC 450"
-
-#: gkb-new/descs/presets.xml.in.h:208
-msgid "US IBM RS/6000"
-msgstr "США для IBM RS/6000"
-
-#: gkb-new/descs/presets.xml.in.h:209
-msgid "US International"
-msgstr "США міжнародна"
-
-#: gkb-new/descs/presets.xml.in.h:210
-msgid "US International xkb keymap"
-msgstr "США міжнародна для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:211
-msgid "US Macintosh"
-msgstr "США для Макінтош"
-
-#: gkb-new/descs/presets.xml.in.h:212
-msgid "US PC/AT 101 keyboard"
-msgstr "США клавіатура PC/AT 101"
-
-#: gkb-new/descs/presets.xml.in.h:213
-msgid "US Silicon Graphics 101-key"
-msgstr "США для Silicon Graphics (101 клавіша)"
-
-#: gkb-new/descs/presets.xml.in.h:214
-msgid "US Sun type5"
-msgstr "США Type-5 від Sun"
-
-#: gkb-new/descs/presets.xml.in.h:215
-msgid "US xkb keymap"
-msgstr "США для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:218
-msgid "Ukrainian xkb keymap"
-msgstr "Українська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:219
-msgid "United Arab Emirates"
-msgstr "Об'єднані Арабська Емірати"
-
-#: gkb-new/descs/presets.xml.in.h:221
-msgid "United Kingdom xkb keymap"
-msgstr "Велика Британія для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:225
-msgid "Vietnamese xkb keymap"
-msgstr "В'єтнамська для XKB"
-
-#: gkb-new/descs/presets.xml.in.h:226
-msgid "Yemen"
-msgstr "Ємен"
+#: gkb-new/gkb-applet.c:95
+msgid "Keyboard Layout Switcher"
+msgstr "Перемикач розкладок клавіатури"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2245,6 +2536,22 @@ msgid ""
 msgstr ""
 "Натисніть клавішу для перемикання між розкладками. Клавішу перемикання можна "
 "встановити у діалоговому вікні зміни властивостей."
+
+#: gkb-new/gkb.c:352
+msgid "US 105 key keyboard"
+msgstr "США (105 клавіш)"
+
+#: gkb-new/gkb.c:352
+msgid "Gnome Keyboard Default"
+msgstr "Типова клавіатура GNOME"
+
+#: gkb-new/gkb.c:356
+msgid "default"
+msgstr "типова"
+
+#: gkb-new/gkb.c:360
+msgid "Gnome Keyboard"
+msgstr "Клавіатура GNOME"
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
@@ -2328,7 +2635,7 @@ msgstr "Вимкнено"
 msgid "Press a key or press Esc to cancel"
 msgstr "Натисніть клавішу, чи Esc щоб скасувати"
 
-#: gkb-new/preset.c:155 gkb-new/preset.c:158
+#: gkb-new/preset.c:152 gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr "Невизначено"
 
@@ -2369,7 +2676,7 @@ msgstr "_Назва:"
 msgid "_Label:"
 msgstr "_Скорочення:"
 
-#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:7
 msgid "Co_mmand:"
 msgstr "К_оманда:"
 
@@ -2389,7 +2696,7 @@ msgstr "Скорочення"
 msgid "Flag and Label"
 msgstr "Прапор та скорочення"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1030
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Відображення"
@@ -2413,7 +2720,7 @@ msgstr "Ввести _клавіші"
 
 #: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
-msgstr "Настройки перемикача розкладок клавіатури"
+msgstr "Параметри перемикача розкладок клавіатури"
 
 #: gkb-new/prop.c:407
 msgid "Keyboard Layout Selector"
@@ -2428,11 +2735,11 @@ msgstr "Розкладки"
 msgid "_Keyboards:"
 msgstr "_Розкладки:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:426
+#: gkb-new/prop.c:457 multiload/properties.c:427
 msgid "Options"
 msgstr "Параметри"
 
-#: gkb-new/system.c:44
+#: gkb-new/system.c:45
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -2447,7 +2754,7 @@ msgstr ""
 "\n"
 "Команда була: %s"
 
-#: gkb-new/system.c:49
+#: gkb-new/system.c:50
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -2465,8 +2772,8 @@ msgstr ""
 "Виконувалась команда: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins..."
-msgstr "_Модулі..."
+msgid "Pl_ugins"
+msgstr "_Модулі"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
@@ -2474,7 +2781,7 @@ msgstr "_Групи"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Open Keyboard Preferences"
-msgstr "_Відкрити настройки клавіатури"
+msgstr "_Відкрити параметри клавіатури"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
 msgid "GNOME keyboard applet factory"
@@ -2485,7 +2792,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Індикатор розкладки клавіатури"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:575
+#: gswitchit/gswitchit-applet.c:613
 msgid "Keyboard Indicator"
 msgstr "Індикатор клавіатури"
 
@@ -2498,19 +2805,19 @@ msgstr "Фабрика аплету клавіатури"
 msgid "Keyboard Indicator (%s)"
 msgstr "Індикатор клавіатури (%s)"
 
-#: gswitchit/gswitchit-applet.c:578
-msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
-msgstr "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+#: gswitchit/gswitchit-applet.c:616
+msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
+msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:580
+#: gswitchit/gswitchit-applet.c:618
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Аплет індикатор розкладки клавіатури для GNOME"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:772
 msgid "XKB initialization error"
 msgstr "Помилка ініціалізації XKB"
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:780
 msgid "Error loading XKB configuration registry"
 msgstr "Помилка завантаження реєстру конфігурації XKB"
 
@@ -2601,7 +2908,7 @@ msgstr "Зберігати окремо стан індикаторів для �
 
 #: gswitchit/gswitchit-properties.glade.h:6
 msgid "Keyboard Indicator Preferences"
-msgstr "Настройки перемикача розкладок клавіатури"
+msgstr "Параметри перемикача розкладок клавіатури"
 
 #: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
@@ -2681,24 +2988,28 @@ msgstr "Отримує свіжі біржові курси"
 msgid "Gtik Applet Factory"
 msgstr "Фабрика аплету Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:746
 msgid "Stock Ticker"
 msgstr "Стрічка біржових новин"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:85 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Оновити"
 
-#: gtik/gtik.c:258
+#: gtik/gtik.c:260
 msgid "Could not retrieve the stock data."
 msgstr "Не вдається отримати біржові дані."
 
-#: gtik/gtik.c:307 gweather/gweather-applet.c:426
+#: gtik/gtik.c:280
+msgid "No stock list"
+msgstr "Біржові дані відсутні"
+
+#: gtik/gtik.c:313 gweather/gweather-applet.c:477
 msgid "Updating..."
 msgstr "Триває оновлення..."
 
-#: gtik/gtik.c:742
+#: gtik/gtik.c:748
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2711,126 +3022,126 @@ msgstr ""
 "біржових новин для прийняття рішень про капіталовкладення; вона лише для "
 "інформаційних цілей."
 
-#: gtik/gtik.c:1232
+#: gtik/gtik.c:1270
 msgid "Current _stocks:"
 msgstr "Поточні _акції:"
 
-#: gtik/gtik.c:1240
+#: gtik/gtik.c:1278
 msgid "_New symbol:"
 msgstr "_Новий символ:"
 
-#: gtik/gtik.c:1249
+#: gtik/gtik.c:1287
 msgid "_Add"
 msgstr "Д_одати"
 
-#: gtik/gtik.c:1258
+#: gtik/gtik.c:1296
 msgid "_Remove"
 msgstr "В_идалити"
 
-#: gtik/gtik.c:1364
+#: gtik/gtik.c:1402
 msgid "Stock Ticker Preferences"
-msgstr "Настройки стрічки біржових новин"
+msgstr "Параметри стрічки біржових новин"
 
-#: gtik/gtik.c:1386
+#: gtik/gtik.c:1424
 msgid "Symbols"
 msgstr "Символи"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1431 mailcheck/mailcheck.c:2398
 msgid "Behavior"
 msgstr "Поведінка"
 
-#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:990
 msgid "Update"
 msgstr "Оновлення"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1438
 msgid "Stock update fre_quency:"
 msgstr "_Частота оновлення стрічки:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1014 mailcheck/mailcheck.c:2104
+#: mailcheck/mailcheck.c:2110
 msgid "minutes"
 msgstr "хв"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1456
 msgid "Scrolling"
 msgstr "Прокручування"
 
-#: gtik/gtik.c:1422
+#: gtik/gtik.c:1460
 msgid "_Scroll speed:"
 msgstr "_Швидкість прокручування:"
 
-#: gtik/gtik.c:1426
+#: gtik/gtik.c:1464
 msgid "Slow"
 msgstr "Повільно"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1466
 msgid "Medium"
 msgstr "Помірно"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1468
 msgid "Fast"
 msgstr "Швидко"
 
-#: gtik/gtik.c:1450
+#: gtik/gtik.c:1488
 msgid "_Enable scroll buttons"
 msgstr "_Ввімкнути кнопки прокручування"
 
-#: gtik/gtik.c:1462
+#: gtik/gtik.c:1500
 msgid "Scroll _left to right"
 msgstr "Прокручувати з_ліва направо"
 
-#: gtik/gtik.c:1488
+#: gtik/gtik.c:1526
 msgid "Displa_y only symbols and price"
 msgstr "_Показувати лише символи та вартість"
 
-#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
-#: stickynotes/stickynotes.glade.h:48
+#: gtik/gtik.c:1539 mini-commander/src/mini-commander.glade.h:20
+#: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "Ш_ирина:"
 
-#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:489
+#: gtik/gtik.c:1553 mini-commander/src/mini-commander.glade.h:21
+#: multiload/properties.c:490
 msgid "pixels"
 msgstr "точок"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1562
 msgid "Font and Colors"
 msgstr "Шрифт та кольори"
 
-#: gtik/gtik.c:1530
+#: gtik/gtik.c:1568
 msgid "Use _default theme font and colors"
 msgstr "_Використовувати звичайні кольори та шрифт теми"
 
-#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1583 stickynotes/stickynotes.glade.h:45
 msgid "_Font:"
 msgstr "_Шрифт:"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1607
 msgid "Stock _raised:"
 msgstr "Акції _зросли:"
 
-#: gtik/gtik.c:1588
+#: gtik/gtik.c:1626
 msgid "Stock _lowered:"
 msgstr "Акції _впали:"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1645
 msgid "Stock _unchanged:"
 msgstr "Акції _не змінились:"
 
-#: gtik/gtik.c:1626 modemlights/properties.c:580
+#: gtik/gtik.c:1664 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "_Тло:"
 
-#: gtik/gtik.c:1769
+#: gtik/gtik.c:1807
 msgid "Skip forward"
 msgstr "Наступна"
 
-#: gtik/gtik.c:1770
+#: gtik/gtik.c:1808
 msgid "Skip backward"
 msgstr "Попередня"
 
-#: gtik/gtik.c:1778
+#: gtik/gtik.c:1816
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2838,13 +3149,9 @@ msgstr ""
 "Стрічка біржових новин\n"
 "Постійно отримує свіжі біржові курси"
 
-#: gtik/gtik.c:1990
-msgid "(No"
-msgstr "(Не"
-
-#: gtik/gtik.c:1991
-msgid "Change "
-msgstr "Змінилось "
+#: gtik/gtik.c:2028
+msgid "(No Change"
+msgstr "(Без змін"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
@@ -2966,7 +3273,7 @@ msgstr "Час оновлення дисплея (в мілісекундах)"
 msgid "Unchanged color"
 msgstr "Колір незмінених"
 
-#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:20
 #: modemlights/modemlights.schemas.in.h:31
 msgid "Update interval"
 msgstr "Період оновлення"
@@ -3022,335 +3329,481 @@ msgstr ""
 "\n"
 "Аплет відображення погодних умовам."
 
-#: gweather/gweather-applet.c:306
+#: gweather/gweather-applet.c:357 gweather/gweather-applet.c:361
 msgid "GNOME Weather"
 msgstr "Погода"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
+#: gweather/gweather-dialog.c:83 gweather/gweather-dialog.c:336
 msgid "Forecast"
 msgstr "Прогноз"
 
-#: gweather/gweather-dialog.c:109
+#: gweather/gweather-dialog.c:123
 msgid "City:"
 msgstr "Місто:"
 
-#: gweather/gweather-dialog.c:117
+#: gweather/gweather-dialog.c:131
 msgid "Last update:"
 msgstr "Останнє оновлення:"
 
-#: gweather/gweather-dialog.c:125
+#: gweather/gweather-dialog.c:139
 msgid "Conditions:"
 msgstr "Погодні умови:"
 
-#: gweather/gweather-dialog.c:133
+#: gweather/gweather-dialog.c:147
 msgid "Sky:"
 msgstr "Небо:"
 
-#: gweather/gweather-dialog.c:141
+#: gweather/gweather-dialog.c:155
 msgid "Temperature:"
 msgstr "Температура:"
 
-#: gweather/gweather-dialog.c:149
+#: gweather/gweather-dialog.c:163
+msgid "Feels like:"
+msgstr "Самопочуття:"
+
+#: gweather/gweather-dialog.c:171
 msgid "Dew point:"
 msgstr "Точка роси:"
 
-#: gweather/gweather-dialog.c:157
+#: gweather/gweather-dialog.c:179
 msgid "Humidity:"
 msgstr "Вологість:"
 
-#: gweather/gweather-dialog.c:165
+#: gweather/gweather-dialog.c:187
 msgid "Wind:"
 msgstr "Вітер:"
 
-#: gweather/gweather-dialog.c:173
+#: gweather/gweather-dialog.c:195
 msgid "Pressure:"
 msgstr "Тиск:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:203
 msgid "Visibility:"
 msgstr "Видимість:"
 
-#: gweather/gweather-dialog.c:276
+#: gweather/gweather-dialog.c:309
 msgid "Current Conditions"
 msgstr "Поточні погодні умови"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:326
 msgid "Forecast Report"
 msgstr "Прогноз погоди"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:326
 msgid "See the ForeCast Details"
 msgstr "Переглянути докладний прогноз"
 
-#: gweather/gweather-dialog.c:325
-msgid "_Visit Weather.com"
-msgstr "_Відвідати Weather.com"
-
-#: gweather/gweather-dialog.c:326
-msgid "URL link Button"
-msgstr "Кнопка посилання"
-
-#: gweather/gweather-dialog.c:326
-msgid "Click to Enter Weather.com"
-msgstr "Клацніть, щоб відвідати Weather.com"
-
-#: gweather/gweather-dialog.c:334
+#: gweather/gweather-dialog.c:344
 msgid "Radar Map"
 msgstr "Радарна мапа"
 
-#: gweather/gweather-dialog.c:410
-msgid ""
-"Detailed forecast not available for this location.\n"
-"Please try the state forecast; note that IWIN forecasts are available only "
-"for US cities."
-msgstr ""
-"Прогноз для цього місця недоступний.\n"
-"Спробуйте подивитись прогноз для штату. Зауважте, що прогнози IWIN є лише "
-"для міст США."
+#: gweather/gweather-dialog.c:375
+msgid "_Visit Weather.com"
+msgstr "_Відвідати Weather.com"
 
-#: gweather/gweather-dialog.c:412
-msgid ""
-"State forecast not available for this location.\n"
-"Please try the detailed forecast; note that IWIN forecasts are available "
-"only for US cities."
-msgstr ""
-"Прогноз для цього місця недоступний.\n"
-"Спробуйте подивитись докладний прогноз. Зауважте, що прогнози IWIN є лише "
-"для міст США."
+#: gweather/gweather-dialog.c:376
+msgid "Visit Weather.com"
+msgstr "Відвідати Weather.com"
+
+#: gweather/gweather-dialog.c:376
+msgid "Click to Enter Weather.com"
+msgstr "Клацніть, щоб відвідати Weather.com"
+
+#: gweather/gweather-dialog.c:465
+msgid "Forecast not currently available for this location."
+msgstr "Для цієї місцевості прогноз наразі недоступний."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:149
+#: gweather/gweather-pref.c:191
 msgid "Location view"
 msgstr "Перегляд місцевості"
 
-#: gweather/gweather-pref.c:149
+#: gweather/gweather-pref.c:191
 msgid "Select Location from the list"
 msgstr "Виберіть місцевість із списку"
 
-#: gweather/gweather-pref.c:151
+#: gweather/gweather-pref.c:193
 msgid "Update spin button"
 msgstr "Кнопка оновлення"
 
-#: gweather/gweather-pref.c:151
+#: gweather/gweather-pref.c:193
 msgid "Spinbutton for updating"
 msgstr "Кнопка оновлення"
 
-#: gweather/gweather-pref.c:152
+#: gweather/gweather-pref.c:194
 msgid "Address Entry"
 msgstr "Поле адреси"
 
-#: gweather/gweather-pref.c:152
+#: gweather/gweather-pref.c:194
 msgid "Enter the URL"
 msgstr "Введіть адресу (URL)"
 
-#: gweather/gweather-pref.c:605
-msgid "Weather Preferences"
-msgstr "Настройки погоди"
+#. TRANSLATOR: This is the default unit to use for temperature measurements.
+#. Valid values are: "K" (Kelvin), "C" (Centigrade) and "F" (Fahrenheit)
+#: gweather/gweather-pref.c:400 gweather/gweather-pref.c:409
+msgid "DEFAULT_TEMP_UNIT"
+msgstr "C"
 
-#: gweather/gweather-pref.c:638 gweather/gweather-pref.c:703
+#. TRANSLATOR: This is the default unit to use for wind speed.
+#. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
+#. "mph" (miles per hour) and "knots"
+#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
+msgid "DEFAULT_SPEED_UNIT"
+msgstr "km/h"
+
+#. TRANSLATOR: This is the default unit to use for atmospheric pressure.
+#. Valid values are: "hPa" (hectoPascals), "mb" (millibars), "mmHg"
+#. (millimeters of mercury) and "inHg" (inches of mercury)
+#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:483
+msgid "DEFAULT_PRESSURE_UNIT"
+msgstr "mmHg"
+
+#. TRANSLATOR: This is the default unit to use for visibility distance.
+#. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
+#: gweather/gweather-pref.c:509 gweather/gweather-pref.c:518
+msgid "DEFAULT_DISTANCE_UNIT"
+msgstr "km"
+
+#: gweather/gweather-pref.c:796
+msgid "Weather Preferences"
+msgstr "Параметри погоди"
+
+#: gweather/gweather-pref.c:829 gweather/gweather-pref.c:994
 msgid "_Automatically update every:"
 msgstr "Автоматично оновлювати _кожні "
 
-#: gweather/gweather-pref.c:646
-msgid "Use _metric system units"
-msgstr "_Метрична система"
+#. Temperature Unit
+#: gweather/gweather-pref.c:838
+msgid "_Temperature Unit:"
+msgstr "_Температурі одиниці:"
 
-#: gweather/gweather-pref.c:654
+#: gweather/gweather-pref.c:848
+msgid "Kelvin"
+msgstr "по-Кельвіну"
+
+#: gweather/gweather-pref.c:849
+msgid "Centigrade"
+msgstr "по-Цельсію"
+
+#: gweather/gweather-pref.c:850
+msgid "Fahrenheit"
+msgstr "по-Фаренгейту"
+
+#. Speed Unit
+#: gweather/gweather-pref.c:857
+msgid "_Wind Speed Unit:"
+msgstr "Одиниці швидкості _вітру:"
+
+#. TRANSLATOR: The wind speed unit "meters per second"
+#: gweather/gweather-pref.c:868
+msgid "m/s"
+msgstr "м/с"
+
+#. TRANSLATOR: The wind speed unit "kilometers per hour"
+#: gweather/gweather-pref.c:870
+msgid "km/h"
+msgstr "км/с"
+
+#. TRANSLATOR: The wind speed unit "miles per hour"
+#: gweather/gweather-pref.c:872
+msgid "mph"
+msgstr "миль/год"
+
+#. TRANSLATOR: The wind speed unit "knots"
+#: gweather/gweather-pref.c:874
+msgid "knots"
+msgstr "вузлів"
+
+#. Pressure Unit
+#: gweather/gweather-pref.c:881
+msgid "_Pressure Unit:"
+msgstr "Одиниці т_иску:"
+
+#. TRANSLATOR: The pressure unit "hectoPascals"
+#: gweather/gweather-pref.c:892
+msgid "hPa"
+msgstr "ГПа"
+
+#. TRANSLATOR: The pressure unit "millibars"
+#: gweather/gweather-pref.c:894
+msgid "mb"
+msgstr "мбар"
+
+#. TRANSLATOR: The pressure unit "millibars of mercury"
+#: gweather/gweather-pref.c:896
+msgid "mmHg"
+msgstr "мм рт.ст."
+
+#. TRANSLATOR: The pressure unit "inches of mercury"
+#: gweather/gweather-pref.c:898
+msgid "inHg"
+msgstr "дюймів рт.ст."
+
+#. Distance Unit
+#: gweather/gweather-pref.c:905
+msgid "_Visibility Unit:"
+msgstr "Одиниці ви_димості:"
+
+#. TRANSLATOR: The distance unit "meters"
+#: gweather/gweather-pref.c:916
+msgid "meters"
+msgstr "метрів"
+
+#. TRANSLATOR: The distance unit "kilometers"
+#: gweather/gweather-pref.c:918
+msgid "km"
+msgstr "км"
+
+#. TRANSLATOR: The distance unit "miles"
+#: gweather/gweather-pref.c:920
+msgid "miles"
+msgstr "миль"
+
+#: gweather/gweather-pref.c:945
 msgid "Enable _radar map"
 msgstr "Ввімкнути _радарну мапу"
 
-#: gweather/gweather-pref.c:668
-msgid "Use cus_tom address for radar map"
+#: gweather/gweather-pref.c:959
+msgid "Use _custom address for radar map"
 msgstr "_Власна адреса радарної мапи"
 
-#: gweather/gweather-pref.c:685
+#: gweather/gweather-pref.c:976
 msgid "A_ddress:"
 msgstr "_Адреса:"
 
-#: gweather/gweather-pref.c:766
+#: gweather/gweather-pref.c:1058
 msgid "_Select a location:"
 msgstr "Ви_беріть місцевість:"
 
-#: gweather/gweather-pref.c:795
+#: gweather/gweather-pref.c:1088
 msgid "Location"
 msgstr "Місцевість"
 
-#: gweather/gweather.schemas.in.h:1
+#. TRANSLATOR: Change this to the default location code (2nd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "KJFK"
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:135
+#: gweather/weather.c:140
+msgid "DEFAULT_CODE"
+msgstr "UKBB"
+
+#. TRANSLATOR: Change this to the default location name (1st parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "New York-JFK Arpt"
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:114
+#: gweather/weather.c:119 gweather/weather.c:120
+msgid "DEFAULT_LOCATION"
+msgstr "Kyiv/Boryspil'"
+
+#. Translators: Change this to the default location radar (4th parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "nyc"
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:166
+#: gweather/weather.c:171
+msgid "DEFAULT_RADAR"
+msgstr "---"
+
+#. TRANSLATOR: Change this to the default location zone (3rd parameter) in the
+#. gweather/Locations file
+#. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
+#. so this should be translated as "NYZ076"
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:151
+#: gweather/weather.c:156
+msgid "DEFAULT_ZONE"
+msgstr "------"
+
+#: gweather/gweather.schemas.in.h:5
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "Визначає, чи аплет погоди автоматично оновлює дані про погоду."
 
-#: gweather/gweather.schemas.in.h:2
+#: gweather/gweather.schemas.in.h:6
 msgid "Display radar map"
 msgstr "Показувати радарну мапу"
 
-#: gweather/gweather.schemas.in.h:3
+#: gweather/gweather.schemas.in.h:7
+msgid "Distance units"
+msgstr "Одиниці відстані"
+
+#: gweather/gweather.schemas.in.h:8
 msgid "Fetch a radar map on each update."
 msgstr "Запитувати радарну мапу з кожним оновленням."
 
-#: gweather/gweather.schemas.in.h:4
+#: gweather/gweather.schemas.in.h:9
 msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr "Чи отримувати радарну мапу з місця, вказаного в ключі \"radar\"."
 
-#: gweather/gweather.schemas.in.h:5
+#: gweather/gweather.schemas.in.h:10
 #: mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Not used anymore"
 msgstr "Більше не використовується"
 
-#: gweather/gweather.schemas.in.h:6
+#: gweather/gweather.schemas.in.h:11
+msgid "Pressure units"
+msgstr "Одиниці тиску"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Speed units"
+msgstr "Одиниці швидкості"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Temperature units"
+msgstr "Одиниці температури"
+
+#: gweather/gweather.schemas.in.h:14
 msgid "The custom url from where to retrieve a radar map."
 msgstr "Власна адреса для отримання радарної мапи."
 
-#: gweather/gweather.schemas.in.h:7
+#: gweather/gweather.schemas.in.h:15
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Період між автоматичними оновленнями (в секундах)."
 
-#: gweather/gweather.schemas.in.h:9
+#: gweather/gweather.schemas.in.h:16
+msgid "The temperature units to use."
+msgstr "Одиниці температури."
+
+#: gweather/gweather.schemas.in.h:17
+msgid "The unit to use for pressure."
+msgstr "Одиниці тиску."
+
+#: gweather/gweather.schemas.in.h:18
+msgid "The unit to use for visibility."
+msgstr "Одиниці видимості."
+
+#: gweather/gweather.schemas.in.h:19
+msgid "The unit to use for wind speed."
+msgstr "Одиниці швидкості вітру."
+
+#: gweather/gweather.schemas.in.h:21
 msgid "Update the data automatically"
 msgstr "Оновлювати дані автоматично"
 
-#: gweather/gweather.schemas.in.h:10
+#: gweather/gweather.schemas.in.h:22
 msgid "Url for the radar map"
 msgstr "Адреса радарної мапи"
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:23
 msgid "Use custom url for the radar map"
 msgstr "Використовувати власну адресу радарної мапи."
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:24
 msgid "Use metric units"
 msgstr "Метрична система"
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:25
 msgid "Use metric units instead of english units."
 msgstr "Використовувати метричну систему."
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:26
 msgid "weather location information."
 msgstr "інформація про місце."
 
-#: gweather/weather.c:58
-msgid "knots"
-msgstr "вузлів"
+#: gweather/weather.c:127
+msgid "Pittsburgh"
+msgstr "Пітсбург"
 
-#: gweather/weather.c:58
-msgid "kph"
-msgstr "км/год"
-
-#: gweather/weather.c:63
-msgid "inHg"
-msgstr "дюймів рт.ст."
-
-#: gweather/weather.c:63
-msgid "hPa"
-msgstr "ГПа"
-
-#: gweather/weather.c:67
-msgid "miles"
-msgstr "миль"
-
-#: gweather/weather.c:67
-msgid "kilometers"
-msgstr "км"
-
-#: gweather/weather.c:133
+#: gweather/weather.c:221
 msgid "Variable"
 msgstr "Змінних напрямків"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:222
 msgid "North"
 msgstr "Північний"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:222
 msgid "North - NorthEast"
 msgstr "Північний - північно-східний"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:222
 msgid "Northeast"
 msgstr "Північно-східний"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:222
 msgid "East - NorthEast"
 msgstr "Східний - північно-східний"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:223
 msgid "East"
 msgstr "Східний"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:223
 msgid "East - Southeast"
 msgstr "Східний - південно-східний"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:223
 msgid "Southeast"
 msgstr "Південно-східний"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:223
 msgid "South - Southeast"
 msgstr "Південний - південно-східний"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:224
 msgid "South"
 msgstr "Південний"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:224
 msgid "South - Southwest"
 msgstr "Південний - південно-західний"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:224
 msgid "Southwest"
 msgstr "Південно-західний"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:224
 msgid "West - Southwest"
 msgstr "Західний - Південно-західний"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:225
 msgid "West"
 msgstr "Західний"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:225
 msgid "West - Northwest"
 msgstr "Західний - північно-західний"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:225
 msgid "Northwest"
 msgstr "Північно-західний"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:225
 msgid "North - Northwest"
 msgstr "Північний - північно-західний"
 
-#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
-#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
-#: gweather/weather.c:2033
+#: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
+#: gweather/weather.c:2259 gweather/weather.c:2274 gweather/weather.c:2290
+#: gweather/weather.c:2321 gweather/weather.c:2333 gweather/weather.c:2352
+#: gweather/weather.c:2376 gweather/weather.c:2389 gweather/weather.c:2409
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: gweather/weather.c:145 gweather/weather.c:162 gweather/weather.c:233
+#: gweather/weather.c:233 gweather/weather.c:250 gweather/weather.c:321
 msgid "Invalid"
 msgstr "Помилковий"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:239
 msgid "Clear Sky"
 msgstr "Безхмарно"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:240
 msgid "Broken clouds"
 msgstr "Хмарно з проясненнями"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:241
 msgid "Scattered clouds"
 msgstr "Окремі хмари"
 
-#: gweather/weather.c:154
+#: gweather/weather.c:242
 msgid "Few clouds"
 msgstr "Невелика хмарність"
 
-#: gweather/weather.c:155
+#: gweather/weather.c:243
 msgid "Overcast"
 msgstr "Хмарно"
 
@@ -3358,314 +3811,432 @@ msgstr "Хмарно"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:194 gweather/weather.c:196
+#: gweather/weather.c:282 gweather/weather.c:284
 msgid "Thunderstorm"
 msgstr "Гроза"
 
 #. DRIZZLE
-#: gweather/weather.c:195
+#: gweather/weather.c:283
 msgid "Drizzle"
 msgstr "Мряка"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:283
 msgid "Light drizzle"
 msgstr "Легка мряка"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:283
 msgid "Moderate drizzle"
 msgstr "Помірна мряка"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:283
 msgid "Heavy drizzle"
 msgstr "Рясна мряка"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:283
 msgid "Freezing drizzle"
 msgstr "Холодна мряка"
 
 #. RAIN
-#: gweather/weather.c:196
+#: gweather/weather.c:284
 msgid "Rain"
 msgstr "Дощ"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:284
 msgid "Light rain"
 msgstr "Легкий дощ"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:284
 msgid "Moderate rain"
 msgstr "Помірний дощ"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:284
 msgid "Heavy rain"
 msgstr "Рясний дощ"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:284
 msgid "Rain showers"
 msgstr "Злива"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:284
 msgid "Freezing rain"
 msgstr "Дощ з градом"
 
 #. SNOW
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Snow"
 msgstr "Сніг"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Light snow"
 msgstr "Невеликий сніг"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Moderate snow"
 msgstr "Помірний сніг"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Heavy snow"
 msgstr "Сильний сніг"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Snowstorm"
 msgstr "Заметіль"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Blowing snowfall"
 msgstr "Хуртовина"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Snow showers"
 msgstr "Снігова буря"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:285
 msgid "Drifting snow"
 msgstr "Снігові замети"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:198
+#: gweather/weather.c:286
 msgid "Snow grains"
 msgstr "Сніжна крупа"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:286
 msgid "Light snow grains"
 msgstr "Легка сніжна крупа"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:286
 msgid "Moderate snow grains"
 msgstr "Помірна сніжна крупа"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:286
 msgid "Heavy snow grains"
 msgstr "Рясна сніжна крупа"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:199
+#: gweather/weather.c:287
 msgid "Ice crystals"
 msgstr "Крижані кришталики"
 
 #. ICE_PELLETS
-#: gweather/weather.c:200
+#: gweather/weather.c:288
 msgid "Ice pellets"
 msgstr "Крижані кульки"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:288
 msgid "Few ice pellets"
 msgstr "Незначні опади крижаних кульок"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:288
 msgid "Moderate ice pellets"
 msgstr "Помірні опади крижаних кульок"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:288
 msgid "Heavy ice pellets"
 msgstr "Сильні опади крижаних кульок"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:288
 msgid "Ice pellet storm"
 msgstr "Буря крижаних кульок"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:288
 msgid "Showers of ice pellets"
 msgstr "Шквал крижаних кульок"
 
 #. HAIL
-#: gweather/weather.c:201
+#: gweather/weather.c:289
 msgid "Hail"
 msgstr "Град"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:289
 msgid "Hailstorm"
 msgstr "Градова гроза"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:289
 msgid "Hail showers"
 msgstr "Потужний поривчастий град"
 
 #. SMALL_HAIL
-#: gweather/weather.c:202
+#: gweather/weather.c:290
 msgid "Small hail"
 msgstr "Дрібний град"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:290
 msgid "Small hailstorm"
 msgstr "Дрібна гроза з градом"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:290
 msgid "Showers of small hail"
 msgstr "Проливний дрібний град"
 
 #. PRECIPITATION
-#: gweather/weather.c:203
+#: gweather/weather.c:291
 msgid "Unknown precipitation"
 msgstr "Невідомі опади"
 
 #. MIST
-#: gweather/weather.c:204
+#: gweather/weather.c:292
 msgid "Mist"
 msgstr "Легкий туман"
 
 #. FOG
-#: gweather/weather.c:205
+#: gweather/weather.c:293
 msgid "Fog"
 msgstr "Туман"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:293
 msgid "Fog in the vicinity"
 msgstr "Туман на околицях"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:293
 msgid "Shallow fog"
 msgstr "Дрібний туман"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:293
 msgid "Patches of fog"
 msgstr "Місцями туман"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:293
 msgid "Partial fog"
 msgstr "Часом туман"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:293
 msgid "Freezing fog"
 msgstr "Холодний туман"
 
 #. SMOKE
-#: gweather/weather.c:206
+#: gweather/weather.c:294
 msgid "Smoke"
 msgstr "Дим"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:207
+#: gweather/weather.c:295
 msgid "Volcanic ash"
 msgstr "Вулканічний пил"
 
 #. SAND
-#: gweather/weather.c:208
+#: gweather/weather.c:296
 msgid "Sand"
 msgstr "Пісок"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:296
 msgid "Blowing sand"
 msgstr "Вітер з піском"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:296
 msgid "Drifting sand"
 msgstr "Пісчані заноси"
 
 #. HAZE
-#: gweather/weather.c:209
+#: gweather/weather.c:297
 msgid "Haze"
 msgstr "Серпанок"
 
 #. SPRAY
-#: gweather/weather.c:210
+#: gweather/weather.c:298
 msgid "Blowing sprays"
 msgstr "Бризки"
 
 #. DUST
-#: gweather/weather.c:211
+#: gweather/weather.c:299
 msgid "Dust"
 msgstr "Пил"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:299
 msgid "Blowing dust"
 msgstr "Вітер з пилом"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:299
 msgid "Drifting dust"
 msgstr "Пилові заноси"
 
 #. SQUALL
-#: gweather/weather.c:212
+#: gweather/weather.c:300
 msgid "Squall"
 msgstr "Шквал"
 
 #. SANDSTORM
-#: gweather/weather.c:213
+#: gweather/weather.c:301
 msgid "Sandstorm"
 msgstr "Пісочна буря"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:301
 msgid "Sandstorm in the vicinity"
 msgstr "Пісочна буря в околицях"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:301
 msgid "Heavy sandstorm"
 msgstr "Сильна пісочна буря"
 
 #. DUSTSTORM
-#: gweather/weather.c:214
+#: gweather/weather.c:302
 msgid "Duststorm"
 msgstr "Пилова буря"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:302
 msgid "Duststorm in the vicinity"
 msgstr "Пилова буря в околицях"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:302
 msgid "Heavy duststorm"
 msgstr "Сильна пилова буря"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:215
+#: gweather/weather.c:303
 msgid "Funnel cloud"
 msgstr "Смерч"
 
 #. TORNADO
-#: gweather/weather.c:216
+#: gweather/weather.c:304
 msgid "Tornado"
 msgstr "Ураган"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:217
+#: gweather/weather.c:305
 msgid "Dust whirls"
 msgstr "Пилові вихори"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:305
 msgid "Dust whirls in the vicinity"
 msgstr "Пилові вихори в околицях"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
+#: gweather/weather.c:1021 gweather/weather.c:1063 gweather/weather.c:1815
 msgid "Failed to get METAR data.\n"
 msgstr "Не вдається отримати дані METAR.\n"
 
-#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
+#: gweather/weather.c:1055 gweather/weather.c:1083 gweather/weather.c:1330
 msgid "WeatherInfo missing location"
 msgstr "Не вказано місцевість згідно системі WeatherInfo"
 
-#: gweather/weather.c:1931
+#: gweather/weather.c:2147
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b, %H:%M"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:2151
 msgid "Unknown observation time"
 msgstr "Невідомий час спостереження"
 
-#: gweather/weather.c:2005
+#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2183 gweather/weather.c:2186
+#, c-format
+msgid "%.1f F"
+msgstr "%.1f °F"
+
+#. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2191 gweather/weather.c:2194
+#, c-format
+msgid "%dF"
+msgstr "%d°F"
+
+#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2202 gweather/weather.c:2205
+#, c-format
+msgid "%.1f C"
+msgstr "%.1f °C"
+
+#. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
+#. symbol Unicode 00B0 if possible
+#: gweather/weather.c:2210 gweather/weather.c:2213
+#, c-format
+msgid "%dC"
+msgstr "%d°C"
+
+#. TRANSLATOR: This is the temperature in Kelvin
+#: gweather/weather.c:2222
+#, c-format
+msgid "%.1f K"
+msgstr "%.1f K"
+
+#. TRANSLATOR: This is the temperature in Kelvin
+#: gweather/weather.c:2225
+#, c-format
+msgid "%dK"
+msgstr "%dK"
+
+#. TRANSLATOR: This is the humidity in percent
+#: gweather/weather.c:2277
+#, c-format
+msgid "%.f%%"
+msgstr "%.f%%"
+
+#. TRANSLATOR: This is the wind speed in knots
+#: gweather/weather.c:2302
+#, c-format
+msgid "%0.1f knots"
+msgstr "%0.1f вузлів"
+
+#. TRANSLATOR: This is the wind speed in miles per hour
+#: gweather/weather.c:2306
+#, c-format
+msgid "%.1f mph"
+msgstr "%.1f міль/год."
+
+#. TRANSLATOR: This is the wind speed in kilometers per hour
+#: gweather/weather.c:2310
+#, c-format
+msgid "%.1f km/h"
+msgstr "%.1f км/ч"
+
+#. TRANSLATOR: This is the wind speed in miles per hour
+#: gweather/weather.c:2314
+#, c-format
+msgid "%.1f m/s"
+msgstr "%.1f м/с"
+
+#: gweather/weather.c:2335
 msgid "Calm"
 msgstr "Безвітряно"
 
-#: gweather/weather.c:2078
+#. TRANSLATOR: This is 'wind direction' / 'wind speed'
+#: gweather/weather.c:2339
+#, c-format
+msgid "%s / %s"
+msgstr "%s / %s"
+
+#. TRANSLATOR: This is pressure in inches of mercury
+#: gweather/weather.c:2357
+#, c-format
+msgid "%.2f inHg"
+msgstr "%.2f дюймів рт.ст."
+
+#. TRANSLATOR: This is pressure in millimeters of mercury
+#: gweather/weather.c:2361
+#, c-format
+msgid "%.1f mmHg"
+msgstr "%.1f мм рт.ст."
+
+#. TRANSLATOR: This is pressure in hectoPascals
+#: gweather/weather.c:2365
+#, c-format
+msgid "%.2f hPa"
+msgstr "%.2f ГПа"
+
+#. TRANSLATOR: This is pressure in millibars
+#: gweather/weather.c:2369
+#, c-format
+msgid "%.2f mb"
+msgstr "%.2f мбар"
+
+#. TRANSLATOR: This is the visibility in miles
+#: gweather/weather.c:2394
+#, c-format
+msgid "%.1f miles"
+msgstr "%.1f миль"
+
+#. TRANSLATOR: This is the visibility in kilometers
+#: gweather/weather.c:2398
+#, c-format
+msgid "%.1f km"
+msgstr "%.1f км"
+
+#. TRANSLATOR: This is the visibility in meters
+#: gweather/weather.c:2402
+#, c-format
+msgid "%.0fm"
+msgstr "%.0fм"
+
+#: gweather/weather.c:2443
 msgid "Retrieval failed"
 msgstr "Помилка отримання даних"
 
@@ -3678,7 +4249,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Фабрика для створення моніторів пошти."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
+#: mailcheck/mailcheck.c:806 mailcheck/mailcheck.c:2484
 msgid "Inbox Monitor"
 msgstr "Монітор пошти"
 
@@ -3692,11 +4263,11 @@ msgstr "Фабрика моніторів пошти"
 msgid "Internet"
 msgstr "Інтернет"
 
-#: mailcheck/mailcheck.c:668
+#: mailcheck/mailcheck.c:669
 msgid "Error checking mail"
 msgstr "Помилка перевірки пошти"
 
-#: mailcheck/mailcheck.c:811
+#: mailcheck/mailcheck.c:812
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -3704,47 +4275,47 @@ msgstr ""
 "Ви не встановили пароль у властивостях монітора пошти,\n"
 "то ж тепер необхідно вводити його під час кожного запуску."
 
-#: mailcheck/mailcheck.c:819
+#: mailcheck/mailcheck.c:820
 msgid "Please enter your mailserver's _password:"
 msgstr "Введіть _пароль для поштового сервера:"
 
-#: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
+#: mailcheck/mailcheck.c:825 mailcheck/mailcheck.c:1957
 msgid "Password Entry box"
 msgstr "Поле вводу пароля"
 
-#: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
+#: mailcheck/mailcheck.c:840 mailcheck/mailcheck.c:1984
 msgid "_Save password to disk"
 msgstr "З_берігати пароль на диску"
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:896
 msgid "Could not connect to the Internet."
 msgstr "Не вдається встановити з'єднання з Інтернетом"
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:900
 msgid "The username or password is incorrect."
 msgstr "Користувач чи пароль неправильний."
 
-#: mailcheck/mailcheck.c:902
+#: mailcheck/mailcheck.c:903
 msgid "The server name is incorrect."
 msgstr "Назва сервера неправильна."
 
-#: mailcheck/mailcheck.c:906
+#: mailcheck/mailcheck.c:907
 msgid "Error connecting to mail server."
 msgstr "Помилка з'єднання з поштовим сервером."
 
-#: mailcheck/mailcheck.c:911
+#: mailcheck/mailcheck.c:912
 msgid "Error"
 msgstr "Помилка"
 
-#: mailcheck/mailcheck.c:1087
+#: mailcheck/mailcheck.c:1088
 msgid "You have new mail."
 msgstr "Для вас є нова пошта."
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1090
 msgid "You have mail."
 msgstr "Для вас є пошта."
 
-#: mailcheck/mailcheck.c:1093
+#: mailcheck/mailcheck.c:1094
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
@@ -3752,7 +4323,7 @@ msgstr[0] "%d непрочитане"
 msgstr[1] "%d непрочитаних"
 msgstr[2] "%d непрочитаних"
 
-#: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
+#: mailcheck/mailcheck.c:1095 mailcheck/mailcheck.c:1104
 #, c-format
 msgid "%d message"
 msgid_plural "%d messages"
@@ -3761,151 +4332,151 @@ msgstr[1] "%d повідомлення"
 msgstr[2] "%d повідомлення"
 
 #. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1097
+#: mailcheck/mailcheck.c:1098
 #, c-format
 msgid "%s/%s"
 msgstr "%s/%s"
 
-#: mailcheck/mailcheck.c:1110
+#: mailcheck/mailcheck.c:1111
 msgid "No mail."
 msgstr "Немає листів."
 
-#: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
-#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
+#: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
+#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
 msgid "Status not updated"
 msgstr "Стан не оновлено"
 
-#: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
+#: mailcheck/mailcheck.c:1776 mailcheck/mailcheck.c:2402
 msgid "Inbox Settings"
 msgstr "Параметри скриньки"
 
-#: mailcheck/mailcheck.c:1793
+#: mailcheck/mailcheck.c:1802
 msgid "Mailbox _resides on:"
 msgstr "_Місцезнаходження скриньки:"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1813
 msgid "Local mailspool"
 msgstr "Локальне сховище"
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1821
 msgid "Local maildir"
 msgstr "Каталог локальної пошти"
 
-#: mailcheck/mailcheck.c:1820
+#: mailcheck/mailcheck.c:1829
 msgid "Remote POP3-server"
 msgstr "Віддалений сервер POP3"
 
-#: mailcheck/mailcheck.c:1828
+#: mailcheck/mailcheck.c:1837
 msgid "Remote IMAP-server"
 msgstr "Віддалений сервер IMAP"
 
-#: mailcheck/mailcheck.c:1853
+#: mailcheck/mailcheck.c:1862
 msgid "Mail _spool file:"
 msgstr "_Файл сховища пошти:"
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1869
 msgid "Browse"
 msgstr "Вибрати"
 
-#: mailcheck/mailcheck.c:1880
+#: mailcheck/mailcheck.c:1889
 msgid "Mail s_erver:"
 msgstr "Поштовий _сервер:"
 
-#: mailcheck/mailcheck.c:1889
+#: mailcheck/mailcheck.c:1898
 msgid "Mail Server Entry box"
 msgstr "Поле вводу поштового сервера"
 
-#: mailcheck/mailcheck.c:1908
+#: mailcheck/mailcheck.c:1917
 msgid "_Username:"
 msgstr "_Користувач:"
 
-#: mailcheck/mailcheck.c:1919
+#: mailcheck/mailcheck.c:1928
 msgid "Username Entry box"
 msgstr "Поле вводу користувача"
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:1946
 msgid "_Password:"
 msgstr "_Пароль:"
 
-#: mailcheck/mailcheck.c:1990
+#: mailcheck/mailcheck.c:1999
 msgid "_Folder:"
 msgstr "_Тека:"
 
-#: mailcheck/mailcheck.c:2001
+#: mailcheck/mailcheck.c:2010
 msgid "Folder Entry box"
 msgstr "Поле вводу теки"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2082
 msgid "Check for mail _every:"
 msgstr "Перевіряти скриньку _кожні:"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2104
 msgid "Choose time interval in minutes to check mail"
 msgstr "Вибрати період перевірки скриньки (в хвилинах)"
 
-#: mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2127
 msgid "Choose time interval in seconds to check mail"
 msgstr "Вибрати період перевірки скриньки (в секундах)"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2144
 msgid "Play a _sound when new mail arrives"
 msgstr "Відтворювати звуковий _сигнал при отриманні пошти"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2145
-msgid "Sto_p animation when double clicked"
+#: mailcheck/mailcheck.c:2154
+msgid "Sto_p animation when clicked"
 msgstr "З_упиняти анімацію після подвійного клацання"
 
-#: mailcheck/mailcheck.c:2158
+#: mailcheck/mailcheck.c:2167
 msgid "Select a_nimation:"
 msgstr "Вибір _анімації:"
 
-#: mailcheck/mailcheck.c:2176
+#: mailcheck/mailcheck.c:2185
 msgid "Commands"
 msgstr "Команди"
 
-#: mailcheck/mailcheck.c:2205
+#: mailcheck/mailcheck.c:2214
 msgid "Before each _update:"
 msgstr "Перед кожною _перевіркою:"
 
-#: mailcheck/mailcheck.c:2222
+#: mailcheck/mailcheck.c:2231
 msgid "Command to execute before each update"
 msgstr "Команда, що виконуватиметься перед кожною перевіркою"
 
-#: mailcheck/mailcheck.c:2234
+#: mailcheck/mailcheck.c:2243
 msgid "When new mail _arrives:"
 msgstr "При _надходженні повідомлень:"
 
-#: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2258 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Команда, що виконуватиметься при надходженні нових повідомлень"
 
-#: mailcheck/mailcheck.c:2261
-msgid "When double clicke_d:"
-msgstr "Після подвійного к_лацання:"
+#: mailcheck/mailcheck.c:2270
+msgid "When clicke_d:"
+msgstr "Після к_лацання:"
 
-#: mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:2285
 msgid "Command to execute when clicked"
 msgstr "Команда, що виконуватиметься після подвійного клацання"
 
-#: mailcheck/mailcheck.c:2362
+#: mailcheck/mailcheck.c:2371
 msgid "Inbox Monitor Preferences"
-msgstr "Настройки монітора пошти"
+msgstr "Параметри монітора пошти"
 
-#: mailcheck/mailcheck.c:2477
+#: mailcheck/mailcheck.c:2486
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Монітор пошти сповіщає про надходження повідомлень у вашу поштову скриньку"
 
-#: mailcheck/mailcheck.c:2839
+#: mailcheck/mailcheck.c:2853
 msgid "Text only"
 msgstr "Лише текст"
 
-#: mailcheck/mailcheck.c:2888
+#: mailcheck/mailcheck.c:2902
 msgid "Mail check"
 msgstr "Перевірка пошти"
 
-#: mailcheck/mailcheck.c:2889
+#: mailcheck/mailcheck.c:2903
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Перевірка пошти сповіщає про наявність нової пошти"
 
@@ -4063,7 +4634,7 @@ msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
 "\n"
-"\\ This program is free software; you can redistribute it and/or modify it "
+" This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
@@ -4075,20 +4646,20 @@ msgstr ""
 "модифікувати її у відповідності з ліцензією GNU GPL версії 2 чи будь-якої "
 "пізнішої, опублікованою Free Software Foundation."
 
-#: mini-commander/src/command_line.c:315
+#: mini-commander/src/command_line.c:334
 msgid "No items in history"
 msgstr "Історія порожня"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:439
+#: mini-commander/src/command_line.c:458
 msgid "Start program"
 msgstr "Запустити програму"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:504
 msgid "Command line"
 msgstr "Командний рядок"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:505
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Введіть команду і GNOME її виконає"
 
@@ -4108,12 +4679,14 @@ msgid "Set default list value for %s\n"
 msgstr "Встановити початкове значення переліку для %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "Виставлено GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, схему не буде "
 "встановлено.\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Необхідно визначити змінну оточення GCONF_CONFIG_SOURCE\n"
 
@@ -4128,74 +4701,62 @@ msgid "Error syncing config data: %s"
 msgstr "Помилка узгодження даних параметрів: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Appearance</b>"
-msgstr "<b>Вигляд</b>"
-
-#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
 msgstr "<b>Автоматичне доповнення</b>"
 
-#: mini-commander/src/mini-commander.glade.h:5
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Colors</b>"
 msgstr "<b>Кольори</b>"
 
-#: mini-commander/src/mini-commander.glade.h:6
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Size</b>"
 msgstr "<b>Розмір</b>"
 
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:6
 msgid "Add New Macro"
 msgstr "Додати новий макрос"
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command Line Preferences"
-msgstr "Настройки аплету Командний рядок"
+msgstr "Параметри аплету \"Командний рядок\""
 
-#: mini-commander/src/mini-commander.glade.h:10
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
 msgstr "_Тло командного рядка:"
 
-#: mini-commander/src/mini-commander.glade.h:11
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
 msgstr "_Колір тексту командного рядка:"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
 msgstr "Ввімкнути _автодоповнення, що ґрунтується на історії"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
 msgstr "Макроси"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pick a color"
 msgstr "Виберіть колір"
 
-#: mini-commander/src/mini-commander.glade.h:16
-msgid "Show fram_e"
-msgstr "Показувати _рамку"
-
-#: mini-commander/src/mini-commander.glade.h:17
-msgid "Show han_dle"
-msgstr "Показувати _держак"
-
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
 msgstr "Д_одати макрос..."
 
-#: mini-commander/src/mini-commander.glade.h:19
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
 msgstr "В_идалити макрос"
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
 msgstr "_Макроси:"
 
-#: mini-commander/src/mini-commander.glade.h:21
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "_Pattern:"
 msgstr "_Шаблон:"
 
-#: mini-commander/src/mini-commander.glade.h:22
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
 msgstr "_Використовувати звичайні кольори теми"
 
@@ -4309,57 +4870,57 @@ msgstr "Використовувати кольори теми."
 msgid "Width"
 msgstr "Ширина"
 
-#: mini-commander/src/mini-commander_applet.c:228
-#: mini-commander/src/mini-commander_applet.c:232
+#: mini-commander/src/mini-commander_applet.c:236
+#: mini-commander/src/mini-commander_applet.c:240
 msgid "Browser"
 msgstr "Огляд"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:241
 msgid "Click this button to start the browser"
 msgstr "Клацніть на цю кнопку, щоб запустити переглядач"
 
-#: mini-commander/src/mini-commander_applet.c:246
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:254
+#: mini-commander/src/mini-commander_applet.c:258
 msgid "History"
 msgstr "Історія"
 
-#: mini-commander/src/mini-commander_applet.c:251
+#: mini-commander/src/mini-commander_applet.c:259
 msgid "Click this button for the list of previous commands"
 msgstr "Натисніть на цю кнопку для отримання списку попередніх команд"
 
-#: mini-commander/src/mini-commander_applet.c:363
+#: mini-commander/src/mini-commander_applet.c:343
 msgid "Command line has been disabled by your system administrator"
 msgstr "Командний рядок заблокований системним адміністратором"
 
-#: mini-commander/src/mini-commander_applet.c:426
+#: mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
 msgstr "Аплет міні командний рядок"
 
-#: mini-commander/src/mini-commander_applet.c:427
+#: mini-commander/src/mini-commander_applet.c:411
 msgid "This applet adds a command line to the panel"
 msgstr "Цей аплет додає командний рядок до панелі"
 
-#: mini-commander/src/preferences.c:428
+#: mini-commander/src/preferences.c:400
 msgid "You must specify a pattern"
 msgstr "Необхідно вказати шаблон"
 
-#: mini-commander/src/preferences.c:432
+#: mini-commander/src/preferences.c:404
 msgid "You must specify a pattern and a command"
 msgstr "Необхідно вказати шаблон та команду"
 
-#: mini-commander/src/preferences.c:433
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a command"
 msgstr "Необхідно вказати команду"
 
-#: mini-commander/src/preferences.c:436
+#: mini-commander/src/preferences.c:408
 msgid "You may not specify duplicate patterns"
 msgstr "Не можна вказувати однакові шаблони"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:778
 msgid "Pattern"
 msgstr "Шаблон"
 
-#: mini-commander/src/preferences.c:860
+#: mini-commander/src/preferences.c:788
 msgid "Command"
 msgstr "Команда"
 
@@ -4367,8 +4928,8 @@ msgstr "Команда"
 msgid "Adjust the sound volume"
 msgstr "Регулює гучність звуку"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
-#: mixer/mixer.c:1346
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:200
+#: mixer/mixer.c:1364
 msgid "Volume Control"
 msgstr "Регулятор гучності"
 
@@ -4481,15 +5042,15 @@ msgstr "Радіо"
 msgid "Monitor"
 msgstr "Монітор"
 
-#: mixer/mixer.c:200
+#: mixer/mixer.c:201
 msgid "Volume Control (muted)"
 msgstr "Керування гучністю (вимкнено)"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "No audio device"
 msgstr "Немає звукових пристроїв"
 
-#: mixer/mixer.c:518
+#: mixer/mixer.c:519
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4497,52 +5058,52 @@ msgstr ""
 "увага: цю версію gmix було скомпільовано з іншою версією файлу\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:878
+#: mixer/mixer.c:894
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Не вдається відкрити пристрій регулятора звуку %s\n"
 
-#: mixer/mixer.c:1047
+#: mixer/mixer.c:1063
 msgid "Volume Controller"
 msgstr "Керування гучністю"
 
-#: mixer/mixer.c:1048
+#: mixer/mixer.c:1064
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Використовуйте клавіші \"вгору\" і \"вниз\" для зміни гучності"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1072
+#: mixer/mixer.c:1088
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1089
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1347
+#: mixer/mixer.c:1365
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1348
+#: mixer/mixer.c:1366
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Керування гучністю дозволяє вам встановлювати рівень гучності з вашої "
 "стільниці."
 
-#: mixer/mixer.c:1495
+#: mixer/mixer.c:1513
 msgid "Volume Control Preferences"
-msgstr "Настройки керування гучністю"
+msgstr "Параметри керування гучністю"
 
-#: mixer/mixer.c:1519
+#: mixer/mixer.c:1537
 msgid "Audio Channels"
 msgstr "Звукові канали"
 
-#: mixer/mixer.c:1535
+#: mixer/mixer.c:1553
 msgid "_Select channel to control:"
 msgstr "_Виберіть канал регулятора:"
 
-#: mixer/mixer.c:1874
+#: mixer/mixer.c:1889
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Керування гучністю дозволяє вам встановлювати рівень гучності з вашої "
@@ -4561,22 +5122,22 @@ msgid "Saved volume to restore on startup"
 msgstr "Збережено гучність для відновлення при наступному запуску"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1599
 msgid "Modem Lights"
-msgstr "Індикатори модема"
+msgstr "Індикатори модему"
 
-#: modemlights/modemlights.c:137
+#: modemlights/modemlights.c:140
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 "Випущено під ліцензією GNU general public license.\n"
-"Індикатор стану модема та менеджер набору номера.\n"
+"Індикатор стану модему та менеджер набору номера.\n"
 "Індикатори (згори донизу або зліва направо) - це \n"
 "це \"Відсилання даних\" та \"Прийом даних\"."
 
-#: modemlights/modemlights.c:518
+#: modemlights/modemlights.c:521
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -4584,24 +5145,24 @@ msgstr ""
 "Ви приєднані.\n"
 "Від'єднатись?"
 
-#: modemlights/modemlights.c:526
+#: modemlights/modemlights.c:529
 msgid "_Disconnect"
 msgstr "_Роз'єднатись"
 
-#: modemlights/modemlights.c:553
+#: modemlights/modemlights.c:556
 msgid "Do you want to connect?"
 msgstr "Встановити з'єднання?"
 
-#: modemlights/modemlights.c:560
+#: modemlights/modemlights.c:563
 msgid "C_onnect"
 msgstr "З'_єднатись"
 
-#: modemlights/modemlights.c:584
+#: modemlights/modemlights.c:587
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fМб прийнято / %#.1fМб відіслано / час: %.1d:%.2d"
 
-#: modemlights/modemlights.c:589
+#: modemlights/modemlights.c:592
 msgid "not connected"
 msgstr "немає з'єднань"
 
@@ -4726,11 +5287,11 @@ msgstr "Період оновлення у долях секунди."
 
 #: modemlights/modemlights.schemas.in.h:29
 msgid "The name of the modem device."
-msgstr "Назва пристрою модема."
+msgstr "Назва пристрою модему."
 
 #: modemlights/modemlights.schemas.in.h:30
 msgid "The name of the modem lock file."
-msgstr "Назва файла блокування модема."
+msgstr "Назва файла блокування модему."
 
 #: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
@@ -4754,7 +5315,7 @@ msgstr "Перевіряти власника файла блокування"
 
 #: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
-msgstr "Настройки індикаторів модему"
+msgstr "Параметри індикаторів модему"
 
 #: modemlights/properties.c:451
 msgid "U_pdate every:"
@@ -4835,16 +5396,16 @@ msgid "Bac_kground:"
 msgstr "Т_ло:"
 
 #: modemlights/properties.c:621
-msgid "O_utline"
+msgid "O_utline:"
 msgstr "_Контур"
 
-#: modemlights/properties.c:624 multiload/properties.c:534
+#: modemlights/properties.c:624 multiload/properties.c:535
 msgid "Colors"
 msgstr "Кольори"
 
 #: modemlights/properties.c:633
 msgid "Modem Options"
-msgstr "Параметри модема"
+msgstr "Параметри модему"
 
 #: modemlights/properties.c:642
 msgid "_Device:"
@@ -4902,19 +5463,19 @@ msgstr ""
 "Монітор системного завантаження відображає графіки використання процесора, "
 "пам'яті, файлу підкачки, дискового простору та мережі."
 
-#: multiload/main.c:337 multiload/properties.c:559
+#: multiload/main.c:337 multiload/properties.c:560
 msgid "Processor"
 msgstr "Процесор"
 
-#: multiload/main.c:339 multiload/properties.c:566
+#: multiload/main.c:339 multiload/properties.c:567
 msgid "Memory"
 msgstr "Пам'ять"
 
-#: multiload/main.c:341 multiload/properties.c:574
+#: multiload/main.c:341 multiload/properties.c:575
 msgid "Network"
 msgstr "Мережа"
 
-#: multiload/main.c:343 multiload/properties.c:582
+#: multiload/main.c:343 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Простір підкачки"
 
@@ -4922,7 +5483,18 @@ msgstr "Простір підкачки"
 msgid "Resource"
 msgstr "Ресурс"
 
-#: multiload/main.c:358
+#: multiload/main.c:363
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use of which\n"
+"%d%% is cache"
+msgstr ""
+"%s:\n"
+"%d%% використовується, з яких\n"
+"%d%% використано під кеш"
+
+#: multiload/main.c:366
 #, c-format
 msgid ""
 "%s:\n"
@@ -5047,117 +5619,117 @@ msgstr "Колір тла графіка підкачки"
 msgid "Net Load"
 msgstr "Завантаження мережі"
 
-#: multiload/properties.c:332
+#: multiload/properties.c:333
 msgid "Monitored Resources"
 msgstr "Ресурси, що контролюються"
 
-#: multiload/properties.c:357
+#: multiload/properties.c:358
 msgid "_Processor"
 msgstr "П_роцесор"
 
-#: multiload/properties.c:370
+#: multiload/properties.c:371
 msgid "_Memory"
 msgstr "_Пам'ять"
 
-#: multiload/properties.c:383
+#: multiload/properties.c:384
 msgid "_Network"
 msgstr "_Мережа"
 
-#: multiload/properties.c:396
+#: multiload/properties.c:397
 msgid "S_wap Space"
 msgstr "Файл під_качки"
 
-#: multiload/properties.c:409
+#: multiload/properties.c:410
 msgid "_Load"
 msgstr "_Завантаження"
 
-#: multiload/properties.c:456
+#: multiload/properties.c:457
 msgid "System m_onitor width: "
 msgstr "_Ширина системного монітора:"
 
-#: multiload/properties.c:458
+#: multiload/properties.c:459
 msgid "System m_onitor height: "
 msgstr "_Висота системного монітора:"
 
-#: multiload/properties.c:497
+#: multiload/properties.c:498
 msgid "Sys_tem monitor update interval: "
 msgstr "Період _оновлення системного монітора:"
 
-#: multiload/properties.c:523
+#: multiload/properties.c:524
 msgid "milliseconds"
 msgstr "мс"
 
-#: multiload/properties.c:561 multiload/properties.c:568
+#: multiload/properties.c:562 multiload/properties.c:569
 msgid "_User"
 msgstr "_Користувач"
 
-#: multiload/properties.c:562
+#: multiload/properties.c:563
 msgid "S_ystem"
 msgstr "_Система"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:564
 msgid "N_ice"
 msgstr "Пр_іоритет"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:565
 msgid "I_dle"
 msgstr "О_чікування"
 
-#: multiload/properties.c:569
+#: multiload/properties.c:570
 msgid "Sh_ared"
 msgstr "_Спільна"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:571
 msgid "_Buffers"
 msgstr "_Буфери"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:572
 msgid "Cach_ed"
 msgstr "Ке_шована"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:573
 msgid "F_ree"
 msgstr "_Вільна"
 
-#: multiload/properties.c:576
+#: multiload/properties.c:577
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:577
+#: multiload/properties.c:578
 msgid "PL_IP"
 msgstr "_PLIP"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:579
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:580
 msgid "Othe_r"
 msgstr "_Інше"
 
-#: multiload/properties.c:580 multiload/properties.c:590
+#: multiload/properties.c:581 multiload/properties.c:591
 msgid "_Background"
 msgstr "_Тло"
 
-#: multiload/properties.c:584
+#: multiload/properties.c:585
 msgid "_Used"
 msgstr "Ви_користано"
 
-#: multiload/properties.c:585
+#: multiload/properties.c:586
 msgid "_Free"
 msgstr "_Вільно"
 
-#: multiload/properties.c:587
+#: multiload/properties.c:588
 msgid "Load"
 msgstr "Завантаження"
 
-#: multiload/properties.c:589
+#: multiload/properties.c:590
 msgid "_Average"
 msgstr "_Середнє"
 
-#: multiload/properties.c:613
+#: multiload/properties.c:614
 msgid "System Monitor Preferences"
-msgstr "Настройки системного монітора"
+msgstr "Параметри системного монітора"
 
 #: multiload/swapload.c:51
 msgid "Swap Load"
@@ -5168,8 +5740,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Створення, показ і керування нотатками на стільниці"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:315 stickynotes/stickynotes_applet.c:433
-#: stickynotes/stickynotes_applet_callbacks.c:240
+#: stickynotes/stickynotes_applet.c:318 stickynotes/stickynotes_applet.c:436
+#: stickynotes/stickynotes_applet_callbacks.c:253
 msgid "Sticky Notes"
 msgstr "Липкі нотатки"
 
@@ -5178,15 +5750,15 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Фабрика аплету липких нотаток"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
-msgid "_Delete Notes..."
-msgstr "В_идалити нотатки..."
+msgid "_Delete Notes"
+msgstr "В_идалити нотатки"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
 msgstr "За_блокувати нотатки"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:44
+#: stickynotes/stickynotes.glade.h:47
 msgid "_New Note"
 msgstr "_Створити нотатку"
 
@@ -5194,11 +5766,11 @@ msgstr "_Створити нотатку"
 msgid "_Show Notes"
 msgstr "По_казати нотатки"
 
-#: stickynotes/stickynotes.c:334
+#: stickynotes/stickynotes.c:336
 msgid "Locked note"
 msgstr "Заблокована нотатка"
 
-#: stickynotes/stickynotes.c:339
+#: stickynotes/stickynotes.c:341
 msgid "Unlocked note"
 msgstr "Розблокована нотатка"
 
@@ -5208,7 +5780,7 @@ msgstr "<b>Початкові властивості нотаток</b>"
 
 #: stickynotes/stickynotes.glade.h:5
 msgid ""
-"<b>Delete ALL sticky notes?</b>\n"
+"<b>Delete all sticky notes?</b>\n"
 "\n"
 "Changes will be saved instantly."
 msgstr ""
@@ -5251,7 +5823,7 @@ msgid "Choose a font to use for all sticky notes"
 msgstr "Вибрати шрифт для всіх нотаток"
 
 #: stickynotes/stickynotes.glade.h:17
-msgid "Choose if notes are visible on ALL workspaces"
+msgid "Choose if notes are visible on all workspaces"
 msgstr "Відмітьте для показу нотаток на всіх робочих областях"
 
 #: stickynotes/stickynotes.glade.h:18
@@ -5267,116 +5839,116 @@ msgid "Close note"
 msgstr "Закрити нотатку"
 
 #: stickynotes/stickynotes.glade.h:21
+msgid "Create a new note"
+msgstr "Створити нову нотатку"
+
+#: stickynotes/stickynotes.glade.h:22
 msgid "Force _default color and font on notes"
 msgstr "С_тандартний колір і шрифт для всіх нотаток"
 
-#: stickynotes/stickynotes.glade.h:22
+#: stickynotes/stickynotes.glade.h:23
 msgid "H_eight:"
 msgstr "_Висота:"
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:24
+msgid "Lock/Unlock all notes"
+msgstr "Заблокувати/розблокувати всі нотатки"
+
+#: stickynotes/stickynotes.glade.h:25
 msgid "Lock/Unlock note"
 msgstr "Розблокувати/заблокувати нотатку"
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:26
 msgid "Pick a color for the sticky note"
 msgstr "Вибір кольору нотатки"
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note color"
 msgstr "Вибір початкового кольору нотатки"
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note font"
 msgstr "Вибір початкового шрифту нотатки"
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
 msgstr "Вибір шрифту нотатки"
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
 msgstr "Змінити розмір нотатки"
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:31
+msgid "Show/Hide all notes"
+msgstr "Показати/сховати всі нотатки"
+
+#: stickynotes/stickynotes.glade.h:32
 msgid "Specify a title for the note"
 msgstr "Вказати заголовок нотатки"
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:33
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Початкова висота нових нотаток (в точках)"
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:34
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Початкова висота нових нотаток (в точках)"
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note"
 msgstr "Липка нотатка"
 
-#: stickynotes/stickynotes.glade.h:33
+#: stickynotes/stickynotes.glade.h:36
 msgid "Sticky Note Properties"
 msgstr "Властивості липкої нотатки"
 
-#: stickynotes/stickynotes.glade.h:34
+#: stickynotes/stickynotes.glade.h:37
 msgid "Sticky Notes Preferences"
-msgstr "Настройки липких нотаток"
+msgstr "Параметри липких нотаток"
 
-#: stickynotes/stickynotes.glade.h:35
+#: stickynotes/stickynotes.glade.h:38
 msgid "Use co_lor from the system theme"
 msgstr "Використовувати ко_лір системної теми"
 
-#: stickynotes/stickynotes.glade.h:36
+#: stickynotes/stickynotes.glade.h:39
 msgid "Use default co_lor"
 msgstr "Використовувати початковий _колір"
 
-#: stickynotes/stickynotes.glade.h:37
+#: stickynotes/stickynotes.glade.h:40
 msgid "Use default fo_nt"
 msgstr "Використовувати початковий _шрифт"
 
-#: stickynotes/stickynotes.glade.h:38
+#: stickynotes/stickynotes.glade.h:41
 msgid "Use fo_nt from the system theme"
 msgstr "Використовувати _шрифт системної теми"
 
-#: stickynotes/stickynotes.glade.h:39
+#: stickynotes/stickynotes.glade.h:42
 msgid "_Color:"
 msgstr "_Колір:"
 
-#: stickynotes/stickynotes.glade.h:40
-msgid "_Delete ALL"
+#: stickynotes/stickynotes.glade.h:43
+msgid "_Delete All"
 msgstr "В_идалити всі"
 
-#: stickynotes/stickynotes.glade.h:41
+#: stickynotes/stickynotes.glade.h:44
 msgid "_Delete Note..."
 msgstr "В_идалити нотатку..."
 
-#: stickynotes/stickynotes.glade.h:43
+#: stickynotes/stickynotes.glade.h:46
 msgid "_Lock Note"
 msgstr "За_блокувати нотатку"
 
-#: stickynotes/stickynotes.glade.h:45
-msgid "_Properties..."
-msgstr "В_ластивості..."
+#: stickynotes/stickynotes.glade.h:48
+msgid "_Properties"
+msgstr "В_ластивості"
 
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:49
 msgid "_Put notes on all workspaces"
 msgstr "_Покласти нотатки на всі робочі області"
 
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:50
 msgid "_Title:"
 msgstr "_Заголовок:"
-
-#: stickynotes/stickynotes.glade.h:49
-msgid "_lock/unlock all notes"
-msgstr "роз_блокувати чи заблокувати всі нотатки"
-
-#: stickynotes/stickynotes.glade.h:50
-msgid "_show/hide all notes"
-msgstr "показати чи с_ховати всі нотатки"
-
-#: stickynotes/stickynotes.glade.h:51
-msgid "create a _new note"
-msgstr "створити _нову нотатку"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
@@ -5527,7 +6099,7 @@ msgstr "Чи використовувати типовий системний к
 msgid "Whether to use the default system font"
 msgstr "Чи використовувати типовий системний шрифт"
 
-#: stickynotes/stickynotes_applet.c:433
+#: stickynotes/stickynotes_applet.c:436
 #, c-format
 msgid ""
 "%s\n"
@@ -5545,11 +6117,11 @@ msgstr[2] ""
 "%s:\n"
 "%d нотаток"
 
-#: stickynotes/stickynotes_applet_callbacks.c:242
+#: stickynotes/stickynotes_applet_callbacks.c:255
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:243
+#: stickynotes/stickynotes_applet_callbacks.c:256
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Липкі нотатки для середовища GNOME"
 
@@ -5558,15 +6130,16 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Монітор якості бездротового зв'язку"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
 msgid "Wireless Link Monitor"
 msgstr "Монітор бездротового зв'язку"
 
-#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
-msgid "No Wireless Devices"
-msgstr "Пристрої бездротового зв'язку відсутні"
+#: wireless/wireless-applet.c:146
+#, c-format
+msgid "Link Strength: %2.0d%%"
+msgstr "Інтенсивність зв'язку: %2.0d%%"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5574,15 +6147,19 @@ msgstr ""
 "Схоже, що в системі немає налаштованих пристроїв бездротового зв'язку.\n"
 "Перевірте параметри ваших пристроїв."
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
+msgid "No Wireless Devices"
+msgstr "Пристрої бездротового зв'язку відсутні"
+
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Фундація вільного програмного забезпечення"
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Ця утиліта показує стан бездротового зв'язку."
 
-#: wireless/wireless-applet.c:836
+#: wireless/wireless-applet.c:843
 msgid "This utility shows the status of a wireless link"
 msgstr "Ця утиліта показує стан бездротового зв'язку"
 
@@ -5592,7 +6169,7 @@ msgstr "Показувати силу сигналу у _відсотках"
 
 #: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
-msgstr "Настройки монітора бездротового зв'язку"
+msgstr "Параметри монітора бездротового зв'язку"
 
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
