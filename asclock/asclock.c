@@ -484,7 +484,17 @@ int main( int argc, char *argv[] )
    /* set the timezone */
    if(strlen(my->timezone)>0)
    { 
+#ifdef HAVE_SETENV
      setenv("TZ", my->timezone, TRUE);
+#else
+#ifdef HAVE_PUTENV
+     char line[MAX_PATH_LEN];
+     snprintf(line, MAX_PATH_LEN, "TZ=%s", my->timezone);
+     putenv(line);
+#else
+#error neither setenv nor putenv defined
+#endif
+#endif
      tzset();
    }
    /* set the theme */

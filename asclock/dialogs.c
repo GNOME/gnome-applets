@@ -149,8 +149,19 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
       }
 
     strncpy(static_my_asclock->timezone, static_my_asclock->selected_timezone, MAX_PATH_LEN);
-
-    setenv("TZ", static_my_asclock->timezone, TRUE);
+#ifdef HAVE_SETENV
+     setenv("TZ", static_my_asclock->timezone, TRUE);
+#else
+#ifdef HAVE_PUTENV
+     {
+       char line[MAX_PATH_LEN];
+       snprintf(line, MAX_PATH_LEN, "TZ=%s", statix_my_asclock->timezone);
+       putenv(line);
+     }
+#else
+#error neither setenv nor putenv defined
+#endif
+#endif
     tzset();
 
   }
