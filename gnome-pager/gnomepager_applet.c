@@ -1545,6 +1545,8 @@ main(int argc, char *argv[])
   show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
   show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
   show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
+  /*make sure these are not done next time*/
+  gnome_config_clean_file("gnome_pager");
 
   /*need to create the applet widget before we can get config data, so
     that we know where to get them from*/
@@ -1578,17 +1580,17 @@ main(int argc, char *argv[])
 
   /*this really loads the correct data*/
   gnome_config_push_prefix(APPLET_WIDGET(applet)->privcfgpath);
-  pager_rows = gnome_config_get_int("gnome_pager/stuff/pager_rows=2");
-  pager_size = gnome_config_get_int("gnome_pager/stuff/pager_size=0");
-  tasks_all = gnome_config_get_int("gnome_pager/stuff/tasks_all=0");
-  task_rows_h = gnome_config_get_int("gnome_pager/stuff/task_rows_h=2");
-  task_rows_v = gnome_config_get_int("gnome_pager/stuff/task_rows_v=1");
-  max_task_width = gnome_config_get_int("gnome_pager/stuff/max_task_width=400");
-  max_task_vwidth = gnome_config_get_int("gnome_pager/stuff/max_task_vwidth=48");
-  show_tasks = gnome_config_get_int("gnome_pager/stuff/show_tasks=1");
-  show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
-  show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
-  show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
+  pager_rows = gnome_config_get_int("stuff/pager_rows=2");
+  pager_size = gnome_config_get_int("stuff/pager_size=0");
+  tasks_all = gnome_config_get_int("stuff/tasks_all=0");
+  task_rows_h = gnome_config_get_int("stuff/task_rows_h=2");
+  task_rows_v = gnome_config_get_int("stuff/task_rows_v=1");
+  max_task_width = gnome_config_get_int("stuff/max_task_width=400");
+  max_task_vwidth = gnome_config_get_int("stuff/max_task_vwidth=48");
+  show_tasks = gnome_config_get_int("stuff/show_tasks=1");
+  show_pager = gnome_config_get_int("stuff/show_pager=1");
+  show_icons = gnome_config_get_int("stuff/show_icons=1");
+  show_arrow = gnome_config_get_int("stuff/show_arrow=1");
 
   gdk_error_warnings = 0;  
   get_desktop_names();
