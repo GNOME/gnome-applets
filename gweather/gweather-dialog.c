@@ -91,6 +91,8 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   				   GTK_RESPONSE_CLOSE);
 
  
+  	gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->gweather_dialog), FALSE);
+  	gtk_container_set_border_width (GTK_CONTAINER (gw_applet->gweather_dialog), 5);
   	gtk_window_set_default_size (GTK_WINDOW(gw_applet->gweather_dialog), 490, 510);
 
   	gtk_window_set_screen (GTK_WINDOW (gw_applet->gweather_dialog),
@@ -101,22 +103,14 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
 	vbox = gtk_vbox_new (FALSE, 18);
 	gtk_box_pack_start (GTK_BOX (weather_vbox), vbox, TRUE, TRUE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 
-	frame = gtk_frame_new (NULL);
-    	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_NONE);
-    	gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);	
-   	 label = gtk_label_new (NULL);
-    	tmp = g_strdup_printf ("<b>%s</b>", _("Current Conditions"));
-    	gtk_label_set_markup (GTK_LABEL (label), tmp);
-    	g_free (tmp);
-    	gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+	frame = hig_category_new (vbox, _("Current Conditions"), FALSE, FALSE);
 
 	table = gtk_table_new (9, 2, FALSE);
 	gtk_container_add (GTK_CONTAINER (frame), table);
-    	gtk_container_set_border_width (GTK_CONTAINER (table), 12);
 	gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-	gtk_table_set_col_spacings (GTK_TABLE (table), 6);
+	gtk_table_set_col_spacings (GTK_TABLE (table), 12);
 
 	label = gtk_label_new (_("City:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
@@ -185,18 +179,10 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 	gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_pressure), 0.0, 0.5);
 	gtk_table_attach (GTK_TABLE (table), gw_applet->cond_pressure, 1, 2, 8, 9, GTK_FILL, 0, 0, 0);
 	
-	frame = gtk_frame_new (NULL);
-    	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_NONE);
-    	gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);	
-   	label = gtk_label_new (NULL);
-    	tmp = g_strdup_printf ("<b>%s</b>", _("Forecast"));
-    	gtk_label_set_markup (GTK_LABEL (label), tmp);
-    	g_free (tmp);
-    	gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+	frame = hig_category_new (vbox, _("Forecast"), TRUE, TRUE);
 
 	vbox2 = gtk_vbox_new (FALSE, 6);
     	gtk_container_add (GTK_CONTAINER (frame), vbox2);
-    	gtk_container_set_border_width (GTK_CONTAINER (vbox2), 12);
 
 	scrolled = gtk_scrolled_window_new (NULL, NULL);
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled)	,

@@ -34,6 +34,35 @@ static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet);
 static void help_cb (GtkDialog *dialog);
 
 
+GtkWidget *
+hig_category_new (GtkWidget *parent, gchar *title, gboolean expand, gboolean fill)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+	
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (parent), vbox, expand, fill, 0);
+
+	tmp = g_strdup_printf ("<b>%s</b>", _(title));
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;
+}
+
 /* sets up ATK Relation between the widgets */
 
 void
@@ -217,35 +246,6 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 
 }
 
-static GtkWidget *
-create_hig_category (GtkWidget *main_box, gchar *title)
-{
-	GtkWidget *vbox, *vbox2, *hbox;
-	GtkWidget *label;
-	gchar *tmp;
-	
-	vbox = gtk_vbox_new (FALSE, 6);
-	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
-
-	tmp = g_strdup_printf ("<b>%s</b>", title);
-	label = gtk_label_new (NULL);
-	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-	gtk_label_set_markup (GTK_LABEL (label), tmp);
-	g_free (tmp);
-	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
-
-	hbox = gtk_hbox_new (FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-
-	label = gtk_label_new ("    ");
-	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-
-	vbox2 = gtk_vbox_new (FALSE, 6);
-	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
-
-	return vbox2;
-}
-
 static void gweather_pref_create (GWeatherApplet *gw_applet)
 {
     GtkWidget *pref_vbox;
@@ -260,6 +260,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *vbox, *vbox2, *vbox3;
     GtkWidget *spin, *label;
     GtkWidget *scrolled, *check;
+    GtkWidget *table;
     gchar *tmp;
     
     gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Preferences"), NULL,
@@ -296,7 +297,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 							 pref_basic_note_lbl);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
 
-    vbox2 = create_hig_category (vbox, _("Update"));
+    vbox2 = hig_category_new (vbox, _("Update"), FALSE, FALSE);
     hbox = gtk_hbox_new (FALSE, 12);
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
 
@@ -330,7 +331,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (pref_basic_update_sec_lbl);
     gtk_box_pack_start (GTK_BOX (hbox2), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
-    vbox2 = create_hig_category (vbox, _("Display"));
+    vbox2 = hig_category_new (vbox, _("Display"), FALSE, FALSE);
 
     gw_applet->pref_basic_metric_btn = gtk_check_button_new_with_mnemonic (_("Use _metric system units"));
     gtk_box_pack_start (GTK_BOX (vbox2), gw_applet->pref_basic_metric_btn, FALSE, FALSE, 0);
@@ -376,50 +377,48 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 							 label);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
 
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_NONE);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);	
-    label = gtk_label_new (NULL);
-    tmp = g_strdup_printf ("<b>%s</b>", _("Location"));
-    gtk_label_set_markup (GTK_LABEL (label), tmp);
-    g_free (tmp);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-
-    vbox2 = gtk_vbox_new (FALSE, 6);
-    gtk_container_add (GTK_CONTAINER (frame), vbox2);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox2), 12);
+    frame = hig_category_new (vbox, _("Location"), TRUE, TRUE);
 
     hbox = gtk_hbox_new (FALSE, 12);
-    gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (frame), hbox, FALSE, FALSE, 0);
     label = gtk_label_new (_("Current city:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
     gw_applet->pref_location_city_label = gtk_label_new (gw_applet->gweather_pref.city);
     gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_location_city_label, FALSE, FALSE, 0);
 
-    hbox = gtk_hbox_new (TRUE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox2), hbox, TRUE, TRUE, 0);
-
-    vbox3 = gtk_vbox_new (FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (hbox), vbox3, TRUE, TRUE, 0); 
-    hbox2 = gtk_hbox_new (FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox3), hbox2, FALSE, FALSE, 0); 
+    table = gtk_table_new (2, 2, FALSE);
+    gtk_widget_show (table);
+    gtk_box_pack_start (GTK_BOX (frame), table, TRUE, TRUE, 0);
+    gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+    gtk_table_set_col_spacings (GTK_TABLE (table), 12);
+ 
     label = gtk_label_new_with_mnemonic (_("Available c_ountries:"));
-    gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+    gtk_widget_show (label);
+    gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1,
+                      (GtkAttachOptions) (GTK_FILL),
+                      (GtkAttachOptions) (0), 0, 0);
+    
     scrolled = create_countries_widget (gw_applet);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->country_tree);
-    scrolled = create_countries_widget (gw_applet);
-    gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->country_tree);
-    gtk_box_pack_start (GTK_BOX (vbox3), scrolled, TRUE, TRUE, 0);
+    gtk_widget_show (scrolled);
+    gtk_table_attach (GTK_TABLE (table), scrolled, 0, 1, 1, 2,
+                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
 
-    vbox3 = gtk_vbox_new (FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (hbox), vbox3, TRUE, TRUE, 0);
-    hbox2 = gtk_hbox_new (FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox3), hbox2, FALSE, FALSE, 0); 
     label = gtk_label_new_with_mnemonic (_("Available c_ities:"));    
-    gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+    gtk_widget_show (label);
+    gtk_table_attach (GTK_TABLE (table), label, 1, 2, 0, 1,
+                      (GtkAttachOptions) (GTK_FILL),
+                      (GtkAttachOptions) (0), 0, 0);
+    gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);    
+    
     scrolled = create_cities_widget (gw_applet);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), gw_applet->city_tree);
-    gtk_box_pack_start (GTK_BOX (vbox3), scrolled, TRUE, TRUE, 0);
+    gtk_widget_show (scrolled);
+    gtk_table_attach (GTK_TABLE (table), scrolled, 1, 2, 1, 2,
+                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                      (GtkAttachOptions) (GTK_EXPAND | GTK_FILL), 0, 0);
 
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
     		      G_CALLBACK (response_cb), gw_applet);
