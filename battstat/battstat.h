@@ -20,8 +20,6 @@
 $Id$
  */
 
-enum statusimagename {BATTERY,AC,FLASH,WARNING};
-
 #ifdef __FreeBSD__
 #define APMDEVICE	"/dev/apm"
 #endif /* __FreeBSD__ */
@@ -32,11 +30,8 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 
 #define PROGLEN 33.0
 
-GdkPixmap *statusimage[4];
-GdkBitmap *statusmask[4];
-
-
-/* Not used yet... 
+/*
+ * Not used yet... 
  */
 typedef struct _MeterData {
   GdkPixmap *pixbuffer;
@@ -139,6 +134,15 @@ typedef struct _ProgressData {
   GtkWidget *beep_toggle;
 } ProgressData;
 
+enum statusimagename {BATTERY,AC,FLASH,WARNING};
+
+GdkPixmap *statusimage[4];
+GdkBitmap *statusmask[4];
+
+//guint pixmap_type;
+
+extern char * battery_gray_xpm[];
+
 void prop_cb (AppletWidget *, gpointer);
 int prop_cancel (GtkWidget *, gpointer);
 void prop_apply (GtkWidget *, int, gpointer);
@@ -162,6 +166,3 @@ gint applet_save_session(GtkWidget *, char *, char *, gpointer);
 void applet_change_pixel_size(GtkWidget *, int, gpointer);
 gint init_applet(int, char *[], gpointer);
 gint create_layout(int, char *[], gpointer);
-guint pixmap_type;
-
-

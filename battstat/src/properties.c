@@ -54,7 +54,6 @@ $Id$
 #include <status-docklet.h>
 
 #include "battstat.h"
-#include "pixmaps.h"
 
 #ifndef gettext_noop
 #define gettext_noop(String) (String)
@@ -74,7 +73,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 
   if (DEBUG) g_print("prop_apply()\n");
 
-  pixmap_type=-1;
+  //pixmap_type=-1;
 
   battstat->yellow_val = GTK_ADJUSTMENT (battstat->eyellow_adj)->value;
   battstat->orange_val = GTK_ADJUSTMENT (battstat->eorange_adj)->value;

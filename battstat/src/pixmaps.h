@@ -210,6 +210,7 @@ static char * ac_small_xpm[] = {
 "MNOPQRS     ",
 " TUVW       "};
 
+#if needed
 /* XPM */
 static char * battery2_small_xpm[] = {
 "12 20 99 2",
@@ -332,6 +333,7 @@ static char * battery2_small_xpm[] = {
 "  Z Q N O M P Q R T `   ",
 "     ...S +.@.#.$.%.    ",
 "                        "};
+#endif
 
 /* XPM */
 static char * battery_small_xpm[] = {
@@ -606,7 +608,7 @@ static char * warning_small_xpm[] = {
 " .@%. ",
 "  ..  "};
 /* XPM */
-static char * battery_gray_xpm[] = {
+char * battery_gray_xpm[] = {
 "41 16 34 1",
 " 	c None",
 ".	c #000000",
