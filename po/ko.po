@@ -1,0 +1,3347 @@
+# ko.po -- Korean messages for gnome-applets
+# Changwoo Ryu <cwryu@adam.kaist.ac.kr>, 1998.
+# update by Young-Ho, Cha <ganadist@chollian.net>, 2001,2003
+# update by ChiDeok, Hwang <hwang@mizi.co.kr>, 2001
+# GwanSun Back <backiss@kornet.net>, 2001
+# Changwoo Ryu <cwryu@debian.org>, 2002,2003
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-applets 2.1.3\n"
+"POT-Creation-Date: 2003-05-09 00:53+0900\n"
+"PO-Revision-Date: 2003-05-09 00:56+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:851
+msgid "Battery Charge Monitor"
+msgstr "배터리 충전 감시기"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
+msgid "Battstat Factory"
+msgstr "배터리 상태 팩토리"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr "랩탑의 남은 전력량을 감시합니다"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "유틸리티"
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
+msgid "_About..."
+msgstr "정보(_A)..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:2
+msgid "_Preferences..."
+msgstr "기본 설정(_P)..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "_Suspend Computer..."
+msgstr "컴퓨터 일시 중단(_S)..."
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:286
+msgid "Your platform is not supported!\n"
+msgstr "이 플랫폼을 지원하지 않습니다!\n"
+
+#: battstat/battstat_applet.c:287
+msgid "The applet will not work properly (if at all).\n"
+msgstr "애플릿이 동작하더라도 제대로 동작하지 않을 것입니다.\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:882
+msgid "High"
+msgstr "충분"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:884
+msgid "Low"
+msgstr "부족"
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:886
+msgid "Critical"
+msgstr "위험 수준"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:888
+msgid "Charging"
+msgstr "충전중"
+
+#: battstat/battstat_applet.c:405
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "배터리가 부족하고 (%d%%) AC 전원은 빠져 있습니다"
+
+#: battstat/battstat_applet.c:429
+msgid "Battery is now fully re-charged!"
+msgstr "배터리가 현재 완전히 충전되었습니다!"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1046
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"시스템이 배터리 전원으로 동작 중입니다\n"
+"배터리: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1054
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"시스템이 AC 전원으로 동작 중입니다\n"
+"배터리: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:978
+#: battstat/battstat_applet.c:1067
+msgid "System is running on battery power"
+msgstr "시스템이 배터리 전원으로 동작 중입니다"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1073
+msgid "System is running on AC power"
+msgstr "시스템이 AC 전원으로 동작 중입니다"
+
+#: battstat/battstat_applet.c:475
+msgid "N/A"
+msgstr "해당 없음"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:958
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "시스템이 배터리 전원으로 동작 중입니다. 배터리: %d%% (%s)"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:965
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "시스템이 AC 전원으로 동작 중입니다. 배터리: %d%% (%s)"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:617
+msgid "System is running on battery power. Battery: Not present"
+msgstr "시스템이 배터리 전원으로 동작 중입니다. 배터리: 없음"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:623
+msgid "System is running on AC power. Battery: Not present"
+msgstr "시스템이 AC 전원으로 동작 중입니다. 배터리: 없음"
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:632
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr "배터리: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:639
+msgid "Battery: Not present"
+msgstr "배터리: 없음"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:722
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"APM 장치를 열 수 없습니다!\n"
+"\n"
+"APM 장치를 읽을 권한이 있는 지\n"
+"확인하십시오."
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:731
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"APM 관리 서브시스템을 쓸 수 없도록 설정된 것으로 보입니다.\n"
+"(FreeBSD에서) \"apm -e 1\"을 실행하시고 이 명령에서\n"
+"도움이 될 만한 것을 보십시오.\n"
+
+#: battstat/battstat_applet.c:786
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+"일시 중단 명령을 실행하는 데 오류가 발생했습니다: %s\n"
+"이 오류를 바로 잡아 주십시오"
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:789
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+"일시 중단 명령을 실행하는 데 오류가 발생했습니다. 명령어가 \"%d\"을(를) 리턴"
+"했습니다\n"
+"이 오류를 바로 잡아 주십시오"
+
+#: battstat/battstat_applet.c:797
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+"기본 설정에서 일시 중단 명령어가 올바르게 설정되지 않았습니다.\n"
+"기본 설정을 바꾸고 다시 시도해 보십시오."
+
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:828
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
+
+#: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
+#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:887
+#: modemlights/modemlights.c:209 multiload/main.c:57
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:712
+msgid "translator_credits"
+msgstr ""
+"류창우 <cwryu@debian.org>, 1998, 2002\n"
+"차영호, Cha <ganadist@chollian.net>, 2001\n"
+"황치덕 <hwang@mizi.co.kr>, 2001\n"
+"백관선 <backiss@kornet.net>, 2001"
+
+#: battstat/battstat_applet.c:853
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+
+#: battstat/battstat_applet.c:854
+msgid "This utility show the status of your laptop battery."
+msgstr "이 유틸리티는 랩탑 배터리의 상태를 보여 줍니다."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
+#: mini-commander/src/mini-commander.glade.h:3
+msgid "Appearance"
+msgstr "모양"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "애플릿 배치"
+
+#: battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "배터리 충전 감시기 기본 설정"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "배터리 색 단계 (%)"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "위에서 어느 하나라도 참이면 경고음"
+
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
+msgid "General"
+msgstr "일반"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "숨기기"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "아래쪽으로 움직임"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "위쪽으로 움직임"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr "배터리 충전량이 부족하면 알려주기"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "배터리가 완전히 충전되면 알려주기"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "주황:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "미리보기:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "진행률 표시줄 방향"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "빨강:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "보여주기"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "일시 중단"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "일시 중단 명령:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "경고"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "노랑:"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr "배터리 상태 유틸리티"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:2
+msgid "Battery fully re-charged"
+msgstr "배터리가 완전히 충전되었습니다!"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery power low"
+msgstr "배터리 전력이 부족합니다"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:944
+msgid "CD Player"
+msgstr "CD 연주기"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
+msgid "CD Player Applet Factory"
+msgstr "CD 연주기 애플릿 팩토리"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
+msgid "Factory for CD player applet"
+msgstr "CD 연주기 애플릿을 위한 팩토리"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
+msgid "Multimedia"
+msgstr "멀티미디어"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
+msgid "Panel applet for playing audio CDs"
+msgstr "오디오 CD를 재생하는 패널 애플릿"
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
+msgid "_Run External CD Player"
+msgstr "외부 CD 연주기 실행(_R)"
+
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:934
+msgid "Stop"
+msgstr "정지"
+
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:936
+msgid "Play / Pause"
+msgstr "재생 / 일시 정지"
+
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:938
+msgid "Eject"
+msgstr "꺼내기"
+
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:940
+msgid "Previous Track"
+msgstr "이전 트랙"
+
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:942
+msgid "Next Track"
+msgstr "다음 트랙"
+
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:853
+#: multiload/main.c:118
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr "'%s'(을)를 실행하는 중 오류가 생겼습니다: %s"
+
+#: cdplayer/cdplayer.c:422
+msgid "CD Player Preferences"
+msgstr "CD 연주기 기본 설정"
+
+#: cdplayer/cdplayer.c:442
+msgid "Disc Image"
+msgstr "디스크 이미지"
+
+#: cdplayer/cdplayer.c:442
+msgid "An image of a cd-rom disc"
+msgstr "CD-ROM 디스크의 이미지"
+
+#: cdplayer/cdplayer.c:444
+msgid "Device _Path:"
+msgstr "장치 경로(_P):"
+
+#: cdplayer/cdplayer.c:453
+msgid "Device Path"
+msgstr "장치 경로"
+
+#: cdplayer/cdplayer.c:453
+msgid "Set the device path here"
+msgstr "장치 경로를 설정합니다"
+
+#: cdplayer/cdplayer.c:456
+msgid "Use _Default"
+msgstr "기본값 쓰기(_D)"
+
+#: cdplayer/cdplayer.c:536
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+
+#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:945
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "CD연주기 애플릿은 패널안에서 실행되는 간단한 음악 CD 연주기 입니다"
+
+#: cdplayer/cdplayer.c:795 cdplayer/cdplayer.c:806
+msgid "Elapsed time"
+msgstr "경과된 시간"
+
+#: cdplayer/cdplayer.c:798 cdplayer/cdplayer.c:808
+msgid "Track number"
+msgstr "트랙 번호"
+
+#: cdplayer/cdplayer.c:860
+msgid "Audio device is busy, or being used by another application"
+msgstr "오디오 장치를 다른 프로그램이 사용하고 있습니다"
+
+#: cdplayer/cdplayer.c:935
+msgid "Click this button to Stop playing the CD"
+msgstr "씨디 재생을 멈추려면 이 단추를 클릭하십시오"
+
+#: cdplayer/cdplayer.c:937
+msgid "Click this button to Play or Pause the CD"
+msgstr "씨디를 재생하거나 일시 정지하려면 이 단추를 클릭하십시오"
+
+#: cdplayer/cdplayer.c:939
+msgid "Click this button to eject the CD"
+msgstr "씨디를 꺼내려면 이 단추를 클릭하십시오"
+
+#: cdplayer/cdplayer.c:941
+msgid "Click this button to Play the previous track in the CD"
+msgstr "씨디에서 이전 트랙을 재생하려면 이 단추를 클릭하십시오"
+
+#: cdplayer/cdplayer.c:943
+msgid "Click this button to Play the next track in the CD"
+msgstr "씨디에서 다음 트랙을 재생하려면 이 단추를 클릭하십시오"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
+#: charpick/charpick.c:493
+msgid "Character Palette"
+msgstr "문자 표"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
+msgid "Charpicker Applet Factory"
+msgstr "문자선택 애플릿 팩토리"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+msgid "Insert characters"
+msgstr "문자 삽입"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:366
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/charpick.c:394
+msgid "Copyright (C) 1998"
+msgstr "Copyright (C) 1998"
+
+#: charpick/charpick.c:395
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"내 키보드에 없는 괴상한 글자를 선택하는 그놈 패널 애플릿.  GNU General "
+"Public License로 배포함"
+
+#: charpick/charpick.c:492
+msgid "Insert special characters"
+msgstr "특수 문자 삽입"
+
+#: charpick/properties.c:80
+msgid "_Default character list:"
+msgstr "기본 문자 목록(_D):"
+
+#: charpick/properties.c:89
+msgid "Default list of characters"
+msgstr "기본 문자 목록"
+
+#: charpick/properties.c:90
+msgid "Set the default character list here"
+msgstr "기본 문자 목록을 설정합니다"
+
+#: charpick/properties.c:92
+msgid ""
+"These characters will appear when the panel is started. To return to this "
+"list, hit <d> while the applet has focus."
+msgstr ""
+"패널이 시작될때 이 문자들이 나타납니다. 이 목록으로 되돌아 오려면, 애플릿에 "
+"초점이 있을 때 <d>를 누르십시오."
+
+#: charpick/properties.c:156
+msgid "Character Palette Preferences"
+msgstr "문자 표 기본 설정"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:471
+msgid "Disk Mounter"
+msgstr "디스크 마운트 애플릿"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
+msgid "Drive Mount Applet Factory"
+msgstr "드라이브 마운트 애플릿 팩토리"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
+msgid "Factory for drive mount applet"
+msgstr "드라이브 마운트 애플릿을 위한 팩토리"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr "로컬 디스크와 장치를 마운트합니다"
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+msgid "_Browse..."
+msgstr "찾아보기(_B)..."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "_Eject"
+msgstr "꺼내기(_E)"
+
+#: drivemount/drivemount.c:472
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "(C) 1999-2001 The GNOME Hackers\n"
+
+#: drivemount/drivemount.c:474
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "블록 볼륨을 마운트하고 마운트 해제하는 데 쓰이는 애플릿."
+
+#: drivemount/drivemount.c:672
+msgid " mounted"
+msgstr " 마운트됨"
+
+#: drivemount/drivemount.c:674
+msgid " not mounted"
+msgstr " 마운트되지 않음"
+
+#: drivemount/drivemount.c:791
+msgid "Drive Mount Applet Warning"
+msgstr "드라이브 마운트 애플릿 경고"
+
+#: drivemount/drivemount.c:801
+msgid "\" reported:\n"
+msgstr "\" 보고됨:\n"
+
+#: drivemount/drivemount.c:803
+msgid ""
+"Drivemount command failed.\n"
+"\""
+msgstr ""
+"드라이브 마운트 명령 실패\n"
+"\""
+
+#: drivemount/properties.c:252
+msgid "Disk Mounter Preferences"
+msgstr "디스크 마운트 애플릿 기본 설정"
+
+#: drivemount/properties.c:273
+msgid "_Mount point:"
+msgstr "마운트 위치(_M):"
+
+#: drivemount/properties.c:291
+msgid "_Update interval (seconds):"
+msgstr "업데이트 간격 (초)(_L):"
+
+#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
+msgid "_Icon :"
+msgstr "아이콘(_I) :"
+
+#: drivemount/properties.c:325
+msgid "Floppy"
+msgstr "플로피"
+
+#: drivemount/properties.c:328
+msgid "Cdrom"
+msgstr "씨디롬"
+
+#: drivemount/properties.c:331
+msgid "Cd Recorder"
+msgstr "CD 레코더"
+
+#: drivemount/properties.c:334
+msgid "Zip Drive"
+msgstr "ZIP 드라이브"
+
+#: drivemount/properties.c:337
+msgid "Hard Disk"
+msgstr "하드 디스크"
+
+#: drivemount/properties.c:340
+msgid "Jaz Drive"
+msgstr "Jaz 드라이브"
+
+#: drivemount/properties.c:343
+msgid "Custom"
+msgstr "다른 저장장치"
+
+#: drivemount/properties.c:356
+msgid "Select icon for mounted"
+msgstr "마운트되었을때 아이콘 선택"
+
+#: drivemount/properties.c:363
+msgid "Custom icon for moun_ted:"
+msgstr "마운트 되었을때의 아이콘(_T):"
+
+#: drivemount/properties.c:372
+msgid "Select icon for unmounted"
+msgstr "언마운트되었을때 아이콘 선택"
+
+#: drivemount/properties.c:379
+msgid "Custom icon for not mou_nted:"
+msgstr "마운트 되지 않았을때의 아이콘(_N):"
+
+#: drivemount/properties.c:389
+msgid "_Scale size to panel"
+msgstr "패널 크기에 맞추기(_S)"
+
+#: drivemount/properties.c:396
+msgid "_Eject on unmount"
+msgstr "언마운트될때 꺼내기(_E)"
+
+#: drivemount/properties.c:403
+msgid "Use _automount friendly status test"
+msgstr "automount 호환 상태 테스트 쓰기(_A)"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
+msgid "A set of eyeballs for your panel"
+msgstr "패널 위의 눈동자"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
+msgid "Amusements"
+msgstr "재미"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
+#: geyes/geyes.c:432 geyes/geyes.c:434
+msgid "Geyes"
+msgstr "눈동자"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
+msgid "Geyes Applet Factory"
+msgstr "눈동자 애플릿 팩토리"
+
+#: geyes/geyes.c:238
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:239
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "그놈 패널용 바보같고 작은 xeyes의 클론."
+
+#: geyes/geyes.c:435
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "마우스 포인터가 있는 방향을 바라보는 눈동자"
+
+#: geyes/themes.c:223
+msgid "Geyes Preferences"
+msgstr "눈동자 기본 설정"
+
+#: geyes/themes.c:239
+msgid "_Theme Name:"
+msgstr "테마 이름(_T):"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
+msgid "Change the keyboard layout"
+msgstr "키보드 배치 바꾸기"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
+msgid "GKB Factory"
+msgstr "GKB 팩토리"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
+msgid "Keyboard Layout Switcher"
+msgstr "키보드 배치 전환"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "키보드 배치 전환 애플릿을 만듭니다."
+
+#: gkb-new/gkb.c:113
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"각 레이아웃 사이를 전환하려면 단축키를 누르십시오. 단축키는 등록 정보 대화 상"
+"자에서 설정할 수 있습니다"
+
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
+msgid "GKB"
+msgstr "GKB"
+
+#: gkb-new/gkb.c:637
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "(C) 1998-2000 Free Software Foundation"
+
+#: gkb-new/gkb.c:638
+msgid ""
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
+"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
+msgstr ""
+"이 애플릿은 키보드 맵 사이를 setxkbmap이나 xmodmap을 이용해 전환해 줍니다. \n"
+"여러분 로케일을 지원하고 싶으시면 여러분 나라의 국기와 키보드 배치를 보내 \n"
+"주십시오 (전자 메일 주소는 shooby@gnome.hu입니다).\n"
+"그럼 이만, 그리고 물고기에게 감사합니다.\n"
+"Balazs Nagy (Kevin)<julian7@iksz.hu>의 도움과 Emese Kovacs <emese.eik.bme.hu>"
+"의\n"
+"결속, KevinV. Shooby Ban <shooby@gnome.hu>과 같은 사람들의 도움에 감사합니다."
+
+#: gkb-new/gkb.c:655
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr "홈페이지 (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
+msgid "Disabled"
+msgstr "쓰지 않음"
+
+#: gkb-new/keygrab.c:384
+msgid "Press a key or press Esc to cancel"
+msgstr "키를 누르십시오. 취소하려면 Esc를 누르십시오"
+
+#: gkb-new/prop-add.c:88
+msgid "Keyboards (select and press add)"
+msgstr "키보드 (선택하고 더하기를 누르세요)"
+
+#: gkb-new/prop-add.c:392
+msgid "Select Keyboard"
+msgstr "키보드 선택"
+
+#: gkb-new/prop-map.c:232
+msgid "Edit Keyboard"
+msgstr "키보드 편집"
+
+#: gkb-new/prop-map.c:251 panel-menu/panel-menu-directory.c:674
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
+#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+msgid "_Name:"
+msgstr "이름(_N):"
+
+#: gkb-new/prop-map.c:254
+msgid "_Label:"
+msgstr "꼬리표(_L):"
+
+#: gkb-new/prop-map.c:257
+msgid "Co_mmand:"
+msgstr "명령(_M):"
+
+#: gkb-new/prop-map.c:265
+msgid ""
+"Where command can be:\n"
+" * xmodmap /full/path/xmodmap.hu\n"
+" * gkb_xmmap hu\n"
+" * setxkbmap hu"
+msgstr ""
+"명령은 다음중 하나입니다:\n"
+"* xmodmap /full/path/xmodmap.hu\n"
+"* gkb_xmmap hu\n"
+"* setxkbmap hu"
+
+#: gkb-new/prop-map.c:298
+msgid "_Flag"
+msgstr "국기(_F)"
+
+#: gkb-new/prop.c:130 gkb-new/prop.c:200
+msgid "Normal"
+msgstr "보통"
+
+#: gkb-new/prop.c:131 gkb-new/prop.c:204
+msgid "Big"
+msgstr "큰"
+
+#: gkb-new/prop.c:149 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "국기"
+
+#: gkb-new/prop.c:150 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "꼬리표"
+
+#: gkb-new/prop.c:151 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "국기와 꼬리표"
+
+#: gkb-new/prop.c:289 modemlights/properties.c:393
+msgid "Display"
+msgstr "보여주기"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:309
+msgid "_Appearance: "
+msgstr "모양(_A): "
+
+#: gkb-new/prop.c:316
+msgid "Applet _size: "
+msgstr "애플릿 크기(_S): "
+
+#: gkb-new/prop.c:343
+msgid "Hotkey for switching between layouts"
+msgstr "배치 전환을 위한 단축글쇠"
+
+#: gkb-new/prop.c:355
+msgid "_Grab hotkey"
+msgstr "바로가기 글쇠 잡기(_G)"
+
+#. Create property box
+#: gkb-new/prop.c:422
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "키보드 배치 바꾸기 기본 설정"
+
+#: gkb-new/prop.c:439
+msgid "Keymaps"
+msgstr "키맵"
+
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:451 multiload/properties.c:313
+msgid "Options"
+msgstr "설정"
+
+#: gkb-new/system.c:46
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Keymap `%s' is not supported on this system. Please choose another keymap.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"오류가 생겼습니다.\n"
+"\n"
+"키맵 '%s'(이)가 이 시스템을 지원하지 않습니다. 다른 키맵을 선택하십시오.\n"
+"\n"
+"명령: %s"
+
+#: gkb-new/system.c:51
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be "
+"located in your PATH.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"오류가 생겼습니다.\n"
+"\n"
+"키맵 '%s'(을)를 읽을 수 없습니다. 경로에 'xmodmap' 명령이 없는 것 같습니다.\n"
+"\n"
+"명령: %s"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+msgid "Accessories"
+msgstr "보조 프로그램"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
+msgid "Get continuously updated stock quotes"
+msgstr "연속적으로 업데이트되는 증권 시세 얻어오기"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
+msgid "Gtik Applet Factory"
+msgstr "Gtik 애플릿 팩토리"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:720
+msgid "Stock Ticker"
+msgstr "증권 점검"
+
+#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+msgid "_Update"
+msgstr "바꿈(_U)"
+
+#: gtik/gtik.c:202
+msgid "No data available or properties not set"
+msgstr "데이타가 없거나 등록 정보가 설정되지 않았습니다"
+
+#: gtik/gtik.c:722
+msgid ""
+"This program connects to a popular site and downloads current stock quotes.  "
+"The GNOME Stock Ticker is a free Internet-based application.  It comes with "
+"ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
+"investment decisions; it is for informational purposes only."
+msgstr ""
+"이 프로그램은 인기 있는 사이트에 연결해서 현재 주식 시세를 다운로드 받습니"
+"다.  주식 시세표는 인터넷 기반의 무료 프로그램입니다.  전적으로 보장하지는 않"
+"습니다.  투자 결정을 하기 위해 주식 시세표를 쓰지 마십시요. 단지 정보 목적으"
+"로만 쓰십시요."
+
+#: gtik/gtik.c:1147
+msgid "_New Symbol:"
+msgstr "새 기호(_N):"
+
+#: gtik/gtik.c:1158
+msgid "_Add"
+msgstr "더하기(_A)"
+
+#: gtik/gtik.c:1169
+msgid "_Remove Selected"
+msgstr "선택한 것 지움(_R)"
+
+#: gtik/gtik.c:1251
+msgid "Stock Ticker Preferences"
+msgstr "증권 점검 기본 설정"
+
+#: gtik/gtik.c:1275
+msgid "Stock update Fre_quency in minutes:"
+msgstr "바꿈 주기 (분)(_Q):"
+
+#: gtik/gtik.c:1294
+msgid "Scroll Speed :"
+msgstr "돌리기 속도 :"
+
+#: gtik/gtik.c:1314
+msgid "_Width :"
+msgstr "너비(_W) :"
+
+#: gtik/gtik.c:1326
+msgid "Displa_y only symbols and price"
+msgstr "기호와 가격만 보여주기(_Y)"
+
+#: gtik/gtik.c:1329
+msgid "Scroll _left to right"
+msgstr "왼쪽에서 오른쪽으로 스크롤(_L)"
+
+#: gtik/gtik.c:1332
+msgid "_Enable scroll buttons"
+msgstr "스크롤 단추 쓰기(_E)"
+
+#: gtik/gtik.c:1356
+msgid "+ C_olor:"
+msgstr "+ 색상(_O):"
+
+#: gtik/gtik.c:1376
+msgid "- Colo_r:"
+msgstr "- 색상(_R):"
+
+#: gtik/gtik.c:1393
+msgid "_Unchanged Color:"
+msgstr "바뀌지 않은 색상(_U):"
+
+#: gtik/gtik.c:1410
+msgid "Back_ground Color:"
+msgstr "바탕색(_B):"
+
+#: gtik/gtik.c:1432
+msgid "_Font:"
+msgstr "글꼴(_F):"
+
+#: gtik/gtik.c:1452
+msgid "Symbols"
+msgstr "기호"
+
+#: gtik/gtik.c:1454
+msgid "Behavior"
+msgstr "행동"
+
+#: gtik/gtik.c:1541
+msgid "Skip forward"
+msgstr "앞으로 건너 뛰기"
+
+#: gtik/gtik.c:1542
+msgid "Skip backward"
+msgstr "뒤로 건너 뛰기"
+
+#: gtik/gtik.c:1543
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+"증권 시세기\n"
+"연속적으로 업데이트되는 증권 시세 얻어오기"
+
+#: gtik/gtik.c:1733
+msgid "(No"
+msgstr "(없음"
+
+#: gtik/gtik.c:1734
+msgid "Change "
+msgstr "바꾸기 "
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+msgid "_Forecast"
+msgstr "예보(_F)"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "날씨 애플릿을 만드는 팩토리."
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
+msgid "Gweather Applet Factory"
+msgstr "날씨 애플릿 팩토리"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "현재 날씨 상태를 감시하고, 예보합니다"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/gweather-about.c:63
+msgid "Weather Report"
+msgstr "기상 예보"
+
+#: gweather/gweather-about.c:64
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "Copyright (c)1999 by S. Papadimitriou"
+
+#: gweather/gweather-about.c:65
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"An applet for monitoring local weather conditions."
+msgstr ""
+"GNU General Public License로 배포되었습니다.\n"
+"\n"
+"지역의 날씨 상태를 감시하는 애플릿."
+
+#: gweather/gweather-applet.c:209
+msgid "GNOME Weather"
+msgstr "그놈 날씨"
+
+#: gweather/gweather-applet.c:334
+msgid "Updating..."
+msgstr "업데이트중..."
+
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "예보"
+
+#: gweather/gweather-dialog.c:110
+msgid "Location:"
+msgstr "위치:"
+
+#: gweather/gweather-dialog.c:118
+msgid "Update:"
+msgstr "갱신:"
+
+#: gweather/gweather-dialog.c:126
+msgid "Conditions:"
+msgstr "상태:"
+
+#: gweather/gweather-dialog.c:134
+msgid "Sky:"
+msgstr "일기:"
+
+#: gweather/gweather-dialog.c:142
+msgid "Temperature:"
+msgstr "기온:"
+
+#: gweather/gweather-dialog.c:150
+msgid "Dew point:"
+msgstr "이슬점:"
+
+#: gweather/gweather-dialog.c:158
+msgid "Humidity:"
+msgstr "습도"
+
+#: gweather/gweather-dialog.c:166
+msgid "Wind:"
+msgstr "바람:"
+
+#: gweather/gweather-dialog.c:174
+msgid "Pressure:"
+msgstr "기압:"
+
+#: gweather/gweather-dialog.c:182
+msgid "Visibility:"
+msgstr "시계:"
+
+#: gweather/gweather-dialog.c:281
+msgid "C_urrent conditions"
+msgstr "현재 상태(_U)"
+
+#: gweather/gweather-dialog.c:294
+msgid "ForeCast Report"
+msgstr "기상 예보 보고서"
+
+#: gweather/gweather-dialog.c:294
+msgid "See the ForeCast Details"
+msgstr "자세한 기상예보를 봅니다"
+
+#: gweather/gweather-dialog.c:329
+msgid "_Visit Weather.com"
+msgstr "Weather.com 가기(_V)"
+
+#: gweather/gweather-dialog.c:330
+msgid "URL link Button"
+msgstr "URL 링크 단추"
+
+#: gweather/gweather-dialog.c:330
+msgid "Click to Enter Weather.com"
+msgstr "Weather.com에 들어 가려면 클릭하세요"
+
+#: gweather/gweather-dialog.c:338
+msgid "_Radar map"
+msgstr "레이다 맵(_R)"
+
+#: gweather/gweather-dialog.c:411
+msgid ""
+"Detailed forecast not available for this location.\n"
+"Please try the state forecast; note that IWIN forecasts are available only "
+"for US cities."
+msgstr ""
+"이 지역에서는 자세한 예보는 쓸 수 없습니다.\n"
+"국가 예보를 시도해 보시기 바랍니다. IWIN 예보는 미국 도시에서만 쓸 수 있습니"
+"다."
+
+#: gweather/gweather-dialog.c:413
+msgid ""
+"State forecast not available for this location.\n"
+"Please try the detailed forecast; note that IWIN forecasts are available "
+"only for US cities."
+msgstr ""
+"이 지역에서는 국가 예보를 쓸 수 없습니다.\n"
+"자세한 예보를 시도해 보시기 바랍니다. IWIN 예보는 미국 도시에서만 쓸 수 있습"
+"니다."
+
+#. Accessible Name and Description for the components in Preference Dialog
+#: gweather/gweather-pref.c:108
+msgid "Location view"
+msgstr "위치 보기"
+
+#: gweather/gweather-pref.c:108
+msgid "Select Location from the list"
+msgstr "목록에서 위치 선택"
+
+#: gweather/gweather-pref.c:110
+msgid "Update spin button"
+msgstr "스핀 단추 업데이트"
+
+#: gweather/gweather-pref.c:110
+msgid "Spinbutton for updating"
+msgstr "스핀 단추 업데이트"
+
+#: gweather/gweather-pref.c:111
+msgid "Address Entry"
+msgstr "주소 엔트리"
+
+#: gweather/gweather-pref.c:111
+msgid "Enter the URL"
+msgstr "URL을 입력합니다"
+
+#: gweather/gweather-pref.c:561
+msgid "Weather Preferences"
+msgstr "날씨 기본 설정"
+
+#: gweather/gweather-pref.c:604
+msgid "_Automatically update every"
+msgstr "자동 업데이트(_A): 매"
+
+#: gweather/gweather-pref.c:610
+msgid "Use _metric system units"
+msgstr "미터법 쓰기(_M)"
+
+#: gweather/gweather-pref.c:616
+msgid "Enable _detailed forecast"
+msgstr "자세하게 예보(_D)"
+
+#: gweather/gweather-pref.c:623
+msgid "Enable _radar map"
+msgstr "레이다 맵 쓰기(_R)"
+
+#: gweather/gweather-pref.c:629
+msgid "Use cus_tom address for radar map"
+msgstr "레이다 맵에 사용자 설정 주소 쓰기(_T)"
+
+#: gweather/gweather-pref.c:640
+msgid "A_ddress :"
+msgstr "주소(_D) :"
+
+#: gweather/gweather-pref.c:652
+msgid "Updates"
+msgstr "업데이트"
+
+#: gweather/gweather-pref.c:658
+msgid "_Automatically update every "
+msgstr "자동 업데이트(_A): 매 "
+
+#: gweather/gweather-pref.c:678
+msgid "minute(s)"
+msgstr "분"
+
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:689
+msgid "Miscellaneous"
+msgstr "기타"
+
+#: gweather/gweather-pref.c:743
+msgid "Location"
+msgstr "위치"
+
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "노트"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr "킬로미터/시속"
+
+# inHG: Torr(mmHG)를 inch로 나타낸 것
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr "inHg"
+
+# hPa: 헥토파스칼
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "마일"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "킬로미터"
+
+#: gweather/weather.c:132
+msgid "Variable"
+msgstr "가변"
+
+#: gweather/weather.c:133
+msgid "North"
+msgstr "북"
+
+#: gweather/weather.c:133
+msgid "North - NorthEast"
+msgstr "북북동"
+
+#: gweather/weather.c:133
+msgid "Northeast"
+msgstr "남동"
+
+#: gweather/weather.c:133
+msgid "East - NorthEast"
+msgstr "동남동"
+
+#: gweather/weather.c:134
+msgid "East"
+msgstr "동"
+
+#: gweather/weather.c:134
+msgid "East - Southeast"
+msgstr "동남동"
+
+#: gweather/weather.c:134
+msgid "Southeast"
+msgstr "남동"
+
+#: gweather/weather.c:134
+msgid "South - Southeast"
+msgstr "남남동"
+
+#: gweather/weather.c:135
+msgid "South"
+msgstr "남"
+
+#: gweather/weather.c:135
+msgid "South - Southwest"
+msgstr "남남서"
+
+#: gweather/weather.c:135
+msgid "Southwest"
+msgstr "남서"
+
+#: gweather/weather.c:135
+msgid "West - Southwest"
+msgstr "서남서"
+
+#: gweather/weather.c:136
+msgid "West"
+msgstr "서"
+
+#: gweather/weather.c:136
+msgid "West - Northwest"
+msgstr "서북서"
+
+#: gweather/weather.c:136
+msgid "Northwest"
+msgstr "북서"
+
+#: gweather/weather.c:136
+msgid "North - Northwest"
+msgstr "북북서"
+
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+msgid "Invalid"
+msgstr "잘못되었음"
+
+#: gweather/weather.c:149
+msgid "Clear Sky"
+msgstr "구름 한 점 없는 맑은 하늘"
+
+#: gweather/weather.c:150
+msgid "Broken clouds"
+msgstr "구름이 거의 없는 하늘"
+
+#: gweather/weather.c:151
+msgid "Scattered clouds"
+msgstr "드문드문 구름이 낀 하늘"
+
+#: gweather/weather.c:152
+msgid "Few clouds"
+msgstr "약간의 구름이 낀 하늘"
+
+#: gweather/weather.c:153
+msgid "Overcast"
+msgstr "구름으로 뒤덮인 흐린 하늘"
+
+#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
+#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. NONE
+#. DRIZZLE
+#: gweather/weather.c:186
+msgid "Drizzle"
+msgstr "이슬비"
+
+#: gweather/weather.c:186
+msgid "Drizzle in the vicinity"
+msgstr "근처에 이슬비"
+
+#: gweather/weather.c:186
+msgid "Light drizzle"
+msgstr "소량의 이슬비"
+
+#: gweather/weather.c:186
+msgid "Moderate drizzle"
+msgstr "중량의 이슬비"
+
+#: gweather/weather.c:186
+msgid "Heavy drizzle"
+msgstr "다량의 이슬비"
+
+#: gweather/weather.c:186
+msgid "Shallow drizzle"
+msgstr "얕은 이슬비"
+
+#: gweather/weather.c:186
+msgid "Patches of drizzle"
+msgstr "군데군데 이슬비"
+
+#: gweather/weather.c:186
+msgid "Partial drizzle"
+msgstr "일부지역 이슬비"
+
+#: gweather/weather.c:186 gweather/weather.c:187
+msgid "Thunderstorm"
+msgstr "벼락치는 폭우"
+
+#: gweather/weather.c:186
+msgid "Windy drizzle"
+msgstr "바람부는 이슬비"
+
+#: gweather/weather.c:186
+msgid "Showers"
+msgstr "소나기"
+
+#: gweather/weather.c:186
+msgid "Drifting drizzle"
+msgstr "표류하는 이슬비"
+
+#: gweather/weather.c:186
+msgid "Freezing drizzle"
+msgstr "결빙하는 이슬비"
+
+#. RAIN
+#: gweather/weather.c:187
+msgid "Rain"
+msgstr "비"
+
+#: gweather/weather.c:187
+msgid "Rain in the vicinity"
+msgstr "근처에 비"
+
+#: gweather/weather.c:187
+msgid "Light rain"
+msgstr "소량의 비"
+
+#: gweather/weather.c:187
+msgid "Moderate rain"
+msgstr "중량의 비"
+
+#: gweather/weather.c:187
+msgid "Heavy rain"
+msgstr "다량의 비"
+
+#: gweather/weather.c:187
+msgid "Shallow rain"
+msgstr "얕은 비"
+
+#: gweather/weather.c:187
+msgid "Patches of rain"
+msgstr "군데군데 비"
+
+#: gweather/weather.c:187
+msgid "Partial rainfall"
+msgstr "일부지역 비"
+
+#: gweather/weather.c:187
+msgid "Blowing rainfall"
+msgstr "바람부는 비"
+
+#: gweather/weather.c:187
+msgid "Rain showers"
+msgstr "폭우"
+
+#: gweather/weather.c:187
+msgid "Drifting rain"
+msgstr "표류하는 비"
+
+#: gweather/weather.c:187
+msgid "Freezing rain"
+msgstr "결빙하는 비"
+
+#. SNOW
+#: gweather/weather.c:188
+msgid "Snow"
+msgstr "눈"
+
+#: gweather/weather.c:188
+msgid "Snow in the vicinity"
+msgstr "근처에 눈"
+
+#: gweather/weather.c:188
+msgid "Light snow"
+msgstr "소량의 눈"
+
+#: gweather/weather.c:188
+msgid "Moderate snow"
+msgstr "중량의 눈"
+
+#: gweather/weather.c:188
+msgid "Heavy snow"
+msgstr "다량의 눈"
+
+#: gweather/weather.c:188
+msgid "Shallow snow"
+msgstr "얕은 눈"
+
+#: gweather/weather.c:188
+msgid "Patches of snow"
+msgstr "군데군데 눈"
+
+#: gweather/weather.c:188
+msgid "Partial snowfall"
+msgstr "일부지역 눈"
+
+#: gweather/weather.c:188 gweather/weather.c:189
+msgid "Snowstorm"
+msgstr "눈보라"
+
+#: gweather/weather.c:188
+msgid "Blowing snowfall"
+msgstr "바람부는 눈"
+
+#: gweather/weather.c:188
+msgid "Snow showers"
+msgstr "폭설"
+
+#: gweather/weather.c:188
+msgid "Drifting snow"
+msgstr "표류하는 눈"
+
+#: gweather/weather.c:188
+msgid "Freezing snow"
+msgstr "결빙하는 눈"
+
+#. SNOW_GRAINS
+#: gweather/weather.c:189
+msgid "Snow grains"
+msgstr "싸락눈"
+
+#: gweather/weather.c:189
+msgid "Snow grains in the vicinity"
+msgstr "근처에 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Light snow grains"
+msgstr "소량의 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Moderate snow grains"
+msgstr "중량의 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Heavy snow grains"
+msgstr "다량의 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Shallow snow grains"
+msgstr "얕은 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Patches of snow grains"
+msgstr "군데군데 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Partial snow grains"
+msgstr "일부지역 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Blowing snow grains"
+msgstr "바람부는 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Snow grain showers"
+msgstr "싸락눈 소나기"
+
+#: gweather/weather.c:189
+msgid "Drifting snow grains"
+msgstr "표류하는 싸락눈"
+
+#: gweather/weather.c:189
+msgid "Freezing snow grains"
+msgstr "결빙하는 싸락눈"
+
+#. ICE_CRYSTALS
+#: gweather/weather.c:190
+msgid "Ice crystals"
+msgstr "얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Ice crystals in the vicinity"
+msgstr "근처에 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Few ice crystals"
+msgstr "소량의 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Moderate ice crystals"
+msgstr "중량의 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Heavy ice crystals"
+msgstr "다량의 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Patches of ice crystals"
+msgstr "군데군데 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Partial ice crystals"
+msgstr "일부지역 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Ice crystal storm"
+msgstr "얼음 결정을 동반하는 폭풍"
+
+#: gweather/weather.c:190
+msgid "Blowing ice crystals"
+msgstr "바람부는 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Showers of ice crystals"
+msgstr "얼음 결정 소나기"
+
+#: gweather/weather.c:190
+msgid "Drifting ice crystals"
+msgstr "표류하는 얼음 결정"
+
+#: gweather/weather.c:190
+msgid "Freezing ice crystals"
+msgstr "결빙하는 얼음 결정"
+
+#. ICE_PELLETS
+#: gweather/weather.c:191
+msgid "Ice pellets"
+msgstr "얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Ice pellets in the vicinity"
+msgstr "근처에 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Few ice pellets"
+msgstr "소량의 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Moderate ice pellets"
+msgstr "중량의 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Heavy ice pellets"
+msgstr "다량의 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Shallow ice pellets"
+msgstr "얕은 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Patches of ice pellets"
+msgstr "군데군데 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Partial ice pellets"
+msgstr "일부지역 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Ice pellet storm"
+msgstr "얼음 알갱이를 동반하는 폭풍"
+
+#: gweather/weather.c:191
+msgid "Blowing ice pellets"
+msgstr "바람부는 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Showers of ice pellets"
+msgstr "얼음 알갱이 소나기"
+
+#: gweather/weather.c:191
+msgid "Drifting ice pellets"
+msgstr "표류하는 얼음 알갱이"
+
+#: gweather/weather.c:191
+msgid "Freezing ice pellets"
+msgstr "결빙하는 얼음 알갱이"
+
+#. HAIL
+#: gweather/weather.c:192
+msgid "Hail"
+msgstr "우박"
+
+#: gweather/weather.c:192
+msgid "Hail in the vicinity"
+msgstr "근처에 우박"
+
+#: gweather/weather.c:192 gweather/weather.c:193
+msgid "Light hail"
+msgstr "소량의 우박"
+
+#: gweather/weather.c:192
+msgid "Moderate hail"
+msgstr "중량의 우박"
+
+#: gweather/weather.c:192
+msgid "Heavy hail"
+msgstr "다량의 우박"
+
+#: gweather/weather.c:192
+msgid "Shallow hail"
+msgstr "얕은 우박"
+
+#: gweather/weather.c:192
+msgid "Patches of hail"
+msgstr "군데군데 우박"
+
+#: gweather/weather.c:192
+msgid "Partial hail"
+msgstr "일부지역 우박"
+
+#: gweather/weather.c:192
+msgid "Hailstorm"
+msgstr "우박을 동반하는 폭풍"
+
+#: gweather/weather.c:192
+msgid "Blowing hail"
+msgstr "바람부는 우박"
+
+#: gweather/weather.c:192
+msgid "Hail showers"
+msgstr "우박 소나기"
+
+#: gweather/weather.c:192
+msgid "Drifting hail"
+msgstr "표류하는 우박"
+
+#: gweather/weather.c:192
+msgid "Freezing hail"
+msgstr "결빙하는 우박"
+
+#. SMALL_HAIL
+#: gweather/weather.c:193
+msgid "Small hail"
+msgstr "작은 우박"
+
+#: gweather/weather.c:193
+msgid "Small hail in the vicinity"
+msgstr "근처에 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Moderate small hail"
+msgstr "중량의 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Heavy small hail"
+msgstr "다량의 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Shallow small hail"
+msgstr "얕은 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Patches of small hail"
+msgstr "군데군데 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Partial small hail"
+msgstr "일부지역 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Small hailstorm"
+msgstr "작은 우박을 동반하는 폭풍"
+
+#: gweather/weather.c:193
+msgid "Blowing small hail"
+msgstr "바람부는 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Showers of small hail"
+msgstr "작은 우박 소나기"
+
+#: gweather/weather.c:193
+msgid "Drifting small hail"
+msgstr "표류하는 작은 우박"
+
+#: gweather/weather.c:193
+msgid "Freezing small hail"
+msgstr "결빙하는 작은 우박"
+
+#. PRECIPITATION
+#: gweather/weather.c:194
+msgid "Unknown precipitation"
+msgstr "알 수 없는 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Precipitation in the vicinity"
+msgstr "근처에 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Light precipitation"
+msgstr "소량의 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Moderate precipitation"
+msgstr "중량의 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Heavy precipitation"
+msgstr "다량의 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Shallow precipitation"
+msgstr "얕은 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Patches of precipitation"
+msgstr "군데군데 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Partial precipitation"
+msgstr "일부지역 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Unknown thunderstorm"
+msgstr "알 수 없는 벼락치는 폭우"
+
+#: gweather/weather.c:194
+msgid "Blowing precipitation"
+msgstr "바람부는 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Showers, type unknown"
+msgstr "유형을 알 수 없는 소나기"
+
+#: gweather/weather.c:194
+msgid "Drifting precipitation"
+msgstr "표류하는 강수량(강설량)"
+
+#: gweather/weather.c:194
+msgid "Freezing precipitation"
+msgstr "결빙하는 강수량(강설량)"
+
+#. MIST
+#: gweather/weather.c:195
+msgid "Mist"
+msgstr "아지랭이"
+
+#: gweather/weather.c:195
+msgid "Mist in the vicinity"
+msgstr "근처에 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Light mist"
+msgstr "소량의 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Moderate mist"
+msgstr "중량의 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Thick mist"
+msgstr "다량의 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Shallow mist"
+msgstr "얕은 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Patches of mist"
+msgstr "군데군데 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Partial mist"
+msgstr "일부지역 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Mist with wind"
+msgstr "바람부는 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Drifting mist"
+msgstr "표류하는 아지랭이"
+
+#: gweather/weather.c:195
+msgid "Freezing mist"
+msgstr "결빙하는 아지랭이"
+
+#. FOG
+#: gweather/weather.c:196
+msgid "Fog"
+msgstr "안개"
+
+#: gweather/weather.c:196
+msgid "Fog in the vicinity"
+msgstr "근처에 안개"
+
+#: gweather/weather.c:196
+msgid "Light fog"
+msgstr "소량의 안개"
+
+#: gweather/weather.c:196
+msgid "Moderate fog"
+msgstr "중량의 안개"
+
+#: gweather/weather.c:196
+msgid "Thick fog"
+msgstr "다량의 안개"
+
+#: gweather/weather.c:196
+msgid "Shallow fog"
+msgstr "얕은 안개"
+
+#: gweather/weather.c:196
+msgid "Patches of fog"
+msgstr "군데군데 안개"
+
+#: gweather/weather.c:196
+msgid "Partial fog"
+msgstr "일부지역 안개"
+
+#: gweather/weather.c:196
+msgid "Fog with wind"
+msgstr "바람부는 안개"
+
+#: gweather/weather.c:196
+msgid "Drifting fog"
+msgstr "표류하는 안개"
+
+#: gweather/weather.c:196
+msgid "Freezing fog"
+msgstr "결빙하는 안개"
+
+#. SMOKE
+#: gweather/weather.c:197
+msgid "Smoke"
+msgstr "연기"
+
+#: gweather/weather.c:197
+msgid "Smoke in the vicinity"
+msgstr "근처에 연기"
+
+#: gweather/weather.c:197
+msgid "Thin smoke"
+msgstr "소량의 연기"
+
+#: gweather/weather.c:197
+msgid "Moderate smoke"
+msgstr "중량의 연기"
+
+#: gweather/weather.c:197
+msgid "Thick smoke"
+msgstr "다량의 연기"
+
+#: gweather/weather.c:197
+msgid "Shallow smoke"
+msgstr "얕은 연기"
+
+#: gweather/weather.c:197
+msgid "Patches of smoke"
+msgstr "군데군데 연기"
+
+#: gweather/weather.c:197
+msgid "Partial smoke"
+msgstr "일부지역 연기"
+
+#: gweather/weather.c:197
+msgid "Smoke w/ thunders"
+msgstr "벼락치는 연기"
+
+#: gweather/weather.c:197
+msgid "Smoke with wind"
+msgstr "바람부는 연기"
+
+#: gweather/weather.c:197
+msgid "Drifting smoke"
+msgstr "표류하는 연기"
+
+#. VOLCANIC_ASH
+#: gweather/weather.c:198
+msgid "Volcanic ash"
+msgstr "화산재"
+
+#: gweather/weather.c:198
+msgid "Volcanic ash in the vicinity"
+msgstr "근처에 화산재"
+
+#: gweather/weather.c:198
+msgid "Moderate volcanic ash"
+msgstr "중량의 화산재"
+
+#: gweather/weather.c:198
+msgid "Thick volcanic ash"
+msgstr "다량의 화산재"
+
+#: gweather/weather.c:198
+msgid "Shallow volcanic ash"
+msgstr "얕은 화산재"
+
+#: gweather/weather.c:198
+msgid "Patches of volcanic ash"
+msgstr "군데군데 화산재"
+
+#: gweather/weather.c:198
+msgid "Partial volcanic ash"
+msgstr "일부지역 화산재"
+
+#: gweather/weather.c:198
+msgid "Volcanic ash w/ thunders"
+msgstr "벼락치는 화산재"
+
+#: gweather/weather.c:198
+msgid "Blowing volcanic ash"
+msgstr "바람부는 화산재"
+
+#: gweather/weather.c:198
+msgid "Showers of volcanic ash "
+msgstr "화산재 소나기"
+
+#: gweather/weather.c:198
+msgid "Drifting volcanic ash"
+msgstr "표류하는 화산재"
+
+#: gweather/weather.c:198
+msgid "Freezing volcanic ash"
+msgstr "결빙하는 화산재"
+
+#. SAND
+#: gweather/weather.c:199
+msgid "Sand"
+msgstr "모래"
+
+#: gweather/weather.c:199
+msgid "Sand in the vicinity"
+msgstr "근처에 모래"
+
+#: gweather/weather.c:199
+msgid "Light sand"
+msgstr "소량의 모래"
+
+#: gweather/weather.c:199
+msgid "Moderate sand"
+msgstr "중량의 모래"
+
+#: gweather/weather.c:199
+msgid "Heavy sand"
+msgstr "다량의 모래"
+
+#: gweather/weather.c:199
+msgid "Patches of sand"
+msgstr "군데군데 모래"
+
+#: gweather/weather.c:199
+msgid "Partial sand"
+msgstr "일부지역 모래"
+
+#: gweather/weather.c:199
+msgid "Blowing sand"
+msgstr "바람부는 모래"
+
+#: gweather/weather.c:199
+msgid "Drifting sand"
+msgstr "표류하는 모래"
+
+#. HAZE
+#: gweather/weather.c:200
+msgid "Haze"
+msgstr "약한 안개"
+
+#: gweather/weather.c:200
+msgid "Haze in the vicinity"
+msgstr "근처에 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Light haze"
+msgstr "소량의 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Moderate haze"
+msgstr "중량의 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Thick haze"
+msgstr "다량의 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Shallow haze"
+msgstr "얕은 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Patches of haze"
+msgstr "군데군데 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Partial haze"
+msgstr "일부지역 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Haze with wind"
+msgstr "바람부는 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Drifting haze"
+msgstr "표류하는 약한 안개"
+
+#: gweather/weather.c:200
+msgid "Freezing haze"
+msgstr "결빙하는 약한 안개"
+
+#. SPRAY
+#: gweather/weather.c:201
+msgid "Sprays"
+msgstr "물안개"
+
+#: gweather/weather.c:201
+msgid "Sprays in the vicinity"
+msgstr "근처에 물안개"
+
+#: gweather/weather.c:201
+msgid "Light sprays"
+msgstr "소량의 물안개"
+
+#: gweather/weather.c:201
+msgid "Moderate sprays"
+msgstr "중량의 물안개"
+
+#: gweather/weather.c:201
+msgid "Heavy sprays"
+msgstr "다량의 물안개"
+
+#: gweather/weather.c:201
+msgid "Shallow sprays"
+msgstr "얕은 물안개"
+
+#: gweather/weather.c:201
+msgid "Patches of sprays"
+msgstr "군데군데 물안개"
+
+#: gweather/weather.c:201
+msgid "Partial sprays"
+msgstr "일부지역 물안개"
+
+#: gweather/weather.c:201
+msgid "Blowing sprays"
+msgstr "바람부는 물안개"
+
+#: gweather/weather.c:201
+msgid "Drifting sprays"
+msgstr "표류하는 물안개"
+
+#: gweather/weather.c:201
+msgid "Freezing sprays"
+msgstr "결빙하는 물안개"
+
+#. DUST
+#: gweather/weather.c:202
+msgid "Dust"
+msgstr "먼지"
+
+#: gweather/weather.c:202
+msgid "Dust in the vicinity"
+msgstr "근처에 먼지"
+
+#: gweather/weather.c:202
+msgid "Light dust"
+msgstr "소량의 먼지"
+
+#: gweather/weather.c:202
+msgid "Moderate dust"
+msgstr "중량의 먼지"
+
+#: gweather/weather.c:202
+msgid "Heavy dust"
+msgstr "다량의 먼지"
+
+#: gweather/weather.c:202
+msgid "Patches of dust"
+msgstr "군데군데 먼지"
+
+#: gweather/weather.c:202
+msgid "Partial dust"
+msgstr "일부지역 먼지"
+
+#: gweather/weather.c:202
+msgid "Blowing dust"
+msgstr "바람부는 먼지"
+
+#: gweather/weather.c:202
+msgid "Drifting dust"
+msgstr "표류하는 먼지"
+
+#. SQUALL
+#: gweather/weather.c:203
+msgid "Squall"
+msgstr "돌풍"
+
+#: gweather/weather.c:203
+msgid "Squall in the vicinity"
+msgstr "근처에 돌풍"
+
+#: gweather/weather.c:203
+msgid "Light squall"
+msgstr "소량의 돌풍"
+
+#: gweather/weather.c:203
+msgid "Moderate squall"
+msgstr "중량의 돌풍"
+
+#: gweather/weather.c:203
+msgid "Heavy squall"
+msgstr "다량의 돌풍"
+
+#: gweather/weather.c:203
+msgid "Partial squall"
+msgstr "일부지역 돌풍"
+
+#: gweather/weather.c:203
+msgid "Thunderous squall"
+msgstr "벼락치는 돌풍"
+
+#: gweather/weather.c:203
+msgid "Blowing squall"
+msgstr "바람부는 돌풍"
+
+#: gweather/weather.c:203
+msgid "Drifting squall"
+msgstr "표류하는 돌풍"
+
+#: gweather/weather.c:203
+msgid "Freezing squall"
+msgstr "결빙하는 돌풍"
+
+#. SANDSTORM
+#: gweather/weather.c:204
+msgid "Sandstorm"
+msgstr "모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Sandstorm in the vicinity"
+msgstr "근처에 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Light standstorm"
+msgstr "소량의 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Moderate sandstorm"
+msgstr "중량의 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Heavy sandstorm"
+msgstr "다량의 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Shallow sandstorm"
+msgstr "얕은 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Partial sandstorm"
+msgstr "일부지역 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Thunderous sandstorm"
+msgstr "벼락치는 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Blowing sandstorm"
+msgstr "바람부는 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Drifting sandstorm"
+msgstr "표류하는 모래 폭풍"
+
+#: gweather/weather.c:204
+msgid "Freezing sandstorm"
+msgstr "결빙하는 모래 폭풍"
+
+#. DUSTSTORM
+#: gweather/weather.c:205
+msgid "Duststorm"
+msgstr "흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Duststorm in the vicinity"
+msgstr "근처에 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Light duststorm"
+msgstr "소량의 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Moderate duststorm"
+msgstr "중량의 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Heavy duststorm"
+msgstr "다량의 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Shallow duststorm"
+msgstr "얕은 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Partial duststorm"
+msgstr "일부지역 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Thunderous duststorm"
+msgstr "벼락치는 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Blowing duststorm"
+msgstr "바람부는 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Drifting duststorm"
+msgstr "표류하는 흙먼지 폭풍"
+
+#: gweather/weather.c:205
+msgid "Freezing duststorm"
+msgstr "결빙하는 흙먼지 폭풍"
+
+#. FUNNEL_CLOUD
+#: gweather/weather.c:206
+msgid "Funnel cloud"
+msgstr "깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Funnel cloud in the vicinity"
+msgstr "근처에 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Light funnel cloud"
+msgstr "소량의 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Moderate funnel cloud"
+msgstr "중량의 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Thick funnel cloud"
+msgstr "다량의 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Shallow funnel cloud"
+msgstr "얕은 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Patches of funnel clouds"
+msgstr "군데군데 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Partial funnel clouds"
+msgstr "일부지역 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Funnel cloud w/ wind"
+msgstr "바람부는 깔때기 모양의 구름"
+
+#: gweather/weather.c:206
+msgid "Drifting funnel cloud"
+msgstr "표류하는 깔때기 모양의 구름"
+
+#. TORNADO
+#: gweather/weather.c:207
+msgid "Tornado"
+msgstr "토네이도"
+
+#: gweather/weather.c:207
+msgid "Tornado in the vicinity"
+msgstr "근처에 토네이도"
+
+#: gweather/weather.c:207
+msgid "Moderate tornado"
+msgstr "중량의 토네이도"
+
+#: gweather/weather.c:207
+msgid "Raging tornado"
+msgstr "맹렬한 토네이도"
+
+#: gweather/weather.c:207
+msgid "Partial tornado"
+msgstr "일부지역 토네이도"
+
+#: gweather/weather.c:207
+msgid "Thunderous tornado"
+msgstr "벼락치는 토네이도"
+
+#: gweather/weather.c:207
+msgid "Drifting tornado"
+msgstr "표류하는 토네이도"
+
+#: gweather/weather.c:207
+msgid "Freezing tornado"
+msgstr "결빙하는 토네이도"
+
+#. DUST_WHIRLS
+#: gweather/weather.c:208
+msgid "Dust whirls"
+msgstr "먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Dust whirls in the vicinity"
+msgstr "근처에 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Light dust whirls"
+msgstr "소량의 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Moderate dust whirls"
+msgstr "중량의 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Heavy dust whirls"
+msgstr "다량의 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Shallow dust whirls"
+msgstr "얕은 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Patches of dust whirls"
+msgstr "군데군데 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Partial dust whirls"
+msgstr "일부지역 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Blowing dust whirls"
+msgstr "바람부는 먼지 회오리 바람"
+
+#: gweather/weather.c:208
+msgid "Drifting dust whirls"
+msgstr "표류하는 먼지 회오리 바람"
+
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
+msgid "Failed to get METAR data.\n"
+msgstr "METAR 데이터를 가져올 수 없습니다.\n"
+
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
+msgid "WeatherInfo missing location"
+msgstr "날씨정보에 위치가 없습니다"
+
+#: gweather/weather.c:1047
+msgid "Failed to get IWIN data.\n"
+msgstr "IWIN 데이타를 가져 오는 데 실패했습니다.\n"
+
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1091
+msgid "Failed to get IWIN forecast data.\n"
+msgstr "IWIN 예보 데이타를 가져 오는 데 실패했습니다.\n"
+
+#: gweather/weather.c:1290
+msgid "Failed to get Met Office data.\n"
+msgstr "Met Office 데이타를 가져 오는 데 실패했습니다.\n"
+
+#: gweather/weather.c:1324
+msgid "Failed to get Met Office forecast data.\n"
+msgstr "Met Office 예보 데이타를 가져 오는 데 실패했습니다.\n"
+
+#: gweather/weather.c:1468
+msgid "Failed to get radar map image.\n"
+msgstr "레이더 지도 이미지를 가져올 수 없습니다.\n"
+
+#: gweather/weather.c:1771
+msgid "%a, %b %d / %H:%M"
+msgstr "%b %d일 %a / %H:%M"
+
+#: gweather/weather.c:1775
+msgid "Unknown observation time"
+msgstr "알 수 없는 관측 시간"
+
+#: gweather/weather.c:1835
+msgid "Calm"
+msgstr "무풍 상태"
+
+#: gweather/weather.c:1861
+msgid "Unknown"
+msgstr "모름"
+
+#: gweather/weather.c:1895
+msgid "Retrieval failed"
+msgstr "검색 실패"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
+#: mini-commander/src/about.c:66
+#: mini-commander/src/mini-commander_applet.c:356
+msgid "Command Line"
+msgstr "명령 행"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
+msgid "Mini-Commander"
+msgstr "작은 명령 실행기"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "작은 명령기 애플릿 팩토리"
+
+#: mini-commander/src/about.c:69
+msgid ""
+"This GNOME applet adds a command line to the panel. It features command "
+"completion, command history, changeable macros and an optional built-in "
+"clock.\n"
+"\n"
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"이 그놈 애플릿은 패널에 명령행을 더합니다.  여기에는 명령 완성, 명령 히스토"
+"리, 바꿀 수 있는 매크로, 그리고 자체 시계와 같은 기능이 있습니다.\n"
+"\n"
+"이 프로그램은 자유 소프트웨어입니다; 이 프로그램은 Free Software Foundation"
+"이 발표한 GNU General Public License에 따라 재배포 및 수정할 수 있습니다; 이 "
+"라이센스의 버전 2 혹은 (원한다면) 그 이후의 버전에 따릅니다."
+
+#. build file select dialog
+#: mini-commander/src/command_line.c:440
+msgid "Start program"
+msgstr "프로그램 시작"
+
+#: mini-commander/src/command_line.c:483
+msgid "Command line"
+msgstr "명령 행"
+
+#: mini-commander/src/command_line.c:484
+msgid "Type a command here and Gnome will execute it for you"
+msgstr "명령행을 여기에 타이프하면 그놈이 실행해 줄 것입니다"
+
+#: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
+msgid "Cannot get schema for %s : %s"
+msgstr "%s의 스키마를 가져올 수 없음 : %s"
+
+#: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
+msgid "Cannot set schema for %s : %s"
+msgstr "%s의 스키마를 설정할 수 없음 : %s"
+
+#: mini-commander/src/mc-install-default-macros.c:105
+#, c-format
+msgid "Set default list value for %s\n"
+msgstr "%s의 기본 목록 값 설정\n"
+
+#: mini-commander/src/mc-install-default-macros.c:117
+msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL이 설정되지 않았습니다. 스키마가 설치되"
+"지 않았습니다.\n"
+
+#: mini-commander/src/mc-install-default-macros.c:125
+msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
+msgstr "GCONF_CONFIG_SOURCE 환경 변수가 설정되어야 합니다\n"
+
+#: mini-commander/src/mc-install-default-macros.c:142
+#, c-format
+msgid "Failed to access configuration source(s): %s\n"
+msgstr "설정 소스에 접근 실패: %s\n"
+
+#: mini-commander/src/mc-install-default-macros.c:154
+#, c-format
+msgid "Error syncing config data: %s"
+msgstr "설정 데이터 동기화 오류: %s"
+
+#: mini-commander/src/mini-commander.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: mini-commander/src/mini-commander.glade.h:2
+msgid "Add New Macro"
+msgstr "새 매크로 더하기"
+
+#: mini-commander/src/mini-commander.glade.h:4
+msgid "Applet _width:"
+msgstr "애플릿 폭(_W):"
+
+#: mini-commander/src/mini-commander.glade.h:5
+msgid "Autocompletion"
+msgstr "자동 완성"
+
+#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
+#: multiload/properties.c:365
+msgid "Colors"
+msgstr "색"
+
+#: mini-commander/src/mini-commander.glade.h:7
+msgid "Command Line Preferences"
+msgstr "명령 행 기본 설정"
+
+#: mini-commander/src/mini-commander.glade.h:8
+msgid "Command line _background:"
+msgstr "명령 행 바탕색(_B):"
+
+#: mini-commander/src/mini-commander.glade.h:9
+msgid "Command line _foreground:"
+msgstr "명령 행 글자색(_F):"
+
+#: mini-commander/src/mini-commander.glade.h:10
+msgid "Command:"
+msgstr "명령:"
+
+#: mini-commander/src/mini-commander.glade.h:11
+msgid "E_nable history based autocompletion"
+msgstr "히스토리를 참고하여 자동 완성(_N)"
+
+#: mini-commander/src/mini-commander.glade.h:13
+msgid "Macros"
+msgstr "매크로"
+
+#: mini-commander/src/mini-commander.glade.h:14
+msgid "Pattern:"
+msgstr "규칙:"
+
+#: mini-commander/src/mini-commander.glade.h:15
+msgid "Pick a color"
+msgstr "색상 선택"
+
+#: mini-commander/src/mini-commander.glade.h:16
+msgid "Show fram_e"
+msgstr "프레임 보여주기(_E)"
+
+#: mini-commander/src/mini-commander.glade.h:17
+msgid "Show han_dle"
+msgstr "핸들 보여주기(_D)"
+
+#: mini-commander/src/mini-commander.glade.h:18
+msgid "Size"
+msgstr "크기"
+
+#: mini-commander/src/mini-commander.glade.h:19
+msgid "_Add new macro..."
+msgstr "매크로 더하기(_A)..."
+
+#: mini-commander/src/mini-commander.glade.h:20
+msgid "_Delete Macro"
+msgstr "매크로 지우기(_D)"
+
+#: mini-commander/src/mini-commander.glade.h:21
+msgid "_Use default theme colors"
+msgstr "기본 테마 색 쓰기(_U)"
+
+#: mini-commander/src/mini-commander_applet.c:189
+#: mini-commander/src/mini-commander_applet.c:193
+msgid "Browser"
+msgstr "브라우저"
+
+#: mini-commander/src/mini-commander_applet.c:194
+msgid "Click this button to start the browser"
+msgstr "브라우저를 시작하려면 이 단추를 클릭하십시오"
+
+#: mini-commander/src/mini-commander_applet.c:208
+#: mini-commander/src/mini-commander_applet.c:212
+msgid "History"
+msgstr "히스토리"
+
+#: mini-commander/src/mini-commander_applet.c:213
+msgid "Click this button for the list of previous commands"
+msgstr "이전 명령어의 목록을 보려면 이 단추를 클릭하십시오"
+
+#: mini-commander/src/mini-commander_applet.c:354
+msgid "Mini-Commander applet"
+msgstr "작은 명령기 애플릿"
+
+#: mini-commander/src/mini-commander_applet.c:355
+msgid "This applet adds a command line to the panel"
+msgstr "이 애플릿은 패널에 명령행을 더합니다"
+
+#: mini-commander/src/preferences.c:343
+msgid "You must specify a pattern"
+msgstr "규칙을 정해야 합니다"
+
+#: mini-commander/src/preferences.c:347
+msgid "You must specify a pattern and a command"
+msgstr "규칙과 명령을 정해야 합니다"
+
+#: mini-commander/src/preferences.c:348
+msgid "You must specify a command"
+msgstr "명령을 정해야 합니다"
+
+#: mini-commander/src/preferences.c:351
+msgid "You may not specify duplicate patterns"
+msgstr "중복되는 규칙을 정하면 안됩니다"
+
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
+msgid "Adjust the sound volume"
+msgstr "소리 볼륨 조정"
+
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
+#: mixer/mixer.c:900
+msgid "Volume Control"
+msgstr "볼륨 조절"
+
+#: mixer/GNOME_MixerApplet.xml.h:3
+msgid "_Mute"
+msgstr "음소거(_M)"
+
+#: mixer/GNOME_MixerApplet.xml.h:4
+msgid "_Run Volume Control..."
+msgstr "볼륨 조절(_R)..."
+
+#: mixer/mixer.c:144
+msgid "Volume Control (muted)"
+msgstr "볼륨 조절 (묵음)"
+
+#: mixer/mixer.c:196
+msgid ""
+"warning: this version of gmix was compiled with a different version of\n"
+"soundcard.h.\n"
+msgstr ""
+"경고: 이 버전의 gmix는 다른 버전의 soundcard.h와\n"
+"컴파일되었습니다.\n"
+
+#: mixer/mixer.c:207
+#, c-format
+msgid "Querying available channels of mixer device %s failed\n"
+msgstr "음량 조절 장치 %s에서 쓸 수 있는 채널을 얻는 데 실패했습니다\n"
+
+#: mixer/mixer.c:214
+msgid "warning: mixer has no volume channel - using PCM instead.\n"
+msgstr "경고: 음량 조절 장치에 볼륨 채널이 없습니다 - 대신에 PCM을 씁니다.\n"
+
+#: mixer/mixer.c:217
+#, c-format
+msgid "Mixer device %s has neither volume nor PCM channels.\n"
+msgstr "음량 조절 장치 %s에 볼륨 채널도 PCM 채널도 없습니다.\n"
+
+#: mixer/mixer.c:645
+msgid "Volume Controller"
+msgstr "볼륨 조절기"
+
+#: mixer/mixer.c:646
+msgid "Use Up/Down arrow keys to change volume"
+msgstr "볼륨을 바꾸려면 위/아래 화살표 키를 쓰십시오"
+
+#: mixer/mixer.c:901
+msgid "(C) 2001 Richard Hult"
+msgstr "(C) 2001 Richard Hult"
+
+#: mixer/mixer.c:902
+msgid "The volume control lets you set the volume level for your desktop."
+msgstr "볼륨 조절은 데스크탑의 볼륨 레벨을 설정하는 데 쓰입니다."
+
+#: mixer/mixer.c:1155
+msgid "The volume control lets you set the volume level for your desktop"
+msgstr "볼륨 조절은 데스크탑의 볼륨 레벨을 설정하는 데 쓰입니다."
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "인터넷"
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
+#: modemlights/modemlights.c:227
+msgid "Modem Lights"
+msgstr "모뎀 깜빡이"
+
+#: modemlights/modemlights.c:229
+msgid ""
+"Released under the GNU general public license.\n"
+"A modem status indicator and dialer.\n"
+"Lights in order from the top or left are Send data and Receive data."
+msgstr ""
+"GNU General Public License로 배포됩니다.\n"
+"모뎀 상태를 보여주고 전화를 걸어줍니다.\n"
+"위에서부터 혹은 좌로부터 깜빡이들은 각각 데이터를 받고 주는것을 보여줍니다."
+
+#: modemlights/modemlights.c:558
+msgid ""
+"You are currently connected.\n"
+"Do you want to disconnect?"
+msgstr ""
+"현재 연결되어 있습니다\n"
+"연결을 끊겠습니까?"
+
+#: modemlights/modemlights.c:573
+msgid "Do you want to connect?"
+msgstr "연결하겠습니까?"
+
+#: modemlights/modemlights.c:601
+#, c-format
+msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
+msgstr "%#.1fMb 받음 /%#.1fMb 보냄 / 시간: %.1d:%.2d"
+
+#: modemlights/modemlights.c:606
+msgid "not connected"
+msgstr "연결되어 있지 않음"
+
+#: modemlights/properties.c:328
+msgid "Modem Lights Preferences"
+msgstr "모뎀 깜박이 기본 설정"
+
+#: modemlights/properties.c:342
+msgid "Connecting"
+msgstr "연결중"
+
+#: modemlights/properties.c:356
+msgid "Co_nnect command:"
+msgstr "연결 명령(_N):"
+
+#: modemlights/properties.c:373
+msgid "_Disconnect command:"
+msgstr "연결 해제 명령(_D):"
+
+#. confirmation checkbox
+#: modemlights/properties.c:386
+msgid "Con_firm connection"
+msgstr "연결 확인(_F)"
+
+#: modemlights/properties.c:407
+msgid "U_pdates per second"
+msgstr "초당 업데이트(_P)"
+
+#. extra info checkbox
+#: modemlights/properties.c:421
+msgid "Sho_w connect time and throughput"
+msgstr "연결 시간과 처리량 보여주기(_W)"
+
+#: modemlights/properties.c:438
+msgid "Receive data"
+msgstr "데이터 받음"
+
+#: modemlights/properties.c:440
+msgid "_Foreground"
+msgstr "글자색(_F)"
+
+#: modemlights/properties.c:441
+msgid "_Background"
+msgstr "바탕색(_B)"
+
+#: modemlights/properties.c:443
+msgid "Send data"
+msgstr "데이터 보냄"
+
+#: modemlights/properties.c:445
+msgid "Foregroun_d"
+msgstr "글자색(_D)"
+
+#: modemlights/properties.c:446
+msgid "Backg_round"
+msgstr "바탕색(_R)"
+
+#: modemlights/properties.c:448
+msgid "Connection status"
+msgstr "연결 상태"
+
+#: modemlights/properties.c:450
+msgid "Co_nnected"
+msgstr "연결됨(_N)"
+
+#: modemlights/properties.c:451
+msgid "No_t connected"
+msgstr "연결되어 있지 않음(_T)"
+
+#: modemlights/properties.c:452
+msgid "A_waiting connection"
+msgstr "연결 대기중(_W)"
+
+#: modemlights/properties.c:455
+msgid "B_link"
+msgstr "깜박임(_L)"
+
+#: modemlights/properties.c:462
+msgid "Text"
+msgstr "텍스트"
+
+#: modemlights/properties.c:464
+msgid "For_eground"
+msgstr "글자색(_E)"
+
+#: modemlights/properties.c:465
+msgid "Bac_kground"
+msgstr "바탕색(_K)"
+
+#: modemlights/properties.c:466
+msgid "O_utline"
+msgstr "외곽선(_U)"
+
+#: modemlights/properties.c:477
+msgid "Modem options"
+msgstr "모뎀 옵션"
+
+#: modemlights/properties.c:491
+msgid "_Modem lock file:"
+msgstr "모뎀 락 파일(_M):"
+
+#: modemlights/properties.c:503
+msgid "_Verify owner of lock file"
+msgstr "락 파일의 소유자 확인(_V)"
+
+#: modemlights/properties.c:515
+msgid "_Device:"
+msgstr "장치(_D):"
+
+#. ISDN checkbox
+#: modemlights/properties.c:528
+msgid "U_se ISDN"
+msgstr "ISDN 쓰기(_S)"
+
+#: modemlights/properties.c:548
+msgid "Set options as default"
+msgstr "옵션을 기본 값으로"
+
+#: modemlights/properties.c:554
+msgid "Advanced"
+msgstr "고급"
+
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
+msgid "A system load indicator"
+msgstr "시스템 사용량 표시기"
+
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:78
+msgid "System Monitor"
+msgstr "시스템 감시"
+
+#: multiload/GNOME_MultiloadApplet.xml.h:3
+msgid "_Run detailed system monitor"
+msgstr "자세한 시스템 모니터 실행(_R)"
+
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "CPU 사용량"
+
+#: multiload/loadavg.c:107
+msgid "Load Average"
+msgstr "평균 사용량"
+
+#: multiload/main.c:80
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"file use, plus network traffic."
+msgstr ""
+"GNU General Public License로 공개합니다.\n"
+"\n"
+"시스템 사용량 모니터는 CPU, 램, 스왑 파일 사용량과 네트워크 사용량을 그래프"
+"로 보여줍니다."
+
+#: multiload/main.c:236 multiload/properties.c:373
+msgid "Processor"
+msgstr "프로세서"
+
+#: multiload/main.c:238 multiload/properties.c:379
+msgid "Memory"
+msgstr "메모리"
+
+#: multiload/main.c:240 multiload/properties.c:385
+msgid "Network"
+msgstr "네트워크"
+
+#: multiload/main.c:242 multiload/properties.c:391
+msgid "Swap File"
+msgstr "스왑 파일"
+
+#: multiload/main.c:244
+msgid "Resource"
+msgstr "자원"
+
+#: multiload/main.c:256
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use"
+msgstr ""
+"%s:\n"
+"%d%% 사용중"
+
+#: multiload/memload.c:50
+msgid "Memory Load"
+msgstr "메모리 사용량"
+
+#: multiload/netload.c:49
+msgid "Net Load"
+msgstr "네트웍 사용량"
+
+#: multiload/properties.c:258
+msgid "Monitored Resources"
+msgstr "감시할 자원"
+
+#: multiload/properties.c:266
+msgid "_Processor"
+msgstr "프로세서(_P)"
+
+#: multiload/properties.c:276
+msgid "_Memory"
+msgstr "메모리(_M)"
+
+#: multiload/properties.c:286
+msgid "_Network"
+msgstr "네트워크(_N)"
+
+#: multiload/properties.c:296
+msgid "_Swap File"
+msgstr "스왑 파일(_S)"
+
+#: multiload/properties.c:326
+msgid "System m_onitor width: "
+msgstr "시스템 감시 너비(_O): "
+
+#: multiload/properties.c:328
+msgid "System m_onitor height: "
+msgstr "시스템 감시 높이(_O): "
+
+#: multiload/properties.c:342
+msgid "pixels"
+msgstr "픽셀"
+
+#: multiload/properties.c:348
+msgid "Sys_tem monitor update interval: "
+msgstr "시스템 모니터 속도(_T): "
+
+#: multiload/properties.c:360
+msgid "milliseconds"
+msgstr "천분의일초"
+
+#: multiload/properties.c:374
+msgid "_User"
+msgstr "사용자(_U)"
+
+#: multiload/properties.c:375
+msgid "S_ystem"
+msgstr "시스템(_Y)"
+
+#: multiload/properties.c:376
+msgid "N_ice"
+msgstr "우선순위(_I)"
+
+#: multiload/properties.c:377
+msgid "I_dle"
+msgstr "유휴(_D)"
+
+#: multiload/properties.c:380
+msgid "Ot_her"
+msgstr "그 외(_H)"
+
+#: multiload/properties.c:381
+msgid "Sh_ared"
+msgstr "공유(_A)"
+
+#: multiload/properties.c:382
+msgid "_Buffers"
+msgstr "버퍼(_B)"
+
+#: multiload/properties.c:383
+msgid "F_ree"
+msgstr "여유(_R)"
+
+#: multiload/properties.c:386
+msgid "S_LIP"
+msgstr "SLIP(_L)"
+
+#: multiload/properties.c:387
+msgid "PL_IP"
+msgstr "PLIP(_I)"
+
+#: multiload/properties.c:388
+msgid "Et_hernet"
+msgstr "이더넷(_H)"
+
+#: multiload/properties.c:389
+msgid "_Other"
+msgstr "그 외(_O)"
+
+#: multiload/properties.c:392
+msgid "_Used"
+msgstr "사용중(_U)"
+
+#: multiload/properties.c:393
+msgid "_Free"
+msgstr "여유(_F)"
+
+#: multiload/properties.c:413
+msgid "System Monitor Preferences"
+msgstr "시스템 감시 기본 설정"
+
+#: multiload/swapload.c:51
+msgid "Swap Load"
+msgstr "스왑 사용량"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Factory for Panel Menu Applet"
+msgstr "패널 메뉴 애플릿을 위한 팩토리"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
+msgid "Panel Menu Applet Factory"
+msgstr "패널 메뉴 애플릿 팩토리"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
+msgid "Panel applet for displaying menus"
+msgstr "메뉴를 보여줄 패널 애플릿"
+
+#: panel-menu/panel-menu-actions.c:99
+msgid "Actions"
+msgstr "작업"
+
+#: panel-menu/panel-menu-actions.c:100
+msgid "Actions Menu"
+msgstr "작업 메뉴"
+
+#: panel-menu/panel-menu-add.c:77
+msgid "Add items to the Menu Bar"
+msgstr "메뉴 모음에 항목 더하기"
+
+#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-links.c:405
+msgid "Shortcuts"
+msgstr "바로 가기"
+
+#: panel-menu/panel-menu-add.c:250
+msgid "My Documents"
+msgstr "내 문서"
+
+#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-documents.c:399
+msgid "Documents"
+msgstr "문서"
+
+#: panel-menu/panel-menu-applications.c:80
+msgid "Applications"
+msgstr "프로그램"
+
+#: panel-menu/panel-menu-common.c:738
+msgid ""
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
+msgstr ""
+"이 항목을 지우는 것은 그놈 패널에서 메뉴 막대 애플릿을 지우게 하기 때문에 허"
+"용되지 않습니다"
+
+#: panel-menu/panel-menu-directory.c:516
+msgid "Create directory item..."
+msgstr "디렉토리 항목 만들기..."
+
+#: panel-menu/panel-menu-directory.c:524
+msgid "Home"
+msgstr "홈"
+
+#: panel-menu/panel-menu-directory.c:595
+msgid "Edit directory item..."
+msgstr "디렉토리 항목 편집..."
+
+#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
+msgid "_Path:"
+msgstr "경로(_P):"
+
+#: panel-menu/panel-menu-directory.c:694
+msgid "..."
+msgstr "..."
+
+#: panel-menu/panel-menu-directory.c:704
+msgid "_Depth level:"
+msgstr "깊이 단계(_D)::"
+
+#: panel-menu/panel-menu-directory.c:801
+msgid "Path specified is currently not a valid directory."
+msgstr "지정된 경로가 현재 올바른 디렉토리가 아닙니다."
+
+#: panel-menu/panel-menu-documents.c:397
+msgid "Create documents item..."
+msgstr "문서 항목 만들기..."
+
+#: panel-menu/panel-menu-documents.c:434
+msgid "Rename documents item..."
+msgstr "문서 항목 이름 바꾸기..."
+
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
+msgid "KDE Menus"
+msgstr "KDE 메뉴"
+
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
+#: panel-menu/panel-menu-path.c:559
+msgid "Programs"
+msgstr "프로그램"
+
+#: panel-menu/panel-menu-links.c:403
+msgid "Create links item..."
+msgstr "링크 항목 만들기..."
+
+#: panel-menu/panel-menu-links.c:439
+msgid "Rename links item..."
+msgstr "링크 항목 이름 바꾸기..."
+
+#: panel-menu/panel-menu-path.c:230
+msgid "KDE"
+msgstr "KDE"
+
+#: panel-menu/panel-menu-path.c:658
+msgid "Create menu path item..."
+msgstr "메뉴 경로 아이템 만들기..."
+
+#: panel-menu/panel-menu-path.c:701
+msgid "Edit path item..."
+msgstr "경로 항목 편집..."
+
+#: panel-menu/panel-menu-preferences.c:78
+msgid "Preferences"
+msgstr "기본 설정"
+
+#: panel-menu/panel-menu-properties.c:72
+msgid "Menu Bar Preferences"
+msgstr "메뉴 모음 기본 설정"
+
+#: panel-menu/panel-menu-properties.c:78
+msgid "Layout"
+msgstr "배치"
+
+#: panel-menu/panel-menu-properties.c:93
+msgid "_Applications Menu"
+msgstr "프로그램 메뉴(_A)"
+
+#: panel-menu/panel-menu-properties.c:117
+msgid "Select an icon for the Applications menu"
+msgstr "프로그램 메뉴의 아이콘 선택"
+
+#: panel-menu/panel-menu-properties.c:134
+msgid "_Preferences Menu"
+msgstr "기본 설정 메뉴(_P)"
+
+#: panel-menu/panel-menu-properties.c:145
+msgid "Ac_tions Menu"
+msgstr "작업 메뉴(_T)"
+
+#: panel-menu/panel-menu-properties.c:156
+msgid "_Windows Menu"
+msgstr "창 메뉴(_W)"
+
+#: panel-menu/panel-menu-properties.c:167
+msgid "W_orkspaces Menu"
+msgstr "작업 공간 메뉴(_O)"
+
+#: panel-menu/panel-menu-windows.c:99
+msgid "Windows"
+msgstr "창"
+
+#: panel-menu/panel-menu-workspaces.c:80
+msgid "Workspaces"
+msgstr "작업 공간"
+
+#: panel-menu/panel-menu.c:693
+msgid "Menu Bar"
+msgstr "메뉴 모음"
+
+#: panel-menu/panel-menu.c:694
+msgid "(c) 2001 Chris Phelps"
+msgstr "(c) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:695
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr "패널 모음으로 패널 위에 사용자가 정의한 메뉴 모음을 만들 수 있습니다"
+
+#: screen-exec/egg-screen-help.c:174
+msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+msgstr "GNOME_FILE_DOMAIN_APP_HELP 도메인을 찾을 수 없습니다"
+
+#: screen-exec/egg-screen-help.c:187
+msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+msgstr "GNOME_FILE_DOMAIN_HELP 도메인을 찾을 수 없습니다."
+
+#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
+#, c-format
+msgid ""
+"Unable to show help as %s is not a directory.  Please check your "
+"installation."
+msgstr ""
+"%s(이)가 폴더가 아니라서 도움말을 보여줄 수 없습니다. 설치가 올바로 되었는지 "
+"확인하십시오."
+
+#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
+#, c-format
+msgid ""
+"Unable to find the help files in either %s or %s.  Please check your "
+"installation"
+msgstr ""
+"%s 또는 %s에서 도움말 파일을 찾을 수 없습니다. 설치가 올바로 되었는지 확인하"
+"십시오."
+
+#: screen-exec/egg-screen-help.c:315
+#, c-format
+msgid "Unable to find doc_id %s in the help path"
+msgstr "도움말 경로에서 doc_id %s(을)를 찾을 수 없습니다"
+
+#: screen-exec/egg-screen-help.c:336
+#, c-format
+msgid "Help document %s/%s not found"
+msgstr "도움말 문서 %s/%s(을)를 찾을 수 없습니다"
+
+#: wireless/wireless-applet.c:343
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+"무선통신 감시기를 실행하는데 필요한 그림이 없습니다.\n"
+"설치가 올바르게 되었는지 확인하십시오."
+
+#: wireless/wireless-applet.c:529
+msgid "No Wireless Devices"
+msgstr "무선통신 장치 없음"
+
+#: wireless/wireless-applet.c:531
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"시스템에서 설정할 수 있는 무선장치가 없는 것 같습니다.\n"
+"잘못되었다고 생각되면 설정을 확인하십시오."
+
+#: wireless/wireless-applet.c:727
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
+msgid "Wireless Link Monitor"
+msgstr "무선통신 장치 감시기"
+
+#: wireless/wireless-applet.c:729
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 2001, 2002 Free Software Foundation "
+
+#: wireless/wireless-applet.c:730
+msgid "This utility shows the status of a wireless link."
+msgstr "무선통신 장치의 상태를 보여주는 도구입니다."
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr "감시할 장치:"
+
+#: wireless/wireless-applet.glade.h:2
+msgid "Show _dialog boxes"
+msgstr "대화상자 보기(_D)"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Show signal strength in _percentage"
+msgstr "신호 감도를 퍼센트로 보기(_P)"
+
+#: wireless/wireless-applet.glade.h:4
+msgid "Wireless Link Monitor Preferences"
+msgstr "무선통신 감시기 기본 설정"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+msgid "Monitor the quality of a wireless network link"
+msgstr "무선통신 장치의 감도를 감시합니다"
