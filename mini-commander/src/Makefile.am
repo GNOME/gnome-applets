@@ -34,7 +34,14 @@ mini_commander_applet_LDADD =				\
 	$(GNOMEGNORBA_LIBS)				\
 	$(INTLLIBS) 
 
-EXTRA_DIST = mini-commander_applet.desktop mini-commander_applet.gnorba
+# currently the installation of these bitmaps wouldn't be necessary
+bitmapsdir = $(datadir)/pixmaps/mini-commander
+bitmaps_DATA = browser-mini.xpm history-mini.xpm
+
+EXTRA_DIST = 				\
+	mini-commander_applet.desktop	\
+	mini-commander_applet.gnorba	\
+	$(bitmaps_DATA)
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = mini-commander_applet.desktop

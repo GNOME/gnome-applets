@@ -32,6 +32,9 @@
 #include "about.h"
 #include "help.h"
 
+#include "browser-mini.xpm"
+#include "history-mini.xpm"
+
 GtkWidget *applet;
 
 static int appletDestroy_signal(GtkWidget *widget, gpointer data);
@@ -89,6 +92,7 @@ main(int argc, char **argv)
     GtkWidget *frame;
     GtkWidget *frame2;
     GtkWidget *handle;
+    GtkWidget *icon;
 
     GtkStyle *style;
     GdkColor color;
@@ -156,21 +160,23 @@ main(int argc, char **argv)
     hboxButtons = gtk_hbox_new(TRUE, 0);
 
     /* add file-browser button */
-    /* FIXME: icon needed */
     button = gtk_button_new();
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(showFileBrowser_signal),
 		       NULL);
     gtk_widget_set_usize(GTK_WIDGET(button), 12, 10);
+    icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
+    gtk_container_add(GTK_CONTAINER(button), icon);
     gtk_box_pack_start(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
 
     /* add history button */
-    /* FIXME: icon needed */
     button = gtk_button_new();
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(showHistory_signal),
 		       NULL);
     gtk_widget_set_usize(GTK_WIDGET(button), 12, 10);
+    icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
+    gtk_container_add(GTK_CONTAINER(button), icon);
     gtk_box_pack_end(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
 
     /* add buttons into frame */
