@@ -6,11 +6,6 @@
 !
 !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-clear Mod1
-clear Mod2
-clear Lock
-clear Control
-!!
 keycode 0x09 =	Escape
 keycode 0x0A =	1 exclam
 keycode 0x0B =	2 doublelowquotemark   2 at 		
@@ -117,8 +112,4 @@ keycode 0x73 =	Mode_switch
 keycode 0x74 =	Multi_key
 keycode 0x75 =	ISO_Next_Group	
 !!!
-add    Control = Control_L Control_R
-add    Lock    = Shift_Lock
-add    Mod1    = Alt_L Alt_R
-add    Mod2    = Mode_switch
 
