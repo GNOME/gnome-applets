@@ -32,6 +32,9 @@ int d[8];
 static int digits[8] = {0, 0, 0, 0, 0, 0};
 int blink = 0;
 
+static int panel_size = 48;
+static gboolean panel_vertical = FALSE;
+
 static gint
 about_jbc ()
 {
@@ -99,6 +102,43 @@ do_flicker ()
   return 1;
 }
 
+static void
+redo_size (GtkWidget *canvas)
+{
+	int w, h;
+	double scale_factor;
+
+	if (panel_vertical) {
+		w = panel_size + 2;
+		h = (CANVAS_HEIGHT*w)/CANVAS_WIDTH;
+		scale_factor = (double)w / (double)CANVAS_WIDTH;
+	} else {
+		h = panel_size + 2;
+		w = (CANVAS_WIDTH*h)/CANVAS_HEIGHT;
+		scale_factor = (double)h / (double)CANVAS_HEIGHT;
+	}
+	gtk_widget_set_usize (canvas, w, h);
+	gnome_canvas_set_pixels_per_unit (GNOME_CANVAS (canvas), scale_factor);
+	gnome_canvas_scroll_to (GNOME_CANVAS (canvas), 0.0, 0.0);
+}
+
+static void
+change_pixel_size (GtkWidget *applet, int size, GtkWidget *canvas)
+{
+	panel_size = size;
+	redo_size (canvas);
+}
+
+static void
+change_orient (GtkWidget *applet, PanelOrientType o, GtkWidget *canvas)
+{
+	if(o == ORIENT_UP ||
+	   o == ORIENT_DOWN)
+		panel_vertical = FALSE;
+	else
+		panel_vertical = TRUE;
+	redo_size (canvas);
+}
 
 int
 main (int argc, char **argv)
@@ -124,11 +164,15 @@ main (int argc, char **argv)
   gtk_widget_set_usize (canvas, CANVAS_WIDTH, CANVAS_HEIGHT);
   gnome_canvas_set_scroll_region (GNOME_CANVAS (canvas), 0.0, 0.0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+  gtk_signal_connect (GTK_OBJECT (applet), "change_orient",
+		      GTK_SIGNAL_FUNC (change_orient), canvas);
+  gtk_signal_connect (GTK_OBJECT (applet), "change_pixel_size",
+		      GTK_SIGNAL_FUNC (change_pixel_size), canvas);
+
   applet_widget_add (APPLET_WIDGET (applet), canvas);
   gtk_widget_show (canvas);
 
   gtk_widget_show (applet);
-
 
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					 "about",
