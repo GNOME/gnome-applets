@@ -260,8 +260,8 @@ properties_cb (BonoboUIComponent *uic,
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (category_vbox);
 	
-	title = g_strconcat ("<span weight=\"bold\">", _("_Theme Name"), "</span>", NULL);
-	label = gtk_label_new_with_mnemonic (_(title));
+	title = g_strconcat ("<span weight=\"bold\">", _("Themes"), "</span>", NULL);
+	label = gtk_label_new (_(title));
 	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
@@ -270,7 +270,7 @@ properties_cb (BonoboUIComponent *uic,
 	
 	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
-	gtk_widget_show (hbox); ;
+	gtk_widget_show (hbox);
 	
 	indent = gtk_label_new (HIG_IDENTATION);
 	gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
@@ -280,6 +280,10 @@ properties_cb (BonoboUIComponent *uic,
 	control_vbox = gtk_vbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_vbox);
+	
+	label = gtk_label_new_with_mnemonic (_("_Select a theme:"));
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_box_pack_start (GTK_BOX (control_vbox), label, FALSE, FALSE, 0);
 	
 	model = gtk_list_store_new (1, G_TYPE_STRING);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
