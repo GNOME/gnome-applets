@@ -1,6 +1,8 @@
 /* charpick.h -- header file for character picker applet */
 
-#include <gnome.h>
+#include <glib.h>
+#include <gtk/gtktogglebutton.h>
+#include <gtk/gtkwidget.h>
 #include <gconf/gconf-client.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
