@@ -17,4 +17,7 @@ sys_DATA = quicklaunch_applet.desktop
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = quicklaunch_applet.gnorba
 
-EXTRA_DIST = $(sys_DATA) $(gnorba_DATA)
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-quicklaunch.png
+
+EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) $(pixmaps_DATA)
