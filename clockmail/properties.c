@@ -25,7 +25,7 @@ void property_save(char *path)
         gnome_config_push_prefix(path);
         gnome_config_set_int("12hour", AM_PM_ENABLE);
         gnome_config_set_int("blink", ALWAYS_BLINK);
-	gnome_config_set_string("lockfile", mail_file);
+	gnome_config_set_string("mailfile", mail_file);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }

@@ -1,5 +1,11 @@
 1998-05-30  John Ellis  <johne@bellatlantic.net>
 
+	* clockmail.c (main): used strdup for getnev("MAIL") so it
+	does not sigsegv when freeing mail_file.
+	* properties.c (property_load): renamed lockfile to mailfile.
+
+1998-05-30  John Ellis  <johne@bellatlantic.net>
+
 	* clockmail.[ch], properties: user can now specify mailfile.
 	* clockmail.c (check_mail_file_status): at reset option for
 	when the mail file is changed in the properties dialog.

@@ -316,7 +316,9 @@ int main (int argc, char *argv[])
 	if (!strcmp(mail_file,"default"))
 		{
 		if (mail_file) free(mail_file);
-		mail_file = getenv ("MAIL");
+		mail_file = NULL;
+		if (getenv ("MAIL"));
+		mail_file = strdup(getenv ("MAIL"));
 		}
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
