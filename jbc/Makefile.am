@@ -1,4 +1,4 @@
-SUBDIRS = docs
+SUBDIRS = docs pixmaps
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
@@ -14,8 +14,6 @@ jbc_applet_SOURCES = \
 jbc_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
-
-SUBDIRS = pixmaps
 
 EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba README AUTHORS \
              ChangeLog gnome-jbc.png

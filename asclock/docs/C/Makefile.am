@@ -13,8 +13,8 @@ EXTRA_DIST = asclock-applet.sgml asclock.sgml topic.dat $(figs)
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
 
-index.html: asclock-applet/index.html
-	-cp asclock-applet/index.html .
+index.html: $(srcdir)/asclock-applet/index.html
+	-cp $(srcdir)/asclock-applet/index.html .
 
 asclock-applet/index.html: $(srcdir)/asclock.sgml $(srcdir)/asclock-applet.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
