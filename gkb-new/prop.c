@@ -375,10 +375,14 @@ prophelp_cb (GtkWidget *widget, gpointer data)
 static void
 window_response (GtkWidget *w, int response, gpointer data)
 {
-	if (response == GTK_RESPONSE_HELP)
-		prophelp_cb (gkb->applet, data);
-	else
-		gtk_widget_destroy (w);
+  GkbPropertyBoxInfo * pbi = data;	
+  if (response == GTK_RESPONSE_HELP)
+    prophelp_cb (gkb->applet, data);
+  else {
+    gtk_list_clear_items (pbi->list, 0, -1);
+    g_free (pbi);
+    gtk_widget_destroy (w);
+  }
        
 }
 
@@ -481,9 +485,6 @@ properties_dialog (BonoboUIComponent *uic,
   pbi->selected_keymap = NULL;
 
   pbi->box = gkb_prop_create_property_box (pbi);
-
-  g_signal_connect (G_OBJECT (pbi->box), "destroy",
-  		    G_CALLBACK (gkb_prop_box_destroy), pbi);
 
   gtk_widget_show_all (pbi->box);
   gdk_window_raise (pbi->box->window);
