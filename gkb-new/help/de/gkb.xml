@@ -1,0 +1,382 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.101.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Keyboard Layout Switcher">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet-Handbuch V&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN und Dan Mueth</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME-Dokumentationsprojekt</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME-Dokumentationsteam</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>GNOME-Dokumentationsprojekt</orgname> 
+			 <address> <email>emese@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>GNOME-Dokumentationsprojekt</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME-Dokumentationsprojekt</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet-Handbuch V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Handbuch zum Tastaturbelegungs-Umschalter-Applet V2.0</revnumber> 
+		  <date>May 2002</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>GNOME-Tastatur-Applet</revnumber> 
+		  <date>Januar 2002</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>		  
+		</revision>
+		<revision> 
+		  <revnumber>GNOME-Tastatur-Applet</revnumber> 
+		  <date>2000</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para>
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>		  
+		</revision>
+	 </revhistory>
+	 <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Feedback</title>
+		<para> Wenn Sie einen Programmfehler melden m&ouml;chten oder Vorschl&auml;ge zum Applet &applet; oder zu diesem Handbuch haben,
+		  folgen Sie den Anweisungen auf der
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>Tastaturbelegungsschalter</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="gkb-introduction">
+
+	 <title>Einf&uuml;hrung</title>
+
+	 <figure id="gkb-fig"> 
+		<title>&applet;-Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>&Ouml;ffnet das Applet &applet;. Das Applet enth&auml;lt die Flagge und die Bezeichnung der aktuellen Tastaturbelegung
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+
+	 <para>Mit dem <application>&applet;</application>-Applet k&ouml;nnen Sie Tastaturbelegungen f&uuml;r
+                   unterschiedliche L&auml;ndereinstellungen zuweisen. Das Applet zeigt Flagge und Bezeichnung der gegenw&auml;rtigen 
+	Tastaturbelegung an.</para>
+	 <para>Zum Hinzuf&uuml;gen von <application>&applet;</application> in ein Panel klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie 
+		<menuchoice> 
+		  <guimenu>Zum Panel hinzuf&uuml;gen</guimenu> 
+		  <guisubmenu>Dienstprogramm</guisubmenu> 
+		  <guimenuitem>&applet;</guimenuitem> 
+		</menuchoice>.</para>
+  </sect1>
+
+
+  <sect1 id="gkb-usage">
+   
+	 <title>Verwendung</title>
+
+	 <para>Zum &Auml;ndern der Tastaturbelegung klicken Sie so oft auf das Applet, bis die gew&uuml;nschte
+                                    Tastaturbelegung angezeigt wird. Sollte das Applet die erforderliche Tastaturbelegung nicht enthalten, 
+	 informieren Sie sich unter <xref linkend="gkb-keymaps"/> &uuml;ber das Hinzuf&uuml;gen von Tastaturbelegungen zum Applet.</para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs">
+<title>Einstellungen</title>
+	 <para>Zur Konfiguration von <application>&applet;</application> klicken Sie mit der rechten Maustaste auf das 
+	 Applet, und w&auml;hlen Sie <guimenuitem>Einstellungen</guimenuitem>.</para>
+
+	 <sect2 id="gkb-keymaps"> 
+		
+		<title>Tastaturbelegungen</title>
+		
+		<para>Auf der Registerkarte <guilabel>Tastaturbelegungen</guilabel> werden die Tastaturbelegungen aufgef&uuml;hrt, die  
+		gegenw&auml;rtig im Applet konfiguriert sind. </para>
+		
+		<sect3 id="gkb-modify-list">
+		
+		<title>So bearbeiten Sie die Liste der Tastaturbelegungen</title>
+		
+		<para>Um eine neue Tastaturbelegung zur Liste <guilabel>Tastaturbelegungen</guilabel> 
+		hinzuzuf&uuml;gen, f&uuml;hren Sie die folgenden Schritte aus:</para>
+		<orderedlist>
+			<listitem><para>Klicken Sie auf der Registerkarte <guilabel>Tastaturbelegungen</guilabel> auf 
+			<guibutton>Hinzuf&uuml;gen</guibutton>. Das Dialogfeld <guilabel>Tastatur ausw&auml;hlen</guilabel> wird ge&ouml;ffnet.</para></listitem>
+			<listitem><para>Klicken Sie auf das Pfeilsymbol neben dem Land, f&uuml;r das Sie eine Tastaturbelegung hinzuf&uuml;gen m&ouml;chten, 
+			und w&auml;hlen Sie die gew&uuml;nschte Tastaturbelegung. </para></listitem>
+			<listitem><para>Klicken Sie auf <guibutton>Hinzuf&uuml;gen</guibutton>, um die Tastaturbelegung zur Liste der 
+			<guilabel>Tastaturbelegungen</guilabel> hinzuzuf&uuml;gen.</para></listitem>
+		</orderedlist>
+		
+		<para>Um eine Tastaturbelegung aus der Liste der <guilabel>Tastaturbelegungen</guilabel> zu entfernen, w&auml;hlen Sie die entsprechende
+		Tastaturbelegung, und klicken Sie auf <guibutton>L&ouml;schen</guibutton>.</para>
+		
+		<para>Um eine Tastaturbelegung in der Liste der <guilabel>Tastaturbelegungen</guilabel> nach oben zu verschieben, w&auml;hlen Sie die entsprechende Tastaturbelegung, und klicken Sie auf
+                                   <guibutton>Nach oben</guibutton>. Um eine Tastaturbelegung in der Liste der 
+		<guilabel>Tastaturbelegungen</guilabel> nach unten zu verschieben, w&auml;hlen Sie die entsprechende Tastaturbelegung, und klicken Sie auf 
+		<guibutton>Nach unten</guibutton>.</para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout">
+		
+		<title>So bearbeiten Sie eine Tastaturbelegung</title>
+		<para>Um eine Tastaturbelegung zu bearbeiten, w&auml;hlen Sie die entsprechende Tastaturbelegung, und klicken Sie auf 
+		<guibutton>Bearbeiten</guibutton>. Das Dialogfeld <guilabel>Tastatur bearbeiten</guilabel> enth&auml;lt 
+		die folgenden Elemente:</para>
+		
+		<table frame="topbot" id="tbl-edit-layout">
+    		<title>Tastaturelemente bearbeiten</title>
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead>
+		 <row valign="top">
+		  <entry>
+		  <para>Dialogfeldelement</para></entry>
+		  <entry>
+		  <para>Beschreibung</para></entry>
+		 </row>
+	 	</thead>
+		<tbody>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Name</guilabel></para></entry>
+		  <entry>
+		  <para>Name der Tastaturbelegung Dieser Name wird auf der Registerkarte <guilabel>Tastaturbelegungen</guilabel> 
+		des Dialogfelds <guilabel>Einstellungen</guilabel> angezeigt.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Bezeichnung</guilabel></para></entry>
+		  <entry>
+		  <para>Kurzbezeichnung der Tastaturbelegung Die Bezeichnung f&uuml;r die US-amerikanische Tastaturbelegung 
+		ist beispielsweise <guilabel>us</guilabel>. Standardm&auml;&szlig;ig wird in der Applet-Anzeige die Flagge und die Bezeichnung der  
+	                  aktuellen Tastaturbelegung angezeigt. </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Sprache</guilabel></para></entry>
+		  <entry>
+		  <para>Sprache, f&uuml;r die die Tastaturbelegung gilt ist</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Land</guilabel></para></entry>
+		  <entry>
+		  <para>Das Land, in dem die Tastaturbelegung verwendet wird</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Flaggen-Pixmap</guilabel></para></entry>
+		  <entry>
+		  <para>Flagge des Landes, in dem die Tastaturbelegung verwendet wird Standardm&auml;&szlig;ig wird in der Applet-Anzeige 
+		die Flagge und die Bezeichnung der aktuellen Tastaturbelegung angezeigt. Klicken Sie auf die Flagge, 
+		  um ein Dialogfeld zur Flaggenauswahl aufzurufen. </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Architektur</guilabel></para></entry>
+		  <entry>
+		  <para>Art des Hardwaresystems</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Typ</guilabel></para></entry>
+		  <entry>
+		  <para>Tastaturtyp, z. B. 101 Tasten, 105 Tasten usw.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Codepage</guilabel></para></entry>
+		  <entry>
+		  <para>Das von der Sprache, f&uuml;r die die Tastatur gilt, verwendete Codeset F&uuml;r US-amerikanisches Englisch wird z. B. das westeurop&auml;ische 
+		Codeset ISO-8859-1 verwendet.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Befehl</guilabel></para></entry>
+		  <entry>
+		  <para>Befehl, den das Applet zum &Auml;ndern der Tastaturbelegung verwendet Sie k&ouml;nnen einen der folgenden 
+		  Befehle verwenden, um die Tastaturbelegung zu &auml;ndern:</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command> wobei<replaceable>us</replaceable>
+		 die Dateierweiterung der <filename>xmodmap</filename>-Datei f&uuml;r die Tastaturbelegung ist.</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command>, wobei 
+		  <replaceable>/path/xmodmap.us</replaceable> die <filename>xmodmap</filename>-Datei f&uuml;r die 
+		  Tastaturbelegung ist</para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command>, wobei <replaceable>us</replaceable>
+		  die Dateierweiterung der <filename>xmodmap</filename>-Datei f&uuml;r die Tastaturbelegung ist</para>
+		  </entry>
+		 </row>
+	 	</tbody>
+		</tgroup>
+		</table>
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options">
+	 
+	 	<title>Optionen</title>
+	 	<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Erscheinungsbild</guilabel></term> 
+			 <listitem>
+			 <para>W&auml;hlen Sie im Dropdown-Listenfeld eine der folgenden Optionen, um 
+			 festzulegen, was im Panel des Applets angezeigt wird:</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Flagge</guilabel></para>
+			 	<para>Zeigt nur eine Flagge an.</para></listitem>
+			 	<listitem><para><guilabel>Bezeichnung</guilabel></para>
+			 	<para>Zeigt nur eine Bezeichnung an.</para></listitem>
+			 	<listitem><para><guilabel>Flagge und Bezeichnung</guilabel></para>
+			 	<para>Zeigt eine Flagge und eine Bezeichnung an.</para></listitem>
+			 </itemizedlist>
+			 <para>Eine &Auml;nderung dieser Einstellung wird erst nach einem Neustart des Computers wirksam.</para>
+			 <para>Standard:  <guilabel>Flagge und Bezeichnung</guilabel></para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Applet-Gr&ouml;&szlig;e</guilabel></term> 
+			 <listitem>
+			 <para>W&auml;hlen Sie im Dropdown-Listenfeld eine der folgenden Optionen, um 
+		 die Gr&ouml;&szlig;e des Applets im Panel festzulegen:</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Normal</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Gro&szlig;</guilabel></para></listitem>
+			 </itemizedlist>
+			 <para>Eine &Auml;nderungen dieser Einstellung wird erst nach einem Neustart des Computers wirksam.</para>
+			 <para>Standard:  <guilabel>Gro&szlig;</guilabel>.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Kurzbefehl zum Wechseln zwischen verschiedenen Tastaturbelegungen</guilabel></term> 
+			 <listitem>
+			 <para>Zum Wechseln zwischen verschiedenen Tastaturbelegungen k&ouml;nnen Sie eine Tastenkombination verwenden. Um die Tastenkombination
+			festzulegen, klicken Sie auf <guibutton>Kurzbefehl aufnehmen</guibutton>, 
+			und dr&uuml;cken Sie danach die gew&uuml;nschten Tasten. Das Applet zeigt die Tastenkombination im Textfeld an. Die Standard-Tastenkombination
+			 ist <keycombo><keycap>Alt</keycap><keycap>Umschalt</keycap></keycombo> und wird im Textfeld des Applets als
+                                                        Mod1-Shift_L angezeigt.</para>
+			 <para>Standard:  Mod1-Shift_L</para>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+	 
+	 </sect2>
+
+  </sect1>
+
+</article>
