@@ -498,17 +498,17 @@ mc_command_update_entry_color (MCData *mc)
 void
 mc_command_update_entry_size (MCData *mc)
 {
-    int size_y = -1;
+    int size_x = -1;
 
-    size_y = mc->preferences.normal_size_x - 17;
+    size_x = mc->preferences.normal_size_x - 17;
 
     if (mc->preferences.show_handle)
-	size_y -= 10;
+	size_x -= 10;
 
     if (mc->preferences.show_frame)
-	size_y -= 10;
+	size_x -= 10;
 
-    gtk_widget_set_usize (GTK_WIDGET (mc->entry), size_y, mc->cmd_line_size_y);
+    gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, -1); 
 }
 
 
