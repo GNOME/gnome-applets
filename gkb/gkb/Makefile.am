@@ -4,8 +4,8 @@ GKB_BITMAPS = be.xpm bg.xpm ca.xpm ch.xpm \
 	hu.xpm il.xpm is.xpm it.xpm \
 	jp.xpm nl.xpm no.xpm pl.xpm \
 	pt.xpm qc.xpm ru.xpm se.xpm \
-	si.xpm th.xpm tr.xpm us.xpm \
-	yu.xpm
+	si.xpm sk.xpm th.xpm tr.xpm \
+	us.xpm yu.xpm
 
 EXTRA_DIST = $(GKB_BITMAPS)
 
