@@ -87,7 +87,11 @@ dnl mixer
 P_MIXER=
 AC_CHECK_HEADERS(linux/soundcard.h,[P_MIXER=mixer],[
   AC_CHECK_HEADERS(machine/soundcard.h, [P_MIXER=mixer],[
-    AC_CHECK_HEADERS(sys/soundcard.h, [P_MIXER=mixer]) ]) ])
+    AC_CHECK_HEADERS(sys/soundcard.h, [P_MIXER=mixer],[
+      AC_CHECK_HEADERS(sys/audioio.h, [P_MIXER=mixer],[
+        AC_CHECK_HEADERS(sys/audio.io.h, [P_MIXER=mixer],[
+          AC_CHECK_HEADERS(sun/audioio.h, [P_MIXER=mixer]) ]) ]) ]) ]) ])
+
 AM_CONDITIONAL(APPLET_MIXER, test "$P_MIXER" = "mixer")
 if test "$P_MIXER" != "mixer"; then
   AC_MSG_WARN([*** \`mixer' applet will not be built ***])

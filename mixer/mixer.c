@@ -11,7 +11,15 @@
  *          Federico Mena
  *
  * Feel free to implement new look and feels :-)
+ *
  */
+
+/*
+ * Contact Dave Larson <davlarso@acm.org> for questions of
+ * bugs concerning the Solaris audio api code.
+ *
+ */	
+
 #include <math.h>
 #include <stdio.h>
 #include <config.h>
@@ -31,14 +39,33 @@
 
 #ifdef HAVE_LINUX_SOUNDCARD_H
 #include <linux/soundcard.h>
+#define OSS_API
 #elif HAVE_MACHINE_SOUNDCARD_H
 #include <machine/soundcard.h>
+#define OSS_API
 #elif HAVE_SYS_SOUNDCARD_H
 #include <sys/soundcard.h>
+#define OSS_API
+#elif HAVE_SYS_AUDIOIO_H
+#include <sys/audioio.h>
+#define SUN_API
+#elif HAVE_SYS_AUDIO_IO_H
+#include <sys/audio.io.h>
+#define SUN_API
+#elif HAVE_SUN_AUDIOIO_H
+#include <sun/audioio.h>
+#define SUN_API
 #else
 #error No soundcard defenition!
 #endif /* SOUNDCARD_H */
- 
+
+#ifdef OSS_API
+#define VOLUME_MAX 100
+#endif
+#ifdef SUN_API
+#define VOLUME_MAX 255
+#endif
+
 #include "lamp-small.xpm"
 #include "lamp-small-red.xpm"
 
@@ -87,8 +114,12 @@ static void
 openMixer( gchar *device_name ) 
 {
 	gint res, ver;
-
+#ifdef OSS_API
 	mixerfd = open(device_name, O_RDWR, 0);
+#endif
+#ifdef SUN_API
+	mixerfd = open(device_name, AUDIO_GETINFO, O_WRONLY);
+#endif
 	if (mixerfd < 0) {
 		/* probably should die more gracefully */
 		char *s = g_strdup_printf(_("Couldn't open mixer device %s\n"),
@@ -116,7 +147,7 @@ static int
 readMixer(void)
 {
 	gint vol, r, l;
-
+#ifdef OSS_API
 	/* if we couldn't open the mixer */
 	if (mixerfd < 0) return 0;
 
@@ -127,19 +158,31 @@ readMixer(void)
 /*	printf("vol=%d l=%d r=%d\n",vol, l, r); */
 
 	return (r+l)/2;
+#elif SUN_API
+ 	audio_info_t ainfo;
+        AUDIO_INITINFO (&ainfo);	
+ 	ioctl (mixerfd, AUDIO_GETINFO, &ainfo);
+ 	return (ainfo.play.gain);
+#endif
 }
 
 static void
 setMixer(gint vol)
 {
 	gint tvol;
-
+#ifdef OSS_API
 	/* if we couldn't open the mixer */
 	if (mixerfd < 0) return;
 
 	tvol = (vol << 8) + vol;
 /*g_message("Saving mixer value of %d",tvol);*/
 	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_VOLUME), &tvol);
+#elif SUN_API
+ 	audio_info_t ainfo;
+	AUDIO_INITINFO (&ainfo);
+ 	ainfo.play.gain = vol;
+ 	ioctl (mixerfd, AUDIO_SETINFO, &ainfo);
+#endif
 }
 
 static void
@@ -198,7 +241,7 @@ adj_cb(GtkWidget *widget, gpointer   data)
 	if (GTK_ADJUSTMENT(widget) == mx->vadj)
 		vol = -GTK_ADJUSTMENT(data)->value;
 	else
-		vol = -(-100 - GTK_ADJUSTMENT(data)->value);
+		vol = -(-VOLUME_MAX - GTK_ADJUSTMENT(data)->value);
 	/*	printf("In adj_cb: value is %d\n", vol); */
 	setMixer(vol);
 }
@@ -217,8 +260,8 @@ set_other_slider_cb(GtkAdjustment *adj, GtkAdjustment* other_adj)
 	/* without the funny formula, the hslider would turn up the 
 	   volume to the left and down to the right.  */
 
-	if ( other_adj->value != -100 - adj->value)
-	gtk_adjustment_set_value(other_adj, -100 - adj->value);
+	if ( other_adj->value != -VOLUME_MAX - adj->value)
+	gtk_adjustment_set_value(other_adj, -VOLUME_MAX - adj->value);
 	
 }
 
@@ -308,7 +351,7 @@ mixer_update_func(GtkWidget *mixer, gint mvol)
 	/*   ignore if we're in mute mode. */
 	if (!md->mute) {
 	gtk_adjustment_set_value(mx->vadj, (gfloat)(-mvol));
-	gtk_adjustment_set_value(mx->hadj, (gfloat)(-100 + mvol));
+	gtk_adjustment_set_value(mx->hadj, (gfloat)(-VOLUME_MAX + mvol));
 	}
 	mixer_set_color(mx);
 	
@@ -351,9 +394,9 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 	vscale = vslider_new();
 	hscale = hslider_new();
 	
-        hadj=(GtkAdjustment *) gtk_adjustment_new (-50, -100.0, 0.0, 
+        hadj=(GtkAdjustment *) gtk_adjustment_new (-50, -VOLUME_MAX, 0.0, 
 					50.0, 25.0, 0.0);
-        vadj=(GtkAdjustment *) gtk_adjustment_new (-50, -100.0, 0.0, 
+        vadj=(GtkAdjustment *) gtk_adjustment_new (-50, -VOLUME_MAX, 0.0, 
 					50.0, 25.0, 0.0);
 
 	hlightwid = gnome_pixmap_new_from_xpm_d(lamp_small_xpm);
