@@ -52,12 +52,11 @@ void update_display (GWeatherApplet *applet)
 	tmp = g_strdup_printf ("%d\302\260", info->curtemp);
 	gtk_label_set_text (GTK_LABEL (applet->labels[0]), tmp);
 	g_free (tmp);
-	
-g_print ("update \n");
+
 	list = info->forecasts;
 	for (i=1; i<=applet->gweather_info->numforecasts-1; i++) {
 		WeatherForecast *forecast = NULL;
-		gint avgtemp;
+		
 		if (!list)
 			continue;
 		forecast = list->data;	
@@ -74,15 +73,14 @@ g_print ("update \n");
 			gtk_tooltips_set_tip (applet->tooltips,applet->events[i], NULL, NULL);
 		pixbuf = get_conditions_pixbuf (forecast->wid);
 		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[i]), pixbuf);
-		avgtemp = 0.5 * (forecast->low + forecast->high);
-		tmp = g_strdup_printf ("%d\302\260", avgtemp);
+		tmp = g_strdup_printf ("%d/%d\302\260", forecast->high, forecast->low);
 		gtk_label_set_text (GTK_LABEL (applet->labels[i]), tmp);
 		g_free (tmp);
 		list = g_list_next (list);
 	
 	}
 
-g_print ("done updating display \n");
+
 }
 
 void place_widgets (GWeatherApplet *gw_applet)
@@ -96,10 +94,10 @@ void place_widgets (GWeatherApplet *gw_applet)
     if ((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || 
          (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) {
 	 horiz = FALSE;
-         gw_applet->box = gtk_vbox_new (FALSE, 2);         
+         gw_applet->box = gtk_vbox_new (FALSE, 4);         
     }
     else {
-         gw_applet->box = gtk_hbox_new (FALSE, 2);
+         gw_applet->box = gtk_hbox_new (FALSE, 4);
 	 horiz = TRUE;
     }
     
@@ -122,7 +120,10 @@ void place_widgets (GWeatherApplet *gw_applet)
 		gw_applet->labels[i] = gtk_label_new (NULL);
 		gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), 
 				                      gw_applet->labels[i], FALSE, FALSE, 0);
-		tmp = g_strdup_printf ("%d\302\260", 0);
+		if (i ==0)
+			tmp = g_strdup_printf ("%d\302\260", 0);
+		else
+			tmp = g_strdup_printf ("%d/%d\302\260", 0, 0);
 		gtk_label_set_text (GTK_LABEL (gw_applet->labels[i]), tmp);
 		g_free (tmp);
     }

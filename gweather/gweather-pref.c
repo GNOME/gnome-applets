@@ -155,7 +155,7 @@ show_labels_toggled (GtkToggleButton *button, gpointer data)
     gw_applet->gweather_pref.show_labels= toggled;
     panel_applet_gconf_set_bool(gw_applet->applet, "show_labels", toggled, NULL);
 
-   for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+   for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
 	if (toggled)
 		gtk_widget_show (gw_applet->labels[i]);
 	else
@@ -340,7 +340,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_metric_btn), 
     				 gw_applet->gweather_pref.use_metric);
 
-    check = gtk_check_button_new_with_mnemonic (_("_Display daily average temperatures"));
+    check = gtk_check_button_new_with_mnemonic (_("_Display temperatures"));
     gtk_box_pack_start (GTK_BOX (vbox2), check, FALSE, FALSE, 0);
     gtk_widget_show (gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (check), "toggled",
