@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-07 12:35+0200\n"
-"PO-Revision-Date: 2003-07-07 21:29+0200\n"
+"POT-Creation-Date: 2003-07-08 12:33+0200\n"
+"PO-Revision-Date: 2003-07-08 20:11+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,9 +81,9 @@ msgid "Utility"
 msgstr "Nástroj"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:495
+#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:502
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:733
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2190
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2432
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
@@ -468,8 +468,8 @@ msgstr "Vzhled"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Nastavení Sledování stavu baterie"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1822
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
+#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:2026
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
 msgid "General"
 msgstr "Obecné"
@@ -527,8 +527,8 @@ msgid "_Yellow:"
 msgstr "_Žlutá:"
 
 #: battstat/properties.c:256 drivemount/drivemount.c:460
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2054
-#: mailcheck/mailcheck.c:2297 mini-commander/src/preferences.c:352
+#: drivemount/properties.c:588 mailcheck/mailcheck.c:2289
+#: mailcheck/mailcheck.c:2537 mini-commander/src/preferences.c:352
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -596,8 +596,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:357 drivemount/drivemount.c:404 mixer/mixer.c:1026
-#: multiload/main.c:118
+#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -801,7 +800,7 @@ msgid "Character Palette Preferences"
 msgstr "Nastavení Palety znaků"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:513
+#: drivemount/drivemount.c:520
 msgid "Disk Mounter"
 msgstr "Připojování disků"
 
@@ -825,37 +824,51 @@ msgstr "Pro_bírat..."
 msgid "_Eject"
 msgstr "_Vysunout"
 
-#: drivemount/drivemount.c:514
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "©1999-2001 The GNOME Hackers\n"
+#: drivemount/drivemount.c:401 mailcheck/mailcheck.c:659
+#, c-format
+msgid "There was an error executing %s: %s"
+msgstr "Při spouštění %s došlo k chybě: %s"
 
-#: drivemount/drivemount.c:516
+#: drivemount/drivemount.c:408
+msgid "Cannot browse device"
+msgstr "Nemohu procházet zařízení"
+
+#: drivemount/drivemount.c:466 drivemount/properties.c:594
+#: mailcheck/mailcheck.c:2295 mailcheck/mailcheck.c:2543
+msgid "Error displaying help"
+msgstr "Chyba při zobrazování nápovědy"
+
+#: drivemount/drivemount.c:521
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "© 1999-2001 The GNOME Hackers\n"
+
+#: drivemount/drivemount.c:523
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
 
-#: drivemount/drivemount.c:716
+#: drivemount/drivemount.c:723
 msgid " mounted"
 msgstr " připojen"
 
-#: drivemount/drivemount.c:718
+#: drivemount/drivemount.c:725
 msgid " not mounted"
 msgstr " není připojen"
 
-#: drivemount/drivemount.c:835
-msgid "Drive Mount Applet Warning"
-msgstr "Varování apletu Připojování disků"
-
-#: drivemount/drivemount.c:845
+#: drivemount/drivemount.c:837
 msgid "\" reported:\n"
 msgstr "\" hlásí:\n"
 
-#: drivemount/drivemount.c:847
+#: drivemount/drivemount.c:839
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
 "Příkaz pro připojení selhal.\n"
 "\""
+
+#: drivemount/drivemount.c:845
+msgid "Cannot mount device"
+msgstr "Nemohu připojit zařízení"
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
@@ -865,84 +878,84 @@ msgstr "Interval mezi kontrolami stavu míst připojení"
 msgid "Time in seconds between status updates"
 msgstr "Čas v sekundách mezi aktualizacemi stavu"
 
-#: drivemount/properties.c:284
+#: drivemount/properties.c:327
 msgid "Disk Mounter Preferences"
 msgstr "Nastavení Připojování disků"
 
-#: drivemount/properties.c:311
+#: drivemount/properties.c:354
 msgid "_Mount directory:"
 msgstr "Adresář _připojení:"
 
-#: drivemount/properties.c:317
+#: drivemount/properties.c:360
 msgid "Select Mount Directory"
 msgstr "Vybrat adresář připojení"
 
-#: drivemount/properties.c:334
+#: drivemount/properties.c:382
 msgid "_Update interval:"
 msgstr "Interval _aktualizace:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1882
-#: mailcheck/mailcheck.c:1886 modemlights/properties.c:419
+#: drivemount/properties.c:405 mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2101 modemlights/properties.c:419
 msgid "seconds"
 msgstr "sekund"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:418
 msgid "_Icon:"
 msgstr "_Ikona:"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:444
 msgid "Floppy"
 msgstr "Disketa"
 
-#: drivemount/properties.c:384
+#: drivemount/properties.c:447
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:387
+#: drivemount/properties.c:450
 msgid "Cd Recorder"
 msgstr "CD zapisovač"
 
-#: drivemount/properties.c:390
+#: drivemount/properties.c:453
 msgid "Zip Drive"
 msgstr "Zip disk"
 
-#: drivemount/properties.c:393
+#: drivemount/properties.c:456
 msgid "Hard Disk"
 msgstr "Pevný disk"
 
-#: drivemount/properties.c:396
+#: drivemount/properties.c:459
 msgid "Jaz Drive"
 msgstr "Jaz disk"
 
-#: drivemount/properties.c:399
+#: drivemount/properties.c:462
 msgid "Custom"
 msgstr "Vlastní"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:481
 msgid "Select icon for mounted"
 msgstr "Vyberte ikonu pro připojené"
 
-#: drivemount/properties.c:425
+#: drivemount/properties.c:488
 msgid "Moun_ted icon:"
 msgstr "Ikona _připojeného:"
 
-#: drivemount/properties.c:441
+#: drivemount/properties.c:509
 msgid "Select icon for unmounted"
 msgstr "Vyberte ikonu pro nepřipojené"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:516
 msgid "Unmou_nted icon:"
 msgstr "Ikona _odpojeného:"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:532
 msgid "_Scale size to panel"
 msgstr "Změnit veliko_st dle panelu"
 
-#: drivemount/properties.c:466
+#: drivemount/properties.c:539
 msgid "_Eject disk when unmounting"
 msgstr "Vysunout disk při _odpojování"
 
-#: drivemount/properties.c:473
+#: drivemount/properties.c:549
 msgid "Use _automount friendly status test"
 msgstr "Použít testování stavu přátelské k programu _automount"
 
@@ -1337,7 +1350,7 @@ msgstr "Nastavení Sledování burzy"
 msgid "Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2121
+#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2363
 msgid "Behavior"
 msgstr "Chování"
 
@@ -1349,8 +1362,8 @@ msgstr "Aktualizovat"
 msgid "Stock update fre_quency:"
 msgstr "Fre_kvence aktualizace:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1864
-#: mailcheck/mailcheck.c:1868
+#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2079
 msgid "minutes"
 msgstr "minut"
 
@@ -2007,7 +2020,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Generátor pro vytváření sledování poštovní schránky."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2203
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2445
 msgid "Inbox Monitor"
 msgstr "Sledování poštovní schránky"
 
@@ -2021,12 +2034,11 @@ msgstr "Generátor Sledování poštovní schránky"
 msgid "Internet"
 msgstr "Internet"
 
-#: mailcheck/mailcheck.c:512
-#, c-format
-msgid "There was an error executing %s: %s"
-msgstr "Při spouštění %s došlo k chybě: %s"
+#: mailcheck/mailcheck.c:666
+msgid "Error checking mail"
+msgstr "Chyba při kontrole pošty"
 
-#: mailcheck/mailcheck.c:643
+#: mailcheck/mailcheck.c:797
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -2034,197 +2046,197 @@ msgstr ""
 "Nenastavili jste v nastavení Sledování poštovní schránky heslo,\n"
 "takže je musíte zadat pokaždé, když se spouští."
 
-#: mailcheck/mailcheck.c:651
+#: mailcheck/mailcheck.c:805
 msgid "Please enter your mailserver's _password:"
 msgstr "Zadejte prosím _heslo svého poštovního serveru:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1742
+#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
 msgid "Password Entry box"
 msgstr "Pole pro zadání hesla"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1764
+#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
 msgid "_Save password to disk"
 msgstr "_Uložit heslo na disk"
 
-#: mailcheck/mailcheck.c:724
+#: mailcheck/mailcheck.c:888
 msgid "Could not connect to the Internet."
 msgstr "Nelze se připojit k síti Internet."
 
-#: mailcheck/mailcheck.c:728
+#: mailcheck/mailcheck.c:892
 msgid "The username or password is incorrect."
 msgstr "Jméno uživatele nebo heslo není správné."
 
-#: mailcheck/mailcheck.c:731
+#: mailcheck/mailcheck.c:895
 msgid "The server name is incorrect."
 msgstr "Název serveru není správný."
 
-#: mailcheck/mailcheck.c:735
+#: mailcheck/mailcheck.c:899
 msgid "Error connecting to mail server."
 msgstr "Chyba při připojování k poštovnímu serveru."
 
-#: mailcheck/mailcheck.c:740
+#: mailcheck/mailcheck.c:904
 msgid "Error"
 msgstr "Chyba"
 
-#: mailcheck/mailcheck.c:919
+#: mailcheck/mailcheck.c:1083
 msgid "You have new mail."
 msgstr "Máte novou poštu."
 
-#: mailcheck/mailcheck.c:921
+#: mailcheck/mailcheck.c:1085
 msgid "You have mail."
 msgstr "Máte poštu"
 
-#: mailcheck/mailcheck.c:925
+#: mailcheck/mailcheck.c:1089
 #, c-format
 msgid "%d unread/ %d messages"
 msgstr "%d nepřečtených/ %d zpráv"
 
-#: mailcheck/mailcheck.c:927
+#: mailcheck/mailcheck.c:1091
 #, c-format
 msgid "%d messages"
 msgstr "%d zpráv"
 
-#: mailcheck/mailcheck.c:931
+#: mailcheck/mailcheck.c:1095
 msgid "No mail."
 msgstr "Žádná pošta."
 
-#: mailcheck/mailcheck.c:1382 mailcheck/mailcheck.c:1383
-#: mailcheck/mailcheck.c:2553 mailcheck/mailcheck.c:2554
+#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
+#: mailcheck/mailcheck.c:2800 mailcheck/mailcheck.c:2801
 msgid "Status not updated"
 msgstr "Stav neaktualizován"
 
-#: mailcheck/mailcheck.c:1581 mailcheck/mailcheck.c:2125
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2367
 msgid "Inbox Settings"
 msgstr "Nastavení poštovní schránky"
 
-#: mailcheck/mailcheck.c:1607
+#: mailcheck/mailcheck.c:1777
 msgid "Mailbox _resides on:"
 msgstr "Poštovní schránka je _umístěna na:"
 
-#: mailcheck/mailcheck.c:1618
+#: mailcheck/mailcheck.c:1788
 msgid "Local mailspool"
 msgstr "Místní mailspool"
 
-#: mailcheck/mailcheck.c:1626
+#: mailcheck/mailcheck.c:1796
 msgid "Local maildir"
 msgstr "Místní maildir"
 
-#: mailcheck/mailcheck.c:1634
+#: mailcheck/mailcheck.c:1804
 msgid "Remote POP3-server"
 msgstr "Vzdálený server POP3"
 
-#: mailcheck/mailcheck.c:1642
+#: mailcheck/mailcheck.c:1812
 msgid "Remote IMAP-server"
 msgstr "Vzdálený server IMAP"
 
-#: mailcheck/mailcheck.c:1662
+#: mailcheck/mailcheck.c:1837
 msgid "Mail _spool file:"
 msgstr "Soubor _úložiště pošty:"
 
-#: mailcheck/mailcheck.c:1669
+#: mailcheck/mailcheck.c:1844
 msgid "Browse"
 msgstr "Prohlížet"
 
-#: mailcheck/mailcheck.c:1684
+#: mailcheck/mailcheck.c:1864
 msgid "Mail s_erver:"
 msgstr "Poštovní _server:"
 
-#: mailcheck/mailcheck.c:1693
+#: mailcheck/mailcheck.c:1873
 msgid "Mail Server Entry box"
 msgstr "Pole pro zadání poštovního serveru"
 
-#: mailcheck/mailcheck.c:1707
+#: mailcheck/mailcheck.c:1892
 msgid "_Username:"
 msgstr "Jméno _uživatele:"
 
-#: mailcheck/mailcheck.c:1718
+#: mailcheck/mailcheck.c:1903
 msgid "Username Entry box"
 msgstr "Pole pro zadání jména uživatele"
 
-#: mailcheck/mailcheck.c:1731
+#: mailcheck/mailcheck.c:1921
 msgid "_Password:"
 msgstr "_Heslo:"
 
-#: mailcheck/mailcheck.c:1776
+#: mailcheck/mailcheck.c:1974
 msgid "_Folder:"
 msgstr "_Složka:"
 
-#: mailcheck/mailcheck.c:1787
+#: mailcheck/mailcheck.c:1985
 msgid "Folder Entry box"
 msgstr "Pole pro zadání složky"
 
-#: mailcheck/mailcheck.c:1848
+#: mailcheck/mailcheck.c:2052
 msgid "Check for mail _every:"
 msgstr "Kontrolovat poštu _každých:"
 
-#: mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:2073
 msgid "Choose time interval in minutes to check mail"
 msgstr "Zvolte interval pro kontrolu pošty v minutách"
 
-#: mailcheck/mailcheck.c:1882
+#: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in seconds to check mail"
 msgstr "Zvolte interval pro kontrolu pošty v sekundách"
 
-#: mailcheck/mailcheck.c:1895
+#: mailcheck/mailcheck.c:2112
 msgid "Play a _sound when new mail arrives"
 msgstr "Přehrát z_vuk, když přijde nová pošta"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:1903
+#: mailcheck/mailcheck.c:2122
 msgid "Sto_p animation when double clicked"
 msgstr "Zastavit animace po _dvojitém kliknutí"
 
-#: mailcheck/mailcheck.c:1914
+#: mailcheck/mailcheck.c:2135
 msgid "Select a_nimation:"
 msgstr "Vyberte _animaci:"
 
-#: mailcheck/mailcheck.c:1927
+#: mailcheck/mailcheck.c:2152
 msgid "Commands"
 msgstr "Příkazy"
 
-#: mailcheck/mailcheck.c:1956
+#: mailcheck/mailcheck.c:2181
 msgid "Before each _update:"
 msgstr "Před každou _aktualizací:"
 
-#: mailcheck/mailcheck.c:1971
+#: mailcheck/mailcheck.c:2198
 msgid "Command to execute before each update"
 msgstr "Příkaz, který spustit před každou aktualizací"
 
-#: mailcheck/mailcheck.c:1981
+#: mailcheck/mailcheck.c:2210
 msgid "When new mail _arrives:"
 msgstr "Když _přijde nová pošta:"
 
-#: mailcheck/mailcheck.c:1994 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2225 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Příkaz, který spustit, když přijde nová pošta"
 
-#: mailcheck/mailcheck.c:2004
+#: mailcheck/mailcheck.c:2237
 msgid "When double clicke_d:"
 msgstr "Při _dvojitém kliknutí:"
 
-#: mailcheck/mailcheck.c:2017
+#: mailcheck/mailcheck.c:2252
 msgid "Command to execute when clicked"
 msgstr "Příkaz, který spustit při kliknutí"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2337
 msgid "Inbox Monitor Preferences"
 msgstr "Nastavení Sledování poštovní schránky"
 
-#: mailcheck/mailcheck.c:2205
+#: mailcheck/mailcheck.c:2447
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
 "nová pošta"
 
-#: mailcheck/mailcheck.c:2524
+#: mailcheck/mailcheck.c:2771
 msgid "Text only"
 msgstr "Jen text"
 
-#: mailcheck/mailcheck.c:2555
+#: mailcheck/mailcheck.c:2802
 msgid "Mail check"
 msgstr "Kontrola pošty"
 
-#: mailcheck/mailcheck.c:2556
+#: mailcheck/mailcheck.c:2803
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Kontrola pošty vás upozorňuje, když do vaší schránky přijde nová pošta"
 
@@ -3763,6 +3775,9 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 #: wireless/wireless-applet.glade.h:4
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
+
+#~ msgid "Drive Mount Applet Warning"
+#~ msgstr "Varování apletu Připojování disků"
 
 #~ msgid "_Launch Preferences Dialog"
 #~ msgstr "Spustit dia_log nastavení"
