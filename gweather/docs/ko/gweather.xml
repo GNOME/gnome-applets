@@ -1,0 +1,668 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Weather Report">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ko">
+   <!-- please do not change the id; for translations, change lang to -->
+   <!-- appropriate code -->
+     
+   <articleinfo>
+      <title>&applet; 애플릿 설명서 V&manrevision;</title>	 
+      <copyright>
+		<year>2002</year>
+		<holder>Sun 그놈 문서 팀</holder>    	 
+      </copyright>
+        	 
+      <copyright>
+		<year>2002</year>  		
+		<year>2002</year>
+		<holder>Spiros Papadimitriou, Dan Mueth</holder>  	 
+      </copyright>
+      <!-- translators: uncomment this:
+      
+        <copyright>
+         <year>2002</year>
+         <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+        </copyright>
+      
+         -->
+      <!-- An address can be added to the publisher information.  If a role is 
+           not specified, the publisher/author is the same for all versions of the 
+           document.  -->
+      	 
+      <publisher>
+		<publishername> 그놈 문서 프로젝트 </publishername>  	 
+      </publisher>
+        &legal;
+      <!-- This file  contains link to license for the documentation (GNU FDL), and 
+           other legal stuff such as "NO WARRANTY" statement. Please do not change 
+           any of this. -->
+      	 
+      <authorgroup>
+           		
+	<author>
+	<firstname>Sun </firstname>  		  
+	<surname>그놈 문서 팀</surname>            		  
+
+            <affiliation>
+		<orgname>Sun Microsystems</orgname>  			 
+		<address><email>gdocteam@sun.com</email></address>		  
+            </affiliation>
+              		
+        </author>
+           		
+        <author>
+	<firstname>Spiros</firstname>  		  
+	<surname>Papadimitriou</surname>
+             		  
+            <affiliation>
+		<orgname>그놈 문서 프로젝트</orgname>  			 
+		<address><email>spapadim+@cs.cmu.edu</email> </address>		  
+            </affiliation>
+              		
+         </author>
+           		
+         <author>
+	 <firstname>Dan</firstname>
+	 <surname>Mueth</surname>  	
+	  
+	     <affiliation>
+ 		<orgname>그놈 문서 프로젝트</orgname>  			 
+		<address><email>d-mueth@uchicago.edu</email> </address>		  
+             </affiliation>
+              		
+         </author>
+               
+         <!-- This is appropriate place for other contributors: translators,
+                    maintainers,  etc. Commented out by default.
+                    <othercredit role="translator">
+         	     <firstname>Latin</firstname> 
+         	     <surname>Translator 1</surname> 
+         	     <affiliation> 
+         	       <orgname>Latin Translation Team</orgname> 
+         	       <address> <email>translator@gnome.org</email> </address> 
+         	     </affiliation>
+         	     <contrib>Latin translation</contrib>
+                    </othercredit>
+         -->
+         	 
+      </authorgroup>
+      	 
+      <revhistory>
+         		
+         <revision>
+              	<revnumber>&applet; 애플릿 설명서 V&manrevision;</revnumber>  		
+             	<date>&date;</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun 그놈 문서 팀 <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME 문서 프로젝트
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
+              	<revnumber>날씨 보고 애플릿 설명서 V2.1</revnumber>  		
+             	<date>2002년 7월</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun 그놈 문서 팀 <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME 문서 프로젝트
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
+              	<revnumber>날씨 보고 애플릿 설명서 V2.0</revnumber>  		
+             	<date>2002년 3월</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun 그놈 문서 팀 <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME 문서 프로젝트
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+           		
+         <revision>
+		<revnumber>그놈 날씨 애플릿</revnumber>  		  
+		<date>2000년</date>
+             		  
+            <revdescription>
+                 			 
+               <para role="author">
+                  Spiros Papadimitriou 				
+		  <email>spapadim+@cs.cmu.edu</email>
+               </para>
+                 			 
+               <para role="author">
+                  Dan Mueth 				
+		  <email>d-mueth@uchicago.edu</email>
+               </para>
+               			 
+               <para role="publisher">
+                  그놈 문서 프로젝트
+               </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+           	 
+      </revhistory>
+        	 
+      <releaseinfo>
+          이 설명서에서는 &applet;의 버전 &appletversion;에 대해 설명합니다. 		
+      </releaseinfo>
+        	 
+      <legalnotice>
+         <title>피드백</title>		
+         <para>
+             &applet; 애플릿 또는 이 설명서에 대한 버그를 보고하거나 의견을 제시하려면 <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. 
+         </para>
+         		 	 
+      </legalnotice>
+          
+   </articleinfo>
+       <indexterm>  	 
+       <primary>날씨 보고</primary>    
+       </indexterm> 
+   <!-- ============= Document Body ============================= -->
+   <!-- ============= Introduction ============================== -->
+   <sect1 id="gweather-introduction">
+      <title>소개</title>
+      <!-- ==== Figure ============================================= -->
+      	 
+      <figure id="weather-applet-fig">
+	<title>&applet; 애플릿</title>		
+         <screenshot>		  
+            <mediaobject>			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>날씨 보고 애플릿을 표시합니다. 날씨 아이콘과 현재 온도가 포함됩니다.</phrase> 			 
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+       
+      <!-- ==== End of Figure ======================================= -->
+      <para>
+         <application>&applet;</application> 애플릿은 U.S NWS(National Weather Service) 서버에서 
+         IWIN(Interactive Weather Information Network)을 포함한  날씨
+         정보를 다운로드합니다. <application>&applet;</application>을(를) 사용하여 현재 날씨 정보와 날씨 예보를 컴퓨터에 표시할 수 있습니다. 
+      </para>
+      <para>
+         패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭한 다음 
+         <menuchoice>
+            <guimenu>패널에 추가</guimenu> 
+            <guisubmenu>액세서리</guisubmenu> 
+            <guimenuitem>&applet;</guimenuitem>
+         </menuchoice>을(를) 선택합니다.</para>
+      <note id="proxies-note-1">
+         <para>
+          컴퓨터가 방화벽으로 보호되고 있으면 프록시 서버를
+          사용하여 날씨 서버에 액세스해야 합니다. 프록시 서버를 지정하는 방법에 대한 자세한 내용은 
+         <xref linkend="gweather-set-proxy"/>을(를) 참조하십시오.        
+         </para>
+      </note>
+      <para>
+         <application>&applet;</application>은(는) 기본 위치나 지정한 위치에 대해
+         다음과 같은 정보를 표시합니다.
+      </para>
+      <itemizedlist>
+         <listitem>
+            <para>
+               일반적인 날씨 상태를 나타내는 날씨 아이콘 예를 들면, 태양 아이콘은 맑은 날씨를 나타냅니다. 일반적인 날씨 상태에 대한 텍스트 설명을 보려면 마우스 포인터로 애플릿을 가리켜서
+                툴팁을 표시합니다.
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               현재 기온
+            </para>
+         </listitem>
+      </itemizedlist>
+      
+   </sect1>
+   <!-- ============= Usage ===================================== -->
+   <sect1 id="gweather-usage">
+      <title>사용</title>
+      <sect2 id="gweather-change-location">
+         <title>특정 위치에 대한 날씨 정보를 보려면</title>
+         <para>
+            <application>&applet;</application> 애플릿을 처음으로 패널에 추가하면 
+            애플릿은 기본적으로 펜실베니아 피츠버그의 날씨를 표시합니다. 다른 위치의 날씨를 표시하려면 다음 단계를 수행합니다.
+         </para>
+         <orderedlist>
+            <listitem>
+               <para>
+                  애플릿을 마우스 오른쪽 버튼으로 클릭합니다.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  애플릿 팝업 메뉴에서 <guimenuitem>환경 설정</guimenuitem>을 선택합니다. <guilabel>날씨 환경 설정</guilabel> 대화 상자를 표시합니다.
+                  <guilabel>위치</guilabel> 탭 섹션에는 지역, 하위 지역 및 특정 위치의 
+                  목록이 들어 있습니다.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  지역 옆의 화살표를 클릭하면 해당 지역의 하위 지역이 표시됩니다.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  하위 지역 옆의 화살표를 클릭하면 해당 하위 지역의 위치가 표시됩니다.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  위치를 클릭합니다. 애플릿이 새로운 위치에 대한 날씨 정보를 가져오는 동안 애플릿을  
+                  마우스 포인터로 가리키면 "갱신 중"이라는 툴팁이 표시됩니다.
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  <guibutton>닫기</guibutton>를 클릭하여 <guilabel>날씨 환경 설정</guilabel> 대화 상자를 닫습니다.
+               </para>
+            </listitem>
+         </orderedlist>
+      </sect2>
+      <sect2 id="gweather-update">
+         <title>날씨 정보를 갱신하려면</title>
+         <para>
+            애플릿이 패널에 표시하는 날씨 정보를 갱신하려면 애플릿을 마우스 오른쪽 
+            버튼으로 클릭하고 <guimenuitem>갱신</guimenuitem>을 선택합니다.
+         </para>
+         <para>
+            일정한 간격마다 정보를 자동으로 갱신하도록 애플릿을 구성할 수 있습니다. 애플릿을 구성하는 방법에 대한 자세한 내용은
+            <xref linkend="gweather-configure"/>을(를) 참조하십시오.
+         </para>
+      </sect2>
+      <sect2 id="gweather-detailed">
+         <title>자세한 날씨 정보를 보려면</title>
+         <para>
+            자세한 날씨 정보를 보려면 애플릿을 마우스 오른쪽 버튼으로 클릭하고 <guimenuitem>예보</guimenuitem>를 선택합니다. <guilabel>예보</guilabel> 대화 상자가 표시됩니다.
+         <guilabel>예보</guilabel> 대화 상자에는 다음과 같은 기본 탭 섹션이 있습니다.
+         </para>
+         <itemizedlist>
+            <listitem>
+               <para>
+                  <guilabel>현재 상태</guilabel>
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  <guilabel>예보</guilabel>
+               </para>
+            </listitem>
+         </itemizedlist>
+         <sect3 id="gweather-current-conditions">
+            <title>현재 상태</title>
+            <para>
+               <guilabel>현재 상태</guilabel> 탭 섹션은 다음과 같은 정보를 표시합니다.
+            </para>
+            <informaltable>
+               <tgroup cols="2">
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                   colwidth="1.19*"/>
+                  <tbody>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                           위치               </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              현재 날씨 상태가 적용되는 위치
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                          갱신                      </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              날씨 상태가 날씨 서버에서 마지막으로 갱신된 시간
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              상태                </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              일반적인 날씨 상태
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                             일기                          </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              일반적인 일기 상태
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              기온             </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                             현재 기온
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              이슬점                      </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              이슬이 맺히는 기온
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              습도                        </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              대기 중의 수증기 비율
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              바람                         </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              바람의 방향 및 속도
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                             기압        </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                             수은주의 높이로 측정한 대기의 압력 
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                               시계                        </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>
+                              밝기와 대기 상태로 결정되는 가시 범위
+                           </para>
+                        </entry>
+                     </row>
+                  </tbody>
+               </tgroup>
+            </informaltable>
+         </sect3>
+         <sect3 id="gweather-forecast">
+            <title>예보</title>
+            <para>
+               <guilabel>예보</guilabel> 탭 섹션은 대개 해당 위치에 대한 향후 5일간의 
+               예보를 표시합니다. 
+            </para>
+            <note>
+               <para>
+                  예보 기능은 미국의 일부 위치에 대해서만 사용할 수 있습니다.
+               </para>
+            </note>
+         </sect3>
+         <sect3 id="gweather-radar-map">
+            <title>레이다 맵</title>
+            <para>
+               기본적으로, <guilabel>레이다 맵</guilabel> 탭 섹션은 
+               <guilabel>예보</guilabel> 대화 상자에 표시되지 않습니다. 레이다 맵을 표시하도록 애플릿을 구성하는 방법에 대한 자세한 내용은 <xref linkend="gweather-configure"/>을(를) 참조하십시오. <application>&applet;</application>은(는) www.weather.com에서 레이다 맵을 
+               다운로드합니다. www.weather.com의 레이다 맵을 사용할 수 없는 경우에는 물음표가 표시됩니다. www.weather.com 웹 사이트를 방문하려면 <guibutton>Weather.com 가기</guibutton> 버튼을 클릭합니다.
+            </para>
+         </sect3>
+      </sect2>
+   </sect1>
+   <!-- ============= Preferences ================================== -->
+   <sect1 id="gweather-settings"> 
+     <title>환경 설정</title>
+      
+      <sect2 id="gweather-set-proxy">
+      <title>프록시 서버를 설정하려면</title>
+      <para>컴퓨터가 방화벽으로 보호되고 있으면 프록시 서버를 사용하여  
+      <application>&applet;</application>을(를) 실행해야 합니다. 
+      그놈이 프록시 서버를 사용하도록 구성하려면
+      <menuchoice>
+      <guimenu>응용프로그램</guimenu>
+      <guisubmenu>데스크탑 환경 설정</guisubmenu> 
+      <guimenuitem>네트워크 프록시</guimenuitem>
+      </menuchoice>를 선택합니다.</para>
+      </sect2>
+      
+      <sect2 id="gweather-configure">
+      <title>&applet;을(를) 구성하려면</title>
+      <para>
+         <application>&applet;</application>을(를) 구성하려면 애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다. <guilabel>날씨 환경 설정</guilabel> 대화 상자에는 다음과 같은 탭 섹션이 있습니다.
+      </para>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <link linkend="gweather-location">위치</link>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="gweather-general">일반</link>
+            </para>
+         </listitem>
+      </itemizedlist>
+            
+      
+      <sect3 id="gweather-location">
+         <title>위치</title>
+         <para>
+            <guilabel>위치</guilabel> 탭 섹션을 사용하여 현재 및 예측 날씨 상태를 
+            표시할 위치를 선택할 수 있습니다. 위치를 선택하는 방법에 대한 내용은 <xref linkend="gweather-change-location"/>을(를) 참조하십시오.
+         </para>
+      </sect3>
+      
+      <sect3 id="gweather-general">
+         <title>일반</title>
+           <variablelist>
+               <varlistentry>
+                  <term><guilabel>자동 갱신 간격(분)</guilabel>
+                  </term>
+                  <listitem>
+                     <para>
+                        이 옵션을 선택하면 애플릿이 일정한 시간 간격마다 날씨 서버에서  
+                        갱신된 정보를 자동으로 가져 옵니다. 스핀 상자를 사용하면 애플릿이 날씨 서버에서 갱신된 정보를 가져오는 시간 간격을 
+                        분 단위로 지정할 수 있습니다. 
+                     </para>
+                     <para>
+                        기본값: 선택됨, 30분
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>미터법 사용</guilabel> </term>
+                  <listitem>
+                     <para>
+                        이 옵션을 선택하면 애플릿에서 화씨와 영국 도량형 대신 섭씨와  
+                        미터법을 사용할 수 있습니다. 이 옵션이 애플릿에 표시되는 측정 단위에 영향을 미치는 방식은 다음과 같습니다.
+                     </para>
+                     <informaltable>
+                        <tgroup cols="3">
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                            colname="col1"/><colspec colname="col2"/>
+                           <thead>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       측정 단위 표시 대상                                 </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       <guilabel>미터법 사용</guilabel>
+                                       옵션이 선택되지 않은 경우
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       <guilabel>미터법 사용</guilabel>
+                                       옵션이 선택된 경우
+                                    </para>
+                                 </entry>
+                              </row>
+                           </thead>
+                           <tbody>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       기온 및 이슬점                               </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       화씨                               </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       섭씨                                 </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       풍속
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       시간당 마일(mph)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       시간당 킬로미터(kph)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       기압
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       수은주의 인치(inHg)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       수은주의 밀리미터(mmHg)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       시계
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       마일
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       킬로미터
+                                    </para>
+                                 </entry>
+                              </row>
+                           </tbody>
+                        </tgroup>
+                     </informaltable>
+                     <para>
+                        기본값: 선택되지 않음
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>레이다 맵 사용</guilabel> </term>
+                  <listitem>
+                     <para>
+                        이 옵션을 선택하면
+                        <guilabel>예보</guilabel> 대화 상자의
+                        <guilabel>레이다 맵</guilabel> 탭 섹션에 레이다 맵을 
+                        표시할 수 있습니다. 
+                     </para>
+                     <para>
+                        기본값: 선택되지 않음
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>레이다 맵에 사용자 정의 주소 사용</guilabel> </term>
+                  <listitem>
+                     <para>
+                        기본적으로 <application>&applet;</application>은(는) 
+                        www.weather.com에서 레이다 맵을 다운로드합니다. 다른 인터넷 주소에서 레이다 맵을 가져와 표시하려면 이 옵션을 선택합니다.  
+                        <guilabel>주소</guilabel> 텍스트 상자에 주소를 입력합니다.
+                     </para>
+                     <para>
+                        기본값: 선택되지 않음
+                     </para>
+                  </listitem>
+               </varlistentry>
+            </variablelist>
+      </sect3>
+      </sect2>
+   </sect1>
+</article>
