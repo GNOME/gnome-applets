@@ -240,7 +240,7 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 	XEvent *xevent = (XEvent *) gdk_xevent;
 	GKB *gkb = (GKB *)data;
 
-	if (xevent->type == KeyRelease)
+	if (xevent->type == KeyPress)
 		return global_key_filter (gkb, gdk_xevent, event);
 	return GDK_FILTER_CONTINUE;
 }
