@@ -72,33 +72,33 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
       gdk_window_get_pointer(NULL, &x, &y, NULL);
       if(panel_size < 48) {
 	      if(panel_vertical)
-		      sprintf(where, "%d\n%d", x, y);
+		      g_snprintf(where, sizeof(where), "%d\n%d", x, y);
 	      else
-		      sprintf(where, "x:%d y:%d", x, y);
+		      g_snprintf(where, sizeof(where), "x:%d y:%d", x, y);
       } else
-	      sprintf(where, "x:%d\ny:%d", x, y);
+	      g_snprintf(where, sizeof(where), "x:%d\ny:%d", x, y);
       break;
     case POSITION:
       x = motion->x_root;
       y = motion->y_root;
       if(panel_size < 48) {
 	      if(panel_vertical)
-		      sprintf(where, "%d\n%d", x, y);
+		      g_snprintf(where, sizeof(where), "%d\n%d", x, y);
 	      else
-		      sprintf(where, "x:%d y:%d", x, y);
+		      g_snprintf(where, sizeof(where), "x:%d y:%d", x, y);
       } else
-	      sprintf(where, "x:%d\ny:%d", x, y);
+	      g_snprintf(where, sizeof(where), "x:%d\ny:%d", x, y);
       break;
     case SIZE:
       if(panel_size < 48) {
 	      if(panel_vertical)
-		      sprintf(where, "%+d\n%+d",
+		      g_snprintf(where, sizeof(where), "%+d\n%+d",
 			      (int)motion->x_root-x, (int)motion->y_root-y);
 	      else
-		      sprintf(where, "x:%+d y:%+d",
+		      g_snprintf(where, sizeof(where), "x:%+d y:%+d",
 			      (int)motion->x_root-x, (int)motion->y_root-y);
       } else
-	      sprintf(where, "x:%+d\ny:%+d",
+	      g_snprintf(where, sizeof(where), "x:%+d\ny:%+d",
 		      (int)motion->x_root-x, (int)motion->y_root-y);
       break;
     }
@@ -152,11 +152,11 @@ timeout_handler(GtkWidget *button)
 	  char where[100];
 	  if(panel_size < 48) {
 		  if(panel_vertical)
-			  sprintf(where, "%d\n%d", x, y);
+			  g_snprintf(where, sizeof(where), "%d\n%d", x, y);
 		  else
-			  sprintf(where, "x:%d y:%d", x, y);
+			  g_snprintf(where, sizeof(where), "x:%d y:%d", x, y);
 	  } else
-		  sprintf(where, "x:%d\ny:%d", x, y);
+		  g_snprintf(where, sizeof(where), "x:%d\ny:%d", x, y);
 	  gtk_label_set_text(GTK_LABEL(GTK_BIN(button)->child), where);
 	  last_x = x;
 	  last_y = y;
