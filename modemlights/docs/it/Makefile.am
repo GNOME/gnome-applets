@@ -1,7 +1,11 @@
-figs = modemlights-advpref.png  modemlights-prefs.png  modemlights.png
-applet = modemlights
+figs = \
+	figures/modemlights-advpref.png			\
+	figures/modemlights.png				\
+	figures/modemlights-prefs.png
+docname = modemlights_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = modemlights_applet-it.omf
+sgml_ents = modemlights.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
 

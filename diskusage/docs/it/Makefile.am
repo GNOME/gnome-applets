@@ -1,6 +1,10 @@
-figs = diskusage-applet-prefs.png  diskusage-applet.png
-applet = diskusage
+figs = \
+	figures/diskusage-applet-prefs.png	\
+	figures/diskusage-applet.png
+docname = diskusage_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = diskusage_applet-it.omf
+sgml_ents = diskusage.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

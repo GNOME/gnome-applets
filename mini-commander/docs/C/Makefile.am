@@ -1,7 +1,10 @@
 figs = \
-	mini-commander_applet.png     mini-commander_settings_general.png
-applet = mini-commander
+	figures/mini-commander_applet.png		\
+	figures/mini-commander_settings_general.png
+docname = mini-commander_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = mini-commander_applet-C.omf
+sgml_ents = mini-commander.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
