@@ -1410,7 +1410,9 @@ static void
 destroy_cb (GtkWidget *widget, gpointer data)
 {
 	MLData *mldata = data;
+
 	g_source_remove (mldata->update_timeout_id);
+	
 	if (mldata->about_dialog)
 		gtk_widget_destroy (mldata->about_dialog);
 	if (mldata->propwindow)
@@ -1419,7 +1421,8 @@ destroy_cb (GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (mldata->connect_dialog);
 	if (mldata->run_dialog)
 		gtk_widget_destroy (mldata->run_dialog);
-	
+
+	g_free (data);
 }
 
 static gboolean
