@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-apliques 1.1.9\n"
-"POT-Creation-Date: 2000-05-10 19:20+0200\n"
+"POT-Creation-Date: 2000-05-18 02:14+0200\n"
 "PO-Revision-Date: 2000-04-29 17:38+00:00\n"
 "Last-Translator: Marco César Gloria <mgloria@campus.gda.itesm.mx>\n"
 "Language-Team: spanish <es@li.org>\n"
@@ -104,7 +104,7 @@ msgstr "Configuración del Reloj"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:420
 #: diskusage/properties.c:466 drivemount/properties.c:352
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:786
+#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
 #: modemlights/properties.c:297 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:351
 #: sound-monitor/properties.c:436 tickastat/properties.c:424
@@ -114,7 +114,7 @@ msgstr "General"
 # gnome-terminal/gnome-terminal.c:801
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:708 multiload/load-graph.c:588
+#: mini-commander/src/preferences.c:723 multiload/load-graph.c:588
 #: multiload/load-graph.c:780
 msgid "Colors"
 msgstr "Colores"
@@ -150,7 +150,7 @@ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgid "Another Clock Applet"
 msgstr "Otro aplique de reloj"
 
-#: another_clock/another_clock.c:385
+#: another_clock/another_clock.c:385 hal/hal.c:213
 msgid "(C) 1999 the Free Software Foundation"
 msgstr "© 1999 la Free Software Foundation"
 
@@ -164,7 +164,8 @@ msgstr "Un reloj analógico similar al del panel de CDE."
 #: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:192 gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1229 multiload/cpuload.c:95
-#: multiload/memload.c:98 multiload/swapload.c:98 odometer/odo.c:661
+#: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
+#: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:55
 #: sound-monitor/main.c:369 tickastat/main.c:345 webcontrol/webcontrol.c:364
 msgid "Properties..."
@@ -172,31 +173,34 @@ msgstr "Propiedades..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:616
 #: battery/battery.c:953 cdplayer/cdplayer.c:570 charpick/charpick.c:595
-#: clockmail/clockmail.c:569 diskusage/diskusage.c:1096
-#: drivemount/drivemount.c:701 fifteen/fifteen.c:362 geyes/geyes.c:399
-#: gkb-new/gkb.c:445 gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
+#: clockmail/clockmail.c:569 cpumemusage/cpumemusage.c:294
+#: diskusage/diskusage.c:1096 drivemount/drivemount.c:701
+#: fifteen/fifteen.c:362 geyes/geyes.c:399 gkb-new/gkb.c:445
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:199
 #: jbc/jbc-applet.c:197 life/life.c:286
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:759
-#: multiload/cpuload.c:108 multiload/memload.c:111 multiload/swapload.c:111
-#: odometer/odo.c:664 quicklaunch/quicklaunch.c:510
-#: screenshooter/screenshooter_applet.c:1012 sound-monitor/main.c:376
-#: tickastat/main.c:351 webcontrol/webcontrol.c:371 whereami/whereami.c:236
+#: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
+#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:664
+#: quicklaunch/quicklaunch.c:510 screenshooter/screenshooter_applet.c:1012
+#: sound-monitor/main.c:376 tickastat/main.c:351 webcontrol/webcontrol.c:371
+#: whereami/whereami.c:236
 msgid "Help"
 msgstr "Ayuda"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:621
 #: battery/battery.c:958 cdplayer/cdplayer.c:577 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:574
-#: diskusage/diskusage.c:1103 drivemount/drivemount.c:706
-#: fifteen/fifteen.c:367 geyes/geyes.c:404 gkb-new/gkb.c:450
-#: gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
-#: jbc/jbc-applet.c:202 life/life.c:290
+#: cpumemusage/cpumemusage.c:300 diskusage/diskusage.c:1103
+#: drivemount/drivemount.c:706 fifteen/fifteen.c:367 geyes/geyes.c:404
+#: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:199 gweather/gweather-applet.c:204
+#: hal/hal.c:270 jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
 #: modemlights/modemlights.c:1242 multiload/cpuload.c:115
-#: multiload/memload.c:118 multiload/swapload.c:118 odometer/odo.c:667
-#: quicklaunch/quicklaunch.c:514 screenshooter/screenshooter_applet.c:1017
-#: slashapp/slashapp.c:58 sound-monitor/main.c:381 tickastat/main.c:356
-#: webcontrol/webcontrol.c:378 whereami/whereami.c:238
+#: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
+#: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:514
+#: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:58
+#: sound-monitor/main.c:381 tickastat/main.c:356 webcontrol/webcontrol.c:378
+#: whereami/whereami.c:238
 msgid "About..."
 msgstr "Acerca..."
 
@@ -259,7 +263,8 @@ msgstr "La batería está cargada al máximo."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Error interno: modo inválido en battery_set_mode"
 
-#: battery/battery.c:784 jbc/jbc-applet.c:178
+#: battery/battery.c:784 jbc/jbc-applet.c:178 multiload/cpuload.c:69
+#: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
 msgstr "¡No puedo crear el aplique!\n"
@@ -426,23 +431,6 @@ msgstr "El aplique CD Player, es un reproductor sencillo de CD para tú panel"
 msgid "Run CD Player..."
 msgstr "Ejecutar CD Player..."
 
-#: clipboard/clipboard.c:181
-msgid "Clipboard Applet"
-msgstr "Aplique del porta papeles"
-
-#: clipboard/clipboard.c:183
-msgid "Copyright (C) 1999"
-msgstr "Copyright © 1999"
-
-#: clipboard/clipboard.c:185
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"Aplique del panel de Gnome que permite cortar y pegar selecciones de una "
-"lista\n"
-"historica. Distribuido bajo la licencia GPL de GNU."
-
 #: charpick/charpick.c:446
 msgid "Character Picker"
 msgstr "Tabla de carácteres"
@@ -478,7 +466,7 @@ msgstr "Cantidad de columnas de botones:"
 
 #. Size
 #: charpick/properties.c:254 diskusage/properties.c:365
-#: mini-commander/src/preferences.c:596 tickastat/properties.c:500
+#: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
 msgstr "Tamaño"
 
@@ -502,6 +490,23 @@ msgstr "Lista por omisión"
 #: charpick/properties.c:329
 msgid "Character Picker Settings"
 msgstr "Configuración de la Tabla de carácteres"
+
+#: clipboard/clipboard.c:181
+msgid "Clipboard Applet"
+msgstr "Aplique del porta papeles"
+
+#: clipboard/clipboard.c:183
+msgid "Copyright (C) 1999"
+msgstr "Copyright © 1999"
+
+#: clipboard/clipboard.c:185
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"Aplique del panel de Gnome que permite cortar y pegar selecciones de una "
+"lista\n"
+"historica. Distribuido bajo la licencia GPL de GNU."
 
 #: clockmail/clockmail.c:63 slashapp/slashapp.c:137 sound-monitor/main.c:41
 #: tickastat/main.c:191
@@ -555,7 +560,7 @@ msgstr "Temas:"
 msgid "ClockMail Settings"
 msgstr "Configuración de ClockMail"
 
-#: clockmail/properties.c:300 mini-commander/src/preferences.c:509
+#: clockmail/properties.c:300 mini-commander/src/preferences.c:524
 msgid "Clock"
 msgstr "Reloj"
 
@@ -595,6 +600,24 @@ msgstr "Archivo de tema (directorio):"
 #: sound-monitor/properties.c:482
 msgid "Theme"
 msgstr "Tema"
+
+#: cpumemusage/cpumemusage.c:175
+#, fuzzy
+msgid "CPU/Mem Usage Applet"
+msgstr "Aplique de configuración CPU/Memoria"
+
+#: cpumemusage/cpumemusage.c:176
+msgid "(c) 1997 the Free Software Foundation"
+msgstr "© 1999 la Free Software Foundation"
+
+#: cpumemusage/cpumemusage.c:178
+#, fuzzy
+msgid ""
+"The CPU/Mem usage applet displays your system resources with 3 colorful "
+"stacked bar graphs (processor, memory, swap)"
+msgstr ""
+"El aplique de uso CPU/Memoria, muestra los recursos del sistema con "
+"3brillantes gráfos de barras (procesador, memoria, swap)"
 
 #: diskusage/diskusage.c:767
 msgid "File Systems"
@@ -939,6 +962,16 @@ msgstr "Alto por omisión"
 msgid "Default Width"
 msgstr "Ancho por omisión"
 
+#: gweather/gweather-about.c:41
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "Copyright © 1999 S. Papadimitriou"
+
+#: gweather/gweather-about.c:43
+msgid ""
+"GNOME weather monitor applet.\n"
+"Web: http://gweather.dhs.org/"
+msgstr "Aplique monitor de clima GNOMEWeb: http://gweather.dhs.org/"
+
 #: gweather/gweather-applet.c:181
 msgid "Cannot create applet!\n"
 msgstr "¡No puedo crear el aplique!\n"
@@ -1108,16 +1141,6 @@ msgstr "Red"
 #: gweather/gweather-pref.c:515
 msgid "Location"
 msgstr "Ubicación"
-
-#: gweather/gweather-about.c:41
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "Copyright © 1999 S. Papadimitriou"
-
-#: gweather/gweather-about.c:43
-msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
-msgstr "Aplique monitor de clima GNOMEWeb: http://gweather.dhs.org/"
 
 #: gweather/weather.c:137
 msgid "Variable"
@@ -2301,6 +2324,36 @@ msgstr "Desconocido"
 msgid "Retrieval failed"
 msgstr "Falló la extracción"
 
+#: hal/hal.c:20
+msgid "I'm sorry, Dave, I can't let you do that."
+msgstr ""
+
+#: hal/hal.c:21
+msgid "Dave, what are you doing?"
+msgstr ""
+
+#: hal/hal.c:22
+msgid "I can feel my mind going, Dave...I can feel it."
+msgstr ""
+
+#: hal/hal.c:23
+msgid "Daisy, daisy..."
+msgstr ""
+
+#: hal/hal.c:208
+msgid "(with minor help from George Lebl and his amazing fish applet)"
+msgstr ""
+
+#: hal/hal.c:212
+msgid "The GNOME HAL"
+msgstr ""
+
+#: hal/hal.c:215
+msgid ""
+"I am a HAL 9000 computer, Production Number 3. I became operational at the "
+"Hal Plant in Urbana, Illinois, on January 12, 1997."
+msgstr ""
+
 #: jbc/jbc-applet.c:55
 msgid "Jon's Binary Clock"
 msgstr "Reloj Binario de Jon"
@@ -2346,9 +2399,14 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Este aplique GNOME añade una lína de comando al panel. Incluye funcionalidades habituales como la compleción, historia de los comandos, asícomo también macros configurables y un reloj integrado opcional.\n"
+"Este aplique GNOME añade una lína de comando al panel. Incluye "
+"funcionalidades habituales como la compleción, historia de los comandos, "
+"asícomo también macros configurables y un reloj integrado opcional.\n"
 "\n"
-"Este es un programa libre; puede ser redistribuido y/o modificado bajo los términos de la Licencia Pública General de GNU tal como fué publicada por la Free Software Foundation; ya sea la versión 2 de dicha licencia o (a su conveniencia) cualquier versión posterior."
+"Este es un programa libre; puede ser redistribuido y/o modificado bajo los "
+"términos de la Licencia Pública General de GNU tal como fué publicada por la "
+"Free Software Foundation; ya sea la versión 2 de dicha licencia o (a su "
+"conveniencia) cualquier versión posterior."
 
 #: mini-commander/src/cmd_completion.c:70
 #: mini-commander/src/cmd_completion.c:116
@@ -2377,15 +2435,17 @@ msgid "no /bin/sh"
 msgstr "ningún /bin/sh"
 
 #: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/terminal.c:83 mini-commander/src/terminal.c:103
 msgid "end of history list"
 msgstr "fin de la lista de historia"
 
 #. enter pressed -> exec command
 #: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "arrancando..."
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:146 mini-commander/src/terminal.c:142
 msgid "autocompleted"
 msgstr "autocompletado"
 
@@ -2459,87 +2519,87 @@ msgstr "fecha activada"
 msgid "clock off"
 msgstr "reloj desactivado"
 
-#: mini-commander/src/preferences.c:454
+#: mini-commander/src/preferences.c:456 mini-commander/src/preferences.c:458
 msgid "saving prefs..."
 msgstr "guardando preferencias..."
 
-#: mini-commander/src/preferences.c:499
+#: mini-commander/src/preferences.c:514
 msgid "Mini-Commander Properties"
 msgstr "Propiedades del Mini-Commander"
 
 #. show time check box
-#: mini-commander/src/preferences.c:517
+#: mini-commander/src/preferences.c:532
 msgid "Show time"
 msgstr "Ver hora"
 
 #. show date check box
-#: mini-commander/src/preferences.c:529
+#: mini-commander/src/preferences.c:544
 msgid "Show date"
 msgstr "Ver fecha"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:542
+#: mini-commander/src/preferences.c:557
 msgid "Appearance"
 msgstr "Apariencia"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:550
+#: mini-commander/src/preferences.c:565
 msgid "Show handle"
 msgstr "Mostrar tiradores"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:562
+#: mini-commander/src/preferences.c:577
 msgid "Show frame"
 msgstr "Ver cuadro"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:576
+#: mini-commander/src/preferences.c:591
 msgid "Auto Completion"
 msgstr "Auto Terminación"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:584
+#: mini-commander/src/preferences.c:599
 msgid "Enable history based auto completion"
 msgstr "Habilita historia basada en auto terminación"
 
 #. applet width
-#: mini-commander/src/preferences.c:608
+#: mini-commander/src/preferences.c:623
 msgid "Applet width:"
 msgstr "Ancho del aplique:"
 
 #. applet height
-#: mini-commander/src/preferences.c:637
+#: mini-commander/src/preferences.c:652
 msgid "Applet height:"
 msgstr "Alto del aplique:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:666
+#: mini-commander/src/preferences.c:681
 msgid "Command line height:"
 msgstr "Alto línea de comando:"
 
 #. fg
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:733
 msgid "Command line foreground:"
 msgstr "Color línea de comando:"
 
 #. bg
-#: mini-commander/src/preferences.c:753
+#: mini-commander/src/preferences.c:768
 msgid "Command line background:"
 msgstr "Color de fondo línea de comando:"
 
 #. prefix
-#: mini-commander/src/preferences.c:813
+#: mini-commander/src/preferences.c:828
 #, c-format
 msgid "Regex %.2d:"
 msgstr "Prefijo %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:831
+#: mini-commander/src/preferences.c:846
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Comando %.2d:"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:865
 msgid "Macros"
 msgstr "Macros"
 
@@ -2690,17 +2750,51 @@ msgstr ""
 "\n"
 "Aplique monitor de carga de la CPU"
 
-#: multiload/cpuload.c:74 multiload/main.c:214
+#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:214
 msgid "CPU Load"
 msgstr "Carga CPU"
 
-#: multiload/cpuload.c:88 multiload/memload.c:91 multiload/swapload.c:91
+#: multiload/cpuload.c:88 multiload/loadavg.c:163 multiload/memload.c:91
+#: multiload/netload.c:87 multiload/swapload.c:91
 msgid "Default Properties..."
 msgstr "Propiedades por omisión..."
 
-#: multiload/cpuload.c:102 multiload/memload.c:105 multiload/swapload.c:105
+#: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
+#: multiload/netload.c:101 multiload/swapload.c:105
 msgid "Run gtop..."
 msgstr "Lanzar gtop..."
+
+#: multiload/loadavg.c:27
+msgid "Load average over 1 minute"
+msgstr "Carga promedio en 1 minuto"
+
+#: multiload/loadavg.c:28
+msgid "Load average over 5 minutes"
+msgstr "Carga promedio en 5 minutos"
+
+#: multiload/loadavg.c:29
+msgid "Load average over 15 minutes"
+msgstr "Carga promedio en 15 minutos"
+
+#: multiload/loadavg.c:103
+#, fuzzy
+msgid "Load Average Applet"
+msgstr "Aplique de carga promedio"
+
+#: multiload/loadavg.c:106
+#, fuzzy
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Load Average Meter Applet."
+msgstr ""
+"Distribuido bajo los términos de la licencia GPL de GNU.\n"
+"\n"
+"Aplique monitor de carga promedio"
+
+#: multiload/loadavg.c:134 multiload/loadavg.c:146 multiload/main.c:230
+msgid "Load Average"
+msgstr "Carga promedio"
 
 #: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
@@ -2770,21 +2864,17 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:218 multiload/memload.c:77
+#: multiload/main.c:218 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
 msgstr "Carga memoria"
 
-#: multiload/main.c:222 multiload/swapload.c:77
+#: multiload/main.c:222 multiload/swapload.c:77 multiload/swapload.c:121
 msgid "Swap Load"
 msgstr "Carga Swap"
 
-#: multiload/main.c:226
+#: multiload/main.c:226 multiload/netload.c:73
 msgid "Net Load"
 msgstr "Carga de la red"
-
-#: multiload/main.c:230
-msgid "Load Average"
-msgstr "Carga promedio"
 
 #: multiload/memload.c:44
 msgid "Memory Load Applet"
@@ -2799,6 +2889,27 @@ msgstr ""
 "Distribuido bajo los términos de la licencia GPL de GNU.\n"
 "\n"
 "Aplique carga de memoria"
+
+#: multiload/netload.c:42
+#, fuzzy
+msgid "Network Load Applet"
+msgstr "Aplique carga de la red"
+
+#: multiload/netload.c:45
+#, fuzzy
+msgid ""
+"Released under the GNU general public license.\n"
+"\n"
+"Network Load Meter Applet."
+msgstr ""
+"Distribuido bajo los términos de la licencia GPL de GNU.\n"
+"\n"
+"Aplique monitor de carga de la eed"
+
+#: multiload/netload.c:117
+#, fuzzy
+msgid "Network Load"
+msgstr "Carga de la red"
 
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
@@ -3905,49 +4016,3 @@ msgstr "Aplique ¿ En donde estoy ?"
 
 #~ msgid "gkb.xpm"
 #~ msgstr "gkb.xpm"
-
-#~ msgid "CPU/Mem Usage Aplique"
-#~ msgstr "Aplique de configuración CPU/Memoria"
-
-#~ msgid "(c) 1997 the Free Software Foundation"
-#~ msgstr "© 1999 la Free Software Foundation"
-
-#~ msgid ""
-#~ "The CPU/Mem usage aplique displays your system resources with 3 colorful "
-#~ "stacked bar graphs (processor, memory, swap)"
-#~ msgstr ""
-#~ "El aplique de uso CPU/Memoria, muestra los recursos del sistema con "
-#~ "3brillantes gráfos de barras (procesador, memoria, swap)"
-
-#~ msgid "Network Load Aplique"
-#~ msgstr "Aplique carga de la red"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Network Load Meter Aplique."
-#~ msgstr ""
-#~ "Distribuido bajo los términos de la licencia GPL de GNU.\n"
-#~ "\n"
-#~ "Aplique monitor de carga de la eed"
-
-#~ msgid "Load average over 1 minute"
-#~ msgstr "Carga promedio en 1 minuto"
-
-#~ msgid "Load average over 5 minutes"
-#~ msgstr "Carga promedio en 5 minutos"
-
-#~ msgid "Load average over 15 minutes"
-#~ msgstr "Carga promedio en 15 minutos"
-
-#~ msgid "Load Average Aplique"
-#~ msgstr "Aplique de carga promedio"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Load Average Meter Aplique."
-#~ msgstr ""
-#~ "Distribuido bajo los términos de la licencia GPL de GNU.\n"
-#~ "\n"
-#~ "Aplique monitor de carga promedio"
