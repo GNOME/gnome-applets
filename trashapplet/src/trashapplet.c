@@ -29,8 +29,7 @@
 
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
-#include <libgnome/libgnome.h>
-#include <libgnomeui/libgnomeui.h>
+#include <libgnome/gnome-help.h>
 
 #include "eel-extension.h"
 #include "trashapplet.h"
@@ -748,7 +747,7 @@ trash_applet_drag_data_received (GtkWidget        *widget,
 	GList *source_uri_list, *target_uri_list, *unmovable_uri_list;
 	GnomeVFSResult result;
 
-	list = gnome_vfs_uri_list_parse (selectiondata->data);
+	list = gnome_vfs_uri_list_parse ((gchar *)selectiondata->data);
 
 	source_uri_list = NULL;
 	target_uri_list = NULL;
