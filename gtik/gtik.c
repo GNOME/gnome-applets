@@ -29,6 +29,7 @@
 #include <gtk/gtk.h>
 #include <time.h>
 
+#include <libgnome/gnome-help.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -154,6 +155,19 @@
 	static gint gtik_vbox_accessible_get_n_children(AtkObject *obj);
 	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i);
 	/* end accessibility funcs and vars */
+
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+  GError *error = NULL;
+  gnome_help_display("gtik2_applet2","gtik-settings",&error);
+
+  if (error) {
+     g_warning ("help error: %s\n", error->message);
+     g_error_free (error);
+     error = NULL;
+  }
+}
 
 	/*-----------------------------------------------------------------*/
 	static void load_fonts(StockData *stockdata)
@@ -810,7 +824,7 @@ static gint updateOutput(gpointer data)
 					    stockdata->props.timeout, NULL);
 		gtk_timeout_remove(stockdata->updateTimeID);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
-				                         (gpointer)updateOutput, stockdata);
+							  updateOutput, stockdata);
 		
 	}
 	
@@ -925,7 +939,7 @@ static gint updateOutput(gpointer data)
 		
 		gtk_tree_model_get (model, iter, 0, &symbol, -1);
 		if (!symbol)
-			return;
+			return FALSE;
 		
 		tmp = stockdata->props.tik_syms;
 		/* don't add the "+" if the symbol is the first one */
@@ -936,7 +950,7 @@ static gint updateOutput(gpointer data)
 		g_free (symbol);
 		if (tmp)
 			g_free (tmp);
-		
+		return FALSE;
 	}
 	
 	static void
@@ -1149,7 +1163,7 @@ static gint updateOutput(gpointer data)
 	{
 		StockData *stockdata = data;
 			if(id == GTK_RESPONSE_HELP){
-			phelp_cb (dialog,id,data);
+			phelp_cb (GTK_WIDGET (dialog),id,data);
 			return;
 		}
 
@@ -1778,7 +1792,7 @@ static gint updateOutput(gpointer data)
 		gint i;
 
 		strs = g_new0 (gchar*, access_stock->setCounter + 1);
-		g_return_if_fail (strs != NULL);
+		g_return_val_if_fail (strs != NULL, NULL);
 
 		for(i=0;i<access_stock->setCounter;i++) {
 			if (access_stock->props.output == FALSE) {
@@ -1798,16 +1812,4 @@ static gint updateOutput(gpointer data)
 		return buff;
 	}
 
-static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
-{
-  GError *error = NULL;
-  gnome_help_display("gtik2_applet2","gtik-settings",&error);
-
-  if (error) {
-     g_warning ("help error: %s\n", error->message);
-     g_error_free (error);
-     error = NULL;
-  }
-}
 
