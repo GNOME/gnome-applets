@@ -827,6 +827,7 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     loc = info->location;
 	body = (gchar *)buffer;
 	body[body_len] = '\0';
+g_print ("body %s \n", body);
 
 	if (info->read_buffer == NULL)
 		info->read_buffer = g_strdup(body);
@@ -840,6 +841,7 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 		
 	if (result == GNOME_VFS_ERROR_EOF)
 	{
+g_print ("eof \n");
 		g_snprintf (searchkey, sizeof (searchkey), "\n%s", loc->code);
         metar = strstr(body, searchkey);
         if (metar == NULL) {
@@ -854,7 +856,7 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
 		    *eoln = '\n';
         }
 
-        info->valid = success;
+        info->valid = TRUE;
 	}
 	else if (result != GNOME_VFS_OK) {
 		g_print("%s", gnome_vfs_result_to_string(result));
@@ -918,7 +920,7 @@ static void metar_start_open (WeatherInfo *info)
 	    g_warning (_("WeatherInfo missing location"));
 	    return;
     }
-
+g_print ("start metar \n");
     url = g_strdup_printf("http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=%s", loc->code);
     gnome_vfs_async_open(&metar_handle, url, GNOME_VFS_OPEN_READ, 0, metar_finish_open, info);
     g_free(url);
@@ -1361,7 +1363,7 @@ static void metoffice_start_open (WeatherInfo *info)
     gchar *url;
     WeatherLocation *loc;
     loc = info->location;
-    
+g_print ("start metoffice open \n");    
     url = g_strdup_printf("http://www.metoffice.gov.uk/datafiles/%s.html", loc->zone+1);
     gnome_vfs_async_open(&met_handle, url, GNOME_VFS_OPEN_READ, 0, met_finish_open, info);
     g_free(url);
@@ -1381,7 +1383,7 @@ static void iwin_start_open (WeatherInfo *info)
     gchar state[WEATHER_LOCATION_ZONE_LEN];
     gchar *url;
     WeatherLocation *loc;
-
+g_print ("start iwon \n"); 
     g_return_if_fail(info != NULL);
     info->forecast = NULL;
     loc = info->location;
@@ -1512,7 +1514,7 @@ static void wx_start_open (WeatherInfo *info)
 {
     gchar *url;
     WeatherLocation *loc;
-	
+g_print ("start wx_strt open \n"); 	
     g_return_if_fail(info != NULL);
     info->radar = NULL;
     loc = info->location;
