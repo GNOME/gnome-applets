@@ -87,7 +87,7 @@ applet_back_change (PanelApplet *a,
 	gint i;
                 
 	switch (type) {
-	case PANEL_PIXMAP_BACKGOUND:
+	case PANEL_PIXMAP_BACKGROUND:
                 applet_set_back_pixmap (applet->fixed, pixmap);
 		break;
         case PANEL_COLOR_BACKGROUND:
@@ -233,9 +233,8 @@ properties_load (PanelApplet *applet)
         gchar *theme_path = NULL;
 
 	theme_path = panel_applet_gconf_get_string (applet, "theme-path", NULL);
-	/* FIXME: should install gconf schemas to get defaults*/
 	if (theme_path == NULL)
-		theme_path = g_strdup (GEYES_THEMES_DIR"Default");	
+		theme_path = g_strdup (GEYES_THEMES_DIR"Default-tiny");	
 	
         load_theme (theme_path);
         g_free (theme_path);

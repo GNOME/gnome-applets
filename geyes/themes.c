@@ -167,6 +167,7 @@ static void
 presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 {
 	gtk_widget_destroy (GTK_WIDGET (dialog));
+	eyes_applet.prop_box.pbox = NULL;
 }
 
 void
@@ -192,9 +193,9 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
 		return;
 	}
 
-        pbox = gtk_dialog_new_with_buttons (_("Settings"), NULL,
+        pbox = gtk_dialog_new_with_buttons (_("Properties"), NULL,
         				     GTK_DIALOG_DESTROY_WITH_PARENT,
-					     GTK_STOCK_OK, GTK_RESPONSE_OK,
+					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     NULL);
 
         g_signal_connect (G_OBJECT (pbox), "response",
