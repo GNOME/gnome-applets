@@ -97,7 +97,7 @@ void sighandle_sigchld(int sig)
     /* call waitpid to remove the child process and to prevent that it
        becomes a zombie */
 
-    while(waitpid(0, NULL, WNOHANG) > 0)
+    while(waitpid(-1, NULL, WNOHANG) > 0)
 	show_a_message = 1;
 
     if(show_a_message)
