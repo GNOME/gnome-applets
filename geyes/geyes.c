@@ -85,7 +85,7 @@ applet_back_change (PanelApplet *a,
                 
 	switch (type) {
 	case PANEL_PIXMAP_BACKGROUND:
-                applet_set_back_pixmap (eyes_applet->fixed, pixmap);
+                applet_set_back_pixmap (eyes_applet->vbox, pixmap);
 		break;
         case PANEL_COLOR_BACKGROUND:
                 for (i = 0; i < eyes_applet->num_eyes; i++) {
@@ -287,7 +287,7 @@ setup_eyes (EyesApplet *eyes_applet)
 	int i;
 
         eyes_applet->hbox = gtk_hbox_new (FALSE, 0);
-        gtk_fixed_put (GTK_FIXED (eyes_applet->fixed), eyes_applet->hbox, 0, 0);
+        gtk_box_pack_start (GTK_BOX (eyes_applet->vbox), eyes_applet->hbox, TRUE, TRUE, 0);
 
         for (i = 0; i < eyes_applet->num_eyes; i++) {
                 eyes_applet->eyes[i] = gtk_image_new ();
@@ -306,6 +306,16 @@ setup_eyes (EyesApplet *eyes_applet)
                                     TRUE,
                                     0);
                 
+		if ((eyes_applet->num_eyes != 1) && (i == 0)) {
+                	gtk_misc_set_alignment (GTK_MISC (eyes_applet->eyes[i]), 1.0, 0.5);
+		}
+		else if ((eyes_applet->num_eyes != 1) && (i == eyes_applet->num_eyes - 1)) {
+			gtk_misc_set_alignment (GTK_MISC (eyes_applet->eyes[i]), 0.0, 0.5);
+		}
+		else {
+			gtk_misc_set_alignment (GTK_MISC (eyes_applet->eyes[i]), 0.5, 0.5);
+		}
+		
                 gtk_widget_realize (eyes_applet->eyes[i]);
 		draw_eye (eyes_applet, i,
 			  eyes_applet->eye_width / 2,
@@ -328,9 +338,9 @@ create_eyes (PanelApplet *applet)
 	EyesApplet *eyes_applet = g_new0 (EyesApplet, 1);
 
         eyes_applet->applet = applet;
-        eyes_applet->fixed  = gtk_fixed_new ();
+        eyes_applet->vbox = gtk_vbox_new (FALSE, 0);
 
-	gtk_container_add (GTK_CONTAINER (applet), eyes_applet->fixed);
+	gtk_container_add (GTK_CONTAINER (applet), eyes_applet->vbox);
 
         properties_load (eyes_applet);
 
@@ -452,7 +462,7 @@ geyes_applet_fill (PanelApplet *applet)
 			  "change_background",
 			  G_CALLBACK (applet_back_change),
 			  eyes_applet);
-	g_signal_connect (eyes_applet->fixed,
+	g_signal_connect (eyes_applet->vbox,
 			  "destroy",
 			  G_CALLBACK (destroy_cb),
 			  eyes_applet);

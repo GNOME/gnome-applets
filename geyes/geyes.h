@@ -34,7 +34,7 @@ typedef struct
 {
 	/* Applet */
 	PanelApplet *applet;
-	GtkWidget   *fixed;
+	GtkWidget   *vbox;
 	GtkWidget   *hbox;
 	GtkWidget   *eyes[MAX_EYES];
 	guint        timeout_id;
